@@ -16,6 +16,16 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "person-package": [
+        "dist/person-package",
+        "dist/person-package"
+      ],
+      "person-package/*": [
+        "dist/person-package/*",
+        "dist/person-package/*"
+      ]
+    }
   }
 }
