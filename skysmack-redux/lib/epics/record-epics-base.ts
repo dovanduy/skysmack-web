@@ -1,5 +1,5 @@
 import { combineEpics, ofType, ActionsObservable } from 'redux-observable';
-import { switchMap, map, retry } from 'rxjs/operators';
+import { switchMap } from 'rxjs/operators';
 import { GetPagedRecordsAction, GetPagedRecordsSuccessAction, GetPagedRecordsFailureAction, GetSingleRecordAction, GetSingleRecordFailureAction, GetSingleRecordSuccessAction } from '../action-types';
 import { RecordActionsBase } from '../actions';
 import { RecordRequests } from '../requests';

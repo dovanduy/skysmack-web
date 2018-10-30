@@ -5,6 +5,7 @@ import { map, retry, catchError } from 'rxjs/operators';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { CustomHttpUrlEncodingCodec } from "./custom-http-url-encoding-codec";
 import { PageResponseExtensions } from "./page-response-extensions";
+import { of } from 'rxjs';
 
 export abstract class NgRecordRequests<TRecord extends Record<TKey>, TKey> implements RecordRequests<TRecord, TKey> {
     protected retryTimes = 3;
@@ -53,33 +54,29 @@ export abstract class NgRecordRequests<TRecord extends Record<TKey>, TKey> imple
                     return new GetPagedRecordsSuccessAction<TRecord, TKey>();
                 }),
                 retry(this.retryTimes),
-                catchError<GetPagedRecordsSuccessAction<TRecord, TKey>, GetPagedRecordsFailureAction>(error => {
-                    return new GetPagedRecordsFailureAction({
-                        ...action,
-                        error: error
-                    });
-                })
+                catchError<GetPagedRecordsSuccessAction<TRecord, TKey>, GetPagedRecordsFailureAction>(error => of(new GetPagedRecordsFailureAction({
+                    ...action,
+                    error
+                })))
             );
     }
 
     public getSingle(action: GetSingleRecordAction<TKey>): Observable<GetSingleRecordSuccessAction<TRecord, TKey> | GetSingleRecordFailureAction<TKey>> {
         return this.http.get<TRecord>(`${action.packagePath}`, { observe: 'response' })
-        .pipe(
-            map(httpResponse => {
-                if (httpResponse.body) {
-                    return new GetSingleRecordSuccessAction<TRecord, TKey>({
-                        record: httpResponse.body
-                    });
-                }
-                return new GetSingleRecordSuccessAction<TRecord, TKey>();
-            }),
-            retry(this.retryTimes),
-            catchError<GetSingleRecordSuccessAction<TRecord, TKey>, GetSingleRecordFailureAction<TKey>>(error => {
-                return new GetSingleRecordFailureAction<TKey>({
+            .pipe(
+                map(httpResponse => {
+                    if (httpResponse.body) {
+                        return new GetSingleRecordSuccessAction<TRecord, TKey>({
+                            record: httpResponse.body
+                        });
+                    }
+                    return new GetSingleRecordSuccessAction<TRecord, TKey>();
+                }),
+                retry(this.retryTimes),
+                catchError<GetSingleRecordSuccessAction<TRecord, TKey>, GetSingleRecordFailureAction<TKey>>(error => of(new GetSingleRecordFailureAction({
                     ...action,
-                    error: error
-                });
-            })
-        );
+                    error
+                })))
+            );
     }
 }

@@ -5,7 +5,7 @@
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "scripts": {
-    "preinstall": "npm install ../skysmack-framework ../skysmack-redux",
+    "preinstall": "npm install ../skysmack-framework ../skysmack-redux ../ ../skysmack-redux-angular",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc"
   },
@@ -14,7 +14,8 @@
   "license": "ISC",
   "dependencies": {
     "skysmack-framework": "file:../skysmack-framework",
-    "skysmack-redux": "file:../skysmack-redux"
+    "skysmack-redux": "file:../skysmack-redux",
+    "skysmack-redux-angular": "file:../skysmack-redux-angular"
   },
   "devDependencies": {
     "typescript": "^3.1.3"
