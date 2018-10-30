@@ -1,4 +1,4 @@
-import { Record, LocalObject, PageResponse } from "skysmack-framework";
+import { Record } from "skysmack-framework";
 import { RecordRequests, GetPagedRecordsAction, GetPagedRecordsSuccessAction, GetPagedRecordsFailureAction, GetSingleRecordAction, GetSingleRecordSuccessAction, GetSingleRecordFailureAction } from "skysmack-redux";
 import { Observable } from 'rxjs/internal/Observable';
 import { map, retry, catchError } from 'rxjs/operators';

@@ -5,7 +5,6 @@
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "scripts": {
-    "preinstall": "npm install ../skysmack-framework",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc"
   },
@@ -15,8 +14,7 @@
   "dependencies": {
     "redux": "^4.0.1",
     "redux-observable": "^1.0.0",
-    "rxjs": "^6.3.3",
-    "skysmack-framework": "file:../skysmack-framework"
+    "rxjs": "^6.3.3"
   },
   "devDependencies": {
     "typescript": "^3.1.3"

@@ -2,6 +2,7 @@
   "name": "skysmack-clients-angular-portal",
   "version": "0.0.0",
   "scripts": {
+    "preinstall": "npm install ../skysmack-framework ../skysmack-redux  ../skysmack-redux-angular ../skysmack-packages-persons",
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",

@@ -5,17 +5,13 @@
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "scripts": {
-    "preinstall": "npm install ../skysmack-framework ../skysmack-redux",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "skysmack-framework": "file:../skysmack-framework",
-    "skysmack-redux": "file:../skysmack-redux"
-  },
+  "dependencies": {},
   "devDependencies": {
     "typescript": "^3.1.3"
   }

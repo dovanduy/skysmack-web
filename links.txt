@@ -1,0 +1,13 @@
+cd skysmack-framework
+npm link
+cd ../skysmack-redux
+npm link
+npm link skysmack-framework
+cd ../skysmack-redux-angular
+npm link
+npm link skysmack-framework skysmack-redux
+cd ../skysmack-packages-persons
+npm link
+npm link skysmack-framework skysmack-redux
+cd ../skysmack-clients-angular-portal
+npm link skysmack-framework skysmack-redux skysmack-redux-angular skysmack-packages-persons
