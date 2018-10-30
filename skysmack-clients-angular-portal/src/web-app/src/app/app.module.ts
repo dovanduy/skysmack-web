@@ -22,58 +22,58 @@ import { createEpicMiddleware, combineEpics } from 'redux-observable';
 })
 export class AppModule {
 
-
   constructor(
-    public ngRedux: NgRedux<any>,
-    public rootEpics: RootEpics
+    // public ngRedux: NgRedux<any>,
+    // public rootEpics: RootEpics
   ) {
-    this.configureRedux();
-  }
-
-  configureRedux(): any {
-    const epicMiddleware = createEpicMiddleware();
-    const store: Store<any> = createStore(
-      rootReducer,
-      {},
-    );
-
-    this.ngRedux.provideStore(store);
-
-    epicMiddleware.run(this.rootEpics.getEpics());
+    // this.configureRedux();
   }
 }
 
-function rootReducer(state: any, action) {
-  let newState: any;
-  switch (action.type) {
-    default:
-      newState = state;
-      break;
-  }
+//   configureRedux(): any {
+//     const epicMiddleware = createEpicMiddleware();
+//     const store: Store<any> = createStore(
+//       rootReducer,
+//       {},
+//     );
 
-  return appReducer(newState, action);
-}
+//     this.ngRedux.provideStore(store);
 
-export interface IAppState {
-  // General
-  // persons?: PersonsState;
-}
+//     epicMiddleware.run(this.rootEpics.getEpics());
+//   }
+// }
 
-export const appReducer = combineReducers({
-  // persons: personsReducer
-} as any);
+// function rootReducer(state: any, action) {
+//   let newState: any;
+//   switch (action.type) {
+//     default:
+//       newState = state;
+//       break;
+//   }
 
-@Injectable({
-  providedIn: 'root'
-})
-export class RootEpics {
-  constructor(
-    // Packages
-    // public personsEpics: PersonsEpics
-  ) { }
+//   return appReducer(newState, action);
+// }
 
-  public getEpics = () => combineEpics(
-    // General
-    // this.personsEpics.getEpics(),
-  )
-}
+// export interface IAppState {
+//   // General
+//   // persons?: PersonsState;
+// }
+
+// export const appReducer = combineReducers({
+//   // persons: personsReducer
+// } as any);
+
+// @Injectable({
+//   providedIn: 'root'
+// })
+// export class RootEpics {
+//   constructor(
+//     // Packages
+//     // public personsEpics: PersonsEpics
+//   ) { }
+
+//   public getEpics = () => combineEpics(
+//     // General
+//     // this.personsEpics.getEpics(),
+//   )
+// }
