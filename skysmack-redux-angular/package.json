@@ -17,7 +17,6 @@
     "@angular/compiler": "^7.0.1",
     "@angular/core": "^7.0.1",
     "@types/parse-link-header": "^1.0.0",
-    "parse-link-header": "^1.0.1",
     "redux": "^4.0.1",
     "redux-observable": "^1.0.0",
     "rxjs": "^6.3.3",

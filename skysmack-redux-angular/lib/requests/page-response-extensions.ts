@@ -1,6 +1,6 @@
 import { HttpHeaders } from "@angular/common/http";
 import { PageResponse } from "skysmack-framework";
-import parseLinkHeader = require("parse-link-header");
+// import * as  parseLinkHeader from "parse-link-header";
 
 export class PageResponseExtensions {
     public static getPageResponse<TKey>(headers: HttpHeaders, ids: TKey[]): PageResponse<TKey> {
@@ -10,10 +10,12 @@ export class PageResponseExtensions {
 
         const link = headers.get('link');
         if (link) {
-            const links = parseLinkHeader(link);
-            if (links) {
-                pageResponse.links = links;
-            }
+            // try {
+            //     const links = parseLinkHeader(link);
+            //     if (links) {
+            //         pageResponse.links = links;
+            //     }
+            // } catch { }
         }
 
         if (headers.has('x-page-number')) {
