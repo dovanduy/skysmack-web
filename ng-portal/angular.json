@@ -1,13 +1,13 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
-  "newProjectRoot": "src/lib/projects",
+  "newProjectRoot": "src/projects",
   "projects": {
     "web-portal": {
-      "root": "src/lib/projects/web-portal/",
-      "sourceRoot": "src/lib/projects/web-portal/src",
+      "root": "src/projects/web-portal/",
+      "sourceRoot": "src/projects/web-portal/src",
       "projectType": "application",
-      "prefix": "ss",
+      "prefix": "app",
       "schematics": {
         "@schematics/angular:component": {
           "styleext": "scss"
@@ -18,16 +18,16 @@
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "outputPath": "dist/web-portal",
-            "index": "src/lib/projects/web-portal/src/index.html",
-            "main": "src/lib/projects/web-portal/src/main.ts",
-            "polyfills": "src/lib/projects/web-portal/src/polyfills.ts",
-            "tsConfig": "src/lib/projects/web-portal/tsconfig.app.json",
+            "index": "src/projects/web-portal/src/index.html",
+            "main": "src/projects/web-portal/src/main.ts",
+            "polyfills": "src/projects/web-portal/src/polyfills.ts",
+            "tsConfig": "src/projects/web-portal/tsconfig.app.json",
             "assets": [
-              "src/lib/projects/web-portal/src/favicon.ico",
-              "src/lib/projects/web-portal/src/assets"
+              "src/projects/web-portal/src/favicon.ico",
+              "src/projects/web-portal/src/assets"
             ],
             "styles": [
-              "src/lib/projects/web-portal/src/styles.scss"
+              "src/projects/web-portal/src/styles.scss"
             ],
             "scripts": []
           },
@@ -35,8 +35,8 @@
             "production": {
               "fileReplacements": [
                 {
-                  "replace": "src/lib/projects/web-portal/src/environments/environment.ts",
-                  "with": "src/lib/projects/web-portal/src/environments/environment.prod.ts"
+                  "replace": "src/projects/web-portal/src/environments/environment.ts",
+                  "with": "src/projects/web-portal/src/environments/environment.prod.ts"
                 }
               ],
               "optimization": true,
@@ -71,17 +71,17 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "src/lib/projects/web-portal/src/test.ts",
-            "polyfills": "src/lib/projects/web-portal/src/polyfills.ts",
-            "tsConfig": "src/lib/projects/web-portal/tsconfig.spec.json",
-            "karmaConfig": "src/lib/projects/web-portal/karma.conf.js",
+            "main": "src/projects/web-portal/src/test.ts",
+            "polyfills": "src/projects/web-portal/src/polyfills.ts",
+            "tsConfig": "src/projects/web-portal/tsconfig.spec.json",
+            "karmaConfig": "src/projects/web-portal/karma.conf.js",
             "styles": [
-              "src/lib/projects/web-portal/src/styles.scss"
+              "src/projects/web-portal/src/styles.scss"
             ],
             "scripts": [],
             "assets": [
-              "src/lib/projects/web-portal/src/favicon.ico",
-              "src/lib/projects/web-portal/src/assets"
+              "src/projects/web-portal/src/favicon.ico",
+              "src/projects/web-portal/src/assets"
             ]
           }
         },
@@ -89,8 +89,8 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "src/lib/projects/web-portal/tsconfig.app.json",
-              "src/lib/projects/web-portal/tsconfig.spec.json"
+              "src/projects/web-portal/tsconfig.app.json",
+              "src/projects/web-portal/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"
@@ -100,13 +100,13 @@
       }
     },
     "web-portal-e2e": {
-      "root": "src/lib/projects/web-portal-e2e/",
+      "root": "src/projects/web-portal-e2e/",
       "projectType": "application",
       "architect": {
         "e2e": {
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
-            "protractorConfig": "src/lib/projects/web-portal-e2e/protractor.conf.js",
+            "protractorConfig": "src/projects/web-portal-e2e/protractor.conf.js",
             "devServerTarget": "web-portal:serve"
           },
           "configurations": {
@@ -118,7 +118,7 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": "src/lib/projects/web-portal-e2e/tsconfig.e2e.json",
+            "tsConfig": "src/projects/web-portal-e2e/tsconfig.e2e.json",
             "exclude": [
               "**/node_modules/**"
             ]

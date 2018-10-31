@@ -2,8 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { PersonsModule } from 'packages/persons';
 import { RouterModule } from '@angular/router';
+import { PersonsModule } from 'packages/persons';
 
 @NgModule({
   declarations: [

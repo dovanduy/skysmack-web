@@ -13,8 +13,16 @@
     "experimentalDecorators": true,
     "downlevelIteration": true,
   },
-  "include": ["lib"],
-  "exclude": ["node_modules", "**/__tests__/*"],
+  "files": [
+    "index.ts"
+  ],
+  "include": [
+    "lib",
+  ],
+  "exclude": [
+    "node_modules",
+    "**/__tests__/*"
+  ],
   "lib": [
     "es6"
   ]
