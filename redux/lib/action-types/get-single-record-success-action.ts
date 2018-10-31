@@ -1,5 +1,5 @@
 import { GetSingleRecordAction } from './get-single-record-action';
-import { Record } from 'skysmack-framework';
+import { Record } from '@skysmack/framework';
 
 export class GetSingleRecordSuccessAction<TRecord extends Record<TKey>, TKey> extends GetSingleRecordAction<TKey> {
   public record: TRecord;

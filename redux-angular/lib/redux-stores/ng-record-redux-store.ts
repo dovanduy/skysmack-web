@@ -1,5 +1,5 @@
-import { Record, StrIndex, LocalPageTypes, LocalObject } from "skysmack-framework";
-import { RecordReduxStore, RecordState } from "skysmack-redux";
+import { Record, StrIndex, LocalPageTypes, LocalObject } from "@skysmack/framework";
+import { RecordReduxStore, RecordState } from "@skysmack/redux";
 import { Observable } from 'rxjs';
 import { NgRedux } from '@angular-redux/store';
 import { PathSelector, Selector } from '@angular-redux/store';

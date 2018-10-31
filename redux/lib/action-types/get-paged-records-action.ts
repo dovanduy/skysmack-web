@@ -1,4 +1,4 @@
-import { PagedQuery } from 'skysmack-framework';
+import { PagedQuery } from '@skysmack/framework';
 import { PackageAction } from './package-action';
 
 export class GetPagedRecordsAction implements PackageAction {

@@ -3,7 +3,7 @@ import { switchMap } from 'rxjs/operators';
 import { GetPagedRecordsAction, GetPagedRecordsSuccessAction, GetPagedRecordsFailureAction, GetSingleRecordAction, GetSingleRecordFailureAction, GetSingleRecordSuccessAction } from '../action-types';
 import { RecordActionsBase } from '../actions';
 import { RecordRequests } from '../requests';
-import { Record } from 'skysmack-framework';
+import { Record } from '@skysmack/framework';
 
 export abstract class RecordEpicsBase<TRecord extends Record<TKey>, TKey> {
     protected epics: any;

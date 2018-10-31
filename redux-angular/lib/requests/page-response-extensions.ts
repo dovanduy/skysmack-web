@@ -1,5 +1,5 @@
 import { HttpHeaders } from "@angular/common/http";
-import { PageResponse } from "skysmack-framework";
+import { PageResponse } from "@skysmack/framework";
 // import * as  parseLinkHeader from "parse-link-header";
 
 export class PageResponseExtensions {

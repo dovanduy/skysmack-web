@@ -1,6 +1,6 @@
 import { Store } from 'redux';
 import { GetSingleRecordAction, GetPagedRecordsAction } from '../action-types';
-import { PagedQuery } from 'skysmack-framework';
+import { PagedQuery } from '@skysmack/framework';
 
 export abstract class RecordActionsBase<TStateType> {
     public static GET_PAGED = 'GET_PAGED';

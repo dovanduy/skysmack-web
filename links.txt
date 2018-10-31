@@ -2,12 +2,12 @@ cd framework
 npm link
 cd ../redux
 npm link
-npm link framework
+npm link @skysmack/framework
 cd ../redux-angular
 npm link
-npm link framework redux
+npm link @skysmack/framework @skysmack/redux
 cd ../packages/packages-persons
 npm link
-npm link framework redux
-cd ../clients-angular-portal
-npm link framework redux redux-angular packages-persons
+npm link @skysmack/framework @skysmack/redux
+cd ../../clients-angular-portal
+npm link @skysmack/framework @skysmack/redux @skysmack/redux-angular @skysmack/packages-persons

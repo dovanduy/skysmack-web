@@ -1,6 +1,6 @@
 import { RecordActionsBase } from "../actions";
 import { GetPagedRecordsSuccessAction, GetSingleRecordSuccessAction, PackageAction } from "../action-types";
-import { Record, LocalObject, RecordExtensions, PageExtensions } from "skysmack-framework";
+import { Record, LocalObject, RecordExtensions, PageExtensions } from "@skysmack/framework";
 import { RecordState } from "../states";
 
 export function recordReducersBase<TRecord extends Record<TKey>, TKey>(state: RecordState<TRecord, TKey>, action: PackageAction, prefix: string = ''): RecordState<TRecord, TKey> {

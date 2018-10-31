@@ -1,4 +1,4 @@
-import { Record, StrIndex, LocalPageTypes, LocalObject } from "skysmack-framework";
+import { Record, StrIndex, LocalPageTypes, LocalObject } from "@skysmack/framework";
 import { Observable } from 'rxjs';
 
 export interface RecordReduxStore<TRecord extends Record<TKey>, TKey> {

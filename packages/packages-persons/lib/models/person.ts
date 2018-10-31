@@ -1,4 +1,4 @@
-import { DocumentRecord } from "skysmack-framework";
+import { DocumentRecord } from "@skysmack/framework";
 
 export class Person implements DocumentRecord<number> {
     public Id: number;
