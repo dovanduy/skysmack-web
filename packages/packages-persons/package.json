@@ -1,5 +1,5 @@
 {
-  "name": "skysmack-framework",
+  "name": "@skysmack/packages-persons",
   "version": "1.0.0",
   "description": "",
   "main": "./dist/index.js",
@@ -11,14 +11,8 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "guid-typescript": "1.0.7",
-    "rxjs": "^6.3.3"
-  },
+  "dependencies": {},
   "devDependencies": {
     "typescript": "^3.1.3"
-  },
-  "files": [
-    "dist"
-  ]
+  }
 }

@@ -27,11 +27,11 @@ export const appReducer = combineReducers({
 export class RootEpics {
     constructor(
         // Packages
-        public personsEpics: NgPersonsEpics
+        // public personsEpics: NgPersonsEpics
     ) { }
 
     public getEpics = () => combineEpics(
         // General
-        this.personsEpics.getEpics(),
+        // this.personsEpics.getEpics(),
     )
 }

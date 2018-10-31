@@ -3,7 +3,6 @@ import { NgModule, Injectable } from '@angular/core';
 import { NgRedux, NgReduxModule } from '@angular-redux/store';
 
 import { AppComponent } from './app.component';
-import { PersonPackageModule } from 'person-package';
 import { RouterModule } from '@angular/router';
 import { createStore, Store, combineReducers } from 'redux';
 import { createEpicMiddleware, combineEpics } from 'redux-observable';
@@ -16,7 +15,6 @@ import { RootEpics, rootReducer, IAppState } from './hello';
   ],
   imports: [
     BrowserModule,
-    PersonPackageModule,
     NgReduxModule,
     RouterModule
   ],

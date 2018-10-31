@@ -1,5 +1,5 @@
 {
-  "name": "skysmack-redux-angular",
+  "name": "@skysmack/redux-angular",
   "version": "1.0.0",
   "description": "",
   "main": "./dist/index.js",

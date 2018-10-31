@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { PersonPackageService } from 'person-package';
 
 @Component({
   selector: 'app-root',
@@ -7,7 +6,7 @@ import { PersonPackageService } from 'person-package';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  public title = this.personPackageService.sayHi();
+  public title = 'Hello world!';
 
-  constructor(public personPackageService: PersonPackageService) { }
+  constructor() { }
 }
