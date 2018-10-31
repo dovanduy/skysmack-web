@@ -13,11 +13,9 @@
     "experimentalDecorators": true,
     "downlevelIteration": true,
   },
-  "files": [
-    "index.ts"
-  ],
   "include": [
     "lib",
+    "index.ts"
   ],
   "exclude": [
     "node_modules",
