@@ -26,7 +26,7 @@ export class AppModule {
 
   constructor(
     public ngRedux: NgRedux<IAppState>,
-    public rootEpics: RootEpics
+    // public rootEpics: RootEpics
   ) {
     // this.configureRedux();
   }
