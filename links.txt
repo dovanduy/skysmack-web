@@ -9,13 +9,10 @@ cd ../ng-redux
 npm link
 npm link @skysmack/framework @skysmack/redux
 
-cd ../packages/packages-persons
+cd ../packages-persons
 npm link
 npm link @skysmack/framework @skysmack/redux
 
-cd ../../ng-portal
+cd ../ng-portal
 npm link
-npm link @skysmack/framework @skysmack/redux @skysmack/ng-redux
-
-cd ../clients-angular-portal
-npm link @skysmack/framework @skysmack/redux @skysmack/ng-redux @skysmack/ng-portal
+npm link @skysmack/framework @skysmack/redux @skysmack/ng-redux @skysmack/packages-persons
