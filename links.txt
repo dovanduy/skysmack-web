@@ -1,18 +1,23 @@
 cd framework
 npm link
+npm run build
 
 cd ../redux
 npm link
 npm link @skysmack/framework
+npm run build
 
 cd ../ng-redux
 npm link
 npm link @skysmack/framework @skysmack/redux
+npm run build
 
 cd ../packages-persons
 npm link
 npm link @skysmack/framework @skysmack/redux
+npm run build
 
 cd ../ng-portal
 npm link
 npm link @skysmack/framework @skysmack/redux @skysmack/ng-redux @skysmack/packages-persons
+ng serve
