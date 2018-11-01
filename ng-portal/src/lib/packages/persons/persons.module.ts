@@ -4,7 +4,6 @@ import { CommonModule } from '@angular/common';
 import { PersonsRoutingModule } from './persons-routing.module';
 import { PersonsIndexComponent } from './components/persons-index/persons-index.component';
 import { HttpClientModule } from '@angular/common/http';
-import { PersonsRequests } from './redux/persons-requests';
 
 @NgModule({
   imports: [
@@ -13,7 +12,7 @@ import { PersonsRequests } from './redux/persons-requests';
     HttpClientModule
   ],
   exports: [],
-  providers: [PersonsRequests],
+  providers: [],
   declarations: [PersonsIndexComponent]
 })
 export class PersonsModule { }
