@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "baseUrl": "/dist",
+    "baseUrl": "dist",
     "target": "es6",
     "module": "commonjs",
     "declaration": true,
@@ -13,9 +13,14 @@
     "experimentalDecorators": true,
     "downlevelIteration": true,
   },
-  "include": ["lib"],
-  "exclude": ["node_modules", "**/__tests__/*"],
+  "include": [
+    "lib"
+  ],
+  "exclude": [
+    "node_modules",
+    "**/__tests__/*"
+  ],
   "lib": [
-    "es6"
+    "es2017"
   ]
 }

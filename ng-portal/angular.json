@@ -21,7 +21,6 @@
             "index": "src/projects/web-portal/src/index.html",
             "main": "src/projects/web-portal/src/main.ts",
             "polyfills": "src/projects/web-portal/src/polyfills.ts",
-            "preserveSymlinks": true,
             "tsConfig": "src/projects/web-portal/tsconfig.app.json",
             "assets": [
               "src/projects/web-portal/src/favicon.ico",

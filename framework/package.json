@@ -12,7 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "guid-typescript": "1.0.7",
+    "guid-typescript": "1.0.9",
     "rxjs": "^6.3.3"
   },
   "devDependencies": {

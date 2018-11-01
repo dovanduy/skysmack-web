@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Person } from '@skysmack/packages-persons';
+import { PersonsRequests } from 'packages/persons/redux/persons-requests';
 
 @Component({
   selector: 'ss-persons-index',
@@ -8,14 +8,12 @@ import { Person } from '@skysmack/packages-persons';
 })
 export class PersonsIndexComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    public personsRequests: PersonsRequests
+  ) { }
 
   ngOnInit() {
-    const person: Person = new Person({
-      Id: 2
-    });
-
-    console.log(person);
+    console.log(this.personsRequests);
   }
 
 }
