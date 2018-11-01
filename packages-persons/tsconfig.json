@@ -18,7 +18,7 @@
   ],
   "exclude": [
     "node_modules",
-    "**/__tests__/*"
+    "**/__tests__/*",
   ],
   "lib": [
     "es2017"
