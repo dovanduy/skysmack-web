@@ -4,7 +4,7 @@ import { PersonsIndexComponent } from './components/persons-index/persons-index.
 
 const routes: Routes = [
   {
-    path: 'persons', component: PersonsIndexComponent
+    path: '', component: PersonsIndexComponent
   }
 ];
 

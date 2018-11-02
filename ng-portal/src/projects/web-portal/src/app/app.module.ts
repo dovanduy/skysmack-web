@@ -4,16 +4,11 @@ import { NgRedux, NgReduxModule } from '@angular-redux/store';
 
 import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
-// import { PersonsModule } from 'packages/persons';
-
-import { createStore, Store, compose, applyMiddleware } from 'redux';
-import { createEpicMiddleware } from 'redux-observable';
-import { IAppState, RootEpics, rootReducer } from './store';
+import { IAppState, RootEpics } from './store';
 import { NgReduxRouter, NgReduxRouterModule } from '@angular-redux/router';
 import { ReduxOfflineConfiguration } from './redux-offline.configuration';
 import { configureRedux } from './redux.configuration';
 import { HttpClientModule } from '@angular/common/http';
-import { PersonsModule } from 'packages/persons';
 
 @NgModule({
   declarations: [
@@ -21,11 +16,20 @@ import { PersonsModule } from 'packages/persons';
   ],
   imports: [
     HttpClientModule,
-    RouterModule.forRoot([]),
+    RouterModule.forRoot([
+      {
+        path: 'persons',
+        loadChildren: '../../../../lib/packages/persons/persons.module#PersonsModule'
+      },
+      {
+        path: '',
+        redirectTo: '',
+        pathMatch: 'full'
+      }
+    ]),
     BrowserModule,
     NgReduxModule,
-    NgReduxRouterModule.forRoot(),
-    PersonsModule
+    NgReduxRouterModule.forRoot()
   ],
   providers: [
     RootEpics
