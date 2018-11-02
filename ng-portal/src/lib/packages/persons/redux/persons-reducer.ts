@@ -1,4 +1,4 @@
-import { recordReducersBase, RecordState, PackageAction } from '@skysmack/redux';
+import { recordReducersBase, RecordState, PackageAction, ReducerRegistry } from '@skysmack/redux';
 import { Person } from '@skysmack/packages-persons';
 
 export interface PersonsState extends RecordState<Person, number> { }
@@ -16,3 +16,8 @@ export function personsReducer(state: PersonsState = PERSONS_INITIAL_STATE, acti
             };
     }
 }
+
+// EXPERIMENTAL
+const reducerRegistry = ReducerRegistry.Instance;
+reducerRegistry.register('persons', personsReducer);
+console.log(reducerRegistry.reducers);

@@ -10,6 +10,9 @@ import { ReduxOfflineConfiguration } from './redux-offline.configuration';
 import { configureRedux } from './redux.configuration';
 import { HttpClientModule } from '@angular/common/http';
 
+// DO NOT DELETE - BUILD FAILS IF REMOVED >:(
+import { PersonsModule } from './../../../../lib/packages/persons/persons.module';
+
 @NgModule({
   declarations: [
     AppComponent
