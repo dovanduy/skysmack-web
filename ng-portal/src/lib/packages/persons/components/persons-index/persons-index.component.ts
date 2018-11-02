@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PersonsRequests, PersonsRedux } from 'packages/persons/redux';
 
 @Component({
   selector: 'ss-persons-index',
@@ -8,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 export class PersonsIndexComponent implements OnInit {
 
   constructor(
+    public personsRequests: PersonsRequests,
+    public personsRedux: PersonsRedux
   ) { }
 
   ngOnInit() {
+    console.log(this.personsRedux, this.personsRequests);
+
   }
 
 }

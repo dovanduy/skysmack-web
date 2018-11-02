@@ -13,13 +13,13 @@ export class RecordExtensions {
 
         newRecords.forEach(newRecord => {
             const existingRecord = existingRecords.find(x => x.object.Id === newRecord.object.Id);
-                if (existingRecord) {
-                    if (existingRecord.status === LocalObjectStatus.OK) {
-                        existingRecord.object = newRecord.object;
-                    }
-                } else {
-                    existingRecords.push(newRecord);
+            if (existingRecord) {
+                if (existingRecord.status === LocalObjectStatus.OK) {
+                    existingRecord.object = newRecord.object;
                 }
+            } else {
+                existingRecords.push(newRecord);
+            }
         });
 
         return existingRecords;

@@ -1,26 +1,21 @@
 {
+  "compileOnSave": false,
   "compilerOptions": {
-    "baseUrl": "dist",
-    "target": "es6",
-    "module": "commonjs",
-    "declaration": true,
+    "baseUrl": "./",
     "outDir": "./dist",
-    "strict": true,
     "sourceMap": true,
-    "strictPropertyInitialization": false,
+    "declaration": false,
+    "module": "es2015",
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "downlevelIteration": true,
-  },
-  "include": [
-    "lib"
-  ],
-  "exclude": [
-    "node_modules",
-    "**/__tests__/*",
-  ],
-  "lib": [
-    "es2017"
-  ]
+    "target": "es5",
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "lib": [
+      "es2018",
+      "dom"
+    ]
+  }
 }

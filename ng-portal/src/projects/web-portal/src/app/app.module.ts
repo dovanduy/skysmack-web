@@ -4,54 +4,41 @@ import { NgRedux, NgReduxModule } from '@angular-redux/store';
 
 import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
-import { PersonsModule } from 'packages/persons';
+// import { PersonsModule } from 'packages/persons';
 
-import { createStore, Store, combineReducers, compose } from 'redux';
-import { createEpicMiddleware, combineEpics } from 'redux-observable';
-import { IAppState, RootEpics, rootReducer } from './redux.configuration';
+import { createStore, Store, compose, applyMiddleware } from 'redux';
+import { createEpicMiddleware } from 'redux-observable';
+import { IAppState, RootEpics, rootReducer } from './store';
 import { NgReduxRouter, NgReduxRouterModule } from '@angular-redux/router';
+import { ReduxOfflineConfiguration } from './redux-offline.configuration';
+import { configureRedux } from './redux.configuration';
+import { HttpClientModule } from '@angular/common/http';
+import { PersonsModule } from 'packages/persons';
 
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
-    BrowserModule,
+    HttpClientModule,
     RouterModule.forRoot([]),
+    BrowserModule,
     NgReduxModule,
     NgReduxRouterModule.forRoot(),
     PersonsModule
   ],
-  providers: [],
+  providers: [
+    RootEpics
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
   constructor(
     public ngRedux: NgRedux<IAppState>,
     public ngReduxRouter: NgReduxRouter,
-    public rootEpics: RootEpics
+    public rootEpics: RootEpics,
+    public reduxOfflineConfiguration: ReduxOfflineConfiguration
   ) {
-    this.configureRedux();
-  }
-
-
-  configureRedux(): any {
-    const composeEnhancers = (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-
-    const epicMiddleware = createEpicMiddleware();
-    const store: Store<any> = createStore(
-      rootReducer,
-      {},
-      composeEnhancers()
-    );
-
-    this.ngRedux.provideStore(store);
-
-    epicMiddleware.run(this.rootEpics.getEpics());
-
-    // Enable syncing of Angular router state with our Redux store.
-    if (this.ngReduxRouter) {
-      this.ngReduxRouter.initialize();
-    }
+    configureRedux(ngRedux, ngReduxRouter, reduxOfflineConfiguration, rootEpics);
   }
 }

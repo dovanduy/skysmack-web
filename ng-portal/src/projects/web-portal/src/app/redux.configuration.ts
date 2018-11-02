@@ -1,35 +1,33 @@
-import { Injectable } from '@angular/core';
-import { combineReducers } from 'redux';
-import { combineEpics } from 'redux-observable';
-import { personsReducer, PersonsState } from 'packages/persons/redux/persons-reducer';
-import { NgPersonsEpics } from 'packages/persons/redux/ng-persons-epics';
+import { NgReduxRouter } from '@angular-redux/router';
+import { NgRedux } from '@angular-redux/store';
+import { createOffline } from '@redux-offline/redux-offline';
+import { applyMiddleware, compose, createStore, DeepPartial, Store } from 'redux';
+import { createEpicMiddleware } from 'redux-observable';
+import { IAppState, rootReducer, RootEpics } from './store';
+import { ReduxOfflineConfiguration } from './redux-offline.configuration';
 
-export function rootReducer(state: any, action) {
-    let newState: any;
-    switch (action.type) {
-        default:
-            newState = state;
-            break;
+export const configureRedux = (ngRedux: NgRedux<IAppState>, ngReduxRouter: NgReduxRouter, reduxOfflineConfiguration: ReduxOfflineConfiguration, rootEpics: RootEpics) => {
+    const initialState: DeepPartial<any> = {};
+    const offlineEnhancer = createOffline(reduxOfflineConfiguration);
+    const epicMiddleware = createEpicMiddleware();
+
+    const composeEnhancers = (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
+    const store: Store<IAppState> = createStore(
+        offlineEnhancer.enhanceReducer(rootReducer),
+        initialState,
+        composeEnhancers(
+            offlineEnhancer.enhanceStore,
+            applyMiddleware(offlineEnhancer.middleware as any, epicMiddleware),
+        )
+    );
+
+    ngRedux.provideStore(store);
+
+    epicMiddleware.run(rootEpics.getEpics());
+
+    // Enable syncing of Angular router state with our Redux store.
+    if (ngReduxRouter) {
+        ngReduxRouter.initialize();
     }
-
-    return appReducer(newState, action);
-}
-
-export interface IAppState {
-    persons?: PersonsState;
-}
-
-export const appReducer = combineReducers({
-    persons: personsReducer
-});
-
-@Injectable({ providedIn: 'root' })
-export class RootEpics {
-    constructor(
-        public personsEpics: NgPersonsEpics
-    ) { }
-
-    public getEpics = () => combineEpics(
-        this.personsEpics.getEpics()
-    )
-}
+};
