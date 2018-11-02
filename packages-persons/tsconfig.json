@@ -17,5 +17,12 @@
       "es2018",
       "dom"
     ]
-  }
+  },
+  "include": [
+    "lib"
+  ],
+  "exclude": [
+    "node_modules",
+    "**/__tests__/*"
+  ]
 }
