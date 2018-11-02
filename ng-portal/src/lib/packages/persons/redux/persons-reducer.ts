@@ -20,4 +20,3 @@ export function personsReducer(state: PersonsState = PERSONS_INITIAL_STATE, acti
 // EXPERIMENTAL
 const reducerRegistry = ReducerRegistry.Instance;
 reducerRegistry.register('persons', personsReducer);
-console.log(reducerRegistry.reducers);

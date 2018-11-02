@@ -14,8 +14,6 @@ export class PersonsIndexComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log(this.personsRedux, this.personsRequests);
-
   }
 
 }
