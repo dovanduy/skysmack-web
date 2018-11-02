@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
-import { combineReducers } from 'redux';
 import { combineEpics } from 'redux-observable';
-import { personsReducer, PersonsState } from 'packages/persons/redux/persons-reducer';
 import { NgPersonsEpics } from 'packages/persons/redux/ng-persons-epics';
 import { OfflineState } from '@redux-offline/redux-offline/lib/types';
 import { ReducerRegistry } from '@skysmack/redux';
