@@ -16,5 +16,3 @@ export function personsReducer(state: PersonsState = PERSONS_INITIAL_STATE, acti
             };
     }
 }
-
-ReducerRegistry.Instance.register('persons', personsReducer);

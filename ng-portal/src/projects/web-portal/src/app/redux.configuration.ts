@@ -3,11 +3,11 @@ import { NgRedux } from '@angular-redux/store';
 import { createOffline } from '@redux-offline/redux-offline';
 import { applyMiddleware, compose, createStore, DeepPartial, Store, combineReducers } from 'redux';
 import { createEpicMiddleware } from 'redux-observable';
-import { IAppState, RootEpics } from './store';
+import { IAppState, portalReducer } from './store';
 import { ReduxOfflineConfiguration } from './redux-offline.configuration';
 import { ReducerRegistry, rootEpic } from '@skysmack/redux';
 
-export const configureRedux = (ngRedux: NgRedux<IAppState>, ngReduxRouter: NgReduxRouter, reduxOfflineConfiguration: ReduxOfflineConfiguration, rootEpics: RootEpics) => {
+export const configureRedux = (ngRedux: NgRedux<IAppState>, ngReduxRouter: NgReduxRouter, reduxOfflineConfiguration: ReduxOfflineConfiguration) => {
     const initialState: DeepPartial<any> = {};
     const offlineEnhancer = createOffline(reduxOfflineConfiguration);
     const epicMiddleware = createEpicMiddleware();
@@ -25,6 +25,7 @@ export const configureRedux = (ngRedux: NgRedux<IAppState>, ngReduxRouter: NgRed
         return combineReducers(reducers);
     };
     const reducerRegistry = ReducerRegistry.Instance;
+    reducerRegistry.register('portal', portalReducer);
     const rootReducer = combine(reducerRegistry.getReducers());
 
     const store: Store<IAppState> = createStore(

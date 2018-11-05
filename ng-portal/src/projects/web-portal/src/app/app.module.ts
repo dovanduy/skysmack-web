@@ -4,7 +4,7 @@ import { NgRedux, NgReduxModule } from '@angular-redux/store';
 
 import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
-import { IAppState, RootEpics } from './store';
+import { IAppState } from './store';
 import { NgReduxRouter, NgReduxRouterModule } from '@angular-redux/router';
 import { ReduxOfflineConfiguration } from './redux-offline.configuration';
 import { configureRedux } from './redux.configuration';
@@ -34,18 +34,15 @@ import { PersonsModule } from './../../../../lib/packages/persons/persons.module
     NgReduxModule,
     NgReduxRouterModule.forRoot()
   ],
-  providers: [
-    RootEpics,
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {
   constructor(
     public ngRedux: NgRedux<IAppState>,
     public ngReduxRouter: NgReduxRouter,
-    public rootEpics: RootEpics,
     public reduxOfflineConfiguration: ReduxOfflineConfiguration
   ) {
-    configureRedux(ngRedux, ngReduxRouter, reduxOfflineConfiguration, rootEpics);
+    configureRedux(ngRedux, ngReduxRouter, reduxOfflineConfiguration);
   }
 }

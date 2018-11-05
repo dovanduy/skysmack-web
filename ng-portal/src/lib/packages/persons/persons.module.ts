@@ -4,9 +4,9 @@ import { CommonModule } from '@angular/common';
 import { PersonsRoutingModule } from './persons-routing.module';
 import { PersonsIndexComponent } from './components/persons-index/persons-index.component';
 import { HttpClientModule } from '@angular/common/http';
-import { epic$ } from '@skysmack/redux';
-import { ActionsObservable, ofType } from '@skysmack/redux/node_modules/redux-observable';
-import { map } from 'rxjs/operators';
+import { epic$, ReducerRegistry } from '@skysmack/redux';
+import { personsReducer } from './redux/persons-reducer';
+import { NgPersonsEpics } from './redux';
 
 @NgModule({
   imports: [
@@ -19,13 +19,8 @@ import { map } from 'rxjs/operators';
   declarations: [PersonsIndexComponent]
 })
 export class PersonsModule {
-  constructor() {
-    epic$.next(testEpic);
+  constructor(ngPersonsEpics: NgPersonsEpics) {
+    ReducerRegistry.Instance.register('persons', personsReducer);
+    epic$.next(ngPersonsEpics.getEpics());
   }
 }
-
-const testEpic = (action$: ActionsObservable<any>) => action$.pipe(
-  ofType('TEST'),
-  map(() => ({ type: 'TEST_SUCCESS' }))
-);
-
