@@ -12,9 +12,7 @@ function rootReducer(state: any = {}, action) {
     }
 }
 
-// EXPERIMENTAL
-const reducerRegistry = ReducerRegistry.Instance;
-reducerRegistry.register('rootReducer', rootReducer);
+ReducerRegistry.Instance.register('rootReducer', rootReducer);
 
 export interface IAppState {
     offline?: OfflineState;
