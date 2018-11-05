@@ -35,7 +35,7 @@ import { PersonsModule } from './../../../../lib/packages/persons/persons.module
     NgReduxRouterModule.forRoot()
   ],
   providers: [
-    RootEpics
+    RootEpics,
   ],
   bootstrap: [AppComponent]
 })

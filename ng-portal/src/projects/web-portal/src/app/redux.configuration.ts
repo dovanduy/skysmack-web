@@ -5,7 +5,7 @@ import { applyMiddleware, compose, createStore, DeepPartial, Store, combineReduc
 import { createEpicMiddleware } from 'redux-observable';
 import { IAppState, RootEpics } from './store';
 import { ReduxOfflineConfiguration } from './redux-offline.configuration';
-import { ReducerRegistry } from '@skysmack/redux';
+import { ReducerRegistry, rootEpic } from '@skysmack/redux';
 
 export const configureRedux = (ngRedux: NgRedux<IAppState>, ngReduxRouter: NgReduxRouter, reduxOfflineConfiguration: ReduxOfflineConfiguration, rootEpics: RootEpics) => {
     const initialState: DeepPartial<any> = {};
@@ -14,7 +14,6 @@ export const configureRedux = (ngRedux: NgRedux<IAppState>, ngReduxRouter: NgRed
 
     const composeEnhancers = (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-    // EXPERIMENTAL
     // Preserve initial state for not-yet-loaded reducers
     const combine = (reducers) => {
         const reducerNames = Object.keys(reducers);
@@ -37,7 +36,6 @@ export const configureRedux = (ngRedux: NgRedux<IAppState>, ngReduxRouter: NgRed
         )
     );
 
-    // EXPERIMENTAL
     // Replace the store's reducer whenever a new reducer is registered.
     reducerRegistry.setChangeListener(reducers => {
         store.replaceReducer(combine(reducers));
@@ -45,7 +43,7 @@ export const configureRedux = (ngRedux: NgRedux<IAppState>, ngReduxRouter: NgRed
 
     ngRedux.provideStore(store);
 
-    epicMiddleware.run(rootEpics.getEpics());
+    epicMiddleware.run(rootEpic);
 
     // Enable syncing of Angular router state with our Redux store.
     if (ngReduxRouter) {

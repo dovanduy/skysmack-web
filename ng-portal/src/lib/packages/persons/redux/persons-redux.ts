@@ -7,4 +7,8 @@ import { NgRedux } from '@angular-redux/store';
 export class PersonsRedux extends NgRecordReduxStore<any, Person, number> {
     public stateKey = 'persons';
     constructor(protected ngRedux: NgRedux<any>) { super(ngRedux); }
+
+    public test() {
+        this.ngRedux.dispatch({ type: 'TEST' });
+    }
 }

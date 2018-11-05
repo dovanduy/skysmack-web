@@ -88,7 +88,6 @@ export class ReduxOfflineConfiguration implements Config {
                     return;
             }
 
-
             result.subscribe(response => resolve(response), error => reject(error));
         });
     }

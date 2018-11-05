@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
-import { combineEpics } from 'redux-observable';
-import { NgPersonsEpics } from 'packages/persons/redux/ng-persons-epics';
 import { OfflineState } from '@redux-offline/redux-offline/lib/types';
-import { ReducerRegistry } from '@skysmack/redux';
+import { ReducerRegistry, epic$ } from '@skysmack/redux';
 
 function rootReducer(state: any = {}, action) {
     let newState: any;
@@ -21,10 +19,10 @@ export interface IAppState {
 @Injectable()
 export class RootEpics {
     constructor(
-        public personsEpics: NgPersonsEpics
+        // public personsEpics: NgPersonsEpics
     ) { }
 
-    public getEpics = () => combineEpics(
-        this.personsEpics.getEpics()
-    )
+    // public getEpics = () => combineEpics(
+    //     this.personsEpics.getEpics()
+    // )
 }

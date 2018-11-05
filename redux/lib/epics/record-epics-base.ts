@@ -30,3 +30,4 @@ export abstract class RecordEpicsBase<TRecord extends Record<TKey>, TKey> {
         switchMap((action: GetSingleRecordAction<TKey>) => this.requests.getSingle(action))
     )
 }
+
