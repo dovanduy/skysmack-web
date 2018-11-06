@@ -1,5 +1,5 @@
 {
-  "name": "@skysmack/redux",
+  "name": "@skysmack/ng-skysmack",
   "version": "1.0.0",
   "description": "",
   "main": "./dist/index.js",
@@ -12,12 +12,19 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@redux-offline/redux-offline": "^2.5.0",
     "redux": "^4.0.1",
     "redux-observable": "^1.0.0",
-    "rxjs": "^6.3.3"
+    "rxjs": "^6.3.3",
+    "zone.js": "^0.8.26"
+  },
+  "peerDependencies": {
+    "@angular-redux/store": "^9.0.0",
+    "@angular/common": "^7.0.0",
+    "@angular/compiler": "^7.0.0",
+    "@angular/core": "^7.0.0"
   },
   "devDependencies": {
+    "npm-install-peers": "^1.2.1",
     "typescript": "^3.1.3"
   }
 }

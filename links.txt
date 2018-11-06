@@ -22,7 +22,13 @@ cd ../packages-skysmack
 npm link
 npm run build
 
+cd ../ng-skysmack
+npm link
+npm-install-peers
+npm link @skysmack/framework @skysmack/redux @skysmack/ng-redux @skysmack/packages-persons
+npm run build
+
 cd ../ng-portal
 npm link
-npm link @skysmack/framework @skysmack/redux @skysmack/ng-redux @skysmack/packages-persons
+npm link @skysmack/framework @skysmack/framework
 ng serve

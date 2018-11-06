@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({ providedIn: 'root' })
-export class PersonsRequests extends NgRecordRequests<Person, number> {
+export class NgPersonsRequests extends NgRecordRequests<Person, number> {
     protected prefix: 'persons';
     constructor(protected http: HttpClient) {
         super(http);

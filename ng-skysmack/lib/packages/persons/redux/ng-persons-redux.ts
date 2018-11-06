@@ -4,7 +4,7 @@ import { Person } from '@skysmack/packages-persons';
 import { NgRedux } from '@angular-redux/store';
 
 @Injectable({ providedIn: 'root' })
-export class PersonsRedux extends NgRecordReduxStore<any, Person, number> {
+export class NgPersonsRedux extends NgRecordReduxStore<any, Person, number> {
     public stateKey = 'persons';
     constructor(protected ngRedux: NgRedux<any>) { super(ngRedux); }
 
