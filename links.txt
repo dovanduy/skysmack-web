@@ -7,28 +7,12 @@ npm link
 npm link @skysmack/framework
 npm run build
 
-cd ../ng-redux
-npm link
-npm-install-peers
-npm link @skysmack/framework @skysmack/redux
-npm run build
-
 cd ../packages-persons
 npm link
 npm link @skysmack/framework @skysmack/redux
 npm run build
 
-cd ../packages-skysmack
-npm link
-npm run build
-
 cd ../ng-skysmack
 npm link
-npm-install-peers
-npm link @skysmack/framework @skysmack/redux @skysmack/ng-redux @skysmack/packages-persons
-npm run build
-
-cd ../ng-portal
-npm link
-npm link @skysmack/framework @skysmack/framework
+npm link @skysmack/framework @skysmack/redux @skysmack/packages-persons
 ng serve
