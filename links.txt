@@ -18,6 +18,10 @@ npm link
 npm link @skysmack/framework @skysmack/redux
 npm run build
 
+cd ../packages-skysmack
+npm link
+npm run build
+
 cd ../ng-portal
 npm link
 npm link @skysmack/framework @skysmack/redux @skysmack/ng-redux @skysmack/packages-persons
