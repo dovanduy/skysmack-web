@@ -4,7 +4,6 @@ import { NgRedux, NgReduxModule } from '@angular-redux/store';
 
 import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
-import { IAppState } from './store';
 import { NgReduxRouter, NgReduxRouterModule } from '@angular-redux/router';
 import { ReduxOfflineConfiguration } from './redux-offline.configuration';
 import { configureRedux } from './redux.configuration';
@@ -39,7 +38,7 @@ import { PersonsModule } from './../../../../lib/packages/persons/persons.module
 })
 export class AppModule {
   constructor(
-    public ngRedux: NgRedux<IAppState>,
+    public ngRedux: NgRedux<any>,
     public ngReduxRouter: NgReduxRouter,
     public reduxOfflineConfiguration: ReduxOfflineConfiguration
   ) {

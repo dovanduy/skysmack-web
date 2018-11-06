@@ -5,8 +5,8 @@ import { PersonsRoutingModule } from './persons-routing.module';
 import { PersonsIndexComponent } from './components/persons-index/persons-index.component';
 import { HttpClientModule } from '@angular/common/http';
 import { epic$, ReducerRegistry } from '@skysmack/redux';
-import { personsReducer } from './redux/persons-reducer';
-import { NgPersonsEpics } from './redux';
+import { PersonsEpics, personsReducer } from '@skysmack/packages-persons';
+import { PersonsRequests } from './redux/persons-requests';
 
 @NgModule({
   imports: [
@@ -19,8 +19,8 @@ import { NgPersonsEpics } from './redux';
   declarations: [PersonsIndexComponent]
 })
 export class PersonsModule {
-  constructor(ngPersonsEpics: NgPersonsEpics) {
+  constructor(personsRequests: PersonsRequests) {
     ReducerRegistry.Instance.register('persons', personsReducer);
-    epic$.next(ngPersonsEpics.getEpics());
+    epic$.next(new PersonsEpics(personsRequests).getEpics());
   }
 }
