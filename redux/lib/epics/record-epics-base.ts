@@ -14,17 +14,11 @@ export abstract class RecordEpicsBase<TRecord extends Record<TKey>, TKey> {
     ) {
         this.epics = combineEpics(
             this.getPagedEpic,
-            this.getSingleEpic
+            this.getSingleEpic,
         );
     }
 
     public getEpics = () => this.epics;
-
-
-    public test = (action$) => action$.pipe(
-        ofType('TEST'),
-        map((action) => ({ type: 'TEST_SUCCESS' }))
-    )
 
     public getPagedEpic = (action$: ActionsObservable<GetPagedRecordsSuccessAction<TRecord, TKey> | GetPagedRecordsFailureAction>) => action$.pipe(
         ofType(this.prefix + RecordActionsBase.GET_PAGED),

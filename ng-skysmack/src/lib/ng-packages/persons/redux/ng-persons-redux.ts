@@ -9,8 +9,4 @@ import { NgRecordReduxStore } from 'lib/ng-redux';
 export class NgPersonsRedux extends NgRecordReduxStore<any, Person, number> {
     public stateKey = 'persons';
     constructor(protected ngRedux: NgRedux<any>) { super(ngRedux); }
-
-    public test() {
-        this.ngRedux.dispatch({ type: 'TEST' });
-    }
 }

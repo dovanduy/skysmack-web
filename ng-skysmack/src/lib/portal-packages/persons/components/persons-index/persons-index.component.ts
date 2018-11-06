@@ -13,8 +13,6 @@ export class PersonsIndexComponent implements OnInit {
     public personsRedux: NgPersonsRedux,
   ) { }
 
-  ngOnInit() {
-    this.personsRedux.test();
-  }
+  ngOnInit() { }
 
 }
