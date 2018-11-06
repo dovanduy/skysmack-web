@@ -1,4 +1,4 @@
-import { CurrentTenantViewModel } from 'lib/models';
+import { CurrentTenantViewModel } from './../models/current-tenant';
 
 export class SkysmackState {
     currentTenant: CurrentTenantViewModel

@@ -1,7 +1,7 @@
-import { SkysmackRequests } from 'lib/models/skysmack-requests';
 import { combineEpics, ofType, ActionsObservable } from 'redux-observable';
 import { switchMap, map } from 'rxjs/operators';
 import { AnyAction } from 'redux';
+import { SkysmackRequests } from './../models/skysmack-requests';
 
 export class SkysmackEpics {
     protected epics: any;

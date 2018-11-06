@@ -11,6 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 // DO NOT DELETE - BUILD FAILS IF REMOVED >:(
 import { PersonsModule } from './../../../../lib/portal-packages/persons/persons.module';
+import { SkysmackModule } from './../../../../lib/portal-packages/skysmack/skysmack.module';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,10 @@ import { PersonsModule } from './../../../../lib/portal-packages/persons/persons
       {
         path: 'persons',
         loadChildren: '../../../../lib/portal-packages/persons/persons.module#PersonsModule'
+      },
+      {
+        path: 'skysmack',
+        loadChildren: '../../../../lib/portal-packages/skysmack/skysmack.module#SkysmackModule'
       },
       {
         path: '',

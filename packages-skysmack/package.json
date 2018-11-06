@@ -1,8 +1,9 @@
 {
-  "name": "packages-skysmack",
+  "name": "@skysmack/packages-skysmack",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc"
@@ -17,6 +18,6 @@
     "rxjs": "^6.3.3"
   },
   "devDependencies": {
-    "typescript": "^3.1.6"
+    "typescript": "^3.1.3"
   }
 }
