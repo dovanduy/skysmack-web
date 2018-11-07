@@ -2,31 +2,32 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { NgRedux, NgReduxModule } from '@angular-redux/store';
 
-import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
 import { NgReduxRouter, NgReduxRouterModule } from '@angular-redux/router';
-import { ReduxOfflineConfiguration } from './redux-offline.configuration';
-import { configureRedux } from './redux.configuration';
 import { HttpClientModule } from '@angular/common/http';
 
+import { StartComponent } from './components/start/start.component';
+import { ReduxOfflineConfiguration } from '../redux/redux-offline.configuration';
+import { configureRedux } from '../redux/redux.configuration';
+
 // DO NOT DELETE - BUILD FAILS IF REMOVED >:(
-import { PersonsModule } from './../../../../lib/portal-packages/persons/persons.module';
-import { SkysmackModule } from './../../../../lib/portal-packages/skysmack/skysmack.module';
+import { PersonsModule } from './../../../../../lib/portal-packages/persons/persons.module';
+import { SkysmackModule } from './../../../../../lib/portal-packages/skysmack/skysmack.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    StartComponent
   ],
   imports: [
     HttpClientModule,
     RouterModule.forRoot([
       {
         path: 'persons',
-        loadChildren: '../../../../lib/portal-packages/persons/persons.module#PersonsModule'
+        loadChildren: '../../../../../lib/portal-packages/persons/persons.module#PersonsModule'
       },
       {
         path: 'skysmack',
-        loadChildren: '../../../../lib/portal-packages/skysmack/skysmack.module#SkysmackModule'
+        loadChildren: '../../../../../lib/portal-packages/skysmack/skysmack.module#SkysmackModule'
       },
       {
         path: '',
@@ -39,9 +40,9 @@ import { SkysmackModule } from './../../../../lib/portal-packages/skysmack/skysm
     NgReduxRouterModule.forRoot()
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [StartComponent]
 })
-export class AppModule {
+export class StartModule {
   constructor(
     public ngRedux: NgRedux<any>,
     public ngReduxRouter: NgReduxRouter,
