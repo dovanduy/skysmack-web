@@ -16,7 +16,7 @@ import { NgSkysmackRequests } from './redux/ng-skysmack-requests';
 })
 export class NgSkysmackModule {
   constructor(skysmackRequests: NgSkysmackRequests) {
-    ReducerRegistry.Instance.register('skysmack', skysmackReducer);
     epic$.next(new SkysmackEpics(skysmackRequests).getEpics());
+    ReducerRegistry.Instance.register('skysmack', skysmackReducer);
   }
 }

@@ -2,12 +2,19 @@
   "name": "@skysmack/ng-skysmack",
   "version": "0.0.0",
   "scripts": {
-    "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
-    "test": "ng test",
-    "lint": "ng lint",
-    "e2e": "ng e2e"
+    "link:framework": "cd ../framework && npm link && npm run build",
+    "link:redux": "cd ../redux && npm link && npm link @skysmack/framework && npm run build",
+    "link:packages-persons": "cd ../packages-persons && npm link && npm link @skysmack/framework @skysmack/redux && npm run build",
+    "link:packages-skysmack": "cd ../packages-skysmack && npm link && npm run build",
+    "link:ng-skysmack": "npm link @skysmack/framework @skysmack/redux @skysmack/packages-persons @skysmack/packages-skysmack",
+    "ss:link": "run-s link:framework link:redux link:packages-persons link:packages-skysmack link:ng-skysmack",
+    "serve:client1": "ng serve --host client1.skysmack.test --port 4000 --disable-host-check",
+    "serve:client1:open": "ng serve --host client1.skysmack.test --port 4000 --open --disable-host-check",
+    "build:client1:dev": "ng build --prod",
+    "build:client1:prod": "ng build --prod --deploy-url //cdn.skysmack.net/",
+    "ss": "run-s ss:link serve:client1",
+    "ss:open": "run-s ss:link serve:client1:open",
+    "ss:build": "run-s build:client1:prod"
   },
   "private": true,
   "dependencies": {
@@ -46,9 +53,11 @@
     "karma-coverage-istanbul-reporter": "~2.0.1",
     "karma-jasmine": "~1.1.2",
     "karma-jasmine-html-reporter": "^0.2.2",
+    "npm-run-all": "^4.1.3",
     "protractor": "~5.4.0",
     "ts-node": "~7.0.0",
     "tslint": "~5.11.0",
-    "typescript": "~3.1.5"
+    "typescript": "~3.1.5",
+    "wait-on": "^3.2.0"
   }
 }
