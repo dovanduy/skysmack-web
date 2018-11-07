@@ -6,8 +6,9 @@ export class LocalObject<TObject> {
     public status: LocalObjectStatus = LocalObjectStatus.OK;
     public modifyType: string;
     public isNew: boolean = false;
+    public foreignKey: string;
 
-    public object: TObject;    
+    public object: TObject;
     public oldObject: TObject;
 
     public error: any;

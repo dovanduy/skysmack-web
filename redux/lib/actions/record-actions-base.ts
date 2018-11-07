@@ -21,7 +21,7 @@ export abstract class RecordActionsBase<TStateType> {
             packagePath: packagePath,
             pagedQuery: pagedQuery
         }));
-    }    
+    }
 
     public getSingle<TKey>(packagePath: string, id: TKey): GetSingleRecordAction<TKey> {
         return this.reduxStore.dispatch(new GetSingleRecordAction<TKey>({

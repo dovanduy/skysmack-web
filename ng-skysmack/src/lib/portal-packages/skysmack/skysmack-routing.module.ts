@@ -4,7 +4,7 @@ import { SkysmackIndexComponent } from './components/skysmack-index/skysmack-ind
 
 const routes: Routes = [
   {
-    path: '', component: SkysmackIndexComponent
+    path: 'skysmack', component: SkysmackIndexComponent
   }
 ];
 

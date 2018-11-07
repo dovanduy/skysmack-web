@@ -9,6 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { StartComponent } from './components/start/start.component';
 import { ReduxOfflineConfiguration } from '../redux/redux-offline.configuration';
 import { configureRedux } from '../redux/redux.configuration';
+import { applicationStartup } from './application-startup';
 
 // DO NOT DELETE - BUILD FAILS IF REMOVED >:(
 import { PersonsModule } from './../../../../../lib/portal-packages/persons/persons.module';
@@ -26,20 +27,19 @@ import { SkysmackModule } from './../../../../../lib/portal-packages/skysmack/sk
         loadChildren: '../../../../../lib/portal-packages/persons/persons.module#PersonsModule'
       },
       {
-        path: 'skysmack',
-        loadChildren: '../../../../../lib/portal-packages/skysmack/skysmack.module#SkysmackModule'
-      },
-      {
         path: '',
         redirectTo: '',
         pathMatch: 'full'
       }
     ]),
+    SkysmackModule,
     BrowserModule,
     NgReduxModule,
     NgReduxRouterModule.forRoot()
   ],
-  providers: [],
+  providers: [
+    applicationStartup
+  ],
   bootstrap: [StartComponent]
 })
 export class StartModule {
