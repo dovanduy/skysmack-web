@@ -9,7 +9,6 @@ export function configureCurrentTenant(actions: NgSkysmackActions) {
 
 export const configurations = [
     { provide: APP_INITIALIZER, useFactory: configureCurrentTenant, deps: [NgSkysmackActions], multi: true },
-    { provide: APP_INITIALIZER, useFactory: configurePackageRouting, deps: [PackageRouteConfiguration], multi: true },
 ];
 
 export const applicationStartup = [

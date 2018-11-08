@@ -18,6 +18,10 @@ export class PackageRouteConfiguration {
         return this.injector.get(Router);
     }
 
+    private routingPaths = [
+        { type: '38ffd3ad-91a8-44d4-a71a-fd2f478ebd18', path: '../../../../../lib/portal-packages/persons/persons.module#PersonsModule' }
+    ];
+
     private routingModules: DynamicPackageRouter[] = [
         // new PersonRoutingModule,
     ];
@@ -33,9 +37,9 @@ export class PackageRouteConfiguration {
                 hasValue(),
                 map((currentTenant: CurrentTenantViewModel) => {
                     currentTenant.packages.map(_package => {
-                        return this.routingModules.map(routingModule => {
-                            if (routingModule.packageManifest.id === _package.type) {
-                                this.addRoute(_package.url, routingModule.componentPaths);
+                        return this.routingPaths.map(routingPath => {
+                            if (routingPath.type === _package.type) {
+                                this.addRoute(_package.url, routingPath.path);
                             }
                         });
                     });
@@ -43,7 +47,7 @@ export class PackageRouteConfiguration {
                     currentTenant.features.map(feature => {
                         return this.routingModules.map(routingModule => {
                             if (routingModule.packageManifest.id === feature.type) {
-                                this.addRoute(feature.url, routingModule.componentPaths);
+                                // this.addRoute(feature.url, routingModule.componentPaths);
                             }
                         });
                     });
@@ -51,7 +55,7 @@ export class PackageRouteConfiguration {
                     currentTenant.adaptors.map(adaptor => {
                         return this.routingModules.map(routingModule => {
                             if (routingModule.packageManifest.id === adaptor.type) {
-                                this.addRoute(adaptor.url, routingModule.componentPaths);
+                                // this.addRoute(adaptor.url, routingModule.componentPaths);
                             }
                         });
                     });
@@ -60,7 +64,7 @@ export class PackageRouteConfiguration {
             ).subscribe();
     }
 
-    private addRoute(packageUrl: string, routes: Route[]) {
+    private addRoute(packageUrl: string, modulePath: string) {
         let match = false;
         this.router.config.forEach(route => {
             if (route.path === packageUrl) {
@@ -70,9 +74,7 @@ export class PackageRouteConfiguration {
         if (!match) {
             this.router.config.unshift({
                 path: packageUrl,
-                children: [
-                    ...routes
-                ]
+                loadChildren: modulePath
             } as Route);
         }
     }

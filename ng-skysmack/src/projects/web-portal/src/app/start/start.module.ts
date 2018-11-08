@@ -10,10 +10,10 @@ import { StartComponent } from './components/start/start.component';
 import { ReduxOfflineConfiguration } from '../redux/redux-offline.configuration';
 import { configureRedux } from '../redux/redux.configuration';
 import { applicationStartup } from './application-startup';
+import { SkysmackModule } from './../../../../../lib/portal-packages/skysmack/skysmack.module';
 
 // DO NOT DELETE - BUILD FAILS IF REMOVED >:(
 import { PersonsModule } from './../../../../../lib/portal-packages/persons/persons.module';
-import { SkysmackModule } from './../../../../../lib/portal-packages/skysmack/skysmack.module';
 
 @NgModule({
   declarations: [
