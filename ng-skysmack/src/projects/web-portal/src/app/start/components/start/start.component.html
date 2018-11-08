@@ -1,1 +1,23 @@
-<router-outlet></router-outlet>
+<ng-container *ngIf="currentTenantLoaded$ | async as currentTenantLoaded; else loading">
+    <ng-container *ngIf="currentTenantLoaded; else loading">
+        <ng-container *ngIf="currentTenant$ | async as currentTenant; else tenantNotFound">
+            <ng-container *ngIf="currentTenant != null && currentTenant.name.length > 0; else tenantNotFound">
+                <router-outlet></router-outlet>
+            </ng-container>
+        </ng-container>
+    </ng-container>
+</ng-container>
+
+
+<ng-template #tenantNotFound>
+    <div id="loading-screen">
+        Domain not found
+    </div>
+</ng-template>
+
+<ng-template #loading>
+    <div id="loading-screen">
+        <!-- <mat-spinner></mat-spinner>  -->
+        I'm the stand-in spinner!
+    </div>
+</ng-template>

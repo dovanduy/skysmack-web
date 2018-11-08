@@ -2,10 +2,12 @@ import { CurrentTenantViewModel } from './../models/current-tenant';
 
 export class SkysmackState {
     currentTenant: CurrentTenantViewModel
+    tenantLoaded: boolean;
 }
 
 const SKYSMACK_STATE: SkysmackState = {
-    currentTenant: {}
+    currentTenant: {},
+    tenantLoaded: false
 }
 
 export function skysmackReducer(state = SKYSMACK_STATE, action) {
@@ -13,7 +15,8 @@ export function skysmackReducer(state = SKYSMACK_STATE, action) {
         case 'GET_CURRENT_TENANT_SUCCESS':
             return {
                 ...state,
-                currentTenant: action.payload
+                currentTenant: action.payload,
+                tenantLoaded: true
             }
         default:
             return state;

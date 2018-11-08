@@ -29,7 +29,7 @@ export class NgSkysmackRedux {
     }
 
     public getCurrentTenantLoaded(): Observable<boolean> {
-        return this.ngRedux.select((state: any) => state.tenant.tenantLoaded);
+        return this.ngRedux.select((state: any) => state.skysmack.tenantLoaded);
     }
 
     public getPackages(): Observable<Package[]> {
