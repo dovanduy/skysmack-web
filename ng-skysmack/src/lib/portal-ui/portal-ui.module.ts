@@ -1,9 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from './material.module';
-import { ReducerRegistry } from '@skysmack/redux';
+import { ReducerRegistry, epic$ } from '@skysmack/redux';
 import { uiReducer } from './redux/ui-reducers';
 import { settingsReducer } from './redux/settings';
+import { authUserReducer } from './redux/authenticated-user/auth-user-reducer';
+import { AuthUserRequests, AuthUserEpics, AuthUserActions } from './redux';
+import { NgRedux } from '@angular-redux/store';
 
 @NgModule({
   declarations: [],
@@ -14,8 +17,14 @@ import { settingsReducer } from './redux/settings';
   exports: [MaterialModule]
 })
 export class PortalUiModule {
-  constructor() {
+  constructor(
+    protected authUserRequests: AuthUserRequests,
+    protected authUserActions: AuthUserActions,
+    protected ngRedux: NgRedux<any>
+  ) {
     ReducerRegistry.Instance.register('ui', uiReducer);
     ReducerRegistry.Instance.register('settings', settingsReducer);
+    ReducerRegistry.Instance.register('authenticatedUser', authUserReducer);
+    epic$.next(new AuthUserEpics(ngRedux, authUserActions, authUserRequests).getEpics());
   }
 }

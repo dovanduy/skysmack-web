@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { AnyAction } from 'redux';
 
 
 @Injectable({ providedIn: 'root' })
@@ -8,17 +9,17 @@ export class UIActions {
 
     constructor() { }
 
-    // public toggleMenuFor(targetMeny: string): PayloadAction<string> {
-    //     return {
-    //         type: UIActions.TOGGLE_MENU_FOR,
-    //         payload: targetMeny
-    //     };
-    // }
+    public toggleMenuFor(targetMeny: string): AnyAction {
+        return {
+            type: UIActions.TOGGLE_MENU_FOR,
+            payload: targetMeny
+        };
+    }
 
-    // public setPackageDrawerStatus(status: boolean): PayloadAction<boolean> {
-    //     return {
-    //         type: UIActions.SET_PACKAGE_DRAWER_STATUS,
-    //         payload: status
-    //     };
-    // }
+    public setPackageDrawerStatus(status: boolean): AnyAction {
+        return {
+            type: UIActions.SET_PACKAGE_DRAWER_STATUS,
+            payload: status
+        };
+    }
 }

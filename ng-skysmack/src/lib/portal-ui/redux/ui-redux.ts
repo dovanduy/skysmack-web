@@ -20,11 +20,11 @@ export class UIRedux {
         return this.ngRedux.select((state: any) => state.ui.menu);
     }
 
-    // public toggleMenuFor(targetMenuKey: string): void {
-    //     this.ngRedux.dispatch(this.actions.toggleMenuFor(targetMenuKey));
-    // }
+    public toggleMenuFor(targetMenuKey: string): void {
+        this.ngRedux.dispatch(this.actions.toggleMenuFor(targetMenuKey));
+    }
 
-    // public setPackageDrawerStatus(status): void {
-    //     this.ngRedux.dispatch(this.actions.setPackageDrawerStatus(status));
-    // }
+    public setPackageDrawerStatus(status): void {
+        this.ngRedux.dispatch(this.actions.setPackageDrawerStatus(status));
+    }
 }
