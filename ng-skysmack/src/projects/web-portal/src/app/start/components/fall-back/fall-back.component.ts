@@ -13,10 +13,8 @@ import { NgSkysmackRedux } from 'lib/ng-packages/skysmack/redux/ng-skysmack-redu
   styleUrls: ['./fall-back.component.scss']
 })
 export class FallBackComponent implements OnInit {
-
   public currentTenant$: Observable<CurrentTenantViewModel>;
   public packagesLoaded = false;
-
 
   constructor(
     // public componentPageTitle: EntityComponentPageTitle,
@@ -52,12 +50,11 @@ export class FallBackComponent implements OnInit {
     // }));
 
     // TODO: Remove this when entity base is implemented
-    this.packageRouteConfiguration.configure();
     this.currentTenant$.subscribe((tenant) => {
       if (tenant != null && tenant.name.length > 0) {
         if (this.router.onSameUrlNavigation !== 'reload') {
           this.router.onSameUrlNavigation = 'reload';
-          // this.router.navigate([this.router.url]);
+          this.router.navigate([this.router.url]);
         } else {
           this.router.onSameUrlNavigation = 'ignore';
         }

@@ -30,4 +30,5 @@ export class StartComponent implements OnInit {
     // super.ngOnInit();
     this.router.onSameUrlNavigation = 'ignore';
   }
+
 }
