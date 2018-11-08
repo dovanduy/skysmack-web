@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../environments/environment';
 import { Url } from '../models/url';
+import { IApiDomain } from '@skysmack/framework';
 
 @Injectable({ providedIn: 'root' })
-export class ApiDomain {
+export class ApiDomain implements IApiDomain {
     public domain: string;
 
     constructor() {
