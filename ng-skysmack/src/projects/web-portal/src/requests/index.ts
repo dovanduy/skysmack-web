@@ -1,1 +1,1 @@
-export * from './api-domain';
+export * from './skysmack-api-domain';

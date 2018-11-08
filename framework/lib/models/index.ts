@@ -1,5 +1,5 @@
 export * from './document-record';
-export * from './i-api-domain';
+export * from './api-domain';
 export * from './indexes';
 export * from './record';
 export * from './local-object-status';
