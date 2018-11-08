@@ -16,15 +16,17 @@ import { SkysmackModule } from './../../../../../lib/portal-packages/skysmack/sk
 import { PersonsModule } from './../../../../../lib/portal-packages/persons/persons.module';
 import { FrontPageComponent } from './components/front-page/front-page.component';
 import { FallBackComponent } from './components/fall-back/fall-back.component';
+import { NgUiModule } from 'lib';
 
 @NgModule({
   declarations: [
     StartComponent,
     FrontPageComponent,
-    FallBackComponent
+    FallBackComponent,
   ],
   imports: [
     HttpClientModule,
+    NgUiModule,
     RouterModule.forRoot([
       {
         path: 'persons',
