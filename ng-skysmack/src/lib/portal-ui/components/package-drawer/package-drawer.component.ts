@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FrameworkRedux, Package, log } from 'framework';
 import { Observable } from 'rxjs';
-import { Menu } from 'ui/models/menu';
-import { UIRedux } from 'ui/redux/ui-redux';
+import { Package } from 'lib/ng-packages/packages/package';
+import { Menu } from 'lib/portal-ui/models/menu';
+import { UIRedux } from 'lib/portal-ui/redux/ui-redux';
+import { NgSkysmackRedux } from 'lib/ng-packages/skysmack/redux/ng-skysmack-redux';
 
 @Component({
   selector: 'ss-package-drawer',
@@ -15,13 +16,13 @@ export class PackageDrawerComponent implements OnInit {
   public menu$: Observable<Menu>;
 
   constructor(
-    public frameworkRedux: FrameworkRedux,
+    public skysmackRedux: NgSkysmackRedux,
     public uiRedux: UIRedux
   ) { }
 
   ngOnInit() {
-    this.packages$ = this.frameworkRedux.getPackages();
-    this.modules$ = this.frameworkRedux.getModules();
+    this.packages$ = this.skysmackRedux.getPackages();
+    this.modules$ = this.skysmackRedux.getModules();
     this.menu$ = this.uiRedux.getMenu();
   }
 }

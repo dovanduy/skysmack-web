@@ -20,7 +20,8 @@ export class DataTableComponent implements OnDestroy, OnInit {
   /**
    * Note entities are the paged entities.
    */
-  @Input() public redux: BaseRedux;
+  // TODO: any was BaseRedux. We need a redux with .cancelAction()
+  @Input() public redux: any;
   @Input() public entities$: Observable<LocalObject<any>[]>;
   @Input() public title: string;
   @Input() public displayedColumns: string[] = [];

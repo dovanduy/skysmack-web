@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { UIRedux } from 'ui/redux/ui-redux';
-import { Menu } from 'ui/models/menu';
+import { Menu } from 'lib/portal-ui/models/menu';
+import { UIRedux } from 'lib/portal-ui/redux/ui-redux';
 
 @Component({
   selector: 'ss-online-status',

@@ -1,8 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
-import { SidebarMenu } from 'ui/models/sidebar-menu/sidebar-menu';
 import { trigger, state, style, transition, animate } from '@angular/animations';
+import { SidebarMenu } from 'lib/portal-ui/models/sidebar-menu/sidebar-menu';
 
 @Component({
   selector: 'ss-sidebar-menu',
