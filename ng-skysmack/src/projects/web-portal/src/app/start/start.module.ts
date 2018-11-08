@@ -11,12 +11,12 @@ import { ReduxOfflineConfiguration } from '../redux/redux-offline.configuration'
 import { configureRedux } from '../redux/redux.configuration';
 import { applicationStartup } from './application-startup';
 import { SkysmackModule } from './../../../../../lib/portal-packages/skysmack/skysmack.module';
+import { FrontPageComponent } from './components/front-page/front-page.component';
+import { FallBackComponent } from './components/fall-back/fall-back.component';
+import { PortalUiModule } from 'lib/portal-ui/portal-ui.module';
 
 // DO NOT DELETE - BUILD FAILS IF REMOVED >:(
 import { PersonsModule } from './../../../../../lib/portal-packages/persons/persons.module';
-import { FrontPageComponent } from './components/front-page/front-page.component';
-import { FallBackComponent } from './components/fall-back/fall-back.component';
-import { NgUiModule } from 'lib/ng-packages/ui/ng-ui.module';
 
 @NgModule({
   declarations: [
@@ -46,7 +46,7 @@ import { NgUiModule } from 'lib/ng-packages/ui/ng-ui.module';
     NgReduxModule,
     NgReduxRouterModule.forRoot(),
     SkysmackModule,
-    NgUiModule
+    PortalUiModule
   ],
   providers: [
     applicationStartup

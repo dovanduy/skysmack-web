@@ -1,0 +1,13 @@
+<h4>Daily</h4>
+
+<mat-tab-group (selectedTabChange)="resetValues($event)">
+    <mat-tab label="Frequency">
+        <ss-daily-frequency (selectedValues)="emitValues($event)"></ss-daily-frequency>
+    </mat-tab>
+    <mat-tab label="Weekday">
+        <ss-day-of-week (selectedValues)="emitValues($event)"></ss-day-of-week>
+    </mat-tab>
+    <mat-tab label="Dates">
+        <ss-dates (selectedValues)="emitValues($event)"></ss-dates>
+    </mat-tab>
+</mat-tab-group>

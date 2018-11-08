@@ -1,0 +1,9 @@
+<div class="docs-primary-header component-page-header">
+  <button mat-icon-button class="sidenav-toggle" (click)="toggleSidenav.emit()">
+    <mat-icon>menu</mat-icon>
+  </button>
+
+  <h1 focusOnNavigation>
+    <ng-container *ngIf="_componentPageTitle.show">{{ _componentPageTitle.title }}</ng-container>
+  </h1>
+</div>

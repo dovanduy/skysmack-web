@@ -1,0 +1,20 @@
+Every
+<mat-form-field>
+    <mat-select placeholder="Frequency" #dayOfWeekOption (click)="optionSelected(dayOfWeekOption.value)">
+        <mat-option value="0" selected>Every</mat-option>
+        <mat-option value="1">First</mat-option>
+        <mat-option value="2">Second</mat-option>
+        <mat-option value="3">Third</mat-option>
+        <mat-option value="4">Fourth</mat-option>
+        <mat-option value="5">Last</mat-option>
+    </mat-select>
+</mat-form-field>
+
+<ng-container *ngFor="let day of days">
+    <mat-checkbox [ngClass]="{'day-selected': lastIsSelected && daySelected}" [checked]="day.selected" (change)="setDay(day)">{{day.day}}</mat-checkbox>
+</ng-container>
+
+<ng-container *ngFor="let day of days">
+    <mat-checkbox [ngClass]="{'day-selected': lastIsSelected && !daySelected}" *ngIf="lastIsSelected" [checked]="allDay.selected"
+        (change)="setDay(allDay)">{{day.day}}</mat-checkbox>
+</ng-container>

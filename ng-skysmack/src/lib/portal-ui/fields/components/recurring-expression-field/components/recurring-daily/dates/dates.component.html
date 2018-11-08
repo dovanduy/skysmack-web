@@ -1,0 +1,29 @@
+<mat-button-toggle-group multiple>
+    <mat-button-toggle *ngFor="let date of dates.slice(0,7)" (change)="selectDate(date)">
+        {{date}}
+    </mat-button-toggle>
+</mat-button-toggle-group>
+<br />
+<mat-button-toggle-group multiple>
+    <mat-button-toggle *ngFor="let date of dates.slice(7,14)" (change)="selectDate(date)">
+        {{date}}
+    </mat-button-toggle>
+</mat-button-toggle-group>
+<br />
+<mat-button-toggle-group multiple>
+    <mat-button-toggle *ngFor="let date of dates.slice(14,21)" (change)="selectDate(date)">
+        {{date}}
+    </mat-button-toggle>
+</mat-button-toggle-group>
+<br />
+<mat-button-toggle-group multiple>
+    <mat-button-toggle *ngFor="let date of dates.slice(21,28)" (change)="selectDate(date)">
+        {{date}}
+    </mat-button-toggle>
+</mat-button-toggle-group>
+<br />
+<mat-button-toggle-group multiple>
+    <mat-button-toggle *ngFor="let date of dates.slice(28,35)" (change)="selectDate(date)">
+        {{date}}
+    </mat-button-toggle>
+</mat-button-toggle-group>

@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from './material.module';
+import { ReducerRegistry } from '@skysmack/redux';
+import { uiReducer } from './redux/ui-reducers';
 
 @NgModule({
   declarations: [],
@@ -10,4 +12,8 @@ import { MaterialModule } from './material.module';
   ],
   exports: [MaterialModule]
 })
-export class NgUiModule { }
+export class PortalUiModule {
+  constructor() {
+    ReducerRegistry.Instance.register('ui', uiReducer);
+  }
+}

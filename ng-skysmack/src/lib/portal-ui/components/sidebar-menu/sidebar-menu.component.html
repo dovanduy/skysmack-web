@@ -1,0 +1,26 @@
+<div *ngIf="sidebarMenu" class="docs-component-viewer-nav">
+  <div class="docs-component-viewer-nav-content">
+    <nav *ngFor="let menuArea of sidebarMenu.primaryMenuAreas; let last = last;">
+      <button cdkAccordionItem #panel="cdkAccordionItem" (click)="panel.toggle()" expanded="true" class="docs-nav-content-btn"
+        [attr.aria-label]="menuArea.displayName + ', section toggle'" [attr.aria-controls]="'panel-' + menuArea.id"
+        [attr.aria-expanded]="panel.expanded">
+        <mat-icon>{{panel.expanded ? 'keyboard_arrow_up' : 'keyboard_arrow_down'}}</mat-icon>
+        {{ menuArea.displayName | translate }}
+      </button>
+
+      <ul [@bodyExpansion]="panel.expanded ? 'expanded' : 'collapsed'" id="panel-{{menuArea.id}}">
+        <ng-container *ngFor="let menuItem of sidebarMenu.primaryMenuItems">
+          <ng-container *ngIf="menuItem.area === menuArea.area">
+            <li>
+              <a [routerLink]="[menuItem.url]">
+                {{ menuItem.displayName | translate }}
+              </a>
+            </li>
+          </ng-container>
+        </ng-container>
+      </ul>
+
+      <hr *ngIf="!last" />
+    </nav>
+  </div>
+</div>

@@ -1,0 +1,26 @@
+<mat-sidenav-container class="docs-component-viewer-sidenav-container" hasBackdrop="true">
+  <!-- If on small screen, menu resides in drawer -->
+  <mat-sidenav #sidenav class="docs-component-viewer-sidenav" *ngIf="isScreenSmall()" [opened]="!isScreenSmall()"
+    [mode]="isScreenSmall() ? 'over' : 'side'" [fixedInViewport]="isScreenSmall()" fixedTopGap="56">
+    <ss-sidebar-menu *ngIf="menuSidebar" [sidebarMenu]="menuSidebar">
+    </ss-sidebar-menu>
+  </mat-sidenav>
+  <ss-speed-dial-fab *ngIf="menuSidebar" [sidebarMenu]="menuSidebar"></ss-speed-dial-fab>
+  <div class="docs-component-sidenav-content">
+    <div class="docs-component-sidenav-inner-content">
+      <!-- If on large screen, menu resides to left of content -->
+      <ng-container *ngIf="menuSidebar">
+        <ss-sidebar-menu *ngIf="!isScreenSmall()" [sidebarMenu]="menuSidebar">
+        </ss-sidebar-menu>
+      </ng-container>
+      <div class="docs-component-sidenav-body-content">
+        <ss-page-header (toggleSidenav)="sidenav.toggle()"></ss-page-header>
+        <ng-content></ng-content>
+      </div>
+    </div>
+  </div>
+  <mat-sidenav #editornav class="docs-component-viewer-sidenav" mode="over" fixedInViewport="true" fixedTopGap="56"
+    position="end" opened="false" autofocus="true">
+    <router-outlet></router-outlet>
+  </mat-sidenav>
+</mat-sidenav-container>

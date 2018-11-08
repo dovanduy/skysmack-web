@@ -1,0 +1,37 @@
+<!-- TOGGLE RECURRING EXPRESSION -->
+<mat-slide-toggle (click)="toggleRepeat()">Toggle repeat</mat-slide-toggle>
+
+<ng-container [ngSwitch]="showRecurringExpression">
+  <ng-container *ngSwitchCase="true">
+
+    <ng-container [ngSwitch]="showCustom">
+
+      <!-- TOGGLE CUSTOM EXPRESSION -->
+      <mat-slide-toggle (click)="toggleCustom()">Advanced</mat-slide-toggle>
+
+      <ng-container *ngSwitchCase="false">
+        <!-- TIME -->
+        <ss-recurring-time (selectedValues)="updateExpressionWith($event)"></ss-recurring-time>
+
+        <!-- DAILY -->
+        <ss-recurring-daily (selectedValues)="updateExpressionWith($event)"></ss-recurring-daily>
+
+        <!-- WEEKLY -->
+        <ss-recurring-weekly (selectedValues)="updateExpressionWith($event)"></ss-recurring-weekly>
+
+        <!-- MONTHLY -->
+        <ss-recurring-monthly (selectedValues)="updateExpressionWith($event)"></ss-recurring-monthly>
+
+        <!-- YEARLY -->
+        <ss-recurring-yearly (selectedValues)="updateExpressionWith($event)"></ss-recurring-yearly>
+
+      </ng-container>
+
+      <ng-container *ngSwitchCase="true">
+        <!-- CUSTOMLY >:D -->
+        <ss-recurring-custom-expression (selectedValues)="updateExpressionWith($event)"></ss-recurring-custom-expression>
+      </ng-container>
+
+    </ng-container>
+  </ng-container>
+</ng-container>

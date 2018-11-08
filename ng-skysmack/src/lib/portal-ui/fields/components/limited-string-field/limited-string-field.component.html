@@ -1,0 +1,11 @@
+<ng-container [formGroup]="fh.form">
+  <ng-container [formGroupName]="field.groupName">
+    <mat-form-field>
+      <input matInput type="text" maxlength="255" [name]="field.label" [formControlName]="field.key" [placeholder]="field.placeholder | translate"
+        (blur)="focusLost()">
+      <mat-error *ngIf="fh.formErrors[field.key]">
+        {{ fh.formErrors[field.key] | translate }}
+      </mat-error>
+    </mat-form-field>
+  </ng-container>
+</ng-container>

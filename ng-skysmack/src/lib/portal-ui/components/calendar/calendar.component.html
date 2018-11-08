@@ -1,0 +1,40 @@
+<ng-template #customCellTemplate let-day="day" let-locale="locale">
+  <ng-container *ngIf="day.lodgingTypeBadges">
+    <div class="cal-cell-top">
+      <span class="total-badge" matBadge="{{ day.freeLodgingsBadge }}"></span>
+      <span class="cal-day-number">{{ day.date | calendarDate:'monthViewDayNumber':locale }}</span>
+    </div>
+    <div class="cell-totals">
+      <ng-container *ngFor="let lodgingTypeBadge of day.lodgingTypeBadges">
+        <span class="tooltip" [matTooltipPosition]="'above'" [matTooltip]="lodgingTypeBadge.type">
+          <span class="badge" *ngIf="lodgingTypeBadge.free > 0" matBadge="{{lodgingTypeBadge.free}}" matBadgeColor="accent"></span>
+        </span>
+        <span class="tooltip" [matTooltipPosition]="'above'" [matTooltip]="lodgingTypeBadge.type">
+          <span class="badge" *ngIf="lodgingTypeBadge.free === 0" matBadge="{{lodgingTypeBadge.free}}" matBadgeColor="warn"></span>
+        </span>
+      </ng-container>
+    </div>
+  </ng-container>
+</ng-template>
+
+<div [ngSwitch]="view">
+  <button mat-raised-button color="primary" mwlCalendarPreviousView [view]="view" [(viewDate)]="viewDate">
+    Previous
+  </button>
+  <button mat-raised-button color="primary" mwlCalendarToday [(viewDate)]="viewDate">
+    Today
+  </button>
+  <button mat-raised-button color="primary" mwlCalendarNextView [view]="view" [(viewDate)]="viewDate">
+    Next
+  </button>
+
+  <h3>{{ viewDate | calendarDate:(view + 'ViewTitle'):'en' }}</h3>
+
+  <mwl-calendar-month-view *ngSwitchCase="'month'" [viewDate]="viewDate" [events]="events" (dayClicked)="viewDate = $event.day.date;"
+    (beforeViewRender)="beforeMonthViewRender($event)" [cellTemplate]="customCellTemplate">
+  </mwl-calendar-month-view>
+  <mwl-calendar-week-view *ngSwitchCase="'week'" [viewDate]="viewDate" [events]="events" (dayHeaderClicked)="viewDate = $event.day.date; view = 'day';">
+  </mwl-calendar-week-view>
+  <mwl-calendar-day-view *ngSwitchCase="'day'" [viewDate]="viewDate" [events]="events">
+  </mwl-calendar-day-view>
+</div>

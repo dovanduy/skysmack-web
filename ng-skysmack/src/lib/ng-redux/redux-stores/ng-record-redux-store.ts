@@ -1,9 +1,9 @@
-import { Record, StrIndex, LocalPageTypes, LocalObject } from "@skysmack/framework";
-import { RecordReduxStore, RecordState } from "@skysmack/redux";
+import { Record, StrIndex, LocalPageTypes, LocalObject } from '@skysmack/framework';
+import { RecordReduxStore, RecordState } from '@skysmack/redux';
 import { Observable } from 'rxjs';
 import { NgRedux } from '@angular-redux/store';
 import { PathSelector } from '@angular-redux/store';
-import { filter } from "rxjs/operators";
+import { filter } from 'rxjs/operators';
 
 export abstract class NgRecordReduxStore<TState, TRecord extends Record<TKey>, TKey> implements RecordReduxStore<TRecord, TKey>  {
     public abstract stateKey: string;

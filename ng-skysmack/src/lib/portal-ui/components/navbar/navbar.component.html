@@ -1,0 +1,68 @@
+<!-- TODO: figure out if the <nav> should go inside of a <header> element. -->
+<nav *ngIf="currentTenant | async as currentTenant" class="docs-navbar-header">
+  <a mat-button class="docs-button" routerLink="/" (click)="uiRedux.setPackageDrawerStatus(false)" aria-label="Skysmack">
+    <span>{{ currentTenant.name }}</span>
+  </a>
+
+  <!-- APP DRAWER -->
+  <a mat-icon-button (click)="uiRedux.toggleMenuFor('drawer')" title="{{ 'UI.TOP_BAR.PACKAGES'| translate}}">
+    <mat-icon aria-label="Open packages">apps</mat-icon>
+  </a>
+
+  <div class="flex-spacer"></div>
+
+  <!-- ONLINE STATUS -->
+  <ss-online-status></ss-online-status>
+
+  <!-- SEARCH -->
+  <button mat-icon-button (click)="uiRedux.toggleMenuFor('search')" *isAuthenticated>
+    <mat-icon>search</mat-icon>
+  </button>
+  <div id="app-drawer" *ngIf="menu|async as menu" [ngClass]="{ 'open' : menu.search }">
+    <fieldset class="field-container">
+      <input type="text" placeholder="Search..." class="field" />
+    </fieldset>
+  </div>
+
+  <!-- CHAT -->
+  <ng-container *isAuthenticated>
+    <button mat-icon-button [matMenuTriggerFor]="chatMenu">
+      <mat-icon aria-label="Open chat">chat</mat-icon>
+    </button>
+    <mat-menu overlapTrigger="false" #chatMenu="matMenu">
+      <span [translate]="'UI.TOP_BAR.NO_CONVER'"></span>
+    </mat-menu>
+  </ng-container>
+
+  <!-- NOTIFICATIONS -->
+  <ng-container *isAuthenticated>
+    <button mat-icon-button [matMenuTriggerFor]="notificationsMenu">
+      <mat-icon>notifications</mat-icon>
+    </button>
+    <mat-menu overlapTrigger="false" #notificationsMenu="matMenu">
+      <span [translate]="'UI.TOP_BAR.NO_NOTI'"></span>
+    </mat-menu>
+  </ng-container>
+
+  <!-- LANGUAGE -->
+  <ss-language-select></ss-language-select>
+
+  <!-- LOGIN -->
+  <a mat-icon-button title="Account Menu" [routerLink]="['login']" (click)="uiRedux.setPackageDrawerStatus(false)" *isAnonymous>
+    <mat-icon aria-label="Log in">account_circle</mat-icon>
+  </a>
+
+  <!-- ACCOUNT -->
+  <ng-container *isAuthenticated>
+    <button mat-icon-button [matMenuTriggerFor]="accountMenu">
+      <mat-icon>account_circle</mat-icon>
+    </button>
+    <mat-menu overlapTrigger="false" #accountMenu="matMenu">
+      <button mat-menu-item [routerLink]="['/account/edit']">{{ 'UI.TOP_BAR.ACC_SET'| translate}}</button>
+      <button mat-menu-item [routerLink]="['/change-password']">{{ 'UI.TOP_BAR.CHAN_PASS'| translate}}</button>
+      <button mat-menu-item class="non-anchor" (click)="authUserRedux.logout()" [routerLink]="['/']">{{ 'UI.TOP_BAR.LOG_OUT'| translate }}</button>
+    </mat-menu>
+  </ng-container>
+</nav>
+
+<ss-package-drawer></ss-package-drawer>

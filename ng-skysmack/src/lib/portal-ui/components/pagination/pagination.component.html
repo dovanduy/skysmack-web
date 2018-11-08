@@ -1,0 +1,10 @@
+<mat-paginator [length]="totalCount" [pageSize]="50"></mat-paginator>
+
+<!-- style="border-bottom: 1px solid #dfdfdf; text-align: center; line-height: 2em" -->
+<div inViewport (inViewportAction)="emitOnIntersection($event)">
+  <!-- <span style="position: relative;top:1em;background-color:#fff;margin:0 auto;padding:0 2rem;color:#dfdfdf">
+    <ng-container *ngIf="loadingState === 0">{{ 'PAGINATION.READY' | translate}}</ng-container>
+    <ng-container *ngIf="loadingState === 1">{{ 'PAGINATION.LOADING' | translate}}</ng-container>
+    <ng-container *ngIf="loadingState === 2">{{ 'PAGINATION.END_OF_PAGE' | translate}}</ng-container>
+  </span> -->
+</div>

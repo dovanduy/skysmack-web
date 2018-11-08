@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { NgRedux } from '@angular-redux/store';
-import { map } from 'rxjs/operators';
+import { map, filter } from 'rxjs/operators';
 import { Observable } from 'rxjs';
-import { LocalObject, toLocalObject, defined } from '@skysmack/framework';
+import { LocalObject, toLocalObject, defined, flatten, safeHasValue } from '@skysmack/framework';
 import { CurrentTenantViewModel, InstalledPackageViewModel } from '@skysmack/packages-skysmack';
 import { PackageLoader, Package } from 'lib/ng-packages/packages';
 
@@ -30,6 +30,10 @@ export class NgSkysmackRedux {
 
     public getCurrentTenantLoaded(): Observable<boolean> {
         return this.ngRedux.select((state: any) => state.skysmack.tenantLoaded);
+    }
+
+    public getCurrentPackage(path): Observable<Package> {
+        return this.ngRedux.select((state: any) => state.skysmack.currentTenant.packages).pipe(flatten(), filter(installedPackage => installedPackage.url === path), map(_package => PackageLoader.toPackage(_package)), safeHasValue());
     }
 
     public getPackages(): Observable<Package[]> {

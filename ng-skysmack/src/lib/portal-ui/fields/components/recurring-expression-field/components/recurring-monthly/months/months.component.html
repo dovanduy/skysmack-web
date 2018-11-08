@@ -1,0 +1,7 @@
+<ng-container *ngFor="let month of months">
+    <mat-checkbox [ngClass]="{'day-selected': lastIsSelected && daySelected}" (click)="selectMonth(month)">{{month.month}}</mat-checkbox>
+</ng-container>
+<br/>
+<small>
+    Select specific months of the calendar.
+</small>

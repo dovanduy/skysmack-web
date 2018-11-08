@@ -1,0 +1,61 @@
+<div class="mat-elevation-z8" *ngIf="dataSource$ | async as dataSource">
+
+  <table mat-table [dataSource]="dataSource" matSort multiTemplateDataRows>
+    <ng-container *ngFor="let column of displayedColumns">
+      <ng-container [matColumnDef]="column">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> {{ column }} </th>
+        <td mat-cell *matCellDef="let entity"> {{ entity.object[column] }}</td>
+      </ng-container>
+    </ng-container>
+
+    <!-- Action Column -->
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef> </th>
+      <td mat-cell *matCellDef="let entity" style="text-align: right">
+        <!-- OK OR ERROR -->
+        <ng-container *ngIf="entity.status === 'OK' || entity.status === 'ERROR'">
+          <button mat-icon-button [matMenuTriggerFor]="menu">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+          <mat-menu #menu="matMenu">
+            <ng-container *ngFor="let entityAction of entityActions">
+              <a *ngIf="entityAction.isActionEvent" showEntityAction [entityAction]="entityAction" [entity]="entity"
+                mat-menu-item (click)="entityActionEvent.emit({ action: entityAction.action, value: entity, _this: entityAction._this })">
+                <i class="material-icons">{{ entityAction.icon }}</i> <span class="icon-text">{{
+                  entityAction.displayName }}</span>
+              </a>
+              <a *ngIf="!entityAction.isActionEvent" mat-menu-item [routerLink]="[entityAction.url, entity.object.id ? entity.object.id : entity.object.key]">
+                <i class="material-icons">{{ entityAction.icon }}</i> <span class="icon-text">{{
+                  entityAction.displayName }}</span>
+              </a>
+            </ng-container>
+            <a *ngIf="showDelete" color="warn" mat-menu-item (click)="deleteEntity(entity);">
+              <i class="material-icons">delete</i>
+            </a>
+          </mat-menu>
+        </ng-container>
+
+        <a *ngIf="entity.status !== 'OK' && entity.status !== 'ERROR'" mat-icon-button (click)="cancelAction(entity);">
+          <i class="material-icons">undo</i>
+        </a>
+      </td>
+    </ng-container>
+
+    <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
+    <ng-container matColumnDef="loadingDetail">
+      <td mat-cell *matCellDef="let entity" [attr.colspan]="allColumns.length">
+        <div *ngIf="entity.status !== 'OK' && entity.status !== 'ERROR'">
+          <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+        </div>
+      </td>
+    </ng-container>
+
+
+    <tr mat-header-row *matHeaderRowDef="allColumns; sticky: true"></tr>
+
+    <tr mat-row *matRowDef="let entity; columns: allColumns;" class="entity-row" [class.row-is-loading]="entity.status !== 'OK' && entity.status !== 'ERROR'"
+      [class.row-is-success]="entity.isNew" [class.row-is-error]="entity.status === 'ERROR'"></tr>
+    <tr mat-row *matRowDef="let row; columns: ['loadingDetail']" class="loading-row"></tr>
+  </table>
+  <ng-content></ng-content>
+</div>

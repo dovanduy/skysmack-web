@@ -1,0 +1,10 @@
+<h4>Monthly</h4>
+
+<mat-tab-group (selectedTabChange)="resetValues()">
+    <mat-tab label="Frequency">
+        <ss-monthly-frequency (selectedValues)="emitValues($event)"></ss-monthly-frequency>
+    </mat-tab>
+    <mat-tab label="Months">
+        <ss-months (selectedValues)="emitValues($event)"></ss-months>
+    </mat-tab>
+</mat-tab-group>

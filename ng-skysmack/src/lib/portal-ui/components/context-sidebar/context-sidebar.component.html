@@ -1,0 +1,23 @@
+<div id="app-menu-v">
+    <div class="view-container clearfix">
+        <div class="view view-main">
+            <div id="item-selector" class="dropdown-block" [ngClass]="{ ' dp-open': this.dropDown}">
+                <a class="dp-btn" title="Show Rosters" (click)="toggleDropDown()">
+                    <i class="dp-icon material-icons">list</i> Item 1
+                    <i class="dp-arrow material-icons">keyboard_arrow_down</i>
+                </a>
+                <ul class="dp-item-group">
+                    <li class="dp-item">
+                        <a>Item 2</a>
+                    </li>
+                    <li class="dp-item">
+                        <a>Item 3</a>
+                    </li>
+                </ul>
+            </div>
+            <div id="menu-container">
+                <ng-content></ng-content>
+            </div>
+        </div>
+    </div>
+</div>

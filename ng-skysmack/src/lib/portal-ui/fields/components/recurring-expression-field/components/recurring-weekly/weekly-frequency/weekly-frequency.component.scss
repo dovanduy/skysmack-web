@@ -1,0 +1,206 @@
+//Colors to be changed to variables
+label {
+    color: #555;
+    input {
+        border-color: #e8e9ea;
+    }
+}
+
+.container {
+    //width: 500px;
+    min-width: 400px;
+    padding-top: 4rem;
+    margin: 0 auto;
+}
+
+.form-check-label {
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.text-muted {
+    display: inline-block;
+}
+
+//Custom navtabs
+.nav-tabs>li.nav-item>a.nav-link {
+    //  border: none;
+    border-top: none;
+    border-left: none;
+    border-right: none; //border-bottom: transparent 1px solid;
+    border-width: 0px;
+    background-color: transparent;
+    &:hover {
+        border-bottom: #bbb 1px solid; // color: green;
+    }
+}
+
+.nav-tabs>li.nav-item>a.nav-link.active {
+    border-bottom-color: #222;
+}
+
+//Custom cards
+#temp-navs {
+    margin-left: 240px;
+}
+
+#temp-card-header {
+    background-color: transparent !important;
+}
+
+// .border-light {
+//     border-color: #e8e9ea !important;
+// }
+.card-header {
+    display: flex;
+    background-color: rgba(230, 228, 228, 0.19);
+    border-bottom: none; //   background-color: transparent;
+    .card-title {
+        font-size: 1.30rem;
+        line-height: normal;
+        margin-bottom: 0;
+        margin-top: .3rem;
+    }
+    .card-nav {
+        line-height: normal;
+        width: stretch;
+    }
+}
+
+.card {
+    margin: 1rem 0;
+}
+
+//Custom inputs, to be moved in custom forms.scss or utility. when applied, wrapper needs form-inline
+.middle-input {
+    margin: .6rem;
+    height: 1.3vw;
+    width: 8vw;
+    border-radius: 0;
+    border-top: none;
+    border-left: none;
+    border-right: none; // &:focus {
+    //     border: 1px solid rgba(0, 0, 0, 0.15);
+    //     border: red;
+    // }
+}
+
+.line-input {
+    width: 7vw;
+    margin: .5rem auto;
+}
+
+#time-input {
+    width: 9vw;
+    margin: .5rem 1rem;
+    .form-control {
+        padding: 0.3em 0.4rem; //    color: Red;
+    }
+}
+
+.form-group-box {
+    width: 100%;
+    min-width: 300px;
+    margin: .5rem auto;
+}
+
+.form-group {
+    margin: .5rem auto;
+}
+
+.calendar-wrapper {
+    display: inline-block;
+}
+
+.calendar-body {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.calendar-main {
+    width: 88%;
+    height: 150px;
+    float: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+label {
+    .badge {
+        font-weight: 400;
+        font-family: 'Catamaran', 'sans-serif';
+        transition: .3s ease;
+        padding: .22rem .38rem;
+        cursor: pointer;
+        &:hover {
+            color: #111;
+            text-decoration: none;
+            background-color: #dae0e5;
+        }
+    }
+    .custom-control-input:checked~span {
+        color: #fff;
+        background-color: #343a40;
+        &:hover {
+            color: #fff;
+            text-decoration: none;
+            background-color: #1d2124;
+        }
+    }
+}
+
+.form-inline {
+    .badge {
+        margin: .2rem .2rem;
+    }
+}
+
+.calendar-dates {
+    height: 150px;
+    width: 100%;
+    float: left;
+    label {
+        display: block;
+        margin: 0;
+        span {
+            float: left;
+            height: 26px;
+            width: 12.6%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: #f8f9fa;
+            color: #444;
+            font-size: .79rem;
+            font-weight: 300;
+            font-family: 'Catamaran', 'sans-serif';
+            transition: .3s ease;
+            border-radius: 30%;
+            border: 1.5px solid white;
+            cursor: pointer;
+            &:hover {
+                // border: 0.5px solid white;
+                // background: #555;
+                // color: white;
+                color: #111;
+                text-decoration: none;
+                background-color: #dae0e5;
+            }
+        }
+        .custom-control-input:checked~span {
+            border: 1px solid white;
+            color: #fff;
+            background-color: #343a40;
+            &:hover {
+                color: #fff;
+                text-decoration: none;
+                background-color: #1d2124;
+            }
+        }
+    }
+}

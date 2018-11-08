@@ -1,0 +1,11 @@
+<ng-container [formGroup]="fh.form">
+  <ng-container [formGroupName]="field.groupName">
+    <mat-form-field>
+      <input matInput #timeInput type="time" [formControlName]="field.key" [placeholder]="field.placeholder | translate"
+        [name]="field.label">
+      <mat-error *ngIf="fh.formErrors[field.key]">
+        {{ fh.formErrors[field.key] | translate }}
+      </mat-error>
+    </mat-form-field>
+  </ng-container>
+</ng-container>
