@@ -6,6 +6,7 @@ import { createEpicMiddleware } from 'redux-observable';
 import { ReduxOfflineConfiguration } from './redux-offline.configuration';
 import { ReducerRegistry, rootEpic } from '@skysmack/redux';
 import { portalReducer } from './portal-reducer';
+import { hydratedReducer } from './hydrated-reducer';
 
 export const configureRedux = (ngRedux: NgRedux<any>, ngReduxRouter: NgReduxRouter, reduxOfflineConfiguration: ReduxOfflineConfiguration) => {
     const initialState: DeepPartial<any> = {};
@@ -26,6 +27,7 @@ export const configureRedux = (ngRedux: NgRedux<any>, ngReduxRouter: NgReduxRout
     };
     const reducerRegistry = ReducerRegistry.Instance;
     reducerRegistry.register('portal', portalReducer);
+    reducerRegistry.register('hydrated', hydratedReducer);
     const rootReducer = combine(reducerRegistry.getReducers());
 
     const store: Store<any> = createStore(

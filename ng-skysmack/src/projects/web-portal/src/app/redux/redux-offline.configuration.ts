@@ -7,6 +7,7 @@ import { AnyAction } from 'redux';
 import { createTransform } from 'redux-persist';
 import { Observable } from 'rxjs';
 import { share, take } from 'rxjs/operators';
+import { TOOGLE_HYDRATED } from './hydrated-reducer';
 
 // See https://github.com/redux-offline/redux-offline#configuration
 @Injectable({ providedIn: 'root' })
@@ -66,6 +67,7 @@ export class ReduxOfflineConfiguration implements Config {
 
     public persistCallback = (callback?: any) => {
         this.hydrated = true;
+        this.ngRedux.dispatch({ type: TOOGLE_HYDRATED, payload: true });
     }
 
     public effect = (effect: any, action: AnyAction): Promise<any> => {
