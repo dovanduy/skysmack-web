@@ -7,7 +7,7 @@
       "root": "src/projects/web-portal/",
       "sourceRoot": "src/projects/web-portal/src",
       "projectType": "application",
-      "prefix": "app",
+      "prefix": "ss",
       "schematics": {
         "@schematics/angular:component": {
           "styleext": "scss"

@@ -14,10 +14,12 @@ import { SkysmackModule } from './../../../../../lib/portal-packages/skysmack/sk
 
 // DO NOT DELETE - BUILD FAILS IF REMOVED >:(
 import { PersonsModule } from './../../../../../lib/portal-packages/persons/persons.module';
+import { FrontPageComponent } from './components/front-page/front-page.component';
 
 @NgModule({
   declarations: [
-    StartComponent
+    StartComponent,
+    FrontPageComponent
   ],
   imports: [
     HttpClientModule,
@@ -28,6 +30,7 @@ import { PersonsModule } from './../../../../../lib/portal-packages/persons/pers
       },
       {
         path: '',
+        component: FrontPageComponent,
         redirectTo: '',
         pathMatch: 'full'
       }
