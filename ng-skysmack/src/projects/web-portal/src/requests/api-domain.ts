@@ -4,8 +4,13 @@ import { Url } from '../models/url';
 
 @Injectable({ providedIn: 'root' })
 export class ApiDomain {
+    public domain: string;
 
-    public getApiDomain(): string {
+    constructor() {
+        this.domain = this.getApiDomain();
+    }
+
+    private getApiDomain(): string {
         let apiDomain = '';
 
         const localProdClient = 'localhost:3000';

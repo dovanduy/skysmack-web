@@ -3,17 +3,20 @@ import { HttpClient } from '@angular/common/http';
 import { SkysmackRequests, CurrentTenantViewModel, SkysmackActions, GetCurrentTenantSuccessAction } from '@skysmack/packages-skysmack';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { ApiDomain } from 'projects/web-portal/src/requests/api-domain';
 
 @Injectable({
     providedIn: 'root',
 })
 export class NgSkysmackRequests implements SkysmackRequests {
     protected prefix: 'skysmack';
-    constructor(protected http: HttpClient) { }
+    constructor(
+        protected http: HttpClient,
+        protected apiDomain: ApiDomain
+    ) { }
 
     public get(): Observable<GetCurrentTenantSuccessAction> {
-        // TODO: Get url via api-domain injectable.
-        return this.http.get<CurrentTenantViewModel>('http://client1.skysmack-io.test:2000/tenant', { observe: 'response' }).pipe(
+        return this.http.get<CurrentTenantViewModel>(this.apiDomain.domain + '/tenant', { observe: 'response' }).pipe(
             map(response => Object.assign({}, new GetCurrentTenantSuccessAction({
                 type: SkysmackActions.GET_CURRENT_TENANT_SUCCESS,
                 payload: response.body
