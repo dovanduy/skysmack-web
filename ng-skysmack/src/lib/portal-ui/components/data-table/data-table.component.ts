@@ -1,10 +1,12 @@
 import { Component, OnInit, ViewChild, Input, OnDestroy, Output, EventEmitter } from '@angular/core';
 import { MatSort, MatPaginator, MatTableDataSource } from '@angular/material';
-import { LocalObject, SubscriptionHandler, EntityComponentPageTitle, BaseRedux, EntityAction } from 'framework';
 import { Observable, of } from 'rxjs';
-import { EditorNavService } from 'ui/components/container/editor-nav.service';
-import { MenuItem } from 'ui/models/sidebar-menu/menu-item';
 import { map } from 'rxjs/operators';
+import { LocalObject, SubscriptionHandler } from '@skysmack/framework';
+import { MenuItem } from 'lib/portal-ui/models/sidebar-menu/menu-item';
+import { EditorNavService } from '../container/editor-nav.service';
+import { EntityAction } from 'lib/portal-ui/models/entity-action';
+import { EntityComponentPageTitle } from 'lib/portal-ui/models/entity-component-page-title';
 
 @Component({
   selector: 'ss-data-table',

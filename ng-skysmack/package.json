@@ -36,6 +36,7 @@
     "@angular/platform-browser": "^7.0.2",
     "@angular/platform-browser-dynamic": "^7.0.2",
     "@angular/router": "^7.0.2",
+    "@ngx-translate/core": "^11.0.0",
     "@redux-offline/redux-offline": "^2.4.0",
     "angular-calendar": "^0.26.4",
     "core-js": "^2.5.4",
