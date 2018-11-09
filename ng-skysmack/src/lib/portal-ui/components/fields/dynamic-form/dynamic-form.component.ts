@@ -1,8 +1,10 @@
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { environment } from 'environments/environment';
-import { Field, FormHelper, FormRule, EntityValidation } from 'framework';
 import { SubscriptionLike } from 'rxjs';
+import { Field } from 'lib/portal-ui/fields/field';
+import { FormRule } from 'lib/portal-ui/forms/form-rule';
+import { EntityValidation } from 'lib/portal-ui/forms/entity-validation';
+import { FormHelper } from 'lib/portal-ui/forms/form-helper';
 
 @Component({
   selector: 'ss-dynamic-form',
@@ -16,7 +18,6 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
   @Input() public validation: EntityValidation;
   @Input() public buttonText = 'Submit';
 
-  public production = environment.production;
   public fh: FormHelper;
 
   public subscription: SubscriptionLike;

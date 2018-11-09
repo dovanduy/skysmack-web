@@ -1,4 +1,4 @@
-import { ExpressionValues } from 'ui/fields/components/recurring-expression-field/models/expression-values';
+import { ExpressionValues } from '../../models/expression-values';
 import { Component } from '@angular/core';
 
 @Component({

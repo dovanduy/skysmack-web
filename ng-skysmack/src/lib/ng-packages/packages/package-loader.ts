@@ -4,7 +4,7 @@ import { Package } from './package';
 import { InstalledPackageViewModel } from '@skysmack/packages-skysmack';
 
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class PackageLoader {
     public static packageManifests: PackageManifest[] = [];
     private packageManifests: PackageManifest[] = [];

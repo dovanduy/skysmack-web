@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FieldBaseComponent } from 'framework';
+import { FieldBaseComponent } from 'lib/portal-ui/fields/field-base-component';
 import * as moment from 'moment';
 import { DateAdapter } from '@angular/material';
-import { DateOnlyAdapter } from 'ui/fields/components/date-field/date-only-adapter';
+import { DateOnlyAdapter } from './date-only-adapter';
 
 @Component({
   selector: 'ss-date-field',

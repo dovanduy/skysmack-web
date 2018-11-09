@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { RecurringMonth } from 'ui/fields/components/recurring-expression-field/models/recurring-month';
-import { RecurringMonths } from 'ui/fields/components/recurring-expression-field/models/recurring-months';
-import { ExpressionValues } from 'ui/fields/components/recurring-expression-field/models';
+import { ExpressionValues } from '../../../models/expression-values';
+import { RecurringMonth, RecurringMonths } from 'lib/portal-ui/components/fields';
 
 @Component({
   selector: 'ss-months',

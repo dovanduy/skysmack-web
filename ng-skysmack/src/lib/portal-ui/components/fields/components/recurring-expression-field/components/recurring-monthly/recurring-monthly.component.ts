@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ExpressionValues } from 'ui/fields/components/recurring-expression-field/models/expression-values';
+import { ExpressionValues } from '../../models/expression-values';
 
 @Component({
   selector: 'ss-recurring-monthly',

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { DayOfWeek } from 'ui/fields/components/recurring-expression-field/models/day-of-week';
-import { DaysOfWeek } from 'ui/fields/components/recurring-expression-field/models/days-of-week';
-import { ExpressionValues } from 'ui/fields/components/recurring-expression-field/models';
+import { ExpressionValues } from '../../../models/expression-values';
+import { DayOfWeek, DaysOfWeek } from 'lib/portal-ui/components/fields';
 
 @Component({
   selector: 'ss-day-of-week',

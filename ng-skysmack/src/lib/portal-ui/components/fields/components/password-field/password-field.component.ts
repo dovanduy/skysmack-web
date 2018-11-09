@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FieldBaseComponent } from 'framework';
+import { FieldBaseComponent } from 'lib/portal-ui/fields/field-base-component';
 
 @Component({
   selector: 'ss-password-field',

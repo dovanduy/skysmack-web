@@ -1,8 +1,8 @@
 import { Component, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
-import { FieldBaseComponent } from 'framework/fields/field-base-component';
-import { DateTimeAdapter } from 'ui/fields/components/date-time-field/date-time-adapter';
 import { DateAdapter } from '@angular/material';
 import { combineLatest, of, fromEvent } from 'rxjs';
+import { FieldBaseComponent } from 'lib/portal-ui/fields/field-base-component';
+import { DateTimeAdapter } from './date-time-adapter';
 
 @Component({
   selector: 'ss-date-time-field',

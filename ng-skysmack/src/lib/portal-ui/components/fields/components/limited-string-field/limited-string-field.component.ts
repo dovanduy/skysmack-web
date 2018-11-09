@@ -1,6 +1,6 @@
 import { animate, style, transition, trigger } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
-import { FieldBaseComponent } from 'framework';
+import { FieldBaseComponent } from 'lib/portal-ui/fields/field-base-component';
 
 @Component({
   selector: 'ss-limited-string-field',
