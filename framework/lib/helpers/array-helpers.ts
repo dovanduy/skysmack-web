@@ -1,8 +1,8 @@
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { getProperty } from './framework.helpers';
-import { LocalObject } from 'lib/models/local-object';
-import { LocalObjectStatus } from 'lib/models/local-object-status';
+import { LocalObject } from './../models/local-object';
+import { LocalObjectStatus } from './../models/local-object-status';
 
 export class ArrayHelpers {
     /**

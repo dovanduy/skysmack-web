@@ -1,4 +1,4 @@
-import { StrIndex } from 'lib/models';
+import { StrIndex } from './../models';
 import { getProperty } from './framework.helpers';
 import { ArrayHelpers } from './array-helpers';
 

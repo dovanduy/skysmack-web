@@ -1,4 +1,4 @@
-import { StrIndex } from 'lib/models';
+import { StrIndex } from './../models/indexes';
 
 export class EnumHelpers {
     /**
