@@ -1,5 +1,4 @@
 import { SkysmackActions } from '@skysmack/packages-skysmack';
-import { Store } from 'redux';
 import { Injectable } from '@angular/core';
 import { NgRedux } from '@angular-redux/store';
 

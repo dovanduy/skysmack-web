@@ -25,6 +25,7 @@ export class PortalUiModule {
     ReducerRegistry.Instance.register('ui', uiReducer);
     ReducerRegistry.Instance.register('settings', settingsReducer);
     ReducerRegistry.Instance.register('authenticatedUser', authUserReducer);
+    // START HERE: FIX DYNAMIC EPIC INJECTION
     epic$.next(new AuthUserEpics(ngRedux, authUserActions, authUserRequests).getEpics());
   }
 }
