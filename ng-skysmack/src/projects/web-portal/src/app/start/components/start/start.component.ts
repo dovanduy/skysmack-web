@@ -2,7 +2,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Observable } from 'rxjs';
 import { CurrentTenantViewModel } from '@skysmack/packages-skysmack';
 import { Router } from '@angular/router';
-import { NgSkysmackRedux } from 'lib/ng-packages/skysmack/redux/ng-skysmack-redux';
+import { NgSkysmackRedux } from './../../../../../../../lib/ng-packages/skysmack/redux/ng-skysmack-redux';
 import { PackageRouteConfiguration } from '../../../package-route-configuration';
 
 @Component({

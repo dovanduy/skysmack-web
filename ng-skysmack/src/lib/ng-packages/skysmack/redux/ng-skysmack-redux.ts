@@ -4,11 +4,10 @@ import { map, filter } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { LocalObject, toLocalObject, defined, flatten, safeHasValue } from '@skysmack/framework';
 import { CurrentTenantViewModel, InstalledPackageViewModel } from '@skysmack/packages-skysmack';
-import { PackageLoader, Package } from 'lib/ng-packages/packages';
+import { PackageLoader } from './../../../ng-packages/packages/package-loader';
+import { Package } from './../../../ng-packages/packages/package';
 
-@Injectable({
-    providedIn: 'root',
-})
+@Injectable({ providedIn: 'root' })
 export class NgSkysmackRedux {
     public stateKey = 'skysmack';
     constructor(protected ngRedux: NgRedux<any>) { }
@@ -37,7 +36,14 @@ export class NgSkysmackRedux {
     }
 
     public getPackages(): Observable<Package[]> {
-        return this.ngRedux.select((state: any) => state.skysmack.currentTenant.packages).pipe(defined(), map(packages => packages.map(_package => PackageLoader.toPackage(_package))));
+        return this.getCurrentTenant().pipe(
+            map(currentTenant => [
+                ...currentTenant.packages,
+                ...currentTenant.features,
+                ...currentTenant.adaptors
+            ]),
+            map(packages => packages.map(_package => PackageLoader.toPackage(_package)))
+        );
     }
 
     public getModules(): Observable<Package[]> {

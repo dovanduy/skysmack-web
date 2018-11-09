@@ -1,21 +1,26 @@
 <div id="app-drawer" *ngIf="menu$|async as menu" [ngClass]="{ open: menu.drawer }" (click)="uiRedux.setPackageDrawerStatus(false)">
-    <nav class="nav" *ngIf="packages$ | async as packages">
-        <ng-container *ngFor="let package of packages">
-            <a *ngIf="package.packageManifest" class="app-link" [routerLink]="[package.installedPackage.url]">
-                <i class="material-icons md-light app-icon">{{ package.packageManifest.icon }}</i>
-                <h5 class="app-name">{{ package.installedPackage.name }}</h5>
-            </a>
-        </ng-container>
-    </nav>
 
-    <div class="sys-docker">
-        <ng-container *ngIf="modules$ | async as modules">
-            <ng-container *ngFor="let module of modules">
-                <a class="app-link" [routerLink]="module.installedPackage.url" *ngIf="module.packageManifest">
-                    <i class="material-icons md-light app-icon">{{ module.packageManifest.icon }}</i>
-                    <h5 class="app-name" [translate]="module.packageManifest.translationString"></h5>
-                </a>
+    <ng-container *ngIf="packages$ | async as packages">
+        <nav class="nav">
+            <ng-container *ngFor="let package of packages">
+                <ng-container *ngIf="package.packageManifest">
+                    <a *ngIf="package.packageManifest.location === 'main'" class="app-link" [routerLink]="[package.installedPackage.url]">
+                        <i class="material-icons md-light app-icon">{{ package.packageManifest.icon }}</i>
+                        <h5 class="app-name">{{ package.installedPackage.name }}</h5>
+                    </a>
+                </ng-container>
             </ng-container>
-        </ng-container>
-    </div>
+        </nav>
+
+        <div class="sys-docker">
+            <ng-container *ngFor="let package of packages">
+                <ng-container *ngIf="package.packageManifest">
+                    <a class="app-link" *ngIf="package.packageManifest.location === 'docker'" [routerLink]="package.installedPackage.url">
+                        <i class="material-icons md-light app-icon">{{ package.packageManifest.icon }}</i>
+                        <h5 class="app-name" [translate]="package.packageManifest.translationString"></h5>
+                    </a>
+                </ng-container>
+            </ng-container>
+        </div>
+    </ng-container>
 </div>

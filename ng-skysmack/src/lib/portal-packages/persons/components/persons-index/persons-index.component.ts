@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { NgPersonsRequests, NgPersonsRedux } from 'lib/ng-packages/persons';
+import { NgPersonsRequests } from './../../../../ng-packages/persons/redux/ng-persons-requests';
+import { NgPersonsRedux } from './../../../../ng-packages/persons/redux/ng-persons-redux';
 
 @Component({
   selector: 'ss-persons-index',

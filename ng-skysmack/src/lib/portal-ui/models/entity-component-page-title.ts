@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { TranslateService } from '@ngx-translate/core';
 import { take, map } from 'rxjs/operators';
-import { NgSkysmackRedux } from 'lib/ng-packages/skysmack/redux/ng-skysmack-redux';
+import { NgSkysmackRedux } from './../../ng-packages/skysmack/redux/ng-skysmack-redux';
 import { hasValue } from '@skysmack/framework';
 
 /**

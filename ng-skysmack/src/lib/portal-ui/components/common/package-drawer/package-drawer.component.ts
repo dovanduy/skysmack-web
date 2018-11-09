@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Package } from 'lib/ng-packages/packages/package';
-import { NgSkysmackRedux } from 'lib/ng-packages/skysmack/redux/ng-skysmack-redux';
+import { Package } from './../../../../ng-packages/packages/package';
+import { NgSkysmackRedux } from './../../../../ng-packages/skysmack/redux/ng-skysmack-redux';
 import { Menu } from './../../../models/menu';
 import { UIRedux } from './../../../redux/ui-redux';
 
@@ -12,7 +12,6 @@ import { UIRedux } from './../../../redux/ui-redux';
 })
 export class PackageDrawerComponent implements OnInit {
   public packages$: Observable<Package[]>;
-  public modules$: Observable<Package[]>;
   public menu$: Observable<Menu>;
 
   constructor(
@@ -22,7 +21,6 @@ export class PackageDrawerComponent implements OnInit {
 
   ngOnInit() {
     this.packages$ = this.skysmackRedux.getPackages();
-    this.modules$ = this.skysmackRedux.getModules();
     this.menu$ = this.uiRedux.getMenu();
   }
 }
