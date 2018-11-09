@@ -1,4 +1,4 @@
-import { Dictionary } from 'framework/models/dictionary';
+import { StrIndex } from 'lib/models';
 
 export class EnumHelpers {
     /**
@@ -11,7 +11,7 @@ export class EnumHelpers {
      *     0: "reserved"
      * }
      */
-    public static toIndexEnum(targetEnums: Dictionary<string>): Dictionary<string> {
+    public static toIndexEnum(targetEnums: StrIndex<string>): StrIndex<string> {
         const processed = {};
         let index = 0;
         Object.keys(targetEnums).forEach(key => {
