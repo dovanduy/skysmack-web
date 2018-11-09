@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { EntityComponentPageTitle } from 'lib/portal-ui/models/entity-component-page-title';
 
 @Component({
   selector: 'ss-front-page',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FrontPageComponent implements OnInit {
 
-  constructor() { }
+  constructor(public componentPageTitle: EntityComponentPageTitle) { }
 
   ngOnInit() {
+    this.componentPageTitle.setTitle('Skysmack', true);
   }
 
 }
