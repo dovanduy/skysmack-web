@@ -3,3 +3,4 @@ export * from './sidebar-menu';
 export * from './entity-action';
 export * from './settings';
 export * from './entity-component-page-title';
+export * from './package-manifest';

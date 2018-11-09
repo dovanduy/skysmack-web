@@ -1,5 +1,5 @@
 import { InstalledPackageViewModel } from '@skysmack/packages-skysmack';
-import { PackageManifest } from '@skysmack/framework';
+import { PackageManifest } from 'lib/portal-ui';
 
 export class Package {
     constructor(

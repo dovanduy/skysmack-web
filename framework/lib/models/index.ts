@@ -5,7 +5,7 @@ export * from './record';
 export * from './local-object-status';
 export * from './local-object';
 export * from './paged-query';
-export * from './package-manifest';
+export * from './package-type';
 export * from './page-response';
 export * from './local-page';
 export * from './local-pages';

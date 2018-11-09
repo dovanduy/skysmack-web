@@ -2,16 +2,38 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <title>WebPortal</title>
   <base href="/">
-
+  <meta charset="utf-8">
+  <title>Skysmack loading</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="manifest" href="/manifest.json">
+  <style>
+    #loading-screen {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Roboto', 'Verdana', 'Geneva', 'Tahoma', 'sans-serif';
+      font-size: 2rem;
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/hammerjs/2.0.8/hammer.min.js"></script>
 </head>
 
 <body>
-  <start-root></start-root>
+  <skysmack-app>
+    <div id="loading-screen">
+      Loading
+    </div>
+  </skysmack-app>
 </body>
 
 </html>

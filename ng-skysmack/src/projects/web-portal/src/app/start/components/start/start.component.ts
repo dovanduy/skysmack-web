@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Observable } from 'rxjs';
 import { CurrentTenantViewModel } from '@skysmack/packages-skysmack';
 import { Router } from '@angular/router';
@@ -7,9 +7,10 @@ import { PackageRouteConfiguration } from '../../../package-route-configuration'
 
 @Component({
   // tslint:disable-next-line:component-selector
-  selector: 'start-root',
+  selector: 'skysmack-app',
   templateUrl: './start.component.html',
-  styleUrls: ['./start.component.scss']
+  styleUrls: ['./start.component.scss'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class StartComponent implements OnInit {
 
