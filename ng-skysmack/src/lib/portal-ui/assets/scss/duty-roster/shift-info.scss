@@ -1,0 +1,129 @@
+﻿.shift-info-row {
+    width: 100%;
+    border-bottom: 1px solid #e5e5e5;
+    font-size: 14px;
+    color: #383838;
+}
+
+.shift-info-col {
+    padding: 14px 12px;
+    padding: 1.3rem .7rem;
+    &.col-half {
+        float: left;
+        width: 50%;
+        padding: 14px 12px 12px 12px;
+        border-right: 1px solid #e5e5e5;
+        &:last-child {
+            border-right: none;
+        }
+    }
+}
+
+#formatter-view-shift-info {
+    color: #252525;
+    .heading-date {
+        margin: 8px 0 5px 0;
+        font-size: 16px;
+        font-weight: 400;
+    }
+    .time-span {
+        font-size: 24px;
+        font-weight: 600;
+    }
+    .menu-label {
+        margin-bottom: 12px;
+        color: #6d6d6d;
+    }
+    .info-data {
+        font-size: 14px;
+        font-weight: 600;
+        color: #383838;
+        text-transform: uppercase;
+    }
+    .employee-name {
+        float: left;
+    }
+    .action-buttons {
+        float: right;
+    }
+    p,
+    h5,
+    h6 {
+        margin: 0;
+    }
+    p {
+        line-height: 1.6;
+    }
+}
+
+.menu-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .8px;
+    text-transform: uppercase;
+}
+
+.list-persons {
+    color: #444;
+    transition: .3s ease;
+    list-style: none;
+    margin: 12px 0 0 0;
+    padding: 0;
+    >li {
+        //margin: 7px 0;
+        display: flex; //flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        cursor: pointer;
+        &:hover {
+            color: #000;
+        }
+        i {
+            font-size: 20px;
+            padding-right: 5px;
+            &:hover {
+                cursor: pointer;
+            }
+        }
+    }
+    .profile-pic {
+        width: 20px;
+        height: 20px;
+        margin-right: 2px;
+        border-radius: 100px;
+        background-color: #d0d0d0; //placeholder
+    }
+    span {
+        line-height: 20px;
+        vertical-align: middle;
+    }
+}
+
+.formatter-actions-bottom {
+    padding: 20px 12px 12px 12px;
+}
+
+.result-field-info {
+    padding: 0 .4rem 0 0;
+    font-size: .9rem;
+    float: right;
+    i {
+        vertical-align: middle;
+        font-size: 16px;
+        font-size: 1.1rem;
+        padding: 0 0 .2rem .1rem;
+    }
+}
+
+//Border utilities
+.bb-0 {
+    border-bottom: none;
+}
+
+.bb-1 {
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.bt-1 {
+    border-top: 1px solid #e5e5e5;
+}

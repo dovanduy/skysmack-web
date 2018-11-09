@@ -1,0 +1,55 @@
+﻿// BUTTONS
+.action-buttons {
+    color: #666;
+    cursor: pointer;
+    &:hover {
+        color: #2a3b2b;
+    }
+}
+
+a,
+button {
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+a.btn {
+    &:not([href]):not([tabindex]) {
+        color: white;
+    }
+}
+
+.bottom-options {
+    padding: 2rem 0;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+}
+
+.btn-shade {
+    box-shadow: 0 2px 3px rgba(0, 0, 0, .2);
+}
+
+.btn-light {
+    color: #3a4250 !important;
+    background-color: #f0f1f5;
+}
+
+.btn-dark {
+    color: #fff;
+    background-color: #4b515d;
+    &:hover {
+        color: #fff;
+        background-color: #5b616e;
+    }
+}
+
+// INPUTS AND FORMELEMENTS
+form.dark-bg {
+    .form-control {
+        background-color: rgba(0, 0, 0, .09);
+        border: none;
+        border-radius: .3rem;
+    }
+}

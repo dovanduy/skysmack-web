@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FieldBaseComponent, stringIntToInt } from 'framework';
-import { RecurringExpressionEvaluator } from 'skysmack-api';
+import { FieldBaseComponent } from './../../../../fields/field-base-component';
+import { stringIntToInt } from '@skysmack/framework';
+import { RecurringExpressionEvaluator } from './models/recurring-expression-evaluator';
 
 @Component({
   selector: 'ss-recurring-expression-field',

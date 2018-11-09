@@ -1,0 +1,186 @@
+//Table of contents (to add)
+//
+//Positioning
+//Alignment
+//Display
+//Buttons
+//Hover states
+//--------------------------
+//Sort
+.non-anchor {
+    color: #505050 !important;
+    &:hover {
+        color: #007bff !important;
+    }
+}
+
+//Cursor and actions
+.clickable {
+    cursor: pointer;
+}
+
+.non-clickable {
+    cursor: none;
+}
+
+.danger-action {
+    &:hover {
+        color: #CE1B15;
+    }
+}
+
+//Alignment
+//Display types
+.hide-element {
+    display: none;
+}
+
+//Previous styles to revamp below this point
+.float-xs-right {
+    float: right;
+}
+
+.hidden {
+    display: none;
+}
+
+.no-h-margin {
+    margin-right: 0;
+    margin-left: 0;
+}
+
+.no-h-padding-outside:first-child {
+    padding-left: 0;
+}
+
+.no-h-padding-outside:last-child {
+    padding-right: 0;
+}
+
+.btn-group-block-3 {
+    width: 100%;
+    .btn {
+        display: block;
+        width: 33.33%;
+        padding-right: 0;
+        padding-left: 0;
+    }
+}
+
+.input-inline {
+    display: inline-block;
+    width: auto;
+}
+
+.checkradio-btn {
+    float: left;
+    margin-left: 0 !important; //Bootstrap reset
+    padding-left: 0 !important; //Bootstrap reset
+    .custom-control-description {
+        display: block;
+        padding: 5px 0;
+        border: 2px solid $gray-300;
+        border-radius: 6px;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        text-align: center;
+        transition: transform .1s ease, border-color $transition-speed-default ease, background-color $transition-speed-default ease, color $transition-speed-default ease;
+    }
+    .custom-control-input {
+        &:hover~.custom-control-description {
+            border-color: #fff;
+        }
+        &:focus~.custom-control-description {
+            //border-color: #fff;
+        }
+        &:active~.custom-control-description {
+            transform: scale(.96);
+        }
+        &:checked~.custom-control-description {
+            color: #fff;
+            border-color: theme-color("primary");
+            background-color: theme-color("primary");
+        }
+        &:disabled~.custom-control-description {
+            opacity: .7;
+        }
+    }
+}
+
+.checkradio-block-3 {
+    width: 33.33%;
+}
+
+.checkradio-block-7 {
+    width: 14.28%; //100% / 7
+}
+
+.radio-btn-group {
+    .checkradio-btn {
+        .custom-control-description {
+            border-left: none;
+            border-radius: 0;
+        }
+        &:first-child .custom-control-description {
+            border-left: 2px solid $gray-300;
+            border-top-left-radius: 6px;
+            border-bottom-left-radius: 6px;
+        }
+        &:last-child .custom-control-description {
+            border-top-right-radius: 6px;
+            border-bottom-right-radius: 6px;
+        }
+    }
+}
+
+// Dropdown
+.dropdown-block {
+    position: relative; //for absolute positioning dp-item-group
+    perspective: 400px; //for z-axis rotation
+    a {
+        display: block;
+        &:hover,
+        &:focus,
+        &:active {
+            text-decoration: none;
+        }
+    }
+    .dp-btn {
+        position: relative;
+        z-index: 20;
+    }
+    .dp-arrow {
+        position: absolute;
+        top: 0;
+        right: 0;
+        transition: transform .2s ease;
+    }
+    .dp-item-group {
+        visibility: hidden;
+        opacity: 0;
+        position: absolute; //float over other menu items
+        z-index: 10;
+        transform-origin: top center;
+        transform: scale(.96) translateY(-6%) rotateX(-45deg);
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        transition: opacity .2s ease, transform .2s ease, visibility 0s ease .2s;
+    }
+    &.dp-open {
+        .dp-item-group {
+            visibility: visible;
+            opacity: 1;
+            perspective: 0;
+            transform: scale(1) translateY(0) rotateX(0deg);
+            transition: opacity .2s ease, transform .2s ease, visibility 0s ease;
+        }
+        .dp-arrow {
+            transform: translateY(-3px) rotate(180deg);
+        }
+    }
+}

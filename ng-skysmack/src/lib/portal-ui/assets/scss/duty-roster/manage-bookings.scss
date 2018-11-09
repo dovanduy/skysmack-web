@@ -1,0 +1,14 @@
+﻿.list-block {
+    .remove-employee .material-icons {
+        transform: rotate(-270deg);
+        color: red;
+        transition: transform .18s ease, color .18s ease;
+    }
+    &.disabled {
+        text-decoration: line-through;
+        .remove-employee .material-icons {
+            transform: rotate(-360deg);
+            color: blue;
+        }
+    }
+}

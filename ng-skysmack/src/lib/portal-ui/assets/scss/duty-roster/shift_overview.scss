@@ -1,0 +1,270 @@
+$date-column-width: 80px;
+$color-dark-border: #eaeaea;
+$color-light-border: #f1f1f1;
+$color-bg-table-col: #f8f8f8;
+.shift-schema {
+    width: 100%;
+}
+
+.date-column {
+    float: left;
+    width: $date-column-width;
+    border-right: 2px solid $color-dark-border;
+}
+
+.shifts-column {
+    float: right;
+    width: calc(100% - 80px);
+}
+
+//Gradient background
+
+/*.shifts-column {
+    background: repeating-linear-gradient(
+        to right,
+        #fff,
+        #fff 6.25%,
+        $color-bg-table-col 6.25%,
+        $color-bg-table-col 12.5%
+    );
+}*/
+
+.week-header {
+    margin: 20px 0 12px 0;
+    font-size: 16px;
+    color: #52555a;
+    .week-number {
+        font-weight: 700;
+    }
+}
+
+.time-marker {
+    >ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        li {
+            display: block;
+            box-sizing: border-box;
+            float: left;
+            width: 12.5%; //Should be calculated and set inline
+            padding: 0 0 5px 5px;
+            border-left: 1px solid #dbdbdb;
+            font-size: 11px;
+            line-height: 1;
+            color: #62656b;
+            /*&:last-child {
+                border-right: none;
+            }*/
+        }
+    }
+}
+
+.date-row {
+    position: relative; //for absolute positioning .date-mark
+    min-height: 70px;
+    margin-bottom: -1px;
+    border: 1px solid #dbdbdb;
+    border-radius: 4px;
+    .shift-row {
+        // overflow-x: hidden;
+    }
+}
+
+.date-mark {
+    display: inline;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: $date-column-width;
+    padding-right: 6px;
+    color: #4b515d;
+    text-align: right;
+    transform: translate(-100%, -50%);
+    h5 {
+        margin-bottom: 3px;
+        font-size: 14px;
+    }
+    p {
+        margin: 0;
+        font-size: 12px;
+    }
+}
+
+.shift-slot {
+    position: absolute; //for aboslute positioning info
+    float: left;
+    width: 100%;
+    height: 62px;
+    margin-top: 9px;
+    margin-bottom: 9px;
+    padding: 10px 14px;
+    border-radius: 10px;
+    color: #62656b;
+    &:hover,
+    &:active,
+    &:focus {
+        text-decoration: none;
+    }
+}
+
+.shift-existing {
+    box-shadow: inset 0 0 0 0 rgba(0, 0, 0, .3), 0 0 0 rgba(0, 0, 0, .4);
+    transition: box-shadow $transition-speed-default ease;
+    &:hover,
+    &:focus {
+        box-shadow: inset 0 0 0 0 rgba(0, 0, 0, .3), 0 3px 8px rgba(0, 0, 0, .4);
+    }
+    .editing {
+        box-shadow: inset 0 0 0 3px rgba(0, 0, 0, .3), 0 0 0 rgba(0, 0, 0, .4);
+    }
+}
+
+.shift-time-period {
+    margin: 0 0 2px 0;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.shift-employees-added {
+    width: 100%;
+    margin: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-size: 12px;
+    .material-icons {
+        margin-left: 3px;
+        font-size: 20px;
+    }
+}
+
+.shift-bookings {
+    position: absolute;
+    right: 14px;
+    top: 12px;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: right;
+    line-height: 1;
+    .material-icons {
+        margin: -2px 3px 0 0;
+        font-size: 16px;
+    }
+}
+
+.shift-open {
+    color: #62656b;
+    background-color: #d8d8d8;
+}
+
+
+/*.shift-booked {
+  background-color: theme-color("primary");
+}
+
+.shift-swap {
+    background-color: $brand-warning;
+}
+
+.shift-disabled {
+    background-color: $gray-light;
+}*/
+
+.create-shift-row {
+    position: relative;
+    opacity: 1;
+    background-color: rgba(255, 255, 255, .7);
+    cursor: pointer;
+    transition: opacity .5s ease-out;
+    &:hover {
+        opacity: 1;
+    }
+    >.action-label {
+        display: block;
+        opacity: 1;
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 100%;
+        font-size: 17px;
+        font-weight: 600;
+        text-align: center;
+        letter-spacing: .7px;
+        color: rgba(0, 0, 0, .27);
+        transition: opacity .2s ease .5s;
+        p {
+            margin: 0;
+        }
+    }
+    .shift-new {
+        opacity: 0;
+        height: 16px;
+        transform: scale(0);
+        /*border: 2px solid $brand-primary;*/
+        background-color: rgba(255, 255, 255, .6);
+        text-align: center;
+        /*color: $brand-primary;*/
+        box-shadow: none;
+        transition: opacity .3s ease, height .2s ease, transform .3s ease, margin-left $transition-speed-default ease;
+        .material-icons {
+            font-size: 26px;
+        }
+        .shift-time-period {
+            /*color: $brand-primary;*/
+        }
+    }
+    &.shift-row-empty .shift-new {
+        height: 100%;
+    }
+    &.active {
+        opacity: 1;
+        cursor: default;
+        background-color: transparent;
+        .shift-new {
+            opacity: 1;
+            height: 68px;
+            transform: scale(1);
+            cursor: grabbing;
+            cursor: -moz-grabbing;
+            cursor: -webkit-grabbing;
+        }
+        >.action-label {
+            opacity: 0;
+            transition: opacity .2s ease;
+        }
+    }
+    &.creating {
+        .shift-new {
+            /*background-color: $brand-primary;*/
+            color: #fff;
+            cursor: move;
+            /* fallback if grab cursor is unsupported */
+            cursor: grab;
+            cursor: -moz-grab;
+            cursor: -webkit-grab;
+        }
+        .shift-time-period {
+            color: #fff;
+        }
+    }
+}
+
+.creating-new-shift {
+    .shift-existing {
+        &:hover,
+        &:active,
+        &:focus {
+            cursor: default;
+            box-shadow: 0 0 rgba(0, 0, 0, 0);
+        }
+    }
+}
+
+.editing-existing-shift .create-shift-row,
+.creating-new-shift .create-shift-row:not(.active) {
+    background-color: transparent;
+    opacity: 0;
+    cursor: default;
+}

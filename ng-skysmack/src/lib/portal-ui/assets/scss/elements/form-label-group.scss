@@ -1,0 +1,82 @@
+$input-padding-x: .75rem;
+$input-padding-y: .75rem;
+
+.form-label-group {
+    position: relative;
+    margin-bottom: 1rem;
+    &>input,
+    &>label {
+      padding: $input-padding-y $input-padding-x;
+    }
+    &>label {
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: block;
+      width: 100%;
+      margin-bottom: 0;
+      /* Override default `<label>` margin */
+      line-height: 1.5;
+      color: #495057;
+      border: 1px solid transparent;
+      border-radius: .25rem;
+      transition: all .1s ease-in-out;
+      &:hover {
+        cursor: text;
+      }
+    }
+    input {
+      height: auto;
+      padding-top: $input-padding-y * (1 + 1/3);
+      padding-bottom: $input-padding-y / 2;
+  
+      &::-webkit-input-placeholder{
+        color: transparent;
+      }
+      &:-ms-input-placeholder{
+        color: transparent;
+      }
+      &::-ms-input-placeholder{
+        color: transparent;
+      }
+      &::-moz-placeholder{
+        color: transparent;
+      }
+      &::placeholder {
+        color: transparent;
+      }
+      &~label {
+        padding-top: $input-padding-y / 4;
+        padding-bottom: 0;
+        margin-bottom: $input-padding-y;
+        font-size: .6rem;
+        color: #888;
+      }
+      &:placeholder-shown {      
+        padding-top: $input-padding-y;
+        padding-bottom: $input-padding-y;
+        background-color: #F9F9F9;
+  
+        &~label {
+          padding-top: $input-padding-y;
+          padding-bottom: $input-padding-y / 2;
+          margin-bottom: 0;
+          font-size: 1.2rem;
+          color: #a6acb3;
+        }
+      }
+      &:not(:placeholder-shown) {
+        padding-top: $input-padding-y * (1 + 1/3);
+        padding-bottom: $input-padding-y / 2;
+        background-color: #fff;
+  
+        &~label {
+          padding-top: $input-padding-y / 3;
+          padding-bottom: $input-padding-y / 3;
+          font-size: .6rem;
+          color: #777;
+        }
+      }
+    }
+  }
+  

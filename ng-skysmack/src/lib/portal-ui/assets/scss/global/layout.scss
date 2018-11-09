@@ -1,0 +1,12 @@
+﻿html, body {
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    font-family: $skysmack-font;
+}
+
+::-moz-selection{ background: transparent; }
+::selection { background: transparent; }
+
+.selectable::-moz-selection, input::-moz-selection, textarea::-moz-selection{ background: #dee2e6; color: #000 }
+.selectable::selection, input::selection, textarea::selection { background: #dee2e6; color: #000 }

@@ -2,8 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
 import { CurrentTenantViewModel } from '@skysmack/packages-skysmack';
-import { Menu, UIRedux, AuthUserRedux } from 'lib/portal-ui';
-import { NgSkysmackRedux } from 'lib/ng-packages/skysmack';
+import { Menu } from './../../../models/menu';
+import { NgSkysmackRedux } from './../../../../ng-packages/skysmack/redux/ng-skysmack-redux';
+import { AuthUserRedux } from './../../../redux/authenticated-user/auth-user-redux';
+import { UIRedux } from './../../../redux/ui-redux';
 
 @Component({
   selector: 'ss-navbar',

@@ -1,0 +1,57 @@
+.custom-checkbox {
+    cursor: pointer;
+    .inner-circle {
+        position: absolute;
+        //margin: 1px auto auto 2px;
+        margin: 1px auto auto -14px;
+        width: 13px;
+        height: 13px;
+        background: white;
+        border-radius: 50%;
+        transition: margin-left .2s ease-in-out;
+    }
+    .custom-control-indicator {
+        width: 30px;
+        height: 15px;
+        background: gray;
+        border-radius: 30px;
+        transition: background-color .2s ease-in-out;
+    }
+    .custom-control-input:focus~.custom-control-indicator {
+        box-shadow: none;
+        border: 0.2px solid #113965;
+    }
+    .custom-control-input:checked~.custom-control-indicator {
+        background: #55acee;
+        .inner-circle {
+            margin-left: 1px;
+        }
+    }
+    .custom-control-input:focus~.custom-control-indicator {
+        border: none;
+    }
+    &:checked~.custom-control-input {
+        color: #fff;
+        background-color: #55acee;
+    }
+}
+
+.toggle-left {
+    .custom-control-indicator {
+        left: 0;
+        right: auto;
+    }
+    .custom-control-description {
+        margin: auto 0 auto auto;
+    }
+}
+
+.toggle-right {
+    .custom-control-indicator {
+        right: 0;
+        left: auto;
+    }
+    .custom-control-description {
+        margin: auto auto auto 0;
+    }
+}

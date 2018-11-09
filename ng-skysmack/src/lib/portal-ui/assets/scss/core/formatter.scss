@@ -1,0 +1,100 @@
+﻿.container.page-inner {
+    .breadcrumb {
+        margin-top: 1rem;
+    }
+
+    h2 {        
+        padding-top: .5rem;
+        line-height: 1.75;
+        border-bottom: 1px solid darken($color-primary-off-light, 5%);
+        margin-bottom: 1rem;
+    }
+}
+
+.editor-sidebar {
+    .breadcrumb {
+        display: none;
+    }
+
+    .container.page-inner {
+        padding-top: 0;
+
+        h2 {
+            padding-top: 1rem;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+    }
+}
+//Sidebar-input
+//Styles pertaining to the sidebar components
+.sidebar-container {
+    //temp fix- Just pushing container up and aligning with closing arrow, but must use closeSidebar 
+    //function in respective file; can only use function in sidebar.component.html
+    margin-top: -33px;
+    margin-top: -2.2rem;
+    .sidebar-head {
+        color: #222;
+        margin: auto .5rem;
+        h3 {
+            font-size: 1.65rem;
+        }
+    }
+}
+
+.sidebar-form-wrap {
+    padding: 1.2rem .1rem;
+    .sidebar-form {
+        padding: 1rem 0;
+    }
+}
+
+//Previous styles below this point
+#formatter {
+    //width: 340px;
+}
+
+.formatter-title {
+    margin: 10px 0 20px 0;
+    font-size: 20px;
+    text-align: center;
+}
+
+.panel-expandable {
+    border-radius: 6px;
+    background-color: #c0c0c0;
+    p {
+        margin: 0;
+    }
+}
+
+.panel-head {
+    display: block;
+    position: relative;
+    padding: 8px 10px;
+    text-decoration: none;
+    &.collapsed {
+        .material-icons {
+            transform: rotate(0);
+        }
+    }
+    &:hover,
+    &:focus {
+        text-decoration: none;
+    }
+    .material-icons {
+        position: absolute;
+        right: 12px;
+        top: 30%;
+        font-size: 20px;
+        transform: rotate(180deg);
+        transition: transform .26s ease;
+    }
+}
+
+.formatter-view {
+    display: none;
+    &.shown {
+        display: block;
+    }
+}

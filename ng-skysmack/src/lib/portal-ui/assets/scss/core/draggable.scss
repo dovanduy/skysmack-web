@@ -1,0 +1,10 @@
+.draggable-clone {
+    padding: 1px 5px;
+    background-color: #424242;
+    color: white;
+    position: absolute;
+    opacity: 0.5;
+    visibility: hidden;
+    z-index: 10000; // disable events on draggable element, so mouseenter will work on droppable element
+    pointer-events: none
+}

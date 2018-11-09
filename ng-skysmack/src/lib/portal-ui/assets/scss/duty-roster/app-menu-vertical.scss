@@ -1,0 +1,71 @@
+﻿
+#app-menu-v {
+    a {
+        color: #f0f1f5;
+        &:hover {
+            text-decoration: none;
+        }
+    }
+    .btn-lg {
+        margin: 22px 0;
+    }
+    .material-icons {
+        margin-right: 2px;
+        font-size: 20px;
+    }
+    .menu-list {
+        margin: 0 0 28px 0;
+        padding: 0;
+        list-style: none;
+        a {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            padding: 4px 0;
+            i {
+                padding-right: 5px;
+            }
+        }
+    }
+    .menu-label {
+        margin-top: 25px;
+        margin-bottom: 4px;
+        color: #575a5f;
+    }
+    
+    #item-selector.dropdown-block {
+        font-size: 16px;
+        .dp-btn {
+            padding: 12px 18px;
+            font-weight: 600;
+            background-color: #4b515d;
+        }
+        .dp-icon {
+            position: relative;
+            top: -2px;
+            margin-right: 2px;
+        }
+        .dp-arrow.material-icons {
+            position: absolute;
+            top: 15px;
+            right: 16px;
+            margin-right: 0;
+            font-size: 24px;
+            color: #a2a4ac;
+        }
+        .dp-item-group {
+            width: 190px;
+            margin: 0;
+            padding: 4px 0;
+            background-color: #636873;
+            box-shadow: 0 0 12px rgba(0, 0, 0, .4);
+        }
+        .dp-item a {
+            padding: 6px 14px 6px 45px;
+        }
+    }
+
+    #menu-container {
+        padding: 0 18px;
+    }
+}

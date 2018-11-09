@@ -1,0 +1,50 @@
+﻿$formatter-width: 230px;
+$formatter-open-transition: width .3s ease;
+#canvas {
+    width: 100%;
+    height: calc(100% - 56px);
+    transition: filter .3s ease;
+    &.app-drawer-open {
+        filter: blur(16px);
+    }
+}
+
+#canvas-scene {
+    float: left;
+    width: calc(100% - 190px);
+    height: 100%;
+    padding-right: 10px;
+    overflow-x: auto;
+    overflow-y: auto;
+    background-color: #f0f1f5;
+    transition: $formatter-open-transition;
+}
+
+#formatter {
+    float: right;
+    width: 0;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    transition: $formatter-open-transition;
+    .view-container {
+        width: 2 * $formatter-width;
+    }
+    .view {
+        width: $formatter-width;
+    }
+}
+
+.view {
+    float: left;
+}
+
+// When #formatter is open
+#canvas.formatter-open {
+    #canvas-scene {
+        width: calc(100% - 190px - 230px);
+    }
+    #formatter {
+        width: $formatter-width;
+    }
+}

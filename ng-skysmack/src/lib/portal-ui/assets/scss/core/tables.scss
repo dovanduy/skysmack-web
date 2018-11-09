@@ -1,0 +1,65 @@
+//Tables
+.table-hover {
+    tbody tr {
+        &:hover {
+            //background-color: rgba(5, 5, 10, .09);
+            background-color: lighten( #DEE0E5, 2.5%);
+            transition: background-color .2s linear .1s;
+        }
+    }
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    // background-color: rgba(0, 0, 0, .03);
+    background-color: lighten( #F0F1F5, 1%);
+    &:hover {
+        //  background-color: rgba(5, 5, 10, .08);
+        // background-color: rgba(15, 25, 40, 0.08);
+        background-color: lighten( #DEE0E5, 2.5%);
+    }
+}
+
+.table {
+    // thead th {
+    //     font-weight: 200;
+    // }
+    .action-buttons {
+        margin: auto .5rem;
+    }
+    margin: 2rem auto auto auto;
+    th:first-child,
+    td:first-child {
+        white-space: nowrap;
+        padding-left: 3rem;
+        width: 0;
+    }
+    td:last-child {
+        padding-right: 1.7rem;
+        text-align: end;
+        white-space: nowrap;
+    }
+    th,
+    td:nth-child(2) {
+        width: 100%;
+    }
+    input[type=checkbox] {
+        width: 0.9rem;
+        height: 0.9rem;
+    }
+    // Checkboxes on table row hover
+    tbody tr {
+        input[type=checkbox] {
+            opacity: 0;
+            transition: opacity 0.2s linear;
+        }
+        input[type=checkbox]:checked {
+            opacity: 1;
+        }
+        &:hover {
+            input[type=checkbox],
+            input[type=checkbox]:checked {
+                opacity: 1;
+            }
+        }
+    }
+}

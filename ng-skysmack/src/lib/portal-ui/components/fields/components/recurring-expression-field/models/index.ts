@@ -5,3 +5,4 @@ export * from './recurring-months';
 export * from './recurring-type';
 export * from './repeat-days';
 export * from './expression-values';
+export * from './recurring-expression-evaluator';
