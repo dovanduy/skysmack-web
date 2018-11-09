@@ -1,7 +1,7 @@
 import { Component, Input, ViewChild, OnInit, OnDestroy } from '@angular/core';
 import { MatSidenav } from '@angular/material';
 import { Router } from '@angular/router';
-import { SidebarMenu } from 'lib/portal-ui/models/sidebar-menu/sidebar-menu';
+import { SidebarMenu } from './../../../models/sidebar-menu/sidebar-menu';
 import { SubscriptionHandler } from '@skysmack/framework';
 import { EditorNavService } from './editor-nav.service';
 

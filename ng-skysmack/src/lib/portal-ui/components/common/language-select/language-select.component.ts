@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { Observable } from 'rxjs';
-import { Menu } from 'lib/portal-ui/models/menu';
-import { UIRedux } from 'lib/portal-ui/redux/ui-redux';
-import { SettingsRedux } from 'lib/portal-ui/redux/settings/settings-redux';
+import { Menu } from './../../../models/menu';
+import { UIRedux } from './../../../redux/ui-redux';
+import { SettingsRedux } from './../../../redux/settings/settings-redux';
 
 @Component({
   selector: 'ss-language-select',

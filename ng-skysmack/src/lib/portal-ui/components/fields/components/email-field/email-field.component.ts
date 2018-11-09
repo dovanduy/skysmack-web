@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { trigger, transition, style, animate } from '@angular/animations';
-import { FieldBaseComponent } from 'lib/portal-ui/fields/field-base-component';
+import { FieldBaseComponent } from './../../../../fields/field-base-component';
 
 @Component({
   selector: 'ss-email-field',

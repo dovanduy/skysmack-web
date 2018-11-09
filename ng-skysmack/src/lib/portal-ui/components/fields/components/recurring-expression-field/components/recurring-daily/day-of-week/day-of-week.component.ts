@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ExpressionValues } from '../../../models/expression-values';
-import { DayOfWeek, DaysOfWeek } from 'lib/portal-ui/components/fields';
+import { DayOfWeek } from '../../../models/day-of-week';
+import { DaysOfWeek } from '../../../models/days-of-week';
 
 @Component({
   selector: 'ss-day-of-week',

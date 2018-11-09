@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { speedDialFabAnimations } from './speed-dial-fab.animations';
-import { SidebarMenu } from 'lib/portal-ui/models/sidebar-menu/sidebar-menu';
+import { SidebarMenu } from './../../../models/sidebar-menu/sidebar-menu';
 
 // https://medium.com/@webdev_aaron/fab-speed-dial-with-angular-5-2-angular-material-be696fc14967
 @Component({

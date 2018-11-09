@@ -1,5 +1,5 @@
 import { SettingsActions } from './settings-actions';
-import { Settings } from 'lib/portal-ui/models/settings';
+import { Settings } from './../../models/settings';
 
 export interface SettingsState {
     settings: Settings;

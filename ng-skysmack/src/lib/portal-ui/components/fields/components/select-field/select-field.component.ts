@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FieldBaseComponent } from 'lib/portal-ui/fields/field-base-component';
-import { SelectField } from 'lib/portal-ui/fields/select-field';
-import { DisableUntilValueRule } from 'lib/portal-ui/forms/rules/disable-until-value-rule';
+import { FieldBaseComponent } from './../../../../fields/field-base-component';
+import { SelectField } from './../../../../fields/select-field';
+import { DisableUntilValueRule } from './../../../../forms/rules/disable-until-value-rule';
 
 @Component({
   selector: 'ss-select-field',

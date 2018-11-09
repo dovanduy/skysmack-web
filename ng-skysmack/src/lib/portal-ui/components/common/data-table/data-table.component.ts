@@ -3,10 +3,10 @@ import { MatSort, MatPaginator, MatTableDataSource } from '@angular/material';
 import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { LocalObject, SubscriptionHandler } from '@skysmack/framework';
-import { MenuItem } from 'lib/portal-ui/models/sidebar-menu/menu-item';
+import { MenuItem } from './../../../models/sidebar-menu/menu-item';
 import { EditorNavService } from '../container/editor-nav.service';
-import { EntityAction } from 'lib/portal-ui/models/entity-action';
-import { EntityComponentPageTitle } from 'lib/portal-ui/models/entity-component-page-title';
+import { EntityAction } from './../../../models/entity-action';
+import { EntityComponentPageTitle } from './../../../models/entity-component-page-title';
 
 @Component({
   selector: 'ss-data-table',

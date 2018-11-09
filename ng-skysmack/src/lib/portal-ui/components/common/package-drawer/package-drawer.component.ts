@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Package } from 'lib/ng-packages/packages/package';
-import { Menu } from 'lib/portal-ui/models/menu';
-import { UIRedux } from 'lib/portal-ui/redux/ui-redux';
 import { NgSkysmackRedux } from 'lib/ng-packages/skysmack/redux/ng-skysmack-redux';
+import { Menu } from './../../../models/menu';
+import { UIRedux } from './../../../redux/ui-redux';
 
 @Component({
   selector: 'ss-package-drawer',

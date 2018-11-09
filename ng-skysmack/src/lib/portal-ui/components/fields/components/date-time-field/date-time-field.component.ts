@@ -1,7 +1,7 @@
 import { Component, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { DateAdapter } from '@angular/material';
 import { combineLatest, of, fromEvent } from 'rxjs';
-import { FieldBaseComponent } from 'lib/portal-ui/fields/field-base-component';
+import { FieldBaseComponent } from './../../../../fields/field-base-component';
 import { DateTimeAdapter } from './date-time-adapter';
 
 @Component({

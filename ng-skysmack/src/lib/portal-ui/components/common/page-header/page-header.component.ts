@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { EntityComponentPageTitle } from 'lib/portal-ui/models/entity-component-page-title';
+import { EntityComponentPageTitle } from './../../../models/entity-component-page-title';
 
 @Component({
   selector: 'ss-page-header',

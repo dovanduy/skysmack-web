@@ -1,5 +1,5 @@
-import { Field } from 'lib/portal-ui/fields/field';
-import { SelectField } from 'lib/portal-ui/fields/select-field';
+import { Field } from './../../fields/field';
+import { SelectField } from './../../fields/select-field';
 import { FormRule } from '../form-rule';
 import { getProperty } from '@skysmack/framework';
 

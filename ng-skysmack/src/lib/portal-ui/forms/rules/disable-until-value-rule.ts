@@ -1,5 +1,5 @@
 import { FormRule } from '../form-rule';
-import { Field } from 'lib/portal-ui/fields/field';
+import { Field } from './../../fields/field';
 
 /**
  * Currently implemented for SelectField (used with adaptors)

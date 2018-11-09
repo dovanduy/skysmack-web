@@ -1,10 +1,10 @@
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SubscriptionLike } from 'rxjs';
-import { Field } from 'lib/portal-ui/fields/field';
-import { FormRule } from 'lib/portal-ui/forms/form-rule';
-import { EntityValidation } from 'lib/portal-ui/forms/entity-validation';
-import { FormHelper } from 'lib/portal-ui/forms/form-helper';
+import { Field } from './../../../fields/field';
+import { FormRule } from './../../../forms/form-rule';
+import { EntityValidation } from './../../../forms/entity-validation';
+import { FormHelper } from './../../../forms/form-helper';
 
 @Component({
   selector: 'ss-dynamic-form',
