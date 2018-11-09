@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { epic$, ReducerRegistry } from '@skysmack/redux';
 import { PersonsEpics, personsReducer } from '@skysmack/packages-persons';
 import { NgPersonsRequests } from './redux/ng-persons-requests';
+import { combineEpics } from '@skysmack/packages-skysmack/node_modules/redux-observable';
 
 @NgModule({
   imports: [
@@ -17,6 +18,6 @@ import { NgPersonsRequests } from './redux/ng-persons-requests';
 export class NgPersonsModule {
   constructor(personsRequests: NgPersonsRequests) {
     ReducerRegistry.Instance.register('persons', personsReducer);
-    epic$.next(new PersonsEpics(personsRequests).getEpics());
+    epic$.next(combineEpics(epic$.getValue(), new PersonsEpics(personsRequests).getEpics()));
   }
 }

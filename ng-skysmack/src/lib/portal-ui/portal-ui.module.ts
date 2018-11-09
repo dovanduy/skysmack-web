@@ -7,6 +7,7 @@ import { settingsReducer } from './redux/settings';
 import { authUserReducer } from './redux/authenticated-user/auth-user-reducer';
 import { AuthUserRequests, AuthUserEpics, AuthUserActions } from './redux';
 import { NgRedux } from '@angular-redux/store';
+import { combineEpics } from 'redux-observable';
 
 @NgModule({
   declarations: [],
@@ -25,7 +26,6 @@ export class PortalUiModule {
     ReducerRegistry.Instance.register('ui', uiReducer);
     ReducerRegistry.Instance.register('settings', settingsReducer);
     ReducerRegistry.Instance.register('authenticatedUser', authUserReducer);
-    // START HERE: FIX DYNAMIC EPIC INJECTION
-    epic$.next(new AuthUserEpics(ngRedux, authUserActions, authUserRequests).getEpics());
+    epic$.next(combineEpics(epic$.getValue(), new AuthUserEpics(ngRedux, authUserActions, authUserRequests).getEpics()));
   }
 }
