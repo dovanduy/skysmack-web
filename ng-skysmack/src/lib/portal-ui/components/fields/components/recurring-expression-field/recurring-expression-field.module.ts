@@ -6,10 +6,12 @@ import { SpecificTimeComponent } from './components/recurring-time/specific-time
 import { TimeUnitComponent } from './components/recurring-time/time-unit/time-unit.component';
 import { RecurringExpressionFieldComponent, RecurringCustomExpressionComponent, RecurringDailyComponent, RecurringWeeklyComponent, RecurringMonthlyComponent, RecurringYearlyComponent, DailyFrequencyComponent, WeeklyFrequencyComponent, MonthlyFrequencyComponent, DayOfWeekComponent, DatesComponent, MonthsComponent } from 'lib/portal-ui/components';
 import { MaterialModule } from 'lib/portal-ui/material.module';
+import { CommonModule } from '@angular/common';
 
 
 @NgModule({
     imports: [
+        CommonModule,
         FormsModule,
         MaterialModule
     ],

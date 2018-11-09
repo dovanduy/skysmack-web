@@ -4,7 +4,7 @@ import { NgRedux, NgReduxModule } from '@angular-redux/store';
 
 import { RouterModule } from '@angular/router';
 import { NgReduxRouter, NgReduxRouterModule } from '@angular-redux/router';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 
 import { StartComponent } from './components/start/start.component';
 import { ReduxOfflineConfiguration } from '../redux/redux-offline.configuration';
@@ -14,9 +14,17 @@ import { SkysmackModule } from './../../../../../lib/portal-packages/skysmack/sk
 import { FrontPageComponent } from './components/front-page/front-page.component';
 import { FallBackComponent } from './components/fall-back/fall-back.component';
 import { PortalUiModule } from 'lib/portal-ui/portal-ui.module';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 // DO NOT DELETE - BUILD FAILS IF REMOVED >:(
 import { PersonsModule } from './../../../../../lib/portal-packages/persons/persons.module';
+import { CommonModule } from '@angular/common';
+
+// AoT requires an exported function for factories
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http, 'i18n/');
+}
 
 @NgModule({
   declarations: [
@@ -27,6 +35,13 @@ import { PersonsModule } from './../../../../../lib/portal-packages/persons/pers
   imports: [
     BrowserModule,
     HttpClientModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    }),
     RouterModule.forRoot([
       {
         path: 'persons',
