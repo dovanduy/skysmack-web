@@ -5,8 +5,6 @@ import { PersonsRoutingModule } from './persons-routing.module';
 import { PersonsIndexComponent } from './components/persons-index/persons-index.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NgPersonsModule } from './../../ng-packages/persons';
-import { PersonsPackageManifest } from './../../portal-packages/persons/persons-package-manifest';
-import { PackageLoader } from './../../ng-packages/packages/package-loader';
 
 @NgModule({
   imports: [
@@ -20,7 +18,3 @@ import { PackageLoader } from './../../ng-packages/packages/package-loader';
   providers: [],
 })
 export class PersonsModule { }
-
-export function loadPersonPackage(packageLoader: PackageLoader) {
-  return () => packageLoader.add(new PersonsPackageManifest());
-}

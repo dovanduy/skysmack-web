@@ -5,6 +5,7 @@ import { CurrentTenantViewModel } from '@skysmack/packages-skysmack';
 import { hasValue } from '@skysmack/framework';
 import { DynamicPackageRouter } from '../models/dynamic-package-router';
 import { NgSkysmackRedux } from './../../../../lib/ng-packages/skysmack/redux/ng-skysmack-redux';
+import { packageManifests } from './packages';
 
 @Injectable({ providedIn: 'root' })
 export class PackageRouteConfiguration {
@@ -17,10 +18,6 @@ export class PackageRouteConfiguration {
     public get router(): Router {
         return this.injector.get(Router);
     }
-
-    private routingPaths = [
-        { type: '38ffd3ad-91a8-44d4-a71a-fd2f478ebd18', path: '../../../../../lib/portal-packages/persons/persons.module#PersonsModule' }
-    ];
 
     private routingModules: DynamicPackageRouter[] = [
         // new PersonRoutingModule,
@@ -37,9 +34,9 @@ export class PackageRouteConfiguration {
                 hasValue(),
                 map((currentTenant: CurrentTenantViewModel) => {
                     currentTenant.packages.map(_package => {
-                        return this.routingPaths.map(routingPath => {
-                            if (routingPath.type === _package.type) {
-                                this.addRoute(_package.url, routingPath.path);
+                        return packageManifests.map(routingPath => {
+                            if (routingPath.id === _package.type) {
+                                this.addRoute(_package.url, routingPath.modulePath);
                             }
                         });
                     });

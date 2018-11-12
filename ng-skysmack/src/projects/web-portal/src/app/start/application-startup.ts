@@ -1,8 +1,8 @@
 import { APP_INITIALIZER } from '@angular/core';
 import { NgSkysmackActions } from './../../../../../lib/ng-packages/skysmack/redux/ng-skysmack-actions';
 import { SkysmackApiDomain } from '../../requests/skysmack-api-domain';
-import { loadPersonPackage } from './../../../../../lib/portal-packages/persons/persons.module';
 import { PackageLoader } from './../../../../../lib/ng-packages/packages/package-loader';
+import { loadPersonPackage } from '../packages/persons-package-manifest';
 
 export function configureCurrentTenant(actions: NgSkysmackActions) {
     return () => actions.getCurrentTenant();
