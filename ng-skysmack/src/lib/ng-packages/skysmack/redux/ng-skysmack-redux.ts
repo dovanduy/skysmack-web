@@ -4,8 +4,8 @@ import { map, filter } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { LocalObject, toLocalObject, defined, flatten, safeHasValue } from '@skysmack/framework';
 import { CurrentTenantViewModel, InstalledPackageViewModel } from '@skysmack/packages-skysmack';
-import { PackageLoader } from './../../../ng-packages/packages/package-loader';
-import { Package } from './../../../ng-packages/packages/package';
+import { Package } from '../packages/package';
+import { PackageLoader } from '../packages/package-loader';
 
 @Injectable({ providedIn: 'root' })
 export class NgSkysmackRedux {

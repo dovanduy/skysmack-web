@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Package } from './../../../../ng-packages/packages/package';
 import { NgSkysmackRedux } from './../../../../ng-packages/skysmack/redux/ng-skysmack-redux';
 import { Menu } from './../../../models/menu';
 import { UIRedux } from './../../../redux/ui-redux';
+import { Package } from 'lib/ng-packages/skysmack/packages/package';
 
 @Component({
   selector: 'ss-package-drawer',

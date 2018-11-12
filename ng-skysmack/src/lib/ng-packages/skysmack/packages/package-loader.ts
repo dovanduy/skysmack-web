@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Package } from './package';
 import { InstalledPackageViewModel } from '@skysmack/packages-skysmack';
-import { PackageManifest } from './../../portal-ui/models/package-manifest';
+import { PackageManifest } from './../../../portal-ui/models/package-manifest';
 
 
 @Injectable({ providedIn: 'root' })
