@@ -3,9 +3,10 @@ import { PackageManifest } from './../../../../../lib/portal-ui/models/package-m
 import { PackageLoader } from './../../../../../lib/ng-packages/packages/package-loader';
 
 export class PersonsPackageManifest extends PersonsType implements PackageManifest {
+    public static modulePath = '../../../../../lib/portal-packages/persons/persons.module#PersonsModule';
     public icon = 'face';
     public menuLocation = 'main';
-    public modulePath = '../../../../../lib/portal-packages/persons/persons.module#PersonsModule';
+    public modulePath = PersonsPackageManifest.modulePath;
 }
 
 export function loadPersonPackage(packageLoader: PackageLoader) {
