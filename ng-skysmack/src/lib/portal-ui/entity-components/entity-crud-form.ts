@@ -1,13 +1,14 @@
-import { FormHelper } from 'framework/forms/form-helper';
 import { combineLatest } from 'rxjs';
-import { Field } from 'framework/fields/field';
 import { map } from 'rxjs/operators';
-import { EntityFormBase } from 'framework/entity-components/entity-form-base';
-import { EditorNavService } from 'ui';
 import { Router, ActivatedRoute } from '@angular/router';
-import { BaseRedux } from 'framework/redux/base-redux';
-import { FieldsConfig } from 'framework/models/fields-config';
 import { OnInit, OnDestroy } from '@angular/core';
+import { EntityFormBase } from './entity-form-base';
+import { EditorNavService } from '../components/common/container/editor-nav.service';
+import { FieldsConfig } from '../fields/fields-config';
+import { LocalObject } from '@skysmack/framework';
+import { FieldSchemaViewModel } from '../fields/field-schema-view-model';
+import { Field } from '../fields/field';
+import { FormHelper } from '../forms/form-helper';
 
 export class EntityCrudForm extends EntityFormBase implements OnInit, OnDestroy {
 
@@ -15,7 +16,7 @@ export class EntityCrudForm extends EntityFormBase implements OnInit, OnDestroy 
         public router: Router,
         public activatedRoute: ActivatedRoute,
         public editorNavService: EditorNavService,
-        public redux: BaseRedux,
+        public redux: any, // Was BaseRedux
         public fieldsConfig: FieldsConfig
     ) {
         super(router, activatedRoute, redux, fieldsConfig);
@@ -36,7 +37,7 @@ export class EntityCrudForm extends EntityFormBase implements OnInit, OnDestroy 
      */
     public initPackageCreateForm() {
         this.subscriptionHandler.subscribe(this.redux.fields(this.path).pipe(
-            map(dynamicFields => this.getFields(undefined, dynamicFields))
+            map((dynamicFields: LocalObject<FieldSchemaViewModel>[]) => this.getFields(undefined, dynamicFields))
         ).subscribe(fields => this.fields = fields));
     }
 
@@ -88,7 +89,7 @@ export class EntityCrudForm extends EntityFormBase implements OnInit, OnDestroy 
      */
     public initModuleEditForm() {
         this.subscriptionHandler.subscribe(this.redux.get(this.redux.config.area.key, this.entityId).pipe(
-            map(entity => {
+            map((entity: LocalObject<any>) => {
                 this.selectedEntity = entity;
                 return this.getFields(entity);
             })
@@ -137,7 +138,7 @@ export class EntityCrudForm extends EntityFormBase implements OnInit, OnDestroy 
         this.validateForm(fh, () => {
             const oldValue = { ...this.selectedEntity };
             const newValue = this.extractFormValues(fh, this.selectedEntity);
-            newValue.oldValue = oldValue.object;
+            newValue.oldObject = oldValue.object;
             this.redux.update(newValue, identity);
             this.editorNavService.hideEditorNav();
         }, autoReset);

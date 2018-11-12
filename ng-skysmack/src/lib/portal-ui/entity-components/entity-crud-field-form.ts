@@ -1,12 +1,14 @@
-import { FormHelper } from 'framework/forms/form-helper';
 import { map } from 'rxjs/operators';
 import { combineLatest } from 'rxjs';
-import { EntityFormBase } from 'framework/entity-components/entity-form-base';
-import { DocumentFieldsConfig, FieldsConfig } from 'framework/models';
 import { Router, ActivatedRoute } from '@angular/router';
-import { BaseRedux } from 'framework/redux';
-import { EditorNavService } from 'ui';
 import { OnDestroy, OnInit } from '@angular/core';
+import { EntityFormBase } from './entity-form-base';
+import { EditorNavService } from '../components/common/container/editor-nav.service';
+import { FieldsConfig } from '../fields/fields-config';
+import { FormHelper } from '../forms/form-helper';
+import { DocumentFieldsConfig } from '../fields/document-fields-config';
+import { FieldValueProviderViewModel } from '../fields';
+import { LocalObject } from '@skysmack/framework';
 
 export class EntityCrudFieldForm extends EntityFormBase implements OnInit, OnDestroy {
 
@@ -14,7 +16,7 @@ export class EntityCrudFieldForm extends EntityFormBase implements OnInit, OnDes
         public router: Router,
         public activatedRoute: ActivatedRoute,
         public editorNavService: EditorNavService,
-        public redux: BaseRedux,
+        public redux: any, // Was BaseRedux
         public fieldsConfig: FieldsConfig,
     ) {
         super(router, activatedRoute, redux, fieldsConfig);
@@ -35,7 +37,7 @@ export class EntityCrudFieldForm extends EntityFormBase implements OnInit, OnDes
      */
     public initCreateForm() {
         this.subscriptionHandler.subscribe(this.redux.availableFields(this.path).pipe(
-            map(availableFields => (this.fieldsConfig as DocumentFieldsConfig).getDynamicFields(availableFields))
+            map((availableFields: LocalObject<FieldValueProviderViewModel>[]) => (this.fieldsConfig as DocumentFieldsConfig).getDynamicFields(availableFields))
         ).subscribe(fields => this.fields = fields));
     }
 
@@ -98,7 +100,7 @@ export class EntityCrudFieldForm extends EntityFormBase implements OnInit, OnDes
         this.validateForm(fh, () => {
             const oldValue = { ...this.selectedEntity };
             const newValue = this.extractFormValues(fh, this.selectedEntity);
-            newValue.oldValue = oldValue.object;
+            newValue.oldObject = oldValue.object;
             this.redux.updateField(newValue, this.path);
             this.editorNavService.hideEditorNav();
         }, autoReset);

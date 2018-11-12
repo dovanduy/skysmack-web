@@ -1,5 +1,3 @@
-import { PersonsModule } from './../../../../../lib/portal-packages/persons/persons.module';
-
 import { NgReduxRouter, NgReduxRouterModule } from '@angular-redux/router';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { HttpClientModule, HttpClient } from '@angular/common/http';

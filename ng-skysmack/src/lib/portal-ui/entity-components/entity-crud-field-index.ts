@@ -1,11 +1,10 @@
 import { Observable } from 'rxjs';
-import { LocalObject } from 'framework/models/local-object';
-import { FieldSchemaViewModel } from 'skysmack-api/model/fieldSchemaViewModel';
 import { OnInit } from '@angular/core';
 import { map } from 'rxjs/operators';
-import { EntityBase } from 'framework/entity-components/entity-base';
 import { Router, ActivatedRoute } from '@angular/router';
-import { BaseRedux } from 'framework/redux';
+import { EntityBase } from './entity-base';
+import { LocalObject } from '@skysmack/framework';
+import { FieldSchemaViewModel } from '../fields/field-schema-view-model';
 
 export class EntityCrudFieldIndex extends EntityBase implements OnInit {
     /**
@@ -21,7 +20,7 @@ export class EntityCrudFieldIndex extends EntityBase implements OnInit {
     constructor(
         public router: Router,
         public activatedRoute: ActivatedRoute,
-        public redux: BaseRedux,
+        public redux: any,// Was BaseRedux
     ) {
         super(router, activatedRoute, redux);
     }

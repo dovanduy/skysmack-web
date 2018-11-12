@@ -1,13 +1,10 @@
-import { LocalObject } from 'framework/models/local-object';
 import { Observable } from 'rxjs/internal/Observable';
 import { OnInit } from '@angular/core';
-import { EntityBase } from 'framework/entity-components/entity-base';
-import { DocumentFieldsConfig } from 'framework/models/document-fields-config';
-import { FieldsConfig } from 'framework/models/fields-config';
 import { Router, ActivatedRoute } from '@angular/router';
-import { BaseRedux } from 'framework/redux';
-import { RSQLFilterBuilder } from 'framework/rsql';
-import { SortBuilder } from 'framework/sort/sort-builder';
+import { EntityBase } from './entity-base';
+import { LocalObject, RSQLFilterBuilder, SortBuilder } from '@skysmack/framework';
+import { FieldsConfig } from '../fields/fields-config';
+import { DocumentFieldsConfig } from '../fields/document-fields-config';
 
 export class EntityCrudIndex extends EntityBase implements OnInit {
     public entities$: Observable<LocalObject<any>[]>;
@@ -18,7 +15,7 @@ export class EntityCrudIndex extends EntityBase implements OnInit {
     constructor(
         public router: Router,
         public activatedRoute: ActivatedRoute,
-        public redux: BaseRedux,
+        public redux: any, // Why BaseRedux
         public fieldsConfig: FieldsConfig,
     ) {
         super(router, activatedRoute, redux);

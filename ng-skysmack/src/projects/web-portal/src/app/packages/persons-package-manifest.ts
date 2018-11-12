@@ -1,4 +1,5 @@
 // DO NOT DELETE - BUILD FAILS IF REMOVED >:(
+import { PersonsModule } from './../../../../../lib/portal-packages/persons/persons.module';
 
 import { PersonsType } from '@skysmack/packages-persons';
 import { PackageManifest } from './../../../../../lib/portal-ui/models/package-manifest';

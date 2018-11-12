@@ -3,11 +3,10 @@ import { OnInit } from '@angular/core';
 import { CalendarEvent, EventAction, EventColor } from 'calendar-utils';
 import { Observable, pipe } from 'rxjs';
 import { Router, ActivatedRoute } from '@angular/router';
-import { LodgingsReservationsFeatureRedux } from 'features/lodgings-reservations-feature/lodgings-reservations-feature-redux/lodgings-reservations-feature-redux';
-import { LodgingsReservationsFeatureFieldsConfig } from 'features/lodgings-reservations-feature/lodgings-reservations-feature-fields-config';
-import { Dictionary } from 'framework/models/dictionary';
 import { map } from 'rxjs/operators';
 import * as moment from 'moment';
+import { FieldsConfig } from '../fields';
+import { StrIndex } from '@skysmack/framework';
 
 
 export class EntityCrudIndexTimePaged extends EntityCrudIndex implements OnInit {
@@ -17,8 +16,8 @@ export class EntityCrudIndexTimePaged extends EntityCrudIndex implements OnInit 
     constructor(
         public router: Router,
         public activatedRoute: ActivatedRoute,
-        public redux: LodgingsReservationsFeatureRedux,
-        public fieldsConfig: LodgingsReservationsFeatureFieldsConfig,
+        public redux: any, // Was LodgingsReservationsFeatureRedux, should have been BaseRedux?
+        public fieldsConfig: FieldsConfig, // Was LodgingsReservationsFeatureFieldsConfig, should be FieldsConfig?
     ) {
         super(router, activatedRoute, redux, fieldsConfig);
     }
@@ -41,7 +40,7 @@ export class EntityCrudIndexTimePaged extends EntityCrudIndex implements OnInit 
 }
 
 const toCalendarEvents = () => pipe(
-    map((dates: { date: Dictionary<{ date: { [key: string]: number; } }> }) => Object.keys(dates).map(dateKey => {
+    map((dates: { date: StrIndex<{ date: { [key: string]: number; } }> }) => Object.keys(dates).map(dateKey => {
         const date = dateKey;
         let freeLodgingsBadge = 0;
 

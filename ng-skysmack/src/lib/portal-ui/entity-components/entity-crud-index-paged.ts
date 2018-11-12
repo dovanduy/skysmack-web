@@ -1,17 +1,12 @@
-import { Dictionary, LocalObject } from 'framework/models';
-import { Page } from 'framework/pagination';
 import { Observable, BehaviorSubject, combineLatest, fromEvent } from 'rxjs';
-import { hasValue } from 'framework/helpers/rxjs-helpers';
 import { map } from 'rxjs/operators';
-import { setKey } from 'framework/helpers/framework.helpers';
-import { linq } from 'framework/helpers/linq';
-import { LoadingState } from 'framework/helpers/loading-state';
 import { OnInit } from '@angular/core';
-import { EntityCrudIndex } from 'framework/entity-components/entity-crud-index';
+import { EntityCrudIndex } from './entity-crud-index';
+import { LoadingState, LocalObject, hasValue, StrIndex, setKey, linq } from '@skysmack/framework';
 
 export class EntityCrudIndexPaged extends EntityCrudIndex implements OnInit {
 
-    public pages$: BehaviorSubject<Page[]> = new BehaviorSubject<Page[]>([]);
+    public pages$: BehaviorSubject<any[]> = new BehaviorSubject<any[]>([]); // Was Page
     public pagedEntities$: Observable<LocalObject<any>[]>;
 
     public nextPageNumber = 1;
@@ -53,13 +48,13 @@ export class EntityCrudIndexPaged extends EntityCrudIndex implements OnInit {
     public loadPages() {
         this.subscriptionHandler.subscribe(this.redux.getPageDictionary().pipe(
             hasValue(),
-            map((dictionary: Dictionary<Dictionary<Page>>) => {
+            map((dictionary: StrIndex<StrIndex<any>>) => { // Was Page
                 const queryDictionary = dictionary[setKey(this.path, [this.nextPageSize])];
                 if (queryDictionary) {
                     const pages = Object.keys(queryDictionary)
                         .map(key => queryDictionary[key])
                         .filter(page => page.pagination.xPageNumber <= this.nextPageNumber)
-                        .sort((a: Page, b: Page) => a.pagination.xPageNumber - b.pagination.xPageNumber);
+                        .sort((a: any, b: any) => a.pagination.xPageNumber - b.pagination.xPageNumber); // Was Page
 
                     const lastPage = pages[pages.length - 1];
                     this.pages$.next(pages);
@@ -135,7 +130,7 @@ export class EntityCrudIndexPaged extends EntityCrudIndex implements OnInit {
                 this.redux.getJustCreatedEntities(this.path),
                 pagedEntities$
             ).pipe(
-                map(values => {
+                map((values: any[]) => {
                     const outBox = values[0];
                     const justCreated = values[1];
                     const entities = values[2];

@@ -1,11 +1,9 @@
 import { OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { LocalObject } from 'framework/models';
 import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
-import { Package } from 'framework/packages/package';
-import { SubscriptionHandler } from 'framework/helpers';
-import { BaseRedux } from 'framework/redux';
+import { SubscriptionHandler } from '@skysmack/framework';
+import { Package } from 'lib/ng-packages/skysmack';
 
 export class EntityBase implements OnDestroy, OnInit {
   public subscriptionHandler = new SubscriptionHandler();
@@ -17,7 +15,7 @@ export class EntityBase implements OnDestroy, OnInit {
   constructor(
     public router: Router,
     public activatedRoute: ActivatedRoute,
-    public redux: BaseRedux
+    public redux: any // Was BaseRedux
   ) { }
 
   ngOnInit() {

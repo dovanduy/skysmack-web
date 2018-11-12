@@ -1,15 +1,12 @@
-import { FormHelper } from 'framework/forms/form-helper';
-import { LocalObject } from 'framework/models/local-object';
-import { toLocalObject } from 'framework/helpers/framework.helpers';
-import { LocalObjectStatus } from 'framework/models/local-object-status';
-import { Field } from 'framework/fields/field';
-import { FieldTypes } from 'framework/fields/field-types';
 import { FormGroup } from '@angular/forms';
-import { FieldSchemaViewModel } from 'skysmack-api';
-import { EntityBase } from 'framework/entity-components/entity-base';
 import { Router, ActivatedRoute } from '@angular/router';
-import { FieldsConfig } from 'framework/models/fields-config';
-import { BaseRedux } from 'framework/redux';
+import { EntityBase } from './entity-base';
+import { Field } from '../fields/field';
+import { LocalObject, toLocalObject, LocalObjectStatus } from '@skysmack/framework';
+import { FieldsConfig } from '../fields/fields-config';
+import { FieldTypes } from '../fields/field-types';
+import { FormHelper } from '../forms/form-helper';
+import { FieldSchemaViewModel } from '../fields/field-schema-view-model';
 
 export class EntityFormBase extends EntityBase {
     /**
@@ -25,7 +22,7 @@ export class EntityFormBase extends EntityBase {
     constructor(
         public router: Router,
         public activatedRoute: ActivatedRoute,
-        public redux: BaseRedux,
+        public redux: any, // Was BaseRedux
         public fieldsConfig: FieldsConfig,
     ) {
         super(router, activatedRoute, redux);

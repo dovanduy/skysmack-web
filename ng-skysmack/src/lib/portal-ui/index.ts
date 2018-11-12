@@ -7,3 +7,5 @@ export * from './components';
 export * from './fields';
 export * from './models';
 export * from './providers';
+export * from './entity-components';
+export * from './base-components';
