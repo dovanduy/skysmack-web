@@ -1,3 +1,6 @@
+// DO NOT DELETE - BUILD FAILS IF REMOVED >:(
+import { PersonsModule } from './../../../../../lib/portal-packages/persons/persons.module';
+
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { NgRedux, NgReduxModule } from '@angular-redux/store';
@@ -15,10 +18,6 @@ import { FallBackComponent } from './components/fall-back/fall-back.component';
 import { PortalUiModule } from './../../../../../lib/portal-ui/portal-ui.module';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-
-// DO NOT DELETE - BUILD FAILS IF REMOVED >:(
-import { PersonsModule } from './../../../../../lib/portal-packages/persons/persons.module';
-import { PackageLoader } from 'lib/ng-packages/packages/package-loader';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -63,6 +62,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     PortalUiModule
   ],
   providers: [
+    ,
     applicationStartup
   ],
   bootstrap: [StartComponent]
