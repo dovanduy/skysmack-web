@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Observable } from 'rxjs';
 import { CurrentTenantViewModel } from '@skysmack/packages-skysmack';
-import { Router } from '@angular/router';
+import { Router, RouteConfigLoadStart, RouteConfigLoadEnd } from '@angular/router';
 import { NgSkysmackRedux } from './../../../../../../../lib/ng-packages/skysmack/redux/ng-skysmack-redux';
 import { PackageRouteConfiguration } from '../../../package-route-configuration';
 
@@ -16,6 +16,7 @@ export class StartComponent implements OnInit {
 
   public currentTenant$: Observable<CurrentTenantViewModel>;
   public currentTenantLoaded$: Observable<boolean>;
+  loadingRouteConfig: boolean;
 
   constructor(
     public router: Router,
@@ -30,6 +31,14 @@ export class StartComponent implements OnInit {
     this.currentTenantLoaded$ = this.redux.getCurrentTenantLoaded();
     // super.ngOnInit();
     this.router.onSameUrlNavigation = 'ignore';
+
+    this.router.events.subscribe(event => {
+      if (event instanceof RouteConfigLoadStart) {
+        this.loadingRouteConfig = true;
+      } else if (event instanceof RouteConfigLoadEnd) {
+        this.loadingRouteConfig = false;
+      }
+    });
   }
 
 }
