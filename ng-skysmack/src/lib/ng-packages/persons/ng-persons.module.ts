@@ -5,7 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { epic$, ReducerRegistry } from '@skysmack/redux';
 import { PersonsEpics, personsReducer } from '@skysmack/packages-persons';
 import { NgPersonsRequests } from './redux/ng-persons-requests';
-import { combineEpics } from '@skysmack/packages-skysmack/node_modules/redux-observable';
+import { combineEpics } from 'redux-observable';
 
 @NgModule({
   imports: [

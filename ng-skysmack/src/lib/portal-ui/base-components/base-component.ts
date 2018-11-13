@@ -54,7 +54,7 @@ export class BaseComponent implements OnInit, OnDestroy {
     }
 
     public getCurrentPackage() {
-        this.actions.getPaged(this.path, this.pagedQuery);
+        // this.actions.getPaged(this.path, this.pagedQuery);
         // this.package$ = this.redux.getCurrentPackage(this.path);
     }
 

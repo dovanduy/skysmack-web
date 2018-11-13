@@ -18,6 +18,7 @@ export abstract class RecordActionsBase<TStateType> {
 
 
     public getPaged(packagePath: string, pagedQuery: PagedQuery): GetPagedRecordsAction {
+        console.log('DISPATCHING!')
         return this.store.dispatch(Object.assign({}, new GetPagedRecordsAction({
             type: this.prefix + RecordActionsBase.GET_PAGED,
             packagePath: packagePath,
