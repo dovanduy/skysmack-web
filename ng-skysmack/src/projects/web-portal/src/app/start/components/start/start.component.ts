@@ -16,7 +16,7 @@ export class StartComponent implements OnInit {
 
   public currentTenant$: Observable<CurrentTenantViewModel>;
   public currentTenantLoaded$: Observable<boolean>;
-  loadingRouteConfig: boolean;
+  public loadingRouteConfig: boolean;
 
   constructor(
     public router: Router,

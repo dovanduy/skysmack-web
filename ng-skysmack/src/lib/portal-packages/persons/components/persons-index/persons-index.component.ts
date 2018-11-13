@@ -1,19 +1,26 @@
 import { Component, OnInit } from '@angular/core';
-import { NgPersonsRequests } from './../../../../ng-packages/persons/redux/ng-persons-requests';
-import { NgPersonsRedux } from './../../../../ng-packages/persons/redux/ng-persons-redux';
+import { RecordIndexComponent } from 'lib/portal-ui';
+import { Router, ActivatedRoute } from '@angular/router';
+import { NgPersonsActions } from 'lib/ng-packages/persons/redux/ng-persons-actions';
+import { NgPersonsRedux } from 'lib/ng-packages/persons/redux/ng-persons-redux';
 
 @Component({
   selector: 'ss-persons-index',
   templateUrl: './persons-index.component.html',
   styleUrls: ['./persons-index.component.scss']
 })
-export class PersonsIndexComponent implements OnInit {
+export class PersonsIndexComponent extends RecordIndexComponent implements OnInit {
 
   constructor(
-    public personsRequests: NgPersonsRequests,
-    public personsRedux: NgPersonsRedux,
-  ) { }
+    public router: Router,
+    public activatedRoute: ActivatedRoute,
+    public actions: NgPersonsActions,
+    public redux: NgPersonsRedux,
+  ) {
+    super(router, activatedRoute, actions, redux);
+  }
 
-  ngOnInit() { }
-
+  ngOnInit() {
+    super.ngOnInit();
+  }
 }

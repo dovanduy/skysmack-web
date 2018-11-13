@@ -1,5 +1,5 @@
 // Do not deletes
-import { PersonsModule } from 'lib/portal-packages/persons/persons.module';
+import { PersonsModule } from '../../../../../lib/portal-packages/persons/persons.module';
 
 import { NgReduxRouter, NgReduxRouterModule } from '@angular-redux/router';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
@@ -44,7 +44,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     RouterModule.forRoot([
       {
         path: 'persons',
-        loadChildren: '../../../../../lib/portal-packages/persons/persons.module'
+        loadChildren: '../../../../../lib/portal-packages/persons/persons.module#PersonsModule'
       },
       {
         path: '',
@@ -63,7 +63,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     PortalUiModule
   ],
   providers: [
-    ,
     applicationStartup
   ],
   bootstrap: [StartComponent]

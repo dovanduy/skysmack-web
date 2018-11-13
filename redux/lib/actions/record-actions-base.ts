@@ -12,22 +12,25 @@ export abstract class RecordActionsBase<TStateType> {
     public static GET_SINGLE_FAILURE = RecordActionsBase.GET_SINGLE + '_FAILURE';
 
     constructor(
-        protected reduxStore: Store<TStateType>
+        protected store: Store<TStateType>,
+        protected prefix: string
     ) { }
 
+
     public getPaged(packagePath: string, pagedQuery: PagedQuery): GetPagedRecordsAction {
-        return this.reduxStore.dispatch(new GetPagedRecordsAction({
-            type: RecordActionsBase.GET_PAGED,
+        return this.store.dispatch(Object.assign({}, new GetPagedRecordsAction({
+            type: this.prefix + RecordActionsBase.GET_PAGED,
             packagePath: packagePath,
             pagedQuery: pagedQuery
-        }));
+        })));
     }
 
+
     public getSingle<TKey>(packagePath: string, id: TKey): GetSingleRecordAction<TKey> {
-        return this.reduxStore.dispatch(new GetSingleRecordAction<TKey>({
-            type: RecordActionsBase.GET_SINGLE,
+        return this.store.dispatch(Object.assign({}, new GetSingleRecordAction<TKey>({
+            type: this.prefix + RecordActionsBase.GET_SINGLE,
             packagePath: packagePath,
             id: id
-        }));
+        })));
     }
 }
