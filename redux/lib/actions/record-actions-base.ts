@@ -2,7 +2,7 @@ import { Store } from 'redux';
 import { GetSingleRecordAction, GetPagedRecordsAction } from '../action-types';
 import { PagedQuery } from '@skysmack/framework';
 
-export abstract class RecordActionsBase<TStateType> {
+export abstract class RecordActionsBase<TStateType, TStore extends Store<TStateType>> {
     public static GET_PAGED = 'GET_PAGED';
     public static GET_PAGED_SUCCESS = RecordActionsBase.GET_PAGED + '_SUCCESS';
     public static GET_PAGED_FAILURE = RecordActionsBase.GET_PAGED + '_FAILURE';
@@ -12,7 +12,7 @@ export abstract class RecordActionsBase<TStateType> {
     public static GET_SINGLE_FAILURE = RecordActionsBase.GET_SINGLE + '_FAILURE';
 
     constructor(
-        protected store: Store<TStateType>,
+        protected store: TStore,
         protected prefix: string
     ) { }
 

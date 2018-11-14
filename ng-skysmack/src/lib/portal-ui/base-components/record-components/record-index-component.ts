@@ -8,7 +8,7 @@ export class RecordIndexComponent extends BaseComponent {
     constructor(
         public router: Router,
         public activatedRoute: ActivatedRoute,
-        public actions: RecordActionsBase<NgRedux<any>>,
+        public actions: RecordActionsBase<any, NgRedux<any>>,
         public redux: NgSkysmackRedux
     ) {
         super(router, activatedRoute, actions, redux);

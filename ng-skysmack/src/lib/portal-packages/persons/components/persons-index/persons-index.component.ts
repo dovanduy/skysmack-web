@@ -3,6 +3,8 @@ import { RecordIndexComponent, EntityComponentPageTitle } from 'lib/portal-ui';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgPersonsActions } from 'lib/ng-packages/persons/redux/ng-persons-actions';
 import { NgSkysmackRedux } from 'lib/ng-packages/skysmack';
+import { timer } from 'rxjs';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'ss-persons-index',
@@ -24,7 +26,7 @@ export class PersonsIndexComponent extends RecordIndexComponent implements OnIni
   ngOnInit() {
     super.ngOnInit();
     this.title.setTitle(this.path);
-    // this.actions.getPaged(this.path, this.pagedQuery);
+    timer(1).pipe(take(1)).subscribe(() => this.actions.getPaged(this.path, this.pagedQuery));
   }
 
   public send() {
