@@ -66,7 +66,6 @@ export function HttpLoaderFactory(http: HttpClient) {
   providers: [
     applicationStartup
   ],
-  exports: [BrowserAnimationsModule],
   bootstrap: [StartComponent]
 })
 export class StartModule {

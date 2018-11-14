@@ -6,7 +6,6 @@ import { OnInit, OnDestroy } from '@angular/core';
 import { take } from 'rxjs/operators';
 import { RecordActionsBase } from '@skysmack/redux';
 import { NgRedux } from '@angular-redux/store';
-import { NgRecordReduxStore } from 'lib/ng-redux/redux-stores/ng-record-redux-store';
 
 export class BaseComponent implements OnInit, OnDestroy {
     public subscriptionHandler = new SubscriptionHandler();
@@ -55,8 +54,6 @@ export class BaseComponent implements OnInit, OnDestroy {
 
     public getCurrentPackage() {
         this.package$ = this.redux.getCurrentPackage(this.path);
-        // this.actions.getPaged(this.path, this.pagedQuery);
-        // this.package$ = this.redux.getCurrentPackage(this.path);
     }
 
     public redirect(path: string) {

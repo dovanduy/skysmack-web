@@ -24,6 +24,7 @@ export class PersonsIndexComponent extends RecordIndexComponent implements OnIni
   ngOnInit() {
     super.ngOnInit();
     this.title.setTitle(this.path);
+    // this.actions.getPaged(this.path, this.pagedQuery);
   }
 
   public send() {
