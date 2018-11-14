@@ -6,7 +6,7 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { NgRedux, NgReduxModule } from '@angular-redux/store';
-import { BrowserModule } from '@angular/platform-browser';
+
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 
@@ -18,6 +18,7 @@ import { FallBackComponent } from './components/fall-back/fall-back.component';
 import { StartComponent } from './components/start/start.component';
 import { configureRedux } from '../redux/redux.configuration';
 import { applicationStartup } from './application-startup';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 // AoT requires an exported function for factories
@@ -32,15 +33,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     FallBackComponent
   ],
   imports: [
-    BrowserModule,
-    HttpClientModule,
-    TranslateModule.forRoot({
-      loader: {
-        provide: TranslateLoader,
-        useFactory: HttpLoaderFactory,
-        deps: [HttpClient]
-      }
-    }),
     RouterModule.forRoot([
       {
         path: 'persons',
@@ -57,14 +49,24 @@ export function HttpLoaderFactory(http: HttpClient) {
         component: FallBackComponent
       }
     ]),
+    BrowserAnimationsModule,
+    HttpClientModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    }),
+    PortalUiModule,
     NgReduxModule,
     NgReduxRouterModule.forRoot(),
     SkysmackModule,
-    PortalUiModule
   ],
   providers: [
     applicationStartup
   ],
+  exports: [BrowserAnimationsModule],
   bootstrap: [StartComponent]
 })
 export class StartModule {

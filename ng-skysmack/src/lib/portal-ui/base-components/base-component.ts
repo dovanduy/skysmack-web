@@ -1,5 +1,5 @@
 import { SubscriptionHandler, PagedQuery } from '@skysmack/framework';
-import { Package } from 'lib/ng-packages/skysmack';
+import { Package, NgSkysmackRedux } from 'lib/ng-packages/skysmack';
 import { Observable } from 'rxjs';
 import { Router, ActivatedRoute } from '@angular/router';
 import { OnInit, OnDestroy } from '@angular/core';
@@ -20,7 +20,7 @@ export class BaseComponent implements OnInit, OnDestroy {
         public router: Router,
         public activatedRoute: ActivatedRoute,
         public actions: RecordActionsBase<NgRedux<any>>,
-        public redux: NgRecordReduxStore<any, any, any>
+        public redux: NgSkysmackRedux
     ) { }
 
     ngOnInit() {
@@ -54,6 +54,7 @@ export class BaseComponent implements OnInit, OnDestroy {
     }
 
     public getCurrentPackage() {
+        this.package$ = this.redux.getCurrentPackage(this.path);
         // this.actions.getPaged(this.path, this.pagedQuery);
         // this.package$ = this.redux.getCurrentPackage(this.path);
     }

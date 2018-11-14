@@ -1,17 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { HttpClientModule } from '@angular/common/http';
 import { epic$, ReducerRegistry } from '@skysmack/redux';
 import { PersonsEpics, personsReducer } from '@skysmack/packages-persons';
 import { NgPersonsRequests } from './redux/ng-persons-requests';
 import { combineEpics } from 'redux-observable';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    HttpClientModule
-  ],
+  imports: [],
   exports: [],
   providers: [],
 })

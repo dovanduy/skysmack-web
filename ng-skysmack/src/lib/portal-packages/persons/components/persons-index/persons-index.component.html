@@ -1,3 +1,4 @@
-<ng-container *ngIf="path">
+<ss-container *ngIf="package$ | async as package">
+  <h2>{{ package.installedPackage.name }}</h2>
   <button (click)="send()">Get {{ path }} pages</button>
-</ng-container>
+</ss-container>

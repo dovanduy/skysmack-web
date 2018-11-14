@@ -27,11 +27,9 @@ import {
   MatDividerModule
 } from '@angular/material';
 import { CdkAccordionModule } from '@angular/cdk/accordion';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   imports: [
-    BrowserAnimationsModule,
     MatGridListModule,
     MatProgressSpinnerModule,
     MatCardModule,

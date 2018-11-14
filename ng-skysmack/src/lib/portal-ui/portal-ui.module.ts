@@ -9,7 +9,7 @@ import { AuthUserRequests, AuthUserEpics, AuthUserActions } from './redux';
 import { NgRedux } from '@angular-redux/store';
 import { combineEpics } from 'redux-observable';
 import { RouterModule } from '@angular/router';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { RecurringExpressionFieldModule } from './components/fields/components/recurring-expression-field/recurring-expression-field.module';
@@ -60,7 +60,6 @@ export function HttpLoaderFactory(http: HttpClient) {
   imports: [
     CommonModule,
     RouterModule,
-    BrowserAnimationsModule,
     ReactiveFormsModule,
     TranslateModule.forRoot({
       loader: {

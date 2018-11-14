@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RecordIndexComponent, EntityComponentPageTitle } from 'lib/portal-ui';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgPersonsActions } from 'lib/ng-packages/persons/redux/ng-persons-actions';
-import { NgPersonsRedux } from 'lib/ng-packages/persons/redux/ng-persons-redux';
+import { NgSkysmackRedux } from 'lib/ng-packages/skysmack';
 
 @Component({
   selector: 'ss-persons-index',
@@ -15,7 +15,7 @@ export class PersonsIndexComponent extends RecordIndexComponent implements OnIni
     public router: Router,
     public activatedRoute: ActivatedRoute,
     public actions: NgPersonsActions,
-    public redux: NgPersonsRedux,
+    public redux: NgSkysmackRedux,
     public title: EntityComponentPageTitle
   ) {
     super(router, activatedRoute, actions, redux);
