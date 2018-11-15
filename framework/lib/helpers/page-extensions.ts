@@ -2,7 +2,6 @@ import { LocalPage, LocalPageTypes, PageResponse, StrIndex, LocalPages } from ".
 
 export class PageExtensions {
     public static mergeOrAddPage<TKey>(existingPages: StrIndex<LocalPageTypes<TKey>>, newPage: PageResponse<TKey>): StrIndex<LocalPageTypes<TKey>> {
-        console.log(existingPages, newPage);
         let currentPageType = existingPages[newPage.query];
         if (!currentPageType || currentPageType === null) {
             currentPageType = new LocalPageTypes({

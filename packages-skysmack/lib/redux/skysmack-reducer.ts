@@ -1,13 +1,16 @@
 import { CurrentTenantViewModel } from './../models/current-tenant';
+import { StrIndex } from '@skysmack/framework';
 
 export class SkysmackState {
     currentTenant: CurrentTenantViewModel
     tenantLoaded: boolean;
+    packages: any[];
 }
 
 const SKYSMACK_STATE: SkysmackState = {
     currentTenant: {},
-    tenantLoaded: false
+    tenantLoaded: false,
+    packages: []
 }
 
 export function skysmackReducer(state = SKYSMACK_STATE, action) {
@@ -16,7 +19,12 @@ export function skysmackReducer(state = SKYSMACK_STATE, action) {
             return {
                 ...state,
                 currentTenant: action.payload,
-                tenantLoaded: true
+                tenantLoaded: true,
+                packages: [
+                    ...action.payload.packages,
+                    ...action.payload.features,
+                    ...action.payload.adaptors
+                ]
             }
         default:
             return state;
