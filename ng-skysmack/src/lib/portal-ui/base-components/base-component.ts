@@ -27,7 +27,6 @@ export class BaseComponent implements OnInit, OnDestroy {
         this.router.onSameUrlNavigation = 'ignore';
         this.getParams();
         this.getCurrentPackage();
-        this.subscriptionHandler.unsubscribe();
     }
 
     ngOnDestroy() {

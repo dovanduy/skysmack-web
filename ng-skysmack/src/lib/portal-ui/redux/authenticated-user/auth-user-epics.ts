@@ -1,7 +1,7 @@
 import { NgRedux } from '@angular-redux/store';
 import { Injectable } from '@angular/core';
 import * as moment from 'moment';
-import { ActionsObservable, combineEpics, ofType } from 'redux-observable';
+import { ActionsObservable, combineEpics, ofType, Epic } from 'redux-observable';
 import { catchError, map, switchMap, take } from 'rxjs/operators';
 
 import { AuthUserActions } from './auth-user-actions';
@@ -11,17 +11,17 @@ import { CurrentUser } from '@skysmack/framework';
 @Injectable({ providedIn: 'root' })
 export class AuthUserEpics {
     public static PASSWORD_FLOW = 'password';
-    public epics: any;
+    public epics: Epic[];
 
     constructor(
         public ngRedux: NgRedux<any>,
         public authUserActions: AuthUserActions,
         public authUserRequests: AuthUserRequests,
     ) {
-        this.epics = combineEpics(this.loginEpic);
+        this.epics = [
+            this.loginEpic
+        ];
     }
-
-    public getEpics = () => this.epics;
 
     public loginEpic = (action$: ActionsObservable<any>) => action$.pipe(
         ofType(AuthUserActions.LOG_IN), // Run on action

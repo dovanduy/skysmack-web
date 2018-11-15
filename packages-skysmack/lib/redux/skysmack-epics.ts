@@ -1,21 +1,19 @@
-import { combineEpics, ofType, ActionsObservable } from 'redux-observable';
+import { combineEpics, ofType, ActionsObservable, Epic } from 'redux-observable';
 import { switchMap } from 'rxjs/operators';
 import { SkysmackRequests } from './../models/skysmack-requests';
 import { SkysmackActions } from './skysmack-actions';
 
 export class SkysmackEpics {
-    protected epics: any;
-    protected prefix = 'skysmack';
+    public epics: Epic[];
+    protected prefix = 'SKYSMACK_';
 
     constructor(
         protected requests: SkysmackRequests
     ) {
-        this.epics = combineEpics(
-            this.get,
-        );
+        this.epics = [
+            this.get
+        ];
     }
-
-    public getEpics = () => this.epics;
 
     public get = (action$: ActionsObservable<any>) => action$.pipe(
         ofType(SkysmackActions.GET_CURRENT_TENANT),

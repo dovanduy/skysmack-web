@@ -5,6 +5,7 @@ import { NgPersonsActions } from 'lib/ng-packages/persons/redux/ng-persons-actio
 import { NgSkysmackRedux } from 'lib/ng-packages/skysmack';
 import { timer } from 'rxjs';
 import { take } from 'rxjs/operators';
+import { NgRedux } from '@angular-redux/store';
 
 @Component({
   selector: 'ss-persons-index',
@@ -18,7 +19,8 @@ export class PersonsIndexComponent extends RecordIndexComponent implements OnIni
     public activatedRoute: ActivatedRoute,
     public actions: NgPersonsActions,
     public redux: NgSkysmackRedux,
-    public title: EntityComponentPageTitle
+    public title: EntityComponentPageTitle,
+    public ngRedux: NgRedux<any>
   ) {
     super(router, activatedRoute, actions, redux);
   }
@@ -26,10 +28,7 @@ export class PersonsIndexComponent extends RecordIndexComponent implements OnIni
   ngOnInit() {
     super.ngOnInit();
     this.title.setTitle(this.path);
-    timer(1).pipe(take(1)).subscribe(() => this.actions.getPaged(this.path, this.pagedQuery));
-  }
-
-  public send() {
-    this.actions.getPaged(this.path, this.pagedQuery);
+    timer(500).pipe(take(1)).subscribe(() => this.ngRedux.dispatch({ type: 'PERSONS_TEST' }));
+    // timer(500).pipe(take(1)).subscribe(() => this.actions.getPaged(this.path, this.pagedQuery));
   }
 }
