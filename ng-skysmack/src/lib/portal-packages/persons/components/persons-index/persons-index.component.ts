@@ -28,7 +28,6 @@ export class PersonsIndexComponent extends RecordIndexComponent implements OnIni
   ngOnInit() {
     super.ngOnInit();
     this.title.setTitle(this.path);
-    timer(500).pipe(take(1)).subscribe(() => this.ngRedux.dispatch({ type: 'PERSONS_TEST' }));
-    // timer(500).pipe(take(1)).subscribe(() => this.actions.getPaged(this.path, this.pagedQuery));
+    timer(500).pipe(take(1)).subscribe(() => this.actions.getPaged(this.path, this.pagedQuery));
   }
 }

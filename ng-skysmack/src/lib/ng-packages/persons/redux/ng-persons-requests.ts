@@ -1,12 +1,15 @@
 import { Person } from '@skysmack/packages-persons';
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { NgRecordRequests } from './../../../ng-redux/requests/ng-record-requests';
+import { ApiDomain } from '@skysmack/framework';
 
 @Injectable({ providedIn: 'root' })
 export class NgPersonsRequests extends NgRecordRequests<Person, number> {
-    protected prefix: 'persons';
-    constructor(protected http: HttpClient) {
-        super(http);
+    constructor(
+        protected http: HttpClient,
+        @Inject('ApiDomain') protected apiDomain: ApiDomain
+    ) {
+        super(http, apiDomain, 'PERSONS_');
     }
 }
