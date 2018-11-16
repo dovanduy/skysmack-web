@@ -2,6 +2,7 @@ import { pipe, of } from 'rxjs';
 import { map, filter, flatMap, catchError, tap } from 'rxjs/operators';
 import { getProperty } from './framework.helpers';
 import { LocalObject } from './../models/local-object';
+import { StrIndex, NumIndex } from '../models/indexes';
 
 /**
  * Logs the next value in the stream to the console.
@@ -47,17 +48,17 @@ export const notNull = () => pipe(
 /**
  * Filters away all empty arrays or objects without any properties/keys.
  */
-export const notEmpty = () => pipe(
-    filter((x: any) => Array.isArray(x) ? x.length > 0 : Object.keys(x).length > 0),
+export const notEmpty = <T>() => pipe(
+    filter<T>((x: any) => Array.isArray(x) ? x.length > 0 : Object.keys(x).length > 0),
 );
 
 /**
  * Filters away values that are undefined, null, or empty arrays/objects.
  */
-export const hasValue = () => pipe(
+export const hasValue = <T>() => pipe(
     defined(),
     notNull(),
-    notEmpty()
+    notEmpty<T>()
 );
 
 /**
@@ -119,4 +120,11 @@ export const handleEpicError = (type) => pipe(
         payload: error,
         error: true
     }))
+);
+
+/**
+ * Puts all dictionary values into an array.
+ */
+export const dictionaryToArray = <TValue>() => pipe(
+    map<StrIndex<TValue> | NumIndex<TValue>, TValue[]>(x => Object.keys(x).map(key => x[key]))
 );

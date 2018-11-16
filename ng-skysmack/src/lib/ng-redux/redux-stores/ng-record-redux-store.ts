@@ -1,8 +1,8 @@
-import { Record, StrIndex, LocalPageTypes, LocalObject, NumIndex, safeHasValue, log, hasValue } from '@skysmack/framework';
-import { RecordReduxStore } from '@skysmack/redux';
-import { Observable, pipe } from 'rxjs';
+import { Record, StrIndex, LocalPageTypes, LocalObject, hasValue, dictionaryToArray } from '@skysmack/framework';
+import { RecordReduxStore, RecordState } from '@skysmack/redux';
+import { Observable } from 'rxjs';
 import { NgRedux } from '@angular-redux/store';
-import { map, filter } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 
 export abstract class NgRecordReduxStore<TState, TRecord extends Record<TKey>, TKey> implements RecordReduxStore<TRecord, TKey>  {
     constructor(
@@ -12,9 +12,9 @@ export abstract class NgRecordReduxStore<TState, TRecord extends Record<TKey>, T
 
     public get(packagePath: string): Observable<LocalObject<TRecord>[]> {
         return this.store.select(state => state[this.stateKey][packagePath]).pipe(
-            hasValue(),
+            hasValue<RecordState<TRecord, TKey>>(),
             map(x => x.localRecords),
-            hasValue(),
+            hasValue<StrIndex<LocalObject<TRecord>>>(),
             dictionaryToArray<LocalObject<TRecord>>()
         );
     }
@@ -28,6 +28,4 @@ export abstract class NgRecordReduxStore<TState, TRecord extends Record<TKey>, T
     }
 }
 
-const dictionaryToArray = <TValue>() => pipe(
-    map<StrIndex<TValue> | NumIndex<TValue>, TValue[]>(x => Object.keys(x).map(key => x[key]))
-);
+
