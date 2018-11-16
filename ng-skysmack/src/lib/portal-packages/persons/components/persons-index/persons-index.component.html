@@ -1,3 +1,11 @@
-<ss-container *ngIf="package$ | async as package">
-    <button mat-raised-button color="primary" (click)="getPaged()">Get pages</button>
+<ss-container *ngIf="package$ | async as _package">
+    <!-- 
+            [redux]="redux"
+             -->
+    <ss-data-table *ngIf="entities$" [title]="_package.installedPackage.name" [displayedColumns]="displayedColumns"
+        [entities$]="entities$" [entityActions]="entityActions" [path]="path" (entityActionEvent)="actionEvent($event)">
+        <!-- <ss-pagination
+        [loadingState]="loadingState"
+        (intersection)="onIntersection($event)"></ss-pagination> -->
+    </ss-data-table>
 </ss-container>

@@ -4,6 +4,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { take, map } from 'rxjs/operators';
 import { NgSkysmackRedux } from './../../ng-packages/skysmack/redux/ng-skysmack-redux';
 import { hasValue } from '@skysmack/framework';
+import { CurrentTenantViewModel } from '@skysmack/packages-skysmack';
 
 /**
  * Service responsible for setting the title that appears above the components and guide pages.
@@ -19,7 +20,7 @@ export class EntityComponentPageTitle {
     private tenantTitle = 'Skysmack';
 
     constructor(private translate: TranslateService, private bodyTitle: Title, private redux: NgSkysmackRedux) {
-        this.redux.getCurrentTenant().pipe(hasValue(), map(tenant => { if (tenant !== undefined) { return tenant; } }), take(1)).subscribe(tenant => {
+        this.redux.getCurrentTenant().pipe(hasValue<CurrentTenantViewModel>(), map(tenant => { if (tenant !== undefined) { return tenant; } }), take(1)).subscribe(tenant => {
             if (tenant.name) {
                 this.tenantTitle = tenant.name;
             }

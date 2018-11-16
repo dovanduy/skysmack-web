@@ -1,13 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { RecordIndexComponent, EntityComponentPageTitle } from 'lib/portal-ui';
+import { EntityComponentPageTitle, EntityAction, RecordPagedIndexComponent } from 'lib/portal-ui';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgPersonsActions } from 'lib/ng-packages/persons/redux/ng-persons-actions';
 import { NgSkysmackRedux } from 'lib/ng-packages/skysmack';
 import { timer } from 'rxjs';
 import { take } from 'rxjs/operators';
-import { NgRedux } from '@angular-redux/store';
 import { NgPersonsStore } from 'lib/ng-packages/persons';
-import { PagedQuery } from '@skysmack/framework';
+import { Person } from '@skysmack/packages-persons';
 
 
 @Component({
@@ -15,7 +14,14 @@ import { PagedQuery } from '@skysmack/framework';
   templateUrl: './persons-index.component.html',
   styleUrls: ['./persons-index.component.scss']
 })
-export class PersonsIndexComponent extends RecordIndexComponent implements OnInit {
+export class PersonsIndexComponent extends RecordPagedIndexComponent<Person> implements OnInit {
+
+  public displayedColumns = ['firstName', 'lastName'];
+  public entityActions: EntityAction[] = [
+    new EntityAction().asUrlAction('edit', 'Edit', 'edit'),
+    // new EntityAction().asEventAction('Delete', this.delete, 'delete')
+  ];
+
 
   constructor(
     public router: Router,
@@ -33,12 +39,8 @@ export class PersonsIndexComponent extends RecordIndexComponent implements OnIni
     super.ngOnInit();
     this.title.setTitle(this.path);
     timer(500).pipe(take(1)).subscribe(() => {
-      this.store.get(this.path).subscribe(x => console.log(x));
+      this.entities$ = this.store.get(this.path);
       this.actions.getPaged(this.path, this.pagedQuery);
     });
-  }
-
-  public getPaged() {
-    this.actions.getPaged(this.path, new PagedQuery({ pageNumber: 2 }));
   }
 }
