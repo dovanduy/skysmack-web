@@ -3,8 +3,6 @@ import { EntityComponentPageTitle, EntityAction, RecordPagedIndexComponent } fro
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgPersonsActions } from 'lib/ng-packages/persons/redux/ng-persons-actions';
 import { NgSkysmackRedux } from 'lib/ng-packages/skysmack';
-import { timer } from 'rxjs';
-import { take } from 'rxjs/operators';
 import { NgPersonsStore } from 'lib/ng-packages/persons';
 import { Person } from '@skysmack/packages-persons';
 
@@ -38,9 +36,8 @@ export class PersonsIndexComponent extends RecordPagedIndexComponent<Person> imp
   ngOnInit() {
     super.ngOnInit();
     this.title.setTitle(this.path);
-    timer(500).pipe(take(1)).subscribe(() => {
-      this.entities$ = this.store.get(this.path);
-      this.actions.getPaged(this.path, this.pagedQuery);
-    });
+    // Move these
+    this.actions.getPaged(this.path, this.pagedQuery);
+    this.entities$ = this.store.get(this.path);
   }
 }

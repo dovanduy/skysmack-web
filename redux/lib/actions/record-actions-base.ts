@@ -17,8 +17,8 @@ export abstract class RecordActionsBase<TStateType, TStore extends Store<TStateT
     ) { }
 
 
-    public getPaged(packagePath: string, pagedQuery: PagedQuery): GetPagedRecordsAction {
-        return this.store.dispatch(Object.assign({}, new GetPagedRecordsAction({
+    public getPaged(packagePath: string, pagedQuery: PagedQuery) {
+        this.store.dispatch(Object.assign({}, new GetPagedRecordsAction({
             type: this.prefix + RecordActionsBase.GET_PAGED,
             packagePath: packagePath,
             pagedQuery: pagedQuery
@@ -27,7 +27,7 @@ export abstract class RecordActionsBase<TStateType, TStore extends Store<TStateT
 
 
     public getSingle<TKey>(packagePath: string, id: TKey): GetSingleRecordAction<TKey> {
-        return this.store.dispatch(Object.assign({}, new GetSingleRecordAction<TKey>({
+        this.store.dispatch(Object.assign({}, new GetSingleRecordAction<TKey>({
             type: this.prefix + RecordActionsBase.GET_SINGLE,
             packagePath: packagePath,
             id: id
