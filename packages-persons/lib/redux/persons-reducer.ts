@@ -11,7 +11,6 @@ export class PersonPackage implements RecordState<Person, number> {
     public localRecords: StrIndex<LocalObject<Person>> = {};
 }
 
-
 export function personsReducer(state = new PersonsState(), action: PackageAction, prefix: string = 'PERSONS_'): PersonsState {
     switch (action.type) {
         default:

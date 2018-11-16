@@ -7,6 +7,7 @@ import { MenuItem } from './../../../models/sidebar-menu/menu-item';
 import { EditorNavService } from '../container/editor-nav.service';
 import { EntityAction } from './../../../models/entity-action';
 import { EntityComponentPageTitle } from './../../../models/entity-component-page-title';
+import { RecordReduxStore } from '@skysmack/redux';
 
 @Component({
   selector: 'ss-data-table',
@@ -21,7 +22,7 @@ export class DataTableComponent implements OnDestroy, OnInit {
    * Note entities are the paged entities.
    */
   // TODO: any was BaseRedux. We need a redux with .cancelAction()
-  @Input() public redux: any;
+  @Input() public redux: RecordReduxStore<any, any>;
   @Input() public entities$: Observable<LocalObject<any>[]>;
   @Input() public title: string;
   @Input() public displayedColumns: string[] = [];
@@ -77,7 +78,8 @@ export class DataTableComponent implements OnDestroy, OnInit {
   }
 
   public cancelAction(entity: LocalObject<any>) {
-    this.redux.cancelAction(entity, this.redux.config.area, this.path, this.compareValue, this.target);
+    // TODO: Add cancelAction to RecordReduxStore, or add something else
+    // this.redux.cancelAction(entity, this.redux.config.area, this.path, this.compareValue, this.target);
   }
 
   private initDataSource() {

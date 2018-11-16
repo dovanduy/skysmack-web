@@ -1,39 +1,33 @@
-import { Record, StrIndex, LocalPageTypes, LocalObject } from '@skysmack/framework';
-import { RecordReduxStore, RecordState } from '@skysmack/redux';
-import { Observable } from 'rxjs';
+import { Record, StrIndex, LocalPageTypes, LocalObject, NumIndex, safeHasValue, log, hasValue } from '@skysmack/framework';
+import { RecordReduxStore } from '@skysmack/redux';
+import { Observable, pipe } from 'rxjs';
 import { NgRedux } from '@angular-redux/store';
-import { PathSelector } from '@angular-redux/store';
-import { filter } from 'rxjs/operators';
+import { map, filter } from 'rxjs/operators';
 
 export abstract class NgRecordReduxStore<TState, TRecord extends Record<TKey>, TKey> implements RecordReduxStore<TRecord, TKey>  {
-    public abstract stateKey: string;
-
     constructor(
-        protected ngRedux: NgRedux<RecordState<TRecord, TKey>>
+        protected store: NgRedux<TState>,
+        protected stateKey: string
     ) { }
 
-    public get(packagePath: string): Observable<LocalObject<TRecord>> {
-        return this.ngRedux.select(this.getEntitiesSelector(packagePath));
+    public get(packagePath: string): Observable<LocalObject<TRecord>[]> {
+        return this.store.select(state => state[this.stateKey][packagePath]).pipe(
+            hasValue(),
+            map(x => x.localRecords),
+            hasValue(),
+            dictionaryToArray<LocalObject<TRecord>>()
+        );
     }
 
     public getSingle(packagePath: string, id: TKey): Observable<LocalObject<TRecord>> {
-        return this.get(packagePath).pipe(
-            filter(localRecord => localRecord.object.id === id)
-        );
+        throw new Error('Method not implemented.');
     }
 
     public getPages(packagePath: string, pageSize: number, query: string, sort: string): Observable<StrIndex<LocalPageTypes<TKey>>> {
-        const pages = this.ngRedux.select(this.getPagesSelector(packagePath)) as Observable<StrIndex<LocalPageTypes<TKey>>>;
-        return pages.pipe(
-            // filter()
-        );
-    }
-
-    protected getEntitiesSelector(packagePath: string): PathSelector {
-        return [packagePath, this.stateKey, 'entities'];
-    }
-
-    protected getPagesSelector(packagePath: string): PathSelector {
-        return [packagePath, this.stateKey, 'pages'];
+        throw new Error('Method not implemented.');
     }
 }
+
+const dictionaryToArray = <TValue>() => pipe(
+    map<StrIndex<TValue> | NumIndex<TValue>, TValue[]>(x => Object.keys(x).map(key => x[key]))
+);

@@ -6,6 +6,8 @@ import { NgSkysmackRedux } from 'lib/ng-packages/skysmack';
 import { timer } from 'rxjs';
 import { take } from 'rxjs/operators';
 import { NgRedux } from '@angular-redux/store';
+import { NgPersonsStore } from 'lib/ng-packages/persons';
+import { PagedQuery } from '@skysmack/framework';
 
 
 @Component({
@@ -21,7 +23,7 @@ export class PersonsIndexComponent extends RecordIndexComponent implements OnIni
     public actions: NgPersonsActions,
     public redux: NgSkysmackRedux,
     public title: EntityComponentPageTitle,
-    public ngRedux: NgRedux<any>
+    public store: NgPersonsStore
   ) {
     super(router, activatedRoute, actions, redux);
 
@@ -30,6 +32,13 @@ export class PersonsIndexComponent extends RecordIndexComponent implements OnIni
   ngOnInit() {
     super.ngOnInit();
     this.title.setTitle(this.path);
-    timer(500).pipe(take(1)).subscribe(() => this.actions.getPaged(this.path, this.pagedQuery));
+    timer(500).pipe(take(1)).subscribe(() => {
+      this.store.get(this.path).subscribe(x => console.log(x));
+      this.actions.getPaged(this.path, this.pagedQuery);
+    });
+  }
+
+  public getPaged() {
+    this.actions.getPaged(this.path, new PagedQuery({ pageNumber: 2 }));
   }
 }
