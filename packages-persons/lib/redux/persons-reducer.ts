@@ -1,6 +1,10 @@
-import { recordReducersBase, RecordState, PackageAction, PackageRecordState } from '@skysmack/redux';
+import { recordReducersBase, RecordState, PackageAction, PackageRecordState, AppState } from '@skysmack/redux';
 import { Person } from './../models/person';
 import { LocalPageTypes, StrIndex, LocalObject } from '@skysmack/framework';
+
+export class PersonsAppState implements AppState {
+    persons: PersonsState;
+}
 
 export class PersonsState implements PackageRecordState<Person, number> {
     [key: string]: PersonPackage;

@@ -1,7 +1,7 @@
 import { NgRedux } from '@angular-redux/store';
 import { Injectable } from '@angular/core';
 import * as moment from 'moment';
-import { ActionsObservable, combineEpics, ofType, Epic } from 'redux-observable';
+import { ActionsObservable, ofType, Epic } from 'redux-observable';
 import { catchError, map, switchMap, take } from 'rxjs/operators';
 
 import { AuthUserActions } from './auth-user-actions';

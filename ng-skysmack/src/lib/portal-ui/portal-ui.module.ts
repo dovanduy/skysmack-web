@@ -1,13 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from './material.module';
-import { ReducerRegistry, epic$, registerWithRootEpic } from '@skysmack/redux';
+import { ReducerRegistry, registerWithRootEpic } from '@skysmack/redux';
 import { uiReducer } from './redux/ui-reducers';
 import { settingsReducer } from './redux/settings';
 import { authUserReducer } from './redux/authenticated-user/auth-user-reducer';
 import { AuthUserRequests, AuthUserEpics, AuthUserActions } from './redux';
 import { NgRedux } from '@angular-redux/store';
-import { combineEpics } from 'redux-observable';
 import { RouterModule } from '@angular/router';
 
 import { CalendarModule, DateAdapter } from 'angular-calendar';

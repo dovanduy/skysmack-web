@@ -12,7 +12,7 @@ import { Person } from '@skysmack/packages-persons';
   templateUrl: './persons-index.component.html',
   styleUrls: ['./persons-index.component.scss']
 })
-export class PersonsIndexComponent extends RecordPagedIndexComponent<Person> implements OnInit {
+export class PersonsIndexComponent extends RecordPagedIndexComponent<Person, number> implements OnInit {
 
   public displayedColumns = ['firstName', 'lastName'];
   public entityActions: EntityAction[] = [
