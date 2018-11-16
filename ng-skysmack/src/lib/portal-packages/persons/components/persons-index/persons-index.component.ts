@@ -4,7 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { NgPersonsActions } from 'lib/ng-packages/persons/redux/ng-persons-actions';
 import { NgSkysmackRedux } from 'lib/ng-packages/skysmack';
 import { NgPersonsStore } from 'lib/ng-packages/persons';
-import { Person } from '@skysmack/packages-persons';
+import { Person, PersonsAppState } from '@skysmack/packages-persons';
 
 
 @Component({
@@ -12,7 +12,7 @@ import { Person } from '@skysmack/packages-persons';
   templateUrl: './persons-index.component.html',
   styleUrls: ['./persons-index.component.scss']
 })
-export class PersonsIndexComponent extends RecordPagedIndexComponent<Person, number> implements OnInit {
+export class PersonsIndexComponent extends RecordPagedIndexComponent<PersonsAppState, Person, number> implements OnInit {
 
   public displayedColumns = ['firstName', 'lastName'];
   public entityActions: EntityAction[] = [

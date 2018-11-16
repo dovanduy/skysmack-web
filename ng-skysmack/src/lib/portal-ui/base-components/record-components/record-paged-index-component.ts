@@ -6,14 +6,14 @@ import { RecordIndexComponent } from './record-index-component';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { LocalPage } from '@skysmack/framework';
 
-export class RecordPagedIndexComponent<TRecord, TKey> extends RecordIndexComponent<TRecord> {
+export class RecordPagedIndexComponent<TAppState, TRecord, TKey> extends RecordIndexComponent<TAppState, TRecord, TKey> {
 
     public pages$: BehaviorSubject<LocalPage<TKey>[]> = new BehaviorSubject<LocalPage<TKey>[]>([]);
 
     constructor(
         public router: Router,
         public activatedRoute: ActivatedRoute,
-        public actions: RecordActionsBase<any, NgRedux<any>>,
+        public actions: RecordActionsBase<TAppState, NgRedux<TAppState>>,
         public redux: NgSkysmackRedux
     ) {
         super(router, activatedRoute, actions, redux);

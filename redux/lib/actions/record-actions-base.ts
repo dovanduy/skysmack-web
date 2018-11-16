@@ -26,7 +26,7 @@ export abstract class RecordActionsBase<TStateType, TStore extends Store<TStateT
     }
 
 
-    public getSingle<TKey>(packagePath: string, id: TKey): GetSingleRecordAction<TKey> {
+    public getSingle<TKey>(packagePath: string, id: TKey) {
         this.store.dispatch(Object.assign({}, new GetSingleRecordAction<TKey>({
             type: this.prefix + RecordActionsBase.GET_SINGLE,
             packagePath: packagePath,

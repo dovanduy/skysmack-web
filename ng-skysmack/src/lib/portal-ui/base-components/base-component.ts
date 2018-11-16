@@ -7,10 +7,10 @@ import { take } from 'rxjs/operators';
 import { RecordActionsBase } from '@skysmack/redux';
 import { NgRedux } from '@angular-redux/store';
 
-export class BaseComponent implements OnInit, OnDestroy {
+export class BaseComponent<TAppState, TKey> implements OnInit, OnDestroy {
     public subscriptionHandler = new SubscriptionHandler();
 
-    public entityId: any;
+    public entityId: TKey;
     public path: string;
     public package$: Observable<Package>;
     public pagedQuery = new PagedQuery();
@@ -18,7 +18,7 @@ export class BaseComponent implements OnInit, OnDestroy {
     constructor(
         public router: Router,
         public activatedRoute: ActivatedRoute,
-        public actions: RecordActionsBase<any, NgRedux<any>>,
+        public actions: RecordActionsBase<TAppState, NgRedux<TAppState>>,
         public redux: NgSkysmackRedux
     ) { }
 
