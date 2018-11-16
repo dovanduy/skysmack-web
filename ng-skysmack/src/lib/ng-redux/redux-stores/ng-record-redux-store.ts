@@ -18,12 +18,12 @@ export abstract class NgRecordReduxStore<TState, TRecord extends Record<TKey>, T
 
     public getSingle(packagePath: string, id: TKey): Observable<LocalObject<TRecord>> {
         return this.get(packagePath).pipe(
-            filter(localRecord => localRecord.object.Id === id)
+            filter(localRecord => localRecord.object.id === id)
         );
     }
 
     public getPages(packagePath: string, pageSize: number, query: string, sort: string): Observable<StrIndex<LocalPageTypes<TKey>>> {
-        var pages = this.ngRedux.select(this.getPagesSelector(packagePath)) as Observable<StrIndex<LocalPageTypes<TKey>>>;
+        const pages = this.ngRedux.select(this.getPagesSelector(packagePath)) as Observable<StrIndex<LocalPageTypes<TKey>>>;
         return pages.pipe(
             // filter()
         );

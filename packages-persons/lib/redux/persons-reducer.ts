@@ -1,18 +1,23 @@
-import { recordReducersBase, RecordState, PackageAction, IPackageAppState } from '@skysmack/redux';
+import { recordReducersBase, RecordState, PackageAction, PackageRecordState } from '@skysmack/redux';
 import { Person } from './../models/person';
 import { LocalPageTypes, StrIndex, LocalObject } from '@skysmack/framework';
 
-export class PersonsState implements RecordState<Person, number> {
+export class PersonsState implements PackageRecordState<Person, number> {
+    [key: string]: PersonPackage;
+}
+
+export class PersonPackage implements RecordState<Person, number> {
     public localPageTypes: StrIndex<LocalPageTypes<number>> = {};
     public localRecords: StrIndex<LocalObject<Person>> = {};
 }
 
-export function personsReducer(state: IPackageAppState<PersonsState> = new PersonsState() as any, action: PackageAction, prefix: string = 'PERSONS_'): IPackageAppState<PersonsState> {
+
+export function personsReducer(state = new PersonsState(), action: PackageAction, prefix: string = 'PERSONS_'): PersonsState {
     switch (action.type) {
         default:
             return {
                 ...state,
-                ...recordReducersBase<Person, number>(state, action, prefix)
+                ...recordReducersBase<PersonsState, Person, number>(state, action, prefix)
             };
     }
 }

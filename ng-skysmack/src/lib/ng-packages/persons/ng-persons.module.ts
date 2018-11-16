@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 
-import { epic$, ReducerRegistry, registerWithRootEpic } from '@skysmack/redux';
+import { ReducerRegistry, registerWithRootEpic } from '@skysmack/redux';
 import { PersonsEpics, personsReducer } from '@skysmack/packages-persons';
 import { NgPersonsRequests } from './redux/ng-persons-requests';
 

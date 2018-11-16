@@ -1,41 +1,39 @@
 import { RecordActionsBase } from "../actions";
-import { GetPagedRecordsSuccessAction, GetSingleRecordSuccessAction, PackageAction } from "../action-types";
-import { Record, LocalObject, RecordExtensions, PageExtensions, StrIndex } from "@skysmack/framework";
-import { RecordState } from "../states";
-import { OfflineState } from '@redux-offline/redux-offline/lib/types';
+import { GetPagedRecordsSuccessAction, PackageAction, GetSingleRecordSuccessAction } from "../action-types";
+import { Record, RecordExtensions, PageExtensions, toLocalObject, StrIndex } from "@skysmack/framework";
+import { PackageRecordState, RecordState } from './../states/record-state';
 
-export function recordReducersBase<TRecord extends Record<TKey>, TKey>(state: IPackageAppState<RecordState<TRecord, TKey>>, action: PackageAction, prefix: string = ''): IPackageAppState<RecordState<TRecord, TKey>> {
+
+export function recordReducersBase<TState extends PackageRecordState<TRecord, TKey>, TRecord extends Record<TKey>, TKey>(state: TState, action: PackageAction, prefix: string = ''): TState {
+    state = Object.freeze(state);
+    let newState = Object.assign({}, state);
+
     switch (action.type) {
         case prefix + RecordActionsBase.GET_PAGED_SUCCESS:
-            const getPagedEntitiesSuccessAction = action as GetPagedRecordsSuccessAction<TRecord, TKey>;
-            const packages = state.packages;
-            packages[action.packagePath].localPageTypes = PageExtensions.mergeOrAddPage(state.packages[action.packagePath].localPageTypes, getPagedEntitiesSuccessAction.page);
-            packages[action.packagePath].localRecords = RecordExtensions.mergeOrAddLocalRecords(state.packages[action.packagePath].localRecords, getPagedEntitiesSuccessAction.records.map(x => new LocalObject({ object: x })));
-
-            // state.packages[action.packagePath].localRecords = RecordExtensions.mergeOrAddLocalRecords(state.packages[action.packagePath].localRecords, getPagedEntitiesSuccessAction.records.map(x => new LocalObject({ object: x })));
-            // state.packages[action.packagePath].localPageTypes = PageExtensions.mergeOrAddPage(state.packages[action.packagePath].localPageTypes, getPagedEntitiesSuccessAction.page);
-            state.packages = packages;
-            break;
+            newState = initPackageState(newState, action.packagePath);
+            const gpsAction = action as GetPagedRecordsSuccessAction<TRecord, TKey>;
+            newState[action.packagePath].localPageTypes = PageExtensions.mergeOrAddPage(newState[action.packagePath].localPageTypes, gpsAction.page);
+            newState[action.packagePath].localRecords = RecordExtensions.mergeOrAddLocalRecords(newState[action.packagePath].localRecords, gpsAction.records.map(x => toLocalObject(x)));
+            return newState;
 
         case prefix + RecordActionsBase.GET_SINGLE_SUCCESS:
-            const getSingleEntitySuccessAction = action as GetSingleRecordSuccessAction<TRecord, TKey>;
-            var localObject = new LocalObject<TRecord>({ object: getSingleEntitySuccessAction.record });
-            state.packages[action.packagePath].localRecords = RecordExtensions.mergeOrAddLocalRecords(state.packages[action.packagePath].localRecords, [localObject]);
-            break;
+            const gsrsAction = action as GetSingleRecordSuccessAction<TRecord, TKey>;
+            newState[action.packagePath].localRecords = RecordExtensions.mergeOrAddLocalRecords(newState[action.packagePath].localRecords, [toLocalObject(gsrsAction.record)]);
+            return newState;
 
         default:
-            break;
+            return newState;
     }
-
-    return { ...state };
 }
 
-export interface IPackageAppState<IPackageState> extends IAppState {
-    // offline?: OfflineState;
-    packages?: StrIndex<IPackageState>;
-}
-
-export interface IAppState {
-    offline?: OfflineState;
-    // packages?: StrIndex<StrIndex<RecordState<any, any>>>;
+function initPackageState<TState, TRecord extends Record<TKey>, TKey>(newState: TState, packagePath: string): TState {
+    if (!newState[packagePath] || newState[packagePath] === null) {
+        newState[packagePath] = {
+            localPageTypes: {},
+            localRecords: {}
+        } as RecordState<TRecord, TKey>;
+        return newState
+    } else {
+        return newState;
+    }
 }

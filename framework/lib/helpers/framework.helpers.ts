@@ -49,18 +49,19 @@ export const setKey = (key: string, values: any[] = []): string => {
     return values.length > 0 ? key + '.' + values.filter(x => x !== null && x !== undefined).join('.') : key;
 };
 
-
-
 /**
  * Wraps object with an local object.
- * @param object Object to wrap.
- * @param localId Temporary local id used for optimistic ui. Default to a random Guid.
- * @param status The LocalObjectStatus of the object. Defaults to OK.
- * @param foreignKey Foreign key to any other object. Defaults to null
  */
-// tslint:disable-next-line:max-line-length
-export const toLocalObject = <TYPE>(object: TYPE, localId: string = Guid.create().toString(), status: LocalObjectStatus = LocalObjectStatus.OK, foreignKey: any = null, isNew: boolean = false): LocalObject<TYPE> => {
-    return new LocalObject<TYPE>({ localId, status, object, foreignKey, isNew });
+export const toLocalObject = <TYPE>(
+    object: TYPE,
+    localId: string = Guid.create().toString(),
+    status: LocalObjectStatus = LocalObjectStatus.OK,
+    modifyType: string = null,
+    isNew: boolean = false,
+    foreignKey: any = null,
+    error: any = null
+): LocalObject<TYPE> => {
+    return new LocalObject<TYPE>({ object, localId, status, modifyType, isNew, foreignKey, error });
 };
 
 // /**

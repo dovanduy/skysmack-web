@@ -1,3 +1,3 @@
 export interface Record<TKey> {
-    Id: TKey;
+    id: TKey;
 }

@@ -15,7 +15,7 @@ export class PageExtensions {
         }
 
         let currentPages = currentPageType.pages[newPage.pageSize + ':' + newPage.sort];
-        if (!currentPages && currentPages === null) {
+        if (!currentPages || currentPages === null) {
             currentPages = new LocalPages({
                 pageSize: newPage.pageSize,
                 sort: newPage.sort
@@ -27,7 +27,7 @@ export class PageExtensions {
         }
 
         let currentPage = currentPages.pages[newPage.pageNumber];
-        if (!currentPage && currentPage === null) {
+        if (!currentPage || currentPage === null) {
             currentPage = new LocalPage({
                 ids: newPage.ids,
                 links: newPage.links,

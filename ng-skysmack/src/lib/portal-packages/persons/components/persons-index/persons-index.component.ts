@@ -7,6 +7,7 @@ import { timer } from 'rxjs';
 import { take } from 'rxjs/operators';
 import { NgRedux } from '@angular-redux/store';
 
+
 @Component({
   selector: 'ss-persons-index',
   templateUrl: './persons-index.component.html',
@@ -23,6 +24,7 @@ export class PersonsIndexComponent extends RecordIndexComponent implements OnIni
     public ngRedux: NgRedux<any>
   ) {
     super(router, activatedRoute, actions, redux);
+
   }
 
   ngOnInit() {

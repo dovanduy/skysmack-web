@@ -16,7 +16,7 @@ export class RecordExtensions {
         }
 
         newRecords.forEach(newRecord => {
-            const existingRecord = Object.keys(existingRecords).find(x => existingRecords[x].object.Id === newRecord.object.Id);
+            const existingRecord = Object.keys(existingRecords).find(x => existingRecords[x].object.id === newRecord.object.id);
             if (existingRecord) {
                 if (existingRecords[existingRecord].status === LocalObjectStatus.OK) {
                     existingRecords[existingRecord].object = newRecord.object;

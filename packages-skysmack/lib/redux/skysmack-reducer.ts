@@ -1,5 +1,4 @@
 import { CurrentTenantViewModel } from './../models/current-tenant';
-import { StrIndex } from '@skysmack/framework';
 
 export class SkysmackState {
     currentTenant: CurrentTenantViewModel

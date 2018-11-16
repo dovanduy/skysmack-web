@@ -20,16 +20,18 @@ export abstract class NgRecordRequests<TRecord extends Record<TKey>, TKey> imple
 
     public getPaged(action: GetPagedRecordsAction): Observable<GetPagedRecordsSuccessAction<TRecord, TKey> | GetPagedRecordsFailureAction> {
         let queryParameters = new HttpParams({ encoder: new CustomHttpUrlEncodingCodec() });
+        let query = '';
+        let sort = '';
 
         if (action.pagedQuery.rsqlFilter) {
-            const query = action.pagedQuery.rsqlFilter.toList().build();
+            query = action.pagedQuery.rsqlFilter.toList().build();
             if (query && query.length > 0) {
                 queryParameters = queryParameters.set('query', query);
             }
         }
 
         if (action.pagedQuery.sort) {
-            const sort = action.pagedQuery.sort.build();
+            sort = action.pagedQuery.sort.build();
             if (sort && sort.length > 0) {
                 queryParameters = queryParameters.set('sort', sort);
             }
@@ -52,7 +54,8 @@ export abstract class NgRecordRequests<TRecord extends Record<TKey>, TKey> imple
                         return Object.assign({}, new GetPagedRecordsSuccessAction<TRecord, TKey>({
                             type: this.prefix + RecordActionsBase.GET_PAGED_SUCCESS,
                             records: httpResponse.body,
-                            page: PageResponseExtensions.getPageResponse<TKey>(httpResponse.headers, httpResponse.body.map(record => record.Id))
+                            packagePath: action.packagePath,
+                            page: PageResponseExtensions.getPageResponse<TKey>(httpResponse.headers, httpResponse.body.map(record => record.id), query, sort)
                         }));
                     }
                     return Object.assign({}, new GetPagedRecordsSuccessAction<TRecord, TKey>());
