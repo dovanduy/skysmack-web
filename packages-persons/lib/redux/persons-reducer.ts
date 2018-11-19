@@ -2,10 +2,16 @@ import { recordReducersBase, RecordState, PackageRecordState, AppState, ReduxAct
 import { Person } from './../models/person';
 import { LocalPageTypes, StrIndex, LocalObject } from '@skysmack/framework';
 
+/**
+ * This is to be used when you want to access persons via the GLOBAL state. E.g. state.persons (where persons is the reducer name.)
+ */
 export class PersonsAppState extends AppState {
     public persons: PersonsState;
 }
 
+/**
+ * This is only used in the reducer to show that this is substate given to the persons reducer.
+ */
 export class PersonsState implements PackageRecordState<Person, number> {
     [key: string]: PersonPackage;
 }

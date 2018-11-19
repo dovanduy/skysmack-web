@@ -4,6 +4,6 @@ import { Injectable } from '@angular/core';
 import { PersonsAppState } from '@skysmack/packages-persons';
 
 @Injectable({ providedIn: 'root' })
-export class NgPersonsActions extends RecordActionsBase<any, NgRedux<PersonsAppState>> {
+export class NgPersonsActions extends RecordActionsBase<PersonsAppState, NgRedux<PersonsAppState>> {
     constructor(protected store: NgRedux<PersonsAppState>) { super(store, 'PERSONS_'); }
 }

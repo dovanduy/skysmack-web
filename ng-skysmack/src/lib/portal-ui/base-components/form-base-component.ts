@@ -10,6 +10,7 @@ import { FieldTypes } from '../fields/field-types';
 import { FormHelper } from '../forms/form-helper';
 import { RecordActionsBase } from '@skysmack/redux';
 import { NgRedux } from '@angular-redux/store';
+import { EditorNavService } from '../components/common/container/editor-nav.service';
 
 export class FormBaseComponent<TAppState, TRecord extends Record<TKey>, TKey> extends BaseComponent<TAppState, TKey> {
     /**
@@ -25,6 +26,7 @@ export class FormBaseComponent<TAppState, TRecord extends Record<TKey>, TKey> ex
     constructor(
         public router: Router,
         public activatedRoute: ActivatedRoute,
+        public editorNavService: EditorNavService,
         public actions: RecordActionsBase<TAppState, NgRedux<TAppState>>,
         public redux: NgSkysmackRedux,
         public fieldsConfig: FieldsConfig<TRecord>,
