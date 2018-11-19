@@ -13,7 +13,6 @@ export class BaseComponent<TAppState, TKey> implements OnInit, OnDestroy {
     public entityId: TKey;
     public path: string;
     public package$: Observable<Package>;
-    public pagedQuery = new PagedQuery();
 
     constructor(
         public router: Router,
@@ -33,7 +32,11 @@ export class BaseComponent<TAppState, TKey> implements OnInit, OnDestroy {
         this.subscriptionHandler.unsubscribe();
     }
 
-    public getParams() {
+    public redirect(path: string) {
+        this.router.navigate([path]);
+    }
+
+    private getParams() {
         this.path = this.router.url.split('/')[1];
         if (this.entityId === undefined) {
             if (this.activatedRoute) {
@@ -51,11 +54,7 @@ export class BaseComponent<TAppState, TKey> implements OnInit, OnDestroy {
         }
     }
 
-    public getCurrentPackage() {
+    private getCurrentPackage() {
         this.package$ = this.redux.getCurrentPackage(this.path);
-    }
-
-    public redirect(path: string) {
-        this.router.navigate([path]);
     }
 }

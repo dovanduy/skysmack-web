@@ -17,7 +17,7 @@ export class PersonsIndexComponent extends RecordPagedIndexComponent<PersonsAppS
   public displayedColumns = ['firstName', 'lastName'];
   public entityActions: EntityAction[] = [
     new EntityAction().asUrlAction('edit', 'Edit', 'edit'),
-    // new EntityAction().asEventAction('Delete', this.delete, 'delete')
+    new EntityAction().asEventAction('Delete', this.delete, 'delete')
   ];
 
 
@@ -29,15 +29,12 @@ export class PersonsIndexComponent extends RecordPagedIndexComponent<PersonsAppS
     public title: EntityComponentPageTitle,
     public store: NgPersonsStore
   ) {
-    super(router, activatedRoute, actions, redux);
+    super(router, activatedRoute, actions, redux, store);
 
   }
 
   ngOnInit() {
     super.ngOnInit();
     this.title.setTitle(this.path);
-    // Move these
-    this.actions.getPaged(this.path, this.pagedQuery);
-    this.entities$ = this.store.get(this.path);
   }
 }
