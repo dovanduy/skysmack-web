@@ -3,7 +3,7 @@ import { EntityComponentPageTitle, EntityAction, RecordPagedIndexComponent } fro
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgPersonsActions } from 'lib/ng-packages/persons/redux/ng-persons-actions';
 import { NgSkysmackRedux } from 'lib/ng-packages/skysmack';
-import { NgPersonsStore } from 'lib/ng-packages/persons';
+import { NgPersonsStore, NgPersonsMenu } from 'lib/ng-packages/persons';
 import { Person, PersonsAppState } from '@skysmack/packages-persons';
 
 
@@ -26,7 +26,8 @@ export class PersonsIndexComponent extends RecordPagedIndexComponent<PersonsAppS
     public actions: NgPersonsActions,
     public redux: NgSkysmackRedux,
     public title: EntityComponentPageTitle,
-    public store: NgPersonsStore
+    public store: NgPersonsStore,
+    public sidebarMenu: NgPersonsMenu
   ) {
     super(router, activatedRoute, actions, redux, store);
 
