@@ -8,7 +8,7 @@ import { SelectField } from './select-field';
 import { FieldSchemaViewModel } from './field-schema-view-model';
 import { FieldValueProviderViewModel } from './field-value-provider-view-model';
 
-export abstract class DocumentFieldsConfig extends FieldsConfig {
+export abstract class DocumentFieldsConfig extends FieldsConfig<FieldSchemaViewModel> {
     public fieldsValidation = new EntityFieldsValidation();
 
     /**

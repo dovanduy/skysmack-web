@@ -1,11 +1,9 @@
-import { recordReducersBase, RecordState, PackageAction, PackageRecordState, AppState } from '@skysmack/redux';
+import { recordReducersBase, RecordState, PackageRecordState, AppState, ReduxAction } from '@skysmack/redux';
 import { Person } from './../models/person';
 import { LocalPageTypes, StrIndex, LocalObject } from '@skysmack/framework';
-import { OfflineState } from '@redux-offline/redux-offline/lib/types';
 
-export class PersonsAppState implements AppState {
-    persons: PersonsState;
-    offline?: OfflineState
+export class PersonsAppState extends AppState {
+    public persons: PersonsState;
 }
 
 export class PersonsState implements PackageRecordState<Person, number> {
@@ -17,7 +15,7 @@ export class PersonPackage implements RecordState<Person, number> {
     public localRecords: StrIndex<LocalObject<Person>> = {};
 }
 
-export function personsReducer(state = new PersonsState(), action: PackageAction, prefix: string = 'PERSONS_'): PersonsState {
+export function personsReducer(state = new PersonsState(), action: ReduxAction, prefix: string = 'PERSONS_'): PersonsState {
     switch (action.type) {
         default:
             return {

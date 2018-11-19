@@ -5,3 +5,4 @@ export * from './reducers';
 export * from './redux-stores';
 export * from './requests';
 export * from './states';
+export * from './payloads';

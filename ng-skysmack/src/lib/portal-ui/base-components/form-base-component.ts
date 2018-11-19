@@ -1,14 +1,17 @@
 import { FormGroup } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
-import { EntityBase } from './entity-base';
+import { BaseComponent } from './base-component';
 import { Field } from '../fields/field';
-import { LocalObject, toLocalObject, LocalObjectStatus } from '@skysmack/framework';
+import { LocalObject, Record, toLocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { FieldsConfig } from '../fields/fields-config';
+import { NgSkysmackRedux } from 'lib/ng-packages/skysmack';
+import { FieldSchemaViewModel } from '../fields/field-schema-view-model';
 import { FieldTypes } from '../fields/field-types';
 import { FormHelper } from '../forms/form-helper';
-import { FieldSchemaViewModel } from '../fields/field-schema-view-model';
+import { RecordActionsBase } from '@skysmack/redux';
+import { NgRedux } from '@angular-redux/store';
 
-export class EntityFormBase extends EntityBase {
+export class FormBaseComponent<TAppState, TRecord extends Record<TKey>, TKey> extends BaseComponent<TAppState, TKey> {
     /**
      * Fields being sent the dynamic form component used to create the form.
      */
@@ -22,10 +25,11 @@ export class EntityFormBase extends EntityBase {
     constructor(
         public router: Router,
         public activatedRoute: ActivatedRoute,
-        public redux: any, // Was BaseRedux
-        public fieldsConfig: FieldsConfig,
+        public actions: RecordActionsBase<TAppState, NgRedux<TAppState>>,
+        public redux: NgSkysmackRedux,
+        public fieldsConfig: FieldsConfig<TRecord>,
     ) {
-        super(router, activatedRoute, redux);
+        super(router, activatedRoute, actions, redux);
     }
 
 
@@ -114,6 +118,8 @@ export class EntityFormBase extends EntityBase {
                 extractedValues,
                 undefined,
                 LocalObjectStatus.CREATING,
+                undefined,
+                true
             );
         }
     }

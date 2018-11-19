@@ -24,7 +24,9 @@ export class SidebarMenuComponent {
     public router: Router,
     public activatedRoute: ActivatedRoute,
     public translate: TranslateService
-  ) { }
+  ) {
+    console.log('hit');
+  }
 
   /** Toggles the expanded state */
   public toggleExpand(category: string) {

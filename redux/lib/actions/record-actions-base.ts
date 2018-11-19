@@ -1,6 +1,7 @@
 import { Store } from 'redux';
-import { GetSingleRecordAction, GetPagedRecordsAction } from '../action-types';
 import { PagedQuery } from '@skysmack/framework';
+import { ReduxAction } from '../action-types/redux-action';
+import { GetPagedRecordsPayload, GetSingleRecordPayload } from '../payloads';
 
 export abstract class RecordActionsBase<TStateType, TStore extends Store<TStateType>> {
     public static GET_PAGED = 'GET_PAGED';
@@ -18,19 +19,22 @@ export abstract class RecordActionsBase<TStateType, TStore extends Store<TStateT
 
 
     public getPaged(packagePath: string, pagedQuery: PagedQuery) {
-        this.store.dispatch(Object.assign({}, new GetPagedRecordsAction({
+        this.store.dispatch(Object.assign({}, new ReduxAction<GetPagedRecordsPayload>({
             type: this.prefix + RecordActionsBase.GET_PAGED,
-            packagePath: packagePath,
-            pagedQuery: pagedQuery
+            payload: {
+                pagedQuery,
+                packagePath
+            }
         })));
     }
 
-
     public getSingle<TKey>(packagePath: string, id: TKey) {
-        this.store.dispatch(Object.assign({}, new GetSingleRecordAction<TKey>({
+        this.store.dispatch(Object.assign({}, new ReduxAction<GetSingleRecordPayload<TKey>>({
             type: this.prefix + RecordActionsBase.GET_SINGLE,
-            packagePath: packagePath,
-            id: id
+            payload: {
+                id,
+                packagePath
+            }
         })));
     }
 }
