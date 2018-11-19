@@ -1,4 +1,4 @@
-// Do not deletes
+// Do not delete
 import { PersonsModule } from '../../../../../lib/portal-packages/persons/persons.module';
 
 import { NgReduxRouter, NgReduxRouterModule } from '@angular-redux/router';
