@@ -4,7 +4,7 @@ import { NgRedux } from '@angular-redux/store';
 import { NgSkysmackRedux } from 'lib/ng-packages/skysmack';
 import { RecordIndexComponent } from './record-index-component';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { LocalPage, PagedQuery, LoadingState, linq, LocalObject, hasValue } from '@skysmack/framework';
+import { LocalPage, PagedQuery, LoadingState, linq, LocalObject, hasValue, StrIndex, LocalPageTypes, setKey } from '@skysmack/framework';
 import { OnInit } from '@angular/core';
 import { NgRecordReduxStore } from 'lib/ng-redux/redux-stores/ng-record-redux-store';
 import { Record } from '@skysmack/framework';
@@ -40,7 +40,7 @@ export class RecordPagedIndexComponent<TAppState, TRecord extends Record<TKey>, 
     ngOnInit() {
         super.ngOnInit();
         this.requestPage(true);
-        // this.loadPages();
+        this.loadPages();
         // this.getPagedEntities();
         // this.subscriptionHandler.subscribe(this.getScrollAsStream().subscribe());
     }
@@ -49,43 +49,45 @@ export class RecordPagedIndexComponent<TAppState, TRecord extends Record<TKey>, 
      * Loads the next page stored in redux. Also requests the next page if any.
      */
     public loadPages() {
-        // TODO: Fix
+        this.subscriptionHandler.subscribe(this.store.getPages(this.path).pipe(
+            hasValue<StrIndex<LocalPageTypes<TKey>>>(),
+            map(dictionary => {
+                // TODO: Is this still correct? Should it be moved?
+                const queryDictionary = dictionary[setKey(this.path, [this.nextPageSize])];
 
-        // this.subscriptionHandler.subscribe(this.redux.getPageDictionary().pipe(
-        //     hasValue(),
-        //     map((dictionary: Dictionary<Dictionary<Page>>) => {
-        //         const queryDictionary = dictionary[setKey(this.path, [this.nextPageSize])];
-        //         if (queryDictionary) {
-        //             const pages = Object.keys(queryDictionary)
-        //                 .map(key => queryDictionary[key])
-        //                 .filter(page => page.pagination.xPageNumber <= this.nextPageNumber)
-        //                 .sort((a: Page, b: Page) => a.pagination.xPageNumber - b.pagination.xPageNumber);
+                if (queryDictionary) {
+                    const pages = Object.keys(queryDictionary)
+                        .map(key => queryDictionary[key])
+                        .filter(page => page.pagination.xPageNumber <= this.nextPageNumber)
+                        // .sort((a: Page, b: Page) => a.pagination.xPageNumber - b.pagination.xPageNumber);
+                        .sort((a: LocalPage<TKey>, b: LocalPage<TKey>) => a.pageNumber - b.pageNumber);
 
-        //             const lastPage = pages[pages.length - 1];
-        //             this.pages$.next(pages);
 
-        //             this.totalCount = lastPage.pagination.xTotalCount;
-        //             this.currentPageNumber = lastPage.pagination.xPageNumber;
+                    const lastPage = pages[pages.length - 1];
+                    this.pages$.next(pages);
 
-        //             const lastPageLinks = lastPage.pagination.links;
+                    this.totalCount = lastPage.pagination.xTotalCount;
+                    this.currentPageNumber = lastPage.pagination.xPageNumber;
 
-        //             if (lastPageLinks) {
-        //                 if (lastPageLinks.next) {
-        //                     setTimeout(() => {
-        //                         this.loadingState = LoadingState.Awaiting;
-        //                         this.requestPage();
-        //                     }, 50);
-        //                     this.nextPageNumber = lastPageLinks.next.pageNumber;
-        //                     this.nextPageSize = lastPageLinks.next.pageSize;
-        //                 } else {
-        //                     this.loadingState = LoadingState.End;
-        //                 }
-        //             } else {
-        //                 this.loadingState = LoadingState.End;
-        //             }
-        //         }
-        //     })
-        // ).subscribe());
+                    const lastPageLinks = lastPage.pagination.links;
+
+                    if (lastPageLinks) {
+                        if (lastPageLinks.next) {
+                            setTimeout(() => {
+                                this.loadingState = LoadingState.Awaiting;
+                                this.requestPage();
+                            }, 50);
+                            this.nextPageNumber = lastPageLinks.next.pageNumber;
+                            this.nextPageSize = lastPageLinks.next.pageSize;
+                        } else {
+                            this.loadingState = LoadingState.End;
+                        }
+                    } else {
+                        this.loadingState = LoadingState.End;
+                    }
+                }
+            })
+        ).subscribe());
     }
 
     /**

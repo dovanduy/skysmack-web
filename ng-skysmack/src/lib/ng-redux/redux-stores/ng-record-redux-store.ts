@@ -23,8 +23,13 @@ export abstract class NgRecordReduxStore<TState, TRecord extends Record<TKey>, T
         throw new Error('Method not implemented.');
     }
 
-    public getPages(packagePath: string, pageSize: number, query: string, sort: string): Observable<StrIndex<LocalPageTypes<TKey>>> {
-        throw new Error('Method not implemented.');
+    // TODO: Use these? -> pageSize: number, query: string, sort: string
+    public getPages(packagePath: string): Observable<StrIndex<LocalPageTypes<TKey>>> {
+        return this.store.select(state => state[this.stateKey][packagePath]).pipe(
+            hasValue<RecordState<TRecord, TKey>>(),
+            map(x => x.localPageTypes),
+            hasValue<StrIndex<LocalPageTypes<TKey>>>(),
+        );
     }
 }
 

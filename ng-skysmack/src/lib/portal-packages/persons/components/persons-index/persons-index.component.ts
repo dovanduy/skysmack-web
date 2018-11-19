@@ -20,7 +20,6 @@ export class PersonsIndexComponent extends RecordPagedIndexComponent<PersonsAppS
     new EntityAction().asEventAction('Delete', this.delete, 'delete')
   ];
 
-
   constructor(
     public router: Router,
     public activatedRoute: ActivatedRoute,
