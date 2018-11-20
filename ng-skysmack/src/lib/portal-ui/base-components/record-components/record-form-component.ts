@@ -39,9 +39,18 @@ export class RecordFormComponent<TAppState, TRecord extends Record<TKey>, TKey> 
      * Inits the create form for packages e.g. persons, lodgings, etc.
      */
     public initPackageCreateForm() {
-        // this.subscriptionHandler.subscribe(this.redux.fields(this.path).pipe(
-        //     map(dynamicFields => this.getFields(undefined, dynamicFields))
-        // ).subscribe(fields => this.fields = fields));
+        // TODO: Have a DocumentRecordFormComponent?
+        // Get dynamic fields if this is a document record.
+        const documentActions = (this.actions as DocumentRecordActionsBase<TAppState, NgRedux<TAppState>>);
+        if (documentActions.getFields) {
+            documentActions.getFields(this.path);
+            // TODO: SUBSCRIBE TO DYNAMIC FIELDS
+            // this.subscriptionHandler.subscribe(this.store.fields(this.path).pipe(
+            //     map(dynamicFields => this.getFields(undefined, dynamicFields))
+            // ).subscribe(fields => this.fields = fields));
+        } else {
+            this.fields = this.getFields();
+        }
     }
 
     /**

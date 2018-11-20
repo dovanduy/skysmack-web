@@ -2,10 +2,9 @@ import { FormGroup } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { BaseComponent } from './base-component';
 import { Field } from '../fields/field';
-import { LocalObject, Record, toLocalObject, LocalObjectStatus } from '@skysmack/framework';
+import { LocalObject, Record, toLocalObject, LocalObjectStatus, FieldSchemaViewModel } from '@skysmack/framework';
 import { FieldsConfig } from '../fields/fields-config';
 import { NgSkysmackRedux } from 'lib/ng-packages/skysmack';
-import { FieldSchemaViewModel } from '../fields/field-schema-view-model';
 import { FieldTypes } from '../fields/field-types';
 import { FormHelper } from '../forms/form-helper';
 import { RecordActionsBase } from '@skysmack/redux';
@@ -33,7 +32,6 @@ export class FormBaseComponent<TAppState, TRecord extends Record<TKey>, TKey> ex
     ) {
         super(router, activatedRoute, actions, redux);
     }
-
 
     /**
      * Gets all fields needed to create a form. Combines standard and dynamic fields into one array.

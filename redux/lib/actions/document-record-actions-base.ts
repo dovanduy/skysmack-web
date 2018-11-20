@@ -1,5 +1,7 @@
 import { Store } from 'redux';
 import { RecordActionsBase } from './record-actions-base';
+import { ReduxAction } from './../action-types';
+import { PackagePathPayload } from './../payloads/package-path-payload';
 
 export abstract class DocumentRecordActionsBase<TStateType, TStore extends Store<TStateType>> extends RecordActionsBase<TStateType, TStore> {
 
@@ -15,10 +17,11 @@ export abstract class DocumentRecordActionsBase<TStateType, TStore extends Store
     }
 
     public getFields(packagePath: string) {
-        // this.store.dispatch(Object.assign({}, new GetPagedRecordsAction({
-        //     type: this.prefix + RecordActionsBase.GET_PAGED,
-        //     packagePath: packagePath,
-        //     pagedQuery: pagedQuery
-        // })));
+        this.store.dispatch(Object.assign({}, new ReduxAction<PackagePathPayload>({
+            type: this.prefix + DocumentRecordActionsBase.GET_FIELDS,
+            payload: {
+                packagePath
+            }
+        })));
     }
 }

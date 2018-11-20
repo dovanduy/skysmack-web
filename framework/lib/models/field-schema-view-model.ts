@@ -1,3 +1,6 @@
+import { FieldValidator } from './field-validatior';
+import { FieldAccessPermission } from './field-access-permission';
+
 /**
  * Skysmack API
  * Official API documentation for Skysmack
@@ -9,8 +12,6 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import { FieldValidator } from './field-validatior';
-import { FieldAccessPermission } from './field-access-permission';
 
 export interface FieldSchemaViewModel {
     key: string;

@@ -12,3 +12,7 @@ export * from './local-pages';
 export * from './local-page-types';
 export * from './links';
 export * from './current-user';
+export * from './field-schema-view-model';
+export * from './field-validatior';
+export * from './field-value-provider-view-model';
+export * from './field-access-permission';
