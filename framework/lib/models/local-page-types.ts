@@ -1,11 +1,9 @@
-import { LocalPages } from "./local-pages";
-import { StrIndex } from "./indexes";
+import { LocalPage } from "./local-page";
+import { StrIndex, NumIndex } from "./indexes";
 
 export class LocalPageTypes<TKey> {
-    public pages: StrIndex<LocalPages<TKey>> = {};
-
+    public pages: StrIndex<NumIndex<LocalPage<TKey>>> = {};
     public totalCount: number;
-    public query: string;
 
     public constructor(init?: Partial<LocalPageTypes<TKey>>) {
         Object.assign(this, init);
