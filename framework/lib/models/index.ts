@@ -8,7 +8,6 @@ export * from './paged-query';
 export * from './package-type';
 export * from './page-response';
 export * from './local-page';
-export * from './local-pages';
 export * from './local-page-types';
 export * from './links';
 export * from './current-user';
