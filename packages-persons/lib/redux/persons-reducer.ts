@@ -1,6 +1,6 @@
-import { recordReducersBase, RecordState, PackageRecordState, AppState, ReduxAction } from '@skysmack/redux';
+import { LocalPageTypes, StrIndex, LocalObject, FieldSchemaViewModel, FieldValueProviderViewModel } from '@skysmack/framework';
+import { AppState, ReduxAction, PackageDocumentRecordState, DocumentRecordState, documentRecordReducersBase } from '@skysmack/redux';
 import { Person } from './../models/person';
-import { LocalPageTypes, StrIndex, LocalObject } from '@skysmack/framework';
 
 /**
  * This is to be used when you want to access persons via the GLOBAL state. E.g. state.persons (where persons is the reducer name.)
@@ -12,13 +12,15 @@ export class PersonsAppState extends AppState {
 /**
  * This is only used in the reducer to show that this is substate given to the persons reducer.
  */
-export class PersonsState implements PackageRecordState<Person, number> {
+export class PersonsState implements PackageDocumentRecordState<Person, number> {
     [key: string]: PersonPackage;
 }
 
-export class PersonPackage implements RecordState<Person, number> {
+export class PersonPackage implements DocumentRecordState<Person, number> {
     public localPageTypes: StrIndex<LocalPageTypes<number>> = {};
     public localRecords: StrIndex<LocalObject<Person>> = {};
+    public fields: FieldSchemaViewModel[] = [];
+    public availableFields: FieldValueProviderViewModel[] = [];
 }
 
 export function personsReducer(state = new PersonsState(), action: ReduxAction, prefix: string = 'PERSONS_'): PersonsState {
@@ -26,7 +28,7 @@ export function personsReducer(state = new PersonsState(), action: ReduxAction, 
         default:
             return {
                 ...state,
-                ...recordReducersBase<PersonsState, Person, number>(state, action, prefix)
+                ...documentRecordReducersBase<PersonsState, Person, number>(state, action, prefix)
             };
     }
 }

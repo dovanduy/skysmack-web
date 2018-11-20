@@ -1,8 +1,9 @@
 import { RecordActionsBase } from "../actions";
 import { Record, RecordExtensions, PageExtensions, toLocalObject } from "@skysmack/framework";
-import { PackageRecordState, RecordState } from './../states/record-state';
-import { GetPagedRecordsPayload, GetPagedRecordsSuccessPayload, GetSingleRecordSuccessPayload } from '../payloads';
+import { PackageRecordState } from './../states/record-state';
+import { GetPagedRecordsSuccessPayload, GetSingleRecordSuccessPayload } from '../payloads';
 import { ReduxAction } from '../action-types/redux-action';
+import { DocumentRecordState } from '../states/document-record-state';
 
 
 export function recordReducersBase<TState extends PackageRecordState<TRecord, TKey>, TRecord extends Record<TKey>, TKey>(state: TState, action: any, prefix: string = ''): TState {
@@ -31,10 +32,13 @@ function initPackageState<TState, TRecord extends Record<TKey>, TKey>(newState: 
     if (!newState[packagePath] || newState[packagePath] === null) {
         newState[packagePath] = {
             localPageTypes: {},
-            localRecords: {}
-        } as RecordState<TRecord, TKey>;
+            localRecords: {},
+            fields: [],
+            availableFields: []
+        } as DocumentRecordState<TRecord, TKey>;
         return newState
-    } else {
+    }
+    {
         return newState;
     }
 }
