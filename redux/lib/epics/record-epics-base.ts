@@ -9,10 +9,10 @@ import { GetSingleRecordPayload } from './../payloads/get-single-record-payload'
 
 export abstract class RecordEpicsBase<TRecord extends Record<TKey>, TKey> {
     public epics: Epic[];
-    protected abstract prefix: string;
 
     constructor(
-        protected requests: RecordRequests<TRecord, TKey>
+        protected requests: RecordRequests<TRecord, TKey>,
+        protected prefix: string
     ) {
         this.epics = [
             this.getPagedEpic,

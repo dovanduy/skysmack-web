@@ -25,6 +25,8 @@ export class DocumentRecordIndexComponet<TAppState, TRecord extends Record<TKey>
     }
 
     private getFields() {
+        this.actions.getFields(this.path);
+        // Subscribe to fields
         // this.subscriptionHandler.subscribe(this.redux.fields(this.path).subscribe());
     }
 }
