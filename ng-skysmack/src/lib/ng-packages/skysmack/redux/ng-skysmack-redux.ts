@@ -7,6 +7,7 @@ import { CurrentTenantViewModel, InstalledPackageViewModel } from '@skysmack/pac
 import { Package } from '../packages/package';
 import { PackageLoader } from '../packages/package-loader';
 
+// TODO: Rename below to skysnack store?
 @Injectable({ providedIn: 'root' })
 export class NgSkysmackRedux {
     public stateKey = 'skysmack';
