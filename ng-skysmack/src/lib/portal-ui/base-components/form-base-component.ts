@@ -15,7 +15,7 @@ export class FormBaseComponent<TAppState, TRecord extends Record<TKey>, TKey> ex
     /**
      * Fields being sent the dynamic form component used to create the form.
      */
-    public fields: Field[];
+    public fields: Field[] = [];
 
     /**
      * The selected entity needed for edit forms.

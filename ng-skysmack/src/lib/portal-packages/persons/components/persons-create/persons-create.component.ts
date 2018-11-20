@@ -27,7 +27,6 @@ export class PersonsCreateComponent extends RecordFormComponent<PersonsAppState,
 
   ngOnInit() {
     super.ngOnInit();
-    this.initPackageCreateForm();
   }
 
 }

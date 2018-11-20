@@ -12,7 +12,7 @@ export class PersonsAppState extends AppState {
 export class PersonsState implements DocumentRecordState<Person, number> {
     public localPageTypes: StrIndex<StrIndex<LocalPageTypes<number>>> = {};
     public localRecords: StrIndex<StrIndex<LocalObject<Person>>> = {};
-    public fields: StrIndex<FieldSchemaViewModel[]> = {};
+    public fields: StrIndex<LocalObject<FieldSchemaViewModel>[]> = {};
     public availableFields: StrIndex<FieldValueProviderViewModel[]> = {};
 }
 

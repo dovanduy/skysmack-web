@@ -1,5 +1,3 @@
-import { combineLatest } from 'rxjs';
-import { map } from 'rxjs/operators';
 import { Router, ActivatedRoute } from '@angular/router';
 import { OnInit, OnDestroy } from '@angular/core';
 import { Record } from '@skysmack/framework';
@@ -7,10 +5,9 @@ import { FieldsConfig } from 'lib/portal-ui/fields/fields-config';
 import { EditorNavService } from 'lib/portal-ui/components/common/container/editor-nav.service';
 import { FormBaseComponent } from '../form-base-component';
 import { NgSkysmackRedux } from 'lib/ng-packages/skysmack';
-import { RecordActionsBase, DocumentRecordActionsBase } from '@skysmack/redux';
+import { RecordActionsBase } from '@skysmack/redux';
 import { NgRedux } from '@angular-redux/store';
 import { FormHelper } from 'lib/portal-ui/forms/form-helper';
-import { Field } from 'lib/portal-ui/fields/field';
 
 export class RecordFormComponent<TAppState, TRecord extends Record<TKey>, TKey> extends FormBaseComponent<TAppState, TRecord, TKey> implements OnInit, OnDestroy {
 
@@ -18,7 +15,7 @@ export class RecordFormComponent<TAppState, TRecord extends Record<TKey>, TKey> 
         public router: Router,
         public activatedRoute: ActivatedRoute,
         public editorNavService: EditorNavService,
-        public actions: RecordActionsBase<TAppState, NgRedux<TAppState>> | DocumentRecordActionsBase<TAppState, NgRedux<TAppState>>,
+        public actions: RecordActionsBase<TAppState, NgRedux<TAppState>>,
         public redux: NgSkysmackRedux,
         public fieldsConfig: FieldsConfig<TRecord>
     ) {
@@ -27,6 +24,7 @@ export class RecordFormComponent<TAppState, TRecord extends Record<TKey>, TKey> 
 
     ngOnInit() {
         super.ngOnInit();
+        this.getRecordFields();
         this.editorNavService.showEditorNav();
     }
 
@@ -35,24 +33,11 @@ export class RecordFormComponent<TAppState, TRecord extends Record<TKey>, TKey> 
         super.ngOnDestroy();
     }
 
-    /**
-     * Inits the create form for packages e.g. persons, lodgings, etc.
-     */
-    public initPackageCreateForm() {
-        // TODO: Have a DocumentRecordFormComponent?
-        // Get dynamic fields if this is a document record.
-        const documentActions = (this.actions as DocumentRecordActionsBase<TAppState, NgRedux<TAppState>>);
-        if (documentActions.getFields) {
-            documentActions.getFields(this.path);
-            // TODO: SUBSCRIBE TO DYNAMIC FIELDS
-            // this.subscriptionHandler.subscribe(this.store.fields(this.path).pipe(
-            //     map(dynamicFields => this.getFields(undefined, dynamicFields))
-            // ).subscribe(fields => this.fields = fields));
-        } else {
-            this.fields = this.getFields();
-        }
+    public getRecordFields() {
+        this.fields = this.getFields();
     }
 
+    //#region temp
     /**
      * Inits the edit form for packages e.g. persons, lodgings, etc.
      */
@@ -77,7 +62,7 @@ export class RecordFormComponent<TAppState, TRecord extends Record<TKey>, TKey> 
      * @param fh The form helper with data needed to create the entity
      */
     public onPackageCreateSubmit(fh: FormHelper) {
-        this.create(fh, this.path, this.path);
+        this.create();
     }
 
     /**
@@ -85,7 +70,7 @@ export class RecordFormComponent<TAppState, TRecord extends Record<TKey>, TKey> 
      * @param fh The form helper with with data needed to update the entity
      */
     public onPackageUpdateSubmit(fh: FormHelper) {
-        this.update(fh, this.path, this.path);
+        this.update();
     }
 
 
@@ -112,7 +97,7 @@ export class RecordFormComponent<TAppState, TRecord extends Record<TKey>, TKey> 
      * Recieves the submitted form helper from module create forms.
      * @param fh The form helper with data needed to create the entity
      */
-    public onModuleCreateSubmit(fh: FormHelper) {
+    public onModuleCreateSubmit() {
         // this.create(fh, this.redux.config.area.key, this.redux.config.area.key);
     }
 
@@ -120,7 +105,7 @@ export class RecordFormComponent<TAppState, TRecord extends Record<TKey>, TKey> 
      * Recieves the submitted form helper from module create forms.
      * @param fh The form helper with data needed to create the entity
      */
-    public onModuleEditSubmit(fh: FormHelper) {
+    public onModuleEditSubmit() {
         // this.update(fh, this.redux.config.area.key, this.redux.config.area.key);
     }
 
@@ -132,7 +117,7 @@ export class RecordFormComponent<TAppState, TRecord extends Record<TKey>, TKey> 
      * @param autoReset Should the form reset after post? Defaults to true.
      * @param postAsArray Should the data be wrapped in a array before getting posted? Defaults to true.
      */
-    protected create(fh: FormHelper, identity: string, redirectTo: string, autoReset: boolean = true, postAsArray: boolean = true) {
+    protected create() {
         // this.validateForm(fh, () => {
         //     this.redux.add(this.extractFormValues(fh), identity, postAsArray);
         //     this.editorNavService.hideEditorNav();
@@ -146,7 +131,7 @@ export class RecordFormComponent<TAppState, TRecord extends Record<TKey>, TKey> 
      * @param redirectTo Where to redirect on success.
      * @param autoReset Should the form reset after post? Defaults to true.
      */
-    protected update(fh: FormHelper, identity: string, redirectTo: string, autoReset: boolean = true) {
+    protected update() {
         // this.validateForm(fh, () => {
         //     const oldValue = { ...this.selectedEntity };
         //     const newValue = this.extractFormValues(fh, this.selectedEntity);
@@ -155,4 +140,5 @@ export class RecordFormComponent<TAppState, TRecord extends Record<TKey>, TKey> 
         //     this.editorNavService.hideEditorNav();
         // }, autoReset);
     }
+    //#endregion
 }

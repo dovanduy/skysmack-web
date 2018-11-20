@@ -1,5 +1,5 @@
 import { DocumentRecordActionsBase } from "../actions";
-import { Record } from "@skysmack/framework";
+import { Record, toLocalObject } from "@skysmack/framework";
 import { ReduxAction } from '../action-types/redux-action';
 import { PackagePathPayload, GetFieldsSuccessPayload } from './../payloads';
 import { DocumentRecordState } from './../states/document-record-state';
@@ -13,8 +13,8 @@ export function documentRecordReducersBase<TState extends DocumentRecordState<TR
     switch (action.type) {
         case prefix + DocumentRecordActionsBase.GET_FIELDS_SUCCESS: {
             const castedAction: ReduxAction<GetFieldsSuccessPayload> = action;
-            newState.fields[castedAction.payload.packagePath] = castedAction.payload.fields;
-            return newState
+            newState.fields[castedAction.payload.packagePath] = castedAction.payload.fields.map(x => toLocalObject(x));
+            return newState;
         }
         case prefix + DocumentRecordActionsBase.GET_FIELDS_FAILURE: {
             const castedAction: ReduxAction<PackagePathPayload> = action;
