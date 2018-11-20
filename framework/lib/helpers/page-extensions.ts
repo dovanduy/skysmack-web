@@ -1,7 +1,7 @@
 import { LocalPage, LocalPageTypes, PageResponse, StrIndex } from "../models";
 
 export class PageExtensions {
-    public static mergeOrAddPage<TKey>(existingPages: StrIndex<LocalPageTypes<TKey>>, newPage: PageResponse<TKey>): StrIndex<LocalPageTypes<TKey>> {
+    public static mergeOrAddPage<TKey>(existingPages: StrIndex<LocalPageTypes<TKey>> = {}, newPage: PageResponse<TKey>): StrIndex<LocalPageTypes<TKey>> {
         let currentPageType = existingPages[newPage.query];
         if (!currentPageType || currentPageType === null) {
             currentPageType = new LocalPageTypes({
@@ -15,7 +15,7 @@ export class PageExtensions {
         let currentPages = currentPageType.pages[newPage.pageSize + ':' + newPage.sort];
         if (!currentPages || currentPages === null) {
             currentPageType.pages[newPage.pageSize + ':' + newPage.sort] = [];
-        } 
+        }
 
         let currentPage = currentPageType.pages[newPage.pageSize + ':' + newPage.sort][newPage.pageNumber];
         if (!currentPage || currentPage === null) {
