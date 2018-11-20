@@ -18,7 +18,7 @@ export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey>
     public pagedQuery = new PagedQuery();
 
     public nextPageNumber = 1;
-    public nextPageSize = 50;
+    public nextPageSize = this.pagedQuery.pageSize;
 
     public loadingState: LoadingState = LoadingState.Loading;
 
@@ -82,9 +82,9 @@ export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey>
                 if (queryDictionary) {
                     const pages = Object.keys(queryDictionary)
                         .map(key => queryDictionary[key])
-                        .filter(page => page.pagination.xPageNumber <= this.nextPageNumber)
+                        .filter(page => page.pagination.xPageNumber <= this.nextPageNumber);
                         // .sort((a: Page, b: Page) => a.pagination.xPageNumber - b.pagination.xPageNumber);
-                        .sort((a: LocalPage<TKey>, b: LocalPage<TKey>) => a.pageNumber - b.pageNumber);
+                        // .sort((a: LocalPage<TKey>, b: LocalPage<TKey>) => a.pageNumber - b.pageNumber);
 
 
                     const lastPage = pages[pages.length - 1];
