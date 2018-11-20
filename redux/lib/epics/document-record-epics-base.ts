@@ -6,22 +6,21 @@ import { RecordActionsBase } from './../actions/record-actions-base';
 import { RecordEpicsBase } from './record-epics-base';
 import { DocumentRecordRequests } from './../requests/document-record-requests';
 import { PackagePathPayload } from './../payloads/package-path-payload';
+import { DocumentRecordActionsBase } from '../actions';
 
 export abstract class DocumentRecordEpicsBase<TRecord extends Record<TKey>, TKey> extends RecordEpicsBase<TRecord, TKey> {
-    public epics: Epic[];
-    protected abstract prefix: string;
-
     constructor(
-        protected requests: DocumentRecordRequests<TRecord, TKey>
+        protected requests: DocumentRecordRequests<TRecord, TKey>,
+        protected prefix: string
     ) {
-        super(requests);
-        this.epics.concat([
-            this.getFieldsEpic,
+        super(requests, prefix);
+        this.epics = this.epics.concat([
+            this.getFieldsEpic
         ]);
     }
 
     public getFieldsEpic = (action$: ActionsObservable<ReduxAction<PackagePathPayload>>) => action$.pipe(
-        ofType(this.prefix + RecordActionsBase.GET_SINGLE),
+        ofType(this.prefix + DocumentRecordActionsBase.GET_FIELDS),
         switchMap(action => this.requests.getFields(action))
     )
 }

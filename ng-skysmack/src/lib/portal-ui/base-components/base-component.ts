@@ -1,4 +1,4 @@
-import { SubscriptionHandler, PagedQuery } from '@skysmack/framework';
+import { SubscriptionHandler } from '@skysmack/framework';
 import { Package, NgSkysmackRedux } from 'lib/ng-packages/skysmack';
 import { Observable } from 'rxjs';
 import { Router, ActivatedRoute } from '@angular/router';

@@ -19,10 +19,12 @@ export abstract class NgDocmentRecordRequests<TRecord extends Record<TKey>, TKey
 
     public getFields(action: ReduxAction<PackagePathPayload>): Observable<ReduxAction<GetFieldsSuccessPayload> | ReduxAction> {
         const url = `${this.apiDomain.domain}/${action.payload.packagePath}/fields`;
+        console.log(url);
 
         return this.http.get<FieldSchemaViewModel[]>(url, { observe: 'response' })
             .pipe(
                 map(httpResponse => {
+                    console.log(httpResponse);
                     return Object.assign({}, new ReduxAction<GetFieldsSuccessPayload>({
                         type: this.prefix + DocumentRecordActionsBase.GET_FIELDS_SUCCESS,
                         payload: {

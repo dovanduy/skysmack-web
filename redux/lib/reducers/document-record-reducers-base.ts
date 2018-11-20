@@ -11,14 +11,14 @@ export function documentRecordReducersBase<TState extends PackageDocumentRecordS
     let newState = Object.assign({}, state);
 
     switch (action.type) {
-        case prefix + DocumentRecordActionsBase.GET_FIELDS: {
+        case prefix + DocumentRecordActionsBase.GET_FIELDS_SUCCESS: {
             const castedAction: ReduxAction<GetFieldsSuccessPayload> = action;
             newState[castedAction.payload.packagePath].fields = castedAction.payload.fields;
             return newState
         }
         case prefix + DocumentRecordActionsBase.GET_FIELDS_FAILURE: {
             const castedAction: ReduxAction<PackagePathPayload> = action;
-            console.log('Fields failure...')
+            console.log('Fields failure...');
             return newState;
         }
         default:
