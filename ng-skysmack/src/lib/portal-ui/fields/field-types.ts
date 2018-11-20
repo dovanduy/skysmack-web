@@ -1,17 +1,19 @@
 export enum FieldTypes {
+    // Returned from backend
+    int,
+    string,
+    dateTime,
+    decimal,
+    double,
+    geography,
+    // Only defined in front end
     CheckboxField,
     DateField,
-    DateTimeField,
-    DecimalField,
-    DoubleField,
     EmailField,
-    GeographyField,
     HiddenField,
-    IntField,
-    LimitedStringField,
+    limitedString,
     PasswordField,
     RecurringExpressionField,
     SelectField,
-    StringField,
     TimeField,
 }

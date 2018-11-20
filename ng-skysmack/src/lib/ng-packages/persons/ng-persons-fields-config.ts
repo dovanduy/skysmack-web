@@ -20,7 +20,7 @@ export class NgPersonsFieldsConfig extends DocumentFieldsConfig<Person> {
     protected getEntityFields(entity?: LocalObject<Person>, dependencies?: any): Field[] {
         const fields = [
             new Field({
-                fieldType: FieldTypes.StringField,
+                fieldType: FieldTypes.string,
                 value: entity ? entity.object.firstName : undefined,
                 key: 'firstName',
                 validators: [Validators.required],
@@ -29,7 +29,7 @@ export class NgPersonsFieldsConfig extends DocumentFieldsConfig<Person> {
             } as Field),
 
             new Field({
-                fieldType: FieldTypes.StringField,
+                fieldType: FieldTypes.string,
                 value: entity ? entity.object.lastName : undefined,
                 key: 'lastName',
                 validators: [Validators.required],
@@ -38,7 +38,7 @@ export class NgPersonsFieldsConfig extends DocumentFieldsConfig<Person> {
             } as Field),
 
             new Field({
-                fieldType: FieldTypes.StringField,
+                fieldType: FieldTypes.string,
                 value: entity ? entity.object.displayName : undefined,
                 key: 'displayName',
                 validators: [Validators.required],

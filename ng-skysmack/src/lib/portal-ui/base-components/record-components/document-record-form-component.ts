@@ -1,6 +1,6 @@
 import { Router, ActivatedRoute } from '@angular/router';
 import { OnInit, OnDestroy } from '@angular/core';
-import { Record } from '@skysmack/framework';
+import { Record, log } from '@skysmack/framework';
 import { FieldsConfig } from 'lib/portal-ui/fields/fields-config';
 import { EditorNavService } from 'lib/portal-ui/components/common/container/editor-nav.service';
 import { NgSkysmackRedux } from 'lib/ng-packages/skysmack';
@@ -26,14 +26,12 @@ export class DocumentRecordFormComponent<TAppState, TRecord extends Record<TKey>
 
     ngOnInit() {
         super.ngOnInit();
-        this.getDocumentRecordFields();
     }
 
     public getDocumentRecordFields() {
         this.actions.getFields(this.path);
-        const entity = undefined;
         this.subscriptionHandler.subscribe(this.store.getFields(this.path).pipe(
-            map(dynamicFields => this.getFields(entity, dynamicFields))
+            map(dynamicFields => this.getFields(undefined, dynamicFields))
         ).subscribe(fields => this.fields = fields));
     }
 }

@@ -17,7 +17,7 @@ export abstract class DocumentFieldsConfig<TRecord> extends FieldsConfig<TRecord
     protected dynamicFields(availableFields: LocalObject<FieldValueProviderViewModel>[], field?: LocalObject<FieldSchemaViewModel>): Field[] {
         const fields = [
             new Field({
-                fieldType: FieldTypes.StringField,
+                fieldType: FieldTypes.string,
                 value: field ? field.object.display : undefined,
                 key: 'display',
                 validators: [Validators.required],
@@ -25,7 +25,7 @@ export abstract class DocumentFieldsConfig<TRecord> extends FieldsConfig<TRecord
             } as Field),
 
             new Field({
-                fieldType: FieldTypes.StringField,
+                fieldType: FieldTypes.string,
                 value: field ? field.object.key : undefined,
                 key: 'key',
                 validators: [Validators.required],

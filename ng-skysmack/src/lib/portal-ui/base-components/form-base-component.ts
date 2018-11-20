@@ -15,7 +15,7 @@ export class FormBaseComponent<TAppState, TRecord extends Record<TKey>, TKey> ex
     /**
      * Fields being sent the dynamic form component used to create the form.
      */
-    public fields: Field[] = [];
+    public fields: Field[];
 
     /**
      * The selected entity needed for edit forms.
@@ -42,7 +42,7 @@ export class FormBaseComponent<TAppState, TRecord extends Record<TKey>, TKey> ex
     protected getFields(entity?: LocalObject<any>, dynamicFields?: LocalObject<FieldSchemaViewModel>[], dependencies?: any): Field[] {
         const fields = this.fieldsConfig.getStaticFields(entity, dependencies);
         if (dynamicFields) {
-            return [
+            const returnfields = [
                 ...fields,
                 ...dynamicFields.map(dynamicField => {
                     return new Field({
@@ -56,6 +56,7 @@ export class FormBaseComponent<TAppState, TRecord extends Record<TKey>, TKey> ex
                     } as Field);
                 })
             ].sort((a, b) => a.order - b.order);
+            return returnfields;
         } else {
             return fields.sort((a, b) => a.order - b.order);
         }

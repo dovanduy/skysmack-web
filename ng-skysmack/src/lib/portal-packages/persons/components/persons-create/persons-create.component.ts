@@ -3,16 +3,17 @@ import { Person, PersonsAppState } from '@skysmack/packages-persons';
 import { NgPersonsActions } from 'lib/ng-packages/persons/redux/ng-persons-actions';
 import { NgSkysmackRedux } from 'lib/ng-packages/skysmack/redux/ng-skysmack-redux';
 import { ActivatedRoute, Router } from '@angular/router';
-import { RecordFormComponent } from 'lib/portal-ui/base-components/record-components/record-form-component';
 import { EditorNavService } from 'lib/portal-ui/components/common/container/editor-nav.service';
 import { NgPersonsFieldsConfig } from 'lib/ng-packages/persons/ng-persons-fields-config';
+import { DocumentRecordFormComponent } from 'lib/portal-ui/base-components/record-components/document-record-form-component';
+import { NgPersonsStore } from 'lib/ng-packages/persons';
 
 @Component({
   selector: 'ss-persons-create',
   templateUrl: './persons-create.component.html',
   styleUrls: ['./persons-create.component.scss']
 })
-export class PersonsCreateComponent extends RecordFormComponent<PersonsAppState, Person, number> implements OnInit {
+export class PersonsCreateComponent extends DocumentRecordFormComponent<PersonsAppState, Person, number> implements OnInit {
 
   constructor(
     public router: Router,
@@ -21,12 +22,14 @@ export class PersonsCreateComponent extends RecordFormComponent<PersonsAppState,
     public actions: NgPersonsActions,
     public redux: NgSkysmackRedux,
     public fieldsConfig: NgPersonsFieldsConfig,
+    public store: NgPersonsStore,
   ) {
-    super(router, activatedRoute, editorNavService, actions, redux, fieldsConfig);
+    super(router, activatedRoute, editorNavService, actions, redux, fieldsConfig, store);
   }
 
   ngOnInit() {
     super.ngOnInit();
+    this.getDocumentRecordFields();
   }
 
 }

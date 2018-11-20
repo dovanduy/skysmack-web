@@ -24,7 +24,6 @@ export class RecordFormComponent<TAppState, TRecord extends Record<TKey>, TKey> 
 
     ngOnInit() {
         super.ngOnInit();
-        this.getRecordFields();
         this.editorNavService.showEditorNav();
     }
 

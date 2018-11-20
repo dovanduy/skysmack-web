@@ -1,17 +1,17 @@
 <div [ngSwitch]="field.fieldType">
+  <ss-int-field [fh]="fh" [field]="field" [fields]="fields" [rules]="rules" *ngSwitchCase="fieldTypeConstants.int"></ss-int-field>
+  <ss-string-field [fh]="fh" [field]="field" [fields]="fields" [rules]="rules" *ngSwitchCase="fieldTypeConstants.string"></ss-string-field>
+  <ss-date-time-field [fh]="fh" [field]="field" [fields]="fields" [rules]="rules" *ngSwitchCase="fieldTypeConstants.dateTime"></ss-date-time-field>
+  <ss-decimal-field [fh]="fh" [field]="field" [fields]="fields" [rules]="rules" *ngSwitchCase="fieldTypeConstants.decimal"></ss-decimal-field>
+  <ss-double-field [fh]="fh" [field]="field" [fields]="fields" [rules]="rules" *ngSwitchCase="fieldTypeConstants.double"></ss-double-field>
+  <ss-geography-field [fh]="fh" [field]="field" [fields]="fields" [rules]="rules" *ngSwitchCase="fieldTypeConstants.geography"></ss-geography-field>
   <ss-checkbox-field [fh]="fh" [field]="field" [fields]="fields" [rules]="rules" *ngSwitchCase="fieldTypeConstants.CheckboxField"></ss-checkbox-field>
   <ss-date-field [fh]="fh" [field]="field" [fields]="fields" [rules]="rules" *ngSwitchCase="fieldTypeConstants.DateField"></ss-date-field>
-  <ss-date-time-field [fh]="fh" [field]="field" [fields]="fields" [rules]="rules" *ngSwitchCase="fieldTypeConstants.DateTimeField"></ss-date-time-field>
-  <ss-decimal-field [fh]="fh" [field]="field" [fields]="fields" [rules]="rules" *ngSwitchCase="fieldTypeConstants.DecimalField"></ss-decimal-field>
-  <ss-double-field [fh]="fh" [field]="field" [fields]="fields" [rules]="rules" *ngSwitchCase="fieldTypeConstants.DoubleField"></ss-double-field>
   <ss-email-field [fh]="fh" [field]="field" [fields]="fields" [rules]="rules" *ngSwitchCase="fieldTypeConstants.EmailField"></ss-email-field>
-  <ss-geography-field [fh]="fh" [field]="field" [fields]="fields" [rules]="rules" *ngSwitchCase="fieldTypeConstants.GeographyField"></ss-geography-field>
   <ss-hidden-field [fh]="fh" [field]="field" [fields]="fields" [rules]="rules" *ngSwitchCase="fieldTypeConstants.HiddenField"></ss-hidden-field>
-  <ss-int-field [fh]="fh" [field]="field" [fields]="fields" [rules]="rules" *ngSwitchCase="fieldTypeConstants.IntField"></ss-int-field>
   <ss-limited-string-field [fh]="fh" [field]="field" [fields]="fields" [rules]="rules" *ngSwitchCase="fieldTypeConstants.LimitedStringField"></ss-limited-string-field>
   <ss-password-field [fh]="fh" [field]="field" [fields]="fields" [rules]="rules" *ngSwitchCase="fieldTypeConstants.PasswordField"></ss-password-field>
   <ss-recurring-expression-field [fh]="fh" [field]="field" [fields]="fields" [rules]="rules" *ngSwitchCase="fieldTypeConstants.RecurringExpressionField"></ss-recurring-expression-field>
   <ss-select-field [fh]="fh" [field]="field" [fields]="fields" [rules]="rules" *ngSwitchCase="fieldTypeConstants.SelectField"></ss-select-field>
-  <ss-string-field [fh]="fh" [field]="field" [fields]="fields" [rules]="rules" *ngSwitchCase="fieldTypeConstants.StringField"></ss-string-field>
   <ss-time-field [fh]="fh" [field]="field" [fields]="fields" [rules]="rules" *ngSwitchCase="fieldTypeConstants.TimeField"></ss-time-field>
 </div>
