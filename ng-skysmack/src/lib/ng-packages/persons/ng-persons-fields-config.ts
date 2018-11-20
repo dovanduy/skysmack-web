@@ -7,6 +7,7 @@ import { LocalObject } from '@skysmack/framework';
 import { Person } from '@skysmack/packages-persons';
 import { Field } from 'lib/portal-ui/fields/field';
 import { FieldTypes } from 'lib/portal-ui/fields/field-types';
+import { PersonsValidation } from './ng-persons-validation';
 
 @Injectable({ providedIn: 'root' })
 export class NgPersonsFieldsConfig extends DocumentFieldsConfig<Person> {

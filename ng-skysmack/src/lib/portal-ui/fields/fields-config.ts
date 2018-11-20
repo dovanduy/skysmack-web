@@ -1,11 +1,11 @@
 import { FormRule } from '../forms/form-rule';
-import { EntityValidation } from '../forms/entity-validation';
 import { LocalObject } from '@skysmack/framework';
 import { Field } from './field';
+import { RecordValidation } from '../forms/record-validation';
 
 export abstract class FieldsConfig<TRecord> {
     public abstract formRules: FormRule[];
-    public abstract validation: EntityValidation;
+    public abstract validation: RecordValidation;
     protected abstract getEntityFields(entity?: LocalObject<TRecord>, dependencies?: any): Field[];
 
     public getStaticFields(entity?: LocalObject<TRecord>, dependencies?: any): Field[] {

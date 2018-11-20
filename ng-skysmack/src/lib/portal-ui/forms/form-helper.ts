@@ -1,5 +1,5 @@
 import { FormControl, FormGroup } from '@angular/forms';
-import { EntityValidation } from './entity-validation';
+import { RecordValidation } from './record-validation';
 
 export class FormHelper {
 
@@ -14,7 +14,7 @@ export class FormHelper {
 
     constructor(
         public form: FormGroup,
-        public validation: EntityValidation
+        public validation: RecordValidation
     ) {
         this.formErrors = validation.formErrors;
     }

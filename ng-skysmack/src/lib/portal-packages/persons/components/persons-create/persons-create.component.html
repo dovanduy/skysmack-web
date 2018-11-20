@@ -1,3 +1,4 @@
-<p>
-  persons-create works!
-</p>
+<ss-dynamic-form *ngIf="fields" [fields]="fields" [validation]="fieldsConfig.validation" [rules]="fieldsConfig.formRules"
+  [buttonText]="'Create'" (submitted)="onPackageCreateSubmit($event)">
+  <h2 [translate]="'PERSONS.CREATE.CREATE'"></h2>
+</ss-dynamic-form>

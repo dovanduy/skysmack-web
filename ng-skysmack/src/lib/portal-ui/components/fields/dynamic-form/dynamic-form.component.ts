@@ -3,8 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SubscriptionLike } from 'rxjs';
 import { Field } from './../../../fields/field';
 import { FormRule } from './../../../forms/form-rule';
-import { EntityValidation } from './../../../forms/entity-validation';
 import { FormHelper } from './../../../forms/form-helper';
+import { RecordValidation } from 'lib/portal-ui/forms/record-validation';
 
 @Component({
   selector: 'ss-dynamic-form',
@@ -15,7 +15,7 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
 
   @Input() public fields: Field[];
   @Input() public rules: FormRule[];
-  @Input() public validation: EntityValidation;
+  @Input() public validation: RecordValidation;
   @Input() public buttonText = 'Submit';
 
   public fh: FormHelper;

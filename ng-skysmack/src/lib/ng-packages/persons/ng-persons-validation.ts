@@ -1,29 +1,26 @@
 import { StrIndex } from '@skysmack/framework';
-import { RecordValidation } from '../forms/record-validation';
+import { RecordValidation } from 'lib/portal-ui/forms/record-validation';
 
-export class EntityFieldsValidation extends RecordValidation {
+export class PersonsValidation extends RecordValidation {
     public formErrors = {
-        key: '',
-        type: '',
-        display: '',
-        validators: '',
-        readPermissions: '',
-        writePermissions: ''
+        firstName: '',
+        lastName: '',
+        displayName: ''
     };
 
     public validationMessages: StrIndex<{}> = {
-        key: {
+        firstName: {
             required: '',
         },
-        type: {
+        lastName: {
             required: '',
         },
-        display: {
+        displayName: {
             required: '',
         }
     };
 
-    public area = 'field';
+    public area = 'persons';
 
     public formValidators = [];
 
