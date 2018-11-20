@@ -1,8 +1,7 @@
-import { ofType, ActionsObservable, Epic } from 'redux-observable';
-import { switchMap, map } from 'rxjs/operators';
+import { ofType, ActionsObservable } from 'redux-observable';
+import { switchMap } from 'rxjs/operators';
 import { Record } from '@skysmack/framework';
 import { ReduxAction } from './../action-types/redux-action';
-import { RecordActionsBase } from './../actions/record-actions-base';
 import { RecordEpicsBase } from './record-epics-base';
 import { DocumentRecordRequests } from './../requests/document-record-requests';
 import { PackagePathPayload } from './../payloads/package-path-payload';
