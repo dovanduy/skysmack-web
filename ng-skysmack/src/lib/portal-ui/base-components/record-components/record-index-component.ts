@@ -41,7 +41,7 @@ export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey>
         super.ngOnInit();
         this.getEntities();
         this.requestPage(true);
-        this.loadPages();
+        // this.loadPages();
         // this.getPagedEntities();
         // this.subscriptionHandler.subscribe(this.getScrollAsStream().subscribe());
     }
