@@ -1,6 +1,6 @@
 import { NgRedux } from '@angular-redux/store';
 import { HttpClient, HttpResponseBase } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import defaultQueue from '@redux-offline/redux-offline/lib/defaults/queue';
 import { Config, OfflineAction, OfflineState } from '@redux-offline/redux-offline/lib/types';
 import { AnyAction } from 'redux';
@@ -8,6 +8,8 @@ import { createTransform } from 'redux-persist';
 import { Observable } from 'rxjs';
 import { share, take } from 'rxjs/operators';
 import { TOOGLE_HYDRATED } from './hydrated-reducer';
+import { HttpMethod, ApiDomain } from '@skysmack/framework';
+import { EffectMeta } from '@skysmack/redux';
 
 // See https://github.com/redux-offline/redux-offline#configuration
 @Injectable({ providedIn: 'root' })
@@ -27,6 +29,7 @@ export class ReduxOfflineConfiguration implements Config {
     constructor(
         public ngRedux: NgRedux<any>,
         public http: HttpClient,
+        @Inject('ApiDomain') public apiDomain: ApiDomain
     ) { }
 
     // Defaults =============
@@ -70,20 +73,30 @@ export class ReduxOfflineConfiguration implements Config {
         this.ngRedux.dispatch({ type: TOOGLE_HYDRATED, payload: true });
     }
 
-    public effect = (effect: any, action: AnyAction): Promise<any> => {
+    public effect = (effect: EffectMeta<any>, action: AnyAction): Promise<any> => {
         return new Promise<HttpResponseBase>((resolve, reject) => {
             const request = effect.request;
             let result: Observable<any> = null;
 
+            const requestOptions = {
+                headers: request.headers,
+                observe: 'response',
+                params: request.params,
+                responseType: 'json'
+            };
+
+            const url = this.apiDomain.domain + '/' + request.path;
+
             switch (request.method) {
-                case 'HttpMethod.POST':
-                    result = this.http.post<any>(request.url, request.body, request.options as any).pipe(share());
+
+                case HttpMethod.POST:
+                    result = this.http.post<any>(url, request.body, requestOptions as any).pipe(share());
                     break;
-                case 'HttpMethod.PUT':
-                    result = this.http.put<any>(request.url, request.body, request.options as any).pipe(share());
+                case HttpMethod.PUT:
+                    result = this.http.put<any>(url, request.body, requestOptions as any).pipe(share());
                     break;
-                case 'HttpMethod.DELETE':
-                    result = this.http.delete<any>(request.url, request.options as any).pipe(share());
+                case HttpMethod.DELETE:
+                    result = this.http.delete<any>(url, requestOptions as any).pipe(share());
                     break;
                 default:
                     return;

@@ -61,7 +61,7 @@ export class RecordFormComponent<TAppState, TRecord extends Record<TKey>, TKey> 
      * @param fh The form helper with data needed to create the entity
      */
     public onPackageCreateSubmit(fh: FormHelper) {
-        this.create();
+        this.create(fh);
     }
 
     /**
@@ -109,20 +109,19 @@ export class RecordFormComponent<TAppState, TRecord extends Record<TKey>, TKey> 
     }
 
     /**
-     * Creates an entity
-     * @param fh The form helper with the form with the data needed to create the object.
-     * @param identity Path if package e.g. "customers", areaKey if module e.g. "ROLES_KEY"
-     * @param redirectTo Where to redirect on success.
-     * @param autoReset Should the form reset after post? Defaults to true.
-     * @param postAsArray Should the data be wrapped in a array before getting posted? Defaults to true.
-     */
-    protected create() {
-        // this.validateForm(fh, () => {
-        //     this.redux.add(this.extractFormValues(fh), identity, postAsArray);
-        //     this.editorNavService.hideEditorNav();
-        // }, autoReset);
+      * Creates an entity
+      * @param fh The form helper with the form with the data needed to create the object.
+      * @param identity Path if package e.g. "customers", areaKey if module e.g. "ROLES_KEY"
+      * @param redirectTo Where to redirect on success.
+      * @param autoReset Should the form reset after post? Defaults to true.
+      * @param postAsArray Should the data be wrapped in a array before getting posted? Defaults to true.
+      */
+    protected create(fh: FormHelper, autoReset: boolean = true, postAsArray: boolean = true) {
+        this.validateForm(fh, () => {
+            this.actions.add<TRecord, TKey>([this.extractFormValues(fh)], this.path);
+            this.editorNavService.hideEditorNav();
+        }, autoReset);
     }
-
     /**
      * Updates an entity
      * @param fh The form helper with the form with the data needed to create the object.

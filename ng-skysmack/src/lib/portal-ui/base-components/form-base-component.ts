@@ -20,7 +20,7 @@ export class FormBaseComponent<TAppState, TRecord extends Record<TKey>, TKey> ex
     /**
      * The selected entity needed for edit forms.
      */
-    public selectedEntity: LocalObject<any>;
+    public selectedEntity: LocalObject<TRecord>;
 
     constructor(
         public router: Router,
@@ -39,7 +39,7 @@ export class FormBaseComponent<TAppState, TRecord extends Record<TKey>, TKey> ex
      * @param dynamicFields Any dynamic fields added to the package.
      * @param dependencies Any dependencies the form needs.
      */
-    protected getFields(entity?: LocalObject<any>, dynamicFields?: LocalObject<FieldSchemaViewModel>[], dependencies?: any): Field[] {
+    protected getFields(entity?: LocalObject<TRecord>, dynamicFields?: LocalObject<FieldSchemaViewModel>[], dependencies?: any): Field[] {
         const fields = this.fieldsConfig.getStaticFields(entity, dependencies);
         if (dynamicFields) {
             const returnfields = [
@@ -86,7 +86,7 @@ export class FormBaseComponent<TAppState, TRecord extends Record<TKey>, TKey> ex
      * @param fh Form helper with submitted values.
      * @param entity Optional entity that will be updated with the values extraced from the form. Otherwise a new entity is created.
      */
-    protected extractFormValues(fh: FormHelper, entity?: LocalObject<any>): LocalObject<any> {
+    protected extractFormValues(fh: FormHelper, entity?: LocalObject<TRecord>): LocalObject<TRecord> {
         let extractedValues;
         const formValues: { default, fields } = fh.form.getRawValue();
 
@@ -115,7 +115,7 @@ export class FormBaseComponent<TAppState, TRecord extends Record<TKey>, TKey> ex
             return entity;
         } else {
             // Create new entity
-            return toLocalObject<any>(
+            return toLocalObject<TRecord>(
                 extractedValues,
                 undefined,
                 LocalObjectStatus.CREATING,

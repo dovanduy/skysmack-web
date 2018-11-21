@@ -1,7 +1,9 @@
 import { Store } from 'redux';
-import { PagedQuery } from '@skysmack/framework';
+import { PagedQuery, Record, LocalObject, HttpMethod } from '@skysmack/framework';
 import { ReduxAction } from '../action-types/redux-action';
-import { GetPagedRecordsPayload, GetSingleRecordPayload } from '../payloads';
+import { GetPagedRecordsPayload, GetSingleRecordPayload, } from '../payloads';
+import { ReduxOfflineMeta, OfflineMeta, EffectMeta, CommitMeta, RollbackMeta } from '../metas';
+import { EffectRequest } from '../models/effect-request';
 
 export abstract class RecordActionsBase<TStateType, TStore extends Store<TStateType>> {
     public static GET_PAGED = 'GET_PAGED';
@@ -12,11 +14,14 @@ export abstract class RecordActionsBase<TStateType, TStore extends Store<TStateT
     public static GET_SINGLE_SUCCESS = RecordActionsBase.GET_SINGLE + '_SUCCESS';
     public static GET_SINGLE_FAILURE = RecordActionsBase.GET_SINGLE + '_FAILURE';
 
+    public static ADD = 'ADD';
+    public static ADD_SUCCESS = RecordActionsBase.ADD + '_SUCCESS';
+    public static ADD_FAILURE = RecordActionsBase.ADD + '_FAILURE';
+
     constructor(
         protected store: TStore,
         protected prefix: string
     ) { }
-
 
     public getPaged(packagePath: string, pagedQuery: PagedQuery) {
         this.store.dispatch(Object.assign({}, new ReduxAction<GetPagedRecordsPayload>({
@@ -35,6 +40,35 @@ export abstract class RecordActionsBase<TStateType, TStore extends Store<TStateT
                 id,
                 packagePath
             }
+        })));
+    }
+
+    public add<TRecord extends Record<TKey>, TKey>(records: LocalObject<TRecord>[], path: string) {
+        this.store.dispatch(Object.assign({}, new ReduxAction<any, ReduxOfflineMeta<TRecord[], TRecord, TKey>>({
+            type: this.prefix + RecordActionsBase.ADD,
+            meta: new ReduxOfflineMeta(
+                new OfflineMeta<TRecord[], TRecord, TKey>(
+                    new EffectMeta<TRecord[]>(new EffectRequest<TRecord[]>(
+                        path,
+                        HttpMethod.POST,
+                        records.map(x => x.object),
+                    )),
+                    new ReduxAction<any, CommitMeta<TRecord, TKey>>({
+                        type: this.prefix + RecordActionsBase.ADD_SUCCESS,
+                        meta: {
+                            stateKey: path,
+                            records
+                        }
+                    }),
+                    new ReduxAction<any, RollbackMeta<TRecord, TKey>>({
+                        type: this.prefix + RecordActionsBase.ADD_FAILURE,
+                        meta: {
+                            stateKey: path,
+                            records
+                        }
+                    })
+                )
+            )
         })));
     }
 }
