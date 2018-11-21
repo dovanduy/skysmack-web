@@ -1,13 +1,11 @@
 <ng-container [formGroup]="fh.form">
-  <ng-container [formGroupName]="field.groupName">
-    <mat-form-field>
-      <mat-select [id]="field.key" [formControlName]="field.key" [value]="field.value" [placeholder]="field.placeholder | translate">
-        <mat-option *ngFor="let opt of fieldOptions" [value]="opt.value">{{opt.displayName}}</mat-option>
-      </mat-select>
+  <mat-form-field>
+    <mat-select [id]="field.key" [formControlName]="field.key" [value]="field.value" [placeholder]="field.placeholder | translate">
+      <mat-option *ngFor="let opt of fieldOptions" [value]="opt.value">{{opt.displayName}}</mat-option>
+    </mat-select>
 
-      <mat-error *ngIf="fh.formErrors[field.key]">
-        {{ fh.formErrors[field.key] | translate }}
-      </mat-error>
-    </mat-form-field>
-  </ng-container>
+    <mat-error *ngIf="fh.formErrors[field.key]">
+      {{ fh.formErrors[field.key] | translate }}
+    </mat-error>
+  </mat-form-field>
 </ng-container>

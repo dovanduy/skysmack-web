@@ -1,13 +1,11 @@
 <ng-container [formGroup]="fh.form">
-  <ng-container [formGroupName]="field.groupName">
-    <mat-form-field>
-      <input matInput type="number" [attr.id]="field.key" name="latitude" placeholder="Latitude" #latitude>
-      <input matInput type="number" [attr.id]="field.key" name="longtitude" placeholder="Longtitude" #longtitude>
-      <input type="hidden" [attr.id]="field.key" [formControlName]="field.key">
+  <mat-form-field>
+    <input matInput type="number" [attr.id]="field.key" name="latitude" placeholder="Latitude" #latitude>
+    <input matInput type="number" [attr.id]="field.key" name="longtitude" placeholder="Longtitude" #longtitude>
+    <input type="hidden" [attr.id]="field.key" [formControlName]="field.key">
 
-      <mat-error *ngIf="fh.formErrors[field.key]">
-        {{ fh.formErrors[field.key] | translate }}
-      </mat-error>
-    </mat-form-field>
-  </ng-container>
+    <mat-error *ngIf="fh.formErrors[field.key]">
+      {{ fh.formErrors[field.key] | translate }}
+    </mat-error>
+  </mat-form-field>
 </ng-container>

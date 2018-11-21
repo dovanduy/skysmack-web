@@ -1,5 +1,5 @@
 import { Store } from 'redux';
-import { PagedQuery, Record, LocalObject, HttpMethod } from '@skysmack/framework';
+import { PagedQuery, Record, LocalObject, HttpMethod, LocalObjectStatus } from '@skysmack/framework';
 import { ReduxAction } from '../action-types/redux-action';
 import { GetPagedRecordsPayload, GetSingleRecordPayload, } from '../payloads';
 import { OfflineMeta, CommitMeta, RollbackMeta, ReduxOfflineMeta } from '../metas';
@@ -78,14 +78,19 @@ export abstract class RecordActionsBase<TStateType, TStore extends Store<TStateT
     }
 
     public update<TRecord extends Record<TKey>, TKey>(records: LocalObject<TRecord>[], packagePath: string, additionalPath: string = '') {
+        additionalPath += '?ids=' + records.map(x => x.object.id).join(',');
+
         this.store.dispatch(Object.assign({}, new ReduxAction<any, ReduxOfflineMeta<TRecord[], TRecord, TKey>>({
-            type: this.prefix + RecordActionsBase.ADD,
+            type: this.prefix + RecordActionsBase.UPDATE,
             meta: new ReduxOfflineMeta(
                 new OfflineMeta<TRecord[], TRecord, TKey>(
                     new Effect<TRecord[]>(new EffectRequest<TRecord[]>(
                         packagePath + additionalPath,
                         HttpMethod.PUT,
-                        records.map(x => x.object),
+                        records.map(x => {
+                            x.status = LocalObjectStatus.MODIFYING
+                            return x.object
+                        }),
                     )),
                     new ReduxAction<any, CommitMeta<TRecord, TKey>>({
                         type: this.prefix + RecordActionsBase.UPDATE_SUCCESS,

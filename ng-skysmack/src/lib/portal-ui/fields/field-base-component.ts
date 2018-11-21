@@ -1,5 +1,5 @@
 import { Input, OnDestroy, ElementRef, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormControl } from '@angular/forms';
 import { SubscriptionLike as ISubscription } from 'rxjs';
 import { FormHelper } from '../forms/form-helper';
 import { Field } from './field';
@@ -34,7 +34,7 @@ export class FieldBaseComponent implements OnInit, OnDestroy {
         const newValuesAsString = JSON.stringify(newValue);
         this.oldFieldValue = JSON.stringify(this.getFieldValue());
         if (this.oldFieldValue !== newValuesAsString) {
-            (this.fh.form.controls[this.field.groupName] as FormGroup).controls[this.field.key].setValue(newValue);
+            this.fh.form.controls[this.field.key].setValue(newValue);
             this.oldFieldValue = newValuesAsString;
         }
     }
@@ -48,7 +48,7 @@ export class FieldBaseComponent implements OnInit, OnDestroy {
     }
 
     protected setOtherFieldValue(fieldKey: string, newValue: any) {
-        const fieldControl = (this.fh.form.controls[this.field.groupName] as FormGroup).controls[fieldKey];
+        const fieldControl = this.fh.form.controls[fieldKey];
 
         if (fieldControl) {
             fieldControl.setValue(newValue);
@@ -61,10 +61,10 @@ export class FieldBaseComponent implements OnInit, OnDestroy {
         }
     }
 
-    protected getFormField = (): FormControl => ((this.fh.form.controls[this.field.groupName] as FormGroup).controls[this.field.key] as FormControl);
+    protected getFormField = (): FormControl => (this.fh.form.controls[this.field.key] as FormControl);
 
     protected getFieldValue() {
-        const fieldValue = (this.fh.form.controls[this.field.groupName] as FormGroup).controls[this.field.key].value;
+        const fieldValue = this.fh.form.controls[this.field.key].value;
         if (fieldValue == null) {
             return undefined;
         }
@@ -72,7 +72,7 @@ export class FieldBaseComponent implements OnInit, OnDestroy {
     }
 
     protected extractSingleValueOfArray() {
-        const field = (this.fh.form.controls[this.field.groupName] as FormGroup).get(this.field.key);
+        const field = this.fh.form.get(this.field.key);
         if (Array.isArray(field.value)) {
             field.setValue(field.value[0]);
         }

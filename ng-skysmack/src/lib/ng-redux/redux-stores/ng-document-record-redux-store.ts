@@ -1,4 +1,4 @@
-import { Record, hasValue, FieldSchemaViewModel, LocalObject } from '@skysmack/framework';
+import { Record, hasValue, FieldSchemaViewModel, LocalObject, safeUndefinedTo } from '@skysmack/framework';
 import { Observable } from 'rxjs';
 import { NgRedux } from '@angular-redux/store';
 import { map } from 'rxjs/operators';
@@ -14,10 +14,7 @@ export abstract class NgDocumentRecordReduxStore<TState, TRecord extends Record<
     }
 
     public getFields(packagePath: string): Observable<LocalObject<FieldSchemaViewModel>[]> {
-        return this.getState<DocumentRecordState<TRecord, TKey>>().pipe(
-            map(state => state.fields[packagePath]),
-            hasValue<LocalObject<FieldSchemaViewModel>[]>()
-        );
+        return this.getState<DocumentRecordState<TRecord, TKey>>().pipe(map(state => state.fields[packagePath]), hasValue());
     }
 }
 

@@ -48,6 +48,6 @@ export abstract class FormRule {
      * Gets the default FormGroup.
      */
     protected getDefaultGroupControls(): { [key: string]: AbstractControl } {
-        return (this.form.controls.default as FormGroup).controls;
+        return this.form.controls;
     }
 }

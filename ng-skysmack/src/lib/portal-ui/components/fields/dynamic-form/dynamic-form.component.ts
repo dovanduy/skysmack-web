@@ -46,28 +46,11 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
    */
   private createFormHelper() {
     const formGroup = {};
-    const groupedFields = this.groupFields(this.fields);
-    Object.keys(groupedFields).map(key => formGroup[key] = this.fb.group(groupedFields[key]));
+    this.fields.forEach(field => {
+      formGroup[field.key] = field.validators ? [field.value, Validators.compose(field.validators)] : field.value;
+    });
     const formHelper = new FormHelper(this.fb.group(formGroup, { validator: this.validation.formValidators }), this.validation);
     return formHelper;
-  }
-
-  /**
-   * Creates an array with field group arrays. Each group conaints field set to that group.
-   */
-  private groupFields(fields: Field[]) {
-    // Array to contain each type of field group we have.
-    const groupedFields = [];
-    fields.forEach(field => {
-      // Create the field group property and instantiate its array if it does not exist
-      if (!groupedFields[field.groupName]) {
-        groupedFields[field.groupName] = [];
-      }
-      // Add the field to its group
-      groupedFields[field.groupName][field.key] = field.validators ? [field.value, Validators.compose(field.validators)] : field.value;
-    });
-
-    return groupedFields;
   }
 
   /**
@@ -75,12 +58,10 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
    */
   private disableFields(fields: Field[], formHelper: FormHelper) {
     fields.filter(field => field.disabled === true).forEach(field => {
-      Object.keys(formHelper.form.controls).forEach(fieldGroup => {
-        const control = (formHelper.form.controls[fieldGroup] as FormGroup).controls[field.key];
-        if (control) {
-          control.disable();
-        }
-      });
+      const control = formHelper.form.controls.controls[field.key];
+      if (control) {
+        control.disable();
+      }
     });
   }
 

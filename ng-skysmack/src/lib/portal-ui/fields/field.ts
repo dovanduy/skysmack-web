@@ -18,11 +18,6 @@ export class Field {
     public order: number;
 
     /**
-     * Group the field belongs to.
-     */
-    public groupName: 'default' | 'fields' = 'default';
-
-    /**
      * Field validations, if any.
      */
     public validators: ValidatorFn[];

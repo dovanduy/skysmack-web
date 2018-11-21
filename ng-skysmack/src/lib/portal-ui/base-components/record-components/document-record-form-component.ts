@@ -9,7 +9,7 @@ import { NgRedux } from '@angular-redux/store';
 import { RecordFormComponent } from './record-form-component';
 import { NgDocumentRecordReduxStore } from 'lib/ng-redux/redux-stores/ng-document-record-redux-store';
 import { map } from 'rxjs/operators';
-import { combineLatest } from 'rxjs';
+import { combineLatest, zip } from 'rxjs';
 
 export class DocumentRecordFormComponent<TAppState, TRecord extends Record<TKey>, TKey> extends RecordFormComponent<TAppState, TRecord, TKey> implements OnInit, OnDestroy {
 
@@ -48,7 +48,7 @@ export class DocumentRecordFormComponent<TAppState, TRecord extends Record<TKey>
                 const dynamicFields = values[1];
 
                 this.selectedEntity = entity;
-                return this.getFields(entity, dynamicFields);
+                return this.getFields(entity, dynamicFields);;
             })
         ).subscribe(fields => this.fields = fields));
     }

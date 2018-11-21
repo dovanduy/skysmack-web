@@ -1,5 +1,5 @@
 import { RecordActionsBase } from "../actions";
-import { Record, RecordExtensions, PageExtensions, toLocalObject, HttpSuccessResponse, HttpErrorResponse, LocalObject } from "@skysmack/framework";
+import { Record, RecordExtensions, PageExtensions, toLocalObject, HttpSuccessResponse, HttpErrorResponse, LocalObject, LocalObjectStatus } from "@skysmack/framework";
 import { RecordState } from './../states/record-state';
 import { GetPagedRecordsSuccessPayload, GetSingleRecordSuccessPayload } from '../payloads';
 import { ReduxAction } from '../action-types/redux-action';
@@ -18,7 +18,6 @@ export function recordReducersBase<TState extends RecordState<TRecord, TKey>, TR
         }
         case prefix + RecordActionsBase.GET_SINGLE_SUCCESS: {
             const castedAction: ReduxAction<GetSingleRecordSuccessPayload<TRecord, TKey>> = action;
-            console.log(castedAction);
             newState.localRecords[castedAction.payload.packagePath] = RecordExtensions.mergeOrAddLocalRecords(newState.localRecords[castedAction.payload.packagePath], [toLocalObject(castedAction.payload.record)]);
             return newState;
         }
@@ -31,7 +30,8 @@ export function recordReducersBase<TState extends RecordState<TRecord, TKey>, TR
         }
         case prefix + RecordActionsBase.ADD_SUCCESS: {
             const castedAction: ReduxAction<HttpSuccessResponse<any[] | any>, CommitMeta<TRecord, TKey>> = action;
-            const newObjects = processBody<TRecord>(castedAction.payload.body, castedAction.meta.records);
+            const body = castedAction.payload.body;
+            const newObjects = (Array.isArray(body) ? body : [body]).map((newObject, index) => toLocalObject(newObject, castedAction.meta.records[index].localId));
             newState.localRecords[castedAction.meta.stateKey] = RecordExtensions.mergeOrAddLocalRecords(newState.localRecords[castedAction.meta.stateKey], newObjects);
             return newState;
         }
@@ -42,8 +42,10 @@ export function recordReducersBase<TState extends RecordState<TRecord, TKey>, TR
         }
         case prefix + RecordActionsBase.UPDATE_SUCCESS: {
             const castedAction: ReduxAction<HttpSuccessResponse<any[] | any>, CommitMeta<TRecord, TKey>> = action;
-            const updatedObjects = processBody<TRecord>(castedAction.payload.body, castedAction.meta.records);
-            newState.localRecords[castedAction.meta.stateKey] = RecordExtensions.mergeOrAddLocalRecords(newState.localRecords[castedAction.meta.stateKey], updatedObjects);
+            const body = castedAction.payload.body;
+            const updatedObjects = (Array.isArray(body) ? body : [body]).map((newObject, index) => toLocalObject(newObject, castedAction.meta.records[index].localId));
+            console.log();
+            newState.localRecords[castedAction.meta.stateKey] = RecordExtensions.mergeOrAddLocalRecords(newState.localRecords[castedAction.meta.stateKey], updatedObjects, LocalObjectStatus.MODIFYING);
             return newState;
         }
         case prefix + RecordActionsBase.UPDATE_FAILURE: {
@@ -54,8 +56,4 @@ export function recordReducersBase<TState extends RecordState<TRecord, TKey>, TR
         default:
             return newState;
     }
-}
-
-function processBody<TRecord>(body: any[] | any, records: LocalObject<TRecord>[]) {
-    return (Array.isArray(body) ? body : [body]).map((newObject, index) => toLocalObject(newObject, records[index].localId))
 }

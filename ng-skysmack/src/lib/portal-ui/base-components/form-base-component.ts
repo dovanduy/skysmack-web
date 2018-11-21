@@ -52,10 +52,10 @@ export class FormBaseComponent<TAppState, TRecord extends Record<TKey>, TKey> ex
                         label: dynamicField.object.display,
                         placeholder: dynamicField.object.display,
                         order: 4,
-                        groupName: 'fields'
                     } as Field);
                 })
             ].sort((a, b) => a.order - b.order);
+
             return returnfields;
         } else {
             return fields.sort((a, b) => a.order - b.order);
@@ -87,36 +87,23 @@ export class FormBaseComponent<TAppState, TRecord extends Record<TKey>, TKey> ex
      * @param entity Optional entity that will be updated with the values extraced from the form. Otherwise a new entity is created.
      */
     protected extractFormValues(fh: FormHelper, entity?: LocalObject<TRecord>): LocalObject<TRecord> {
-        let extractedValues;
-        const formValues: { default, fields } = fh.form.getRawValue();
-
-        if (formValues.fields) {
-            extractedValues = {
-                ...formValues.default,
-                ...formValues.fields
-            };
-        } else {
-            // The form has no custom fields. Only extract default fields
-            extractedValues = {
-                ...formValues.default,
-            };
-        }
+        const formValues = fh.form.getRawValue();
 
         // Remove empty values
-        Object.keys(extractedValues).forEach(key => {
-            if (extractedValues[key] === 'null' || extractedValues[key] === null) {
-                extractedValues[key] = undefined;
+        Object.keys(formValues).forEach(key => {
+            if (formValues[key] === 'null' || formValues[key] === null) {
+                formValues[key] = undefined;
             }
         });
 
         if (entity) {
             // Update existing entity
-            entity.object = extractedValues;
+            entity.object = formValues;
             return entity;
         } else {
             // Create new entity
             return toLocalObject<TRecord>(
-                extractedValues,
+                formValues,
                 undefined,
                 LocalObjectStatus.CREATING,
                 undefined,
