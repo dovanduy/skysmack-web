@@ -17,7 +17,6 @@ export function recordReducersBase<TState extends RecordState<TRecord, TKey>, TR
             return newState;
         }
         case prefix + RecordActionsBase.GET_SINGLE_SUCCESS: {
-            // TODO: Is this correct?
             const castedAction: ReduxAction<GetSingleRecordSuccessPayload<TRecord, TKey>> = action;
             console.log(castedAction);
             newState.localRecords[castedAction.payload.packagePath] = RecordExtensions.mergeOrAddLocalRecords(newState.localRecords[castedAction.payload.packagePath], [toLocalObject(castedAction.payload.record)]);

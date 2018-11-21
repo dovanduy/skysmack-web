@@ -9,6 +9,7 @@ import { NgRedux } from '@angular-redux/store';
 import { RecordFormComponent } from './record-form-component';
 import { NgDocumentRecordReduxStore } from 'lib/ng-redux/redux-stores/ng-document-record-redux-store';
 import { map } from 'rxjs/operators';
+import { combineLatest } from 'rxjs';
 
 export class DocumentRecordFormComponent<TAppState, TRecord extends Record<TKey>, TKey> extends RecordFormComponent<TAppState, TRecord, TKey> implements OnInit, OnDestroy {
 
@@ -37,10 +38,17 @@ export class DocumentRecordFormComponent<TAppState, TRecord extends Record<TKey>
 
     public initDocumentRecordEditComponent() {
         this.actions.getSingle(this.path, this.entityId);
-        this.subscriptionHandler.subscribe(this.store.getSingle(this.path, this.entityId).pipe(
-            map(entity => {
+        this.actions.getFields(this.path);
+        this.subscriptionHandler.subscribe(combineLatest(
+            this.store.getSingle(this.path, this.entityId),
+            this.store.getFields(this.path),
+        ).pipe(
+            map(values => {
+                const entity = values[0];
+                const dynamicFields = values[1];
+
                 this.selectedEntity = entity;
-                return this.getFields(entity);
+                return this.getFields(entity, dynamicFields);
             })
         ).subscribe(fields => this.fields = fields));
     }
