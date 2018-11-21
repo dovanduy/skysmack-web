@@ -58,7 +58,7 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
    */
   private disableFields(fields: Field[], formHelper: FormHelper) {
     fields.filter(field => field.disabled === true).forEach(field => {
-      const control = formHelper.form.controls.controls[field.key];
+      const control = formHelper.form.controls[field.key];
       if (control) {
         control.disable();
       }

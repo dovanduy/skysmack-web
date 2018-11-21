@@ -17,7 +17,7 @@ export class PersonsIndexComponent extends DocumentRecordIndexComponet<PersonsAp
   public displayedColumns = ['firstName', 'lastName'];
   public entityActions: EntityAction[] = [
     new EntityAction().asUrlAction('edit', 'Edit', 'edit'),
-    new EntityAction().asEventAction('Delete', this.delete, 'delete')
+    new EntityAction().asEventAction('Delete', this.delete, 'delete', this)
   ];
 
   constructor(

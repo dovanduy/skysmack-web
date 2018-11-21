@@ -50,7 +50,7 @@ export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey>
  * Listens for and fires entity actions when set in the component.
  * @param event Event emitted from the ss-data-table
  */
-    public actionEvent(event: { action: Function, value: LocalObject<any>, _this: any }) {
+    public actionEvent(event: { action: Function, value: LocalObject<TRecord>, _this: any }) {
         event.action(event.value, event._this);
     }
 
@@ -65,8 +65,8 @@ export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey>
      * Deletes an entity
      * @param entity The entity to delete.
      */
-    public delete = (entity: LocalObject<any>): void => {
-        // this.redux.remove(entity, this.path);
+    protected delete(value: LocalObject<TRecord>, _this: any) {
+        _this.actions.delete([value], _this.path);
     }
 
     /**
@@ -83,8 +83,8 @@ export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey>
                     const pages = Object.keys(queryDictionary)
                         .map(key => queryDictionary[key])
                         .filter(page => page.pagination.xPageNumber <= this.nextPageNumber);
-                        // .sort((a: Page, b: Page) => a.pagination.xPageNumber - b.pagination.xPageNumber);
-                        // .sort((a: LocalPage<TKey>, b: LocalPage<TKey>) => a.pageNumber - b.pageNumber);
+                    // .sort((a: Page, b: Page) => a.pagination.xPageNumber - b.pagination.xPageNumber);
+                    // .sort((a: LocalPage<TKey>, b: LocalPage<TKey>) => a.pageNumber - b.pageNumber);
 
 
                     const lastPage = pages[pages.length - 1];

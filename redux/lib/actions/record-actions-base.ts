@@ -23,6 +23,10 @@ export abstract class RecordActionsBase<TStateType, TStore extends Store<TStateT
     public static UPDATE_SUCCESS = RecordActionsBase.UPDATE + '_SUCCESS';
     public static UPDATE_FAILURE = RecordActionsBase.UPDATE + '_FAILURE';
 
+    public static DELETE = 'DELETE';
+    public static DELETE_SUCCESS = RecordActionsBase.DELETE + '_SUCCESS';
+    public static DELETE_FAILURE = RecordActionsBase.DELETE + '_FAILURE';
+
     constructor(
         protected store: TStore,
         protected prefix: string
@@ -101,6 +105,41 @@ export abstract class RecordActionsBase<TStateType, TStore extends Store<TStateT
                     }),
                     new ReduxAction<any, RollbackMeta<TRecord, TKey>>({
                         type: this.prefix + RecordActionsBase.UPDATE_FAILURE,
+                        meta: {
+                            stateKey: packagePath,
+                            records
+                        }
+                    })
+                )
+            )
+        })));
+    }
+
+
+    public delete<TRecord extends Record<TKey>, TKey>(records: LocalObject<TRecord>[], packagePath: string, additionalPath: string = '') {
+        additionalPath += '?ids=' + records.map(x => x.object.id).join(',');
+
+        this.store.dispatch(Object.assign({}, new ReduxAction<any, ReduxOfflineMeta<TRecord[], TRecord, TKey>>({
+            type: this.prefix + RecordActionsBase.DELETE,
+            meta: new ReduxOfflineMeta(
+                new OfflineMeta<TRecord[], TRecord, TKey>(
+                    new Effect<TRecord[]>(new EffectRequest<TRecord[]>(
+                        packagePath + additionalPath,
+                        HttpMethod.DELETE,
+                        records.map(x => {
+                            x.status = LocalObjectStatus.DELETING
+                            return x.object
+                        }),
+                    )),
+                    new ReduxAction<any, CommitMeta<TRecord, TKey>>({
+                        type: this.prefix + RecordActionsBase.DELETE_SUCCESS,
+                        meta: {
+                            stateKey: packagePath,
+                            records
+                        }
+                    }),
+                    new ReduxAction<any, RollbackMeta<TRecord, TKey>>({
+                        type: this.prefix + RecordActionsBase.DELETE_FAILURE,
                         meta: {
                             stateKey: packagePath,
                             records

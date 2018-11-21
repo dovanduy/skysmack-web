@@ -1,6 +1,6 @@
 import { Router, ActivatedRoute } from '@angular/router';
 import { OnInit, OnDestroy } from '@angular/core';
-import { Record } from '@skysmack/framework';
+import { Record, LocalObject } from '@skysmack/framework';
 import { FieldsConfig } from 'lib/portal-ui/fields/fields-config';
 import { EditorNavService } from 'lib/portal-ui/components/common/container/editor-nav.service';
 import { FormBaseComponent } from '../form-base-component';

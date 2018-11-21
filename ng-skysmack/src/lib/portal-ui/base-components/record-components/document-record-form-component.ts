@@ -1,6 +1,6 @@
 import { Router, ActivatedRoute } from '@angular/router';
 import { OnInit, OnDestroy } from '@angular/core';
-import { Record, log } from '@skysmack/framework';
+import { Record } from '@skysmack/framework';
 import { FieldsConfig } from 'lib/portal-ui/fields/fields-config';
 import { EditorNavService } from 'lib/portal-ui/components/common/container/editor-nav.service';
 import { NgSkysmackRedux } from 'lib/ng-packages/skysmack';
@@ -9,7 +9,7 @@ import { NgRedux } from '@angular-redux/store';
 import { RecordFormComponent } from './record-form-component';
 import { NgDocumentRecordReduxStore } from 'lib/ng-redux/redux-stores/ng-document-record-redux-store';
 import { map } from 'rxjs/operators';
-import { combineLatest, zip } from 'rxjs';
+import { combineLatest } from 'rxjs';
 
 export class DocumentRecordFormComponent<TAppState, TRecord extends Record<TKey>, TKey> extends RecordFormComponent<TAppState, TRecord, TKey> implements OnInit, OnDestroy {
 
@@ -48,7 +48,7 @@ export class DocumentRecordFormComponent<TAppState, TRecord extends Record<TKey>
                 const dynamicFields = values[1];
 
                 this.selectedEntity = entity;
-                return this.getFields(entity, dynamicFields);;
+                return this.getFields(entity, dynamicFields);
             })
         ).subscribe(fields => this.fields = fields));
     }

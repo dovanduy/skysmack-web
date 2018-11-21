@@ -53,6 +53,18 @@ export function recordReducersBase<TState extends RecordState<TRecord, TKey>, TR
             console.log('Update error', castedAction);
             return newState;
         }
+        case prefix + RecordActionsBase.DELETE_SUCCESS: {
+            const castedAction: ReduxAction<HttpSuccessResponse<any[] | any>, CommitMeta<TRecord, TKey>> = action;
+            castedAction.meta.records.forEach(record => {
+                delete newState.localRecords[castedAction.meta.stateKey][record.localId];
+            });
+            return newState;
+        }
+        case prefix + RecordActionsBase.DELETE_FAILURE: {
+            const castedAction: ReduxAction<HttpErrorResponse> = action;
+            console.log('Delete error', castedAction);
+            return newState;
+        }
         default:
             return newState;
     }
