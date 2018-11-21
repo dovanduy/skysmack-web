@@ -69,10 +69,14 @@ export abstract class NgRecordRequests<TRecord extends Record<TKey>, TKey> imple
     }
 
     public getSingle(action: ReduxAction<GetSingleRecordPayload<TKey>>): Observable<ReduxAction<GetSingleRecordSuccessPayload<TRecord, TKey>> | ReduxAction<GetSingleRecordPayload<TKey>>> {
-        return this.http.get<TRecord>(`${action.payload.packagePath}`, { observe: 'response' })
+
+        const url = `${this.apiDomain.domain}/${action.payload.packagePath}/${action.payload.id}`;
+
+        return this.http.get<TRecord>(url, { observe: 'response' })
             .pipe(
                 map(httpResponse => {
                     return Object.assign({}, new ReduxAction<GetSingleRecordSuccessPayload<TRecord, TKey>>({
+                        type: this.prefix + RecordActionsBase.GET_SINGLE_SUCCESS,
                         payload: {
                             id: action.payload.id,
                             record: httpResponse.body,

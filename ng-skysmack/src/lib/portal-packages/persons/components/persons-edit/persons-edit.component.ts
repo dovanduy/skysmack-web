@@ -9,11 +9,11 @@ import { DocumentRecordFormComponent } from 'lib/portal-ui/base-components/recor
 import { NgPersonsStore } from 'lib/ng-packages/persons';
 
 @Component({
-  selector: 'ss-persons-create',
-  templateUrl: './persons-create.component.html',
-  styleUrls: ['./persons-create.component.scss']
+  selector: 'ss-persons-edit',
+  templateUrl: './persons-edit.component.html',
+  styleUrls: ['./persons-edit.component.scss']
 })
-export class PersonsCreateComponent extends DocumentRecordFormComponent<PersonsAppState, Person, number> implements OnInit {
+export class PersonsEditComponent extends DocumentRecordFormComponent<PersonsAppState, Person, number> implements OnInit {
 
   constructor(
     public router: Router,
@@ -29,7 +29,6 @@ export class PersonsCreateComponent extends DocumentRecordFormComponent<PersonsA
 
   ngOnInit() {
     super.ngOnInit();
-    this.initDocumentRecordCreateComponent();
+    this.initDocumentRecordEditComponent();
   }
-
 }

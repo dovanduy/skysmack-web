@@ -19,6 +19,10 @@ export abstract class RecordActionsBase<TStateType, TStore extends Store<TStateT
     public static ADD_SUCCESS = RecordActionsBase.ADD + '_SUCCESS';
     public static ADD_FAILURE = RecordActionsBase.ADD + '_FAILURE';
 
+    public static UPDATE = 'UPDATE';
+    public static UPDATE_SUCCESS = RecordActionsBase.UPDATE + '_SUCCESS';
+    public static UPDATE_FAILURE = RecordActionsBase.UPDATE + '_FAILURE';
+
     constructor(
         protected store: TStore,
         protected prefix: string
@@ -63,6 +67,35 @@ export abstract class RecordActionsBase<TStateType, TStore extends Store<TStateT
                     }),
                     new ReduxAction<any, RollbackMeta<TRecord, TKey>>({
                         type: this.prefix + RecordActionsBase.ADD_FAILURE,
+                        meta: {
+                            stateKey: packagePath,
+                            records
+                        }
+                    })
+                )
+            )
+        })));
+    }
+
+    public update<TRecord extends Record<TKey>, TKey>(records: LocalObject<TRecord>[], packagePath: string, additionalPath: string = '') {
+        this.store.dispatch(Object.assign({}, new ReduxAction<any, ReduxOfflineMeta<TRecord[], TRecord, TKey>>({
+            type: this.prefix + RecordActionsBase.ADD,
+            meta: new ReduxOfflineMeta(
+                new OfflineMeta<TRecord[], TRecord, TKey>(
+                    new Effect<TRecord[]>(new EffectRequest<TRecord[]>(
+                        packagePath + additionalPath,
+                        HttpMethod.PUT,
+                        records.map(x => x.object),
+                    )),
+                    new ReduxAction<any, CommitMeta<TRecord, TKey>>({
+                        type: this.prefix + RecordActionsBase.UPDATE_SUCCESS,
+                        meta: {
+                            stateKey: packagePath,
+                            records
+                        }
+                    }),
+                    new ReduxAction<any, RollbackMeta<TRecord, TKey>>({
+                        type: this.prefix + RecordActionsBase.UPDATE_FAILURE,
                         meta: {
                             stateKey: packagePath,
                             records

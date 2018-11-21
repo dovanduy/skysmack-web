@@ -19,7 +19,7 @@ export abstract class NgRecordReduxStore<TState, TRecord extends Record<TKey>, T
     }
 
     public getSingle(packagePath: string, id: TKey): Observable<LocalObject<TRecord>> {
-        throw new Error('Method not implemented.');
+        return this.get(packagePath).pipe(map(records => records.find(record => record.object.id === id)));
     }
 
     // TODO: Use these? -> pageSize: number, query: string, sort: string
