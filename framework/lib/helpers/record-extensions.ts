@@ -1,7 +1,6 @@
 import { Record, LocalObject, LocalObjectStatus, StrIndex } from '../models';
 
 export class RecordExtensions {
-
     public static mergeOrAddLocalRecords<TRecord extends Record<TKey>, TKey>(existingRecords: StrIndex<LocalObject<TRecord>>, newRecords: LocalObject<TRecord>[]): StrIndex<LocalObject<TRecord>> {
         if (!newRecords || newRecords === null || newRecords.length === 0) {
             return existingRecords;

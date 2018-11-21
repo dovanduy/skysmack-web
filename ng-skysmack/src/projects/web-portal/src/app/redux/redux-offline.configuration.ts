@@ -1,15 +1,15 @@
 import { NgRedux } from '@angular-redux/store';
-import { HttpClient, HttpResponseBase } from '@angular/common/http';
+import { HttpClient, HttpResponseBase, HttpEvent, HttpResponse } from '@angular/common/http';
 import { Injectable, Inject } from '@angular/core';
 import defaultQueue from '@redux-offline/redux-offline/lib/defaults/queue';
 import { Config, OfflineAction, OfflineState } from '@redux-offline/redux-offline/lib/types';
 import { AnyAction } from 'redux';
 import { createTransform } from 'redux-persist';
 import { Observable } from 'rxjs';
-import { share, take } from 'rxjs/operators';
+import { share, map } from 'rxjs/operators';
 import { TOOGLE_HYDRATED } from './hydrated-reducer';
-import { HttpMethod, ApiDomain } from '@skysmack/framework';
-import { EffectMeta } from '@skysmack/redux';
+import { HttpMethod, ApiDomain, HttpSuccessResponse, HttpErrorResponse, log } from '@skysmack/framework';
+import { Effect } from '@skysmack/redux';
 
 // See https://github.com/redux-offline/redux-offline#configuration
 @Injectable({ providedIn: 'root' })
@@ -49,10 +49,10 @@ export class ReduxOfflineConfiguration implements Config {
     public persistOptions = {
         transforms: [
             createTransform(
-                (inboundState, key) => {
+                (inboundState) => {
                     return inboundState;
                 },
-                (outboundState, key) => {
+                (outboundState) => {
                     const online = (this.ngRedux.getState() as any).offline.online;
                     if (online) {
                         // If we are online, we want fresh data from the server.
@@ -68,15 +68,15 @@ export class ReduxOfflineConfiguration implements Config {
         ]
     };
 
-    public persistCallback = (callback?: any) => {
+    public persistCallback = () => {
         this.hydrated = true;
         this.ngRedux.dispatch({ type: TOOGLE_HYDRATED, payload: true });
     }
 
-    public effect = (effect: EffectMeta<any>, action: AnyAction): Promise<any> => {
-        return new Promise<HttpResponseBase>((resolve, reject) => {
+    public effect = (effect: Effect<any>): Promise<any> => {
+        return new Promise<HttpSuccessResponse<any> | HttpErrorResponse>((resolve, reject) => {
             const request = effect.request;
-            let result: Observable<any> = null;
+            let result: Observable<HttpEvent<any>> = null;
 
             const requestOptions = {
                 headers: request.headers,
@@ -102,7 +102,7 @@ export class ReduxOfflineConfiguration implements Config {
                     return;
             }
 
-            result.subscribe(response => resolve(response), error => reject(error));
+            result.subscribe(response => resolve(new HttpSuccessResponse(response as any)), error => reject(new HttpErrorResponse(error)));
         });
     }
 

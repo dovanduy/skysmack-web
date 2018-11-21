@@ -2,8 +2,9 @@ import { Store } from 'redux';
 import { PagedQuery, Record, LocalObject, HttpMethod } from '@skysmack/framework';
 import { ReduxAction } from '../action-types/redux-action';
 import { GetPagedRecordsPayload, GetSingleRecordPayload, } from '../payloads';
-import { ReduxOfflineMeta, OfflineMeta, EffectMeta, CommitMeta, RollbackMeta } from '../metas';
+import { OfflineMeta, CommitMeta, RollbackMeta, ReduxOfflineMeta } from '../metas';
 import { EffectRequest } from '../models/effect-request';
+import { Effect } from './../models/effect';
 
 export abstract class RecordActionsBase<TStateType, TStore extends Store<TStateType>> {
     public static GET_PAGED = 'GET_PAGED';
@@ -48,7 +49,7 @@ export abstract class RecordActionsBase<TStateType, TStore extends Store<TStateT
             type: this.prefix + RecordActionsBase.ADD,
             meta: new ReduxOfflineMeta(
                 new OfflineMeta<TRecord[], TRecord, TKey>(
-                    new EffectMeta<TRecord[]>(new EffectRequest<TRecord[]>(
+                    new Effect<TRecord[]>(new EffectRequest<TRecord[]>(
                         path,
                         HttpMethod.POST,
                         records.map(x => x.object),

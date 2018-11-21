@@ -1,8 +1,9 @@
 import { RecordActionsBase } from "../actions";
-import { Record, RecordExtensions, PageExtensions, toLocalObject } from "@skysmack/framework";
+import { Record, RecordExtensions, PageExtensions, toLocalObject, HttpSuccessResponse } from "@skysmack/framework";
 import { RecordState } from './../states/record-state';
 import { GetPagedRecordsSuccessPayload, GetSingleRecordSuccessPayload } from '../payloads';
 import { ReduxAction } from '../action-types/redux-action';
+import { CommitMeta } from './../metas';
 
 export function recordReducersBase<TState extends RecordState<TRecord, TKey>, TRecord extends Record<TKey>, TKey>(state: TState, action: any, prefix: string = ''): TState {
     state = Object.freeze(state);
@@ -18,6 +19,17 @@ export function recordReducersBase<TState extends RecordState<TRecord, TKey>, TR
         case prefix + RecordActionsBase.GET_SINGLE_SUCCESS: {
             const castedAction: ReduxAction<GetSingleRecordSuccessPayload<TRecord, TKey>> = action;
             newState.localRecords[castedAction.payload.packagePath] = RecordExtensions.mergeOrAddLocalRecords(newState.localRecords[castedAction.payload.packagePath], [toLocalObject(castedAction.payload.record)]);
+            return newState;
+        }
+        case prefix + RecordActionsBase.ADD_SUCCESS: {
+            const castedAction: ReduxAction<HttpSuccessResponse<any[] | any>, CommitMeta<TRecord, TKey>> = action;
+            const newObjects = Array.isArray(castedAction.payload.body) ? castedAction.payload.body : [castedAction.payload.body];
+            newState.localRecords[castedAction.meta.stateKey] = RecordExtensions.mergeOrAddLocalRecords(newState.localRecords[castedAction.meta.stateKey], newObjects.map(x => toLocalObject(x)));
+            return newState;
+        }
+        case prefix + RecordActionsBase.ADD_FAILURE: {
+            const castedAction: ReduxAction = action;
+            console.log('Add error', castedAction);
             return newState;
         }
         default:
