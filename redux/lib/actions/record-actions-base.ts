@@ -44,27 +44,27 @@ export abstract class RecordActionsBase<TStateType, TStore extends Store<TStateT
         })));
     }
 
-    public add<TRecord extends Record<TKey>, TKey>(records: LocalObject<TRecord>[], path: string) {
+    public add<TRecord extends Record<TKey>, TKey>(records: LocalObject<TRecord>[], packagePath: string, additionalPath: string = '') {
         this.store.dispatch(Object.assign({}, new ReduxAction<any, ReduxOfflineMeta<TRecord[], TRecord, TKey>>({
             type: this.prefix + RecordActionsBase.ADD,
             meta: new ReduxOfflineMeta(
                 new OfflineMeta<TRecord[], TRecord, TKey>(
                     new Effect<TRecord[]>(new EffectRequest<TRecord[]>(
-                        path,
+                        packagePath + additionalPath,
                         HttpMethod.POST,
                         records.map(x => x.object),
                     )),
                     new ReduxAction<any, CommitMeta<TRecord, TKey>>({
                         type: this.prefix + RecordActionsBase.ADD_SUCCESS,
                         meta: {
-                            stateKey: path,
+                            stateKey: packagePath,
                             records
                         }
                     }),
                     new ReduxAction<any, RollbackMeta<TRecord, TKey>>({
                         type: this.prefix + RecordActionsBase.ADD_FAILURE,
                         meta: {
-                            stateKey: path,
+                            stateKey: packagePath,
                             records
                         }
                     })

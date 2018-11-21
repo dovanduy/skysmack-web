@@ -15,10 +15,10 @@ export class RecordExtensions {
         }
 
         newRecords.forEach(newRecord => {
-            const existingRecord = Object.keys(existingRecords).find(x => existingRecords[x].object.id === newRecord.object.id);
-            if (existingRecord) {
-                if (existingRecords[existingRecord].status === LocalObjectStatus.OK) {
-                    existingRecords[existingRecord].object = newRecord.object;
+            const existingRecordKey = Object.keys(existingRecords).find(x => existingRecords[x].object.id === newRecord.object.id);
+            if (existingRecordKey) {
+                if (existingRecords[existingRecordKey].status === LocalObjectStatus.OK) {
+                    existingRecords[existingRecordKey].object = newRecord.object;
                 }
             } else {
                 existingRecords[newRecord.localId] = newRecord;

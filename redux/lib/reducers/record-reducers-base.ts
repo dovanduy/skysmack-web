@@ -3,7 +3,7 @@ import { Record, RecordExtensions, PageExtensions, toLocalObject, HttpSuccessRes
 import { RecordState } from './../states/record-state';
 import { GetPagedRecordsSuccessPayload, GetSingleRecordSuccessPayload } from '../payloads';
 import { ReduxAction } from '../action-types/redux-action';
-import { CommitMeta } from './../metas';
+import { CommitMeta, ReduxOfflineMeta } from './../metas';
 
 export function recordReducersBase<TState extends RecordState<TRecord, TKey>, TRecord extends Record<TKey>, TKey>(state: TState, action: any, prefix: string = ''): TState {
     state = Object.freeze(state);
@@ -21,10 +21,17 @@ export function recordReducersBase<TState extends RecordState<TRecord, TKey>, TR
             newState.localRecords[castedAction.payload.packagePath] = RecordExtensions.mergeOrAddLocalRecords(newState.localRecords[castedAction.payload.packagePath], [toLocalObject(castedAction.payload.record)]);
             return newState;
         }
+        case prefix + RecordActionsBase.ADD: {
+            const castedAction: ReduxAction<null, ReduxOfflineMeta<TRecord[], TRecord, TKey>> = action;
+            const stateKey = castedAction.meta.offline.commit.meta.stateKey;
+            const recordsToBeCreated = castedAction.meta.offline.commit.meta.records;
+            newState.localRecords[stateKey] = RecordExtensions.mergeOrAddLocalRecords(newState.localRecords[stateKey], recordsToBeCreated);
+            return newState;
+        }
         case prefix + RecordActionsBase.ADD_SUCCESS: {
             const castedAction: ReduxAction<HttpSuccessResponse<any[] | any>, CommitMeta<TRecord, TKey>> = action;
-            const newObjects = Array.isArray(castedAction.payload.body) ? castedAction.payload.body : [castedAction.payload.body];
-            newState.localRecords[castedAction.meta.stateKey] = RecordExtensions.mergeOrAddLocalRecords(newState.localRecords[castedAction.meta.stateKey], newObjects.map(x => toLocalObject(x)));
+            const newObjects = (Array.isArray(castedAction.payload.body) ? castedAction.payload.body : [castedAction.payload.body]).map((newObject, index) => toLocalObject(newObject, castedAction.meta.records[index].localId));
+            newState.localRecords[castedAction.meta.stateKey] = RecordExtensions.mergeOrAddLocalRecords(newState.localRecords[castedAction.meta.stateKey], newObjects);
             return newState;
         }
         case prefix + RecordActionsBase.ADD_FAILURE: {
