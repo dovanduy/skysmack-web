@@ -23,15 +23,6 @@ const cancelCreateAction = <TState extends RecordState<TRecord, TKey>, TRecord e
     const packagePath = action.payload.packagePath;
     const record = action.payload.record;
     delete newState.localRecords[packagePath][record.localId];
-
-    // if (options.area.subAreaKey) {
-    //     let targetArray = newState[options.getAreaString()][options.area.key][options.area.subAreaKey][options.target][options.path];
-    //     targetArray = ArrayHelpers.pluckArrayImmutable(targetArray, record);
-    // } else {
-    //     let targetArray = newState[options.getAreaString()][options.area.key][options.target][options.path];
-    //     targetArray = ArrayHelpers.pluckArrayImmutable(targetArray, record);
-    // }
-
     return newState;
 };
 
