@@ -18,6 +18,7 @@ export class RecordExtensions {
             const existingRecordKey = Object.keys(existingRecords).find(x => existingRecords[x].object.id === newRecord.object.id);
             if (existingRecordKey) {
                 if (existingRecords[existingRecordKey].status === expectedState) {
+                    newRecord.localId = existingRecordKey;
                     existingRecords[existingRecordKey] = newRecord;
                 }
             } else {

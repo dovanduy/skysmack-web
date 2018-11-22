@@ -9,11 +9,11 @@ export const cancelRecordAction = <TState extends RecordState<TRecord, TKey>, TR
 
     switch (action.payload.record.status) {
         case LocalObjectStatus.CREATING:
-            return cancelCreateAction(newState, action);
+            return cancelCreateAction<TState, TRecord, TKey>(newState, action);
         case LocalObjectStatus.MODIFYING:
-            return cancelEditAction(newState, action);
+            return cancelEditAction<TState, TRecord, TKey>(newState, action);
         case LocalObjectStatus.DELETING:
-            return cancelDeleteAction(newState, action);
+            return cancelDeleteAction<TState, TRecord, TKey>(newState, action);
         default:
             return newState;
     }
@@ -27,38 +27,16 @@ const cancelCreateAction = <TState extends RecordState<TRecord, TKey>, TRecord e
 };
 
 const cancelEditAction = <TState extends RecordState<TRecord, TKey>, TRecord extends Record<TKey>, TKey>(newState: TState, action: ReduxAction<CancelActionPayload<TRecord, TKey>, CancelActionMeta>): TState => {
-    // if (options.area.subAreaKey) {
-    //     const entities = newState[options.getAreaString()][options.area.key][options.area.subAreaKey][options.target][options.path];
-    //     const updateItem = entities.find(item => item.localId === record.localId);
-    //     if (updateItem) {
-    //         updateItem.status = LocalObjectStatus.OK;
-    //         updateItem.object = record.oldValue;
-    //     }
-    // } else {
-    //     const entities = newState[options.getAreaString()][options.area.key][options.target][options.path];
-    //     const updateItem = entities.find(item => item.localId === record.localId);
-    //     if (updateItem) {
-    //         updateItem.status = LocalObjectStatus.OK;
-    //         updateItem.object = record.oldValue;
-    //     }
-    // }
-
+    const packagePath = action.payload.packagePath;
+    const record = action.payload.record;
+    newState.localRecords[packagePath][record.localId].object = action.payload.record.oldObject;
+    newState.localRecords[packagePath][record.localId].status = LocalObjectStatus.OK;
     return newState;
 };
 
 const cancelDeleteAction = <TState extends RecordState<TRecord, TKey>, TRecord extends Record<TKey>, TKey>(newState: TState, action: ReduxAction<CancelActionPayload<TRecord, TKey>, CancelActionMeta>): TState => {
-    // if (options.area.subAreaKey) {
-    //     const entities = newState[options.getAreaString()][options.area.key][options.area.subAreaKey][options.target][options.path];
-    //     const updateItem = entities.find(item => item.localId === record.localId);
-    //     if (updateItem) {
-    //         updateItem.status = LocalObjectStatus.OK;
-    //     }
-    // } else {
-    //     const entities = newState[options.getAreaString()][options.area.key][options.target][options.path];
-    //     const updateItem = entities.find(item => item.localId === record.localId);
-    //     if (updateItem) {
-    //         updateItem.status = LocalObjectStatus.OK;
-    //     }
-    // }
+    const packagePath = action.payload.packagePath;
+    const record = action.payload.record;
+    newState.localRecords[packagePath][record.localId].status = LocalObjectStatus.OK;
     return newState;
 };

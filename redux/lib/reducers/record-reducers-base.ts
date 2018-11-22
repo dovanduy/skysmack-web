@@ -48,7 +48,6 @@ export function recordReducersBase<TState extends RecordState<TRecord, TKey>, TR
             const castedAction: ReduxAction<HttpSuccessResponse<any[] | any>, CommitMeta<TRecord, TKey>> = action;
             const body = castedAction.payload.body;
             const updatedObjects = (Array.isArray(body) ? body : [body]).map((newObject, index) => toLocalObject(newObject, castedAction.meta.records[index].localId));
-            console.log();
             newState.localRecords[castedAction.meta.stateKey] = RecordExtensions.mergeOrAddLocalRecords(newState.localRecords[castedAction.meta.stateKey], updatedObjects, LocalObjectStatus.MODIFYING);
             return newState;
         }

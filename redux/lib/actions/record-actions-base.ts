@@ -74,7 +74,7 @@ export abstract class RecordActionsBase<TStateType, TStore extends Store<TStateT
                     new Effect<TRecord[]>(new EffectRequest<TRecord[]>(
                         packagePath + additionalPath,
                         HttpMethod.POST,
-                        records.map(x => x.object),
+                        records.map(x => x.object)
                     )),
                     new ReduxAction<any, CommitMeta<TRecord, TKey>>({
                         type: this.prefix + RecordActionsBase.ADD_SUCCESS,
@@ -105,10 +105,7 @@ export abstract class RecordActionsBase<TStateType, TStore extends Store<TStateT
                     new Effect<TRecord[]>(new EffectRequest<TRecord[]>(
                         packagePath + additionalPath,
                         HttpMethod.PUT,
-                        records.map(x => {
-                            x.status = LocalObjectStatus.MODIFYING
-                            return x.object
-                        }),
+                        records.map(x => x.object)
                     )),
                     new ReduxAction<any, CommitMeta<TRecord, TKey>>({
                         type: this.prefix + RecordActionsBase.UPDATE_SUCCESS,
