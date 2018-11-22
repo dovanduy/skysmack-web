@@ -1,12 +1,14 @@
 import { Store } from 'redux';
 import { PagedQuery, Record, LocalObject, HttpMethod, LocalObjectStatus } from '@skysmack/framework';
 import { ReduxAction } from '../action-types/redux-action';
-import { GetPagedRecordsPayload, GetSingleRecordPayload, } from '../payloads';
-import { OfflineMeta, CommitMeta, RollbackMeta, ReduxOfflineMeta } from '../metas';
+import { GetPagedRecordsPayload, GetSingleRecordPayload, CancelActionPayload, } from '../payloads';
+import { OfflineMeta, CommitMeta, RollbackMeta, ReduxOfflineMeta, CancelActionMeta } from '../metas';
 import { EffectRequest } from '../models/effect-request';
 import { Effect } from './../models/effect';
 
 export abstract class RecordActionsBase<TStateType, TStore extends Store<TStateType>> {
+    public static CANCEL_RECORD_ACTION = 'CANCEL_RECORD_ACTION';
+
     public static GET_PAGED = 'GET_PAGED';
     public static GET_PAGED_SUCCESS = RecordActionsBase.GET_PAGED + '_SUCCESS';
     public static GET_PAGED_FAILURE = RecordActionsBase.GET_PAGED + '_FAILURE';
@@ -31,6 +33,18 @@ export abstract class RecordActionsBase<TStateType, TStore extends Store<TStateT
         protected store: TStore,
         protected prefix: string
     ) { }
+
+    public cancelRecordAction<TRecord extends Record<TKey>, TKey>(record: LocalObject<TRecord>, packagePath: string): void {
+        this.store.dispatch(Object.assign({}, new ReduxAction<CancelActionPayload<TRecord, TKey>, CancelActionMeta>({
+            type: RecordActionsBase.CANCEL_RECORD_ACTION,
+            payload: {
+                record,
+                packagePath
+            },
+            meta: new CancelActionMeta()
+        })))
+    }
+
 
     public getPaged(packagePath: string, pagedQuery: PagedQuery) {
         this.store.dispatch(Object.assign({}, new ReduxAction<GetPagedRecordsPayload>({

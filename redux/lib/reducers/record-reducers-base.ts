@@ -1,15 +1,19 @@
 import { RecordActionsBase } from "../actions";
-import { Record, RecordExtensions, PageExtensions, toLocalObject, HttpSuccessResponse, HttpErrorResponse, LocalObject, LocalObjectStatus } from "@skysmack/framework";
+import { Record, RecordExtensions, PageExtensions, toLocalObject, HttpSuccessResponse, HttpErrorResponse, LocalObjectStatus } from "@skysmack/framework";
 import { RecordState } from './../states/record-state';
 import { GetPagedRecordsSuccessPayload, GetSingleRecordSuccessPayload } from '../payloads';
 import { ReduxAction } from '../action-types/redux-action';
 import { CommitMeta, ReduxOfflineMeta } from './../metas';
+import { cancelRecordAction } from './cancel-record-action';
 
 export function recordReducersBase<TState extends RecordState<TRecord, TKey>, TRecord extends Record<TKey>, TKey>(state: TState, action: any, prefix: string = ''): TState {
     state = Object.freeze(state);
     let newState = Object.assign({}, state);
 
     switch (action.type) {
+        case RecordActionsBase.CANCEL_RECORD_ACTION: {
+            return cancelRecordAction<TState, TRecord, TKey>(newState, action);
+        }
         case prefix + RecordActionsBase.GET_PAGED_SUCCESS: {
             const castedAction: ReduxAction<GetPagedRecordsSuccessPayload<TRecord, TKey>> = action;
             newState.localPageTypes[castedAction.payload.packagePath] = PageExtensions.mergeOrAddPage(newState.localPageTypes[castedAction.payload.packagePath], castedAction.payload.page);
