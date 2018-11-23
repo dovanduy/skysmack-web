@@ -6,12 +6,12 @@ export enum FieldTypes {
     decimal,
     double,
     geography,
+    limitedString,
     // Only defined in front end
     CheckboxField,
     DateField,
     EmailField,
     HiddenField,
-    limitedString,
     PasswordField,
     RecurringExpressionField,
     SelectField,

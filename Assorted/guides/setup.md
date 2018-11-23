@@ -1,5 +1,8 @@
 # Skysmack setup
 
+## Global npm packages to install
+npm i -g opn angular-http-server @angular/cli npm-check-updates npm-install-peers
+
 ## Configuring the hosts file
 1. Go to `C:\Windows\System32\drivers\etc`
 2. Add Skysmack.Server endpoints

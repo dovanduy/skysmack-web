@@ -1,7 +1,7 @@
 import { RecordActionsBase } from "../actions";
-import { Record, RecordExtensions, PageExtensions, toLocalObject, HttpSuccessResponse, HttpErrorResponse, LocalObjectStatus } from "@skysmack/framework";
+import { Record, RecordExtensions, PageExtensions, toLocalObject, HttpSuccessResponse, HttpErrorResponse, LocalObjectStatus, PageResponse } from "@skysmack/framework";
 import { RecordState } from './../states/record-state';
-import { GetPagedRecordsSuccessPayload, GetSingleRecordSuccessPayload } from '../payloads';
+import { GetPagedRecordsSuccessPayload, GetSingleRecordSuccessPayload, GetPagedRecordsPayload } from '../payloads';
 import { ReduxAction } from '../action-types/redux-action';
 import { CommitMeta, ReduxOfflineMeta } from './../metas';
 import { cancelRecordAction } from './cancel-record-action';
@@ -14,10 +14,27 @@ export function recordReducersBase<TState extends RecordState<TRecord, TKey>, TR
         case RecordActionsBase.CANCEL_RECORD_ACTION: {
             return cancelRecordAction<TState, TRecord, TKey>(newState, action);
         }
+        case prefix + RecordActionsBase.GET_PAGED: {
+            const castedAction: ReduxAction<GetPagedRecordsPayload> = action;
+            const page = new PageResponse<TKey>({
+                pageNumber: castedAction.payload.pagedQuery.pageNumber,
+                pageSize: castedAction.payload.pagedQuery.pageSize,
+                ids: [],
+                links: null,
+                query: castedAction.payload.pagedQuery.rsqlFilter.toList().build(),
+                sort: castedAction.payload.pagedQuery.sort.build()
+            });
+            newState.localPageTypes[castedAction.payload.packagePath] = PageExtensions.mergeOrAddPage(newState.localPageTypes[castedAction.payload.packagePath], page, 'loading');
+
+            console.log('GETTING', JSON.stringify(newState.localPageTypes[castedAction.payload.packagePath], undefined, 2));
+
+            return newState;
+        }
         case prefix + RecordActionsBase.GET_PAGED_SUCCESS: {
             const castedAction: ReduxAction<GetPagedRecordsSuccessPayload<TRecord, TKey>> = action;
             newState.localPageTypes[castedAction.payload.packagePath] = PageExtensions.mergeOrAddPage(newState.localPageTypes[castedAction.payload.packagePath], castedAction.payload.page);
             newState.localRecords[castedAction.payload.packagePath] = RecordExtensions.mergeOrAddLocalRecords(newState.localRecords[castedAction.payload.packagePath], castedAction.payload.records.map(x => toLocalObject(x)));
+            console.log('FINISHED', JSON.stringify(newState.localPageTypes[castedAction.payload.packagePath], undefined, 2));
             return newState;
         }
         case prefix + RecordActionsBase.GET_SINGLE_SUCCESS: {

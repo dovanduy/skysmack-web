@@ -2,17 +2,17 @@
   "name": "@skysmack/ng-skysmack",
   "version": "0.0.0",
   "scripts": {
-    "b:f": "cd ../framework && npm run build",
-    "b:r": "cd ../redux && npm run build",
-    "b:pp": "cd ../packages-persons && npm run build",
-    "b:ps": "cd ../packages-skysmack && npm run build",
     "link:framework": "cd ../framework && npm link && npm run build",
     "link:redux": "cd ../redux && npm link && npm link @skysmack/framework && npm run build",
     "link:packages-persons": "cd ../packages-persons && npm link && npm link @skysmack/framework @skysmack/redux && npm run build",
     "link:packages-skysmack": "cd ../packages-skysmack && npm link && npm link @skysmack/framework && npm run build",
     "link:ng-skysmack": "npm link @skysmack/framework @skysmack/redux @skysmack/packages-persons @skysmack/packages-skysmack",
-    "build:client1:dev": "ng build --prod",
-    "build:client1:prod": "ng build --prod --deploy-url //cdn.skysmack.net/",
+    "build:c1:dev": "ng build --prod",
+    "build:c1:prod": "ng build --prod --deploy-url //cdn.skysmack.net/",
+    "open-local-host": "opn http://localhost:3000",
+    "start-server": "angular-http-server --path dist -p 3000",
+    "ss:build": "run-s build:c1:prod",
+    "ss:prod": "run-s build:c1:dev open-local-host start-server",
     "ss:c1": "ng serve --host client1.skysmack.test --port 4000 --disable-host-check",
     "ss:c1:open": "ng serve --host client1.skysmack.test --port 4000 --open --disable-host-check",
     "ss:init": "npm i && npm run ss:link && npm run ss:c1:open",
@@ -20,8 +20,7 @@
     "ss:open": "run-s ss:link ss:c1:open",
     "ss:clean": "clean.bat",
     "ss:rebuild": "npm run ss:clean && npm i && npm run ss",
-    "ss:link": "run-s link:framework link:redux link:packages-persons link:packages-skysmack link:ng-skysmack",
-    "ss:build": "run-s build:client1:prod"
+    "ss:link": "run-s link:framework link:redux link:packages-persons link:packages-skysmack link:ng-skysmack"
   },
   "private": true,
   "dependencies": {
