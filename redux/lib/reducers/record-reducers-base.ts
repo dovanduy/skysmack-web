@@ -26,7 +26,8 @@ export function recordReducersBase<TState extends RecordState<TRecord, TKey>, TR
             });
             newState.localPageTypes[castedAction.payload.packagePath] = PageExtensions.mergeOrAddPage(newState.localPageTypes[castedAction.payload.packagePath], page, 'loading');
 
-            console.log('GETTING', JSON.stringify(newState.localPageTypes[castedAction.payload.packagePath], undefined, 2));
+            // TODO: Show Morten
+            // console.log('GETTING', JSON.stringify(newState.localPageTypes[castedAction.payload.packagePath], undefined, 2));
 
             return newState;
         }
@@ -34,7 +35,10 @@ export function recordReducersBase<TState extends RecordState<TRecord, TKey>, TR
             const castedAction: ReduxAction<GetPagedRecordsSuccessPayload<TRecord, TKey>> = action;
             newState.localPageTypes[castedAction.payload.packagePath] = PageExtensions.mergeOrAddPage(newState.localPageTypes[castedAction.payload.packagePath], castedAction.payload.page);
             newState.localRecords[castedAction.payload.packagePath] = RecordExtensions.mergeOrAddLocalRecords(newState.localRecords[castedAction.payload.packagePath], castedAction.payload.records.map(x => toLocalObject(x)));
-            console.log('FINISHED', JSON.stringify(newState.localPageTypes[castedAction.payload.packagePath], undefined, 2));
+
+            // TODO: Show Morten
+            // console.log('FINISHED', JSON.stringify(newState.localPageTypes[castedAction.payload.packagePath], undefined, 2));
+
             return newState;
         }
         case prefix + RecordActionsBase.GET_SINGLE_SUCCESS: {

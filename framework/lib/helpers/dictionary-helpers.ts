@@ -3,37 +3,6 @@ import { getProperty } from './framework.helpers';
 import { ArrayHelpers } from './array-helpers';
 
 export class DictionaryHelpers {
-    // TODO: Fix outcommented code. Note new types are needed.
-    /**
-     * Sets provided value for specified key. If value is undefined, nothing is set, and the same dictionary is returned.
-     * @param dictionary The dictionary to set the value on.
-     * @param key Key name.
-     * @param value Value to set.
-     */
-    // public static setDictionaryImmutable(dictionary: StrIndex<any>, key: string, value: any): StrIndex<any> {
-    //     if (value === undefined) {
-    //         return dictionary;
-    //     }
-
-    //     const clonedDictionary = {
-    //         ...dictionary
-    //     };
-
-    //     clonedDictionary[key] = value;
-
-    //     return clonedDictionary;
-    // }
-
-    // public static setPageDictionaryImmutable(state: BaseState, action: GetSuccessAction<any>): Dictionary<any> {
-    //     const page: Page = action.payload.page;
-    //     const pages = { ...state.pages };
-    //     pages[page.key] = {
-    //         ...pages[page.key],
-    //         ...DictionaryHelpers.setDictionaryImmutable(state.pages[page.pagination.xPageNumber], page.pagination.xPageNumber.toString(), page)
-    //     };
-    //     return pages;
-    // }
-
     /**
      * Adds item to array contained inside a dictionary.
      * @param dictionary Dictionary with arrays as values.
@@ -111,59 +80,4 @@ export class DictionaryHelpers {
 
         return clonedDictionary;
     }
-
-    // TODO: Fix outcommented code. Note new types are needed.
-    /**
-     * Patches a target dictionary from state with action values.
-     * @param target Target dictionary. Key values must be arrays of LocalObjects.
-     * @param patchType The kind of patch to apply. Valid values: success, rollback, remove-success.
-     * @param action The patch action with needed values to patch the object.
-     */
-    // public static patchDictionaryImmutable(target: Dictionary<any[]>, patchType: string, action: PatchAction<any>, newEntity: boolean = false): Dictionary<any[]> {
-    //     const targetClone = {
-    //         ...target
-    //     };
-
-    //     switch (patchType) {
-    //         case 'success':
-    //             const successPatchAction = action as PatchAction<HttpResponse<any>>;
-    //             const body = successPatchAction.payload.body;
-    //             Array.isArray(body) ? body.forEach(entity => DictionaryHelpers.patchOrAddEntity(targetClone, successPatchAction, entity, newEntity)) : DictionaryHelpers.patchOrAddEntity(targetClone, successPatchAction, body, newEntity);
-    //             break;
-    //         case 'rollback':
-    //             const rollBackPatchAction = action as PatchAction<HttpErrorResponse>;
-    //             const updateItem = targetClone[rollBackPatchAction.meta.packageKey].find(item => item.localId === rollBackPatchAction.meta.targetId);
-    //             updateItem.status = LocalObjectStatus.ERROR;
-    //             updateItem.error = rollBackPatchAction.payload;
-    //             break;
-    //         case 'remove-success':
-    //             const removePatchAction = action as PatchAction<HttpResponse<any>>;
-    //             targetClone[removePatchAction.meta.packageKey] = targetClone[removePatchAction.meta.packageKey].filter(item => item.localId !== removePatchAction.meta.targetId);
-    //             break;
-    //         default:
-    //             console.log(`PatchType "${patchType}" is not a valid. Check spelling and case sensitivity`);
-    //             break;
-    //     }
-
-    //     return targetClone;
-    // }
-
-    // private static patchOrAddEntity(targetClone: { [x: string]: any[]; }, successPatchAction: PatchAction<HttpResponse<any>>, body: any, newEntity: boolean) {
-    //     if (!targetClone[successPatchAction.meta.packageKey]) {
-    //         targetClone[successPatchAction.meta.packageKey] = [];
-    //     }
-
-    //     const updateItem = targetClone[successPatchAction.meta.packageKey].find(item => item.localId === successPatchAction.meta.targetId);
-    //     if (updateItem) {
-    //         updateItem.object = body;
-    //         updateItem.status = LocalObjectStatus.OK;
-    //         if (newEntity) {
-    //             updateItem.isNew = true;
-    //         }
-    //     } else {
-    //         const item = body;
-    //         item.isNew = newEntity ? true : item.isNew;
-    //         targetClone[successPatchAction.meta.packageKey].push(toLocalObject(item));
-    //     }
-    // }
 }

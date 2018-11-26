@@ -50,9 +50,4 @@ export class NgSkysmackRedux {
     public getModules(): Observable<Package[]> {
         return this.ngRedux.select((state: any) => state.skysmack.currentTenant.modules).pipe(defined(), map(modules => modules.map(_module => PackageLoader.toPackage(_module))));
     }
-
-    // TODO: Implement this correctly
-    // public clearReduxState() {
-    //     this.ngRedux.dispatch(this.actions.clearReduxState());
-    // }
 }
