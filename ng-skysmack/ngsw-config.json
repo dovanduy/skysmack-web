@@ -1,0 +1,16 @@
+{
+    "index": "/index.html",
+    "assetGroups": [
+        {
+            "name": "portal",
+            "installMode": "prefetch",
+            "resources": {
+                "files": [
+                    "/index.html",
+                    "/*.css",
+                    "/*.js"
+                ]
+            }
+        }
+    ]
+}
