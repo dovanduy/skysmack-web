@@ -1,0 +1,10 @@
+{
+  "name": "web-portal",
+  "short_name": "web-portal",
+  "theme_color": "#1976d2",
+  "background_color": "#fafafa",
+  "display": "standalone",
+  "scope": "/",
+  "start_url": "/",
+  "icons": []
+}

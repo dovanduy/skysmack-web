@@ -19,6 +19,8 @@ import { StartComponent } from './components/start/start.component';
 import { configureRedux } from '../redux/redux.configuration';
 import { applicationStartup } from './application-startup';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../../environments/environment';
 
 
 // AoT requires an exported function for factories
@@ -62,6 +64,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     NgReduxModule,
     NgReduxRouterModule.forRoot(),
     SkysmackModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
   providers: [
     applicationStartup
