@@ -4,10 +4,11 @@ import { SkysmackApiDomain } from '../../requests/skysmack-api-domain';
 import { loadPersonPackage } from '../packages/persons-package-manifest';
 import { PackageLoader } from 'lib/ng-packages/skysmack/packages/package-loader';
 import { MenuItemProvider } from 'lib/portal-ui/providers/menu-item-provider';
-import { NgSkysmackRedux } from 'lib/ng-packages/skysmack';
 import { of } from '@skysmack/framework/node_modules/rxjs';
 import { Observable } from 'rxjs';
 import { MenuItem } from 'lib/portal-ui/models/sidebar-menu/menu-item';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthorizationInterceptor } from 'lib/portal-ui/autentication/authorization.interceptor';
 
 
 // TODO: Delete as soon as one real other menu item provider has been created.
@@ -30,6 +31,10 @@ export const configurations = [
     { provide: APP_INITIALIZER, useFactory: configureCurrentTenant, deps: [NgSkysmackActions], multi: true },
 ];
 
+export const httpInterceptors = [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthorizationInterceptor, multi: true }
+];
+
 export const packageLoaders = [
     { provide: APP_INITIALIZER, useFactory: loadPersonPackage, deps: [PackageLoader], multi: true },
 ];
@@ -46,6 +51,7 @@ export const injectionTokens = [
 
 export const applicationStartup = [
     ...configurations,
+    ...httpInterceptors,
     ...packageLoaders,
     ...menuProviders,
     ...injectionTokens
