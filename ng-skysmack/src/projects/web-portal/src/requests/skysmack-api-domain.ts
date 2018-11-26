@@ -14,22 +14,24 @@ export class SkysmackApiDomain implements ApiDomain {
     private getApiDomain(): string {
         let apiDomain = '';
 
-        const localProdClient = 'localhost:3000';
-        const localApi = 'http://localhost:2000';
+        // TODO: When is this needed?
+        const localApi = 'http://www.skysmack.test:4000';
 
+        // Local production testing
+        const localProdClient = 'www.skysmack.test:4000';
         const devHostClient = 'skysmack.test';
         const devPortalHostApi = 'skysmack-io.test:2000';
         const devTenantsHostApi = 'skysmack-io.test:3000';
 
+        // Production builds
         const prodHostClient = 'skysmack.net';
         const prodHostApi = 'skysmack.io';
 
         const urlInfo = this.getUrl();
-        // Web app
-        if (environment.production) {
-            if (urlInfo.host === localProdClient) { // Local prod build
-                apiDomain = localApi;
-            } else if (urlInfo.noPortHost.endsWith(prodHostClient) && urlInfo.subdomain.length > 0) {
+
+        const notLocalTesting = urlInfo.host !== localProdClient;
+        if (environment.production && notLocalTesting) {
+            if (urlInfo.noPortHost.endsWith(prodHostClient) && urlInfo.subdomain.length > 0) {
                 apiDomain = 'https://' + urlInfo.subdomain + '.' + prodHostApi;
             } else {
                 apiDomain = 'https://' + prodHostApi;
