@@ -1,6 +1,5 @@
 # New Skysmack Package
 
-
 ## 1st: Setup npm package
 - Create folder with name.
     packages-rabbits
@@ -15,7 +14,7 @@
 
 - Ensure package.json has the correct project name.
 
-## 2nd: Setup build flow
+## 2nd: Setup build flow (currently angular specific)
 - Add a linking script to ng-skysmack/package.json scripts section. It should something like this
     "link:packages-rabbits": ""
 
@@ -35,7 +34,7 @@
     > Platform dependant examples (don't add)
         redux actions/requets/store (these use @Injectable, ngRedux, HttpClient, etc., all angular specific things)
 
-## 3rd: Implement logic and views foreach platform/framework
+## 4rt: Implement logic and views foreach platform/framework
 - Angular
     > For angular, go to ng-skysmack/ng-packages (for logic) and ng-skysmack/portal-packages (for views and routing)
     > ng-packages should implement things like
