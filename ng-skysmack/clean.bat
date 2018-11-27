@@ -17,17 +17,19 @@ RD /s /q "%~dp0\..\framework\node_modules";
 echo Deleted framework\node_modules;
 del /s /q "%~dp0\..\framework\package-lock.json";
 
-rem ng-skysmack
-RD /s /q "%~dp0\node_modules";
-echo Deleted ng-skysmack\node_modules;
-del /s /q "%~dp0\package-lock.json";
+rem redux
+RD /s /q "%~dp0\..\redux\dist";
+echo Deleted redux\dist;
+RD /s /q "%~dp0\..\redux\node_modules";
+echo Deleted redux\node_modules;
+del /s /q "%~dp0\..\redux\package-lock.json";
 
-rem packages-persons
-RD /s /q "%~dp0\..\packages-persons\dist";
-echo Deleted packages-persons\dist;
-RD /s /q "%~dp0\..\packages-persons\node_modules";
-echo Deleted packages-persons\node_modules;
-del /s /q "%~dp0\..\packages-persons\package-lock.json";
+rem packages-skysmack
+RD /s /q "%~dp0\..\packages-authentication\dist";
+echo Deleted packages-authentication\dist;
+RD /s /q "%~dp0\..\packages-authentication\node_modules";
+echo Deleted packages-authentication\node_modules;
+del /s /q "%~dp0\..\packages-authentication\package-lock.json";
 
 rem packages-skysmack
 RD /s /q "%~dp0\..\packages-skysmack\dist";
@@ -36,9 +38,14 @@ RD /s /q "%~dp0\..\packages-skysmack\node_modules";
 echo Deleted packages-skysmack\node_modules;
 del /s /q "%~dp0\..\packages-skysmack\package-lock.json";
 
-rem redux
-RD /s /q "%~dp0\..\redux\dist";
-echo Deleted redux\dist;
-RD /s /q "%~dp0\..\redux\node_modules";
-echo Deleted redux\node_modules;
-del /s /q "%~dp0\..\redux\package-lock.json";
+rem packages-persons
+RD /s /q "%~dp0\..\packages-persons\dist";
+echo Deleted packages-persons\dist;
+RD /s /q "%~dp0\..\packages-persons\node_modules";
+echo Deleted packages-persons\node_modules;
+del /s /q "%~dp0\..\packages-persons\package-lock.json";
+
+rem ng-skysmack
+RD /s /q "%~dp0\node_modules";
+echo Deleted ng-skysmack\node_modules;
+del /s /q "%~dp0\package-lock.json";
