@@ -21,3 +21,5 @@
 - Update "ss:link" in ng-skysmack/package.json with the new "link:packages-rabbit". Remember it MUST come after any other packages it is linking to.
 
 - Update the clean.bat script in ng-skysmack/package.json.
+
+- Remember to add the new linking script to any other linking scripts that depend on it. "link:ng-skysmack" is dependant on ALL packages (so far), so remember to update that.
