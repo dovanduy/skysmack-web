@@ -45,6 +45,13 @@ RD /s /q "%~dp0\..\packages-persons\node_modules";
 echo Deleted packages-persons\node_modules;
 del /s /q "%~dp0\..\packages-persons\package-lock.json";
 
+rem packages-products
+RD /s /q "%~dp0\..\packages-products\dist";
+echo Deleted packages-products\dist;
+RD /s /q "%~dp0\..\packages-products\node_modules";
+echo Deleted packages-products\node_modules;
+del /s /q "%~dp0\..\packages-products\package-lock.json";
+
 rem ng-skysmack
 RD /s /q "%~dp0\node_modules";
 echo Deleted ng-skysmack\node_modules;
