@@ -3,16 +3,12 @@ import { RecordValidation } from 'lib/portal-ui/forms/record-validation';
 
 export class ProductsValidation extends RecordValidation {
     public formErrors = {
-        firstName: '',
-        lastName: '',
+        name: '',
         displayName: ''
     };
 
     public validationMessages: StrIndex<{}> = {
-        firstName: {
-            required: '',
-        },
-        lastName: {
+        name: {
             required: '',
         },
         displayName: {

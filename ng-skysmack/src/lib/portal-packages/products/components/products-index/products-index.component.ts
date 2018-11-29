@@ -14,7 +14,7 @@ import { Product, ProductsAppState } from '@skysmack/packages-products';
 })
 export class ProductsIndexComponent extends DocumentRecordIndexComponet<ProductsAppState, Product, number> implements OnInit {
 
-  public displayedColumns = ['firstName', 'lastName'];
+  public displayedColumns = ['name'];
   public entityActions: EntityAction[] = [
     new EntityAction().asUrlAction('edit', 'Edit', 'edit'),
     new EntityAction().asEventAction('Delete', this.delete, 'delete', this)

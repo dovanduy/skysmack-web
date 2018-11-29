@@ -9,6 +9,7 @@ import { Observable } from 'rxjs';
 import { MenuItem } from 'lib/portal-ui/models/sidebar-menu/menu-item';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthorizationInterceptor } from 'lib/portal-ui/autentication/authorization.interceptor';
+import { loadProductPackage } from '../packages/products-package-manifest';
 
 
 // TODO: Delete as soon as one real other menu item provider has been created.
@@ -37,6 +38,7 @@ export const httpInterceptors = [
 
 export const packageLoaders = [
     { provide: APP_INITIALIZER, useFactory: loadPersonPackage, deps: [PackageLoader], multi: true },
+    { provide: APP_INITIALIZER, useFactory: loadProductPackage, deps: [PackageLoader], multi: true },
 ];
 
 export const menuProviders = [

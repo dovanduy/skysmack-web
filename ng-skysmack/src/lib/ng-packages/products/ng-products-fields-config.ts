@@ -21,19 +21,10 @@ export class NgProductsFieldsConfig extends DocumentFieldsConfig<Product> {
         const fields = [
             new Field({
                 fieldType: FieldTypes.string,
-                value: entity ? entity.object.firstName : undefined,
-                key: 'firstName',
+                value: entity ? entity.object.name : undefined,
+                key: 'name',
                 validators: [Validators.required],
                 order: 1,
-                showColumn: true
-            } as Field),
-
-            new Field({
-                fieldType: FieldTypes.string,
-                value: entity ? entity.object.lastName : undefined,
-                key: 'lastName',
-                validators: [Validators.required],
-                order: 2,
                 showColumn: true
             } as Field),
 

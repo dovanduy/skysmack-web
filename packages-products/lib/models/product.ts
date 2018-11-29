@@ -2,9 +2,8 @@ import { DocumentRecord } from "@skysmack/framework";
 
 export class Product implements DocumentRecord<number> {
     public id: number;
-    public firstName: string;
-    public lastName: string;
-    public displayName: string;
+    public name: string;
+    public productTypeId: number;
     [key: string]: any;
 
     public constructor(init?: Partial<Product>) {
