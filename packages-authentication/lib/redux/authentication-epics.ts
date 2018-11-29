@@ -5,15 +5,15 @@ export class AuthenticationEpics {
     public epics: Epic[];
 
     constructor(
-        // protected requests: RecordRequests<TRecord, TKey>,
+        protected requests: any, // TODO: Get interface/abstract for requests
         protected prefix: string
     ) {
         this.epics = [
-            this.testEpic
+            this.loginEpic
         ];
     }
 
-    public testEpic = (action$: ActionsObservable<any>) => action$.pipe(
+    public loginEpic = (action$: ActionsObservable<any>) => action$.pipe(
         ofType(this.prefix + 'TEST'),
         map(() => ({ type: this.prefix + 'TEST_SUCCEED' }))
     )
