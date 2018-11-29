@@ -1,4 +1,4 @@
 export * from './products-epics';
 export * from './products-reducer';
-export * from './products-types-epics';
-export * from './products-types-reducer':
+export * from './product-types-epics';
+export * from './product-types-reducer';

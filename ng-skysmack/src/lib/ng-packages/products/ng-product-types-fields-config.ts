@@ -7,7 +7,6 @@ import { LocalObject } from '@skysmack/framework';
 import { Product } from '@skysmack/packages-products';
 import { Field } from 'lib/portal-ui/fields/field';
 import { FieldTypes } from 'lib/portal-ui/fields/field-types';
-import { ProductsValidation } from './ng-products-validation';
 import { ProductTypesValidation } from './ng-product-types-validation';
 
 @Injectable({ providedIn: 'root' })
