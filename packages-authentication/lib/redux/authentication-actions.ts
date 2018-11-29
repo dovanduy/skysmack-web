@@ -11,14 +11,9 @@ export abstract class AuthenticationActions<TStateType, TStore extends Store<TSt
 
     constructor(
         protected store: TStore,
-        protected prefix: string
     ) { }
 
     public abstract login(credentials: { email: string, password: string }): void;
-
-    public abstract loginSuccess(currentUser: CurrentUser): void;
-
-    public abstract loginError(error: HttpErrorResponse): void;
 
     public abstract clearLoginError(): void;
 

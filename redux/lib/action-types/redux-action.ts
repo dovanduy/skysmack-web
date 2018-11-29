@@ -1,6 +1,6 @@
 import { AnyAction } from 'redux';
 
-export class ReduxAction<TPayload = unknown, TMeta = null> implements AnyAction {
+export class ReduxAction<TPayload = unknown, TMeta = unknown> implements AnyAction {
     public type: string;
     public payload?: TPayload;
     public meta?: TMeta;
