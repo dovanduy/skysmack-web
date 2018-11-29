@@ -26,15 +26,8 @@ export class NgProductsFieldsConfig extends DocumentFieldsConfig<Product> {
                 validators: [Validators.required],
                 order: 1,
                 showColumn: true
-            } as Field),
+            } as Field)
 
-            new Field({
-                fieldType: FieldTypes.string,
-                value: entity ? entity.object.displayName : undefined,
-                key: 'displayName',
-                validators: [Validators.required],
-                order: 3,
-            } as Field),
         ];
 
         // Id field must only be added for edit forms.

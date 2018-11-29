@@ -10,9 +10,6 @@ export class ProductsValidation extends RecordValidation {
     public validationMessages: StrIndex<{}> = {
         name: {
             required: '',
-        },
-        displayName: {
-            required: '',
         }
     };
 
