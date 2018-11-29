@@ -44,7 +44,7 @@ export function HttpLoaderFactory(http: HttpClient) {
       },
       {
         path: 'products',
-        loadChildren: '../../../../../lib/portal-packages/products/products.module#PersonsModule'
+        loadChildren: '../../../../../lib/portal-packages/products/products.module#ProductsModule'
       },
       {
         path: '',

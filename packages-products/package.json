@@ -1,0 +1,24 @@
+{
+  "name": "@skysmack/packages-products",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "tslib": "^1.9.3"
+  },
+  "peerDependencies": {},
+  "devDependencies": {
+    "typescript": "^3.1.3"
+  },
+  "files": [
+    "dist"
+  ]
+}
