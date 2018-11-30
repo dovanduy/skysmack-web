@@ -4,9 +4,9 @@ import { NgProductsActions } from 'lib/ng-packages/products/redux/ng-products-ac
 import { NgSkysmackRedux } from 'lib/ng-packages/skysmack/redux/ng-skysmack-redux';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EditorNavService } from 'lib/portal-ui/components/common/container/editor-nav.service';
-import { NgProductsFieldsConfig } from 'lib/ng-packages/products/ng-products-fields-config';
 import { DocumentRecordFormComponent } from 'lib/portal-ui/base-components/record-components/document-record-form-component';
 import { NgProductsStore } from 'lib/ng-packages/products';
+import { NgProductsFieldsConfig } from 'lib/ng-packages/products/ng-products-fields-config';
 
 @Component({
   selector: 'ss-products-create',

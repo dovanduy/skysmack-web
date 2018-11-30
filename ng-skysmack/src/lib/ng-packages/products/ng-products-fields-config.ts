@@ -11,7 +11,7 @@ import { ProductsValidation } from './ng-products-validation';
 import { ProductTypesValidation } from './ng-product-types-validation';
 
 @Injectable({ providedIn: 'root' })
-export class NgProductTypesFieldsConfig extends DocumentFieldsConfig<Product> {
+export class NgProductsFieldsConfig extends DocumentFieldsConfig<Product> {
     public validation = new ProductTypesValidation();
 
     public formRules: FormRule[] = [
