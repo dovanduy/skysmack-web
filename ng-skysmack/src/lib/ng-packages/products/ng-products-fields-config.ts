@@ -15,7 +15,6 @@ export class NgProductsFieldsConfig extends DocumentFieldsConfig<Product> {
     public validation = new ProductTypesValidation();
 
     public formRules: FormRule[] = [
-        new SetDisplayNameRule(['name'])
     ];
 
     protected getEntityFields(entity?: LocalObject<Product>, dependencies?: any): Field[] {

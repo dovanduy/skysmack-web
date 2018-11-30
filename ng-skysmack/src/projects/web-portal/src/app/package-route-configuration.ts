@@ -5,7 +5,7 @@ import { CurrentTenantViewModel } from '@skysmack/packages-skysmack';
 import { hasValue } from '@skysmack/framework';
 import { DynamicPackageRouter } from '../models/dynamic-package-router';
 import { NgSkysmackRedux } from './../../../../lib/ng-packages/skysmack/redux/ng-skysmack-redux';
-import { packageManifests } from './packages';
+import { PackageLoader } from 'lib/ng-packages/skysmack';
 
 @Injectable({ providedIn: 'root' })
 export class PackageRouteConfiguration {
@@ -34,7 +34,7 @@ export class PackageRouteConfiguration {
                 hasValue(),
                 map((currentTenant: CurrentTenantViewModel) => {
                     currentTenant.packages.map(_package => {
-                        return packageManifests.map(routingPath => {
+                        return PackageLoader.packageManifests.map(routingPath => {
                             if (routingPath.id === _package.type) {
                                 this.addRoute(_package.url, routingPath.modulePath);
                             }

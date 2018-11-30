@@ -1,6 +1,7 @@
 // Do not delete
 import { PersonsModule } from '../../../../../lib/portal-packages/persons/persons.module';
 import { ProductsModule } from '../../../../../lib/portal-packages/products/products.module';
+import { LodgingsModule } from '../../../../../lib/portal-packages/lodgings/lodgings.module';
 
 
 import { NgReduxRouter, NgReduxRouterModule } from '@angular-redux/router';
@@ -45,6 +46,10 @@ export function HttpLoaderFactory(http: HttpClient) {
       {
         path: 'products',
         loadChildren: '../../../../../lib/portal-packages/products/products.module#ProductsModule'
+      },
+      {
+        path: 'lodgings',
+        loadChildren: '../../../../../lib/portal-packages/lodgings/lodgings.module#LodgingsModule'
       },
       {
         path: '',
