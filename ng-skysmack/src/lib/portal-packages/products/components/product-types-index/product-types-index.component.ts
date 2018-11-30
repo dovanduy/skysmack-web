@@ -8,9 +8,9 @@ import { Product, ProductsAppState } from '@skysmack/packages-products';
 
 
 @Component({
-  selector: 'ss-products-types-index',
-  templateUrl: './products-types-index.component.html',
-  styleUrls: ['./products-types-index.component.scss']
+  selector: 'ss-product-types-index',
+  templateUrl: './product-types-index.component.html',
+  styleUrls: ['./product-types-index.component.scss']
 })
 export class ProductTypesIndexComponent extends DocumentRecordIndexComponet<ProductsAppState, Product, number> implements OnInit {
 

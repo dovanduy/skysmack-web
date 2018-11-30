@@ -9,9 +9,9 @@ import { NgProductsStore } from 'lib/ng-packages/products';
 import { NgProductTypesFieldsConfig } from 'lib/ng-packages/products/ng-product-types-fields-config';
 
 @Component({
-  selector: 'ss--types-create',
-  templateUrl: './-types-create.component.html',
-  styleUrls: ['./-types-create.component.scss']
+  selector: 'ss-product-types-create',
+  templateUrl: './product-types-create.component.html',
+  styleUrls: ['./product-types-create.component.scss']
 })
 export class ProductTypesCreateComponent extends DocumentRecordFormComponent<ProductsAppState, Product, number> implements OnInit {
 
