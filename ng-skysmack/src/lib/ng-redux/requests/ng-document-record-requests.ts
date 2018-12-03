@@ -12,13 +12,16 @@ export abstract class NgDocmentRecordRequests<TRecord extends Record<TKey>, TKey
     constructor(
         protected http: HttpClient,
         protected apiDomain: ApiDomain,
-        protected prefix: string
+        protected prefix: string,
+        protected additionalPaths: string[]
     ) {
-        super(http, apiDomain, prefix);
+        super(http, apiDomain, prefix, additionalPaths);
     }
 
     public getFields(action: ReduxAction<PackagePathPayload>): Observable<ReduxAction<GetFieldsSuccessPayload> | ReduxAction> {
-        const url = `${this.apiDomain.domain}/${action.payload.packagePath}/fields`;
+        let url = `${this.apiDomain.domain}/${action.payload.packagePath}`;
+        url = this.additionalPaths ? [url, ...this.additionalPaths].join('/') : url;
+        url = `${url}/fields`;
 
         return this.http.get<FieldSchemaViewModel[]>(url, { observe: 'response' })
             .pipe(

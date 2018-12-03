@@ -5,5 +5,5 @@ import { ProductsAppState } from '@skysmack/packages-products';
 
 @Injectable({ providedIn: 'root' })
 export class NgProductsActions extends DocumentRecordActionsBase<ProductsAppState, NgRedux<ProductsAppState>> {
-    constructor(protected store: NgRedux<ProductsAppState>) { super(store, 'PRODUCTS_'); }
+    constructor(protected store: NgRedux<ProductsAppState>) { super(store, 'PRODUCTS_', []); }
 }

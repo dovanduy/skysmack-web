@@ -11,9 +11,10 @@ export abstract class DocumentRecordActionsBase<TStateType, TStore extends Store
 
     constructor(
         protected store: TStore,
-        protected prefix: string
+        protected prefix: string,
+        protected additionalPaths: string[],
     ) {
-        super(store, prefix);
+        super(store, prefix, additionalPaths);
     }
 
     public getFields(packagePath: string) {

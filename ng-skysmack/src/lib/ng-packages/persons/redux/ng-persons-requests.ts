@@ -10,6 +10,6 @@ export class NgPersonsRequests extends NgDocmentRecordRequests<Person, number> {
         protected http: HttpClient,
         @Inject('ApiDomain') protected apiDomain: ApiDomain
     ) {
-        super(http, apiDomain, 'PERSONS_');
+        super(http, apiDomain, 'PERSONS_', []);
     }
 }

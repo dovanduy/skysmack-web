@@ -35,6 +35,6 @@ export class ProductsIndexComponent extends DocumentRecordIndexComponet<Products
 
   ngOnInit() {
     super.ngOnInit();
-    this.title.setTitle(this.path);
+    this.title.setTitle(this.packagePath);
   }
 }

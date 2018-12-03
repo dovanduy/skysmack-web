@@ -21,6 +21,6 @@ export class DocumentRecordIndexComponet<TAppState, TRecord extends Record<TKey>
 
     ngOnInit() {
         super.ngOnInit();
-        this.actions.getFields(this.path);
+        this.actions.getFields(this.packagePath);
     }
 }

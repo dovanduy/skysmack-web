@@ -35,6 +35,6 @@ export class PersonsIndexComponent extends DocumentRecordIndexComponet<PersonsAp
 
   ngOnInit() {
     super.ngOnInit();
-    this.title.setTitle(this.path);
+    this.title.setTitle(this.packagePath);
   }
 }

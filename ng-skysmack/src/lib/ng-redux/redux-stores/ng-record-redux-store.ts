@@ -1,4 +1,4 @@
-import { Record, StrIndex, LocalPageTypes, LocalObject, hasValue, dictionaryToArray, log } from '@skysmack/framework';
+import { Record, StrIndex, LocalPageTypes, LocalObject, hasValue, dictionaryToArray, log, safeUndefinedTo } from '@skysmack/framework';
 import { RecordReduxStore, RecordState } from '@skysmack/redux';
 import { Observable } from 'rxjs';
 import { NgRedux } from '@angular-redux/store';
@@ -13,7 +13,7 @@ export abstract class NgRecordReduxStore<TState, TRecord extends Record<TKey>, T
     public get(packagePath: string): Observable<LocalObject<TRecord>[]> {
         return this.getState<RecordState<TRecord, TKey>>().pipe(
             map(state => state.localRecords[packagePath]),
-            hasValue<StrIndex<LocalObject<TRecord>>>(),
+            safeUndefinedTo('object'),
             dictionaryToArray<LocalObject<TRecord>>()
         );
     }
@@ -22,7 +22,6 @@ export abstract class NgRecordReduxStore<TState, TRecord extends Record<TKey>, T
         return this.get(packagePath).pipe(map(records => records.find(record => record.object.id.toString() === id.toString())));
     }
 
-    // TODO: Use these? -> pageSize: number, query: string, sort: string
     public getPages(packagePath: string): Observable<StrIndex<LocalPageTypes<TKey>>> {
         return this.getState<RecordState<TRecord, TKey>>().pipe(
             map(state => state.localPageTypes[packagePath]),

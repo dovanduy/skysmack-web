@@ -40,8 +40,8 @@ export class RecordFormComponent<TAppState, TRecord extends Record<TKey>, TKey> 
     }
 
     public initRecordEditComponent() {
-        this.actions.getSingle(this.path, this.entityId);
-        this.subscriptionHandler.subscribe(this.store.getSingle(this.path, this.entityId).pipe(
+        this.actions.getSingle(this.packagePath, this.entityId);
+        this.subscriptionHandler.subscribe(this.store.getSingle(this.packagePath, this.entityId).pipe(
             map(entity => {
                 this.selectedEntity = entity;
                 return this.getFields(entity);
@@ -59,7 +59,7 @@ export class RecordFormComponent<TAppState, TRecord extends Record<TKey>, TKey> 
 
     protected create(fh: FormHelper) {
         this.validateForm(fh, () => {
-            this.actions.add<TRecord, TKey>([this.extractFormValues(fh)], this.path);
+            this.actions.add<TRecord, TKey>([this.extractFormValues(fh)], this.packagePath);
             this.editorNavService.hideEditorNav();
         });
     }
@@ -69,7 +69,7 @@ export class RecordFormComponent<TAppState, TRecord extends Record<TKey>, TKey> 
             const oldValue = { ...this.selectedEntity };
             const newValue = this.extractFormValues(fh, this.selectedEntity);
             newValue.oldObject = oldValue.object;
-            this.actions.update<TRecord, TKey>([newValue], this.path);
+            this.actions.update<TRecord, TKey>([newValue], this.packagePath);
             this.editorNavService.hideEditorNav();
         });
     }

@@ -12,6 +12,8 @@ import { map } from 'rxjs/operators';
 import { combineLatest } from 'rxjs';
 
 export class DocumentRecordFormComponent<TAppState, TRecord extends Record<TKey>, TKey> extends RecordFormComponent<TAppState, TRecord, TKey> implements OnInit, OnDestroy {
+    protected entities$;
+    protected dynamicFields$;
 
     constructor(
         public router: Router,
@@ -30,18 +32,24 @@ export class DocumentRecordFormComponent<TAppState, TRecord extends Record<TKey>
     }
 
     public initDocumentRecordCreateComponent() {
-        this.actions.getFields(this.path);
-        this.subscriptionHandler.subscribe(this.store.getFields(this.path).pipe(
+        this.actions.getFields(this.packagePath);
+        this.subscriptionHandler.subscribe(this.store.getFields(this.packagePath).pipe(
             map(dynamicFields => this.getFields(undefined, dynamicFields))
         ).subscribe(fields => this.fields = fields));
     }
 
     public initDocumentRecordEditComponent() {
-        this.actions.getSingle(this.path, this.entityId);
-        this.actions.getFields(this.path);
+        this.actions.getSingle(this.packagePath, this.entityId);
+        this.actions.getFields(this.packagePath);
+
+        // this.entities$ = this.store.getSingle(this.packagePath, this.entityId);
+        // this.dynamicFields$ = this.store.getFields(this.packagePath);
+
+
+
         this.subscriptionHandler.subscribe(combineLatest(
-            this.store.getSingle(this.path, this.entityId),
-            this.store.getFields(this.path),
+            this.store.getSingle(this.packagePath, this.entityId),
+            this.store.getFields(this.packagePath),
         ).pipe(
             map(values => {
                 const entity = values[0];
@@ -52,4 +60,11 @@ export class DocumentRecordFormComponent<TAppState, TRecord extends Record<TKey>
             })
         ).subscribe(fields => this.fields = fields));
     }
+
+    // public setFields() {
+    //     this.subscriptionHandler.subscribe(combineLatest(
+    //         this.entities$,
+    //         this.dynamicFields$
+    //     ).subscribe
+    // }
 }

@@ -31,7 +31,8 @@ export abstract class RecordActionsBase<TStateType, TStore extends Store<TStateT
 
     constructor(
         protected store: TStore,
-        protected prefix: string
+        protected prefix: string,
+        protected additionalPaths: string[]
     ) { }
 
     public cancelRecordAction<TRecord extends Record<TKey>, TKey>(record: LocalObject<TRecord>, packagePath: string): void {
@@ -66,13 +67,15 @@ export abstract class RecordActionsBase<TStateType, TStore extends Store<TStateT
         })));
     }
 
-    public add<TRecord extends Record<TKey>, TKey>(records: LocalObject<TRecord>[], packagePath: string, additionalPath: string = '') {
+    public add<TRecord extends Record<TKey>, TKey>(records: LocalObject<TRecord>[], packagePath: string) {
+        let path = this.additionalPaths ? [packagePath, ...this.additionalPaths].join('/') : packagePath;
+
         this.store.dispatch(Object.assign({}, new ReduxAction<any, ReduxOfflineMeta<TRecord[], TRecord, TKey>>({
             type: this.prefix + RecordActionsBase.ADD,
             meta: new ReduxOfflineMeta(
                 new OfflineMeta<TRecord[], TRecord, TKey>(
                     new Effect<TRecord[]>(new EffectRequest<TRecord[]>(
-                        packagePath + additionalPath,
+                        path,
                         HttpMethod.POST,
                         records.map(x => x.object)
                     )),
@@ -95,15 +98,16 @@ export abstract class RecordActionsBase<TStateType, TStore extends Store<TStateT
         })));
     }
 
-    public update<TRecord extends Record<TKey>, TKey>(records: LocalObject<TRecord>[], packagePath: string, additionalPath: string = '') {
-        additionalPath += '?ids=' + records.map(x => x.object.id).join(',');
+    public update<TRecord extends Record<TKey>, TKey>(records: LocalObject<TRecord>[], packagePath: string) {
+        let path = this.additionalPaths ? [packagePath, ...this.additionalPaths].join('/') : packagePath;
+        path = path + '?ids=' + records.map(x => x.object.id).join(',');
 
         this.store.dispatch(Object.assign({}, new ReduxAction<any, ReduxOfflineMeta<TRecord[], TRecord, TKey>>({
             type: this.prefix + RecordActionsBase.UPDATE,
             meta: new ReduxOfflineMeta(
                 new OfflineMeta<TRecord[], TRecord, TKey>(
                     new Effect<TRecord[]>(new EffectRequest<TRecord[]>(
-                        packagePath + additionalPath,
+                        path,
                         HttpMethod.PUT,
                         records.map(x => x.object)
                     )),
@@ -127,15 +131,16 @@ export abstract class RecordActionsBase<TStateType, TStore extends Store<TStateT
     }
 
 
-    public delete<TRecord extends Record<TKey>, TKey>(records: LocalObject<TRecord>[], packagePath: string, additionalPath: string = '') {
-        additionalPath += '?ids=' + records.map(x => x.object.id).join(',');
+    public delete<TRecord extends Record<TKey>, TKey>(records: LocalObject<TRecord>[], packagePath: string) {
+        let path = this.additionalPaths ? [packagePath, ...this.additionalPaths].join('/') : packagePath;
+        path = path + '?ids=' + records.map(x => x.object.id).join(',');
 
         this.store.dispatch(Object.assign({}, new ReduxAction<any, ReduxOfflineMeta<TRecord[], TRecord, TKey>>({
             type: this.prefix + RecordActionsBase.DELETE,
             meta: new ReduxOfflineMeta(
                 new OfflineMeta<TRecord[], TRecord, TKey>(
                     new Effect<TRecord[]>(new EffectRequest<TRecord[]>(
-                        packagePath + additionalPath,
+                        path,
                         HttpMethod.DELETE,
                         records.map(x => {
                             x.status = LocalObjectStatus.DELETING

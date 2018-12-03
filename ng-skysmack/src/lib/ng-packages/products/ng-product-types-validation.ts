@@ -4,7 +4,6 @@ import { RecordValidation } from 'lib/portal-ui/forms/record-validation';
 export class ProductTypesValidation extends RecordValidation {
     public formErrors = {
         name: '',
-        displayName: ''
     };
 
     public validationMessages: StrIndex<{}> = {
@@ -13,7 +12,7 @@ export class ProductTypesValidation extends RecordValidation {
         }
     };
 
-    public area = 'product-types';
+    public area = 'product_types';
 
     public formValidators = [];
 

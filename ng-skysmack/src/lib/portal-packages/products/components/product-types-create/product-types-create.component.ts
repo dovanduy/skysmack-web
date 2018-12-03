@@ -1,28 +1,28 @@
 import { Component, OnInit } from '@angular/core';
-import { Product, ProductsAppState } from '@skysmack/packages-products';
-import { NgProductsActions } from 'lib/ng-packages/products/redux/ng-products-actions';
+import { Product, ProductTypesAppState, ProductType } from '@skysmack/packages-products';
 import { NgSkysmackRedux } from 'lib/ng-packages/skysmack/redux/ng-skysmack-redux';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EditorNavService } from 'lib/portal-ui/components/common/container/editor-nav.service';
 import { DocumentRecordFormComponent } from 'lib/portal-ui/base-components/record-components/document-record-form-component';
-import { NgProductsStore } from 'lib/ng-packages/products';
 import { NgProductTypesFieldsConfig } from 'lib/ng-packages/products/ng-product-types-fields-config';
+import { NgProductTypesActions } from 'lib/ng-packages/products/redux/ng-product-types-actions';
+import { NgProductTypesStore } from 'lib/ng-packages/products/redux/ng-product-types-store';
 
 @Component({
   selector: 'ss-product-types-create',
   templateUrl: './product-types-create.component.html',
   styleUrls: ['./product-types-create.component.scss']
 })
-export class ProductTypesCreateComponent extends DocumentRecordFormComponent<ProductsAppState, Product, number> implements OnInit {
+export class ProductTypesCreateComponent extends DocumentRecordFormComponent<ProductTypesAppState, ProductType, number> implements OnInit {
 
   constructor(
     public router: Router,
     public activatedRoute: ActivatedRoute,
     public editorNavService: EditorNavService,
-    public actions: NgProductsActions,
+    public actions: NgProductTypesActions,
     public redux: NgSkysmackRedux,
     public fieldsConfig: NgProductTypesFieldsConfig,
-    public store: NgProductsStore,
+    public store: NgProductTypesStore,
   ) {
     super(router, activatedRoute, editorNavService, actions, redux, store, fieldsConfig);
   }

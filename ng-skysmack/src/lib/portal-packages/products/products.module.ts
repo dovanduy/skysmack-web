@@ -6,6 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgProductsModule } from './../../ng-packages/products';
 import { PortalUiModule } from 'lib/portal-ui/portal-ui.module';
 import { productsComponents } from './components/products-components';
+import { productTypesComponents } from './components/product-types-component';
 
 @NgModule({
   imports: [
@@ -17,7 +18,8 @@ import { productsComponents } from './components/products-components';
   ],
   exports: [],
   declarations: [
-    ...productsComponents
+    ...productsComponents,
+    ...productTypesComponents
   ],
   providers: [],
 })

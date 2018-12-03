@@ -37,6 +37,6 @@ export class LodgingsIndexComponent extends DocumentRecordIndexComponet<Lodgings
 
   ngOnInit() {
     super.ngOnInit();
-    this.title.setTitle(this.path);
+    this.title.setTitle(this.packagePath);
   }
 }

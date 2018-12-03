@@ -65,19 +65,19 @@ export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey>
      * Deletes an entity
      * @param entity The entity to delete.
      */
-    protected delete(value: LocalObject<TRecord>, _this: any) {
-        _this.actions.delete([value], _this.path);
+    protected delete(value: LocalObject<TRecord>, _this: RecordIndexComponent<any, any, any>) {
+        _this.actions.delete([value], _this.packagePath);
     }
 
     /**
      * Loads the next page stored in redux. Also requests the next page if any.
      */
     public loadPages() {
-        this.subscriptionHandler.subscribe(this.store.getPages(this.path).pipe(
+        this.subscriptionHandler.subscribe(this.store.getPages(this.packagePath).pipe(
             hasValue<StrIndex<LocalPageTypes<TKey>>>(),
             map(dictionary => {
                 // TODO: Is this still correct? Should it be moved?
-                const queryDictionary = dictionary[setKey(this.path, [this.nextPageSize])];
+                const queryDictionary = dictionary[setKey(this.packagePath, [this.nextPageSize])];
 
                 if (queryDictionary) {
                     const pages = Object.keys(queryDictionary)
@@ -130,7 +130,7 @@ export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey>
             this.pagedQuery.pageNumber = this.nextPageNumber;
             this.pagedQuery.pageSize = this.nextPageSize;
 
-            this.actions.getPaged(this.path, this.pagedQuery);
+            this.actions.getPaged(this.packagePath, this.pagedQuery);
         }
     }
 
@@ -196,7 +196,7 @@ export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey>
     }
 
     private getEntities() {
-        this.entities$ = this.store.get(this.path);
+        this.entities$ = this.store.get(this.packagePath);
     }
 
     /**

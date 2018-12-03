@@ -9,7 +9,7 @@ import { MenuItem } from 'lib/portal-ui/models/sidebar-menu/menu-item';
 @Injectable({ providedIn: 'root' })
 export class NgLodgingTypesMenu extends SidebarMenu {
     public menuId = 'Lodging-types';
-    public translationPrefix = 'LODGING.TYPES.INDEX.';
+    public translationPrefix = 'LODGING_TYPES.INDEX.';
 
     constructor(
         public redux: NgSkysmackRedux,

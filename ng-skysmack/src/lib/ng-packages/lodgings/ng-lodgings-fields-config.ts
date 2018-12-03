@@ -2,12 +2,10 @@ import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { DocumentFieldsConfig } from 'lib/portal-ui/fields/document-fields-config';
 import { FormRule } from 'lib/portal-ui/forms/form-rule';
-import { SetDisplayNameRule } from 'lib/portal-ui/forms/rules/set-display-name-rule';
 import { LocalObject } from '@skysmack/framework';
 import { Lodging } from '@skysmack/packages-lodgings';
 import { Field } from 'lib/portal-ui/fields/field';
 import { FieldTypes } from 'lib/portal-ui/fields/field-types';
-import { LodgingsValidation } from './ng-lodgings-validation';
 import { LodgingTypesValidation } from './ng-lodging-types-validation';
 
 @Injectable({ providedIn: 'root' })

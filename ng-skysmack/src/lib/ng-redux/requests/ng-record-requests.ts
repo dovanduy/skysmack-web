@@ -14,7 +14,8 @@ export abstract class NgRecordRequests<TRecord extends Record<TKey>, TKey> imple
     constructor(
         protected http: HttpClient,
         protected apiDomain: ApiDomain,
-        protected prefix: string
+        protected prefix: string,
+        protected additionalPaths: string[]
     ) {
     }
 
@@ -45,7 +46,8 @@ export abstract class NgRecordRequests<TRecord extends Record<TKey>, TKey> imple
             queryParameters = queryParameters.set('pageSize', action.payload.pagedQuery.pageSize.toString());
         }
 
-        const url = `${this.apiDomain.domain}/${action.payload.packagePath}`;
+        let url = `${this.apiDomain.domain}/${action.payload.packagePath}`;
+        url = this.additionalPaths ? [url, ...this.additionalPaths].join('/') : url;
 
         return this.http.get<TRecord[]>(url, { observe: 'response', params: queryParameters })
             .pipe(
@@ -70,7 +72,9 @@ export abstract class NgRecordRequests<TRecord extends Record<TKey>, TKey> imple
 
     public getSingle(action: ReduxAction<GetSingleRecordPayload<TKey>>): Observable<ReduxAction<GetSingleRecordSuccessPayload<TRecord, TKey>> | ReduxAction<GetSingleRecordPayload<TKey>>> {
 
-        const url = `${this.apiDomain.domain}/${action.payload.packagePath}/${action.payload.id}`;
+        let url = `${this.apiDomain.domain}/${action.payload.packagePath}`;
+        url = this.additionalPaths ? [url, ...this.additionalPaths].join('/') : url;
+        url = `${url}/${action.payload.id}`;
 
         return this.http.get<TRecord>(url, { observe: 'response' })
             .pipe(

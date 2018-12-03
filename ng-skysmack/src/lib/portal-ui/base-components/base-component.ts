@@ -11,7 +11,7 @@ export class BaseComponent<TAppState, TKey> implements OnInit, OnDestroy {
     public subscriptionHandler = new SubscriptionHandler();
 
     public entityId: TKey;
-    public path: string;
+    public packagePath: string;
     public package$: Observable<Package>;
 
     constructor(
@@ -37,7 +37,7 @@ export class BaseComponent<TAppState, TKey> implements OnInit, OnDestroy {
     }
 
     private getParams() {
-        this.path = this.router.url.split('/')[1];
+        this.packagePath = this.router.url.split('/')[1];
         if (this.entityId === undefined) {
             if (this.activatedRoute) {
                 this.subscriptionHandler.subscribe(this.activatedRoute.params
@@ -55,6 +55,6 @@ export class BaseComponent<TAppState, TKey> implements OnInit, OnDestroy {
     }
 
     private getCurrentPackage() {
-        this.package$ = this.redux.getCurrentPackage(this.path);
+        this.package$ = this.redux.getCurrentPackage(this.packagePath);
     }
 }

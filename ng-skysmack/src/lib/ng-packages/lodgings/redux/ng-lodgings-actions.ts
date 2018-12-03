@@ -5,5 +5,5 @@ import { LodgingsAppState } from '@skysmack/packages-lodgings';
 
 @Injectable({ providedIn: 'root' })
 export class NgLodgingsActions extends DocumentRecordActionsBase<LodgingsAppState, NgRedux<LodgingsAppState>> {
-    constructor(protected store: NgRedux<LodgingsAppState>) { super(store, 'LODGINGS_'); }
+    constructor(protected store: NgRedux<LodgingsAppState>) { super(store, 'LODGINGS_', []); }
 }

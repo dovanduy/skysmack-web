@@ -7,12 +7,12 @@ import { LocalObject } from '@skysmack/framework';
 import { Product } from '@skysmack/packages-products';
 import { Field } from 'lib/portal-ui/fields/field';
 import { FieldTypes } from 'lib/portal-ui/fields/field-types';
+import { SelectField } from 'lib/portal-ui/fields/select-field';
 import { ProductsValidation } from './ng-products-validation';
-import { ProductTypesValidation } from './ng-product-types-validation';
 
 @Injectable({ providedIn: 'root' })
 export class NgProductsFieldsConfig extends DocumentFieldsConfig<Product> {
-    public validation = new ProductTypesValidation();
+    public validation = new ProductsValidation();
 
     public formRules: FormRule[] = [
     ];
@@ -26,7 +26,20 @@ export class NgProductsFieldsConfig extends DocumentFieldsConfig<Product> {
                 validators: [Validators.required],
                 order: 1,
                 showColumn: true
-            } as Field)
+            } as Field),
+
+            new SelectField({
+                fieldType: FieldTypes.SelectField,
+                value: entity ? entity.object.productTypeId : undefined,
+                key: 'productTypeId',
+                label: 'Product type',
+                optionsData: dependencies.availableProductTypes,
+                extraOptions: [{
+                    value: null,
+                    displayName: 'None'
+                }],
+                order: 1,
+            } as SelectField),
 
         ];
 

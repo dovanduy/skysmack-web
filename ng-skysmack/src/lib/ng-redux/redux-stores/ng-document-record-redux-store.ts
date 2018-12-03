@@ -1,4 +1,4 @@
-import { Record, hasValue, FieldSchemaViewModel, LocalObject, safeUndefinedTo } from '@skysmack/framework';
+import { Record, FieldSchemaViewModel, LocalObject, safeUndefinedTo } from '@skysmack/framework';
 import { Observable } from 'rxjs';
 import { NgRedux } from '@angular-redux/store';
 import { map } from 'rxjs/operators';
@@ -17,5 +17,3 @@ export abstract class NgDocumentRecordReduxStore<TState, TRecord extends Record<
         return this.getState<DocumentRecordState<TRecord, TKey>>().pipe(map(state => state.fields[packagePath]), safeUndefinedTo('array'));
     }
 }
-
-

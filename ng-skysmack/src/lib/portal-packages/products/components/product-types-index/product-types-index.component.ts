@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { EntityComponentPageTitle, EntityAction, DocumentRecordIndexComponet } from 'lib/portal-ui';
 import { Router, ActivatedRoute } from '@angular/router';
-import { NgProductsActions } from 'lib/ng-packages/products/redux/ng-products-actions';
 import { NgSkysmackRedux } from 'lib/ng-packages/skysmack';
-import { NgProductsStore, NgProductsMenu } from 'lib/ng-packages/products';
-import { Product, ProductsAppState } from '@skysmack/packages-products';
+import { NgProductTypesMenu } from 'lib/ng-packages/products';
+import { ProductTypesAppState, ProductType } from '@skysmack/packages-products';
+import { NgProductTypesActions } from 'lib/ng-packages/products/redux/ng-product-types-actions';
+import { NgProductTypesStore } from 'lib/ng-packages/products/redux/ng-product-types-store';
 
 
 @Component({
@@ -12,8 +13,7 @@ import { Product, ProductsAppState } from '@skysmack/packages-products';
   templateUrl: './product-types-index.component.html',
   styleUrls: ['./product-types-index.component.scss']
 })
-export class ProductTypesIndexComponent extends DocumentRecordIndexComponet<ProductsAppState, Product, number> implements OnInit {
-
+export class ProductTypesIndexComponent extends DocumentRecordIndexComponet<ProductTypesAppState, ProductType, number> implements OnInit {
   public displayedColumns = ['name'];
   public entityActions: EntityAction[] = [
     new EntityAction().asUrlAction('edit', 'Edit', 'edit'),
@@ -23,11 +23,11 @@ export class ProductTypesIndexComponent extends DocumentRecordIndexComponet<Prod
   constructor(
     public router: Router,
     public activatedRoute: ActivatedRoute,
-    public actions: NgProductsActions,
+    public actions: NgProductTypesActions,
     public redux: NgSkysmackRedux,
     public title: EntityComponentPageTitle,
-    public store: NgProductsStore,
-    public sidebarMenu: NgProductsMenu
+    public store: NgProductTypesStore,
+    public sidebarMenu: NgProductTypesMenu
   ) {
     super(router, activatedRoute, actions, redux, store);
 
@@ -35,6 +35,6 @@ export class ProductTypesIndexComponent extends DocumentRecordIndexComponet<Prod
 
   ngOnInit() {
     super.ngOnInit();
-    this.title.setTitle(this.path);
+    this.title.setTitle(this.packagePath);
   }
 }

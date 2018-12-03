@@ -16,7 +16,7 @@ export class ProductTypesState implements DocumentRecordState<ProductType, numbe
     public availableFields: StrIndex<FieldValueProviderViewModel[]> = {};
 }
 
-export function productTypesReducer(state = new ProductTypesState(), action: ReduxAction, prefix: string = 'PRODUCT.TYPES_'): ProductTypesState {
+export function productTypesReducer(state = new ProductTypesState(), action: ReduxAction, prefix: string = 'PRODUCT_TYPES_'): ProductTypesState {
     switch (action.type) {
         default:
             return {

@@ -10,6 +10,6 @@ export class NgLodgingsRequests extends NgDocmentRecordRequests<Lodging, number>
         protected http: HttpClient,
         @Inject('ApiDomain') protected apiDomain: ApiDomain
     ) {
-        super(http, apiDomain, 'LODGINGS_');
+        super(http, apiDomain, 'LODGINGS_', []);
     }
 }

@@ -7,6 +7,11 @@ import { EditorNavService } from 'lib/portal-ui/components/common/container/edit
 import { DocumentRecordFormComponent } from 'lib/portal-ui/base-components/record-components/document-record-form-component';
 import { NgProductsStore } from 'lib/ng-packages/products';
 import { NgProductsFieldsConfig } from 'lib/ng-packages/products/ng-products-fields-config';
+import { combineLatest } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { PagedQuery } from '@skysmack/framework';
+import { NgProductTypesActions } from 'lib/ng-packages/products/redux/ng-product-types-actions';
+import { NgProductTypesStore } from 'lib/ng-packages/products/redux/ng-product-types-store';
 
 @Component({
   selector: 'ss-products-create',
@@ -20,9 +25,11 @@ export class ProductsCreateComponent extends DocumentRecordFormComponent<Product
     public activatedRoute: ActivatedRoute,
     public editorNavService: EditorNavService,
     public actions: NgProductsActions,
+    public productTypeActions: NgProductTypesActions,
     public redux: NgSkysmackRedux,
     public fieldsConfig: NgProductsFieldsConfig,
     public store: NgProductsStore,
+    public productTypeStore: NgProductTypesStore,
   ) {
     super(router, activatedRoute, editorNavService, actions, redux, store, fieldsConfig);
   }
@@ -30,6 +37,23 @@ export class ProductsCreateComponent extends DocumentRecordFormComponent<Product
   ngOnInit() {
     super.ngOnInit();
     this.initDocumentRecordCreateComponent();
+  }
+
+  public initDocumentRecordCreateComponent() {
+    this.actions.getFields(this.packagePath);
+    this.productTypeActions.getPaged(this.packagePath, new PagedQuery());
+
+    this.subscriptionHandler.subscribe(
+      combineLatest(
+        this.store.getFields(this.packagePath),
+        this.productTypeStore.get(this.packagePath)
+      ).pipe(
+        map(values => {
+          const dynamicFields = values[0];
+          const availableProductTypes = values[1];
+          return this.getFields(undefined, dynamicFields, { availableProductTypes });
+        })
+      ).subscribe(fields => this.fields = fields));
   }
 
 }

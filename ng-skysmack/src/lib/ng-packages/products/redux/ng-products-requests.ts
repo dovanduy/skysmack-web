@@ -10,6 +10,6 @@ export class NgProductsRequests extends NgDocmentRecordRequests<Product, number>
         protected http: HttpClient,
         @Inject('ApiDomain') protected apiDomain: ApiDomain
     ) {
-        super(http, apiDomain, 'PRODUCTS_');
+        super(http, apiDomain, 'PRODUCTS_', []);
     }
 }

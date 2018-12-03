@@ -14,6 +14,7 @@ import { NgProductsStore } from 'lib/ng-packages/products';
   styleUrls: ['./products-edit.component.scss']
 })
 export class ProductsEditComponent extends DocumentRecordFormComponent<ProductsAppState, Product, number> implements OnInit {
+  protected productTypes$;
 
   constructor(
     public router: Router,
@@ -30,5 +31,14 @@ export class ProductsEditComponent extends DocumentRecordFormComponent<ProductsA
   ngOnInit() {
     super.ngOnInit();
     this.initDocumentRecordEditComponent();
+
+    // // CUSTOM
+    // this.actions.getSingle(this.packagePath, this.entityId); // <-- Get types
+    // this.productTypes$ = this.store.getWhatever(this.packagePath, this.entityId); // <-- product types
   }
+
+  // CUSTOM
+  // public override setFields() {
+
+  // }
 }

@@ -4,20 +4,18 @@ import { DocumentFieldsConfig } from 'lib/portal-ui/fields/document-fields-confi
 import { FormRule } from 'lib/portal-ui/forms/form-rule';
 import { SetDisplayNameRule } from 'lib/portal-ui/forms/rules/set-display-name-rule';
 import { LocalObject } from '@skysmack/framework';
-import { Product } from '@skysmack/packages-products';
+import { Product, ProductType } from '@skysmack/packages-products';
 import { Field } from 'lib/portal-ui/fields/field';
 import { FieldTypes } from 'lib/portal-ui/fields/field-types';
 import { ProductTypesValidation } from './ng-product-types-validation';
 
 @Injectable({ providedIn: 'root' })
-export class NgProductTypesFieldsConfig extends DocumentFieldsConfig<Product> {
+export class NgProductTypesFieldsConfig extends DocumentFieldsConfig<ProductType> {
     public validation = new ProductTypesValidation();
 
-    public formRules: FormRule[] = [
-        new SetDisplayNameRule(['name'])
-    ];
+    public formRules: FormRule[] = [];
 
-    protected getEntityFields(entity?: LocalObject<Product>, dependencies?: any): Field[] {
+    protected getEntityFields(entity?: LocalObject<ProductType>, dependencies?: any): Field[] {
         const fields = [
             new Field({
                 fieldType: FieldTypes.string,
@@ -27,7 +25,6 @@ export class NgProductTypesFieldsConfig extends DocumentFieldsConfig<Product> {
                 order: 1,
                 showColumn: true
             } as Field)
-
         ];
 
         // Id field must only be added for edit forms.
