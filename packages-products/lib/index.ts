@@ -1,3 +1,3 @@
 export * from './models';
-export * from './products';
+export * from './products-type';
 export * from './redux';

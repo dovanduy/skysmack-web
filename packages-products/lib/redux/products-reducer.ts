@@ -6,7 +6,7 @@ import { Product } from './../models/product';
  * This is to be used when you want to access products via the GLOBAL state. E.g. state.products (where products is the reducer name.)
  */
 export class ProductsAppState extends AppState {
-    public Products: ProductsState;
+    public products: ProductsState;
 }
 
 export class ProductsState implements DocumentRecordState<Product, number> {
