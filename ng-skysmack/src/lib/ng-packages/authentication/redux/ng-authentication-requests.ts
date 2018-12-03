@@ -1,6 +1,6 @@
 import { ApiDomain } from '@skysmack/framework';
 import { ReduxAction, } from '@skysmack/redux';
-import { Observable } from 'rxjs/internal/Observable';
+import { Observable } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { of } from 'rxjs';

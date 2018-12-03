@@ -1,8 +1,8 @@
 import { NgReduxRouter } from '@angular-redux/router';
 import { NgRedux } from '@angular-redux/store';
 import { createOffline } from '@redux-offline/redux-offline';
-import { applyMiddleware, compose, createStore, DeepPartial, Store, combineReducers } from 'redux';
-import { createEpicMiddleware } from 'redux-observable';
+import { applyMiddleware, compose, createStore, DeepPartial, Store, combineReducers, AnyAction } from 'redux';
+import { createEpicMiddleware, EpicMiddleware } from 'redux-observable';
 import { ReduxOfflineConfiguration } from './redux-offline.configuration';
 import { ReducerRegistry, rootEpic } from '@skysmack/redux';
 import { portalReducer } from './portal-reducer';
@@ -11,7 +11,7 @@ import { hydratedReducer } from './hydrated-reducer';
 export const configureRedux = (ngRedux: NgRedux<any>, ngReduxRouter: NgReduxRouter, reduxOfflineConfiguration: ReduxOfflineConfiguration) => {
     const initialState: DeepPartial<any> = {};
     const offlineEnhancer = createOffline(reduxOfflineConfiguration);
-    const epicMiddleware = createEpicMiddleware();
+    const epicMiddleware: EpicMiddleware<AnyAction> = createEpicMiddleware();
 
     const composeEnhancers = (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 

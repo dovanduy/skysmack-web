@@ -2,7 +2,6 @@
 import { PersonsModule } from '../../../../../lib/portal-packages/persons/persons.module';
 import { ProductsModule } from '../../../../../lib/portal-packages/products/products.module';
 
-
 import { NgReduxRouter, NgReduxRouterModule } from '@angular-redux/router';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
@@ -69,7 +68,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     PortalUiModule,
     NgReduxModule,
     NgReduxRouterModule.forRoot(),
-    SkysmackModule,
+    SkysmackModule, // SkysmackModule must come after NgReduxModule
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
   providers: [
