@@ -1,6 +1,6 @@
 import { Router, ActivatedRoute } from '@angular/router';
 import { OnInit, OnDestroy } from '@angular/core';
-import { Record } from '@skysmack/framework';
+import { Record, LocalObject, FieldSchemaViewModel } from '@skysmack/framework';
 import { FieldsConfig } from 'lib/portal-ui/fields/fields-config';
 import { EditorNavService } from 'lib/portal-ui/components/common/container/editor-nav.service';
 import { NgSkysmackRedux } from 'lib/ng-packages/skysmack';
@@ -9,11 +9,9 @@ import { NgRedux } from '@angular-redux/store';
 import { RecordFormComponent } from './record-form-component';
 import { NgDocumentRecordReduxStore } from 'lib/ng-redux/redux-stores/ng-document-record-redux-store';
 import { map } from 'rxjs/operators';
-import { combineLatest } from 'rxjs';
+import { combineLatest, Observable } from 'rxjs';
 
 export class DocumentRecordFormComponent<TAppState, TRecord extends Record<TKey>, TKey> extends RecordFormComponent<TAppState, TRecord, TKey> implements OnInit, OnDestroy {
-    protected entities$;
-    protected dynamicFields$;
 
     constructor(
         public router: Router,
@@ -31,22 +29,49 @@ export class DocumentRecordFormComponent<TAppState, TRecord extends Record<TKey>
         super.ngOnInit();
     }
 
-    public initDocumentRecordCreateComponent() {
+
+    protected setCreateFields() {
+        this.subscriptionHandler.subscribe(this.initCreateDocRecord().subscribe(fields => this.fields = this.getFields(undefined, fields)));
+    }
+
+    protected setEditFields() {
+        this.subscriptionHandler.subscribe(this.initEditDocRecord().pipe(
+            map(values => {
+                const entity = values[0];
+                const dynamicFields = values[1];
+
+                return this.getFields(entity, dynamicFields);
+            })
+        ).subscribe(fields => this.fields = fields));
+    }
+
+    protected initCreateDocRecord(): Observable<LocalObject<FieldSchemaViewModel>[]> {
+        this.actions.getFields(this.packagePath);
+        return this.store.getFields(this.packagePath);
+    }
+
+    protected initEditDocRecord(): Observable<[LocalObject<TRecord>, LocalObject<FieldSchemaViewModel>[]]> {
+        this.actions.getSingle(this.packagePath, this.entityId);
+        this.actions.getFields(this.packagePath);
+
+        return combineLatest(
+            this.store.getSingle(this.packagePath, this.entityId),
+            this.store.getFields(this.packagePath)
+        );
+    }
+
+    // Old
+    protected initDocumentRecordCreateComponent() {
         this.actions.getFields(this.packagePath);
         this.subscriptionHandler.subscribe(this.store.getFields(this.packagePath).pipe(
             map(dynamicFields => this.getFields(undefined, dynamicFields))
         ).subscribe(fields => this.fields = fields));
     }
 
-    public initDocumentRecordEditComponent() {
+    // Old
+    protected initDocumentRecordEditComponent() {
         this.actions.getSingle(this.packagePath, this.entityId);
         this.actions.getFields(this.packagePath);
-
-        // this.entities$ = this.store.getSingle(this.packagePath, this.entityId);
-        // this.dynamicFields$ = this.store.getFields(this.packagePath);
-
-
-
         this.subscriptionHandler.subscribe(combineLatest(
             this.store.getSingle(this.packagePath, this.entityId),
             this.store.getFields(this.packagePath),
@@ -60,11 +85,4 @@ export class DocumentRecordFormComponent<TAppState, TRecord extends Record<TKey>
             })
         ).subscribe(fields => this.fields = fields));
     }
-
-    // public setFields() {
-    //     this.subscriptionHandler.subscribe(combineLatest(
-    //         this.entities$,
-    //         this.dynamicFields$
-    //     ).subscribe
-    // }
 }

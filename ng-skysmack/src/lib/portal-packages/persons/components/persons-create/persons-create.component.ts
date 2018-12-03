@@ -29,7 +29,7 @@ export class PersonsCreateComponent extends DocumentRecordFormComponent<PersonsA
 
   ngOnInit() {
     super.ngOnInit();
-    this.initDocumentRecordCreateComponent();
+    this.setCreateFields();
   }
 
 }

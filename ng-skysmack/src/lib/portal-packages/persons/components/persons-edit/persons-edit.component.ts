@@ -29,6 +29,6 @@ export class PersonsEditComponent extends DocumentRecordFormComponent<PersonsApp
 
   ngOnInit() {
     super.ngOnInit();
-    this.initDocumentRecordEditComponent();
+    this.setEditFields();
   }
 }

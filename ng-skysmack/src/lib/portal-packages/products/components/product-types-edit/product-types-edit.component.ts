@@ -29,6 +29,6 @@ export class ProductTypesEditComponent extends DocumentRecordFormComponent<Produ
 
   ngOnInit() {
     super.ngOnInit();
-    this.initDocumentRecordEditComponent();
+    this.setEditFields();
   }
 }

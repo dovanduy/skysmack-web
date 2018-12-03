@@ -29,7 +29,6 @@ export class ProductTypesCreateComponent extends DocumentRecordFormComponent<Pro
 
   ngOnInit() {
     super.ngOnInit();
-    this.initDocumentRecordCreateComponent();
+    this.setCreateFields();
   }
-
 }
