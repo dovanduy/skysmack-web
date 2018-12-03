@@ -8,13 +8,13 @@ import { Product } from '@skysmack/packages-products';
 import { Field } from 'lib/portal-ui/fields/field';
 import { FieldTypes } from 'lib/portal-ui/fields/field-types';
 import { ProductsValidation } from './ng-products-validation';
+import { ProductTypesValidation } from './ng-product-types-validation';
 
 @Injectable({ providedIn: 'root' })
 export class NgProductsFieldsConfig extends DocumentFieldsConfig<Product> {
-    public validation = new ProductsValidation();
+    public validation = new ProductTypesValidation();
 
     public formRules: FormRule[] = [
-        new SetDisplayNameRule(['firstName', 'lastName'])
     ];
 
     protected getEntityFields(entity?: LocalObject<Product>, dependencies?: any): Field[] {
