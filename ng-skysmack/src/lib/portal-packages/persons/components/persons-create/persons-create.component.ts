@@ -4,7 +4,7 @@ import { NgPersonsActions } from 'lib/ng-packages/persons/redux/ng-persons-actio
 import { NgSkysmackRedux } from 'lib/ng-packages/skysmack/redux/ng-skysmack-redux';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EditorNavService } from 'lib/portal-ui/components/common/container/editor-nav.service';
-import { NgPersonsFieldsConfig } from 'lib/ng-packages/persons/ng-persons-fields-config';
+import { NgPersonsFieldsConfig, NgPersonFormDependencies } from 'lib/ng-packages/persons/ng-persons-fields-config';
 import { DocumentRecordFormComponent } from 'lib/portal-ui/base-components/record-components/document-record-form-component';
 import { NgPersonsStore } from 'lib/ng-packages/persons';
 
@@ -13,7 +13,7 @@ import { NgPersonsStore } from 'lib/ng-packages/persons';
   templateUrl: './persons-create.component.html',
   styleUrls: ['./persons-create.component.scss']
 })
-export class PersonsCreateComponent extends DocumentRecordFormComponent<PersonsAppState, Person, number> implements OnInit {
+export class PersonsCreateComponent extends DocumentRecordFormComponent<PersonsAppState, Person, number, NgPersonFormDependencies> implements OnInit {
 
   constructor(
     public router: Router,

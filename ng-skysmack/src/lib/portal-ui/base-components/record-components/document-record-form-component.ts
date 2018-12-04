@@ -11,7 +11,7 @@ import { NgDocumentRecordReduxStore } from 'lib/ng-redux/redux-stores/ng-documen
 import { map } from 'rxjs/operators';
 import { combineLatest, Observable } from 'rxjs';
 
-export class DocumentRecordFormComponent<TAppState, TRecord extends Record<TKey>, TKey> extends RecordFormComponent<TAppState, TRecord, TKey> implements OnInit, OnDestroy {
+export class DocumentRecordFormComponent<TAppState, TRecord extends Record<TKey>, TKey, TDependencies> extends RecordFormComponent<TAppState, TRecord, TKey, TDependencies> implements OnInit, OnDestroy {
 
     constructor(
         public router: Router,
@@ -20,7 +20,7 @@ export class DocumentRecordFormComponent<TAppState, TRecord extends Record<TKey>
         public actions: DocumentRecordActionsBase<TAppState, NgRedux<TAppState>>,
         public redux: NgSkysmackRedux,
         public store: NgDocumentRecordReduxStore<TAppState, TRecord, TKey>,
-        public fieldsConfig: FieldsConfig<TRecord>,
+        public fieldsConfig: FieldsConfig<TRecord, TDependencies>
     ) {
         super(router, activatedRoute, editorNavService, actions, redux, store, fieldsConfig);
     }
@@ -29,7 +29,7 @@ export class DocumentRecordFormComponent<TAppState, TRecord extends Record<TKey>
         super.ngOnInit();
     }
 
-
+    // Use these set functions in the component when the form has no dependencies
     protected setCreateFields() {
         this.subscriptionHandler.subscribe(this.initCreateDocRecord().subscribe(fields => this.fields = this.getFields(undefined, fields)));
     }
@@ -45,6 +45,7 @@ export class DocumentRecordFormComponent<TAppState, TRecord extends Record<TKey>
         ).subscribe(fields => this.fields = fields));
     }
 
+    // Use these init functions and override set functions in the component when the form has dependencies
     protected initCreateDocRecord(): Observable<LocalObject<FieldSchemaViewModel>[]> {
         this.actions.getFields(this.packagePath);
         return this.store.getFields(this.packagePath);
@@ -58,31 +59,5 @@ export class DocumentRecordFormComponent<TAppState, TRecord extends Record<TKey>
             this.store.getSingle(this.packagePath, this.entityId),
             this.store.getFields(this.packagePath)
         );
-    }
-
-    // Old
-    protected initDocumentRecordCreateComponent() {
-        this.actions.getFields(this.packagePath);
-        this.subscriptionHandler.subscribe(this.store.getFields(this.packagePath).pipe(
-            map(dynamicFields => this.getFields(undefined, dynamicFields))
-        ).subscribe(fields => this.fields = fields));
-    }
-
-    // Old
-    protected initDocumentRecordEditComponent() {
-        this.actions.getSingle(this.packagePath, this.entityId);
-        this.actions.getFields(this.packagePath);
-        this.subscriptionHandler.subscribe(combineLatest(
-            this.store.getSingle(this.packagePath, this.entityId),
-            this.store.getFields(this.packagePath),
-        ).pipe(
-            map(values => {
-                const entity = values[0];
-                const dynamicFields = values[1];
-
-                this.selectedEntity = entity;
-                return this.getFields(entity, dynamicFields);
-            })
-        ).subscribe(fields => this.fields = fields));
     }
 }

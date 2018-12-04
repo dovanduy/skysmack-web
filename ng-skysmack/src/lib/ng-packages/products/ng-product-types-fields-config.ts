@@ -4,18 +4,22 @@ import { DocumentFieldsConfig } from 'lib/portal-ui/fields/document-fields-confi
 import { FormRule } from 'lib/portal-ui/forms/form-rule';
 import { SetDisplayNameRule } from 'lib/portal-ui/forms/rules/set-display-name-rule';
 import { LocalObject } from '@skysmack/framework';
-import { Product, ProductType } from '@skysmack/packages-products';
+import { ProductType } from '@skysmack/packages-products';
 import { Field } from 'lib/portal-ui/fields/field';
 import { FieldTypes } from 'lib/portal-ui/fields/field-types';
 import { ProductTypesValidation } from './ng-product-types-validation';
 
+export interface NgProductTypeFormDependencies {
+    [key: string]: any;
+}
+
 @Injectable({ providedIn: 'root' })
-export class NgProductTypesFieldsConfig extends DocumentFieldsConfig<ProductType> {
+export class NgProductTypesFieldsConfig extends DocumentFieldsConfig<ProductType, NgProductTypeFormDependencies> {
     public validation = new ProductTypesValidation();
 
     public formRules: FormRule[] = [];
 
-    protected getEntityFields(entity?: LocalObject<ProductType>, dependencies?: any): Field[] {
+    protected getEntityFields(entity?: LocalObject<ProductType>, dependencies?: NgProductTypeFormDependencies): Field[] {
         const fields = [
             new Field({
                 fieldType: FieldTypes.string,

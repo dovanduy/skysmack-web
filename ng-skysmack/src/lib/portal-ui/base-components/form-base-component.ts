@@ -11,7 +11,7 @@ import { RecordActionsBase } from '@skysmack/redux';
 import { NgRedux } from '@angular-redux/store';
 import { EditorNavService } from '../components/common/container/editor-nav.service';
 
-export class FormBaseComponent<TAppState, TRecord extends Record<TKey>, TKey> extends BaseComponent<TAppState, TKey> {
+export class FormBaseComponent<TAppState, TRecord extends Record<TKey>, TKey, TDependencies> extends BaseComponent<TAppState, TKey> {
     /**
      * Fields being sent the dynamic form component used to create the form.
      */
@@ -28,7 +28,7 @@ export class FormBaseComponent<TAppState, TRecord extends Record<TKey>, TKey> ex
         public editorNavService: EditorNavService,
         public actions: RecordActionsBase<TAppState, NgRedux<TAppState>>,
         public redux: NgSkysmackRedux,
-        public fieldsConfig: FieldsConfig<TRecord>,
+        public fieldsConfig: FieldsConfig<TRecord, TDependencies>,
     ) {
         super(router, activatedRoute, actions, redux);
     }
@@ -39,7 +39,7 @@ export class FormBaseComponent<TAppState, TRecord extends Record<TKey>, TKey> ex
      * @param dynamicFields Any dynamic fields added to the package.
      * @param dependencies Any dependencies the form needs.
      */
-    protected getFields(entity?: LocalObject<TRecord>, dynamicFields?: LocalObject<FieldSchemaViewModel>[], dependencies?: any): Field[] {
+    protected getFields(entity?: LocalObject<TRecord>, dynamicFields?: LocalObject<FieldSchemaViewModel>[], dependencies?: TDependencies): Field[] {
         const fields = this.fieldsConfig.getStaticFields(entity, dependencies);
         if (dynamicFields) {
             const returnfields = [

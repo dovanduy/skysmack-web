@@ -1,2 +1,2 @@
 export * from './lodging';
-export * from './lodging-types';
+export * from './lodging-type';

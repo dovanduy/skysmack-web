@@ -4,7 +4,7 @@ import { NgSkysmackRedux } from 'lib/ng-packages/skysmack/redux/ng-skysmack-redu
 import { ActivatedRoute, Router } from '@angular/router';
 import { EditorNavService } from 'lib/portal-ui/components/common/container/editor-nav.service';
 import { DocumentRecordFormComponent } from 'lib/portal-ui/base-components/record-components/document-record-form-component';
-import { NgProductTypesFieldsConfig } from 'lib/ng-packages/products/ng-product-types-fields-config';
+import { NgProductTypesFieldsConfig, NgProductTypeFormDependencies } from 'lib/ng-packages/products/ng-product-types-fields-config';
 import { NgProductTypesActions } from 'lib/ng-packages/products/redux/ng-product-types-actions';
 import { NgProductTypesStore } from 'lib/ng-packages/products/redux/ng-product-types-store';
 
@@ -13,7 +13,7 @@ import { NgProductTypesStore } from 'lib/ng-packages/products/redux/ng-product-t
   templateUrl: './product-types-create.component.html',
   styleUrls: ['./product-types-create.component.scss']
 })
-export class ProductTypesCreateComponent extends DocumentRecordFormComponent<ProductTypesAppState, ProductType, number> implements OnInit {
+export class ProductTypesCreateComponent extends DocumentRecordFormComponent<ProductTypesAppState, ProductType, number, NgProductTypeFormDependencies> implements OnInit {
 
   constructor(
     public router: Router,

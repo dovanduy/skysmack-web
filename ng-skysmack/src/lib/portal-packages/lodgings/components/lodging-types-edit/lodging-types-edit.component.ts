@@ -6,14 +6,14 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { EditorNavService } from 'lib/portal-ui/components/common/container/editor-nav.service';
 import { DocumentRecordFormComponent } from 'lib/portal-ui/base-components/record-components/document-record-form-component';
 import { NgLodgingsStore } from 'lib/ng-packages/lodgings';
-import { NgLodgingTypesFieldsConfig } from 'lib/ng-packages/lodgings/ng-lodging-types-fields-config';
+import { NgLodgingTypesFieldsConfig, NgLodgingTypeFormDependencies } from 'lib/ng-packages/lodgings/ng-lodging-types-fields-config';
 
 @Component({
   selector: 'ss-lodging-types-edit',
   templateUrl: './lodging-types-edit.component.html',
   styleUrls: ['./lodging-types-edit.component.scss']
 })
-export class LodgingTypesEditComponent extends DocumentRecordFormComponent<LodgingsAppState, Lodging, number> implements OnInit {
+export class LodgingTypesEditComponent extends DocumentRecordFormComponent<LodgingsAppState, Lodging, number, NgLodgingTypeFormDependencies> implements OnInit {
 
   constructor(
     public router: Router,
@@ -29,6 +29,6 @@ export class LodgingTypesEditComponent extends DocumentRecordFormComponent<Lodgi
 
   ngOnInit() {
     super.ngOnInit();
-    this.initDocumentRecordEditComponent();
+    this.setEditFields();
   }
 }

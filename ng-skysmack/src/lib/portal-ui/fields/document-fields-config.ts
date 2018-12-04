@@ -6,7 +6,7 @@ import { Field } from './field';
 import { FieldTypes } from './field-types';
 import { SelectField } from './select-field';
 
-export abstract class DocumentFieldsConfig<TRecord> extends FieldsConfig<TRecord> {
+export abstract class DocumentFieldsConfig<TRecord, TDependencies> extends FieldsConfig<TRecord, TDependencies> {
     public fieldsValidation = new EntityFieldsValidation();
 
     /**

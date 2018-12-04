@@ -11,7 +11,7 @@ import { FormHelper } from 'lib/portal-ui/forms/form-helper';
 import { map } from 'rxjs/operators';
 import { NgRecordReduxStore } from 'lib/ng-redux/redux-stores/ng-record-redux-store';
 
-export class RecordFormComponent<TAppState, TRecord extends Record<TKey>, TKey> extends FormBaseComponent<TAppState, TRecord, TKey> implements OnInit, OnDestroy {
+export class RecordFormComponent<TAppState, TRecord extends Record<TKey>, TKey, TDependencies> extends FormBaseComponent<TAppState, TRecord, TKey, TDependencies> implements OnInit, OnDestroy {
 
     constructor(
         public router: Router,
@@ -20,7 +20,7 @@ export class RecordFormComponent<TAppState, TRecord extends Record<TKey>, TKey> 
         public actions: RecordActionsBase<TAppState, NgRedux<TAppState>>,
         public redux: NgSkysmackRedux,
         public store: NgRecordReduxStore<TAppState, TRecord, TKey>,
-        public fieldsConfig: FieldsConfig<TRecord>
+        public fieldsConfig: FieldsConfig<TRecord, TDependencies>
     ) {
         super(router, activatedRoute, editorNavService, actions, redux, fieldsConfig);
     }
@@ -35,6 +35,8 @@ export class RecordFormComponent<TAppState, TRecord extends Record<TKey>, TKey> 
         super.ngOnDestroy();
     }
 
+
+    // Old
     public initRecordCreateComponent() {
         this.fields = this.getFields();
     }
@@ -49,6 +51,8 @@ export class RecordFormComponent<TAppState, TRecord extends Record<TKey>, TKey> 
         ).subscribe(fields => this.fields = fields));
     }
 
+
+    //#region default form submission
     public onCreateSubmit(fh: FormHelper) {
         this.create(fh);
     }
@@ -73,4 +77,5 @@ export class RecordFormComponent<TAppState, TRecord extends Record<TKey>, TKey> 
             this.editorNavService.hideEditorNav();
         });
     }
+    //#endregion
 }

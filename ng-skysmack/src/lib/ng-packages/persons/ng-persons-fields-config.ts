@@ -9,15 +9,19 @@ import { Field } from 'lib/portal-ui/fields/field';
 import { FieldTypes } from 'lib/portal-ui/fields/field-types';
 import { PersonsValidation } from './ng-persons-validation';
 
+export interface NgPersonFormDependencies {
+    [key: string]: any;
+}
+
 @Injectable({ providedIn: 'root' })
-export class NgPersonsFieldsConfig extends DocumentFieldsConfig<Person> {
+export class NgPersonsFieldsConfig extends DocumentFieldsConfig<Person, NgPersonFormDependencies> {
     public validation = new PersonsValidation();
 
     public formRules: FormRule[] = [
         new SetDisplayNameRule(['firstName', 'lastName'])
     ];
 
-    protected getEntityFields(entity?: LocalObject<Person>, dependencies?: any): Field[] {
+    protected getEntityFields(entity?: LocalObject<Person>, dependencies?: NgPersonFormDependencies): Field[] {
         const fields = [
             new Field({
                 fieldType: FieldTypes.string,
