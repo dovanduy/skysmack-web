@@ -4,7 +4,7 @@ export class Lodging implements DocumentRecord<number> {
     public id: number;
     public name: string;
     public lodgingTypeId: number;
-    public occupationStateEnum: 'vacant' | 'occupied' | 'disabled';
+    public occupationState: 'vacant' | 'occupied' | 'disabled';
     public static OccupationStateEnum = {
         Vacant: 'vacant',
         Occupied: 'occupied',

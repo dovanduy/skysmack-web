@@ -34,12 +34,23 @@ export class NgLodgingsFieldsConfig extends DocumentFieldsConfig<Lodging, NgLodg
                 order: 1,
             } as SelectField),
 
+            new SelectField({
+                fieldType: FieldTypes.SelectField,
+                value: entity && entity.object ? entity.object.occupationState : undefined,
+                label: 'Occupation state',
+                key: 'occupationState',
+                validators: [Validators.required],
+                optionsData: Lodging.OccupationStateEnum,
+                optionsDataType: 'enum',
+                order: 2,
+            } as SelectField),
+
             new Field({
                 fieldType: FieldTypes.string,
                 value: entity ? entity.object.name : undefined,
                 key: 'name',
                 validators: [Validators.required],
-                order: 2,
+                order: 3,
                 showColumn: true
             } as Field)
         ];
