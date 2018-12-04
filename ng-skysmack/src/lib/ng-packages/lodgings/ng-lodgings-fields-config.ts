@@ -7,6 +7,7 @@ import { Lodging, LodgingType } from '@skysmack/packages-lodgings';
 import { Field } from 'lib/portal-ui/fields/field';
 import { FieldTypes } from 'lib/portal-ui/fields/field-types';
 import { LodgingTypesValidation } from './ng-lodging-types-validation';
+import { SelectField } from 'lib/portal-ui/fields/select-field';
 
 export interface NgLodgingFormDependencies {
     availableLodgingTypes: LocalObject<LodgingType>[];
@@ -21,12 +22,24 @@ export class NgLodgingsFieldsConfig extends DocumentFieldsConfig<Lodging, NgLodg
 
     protected getEntityFields(entity?: LocalObject<Lodging>, dependencies?: NgLodgingFormDependencies): Field[] {
         const fields = [
+            new SelectField({
+                fieldType: FieldTypes.SelectField,
+                value: entity && entity.object ? entity.object.lodgingTypeId : undefined,
+                label: 'Lodging type',
+                key: 'lodgingTypeId',
+                validators: [Validators.required],
+                optionsData: dependencies.availableLodgingTypes,
+                displayNameSelector: 'object.name',
+                disabled: entity && entity.object ? true : false,
+                order: 1,
+            } as SelectField),
+
             new Field({
                 fieldType: FieldTypes.string,
                 value: entity ? entity.object.name : undefined,
                 key: 'name',
                 validators: [Validators.required],
-                order: 1,
+                order: 2,
                 showColumn: true
             } as Field)
         ];
