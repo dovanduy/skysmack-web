@@ -91,8 +91,8 @@ export class FormBaseComponent<TAppState, TRecord extends Record<TKey>, TKey, TD
 
         // Remove empty values
         Object.keys(formValues).forEach(key => {
-            if (formValues[key] === 'null' || formValues[key] === null) {
-                formValues[key] = undefined;
+            if (formValues[key] === 'undefined' || formValues[key] === undefined) {
+                delete formValues[key];
             }
         });
 

@@ -39,8 +39,6 @@ export class DocumentRecordFormComponent<TAppState, TRecord extends Record<TKey>
             map(values => {
                 const entity = values[0];
                 const dynamicFields = values[1];
-
-                this.selectedEntity = entity;
                 return this.getFields(entity, dynamicFields);
             })
         ).subscribe(fields => this.fields = fields));
@@ -59,6 +57,9 @@ export class DocumentRecordFormComponent<TAppState, TRecord extends Record<TKey>
         return combineLatest(
             this.store.getSingle(this.packagePath, this.entityId),
             this.store.getFields(this.packagePath)
-        );
+        ).pipe(map(values => {
+            this.selectedEntity = values[0];
+            return values;
+        }));
     }
 }
