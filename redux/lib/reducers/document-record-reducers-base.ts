@@ -18,7 +18,7 @@ export function documentRecordReducersBase<TState extends DocumentRecordState<TR
         }
         case prefix + DocumentRecordActionsBase.GET_FIELDS_FAILURE: {
             const castedAction: ReduxAction<PackagePathPayload> = action;
-            console.log('Fields failure...');
+            console.log('Fields failure. Error Action:', castedAction);
             return newState;
         }
         default:

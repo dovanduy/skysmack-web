@@ -35,7 +35,9 @@ export abstract class NgDocmentRecordRequests<TRecord extends Record<TKey>, TKey
                     }));
                 }),
                 retry(this.retryTimes),
-                catchError(() => of(Object.assign({}, new ReduxAction({
+                catchError((error) => of(Object.assign({}, new ReduxAction({
+                    type: this.prefix + DocumentRecordActionsBase.GET_FIELDS_FAILURE,
+                    payload: error,
                     error: true
                 }))))
             );

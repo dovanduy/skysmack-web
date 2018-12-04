@@ -89,14 +89,11 @@ export abstract class NgRecordRequests<TRecord extends Record<TKey>, TKey> imple
                     }));
                 }),
                 retry(this.retryTimes),
-                catchError((error) => {
-                    return of(Object.assign({}, new ReduxAction<GetSingleRecordPayload<TKey>>({
-                        type: this.prefix + RecordActionsBase.GET_SINGLE_FAILURE,
-                        payload: error,
-                        error: true
-                    })));
-                }
-                )
+                catchError((error) => of(Object.assign({}, new ReduxAction<GetSingleRecordPayload<TKey>>({
+                    type: this.prefix + RecordActionsBase.GET_SINGLE_FAILURE,
+                    payload: error,
+                    error: true
+                }))))
             );
     }
 }
