@@ -41,9 +41,19 @@ export function recordReducersBase<TState extends RecordState<TRecord, TKey>, TR
 
             return newState;
         }
+        case prefix + RecordActionsBase.GET_PAGED_FAILURE: {
+            const castedAction: ReduxAction<HttpErrorResponse> = action;
+            console.log('Error. Error Action:', castedAction);
+            return newState;
+        }
         case prefix + RecordActionsBase.GET_SINGLE_SUCCESS: {
             const castedAction: ReduxAction<GetSingleRecordSuccessPayload<TRecord, TKey>> = action;
             newState.localRecords[castedAction.payload.packagePath] = RecordExtensions.mergeOrAddLocalRecords(newState.localRecords[castedAction.payload.packagePath], [toLocalObject(castedAction.payload.record)]);
+            return newState;
+        }
+        case prefix + RecordActionsBase.GET_SINGLE_FAILURE: {
+            const castedAction: ReduxAction<HttpErrorResponse> = action;
+            console.log('Error. Error Action:', castedAction);
             return newState;
         }
         case prefix + RecordActionsBase.ADD: {

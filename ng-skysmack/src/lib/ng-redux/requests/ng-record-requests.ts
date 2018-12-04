@@ -63,15 +63,15 @@ export abstract class NgRecordRequests<TRecord extends Record<TKey>, TKey> imple
                     }));
                 }),
                 retry(this.retryTimes),
-                catchError(() => of(Object.assign({}, new ReduxAction<GetPagedRecordsPayload>({
-                    ...action,
+                catchError((error) => of(Object.assign({}, new ReduxAction<GetPagedRecordsPayload>({
+                    type: this.prefix + RecordActionsBase.GET_PAGED_FAILURE,
+                    payload: error,
                     error: true
                 }))))
             );
     }
 
     public getSingle(action: ReduxAction<GetSingleRecordPayload<TKey>>): Observable<ReduxAction<GetSingleRecordSuccessPayload<TRecord, TKey>> | ReduxAction<GetSingleRecordPayload<TKey>>> {
-
         let url = `${this.apiDomain.domain}/${action.payload.packagePath}`;
         url = this.additionalPaths ? [url, ...this.additionalPaths].join('/') : url;
         url = `${url}/${action.payload.id}`;
@@ -79,7 +79,6 @@ export abstract class NgRecordRequests<TRecord extends Record<TKey>, TKey> imple
         return this.http.get<TRecord>(url, { observe: 'response' })
             .pipe(
                 map(httpResponse => {
-                    console.log('getting single');
                     return Object.assign({}, new ReduxAction<GetSingleRecordSuccessPayload<TRecord, TKey>>({
                         type: this.prefix + RecordActionsBase.GET_SINGLE_SUCCESS,
                         payload: {
@@ -90,10 +89,14 @@ export abstract class NgRecordRequests<TRecord extends Record<TKey>, TKey> imple
                     }));
                 }),
                 retry(this.retryTimes),
-                catchError(() => of(Object.assign({}, new ReduxAction<GetSingleRecordPayload<TKey>>({
-                    ...action,
-                    error: true
-                }))))
+                catchError((error) => {
+                    return of(Object.assign({}, new ReduxAction<GetSingleRecordPayload<TKey>>({
+                        type: this.prefix + RecordActionsBase.GET_SINGLE_FAILURE,
+                        payload: error,
+                        error: true
+                    })));
+                }
+                )
             );
     }
 }
