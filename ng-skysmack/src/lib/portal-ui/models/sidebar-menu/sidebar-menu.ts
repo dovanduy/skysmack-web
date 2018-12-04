@@ -43,6 +43,7 @@ export abstract class SidebarMenu implements OnDestroy {
     protected runMenuItemProviders() {
         this.menuItemProviders.forEach(provider => {
             this.subscriptionHandler.register(this.redux.getCurrentPackage(this.packagePath).pipe(
+                // TODO: Use packagePath instead of id
                 switchMap(currentPackage => provider.getItems(this.menuId, currentPackage.installedPackage.id)),
                 map((menuItems: MenuItem[]) => menuItems.forEach(menuItem => this.addItem(menuItem)))
             ).subscribe());
