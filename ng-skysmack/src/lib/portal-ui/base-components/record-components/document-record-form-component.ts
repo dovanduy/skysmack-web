@@ -40,6 +40,7 @@ export class DocumentRecordFormComponent<TAppState, TRecord extends Record<TKey>
                 const entity = values[0];
                 const dynamicFields = values[1];
 
+                this.selectedEntity = entity;
                 return this.getFields(entity, dynamicFields);
             })
         ).subscribe(fields => this.fields = fields));
