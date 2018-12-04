@@ -12,7 +12,7 @@ export abstract class SidebarMenu implements OnDestroy {
     public abstract translationPrefix: string;
 
     public subscriptionHandler = new SubscriptionHandler();
-    public path: string;
+    public packagePath: string;
 
     public primaryMenuAreas: MenuArea[] = [];
     public primaryMenuItems: MenuItem[] = [];
@@ -37,12 +37,12 @@ export abstract class SidebarMenu implements OnDestroy {
     public abstract setSpeedDialMenu(): void;
 
     public setPath() {
-        this.path = this.router.url.split('/')[1];
+        this.packagePath = this.router.url.split('/')[1];
     }
 
     protected runMenuItemProviders() {
         this.menuItemProviders.forEach(provider => {
-            this.subscriptionHandler.register(this.redux.getCurrentPackage(this.path).pipe(
+            this.subscriptionHandler.register(this.redux.getCurrentPackage(this.packagePath).pipe(
                 switchMap(currentPackage => provider.getItems(this.menuId, currentPackage.installedPackage.id)),
                 map((menuItems: MenuItem[]) => menuItems.forEach(menuItem => this.addItem(menuItem)))
             ).subscribe());

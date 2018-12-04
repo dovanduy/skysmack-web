@@ -27,6 +27,7 @@ export class NgLodgingsMenu extends SidebarMenu {
         this.primaryMenuAreas.push(new MenuArea('manage', this.translationPrefix, 2));
 
         this.primaryMenuItems.push(new MenuItem('create', this.translationPrefix + 'CREATE', 'actions', 1, 'groupAdd'));
+        this.primaryMenuItems.push(new MenuItem('types', this.translationPrefix + 'TYPES', 'manage', 2, 'description'));
         this.primaryMenuItems.push(new MenuItem('fields', this.translationPrefix + 'FIELDS', 'manage', 2, 'shortText'));
     }
 
