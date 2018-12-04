@@ -4,7 +4,6 @@ import { RecordValidation } from 'lib/portal-ui/forms/record-validation';
 export class LodgingTypesValidation extends RecordValidation {
     public formErrors = {
         name: '',
-        displayName: ''
     };
 
     public validationMessages: StrIndex<{}> = {

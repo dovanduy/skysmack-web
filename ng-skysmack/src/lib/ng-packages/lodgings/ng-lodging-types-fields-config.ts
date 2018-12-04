@@ -18,7 +18,6 @@ export class NgLodgingTypesFieldsConfig extends DocumentFieldsConfig<LodgingType
     public validation = new LodgingTypesValidation();
 
     public formRules: FormRule[] = [
-        new SetDisplayNameRule(['name'])
     ];
 
     protected getEntityFields(entity?: LocalObject<LodgingType>, dependencies?: NgLodgingTypeFormDependencies): Field[] {

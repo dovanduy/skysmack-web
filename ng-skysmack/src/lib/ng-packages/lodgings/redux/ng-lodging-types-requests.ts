@@ -5,7 +5,7 @@ import { NgDocmentRecordRequests } from 'lib/ng-redux/requests/ng-document-recor
 import { Lodging } from '@skysmack/packages-lodgings';
 
 @Injectable({ providedIn: 'root' })
-export class NgLodingTypesRequests extends NgDocmentRecordRequests<Lodging, number> {
+export class NgLodgingTypesRequests extends NgDocmentRecordRequests<Lodging, number> {
     constructor(
         protected http: HttpClient,
         @Inject('ApiDomain') protected apiDomain: ApiDomain

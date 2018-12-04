@@ -3,10 +3,16 @@ import { DocumentRecord } from "@skysmack/framework";
 export class Lodging implements DocumentRecord<number> {
     public id: number;
     public name: string;
-    public productTypeId: number;
-    [key: string]: any;
+    public lodgingTypeId: number;
+    public occupationStateEnum: 'vacant' | 'occupied' | 'disabled';
+    public static OccupationStateEnum = {
+        Vacant: 'vacant',
+        Occupied: 'occupied',
+        Disabled: 'disabled'
+    }
 
     public constructor(init?: Partial<Lodging>) {
         Object.assign(this, init);
     }
+
 }
