@@ -35,15 +35,12 @@ export class RecordFormComponent<TAppState, TRecord extends Record<TKey>, TKey, 
         super.ngOnDestroy();
     }
 
-
-    // Old
-    public initRecordCreateComponent() {
+    protected setCreateFields() {
         this.fields = this.getFields();
     }
 
-    public initRecordEditComponent() {
-        this.actions.getSingle(this.packagePath, this.entityId);
-        this.subscriptionHandler.subscribe(this.store.getSingle(this.packagePath, this.entityId).pipe(
+    protected setEditFields() {
+        this.subscriptionHandler.subscribe(this.initEditRecord().pipe(
             map(entity => {
                 this.selectedEntity = entity;
                 return this.getFields(entity);
@@ -51,6 +48,10 @@ export class RecordFormComponent<TAppState, TRecord extends Record<TKey>, TKey, 
         ).subscribe(fields => this.fields = fields));
     }
 
+    protected initEditRecord() {
+        this.actions.getSingle(this.packagePath, this.entityId);
+        return this.store.getSingle(this.packagePath, this.entityId);
+    }
 
     //#region default form submission
     public onCreateSubmit(fh: FormHelper) {
