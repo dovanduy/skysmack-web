@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
 import { CurrentTenantViewModel } from '@skysmack/packages-skysmack';
 import { Menu } from './../../../models/menu';
-import { NgSkysmackRedux } from './../../../../ng-packages/skysmack/redux/ng-skysmack-redux';
+import { NgSkysmackStore } from './../../../../ng-packages/skysmack/redux/ng-skysmack-store';
 import { AuthUserRedux } from './../../../redux/authenticated-user/auth-user-redux';
 import { UIRedux } from './../../../redux/ui-redux';
 
@@ -18,7 +18,7 @@ export class NavBarComponent implements OnInit {
   public menu: Observable<Menu>;
 
   constructor(
-    public redux: NgSkysmackRedux,
+    public redux: NgSkysmackStore,
     public uiRedux: UIRedux,
     public authUserRedux: AuthUserRedux,
     public translate: TranslateService

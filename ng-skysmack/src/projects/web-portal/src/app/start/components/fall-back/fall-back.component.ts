@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 import { CurrentTenantViewModel } from '@skysmack/packages-skysmack';
 import { Router, ActivatedRoute } from '@angular/router';
 import { PackageRouteConfiguration } from '../../../package-route-configuration';
-import { NgSkysmackRedux } from './../../../../../../../lib/ng-packages/skysmack/redux/ng-skysmack-redux';
+import { NgSkysmackStore } from './../../../../../../../lib/ng-packages/skysmack/redux/ng-skysmack-store';
 
 // export class FallBackComponent extends EntityBase implements OnInit {
 
@@ -20,7 +20,7 @@ export class FallBackComponent implements OnInit {
     // public componentPageTitle: EntityComponentPageTitle,
     public router: Router,
     public activatedRoute: ActivatedRoute,
-    public redux: NgSkysmackRedux,
+    public redux: NgSkysmackStore,
     public packageRouteConfiguration: PackageRouteConfiguration,
   ) {
     // super(router, activatedRoute, redux);

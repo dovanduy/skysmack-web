@@ -1,4 +1,9 @@
 import { CurrentTenantViewModel } from './../models/current-tenant';
+import { AppState } from '@skysmack/redux';
+
+export class SkysmackAppState extends AppState {
+    public skysmack: SkysmackState;
+}
 
 export class SkysmackState {
     currentTenant: CurrentTenantViewModel

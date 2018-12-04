@@ -1,5 +1,5 @@
 import { SubscriptionHandler } from '@skysmack/framework';
-import { Package, NgSkysmackRedux } from 'lib/ng-packages/skysmack';
+import { Package, NgSkysmackStore } from 'lib/ng-packages/skysmack';
 import { Observable } from 'rxjs';
 import { Router, ActivatedRoute } from '@angular/router';
 import { OnInit, OnDestroy } from '@angular/core';
@@ -18,7 +18,7 @@ export class BaseComponent<TAppState, TKey> implements OnInit, OnDestroy {
         public router: Router,
         public activatedRoute: ActivatedRoute,
         public actions: RecordActionsBase<TAppState, NgRedux<TAppState>>,
-        public redux: NgSkysmackRedux
+        public redux: NgSkysmackStore
     ) { }
 
     ngOnInit() {

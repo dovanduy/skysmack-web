@@ -6,13 +6,15 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { of } from 'rxjs';
 import { AuthenticationActions, AuthenticationRequests, OpenIdConnectResponse } from '@skysmack/packages-authentication';
 import * as moment from 'moment';
+import { Injectable } from '@angular/core';
 
-export abstract class NgAuthenticationRequests implements AuthenticationRequests {
+@Injectable({ providedIn: 'root' })
+export class NgAuthenticationRequests implements AuthenticationRequests {
 
     constructor(
         protected http: HttpClient,
         protected apiDomain: ApiDomain,
-        protected prefix: string
+        // protected prefix: string
     ) { }
 
     public login(action: ReduxAction<{ email: string, password: string, path: string }>): Observable<ReduxAction> {

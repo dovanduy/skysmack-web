@@ -35,6 +35,24 @@ export class FormHelper {
     }
 
     /**
+     * Runs the form helpers validation logic against the submitted form. Runs the supplied logic on success.
+     * @param onValidated What to do if the form validates.
+     */
+    public formValid(onValidated: Function, autoReset: boolean = true) {
+        this.formSubmitted = true;
+        if (!this.form.valid) {
+            this.validateForm(this.form);
+        } else {
+            this.formSubmitted = false;
+            onValidated();
+            if (autoReset) {
+                (this.form as FormGroup).reset();
+                this.autoReset = autoReset;
+            }
+        }
+    }
+
+    /**
      * Validates all fields on the form. Works when a single control changes or the form is submitted.
      * @param form The form to perfom validation on.
      */

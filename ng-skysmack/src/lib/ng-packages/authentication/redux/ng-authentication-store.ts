@@ -4,7 +4,9 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { CurrentUser, HttpErrorResponse } from '@skysmack/framework';
 import * as moment from 'moment';
+import { Injectable } from '@angular/core';
 
+@Injectable({ providedIn: 'root' })
 export class NgAuthenticationStore {
     constructor(
         protected store: NgRedux<AuthenticationAppState>,

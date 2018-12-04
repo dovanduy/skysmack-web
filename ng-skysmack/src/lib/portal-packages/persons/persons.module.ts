@@ -19,6 +19,6 @@ import { personsComponents } from './components/persons-components';
   declarations: [
     ...personsComponents
   ],
-  providers: [],
+  providers: []
 })
 export class PersonsModule { }

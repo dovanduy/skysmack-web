@@ -2,7 +2,7 @@ import { Component, OnInit, ViewEncapsulation, OnDestroy } from '@angular/core';
 import { Observable } from 'rxjs';
 import { CurrentTenantViewModel } from '@skysmack/packages-skysmack';
 import { Router, RouteConfigLoadStart, RouteConfigLoadEnd } from '@angular/router';
-import { NgSkysmackRedux } from './../../../../../../../lib/ng-packages/skysmack/redux/ng-skysmack-redux';
+import { NgSkysmackStore } from './../../../../../../../lib/ng-packages/skysmack/redux/ng-skysmack-store';
 import { PackageRouteConfiguration } from '../../../package-route-configuration';
 import { SubscriptionHandler } from '@skysmack/framework';
 
@@ -22,7 +22,7 @@ export class StartComponent implements OnInit, OnDestroy {
 
   constructor(
     public router: Router,
-    public redux: NgSkysmackRedux,
+    public redux: NgSkysmackStore,
     public packageRouteConfiguration: PackageRouteConfiguration,
   ) { }
 

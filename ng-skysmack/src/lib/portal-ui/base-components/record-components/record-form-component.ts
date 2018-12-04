@@ -4,7 +4,7 @@ import { Record, LocalObject } from '@skysmack/framework';
 import { FieldsConfig } from 'lib/portal-ui/fields/fields-config';
 import { EditorNavService } from 'lib/portal-ui/components/common/container/editor-nav.service';
 import { FormBaseComponent } from '../form-base-component';
-import { NgSkysmackRedux } from 'lib/ng-packages/skysmack';
+import { NgSkysmackStore } from 'lib/ng-packages/skysmack';
 import { RecordActionsBase } from '@skysmack/redux';
 import { NgRedux } from '@angular-redux/store';
 import { FormHelper } from 'lib/portal-ui/forms/form-helper';
@@ -18,7 +18,7 @@ export class RecordFormComponent<TAppState, TRecord extends Record<TKey>, TKey, 
         public activatedRoute: ActivatedRoute,
         public editorNavService: EditorNavService,
         public actions: RecordActionsBase<TAppState, NgRedux<TAppState>>,
-        public redux: NgSkysmackRedux,
+        public redux: NgSkysmackStore,
         public store: NgRecordReduxStore<TAppState, TRecord, TKey>,
         public fieldsConfig: FieldsConfig<TRecord, TDependencies>
     ) {
@@ -63,14 +63,14 @@ export class RecordFormComponent<TAppState, TRecord extends Record<TKey>, TKey, 
     }
 
     protected create(fh: FormHelper) {
-        this.validateForm(fh, () => {
+        fh.formValid(() => {
             this.actions.add<TRecord, TKey>([this.extractFormValues(fh)], this.packagePath);
             this.editorNavService.hideEditorNav();
         });
     }
 
     protected update(fh: FormHelper) {
-        this.validateForm(fh, () => {
+        fh.formValid(() => {
             const oldValue = { ...this.selectedEntity };
             const newValue = this.extractFormValues(fh, this.selectedEntity);
             newValue.oldObject = oldValue.object;

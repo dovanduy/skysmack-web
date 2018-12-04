@@ -1,0 +1,19 @@
+<ss-container>
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title [translate]="'OPEN_IDDICT.OPEN_IDDICT_LOGIN.SIGN_IN'"></mat-card-title>
+      <mat-card-subtitle [translate]="'OPEN_IDDICT.OPEN_IDDICT_LOGIN.ENTER_CRED'"></mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+
+      <div *ngIf="error" [@shrinkOut] [translate]="'OPEN_IDDICT.OPEN_IDDICT_LOGIN.ERROR_OCCURRED'"></div>
+
+      <ss-dynamic-form *ngIf="fields" [fields]="fields" [validation]="fieldsConfig.validation" [rules]="fieldsConfig.formRules"
+        [buttonText]="'Login'" (submitted)="onSubmit($event)">
+      </ss-dynamic-form>
+      <a routerLink="/forgotPassword" [translate]="'OPEN_IDDICT.OPEN_IDDICT_LOGIN.FORGOT_PASSWORD'"></a>
+
+      <div *ngIf="success" [translate]="'OPEN_IDDICT.OPEN_IDDICT_LOGIN.LOGGING_IN'"></div>
+    </mat-card-content>
+  </mat-card>
+</ss-container>

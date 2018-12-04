@@ -1,7 +1,7 @@
 import { Injectable, Inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { SidebarMenu } from 'lib/portal-ui/models/sidebar-menu/sidebar-menu';
-import { NgSkysmackRedux } from 'lib/ng-packages/skysmack';
+import { NgSkysmackStore } from 'lib/ng-packages/skysmack';
 import { MenuItemProvider } from 'lib/portal-ui/providers/menu-item-provider';
 import { MenuArea } from 'lib/portal-ui/models/sidebar-menu/menu-area';
 import { MenuItem } from 'lib/portal-ui/models/sidebar-menu/menu-item';
@@ -12,7 +12,7 @@ export class NgProductsMenu extends SidebarMenu {
     public translationPrefix = 'PRODUCTS.INDEX.';
 
     constructor(
-        public redux: NgSkysmackRedux,
+        public redux: NgSkysmackStore,
         public router: Router,
         @Inject(MenuItemProvider.TOKEN) menuItemProviders: MenuItemProvider[],
     ) {

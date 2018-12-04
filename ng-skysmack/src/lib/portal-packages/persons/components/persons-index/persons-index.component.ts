@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { EntityComponentPageTitle, EntityAction, DocumentRecordIndexComponet } from 'lib/portal-ui';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgPersonsActions } from 'lib/ng-packages/persons/redux/ng-persons-actions';
-import { NgSkysmackRedux } from 'lib/ng-packages/skysmack';
+import { NgSkysmackStore } from 'lib/ng-packages/skysmack';
 import { NgPersonsStore, NgPersonsMenu } from 'lib/ng-packages/persons';
 import { Person, PersonsAppState } from '@skysmack/packages-persons';
 
@@ -24,7 +24,7 @@ export class PersonsIndexComponent extends DocumentRecordIndexComponet<PersonsAp
     public router: Router,
     public activatedRoute: ActivatedRoute,
     public actions: NgPersonsActions,
-    public redux: NgSkysmackRedux,
+    public redux: NgSkysmackStore,
     public title: EntityComponentPageTitle,
     public store: NgPersonsStore,
     public sidebarMenu: NgPersonsMenu

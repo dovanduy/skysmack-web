@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Product, ProductsAppState } from '@skysmack/packages-products';
 import { NgProductsActions } from 'lib/ng-packages/products/redux/ng-products-actions';
-import { NgSkysmackRedux } from 'lib/ng-packages/skysmack/redux/ng-skysmack-redux';
+import { NgSkysmackStore } from 'lib/ng-packages/skysmack/redux/ng-skysmack-store';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EditorNavService } from 'lib/portal-ui/components/common/container/editor-nav.service';
 import { NgProductsFieldsConfig, NgProductFormDependencies } from 'lib/ng-packages/products/ng-products-fields-config';
@@ -27,7 +27,7 @@ export class ProductsEditComponent extends DocumentRecordFormComponent<ProductsA
     public editorNavService: EditorNavService,
     public actions: NgProductsActions,
     public productTypeActions: NgProductTypesActions,
-    public redux: NgSkysmackRedux,
+    public redux: NgSkysmackStore,
     public fieldsConfig: NgProductsFieldsConfig,
     public store: NgProductsStore,
     public productTypeStore: NgProductTypesStore,

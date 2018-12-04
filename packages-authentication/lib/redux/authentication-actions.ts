@@ -1,5 +1,4 @@
 import { Store } from 'redux';
-import { CurrentUser, HttpErrorResponse } from '@skysmack/framework';
 
 export abstract class AuthenticationActions<TStateType, TStore extends Store<TStateType>> {
 

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Person, PersonsAppState } from '@skysmack/packages-persons';
 import { NgPersonsActions } from 'lib/ng-packages/persons/redux/ng-persons-actions';
-import { NgSkysmackRedux } from 'lib/ng-packages/skysmack/redux/ng-skysmack-redux';
+import { NgSkysmackStore } from 'lib/ng-packages/skysmack/redux/ng-skysmack-store';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EditorNavService } from 'lib/portal-ui/components/common/container/editor-nav.service';
 import { NgPersonsFieldsConfig, NgPersonFormDependencies } from 'lib/ng-packages/persons/ng-persons-fields-config';
@@ -20,7 +20,7 @@ export class PersonsEditComponent extends DocumentRecordFormComponent<PersonsApp
     public activatedRoute: ActivatedRoute,
     public editorNavService: EditorNavService,
     public actions: NgPersonsActions,
-    public redux: NgSkysmackRedux,
+    public redux: NgSkysmackStore,
     public fieldsConfig: NgPersonsFieldsConfig,
     public store: NgPersonsStore,
   ) {

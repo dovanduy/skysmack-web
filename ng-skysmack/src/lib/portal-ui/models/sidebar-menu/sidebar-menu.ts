@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { map, switchMap } from 'rxjs/operators';
 import { MenuItem } from './menu-item';
 import { MenuArea } from './menu-area';
-import { NgSkysmackRedux } from './../../../ng-packages/skysmack';
+import { NgSkysmackStore } from './../../../ng-packages/skysmack';
 import { SubscriptionHandler } from '@skysmack/framework';
 import { MenuItemProvider } from '../../providers/menu-item-provider';
 
@@ -21,7 +21,7 @@ export abstract class SidebarMenu implements OnDestroy {
     public defaultMenuArea = 'manage';
 
     constructor(
-        public redux: NgSkysmackRedux,
+        public redux: NgSkysmackStore,
         public router: Router,
         @Inject(MenuItemProvider.TOKEN) public menuItemProviders: MenuItemProvider[],
     ) {

@@ -3,18 +3,23 @@ import { NgRedux } from '@angular-redux/store';
 import { map, filter } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { LocalObject, toLocalObject, defined, flatten, safeHasValue } from '@skysmack/framework';
-import { CurrentTenantViewModel, InstalledPackageViewModel } from '@skysmack/packages-skysmack';
+import { CurrentTenantViewModel, InstalledPackageViewModel, SkysmackAppState } from '@skysmack/packages-skysmack';
 import { Package } from '../packages/package';
 import { PackageLoader } from '../packages/package-loader';
 
 // TODO: Rename below to skysnack store?
 @Injectable({ providedIn: 'root' })
-export class NgSkysmackRedux {
+export class NgSkysmackStore {
     public stateKey = 'skysmack';
-    constructor(protected ngRedux: NgRedux<any>) { }
+    constructor(protected ngRedux: NgRedux<SkysmackAppState>) { }
+
+    public getHydrated(): Observable<boolean> {
+        // TODO: How to get hydrated state here, when it is defined in the web project?
+        return this.ngRedux.select((state: any) => state.hydrated.hydrated);
+    }
 
     public getCurrentTenant(): Observable<CurrentTenantViewModel> {
-        return this.ngRedux.select((state: any) => state.skysmack.currentTenant);
+        return this.ngRedux.select((state: SkysmackAppState) => state.skysmack.currentTenant);
     }
 
     public getAllPackages(): Observable<LocalObject<InstalledPackageViewModel>[]> {
@@ -29,11 +34,11 @@ export class NgSkysmackRedux {
     }
 
     public getCurrentTenantLoaded(): Observable<boolean> {
-        return this.ngRedux.select((state: any) => state.skysmack.tenantLoaded);
+        return this.ngRedux.select((state: SkysmackAppState) => state.skysmack.tenantLoaded);
     }
 
     public getCurrentPackage(path): Observable<Package> {
-        return this.ngRedux.select((state: any) => state.skysmack.currentTenant.packages).pipe(flatten(), filter(installedPackage => installedPackage.url === path), map(_package => PackageLoader.toPackage(_package)), safeHasValue());
+        return this.ngRedux.select((state: SkysmackAppState) => state.skysmack.currentTenant.packages).pipe(flatten(), filter(installedPackage => installedPackage.url === path), map(_package => PackageLoader.toPackage(_package)), safeHasValue());
     }
 
     public getPackages(): Observable<Package[]> {
@@ -48,6 +53,6 @@ export class NgSkysmackRedux {
     }
 
     public getModules(): Observable<Package[]> {
-        return this.ngRedux.select((state: any) => state.skysmack.currentTenant.modules).pipe(defined(), map(modules => modules.map(_module => PackageLoader.toPackage(_module))));
+        return this.ngRedux.select((state: SkysmackAppState) => state.skysmack.currentTenant.modules).pipe(defined(), map(modules => modules.map(_module => PackageLoader.toPackage(_module))));
     }
 }

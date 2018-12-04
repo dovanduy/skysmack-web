@@ -4,7 +4,7 @@ import { map, take } from 'rxjs/operators';
 import { CurrentTenantViewModel } from '@skysmack/packages-skysmack';
 import { hasValue } from '@skysmack/framework';
 import { DynamicPackageRouter } from '../models/dynamic-package-router';
-import { NgSkysmackRedux } from './../../../../lib/ng-packages/skysmack/redux/ng-skysmack-redux';
+import { NgSkysmackStore } from './../../../../lib/ng-packages/skysmack/redux/ng-skysmack-store';
 import { PackageLoader } from 'lib/ng-packages/skysmack';
 
 @Injectable({ providedIn: 'root' })
@@ -24,7 +24,7 @@ export class PackageRouteConfiguration {
     ];
 
     constructor(
-        public redux: NgSkysmackRedux,
+        public redux: NgSkysmackStore,
         public injector: Injector
     ) { }
 

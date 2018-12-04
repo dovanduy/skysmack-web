@@ -3,7 +3,7 @@ import { OnInit, OnDestroy } from '@angular/core';
 import { Record, LocalObject, FieldSchemaViewModel } from '@skysmack/framework';
 import { FieldsConfig } from 'lib/portal-ui/fields/fields-config';
 import { EditorNavService } from 'lib/portal-ui/components/common/container/editor-nav.service';
-import { NgSkysmackRedux } from 'lib/ng-packages/skysmack';
+import { NgSkysmackStore } from 'lib/ng-packages/skysmack';
 import { DocumentRecordActionsBase } from '@skysmack/redux';
 import { NgRedux } from '@angular-redux/store';
 import { RecordFormComponent } from './record-form-component';
@@ -18,7 +18,7 @@ export class DocumentRecordFormComponent<TAppState, TRecord extends Record<TKey>
         public activatedRoute: ActivatedRoute,
         public editorNavService: EditorNavService,
         public actions: DocumentRecordActionsBase<TAppState, NgRedux<TAppState>>,
-        public redux: NgSkysmackRedux,
+        public redux: NgSkysmackStore,
         public store: NgDocumentRecordReduxStore<TAppState, TRecord, TKey>,
         public fieldsConfig: FieldsConfig<TRecord, TDependencies>
     ) {

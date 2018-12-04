@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { TranslateService } from '@ngx-translate/core';
 import { take, map } from 'rxjs/operators';
-import { NgSkysmackRedux } from './../../ng-packages/skysmack/redux/ng-skysmack-redux';
+import { NgSkysmackStore } from './../../ng-packages/skysmack/redux/ng-skysmack-store';
 import { hasValue } from '@skysmack/framework';
 import { CurrentTenantViewModel } from '@skysmack/packages-skysmack';
 
@@ -19,7 +19,7 @@ export class EntityComponentPageTitle {
 
     private tenantTitle = 'Skysmack';
 
-    constructor(private translate: TranslateService, private bodyTitle: Title, private redux: NgSkysmackRedux) {
+    constructor(private translate: TranslateService, private bodyTitle: Title, private redux: NgSkysmackStore) {
         this.redux.getCurrentTenant().pipe(hasValue<CurrentTenantViewModel>(), map(tenant => { if (tenant !== undefined) { return tenant; } }), take(1)).subscribe(tenant => {
             if (tenant.name) {
                 this.tenantTitle = tenant.name;

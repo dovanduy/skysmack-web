@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgSkysmackRedux } from 'lib/ng-packages/skysmack/redux/ng-skysmack-redux';
+import { NgSkysmackStore } from 'lib/ng-packages/skysmack/redux/ng-skysmack-store';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EditorNavService } from 'lib/portal-ui/components/common/container/editor-nav.service';
 import { DocumentRecordFormComponent } from 'lib/portal-ui/base-components/record-components/document-record-form-component';
@@ -25,7 +25,7 @@ export class LodgingsCreateComponent extends DocumentRecordFormComponent<Lodging
     public editorNavService: EditorNavService,
     public actions: NgLodgingsActions,
     public lodgingTypeActions: NgLodgingTypesActions,
-    public redux: NgSkysmackRedux,
+    public redux: NgSkysmackStore,
     public fieldsConfig: NgLodgingsFieldsConfig,
     public store: NgLodgingsStore,
     public lodgingTypeStore: NgLodgingTypesStore,

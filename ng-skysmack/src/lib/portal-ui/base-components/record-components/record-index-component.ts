@@ -2,7 +2,7 @@ import { BaseComponent } from '../base-component';
 import { Router, ActivatedRoute } from '@angular/router';
 import { RecordActionsBase } from '@skysmack/redux';
 import { NgRedux } from '@angular-redux/store';
-import { NgSkysmackRedux } from 'lib/ng-packages/skysmack';
+import { NgSkysmackStore } from 'lib/ng-packages/skysmack';
 import { LocalObject, LocalPage, PagedQuery, LoadingState, hasValue, setKey, StrIndex, LocalPageTypes, linq } from '@skysmack/framework';
 import { Observable, BehaviorSubject, fromEvent, combineLatest } from 'rxjs';
 import { NgRecordReduxStore } from 'lib/ng-redux/redux-stores/ng-record-redux-store';
@@ -31,7 +31,7 @@ export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey>
         public router: Router,
         public activatedRoute: ActivatedRoute,
         public actions: RecordActionsBase<TAppState, NgRedux<TAppState>>,
-        public redux: NgSkysmackRedux,
+        public redux: NgSkysmackStore,
         public store: NgRecordReduxStore<TAppState, TRecord, TKey>
     ) {
         super(router, activatedRoute, actions, redux);

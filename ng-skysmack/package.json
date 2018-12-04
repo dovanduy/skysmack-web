@@ -8,7 +8,7 @@
     "link:packages-persons": "cd ../packages-persons && npm link && npm link @skysmack/framework @skysmack/redux && npm run build",
     "link:packages-products": "cd ../packages-products && npm link && npm link @skysmack/framework @skysmack/redux && npm run build",
     "link:packages-lodgings": "cd ../packages-lodgings && npm link && npm link @skysmack/framework @skysmack/redux && npm run build",
-    "link:packages-skysmack": "cd ../packages-skysmack && npm link && npm link @skysmack/framework && npm run build",
+    "link:packages-skysmack": "cd ../packages-skysmack && npm link && npm link @skysmack/framework @skysmack/redux && npm run build",
     "link:ng-skysmack": "npm link @skysmack/framework @skysmack/redux @skysmack/packages-authentication @skysmack/packages-persons @skysmack/packages-products @skysmack/packages-lodgings @skysmack/packages-skysmack",
     "build:c1:dev": "ng build --prod",
     "build:c1:prod": "ng build --prod --deploy-url //cdn.skysmack.net/",

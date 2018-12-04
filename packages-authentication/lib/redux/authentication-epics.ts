@@ -8,7 +8,7 @@ export class AuthenticationEpics {
 
     constructor(
         protected requests: AuthenticationRequests,
-        protected prefix: string
+        // protected prefix: string
     ) {
         this.epics = [
             this.loginEpic

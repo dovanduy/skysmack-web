@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { EntityComponentPageTitle, EntityAction, DocumentRecordIndexComponet } from 'lib/portal-ui';
 import { Router, ActivatedRoute } from '@angular/router';
-import { NgSkysmackRedux } from 'lib/ng-packages/skysmack';
+import { NgSkysmackStore } from 'lib/ng-packages/skysmack';
 import { NgProductTypesMenu } from 'lib/ng-packages/products';
 import { ProductTypesAppState, ProductType } from '@skysmack/packages-products';
 import { NgProductTypesActions } from 'lib/ng-packages/products/redux/ng-product-types-actions';
@@ -24,7 +24,7 @@ export class ProductTypesIndexComponent extends DocumentRecordIndexComponet<Prod
     public router: Router,
     public activatedRoute: ActivatedRoute,
     public actions: NgProductTypesActions,
-    public redux: NgSkysmackRedux,
+    public redux: NgSkysmackStore,
     public title: EntityComponentPageTitle,
     public store: NgProductTypesStore,
     public sidebarMenu: NgProductTypesMenu

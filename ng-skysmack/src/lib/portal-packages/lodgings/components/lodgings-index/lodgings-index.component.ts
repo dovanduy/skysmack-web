@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { EntityComponentPageTitle, EntityAction, DocumentRecordIndexComponet } from 'lib/portal-ui';
 import { Router, ActivatedRoute } from '@angular/router';
-import { NgSkysmackRedux } from 'lib/ng-packages/skysmack';
+import { NgSkysmackStore } from 'lib/ng-packages/skysmack';
 import { LodgingsAppState } from '@skysmack/packages-lodgings/lib/redux/Lodgings-reducer';
 import { Lodging } from '@skysmack/packages-lodgings';
 import { NgLodgingsActions } from 'lib/ng-packages/lodgings/redux/ng-lodgings-actions';
@@ -26,7 +26,7 @@ export class LodgingsIndexComponent extends DocumentRecordIndexComponet<Lodgings
     public router: Router,
     public activatedRoute: ActivatedRoute,
     public actions: NgLodgingsActions,
-    public redux: NgSkysmackRedux,
+    public redux: NgSkysmackStore,
     public title: EntityComponentPageTitle,
     public store: NgLodgingsStore,
     public sidebarMenu: NgLodgingsMenu
