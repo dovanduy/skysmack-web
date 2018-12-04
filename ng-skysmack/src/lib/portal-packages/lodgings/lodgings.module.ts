@@ -6,6 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgLodgingsModule } from './../../ng-packages/lodgings';
 import { PortalUiModule } from 'lib/portal-ui/portal-ui.module';
 import { lodgingsComponents } from './components/lodgings-components';
+import { lodgingTypesComponents } from './components/lodging-types-component';
 
 @NgModule({
   imports: [
@@ -17,7 +18,8 @@ import { lodgingsComponents } from './components/lodgings-components';
   ],
   exports: [],
   declarations: [
-    ...lodgingsComponents
+    ...lodgingsComponents,
+    ...lodgingTypesComponents
   ],
   providers: [],
 })

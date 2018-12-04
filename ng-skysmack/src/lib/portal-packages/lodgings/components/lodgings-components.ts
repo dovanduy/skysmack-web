@@ -1,11 +1,7 @@
-
 import { Routes } from '@angular/router';
 import { LodgingsIndexComponent } from './lodgings-index/lodgings-index.component';
 import { LodgingsCreateComponent } from './lodgings-create/lodgings-create.component';
 import { LodgingsEditComponent } from './lodgings-edit/lodgings-edit.component';
-import { LodgingTypesIndexComponent } from './lodging-types-index/lodging-types-index.component';
-import { LodgingTypesCreateComponent } from './lodging-types-create/lodging-types-create.component';
-import { LodgingTypesEditComponent } from './lodging-types-edit/lodging-types-edit.component';
 
 
 export const lodgingsRoutes: Routes = [
@@ -29,10 +25,4 @@ export const lodgingsComponents: any[] = [
   LodgingsIndexComponent,
   LodgingsCreateComponent,
   LodgingsEditComponent,
-  LodgingTypesIndexComponent,
-  LodgingTypesCreateComponent,
-  LodgingTypesEditComponent,
-  // LodgingsFieldsIndexComponent,
-  // ProductsFieldsCreateComponent,
-  // ProductsFieldsEditComponent,
 ];

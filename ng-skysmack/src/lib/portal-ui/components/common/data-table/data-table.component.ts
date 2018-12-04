@@ -32,7 +32,7 @@ export class DataTableComponent implements OnDestroy, OnInit {
   @Input() public entityActions: MenuItem[] | EntityAction[] = [];
 
   // Input needed for cancel action
-  @Input() public path: string;
+  @Input() public packagePath: string;
 
   @Input() public compareValue = 'localId';
   @Input() public target: 'entities' | 'fields' = 'entities';
@@ -78,7 +78,7 @@ export class DataTableComponent implements OnDestroy, OnInit {
   }
 
   public cancelAction(entity: LocalObject<any>) {
-    this.actions.cancelRecordAction(entity, this.path);
+    this.actions.cancelRecordAction(entity, this.packagePath);
   }
 
   private initDataSource() {

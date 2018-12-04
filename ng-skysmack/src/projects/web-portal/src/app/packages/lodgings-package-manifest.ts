@@ -6,7 +6,7 @@ import { PackageManifest } from './../../../../../lib/portal-ui/models/package-m
 import { PackageLoader } from 'lib/ng-packages/skysmack/packages/package-loader';
 
 export class LodgingsPackageManifest extends LodgingsType implements PackageManifest {
-    public icon = 'face';
+    public icon = 'domain';
     public menuLocation = 'main';
     public modulePath = '../../../../../lib/portal-packages/lodgings/lodgings.module#LodgingsModule';
 }

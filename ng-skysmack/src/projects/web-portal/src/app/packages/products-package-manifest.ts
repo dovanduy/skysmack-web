@@ -6,7 +6,7 @@ import { PackageManifest } from '../../../../../lib/portal-ui/models/package-man
 import { PackageLoader } from 'lib/ng-packages/skysmack/packages/package-loader';
 
 export class ProductsPackageManifest extends ProductsType implements PackageManifest {
-    public icon = 'face';
+    public icon = 'folder';
     public menuLocation = 'main';
     public modulePath = '../../../../../lib/portal-packages/products/products.module#ProductsModule';
 }

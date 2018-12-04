@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { EntityComponentPageTitle, EntityAction, DocumentRecordIndexComponet } from 'lib/portal-ui';
 import { Router, ActivatedRoute } from '@angular/router';
-import { NgLodgingsActions } from 'lib/ng-packages/lodgings/redux/ng-lodgings-actions';
 import { NgSkysmackRedux } from 'lib/ng-packages/skysmack';
-import { NgLodgingsStore, NgLodgingsMenu } from 'lib/ng-packages/lodgings';
-import { Lodging, LodgingsAppState } from '@skysmack/packages-lodgings';
+import { NgLodgingTypesMenu } from 'lib/ng-packages/lodgings';
+import { LodgingTypesAppState, LodgingType } from '@skysmack/packages-lodgings';
+import { NgLodgingTypesStore } from 'lib/ng-packages/lodgings/redux/ng-lodgings-types-store';
+import { NgLodgingTypesActions } from 'lib/ng-packages/lodgings/redux/ng-lodging-types-actions';
 
 
 @Component({
@@ -12,7 +13,7 @@ import { Lodging, LodgingsAppState } from '@skysmack/packages-lodgings';
   templateUrl: './lodging-types-index.component.html',
   styleUrls: ['./lodging-types-index.component.scss']
 })
-export class LodgingTypesIndexComponent extends DocumentRecordIndexComponet<LodgingsAppState, Lodging, number> implements OnInit {
+export class LodgingTypesIndexComponent extends DocumentRecordIndexComponet<LodgingTypesAppState, LodgingType, number> implements OnInit {
 
   public displayedColumns = ['name'];
   public entityActions: EntityAction[] = [
@@ -23,11 +24,11 @@ export class LodgingTypesIndexComponent extends DocumentRecordIndexComponet<Lodg
   constructor(
     public router: Router,
     public activatedRoute: ActivatedRoute,
-    public actions: NgLodgingsActions,
+    public actions: NgLodgingTypesActions,
     public redux: NgSkysmackRedux,
     public title: EntityComponentPageTitle,
-    public store: NgLodgingsStore,
-    public sidebarMenu: NgLodgingsMenu
+    public store: NgLodgingTypesStore,
+    public sidebarMenu: NgLodgingTypesMenu
   ) {
     super(router, activatedRoute, actions, redux, store);
 
