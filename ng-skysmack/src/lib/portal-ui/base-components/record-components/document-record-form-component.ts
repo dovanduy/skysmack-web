@@ -31,11 +31,11 @@ export class DocumentRecordFormComponent<TAppState, TRecord extends Record<TKey>
 
     // Use these set functions in the component when the form has no dependencies
     protected setCreateFields() {
-        this.subscriptionHandler.subscribe(this.initCreateDocRecord().subscribe(fields => this.fields = this.getFields(undefined, fields)));
+        this.subscriptionHandler.register(this.initCreateDocRecord().subscribe(fields => this.fields = this.getFields(undefined, fields)));
     }
 
     protected setEditFields() {
-        this.subscriptionHandler.subscribe(this.initEditDocRecord().pipe(
+        this.subscriptionHandler.register(this.initEditDocRecord().pipe(
             map(values => {
                 const entity = values[0];
                 const dynamicFields = values[1];

@@ -40,7 +40,7 @@ export class BaseComponent<TAppState, TKey> implements OnInit, OnDestroy {
         this.packagePath = this.router.url.split('/')[1];
         if (this.entityId === undefined) {
             if (this.activatedRoute) {
-                this.subscriptionHandler.subscribe(this.activatedRoute.params
+                this.subscriptionHandler.register(this.activatedRoute.params
                     .pipe(take(1))
                     .subscribe(params => {
                         if (params['id']) {

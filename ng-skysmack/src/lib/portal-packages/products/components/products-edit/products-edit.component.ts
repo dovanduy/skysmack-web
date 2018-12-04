@@ -43,7 +43,7 @@ export class ProductsEditComponent extends DocumentRecordFormComponent<ProductsA
   public setEditFields() {
     this.productTypeActions.getPaged(this.packagePath, new PagedQuery());
 
-    this.subscriptionHandler.subscribe(combineLatest(
+    this.subscriptionHandler.register(combineLatest(
       this.initEditDocRecord(),
       this.productTypeStore.get(this.packagePath)
     ).pipe(

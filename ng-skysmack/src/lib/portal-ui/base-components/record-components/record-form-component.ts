@@ -40,7 +40,7 @@ export class RecordFormComponent<TAppState, TRecord extends Record<TKey>, TKey, 
     }
 
     protected setEditFields() {
-        this.subscriptionHandler.subscribe(this.initEditRecord().pipe(
+        this.subscriptionHandler.register(this.initEditRecord().pipe(
             map(entity => {
                 this.selectedEntity = entity;
                 return this.getFields(entity);

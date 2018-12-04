@@ -42,7 +42,7 @@ export class ProductsCreateComponent extends DocumentRecordFormComponent<Product
   public setCreateFields() {
     this.productTypeActions.getPaged(this.packagePath, new PagedQuery());
 
-    this.subscriptionHandler.subscribe(combineLatest(
+    this.subscriptionHandler.register(combineLatest(
       this.initCreateDocRecord(),
       this.productTypeStore.get(this.packagePath)
     ).pipe(

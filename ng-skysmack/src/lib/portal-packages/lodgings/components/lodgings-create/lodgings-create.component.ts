@@ -41,7 +41,7 @@ export class LodgingsCreateComponent extends DocumentRecordFormComponent<Lodging
   public setCreateFields() {
     this.lodgingTypeActions.getPaged(this.packagePath, new PagedQuery());
 
-    this.subscriptionHandler.subscribe(combineLatest(
+    this.subscriptionHandler.register(combineLatest(
       this.initCreateDocRecord(),
       this.lodgingTypeStore.get(this.packagePath)
     ).pipe(

@@ -32,7 +32,7 @@ export class StartComponent implements OnInit, OnDestroy {
     this.currentTenantLoaded$ = this.redux.getCurrentTenantLoaded();
     this.router.onSameUrlNavigation = 'ignore';
 
-    this.subscriptionHandler.subscribe(this.router.events.subscribe(event => {
+    this.subscriptionHandler.register(this.router.events.subscribe(event => {
       if (event instanceof RouteConfigLoadStart) {
         this.loadingRouteConfig = true;
       } else if (event instanceof RouteConfigLoadEnd) {

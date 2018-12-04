@@ -73,7 +73,7 @@ export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey>
      * Loads the next page stored in redux. Also requests the next page if any.
      */
     public loadPages() {
-        this.subscriptionHandler.subscribe(this.store.getPages(this.packagePath).pipe(
+        this.subscriptionHandler.register(this.store.getPages(this.packagePath).pipe(
             hasValue<StrIndex<LocalPageTypes<TKey>>>(),
             map(dictionary => {
                 // TODO: Is this still correct? Should it be moved?

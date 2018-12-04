@@ -29,7 +29,7 @@ export class ContainerComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.path = this.router.url;
 
-    this.subscriptionHandler.subscribe(this.editornav.closedStart.subscribe(() => {
+    this.subscriptionHandler.register(this.editornav.closedStart.subscribe(() => {
       const splittedPath = this.path.split('/');
 
       if (this.path.endsWith('/create')) {
@@ -43,7 +43,7 @@ export class ContainerComponent implements OnInit, OnDestroy {
       }
     }));
 
-    this.subscriptionHandler.subscribe(this.editorNavService.isVisible.subscribe(visible => {
+    this.subscriptionHandler.register(this.editorNavService.isVisible.subscribe(visible => {
       if (visible && !this.editornav.opened) {
         this.editornav.open();
       } else if (!visible && this.editornav.opened) {
