@@ -1,11 +1,13 @@
 import { Epic, ActionsObservable, ofType } from 'redux-observable';
 import { map } from 'rxjs/operators';
+import { AuthenticationRequests } from './authentication-requests';
+import { AuthenticationActions } from './authentication-actions';
 
 export class AuthenticationEpics {
     public epics: Epic[];
 
     constructor(
-        protected requests: any, // TODO: Get interface/abstract for requests
+        protected requests: AuthenticationRequests,
         protected prefix: string
     ) {
         this.epics = [
@@ -14,11 +16,7 @@ export class AuthenticationEpics {
     }
 
     public loginEpic = (action$: ActionsObservable<any>) => action$.pipe(
-        ofType(this.prefix + 'TEST'),
-        map(() => ({ type: this.prefix + 'TEST_SUCCEED' }))
+        ofType(AuthenticationActions.LOG_IN),
+        map((action) => this.requests.login(action))
     )
-    //     public getPagedEpic = (action$: ActionsObservable<ReduxAction<GetPagedRecordsPayload>>) => action$.pipe(
-    //         ofType(this.prefix + RecordActionsBase.GET_PAGED),
-    //         switchMap(action => this.requests.getPaged(action))
-    //     )
 }

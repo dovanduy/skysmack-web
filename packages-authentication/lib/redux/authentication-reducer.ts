@@ -26,6 +26,7 @@ export function authenticationReducer(state = new AuthenticationState(), action:
         }
         case AuthenticationActions.LOG_IN_ERROR: {
             const castedAction = action as ReduxAction<any>;
+            console.log('Loging error. Error action: ', castedAction)
             newState.loginError = castedAction.payload
             return newState
         }

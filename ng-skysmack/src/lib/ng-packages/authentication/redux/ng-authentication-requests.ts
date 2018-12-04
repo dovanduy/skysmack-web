@@ -1,11 +1,13 @@
-import { ApiDomain } from '@skysmack/framework';
+import { ApiDomain, CurrentUser, HttpErrorResponse } from '@skysmack/framework';
 import { ReduxAction, } from '@skysmack/redux';
 import { Observable } from 'rxjs';
-import { map, catchError } from 'rxjs/operators';
-import { HttpClient } from '@angular/common/http';
+import { map, catchError, take } from 'rxjs/operators';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { of } from 'rxjs';
+import { AuthenticationActions, AuthenticationRequests, OpenIdConnectResponse } from '@skysmack/packages-authentication';
+import * as moment from 'moment';
 
-export abstract class NgAuthenticationRequests {
+export abstract class NgAuthenticationRequests implements AuthenticationRequests {
 
     constructor(
         protected http: HttpClient,
@@ -14,12 +16,31 @@ export abstract class NgAuthenticationRequests {
     ) { }
 
     public login(action: ReduxAction<{ email: string, password: string, path: string }>): Observable<ReduxAction> {
-        const url = `${this.apiDomain.domain}/replace-me`;
+        const url = `${this.apiDomain.domain}/oauth2/password`;
+        const params = new HttpParams()
+            .append('grant_type', 'password')
+            .append('username', action.payload.email)
+            .append('password', action.payload.password);
 
-        return this.http.get<any>(url, { observe: 'response' })
+        return this.http.post<OpenIdConnectResponse>(url, params, { observe: 'response' })
             .pipe(
-                map(() => new ReduxAction<any>()), // TODO: Write request stuff
-                catchError(() => of(Object.assign({}, new ReduxAction({
+                take(1),
+                map((response) => {
+                    return Object.assign({}, new ReduxAction<CurrentUser>({
+                        type: AuthenticationActions.LOG_IN_SUCCESS,
+                        payload: new CurrentUser({
+                            resource: response.body.resource,
+                            token_type: response.body.token_type,
+                            access_token: response.body.access_token,
+                            expires_in: response.body.expires_in,
+                            loginTime: new Date(moment().toString()),
+                            email: action.payload.email
+                        })
+                    }));
+                }),
+                catchError((error) => of(Object.assign({}, new ReduxAction<HttpErrorResponse>({
+                    type: AuthenticationActions.LOG_IN_ERROR,
+                    payload: error,
                     error: true
                 }))))
             );
