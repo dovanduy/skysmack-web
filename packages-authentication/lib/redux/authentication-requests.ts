@@ -1,4 +1,4 @@
-import { ReduxAction } from '../../../redux';
+import { ReduxAction } from '@skysmack/redux';
 import { Observable } from 'rxjs';
 
 export interface AuthenticationRequests {
