@@ -25,12 +25,12 @@ export class TempMenuItemProvider extends MenuItemProvider {
 }
 
 
-export function configureCurrentTenant(actions: NgSkysmackActions) {
-    return () => actions.getCurrentTenant();
+export function configureSkysmack(actions: NgSkysmackActions) {
+    return () => actions.getSkysmack();
 }
 
 export const configurations = [
-    { provide: APP_INITIALIZER, useFactory: configureCurrentTenant, deps: [NgSkysmackActions], multi: true },
+    { provide: APP_INITIALIZER, useFactory: configureSkysmack, deps: [NgSkysmackActions], multi: true },
 ];
 
 export const httpInterceptors = [

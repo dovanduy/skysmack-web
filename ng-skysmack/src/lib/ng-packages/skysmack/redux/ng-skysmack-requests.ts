@@ -1,6 +1,6 @@
 import { Injectable, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { SkysmackRequests, CurrentTenantViewModel, SkysmackActions, GetCurrentTenantSuccessAction } from '@skysmack/packages-skysmack';
+import { SkysmackRequests, Skysmack, SkysmackActions, GetSkysmackSuccessAction } from '@skysmack/packages-skysmack';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { ApiDomain } from '@skysmack/framework';
@@ -15,10 +15,10 @@ export class NgSkysmackRequests implements SkysmackRequests {
         @Inject('ApiDomain') private apiDomain: ApiDomain
     ) { }
 
-    public get(): Observable<GetCurrentTenantSuccessAction> {
-        return this.http.get<CurrentTenantViewModel>(this.apiDomain.domain + '/tenant', { observe: 'response' }).pipe(
-            map(response => Object.assign({}, new GetCurrentTenantSuccessAction({
-                type: SkysmackActions.GET_CURRENT_TENANT_SUCCESS,
+    public get(): Observable<GetSkysmackSuccessAction> {
+        return this.http.get<Skysmack>(this.apiDomain.domain + '/skysmack', { observe: 'response' }).pipe(
+            map(response => Object.assign({}, new GetSkysmackSuccessAction({
+                type: SkysmackActions.GET_SKYSMACK_SUCCESS,
                 payload: response.body
             })))
         );

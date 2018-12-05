@@ -2,10 +2,10 @@ import { Injectable } from '@angular/core';
 import { NgRedux } from '@angular-redux/store';
 import { map, filter } from 'rxjs/operators';
 import { Observable } from 'rxjs';
-import { LocalObject, toLocalObject, defined, flatten, safeHasValue } from '@skysmack/framework';
-import { CurrentTenantViewModel, InstalledPackageViewModel, SkysmackAppState } from '@skysmack/packages-skysmack';
-import { Package } from '../packages/package';
+import { LocalObject, toLocalObject, flatten, safeHasValue } from '@skysmack/framework';
+import { Skysmack, SkysmackAppState, Package } from '@skysmack/packages-skysmack';
 import { PackageLoader } from '../packages/package-loader';
+import { LoadedPackage } from '../packages/loaded-package';
 
 // TODO: Rename below to skysnack store?
 @Injectable({ providedIn: 'root' })
@@ -18,41 +18,27 @@ export class NgSkysmackStore {
         return this.ngRedux.select((state: any) => state.hydrated.hydrated);
     }
 
-    public getCurrentTenant(): Observable<CurrentTenantViewModel> {
-        return this.ngRedux.select((state: SkysmackAppState) => state.skysmack.currentTenant);
+    public getSkysmack(): Observable<Skysmack> {
+        return this.ngRedux.select((state: SkysmackAppState) => state.skysmack.skysmack);
     }
 
-    public getAllPackages(): Observable<LocalObject<InstalledPackageViewModel>[]> {
-        return this.getCurrentTenant().pipe(
-            map(currentTenant => [
-                ...currentTenant.packages,
-                ...currentTenant.features,
-                ...currentTenant.adaptors
-            ]),
-            map(packages => packages.map(_package => toLocalObject(_package)))
+    public getPackages(): Observable<LocalObject<Package>[]> {
+        return this.getSkysmack().pipe(
+            map(skysmack => skysmack.packages.map(_package => toLocalObject(_package)))
         );
     }
 
-    public getCurrentTenantLoaded(): Observable<boolean> {
+    public getLoadedPackages(): Observable<LoadedPackage[]> {
+        return this.getSkysmack().pipe(
+            map(skysmack => skysmack.packages.map(_package => PackageLoader.toLoadedPackage(_package)))
+        );
+    }
+
+    public getSkysmackLoaded(): Observable<boolean> {
         return this.ngRedux.select((state: SkysmackAppState) => state.skysmack.tenantLoaded);
     }
 
-    public getCurrentPackage(path): Observable<Package> {
-        return this.ngRedux.select((state: SkysmackAppState) => state.skysmack.currentTenant.packages).pipe(flatten(), filter(installedPackage => installedPackage.url === path), map(_package => PackageLoader.toPackage(_package)), safeHasValue());
-    }
-
-    public getPackages(): Observable<Package[]> {
-        return this.getCurrentTenant().pipe(
-            map(currentTenant => [
-                ...currentTenant.packages,
-                ...currentTenant.features,
-                ...currentTenant.adaptors
-            ]),
-            map(packages => packages.map(_package => PackageLoader.toPackage(_package)))
-        );
-    }
-
-    public getModules(): Observable<Package[]> {
-        return this.ngRedux.select((state: SkysmackAppState) => state.skysmack.currentTenant.modules).pipe(defined(), map(modules => modules.map(_module => PackageLoader.toPackage(_module))));
+    public getCurrentPackage(path): Observable<LoadedPackage> {
+        return this.ngRedux.select((state: SkysmackAppState) => state.skysmack.skysmack.packages).pipe(flatten<Package>(), filter(_package => _package.path === path), map(_package => PackageLoader.toLoadedPackage(_package)), safeHasValue());
     }
 }

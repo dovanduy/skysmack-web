@@ -1,7 +1,7 @@
 <!-- TODO: figure out if the <nav> should go inside of a <header> element. -->
-<nav *ngIf="currentTenant | async as currentTenant" class="docs-navbar-header">
+<nav *ngIf="skysmack | async as skysmack" class="docs-navbar-header">
   <a mat-button class="docs-button" routerLink="/" (click)="uiRedux.setPackageDrawerStatus(false)" aria-label="Skysmack">
-    <span>{{ currentTenant.name }}</span>
+    <span>{{ skysmack.name }}</span>
   </a>
 
   <!-- APP DRAWER -->
@@ -48,7 +48,8 @@
   <ss-language-select></ss-language-select>
 
   <!-- LOGIN -->
-  <a mat-icon-button title="Account Menu" [routerLink]="['login']" (click)="uiRedux.setPackageDrawerStatus(false)" *isAnonymous>
+  <a mat-icon-button title="Account Menu" [routerLink]="['login']" (click)="uiRedux.setPackageDrawerStatus(false)"
+    *isAnonymous>
     <mat-icon aria-label="Log in">account_circle</mat-icon>
   </a>
 
@@ -60,7 +61,8 @@
     <mat-menu overlapTrigger="false" #accountMenu="matMenu">
       <button mat-menu-item [routerLink]="['/account/edit']">{{ 'UI.TOP_BAR.ACC_SET'| translate}}</button>
       <button mat-menu-item [routerLink]="['/change-password']">{{ 'UI.TOP_BAR.CHAN_PASS'| translate}}</button>
-      <button mat-menu-item class="non-anchor" (click)="authUserRedux.logout()" [routerLink]="['/']">{{ 'UI.TOP_BAR.LOG_OUT'| translate }}</button>
+      <button mat-menu-item class="non-anchor" (click)="authUserRedux.logout()" [routerLink]="['/']">{{
+        'UI.TOP_BAR.LOG_OUT'| translate }}</button>
     </mat-menu>
   </ng-container>
 </nav>

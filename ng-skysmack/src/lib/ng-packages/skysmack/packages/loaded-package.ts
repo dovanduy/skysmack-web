@@ -1,9 +1,9 @@
-import { InstalledPackageViewModel } from '@skysmack/packages-skysmack';
+import { Package } from '@skysmack/packages-skysmack';
 import { PackageManifest } from './../../../portal-ui/models/package-manifest';
 
-export class Package {
+export class LoadedPackage {
     constructor(
-        public installedPackage: InstalledPackageViewModel,
+        public _package: Package,
         public packageManifest: PackageManifest
     ) { }
 }

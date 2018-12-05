@@ -1,23 +1,23 @@
 <div id="app-drawer" *ngIf="menu$|async as menu" [ngClass]="{ open: menu.drawer }" (click)="uiRedux.setPackageDrawerStatus(false)">
 
-    <ng-container *ngIf="packages$ | async as packages">
+    <ng-container *ngIf="loadedPackages$ | async as loadedPackages">
         <nav class="nav">
-            <ng-container *ngFor="let package of packages">
-                <ng-container *ngIf="package.packageManifest">
-                    <a *ngIf="package.packageManifest.menuLocation === 'main'" class="app-link" [routerLink]="[package.installedPackage.url]">
-                        <i class="material-icons md-light app-icon">{{ package.packageManifest.icon }}</i>
-                        <h5 class="app-name">{{ package.installedPackage.name }}</h5>
+            <ng-container *ngFor="let loadedPackage of loadedPackages">
+                <ng-container *ngIf="loadedPackage.packageManifest">
+                    <a *ngIf="loadedPackage.packageManifest.menuLocation === 'main'" class="app-link" [routerLink]="[loadedPackage._package.path]">
+                        <i class="material-icons md-light app-icon">{{ loadedPackage.packageManifest.icon }}</i>
+                        <h5 class="app-name">{{ loadedPackage._package.name }}</h5>
                     </a>
                 </ng-container>
             </ng-container>
         </nav>
 
         <div class="sys-docker">
-            <ng-container *ngFor="let package of packages">
-                <ng-container *ngIf="package.packageManifest">
-                    <a class="app-link" *ngIf="package.packageManifest.menuLocation === 'docker'" [routerLink]="package.installedPackage.url">
-                        <i class="material-icons md-light app-icon">{{ package.packageManifest.icon }}</i>
-                        <h5 class="app-name" [translate]="package.packageManifest.translationString"></h5>
+            <ng-container *ngFor="let loadedPackage of loadedPackages">
+                <ng-container *ngIf="loadedPackage.packageManifest">
+                    <a class="app-link" *ngIf="loadedPackage.packageManifest.menuLocation === 'docker'" [routerLink]="loadedPackage._package.path">
+                        <i class="material-icons md-light app-icon">{{ loadedPackage.packageManifest.icon }}</i>
+                        <h5 class="app-name" [translate]="loadedPackage.packageManifest.translationString"></h5>
                     </a>
                 </ng-container>
             </ng-container>

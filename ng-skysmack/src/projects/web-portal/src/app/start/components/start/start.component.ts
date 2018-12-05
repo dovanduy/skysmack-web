@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewEncapsulation, OnDestroy } from '@angular/core';
 import { Observable } from 'rxjs';
-import { CurrentTenantViewModel } from '@skysmack/packages-skysmack';
+import { Skysmack } from '@skysmack/packages-skysmack';
 import { Router, RouteConfigLoadStart, RouteConfigLoadEnd } from '@angular/router';
 import { NgSkysmackStore } from './../../../../../../../lib/ng-packages/skysmack/redux/ng-skysmack-store';
 import { PackageRouteConfiguration } from '../../../package-route-configuration';
@@ -16,8 +16,8 @@ import { SubscriptionHandler } from '@skysmack/framework';
 export class StartComponent implements OnInit, OnDestroy {
 
   public subscriptionHandler = new SubscriptionHandler();
-  public currentTenant$: Observable<CurrentTenantViewModel>;
-  public currentTenantLoaded$: Observable<boolean>;
+  public skysmack$: Observable<Skysmack>;
+  public skysmackLoaded$: Observable<boolean>;
   public loadingRouteConfig: boolean;
 
   constructor(
@@ -28,8 +28,8 @@ export class StartComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.packageRouteConfiguration.configure();
-    this.currentTenant$ = this.redux.getCurrentTenant();
-    this.currentTenantLoaded$ = this.redux.getCurrentTenantLoaded();
+    this.skysmack$ = this.redux.getSkysmack();
+    this.skysmackLoaded$ = this.redux.getSkysmackLoaded();
     this.router.onSameUrlNavigation = 'ignore';
 
     this.subscriptionHandler.register(this.router.events.subscribe(event => {

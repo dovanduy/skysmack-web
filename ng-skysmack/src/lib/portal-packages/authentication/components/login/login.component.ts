@@ -80,7 +80,7 @@ export class LoginComponent implements OnInit {
       .pipe(filter(loggedIn => loggedIn === true)).subscribe(() => {
         this.success = true;
         // Load initial needed values
-        this.skysmackActions.getCurrentTenant();
+        this.skysmackActions.getSkysmack();
         this.router.navigate(['/']);
       }));
   }

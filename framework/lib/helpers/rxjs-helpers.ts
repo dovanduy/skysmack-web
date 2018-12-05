@@ -81,8 +81,8 @@ export const extractIfDictionary = (dictionaryKey) => pipe(
 /**
  * Flattens an array, so the stream becomes individual objects instead of one array.
  */
-export const flatten = () => pipe(
-    flatMap((x: any[]) => x)
+export const flatten = <T>() => pipe(
+    flatMap<T[], T>((x: any[]) => x)
 );
 
 /**

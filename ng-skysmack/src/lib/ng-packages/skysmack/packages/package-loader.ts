@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Package } from './package';
-import { InstalledPackageViewModel } from '@skysmack/packages-skysmack';
+import { LoadedPackage } from './loaded-package';
+import { Package } from '@skysmack/packages-skysmack';
 import { PackageManifest } from './../../../portal-ui/models/package-manifest';
 
 
@@ -15,12 +15,12 @@ export class PackageLoader {
         return PackageLoader.packageManifests;
     }
 
-    public static toPackage(packageViewModel: InstalledPackageViewModel): Package {
+    public static toLoadedPackage(packageViewModel: Package): LoadedPackage {
         const matchingManifest: PackageManifest = PackageLoader
             .getAll()
             .filter(packageManifest => packageManifest.id === packageViewModel.type)[0];
 
-        return new Package(packageViewModel, matchingManifest);
+        return new LoadedPackage(packageViewModel, matchingManifest);
     }
 
     public add(packageManifest: PackageManifest): Promise<any> {
@@ -35,11 +35,11 @@ export class PackageLoader {
         return this.packageManifests;
     }
 
-    public toPackage(packageViewModel: InstalledPackageViewModel): Package {
+    public toLoadedPackage(packageViewModel: Package): LoadedPackage {
         const matchingManifest: PackageManifest = this
             .getAll()
             .filter(packageManifest => packageManifest.id === packageViewModel.type)[0];
 
-        return new Package(packageViewModel, matchingManifest);
+        return new LoadedPackage(packageViewModel, matchingManifest);
     }
 }

@@ -1,3 +1,3 @@
-export * from './current-tenant';
+export * from './skysmack';
 export * from './skysmack-requests';
-export * from './installed-package-view-model';
+export * from './package';

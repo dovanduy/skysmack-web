@@ -1,6 +1,6 @@
 import { Observable } from 'rxjs';
-import { GetCurrentTenantSuccessAction } from '../action-types/get-current-tenant-success-action';
+import { GetSkysmackSuccessAction } from '../action-types/get-skysmack-success-action';
 
 export interface SkysmackRequests {
-    get(): Observable<GetCurrentTenantSuccessAction>
+    get(): Observable<GetSkysmackSuccessAction>
 }

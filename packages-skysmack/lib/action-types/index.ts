@@ -1,1 +1,1 @@
-export * from './get-current-tenant-success-action';
+export * from './get-skysmack-success-action';

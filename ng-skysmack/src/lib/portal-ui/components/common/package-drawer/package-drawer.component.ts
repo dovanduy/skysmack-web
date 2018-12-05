@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 import { NgSkysmackStore } from './../../../../ng-packages/skysmack/redux/ng-skysmack-store';
 import { Menu } from './../../../models/menu';
 import { UIRedux } from './../../../redux/ui-redux';
-import { Package } from 'lib/ng-packages/skysmack/packages/package';
+import { LoadedPackage } from './../../../../ng-packages/skysmack/packages/loaded-package';
 
 @Component({
   selector: 'ss-package-drawer',
@@ -11,7 +11,7 @@ import { Package } from 'lib/ng-packages/skysmack/packages/package';
   styleUrls: ['./package-drawer.component.scss']
 })
 export class PackageDrawerComponent implements OnInit {
-  public packages$: Observable<Package[]>;
+  public loadedPackages$: Observable<LoadedPackage[]>;
   public menu$: Observable<Menu>;
 
   constructor(
@@ -20,7 +20,7 @@ export class PackageDrawerComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.packages$ = this.skysmackStore.getPackages();
+    this.loadedPackages$ = this.skysmackStore.getLoadedPackages();
     this.menu$ = this.uiRedux.getMenu();
   }
 }

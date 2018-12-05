@@ -1,4 +1,4 @@
-import { CurrentTenantViewModel } from './../models/current-tenant';
+import { Skysmack } from './../models/skysmack';
 import { AppState } from '@skysmack/redux';
 
 export class SkysmackAppState extends AppState {
@@ -6,29 +6,22 @@ export class SkysmackAppState extends AppState {
 }
 
 export class SkysmackState {
-    currentTenant: CurrentTenantViewModel
+    skysmack: Skysmack
     tenantLoaded: boolean;
-    packages: any[];
 }
 
 const SKYSMACK_STATE: SkysmackState = {
-    currentTenant: {},
+    skysmack: {},
     tenantLoaded: false,
-    packages: []
 }
 
 export function skysmackReducer(state = SKYSMACK_STATE, action) {
     switch (action.type) {
-        case 'GET_CURRENT_TENANT_SUCCESS':
+        case 'GET_SKYSMACK_SUCCESS':
             return {
                 ...state,
-                currentTenant: action.payload,
+                skysmack: action.payload,
                 tenantLoaded: true,
-                packages: [
-                    ...action.payload.packages,
-                    ...action.payload.features,
-                    ...action.payload.adaptors
-                ]
             }
         default:
             return state;

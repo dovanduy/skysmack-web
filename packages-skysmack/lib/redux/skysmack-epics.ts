@@ -16,7 +16,7 @@ export class SkysmackEpics {
     }
 
     public get = (action$: ActionsObservable<any>) => action$.pipe(
-        ofType(SkysmackActions.GET_CURRENT_TENANT),
+        ofType(SkysmackActions.GET_SKYSMACK),
         switchMap(() => this.requests.get())
     )
 }

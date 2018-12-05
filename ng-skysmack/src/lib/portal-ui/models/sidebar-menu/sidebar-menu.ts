@@ -21,7 +21,7 @@ export abstract class SidebarMenu implements OnDestroy {
     public defaultMenuArea = 'manage';
 
     constructor(
-        public redux: NgSkysmackStore,
+        public store: NgSkysmackStore,
         public router: Router,
         @Inject(MenuItemProvider.TOKEN) public menuItemProviders: MenuItemProvider[],
     ) {
@@ -42,9 +42,8 @@ export abstract class SidebarMenu implements OnDestroy {
 
     protected runMenuItemProviders() {
         this.menuItemProviders.forEach(provider => {
-            this.subscriptionHandler.register(this.redux.getCurrentPackage(this.packagePath).pipe(
-                // TODO: Use packagePath instead of id
-                switchMap(currentPackage => provider.getItems(this.menuId, currentPackage.installedPackage.id)),
+            this.subscriptionHandler.register(this.store.getCurrentPackage(this.packagePath).pipe(
+                switchMap(currentPackage => provider.getItems(this.menuId, currentPackage._package.path)),
                 map((menuItems: MenuItem[]) => menuItems.forEach(menuItem => this.addItem(menuItem)))
             ).subscribe());
         });

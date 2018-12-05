@@ -1,5 +1,5 @@
 import { SubscriptionHandler } from '@skysmack/framework';
-import { Package, NgSkysmackStore } from 'lib/ng-packages/skysmack';
+import { LoadedPackage, NgSkysmackStore } from 'lib/ng-packages/skysmack';
 import { Observable } from 'rxjs';
 import { Router, ActivatedRoute } from '@angular/router';
 import { OnInit, OnDestroy } from '@angular/core';
@@ -12,7 +12,7 @@ export class BaseComponent<TAppState, TKey> implements OnInit, OnDestroy {
 
     public entityId: TKey;
     public packagePath: string;
-    public package$: Observable<Package>;
+    public loadedPackage$: Observable<LoadedPackage>;
 
     constructor(
         public router: Router,
@@ -55,6 +55,6 @@ export class BaseComponent<TAppState, TKey> implements OnInit, OnDestroy {
     }
 
     private getCurrentPackage() {
-        this.package$ = this.redux.getCurrentPackage(this.packagePath);
+        this.loadedPackage$ = this.redux.getCurrentPackage(this.packagePath);
     }
 }

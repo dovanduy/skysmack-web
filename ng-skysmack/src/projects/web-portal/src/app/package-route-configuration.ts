@@ -1,7 +1,7 @@
 import { Injectable, Injector } from '@angular/core';
 import { Router, Route } from '@angular/router';
 import { map, take } from 'rxjs/operators';
-import { CurrentTenantViewModel } from '@skysmack/packages-skysmack';
+import { Skysmack } from '@skysmack/packages-skysmack';
 import { hasValue } from '@skysmack/framework';
 import { DynamicPackageRouter } from '../models/dynamic-package-router';
 import { NgSkysmackStore } from './../../../../lib/ng-packages/skysmack/redux/ng-skysmack-store';
@@ -29,30 +29,14 @@ export class PackageRouteConfiguration {
     ) { }
 
     public configure() {
-        return this.redux.getCurrentTenant()
+        return this.redux.getSkysmack()
             .pipe(
                 hasValue(),
-                map((currentTenant: CurrentTenantViewModel) => {
-                    currentTenant.packages.map(_package => {
+                map((skysmack: Skysmack) => {
+                    skysmack.packages.map(_package => {
                         return PackageLoader.packageManifests.map(routingPath => {
                             if (routingPath.id === _package.type) {
-                                this.addRoute(_package.url, routingPath.modulePath);
-                            }
-                        });
-                    });
-
-                    currentTenant.features.map(feature => {
-                        return this.routingModules.map(routingModule => {
-                            if (routingModule.packageManifest.id === feature.type) {
-                                // this.addRoute(feature.url, routingModule.componentPaths);
-                            }
-                        });
-                    });
-
-                    currentTenant.adaptors.map(adaptor => {
-                        return this.routingModules.map(routingModule => {
-                            if (routingModule.packageManifest.id === adaptor.type) {
-                                // this.addRoute(adaptor.url, routingModule.componentPaths);
+                                this.addRoute(_package.path, routingPath.modulePath);
                             }
                         });
                     });

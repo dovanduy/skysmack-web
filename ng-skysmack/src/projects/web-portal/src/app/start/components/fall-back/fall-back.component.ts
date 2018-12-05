@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { CurrentTenantViewModel } from '@skysmack/packages-skysmack';
+import { Skysmack } from '@skysmack/packages-skysmack';
 import { Router, ActivatedRoute } from '@angular/router';
 import { PackageRouteConfiguration } from '../../../package-route-configuration';
 import { NgSkysmackStore } from './../../../../../../../lib/ng-packages/skysmack/redux/ng-skysmack-store';
@@ -13,7 +13,7 @@ import { NgSkysmackStore } from './../../../../../../../lib/ng-packages/skysmack
   styleUrls: ['./fall-back.component.scss']
 })
 export class FallBackComponent implements OnInit {
-  public currentTenant$: Observable<CurrentTenantViewModel>;
+  public skysmack$: Observable<Skysmack>;
   public packagesLoaded = false;
 
   constructor(
@@ -27,7 +27,7 @@ export class FallBackComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.currentTenant$ = this.redux.getCurrentTenant();
+    this.skysmack$ = this.redux.getSkysmack();
     // this.componentPageTitle.setTitle('Not found');
     // super.ngOnInit();
     this.checkForTenantLoaded();
@@ -36,7 +36,7 @@ export class FallBackComponent implements OnInit {
   private checkForTenantLoaded() {
     // TODO: Uncomment this when entity base is implemented
     // this.subscriptionHandler.subscribe(this.packageRouteConfiguration.configure());
-    // this.subscriptionHandler.subscribe(this.currentTenant$.subscribe((tenant) => {
+    // this.subscriptionHandler.subscribe(this.skysmack$.subscribe((tenant) => {
     //   if (tenant != null && tenant.name.length > 0) {
     //     if (this.router.onSameUrlNavigation !== 'reload') {
     //       this.router.onSameUrlNavigation = 'reload';
@@ -50,7 +50,7 @@ export class FallBackComponent implements OnInit {
     // }));
 
     // TODO: Remove this when entity base is implemented
-    this.currentTenant$.subscribe((tenant) => {
+    this.skysmack$.subscribe((tenant) => {
       if (tenant != null && tenant.name.length > 0) {
         if (this.router.onSameUrlNavigation !== 'reload') {
           this.router.onSameUrlNavigation = 'reload';
