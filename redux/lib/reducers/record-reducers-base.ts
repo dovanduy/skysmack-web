@@ -100,6 +100,6 @@ export function recordReducersBase<TState extends RecordState<TRecord, TKey>, TR
             return newState;
         }
         default:
-            return newState;
+            return state;
     }
 }

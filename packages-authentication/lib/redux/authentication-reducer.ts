@@ -11,12 +11,12 @@ export class AuthenticationAppState extends AppState {
 }
 
 export class AuthenticationState {
-    public currentUser: CurrentUser;
-    public loginError: HttpErrorResponse;
+    public currentUser: CurrentUser = null;
+    public loginError: HttpErrorResponse = null;
 }
 
 export function authenticationReducer(state = new AuthenticationState(), action: ReduxAction): AuthenticationState {
-    const newState: AuthenticationState = Object.assign({}, state);
+    const newState: AuthenticationState = { ...state };
     switch (action.type) {
         case AuthenticationActions.LOG_IN_SUCCESS: {
             const castedAction = action as ReduxAction<CurrentUser>;
@@ -39,6 +39,6 @@ export function authenticationReducer(state = new AuthenticationState(), action:
             return newState;
         }
         default:
-            return newState;
+            return state;
     }
 }

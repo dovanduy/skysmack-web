@@ -22,14 +22,14 @@ export class StartComponent implements OnInit, OnDestroy {
 
   constructor(
     public router: Router,
-    public redux: NgSkysmackStore,
+    public store: NgSkysmackStore,
     public packageRouteConfiguration: PackageRouteConfiguration,
   ) { }
 
   ngOnInit() {
     this.packageRouteConfiguration.configure();
-    this.skysmack$ = this.redux.getSkysmack();
-    this.skysmackLoaded$ = this.redux.getSkysmackLoaded();
+    this.skysmack$ = this.store.getSkysmack();
+    this.skysmackLoaded$ = this.store.getSkysmackLoaded();
     this.router.onSameUrlNavigation = 'ignore';
 
     this.subscriptionHandler.register(this.router.events.subscribe(event => {

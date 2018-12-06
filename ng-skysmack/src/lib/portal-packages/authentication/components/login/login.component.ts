@@ -76,10 +76,10 @@ export class LoginComponent implements OnInit {
     this.actions.clearLoginError();
     this.actions.login(credentials);
     this.loggingIn = true;
+
     this.subscriptionHandler.register(this.store.isCurrentUserAuthenticated()
       .pipe(filter(loggedIn => loggedIn === true)).subscribe(() => {
         this.success = true;
-        // Load initial needed values
         this.skysmackActions.getSkysmack();
         this.router.navigate(['/']);
       }));

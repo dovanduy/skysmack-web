@@ -1,5 +1,6 @@
 import { Directive, OnInit, TemplateRef, ViewContainerRef, OnDestroy } from '@angular/core';
 import { SubscriptionLike } from 'rxjs';
+import { NgAuthenticationStore } from 'lib/ng-packages/authentication';
 
 
 // tslint:disable-next-line:directive-selector
@@ -11,15 +12,13 @@ export class IsAuthenticatedDirective implements OnInit, OnDestroy {
     constructor(
         public templateRef: TemplateRef<any>,
         public viewContainer: ViewContainerRef,
-        // TODO: Get auth user store.
-        // public authUserRedux: AuthUserRedux
-    ) {
-    }
+        public store: NgAuthenticationStore
+    ) { }
 
     ngOnInit() {
-        // this.subscription = this.authUserRedux.isCurrentUserAuthenticated().subscribe(authenticated => {
-        //     this.showIfAuthenticated(authenticated);
-        // });
+        this.subscription = this.store.isCurrentUserAuthenticated().subscribe(authenticated => {
+            this.showIfAuthenticated(authenticated);
+        });
     }
 
     public showIfAuthenticated(loggedIn: boolean) {

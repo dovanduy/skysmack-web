@@ -55,7 +55,6 @@ export class FieldBaseComponent implements OnInit, OnDestroy {
         } else {
             console.log(`
                 Cannot find a field with the key ${fieldKey}. Check if:
-                Is the field added to the same field group as this field?
                 Is the key spelled correctly?
             `);
         }

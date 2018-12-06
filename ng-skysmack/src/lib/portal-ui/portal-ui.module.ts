@@ -1,12 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from './material.module';
-import { ReducerRegistry, registerWithRootEpic } from '@skysmack/redux';
+import { ReducerRegistry } from '@skysmack/redux';
 import { uiReducer } from './redux/ui-reducers';
 import { settingsReducer } from './redux/settings';
-import { authUserReducer } from './redux/authenticated-user/auth-user-reducer';
-import { AuthUserRequests, AuthUserEpics, AuthUserActions } from './redux';
-import { NgRedux } from '@angular-redux/store';
 import { RouterModule } from '@angular/router';
 
 import { CalendarModule, DateAdapter } from 'angular-calendar';
@@ -48,6 +45,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClient } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { ReactiveFormsModule } from '@angular/forms';
+import { IsAnonymousDirective, IsAuthenticatedDirective } from './autentication';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -77,6 +75,8 @@ export function HttpLoaderFactory(http: HttpClient) {
   declarations: [
     // Directives
     ShowEntityActionDirective,
+    IsAuthenticatedDirective,
+    IsAnonymousDirective,
     // Components
     CalendarComponent,
     ContextSidebarComponent,
@@ -153,14 +153,10 @@ export function HttpLoaderFactory(http: HttpClient) {
   ]
 })
 export class PortalUiModule {
-  constructor(
-    protected authUserRequests: AuthUserRequests,
-    protected authUserActions: AuthUserActions,
-    protected ngRedux: NgRedux<any>
-  ) {
+  constructor() {
+    // TODO: Put better place?
+    // EAGER LOADING!!!
     ReducerRegistry.Instance.register('ui', uiReducer);
     ReducerRegistry.Instance.register('settings', settingsReducer);
-    ReducerRegistry.Instance.register('authenticatedUser', authUserReducer);
-    registerWithRootEpic(new AuthUserEpics(ngRedux, authUserActions, authUserRequests).epics);
   }
 }

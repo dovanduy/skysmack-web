@@ -4,8 +4,8 @@ import { TranslateService } from '@ngx-translate/core';
 import { Skysmack } from '@skysmack/packages-skysmack';
 import { Menu } from './../../../models/menu';
 import { NgSkysmackStore } from './../../../../ng-packages/skysmack/redux/ng-skysmack-store';
-import { AuthUserRedux } from './../../../redux/authenticated-user/auth-user-redux';
 import { UIRedux } from './../../../redux/ui-redux';
+import { NgAuthenticationActions } from 'lib/ng-packages/authentication';
 
 @Component({
   selector: 'ss-navbar',
@@ -18,18 +18,22 @@ export class NavBarComponent implements OnInit {
   public menu: Observable<Menu>;
 
   constructor(
-    public redux: NgSkysmackStore,
+    public store: NgSkysmackStore,
     public uiRedux: UIRedux,
-    public authUserRedux: AuthUserRedux,
+    public authenticationActions: NgAuthenticationActions,
     public translate: TranslateService
   ) { }
 
   ngOnInit() {
-    this.skysmack = this.redux.getSkysmack();
+    this.skysmack = this.store.getSkysmack();
     this.menu = this.uiRedux.getMenu();
   }
 
   public toggleEditor(id: string) {
     this.uiRedux.toggleMenuFor('editors');
+  }
+
+  public logout() {
+    this.authenticationActions.logout();
   }
 }

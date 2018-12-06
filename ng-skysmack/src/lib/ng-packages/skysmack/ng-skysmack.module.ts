@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { HttpClientModule } from '@angular/common/http';
-import { ReducerRegistry, registerWithRootEpic } from '@skysmack/redux';
+import { ReducerRegistry, registerEagerEpics } from '@skysmack/redux';
 import { skysmackReducer, SkysmackEpics } from '@skysmack/packages-skysmack';
 import { NgSkysmackRequests } from './redux/ng-skysmack-requests';
 
@@ -17,6 +17,6 @@ import { NgSkysmackRequests } from './redux/ng-skysmack-requests';
 export class NgSkysmackModule {
   constructor(skysmackRequests: NgSkysmackRequests) {
     ReducerRegistry.Instance.register('skysmack', skysmackReducer);
-    registerWithRootEpic(new SkysmackEpics(skysmackRequests).epics);
+    registerEagerEpics(new SkysmackEpics(skysmackRequests).epics);
   }
 }

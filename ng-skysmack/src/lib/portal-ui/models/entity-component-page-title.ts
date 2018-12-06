@@ -19,8 +19,8 @@ export class EntityComponentPageTitle {
 
     private tenantTitle = 'Skysmack';
 
-    constructor(private translate: TranslateService, private bodyTitle: Title, private redux: NgSkysmackStore) {
-        this.redux.getSkysmack().pipe(hasValue<Skysmack>(), map(tenant => { if (tenant !== undefined) { return tenant; } }), take(1)).subscribe(tenant => {
+    constructor(private translate: TranslateService, private bodyTitle: Title, private store: NgSkysmackStore) {
+        this.store.getSkysmack().pipe(hasValue<Skysmack>(), map(tenant => { if (tenant !== undefined) { return tenant; } }), take(1)).subscribe(tenant => {
             if (tenant.name) {
                 this.tenantTitle = tenant.name;
             }

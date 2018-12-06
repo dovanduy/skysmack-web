@@ -2,7 +2,7 @@ import { NgRedux } from '@angular-redux/store';
 import { AuthenticationAppState } from '@skysmack/packages-authentication';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { CurrentUser, HttpErrorResponse } from '@skysmack/framework';
+import { HttpErrorResponse, CurrentUser, } from '@skysmack/framework';
 import * as moment from 'moment';
 import { Injectable } from '@angular/core';
 
@@ -13,7 +13,7 @@ export class NgAuthenticationStore {
     ) { }
 
     public isCurrentUserAuthenticated(): Observable<boolean> {
-        return this.store.select((state: AuthenticationAppState) => state.authentication.currentUser).pipe(
+        return this.getCurrentUser().pipe(
             map((currentUser: CurrentUser) => {
                 let tokenExpired = true;
 
@@ -31,5 +31,9 @@ export class NgAuthenticationStore {
 
     public getLoginError(): Observable<HttpErrorResponse> {
         return this.store.select((state: AuthenticationAppState) => state.authentication.loginError);
+    }
+
+    public getCurrentUser(): Observable<CurrentUser> {
+        return this.store.select((state: AuthenticationAppState) => state.authentication.currentUser);
     }
 }

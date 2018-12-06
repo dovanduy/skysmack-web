@@ -24,12 +24,12 @@ export class PackageRouteConfiguration {
     ];
 
     constructor(
-        public redux: NgSkysmackStore,
+        public store: NgSkysmackStore,
         public injector: Injector
     ) { }
 
     public configure() {
-        return this.redux.getSkysmack()
+        return this.store.getSkysmack()
             .pipe(
                 hasValue(),
                 map((skysmack: Skysmack) => {

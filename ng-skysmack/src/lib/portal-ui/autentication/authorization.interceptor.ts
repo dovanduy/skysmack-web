@@ -1,19 +1,20 @@
-import { NgRedux } from '@angular-redux/store';
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { mergeMap } from 'rxjs/operators';
+import { mergeMap, take } from 'rxjs/operators';
 import { CurrentUser } from '@skysmack/framework';
+import { NgAuthenticationStore } from 'lib/ng-packages/authentication';
 
 
-@Injectable({ providedIn: 'root' })
+@Injectable()
 export class AuthorizationInterceptor implements HttpInterceptor {
     constructor(
-        public ngRedux: NgRedux<any>
+        public authenticationStore: NgAuthenticationStore
     ) { }
 
     public intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        return this.ngRedux.select((state: any) => state.authenticatedUser.currentUser).pipe(
+        return this.authenticationStore.getCurrentUser().pipe(
+            take(1),
             mergeMap((currentUser: CurrentUser) => {
                 if (currentUser) {
                     if (currentUser.token_type && currentUser.access_token) {

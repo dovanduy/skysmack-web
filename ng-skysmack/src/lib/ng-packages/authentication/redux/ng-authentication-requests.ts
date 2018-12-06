@@ -1,19 +1,19 @@
-import { ApiDomain, CurrentUser, HttpErrorResponse } from '@skysmack/framework';
+import { ApiDomain, CurrentUser, HttpErrorResponse, log } from '@skysmack/framework';
 import { ReduxAction, } from '@skysmack/redux';
 import { Observable } from 'rxjs';
-import { map, catchError, take } from 'rxjs/operators';
+import { map, catchError } from 'rxjs/operators';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { of } from 'rxjs';
 import { AuthenticationActions, AuthenticationRequests, OpenIdConnectResponse } from '@skysmack/packages-authentication';
 import * as moment from 'moment';
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 
 @Injectable({ providedIn: 'root' })
 export class NgAuthenticationRequests implements AuthenticationRequests {
 
     constructor(
         protected http: HttpClient,
-        protected apiDomain: ApiDomain,
+        @Inject('ApiDomain') protected apiDomain: ApiDomain
         // protected prefix: string
     ) { }
 
@@ -26,7 +26,6 @@ export class NgAuthenticationRequests implements AuthenticationRequests {
 
         return this.http.post<OpenIdConnectResponse>(url, params, { observe: 'response' })
             .pipe(
-                take(1),
                 map((response) => {
                     return Object.assign({}, new ReduxAction<CurrentUser>({
                         type: AuthenticationActions.LOG_IN_SUCCESS,

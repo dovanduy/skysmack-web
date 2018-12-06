@@ -1,4 +1,4 @@
-import { combineEpics, ofType, ActionsObservable, Epic } from 'redux-observable';
+import { ofType, ActionsObservable, Epic } from 'redux-observable';
 import { switchMap } from 'rxjs/operators';
 import { SkysmackRequests } from './../models/skysmack-requests';
 import { SkysmackActions } from './skysmack-actions';

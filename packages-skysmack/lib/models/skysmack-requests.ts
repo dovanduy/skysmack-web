@@ -1,6 +1,8 @@
 import { Observable } from 'rxjs';
-import { GetSkysmackSuccessAction } from '../action-types/get-skysmack-success-action';
+import { ReduxAction } from '@skysmack/redux';
+import { Skysmack } from './skysmack';
+import { HttpErrorResponse } from '@skysmack/framework';
 
 export interface SkysmackRequests {
-    get(): Observable<GetSkysmackSuccessAction>
+    get(): Observable<ReduxAction<Skysmack> | ReduxAction<HttpErrorResponse>>
 }

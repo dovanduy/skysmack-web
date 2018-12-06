@@ -1,8 +1,4 @@
 // Do not delete
-import { PersonsModule } from '../../../../../lib/portal-packages/persons/persons.module';
-import { ProductsModule } from '../../../../../lib/portal-packages/products/products.module';
-import { LodgingsModule } from '../../../../../lib/portal-packages/lodgings/lodgings.module';
-import { AuthenticationModule } from '../../../../../lib/portal-packages/authentication/authentication.module';
 
 import { NgReduxRouter, NgReduxRouterModule } from '@angular-redux/router';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
@@ -24,7 +20,7 @@ import { applicationStartup } from './application-startup';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../../environments/environment';
-
+import { AuthenticationModule } from 'lib/portal-packages/authentication';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -35,7 +31,7 @@ export function HttpLoaderFactory(http: HttpClient) {
   declarations: [
     StartComponent,
     FrontPageComponent,
-    FallBackComponent
+    FallBackComponent,
   ],
   imports: [
     RouterModule.forRoot([
@@ -50,10 +46,6 @@ export function HttpLoaderFactory(http: HttpClient) {
       {
         path: 'lodgings',
         loadChildren: '../../../../../lib/portal-packages/lodgings/lodgings.module#LodgingsModule'
-      },
-      {
-        path: 'login',
-        loadChildren: '../../../../../lib/portal-packages/authentication/authentication.module#AuthenticationModule'
       },
       {
         path: '',
@@ -76,6 +68,7 @@ export function HttpLoaderFactory(http: HttpClient) {
       }
     }),
     PortalUiModule,
+    AuthenticationModule,
     NgReduxModule,
     NgReduxRouterModule.forRoot(),
     SkysmackModule, // SkysmackModule must come after NgReduxModule
@@ -90,8 +83,9 @@ export class StartModule {
   constructor(
     public ngRedux: NgRedux<any>,
     public ngReduxRouter: NgReduxRouter,
-    public reduxOfflineConfiguration: ReduxOfflineConfiguration
+    public reduxOfflineConfiguration: ReduxOfflineConfiguration,
   ) {
     configureRedux(ngRedux, ngReduxRouter, reduxOfflineConfiguration);
+    this.ngRedux.select(state => state.authentication.currentUser).subscribe(x => console.log('current User: ', x));
   }
 }

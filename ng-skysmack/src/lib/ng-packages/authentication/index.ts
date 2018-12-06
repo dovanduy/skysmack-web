@@ -1,2 +1,2 @@
 export * from './redux';
-export * from './ng-authentication-module';
+export * from './ng-authentication.module';

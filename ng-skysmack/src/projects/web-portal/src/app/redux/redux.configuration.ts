@@ -25,6 +25,7 @@ export const configureRedux = (ngRedux: NgRedux<any>, ngReduxRouter: NgReduxRout
         });
         return combineReducers(reducers);
     };
+
     const reducerRegistry = ReducerRegistry.Instance;
     reducerRegistry.register('portal', portalReducer);
     reducerRegistry.register('hydrated', hydratedReducer);

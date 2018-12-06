@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 
-import { ReducerRegistry, registerWithRootEpic } from '@skysmack/redux';
+import { ReducerRegistry, registerLazyEpics } from '@skysmack/redux';
 import { PersonsEpics, personsReducer } from '@skysmack/packages-persons';
 import { NgPersonsRequests } from './redux/ng-persons-requests';
 
@@ -12,6 +12,6 @@ import { NgPersonsRequests } from './redux/ng-persons-requests';
 export class NgPersonsModule {
   constructor(personsRequests: NgPersonsRequests) {
     ReducerRegistry.Instance.register('persons', personsReducer);
-    registerWithRootEpic(new PersonsEpics(personsRequests).epics);
+    registerLazyEpics(new PersonsEpics(personsRequests).epics);
   }
 }

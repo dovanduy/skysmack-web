@@ -20,14 +20,14 @@ export class FallBackComponent implements OnInit {
     // public componentPageTitle: EntityComponentPageTitle,
     public router: Router,
     public activatedRoute: ActivatedRoute,
-    public redux: NgSkysmackStore,
+    public store: NgSkysmackStore,
     public packageRouteConfiguration: PackageRouteConfiguration,
   ) {
-    // super(router, activatedRoute, redux);
+    // super(router, activatedRoute, store);
   }
 
   ngOnInit() {
-    this.skysmack$ = this.redux.getSkysmack();
+    this.skysmack$ = this.store.getSkysmack();
     // this.componentPageTitle.setTitle('Not found');
     // super.ngOnInit();
     this.checkForTenantLoaded();
