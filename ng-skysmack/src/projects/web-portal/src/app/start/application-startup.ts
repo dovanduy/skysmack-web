@@ -11,6 +11,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthorizationInterceptor } from 'lib/portal-ui/autentication/authorization.interceptor';
 import { loadProductPackage } from '../packages/products-package-manifest';
 import { loadLodgingPackage } from '../packages/lodgings-package-manifest';
+import { loadAuthenticationPackage } from '../packages/authentication-package-manifest';
 
 
 // TODO: Delete as soon as one real other menu item provider has been created.
@@ -41,6 +42,7 @@ export const packageLoaders = [
     { provide: APP_INITIALIZER, useFactory: loadPersonPackage, deps: [PackageLoader], multi: true },
     { provide: APP_INITIALIZER, useFactory: loadProductPackage, deps: [PackageLoader], multi: true },
     { provide: APP_INITIALIZER, useFactory: loadLodgingPackage, deps: [PackageLoader], multi: true },
+    { provide: APP_INITIALIZER, useFactory: loadAuthenticationPackage, deps: [PackageLoader], multi: true },
 ];
 
 export const menuProviders = [

@@ -6,6 +6,7 @@ import { LocalObject, toLocalObject, flatten, safeHasValue } from '@skysmack/fra
 import { Skysmack, SkysmackAppState, Package } from '@skysmack/packages-skysmack';
 import { PackageLoader } from '../packages/package-loader';
 import { LoadedPackage } from '../packages/loaded-package';
+import { AuthenticationType } from '@skysmack/packages-authentication';
 
 // TODO: Rename below to skysnack store?
 @Injectable({ providedIn: 'root' })
@@ -40,5 +41,9 @@ export class NgSkysmackStore {
 
     public getCurrentPackage(path): Observable<LoadedPackage> {
         return this.ngRedux.select((state: SkysmackAppState) => state.skysmack.skysmack.packages).pipe(flatten<Package>(), filter(_package => _package.path === path), map(_package => PackageLoader.toLoadedPackage(_package)), safeHasValue());
+    }
+
+    public getAuthenticationPackages(): Observable<Package[]> {
+        return this.ngRedux.select((state: SkysmackAppState) => state.skysmack.skysmack.packages.filter(_package => _package.type === AuthenticationType.id));
     }
 }

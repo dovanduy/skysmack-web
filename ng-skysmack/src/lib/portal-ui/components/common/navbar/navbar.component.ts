@@ -21,15 +21,17 @@ export class NavBarComponent implements OnInit {
     public store: NgSkysmackStore,
     public uiRedux: UIRedux,
     public authenticationActions: NgAuthenticationActions,
-    public translate: TranslateService
+    public translate: TranslateService,
+    public skysmackStore: NgSkysmackStore
   ) { }
 
   ngOnInit() {
     this.skysmack = this.store.getSkysmack();
     this.menu = this.uiRedux.getMenu();
+    this.skysmackStore.getAuthenticationPackages().subscribe(x => console.log(x));
   }
 
-  public toggleEditor(id: string) {
+  public toggleEditor() {
     this.uiRedux.toggleMenuFor('editors');
   }
 
