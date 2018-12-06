@@ -48,6 +48,10 @@ export function HttpLoaderFactory(http: HttpClient) {
         loadChildren: '../../../../../lib/portal-packages/lodgings/lodgings.module#LodgingsModule'
       },
       {
+        path: 'login',
+        loadChildren: '../../../../../lib/portal-packages/authentication/authentication.module#AuthenticationModule'
+      },
+      {
         path: '',
         component: FrontPageComponent,
         redirectTo: '',

@@ -1,5 +1,5 @@
 <!-- TODO: figure out if the <nav> should go inside of a <header> element. -->
-<nav *ngIf="skysmack | async as skysmack" class="docs-navbar-header">
+<nav *ngIf="skysmack$ | async as skysmack" class="docs-navbar-header">
   <a mat-button class="docs-button" routerLink="/" (click)="uiRedux.setPackageDrawerStatus(false)" aria-label="Skysmack">
     <span>{{ skysmack.name }}</span>
   </a>
@@ -18,7 +18,7 @@
   <button mat-icon-button (click)="uiRedux.toggleMenuFor('search')" *isAuthenticated>
     <mat-icon>search</mat-icon>
   </button>
-  <div id="app-drawer" *ngIf="menu|async as menu" [ngClass]="{ 'open' : menu.search }">
+  <div id="app-drawer" *ngIf="menu$ | async as menu" [ngClass]="{ 'open' : menu.search }">
     <fieldset class="field-container">
       <input type="text" placeholder="Search..." class="field" />
     </fieldset>
@@ -48,10 +48,23 @@
   <ss-language-select></ss-language-select>
 
   <!-- LOGIN -->
-  <a mat-icon-button title="Account Menu" [routerLink]="['login']" (click)="uiRedux.setPackageDrawerStatus(false)"
-    *isAnonymous>
-    <mat-icon aria-label="Log in">account_circle</mat-icon>
-  </a>
+  <ng-container *ngIf="authenticationPackages$ | async as authPackages">
+
+    <!-- Single auth package -->
+    <ng-container *ngIf="authPackages.length === 1">
+      <a mat-icon-button title="Account Menu" [routerLink]="[authPackages[0].path]" (click)="uiRedux.setPackageDrawerStatus(false)"
+        *isAnonymous>
+        <mat-icon aria-label="authPackages[0].description">account_circle</mat-icon>
+      </a>
+    </ng-container>
+
+    <!-- Multiple auth package -->
+    <ng-container *ngIf="authPackages.length > 1">
+      <!-- Show select list -->
+    </ng-container>
+
+  </ng-container>
+
 
   <!-- ACCOUNT -->
   <ng-container *isAuthenticated>
