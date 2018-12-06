@@ -86,6 +86,5 @@ export class StartModule {
     public reduxOfflineConfiguration: ReduxOfflineConfiguration,
   ) {
     configureRedux(ngRedux, ngReduxRouter, reduxOfflineConfiguration);
-    this.ngRedux.select(state => state.authentication.currentUser).subscribe(x => console.log('current User: ', x));
   }
 }
