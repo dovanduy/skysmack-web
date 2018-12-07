@@ -9,3 +9,4 @@ export * from './models';
 export * from './providers';
 export * from './base-components';
 export * from './autentication';
+export * from './language';

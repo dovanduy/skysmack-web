@@ -12,6 +12,8 @@ import { AuthorizationInterceptor } from 'lib/portal-ui/autentication/authorizat
 import { loadProductPackage } from '../packages/products-package-manifest';
 import { loadLodgingPackage } from '../packages/lodgings-package-manifest';
 import { loadOauth2Package } from '../packages/oauth2-package-manifest';
+import { configureLanguage } from 'lib/portal-ui/language/configure-language';
+import { LanguageService } from 'lib/portal-ui/language/language.service';
 
 
 // TODO: Delete as soon as one real other menu item provider has been created.
@@ -32,6 +34,7 @@ export function configureSkysmack(actions: NgSkysmackActions) {
 
 export const configurations = [
     { provide: APP_INITIALIZER, useFactory: configureSkysmack, deps: [NgSkysmackActions], multi: true },
+    { provide: APP_INITIALIZER, useFactory: configureLanguage, deps: [LanguageService], multi: true }
 ];
 
 export const httpInterceptors = [
