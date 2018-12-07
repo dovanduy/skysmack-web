@@ -49,7 +49,6 @@
 
   <!-- LOGIN -->
   <ng-container *ngIf="authenticationPackages$ | async as authPackages">
-
     <!-- Single auth package -->
     <ng-container *ngIf="authPackages.length === 1">
       <a mat-icon-button title="Account Menu" [routerLink]="[authPackages[0].path]" (click)="uiRedux.setPackageDrawerStatus(false)"
@@ -60,9 +59,21 @@
 
     <!-- Multiple auth package -->
     <ng-container *ngIf="authPackages.length > 1">
-      <!-- Show select list -->
+      <ng-container *isAnonymous>
+        <button mat-icon-button [matMenuTriggerFor]="loginMenu">
+          <mat-icon>account_circle</mat-icon>
+        </button>
+        <mat-menu overlapTrigger="false" #loginMenu="matMenu">
+          <mat-form-field>
+            <mat-select placeholder="Choose login method">
+              <mat-option *ngFor="let authPackage of authPackages" (click)="navigateToAuthPackage(authPackage.path)">{{
+                authPackage.description
+                }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </mat-menu>
+      </ng-container>
     </ng-container>
-
   </ng-container>
 
 

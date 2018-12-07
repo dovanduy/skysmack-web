@@ -97,7 +97,8 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   private requestLogin(email: string, password: string): void {
-    const url = `${this.apiDomain.domain}/oauth2/password`;
+    const authPath = this.router.url.split('/')[1];
+    const url = `${this.apiDomain.domain}/${authPath}/password`;
     const params = new HttpParams()
       .append('grant_type', 'password')
       .append('username', email)
