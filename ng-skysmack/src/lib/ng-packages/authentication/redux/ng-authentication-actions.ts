@@ -6,9 +6,8 @@ import { ReduxAction, CredentialsPayload } from '@skysmack/redux';
 @Injectable({ providedIn: 'root' })
 export class NgAuthenticationActions extends AuthenticationActions<AuthenticationAppState, NgRedux<AuthenticationAppState>>  {
 
-
     constructor(
-        protected store: NgRedux<AuthenticationAppState>,
+        public store: NgRedux<AuthenticationAppState>,
     ) {
         super(store);
     }

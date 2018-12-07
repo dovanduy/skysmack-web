@@ -9,15 +9,7 @@ export class AuthenticationEpics {
 
     constructor(
         protected requests: AuthenticationRequests,
-        // protected prefix: string
     ) {
-        this.epics = [
-            this.loginEpic
-        ];
+        this.epics = [];
     }
-
-    public loginEpic = (action$: ActionsObservable<any>) => action$.pipe(
-        ofType(AuthenticationActions.LOG_IN),
-        switchMap((action) => this.requests.login(action))
-    )
 }

@@ -32,8 +32,6 @@ export class StartComponent implements OnInit, OnDestroy {
     this.skysmackLoaded$ = this.store.getSkysmackLoaded();
     this.router.onSameUrlNavigation = 'ignore';
 
-    console.log(this.router.config);
-
     this.subscriptionHandler.register(this.router.events.subscribe(event => {
       if (event instanceof RouteConfigLoadStart) {
         this.loadingRouteConfig = true;

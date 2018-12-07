@@ -1,19 +1,6 @@
-import { CurrentUser, HttpErrorResponse } from '@skysmack/framework';
-import { AppState, ReduxAction } from '@skysmack/redux';
+import { CurrentUser, AuthenticationState } from '@skysmack/framework';
+import { ReduxAction } from '@skysmack/redux';
 import { AuthenticationActions } from './authentication-actions';
-
-/**
- * This is to be used when you want to access persons via the GLOBAL state.
- * E.g. state.authentication (where authentication is the reducer name.)
- */
-export class AuthenticationAppState extends AppState {
-    public authentication: AuthenticationState;
-}
-
-export class AuthenticationState {
-    public currentUser: CurrentUser = null;
-    public loginError: HttpErrorResponse = null;
-}
 
 export function authenticationReducer(state = new AuthenticationState(), action: ReduxAction): AuthenticationState {
     const newState: AuthenticationState = { ...state };

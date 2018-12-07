@@ -1,5 +1,3 @@
-// Do not delete
-
 import { NgReduxRouter, NgReduxRouterModule } from '@angular-redux/router';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
@@ -20,7 +18,6 @@ import { applicationStartup } from './application-startup';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../../environments/environment';
-import { AuthenticationModule } from 'lib/portal-packages/authentication';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -48,7 +45,7 @@ export function HttpLoaderFactory(http: HttpClient) {
         loadChildren: '../../../../../lib/portal-packages/lodgings/lodgings.module#LodgingsModule'
       },
       {
-        path: 'login',
+        path: 'authentication',
         loadChildren: '../../../../../lib/portal-packages/authentication/authentication.module#AuthenticationModule'
       },
       {
@@ -72,7 +69,6 @@ export function HttpLoaderFactory(http: HttpClient) {
       }
     }),
     PortalUiModule,
-    AuthenticationModule,
     NgReduxModule,
     NgReduxRouterModule.forRoot(),
     SkysmackModule, // SkysmackModule must come after NgReduxModule

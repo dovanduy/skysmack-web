@@ -46,6 +46,7 @@ import { HttpClient } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { IsAnonymousDirective, IsAuthenticatedDirective } from './autentication';
+import { authenticationReducer } from '@skysmack/packages-authentication';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -158,5 +159,6 @@ export class PortalUiModule {
     // EAGER LOADING!!!
     ReducerRegistry.Instance.register('ui', uiReducer);
     ReducerRegistry.Instance.register('settings', settingsReducer);
+    ReducerRegistry.Instance.register('authentication', authenticationReducer);
   }
 }

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
-import { NgAuthenticationRequests } from './redux/ng-authentication-requests';
-import { ReducerRegistry, registerEagerEpics } from '@skysmack/redux';
+import { ReducerRegistry, registerLazyEpics } from '@skysmack/redux';
 import { authenticationReducer, AuthenticationEpics } from '@skysmack/packages-authentication';
+import { NgAuthenticationRequests } from './redux/ng-authentication-requests';
 
 @NgModule({
     imports: [],
@@ -10,7 +10,6 @@ import { authenticationReducer, AuthenticationEpics } from '@skysmack/packages-a
 })
 export class NgAuthenticationModule {
     constructor(authenticationRequests: NgAuthenticationRequests) {
-        ReducerRegistry.Instance.register('authentication', authenticationReducer);
-        registerEagerEpics(new AuthenticationEpics(authenticationRequests).epics);
+        registerLazyEpics(new AuthenticationEpics(authenticationRequests).epics);
     }
 }
