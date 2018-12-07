@@ -52,7 +52,6 @@ export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, 'i18n/');
 }
 
-
 @NgModule({
   imports: [
     CommonModule,
@@ -63,7 +62,8 @@ export function HttpLoaderFactory(http: HttpClient) {
         provide: TranslateLoader,
         useFactory: HttpLoaderFactory,
         deps: [HttpClient]
-      }
+      },
+      isolate: true
     }),
     CalendarModule.forRoot({
       provide: DateAdapter,
@@ -113,6 +113,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     SpeedDialFabComponent,
   ],
   exports: [
+    // Translation
+    TranslateModule,
     // Material
     MaterialModule,
     // Components

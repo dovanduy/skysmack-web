@@ -23,9 +23,12 @@
             "polyfills": "src/projects/web-portal/src/polyfills.ts",
             "tsConfig": "src/projects/web-portal/tsconfig.app.json",
             "assets": [
-              "src/projects/web-portal/src/favicon.ico",
-              "src/projects/web-portal/src/assets",
-              "src/projects/web-portal/src/manifest.json"
+              "src/projects/web-portal/src/manifest.json",
+              {
+                "glob": "**/*",
+                "input": "src/projects/web-portal/src/i18n/",
+                "output": "/i18n/"
+              }
             ],
             "styles": [
               "src/projects/web-portal/src/styles.scss"

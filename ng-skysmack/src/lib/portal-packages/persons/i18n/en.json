@@ -1,0 +1,59 @@
+{
+    "PERSONS": {
+        "FORM": {
+            "LABELS": {
+                "FIRSTNAME": "First name",
+                "LASTNAME": "Last name",
+                "DISPLAYNAME": "Display name"
+            },
+            "PLACEHOLDERS": {
+                "FIRSTNAME": "Enter first name",
+                "LASTNAME": "Enter last name",
+                "DISPLAYNAME": "Enter display name"
+            },
+            "VALIDATION": {
+                "FIRSTNAME": {
+                    "REQUIRED": "A first name is required."
+                },
+                "LASTNAME": {
+                    "REQUIRED": "A last name is required."
+                },
+                "DISPLAYNAME": {
+                    "REQUIRED": "A Display name is required."
+                }
+            }
+        },
+        "FIELDS": {
+            "CREATE": {
+                "ADD": "Add new field"
+            },
+            "EDIT": {
+                "EDITING": "Editing"
+            },
+            "INDEX": {
+                "ACTIONS": "Actions",
+                "CREATE": "Create new field",
+                "OTHER": "Other",
+                "BACK": "Back",
+                "FIELDS": "Fields",
+                "EDIT": "Edit"
+            }
+        },
+        "CREATE": {
+            "CREATE": "Create"
+        },
+        "EDIT": {
+            "EDIT": "Edit"
+        },
+        "INDEX": {
+            "PACKAGES": "Packages",
+            "CREATE": "Create",
+            "EDIT": "Edit",
+            "DELETE": "Delete",
+            "FIELDS": "Fields",
+            "ITEM": "Item",
+            "MANAGE": "Manage",
+            "ACTIONS": "Actions"
+        }
+    }
+}

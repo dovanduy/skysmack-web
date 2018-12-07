@@ -1,5 +1,4 @@
 import { NgReduxRouter, NgReduxRouterModule } from '@angular-redux/router';
-import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { NgRedux, NgReduxModule } from '@angular-redux/store';
@@ -18,11 +17,6 @@ import { applicationStartup } from './application-startup';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../../environments/environment';
-
-// AoT requires an exported function for factories
-export function HttpLoaderFactory(http: HttpClient) {
-  return new TranslateHttpLoader(http, 'i18n/');
-}
 
 @NgModule({
   declarations: [
@@ -61,13 +55,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     ]),
     BrowserAnimationsModule,
     HttpClientModule,
-    TranslateModule.forRoot({
-      loader: {
-        provide: TranslateLoader,
-        useFactory: HttpLoaderFactory,
-        deps: [HttpClient]
-      }
-    }),
     PortalUiModule,
     NgReduxModule,
     NgReduxRouterModule.forRoot(),

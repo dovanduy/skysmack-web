@@ -1,6 +1,6 @@
 import { Injectable, OnDestroy } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { SubscriptionLike, Observable } from 'rxjs';
+import { SubscriptionLike } from 'rxjs';
 import { SettingsRedux } from '../redux/settings/settings-redux';
 
 @Injectable({ providedIn: 'root' })
