@@ -1,6 +1,6 @@
 import { Directive, OnInit, TemplateRef, ViewContainerRef, OnDestroy } from '@angular/core';
 import { SubscriptionLike } from 'rxjs';
-import { DefaultAuthenticationStore } from './default-authentication-store';
+import { NgAuthenticationStore } from 'lib/ng-redux/redux-stores/ng-authentication-store';
 
 
 // tslint:disable-next-line:directive-selector
@@ -12,7 +12,7 @@ export class IsAnonymousDirective implements OnInit, OnDestroy {
     constructor(
         public templateRef: TemplateRef<any>,
         public viewContainer: ViewContainerRef,
-        public store: DefaultAuthenticationStore
+        public store: NgAuthenticationStore
     ) { }
 
     ngOnInit() {

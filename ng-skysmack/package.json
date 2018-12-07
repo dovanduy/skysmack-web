@@ -4,12 +4,12 @@
   "scripts": {
     "link:framework": "cd ../framework && npm link && npm run build",
     "link:redux": "cd ../redux && npm link && npm link @skysmack/framework && npm run build",
-    "link:packages-authentication": "cd ../packages-authentication && npm link && npm-install-peers && npm link @skysmack/framework @skysmack/redux && npm run build",
+    "link:packages-oauth2": "cd ../packages-oauth2 && npm link && npm-install-peers && npm link @skysmack/framework @skysmack/redux && npm run build",
     "link:packages-persons": "cd ../packages-persons && npm link && npm link @skysmack/framework @skysmack/redux && npm run build",
     "link:packages-products": "cd ../packages-products && npm link && npm link @skysmack/framework @skysmack/redux && npm run build",
     "link:packages-lodgings": "cd ../packages-lodgings && npm link && npm link @skysmack/framework @skysmack/redux && npm run build",
     "link:packages-skysmack": "cd ../packages-skysmack && npm link && npm link @skysmack/framework @skysmack/redux && npm run build",
-    "link:ng-skysmack": "npm link @skysmack/framework @skysmack/redux @skysmack/packages-authentication @skysmack/packages-persons @skysmack/packages-products @skysmack/packages-lodgings @skysmack/packages-skysmack",
+    "link:ng-skysmack": "npm link @skysmack/framework @skysmack/redux @skysmack/packages-oauth2 @skysmack/packages-persons @skysmack/packages-products @skysmack/packages-lodgings @skysmack/packages-skysmack",
     "build:c1:dev": "ng build --prod",
     "build:c1:prod": "ng build --prod --deploy-url //cdn.skysmack.net/",
     "start-server": "cd dist/web-portal && http-server -a www.skysmack.test -p 4000 -o",
@@ -22,7 +22,7 @@
     "ss:open": "run-s ss:link ss:c1:open",
     "ss:clean": "clean.bat",
     "ss:rebuild": "npm run ss:clean && npm i && npm run ss",
-    "ss:link": "run-s link:framework link:redux link:packages-authentication link:packages-persons link:packages-products link:packages-lodgings link:packages-skysmack link:ng-skysmack"
+    "ss:link": "run-s link:framework link:redux link:packages-oauth2 link:packages-persons link:packages-products link:packages-lodgings link:packages-skysmack link:ng-skysmack"
   },
   "private": true,
   "dependencies": {

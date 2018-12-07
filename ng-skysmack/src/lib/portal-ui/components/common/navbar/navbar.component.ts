@@ -5,7 +5,7 @@ import { Skysmack, Package } from '@skysmack/packages-skysmack';
 import { Menu } from './../../../models/menu';
 import { NgSkysmackStore } from './../../../../ng-packages/skysmack/redux/ng-skysmack-store';
 import { UIRedux } from './../../../redux/ui-redux';
-import { NgAuthenticationActions } from 'lib/ng-packages/authentication';
+import { NgAuthenticationActions } from 'lib/ng-redux/actions/ng-authentication-actions';
 
 @Component({
   selector: 'ss-navbar',

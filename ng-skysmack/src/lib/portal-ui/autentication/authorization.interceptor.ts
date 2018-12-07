@@ -3,13 +3,13 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { mergeMap, take } from 'rxjs/operators';
 import { CurrentUser } from '@skysmack/framework';
-import { DefaultAuthenticationStore } from './default-authentication-store';
+import { NgAuthenticationStore } from 'lib/ng-redux/redux-stores/ng-authentication-store';
 
 
 @Injectable()
 export class AuthorizationInterceptor implements HttpInterceptor {
     constructor(
-        public authenticationStore: DefaultAuthenticationStore
+        public authenticationStore: NgAuthenticationStore
     ) { }
 
     public intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {

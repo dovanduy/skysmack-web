@@ -45,8 +45,8 @@ export function HttpLoaderFactory(http: HttpClient) {
         loadChildren: '../../../../../lib/portal-packages/lodgings/lodgings.module#LodgingsModule'
       },
       {
-        path: 'authentication',
-        loadChildren: '../../../../../lib/portal-packages/authentication/authentication.module#AuthenticationModule'
+        path: 'oauth2',
+        loadChildren: '../../../../../lib/portal-packages/oauth2/oauth2.module#Oauth2Module'
       },
       {
         path: '',

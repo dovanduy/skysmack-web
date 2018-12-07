@@ -25,11 +25,11 @@ echo Deleted redux\node_modules;
 del /s /q "%~dp0\..\redux\package-lock.json";
 
 rem packages-skysmack
-RD /s /q "%~dp0\..\packages-authentication\dist";
-echo Deleted packages-authentication\dist;
-RD /s /q "%~dp0\..\packages-authentication\node_modules";
-echo Deleted packages-authentication\node_modules;
-del /s /q "%~dp0\..\packages-authentication\package-lock.json";
+RD /s /q "%~dp0\..\packages-oauth2\dist";
+echo Deleted packages-oauth2\dist;
+RD /s /q "%~dp0\..\packages-oauth2\node_modules";
+echo Deleted packages-oauth2\node_modules;
+del /s /q "%~dp0\..\packages-oauth2\package-lock.json";
 
 rem packages-skysmack
 RD /s /q "%~dp0\..\packages-skysmack\dist";

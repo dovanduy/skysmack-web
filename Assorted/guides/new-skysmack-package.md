@@ -11,7 +11,7 @@
     tsconfig.json
 - Setup build flow
     > ng-skysmack/package.json -> "link:packages-products": "..."
-        >> If any peerDeps, add npm-install-peers. See "link:packages-authentication"
+        >> If any peerDeps, add npm-install-peers. See "link:packages-oauth2"
     > ng-skysmack/package.json -> Update "ss:link"
         >> Must come after other packages.
     > ng-skysmack/package.json -> Add @skysmack/packages-products to link scripts that needs it.

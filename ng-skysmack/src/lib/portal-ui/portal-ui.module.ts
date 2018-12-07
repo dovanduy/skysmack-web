@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from './material.module';
-import { ReducerRegistry } from '@skysmack/redux';
+import { ReducerRegistry, authenticationReducer } from '@skysmack/redux';
 import { uiReducer } from './redux/ui-reducers';
 import { settingsReducer } from './redux/settings';
 import { RouterModule } from '@angular/router';
@@ -46,7 +46,6 @@ import { HttpClient } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { IsAnonymousDirective, IsAuthenticatedDirective } from './autentication';
-import { authenticationReducer } from '@skysmack/packages-authentication';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
