@@ -1,0 +1,34 @@
+{
+    "UI": {
+        "ERROR_MESSAGE": {
+            "ERROR_OCCURRED": "DER SKETE EN FEJL!",
+            "DEV_ERROR": "Vis dev fejl",
+            "SORRY_ERROR": "Undskyld, der skete en fejl. Prøv igen."
+        },
+        "ONLINE_STATUS": {
+            "OFFLINE": "Intet netværk! Kører offline tilstand."
+        },
+        "PACKAGE_DRAWER": {
+            "SETTINGS": "Indstillinger",
+            "SECURITY": "Sikkerhed",
+            "TENANTS": "Tenants",
+            "PACKAGES": "Pakker",
+            "ROLES": "Roller",
+            "HELP": "Hjælp",
+            "PAYMENTS": "Betalinger"
+        },
+        "SWITCH_CASES": {
+            "QUE_CREATION": "Kø til oprettelse",
+            "QUE_UPDATING": "Kø til opdatering",
+            "QUE_DELETION": "Kø til sletning"
+        },
+        "TOP_BAR": {
+            "PACKAGES": "Pakker",
+            "NO_CONVER": "Ingen samtaler",
+            "NO_NOTI": "Ingen meddelser",
+            "ACC_SET": "Bruger indstillinger",
+            "CHAN_PASS": "Skift adgangskode",
+            "LOG_OUT": "Log ud"
+        }
+    }
+}

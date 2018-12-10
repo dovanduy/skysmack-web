@@ -20,7 +20,6 @@ export class NavBarComponent implements OnInit {
   public authenticationPackages$: Observable<Package[]>;
 
   constructor(
-    public router: Router,
     public store: NgSkysmackStore,
     public uiRedux: UIRedux,
     public authenticationActions: NgAuthenticationActions,
@@ -36,10 +35,6 @@ export class NavBarComponent implements OnInit {
 
   public toggleEditor() {
     this.uiRedux.toggleMenuFor('editors');
-  }
-
-  public navigateToAuthPackage(path: string) {
-    this.router.navigate(['/' + path]);
   }
 
   public logout() {

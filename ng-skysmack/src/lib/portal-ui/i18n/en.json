@@ -1,0 +1,34 @@
+{
+    "UI": {
+        "ERROR_MESSAGE": {
+            "ERROR_OCCURRED": "ERROR OCCURRED!",
+            "DEV_ERROR": "Show dev error",
+            "SORRY_ERROR": "Sorry, error occurred. Try again."
+        },
+        "ONLINE_STATUS": {
+            "OFFLINE": "No network! Offline mode activated."
+        },
+        "PACKAGE_DRAWER": {
+            "SETTINGS": "Settings",
+            "SECURITY": "Security",
+            "TENANTS": "Tenants",
+            "PACKAGES": "Packages",
+            "ROLES": "Roles",
+            "HELP": "Help",
+            "PAYMENTS": "Payments"
+        },
+        "SWITCH_CASES": {
+            "QUE_CREATION": "Queued for creation",
+            "QUE_UPDATING": "Queued for updating",
+            "QUE_DELETION": "Queued for deletion"
+        },
+        "TOP_BAR": {
+            "PACKAGES": "Packages",
+            "NO_CONVER": "No conversations",
+            "NO_NOTI": "No notifications",
+            "ACC_SET": "Account settings",
+            "CHAN_PASS": "Change passeword",
+            "LOG_OUT": "Log out"
+        }
+    }
+}

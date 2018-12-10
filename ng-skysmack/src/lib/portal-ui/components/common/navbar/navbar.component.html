@@ -65,10 +65,9 @@
         </button>
         <mat-menu overlapTrigger="false" #loginMenu="matMenu">
           <ng-container *ngFor="let authPackage of authPackages">
-            <a class="multi-login-button" (click)="navigateToAuthPackage(authPackage.path)" title="Account Menu"
-              (click)="uiRedux.setPackageDrawerStatus(false)" *isAnonymous>
+            <button mat-menu-item [routerLink]="['/' + authPackage.path]" title="Account Menu" *isAnonymous>
               {{ authPackage.description }}
-            </a>
+            </button>
           </ng-container>
         </mat-menu>
       </ng-container>
