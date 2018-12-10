@@ -22,7 +22,7 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
         deps: [HttpClient]
       },
       isolate: true
-    }),
+    })
   ],
   exports: [],
   declarations: [

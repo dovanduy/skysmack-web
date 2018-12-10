@@ -1,20 +1,16 @@
 import { animate, style, transition, trigger } from '@angular/animations';
-import { Component, OnInit, Inject, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { EntityComponentPageTitle } from 'lib/portal-ui/models/entity-component-page-title';
-import { NgOauth2Actions } from 'lib/ng-packages/oauth2/redux/ng-oauth2-actions';
 import { NgOauth2Store } from 'lib/ng-packages/oauth2/redux/ng-oauth2-store';
 import { NgSkysmackStore } from 'lib/ng-packages/skysmack';
 import { LoginFieldsConfig } from '../../login-fields-config';
 import { FormHelper, Field } from 'lib/portal-ui';
 import { NgSkysmackActions } from 'lib/ng-packages/skysmack/redux/ng-skysmack-actions';
-import { SubscriptionHandler, ApiDomain, CurrentUser, HttpErrorResponse } from '@skysmack/framework';
-import { HttpClient, HttpParams } from '@angular/common/http';
-import { OpenIdConnectResponse } from '@skysmack/packages-oauth2';
-import { ReduxAction } from '@skysmack/redux';
-import { of } from 'rxjs';
-import { filter, catchError, map } from 'rxjs/operators';
-import * as moment from 'moment';
+import { SubscriptionHandler } from '@skysmack/framework';
+import { AuthenticationActions } from '@skysmack/redux';
+import { filter } from 'rxjs/operators';
+import { Oauth2Requests } from 'lib/ng-packages/oauth2';
 
 @Component({
   selector: 'ss-login',
@@ -49,15 +45,12 @@ export class LoginComponent implements OnInit, OnDestroy {
   constructor(
     public componentPageTitle: EntityComponentPageTitle,
     public router: Router,
-    public actions: NgOauth2Actions,
     public store: NgOauth2Store,
     public skysmackStore: NgSkysmackStore,
     public skysmackActions: NgSkysmackActions,
     public fieldsConfig: LoginFieldsConfig,
-    protected http: HttpClient,
-    @Inject('ApiDomain') protected apiDomain: ApiDomain
-  ) {
-  }
+    public requests: Oauth2Requests
+  ) { }
 
   ngOnInit() {
     this.componentPageTitle.setTitle('OPEN_IDDICT.OPEN_IDDICT_LOGIN.SIGN_IN', true, false);
@@ -84,8 +77,9 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   private login(credentials: { email: string, password: string }) {
-    this.actions.clearLoginError();
-    this.requestLogin(credentials.email, credentials.password);
+    this.store.store.dispatch({ type: AuthenticationActions.CLEAR_LOGIN_ERROR });
+    const authPath = this.router.url.split('/')[1];
+    this.subscriptionHandler.register(this.requests.login(credentials.email, credentials.password, authPath).subscribe(loginResultAction => this.store.store.dispatch(loginResultAction)));
     this.loggingIn = true;
 
     this.subscriptionHandler.register(this.store.isCurrentUserAuthenticated()
@@ -94,37 +88,6 @@ export class LoginComponent implements OnInit, OnDestroy {
         this.skysmackActions.getSkysmack();
         this.router.navigate(['/']);
       }));
-  }
-
-  private requestLogin(email: string, password: string): void {
-    const authPath = this.router.url.split('/')[1];
-    const url = `${this.apiDomain.domain}/${authPath}/password`;
-    const params = new HttpParams()
-      .append('grant_type', 'password')
-      .append('username', email)
-      .append('password', password);
-
-    this.subscriptionHandler.register(this.http.post<OpenIdConnectResponse>(url, params, { observe: 'response' })
-      .pipe(
-        map((response) => {
-          return Object.assign({}, new ReduxAction<CurrentUser>({
-            type: NgOauth2Actions.LOG_IN_SUCCESS,
-            payload: new CurrentUser({
-              resource: response.body.resource,
-              token_type: response.body.token_type,
-              access_token: response.body.access_token,
-              expires_in: response.body.expires_in,
-              loginTime: new Date(moment().toString()),
-              email: email
-            })
-          }));
-        }),
-        catchError((error) => of(Object.assign({}, new ReduxAction<HttpErrorResponse>({
-          type: NgOauth2Actions.LOG_IN_ERROR,
-          payload: error,
-          error: true
-        }))))
-      ).subscribe(loginResultAction => this.actions.store.dispatch(loginResultAction)));
   }
 
   private listenForErrors() {
@@ -139,6 +102,6 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   private clearLoginErrors() {
-    this.subscriptionHandler.register(this.skysmackStore.getHydrated().pipe(filter(x => x === true)).subscribe(() => this.actions.clearLoginError()));
+    this.subscriptionHandler.register(this.skysmackStore.getHydrated().pipe(filter(x => x === true)).subscribe(() => this.store.store.dispatch({ type: AuthenticationActions.CLEAR_LOGIN_ERROR })));
   }
 }

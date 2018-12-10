@@ -8,7 +8,6 @@ import { PackageLoader } from '../packages/package-loader';
 import { LoadedPackage } from '../packages/loaded-package';
 import { Oauth2Type } from '@skysmack/packages-oauth2';
 
-// TODO: Rename below to skysnack store?
 @Injectable({ providedIn: 'root' })
 export class NgSkysmackStore {
     public stateKey = 'skysmack';
@@ -45,6 +44,7 @@ export class NgSkysmackStore {
 
     // TODO: What if it isn't the oauth 2 package? Does other packages have the same type id?
     public getAuthenticationPackages(): Observable<Package[]> {
-        return this.ngRedux.select((state: SkysmackAppState) => state.skysmack.skysmack.packages.filter(_package => _package.type === Oauth2Type.id)); // .pipe(map(x => [...x, ...x])); <-- Use to show multi auth package login
+        return this.ngRedux.select((state: SkysmackAppState) => state.skysmack.skysmack.packages.filter(_package => _package.type === Oauth2Type.id));
+        ;
     }
 }

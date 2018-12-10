@@ -64,13 +64,12 @@
           <mat-icon>account_circle</mat-icon>
         </button>
         <mat-menu overlapTrigger="false" #loginMenu="matMenu">
-          <mat-form-field>
-            <mat-select placeholder="Choose login method">
-              <mat-option *ngFor="let authPackage of authPackages" (click)="navigateToAuthPackage(authPackage.path)">{{
-                authPackage.description
-                }}</mat-option>
-            </mat-select>
-          </mat-form-field>
+          <ng-container *ngFor="let authPackage of authPackages">
+            <a class="multi-login-button" (click)="navigateToAuthPackage(authPackage.path)" title="Account Menu"
+              (click)="uiRedux.setPackageDrawerStatus(false)" *isAnonymous>
+              {{ authPackage.description }}
+            </a>
+          </ng-container>
         </mat-menu>
       </ng-container>
     </ng-container>

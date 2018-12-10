@@ -9,7 +9,7 @@ import { AuthenticationStore, AuthenticationAppState } from '@skysmack/redux';
 @Injectable({ providedIn: 'root' })
 export class NgOauth2Store implements AuthenticationStore {
     constructor(
-        protected store: NgRedux<AuthenticationAppState>,
+        public store: NgRedux<AuthenticationAppState>,
     ) { }
 
     public isCurrentUserAuthenticated(): Observable<boolean> {
