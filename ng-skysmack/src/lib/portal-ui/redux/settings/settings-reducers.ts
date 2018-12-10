@@ -7,7 +7,7 @@ export interface SettingsState {
 
 export const SETTINGS_INITIAL_STATE: SettingsState = {
     settings: {
-        language: '',
+        language: 'en',
         tenantUrl: ''
     }
 };
