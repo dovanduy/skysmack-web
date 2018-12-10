@@ -1,31 +1,29 @@
 {
-    "PRODUCTS": {
-        "TYPES": {
-            "CREATE": {
-                "CREATE": "Opret"
+    "PRODUCT_TYPES": {
+        "CREATE": {
+            "CREATE": "Opret"
+        },
+        "EDIT": {
+            "EDIT": "Rediger"
+        },
+        "INDEX": {
+            "ACTIONS": "Handlinger",
+            "CREATE": "Opret ny type",
+            "DELETE": "Slet",
+            "MANAGE": "Konfigurer",
+            "FIELDS": "Felter",
+            "BACK": "Tilbage"
+        },
+        "FORM": {
+            "LABELS": {
+                "NAME": "Navn"
             },
-            "EDIT": {
-                "EDIT": "Rediger"
+            "PLACEHOLDERS": {
+                "NAME": "Indtast navn"
             },
-            "INDEX": {
-                "ACTIONS": "Handlinger",
-                "CREATE": "Opret ny type",
-                "DELETE": "Slet",
-                "MANAGE": "Konfigurer",
-                "FIELDS": "Felter",
-                "BACK": "Tilbage"
-            },
-            "FORM": {
-                "LABELS": {
-                    "NAME": "Navn"
-                },
-                "PLACEHOLDERS": {
-                    "NAME": "Indtast navn"
-                },
-                "VALIDATION": {
-                    "NAME": {
-                        "REQUIRED": "Et navn er påkrævet."
-                    }
+            "VALIDATION": {
+                "NAME": {
+                    "REQUIRED": "Et navn er påkrævet."
                 }
             }
         }

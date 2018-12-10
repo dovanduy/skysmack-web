@@ -1,31 +1,29 @@
 {
-    "PRODUCTS": {
-        "TYPES": {
-            "CREATE": {
-                "CREATE": "Create"
+    "PRODUCT_TYPES": {
+        "CREATE": {
+            "CREATE": "Create"
+        },
+        "EDIT": {
+            "EDIT": "Edit"
+        },
+        "INDEX": {
+            "ACTIONS": "Actions",
+            "CREATE": "Create new type",
+            "DELETE": "Delete",
+            "MANAGE": "Manage",
+            "FIELDS": "Fields",
+            "BACK": "Back"
+        },
+        "FORM": {
+            "LABELS": {
+                "NAME": "Name"
             },
-            "EDIT": {
-                "EDIT": "Edit"
+            "PLACEHOLDERS": {
+                "NAME": "Enter name"
             },
-            "INDEX": {
-                "ACTIONS": "Actions",
-                "CREATE": "Create new type",
-                "DELETE": "Delete",
-                "MANAGE": "Manage",
-                "FIELDS": "Fields",
-                "BACK": "Back"
-            },
-            "FORM": {
-                "LABELS": {
-                    "NAME": "Name"
-                },
-                "PLACEHOLDERS": {
-                    "NAME": "Enter name"
-                },
-                "VALIDATION": {
-                    "NAME": {
-                        "REQUIRED": "Name is required."
-                    }
+            "VALIDATION": {
+                "NAME": {
+                    "REQUIRED": "Name is required."
                 }
             }
         }
