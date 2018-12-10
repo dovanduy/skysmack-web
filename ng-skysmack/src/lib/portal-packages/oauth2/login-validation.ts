@@ -18,7 +18,7 @@ export class LoginValidation extends RecordValidation {
         }
     };
 
-    public area = 'open_iddict';
+    public area = 'OAUTH2';
 
     public formValidators = [];
 

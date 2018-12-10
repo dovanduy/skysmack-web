@@ -1,0 +1,30 @@
+{
+    "OAUTH2": {
+        "FORM": {
+            "LABELS": {
+                "EMAIL": "Email",
+                "PASSWORD": "Password"
+            },
+            "PLACEHOLDERS": {
+                "EMAIL": "Enter email",
+                "PASSWORD": "Enter password"
+            },
+            "VALIDATION": {
+                "EMAIL": {
+                    "REQUIRED": "Email is required.",
+                    "EMAIL": "Please enter a valid email."
+                },
+                "PASSWORD": {
+                    "REQUIRED": "Password is required."
+                }
+            }
+        },
+        "OAUTH2_LOGIN": {
+            "SIGN_IN": "Sign in",
+            "ENTER_CRED": "Please enter your credentials below",
+            "ERROR_OCCURRED": "Error occurred, please verify email and/or password",
+            "FORGOT_PASSWORD": "Forgot password?",
+            "LOGGING_IN": "Logging in..."
+        }
+    }
+}

@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Oauth2RoutingModule } from './oauth2-routing.module';
 import { LoginComponent } from './components/login/login.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { NgOauth2Module } from 'lib/ng-packages/oauth2/ng-oauth2.module';
-import { PortalUiModule } from 'lib/portal-ui';
+import { PortalUiModule, LanguageService, HttpLoaderFactory } from 'lib/portal-ui';
+import { TranslateService, TranslateModule, TranslateLoader } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
@@ -12,7 +13,15 @@ import { PortalUiModule } from 'lib/portal-ui';
     HttpClientModule,
     Oauth2RoutingModule,
     NgOauth2Module,
-    PortalUiModule
+    PortalUiModule,
+    TranslateModule.forChild({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      },
+      isolate: true
+    })
   ],
   declarations: [
     LoginComponent
@@ -22,4 +31,11 @@ import { PortalUiModule } from 'lib/portal-ui';
   ],
   providers: []
 })
-export class Oauth2Module { }
+export class Oauth2Module {
+  constructor(
+    public languageService: LanguageService,
+    public translateService: TranslateService
+  ) {
+    this.languageService.settingsRedux.getSettings().subscribe(settings => this.translateService.use(settings.language));
+  }
+}

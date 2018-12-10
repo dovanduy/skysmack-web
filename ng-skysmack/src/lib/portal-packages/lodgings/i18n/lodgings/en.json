@@ -1,0 +1,101 @@
+{
+    "LODGINGS": {
+        "TYPE": {
+            "FORM": {
+                "LABELS": {
+                    "NAME": "Name"
+                },
+                "PLACEHOLDERS": {
+                    "NAME": "Enter name"
+                },
+                "VALIDATION": {
+                    "NAME": {
+                        "REQUIRED": "A name is required."
+                    }
+                }
+            }
+        },
+        "FORM": {
+            "LABELS": {
+                "LODGINGTYPEID": "Type ID",
+                "NAME": "Name"
+            },
+            "PLACEHOLDERS": {
+                "LODGINGTYPEID": "Enter type ID",
+                "NAME": "Enter name"
+            },
+            "VALIDATION": {
+                "LODGINGTYPEID": {
+                    "REQUIRED": "A type ID is required."
+                },
+                "NAME": {
+                    "REQUIRED": "A name is required."
+                }
+            }
+        },
+        "TYPES": {
+            "CREATE": {
+                "CREATE": "Create"
+            },
+            "EDIT": {
+                "EDIT": "Edit"
+            },
+            "INDEX": {
+                "CREATE": "Create",
+                "ACTIONS": "Actions",
+                "TYPE": "Create type",
+                "MANAGE": "Manage",
+                "TYPES_FIELDS": "Types fields",
+                "BACK": "Back",
+                "FIELDS": "Fields"
+            },
+            "FIELDS": {
+                "CREATE": {
+                    "ADD": "Add new field"
+                },
+                "EDIT": {
+                    "EDITING": "Editing"
+                },
+                "INDEX": {
+                    "ACTIONS": "Actions",
+                    "CREATE": "Create new type field",
+                    "OTHER": "Other",
+                    "TYPES": "Types",
+                    "FIELDS": "Fields",
+                    "BACK": "Back"
+                }
+            }
+        },
+        "FIELDS": {
+            "CREATE": {
+                "ADD": "Add new field"
+            },
+            "EDIT": {
+                "EDITING": "Editing"
+            },
+            "INDEX": {
+                "ACTIONS": "Actions",
+                "CREATE": "Create field",
+                "MANAGE": "Manage",
+                "OTHER": "Other",
+                "FIELDS": "Fields",
+                "BACK": "Back"
+            }
+        },
+        "CREATE": {
+            "CREATE": "Create"
+        },
+        "EDIT": {
+            "EDIT": "Edit"
+        },
+        "INDEX": {
+            "ACTIONS": "Actions",
+            "CREATE": "Create",
+            "SETTINGS": "Settings",
+            "MANAGE": "Manage",
+            "FIELDS": "Fields",
+            "TYPES": "Types",
+            "BACK": "Back"
+        }
+    }
+}

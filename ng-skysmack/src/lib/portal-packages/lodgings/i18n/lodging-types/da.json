@@ -1,0 +1,66 @@
+{
+    "LODGINGS": {
+        "TYPES": {
+            "CREATE": {
+                "CREATE": "Opret"
+            },
+            "EDIT": {
+                "EDIT": "Rediger"
+            },
+            "INDEX": {
+                "ACTIONS": "Handlinger",
+                "CREATE": "Opret",
+                "TYPE": "Opret ny type",
+                "MANAGE": "Konfigurer",
+                "TYPES_FIELDS": "Type felt",
+                "BACK": "Tilbage",
+                "FIELDS": "Felter"
+            },
+            "FIELDS": {
+                "CREATE": {
+                    "ADD": "Opret nyt felt"
+                },
+                "EDIT": {
+                    "EDITING": "Redigere"
+                },
+                "INDEX": {
+                    "ACTIONS": "Handlinger",
+                    "CREATE": "Opret nyt felt",
+                    "OTHER": "Andre",
+                    "TYPES": "Typer",
+                    "FIELDS": "Felter",
+                    "BACK": "Tilbage"
+                }
+            }
+        },
+        "FIELDS": {
+            "CREATE": {
+                "ADD": "Opret nyt felt"
+            },
+            "EDIT": {
+                "EDITING": "Redigere"
+            },
+            "INDEX": {
+                "ACTIONS": "Handlinger",
+                "CREATE": "Opret nyt felt",
+                "OTHER": "Andre",
+                "FIELDS": "Felter",
+                "BACK": "Tilbage"
+            }
+        },
+        "CREATE": {
+            "CREATE": "Opret"
+        },
+        "EDIT": {
+            "EDIT": "Rediger"
+        },
+        "INDEX": {
+            "ACTIONS": "Handlinger",
+            "CREATE": "Opret",
+            "MANAGE": "Konfigurer",
+            "FIELDS": "Felter",
+            "TYPES": "Typer",
+            "BACK": "Tilbage"
+        }
+    }
+}

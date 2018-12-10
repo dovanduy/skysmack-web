@@ -10,7 +10,7 @@ export class LanguageService implements OnDestroy {
     public configured = false;
 
     constructor(
-        public translate: TranslateService,
+        public translateService: TranslateService,
         public settingsRedux: SettingsRedux
     ) { }
 
@@ -20,15 +20,15 @@ export class LanguageService implements OnDestroy {
 
     public configure() {
         if (!this.configured) {
-            this.translate.addLangs(this.languages);
-            this.translate.setDefaultLang('en');
+            this.translateService.addLangs(this.languages);
+            this.translateService.setDefaultLang('en');
 
             this.subscriptions.push(this.settingsRedux.getSettings().subscribe(settings => {
                 if (settings.language.length > 0) {
-                    this.translate.use(settings.language);
+                    this.translateService.use(settings.language);
                 } else {
-                    const browserLang = this.translate.getBrowserLang().toLowerCase();
-                    this.translate.use(this.languages[browserLang] ? browserLang : 'en');
+                    const browserLang = this.translateService.getBrowserLang().toLowerCase();
+                    this.translateService.use(this.languages[browserLang] ? browserLang : 'en');
                 }
             }));
 

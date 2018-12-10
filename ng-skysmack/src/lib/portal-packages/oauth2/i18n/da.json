@@ -1,0 +1,30 @@
+{
+    "OAUTH2": {
+        "FORM": {
+            "LABELS": {
+                "EMAIL": "Email",
+                "PASSWORD": "Adgangskode"
+            },
+            "PLACEHOLDERS": {
+                "EMAIL": "Indstast email",
+                "PASSWORD": "Indtast en adgangskode"
+            },
+            "VALIDATION": {
+                "EMAIL": {
+                    "REQUIRED": "En Email er påkrævet.",
+                    "EMAIL": "Indtast en gyldig email."
+                },
+                "PASSWORD": {
+                    "REQUIRED": "En adgangskode er påkrævet."
+                }
+            }
+        },
+        "OAUTH2_LOGIN": {
+            "SIGN_IN": "Log ind",
+            "ENTER_CRED": "Indtast dine log ind informationer herunder",
+            "ERROR_OCCURRED": "Der skete en fejl, bekræft at den rigtige email og adgangskode er indtastet",
+            "FORGOT_PASSWORD": "Glemt adgangskode?",
+            "LOGGING_IN": "Logger ind..."
+        }
+    }
+}

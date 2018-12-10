@@ -62,8 +62,7 @@ export function HttpLoaderFactory(http: HttpClient) {
         provide: TranslateLoader,
         useFactory: HttpLoaderFactory,
         deps: [HttpClient]
-      },
-      isolate: true
+      }
     }),
     CalendarModule.forRoot({
       provide: DateAdapter,
