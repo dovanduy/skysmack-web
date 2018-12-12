@@ -17,6 +17,6 @@ export const registerEagerEpics = (epics: Epic[]) => {
     registerLazyEpics([eagerEpics])
 }
 
-export const rootEpic = (action$, state$) => epic$.pipe(
-    mergeMap<Epic<AnyAction>, AnyAction>(epic => epic(action$, state$, undefined))
-)
+// export const rootEpic = (action$, state$) => epic$.pipe(
+//     mergeMap<Epic<AnyAction>, AnyAction>(epic => epic(action$, state$, undefined))
+// )

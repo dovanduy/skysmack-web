@@ -15,14 +15,15 @@ const SKYSMACK_STATE: SkysmackState = {
     tenantLoaded: false,
 }
 
-export function skysmackReducer(state = SKYSMACK_STATE, action) {
+export function skysmackReducer(state: SkysmackState = SKYSMACK_STATE, action: any): SkysmackState {
+    state = Object.freeze(state);
+    let newState = Object.assign({}, state);
+
     switch (action.type) {
         case 'GET_SKYSMACK_SUCCESS':
-            return {
-                ...state,
-                skysmack: action.payload,
-                tenantLoaded: true,
-            }
+            newState.skysmack = action.payload;
+            newState.tenantLoaded = true;
+            return newState;
         default:
             return state;
     }

@@ -4,7 +4,7 @@ import { createOffline } from '@redux-offline/redux-offline';
 import { applyMiddleware, compose, createStore, DeepPartial, Store, combineReducers, AnyAction } from 'redux';
 import { createEpicMiddleware, EpicMiddleware } from 'redux-observable';
 import { ReduxOfflineConfiguration } from './redux-offline.configuration';
-import { ReducerRegistry, rootEpic } from '@skysmack/redux';
+import { ReducerRegistry, epic$ } from '@skysmack/redux';
 import { portalReducer } from './portal-reducer';
 import { hydratedReducer } from './hydrated-reducer';
 
@@ -47,7 +47,7 @@ export const configureRedux = (ngRedux: NgRedux<any>, ngReduxRouter: NgReduxRout
 
     ngRedux.provideStore(store);
 
-    epicMiddleware.run(rootEpic);
+    epic$.subscribe(rootEpic => epicMiddleware.run(rootEpic));
 
     // Enable syncing of Angular router state with our Redux store.
     if (ngReduxRouter) {
