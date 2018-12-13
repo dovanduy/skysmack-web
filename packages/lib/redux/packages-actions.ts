@@ -1,4 +1,6 @@
 import { Store } from 'redux';
+import { ReduxAction, Effect, EffectRequest } from '@skysmack/redux';
+import { Package, HttpMethod, LocalObject, LocalObjectStatus } from '@skysmack/framework';
 
 export class PackagesActions<TStateType, TStore extends Store<TStateType>> {
     public static CANCEL_RECORD_ACTION = 'CANCEL_RECORD_ACTION';
@@ -31,122 +33,94 @@ export class PackagesActions<TStateType, TStore extends Store<TStateType>> {
         protected store: TStore,
     ) { }
 
-    // public getPaged(packagePath: string, pagedQuery: PagedQuery) {
-    //     this.store.dispatch(Object.assign({}, new ReduxAction<GetPagedRecordsPayload>({
-    //         type: this.prefix + RecordActionsBase.GET_PAGED,
-    //         payload: {
-    //             pagedQuery,
-    //             packagePath
-    //         }
-    //     })));
-    // }
+    public get() {
+        this.store.dispatch(Object.assign({}, new ReduxAction({
+            type: PackagesActions.GET_PACKAGES
+        })));
+    }
 
-    // public getSingle<TKey>(packagePath: string, id: TKey) {
-    //     this.store.dispatch(Object.assign({}, new ReduxAction<GetSingleRecordPayload<TKey>>({
-    //         type: this.prefix + RecordActionsBase.GET_SINGLE,
-    //         payload: {
-    //             id,
-    //             packagePath
-    //         }
-    //     })));
-    // }
+    public getSingle(path: string) {
+        this.store.dispatch(Object.assign({}, new ReduxAction<string>({
+            type: PackagesActions.GET_SINGLE_PACKAGE,
+            payload: path
+        })));
+    }
 
-    // public add<TRecord extends Record<TKey>, TKey>(records: LocalObject<TRecord>[], packagePath: string) {
-    //     let path = this.additionalPaths ? [packagePath, ...this.additionalPaths].join('/') : packagePath;
+    public add(packages: LocalObject<Package>[]) {
+        this.store.dispatch(Object.assign({}, new ReduxAction<any, any>({
+            type: PackagesActions.ADD_PACKAGE,
+            meta: {
+                effect: new Effect<Package[]>(new EffectRequest<Package[]>(
+                    'skysmack/packages',
+                    HttpMethod.POST,
+                    packages.map(x => x.object)
+                )),
+                commit: new ReduxAction({
+                    type: PackagesActions.ADD_PACKAGE_SUCCESS,
+                    meta: {
+                        packages
+                    }
+                }),
+                rollback: new ReduxAction({
+                    type: PackagesActions.ADD_PACKAGE_FAILURE,
+                    meta: {
+                        packages
+                    }
+                })
+            }
+        })));
+    }
 
-    //     this.store.dispatch(Object.assign({}, new ReduxAction<any, ReduxOfflineMeta<TRecord[], TRecord, TKey>>({
-    //         type: this.prefix + RecordActionsBase.ADD,
-    //         meta: new ReduxOfflineMeta(
-    //             new OfflineMeta<TRecord[], TRecord, TKey>(
-    //                 new Effect<TRecord[]>(new EffectRequest<TRecord[]>(
-    //                     path,
-    //                     HttpMethod.POST,
-    //                     records.map(x => x.object)
-    //                 )),
-    //                 new ReduxAction<any, CommitMeta<TRecord, TKey>>({
-    //                     type: this.prefix + RecordActionsBase.ADD_SUCCESS,
-    //                     meta: {
-    //                         stateKey: packagePath,
-    //                         records
-    //                     }
-    //                 }),
-    //                 new ReduxAction<any, RollbackMeta<TRecord, TKey>>({
-    //                     type: this.prefix + RecordActionsBase.ADD_FAILURE,
-    //                     meta: {
-    //                         stateKey: packagePath,
-    //                         records
-    //                     }
-    //                 })
-    //             )
-    //         )
-    //     })));
-    // }
+    public update(packages: LocalObject<Package>[]) {
+        this.store.dispatch(Object.assign({}, new ReduxAction<any, any>({
+            type: PackagesActions.ADD_PACKAGE,
+            meta: {
+                effect: new Effect<Package[]>(new EffectRequest<Package[]>(
+                    'skysmack/packages',
+                    HttpMethod.PUT,
+                    packages.map(x => x.object)
+                )),
+                commit: new ReduxAction({
+                    type: PackagesActions.ADD_PACKAGE_SUCCESS,
+                    meta: {
+                        packages
+                    }
+                }),
+                rollback: new ReduxAction({
+                    type: PackagesActions.ADD_PACKAGE_FAILURE,
+                    meta: {
+                        packages
+                    }
+                })
+            }
+        })));
+    }
 
-    // public update<TRecord extends Record<TKey>, TKey>(records: LocalObject<TRecord>[], packagePath: string) {
-    //     let path = this.additionalPaths ? [packagePath, ...this.additionalPaths].join('/') : packagePath;
-    //     path = path + '?ids=' + records.map(x => x.object.id).join(',');
-
-    //     this.store.dispatch(Object.assign({}, new ReduxAction<any, ReduxOfflineMeta<TRecord[], TRecord, TKey>>({
-    //         type: this.prefix + RecordActionsBase.UPDATE,
-    //         meta: new ReduxOfflineMeta(
-    //             new OfflineMeta<TRecord[], TRecord, TKey>(
-    //                 new Effect<TRecord[]>(new EffectRequest<TRecord[]>(
-    //                     path,
-    //                     HttpMethod.PUT,
-    //                     records.map(x => x.object)
-    //                 )),
-    //                 new ReduxAction<any, CommitMeta<TRecord, TKey>>({
-    //                     type: this.prefix + RecordActionsBase.UPDATE_SUCCESS,
-    //                     meta: {
-    //                         stateKey: packagePath,
-    //                         records
-    //                     }
-    //                 }),
-    //                 new ReduxAction<any, RollbackMeta<TRecord, TKey>>({
-    //                     type: this.prefix + RecordActionsBase.UPDATE_FAILURE,
-    //                     meta: {
-    //                         stateKey: packagePath,
-    //                         records
-    //                     }
-    //                 })
-    //             )
-    //         )
-    //     })));
-    // }
-
-
-    // public delete<TRecord extends Record<TKey>, TKey>(records: LocalObject<TRecord>[], packagePath: string) {
-    //     let path = this.additionalPaths ? [packagePath, ...this.additionalPaths].join('/') : packagePath;
-    //     path = path + '?ids=' + records.map(x => x.object.id).join(',');
-
-    //     this.store.dispatch(Object.assign({}, new ReduxAction<any, ReduxOfflineMeta<TRecord[], TRecord, TKey>>({
-    //         type: this.prefix + RecordActionsBase.DELETE,
-    //         meta: new ReduxOfflineMeta(
-    //             new OfflineMeta<TRecord[], TRecord, TKey>(
-    //                 new Effect<TRecord[]>(new EffectRequest<TRecord[]>(
-    //                     path,
-    //                     HttpMethod.DELETE,
-    //                     records.map(x => {
-    //                         x.status = LocalObjectStatus.DELETING
-    //                         return x.object
-    //                     }),
-    //                 )),
-    //                 new ReduxAction<any, CommitMeta<TRecord, TKey>>({
-    //                     type: this.prefix + RecordActionsBase.DELETE_SUCCESS,
-    //                     meta: {
-    //                         stateKey: packagePath,
-    //                         records
-    //                     }
-    //                 }),
-    //                 new ReduxAction<any, RollbackMeta<TRecord, TKey>>({
-    //                     type: this.prefix + RecordActionsBase.DELETE_FAILURE,
-    //                     meta: {
-    //                         stateKey: packagePath,
-    //                         records
-    //                     }
-    //                 })
-    //             )
-    //         )
-    //     })));
-    // }
+    public delete(packages: LocalObject<Package>[]) {
+        this.store.dispatch(Object.assign({}, new ReduxAction<any, any>({
+            type: PackagesActions.ADD_PACKAGE,
+            meta: {
+                effect: new Effect<Package[]>(new EffectRequest<Package[]>(
+                    'skysmack/packages',
+                    HttpMethod.PUT,
+                    packages.map(x => {
+                        x.status = LocalObjectStatus.DELETING
+                        return x.object
+                    })
+                )),
+                commit: new ReduxAction({
+                    type: PackagesActions.ADD_PACKAGE_SUCCESS,
+                    meta: {
+                        packages
+                    }
+                }),
+                rollback: new ReduxAction({
+                    type: PackagesActions.ADD_PACKAGE_FAILURE,
+                    meta: {
+                        packages
+                    }
+                })
+            }
+        })));
+    }
 }
