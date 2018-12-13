@@ -1,3 +1,6 @@
+// Do not rempve packages.module.ts import
+import { PackagesModule } from '../../../../../lib/portal-packages/packages/packages.module';
+
 import { NgReduxRouter, NgReduxRouterModule } from '@angular-redux/router';
 import { HttpClientModule } from '@angular/common/http';
 import { NgRedux, NgReduxModule } from '@angular-redux/store';
@@ -25,6 +28,10 @@ import { environment } from '../../environments/environment';
   ],
   imports: [
     RouterModule.forRoot([
+      {
+        path: 'packages',
+        loadChildren: '../../../../../lib/portal-packages/packages/packages.module#PackagesModule'
+      },
       {
         path: 'persons',
         loadChildren: '../../../../../lib/portal-packages/persons/persons.module#PersonsModule'

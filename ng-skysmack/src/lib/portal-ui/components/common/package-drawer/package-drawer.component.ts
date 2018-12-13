@@ -4,6 +4,8 @@ import { NgSkysmackStore } from './../../../../ng-packages/skysmack/redux/ng-sky
 import { Menu } from './../../../models/menu';
 import { UIRedux } from './../../../redux/ui-redux';
 import { LoadedPackage } from './../../../../ng-packages/skysmack/packages/loaded-package';
+import { map } from 'rxjs/operators';
+import { Oauth2PackageManifest } from 'projects/web-portal/src/app/packages';
 
 @Component({
   selector: 'ss-package-drawer',
@@ -20,7 +22,10 @@ export class PackageDrawerComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.loadedPackages$ = this.skysmackStore.getLoadedPackages();
+    this.loadedPackages$ = this.skysmackStore.getLoadedPackages().pipe(
+      // Remove Oauth packages.
+      map(packages => packages.filter(_package => _package._package.type !== Oauth2PackageManifest.id))
+    );
     this.menu$ = this.uiRedux.getMenu();
   }
 }

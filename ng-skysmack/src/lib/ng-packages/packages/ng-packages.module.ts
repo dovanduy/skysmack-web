@@ -6,7 +6,7 @@ import { NgModule } from '@angular/core';
   exports: [],
   providers: [],
 })
-export class NgPackageModule {
+export class NgPackagesModule {
   // constructor(packagesRequests: NgPackageRequests) {
   // ReducerRegistry.Instance.register('packages', packagesReducer);
   // registerLazyEpics(new PackagesEpics().epics);

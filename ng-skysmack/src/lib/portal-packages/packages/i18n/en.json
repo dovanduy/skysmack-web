@@ -1,0 +1,163 @@
+{
+    "PACKAGES": {
+        "FORM": {
+            "LABELS": {
+                "TYPE": "Package type",
+                "NAME": "Name",
+                "DESCRIPTION": "Description",
+                "PATH": "Path"
+            },
+            "PLACEHOLDERS": {
+                "TYPE": "Enter package type",
+                "NAME": "Enter name",
+                "DESCRIPTION": "Enter description",
+                "PATH": "Enter path"
+            },
+            "VALIDATION": {
+                "TYPE": {
+                    "REQUIRED": "Please choose a package."
+                },
+                "NAME": {
+                    "REQUIRED": "Name is required."
+                },
+                "DESCRIPTION": {
+                    "REQUIRED": "A description is required."
+                },
+                "PATH": {
+                    "REQUIRED": "An url to access the package is required."
+                }
+            }
+        },
+        "INDEX": {
+            "ACTIONS": "Actions",
+            "CREATE": "Create",
+            "MANAGE": "Manage",
+            "ADAPTORS": "Adaptors",
+            "FEATURES": "Features",
+            "INSTALL": "Install package",
+            "TITEL": "Packages"
+        },
+        "CREATE": {
+            "INSTALL": "Install package"
+        },
+        "EDIT": {
+            "EDITING": "Editing {{ object.name }} package"
+        }
+    },
+    "ADAPTORS": {
+        "FORM": {
+            "LABELS": {
+                "PACKAGETYPE": "Package type",
+                "LEFTDEPENDENCYID": "Left package",
+                "RIGHTDEPENDENCYID": "Right package",
+                "NAME": "Name",
+                "DESCRIPTION": "Description",
+                "URL": "URL",
+                "TYPE": "Type"
+            },
+            "PLACEHOLDERS": {
+                "PACKAGETYPE": "Enter package type",
+                "LEFTDEPENDENCYID": "Choose left package",
+                "RIGHTDEPENDENCYID": "Choose right package",
+                "NAME": "Enter name",
+                "DESCRIPTION": "Enter description",
+                "URL": "Enter URL",
+                "TYPE": "Enter type"
+            },
+            "VALIDATION": {
+                "PACKAGETYPE": {
+                    "REQUIRED": "Please choose a package."
+                },
+                "LEFTDEPENDENCYID": {
+                    "REQUIRED": "Please choose dependency."
+                },
+                "RIGHTDEPENDENCYID": {
+                    "REQUIRED": "Please choose dependency."
+                },
+                "NAME": {
+                    "REQUIRED": "Name is required."
+                },
+                "DESCRIPTION": {
+                    "REQUIRED": "A description is required."
+                },
+                "URL": {
+                    "REQUIRED": "An url to access the package is required."
+                },
+                "TYPE": {
+                    "REQUIRED": "An type is required"
+                }
+            }
+        },
+        "INDEX": {
+            "ACTIONS": "Actions",
+            "CREATE": "Create",
+            "MANAGE": "Manage",
+            "INSTALL": "Install adaptor",
+            "TITEL": "Adaptors",
+            "BACK": "Back",
+            "OTHER": "Other"
+        },
+        "EDIT": {
+            "EDITING": "Editing {{ object.name }} adaptor"
+        },
+        "CREATE": {
+            "INSTALL": "Install adaptor"
+        }
+    },
+    "FEATURES": {
+        "FORM": {
+            "LABELS": {
+                "PACKAGETYPE": "Package type",
+                "DEPENDENCYID": "Package",
+                "NAME": "Name",
+                "DESCRIPTION": "Description",
+                "URL": "URL",
+                "TYPE": "Type"
+            },
+            "PLACEHOLDERS": {
+                "PACKAGETYPE": "Enter package type",
+                "DEPENDENCYID": "Choose package",
+                "NAME": "Enter name",
+                "DESCRIPTION": "Enter description",
+                "URL": "Enter URL",
+                "TYPE": "Enter type"
+            },
+            "VALIDATION": {
+                "PACKAGETYPE": {
+                    "REQUIRED": "Please choose a package."
+                },
+                "DEPENDENCYID": {
+                    "REQUIRED": "Please choose dependency."
+                },
+                "NAME": {
+                    "REQUIRED": "Name is required."
+                },
+                "DESCRIPTION": {
+                    "REQUIRED": "A description is required."
+                },
+                "URL": {
+                    "REQUIRED": "An url to access the package is required."
+                },
+                "TYPE": {
+                    "REQUIRED": "An type is required"
+                }
+            }
+        },
+        "INDEX": {
+            "ACTIONS": "Actions",
+            "CREATE": "Create",
+            "MANAGE": "Manage",
+            "FEATURES": "Features",
+            "INSTALL": "Install feature",
+            "TITEL": "Features",
+            "BACK": "Back",
+            "OTHER": "Other"
+        },
+        "EDIT": {
+            "EDITING": "Editing {{ object.name }} feature"
+        },
+        "CREATE": {
+            "INSTALL": "Install feature"
+        }
+    }
+}

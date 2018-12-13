@@ -34,7 +34,7 @@ export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey>
         public redux: NgSkysmackStore,
         public store: NgRecordReduxStore<TAppState, TRecord, TKey>
     ) {
-        super(router, activatedRoute, actions, redux);
+        super(router, activatedRoute, redux);
     }
 
     ngOnInit() {

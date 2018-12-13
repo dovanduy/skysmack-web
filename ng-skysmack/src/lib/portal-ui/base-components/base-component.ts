@@ -4,8 +4,6 @@ import { Observable } from 'rxjs';
 import { Router, ActivatedRoute } from '@angular/router';
 import { OnInit, OnDestroy } from '@angular/core';
 import { take } from 'rxjs/operators';
-import { RecordActionsBase } from '@skysmack/redux';
-import { NgRedux } from '@angular-redux/store';
 
 export class BaseComponent<TAppState, TKey> implements OnInit, OnDestroy {
     public subscriptionHandler = new SubscriptionHandler();
@@ -17,7 +15,6 @@ export class BaseComponent<TAppState, TKey> implements OnInit, OnDestroy {
     constructor(
         public router: Router,
         public activatedRoute: ActivatedRoute,
-        public actions: RecordActionsBase<TAppState, NgRedux<TAppState>>,
         public redux: NgSkysmackStore
     ) { }
 

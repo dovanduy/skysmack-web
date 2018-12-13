@@ -30,7 +30,7 @@ export class FormBaseComponent<TAppState, TRecord extends Record<TKey>, TKey, TD
         public redux: NgSkysmackStore,
         public fieldsConfig: FieldsConfig<TRecord, TDependencies>,
     ) {
-        super(router, activatedRoute, actions, redux);
+        super(router, activatedRoute, redux);
     }
 
     /**

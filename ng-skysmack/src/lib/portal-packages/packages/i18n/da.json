@@ -1,0 +1,163 @@
+{
+    "PACKAGES": {
+        "FORM": {
+            "LABELS": {
+                "TYPE": "Pakke type",
+                "NAME": "Navn",
+                "DESCRIPTION": "Beskrivelse",
+                "PATH": "PATH"
+            },
+            "PLACEHOLDERS": {
+                "TYPE": "Indtast en pakke type",
+                "NAME": "Indtast et navn",
+                "DESCRIPTION": "Indtast en beskrivelse",
+                "PATH": "Indtast en sti"
+            },
+            "VALIDATION": {
+                "TYPE": {
+                    "REQUIRED": "En pakke type er påkrævet."
+                },
+                "NAME": {
+                    "REQUIRED": "Et navn er påkrævet."
+                },
+                "DESCRIPTION": {
+                    "REQUIRED": "En beskrivelse er påkrævet."
+                },
+                "PATH": {
+                    "REQUIRED": "En sti er påkrævet."
+                }
+            }
+        },
+        "INDEX": {
+            "ACTIONS": "Handlinger",
+            "CREATE": "Opret",
+            "MANAGE": "Konfigurer",
+            "ADAPTORS": "Adaptere",
+            "FEATURES": "Udvidelser",
+            "INSTALL": "Installer pakke",
+            "TITEL": "Pakker"
+        },
+        "CREATE": {
+            "INSTALL": "Installer pakke"
+        },
+        "EDIT": {
+            "EDITING": "Ret {{ object.name }} pakke"
+        }
+    },
+    "ADAPTORS": {
+        "FORM": {
+            "LABELS": {
+                "PACKAGETYPE": "Pakke type",
+                "LEFTDEPENDENCYID": "Venstre pakke",
+                "RIGHTDEPENDENCYID": "Højre pakke",
+                "NAME": "Navn",
+                "DESCRIPTION": "Beskrivelse",
+                "URL": "URL",
+                "TYPE": "Type"
+            },
+            "PLACEHOLDERS": {
+                "PACKAGETYPE": "Indtast pakke type",
+                "LEFTDEPENDENCYID": "Indtast venstre pakke ",
+                "RIGHTDEPENDENCYID": "Indtast højre pakke",
+                "NAME": "Indtast navn",
+                "DESCRIPTION": "Indtast beskrivelse",
+                "URL": "Indtast URL",
+                "TYPE": "Indtast type"
+            },
+            "VALIDATION": {
+                "PACKAGETYPE": {
+                    "REQUIRED": "Vælg en pakke type."
+                },
+                "LEFTDEPENDENCYID": {
+                    "REQUIRED": "Vælg venstre pakke."
+                },
+                "RIGHTDEPENDENCYID": {
+                    "REQUIRED": "Vælg højre pakke."
+                },
+                "NAME": {
+                    "REQUIRED": "Et navn er påkrævet."
+                },
+                "DESCRIPTION": {
+                    "REQUIRED": "En beskrivelse er påkrævet."
+                },
+                "URL": {
+                    "REQUIRED": "En URL er påkrævet."
+                },
+                "TYPE": {
+                    "REQUIRED": "En Type er påkrævet."
+                }
+            }
+        },
+        "INDEX": {
+            "ACTIONS": "Handlinger",
+            "CREATE": "Opret",
+            "MANAGE": "Konfigurer",
+            "INSTALL": "Installer adapter",
+            "TITEL": "Adaptere",
+            "BACK": "Tilbage",
+            "OTHER": "Andet"
+        },
+        "EDIT": {
+            "EDITING": "Ret {{ object.name }} adapter"
+        },
+        "CREATE": {
+            "INSTALL": "Installer adapter"
+        }
+    },
+    "FEATURES": {
+        "FORM": {
+            "LABELS": {
+                "PACKAGETYPE": "Pakke type",
+                "DEPENDENCYID": "Pakke",
+                "NAME": "Navn",
+                "DESCRIPTION": "Beskrivelse",
+                "URL": "URL",
+                "TYPE": "Type"
+            },
+            "PLACEHOLDERS": {
+                "PACKAGETYPE": "Indtast pakke type",
+                "DEPENDENCYID": "Indtast pakke ",
+                "NAME": "Indtast navn",
+                "DESCRIPTION": "Indtast beskrivelse",
+                "URL": "Enter URL",
+                "TYPE": "Indtast type"
+            },
+            "VALIDATION": {
+                "PACKAGETYPE": {
+                    "REQUIRED": "Vælg en pakke type."
+                },
+                "DEPENDENCYID": {
+                    "REQUIRED": "Vælg en pakke."
+                },
+                "NAME": {
+                    "REQUIRED": "Navn er påkrævet."
+                },
+                "DESCRIPTION": {
+                    "REQUIRED": "En beskrivelse er påkrævet."
+                },
+                "URL": {
+                    "REQUIRED": "En URL er påkrævet."
+                },
+                "TYPE": {
+                    "REQUIRED": "En Type er påkrævet."
+                }
+            }
+        },
+        "INDEX": {
+            "ACTIONS": "Handlinger",
+            "CREATE": "Opret",
+            "MANAGE": "Konfigurer",
+            "FEATURES": "Udvidelser",
+            "INSTALL": "Installer funktion",
+            "TITEL": "Udvidelser",
+            "BACK": "Tilbage",
+            "OTHER": "Andet"
+        },
+        "EDIT": {
+            "EDITING": "Ret {{ object.name }} funktion"
+        },
+        "CREATE": {
+            "INSTALL": "Installer funktion"
+        }
+    }
+}
