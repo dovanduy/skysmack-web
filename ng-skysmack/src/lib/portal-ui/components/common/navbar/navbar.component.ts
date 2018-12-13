@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
-import { Skysmack, Package } from '@skysmack/packages-skysmack';
+import { Skysmack } from '@skysmack/packages-skysmack';
 import { Menu } from './../../../models/menu';
 import { NgSkysmackStore } from './../../../../ng-packages/skysmack/redux/ng-skysmack-store';
 import { UIRedux } from './../../../redux/ui-redux';
 import { NgAuthenticationActions } from 'lib/ng-redux/actions/ng-authentication-actions';
-import { Router } from '@angular/router';
+import { Package } from '@skysmack/framework';
 
 @Component({
   selector: 'ss-navbar',

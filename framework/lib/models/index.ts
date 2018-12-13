@@ -19,3 +19,4 @@ export * from './http-method';
 export * from './http-success-response';
 export * from './http-error-response';
 export * from './http-response';
+export * from './package';

@@ -24,7 +24,14 @@ RD /s /q "%~dp0\..\redux\node_modules";
 echo Deleted redux\node_modules;
 del /s /q "%~dp0\..\redux\package-lock.json";
 
-rem packages-skysmack
+rem packages
+RD /s /q "%~dp0\..\packages\dist";
+echo Deleted packages\dist;
+RD /s /q "%~dp0\..\packages\node_modules";
+echo Deleted packages\node_modules;
+del /s /q "%~dp0\..\packages\package-lock.json";
+
+rem packages-oauth2
 RD /s /q "%~dp0\..\packages-oauth2\dist";
 echo Deleted packages-oauth2\dist;
 RD /s /q "%~dp0\..\packages-oauth2\node_modules";

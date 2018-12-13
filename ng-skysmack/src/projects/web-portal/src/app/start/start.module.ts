@@ -1,6 +1,5 @@
 import { NgReduxRouter, NgReduxRouterModule } from '@angular-redux/router';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { HttpClientModule } from '@angular/common/http';
 import { NgRedux, NgReduxModule } from '@angular-redux/store';
 
 import { RouterModule } from '@angular/router';

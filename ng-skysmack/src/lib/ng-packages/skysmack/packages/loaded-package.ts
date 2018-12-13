@@ -1,4 +1,4 @@
-import { Package } from '@skysmack/packages-skysmack';
+import { Package } from '@skysmack/framework';
 import { PackageManifest } from './../../../portal-ui/models/package-manifest';
 
 export class LoadedPackage {
