@@ -1,6 +1,6 @@
 import { StrIndex } from '@skysmack/framework';
 
-export abstract class RecordValidation {
+export abstract class Validation {
     public abstract formErrors: StrIndex<{}>;
     public abstract validationMessages: StrIndex<{}>;
     public abstract area: string;

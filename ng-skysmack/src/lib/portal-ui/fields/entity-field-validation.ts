@@ -1,7 +1,7 @@
 import { StrIndex } from '@skysmack/framework';
-import { RecordValidation } from '../forms/record-validation';
+import { Validation } from '../forms/validation';
 
-export class EntityFieldsValidation extends RecordValidation {
+export class EntityFieldsValidation extends Validation {
     public formErrors = {
         key: '',
         type: '',

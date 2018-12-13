@@ -4,7 +4,7 @@ import { SubscriptionLike } from 'rxjs';
 import { Field } from './../../../fields/field';
 import { FormRule } from './../../../forms/form-rule';
 import { FormHelper } from './../../../forms/form-helper';
-import { RecordValidation } from 'lib/portal-ui/forms/record-validation';
+import { Validation } from 'lib/portal-ui/forms/validation';
 
 @Component({
   selector: 'ss-dynamic-form',
@@ -15,7 +15,7 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
 
   @Input() public fields: Field[];
   @Input() public rules: FormRule[];
-  @Input() public validation: RecordValidation;
+  @Input() public validation: Validation;
   @Input() public buttonText = 'Submit';
 
   public fh: FormHelper;

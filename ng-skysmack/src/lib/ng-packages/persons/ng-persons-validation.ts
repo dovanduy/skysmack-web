@@ -1,7 +1,7 @@
 import { StrIndex } from '@skysmack/framework';
-import { RecordValidation } from 'lib/portal-ui/forms/record-validation';
+import { Validation } from 'lib/portal-ui/forms/validation';
 
-export class PersonsValidation extends RecordValidation {
+export class PersonsValidation extends Validation {
     public formErrors = {
         firstName: '',
         lastName: '',

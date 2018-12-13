@@ -4,7 +4,7 @@
 1. Copy example of code to scaffold to files in the schematics folder.
 2. Open a powershell window in the files folder.
 3. Run the below command in the powershell window
-    - `Get-ChildItem -recurse -name | ForEach-Object { Move-Item $_ $_.replace("maintenance-entities", "__name@dasherize__") }`
+    - `Get-ChildItem -recurse -name | ForEach-Object { Move-Item $_ $_.replace("person", "package") }`
 4. Open the files folder in VS code. 
 5. If you have turned "editor.formatOnSave": true in vs code settings, turn this to false while replacing.
 6. ctrl + shift + h

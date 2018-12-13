@@ -47,6 +47,9 @@ persons
         persons-edit/
         persons-index/
         persons-component.ts
+    i18n/
+        en.json
+        da.json
     persons-routing.module.ts
     persons.module.ts
 

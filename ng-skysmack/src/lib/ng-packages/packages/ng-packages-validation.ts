@@ -1,19 +1,29 @@
 import { StrIndex } from '@skysmack/framework';
 import { Validation } from 'lib/portal-ui/forms/validation';
 
-export class LodgingsValidation extends Validation {
+export class PackagesValidation extends Validation {
     public formErrors = {
         name: '',
-        displayName: ''
+        description: '',
+        path: '',
+        type: ''
     };
 
     public validationMessages: StrIndex<{}> = {
         name: {
             required: '',
-        }
+        },
+        description: {
+            required: '',
+        },
+        path: {
+            required: '',
+        },
+        type: {
+            required: ''
+        },
     };
-
-    public area = 'lodgings';
+    public area = 'packages';
 
     public formValidators = [];
 
