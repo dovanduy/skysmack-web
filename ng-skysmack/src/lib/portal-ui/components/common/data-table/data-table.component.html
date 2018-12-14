@@ -24,7 +24,7 @@
                 <i class="material-icons">{{ entityAction.icon }}</i> <span class="icon-text">{{
                   entityAction.displayName }}</span>
               </a>
-              <a *ngIf="!entityAction.isActionEvent" mat-menu-item [routerLink]="[entityAction.url, entity.object.id ? entity.object.id : entity.object.key]">
+              <a *ngIf="!entityAction.isActionEvent" mat-menu-item [routerLink]="[entityAction.url, entity.getObjectIdentifier()]">
                 <i class="material-icons">{{ entityAction.icon }}</i> <span class="icon-text">{{
                   entityAction.displayName }}</span>
               </a>

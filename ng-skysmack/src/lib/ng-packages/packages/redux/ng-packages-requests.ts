@@ -20,7 +20,7 @@ export class NgPackagesRequests implements PackagesRequests {
             map(httpResponse => Object.assign({}, new ReduxAction<GetPackagesSuccessPayload>({
                 type: PackagesActions.GET_PACKAGES_SUCCESS,
                 payload: {
-                    packages: httpResponse.body
+                    packages: httpResponse.body ? httpResponse.body : []
                 }
             }))),
             catchError((error) => of(Object.assign({}, new ReduxAction({

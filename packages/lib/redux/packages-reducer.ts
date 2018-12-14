@@ -22,7 +22,7 @@ export function packagesReducer(state = new PackagesState(), action: any): Packa
     switch (action.type) {
         case PackagesActions.GET_PACKAGES_SUCCESS: {
             const castedAction: ReduxAction<GetPackagesSuccessPayload> = action;
-            newState.localPackages = castedAction.payload.packages.map(x => toLocalObject(x));
+            newState.localPackages = castedAction.payload.packages.map(x => toLocalObject(x).setObjectIdentifier('path'));
             return newState;
         }
         case PackagesActions.GET_PACKAGES_FAILURE: {

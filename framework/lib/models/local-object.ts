@@ -7,6 +7,7 @@ export class LocalObject<TObject> {
     public modifyType: string;
     public isNew: boolean = false;
     public foreignKey: string;
+    public identity: string = 'id';
 
     public object: TObject;
     public oldObject: TObject;
@@ -15,5 +16,14 @@ export class LocalObject<TObject> {
 
     public constructor(init?: Partial<LocalObject<TObject>>) {
         Object.assign(this, init);
+    }
+
+    public getObjectIdentifier() {
+        return this.object[this.identity]
+    }
+
+    public setObjectIdentifier(identity: string) {
+        this.identity = identity;
+        return this;
     }
 }

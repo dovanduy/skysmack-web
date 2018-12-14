@@ -6,7 +6,7 @@ import { NgSkysmackStore } from 'lib/ng-packages/skysmack';
 import { NgPackagesStore, NgPackagesMenu } from 'lib/ng-packages/packages';
 import { PackagesAppState } from '@skysmack/packages';
 import { Package, LocalObject } from '@skysmack/framework';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 
 
 @Component({

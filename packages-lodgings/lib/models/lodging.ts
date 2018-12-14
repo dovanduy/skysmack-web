@@ -14,5 +14,4 @@ export class Lodging implements DocumentRecord<number> {
     public constructor(init?: Partial<Lodging>) {
         Object.assign(this, init);
     }
-
 }

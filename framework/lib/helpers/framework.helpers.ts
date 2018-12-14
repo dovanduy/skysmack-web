@@ -59,9 +59,10 @@ export const toLocalObject = <TYPE>(
     modifyType: string = null,
     isNew: boolean = false,
     foreignKey: any = null,
-    error: any = null
+    error: any = null,
+    identity: string = 'id'
 ): LocalObject<TYPE> => {
-    return new LocalObject<TYPE>({ object, localId, status, modifyType, isNew, foreignKey, error });
+    return new LocalObject<TYPE>({ object, localId, status, modifyType, isNew, foreignKey, error, identity });
 };
 
 // /**
