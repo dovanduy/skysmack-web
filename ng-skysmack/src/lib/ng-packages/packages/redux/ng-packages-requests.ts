@@ -1,12 +1,40 @@
 import { Injectable, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { ApiDomain } from '@skysmack/framework';
+import { ApiDomain, Package } from '@skysmack/framework';
+import { PackagesRequests, GetPackagesSuccessPayload, PackagesActions, GetPackageSuccessPayload } from '@skysmack/packages';
+import { Observable } from '@skysmack/framework/node_modules/rxjs';
+import { map } from 'rxjs/operators';
+import { ReduxAction, PackagePathPayload } from '@skysmack/redux';
 
 @Injectable({ providedIn: 'root' })
-export class NgPackagesRequests {
+export class NgPackagesRequests implements PackagesRequests {
     constructor(
         protected http: HttpClient,
         @Inject('ApiDomain') protected apiDomain: ApiDomain
     ) {
+    }
+
+    public get(): Observable<ReduxAction<GetPackagesSuccessPayload>> {
+        const url = this.apiDomain.domain + '/skysmack/packages';
+        return this.http.get<Package[]>(url, { observe: 'response' }).pipe(
+            map(httpResponse => Object.assign({}, new ReduxAction<GetPackagesSuccessPayload>({
+                type: PackagesActions.GET_PACKAGES_SUCCESS,
+                payload: {
+                    packages: httpResponse.body
+                }
+            })))
+        );
+    }
+
+    public getSingle(action: ReduxAction<PackagePathPayload>): Observable<ReduxAction<GetPackageSuccessPayload>> {
+        const url = `${this.apiDomain.domain} + '/skysmack/packages/${action.payload}`;
+        return this.http.get<Package>(url, { observe: 'response' }).pipe(
+            map(httpResponse => Object.assign({}, new ReduxAction<GetPackageSuccessPayload>({
+                type: PackagesActions.GET_SINGLE_PACKAGE_SUCCESS,
+                payload: {
+                    _package: httpResponse.body
+                }
+            })))
+        );
     }
 }

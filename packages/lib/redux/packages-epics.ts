@@ -16,7 +16,7 @@ export class PackagesEpics {
 
     public getEpic = (action$: ActionsObservable<ReduxAction>) => action$.pipe(
         ofType(PackagesActions.GET_PACKAGES),
-        switchMap(action => this.requests.get(action))
+        switchMap(() => this.requests.get())
     )
 
     public getSingleEpic = (action$: ActionsObservable<ReduxAction<PackagePathPayload>>) => action$.pipe(
