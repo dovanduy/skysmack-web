@@ -16,7 +16,7 @@ import { Observable, of } from 'rxjs';
 })
 export class PackagesIndexComponent extends BaseComponent<PackagesAppState, string> implements OnInit {
 
-  public packages$: Observable<LocalObject<Package>> = of<LocalObject<Package>>([] as any);
+  public packages$: Observable<LocalObject<Package>[]>;
 
   public displayedColumns = ['name', 'path'];
   public entityActions: EntityAction[] = [
@@ -34,16 +34,16 @@ export class PackagesIndexComponent extends BaseComponent<PackagesAppState, stri
     public sidebarMenu: NgPackagesMenu
   ) {
     super(router, activatedRoute, redux);
-
   }
 
   ngOnInit() {
     super.ngOnInit();
+    this.actions.get();
+    this.packages$ = this.store.get();
     this.title.setTitle(this.packagePath);
   }
 
   private delete(value: LocalObject<Package>, _this: PackagesIndexComponent) {
-    // TODO: Incomment below when delete is defined
-    // _this.actions.delete([value], _this.packagePath);
+    _this.actions.delete([value]);
   }
 }

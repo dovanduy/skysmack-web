@@ -19,7 +19,7 @@ export abstract class NgRecordReduxStore<TState, TRecord extends Record<TKey>, T
     }
 
     public getSingle(packagePath: string, id: TKey): Observable<LocalObject<TRecord>> {
-        return this.get(packagePath).pipe(map(records => records.find(record => record.object.id.toString() === id.toString())));
+        return this.get(packagePath).pipe(map(records => records.find(record => record.object.id.toString() === id.toString())), hasValue());
     }
 
     public getPages(packagePath: string): Observable<StrIndex<LocalPageTypes<TKey>>> {
