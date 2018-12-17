@@ -50,7 +50,6 @@ export function packagesReducer(state = new PackagesState(), action: any): Packa
         }
         case PackagesActions.ADD_PACKAGE: {
             const castedAction: ReduxAction<any, any> = action;
-            console.log(castedAction);
             const packagesToBeCreated = castedAction.meta.offline.commit.meta.packages;
             newState.localPackages = ArrayHelpers.mergeLocalObjectArraysImmutable(newState.localPackages, packagesToBeCreated);
             return newState;
