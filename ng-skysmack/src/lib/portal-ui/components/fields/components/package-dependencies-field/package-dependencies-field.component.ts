@@ -31,14 +31,13 @@ export class PackageDependenciesFieldComponent extends FieldBaseComponent implem
     this.createSelectBoxes();
   }
 
-  public setDependencies(selectBoxIndex, selectedDepType: string): void {
-    // this.selectedDepTypes[dependency] = selectedDepType;
+  public setDependencies(selectBox: SelectBox, selectedDepType: string): void {
+    let deps = this.getOtherFieldValue('dependencies');
 
-    // let deps = this.getOtherFieldValue('dependencies');
-    // deps = deps ? deps : [];
-    // deps.push(selectedDepType);
-    // console.log(deps);
-    // this.setOtherFieldValue('dependencies', deps);
+    deps = deps ? deps : [];
+    deps[selectBox.index] = selectedDepType;
+
+    this.setOtherFieldValue('dependencies', deps);
   }
 
   private createSelectBoxes(): void {
