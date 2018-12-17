@@ -1,5 +1,5 @@
-import { LocalObject, Package, toLocalObject, HttpErrorResponse, ArrayHelpers, HttpSuccessResponse } from '@skysmack/framework';
-import { AppState, ReduxAction } from '@skysmack/redux';
+import { LocalObject, Package, toLocalObject, HttpErrorResponse, ArrayHelpers, HttpSuccessResponse, AvailablePackage } from '@skysmack/framework';
+import { AppState, ReduxAction, GetAvailablePackagesSuccessPayload } from '@skysmack/redux';
 import { PackagesActions } from './packages-actions';
 import { GetPackagesSuccessPayload } from '../payloads';
 
@@ -12,7 +12,7 @@ export class PackagesAppState extends AppState {
 
 export class PackagesState {
     public localPackages: LocalObject<Package>[] = [];
-    public availablePackages: LocalObject<Package>[] = [];
+    public availablePackages: LocalObject<AvailablePackage>[] = [];
 }
 
 export function packagesReducer(state = new PackagesState(), action: any): PackagesState {
@@ -32,8 +32,8 @@ export function packagesReducer(state = new PackagesState(), action: any): Packa
             return newState;
         }
         case PackagesActions.GET_AVAILABLE_PACKAGES_SUCCESS: {
-            const castedAction: ReduxAction<GetPackagesSuccessPayload> = action;
-            const incomingAvailablePackages = castedAction.payload.packages.map(x => toLocalObject(x).setObjectIdentifier('path'));
+            const castedAction: ReduxAction<GetAvailablePackagesSuccessPayload> = action;
+            const incomingAvailablePackages = castedAction.payload.availablePackages.map(x => toLocalObject(x).setObjectIdentifier('path'));
             newState.availablePackages = ArrayHelpers.mergeLocalObjectArraysImmutable(newState.availablePackages, incomingAvailablePackages);
             return newState;
         }

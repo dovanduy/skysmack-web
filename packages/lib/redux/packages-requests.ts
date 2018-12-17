@@ -1,10 +1,10 @@
 import { Observable } from 'rxjs';
-import { ReduxAction } from '@skysmack/redux';
+import { ReduxAction, GetAvailablePackagesSuccessPayload } from '@skysmack/redux';
 import { GetPackageSuccessPayload } from '../payloads/get-package-success-payload';
 import { GetPackagesSuccessPayload } from '../payloads/get-packages-success-payload';
 
 export interface PackagesRequests {
     get(): Observable<ReduxAction<GetPackagesSuccessPayload>>;
     getSingle(action: ReduxAction): Observable<ReduxAction<GetPackageSuccessPayload>>
-    getAvailablePackages(): Observable<ReduxAction<GetPackagesSuccessPayload>>
+    getAvailablePackages(): Observable<ReduxAction<GetAvailablePackagesSuccessPayload>>
 }

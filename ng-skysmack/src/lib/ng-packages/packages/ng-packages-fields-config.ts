@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { FormRule } from 'lib/portal-ui/forms/form-rule';
-import { LocalObject, Package } from '@skysmack/framework';
+import { LocalObject, Package, AvailablePackage } from '@skysmack/framework';
 import { Field } from 'lib/portal-ui/fields/field';
 import { PackagesValidation } from './ng-packages-validation';
 import { SetPathRule } from 'lib/portal-ui/forms/rules/set-path-rule';
@@ -9,7 +9,7 @@ import { FieldTypes } from 'lib/portal-ui/fields/field-types';
 import { Validators } from '@angular/forms';
 
 export interface NgPackageFormDependencies {
-    availablePackages: LocalObject<Package>[];
+    availablePackages: LocalObject<AvailablePackage>[];
 }
 
 @Injectable({ providedIn: 'root' })

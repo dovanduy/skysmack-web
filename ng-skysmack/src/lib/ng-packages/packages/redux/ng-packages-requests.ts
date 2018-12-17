@@ -4,7 +4,7 @@ import { ApiDomain, Package } from '@skysmack/framework';
 import { PackagesRequests, GetPackagesSuccessPayload, PackagesActions, GetPackageSuccessPayload } from '@skysmack/packages';
 import { Observable, of } from '@skysmack/framework/node_modules/rxjs';
 import { map, catchError } from 'rxjs/operators';
-import { ReduxAction, PackagePathPayload } from '@skysmack/redux';
+import { ReduxAction, PackagePathPayload, GetAvailablePackagesSuccessPayload } from '@skysmack/redux';
 
 @Injectable({ providedIn: 'root' })
 export class NgPackagesRequests implements PackagesRequests {
@@ -48,13 +48,13 @@ export class NgPackagesRequests implements PackagesRequests {
         );
     }
 
-    public getAvailablePackages(): Observable<ReduxAction<GetPackagesSuccessPayload>> {
+    public getAvailablePackages(): Observable<ReduxAction<GetAvailablePackagesSuccessPayload>> {
         const url = this.apiDomain.domain + '/skysmack/available-packages';
         return this.http.get<Package[]>(url, { observe: 'response' }).pipe(
-            map(httpResponse => Object.assign({}, new ReduxAction<GetPackagesSuccessPayload>({
+            map(httpResponse => Object.assign({}, new ReduxAction<GetAvailablePackagesSuccessPayload>({
                 type: PackagesActions.GET_AVAILABLE_PACKAGES_SUCCESS,
                 payload: {
-                    packages: httpResponse.body ? httpResponse.body : []
+                    availablePackages: httpResponse.body ? httpResponse.body : []
                 }
             }))),
             catchError((error) => of(Object.assign({}, new ReduxAction({
