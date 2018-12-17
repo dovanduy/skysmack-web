@@ -1,16 +1,16 @@
 import { FormRule } from '../form-rule';
 
-export class SetUrlRule extends FormRule {
+export class SetPathRule extends FormRule {
     protected rule() {
         const controls = this.getDefaultGroupControls();
         const nameControl = controls['name'];
-        const urlControl = controls['url'];
+        const pathControl = controls['path'];
 
         const name = nameControl.value ? nameControl.value.trim() : '';
-        const url = urlControl.value ? urlControl.value.trim() : '';
-        if (url.length <= 0 && name !== '' && name !== '') {
+        const path = pathControl.value ? pathControl.value.trim() : '';
+        if (path.length <= 0 && name !== '' && name !== '') {
             // https://stackoverflow.com/questions/8485027/javascript-url-safe-filename-safe-string
-            urlControl.setValue(name.replace(/[^a-z0-9]/gi, '_').toLowerCase());
+            pathControl.setValue(name.replace(/[^a-z0-9]/gi, '_').toLowerCase());
         }
     }
 }

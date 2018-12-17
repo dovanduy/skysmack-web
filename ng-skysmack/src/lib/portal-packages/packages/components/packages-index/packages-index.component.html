@@ -1,7 +1,6 @@
 <ss-container [sidebarMenu]="sidebarMenu">
-    <ss-data-table *ngIf="packages$" [actions]="actions" [title]="'Packages (replace w. translation string)'"
-        [displayedColumns]="displayedColumns" [entities$]="packages$" [entityActions]="entityActions" [packagePath]="packagePath"
-        (entityActionEvent)="actionEvent($event)">
+    <ss-data-table *ngIf="packages$" [actions]="actions" [title]="'Packages'" [displayedColumns]="displayedColumns"
+        [entities$]="packages$" [entityActions]="entityActions" [packagePath]="packagePath" (entityActionEvent)="actionEvent($event)">
         <ss-pagination [loadingState]="loadingState" (intersection)="onIntersection($event)"></ss-pagination>
     </ss-data-table>
 </ss-container>

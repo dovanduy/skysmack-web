@@ -46,27 +46,36 @@ export class PackagesActions<TStateType, TStore extends Store<TStateType>> {
         })));
     }
 
+    public getAvailablePackages() {
+        this.store.dispatch(Object.assign({}, new ReduxAction({
+            type: PackagesActions.GET_AVAILABLE_PACKAGES
+        })));
+    }
+
+
     public add(packages: LocalObject<Package>[]) {
         this.store.dispatch(Object.assign({}, new ReduxAction<any, any>({
             type: PackagesActions.ADD_PACKAGE,
             meta: {
-                effect: new Effect<Package[]>(new EffectRequest<Package[]>(
-                    'skysmack/packages',
-                    HttpMethod.POST,
-                    packages.map(x => x.object)
-                )),
-                commit: new ReduxAction({
-                    type: PackagesActions.ADD_PACKAGE_SUCCESS,
-                    meta: {
-                        packages
-                    }
-                }),
-                rollback: new ReduxAction({
-                    type: PackagesActions.ADD_PACKAGE_FAILURE,
-                    meta: {
-                        packages
-                    }
-                })
+                offline: {
+                    effect: new Effect<Package[]>(new EffectRequest<Package[]>(
+                        'skysmack/packages',
+                        HttpMethod.POST,
+                        packages.map(x => x.object)
+                    )),
+                    commit: new ReduxAction({
+                        type: PackagesActions.ADD_PACKAGE_SUCCESS,
+                        meta: {
+                            packages
+                        }
+                    }),
+                    rollback: new ReduxAction({
+                        type: PackagesActions.ADD_PACKAGE_FAILURE,
+                        meta: {
+                            packages
+                        }
+                    })
+                }
             }
         })));
     }
@@ -75,23 +84,25 @@ export class PackagesActions<TStateType, TStore extends Store<TStateType>> {
         this.store.dispatch(Object.assign({}, new ReduxAction<any, any>({
             type: PackagesActions.ADD_PACKAGE,
             meta: {
-                effect: new Effect<Package[]>(new EffectRequest<Package[]>(
-                    'skysmack/packages',
-                    HttpMethod.PUT,
-                    packages.map(x => x.object)
-                )),
-                commit: new ReduxAction({
-                    type: PackagesActions.ADD_PACKAGE_SUCCESS,
-                    meta: {
-                        packages
-                    }
-                }),
-                rollback: new ReduxAction({
-                    type: PackagesActions.ADD_PACKAGE_FAILURE,
-                    meta: {
-                        packages
-                    }
-                })
+                offline: {
+                    effect: new Effect<Package[]>(new EffectRequest<Package[]>(
+                        'skysmack/packages',
+                        HttpMethod.PUT,
+                        packages.map(x => x.object)
+                    )),
+                    commit: new ReduxAction({
+                        type: PackagesActions.ADD_PACKAGE_SUCCESS,
+                        meta: {
+                            packages
+                        }
+                    }),
+                    rollback: new ReduxAction({
+                        type: PackagesActions.ADD_PACKAGE_FAILURE,
+                        meta: {
+                            packages
+                        }
+                    })
+                }
             }
         })));
     }
@@ -100,26 +111,28 @@ export class PackagesActions<TStateType, TStore extends Store<TStateType>> {
         this.store.dispatch(Object.assign({}, new ReduxAction<any, any>({
             type: PackagesActions.ADD_PACKAGE,
             meta: {
-                effect: new Effect<Package[]>(new EffectRequest<Package[]>(
-                    'skysmack/packages',
-                    HttpMethod.PUT,
-                    packages.map(x => {
-                        x.status = LocalObjectStatus.DELETING
-                        return x.object
+                offline: {
+                    effect: new Effect<Package[]>(new EffectRequest<Package[]>(
+                        'skysmack/packages',
+                        HttpMethod.PUT,
+                        packages.map(x => {
+                            x.status = LocalObjectStatus.DELETING
+                            return x.object
+                        })
+                    )),
+                    commit: new ReduxAction({
+                        type: PackagesActions.ADD_PACKAGE_SUCCESS,
+                        meta: {
+                            packages
+                        }
+                    }),
+                    rollback: new ReduxAction({
+                        type: PackagesActions.ADD_PACKAGE_FAILURE,
+                        meta: {
+                            packages
+                        }
                     })
-                )),
-                commit: new ReduxAction({
-                    type: PackagesActions.ADD_PACKAGE_SUCCESS,
-                    meta: {
-                        packages
-                    }
-                }),
-                rollback: new ReduxAction({
-                    type: PackagesActions.ADD_PACKAGE_FAILURE,
-                    meta: {
-                        packages
-                    }
-                })
+                }
             }
         })));
     }

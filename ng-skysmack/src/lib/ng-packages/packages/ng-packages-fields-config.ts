@@ -3,7 +3,7 @@ import { FormRule } from 'lib/portal-ui/forms/form-rule';
 import { LocalObject, Package } from '@skysmack/framework';
 import { Field } from 'lib/portal-ui/fields/field';
 import { PackagesValidation } from './ng-packages-validation';
-import { SetUrlRule } from 'lib/portal-ui/forms/rules/set-url-rule';
+import { SetPathRule } from 'lib/portal-ui/forms/rules/set-path-rule';
 import { SelectField } from 'lib/portal-ui/fields/select-field';
 import { FieldTypes } from 'lib/portal-ui/fields/field-types';
 import { Validators } from '@angular/forms';
@@ -17,8 +17,19 @@ export class NgPackagesFieldsConfig {
     public validation = new PackagesValidation();
 
     public formRules: FormRule[] = [
-        new SetUrlRule(['name'])
+        new SetPathRule(['name'])
     ];
+
+    public getStaticFields(entity?: LocalObject<Package>, dependencies?: NgPackageFormDependencies): Field[] {
+        const fieldArea = this.validation.area.toUpperCase() + '.FORM.';
+        return this.getEntityFields(entity, dependencies).map(field => {
+            // Labels
+            field.label = fieldArea + 'LABELS.' + field.key.toUpperCase();
+            // Placeholders
+            field.placeholder = fieldArea + 'PLACEHOLDERS.' + field.key.toUpperCase();
+            return field;
+        });
+    }
 
     protected getEntityFields(_package?: LocalObject<Package>, dependencies?: NgPackageFormDependencies): Field[] {
         return [
@@ -29,13 +40,13 @@ export class NgPackagesFieldsConfig {
                 key: 'type',
                 validators: [Validators.required],
                 optionsData: dependencies.availablePackages,
-                valueSelector: 'type',
-                displayNameSelector: 'name',
+                valueSelector: 'object.type',
+                displayNameSelector: 'object.name',
                 disabled: _package ? true : false,
                 order: 1,
             } as SelectField),
 
-            new SelectField({
+            new Field({
                 fieldType: FieldTypes.string,
                 value: _package ? _package.object.name : undefined,
                 key: 'name',
@@ -43,7 +54,7 @@ export class NgPackagesFieldsConfig {
                 validators: [Validators.required],
                 order: 2,
                 placeholder: 'Enter name'
-            } as SelectField),
+            } as Field),
 
             new Field({
                 fieldType: FieldTypes.string,

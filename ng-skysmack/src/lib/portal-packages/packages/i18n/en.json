@@ -24,7 +24,7 @@
                     "REQUIRED": "A description is required."
                 },
                 "PATH": {
-                    "REQUIRED": "An url to access the package is required."
+                    "REQUIRED": "A path is required."
                 }
             }
         },
@@ -35,7 +35,7 @@
             "ADAPTORS": "Adaptors",
             "FEATURES": "Features",
             "INSTALL": "Install package",
-            "TITEL": "Packages"
+            "TITLE": "Packages"
         },
         "CREATE": {
             "INSTALL": "Install package"

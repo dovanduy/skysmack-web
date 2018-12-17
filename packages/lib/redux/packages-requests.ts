@@ -6,4 +6,5 @@ import { GetPackagesSuccessPayload } from '../payloads/get-packages-success-payl
 export interface PackagesRequests {
     get(): Observable<ReduxAction<GetPackagesSuccessPayload>>;
     getSingle(action: ReduxAction): Observable<ReduxAction<GetPackageSuccessPayload>>
+    getAvailablePackages(): Observable<ReduxAction<GetPackagesSuccessPayload>>
 }

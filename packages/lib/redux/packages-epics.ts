@@ -10,7 +10,8 @@ export class PackagesEpics {
     constructor(protected requests: PackagesRequests) {
         this.epics = [
             this.getEpic,
-            this.getSingleEpic
+            this.getSingleEpic,
+            this.getAvailablePackagesEpic
         ];
     }
 
@@ -22,5 +23,10 @@ export class PackagesEpics {
     public getSingleEpic = (action$: ActionsObservable<ReduxAction<PackagePathPayload>>) => action$.pipe(
         ofType(PackagesActions.GET_SINGLE_PACKAGE),
         switchMap(action => this.requests.getSingle(action))
+    )
+
+    public getAvailablePackagesEpic = (action$: ActionsObservable<ReduxAction>) => action$.pipe(
+        ofType(PackagesActions.GET_AVAILABLE_PACKAGES),
+        switchMap(() => this.requests.getAvailablePackages())
     )
 }
