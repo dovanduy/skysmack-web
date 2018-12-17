@@ -46,6 +46,7 @@ import { HttpClient } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { IsAnonymousDirective, IsAuthenticatedDirective } from './autentication';
+import { PackageDependenciesFieldComponent } from './components/fields/components/package-dependencies-field/package-dependencies-field.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -108,6 +109,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     SelectFieldComponent,
     StringFieldComponent,
     TimeFieldComponent,
+    PackageDependenciesFieldComponent,
     PageHeaderComponent,
     SpeedDialFabComponent,
   ],
@@ -150,6 +152,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     SelectFieldComponent,
     StringFieldComponent,
     TimeFieldComponent,
+    PackageDependenciesFieldComponent,
     SpeedDialFabComponent
   ]
 })

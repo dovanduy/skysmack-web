@@ -39,14 +39,6 @@ export class FieldBaseComponent implements OnInit, OnDestroy {
         }
     }
 
-    protected runAllRulesOfType(type: string, dependencies?: any) {
-        this.rules.forEach(rule => {
-            if (rule.type === type) {
-                rule.runRule(this.fh.form, dependencies);
-            }
-        });
-    }
-
     protected setOtherFieldValue(fieldKey: string, newValue: any) {
         const fieldControl = this.fh.form.controls[fieldKey];
 
@@ -60,6 +52,14 @@ export class FieldBaseComponent implements OnInit, OnDestroy {
         }
     }
 
+    protected runAllRulesOfType(type: string, dependencies?: any) {
+        this.rules.forEach(rule => {
+            if (rule.type === type) {
+                rule.runRule(this.fh.form, dependencies);
+            }
+        });
+    }
+
     protected getFormField = (): FormControl => (this.fh.form.controls[this.field.key] as FormControl);
 
     protected getFieldValue() {
@@ -68,6 +68,14 @@ export class FieldBaseComponent implements OnInit, OnDestroy {
             return undefined;
         }
         return fieldValue;
+    }
+
+    protected getOtherFieldValue(fieldKey: string) {
+        const field = this.fh.form.controls[fieldKey];
+        if (field) {
+            return field.value;
+        }
+        throw new Error('Field not found. Please add it to fields config, or fix typo');
     }
 
     protected extractSingleValueOfArray() {

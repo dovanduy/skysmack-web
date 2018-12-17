@@ -41,8 +41,9 @@ export const safeUndefinedTo = (type: 'array' | 'object') => pipe(
 /**
  * Filter away null values.
 */
-export const notNull = () => pipe(
-    filter((x: any) => x !== null)
+export const notNull = <T>() => pipe(
+    defined(),
+    filter<T>((x: any) => x !== null)
 );
 
 /**
@@ -56,7 +57,6 @@ export const notEmpty = <T>() => pipe(
  * Filters away values that are undefined, null, or empty arrays/objects.
  */
 export const hasValue = <T>() => pipe(
-    defined(),
     notNull(),
     notEmpty<T>()
 );

@@ -36,9 +36,6 @@ export class PackagesCreateComponent extends BaseComponent<PackagesAppState, str
     super.ngOnInit();
     this.actions.getAvailablePackages();
 
-    // F
-
-
     this.subscriptionHandler.register(this.store.getAvailablePackages().subscribe(availablePackages => {
       this.fields = this.fieldsConfig.getStaticFields(undefined, { availablePackages });
     }));

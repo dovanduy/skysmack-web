@@ -13,6 +13,7 @@ export enum FieldTypes {
     EmailField,
     HiddenField,
     PasswordField,
+    PackageDependenciesField,
     RecurringExpressionField,
     SelectField,
     TimeField,

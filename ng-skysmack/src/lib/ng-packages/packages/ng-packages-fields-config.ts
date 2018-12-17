@@ -47,6 +47,16 @@ export class NgPackagesFieldsConfig {
             } as SelectField),
 
             new Field({
+                fieldType: FieldTypes.PackageDependenciesField,
+                value: _package ? _package.object.name : undefined,
+                key: 'name',
+                label: 'Name',
+                validators: [Validators.required],
+                order: 2,
+                placeholder: 'Enter name'
+            } as Field),
+
+            new Field({
                 fieldType: FieldTypes.string,
                 value: _package ? _package.object.name : undefined,
                 key: 'name',
@@ -64,6 +74,13 @@ export class NgPackagesFieldsConfig {
                 order: 3,
                 placeholder: 'Enter description'
             } as Field),
+
+            new Field({
+                fieldType: FieldTypes.HiddenField,
+                value: _package ? _package.object.dependencies : undefined,
+                key: 'dependencies',
+            } as Field),
+
 
             new Field({
                 fieldType: FieldTypes.string,
