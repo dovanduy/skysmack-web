@@ -73,9 +73,16 @@ export function packagesReducer(state = new PackagesState(), action: any): Packa
             return newState;
         }
         case PackagesActions.DELETE_PACKAGE_SUCCESS: {
+            const castedAction: ReduxAction<HttpSuccessResponse<any[] | any>, { packages: LocalObject<Package>[] }> = action;
+            // Foreach package, filter the newstate packages for that path.
+            castedAction.meta.packages.forEach(_package => {
+                newState.localPackages = newState.localPackages.filter(_localPackage => _localPackage.object.path !== _package.object.path);
+            });
             return newState;
         }
         case PackagesActions.DELETE_PACKAGE_FAILURE: {
+            const castedAction: ReduxAction<HttpErrorResponse> = action;
+            console.log('Packages delete error', castedAction);
             return newState;
         }
         default:

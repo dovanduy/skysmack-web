@@ -8,7 +8,6 @@ import { PackagesAppState } from '@skysmack/packages';
 import { Package, LocalObject } from '@skysmack/framework';
 import { Observable } from 'rxjs';
 
-
 @Component({
   selector: 'ss-packages-index',
   templateUrl: './packages-index.component.html',
@@ -41,6 +40,10 @@ export class PackagesIndexComponent extends BaseComponent<PackagesAppState, stri
     this.actions.get();
     this.packages$ = this.store.get();
     this.title.setTitle(this.packagePath);
+  }
+
+  public actionEvent(event: { action: Function, value: LocalObject<Package>, _this: any }) {
+    event.action(event.value, event._this);
   }
 
   private delete(value: LocalObject<Package>, _this: PackagesIndexComponent) {

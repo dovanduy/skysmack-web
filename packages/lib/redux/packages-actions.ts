@@ -108,13 +108,16 @@ export class PackagesActions<TStateType, TStore extends Store<TStateType>> {
     }
 
     public delete(packages: LocalObject<Package>[]) {
+        const paths = '?paths=' + packages.map(x => x.object.path).join('&paths=');
+
+
         this.store.dispatch(Object.assign({}, new ReduxAction<any, any>({
             type: PackagesActions.ADD_PACKAGE,
             meta: {
                 offline: {
                     effect: new Effect<Package[]>(new EffectRequest<Package[]>(
-                        'skysmack/packages',
-                        HttpMethod.PUT,
+                        'skysmack/packages' + paths,
+                        HttpMethod.DELETE,
                         packages.map(x => {
                             x.status = LocalObjectStatus.DELETING
                             return x.object
