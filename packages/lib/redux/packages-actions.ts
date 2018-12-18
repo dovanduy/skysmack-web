@@ -82,7 +82,7 @@ export class PackagesActions<TStateType, TStore extends Store<TStateType>> {
 
     public update(packages: LocalObject<Package>[]) {
         this.store.dispatch(Object.assign({}, new ReduxAction<any, any>({
-            type: PackagesActions.ADD_PACKAGE,
+            type: PackagesActions.UPDATE_PACKAGE,
             meta: {
                 offline: {
                     effect: new Effect<Package[]>(new EffectRequest<Package[]>(
@@ -91,13 +91,13 @@ export class PackagesActions<TStateType, TStore extends Store<TStateType>> {
                         packages.map(x => x.object)
                     )),
                     commit: new ReduxAction({
-                        type: PackagesActions.ADD_PACKAGE_SUCCESS,
+                        type: PackagesActions.UPDATE_PACKAGE_SUCCESS,
                         meta: {
                             packages
                         }
                     }),
                     rollback: new ReduxAction({
-                        type: PackagesActions.ADD_PACKAGE_FAILURE,
+                        type: PackagesActions.UPDATE_PACKAGE_FAILURE,
                         meta: {
                             packages
                         }
@@ -112,7 +112,7 @@ export class PackagesActions<TStateType, TStore extends Store<TStateType>> {
 
 
         this.store.dispatch(Object.assign({}, new ReduxAction<any, any>({
-            type: PackagesActions.ADD_PACKAGE,
+            type: PackagesActions.DELETE_PACKAGE,
             meta: {
                 offline: {
                     effect: new Effect<Package[]>(new EffectRequest<Package[]>(
@@ -124,13 +124,13 @@ export class PackagesActions<TStateType, TStore extends Store<TStateType>> {
                         })
                     )),
                     commit: new ReduxAction({
-                        type: PackagesActions.ADD_PACKAGE_SUCCESS,
+                        type: PackagesActions.DELETE_PACKAGE_SUCCESS,
                         meta: {
                             packages
                         }
                     }),
                     rollback: new ReduxAction({
-                        type: PackagesActions.ADD_PACKAGE_FAILURE,
+                        type: PackagesActions.DELETE_PACKAGE_FAILURE,
                         meta: {
                             packages
                         }
