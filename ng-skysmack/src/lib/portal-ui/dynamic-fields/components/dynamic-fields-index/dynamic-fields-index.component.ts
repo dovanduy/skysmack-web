@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Injector } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BaseComponent } from 'lib/portal-ui/base-components/base-component';
 import { EntityAction } from 'lib/portal-ui/models/entity-action';
@@ -8,17 +8,23 @@ import { NgDynamicFieldsMenu } from '../../ng-dynamic-fields-menu';
 import { NgSkysmackStore } from 'lib/ng-packages/skysmack/redux/ng-skysmack-store';
 import { EntityComponentPageTitle } from 'lib/portal-ui/models/entity-component-page-title';
 import { NgSkysmackActions } from 'lib/ng-packages/skysmack/redux/ng-skysmack-actions';
+import { NgDocumentRecordReduxStore } from 'lib/ng-redux';
+import { switchMap, map } from 'rxjs/operators';
+import { log, DynamicFieldRouteData } from '@skysmack/framework';
+import { DocumentRecordActionsBase, DocumentRecordState } from '@skysmack/redux';
 
 @Component({
   selector: 'ss-dynamic-fields-index',
   templateUrl: './dynamic-fields-index.component.html',
   styleUrls: ['./dynamic-fields-index.component.scss']
 })
-export class DynamicFieldsIndexComponent extends BaseComponent<unknown, unknown> implements OnInit {
+export class DynamicFieldsIndexComponent extends BaseComponent<DocumentRecordState<any, any>, any> implements OnInit {
 
-  public packages$: Observable<LocalObject<any>[]>;
+  public fields$: Observable<LocalObject<any>[]>;
+  public actions: DocumentRecordActionsBase<any, any>;
+  public store: NgDocumentRecordReduxStore<any, any, any>;
 
-  public displayedColumns = ['name', 'path'];
+  public displayedColumns = ['display'];
   public entityActions: EntityAction[] = [
     new EntityAction().asUrlAction('edit', 'Edit', 'edit'),
     new EntityAction().asEventAction('Delete', this.delete, 'delete', this)
@@ -27,16 +33,25 @@ export class DynamicFieldsIndexComponent extends BaseComponent<unknown, unknown>
   constructor(
     public router: Router,
     public activatedRoute: ActivatedRoute,
-    public actions: NgSkysmackActions, // Replace
-    public store: NgSkysmackStore, // Replace
     public title: EntityComponentPageTitle,
-    public sidebarMenu: NgDynamicFieldsMenu
+    public redux: NgSkysmackStore,
+    public sidebarMenu: NgDynamicFieldsMenu,
+    public injector: Injector
   ) {
-    super(router, activatedRoute, store);
+    super(router, activatedRoute, redux);
   }
 
   ngOnInit() {
-    this.activatedRoute.data.subscribe(x => console.log(x));
+    super.ngOnInit();
+    this.subscriptionHandler.register(this.activatedRoute.data.pipe(
+      map((data: DynamicFieldRouteData) => {
+        this.store = this.injector.get(data.storeToken);
+        this.actions = this.injector.get(data.actionToken);
+
+        this.actions.getFields(this.packagePath);
+        this.fields$ = this.store.getFields(this.packagePath);
+      })
+    ).subscribe());
   }
 
   public actionEvent(event: { action: Function, value: LocalObject<any>, _this: any }) {
@@ -44,6 +59,6 @@ export class DynamicFieldsIndexComponent extends BaseComponent<unknown, unknown>
   }
 
   private delete(value: LocalObject<any>, _this: DynamicFieldsIndexComponent) {
-    // _this.actions.delete([value]);
+    _this.actions.delete([value], this.packagePath);
   }
 }
