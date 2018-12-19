@@ -13,7 +13,7 @@ export const personsRoutes: Routes = [
   },
   {
     path: 'fields',
-    loadChildren: './../fields/fields.module#FieldsModule',
+    loadChildren: './../../portal-ui/dynamic-fields/dynamic-fields.module#DynamicFieldsModule',
     data: { reducer: 'persons' }
   }
 ];

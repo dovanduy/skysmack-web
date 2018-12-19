@@ -1,19 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { FieldsRoutingModule } from './fields-routing.module';
+import { DynamicFieldsRoutingModule } from './dynamic-fields-routing.module';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { PortalUiModule, HttpLoaderFactory } from 'lib/portal-ui/portal-ui.module';
-import { fieldsComponents } from './components/fields-components';
 import { TranslateModule, TranslateLoader, TranslateService } from '@ngx-translate/core';
 import { LanguageService } from 'lib/portal-ui/language/language.service';
+import { dynamicFieldsComponents } from './components/dynamic-fields-components';
 
 @NgModule({
   imports: [
     CommonModule,
     HttpClientModule,
     PortalUiModule,
-    FieldsRoutingModule,
+    DynamicFieldsRoutingModule,
     TranslateModule.forChild({
       loader: {
         provide: TranslateLoader,
@@ -24,11 +24,11 @@ import { LanguageService } from 'lib/portal-ui/language/language.service';
     })
   ],
   declarations: [
-    ...fieldsComponents
+    ...dynamicFieldsComponents
   ],
   providers: []
 })
-export class FieldsModule {
+export class DynamicFieldsModule {
   constructor(
     public languageService: LanguageService,
     public translateService: TranslateService
