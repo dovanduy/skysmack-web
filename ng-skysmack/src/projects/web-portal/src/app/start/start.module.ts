@@ -1,5 +1,6 @@
-// Do not rempve packages.module.ts import
+// Do not remove these import
 import { PackagesModule } from '../../../../../lib/portal-packages/packages/packages.module';
+import { FieldsModule } from '../../../../../lib/portal-packages/fields/fields.module';
 
 import { NgReduxRouter, NgReduxRouterModule } from '@angular-redux/router';
 import { HttpClientModule } from '@angular/common/http';
@@ -30,7 +31,7 @@ import { environment } from '../../environments/environment';
     RouterModule.forRoot([
       {
         path: 'packages',
-        loadChildren: '../../../../../lib/portal-packages/packages/packages.module#PackagesModule'
+        loadChildren: '../../../../../lib/portal-packages/packages/packages.module#FieldsModule'
       },
       {
         path: 'persons',

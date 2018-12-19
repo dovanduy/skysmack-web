@@ -1,11 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { PersonsRoutingModule } from './persons-routing.module';
+import { FieldsRoutingModule } from './fields-routing.module';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
-import { NgPersonsModule } from './../../ng-packages/persons';
 import { PortalUiModule, HttpLoaderFactory } from 'lib/portal-ui/portal-ui.module';
-import { personsComponents } from './components/persons-components';
+import { fieldsComponents } from './components/fields-components';
 import { TranslateModule, TranslateLoader, TranslateService } from '@ngx-translate/core';
 import { LanguageService } from 'lib/portal-ui/language/language.service';
 
@@ -14,8 +13,7 @@ import { LanguageService } from 'lib/portal-ui/language/language.service';
     CommonModule,
     HttpClientModule,
     PortalUiModule,
-    PersonsRoutingModule,
-    NgPersonsModule,
+    FieldsRoutingModule,
     TranslateModule.forChild({
       loader: {
         provide: TranslateLoader,
@@ -26,11 +24,11 @@ import { LanguageService } from 'lib/portal-ui/language/language.service';
     })
   ],
   declarations: [
-    ...personsComponents
+    ...fieldsComponents
   ],
   providers: []
 })
-export class PersonsModule {
+export class FieldsModule {
   constructor(
     public languageService: LanguageService,
     public translateService: TranslateService
