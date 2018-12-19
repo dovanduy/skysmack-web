@@ -2,8 +2,6 @@ import { Routes } from '@angular/router';
 import { PersonsIndexComponent } from './persons-index/persons-index.component';
 import { PersonsCreateComponent } from './persons-create/persons-create.component';
 import { PersonsEditComponent } from './persons-edit/persons-edit.component';
-// Do not remove these imports
-import { FieldsModule } from './../../fields/fields.module';
 
 export const personsRoutes: Routes = [
   {
@@ -15,7 +13,7 @@ export const personsRoutes: Routes = [
   },
   {
     path: 'fields',
-    loadChildren: './../../fields/fields.module#FieldsModule',
+    loadChildren: './../fields/fields.module#FieldsModule',
     data: { reducer: 'persons' }
   }
 ];

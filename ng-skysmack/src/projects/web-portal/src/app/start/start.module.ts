@@ -31,7 +31,7 @@ import { environment } from '../../environments/environment';
     RouterModule.forRoot([
       {
         path: 'packages',
-        loadChildren: '../../../../../lib/portal-packages/packages/packages.module#FieldsModule'
+        loadChildren: '../../../../../lib/portal-packages/packages/packages.module#PackagesModule'
       },
       {
         path: 'persons',
