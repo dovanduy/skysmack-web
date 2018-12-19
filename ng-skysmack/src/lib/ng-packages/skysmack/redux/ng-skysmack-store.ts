@@ -45,6 +45,5 @@ export class NgSkysmackStore {
     // TODO: What if it isn't the oauth 2 package? Does other packages have the same type id?
     public getAuthenticationPackages(): Observable<Package[]> {
         return this.ngRedux.select((state: SkysmackAppState) => state.skysmack.skysmack.packages.filter(_package => _package.type === Oauth2Type.id));
-        ;
     }
 }

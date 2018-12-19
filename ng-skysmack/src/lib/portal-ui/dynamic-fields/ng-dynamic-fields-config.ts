@@ -1,19 +1,28 @@
+import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
-import { FieldsConfig } from './fields-config';
-import { EntityFieldsValidation } from './entity-field-validation';
+import { FormRule } from 'lib/portal-ui/forms/form-rule';
 import { LocalObject, FieldValueProviderViewModel, FieldSchemaViewModel } from '@skysmack/framework';
-import { Field } from './field';
-import { FieldTypes } from './field-types';
-import { SelectField } from './select-field';
+import { Field } from 'lib/portal-ui/fields/field';
+import { FieldTypes } from 'lib/portal-ui/fields/field-types';
+import { DynamicFieldsValidation } from './ng-dynamic-fields-validation';
+import { SelectField } from '../fields/select-field';
 
-export abstract class DocumentFieldsConfig<TRecord, TDependencies> extends FieldsConfig<TRecord, TDependencies> {
-    public fieldsValidation = new EntityFieldsValidation();
+export interface NgDynamicFieldFormDependencies {
+    [key: string]: any;
+}
+
+@Injectable({ providedIn: 'root' })
+export class NgDynamicFieldsFieldsConfig {
+    public validation = new DynamicFieldsValidation();
+
+    public formRules: FormRule[] = [
+    ];
 
     /**
-    * Gets the fields for the form used to create or edit a dynamic field.
-    * @param availableFields Possible dynamic fields to create. Recieved from the backend.
-    * @param field Optional field can be providedto set default values. Used to edit an existing field.
-    */
+     * Gets the fields for the form used to create or edit a dynamic field.
+     * @param availableFields Possible dynamic fields to create. Recieved from the backend.
+     * @param field Optional field can be providedto set default values. Used to edit an existing field.
+     */
     protected dynamicFields(availableFields: LocalObject<FieldValueProviderViewModel>[], field?: LocalObject<FieldSchemaViewModel>): Field[] {
         const fields = [
             new Field({
@@ -68,6 +77,7 @@ export abstract class DocumentFieldsConfig<TRecord, TDependencies> extends Field
 
         return fields;
     }
+
 
     public getDynamicFields(availableFields: LocalObject<FieldValueProviderViewModel>[], field?: LocalObject<FieldSchemaViewModel>): Field[] {
         return this.dynamicFields(availableFields, field).map(aField => {

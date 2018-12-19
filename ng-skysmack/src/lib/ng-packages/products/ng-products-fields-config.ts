@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
-import { DocumentFieldsConfig } from 'lib/portal-ui/fields/document-fields-config';
 import { FormRule } from 'lib/portal-ui/forms/form-rule';
 import { LocalObject } from '@skysmack/framework';
 import { Product, ProductType } from '@skysmack/packages-products';
@@ -8,13 +7,14 @@ import { Field } from 'lib/portal-ui/fields/field';
 import { FieldTypes } from 'lib/portal-ui/fields/field-types';
 import { SelectField } from 'lib/portal-ui/fields/select-field';
 import { ProductsValidation } from './ng-products-validation';
+import { FieldsConfig } from 'lib/portal-ui/fields/fields-config';
 
 export interface NgProductFormDependencies {
     availableProductTypes: LocalObject<ProductType>[];
 }
 
 @Injectable({ providedIn: 'root' })
-export class NgProductsFieldsConfig extends DocumentFieldsConfig<Product, NgProductFormDependencies> {
+export class NgProductsFieldsConfig extends FieldsConfig<Product, NgProductFormDependencies> {
     public validation = new ProductsValidation();
 
     public formRules: FormRule[] = [

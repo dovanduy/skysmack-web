@@ -1,20 +1,19 @@
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
-import { DocumentFieldsConfig } from 'lib/portal-ui/fields/document-fields-config';
 import { FormRule } from 'lib/portal-ui/forms/form-rule';
-import { SetDisplayNameRule } from 'lib/portal-ui/forms/rules/set-display-name-rule';
 import { LocalObject } from '@skysmack/framework';
 import { LodgingType } from '@skysmack/packages-lodgings';
 import { Field } from 'lib/portal-ui/fields/field';
 import { FieldTypes } from 'lib/portal-ui/fields/field-types';
 import { LodgingTypesValidation } from './ng-lodging-types-validation';
+import { FieldsConfig } from 'lib/portal-ui/fields/fields-config';
 
 export interface NgLodgingTypeFormDependencies {
     [key: string]: any;
 }
 
 @Injectable({ providedIn: 'root' })
-export class NgLodgingTypesFieldsConfig extends DocumentFieldsConfig<LodgingType, NgLodgingTypeFormDependencies> {
+export class NgLodgingTypesFieldsConfig extends FieldsConfig<LodgingType, NgLodgingTypeFormDependencies> {
     public validation = new LodgingTypesValidation();
 
     public formRules: FormRule[] = [

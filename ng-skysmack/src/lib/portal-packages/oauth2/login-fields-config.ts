@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
-import { FormRule, DocumentFieldsConfig, FieldTypes, Field } from 'lib/portal-ui';
+import { FormRule, FieldTypes, Field, FieldsConfig } from 'lib/portal-ui';
 import { LoginValidation } from './login-validation';
 import { LocalObject } from '@skysmack/framework';
 
 @Injectable({ providedIn: 'root' })
-export class LoginFieldsConfig extends DocumentFieldsConfig<any, any> {
+export class LoginFieldsConfig extends FieldsConfig<any, any> {
     public validation = new LoginValidation();
 
     public formRules: FormRule[] = [];

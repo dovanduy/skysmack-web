@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
-import { DocumentFieldsConfig } from 'lib/portal-ui/fields/document-fields-config';
 import { FormRule } from 'lib/portal-ui/forms/form-rule';
 import { LocalObject } from '@skysmack/framework';
 import { Lodging, LodgingType } from '@skysmack/packages-lodgings';
@@ -8,13 +7,14 @@ import { Field } from 'lib/portal-ui/fields/field';
 import { FieldTypes } from 'lib/portal-ui/fields/field-types';
 import { LodgingTypesValidation } from './ng-lodging-types-validation';
 import { SelectField } from 'lib/portal-ui/fields/select-field';
+import { FieldsConfig } from 'lib/portal-ui/fields/fields-config';
 
 export interface NgLodgingFormDependencies {
     availableLodgingTypes: LocalObject<LodgingType>[];
 }
 
 @Injectable({ providedIn: 'root' })
-export class NgLodgingsFieldsConfig extends DocumentFieldsConfig<Lodging, NgLodgingFormDependencies> {
+export class NgLodgingsFieldsConfig extends FieldsConfig<Lodging, NgLodgingFormDependencies> {
     public validation = new LodgingTypesValidation();
 
     public formRules: FormRule[] = [

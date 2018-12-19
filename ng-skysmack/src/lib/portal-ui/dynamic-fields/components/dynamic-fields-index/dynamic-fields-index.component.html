@@ -1,6 +1,6 @@
-<p>
-  fields-index works!
-</p>
-<a [routerLink]="['create']">To create component</a>
-
-<router-outlet></router-outlet>
+<ss-container [sidebarMenu]="sidebarMenu" *ngIf="loadedPackage$ | async as loadedPackage">
+  <ss-data-table *ngIf="entities$" [actions]="actions" [title]="loadedPackage._package.name" [displayedColumns]="displayedColumns"
+    [entities$]="entities$" [entityActions]="entityActions" [packagePath]="packagePath" (entityActionEvent)="actionEvent($event)">
+    <ss-pagination [loadingState]="loadingState" (intersection)="onIntersection($event)"></ss-pagination>
+  </ss-data-table>
+</ss-container>

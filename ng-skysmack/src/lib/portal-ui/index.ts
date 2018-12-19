@@ -10,3 +10,4 @@ export * from './providers';
 export * from './base-components';
 export * from './autentication';
 export * from './language';
+export * from './dynamic-fields';

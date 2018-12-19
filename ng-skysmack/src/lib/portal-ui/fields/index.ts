@@ -1,4 +1,3 @@
-export * from './document-fields-config';
 export * from './field';
 export * from './field-types';
 export * from './field-base-component';
