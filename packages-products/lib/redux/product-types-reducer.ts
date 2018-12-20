@@ -13,7 +13,7 @@ export class ProductTypesState implements DocumentRecordState<ProductType, numbe
     public localPageTypes: StrIndex<StrIndex<LocalPageTypes<number>>> = {};
     public localRecords: StrIndex<StrIndex<LocalObject<ProductType>>> = {};
     public fields: StrIndex<LocalObject<FieldSchemaViewModel>[]> = {};
-    public availableFields: StrIndex<FieldValueProviderViewModel[]> = {};
+    public availableFields: StrIndex<LocalObject<FieldValueProviderViewModel>[]> = {};
 }
 
 export function productTypesReducer(state = new ProductTypesState(), action: ReduxAction, prefix: string = 'PRODUCT_TYPES_'): ProductTypesState {

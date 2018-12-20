@@ -1,16 +1,16 @@
 import { Component, OnInit, Injector } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { BaseComponent } from 'lib/portal-ui/base-components/base-component';
-import { EntityAction } from 'lib/portal-ui/models/entity-action';
-import { LocalObject } from '@skysmack/framework/lib/models/local-object';
+import { LocalObject, DynamicFieldRouteData } from '@skysmack/framework';
+import { DocumentRecordActionsBase, DocumentRecordState } from '@skysmack/redux';
 import { Observable } from 'rxjs';
-import { NgDynamicFieldsMenu } from '../../ng-dynamic-fields-menu';
+import { map } from 'rxjs/operators';
+''
+import { EntityAction } from 'lib/portal-ui/models/entity-action';
+import { BaseComponent } from 'lib/portal-ui/base-components/base-component';
 import { NgSkysmackStore } from 'lib/ng-packages/skysmack/redux/ng-skysmack-store';
 import { EntityComponentPageTitle } from 'lib/portal-ui/models/entity-component-page-title';
-import { NgDocumentRecordReduxStore } from 'lib/ng-redux';
-import { map } from 'rxjs/operators';
-import { DynamicFieldRouteData } from '@skysmack/framework';
-import { DocumentRecordActionsBase, DocumentRecordState } from '@skysmack/redux';
+import { NgDocumentRecordReduxStore } from 'lib/ng-redux/redux-stores/ng-document-record-redux-store';
+import { NgDynamicFieldsMenu } from '../../ng-dynamic-fields-menu';
 
 @Component({
   selector: 'ss-dynamic-fields-index',

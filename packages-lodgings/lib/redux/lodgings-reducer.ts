@@ -13,7 +13,7 @@ export class LodgingsState implements DocumentRecordState<Lodging, number> {
     public localPageTypes: StrIndex<StrIndex<LocalPageTypes<number>>> = {};
     public localRecords: StrIndex<StrIndex<LocalObject<Lodging>>> = {};
     public fields: StrIndex<LocalObject<FieldSchemaViewModel>[]> = {};
-    public availableFields: StrIndex<FieldValueProviderViewModel[]> = {};
+    public availableFields: StrIndex<LocalObject<FieldValueProviderViewModel>[]> = {};
 }
 
 export function lodgingsReducer(state = new LodgingsState(), action: ReduxAction, prefix: string = 'LODGINGS_'): LodgingsState {

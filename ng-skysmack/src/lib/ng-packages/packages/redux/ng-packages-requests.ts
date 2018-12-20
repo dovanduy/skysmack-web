@@ -32,7 +32,7 @@ export class NgPackagesRequests implements PackagesRequests {
     }
 
     public getSingle(action: ReduxAction<PackagePathPayload>): Observable<ReduxAction<GetPackageSuccessPayload>> {
-        const url = `${this.apiDomain.domain}/skysmack/packages/${action.payload}`;
+        const url = `${this.apiDomain.domain}/skysmack/packages/${action.payload.packagePath}`;
         return this.http.get<Package>(url, { observe: 'response' }).pipe(
             map(httpResponse => Object.assign({}, new ReduxAction<GetPackageSuccessPayload>({
                 type: PackagesActions.GET_SINGLE_PACKAGE_SUCCESS,

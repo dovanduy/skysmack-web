@@ -1,3 +1,4 @@
-<p>
-  fields-create works!
-</p>
+<ss-dynamic-form *ngIf="fields" [fields]="fields" [validation]="fieldsConfig.validation" [rules]="fieldsConfig.formRules"
+  [buttonText]="'Create'" (submitted)="onCreateSubmit($event)">
+  <h2 [translate]="'FIELDS.CREATE.SUBMIT'"></h2>
+</ss-dynamic-form>

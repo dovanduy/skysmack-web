@@ -13,7 +13,7 @@ export class PersonsState implements DocumentRecordState<Person, number> {
     public localPageTypes: StrIndex<StrIndex<LocalPageTypes<number>>> = {};
     public localRecords: StrIndex<StrIndex<LocalObject<Person>>> = {};
     public fields: StrIndex<LocalObject<FieldSchemaViewModel>[]> = {};
-    public availableFields: StrIndex<FieldValueProviderViewModel[]> = {};
+    public availableFields: StrIndex<LocalObject<FieldValueProviderViewModel>[]> = {};
 }
 
 export function personsReducer(state = new PersonsState(), action: ReduxAction, prefix: string = 'PERSONS_'): PersonsState {

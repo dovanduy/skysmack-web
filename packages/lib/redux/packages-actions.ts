@@ -1,5 +1,5 @@
 import { Store } from 'redux';
-import { ReduxAction, Effect, EffectRequest } from '@skysmack/redux';
+import { ReduxAction, Effect, EffectRequest, PackagePathPayload } from '@skysmack/redux';
 import { Package, HttpMethod, LocalObject, LocalObjectStatus } from '@skysmack/framework';
 
 export class PackagesActions<TStateType, TStore extends Store<TStateType>> {
@@ -40,9 +40,9 @@ export class PackagesActions<TStateType, TStore extends Store<TStateType>> {
     }
 
     public getSingle(path: string) {
-        this.store.dispatch(Object.assign({}, new ReduxAction<string>({
+        this.store.dispatch(Object.assign({}, new ReduxAction<PackagePathPayload>({
             type: PackagesActions.GET_SINGLE_PACKAGE,
-            payload: path
+            payload: { packagePath: path }
         })));
     }
 
@@ -109,7 +109,6 @@ export class PackagesActions<TStateType, TStore extends Store<TStateType>> {
 
     public delete(packages: LocalObject<Package>[]) {
         const paths = '?paths=' + packages.map(x => x.object.path).join('&paths=');
-
 
         this.store.dispatch(Object.assign({}, new ReduxAction<any, any>({
             type: PackagesActions.DELETE_PACKAGE,
