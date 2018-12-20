@@ -7,10 +7,9 @@ import { Observable } from 'rxjs';
 import { NgDynamicFieldsMenu } from '../../ng-dynamic-fields-menu';
 import { NgSkysmackStore } from 'lib/ng-packages/skysmack/redux/ng-skysmack-store';
 import { EntityComponentPageTitle } from 'lib/portal-ui/models/entity-component-page-title';
-import { NgSkysmackActions } from 'lib/ng-packages/skysmack/redux/ng-skysmack-actions';
 import { NgDocumentRecordReduxStore } from 'lib/ng-redux';
-import { switchMap, map } from 'rxjs/operators';
-import { log, DynamicFieldRouteData } from '@skysmack/framework';
+import { map } from 'rxjs/operators';
+import { DynamicFieldRouteData } from '@skysmack/framework';
 import { DocumentRecordActionsBase, DocumentRecordState } from '@skysmack/redux';
 
 @Component({

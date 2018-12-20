@@ -1,6 +1,5 @@
 // Do not remove these import
 import { PackagesModule } from '../../../../../lib/portal-packages/packages/packages.module';
-import { DynamicFieldsModule } from '../../../../../lib/portal-ui/dynamic-fields/dynamic-fields.module';
 
 import { NgReduxRouter, NgReduxRouterModule } from '@angular-redux/router';
 import { HttpClientModule } from '@angular/common/http';

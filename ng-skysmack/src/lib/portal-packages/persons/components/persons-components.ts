@@ -2,7 +2,8 @@ import { Routes } from '@angular/router';
 import { PersonsIndexComponent } from './persons-index/persons-index.component';
 import { PersonsCreateComponent } from './persons-create/persons-create.component';
 import { PersonsEditComponent } from './persons-edit/persons-edit.component';
-import { addDynamicFieldsRoute } from 'lib/portal-ui';
+import { DynamicFieldRouteData } from '@skysmack/framework';
+
 
 export const personsRoutes: Routes = [
   {
@@ -12,7 +13,11 @@ export const personsRoutes: Routes = [
       { path: 'edit/:id', component: PersonsEditComponent, pathMatch: 'full' },
     ]
   },
-  addDynamicFieldsRoute({ actionToken: 'PersonsActions', storeToken: 'PersonsStore' })
+  {
+    path: 'fields',
+    loadChildren: './../../portal-ui/dynamic-fields/dynamic-fields.module#DynamicFieldsModule',
+    data: { actionToken: 'PersonsActions', storeToken: 'PersonsStore' } as DynamicFieldRouteData
+  }
 ];
 
 export const personsComponents: any[] = [
