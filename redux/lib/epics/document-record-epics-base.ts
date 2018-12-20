@@ -31,7 +31,7 @@ export abstract class DocumentRecordEpicsBase<TRecord extends Record<TKey>, TKey
     )
 
     public getAvailableFieldsEpic = (action$: ActionsObservable<ReduxAction<PackagePathPayload>>) => action$.pipe(
-        ofType(DocumentRecordActionsBase.GET_AVAILABLE_FIELDS),
+        ofType(this.prefix + DocumentRecordActionsBase.GET_AVAILABLE_FIELDS),
         switchMap(action => this.requests.getAvailableFields(action))
     )
 }

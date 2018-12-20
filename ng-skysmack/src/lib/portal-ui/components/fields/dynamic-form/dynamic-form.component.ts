@@ -27,7 +27,6 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
   constructor(public fb: FormBuilder) { }
 
   ngOnInit() {
-    console.log(this.fields);
     this.createForm();
   }
 

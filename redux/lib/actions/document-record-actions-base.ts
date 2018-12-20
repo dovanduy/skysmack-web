@@ -51,14 +51,14 @@ export abstract class DocumentRecordActionsBase<TStateType, TStore extends Store
 
     public getSingleField(path: string) {
         this.store.dispatch(Object.assign({}, new ReduxAction<string>({
-            type: DocumentRecordActionsBase.GET_SINGLE_FIELD,
+            type: this.prefix + DocumentRecordActionsBase.GET_SINGLE_FIELD,
             payload: path
         })));
     }
 
     public getAvailableFields(packagePath: string) {
         this.store.dispatch(Object.assign({}, new ReduxAction<PackagePathPayload>({
-            type: DocumentRecordActionsBase.GET_AVAILABLE_FIELDS,
+            type: this.prefix + DocumentRecordActionsBase.GET_AVAILABLE_FIELDS,
             payload: {
                 packagePath
             }
@@ -67,7 +67,7 @@ export abstract class DocumentRecordActionsBase<TStateType, TStore extends Store
 
     public addFields(fields: LocalObject<FieldSchemaViewModel>[], packagePath: string) {
         this.store.dispatch(Object.assign({}, new ReduxAction<any, any>({
-            type: DocumentRecordActionsBase.ADD_FIELD,
+            type: this.prefix + DocumentRecordActionsBase.ADD_FIELD,
             meta: {
                 offline: {
                     effect: new Effect<FieldSchemaViewModel[]>(new EffectRequest<FieldSchemaViewModel[]>(
@@ -76,14 +76,14 @@ export abstract class DocumentRecordActionsBase<TStateType, TStore extends Store
                         fields.map(x => x.object)
                     )),
                     commit: new ReduxAction({
-                        type: DocumentRecordActionsBase.ADD_FIELD_SUCCESS,
+                        type: this.prefix + DocumentRecordActionsBase.ADD_FIELD_SUCCESS,
                         meta: {
                             fields,
                             packagePath
                         }
                     }),
                     rollback: new ReduxAction({
-                        type: DocumentRecordActionsBase.ADD_FIELD_FAILURE,
+                        type: this.prefix + DocumentRecordActionsBase.ADD_FIELD_FAILURE,
                         meta: {
                             fields,
                             packagePath
@@ -96,7 +96,7 @@ export abstract class DocumentRecordActionsBase<TStateType, TStore extends Store
 
     public updateFields(fields: LocalObject<FieldSchemaViewModel>[], packagePath: string) {
         this.store.dispatch(Object.assign({}, new ReduxAction<any, any>({
-            type: DocumentRecordActionsBase.UPDATE_FIELD,
+            type: this.prefix + DocumentRecordActionsBase.UPDATE_FIELD,
             meta: {
                 offline: {
                     effect: new Effect<FieldSchemaViewModel[]>(new EffectRequest<FieldSchemaViewModel[]>(
@@ -105,14 +105,14 @@ export abstract class DocumentRecordActionsBase<TStateType, TStore extends Store
                         fields.map(x => x.object)
                     )),
                     commit: new ReduxAction({
-                        type: DocumentRecordActionsBase.UPDATE_FIELD_SUCCESS,
+                        type: this.prefix + DocumentRecordActionsBase.UPDATE_FIELD_SUCCESS,
                         meta: {
                             fields,
                             packagePath
                         }
                     }),
                     rollback: new ReduxAction({
-                        type: DocumentRecordActionsBase.UPDATE_FIELD_FAILURE,
+                        type: this.prefix + DocumentRecordActionsBase.UPDATE_FIELD_FAILURE,
                         meta: {
                             fields,
                             packagePath
@@ -127,7 +127,7 @@ export abstract class DocumentRecordActionsBase<TStateType, TStore extends Store
         const paths = '?keys=' + fields.map(x => x.object.key).join('&keys=');
 
         this.store.dispatch(Object.assign({}, new ReduxAction<any, any>({
-            type: DocumentRecordActionsBase.DELETE_FIELD,
+            type: this.prefix + DocumentRecordActionsBase.DELETE_FIELD,
             meta: {
                 offline: {
                     effect: new Effect<FieldSchemaViewModel[]>(new EffectRequest<FieldSchemaViewModel[]>(
@@ -136,13 +136,13 @@ export abstract class DocumentRecordActionsBase<TStateType, TStore extends Store
                         fields.map(x => x.object)
                     )),
                     commit: new ReduxAction({
-                        type: DocumentRecordActionsBase.DELETE_FIELD_SUCCESS,
+                        type: this.prefix + DocumentRecordActionsBase.DELETE_FIELD_SUCCESS,
                         meta: {
                             fields
                         }
                     }),
                     rollback: new ReduxAction({
-                        type: DocumentRecordActionsBase.DELETE_FIELD_FAILURE,
+                        type: this.prefix + DocumentRecordActionsBase.DELETE_FIELD_FAILURE,
                         meta: {
                             fields
                         }

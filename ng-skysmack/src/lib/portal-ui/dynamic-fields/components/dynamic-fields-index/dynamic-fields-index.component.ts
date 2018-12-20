@@ -58,6 +58,6 @@ export class DynamicFieldsIndexComponent extends BaseComponent<DocumentRecordSta
   }
 
   private delete(value: LocalObject<any>, _this: DynamicFieldsIndexComponent) {
-    _this.actions.delete([value], this.packagePath);
+    _this.actions.deleteFields([value], _this.packagePath);
   }
 }

@@ -61,7 +61,7 @@ export class ArrayHelpers {
      * @param serverArray Server items. Are kept in final array on match.
      * @param compareValue Path to property value used for matching objects. Defaults to object.id.
      */
-    public static mergeLocalObjectArraysImmutable(localArray: LocalObject<any>[], serverArray: LocalObject<any>[], compareValue: string = 'object.id', keepNew: boolean = false): any[] {
+    public static mergeLocalObjectArraysImmutable(localArray: LocalObject<any>[], serverArray: LocalObject<any>[], compareValue: string = 'object.id', keepNew: boolean = false): LocalObject<any>[] {
         if (localArray.length <= 0) {
             return serverArray;
         }

@@ -23,7 +23,7 @@ export function packagesReducer(state = new PackagesState(), action: any): Packa
         case PackagesActions.GET_PACKAGES_SUCCESS: {
             const castedAction: ReduxAction<GetPackagesSuccessPayload> = action;
             const incomingPackages = castedAction.payload.packages.map(x => toLocalObject(x).setObjectIdentifier('path'));
-            newState.localPackages = ArrayHelpers.mergeLocalObjectArraysImmutable(newState.localPackages, incomingPackages);
+            newState.localPackages = ArrayHelpers.mergeLocalObjectArraysImmutable(newState.localPackages, incomingPackages, 'object.path');
             return newState;
         }
         case PackagesActions.GET_PACKAGES_FAILURE: {
@@ -34,7 +34,7 @@ export function packagesReducer(state = new PackagesState(), action: any): Packa
         case PackagesActions.GET_AVAILABLE_PACKAGES_SUCCESS: {
             const castedAction: ReduxAction<GetAvailablePackagesSuccessPayload> = action;
             const incomingAvailablePackages = castedAction.payload.availablePackages.map(x => toLocalObject(x).setObjectIdentifier('path'));
-            newState.availablePackages = ArrayHelpers.mergeLocalObjectArraysImmutable(newState.availablePackages, incomingAvailablePackages);
+            newState.availablePackages = ArrayHelpers.mergeLocalObjectArraysImmutable(newState.availablePackages, incomingAvailablePackages, 'object.path');
             return newState;
         }
         case PackagesActions.GET_AVAILABLE_PACKAGES_FAILURE: {
@@ -45,7 +45,7 @@ export function packagesReducer(state = new PackagesState(), action: any): Packa
         case PackagesActions.GET_SINGLE_PACKAGE_SUCCESS: {
             const castedAction: ReduxAction<GetPackageSuccessPayload> = action;
             const _newPackage = [toLocalObject(castedAction.payload._package).setObjectIdentifier('path')];
-            newState.localPackages = ArrayHelpers.mergeLocalObjectArraysImmutable(newState.localPackages, _newPackage);
+            newState.localPackages = ArrayHelpers.mergeLocalObjectArraysImmutable(newState.localPackages, _newPackage, 'object.path');
             return newState;
         }
         case PackagesActions.GET_SINGLE_PACKAGE_FAILURE: {
@@ -56,14 +56,14 @@ export function packagesReducer(state = new PackagesState(), action: any): Packa
         case PackagesActions.ADD_PACKAGE: {
             const castedAction: ReduxAction<any, any> = action;
             const packagesToBeCreated = castedAction.meta.offline.commit.meta.packages;
-            newState.localPackages = ArrayHelpers.mergeLocalObjectArraysImmutable(newState.localPackages, packagesToBeCreated);
+            newState.localPackages = ArrayHelpers.mergeLocalObjectArraysImmutable(newState.localPackages, packagesToBeCreated, 'object.path');
             return newState;
         }
         case PackagesActions.ADD_PACKAGE_SUCCESS: {
             const castedAction: ReduxAction<HttpSuccessResponse<any[] | any>, any> = action;
             const body = castedAction.payload.body;
             const newPackages = (Array.isArray(body) ? body : [body]).map((newObject, index) => toLocalObject(newObject, castedAction.meta.packages[index].localId));
-            newState.localPackages = ArrayHelpers.mergeLocalObjectArraysImmutable(newState.localPackages, newPackages);
+            newState.localPackages = ArrayHelpers.mergeLocalObjectArraysImmutable(newState.localPackages, newPackages, 'object.path');
             return newState;
         }
         case PackagesActions.ADD_PACKAGE_FAILURE: {
@@ -75,7 +75,7 @@ export function packagesReducer(state = new PackagesState(), action: any): Packa
             const castedAction: ReduxAction<HttpSuccessResponse<any[] | any>, any> = action;
             const body = castedAction.payload.body;
             const updatedPackages = (Array.isArray(body) ? body : [body]).map((newObject, index) => toLocalObject(newObject, castedAction.meta.packages[index].localId));
-            newState.localPackages = ArrayHelpers.mergeLocalObjectArraysImmutable(newState.localPackages, updatedPackages);
+            newState.localPackages = ArrayHelpers.mergeLocalObjectArraysImmutable(newState.localPackages, updatedPackages, 'object.path');
             return newState;
         }
         case PackagesActions.UPDATE_PACKAGE_FAILURE: {
