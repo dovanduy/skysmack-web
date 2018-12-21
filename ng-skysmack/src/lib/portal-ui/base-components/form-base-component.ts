@@ -20,7 +20,7 @@ export class FormBaseComponent<TAppState, TRecord extends Record<TKey>, TKey, TD
     /**
      * The selected entity needed for edit forms.
      */
-    public selectedEntity: LocalObject<TRecord>;
+    public selectedEntity: LocalObject<TRecord, TKey>;
 
     constructor(
         public router: Router,
@@ -28,7 +28,7 @@ export class FormBaseComponent<TAppState, TRecord extends Record<TKey>, TKey, TD
         public editorNavService: EditorNavService,
         public actions: RecordActionsBase<TAppState, NgRedux<TAppState>>,
         public redux: NgSkysmackStore,
-        public fieldsConfig: FieldsConfig<TRecord, TDependencies>,
+        public fieldsConfig: FieldsConfig<TRecord, TKey, TDependencies>,
     ) {
         super(router, activatedRoute, redux);
     }
@@ -39,7 +39,8 @@ export class FormBaseComponent<TAppState, TRecord extends Record<TKey>, TKey, TD
      * @param dynamicFields Any dynamic fields added to the package.
      * @param dependencies Any dependencies the form needs.
      */
-    protected getFields(entity?: LocalObject<TRecord>, dynamicFields?: LocalObject<FieldSchemaViewModel>[], dependencies?: TDependencies): Field[] {
+    protected getFields(entity?: LocalObject<TRecord, TKey>, dynamicFields?: LocalObject<FieldSchemaViewModel,
+        string>[], dependencies?: TDependencies): Field[] {
         const fields = this.fieldsConfig.getStaticFields(entity, dependencies);
         if (dynamicFields) {
             const returnfields = [
@@ -67,7 +68,7 @@ export class FormBaseComponent<TAppState, TRecord extends Record<TKey>, TKey, TD
      * @param fh Form helper with submitted values.
      * @param entity Optional entity that will be updated with the values extraced from the form. Otherwise a new entity is created.
      */
-    protected extractFormValues(fh: FormHelper, entity?: LocalObject<TRecord>): LocalObject<TRecord> {
+    protected extractFormValues(fh: FormHelper, entity?: LocalObject<TRecord, TKey>): LocalObject<TRecord, TKey> {
         const formValues = fh.form.getRawValue();
 
         // Remove empty values
@@ -84,7 +85,7 @@ export class FormBaseComponent<TAppState, TRecord extends Record<TKey>, TKey, TD
             return entity;
         } else {
             // Create new entity
-            return toLocalObject<TRecord>(
+            return toLocalObject<TRecord, TKey>(
                 formValues,
                 undefined,
                 LocalObjectStatus.CREATING,

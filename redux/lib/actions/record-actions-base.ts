@@ -35,7 +35,7 @@ export abstract class RecordActionsBase<TStateType, TStore extends Store<TStateT
         protected additionalPaths: string[]
     ) { }
 
-    public cancelRecordAction<TRecord extends Record<TKey>, TKey>(record: LocalObject<TRecord>, packagePath: string): void {
+    public cancelRecordAction<TRecord extends Record<TKey>, TKey>(record: LocalObject<TRecord, TKey>, packagePath: string): void {
         this.store.dispatch(Object.assign({}, new ReduxAction<CancelActionPayload<TRecord, TKey>, CancelActionMeta>({
             type: RecordActionsBase.CANCEL_RECORD_ACTION,
             payload: {
@@ -67,7 +67,7 @@ export abstract class RecordActionsBase<TStateType, TStore extends Store<TStateT
         })));
     }
 
-    public add<TRecord extends Record<TKey>, TKey>(records: LocalObject<TRecord>[], packagePath: string) {
+    public add<TRecord extends Record<TKey>, TKey>(records: LocalObject<TRecord, TKey>[], packagePath: string) {
         let path = this.additionalPaths ? [packagePath, ...this.additionalPaths].join('/') : packagePath;
 
         this.store.dispatch(Object.assign({}, new ReduxAction<any, ReduxOfflineMeta<TRecord[], TRecord, TKey>>({
@@ -98,7 +98,7 @@ export abstract class RecordActionsBase<TStateType, TStore extends Store<TStateT
         })));
     }
 
-    public update<TRecord extends Record<TKey>, TKey>(records: LocalObject<TRecord>[], packagePath: string) {
+    public update<TRecord extends Record<TKey>, TKey>(records: LocalObject<TRecord, TKey>[], packagePath: string) {
         let path = this.additionalPaths ? [packagePath, ...this.additionalPaths].join('/') : packagePath;
         path = path + '?ids=' + records.map(x => x.object.id).join(',');
 
@@ -131,7 +131,7 @@ export abstract class RecordActionsBase<TStateType, TStore extends Store<TStateT
     }
 
 
-    public delete<TRecord extends Record<TKey>, TKey>(records: LocalObject<TRecord>[], packagePath: string) {
+    public delete<TRecord extends Record<TKey>, TKey>(records: LocalObject<TRecord, TKey>[], packagePath: string) {
         let path = this.additionalPaths ? [packagePath, ...this.additionalPaths].join('/') : packagePath;
         path = path + '?ids=' + records.map(x => x.object.id).join(',');
 

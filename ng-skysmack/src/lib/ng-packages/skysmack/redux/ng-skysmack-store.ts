@@ -22,7 +22,7 @@ export class NgSkysmackStore {
         return this.ngRedux.select((state: SkysmackAppState) => state.skysmack.skysmack);
     }
 
-    public getPackages(): Observable<LocalObject<Package>[]> {
+    public getPackages(): Observable<LocalObject<Package, string>[]> {
         return this.getSkysmack().pipe(
             map(skysmack => skysmack.packages.map(_package => toLocalObject(_package)))
         );

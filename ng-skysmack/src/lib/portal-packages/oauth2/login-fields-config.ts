@@ -5,12 +5,12 @@ import { LoginValidation } from './login-validation';
 import { LocalObject } from '@skysmack/framework';
 
 @Injectable({ providedIn: 'root' })
-export class LoginFieldsConfig extends FieldsConfig<any, any> {
+export class LoginFieldsConfig extends FieldsConfig<any, any, any> {
     public validation = new LoginValidation();
 
     public formRules: FormRule[] = [];
 
-    protected getEntityFields(entity?: LocalObject<any>, dependencies?: any): Field[] {
+    protected getEntityFields(entity?: LocalObject<any, any>, dependencies?: any): Field[] {
         const fields = [
             new Field({
                 fieldType: FieldTypes.EmailField,

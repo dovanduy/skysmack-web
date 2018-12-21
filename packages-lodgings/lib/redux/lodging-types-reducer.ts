@@ -11,9 +11,9 @@ export class LodgingTypesAppState extends AppState {
 
 export class LodgingTypesState implements DocumentRecordState<LodgingType, number> {
     public localPageTypes: StrIndex<StrIndex<LocalPageTypes<number>>> = {};
-    public localRecords: StrIndex<StrIndex<LocalObject<LodgingType>>> = {};
-    public fields: StrIndex<LocalObject<FieldSchemaViewModel>[]> = {};
-    public availableFields: StrIndex<LocalObject<FieldValueProviderViewModel>[]> = {};
+    public localRecords: StrIndex<StrIndex<LocalObject<LodgingType, number>>> = {};
+    public availableFields: StrIndex<StrIndex<LocalObject<FieldValueProviderViewModel, string>>> = {};
+    public fields: StrIndex<StrIndex<LocalObject<FieldSchemaViewModel, string>>> = {};
 }
 
 export function lodgingTypesReducer(state = new LodgingTypesState(), action: ReduxAction, prefix: string = 'LODGING_TYPES_'): LodgingTypesState {

@@ -10,17 +10,17 @@ import { SelectField } from 'lib/portal-ui/fields/select-field';
 import { FieldsConfig } from 'lib/portal-ui/fields/fields-config';
 
 export interface NgLodgingFormDependencies {
-    availableLodgingTypes: LocalObject<LodgingType>[];
+    availableLodgingTypes: LocalObject<LodgingType, number>[];
 }
 
 @Injectable({ providedIn: 'root' })
-export class NgLodgingsFieldsConfig extends FieldsConfig<Lodging, NgLodgingFormDependencies> {
+export class NgLodgingsFieldsConfig extends FieldsConfig<Lodging, number, NgLodgingFormDependencies> {
     public validation = new LodgingTypesValidation();
 
     public formRules: FormRule[] = [
     ];
 
-    protected getEntityFields(entity?: LocalObject<Lodging>, dependencies?: NgLodgingFormDependencies): Field[] {
+    protected getEntityFields(entity?: LocalObject<Lodging, number>, dependencies?: NgLodgingFormDependencies): Field[] {
         const fields = [
             new SelectField({
                 fieldType: FieldTypes.SelectField,

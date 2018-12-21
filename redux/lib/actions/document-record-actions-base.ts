@@ -65,7 +65,8 @@ export abstract class DocumentRecordActionsBase<TStateType, TStore extends Store
         })));
     }
 
-    public addFields(fields: LocalObject<FieldSchemaViewModel>[], packagePath: string) {
+    public addFields(fields: LocalObject<FieldSchemaViewModel,
+        string>[], packagePath: string) {
         this.store.dispatch(Object.assign({}, new ReduxAction<any, any>({
             type: this.prefix + DocumentRecordActionsBase.ADD_FIELD,
             meta: {
@@ -94,7 +95,8 @@ export abstract class DocumentRecordActionsBase<TStateType, TStore extends Store
         })));
     }
 
-    public updateFields(fields: LocalObject<FieldSchemaViewModel>[], packagePath: string) {
+    public updateFields(fields: LocalObject<FieldSchemaViewModel,
+        string>[], packagePath: string) {
         this.store.dispatch(Object.assign({}, new ReduxAction<any, any>({
             type: this.prefix + DocumentRecordActionsBase.UPDATE_FIELD,
             meta: {
@@ -123,7 +125,8 @@ export abstract class DocumentRecordActionsBase<TStateType, TStore extends Store
         })));
     }
 
-    public deleteFields(fields: LocalObject<FieldSchemaViewModel>[], packagePath: string) {
+    public deleteFields(fields: LocalObject<FieldSchemaViewModel,
+        string>[], packagePath: string) {
         const paths = '?keys=' + fields.map(x => x.object.key).join('&keys=');
 
         this.store.dispatch(Object.assign({}, new ReduxAction<any, any>({

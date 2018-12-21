@@ -3,6 +3,7 @@ import { map } from 'rxjs/operators';
 import { getProperty } from './framework.helpers';
 import { LocalObject } from './../models/local-object';
 import { LocalObjectStatus } from './../models/local-object-status';
+import { Identifiable } from '../models';
 
 export class ArrayHelpers {
     /**
@@ -61,7 +62,7 @@ export class ArrayHelpers {
      * @param serverArray Server items. Are kept in final array on match.
      * @param compareValue Path to property value used for matching objects. Defaults to object.id.
      */
-    public static mergeLocalObjectArraysImmutable(localArray: LocalObject<any>[], serverArray: LocalObject<any>[], compareValue: string = 'object.id', keepNew: boolean = false): LocalObject<any>[] {
+    public static mergeLocalObjectArraysImmutable<TIdentifiable extends Identifiable<TKey>, TKey>(localArray: LocalObject<TIdentifiable, TKey>[], serverArray: LocalObject<TIdentifiable, TKey>[], keepNew: boolean = false): LocalObject<TIdentifiable, TKey>[] {
         if (localArray.length <= 0) {
             return serverArray;
         }
@@ -70,7 +71,7 @@ export class ArrayHelpers {
         }
 
         serverArray.forEach(serverEntity => {
-            const index = localArray.findIndex(entity => getProperty(entity, compareValue) === getProperty(serverEntity, compareValue));
+            const index = localArray.findIndex(entity => getProperty(entity, 'object.' + entity.object.identifier) === getProperty(serverEntity, 'object.' + serverEntity.object.identifier));
             if (index >= 0) {
                 const entity = localArray[index];
                 if (keepNew) {

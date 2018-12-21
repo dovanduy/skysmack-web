@@ -22,7 +22,7 @@ export class DataTableComponent implements OnDestroy, OnInit {
   /**
    * Note entities are the paged entities.
    */
-  @Input() public entities$: Observable<LocalObject<any>[]>;
+  @Input() public entities$: Observable<LocalObject<any, any>[]>;
   @Input() public actions: RecordActionsBase<AppState, NgRedux<AppState>>;
   @Input() public title: string;
   @Input() public displayedColumns: string[] = [];
@@ -39,9 +39,9 @@ export class DataTableComponent implements OnDestroy, OnInit {
 
   public allColumns: string[] = [];
   public subscriptionHandler = new SubscriptionHandler();
-  public dataSource$: Observable<MatTableDataSource<LocalObject<any>>>;
+  public dataSource$: Observable<MatTableDataSource<LocalObject<any, any>>>;
 
-  @Output() public delete = new EventEmitter<LocalObject<any>>();
+  @Output() public delete = new EventEmitter<LocalObject<any, any>>();
   @Output() public entityActionEvent = new EventEmitter<any>();
 
   constructor(
@@ -73,11 +73,11 @@ export class DataTableComponent implements OnDestroy, OnInit {
     }
   }
 
-  public deleteEntity(entity: LocalObject<any>) {
+  public deleteEntity(entity: LocalObject<any, any>) {
     this.delete.emit(entity);
   }
 
-  public cancelAction(entity: LocalObject<any>) {
+  public cancelAction(entity: LocalObject<any, any>) {
     this.actions.cancelRecordAction(entity, this.packagePath);
   }
 

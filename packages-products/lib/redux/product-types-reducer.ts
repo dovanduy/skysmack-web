@@ -11,9 +11,9 @@ export class ProductTypesAppState extends AppState {
 
 export class ProductTypesState implements DocumentRecordState<ProductType, number> {
     public localPageTypes: StrIndex<StrIndex<LocalPageTypes<number>>> = {};
-    public localRecords: StrIndex<StrIndex<LocalObject<ProductType>>> = {};
-    public fields: StrIndex<LocalObject<FieldSchemaViewModel>[]> = {};
-    public availableFields: StrIndex<LocalObject<FieldValueProviderViewModel>[]> = {};
+    public localRecords: StrIndex<StrIndex<LocalObject<ProductType, number>>> = {};
+    public availableFields: StrIndex<StrIndex<LocalObject<FieldValueProviderViewModel, string>>> = {};
+    public fields: StrIndex<StrIndex<LocalObject<FieldSchemaViewModel, string>>> = {};
 }
 
 export function productTypesReducer(state = new ProductTypesState(), action: ReduxAction, prefix: string = 'PRODUCT_TYPES_'): ProductTypesState {

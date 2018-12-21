@@ -11,9 +11,9 @@ export class PersonsAppState extends AppState {
 
 export class PersonsState implements DocumentRecordState<Person, number> {
     public localPageTypes: StrIndex<StrIndex<LocalPageTypes<number>>> = {};
-    public localRecords: StrIndex<StrIndex<LocalObject<Person>>> = {};
-    public fields: StrIndex<LocalObject<FieldSchemaViewModel>[]> = {};
-    public availableFields: StrIndex<LocalObject<FieldValueProviderViewModel>[]> = {};
+    public localRecords: StrIndex<StrIndex<LocalObject<Person, number>>> = {};
+    public availableFields: StrIndex<StrIndex<LocalObject<FieldValueProviderViewModel, string>>> = {};
+    public fields: StrIndex<StrIndex<LocalObject<FieldSchemaViewModel, string>>> = {};
 }
 
 export function personsReducer(state = new PersonsState(), action: ReduxAction, prefix: string = 'PERSONS_'): PersonsState {

@@ -13,13 +13,13 @@ export interface NgLodgingTypeFormDependencies {
 }
 
 @Injectable({ providedIn: 'root' })
-export class NgLodgingTypesFieldsConfig extends FieldsConfig<LodgingType, NgLodgingTypeFormDependencies> {
+export class NgLodgingTypesFieldsConfig extends FieldsConfig<LodgingType, number, NgLodgingTypeFormDependencies> {
     public validation = new LodgingTypesValidation();
 
     public formRules: FormRule[] = [
     ];
 
-    protected getEntityFields(entity?: LocalObject<LodgingType>, dependencies?: NgLodgingTypeFormDependencies): Field[] {
+    protected getEntityFields(entity?: LocalObject<LodgingType, number>, dependencies?: NgLodgingTypeFormDependencies): Field[] {
         const fields = [
             new Field({
                 fieldType: FieldTypes.string,

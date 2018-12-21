@@ -10,17 +10,17 @@ import { ProductsValidation } from './ng-products-validation';
 import { FieldsConfig } from 'lib/portal-ui/fields/fields-config';
 
 export interface NgProductFormDependencies {
-    availableProductTypes: LocalObject<ProductType>[];
+    availableProductTypes: LocalObject<ProductType, number>[];
 }
 
 @Injectable({ providedIn: 'root' })
-export class NgProductsFieldsConfig extends FieldsConfig<Product, NgProductFormDependencies> {
+export class NgProductsFieldsConfig extends FieldsConfig<Product, number, NgProductFormDependencies> {
     public validation = new ProductsValidation();
 
     public formRules: FormRule[] = [
     ];
 
-    protected getEntityFields(entity?: LocalObject<Product>, dependencies?: NgProductFormDependencies): Field[] {
+    protected getEntityFields(entity?: LocalObject<Product, number>, dependencies?: NgProductFormDependencies): Field[] {
         const fields = [
             new Field({
                 fieldType: FieldTypes.string,

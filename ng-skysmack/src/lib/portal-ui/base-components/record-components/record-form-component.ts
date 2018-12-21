@@ -20,7 +20,7 @@ export class RecordFormComponent<TAppState, TRecord extends Record<TKey>, TKey, 
         public actions: RecordActionsBase<TAppState, NgRedux<TAppState>>,
         public redux: NgSkysmackStore,
         public store: NgRecordReduxStore<TAppState, TRecord, TKey>,
-        public fieldsConfig: FieldsConfig<TRecord, TDependencies>
+        public fieldsConfig: FieldsConfig<TRecord, TKey, TDependencies>
     ) {
         super(router, activatedRoute, editorNavService, actions, redux, fieldsConfig);
     }

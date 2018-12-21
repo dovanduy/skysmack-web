@@ -8,7 +8,7 @@ import { LocalObject } from '@skysmack/framework';
 })
 export class ShowEntityActionDirective implements OnInit {
     @Input() entityAction: EntityAction;
-    @Input() entity: LocalObject<any>;
+    @Input() entity: LocalObject<any, any>;
 
     constructor(public el: ElementRef, public renderer: Renderer) {
     }

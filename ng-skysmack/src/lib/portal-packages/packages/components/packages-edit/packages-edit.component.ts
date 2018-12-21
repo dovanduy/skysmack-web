@@ -21,7 +21,7 @@ import { map } from 'rxjs/operators';
 export class PackagesEditComponent extends BaseComponent<PackagesAppState, string> implements OnInit, OnDestroy {
 
   public fields: Field[];
-  public selectedPackage: LocalObject<Package>;
+  public selectedPackage: LocalObject<Package, string>;
 
   constructor(
     public router: Router,

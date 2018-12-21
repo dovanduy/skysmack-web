@@ -13,12 +13,12 @@ export interface NgProductTypeFormDependencies {
 }
 
 @Injectable({ providedIn: 'root' })
-export class NgProductTypesFieldsConfig extends FieldsConfig<ProductType, NgProductTypeFormDependencies> {
+export class NgProductTypesFieldsConfig extends FieldsConfig<ProductType, number, NgProductTypeFormDependencies> {
     public validation = new ProductTypesValidation();
 
     public formRules: FormRule[] = [];
 
-    protected getEntityFields(entity?: LocalObject<ProductType>, dependencies?: NgProductTypeFormDependencies): Field[] {
+    protected getEntityFields(entity?: LocalObject<ProductType, number>, dependencies?: NgProductTypeFormDependencies): Field[] {
         const fields = [
             new Field({
                 fieldType: FieldTypes.string,

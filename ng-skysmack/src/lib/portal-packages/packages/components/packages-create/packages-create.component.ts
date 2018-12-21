@@ -45,7 +45,7 @@ export class PackagesCreateComponent extends BaseComponent<PackagesAppState, str
 
   onCreateSubmit(fh: FormHelper) {
     fh.formValid(() => {
-      this.actions.add([toLocalObject<Package>(
+      this.actions.add([toLocalObject<Package, string>(
         fh.form.getRawValue(),
         undefined,
         LocalObjectStatus.CREATING,

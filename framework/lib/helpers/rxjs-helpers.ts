@@ -99,7 +99,7 @@ export const ensureIsArray = () => pipe(
  */
 export const filterById = (id: any, idSelector: string) => pipe(
     hasValue(),
-    map((collection: LocalObject<any>[]) => collection.filter(entity => getProperty(entity, idSelector) !== undefined)
+    map((collection: LocalObject<any, any>[]) => collection.filter(entity => getProperty(entity, idSelector) !== undefined)
         .filter(entity => getProperty(entity, idSelector).toString() === id.toString())[0]
     ),
 );

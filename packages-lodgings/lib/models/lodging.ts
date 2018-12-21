@@ -1,6 +1,6 @@
 import { DocumentRecord } from "@skysmack/framework";
 
-export class Lodging implements DocumentRecord<number> {
+export class Lodging extends DocumentRecord<number> {
     public id: number;
     public name: string;
     public lodgingTypeId: number;
@@ -12,6 +12,7 @@ export class Lodging implements DocumentRecord<number> {
     }
 
     public constructor(init?: Partial<Lodging>) {
+        super();
         Object.assign(this, init);
     }
 }

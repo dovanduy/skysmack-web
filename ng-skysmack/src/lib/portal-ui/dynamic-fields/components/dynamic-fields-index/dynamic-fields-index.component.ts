@@ -19,7 +19,7 @@ import { NgDynamicFieldsMenu } from '../../ng-dynamic-fields-menu';
 })
 export class DynamicFieldsIndexComponent extends BaseComponent<DocumentRecordState<any, any>, any> implements OnInit {
 
-  public fields$: Observable<LocalObject<any>[]>;
+  public fields$: Observable<LocalObject<any, any>[]>;
   public actions: DocumentRecordActionsBase<any, any>;
   public store: NgDocumentRecordReduxStore<any, any, any>;
 
@@ -53,11 +53,11 @@ export class DynamicFieldsIndexComponent extends BaseComponent<DocumentRecordSta
     ).subscribe());
   }
 
-  public actionEvent(event: { action: Function, value: LocalObject<any>, _this: any }) {
+  public actionEvent(event: { action: Function, value: LocalObject<any, any>, _this: any }) {
     event.action(event.value, event._this);
   }
 
-  private delete(value: LocalObject<any>, _this: DynamicFieldsIndexComponent) {
+  private delete(value: LocalObject<any, any>, _this: DynamicFieldsIndexComponent) {
     _this.actions.deleteFields([value], _this.packagePath);
   }
 }

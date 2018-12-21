@@ -9,7 +9,7 @@ import { FieldTypes } from 'lib/portal-ui/fields/field-types';
 import { Validators } from '@angular/forms';
 
 export interface NgPackageFormDependencies {
-    availablePackages: LocalObject<AvailablePackage>[];
+    availablePackages: LocalObject<AvailablePackage, string>[];
 }
 
 @Injectable({ providedIn: 'root' })
@@ -20,7 +20,7 @@ export class NgPackagesFieldsConfig {
         new SetPathRule(['name'])
     ];
 
-    public getStaticFields(entity?: LocalObject<Package>, dependencies?: NgPackageFormDependencies): Field[] {
+    public getStaticFields(entity?: LocalObject<Package, string>, dependencies?: NgPackageFormDependencies): Field[] {
         const fieldArea = this.validation.area.toUpperCase() + '.FORM.';
         return this.getEntityFields(entity, dependencies).map(field => {
             // Labels
@@ -31,7 +31,7 @@ export class NgPackagesFieldsConfig {
         });
     }
 
-    protected getEntityFields(_package?: LocalObject<Package>, dependencies?: NgPackageFormDependencies): Field[] {
+    protected getEntityFields(_package?: LocalObject<Package, string>, dependencies?: NgPackageFormDependencies): Field[] {
         return [
             new SelectField({
                 fieldType: FieldTypes.SelectField,

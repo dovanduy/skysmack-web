@@ -53,7 +53,7 @@ export class PackagesActions<TStateType, TStore extends Store<TStateType>> {
     }
 
 
-    public add(packages: LocalObject<Package>[]) {
+    public add(packages: LocalObject<Package, string>[]) {
         this.store.dispatch(Object.assign({}, new ReduxAction<any, any>({
             type: PackagesActions.ADD_PACKAGE,
             meta: {
@@ -80,7 +80,7 @@ export class PackagesActions<TStateType, TStore extends Store<TStateType>> {
         })));
     }
 
-    public update(packages: LocalObject<Package>[]) {
+    public update(packages: LocalObject<Package, string>[]) {
         this.store.dispatch(Object.assign({}, new ReduxAction<any, any>({
             type: PackagesActions.UPDATE_PACKAGE,
             meta: {
@@ -107,7 +107,7 @@ export class PackagesActions<TStateType, TStore extends Store<TStateType>> {
         })));
     }
 
-    public delete(packages: LocalObject<Package>[]) {
+    public delete(packages: LocalObject<Package, string>[]) {
         const paths = '?paths=' + packages.map(x => x.object.path).join('&paths=');
 
         this.store.dispatch(Object.assign({}, new ReduxAction<any, any>({

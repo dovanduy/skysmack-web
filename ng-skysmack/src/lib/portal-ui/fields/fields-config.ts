@@ -1,14 +1,14 @@
 import { FormRule } from '../forms/form-rule';
-import { LocalObject } from '@skysmack/framework';
+import { LocalObject, Identifiable } from '@skysmack/framework';
 import { Field } from './field';
 import { Validation } from '../forms/validation';
 
-export abstract class FieldsConfig<TRecord, TDependencies> {
+export abstract class FieldsConfig<TRecord extends Identifiable<TKey>, TKey, TDependencies> {
     public abstract formRules: FormRule[];
     public abstract validation: Validation;
-    protected abstract getEntityFields(entity?: LocalObject<TRecord>, dependencies?: any): Field[];
+    protected abstract getEntityFields(entity?: LocalObject<TRecord, any>, dependencies?: any): Field[];
 
-    public getStaticFields(entity?: LocalObject<TRecord>, dependencies?: TDependencies): Field[] {
+    public getStaticFields(entity?: LocalObject<TRecord, any>, dependencies?: TDependencies): Field[] {
         const fieldArea = this.validation.area.toUpperCase() + '.FORM.';
         return this.getEntityFields(entity, dependencies).map(field => {
             // Labels

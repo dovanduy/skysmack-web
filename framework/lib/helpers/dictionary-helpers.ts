@@ -61,7 +61,7 @@ export class DictionaryHelpers {
      * @param values New values to add to the targeted array in the dictionary.
      * @param compareValue Path to the property to use for object comparison.
      */
-    public static mergeDictionaryCollectionImmutable(dictionary: StrIndex<any[]>, key: string, values: any[], compareValue: string = 'object.id', keepNew: boolean = false): StrIndex<any> {
+    public static mergeDictionaryCollectionImmutable(dictionary: StrIndex<any[]>, key: string, values: any[], keepNew: boolean = false): StrIndex<any> {
         if (values === undefined) {
             return dictionary;
         }
@@ -75,7 +75,7 @@ export class DictionaryHelpers {
         if (collection === undefined) {
             clonedDictionary[key] = values;
         } else {
-            clonedDictionary[key] = ArrayHelpers.mergeLocalObjectArraysImmutable(collection, values, compareValue, keepNew);
+            clonedDictionary[key] = ArrayHelpers.mergeLocalObjectArraysImmutable(collection, values, keepNew);
         }
 
         return clonedDictionary;

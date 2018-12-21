@@ -15,7 +15,7 @@ import { Observable } from 'rxjs';
 })
 export class PackagesIndexComponent extends BaseComponent<PackagesAppState, string> implements OnInit {
 
-  public packages$: Observable<LocalObject<Package>[]>;
+  public packages$: Observable<LocalObject<Package, string>[]>;
 
   public displayedColumns = ['name', 'path'];
   public entityActions: EntityAction[] = [
@@ -42,11 +42,11 @@ export class PackagesIndexComponent extends BaseComponent<PackagesAppState, stri
     this.title.setTitle(this.packagePath);
   }
 
-  public actionEvent(event: { action: Function, value: LocalObject<Package>, _this: any }) {
+  public actionEvent(event: { action: Function, value: LocalObject<Package, string>, _this: any }) {
     event.action(event.value, event._this);
   }
 
-  private delete(value: LocalObject<Package>, _this: PackagesIndexComponent) {
+  private delete(value: LocalObject<Package, string>, _this: PackagesIndexComponent) {
     _this.actions.delete([value]);
   }
 }

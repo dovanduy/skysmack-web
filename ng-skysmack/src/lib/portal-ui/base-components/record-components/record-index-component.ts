@@ -11,10 +11,10 @@ import { Record } from '@skysmack/framework';
 import { map } from 'rxjs/operators';
 
 export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey> extends BaseComponent<TAppState, TKey> implements OnInit {
-    public entities$: Observable<LocalObject<TRecord>[]>;
-    public createdEntities$: Observable<LocalObject<any>[]>;
+    public entities$: Observable<LocalObject<TRecord, TKey>[]>;
+    public createdEntities$: Observable<LocalObject<any, TKey>[]>;
     public pages$: BehaviorSubject<LocalPage<TKey>[]> = new BehaviorSubject<LocalPage<TKey>[]>([]);
-    public pagedEntities$: Observable<LocalObject<any>[]>;
+    public pagedEntities$: Observable<LocalObject<any, TKey>[]>;
     public pagedQuery = new PagedQuery();
 
     public nextPageNumber = 1;
@@ -50,14 +50,14 @@ export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey>
  * Listens for and fires entity actions when set in the component.
  * @param event Event emitted from the ss-data-table
  */
-    public actionEvent(event: { action: Function, value: LocalObject<TRecord>, _this: any }) {
+    public actionEvent(event: { action: Function, value: LocalObject<TRecord, TKey>, _this: any }) {
         event.action(event.value, event._this);
     }
 
     /**
      * Angular track by function used to track local objects in ngFor loops.
      */
-    public trackByObjectId(index, item: LocalObject<any>) {
+    public trackByObjectId(index, item: LocalObject<any, TKey>) {
         return item ? item.object.id : undefined;
     }
 
@@ -65,7 +65,7 @@ export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey>
      * Deletes an entity
      * @param entity The entity to delete.
      */
-    protected delete(value: LocalObject<TRecord>, _this: RecordIndexComponent<any, any, any>) {
+    protected delete(value: LocalObject<TRecord, TKey>, _this: RecordIndexComponent<any, any, any>) {
         _this.actions.delete([value], _this.packagePath);
     }
 

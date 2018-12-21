@@ -14,14 +14,14 @@ export interface NgPersonFormDependencies {
 }
 
 @Injectable({ providedIn: 'root' })
-export class NgPersonsFieldsConfig extends FieldsConfig<Person, NgPersonFormDependencies> {
+export class NgPersonsFieldsConfig extends FieldsConfig<Person, number, NgPersonFormDependencies> {
     public validation = new PersonsValidation();
 
     public formRules: FormRule[] = [
         new SetDisplayNameRule(['firstName', 'lastName'])
     ];
 
-    protected getEntityFields(entity?: LocalObject<Person>, dependencies?: NgPersonFormDependencies): Field[] {
+    protected getEntityFields(entity?: LocalObject<Person, number>, dependencies?: NgPersonFormDependencies): Field[] {
         const fields = [
             new Field({
                 fieldType: FieldTypes.string,

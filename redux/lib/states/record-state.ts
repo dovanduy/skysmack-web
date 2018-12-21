@@ -2,5 +2,5 @@ import { Record, LocalObject, LocalPageTypes, StrIndex } from "@skysmack/framewo
 
 export interface RecordState<TRecord extends Record<TKey>, TKey> {
     localPageTypes: StrIndex<StrIndex<LocalPageTypes<TKey>>>;
-    localRecords: StrIndex<StrIndex<LocalObject<TRecord>>>;
+    localRecords: StrIndex<StrIndex<LocalObject<TRecord, TKey>>>;
 }

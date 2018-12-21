@@ -1,29 +1,21 @@
 import { LocalObjectStatus } from './local-object-status';
 import { Guid } from 'guid-typescript';
+import { Identifiable } from './identifiable';
 
-export class LocalObject<TObject> {
+export class LocalObject<TObject extends Identifiable<TKey>, TKey> {
     public localId: string = Guid.create().toString();
     public status: LocalObjectStatus = LocalObjectStatus.OK;
     public modifyType: string;
     public isNew: boolean = false;
     public foreignKey: string;
-    public identity: string = 'id';
-
     public object: TObject;
     public oldObject: TObject;
 
     public error: any;
 
-    public constructor(init?: Partial<LocalObject<TObject>>) {
+    public constructor(init?: Partial<LocalObject<TObject, TKey>>) {
         Object.assign(this, init);
     }
 
-    public getObjectIdentifier() {
-        return this.object[this.identity]
-    }
 
-    public setObjectIdentifier(identity: string) {
-        this.identity = identity;
-        return this;
-    }
 }

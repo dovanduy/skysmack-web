@@ -23,7 +23,7 @@ export class NgDynamicFieldsFieldsConfig {
      * @param availableFields Possible dynamic fields to create. Recieved from the backend.
      * @param field Optional field can be providedto set default values. Used to edit an existing field.
      */
-    protected dynamicFields(availableFields: LocalObject<FieldValueProviderViewModel>[], field?: LocalObject<FieldSchemaViewModel>): Field[] {
+    protected dynamicFields(availableFields: LocalObject<FieldValueProviderViewModel, string>[], field?: LocalObject<FieldSchemaViewModel, string>): Field[] {
         const fields = [
             new Field({
                 fieldType: FieldTypes.string,
@@ -79,7 +79,7 @@ export class NgDynamicFieldsFieldsConfig {
     }
 
 
-    public getDynamicFields(availableFields: LocalObject<FieldValueProviderViewModel>[], field?: LocalObject<FieldSchemaViewModel>): Field[] {
+    public getDynamicFields(availableFields: LocalObject<FieldValueProviderViewModel, string>[], field?: LocalObject<FieldSchemaViewModel, string>): Field[] {
         return this.dynamicFields(availableFields, field).map(aField => {
             // Labels
             aField.label = 'FIELD.FORM.LABELS.' + aField.key.toUpperCase();
