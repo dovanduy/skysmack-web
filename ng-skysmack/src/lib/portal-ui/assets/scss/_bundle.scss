@@ -1,7 +1,7 @@
 ﻿// NORMALIZE
 @import "~normalize-scss/sass/normalize";
 @include normalize();
-$skysmack-font: "Roboto", "sans-serif";
+$skysmack-font: "'Roboto', 'sans-serif'";
 
 // SKYSMACK DEFAULT LAYOUT
 @import "./global/layout";
