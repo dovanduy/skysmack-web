@@ -43,8 +43,8 @@ const getLocalizationWatchersArray = (pathsObject) => {
 
 //#region WEB PROJECT
 const webPaths = {
-    project: './src/projects/web-portal',
-    lib: './src/lib'
+    project: './src/web-portal',
+    lib: './projects'
 };
 const webLocalizationOutputPath = `${webPaths.project}/src/i18n`;
 

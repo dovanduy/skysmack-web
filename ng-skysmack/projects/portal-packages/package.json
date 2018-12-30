@@ -1,0 +1,12 @@
+{
+  "name": "@skysmack/portal-packages",
+  "version": "0.0.1",
+  "dependencies": {
+    "@skysmack/ng-packages": "*",
+    "@skysmack/portal-ui": "*"
+  },
+  "peerDependencies": {
+    "@angular/common": "^7.0.0",
+    "@angular/core": "^7.0.0"
+  }
+}

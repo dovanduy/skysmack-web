@@ -1,2 +1,8 @@
 dist/
 node_modules/
+lerna-debug.log
+npm-debug.log
+packages/*/lib
+.idea
+ng-skysmack/projects/*/lib
+packages/*/__tests__

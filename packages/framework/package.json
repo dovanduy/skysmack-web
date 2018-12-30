@@ -1,0 +1,24 @@
+{
+  "name": "@skysmack/framework",
+  "version": "0.0.0",
+  "description": "Shared base code for Skysmack",
+  "license": "ISC",
+  "main": "./lib/index.js",
+  "types": "./lib/index.d.ts",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "dependencies": {
+    "guid-typescript": "1.0.9",
+    "rxjs": "^6.3.3"
+  },
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1",
+    "build": "tsc",
+    "tsc": "tsc"
+  }
+}

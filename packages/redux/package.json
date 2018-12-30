@@ -1,0 +1,27 @@
+{
+  "name": "@skysmack/redux",
+  "version": "0.0.0",
+  "description": "> TODO: description",
+  "license": "ISC",
+  "main": "./lib/index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1",
+    "build": "tsc",
+    "tsc": "tsc"
+  },
+  "dependencies": {
+    "@skysmack/framework": "*",
+    "@redux-offline/redux-offline": "^2.5.1",
+    "redux": "^4.0.1",
+    "redux-observable": "^1.0.0",
+    "rxjs": "^6.3.3",
+    "tslib": "^1.9.3"
+  }
+}

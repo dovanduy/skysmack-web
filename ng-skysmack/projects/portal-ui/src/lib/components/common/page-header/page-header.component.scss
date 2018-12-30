@@ -1,0 +1,31 @@
+@import '../../../../../../../assets/scss/_includes.scss';
+
+.component-page-header {
+  display: flex;
+  align-items: center;
+
+  @media (max-width: $small-breakpoint-width) {
+    padding-left: 0;
+  }
+}
+
+h1 {
+  outline: none;
+
+  @media (max-width: $small-breakpoint-width) {
+    padding: 24px 8px;
+    font-size: 20px;
+  }
+}
+
+.sidenav-toggle {
+  // padding: 0;
+  margin: 8px 8px 8px 16px;
+  // min-width: 64px;
+  display: none;
+  @media (max-width: $small-breakpoint-width) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

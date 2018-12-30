@@ -2,7 +2,38 @@
   "compileOnSave": false,
   "compilerOptions": {
     "baseUrl": "src",
-    "paths": {},
+    "paths": {
+      "ng-packages": [
+        "dist/ng-packages"
+      ],
+      "ng-packages/*": [
+        "dist/ng-packages/*"
+      ],
+      "portal-packages": [
+        "dist/portal-packages"
+      ],
+      "portal-packages/*": [
+        "dist/portal-packages/*"
+      ],
+      "portal-ui": [
+        "dist/portal-ui"
+      ],
+      "portal-ui/*": [
+        "dist/portal-ui/*"
+      ],
+      "ng-redux": [
+        "dist/ng-redux"
+      ],
+      "ng-redux/*": [
+        "dist/ng-redux/*"
+      ],
+      "ng-skysmack-core": [
+        "dist/ng-skysmack-core"
+      ],
+      "ng-skysmack-core/*": [
+        "dist/ng-skysmack-core/*"
+      ]
+    },
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
     "declaration": false,

@@ -1,0 +1,17 @@
+{
+  "extends": "../../tslint.json",
+  "rules": {
+    "directive-selector": [
+      true,
+      "attribute",
+      "ss-portal-package",
+      "camelCase"
+    ],
+    "component-selector": [
+      true,
+      "element",
+      "ss-portal-package",
+      "kebab-case"
+    ]
+  }
+}
