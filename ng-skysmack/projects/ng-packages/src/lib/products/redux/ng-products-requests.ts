@@ -2,7 +2,7 @@ import { Product } from '@skysmack/packages-products';
 import { Injectable, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ApiDomain } from '@skysmack/framework';
-import { NgDocmentRecordRequests } from 'lib/ng-redux/requests/ng-document-record-requests';
+import { NgDocmentRecordRequests } from '@skysmack/ng-redux';
 
 @Injectable({ providedIn: 'root' })
 export class NgProductsRequests extends NgDocmentRecordRequests<Product, number> {

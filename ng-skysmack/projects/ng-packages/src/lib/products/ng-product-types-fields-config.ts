@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
-import { FormRule } from 'lib/portal-ui/forms/form-rule';
+import { FormRule } from '@skysmack/ng-ui';
 import { LocalObject } from '@skysmack/framework';
 import { ProductType } from '@skysmack/packages-products';
-import { Field } from 'lib/portal-ui/fields/field';
-import { FieldTypes } from 'lib/portal-ui/fields/field-types';
+import { Field } from '@skysmack/ng-ui';
+import { FieldTypes } from '@skysmack/ng-ui';
 import { ProductTypesValidation } from './ng-product-types-validation';
-import { FieldsConfig } from 'lib/portal-ui/fields/fields-config';
+import { FieldsConfig } from '@skysmack/ng-ui';
 
 export interface NgProductTypeFormDependencies {
     [key: string]: any;
