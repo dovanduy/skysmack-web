@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Person, PersonsAppState } from '@skysmack/packages-persons';
-import { NgPersonsActions } from 'lib/ng-packages/persons/redux/ng-persons-actions';
-import { NgSkysmackStore } from 'lib/ng-packages/skysmack/redux/ng-skysmack-store';
+import { NgPersonsActions } from '@skysmack/ng-packages';
+import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EditorNavService } from 'lib/portal-ui/components/common/container/editor-nav.service';
-import { NgPersonsFieldsConfig, NgPersonFormDependencies } from 'lib/ng-packages/persons/ng-persons-fields-config';
+import { NgPersonsFieldsConfig, NgPersonFormDependencies } from '@skysmack/ng-packages';
 import { DocumentRecordFormComponent } from 'lib/portal-ui/base-components/record-components/document-record-form-component';
-import { NgPersonsStore } from 'lib/ng-packages/persons';
+import { NgPersonsStore } from '@skysmack/ng-packages';
 
 @Component({
   selector: 'ss-persons-create',

@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { EntityComponentPageTitle, EntityAction, DocumentRecordIndexComponet } from 'lib/portal-ui';
 import { Router, ActivatedRoute } from '@angular/router';
-import { NgPersonsActions } from 'lib/ng-packages/persons/redux/ng-persons-actions';
-import { NgSkysmackStore } from 'lib/ng-packages/skysmack';
-import { NgPersonsStore, NgPersonsMenu } from 'lib/ng-packages/persons';
+import { NgPersonsActions } from '@skysmack/ng-packages';
+import { NgSkysmackStore } from '@skysmack/ng-packages';
+import { NgPersonsStore, NgPersonsMenu } from '@skysmack/ng-packages';
 import { Person, PersonsAppState } from '@skysmack/packages-persons';
 
 

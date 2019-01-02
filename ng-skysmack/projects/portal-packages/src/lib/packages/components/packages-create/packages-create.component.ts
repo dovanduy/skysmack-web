@@ -1,10 +1,10 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { NgPackagesActions } from 'lib/ng-packages/packages/redux/ng-packages-actions';
-import { NgSkysmackStore } from 'lib/ng-packages/skysmack/redux/ng-skysmack-store';
+import { NgPackagesActions } from '@skysmack/ng-packages';
+import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EditorNavService } from 'lib/portal-ui/components/common/container/editor-nav.service';
-import { NgPackagesFieldsConfig } from 'lib/ng-packages/packages/ng-packages-fields-config';
-import { NgPackagesStore } from 'lib/ng-packages/packages';
+import { NgPackagesFieldsConfig } from '@skysmack/ng-packages';
+import { NgPackagesStore } from '@skysmack/ng-packages';
 import { BaseComponent } from 'lib/portal-ui/base-components/base-component';
 import { PackagesAppState } from '@skysmack/packages';
 import { Field } from 'lib/portal-ui/fields/field';

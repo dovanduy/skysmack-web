@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Product, ProductTypesAppState, ProductType } from '@skysmack/packages-products';
-import { NgSkysmackStore } from 'lib/ng-packages/skysmack/redux/ng-skysmack-store';
+import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { ActivatedRoute, Router } from '@angular/router';
-import { EditorNavService } from 'lib/portal-ui/components/common/container/editor-nav.service';
+import { EditorNavService } from '@skysmack/ng-packages';
 import { DocumentRecordFormComponent } from 'lib/portal-ui/base-components/record-components/document-record-form-component';
-import { NgProductTypesFieldsConfig, NgProductTypeFormDependencies } from 'lib/ng-packages/products/ng-product-types-fields-config';
-import { NgProductTypesActions } from 'lib/ng-packages/products/redux/ng-product-types-actions';
-import { NgProductTypesStore } from 'lib/ng-packages/products/redux/ng-product-types-store';
+import { NgProductTypesFieldsConfig, NgProductTypeFormDependencies } from '@skysmack/ng-packages';
+import { NgProductTypesActions } from '@skysmack/ng-packages';
+import { NgProductTypesStore } from '@skysmack/ng-packages';
 
 @Component({
   selector: 'ss-product-types-create',

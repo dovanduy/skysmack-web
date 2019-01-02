@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { EntityComponentPageTitle, EntityAction, DocumentRecordIndexComponet } from 'lib/portal-ui';
+import { EntityComponentPageTitle, EntityAction, DocumentRecordIndexComponet } from '@skysmack/portal-ui';
 import { Router, ActivatedRoute } from '@angular/router';
-import { NgSkysmackStore } from 'lib/ng-packages/skysmack';
+import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { LodgingsAppState } from '@skysmack/packages-lodgings/lib/redux/lodgings-reducer';
 import { Lodging } from '@skysmack/packages-lodgings';
-import { NgLodgingsActions } from 'lib/ng-packages/lodgings/redux/ng-lodgings-actions';
-import { NgLodgingsStore } from 'lib/ng-packages/lodgings/redux/ng-lodgings-store';
-import { NgLodgingsMenu } from 'lib/ng-packages/lodgings/ng-lodgings-menu';
+import { NgLodgingsActions } from '@skysmack/ng-packages';
+import { NgLodgingsStore } from '@skysmack/ng-packages';
+import { NgLodgingsMenu } from '@skysmack/ng-packages';
 
 
 @Component({

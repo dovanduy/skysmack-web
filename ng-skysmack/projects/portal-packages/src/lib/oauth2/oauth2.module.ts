@@ -3,7 +3,7 @@ import { Oauth2RoutingModule } from './oauth2-routing.module';
 import { LoginComponent } from './components/login/login.component';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
-import { NgOauth2Module } from 'lib/ng-packages/oauth2/ng-oauth2.module';
+import { NgOauth2Module } from '@skysmack/ng-packages';
 import { PortalUiModule, LanguageService, HttpLoaderFactory } from 'lib/portal-ui';
 import { TranslateService, TranslateModule, TranslateLoader } from '@ngx-translate/core';
 
