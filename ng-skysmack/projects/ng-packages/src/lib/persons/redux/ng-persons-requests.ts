@@ -2,7 +2,7 @@ import { Person } from '@skysmack/packages-persons';
 import { Injectable, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ApiDomain } from '@skysmack/framework';
-import { NgDocmentRecordRequests } from 'lib/ng-redux/requests/ng-document-record-requests';
+import { NgDocmentRecordRequests } from '@skysmack/ng-redux';
 
 @Injectable({ providedIn: 'root' })
 export class NgPersonsRequests extends NgDocmentRecordRequests<Person, number> {

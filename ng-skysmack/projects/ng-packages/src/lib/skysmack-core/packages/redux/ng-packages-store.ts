@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { PackagesAppState } from '@skysmack/packages';
+import { PackagesAppState } from '@skysmack/packages-skysmack-core';
 import { NgRedux } from '@angular-redux/store';
 import { Observable } from 'rxjs';
 import { LocalObject, Package, safeUndefinedTo, AvailablePackage, dictionaryToArray, hasValue } from '@skysmack/framework';

@@ -1,6 +1,6 @@
 import { Injectable, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { SkysmackRequests, Skysmack, SkysmackActions } from '@skysmack/packages-skysmack';
+import { SkysmackRequests, Skysmack, SkysmackActions } from '@skysmack/packages-skysmack-core';
 import { Observable, of } from 'rxjs';
 import { map, take, retry, catchError } from 'rxjs/operators';
 import { ApiDomain, HttpErrorResponse } from '@skysmack/framework';

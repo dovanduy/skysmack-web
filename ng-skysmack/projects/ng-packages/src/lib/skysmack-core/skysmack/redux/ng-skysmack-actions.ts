@@ -1,4 +1,4 @@
-import { SkysmackActions } from '@skysmack/packages-skysmack';
+import { SkysmackActions } from '@skysmack/packages-skysmack-core';
 import { Injectable } from '@angular/core';
 import { NgRedux } from '@angular-redux/store';
 import { PersonsAppState } from '@skysmack/packages-persons';

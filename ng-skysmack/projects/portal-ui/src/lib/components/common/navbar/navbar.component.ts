@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
-import { Skysmack } from '@skysmack/packages-skysmack';
+import { Skysmack } from '@skysmack/packages-skysmack-core';
 import { Menu } from './../../../models/menu';
 import { NgSkysmackStore } from './../../../../ng-packages/skysmack/redux/ng-skysmack-store';
 import { UIRedux } from './../../../redux/ui-redux';

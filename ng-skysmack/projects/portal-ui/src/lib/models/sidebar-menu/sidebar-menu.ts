@@ -1,11 +1,11 @@
 import { OnDestroy, Inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { map, switchMap } from 'rxjs/operators';
-import { MenuItem } from './menu-item';
-import { MenuArea } from './menu-area';
+import { MenuItem } from '@skysmack/ng-ui';
+import { MenuArea } from '@skysmack/ng-ui';
 import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { SubscriptionHandler } from '@skysmack/framework';
-import { MenuItemProvider } from '../../providers/menu-item-provider';
+import { MenuItemProvider } from '@skysmack/ng-ui';
 
 export abstract class SidebarMenu implements OnDestroy {
     public abstract menuId: string;

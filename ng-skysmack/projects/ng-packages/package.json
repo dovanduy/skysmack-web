@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "dependencies": {
     "@skysmack/framework": "*",
+    "@skysmack/redux": "*",
     "@skysmack/packages-lodgings": "*",
     "@skysmack/packages-oauth2": "*",
     "@skysmack/packages-persons": "*",
@@ -15,8 +16,8 @@
     "@angular/common": "^7.0.0",
     "@angular/core": "^7.0.0"
   },
-  "main": "./lib/index.js",
-  "types": "./lib/index.d.ts",
+  "main": "./lib/public_api.js",
+  "types": "./lib/public_api.d.ts",
   "directories": {
     "lib": "lib",
     "test": "__tests__"

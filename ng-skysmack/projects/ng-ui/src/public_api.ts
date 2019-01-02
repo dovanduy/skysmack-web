@@ -6,3 +6,4 @@
 export * from './lib/fields';
 export * from './lib/forms';
 export * from './lib/models';
+export * from './lib/providers';

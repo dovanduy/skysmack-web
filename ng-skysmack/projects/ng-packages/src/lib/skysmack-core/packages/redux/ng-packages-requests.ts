@@ -1,7 +1,7 @@
 import { Injectable, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ApiDomain, Package } from '@skysmack/framework';
-import { PackagesRequests, GetPackagesSuccessPayload, PackagesActions, GetPackageSuccessPayload } from '@skysmack/packages';
+import { PackagesRequests, GetPackagesSuccessPayload, PackagesActions, GetPackageSuccessPayload } from '@skysmack/packages-skysmack-core';
 import { Observable, of } from '@skysmack/framework/node_modules/rxjs';
 import { map, catchError } from 'rxjs/operators';
 import { ReduxAction, PackagePathPayload, GetAvailablePackagesSuccessPayload } from '@skysmack/redux';

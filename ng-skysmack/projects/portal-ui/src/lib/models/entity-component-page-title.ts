@@ -4,7 +4,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { take, map } from 'rxjs/operators';
 import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { hasValue } from '@skysmack/framework';
-import { Skysmack } from '@skysmack/packages-skysmack';
+import { Skysmack } from '@skysmack/packages-skysmack-core';
 
 /**
  * Service responsible for setting the title that appears above the components and guide pages.
