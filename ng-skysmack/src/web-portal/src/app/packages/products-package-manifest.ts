@@ -1,9 +1,9 @@
 // DO NOT DELETE - BUILD FAILS IF REMOVED >:(
-import { ProductsModule } from '../../../../../lib/portal-packages/products/products.module';
+import { ProductsModule } from '../../../../../projects/portal-packages/src/lib/products/products.module';
 
 import { ProductsType } from '@skysmack/packages-products';
-import { PackageManifest } from '../../../../../lib/portal-ui/models/package-manifest';
-import { PackageLoader } from 'lib/ng-packages/skysmack/packages/package-loader';
+import { PackageManifest } from '@skysmack/ng-ui';
+import { PackageLoader } from '@skysmack/ng-packages';
 
 export class ProductsPackageManifest extends ProductsType implements PackageManifest {
     public icon = 'folder';

@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Skysmack } from '@skysmack/packages-skysmack';
 import { Router, ActivatedRoute } from '@angular/router';
 import { PackageRouteConfiguration } from '../../../package-route-configuration';
-import { NgSkysmackStore } from './../../../../../../../lib/ng-packages/skysmack/redux/ng-skysmack-store';
+import { Skysmack } from '@skysmack/packages-skysmack-core';
 
 // export class FallBackComponent extends EntityBase implements OnInit {
 

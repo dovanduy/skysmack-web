@@ -1,19 +1,13 @@
 import { APP_INITIALIZER, Injectable } from '@angular/core';
-import { NgSkysmackActions } from './../../../../../lib/ng-packages/skysmack/redux/ng-skysmack-actions';
 import { SkysmackApiDomain } from '../../requests/skysmack-api-domain';
 import { loadPersonPackage } from '../packages/persons-package-manifest';
-import { PackageLoader } from 'lib/ng-packages/skysmack/packages/package-loader';
-import { MenuItemProvider } from 'lib/portal-ui/providers/menu-item-provider';
 import { Observable, of } from 'rxjs';
-import { MenuItem } from 'lib/portal-ui/models/sidebar-menu/menu-item';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { AuthorizationInterceptor } from 'lib/portal-ui/autentication/authorization.interceptor';
 import { loadProductPackage } from '../packages/products-package-manifest';
 import { loadLodgingPackage } from '../packages/lodgings-package-manifest';
 import { loadOauth2Package } from '../packages/oauth2-package-manifest';
-import { configureLanguage } from 'lib/portal-ui/language/configure-language';
-import { LanguageService } from 'lib/portal-ui/language/language.service';
-
+import { MenuItemProvider, MenuItem } from '@skysmack/ng-ui';
+import { NgSkysmackActions, PackageLoader } from '@skysmack/ng-packages';
 
 // TODO: Delete as soon as one real other menu item provider has been created.
 @Injectable({ providedIn: 'root' })

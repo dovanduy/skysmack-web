@@ -3,40 +3,40 @@
   "compilerOptions": {
     "baseUrl": "src",
     "paths": {
-      "ng-packages": [
+      "@skysmack/ng-packages": [
         "dist/ng-packages"
       ],
-      "ng-packages/*": [
+      "@skysmack/ng-packages/*": [
         "dist/ng-packages/*"
       ],
-      "portal-packages": [
+      "@skysmack/portal-packages": [
         "dist/portal-packages"
       ],
-      "portal-packages/*": [
+      "@skysmack/portal-packages/*": [
         "dist/portal-packages/*"
       ],
-      "portal-ui": [
+      "@skysmack/portal-ui": [
         "dist/portal-ui"
       ],
-      "portal-ui/*": [
+      "@skysmack/portal-ui/*": [
         "dist/portal-ui/*"
       ],
-      "ng-redux": [
+      "@skysmack/ng-redux": [
         "dist/ng-redux"
       ],
-      "ng-redux/*": [
+      "@skysmack/ng-redux/*": [
         "dist/ng-redux/*"
       ],
-      "ng-skysmack-core": [
+      "@skysmack/ng-skysmack-core": [
         "dist/ng-skysmack-core"
       ],
-      "ng-skysmack-core/*": [
+      "@skysmack/ng-skysmack-core/*": [
         "dist/ng-skysmack-core/*"
       ],
-      "ng-ui": [
+      "@skysmack/ng-ui": [
         "dist/ng-ui"
       ],
-      "ng-ui/*": [
+      "@skysmack/ng-ui/*": [
         "dist/ng-ui/*"
       ]
     },
