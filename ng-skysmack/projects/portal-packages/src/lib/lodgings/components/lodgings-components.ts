@@ -15,7 +15,7 @@ export const lodgingsRoutes: Routes = [
   },
   {
     path: 'fields',
-    loadChildren: './../../portal-ui/dynamic-fields/dynamic-fields.module#DynamicFieldsModule',
+    loadChildren: './../../../../portal-ui/src/lib/dynamic-fields/dynamic-fields.module#DynamicFieldsModule',
     data: { actionToken: 'LodgingsActions', storeToken: 'LodgingsStore' } as DynamicFieldRouteData
   }
 ];

@@ -1,11 +1,11 @@
 import { Injectable, Injector } from '@angular/core';
 import { Router, Route } from '@angular/router';
 import { map, take } from 'rxjs/operators';
-import { Skysmack } from '@skysmack/packages-skysmack';
+import { Skysmack } from '@skysmack/packages-skysmack-core';
 import { hasValue } from '@skysmack/framework';
 import { DynamicPackageRouter } from '../models/dynamic-package-router';
-import { NgSkysmackStore } from './../../../../lib/ng-packages/skysmack/redux/ng-skysmack-store';
-import { PackageLoader } from 'lib/ng-packages/skysmack';
+import { NgSkysmackStore } from '@skysmack/ng-packages';
+import { PackageLoader } from '@skysmack/ng-packages';
 
 @Injectable({ providedIn: 'root' })
 export class PackageRouteConfiguration {

@@ -1,14 +1,14 @@
 // DO NOT DELETE - BUILD FAILS IF REMOVED >:(
-import { LodgingsModule } from './../../../../../lib/portal-packages/lodgings/lodgings.module';
+import { LodgingsModule } from './../../../../../projects/portal-packages/src/lib/lodgings/lodgings.module';
 
 import { LodgingsType } from '@skysmack/packages-lodgings';
-import { PackageManifest } from './../../../../../lib/portal-ui/models/package-manifest';
-import { PackageLoader } from 'lib/ng-packages/skysmack/packages/package-loader';
+import { PackageManifest } from '@skysmack/ng-ui';
+import { PackageLoader } from '@skysmack/ng-packages';
 
 export class LodgingsPackageManifest extends LodgingsType implements PackageManifest {
     public icon = 'domain';
     public menuLocation = 'main';
-    public modulePath = '../../../../../lib/portal-packages/lodgings/lodgings.module#LodgingsModule';
+    public modulePath = '../../../../../projects/portal-packages/src/lib/lodgings/lodgings.module#LodgingsModule';
 }
 
 export function loadLodgingPackage(packageLoader: PackageLoader) {
