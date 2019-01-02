@@ -3,10 +3,11 @@ import { EntityComponentPageTitle, EntityAction, BaseComponent } from '@skysmack
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgPackagesActions } from '@skysmack/ng-packages';
 import { NgSkysmackStore } from '@skysmack/ng-packages';
-import { NgPackagesStore, NgPackagesMenu } from '@skysmack/ng-packages';
+import { NgPackagesStore } from '@skysmack/ng-packages';
 import { PackagesAppState } from '@skysmack/packages';
 import { Package, LocalObject } from '@skysmack/framework';
 import { Observable } from 'rxjs';
+import { NgPackagesMenu } from '../../ng-packages-menu';
 
 @Component({
   selector: 'ss-packages-index',

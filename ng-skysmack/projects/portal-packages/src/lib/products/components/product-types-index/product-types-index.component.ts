@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { EntityComponentPageTitle, EntityAction, DocumentRecordIndexComponet } from '@skysmack/portal-ui';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgSkysmackStore } from '@skysmack/ng-packages';
-import { NgProductTypesMenu } from '@skysmack/ng-packages';
 import { ProductTypesAppState, ProductType } from '@skysmack/packages-products';
 import { NgProductTypesActions } from '@skysmack/ng-packages';
 import { NgProductTypesStore } from '@skysmack/ng-packages';
+import { NgProductTypesMenu } from '../../ng-product-types-menu';
 
 
 @Component({

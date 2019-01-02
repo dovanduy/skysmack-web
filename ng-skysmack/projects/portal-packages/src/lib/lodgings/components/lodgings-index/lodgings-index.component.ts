@@ -6,7 +6,7 @@ import { LodgingsAppState } from '@skysmack/packages-lodgings/lib/redux/lodgings
 import { Lodging } from '@skysmack/packages-lodgings';
 import { NgLodgingsActions } from '@skysmack/ng-packages';
 import { NgLodgingsStore } from '@skysmack/ng-packages';
-import { NgLodgingsMenu } from '@skysmack/ng-packages';
+import { NgLodgingsMenu } from '../../ng-lodgings-menu';
 
 
 @Component({

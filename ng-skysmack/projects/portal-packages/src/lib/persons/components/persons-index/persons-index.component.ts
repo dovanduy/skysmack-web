@@ -3,8 +3,9 @@ import { EntityComponentPageTitle, EntityAction, DocumentRecordIndexComponet } f
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgPersonsActions } from '@skysmack/ng-packages';
 import { NgSkysmackStore } from '@skysmack/ng-packages';
-import { NgPersonsStore, NgPersonsMenu } from '@skysmack/ng-packages';
+import { NgPersonsStore } from '@skysmack/ng-packages';
 import { Person, PersonsAppState } from '@skysmack/packages-persons';
+import { NgPersonsMenu } from '../../ng-persons-menu';
 
 
 @Component({
