@@ -5,8 +5,13 @@
     "@skysmack/framework": "*",
     "@skysmack/ng-packages": "*",
     "@skysmack/ng-ui": "*",
+    "@skysmack/redux": "*",
+    "@skysmack/ng-redux": "*",
     "@skysmack/portal-ui": "*",
-    "@skysmack/packages-lodgings": "*"
+    "@skysmack/packages-lodgings": "*",
+    "@skysmack/packages-products": "*",
+    "@skysmack/packages-persons": "*",
+    "@skysmack/packages-skysmack-core": "*"
   },
   "peerDependencies": {
     "@angular/common": "^7.0.0",

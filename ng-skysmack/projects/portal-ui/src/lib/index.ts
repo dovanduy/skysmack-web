@@ -6,3 +6,4 @@ export * from './base-components';
 export * from './autentication';
 export * from './language';
 export * from './dynamic-fields';
+export * from './models';

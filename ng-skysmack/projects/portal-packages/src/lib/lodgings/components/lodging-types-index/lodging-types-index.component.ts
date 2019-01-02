@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { EntityComponentPageTitle, EntityAction, DocumentRecordIndexComponet } from '@skysmack/portal-ui';
+import { EntityComponentPageTitle, DocumentRecordIndexComponet } from '@skysmack/portal-ui';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgSkysmackStore } from '@skysmack/ng-packages';
-import { NgLodgingTypesMenu } from '@skysmack/ng-packages';
 import { LodgingTypesAppState, LodgingType } from '@skysmack/packages-lodgings';
 import { NgLodgingTypesStore } from '@skysmack/ng-packages';
 import { NgLodgingTypesActions } from '@skysmack/ng-packages';
+import { EntityAction } from '@skysmack/ng-ui';
+import { NgLodgingTypesMenu } from './../../ng-lodging-types-menu';
 
 
 @Component({

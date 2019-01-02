@@ -1,15 +1,15 @@
 import { Injectable, Inject } from '@angular/core';
 import { Router } from '@angular/router';
-import { SidebarMenu } from '@skysmack/ng-ui';
-import { NgSkysmackStore } from './../skysmack-core/skysmack/redux/ng-skysmack-store';
+import { SidebarMenu } from '@skysmack/portal-ui';
+import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { MenuItemProvider } from '@skysmack/ng-ui';
 import { MenuArea } from '@skysmack/ng-ui';
 import { MenuItem } from '@skysmack/ng-ui';
 
 @Injectable({ providedIn: 'root' })
-export class NgPersonsMenu extends SidebarMenu {
-    public menuId = 'persons';
-    public translationPrefix = 'PERSONS.INDEX.';
+export class NgProductsMenu extends SidebarMenu {
+    public menuId = 'Products';
+    public translationPrefix = 'PRODUCTS.INDEX.';
 
     constructor(
         public redux: NgSkysmackStore,
@@ -27,6 +27,7 @@ export class NgPersonsMenu extends SidebarMenu {
         this.primaryMenuAreas.push(new MenuArea('manage', this.translationPrefix, 2));
 
         this.primaryMenuItems.push(new MenuItem('create', this.translationPrefix + 'CREATE', 'actions', 1, 'groupAdd'));
+        this.primaryMenuItems.push(new MenuItem('types', this.translationPrefix + 'TYPES', 'manage', 2, 'description'));
         this.primaryMenuItems.push(new MenuItem('fields', this.translationPrefix + 'FIELDS', 'manage', 2, 'shortText'));
     }
 
