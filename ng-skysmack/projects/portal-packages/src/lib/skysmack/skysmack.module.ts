@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { SkysmackIndexComponent } from './components';
 import { SkysmackRoutingModule } from './skysmack-routing.module';
-import { NgSkysmackModule } from './../../ng-packages/skysmack';
+import { NgSkysmackModule } from '@skysmack/ng-packages';
 
 @NgModule({
   imports: [
