@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
-import { FormRule, FieldTypes, Field, FieldsConfig } from 'lib/portal-ui';
+import { FormRule, FieldTypes, Field, FieldsConfig } from '@skysmack/ng-ui';
 import { LoginValidation } from './login-validation';
 import { LocalObject } from '@skysmack/framework';
 
