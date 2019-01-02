@@ -1,3 +1,8 @@
+# Commands
+lerna bootstrap
+lerna run --parallel --stream --no-sort --concurrency 10 build:watch
+lerna create <name> [loc] https://github.com/lerna/lerna/tree/master/commands/create
+
 # Lerna links
 https://lernajs.io/
 https://blog.logrocket.com/setting-up-a-monorepo-with-lerna-for-a-typescript-project-b6a81fe8e4f8
