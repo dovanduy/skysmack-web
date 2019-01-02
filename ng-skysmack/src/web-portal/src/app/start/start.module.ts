@@ -1,5 +1,6 @@
 // Do not remove these import
 import { PackagesModule } from '../../../../../projects/portal-packages/src/lib/packages/packages.module';
+import { PersonsModule } from '../../../../../projects/portal-packages/src/lib/persons/persons.module';
 
 import { NgReduxRouter, NgReduxRouterModule } from '@angular-redux/router';
 import { HttpClientModule } from '@angular/common/http';
