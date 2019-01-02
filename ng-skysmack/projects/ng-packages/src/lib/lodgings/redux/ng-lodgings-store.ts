@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { NgRedux } from '@angular-redux/store';
 import { Lodging, LodgingsAppState } from '@skysmack/packages-lodgings';
-import { NgDocumentRecordReduxStore } from '../../../ng-redux/redux-stores/ng-document-record-redux-store';
+import { NgDocumentRecordReduxStore } from '@skysmack/ng-redux';
 
 @Injectable({ providedIn: 'root' })
 export class NgLodgingsStore extends NgDocumentRecordReduxStore<LodgingsAppState, Lodging, number> {
