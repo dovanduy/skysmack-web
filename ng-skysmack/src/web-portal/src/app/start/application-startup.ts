@@ -8,6 +8,7 @@ import { loadLodgingPackage } from '../packages/lodgings-package-manifest';
 import { loadOauth2Package } from '../packages/oauth2-package-manifest';
 import { MenuItemProvider, MenuItem } from '@skysmack/ng-ui';
 import { NgSkysmackActions, PackageLoader } from '@skysmack/ng-packages';
+import { AuthorizationInterceptor, configureLanguage, LanguageService } from '@skysmack/portal-ui';
 
 // TODO: Delete as soon as one real other menu item provider has been created.
 @Injectable({ providedIn: 'root' })

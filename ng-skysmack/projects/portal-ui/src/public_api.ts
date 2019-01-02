@@ -3,4 +3,3 @@
  */
 
 export * from './lib';
-export * from './lib/portal-ui.module';

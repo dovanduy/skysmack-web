@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { EntityComponentPageTitle } from './../../../../../../../lib/portal-ui/models/entity-component-page-title';
-import { NgRedux } from '@angular-redux/store';
+import { EntityComponentPageTitle } from '@skysmack/portal-ui';
 
 @Component({
   selector: 'ss-front-page',

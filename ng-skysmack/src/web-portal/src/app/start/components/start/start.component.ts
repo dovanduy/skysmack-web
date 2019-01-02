@@ -1,10 +1,10 @@
 import { Component, OnInit, ViewEncapsulation, OnDestroy } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Skysmack } from '@skysmack/packages-skysmack';
 import { Router, RouteConfigLoadStart, RouteConfigLoadEnd } from '@angular/router';
-import { NgSkysmackStore } from './../../../../../../../lib/ng-packages/skysmack/redux/ng-skysmack-store';
+import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { PackageRouteConfiguration } from '../../../package-route-configuration';
 import { SubscriptionHandler } from '@skysmack/framework';
+import { Skysmack } from '@skysmack/packages-skysmack-core';
 
 @Component({
   // tslint:disable-next-line:component-selector
