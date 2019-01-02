@@ -1,5 +1,5 @@
 import { Package } from '@skysmack/framework';
-import { PackageManifest } from './../../../portal-ui/models/package-manifest';
+import { PackageManifest } from '@skysmack/ng-ui';
 
 export class LoadedPackage {
     constructor(

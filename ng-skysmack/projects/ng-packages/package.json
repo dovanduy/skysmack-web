@@ -7,6 +7,8 @@
     "@skysmack/packages-oauth2": "*",
     "@skysmack/packages-persons": "*",
     "@skysmack/packages-products": "*",
+    "@skysmack/packages-skysmack-core": "*",
+    "@skysmack/ng-redux": "*",
     "@skysmack/ng-ui": "*"
   },
   "peerDependencies": {

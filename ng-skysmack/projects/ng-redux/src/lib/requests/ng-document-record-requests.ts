@@ -4,7 +4,7 @@ import { Observable, of } from 'rxjs';
 import { map, retry, catchError } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { NgRecordRequests } from './ng-record-requests';
-import { DocumentRecordRequests } from '@skysmack/redux/lib/requests/document-record-requests';
+import { DocumentRecordRequests } from '@skysmack/redux';
 
 export abstract class NgDocmentRecordRequests<TRecord extends Record<TKey>, TKey> extends NgRecordRequests<TRecord, TKey> implements DocumentRecordRequests<TRecord, TKey> {
 

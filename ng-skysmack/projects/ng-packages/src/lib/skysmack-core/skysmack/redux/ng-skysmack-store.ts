@@ -3,7 +3,7 @@ import { NgRedux } from '@angular-redux/store';
 import { map, filter } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { LocalObject, toLocalObject, flatten, safeHasValue, Package } from '@skysmack/framework';
-import { Skysmack, SkysmackAppState } from '@skysmack/packages-skysmack';
+import { Skysmack, SkysmackAppState } from '@skysmack/packages-skysmack-core';
 import { PackageLoader } from '../packages/package-loader';
 import { LoadedPackage } from '../packages/loaded-package';
 import { Oauth2Type } from '@skysmack/packages-oauth2';

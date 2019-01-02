@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { LoadedPackage } from './loaded-package';
-import { PackageManifest } from './../../../portal-ui/models/package-manifest';
+import { PackageManifest } from '@skysmack/ng-ui';
 import { Package } from '@skysmack/framework';
 
 

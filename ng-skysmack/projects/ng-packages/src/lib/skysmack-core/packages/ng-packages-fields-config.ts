@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import { FormRule } from 'lib/portal-ui/forms/form-rule';
+import { FormRule } from '@skysmack/ng-ui';
 import { LocalObject, Package, AvailablePackage } from '@skysmack/framework';
-import { Field } from 'lib/portal-ui/fields/field';
+import { Field } from '@skysmack/ng-ui';
 import { PackagesValidation } from './ng-packages-validation';
-import { SetPathRule } from 'lib/portal-ui/forms/rules/set-path-rule';
-import { SelectField } from 'lib/portal-ui/fields/select-field';
-import { FieldTypes } from 'lib/portal-ui/fields/field-types';
+import { SetPathRule } from '@skysmack/ng-ui';
+import { SelectField } from '@skysmack/ng-ui';
+import { FieldTypes } from '@skysmack/ng-ui';
 import { Validators } from '@angular/forms';
 
 export interface NgPackageFormDependencies {
