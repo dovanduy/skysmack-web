@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { EntityComponentPageTitle, EntityAction, BaseComponent } from '@skysmack/portal-ui';
+import { EntityComponentPageTitle, BaseComponent } from '@skysmack/portal-ui';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgPackagesActions } from '@skysmack/ng-packages';
 import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { NgPackagesStore } from '@skysmack/ng-packages';
-import { PackagesAppState } from '@skysmack/packages';
+import { PackagesAppState } from '@skysmack/packages-skysmack-core';
 import { Package, LocalObject } from '@skysmack/framework';
 import { Observable } from 'rxjs';
 import { NgPackagesMenu } from '../../ng-packages-menu';
+import { EntityAction } from '@skysmack/ng-ui';
 
 @Component({
   selector: 'ss-packages-index',

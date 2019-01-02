@@ -6,7 +6,7 @@ import { EditorNavService } from '@skysmack/portal-ui';
 import { NgPackagesFieldsConfig } from '@skysmack/ng-packages';
 import { NgPackagesStore } from '@skysmack/ng-packages';
 import { BaseComponent } from '@skysmack/portal-ui';
-import { PackagesAppState } from '@skysmack/packages';
+import { PackagesAppState } from '@skysmack/packages-skysmack-core';
 import { Field } from '@skysmack/ng-ui';
 import { FormHelper } from '@skysmack/ng-ui';
 import { Package, LocalObject, toLocalObject, LocalObjectStatus } from '@skysmack/framework';

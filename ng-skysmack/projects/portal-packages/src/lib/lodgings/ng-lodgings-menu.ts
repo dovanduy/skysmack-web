@@ -1,10 +1,10 @@
 import { Injectable, Inject } from '@angular/core';
 import { Router } from '@angular/router';
-import { SidebarMenu } from '@skysmack/ng-ui';
 import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { MenuItemProvider } from '@skysmack/ng-ui';
 import { MenuArea } from '@skysmack/ng-ui';
 import { MenuItem } from '@skysmack/ng-ui';
+import { SidebarMenu } from '@skysmack/portal-ui';
 
 @Injectable({ providedIn: 'root' })
 export class NgLodgingsMenu extends SidebarMenu {

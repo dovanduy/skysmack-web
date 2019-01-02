@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { EntityComponentPageTitle, EntityAction, DocumentRecordIndexComponet } from '@skysmack/portal-ui';
+import { EntityComponentPageTitle, DocumentRecordIndexComponet } from '@skysmack/portal-ui';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgPersonsActions } from '@skysmack/ng-packages';
 import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { NgPersonsStore } from '@skysmack/ng-packages';
 import { Person, PersonsAppState } from '@skysmack/packages-persons';
 import { NgPersonsMenu } from '../../ng-persons-menu';
+import { EntityAction } from '@skysmack/ng-ui';
 
 
 @Component({

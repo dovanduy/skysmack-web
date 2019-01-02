@@ -4,7 +4,6 @@ import { LocalObject, DynamicFieldRouteData } from '@skysmack/framework';
 import { DocumentRecordActionsBase, DocumentRecordState } from '@skysmack/redux';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-''
 import { EntityAction } from '@skysmack/ng-ui';
 import { BaseComponent } from './../../../base-components/base-component';
 import { NgSkysmackStore } from '@skysmack/ng-packages';
