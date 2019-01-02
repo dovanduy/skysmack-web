@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { map, switchMap } from 'rxjs/operators';
 import { MenuItem } from './menu-item';
 import { MenuArea } from './menu-area';
-import { NgSkysmackStore } from './../../../ng-packages/skysmack';
+import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { SubscriptionHandler } from '@skysmack/framework';
 import { MenuItemProvider } from '../../providers/menu-item-provider';
 
