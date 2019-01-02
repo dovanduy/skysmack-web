@@ -3,7 +3,8 @@
   "version": "0.0.1",
   "dependencies": {
     "@skysmack/framework": "*",
-    "@skysmack/redux": "*"
+    "@skysmack/redux": "*",
+    "parse-link-header": "^1.0.1"
   },
   "peerDependencies": {
     "@angular/common": "^7.0.0",

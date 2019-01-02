@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "dependencies": {
     "@skysmack/framework": "*",
-    "@skysmack/packages-skysmack": "*"
+    "@skysmack/packages-skysmack-core": "*"
   },
   "peerDependencies": {
     "@angular/common": "^7.0.0",
