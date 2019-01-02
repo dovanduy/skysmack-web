@@ -43,11 +43,11 @@ import { environment } from '../../environments/environment';
       },
       {
         path: 'lodgings',
-        loadChildren: '../../../../../projects/portal-packages/src/lib//lodgings/lodgings.module#LodgingsModule'
+        loadChildren: '../../../../../projects/portal-packages/src/lib/lodgings/lodgings.module#LodgingsModule'
       },
       {
         path: 'oauth2',
-        loadChildren: '../../../../../projects/portal-packages/src/lib//oauth2/oauth2.module#Oauth2Module'
+        loadChildren: '../../../../../projects/portal-packages/src/lib/oauth2/oauth2.module#Oauth2Module'
       },
       {
         path: '',

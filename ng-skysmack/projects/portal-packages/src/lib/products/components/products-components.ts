@@ -3,6 +3,7 @@ import { ProductsIndexComponent } from './products-index/products-index.componen
 import { ProductsCreateComponent } from './products-create/products-create.component';
 import { ProductsEditComponent } from './products-edit/products-edit.component';
 import { DynamicFieldRouteData } from '@skysmack/framework';
+import { DynamicFieldsModule } from './../../../../../portal-ui/src/lib/dynamic-fields/dynamic-fields.module';
 
 export const productsRoutes: Routes = [
   {

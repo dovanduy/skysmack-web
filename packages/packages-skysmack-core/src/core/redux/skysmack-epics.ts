@@ -13,14 +13,18 @@ export class SkysmackEpics {
     constructor(
         protected requests: SkysmackRequests
     ) {
+        console.log('ctor', this.requests);
         this.epics = [
             this.get
         ];
     }
 
-    public get(action$: ActionsObservable<any>): Observable<ReduxAction<Skysmack> | ReduxAction<HttpErrorResponse>> {
-      return action$.pipe(
-        ofType(SkysmackActions.GET_SKYSMACK),
-        switchMap(() => this.requests.get()));
-      }
+    public get = (action$: ActionsObservable<any>): Observable<ReduxAction<Skysmack> | ReduxAction<HttpErrorResponse>> => {
+        return action$.pipe(
+            ofType(SkysmackActions.GET_SKYSMACK),
+            switchMap(() => {
+                console.log('hello', this);
+                return this.requests.get();
+            }));
+    }
 }

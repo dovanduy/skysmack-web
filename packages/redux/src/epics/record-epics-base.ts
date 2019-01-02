@@ -6,6 +6,8 @@ import { ReduxAction } from './../action-types/redux-action';
 import { RecordActionsBase } from './../actions/record-actions-base';
 import { GetPagedRecordsPayload } from './../payloads/get-paged-records-payload';
 import { GetSingleRecordPayload } from './../payloads/get-single-record-payload';
+import { GetSingleRecordSuccessPayload, GetPagedRecordsSuccessPayload } from '../payloads';
+import { Observable } from 'rxjs';
 
 export abstract class RecordEpicsBase<TRecord extends Record<TKey>, TKey> {
     public epics: Epic[];
@@ -26,14 +28,18 @@ export abstract class RecordEpicsBase<TRecord extends Record<TKey>, TKey> {
         map(() => ({ type: this.prefix + 'TEST_SUCCEED' }))
     )
 
-    public getPagedEpic = (action$: ActionsObservable<ReduxAction<GetPagedRecordsPayload>>) => action$.pipe(
-        ofType(this.prefix + RecordActionsBase.GET_PAGED),
-        switchMap(action => this.requests.getPaged(action))
-    )
+    public getPagedEpic = (action$: ActionsObservable<ReduxAction<GetPagedRecordsPayload>>): Observable<ReduxAction<GetPagedRecordsSuccessPayload<TRecord, TKey>> | ReduxAction<GetPagedRecordsPayload>> => {
+        return action$.pipe(
+            ofType(this.prefix + RecordActionsBase.GET_PAGED),
+            switchMap(action => this.requests.getPaged(action))
+        );
+    }
 
-    public getSingleEpic = (action$: ActionsObservable<ReduxAction<GetSingleRecordPayload<TKey>>>) => action$.pipe(
-        ofType(this.prefix + RecordActionsBase.GET_SINGLE),
-        switchMap(action => this.requests.getSingle(action))
-    )
+    public getSingleEpic = (action$: ActionsObservable<ReduxAction<GetSingleRecordPayload<TKey>>>): Observable<ReduxAction<GetSingleRecordSuccessPayload<TRecord, TKey>> | ReduxAction<GetSingleRecordPayload<TKey>>> => {
+        return action$.pipe(
+            ofType(this.prefix + RecordActionsBase.GET_SINGLE),
+            switchMap(action => this.requests.getSingle(action))
+        );
+    }
 }
 

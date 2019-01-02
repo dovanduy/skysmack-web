@@ -3,7 +3,7 @@ import { LodgingsIndexComponent } from './lodgings-index/lodgings-index.componen
 import { LodgingsCreateComponent } from './lodgings-create/lodgings-create.component';
 import { LodgingsEditComponent } from './lodgings-edit/lodgings-edit.component';
 import { DynamicFieldRouteData } from '@skysmack/framework';
-
+import { DynamicFieldsModule } from './../../../../../portal-ui/src/lib/dynamic-fields/dynamic-fields.module';
 
 export const lodgingsRoutes: Routes = [
   {
