@@ -22,6 +22,7 @@
             "main": "src/web-portal/src/main.ts",
             "polyfills": "src/web-portal/src/polyfills.ts",
             "tsConfig": "src/web-portal/tsconfig.app.json",
+            "preserveSymlinks": true,
             "assets": [
               "src/web-portal/src/manifest.json",
               {
