@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Product, ProductTypesAppState, ProductType } from '@skysmack/packages-products';
+import { ProductTypesAppState, ProductType } from '@skysmack/packages-products';
 import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { ActivatedRoute, Router } from '@angular/router';
-import { EditorNavService } from '@skysmack/ng-packages';
-import { DocumentRecordFormComponent } from '@skysmack/portal-ui';
+import { DocumentRecordFormComponent, EditorNavService } from '@skysmack/portal-ui';
 import { NgProductTypesFieldsConfig, NgProductTypeFormDependencies } from '@skysmack/ng-packages';
 import { NgProductTypesActions } from '@skysmack/ng-packages';
 import { NgProductTypesStore } from '@skysmack/ng-packages';
