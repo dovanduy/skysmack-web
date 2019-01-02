@@ -7,7 +7,7 @@ import { PortalUiModule, HttpLoaderFactory } from 'lib/portal-ui/portal-ui.modul
 import { packagesComponents } from './components/packages-components';
 import { TranslateModule, TranslateLoader, TranslateService } from '@ngx-translate/core';
 import { LanguageService } from 'lib/portal-ui/language/language.service';
-import { NgPackagesModule } from 'lib/ng-packages/packages/ng-packages.module';
+import { NgPackagesModule } from '@skysmack/ng-packages';
 
 @NgModule({
   imports: [

@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { EntityComponentPageTitle, EntityAction, BaseComponent } from 'lib/portal-ui';
 import { Router, ActivatedRoute } from '@angular/router';
-import { NgPackagesActions } from 'lib/ng-packages/packages/redux/ng-packages-actions';
-import { NgSkysmackStore } from 'lib/ng-packages/skysmack';
-import { NgPackagesStore, NgPackagesMenu } from 'lib/ng-packages/packages';
+import { NgPackagesActions } from '@skysmack/ng-packages';
+import { NgSkysmackStore } from '@skysmack/ng-packages';
+import { NgPackagesStore, NgPackagesMenu } from '@skysmack/ng-packages';
 import { PackagesAppState } from '@skysmack/packages';
 import { Package, LocalObject } from '@skysmack/framework';
 import { Observable } from 'rxjs';

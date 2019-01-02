@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { EntityComponentPageTitle, EntityAction, DocumentRecordIndexComponet } from 'lib/portal-ui';
 import { Router, ActivatedRoute } from '@angular/router';
-import { NgSkysmackStore } from 'lib/ng-packages/skysmack';
-import { NgProductTypesMenu } from 'lib/ng-packages/products';
+import { NgSkysmackStore } from '@skysmack/ng-packages';
+import { NgProductTypesMenu } from '@skysmack/ng-packages';
 import { ProductTypesAppState, ProductType } from '@skysmack/packages-products';
-import { NgProductTypesActions } from 'lib/ng-packages/products/redux/ng-product-types-actions';
-import { NgProductTypesStore } from 'lib/ng-packages/products/redux/ng-product-types-store';
+import { NgProductTypesActions } from '@skysmack/ng-packages';
+import { NgProductTypesStore } from '@skysmack/ng-packages';
 
 
 @Component({

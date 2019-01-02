@@ -1,17 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { Product, ProductsAppState } from '@skysmack/packages-products';
-import { NgProductsActions } from 'lib/ng-packages/products/redux/ng-products-actions';
-import { NgSkysmackStore } from 'lib/ng-packages/skysmack/redux/ng-skysmack-store';
+import { NgProductsActions } from '@skysmack/ng-packages';
+import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EditorNavService } from 'lib/portal-ui/components/common/container/editor-nav.service';
 import { DocumentRecordFormComponent } from 'lib/portal-ui/base-components/record-components/document-record-form-component';
-import { NgProductsStore } from 'lib/ng-packages/products';
-import { NgProductsFieldsConfig, NgProductFormDependencies } from 'lib/ng-packages/products/ng-products-fields-config';
+import { NgProductsStore } from '@skysmack/ng-packages';
+import { NgProductsFieldsConfig, NgProductFormDependencies } from '@skysmack/ng-packages';
 import { combineLatest } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
 import { PagedQuery } from '@skysmack/framework';
-import { NgProductTypesActions } from 'lib/ng-packages/products/redux/ng-product-types-actions';
-import { NgProductTypesStore } from 'lib/ng-packages/products/redux/ng-product-types-store';
+import { NgProductTypesActions } from '@skysmack/ng-packages';
+import { NgProductTypesStore } from '@skysmack/ng-packages';
 
 @Component({
   selector: 'ss-products-create',
