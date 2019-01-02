@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { PersonsRoutingModule } from './persons-routing.module';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
-import { NgPersonsModule } from '@skysmack/ng-packages/src/lib/persons';
+import { NgPersonsModule } from '@skysmack/ng-packages';
 import { PortalUiModule, HttpLoaderFactory } from '@skysmack/portal-ui';
 import { personsComponents } from './components/persons-components';
 import { TranslateModule, TranslateLoader, TranslateService } from '@ngx-translate/core';
