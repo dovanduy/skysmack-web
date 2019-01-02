@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
-import { FormRule } from 'lib/portal-ui/forms/form-rule';
-import { SetDisplayNameRule } from 'lib/portal-ui/forms/rules/set-display-name-rule';
+import { FormRule } from '@skysmack/ng-ui';
+import { SetDisplayNameRule } from '@skysmack/ng-ui';
 import { LocalObject } from '@skysmack/framework';
 import { Person } from '@skysmack/packages-persons';
-import { Field } from 'lib/portal-ui/fields/field';
-import { FieldTypes } from 'lib/portal-ui/fields/field-types';
+import { Field } from '@skysmack/ng-ui';
+import { FieldTypes } from '@skysmack/ng-ui';
 import { PersonsValidation } from './ng-persons-validation';
-import { FieldsConfig } from 'lib/portal-ui/fields/fields-config';
+import { FieldsConfig } from '@skysmack/ng-ui';
 
 export interface NgPersonFormDependencies {
     [key: string]: any;

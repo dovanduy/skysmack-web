@@ -1,10 +1,10 @@
 import { Injectable, Inject } from '@angular/core';
 import { Router } from '@angular/router';
-import { SidebarMenu } from 'lib/portal-ui/models/sidebar-menu/sidebar-menu';
-import { NgSkysmackStore } from 'lib/ng-packages/skysmack';
-import { MenuItemProvider } from 'lib/portal-ui/providers/menu-item-provider';
-import { MenuArea } from 'lib/portal-ui/models/sidebar-menu/menu-area';
-import { MenuItem } from 'lib/portal-ui/models/sidebar-menu/menu-item';
+import { SidebarMenu } from '@skysmack/ng-ui';
+import { NgSkysmackStore } from './../skysmack-core/skysmack/redux/ng-skysmack-store';
+import { MenuItemProvider } from '@skysmack/ng-ui';
+import { MenuArea } from '@skysmack/ng-ui';
+import { MenuItem } from '@skysmack/ng-ui';
 
 @Injectable({ providedIn: 'root' })
 export class NgPersonsMenu extends SidebarMenu {
