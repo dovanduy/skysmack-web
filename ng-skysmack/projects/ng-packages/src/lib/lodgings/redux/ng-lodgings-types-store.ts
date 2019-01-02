@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { NgRedux } from '@angular-redux/store';
-import { NgDocumentRecordReduxStore } from '../../../ng-redux/redux-stores/ng-document-record-redux-store';
+import { NgDocumentRecordReduxStore } from '@skysmack/ng-redux';
 import { LodgingTypesAppState, LodgingType } from '@skysmack/packages-lodgings';
 
 @Injectable({ providedIn: 'root' })
