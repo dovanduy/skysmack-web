@@ -6,3 +6,5 @@ https://github.com/vladotesanovic/hospital-sdk
 
 # Angular library dependency errors
 https://github.com/angular/angular-cli/issues/10665 
+
+https://github.com/angular/angular-cli/wiki/stories-create-library
