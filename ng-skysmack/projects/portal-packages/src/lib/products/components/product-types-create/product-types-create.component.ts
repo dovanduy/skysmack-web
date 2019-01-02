@@ -3,7 +3,7 @@ import { Product, ProductTypesAppState, ProductType } from '@skysmack/packages-p
 import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EditorNavService } from '@skysmack/ng-packages';
-import { DocumentRecordFormComponent } from 'lib/portal-ui/base-components/record-components/document-record-form-component';
+import { DocumentRecordFormComponent } from '@skysmack/portal-ui';
 import { NgProductTypesFieldsConfig, NgProductTypeFormDependencies } from '@skysmack/ng-packages';
 import { NgProductTypesActions } from '@skysmack/ng-packages';
 import { NgProductTypesStore } from '@skysmack/ng-packages';

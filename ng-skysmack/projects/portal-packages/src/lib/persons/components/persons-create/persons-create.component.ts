@@ -3,9 +3,9 @@ import { Person, PersonsAppState } from '@skysmack/packages-persons';
 import { NgPersonsActions } from '@skysmack/ng-packages';
 import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { ActivatedRoute, Router } from '@angular/router';
-import { EditorNavService } from 'lib/portal-ui/components/common/container/editor-nav.service';
+import { EditorNavService } from '@skysmack/portal-ui';
 import { NgPersonsFieldsConfig, NgPersonFormDependencies } from '@skysmack/ng-packages';
-import { DocumentRecordFormComponent } from 'lib/portal-ui/base-components/record-components/document-record-form-component';
+import { DocumentRecordFormComponent } from '@skysmack/portal-ui';
 import { NgPersonsStore } from '@skysmack/ng-packages';
 
 @Component({

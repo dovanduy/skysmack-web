@@ -1,11 +1,11 @@
 import { animate, style, transition, trigger } from '@angular/animations';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
-import { EntityComponentPageTitle } from 'lib/portal-ui/models/entity-component-page-title';
+import { EntityComponentPageTitle } from '@skysmack/portal-ui';
 import { NgOauth2Store } from '@skysmack/ng-packages';
 import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { LoginFieldsConfig } from '../../login-fields-config';
-import { FormHelper, Field } from 'lib/portal-ui';
+import { FormHelper, Field } from '@skysmack/portal-ui';
 import { NgSkysmackActions } from '@skysmack/ng-packages';
 import { SubscriptionHandler } from '@skysmack/framework';
 import { AuthenticationActions } from '@skysmack/redux';
