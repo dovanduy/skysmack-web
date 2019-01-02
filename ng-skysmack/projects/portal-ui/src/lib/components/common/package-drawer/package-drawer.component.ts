@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { NgSkysmackStore } from './../../../../ng-packages/skysmack/redux/ng-skysmack-store';
-import { Menu } from './../../../models/menu';
+import { NgSkysmackStore } from '@skysmack/ng-packages';
+import { Menu } from '@skysmack/ng-ui';
 import { UIRedux } from './../../../redux/ui-redux';
-import { LoadedPackage } from './../../../../ng-packages/skysmack/packages/loaded-package';
+import { LoadedPackage } from '@skysmack/ng-packages';
 import { map } from 'rxjs/operators';
-import { Oauth2PackageManifest } from 'projects/web-portal/src/app/packages';
+import { Oauth2Type } from '@skysmack/packages-oauth2';
 
 @Component({
   selector: 'ss-package-drawer',
@@ -24,7 +24,7 @@ export class PackageDrawerComponent implements OnInit {
   ngOnInit() {
     this.loadedPackages$ = this.skysmackStore.getLoadedPackages().pipe(
       // Remove Oauth packages.
-      map(packages => packages.filter(_package => _package._package.type !== Oauth2PackageManifest.id))
+      map(packages => packages.filter(_package => _package._package.type !== Oauth2Type.id))
     );
     this.menu$ = this.uiRedux.getMenu();
   }

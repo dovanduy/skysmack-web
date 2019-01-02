@@ -1,15 +1,15 @@
 import { Component, OnInit, Injector, OnDestroy } from '@angular/core';
 import { DocumentRecordState, DocumentRecordActionsBase } from '@skysmack/redux';
-import { BaseComponent } from 'lib/portal-ui/base-components/base-component';
-import { Field } from 'lib/portal-ui/fields/field';
+import { BaseComponent } from './../../../base-components/base-component';
+import { Field } from '@skysmack/ng-ui';
 import { Router, ActivatedRoute } from '@angular/router';
-import { EditorNavService } from 'lib/portal-ui/components/common/container/editor-nav.service';
-import { NgSkysmackStore } from 'lib/ng-packages/skysmack/redux/ng-skysmack-store';
-import { NgDynamicFieldsFieldsConfig } from '../../ng-dynamic-fields-config';
-import { NgDocumentRecordReduxStore } from 'lib/ng-redux/redux-stores/ng-document-record-redux-store';
+import { EditorNavService } from './../../../components/common/container/editor-nav.service';
+import { NgSkysmackStore } from '@skysmack/ng-packages';
+import { NgDynamicFieldsFieldsConfig } from './../../ng-dynamic-fields-config';
+import { NgDocumentRecordReduxStore } from '@skysmack/ng-redux';
 import { map, switchMap } from 'rxjs/operators';
 import { DynamicFieldRouteData, toLocalObject, FieldSchemaViewModel, LocalObjectStatus, log } from '@skysmack/framework';
-import { FormHelper } from 'lib/portal-ui/forms/form-helper';
+import { FormHelper } from '@skysmack/ng-ui';
 
 @Component({
   selector: 'ss-dynamic-fields-create',

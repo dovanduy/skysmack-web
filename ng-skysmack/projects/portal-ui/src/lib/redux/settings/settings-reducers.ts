@@ -1,5 +1,5 @@
 import { SettingsActions } from './settings-actions';
-import { Settings } from './../../models/settings';
+import { Settings } from '@skysmack/ng-ui';
 
 export interface SettingsState {
     settings: Settings;

@@ -1,6 +1,6 @@
 import { Directive, OnInit, TemplateRef, ViewContainerRef, OnDestroy } from '@angular/core';
 import { SubscriptionLike } from 'rxjs';
-import { NgAuthenticationStore } from 'lib/ng-redux/redux-stores/ng-authentication-store';
+import { NgAuthenticationStore } from '@skysmack/ng-redux';
 
 
 // tslint:disable-next-line:directive-selector

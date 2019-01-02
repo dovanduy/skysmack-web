@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
-import { FieldBaseComponent } from './../../../../fields/field-base-component';
+import { FieldBaseComponent } from '@skysmack/ng-ui';
 
 interface Point { latitude: number; longtitude: number; }
 

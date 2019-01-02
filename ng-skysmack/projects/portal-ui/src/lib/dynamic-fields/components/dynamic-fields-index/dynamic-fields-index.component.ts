@@ -5,11 +5,11 @@ import { DocumentRecordActionsBase, DocumentRecordState } from '@skysmack/redux'
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 ''
-import { EntityAction } from 'lib/portal-ui/models/entity-action';
-import { BaseComponent } from 'lib/portal-ui/base-components/base-component';
-import { NgSkysmackStore } from 'lib/ng-packages/skysmack/redux/ng-skysmack-store';
-import { EntityComponentPageTitle } from 'lib/portal-ui/models/entity-component-page-title';
-import { NgDocumentRecordReduxStore } from 'lib/ng-redux/redux-stores/ng-document-record-redux-store';
+import { EntityAction } from '@skysmack/ng-ui';
+import { BaseComponent } from './../../../base-components/base-component';
+import { NgSkysmackStore } from '@skysmack/ng-packages';
+import { EntityComponentPageTitle } from './../../../models/entity-component-page-title';
+import { NgDocumentRecordReduxStore } from '@skysmack/ng-redux';
 import { NgDynamicFieldsMenu } from '../../ng-dynamic-fields-menu';
 
 @Component({

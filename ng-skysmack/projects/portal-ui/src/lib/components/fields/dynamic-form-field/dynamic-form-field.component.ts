@@ -1,8 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { FormHelper } from './../../../forms/form-helper';
-import { Field } from './../../../fields/field';
-import { FormRule } from './../../../forms/form-rule';
-import { FieldTypes } from './../../../fields/field-types';
+import { FormHelper, Field, FormRule, FieldTypes } from '@skysmack/ng-ui';
 
 @Component({
   selector: 'ss-dynamic-form-field',

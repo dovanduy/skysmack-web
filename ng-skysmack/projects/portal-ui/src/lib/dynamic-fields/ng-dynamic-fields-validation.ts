@@ -1,5 +1,5 @@
 import { StrIndex } from '@skysmack/framework';
-import { Validation } from 'lib/portal-ui/forms/validation';
+import { Validation } from '@skysmack/ng-ui';
 
 export class DynamicFieldsValidation extends Validation {
     public formErrors = {

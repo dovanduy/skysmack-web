@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
 import { Skysmack } from '@skysmack/packages-skysmack-core';
-import { Menu } from './../../../models/menu';
-import { NgSkysmackStore } from './../../../../ng-packages/skysmack/redux/ng-skysmack-store';
+import { Menu } from '@skysmack/ng-ui';
+import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { UIRedux } from './../../../redux/ui-redux';
-import { NgAuthenticationActions } from 'lib/ng-redux/actions/ng-authentication-actions';
+import { NgAuthenticationActions } from '@skysmack/ng-redux';
 import { Package } from '@skysmack/framework';
 
 @Component({

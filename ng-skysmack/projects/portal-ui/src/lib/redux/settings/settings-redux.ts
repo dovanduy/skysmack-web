@@ -2,7 +2,7 @@ import { NgRedux } from '@angular-redux/store';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { SettingsActions } from './settings-actions';
-import { Settings } from './../../models/settings';
+import { Settings } from '@skysmack/ng-ui';
 
 @Injectable({ providedIn: 'root' })
 export class SettingsRedux {

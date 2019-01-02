@@ -1,15 +1,15 @@
 import { Router, ActivatedRoute } from '@angular/router';
 import { OnInit, OnDestroy } from '@angular/core';
 import { Record, LocalObject } from '@skysmack/framework';
-import { FieldsConfig } from 'lib/portal-ui/fields/fields-config';
-import { EditorNavService } from 'lib/portal-ui/components/common/container/editor-nav.service';
+import { FieldsConfig } from '@skysmack/ng-ui';
+import { EditorNavService } from './../../components/common/container/editor-nav.service';
 import { FormBaseComponent } from '../form-base-component';
-import { NgSkysmackStore } from 'lib/ng-packages/skysmack';
+import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { RecordActionsBase } from '@skysmack/redux';
 import { NgRedux } from '@angular-redux/store';
-import { FormHelper } from 'lib/portal-ui/forms/form-helper';
+import { FormHelper } from '@skysmack/ng-ui';
 import { map } from 'rxjs/operators';
-import { NgRecordReduxStore } from 'lib/ng-redux/redux-stores/ng-record-redux-store';
+import { NgRecordReduxStore } from '@skysmack/ng-redux';
 
 export class RecordFormComponent<TAppState, TRecord extends Record<TKey>, TKey, TDependencies> extends FormBaseComponent<TAppState, TRecord, TKey, TDependencies> implements OnInit, OnDestroy {
 

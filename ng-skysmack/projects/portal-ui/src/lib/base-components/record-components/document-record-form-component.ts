@@ -1,13 +1,13 @@
 import { Router, ActivatedRoute } from '@angular/router';
 import { OnInit, OnDestroy } from '@angular/core';
 import { Record, LocalObject, FieldSchemaViewModel } from '@skysmack/framework';
-import { FieldsConfig } from 'lib/portal-ui/fields/fields-config';
-import { EditorNavService } from 'lib/portal-ui/components/common/container/editor-nav.service';
-import { NgSkysmackStore } from 'lib/ng-packages/skysmack';
+import { FieldsConfig } from '@skysmack/ng-ui';
+import { EditorNavService } from './../../components/common/container/editor-nav.service';
+import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { DocumentRecordActionsBase } from '@skysmack/redux';
 import { NgRedux } from '@angular-redux/store';
 import { RecordFormComponent } from './record-form-component';
-import { NgDocumentRecordReduxStore } from 'lib/ng-redux/redux-stores/ng-document-record-redux-store';
+import { NgDocumentRecordReduxStore } from '@skysmack/ng-redux';
 import { map } from 'rxjs/operators';
 import { combineLatest, Observable } from 'rxjs';
 

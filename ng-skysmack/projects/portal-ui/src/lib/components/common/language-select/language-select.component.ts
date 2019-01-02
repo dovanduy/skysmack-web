@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { Observable } from 'rxjs';
-import { Menu } from './../../../models/menu';
+import { Menu } from '@skysmack/ng-ui';
 import { UIRedux } from './../../../redux/ui-redux';
 import { SettingsRedux } from './../../../redux/settings/settings-redux';
 

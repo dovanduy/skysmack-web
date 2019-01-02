@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FieldBaseComponent } from 'lib/portal-ui/fields/field-base-component';
+import { FieldBaseComponent } from '@skysmack/ng-ui';
 import { filter, map } from 'rxjs/operators';
 import { combineLatest, Observable } from 'rxjs';
-import { NgPackagesStore } from 'lib/ng-packages/packages';
+import { NgPackagesStore } from '@skysmack/ng-packages';
 import { flatten, notNull } from '@skysmack/framework';
 
 interface SelectBox {

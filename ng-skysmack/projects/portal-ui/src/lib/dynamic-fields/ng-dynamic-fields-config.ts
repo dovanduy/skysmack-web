@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
-import { FormRule } from 'lib/portal-ui/forms/form-rule';
+import { FormRule } from '@skysmack/ng-ui';
 import { LocalObject, FieldValueProviderViewModel, FieldSchemaViewModel } from '@skysmack/framework';
-import { Field } from 'lib/portal-ui/fields/field';
-import { FieldTypes } from 'lib/portal-ui/fields/field-types';
+import { Field } from '@skysmack/ng-ui';
+import { FieldTypes } from '@skysmack/ng-ui';
 import { DynamicFieldsValidation } from './ng-dynamic-fields-validation';
-import { SelectField } from '../fields/select-field';
+import { SelectField } from '@skysmack/ng-ui';
 
 export interface NgDynamicFieldFormDependencies {
     [key: string]: any;

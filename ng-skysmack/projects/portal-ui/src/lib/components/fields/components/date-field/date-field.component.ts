@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FieldBaseComponent } from './../../../../fields/field-base-component';
+import { FieldBaseComponent } from '@skysmack/ng-ui';
 import * as moment from 'moment';
 import { DateAdapter } from '@angular/material';
 import { DateOnlyAdapter } from './date-only-adapter';

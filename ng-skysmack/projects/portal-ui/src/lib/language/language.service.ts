@@ -1,7 +1,7 @@
 import { Injectable, OnDestroy } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { SubscriptionLike } from 'rxjs';
-import { SettingsRedux } from '../redux/settings/settings-redux';
+import { SettingsRedux } from './../redux/settings/settings-redux';
 
 @Injectable({ providedIn: 'root' })
 export class LanguageService implements OnDestroy {

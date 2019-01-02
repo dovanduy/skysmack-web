@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FieldBaseComponent } from './../../../../fields/field-base-component';
+import { FieldBaseComponent } from '@skysmack/ng-ui';
 import { stringIntToInt } from '@skysmack/framework';
 import { RecurringExpressionEvaluator } from './models/recurring-expression-evaluator';
 

@@ -1,5 +1,5 @@
 import { SubscriptionHandler } from '@skysmack/framework';
-import { LoadedPackage, NgSkysmackStore } from 'lib/ng-packages/skysmack';
+import { LoadedPackage, NgSkysmackStore } from '@skysmack/ng-packages';
 import { Observable } from 'rxjs';
 import { Router, ActivatedRoute } from '@angular/router';
 import { OnInit, OnDestroy } from '@angular/core';

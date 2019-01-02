@@ -1,4 +1,4 @@
-import { Menu } from '../models/menu';
+import { Menu } from '@skysmack/ng-ui';
 import { UIActions } from './ui-actions';
 
 export interface UIState {

@@ -1,10 +1,7 @@
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SubscriptionLike } from 'rxjs';
-import { Field } from './../../../fields/field';
-import { FormRule } from './../../../forms/form-rule';
-import { FormHelper } from './../../../forms/form-helper';
-import { Validation } from 'lib/portal-ui/forms/validation';
+import { Field, FormRule, FormHelper, Validation } from '@skysmack/ng-ui';
 
 @Component({
   selector: 'ss-dynamic-form',

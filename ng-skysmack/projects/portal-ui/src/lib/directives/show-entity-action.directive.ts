@@ -1,6 +1,6 @@
 import { Directive, Input, OnInit, ElementRef, Renderer } from '@angular/core';
-import { EntityAction } from '../models/entity-action';
 import { LocalObject } from '@skysmack/framework';
+import { EntityAction } from '@skysmack/ng-ui';
 
 @Directive({
     // tslint:disable-next-line:directive-selector

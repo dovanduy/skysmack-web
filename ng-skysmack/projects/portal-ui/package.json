@@ -2,10 +2,13 @@
   "name": "@skysmack/portal-ui",
   "version": "0.0.1",
   "dependencies": {
+    "@skysmack/redux": "*",
+    "@skysmack/ng-redux": "*",
     "@skysmack/framework": "*",
     "@skysmack/ng-packages": "*",
     "@skysmack/ng-ui": "*",
-    "@skysmack/packages-skysmack-core": "*"
+    "@skysmack/packages-skysmack-core": "*",
+    "@skysmack/packages-oauth2": "*"
   },
   "peerDependencies": {
     "@angular/common": "^7.0.0",

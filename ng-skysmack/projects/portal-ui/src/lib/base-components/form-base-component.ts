@@ -1,12 +1,12 @@
 import { FormGroup } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { BaseComponent } from './base-component';
-import { Field } from '../fields/field';
+import { Field } from '@skysmack/ng-ui';
 import { LocalObject, Record, toLocalObject, LocalObjectStatus, FieldSchemaViewModel } from '@skysmack/framework';
-import { FieldsConfig } from '../fields/fields-config';
-import { NgSkysmackStore } from 'lib/ng-packages/skysmack';
-import { FieldTypes } from '../fields/field-types';
-import { FormHelper } from '../forms/form-helper';
+import { FieldsConfig } from '@skysmack/ng-ui';
+import { NgSkysmackStore } from '@skysmack/ng-packages';
+import { FieldTypes } from '@skysmack/ng-ui';
+import { FormHelper } from '@skysmack/ng-ui';
 import { RecordActionsBase } from '@skysmack/redux';
 import { NgRedux } from '@angular-redux/store';
 import { EditorNavService } from '../components/common/container/editor-nav.service';

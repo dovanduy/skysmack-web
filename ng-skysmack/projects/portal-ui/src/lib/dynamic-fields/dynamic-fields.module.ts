@@ -3,9 +3,9 @@ import { CommonModule } from '@angular/common';
 
 import { DynamicFieldsRoutingModule } from './dynamic-fields-routing.module';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
-import { PortalUiModule, HttpLoaderFactory } from 'lib/portal-ui/portal-ui.module';
+import { PortalUiModule, HttpLoaderFactory } from './../portal-ui.module';
 import { TranslateModule, TranslateLoader, TranslateService } from '@ngx-translate/core';
-import { LanguageService } from 'lib/portal-ui/language/language.service';
+import { LanguageService } from './../language/language.service';
 import { dynamicFieldsComponents } from './components/dynamic-fields-components';
 
 @NgModule({
