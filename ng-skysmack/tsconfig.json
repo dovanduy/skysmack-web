@@ -32,6 +32,12 @@
       ],
       "ng-skysmack-core/*": [
         "dist/ng-skysmack-core/*"
+      ],
+      "ng-ui": [
+        "dist/ng-ui"
+      ],
+      "ng-ui/*": [
+        "dist/ng-ui/*"
       ]
     },
     "outDir": "./dist/out-tsc",

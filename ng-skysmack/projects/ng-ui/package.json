@@ -1,14 +1,6 @@
 {
-  "name": "@skysmack/ng-packages",
+  "name": "@skysmack/ng-ui",
   "version": "0.0.1",
-  "dependencies": {
-    "@skysmack/framework": "*",
-    "@skysmack/packages-lodgings": "*",
-    "@skysmack/packages-oauth2": "*",
-    "@skysmack/packages-persons": "*",
-    "@skysmack/packages-products": "*",
-    "@skysmack/ng-ui": "*"
-  },
   "peerDependencies": {
     "@angular/common": "^7.0.0",
     "@angular/core": "^7.0.0"

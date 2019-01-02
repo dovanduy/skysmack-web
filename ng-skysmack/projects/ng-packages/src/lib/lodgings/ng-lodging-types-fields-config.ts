@@ -1,12 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
-import { FormRule } from 'lib/portal-ui/forms/form-rule';
+import { FormRule, Field, FieldTypes, FieldsConfig } from '@skysmack/ng-ui';
 import { LocalObject } from '@skysmack/framework';
 import { LodgingType } from '@skysmack/packages-lodgings';
-import { Field } from 'lib/portal-ui/fields/field';
-import { FieldTypes } from 'lib/portal-ui/fields/field-types';
 import { LodgingTypesValidation } from './ng-lodging-types-validation';
-import { FieldsConfig } from 'lib/portal-ui/fields/fields-config';
 
 export interface NgLodgingTypeFormDependencies {
     [key: string]: any;

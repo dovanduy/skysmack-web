@@ -271,6 +271,41 @@
           }
         }
       }
+    },
+    "ng-ui": {
+      "root": "projects/ng-ui",
+      "sourceRoot": "projects/ng-ui/src",
+      "projectType": "library",
+      "prefix": "ss-ui",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/ng-ui/tsconfig.lib.json",
+            "project": "projects/ng-ui/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ng-ui/src/test.ts",
+            "tsConfig": "projects/ng-ui/tsconfig.spec.json",
+            "karmaConfig": "projects/ng-ui/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/ng-ui/tsconfig.lib.json",
+              "projects/ng-ui/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "web-portal"
