@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { EntityAction } from '@skysmack/ng-ui';
 import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { EntityComponentPageTitle } from '@skysmack/portal-ui';
-import { NgAssignmentAllMenu } from '../../ng-assignments-all-menu';
+import { NgAssignmentAllMenu } from './../../ng-assignments-all-menu';
 
 @Component({
   selector: 'ss-assignments-all',

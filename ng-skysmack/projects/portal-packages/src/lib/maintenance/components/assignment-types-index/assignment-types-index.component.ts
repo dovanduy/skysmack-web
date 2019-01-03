@@ -4,7 +4,7 @@ import { AssignmentTypesAppState, AssignmentType } from '@skysmack/packages-main
 import { DocumentRecordIndexComponet, EntityComponentPageTitle } from '@skysmack/portal-ui';
 import { EntityAction } from '@skysmack/ng-ui';
 import { NgAssignmentTypesActions, NgSkysmackStore, NgAssignmentTypesStore } from '@skysmack/ng-packages';
-import { NgAssignmentTypesMenu } from '../../ng-assignment-types-menu';
+import { NgAssignmentTypesMenu } from './../../ng-assignment-types-menu';
 
 
 @Component({

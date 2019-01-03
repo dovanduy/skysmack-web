@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { RecurringAssignment, RecurringAssignmentsAppState } from '@skysmack/packages-maintenance';
 import { PagedQuery } from '@skysmack/framework';
 import { combineLatest } from 'rxjs';
-import { map } from '@skysmack/framework/node_modules/rxjs/internal/operators/map';
+import { map } from 'rxjs/operators';
 import { EditorNavService, RecordFormComponent } from '@skysmack/portal-ui';
 import { NgRecurringAssignmentFormDependencies, NgRecurringAssignmentsActions, NgSkysmackStore, NgRecurringAssignmentsFieldsConfig, NgRecurringAssignmentsStore } from '@skysmack/ng-packages';
 
