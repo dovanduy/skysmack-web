@@ -14,9 +14,9 @@ import { LanguageService } from '@skysmack/portal-ui';
   imports: [
     CommonModule,
     HttpClientModule,
+    NgLodgingsModule,
     PortalUiModule,
     LodgingsRoutingModule,
-    NgLodgingsModule,
     TranslateModule.forChild({
       loader: {
         provide: TranslateLoader,
@@ -33,7 +33,7 @@ import { LanguageService } from '@skysmack/portal-ui';
     ...lodgingsComponents,
     ...lodgingTypesComponents
   ],
-  providers: [],
+  providers: []
 })
 export class LodgingsModule {
   constructor(

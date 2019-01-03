@@ -1,8 +1,7 @@
 {
   "name": "@skysmack/portal-packages",
   "version": "0.0.1",
-  "dependencies": {
-  },
+  "dependencies": {},
   "peerDependencies": {
     "@angular/common": "^7.0.0",
     "@angular/core": "^7.0.0",
@@ -17,6 +16,9 @@
     "@skysmack/ng-ui": "*",
     "@skysmack/portal-ui": "*"
   },
+  "devDependencies": {    
+    "typescript": "^3.2.2"
+  },
   "main": "./lib/public_api.js",
   "types": "./lib/public_api.d.ts",
   "directories": {
@@ -28,7 +30,8 @@
   ],
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1",
-    "build": "ng build portal-packages"
+    "build": "ng build portal-packages",
+    "tsc": "tsc"
   },
   "ngPackage": {
     "lib": {
