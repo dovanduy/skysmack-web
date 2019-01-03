@@ -1,5 +1,5 @@
-import { LocalPage, StrIndex, LocalObject, FieldSchemaViewModel, FieldValueProviderViewModel, LocalPageTypes } from '@skysmack/framework';
-import { AppState, ReduxAction, DocumentRecordState, documentRecordReducersBase } from '@skysmack/redux';
+import { StrIndex, LocalObject, LocalPageTypes } from '@skysmack/framework';
+import { AppState, ReduxAction, RecordState, recordReducersBase } from '@skysmack/redux';
 import { RecurringAssignment } from '../models/recurring-assignment';
 
 /**
@@ -9,11 +9,9 @@ export class RecurringAssignmentsAppState extends AppState {
     public Maintenance: RecurringAssignmentState;
 }
 
-export class RecurringAssignmentState implements DocumentRecordState<RecurringAssignment, number> {
+export class RecurringAssignmentState implements RecordState<RecurringAssignment, number> {
     public localPageTypes: StrIndex<StrIndex<LocalPageTypes<number>>> = {};
     public localRecords: StrIndex<StrIndex<LocalObject<RecurringAssignment, number>>> = {};
-    public availableFields: StrIndex<StrIndex<LocalObject<FieldValueProviderViewModel, string>>> = {};
-    public fields: StrIndex<StrIndex<LocalObject<FieldSchemaViewModel, string>>> = {};
 }
 
 export function recurringAssignmentReducer(state = new RecurringAssignmentState(), action: ReduxAction, prefix: string = 'RECURRING_ASSIGNMENT_'): RecurringAssignmentState {
@@ -21,7 +19,7 @@ export function recurringAssignmentReducer(state = new RecurringAssignmentState(
         default:
             return {
                 ...state,
-                ...documentRecordReducersBase<RecurringAssignmentState, RecurringAssignment, number>(state, action, prefix)
+                ...recordReducersBase<RecurringAssignmentState, RecurringAssignment, number>(state, action, prefix)
             };
     }
 }

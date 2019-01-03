@@ -1,8 +1,8 @@
-import { DocumentRecordEpicsBase, DocumentRecordRequests } from '@skysmack/redux';
+import { DocumentRecordRequests, RecordEpicsBase, RecordRequests } from '@skysmack/redux';
 import { MaintenanceState } from '../models/maintenance-state';
 
-export class MaintenanceStateEpics extends DocumentRecordEpicsBase<MaintenanceState, number> {
-    constructor(protected requests: DocumentRecordRequests<MaintenanceState, number>) {
+export class MaintenanceStateEpics extends RecordEpicsBase<MaintenanceState, number> {
+    constructor(protected requests: RecordRequests<MaintenanceState, number>) {
         super(requests, 'MAINTENANCE_STATE_');
     }
 }

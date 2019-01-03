@@ -1,5 +1,5 @@
-import { LocalPage, StrIndex, LocalObject, FieldSchemaViewModel, FieldValueProviderViewModel, LocalPageTypes } from '@skysmack/framework';
-import { AppState, ReduxAction, DocumentRecordState, documentRecordReducersBase } from '@skysmack/redux';
+import { StrIndex, LocalObject, FieldSchemaViewModel, FieldValueProviderViewModel, LocalPageTypes } from '@skysmack/framework';
+import { AppState, ReduxAction, RecordState, recordReducersBase } from '@skysmack/redux';
 import { MaintenanceState } from '../models/maintenance-state';
 
 /**
@@ -9,11 +9,9 @@ export class MaintenanceStatesAppState extends AppState {
     public Maintenance: MaintenanceStateState;
 }
 
-export class MaintenanceStateState implements DocumentRecordState<MaintenanceState, number> {
+export class MaintenanceStateState implements RecordState<MaintenanceState, number> {
     public localPageTypes: StrIndex<StrIndex<LocalPageTypes<number>>> = {};
     public localRecords: StrIndex<StrIndex<LocalObject<MaintenanceState, number>>> = {};
-    public availableFields: StrIndex<StrIndex<LocalObject<FieldValueProviderViewModel, string>>> = {};
-    public fields: StrIndex<StrIndex<LocalObject<FieldSchemaViewModel, string>>> = {};
 }
 
 export function maintenanceStateReducer(state = new MaintenanceStateState(), action: ReduxAction, prefix: string = 'MAINTENANCE_STATE_'): MaintenanceStateState {
@@ -21,7 +19,7 @@ export function maintenanceStateReducer(state = new MaintenanceStateState(), act
         default:
             return {
                 ...state,
-                ...documentRecordReducersBase<MaintenanceStateState, MaintenanceState, number>(state, action, prefix)
+                ...recordReducersBase<MaintenanceStateState, MaintenanceState, number>(state, action, prefix)
             };
     }
 }
