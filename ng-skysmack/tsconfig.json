@@ -4,37 +4,37 @@
     "baseUrl": "src",
     "paths": {
       "@skysmack/ng-packages": [
-        "dist/ng-packages"
+        "dist/ng-packages/src/public_api"
       ],
       "@skysmack/ng-packages/*": [
         "dist/ng-packages/*"
       ],
       "@skysmack/portal-packages": [
-        "dist/portal-packages"
+        "dist/portal-packages/src/public_api"
       ],
       "@skysmack/portal-packages/*": [
         "dist/portal-packages/*"
       ],
       "@skysmack/portal-ui": [
-        "dist/portal-ui"
+        "dist/portal-ui/src/public_api"
       ],
       "@skysmack/portal-ui/*": [
         "dist/portal-ui/*"
       ],
       "@skysmack/ng-redux": [
-        "dist/ng-redux"
+        "dist/ng-redux/src/public_api"
       ],
       "@skysmack/ng-redux/*": [
         "dist/ng-redux/*"
       ],
       "@skysmack/ng-skysmack-core": [
-        "dist/ng-skysmack-core"
+        "dist/ng-skysmack-core/src/public_api"
       ],
       "@skysmack/ng-skysmack-core/*": [
         "dist/ng-skysmack-core/*"
       ],
       "@skysmack/ng-ui": [
-        "dist/ng-ui"
+        "dist/ng-ui/src/public_api"
       ],
       "@skysmack/ng-ui/*": [
         "dist/ng-ui/*"
