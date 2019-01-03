@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FieldBaseComponent } from '@skysmack/ng-ui';
+import { FieldBaseComponent } from '../field-base-component';
 
 @Component({
   selector: 'ss-double-field',

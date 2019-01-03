@@ -3,7 +3,6 @@ import { PersonsIndexComponent } from './persons-index/persons-index.component';
 import { PersonsCreateComponent } from './persons-create/persons-create.component';
 import { PersonsEditComponent } from './persons-edit/persons-edit.component';
 import { DynamicFieldRouteData } from '@skysmack/framework';
-import { DynamicFieldsModule } from './../../../../../portal-ui/src/lib/dynamic-fields/dynamic-fields.module';
 
 export const personsRoutes: Routes = [
   {

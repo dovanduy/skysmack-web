@@ -2,6 +2,6 @@
   <ss-data-table *ngIf="fields$" [actions]="actions" [title]="loadedPackage._package.name + ' fields'"
     [displayedColumns]="displayedColumns" [entities$]="fields$" [entityActions]="entityActions" [packagePath]="packagePath"
     (entityActionEvent)="actionEvent($event)">
-    <ss-pagination [loadingState]="loadingState" (intersection)="onIntersection($event)"></ss-pagination>
+    <!-- <ss-pagination [loadingState]="loadingState" (intersection)="onIntersection($event)"></ss-pagination> -->
   </ss-data-table>
 </ss-container>

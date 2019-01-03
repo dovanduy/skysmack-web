@@ -58,19 +58,21 @@ export function HttpLoaderFactory(http: HttpClient) {
     CommonModule,
     RouterModule,
     ReactiveFormsModule,
-    TranslateModule.forRoot({
-      loader: {
-        provide: TranslateLoader,
-        useFactory: HttpLoaderFactory,
-        deps: [HttpClient]
-      }
-    }),
-    CalendarModule.forRoot({
-      provide: DateAdapter,
-      useFactory: adapterFactory
-    }),
+    TranslateModule,
+    CalendarModule,
     RecurringExpressionFieldModule,
     MaterialModule // Must come after BrowserAnimationsModule
+  ],
+  providers: [
+    {
+      provide: TranslateLoader,
+      useFactory: HttpLoaderFactory,
+      deps: [HttpClient]
+    },
+    {
+      provide: DateAdapter,
+      useFactory: adapterFactory
+    }
   ],
   declarations: [
     // Directives

@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { EntityComponentPageTitle, DocumentRecordIndexComponet } from '@skysmack/portal-ui';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgSkysmackStore } from '@skysmack/ng-packages';
-import { LodgingsAppState } from '@skysmack/packages-lodgings/lib/redux/lodgings-reducer';
+import { LodgingsAppState } from '@skysmack/packages-lodgings';
 import { Lodging } from '@skysmack/packages-lodgings';
 import { NgLodgingsActions } from '@skysmack/ng-packages';
 import { NgLodgingsStore } from '@skysmack/ng-packages';
-import { NgLodgingsMenu } from '../../ng-lodgings-menu';
+import { NgLodgingsMenu } from './../../ng-lodgings-menu';
 import { EntityAction } from '@skysmack/ng-ui';
 
 

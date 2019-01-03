@@ -2,11 +2,11 @@ import { NgRedux } from '@angular-redux/store';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { HttpErrorResponse, CurrentUser } from '@skysmack/framework';
-import * as moment from 'moment';
+import * as _moment from 'moment';
 import { Injectable } from '@angular/core';
 import { AuthenticationStore, AuthenticationAppState } from '@skysmack/redux';
 
-
+const moment = _moment;
 @Injectable({ providedIn: 'root' })
 export class NgAuthenticationStore implements AuthenticationStore {
     constructor(

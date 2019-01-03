@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FieldBaseComponent, SelectField, DisableUntilValueRule } from '@skysmack/ng-ui';
+import { SelectField, DisableUntilValueRule } from '@skysmack/ng-ui';
+import { FieldBaseComponent } from '../field-base-component';
 
 @Component({
   selector: 'ss-select-field',

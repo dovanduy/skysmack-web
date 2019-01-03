@@ -3,5 +3,15 @@
   "dest": "../../dist/portal-ui",
   "lib": {
     "entryFile": "src/public_api.ts"
-  }
+  },
+  "whitelistedNonPeerDependencies": [
+    "tslib",
+    "@skysmack/redux",
+    "@skysmack/framework",
+    "@skysmack/packages-skysmack-core",
+    "@skysmack/packages-oauth2",
+    "@skysmack/ng-packages",
+    "@skysmack/ng-ui",
+    "@skysmack/ng-redux"
+  ]
 }

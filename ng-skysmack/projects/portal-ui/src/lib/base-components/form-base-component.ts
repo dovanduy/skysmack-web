@@ -1,4 +1,3 @@
-import { FormGroup } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { BaseComponent } from './base-component';
 import { Field } from '@skysmack/ng-ui';
@@ -9,7 +8,7 @@ import { FieldTypes } from '@skysmack/ng-ui';
 import { FormHelper } from '@skysmack/ng-ui';
 import { RecordActionsBase } from '@skysmack/redux';
 import { NgRedux } from '@angular-redux/store';
-import { EditorNavService } from '../components/common/container/editor-nav.service';
+import { EditorNavService } from './../components/common/container/editor-nav.service';
 
 export class FormBaseComponent<TAppState, TRecord extends Record<TKey>, TKey, TDependencies> extends BaseComponent<TAppState, TKey> {
     /**

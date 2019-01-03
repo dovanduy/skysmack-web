@@ -9,13 +9,13 @@
     "@skysmack/packages-oauth2": "*",
     "@skysmack/packages-persons": "*",
     "@skysmack/packages-products": "*",
-    "@skysmack/packages-skysmack-core": "*",
-    "@skysmack/ng-redux": "*",
-    "@skysmack/ng-ui": "*"
+    "@skysmack/packages-skysmack-core": "*"
   },
   "peerDependencies": {
     "@angular/common": "^7.0.0",
-    "@angular/core": "^7.0.0"
+    "@angular/core": "^7.0.0",
+    "@skysmack/ng-redux": "*",
+    "@skysmack/ng-ui": "*"
   },
   "main": "./lib/public_api.js",
   "types": "./lib/public_api.d.ts",
@@ -28,6 +28,6 @@
   ],
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1",
-    "build": "tsc"
+    "build": "ng build ng-packages"
   }
 }

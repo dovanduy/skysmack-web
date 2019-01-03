@@ -1,6 +1,6 @@
 import { animate, style, transition, trigger } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
-import { FieldBaseComponent } from '@skysmack/ng-ui';
+import { FieldBaseComponent } from '../field-base-component';
 
 @Component({
   selector: 'ss-limited-string-field',

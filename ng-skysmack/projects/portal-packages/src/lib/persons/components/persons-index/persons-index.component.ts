@@ -5,7 +5,7 @@ import { NgPersonsActions } from '@skysmack/ng-packages';
 import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { NgPersonsStore } from '@skysmack/ng-packages';
 import { Person, PersonsAppState } from '@skysmack/packages-persons';
-import { NgPersonsMenu } from '../../ng-persons-menu';
+import { NgPersonsMenu } from './../../ng-persons-menu';
 import { EntityAction } from '@skysmack/ng-ui';
 
 

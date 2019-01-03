@@ -3,5 +3,11 @@
   "dest": "../../dist/ng-redux",
   "lib": {
     "entryFile": "src/public_api.ts"
-  }
+  },
+  "whitelistedNonPeerDependencies": [
+    "tslib",
+    "@skysmack/framework",
+    "@skysmack/redux",
+    "parse-link-header"
+  ]
 }

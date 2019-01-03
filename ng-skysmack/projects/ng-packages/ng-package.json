@@ -3,5 +3,15 @@
   "dest": "../../dist/ng-packages",
   "lib": {
     "entryFile": "src/public_api.ts"
-  }
+  },
+  "whitelistedNonPeerDependencies": [
+    "tslib",
+    "@skysmack/framework",
+    "@skysmack/redux",
+    "@skysmack/packages-lodgings",
+    "@skysmack/packages-oauth2",
+    "@skysmack/packages-persons",
+    "@skysmack/packages-products",
+    "@skysmack/packages-skysmack-core"
+  ]
 }
