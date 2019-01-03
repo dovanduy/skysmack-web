@@ -1,38 +1,5 @@
 {
-    "LODGINGS": {
-        "TYPES": {
-            "CREATE": {
-                "CREATE": "Create"
-            },
-            "EDIT": {
-                "EDIT": "Edit"
-            },
-            "INDEX": {
-                "CREATE": "Create",
-                "ACTIONS": "Actions",
-                "TYPE": "Create type",
-                "MANAGE": "Manage",
-                "TYPES_FIELDS": "Types fields",
-                "BACK": "Back",
-                "FIELDS": "Fields"
-            },
-            "FIELDS": {
-                "CREATE": {
-                    "ADD": "Add new field"
-                },
-                "EDIT": {
-                    "EDITING": "Editing"
-                },
-                "INDEX": {
-                    "ACTIONS": "Actions",
-                    "CREATE": "Create new type field",
-                    "OTHER": "Other",
-                    "TYPES": "types",
-                    "FIELDS": "Fields",
-                    "BACK": "Back"
-                }
-            }
-        },
+    "LODGING_TYPES": {
         "FIELDS": {
             "CREATE": {
                 "ADD": "Add new field"
@@ -61,6 +28,19 @@
             "FIELDS": "Fields",
             "TYPES": "types",
             "BACK": "Back"
+        }
+    },
+    "FORM": {
+        "LABELS": {
+            "NAME": "Name"
+        },
+        "PLACEHOLDERS": {
+            "NAME": "Enter name"
+        },
+        "VALIDATION": {
+            "NAME": {
+                "REQUIRED": "Name is required."
+            }
         }
     }
 }
