@@ -1,0 +1,47 @@
+{
+    "MAINTENANCE": {
+        "MAINTENANCE_STATES": {
+            "FORM": {
+                "LABELS": {
+                    "DESCRIPTION": "Description",
+                    "STATUS": "Status",
+                    "ID": "Id"
+                },
+                "PLACEHOLDERS": {
+                    "DESCRIPTION": "Enter description",
+                    "STATUS": "Choose status",
+                    "ID": "Choose Id"
+                },
+                "VALIDATION": {
+                    "DESCRIPTION": {
+                        "REQUIRED": "Description is required"
+                    },
+                    "STATUS": {
+                        "REQUIRED": "Status is required"
+                    },
+                    "ID": {
+                        "REQUIRED": "Id is required"
+                    }
+                }
+            },
+            "CREATE": {
+                "CREATE": "Create"
+            },
+            "EDIT": {
+                "EDIT": "Edit"
+            },
+            "INDEX": {
+                "ACTIONS": "Actions",
+                "CREATE": "Create",
+                "EDIT": "Edit",
+                "DELETE": "Delete",
+                "MANAGE": "Manage",
+                "FIELDS": "Fields",
+                "BACK": "Back"
+            },
+            "MANAGE": {
+                "BACK": "Back"
+            }
+        }
+    }
+}

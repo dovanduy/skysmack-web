@@ -4,6 +4,7 @@
   "dependencies": {
     "@skysmack/framework": "*",
     "@skysmack/redux": "*",
+    "@skysmack/packages-maintenance": "*",
     "@skysmack/packages-lodgings": "*",
     "@skysmack/packages-oauth2": "*",
     "@skysmack/packages-persons": "*",

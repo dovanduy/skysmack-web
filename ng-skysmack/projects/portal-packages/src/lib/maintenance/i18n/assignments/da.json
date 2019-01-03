@@ -1,0 +1,112 @@
+{
+    "MAINTENANCE": {
+        "ASSIGNMENTS": {
+            "FORM": {
+                "LABELS": {
+                    "ASSIGNMENTTYPEID": "Enhed",
+                    "DESCRIPTION": "Beskrivelse",
+                    "STATUS": "Status",
+                    "DUE": "Udløbsdato",
+                    "FROM": "Kan startes fra"
+                },
+                "PLACEHOLDERS": {
+                    "ASSIGNMENTTYPEID": "Vælg enhed",
+                    "DESCRIPTION": "Indtast beskrivelse",
+                    "STATUS": "Vælg status",
+                    "DUE": " Vælg udløbsdato",
+                    "FROM": "Vælg hvornår opgaven kan startes"
+                },
+                "VALIDATION": {
+                    "ASSIGNMENTTYPEID": {
+                        "REQUIRED": "Enhed er påkrævet."
+                    },
+                    "DESCRIPTION": {
+                        "REQUIRED": "Beskrivelse er påkrævet."
+                    },
+                    "STATUS": {
+                        "REQUIRED": "Status er påkrævet."
+                    },
+                    "DUE": {
+                        "REQUIRED": "Udløbsdato er påkrævet.",
+                        "NOTBEFORE": "Udløbsdatoen må ikke være før startdatoen."
+                    },
+                    "FROM": {
+                        "REQUIRED": "En dato fra hvornår opgaven kan startes er påkrævet."
+                    }
+                },
+                "BUTTONS": {
+                    "CREATE": "Opret",
+                    "EDIT": "Rediger"
+                }
+            },
+            "CREATE": {
+                "CREATE": "Opret"
+            },
+            "EDIT": {
+                "EDIT": "Ret"
+            },
+            "INDEX": {
+                "ACTIONS": "Handlinger",
+                "CREATE": "Opret",
+                "EDIT": "Ret",
+                "DELETE": "Slet",
+                "MANAGE": "Konfigurer",
+                "FIELDS": "Felter",
+                "STATES": "Tilstande",
+                "TYPES": "Typer",
+                "BACK": "Tilbage"
+            },
+            "FIELDS": {
+                "FORM": {
+                    "LABELS": {
+                        "ENTITYID": "Enhed",
+                        "DESCRIPTION": "Beskrivelse",
+                        "STATUS": "Status",
+                        "DUE": "Udløbsdato",
+                        "FROM": "Kan startes fra"
+                    },
+                    "PLACEHOLDERS": {
+                        "ENTITYID": "Vælg enhed",
+                        "DESCRIPTION": "Indtast beskrivelse",
+                        "STATUS": "Vælg status",
+                        "DUE": " Vælg udløbsdato",
+                        "FROM": "Vælg hvornår opgaven kan startes"
+                    },
+                    "VALIDATION": {
+                        "ENTITYID": {
+                            "REQUIRED": "Enhed er påkrævet."
+                        },
+                        "DESCRIPTION": {
+                            "REQUIRED": "Beskrivelse er påkrævet."
+                        },
+                        "STATUS": {
+                            "REQUIRED": "Status er påkrævet."
+                        },
+                        "DUE": {
+                            "REQUIRED": "Udløbsdato er påkrævet.",
+                            "NOTBEFORE": "Udløbsdatoen må ikke være før startdatoen."
+                        },
+                        "FROM": {
+                            "REQUIRED": "En dato fra hvornår opgaven kan startes er påkrævet."
+                        }
+                    },
+                    "BUTTONS": {
+                        "CREATE": "Opret",
+                        "EDIT": "Rediger"
+                    }
+                },
+                "INDEX": {
+                    "ACTIONS": "Handlinger",
+                    "CREATE": "Opret",
+                    "ASSIGNMENTS": "Opgaver",
+                    "FIELDS": "Opgave felter",
+                    "MANAGE": "Konfigurer",
+                    "BACK": "Tilbage"
+                },
+                "CREATE": {
+                    "ADD": "Tilføj felt"
+                }
+            }
+        }
+    }
+}

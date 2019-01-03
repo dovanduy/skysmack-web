@@ -1,11 +1,11 @@
+import { Lodging, LodgingType } from '@skysmack/packages-lodgings';
+import { LodgingTypesValidation } from './ng-lodging-types-validation';
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { FormRule } from '@skysmack/ng-ui';
 import { LocalObject } from '@skysmack/framework';
-import { Lodging, LodgingType } from '@skysmack/packages-lodgings';
 import { Field } from '@skysmack/ng-ui';
 import { FieldTypes } from '@skysmack/ng-ui';
-import { LodgingTypesValidation } from './ng-lodging-types-validation';
 import { SelectField } from '@skysmack/ng-ui';
 import { FieldsConfig } from '@skysmack/ng-ui';
 

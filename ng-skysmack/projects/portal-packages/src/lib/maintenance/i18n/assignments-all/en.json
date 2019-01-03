@@ -1,0 +1,11 @@
+{
+    "MAINTENANCE": {
+        "ASSIGNMENT_ALL": {
+            "INDEX": {
+                "SINGLE_ASSIGNMENTS": "Assignments",
+                "RECURRING_ASSIGNMENTS": "Recurring assignments",
+                "MANAGE": "Manage"
+            }
+        }
+    }
+}

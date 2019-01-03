@@ -1,0 +1,29 @@
+{
+  "name": "@skysmack/packages-maintenance",
+  "version": "0.0.0",
+  "description": "> TODO: description",
+  "license": "ISC",
+  "main": "lib/index.js",
+  "types": "./lib/index.d.ts",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://itinstituttet.visualstudio.com/DefaultCollection/skysmack-refactor/_git/skysmack-refactor"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1",
+    "build": "tsc",
+    "build:watch": "tsc -w"
+  },
+  "dependencies": {
+    "@skysmack/framework": "*",
+    "@skysmack/redux": "*",
+    "tslib": "^1.9.3"
+  }
+}

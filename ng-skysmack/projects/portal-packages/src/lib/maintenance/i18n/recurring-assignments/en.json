@@ -1,0 +1,50 @@
+{
+    "MAINTENANCE": {
+        "RECURRING_ASSIGNMENTS": {
+            "FORM": {
+                "LABELS": {
+                    "ASSIGNMENTTYPEID": "Assignment type",
+                    "ENTITYID": "Entity",
+                    "START": "Start date",
+                    "END": "End date"
+                },
+                "PLACEHOLDERS": {
+                    "ASSIGNMENTTYPEID": "Assignment type",
+                    "ENTITYID": "Entity",
+                    "START": "Start date",
+                    "END": "End date"
+                },
+                "VALIDATION": {
+                    "ASSIGNMENTTYPEID": {
+                        "REQUIRED": "Assignment type is required."
+                    },
+                    "ENTITYID": {
+                        "REQUIRED": "Entity is required."
+                    },
+                    "START": {
+                        "REQUIRED": "Start date is required."
+                    },
+                    "END": {
+                        "REQUIRED": "End date is required."
+                    }
+                }
+            },
+            "CREATE": {
+                "CREATE": "Create"
+            },
+            "EDIT": {
+                "EDIT": "Edit"
+            },
+            "INDEX": {
+                "ACTIONS": "Actions",
+                "CREATE": "Create",
+                "EDIT": "Edit",
+                "DELETE": "Delete",
+                "MANAGE": "Manage",
+                "FIELDS": "Fields",
+                "STATES": "States",
+                "BACK": "Back"
+            }
+        }
+    }
+}
