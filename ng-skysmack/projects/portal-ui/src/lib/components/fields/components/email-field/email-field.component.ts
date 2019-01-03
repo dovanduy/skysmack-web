@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { trigger, transition, style, animate } from '@angular/animations';
-import { FieldBaseComponent } from '@skysmack/ng-ui';
+import { FieldBaseComponent } from '../field-base-component';
 
 @Component({
   selector: 'ss-email-field',

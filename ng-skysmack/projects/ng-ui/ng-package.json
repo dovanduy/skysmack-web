@@ -3,5 +3,10 @@
   "dest": "../../dist/ng-ui",
   "lib": {
     "entryFile": "src/public_api.ts"
-  }
+  },
+  "whitelistedNonPeerDependencies": [
+    "tslib",
+    "@skysmack/framework",
+    "@skysmack/packages-skysmack-core"
+  ]
 }

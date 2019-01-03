@@ -1,43 +1,22 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "baseUrl": "src",
+    "baseUrl": "./",
     "paths": {
-      "@skysmack/ng-packages": [
-        "dist/ng-packages/src/public_api"
-      ],
-      "@skysmack/ng-packages/*": [
-        "dist/ng-packages/*"
-      ],
-      "@skysmack/portal-packages": [
-        "dist/portal-packages/src/public_api"
-      ],
-      "@skysmack/portal-packages/*": [
-        "dist/portal-packages/*"
-      ],
-      "@skysmack/portal-ui": [
-        "dist/portal-ui/src/public_api"
-      ],
-      "@skysmack/portal-ui/*": [
-        "dist/portal-ui/*"
-      ],
       "@skysmack/ng-redux": [
-        "dist/ng-redux/src/public_api"
-      ],
-      "@skysmack/ng-redux/*": [
-        "dist/ng-redux/*"
-      ],
-      "@skysmack/ng-skysmack-core": [
-        "dist/ng-skysmack-core/src/public_api"
-      ],
-      "@skysmack/ng-skysmack-core/*": [
-        "dist/ng-skysmack-core/*"
+        "dist/ng-redux"
       ],
       "@skysmack/ng-ui": [
-        "dist/ng-ui/src/public_api"
+        "dist/ng-ui"
       ],
-      "@skysmack/ng-ui/*": [
-        "dist/ng-ui/*"
+      "@skysmack/ng-packages": [
+        "dist/ng-packages"
+      ],
+      "@skysmack/portal-ui": [
+        "dist/portal-ui"
+      ],
+      "@skysmack/portal-packages": [
+        "dist/portal-packages"
       ]
     },
     "outDir": "./dist/out-tsc",

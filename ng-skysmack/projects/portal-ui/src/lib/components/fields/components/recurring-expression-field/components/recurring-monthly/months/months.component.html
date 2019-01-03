@@ -1,5 +1,5 @@
 <ng-container *ngFor="let month of months">
-    <mat-checkbox [ngClass]="{'day-selected': lastIsSelected && daySelected}" (click)="selectMonth(month)">{{month.month}}</mat-checkbox>
+    <mat-checkbox (click)="selectMonth(month)">{{month.month}}</mat-checkbox>
 </ng-container>
 <br/>
 <small>

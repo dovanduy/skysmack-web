@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FieldBaseComponent } from '@skysmack/ng-ui';
-import * as moment from 'moment';
+import { FieldBaseComponent } from '../field-base-component';
+import * as _moment from 'moment';
 import { DateAdapter } from '@angular/material';
 import { DateOnlyAdapter } from './date-only-adapter';
+const moment = _moment;
 
 @Component({
   selector: 'ss-date-field',

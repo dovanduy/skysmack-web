@@ -21,6 +21,6 @@
   ],
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1",
-    "build": "tsc"
+    "build": "ng build ng-redux"
   }
 }

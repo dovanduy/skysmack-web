@@ -1,7 +1,7 @@
 import { Component, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { DateAdapter } from '@angular/material';
 import { combineLatest, of, fromEvent } from 'rxjs';
-import { FieldBaseComponent } from '@skysmack/ng-ui';
+import { FieldBaseComponent } from '../field-base-component';
 import { DateTimeAdapter } from './date-time-adapter';
 
 @Component({

@@ -14,9 +14,9 @@ import { LanguageService } from '@skysmack/portal-ui';
   imports: [
     CommonModule,
     HttpClientModule,
+    PortalUiModule,
     LodgingsRoutingModule,
     NgLodgingsModule,
-    PortalUiModule,
     TranslateModule.forChild({
       loader: {
         provide: TranslateLoader,

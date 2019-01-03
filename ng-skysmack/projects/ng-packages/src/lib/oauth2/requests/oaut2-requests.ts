@@ -5,7 +5,8 @@ import { of, Observable } from 'rxjs';
 import { ApiDomain, CurrentUser, HttpErrorResponse } from '@skysmack/framework';
 import { HttpParams, HttpClient } from '@angular/common/http';
 import { OpenIdConnectResponse } from '@skysmack/packages-oauth2';
-import * as moment from 'moment';
+import * as _moment from 'moment';
+const moment = _moment;
 
 @Injectable({ providedIn: 'root' })
 export class Oauth2Requests {

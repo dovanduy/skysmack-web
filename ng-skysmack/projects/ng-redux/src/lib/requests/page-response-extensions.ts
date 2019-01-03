@@ -1,6 +1,7 @@
 import { HttpHeaders } from '@angular/common/http';
 import { PageResponse } from '@skysmack/framework';
-import * as  parseLinkHeader from 'parse-link-header';
+import * as _parseLinkHeader from 'parse-link-header';
+const parseLinkHeader = _parseLinkHeader;
 
 export class PageResponseExtensions {
     public static getPageResponse<TKey>(headers: HttpHeaders, ids: TKey[], query: string, sort: string): PageResponse<TKey> {

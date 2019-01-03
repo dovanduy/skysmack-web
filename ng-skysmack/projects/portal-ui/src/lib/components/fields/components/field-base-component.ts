@@ -1,9 +1,7 @@
 import { Input, OnDestroy, ElementRef, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { SubscriptionLike as ISubscription } from 'rxjs';
-import { FormHelper } from '../forms/form-helper';
-import { Field } from './field';
-import { FormRule } from '../forms/form-rule';
+import { FormHelper, Field, FormRule } from '@skysmack/ng-ui';
 
 interface AddedEvent {
     component: ElementRef;
@@ -13,10 +11,10 @@ interface AddedEvent {
 }
 
 export class FieldBaseComponent implements OnInit, OnDestroy {
-    @Input() fh: FormHelper;
-    @Input() field: Field;
-    @Input() fields: Field[];
-    @Input() rules: FormRule[];
+    @Input() public fh: FormHelper;
+    @Input() public field: Field;
+    @Input() public fields: Field[];
+    @Input() public rules: FormRule[];
 
     protected subscriptions: ISubscription[] = [];
 

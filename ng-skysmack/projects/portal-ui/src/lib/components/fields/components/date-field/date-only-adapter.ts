@@ -1,6 +1,7 @@
 import { NativeDateAdapter } from '@angular/material';
 import { Injectable } from '@angular/core';
-import * as moment from 'moment';
+import * as _moment from 'moment';
+const moment = _moment;
 
 @Injectable({ providedIn: 'root' })
 export class DateOnlyAdapter extends NativeDateAdapter {

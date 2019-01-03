@@ -7,7 +7,7 @@ import { NgPackagesStore } from '@skysmack/ng-packages';
 import { PackagesAppState } from '@skysmack/packages-skysmack-core';
 import { Package, LocalObject } from '@skysmack/framework';
 import { Observable } from 'rxjs';
-import { NgPackagesMenu } from '../../ng-packages-menu';
+import { NgPackagesMenu } from './../../ng-packages-menu';
 import { EntityAction } from '@skysmack/ng-ui';
 
 @Component({

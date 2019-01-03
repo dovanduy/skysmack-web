@@ -15,7 +15,6 @@ import { NgLodgingTypesMenu } from './../../ng-lodging-types-menu';
   styleUrls: ['./lodging-types-index.component.scss']
 })
 export class LodgingTypesIndexComponent extends DocumentRecordIndexComponet<LodgingTypesAppState, LodgingType, number> implements OnInit {
-
   public displayedColumns = ['name'];
   public entityActions: EntityAction[] = [
     new EntityAction().asUrlAction('edit', 'Edit', 'edit'),
@@ -32,7 +31,6 @@ export class LodgingTypesIndexComponent extends DocumentRecordIndexComponet<Lodg
     public sidebarMenu: NgLodgingTypesMenu
   ) {
     super(router, activatedRoute, actions, redux, store);
-
   }
 
   ngOnInit() {

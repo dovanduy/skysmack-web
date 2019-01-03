@@ -12,3 +12,4 @@ export * from './recurring-expression-field';
 export * from './select-field/select-field.component';
 export * from './string-field/string-field.component';
 export * from './time-field/time-field.component';
+export * from './field-base-component';

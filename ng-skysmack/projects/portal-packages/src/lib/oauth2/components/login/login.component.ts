@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { EntityComponentPageTitle } from '@skysmack/portal-ui';
 import { NgOauth2Store } from '@skysmack/ng-packages';
 import { NgSkysmackStore } from '@skysmack/ng-packages';
-import { LoginFieldsConfig } from '../../login-fields-config';
+import { LoginFieldsConfig } from './../../login-fields-config';
 import { NgSkysmackActions } from '@skysmack/ng-packages';
 import { SubscriptionHandler } from '@skysmack/framework';
 import { AuthenticationActions } from '@skysmack/redux';

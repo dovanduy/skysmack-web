@@ -1,4 +1,4 @@
-<ss-container [sidebarMenu]="sidebarMenu">
+<ss-container [sidebarMenu]="sidebarMenu"><!-- Packages index -->
     <ss-data-table *ngIf="packages$" [actions]="actions" [title]="'Packages'" [displayedColumns]="displayedColumns"
         [entities$]="packages$" [entityActions]="entityActions" [packagePath]="packagePath" (entityActionEvent)="actionEvent($event)">
         <ss-pagination [loadingState]="loadingState" (intersection)="onIntersection($event)"></ss-pagination>

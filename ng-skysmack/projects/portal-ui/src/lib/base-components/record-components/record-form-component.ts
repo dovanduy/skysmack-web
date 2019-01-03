@@ -3,7 +3,7 @@ import { OnInit, OnDestroy } from '@angular/core';
 import { Record, LocalObject } from '@skysmack/framework';
 import { FieldsConfig } from '@skysmack/ng-ui';
 import { EditorNavService } from './../../components/common/container/editor-nav.service';
-import { FormBaseComponent } from '../form-base-component';
+import { FormBaseComponent } from './../form-base-component';
 import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { RecordActionsBase } from '@skysmack/redux';
 import { NgRedux } from '@angular-redux/store';
