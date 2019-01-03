@@ -28,10 +28,6 @@
   ],
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1",
-<<<<<<< HEAD
     "build": "ng build ng-packages"
-=======
-    "build": "tsc"
->>>>>>> 0e7fafb2c1667a48231536bacfee41eb77dea407
   }
 }
