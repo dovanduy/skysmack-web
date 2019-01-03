@@ -1,0 +1,118 @@
+{
+    "MAINTENANCE": {
+        "ASSIGNMENTS": {
+            "FORM": {
+                "LABELS": {
+                    "ASSIGNMENTTYPEID": "Entity",
+                    "DESCRIPTION": "Description",
+                    "OCCUPATIONSTATE": "Occupation state",
+                    "STATUS": "Status",
+                    "DUE": "Due date",
+                    "FROM": "Can be started from"
+                },
+                "PLACEHOLDERS": {
+                    "ASSIGNMENTTYPEID": "Choose entity",
+                    "DESCRIPTION": "Enter description",
+                    "OCCUPATIONSTATE": "Choose occupation state",
+                    "STATUS": "Choose status",
+                    "DUE": "Choose due date",
+                    "FROM": "Choose can be started from date"
+                },
+                "VALIDATION": {
+                    "ASSIGNMENTTYPEID": {
+                        "REQUIRED": "Entity is required."
+                    },
+                    "DESCRIPTION": {
+                        "REQUIRED": "Description is required."
+                    },
+                    "OCCUPATIONSTATE": {
+                        "REQUIRED": "Occupation state is required"
+                    },
+                    "STATUS": {
+                        "REQUIRED": "Status is required."
+                    },
+                    "DUE": {
+                        "REQUIRED": "Due date is required.",
+                        "NOTBEFORE": "The due date may not be earlier than the start date."
+                    },
+                    "FROM": {
+                        "REQUIRED": "A date from when the assignment can begin is required."
+                    }
+                },
+                "BUTTONS": {
+                    "CREATE": "Create",
+                    "EDIT": "Edit"
+                }
+            },
+            "CREATE": {
+                "CREATE": "Create"
+            },
+            "EDIT": {
+                "EDIT": "Edit"
+            },
+            "INDEX": {
+                "ACTIONS": "Actions",
+                "CREATE": "Create",
+                "EDIT": "Edit",
+                "DELETE": "Delete",
+                "MANAGE": "Manage",
+                "FIELDS": "Fields",
+                "STATES": "States",
+                "TYPES": "Types",
+                "BACK": "Back"
+            },
+            "FIELDS": {
+                "FORM": {
+                    "LABELS": {
+                        "ENTITYID": "Entity",
+                        "DESCRIPTION": "Description",
+                        "STATUS": "Status",
+                        "DUE": "Due date",
+                        "FROM": "Can be started from"
+                    },
+                    "PLACEHOLDERS": {
+                        "ENTITYID": "Choose entity",
+                        "DESCRIPTION": "Enter description",
+                        "STATUS": "Choose status",
+                        "DUE": "Choose due date",
+                        "FROM": "Choose can be started from date"
+                    },
+                    "VALIDATION": {
+                        "ENTITYID": {
+                            "REQUIRED": "Entity is required."
+                        },
+                        "DESCRIPTION": {
+                            "REQUIRED": "Description is required."
+                        },
+                        "STATUS": {
+                            "REQUIRED": "Status is required."
+                        },
+                        "DUE": {
+                            "REQUIRED": "Due date is required.",
+                            "NOTBEFORE": "The due date may not be earlier than the start date."
+                        },
+                        "FROM": {
+                            "REQUIRED": "A date from when the assignment can begin is required."
+                        }
+                    },
+                    "BUTTONS": {
+                        "CREATE": "Create",
+                        "EDIT": "Edit"
+                    }
+                },
+                "INDEX": {
+                    "ACTIONS": "Actions",
+                    "CREATE": "Create",
+                    "ASSIGNMENTS": "Assignments",
+                    "FIELDS": "Assignment fields",
+                    "MANAGE": "Manage",
+                    "ADD": "Add field",
+                    "BACK": "Back"
+                },
+                "CREATE": {
+                    "ADD": "Add field"
+                }
+            }
+        }
+    }
+}

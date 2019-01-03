@@ -53,6 +53,7 @@
     "@skysmack/ng-ui": "*",
     "@skysmack/portal-ui": "*",
     "@skysmack/packages-skysmack-core": "*",
+    "@skysmack/packages-maintenance": "*",
     "@skysmack/packages-lodgings": "*",
     "@skysmack/packages-oauth2": "*",
     "@skysmack/packages-persons": "*",
