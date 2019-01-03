@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EntityAction } from '@skysmack/ng-ui';
-import { NgSkysmackStore, NgAssignmentAllMenu } from '@skysmack/ng-packages';
+import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { EntityComponentPageTitle } from '@skysmack/portal-ui';
+import { NgAssignmentAllMenu } from '../../ng-assignments-all-menu';
 
 @Component({
   selector: 'ss-assignments-all',

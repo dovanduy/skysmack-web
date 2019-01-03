@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RecurringAssignment, RecurringAssignmentsAppState } from '@skysmack/packages-maintenance';
 import { RecordFormComponent, EditorNavService } from '@skysmack/portal-ui';
-import { NgRecurringAssignmentsActions, NgSkysmackStore, NgRecurringAssignmentsFieldsConfig, NgRecurringAssignmentsStore } from '@skysmack/ng-packages';
+import { NgRecurringAssignmentsActions, NgSkysmackStore, NgRecurringAssignmentsFieldsConfig, NgRecurringAssignmentsStore, NgRecurringAssignmentFormDependencies } from '@skysmack/ng-packages';
 
 @Component({
   selector: 'ss-recurring-assignments-edit',

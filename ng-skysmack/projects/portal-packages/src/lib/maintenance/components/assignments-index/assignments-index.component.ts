@@ -4,7 +4,8 @@ import { AssignmentsAppState } from '@skysmack/packages-maintenance/lib/redux/As
 import { Assignment } from '@skysmack/packages-maintenance';
 import { DocumentRecordIndexComponet, EntityComponentPageTitle } from '@skysmack/portal-ui';
 import { EntityAction } from '@skysmack/ng-ui';
-import { NgAssignmentsActions, NgSkysmackStore, NgAssignmentsStore, NgAssignmentsMenu } from '@skysmack/ng-packages';
+import { NgAssignmentsActions, NgSkysmackStore, NgAssignmentsStore } from '@skysmack/ng-packages';
+import { NgAssignmentsMenu } from '../../ng-assignments-menu';
 
 @Component({
   selector: 'ss-assignments-index',

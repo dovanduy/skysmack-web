@@ -3,7 +3,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { RecurringAssignment, RecurringAssignmentsAppState } from '@skysmack/packages-maintenance';
 import { RecordIndexComponent, EntityComponentPageTitle } from '@skysmack/portal-ui';
 import { EntityAction } from '@skysmack/ng-ui';
-import { NgRecurringAssignmentsActions, NgSkysmackStore, NgRecurringAssignmentsStore, NgRecurringAssignmentsMenu } from '@skysmack/ng-packages';
+import { NgRecurringAssignmentsActions, NgSkysmackStore, NgRecurringAssignmentsStore } from '@skysmack/ng-packages';
+import { NgRecurringAssignmentsMenu } from '../../ng-recurring-assignments-menu';
 
 @Component({
   selector: 'ss-recurring-assignments-index',
