@@ -6,7 +6,7 @@ export * from './online-status/online-status.component';
 export * from './package-drawer/package-drawer.component';
 export * from './page-header/page-header.component';
 export * from './progress/progress.component';
-export * from './navbar/';
+export * from './navbar/index';
 export * from './sidebar-menu/sidebar-menu.component';
 export * from './speed-dial-fab/speed-dial-fab.component';
 export * from './calendar/calendar.component';

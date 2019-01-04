@@ -1,5 +1,3 @@
-export * from './portal-ui.module';
-export * from './material.module';
 export * from './autentication';
 export * from './components';
 export * from './base-components';
@@ -8,3 +6,6 @@ export * from './dynamic-fields';
 export * from './language';
 export * from './models';
 export * from './redux';
+export * from './portal-ui.module';
+export * from './material.module';
+export * from './portal-ui.helper';

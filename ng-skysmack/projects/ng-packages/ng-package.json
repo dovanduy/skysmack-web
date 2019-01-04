@@ -13,6 +13,7 @@
     "@skysmack/packages-oauth2",
     "@skysmack/packages-persons",
     "@skysmack/packages-products",
-    "@skysmack/packages-skysmack-core"
+    "@skysmack/packages-skysmack-core",
+    "@skysmack/packages-maintenance"
   ]
 }

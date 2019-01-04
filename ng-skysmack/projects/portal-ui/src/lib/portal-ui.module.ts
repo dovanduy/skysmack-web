@@ -41,17 +41,13 @@ import { TimeFieldComponent } from './components/fields/components/time-field/ti
 import { PageHeaderComponent } from './components/common/page-header/page-header.component';
 import { SpeedDialFabComponent } from './components/common/speed-dial-fab/speed-dial-fab.component';
 import { ShowEntityActionDirective } from './directives';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+
 import { HttpClient } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { IsAnonymousDirective, IsAuthenticatedDirective } from './autentication';
 import { PackageDependenciesFieldComponent } from './components/fields/components/package-dependencies-field/package-dependencies-field.component';
-
-// AoT requires an exported function for factories
-export function HttpLoaderFactory(http: HttpClient) {
-  return new TranslateHttpLoader(http, 'i18n/');
-}
+import { HttpLoaderFactory } from './portal-ui.helper';
 
 @NgModule({
   imports: [
@@ -113,7 +109,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     TimeFieldComponent,
     PackageDependenciesFieldComponent,
     PageHeaderComponent,
-    SpeedDialFabComponent,
+    SpeedDialFabComponent
   ],
   exports: [
     // Translation

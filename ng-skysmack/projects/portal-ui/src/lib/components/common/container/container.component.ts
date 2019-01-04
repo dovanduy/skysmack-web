@@ -13,9 +13,9 @@ const SMALL_WIDTH_BREAKPOINT = 720;
   styleUrls: ['./container.component.scss']
 })
 export class ContainerComponent implements OnInit, OnDestroy {
-  @Input() public sidebarMenu: SidebarMenu;
-  @ViewChild(MatSidenav) public sidenav: MatSidenav;
-  @ViewChild('editornav') public editornav: MatSidenav;
+  @Input() public sidebarMenu: SidebarMenu & { }; // works
+  @ViewChild(MatSidenav) public sidenav: MatSidenav & { }; // works
+  @ViewChild('editornav') public editornav: MatSidenav & { }; // works
 
   public path: string;
   public subscriptionHandler = new SubscriptionHandler();
