@@ -6,29 +6,41 @@
       "@skysmack/ng-redux": [
         "projects/ng-redux/src/public_api"
       ],
-      "@skysmack/ng-redux/*": [
-        "dist/ng-redux/*"
-      ],
       "@skysmack/ng-ui": [
         "projects/ng-ui/src/public_api"
-      ],
-      "@skysmack/ng-ui/*": [
-        "dist/ng-ui/*"
       ],
       "@skysmack/ng-packages": [
         "projects/ng-packages/src/public_api"
       ],
-      "@skysmack/ng-packages/*": [
-        "dist/ng-packages/*"
-      ],
       "@skysmack/portal-ui": [
         "projects/portal-ui/src/public_api"
       ],
-      "@skysmack/portal-ui/*": [
-        "dist/portal-ui/*"
-      ],
       "@skysmack/portal-packages": [
         "projects/portal-packages/src/public_api"
+      ],
+      "@skysmack/framework": [
+        "../packages/framework"
+      ],
+      "@skysmack/redux": [
+        "../packages/redux"
+      ],
+      "@skysmack/packages-lodgings": [
+        "../packages/packages-lodgings"
+      ],
+      "@skysmack/packages-maintenance": [
+        "../packages/packages-maintenance"
+      ],
+      "@skysmack/packages-oauth2": [
+        "../packages/packages-oauth2"
+      ],
+      "@skysmack/packages-persons": [
+        "../packages/packages-persons"
+      ],
+      "@skysmack/packages-products": [
+        "../packages/packages-products"
+      ],
+      "@skysmack/packages-skysmack-core": [
+        "../packages/packages-skysmack-core"
       ]
     },
     "outDir": "./dist/out-tsc",

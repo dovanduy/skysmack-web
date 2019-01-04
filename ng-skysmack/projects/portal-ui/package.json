@@ -2,14 +2,14 @@
   "name": "@skysmack/portal-ui",
   "version": "0.0.1",
   "dependencies": {
+    "@skysmack/redux": "*",
+    "@skysmack/framework": "*",
+    "@skysmack/packages-skysmack-core": "*",
+    "@skysmack/packages-oauth2": "*"
   },
   "peerDependencies": {
     "@angular/common": "^7.0.0",
     "@angular/core": "^7.0.0",
-    "@skysmack/redux": "*",
-    "@skysmack/framework": "*",
-    "@skysmack/packages-skysmack-core": "*",
-    "@skysmack/packages-oauth2": "*",
     "@skysmack/ng-packages": "*",
     "@skysmack/ng-ui": "*",
     "@skysmack/ng-redux": "*"
@@ -26,11 +26,5 @@
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1",
     "build": "ng build portal-ui"
-  },
-  "ngPackage": {
-    "lib": {
-      "entryFile": "src/public_api.ts"
-    },
-    "dest": "../../dist/portal-ui"
   }
 }

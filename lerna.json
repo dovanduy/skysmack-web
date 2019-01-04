@@ -2,7 +2,7 @@
   "packages": [
     "packages/*",
     "ng-skysmack/projects/*",
-    "ng-skysmack"
+    ""
   ],
   "version": "0.0.0"
 }

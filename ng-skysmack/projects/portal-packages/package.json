@@ -16,7 +16,7 @@
     "@skysmack/ng-ui": "*",
     "@skysmack/portal-ui": "*"
   },
-  "devDependencies": {    
+  "devDependencies": {
     "typescript": "^3.2.2"
   },
   "main": "./lib/public_api.js",
@@ -32,11 +32,5 @@
     "test": "echo \"Error: run tests from root\" && exit 1",
     "build": "ng build portal-packages",
     "tsc": "tsc"
-  },
-  "ngPackage": {
-    "lib": {
-      "entryFile": "src/public_api.ts"
-    },
-    "dest": "../../dist/portal-packages"
   }
 }
