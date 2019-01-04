@@ -14,7 +14,7 @@ export const personsRoutes: Routes = [
   },
   {
     path: 'fields',
-    loadChildren: './../../../../portal-ui/src/lib/dynamic-fields/dynamic-fields.module#DynamicFieldsModule',
+    loadChildren: './lib/dynamic-fields_wrapper.module#DynamicFieldsWrapperModule',
     data: { actionToken: 'PersonsActions', storeToken: 'PersonsStore' } as DynamicFieldRouteData
   }
 ];

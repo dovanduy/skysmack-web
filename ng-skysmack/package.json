@@ -2,6 +2,7 @@
   "name": "@skysmack/ng-skysmack",
   "version": "0.0.0",
   "scripts": {
+    "build:lib": "ng build ng-redux && ng build ng-ui && ng build ng-packages && ng build portal-ui && ng build portal-packages",
     "ss:web:localization": "gulp webLocalization",
     "link:framework": "cd ../framework && npm link && npm run build",
     "link:redux": "cd ../redux && npm link && npm link @skysmack/framework && npm run build",

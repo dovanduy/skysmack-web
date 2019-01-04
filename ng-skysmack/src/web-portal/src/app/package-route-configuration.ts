@@ -3,7 +3,7 @@ import { Router, Route } from '@angular/router';
 import { map, take } from 'rxjs/operators';
 import { Skysmack } from '@skysmack/packages-skysmack-core';
 import { hasValue } from '@skysmack/framework';
-import { DynamicPackageRouter } from '../models/dynamic-package-router';
+import { DynamicPackageRouter } from './../models/dynamic-package-router';
 import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { PackageLoader } from '@skysmack/ng-packages';
 

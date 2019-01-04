@@ -16,7 +16,7 @@ import { configureRedux } from '../redux/redux.configuration';
 import { applicationStartup } from './application-startup';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServiceWorkerModule } from '@angular/service-worker';
-import { environment } from '../../environments/environment';
+import { environment } from './../../environments/environment';
 
 @NgModule({
   declarations: [
@@ -28,23 +28,23 @@ import { environment } from '../../environments/environment';
     RouterModule.forRoot([
       {
         path: 'packages',
-        loadChildren: './../../../../../dist/portal-packages/lib/packages/packages.module#PackagesModule'
+        loadChildren: './../packages/modules/packages_wrapper.module#PackagesWrapperModule'
       },
       {
         path: 'persons',
-        loadChildren: '../../../../../dist/portal-packages/lib/persons/persons.module#PersonsModule'
+        loadChildren: './../packages/modules/persons_wrapper.module#PersonsWrapperModule'
       },
       {
         path: 'products',
-        loadChildren: '../../../../../dist/portal-packages/lib/products/products.module#ProductsModule'
+        loadChildren: './../packages/modules/products_wrapper.module#ProductsWrapperModule'
       },
       {
         path: 'lodgings',
-        loadChildren: '../../../../../dist/portal-packages/lib/lodgings/lodgings.module#LodgingsModule'
+        loadChildren: './../packages/modules/lodgings_wrapper.module#LodgingsWrapperModule'
       },
       {
         path: 'oauth2',
-        loadChildren: '../../../../../dist/portal-packages/lib/oauth2/oauth2.module#Oauth2Module'
+        loadChildren: './../packages/modules/oauth2_wrapper.module#OAuth2WrapperModule'
       },
       {
         path: '',

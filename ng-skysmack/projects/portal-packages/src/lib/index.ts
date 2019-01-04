@@ -5,3 +5,4 @@ export * from './packages/index';
 export * from './persons/index';
 export * from './products/index';
 export * from './skysmack/index';
+export * from './dynamic-fields_wrapper.module';

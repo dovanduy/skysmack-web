@@ -6,17 +6,32 @@
       "@skysmack/ng-redux": [
         "dist/ng-redux"
       ],
+      "@skysmack/ng-redux/*": [
+        "dist/ng-redux/*"
+      ],
       "@skysmack/ng-ui": [
         "dist/ng-ui"
+      ],
+      "@skysmack/ng-ui/*": [
+        "dist/ng-ui/*"
       ],
       "@skysmack/ng-packages": [
         "dist/ng-packages"
       ],
+      "@skysmack/ng-packages/*": [
+        "dist/ng-packages/*"
+      ],
       "@skysmack/portal-ui": [
         "dist/portal-ui"
       ],
+      "@skysmack/portal-ui/*": [
+        "dist/portal-ui/*"
+      ],
       "@skysmack/portal-packages": [
         "dist/portal-packages"
+      ],
+      "@skysmack/portal-packages/*": [
+        "dist/portal-packages/*"
       ]
     },
     "outDir": "./dist/out-tsc",
