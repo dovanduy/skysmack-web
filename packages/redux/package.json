@@ -15,7 +15,7 @@
     "test": "echo \"Error: run tests from root\" && exit 1",
     "build": "tsc",
     "build:npm": "tsc",
-    "build:watch": "tsc -w"
+    "build:npm:watch": "tsc -w"
   },
   "dependencies": {
     "@skysmack/framework": "*",
