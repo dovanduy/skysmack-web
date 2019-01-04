@@ -1,4 +1,4 @@
-export * from './redux';
+export * from './redux/index';
 export * from './ng-lodgings.module';
 export * from './ng-lodgings-validation';
 export * from './ng-lodgings-fields-config';

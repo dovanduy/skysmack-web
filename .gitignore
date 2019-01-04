@@ -6,3 +6,4 @@ packages/*/lib
 .idea
 ng-skysmack/projects/*/lib
 packages/*/__tests__
+ng-skysmack/out-tsc/

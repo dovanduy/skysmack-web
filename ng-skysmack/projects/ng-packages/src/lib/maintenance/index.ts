@@ -1,4 +1,4 @@
-export * from './redux';
+export * from './redux/index';
 export * from './ng-assignments.module';
 export * from './ng-assignments-validation';
 export * from './ng-assignments-fields-config';

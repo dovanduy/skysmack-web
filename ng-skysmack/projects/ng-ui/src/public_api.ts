@@ -3,7 +3,4 @@
  */
 
 // export * from './lib/ng-ui.service';
-export * from './lib/fields';
-export * from './lib/forms';
-export * from './lib/models';
-export * from './lib/providers';
+export * from './lib/index';

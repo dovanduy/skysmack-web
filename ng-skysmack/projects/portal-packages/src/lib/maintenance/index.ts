@@ -1,4 +1,4 @@
-export * from './components';
+export * from './components/index';
 export * from './maintenance-routing.module';
 export * from './maintenance.module';
 export * from './ng-assignments-all-menu';

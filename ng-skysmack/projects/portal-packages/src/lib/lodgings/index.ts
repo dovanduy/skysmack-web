@@ -1,4 +1,4 @@
-export * from './components';
+export * from './components/index';
 export * from './lodgings-routing.module';
 export * from './lodgings.module';
 export * from './ng-lodgings-menu';

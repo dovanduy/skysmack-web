@@ -1,4 +1,4 @@
-export * from './components';
+export * from './components/index';
 export * from './packages-routing.module';
 export * from './packages.module';
 export * from './ng-packages-menu';

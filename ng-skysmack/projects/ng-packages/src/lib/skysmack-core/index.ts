@@ -1,2 +1,2 @@
-export * from './packages';
-export * from './skysmack';
+export * from './packages/index';
+export * from './skysmack/index';
