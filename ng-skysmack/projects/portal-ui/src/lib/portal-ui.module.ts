@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MaterialModule } from './material.module';
 import { ReducerRegistry, authenticationReducer } from '@skysmack/redux';
-import { uiReducer } from './redux/ui-reducers';
-import { settingsReducer } from './redux/settings';
 import { RouterModule } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
@@ -40,14 +40,16 @@ import { StringFieldComponent } from './components/fields/components/string-fiel
 import { TimeFieldComponent } from './components/fields/components/time-field/time-field.component';
 import { PageHeaderComponent } from './components/common/page-header/page-header.component';
 import { SpeedDialFabComponent } from './components/common/speed-dial-fab/speed-dial-fab.component';
-import { ShowEntityActionDirective } from './directives';
 
-import { HttpClient } from '@angular/common/http';
-import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
-import { ReactiveFormsModule } from '@angular/forms';
-import { IsAnonymousDirective, IsAuthenticatedDirective } from './autentication';
+import { MaterialModule } from './material.module';
+import { uiReducer } from './redux/ui-reducers';
+import { settingsReducer } from './redux/settings';
+
 import { PackageDependenciesFieldComponent } from './components/fields/components/package-dependencies-field/package-dependencies-field.component';
 import { HttpLoaderFactory } from './portal-ui.helper';
+import { ShowEntityActionDirective } from './directives/show-entity-action.directive';
+import { IsAuthenticatedDirective } from './autentication/is-authenticated.directive';
+import { IsAnonymousDirective } from './autentication/is-anonymous.directive';
 
 @NgModule({
   imports: [

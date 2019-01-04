@@ -6,7 +6,7 @@ import { CurrentUser } from '@skysmack/framework';
 import { NgAuthenticationStore } from '@skysmack/ng-redux';
 
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class AuthorizationInterceptor implements HttpInterceptor {
     constructor(
         public authenticationStore: NgAuthenticationStore

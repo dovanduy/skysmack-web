@@ -12,8 +12,8 @@ import { NgProductsStore } from './redux/ng-products-store';
   exports: [],
   providers: [
     [
-      { provide: 'ProductsActions', useClass: NgProductsActions },
-      { provide: 'ProductsStore', useClass: NgProductsStore }
+      { provide: 'NgProductsActions', useClass: NgProductsActions },
+      { provide: 'NgProductsStore', useClass: NgProductsStore }
     ]
   ]
 })

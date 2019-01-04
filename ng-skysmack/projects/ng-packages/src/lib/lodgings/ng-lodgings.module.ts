@@ -12,8 +12,8 @@ import { NgLodgingsStore } from './redux/ng-lodgings-store';
   exports: [],
   providers: [
     [
-      { provide: 'LodgingsActions', useClass: NgLodgingsActions },
-      { provide: 'LodgingsStore', useClass: NgLodgingsStore }
+      { provide: 'NgLodgingsActions', useClass: NgLodgingsActions },
+      { provide: 'NgLodgingsStore', useClass: NgLodgingsStore }
     ]
   ],
 })
