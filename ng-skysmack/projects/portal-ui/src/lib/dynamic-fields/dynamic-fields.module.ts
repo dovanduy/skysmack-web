@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { DynamicFieldsRoutingModule } from './dynamic-fields-routing.module';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { PortalUiModule } from './../portal-ui.module';
 import { TranslateModule, TranslateLoader, TranslateService } from '@ngx-translate/core';
@@ -14,7 +13,6 @@ import { HttpLoaderFactory } from './../portal-ui.helper';
     CommonModule,
     HttpClientModule,
     PortalUiModule,
-    DynamicFieldsRoutingModule,
     TranslateModule.forChild({
       loader: {
         provide: TranslateLoader,
@@ -25,6 +23,9 @@ import { HttpLoaderFactory } from './../portal-ui.helper';
     })
   ],
   declarations: [
+    ...dynamicFieldsComponents
+  ],
+  exports: [
     ...dynamicFieldsComponents
   ],
   providers: []

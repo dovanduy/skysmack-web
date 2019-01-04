@@ -2,7 +2,7 @@ import { Routes } from '@angular/router';
 import { ProductsIndexComponent } from './products-index/products-index.component';
 import { ProductsCreateComponent } from './products-create/products-create.component';
 import { ProductsEditComponent } from './products-edit/products-edit.component';
-import { DynamicFieldRouteData } from '@skysmack/framework';
+import { DynamicFieldsIndexComponent, DynamicFieldsCreateComponent } from '@skysmack/portal-ui';
 
 export const productsRoutes: Routes = [
   {
@@ -12,11 +12,8 @@ export const productsRoutes: Routes = [
       { path: 'edit/:id', component: ProductsEditComponent, pathMatch: 'full' }
     ]
   },
-  {
-    path: 'fields',
-    loadChildren: './lib/dynamic-fields_wrapper.module#DynamicFieldsWrapperModule',
-    data: { actionToken: 'ProductsActions', storeToken: 'ProductsStore' } as DynamicFieldRouteData
-  }
+  { path: 'fields', component: DynamicFieldsIndexComponent },
+  { path: 'fields/create', component: DynamicFieldsCreateComponent }
 ];
 
 export const productsComponents: any[] = [

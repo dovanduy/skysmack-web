@@ -3,6 +3,7 @@ import { LodgingsIndexComponent } from './lodgings-index/lodgings-index.componen
 import { LodgingsCreateComponent } from './lodgings-create/lodgings-create.component';
 import { LodgingsEditComponent } from './lodgings-edit/lodgings-edit.component';
 import { DynamicFieldRouteData } from '@skysmack/framework';
+import { DynamicFieldsIndexComponent, DynamicFieldsCreateComponent } from '@skysmack/portal-ui';
 
 export const lodgingsRoutes: Routes = [
   {
@@ -12,11 +13,8 @@ export const lodgingsRoutes: Routes = [
       { path: 'edit/:id', component: LodgingsEditComponent, pathMatch: 'full' }
     ]
   },
-  {
-    path: 'fields',
-    loadChildren: './lib/dynamic-fields_wrapper.module#DynamicFieldsWrapperModule',
-    data: { actionToken: 'LodgingsActions', storeToken: 'LodgingsStore' } as DynamicFieldRouteData
-  }
+  { path: 'fields', component: DynamicFieldsIndexComponent },
+  { path: 'fields/create', component: DynamicFieldsCreateComponent }
 ];
 
 export const lodgingsComponents: any[] = [
