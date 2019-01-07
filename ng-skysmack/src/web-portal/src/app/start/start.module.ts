@@ -12,7 +12,7 @@ import { ReduxOfflineConfiguration } from '../redux/redux-offline.configuration'
 import { PortalUiModule } from '@skysmack/portal-ui';
 import { FallBackComponent } from './components/fall-back/fall-back.component';
 import { StartComponent } from './components/start/start.component';
-import { configureRedux } from '../redux/redux.configuration';
+import { configureRedux } from './../redux/redux.configuration';
 import { applicationStartup } from './application-startup';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServiceWorkerModule } from '@angular/service-worker';

@@ -34,7 +34,7 @@ export class DynamicFieldsCreateComponent extends BaseComponent<DocumentRecordSt
 
   ngOnInit() {
     super.ngOnInit();
-    this.subscriptionHandler.register(this.activatedRoute.parent.data.pipe(
+    this.subscriptionHandler.register(this.activatedRoute.data.pipe(
       switchMap((data: DynamicFieldRouteData) => {
         this.store = this.injector.get(data.storeToken);
         this.actions = this.injector.get(data.actionToken);
