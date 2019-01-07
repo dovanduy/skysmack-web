@@ -5,10 +5,10 @@ import { ProductsEditComponent } from './products-edit/products-edit.component';
 import { DynamicFieldsIndexComponent, DynamicFieldsCreateComponent } from '@skysmack/portal-ui';
 import { DynamicFieldRouteData } from '@skysmack/framework';
 
-const data = new DynamicFieldRouteData({
+const data = {
   actionToken: 'NgProductsActions',
   storeToken: 'NgProductsStore'
-});
+} as DynamicFieldRouteData;
 
 export const productsRoutes: Routes = [
   {

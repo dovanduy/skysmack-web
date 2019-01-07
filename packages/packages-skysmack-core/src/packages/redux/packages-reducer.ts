@@ -22,8 +22,8 @@ export function packagesReducer(state = new PackagesState(), action: any): Packa
     switch (action.type) {
         case PackagesActions.GET_PACKAGES_SUCCESS: {
             const castedAction: ReduxAction<GetPackagesSuccessPayload> = action;
-            const incomingPackages = castedAction.payload.packages.map(x => toLocalObject(x));
-            newState.localPackages = IdentifiableExtensions.mergeOrAddLocal(newState.localPackages, incomingPackages);
+            const incomingPackages = castedAction.payload.packages.map(x => toLocalObject<AvailablePackage, string>(x));
+            newState.localPackages = IdentifiableExtensions.mergeOrAddLocal<AvailablePackage, string>(newState.localPackages, incomingPackages);
             return newState;
         }
         case PackagesActions.GET_PACKAGES_FAILURE: {
@@ -33,8 +33,8 @@ export function packagesReducer(state = new PackagesState(), action: any): Packa
         }
         case PackagesActions.GET_AVAILABLE_PACKAGES_SUCCESS: {
             const castedAction: ReduxAction<GetAvailablePackagesSuccessPayload> = action;
-            const incomingAvailablePackages = castedAction.payload.availablePackages.map(x => toLocalObject(x));
-            newState.availablePackages = IdentifiableExtensions.mergeOrAddLocal(newState.availablePackages, incomingAvailablePackages);
+            const incomingAvailablePackages = castedAction.payload.availablePackages.map(x => toLocalObject<AvailablePackage, string>(x));
+            newState.availablePackages = IdentifiableExtensions.mergeOrAddLocal<AvailablePackage, string>(newState.availablePackages, incomingAvailablePackages);
             return newState;
         }
         case PackagesActions.GET_AVAILABLE_PACKAGES_FAILURE: {
@@ -44,8 +44,8 @@ export function packagesReducer(state = new PackagesState(), action: any): Packa
         }
         case PackagesActions.GET_SINGLE_PACKAGE_SUCCESS: {
             const castedAction: ReduxAction<GetPackageSuccessPayload> = action;
-            const _newPackage = [toLocalObject(castedAction.payload._package)];
-            newState.localPackages = IdentifiableExtensions.mergeOrAddLocal(newState.localPackages, _newPackage);
+            const _newPackage = [toLocalObject<AvailablePackage, string>(castedAction.payload._package)];
+            newState.localPackages = IdentifiableExtensions.mergeOrAddLocal<AvailablePackage, string>(newState.localPackages, _newPackage);
             return newState;
         }
         case PackagesActions.GET_SINGLE_PACKAGE_FAILURE: {
@@ -56,14 +56,14 @@ export function packagesReducer(state = new PackagesState(), action: any): Packa
         case PackagesActions.ADD_PACKAGE: {
             const castedAction: ReduxAction<any, any> = action;
             const packagesToBeCreated = castedAction.meta.offline.commit.meta.packages;
-            newState.localPackages = IdentifiableExtensions.mergeOrAddLocal(newState.localPackages, packagesToBeCreated);
+            newState.localPackages = IdentifiableExtensions.mergeOrAddLocal<AvailablePackage, string>(newState.localPackages, packagesToBeCreated);
             return newState;
         }
         case PackagesActions.ADD_PACKAGE_SUCCESS: {
             const castedAction: ReduxAction<HttpSuccessResponse<any[] | any>, any> = action;
             const body = castedAction.payload.body;
-            const newPackages = (Array.isArray(body) ? body : [body]).map((newObject, index) => toLocalObject(newObject, castedAction.meta.packages[index].localId));
-            newState.localPackages = IdentifiableExtensions.mergeOrAddLocal(newState.localPackages, newPackages);
+            const newPackages = (Array.isArray(body) ? body : [body]).map((newObject, index) => toLocalObject<AvailablePackage, string>(newObject, castedAction.meta.packages[index].localId));
+            newState.localPackages = IdentifiableExtensions.mergeOrAddLocal<AvailablePackage, string>(newState.localPackages, newPackages);
             return newState;
         }
         case PackagesActions.ADD_PACKAGE_FAILURE: {
@@ -74,8 +74,8 @@ export function packagesReducer(state = new PackagesState(), action: any): Packa
         case PackagesActions.UPDATE_PACKAGE_SUCCESS: {
             const castedAction: ReduxAction<HttpSuccessResponse<any[] | any>, any> = action;
             const body = castedAction.payload.body;
-            const updatedPackages = (Array.isArray(body) ? body : [body]).map((newObject, index) => toLocalObject(newObject, castedAction.meta.packages[index].localId));
-            newState.localPackages = IdentifiableExtensions.mergeOrAddLocal(newState.localPackages, updatedPackages);
+            const updatedPackages = (Array.isArray(body) ? body : [body]).map((newObject, index) => toLocalObject<AvailablePackage, string>(newObject, castedAction.meta.packages[index].localId));
+            newState.localPackages = IdentifiableExtensions.mergeOrAddLocal<AvailablePackage, string>(newState.localPackages, updatedPackages);
             return newState;
         }
         case PackagesActions.UPDATE_PACKAGE_FAILURE: {

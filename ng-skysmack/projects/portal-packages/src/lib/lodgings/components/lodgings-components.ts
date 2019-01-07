@@ -5,10 +5,10 @@ import { LodgingsEditComponent } from './lodgings-edit/lodgings-edit.component';
 import { DynamicFieldRouteData } from '@skysmack/framework';
 import { DynamicFieldsIndexComponent, DynamicFieldsCreateComponent } from '@skysmack/portal-ui';
 
-const data = new DynamicFieldRouteData({
+const data = {
   actionToken: 'NgLodgingsActions',
   storeToken: 'NgLodgingsStore'
-});
+} as DynamicFieldRouteData;
 
 export const lodgingsRoutes: Routes = [
   {

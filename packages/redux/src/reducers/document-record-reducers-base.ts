@@ -1,5 +1,5 @@
 import { DocumentRecordActionsBase } from "../actions";
-import { Record, toLocalObject, ArrayHelpers, HttpSuccessResponse, LocalObject, FieldSchemaViewModel, HttpErrorResponse, LocalObjectStatus, IdentifiableExtensions } from "@skysmack/framework";
+import { Record, toLocalObject, HttpSuccessResponse, LocalObject, FieldSchemaViewModel, HttpErrorResponse, LocalObjectStatus, IdentifiableExtensions, FieldValueProviderViewModel } from "@skysmack/framework";
 import { ReduxAction } from '../action-types/redux-action';
 import { PackagePathPayload, GetFieldsSuccessPayload, GetAvailableFieldsSuccessPayload, GetSingleFieldSuccessPayload } from './../payloads';
 import { DocumentRecordState } from './../states/document-record-state';
@@ -13,8 +13,8 @@ export function documentRecordReducersBase<TState extends DocumentRecordState<TR
     switch (action.type) {
         case prefix + DocumentRecordActionsBase.GET_FIELDS_SUCCESS: {
             const castedAction: ReduxAction<GetFieldsSuccessPayload> = action;
-            const incomingFields = castedAction.payload.fields.map(x => toLocalObject(x));
-            newState.fields[castedAction.payload.packagePath] = IdentifiableExtensions.mergeOrAddLocal(newState.fields[castedAction.payload.packagePath], incomingFields);
+            const incomingFields = castedAction.payload.fields.map(x => toLocalObject<FieldSchemaViewModel, string>(x, 'key'));
+            newState.fields[castedAction.payload.packagePath] = IdentifiableExtensions.mergeOrAddLocal<FieldSchemaViewModel, string>(newState.fields[castedAction.payload.packagePath], incomingFields);
             return newState;
         }
         case prefix + DocumentRecordActionsBase.GET_FIELDS_FAILURE: {
@@ -24,8 +24,8 @@ export function documentRecordReducersBase<TState extends DocumentRecordState<TR
         }
         case prefix + DocumentRecordActionsBase.GET_AVAILABLE_FIELDS_SUCCESS: {
             const castedAction: ReduxAction<GetAvailableFieldsSuccessPayload> = action;
-            const incomingAvailableFields = castedAction.payload.availableFields.map(x => toLocalObject(x));
-            newState.availableFields[castedAction.payload.packagePath] = IdentifiableExtensions.mergeOrAddLocal(newState.availableFields[castedAction.payload.packagePath], incomingAvailableFields);
+            const incomingAvailableFields = castedAction.payload.availableFields.map(x => toLocalObject<FieldValueProviderViewModel, string>(x, 'key'));
+            newState.availableFields[castedAction.payload.packagePath] = IdentifiableExtensions.mergeOrAddLocal<FieldValueProviderViewModel, string>(newState.availableFields[castedAction.payload.packagePath], incomingAvailableFields);
             return newState;
         }
         case prefix + DocumentRecordActionsBase.GET_AVAILABLE_FIELDS_FAILURE: {
@@ -35,8 +35,8 @@ export function documentRecordReducersBase<TState extends DocumentRecordState<TR
         }
         case prefix + DocumentRecordActionsBase.GET_SINGLE_FIELD_SUCCESS: {
             const castedAction: ReduxAction<GetSingleFieldSuccessPayload> = action;
-            const newField = [toLocalObject(castedAction.payload.field)];
-            newState.fields[castedAction.payload.packagePath] = IdentifiableExtensions.mergeOrAddLocal(newState.fields[castedAction.payload.packagePath], newField);
+            const newField = [toLocalObject<FieldSchemaViewModel, string>(castedAction.payload.field)];
+            newState.fields[castedAction.payload.packagePath] = IdentifiableExtensions.mergeOrAddLocal<FieldSchemaViewModel, string>(newState.fields[castedAction.payload.packagePath], newField);
             return newState;
         }
         case prefix + DocumentRecordActionsBase.GET_SINGLE_FIELD_FAILURE: {
@@ -48,14 +48,14 @@ export function documentRecordReducersBase<TState extends DocumentRecordState<TR
             const castedAction: ReduxAction<any, { offline: any }> = action;
             const fieldsToBeCreated = castedAction.meta.offline.commit.meta.fields;
             const packagePath = castedAction.meta.offline.commit.meta.packagePath;
-            newState.fields[packagePath] = IdentifiableExtensions.mergeOrAddLocal(newState.fields[packagePath], fieldsToBeCreated);
+            newState.fields[packagePath] = IdentifiableExtensions.mergeOrAddLocal<FieldSchemaViewModel, string>(newState.fields[packagePath], fieldsToBeCreated);
             return newState;
         }
         case prefix + DocumentRecordActionsBase.ADD_FIELD_SUCCESS: {
             const castedAction: ReduxAction<HttpSuccessResponse<any[] | any>, { fields: LocalObject<FieldSchemaViewModel, string>[], packagePath: string }> = action;
             const body = castedAction.payload.body;
-            const newFields = (Array.isArray(body) ? body : [body]).map((newObject, index) => toLocalObject(newObject, castedAction.meta.fields[index].localId, LocalObjectStatus.OK));
-            newState.fields[castedAction.meta.packagePath] = IdentifiableExtensions.mergeOrAddLocal(newState.fields[castedAction.meta.packagePath], newFields);
+            const newFields = (Array.isArray(body) ? body : [body]).map((newObject, index) => toLocalObject<FieldSchemaViewModel, string>(newObject, castedAction.meta.fields[index].localId, LocalObjectStatus.OK));
+            newState.fields[castedAction.meta.packagePath] = IdentifiableExtensions.mergeOrAddLocal<FieldSchemaViewModel, string>(newState.fields[castedAction.meta.packagePath], newFields);
             return newState;
         }
         case prefix + DocumentRecordActionsBase.ADD_FIELD_FAILURE: {
@@ -66,8 +66,8 @@ export function documentRecordReducersBase<TState extends DocumentRecordState<TR
         case prefix + DocumentRecordActionsBase.UPDATE_FIELD_SUCCESS: {
             const castedAction: ReduxAction<HttpSuccessResponse<any[] | any>, { fields: LocalObject<FieldSchemaViewModel, string>[], packagePath: string }> = action;
             const body = castedAction.payload.body;
-            const updatedFields = (Array.isArray(body) ? body : [body]).map((newObject, index) => toLocalObject(newObject, castedAction.meta.fields[index].localId));
-            newState.fields[castedAction.meta.packagePath] = IdentifiableExtensions.mergeOrAddLocal(newState.fields[castedAction.meta.packagePath], updatedFields);
+            const updatedFields = (Array.isArray(body) ? body : [body]).map((newObject, index) => toLocalObject<FieldSchemaViewModel, string>(newObject, castedAction.meta.fields[index].localId));
+            newState.fields[castedAction.meta.packagePath] = IdentifiableExtensions.mergeOrAddLocal<FieldSchemaViewModel, string>(newState.fields[castedAction.meta.packagePath], updatedFields);
             return newState;
         }
         case prefix + DocumentRecordActionsBase.UPDATE_FIELD_FAILURE: {

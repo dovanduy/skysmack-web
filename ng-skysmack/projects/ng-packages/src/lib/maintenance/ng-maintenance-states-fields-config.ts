@@ -10,7 +10,7 @@ export interface NgMaintenanceStateFormDependencies {
 }
 
 @Injectable({ providedIn: 'root' })
-export class NgMaintenanceStatesFieldsConfig extends FieldsConfig<MaintenanceState, number, NgMaintenanceStateFormDependencies> {
+export class NgMaintenanceStatesFieldsConfig extends FieldsConfig<MaintenanceState, NgMaintenanceStateFormDependencies> {
     public validation = new MaintenanceStatesValidation();
 
     public formRules: FormRule[] = [

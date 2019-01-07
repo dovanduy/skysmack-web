@@ -27,7 +27,7 @@ export class FormBaseComponent<TAppState, TRecord extends Record<TKey>, TKey, TD
         public editorNavService: EditorNavService,
         public actions: RecordActionsBase<TAppState, NgRedux<TAppState>>,
         public redux: NgSkysmackStore,
-        public fieldsConfig: FieldsConfig<TRecord, TKey, TDependencies>,
+        public fieldsConfig: FieldsConfig<TRecord, TDependencies>,
     ) {
         super(router, activatedRoute, redux);
     }
@@ -86,6 +86,7 @@ export class FormBaseComponent<TAppState, TRecord extends Record<TKey>, TKey, TD
             // Create new entity
             return toLocalObject<TRecord, TKey>(
                 formValues,
+                'id',
                 undefined,
                 LocalObjectStatus.CREATING,
                 undefined,

@@ -1,7 +1,6 @@
 import { Guid } from 'guid-typescript';
 import { LocalObject } from '../models/local-object';
 import { LocalObjectStatus } from '../models/local-object-status';
-import { Identifiable } from '../models';
 
 /**
  * TAKEN FROM: https://gist.github.com/jasonrhodes/2321581
@@ -53,26 +52,18 @@ export const setKey = (key: string, values: any[] = []): string => {
 /**
  * Wraps object with an local object.
  */
-export const toLocalObject = <TIdentifiable extends Identifiable<TKey>, TKey>(
-    object: TIdentifiable,
+export const toLocalObject = <TObject, TKey>(
+    object: TObject,
+    identifier: string = 'id',
     localId: string = Guid.create().toString(),
     status: LocalObjectStatus = LocalObjectStatus.OK,
     modifyType: string = null,
     isNew: boolean = false,
     foreignKey: any = null,
     error: any = null,
-): LocalObject<TIdentifiable, TKey> => {
-    return new LocalObject<TIdentifiable, TKey>({ object, localId, status, modifyType, isNew, foreignKey, error });
+): LocalObject<TObject, TKey> => {
+    return new LocalObject<TObject, TKey>({ object, identifier, localId, status, modifyType, isNew, foreignKey, error });
 };
-
-// /**
-//  * Returns a new local object with all the same data as the old one, except the object. This will be overwritten by the supplied data.
-//  * @param newData New data for the local object.
-//  * @param oldLocalObject The old local object that will have all data transferred to the new one EXCEPT the object.
-//  */
-// export const mapLocalObject = <T>(newData: T, oldLocalObject: LocalObject<any, any>): LocalObject<any, any> => {
-//     return toLocalObject<T>();
-// };
 
 export const isObject = (value) => {
     return value && typeof value === 'object' && value.constructor === Object;

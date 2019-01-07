@@ -1,9 +1,9 @@
 import { FormRule } from '../forms/form-rule';
-import { LocalObject, Identifiable } from '@skysmack/framework';
+import { LocalObject } from '@skysmack/framework';
 import { Field } from './field';
 import { Validation } from '../forms/validation';
 
-export abstract class FieldsConfig<TRecord extends Identifiable<TKey>, TKey, TDependencies> {
+export abstract class FieldsConfig<TRecord, TDependencies> {
     public abstract formRules: FormRule[];
     public abstract validation: Validation;
     protected abstract getEntityFields(entity?: LocalObject<TRecord, any>, dependencies?: any): Field[];

@@ -5,10 +5,10 @@ import { PersonsEditComponent } from './persons-edit/persons-edit.component';
 import { DynamicFieldsIndexComponent, DynamicFieldsCreateComponent, DynamicFieldsEditComponent } from '@skysmack/portal-ui';
 import { DynamicFieldRouteData } from '@skysmack/framework';
 
-const data = new DynamicFieldRouteData({
+const data = {
   actionToken: 'NgPersonsActions',
   storeToken: 'NgPersonsStore'
-});
+} as DynamicFieldRouteData;
 
 export const personsRoutes: Routes = [
   {

@@ -10,7 +10,7 @@ export interface NgRecurringAssignmentFormDependencies {
 }
 
 @Injectable({ providedIn: 'root' })
-export class NgRecurringAssignmentsFieldsConfig extends FieldsConfig<RecurringAssignment, number, NgRecurringAssignmentFormDependencies> {
+export class NgRecurringAssignmentsFieldsConfig extends FieldsConfig<RecurringAssignment, NgRecurringAssignmentFormDependencies> {
     public validation = new RecurringAssignmentsValidation();
 
     public formRules: FormRule[] = [

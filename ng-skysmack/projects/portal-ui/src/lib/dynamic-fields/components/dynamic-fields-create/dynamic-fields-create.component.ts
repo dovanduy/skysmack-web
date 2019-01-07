@@ -53,6 +53,7 @@ export class DynamicFieldsCreateComponent extends BaseComponent<DocumentRecordSt
       this.actions.addFields([toLocalObject<FieldSchemaViewModel,
         string>(
           fh.form.getRawValue(),
+          'key',
           undefined,
           LocalObjectStatus.CREATING,
           undefined,

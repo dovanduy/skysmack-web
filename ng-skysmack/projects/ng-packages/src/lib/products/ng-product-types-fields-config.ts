@@ -13,7 +13,7 @@ export interface NgProductTypeFormDependencies {
 }
 
 @Injectable({ providedIn: 'root' })
-export class NgProductTypesFieldsConfig extends FieldsConfig<ProductType, number, NgProductTypeFormDependencies> {
+export class NgProductTypesFieldsConfig extends FieldsConfig<ProductType, NgProductTypeFormDependencies> {
     public validation = new ProductTypesValidation();
 
     public formRules: FormRule[] = [];

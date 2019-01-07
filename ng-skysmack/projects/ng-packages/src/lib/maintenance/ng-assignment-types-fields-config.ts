@@ -14,7 +14,7 @@ export interface NgAssignmentTypeFormDependencies {
 }
 
 @Injectable({ providedIn: 'root' })
-export class NgAssignmentTypesFieldsConfig extends FieldsConfig<AssignmentType, number, NgAssignmentTypeFormDependencies> {
+export class NgAssignmentTypesFieldsConfig extends FieldsConfig<AssignmentType, NgAssignmentTypeFormDependencies> {
     public validation = new AssignmentTypesValidation();
 
     public formRules: FormRule[] = [

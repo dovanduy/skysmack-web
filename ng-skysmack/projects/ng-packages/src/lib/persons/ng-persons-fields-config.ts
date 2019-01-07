@@ -14,7 +14,7 @@ export interface NgPersonFormDependencies {
 }
 
 @Injectable({ providedIn: 'root' })
-export class NgPersonsFieldsConfig extends FieldsConfig<Person, number, NgPersonFormDependencies> {
+export class NgPersonsFieldsConfig extends FieldsConfig<Person, NgPersonFormDependencies> {
     public validation = new PersonsValidation();
 
     public formRules: FormRule[] = [

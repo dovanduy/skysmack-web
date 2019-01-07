@@ -1,13 +1,13 @@
-import { LocalObject, LocalObjectStatus, StrIndex, Identifiable } from '../models';
+import { LocalObject, LocalObjectStatus, StrIndex } from '../models';
 
 export class IdentifiableExtensions {
-    public static mergeOrAddLocal<TIdentifiable extends Identifiable<TKey>, TKey>(existingRecords: StrIndex<LocalObject<TIdentifiable, TKey>>, newRecords: LocalObject<TIdentifiable, TKey>[], expectedState: LocalObjectStatus = LocalObjectStatus.OK): StrIndex<LocalObject<TIdentifiable, TKey>> {
+    public static mergeOrAddLocal<TObject, TKey>(existingRecords: StrIndex<LocalObject<TObject, TKey>>, newRecords: LocalObject<TObject, TKey>[], expectedState: LocalObjectStatus = LocalObjectStatus.OK): StrIndex<LocalObject<TObject, TKey>> {
         if (!newRecords || newRecords === null || newRecords.length === 0) {
             return existingRecords;
         }
 
         if (!existingRecords || existingRecords === null) {
-            const index = {} as StrIndex<LocalObject<TIdentifiable, TKey>>;
+            const index = {} as StrIndex<LocalObject<TObject, TKey>>;
             newRecords.forEach(newRecord => {
                 index[newRecord.localId] = newRecord;
             });
@@ -15,7 +15,9 @@ export class IdentifiableExtensions {
         }
 
         newRecords.forEach(newRecord => {
-            const existingRecordKey = Object.keys(existingRecords).find(x => existingRecords[x].object.identifier === newRecord.object.identifier);
+            const existingRecordKey = Object.keys(existingRecords).find(x => {
+                return existingRecords[x].objectIdentifier === newRecord.objectIdentifier;
+            });
             if (existingRecordKey) {
                 if (existingRecords[existingRecordKey].status === expectedState) {
                     newRecord.localId = existingRecordKey;

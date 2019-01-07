@@ -47,6 +47,7 @@ export class PackagesCreateComponent extends BaseComponent<PackagesAppState, str
     fh.formValid(() => {
       this.actions.add([toLocalObject<Package, string>(
         fh.form.getRawValue(),
+        'path',
         undefined,
         LocalObjectStatus.CREATING,
         undefined,
