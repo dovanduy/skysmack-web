@@ -15,7 +15,7 @@ export const lodgingsRoutes: Routes = [
     path: '', component: LodgingsIndexComponent,
     children: [
       { path: 'create', component: LodgingsCreateComponent, pathMatch: 'full' },
-      { path: 'edit/:id', component: LodgingsEditComponent, pathMatch: 'full' },
+      { path: 'edit/:id', component: LodgingsEditComponent, pathMatch: 'full' }
     ]
   },
   {

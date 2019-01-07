@@ -15,7 +15,7 @@ export const productsRoutes: Routes = [
     path: '', component: ProductsIndexComponent,
     children: [
       { path: 'create', component: ProductsCreateComponent, pathMatch: 'full' },
-      { path: 'edit/:id', component: ProductsEditComponent, pathMatch: 'full' },
+      { path: 'edit/:id', component: ProductsEditComponent, pathMatch: 'full' }
     ]
   },
   {
