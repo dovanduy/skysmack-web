@@ -17,22 +17,18 @@ import { LanguageService } from '@skysmack/portal-ui';
     ProductsRoutingModule,
     NgProductsModule,
     PortalUiModule,
-    DynamicFieldsModule,
-    TranslateModule.forChild({
-      loader: {
-        provide: TranslateLoader,
-        useFactory: HttpLoaderFactory,
-        deps: [HttpClient]
-      },
-      isolate: true
-    })
+    DynamicFieldsModule
   ],
   exports: [],
   declarations: [
     ...productsComponents,
     ...productTypesComponents
   ],
-  providers: [],
+  providers: [{
+    provide: TranslateLoader,
+    useFactory: HttpLoaderFactory,
+    deps: [HttpClient]
+  }]
 })
 export class ProductsModule {
   constructor(

@@ -17,15 +17,7 @@ import { assignmentsAllComponents } from './components/assignments-all-component
     HttpClientModule,
     MaintenanceRoutingModule,
     NgAssignmentsModule,
-    PortalUiModule,
-    TranslateModule.forChild({
-      loader: {
-        provide: TranslateLoader,
-        useFactory: HttpLoaderFactory,
-        deps: [HttpClient]
-      },
-      isolate: true
-    })
+    PortalUiModule
   ],
   declarations: [
     ...assignmentsComponents,
@@ -34,7 +26,11 @@ import { assignmentsAllComponents } from './components/assignments-all-component
     ...assignmentTypesComponents,
     ...maintenanceStatesComponents,
   ],
-  providers: []
+  providers: [{
+    provide: TranslateLoader,
+    useFactory: HttpLoaderFactory,
+    deps: [HttpClient]
+  }]
 })
 export class MaintenanceModule {
   constructor(

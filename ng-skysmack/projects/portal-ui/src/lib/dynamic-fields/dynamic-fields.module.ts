@@ -12,15 +12,7 @@ import { HttpLoaderFactory } from './../portal-ui.helper';
   imports: [
     CommonModule,
     HttpClientModule,
-    PortalUiModule,
-    TranslateModule.forChild({
-      loader: {
-        provide: TranslateLoader,
-        useFactory: HttpLoaderFactory,
-        deps: [HttpClient]
-      },
-      isolate: true
-    })
+    PortalUiModule
   ],
   declarations: [
     ...dynamicFieldsComponents
@@ -28,7 +20,11 @@ import { HttpLoaderFactory } from './../portal-ui.helper';
   exports: [
     ...dynamicFieldsComponents
   ],
-  providers: []
+  providers: [{
+    provide: TranslateLoader,
+    useFactory: HttpLoaderFactory,
+    deps: [HttpClient]
+  }]
 })
 export class DynamicFieldsModule {
   constructor(

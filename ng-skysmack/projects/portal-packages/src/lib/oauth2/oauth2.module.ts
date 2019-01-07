@@ -13,15 +13,7 @@ import { TranslateService, TranslateModule, TranslateLoader } from '@ngx-transla
     HttpClientModule,
     Oauth2RoutingModule,
     NgOauth2Module,
-    PortalUiModule,
-    TranslateModule.forChild({
-      loader: {
-        provide: TranslateLoader,
-        useFactory: HttpLoaderFactory,
-        deps: [HttpClient]
-      },
-      isolate: true
-    })
+    PortalUiModule
   ],
   declarations: [
     LoginComponent
@@ -29,7 +21,11 @@ import { TranslateService, TranslateModule, TranslateLoader } from '@ngx-transla
   exports: [
     LoginComponent
   ],
-  providers: []
+  providers: [{
+    provide: TranslateLoader,
+    useFactory: HttpLoaderFactory,
+    deps: [HttpClient]
+  }]
 })
 export class Oauth2Module {
   constructor(

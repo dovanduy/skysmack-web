@@ -56,7 +56,7 @@ import { IsAnonymousDirective } from './autentication/is-anonymous.directive';
     CommonModule,
     RouterModule,
     ReactiveFormsModule,
-    TranslateModule,
+    TranslateModule.forRoot(),
     CalendarModule,
     RecurringExpressionFieldModule,
     MaterialModule // Must come after BrowserAnimationsModule

@@ -15,21 +15,17 @@ import { NgPackagesModule } from '@skysmack/ng-packages';
     HttpClientModule,
     PortalUiModule,
     PackagesRoutingModule,
-    NgPackagesModule,
-    TranslateModule.forChild({
-      loader: {
-        provide: TranslateLoader,
-        useFactory: HttpLoaderFactory,
-        deps: [HttpClient]
-      },
-      isolate: true
-    })
+    NgPackagesModule
   ],
   exports: [],
   declarations: [
     ...packagesComponents
   ],
-  providers: []
+  providers: [{
+    provide: TranslateLoader,
+    useFactory: HttpLoaderFactory,
+    deps: [HttpClient]
+  }]
 })
 export class PackagesModule {
   constructor(

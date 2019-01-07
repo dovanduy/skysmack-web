@@ -16,20 +16,16 @@ import { LanguageService } from '@skysmack/portal-ui';
     PortalUiModule,
     PersonsRoutingModule,
     NgPersonsModule,
-    DynamicFieldsModule,
-    TranslateModule.forChild({
-      loader: {
-        provide: TranslateLoader,
-        useFactory: HttpLoaderFactory,
-        deps: [HttpClient]
-      },
-      isolate: true
-    })
+    DynamicFieldsModule
   ],
   declarations: [
     ...personsComponents
   ],
-  providers: []
+  providers: [{
+    provide: TranslateLoader,
+    useFactory: HttpLoaderFactory,
+    deps: [HttpClient]
+  }]
 })
 export class PersonsModule {
   constructor(

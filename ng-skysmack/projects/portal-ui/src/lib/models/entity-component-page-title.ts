@@ -19,12 +19,17 @@ export class EntityComponentPageTitle {
 
     private tenantTitle = 'Skysmack';
 
-    constructor(private translate: TranslateService, private bodyTitle: Title, private store: NgSkysmackStore) {
+    constructor(
+        private translate: TranslateService,
+        private bodyTitle: Title,
+        private store: NgSkysmackStore
+    ) {
         this.store.getSkysmack().pipe(hasValue<Skysmack>(), map(tenant => { if (tenant !== undefined) { return tenant; } }), take(1)).subscribe(tenant => {
             if (tenant.name) {
                 this.tenantTitle = tenant.name;
             }
         });
+
         translate.onLangChange.subscribe(() => {
             if (this.translateTitle) {
                 this.setTranslatedTitle();
@@ -54,9 +59,9 @@ export class EntityComponentPageTitle {
     }
 
     private setTranslatedTitle() {
-        this.translate.get(this.titleTranslation).pipe(take(1)).subscribe((title: string) => {
-            this.title = title;
-            this.setBodyTitle(title);
-        });
+        // this.translate.get(this.titleTranslation).pipe(take(1)).subscribe((title: string) => {
+        //     this.title = title;
+        //     this.setBodyTitle(title);
+        // });
     }
 }
