@@ -29,6 +29,10 @@ export abstract class NgDocumentRecordReduxStore<TState, TRecord extends Record<
     }
 
     public getAvailableFields(packagePath: string): Observable<LocalObject<FieldValueProviderViewModel, string>[]> {
-        return this.getState<DocumentRecordState<TRecord, TKey>>().pipe(map(state => state.availableFields[packagePath]), safeUndefinedTo('array'));
+        return this.getState<DocumentRecordState<TRecord, TKey>>().pipe(
+            map(state => state.availableFields[packagePath]),
+            safeUndefinedTo('object'),
+            dictionaryToArray<LocalObject<FieldValueProviderViewModel, string>>()
+        );
     }
 }
