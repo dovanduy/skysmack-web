@@ -35,7 +35,7 @@ export function documentRecordReducersBase<TState extends DocumentRecordState<TR
         }
         case prefix + DocumentRecordActionsBase.GET_SINGLE_FIELD_SUCCESS: {
             const castedAction: ReduxAction<GetSingleFieldSuccessPayload> = action;
-            const newField = [toLocalObject<FieldSchemaViewModel, string>(castedAction.payload.field)];
+            const newField = [toLocalObject<FieldSchemaViewModel, string>(castedAction.payload.field, 'key')];
             newState.fields[castedAction.payload.packagePath] = IdentifiableExtensions.mergeOrAddLocal<FieldSchemaViewModel, string>(newState.fields[castedAction.payload.packagePath], newField);
             return newState;
         }
@@ -54,7 +54,7 @@ export function documentRecordReducersBase<TState extends DocumentRecordState<TR
         case prefix + DocumentRecordActionsBase.ADD_FIELD_SUCCESS: {
             const castedAction: ReduxAction<HttpSuccessResponse<any[] | any>, { fields: LocalObject<FieldSchemaViewModel, string>[], packagePath: string }> = action;
             const body = castedAction.payload.body;
-            const newFields = (Array.isArray(body) ? body : [body]).map((newObject, index) => toLocalObject<FieldSchemaViewModel, string>(newObject, castedAction.meta.fields[index].localId, LocalObjectStatus.OK));
+            const newFields = (Array.isArray(body) ? body : [body]).map((newObject, index) => toLocalObject<FieldSchemaViewModel, string>(newObject, 'key', castedAction.meta.fields[index].localId, LocalObjectStatus.OK));
             newState.fields[castedAction.meta.packagePath] = IdentifiableExtensions.mergeOrAddLocal<FieldSchemaViewModel, string>(newState.fields[castedAction.meta.packagePath], newFields);
             return newState;
         }
@@ -66,7 +66,7 @@ export function documentRecordReducersBase<TState extends DocumentRecordState<TR
         case prefix + DocumentRecordActionsBase.UPDATE_FIELD_SUCCESS: {
             const castedAction: ReduxAction<HttpSuccessResponse<any[] | any>, { fields: LocalObject<FieldSchemaViewModel, string>[], packagePath: string }> = action;
             const body = castedAction.payload.body;
-            const updatedFields = (Array.isArray(body) ? body : [body]).map((newObject, index) => toLocalObject<FieldSchemaViewModel, string>(newObject, castedAction.meta.fields[index].localId));
+            const updatedFields = (Array.isArray(body) ? body : [body]).map((newObject, index) => toLocalObject<FieldSchemaViewModel, string>(newObject, 'key', castedAction.meta.fields[index].localId));
             newState.fields[castedAction.meta.packagePath] = IdentifiableExtensions.mergeOrAddLocal<FieldSchemaViewModel, string>(newState.fields[castedAction.meta.packagePath], updatedFields);
             return newState;
         }
