@@ -8,5 +8,5 @@
 |Branch from commit|`git branch <branchname> <sha1-of-commit>`|
 |Publish additional branch|`git push -u origin <branch-name>`|
 |Delete local branch|`git branch -d <branch-name>`|
-|Delete remote branch|`git push -d origin <branch-name>`|
+|Delete remote branch|`git push --delete origin <branch-name>`|
 |Get remote branch|`git checkout --track origin/<branch-name>`|

@@ -15,11 +15,14 @@ export const lodgingsRoutes: Routes = [
     path: '', component: LodgingsIndexComponent,
     children: [
       { path: 'create', component: LodgingsCreateComponent, pathMatch: 'full' },
-      { path: 'edit/:id', component: LodgingsEditComponent, pathMatch: 'full' }
+      { path: 'edit/:id', component: LodgingsEditComponent, pathMatch: 'full' },
     ]
   },
-  { path: 'fields', component: DynamicFieldsIndexComponent, data },
-  { path: 'fields/create', component: DynamicFieldsCreateComponent, data }
+  {
+    path: 'fields', component: DynamicFieldsIndexComponent, data, children: [
+      { path: 'create', component: DynamicFieldsCreateComponent, pathMatch: 'full', data }
+    ]
+  }
 ];
 
 export const lodgingsComponents: any[] = [

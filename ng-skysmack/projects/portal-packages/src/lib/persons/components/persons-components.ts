@@ -18,8 +18,11 @@ export const personsRoutes: Routes = [
       { path: 'edit/:id', component: PersonsEditComponent, pathMatch: 'full' },
     ]
   },
-  { path: 'fields', component: DynamicFieldsIndexComponent, data },
-  { path: 'fields/create', component: DynamicFieldsCreateComponent, data }
+  {
+    path: 'fields', component: DynamicFieldsIndexComponent, data, children: [
+      { path: 'create', component: DynamicFieldsCreateComponent, pathMatch: 'full', data }
+    ]
+  }
 ];
 
 export const personsComponents: any[] = [
