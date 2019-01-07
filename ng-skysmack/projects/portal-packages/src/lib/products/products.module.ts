@@ -7,7 +7,7 @@ import { NgProductsModule } from '@skysmack/ng-packages';
 import { PortalUiModule, HttpLoaderFactory, DynamicFieldsModule } from '@skysmack/portal-ui';
 import { productsComponents } from './components/products-components';
 import { productTypesComponents } from './components/product-types-component';
-import { TranslateModule, TranslateLoader, TranslateService } from '@ngx-translate/core';
+import { TranslateLoader, TranslateService } from '@ngx-translate/core';
 import { LanguageService } from '@skysmack/portal-ui';
 
 @NgModule({

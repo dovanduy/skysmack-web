@@ -5,7 +5,7 @@ import { PackagesRoutingModule } from './packages-routing.module';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { PortalUiModule, HttpLoaderFactory } from '@skysmack/portal-ui';
 import { packagesComponents } from './components/packages-components';
-import { TranslateModule, TranslateLoader, TranslateService } from '@ngx-translate/core';
+import { TranslateLoader, TranslateService } from '@ngx-translate/core';
 import { LanguageService } from '@skysmack/portal-ui';
 import { NgPackagesModule } from '@skysmack/ng-packages';
 

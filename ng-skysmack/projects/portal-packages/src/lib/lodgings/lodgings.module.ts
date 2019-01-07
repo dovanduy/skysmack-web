@@ -7,7 +7,7 @@ import { NgLodgingsModule } from '@skysmack/ng-packages';
 import { PortalUiModule, HttpLoaderFactory, DynamicFieldsModule } from '@skysmack/portal-ui';
 import { lodgingsComponents } from './components/lodgings-components';
 import { lodgingTypesComponents } from './components/lodging-types-component';
-import { TranslateModule, TranslateService, TranslateLoader } from '@ngx-translate/core';
+import { TranslateService, TranslateLoader } from '@ngx-translate/core';
 import { LanguageService } from '@skysmack/portal-ui';
 
 @NgModule({

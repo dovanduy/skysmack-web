@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { TranslateModule, TranslateLoader, TranslateService } from '@ngx-translate/core';
+import { TranslateLoader, TranslateService } from '@ngx-translate/core';
 import { NgAssignmentsModule } from '@skysmack/ng-packages';
 import { PortalUiModule, HttpLoaderFactory, LanguageService } from '@skysmack/portal-ui';
 import { assignmentTypesComponents } from './components/assignment-types-components';

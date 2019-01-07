@@ -5,7 +5,7 @@ import { PackageLoader } from '@skysmack/ng-packages';
 export class ProductsPackageManifest extends ProductsType implements PackageManifest {
     public icon = 'folder';
     public menuLocation = 'main';
-    public modulePath = '../../../../../dist/portal-packages/lib/products/products.module#ProductsModule';
+    public modulePath = './../packages/modules/products_wrapper.module#ProductsWrapperModule';
 }
 
 export function loadProductPackage(packageLoader: PackageLoader) {

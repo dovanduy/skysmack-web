@@ -5,7 +5,7 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { NgOauth2Module } from '@skysmack/ng-packages';
 import { PortalUiModule, LanguageService, HttpLoaderFactory } from '@skysmack/portal-ui';
-import { TranslateService, TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateService, TranslateLoader } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
