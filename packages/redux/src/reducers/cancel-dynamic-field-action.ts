@@ -26,7 +26,6 @@ export const cancelDynamicFieldAction = <TState extends DocumentRecordState<TRec
 };
 
 const cancelCreateAction = <TState extends DocumentRecordState<TRecord, TKey>, TRecord extends Record<TKey>, TKey>(newState: TState, action: ReduxAction<CancelDynamicFieldActionPayload<FieldSchemaViewModel>, CancelActionMeta>): TState => {
-    console.log('create');
     const packagePath = action.payload.packagePath;
     const field = action.payload.field;
     delete newState.fields[packagePath][field.localId];
@@ -34,7 +33,6 @@ const cancelCreateAction = <TState extends DocumentRecordState<TRecord, TKey>, T
 };
 
 const cancelEditAction = <TState extends DocumentRecordState<TRecord, TKey>, TRecord extends Record<TKey>, TKey>(newState: TState, action: ReduxAction<CancelDynamicFieldActionPayload<FieldSchemaViewModel>, CancelActionMeta>): TState => {
-    console.log('edit');
     const packagePath = action.payload.packagePath;
     const field = action.payload.field;
     newState.fields[packagePath][field.localId].object = action.payload.field.oldObject;
@@ -43,7 +41,6 @@ const cancelEditAction = <TState extends DocumentRecordState<TRecord, TKey>, TRe
 };
 
 const cancelDeleteAction = <TState extends DocumentRecordState<TRecord, TKey>, TRecord extends Record<TKey>, TKey>(newState: TState, action: ReduxAction<CancelDynamicFieldActionPayload<FieldSchemaViewModel>, CancelActionMeta>): TState => {
-    console.log('delete');
     const packagePath = action.payload.packagePath;
     const field = action.payload.field;
     newState.fields[packagePath][field.localId].status = LocalObjectStatus.OK;
