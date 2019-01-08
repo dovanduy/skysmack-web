@@ -12,15 +12,15 @@ start start-datastore-emulator.bat
 
 # docs (swagger + re-doc)
 cd "$skysmack\tools\OpenApi.Ui";
-start powershell -argument "gulp"
+start powershell -argument "-noexit", "gulp"
 
 # backend
 cd "$skysmack\src\Servers\Portal"
-start powershell -argument "dotnet run"
+start powershell -argument "-noexit", "dotnet run"
 
 # frontend runner
 cd "$angular\ng-skysmack"
-start powershell -argument "npm run ss:c1:open"
+start powershell -argument "-noexit", "npm run ss:c1:open"
 
 # IDEs
 cd "$angular"

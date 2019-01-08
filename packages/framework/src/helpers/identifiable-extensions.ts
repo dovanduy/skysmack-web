@@ -1,6 +1,6 @@
 import { LocalObject, LocalObjectStatus, StrIndex } from '../models';
 
-export class IdentifiableExtensions {
+export class LocalObjectExtensions {
     public static mergeOrAddLocal<TObject, TKey>(existingRecords: StrIndex<LocalObject<TObject, TKey>>, newRecords: LocalObject<TObject, TKey>[], expectedState: LocalObjectStatus = LocalObjectStatus.OK): StrIndex<LocalObject<TObject, TKey>> {
         if (!newRecords || newRecords === null || newRecords.length === 0) {
             return existingRecords;
