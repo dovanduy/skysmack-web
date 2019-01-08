@@ -8,6 +8,7 @@ export * from './id-payload';
 export * from './package-path-payload';
 export * from './record-payload';
 export * from './cancel-action-payload';
+export * from './cancel-dynamic-field-action-payload';
 export * from './credentials-payload';
 export * from './get-available-packages-success-payload';
 export * from './get-available-fields-success-payload';

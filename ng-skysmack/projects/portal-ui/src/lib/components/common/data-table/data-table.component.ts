@@ -23,7 +23,7 @@ export class DataTableComponent implements OnDestroy, OnInit {
    * Note entities are the paged entities.
    */
   @Input() public entities$: Observable<LocalObject<any, any>[]>;
-  @Input() public actions: RecordActionsBase<AppState, NgRedux<AppState>>;
+  @Input() public cancelAction: Function;
   @Input() public title: string;
   @Input() public displayedColumns: string[] = [];
   @Input() public displayActions = true;
@@ -77,8 +77,8 @@ export class DataTableComponent implements OnDestroy, OnInit {
     this.delete.emit(entity);
   }
 
-  public cancelAction(entity: LocalObject<any, any>) {
-    this.actions.cancelRecordAction(entity, this.packagePath);
+  public runCancelAction(entity: LocalObject<any, any>) {
+    this.cancelAction(entity, this.packagePath);
   }
 
   private initDataSource() {

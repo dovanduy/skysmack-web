@@ -35,7 +35,7 @@ export abstract class RecordActionsBase<TStateType, TStore extends Store<TStateT
         protected additionalPaths: string[]
     ) { }
 
-    public cancelRecordAction<TRecord extends Record<TKey>, TKey>(record: LocalObject<TRecord, TKey>, packagePath: string): void {
+    public cancelRecordAction = <TRecord extends Record<TKey>, TKey>(record: LocalObject<TRecord, TKey>, packagePath: string): void => {
         this.store.dispatch(Object.assign({}, new ReduxAction<CancelActionPayload<TRecord, TKey>, CancelActionMeta>({
             type: RecordActionsBase.CANCEL_RECORD_ACTION,
             payload: {

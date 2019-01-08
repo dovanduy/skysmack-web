@@ -2,11 +2,14 @@ import { Store } from 'redux';
 import { RecordActionsBase } from './record-actions-base';
 import { ReduxAction } from './../action-types';
 import { PackagePathPayload } from './../payloads/package-path-payload';
-import { FieldSchemaViewModel, LocalObject, HttpMethod } from '@skysmack/framework';
+import { FieldSchemaViewModel, LocalObject, HttpMethod, LocalObjectStatus } from '@skysmack/framework';
 import { Effect } from '../models/effect';
 import { EffectRequest } from '../models/effect-request';
+import { CancelActionMeta } from '../metas/offline-redux/cancel-action-meta';
+import { CancelDynamicFieldActionPayload } from '../payloads';
 
 export abstract class DocumentRecordActionsBase<TStateType, TStore extends Store<TStateType>> extends RecordActionsBase<TStateType, TStore> {
+    public static CANCEL_DYNAMIC_FIELD_ACTION = 'CANCEL_DYNAMIC_FIELD_ACTION';
 
     public static GET_FIELDS = 'GET_FIELDS';
     public static GET_FIELDS_SUCCESS = 'GET_FIELDS_SUCCESS';
@@ -38,6 +41,17 @@ export abstract class DocumentRecordActionsBase<TStateType, TStore extends Store
         protected additionalPaths: string[],
     ) {
         super(store, prefix, additionalPaths);
+    }
+
+    public cancelDynamicFieldAction = (field: LocalObject<FieldSchemaViewModel, string>, packagePath: string): void => {
+        this.store.dispatch(Object.assign({}, new ReduxAction<CancelDynamicFieldActionPayload<FieldSchemaViewModel>>({
+            type: DocumentRecordActionsBase.CANCEL_DYNAMIC_FIELD_ACTION,
+            payload: {
+                field,
+                packagePath
+            },
+            meta: new CancelActionMeta()
+        })))
     }
 
     public getFields(packagePath: string) {
@@ -138,7 +152,10 @@ export abstract class DocumentRecordActionsBase<TStateType, TStore extends Store
                     effect: new Effect<FieldSchemaViewModel[]>(new EffectRequest<FieldSchemaViewModel[]>(
                         packagePath + '/fields' + paths,
                         HttpMethod.DELETE,
-                        fields.map(x => x.object)
+                        fields.map(x => {
+                            x.status = LocalObjectStatus.DELETING
+                            return x.object
+                        }),
                     )),
                     commit: new ReduxAction({
                         type: this.prefix + DocumentRecordActionsBase.DELETE_FIELD_SUCCESS,

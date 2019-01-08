@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 import { share } from 'rxjs/operators';
 import { TOOGLE_HYDRATED } from './hydrated-reducer';
 import { HttpMethod, ApiDomain, HttpSuccessResponse, HttpErrorResponse } from '@skysmack/framework';
-import { Effect, RecordActionsBase, ReduxAction, CancelActionPayload, CancelActionMeta, ReduxOfflineMeta } from '@skysmack/redux';
+import { Effect, RecordActionsBase, DocumentRecordActionsBase, cancelRecordActionOutboxFilter, cancelDynamicFieldActionOutboxFilter } from '@skysmack/redux';
 
 // See https://github.com/redux-offline/redux-offline#configuration
 @Injectable({ providedIn: 'root' })
@@ -19,12 +19,12 @@ export class ReduxOfflineConfiguration implements Config {
     public queue = {
         ...defaultQueue,
         enqueue(outbox, action) {
-            const castedAction = action as ReduxAction<CancelActionPayload<any, any>, CancelActionMeta>;
-            return action.type === RecordActionsBase.CANCEL_RECORD_ACTION
-                ? outbox
-                    .filter((item: ReduxAction<any, ReduxOfflineMeta<any[], any, any>>) => (item && item.meta && item.meta.offline && item.meta.offline.commit && item.meta.offline.commit.meta) ? true : false)
-                    .filter((item: ReduxAction<any, ReduxOfflineMeta<any[], any, any>>) => item.meta.offline.commit.meta.records.find(record => record.localId === castedAction.payload.record.localId ? false : true))
-                : [...outbox, action];
+            switch (action.type) {
+                case RecordActionsBase.CANCEL_RECORD_ACTION: return cancelRecordActionOutboxFilter(outbox, action);
+                case DocumentRecordActionsBase.CANCEL_DYNAMIC_FIELD_ACTION: return cancelDynamicFieldActionOutboxFilter(outbox, action);
+                default:
+                    return [...outbox, action];
+            }
         }
     };
 

@@ -4,6 +4,7 @@ import { ReduxAction } from '../action-types/redux-action';
 import { PackagePathPayload, GetFieldsSuccessPayload, GetAvailableFieldsSuccessPayload, GetSingleFieldSuccessPayload } from './../payloads';
 import { DocumentRecordState } from './../states/document-record-state';
 import { recordReducersBase } from './record-reducers-base';
+import { cancelDynamicFieldAction } from './cancel-dynamic-field-action';
 
 
 export function documentRecordReducersBase<TState extends DocumentRecordState<TRecord, TKey>, TRecord extends Record<TKey>, TKey>(state: TState, action: any, prefix: string = ''): TState {
@@ -11,6 +12,9 @@ export function documentRecordReducersBase<TState extends DocumentRecordState<TR
     let newState = Object.assign({}, state);
 
     switch (action.type) {
+        case DocumentRecordActionsBase.CANCEL_DYNAMIC_FIELD_ACTION: {
+            return cancelDynamicFieldAction<TState, TRecord, TKey>(newState, action);
+        }
         case prefix + DocumentRecordActionsBase.GET_FIELDS_SUCCESS: {
             const castedAction: ReduxAction<GetFieldsSuccessPayload> = action;
             const incomingFields = castedAction.payload.fields.map(x => toLocalObject<FieldSchemaViewModel, string>(x, 'key'));

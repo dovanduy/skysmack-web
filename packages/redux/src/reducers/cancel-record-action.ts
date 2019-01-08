@@ -3,6 +3,13 @@ import { RecordState } from './../states';
 import { ReduxAction } from './../action-types/redux-action';
 import { CancelActionMeta } from './../metas/offline-redux/cancel-action-meta';
 import { CancelActionPayload } from './../payloads/cancel-action-payload';
+import { ReduxOfflineMeta } from '../metas/offline-redux/redux-offline-meta';
+
+export const cancelRecordActionOutboxFilter = (outbox, action: ReduxAction<CancelActionPayload<any, any>, CancelActionMeta>) => {
+    return outbox
+        .filter((item: ReduxAction<any, ReduxOfflineMeta<any[], any, any>>) => (item && item.meta && item.meta.offline && item.meta.offline.commit && item.meta.offline.commit.meta) ? true : false)
+        .filter((item: ReduxAction<any, ReduxOfflineMeta<any[], any, any>>) => item.meta.offline.commit.meta.records.find(record => record.localId === action.payload.record.localId ? false : true));
+};
 
 export const cancelRecordAction = <TState extends RecordState<TRecord, TKey>, TRecord extends Record<TKey>, TKey>(state: TState, action: ReduxAction<CancelActionPayload<TRecord, TKey>, CancelActionMeta>): TState => {
     const newState = Object.assign({}, state);

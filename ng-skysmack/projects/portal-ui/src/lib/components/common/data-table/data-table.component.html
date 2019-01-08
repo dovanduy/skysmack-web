@@ -35,7 +35,7 @@
           </mat-menu>
         </ng-container>
 
-        <a *ngIf="entity.status !== 'OK' && entity.status !== 'ERROR'" mat-icon-button (click)="cancelAction(entity);">
+        <a *ngIf="entity.status !== 'OK' && entity.status !== 'ERROR'" mat-icon-button (click)="runCancelAction(entity);">
           <i class="material-icons">undo</i>
         </a>
       </td>
