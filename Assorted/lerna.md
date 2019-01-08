@@ -1,6 +1,6 @@
 # Commands
 lerna bootstrap
-<!-- lerna run --parallel --stream --no-sort --concurrency 10 build:watch -->
+lerna run build:npm
 lerna run --stream --no-sort --concurrency 10 build:npm:watch
 lerna create <name> [loc] https://github.com/lerna/lerna/tree/master/commands/create
 
