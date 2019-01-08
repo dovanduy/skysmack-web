@@ -17,22 +17,21 @@ export class PackagesEpics {
     ];
   }
 
-  public getEpic(action$: ActionsObservable<ReduxAction>): Observable<ReduxAction<GetPackagesSuccessPayload>> {
+  public getEpic = (action$: ActionsObservable<ReduxAction>): Observable<ReduxAction<GetPackagesSuccessPayload>> => {
     return action$.pipe(
       ofType(PackagesActions.GET_PACKAGES),
       switchMap(() => this.requests.get())
     );
   }
 
-  public getSingleEpic(action$: ActionsObservable<ReduxAction<PackagePathPayload>>): Observable<ReduxAction<GetPackageSuccessPayload>> {
+  public getSingleEpic = (action$: ActionsObservable<ReduxAction<PackagePathPayload>>): Observable<ReduxAction<GetPackageSuccessPayload>> => {
     return action$.pipe(
       ofType(PackagesActions.GET_SINGLE_PACKAGE),
       switchMap(action => this.requests.getSingle(action))
     );
   }
 
-  public getAvailablePackagesEpic(action$: ActionsObservable<ReduxAction>): Observable<ReduxAction<GetAvailablePackagesSuccessPayload>> {
-
+  public getAvailablePackagesEpic = (action$: ActionsObservable<ReduxAction>): Observable<ReduxAction<GetAvailablePackagesSuccessPayload>> => {
     return action$.pipe(
       ofType(PackagesActions.GET_AVAILABLE_PACKAGES),
       switchMap(() => this.requests.getAvailablePackages())
