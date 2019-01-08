@@ -65,6 +65,18 @@ export const toLocalObject = <TObject, TKey>(
     return new LocalObject<TObject, TKey>({ object, identifier, localId, status, modifyType, isNew, foreignKey, error });
 };
 
+/**
+ * Use this to keep the local object information, but replace the inner object with new values.
+ * @param localObject The local object that needs its inner object replaced
+ * @param newObject The new/updated inner object.
+ * @param localObjectStatus Sets the local object status to OK by default.
+ */
+export const replaceLocalInnerObject = <TObject, TKey>(localObject: LocalObject<TObject, TKey>, newObject: TObject, localObjectStatus: LocalObjectStatus = LocalObjectStatus.OK) => {
+    localObject.object = newObject;
+    localObject.status = localObjectStatus;
+    return localObject;
+}
+
 export const isObject = (value) => {
     return value && typeof value === 'object' && value.constructor === Object;
 };

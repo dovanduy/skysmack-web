@@ -1,5 +1,5 @@
 import { RecordActionsBase } from "../actions";
-import { Record, LocalObjectExtensions, PageExtensions, toLocalObject, HttpSuccessResponse, HttpErrorResponse, LocalObjectStatus, PageResponse } from "@skysmack/framework";
+import { Record, LocalObjectExtensions, PageExtensions, toLocalObject, HttpSuccessResponse, HttpErrorResponse, LocalObjectStatus, PageResponse, replaceLocalInnerObject } from "@skysmack/framework";
 import { RecordState } from './../states/record-state';
 import { GetPagedRecordsSuccessPayload, GetSingleRecordSuccessPayload, GetPagedRecordsPayload } from '../payloads';
 import { ReduxAction } from '../action-types/redux-action';
@@ -64,9 +64,9 @@ export function recordReducersBase<TState extends RecordState<TRecord, TKey>, TR
             return newState;
         }
         case prefix + RecordActionsBase.ADD_SUCCESS: {
-            const castedAction: ReduxAction<HttpSuccessResponse<any[] | any>, CommitMeta<TRecord, TKey>> = action;
+            const castedAction: ReduxAction<HttpSuccessResponse<TRecord[] | TRecord>, CommitMeta<TRecord, TKey>> = action;
             const body = castedAction.payload.body;
-            const newObjects = (Array.isArray(body) ? body : [body]).map((newObject, index) => toLocalObject<TRecord, TKey>(newObject, castedAction.meta.records[index].localId));
+            const newObjects = (Array.isArray(body) ? body : [body]).map((newObject, index) => replaceLocalInnerObject(castedAction.meta.records[index], newObject));
             newState.localRecords[castedAction.meta.stateKey] = LocalObjectExtensions.mergeOrAddLocal<TRecord, TKey>(newState.localRecords[castedAction.meta.stateKey], newObjects);
             return newState;
         }
@@ -76,9 +76,9 @@ export function recordReducersBase<TState extends RecordState<TRecord, TKey>, TR
             return newState;
         }
         case prefix + RecordActionsBase.UPDATE_SUCCESS: {
-            const castedAction: ReduxAction<HttpSuccessResponse<any[] | any>, CommitMeta<TRecord, TKey>> = action;
+            const castedAction: ReduxAction<HttpSuccessResponse<TRecord[] | TRecord>, CommitMeta<TRecord, TKey>> = action;
             const body = castedAction.payload.body;
-            const updatedObjects = (Array.isArray(body) ? body : [body]).map((newObject, index) => toLocalObject<TRecord, TKey>(newObject, castedAction.meta.records[index].localId));
+            const updatedObjects = (Array.isArray(body) ? body : [body]).map((newObject, index) => replaceLocalInnerObject(castedAction.meta.records[index], newObject));
             newState.localRecords[castedAction.meta.stateKey] = LocalObjectExtensions.mergeOrAddLocal<TRecord, TKey>(newState.localRecords[castedAction.meta.stateKey], updatedObjects, LocalObjectStatus.MODIFYING);
             return newState;
         }
@@ -88,7 +88,7 @@ export function recordReducersBase<TState extends RecordState<TRecord, TKey>, TR
             return newState;
         }
         case prefix + RecordActionsBase.DELETE_SUCCESS: {
-            const castedAction: ReduxAction<HttpSuccessResponse<any[] | any>, CommitMeta<TRecord, TKey>> = action;
+            const castedAction: ReduxAction<HttpSuccessResponse<TRecord[] | TRecord>, CommitMeta<TRecord, TKey>> = action;
             castedAction.meta.records.forEach(record => {
                 delete newState.localRecords[castedAction.meta.stateKey][record.localId];
             });
