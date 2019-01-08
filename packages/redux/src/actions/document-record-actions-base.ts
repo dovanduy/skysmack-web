@@ -65,8 +65,7 @@ export abstract class DocumentRecordActionsBase<TStateType, TStore extends Store
         })));
     }
 
-    public addFields(fields: LocalObject<FieldSchemaViewModel,
-        string>[], packagePath: string) {
+    public addFields(fields: LocalObject<FieldSchemaViewModel, string>[], packagePath: string) {
         this.store.dispatch(Object.assign({}, new ReduxAction<any, any>({
             type: this.prefix + DocumentRecordActionsBase.ADD_FIELD,
             meta: {
@@ -95,28 +94,32 @@ export abstract class DocumentRecordActionsBase<TStateType, TStore extends Store
         })));
     }
 
-    public updateFields(fields: LocalObject<FieldSchemaViewModel,
-        string>[], packagePath: string) {
+    public updateFields(fields: LocalObject<FieldSchemaViewModel, string>[], packagePath: string) {
         this.store.dispatch(Object.assign({}, new ReduxAction<any, any>({
             type: this.prefix + DocumentRecordActionsBase.UPDATE_FIELD,
             meta: {
                 offline: {
-                    effect: new Effect<FieldSchemaViewModel[]>(new EffectRequest<FieldSchemaViewModel[]>(
-                        packagePath + '/fields',
+                    // TODO: Add [] FieldSchemaViewModel both places below when fields accepts arrays.
+                    effect: new Effect<FieldSchemaViewModel>(new EffectRequest<FieldSchemaViewModel>(
+                        // TODO: Use this below when fields accepts array: packagePath + '/fields
+                        packagePath + '/fields/' + fields[0].object.key,
                         HttpMethod.PUT,
-                        fields.map(x => x.object)
+                        // TODO: Use this below when fields accepts array: fields.map(x => x.object)
+                        fields[0].object
                     )),
                     commit: new ReduxAction({
                         type: this.prefix + DocumentRecordActionsBase.UPDATE_FIELD_SUCCESS,
                         meta: {
-                            fields,
+                            // TODO: Use this below when fields accepts array: fields
+                            fields: fields[0].object,
                             packagePath
                         }
                     }),
                     rollback: new ReduxAction({
                         type: this.prefix + DocumentRecordActionsBase.UPDATE_FIELD_FAILURE,
                         meta: {
-                            fields,
+                            // TODO: Use this below when fields accepts array: fields
+                            fields: fields[0].object,
                             packagePath
                         }
                     })
@@ -125,8 +128,7 @@ export abstract class DocumentRecordActionsBase<TStateType, TStore extends Store
         })));
     }
 
-    public deleteFields(fields: LocalObject<FieldSchemaViewModel,
-        string>[], packagePath: string) {
+    public deleteFields(fields: LocalObject<FieldSchemaViewModel, string>[], packagePath: string) {
         const paths = '?keys=' + fields.map(x => x.object.key).join('&keys=');
 
         this.store.dispatch(Object.assign({}, new ReduxAction<any, any>({
