@@ -11,10 +11,10 @@
     "ss:c1:open": "npm run ss:web:localization && ng serve --host client1.skysmack.test --port 4000 --open --disable-host-check",
     "ss:init": "npm i && npm run ss:c1:open",
     "ss": "run-s ss:lerna ss:web:localization ss:c1",
-    "ss:lerna": "npm run lerna bootstrap && npm run lerna run build:npm",
+    "ss:lerna": "lerna bootstrap && lerna run build:npm",
     "ss:lerna:watch": "lerna run --stream --no-sort --concurrency 10 build:npm:watch",
-    "ss:build": "run-s ss:lerna ss:web:localization build:c1:prod",
-    "ss:prod": "run-s ss:lerna ss:web:localization  build:c1:dev start-server",
+    "ss:build": "run-s ss:lerna build:lib ss:web:localization build:c1:prod",
+    "ss:prod": "run-s ss:lerna build:lib ss:web:localization  build:c1:dev start-server",
     "ss:clean": "clean.bat",
     "ss:rebuild": "npm run ss:clean && npm i && npm run ss"
   },

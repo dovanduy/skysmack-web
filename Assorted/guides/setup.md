@@ -17,12 +17,4 @@ npm i -g http-server @angular/cli npm-check-updates lighthouse lerna
     ```
 
 ## Start commands
-Remember to Cosmos emulator and the Skysmack backend project first.
-
-|Description|Commabds|
-|-|-|
-|Start the project|`npm run ss`|
-|Start the project and open in browser|`npm run ss:open`|
-|Run local production build|`npm run ss:prod`|
-
-For more commands, see the package.json file under "scripts".
+See ng-skysmack\package.json scripts section for possible commands.
