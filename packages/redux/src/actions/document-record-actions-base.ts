@@ -110,16 +110,16 @@ export abstract class DocumentRecordActionsBase<TStateType, TStore extends Store
                     commit: new ReduxAction({
                         type: this.prefix + DocumentRecordActionsBase.UPDATE_FIELD_SUCCESS,
                         meta: {
-                            // TODO: Use this below when fields accepts array: fields
-                            fields: fields[0].object,
-                            packagePath
+                            fields,
+                            packagePath,
+                            // TODO: Remove below when fields return only the modified fields back
+                            temp: fields[0].object.key
                         }
                     }),
                     rollback: new ReduxAction({
                         type: this.prefix + DocumentRecordActionsBase.UPDATE_FIELD_FAILURE,
                         meta: {
-                            // TODO: Use this below when fields accepts array: fields
-                            fields: fields[0].object,
+                            fields,
                             packagePath
                         }
                     })
@@ -143,13 +143,15 @@ export abstract class DocumentRecordActionsBase<TStateType, TStore extends Store
                     commit: new ReduxAction({
                         type: this.prefix + DocumentRecordActionsBase.DELETE_FIELD_SUCCESS,
                         meta: {
-                            fields
+                            fields,
+                            packagePath
                         }
                     }),
                     rollback: new ReduxAction({
                         type: this.prefix + DocumentRecordActionsBase.DELETE_FIELD_FAILURE,
                         meta: {
-                            fields
+                            fields,
+                            packagePath
                         }
                     })
                 }

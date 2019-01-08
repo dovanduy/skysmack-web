@@ -1,4 +1,4 @@
-import { LocalObject, Package, toLocalObject, HttpErrorResponse, HttpSuccessResponse, AvailablePackage, StrIndex, LocalObjectExtensions } from '@skysmack/framework';
+import { LocalObject, Package, toLocalObject, HttpErrorResponse, HttpSuccessResponse, AvailablePackage, StrIndex, LocalObjectExtensions, replaceLocalInnerObject } from '@skysmack/framework';
 import { AppState, ReduxAction, GetAvailablePackagesSuccessPayload } from '@skysmack/redux';
 import { PackagesActions } from './packages-actions';
 import { GetPackagesSuccessPayload, GetPackageSuccessPayload } from '../payloads';
@@ -60,9 +60,9 @@ export function packagesReducer(state = new PackagesState(), action: any): Packa
             return newState;
         }
         case PackagesActions.ADD_PACKAGE_SUCCESS: {
-            const castedAction: ReduxAction<HttpSuccessResponse<any[] | any>, any> = action;
+            const castedAction: ReduxAction<HttpSuccessResponse<Package[] | Package>, any> = action;
             const body = castedAction.payload.body;
-            const newPackages = (Array.isArray(body) ? body : [body]).map((newObject, index) => toLocalObject<Package, string>(newObject, 'path', castedAction.meta.packages[index].localId));
+            const newPackages = (Array.isArray(body) ? body : [body]).map((newObject, index) => replaceLocalInnerObject<Package, string>(castedAction.meta.packages[index], newObject));
             newState.localPackages = LocalObjectExtensions.mergeOrAddLocal<Package, string>(newState.localPackages, newPackages);
             return newState;
         }
@@ -72,9 +72,9 @@ export function packagesReducer(state = new PackagesState(), action: any): Packa
             return newState;
         }
         case PackagesActions.UPDATE_PACKAGE_SUCCESS: {
-            const castedAction: ReduxAction<HttpSuccessResponse<any[] | any>, any> = action;
+            const castedAction: ReduxAction<HttpSuccessResponse<Package[] | Package>, any> = action;
             const body = castedAction.payload.body;
-            const updatedPackages = (Array.isArray(body) ? body : [body]).map((newObject, index) => toLocalObject<Package, string>(newObject, 'path', castedAction.meta.packages[index].localId));
+            const updatedPackages = (Array.isArray(body) ? body : [body]).map((newObject, index) => replaceLocalInnerObject<Package, string>(castedAction.meta.packages[index], newObject));
             newState.localPackages = LocalObjectExtensions.mergeOrAddLocal<AvailablePackage, string>(newState.localPackages, updatedPackages);
             return newState;
         }
@@ -84,7 +84,7 @@ export function packagesReducer(state = new PackagesState(), action: any): Packa
             return newState;
         }
         case PackagesActions.DELETE_PACKAGE_SUCCESS: {
-            const castedAction: ReduxAction<HttpSuccessResponse<any[] | any>, { packages: LocalObject<Package, string>[] }> = action;
+            const castedAction: ReduxAction<HttpSuccessResponse<Package[] | Package>, { packages: LocalObject<Package, string>[] }> = action;
             castedAction.meta.packages.forEach(_package => {
                 delete newState.localPackages[_package.object.path][_package.object.path];
             });
