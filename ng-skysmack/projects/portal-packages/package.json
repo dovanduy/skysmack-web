@@ -7,6 +7,7 @@
     "@angular/core": "^7.0.0",
     "@skysmack/framework": "*",
     "@skysmack/redux": "*",
+    "@skysmack/packages-identities": "*",
     "@skysmack/packages-lodgings": "*",
     "@skysmack/packages-products": "*",
     "@skysmack/packages-persons": "*",

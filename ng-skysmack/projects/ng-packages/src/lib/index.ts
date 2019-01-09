@@ -1,4 +1,5 @@
 export * from './lodgings/index';
+export * from './identities/index';
 export * from './maintenance/index';
 export * from './oauth2/index';
 export * from './persons/index';

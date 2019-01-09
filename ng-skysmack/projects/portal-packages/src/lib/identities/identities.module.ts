@@ -1,25 +1,25 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-import { PersonsRoutingModule } from './persons-routing.module';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
-import { NgPersonsModule } from '@skysmack/ng-packages';
-import { PortalUiModule, HttpLoaderFactory, DynamicFieldsModule } from '@skysmack/portal-ui';
-import { personsComponents } from './components/persons-components';
-import { TranslateLoader, TranslateService } from '@ngx-translate/core';
+
 import { LanguageService } from '@skysmack/portal-ui';
+import { NgIdentitiesModule } from '@skysmack/ng-packages';
+import { PortalUiModule, HttpLoaderFactory, DynamicFieldsModule } from '@skysmack/portal-ui';
+import { TranslateLoader, TranslateService } from '@ngx-translate/core';
+import { IdentitiesRoutingModule } from './identities-routing.module';
+import { identitiesComponents } from './components/identities-components';
 
 @NgModule({
   imports: [
     CommonModule,
     HttpClientModule,
     PortalUiModule,
-    PersonsRoutingModule,
-    NgPersonsModule,
+    IdentitiesRoutingModule,
+    NgIdentitiesModule,
     DynamicFieldsModule
   ],
   declarations: [
-    ...personsComponents
+    ...identitiesComponents
   ],
   providers: [{
     provide: TranslateLoader,
@@ -27,7 +27,7 @@ import { LanguageService } from '@skysmack/portal-ui';
     deps: [HttpClient]
   }]
 })
-export class PersonsModule {
+export class IdentitiesModule {
   constructor(
     public languageService: LanguageService,
     public translateService: TranslateService

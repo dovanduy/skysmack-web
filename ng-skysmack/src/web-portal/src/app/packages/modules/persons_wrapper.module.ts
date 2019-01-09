@@ -1,5 +1,5 @@
-import { NgModule } from "@angular/core";
-import { PersonsModule } from "@skysmack/portal-packages";
+import { NgModule } from '@angular/core';
+import { PersonsModule } from '@skysmack/portal-packages';
 
 @NgModule({
   imports: [

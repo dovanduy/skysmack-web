@@ -31,6 +31,10 @@ import { environment } from './../../environments/environment';
         loadChildren: './../packages/modules/packages_wrapper.module#PackagesWrapperModule'
       },
       {
+        path: 'identities',
+        loadChildren: './../packages/modules/identities_wrapper.module#IdentitiesWrapperModule'
+      },
+      {
         path: 'persons',
         loadChildren: './../packages/modules/persons_wrapper.module#PersonsWrapperModule'
       },
@@ -45,6 +49,10 @@ import { environment } from './../../environments/environment';
       {
         path: 'oauth2',
         loadChildren: './../packages/modules/oauth2_wrapper.module#OAuth2WrapperModule'
+      },
+      {
+        path: 'maintenance',
+        loadChildren: './../packages/modules/maintenance_wrapper.module#MaintenanceWrapperModule'
       },
       {
         path: '',

@@ -11,22 +11,6 @@
 7. Turn on 'MATCH CASE' - Turn off 'MATCH WHOLE WORD'
 8. Search and replace (Remember to replace entity name before replacing Capital name)
 
-## Words to replace (schematics)
-|Word|Replacement|
-|-|-|
-|/product-type|`/<%= dasherize(name) %>`|
-|ss-product-type|`ss-<%= dasherize(name) %>`|
-|products.types|`<%= translationString %>`|
-|productType|`<%= camelize(name) %>`|
-|ProductTypeViewModel|`<%= classify(entity) %>`|
-|ProductType|`<%= classify(name) %>`|
-|PRODUCT_TYPE|`<%= upperCaseName %>`|
-
-
-|Areaname e.g "/product" or "/hotelManagement"|`/<%= dasherize(areaName) %>`|
-|Areaname e.g "product" or "hotelManagement"|`<%= camelize(areaName) %>`|
-|Areaname e.g "PRODUCT" or "HOTEL_MANAGEMENT"|`<%= upperCaseAreaName %>`|
-
 ## Words to replace (standard crud)
 |Word|Replacement|
 |-|-|
@@ -41,3 +25,20 @@
 |lodging|`product`|
 |lodgings|`products`|
 |LODGINGS|`PRODUCTS`|
+
+Remember to change DocumentRecord to Record if necessary.
+
+## Words to replace (schematics)
+|Word|Replacement|
+|-|-|
+|/product-type|`/<%= dasherize(name) %>`|
+|ss-product-type|`ss-<%= dasherize(name) %>`|
+|products.types|`<%= translationString %>`|
+|productType|`<%= camelize(name) %>`|
+|ProductTypeViewModel|`<%= classify(entity) %>`|
+|ProductType|`<%= classify(name) %>`|
+|PRODUCT_TYPE|`<%= upperCaseName %>`|
+
+|Areaname e.g "/product" or "/hotelManagement"|`/<%= dasherize(areaName) %>`|
+|Areaname e.g "product" or "hotelManagement"|`<%= camelize(areaName) %>`|
+|Areaname e.g "PRODUCT" or "HOTEL_MANAGEMENT"|`<%= upperCaseAreaName %>`|

@@ -9,13 +9,13 @@
     "start-server": "cd dist/web-portal && http-server -a www.skysmack.test -p 4000 -o",
     "ss:c1": "npm run ss:web:localization && ng serve --host client1.skysmack.test --port 4000 --disable-host-check",
     "ss:c1:open": "npm run ss:web:localization && ng serve --host client1.skysmack.test --port 4000 --open --disable-host-check",
-    "ss:init": "npm i && npm run ss:c1:open",
-    "ss": "run-s ss:lerna ss:web:localization ss:c1",
+    "ss:init": "npm i && npm run ss:lerna && npm run build:lib && npm run ss:c1:open",
+    "ss": "run-s ss:lerna build:lib ss:web:localization ss:c1",
     "ss:lerna": "lerna bootstrap && lerna run build:npm",
     "ss:lerna:watch": "lerna run --stream --no-sort --concurrency 10 build:npm:watch",
     "ss:build": "run-s ss:lerna build:lib ss:web:localization build:c1:prod",
     "ss:prod": "run-s ss:lerna build:lib ss:web:localization  build:c1:dev start-server",
-    "ss:clean": "clean.bat",
+    "ss:clean": "cd ../Assorted/scripts && start cmd /C clean.bat",
     "ss:rebuild": "npm run ss:clean && npm i && npm run ss"
   },
   "private": true,
@@ -55,7 +55,7 @@
     "zone.js": "~0.8.26"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~0.11.4",
+    "@angular-devkit/build-angular": "^0.12.0",
     "@angular-devkit/build-ng-packagr": "~0.11.4",
     "@angular/cli": "~7.1.4",
     "@angular/compiler-cli": "^7.1.4",

@@ -1,62 +1,29 @@
 # New Skysmack Package
 
-## Part 1: Create package
-- Create folder name e.g. "packages-products"
-- Add base structure (copy from packages persons)
-    /lib
-        temp.ts
-        index.ts
-    index.ts
-    package.json <-- Ensure correct package name e.g.
-    tsconfig.json
-- Setup build flow
-    > ng-skysmack/package.json -> "link:packages-products": "..."
-        >> If any peerDeps, add npm-install-peers. See "link:packages-oauth2"
-    > ng-skysmack/package.json -> Update "ss:link"
-        >> Must come after other packages.
-    > ng-skysmack/package.json -> Add @skysmack/packages-products to link scripts that needs it.
-    > ng-skysmack/clean.bat -> Add cleaning for package
+Consider using the quick-naming.md guide for faster copy paste.
 
-## Part 2: NPM package (logic)
-packages-persons
-    lib/
-        models/
-            person.ts
-        redux/
-            persons-epics.ts
-            persons-reducer.ts
-        persons-type.ts
-        package.json
-        tsconfig.json
-
-## Part 3: Ng-Skysmack -> src/lib/ng-packages (angular logic)
-persons
-    redux/
-        ng-persons-actions.ts
-        ng-persons-requets.ts
-        ng-persons-store.ts
-    ng-persons-fields-config.ts
-    ng-persons-menu.ts
-    ng-persons-validation.ts
-    ng-persons.module.ts
-
-## Part 4: Ng-Skysmack -> src/lib/portal-packages (angular views)
-persons
-    components/
-        persons-create/
-        persons-edit/
-        persons-index/
-        persons-component.ts
-    i18n/
-        en.json
-        da.json
-    persons-routing.module.ts
-    persons.module.ts
-
-## Part 5: Ng-skysmack -> src/lib/projects/web-portal/src/app (angular config)
-- Add package-manifest.ts to packages/
-- Configure start/application-startup.ts
-    > Add the new package to the package loaders array.
-- Coonfigure start/start.module.ts
-    > Add portals-packages module import statement
-    > Add route
+- packages/packages-<name> (LOGIC)
+- ng-skysmack/projects/src/ng-packages/<name> (NG LOGIC)
+- ng-skysmack/projects/src/portal-packages/<name> (NG VIEWS)
+- ng-skysmack/src/web-portal/src/app (WEB HOOKUP)
+    /packages
+        modules/<name>_wrapper.module.ts
+        <name>-package-manifest.ts
+    /start
+        start.module.ts
+        application-startup.ts
+- Update .json files
+    skysmack/package.json
+    skysmack/ng-packages/tsconfig.json
+    skysmack/ng-packages/projects/tsconfig.json
+    skysmack/ng-packages/projects/ng-packages/ng-package.json
+    skysmack/ng-packages/projects/ng-packages/package.json
+    skysmack/ng-packages/projects/portal-packages/ng-package.json ???
+    skysmack/ng-packages/projects/portal-packages/package.json ???
+- Update skysmack/Assorted/scripts/clean.bat
+- Double check ALL index files are updated correctly. Remember /index for folder exports. Especially check:
+    ng-packages/src/lib/index.ts
+    portal-packages/src/lib/index.ts
+- Update column names in component.index.ts files, validations, fieldsConfig, i18n, etc.
+- Run `npm run ss:rebuild` from ng-skysmack
+- If needed, stop lerna watch and start it again: Run `npm run ss:lerna:watch` from ng-skysmack

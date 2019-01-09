@@ -24,6 +24,14 @@ RD /s /q "%~dp0\..\..\packages\framework\node_modules";
 echo Deleted framework\node_modules;
 del /s /q "%~dp0\..\..\packages\framework\package-lock.json";
 
+rem packages-identities
+RD /s /q "%~dp0\..\..\packages\packages-identities\lib";
+mkdir "%~dp0\..\..\packages\packages-identities\lib";
+echo Deleted packages-identities\lib;
+RD /s /q "%~dp0\..\..\packages\packages-identities\node_modules";
+echo Deleted packages-identities\node_modules;
+del /s /q "%~dp0\..\..\packages\packages-identities\package-lock.json";
+
 rem packages-lodgings
 RD /s /q "%~dp0\..\..\packages\packages-lodgings\lib";
 mkdir "%~dp0\..\..\packages\packages-lodgings\lib";
