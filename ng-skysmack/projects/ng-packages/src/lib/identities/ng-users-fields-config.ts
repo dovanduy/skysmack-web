@@ -18,7 +18,9 @@ export class NgUsersFieldsConfig extends FieldsConfig<User, NgUserFormDependenci
 
     public formRules: FormRule[] = [];
 
-    protected getEntityFields(entity?: LocalObject<User, number>, dependencies?: NgUserFormDependencies, mode: 'create' | 'edit' = 'create'): Field[] {
+    public mode: 'create' | 'edit' = 'create';
+
+    protected getEntityFields(entity?: LocalObject<User, number>, dependencies?: NgUserFormDependencies): Field[] {
         const fields = [
             new Field({
                 fieldType: FieldTypes.EmailField,
@@ -32,7 +34,7 @@ export class NgUsersFieldsConfig extends FieldsConfig<User, NgUserFormDependenci
 
         // If we are creating a user, provide the password fields.
         // Leave them out if we are editing.
-        if (mode === 'create') {
+        if (this.mode === 'create') {
             const passwordFields = [
                 new Field({
                     fieldType: FieldTypes.PasswordField,

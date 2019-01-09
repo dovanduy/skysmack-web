@@ -7,6 +7,7 @@ import { EditorNavService } from '@skysmack/portal-ui';
 import { NgUsersFieldsConfig, NgUserFormDependencies } from '@skysmack/ng-packages';
 import { RecordFormComponent } from '@skysmack/portal-ui';
 import { NgUsersStore } from '@skysmack/ng-packages';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'ss-users-edit',
@@ -30,5 +31,15 @@ export class UsersEditComponent extends RecordFormComponent<UsersAppState, User,
   ngOnInit() {
     super.ngOnInit();
     this.setEditFields();
+  }
+
+  protected setEditFields() {
+    this.subscriptionHandler.register(this.initEditRecord().pipe(
+      map(entity => {
+        this.selectedEntity = entity;
+        this.fieldsConfig.mode = 'edit';
+        return this.getFields(entity);
+      })
+    ).subscribe(fields => this.fields = fields));
   }
 }
