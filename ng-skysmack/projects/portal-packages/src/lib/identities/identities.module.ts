@@ -8,6 +8,7 @@ import { PortalUiModule, HttpLoaderFactory, DynamicFieldsModule } from '@skysmac
 import { TranslateLoader, TranslateService } from '@ngx-translate/core';
 import { IdentitiesRoutingModule } from './identities-routing.module';
 import { identitiesComponents } from './components/identities-components';
+import { rolesComponents } from './components';
 
 @NgModule({
   imports: [
@@ -19,7 +20,8 @@ import { identitiesComponents } from './components/identities-components';
     DynamicFieldsModule
   ],
   declarations: [
-    ...identitiesComponents
+    ...identitiesComponents,
+    ...rolesComponents
   ],
   providers: [{
     provide: TranslateLoader,

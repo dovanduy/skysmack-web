@@ -1,0 +1,32 @@
+{
+    "ROLES": {
+        "CREATE": {
+            "CREATE_ROLE": "Opret ny rolle"
+        },
+        "EDIT": {
+            "EDITING": "Rediger {{ object.name }}"
+        },
+        "INDEX": {
+            "ACTIONS": "Handlinger",
+            "CREATE": "Opret",
+            "MANAGE": "Konfigurer",
+            "SECURITY": "Sikkerhed",
+            "SECURITY_AND_USERS": "Brugere og sikkerhed",
+            "ROLES": "Roller",
+            "BACK": "Tilbage"
+        },
+        "FORM": {
+            "LABELS": {
+                "NAME": "Navn"
+            },
+            "PLACEHOLDERS": {
+                "NAME": "Indtast navn"
+            },
+            "VALIDATION": {
+                "NAME": {
+                    "REQUIRED": "Navn er påkrævet"
+                }
+            }
+        }
+    }
+}

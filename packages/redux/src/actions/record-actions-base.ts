@@ -68,14 +68,12 @@ export abstract class RecordActionsBase<TStateType, TStore extends Store<TStateT
     }
 
     public add<TRecord extends Record<TKey>, TKey>(records: LocalObject<TRecord, TKey>[], packagePath: string) {
-        let path = this.additionalPaths ? [packagePath, ...this.additionalPaths].join('/') : packagePath;
-
         this.store.dispatch(Object.assign({}, new ReduxAction<any, ReduxOfflineMeta<TRecord[], TRecord, TKey>>({
             type: this.prefix + RecordActionsBase.ADD,
             meta: new ReduxOfflineMeta(
                 new OfflineMeta<TRecord[], TRecord, TKey>(
                     new Effect<TRecord[]>(new EffectRequest<TRecord[]>(
-                        path,
+                        this.addAdditionalPaths(packagePath),
                         HttpMethod.POST,
                         records.map(x => x.object)
                     )),
@@ -99,7 +97,7 @@ export abstract class RecordActionsBase<TStateType, TStore extends Store<TStateT
     }
 
     public update<TRecord extends Record<TKey>, TKey>(records: LocalObject<TRecord, TKey>[], packagePath: string) {
-        let path = this.additionalPaths ? [packagePath, ...this.additionalPaths].join('/') : packagePath;
+        let path = this.addAdditionalPaths(packagePath);
         path = path + '?ids=' + records.map(x => x.object.id).join(',');
 
         this.store.dispatch(Object.assign({}, new ReduxAction<any, ReduxOfflineMeta<TRecord[], TRecord, TKey>>({
@@ -132,7 +130,7 @@ export abstract class RecordActionsBase<TStateType, TStore extends Store<TStateT
 
 
     public delete<TRecord extends Record<TKey>, TKey>(records: LocalObject<TRecord, TKey>[], packagePath: string) {
-        let path = this.additionalPaths ? [packagePath, ...this.additionalPaths].join('/') : packagePath;
+        let path = this.addAdditionalPaths(packagePath);
         path = path + '?ids=' + records.map(x => x.object.id).join(',');
 
         this.store.dispatch(Object.assign({}, new ReduxAction<any, ReduxOfflineMeta<TRecord[], TRecord, TKey>>({
@@ -164,5 +162,9 @@ export abstract class RecordActionsBase<TStateType, TStore extends Store<TStateT
                 )
             )
         })));
+    }
+
+    protected addAdditionalPaths(packagePath: string) {
+        return this.additionalPaths ? [packagePath, ...this.additionalPaths].join('/') : packagePath;
     }
 }

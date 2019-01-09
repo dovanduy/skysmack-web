@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { FormRule } from '@skysmack/ng-ui';
-import { SetDisplayNameRule } from '@skysmack/ng-ui';
 import { LocalObject } from '@skysmack/framework';
 import { Role } from '@skysmack/packages-identities';
 import { Field } from '@skysmack/ng-ui';

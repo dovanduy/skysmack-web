@@ -24,6 +24,9 @@ Consider using the quick-naming.md guide for faster copy paste.
 - Double check ALL index files are updated correctly. Remember /index for folder exports. Especially check:
     ng-packages/src/lib/index.ts
     portal-packages/src/lib/index.ts
-- Update column names in component.index.ts files, validations, fieldsConfig, i18n, etc.
+- REMEMBER
+    + Update column names in component.index.ts files
+    + Update validations, fieldsConfig, i18n, etc.
+    + Add additional paths if needed to both requets AND actions.
 - Run `npm run ss:rebuild` from ng-skysmack
 - If needed, stop lerna watch and start it again: Run `npm run ss:lerna:watch` from ng-skysmack

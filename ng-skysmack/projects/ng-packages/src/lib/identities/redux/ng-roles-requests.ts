@@ -10,6 +10,6 @@ export class NgRolesRequests extends NgRecordRequests<Role, number> {
         protected http: HttpClient,
         @Inject('ApiDomain') protected apiDomain: ApiDomain
     ) {
-        super(http, apiDomain, 'ROLES_', []);
+        super(http, apiDomain, 'ROLES_', ['roles']);
     }
 }

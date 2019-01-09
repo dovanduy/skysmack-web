@@ -16,7 +16,7 @@ import { EntityAction } from '@skysmack/ng-ui';
 })
 export class RolesIndexComponent extends RecordIndexComponent<RolesAppState, Role, number> implements OnInit {
 
-  public displayedColumns = ['firstName', 'lastName'];
+  public displayedColumns = ['name'];
   public entityActions: EntityAction[] = [
     new EntityAction().asUrlAction('edit', 'Edit', 'edit'),
     new EntityAction().asEventAction('Delete', this.delete, 'delete', this)
