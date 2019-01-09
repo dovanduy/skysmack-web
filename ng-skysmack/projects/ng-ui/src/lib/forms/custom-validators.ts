@@ -15,7 +15,7 @@ export class CustomValidators {
      */
     public static comparePassword(passwordFieldName: string = 'password', comparePasswordFieldName: string = 'confirmPassword'): ValidatorFn {
         return (form: FormGroup): ValidationErrors | null => {
-            const controls = CustomValidators.getDefaultGroupControls(form);
+            const controls = form.controls;
 
             const passwordControl = controls[passwordFieldName];
             const confirmPasswordControl = controls[comparePasswordFieldName];
@@ -41,7 +41,7 @@ export class CustomValidators {
      */
     public static notBefore(sourceDate: string, compareDate: string): ValidatorFn {
         return (form: FormGroup): ValidationErrors | null => {
-            const controls = CustomValidators.getDefaultGroupControls(form);
+            const controls = form.controls;
 
             const sourceDateControl = controls[sourceDate];
             const compareDateControl = controls[compareDate];
@@ -77,10 +77,4 @@ export class CustomValidators {
             }
         };
     }
-
-
-    private static getDefaultGroupControls(form: FormGroup) {
-        return ((form as FormGroup).controls['default'] as FormGroup).controls;
-    }
-
 }

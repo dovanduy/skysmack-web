@@ -15,7 +15,7 @@
     "ss:lerna:watch": "lerna run --stream --no-sort --concurrency 10 build:npm:watch",
     "ss:build": "run-s ss:lerna build:lib ss:web:localization build:c1:prod",
     "ss:prod": "run-s ss:lerna build:lib ss:web:localization  build:c1:dev start-server",
-    "ss:clean": "cd ../Assorted/scripts && start cmd /C clean.bat",
+    "ss:clean": "cd ../Assorted/scripts && clean.bat",
     "ss:rebuild": "npm run ss:clean && npm i && npm run ss"
   },
   "private": true,

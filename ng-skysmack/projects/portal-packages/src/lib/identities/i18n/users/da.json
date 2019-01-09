@@ -1,0 +1,84 @@
+{
+    "USERS": {
+        "SETPASSWORD": {
+            "FORM": {
+                "LABELS": {
+                    "PASSWORD": "Ny adgangskode",
+                    "CONFIRMPASSWORD": "Bekræft adgangskode"
+                },
+                "PLACEHOLDERS": {
+                    "PASSWORD": "Indtast ny adgangskode",
+                    "CONFIRMPASSWORD": "Bekræft adgangskode"
+                },
+                "VALIDATION": {
+                    "PASSWORD": {
+                        "REQUIRED": "Adgangskode er påkrævet.",
+                        "INVALIDPASSWORD": "Adgangskoden skal indeholde: mindst 6 karaktere lang, indeholde et tal, et stort og småt bogstav, og en speciel karakter."
+                    },
+                    "CONFIRMPASSWORD": {
+                        "REQUIRED": "Bekræftelse af adgangskode er påkræftet.",
+                        "PASSWORDMISMATCH": "Adgangskoderne stemmer ikke overens"
+                    }
+                }
+            }
+        },
+        "FORM": {
+            "LABELS": {
+                "EMAIL": "Email",
+                "PASSWORD": "Adgangskode",
+                "CONFIRMPASSWORD": "Bekræft adgangskode"
+            },
+            "PLACEHOLDERS": {
+                "EMAIL": "Indtast email",
+                "PASSWORD": "Indtast adgangskode",
+                "CONFIRMPASSWORD": "Bekræft indtastet adgangskode"
+            },
+            "VALIDATION": {
+                "EMAIL": {
+                    "REQUIRED": "En Email er påkrævet.",
+                    "EMAIL": "Indtast en gyldig e-mail."
+                },
+                "PASSWORD": {
+                    "REQUIRED": "Adgangskode er påkrævet.",
+                    "INVALIDPASSWORD": "Lav venligst et sværere password."
+                },
+                "CONFIRMPASSWORD": {
+                    "REQUIRED": "Bekræftning adgangskode.",
+                    "PASSWORDMISMATCH": "Adgangskoderne stemmer ikke overens"
+                }
+            }
+        },
+        "CREATE": {
+            "CREATE_USER": "Opret ny bruger"
+        },
+        "EDIT": {
+            "EDITING": "Rediger {{ object.email }}"
+        },
+        "INDEX": {
+            "ACTIONS": "Handlinger",
+            "CREATE": "Opret",
+            "MANAGE": "Konfigurer",
+            "ROLES": "Roller",
+            "ACCESS_POLICIES": "Tilladelser og adgang",
+            "SECURITY": "Sikkerhed",
+            "PERMISSIONS": "Tilladselser",
+            "ANONYMOUS": "Anonym",
+            "AUTHENTICATED": "Autentificeret",
+            "USERS": "Brugere",
+            "BACK": "Tilbage"
+        },
+        "ROLES": {
+            "CURRENT_ROLES": "{{ object.email }} nuværende roller",
+            "ROLE_PRIORITY": "{{ role.object.name }} med prioritet {{ role.object.priority }} -",
+            "REMOVE": "Fjern",
+            "NO_ROLES": "Ingen roller er blevet tilføjet.",
+            "ADD_ROLE": "Tilføj rolle til {{ object.email }}",
+            "OBJECT_PRIOORITY": "{{ role.object.name }} - prioritet",
+            "ADD": "Tilføj",
+            "ROLES_APPLIED": "Alle roller er blevet anvendt, ellers eksisterer der ikke nogen."
+        },
+        "SET_PASSWORD": {
+            "PASSWORD_FOR": "Sæt adgangskoden til {{ object.email }}"
+        }
+    }
+}

@@ -1,24 +1,24 @@
 import { NgModule } from '@angular/core';
 
 import { ReducerRegistry, registerLazyEpics } from '@skysmack/redux';
-import { RolesEpics, rolesReducer } from '@skysmack/packages-identities';
+import { RolesEpics, rolesReducer, usersReducer, UsersEpics } from '@skysmack/packages-identities';
 import { NgRolesRequests } from './redux/ng-roles-requests';
-import { NgRolesActions } from './redux/ng-roles-actions';
-import { NgRolesStore } from './redux/ng-roles-store';
+import { NgUsersRequests } from './redux/ng-users-requests';
 
 @NgModule({
   imports: [],
   exports: [],
-  providers: [
-    [
-      { provide: 'NgRolesActions', useClass: NgRolesActions },
-      { provide: 'NgRolesStore', useClass: NgRolesStore }
-    ]
-  ],
+  providers: [],
 })
 export class NgIdentitiesModule {
-  constructor(rolesRequests: NgRolesRequests) {
+  constructor(
+    rolesRequests: NgRolesRequests,
+    usersRequests: NgUsersRequests
+  ) {
     ReducerRegistry.Instance.register('roles', rolesReducer);
     registerLazyEpics(new RolesEpics(rolesRequests).epics);
+
+    ReducerRegistry.Instance.register('users', usersReducer);
+    registerLazyEpics(new UsersEpics(usersRequests).epics);
   }
 }

@@ -1,6 +1,7 @@
 {
     "IDENTITIES_INDEX": {
         "ROLES": "Roles",
+        "USERS": "Users",
         "MANAGE": "Manage"
     }
 }
