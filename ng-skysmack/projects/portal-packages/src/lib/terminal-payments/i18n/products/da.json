@@ -1,0 +1,51 @@
+{
+    "PRODUCTS": {
+        "FORM": {
+            "LABELS": {
+                "NAME": "Navn",
+                "PRODUCTTYPEID": "Produkt type"
+            },
+            "PLACEHOLDERS": {
+                "NAME": "Indtast navn",
+                "PRODUCTTYPEID": "Vælg en produkt type"
+            },
+            "VALIDATION": {
+                "NAME": {
+                    "REQUIRED": "Navn er påkrævet."
+                }
+            }
+        },
+        "CREATE": {
+            "CREATE": "Opret"
+        },
+        "EDIT": {
+            "EDIT": "Rediger"
+        },
+        "INDEX": {
+            "CREATE": "Opret",
+            "EDIT": "Rediger",
+            "DELETE": "Slet",
+            "FIELDS": "Felter",
+            "ITEM": "Enhed",
+            "MANAGE": "Konfigurer",
+            "ACTIONS": "Handlinger",
+            "TYPES": "Typer"
+        },
+        "FIELDS": {
+            "CREATE": {
+                "ADD": "Opret nyt felt"
+            },
+            "EDIT": {
+                "EDITING": "Redigere"
+            },
+            "INDEX": {
+                "ACTIONS": "Handlinger",
+                "CREATE": "Opret et nyt type felt",
+                "TYPES": "Typer",
+                "BACK": "Tilbage",
+                "MANAGE": "Konfigurer",
+                "FIELDS": "Felter"
+            }
+        }
+    }
+}

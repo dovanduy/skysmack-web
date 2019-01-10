@@ -1,0 +1,51 @@
+{
+    "PRODUCTS": {
+        "FORM": {
+            "LABELS": {
+                "NAME": "Name",
+                "PRODUCTTYPEID": "Product type"
+            },
+            "PLACEHOLDERS": {
+                "NAME": "Enter name",
+                "PRODUCTTYPEID": "Choose product type"
+            },
+            "VALIDATION": {
+                "NAME": {
+                    "REQUIRED": "Name is required."
+                }
+            }
+        },
+        "CREATE": {
+            "CREATE": "Create"
+        },
+        "EDIT": {
+            "EDIT": "Edit"
+        },
+        "INDEX": {
+            "CREATE": "Create",
+            "EDIT": "Edit",
+            "DELETE": "Delete",
+            "FIELDS": "Fields",
+            "ITEM": "Item",
+            "MANAGE": "Manage",
+            "ACTIONS": "Actions",
+            "TYPES": "Types"
+        },
+        "FIELDS": {
+            "CREATE": {
+                "ADD": "Add new field"
+            },
+            "EDIT": {
+                "EDITING": "Editing"
+            },
+            "INDEX": {
+                "ACTIONS": "Actions",
+                "CREATE": "Create new type field",
+                "MANAGE": "Manage",
+                "TYPES": "Types",
+                "FIELDS": "Fields",
+                "BACK": "Back"
+            }
+        }
+    }
+}

@@ -9,7 +9,8 @@
     "@skysmack/packages-oauth2": "*",
     "@skysmack/packages-persons": "*",
     "@skysmack/packages-products": "*",
-    "@skysmack/packages-skysmack-core": "*"
+    "@skysmack/packages-skysmack-core": "*",
+    "@skysmack/packages-terminal-payments": "*"
   },
   "peerDependencies": {
     "@angular/common": "^7.0.0",
