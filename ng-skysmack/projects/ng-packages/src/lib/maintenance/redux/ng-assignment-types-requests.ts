@@ -8,7 +8,7 @@ import { NgDocmentRecordRequests } from '@skysmack/ng-redux';
 export class NgAssignmentTypesRequests extends NgDocmentRecordRequests<Assignment, number> {
     constructor(
         protected http: HttpClient,
-        @Inject('ApiDomain') protected apiDomain: ApiDomain,
+        @Inject('ApiDomain') protected apiDomain: ApiDomain
     ) {
         super(http, apiDomain, 'ASSIGNMENT_TYPES_', ['types']);
     }

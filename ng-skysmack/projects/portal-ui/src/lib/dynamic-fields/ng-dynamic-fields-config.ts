@@ -82,9 +82,9 @@ export class NgDynamicFieldsFieldsConfig {
     public getDynamicFields(availableFields: LocalObject<FieldValueProviderViewModel, string>[], field?: LocalObject<FieldSchemaViewModel, string>): Field[] {
         return this.dynamicFields(availableFields, field).map(aField => {
             // Labels
-            aField.label = 'FIELD.FORM.LABELS.' + aField.key.toUpperCase();
+            aField.label = 'FIELDS.FORM.LABELS.' + aField.key.toUpperCase();
             // Placeholders
-            aField.placeholder = 'FIELD.FORM.PLACEHOLDERS.' + aField.key.toUpperCase();
+            aField.placeholder = 'FIELDS.FORM.PLACEHOLDERS.' + aField.key.toUpperCase();
             return aField;
         });
     }
