@@ -10,7 +10,6 @@ import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { RecurringExpressionFieldModule } from './components/fields/components/recurring-expression-field/recurring-expression-field.module';
 import { CalendarComponent } from './components/common/calendar/calendar.component';
-import { ContextSidebarComponent } from './components/common/context-sidebar/context-sidebar.component';
 import { DataTableComponent } from './components/common/data-table/data-table.component';
 import { DropDownBlockComponent } from './components/common/dropdown-block/dropdown-block.component';
 import { SidebarMenuComponent } from './components/common/sidebar-menu/sidebar-menu.component';
@@ -79,7 +78,6 @@ import { IsAnonymousDirective } from './autentication/is-anonymous.directive';
     IsAnonymousDirective,
     // Components
     CalendarComponent,
-    ContextSidebarComponent,
     DataTableComponent,
     DropDownBlockComponent,
     SidebarMenuComponent,
@@ -120,7 +118,6 @@ import { IsAnonymousDirective } from './autentication/is-anonymous.directive';
     MaterialModule,
     // Components
     CalendarComponent,
-    ContextSidebarComponent,
     DataTableComponent,
     DropDownBlockComponent,
     SidebarMenuComponent,
