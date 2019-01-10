@@ -12,7 +12,7 @@ export function documentRecordReducersBase<TState extends DocumentRecordState<TR
     let newState = Object.assign({}, state);
 
     switch (action.type) {
-        case DocumentRecordActionsBase.CANCEL_DYNAMIC_FIELD_ACTION: {
+        case prefix + DocumentRecordActionsBase.CANCEL_DYNAMIC_FIELD_ACTION: {
             return cancelDynamicFieldAction<TState, TRecord, TKey>(newState, action);
         }
         case prefix + DocumentRecordActionsBase.GET_FIELDS_SUCCESS: {

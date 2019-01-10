@@ -19,11 +19,15 @@ export class ReduxOfflineConfiguration implements Config {
     public queue = {
         ...defaultQueue,
         enqueue(outbox, action) {
-            switch (action.type) {
-                case RecordActionsBase.CANCEL_RECORD_ACTION: return cancelRecordActionOutboxFilter(outbox, action);
-                case DocumentRecordActionsBase.CANCEL_DYNAMIC_FIELD_ACTION: return cancelDynamicFieldActionOutboxFilter(outbox, action);
-                default:
-                    return [...outbox, action];
+            if (action.meta.isCancelAction) {
+                switch (action.type) {
+                    case action.payload.prefix + RecordActionsBase.CANCEL_RECORD_ACTION: return cancelRecordActionOutboxFilter(outbox, action);
+                    case action.payload.prefix + DocumentRecordActionsBase.CANCEL_DYNAMIC_FIELD_ACTION: return cancelDynamicFieldActionOutboxFilter(outbox, action);
+                    default:
+                        return [...outbox, action];
+                }
+            } else {
+                return [...outbox, action];
             }
         }
     };

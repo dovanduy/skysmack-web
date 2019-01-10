@@ -52,7 +52,7 @@
             "CREATE_USER": "Create a new user"
         },
         "EDIT": {
-            "EDITING": "Editing {{ object.email }}"
+            "EDIT": "Edit user"
         },
         "INDEX": {
             "ACTIONS": "Actions",

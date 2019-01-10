@@ -6,7 +6,7 @@ import { User } from './../models/user';
  * This is to be used when you want to access users via the GLOBAL state. E.g. state.users (where users is the reducer name.)
  */
 export class UsersAppState extends AppState {
-    public persons: UsersState;
+    public users: UsersState;
 }
 
 export class UsersState implements RecordState<User, number> {

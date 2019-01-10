@@ -6,7 +6,7 @@ import { Role } from './../models/role';
  * This is to be used when you want to access roles via the GLOBAL state. E.g. state.roles (where roles is the reducer name.)
  */
 export class RolesAppState extends AppState {
-    public persons: RolesState;
+    public roles: RolesState;
 }
 
 export class RolesState implements RecordState<Role, number> {

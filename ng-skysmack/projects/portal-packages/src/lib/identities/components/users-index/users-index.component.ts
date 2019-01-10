@@ -34,7 +34,6 @@ export class UsersIndexComponent extends RecordIndexComponent<UsersAppState, Use
     public sidebarMenu: NgUsersMenu
   ) {
     super(router, activatedRoute, actions, redux, store);
-
   }
 
   ngOnInit() {

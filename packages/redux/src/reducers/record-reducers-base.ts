@@ -11,7 +11,7 @@ export function recordReducersBase<TState extends RecordState<TRecord, TKey>, TR
     let newState = Object.assign({}, state);
 
     switch (action.type) {
-        case RecordActionsBase.CANCEL_RECORD_ACTION: {
+        case prefix + RecordActionsBase.CANCEL_RECORD_ACTION: {
             return cancelRecordAction<TState, TRecord, TKey>(newState, action);
         }
         case prefix + RecordActionsBase.GET_PAGED: {

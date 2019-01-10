@@ -81,7 +81,6 @@
       <mat-icon>account_circle</mat-icon>
     </button>
     <mat-menu overlapTrigger="false" #accountMenu="matMenu">
-      <button mat-menu-item [routerLink]="['/account/edit']">{{ 'UI.TOP_BAR.ACC_SET'| translate}}</button>
       <button mat-menu-item [routerLink]="['/change-password']">{{ 'UI.TOP_BAR.CHAN_PASS'| translate}}</button>
       <button mat-menu-item class="non-anchor" (click)="logout()" [routerLink]="['/']">{{
         'UI.TOP_BAR.LOG_OUT'| translate }}</button>

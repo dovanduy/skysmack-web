@@ -52,7 +52,7 @@
             "CREATE_USER": "Opret ny bruger"
         },
         "EDIT": {
-            "EDITING": "Rediger {{ object.email }}"
+            "EDIT": "Edit user"
         },
         "INDEX": {
             "ACTIONS": "Handlinger",

@@ -37,15 +37,15 @@ export abstract class RecordActionsBase<TStateType, TStore extends Store<TStateT
 
     public cancelRecordAction = <TRecord extends Record<TKey>, TKey>(record: LocalObject<TRecord, TKey>, packagePath: string): void => {
         this.store.dispatch(Object.assign({}, new ReduxAction<CancelActionPayload<TRecord, TKey>, CancelActionMeta>({
-            type: RecordActionsBase.CANCEL_RECORD_ACTION,
+            type: this.prefix + RecordActionsBase.CANCEL_RECORD_ACTION,
             payload: {
                 record,
-                packagePath
+                packagePath,
+                prefix: this.prefix
             },
             meta: new CancelActionMeta()
         })))
     }
-
 
     public getPaged(packagePath: string, pagedQuery: PagedQuery) {
         this.store.dispatch(Object.assign({}, new ReduxAction<GetPagedRecordsPayload>({

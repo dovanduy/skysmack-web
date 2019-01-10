@@ -45,10 +45,11 @@ export abstract class DocumentRecordActionsBase<TStateType, TStore extends Store
 
     public cancelDynamicFieldAction = (field: LocalObject<FieldSchemaViewModel, string>, packagePath: string): void => {
         this.store.dispatch(Object.assign({}, new ReduxAction<CancelDynamicFieldActionPayload<FieldSchemaViewModel>>({
-            type: DocumentRecordActionsBase.CANCEL_DYNAMIC_FIELD_ACTION,
+            type: this.prefix + DocumentRecordActionsBase.CANCEL_DYNAMIC_FIELD_ACTION,
             payload: {
                 field,
-                packagePath
+                packagePath,
+                prefix: this.prefix
             },
             meta: new CancelActionMeta()
         })))
