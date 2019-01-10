@@ -15,6 +15,6 @@ export class IdentitiesIndexComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.title.setTitle('Assignments All');
+    this.title.setTitle('Identities');
   }
 }
