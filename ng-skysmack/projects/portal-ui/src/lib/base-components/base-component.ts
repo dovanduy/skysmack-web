@@ -42,8 +42,8 @@ export class BaseComponent<TAppState, TKey> implements OnInit, OnDestroy {
                     .subscribe(params => {
                         if (params['id']) {
                             this.entityId = params['id'];
-                            // Fields have a "key" as id. Set to id if present.
                         } else if (params['key']) {
+                            // Fields have a "key" as id. Set to id if present.
                             this.entityId = params['key'];
                         }
                     }));
