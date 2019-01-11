@@ -61,7 +61,7 @@ export class UsersRolesComponent extends BaseComponent<User, number> implements 
   }
 
 
-  public addRole() {
+  public addRole(): void {
     // if (this.userRoles.filter(pr => pr.object.roleId === role.object.id).length === 0) {
     //   this.userRolesRedux.addUserRole(toLocalObject({
     //     userId: this.selectedUser.object.id,
@@ -76,7 +76,7 @@ export class UsersRolesComponent extends BaseComponent<User, number> implements 
     // }
   }
 
-  public removeRole() {
+  public removeRole(role: LocalObject<Role, number>): void {
 
   }
 }
