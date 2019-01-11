@@ -98,7 +98,7 @@ export abstract class RecordActionsBase<TStateType, TStore extends Store<TStateT
 
     public update<TRecord extends Record<TKey>, TKey>(records: LocalObject<TRecord, TKey>[], packagePath: string) {
         let path = this.addAdditionalPaths(packagePath);
-        path = path + '?ids=' + records.map(x => x.object.id).join(',');
+        path = this.appendValues<TKey>(path, records.map(x => x.object.id));
 
         this.store.dispatch(Object.assign({}, new ReduxAction<any, ReduxOfflineMeta<TRecord[], TRecord, TKey>>({
             type: this.prefix + RecordActionsBase.UPDATE,
@@ -164,7 +164,11 @@ export abstract class RecordActionsBase<TStateType, TStore extends Store<TStateT
         })));
     }
 
-    protected addAdditionalPaths(packagePath: string) {
-        return this.additionalPaths ? [packagePath, ...this.additionalPaths].join('/') : packagePath;
+    protected addAdditionalPaths(url: string): string {
+        return this.additionalPaths ? [url, ...this.additionalPaths].join('/') : url;
+    }
+
+    protected appendValues<T>(url, values: T[], prefix: string = '?ids=', seperator: string = ','): string {
+        return url + prefix + values.join(seperator);
     }
 }

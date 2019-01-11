@@ -5,8 +5,7 @@ import { NgUsersActions, NgSkysmackStore, NgUsersStore, NgUsersRequests, NgSetPa
 import { User, UsersAppState } from '@skysmack/packages-identities';
 import { FormHelper } from '@skysmack/ng-ui';
 import { HttpClient } from '@angular/common/http';
-import { switchMap, map } from 'rxjs/operators';
-import { log } from '@skysmack/framework';
+import { switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'ss-portal-package-set-password',

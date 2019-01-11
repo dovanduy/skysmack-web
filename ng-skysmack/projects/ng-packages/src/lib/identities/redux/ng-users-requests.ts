@@ -1,14 +1,15 @@
-import { User } from '@skysmack/packages-identities';
 import { Injectable, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { ApiDomain } from '@skysmack/framework';
-import { NgRecordRequests } from '@skysmack/ng-redux';
-import { catchError } from 'rxjs/operators';
+import { ApiDomain, StrIndex, HttpErrorResponse } from '@skysmack/framework';
+import { catchError, map } from 'rxjs/operators';
 import { ReduxAction } from '@skysmack/redux';
-import { of } from 'rxjs';
+import { of, Observable } from 'rxjs';
+import { UsersRequests, User, GetUsersRolesSuccessPayload } from '@skysmack/packages-identities';
+import { NgRecordRequests } from '@skysmack/ng-redux';
+import { NgUsersActions } from './ng-users-actions';
 
 @Injectable({ providedIn: 'root' })
-export class NgUsersRequests extends NgRecordRequests<User, number> {
+export class NgUsersRequests extends NgRecordRequests<User, number> implements UsersRequests {
     constructor(
         protected http: HttpClient,
         @Inject('ApiDomain') protected apiDomain: ApiDomain
@@ -20,9 +21,30 @@ export class NgUsersRequests extends NgRecordRequests<User, number> {
         const url = `${this.apiDomain.domain}/${packagePath}/users/set-passwords/${id}`;
         return this.http.put(url, values, { observe: 'response' })
             .pipe(
-                catchError((error) => of(Object.assign({}, new ReduxAction({
+                catchError((error) => of(Object.assign({}, new ReduxAction<HttpErrorResponse>({
                     type: 'SET_PASSWORD_ERROR',
                     error: true
+                }))))
+            );
+    }
+
+    public getUsersRoles(packagePath: string, ids: number[]): Observable<ReduxAction<GetUsersRolesSuccessPayload> | ReduxAction<HttpErrorResponse>> {
+        let url = this.addAdditionalPaths(`${this.apiDomain.domain}/${packagePath}`);
+        url = this.appendValues(url + '/roles', ids);
+
+        return this.http.get<{}>(url, { observe: 'response' })
+            .pipe(
+                map(response => Object.assign({}, new ReduxAction<GetUsersRolesSuccessPayload>({
+                    type: this.prefix + NgUsersActions.GET_USERS_ROLES_SUCCESS,
+                    payload: {
+                        userRoles: response.body,
+                        packagePath
+                    }
+                }))),
+                catchError((error) => of(Object.assign({}, new ReduxAction<HttpErrorResponse>({
+                    type: this.prefix + NgUsersActions.GET_USERS_ROLES_ERROR,
+                    error: true,
+                    payload: error
                 }))))
             );
     }

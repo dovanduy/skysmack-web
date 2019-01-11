@@ -1,12 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { EntityComponentPageTitle, RecordIndexComponent, } from '@skysmack/portal-ui';
 import { Router, ActivatedRoute } from '@angular/router';
-import { NgUsersActions } from '@skysmack/ng-packages';
-import { NgSkysmackStore } from '@skysmack/ng-packages';
-import { NgUsersStore } from '@skysmack/ng-packages';
+import { EntityComponentPageTitle, RecordIndexComponent, } from '@skysmack/portal-ui';
+import { NgUsersActions, NgUsersStore, NgSkysmackStore } from '@skysmack/ng-packages';
+import { EntityAction } from '@skysmack/ng-ui';
 import { User, UsersAppState } from '@skysmack/packages-identities';
 import { NgUsersMenu } from './../../ng-users-menu';
-import { EntityAction } from '@skysmack/ng-ui';
 
 
 @Component({
