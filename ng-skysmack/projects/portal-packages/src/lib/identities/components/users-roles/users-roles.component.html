@@ -25,8 +25,8 @@
             <ng-container *ngIf="roles.length > 0; else noAvailableRoles">
                 <ng-container *ngFor="let role of roles">
                     {{ role.object.name }}
-                    <button mat-raised-button color="primary" (click)="addRole(role)">{{ 'USERS.ROLES.ADD' | translate
-                        }}</button>
+                    <!-- <button mat-raised-button color="primary" (click)="addRole(role)">{{ 'USERS.ROLES.ADD' | translate
+                        }}</button> -->
                 </ng-container>
             </ng-container>
 
