@@ -5,7 +5,6 @@ import { NgUsersActions, NgSkysmackStore, NgUsersStore, NgUsersRequests, NgSetPa
 import { User, UsersAppState } from '@skysmack/packages-identities';
 import { FormHelper } from '@skysmack/ng-ui';
 import { HttpClient } from '@angular/common/http';
-import { switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'ss-portal-package-set-password',
@@ -27,15 +26,14 @@ export class SetPasswordComponent extends FormBaseComponent<UsersAppState, User,
   ) { super(router, activatedRoute, editorNavService, actions, redux, fieldsConfig); }
 
   ngOnInit() {
+    super.ngOnInit();
     this.editorNavService.showEditorNav();
     this.fields = this.getFields();
   }
 
   public onSetPasswordSubmit(fh: FormHelper) {
     fh.formValid(() => {
-      this.subscriptionHandler.register(this.activatedRoute.params.pipe(
-        switchMap(params => this.requests.setPassword(fh.form.getRawValue(), this.router.url.split('/')[1], params['id']))
-      ).subscribe(() => this.editorNavService.hideEditorNav()));
+      this.requests.setPassword(fh.form.getRawValue(), this.packagePath, this.entityId).subscribe(() => this.editorNavService.hideEditorNav());
     });
   }
 }

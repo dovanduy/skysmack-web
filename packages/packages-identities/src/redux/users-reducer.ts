@@ -16,7 +16,7 @@ export class UsersState implements RecordState<User, number> {
     public localRecords: StrIndex<StrIndex<LocalObject<User, number>>> = {};
     public availableFields: StrIndex<StrIndex<LocalObject<FieldValueProviderViewModel, string>>> = {};
     public fields: StrIndex<StrIndex<LocalObject<FieldSchemaViewModel, string>>> = {};
-    public userRoles: StrIndex<StrIndex<number[]>> = {};
+    public usersRoles: StrIndex<StrIndex<string[]>> = {};
 }
 
 export function usersReducer(state = new UsersState(), action: ReduxAction, prefix: string = 'USERS_'): UsersState {
@@ -24,7 +24,7 @@ export function usersReducer(state = new UsersState(), action: ReduxAction, pref
         case prefix + UsersActions.GET_USERS_ROLES_SUCCESS: {
             const newState = { ...state };
             const castedAction = action as ReduxAction<GetUsersRolesSuccessPayload>;
-            newState.userRoles[castedAction.payload.packagePath] = castedAction.payload.userRoles;
+            newState.usersRoles[castedAction.payload.packagePath] = castedAction.payload.userRoles;
             return newState;
         }
         case prefix + UsersActions.GET_USERS_ROLES_ERROR: {

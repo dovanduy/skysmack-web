@@ -75,7 +75,8 @@
             "ADD_ROLE": "Add a role to {{ object.email }}",
             "OBJECT_PRIOORITY": "{{ role.object.name }} - priority",
             "ADD": "Add",
-            "ROLES_APPLIED": "All roles have been applied, or no roles exists."
+            "ROLES_APPLIED": "All roles have been applied, or no roles exists.",
+            "NO_ROLES_APPLIED": "This user has no roles."
         },
         "SET_PASSWORD": {
             "PASSWORD_FOR": "Set password for {{ object.email }}"

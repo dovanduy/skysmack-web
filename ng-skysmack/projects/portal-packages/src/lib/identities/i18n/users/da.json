@@ -75,7 +75,8 @@
             "ADD_ROLE": "Tilføj rolle til {{ object.email }}",
             "OBJECT_PRIOORITY": "{{ role.object.name }} - prioritet",
             "ADD": "Tilføj",
-            "ROLES_APPLIED": "Alle roller er blevet anvendt, ellers eksisterer der ikke nogen."
+            "ROLES_APPLIED": "Alle roller er blevet anvendt, ellers eksisterer der ikke nogen.",
+            "NO_ROLES_APPLIED": "Denne bruger har ingen roller."
         },
         "SET_PASSWORD": {
             "PASSWORD_FOR": "Sæt adgangskoden til {{ object.email }}"
