@@ -17,6 +17,7 @@ import { applicationStartup } from './application-startup';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from './../../environments/environment';
+import { NgSkysmackRequests } from '@skysmack/ng-packages';
 
 @NgModule({
   declarations: [
@@ -83,7 +84,9 @@ export class StartModule {
     public ngRedux: NgRedux<any>,
     public ngReduxRouter: NgReduxRouter,
     public reduxOfflineConfiguration: ReduxOfflineConfiguration,
+    // TODO: REMOVE WHEN EPICS REGISTRATION BUG IS FIXED
+    public requests: NgSkysmackRequests
   ) {
-    configureRedux(ngRedux, ngReduxRouter, reduxOfflineConfiguration);
+    configureRedux(ngRedux, ngReduxRouter, reduxOfflineConfiguration, requests);
   }
 }

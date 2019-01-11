@@ -2,14 +2,16 @@ import { NgReduxRouter } from '@angular-redux/router';
 import { NgRedux } from '@angular-redux/store';
 import { createOffline } from '@redux-offline/redux-offline';
 import { applyMiddleware, compose, createStore, DeepPartial, Store, combineReducers, AnyAction } from 'redux';
-import { createEpicMiddleware, EpicMiddleware } from 'redux-observable';
+import { createEpicMiddleware, EpicMiddleware, ofType } from 'redux-observable';
 import { ReduxOfflineConfiguration } from './redux-offline.configuration';
 import { ReducerRegistry, epic$ } from '@skysmack/redux';
 import { portalReducer } from './portal-reducer';
 import { hydratedReducer } from './hydrated-reducer';
 import { Reducer } from 'redux';
+import { switchMap } from 'rxjs/operators';
+import { NgSkysmackRequests } from '@skysmack/ng-packages';
 
-export const configureRedux = (ngRedux: NgRedux<any>, ngReduxRouter: NgReduxRouter, reduxOfflineConfiguration: ReduxOfflineConfiguration) => {
+export const configureRedux = (ngRedux: NgRedux<any>, ngReduxRouter: NgReduxRouter, reduxOfflineConfiguration: ReduxOfflineConfiguration, requests: NgSkysmackRequests) => {
     const initialState: DeepPartial<any> = {};
     const offlineEnhancer = createOffline(reduxOfflineConfiguration);
     const epicMiddleware: EpicMiddleware<AnyAction> = createEpicMiddleware();
@@ -48,7 +50,14 @@ export const configureRedux = (ngRedux: NgRedux<any>, ngReduxRouter: NgReduxRout
 
     ngRedux.provideStore(store);
 
-    epic$.subscribe(rootEpic => epicMiddleware.run(rootEpic));
+    // TODO: THIS NEEDS TO RUN ALL EPICS - ALSO THE LAZY LOADED ONES
+    epicMiddleware.run((action$) => {
+        return action$.pipe(
+            ofType('GET_SKYSMACK'),
+            switchMap(() => requests.get()));
+    });
+    // Our current way of registering all epics - eager and lazy loaded. This is what causes the bug.
+    // epic$.subscribe(rootEpic => epicMiddleware.run(rootEpic));
 
     // Enable syncing of Angular router state with our Redux store.
     if (ngReduxRouter) {
