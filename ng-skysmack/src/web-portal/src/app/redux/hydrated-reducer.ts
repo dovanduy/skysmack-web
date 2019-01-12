@@ -8,7 +8,7 @@ export const HYDRATED_INITIAL_STATE: HydratedState = {
 
 export const TOOGLE_HYDRATED = 'TOOGLE_HYDRATED';
 
-export function hydratedReducer(state: HydratedState = HYDRATED_INITIAL_STATE, action: any) {
+export function hydratedReducer(state: HydratedState = HYDRATED_INITIAL_STATE, action: any): HydratedState {
     let newState: HydratedState = HYDRATED_INITIAL_STATE;
     switch (action.type) {
 

@@ -1,13 +1,12 @@
 import { NgReduxRouter } from '@angular-redux/router';
 import { NgRedux } from '@angular-redux/store';
 import { createOffline } from '@redux-offline/redux-offline';
-import { applyMiddleware, compose, createStore, DeepPartial, Store, combineReducers, AnyAction } from 'redux';
+import { applyMiddleware, compose, createStore, DeepPartial, Store, combineReducers, AnyAction, Reducer } from 'redux';
 import { createEpicMiddleware, EpicMiddleware } from 'redux-observable';
 import { ReduxOfflineConfiguration } from './redux-offline.configuration';
 import { ReducerRegistry, epic$ } from '@skysmack/redux';
 import { portalReducer } from './portal-reducer';
 import { hydratedReducer } from './hydrated-reducer';
-import { Reducer } from 'redux';
 
 export const configureRedux = (ngRedux: NgRedux<any>, ngReduxRouter: NgReduxRouter, reduxOfflineConfiguration: ReduxOfflineConfiguration) => {
     const initialState: DeepPartial<any> = {};
@@ -17,7 +16,7 @@ export const configureRedux = (ngRedux: NgRedux<any>, ngReduxRouter: NgReduxRout
     const composeEnhancers = (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
     // Preserve initial state for not-yet-loaded reducers
-    const combine = (reducers: Reducer<{}, AnyAction>) => {
+    const combine = (reducers: Reducer<{}, AnyAction>): Reducer<{}, AnyAction> => {
         const reducerNames = Object.keys(reducers);
         Object.keys(initialState).forEach(item => {
             if (reducerNames.indexOf(item) === -1) {
@@ -48,7 +47,9 @@ export const configureRedux = (ngRedux: NgRedux<any>, ngReduxRouter: NgReduxRout
 
     ngRedux.provideStore(store);
 
-    epic$.subscribe(rootEpic => epicMiddleware.run(rootEpic));
+    epic$.subscribe(rootEpic => {
+        epicMiddleware.run(rootEpic);
+    });
 
     // Enable syncing of Angular router state with our Redux store.
     if (ngReduxRouter) {
