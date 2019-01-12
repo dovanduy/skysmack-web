@@ -1,5 +1,6 @@
 import { Skysmack } from './../models/skysmack';
 import { AppState } from '@skysmack/redux';
+import { SkysmackActions } from './skysmack-actions';
 
 export class SkysmackAppState extends AppState {
     public skysmack: SkysmackState;
@@ -20,8 +21,11 @@ export function skysmackReducer(state: SkysmackState = SKYSMACK_STATE, action: a
     let newState = Object.assign({}, state);
 
     switch (action.type) {
-        case 'GET_SKYSMACK_SUCCESS':
+        case SkysmackActions.GET_SKYSMACK_SUCCESS:
             newState.skysmack = action.payload;
+            newState.tenantLoaded = true;
+            return newState;
+        case SkysmackActions.GET_SKYSMACK_FAILURE:
             newState.tenantLoaded = true;
             return newState;
         default:
