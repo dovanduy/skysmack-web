@@ -1,13 +1,9 @@
 import { ofType, ActionsObservable } from 'redux-observable';
 import { switchMap } from 'rxjs/operators';
 import { Record } from '@skysmack/framework';
-import { ReduxAction } from './../action-types/redux-action';
-import { RecordEpicsBase } from './record-epics-base';
-import { DocumentRecordRequests } from './../requests/document-record-requests';
-import { PackagePathPayload } from './../payloads/package-path-payload';
-import { DocumentRecordActionsBase } from '../actions';
 import { Observable } from 'rxjs';
-import { GetFieldsSuccessPayload } from '../payloads/get-fields-succes-payload';
+import { RecordEpicsBase } from './record-epics-base';
+import { DocumentRecordRequests, PackagePathPayload, ReduxAction, GetFieldsSuccessPayload, DocumentRecordActionsBase } from '@skysmack/redux';
 
 export abstract class DocumentRecordEpicsBase<TRecord extends Record<TKey>, TKey> extends RecordEpicsBase<TRecord, TKey> {
     constructor(
@@ -37,4 +33,3 @@ export abstract class DocumentRecordEpicsBase<TRecord extends Record<TKey>, TKey
         switchMap(action => this.requests.getAvailableFields(action))
     )
 }
-

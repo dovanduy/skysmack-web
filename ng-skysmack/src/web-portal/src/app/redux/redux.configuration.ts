@@ -2,16 +2,50 @@ import { NgReduxRouter } from '@angular-redux/router';
 import { NgRedux } from '@angular-redux/store';
 import { createOffline } from '@redux-offline/redux-offline';
 import { applyMiddleware, compose, createStore, DeepPartial, Store, combineReducers, AnyAction } from 'redux';
-import { createEpicMiddleware, EpicMiddleware, ofType } from 'redux-observable';
+import { createEpicMiddleware, EpicMiddleware, ofType, combineEpics, Epic } from 'redux-observable';
 import { ReduxOfflineConfiguration } from './redux-offline.configuration';
-import { ReducerRegistry, epic$ } from '@skysmack/redux';
+import { ReducerRegistry } from '@skysmack/redux';
 import { portalReducer } from './portal-reducer';
 import { hydratedReducer } from './hydrated-reducer';
 import { Reducer } from 'redux';
-import { switchMap } from 'rxjs/operators';
-import { NgSkysmackRequests } from '@skysmack/ng-packages';
+import { of, BehaviorSubject } from 'rxjs';
+import { switchMap, mergeMap, map } from 'rxjs/operators';
+import { log } from '@skysmack/framework';
+import { Injector, Injectable } from '@angular/core';
+import { SkysmackRequests, SkysmackActions } from '@skysmack/packages-skysmack-core';
+import { newEpics$ } from '@skysmack/ng-redux';
 
-export const configureRedux = (ngRedux: NgRedux<any>, ngReduxRouter: NgReduxRouter, reduxOfflineConfiguration: ReduxOfflineConfiguration, requests: NgSkysmackRequests) => {
+
+
+export const epic$: BehaviorSubject<Epic<AnyAction>> = new BehaviorSubject(combineEpics((action$) => {
+    return action$.pipe(
+        ofType('INIT'),
+        map(() => ({ type: 'INIT_SUCCESS' })));
+}));
+
+export class SkysmackEpics {
+    public epics: Epic[];
+    protected prefix = 'SKYSMACK_';
+
+    constructor(
+        protected requests: SkysmackRequests
+    ) {
+        this.epics = [
+            this.get
+        ];
+    }
+
+    public get = (action$) => {
+        return action$.pipe(
+            ofType(SkysmackActions.GET_SKYSMACK),
+            switchMap(() => this.requests.get()),
+        );
+    }
+}
+
+
+
+export const configureRedux = (ngRedux: NgRedux<any>, ngReduxRouter: NgReduxRouter, reduxOfflineConfiguration: ReduxOfflineConfiguration, injector: Injector) => {
     const initialState: DeepPartial<any> = {};
     const offlineEnhancer = createOffline(reduxOfflineConfiguration);
     const epicMiddleware: EpicMiddleware<AnyAction> = createEpicMiddleware();
@@ -50,14 +84,18 @@ export const configureRedux = (ngRedux: NgRedux<any>, ngReduxRouter: NgReduxRout
 
     ngRedux.provideStore(store);
 
-    // TODO: THIS NEEDS TO RUN ALL EPICS - ALSO THE LAZY LOADED ONES
-    epicMiddleware.run((action$) => {
-        return action$.pipe(
-            ofType('GET_SKYSMACK'),
-            switchMap(() => requests.get()));
+    epicMiddleware.run((action$, state$) => epic$.pipe(
+        mergeMap(epic => epic(action$, state$, {}))
+    ));
+
+    // TODO: Register elsewhere + remember to remove doc epics from redux package.
+    newEpics$.next(new SkysmackEpics(injector.get('SkysmackRequests')));
+
+    newEpics$.subscribe(x => {
+        if (x.epics) {
+            x.epics.forEach(epic => epic$.next(epic));
+        }
     });
-    // Our current way of registering all epics - eager and lazy loaded. This is what causes the bug.
-    // epic$.subscribe(rootEpic => epicMiddleware.run(rootEpic));
 
     // Enable syncing of Angular router state with our Redux store.
     if (ngReduxRouter) {

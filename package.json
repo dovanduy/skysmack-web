@@ -5,7 +5,6 @@
     "@types/node": "^10.12.18",
     "lerna": "^3.8.0",
     "typescript": "^3.2.2",
-    "ng-packagr": "^4.4.5",
     "@skysmack/framework": "*",
     "@skysmack/redux": "*",
     "@skysmack/packages-skysmack-core": "*",

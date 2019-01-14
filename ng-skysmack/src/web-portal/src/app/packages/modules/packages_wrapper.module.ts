@@ -6,4 +6,4 @@ import { PackagesModule } from '@skysmack/portal-packages';
     PackagesModule
   ]
 })
-export class PackagesWrapperModule {}
+export class PackagesWrapperModule { }

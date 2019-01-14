@@ -4,7 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgRedux, NgReduxModule } from '@angular-redux/store';
 
 import { RouterModule } from '@angular/router';
-import { NgModule } from '@angular/core';
+import { NgModule, Injector } from '@angular/core';
 
 import { SkysmackModule } from '@skysmack/portal-packages';
 import { FrontPageComponent } from './components/front-page/front-page.component';
@@ -17,7 +17,6 @@ import { applicationStartup } from './application-startup';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from './../../environments/environment';
-import { NgSkysmackRequests } from '@skysmack/ng-packages';
 
 @NgModule({
   declarations: [
@@ -84,9 +83,8 @@ export class StartModule {
     public ngRedux: NgRedux<any>,
     public ngReduxRouter: NgReduxRouter,
     public reduxOfflineConfiguration: ReduxOfflineConfiguration,
-    // TODO: REMOVE WHEN EPICS REGISTRATION BUG IS FIXED
-    public requests: NgSkysmackRequests
+    public injector: Injector
   ) {
-    configureRedux(ngRedux, ngReduxRouter, reduxOfflineConfiguration, requests);
+    configureRedux(ngRedux, ngReduxRouter, reduxOfflineConfiguration, injector);
   }
 }
