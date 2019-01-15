@@ -1,6 +1,6 @@
-import { StrIndex } from '@skysmack/framework';
+import { NumIndex } from '@skysmack/framework';
 
 export class GetUsersRolesSuccessPayload {
-    userRoles: StrIndex<string[]>;
+    userRoles: NumIndex<string[]>;
     packagePath: string;
 }

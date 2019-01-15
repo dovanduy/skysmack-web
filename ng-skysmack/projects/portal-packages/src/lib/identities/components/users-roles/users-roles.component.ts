@@ -7,8 +7,8 @@ import { User, Role } from '@skysmack/packages-identities';
 import { combineLatest, Observable } from 'rxjs';
 import { EditorNavService } from '@skysmack/portal-ui';
 import { NgRolesStore, NgRolesActions } from '@skysmack/ng-packages';
-import { LocalObject, PagedQuery } from '@skysmack/framework';
-import { map } from 'rxjs/operators';
+import { LocalObject, PagedQuery, RSQLFilterBuilder } from '@skysmack/framework';
+import { map, take } from 'rxjs/operators';
 
 @Component({
   selector: 'ss-portal-package-users-roles',
@@ -42,26 +42,54 @@ export class UsersRolesComponent extends BaseComponent<User, number> implements 
     this.rolesActions.getPaged(this.packagePath, new PagedQuery({ pageNumber: 0, pageSize: 0 }));
     this.userRoles$ = this.store.getUserRoles(this.packagePath, this.entityId);
 
-    this.roles$ = combineLatest(
-      this.userRoles$,
-      this.rolesStore.get(this.packagePath)
-    ).pipe(
-      map(values => {
-        // Only show roles the user isn't in.
-        const userRoles = values[0];
-        return values[1].filter(role => {
-          if (!userRoles.find(userRole => userRole === role.object.name)) {
-            return role;
-          }
-        });
+    this.userRoles$.pipe(
+      map(userRoles => {
+        console.log('get roles ffs');
+        const filter = new RSQLFilterBuilder();
+        filter.column('name').in(userRoles);
+        const pagedQuery = new PagedQuery();
+        pagedQuery.rsqlFilter = filter;
+        this.rolesActions.getPaged(this.packagePath, pagedQuery);
       })
-    );
+    ).subscribe();
+
+    // this.roles$ = combineLatest(
+    //   this.userRoles$,
+    //   this.rolesStore.get(this.packagePath)
+    // ).pipe(
+    //   map(values => {
+    //     // Only show roles the user isn't in.
+    //     const userRoles = values[0];
+    //     return values[1].filter(role => {
+    //       if (!userRoles.find(userRole => userRole === role.object.name)) {
+    //         return role;
+    //       }
+    //     });
+    //   })
+    // );
 
     this.editorNav.showEditorNav();
   }
 
 
-  public addRole(): void {
+  public addRole(role: LocalObject<Role, number>): void {
+
+    this.userRoles$.pipe(
+      map(userRoles => {
+        const inRole = userRoles.find(userRole => userRole === role.object.name);
+        console.log(userRoles);
+        if (inRole) {
+          this.message = 'User is already in role.';
+        } else {
+          const dic = {};
+          dic[this.entityId] = [role.object.name];
+          this.actions.addUsersRoles(this.packagePath, dic);
+        }
+      }),
+      take(1),
+    ).subscribe();
+
+
     // if (this.userRoles.filter(pr => pr.object.roleId === role.object.id).length === 0) {
     //   this.userRolesRedux.addUserRole(toLocalObject({
     //     userId: this.selectedUser.object.id,

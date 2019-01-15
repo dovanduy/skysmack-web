@@ -1,5 +1,5 @@
-import { LocalPageTypes, StrIndex, LocalObject, FieldSchemaViewModel, FieldValueProviderViewModel } from '@skysmack/framework';
-import { AppState, ReduxAction, RecordState, recordReducersBase } from '@skysmack/redux';
+import { LocalPageTypes, StrIndex, LocalObject, FieldSchemaViewModel, FieldValueProviderViewModel, NumIndex, HttpResponse } from '@skysmack/framework';
+import { AppState, ReduxAction, RecordState, recordReducersBase, OfflineMeta, ReduxOfflineMeta } from '@skysmack/redux';
 import { User } from './../models/user';
 import { UsersActions } from './users-actions';
 import { GetUsersRolesSuccessPayload } from '../payloads';
@@ -16,21 +16,50 @@ export class UsersState implements RecordState<User, number> {
     public localRecords: StrIndex<StrIndex<LocalObject<User, number>>> = {};
     public availableFields: StrIndex<StrIndex<LocalObject<FieldValueProviderViewModel, string>>> = {};
     public fields: StrIndex<StrIndex<LocalObject<FieldSchemaViewModel, string>>> = {};
-    public usersRoles: StrIndex<StrIndex<string[]>> = {};
+    public usersRoles: StrIndex<NumIndex<string[]>> = {};
 }
 
 export function usersReducer(state = new UsersState(), action: ReduxAction, prefix: string = 'USERS_'): UsersState {
+    state = Object.freeze(state);
+    const newState = { ...state };
+
     switch (action.type) {
         case prefix + UsersActions.GET_USERS_ROLES_SUCCESS: {
-            const newState = { ...state };
             const castedAction = action as ReduxAction<GetUsersRolesSuccessPayload>;
-            newState.usersRoles[castedAction.payload.packagePath] = castedAction.payload.userRoles;
+            if (!newState.usersRoles[castedAction.payload.packagePath]) {
+                newState.usersRoles[castedAction.payload.packagePath] = castedAction.payload.userRoles;
+            } else {
+                Object.keys(castedAction.payload.userRoles).forEach(roleId => {
+                    newState.usersRoles[castedAction.payload.packagePath][roleId] = castedAction.payload.userRoles[roleId];
+                });
+            }
+
             return newState;
         }
         case prefix + UsersActions.GET_USERS_ROLES_ERROR: {
             console.log('Get users roles error: ', action.payload);
             return state;
         }
+
+        case prefix + UsersActions.ADD_USERS_ROLES: {
+            const castedAction = action as ReduxAction<unknown, ReduxOfflineMeta<NumIndex<string[]>, HttpResponse, NumIndex<string[]>>>;
+            const commitMeta = castedAction.meta.offline.commit.meta;
+            Object.keys(commitMeta.value).forEach(roleId => {
+                newState.usersRoles[commitMeta.stateKey][roleId].push(commitMeta.value[roleId]);
+            });
+
+            return newState;
+        }
+        // case prefix + UsersActions.ADD_USERS_ROLES_SUCCESS: {
+        //     const castedAction = action as ReduxAction<GetUsersRolesSuccessPayload>;
+        //     newState.usersRoles[castedAction.payload.packagePath] = castedAction.payload.userRoles;
+        //     return newState;
+        // }
+        case prefix + UsersActions.ADD_USERS_ROLES_ERROR: {
+            console.log('Get users roles error: ', action.payload);
+            return state;
+        }
+
         default:
             return {
                 ...state,

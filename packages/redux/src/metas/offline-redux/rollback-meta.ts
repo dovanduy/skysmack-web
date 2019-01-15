@@ -1,8 +1,6 @@
-import { Record, LocalObject } from '@skysmack/framework';
-
-export class RollbackMeta<TRecord extends Record<TKey>, TKey> {
+export class RollbackMeta<TValue = any> {
     constructor(
         public stateKey: string,
-        public records: LocalObject<TRecord, TKey>[]
+        public value: TValue
     ) { }
 }

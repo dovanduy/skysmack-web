@@ -1,4 +1,4 @@
-import { StrIndex, HttpErrorResponse } from '@skysmack/framework';
+import { HttpErrorResponse } from '@skysmack/framework';
 import { ReduxAction, RecordRequests } from '@skysmack/redux';
 import { Observable } from 'rxjs';
 import { User } from './user';
