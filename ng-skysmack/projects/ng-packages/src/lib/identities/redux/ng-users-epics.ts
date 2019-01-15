@@ -7,7 +7,9 @@ import { switchMap } from 'rxjs/operators';
 import { HttpErrorResponse } from '@skysmack/framework';
 import { NgUsersRequests } from './ng-users-requests';
 import { NgUsersActions } from './ng-users-actions';
+import { Injectable } from '@angular/core';
 
+@Injectable({ providedIn: 'root' })
 export class NgUsersEpics extends RecordEpicsBase<User, number> {
     constructor(protected requests: NgUsersRequests) {
         super(requests, 'USERS_');
