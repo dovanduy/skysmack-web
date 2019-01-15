@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 
 import { ReducerRegistry } from '@skysmack/redux';
-import { LodgingsEpics, lodgingsReducer, lodgingTypesReducer, LodgingTypesEpics } from '@skysmack/packages-lodgings';
-import { NgLodgingsRequests } from './redux/ng-lodgings-requests';
-import { NgLodgingTypesRequests } from './redux/ng-lodging-types-requests';
+import { lodgingsReducer, lodgingTypesReducer } from '@skysmack/packages-lodgings';
 import { NgLodgingsActions } from './redux/ng-lodgings-actions';
 import { NgLodgingsStore } from './redux/ng-lodgings-store';
+import { registerEpics } from '@skysmack/ng-redux';
+import { NgLodgingsEpics } from './redux/ng-lodgings-epics';
+import { NgLodgingTypesEpics } from './redux/ng-lodging-types-epics';
 
 @NgModule({
   imports: [],
@@ -18,11 +19,13 @@ import { NgLodgingsStore } from './redux/ng-lodgings-store';
   ],
 })
 export class NgLodgingsModule {
-  constructor(lodgingsRequests: NgLodgingsRequests, lodgingTypesRequests: NgLodgingTypesRequests) {
+  constructor(
+    lodgingsEpics: NgLodgingsEpics,
+    lodgingTypesEpics: NgLodgingTypesEpics
+  ) {
     ReducerRegistry.Instance.register('lodgings', lodgingsReducer);
-    // registerLazyEpics(new LodgingsEpics(lodgingsRequests).epics);
-
     ReducerRegistry.Instance.register('lodgingTypes', lodgingTypesReducer);
-    // registerLazyEpics(new LodgingTypesEpics(lodgingTypesRequests).epics);
+    registerEpics(lodgingsEpics);
+    registerEpics(lodgingTypesEpics);
   }
 }

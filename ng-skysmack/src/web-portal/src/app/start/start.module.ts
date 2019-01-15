@@ -82,9 +82,8 @@ export class StartModule {
   constructor(
     public ngRedux: NgRedux<any>,
     public ngReduxRouter: NgReduxRouter,
-    public reduxOfflineConfiguration: ReduxOfflineConfiguration,
-    public injector: Injector
+    public reduxOfflineConfiguration: ReduxOfflineConfiguration
   ) {
-    configureRedux(ngRedux, ngReduxRouter, reduxOfflineConfiguration, injector);
+    configureRedux(ngRedux, ngReduxRouter, reduxOfflineConfiguration);
   }
 }

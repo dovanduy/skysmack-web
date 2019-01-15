@@ -1,16 +1,11 @@
 import { NgModule } from '@angular/core';
 
 import { ReducerRegistry } from '@skysmack/redux';
-import { PersonsEpics, personsReducer } from '@skysmack/packages-persons';
-import { NgPersonsRequests } from './redux/ng-persons-requests';
+import { personsReducer } from '@skysmack/packages-persons';
 import { NgPersonsActions } from './redux/ng-persons-actions';
 import { NgPersonsStore } from './redux/ng-persons-store';
-import { combineEpics, ofType } from 'redux-observable';
-import { switchMap } from 'rxjs/operators';
-import { of } from 'rxjs';
-import { PagedQuery } from '@skysmack/framework';
 import { NgPersonsEpics } from './redux/ng-persons-epics';
-import { newEpics$ } from '@skysmack/ng-redux';
+import { registerEpics } from '@skysmack/ng-redux';
 
 @NgModule({
   imports: [],
@@ -25,6 +20,6 @@ import { newEpics$ } from '@skysmack/ng-redux';
 export class NgPersonsModule {
   constructor(epics: NgPersonsEpics) {
     ReducerRegistry.Instance.register('persons', personsReducer);
-    newEpics$.next(epics);
+    registerEpics(epics);
   }
 }

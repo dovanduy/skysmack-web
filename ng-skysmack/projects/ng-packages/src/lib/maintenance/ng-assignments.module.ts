@@ -1,8 +1,11 @@
 import { NgModule } from '@angular/core';
 import { ReducerRegistry } from '@skysmack/redux';
-import { AssignmentsEpics, assignmentReducer, assignmentTypesReducer, AssignmentTypesEpics } from '@skysmack/packages-maintenance';
-import { NgAssignmentsRequests } from './redux/ng-assignments-requests';
-import { NgAssignmentTypesRequests } from './redux/ng-assignment-types-requests';
+import { assignmentReducer, assignmentTypesReducer, maintenanceStateReducer, recurringAssignmentsReducer } from '@skysmack/packages-maintenance';
+import { NgAssignmentsEpics } from './redux/ng-assignments-epics';
+import { NgAssignmentTypesEpics } from './redux/ng-assignment-types-epics';
+import { NgMaintenanceStatesEpics } from './redux/ng-maintenance-states-epics';
+import { NgRecurringAssignmentsEpics } from './redux/ng-recurring-assignments-epics';
+import { registerEpics } from '@skysmack/ng-redux';
 
 @NgModule({
   imports: [],
@@ -10,11 +13,19 @@ import { NgAssignmentTypesRequests } from './redux/ng-assignment-types-requests'
   providers: [],
 })
 export class NgAssignmentsModule {
-  constructor(assignmentsRequests: NgAssignmentsRequests, assignmentTypesRequests: NgAssignmentTypesRequests) {
+  constructor(
+    assignmentsEpics: NgAssignmentsEpics,
+    assignmentTypesEpics: NgAssignmentTypesEpics,
+    maintenanceStatesEpics: NgMaintenanceStatesEpics,
+    recurringAssignmentsEpics: NgRecurringAssignmentsEpics
+  ) {
     ReducerRegistry.Instance.register('assignments', assignmentReducer);
-    // registerLazyEpics(new AssignmentsEpics(assignmentsRequests).epics);
-
     ReducerRegistry.Instance.register('assignmentTypes', assignmentTypesReducer);
-    // registerLazyEpics(new AssignmentTypesEpics(assignmentTypesRequests).epics);
+    ReducerRegistry.Instance.register('maintenanceStates', maintenanceStateReducer);
+    ReducerRegistry.Instance.register('recurringAssignments', recurringAssignmentsReducer);
+    registerEpics(assignmentsEpics);
+    registerEpics(assignmentTypesEpics);
+    registerEpics(maintenanceStatesEpics);
+    registerEpics(recurringAssignmentsEpics);
   }
 }
