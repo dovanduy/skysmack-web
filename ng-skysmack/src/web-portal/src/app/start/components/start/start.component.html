@@ -1,7 +1,7 @@
 <ng-container *ngIf="skysmackLoaded$ | async as skysmackLoaded; else loading">
     <ng-container *ngIf="skysmackLoaded; else loading">
         <ng-container *ngIf="skysmack$ | async as skysmack; else tenantNotFound">
-            <ng-container *ngIf="skysmack != null && skysmack.name.length > 0; else tenantNotFound">
+            <ng-container *ngIf="skysmack && skysmack.name && skysmack.name.length > 0; else tenantNotFound">
                 <ss-navbar class="mat-elevation-z6"></ss-navbar>
                 <ng-container *ngIf="!loadingRouteConfig; else loading">
                     <router-outlet></router-outlet>

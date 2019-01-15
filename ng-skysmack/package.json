@@ -72,14 +72,14 @@
     "karma-jasmine": "~2.0.1",
     "karma-jasmine-html-reporter": "^1.4.0",
     "lite-server": "^2.4.0",
-    "ng-packagr": "^4.4.5",
+    "ng-packagr": "^4.5.0",
     "normalize-scss": "^7.0.1",
     "npm-run-all": "^4.1.5",
     "protractor": "~5.4.2",
     "ts-node": "~7.0.1",
     "tsickle": ">=0.34.0",
     "tslib": "^1.9.3",
-    "tslint": "~5.12.0",
+    "tslint": "~5.12.1",
     "typescript": "~3.2.2",
     "wait-on": "^3.2.0"
   }

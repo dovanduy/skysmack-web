@@ -26,7 +26,7 @@ export class NgSkysmackRequests implements SkysmackRequests {
             }))),
             retry(this.retryTimes),
             catchError((error) => of(Object.assign({}, new ReduxAction<HttpErrorResponse>({
-                type: this.prefix + 'GET_FAILURE',
+                type: SkysmackActions.GET_SKYSMACK_FAILURE,
                 payload: error,
                 error: true
             }))))
