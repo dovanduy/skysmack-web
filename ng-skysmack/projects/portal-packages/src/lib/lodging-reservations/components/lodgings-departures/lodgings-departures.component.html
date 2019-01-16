@@ -1,0 +1,5 @@
+<ss-container [menuSidebar]="reservationSidebar">
+  <ss-data-table [entityActions]="entityActions" [title]="'Departures'" [entities$]="extendedReservations$"
+    [displayedColumns]="displayedColumns" [path]="path" [redux]="redux" (entityActionEvent)="actionEvent($event)">
+  </ss-data-table>
+</ss-container>

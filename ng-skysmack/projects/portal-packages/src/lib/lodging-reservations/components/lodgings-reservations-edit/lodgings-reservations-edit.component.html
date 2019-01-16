@@ -1,0 +1,6 @@
+<ng-container *ngIf="selectedEntity">
+  <ss-dynamic-form *ngIf="fields" [fields]="fields" [validation]="fieldsConfig.validation" [rules]="fieldsConfig.formRules"
+    [buttonText]="'Save changes'" (submitted)="onPackageUpdateSubmit($event)">
+    <h2 [translate]="'PERSONS.EDIT.EDIT'">{{ selectedEntity.object.displayName }}</h2>
+  </ss-dynamic-form>
+</ng-container>

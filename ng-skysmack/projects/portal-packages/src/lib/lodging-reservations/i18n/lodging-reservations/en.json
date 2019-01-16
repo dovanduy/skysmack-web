@@ -1,0 +1,66 @@
+{
+    "LODGINGS_RESERVATIONS": {
+        "FORM": {
+            "LABELS": {
+                "LODGINGTYPEID": "Lodging type",
+                "ALLOCATEDLODGINGID": "Allocated lodging",
+                "CHECKIN": "Check in",
+                "CHECKOUT": "Check out",
+                "PERSONS": "Persons"
+            },
+            "PLACEHOLDERS": {
+                "LODGINGTYPEID": "Choose lodging type",
+                "ALLOCATEDLODGINGID": "Choose allocated lodging",
+                "CHECKIN": "Choose check in date",
+                "CHECKOUT": "Choose check out date",
+                "PERSONS": "Choose number of persons"
+            },
+            "VALIDATION": {
+                "LODGINGTYPEID": {
+                    "REQUIRED": "Lodging type is required."
+                },
+                "ALLOCATEDLODGINGID": {
+                    "REQUIRED": "Allocated room is required."
+                },
+                "CHECKIN": {
+                    "REQUIRED": "Check in is required."
+                },
+                "CHECKOUT": {
+                    "REQUIRED": "Check out is required."
+                },
+                "PERSONS": {
+                    "REQUIRED": "Persons is required."
+                }
+            }
+        },
+        "CREATE": {
+            "CREATE": "Create"
+        },
+        "EDIT": {
+            "EDIT": "Edit"
+        },
+        "INDEX": {
+            "CREATE": "Create",
+            "EDIT": "Edit",
+            "DELETE": "Delete",
+            "FIELDS": "Fields",
+            "ITEM": "Item",
+            "MANAGE": "Manage",
+            "ACTIONS": "Actions",
+            "AVAILABILITY": "Availability",
+            "STAYS": "Stays",
+            "RESERVATIONS": "Reservations",
+            "ARRIVALS": "Arrivals",
+            "DEPARTURES": "Departures"
+        },
+        "RESERVATIONS": {
+            "AVAILABILITY": "Availability",
+            "STAYS": "Stays",
+            "RESERVATIONS": "Reservations",
+            "ARRIVALS": "Arrivals",
+            "DEPARTURES": "Departures",
+            "MANAGE": "Manage",
+            "ALL": "All"
+        }
+    }
+}

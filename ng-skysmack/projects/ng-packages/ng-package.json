@@ -1,5 +1,5 @@
 {
-  "$schema": "../../../node_modules/ng-packagr/ng-package.schema.json",
+  "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
   "dest": "../../dist/ng-packages",
   "lib": {
     "entryFile": "src/public_api.ts"
@@ -9,6 +9,7 @@
     "@skysmack/framework",
     "@skysmack/redux",
     "@skysmack/packages-identities",
+    "@skysmack/packages-lodging-reservations",
     "@skysmack/packages-lodgings",
     "@skysmack/packages-maintenance",
     "@skysmack/packages-oauth2",

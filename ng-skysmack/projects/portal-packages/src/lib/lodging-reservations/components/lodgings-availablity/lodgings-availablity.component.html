@@ -1,0 +1,3 @@
+<ss-container [menuSidebar]="menuSidebar">
+  <ss-calendar *ngIf="events$ | async as events" [events]="events" (currentDate)="requestPeriod($event)"></ss-calendar>
+</ss-container>

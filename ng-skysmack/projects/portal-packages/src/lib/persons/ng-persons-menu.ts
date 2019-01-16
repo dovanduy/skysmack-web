@@ -12,11 +12,11 @@ export class NgPersonsMenu extends SidebarMenu {
     public translationPrefix = 'PERSONS.INDEX.';
 
     constructor(
-        public redux: NgSkysmackStore,
+        public store: NgSkysmackStore,
         public router: Router,
         @Inject(MenuItemProvider.TOKEN) menuItemProviders: MenuItemProvider[],
     ) {
-        super(redux, router, menuItemProviders);
+        super(store, router, menuItemProviders);
         this.setPrimaryMenu();
         this.setSpeedDialMenu();
         this.runMenuItemProviders();
