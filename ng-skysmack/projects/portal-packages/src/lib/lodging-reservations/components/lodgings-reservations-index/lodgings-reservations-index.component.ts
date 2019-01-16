@@ -143,7 +143,7 @@ export class LodgingsReservationsIndexComponent extends RecordIndexComponent<Lod
   }
 
   public move(entity: LocalObject<ExtendedReservation, number>, _this: LodgingsArrivalsComponent) {
-    _this.redux.move(_this.packagePath, [new CheckIn(entity.object.id)]);
+    _this.redux.move(_this.packagePath, [new CheckIn({ reservationId: entity.object.id })]);
   }
   public undoMove(entity: LocalObject<ExtendedReservation, number>, _this: LodgingsArrivalsComponent) {
     _this.redux.undoMove(_this.packagePath, [entity.object.id]);
