@@ -24,7 +24,7 @@ export function usersReducer(state = new UsersState(), action: ReduxAction, pref
     const newState = { ...state };
 
     switch (action.type) {
-        case prefix + UsersActions.GET_USERS_ROLES_SUCCESS: {
+        case prefix + UsersActions.GET_ROLES_SUCCESS: {
             const castedAction = action as ReduxAction<GetUsersRolesSuccessPayload>;
             if (!newState.usersRoles[castedAction.payload.packagePath]) {
                 newState.usersRoles[castedAction.payload.packagePath] = castedAction.payload.userRoles;
@@ -36,12 +36,12 @@ export function usersReducer(state = new UsersState(), action: ReduxAction, pref
 
             return newState;
         }
-        case prefix + UsersActions.GET_USERS_ROLES_ERROR: {
+        case prefix + UsersActions.GET_ROLES_FAILURE: {
             console.log('Get users roles error: ', action.payload);
             return state;
         }
 
-        case prefix + UsersActions.ADD_USERS_ROLES: {
+        case prefix + UsersActions.ADD_ROLES: {
             const castedAction = action as ReduxAction<unknown, ReduxOfflineMeta<NumIndex<string[]>, HttpResponse, NumIndex<string[]>>>;
             const commitMeta = castedAction.meta.offline.commit.meta;
             Object.keys(commitMeta.value).forEach(roleId => {
@@ -51,15 +51,29 @@ export function usersReducer(state = new UsersState(), action: ReduxAction, pref
 
             return newState;
         }
-        // case prefix + UsersActions.ADD_USERS_ROLES_SUCCESS: {
-        //     const castedAction = action as ReduxAction<GetUsersRolesSuccessPayload>;
-        //     newState.usersRoles[castedAction.payload.packagePath] = castedAction.payload.userRoles;
-        //     return newState;
-        // }
-        case prefix + UsersActions.ADD_USERS_ROLES_ERROR: {
-            console.log('Get users roles error: ', action.payload);
+        case prefix + UsersActions.ADD_ROLES_FAILURE: {
+            console.log('Add users roles error: ', action.payload);
             return state;
         }
+
+        case prefix + UsersActions.REMOVE_ROLES: {
+            const castedAction = action as ReduxAction<unknown, ReduxOfflineMeta<NumIndex<string[]>, HttpResponse, NumIndex<string[]>>>;
+            const commitMeta = castedAction.meta.offline.commit.meta;
+
+            Object.keys(commitMeta.value).forEach(roleId => {
+                const currentUserRoles: string[] = newState.usersRoles[commitMeta.stateKey][roleId];
+                newState.usersRoles[commitMeta.stateKey][roleId] = currentUserRoles.filter(currentUserRole => {
+                    return !commitMeta.value[roleId].find(roleToRemove => roleToRemove === currentUserRole);
+                });
+            });
+
+            return newState;
+        }
+        case prefix + UsersActions.REMOVE_ROLES_FAILURE: {
+            console.log('Remove users roles error: ', action.payload);
+            return state;
+        }
+
 
         default:
             return {

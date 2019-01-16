@@ -20,7 +20,7 @@ export class NgUsersEpics extends RecordEpicsBase<User, number> {
 
     public getUsersRolesEpic = (action$: ActionsObservable<ReduxAction<GetUsersRolesPayload>>): Observable<ReduxAction<GetUsersRolesSuccessPayload> | ReduxAction<HttpErrorResponse>> => {
         return action$.pipe(
-            ofType(this.prefix + NgUsersActions.GET_USERS_ROLES),
+            ofType(this.prefix + NgUsersActions.GET_ROLES),
             switchMap((action: ReduxAction<GetUsersRolesPayload>) => this.requests.getUsersRoles(action.payload.packagePath, action.payload.ids))
         );
     }

@@ -6,7 +6,7 @@
             <ng-container *ngIf="userRoles.length > 0; else noUserRoles">
                 <ng-container *ngFor="let role of userRoles">
                     <div>
-                        {{ role }} - <button mat-raised-button color="primary" (click)="removeRole(role)">{{
+                        {{ role }} <button mat-raised-button color="primary" (click)="removeRole(role)">{{
                             'USERS.ROLES.REMOVE' | translate }}</button>
                     </div>
                 </ng-container>

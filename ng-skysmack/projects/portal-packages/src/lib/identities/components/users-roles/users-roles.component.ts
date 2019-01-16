@@ -7,7 +7,7 @@ import { User, Role } from '@skysmack/packages-identities';
 import { combineLatest, Observable } from 'rxjs';
 import { EditorNavService } from '@skysmack/portal-ui';
 import { NgRolesStore, NgRolesActions } from '@skysmack/ng-packages';
-import { LocalObject, PagedQuery, RSQLFilterBuilder } from '@skysmack/framework';
+import { LocalObject, PagedQuery } from '@skysmack/framework';
 import { map, take } from 'rxjs/operators';
 
 @Component({
@@ -40,27 +40,10 @@ export class UsersRolesComponent extends BaseComponent<User, number> implements 
     super.ngOnInit();
     this.actions.getUsersRoles(this.packagePath, [this.entityId]);
     // TODO: Only get roles based on returned userRoles.
-    this.rolesActions.getPaged(this.packagePath, new PagedQuery());
     this.userRoles$ = this.store.getUserRoles(this.packagePath, this.entityId);
-
-    this.roles$ = combineLatest(
-      this.userRoles$,
-      this.rolesStore.get(this.packagePath)
-    ).pipe(
-      map(values => {
-        // Only show roles the user isn't in.
-        const userRoles = values[0];
-        return values[1].filter(role => {
-          if (!userRoles.find(userRole => userRole === role.object.name)) {
-            return role;
-          }
-        });
-      })
-    );
-
+    this.getRoles();
     this.editorNav.showEditorNav();
   }
-
 
   public addRole(role: LocalObject<Role, number>): void {
     const dic = {};
@@ -68,7 +51,22 @@ export class UsersRolesComponent extends BaseComponent<User, number> implements 
     this.actions.addUsersRoles(this.packagePath, dic);
   }
 
-  public removeRole(role: LocalObject<Role, number>): void {
+  public removeRole(userRole: string): void {
+    const dic = {};
+    dic[this.entityId] = [userRole];
+    this.actions.removeUsersRoles(this.packagePath, dic);
+  }
 
+  private getRoles() {
+    this.rolesActions.getPaged(this.packagePath, new PagedQuery());
+    this.roles$ = combineLatest(this.userRoles$, this.rolesStore.get(this.packagePath)).pipe(map(values => {
+      // Only show roles the user isn't in.
+      const userRoles = values[0];
+      return values[1].filter(role => {
+        if (!userRoles.find(userRole => userRole === role.object.name)) {
+          return role;
+        }
+      });
+    }));
   }
 }

@@ -35,14 +35,14 @@ export class NgUsersRequests extends NgRecordRequests<User, number> implements U
         return this.http.get<{}>(url, { observe: 'response' })
             .pipe(
                 map(response => Object.assign({}, new ReduxAction<GetUsersRolesSuccessPayload>({
-                    type: this.prefix + NgUsersActions.GET_USERS_ROLES_SUCCESS,
+                    type: this.prefix + NgUsersActions.GET_ROLES_SUCCESS,
                     payload: {
                         userRoles: response.body,
                         packagePath
                     }
                 }))),
                 catchError((error) => of(Object.assign({}, new ReduxAction<HttpErrorResponse>({
-                    type: this.prefix + NgUsersActions.GET_USERS_ROLES_ERROR,
+                    type: this.prefix + NgUsersActions.GET_ROLES_FAILURE,
                     error: true,
                     payload: error
                 }))))
