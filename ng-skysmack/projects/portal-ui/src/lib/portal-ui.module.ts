@@ -155,8 +155,6 @@ import { IsAnonymousDirective } from './autentication/is-anonymous.directive';
 })
 export class PortalUiModule {
   constructor() {
-    // TODO: Put better place?
-    // EAGER LOADING!!!
     ReducerRegistry.Instance.register('ui', uiReducer);
     ReducerRegistry.Instance.register('settings', settingsReducer);
     ReducerRegistry.Instance.register('authentication', authenticationReducer);

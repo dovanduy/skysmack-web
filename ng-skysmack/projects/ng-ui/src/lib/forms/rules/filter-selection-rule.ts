@@ -61,13 +61,4 @@ export class FilterSelectionRule extends FormRule {
                 // Take the desired property from the data and return it.
                 .map(data => getProperty(data, this.selectionFieldPropSelector))[0];
         }
-        // else {
-        // TODO: This part is not confirmed to work. Need test data. Also see TODO in SelectField class.
-        // return Object.keys(optionsData).map(key => {
-        //     if (optionsData[key] === selectedValue) {
-        //         return optionsData[key];
-        //     }
-        // }).filter(x => x)[0];
-        // }
     }
-}

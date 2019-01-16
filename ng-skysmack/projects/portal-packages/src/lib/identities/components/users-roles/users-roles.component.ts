@@ -39,7 +39,6 @@ export class UsersRolesComponent extends BaseComponent<User, number> implements 
   ngOnInit() {
     super.ngOnInit();
     this.actions.getUsersRoles(this.packagePath, [this.entityId]);
-    // TODO: Only get roles based on returned userRoles.
     this.userRoles$ = this.store.getUserRoles(this.packagePath, this.entityId);
     this.getRoles();
     this.editorNav.showEditorNav();
