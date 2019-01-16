@@ -1,4 +1,4 @@
-import { LocalPageTypes, StrIndex, LocalObject, FieldSchemaViewModel, FieldValueProviderViewModel, NumIndex, HttpResponse } from '@skysmack/framework';
+import { LocalPageTypes, StrIndex, LocalObject, FieldSchemaViewModel, FieldValueProviderViewModel, NumIndex, HttpResponse, linq } from '@skysmack/framework';
 import { AppState, ReduxAction, RecordState, recordReducersBase, OfflineMeta, ReduxOfflineMeta } from '@skysmack/redux';
 import { User } from './../models/user';
 import { UsersActions } from './users-actions';
@@ -45,7 +45,8 @@ export function usersReducer(state = new UsersState(), action: ReduxAction, pref
             const castedAction = action as ReduxAction<unknown, ReduxOfflineMeta<NumIndex<string[]>, HttpResponse, NumIndex<string[]>>>;
             const commitMeta = castedAction.meta.offline.commit.meta;
             Object.keys(commitMeta.value).forEach(roleId => {
-                newState.usersRoles[commitMeta.stateKey][roleId].push(commitMeta.value[roleId]);
+                const currentUserRoles: string[] = newState.usersRoles[commitMeta.stateKey][roleId];
+                newState.usersRoles[commitMeta.stateKey][roleId] = linq(currentUserRoles.concat(commitMeta.value[roleId])).distinct().ok();
             });
 
             return newState;

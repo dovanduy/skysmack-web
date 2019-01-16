@@ -30,7 +30,6 @@ export class UsersActions extends RecordActionsBase<UsersAppState, Store<UsersAp
     }
 
     public addUsersRoles(packagePath: string, userRolesDictionary: NumIndex<string[]>): void {
-        console.log('adding user role:', packagePath, userRolesDictionary);
         this.store.dispatch(Object.assign({}, new ReduxAction<any, ReduxOfflineMeta<NumIndex<string[]>, HttpResponse, NumIndex<string[]>>>({
             type: this.prefix + UsersActions.ADD_USERS_ROLES,
             meta: new ReduxOfflineMeta(
@@ -59,13 +58,13 @@ export class UsersActions extends RecordActionsBase<UsersAppState, Store<UsersAp
         })));
     }
 
-    public removeUsersRoles(packagePath: string, ids: number[]): void {
-        this.store.dispatch(Object.assign({}, new ReduxAction<any>({
-            type: this.prefix + UsersActions.REMOVE_USERS_ROLES,
-            payload: {
-                packagePath,
-                ids
-            }
-        })))
-    }
+    // public removeUsersRoles(packagePath: string, ids: number[]): void {
+    //     this.store.dispatch(Object.assign({}, new ReduxAction<any>({
+    //         type: this.prefix + UsersActions.REMOVE_USERS_ROLES,
+    //         payload: {
+    //             packagePath,
+    //             ids
+    //         }
+    //     })))
+    // }
 }
