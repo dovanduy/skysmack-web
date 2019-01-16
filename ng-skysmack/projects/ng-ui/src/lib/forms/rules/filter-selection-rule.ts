@@ -62,3 +62,4 @@ export class FilterSelectionRule extends FormRule {
                 .map(data => getProperty(data, this.selectionFieldPropSelector))[0];
         }
     }
+}
