@@ -4,7 +4,7 @@ import { Lodging, LodgingType } from '@skysmack/packages-lodgings';
 import * as moment from 'moment';
 
 export class ExtendedReservation {
-    public id: any;
+    public id: number;
     public lodgingName: string;
     public lodgingTypeName: string;
     public persons: number;

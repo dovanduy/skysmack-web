@@ -2,12 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Observable, combineLatest } from 'rxjs';
 import { switchMap, map } from 'rxjs/operators';
-import { LocalObject, EnumHelpers, toLocalObject } from '@skysmack/framework';
-import { ExtendedReservation, Reservation, LodgingReservationsAppState, LodgingReservationsState, LodgingReservation } from '@skysmack/packages-lodging-reservations';
+import { LocalObject, EnumHelpers, toLocalObject, PagedQuery } from '@skysmack/framework';
+import { ExtendedReservation, LodgingReservationsAppState, LodgingReservation } from '@skysmack/packages-lodging-reservations';
 import { EntityAction } from '@skysmack/ng-ui';
-import { NgLodgingReservationsStore, NgLodgingsStore, NgLodgingTypesStore, NgLodgingReservationsFieldsConfig } from '@skysmack/ng-packages';
+import { NgLodgingReservationsStore, NgLodgingsStore, NgLodgingTypesStore, NgLodgingReservationsFieldsConfig, NgLodgingsActions, NgLodgingTypesActions, NgLodgingReservationsActions, NgSkysmackStore } from '@skysmack/ng-packages';
 import { RecordIndexComponent, EntityComponentPageTitle } from '@skysmack/portal-ui';
-import { Lodging, LodgingType } from '@skysmack/packages-lodgings';
 import { NgLodgingsReservationsMenu } from '../../ng-lodgings-reservations-menu';
 import { CheckIn } from '@skysmack/packages-lodging-reservations';
 import { LodgingsArrivalsComponent } from '../lodgings-arrivals/lodgings-arrivals.component';
@@ -17,48 +16,48 @@ import { LodgingsArrivalsComponent } from '../lodgings-arrivals/lodgings-arrival
   templateUrl: './lodgings-reservations-index.component.html',
   styleUrls: ['./lodgings-reservations-index.component.scss']
 })
-export class LodgingsReservationsIndexComponent extends RecordIndexComponent<LodgingReservationsAppState, LodgingReservationsState, number> implements OnInit {
+export class LodgingsReservationsIndexComponent extends RecordIndexComponent<LodgingReservationsAppState, LodgingReservation, number> implements OnInit {
   public displayedColumns = ['checkIn', 'checkOut', 'persons', 'lodgingName', 'lodgingTypeName'];
   public entityActions: EntityAction[] = [
     // Checkin
     new EntityAction().asEventAction('Checkin', this.checkIn, 'label', this).setShowLogic((entity: LocalObject<ExtendedReservation, number>) => {
-      return EnumHelpers.toIndexEnum(Reservation.StatusEnum)[entity.object.reservation.object.status] === Reservation.StatusEnum.Reserved;
+      return EnumHelpers.toIndexEnum(LodgingReservation.ReservationStatusEnum)[entity.object.reservation.object.reservationStatus] === LodgingReservation.ReservationStatusEnum.Reserved;
     }),
     new EntityAction().asEventAction('Undo Checkin', this.undoCheckin, 'label', this).setShowLogic((entity: LocalObject<ExtendedReservation, number>) => {
-      return EnumHelpers.toIndexEnum(Reservation.StatusEnum)[entity.object.reservation.object.status] === Reservation.StatusEnum.InStay;
+      return EnumHelpers.toIndexEnum(LodgingReservation.ReservationStatusEnum)[entity.object.reservation.object.reservationStatus] === LodgingReservation.ReservationStatusEnum.InStay;
     }),
 
     // Checkout
     new EntityAction().asEventAction('Checkout', this.checkOut, 'label_off', this).setShowLogic((entity: LocalObject<ExtendedReservation, number>) => {
-      return EnumHelpers.toIndexEnum(Reservation.StatusEnum)[entity.object.reservation.object.status] === Reservation.StatusEnum.InStay;
+      return EnumHelpers.toIndexEnum(LodgingReservation.ReservationStatusEnum)[entity.object.reservation.object.reservationStatus] === LodgingReservation.ReservationStatusEnum.InStay;
     }),
     new EntityAction().asEventAction('Undo Checkout', this.undoCheckout, 'label_off', this).setShowLogic((entity: LocalObject<ExtendedReservation, number>) => {
-      return EnumHelpers.toIndexEnum(Reservation.StatusEnum)[entity.object.reservation.object.status] === Reservation.StatusEnum.CheckedOut;
+      return EnumHelpers.toIndexEnum(LodgingReservation.ReservationStatusEnum)[entity.object.reservation.object.reservationStatus] === LodgingReservation.ReservationStatusEnum.CheckedOut;
     }),
 
     // Cancel
     new EntityAction().asEventAction('Cancel', this.cancel, 'cancel', this).setShowLogic((entity: LocalObject<ExtendedReservation, number>) => {
-      return EnumHelpers.toIndexEnum(Reservation.StatusEnum)[entity.object.reservation.object.status] === Reservation.StatusEnum.Reserved;
+      return EnumHelpers.toIndexEnum(LodgingReservation.ReservationStatusEnum)[entity.object.reservation.object.reservationStatus] === LodgingReservation.ReservationStatusEnum.Reserved;
     }),
     new EntityAction().asEventAction('Undo Cancel', this.undoCancel, 'cancel', this).setShowLogic((entity: LocalObject<ExtendedReservation, number>) => {
-      return EnumHelpers.toIndexEnum(Reservation.StatusEnum)[entity.object.reservation.object.status] === Reservation.StatusEnum.Cancelled;
+      return EnumHelpers.toIndexEnum(LodgingReservation.ReservationStatusEnum)[entity.object.reservation.object.reservationStatus] === LodgingReservation.ReservationStatusEnum.Cancelled;
     }),
 
     // Move
     new EntityAction().asEventAction('Move', this.move, 'compare_arrows', this).setShowLogic((entity: LocalObject<ExtendedReservation, number>) => {
-      return EnumHelpers.toIndexEnum(Reservation.StatusEnum)[entity.object.reservation.object.status] === Reservation.StatusEnum.InStay;
+      return EnumHelpers.toIndexEnum(LodgingReservation.ReservationStatusEnum)[entity.object.reservation.object.reservationStatus] === LodgingReservation.ReservationStatusEnum.InStay;
     }),
     new EntityAction().asEventAction('Undo move', this.undoMove, 'compare_arrows', this).setShowLogic((entity: LocalObject<ExtendedReservation, number>) => {
       // TODO: This is likely NOT correct...
-      return EnumHelpers.toIndexEnum(Reservation.StatusEnum)[entity.object.reservation.object.status] === Reservation.StatusEnum.InStay;
+      return EnumHelpers.toIndexEnum(LodgingReservation.ReservationStatusEnum)[entity.object.reservation.object.reservationStatus] === LodgingReservation.ReservationStatusEnum.InStay;
     }),
 
     // No show
     new EntityAction().asEventAction('No show', this.noShow, 'highlight_off', this).setShowLogic((entity: LocalObject<ExtendedReservation, number>) => {
-      return EnumHelpers.toIndexEnum(Reservation.StatusEnum)[entity.object.reservation.object.status] === Reservation.StatusEnum.Reserved;
+      return EnumHelpers.toIndexEnum(LodgingReservation.ReservationStatusEnum)[entity.object.reservation.object.reservationStatus] === LodgingReservation.ReservationStatusEnum.Reserved;
     }),
     new EntityAction().asEventAction('Undo no show', this.undoNoShow, 'highlight_off', this).setShowLogic((entity: LocalObject<ExtendedReservation, number>) => {
-      return EnumHelpers.toIndexEnum(Reservation.StatusEnum)[entity.object.reservation.object.status] === Reservation.StatusEnum.NoShow;
+      return EnumHelpers.toIndexEnum(LodgingReservation.ReservationStatusEnum)[entity.object.reservation.object.reservationStatus] === LodgingReservation.ReservationStatusEnum.NoShow;
     }),
 
     // Misc
@@ -71,24 +70,30 @@ export class LodgingsReservationsIndexComponent extends RecordIndexComponent<Lod
   constructor(
     public router: Router,
     public activatedRoute: ActivatedRoute,
+    public skysmackStore: NgSkysmackStore,
     public store: NgLodgingReservationsStore,
     public lodgingsStore: NgLodgingsStore,
+    public lodgingReservationsActions: NgLodgingReservationsActions,
+    public lodgingsActions: NgLodgingsActions,
+    public lodgingTypesActions: NgLodgingTypesActions,
     public lodgingTypes: NgLodgingTypesStore,
     public fieldsConfig: NgLodgingReservationsFieldsConfig,
     public menuSidebar: NgLodgingsReservationsMenu,
     public pageTitle: EntityComponentPageTitle
   ) {
-    super(router, activatedRoute, store, store);
+    super(router, activatedRoute, lodgingReservationsActions, skysmackStore, store);
   }
 
   ngOnInit() {
     super.ngOnInit();
-    // TODO: FIX THIS
-    this.extendedReservations$ = this.store.getFeatureDependencyPackage(this.packagePath).pipe(
-      switchMap(_package => combineLatest(
+    this.lodgingsActions.getPaged(this.packagePath, new PagedQuery());
+    this.lodgingTypesActions.getPaged(this.packagePath, new PagedQuery());
+
+    this.extendedReservations$ = this.skysmackStore.getCurrentPackage(this.packagePath).pipe(
+      switchMap(loadedPackage => combineLatest(
         this.entities$,
-        this.lodgingsStore.get<LocalObject<Lodging, number>[]>(_package.url),
-        this.lodgingTypes.get<LocalObject<LodgingType, number>[]>(_package.url),
+        this.lodgingsStore.get(loadedPackage._package.path),
+        this.lodgingTypes.get(loadedPackage._package.path),
       ).pipe(
         map(values => {
           const reservations: LocalObject<LodgingReservation, number>[] = values[0];
@@ -108,7 +113,7 @@ export class LodgingsReservationsIndexComponent extends RecordIndexComponent<Lod
               if (reservation && reservation.object) {
                 reservationLodgingType = lodgingTypes.find(lodgingType => lodgingType.object.id === reservation.object.lodgingTypeId);
               }
-              return toLocalObject(new ExtendedReservation(reservation, reservationLodging, reservationLodgingType), reservation.localId, reservation.status, reservation.foreignKey, reservation.isNew);
+              return toLocalObject(new ExtendedReservation(reservation, reservationLodging, reservationLodgingType), undefined, reservation.localId, reservation.status, reservation.foreignKey, reservation.isNew);
             });
           }
         }))
@@ -117,7 +122,7 @@ export class LodgingsReservationsIndexComponent extends RecordIndexComponent<Lod
   }
 
   public checkIn(entity: LocalObject<ExtendedReservation, number>, _this: LodgingsArrivalsComponent) {
-    _this.redux.checkIn(_this.packagePath, [new CheckIn(entity.object.id, entity.object.lodging.object.id)]);
+    _this.redux.checkIn(_this.packagePath, [new CheckIn({ reservationId: entity.object.id, lodgingId: entity.object.lodging.object.id })]);
   }
   public undoCheckin(entity: LocalObject<ExtendedReservation, number>, _this: LodgingsArrivalsComponent) {
     _this.redux.undoCheckIn(_this.packagePath, [entity.object.id]);
