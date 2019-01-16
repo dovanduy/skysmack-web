@@ -1,12 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
-import { FormRule } from '@skysmack/ng-ui';
 import { LocalObject } from '@skysmack/framework';
 import { Role } from '@skysmack/packages-identities';
-import { Field } from '@skysmack/ng-ui';
-import { FieldTypes } from '@skysmack/ng-ui';
+import { Field, FormRule, FieldTypes, FieldsConfig } from '@skysmack/ng-ui';
 import { RolesValidation } from './ng-roles-validation';
-import { FieldsConfig } from '@skysmack/ng-ui';
 
 export interface NgRoleFormDependencies {
     [key: string]: any;

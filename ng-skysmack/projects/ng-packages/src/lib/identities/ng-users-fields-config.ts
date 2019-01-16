@@ -1,12 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
-import { FormRule, CustomValidators } from '@skysmack/ng-ui';
+import { FormRule, CustomValidators, Field, FieldTypes, FieldsConfig } from '@skysmack/ng-ui';
 import { LocalObject } from '@skysmack/framework';
 import { User } from '@skysmack/packages-identities';
-import { Field } from '@skysmack/ng-ui';
-import { FieldTypes } from '@skysmack/ng-ui';
 import { UsersValidation } from './ng-users-validation';
-import { FieldsConfig } from '@skysmack/ng-ui';
 
 export interface NgUserFormDependencies {
     [key: string]: any;
