@@ -73,10 +73,10 @@ export class LodgingsReservationsIndexComponent extends RecordIndexComponent<Lod
     public skysmackStore: NgSkysmackStore,
     public store: NgLodgingReservationsStore,
     public lodgingsStore: NgLodgingsStore,
+    public lodgingTypes: NgLodgingTypesStore,
     public lodgingReservationsActions: NgLodgingReservationsActions,
     public lodgingsActions: NgLodgingsActions,
     public lodgingTypesActions: NgLodgingTypesActions,
-    public lodgingTypes: NgLodgingTypesStore,
     public fieldsConfig: NgLodgingReservationsFieldsConfig,
     public menuSidebar: NgLodgingsReservationsMenu,
     public pageTitle: EntityComponentPageTitle
