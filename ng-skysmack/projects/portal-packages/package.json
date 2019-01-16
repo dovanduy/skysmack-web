@@ -9,6 +9,7 @@
     "@skysmack/redux": "*",
     "@skysmack/packages-identities": "*",
     "@skysmack/packages-lodgings": "*",
+    "@skysmack/packages-lodgings-reservations": "*",
     "@skysmack/packages-products": "*",
     "@skysmack/packages-persons": "*",
     "@skysmack/packages-skysmack-core": "*",

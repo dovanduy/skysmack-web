@@ -2,13 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Observable, combineLatest } from 'rxjs';
 import { switchMap, map } from 'rxjs/operators';
-import { LocalObject, EnumHelpers } from '@skysmack/framework';
+import { LocalObject, EnumHelpers, toLocalObject } from '@skysmack/framework';
 import { ExtendedReservation, Reservation, LodgingReservationsAppState, LodgingReservationsState, LodgingReservation } from '@skysmack/packages-lodging-reservations';
 import { EntityAction } from '@skysmack/ng-ui';
 import { NgLodgingReservationsStore, NgLodgingsStore, NgLodgingTypesStore, NgLodgingReservationsFieldsConfig } from '@skysmack/ng-packages';
-import { RecordIndexComponent } from '@skysmack/portal-ui';
+import { RecordIndexComponent, EntityComponentPageTitle } from '@skysmack/portal-ui';
 import { Lodging, LodgingType } from '@skysmack/packages-lodgings';
-
+import { NgLodgingsReservationsMenu } from '../../ng-lodgings-reservations-menu';
+import { CheckIn } from '@skysmack/packages-lodging-reservations';
+import { LodgingsArrivalsComponent } from '../lodgings-arrivals/lodgings-arrivals.component';
 
 @Component({
   selector: 'ss-lodgings-reservations-index',
@@ -73,15 +75,16 @@ export class LodgingsReservationsIndexComponent extends RecordIndexComponent<Lod
     public lodgingsStore: NgLodgingsStore,
     public lodgingTypes: NgLodgingTypesStore,
     public fieldsConfig: NgLodgingReservationsFieldsConfig,
-    public menuSidebar: LodgingsReservationsMenu,
+    public menuSidebar: NgLodgingsReservationsMenu,
     public pageTitle: EntityComponentPageTitle
   ) {
-    super(router, activatedRoute, redux, store);
+    super(router, activatedRoute, store, store);
   }
 
   ngOnInit() {
     super.ngOnInit();
-    this.extendedReservations$ = this.redux.getFeatureDependencyPackage(this.path).pipe(
+    // TODO: FIX THIS
+    this.extendedReservations$ = this.store.getFeatureDependencyPackage(this.packagePath).pipe(
       switchMap(_package => combineLatest(
         this.entities$,
         this.lodgingsStore.get<LocalObject<Lodging, number>[]>(_package.url),
@@ -114,37 +117,37 @@ export class LodgingsReservationsIndexComponent extends RecordIndexComponent<Lod
   }
 
   public checkIn(entity: LocalObject<ExtendedReservation, number>, _this: LodgingsArrivalsComponent) {
-    _this.redux.checkIn(_this.path, [new CheckinViewModel(entity.object.id, entity.object.lodging.object.id)]);
+    _this.redux.checkIn(_this.packagePath, [new CheckIn(entity.object.id, entity.object.lodging.object.id)]);
   }
   public undoCheckin(entity: LocalObject<ExtendedReservation, number>, _this: LodgingsArrivalsComponent) {
-    _this.redux.undoCheckIn(_this.path, [entity.object.id]);
+    _this.redux.undoCheckIn(_this.packagePath, [entity.object.id]);
   }
 
   public checkOut(entity: LocalObject<ExtendedReservation, number>, _this: LodgingsArrivalsComponent) {
-    _this.redux.checkOut(_this.path, [entity.object.id]);
+    _this.redux.checkOut(_this.packagePath, [entity.object.id]);
   }
   public undoCheckout(entity: LocalObject<ExtendedReservation, number>, _this: LodgingsArrivalsComponent) {
-    _this.redux.undoCheckOut(_this.path, [entity.object.id]);
+    _this.redux.undoCheckOut(_this.packagePath, [entity.object.id]);
   }
 
   public cancel(entity: LocalObject<ExtendedReservation, number>, _this: LodgingsArrivalsComponent) {
-    _this.redux.cancel(_this.path, [entity.object.id]);
+    _this.redux.cancel(_this.packagePath, [entity.object.id]);
   }
   public undoCancel(entity: LocalObject<ExtendedReservation, number>, _this: LodgingsArrivalsComponent) {
-    _this.redux.undoCancel(_this.path, [entity.object.id]);
+    _this.redux.undoCancel(_this.packagePath, [entity.object.id]);
   }
 
   public move(entity: LocalObject<ExtendedReservation, number>, _this: LodgingsArrivalsComponent) {
-    _this.redux.move(_this.path, [new CheckinViewModel(entity.object.id)]);
+    _this.redux.move(_this.packagePath, [new CheckIn(entity.object.id)]);
   }
   public undoMove(entity: LocalObject<ExtendedReservation, number>, _this: LodgingsArrivalsComponent) {
-    _this.redux.undoMove(_this.path, [entity.object.id]);
+    _this.redux.undoMove(_this.packagePath, [entity.object.id]);
   }
 
   public noShow(entity: LocalObject<ExtendedReservation, number>, _this: LodgingsArrivalsComponent) {
-    _this.redux.noShow(_this.path, [entity.object.id]);
+    _this.redux.noShow(_this.packagePath, [entity.object.id]);
   }
   public undoNoShow(entity: LocalObject<ExtendedReservation, number>, _this: LodgingsArrivalsComponent) {
-    _this.redux.undoNoShow(_this.path, [entity.object.id]);
+    _this.redux.undoNoShow(_this.packagePath, [entity.object.id]);
   }
 }
