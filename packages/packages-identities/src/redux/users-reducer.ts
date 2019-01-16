@@ -1,5 +1,5 @@
 import { LocalPageTypes, StrIndex, LocalObject, FieldSchemaViewModel, FieldValueProviderViewModel, NumIndex, HttpResponse, linq } from '@skysmack/framework';
-import { AppState, ReduxAction, RecordState, recordReducersBase, OfflineMeta, ReduxOfflineMeta } from '@skysmack/redux';
+import { AppState, ReduxAction, RecordState, recordReducersBase, ReduxOfflineMeta } from '@skysmack/redux';
 import { User } from './../models/user';
 import { UsersActions } from './users-actions';
 import { GetUsersRolesSuccessPayload } from '../payloads';

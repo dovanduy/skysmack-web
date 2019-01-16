@@ -9,7 +9,7 @@ export class LodgingReservation extends Record<number> {
     public checkOut: Date;
     public stays: Stay[];
     public reservationStatus: 'reserved' | 'inStay' | 'checkedOut' | 'noShow' | 'cancelled';
-    public static OccupationStateEnum = {
+    public static ReservationStatusEnum = {
         Reserved: 'reserved',
         InStay: 'inStay',
         CheckedOut: 'checkedOut',
