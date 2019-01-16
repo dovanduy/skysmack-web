@@ -73,15 +73,15 @@ export class LodgingsReservationsIndexComponent extends RecordIndexComponent<Lod
     public skysmackStore: NgSkysmackStore,
     public store: NgLodgingReservationsStore,
     public lodgingsStore: NgLodgingsStore,
-    public lodgingTypes: NgLodgingTypesStore,
-    public lodgingReservationsActions: NgLodgingReservationsActions,
+    public lodgingTypesStore: NgLodgingTypesStore,
+    public actions: NgLodgingReservationsActions,
     public lodgingsActions: NgLodgingsActions,
     public lodgingTypesActions: NgLodgingTypesActions,
     public fieldsConfig: NgLodgingReservationsFieldsConfig,
     public menuSidebar: NgLodgingsReservationsMenu,
     public pageTitle: EntityComponentPageTitle
   ) {
-    super(router, activatedRoute, lodgingReservationsActions, skysmackStore, store);
+    super(router, activatedRoute, actions, skysmackStore, store);
   }
 
   ngOnInit() {
@@ -93,7 +93,7 @@ export class LodgingsReservationsIndexComponent extends RecordIndexComponent<Lod
       switchMap(loadedPackage => combineLatest(
         this.entities$,
         this.lodgingsStore.get(loadedPackage._package.path),
-        this.lodgingTypes.get(loadedPackage._package.path),
+        this.lodgingTypesStore.get(loadedPackage._package.path),
       ).pipe(
         map(values => {
           const reservations: LocalObject<LodgingReservation, number>[] = values[0];

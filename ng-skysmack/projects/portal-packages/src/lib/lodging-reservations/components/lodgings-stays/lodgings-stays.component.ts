@@ -1,13 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { LodgingsReservationsFeatureRedux } from 'features/lodgings-reservations-feature/lodgings-reservations-feature-redux/lodgings-reservations-feature-redux';
-import { LodgingsReservationsFeatureFieldsConfig } from 'features/lodgings-reservations-feature/lodgings-reservations-feature-fields-config';
-import { EntityComponentPageTitle, RSQLFilterBuilder, SortBuilder } from 'framework';
-import { LodgingTypesRedux, LodgingsRedux } from 'packages';
-import { ReservationsMenu } from 'features/lodgings-reservations-feature/reservations-menu';
+import { NgLodgingReservationsStore, NgLodgingsStore, NgLodgingTypesStore, NgLodgingReservationsFieldsConfig, NgLodgingsActions, NgLodgingTypesActions, NgLodgingReservationsActions, NgSkysmackStore } from '@skysmack/ng-packages';
+import { EntityComponentPageTitle } from '@skysmack/portal-ui';
+import { NgLodgingsReservationsMenu } from '../../ng-lodgings-reservations-menu';
 import { LodgingsReservationsIndexComponent } from '../lodgings-reservations-index/lodgings-reservations-index.component';
-import { LodgingsReservationsFeatureMenu } from 'features/lodgings-reservations-feature/lodgings-reservations-feature-menu';
-import { ReservationViewModel } from 'skysmack-api';
+import { RSQLFilterBuilder, SortBuilder } from '@skysmack/framework';
+import { LodgingReservation } from '@skysmack/packages-lodging-reservations';
+
 
 @Component({
   selector: 'ss-lodgings-stays',
@@ -18,16 +17,20 @@ export class LodgingsStaysComponent extends LodgingsReservationsIndexComponent i
   constructor(
     public router: Router,
     public activatedRoute: ActivatedRoute,
-    public redux: LodgingsReservationsFeatureRedux,
-    public lodgingsRedux: LodgingsRedux,
-    public lodgingsTypeRedux: LodgingTypesRedux,
-    public fieldsConfig: LodgingsReservationsFeatureFieldsConfig,
-    public menuSidebar: LodgingsReservationsFeatureMenu,
-    public reservationSidebar: ReservationsMenu,
+    public skysmackStore: NgSkysmackStore,
+    public store: NgLodgingReservationsStore,
+    public lodgingsStore: NgLodgingsStore,
+    public lodgingTypesStore: NgLodgingTypesStore,
+    public actions: NgLodgingReservationsActions,
+    public lodgingsActions: NgLodgingsActions,
+    public lodgingTypesActions: NgLodgingTypesActions,
+    public fieldsConfig: NgLodgingReservationsFieldsConfig,
+    public menuSidebar: NgLodgingsReservationsMenu,
     public pageTitle: EntityComponentPageTitle
   ) {
-    super(router, activatedRoute, redux, lodgingsRedux, lodgingsTypeRedux, fieldsConfig, menuSidebar, pageTitle);
+    super(router, activatedRoute, skysmackStore, store, lodgingsStore, lodgingTypesStore, actions, lodgingsActions, lodgingTypesActions, fieldsConfig, menuSidebar, pageTitle);
   }
+
 
   ngOnInit() {
     this.filter();
@@ -38,7 +41,7 @@ export class LodgingsStaysComponent extends LodgingsReservationsIndexComponent i
 
   private filter() {
     this.filterBuilder = new RSQLFilterBuilder();
-    this.filterBuilder.column('status').like(ReservationViewModel.StatusEnum.InStay);
+    this.filterBuilder.column('status').like(LodgingReservation.ReservationStatusEnum.InStay);
   }
 
   private sort() {
