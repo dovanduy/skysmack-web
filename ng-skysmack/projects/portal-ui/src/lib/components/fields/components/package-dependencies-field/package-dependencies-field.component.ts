@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FieldBaseComponent } from '../field-base-component';
-import { filter, map } from 'rxjs/operators';
+import { filter, map, take } from 'rxjs/operators';
 import { combineLatest, Observable } from 'rxjs';
 import { NgPackagesStore } from '@skysmack/ng-packages';
-import { flatten, notNull } from '@skysmack/framework';
+import { flatten, notNull, log } from '@skysmack/framework';
 
 interface SelectBox {
   index: number;
@@ -22,6 +22,7 @@ interface SelectBox {
 export class PackageDependenciesFieldComponent extends FieldBaseComponent implements OnInit {
   public selectedDepTypes = {};
   public selectBoxes$: Observable<SelectBox[]>;
+  public showBoxes = false;
 
   constructor(
     public packagesStore: NgPackagesStore
@@ -41,8 +42,17 @@ export class PackageDependenciesFieldComponent extends FieldBaseComponent implem
   }
 
   private createSelectBoxes(): void {
+    let lastType = '';
     const selectedPackageType$ = this.fh.form.valueChanges.pipe(
-      map<any, string>(values => values['type']),
+      map<any, string>(values => {
+        // Prevents endless loop when resestting dependencies field.
+        if (lastType !== values['type']) {
+          lastType = values['type'];
+          this.setOtherFieldValue('dependencies', []);
+        }
+
+        return values['type'];
+      }),
       notNull()
     );
 
@@ -58,6 +68,11 @@ export class PackageDependenciesFieldComponent extends FieldBaseComponent implem
       }),
       flatten(),
       map(availablePackage => availablePackage.object.dependencyTypes),
+      map(depTypes => {
+        // Hide select boxes if there is no dependencies
+        depTypes ? this.showBoxes = true : this.showBoxes = false;
+        return depTypes;
+      }),
       notNull<string[]>()
     );
 
