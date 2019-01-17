@@ -4,7 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgRedux, NgReduxModule } from '@angular-redux/store';
 
 import { RouterModule } from '@angular/router';
-import { NgModule, Injector } from '@angular/core';
+import { NgModule } from '@angular/core';
 
 import { SkysmackModule } from '@skysmack/portal-packages';
 import { FrontPageComponent } from './components/front-page/front-page.component';
@@ -45,6 +45,10 @@ import { environment } from './../../environments/environment';
       {
         path: 'lodgings',
         loadChildren: './../packages/modules/lodgings_wrapper.module#LodgingsWrapperModule'
+      },
+      {
+        path: 'lodgingReservations',
+        loadChildren: './../packages/modules/lodging_reservations_wrapper.module#LodgingReservationsWrapperModule'
       },
       {
         path: 'oauth2',

@@ -11,6 +11,7 @@ import { NgSkysmackActions, PackageLoader } from '@skysmack/ng-packages';
 import { AuthorizationInterceptor, configureLanguage, LanguageService } from '@skysmack/portal-ui';
 import { loadMaintenancePackage } from '../packages/maintenance-package-manifest';
 import { loadIdentitiesPackage } from '../packages/identities-package-manifest';
+import { loadLodgingReservationPackage } from '../packages/lodging-reservations-package-manifest';
 
 // TODO: Delete as soon as one real other menu item provider has been created.
 @Injectable({ providedIn: 'root' })
@@ -41,6 +42,7 @@ export const packageLoaders = [
     { provide: APP_INITIALIZER, useFactory: loadPersonPackage, deps: [PackageLoader], multi: true },
     { provide: APP_INITIALIZER, useFactory: loadProductPackage, deps: [PackageLoader], multi: true },
     { provide: APP_INITIALIZER, useFactory: loadLodgingPackage, deps: [PackageLoader], multi: true },
+    { provide: APP_INITIALIZER, useFactory: loadLodgingReservationPackage, deps: [PackageLoader], multi: true },
     { provide: APP_INITIALIZER, useFactory: loadOauth2Package, deps: [PackageLoader], multi: true },
     { provide: APP_INITIALIZER, useFactory: loadMaintenancePackage, deps: [PackageLoader], multi: true },
 ];
