@@ -5,13 +5,21 @@ import { combineLatest, Observable } from 'rxjs';
 import { NgPackagesStore } from '@skysmack/ng-packages';
 import { flatten, notNull, log } from '@skysmack/framework';
 
-interface SelectBox {
+class SelectBox {
   index: number;
   dependency: string;
+
+  name: string;
+
+  selectedValue: string;
   values: {
     value: string,
     displayName: string
   }[];
+
+  public constructor(init?: Partial<SelectBox>) {
+    Object.assign(this, init);
+  }
 }
 
 @Component({
@@ -32,28 +40,18 @@ export class PackageDependenciesFieldComponent extends FieldBaseComponent implem
     this.createSelectBoxes();
   }
 
-  public setDependencies(selectBox: SelectBox, selectedDepType: string): void {
-    let deps = this.getOtherFieldValue('dependencies');
-
-    deps = deps ? deps : [];
-    deps[selectBox.index] = selectedDepType;
-
-    this.setOtherFieldValue('dependencies', deps);
-  }
-
-  private createSelectBoxes(): void {
+  public createSelectBoxes(): void {
     let lastType = '';
     const selectedPackageType$ = this.fh.form.valueChanges.pipe(
-      map<any, string>(values => {
-        // Prevents endless loop when resestting dependencies field.
-        if (lastType !== values['type']) {
-          lastType = values['type'];
+      map<any, string>(formValues => {
+        // Prevents endless loop when resetting dependencies field.
+        if (lastType !== formValues['type']) {
+          lastType = formValues['type'];
           this.setOtherFieldValue('dependencies', []);
+          return formValues['type'];
         }
-
-        return values['type'];
       }),
-      notNull()
+      notNull(),
     );
 
     const availablePackages$ = this.packagesStore.getAvailablePackages();
@@ -69,7 +67,7 @@ export class PackageDependenciesFieldComponent extends FieldBaseComponent implem
       flatten(),
       map(availablePackage => availablePackage.object.dependencyTypes),
       map(depTypes => {
-        // Hide select boxes if there is no dependencies
+        // Hide select boxes if there are no dependencies
         depTypes ? this.showBoxes = true : this.showBoxes = false;
         return depTypes;
       }),
@@ -84,6 +82,7 @@ export class PackageDependenciesFieldComponent extends FieldBaseComponent implem
       map(values => {
         const [dependencies, installedPackages, availablePackages] = values;
         let index = 0;
+        // Only run this when setting NEW dependencies, not when valus are set...
         return dependencies.map(dependency => {
           const possibleValues = installedPackages
             .filter(installedPackage => installedPackage.object.type === dependency)
@@ -94,15 +93,23 @@ export class PackageDependenciesFieldComponent extends FieldBaseComponent implem
 
           const foundPackage = availablePackages.find(x => x.object.type === dependency);
           const name = foundPackage ? foundPackage.object.name : '';
-
-          return {
+          return new SelectBox({
             index: index++,
             name,
             dependency,
             values: possibleValues
-          } as SelectBox;
+          })
         });
-      })
+      }),
     );
+  }
+
+  public setDependencies(selectBox: SelectBox, selectedDepType: string): void {
+    let deps = this.getOtherFieldValue('dependencies');
+
+    deps = deps ? deps : [];
+    deps[selectBox.index] = selectedDepType;
+
+    this.setOtherFieldValue('dependencies', deps);
   }
 }
