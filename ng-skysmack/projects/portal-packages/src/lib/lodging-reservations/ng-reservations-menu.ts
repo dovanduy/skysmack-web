@@ -7,7 +7,7 @@ import { NgSkysmackStore } from '@skysmack/ng-packages';
 @Injectable({ providedIn: 'root' })
 export class NgReservationsMenu extends SidebarMenu {
     public menuId = 'reservations';
-    public translationPrefix = 'LODGINGS_RESERVATIONS.RESERVATIONS.';
+    public translationPrefix = 'LODGING_RESERVATIONS.RESERVATIONS.';
 
     constructor(
         public store: NgSkysmackStore,

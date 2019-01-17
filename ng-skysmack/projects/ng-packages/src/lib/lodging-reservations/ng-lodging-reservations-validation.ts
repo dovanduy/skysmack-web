@@ -29,7 +29,7 @@ export class NgLodgingReservationsValidation extends Validation {
         }
     };
 
-    public area = 'lodging-reservations';
+    public area = 'lodging_reservations';
 
     public formValidators = [];
 
