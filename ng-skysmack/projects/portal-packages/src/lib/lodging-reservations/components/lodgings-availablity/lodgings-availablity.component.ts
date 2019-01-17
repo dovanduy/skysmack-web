@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { EntityComponentPageTitle, EntityCrudIndexTimePaged } from 'framework';
 import { Router, ActivatedRoute } from '@angular/router';
-import { LodgingsReservationsFeatureRedux } from 'features/lodgings-reservations-feature/lodgings-reservations-feature-redux';
-import { LodgingsReservationsFeatureFieldsConfig } from 'features/lodgings-reservations-feature/lodgings-reservations-feature-fields-config';
-import { ReservationsMenu } from 'features/lodgings-reservations-feature/reservations-menu';
+import { RecordIndexTimePagedComponent, EntityComponentPageTitle } from '@skysmack/portal-ui';
+import { NgSkysmackStore, NgLodgingReservationsStore, NgLodgingReservationsActions } from '@skysmack/ng-packages';
+import { LodgingReservationsAppState, LodgingReservation } from '@skysmack/packages-lodging-reservations';
+import { NgReservationsMenu } from '../../ng-reservations-menu';
 
 @Component({
   selector: 'ss-lodgings-availablity',
@@ -11,16 +11,17 @@ import { ReservationsMenu } from 'features/lodgings-reservations-feature/reserva
   styleUrls: ['./lodgings-availablity.component.scss'],
 
 })
-export class LodgingsAvailablityComponent extends EntityCrudIndexTimePaged implements OnInit {
+export class LodgingsAvailablityComponent extends RecordIndexTimePagedComponent<LodgingReservationsAppState, LodgingReservation, number> implements OnInit {
   constructor(
     public router: Router,
     public activatedRoute: ActivatedRoute,
-    public redux: LodgingsReservationsFeatureRedux,
-    public fieldsConfig: LodgingsReservationsFeatureFieldsConfig,
-    public menuSidebar: ReservationsMenu,
-    public pageTitle: EntityComponentPageTitle
+    public skysmackStore: NgSkysmackStore,
+    public store: NgLodgingReservationsStore,
+    public actions: NgLodgingReservationsActions,
+    public pageTitle: EntityComponentPageTitle,
+    public sidebarMenu: NgReservationsMenu
   ) {
-    super(router, activatedRoute, redux, fieldsConfig);
+    super(router, activatedRoute, actions, skysmackStore, store);
     pageTitle.setTitle('Availability');
   }
 

@@ -1,8 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-
-import * as moment from 'moment';
+import { NgLodgingReservationsStore, NgLodgingsStore, NgLodgingTypesStore, NgLodgingReservationsFieldsConfig, NgLodgingsActions, NgLodgingTypesActions, NgLodgingReservationsActions, NgSkysmackStore } from '@skysmack/ng-packages';
+import { EntityComponentPageTitle } from '@skysmack/portal-ui';
 import { LodgingsReservationsIndexComponent } from '../lodgings-reservations-index/lodgings-reservations-index.component';
+import { RSQLFilterBuilder, SortBuilder } from '@skysmack/framework';
+import * as _moment from 'moment';
+const moment = _moment;
+import { LodgingReservation } from '@skysmack/packages-lodging-reservations';
+import { NgReservationsMenu } from '../../ng-reservations-menu';
 
 @Component({
   selector: 'ss-lodgings-arrivals',
@@ -13,16 +18,21 @@ export class LodgingsArrivalsComponent extends LodgingsReservationsIndexComponen
   constructor(
     public router: Router,
     public activatedRoute: ActivatedRoute,
-    public redux: LodgingsReservationsFeatureRedux,
-    public lodgingsRedux: LodgingsRedux,
-    public lodgingsTypeRedux: LodgingTypesRedux,
-    public fieldsConfig: LodgingsReservationsFeatureFieldsConfig,
-    public menuSidebar: LodgingsReservationsFeatureMenu,
-    public reservationSidebar: ReservationsMenu,
+    public skysmackStore: NgSkysmackStore,
+    public store: NgLodgingReservationsStore,
+    public lodgingsStore: NgLodgingsStore,
+    public lodgingTypesStore: NgLodgingTypesStore,
+    public actions: NgLodgingReservationsActions,
+    public lodgingsActions: NgLodgingsActions,
+    public lodgingTypesActions: NgLodgingTypesActions,
+    public fieldsConfig: NgLodgingReservationsFieldsConfig,
+    public sidebarMenu: NgReservationsMenu,
     public pageTitle: EntityComponentPageTitle
   ) {
-    super(router, activatedRoute, redux, lodgingsRedux, lodgingsTypeRedux, fieldsConfig, menuSidebar, pageTitle);
+    super(router, activatedRoute, skysmackStore, store, lodgingsStore, lodgingTypesStore, actions, lodgingsActions, lodgingTypesActions, fieldsConfig, sidebarMenu, pageTitle);
+    pageTitle.setTitle('Arrivals');
   }
+
 
   ngOnInit() {
     this.filter();
@@ -33,7 +43,7 @@ export class LodgingsArrivalsComponent extends LodgingsReservationsIndexComponen
 
   private filter() {
     this.filterBuilder = new RSQLFilterBuilder();
-    this.filterBuilder.column('status').like(ReservationViewModel.StatusEnum.Reserved).and().column('checkIn').lessThanOrEqualTo(moment().toDate());
+    this.filterBuilder.column('status').like(LodgingReservation.ReservationStatusEnum.Reserved).and().column('checkIn').lessThanOrEqualTo(moment().toDate());
   }
 
   private sort() {

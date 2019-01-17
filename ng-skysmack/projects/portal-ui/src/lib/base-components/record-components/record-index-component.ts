@@ -31,10 +31,10 @@ export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey>
         public router: Router,
         public activatedRoute: ActivatedRoute,
         public actions: RecordActionsBase<TAppState, NgRedux<TAppState>>,
-        public redux: NgSkysmackStore,
+        public skysmackStore: NgSkysmackStore,
         public store: NgRecordReduxStore<TAppState, TRecord, TKey>
     ) {
-        super(router, activatedRoute, redux);
+        super(router, activatedRoute, skysmackStore);
     }
 
     ngOnInit() {
@@ -70,7 +70,7 @@ export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey>
     }
 
     /**
-     * Loads the next page stored in redux. Also requests the next page if any.
+     * Loads the next page stored in skysmackStore. Also requests the next page if any.
      */
     public loadPages() {
         this.subscriptionHandler.register(this.store.getPages(this.packagePath).pipe(

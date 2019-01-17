@@ -1,4 +1,4 @@
-import { SubscriptionHandler } from '@skysmack/framework';
+import { SubscriptionHandler, RSQLFilterBuilder, SortBuilder } from '@skysmack/framework';
 import { LoadedPackage, NgSkysmackStore } from '@skysmack/ng-packages';
 import { Observable } from 'rxjs';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -11,11 +11,13 @@ export class BaseComponent<TAppState, TKey> implements OnInit, OnDestroy {
     public entityId: TKey;
     public packagePath: string;
     public loadedPackage$: Observable<LoadedPackage>;
+    public filterBuilder: RSQLFilterBuilder;
+    public sortBuilder: SortBuilder;
 
     constructor(
         public router: Router,
         public activatedRoute: ActivatedRoute,
-        public redux: NgSkysmackStore
+        public skysmackStore: NgSkysmackStore
     ) { }
 
     ngOnInit() {
@@ -46,12 +48,13 @@ export class BaseComponent<TAppState, TKey> implements OnInit, OnDestroy {
                             // Fields have a "key" as id. Set to id if present.
                             this.entityId = params['key'];
                         }
-                    }));
+                    })
+                );
             }
         }
     }
 
     private getCurrentPackage() {
-        this.loadedPackage$ = this.redux.getCurrentPackage(this.packagePath);
+        this.loadedPackage$ = this.skysmackStore.getCurrentPackage(this.packagePath);
     }
 }

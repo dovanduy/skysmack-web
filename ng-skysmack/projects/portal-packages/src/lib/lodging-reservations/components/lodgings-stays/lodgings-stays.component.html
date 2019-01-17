@@ -1,5 +1,7 @@
-<ss-container [menuSidebar]="reservationSidebar">
-  <ss-data-table [entityActions]="entityActions" [title]="'Stays'" [entities$]="extendedReservations$"
-    [displayedColumns]="displayedColumns" [path]="path" [redux]="redux" (entityActionEvent)="actionEvent($event)">
+<ss-container [sidebarMenu]="sidebarMenu" *ngIf="loadedPackage$ | async as loadedPackage">
+  <ss-data-table *ngIf="extendedReservations$" [cancelAction]="actions.cancelRecordAction" [title]="'Stays'"
+    [displayedColumns]="displayedColumns" [entities$]="extendedReservations$" [entityActions]="entityActions"
+    [packagePath]="packagePath" (entityActionEvent)="actionEvent($event)">
+    <!-- <ss-pagination [loadingState]="loadingState" (intersection)="onIntersection($event)"></ss-pagination> -->
   </ss-data-table>
 </ss-container>
