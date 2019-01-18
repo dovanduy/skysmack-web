@@ -1,7 +1,6 @@
 export * from './action-types';
 export * from './authentication';
 export * from './actions';
-export * from './epics';
 export * from './reducers';
 export * from './redux-stores';
 export * from './requests';

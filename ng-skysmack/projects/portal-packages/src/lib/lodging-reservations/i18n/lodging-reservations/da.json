@@ -1,0 +1,66 @@
+{
+    "LODGING_RESERVATIONS": {
+        "FORM": {
+            "LABELS": {
+                "LODGINGTYPEID": "Rum type",
+                "ALLOCATEDLODGINGID": "Tildelt rum",
+                "CHECKIN": "Tjek ind",
+                "CHECKOUT": "Tjek ud",
+                "PERSONS": "Personer"
+            },
+            "PLACEHOLDERS": {
+                "LODGINGTYPEID": "Indtast rum type",
+                "ALLOCATEDLODGINGID": "Indtast tildelt rum",
+                "CHECKIN": "Indtast tjek ind",
+                "CHECKOUT": "Indtast tjek ud",
+                "PERSONS": "Indtast personer"
+            },
+            "VALIDATION": {
+                "LODGINGTYPEID": {
+                    "REQUIRED": "Rum type er påkrævet."
+                },
+                "ALLOCATEDLODGINGID": {
+                    "REQUIRED": "Tildelt rum er påkrævet."
+                },
+                "CHECKIN": {
+                    "REQUIRED": "Check in dato er påkrævet."
+                },
+                "CHECKOUT": {
+                    "REQUIRED": "Check ud dato er påkrævet."
+                },
+                "PERSONS": {
+                    "REQUIRED": "Personer er påkrævet."
+                }
+            }
+        },
+        "CREATE": {
+            "CREATE": "Opret"
+        },
+        "EDIT": {
+            "EDIT": "Rediger"
+        },
+        "INDEX": {
+            "CREATE": "Opret",
+            "EDIT": "Rediger",
+            "DELETE": "Ret",
+            "FIELDS": "Felter",
+            "ITEM": "Enhed",
+            "MANAGE": "Konfigurer",
+            "ACTIONS": "Handlinger",
+            "AVAILABILITY": "Tilgængelighed",
+            "STAYS": "Indlogeret",
+            "RESERVATIONS": "Reservationer",
+            "ARRIVALS": "Ankomster",
+            "DEPARTURES": "Afgange"
+        },
+        "RESERVATIONS": {
+            "AVAILABILITY": "Tilgængelighed",
+            "STAYS": "Indlogeret",
+            "RESERVATIONS": "Reservationer",
+            "ARRIVALS": "Ankomster",
+            "DEPARTURES": "Afgange",
+            "MANAGE": "Konfigurer",
+            "ALL": "Alle"
+        }
+    }
+}

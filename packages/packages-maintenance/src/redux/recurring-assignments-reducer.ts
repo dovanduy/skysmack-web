@@ -14,7 +14,7 @@ export class RecurringAssignmentState implements RecordState<RecurringAssignment
     public localRecords: StrIndex<StrIndex<LocalObject<RecurringAssignment, number>>> = {};
 }
 
-export function recurringAssignmentReducer(state = new RecurringAssignmentState(), action: ReduxAction, prefix: string = 'RECURRING_ASSIGNMENT_'): RecurringAssignmentState {
+export function recurringAssignmentsReducer(state = new RecurringAssignmentState(), action: ReduxAction, prefix: string = 'RECURRING_ASSIGNMENT_'): RecurringAssignmentState {
     switch (action.type) {
         default:
             return {

@@ -1,8 +1,7 @@
-import { Record, LocalObject } from '@skysmack/framework';
 
-export class CommitMeta<TRecord extends Record<TKey>, TKey>  {
+export class CommitMeta<TValue>  {
     constructor(
         public stateKey: string,
-        public records: LocalObject<TRecord, TKey>[],
+        public value: TValue
     ) { }
 }

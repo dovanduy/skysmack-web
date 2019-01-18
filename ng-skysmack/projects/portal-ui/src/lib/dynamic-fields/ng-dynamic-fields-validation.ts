@@ -7,8 +7,8 @@ export class DynamicFieldsValidation extends Validation {
         type: '',
         display: '',
         validators: '',
-        readPermissions: '',
-        writePermissions: ''
+        readPermission: '',
+        writePermission: ''
     };
 
     public validationMessages: StrIndex<{}> = {
@@ -23,7 +23,7 @@ export class DynamicFieldsValidation extends Validation {
         }
     };
 
-    public area = 'field';
+    public area = 'fields';
 
     public formValidators = [];
 

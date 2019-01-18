@@ -2,9 +2,11 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { HttpClientModule } from '@angular/common/http';
-import { ReducerRegistry, registerEagerEpics } from '@skysmack/redux';
-import { skysmackReducer, SkysmackEpics } from '@skysmack/packages-skysmack-core';
+import { ReducerRegistry } from '@skysmack/redux';
+import { skysmackReducer } from '@skysmack/packages-skysmack-core';
 import { NgSkysmackRequests } from './redux/ng-skysmack-requests';
+import { NgSkysmackEpics } from './redux/ng-skysmack-epics';
+import { registerEpics } from '@skysmack/ng-redux';
 
 @NgModule({
   imports: [
@@ -12,11 +14,11 @@ import { NgSkysmackRequests } from './redux/ng-skysmack-requests';
     HttpClientModule
   ],
   exports: [],
-  providers: [],
+  providers: [{ provide: 'SkysmackRequests', useClass: NgSkysmackRequests }]
 })
 export class NgSkysmackModule {
-  constructor(skysmackRequests: NgSkysmackRequests) {
+  constructor(epics: NgSkysmackEpics) {
     ReducerRegistry.Instance.register('skysmack', skysmackReducer);
-    registerEagerEpics(new SkysmackEpics(skysmackRequests).epics);
+    registerEpics(epics);
   }
 }

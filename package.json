@@ -1,18 +1,20 @@
 {
-  "name": "root",
-  "private": true,
-  "devDependencies": {
-    "@types/node": "^10.12.18",
-    "lerna": "^3.8.0",
-    "typescript": "^3.2.2",
-    "ng-packagr": "^4.4.5",
-    "@skysmack/framework": "*",
-    "@skysmack/redux": "*",
-    "@skysmack/packages-skysmack-core": "*",
-    "@skysmack/packages-maintenance": "*",
-    "@skysmack/packages-lodgings": "*",
-    "@skysmack/packages-oauth2": "*",
-    "@skysmack/packages-persons": "*",
-    "@skysmack/packages-products": "*"
-  }
+    "name": "root",
+    "private": true,
+    "devDependencies": {
+        "@types/node": "^10.12.18",
+        "lerna": "^3.10.5",
+        "typescript": "^3.2.2",
+        "ng-packagr": "^4.5.0",
+        "@skysmack/framework": "*",
+        "@skysmack/redux": "*",
+        "@skysmack/packages-skysmack-core": "*",
+        "@skysmack/packages-identities": "*",
+        "@skysmack/packages-maintenance": "*",
+        "@skysmack/packages-lodgings": "*",
+        "@skysmack/packages-lodging-reservations": "*",
+        "@skysmack/packages-oauth2": "*",
+        "@skysmack/packages-persons": "*",
+        "@skysmack/packages-products": "*"
+    }
 }

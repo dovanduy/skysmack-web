@@ -49,14 +49,11 @@ export class DataTableComponent implements OnDestroy, OnInit {
     public componentPageTitle: EntityComponentPageTitle,
   ) { }
 
-  // TODO: Infinite scroll
-  // https://github.com/angular/material2/issues/9858
   ngOnInit() {
     this.initColumns();
     this.componentPageTitle.setTitle(this.title);
     this.editorNavService.hideEditorNav();
     this.initDataSource();
-
   }
 
   ngOnDestroy() {

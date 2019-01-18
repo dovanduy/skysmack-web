@@ -1,0 +1,34 @@
+{
+    "FIELDS": {
+        "INDEX": {
+            "CREATE": "Create",
+            "ACTIONS": "Actions",
+            "MANAGE": "Manage",
+            "BACK": "Back"
+        },
+        "CREATE": {
+            "CREATE": "Create field"
+        },
+        "FORM": {
+            "PLACEHOLDERS": {
+                "KEY": "Key",
+                "TYPE": "Type",
+                "DISPLAY": "Display name",
+                "VALIDATORS": "Validators",
+                "READPERMISSION": "Read permission",
+                "WRITEPERMISSION": "Write permission"
+            },
+            "VALIDATION": {
+                "KEY": {
+                    "REQUIRED": "Key is required"
+                },
+                "TYPE": {
+                    "REQUIRED": "Key is required"
+                },
+                "DISPLAY": {
+                    "REQUIRED": "Display name is required"
+                }
+            }
+        }
+    }
+}

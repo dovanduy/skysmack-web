@@ -8,10 +8,6 @@
 
   <button mat-raised-button color="primary" type="submit" (click)="onSubmit()">{{ buttonText }}</button>
 
-  <!-- Development json output -->
-  <!-- TODO: Enable again when we know how to detect development/production -->
-  <!-- <ng-container *ngIf="!production">
-    <pre *ngIf="!production">{{ fh.form.value | json }}</pre>
-    <pre>{{error | json}}</pre>
-  </ng-container> -->
+  <!-- Keep below - outcomment when not needed -->
+  <!-- <pre>{{ fh.form.value | json }}</pre> -->
 </form>

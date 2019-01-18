@@ -41,7 +41,12 @@ export class FieldBaseComponent implements OnInit, OnDestroy {
         const fieldControl = this.fh.form.controls[fieldKey];
 
         if (fieldControl) {
-            fieldControl.setValue(newValue);
+            const newValuesAsString = JSON.stringify(newValue);
+            this.oldFieldValue = JSON.stringify(this.getFieldValue());
+            if (this.oldFieldValue !== newValuesAsString) {
+                fieldControl.setValue(newValue);
+                this.oldFieldValue = newValuesAsString;
+            }
         } else {
             console.log(`
                 Cannot find a field with the key ${fieldKey}. Check if:

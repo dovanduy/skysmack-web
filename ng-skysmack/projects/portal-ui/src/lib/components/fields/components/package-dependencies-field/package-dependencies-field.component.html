@@ -1,7 +1,11 @@
-<ng-container *ngFor="let selectBox of selectBoxes$ | async">
-  <mat-form-field>
-    <mat-select [placeholder]="selectBox.name" (selectionChange)="setDependencies(selectBox, $event.value)">
-      <mat-option *ngFor="let opt of selectBox.values" [value]="opt.value">{{opt.displayName}}</mat-option>
-    </mat-select>
-  </mat-form-field>
+<ng-container *ngIf="selectBoxes$ | async as selectBoxes">
+  <ng-container *ngIf="showBoxes">
+    <ng-container *ngFor=" let selectBox of selectBoxes">
+      <mat-form-field>
+        <mat-select [placeholder]="selectBox.name" (selectionChange)="setDependencies(selectBox, $event.value)">
+          <mat-option *ngFor="let opt of selectBox.values" [value]="opt.value">{{opt.displayName}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </ng-container>
+  </ng-container>
 </ng-container>

@@ -1,0 +1,85 @@
+{
+    "USERS": {
+        "SETPASSWORD": {
+            "FORM": {
+                "LABELS": {
+                    "PASSWORD": "New password",
+                    "CONFIRMPASSWORD": "Confirm password"
+                },
+                "PLACEHOLDERS": {
+                    "PASSWORD": "Enter new password",
+                    "CONFIRMPASSWORD": "Confirm password"
+                },
+                "VALIDATION": {
+                    "PASSWORD": {
+                        "REQUIRED": "A password is required.",
+                        "INVALIDPASSWORD": "The password must be: at least 6 characters long, contain at least one number, one lowercase letter, one uppercase letter, and one special character"
+                    },
+                    "CONFIRMPASSWORD": {
+                        "REQUIRED": "Confirmation of new password is required.",
+                        "PASSWORDMISMATCH": "Passwords does not match."
+                    }
+                }
+            }
+        },
+        "FORM": {
+            "LABELS": {
+                "EMAIL": "Email",
+                "PASSWORD": "Password",
+                "CONFIRMPASSWORD": "Confirm password"
+            },
+            "PLACEHOLDERS": {
+                "EMAIL": "Enter email",
+                "PASSWORD": "Enter password",
+                "CONFIRMPASSWORD": "Confirm password"
+            },
+            "VALIDATION": {
+                "EMAIL": {
+                    "REQUIRED": "A Email is required.",
+                    "EMAIL": "Please type a valid email."
+                },
+                "PASSWORD": {
+                    "REQUIRED": "A password is required.",
+                    "INVALIDPASSWORD": "Please use a more complex password"
+                },
+                "CONFIRMPASSWORD": {
+                    "REQUIRED": "Confirmation password.",
+                    "PASSWORDMISMATCH": "Passwords does not match."
+                }
+            }
+        },
+        "CREATE": {
+            "CREATE_USER": "Create a new user"
+        },
+        "EDIT": {
+            "EDIT": "Edit user"
+        },
+        "INDEX": {
+            "ACTIONS": "Actions",
+            "CREATE": "Create",
+            "MANAGE": "Manage",
+            "ROLES": "Roles",
+            "SECURITY": "Security",
+            "ACCESS_POLICIES": "Access policies",
+            "PERMISSIONS": "Permissions",
+            "ANONYMOUS": "Anonymous",
+            "AUTHENTICATED": "Authenticated",
+            "USERS": "Users",
+            "BACK": "Back"
+        },
+        "ROLES": {
+            "CURRENT_ROLES": "{{ object.email }} current roles",
+            "ROLE_PRIORITY": "{{ role.object.name }} with priority {{ role.object.priority }} -",
+            "REMOVE": "Remove",
+            "NO_ROLES": "No roles have been applied.",
+            "ADD_ROLE": "Add a role to {{ object.email }}",
+            "OBJECT_PRIOORITY": "{{ role.object.name }} - priority",
+            "ADD": "Add",
+            "ROLES_APPLIED": "All roles have been applied, or no roles exists.",
+            "NO_ROLES_APPLIED": "This user has no roles."
+        },
+        "SET_PASSWORD": {
+            "PASSWORD_FOR": "Set password for {{ object.email }}"
+        }
+    }
+}

@@ -8,7 +8,7 @@ import { SidebarMenu } from '@skysmack/portal-ui';
 
 @Injectable({ providedIn: 'root' })
 export class NgLodgingsMenu extends SidebarMenu {
-    public menuId = 'Lodgings';
+    public menuId = 'lodgings';
     public translationPrefix = 'LODGINGS.INDEX.';
 
     constructor(

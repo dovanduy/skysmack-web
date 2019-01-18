@@ -3,7 +3,6 @@ import { LoadedPackage } from './loaded-package';
 import { PackageManifest } from '@skysmack/ng-ui';
 import { Package } from '@skysmack/framework';
 
-
 @Injectable({ providedIn: 'root' })
 export class PackageLoader {
     public static packageManifests: PackageManifest[] = [];

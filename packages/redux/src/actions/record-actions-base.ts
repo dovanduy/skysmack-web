@@ -1,8 +1,8 @@
 import { Store } from 'redux';
-import { PagedQuery, Record, LocalObject, HttpMethod, LocalObjectStatus } from '@skysmack/framework';
+import { PagedQuery, Record, LocalObject, HttpMethod, LocalObjectStatus, HttpResponse } from '@skysmack/framework';
 import { ReduxAction } from '../action-types/redux-action';
 import { GetPagedRecordsPayload, GetSingleRecordPayload, CancelActionPayload, } from '../payloads';
-import { OfflineMeta, CommitMeta, RollbackMeta, ReduxOfflineMeta, CancelActionMeta } from '../metas';
+import { CommitMeta, RollbackMeta, ReduxOfflineMeta, CancelActionMeta, OfflineMeta } from '../metas';
 import { EffectRequest } from '../models/effect-request';
 import { Effect } from './../models/effect';
 
@@ -37,15 +37,15 @@ export abstract class RecordActionsBase<TStateType, TStore extends Store<TStateT
 
     public cancelRecordAction = <TRecord extends Record<TKey>, TKey>(record: LocalObject<TRecord, TKey>, packagePath: string): void => {
         this.store.dispatch(Object.assign({}, new ReduxAction<CancelActionPayload<TRecord, TKey>, CancelActionMeta>({
-            type: RecordActionsBase.CANCEL_RECORD_ACTION,
+            type: this.prefix + RecordActionsBase.CANCEL_RECORD_ACTION,
             payload: {
                 record,
-                packagePath
+                packagePath,
+                prefix: this.prefix
             },
             meta: new CancelActionMeta()
         })))
     }
-
 
     public getPaged(packagePath: string, pagedQuery: PagedQuery) {
         this.store.dispatch(Object.assign({}, new ReduxAction<GetPagedRecordsPayload>({
@@ -68,29 +68,28 @@ export abstract class RecordActionsBase<TStateType, TStore extends Store<TStateT
     }
 
     public add<TRecord extends Record<TKey>, TKey>(records: LocalObject<TRecord, TKey>[], packagePath: string) {
-        let path = this.additionalPaths ? [packagePath, ...this.additionalPaths].join('/') : packagePath;
-
-        this.store.dispatch(Object.assign({}, new ReduxAction<any, ReduxOfflineMeta<TRecord[], TRecord, TKey>>({
+        console.log('1. ADD:', records);
+        this.store.dispatch(Object.assign({}, new ReduxAction<any, ReduxOfflineMeta<TRecord[], HttpResponse, LocalObject<TRecord, TKey>[]>>({
             type: this.prefix + RecordActionsBase.ADD,
             meta: new ReduxOfflineMeta(
-                new OfflineMeta<TRecord[], TRecord, TKey>(
+                new OfflineMeta<TRecord[], HttpResponse, LocalObject<TRecord, TKey>[]>(
                     new Effect<TRecord[]>(new EffectRequest<TRecord[]>(
-                        path,
+                        this.addAdditionalPaths(packagePath),
                         HttpMethod.POST,
                         records.map(x => x.object)
                     )),
-                    new ReduxAction<any, CommitMeta<TRecord, TKey>>({
+                    new ReduxAction<any, CommitMeta<LocalObject<TRecord, TKey>[]>>({
                         type: this.prefix + RecordActionsBase.ADD_SUCCESS,
                         meta: {
                             stateKey: packagePath,
-                            records
+                            value: records
                         }
                     }),
-                    new ReduxAction<any, RollbackMeta<TRecord, TKey>>({
+                    new ReduxAction<any, RollbackMeta<LocalObject<TRecord, TKey>[]>>({
                         type: this.prefix + RecordActionsBase.ADD_FAILURE,
                         meta: {
                             stateKey: packagePath,
-                            records
+                            value: records
                         }
                     })
                 )
@@ -99,30 +98,30 @@ export abstract class RecordActionsBase<TStateType, TStore extends Store<TStateT
     }
 
     public update<TRecord extends Record<TKey>, TKey>(records: LocalObject<TRecord, TKey>[], packagePath: string) {
-        let path = this.additionalPaths ? [packagePath, ...this.additionalPaths].join('/') : packagePath;
-        path = path + '?ids=' + records.map(x => x.object.id).join(',');
+        let path = this.addAdditionalPaths(packagePath);
+        path = this.appendValues<TKey>(path, records.map(x => x.object.id));
 
-        this.store.dispatch(Object.assign({}, new ReduxAction<any, ReduxOfflineMeta<TRecord[], TRecord, TKey>>({
+        this.store.dispatch(Object.assign({}, new ReduxAction<any, ReduxOfflineMeta<TRecord[], HttpResponse, LocalObject<TRecord, TKey>[]>>({
             type: this.prefix + RecordActionsBase.UPDATE,
             meta: new ReduxOfflineMeta(
-                new OfflineMeta<TRecord[], TRecord, TKey>(
+                new OfflineMeta<TRecord[], HttpResponse, LocalObject<TRecord, TKey>[]>(
                     new Effect<TRecord[]>(new EffectRequest<TRecord[]>(
                         path,
                         HttpMethod.PUT,
                         records.map(x => x.object)
                     )),
-                    new ReduxAction<any, CommitMeta<TRecord, TKey>>({
+                    new ReduxAction<any, CommitMeta<LocalObject<TRecord, TKey>[]>>({
                         type: this.prefix + RecordActionsBase.UPDATE_SUCCESS,
                         meta: {
                             stateKey: packagePath,
-                            records
+                            value: records
                         }
                     }),
-                    new ReduxAction<any, RollbackMeta<TRecord, TKey>>({
+                    new ReduxAction<any, RollbackMeta<LocalObject<TRecord, TKey>[]>>({
                         type: this.prefix + RecordActionsBase.UPDATE_FAILURE,
                         meta: {
                             stateKey: packagePath,
-                            records
+                            value: records
                         }
                     })
                 )
@@ -132,13 +131,13 @@ export abstract class RecordActionsBase<TStateType, TStore extends Store<TStateT
 
 
     public delete<TRecord extends Record<TKey>, TKey>(records: LocalObject<TRecord, TKey>[], packagePath: string) {
-        let path = this.additionalPaths ? [packagePath, ...this.additionalPaths].join('/') : packagePath;
+        let path = this.addAdditionalPaths(packagePath);
         path = path + '?ids=' + records.map(x => x.object.id).join(',');
 
-        this.store.dispatch(Object.assign({}, new ReduxAction<any, ReduxOfflineMeta<TRecord[], TRecord, TKey>>({
+        this.store.dispatch(Object.assign({}, new ReduxAction<any, ReduxOfflineMeta<TRecord[], HttpResponse, LocalObject<TRecord, TKey>[]>>({
             type: this.prefix + RecordActionsBase.DELETE,
             meta: new ReduxOfflineMeta(
-                new OfflineMeta<TRecord[], TRecord, TKey>(
+                new OfflineMeta<TRecord[], HttpResponse, LocalObject<TRecord, TKey>[]>(
                     new Effect<TRecord[]>(new EffectRequest<TRecord[]>(
                         path,
                         HttpMethod.DELETE,
@@ -147,22 +146,30 @@ export abstract class RecordActionsBase<TStateType, TStore extends Store<TStateT
                             return x.object
                         }),
                     )),
-                    new ReduxAction<any, CommitMeta<TRecord, TKey>>({
+                    new ReduxAction<any, CommitMeta<LocalObject<TRecord, TKey>[]>>({
                         type: this.prefix + RecordActionsBase.DELETE_SUCCESS,
                         meta: {
                             stateKey: packagePath,
-                            records
+                            value: records
                         }
                     }),
-                    new ReduxAction<any, RollbackMeta<TRecord, TKey>>({
+                    new ReduxAction<any, RollbackMeta<LocalObject<TRecord, TKey>[]>>({
                         type: this.prefix + RecordActionsBase.DELETE_FAILURE,
                         meta: {
                             stateKey: packagePath,
-                            records
+                            value: records
                         }
                     })
                 )
             )
         })));
+    }
+
+    protected addAdditionalPaths(url: string): string {
+        return this.additionalPaths ? [url, ...this.additionalPaths].join('/') : url;
+    }
+
+    protected appendValues<T>(url, values: T[], prefix: string = '?ids=', seperator: string = ','): string {
+        return url + prefix + values.join(seperator);
     }
 }

@@ -76,13 +76,6 @@ export class NgPackagesFieldsConfig {
             } as Field),
 
             new Field({
-                fieldType: FieldTypes.HiddenField,
-                value: _package ? _package.object.dependencies : undefined,
-                key: 'dependencies',
-            } as Field),
-
-
-            new Field({
                 fieldType: FieldTypes.string,
                 value: _package ? _package.object.path : undefined,
                 key: 'path',
@@ -90,6 +83,14 @@ export class NgPackagesFieldsConfig {
                 validators: [Validators.required],
                 order: 4,
                 placeholder: 'Enter path'
+            } as Field),
+
+            new Field({
+                fieldType: FieldTypes.HiddenField,
+                value: _package ? _package.object.dependencies : undefined,
+                key: 'dependencies',
+                label: 'dependencies',
+                order: 4,
             } as Field)
         ];
     }

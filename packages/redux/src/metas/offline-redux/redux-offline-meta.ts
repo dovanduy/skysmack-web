@@ -1,9 +1,7 @@
 import { OfflineMeta } from './offline-meta';
-import { Record } from '@skysmack/framework';
 
-export class ReduxOfflineMeta<TBody, TRecord extends Record<TKey>, TKey> {
+export class ReduxOfflineMeta<TBody, TResponse, TObject> {
     constructor(
-        public offline: OfflineMeta<TBody, TRecord, TKey>
-    ) {
-    }
+        public offline: OfflineMeta<TBody, TResponse, TObject>
+    ) { }
 }

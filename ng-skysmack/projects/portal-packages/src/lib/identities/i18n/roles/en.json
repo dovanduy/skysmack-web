@@ -1,0 +1,32 @@
+{
+    "ROLES": {
+        "CREATE": {
+            "CREATE_ROLE": "Create new role"
+        },
+        "EDIT": {
+            "EDITING": "Rediger {{ object.name }}"
+        },
+        "INDEX": {
+            "ACTIONS": "Actions",
+            "CREATE": "Create",
+            "MANAGE": "Manage",
+            "SECURITY": "Security",
+            "SECURITY_AND_USERS": "Users and security",
+            "ROLES": "Roles",
+            "BACK": "Back"
+        },
+        "FORM": {
+            "LABELS": {
+                "NAME": "Name"
+            },
+            "PLACEHOLDERS": {
+                "NAME": "Enter name"
+            },
+            "VALIDATION": {
+                "NAME": {
+                    "REQUIRED": "A name is required."
+                }
+            }
+        }
+    }
+}

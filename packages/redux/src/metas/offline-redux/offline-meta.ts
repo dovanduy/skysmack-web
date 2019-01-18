@@ -1,13 +1,12 @@
 import { ReduxAction } from './../../action-types/redux-action';
-import { RollbackMeta } from './rollback-meta';
-import { Record } from '@skysmack/framework';
-import { CommitMeta } from './commit-meta';
 import { Effect } from './../../models/effect';
+import { CommitMeta } from './commit-meta';
+import { RollbackMeta } from './rollback-meta';
 
-export class OfflineMeta<TBody, TResponse extends Record<TKey>, TKey> {
+export class OfflineMeta<TRequestBody, TResponse, TValue> {
     constructor(
-        public effect: Effect<TBody>,
-        public commit: ReduxAction<TResponse, CommitMeta<TResponse, TKey>>,
-        public rollback: ReduxAction<TResponse, RollbackMeta<TResponse, TKey>>
+        public effect: Effect<TRequestBody>,
+        public commit: ReduxAction<TResponse, CommitMeta<TValue>>,
+        public rollback: ReduxAction<TResponse, RollbackMeta<TValue>>
     ) { }
 }

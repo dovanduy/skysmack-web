@@ -47,8 +47,7 @@ export abstract class NgRecordRequests<TRecord extends Record<TKey>, TKey> imple
         }
 
         let url = `${this.apiDomain.domain}/${action.payload.packagePath}`;
-        url = this.additionalPaths ? [url, ...this.additionalPaths].join('/') : url;
-
+        url = this.addAdditionalPaths(url);
         return this.http.get<TRecord[]>(url, { observe: 'response', params: queryParameters })
             .pipe(
                 map(httpResponse => {
@@ -73,7 +72,7 @@ export abstract class NgRecordRequests<TRecord extends Record<TKey>, TKey> imple
 
     public getSingle(action: ReduxAction<GetSingleRecordPayload<TKey>>): Observable<ReduxAction<GetSingleRecordSuccessPayload<TRecord, TKey>> | ReduxAction<GetSingleRecordPayload<TKey>>> {
         let url = `${this.apiDomain.domain}/${action.payload.packagePath}`;
-        url = this.additionalPaths ? [url, ...this.additionalPaths].join('/') : url;
+        url = this.addAdditionalPaths(url);
         url = `${url}/${action.payload.id}`;
 
         return this.http.get<TRecord>(url, { observe: 'response' })
@@ -95,5 +94,13 @@ export abstract class NgRecordRequests<TRecord extends Record<TKey>, TKey> imple
                     error: true
                 }))))
             );
+    }
+
+    protected addAdditionalPaths(url: string) {
+        return this.additionalPaths ? [url, ...this.additionalPaths].join('/') : url;
+    }
+
+    protected appendValues<T>(url, values: T[], prefix: string = '?ids=', seperator: string = ','): string {
+        return url + prefix + values.join(seperator);
     }
 }

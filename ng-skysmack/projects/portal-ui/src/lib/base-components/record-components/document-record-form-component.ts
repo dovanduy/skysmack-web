@@ -45,14 +45,12 @@ export class DocumentRecordFormComponent<TAppState, TRecord extends Record<TKey>
     }
 
     // Use these init functions and override set functions in the component when the form has dependencies
-    protected initCreateDocRecord(): Observable<LocalObject<FieldSchemaViewModel,
-        string>[]> {
+    protected initCreateDocRecord(): Observable<LocalObject<FieldSchemaViewModel, string>[]> {
         this.actions.getFields(this.packagePath);
         return this.store.getFields(this.packagePath);
     }
 
-    protected initEditDocRecord(): Observable<[LocalObject<TRecord, TKey>, LocalObject<FieldSchemaViewModel,
-        string>[]]> {
+    protected initEditDocRecord(): Observable<[LocalObject<TRecord, TKey>, LocalObject<FieldSchemaViewModel, string>[]]> {
         this.actions.getSingle(this.packagePath, this.entityId);
         this.actions.getFields(this.packagePath);
 

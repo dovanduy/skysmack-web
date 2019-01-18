@@ -24,6 +24,9 @@
       "@skysmack/redux": [
         "../packages/redux"
       ],
+      "@skysmack/identities": [
+        "../packages/packages-identities"
+      ],
       "@skysmack/packages-lodgings": [
         "../packages/packages-lodgings"
       ],

@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 
-import { ReducerRegistry, registerLazyEpics } from '@skysmack/redux';
-import { PersonsEpics, personsReducer } from '@skysmack/packages-persons';
-import { NgPersonsRequests } from './redux/ng-persons-requests';
+import { ReducerRegistry } from '@skysmack/redux';
+import { personsReducer } from '@skysmack/packages-persons';
 import { NgPersonsActions } from './redux/ng-persons-actions';
 import { NgPersonsStore } from './redux/ng-persons-store';
+import { NgPersonsEpics } from './redux/ng-persons-epics';
+import { registerEpics } from '@skysmack/ng-redux';
 
 @NgModule({
   imports: [],
@@ -17,8 +18,8 @@ import { NgPersonsStore } from './redux/ng-persons-store';
   ],
 })
 export class NgPersonsModule {
-  constructor(personsRequests: NgPersonsRequests) {
+  constructor(epics: NgPersonsEpics) {
     ReducerRegistry.Instance.register('persons', personsReducer);
-    registerLazyEpics(new PersonsEpics(personsRequests).epics);
+    registerEpics(epics);
   }
 }

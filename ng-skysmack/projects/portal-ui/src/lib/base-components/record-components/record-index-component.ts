@@ -31,10 +31,10 @@ export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey>
         public router: Router,
         public activatedRoute: ActivatedRoute,
         public actions: RecordActionsBase<TAppState, NgRedux<TAppState>>,
-        public redux: NgSkysmackStore,
+        public skysmackStore: NgSkysmackStore,
         public store: NgRecordReduxStore<TAppState, TRecord, TKey>
     ) {
-        super(router, activatedRoute, redux);
+        super(router, activatedRoute, skysmackStore);
     }
 
     ngOnInit() {
@@ -70,13 +70,12 @@ export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey>
     }
 
     /**
-     * Loads the next page stored in redux. Also requests the next page if any.
+     * Loads the next page stored in skysmackStore. Also requests the next page if any.
      */
     public loadPages() {
         this.subscriptionHandler.register(this.store.getPages(this.packagePath).pipe(
             hasValue<StrIndex<LocalPageTypes<TKey>>>(),
             map(dictionary => {
-                // TODO: Is this still correct? Should it be moved?
                 const queryDictionary = dictionary[setKey(this.packagePath, [this.nextPageSize])];
 
                 if (queryDictionary) {
@@ -126,7 +125,6 @@ export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey>
         if (force || (this.loadingState === LoadingState.Awaiting && (this.loaderIsVisible || this.getMaxScroll() - window.pageYOffset < 100))) {
             this.loadingState = LoadingState.Loading;
 
-            // TODO: Correctly set the pagedQuery here?
             this.pagedQuery.pageNumber = this.nextPageNumber;
             this.pagedQuery.pageSize = this.nextPageSize;
 
@@ -148,7 +146,6 @@ export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey>
      * @param param0 Object with the property visisble set to true or false. If true, anotherpage is requested.
      */
     public onIntersection({ visible = false }) {
-        // TODO: Calculate loader is visible in the component instead.
         this.loaderIsVisible = visible;
         if (visible) {
             setTimeout(() => { this.requestPage(); }, 50);
@@ -176,22 +173,6 @@ export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey>
                         .ok();
                 })
             );
-
-            // TODO: Fix
-
-            // this.pagedEntities$ = combineLatest(
-            //     this.redux.getOfflineOutboxItems(this.path),
-            //     this.redux.getJustCreatedEntities(this.path),
-            //     pagedEntities$
-            // ).pipe(
-            //     map(values => {
-            //         const outBox = values[0];
-            //         const justCreated = values[1];
-            //         const entities = values[2];
-
-            //         return outBox.concat(justCreated.concat(entities));
-            //     })
-            // );
         }
     }
 

@@ -1,4 +1,4 @@
-import { Record, StrIndex, LocalPageTypes, LocalObject, hasValue, dictionaryToArray, log, safeUndefinedTo } from '@skysmack/framework';
+import { Record, StrIndex, LocalPageTypes, LocalObject, hasValue, dictionaryToArray, safeUndefinedTo } from '@skysmack/framework';
 import { RecordReduxStore, RecordState } from '@skysmack/redux';
 import { Observable } from 'rxjs';
 import { NgRedux } from '@angular-redux/store';

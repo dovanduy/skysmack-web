@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
-import { ReducerRegistry, registerLazyEpics } from '@skysmack/redux';
-import { NgPackagesRequests } from './redux/ng-packages-requests';
-import { packagesReducer, PackagesEpics } from '@skysmack/packages-skysmack-core';
-
+import { ReducerRegistry } from '@skysmack/redux';
+import { packagesReducer } from '@skysmack/packages-skysmack-core';
+import { NgPackagesEpics } from './redux/ng-packages-epics';
+import { registerEpics } from '@skysmack/ng-redux';
 
 @NgModule({
   imports: [],
@@ -10,8 +10,8 @@ import { packagesReducer, PackagesEpics } from '@skysmack/packages-skysmack-core
   providers: [],
 })
 export class NgPackagesModule {
-  constructor(requests: NgPackagesRequests) {
+  constructor(epics: NgPackagesEpics) {
     ReducerRegistry.Instance.register('packages', packagesReducer);
-    registerLazyEpics(new PackagesEpics(requests).epics);
+    registerEpics(epics);
   }
 }
