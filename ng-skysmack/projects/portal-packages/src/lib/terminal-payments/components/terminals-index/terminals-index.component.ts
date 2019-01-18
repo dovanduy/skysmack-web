@@ -1,18 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import { EntityComponentPageTitle, DocumentRecordIndexComponet } from '@skysmack/portal-ui';
 import { Router, ActivatedRoute } from '@angular/router';
-import { NgSkysmackStore, NgProductTypesActions, NgProductTypesStore } from '@skysmack/ng-packages';
-import { ProductTypesAppState, ProductType } from '@skysmack/packages-products';
-import { NgProductTypesMenu } from '../../ng-product-types-menu';
+import { NgTerminalsActions } from '@skysmack/ng-packages';
+import { NgSkysmackStore } from '@skysmack/ng-packages';
+import { NgTerminalsStore } from '@skysmack/ng-packages';
+import { Terminal, TerminalsAppState } from '@skysmack/packages-terminal-payments';
+import { NgTerminalsMenu } from './../../ng-terminals-menu';
 import { EntityAction } from '@skysmack/ng-ui';
 
 
 @Component({
-  selector: 'ss-product-types-index',
-  templateUrl: './product-types-index.component.html',
-  styleUrls: ['./product-types-index.component.scss']
+  selector: 'ss-terminals-index',
+  templateUrl: './terminals-index.component.html',
+  styleUrls: ['./terminals-index.component.scss']
 })
-export class ProductTypesIndexComponent extends DocumentRecordIndexComponet<ProductTypesAppState, ProductType, number> implements OnInit {
+export class TerminalsIndexComponent extends DocumentRecordIndexComponet<TerminalsAppState, Terminal, number> implements OnInit {
+
   public displayedColumns = ['name'];
   public entityActions: EntityAction[] = [
     new EntityAction().asUrlAction('edit', 'Edit', 'edit'),
@@ -22,11 +25,11 @@ export class ProductTypesIndexComponent extends DocumentRecordIndexComponet<Prod
   constructor(
     public router: Router,
     public activatedRoute: ActivatedRoute,
-    public actions: NgProductTypesActions,
+    public actions: NgTerminalsActions,
     public redux: NgSkysmackStore,
     public title: EntityComponentPageTitle,
-    public store: NgProductTypesStore,
-    public sidebarMenu: NgProductTypesMenu
+    public store: NgTerminalsStore,
+    public sidebarMenu: NgTerminalsMenu
   ) {
     super(router, activatedRoute, actions, redux, store);
 

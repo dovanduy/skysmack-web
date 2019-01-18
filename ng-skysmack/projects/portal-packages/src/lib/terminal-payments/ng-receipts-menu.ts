@@ -7,9 +7,9 @@ import { SidebarMenu } from '@skysmack/portal-ui';
 import { NgSkysmackStore } from '@skysmack/ng-packages';
 
 @Injectable({ providedIn: 'root' })
-export class NgProductTypesMenu extends SidebarMenu {
-    public menuId = 'Product-types';
-    public translationPrefix = 'PRODUCT_TYPES.INDEX.';
+export class NgReceiptsMenu extends SidebarMenu {
+    public menuId = 'Receipts';
+    public translationPrefix = 'RECEIPTS.INDEX.';
 
     constructor(
         public redux: NgSkysmackStore,

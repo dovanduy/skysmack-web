@@ -13,6 +13,7 @@
     "@skysmack/packages-products": "*",
     "@skysmack/packages-persons": "*",
     "@skysmack/packages-skysmack-core": "*",
+    "@skysmack/packages-terminal-payments": "*",
     "@skysmack/ng-redux": "*",
     "@skysmack/ng-packages": "*",
     "@skysmack/ng-ui": "*",

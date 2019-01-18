@@ -1,21 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { EntityComponentPageTitle, DocumentRecordIndexComponet } from '@skysmack/portal-ui';
 import { Router, ActivatedRoute } from '@angular/router';
-import { NgProductsActions } from '@skysmack/ng-packages';
-import { NgSkysmackStore } from '@skysmack/ng-packages';
-import { NgProductsStore } from '@skysmack/ng-packages';
-import { Product, ProductsAppState } from '@skysmack/packages-products';
-import { NgProductsMenu } from '../../ng-products-menu';
+import { NgSkysmackStore, NgReceiptsActions, NgReceiptsStore } from '@skysmack/ng-packages';
+import { ReceiptsAppState, Receipt } from '@skysmack/packages-terminal-payments';
+import { NgReceiptsMenu } from '../../ng-receipts-menu';
 import { EntityAction } from '@skysmack/ng-ui';
 
 
 @Component({
-  selector: 'ss-products-index',
-  templateUrl: './products-index.component.html',
-  styleUrls: ['./products-index.component.scss']
+  selector: 'ss-receipts-index',
+  templateUrl: './receipts-index.component.html',
+  styleUrls: ['./receipts-index.component.scss']
 })
-export class ProductsIndexComponent extends DocumentRecordIndexComponet<ProductsAppState, Product, number> implements OnInit {
-
+export class ReceiptsIndexComponent extends DocumentRecordIndexComponet<ReceiptsAppState, Receipt, number> implements OnInit {
   public displayedColumns = ['name'];
   public entityActions: EntityAction[] = [
     new EntityAction().asUrlAction('edit', 'Edit', 'edit'),
@@ -25,11 +22,11 @@ export class ProductsIndexComponent extends DocumentRecordIndexComponet<Products
   constructor(
     public router: Router,
     public activatedRoute: ActivatedRoute,
-    public actions: NgProductsActions,
+    public actions: NgReceiptsActions,
     public redux: NgSkysmackStore,
     public title: EntityComponentPageTitle,
-    public store: NgProductsStore,
-    public sidebarMenu: NgProductsMenu
+    public store: NgReceiptsStore,
+    public sidebarMenu: NgReceiptsMenu
   ) {
     super(router, activatedRoute, actions, redux, store);
 

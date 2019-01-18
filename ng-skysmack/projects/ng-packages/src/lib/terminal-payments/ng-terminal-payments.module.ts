@@ -1,28 +1,33 @@
 import { NgModule } from '@angular/core';
 
-import { ReducerRegistry, registerLazyEpics } from '@skysmack/redux';
-import { ProductsEpics, productsReducer, productTypesReducer, ProductTypesEpics } from '@skysmack/packages-products';
-import { NgProductsRequests } from './redux/ng-products-requests';
-import { NgProductTypesRequests } from './redux/ng-product-types-requests';
-import { NgProductsActions } from './redux/ng-products-actions';
-import { NgProductsStore } from './redux/ng-products-store';
+import { ReducerRegistry } from '@skysmack/redux';
+import { terminalsReducer, receiptsReducer } from '@skysmack/packages-terminal-payments';
+import { NgReceiptsActions } from './redux/ng-receipts-actions';
+import { NgReceiptsStore } from './redux/ng-receipts-store';
+import { NgTerminalsActions } from './redux/ng-terminals-actions';
+import { NgTerminalsStore } from './redux/ng-terminals-store';
+import { TerminalsEpics } from './redux/ng-terminals-epics';
+import { ReceiptsEpics } from './redux/ng-receipts-epics';
+import { registerEpics } from '@skysmack/ng-redux';
 
 @NgModule({
   imports: [],
   exports: [],
   providers: [
     [
-      { provide: 'NgProductsActions', useClass: NgProductsActions },
-      { provide: 'NgProductsStore', useClass: NgProductsStore }
+      { provide: 'NgReceiptsActions', useClass: NgReceiptsActions },
+      { provide: 'NgReceiptsStore', useClass: NgReceiptsStore },
+      { provide: 'NgTerminalsActions', useClass: NgTerminalsActions },
+      { provide: 'NgTerminalsStore', useClass: NgTerminalsStore }
     ]
   ]
 })
 export class NgTerminalPaymentsModule {
-  constructor(productsRequests: NgProductsRequests, productTypesRequests: NgProductTypesRequests) {
-    ReducerRegistry.Instance.register('products', productsReducer);
-    registerLazyEpics(new ProductsEpics(productsRequests).epics);
+  constructor(terminalsEpics: TerminalsEpics, receiptsEpics: ReceiptsEpics) {
+    ReducerRegistry.Instance.register('terminals', terminalsReducer);
+    ReducerRegistry.Instance.register('receipts', receiptsReducer);
 
-    ReducerRegistry.Instance.register('productTypes', productTypesReducer);
-    registerLazyEpics(new ProductTypesEpics(productTypesRequests).epics);
+    registerEpics(terminalsEpics);
+    registerEpics(receiptsEpics);
   }
 }
