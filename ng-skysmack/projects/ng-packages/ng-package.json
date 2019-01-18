@@ -16,6 +16,7 @@
     "@skysmack/packages-persons",
     "@skysmack/packages-products",
     "@skysmack/packages-skysmack-core",
-    "@skysmack/packages-maintenance"
+    "@skysmack/packages-maintenance",
+    "@skysmack/packages-terminal-payments"
   ]
 }
