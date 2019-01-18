@@ -86,7 +86,7 @@ export abstract class DocumentRecordActionsBase<TStateType, TStore extends Store
             meta: {
                 offline: {
                     effect: new Effect<FieldSchemaViewModel[]>(new EffectRequest<FieldSchemaViewModel[]>(
-                        this.addAdditionalPaths(packagePath + '/fields'),
+                        this.addAdditionalPaths(packagePath) + '/fields',
                         HttpMethod.POST,
                         fields.map(x => x.object)
                     )),
@@ -117,7 +117,7 @@ export abstract class DocumentRecordActionsBase<TStateType, TStore extends Store
                     // TODO: Add [] FieldSchemaViewModel both places below when fields accepts arrays.
                     effect: new Effect<FieldSchemaViewModel>(new EffectRequest<FieldSchemaViewModel>(
                         // TODO: Use this below when fields accepts array: packagePath + '/fields
-                        this.addAdditionalPaths(packagePath + '/fields/' + fields[0].object.key),
+                        this.addAdditionalPaths(packagePath) + '/fields/' + fields[0].object.key,
                         HttpMethod.PUT,
                         // TODO: Use this below when fields accepts array: fields.map(x => x.object)
                         fields[0].object
@@ -151,7 +151,7 @@ export abstract class DocumentRecordActionsBase<TStateType, TStore extends Store
             meta: {
                 offline: {
                     effect: new Effect<FieldSchemaViewModel[]>(new EffectRequest<FieldSchemaViewModel[]>(
-                        this.addAdditionalPaths(packagePath + '/fields' + paths),
+                        this.addAdditionalPaths(packagePath) + '/fields' + paths,
                         HttpMethod.DELETE,
                         fields.map(x => {
                             x.status = LocalObjectStatus.DELETING

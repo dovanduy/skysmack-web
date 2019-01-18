@@ -2,7 +2,17 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { combineLatest } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
-import { NgLodgingReservationFormDependencies, NgLodgingReservationsStore, NgLodgingsStore, NgLodgingTypesStore, NgLodgingReservationsFieldsConfig, NgSkysmackStore, NgLodgingReservationsActions, NgLodgingsActions, NgLodgingTypesActions } from '@skysmack/ng-packages';
+import {
+  NgLodgingReservationFormDependencies,
+  NgLodgingReservationsStore,
+  NgLodgingsStore,
+  NgLodgingTypesStore,
+  NgLodgingReservationsFieldsConfig,
+  NgSkysmackStore,
+  NgLodgingReservationsActions,
+  NgLodgingsActions,
+  NgLodgingTypesActions
+} from '@skysmack/ng-packages';
 import { LodgingReservation, LodgingReservationsAppState } from '@skysmack/packages-lodging-reservations';
 import { RecordFormComponent, EditorNavService } from '@skysmack/portal-ui';
 

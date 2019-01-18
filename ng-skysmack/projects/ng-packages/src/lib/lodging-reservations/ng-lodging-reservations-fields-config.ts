@@ -3,7 +3,7 @@ import { Validators } from '@angular/forms';
 import { LocalObject } from '@skysmack/framework';
 import { LodgingReservation } from '@skysmack/packages-lodging-reservations';
 import { NgLodgingReservationsValidation } from './ng-lodging-reservations-validation';
-import { FormRule, FieldTypes, FieldsConfig, SelectField, Field } from '@skysmack/ng-ui';
+import { FormRule, FieldTypes, FieldsConfig, SelectField, Field, SelectFieldOption } from '@skysmack/ng-ui';
 import { LodgingType, Lodging } from '@skysmack/packages-lodgings';
 
 export interface NgLodgingReservationFormDependencies {
@@ -20,7 +20,7 @@ export class NgLodgingReservationsFieldsConfig extends FieldsConfig<LodgingReser
     protected getEntityFields(entity?: LocalObject<LodgingReservation, number>, dependencies?: NgLodgingReservationFormDependencies): Field[] {
         const fields = [
             new SelectField({
-                fieldType: FieldTypes.int,
+                fieldType: FieldTypes.SelectField,
                 value: entity ? entity.object.lodgingTypeId : undefined,
                 key: 'lodgingTypeId',
                 validators: [Validators.required],
@@ -30,16 +30,21 @@ export class NgLodgingReservationsFieldsConfig extends FieldsConfig<LodgingReser
                 showColumn: true
             } as SelectField),
             new SelectField({
-                fieldType: FieldTypes.int,
+                fieldType: FieldTypes.SelectField,
                 value: entity ? entity.object.allocatedLodgingId : undefined,
+                key: 'allocatedLodgingId',
+                label: 'Allocated lodging',
                 optionsData: dependencies.availableLodgings,
                 displayNameSelector: 'object.name',
-                key: 'allocatedLodgingId',
+                extraOptions: [{
+                    value: null,
+                    displayName: 'None'
+                }] as SelectFieldOption[],
                 order: 2,
                 showColumn: true
             } as SelectField),
             new Field({
-                fieldType: FieldTypes.dateTime,
+                fieldType: FieldTypes.DateField,
                 value: entity ? entity.object.checkIn : undefined,
                 key: 'checkIn',
                 validators: [Validators.required],
@@ -47,23 +52,22 @@ export class NgLodgingReservationsFieldsConfig extends FieldsConfig<LodgingReser
                 showColumn: true
             } as Field),
             new Field({
-                fieldType: FieldTypes.dateTime,
+                fieldType: FieldTypes.DateField,
                 value: entity ? entity.object.checkOut : undefined,
                 key: 'checkOut',
                 validators: [Validators.required],
                 order: 4,
                 showColumn: true
             } as Field),
-            new SelectField({
-                fieldType: FieldTypes.SelectField,
-                value: entity ? entity.object.checkOut : undefined,
-                key: 'checkOut',
+            new Field({
+                fieldType: FieldTypes.int,
+                value: entity ? entity.object.persons : undefined,
+                key: 'persons',
+                label: 'Persons',
                 validators: [Validators.required],
-                optionsData: LodgingReservation.ReservationStatusEnum,
-                optionsDataType: 'enum',
                 order: 5,
                 showColumn: true
-            } as SelectField),
+            } as Field),
         ];
 
         // Id field must only be added for edit forms.

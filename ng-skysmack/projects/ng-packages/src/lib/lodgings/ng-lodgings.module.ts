@@ -7,6 +7,8 @@ import { NgLodgingsStore } from './redux/ng-lodgings-store';
 import { registerEpics } from '@skysmack/ng-redux';
 import { NgLodgingsEpics } from './redux/ng-lodgings-epics';
 import { NgLodgingTypesEpics } from './redux/ng-lodging-types-epics';
+import { NgLodgingTypesActions } from './redux/ng-lodging-types-actions';
+import { NgLodgingTypesStore } from './redux/ng-lodgings-types-store';
 
 @NgModule({
   imports: [],
@@ -14,7 +16,9 @@ import { NgLodgingTypesEpics } from './redux/ng-lodging-types-epics';
   providers: [
     [
       { provide: 'NgLodgingsActions', useClass: NgLodgingsActions },
-      { provide: 'NgLodgingsStore', useClass: NgLodgingsStore }
+      { provide: 'NgLodgingsStore', useClass: NgLodgingsStore },
+      { provide: 'NgLodgingTypesActions', useClass: NgLodgingTypesActions },
+      { provide: 'NgLodgingTypesStore', useClass: NgLodgingTypesStore }
     ]
   ],
 })
