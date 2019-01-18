@@ -7,6 +7,8 @@ import { NgProductsStore } from './redux/ng-products-store';
 import { NgProductsEpics } from './redux/ng-products-epics';
 import { NgProductTypesEpics } from './redux/ng-product-types-epics';
 import { registerEpics } from '@skysmack/ng-redux';
+import { NgProductTypesActions } from './redux/ng-product-types-actions';
+import { NgProductTypesStore } from './redux/ng-product-types-store';
 
 @NgModule({
   imports: [],
@@ -14,7 +16,9 @@ import { registerEpics } from '@skysmack/ng-redux';
   providers: [
     [
       { provide: 'NgProductsActions', useClass: NgProductsActions },
-      { provide: 'NgProductsStore', useClass: NgProductsStore }
+      { provide: 'NgProductsStore', useClass: NgProductsStore },
+      { provide: 'NgProductTypesActions', useClass: NgProductTypesActions },
+      { provide: 'NgProductTypesStore', useClass: NgProductTypesStore }
     ]
   ]
 })
