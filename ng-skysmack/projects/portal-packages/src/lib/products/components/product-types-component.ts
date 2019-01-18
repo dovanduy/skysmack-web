@@ -16,7 +16,7 @@ export const productTypesRoutes: Routes = [
             { path: 'edit/:id', component: ProductTypesEditComponent, pathMatch: 'full' },
             { path: 'create', component: ProductTypesCreateComponent, pathMatch: 'full' },
         ]
-    }
+    },
     {
         path: 'types/fields', component: DynamicFieldsIndexComponent, data, children: [
             { path: 'create', component: DynamicFieldsCreateComponent, pathMatch: 'full', data },
