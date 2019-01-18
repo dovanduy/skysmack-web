@@ -48,7 +48,7 @@ export class LodgingsReservationsCreateComponent extends RecordFormComponent<Lod
     this.lodgingsActions.getPaged(this.packagePath, new PagedQuery());
     this.lodgingTypesActions.getPaged(this.packagePath, new PagedQuery());
 
-    this.subscriptionHandler.register(this.skysmackStore.getCurrentPackage(this.packagePath).pipe(
+    this.subscriptionHandler.register(this.skysmackStore.getDependencyPackage(this.packagePath).pipe(
       switchMap(loadedPackage => {
         return combineLatest(
           this.lodgingsStore.get(loadedPackage._package.path),

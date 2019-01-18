@@ -68,7 +68,6 @@ export abstract class RecordActionsBase<TStateType, TStore extends Store<TStateT
     }
 
     public add<TRecord extends Record<TKey>, TKey>(records: LocalObject<TRecord, TKey>[], packagePath: string) {
-        console.log('1. ADD:', records);
         this.store.dispatch(Object.assign({}, new ReduxAction<any, ReduxOfflineMeta<TRecord[], HttpResponse, LocalObject<TRecord, TKey>[]>>({
             type: this.prefix + RecordActionsBase.ADD,
             meta: new ReduxOfflineMeta(

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Observable, combineLatest } from 'rxjs';
 import { switchMap, map } from 'rxjs/operators';
-import { LocalObject, EnumHelpers, toLocalObject, PagedQuery } from '@skysmack/framework';
+import { LocalObject, EnumHelpers, toLocalObject, PagedQuery, log } from '@skysmack/framework';
 import { ExtendedReservation, LodgingReservationsAppState, LodgingReservation } from '@skysmack/packages-lodging-reservations';
 import { EntityAction } from '@skysmack/ng-ui';
 import { NgLodgingReservationsStore, NgLodgingsStore, NgLodgingTypesStore, NgLodgingReservationsFieldsConfig, NgLodgingsActions, NgLodgingTypesActions, NgLodgingReservationsActions, NgSkysmackStore } from '@skysmack/ng-packages';
@@ -86,38 +86,40 @@ export class LodgingsReservationsIndexComponent extends RecordIndexComponent<Lod
 
   ngOnInit() {
     super.ngOnInit();
-    this.lodgingsActions.getPaged(this.packagePath, new PagedQuery());
-    this.lodgingTypesActions.getPaged(this.packagePath, new PagedQuery());
+    this.extendedReservations$ = this.skysmackStore.getDependencyPackage(this.packagePath).pipe(
+      switchMap(loadedPackage => {
+        this.lodgingsActions.getPaged(loadedPackage._package.path, new PagedQuery({ pageNumber: 1, pageSize: 50 }));
+        this.lodgingTypesActions.getPaged(loadedPackage._package.path, new PagedQuery({ pageNumber: 1, pageSize: 50 }));
 
-    this.extendedReservations$ = this.skysmackStore.getCurrentPackage(this.packagePath).pipe(
-      switchMap(loadedPackage => combineLatest(
-        this.entities$,
-        this.lodgingsStore.get(loadedPackage._package.path),
-        this.lodgingTypesStore.get(loadedPackage._package.path),
-      ).pipe(
-        map(values => {
-          const reservations: LocalObject<LodgingReservation, number>[] = values[0];
-          const lodgings = values[1];
-          const lodgingTypes = values[2];
-          if (!reservations || reservations.length === 0) {
-            return [] as LocalObject<ExtendedReservation, number>[];
-          } else {
-            return reservations.map(reservation => {
+        return combineLatest(
+          this.entities$,
+          this.lodgingsStore.get(loadedPackage._package.path),
+          this.lodgingTypesStore.get(loadedPackage._package.path),
+        ).pipe(
+          map(values => {
+            const reservations: LocalObject<LodgingReservation, number>[] = values[0];
+            const lodgings = values[1];
+            const lodgingTypes = values[2];
+            if (!reservations || reservations.length === 0) {
+              return [] as LocalObject<ExtendedReservation, number>[];
+            } else {
+              return reservations.map(reservation => {
 
-              let reservationLodging;
-              if (reservation && reservation.object) {
-                reservationLodging = lodgings.find(lodging => lodging.object.id === reservation.object.allocatedLodgingId);
-              }
+                let reservationLodging;
+                if (reservation && reservation.object) {
+                  reservationLodging = lodgings.find(lodging => lodging.object.id === reservation.object.allocatedLodgingId);
+                }
 
-              let reservationLodgingType;
-              if (reservation && reservation.object) {
-                reservationLodgingType = lodgingTypes.find(lodgingType => lodgingType.object.id === reservation.object.lodgingTypeId);
-              }
-              return toLocalObject(new ExtendedReservation(reservation, reservationLodging, reservationLodgingType), undefined, reservation.localId, reservation.status, reservation.foreignKey, reservation.isNew);
-            });
-          }
-        }))
-      )
+                let reservationLodgingType;
+                if (reservation && reservation.object) {
+                  reservationLodgingType = lodgingTypes.find(lodgingType => lodgingType.object.id === reservation.object.lodgingTypeId);
+                }
+                return toLocalObject(new ExtendedReservation(reservation, reservationLodging, reservationLodgingType), undefined, reservation.localId, reservation.status, reservation.foreignKey, reservation.isNew);
+              });
+            }
+          })
+        );
+      })
     );
   }
 

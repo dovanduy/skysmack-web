@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { NgRedux } from '@angular-redux/store';
-import { map, filter } from 'rxjs/operators';
+import { map, filter, switchMap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
-import { LocalObject, toLocalObject, flatten, safeHasValue, Package } from '@skysmack/framework';
+import { LocalObject, toLocalObject, flatten, safeHasValue, Package, defined } from '@skysmack/framework';
 import { Skysmack, SkysmackAppState } from '@skysmack/packages-skysmack-core';
 import { PackageLoader } from '../packages/package-loader';
 import { LoadedPackage } from '../packages/loaded-package';
@@ -37,8 +37,20 @@ export class NgSkysmackStore {
         return this.ngRedux.select((state: SkysmackAppState) => state.skysmack.tenantLoaded);
     }
 
-    public getCurrentPackage(path): Observable<LoadedPackage> {
-        return this.ngRedux.select((state: SkysmackAppState) => state.skysmack.skysmack.packages).pipe(flatten<Package>(), filter(_package => _package.path === path), map(_package => PackageLoader.toLoadedPackage(_package)), safeHasValue());
+    public getCurrentPackage(packagePath: string): Observable<LoadedPackage> {
+        return this.ngRedux.select((state: SkysmackAppState) => state.skysmack.skysmack.packages).pipe(flatten<Package>(), filter(_package => _package.path === packagePath), map(_package => PackageLoader.toLoadedPackage(_package)), safeHasValue());
+    }
+
+    /**
+     * Gets the FIRST package described in the current packages depencies array.
+     * @param packagePath The current package's path.
+     */
+    public getDependencyPackage(packagePath: string): Observable<LoadedPackage> {
+        return this.getCurrentPackage(packagePath).pipe(
+            map(loadedPackage => loadedPackage._package.dependencies[0]),
+            defined(),
+            switchMap(dependencyPackagePath => this.getCurrentPackage(dependencyPackagePath))
+        );
     }
 
     public getAuthenticationPackages(): Observable<Package[]> {
