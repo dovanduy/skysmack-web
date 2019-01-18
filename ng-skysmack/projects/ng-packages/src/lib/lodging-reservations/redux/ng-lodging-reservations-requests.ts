@@ -10,7 +10,7 @@ export class NgLodgingReservationsRequests extends NgRecordRequests<LodgingReser
         protected http: HttpClient,
         @Inject('ApiDomain') protected apiDomain: ApiDomain
     ) {
-        super(http, apiDomain, 'LODGING_RESERVATIONS_', ['lodging-reservations']);
+        super(http, apiDomain, 'LODGING_RESERVATIONS_', []);
     }
 
     // public setPassword(values: { password: string, confirmPassword: string }, packagePath: string, id: number) {

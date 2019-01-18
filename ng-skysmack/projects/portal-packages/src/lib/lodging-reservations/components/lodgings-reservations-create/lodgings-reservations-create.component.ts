@@ -45,11 +45,11 @@ export class LodgingsReservationsCreateComponent extends RecordFormComponent<Lod
   }
 
   public setCreateFields() {
-    this.lodgingsActions.getPaged(this.packagePath, new PagedQuery());
-    this.lodgingTypesActions.getPaged(this.packagePath, new PagedQuery());
-
     this.subscriptionHandler.register(this.skysmackStore.getDependencyPackage(this.packagePath).pipe(
       switchMap(loadedPackage => {
+        this.lodgingsActions.getPaged(loadedPackage._package.path, new PagedQuery());
+        this.lodgingTypesActions.getPaged(loadedPackage._package.path, new PagedQuery());
+
         return combineLatest(
           this.lodgingsStore.get(loadedPackage._package.path),
           this.lodgingTypesStore.get(loadedPackage._package.path)

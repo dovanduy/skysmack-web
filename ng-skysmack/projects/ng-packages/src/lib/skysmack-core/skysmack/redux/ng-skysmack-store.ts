@@ -42,7 +42,7 @@ export class NgSkysmackStore {
     }
 
     /**
-     * Gets the FIRST package described in the current packages depencies array.
+     * Gets the FIRST package described in the current packages dependencies array.
      * @param packagePath The current package's path.
      */
     public getDependencyPackage(packagePath: string): Observable<LoadedPackage> {

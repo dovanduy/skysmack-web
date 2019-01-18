@@ -6,7 +6,7 @@ import { Observable, of } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class NgLodgingReservationsStore extends NgRecordReduxStore<LodgingReservationsAppState, LodgingReservation, number> {
-    constructor(protected ngRedux: NgRedux<LodgingReservationsAppState>) { super(ngRedux, 'lodging-reservations'); }
+    constructor(protected ngRedux: NgRedux<LodgingReservationsAppState>) { super(ngRedux, 'lodgingReservations'); }
 
     public requestAvailableLodgings(path: string, start: string, end: string) {
         // this.store.dispatch(this.actions.getAvailableLodgings(path, start, end));

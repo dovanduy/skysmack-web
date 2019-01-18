@@ -64,6 +64,7 @@ export class RecordFormComponent<TAppState, TRecord extends Record<TKey>, TKey, 
 
     protected create(fh: FormHelper) {
         fh.formValid(() => {
+            console.log(this.packagePath)
             this.actions.add<TRecord, TKey>([this.extractFormValues(fh)], this.packagePath);
             this.editorNavService.hideEditorNav();
         });

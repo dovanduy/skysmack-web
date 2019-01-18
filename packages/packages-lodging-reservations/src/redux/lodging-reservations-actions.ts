@@ -16,7 +16,7 @@ export class LodgingReservationsActions extends RecordActionsBase<LodgingReserva
     // public static REMOVE_ROLES_SUCCESS = 'REMOVE_ROLES_SUCCESS';
     // public static REMOVE_ROLES_FAILURE = 'REMOVE_ROLES_FAILURE';
 
-    constructor(protected store: Store<LodgingReservationsAppState>) { super(store, 'LODGING_RESERVATIONS_', ['lodging-reservations']); }
+    constructor(protected store: Store<LodgingReservationsAppState>) { super(store, 'LODGING_RESERVATIONS_', []); }
 
     // public getLodgingReservationsRoles(packagePath: string, ids: number[]): void {
     //     this.store.dispatch(Object.assign({}, new ReduxAction<GetLodgingReservationsRolesPayload>({
