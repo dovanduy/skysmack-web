@@ -1,28 +1,16 @@
-import { APP_INITIALIZER, Injectable } from '@angular/core';
+import { APP_INITIALIZER } from '@angular/core';
 import { SkysmackApiDomain } from '../../requests/skysmack-api-domain';
 import { loadPersonPackage } from '../packages/persons-package-manifest';
-import { Observable, of } from 'rxjs';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { loadProductPackage } from '../packages/products-package-manifest';
 import { loadLodgingPackage } from '../packages/lodgings-package-manifest';
 import { loadOauth2Package } from '../packages/oauth2-package-manifest';
-import { MenuItemProvider, MenuItem } from '@skysmack/ng-ui';
-import { NgSkysmackActions, PackageLoader } from '@skysmack/ng-packages';
+import { NgSkysmackActions, PackageLoader, NgLodgingsReservationsMenuItemProvider } from '@skysmack/ng-packages';
 import { AuthorizationInterceptor, configureLanguage, LanguageService } from '@skysmack/portal-ui';
 import { loadMaintenancePackage } from '../packages/maintenance-package-manifest';
 import { loadIdentitiesPackage } from '../packages/identities-package-manifest';
 import { loadLodgingReservationPackage } from '../packages/lodging-reservations-package-manifest';
-
-// TODO: Delete as soon as one real other menu item provider has been created.
-@Injectable({ providedIn: 'root' })
-export class TempMenuItemProvider extends MenuItemProvider {
-    public menuId = 'temp';
-    public icon = 'shortText';
-
-    public getItems(menuId: string, packageId: string): Observable<MenuItem[]> {
-        return of([]);
-    }
-}
+import { MenuItemProvider } from '@skysmack/ng-ui';
 
 export function configureSkysmack(actions: NgSkysmackActions) {
     return () => actions.getSkysmack();
@@ -48,9 +36,7 @@ export const packageLoaders = [
 ];
 
 export const menuProviders = [
-    { provide: MenuItemProvider.TOKEN, useClass: TempMenuItemProvider, multi: true },
-    // { provide: MenuItemProvider.TOKEN, useClass: PersonsBasketMenuItemProvider, multi: true },
-    // { provide: MenuItemProvider.TOKEN, useClass: LodgingsReservationsMenuItemProvider, multi: true }
+    { provide: MenuItemProvider.TOKEN, useClass: NgLodgingsReservationsMenuItemProvider, multi: true }
 ];
 
 export const injectionTokens = [
