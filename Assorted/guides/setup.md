@@ -3,6 +3,15 @@
 ## Global npm packages to install
 npm i -g http-server @angular/cli npm-check-updates lighthouse lerna
 
+## Backend stuff
+- Install MSSQL + Workbench: https://dev.mysql.com/downloads/workbench/
+    + Remember to click the banner, not the little download button.
+- Install Google Cloud Emulator SDK (remember to install beta commands)
+    + See this guide for setup: https://cloud.google.com/datastore/docs/tools/datastore-emulator
+- Build the back end
+- Run npm i in portal.ui (for swagger)
+- Seed the database (see seeding-backend.md)
+
 ## Configuring the hosts file
 1. Go to `C:\Windows\System32\drivers\etc`
 2. Add below

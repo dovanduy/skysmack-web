@@ -8,12 +8,7 @@ import { Observable, of } from 'rxjs';
 export class NgLodgingReservationsStore extends NgRecordReduxStore<LodgingReservationsAppState, LodgingReservation, number> {
     constructor(protected ngRedux: NgRedux<LodgingReservationsAppState>) { super(ngRedux, 'lodgingReservations'); }
 
-    public requestAvailableLodgings(path: string, start: string, end: string) {
-        // this.store.dispatch(this.actions.getAvailableLodgings(path, start, end));
-    }
-
-    public getAvailableLodgings(path: string): Observable<any> {
-        return of('implement this');
-        // return this.store.select((state: IAppState) => this.getReduxArea<LodgingsReservationsFeatureState>(state).availableLodgings).pipe(extractIfDictionary(path), defined(), hasValue());
+    public getAvailableLodgings(path: string, start: string, end: string) {
+        // create correct selector
     }
 }
