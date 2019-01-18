@@ -353,4 +353,4 @@ export class LodgingReservationsActions extends RecordActionsBase<LodgingReserva
     //         }
     //     })));
     // }
-
+}
