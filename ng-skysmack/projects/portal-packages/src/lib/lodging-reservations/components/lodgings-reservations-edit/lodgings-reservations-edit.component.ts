@@ -36,6 +36,7 @@ export class LodgingsReservationsEditComponent extends RecordFormComponent<Lodgi
 
   public setEditFields() {
     this.actions.getSingle(this.packagePath, this.entityId);
+
     this.subscriptionHandler.register(this.skysmackStore.getDependencyPackage(this.packagePath).pipe(
       switchMap(loadedPackage => {
         this.lodgingsActions.getPaged(loadedPackage._package.path, new PagedQuery());
