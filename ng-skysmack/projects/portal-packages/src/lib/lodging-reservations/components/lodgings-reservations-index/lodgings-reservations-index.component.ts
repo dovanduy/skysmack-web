@@ -21,6 +21,9 @@ export class LodgingsReservationsIndexComponent extends RecordIndexComponent<Lod
   public entityActions: EntityAction[] = [
     // Checkin
     new EntityAction().asEventAction('Checkin', this.checkIn, 'label', this).setShowLogic((entity: LocalObject<ExtendedReservation, number>) => {
+      console.log(LodgingReservation.ReservationStatusEnum);
+      console.log(EnumHelpers.toIndexEnum(LodgingReservation.ReservationStatusEnum));
+      console.log(entity.object.reservation.object.reservationStatus);
       return EnumHelpers.toIndexEnum(LodgingReservation.ReservationStatusEnum)[entity.object.reservation.object.reservationStatus] === LodgingReservation.ReservationStatusEnum.Reserved;
     }),
     new EntityAction().asEventAction('Undo Checkin', this.undoCheckin, 'label', this).setShowLogic((entity: LocalObject<ExtendedReservation, number>) => {
