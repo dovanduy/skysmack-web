@@ -24,7 +24,6 @@ export function lodgingReservationsReducer(state = new LodgingReservationsState(
             const castedAction = action as ReduxAction<StrIndex<StrIndex<number>>, StateKeyMeta>;
             const availableLodgings = {};
             availableLodgings[castedAction.meta.stateKey] = castedAction.payload;
-            console.log(availableLodgings, castedAction.payload);
             return {
                 ...state,
                 availableLodgings

@@ -43,7 +43,7 @@ export class LodgingsDeparturesComponent extends LodgingsReservationsIndexCompon
   private filter() {
     this.filterBuilder = new RSQLFilterBuilder();
     this.filterBuilder
-      .column('status').like(LodgingReservation.ReservationStatusEnum.InStay).and()
+      .column('status').like(LodgingReservation.statusEnum.InStay).and()
       .column('checkOut').lessThanOrEqualTo(moment().toDate());
   }
 

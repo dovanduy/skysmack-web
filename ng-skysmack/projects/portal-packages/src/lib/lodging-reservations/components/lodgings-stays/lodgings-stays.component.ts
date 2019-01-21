@@ -41,7 +41,7 @@ export class LodgingsStaysComponent extends LodgingsReservationsIndexComponent i
 
   private filter() {
     this.filterBuilder = new RSQLFilterBuilder();
-    this.filterBuilder.column('status').like(LodgingReservation.ReservationStatusEnum.InStay);
+    this.filterBuilder.column('status').like(LodgingReservation.statusEnum.InStay);
   }
 
   private sort() {
