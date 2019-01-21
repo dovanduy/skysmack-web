@@ -1,8 +1,9 @@
 import { RecordActionsBase, ReduxAction, Effect, EffectRequest, OfflineMeta, ReduxOfflineMeta, GetIntervalPayload } from '@skysmack/redux';
-import { HttpMethod, HttpResponse } from '@skysmack/framework';
+import { HttpMethod, HttpResponse, LocalObject } from '@skysmack/framework';
 import { LodgingReservationsAppState } from './lodging-reservations-reducer';
 import { Store } from 'redux';
 import { CheckIn } from '../models/check-in';
+import { LodgingReservation } from '../models';
 
 export class LodgingReservationsActions extends RecordActionsBase<LodgingReservationsAppState, Store<LodgingReservationsAppState>> {
     public static GET_AVAILABLE_LODGINGS = 'GET_AVAILABLE_LODGINGS';
@@ -57,7 +58,7 @@ export class LodgingReservationsActions extends RecordActionsBase<LodgingReserva
         })))
     }
 
-    public checkIn(packagePath: string, checkIns: CheckIn[]) {
+    public checkIn(packagePath: string, entity: LocalObject<LodgingReservation, number>, checkIns: CheckIn[]) {
         this.store.dispatch(Object.assign({}, new ReduxAction<any, ReduxOfflineMeta<CheckIn[], HttpResponse, CheckIn[]>>({
             type: this.prefix + LodgingReservationsActions.CHECK_IN,
             meta: new ReduxOfflineMeta(
@@ -71,21 +72,21 @@ export class LodgingReservationsActions extends RecordActionsBase<LodgingReserva
                         type: this.prefix + LodgingReservationsActions.CHECK_IN_SUCCESS,
                         meta: {
                             stateKey: packagePath,
-                            value: checkIns
+                            value: entity
                         }
                     }),
                     new ReduxAction({
                         type: this.prefix + LodgingReservationsActions.CHECK_IN_FAILURE,
                         meta: {
                             stateKey: packagePath,
-                            value: checkIns
+                            value: entity
                         }
                     })
                 )
             )
         })));
     }
-    public undoCheckIn(packagePath: string, reservationIds: number[]) {
+    public undoCheckIn(packagePath: string, entity: LocalObject<LodgingReservation, number>, reservationIds: number[]) {
         this.store.dispatch(Object.assign({}, new ReduxAction<any, ReduxOfflineMeta<number[], HttpResponse, number[]>>({
             type: this.prefix + LodgingReservationsActions.UNDO_CHECK_IN,
             meta: new ReduxOfflineMeta(
@@ -99,14 +100,14 @@ export class LodgingReservationsActions extends RecordActionsBase<LodgingReserva
                         type: this.prefix + LodgingReservationsActions.UNDO_CHECK_IN_SUCCESS,
                         meta: {
                             stateKey: packagePath,
-                            value: reservationIds
+                            value: entity
                         }
                     }),
                     new ReduxAction({
                         type: this.prefix + LodgingReservationsActions.UNDO_CHECK_IN_FAILURE,
                         meta: {
                             stateKey: packagePath,
-                            value: reservationIds
+                            value: entity
                         }
                     })
                 )
@@ -114,7 +115,7 @@ export class LodgingReservationsActions extends RecordActionsBase<LodgingReserva
         })));
     }
 
-    public cancel(packagePath: string, reservationIds: number[]) {
+    public cancel(packagePath: string, entity: LocalObject<LodgingReservation, number>, reservationIds: number[]) {
         this.store.dispatch(Object.assign({}, new ReduxAction<any, ReduxOfflineMeta<number[], HttpResponse, number[]>>({
             type: this.prefix + LodgingReservationsActions.CANCEL,
             meta: new ReduxOfflineMeta(
@@ -128,21 +129,21 @@ export class LodgingReservationsActions extends RecordActionsBase<LodgingReserva
                         type: this.prefix + LodgingReservationsActions.CANCEL_SUCCESS,
                         meta: {
                             stateKey: packagePath,
-                            value: reservationIds
+                            value: entity
                         }
                     }),
                     new ReduxAction({
                         type: this.prefix + LodgingReservationsActions.CANCEL_FAILURE,
                         meta: {
                             stateKey: packagePath,
-                            value: reservationIds
+                            value: entity
                         }
                     })
                 )
             )
         })));
     }
-    public undoCancel(packagePath: string, reservationIds: number[]) {
+    public undoCancel(packagePath: string, entity: LocalObject<LodgingReservation, number>, reservationIds: number[]) {
         this.store.dispatch(Object.assign({}, new ReduxAction<any, ReduxOfflineMeta<number[], HttpResponse, number[]>>({
             type: this.prefix + LodgingReservationsActions.UNDO_CANCEL,
             meta: new ReduxOfflineMeta(
@@ -156,14 +157,14 @@ export class LodgingReservationsActions extends RecordActionsBase<LodgingReserva
                         type: this.prefix + LodgingReservationsActions.UNDO_CANCEL_SUCCESS,
                         meta: {
                             stateKey: packagePath,
-                            value: reservationIds
+                            value: entity
                         }
                     }),
                     new ReduxAction({
                         type: this.prefix + LodgingReservationsActions.UNDO_CANCEL_FAILURE,
                         meta: {
                             stateKey: packagePath,
-                            value: reservationIds
+                            value: entity
                         }
                     })
                 )
@@ -171,7 +172,7 @@ export class LodgingReservationsActions extends RecordActionsBase<LodgingReserva
         })));
     }
 
-    public checkOut(packagePath: string, reservationIds: number[]) {
+    public checkOut(packagePath: string, entity: LocalObject<LodgingReservation, number>, reservationIds: number[]) {
         this.store.dispatch(Object.assign({}, new ReduxAction<any, ReduxOfflineMeta<number[], HttpResponse, number[]>>({
             type: this.prefix + LodgingReservationsActions.CHECK_OUT,
             meta: new ReduxOfflineMeta(
@@ -185,21 +186,21 @@ export class LodgingReservationsActions extends RecordActionsBase<LodgingReserva
                         type: this.prefix + LodgingReservationsActions.CHECK_OUT_SUCCESS,
                         meta: {
                             stateKey: packagePath,
-                            value: reservationIds
+                            value: entity
                         }
                     }),
                     new ReduxAction({
                         type: this.prefix + LodgingReservationsActions.CHECK_OUT_FAILURE,
                         meta: {
                             stateKey: packagePath,
-                            value: reservationIds
+                            value: entity
                         }
                     })
                 )
             )
         })));
     }
-    public undoCheckOut(packagePath: string, reservationIds: number[]) {
+    public undoCheckOut(packagePath: string, entity: LocalObject<LodgingReservation, number>, reservationIds: number[]) {
         this.store.dispatch(Object.assign({}, new ReduxAction<any, ReduxOfflineMeta<number[], HttpResponse, number[]>>({
             type: this.prefix + LodgingReservationsActions.UNDO_CHECK_OUT,
             meta: new ReduxOfflineMeta(
@@ -213,14 +214,14 @@ export class LodgingReservationsActions extends RecordActionsBase<LodgingReserva
                         type: this.prefix + LodgingReservationsActions.UNDO_CHECK_OUT_SUCCESS,
                         meta: {
                             stateKey: packagePath,
-                            value: reservationIds
+                            value: entity
                         }
                     }),
                     new ReduxAction({
                         type: this.prefix + LodgingReservationsActions.UNDO_CHECK_OUT_FAILURE,
                         meta: {
                             stateKey: packagePath,
-                            value: reservationIds
+                            value: entity
                         }
                     })
                 )
@@ -228,7 +229,7 @@ export class LodgingReservationsActions extends RecordActionsBase<LodgingReserva
         })));
     }
 
-    public move(packagePath: string, moves: CheckIn[]) {
+    public move(packagePath: string, entity: LocalObject<LodgingReservation, number>, moves: CheckIn[]) {
         this.store.dispatch(Object.assign({}, new ReduxAction<any, ReduxOfflineMeta<CheckIn[], HttpResponse, CheckIn[]>>({
             type: this.prefix + LodgingReservationsActions.MOVE,
             meta: new ReduxOfflineMeta(
@@ -242,14 +243,14 @@ export class LodgingReservationsActions extends RecordActionsBase<LodgingReserva
                         type: this.prefix + LodgingReservationsActions.MOVE_SUCCESS,
                         meta: {
                             stateKey: packagePath,
-                            value: moves
+                            value: entity
                         }
                     }),
                     new ReduxAction({
                         type: this.prefix + LodgingReservationsActions.MOVE_FAILURE,
                         meta: {
                             stateKey: packagePath,
-                            value: moves
+                            value: entity
                         }
                     })
                 )
@@ -257,7 +258,7 @@ export class LodgingReservationsActions extends RecordActionsBase<LodgingReserva
         })));
     }
 
-    public undoMove(packagePath: string, reservationIds: number[]) {
+    public undoMove(packagePath: string, entity: LocalObject<LodgingReservation, number>, reservationIds: number[]) {
         this.store.dispatch(Object.assign({}, new ReduxAction<any, ReduxOfflineMeta<number[], HttpResponse, number[]>>({
             type: this.prefix + LodgingReservationsActions.UNDO_MOVE,
             meta: new ReduxOfflineMeta(
@@ -271,14 +272,14 @@ export class LodgingReservationsActions extends RecordActionsBase<LodgingReserva
                         type: this.prefix + LodgingReservationsActions.UNDO_MOVE_SUCCESS,
                         meta: {
                             stateKey: packagePath,
-                            value: reservationIds
+                            value: entity
                         }
                     }),
                     new ReduxAction({
                         type: this.prefix + LodgingReservationsActions.UNDO_MOVE_FAILURE,
                         meta: {
                             stateKey: packagePath,
-                            value: reservationIds
+                            value: entity
                         }
                     })
                 )
@@ -286,7 +287,7 @@ export class LodgingReservationsActions extends RecordActionsBase<LodgingReserva
         })));
     }
 
-    public noShow(packagePath: string, reservationIds: number[]) {
+    public noShow(packagePath: string, entity: LocalObject<LodgingReservation, number>, reservationIds: number[]) {
         this.store.dispatch(Object.assign({}, new ReduxAction<any, ReduxOfflineMeta<number[], HttpResponse, number[]>>({
             type: this.prefix + LodgingReservationsActions.NO_SHOW,
             meta: new ReduxOfflineMeta(
@@ -300,21 +301,21 @@ export class LodgingReservationsActions extends RecordActionsBase<LodgingReserva
                         type: this.prefix + LodgingReservationsActions.NO_SHOW_SUCCESS,
                         meta: {
                             stateKey: packagePath,
-                            value: reservationIds
+                            value: entity
                         }
                     }),
                     new ReduxAction({
                         type: this.prefix + LodgingReservationsActions.NO_SHOW_FAILURE,
                         meta: {
                             stateKey: packagePath,
-                            value: reservationIds
+                            value: entity
                         }
                     })
                 )
             )
         })));
     }
-    public undoNoShow(packagePath: string, reservationIds: number[]) {
+    public undoNoShow(packagePath: string, entity: LocalObject<LodgingReservation, number>, reservationIds: number[]) {
         this.store.dispatch(Object.assign({}, new ReduxAction<any, ReduxOfflineMeta<number[], HttpResponse, number[]>>({
             type: this.prefix + LodgingReservationsActions.UNDO_NO_SHOW,
             meta: new ReduxOfflineMeta(
@@ -328,14 +329,14 @@ export class LodgingReservationsActions extends RecordActionsBase<LodgingReserva
                         type: this.prefix + LodgingReservationsActions.UNDO_NO_SHOW_SUCCESS,
                         meta: {
                             stateKey: packagePath,
-                            value: reservationIds
+                            value: entity
                         }
                     }),
                     new ReduxAction({
                         type: this.prefix + LodgingReservationsActions.UNDO_NO_SHOW_FAILURE,
                         meta: {
                             stateKey: packagePath,
-                            value: reservationIds
+                            value: entity
                         }
                     })
                 )
