@@ -1,12 +1,12 @@
 import { Injectable, Inject } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { ApiDomain } from '@skysmack/framework';
+import { ApiDomain, StrIndex } from '@skysmack/framework';
 import { LodgingReservation } from '@skysmack/packages-lodging-reservations';
 import { NgRecordRequests } from '@skysmack/ng-redux';
 import { Observable, of } from 'rxjs';
 import { retry, catchError, map } from 'rxjs/operators';
-import { ReduxAction } from '@skysmack/redux';
-import { NgLodgingReservationsActions } from '@skysmack/ng-packages/lib';
+import { ReduxAction, StateKeyMeta } from '@skysmack/redux';
+import { NgLodgingReservationsActions } from './ng-lodging-reservations-actions';
 
 @Injectable({ providedIn: 'root' })
 export class NgLodgingReservationsRequests extends NgRecordRequests<LodgingReservation, number> {
@@ -18,13 +18,17 @@ export class NgLodgingReservationsRequests extends NgRecordRequests<LodgingReser
     }
 
 
-    // TODO: Define proper return type.
-    public getAvailableLodgings(packagePath: string, start: string, end: string): Observable<ReduxAction<any> | ReduxAction<HttpErrorResponse>> {
+    // TODO: Ensure success return type is correct.
+    public getAvailableLodgings(packagePath: string, start: string, end: string): Observable<ReduxAction<StrIndex<StrIndex<number>>> | ReduxAction<HttpErrorResponse>> {
         const url = `${this.apiDomain.domain}/${packagePath}/available/${start}/${end}`;
         return this.http.get<any>(url, { observe: 'response' }).pipe(
-            map(response => {
-                return new ReduxAction();
-            }),
+            map(httpResponse => Object.assign({}, new ReduxAction<StrIndex<StrIndex<number>>, StateKeyMeta>({
+                type: this.prefix + NgLodgingReservationsActions.GET_AVAILABLE_LODGINGS_SUCCESS,
+                payload: httpResponse.body,
+                meta: {
+                    stateKey: packagePath
+                }
+            }))),
             retry(this.retryTimes),
             catchError((error) => of(Object.assign({}, new ReduxAction({
                 type: this.prefix + NgLodgingReservationsActions.GET_AVAILABLE_LODGINGS_FAILURE,

@@ -46,6 +46,17 @@ export class LodgingReservationsActions extends RecordActionsBase<LodgingReserva
 
     constructor(protected store: Store<LodgingReservationsAppState>) { super(store, 'LODGING_RESERVATIONS_', []); }
 
+    public getAvailableLodgings(packagePath: string, start: string, end: string) {
+        this.store.dispatch(Object.assign({}, new ReduxAction<GetIntervalPayload>({
+            type: LodgingReservationsActions.GET_AVAILABLE_LODGINGS,
+            payload: {
+                packagePath,
+                start,
+                end
+            }
+        })))
+    }
+
     public checkIn(packagePath: string, checkIns: CheckIn[]) {
         this.store.dispatch(Object.assign({}, new ReduxAction<any, ReduxOfflineMeta<CheckIn[], HttpResponse, CheckIn[]>>({
             type: this.prefix + LodgingReservationsActions.CHECK_IN,
@@ -332,14 +343,4 @@ export class LodgingReservationsActions extends RecordActionsBase<LodgingReserva
         })));
     }
 
-    public getAvailableLodgings(packagePath: string, start: string, end: string) {
-        this.store.dispatch(Object.assign({}, new ReduxAction<GetIntervalPayload>({
-            type: LodgingReservationsActions.GET_AVAILABLE_LODGINGS,
-            payload: {
-                packagePath,
-                start,
-                end
-            }
-        })))
-    }
 }

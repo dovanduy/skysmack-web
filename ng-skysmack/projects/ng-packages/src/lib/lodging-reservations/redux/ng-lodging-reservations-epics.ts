@@ -6,6 +6,7 @@ import { ActionsObservable, ofType } from 'redux-observable';
 import { Observable } from 'rxjs';
 import { HttpErrorResponse } from '@skysmack/framework';
 import { switchMap } from 'rxjs/operators';
+import { GetIntervalPayload, ReduxAction } from '@skysmack/redux';
 
 @Injectable({ providedIn: 'root' })
 export class NgLodgingReservationsEpics extends RecordEpicsBase<LodgingReservation, number> {
@@ -19,8 +20,8 @@ export class NgLodgingReservationsEpics extends RecordEpicsBase<LodgingReservati
     // TODO: Set proper return type.
     public getAvailableLodgingsEpic = (action$: ActionsObservable<any>): Observable<any | HttpErrorResponse> => action$.pipe(
         ofType(LodgingReservationsActions.GET_AVAILABLE_LODGINGS),
-        switchMap((action) => this.requests.getAvailableLodgings(
-            action.payload.path,
+        switchMap((action: ReduxAction<GetIntervalPayload>) => this.requests.getAvailableLodgings(
+            action.payload.packagePath,
             action.payload.start,
             action.payload.end
         ))
