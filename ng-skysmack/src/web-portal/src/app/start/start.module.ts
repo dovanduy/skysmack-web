@@ -27,36 +27,40 @@ import { environment } from './../../environments/environment';
   imports: [
     RouterModule.forRoot([
       {
-        path: 'packages',
+        path: 'skysmack/loadPackages/packages',
         loadChildren: './../packages/modules/packages_wrapper.module#PackagesWrapperModule'
       },
       {
-        path: 'identities',
+        path: 'skysmack/loadPackages/identities',
         loadChildren: './../packages/modules/identities_wrapper.module#IdentitiesWrapperModule'
       },
       {
-        path: 'persons',
+        path: 'skysmack/loadPackages/persons',
         loadChildren: './../packages/modules/persons_wrapper.module#PersonsWrapperModule'
       },
       {
-        path: 'products',
+        path: 'skysmack/loadPackages/products',
         loadChildren: './../packages/modules/products_wrapper.module#ProductsWrapperModule'
       },
       {
-        path: 'lodgings',
+        path: 'skysmack/loadPackages/lodgings',
         loadChildren: './../packages/modules/lodgings_wrapper.module#LodgingsWrapperModule'
       },
       {
-        path: 'lodgingReservations',
+        path: 'skysmack/loadPackages/lodgingReservations',
         loadChildren: './../packages/modules/lodging_reservations_wrapper.module#LodgingReservationsWrapperModule'
       },
       {
-        path: 'oauth2',
+        path: 'skysmack/loadPackages/oauth2',
         loadChildren: './../packages/modules/oauth2_wrapper.module#OAuth2WrapperModule'
       },
       {
-        path: 'maintenance',
+        path: 'skysmack/loadPackages/maintenance',
         loadChildren: './../packages/modules/maintenance_wrapper.module#MaintenanceWrapperModule'
+      },
+      {
+        path: 'skysmack/loadPackages/terminal-payments',
+        loadChildren: './../packages/modules/terminal_payments_wrapper.module#TerminalPaymentsWrapperModule'
       },
       {
         path: '',
