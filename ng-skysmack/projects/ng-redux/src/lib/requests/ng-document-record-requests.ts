@@ -60,7 +60,7 @@ export abstract class NgDocmentRecordRequests<TRecord extends Record<TKey>, TKey
         );
     }
 
-    public getAvailableFields(action: ReduxAction<PackagePathPayload>): Observable<ReduxAction<GetAvailableFieldsSuccessPayload> | ReduxAction<HttpErrorResponse>> {
+    public getAvailableFields(action: ReduxAction<PackagePathPayload>): Observable<ReduxAction<GetAvailableFieldsSuccessPayload>> {
         const url = this.apiDomain.domain + `/${action.payload.packagePath}/fields-available`;
         return this.http.get<FieldValueProviderViewModel[]>(url, { observe: 'response' }).pipe(
             map(httpResponse => Object.assign({}, new ReduxAction<GetAvailableFieldsSuccessPayload>({

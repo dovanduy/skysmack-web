@@ -8,7 +8,8 @@ export class NgLodgingReservationsValidation extends Validation {
         checkIn: '',
         checkOut: '',
         stays: '',
-        reservationStatus: '',
+        status: '',
+        persons: ''
     };
 
     public validationMessages: StrIndex<{}> = {
@@ -24,7 +25,10 @@ export class NgLodgingReservationsValidation extends Validation {
         stays: {
             required: '',
         },
-        reservationStatus: {
+        status: {
+            required: '',
+        },
+        persons: {
             required: '',
         }
     };

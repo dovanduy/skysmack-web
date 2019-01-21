@@ -1,4 +1,4 @@
-import { LocalPageTypes, StrIndex, LocalObject } from '@skysmack/framework';
+import { LocalPageTypes, StrIndex, LocalObject, HttpSuccessResponse, replaceLocalInnerObject, LocalObjectExtensions, LocalObjectStatus } from '@skysmack/framework';
 import { AppState, ReduxAction, recordReducersBase, RecordState } from '@skysmack/redux';
 import { LodgingReservation } from '../models/lodging-reservation';
 import { LodgingReservationsActions } from './lodging-reservations-actions';
@@ -18,41 +18,48 @@ export class LodgingReservationsState implements RecordState<LodgingReservation,
 }
 
 export function lodgingReservationsReducer(state = new LodgingReservationsState(), action: ReduxAction, prefix: string = 'LODGING_RESERVATIONS_'): LodgingReservationsState {
+    state = Object.freeze(state);
+    const newState = { ...state };
+
     switch (action.type) {
         // GET AVAILABLE LODGINGS
         case prefix + LodgingReservationsActions.GET_AVAILABLE_LODGINGS_SUCCESS: {
             const castedAction = action as ReduxAction<StrIndex<StrIndex<number>>, StateKeyMeta>;
-            const availableLodgings = {};
-            availableLodgings[castedAction.meta.stateKey] = castedAction.payload;
-            return {
-                ...state,
-                availableLodgings
-                // TODO: Merge available lodgings instead of overwriting them.
-                // availableLodgings: DictionaryHelpers.mergeDictionaryCollectionImmutable(state.availableLodgings, action.meta.key, action.payload)
-            };
+            // TODO: Merge available lodgings instead of overwriting them.
+            newState.availableLodgings[castedAction.meta.stateKey] = castedAction.payload;
+            return newState;
         }
-        case prefix + LodgingReservationsActions.GET_AVAILABLE_LODGINGS_FAILURE:
+        case prefix + LodgingReservationsActions.GET_AVAILABLE_LODGINGS_FAILURE: {
             console.log('error:', action);
-            return { ...state };
+            return newState;
+        }
 
         // CHECK IN
-        // case prefix + LodgingReservationsActions.CHECK_IN_SUCCESS: {
-        //     return {
-        //         ...state,
-        //         // entities: DictionaryHelpers.patchDictionaryImmutable(state.entities, 'success', action, true)
-        //     };
-        // }
-        // case prefix + LodgingReservationsActions.CHECK_IN_ROLLBACK:
-        //     console.log('error: ', action);
-        //     return { ...state };
-        // case prefix + LodgingReservationsActions.UNDO_CHECK_IN_SUCCESS:
+        case prefix + LodgingReservationsActions.CHECK_IN_SUCCESS: {
+            const castedAction = action as ReduxAction<HttpSuccessResponse<any>, any>;
+            const body = castedAction.payload.body;
+            const updatedObjects = (Array.isArray(body) ? body : [body]).map((newObject, index) => replaceLocalInnerObject<LodgingReservation, number>(castedAction.meta.value[index], newObject));
+            newState.localRecords[castedAction.meta.stateKey] = LocalObjectExtensions.mergeOrAddLocal<LodgingReservation, number>(newState.localRecords[castedAction.meta.stateKey], updatedObjects, LocalObjectStatus.MODIFYING);
+
+            return newState;
+        }
+        case prefix + LodgingReservationsActions.CHECK_IN_FAILURE: {
+            console.log('error: ', action);
+            return newState;
+        }
+        // case prefix + LodgingReservationsActions.UNDO_CHECK_IN_SUCCESS: {
+
         //     return {
         //         ...state,
         //         entities: DictionaryHelpers.patchDictionaryImmutable(state.entities, 'success', action, true)
         //     };
-        // case prefix + LodgingReservationsActions.UNDO_CHECK_IN_ROLLBACK:
+        // }
+
+        // case prefix + LodgingReservationsActions.UNDO_CHECK_IN_FAILURE: {
         //     console.log('error: ', action);
-        //     return { ...state };
+        //     return newState;
+        // }
+
 
         // CANCEL
         // case prefix + LodgingReservationsActions.CANCEL_SUCCESS:
@@ -62,7 +69,7 @@ export function lodgingReservationsReducer(state = new LodgingReservationsState(
         //     };
         // case prefix + LodgingReservationsActions.CANCEL_ROLLBACK:
         //     console.log('error: ', action);
-        //     return { ...state };
+        //     return newState;
         // case prefix + LodgingReservationsActions.UNDO_CANCEL_SUCCESS:
         //     return {
         //         ...state,
@@ -70,7 +77,7 @@ export function lodgingReservationsReducer(state = new LodgingReservationsState(
         //     };
         // case prefix + LodgingReservationsActions.UNDO_CANCEL_ROLLBACK:
         //     console.log('error: ', action);
-        //     return { ...state };
+        //     return newState;
 
         // CHECK OUT
         // case prefix + LodgingReservationsActions.CHECK_OUT_SUCCESS:
@@ -80,7 +87,7 @@ export function lodgingReservationsReducer(state = new LodgingReservationsState(
         //     };
         // case prefix + LodgingReservationsActions.CHECK_OUT_ROLLBACK:
         //     console.log('error: ', action);
-        //     return { ...state };
+        //     return newState;
         // case prefix + LodgingReservationsActions.UNDO_CHECK_OUT_SUCCESS:
         //     return {
         //         ...state,
@@ -88,7 +95,7 @@ export function lodgingReservationsReducer(state = new LodgingReservationsState(
         //     };
         // case prefix + LodgingReservationsActions.UNDO_CHECK_OUT_ROLLBACK:
         //     console.log('error: ', action);
-        //     return { ...state };
+        //     return newState;
 
         // MOVE
         // case prefix + LodgingReservationsActions.MOVE_SUCCESS:
@@ -98,7 +105,7 @@ export function lodgingReservationsReducer(state = new LodgingReservationsState(
         //     };
         // case prefix + LodgingReservationsActions.MOVE_ROLLBACK:
         //     console.log('error: ', action);
-        //     return { ...state };
+        //     return newState;
         // case prefix + LodgingReservationsActions.UNDO_MOVE_SUCCESS:
         //     return {
         //         ...state,
@@ -106,7 +113,7 @@ export function lodgingReservationsReducer(state = new LodgingReservationsState(
         //     };
         // case prefix + LodgingReservationsActions.UNDO_MOVE_ROLLBACK:
         //     console.log('error: ', action);
-        //     return { ...state };
+        //     return newState;
 
         // NO SHOW
         // case prefix + LodgingReservationsActions.NO_SHOW_SUCCESS:
@@ -116,7 +123,7 @@ export function lodgingReservationsReducer(state = new LodgingReservationsState(
         //     };
         // case prefix + LodgingReservationsActions.NO_SHOW_ROLLBACK:
         //     console.log('error: ', action);
-        //     return { ...state };
+        //     return newState;
         // case prefix + LodgingReservationsActions.UNDO_NO_SHOW_SUCCESS:
         //     return {
         //         ...state,
@@ -124,7 +131,7 @@ export function lodgingReservationsReducer(state = new LodgingReservationsState(
         //     };
         // case prefix + LodgingReservationsActions.UNDO_NO_SHOW_ROLLBACK:
         //     console.log('error: ', action);
-        //     return { ...state };
+        //     return newState;
 
         default:
             return {

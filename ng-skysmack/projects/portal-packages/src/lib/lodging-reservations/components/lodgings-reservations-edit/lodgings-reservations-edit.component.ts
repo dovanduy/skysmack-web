@@ -51,6 +51,7 @@ export class LodgingsReservationsEditComponent extends RecordFormComponent<Lodgi
         const entity = values[0];
         const availableLodgings = values[1];
         const availableLodgingTypes = values[2];
+        this.selectedEntity = entity;
 
         return this.getFields(entity, undefined, { availableLodgings, availableLodgingTypes });
       })

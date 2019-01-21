@@ -62,7 +62,7 @@ export class LodgingsReservationsIndexComponent extends RecordIndexComponent<Lod
 
     // Misc
     new EntityAction().asUrlAction('edit', 'Edit', 'edit'),
-    new EntityAction().asEventAction('Delete', this.delete, 'delete'),
+    new EntityAction().asEventAction('Delete', this.delete, 'delete', this),
   ];
 
   public extendedReservations$: Observable<LocalObject<ExtendedReservation, number>[]>;
