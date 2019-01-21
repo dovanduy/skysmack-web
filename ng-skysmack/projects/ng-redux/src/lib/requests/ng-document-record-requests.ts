@@ -1,4 +1,4 @@
-import { Record, ApiDomain, FieldSchemaViewModel, FieldValueProviderViewModel } from '@skysmack/framework';
+import { Record, ApiDomain, FieldSchemaViewModel, FieldValueProviderViewModel, HttpErrorResponse } from '@skysmack/framework';
 import { ReduxAction, PackagePathPayload, GetFieldsSuccessPayload, DocumentRecordActionsBase, GetSingleFieldSuccessPayload, GetAvailableFieldsSuccessPayload, } from '@skysmack/redux';
 import { Observable, of } from 'rxjs';
 import { map, retry, catchError } from 'rxjs/operators';
@@ -17,7 +17,7 @@ export abstract class NgDocmentRecordRequests<TRecord extends Record<TKey>, TKey
         super(http, apiDomain, prefix, additionalPaths);
     }
 
-    public getFields(action: ReduxAction<PackagePathPayload>): Observable<ReduxAction<GetFieldsSuccessPayload> | ReduxAction> {
+    public getFields(action: ReduxAction<PackagePathPayload>): Observable<ReduxAction<GetFieldsSuccessPayload> | ReduxAction<HttpErrorResponse>> {
         let url = `${this.apiDomain.domain}/${action.payload.packagePath}`;
         url = this.additionalPaths ? [url, ...this.additionalPaths].join('/') : url;
         url = `${url}/fields`;
@@ -42,7 +42,7 @@ export abstract class NgDocmentRecordRequests<TRecord extends Record<TKey>, TKey
             );
     }
 
-    public getSingleField(action: ReduxAction<PackagePathPayload>): Observable<ReduxAction<GetSingleFieldSuccessPayload>> {
+    public getSingleField(action: ReduxAction<PackagePathPayload>): Observable<ReduxAction<GetSingleFieldSuccessPayload> | ReduxAction<HttpErrorResponse>> {
         const url = `${this.apiDomain.domain}/${action.payload}/fields`;
         return this.http.get<FieldSchemaViewModel>(url, { observe: 'response' }).pipe(
             map(httpResponse => Object.assign({}, new ReduxAction<GetSingleFieldSuccessPayload>({
@@ -60,7 +60,7 @@ export abstract class NgDocmentRecordRequests<TRecord extends Record<TKey>, TKey
         );
     }
 
-    public getAvailableFields(action: ReduxAction<PackagePathPayload>): Observable<ReduxAction<GetAvailableFieldsSuccessPayload>> {
+    public getAvailableFields(action: ReduxAction<PackagePathPayload>): Observable<ReduxAction<GetAvailableFieldsSuccessPayload> | ReduxAction<HttpErrorResponse>> {
         const url = this.apiDomain.domain + `/${action.payload.packagePath}/fields-available`;
         return this.http.get<FieldValueProviderViewModel[]>(url, { observe: 'response' }).pipe(
             map(httpResponse => Object.assign({}, new ReduxAction<GetAvailableFieldsSuccessPayload>({

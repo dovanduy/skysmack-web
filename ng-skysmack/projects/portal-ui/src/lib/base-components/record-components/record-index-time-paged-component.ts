@@ -1,14 +1,11 @@
 import { OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Record, StrIndex } from '@skysmack/framework';
-import { NgSkysmackStore } from '@skysmack/ng-packages';
+import { NgSkysmackStore, NgLodgingReservationsStore, NgLodgingReservationsActions } from '@skysmack/ng-packages';
 import { Observable, pipe } from 'rxjs';
 import { CalendarEvent, EventAction, EventColor } from 'calendar-utils';
 import { map } from 'rxjs/operators';
 import { RecordIndexComponent } from './record-index-component';
-import { RecordActionsBase } from '@skysmack/redux';
-import { NgRedux } from '@angular-redux/store';
-import { NgRecordReduxStore } from '@skysmack/ng-redux';
 import * as _moment from 'moment';
 const moment = _moment;
 
@@ -20,9 +17,10 @@ export class RecordIndexTimePagedComponent<TAppState, TRecord extends Record<TKe
     constructor(
         public router: Router,
         public activatedRoute: ActivatedRoute,
-        public actions: RecordActionsBase<TAppState, NgRedux<TAppState>>,
+        public actions: NgLodgingReservationsActions,
         public skysmackStore: NgSkysmackStore,
-        public store: NgRecordReduxStore<TAppState, TRecord, TKey>,
+        // Todo: This needs to work generically - not just with lodging reservations.
+        public store: NgLodgingReservationsStore,
     ) {
         super(router, activatedRoute, actions, skysmackStore, store);
     }

@@ -1,5 +1,5 @@
-import { RecordActionsBase, ReduxAction, Effect, EffectRequest, OfflineMeta, ReduxOfflineMeta } from '@skysmack/redux';
-import { HttpMethod, NumIndex, HttpResponse } from '@skysmack/framework';
+import { RecordActionsBase, ReduxAction, Effect, EffectRequest, OfflineMeta, ReduxOfflineMeta, GetIntervalPayload } from '@skysmack/redux';
+import { HttpMethod, HttpResponse } from '@skysmack/framework';
 import { LodgingReservationsAppState } from './lodging-reservations-reducer';
 import { Store } from 'redux';
 import { CheckIn } from '../models/check-in';
@@ -333,24 +333,13 @@ export class LodgingReservationsActions extends RecordActionsBase<LodgingReserva
     }
 
     public getAvailableLodgings(packagePath: string, start: string, end: string) {
-        // this.store.dispatch({
-        //     type: LodgingsReservationsFeatureActions.GET_AVAILABLE_LODGINGS,
-        //     payload: {
-        //         packagePath,
-        //         start,
-        //         end
-        //     }
-        // });
+        this.store.dispatch(Object.assign({}, new ReduxAction<GetIntervalPayload>({
+            type: LodgingReservationsActions.GET_AVAILABLE_LODGINGS,
+            payload: {
+                packagePath,
+                start,
+                end
+            }
+        })))
     }
-
-    // EXAMPLES
-    // public getLodgingReservationsRoles(packagePath: string, ids: number[]): void {
-    //     this.store.dispatch(Object.assign({}, new ReduxAction<GetLodgingReservationsRolesPayload>({
-    //         type: this.prefix + LodgingReservationsActions.GET_ROLES,
-    //         payload: {
-    //             packagePath,
-    //             ids
-    //         }
-    //     })));
-    // }
 }

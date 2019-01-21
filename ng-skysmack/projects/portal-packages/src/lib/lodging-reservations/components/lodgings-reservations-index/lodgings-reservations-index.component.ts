@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Observable, combineLatest } from 'rxjs';
 import { switchMap, map } from 'rxjs/operators';
-import { LocalObject, EnumHelpers, toLocalObject, PagedQuery, log } from '@skysmack/framework';
+import { LocalObject, EnumHelpers, toLocalObject, PagedQuery } from '@skysmack/framework';
 import { ExtendedReservation, LodgingReservationsAppState, LodgingReservation } from '@skysmack/packages-lodging-reservations';
 import { EntityAction } from '@skysmack/ng-ui';
 import { NgLodgingReservationsStore, NgLodgingsStore, NgLodgingTypesStore, NgLodgingReservationsFieldsConfig, NgLodgingsActions, NgLodgingTypesActions, NgLodgingReservationsActions, NgSkysmackStore } from '@skysmack/ng-packages';
@@ -21,43 +21,43 @@ export class LodgingsReservationsIndexComponent extends RecordIndexComponent<Lod
   public entityActions: EntityAction[] = [
     // Checkin
     new EntityAction().asEventAction('Checkin', this.checkIn, 'label', this).setShowLogic((entity: LocalObject<ExtendedReservation, number>) => {
-      return EnumHelpers.toIndexEnum(LodgingReservation.ReservationStatusEnum)[entity.object.reservation.object.status] === LodgingReservation.ReservationStatusEnum.Reserved;
+      return EnumHelpers.toIndexEnum(LodgingReservation.ReservationStatusEnum)[entity.object.reservation.object.reservationStatus] === LodgingReservation.ReservationStatusEnum.Reserved;
     }),
     new EntityAction().asEventAction('Undo Checkin', this.undoCheckin, 'label', this).setShowLogic((entity: LocalObject<ExtendedReservation, number>) => {
-      return EnumHelpers.toIndexEnum(LodgingReservation.ReservationStatusEnum)[entity.object.reservation.object.status] === LodgingReservation.ReservationStatusEnum.InStay;
+      return EnumHelpers.toIndexEnum(LodgingReservation.ReservationStatusEnum)[entity.object.reservation.object.reservationStatus] === LodgingReservation.ReservationStatusEnum.InStay;
     }),
 
     // Checkout
     new EntityAction().asEventAction('Checkout', this.checkOut, 'label_off', this).setShowLogic((entity: LocalObject<ExtendedReservation, number>) => {
-      return EnumHelpers.toIndexEnum(LodgingReservation.ReservationStatusEnum)[entity.object.reservation.object.status] === LodgingReservation.ReservationStatusEnum.InStay;
+      return EnumHelpers.toIndexEnum(LodgingReservation.ReservationStatusEnum)[entity.object.reservation.object.reservationStatus] === LodgingReservation.ReservationStatusEnum.InStay;
     }),
     new EntityAction().asEventAction('Undo Checkout', this.undoCheckout, 'label_off', this).setShowLogic((entity: LocalObject<ExtendedReservation, number>) => {
-      return EnumHelpers.toIndexEnum(LodgingReservation.ReservationStatusEnum)[entity.object.reservation.object.status] === LodgingReservation.ReservationStatusEnum.CheckedOut;
+      return EnumHelpers.toIndexEnum(LodgingReservation.ReservationStatusEnum)[entity.object.reservation.object.reservationStatus] === LodgingReservation.ReservationStatusEnum.CheckedOut;
     }),
 
     // Cancel
     new EntityAction().asEventAction('Cancel', this.cancel, 'cancel', this).setShowLogic((entity: LocalObject<ExtendedReservation, number>) => {
-      return EnumHelpers.toIndexEnum(LodgingReservation.ReservationStatusEnum)[entity.object.reservation.object.status] === LodgingReservation.ReservationStatusEnum.Reserved;
+      return EnumHelpers.toIndexEnum(LodgingReservation.ReservationStatusEnum)[entity.object.reservation.object.reservationStatus] === LodgingReservation.ReservationStatusEnum.Reserved;
     }),
     new EntityAction().asEventAction('Undo Cancel', this.undoCancel, 'cancel', this).setShowLogic((entity: LocalObject<ExtendedReservation, number>) => {
-      return EnumHelpers.toIndexEnum(LodgingReservation.ReservationStatusEnum)[entity.object.reservation.object.status] === LodgingReservation.ReservationStatusEnum.Cancelled;
+      return EnumHelpers.toIndexEnum(LodgingReservation.ReservationStatusEnum)[entity.object.reservation.object.reservationStatus] === LodgingReservation.ReservationStatusEnum.Cancelled;
     }),
 
     // Move
     new EntityAction().asEventAction('Move', this.move, 'compare_arrows', this).setShowLogic((entity: LocalObject<ExtendedReservation, number>) => {
-      return EnumHelpers.toIndexEnum(LodgingReservation.ReservationStatusEnum)[entity.object.reservation.object.status] === LodgingReservation.ReservationStatusEnum.InStay;
+      return EnumHelpers.toIndexEnum(LodgingReservation.ReservationStatusEnum)[entity.object.reservation.object.reservationStatus] === LodgingReservation.ReservationStatusEnum.InStay;
     }),
     new EntityAction().asEventAction('Undo move', this.undoMove, 'compare_arrows', this).setShowLogic((entity: LocalObject<ExtendedReservation, number>) => {
       // TODO: This is likely NOT correct...
-      return EnumHelpers.toIndexEnum(LodgingReservation.ReservationStatusEnum)[entity.object.reservation.object.status] === LodgingReservation.ReservationStatusEnum.InStay;
+      return EnumHelpers.toIndexEnum(LodgingReservation.ReservationStatusEnum)[entity.object.reservation.object.reservationStatus] === LodgingReservation.ReservationStatusEnum.InStay;
     }),
 
     // No show
     new EntityAction().asEventAction('No show', this.noShow, 'highlight_off', this).setShowLogic((entity: LocalObject<ExtendedReservation, number>) => {
-      return EnumHelpers.toIndexEnum(LodgingReservation.ReservationStatusEnum)[entity.object.reservation.object.status] === LodgingReservation.ReservationStatusEnum.Reserved;
+      return EnumHelpers.toIndexEnum(LodgingReservation.ReservationStatusEnum)[entity.object.reservation.object.reservationStatus] === LodgingReservation.ReservationStatusEnum.Reserved;
     }),
     new EntityAction().asEventAction('Undo no show', this.undoNoShow, 'highlight_off', this).setShowLogic((entity: LocalObject<ExtendedReservation, number>) => {
-      return EnumHelpers.toIndexEnum(LodgingReservation.ReservationStatusEnum)[entity.object.reservation.object.status] === LodgingReservation.ReservationStatusEnum.NoShow;
+      return EnumHelpers.toIndexEnum(LodgingReservation.ReservationStatusEnum)[entity.object.reservation.object.reservationStatus] === LodgingReservation.ReservationStatusEnum.NoShow;
     }),
 
     // Misc

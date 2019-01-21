@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { NgRedux } from '@angular-redux/store';
 import { LodgingReservation, LodgingReservationsAppState } from '@skysmack/packages-lodging-reservations';
 import { NgRecordReduxStore } from '@skysmack/ng-redux';
-import { Observable, of } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class NgLodgingReservationsStore extends NgRecordReduxStore<LodgingReservationsAppState, LodgingReservation, number> {

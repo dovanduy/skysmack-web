@@ -1,7 +1,8 @@
 import { LocalObject } from '@skysmack/framework';
 import { LodgingReservation } from './lodging-reservation';
 import { Lodging, LodgingType } from '@skysmack/packages-lodgings';
-import * as moment from 'moment';
+import * as _moment from 'moment';
+const moment = _moment;
 
 export class ExtendedReservation {
     public id: number;
