@@ -10,6 +10,6 @@ export class NgReceiptsRequests extends NgDocmentRecordRequests<Receipt, number>
         protected http: HttpClient,
         @Inject('ApiDomain') protected apiDomain: ApiDomain
     ) {
-        super(http, apiDomain, 'RECEIPTS_', ['types']);
+        super(http, apiDomain, 'RECEIPTS_', ['receipts']);
     }
 }

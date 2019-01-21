@@ -5,5 +5,5 @@ import { ReceiptsAppState } from '@skysmack/packages-terminal-payments';
 
 @Injectable({ providedIn: 'root' })
 export class NgReceiptsActions extends DocumentRecordActionsBase<ReceiptsAppState, NgRedux<ReceiptsAppState>> {
-    constructor(protected store: NgRedux<ReceiptsAppState>) { super(store, 'RECEIPTS_', ['types']); }
+    constructor(protected store: NgRedux<ReceiptsAppState>) { super(store, 'RECEIPTS_', ['receipts']); }
 }

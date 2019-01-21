@@ -10,6 +10,6 @@ export class NgTerminalsRequests extends NgDocmentRecordRequests<Terminal, numbe
         protected http: HttpClient,
         @Inject('ApiDomain') protected apiDomain: ApiDomain
     ) {
-        super(http, apiDomain, 'TERMINALS', []);
+        super(http, apiDomain, 'TERMINALS', [ 'terminals' ]);
     }
 }
