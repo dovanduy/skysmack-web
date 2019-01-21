@@ -124,7 +124,14 @@ export class LodgingsReservationsIndexComponent extends RecordIndexComponent<Lod
   }
 
   public checkIn(entity: LocalObject<ExtendedReservation, number>, _this: LodgingsArrivalsComponent) {
-    _this.actions.checkIn(_this.packagePath, entity.object.reservation, [new CheckIn({ reservationId: entity.object.id, lodgingId: entity.object.lodging.object.id })]);
+    let checkIn;
+    if (entity.object.lodging) {
+      checkIn = { reservationId: entity.object.id, lodgingId: entity.object.lodging.object.id };
+    } else {
+      checkIn = { reservationId: entity.object.id };
+    }
+
+    _this.actions.checkIn(_this.packagePath, entity.object.reservation, [new CheckIn(checkIn)]);
   }
   public undoCheckin(entity: LocalObject<ExtendedReservation, number>, _this: LodgingsArrivalsComponent) {
     _this.actions.undoCheckIn(_this.packagePath, entity.object.reservation, [entity.object.id]);
