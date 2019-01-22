@@ -3,7 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { RecordActionsBase } from '@skysmack/redux';
 import { NgRedux } from '@angular-redux/store';
 import { NgSkysmackStore } from '@skysmack/ng-packages';
-import { LocalObject, LocalPage, PagedQuery, LoadingState, hasValue, StrIndex, LocalPageTypes, linq } from '@skysmack/framework';
+import { LocalObject, LocalPage, PagedQuery, LoadingState, hasValue, StrIndex, LocalPageTypes, linq, LocalObjectStatus } from '@skysmack/framework';
 import { Observable, BehaviorSubject, fromEvent, combineLatest } from 'rxjs';
 import { NgRecordReduxStore } from '@skysmack/ng-redux';
 import { OnInit } from '@angular/core';
@@ -12,7 +12,6 @@ import { map } from 'rxjs/operators';
 
 export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey> extends BaseComponent<TAppState, TKey> implements OnInit {
     public entities$: Observable<LocalObject<TRecord, TKey>[]>;
-    public createdEntities$: Observable<LocalObject<TRecord, TKey>[]>;
     public pages$: BehaviorSubject<LocalPage<TKey>[]> = new BehaviorSubject<LocalPage<TKey>[]>([]);
     public pagedEntities$: Observable<LocalObject<TRecord, TKey>[]>;
     public pagedQuery = new PagedQuery();
@@ -165,16 +164,20 @@ export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey>
                 this.entities$
             ).pipe(
                 map(values => {
-                    const idsArray = linq<LocalPage<TKey>>(values[0])
+                    const [pages, entities] = values;
+
+                    const idsArray = linq<LocalPage<TKey>>(pages)
                         .defined()
                         .select(x => x.ids);
 
-                    return linq<TKey>([])
-                        .selectMany(idsArray)
-                        .distinct()
-                        .select(id => values[1].filter(entity => entity.object.id === id)[0])
-                        .defined()
-                        .ok();
+                    return entities.filter(entity => entity.isNew).concat(
+                        linq<TKey>([])
+                            .selectMany(idsArray)
+                            .distinct()
+                            .select(id => entities.filter(entity => entity.object.id === id)[0])
+                            .defined()
+                            .ok()
+                    );
                 })
             );
         }
