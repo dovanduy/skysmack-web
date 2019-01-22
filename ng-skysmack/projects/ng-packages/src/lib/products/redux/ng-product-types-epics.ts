@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { DocumentRecordEpicsBase } from '@skysmack/ng-redux';
 import { ProductType } from '@skysmack/packages-products';
-import { NgProductsRequests } from './ng-products-requests';
+import { NgProductTypesRequests } from './ng-product-types-requests';
 
 @Injectable({ providedIn: 'root' })
 export class NgProductTypesEpics extends DocumentRecordEpicsBase<ProductType, number> {
-    constructor(protected requests: NgProductsRequests) {
+    constructor(protected requests: NgProductTypesRequests) {
         super(requests, 'PRODUCT_TYPES_');
     }
 }
