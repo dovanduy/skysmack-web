@@ -10,6 +10,6 @@ export class NgAssignmentsRequests extends NgRecordRequests<Assignment, number> 
         protected http: HttpClient,
         @Inject('ApiDomain') protected apiDomain: ApiDomain
     ) {
-        super(http, apiDomain, 'ASSIGNMENTS_', []);
+        super(http, apiDomain, 'ASSIGNMENTS_', ['assignments']);
     }
 }

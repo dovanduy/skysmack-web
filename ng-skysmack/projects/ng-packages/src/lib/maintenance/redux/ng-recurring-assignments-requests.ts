@@ -10,6 +10,6 @@ export class NgRecurringAssignmentsRequests extends NgRecordRequests<RecurringAs
         protected http: HttpClient,
         @Inject('ApiDomain') protected apiDomain: ApiDomain
     ) {
-        super(http, apiDomain, 'RECURRING_ASSIGNMENTS_', []);
+        super(http, apiDomain, 'RECURRING_ASSIGNMENTS_', ['assignments', 'recurring']);
     }
 }

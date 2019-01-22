@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AssignmentsAppState } from '@skysmack/packages-maintenance';
 import { Assignment } from '@skysmack/packages-maintenance';
-import { DocumentRecordIndexComponet, EntityComponentPageTitle, RecordIndexComponent } from '@skysmack/portal-ui';
+import { EntityComponentPageTitle, RecordIndexComponent } from '@skysmack/portal-ui';
 import { EntityAction } from '@skysmack/ng-ui';
 import { NgAssignmentsActions, NgSkysmackStore, NgAssignmentsStore } from '@skysmack/ng-packages';
 import { NgAssignmentsMenu } from '../../ng-assignments-menu';

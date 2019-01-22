@@ -6,7 +6,7 @@ import { RecurringAssignmentsIndexComponent } from './recurring-assignments-inde
 
 export const recurringAssignmentsRoutes: Routes = [
   {
-    path: 'recurring-assignments', component: RecurringAssignmentsIndexComponent,
+    path: 'assignments/recurring', component: RecurringAssignmentsIndexComponent,
     children: [
       { path: 'create', component: RecurringAssignmentsCreateComponent, pathMatch: 'full' },
       { path: 'edit/:id', component: RecurringAssignmentsEditComponent, pathMatch: 'full' }

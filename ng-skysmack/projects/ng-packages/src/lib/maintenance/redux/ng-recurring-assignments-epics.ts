@@ -6,6 +6,6 @@ import { Injectable } from '@angular/core';
 @Injectable({ providedIn: 'root' })
 export class NgRecurringAssignmentsEpics extends RecordEpicsBase<RecurringAssignment, number> {
     constructor(protected requests: NgRecurringAssignmentsRequests) {
-        super(requests, 'RECURRING_ASSIGNMENT_');
+        super(requests, 'RECURRING_ASSIGNMENTS_');
     }
 }

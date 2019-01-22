@@ -5,5 +5,5 @@ import { RecurringAssignmentsAppState } from '@skysmack/packages-maintenance';
 
 @Injectable({ providedIn: 'root' })
 export class NgRecurringAssignmentsActions extends RecordActionsBase<RecurringAssignmentsAppState, NgRedux<RecurringAssignmentsAppState>> {
-    constructor(protected store: NgRedux<RecurringAssignmentsAppState>) { super(store, 'RECURRING_ASSIGNMENTS_', ['types']); }
+    constructor(protected store: NgRedux<RecurringAssignmentsAppState>) { super(store, 'RECURRING_ASSIGNMENTS_', ['assignments', 'recurring']); }
 }

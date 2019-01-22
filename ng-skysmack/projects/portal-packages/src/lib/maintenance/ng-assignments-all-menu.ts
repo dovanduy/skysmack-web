@@ -23,7 +23,7 @@ export class NgAssignmentAllMenu extends SidebarMenu {
     public setPrimaryMenu() {
         this.primaryMenuAreas.push(new MenuArea('manage', this.translationPrefix, 1));
         this.primaryMenuItems.push(new MenuItem('assignments', this.translationPrefix + 'SINGLE_ASSIGNMENTS', 'manage', 2, 'groupAdd'));
-        this.primaryMenuItems.push(new MenuItem('recurring-assignments', this.translationPrefix + 'RECURRING_ASSIGNMENTS', 'manage', 3, 'shortText'));
+        this.primaryMenuItems.push(new MenuItem('assignments/recurring', this.translationPrefix + 'RECURRING_ASSIGNMENTS', 'manage', 3, 'shortText'));
     }
 
     public setSpeedDialMenu() {
