@@ -11,8 +11,6 @@ export class BaseComponent<TAppState, TKey> implements OnInit, OnDestroy {
     public entityId: TKey;
     public packagePath: string;
     public loadedPackage$: Observable<LoadedPackage>;
-    public filterBuilder: RSQLFilterBuilder;
-    public sortBuilder: SortBuilder;
 
     constructor(
         public router: Router,

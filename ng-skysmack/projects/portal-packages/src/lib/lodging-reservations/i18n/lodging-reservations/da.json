@@ -51,15 +51,7 @@
             "STAYS": "Indlogeret",
             "RESERVATIONS": "Reservationer",
             "ARRIVALS": "Ankomster",
-            "DEPARTURES": "Afgange"
-        },
-        "RESERVATIONS": {
-            "AVAILABILITY": "Tilgængelighed",
-            "STAYS": "Indlogeret",
-            "RESERVATIONS": "Reservationer",
-            "ARRIVALS": "Ankomster",
             "DEPARTURES": "Afgange",
-            "MANAGE": "Konfigurer",
             "ALL": "Alle"
         }
     }

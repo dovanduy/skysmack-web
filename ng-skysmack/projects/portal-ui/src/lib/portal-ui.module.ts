@@ -56,7 +56,11 @@ import { IsAnonymousDirective } from './autentication/is-anonymous.directive';
     RouterModule,
     ReactiveFormsModule,
     TranslateModule.forRoot(),
-    CalendarModule,
+    // Note: Below setup works with ng-packgr (running ng build portal-ui)
+    CalendarModule.forRoot({
+      provide: DateAdapter,
+      useFactory: adapterFactory
+    }),
     RecurringExpressionFieldModule,
     MaterialModule // Must come after BrowserAnimationsModule
   ],
@@ -65,10 +69,6 @@ import { IsAnonymousDirective } from './autentication/is-anonymous.directive';
       provide: TranslateLoader,
       useFactory: HttpLoaderFactory,
       deps: [HttpClient]
-    },
-    {
-      provide: DateAdapter,
-      useFactory: adapterFactory
     }
   ],
   declarations: [

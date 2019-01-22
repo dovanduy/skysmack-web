@@ -1,21 +1,29 @@
 import { RecordEpicsBase } from '@skysmack/ng-redux';
-import { LodgingReservation } from '@skysmack/packages-lodging-reservations';
+import { LodgingReservation, LodgingReservationsActions } from '@skysmack/packages-lodging-reservations';
 import { NgLodgingReservationsRequests } from './ng-lodging-reservations-requests';
 import { Injectable } from '@angular/core';
+import { ActionsObservable, ofType } from 'redux-observable';
+import { Observable } from 'rxjs';
+import { HttpErrorResponse } from '@skysmack/framework';
+import { switchMap } from 'rxjs/operators';
+import { GetIntervalPayload, ReduxAction } from '@skysmack/redux';
 
 @Injectable({ providedIn: 'root' })
 export class NgLodgingReservationsEpics extends RecordEpicsBase<LodgingReservation, number> {
     constructor(protected requests: NgLodgingReservationsRequests) {
         super(requests, 'LODGING_RESERVATIONS_');
         this.epics = this.epics.concat([
-            // this.getLodgingReservationsRolesEpic
+            this.getAvailableLodgingsEpic
         ]);
     }
 
-    // public getLodgingReservationsRolesEpic = (action$: ActionsObservable<ReduxAction<GetLodgingReservationsRolesPayload>>): Observable<ReduxAction<GetLodgingReservationsRolesSuccessPayload> | ReduxAction<HttpErrorResponse>> => {
-    //     return action$.pipe(
-    //         ofType(this.prefix + NgLodgingReservationsActions.GET_ROLES),
-    //         switchMap((action: ReduxAction<GetLodgingReservationsRolesPayload>) => this.requests.getLodgingReservationsRoles(action.payload.packagePath, action.payload.ids))
-    //     );
-    // }
+    // TODO: Set proper return type.
+    public getAvailableLodgingsEpic = (action$: ActionsObservable<any>): Observable<any | HttpErrorResponse> => action$.pipe(
+        ofType(LodgingReservationsActions.GET_AVAILABLE_LODGINGS),
+        switchMap((action: ReduxAction<GetIntervalPayload>) => this.requests.getAvailableLodgings(
+            action.payload.packagePath,
+            action.payload.start,
+            action.payload.end
+        ))
+    )
 }

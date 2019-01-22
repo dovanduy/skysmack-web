@@ -12,4 +12,4 @@ export * from './cancel-dynamic-field-action-payload';
 export * from './credentials-payload';
 export * from './get-available-packages-success-payload';
 export * from './get-available-fields-success-payload';
-
+export * from './get-interval-payload';

@@ -7,7 +7,7 @@ import { RSQLFilterBuilder, SortBuilder } from '@skysmack/framework';
 import * as _moment from 'moment';
 const moment = _moment;
 import { LodgingReservation } from '@skysmack/packages-lodging-reservations';
-import { NgReservationsMenu } from '../../ng-reservations-menu';
+import { NgLodgingsReservationsMenu } from '../../ng-lodgings-reservations-menu';
 
 @Component({
   selector: 'ss-lodgings-arrivals',
@@ -26,7 +26,7 @@ export class LodgingsArrivalsComponent extends LodgingsReservationsIndexComponen
     public lodgingsActions: NgLodgingsActions,
     public lodgingTypesActions: NgLodgingTypesActions,
     public fieldsConfig: NgLodgingReservationsFieldsConfig,
-    public sidebarMenu: NgReservationsMenu,
+    public sidebarMenu: NgLodgingsReservationsMenu,
     public pageTitle: EntityComponentPageTitle
   ) {
     super(router, activatedRoute, skysmackStore, store, lodgingsStore, lodgingTypesStore, actions, lodgingsActions, lodgingTypesActions, fieldsConfig, sidebarMenu, pageTitle);
@@ -42,12 +42,12 @@ export class LodgingsArrivalsComponent extends LodgingsReservationsIndexComponen
   }
 
   private filter() {
-    this.filterBuilder = new RSQLFilterBuilder();
-    this.filterBuilder.column('status').like(LodgingReservation.ReservationStatusEnum.Reserved).and().column('checkIn').lessThanOrEqualTo(moment().toDate());
+    this.pagedQuery.rsqlFilter = new RSQLFilterBuilder();
+    this.pagedQuery.rsqlFilter.column('status').like(LodgingReservation.statusEnum.Reserved).and().column('checkIn').lessThanOrEqualTo(moment().toDate());
   }
 
   private sort() {
-    this.sortBuilder = new SortBuilder();
-    this.sortBuilder.add('checkIn', false);
+    this.pagedQuery.sort = new SortBuilder();
+    this.pagedQuery.sort.add('checkIn', false);
   }
 }

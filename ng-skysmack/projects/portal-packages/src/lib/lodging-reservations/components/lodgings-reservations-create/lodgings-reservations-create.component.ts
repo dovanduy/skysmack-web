@@ -15,6 +15,7 @@ import {
 } from '@skysmack/ng-packages';
 import { LodgingReservation, LodgingReservationsAppState } from '@skysmack/packages-lodging-reservations';
 import { RecordFormComponent, EditorNavService } from '@skysmack/portal-ui';
+import { PagedQuery } from '@skysmack/framework';
 
 @Component({
   selector: 'ss-lodgings-reservations-create',
@@ -44,8 +45,11 @@ export class LodgingsReservationsCreateComponent extends RecordFormComponent<Lod
   }
 
   public setCreateFields() {
-    this.subscriptionHandler.register(this.skysmackStore.getCurrentPackage(this.packagePath).pipe(
+    this.subscriptionHandler.register(this.skysmackStore.getDependencyPackage(this.packagePath).pipe(
       switchMap(loadedPackage => {
+        this.lodgingsActions.getPaged(loadedPackage._package.path, new PagedQuery());
+        this.lodgingTypesActions.getPaged(loadedPackage._package.path, new PagedQuery());
+
         return combineLatest(
           this.lodgingsStore.get(loadedPackage._package.path),
           this.lodgingTypesStore.get(loadedPackage._package.path)
