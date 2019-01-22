@@ -3,16 +3,12 @@ import { Validation } from '@skysmack/ng-ui';
 
 export class LodgingTypesValidation extends Validation {
     public formErrors = {
-        name: '',
-        lodgingTypeId: '',
+        name: ''
     };
 
     public validationMessages: StrIndex<{}> = {
         name: {
-            required: '',
-        },
-        lodgingTypeId: {
-            required: '',
+            required: ''
         }
     };
 

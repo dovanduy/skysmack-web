@@ -1,20 +1,5 @@
 {
     "LODGING_TYPES": {
-        "CREATE": {
-            "CREATE": "Opret"
-        },
-        "EDIT": {
-            "EDIT": "Rediger"
-        },
-        "INDEX": {
-            "ACTIONS": "Handlinger",
-            "CREATE": "Opret",
-            "TYPE": "Opret ny type",
-            "MANAGE": "Konfigurer",
-            "TYPES_FIELDS": "Type felt",
-            "BACK": "Tilbage",
-            "FIELDS": "Felter"
-        },
         "FIELDS": {
             "CREATE": {
                 "ADD": "Opret nyt felt"
@@ -30,6 +15,21 @@
                 "FIELDS": "Felter",
                 "BACK": "Tilbage"
             }
+        },
+        "CREATE": {
+            "CREATE": "Opret"
+        },
+        "EDIT": {
+            "EDIT": "Rediger"
+        },
+        "INDEX": {
+            "ACTIONS": "Handlinger",
+            "CREATE": "Opret",
+            "TYPE": "Opret ny type",
+            "MANAGE": "Konfigurer",
+            "TYPES_FIELDS": "Type felt",
+            "BACK": "Tilbage",
+            "FIELDS": "Felter"
         },
         "FORM": {
             "LABELS": {

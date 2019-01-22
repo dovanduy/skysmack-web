@@ -28,18 +28,18 @@
             "FIELDS": "Fields",
             "TYPES": "types",
             "BACK": "Back"
-        }
-    },
-    "FORM": {
-        "LABELS": {
-            "NAME": "Name"
         },
-        "PLACEHOLDERS": {
-            "NAME": "Enter name"
-        },
-        "VALIDATION": {
-            "NAME": {
-                "REQUIRED": "Name is required."
+        "FORM": {
+            "LABELS": {
+                "NAME": "Name"
+            },
+            "PLACEHOLDERS": {
+                "NAME": "Enter name"
+            },
+            "VALIDATION": {
+                "NAME": {
+                    "REQUIRED": "Name is required."
+                }
             }
         }
     }

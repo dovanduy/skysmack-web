@@ -13,8 +13,7 @@ export interface NgLodgingFormDependencies {
 export class NgLodgingsFieldsConfig extends FieldsConfig<Lodging, NgLodgingFormDependencies> {
     public validation = new LodgingsValidation();
 
-    public formRules: FormRule[] = [
-    ];
+    public formRules: FormRule[] = [];
 
     protected getEntityFields(entity?: LocalObject<Lodging, number>, dependencies?: NgLodgingFormDependencies): Field[] {
         const fields = [
