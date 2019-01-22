@@ -5,5 +5,5 @@ import { AssignmentTypesAppState } from '@skysmack/packages-maintenance';
 
 @Injectable({ providedIn: 'root' })
 export class NgAssignmentTypesActions extends RecordActionsBase<AssignmentTypesAppState, NgRedux<AssignmentTypesAppState>> {
-    constructor(protected store: NgRedux<AssignmentTypesAppState>) { super(store, 'ASSIGNMENT_TYPES_', ['types']); }
+    constructor(protected store: NgRedux<AssignmentTypesAppState>) { super(store, 'ASSIGNMENT_TYPES_', ['assignments', 'types',]); }
 }
