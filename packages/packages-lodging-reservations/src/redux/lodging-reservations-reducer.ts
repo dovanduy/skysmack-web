@@ -21,10 +21,7 @@ export class LodgingReservationsState implements RecordState<LodgingReservation,
 const updateLodgingReservation = (action, newState) => {
     const castedAction = action as ReduxAction<HttpSuccessResponse<any>, any>;
     const body = castedAction.payload.body;
-    console.log('Response body', body);
-    console.log('Meta value', castedAction.meta.value);
     const updatedObjects = (Array.isArray(body) ? body : [body]).map((newObject, index) => replaceLocalInnerObject<LodgingReservation, number>(castedAction.meta.value, newObject));
-    console.log('updatedObjects', updatedObjects);
     newState.localRecords[castedAction.meta.stateKey] = LocalObjectExtensions.mergeOrAddLocal<LodgingReservation, number>(newState.localRecords[castedAction.meta.stateKey], updatedObjects, LocalObjectStatus.MODIFYING);
     return newState;
 }

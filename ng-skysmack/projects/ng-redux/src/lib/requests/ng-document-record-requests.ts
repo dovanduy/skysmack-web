@@ -46,6 +46,7 @@ export abstract class NgDocmentRecordRequests<TRecord extends Record<TKey>, TKey
     let url = `${this.apiDomain.domain}/${action.payload.packagePath}`;
     url = this.additionalPaths ? [url, ...this.additionalPaths].join('/') : url;
     url = `${url}/fields`;
+
     return this.http.get<FieldSchemaViewModel>(url, { observe: 'response' }).pipe(
       map(httpResponse => Object.assign({}, new ReduxAction<GetSingleFieldSuccessPayload>({
         type: this.prefix + DocumentRecordActionsBase.GET_SINGLE_FIELD_SUCCESS,
