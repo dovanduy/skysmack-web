@@ -2,7 +2,7 @@ import { Injectable, Inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { SidebarMenu } from '@skysmack/portal-ui';
 import { MenuItemProvider, MenuArea, MenuItem } from '@skysmack/ng-ui';
-import { NgSkysmackStore, LoadedPackage } from '@skysmack/ng-packages';
+import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { map, take } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
