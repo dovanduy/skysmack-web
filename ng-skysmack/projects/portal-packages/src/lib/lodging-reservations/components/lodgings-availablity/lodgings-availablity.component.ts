@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { EntityComponentPageTitle } from '@skysmack/portal-ui';
 import { NgSkysmackStore, NgLodgingReservationsStore, NgLodgingReservationsActions } from '@skysmack/ng-packages';
-import { NgReservationsMenu } from '../../ng-reservations-menu';
+import { NgLodgingsReservationsMenu } from '../../ng-lodgings-reservations-menu';
 import { Observable, pipe } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { CalendarEvent, EventColor, EventAction } from 'calendar-utils';
@@ -28,7 +28,7 @@ export class LodgingsAvailablityComponent implements OnInit {
     public store: NgLodgingReservationsStore,
     public actions: NgLodgingReservationsActions,
     public pageTitle: EntityComponentPageTitle,
-    public sidebarMenu: NgReservationsMenu
+    public sidebarMenu: NgLodgingsReservationsMenu
   ) {
     pageTitle.setTitle('Availability');
   }

@@ -51,15 +51,7 @@
             "STAYS": "Stays",
             "RESERVATIONS": "Reservations",
             "ARRIVALS": "Arrivals",
-            "DEPARTURES": "Departures"
-        },
-        "RESERVATIONS": {
-            "AVAILABILITY": "Availability",
-            "STAYS": "Stays",
-            "RESERVATIONS": "Reservations",
-            "ARRIVALS": "Arrivals",
             "DEPARTURES": "Departures",
-            "MANAGE": "Manage",
             "ALL": "All"
         }
     }

@@ -4,11 +4,11 @@ import { NgLodgingReservationsStore, NgLodgingsStore, NgLodgingTypesStore, NgLod
 import { EntityComponentPageTitle } from '@skysmack/portal-ui';
 import { LodgingsReservationsIndexComponent } from '../lodgings-reservations-index/lodgings-reservations-index.component';
 import { RSQLFilterBuilder, SortBuilder } from '@skysmack/framework';
-import { NgReservationsMenu } from '../../ng-reservations-menu';
 import * as _moment from 'moment';
 const moment = _moment;
 
 import { LodgingReservation } from '@skysmack/packages-lodging-reservations';
+import { NgLodgingsReservationsMenu } from '../../ng-lodgings-reservations-menu';
 
 @Component({
   selector: 'ss-lodgings-departures',
@@ -27,7 +27,7 @@ export class LodgingsDeparturesComponent extends LodgingsReservationsIndexCompon
     public lodgingsActions: NgLodgingsActions,
     public lodgingTypesActions: NgLodgingTypesActions,
     public fieldsConfig: NgLodgingReservationsFieldsConfig,
-    public sidebarMenu: NgReservationsMenu,
+    public sidebarMenu: NgLodgingsReservationsMenu,
     public pageTitle: EntityComponentPageTitle
   ) {
     super(router, activatedRoute, skysmackStore, store, lodgingsStore, lodgingTypesStore, actions, lodgingsActions, lodgingTypesActions, fieldsConfig, sidebarMenu, pageTitle);
