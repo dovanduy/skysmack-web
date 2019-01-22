@@ -13,6 +13,7 @@ export abstract class SidebarMenu implements OnDestroy {
 
     public subscriptionHandler = new SubscriptionHandler();
     public packagePath: string;
+    public additionalPaths: string[];
 
     public primaryMenuAreas: MenuArea[] = [];
     public primaryMenuItems: MenuItem[] = [];
@@ -25,7 +26,7 @@ export abstract class SidebarMenu implements OnDestroy {
         public router: Router,
         @Inject(MenuItemProvider.TOKEN) public menuItemProviders: MenuItemProvider[],
     ) {
-        this.setPath();
+        this.setPaths();
     }
 
     ngOnDestroy() {
@@ -36,8 +37,9 @@ export abstract class SidebarMenu implements OnDestroy {
 
     public abstract setSpeedDialMenu(): void;
 
-    public setPath() {
+    public setPaths() {
         this.packagePath = this.router.url.split('/')[1];
+        this.additionalPaths = this.router.url.split('/').slice(2).filter(x => x !== 'fields');
     }
 
     protected runMenuItemProviders() {
