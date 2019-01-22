@@ -29,15 +29,6 @@ export class NgRecurringAssignmentsFieldsConfig extends FieldsConfig<RecurringAs
             } as SelectField),
 
             new Field({
-                fieldType: FieldTypes.string,
-                value: entity ? entity.object.entityId : undefined,
-                key: 'entityId',
-                label: 'Entity Id',
-                validators: [Validators.required],
-                order: 2
-            } as Field),
-
-            new Field({
                 fieldType: FieldTypes.dateTime,
                 value: entity ? entity.object.start : undefined,
                 key: 'start',

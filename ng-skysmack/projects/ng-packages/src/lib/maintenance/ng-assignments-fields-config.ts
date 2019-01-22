@@ -18,18 +18,6 @@ export class NgAssignmentsFieldsConfig extends FieldsConfig<Assignment, NgAssign
 
     protected getEntityFields(entity?: LocalObject<Assignment, number>, dependencies?: NgAssignmentFormDependencies): Field[] {
         const fields = [
-            new SelectField({
-                fieldType: FieldTypes.SelectField,
-                value: entity && entity.object ? entity.object.assignmentTypeId : undefined,
-                label: 'Assignment type',
-                key: 'assignmentTypeId',
-                validators: [Validators.required],
-                optionsData: dependencies.availableAssignmentTypes,
-                displayNameSelector: 'object.name',
-                disabled: entity && entity.object ? true : false,
-                order: 1,
-            } as SelectField),
-
             new Field({
                 fieldType: FieldTypes.string,
                 value: entity ? entity.object.description : undefined,

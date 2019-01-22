@@ -42,7 +42,6 @@ export class AssignmentsCreateComponent extends RecordFormComponent<AssignmentsA
     ).pipe(
       map(values => {
         const availableAssignmentTypes = values[0];
-        console.log(availableAssignmentTypes);
         return this.getFields(undefined, undefined, { availableAssignmentTypes });
       })
     ).subscribe(fields => this.fields = fields));
