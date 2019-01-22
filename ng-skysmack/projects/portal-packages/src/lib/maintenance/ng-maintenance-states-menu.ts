@@ -25,7 +25,7 @@ export class NgMaintenanceStatesMenu extends SidebarMenu {
         this.primaryMenuAreas.push(new MenuArea('manage', this.translationPrefix, 2));
 
         this.primaryMenuItems.push(new MenuItem('create', this.translationPrefix + 'CREATE', 'actions', 1, 'groupAdd'));
-        this.primaryMenuItems.push(new MenuItem('/' + this.packagePath, this.translationPrefix + 'BACK', 'manage', 3, 'arrowBack'));
+        this.primaryMenuItems.push(new MenuItem(`/${this.packagePath}/assignments`, this.translationPrefix + 'BACK', 'manage', 3, 'arrowBack'));
     }
 
     public setSpeedDialMenu() {

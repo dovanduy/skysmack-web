@@ -1,5 +1,5 @@
 <ss-container [sidebarMenu]="sidebarMenu" *ngIf="loadedPackage$ | async as loadedPackage">
-    <ss-data-table *ngIf="entities$" [cancelAction]="actions.cancelRecordAction" [title]="loadedPackage._package.name"
+    <ss-data-table *ngIf="entities$" [cancelAction]="actions.cancelRecordAction" [title]="loadedPackage._package.name + ' types'"
         [displayedColumns]="displayedColumns" [entities$]="entities$" [entityActions]="entityActions" [packagePath]="packagePath"
         (entityActionEvent)="actionEvent($event)">
         <ss-pagination [loadingState]="loadingState" (intersection)="onIntersection($event)"></ss-pagination>
