@@ -27,7 +27,7 @@ import { environment } from './../../environments/environment';
   imports: [
     RouterModule.forRoot([
       {
-        path: 'skysmack/loadPackages/packages',
+        path: 'skysmack/packages',
         loadChildren: './../packages/modules/packages_wrapper.module#PackagesWrapperModule'
       },
       {
