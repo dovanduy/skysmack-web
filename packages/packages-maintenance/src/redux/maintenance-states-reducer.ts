@@ -1,4 +1,4 @@
-import { StrIndex, LocalObject, FieldSchemaViewModel, FieldValueProviderViewModel, LocalPageTypes } from '@skysmack/framework';
+import { StrIndex, LocalObject, LocalPageTypes } from '@skysmack/framework';
 import { AppState, ReduxAction, RecordState, recordReducersBase } from '@skysmack/redux';
 import { MaintenanceState } from '../models/maintenance-state';
 

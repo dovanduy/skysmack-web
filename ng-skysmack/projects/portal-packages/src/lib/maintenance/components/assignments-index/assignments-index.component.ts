@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AssignmentsAppState } from '@skysmack/packages-maintenance';
 import { Assignment } from '@skysmack/packages-maintenance';
-import { DocumentRecordIndexComponet, EntityComponentPageTitle } from '@skysmack/portal-ui';
+import { DocumentRecordIndexComponet, EntityComponentPageTitle, RecordIndexComponent } from '@skysmack/portal-ui';
 import { EntityAction } from '@skysmack/ng-ui';
 import { NgAssignmentsActions, NgSkysmackStore, NgAssignmentsStore } from '@skysmack/ng-packages';
 import { NgAssignmentsMenu } from '../../ng-assignments-menu';
@@ -12,7 +12,7 @@ import { NgAssignmentsMenu } from '../../ng-assignments-menu';
   templateUrl: './assignments-index.component.html',
   styleUrls: ['./assignments-index.component.scss']
 })
-export class AssignmentsIndexComponent extends DocumentRecordIndexComponet<AssignmentsAppState, Assignment, number> implements OnInit {
+export class AssignmentsIndexComponent extends RecordIndexComponent<AssignmentsAppState, Assignment, number> implements OnInit {
 
   public displayedColumns = ['name'];
   public entityActions: EntityAction[] = [

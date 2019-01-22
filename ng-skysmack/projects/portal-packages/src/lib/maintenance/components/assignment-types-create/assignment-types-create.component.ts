@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AssignmentType, AssignmentTypesAppState } from '@skysmack/packages-maintenance';
-import { EditorNavService, DocumentRecordFormComponent } from '@skysmack/portal-ui';
+import { EditorNavService, RecordFormComponent } from '@skysmack/portal-ui';
 import { NgAssignmentTypesActions, NgSkysmackStore, NgAssignmentTypesFieldsConfig, NgAssignmentTypesStore, NgAssignmentTypeFormDependencies } from '@skysmack/ng-packages';
 
 @Component({
@@ -9,7 +9,7 @@ import { NgAssignmentTypesActions, NgSkysmackStore, NgAssignmentTypesFieldsConfi
   templateUrl: './assignment-types-create.component.html',
   styleUrls: ['./assignment-types-create.component.scss']
 })
-export class AssignmentTypesCreateComponent extends DocumentRecordFormComponent<AssignmentTypesAppState, AssignmentType, number, NgAssignmentTypeFormDependencies> implements OnInit {
+export class AssignmentTypesCreateComponent extends RecordFormComponent<AssignmentTypesAppState, AssignmentType, number, NgAssignmentTypeFormDependencies> implements OnInit {
   constructor(
     public router: Router,
     public activatedRoute: ActivatedRoute,

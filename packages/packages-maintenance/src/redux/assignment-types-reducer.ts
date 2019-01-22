@@ -1,5 +1,5 @@
-import { LocalPageTypes, StrIndex, LocalObject, FieldSchemaViewModel, FieldValueProviderViewModel } from '@skysmack/framework';
-import { AppState, ReduxAction, DocumentRecordState, documentRecordReducersBase } from '@skysmack/redux';
+import { LocalPageTypes, StrIndex, LocalObject } from '@skysmack/framework';
+import { AppState, ReduxAction, RecordState, recordReducersBase } from '@skysmack/redux';
 import { AssignmentType } from '../models/assignment-type';
 
 /**
@@ -9,11 +9,9 @@ export class AssignmentTypesAppState extends AppState {
     public AssignmentTypes: AssignmentTypesState;
 }
 
-export class AssignmentTypesState implements DocumentRecordState<AssignmentType, number> {
+export class AssignmentTypesState implements RecordState<AssignmentType, number> {
     public localPageTypes: StrIndex<StrIndex<LocalPageTypes<number>>> = {};
     public localRecords: StrIndex<StrIndex<LocalObject<AssignmentType, number>>> = {};
-    public availableFields: StrIndex<StrIndex<LocalObject<FieldValueProviderViewModel, string>>> = {};
-    public fields: StrIndex<StrIndex<LocalObject<FieldSchemaViewModel, string>>> = {};
 }
 
 export function assignmentTypesReducer(state = new AssignmentTypesState(), action: ReduxAction, prefix: string = 'ASSIGMENT_TYPES_'): AssignmentTypesState {
@@ -21,7 +19,7 @@ export function assignmentTypesReducer(state = new AssignmentTypesState(), actio
         default:
             return {
                 ...state,
-                ...documentRecordReducersBase<AssignmentTypesState, AssignmentType, number>(state, action, prefix)
+                ...recordReducersBase<AssignmentTypesState, AssignmentType, number>(state, action, prefix)
             };
     }
 }

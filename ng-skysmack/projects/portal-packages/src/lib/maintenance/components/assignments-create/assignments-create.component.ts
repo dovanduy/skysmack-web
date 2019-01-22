@@ -5,14 +5,14 @@ import { Assignment, AssignmentsAppState } from '@skysmack/packages-maintenance'
 import { combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { NgAssignmentFormDependencies, NgAssignmentsActions, NgSkysmackStore, NgAssignmentsFieldsConfig, NgAssignmentsStore, NgAssignmentTypesStore, NgAssignmentTypesActions } from '@skysmack/ng-packages';
-import { DocumentRecordFormComponent, EditorNavService } from '@skysmack/portal-ui';
+import { RecordFormComponent, EditorNavService } from '@skysmack/portal-ui';
 
 @Component({
   selector: 'ss-assignments-create',
   templateUrl: './assignments-create.component.html',
   styleUrls: ['./assignments-create.component.scss']
 })
-export class AssignmentsCreateComponent extends DocumentRecordFormComponent<AssignmentsAppState, Assignment, number, NgAssignmentFormDependencies> implements OnInit {
+export class AssignmentsCreateComponent extends RecordFormComponent<AssignmentsAppState, Assignment, number, NgAssignmentFormDependencies> implements OnInit {
 
 
   constructor(
