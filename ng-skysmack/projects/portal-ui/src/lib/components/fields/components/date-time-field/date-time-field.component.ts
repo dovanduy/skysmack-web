@@ -17,17 +17,18 @@ export class DateTimeFieldComponent extends FieldBaseComponent implements AfterV
   ngAfterViewInit() {
     combineLatest(
       this.getFormField().valueChanges,
-      fromEvent(this.timeInput.nativeElement, 'click')
+      fromEvent(this.timeInput.nativeElement, 'input'),
     ).subscribe(values => {
-      const date: Date = values[0];
+      const date: Date = new Date(values[0]);
+      let time = this.timeInput.nativeElement.value;
       if (date && typeof date.toISOString === 'function') {
-        let time = this.timeInput.nativeElement.value;
         time = time ? time : '00:00';
         const hours = time.split(':')[0];
         const minutes = time.split(':')[1];
 
         date.setMinutes(Number(minutes));
         date.setHours(Number(hours));
+
         this.setFieldValue(date);
       }
     });
