@@ -1,28 +1,15 @@
 {
     "LODGINGS": {
-        "TYPE": {
-            "FORM": {
-                "LABELS": {
-                    "NAME": "Name"
-                },
-                "PLACEHOLDERS": {
-                    "NAME": "Enter name"
-                },
-                "VALIDATION": {
-                    "NAME": {
-                        "REQUIRED": "A name is required."
-                    }
-                }
-            }
-        },
         "FORM": {
             "LABELS": {
                 "LODGINGTYPEID": "Type ID",
-                "NAME": "Name"
+                "NAME": "Name",
+                "OCCUPATIONSTATE": "Occupation state"
             },
             "PLACEHOLDERS": {
-                "LODGINGTYPEID": "Enter type ID",
-                "NAME": "Enter name"
+                "LODGINGTYPEID": "Type",
+                "NAME": "Name",
+                "OCCUPATIONSTATE": "Occupation state"
             },
             "VALIDATION": {
                 "LODGINGTYPEID": {
@@ -30,39 +17,9 @@
                 },
                 "NAME": {
                     "REQUIRED": "A name is required."
-                }
-            }
-        },
-        "TYPES": {
-            "CREATE": {
-                "CREATE": "Create"
-            },
-            "EDIT": {
-                "EDIT": "Edit"
-            },
-            "INDEX": {
-                "CREATE": "Create",
-                "ACTIONS": "Actions",
-                "TYPE": "Create type",
-                "MANAGE": "Manage",
-                "TYPES_FIELDS": "Types fields",
-                "BACK": "Back",
-                "FIELDS": "Fields"
-            },
-            "FIELDS": {
-                "CREATE": {
-                    "ADD": "Add new field"
                 },
-                "EDIT": {
-                    "EDITING": "Editing"
-                },
-                "INDEX": {
-                    "ACTIONS": "Actions",
-                    "CREATE": "Create new type field",
-                    "OTHER": "Other",
-                    "TYPES": "Types",
-                    "FIELDS": "Fields",
-                    "BACK": "Back"
+                "OCCUPATIONSTATE": {
+                    "REQUIRED": "Reservations tilstand er påkrævet."
                 }
             }
         },

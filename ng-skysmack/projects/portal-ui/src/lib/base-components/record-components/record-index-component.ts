@@ -12,9 +12,9 @@ import { map } from 'rxjs/operators';
 
 export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey> extends BaseComponent<TAppState, TKey> implements OnInit {
     public entities$: Observable<LocalObject<TRecord, TKey>[]>;
-    public createdEntities$: Observable<LocalObject<any, TKey>[]>;
+    public createdEntities$: Observable<LocalObject<TRecord, TKey>[]>;
     public pages$: BehaviorSubject<LocalPage<TKey>[]> = new BehaviorSubject<LocalPage<TKey>[]>([]);
-    public pagedEntities$: Observable<LocalObject<any, TKey>[]>;
+    public pagedEntities$: Observable<LocalObject<TRecord, TKey>[]>;
     public pagedQuery = new PagedQuery();
 
     public nextPageNumber = 1;
@@ -169,7 +169,9 @@ export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey>
                         .defined()
                         .select(x => x.ids);
 
-                    return linq<TKey>([]).selectMany(idsArray).distinct()
+                    return linq<TKey>([])
+                        .selectMany(idsArray)
+                        .distinct()
                         .select(id => values[1].filter(entity => entity.object.id === id)[0])
                         .defined()
                         .ok();

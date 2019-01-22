@@ -16,7 +16,7 @@ export class LodgingTypesValidation extends Validation {
         }
     };
 
-    public area = 'lodging-types';
+    public area = 'lodging_types';
 
     public formValidators = [];
 

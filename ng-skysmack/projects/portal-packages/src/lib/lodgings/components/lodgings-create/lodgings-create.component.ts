@@ -23,12 +23,12 @@ export class LodgingsCreateComponent extends DocumentRecordFormComponent<Lodging
     public router: Router,
     public activatedRoute: ActivatedRoute,
     public editorNavService: EditorNavService,
+    public store: NgLodgingsStore,
     public actions: NgLodgingsActions,
+    public lodgingTypeStore: NgLodgingTypesStore,
     public lodgingTypeActions: NgLodgingTypesActions,
     public redux: NgSkysmackStore,
     public fieldsConfig: NgLodgingsFieldsConfig,
-    public store: NgLodgingsStore,
-    public lodgingTypeStore: NgLodgingTypesStore,
   ) {
     super(router, activatedRoute, editorNavService, actions, redux, store, fieldsConfig);
   }

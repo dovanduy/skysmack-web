@@ -1,9 +1,9 @@
 import { Lodging, LodgingType } from '@skysmack/packages-lodgings';
-import { LodgingTypesValidation } from './ng-lodging-types-validation';
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { FormRule, Field, FieldTypes, SelectField, FieldsConfig } from '@skysmack/ng-ui';
 import { LocalObject } from '@skysmack/framework';
+import { LodgingsValidation } from './ng-lodgings-validation';
 
 export interface NgLodgingFormDependencies {
     availableLodgingTypes: LocalObject<LodgingType, number>[];
@@ -11,7 +11,7 @@ export interface NgLodgingFormDependencies {
 
 @Injectable({ providedIn: 'root' })
 export class NgLodgingsFieldsConfig extends FieldsConfig<Lodging, NgLodgingFormDependencies> {
-    public validation = new LodgingTypesValidation();
+    public validation = new LodgingsValidation();
 
     public formRules: FormRule[] = [
     ];
