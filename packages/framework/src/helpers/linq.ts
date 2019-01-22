@@ -1,8 +1,8 @@
-export const linq = (collection: any[]): Linq => new Linq(collection);
+export const linq = <TValue>(collection: TValue[]): Linq<TValue> => new Linq(collection);
 
-class Linq {
+class Linq<TValue> {
 
-    constructor(private collection: any[]) { }
+    constructor(private collection: TValue[]) { }
 
     // MISSING
     // any()
@@ -13,8 +13,8 @@ class Linq {
     /**
      * Returns defined values.
      */
-    public defined(): Linq {
-        this.collection = this.collection.filter(x => x !== undefined);
+    public defined(): Linq<TValue> {
+        this.collection = this.collection.filter(x => x !== undefined && x !== null);
         return this;
     }
 
@@ -22,26 +22,29 @@ class Linq {
      * Returns an array of the selected property
      * @param selector Lamba function
      */
-    public select(selector): Linq {
-        this.collection = this.collection.map(selector);
-        return this;
+    public select<TReturn>(callbackfn: (value: TValue, index: number, array: TValue[]) => TReturn, thisArg?: any): Linq<TReturn> {
+        return new Linq<TReturn>(this.collection.map<TReturn>(callbackfn));
     }
 
     /**
      * Returns an array with the properties that passes the provided test
      * @param selector Lamba function
      */
-    public where(selector): Linq {
-        this.collection = this.collection.filter(selector);
+    public where(callbackfn: (value: TValue, index: number, array: TValue[]) => TValue, thisArg?: any): Linq<TValue> {
+        this.collection = this.collection.filter(callbackfn);
         return this;
     }
 
     /**
      * Flattens an array of arrays into one array.
      */
-    public selectMany(): Linq {
-        if (this.collection.length > 0) {
-            this.collection = this.collection.reduce((a, b) => a.concat(b));
+    public selectMany(manyCollection: Linq<TValue[]>): Linq<TValue> {
+        if (manyCollection.collection.length > 0) {
+            this.collection = manyCollection.collection.reduce((a, b) => a.concat(b));
+        }
+
+        if (this.collection === undefined) {
+            this.collection = [];
         }
         return this;
     }
@@ -49,7 +52,7 @@ class Linq {
     /**
      * Returns distinct values.
      */
-    public distinct(): Linq {
+    public distinct(): Linq<TValue> {
         this.collection = this.collection.filter((value, index, self) => self.indexOf(value) === index);
         return this;
     }
@@ -57,7 +60,7 @@ class Linq {
     /*
      * Logs the collection
      */
-    public log(): Linq {
+    public log(): Linq<TValue> {
         console.log(this.collection);
         return this;
     }
@@ -69,7 +72,7 @@ class Linq {
         return this.collection.length;
     }
 
-    public ok(): any[] {
+    public ok(): TValue[] {
         return this.collection;
     }
 }

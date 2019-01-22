@@ -17,7 +17,7 @@ import { LodgingsArrivalsComponent } from '../lodgings-arrivals/lodgings-arrival
   styleUrls: ['./lodgings-reservations-index.component.scss']
 })
 export class LodgingsReservationsIndexComponent extends RecordIndexComponent<LodgingReservationsAppState, LodgingReservation, number> implements OnInit {
-  public displayedColumns = ['checkIn', 'checkOut', 'persons', 'lodgingName', 'lodgingTypeName'];
+  public displayedColumns = ['checkIn', 'checkOut', 'persons', 'lodgingName', 'lodgingTypeName', 'status'];
   public entityActions: EntityAction[] = [
     // Checkin
     new EntityAction().asEventAction('Checkin', this.checkIn, 'label', this).setShowLogic((entity: LocalObject<ExtendedReservation, number>) => {
@@ -92,7 +92,7 @@ export class LodgingsReservationsIndexComponent extends RecordIndexComponent<Lod
         this.lodgingTypesActions.getPaged(loadedPackage._package.path, new PagedQuery({ pageNumber: 1, pageSize: 50 }));
 
         return combineLatest(
-          this.entities$,
+          this.pagedEntities$,
           this.lodgingsStore.get(loadedPackage._package.path),
           this.lodgingTypesStore.get(loadedPackage._package.path),
         ).pipe(

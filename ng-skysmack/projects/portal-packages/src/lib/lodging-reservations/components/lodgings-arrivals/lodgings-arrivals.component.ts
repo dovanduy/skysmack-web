@@ -42,12 +42,12 @@ export class LodgingsArrivalsComponent extends LodgingsReservationsIndexComponen
   }
 
   private filter() {
-    this.filterBuilder = new RSQLFilterBuilder();
-    this.filterBuilder.column('status').like(LodgingReservation.statusEnum.Reserved).and().column('checkIn').lessThanOrEqualTo(moment().toDate());
+    this.pagedQuery.rsqlFilter = new RSQLFilterBuilder();
+    this.pagedQuery.rsqlFilter.column('status').like(LodgingReservation.statusEnum.Reserved).and().column('checkIn').lessThanOrEqualTo(moment().toDate());
   }
 
   private sort() {
-    this.sortBuilder = new SortBuilder();
-    this.sortBuilder.add('checkIn', false);
+    this.pagedQuery.sort = new SortBuilder();
+    this.pagedQuery.sort.add('checkIn', false);
   }
 }

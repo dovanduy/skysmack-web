@@ -34,22 +34,22 @@ export class LodgingsDeparturesComponent extends LodgingsReservationsIndexCompon
   }
 
   ngOnInit() {
-    // this.filter();
-    // this.sort();
+    this.filter();
+    this.sort();
     this.pageTitle.setTitle('Departures');
     super.ngOnInit();
   }
 
   private filter() {
-    this.filterBuilder = new RSQLFilterBuilder();
-    this.filterBuilder
+    this.pagedQuery.rsqlFilter = new RSQLFilterBuilder();
+    this.pagedQuery.rsqlFilter
       .column('status').like(LodgingReservation.statusEnum.InStay).and()
       .column('checkOut').lessThanOrEqualTo(moment().toDate());
   }
 
   private sort() {
-    this.sortBuilder = new SortBuilder();
-    this.sortBuilder.add('checkOut', false);
+    this.pagedQuery.sort = new SortBuilder();
+    this.pagedQuery.sort.add('checkOut', false);
   }
 
 }

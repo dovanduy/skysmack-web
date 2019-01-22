@@ -3,7 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { RecordActionsBase } from '@skysmack/redux';
 import { NgRedux } from '@angular-redux/store';
 import { NgSkysmackStore } from '@skysmack/ng-packages';
-import { LocalObject, LocalPage, PagedQuery, LoadingState, hasValue, setKey, StrIndex, LocalPageTypes, linq } from '@skysmack/framework';
+import { LocalObject, LocalPage, PagedQuery, LoadingState, hasValue, StrIndex, LocalPageTypes, linq } from '@skysmack/framework';
 import { Observable, BehaviorSubject, fromEvent, combineLatest } from 'rxjs';
 import { NgRecordReduxStore } from '@skysmack/ng-redux';
 import { OnInit } from '@angular/core';
@@ -41,8 +41,8 @@ export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey>
         super.ngOnInit();
         this.getEntities();
         this.requestPage(true);
-        // this.loadPages();
-        // this.getPagedEntities();
+        this.loadPages();
+        this.getPagedEntities();
         // this.subscriptionHandler.subscribe(this.getScrollAsStream().subscribe());
     }
 
@@ -57,7 +57,7 @@ export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey>
     /**
      * Angular track by function used to track local objects in ngFor loops.
      */
-    public trackByObjectId(index, item: LocalObject<any, TKey>) {
+    public trackByObjectId(item: LocalObject<any, TKey>) {
         return item ? item.object.id : undefined;
     }
 
@@ -76,23 +76,25 @@ export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey>
         this.subscriptionHandler.register(this.store.getPages(this.packagePath).pipe(
             hasValue<StrIndex<LocalPageTypes<TKey>>>(),
             map(dictionary => {
-                const queryDictionary = dictionary[setKey(this.packagePath, [this.nextPageSize])];
+                const query = this.pagedQuery.rsqlFilter.toList().build();
+                const queryDictionary = dictionary[query];
 
                 if (queryDictionary) {
-                    const pages = Object.keys(queryDictionary)
-                        .map(key => queryDictionary[key])
-                        .filter(page => page.pagination.xPageNumber <= this.nextPageNumber);
-                    // .sort((a: Page, b: Page) => a.pagination.xPageNumber - b.pagination.xPageNumber);
-                    // .sort((a: LocalPage<TKey>, b: LocalPage<TKey>) => a.pageNumber - b.pageNumber);
+                    const sort = this.pagedQuery.sort.build();
+                    const pages = queryDictionary.pages[this.pagedQuery.pageSize + ':' + sort];
+                    const pageKeys = Object.keys(pages);
+                    const lastPageKey = Number(pageKeys[pageKeys.length - 1]);
+                    const lastPage: LocalPage<TKey> = pages[lastPageKey];
 
+                    this.pages$.next(Object.keys(pages).map(key => {
+                        if (Number(key) > 0) {
+                            return pages[key];
+                        }
+                    }));
+                    this.totalCount = queryDictionary.totalCount;
+                    this.currentPageNumber = lastPageKey;
 
-                    const lastPage = pages[pages.length - 1];
-                    this.pages$.next(pages);
-
-                    this.totalCount = lastPage.pagination.xTotalCount;
-                    this.currentPageNumber = lastPage.pagination.xPageNumber;
-
-                    const lastPageLinks = lastPage.pagination.links;
+                    const lastPageLinks = lastPage.links;
 
                     if (lastPageLinks) {
                         if (lastPageLinks.next) {
@@ -158,17 +160,17 @@ export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey>
      */
     public getPagedEntities() {
         if (this.pages$ && this.entities$) {
-            const pagedEntities$ = combineLatest(
+            this.pagedEntities$ = combineLatest(
                 this.pages$,
                 this.entities$
             ).pipe(
                 map(values => {
-                    return linq(values[0])
+                    const idsArray = linq<LocalPage<TKey>>(values[0])
                         .defined()
-                        .select(x => x.entityIds)
-                        .selectMany()
-                        .distinct()
-                        .select(entityId => values[1].filter(entity => entity.object.id === entityId)[0])
+                        .select(x => x.ids);
+
+                    return linq<TKey>([]).selectMany(idsArray).distinct()
+                        .select(id => values[1].filter(entity => entity.object.id === id)[0])
                         .defined()
                         .ok();
                 })

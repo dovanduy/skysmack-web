@@ -3,9 +3,9 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { NgLodgingReservationsStore, NgLodgingsStore, NgLodgingTypesStore, NgLodgingReservationsFieldsConfig, NgLodgingsActions, NgLodgingTypesActions, NgLodgingReservationsActions, NgSkysmackStore } from '@skysmack/ng-packages';
 import { EntityComponentPageTitle } from '@skysmack/portal-ui';
 import { LodgingsReservationsIndexComponent } from '../lodgings-reservations-index/lodgings-reservations-index.component';
+import { NgReservationsMenu } from '../../ng-reservations-menu';
 import { RSQLFilterBuilder, SortBuilder } from '@skysmack/framework';
 import { LodgingReservation } from '@skysmack/packages-lodging-reservations';
-import { NgReservationsMenu } from '../../ng-reservations-menu';
 
 
 @Component({
@@ -40,12 +40,12 @@ export class LodgingsStaysComponent extends LodgingsReservationsIndexComponent i
   }
 
   private filter() {
-    this.filterBuilder = new RSQLFilterBuilder();
-    this.filterBuilder.column('status').like(LodgingReservation.statusEnum.InStay);
+    this.pagedQuery.rsqlFilter = new RSQLFilterBuilder();
+    this.pagedQuery.rsqlFilter.column('status').like(LodgingReservation.statusEnum.InStay);
   }
 
   private sort() {
-    this.sortBuilder = new SortBuilder();
-    this.sortBuilder.add('checkIn', false);
+    this.pagedQuery.sort = new SortBuilder();
+    this.pagedQuery.sort.add('checkIn', false);
   }
 }
