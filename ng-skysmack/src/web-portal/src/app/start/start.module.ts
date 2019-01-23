@@ -31,6 +31,10 @@ import { environment } from './../../environments/environment';
         loadChildren: './../packages/modules/packages_wrapper.module#PackagesWrapperModule'
       },
       {
+        path: 'skysmack/access-policies',
+        loadChildren: './../packages/modules/access_policies_wrapper.module#AccessPoliciesWrapperModule'
+      },
+      {
         path: 'skysmack/loadPackages/identities',
         loadChildren: './../packages/modules/identities_wrapper.module#IdentitiesWrapperModule'
       },

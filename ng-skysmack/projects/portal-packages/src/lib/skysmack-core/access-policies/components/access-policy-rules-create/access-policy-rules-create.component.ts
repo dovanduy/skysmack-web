@@ -5,7 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { EditorNavService, RecordFormComponent } from '@skysmack/portal-ui';
 import { NgAccessPolicyRulesStore } from '@skysmack/ng-packages';
 import { AccessPolicyRulesAppState, AccessPolicyRule } from '@skysmack/packages-skysmack-core';
-import { NgAccessPolicyRuleFormDependencies, NgAccessPolicyRulesFieldsConfig } from 'ng-packages/src/lib/skysmack-core/access-policies/ng-access-policy-rules-fields-config';
+import { NgAccessPolicyRuleFormDependencies, NgAccessPolicyRulesFieldsConfig } from '@skysmack/ng-packages';
 
 @Component({
   selector: 'ss-access-policy-rules-create',
