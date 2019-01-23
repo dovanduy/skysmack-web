@@ -1,1 +1,3 @@
-export const temp1 = 'temp';
+export * from './access-policy-permissions-reducer';
+export * from './access-policy-roles-reducer';
+export * from './access-policy-rules-reducer';
