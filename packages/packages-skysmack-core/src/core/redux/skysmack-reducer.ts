@@ -1,24 +1,25 @@
 import { Skysmack } from './../models/skysmack';
-import { AppState } from '@skysmack/redux';
+import { AppState, sharedReducer } from '@skysmack/redux';
 import { SkysmackActions } from './skysmack-actions';
 
 export class SkysmackAppState extends AppState {
     public skysmack: SkysmackState;
 }
 
+// new Skysmack({
+//     defaultHostName: '',
+//     safeSubHostName: '',
+//     name: 'Skysmack',
+//     packages: []
+// });
 export class SkysmackState {
-    skysmack: Skysmack
-    tenantLoaded: boolean;
+    public skysmack = {};
+    public tenantLoaded = false;
 }
 
-const SKYSMACK_STATE: SkysmackState = {
-    skysmack: {},
-    tenantLoaded: false,
-}
-
-export function skysmackReducer(state: SkysmackState = SKYSMACK_STATE, action: any): SkysmackState {
-    state = Object.freeze(state);
-    let newState = Object.assign({}, state);
+export function skysmackReducer(state = new SkysmackState(), action: any): SkysmackState {
+    state = sharedReducer(state, action, new SkysmackState());
+    const newState = Object.assign({}, state);
 
     switch (action.type) {
         case SkysmackActions.GET_SKYSMACK_SUCCESS:

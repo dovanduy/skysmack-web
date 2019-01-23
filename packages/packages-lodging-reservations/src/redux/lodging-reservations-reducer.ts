@@ -1,5 +1,5 @@
 import { LocalPageTypes, StrIndex, LocalObject, HttpSuccessResponse, replaceLocalInnerObject, LocalObjectExtensions, LocalObjectStatus } from '@skysmack/framework';
-import { AppState, ReduxAction, recordReducersBase, RecordState } from '@skysmack/redux';
+import { AppState, ReduxAction, recordReducersBase, RecordState, sharedReducer } from '@skysmack/redux';
 import { LodgingReservation } from '../models/lodging-reservation';
 import { LodgingReservationsActions } from './lodging-reservations-actions';
 import { StateKeyMeta } from '@skysmack/redux';
@@ -27,8 +27,8 @@ const updateLodgingReservation = (action, newState) => {
 }
 
 export function lodgingReservationsReducer(state = new LodgingReservationsState(), action: ReduxAction, prefix: string = 'LODGING_RESERVATIONS_'): LodgingReservationsState {
-    state = Object.freeze(state);
-    const newState = { ...state };
+    state = sharedReducer(state, action, new LodgingReservationsState());
+    const newState = Object.assign({}, state);
 
     switch (action.type) {
         // GET AVAILABLE LODGINGS

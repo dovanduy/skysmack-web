@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { NgRedux } from '@angular-redux/store';
 import { map, filter, switchMap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
-import { LocalObject, toLocalObject, flatten, safeHasValue, Package, defined } from '@skysmack/framework';
+import { LocalObject, toLocalObject, flatten, safeHasValue, Package, defined, hasValue } from '@skysmack/framework';
 import { Skysmack, SkysmackAppState } from '@skysmack/packages-skysmack-core';
 import { PackageLoader } from '../packages/package-loader';
 import { LoadedPackage } from '../packages/loaded-package';
@@ -18,7 +18,7 @@ export class NgSkysmackStore {
     }
 
     public getSkysmack(): Observable<Skysmack> {
-        return this.ngRedux.select((state: SkysmackAppState) => state.skysmack.skysmack);
+        return this.ngRedux.select((state: SkysmackAppState) => state.skysmack.skysmack).pipe(hasValue());
     }
 
     public getPackages(): Observable<LocalObject<Package, string>[]> {
@@ -38,7 +38,13 @@ export class NgSkysmackStore {
     }
 
     public getCurrentPackage(packagePath: string): Observable<LoadedPackage> {
-        return this.ngRedux.select((state: SkysmackAppState) => state.skysmack.skysmack.packages).pipe(flatten<Package>(), filter(_package => _package.path === packagePath), map(_package => PackageLoader.toLoadedPackage(_package)), safeHasValue());
+        return this.getSkysmack().pipe(
+            map(skysmack => skysmack.packages),
+            flatten<Package>(),
+            filter(_package => _package.path === packagePath),
+            map(_package => PackageLoader.toLoadedPackage(_package)),
+            safeHasValue()
+        );
     }
 
     /**
@@ -54,6 +60,8 @@ export class NgSkysmackStore {
     }
 
     public getAuthenticationPackages(): Observable<Package[]> {
-        return this.ngRedux.select((state: SkysmackAppState) => state.skysmack.skysmack.packages.filter(_package => _package.type === Oauth2Type.id));
+        return this.getSkysmack().pipe(
+            map(skysmack => skysmack.packages.filter(_package => _package.type === Oauth2Type.id))
+        );
     }
 }

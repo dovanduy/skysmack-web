@@ -1,5 +1,5 @@
 import { LocalPageTypes, StrIndex, LocalObject, FieldSchemaViewModel, FieldValueProviderViewModel } from '@skysmack/framework';
-import { AppState, ReduxAction, DocumentRecordState, documentRecordReducersBase } from '@skysmack/redux';
+import { AppState, ReduxAction, DocumentRecordState, documentRecordReducersBase, sharedReducer } from '@skysmack/redux';
 import { Product } from './../models/product';
 
 /**
@@ -17,6 +17,7 @@ export class ProductsState implements DocumentRecordState<Product, number> {
 }
 
 export function productsReducer(state = new ProductsState(), action: ReduxAction, prefix: string = 'PRODUCTS_'): ProductsState {
+    state = sharedReducer(state, action, new ProductsState());
     switch (action.type) {
         default:
             return {

@@ -1,6 +1,7 @@
 import { LocalPageTypes, StrIndex, LocalObject, FieldSchemaViewModel, FieldValueProviderViewModel } from '@skysmack/framework';
 import { AppState, ReduxAction, DocumentRecordState, documentRecordReducersBase } from '@skysmack/redux';
 import { Person } from './../models/person';
+import { sharedReducer } from '@skysmack/redux';
 
 /**
  * This is to be used when you want to access persons via the GLOBAL state. E.g. state.persons (where persons is the reducer name.)
@@ -17,6 +18,8 @@ export class PersonsState implements DocumentRecordState<Person, number> {
 }
 
 export function personsReducer(state = new PersonsState(), action: ReduxAction, prefix: string = 'PERSONS_'): PersonsState {
+    state = sharedReducer(state, action, new PersonsState());
+
     switch (action.type) {
         default:
             return {

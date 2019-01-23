@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 import { share } from 'rxjs/operators';
 import { TOOGLE_HYDRATED } from './hydrated-reducer';
 import { HttpMethod, ApiDomain, HttpSuccessResponse, HttpErrorResponse } from '@skysmack/framework';
-import { Effect, RecordActionsBase, DocumentRecordActionsBase, cancelRecordActionOutboxFilter, cancelDynamicFieldActionOutboxFilter } from '@skysmack/redux';
+import { Effect, RecordActionsBase, DocumentRecordActionsBase, cancelRecordActionOutboxFilter, cancelDynamicFieldActionOutboxFilter, AuthenticationActions } from '@skysmack/redux';
 
 // See https://github.com/redux-offline/redux-offline#configuration
 @Injectable({ providedIn: 'root' })

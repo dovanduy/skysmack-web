@@ -1,14 +1,12 @@
 import { DocumentRecordActionsBase } from "../actions";
-import { Record, toLocalObject, HttpSuccessResponse, LocalObject, FieldSchemaViewModel, HttpErrorResponse, LocalObjectStatus, LocalObjectExtensions, FieldValueProviderViewModel, replaceLocalInnerObject } from "@skysmack/framework";
+import { Record, toLocalObject, HttpSuccessResponse, LocalObject, FieldSchemaViewModel, HttpErrorResponse, LocalObjectExtensions, FieldValueProviderViewModel, replaceLocalInnerObject } from "@skysmack/framework";
 import { ReduxAction } from '../action-types/redux-action';
 import { PackagePathPayload, GetFieldsSuccessPayload, GetAvailableFieldsSuccessPayload, GetSingleFieldSuccessPayload } from './../payloads';
 import { DocumentRecordState } from './../states/document-record-state';
 import { recordReducersBase } from './record-reducers-base';
 import { cancelDynamicFieldAction } from './cancel-dynamic-field-action';
 
-
 export function documentRecordReducersBase<TState extends DocumentRecordState<TRecord, TKey>, TRecord extends Record<TKey>, TKey>(state: TState, action: any, prefix: string = ''): TState {
-    state = Object.freeze(state);
     let newState = Object.assign({}, state);
 
     switch (action.type) {

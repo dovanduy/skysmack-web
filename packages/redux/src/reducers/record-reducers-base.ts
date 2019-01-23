@@ -7,7 +7,6 @@ import { ReduxOfflineMeta, CommitMeta } from './../metas';
 import { cancelRecordAction } from './cancel-record-action';
 
 export function recordReducersBase<TState extends RecordState<TRecord, TKey>, TRecord extends Record<TKey>, TKey>(state: TState, action: any, prefix: string = ''): TState {
-    state = Object.freeze(state);
     let newState = Object.assign({}, state);
 
     switch (action.type) {

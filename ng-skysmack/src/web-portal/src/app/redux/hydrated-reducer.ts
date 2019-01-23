@@ -1,22 +1,20 @@
-export interface HydratedState {
-    hydrated: boolean;
-}
+import { sharedReducer } from '@skysmack/redux';
 
-export const HYDRATED_INITIAL_STATE: HydratedState = {
-    hydrated: false
-};
+export class HydratedState {
+    public hydrated = false;
+}
 
 export const TOOGLE_HYDRATED = 'TOOGLE_HYDRATED';
 
-export function hydratedReducer(state: HydratedState = HYDRATED_INITIAL_STATE, action: any): HydratedState {
-    let newState: HydratedState = HYDRATED_INITIAL_STATE;
+export function hydratedReducer(state = new HydratedState(), action: any): HydratedState {
+    state = sharedReducer(state, action, new HydratedState());
+    const newState = Object.assign({}, state);
+
     switch (action.type) {
-
-        case TOOGLE_HYDRATED:
-            return newState = {
-                hydrated: action.payload
-            } as HydratedState;
-
+        case TOOGLE_HYDRATED: {
+            newState.hydrated = action.payload;
+            return newState;
+        }
         default:
             return state;
     }

@@ -13,6 +13,7 @@
     "ss": "run-s ss:lerna build:lib ss:web:localization ss:c1",
     "ss:lerna": "lerna bootstrap && lerna run build:npm",
     "ss:lerna:watch": "lerna run --stream --no-sort --concurrency 10 build:npm:watch",
+    "ss:lerna:reboot": "run-s ss:lerna ss:lerna:watch",
     "ss:build": "run-s ss:lerna build:lib ss:web:localization build:c1:prod",
     "ss:prod": "run-s ss:lerna build:lib ss:web:localization  build:c1:dev start-server",
     "ss:clean": "cd ../Assorted/scripts && clean.bat",

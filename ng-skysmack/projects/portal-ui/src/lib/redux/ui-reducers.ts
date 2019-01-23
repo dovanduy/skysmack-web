@@ -1,12 +1,9 @@
 import { Menu } from '@skysmack/ng-ui';
 import { UIActions } from './ui-actions';
+import { sharedReducer } from '@skysmack/redux';
 
-export interface UIState {
-    menu: Menu;
-}
-
-export const UI_INITIAL_STATE: UIState = {
-    menu: {
+export class UIState {
+    public menu: Menu = {
         drawer: false,
         login: false,
         notifications: false,
@@ -16,36 +13,30 @@ export const UI_INITIAL_STATE: UIState = {
         editors: false,
         offline: false,
         language: false
-    }
-};
+    };
+}
 
-export function uiReducer(state: UIState = UI_INITIAL_STATE, action: any) {
-    let newState: UIState = UI_INITIAL_STATE;
+export function uiReducer(state = new UIState(), action: any) {
+    state = sharedReducer(state, action, new UIState());
+    const newState = Object.assign({}, state);
+
     switch (action.type) {
 
-        case UIActions.TOGGLE_MENU_FOR:
+        case UIActions.TOGGLE_MENU_FOR: {
             const toggleAction = action;
-            return newState = {
-                ...state,
-                menu: toggleMenuForImmutable(state, toggleAction.payload)
-            };
-
-        case UIActions.SET_PACKAGE_DRAWER_STATUS:
+            newState.menu = toggleMenuForImmutable(state, toggleAction.payload);
+            return newState;
+        }
+        case UIActions.SET_PACKAGE_DRAWER_STATUS: {
             const packageStatusAction = action;
-            return newState = {
-                ...state,
-                menu: {
-                    ...state.menu,
-                    drawer: packageStatusAction.payload
-                }
-            };
-
+            newState.menu.drawer = packageStatusAction.payload;
+            return newState;
+        }
         default:
             return state;
     }
 }
 
-//#region ui-helpers
 const toggleMenuForImmutable = (state: UIState, targetMenu: string): Menu => {
     const menu = { ...state.menu };
     // tslint:disable-next-line:prefer-const
@@ -80,4 +71,3 @@ const throwUndefinedMenuError = (menu: any, targetMenu: string): void => {
         `\n"${targetMenu}" does not exist. Existing menus are:\n${stringMenu}`
     );
 };
-//#endregion

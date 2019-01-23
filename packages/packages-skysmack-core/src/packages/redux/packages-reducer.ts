@@ -1,5 +1,5 @@
 import { LocalObject, Package, toLocalObject, HttpErrorResponse, HttpSuccessResponse, AvailablePackage, StrIndex, LocalObjectExtensions, replaceLocalInnerObject } from '@skysmack/framework';
-import { AppState, ReduxAction, GetAvailablePackagesSuccessPayload } from '@skysmack/redux';
+import { AppState, ReduxAction, GetAvailablePackagesSuccessPayload, sharedReducer } from '@skysmack/redux';
 import { PackagesActions } from './packages-actions';
 import { GetPackagesSuccessPayload, GetPackageSuccessPayload } from '../payloads';
 
@@ -11,13 +11,13 @@ export class PackagesAppState extends AppState {
 }
 
 export class PackagesState {
-    public localPackages: StrIndex<LocalObject<Package, string>>;
-    public availablePackages: StrIndex<LocalObject<AvailablePackage, string>>;
+    public localPackages: StrIndex<LocalObject<Package, string>> = {};
+    public availablePackages: StrIndex<LocalObject<AvailablePackage, string>> = {};
 }
 
 export function packagesReducer(state = new PackagesState(), action: any): PackagesState {
-    state = Object.freeze(state);
-    let newState = Object.assign({}, state);
+    state = sharedReducer(state, action, new PackagesState());
+    const newState = Object.assign({}, state);
 
     switch (action.type) {
         case PackagesActions.GET_PACKAGES_SUCCESS: {

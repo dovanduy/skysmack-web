@@ -1,5 +1,5 @@
 import { LocalPageTypes, StrIndex, LocalObject, FieldSchemaViewModel, FieldValueProviderViewModel } from '@skysmack/framework';
-import { AppState, ReduxAction, RecordState, recordReducersBase } from '@skysmack/redux';
+import { AppState, ReduxAction, RecordState, recordReducersBase, sharedReducer } from '@skysmack/redux';
 import { Role } from './../models/role';
 
 /**
@@ -17,6 +17,8 @@ export class RolesState implements RecordState<Role, number> {
 }
 
 export function rolesReducer(state = new RolesState(), action: ReduxAction, prefix: string = 'ROLES_'): RolesState {
+    state = sharedReducer(state, action, new RolesState());
+
     switch (action.type) {
         default:
             return {

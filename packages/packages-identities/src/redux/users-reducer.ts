@@ -1,5 +1,5 @@
 import { LocalPageTypes, StrIndex, LocalObject, FieldSchemaViewModel, FieldValueProviderViewModel, NumIndex, HttpResponse, linq } from '@skysmack/framework';
-import { AppState, ReduxAction, RecordState, recordReducersBase, ReduxOfflineMeta } from '@skysmack/redux';
+import { AppState, ReduxAction, RecordState, recordReducersBase, ReduxOfflineMeta, sharedReducer } from '@skysmack/redux';
 import { User } from './../models/user';
 import { UsersActions } from './users-actions';
 import { GetUsersRolesSuccessPayload } from '../payloads';
@@ -20,8 +20,8 @@ export class UsersState implements RecordState<User, number> {
 }
 
 export function usersReducer(state = new UsersState(), action: ReduxAction, prefix: string = 'USERS_'): UsersState {
-    state = Object.freeze(state);
-    const newState = { ...state };
+    state = sharedReducer(state, action, new UsersState());
+    const newState = Object.assign({}, state);
 
     switch (action.type) {
         case prefix + UsersActions.GET_ROLES_SUCCESS: {

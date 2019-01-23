@@ -1,5 +1,5 @@
 import { StrIndex, LocalObject, LocalPageTypes } from '@skysmack/framework';
-import { AppState, ReduxAction, RecordState, recordReducersBase } from '@skysmack/redux';
+import { AppState, ReduxAction, RecordState, recordReducersBase, sharedReducer } from '@skysmack/redux';
 import { RecurringAssignment } from '../models/recurring-assignment';
 
 /**
@@ -15,6 +15,7 @@ export class RecurringAssignmentState implements RecordState<RecurringAssignment
 }
 
 export function recurringAssignmentsReducer(state = new RecurringAssignmentState(), action: ReduxAction, prefix: string = 'RECURRING_ASSIGNMENT_'): RecurringAssignmentState {
+    state = sharedReducer(state, action, new RecurringAssignmentState());
     switch (action.type) {
         default:
             return {

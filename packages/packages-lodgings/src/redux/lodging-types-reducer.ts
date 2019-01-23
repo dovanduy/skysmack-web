@@ -1,5 +1,5 @@
 import { LocalPageTypes, StrIndex, LocalObject, FieldSchemaViewModel, FieldValueProviderViewModel } from '@skysmack/framework';
-import { AppState, ReduxAction, DocumentRecordState, documentRecordReducersBase } from '@skysmack/redux';
+import { AppState, ReduxAction, DocumentRecordState, documentRecordReducersBase, sharedReducer } from '@skysmack/redux';
 import { LodgingType } from '../models/lodging-type';
 
 /**
@@ -17,6 +17,7 @@ export class LodgingTypesState implements DocumentRecordState<LodgingType, numbe
 }
 
 export function lodgingTypesReducer(state = new LodgingTypesState(), action: ReduxAction, prefix: string = 'LODGING_TYPES_'): LodgingTypesState {
+    state = sharedReducer(state, action, new LodgingTypesState());
     switch (action.type) {
         default:
             return {
