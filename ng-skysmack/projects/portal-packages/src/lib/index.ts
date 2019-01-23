@@ -6,5 +6,5 @@ export * from './oauth2/index';
 export * from './packages/index';
 export * from './persons/index';
 export * from './products/index';
-export * from './skysmack/index';
+export * from './skysmack-core/index';
 export * from './terminal-payments/index';

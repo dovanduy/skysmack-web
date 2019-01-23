@@ -1,0 +1,29 @@
+{
+    "ACCESS_POLICY_RULES": {
+        "CREATE": {
+            "CREATE": "Create"
+        },
+        "EDIT": {
+            "EDITING": "Rediger"
+        },
+        "INDEX": {
+            "ACTIONS": "Actions",
+            "CREATE": "Create",
+            "MANAGE": "Manage",
+            "BACK": "Back",
+            "ROLES": "Roles"
+        },
+        "FORM": {
+            "LABELS": {
+                "ACCESS": "Access",
+                "AUTHENTICATED": "Authenticated",
+                "INCLUDEROLES": "Include roles"
+            },
+            "PLACEHOLDERS": {
+                "ACCESS": "Access",
+                "AUTHENTICATED": "Authenticated",
+                "INCLUDEROLES": "Include roles"
+            }
+        }
+    }
+}

@@ -1,0 +1,34 @@
+{
+    "ACCESS_POLICY_PERMISSIONS": {
+        "CREATE": {
+            "CREATE": "Create"
+        },
+        "EDIT": {
+            "EDITING": "Rediger"
+        },
+        "INDEX": {
+            "ACTIONS": "Actions",
+            "CREATE": "Create",
+            "MANAGE": "Manage",
+            "BACK": "Back",
+            "ROLES": "Roles"
+        },
+        "FORM": {
+            "LABELS": {
+                "PACKAGEID": "Package id",
+                "RULEID": "Rule id",
+                "ORDER": "Order",
+                "ISTOPLEVEL": "Is Top Level",
+                "PERMISSION": "Permission"
+            },
+            "PLACEHOLDERS": {
+                "PACKAGEID": "Package id",
+                "RULEID": "Rule id",
+                "ORDER": "Order",
+                "ISTOPLEVEL": "Is Top Level",
+                "PERMISSION": "Permission"
+            },
+            "VALIDATION": {}
+        }
+    }
+}

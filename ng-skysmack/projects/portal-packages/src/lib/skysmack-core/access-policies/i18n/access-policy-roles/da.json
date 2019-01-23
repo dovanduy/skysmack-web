@@ -1,0 +1,32 @@
+{
+    "ACCESS_POLICY_ROLES": {
+        "CREATE": {
+            "CREATE": "Opret"
+        },
+        "EDIT": {
+            "EDITING": "Rediger"
+        },
+        "INDEX": {
+            "ACTIONS": "Handlinger",
+            "CREATE": "Opret",
+            "MANAGE": "Konfigurer",
+            "BACK": "Tilbage",
+            "ROLES": "Roller"
+        },
+        "FORM": {
+            "LABELS": {
+                "RULEID": "Regel Id",
+                "ROLEID": "Rolle Id"
+            },
+            "PLACEHOLDERS": {
+                "RULEID": "Regel Id",
+                "ROLEID": "Rolle Id"
+            },
+            "VALIDATION": {
+                "NAME": {
+                    "REQUIRED": "Navn er påkrævet"
+                }
+            }
+        }
+    }
+}

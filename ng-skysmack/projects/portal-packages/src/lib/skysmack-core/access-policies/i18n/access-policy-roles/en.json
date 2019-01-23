@@ -1,0 +1,32 @@
+{
+    "ACCESS_POLICY_ROLES": {
+        "CREATE": {
+            "CREATE": "Create"
+        },
+        "EDIT": {
+            "EDITING": "Rediger"
+        },
+        "INDEX": {
+            "ACTIONS": "Actions",
+            "CREATE": "Create",
+            "MANAGE": "Manage",
+            "BACK": "Back",
+            "ROLES": "Roles"
+        },
+        "FORM": {
+            "LABELS": {
+                "RULEID": "Rule Id",
+                "ROLEID": "Role Id"
+            },
+            "PLACEHOLDERS": {
+                "RULEID": "Rule Id",
+                "ROLEID": "Role Id"
+            },
+            "VALIDATION": {
+                "NAME": {
+                    "REQUIRED": "A name is required."
+                }
+            }
+        }
+    }
+}

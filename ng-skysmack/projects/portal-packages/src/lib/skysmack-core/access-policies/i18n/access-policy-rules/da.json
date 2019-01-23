@@ -1,0 +1,29 @@
+{
+    "ACCESS_POLICY_RULES": {
+        "CREATE": {
+            "CREATE": "Opret"
+        },
+        "EDIT": {
+            "EDITING": "Rediger"
+        },
+        "INDEX": {
+            "ACTIONS": "Handlinger",
+            "CREATE": "Opret",
+            "MANAGE": "Konfigurer",
+            "BACK": "Tilbage",
+            "ROLES": "Roller"
+        },
+        "FORM": {
+            "LABELS": {
+                "ACCESS": "Adgang",
+                "AUTHENTICATED": "Godkendt",
+                "INCLUDEROLES": "Inkluder roller"
+            },
+            "PLACEHOLDERS": {
+                "ACCESS": "Adgang",
+                "AUTHENTICATED": "Godkendt",
+                "INCLUDEROLES": "Inkluder roller"
+            }
+        }
+    }
+}
