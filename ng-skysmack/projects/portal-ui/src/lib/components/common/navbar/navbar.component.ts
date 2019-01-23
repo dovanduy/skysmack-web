@@ -7,6 +7,8 @@ import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { UIRedux } from './../../../redux/ui-redux';
 import { NgAuthenticationActions } from '@skysmack/ng-redux';
 import { Package } from '@skysmack/framework';
+import { NgRedux } from '@angular-redux/store';
+import { persistStore } from 'redux-persist';
 
 @Component({
   selector: 'ss-navbar',
@@ -24,7 +26,8 @@ export class NavBarComponent implements OnInit {
     public uiRedux: UIRedux,
     public authenticationActions: NgAuthenticationActions,
     public translate: TranslateService,
-    public skysmackStore: NgSkysmackStore
+    public skysmackStore: NgSkysmackStore,
+    public mainStore: NgRedux<any>
   ) { }
 
   ngOnInit() {
@@ -38,6 +41,8 @@ export class NavBarComponent implements OnInit {
   }
 
   public logout() {
+    const persistor = persistStore(this.mainStore);
+    persistor.purge();
     this.authenticationActions.logout();
   }
 }
