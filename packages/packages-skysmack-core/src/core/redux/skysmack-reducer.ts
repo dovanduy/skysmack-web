@@ -6,12 +6,6 @@ export class SkysmackAppState extends AppState {
     public skysmack: SkysmackState;
 }
 
-// new Skysmack({
-//     defaultHostName: '',
-//     safeSubHostName: '',
-//     name: 'Skysmack',
-//     packages: []
-// });
 export class SkysmackState {
     public skysmack = {};
     public tenantLoaded = false;
