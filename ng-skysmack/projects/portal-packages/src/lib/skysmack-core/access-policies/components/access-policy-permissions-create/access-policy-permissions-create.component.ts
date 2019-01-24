@@ -1,11 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { NgAccessPolicyPermissionsActions } from '@skysmack/ng-packages';
+import { NgAccessPolicyPermissionsActions, NgSkysmackActions, NgAccessPolicyRulesActions, NgAccessPolicyRulesStore } from '@skysmack/ng-packages';
 import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EditorNavService, RecordFormComponent } from '@skysmack/portal-ui';
 import { NgAccessPolicyPermissionsFieldsConfig, NgAccessPolicyPermissionFormDependencies } from '@skysmack/ng-packages';
 import { NgAccessPolicyPermissionsStore } from '@skysmack/ng-packages';
 import { AccessPolicyPermissionsAppState, AccessPolicyPermission } from '@skysmack/packages-skysmack-core';
+import { combineLatest } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { PagedQuery } from '@skysmack/framework';
 
 @Component({
   selector: 'ss-access-policy-permissions-create',
@@ -18,15 +21,35 @@ export class AccessPolicyPermissionsCreateComponent extends RecordFormComponent<
     public activatedRoute: ActivatedRoute,
     public editorNavService: EditorNavService,
     public actions: NgAccessPolicyPermissionsActions,
-    public redux: NgSkysmackStore,
-    public fieldsConfig: NgAccessPolicyPermissionsFieldsConfig,
+    public skysmackStore: NgSkysmackStore,
+    public skysmackActions: NgSkysmackActions,
     public store: NgAccessPolicyPermissionsStore,
+    public accessPolicyRulesStore: NgAccessPolicyRulesStore,
+    public accessPolicyRulesActions: NgAccessPolicyRulesActions,
+    public fieldsConfig: NgAccessPolicyPermissionsFieldsConfig,
   ) {
-    super(router, activatedRoute, editorNavService, actions, redux, store, fieldsConfig);
+    super(router, activatedRoute, editorNavService, actions, skysmackStore, store, fieldsConfig);
   }
 
   ngOnInit() {
     super.ngOnInit();
     this.setCreateFields();
+  }
+
+
+  public setCreateFields() {
+    this.skysmackActions.getSkysmack();
+    this.accessPolicyRulesActions.getPaged(this.packagePath, new PagedQuery());
+
+    this.subscriptionHandler.register(combineLatest(
+      this.skysmackStore.getPackages(),
+      this.accessPolicyRulesStore.get(this.packagePath)
+    ).pipe(
+      map(values => {
+        const availablePackages = values[0];
+        const availableAccessPolicyRules = values[1];
+        return this.getFields(undefined, undefined, { availablePackages, availableAccessPolicyRules });
+      })
+    ).subscribe(fields => this.fields = fields));
   }
 }

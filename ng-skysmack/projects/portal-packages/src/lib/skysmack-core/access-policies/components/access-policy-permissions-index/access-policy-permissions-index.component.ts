@@ -32,7 +32,6 @@ export class AccessPolicyPermissionsIndexComponent extends RecordIndexComponent<
     public sidebarMenu: NgAccessPolicyPermissionsMenu
   ) {
     super(router, activatedRoute, actions, redux, store);
-
   }
 
   ngOnInit() {

@@ -1,15 +1,16 @@
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { FormRule, SelectField, SelectFieldOption } from '@skysmack/ng-ui';
-import { LocalObject } from '@skysmack/framework';
+import { LocalObject, Package } from '@skysmack/framework';
 import { Field } from '@skysmack/ng-ui';
 import { FieldTypes } from '@skysmack/ng-ui';
 import { FieldsConfig } from '@skysmack/ng-ui';
 import { AccessPolicyPermissionsValidation } from './ng-acess-policy-permissions-validation';
-import { AccessPolicyPermission } from '@skysmack/packages-skysmack-core';
+import { AccessPolicyPermission, AccessPolicyRule } from '@skysmack/packages-skysmack-core';
 
 export interface NgAccessPolicyPermissionFormDependencies {
-    [key: string]: any;
+    availablePackages: LocalObject<Package, string>;
+    availableAccessPolicyRules: LocalObject<AccessPolicyRule, number>;
 }
 
 @Injectable({ providedIn: 'root' })
@@ -29,7 +30,7 @@ export class NgAccessPolicyPermissionsFieldsConfig extends FieldsConfig<AccessPo
                     value: null,
                     displayName: 'None'
                 }] as SelectFieldOption[],
-                valueSelector: 'packagePath',
+                valueSelector: 'object.path',
                 order: 2,
             } as SelectField),
 
