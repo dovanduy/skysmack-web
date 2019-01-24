@@ -13,7 +13,6 @@ export class LocalObject<TObject, TKey> {
     }
     public set identifier(v: string) {
         this._identifier = v;
-        this.checkIdentifier();
     }
 
     public status: LocalObjectStatus = LocalObjectStatus.OK;
@@ -32,12 +31,11 @@ export class LocalObject<TObject, TKey> {
 
     public constructor(init?: Partial<LocalObject<TObject, TKey>>) {
         Object.assign(this, init);
-        this.checkIdentifier();
     }
 
-
     public checkIdentifier() {
-        if (this.object[this.identifier] === undefined) {
+        // Don't check when creating an object - some will not have their identifier property before getting returned from the backend. 
+        if (this.object[this.identifier] === undefined && this.status !== LocalObjectStatus.CREATING) {
             throw new Error(`You set '${this.identifier}' as the local object identifier, but there are no properties by that name. The object has the following properties: ${Object.keys(this.object).join(', ')}\n`);
         }
     }

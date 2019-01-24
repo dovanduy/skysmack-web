@@ -50,15 +50,14 @@ export class DynamicFieldsCreateComponent extends BaseComponent<DocumentRecordSt
 
   onCreateSubmit(fh: FormHelper) {
     fh.formValid(() => {
-      this.actions.addFields([toLocalObject<FieldSchemaViewModel,
-        string>(
-          fh.form.getRawValue(),
-          'key',
-          undefined,
-          LocalObjectStatus.CREATING,
-          undefined,
-          true
-        )], this.packagePath);
+      this.actions.addFields([toLocalObject<FieldSchemaViewModel, string>(
+        fh.form.getRawValue(),
+        'key',
+        undefined,
+        LocalObjectStatus.CREATING,
+        undefined,
+        true
+      )], this.packagePath);
       this.editorNavService.hideEditorNav();
     });
   }

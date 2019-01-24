@@ -27,6 +27,7 @@ export class NgAccessPolicyRulesMenu extends SidebarMenu {
         this.primaryMenuAreas.push(new MenuArea('manage', this.translationPrefix, 2));
 
         this.primaryMenuItems.push(new MenuItem('create', this.translationPrefix + 'CREATE', 'actions', 1, 'groupAdd'));
+        this.primaryMenuItems.push(new MenuItem('/skysmack/access-policies', this.translationPrefix + 'BACK', 'manage', 4, 'arrowBack'));
     }
 
     public setSpeedDialMenu() {
