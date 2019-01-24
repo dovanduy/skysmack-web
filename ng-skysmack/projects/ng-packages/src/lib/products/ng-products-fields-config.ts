@@ -6,7 +6,7 @@ import { Product, ProductType } from '@skysmack/packages-products';
 import { Field } from '@skysmack/ng-ui';
 import { FieldTypes } from '@skysmack/ng-ui';
 import { SelectField } from '@skysmack/ng-ui';
-import { ProductsValidation } from './ng-products-validation';
+import { NgProductsValidation } from './ng-products-validation';
 import { FieldsConfig } from '@skysmack/ng-ui';
 
 export interface NgProductFormDependencies {
@@ -15,7 +15,7 @@ export interface NgProductFormDependencies {
 
 @Injectable({ providedIn: 'root' })
 export class NgProductsFieldsConfig extends FieldsConfig<Product, NgProductFormDependencies> {
-    public validation = new ProductsValidation();
+    public validation = new NgProductsValidation();
 
     public formRules: FormRule[] = [
     ];

@@ -3,7 +3,7 @@ import { Validators } from '@angular/forms';
 import { LocalObject } from '@skysmack/framework';
 import { Role } from '@skysmack/packages-identities';
 import { Field, FormRule, FieldTypes, FieldsConfig } from '@skysmack/ng-ui';
-import { RolesValidation } from './ng-roles-validation';
+import { NgRolesValidation } from './ng-roles-validation';
 
 export interface NgRoleFormDependencies {
     [key: string]: any;
@@ -11,7 +11,7 @@ export interface NgRoleFormDependencies {
 
 @Injectable({ providedIn: 'root' })
 export class NgRolesFieldsConfig extends FieldsConfig<Role, NgRoleFormDependencies> {
-    public validation = new RolesValidation();
+    public validation = new NgRolesValidation();
 
     public formRules: FormRule[] = [];
 

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { LocalObject } from '@skysmack/framework';
 import { FieldsConfig, Field, FormRule, CustomValidators, FieldTypes } from '@skysmack/ng-ui';
-import { SetPasswordValidation } from './ng-set-password-validation';
+import { NgSetPasswordValidation } from './ng-set-password-validation';
 import { User } from '@skysmack/packages-identities';
 
 export interface NgSetPasswordFormDependencies {
@@ -11,7 +11,7 @@ export interface NgSetPasswordFormDependencies {
 
 @Injectable({ providedIn: 'root' })
 export class NgSetPasswordFieldsConfig extends FieldsConfig<User, NgSetPasswordFormDependencies> {
-    public validation = new SetPasswordValidation();
+    public validation = new NgSetPasswordValidation();
     public formRules: FormRule[] = [];
 
     protected getEntityFields(entity?: LocalObject<User, number>, dependencies?: NgSetPasswordFormDependencies): Field[] {

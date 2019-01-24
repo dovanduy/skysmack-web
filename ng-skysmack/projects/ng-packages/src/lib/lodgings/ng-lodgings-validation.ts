@@ -1,7 +1,7 @@
 import { StrIndex } from '@skysmack/framework';
 import { Validation } from '@skysmack/ng-ui';
 
-export class LodgingsValidation extends Validation {
+export class NgLodgingsValidation extends Validation {
     public formErrors = {
         name: '',
         displayName: ''

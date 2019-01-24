@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { LocalObject } from '@skysmack/framework';
 import { RecurringAssignment } from '@skysmack/packages-maintenance';
-import { RecurringAssignmentsValidation } from './ng-recurring-assignments-validation';
+import { NgRecurringAssignmentsValidation } from './ng-recurring-assignments-validation';
 import { FormRule, FieldsConfig, SelectField, Field, FieldTypes } from '@skysmack/ng-ui';
 
 export interface NgRecurringAssignmentFormDependencies {
@@ -11,7 +11,7 @@ export interface NgRecurringAssignmentFormDependencies {
 
 @Injectable({ providedIn: 'root' })
 export class NgRecurringAssignmentsFieldsConfig extends FieldsConfig<RecurringAssignment, NgRecurringAssignmentFormDependencies> {
-    public validation = new RecurringAssignmentsValidation();
+    public validation = new NgRecurringAssignmentsValidation();
 
     public formRules: FormRule[] = [
     ];

@@ -3,7 +3,7 @@ import { Validators } from '@angular/forms';
 import { FormRule, CustomValidators, Field, FieldTypes, FieldsConfig } from '@skysmack/ng-ui';
 import { LocalObject } from '@skysmack/framework';
 import { User } from '@skysmack/packages-identities';
-import { UsersValidation } from './ng-users-validation';
+import { NgUsersValidation } from './ng-users-validation';
 
 export interface NgUserFormDependencies {
     [key: string]: any;
@@ -11,7 +11,7 @@ export interface NgUserFormDependencies {
 
 @Injectable({ providedIn: 'root' })
 export class NgUsersFieldsConfig extends FieldsConfig<User, NgUserFormDependencies> {
-    public validation = new UsersValidation();
+    public validation = new NgUsersValidation();
 
     public formRules: FormRule[] = [];
 

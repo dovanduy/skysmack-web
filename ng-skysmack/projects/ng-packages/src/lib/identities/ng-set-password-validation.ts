@@ -1,7 +1,7 @@
 import { StrIndex } from '@skysmack/framework';
 import { Validation, CustomValidators } from '@skysmack/ng-ui';
 
-export class SetPasswordValidation extends Validation {
+export class NgSetPasswordValidation extends Validation {
     public formErrors = {
         password: '',
         confirmPassword: ''
