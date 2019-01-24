@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { EntityComponentPageTitle, DocumentRecordIndexComponet } from '@skysmack/portal-ui';
+import { EntityComponentPageTitle, DocumentRecordIndexComponent  } from '@skysmack/portal-ui';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgSkysmackStore, NgProductTypesActions, NgProductTypesStore } from '@skysmack/ng-packages';
 import { ProductTypesAppState, ProductType } from '@skysmack/packages-products';
@@ -12,7 +12,7 @@ import { EntityAction } from '@skysmack/ng-ui';
   templateUrl: './product-types-index.component.html',
   styleUrls: ['./product-types-index.component.scss']
 })
-export class ProductTypesIndexComponent extends DocumentRecordIndexComponet<ProductTypesAppState, ProductType, number> implements OnInit {
+export class ProductTypesIndexComponent extends DocumentRecordIndexComponent <ProductTypesAppState, ProductType, number> implements OnInit {
   public displayedColumns = ['name'];
   public entityActions: EntityAction[] = [
     new EntityAction().asUrlAction('edit', 'Edit', 'edit'),

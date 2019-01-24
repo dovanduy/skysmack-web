@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { EntityComponentPageTitle, DocumentRecordIndexComponet } from '@skysmack/portal-ui';
+import { EntityComponentPageTitle, DocumentRecordIndexComponent  } from '@skysmack/portal-ui';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgTerminalsActions } from '@skysmack/ng-packages';
 import { NgSkysmackStore } from '@skysmack/ng-packages';
@@ -14,7 +14,7 @@ import { EntityAction } from '@skysmack/ng-ui';
   templateUrl: './terminals-index.component.html',
   styleUrls: ['./terminals-index.component.scss']
 })
-export class TerminalsIndexComponent extends DocumentRecordIndexComponet<TerminalsAppState, Terminal, number> implements OnInit {
+export class TerminalsIndexComponent extends DocumentRecordIndexComponent <TerminalsAppState, Terminal, number> implements OnInit {
 
   public displayedColumns = ['name'];
   public entityActions: EntityAction[] = [
