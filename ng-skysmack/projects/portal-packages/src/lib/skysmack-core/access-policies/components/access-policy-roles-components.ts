@@ -5,7 +5,7 @@ import { AccessPolicyRolesEditComponent } from './access-policy-roles-edit/acces
 
 export const accessPolicyRolesRoutes: Routes = [
   {
-    path: '', component: AccessPolicyRolesIndexComponent,
+    path: 'roles', component: AccessPolicyRolesIndexComponent,
     children: [
       { path: 'create', component: AccessPolicyRolesCreateComponent, pathMatch: 'full' },
       { path: 'edit/:id', component: AccessPolicyRolesEditComponent, pathMatch: 'full' }

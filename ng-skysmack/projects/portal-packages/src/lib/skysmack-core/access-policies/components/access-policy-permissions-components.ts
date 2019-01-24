@@ -5,7 +5,7 @@ import { AccessPolicyPermissionsEditComponent } from './access-policy-permission
 
 export const accessPolicyPermissionsRoutes: Routes = [
   {
-    path: '', component: AccessPolicyPermissionsIndexComponent,
+    path: 'permissions', component: AccessPolicyPermissionsIndexComponent,
     children: [
       { path: 'create', component: AccessPolicyPermissionsCreateComponent, pathMatch: 'full' },
       { path: 'edit/:id', component: AccessPolicyPermissionsEditComponent, pathMatch: 'full' }

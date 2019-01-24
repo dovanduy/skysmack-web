@@ -32,7 +32,6 @@ export class RolesIndexComponent extends RecordIndexComponent<RolesAppState, Rol
     public sidebarMenu: NgRolesMenu
   ) {
     super(router, activatedRoute, actions, redux, store);
-
   }
 
   ngOnInit() {

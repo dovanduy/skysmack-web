@@ -24,7 +24,8 @@ export class StartComponent implements OnInit, OnDestroy {
     public router: Router,
     public store: NgSkysmackStore,
     public packageRouteConfiguration: PackageRouteConfiguration,
-  ) { }
+  ) {
+  }
 
   ngOnInit() {
     this.packageRouteConfiguration.configure();

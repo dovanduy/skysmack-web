@@ -3,9 +3,8 @@ import { NgAccessPolicyRolesActions } from '@skysmack/ng-packages';
 import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EditorNavService, RecordFormComponent } from '@skysmack/portal-ui';
-import { NgAccessPolicyRolesStore } from '@skysmack/ng-packages';
+import { NgAccessPolicyRolesStore, NgAccessPolicyRoleFormDependencies, NgAccessPolicyRolesFieldsConfig } from '@skysmack/ng-packages';
 import { AccessPolicyRolesAppState, AccessPolicyRole } from '@skysmack/packages-skysmack-core';
-import { NgAccessPolicyRoleFormDependencies, NgAccessPolicyRolesFieldsConfig } from 'ng-packages/src/lib/skysmack-core/access-policies/ng-access-policy-roles-fields-config';
 
 @Component({
   selector: 'ss-access-policy-roles-create',

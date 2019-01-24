@@ -25,9 +25,9 @@ export class NgAccessPoliciesDashboardMenu extends SidebarMenu {
     public setPrimaryMenu() {
         this.primaryMenuAreas.push(new MenuArea('manage', this.translationPrefix, 2));
 
-        this.primaryMenuItems.push(new MenuItem('skysmack/access-policies/permissions', this.translationPrefix + 'PERMISSIONS', 'manage', 1, 'groupAdd'));
-        this.primaryMenuItems.push(new MenuItem('skysmack/access-policies/roles', this.translationPrefix + 'ROLES', 'manage', 2, 'groupAdd'));
-        this.primaryMenuItems.push(new MenuItem('skysmack/access-policies/rules', this.translationPrefix + 'RULES', 'manage', 3, 'groupAdd'));
+        this.primaryMenuItems.push(new MenuItem('permissions', this.translationPrefix + 'PERMISSIONS', 'manage', 1, 'groupAdd'));
+        this.primaryMenuItems.push(new MenuItem('roles', this.translationPrefix + 'ROLES', 'manage', 2, 'groupAdd'));
+        this.primaryMenuItems.push(new MenuItem('rules', this.translationPrefix + 'RULES', 'manage', 3, 'groupAdd'));
     }
 
     public setSpeedDialMenu() {
