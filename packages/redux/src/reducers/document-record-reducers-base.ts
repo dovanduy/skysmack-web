@@ -26,7 +26,7 @@ export function documentRecordReducersBase<TState extends DocumentRecordState<TR
         }
         case prefix + DocumentRecordActionsBase.GET_AVAILABLE_FIELDS_SUCCESS: {
             const castedAction: ReduxAction<GetAvailableFieldsSuccessPayload> = action;
-            const incomingAvailableFields = castedAction.payload.availableFields.map(x => toLocalObject<FieldValueProviderViewModel, string>(x, 'key'));
+            const incomingAvailableFields = castedAction.payload.availableFields.map(x => toLocalObject<FieldValueProviderViewModel, string>(x, 'name'));
             newState.availableFields[castedAction.payload.packagePath] = LocalObjectExtensions.mergeOrAddLocal<FieldValueProviderViewModel, string>(newState.availableFields[castedAction.payload.packagePath], incomingAvailableFields);
             return newState;
         }
