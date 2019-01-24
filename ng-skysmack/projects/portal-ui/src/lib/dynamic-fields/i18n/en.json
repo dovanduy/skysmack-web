@@ -9,6 +9,9 @@
         "CREATE": {
             "CREATE": "Create field"
         },
+        "EDIT": {
+            "EDITING": "Editing"
+        },
         "FORM": {
             "PLACEHOLDERS": {
                 "KEY": "Key",

@@ -9,6 +9,9 @@
         "CREATE": {
             "CREATE": "Opret felt"
         },
+        "EDIT": {
+            "EDITING": "Redigere"
+        },
         "FORM": {
             "PLACEHOLDERS": {
                 "KEY": "Nøgle",
