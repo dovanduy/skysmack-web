@@ -9,8 +9,8 @@ import { AccessPolicyPermissionsValidation } from './ng-acess-policy-permissions
 import { AccessPolicyPermission, AccessPolicyRule } from '@skysmack/packages-skysmack-core';
 
 export interface NgAccessPolicyPermissionFormDependencies {
-    availablePackages: LocalObject<Package, string>;
-    availableAccessPolicyRules: LocalObject<AccessPolicyRule, number>;
+    availablePackages: LocalObject<Package, string>[];
+    availableAccessPolicyRules: LocalObject<AccessPolicyRule, number>[];
 }
 
 @Injectable({ providedIn: 'root' })
