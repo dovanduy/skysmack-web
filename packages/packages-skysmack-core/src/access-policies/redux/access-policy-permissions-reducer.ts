@@ -15,7 +15,7 @@ export class AccessPolicyPermissionsState implements RecordState<AccessPolicyPer
     public localRecords: StrIndex<StrIndex<LocalObject<AccessPolicyPermission, number>>> = {};
 }
 
-export function accessPolicyPermissionsReducer(state = new AccessPolicyPermissionsState(), action: ReduxAction, prefix: string = 'ACCESS_POLICY_PERMISSION_'): AccessPolicyPermissionsState {
+export function accessPolicyPermissionsReducer(state = new AccessPolicyPermissionsState(), action: ReduxAction, prefix: string = 'ACCESS_POLICY_PERMISSIONS_'): AccessPolicyPermissionsState {
     state = sharedReducer(state, action, new AccessPolicyPermissionsState());
 
     switch (action.type) {
