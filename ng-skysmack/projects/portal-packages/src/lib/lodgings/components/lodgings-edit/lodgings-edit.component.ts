@@ -50,6 +50,7 @@ export class LodgingsEditComponent extends DocumentRecordFormComponent<LodgingsA
         const entity = values[0][0];
         const dynamicFields = values[0][1];
         const availableLodgingTypes = values[1];
+        this.selectedEntity = entity;
         return this.getFields(entity, dynamicFields, { availableLodgingTypes });
       })
     ).subscribe(fields => this.fields = fields));
