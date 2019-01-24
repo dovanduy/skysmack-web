@@ -20,10 +20,10 @@ export class AccessPolicyPermissionsCreateComponent extends RecordFormComponent<
     public router: Router,
     public activatedRoute: ActivatedRoute,
     public editorNavService: EditorNavService,
-    public skysmackStore: NgSkysmackStore,
-    public skysmackActions: NgSkysmackActions,
     public store: NgAccessPolicyPermissionsStore,
     public actions: NgAccessPolicyPermissionsActions,
+    public skysmackStore: NgSkysmackStore,
+    public skysmackActions: NgSkysmackActions,
     public accessPolicyRulesStore: NgAccessPolicyRulesStore,
     public accessPolicyRulesActions: NgAccessPolicyRulesActions,
     public fieldsConfig: NgAccessPolicyPermissionsFieldsConfig,
@@ -35,7 +35,6 @@ export class AccessPolicyPermissionsCreateComponent extends RecordFormComponent<
     super.ngOnInit();
     this.setCreateFields();
   }
-
 
   public setCreateFields() {
     this.skysmackActions.getSkysmack();
