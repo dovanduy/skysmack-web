@@ -2,6 +2,12 @@
     "ACCESS_POLICIES": {
         "DASHBOARD": {
             "ACCESS_POLICIES": "Adgangs politikker"
+        },
+        "INDEX": {
+            "MANAGE": "Konfigurer",
+            "PERMISSIONS": "Tilladelser",
+            "ROLES": "Roller",
+            "RULES": "Regler"
         }
     }
 }

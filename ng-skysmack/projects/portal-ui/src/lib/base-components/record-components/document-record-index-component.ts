@@ -7,7 +7,7 @@ import { Record } from '@skysmack/framework';
 import { RecordIndexComponent } from './record-index-component';
 import { NgDocumentRecordReduxStore } from '@skysmack/ng-redux';
 
-export class DocumentRecordIndexComponet<TAppState, TRecord extends Record<TKey>, TKey> extends RecordIndexComponent<TAppState, TRecord, TKey> implements OnInit {
+export class DocumentRecordIndexComponent <TAppState, TRecord extends Record<TKey>, TKey> extends RecordIndexComponent<TAppState, TRecord, TKey> implements OnInit {
 
     constructor(
         public router: Router,

@@ -15,14 +15,14 @@
         },
         "FORM": {
             "LABELS": {
-                "PACKAGEID": "Package id",
+                "PACKAGEPATH": "Package path",
                 "RULEID": "Rule id",
                 "ORDER": "Order",
                 "ISTOPLEVEL": "Is Top Level",
                 "PERMISSION": "Permission"
             },
             "PLACEHOLDERS": {
-                "PACKAGEID": "Package id",
+                "PACKAGEPATH": "Package path",
                 "RULEID": "Rule id",
                 "ORDER": "Order",
                 "ISTOPLEVEL": "Is Top Level",

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { EntityComponentPageTitle, DocumentRecordIndexComponet } from '@skysmack/portal-ui';
+import { EntityComponentPageTitle, DocumentRecordIndexComponent  } from '@skysmack/portal-ui';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgSkysmackStore, NgReceiptsActions, NgReceiptsStore } from '@skysmack/ng-packages';
 import { ReceiptsAppState, Receipt } from '@skysmack/packages-terminal-payments';
@@ -12,7 +12,7 @@ import { EntityAction } from '@skysmack/ng-ui';
   templateUrl: './receipts-index.component.html',
   styleUrls: ['./receipts-index.component.scss']
 })
-export class ReceiptsIndexComponent extends DocumentRecordIndexComponet<ReceiptsAppState, Receipt, number> implements OnInit {
+export class ReceiptsIndexComponent extends DocumentRecordIndexComponent <ReceiptsAppState, Receipt, number> implements OnInit {
   public displayedColumns = ['name'];
   public entityActions: EntityAction[] = [
     new EntityAction().asUrlAction('edit', 'Edit', 'edit'),

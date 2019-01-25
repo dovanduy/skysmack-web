@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 import { NgRecordRequests } from './ng-record-requests';
 import { DocumentRecordRequests } from '@skysmack/redux';
 
-export abstract class NgDocmentRecordRequests<TRecord extends Record<TKey>, TKey> extends NgRecordRequests<TRecord, TKey> implements DocumentRecordRequests<TRecord, TKey> {
+export abstract class NgDocumentRecordRequests<TRecord extends Record<TKey>, TKey> extends NgRecordRequests<TRecord, TKey> implements DocumentRecordRequests<TRecord, TKey> {
 
   constructor(
     protected http: HttpClient,

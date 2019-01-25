@@ -6,7 +6,7 @@ import { LocalObject } from '@skysmack/framework';
 import { Person } from '@skysmack/packages-persons';
 import { Field } from '@skysmack/ng-ui';
 import { FieldTypes } from '@skysmack/ng-ui';
-import { PersonsValidation } from './ng-persons-validation';
+import { NgPersonsValidation } from './ng-persons-validation';
 import { FieldsConfig } from '@skysmack/ng-ui';
 
 export interface NgPersonFormDependencies {
@@ -15,7 +15,7 @@ export interface NgPersonFormDependencies {
 
 @Injectable({ providedIn: 'root' })
 export class NgPersonsFieldsConfig extends FieldsConfig<Person, NgPersonFormDependencies> {
-    public validation = new PersonsValidation();
+    public validation = new NgPersonsValidation();
 
     public formRules: FormRule[] = [
         new SetDisplayNameRule(['firstName', 'lastName'])

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { LocalObject } from '@skysmack/framework';
 import { MaintenanceState } from '@skysmack/packages-maintenance';
-import { MaintenanceStatesValidation } from './ng-maintenance-states-validation';
+import { NgMaintenanceStatesValidation } from './ng-maintenance-states-validation';
 import { FieldsConfig, FormRule, Field, FieldTypes } from '@skysmack/ng-ui';
 
 export interface NgMaintenanceStateFormDependencies {
@@ -11,7 +11,7 @@ export interface NgMaintenanceStateFormDependencies {
 
 @Injectable({ providedIn: 'root' })
 export class NgMaintenanceStatesFieldsConfig extends FieldsConfig<MaintenanceState, NgMaintenanceStateFormDependencies> {
-    public validation = new MaintenanceStatesValidation();
+    public validation = new NgMaintenanceStatesValidation();
 
     public formRules: FormRule[] = [
     ];

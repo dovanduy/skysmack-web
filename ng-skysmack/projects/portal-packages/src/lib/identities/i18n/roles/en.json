@@ -4,7 +4,7 @@
             "CREATE_ROLE": "Create new role"
         },
         "EDIT": {
-            "EDITING": "Rediger {{ object.name }}"
+            "EDITING": "Rediger {{object.name}}"
         },
         "INDEX": {
             "ACTIONS": "Actions",

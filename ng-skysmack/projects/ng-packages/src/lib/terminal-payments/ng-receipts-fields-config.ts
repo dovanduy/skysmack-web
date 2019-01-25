@@ -5,7 +5,7 @@ import { LocalObject } from '@skysmack/framework';
 import { Receipt } from '@skysmack/packages-terminal-payments';
 import { Field } from '@skysmack/ng-ui';
 import { FieldTypes } from '@skysmack/ng-ui';
-import { ReceiptsValidation } from './ng-receipts-validation';
+import { NgReceiptsValidation } from './ng-receipts-validation';
 import { FieldsConfig } from '@skysmack/ng-ui';
 
 export interface NgReceiptFormDependencies {
@@ -14,7 +14,7 @@ export interface NgReceiptFormDependencies {
 
 @Injectable({ providedIn: 'root' })
 export class NgReceiptsFieldsConfig extends FieldsConfig<Receipt, NgReceiptFormDependencies> {
-    public validation = new ReceiptsValidation();
+    public validation = new NgReceiptsValidation();
 
     public formRules: FormRule[] = [];
 

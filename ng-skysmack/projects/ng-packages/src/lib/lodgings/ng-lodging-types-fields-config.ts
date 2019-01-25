@@ -3,7 +3,7 @@ import { Validators } from '@angular/forms';
 import { FormRule, Field, FieldTypes, FieldsConfig } from '@skysmack/ng-ui';
 import { LocalObject } from '@skysmack/framework';
 import { LodgingType } from '@skysmack/packages-lodgings';
-import { LodgingTypesValidation } from './ng-lodging-types-validation';
+import { NgLodgingTypesValidation } from './ng-lodging-types-validation';
 
 export interface NgLodgingTypeFormDependencies {
     [key: string]: any;
@@ -11,7 +11,7 @@ export interface NgLodgingTypeFormDependencies {
 
 @Injectable({ providedIn: 'root' })
 export class NgLodgingTypesFieldsConfig extends FieldsConfig<LodgingType, NgLodgingTypeFormDependencies> {
-    public validation = new LodgingTypesValidation();
+    public validation = new NgLodgingTypesValidation();
 
     public formRules: FormRule[] = [
     ];

@@ -6,7 +6,7 @@ import { Terminal } from '@skysmack/packages-terminal-payments';
 import { Field } from '@skysmack/ng-ui';
 import { FieldTypes } from '@skysmack/ng-ui';
 import { SelectField } from '@skysmack/ng-ui';
-import { TerminalsValidation } from './ng-terminals-validation';
+import { NgTerminalsValidation } from './ng-terminals-validation';
 import { FieldsConfig } from '@skysmack/ng-ui';
 
 export interface NgTerminalFormDependencies {
@@ -15,7 +15,7 @@ export interface NgTerminalFormDependencies {
 
 @Injectable({ providedIn: 'root' })
 export class NgTerminalsFieldsConfig extends FieldsConfig<Terminal, NgTerminalFormDependencies> {
-    public validation = new TerminalsValidation();
+    public validation = new NgTerminalsValidation();
 
     public formRules: FormRule[] = [
     ];

@@ -2,6 +2,12 @@
     "ACCESS_POLICIES": {
         "DASHBOARD": {
             "ACCESS_POLICIES": "Access policies"
+        },
+        "INDEX": {
+            "MANAGE": "Manage",
+            "PERMISSIONS": "Permissions",
+            "ROLES": "Roles",
+            "RULES": "Rules"
         }
     }
 }

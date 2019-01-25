@@ -1,5 +1,5 @@
 import { AssignmentType } from '@skysmack/packages-maintenance';
-import { AssignmentTypesValidation } from './ng-assignment-types-validation';
+import { NgAssignmentTypesValidation } from './ng-assignment-types-validation';
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { FormRule } from '@skysmack/ng-ui';
@@ -15,7 +15,7 @@ export interface NgAssignmentTypeFormDependencies {
 
 @Injectable({ providedIn: 'root' })
 export class NgAssignmentTypesFieldsConfig extends FieldsConfig<AssignmentType, NgAssignmentTypeFormDependencies> {
-    public validation = new AssignmentTypesValidation();
+    public validation = new NgAssignmentTypesValidation();
 
     public formRules: FormRule[] = [
     ];

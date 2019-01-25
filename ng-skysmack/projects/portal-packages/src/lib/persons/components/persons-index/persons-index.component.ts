@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { EntityComponentPageTitle, DocumentRecordIndexComponet } from '@skysmack/portal-ui';
+import { EntityComponentPageTitle, DocumentRecordIndexComponent  } from '@skysmack/portal-ui';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgPersonsActions } from '@skysmack/ng-packages';
 import { NgSkysmackStore } from '@skysmack/ng-packages';
@@ -14,7 +14,7 @@ import { EntityAction } from '@skysmack/ng-ui';
   templateUrl: './persons-index.component.html',
   styleUrls: ['./persons-index.component.scss']
 })
-export class PersonsIndexComponent extends DocumentRecordIndexComponet<PersonsAppState, Person, number> implements OnInit {
+export class PersonsIndexComponent extends DocumentRecordIndexComponent <PersonsAppState, Person, number> implements OnInit {
 
   public displayedColumns = ['firstName', 'lastName'];
   public entityActions: EntityAction[] = [
