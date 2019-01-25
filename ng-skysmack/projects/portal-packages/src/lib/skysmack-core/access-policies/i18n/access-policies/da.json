@@ -4,7 +4,7 @@
             "ACCESS_POLICIES": "Adgangs politikker"
         },
         "INDEX": {
-            "MANAGE": "Manage",
+            "MANAGE": "Konfigurer",
             "PERMISSIONS": "Tilladelser",
             "ROLES": "Roller",
             "RULES": "Regler"
