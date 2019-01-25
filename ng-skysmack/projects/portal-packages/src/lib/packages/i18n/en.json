@@ -35,7 +35,8 @@
             "ADAPTORS": "Adaptors",
             "FEATURES": "Features",
             "INSTALL": "Install package",
-            "TITLE": "Packages"
+            "TITLE": "Packages",
+            "AVAILABLE_PACKAGES": "Available packages"
         },
         "CREATE": {
             "INSTALL": "Install package"

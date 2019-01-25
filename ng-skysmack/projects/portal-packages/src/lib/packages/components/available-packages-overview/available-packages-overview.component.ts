@@ -64,7 +64,7 @@ export class AvailablePackagesOverviewComponent extends BaseComponent<PackagesAp
     Object.assign(this, {
       colorSchemes: colorSets,
     });
-    this.setColorScheme('neons');
+    this.setColorScheme('picnic');
   }
 
   public ngOnInit(): void {
