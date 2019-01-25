@@ -35,7 +35,9 @@
             "ADAPTORS": "Adaptere",
             "FEATURES": "Udvidelser",
             "INSTALL": "Installer pakke",
-            "TITLE": "Pakker"
+            "TITLE": "Pakker",
+            "AVAILABLE_PACKAGES": "Ledige pakker"
+
         },
         "CREATE": {
             "INSTALL": "Installer pakke"

@@ -5,6 +5,7 @@
                 "LABELS": {
                     "ASSIGNMENTTYPEID": "Enhed",
                     "DESCRIPTION": "Beskrivelse",
+                    "OCCUPATIONSTATE": "Beskæftigelses tilstand",
                     "STATUS": "Status",
                     "DUE": "Udløbsdato",
                     "FROM": "Kan startes fra"
@@ -12,6 +13,7 @@
                 "PLACEHOLDERS": {
                     "ASSIGNMENTTYPEID": "Vælg enhed",
                     "DESCRIPTION": "Indtast beskrivelse",
+                    "OCCUPATIONSTATE": "Vælg beskæftigelses tilstand",
                     "STATUS": "Vælg status",
                     "DUE": " Vælg udløbsdato",
                     "FROM": "Vælg hvornår opgaven kan startes"
