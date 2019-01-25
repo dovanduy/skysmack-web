@@ -13,7 +13,8 @@ export class NgPackagesStore {
     ) { }
 
     public get(): Observable<LocalObject<Package, string>[]> {
-        return this.store.select(state => state.packages.localPackages).pipe(
+        return this.store.select(state => state.packages).pipe(
+            map(packages => packages.localPackages),
             safeUndefinedTo('object'),
             dictionaryToArray<LocalObject<Package, string>>()
         );
@@ -27,7 +28,8 @@ export class NgPackagesStore {
     }
 
     public getAvailablePackages(): Observable<LocalObject<AvailablePackage, string>[]> {
-        return this.store.select(state => state.packages.availablePackages).pipe(
+        return this.store.select(state => state.packages).pipe(
+            map(packages => packages.availablePackages),
             safeUndefinedTo('object'),
             dictionaryToArray<LocalObject<AvailablePackage, string>>(),
         );

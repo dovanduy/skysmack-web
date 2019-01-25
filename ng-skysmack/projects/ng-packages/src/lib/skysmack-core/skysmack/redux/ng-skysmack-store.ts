@@ -23,7 +23,7 @@ export class NgSkysmackStore {
 
     public getPackages(): Observable<LocalObject<Package, string>[]> {
         return this.getSkysmack().pipe(
-            map(skysmack => skysmack.packages.map(_package => toLocalObject(_package)))
+            map(skysmack => skysmack.packages.map(_package => toLocalObject(_package, 'path')))
         );
     }
 

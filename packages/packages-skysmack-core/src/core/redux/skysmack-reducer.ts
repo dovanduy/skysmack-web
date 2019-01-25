@@ -1,4 +1,3 @@
-import { Skysmack } from './../models/skysmack';
 import { AppState, sharedReducer } from '@skysmack/redux';
 import { SkysmackActions } from './skysmack-actions';
 

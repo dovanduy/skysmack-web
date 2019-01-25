@@ -38,6 +38,7 @@ export class NgAccessPolicyRolesFieldsConfig extends FieldsConfig<AccessPolicyRo
                 key: 'roleId',
                 optionsData: dependencies.availableRoles,
                 validators: [Validators.required],
+                displayNameSelector: 'object.id',
                 order: 2,
             } as SelectField),
         ];

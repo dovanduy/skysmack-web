@@ -11,6 +11,7 @@ import { accessPolicyPermissionsComponents } from './components/access-policy-pe
 import { accessPolicyRolesComponents } from './components/access-policy-roles-components';
 import { accessPolicyRulesComponents } from './components/access-policy-rules-components';
 import { accessPoliciesComponents } from './components/access-policies-components';
+import { IdentitiesModule } from '../../identities';
 
 @NgModule({
   imports: [
@@ -19,7 +20,8 @@ import { accessPoliciesComponents } from './components/access-policies-component
     PortalUiModule,
     AccessPoliciesRoutingModule,
     NgAccessPoliciesModule,
-    DynamicFieldsModule
+    DynamicFieldsModule,
+    IdentitiesModule
   ],
   declarations: [
     ...accessPolicyPermissionsComponents,
