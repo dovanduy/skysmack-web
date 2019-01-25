@@ -7,6 +7,8 @@ import { Field } from '@skysmack/ng-ui';
 import { NgPackagesFieldsConfig, NgPackagesStore } from '@skysmack/ng-packages';
 import { BaseComponent } from '@skysmack/portal-ui';
 import { PackagesAppState } from '@skysmack/packages-skysmack-core';
+import { colorSets } from './color-sets';
+import { NgPackagesMenu } from '../../ng-packages-menu';
 
 
 @Component({
@@ -17,6 +19,34 @@ import { PackagesAppState } from '@skysmack/packages-skysmack-core';
 export class AvailablePackagesOverviewComponent extends BaseComponent<PackagesAppState, string> implements OnInit {
   hierarchialGraph = {nodes: [], links: []};
   curve = shape.curveBundle.beta(1);
+  fitContainer = true;
+  autoZoom = true;
+  panOnZoom = true;
+  enableZoom = true;
+  autoCenter = true;
+  colorSchemes: any;
+  colorScheme: any;
+  selectedColorScheme: string;
+  orientation = 'TB'; // LR, RL, TB, BT
+  orientations: any[] = [
+      {
+          label: 'Left to Right',
+          value: 'LR'
+      },
+      {
+          label: 'Right to Left',
+          value: 'RL'
+      },
+      {
+          label: 'Top to Bottom',
+          value: 'TB'
+      },
+      {
+          label: 'Bottom to Top',
+          value: 'BT'
+      }
+  ];
+
   // curve = shape.curveLinear;
 
   public fields: Field[];
@@ -28,9 +58,13 @@ export class AvailablePackagesOverviewComponent extends BaseComponent<PackagesAp
     public actions: NgPackagesActions,
     public fieldsConfig: NgPackagesFieldsConfig,
     public store: NgPackagesStore,
-
+    public sidebarMenu: NgPackagesMenu
   ) {
     super(router, activatedRoute, redux);
+    Object.assign(this, {
+      colorSchemes: colorSets,
+    });
+    this.setColorScheme('neons');
   }
 
   public ngOnInit(): void {
@@ -55,6 +89,10 @@ export class AvailablePackagesOverviewComponent extends BaseComponent<PackagesAp
         }
       }
     }));
+  }
+  setColorScheme(name) {
+    this.selectedColorScheme = name;
+    this.colorScheme = this.colorSchemes.find(s => s.name === name);
   }
 }
 
