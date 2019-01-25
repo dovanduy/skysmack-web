@@ -25,8 +25,8 @@ export class NgPackagesMenu extends SidebarMenu {
     public setPrimaryMenu() {
         this.primaryMenuAreas.push(new MenuArea('actions', this.translationPrefix, 1));
         this.primaryMenuAreas.push(new MenuArea('manage', this.translationPrefix, 2));
-
         this.primaryMenuItems.push(new MenuItem('create', this.translationPrefix + 'CREATE', 'actions', 1, 'groupAdd'));
+        this.primaryMenuItems.push(new MenuItem('available_packages', this.translationPrefix + 'AVAILABLE_PACKAGES', 'manage', 2, 'groupAdd'));
     }
 
     public setSpeedDialMenu() {

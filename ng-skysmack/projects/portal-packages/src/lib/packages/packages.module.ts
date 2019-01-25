@@ -9,14 +9,20 @@ import { TranslateLoader, TranslateService } from '@ngx-translate/core';
 import { LanguageService } from '@skysmack/portal-ui';
 import { NgPackagesModule } from '@skysmack/ng-packages';
 
+import { NgxGraphModule } from '@swimlane/ngx-graph';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+
+
 @NgModule({
   imports: [
     CommonModule,
     HttpClientModule,
     PortalUiModule,
     PackagesRoutingModule,
-    NgPackagesModule
-  ],
+    NgPackagesModule,
+    NgxGraphModule,
+    NgxChartsModule
+    ],
   exports: [],
   declarations: [
     ...packagesComponents
