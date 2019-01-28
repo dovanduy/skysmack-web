@@ -17,6 +17,8 @@ export abstract class DocumentRecordEpicsBase<TRecord extends Record<TKey>, TKey
             this.getFieldsEpic,
             this.getSingleFieldEpic,
             this.getAvailableFieldsEpic,
+            this.snackBarGetFieldsFailureEpic,
+            this.snackBarGetSingleFieldFailureEpic,
             this.snackBarFieldCreateSuccessEpic,
             this.snackBarFieldUpdateSuccessEpic,
             this.snackBarFieldRemoveSuccessEpic,
@@ -42,8 +44,25 @@ export abstract class DocumentRecordEpicsBase<TRecord extends Record<TKey>, TKey
     )
 
     // Notifications
+    public snackBarGetFieldsFailureEpic = (action$: ActionsObservable<ReduxAction<any, CommitMeta<LocalObject<FieldSchemaViewModel, string>[]>>>): Observable<ReduxAction> => action$.pipe(
+        ofType(this.prefix + DocumentRecordActionsBase.GET_FIELDS_FAILURE),
+        map((action) => {
+            if (this.notifications) {
+                this.notifications.getFieldsError(action.payload);
+            }
+            return { type: 'NOTIFICATION' };
+        }),
+    )
 
-    // TODO: ADD DOCREC GET FAILURE NOTIFICATION
+    public snackBarGetSingleFieldFailureEpic = (action$: ActionsObservable<ReduxAction<any, CommitMeta<LocalObject<FieldSchemaViewModel, string>[]>>>): Observable<ReduxAction> => action$.pipe(
+        ofType(this.prefix + DocumentRecordActionsBase.GET_SINGLE_FAILURE),
+        map((action) => {
+            if (this.notifications) {
+                this.notifications.getSingleFieldError(action.payload);
+            }
+            return { type: 'NOTIFICATION' };
+        }),
+    )
 
     public snackBarFieldCreateSuccessEpic = (action$: ActionsObservable<ReduxAction<any, CommitMeta<LocalObject<FieldSchemaViewModel, string>[]>>>): Observable<ReduxAction> => action$.pipe(
         ofType(this.prefix + DocumentRecordActionsBase.ADD_FIELD_SUCCESS),

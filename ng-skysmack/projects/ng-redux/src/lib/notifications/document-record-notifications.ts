@@ -7,6 +7,14 @@ export abstract class DocumentRecordNotifications<TRecord, TKey> extends RecordN
         public snackBar: MatSnackBar
     ) { super(snackBar); }
 
+    protected toStringGetFieldsError(error: HttpErrorResponse): string {
+        return `You recieved an ${error.status} error code.`;
+    }
+
+    protected toStringGetSingleFieldError(error: HttpErrorResponse): string {
+        return `You recieved an ${error.status} error code.`;
+    }
+
     protected toStringAddFieldSuccess(value: LocalObject<FieldSchemaViewModel, string>[]): string {
         return `${value.map(field => field.object.display).join(', ')} was created successfully`;
     }
@@ -28,24 +36,32 @@ export abstract class DocumentRecordNotifications<TRecord, TKey> extends RecordN
         return `You recieved an ${error.status} error code.`;
     }
 
+    public getFieldsError(error: HttpErrorResponse) {
+        this.showSnackbarMessage(this.toStringGetFieldsError(error), undefined, 5000);
+    }
+
+    public getSingleFieldError(error: HttpErrorResponse) {
+        this.showSnackbarMessage(this.toStringGetSingleFieldError(error), undefined, 5000);
+    }
+
     public addFieldSuccess(value: LocalObject<FieldSchemaViewModel, string>[]) {
         this.showSnackbarMessage(this.toStringAddFieldSuccess(value));
     }
     public addFieldError(error: HttpErrorResponse) {
-        this.showSnackbarMessage(this.toStringAddFieldError(error));
+        this.showSnackbarMessage(this.toStringAddFieldError(error), undefined, 5000);
     }
 
     public updateFieldSuccess(value: LocalObject<FieldSchemaViewModel, string>[]) {
         this.showSnackbarMessage(this.toStringUpdateFieldSuccess(value));
     }
     public updateFieldError(error: HttpErrorResponse) {
-        this.showSnackbarMessage(this.toStringUpdateFieldError(error));
+        this.showSnackbarMessage(this.toStringUpdateFieldError(error), undefined, 5000);
     }
 
     public removeFieldSuccess(value: LocalObject<FieldSchemaViewModel, string>[]) {
         this.showSnackbarMessage(this.toStringRemoveFieldSuccess(value));
     }
     public removeFieldError(error: HttpErrorResponse) {
-        this.showSnackbarMessage(this.toStringRemoveFieldError(error));
+        this.showSnackbarMessage(this.toStringRemoveFieldError(error), undefined, 5000);
     }
 }

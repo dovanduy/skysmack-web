@@ -11,6 +11,12 @@ export class NgPersonsNotifications extends DocumentRecordNotifications<Person, 
     ) {
         super(snackBar);
     }
+    protected toStringGetPagedError(error: HttpErrorResponse): string {
+        return `You recieved an ${error.status} error code.`;
+    }
+    protected toStringGetSingleError(error: HttpErrorResponse): string {
+        return `You recieved an ${error.status} error code.`;
+    }
 
     protected toStringAddSuccess(value: LocalObject<Person, number>[]): string {
         return `${value.map(person => person.object.displayName).join(', ')} was created successfully`;

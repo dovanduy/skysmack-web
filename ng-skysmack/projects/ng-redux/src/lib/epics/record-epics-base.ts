@@ -17,6 +17,8 @@ export abstract class RecordEpicsBase<TRecord extends Record<TKey>, TKey> {
             this.getPagedEpic,
             this.getSingleEpic,
             this.testEpic,
+            this.snackBarGetPagedFailureEpic,
+            this.snackBarGetSingleFailureEpic,
             this.snackBarCreateSuccessEpic,
             this.snackBarUpdateSuccessEpic,
             this.snackBarRemoveSuccessEpic,
@@ -46,8 +48,24 @@ export abstract class RecordEpicsBase<TRecord extends Record<TKey>, TKey> {
     }
 
     // Notifications
-
-    // TODO: ADD REC GET FAILURE NOTIFICATION
+    public snackBarGetPagedFailureEpic = (action$: ActionsObservable<ReduxAction<any, CommitMeta<LocalObject<TRecord, TKey>[]>>>): Observable<ReduxAction> => action$.pipe(
+        ofType(this.prefix + RecordActionsBase.GET_PAGED_FAILURE),
+        map((action) => {
+            if (this.notifications) {
+                this.notifications.getPagedError(action.payload);
+            }
+            return { type: 'NOTIFICATION' };
+        }),
+    )
+    public snackBarGetSingleFailureEpic = (action$: ActionsObservable<ReduxAction<any, CommitMeta<LocalObject<TRecord, TKey>[]>>>): Observable<ReduxAction> => action$.pipe(
+        ofType(this.prefix + RecordActionsBase.GET_SINGLE_FAILURE),
+        map((action) => {
+            if (this.notifications) {
+                this.notifications.getSingleError(action.payload);
+            }
+            return { type: 'NOTIFICATION' };
+        }),
+    )
 
     public snackBarCreateSuccessEpic = (action$: ActionsObservable<ReduxAction<any, CommitMeta<LocalObject<TRecord, TKey>[]>>>): Observable<ReduxAction> => action$.pipe(
         ofType(this.prefix + RecordActionsBase.ADD_SUCCESS),
