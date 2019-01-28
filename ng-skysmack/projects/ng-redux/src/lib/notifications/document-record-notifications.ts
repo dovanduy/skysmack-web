@@ -11,21 +11,21 @@ export abstract class DocumentRecordNotifications<TRecord, TKey> extends RecordN
         return `${value.map(field => field.object.display).join(', ')} was created successfully`;
     }
     protected toStringAddFieldError(error: HttpErrorResponse): string {
-        return `An error happened`;
+        return `You recieved an ${error.status} error code.`;
     }
 
     protected toStringUpdateFieldSuccess(value: LocalObject<FieldSchemaViewModel, string>[]): string {
         return `${value.map(field => field.object.display).join(', ')} was created successfully`;
     }
     protected toStringUpdateFieldError(error: HttpErrorResponse): string {
-        return `An error happened`;
+        return `You recieved an ${error.status} error code.`;
     }
 
     protected toStringRemoveFieldSuccess(value: LocalObject<FieldSchemaViewModel, string>[]): string {
         return `${value.map(field => field.object.display).join(', ')} was removed successfully`;
     }
     protected toStringRemoveFieldError(error: HttpErrorResponse): string {
-        return `An error happened`;
+        return `You recieved an ${error.status} error code.`;
     }
 
     public addFieldSuccess(value: LocalObject<FieldSchemaViewModel, string>[]) {

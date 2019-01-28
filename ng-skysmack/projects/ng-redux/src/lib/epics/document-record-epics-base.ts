@@ -19,7 +19,10 @@ export abstract class DocumentRecordEpicsBase<TRecord extends Record<TKey>, TKey
             this.getAvailableFieldsEpic,
             this.snackBarFieldCreateSuccessEpic,
             this.snackBarFieldUpdateSuccessEpic,
-            this.snackBarFieldRemoveSuccessEpic
+            this.snackBarFieldRemoveSuccessEpic,
+            this.snackBarFieldCreateFailureEpic,
+            this.snackBarFieldUpdateFailureEpic,
+            this.snackBarFieldRemoveFailureEpic
         ]);
     }
 
@@ -38,12 +41,24 @@ export abstract class DocumentRecordEpicsBase<TRecord extends Record<TKey>, TKey
         switchMap(action => this.requests.getAvailableFields(action))
     )
 
+    // Notifications
+
+    // TODO: ADD DOCREC GET FAILURE NOTIFICATION
 
     public snackBarFieldCreateSuccessEpic = (action$: ActionsObservable<ReduxAction<any, CommitMeta<LocalObject<FieldSchemaViewModel, string>[]>>>): Observable<ReduxAction> => action$.pipe(
         ofType(this.prefix + DocumentRecordActionsBase.ADD_FIELD_SUCCESS),
         map((action) => {
             if (this.notifications) {
                 this.notifications.addFieldSuccess(action.meta.value);
+            }
+            return { type: 'NOTIFICATION' };
+        }),
+    )
+    public snackBarFieldCreateFailureEpic = (action$: ActionsObservable<ReduxAction<any, CommitMeta<LocalObject<FieldSchemaViewModel, string>[]>>>): Observable<ReduxAction> => action$.pipe(
+        ofType(this.prefix + DocumentRecordActionsBase.ADD_FIELD_FAILURE),
+        map((action) => {
+            if (this.notifications) {
+                this.notifications.addFieldError(action.payload);
             }
             return { type: 'NOTIFICATION' };
         }),
@@ -58,12 +73,30 @@ export abstract class DocumentRecordEpicsBase<TRecord extends Record<TKey>, TKey
             return { type: 'NOTIFICATION' };
         })
     )
+    public snackBarFieldUpdateFailureEpic = (action$: ActionsObservable<ReduxAction<any, CommitMeta<LocalObject<FieldSchemaViewModel, string>[]>>>): Observable<ReduxAction> => action$.pipe(
+        ofType(this.prefix + DocumentRecordActionsBase.UPDATE_FIELD_FAILURE),
+        map(action => {
+            if (this.notifications) {
+                this.notifications.updateFieldError(action.payload);
+            }
+            return { type: 'NOTIFICATION' };
+        })
+    )
 
     public snackBarFieldRemoveSuccessEpic = (action$: ActionsObservable<ReduxAction<any, CommitMeta<LocalObject<FieldSchemaViewModel, string>[]>>>): Observable<ReduxAction> => action$.pipe(
         ofType(this.prefix + DocumentRecordActionsBase.DELETE_FIELD_SUCCESS),
         map((action) => {
             if (this.notifications) {
                 this.notifications.removeFieldSuccess(action.meta.value);
+            }
+            return { type: 'NOTIFICATION' };
+        })
+    )
+    public snackBarFieldRemoveFailureEpic = (action$: ActionsObservable<ReduxAction<any, CommitMeta<LocalObject<FieldSchemaViewModel, string>[]>>>): Observable<ReduxAction> => action$.pipe(
+        ofType(this.prefix + DocumentRecordActionsBase.DELETE_FIELD_FAILURE),
+        map((action) => {
+            if (this.notifications) {
+                this.notifications.removeFieldError(action.payload);
             }
             return { type: 'NOTIFICATION' };
         })
