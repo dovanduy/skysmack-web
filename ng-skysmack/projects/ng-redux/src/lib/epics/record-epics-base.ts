@@ -1,20 +1,25 @@
 import { ofType, ActionsObservable, Epic } from 'redux-observable';
 import { switchMap, map } from 'rxjs/operators';
-import { Record } from '@skysmack/framework';
+import { Record, LocalObject } from '@skysmack/framework';
 import { Observable } from 'rxjs';
-import { RecordRequests, ReduxAction, GetPagedRecordsPayload, GetPagedRecordsSuccessPayload, RecordActionsBase, GetSingleRecordPayload, GetSingleRecordSuccessPayload } from '@skysmack/redux';
+import { RecordRequests, ReduxAction, GetPagedRecordsPayload, GetPagedRecordsSuccessPayload, RecordActionsBase, GetSingleRecordPayload, GetSingleRecordSuccessPayload, CommitMeta } from '@skysmack/redux';
+import { RecordNotifications } from '../notifications';
 
 export abstract class RecordEpicsBase<TRecord extends Record<TKey>, TKey> {
     public epics: Epic[];
 
     constructor(
         protected requests: RecordRequests<TRecord, TKey>,
-        protected prefix: string
+        protected prefix: string,
+        protected notifications?: RecordNotifications<TRecord, TKey>
     ) {
         this.epics = [
             this.getPagedEpic,
             this.getSingleEpic,
-            this.testEpic
+            this.testEpic,
+            this.snackBarCreateSuccessEpic,
+            this.snackBarUpdateSuccessEpic,
+            this.snackBarRemoveSuccessEpic
         ];
     }
 
@@ -36,5 +41,35 @@ export abstract class RecordEpicsBase<TRecord extends Record<TKey>, TKey> {
             switchMap(action => this.requests.getSingle(action))
         );
     }
+
+    public snackBarCreateSuccessEpic = (action$: ActionsObservable<ReduxAction<any, CommitMeta<LocalObject<TRecord, TKey>[]>>>): Observable<ReduxAction> => action$.pipe(
+        ofType(this.prefix + RecordActionsBase.ADD_SUCCESS),
+        map((action) => {
+            if (this.notifications) {
+                this.notifications.addSuccess(action.meta.value);
+            }
+            return { type: 'NOTIFICATION' };
+        }),
+    )
+
+    public snackBarUpdateSuccessEpic = (action$: ActionsObservable<ReduxAction<any, CommitMeta<LocalObject<TRecord, TKey>[]>>>): Observable<ReduxAction> => action$.pipe(
+        ofType(this.prefix + RecordActionsBase.UPDATE_SUCCESS),
+        map(action => {
+            if (this.notifications) {
+                this.notifications.updateSuccess(action.meta.value);
+            }
+            return { type: 'NOTIFICATION' };
+        })
+    )
+
+    public snackBarRemoveSuccessEpic = (action$: ActionsObservable<ReduxAction<any, CommitMeta<LocalObject<TRecord, TKey>[]>>>): Observable<ReduxAction> => action$.pipe(
+        ofType(this.prefix + RecordActionsBase.DELETE_SUCCESS),
+        map((action) => {
+            if (this.notifications) {
+                this.notifications.removeSuccess(action.meta.value);
+            }
+            return { type: 'NOTIFICATION' };
+        })
+    )
 }
 

@@ -2,7 +2,7 @@
 
 ## Global npm packages to install
 *Remember to install the newest node LTS version*
-npm i -g @angular/cli http-server lerna lighthouse typescript
+npm i -g @angular/cli http-server lerna lighthouse typescript gulp@4.0.0 gulp-cli
 
 ## Backend stuff
 - Install MSSQL + Workbench: https://dev.mysql.com/downloads/workbench/
