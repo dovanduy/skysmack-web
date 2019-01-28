@@ -1,6 +1,6 @@
 import { NotificationsBase } from './notifications-base';
 import { MatSnackBar } from '@angular/material';
-import { LocalObject } from '@skysmack/framework';
+import { LocalObject, HttpErrorResponse } from '@skysmack/framework';
 
 export abstract class RecordNotifications<TRecord, TKey> extends NotificationsBase {
 
@@ -9,32 +9,32 @@ export abstract class RecordNotifications<TRecord, TKey> extends NotificationsBa
     ) { super(snackBar); }
 
     protected abstract toStringAddSuccess(value: LocalObject<TRecord, TKey>[]): string;
-    protected abstract toStringAddError(value: LocalObject<TRecord, TKey>[]): string;
+    protected abstract toStringAddError(error: HttpErrorResponse): string;
 
     protected abstract toStringUpdateSuccess(value: LocalObject<TRecord, TKey>[]): string;
-    protected abstract toStringUpdateError(value: LocalObject<TRecord, TKey>[]): string;
+    protected abstract toStringUpdateError(error: HttpErrorResponse): string;
 
     protected abstract toStringRemoveSuccess(value: LocalObject<TRecord, TKey>[]): string;
-    protected abstract toStringRemoveError(value: LocalObject<TRecord, TKey>[]): string;
+    protected abstract toStringRemoveError(error: HttpErrorResponse): string;
 
     public addSuccess(value: LocalObject<TRecord, TKey>[]) {
         this.showSnackbarMessage(this.toStringAddSuccess(value));
     }
-    public addError(value: LocalObject<TRecord, TKey>[]) {
-        this.showSnackbarMessage(this.toStringAddError(value));
+    public addError(error: HttpErrorResponse) {
+        this.showSnackbarMessage(this.toStringAddError(error));
     }
 
     public updateSuccess(value: LocalObject<TRecord, TKey>[]) {
         this.showSnackbarMessage(this.toStringUpdateSuccess(value));
     }
-    public updateError(value: LocalObject<TRecord, TKey>[]) {
-        this.showSnackbarMessage(this.toStringUpdateError(value));
+    public updateError(error: HttpErrorResponse) {
+        this.showSnackbarMessage(this.toStringUpdateError(error));
     }
 
     public removeSuccess(value: LocalObject<TRecord, TKey>[]) {
         this.showSnackbarMessage(this.toStringRemoveSuccess(value));
     }
-    public removeError(value: LocalObject<TRecord, TKey>[]) {
-        this.showSnackbarMessage(this.toStringRemoveError(value));
+    public removeError(error: HttpErrorResponse) {
+        this.showSnackbarMessage(this.toStringRemoveError(error));
     }
 }

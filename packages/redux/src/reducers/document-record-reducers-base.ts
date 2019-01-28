@@ -15,7 +15,7 @@ export function documentRecordReducersBase<TState extends DocumentRecordState<TR
         }
         case prefix + DocumentRecordActionsBase.GET_FIELDS_SUCCESS: {
             const castedAction: ReduxAction<GetFieldsSuccessPayload> = action;
-            const incomingFields = castedAction.payload.fields.map(x => toLocalObject<FieldSchemaViewModel, string>(x, 'key'));
+            const incomingFields = castedAction.payload.value.map(x => toLocalObject<FieldSchemaViewModel, string>(x, 'key'));
             newState.fields[castedAction.payload.packagePath] = LocalObjectExtensions.mergeOrAddLocal<FieldSchemaViewModel, string>(newState.fields[castedAction.payload.packagePath], incomingFields);
             return newState;
         }
@@ -37,7 +37,7 @@ export function documentRecordReducersBase<TState extends DocumentRecordState<TR
         }
         case prefix + DocumentRecordActionsBase.GET_SINGLE_FIELD_SUCCESS: {
             const castedAction: ReduxAction<GetSingleFieldSuccessPayload> = action;
-            const newField = [toLocalObject<FieldSchemaViewModel, string>(castedAction.payload.field, 'key')];
+            const newField = [toLocalObject<FieldSchemaViewModel, string>(castedAction.payload.value, 'key')];
             newState.fields[castedAction.payload.packagePath] = LocalObjectExtensions.mergeOrAddLocal<FieldSchemaViewModel, string>(newState.fields[castedAction.payload.packagePath], newField);
             return newState;
         }
@@ -48,15 +48,15 @@ export function documentRecordReducersBase<TState extends DocumentRecordState<TR
         }
         case prefix + DocumentRecordActionsBase.ADD_FIELD: {
             const castedAction: ReduxAction<any, { offline: any }> = action;
-            const fieldsToBeCreated = castedAction.meta.offline.commit.meta.fields;
+            const fieldsToBeCreated = castedAction.meta.offline.commit.meta.value;
             const packagePath = castedAction.meta.offline.commit.meta.packagePath;
             newState.fields[packagePath] = LocalObjectExtensions.mergeOrAddLocal<FieldSchemaViewModel, string>(newState.fields[packagePath], fieldsToBeCreated);
             return newState;
         }
         case prefix + DocumentRecordActionsBase.ADD_FIELD_SUCCESS: {
-            const castedAction: ReduxAction<HttpSuccessResponse<FieldSchemaViewModel[] | FieldSchemaViewModel>, { fields: LocalObject<FieldSchemaViewModel, string>[], packagePath: string }> = action;
+            const castedAction: ReduxAction<HttpSuccessResponse<FieldSchemaViewModel[] | FieldSchemaViewModel>, { value: LocalObject<FieldSchemaViewModel, string>[], packagePath: string }> = action;
             const body = castedAction.payload.body;
-            const newFields = (Array.isArray(body) ? body : [body]).map((newObject, index) => replaceLocalInnerObject<FieldSchemaViewModel, string>(castedAction.meta.fields[index], newObject));
+            const newFields = (Array.isArray(body) ? body : [body]).map((newObject, index) => replaceLocalInnerObject<FieldSchemaViewModel, string>(castedAction.meta.value[index], newObject));
             newState.fields[castedAction.meta.packagePath] = LocalObjectExtensions.mergeOrAddLocal<FieldSchemaViewModel, string>(newState.fields[castedAction.meta.packagePath], newFields);
             return newState;
         }
@@ -66,11 +66,11 @@ export function documentRecordReducersBase<TState extends DocumentRecordState<TR
             return newState;
         }
         case prefix + DocumentRecordActionsBase.UPDATE_FIELD_SUCCESS: {
-            const castedAction: ReduxAction<HttpSuccessResponse<FieldSchemaViewModel[] | FieldSchemaViewModel>, { fields: LocalObject<FieldSchemaViewModel, string>[], packagePath: string }> = action;
+            const castedAction: ReduxAction<HttpSuccessResponse<FieldSchemaViewModel[] | FieldSchemaViewModel>, { value: LocalObject<FieldSchemaViewModel, string>[], packagePath: string }> = action;
             const body = castedAction.payload.body;
             const updatedFields = (Array.isArray(body) ? body : [body])
                 .filter((field) => (castedAction.meta as any).temp === field.key) // TODO: Remove this line when fields return only the modified fields back
-                .map((newObject, index) => replaceLocalInnerObject<FieldSchemaViewModel, string>(castedAction.meta.fields[index], newObject));
+                .map((newObject, index) => replaceLocalInnerObject<FieldSchemaViewModel, string>(castedAction.meta.value[index], newObject));
             newState.fields[castedAction.meta.packagePath] = LocalObjectExtensions.mergeOrAddLocal<FieldSchemaViewModel, string>(newState.fields[castedAction.meta.packagePath], updatedFields);
             return newState;
         }
@@ -80,8 +80,8 @@ export function documentRecordReducersBase<TState extends DocumentRecordState<TR
             return newState;
         }
         case prefix + DocumentRecordActionsBase.DELETE_FIELD_SUCCESS: {
-            const castedAction: ReduxAction<HttpSuccessResponse<FieldSchemaViewModel[] | FieldSchemaViewModel>, { fields: LocalObject<FieldSchemaViewModel, string>[], packagePath: string }> = action;
-            castedAction.meta.fields.forEach(field => {
+            const castedAction: ReduxAction<HttpSuccessResponse<FieldSchemaViewModel[] | FieldSchemaViewModel>, { value: LocalObject<FieldSchemaViewModel, string>[], packagePath: string }> = action;
+            castedAction.meta.value.forEach(field => {
                 delete newState.fields[castedAction.meta.packagePath][field.localId];
             });
             return newState;

@@ -93,14 +93,14 @@ export abstract class DocumentRecordActionsBase<TStateType, TStore extends Store
                     commit: new ReduxAction({
                         type: this.prefix + DocumentRecordActionsBase.ADD_FIELD_SUCCESS,
                         meta: {
-                            fields,
+                            value: fields,
                             packagePath
                         }
                     }),
                     rollback: new ReduxAction({
                         type: this.prefix + DocumentRecordActionsBase.ADD_FIELD_FAILURE,
                         meta: {
-                            fields,
+                            value: fields,
                             packagePath
                         }
                     })
@@ -125,7 +125,7 @@ export abstract class DocumentRecordActionsBase<TStateType, TStore extends Store
                     commit: new ReduxAction({
                         type: this.prefix + DocumentRecordActionsBase.UPDATE_FIELD_SUCCESS,
                         meta: {
-                            fields,
+                            value: fields,
                             packagePath,
                             // TODO: Remove below when fields return only the modified fields back
                             temp: fields[0].object.key
@@ -134,7 +134,7 @@ export abstract class DocumentRecordActionsBase<TStateType, TStore extends Store
                     rollback: new ReduxAction({
                         type: this.prefix + DocumentRecordActionsBase.UPDATE_FIELD_FAILURE,
                         meta: {
-                            fields,
+                            value: fields,
                             packagePath
                         }
                     })
@@ -161,14 +161,14 @@ export abstract class DocumentRecordActionsBase<TStateType, TStore extends Store
                     commit: new ReduxAction({
                         type: this.prefix + DocumentRecordActionsBase.DELETE_FIELD_SUCCESS,
                         meta: {
-                            fields,
+                            value: fields,
                             packagePath
                         }
                     }),
                     rollback: new ReduxAction({
                         type: this.prefix + DocumentRecordActionsBase.DELETE_FIELD_FAILURE,
                         meta: {
-                            fields,
+                            value: fields,
                             packagePath
                         }
                     })

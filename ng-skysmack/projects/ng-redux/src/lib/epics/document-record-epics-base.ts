@@ -1,6 +1,6 @@
 import { ofType, ActionsObservable } from 'redux-observable';
 import { switchMap, map } from 'rxjs/operators';
-import { Record, LocalObject } from '@skysmack/framework';
+import { Record, LocalObject, FieldSchemaViewModel } from '@skysmack/framework';
 import { Observable } from 'rxjs';
 import { RecordEpicsBase } from './record-epics-base';
 import { DocumentRecordRequests, PackagePathPayload, ReduxAction, GetFieldsSuccessPayload, DocumentRecordActionsBase, CommitMeta } from '@skysmack/redux';
@@ -16,7 +16,10 @@ export abstract class DocumentRecordEpicsBase<TRecord extends Record<TKey>, TKey
         this.epics = this.epics.concat([
             this.getFieldsEpic,
             this.getSingleFieldEpic,
-            this.getAvailableFieldsEpic
+            this.getAvailableFieldsEpic,
+            this.snackBarFieldCreateSuccessEpic,
+            this.snackBarFieldUpdateSuccessEpic,
+            this.snackBarFieldRemoveSuccessEpic
         ]);
     }
 
@@ -36,31 +39,31 @@ export abstract class DocumentRecordEpicsBase<TRecord extends Record<TKey>, TKey
     )
 
 
-    public snackBarCreateSuccessEpic = (action$: ActionsObservable<ReduxAction<any, CommitMeta<LocalObject<TRecord, TKey>[]>>>): Observable<ReduxAction> => action$.pipe(
+    public snackBarFieldCreateSuccessEpic = (action$: ActionsObservable<ReduxAction<any, CommitMeta<LocalObject<FieldSchemaViewModel, string>[]>>>): Observable<ReduxAction> => action$.pipe(
         ofType(this.prefix + DocumentRecordActionsBase.ADD_FIELD_SUCCESS),
         map((action) => {
             if (this.notifications) {
-                this.notifications.addSuccess(action.meta.value);
+                this.notifications.addFieldSuccess(action.meta.value);
             }
             return { type: 'NOTIFICATION' };
         }),
     )
 
-    public snackBarUpdateSuccessEpic = (action$: ActionsObservable<ReduxAction<any, CommitMeta<LocalObject<TRecord, TKey>[]>>>): Observable<ReduxAction> => action$.pipe(
+    public snackBarFieldUpdateSuccessEpic = (action$: ActionsObservable<ReduxAction<any, CommitMeta<LocalObject<FieldSchemaViewModel, string>[]>>>): Observable<ReduxAction> => action$.pipe(
         ofType(this.prefix + DocumentRecordActionsBase.UPDATE_FIELD_SUCCESS),
         map(action => {
             if (this.notifications) {
-                this.notifications.updateSuccess(action.meta.value);
+                this.notifications.updateFieldSuccess(action.meta.value);
             }
             return { type: 'NOTIFICATION' };
         })
     )
 
-    public snackBarRemoveSuccessEpic = (action$: ActionsObservable<ReduxAction<any, CommitMeta<LocalObject<TRecord, TKey>[]>>>): Observable<ReduxAction> => action$.pipe(
+    public snackBarFieldRemoveSuccessEpic = (action$: ActionsObservable<ReduxAction<any, CommitMeta<LocalObject<FieldSchemaViewModel, string>[]>>>): Observable<ReduxAction> => action$.pipe(
         ofType(this.prefix + DocumentRecordActionsBase.DELETE_FIELD_SUCCESS),
         map((action) => {
             if (this.notifications) {
-                this.notifications.removeSuccess(action.meta.value);
+                this.notifications.removeFieldSuccess(action.meta.value);
             }
             return { type: 'NOTIFICATION' };
         })
