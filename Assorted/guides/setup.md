@@ -1,6 +1,7 @@
 # Skysmack setup
 
 ## Global npm packages to install
+*Remember to install the newest node LTS version*
 npm i -g @angular/cli http-server lerna lighthouse typescript
 
 ## Backend stuff
