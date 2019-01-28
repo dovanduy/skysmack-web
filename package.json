@@ -4,8 +4,8 @@
     "devDependencies": {
         "@types/node": "^10.12.18",
         "lerna": "^3.10.5",
-        "typescript": "^3.2.2",
-        "ng-packagr": "^4.5.0",
+        "typescript": "^3.2.4",
+        "ng-packagr": "^4.7.0",
         "@skysmack/framework": "*",
         "@skysmack/redux": "*",
         "@skysmack/packages-skysmack-core": "*",
