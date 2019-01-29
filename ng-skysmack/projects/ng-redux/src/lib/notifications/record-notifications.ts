@@ -3,18 +3,16 @@ import { ReduxAction, CommitMeta } from '@skysmack/redux';
 import { Notifications } from './notifications';
 
 export abstract class RecordNotifications<TRecord, TKey> {
-
     protected defaultTranslationString = 'NOTIFICATIONS.';
 
-    constructor(
-        public notifications: Notifications
-    ) { }
+    constructor(public notifications: Notifications) { }
 
     public getPagedError(action: ReduxAction<HttpErrorResponse, CommitMeta<LocalObject<TRecord, TKey>[]>>) {
         this.checkOfflineStatus(action, () => {
             this.notifications.showTranslatedSnackbarMessage(this.defaultTranslationString + 'GET.PAGED_ERROR', this.getErrorParams(action), undefined, 2000);
         });
     }
+
     public getSingleError(action: ReduxAction<HttpErrorResponse, CommitMeta<LocalObject<TRecord, TKey>>>) {
         this.checkOfflineStatus(action, () => {
             this.notifications.showTranslatedSnackbarMessage(this.defaultTranslationString + 'GET.SINGLE_FAILURE', this.getErrorParams(action), undefined, 2000);
@@ -24,6 +22,7 @@ export abstract class RecordNotifications<TRecord, TKey> {
     public addSuccess(action: ReduxAction<unknown, CommitMeta<LocalObject<TRecord, TKey>[]>>) {
         this.notifications.showTranslatedSnackbarMessage(this.defaultTranslationString + 'ADD.SUCCESS', {}, undefined, 2000);
     }
+
     public addError(action: ReduxAction<HttpErrorResponse, CommitMeta<LocalObject<TRecord, TKey>[]>>) {
         this.checkOfflineStatus(action, () => {
             this.notifications.showTranslatedSnackbarMessage(this.defaultTranslationString + 'ADD.FAILURE', this.getErrorParams(action), undefined, 2000);
@@ -33,6 +32,7 @@ export abstract class RecordNotifications<TRecord, TKey> {
     public updateSuccess(action: ReduxAction<unknown, CommitMeta<LocalObject<TRecord, TKey>[]>>) {
         this.notifications.showTranslatedSnackbarMessage(this.defaultTranslationString + 'UPDATE.SUCCESS', {}, undefined, 2000);
     }
+
     public updateError(action: ReduxAction<HttpErrorResponse, CommitMeta<LocalObject<TRecord, TKey>[]>>) {
         this.checkOfflineStatus(action, () => {
             this.notifications.showTranslatedSnackbarMessage(this.defaultTranslationString + 'UPDATE.FAILURE', this.getErrorParams(action), undefined, 2000);
@@ -42,6 +42,7 @@ export abstract class RecordNotifications<TRecord, TKey> {
     public removeSuccess(action: ReduxAction<unknown, CommitMeta<LocalObject<TRecord, TKey>[]>>) {
         this.notifications.showTranslatedSnackbarMessage(this.defaultTranslationString + 'REMOVE.SUCCESS', {}, undefined, 2000);
     }
+
     public removeError(action: ReduxAction<HttpErrorResponse, CommitMeta<LocalObject<TRecord, TKey>[]>>) {
         this.checkOfflineStatus(action, () => {
             this.notifications.showTranslatedSnackbarMessage(this.defaultTranslationString + 'REMOVE.FAILURE', this.getErrorParams(action), undefined, 2000);

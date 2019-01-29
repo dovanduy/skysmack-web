@@ -76,6 +76,7 @@ export abstract class DocumentRecordEpicsBase<TRecord extends Record<TKey>, TKey
             return { type: 'NOTIFICATION' };
         }),
     )
+
     public snackBarFieldCreateFailureEpic = (action$: ActionsObservable<ReduxAction<any, CommitMeta<LocalObject<FieldSchemaViewModel, string>[]>>>): Observable<ReduxAction> => action$.pipe(
         ofType(this.prefix + DocumentRecordActionsBase.ADD_FIELD_FAILURE),
         map((action) => {
@@ -96,6 +97,7 @@ export abstract class DocumentRecordEpicsBase<TRecord extends Record<TKey>, TKey
             return { type: 'NOTIFICATION' };
         })
     )
+
     public snackBarFieldUpdateFailureEpic = (action$: ActionsObservable<ReduxAction<any, CommitMeta<LocalObject<FieldSchemaViewModel, string>[]>>>): Observable<ReduxAction> => action$.pipe(
         ofType(this.prefix + DocumentRecordActionsBase.UPDATE_FIELD_FAILURE),
         map(action => {
@@ -116,6 +118,7 @@ export abstract class DocumentRecordEpicsBase<TRecord extends Record<TKey>, TKey
             return { type: 'NOTIFICATION' };
         })
     )
+
     public snackBarFieldRemoveFailureEpic = (action$: ActionsObservable<ReduxAction<any, CommitMeta<LocalObject<FieldSchemaViewModel, string>[]>>>): Observable<ReduxAction> => action$.pipe(
         ofType(this.prefix + DocumentRecordActionsBase.DELETE_FIELD_FAILURE),
         map((action) => {

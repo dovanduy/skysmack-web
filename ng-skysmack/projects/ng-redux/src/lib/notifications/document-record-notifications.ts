@@ -4,13 +4,12 @@ import { ReduxAction, CommitMeta } from '@skysmack/redux';
 import { Notifications } from './notifications';
 
 export abstract class DocumentRecordNotifications<TRecord, TKey> extends RecordNotifications<TRecord, TKey> {
-    constructor(
-        public notifications: Notifications
-    ) { super(notifications); }
+    constructor(public notifications: Notifications) { super(notifications); }
 
     public getFieldsError(action: ReduxAction<any, CommitMeta<LocalObject<FieldSchemaViewModel, string>[]>>) {
         this.notifications.showTranslatedSnackbarMessage(this.defaultTranslationString + 'GET.FIELDS_FAILURE', {}, undefined, 2000);
     }
+
     public getSingleFieldError(action: ReduxAction<any, CommitMeta<LocalObject<FieldSchemaViewModel, string>>>) {
         this.notifications.showTranslatedSnackbarMessage(this.defaultTranslationString + 'GET.SINGLE_FIELD_FAILURE', {}, undefined, 2000);
     }
@@ -18,6 +17,7 @@ export abstract class DocumentRecordNotifications<TRecord, TKey> extends RecordN
     public addFieldSuccess(action: ReduxAction<any, CommitMeta<LocalObject<FieldSchemaViewModel, string>[]>>) {
         this.notifications.showTranslatedSnackbarMessage(this.defaultTranslationString + 'ADD.FIELD_SUCCESS', {}, undefined, 2000);
     }
+
     public addFieldError(action: ReduxAction<any, CommitMeta<LocalObject<FieldSchemaViewModel, string>[]>>) {
         this.notifications.showTranslatedSnackbarMessage(this.defaultTranslationString + 'ADD.FIELD_FAILURE', {}, undefined, 2000);
     }
@@ -25,6 +25,7 @@ export abstract class DocumentRecordNotifications<TRecord, TKey> extends RecordN
     public updateFieldSuccess(action: ReduxAction<any, CommitMeta<LocalObject<FieldSchemaViewModel, string>[]>>) {
         this.notifications.showTranslatedSnackbarMessage(this.defaultTranslationString + 'UPDATE.FIELD_SUCCESS', {}, undefined, 2000);
     }
+
     public updateFieldError(action: ReduxAction<any, CommitMeta<LocalObject<FieldSchemaViewModel, string>[]>>) {
         this.notifications.showTranslatedSnackbarMessage(this.defaultTranslationString + 'UPDATE.FIELD_FAILURE', {}, undefined, 2000);
     }
@@ -32,6 +33,7 @@ export abstract class DocumentRecordNotifications<TRecord, TKey> extends RecordN
     public removeFieldSuccess(action: ReduxAction<any, CommitMeta<LocalObject<FieldSchemaViewModel, string>[]>>) {
         this.notifications.showTranslatedSnackbarMessage(this.defaultTranslationString + 'REMOVE.FIELD_SUCCESS', {}, undefined, 2000);
     }
+
     public removeFieldError(action: ReduxAction<any, CommitMeta<LocalObject<FieldSchemaViewModel, string>[]>>) {
         this.notifications.showTranslatedSnackbarMessage(this.defaultTranslationString + 'REMOVE.FIELD_FAILURE', {}, undefined, 2000);
     }
