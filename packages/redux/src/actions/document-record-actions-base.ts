@@ -64,10 +64,12 @@ export abstract class DocumentRecordActionsBase<TStateType, TStore extends Store
         })));
     }
 
-    public getSingleField(path: string) {
-        this.store.dispatch(Object.assign({}, new ReduxAction<string>({
+    public getSingleField(packagePath: string) {
+        this.store.dispatch(Object.assign({}, new ReduxAction<PackagePathPayload>({
             type: this.prefix + DocumentRecordActionsBase.GET_SINGLE_FIELD,
-            payload: this.addAdditionalPaths(path)
+            payload: {
+                packagePath
+            }
         })));
     }
 
