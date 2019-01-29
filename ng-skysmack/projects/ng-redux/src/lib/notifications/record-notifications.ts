@@ -8,17 +8,37 @@ export abstract class RecordNotifications<TRecord, TKey> extends NotificationsBa
         public snackBar: MatSnackBar
     ) { super(snackBar); }
 
-    protected abstract toStringGetPagedError(error: HttpErrorResponse): string;
-    protected abstract toStringGetSingleError(error: HttpErrorResponse): string;
+    // GET
+    protected toStringGetPagedError(error: HttpErrorResponse): string {
+        return `You recieved an ${error.status} error code.`;
+    }
+    protected toStringGetSingleError(error: HttpErrorResponse): string {
+        return `You recieved an ${error.status} error code.`;
+    }
 
-    protected abstract toStringAddSuccess(value: LocalObject<TRecord, TKey>[]): string;
-    protected abstract toStringAddError(error: HttpErrorResponse): string;
+    // ADD
+    protected toStringAddSuccess(value: LocalObject<TRecord, TKey>[]): string {
+        return `Entity was created successfully`;
+    }
+    protected toStringAddError(error: HttpErrorResponse): string {
+        return `You recieved an ${error.status} error code.`;
+    }
 
-    protected abstract toStringUpdateSuccess(value: LocalObject<TRecord, TKey>[]): string;
-    protected abstract toStringUpdateError(error: HttpErrorResponse): string;
+    // UPDATE
+    protected toStringUpdateSuccess(value: LocalObject<TRecord, TKey>[]): string {
+        return `Entity was updated successfully`;
+    }
+    protected toStringUpdateError(error: HttpErrorResponse): string {
+        return `You recieved an ${error.status} error code.`;
+    }
 
-    protected abstract toStringRemoveSuccess(value: LocalObject<TRecord, TKey>[]): string;
-    protected abstract toStringRemoveError(error: HttpErrorResponse): string;
+    // DELETE
+    protected toStringRemoveSuccess(value: LocalObject<TRecord, TKey>[]): string {
+        return `Entity was removed successfully`;
+    }
+    protected toStringRemoveError(error: HttpErrorResponse): string {
+        return `You recieved an ${error.status} error code.`;
+    }
 
     public getPagedError(error: HttpErrorResponse) {
         this.showSnackbarMessage(this.toStringGetPagedError(error), undefined, 5000);

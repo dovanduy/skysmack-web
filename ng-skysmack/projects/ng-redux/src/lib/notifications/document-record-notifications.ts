@@ -7,14 +7,15 @@ export abstract class DocumentRecordNotifications<TRecord, TKey> extends RecordN
         public snackBar: MatSnackBar
     ) { super(snackBar); }
 
+    // GET
     protected toStringGetFieldsError(error: HttpErrorResponse): string {
         return `You recieved an ${error.status} error code.`;
     }
-
     protected toStringGetSingleFieldError(error: HttpErrorResponse): string {
         return `You recieved an ${error.status} error code.`;
     }
 
+    // ADD
     protected toStringAddFieldSuccess(value: LocalObject<FieldSchemaViewModel, string>[]): string {
         return `${value.map(field => field.object.display).join(', ')} was created successfully`;
     }
@@ -22,6 +23,7 @@ export abstract class DocumentRecordNotifications<TRecord, TKey> extends RecordN
         return `You recieved an ${error.status} error code.`;
     }
 
+    // UPDATE
     protected toStringUpdateFieldSuccess(value: LocalObject<FieldSchemaViewModel, string>[]): string {
         return `${value.map(field => field.object.display).join(', ')} was created successfully`;
     }
@@ -29,6 +31,7 @@ export abstract class DocumentRecordNotifications<TRecord, TKey> extends RecordN
         return `You recieved an ${error.status} error code.`;
     }
 
+    // DELETE
     protected toStringRemoveFieldSuccess(value: LocalObject<FieldSchemaViewModel, string>[]): string {
         return `${value.map(field => field.object.display).join(', ')} was removed successfully`;
     }
@@ -39,7 +42,6 @@ export abstract class DocumentRecordNotifications<TRecord, TKey> extends RecordN
     public getFieldsError(error: HttpErrorResponse) {
         this.showSnackbarMessage(this.toStringGetFieldsError(error), undefined, 5000);
     }
-
     public getSingleFieldError(error: HttpErrorResponse) {
         this.showSnackbarMessage(this.toStringGetSingleFieldError(error), undefined, 5000);
     }

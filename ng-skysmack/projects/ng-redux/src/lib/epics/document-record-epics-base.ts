@@ -43,7 +43,9 @@ export abstract class DocumentRecordEpicsBase<TRecord extends Record<TKey>, TKey
         switchMap(action => this.requests.getAvailableFields(action))
     )
 
-    // Notifications
+    // NOTIFICATIONS
+
+    // GET
     public snackBarGetFieldsFailureEpic = (action$: ActionsObservable<ReduxAction<any, CommitMeta<LocalObject<FieldSchemaViewModel, string>[]>>>): Observable<ReduxAction> => action$.pipe(
         ofType(this.prefix + DocumentRecordActionsBase.GET_FIELDS_FAILURE),
         map((action) => {
@@ -64,6 +66,7 @@ export abstract class DocumentRecordEpicsBase<TRecord extends Record<TKey>, TKey
         }),
     )
 
+    // ADD
     public snackBarFieldCreateSuccessEpic = (action$: ActionsObservable<ReduxAction<any, CommitMeta<LocalObject<FieldSchemaViewModel, string>[]>>>): Observable<ReduxAction> => action$.pipe(
         ofType(this.prefix + DocumentRecordActionsBase.ADD_FIELD_SUCCESS),
         map((action) => {
@@ -83,6 +86,7 @@ export abstract class DocumentRecordEpicsBase<TRecord extends Record<TKey>, TKey
         }),
     )
 
+    // UPDATE
     public snackBarFieldUpdateSuccessEpic = (action$: ActionsObservable<ReduxAction<any, CommitMeta<LocalObject<FieldSchemaViewModel, string>[]>>>): Observable<ReduxAction> => action$.pipe(
         ofType(this.prefix + DocumentRecordActionsBase.UPDATE_FIELD_SUCCESS),
         map(action => {
@@ -102,6 +106,7 @@ export abstract class DocumentRecordEpicsBase<TRecord extends Record<TKey>, TKey
         })
     )
 
+    // DELETE
     public snackBarFieldRemoveSuccessEpic = (action$: ActionsObservable<ReduxAction<any, CommitMeta<LocalObject<FieldSchemaViewModel, string>[]>>>): Observable<ReduxAction> => action$.pipe(
         ofType(this.prefix + DocumentRecordActionsBase.DELETE_FIELD_SUCCESS),
         map((action) => {
