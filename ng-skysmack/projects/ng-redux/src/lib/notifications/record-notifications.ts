@@ -2,12 +2,17 @@ import { NotificationsBase } from './notifications-base';
 import { MatSnackBar } from '@angular/material';
 import { LocalObject, HttpErrorResponse } from '@skysmack/framework';
 import { ReduxAction, CommitMeta } from '@skysmack/redux';
+import { TranslateService } from '@ngx-translate/core';
 
 export abstract class RecordNotifications<TRecord, TKey> extends NotificationsBase {
 
+    protected defaultTranslationString = 'NOTIFICATIONS.';
+
     constructor(
-        public snackBar: MatSnackBar
-    ) { super(snackBar); }
+        public snackBar: MatSnackBar,
+        public translateService: TranslateService,
+        public translationPrefix: string
+    ) { super(snackBar, translateService, translationPrefix); }
 
     // GET
     protected toStringGetPagedError(action: ReduxAction<HttpErrorResponse, CommitMeta<LocalObject<TRecord, TKey>[]>>): string {
@@ -18,9 +23,9 @@ export abstract class RecordNotifications<TRecord, TKey> extends NotificationsBa
     }
 
     // ADD
-    protected toStringAddSuccess(action: ReduxAction<unknown, CommitMeta<LocalObject<TRecord, TKey>[]>>): string {
-        return `Entity was created successfully`;
-    }
+    // protected toStringAddSuccess(action: ReduxAction<unknown, CommitMeta<LocalObject<TRecord, TKey>[]>>): string {
+    //     return `Entity was created successfully`;
+    // }
     protected toStringAddError(action: ReduxAction<HttpErrorResponse, CommitMeta<LocalObject<TRecord, TKey>[]>>): string {
         return `You recieved an ${action.payload.status} error code.`;
     }
@@ -49,13 +54,14 @@ export abstract class RecordNotifications<TRecord, TKey> extends NotificationsBa
     }
 
     public addSuccess(action: ReduxAction<unknown, CommitMeta<LocalObject<TRecord, TKey>[]>>) {
-        this.showSnackbarMessage(this.toStringAddSuccess(action));
+        this.showTranslatedSnackbarMessage(this.defaultTranslationString + 'ADD.SUCCESS', {}, undefined, 2000);
     }
     public addError(action: ReduxAction<HttpErrorResponse, CommitMeta<LocalObject<TRecord, TKey>[]>>) {
         this.showSnackbarMessage(this.toStringAddError(action), undefined, 5000);
     }
 
     public updateSuccess(action: ReduxAction<unknown, CommitMeta<LocalObject<TRecord, TKey>[]>>) {
+        // REFACTOR
         this.showSnackbarMessage(this.toStringUpdateSuccess(action));
     }
     public updateError(action: ReduxAction<HttpErrorResponse, CommitMeta<LocalObject<TRecord, TKey>[]>>) {
@@ -63,6 +69,7 @@ export abstract class RecordNotifications<TRecord, TKey> extends NotificationsBa
     }
 
     public removeSuccess(action: ReduxAction<unknown, CommitMeta<LocalObject<TRecord, TKey>[]>>) {
+        // REFACTOR
         this.showSnackbarMessage(this.toStringRemoveSuccess(action));
     }
     public removeError(action: ReduxAction<HttpErrorResponse, CommitMeta<LocalObject<TRecord, TKey>[]>>) {

@@ -30,5 +30,10 @@
             "CHAN_PASS": "Change passeword",
             "LOG_OUT": "Log out"
         }
+    },
+    "NOTIFICATIONS": {
+        "ADD": {
+            "SUCCESS": "Success"
+        }
     }
 }

@@ -1,12 +1,15 @@
 import { MatSnackBar } from '@angular/material';
 import { RecordNotifications } from './record-notifications';
-import { HttpErrorResponse, LocalObject, FieldSchemaViewModel } from '@skysmack/framework';
+import { LocalObject, FieldSchemaViewModel } from '@skysmack/framework';
 import { ReduxAction, CommitMeta } from '@skysmack/redux';
+import { TranslateService } from '@ngx-translate/core';
 
 export abstract class DocumentRecordNotifications<TRecord, TKey> extends RecordNotifications<TRecord, TKey> {
     constructor(
-        public snackBar: MatSnackBar
-    ) { super(snackBar); }
+        public snackBar: MatSnackBar,
+        public translateService: TranslateService,
+        public translationPrefix: string
+    ) { super(snackBar, translateService, translationPrefix); }
 
     // GET
     protected toStringGetFieldsError(action: ReduxAction<any, CommitMeta<LocalObject<FieldSchemaViewModel, string>[]>>): string {

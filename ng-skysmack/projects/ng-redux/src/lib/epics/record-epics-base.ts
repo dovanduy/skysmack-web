@@ -1,10 +1,9 @@
 import { ofType, ActionsObservable, Epic } from 'redux-observable';
 import { switchMap, map } from 'rxjs/operators';
-import { Record, LocalObject } from '@skysmack/framework';
+import { Record, LocalObject, HttpErrorResponse } from '@skysmack/framework';
 import { Observable } from 'rxjs';
 import { RecordRequests, ReduxAction, GetPagedRecordsPayload, GetPagedRecordsSuccessPayload, RecordActionsBase, GetSingleRecordPayload, GetSingleRecordSuccessPayload, CommitMeta } from '@skysmack/redux';
 import { RecordNotifications } from '../notifications';
-import { HttpErrorResponse } from '@angular/common/http';
 
 export abstract class RecordEpicsBase<TRecord extends Record<TKey>, TKey> {
     public epics: Epic[];

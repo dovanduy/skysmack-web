@@ -54,6 +54,12 @@
             "ITEM": "Item",
             "MANAGE": "Manage",
             "ACTIONS": "Actions"
+        },
+        "NOTIFICATIONS": {
+            "ADD": {
+                "SUCCESS": "{{ 0 }} was created.",
+                "FAILURE": "{{ 0 }} could not be created."
+            }
         }
     }
 }
