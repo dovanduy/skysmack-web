@@ -57,8 +57,7 @@
         },
         "NOTIFICATIONS": {
             "ADD": {
-                "SUCCESS": "{{ 0 }} was created.",
-                "FAILURE": "{{ 0 }} could not be created."
+                "SUCCESS": "{{ 0 }} was created."
             }
         }
     }

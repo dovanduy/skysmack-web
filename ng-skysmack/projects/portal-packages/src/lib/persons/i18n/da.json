@@ -54,6 +54,11 @@
             "ITEM": "Enhed",
             "MANAGE": "Konfigurer",
             "ACTIONS": "Handlinger"
+        },
+        "NOTIFICATIONS": {
+            "ADD": {
+                "SUCCESS": "{{ 0 }} blev oprettet."
+            }
         }
     }
 }

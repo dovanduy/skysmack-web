@@ -32,8 +32,22 @@
         }
     },
     "NOTIFICATIONS": {
+        "GET": {
+            "PAGED_ERROR": "{{ 1 }} ({{ 0 }}).",
+            "SINGLE_FAILURE": "{{ 1 }} ({{ 0 }})."
+        },
         "ADD": {
-            "SUCCESS": "Success"
-        }
+            "SUCCESS": "Added successfully.",
+            "FAILURE": "{{ 1 }} ({{ 0 }})."
+        },
+        "UPDATE": {
+            "SUCCESS": "Updated successfully.",
+            "FAILURE": "{{ 1 }} ({{ 0 }})."
+        },
+        "REMOVE": {
+            "SUCCESS": "Removed successfully.",
+            "FAILURE": "{{ 1 }} ({{ 0 }})."
+        },
+        "CONNECTION_ERROR": "Could not connect to the server."
     }
 }

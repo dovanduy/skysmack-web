@@ -30,5 +30,24 @@
             "CHAN_PASS": "Skift adgangskode",
             "LOG_OUT": "Log ud"
         }
+    },
+    "NOTIFICATIONS": {
+        "GET": {
+            "PAGED_ERROR": "{{ 1 }} ({{ 0 }}).",
+            "SINGLE_FAILURE": "{{ 1 }} ({{ 0 }})."
+        },
+        "ADD": {
+            "SUCCESS": "Tilføjelsen lykkedes.",
+            "FAILURE": "{{ 1 }} ({{ 0 }})."
+        },
+        "UPDATE": {
+            "SUCCESS": "Opdateringen lykkedes.",
+            "FAILURE": "{{ 1 }} ({{ 0 }})."
+        },
+        "REMOVE": {
+            "SUCCESS": "Sletningen lykkedes.",
+            "FAILURE": "{{ 1 }} ({{ 0 }})."
+        },
+        "CONNECTION_ERROR": "Der kunne ikke oprettes forbindelse til serveren."
     }
 }

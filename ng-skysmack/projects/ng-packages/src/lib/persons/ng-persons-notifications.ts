@@ -1,22 +1,24 @@
-import { Injectable } from '@angular/core';
-import { MatSnackBar } from '@angular/material';
+import { Injectable, Inject } from '@angular/core';
 import { Person } from '@skysmack/packages-persons';
-import { DocumentRecordNotifications } from '@skysmack/ng-redux';
-import { TranslateService } from '@ngx-translate/core';
+import { DocumentRecordNotifications, Notifications } from '@skysmack/ng-redux';
+import { ReduxAction, CommitMeta } from '@skysmack/redux';
+import { LocalObject } from '@skysmack/framework';
 
 @Injectable({ providedIn: 'root' })
 export class NgPersonsNotifications extends DocumentRecordNotifications<Person, number> {
+
+    protected defaultTranslationString = 'PERSONS.NOTIFICATIONS.';
+
     constructor(
-        public snackBar: MatSnackBar,
-        public translateService: TranslateService
+        @Inject('Notifications') public notifications: Notifications
     ) {
-        super(snackBar, translateService, 'PERSONS');
+        super(notifications);
     }
 
-    // Custom notification example.
+    // // Custom notification example.
     // public addSuccess(action: ReduxAction<unknown, CommitMeta<LocalObject<Person, number>[]>>) {
-    //     const translationString = this.translationPrefix + '.NOTIFICATIONS.ADD.SUCCESS';
+    //     const translationString = 'PERSONS.NOTIFICATIONS.ADD.SUCCESS';
     //     const translationParams = { 0: action.meta.value[0].object.displayName };
-    //     this.showTranslatedSnackbarMessage(translationString, translationParams, undefined, 2000);
+    //     this.notifications.showTranslatedSnackbarMessage(translationString, translationParams, undefined, 2000);
     // }
 }

@@ -3,7 +3,7 @@ import { switchMap, map } from 'rxjs/operators';
 import { Record, LocalObject, HttpErrorResponse } from '@skysmack/framework';
 import { Observable } from 'rxjs';
 import { RecordRequests, ReduxAction, GetPagedRecordsPayload, GetPagedRecordsSuccessPayload, RecordActionsBase, GetSingleRecordPayload, GetSingleRecordSuccessPayload, CommitMeta } from '@skysmack/redux';
-import { RecordNotifications } from '../notifications';
+import { RecordNotifications } from './../notifications/record-notifications';
 
 export abstract class RecordEpicsBase<TRecord extends Record<TKey>, TKey> {
     public epics: Epic[];
