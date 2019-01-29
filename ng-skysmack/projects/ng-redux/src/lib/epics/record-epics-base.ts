@@ -4,6 +4,7 @@ import { Record, LocalObject } from '@skysmack/framework';
 import { Observable } from 'rxjs';
 import { RecordRequests, ReduxAction, GetPagedRecordsPayload, GetPagedRecordsSuccessPayload, RecordActionsBase, GetSingleRecordPayload, GetSingleRecordSuccessPayload, CommitMeta } from '@skysmack/redux';
 import { RecordNotifications } from '../notifications';
+import { HttpErrorResponse } from '@angular/common/http';
 
 export abstract class RecordEpicsBase<TRecord extends Record<TKey>, TKey> {
     public epics: Epic[];
@@ -48,77 +49,77 @@ export abstract class RecordEpicsBase<TRecord extends Record<TKey>, TKey> {
     }
 
     // Notifications
-    public snackBarGetPagedFailureEpic = (action$: ActionsObservable<ReduxAction<any, CommitMeta<LocalObject<TRecord, TKey>[]>>>): Observable<ReduxAction> => action$.pipe(
+    public snackBarGetPagedFailureEpic = (action$: ActionsObservable<ReduxAction<HttpErrorResponse, CommitMeta<LocalObject<TRecord, TKey>[]>>>): Observable<ReduxAction> => action$.pipe(
         ofType(this.prefix + RecordActionsBase.GET_PAGED_FAILURE),
         map((action) => {
             if (this.notifications) {
-                this.notifications.getPagedError(action.payload);
+                this.notifications.getPagedError(action);
             }
             return { type: 'NOTIFICATION' };
         }),
     )
-    public snackBarGetSingleFailureEpic = (action$: ActionsObservable<ReduxAction<any, CommitMeta<LocalObject<TRecord, TKey>[]>>>): Observable<ReduxAction> => action$.pipe(
+    public snackBarGetSingleFailureEpic = (action$: ActionsObservable<ReduxAction<HttpErrorResponse, CommitMeta<LocalObject<TRecord, TKey>>>>): Observable<ReduxAction> => action$.pipe(
         ofType(this.prefix + RecordActionsBase.GET_SINGLE_FAILURE),
         map((action) => {
             if (this.notifications) {
-                this.notifications.getSingleError(action.payload);
+                this.notifications.getSingleError(action);
             }
             return { type: 'NOTIFICATION' };
         }),
     )
 
-    public snackBarCreateSuccessEpic = (action$: ActionsObservable<ReduxAction<any, CommitMeta<LocalObject<TRecord, TKey>[]>>>): Observable<ReduxAction> => action$.pipe(
+    public snackBarCreateSuccessEpic = (action$: ActionsObservable<ReduxAction<unknown, CommitMeta<LocalObject<TRecord, TKey>[]>>>): Observable<ReduxAction> => action$.pipe(
         ofType(this.prefix + RecordActionsBase.ADD_SUCCESS),
         map((action) => {
             if (this.notifications) {
-                this.notifications.addSuccess(action.meta.value);
+                this.notifications.addSuccess(action);
             }
             return { type: 'NOTIFICATION' };
         }),
     )
-    public snackBarCreateFailureEpic = (action$: ActionsObservable<ReduxAction<any, CommitMeta<LocalObject<TRecord, TKey>[]>>>): Observable<ReduxAction> => action$.pipe(
+    public snackBarCreateFailureEpic = (action$: ActionsObservable<ReduxAction<HttpErrorResponse, CommitMeta<LocalObject<TRecord, TKey>[]>>>): Observable<ReduxAction> => action$.pipe(
         ofType(this.prefix + RecordActionsBase.ADD_FAILURE),
         map((action) => {
             if (this.notifications) {
-                this.notifications.addError(action.payload);
+                this.notifications.addError(action);
             }
             return { type: 'NOTIFICATION' };
         }),
     )
 
-    public snackBarUpdateSuccessEpic = (action$: ActionsObservable<ReduxAction<any, CommitMeta<LocalObject<TRecord, TKey>[]>>>): Observable<ReduxAction> => action$.pipe(
+    public snackBarUpdateSuccessEpic = (action$: ActionsObservable<ReduxAction<unknown, CommitMeta<LocalObject<TRecord, TKey>[]>>>): Observable<ReduxAction> => action$.pipe(
         ofType(this.prefix + RecordActionsBase.UPDATE_SUCCESS),
         map(action => {
             if (this.notifications) {
-                this.notifications.updateSuccess(action.meta.value);
+                this.notifications.updateSuccess(action);
             }
             return { type: 'NOTIFICATION' };
         })
     )
-    public snackBarUpdateFailureEpic = (action$: ActionsObservable<ReduxAction<any, CommitMeta<LocalObject<TRecord, TKey>[]>>>): Observable<ReduxAction> => action$.pipe(
+    public snackBarUpdateFailureEpic = (action$: ActionsObservable<ReduxAction<HttpErrorResponse, CommitMeta<LocalObject<TRecord, TKey>[]>>>): Observable<ReduxAction> => action$.pipe(
         ofType(this.prefix + RecordActionsBase.UPDATE_FAILURE),
         map(action => {
             if (this.notifications) {
-                this.notifications.updateError(action.payload);
+                this.notifications.updateError(action);
             }
             return { type: 'NOTIFICATION' };
         })
     )
 
-    public snackBarRemoveSuccessEpic = (action$: ActionsObservable<ReduxAction<any, CommitMeta<LocalObject<TRecord, TKey>[]>>>): Observable<ReduxAction> => action$.pipe(
+    public snackBarRemoveSuccessEpic = (action$: ActionsObservable<ReduxAction<unknown, CommitMeta<LocalObject<TRecord, TKey>[]>>>): Observable<ReduxAction> => action$.pipe(
         ofType(this.prefix + RecordActionsBase.DELETE_SUCCESS),
         map((action) => {
             if (this.notifications) {
-                this.notifications.removeSuccess(action.meta.value);
+                this.notifications.removeSuccess(action);
             }
             return { type: 'NOTIFICATION' };
         })
     )
-    public snackBarRemoveFailureEpic = (action$: ActionsObservable<ReduxAction<any, CommitMeta<LocalObject<TRecord, TKey>[]>>>): Observable<ReduxAction> => action$.pipe(
+    public snackBarRemoveFailureEpic = (action$: ActionsObservable<ReduxAction<HttpErrorResponse, CommitMeta<LocalObject<TRecord, TKey>[]>>>): Observable<ReduxAction> => action$.pipe(
         ofType(this.prefix + RecordActionsBase.DELETE_FAILURE),
         map((action) => {
             if (this.notifications) {
-                this.notifications.removeError(action.payload);
+                this.notifications.removeError(action);
             }
             return { type: 'NOTIFICATION' };
         })

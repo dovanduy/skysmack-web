@@ -50,17 +50,17 @@ export abstract class DocumentRecordEpicsBase<TRecord extends Record<TKey>, TKey
         ofType(this.prefix + DocumentRecordActionsBase.GET_FIELDS_FAILURE),
         map((action) => {
             if (this.notifications) {
-                this.notifications.getFieldsError(action.payload);
+                this.notifications.getFieldsError(action);
             }
             return { type: 'NOTIFICATION' };
         }),
     )
 
-    public snackBarGetSingleFieldFailureEpic = (action$: ActionsObservable<ReduxAction<any, CommitMeta<LocalObject<FieldSchemaViewModel, string>[]>>>): Observable<ReduxAction> => action$.pipe(
+    public snackBarGetSingleFieldFailureEpic = (action$: ActionsObservable<ReduxAction<any, CommitMeta<LocalObject<FieldSchemaViewModel, string>>>>): Observable<ReduxAction> => action$.pipe(
         ofType(this.prefix + DocumentRecordActionsBase.GET_SINGLE_FAILURE),
         map((action) => {
             if (this.notifications) {
-                this.notifications.getSingleFieldError(action.payload);
+                this.notifications.getSingleFieldError(action);
             }
             return { type: 'NOTIFICATION' };
         }),
@@ -71,7 +71,7 @@ export abstract class DocumentRecordEpicsBase<TRecord extends Record<TKey>, TKey
         ofType(this.prefix + DocumentRecordActionsBase.ADD_FIELD_SUCCESS),
         map((action) => {
             if (this.notifications) {
-                this.notifications.addFieldSuccess(action.meta.value);
+                this.notifications.addFieldSuccess(action);
             }
             return { type: 'NOTIFICATION' };
         }),
@@ -80,7 +80,7 @@ export abstract class DocumentRecordEpicsBase<TRecord extends Record<TKey>, TKey
         ofType(this.prefix + DocumentRecordActionsBase.ADD_FIELD_FAILURE),
         map((action) => {
             if (this.notifications) {
-                this.notifications.addFieldError(action.payload);
+                this.notifications.addFieldError(action);
             }
             return { type: 'NOTIFICATION' };
         }),
@@ -91,7 +91,7 @@ export abstract class DocumentRecordEpicsBase<TRecord extends Record<TKey>, TKey
         ofType(this.prefix + DocumentRecordActionsBase.UPDATE_FIELD_SUCCESS),
         map(action => {
             if (this.notifications) {
-                this.notifications.updateFieldSuccess(action.meta.value);
+                this.notifications.updateFieldSuccess(action);
             }
             return { type: 'NOTIFICATION' };
         })
@@ -100,7 +100,7 @@ export abstract class DocumentRecordEpicsBase<TRecord extends Record<TKey>, TKey
         ofType(this.prefix + DocumentRecordActionsBase.UPDATE_FIELD_FAILURE),
         map(action => {
             if (this.notifications) {
-                this.notifications.updateFieldError(action.payload);
+                this.notifications.updateFieldError(action);
             }
             return { type: 'NOTIFICATION' };
         })
@@ -111,7 +111,7 @@ export abstract class DocumentRecordEpicsBase<TRecord extends Record<TKey>, TKey
         ofType(this.prefix + DocumentRecordActionsBase.DELETE_FIELD_SUCCESS),
         map((action) => {
             if (this.notifications) {
-                this.notifications.removeFieldSuccess(action.meta.value);
+                this.notifications.removeFieldSuccess(action);
             }
             return { type: 'NOTIFICATION' };
         })
@@ -120,7 +120,7 @@ export abstract class DocumentRecordEpicsBase<TRecord extends Record<TKey>, TKey
         ofType(this.prefix + DocumentRecordActionsBase.DELETE_FIELD_FAILURE),
         map((action) => {
             if (this.notifications) {
-                this.notifications.removeFieldError(action.payload);
+                this.notifications.removeFieldError(action);
             }
             return { type: 'NOTIFICATION' };
         })

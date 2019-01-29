@@ -1,6 +1,7 @@
 import { NotificationsBase } from './notifications-base';
 import { MatSnackBar } from '@angular/material';
 import { LocalObject, HttpErrorResponse } from '@skysmack/framework';
+import { ReduxAction, CommitMeta } from '@skysmack/redux';
 
 export abstract class RecordNotifications<TRecord, TKey> extends NotificationsBase {
 
@@ -9,62 +10,62 @@ export abstract class RecordNotifications<TRecord, TKey> extends NotificationsBa
     ) { super(snackBar); }
 
     // GET
-    protected toStringGetPagedError(error: HttpErrorResponse): string {
-        return `You recieved an ${error.status} error code.`;
+    protected toStringGetPagedError(action: ReduxAction<HttpErrorResponse, CommitMeta<LocalObject<TRecord, TKey>[]>>): string {
+        return `You recieved an ${action.payload.status} error code.`;
     }
-    protected toStringGetSingleError(error: HttpErrorResponse): string {
-        return `You recieved an ${error.status} error code.`;
+    protected toStringGetSingleError(action: ReduxAction<HttpErrorResponse, CommitMeta<LocalObject<TRecord, TKey>>>): string {
+        return `You recieved an ${action.payload.status} error code.`;
     }
 
     // ADD
-    protected toStringAddSuccess(value: LocalObject<TRecord, TKey>[]): string {
+    protected toStringAddSuccess(action: ReduxAction<unknown, CommitMeta<LocalObject<TRecord, TKey>[]>>): string {
         return `Entity was created successfully`;
     }
-    protected toStringAddError(error: HttpErrorResponse): string {
-        return `You recieved an ${error.status} error code.`;
+    protected toStringAddError(action: ReduxAction<HttpErrorResponse, CommitMeta<LocalObject<TRecord, TKey>[]>>): string {
+        return `You recieved an ${action.payload.status} error code.`;
     }
 
     // UPDATE
-    protected toStringUpdateSuccess(value: LocalObject<TRecord, TKey>[]): string {
+    protected toStringUpdateSuccess(action: ReduxAction<unknown, CommitMeta<LocalObject<TRecord, TKey>[]>>): string {
         return `Entity was updated successfully`;
     }
-    protected toStringUpdateError(error: HttpErrorResponse): string {
-        return `You recieved an ${error.status} error code.`;
+    protected toStringUpdateError(action: ReduxAction<HttpErrorResponse, CommitMeta<LocalObject<TRecord, TKey>[]>>): string {
+        return `You recieved an ${action.payload.status} error code.`;
     }
 
     // DELETE
-    protected toStringRemoveSuccess(value: LocalObject<TRecord, TKey>[]): string {
+    protected toStringRemoveSuccess(action: ReduxAction<unknown, CommitMeta<LocalObject<TRecord, TKey>[]>>): string {
         return `Entity was removed successfully`;
     }
-    protected toStringRemoveError(error: HttpErrorResponse): string {
-        return `You recieved an ${error.status} error code.`;
+    protected toStringRemoveError(action: ReduxAction<HttpErrorResponse, CommitMeta<LocalObject<TRecord, TKey>[]>>): string {
+        return `You recieved an ${action.payload.status} error code.`;
     }
 
-    public getPagedError(error: HttpErrorResponse) {
-        this.showSnackbarMessage(this.toStringGetPagedError(error), undefined, 5000);
+    public getPagedError(action: ReduxAction<HttpErrorResponse, CommitMeta<LocalObject<TRecord, TKey>[]>>) {
+        this.showSnackbarMessage(this.toStringGetPagedError(action), undefined, 5000);
     }
-    public getSingleError(error: HttpErrorResponse) {
-        this.showSnackbarMessage(this.toStringGetSingleError(error), undefined, 5000);
-    }
-
-    public addSuccess(value: LocalObject<TRecord, TKey>[]) {
-        this.showSnackbarMessage(this.toStringAddSuccess(value));
-    }
-    public addError(error: HttpErrorResponse) {
-        this.showSnackbarMessage(this.toStringAddError(error), undefined, 5000);
+    public getSingleError(action: ReduxAction<HttpErrorResponse, CommitMeta<LocalObject<TRecord, TKey>>>) {
+        this.showSnackbarMessage(this.toStringGetSingleError(action), undefined, 5000);
     }
 
-    public updateSuccess(value: LocalObject<TRecord, TKey>[]) {
-        this.showSnackbarMessage(this.toStringUpdateSuccess(value));
+    public addSuccess(action: ReduxAction<unknown, CommitMeta<LocalObject<TRecord, TKey>[]>>) {
+        this.showSnackbarMessage(this.toStringAddSuccess(action));
     }
-    public updateError(error: HttpErrorResponse) {
-        this.showSnackbarMessage(this.toStringUpdateError(error), undefined, 5000);
+    public addError(action: ReduxAction<HttpErrorResponse, CommitMeta<LocalObject<TRecord, TKey>[]>>) {
+        this.showSnackbarMessage(this.toStringAddError(action), undefined, 5000);
     }
 
-    public removeSuccess(value: LocalObject<TRecord, TKey>[]) {
-        this.showSnackbarMessage(this.toStringRemoveSuccess(value));
+    public updateSuccess(action: ReduxAction<unknown, CommitMeta<LocalObject<TRecord, TKey>[]>>) {
+        this.showSnackbarMessage(this.toStringUpdateSuccess(action));
     }
-    public removeError(error: HttpErrorResponse) {
-        this.showSnackbarMessage(this.toStringRemoveError(error), undefined, 5000);
+    public updateError(action: ReduxAction<HttpErrorResponse, CommitMeta<LocalObject<TRecord, TKey>[]>>) {
+        this.showSnackbarMessage(this.toStringUpdateError(action), undefined, 5000);
+    }
+
+    public removeSuccess(action: ReduxAction<unknown, CommitMeta<LocalObject<TRecord, TKey>[]>>) {
+        this.showSnackbarMessage(this.toStringRemoveSuccess(action));
+    }
+    public removeError(action: ReduxAction<HttpErrorResponse, CommitMeta<LocalObject<TRecord, TKey>[]>>) {
+        this.showSnackbarMessage(this.toStringRemoveError(action), undefined, 5000);
     }
 }
