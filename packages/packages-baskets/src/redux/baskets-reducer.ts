@@ -17,7 +17,7 @@ export class BasketsState implements DocumentRecordState<Basket, number> {
     public fields: StrIndex<StrIndex<LocalObject<FieldSchemaViewModel, string>>> = {};
 }
 
-export function basketsReducer(state = new BasketsState(), action: ReduxAction, prefix: string = 'PERSONS_'): BasketsState {
+export function basketsReducer(state = new BasketsState(), action: ReduxAction, prefix: string = 'BASKETS_'): BasketsState {
     state = sharedReducer(state, action, new BasketsState());
 
     switch (action.type) {

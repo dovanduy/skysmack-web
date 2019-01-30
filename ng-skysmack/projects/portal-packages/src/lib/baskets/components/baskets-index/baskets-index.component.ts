@@ -16,7 +16,7 @@ import { EntityAction } from '@skysmack/ng-ui';
 })
 export class BasketsIndexComponent extends DocumentRecordIndexComponet<BasketsAppState, Basket, number> implements OnInit {
 
-  public displayedColumns = ['firstName', 'lastName'];
+  public displayedColumns = ['currencyCode'];
   public entityActions: EntityAction[] = [
     new EntityAction().asUrlAction('edit', 'Edit', 'edit'),
     new EntityAction().asEventAction('Delete', this.delete, 'delete', this)
