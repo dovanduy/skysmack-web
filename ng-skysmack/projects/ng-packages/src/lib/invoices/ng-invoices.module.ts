@@ -2,10 +2,10 @@ import { NgModule } from '@angular/core';
 
 import { ReducerRegistry } from '@skysmack/redux';
 import { invoicesReducer } from '@skysmack/packages-invoices';
-import { NgInvoicesActions } from './redux/ng-invoices-actions';
-import { NgInvoicesStore } from './redux/ng-invoices-store';
-import { NgInvoicesEpics } from './redux/ng-invoices-epics';
 import { registerEpics } from '@skysmack/ng-redux';
+import { NgInvoicesActions } from './invoice/redux/ng-invoices-actions';
+import { NgInvoicesStore } from './invoice/redux/ng-invoices-store';
+import { NgInvoicesEpics } from './invoice/redux/ng-invoices-epics';
 
 @NgModule({
   imports: [],
