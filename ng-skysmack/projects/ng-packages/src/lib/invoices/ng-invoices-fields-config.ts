@@ -21,7 +21,7 @@ export class NgInvoicesFieldsConfig extends FieldsConfig<Invoice, NgInvoiceFormD
     protected getEntityFields(entity?: LocalObject<Invoice, number>, dependencies?: NgInvoiceFormDependencies): Field[] {
         const fields = [
             new Field({
-                fieldType: FieldTypes.int,
+                fieldType: FieldTypes.string,
                 value: entity ? entity.object.currencyCode : undefined,
                 key: 'currencyCode',
                 validators: [Validators.required],
