@@ -10,6 +10,8 @@
     "@skysmack/packages-maintenance": "*",
     "@skysmack/packages-oauth2": "*",
     "@skysmack/packages-persons": "*",
+    "@skysmack/packages-invoices": "*",
+    "@skysmack/packages-baskets": "*",
     "@skysmack/packages-products": "*",
     "@skysmack/packages-skysmack-core": "*",
     "@skysmack/packages-terminal-payments": "*"

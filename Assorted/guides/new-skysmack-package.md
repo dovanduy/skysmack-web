@@ -13,7 +13,7 @@ Consider using the quick-naming.md guide for faster copy paste.
         start.module.ts
         application-startup.ts
 - Update .json files
-    skysmack/package.json
+    Project root's package.json <-- REMEMBER IT!
     skysmack/ng-packages/projects/ng-packages/ng-package.json
     skysmack/ng-packages/projects/ng-packages/package.json
     skysmack/ng-packages/projects/portal-packages/package.json

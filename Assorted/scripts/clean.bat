@@ -75,6 +75,14 @@ RD /s /q "%~dp0\..\..\packages\packages-persons\node_modules";
 echo Deleted packages-persons\node_modules;
 del /s /q "%~dp0\..\..\packages\packages-persons\package-lock.json";
 
+rem packages-invoices
+RD /s /q "%~dp0\..\..\packages\packages-invoices\lib";
+mkdir "%~dp0\..\..\packages\packages-invoices\lib";
+echo Deleted packages-invoices\lib;
+RD /s /q "%~dp0\..\..\packages\packages-invoices\node_modules";
+echo Deleted packages-invoices\node_modules;
+del /s /q "%~dp0\..\..\packages\packages-invoices\package-lock.json";
+
 rem packages-baskets
 RD /s /q "%~dp0\..\..\packages\packages-baskets\lib";
 mkdir "%~dp0\..\..\packages\packages-baskets\lib";
