@@ -22,7 +22,7 @@
     "@redux-offline/redux-offline": "^2.5.1",
     "redux": "^4.0.1",
     "redux-observable": "^1.0.0",
-    "rxjs": "^6.3.3",
+    "rxjs": "^6.4.0",
     "tslib": "^1.9.3"
   }
 }

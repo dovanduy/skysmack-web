@@ -15,6 +15,7 @@
         "@skysmack/packages-lodging-reservations": "*",
         "@skysmack/packages-oauth2": "*",
         "@skysmack/packages-persons": "*",
+        "@skysmack/packages-baskets": "*",
         "@skysmack/packages-products": "*",
         "@skysmack/packages-terminal-payments": "*"
     }

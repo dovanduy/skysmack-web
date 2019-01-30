@@ -3,7 +3,7 @@ import { FieldBaseComponent } from '../field-base-component';
 import { map } from 'rxjs/operators';
 import { combineLatest, Observable } from 'rxjs';
 import { NgPackagesStore } from '@skysmack/ng-packages';
-import { flatten, notNull } from '@skysmack/framework';
+import { flatten, notNull, AvailablePackage, LocalObject } from '@skysmack/framework';
 
 class SelectBox {
   index: number;
@@ -65,7 +65,7 @@ export class PackageDependenciesFieldComponent extends FieldBaseComponent implem
         return availablePackages.filter(availablePackage => availablePackage.object.type === selectedPackageType);
       }),
       flatten(),
-      map(availablePackage => availablePackage.object.dependencyTypes),
+      map((availablePackage: LocalObject<AvailablePackage, string>) => availablePackage.object.dependencyTypes),
       map(depTypes => {
         // Hide select boxes if there are no dependencies
         depTypes ? this.showBoxes = true : this.showBoxes = false;
@@ -83,7 +83,7 @@ export class PackageDependenciesFieldComponent extends FieldBaseComponent implem
         const [dependencies, installedPackages, availablePackages] = values;
         let index = 0;
         // Only run this when setting NEW dependencies, not when valus are set...
-        return dependencies.map(dependency => {
+        return (dependencies as string[]).map(dependency => {
           const possibleValues = installedPackages
             .filter(installedPackage => installedPackage.object.type === dependency)
             .map(installedPackage => ({

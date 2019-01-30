@@ -1,4 +1,5 @@
 export * from './persons-package-manifest';
+export * from './baskets-package-manifest';
 export * from './products-package-manifest';
 export * from './lodgings-package-manifest';
 export * from './lodging-reservations-package-manifest';

@@ -33,12 +33,12 @@ export abstract class DocumentRecordEpicsBase<TRecord extends Record<TKey>, TKey
         switchMap(action => this.requests.getFields(action))
     )
 
-    public getSingleFieldEpic = (action$: ActionsObservable<ReduxAction<PackagePathPayload>>) => action$.pipe(
+    public getSingleFieldEpic = (action$: ActionsObservable<ReduxAction<PackagePathPayload>>): Observable<ReduxAction> => action$.pipe(
         ofType(this.prefix + DocumentRecordActionsBase.GET_SINGLE_FIELD),
         switchMap(action => this.requests.getSingleField(action))
     )
 
-    public getAvailableFieldsEpic = (action$: ActionsObservable<ReduxAction<PackagePathPayload>>) => action$.pipe(
+    public getAvailableFieldsEpic = (action$: ActionsObservable<ReduxAction<PackagePathPayload>>): Observable<ReduxAction> => action$.pipe(
         ofType(this.prefix + DocumentRecordActionsBase.GET_AVAILABLE_FIELDS),
         switchMap(action => this.requests.getAvailableFields(action))
     )

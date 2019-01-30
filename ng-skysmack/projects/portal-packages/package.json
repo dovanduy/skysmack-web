@@ -12,6 +12,7 @@
     "@skysmack/packages-lodgings-reservations": "*",
     "@skysmack/packages-products": "*",
     "@skysmack/packages-persons": "*",
+    "@skysmack/packages-baskets": "*",
     "@skysmack/packages-skysmack-core": "*",
     "@skysmack/packages-terminal-payments": "*",
     "@skysmack/ng-redux": "*",
