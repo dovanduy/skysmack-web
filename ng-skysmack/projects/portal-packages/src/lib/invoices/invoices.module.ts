@@ -8,6 +8,7 @@ import { PortalUiModule, HttpLoaderFactory, DynamicFieldsModule } from '@skysmac
 import { TranslateLoader, TranslateService } from '@ngx-translate/core';
 import { LanguageService } from '@skysmack/portal-ui';
 import { invoicesComponents } from './invoice/components/invoices-components';
+import { invoiceItemsComponents } from './invoice-item/components/invoice-items-components';
 
 @NgModule({
   imports: [
@@ -19,7 +20,8 @@ import { invoicesComponents } from './invoice/components/invoices-components';
     DynamicFieldsModule
   ],
   declarations: [
-    ...invoicesComponents
+    ...invoicesComponents,
+    ...invoiceItemsComponents
   ],
   providers: [{
     provide: TranslateLoader,

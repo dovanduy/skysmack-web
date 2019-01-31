@@ -7,9 +7,9 @@ import { MenuArea } from '@skysmack/ng-ui';
 import { MenuItem } from '@skysmack/ng-ui';
 
 @Injectable({ providedIn: 'root' })
-export class NgInvoicesMenu extends SidebarMenu {
-    public menuId = 'invoices';
-    public translationPrefix = 'INVOICES.INDEX.';
+export class NgInvoiceItemsMenu extends SidebarMenu {
+    public menuId = 'invoice-items';
+    public translationPrefix = 'INVOICE_ITEMS.INDEX.';
 
     constructor(
         public store: NgSkysmackStore,
@@ -28,7 +28,6 @@ export class NgInvoicesMenu extends SidebarMenu {
 
         this.primaryMenuItems.push(new MenuItem('create', this.translationPrefix + 'CREATE', 'actions', 1, 'groupAdd'));
         this.primaryMenuItems.push(new MenuItem('fields', this.translationPrefix + 'FIELDS', 'manage', 2, 'shortText'));
-        this.primaryMenuItems.push(new MenuItem('items', this.translationPrefix + 'ITEMS', 'manage', 2, 'shortText'));
     }
 
     public setSpeedDialMenu() {

@@ -43,7 +43,8 @@
             "FIELDS": "Fields",
             "ITEM": "Item",
             "MANAGE": "Manage",
-            "ACTIONS": "Actions"
+            "ACTIONS": "Actions",
+            "ITEMS": "Items"
         },
         "NOTIFICATIONS": {
             "ADD": {

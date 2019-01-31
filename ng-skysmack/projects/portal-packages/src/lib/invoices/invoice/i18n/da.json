@@ -43,7 +43,8 @@
             "FIELDS": "Felter",
             "ITEM": "Enhed",
             "MANAGE": "Konfigurer",
-            "ACTIONS": "Handlinger"
+            "ACTIONS": "Handlinger",
+            "ITEMS": "Enheder"
         },
         "NOTIFICATIONS": {
             "ADD": {
