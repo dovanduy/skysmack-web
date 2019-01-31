@@ -1,14 +1,12 @@
 import { StrIndex } from '@skysmack/framework';
 import { Validation } from '@skysmack/ng-ui';
 
-export class InvoiceItemsValidation extends Validation {
+export class InvoicePaymentsValidation extends Validation {
     public formErrors = {
         description: '',
-        order: '',
-        units: '',
-        unitPrice: '',
-        unitDiscount: '',
-        unitTax: '',
+        source: '',
+        amount: '',
+        ip: '',
         inventoryId: ''
     };
 
@@ -16,19 +14,13 @@ export class InvoiceItemsValidation extends Validation {
         description: {
             required: ''
         },
-        order: {
+        source: {
             required: ''
         },
-        units: {
+        amount: {
             required: ''
         },
-        unitPrice: {
-            required: ''
-        },
-        unitDiscount: {
-            required: ''
-        },
-        unitTax: {
+        ip: {
             required: ''
         },
         inventoryId: {
@@ -36,7 +28,7 @@ export class InvoiceItemsValidation extends Validation {
         }
     };
 
-    public area = 'invoice_items';
+    public area = 'invoice_payments';
 
     public formValidators = [];
 

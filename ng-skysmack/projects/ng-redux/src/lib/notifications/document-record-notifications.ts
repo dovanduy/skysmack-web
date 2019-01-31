@@ -7,7 +7,9 @@ export abstract class DocumentRecordNotifications<TRecord, TKey> extends RecordN
     constructor(public notifications: Notifications) { super(notifications); }
 
     public getFieldsError(action: ReduxAction<any, CommitMeta<LocalObject<FieldSchemaViewModel, string>[]>>) {
-        this.notifications.showTranslatedSnackbarMessage(this.defaultTranslationString + 'GET.FIELDS_FAILURE', {}, undefined, 2000);
+        this.checkOfflineStatus(action, () => {
+            this.notifications.showTranslatedSnackbarMessage(this.defaultTranslationString + 'GET.FIELDS_FAILURE', this.getErrorParams(action), undefined, 2000);
+        });
     }
 
     public getSingleFieldError(action: ReduxAction<any, CommitMeta<LocalObject<FieldSchemaViewModel, string>>>) {

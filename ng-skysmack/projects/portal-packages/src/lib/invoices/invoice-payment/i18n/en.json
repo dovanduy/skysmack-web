@@ -1,15 +1,35 @@
 {
-    "INVOICES": {
+    "INVOICE_PAYMENTS": {
         "FORM": {
             "LABELS": {
-                "CURRENCYCODE": "Currency code"
+                "DESCRIPTION": "Description",
+                "SOURCE": "Source",
+                "AMOUNT": "Amount",
+                "IP": "IP",
+                "INVENTORYID": "Inventory ID"
             },
             "PLACEHOLDERS": {
-                "CURRENCYCODE": "Currency code"
+                "DESCRIPTION": "Description",
+                "SOURCE": "Source",
+                "AMOUNT": "Amount",
+                "IP": "IP",
+                "INVENTORYID": "Inventory ID"
             },
             "VALIDATION": {
-                "CURRENCYCODE": {
-                    "REQUIRED": "Currency code is required."
+                "DESCRIPTION": {
+                    "REQUIRED": "Description is required"
+                },
+                "SOURCE": {
+                    "REQUIRED": "Source is required"
+                },
+                "AMOUNT": {
+                    "REQUIRED": "Amount is required"
+                },
+                "IP": {
+                    "REQUIRED": "IP is required"
+                },
+                "INVENTORYID": {
+                    "REQUIRED": "Inventory ID is required"
                 }
             }
         },
@@ -43,9 +63,8 @@
             "FIELDS": "Fields",
             "ITEM": "Item",
             "MANAGE": "Manage",
-            "ACTIONS": "Actions",
-            "ITEMS": "Items",
-            "PAYMENTS": "Payments"
+            "BACK": "Back",
+            "ACTIONS": "Actions"
         },
         "NOTIFICATIONS": {
             "ADD": {

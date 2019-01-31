@@ -4,10 +4,10 @@ import { InvoiceItem } from './../models/invoice-item';
 import { sharedReducer } from '@skysmack/redux';
 
 /**
- * This is to be used when you want to access invoices via the GLOBAL state. E.g. state.invoices (where invoices is the reducer name.)
+ * This is to be used when you want to access invoiceItems via the GLOBAL state. E.g. state.invoiceItems (where invoiceItems is the reducer name.)
  */
 export class InvoiceItemsAppState extends AppState {
-    public invoices: InvoiceItemsState;
+    public invoiceItems: InvoiceItemsState;
 }
 
 export class InvoiceItemsState implements DocumentRecordState<InvoiceItem, number> {

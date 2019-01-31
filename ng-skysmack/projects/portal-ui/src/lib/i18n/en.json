@@ -34,7 +34,8 @@
     "NOTIFICATIONS": {
         "GET": {
             "PAGED_ERROR": "{{ 1 }} ({{ 0 }}).",
-            "SINGLE_FAILURE": "{{ 1 }} ({{ 0 }})."
+            "SINGLE_FAILURE": "{{ 1 }} ({{ 0 }}).",
+            "FIELDS_FAILURE": "{{ 1 }} ({{ 0 }})."
         },
         "ADD": {
             "SUCCESS": "Added successfully.",
