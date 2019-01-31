@@ -9,9 +9,17 @@ import { TranslateLoader, TranslateService } from '@ngx-translate/core';
 import { LanguageService } from '@skysmack/portal-ui';
 import { NgPackagesModule } from '@skysmack/ng-packages';
 
-import { NgxGraphModule } from '@swimlane/ngx-graph';
-import { NgxChartsModule } from '@swimlane/ngx-charts';
+/**
+ * To activate available packages overview, incomment the code in the following places
+ * packages.module.ts (here)
+ * packages-components.ts
+ * available-packages-overview.component.ts
+ * components/index
+ */
 
+// INCOMMENT TO ACTIVATE PACKAGE OVERVIEW
+// import { NgxGraphModule } from '@swimlane/ngx-graph';
+// import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 @NgModule({
   imports: [
@@ -20,9 +28,10 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
     PortalUiModule,
     PackagesRoutingModule,
     NgPackagesModule,
-    NgxGraphModule,
-    NgxChartsModule
-    ],
+    // INCOMMENT TO ACTIVATE PACKAGE OVERVIEW
+    // NgxGraphModule,
+    // NgxChartsModule
+  ],
   exports: [],
   declarations: [
     ...packagesComponents

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { EntityComponentPageTitle, DocumentRecordIndexComponet } from '@skysmack/portal-ui';
+import { EntityComponentPageTitle, DocumentRecordIndexComponent } from '@skysmack/portal-ui';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgInvoicesActions } from '@skysmack/ng-packages';
 import { NgSkysmackStore } from '@skysmack/ng-packages';
@@ -14,7 +14,7 @@ import { EntityAction } from '@skysmack/ng-ui';
   templateUrl: './invoices-index.component.html',
   styleUrls: ['./invoices-index.component.scss']
 })
-export class InvoicesIndexComponent extends DocumentRecordIndexComponet<InvoicesAppState, Invoice, number> implements OnInit {
+export class InvoicesIndexComponent extends DocumentRecordIndexComponent<InvoicesAppState, Invoice, number> implements OnInit {
 
   public displayedColumns = ['currencyCode'];
   public entityActions: EntityAction[] = [
