@@ -5,7 +5,7 @@ import { LocalObject } from '@skysmack/framework';
 import { Invoice } from '@skysmack/packages-invoices';
 import { Field } from '@skysmack/ng-ui';
 import { FieldTypes } from '@skysmack/ng-ui';
-import { InvoicesValidation } from './ng-invoices-validation';
+import { NgInvoicesValidation } from './ng-invoices-validation';
 import { FieldsConfig } from '@skysmack/ng-ui';
 
 export interface NgInvoiceFormDependencies {
@@ -14,7 +14,7 @@ export interface NgInvoiceFormDependencies {
 
 @Injectable({ providedIn: 'root' })
 export class NgInvoicesFieldsConfig extends FieldsConfig<Invoice, NgInvoiceFormDependencies> {
-    public validation = new InvoicesValidation();
+    public validation = new NgInvoicesValidation();
 
     public formRules: FormRule[] = [];
 

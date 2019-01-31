@@ -1,7 +1,7 @@
 import { StrIndex } from '@skysmack/framework';
 import { Validation } from '@skysmack/ng-ui';
 
-export class InvoicePaymentsValidation extends Validation {
+export class NgInvoicePaymentsValidation extends Validation {
     public formErrors = {
         description: '',
         source: '',
