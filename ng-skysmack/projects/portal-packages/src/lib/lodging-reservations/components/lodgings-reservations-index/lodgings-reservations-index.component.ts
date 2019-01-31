@@ -114,7 +114,7 @@ export class LodgingsReservationsIndexComponent extends RecordIndexComponent<Lod
                 if (reservation && reservation.object) {
                   reservationLodgingType = lodgingTypes.find(lodgingType => lodgingType.object.id === reservation.object.lodgingTypeId);
                 }
-                return toLocalObject(new ExtendedReservation(reservation, reservationLodging, reservationLodgingType), 'id', reservation.localId, reservation.status, reservation.foreignKey, reservation.isNew);
+                return toLocalObject<ExtendedReservation, number>(new ExtendedReservation(reservation, reservationLodging, reservationLodgingType), 'id', reservation.localId, reservation.status, reservation.foreignKey, reservation.isNew);
               });
             }
           })

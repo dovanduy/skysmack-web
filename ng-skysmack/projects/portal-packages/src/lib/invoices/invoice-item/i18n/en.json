@@ -1,0 +1,85 @@
+{
+    "INVOICE_ITEMS": {
+        "FORM": {
+            "LABELS": {
+                "DESCRIPTION": "Description",
+                "ORDER": "Order",
+                "UNITS": "Units",
+                "UNITPRICE": "Unit price",
+                "UNITDISCOUNT": "Unit discount",
+                "UNITTAX": "Unit tax",
+                "INVENTORYID": "Inventory ID"
+            },
+            "PLACEHOLDERS": {
+                "DESCRIPTION": "Description",
+                "ORDER": "Order",
+                "UNITS": "Units",
+                "UNITPRICE": "Unit price",
+                "UNITDISCOUNT": "Unit discount",
+                "UNITTAX": "Unit tax",
+                "INVENTORYID": "Inventory ID"
+            },
+            "VALIDATION": {
+                "DESCRIPTION": {
+                    "REQUIRED": "Description is required"
+                },
+                "ORDER": {
+                    "REQUIRED": "Order is required"
+                },
+                "UNITS": {
+                    "REQUIRED": "Units is required"
+                },
+                "UNITPRICE": {
+                    "REQUIRED": "Unit price is required"
+                },
+                "UNITDISCOUNT": {
+                    "REQUIRED": "Unit discount is required"
+                },
+                "UNITTAX": {
+                    "REQUIRED": "Unit tax is required"
+                },
+                "INVENTORYID": {
+                    "REQUIRED": "Inventory ID is required"
+                }
+            }
+        },
+        "FIELDS": {
+            "CREATE": {
+                "ADD": "Add new field"
+            },
+            "EDIT": {
+                "EDITING": "Editing"
+            },
+            "INDEX": {
+                "ACTIONS": "Actions",
+                "CREATE": "Create new field",
+                "OTHER": "Other",
+                "BACK": "Back",
+                "FIELDS": "Fields",
+                "EDIT": "Edit"
+            }
+        },
+        "CREATE": {
+            "CREATE": "Create"
+        },
+        "EDIT": {
+            "EDIT": "Edit"
+        },
+        "INDEX": {
+            "PACKAGES": "Packages",
+            "CREATE": "Create",
+            "EDIT": "Edit",
+            "DELETE": "Delete",
+            "FIELDS": "Fields",
+            "ITEM": "Item",
+            "MANAGE": "Manage",
+            "BACK": "Back",
+            "ACTIONS": "Actions"
+        },
+        "NOTIFICATIONS": {
+            "ADD": {
+                "SUCCESS": "{{ 0 }} was created."
+            }
+        }
+    }
+}

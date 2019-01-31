@@ -40,8 +40,8 @@ export class NgSkysmackStore {
     public getCurrentPackage(packagePath: string): Observable<LoadedPackage> {
         return this.getSkysmack().pipe(
             map(skysmack => skysmack.packages),
-            flatten<Package>(),
-            filter(_package => _package.path === packagePath),
+            flatten(),
+            filter((_package: Package) => _package.path === packagePath),
             map(_package => PackageLoader.toLoadedPackage(_package)),
             safeHasValue()
         );
@@ -55,7 +55,7 @@ export class NgSkysmackStore {
         return this.getCurrentPackage(packagePath).pipe(
             map(loadedPackage => loadedPackage._package.dependencies[0]),
             defined(),
-            switchMap(dependencyPackagePath => this.getCurrentPackage(dependencyPackagePath))
+            switchMap((dependencyPackagePath: string) => this.getCurrentPackage(dependencyPackagePath))
         );
     }
 

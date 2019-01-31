@@ -28,6 +28,8 @@
     "@skysmack/packages-lodgings-reservations": "*",
     "@skysmack/packages-products": "*",
     "@skysmack/packages-persons": "*",
+    "@skysmack/packages-invoices": "*",
+    "@skysmack/packages-baskets": "*",
     "@skysmack/packages-skysmack-core": "*",
     "@skysmack/packages-terminal-payments": "*",
     "@skysmack/ng-redux": "*",
@@ -36,7 +38,7 @@
     "@skysmack/portal-ui": "*"
   },
   "devDependencies": {
-    "typescript": "^3.2.2"
+    "typescript": "^3.2.4"
   },
   "main": "./lib/public_api.js",
   "types": "./lib/public_api.d.ts",

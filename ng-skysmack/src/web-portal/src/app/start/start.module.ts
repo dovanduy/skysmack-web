@@ -43,6 +43,14 @@ import { environment } from './../../environments/environment';
         loadChildren: './../packages/modules/persons_wrapper.module#PersonsWrapperModule'
       },
       {
+        path: 'skysmack/loadPackages/invoices',
+        loadChildren: './../packages/modules/invoices_wrapper.module#InvoicesWrapperModule'
+      },
+      {
+        path: 'skysmack/loadPackages/baskets',
+        loadChildren: './../packages/modules/baskets_wrapper.module#BasketsWrapperModule'
+      },
+      {
         path: 'skysmack/loadPackages/products',
         loadChildren: './../packages/modules/products_wrapper.module#ProductsWrapperModule'
       },

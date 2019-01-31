@@ -49,6 +49,7 @@ import { HttpLoaderFactory } from './portal-ui.helper';
 import { ShowEntityActionDirective } from './directives/show-entity-action.directive';
 import { IsAuthenticatedDirective } from './autentication/is-authenticated.directive';
 import { IsAnonymousDirective } from './autentication/is-anonymous.directive';
+import { NgNotifications } from './notifications/ng-notifications';
 
 @NgModule({
   imports: [
@@ -69,6 +70,9 @@ import { IsAnonymousDirective } from './autentication/is-anonymous.directive';
       provide: TranslateLoader,
       useFactory: HttpLoaderFactory,
       deps: [HttpClient]
+    },
+    {
+      provide: 'Notifications', useClass: NgNotifications
     }
   ],
   declarations: [

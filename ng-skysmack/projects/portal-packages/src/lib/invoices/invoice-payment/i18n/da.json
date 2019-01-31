@@ -1,0 +1,75 @@
+{
+    "INVOICE_PAYMENTS": {
+        "FORM": {
+            "LABELS": {
+                "DESCRIPTION": "Beskrivelse",
+                "SOURCE": "Kilde",
+                "AMOUNT": "Mængde",
+                "IP": "IP",
+                "INVENTORYID": "Lager ID"
+            },
+            "PLACEHOLDERS": {
+                "DESCRIPTION": "Indtast beskrivelse",
+                "SOURCE": "Indtast kilde",
+                "AMOUNT": "Indtast mængde",
+                "IP": "Indtast IP",
+                "INVENTORYID": "Indtast lager ID"
+            },
+            "VALIDATION": {
+                "DESCRIPTION": {
+                    "REQUIRED": "Beskrivelse er påkrævet"
+                },
+                "SOURCE": {
+                    "REQUIRED": "Kilde er påkrævet"
+                },
+                "AMOUNT": {
+                    "REQUIRED": "Mængde er påkrævet"
+                },
+                "IP": {
+                    "REQUIRED": "IP er påkrævet"
+                },
+                "INVENTORYID": {
+                    "REQUIRED": "Lager ID er påkrævet"
+                }
+            }
+        },
+        "FIELDS": {
+            "CREATE": {
+                "ADD": "Tilføj nyt felt"
+            },
+            "EDIT": {
+                "EDITING": "Redigere"
+            },
+            "INDEX": {
+                "ACTIONS": "Handlinger",
+                "CREATE": "Tilføj nyt felt",
+                "OTHER": "Andre",
+                "BACK": "Tilbage",
+                "FIELDS": "Felter",
+                "EDIT": "Rediger"
+            }
+        },
+        "CREATE": {
+            "CREATE": "Opret"
+        },
+        "EDIT": {
+            "EDIT": "Rediger"
+        },
+        "INDEX": {
+            "PACKAGES": "Pakker",
+            "CREATE": "Opret",
+            "EDIT": "Rediger",
+            "DELETE": "Ret",
+            "FIELDS": "Felter",
+            "ITEM": "Enhed",
+            "MANAGE": "Konfigurer",
+            "BACK": "Tilbage",
+            "ACTIONS": "Handlinger"
+        },
+        "NOTIFICATIONS": {
+            "ADD": {
+                "SUCCESS": "{{ 0 }} blev oprettet."
+            }
+        }
+    }
+}

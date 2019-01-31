@@ -1,7 +1,8 @@
 # Skysmack setup
 
 ## Global npm packages to install
-npm i -g http-server @angular/cli npm-check-updates lighthouse lerna
+*Remember to install the newest node LTS version*
+npm i -g @angular/cli http-server lerna lighthouse typescript gulp@4.0.0 gulp-cli
 
 ## Backend stuff
 - Install MSSQL + Workbench: https://dev.mysql.com/downloads/workbench/

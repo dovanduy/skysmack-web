@@ -30,5 +30,25 @@
             "CHAN_PASS": "Change passeword",
             "LOG_OUT": "Log out"
         }
+    },
+    "NOTIFICATIONS": {
+        "GET": {
+            "PAGED_ERROR": "{{ 1 }} ({{ 0 }}).",
+            "SINGLE_FAILURE": "{{ 1 }} ({{ 0 }}).",
+            "FIELDS_FAILURE": "{{ 1 }} ({{ 0 }})."
+        },
+        "ADD": {
+            "SUCCESS": "Added successfully.",
+            "FAILURE": "{{ 1 }} ({{ 0 }})."
+        },
+        "UPDATE": {
+            "SUCCESS": "Updated successfully.",
+            "FAILURE": "{{ 1 }} ({{ 0 }})."
+        },
+        "REMOVE": {
+            "SUCCESS": "Removed successfully.",
+            "FAILURE": "{{ 1 }} ({{ 0 }})."
+        },
+        "CONNECTION_ERROR": "Could not connect to the server."
     }
 }

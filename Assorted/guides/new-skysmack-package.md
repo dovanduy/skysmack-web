@@ -8,22 +8,21 @@ Consider using the quick-naming.md guide for faster copy paste.
 - ng-skysmack/src/web-portal/src/app (WEB HOOKUP)
     /packages
         modules/<name>_wrapper.module.ts
-        <name>-package-manifest.ts
+        <name>-package-manifest.ts <-- REMEMBER ICON! https://material.io/tools/icons/
     /start
         start.module.ts
         application-startup.ts
 - Update .json files
-    skysmack/package.json
-    skysmack/ng-packages/tsconfig.json
-    skysmack/ng-packages/projects/tsconfig.json
+    Project root's package.json <-- REMEMBER IT!
     skysmack/ng-packages/projects/ng-packages/ng-package.json
     skysmack/ng-packages/projects/ng-packages/package.json
+    skysmack/ng-packages/projects/portal-packages/package.json
     skysmack/ng-packages/projects/portal-packages/ng-package.json ???
-    skysmack/ng-packages/projects/portal-packages/package.json ???
 - Update skysmack/Assorted/scripts/clean.bat
 - Double check ALL index files are updated correctly. Remember /index for folder exports. Especially check:
     ng-packages/src/lib/index.ts
     portal-packages/src/lib/index.ts
+    USE CONTROL + H AND SEARCH FOR THE TYPE YOU SCAFFOLDED FROM e.g.: export * from './person
 - REMEMBER
     + Update column names in component.index.ts files
     + Update validations, fieldsConfig, i18n, etc.

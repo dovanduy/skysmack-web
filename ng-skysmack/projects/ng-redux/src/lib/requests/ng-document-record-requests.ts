@@ -28,7 +28,7 @@ export abstract class NgDocumentRecordRequests<TRecord extends Record<TKey>, TKe
           return Object.assign({}, new ReduxAction<GetFieldsSuccessPayload>({
             type: this.prefix + DocumentRecordActionsBase.GET_FIELDS_SUCCESS,
             payload: {
-              fields: httpResponse.body ? httpResponse.body : [],
+              value: httpResponse.body ? httpResponse.body : [],
               packagePath: action.payload.packagePath,
             }
           }));
@@ -51,7 +51,7 @@ export abstract class NgDocumentRecordRequests<TRecord extends Record<TKey>, TKe
       map(httpResponse => Object.assign({}, new ReduxAction<GetSingleFieldSuccessPayload>({
         type: this.prefix + DocumentRecordActionsBase.GET_SINGLE_FIELD_SUCCESS,
         payload: {
-          field: httpResponse.body,
+          value: httpResponse.body,
           packagePath: action.payload.packagePath
         }
       }))),

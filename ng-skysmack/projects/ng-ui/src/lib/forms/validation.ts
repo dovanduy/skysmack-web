@@ -9,7 +9,7 @@ export abstract class Validation {
     public translateValidationMessages(): void {
         Object.keys(this.validationMessages).forEach(key => {
             Object.keys(this.validationMessages[key]).forEach(validatorKey => {
-                const translationString = this.area.toUpperCase() + '.FORM.VALIDATION.' + key.toUpperCase() + '.' + validatorKey.toUpperCase();
+                const translationString = this.area.toUpperCase().replace('-', '_') + '.FORM.VALIDATION.' + key.toUpperCase() + '.' + validatorKey.toUpperCase();
                 this.validationMessages[key][validatorKey] = translationString;
             });
         });

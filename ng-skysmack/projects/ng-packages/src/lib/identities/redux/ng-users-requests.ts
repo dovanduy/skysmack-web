@@ -1,15 +1,15 @@
 import { Injectable, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { ApiDomain, StrIndex, HttpErrorResponse } from '@skysmack/framework';
+import { ApiDomain, HttpErrorResponse, NumIndex } from '@skysmack/framework';
 import { catchError, map } from 'rxjs/operators';
 import { ReduxAction } from '@skysmack/redux';
 import { of, Observable } from 'rxjs';
-import { UsersRequests, User, GetUsersRolesSuccessPayload } from '@skysmack/packages-identities';
+import { User, GetUsersRolesSuccessPayload } from '@skysmack/packages-identities';
 import { NgRecordRequests } from '@skysmack/ng-redux';
 import { NgUsersActions } from './ng-users-actions';
 
 @Injectable({ providedIn: 'root' })
-export class NgUsersRequests extends NgRecordRequests<User, number> implements UsersRequests {
+export class NgUsersRequests extends NgRecordRequests<User, number>  {
     constructor(
         protected http: HttpClient,
         @Inject('ApiDomain') protected apiDomain: ApiDomain
@@ -32,7 +32,7 @@ export class NgUsersRequests extends NgRecordRequests<User, number> implements U
         let url = this.addAdditionalPaths(`${this.apiDomain.domain}/${packagePath}`);
         url = this.appendValues(url + '/roles', ids);
 
-        return this.http.get<{}>(url, { observe: 'response' })
+        return this.http.get<NumIndex<string[]>>(url, { observe: 'response' })
             .pipe(
                 map(response => Object.assign({}, new ReduxAction<GetUsersRolesSuccessPayload>({
                     type: this.prefix + NgUsersActions.GET_ROLES_SUCCESS,

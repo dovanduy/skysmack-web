@@ -14,6 +14,8 @@
     "@skysmack/packages-maintenance",
     "@skysmack/packages-oauth2",
     "@skysmack/packages-persons",
+    "@skysmack/packages-baskets",
+    "@skysmack/packages-invoices",
     "@skysmack/packages-products",
     "@skysmack/packages-skysmack-core",
     "@skysmack/packages-maintenance",

@@ -1,0 +1,75 @@
+{
+    "INVOICE_PAYMENTS": {
+        "FORM": {
+            "LABELS": {
+                "DESCRIPTION": "Description",
+                "SOURCE": "Source",
+                "AMOUNT": "Amount",
+                "IP": "IP",
+                "INVENTORYID": "Inventory ID"
+            },
+            "PLACEHOLDERS": {
+                "DESCRIPTION": "Description",
+                "SOURCE": "Source",
+                "AMOUNT": "Amount",
+                "IP": "IP",
+                "INVENTORYID": "Inventory ID"
+            },
+            "VALIDATION": {
+                "DESCRIPTION": {
+                    "REQUIRED": "Description is required"
+                },
+                "SOURCE": {
+                    "REQUIRED": "Source is required"
+                },
+                "AMOUNT": {
+                    "REQUIRED": "Amount is required"
+                },
+                "IP": {
+                    "REQUIRED": "IP is required"
+                },
+                "INVENTORYID": {
+                    "REQUIRED": "Inventory ID is required"
+                }
+            }
+        },
+        "FIELDS": {
+            "CREATE": {
+                "ADD": "Add new field"
+            },
+            "EDIT": {
+                "EDITING": "Editing"
+            },
+            "INDEX": {
+                "ACTIONS": "Actions",
+                "CREATE": "Create new field",
+                "OTHER": "Other",
+                "BACK": "Back",
+                "FIELDS": "Fields",
+                "EDIT": "Edit"
+            }
+        },
+        "CREATE": {
+            "CREATE": "Create"
+        },
+        "EDIT": {
+            "EDIT": "Edit"
+        },
+        "INDEX": {
+            "PACKAGES": "Packages",
+            "CREATE": "Create",
+            "EDIT": "Edit",
+            "DELETE": "Delete",
+            "FIELDS": "Fields",
+            "ITEM": "Item",
+            "MANAGE": "Manage",
+            "BACK": "Back",
+            "ACTIONS": "Actions"
+        },
+        "NOTIFICATIONS": {
+            "ADD": {
+                "SUCCESS": "{{ 0 }} was created."
+            }
+        }
+    }
+}

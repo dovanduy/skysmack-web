@@ -24,7 +24,7 @@ export class EntityComponentPageTitle {
         private bodyTitle: Title,
         private store: NgSkysmackStore
     ) {
-        this.store.getSkysmack().pipe(hasValue<Skysmack>(), map(tenant => { if (tenant !== undefined) { return tenant; } }), take(1)).subscribe(tenant => {
+        this.store.getSkysmack().pipe(hasValue(), map((tenant: Skysmack) => { if (tenant !== undefined) { return tenant; } }), take(1)).subscribe(tenant => {
             if (tenant.name) {
                 this.tenantTitle = tenant.name;
             }
