@@ -7,6 +7,9 @@ import { EditorNavService } from '@skysmack/portal-ui';
 import { NgPersonsFieldsConfig, NgPersonFormDependencies } from '@skysmack/ng-packages';
 import { DocumentRecordFormComponent } from '@skysmack/portal-ui';
 import { NgPersonsStore } from '@skysmack/ng-packages';
+import { combineLatest } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { LocalObject } from '@skysmack/framework';
 
 @Component({
   selector: 'ss-persons-create',
@@ -31,5 +34,18 @@ export class PersonsCreateComponent extends DocumentRecordFormComponent<PersonsA
     super.ngOnInit();
     this.setCreateFields();
   }
-
+  protected setCreateFields() {
+    this.subscriptionHandler.register(
+      combineLatest(
+        this.initCreateDocRecord(),
+        this.skysmackStore.editorItem
+      ).pipe(
+        map(values => {
+          const fields = values[0];
+          const editorItem = values[1] as LocalObject<Person, number>;
+          this.fields = this.getFields(editorItem, fields);
+        })
+      ).subscribe()
+    );
+  }
 }

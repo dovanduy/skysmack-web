@@ -1,10 +1,10 @@
 <nav *ngIf="skysmack$ | async as skysmack" class="docs-navbar-header">
-  <a mat-button class="docs-button" routerLink="/" (click)="uiRedux.setPackageDrawerStatus(false)" aria-label="Skysmack">
+  <a mat-button class="docs-button" routerLink="/" (click)="uiStore.setPackageDrawerStatus(false)" aria-label="Skysmack">
     <span>{{ skysmack.name }}</span>
   </a>
 
   <!-- APP DRAWER -->
-  <a mat-icon-button (click)="uiRedux.toggleMenuFor('drawer')" title="{{ 'UI.TOP_BAR.PACKAGES'| translate}}">
+  <a mat-icon-button (click)="uiStore.toggleMenuFor('drawer')" title="{{ 'UI.TOP_BAR.PACKAGES'| translate}}">
     <mat-icon aria-label="Open packages">apps</mat-icon>
   </a>
 
@@ -13,8 +13,11 @@
   <!-- ONLINE STATUS -->
   <ss-online-status></ss-online-status>
 
+  <!-- QUEUE -->
+  <ss-queue *isAuthenticated></ss-queue>
+
   <!-- SEARCH -->
-  <button mat-icon-button (click)="uiRedux.toggleMenuFor('search')" *isAuthenticated>
+  <button mat-icon-button (click)="uiStore.toggleMenuFor('search')" *isAuthenticated>
     <mat-icon>search</mat-icon>
   </button>
   <div id="app-drawer" *ngIf="menu$ | async as menu" [ngClass]="{ 'open' : menu.search }">
@@ -50,7 +53,7 @@
   <ng-container *ngIf="authenticationPackages$ | async as authPackages">
     <!-- Single auth package -->
     <ng-container *ngIf="authPackages.length === 1">
-      <a mat-icon-button title="Account Menu" [routerLink]="[authPackages[0].path]" (click)="uiRedux.setPackageDrawerStatus(false)"
+      <a mat-icon-button title="Account Menu" [routerLink]="[authPackages[0].path]" (click)="uiStore.setPackageDrawerStatus(false)"
         *isAnonymous>
         <mat-icon aria-label="authPackages[0].description">account_circle</mat-icon>
       </a>

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { NgRedux } from '@angular-redux/store';
 import { map, filter, switchMap } from 'rxjs/operators';
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 import { LocalObject, toLocalObject, flatten, safeHasValue, Package, defined, hasValue } from '@skysmack/framework';
 import { Skysmack, SkysmackAppState } from '@skysmack/packages-skysmack-core';
 import { PackageLoader } from '../packages/package-loader';
@@ -11,7 +11,14 @@ import { Oauth2Type } from '@skysmack/packages-oauth2';
 @Injectable({ providedIn: 'root' })
 export class NgSkysmackStore {
     public stateKey = 'skysmack';
+    public editorItem: BehaviorSubject<LocalObject<any, any>> = new BehaviorSubject(undefined);
+
     constructor(protected ngRedux: NgRedux<SkysmackAppState>) { }
+
+    // TODO: Work in progress. Might be deleted.
+    public getOfflineQueue(): Observable<any[]> {
+        return this.ngRedux.select((state: SkysmackAppState) => state.offline.outbox);
+    }
 
     public getHydrated(): Observable<boolean> {
         return this.ngRedux.select((state: any) => state.hydrated.hydrated);

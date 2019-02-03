@@ -45,6 +45,7 @@ import { uiReducer } from './redux/ui-reducers';
 import { settingsReducer } from './redux/settings';
 
 import { PackageDependenciesFieldComponent } from './components/fields/components/package-dependencies-field/package-dependencies-field.component';
+import { QueueComponent } from './components/common/queue/queue.component';
 import { HttpLoaderFactory } from './portal-ui.helper';
 import { ShowEntityActionDirective } from './directives/show-entity-action.directive';
 import { IsAuthenticatedDirective } from './autentication/is-authenticated.directive';
@@ -91,6 +92,7 @@ import { NgNotifications } from './notifications/ng-notifications';
     PaginationComponent,
     ProgressComponent,
     NavBarComponent,
+    QueueComponent,
     // Crud
     ContainerComponent,
     CardBodyComponent,
@@ -132,6 +134,7 @@ import { NgNotifications } from './notifications/ng-notifications';
     PaginationComponent,
     ProgressComponent,
     NavBarComponent,
+    QueueComponent,
     // Crud
     ContainerComponent,
     CardBodyComponent,

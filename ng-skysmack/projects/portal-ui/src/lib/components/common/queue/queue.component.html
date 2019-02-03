@@ -1,0 +1,16 @@
+<button mat-icon-button [matMenuTriggerFor]="queueMenu">
+  <mat-icon>all_inbox</mat-icon>
+</button>
+<mat-menu overlapTrigger="false" #queueMenu="matMenu">
+  <ng-container *ngIf="queue$ | async as queue">
+    <ng-container *ngIf="queue.length === 0">
+      Queue is empty.
+    </ng-container>
+    <ng-container *ngIf="queue.length > 0">
+      <ng-container *ngFor="let item of queue$ | async">
+        <p *ngIf="!item.link" [attr.data-status]="item.status">{{ item.message }}</p>
+        <p *ngIf="item.link" [attr.data-status]="item.status" (click)="toEditor(item)">{{ item.message }}</p>
+      </ng-container>
+    </ng-container>
+  </ng-container>
+</mat-menu>

@@ -22,8 +22,7 @@ export class NavBarComponent implements OnInit {
   public authenticationPackages$: Observable<Package[]>;
 
   constructor(
-    public store: NgSkysmackStore,
-    public uiRedux: UIRedux,
+    public uiStore: UIRedux,
     public authenticationActions: NgAuthenticationActions,
     public translate: TranslateService,
     public skysmackStore: NgSkysmackStore,
@@ -31,13 +30,13 @@ export class NavBarComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.skysmack$ = this.store.getSkysmack();
-    this.menu$ = this.uiRedux.getMenu();
+    this.skysmack$ = this.skysmackStore.getSkysmack();
+    this.menu$ = this.uiStore.getMenu();
     this.authenticationPackages$ = this.skysmackStore.getAuthenticationPackages();
   }
 
   public toggleEditor() {
-    this.uiRedux.toggleMenuFor('editors');
+    this.uiStore.toggleMenuFor('editors');
   }
 
   public logout() {
