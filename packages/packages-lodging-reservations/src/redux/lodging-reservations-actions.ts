@@ -2,8 +2,8 @@ import { RecordActionsBase, ReduxAction, Effect, EffectRequest, OfflineMeta, Red
 import { HttpMethod, HttpResponse, LocalObject } from '@skysmack/framework';
 import { LodgingReservationsAppState } from './lodging-reservations-reducer';
 import { Store } from 'redux';
-import { CheckIn } from '../models/check-in';
-import { LodgingReservation } from '../models';
+import { CheckIn } from './../models/check-in';
+import { LodgingReservation } from './../models/lodging-reservation';
 
 export class LodgingReservationsActions extends RecordActionsBase<LodgingReservationsAppState, Store<LodgingReservationsAppState>> {
     public static GET_AVAILABLE_LODGINGS = 'GET_AVAILABLE_LODGINGS';

@@ -1,6 +1,6 @@
 import { LocalPageTypes, StrIndex, LocalObject, HttpSuccessResponse, replaceLocalInnerObject, LocalObjectExtensions, LocalObjectStatus } from '@skysmack/framework';
 import { AppState, ReduxAction, recordReducersBase, RecordState, sharedReducer } from '@skysmack/redux';
-import { LodgingReservation } from '../models/lodging-reservation';
+import { LodgingReservation } from './../models/lodging-reservation';
 import { LodgingReservationsActions } from './lodging-reservations-actions';
 import { StateKeyMeta } from '@skysmack/redux';
 
