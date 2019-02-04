@@ -1,5 +1,5 @@
 import { Store } from 'redux';
-import { PagedQuery, Record, LocalObject, HttpMethod, LocalObjectStatus, HttpResponse } from '@skysmack/framework';
+import { PagedQuery, Record, LocalObject, HttpMethod, LocalObjectStatus, HttpResponse, QueueItem } from '@skysmack/framework';
 import { ReduxAction } from '../action-types/redux-action';
 import { GetPagedRecordsPayload, GetSingleRecordPayload, CancelActionPayload, } from '../payloads';
 import { CommitMeta, RollbackMeta, ReduxOfflineMeta, CancelActionMeta, OfflineMeta } from '../metas';
@@ -68,10 +68,24 @@ export abstract class RecordActionsBase<TStateType, TStore extends Store<TStateT
     }
 
     public add<TRecord extends Record<TKey>, TKey>(records: LocalObject<TRecord, TKey>[], packagePath: string) {
-        this.store.dispatch(Object.assign({}, new ReduxAction<any, ReduxOfflineMeta<TRecord[], HttpResponse, LocalObject<TRecord, TKey>[]>>({
+
+        const queueItems = records.map(record => {
+            return new QueueItem({
+                message: `Creating record`,
+                packagePath,
+                localObject: record,
+                cancelAction: this.cancelRecordAction,
+            });
+        });
+
+        console.log('Action Add QueueItems', queueItems);
+
+        this.store.dispatch(Object.assign({}, new ReduxAction<any, {
+            offline: OfflineMeta<TRecord[], HttpResponse, LocalObject<TRecord, TKey>[]>
+        }>({
             type: this.prefix + RecordActionsBase.ADD,
-            meta: new ReduxOfflineMeta(
-                new OfflineMeta<TRecord[], HttpResponse, LocalObject<TRecord, TKey>[]>(
+            meta: {
+                offline: new OfflineMeta<TRecord[], HttpResponse, LocalObject<TRecord, TKey>[]>(
                     new Effect<TRecord[]>(new EffectRequest<TRecord[]>(
                         this.addAdditionalPaths(packagePath),
                         HttpMethod.POST,
@@ -90,9 +104,10 @@ export abstract class RecordActionsBase<TStateType, TStore extends Store<TStateT
                             stateKey: packagePath,
                             value: records
                         }
-                    })
+                    }),
+                    queueItems
                 )
-            )
+            }
         })));
     }
 

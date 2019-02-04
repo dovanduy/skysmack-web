@@ -38,7 +38,7 @@ export class PersonsCreateComponent extends DocumentRecordFormComponent<PersonsA
     this.subscriptionHandler.register(
       combineLatest(
         this.initCreateDocRecord(),
-        this.skysmackStore.editorItem
+        this.skysmackStore.getEditorItem()
       ).pipe(
         map(values => {
           const fields = values[0];

@@ -8,8 +8,10 @@
     </ng-container>
     <ng-container *ngIf="queue.length > 0">
       <ng-container *ngFor="let item of queue$ | async">
-        <p *ngIf="!item.link" [attr.data-status]="item.status">{{ item.message }}</p>
-        <p *ngIf="item.link" [attr.data-status]="item.status" (click)="toEditor(item)">{{ item.message }}</p>
+        <p *ngIf="item.cancelAction" [attr.data-status]="item.localObject.object.status">{{ item.message }} - <a
+            (click)="item.cancelAction(item.localObject, item.packagePath)">Cancel</a></p>
+        <p *ngIf="item.link" [attr.data-status]="item.localObject.object.status" (click)="toEditor(item)">{{
+          item.message }}</p>
       </ng-container>
     </ng-container>
   </ng-container>

@@ -1,19 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgSkysmackStore } from '@skysmack/ng-packages';
-import { Observable, of } from 'rxjs';
-import { LocalObjectStatus, toLocalObject, LocalObject } from '@skysmack/framework';
-import { Person } from '@skysmack/packages-persons';
+import { Observable } from 'rxjs';
+import { QueueItem, log } from '@skysmack/framework';
 import { Router } from '@angular/router';
-
-class QueueItem {
-  public message: string;
-  public link?: string;
-  public status: LocalObjectStatus;
-  public localObject: LocalObject<any, any>;
-  constructor(values: Partial<QueueItem>) {
-    Object.assign(this, values);
-  }
-}
 
 @Component({
   selector: 'ss-queue',
@@ -30,32 +19,11 @@ export class QueueComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.queue$ = of([
-      new QueueItem({
-        message: `Creating person 'John Doe'`,
-        status: LocalObjectStatus.CREATING,
-        localObject: toLocalObject(new Person({
-          firstName: 'John',
-          lastName: 'Doe',
-          displayName: 'John Doe'
-        }))
-      }),
-      new QueueItem({
-        message: `Error while creating person 'Jane Doe'. Click to retry.`,
-        status: LocalObjectStatus.ERROR,
-        link: 'employees/create',
-        localObject: toLocalObject(new Person({
-          firstName: 'Jane',
-          lastName: 'Doe',
-          displayName: 'Jane Doe'
-        }))
-      })
-    ]);
-    // this.queue$ = this.skysmackStore.getOfflineQueue();
+    this.queue$ = this.skysmackStore.getOfflineQueue().pipe(log('QueueComponent items'));
   }
 
   public toEditor(queueItem: QueueItem) {
-    this.skysmackStore.editorItem.next(queueItem.localObject);
+    this.skysmackStore.setEditorItem(queueItem.localObject);
     this.router.navigate([queueItem.link]);
   }
 

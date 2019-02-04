@@ -1,23 +1,47 @@
 import { Injectable } from '@angular/core';
 import { NgRedux } from '@angular-redux/store';
-import { map, filter, switchMap } from 'rxjs/operators';
-import { Observable, BehaviorSubject } from 'rxjs';
-import { LocalObject, toLocalObject, flatten, safeHasValue, Package, defined, hasValue } from '@skysmack/framework';
+import { map, filter, switchMap, take } from 'rxjs/operators';
+import { Observable, BehaviorSubject, of } from 'rxjs';
+import { LocalObject, toLocalObject, flatten, safeHasValue, Package, defined, hasValue, log } from '@skysmack/framework';
 import { Skysmack, SkysmackAppState } from '@skysmack/packages-skysmack-core';
 import { PackageLoader } from '../packages/package-loader';
 import { LoadedPackage } from '../packages/loaded-package';
 import { Oauth2Type } from '@skysmack/packages-oauth2';
+import { ReduxAction } from '@skysmack/redux';
 
 @Injectable({ providedIn: 'root' })
 export class NgSkysmackStore {
     public stateKey = 'skysmack';
-    public editorItem: BehaviorSubject<LocalObject<any, any>> = new BehaviorSubject(undefined);
+    private editorItem: BehaviorSubject<LocalObject<any, any>>;
 
     constructor(protected ngRedux: NgRedux<SkysmackAppState>) { }
 
+    public setEditorItem(value: LocalObject<any, any>): void {
+        this.editorItem = new BehaviorSubject(value);
+    }
+
+    public getEditorItem(): Observable<LocalObject<any, any>> {
+        const copy = this.editorItem;
+        this.editorItem = undefined;
+        return copy ? copy : of(undefined).pipe(take(1));
+    }
+
     // TODO: Work in progress. Might be deleted.
     public getOfflineQueue(): Observable<any[]> {
-        return this.ngRedux.select((state: SkysmackAppState) => state.offline.outbox);
+        return this.ngRedux.select((state: SkysmackAppState) => state.offline).pipe(
+            map(offlineState => offlineState.outbox),
+            hasValue(),
+            // Any below should be correct meta object.
+            map((outbox: ReduxAction<unknown, any>[]) => {
+                const items = outbox.map(item => item.meta.offline.queueItems);
+                console.log('ITEMS', items);
+                if (items) {
+                    return items.reduce((acc: any[], cur: any[]) => acc.concat(cur));
+                } else {
+                    return [];
+                }
+            })
+        );
     }
 
     public getHydrated(): Observable<boolean> {
