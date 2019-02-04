@@ -68,24 +68,10 @@ export abstract class RecordActionsBase<TStateType, TStore extends Store<TStateT
     }
 
     public add<TRecord extends Record<TKey>, TKey>(records: LocalObject<TRecord, TKey>[], packagePath: string) {
-
-        const queueItems = records.map(record => {
-            return new QueueItem({
-                message: `Creating record`,
-                packagePath,
-                localObject: record,
-                cancelAction: this.cancelRecordAction,
-            });
-        });
-
-        console.log('Action Add QueueItems', queueItems);
-
-        this.store.dispatch(Object.assign({}, new ReduxAction<any, {
-            offline: OfflineMeta<TRecord[], HttpResponse, LocalObject<TRecord, TKey>[]>
-        }>({
+        this.store.dispatch(Object.assign({}, new ReduxAction<any, ReduxOfflineMeta<TRecord[], HttpResponse, LocalObject<TRecord, TKey>[]>>({
             type: this.prefix + RecordActionsBase.ADD,
-            meta: {
-                offline: new OfflineMeta<TRecord[], HttpResponse, LocalObject<TRecord, TKey>[]>(
+            meta: new ReduxOfflineMeta(
+                new OfflineMeta<TRecord[], HttpResponse, LocalObject<TRecord, TKey>[]>(
                     new Effect<TRecord[]>(new EffectRequest<TRecord[]>(
                         this.addAdditionalPaths(packagePath),
                         HttpMethod.POST,
@@ -105,9 +91,9 @@ export abstract class RecordActionsBase<TStateType, TStore extends Store<TStateT
                             value: records
                         }
                     }),
-                    queueItems
+                    this.getQueueItems(records, packagePath, 'ADDING')
                 )
-            }
+            )
         })));
     }
 
@@ -137,7 +123,8 @@ export abstract class RecordActionsBase<TStateType, TStore extends Store<TStateT
                             stateKey: packagePath,
                             value: records
                         }
-                    })
+                    }),
+                    this.getQueueItems(records, packagePath, 'EDITING')
                 )
             )
         })));
@@ -173,10 +160,30 @@ export abstract class RecordActionsBase<TStateType, TStore extends Store<TStateT
                             stateKey: packagePath,
                             value: records
                         }
-                    })
+                    }),
+                    this.getQueueItems(records, packagePath, 'DELETING')
                 )
             )
         })));
+    }
+
+    protected getQueueItems<TRecord extends Record<TKey>, TKey>(records: LocalObject<TRecord, TKey>[], packagePath: string, actionType: string): QueueItem[] {
+        return records.map(record => {
+            return new QueueItem({
+                message: `${this.prefix.replace('_', '.')}QUEUE.${actionType.toUpperCase()}`,
+                messageParams: this.getMessageParams(record),
+                packagePath,
+                localObject: record,
+                cancelAction: this.cancelRecordAction,
+            });
+        });
+    }
+
+    // Make abstract and implement in child classes
+    protected getMessageParams<TRecord extends Record<TKey>, TKey>(record: LocalObject<TRecord, TKey>): { 0: string } {
+        return {
+            0: (record as any).object.displayName
+        }
     }
 
     protected addAdditionalPaths(url: string): string {

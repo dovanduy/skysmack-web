@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { NgRedux } from '@angular-redux/store';
 import { map, filter, switchMap, take } from 'rxjs/operators';
 import { Observable, BehaviorSubject, of } from 'rxjs';
-import { LocalObject, toLocalObject, flatten, safeHasValue, Package, defined, hasValue, log } from '@skysmack/framework';
+import { LocalObject, toLocalObject, flatten, safeHasValue, Package, defined, hasValue } from '@skysmack/framework';
 import { Skysmack, SkysmackAppState } from '@skysmack/packages-skysmack-core';
 import { PackageLoader } from '../packages/package-loader';
 import { LoadedPackage } from '../packages/loaded-package';
@@ -12,6 +12,7 @@ import { ReduxAction } from '@skysmack/redux';
 @Injectable({ providedIn: 'root' })
 export class NgSkysmackStore {
     public stateKey = 'skysmack';
+
     private editorItem: BehaviorSubject<LocalObject<any, any>>;
 
     constructor(protected ngRedux: NgRedux<SkysmackAppState>) { }
@@ -27,15 +28,13 @@ export class NgSkysmackStore {
     }
 
     // TODO: Work in progress. Might be deleted.
-    public getOfflineQueue(): Observable<any[]> {
-        return this.ngRedux.select((state: SkysmackAppState) => state.offline).pipe(
-            map(offlineState => offlineState.outbox),
-            hasValue(),
+    public getOfflineQueueItems(): Observable<any[]> {
+        return this.ngRedux.select((state: SkysmackAppState) => state).pipe(
+            map(state => state.offline.outbox),
             // Any below should be correct meta object.
             map((outbox: ReduxAction<unknown, any>[]) => {
                 const items = outbox.map(item => item.meta.offline.queueItems);
-                console.log('ITEMS', items);
-                if (items) {
+                if (items.length > 0) {
                     return items.reduce((acc: any[], cur: any[]) => acc.concat(cur));
                 } else {
                     return [];

@@ -59,6 +59,12 @@
             "ADD": {
                 "SUCCESS": "{{ 0 }} was created."
             }
+        },
+        "QUEUE": {
+            "ADDING": "Adding {{ 0 }}",
+            "UPDATING": "Updating {{ 0 }}",
+            "DELETING": "Deleting {{ 0 }}",
+            "ERROR": "An error occured with {{ 0 }}. Correct and try again."
         }
     }
 }

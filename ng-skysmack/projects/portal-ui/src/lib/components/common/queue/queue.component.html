@@ -3,15 +3,16 @@
 </button>
 <mat-menu overlapTrigger="false" #queueMenu="matMenu">
   <ng-container *ngIf="queue$ | async as queue">
-    <ng-container *ngIf="queue.length === 0">
+    <ng-container *ngIf="queue.length <= 0">
       Queue is empty.
     </ng-container>
     <ng-container *ngIf="queue.length > 0">
       <ng-container *ngFor="let item of queue$ | async">
-        <p *ngIf="item.cancelAction" [attr.data-status]="item.localObject.object.status">{{ item.message }} - <a
-            (click)="item.cancelAction(item.localObject, item.packagePath)">Cancel</a></p>
-        <p *ngIf="item.link" [attr.data-status]="item.localObject.object.status" (click)="toEditor(item)">{{
-          item.message }}</p>
+        <p *ngIf="item.cancelAction" [attr.data-status]="item.localObject.object.status">
+          {{ item.message | translate:item.messageParams }} -
+          <a (click)="item.cancelAction(item.localObject, item.packagePath)">Cancel</a></p>
+        <p *ngIf="item.link" [attr.data-status]="item.localObject.object.status" (click)="toEditor(item)">
+          {{ item.message | translate:item.messageParams }}</p>
       </ng-container>
     </ng-container>
   </ng-container>

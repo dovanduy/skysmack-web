@@ -19,7 +19,7 @@ export class QueueComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.queue$ = this.skysmackStore.getOfflineQueue().pipe(log('QueueComponent items'));
+    this.queue$ = this.skysmackStore.getOfflineQueueItems();
   }
 
   public toEditor(queueItem: QueueItem) {
