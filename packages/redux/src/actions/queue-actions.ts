@@ -3,16 +3,16 @@ import { ReduxAction } from './../action-types';
 import { QueueItem } from '@skysmack/framework';
 
 export class QueueActions<TStore extends Store> {
-    public static ADD_QUEUE_ITEMS = 'ADD_QUEUE_ITEMS';
+    public static SET_QUEUE_ITEMS = 'ADD_QUEUE_ITEMS';
     public static REMOVE_QUEUE_ITEMS = 'REMOVE_QUEUE_ITEMS';
 
     constructor(
         protected store: TStore,
     ) { }
 
-    public addQueueItems = (queueItems: QueueItem[]): void => {
+    public setQueueItems = (queueItems: QueueItem[]): void => {
         this.store.dispatch(Object.assign({}, new ReduxAction<QueueItem[]>({
-            type: QueueActions.ADD_QUEUE_ITEMS,
+            type: QueueActions.SET_QUEUE_ITEMS,
             payload: queueItems
         })))
     }
