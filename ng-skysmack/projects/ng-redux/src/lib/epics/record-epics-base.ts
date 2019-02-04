@@ -1,8 +1,8 @@
 import { ofType, ActionsObservable, Epic } from 'redux-observable';
 import { switchMap, map } from 'rxjs/operators';
-import { Record, LocalObject, HttpErrorResponse } from '@skysmack/framework';
+import { Record, LocalObject, HttpErrorResponse, QueueItem } from '@skysmack/framework';
 import { Observable } from 'rxjs';
-import { RecordRequests, ReduxAction, GetPagedRecordsPayload, GetPagedRecordsSuccessPayload, RecordActionsBase, GetSingleRecordPayload, GetSingleRecordSuccessPayload, CommitMeta } from '@skysmack/redux';
+import { RecordRequests, ReduxAction, GetPagedRecordsPayload, GetPagedRecordsSuccessPayload, RecordActionsBase, GetSingleRecordPayload, GetSingleRecordSuccessPayload, CommitMeta, QueueActions, CancelActionPayload } from '@skysmack/redux';
 import { RecordNotifications } from './../notifications/record-notifications';
 
 export abstract class RecordEpicsBase<TRecord extends Record<TKey>, TKey> {
@@ -23,7 +23,8 @@ export abstract class RecordEpicsBase<TRecord extends Record<TKey>, TKey> {
             this.snackBarRemoveSuccessEpic,
             this.snackBarCreateFailureEpic,
             this.snackBarUpdateFailureEpic,
-            this.snackBarRemoveFailureEpic
+            this.snackBarRemoveFailureEpic,
+            this.cancelRecordActionEpic
         ];
     }
 
@@ -41,7 +42,7 @@ export abstract class RecordEpicsBase<TRecord extends Record<TKey>, TKey> {
         );
     }
 
-    // Notifications
+    //#region Notifications
     public snackBarGetPagedFailureEpic = (action$: ActionsObservable<ReduxAction<HttpErrorResponse, CommitMeta<LocalObject<TRecord, TKey>[]>>>): Observable<ReduxAction> => action$.pipe(
         ofType(this.prefix + RecordActionsBase.GET_PAGED_FAILURE),
         map((action) => {
@@ -121,5 +122,25 @@ export abstract class RecordEpicsBase<TRecord extends Record<TKey>, TKey> {
             return { type: 'NOTIFICATION' };
         })
     )
+    //#endregion
+
+    //#region Queue
+    public cancelRecordActionEpic = (action$: ActionsObservable<ReduxAction<CancelActionPayload<TRecord, TKey>>>): Observable<ReduxAction<QueueItem[]>> => {
+        return action$.pipe(
+            ofType(this.prefix + RecordActionsBase.CANCEL_RECORD_ACTION),
+            map(action => ({
+                type: QueueActions.REMOVE_QUEUE_ITEMS,
+                payload: [
+                    new QueueItem({
+                        message: ``,
+                        messageParams: {},
+                        packagePath: action.payload.packagePath,
+                        localObject: action.payload.record
+                    })
+                ]
+            }))
+        );
+    }
+    //#endregion
 }
 

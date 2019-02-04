@@ -2,7 +2,8 @@ import { RecordActionsBase, ReduxAction, Effect, EffectRequest, OfflineMeta, Red
 import { UsersAppState } from './users-reducer';
 import { Store } from 'redux';
 import { GetUsersRolesPayload } from '../payloads/get-users-roles-payload';
-import { HttpMethod, NumIndex, HttpResponse } from '@skysmack/framework';
+import { HttpMethod, NumIndex, HttpResponse, LocalObject } from '@skysmack/framework';
+import { User } from '../models';
 
 export class UsersActions extends RecordActionsBase<UsersAppState, Store<UsersAppState>> {
     public static GET_ROLES = 'GET_ROLES';
@@ -85,5 +86,11 @@ export class UsersActions extends RecordActionsBase<UsersAppState, Store<UsersAp
                 )
             )
         })));
+    }
+
+    protected getMessageParams(record: LocalObject<User, number>): NumIndex<string> {
+        return {
+            0: record.object.email
+        };
     }
 }

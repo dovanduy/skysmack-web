@@ -1,5 +1,5 @@
 import { Store } from 'redux';
-import { PagedQuery, Record, LocalObject, HttpMethod, LocalObjectStatus, HttpResponse, QueueItem } from '@skysmack/framework';
+import { PagedQuery, Record, LocalObject, HttpMethod, LocalObjectStatus, HttpResponse, QueueItem, NumIndex } from '@skysmack/framework';
 import { ReduxAction } from '../action-types/redux-action';
 import { GetPagedRecordsPayload, GetSingleRecordPayload, CancelActionPayload, } from '../payloads';
 import { CommitMeta, RollbackMeta, ReduxOfflineMeta, CancelActionMeta, OfflineMeta } from '../metas';
@@ -103,7 +103,7 @@ export abstract class RecordActionsBase<TStateType, TStore extends Store<TStateT
         let path = this.addAdditionalPaths(packagePath);
         path = this.appendValues<TKey>(path, records.map(x => x.object.id));
 
-        this.addQueueItems(records, packagePath, 'EDITING');
+        this.addQueueItems(records, packagePath, 'UPDATING');
 
         this.store.dispatch(Object.assign({}, new ReduxAction<any, ReduxOfflineMeta<TRecord[], HttpResponse, LocalObject<TRecord, TKey>[]>>({
             type: this.prefix + RecordActionsBase.UPDATE,
@@ -188,11 +188,7 @@ export abstract class RecordActionsBase<TStateType, TStore extends Store<TStateT
     }
 
     // Make abstract and implement in child classes
-    protected getMessageParams<TRecord extends Record<TKey>, TKey>(record: LocalObject<TRecord, TKey>): { 0: string } {
-        return {
-            0: (record as any).object.displayName
-        }
-    }
+    protected abstract getMessageParams(record: LocalObject<any, any>): NumIndex<string>;
 
     protected addAdditionalPaths(url: string): string {
         return this.additionalPaths ? [url, ...this.additionalPaths].join('/') : url;

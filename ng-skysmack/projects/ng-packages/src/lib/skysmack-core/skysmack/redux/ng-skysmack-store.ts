@@ -7,7 +7,6 @@ import { Skysmack, SkysmackAppState } from '@skysmack/packages-skysmack-core';
 import { PackageLoader } from '../packages/package-loader';
 import { LoadedPackage } from '../packages/loaded-package';
 import { Oauth2Type } from '@skysmack/packages-oauth2';
-import { ReduxAction } from '@skysmack/redux';
 
 @Injectable({ providedIn: 'root' })
 export class NgSkysmackStore {

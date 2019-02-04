@@ -24,6 +24,17 @@ export function queueReducer(state = new QueueState(), action: ReduxAction): Que
         }
         case QueueActions.REMOVE_QUEUE_ITEMS: {
             const castedAction = action as ReduxAction<QueueItem[]>;
+
+            newState.items = newState.items.filter(item => {
+                let keep = true;
+                castedAction.payload.forEach(incomingItem => {
+                    if (incomingItem.localObject.localId === item.localObject.localId) {
+                        keep = false;
+                    }
+                });
+                return keep;
+            });
+
             return newState;
         }
         default:
