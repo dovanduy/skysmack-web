@@ -27,22 +27,6 @@ export class NgSkysmackStore {
         return copy ? copy : of(undefined).pipe(take(1));
     }
 
-    // TODO: Work in progress. Might be deleted.
-    public getOfflineQueueItems(): Observable<any[]> {
-        return this.ngRedux.select((state: SkysmackAppState) => state).pipe(
-            map(state => state.offline.outbox),
-            // Any below should be correct meta object.
-            map((outbox: ReduxAction<unknown, any>[]) => {
-                const items = outbox.map(item => item.meta.offline.queueItems);
-                if (items.length > 0) {
-                    return items.reduce((acc: any[], cur: any[]) => acc.concat(cur));
-                } else {
-                    return [];
-                }
-            })
-        );
-    }
-
     public getHydrated(): Observable<boolean> {
         return this.ngRedux.select((state: any) => state.hydrated.hydrated);
     }

@@ -4,3 +4,4 @@ export * from './reducer-registry';
 export * from './cancel-record-action';
 export * from './cancel-dynamic-field-action';
 export * from './shared-reducer';
+export * from './queue-reducer';

@@ -3,6 +3,9 @@ import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { Observable } from 'rxjs';
 import { QueueItem, log } from '@skysmack/framework';
 import { Router } from '@angular/router';
+import { NgRedux } from '@angular-redux/store';
+import { QueuesAppState } from '@skysmack/redux';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'ss-queue',
@@ -15,11 +18,14 @@ export class QueueComponent implements OnInit {
 
   constructor(
     public skysmackStore: NgSkysmackStore,
+    public ngRedux: NgRedux<any>,
     public router: Router
   ) { }
 
   ngOnInit() {
-    this.queue$ = this.skysmackStore.getOfflineQueueItems();
+    this.queue$ = this.ngRedux.select((state: QueuesAppState) => state.queue).pipe(
+      map(queue => queue.items)
+    );
   }
 
   public toEditor(queueItem: QueueItem) {

@@ -5,6 +5,7 @@ import { GetPagedRecordsPayload, GetSingleRecordPayload, CancelActionPayload, } 
 import { CommitMeta, RollbackMeta, ReduxOfflineMeta, CancelActionMeta, OfflineMeta } from '../metas';
 import { EffectRequest } from '../models/effect-request';
 import { Effect } from './../models/effect';
+import { QueueActions } from './queue-actions';
 
 export abstract class RecordActionsBase<TStateType, TStore extends Store<TStateType>> {
     public static CANCEL_RECORD_ACTION = 'CANCEL_RECORD_ACTION';
@@ -68,6 +69,8 @@ export abstract class RecordActionsBase<TStateType, TStore extends Store<TStateT
     }
 
     public add<TRecord extends Record<TKey>, TKey>(records: LocalObject<TRecord, TKey>[], packagePath: string) {
+        this.addQueueItems(records, packagePath, 'ADDING')
+
         this.store.dispatch(Object.assign({}, new ReduxAction<any, ReduxOfflineMeta<TRecord[], HttpResponse, LocalObject<TRecord, TKey>[]>>({
             type: this.prefix + RecordActionsBase.ADD,
             meta: new ReduxOfflineMeta(
@@ -90,8 +93,7 @@ export abstract class RecordActionsBase<TStateType, TStore extends Store<TStateT
                             stateKey: packagePath,
                             value: records
                         }
-                    }),
-                    this.getQueueItems(records, packagePath, 'ADDING')
+                    })
                 )
             )
         })));
@@ -100,6 +102,8 @@ export abstract class RecordActionsBase<TStateType, TStore extends Store<TStateT
     public update<TRecord extends Record<TKey>, TKey>(records: LocalObject<TRecord, TKey>[], packagePath: string) {
         let path = this.addAdditionalPaths(packagePath);
         path = this.appendValues<TKey>(path, records.map(x => x.object.id));
+
+        this.addQueueItems(records, packagePath, 'EDITING');
 
         this.store.dispatch(Object.assign({}, new ReduxAction<any, ReduxOfflineMeta<TRecord[], HttpResponse, LocalObject<TRecord, TKey>[]>>({
             type: this.prefix + RecordActionsBase.UPDATE,
@@ -123,8 +127,7 @@ export abstract class RecordActionsBase<TStateType, TStore extends Store<TStateT
                             stateKey: packagePath,
                             value: records
                         }
-                    }),
-                    this.getQueueItems(records, packagePath, 'EDITING')
+                    })
                 )
             )
         })));
@@ -134,6 +137,9 @@ export abstract class RecordActionsBase<TStateType, TStore extends Store<TStateT
     public delete<TRecord extends Record<TKey>, TKey>(records: LocalObject<TRecord, TKey>[], packagePath: string) {
         let path = this.addAdditionalPaths(packagePath);
         path = path + '?ids=' + records.map(x => x.object.id).join(',');
+
+        this.addQueueItems(records, packagePath, 'DELETING');
+
 
         this.store.dispatch(Object.assign({}, new ReduxAction<any, ReduxOfflineMeta<TRecord[], HttpResponse, LocalObject<TRecord, TKey>[]>>({
             type: this.prefix + RecordActionsBase.DELETE,
@@ -160,22 +166,24 @@ export abstract class RecordActionsBase<TStateType, TStore extends Store<TStateT
                             stateKey: packagePath,
                             value: records
                         }
-                    }),
-                    this.getQueueItems(records, packagePath, 'DELETING')
+                    })
                 )
             )
         })));
     }
 
-    protected getQueueItems<TRecord extends Record<TKey>, TKey>(records: LocalObject<TRecord, TKey>[], packagePath: string, actionType: string): QueueItem[] {
-        return records.map(record => {
-            return new QueueItem({
-                message: `${this.prefix.replace('_', '.')}QUEUE.${actionType.toUpperCase()}`,
-                messageParams: this.getMessageParams(record),
-                packagePath,
-                localObject: record,
-                cancelAction: this.cancelRecordAction,
-            });
+    protected addQueueItems<TRecord extends Record<TKey>, TKey>(records: LocalObject<TRecord, TKey>[], packagePath: string, actionType: string): void {
+        this.store.dispatch({
+            type: QueueActions.ADD_QUEUE_ITEMS,
+            payload: records.map(record => {
+                return new QueueItem({
+                    message: `${this.prefix.replace('_', '.')}QUEUE.${actionType.toUpperCase()}`,
+                    messageParams: this.getMessageParams(record),
+                    packagePath,
+                    localObject: record,
+                    cancelAction: this.cancelRecordAction,
+                });
+            })
         });
     }
 
