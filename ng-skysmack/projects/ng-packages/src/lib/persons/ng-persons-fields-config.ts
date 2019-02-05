@@ -46,8 +46,8 @@ export class NgPersonsFieldsConfig extends FieldsConfig<Person, NgPersonFormDepe
                 value: entity ? entity.object.displayName : undefined,
                 key: 'displayName',
                 validators: [Validators.required],
-                order: 3,
-            } as Field),
+                order: 3
+            } as Field)
         ];
 
         // Id field must only be added for edit forms.

@@ -76,7 +76,7 @@ export abstract class RecordActionsBase<TStateType, TStore extends Store<TStateT
                 link: `${this.addAdditionalPaths(packagePath)}/create`,
                 packagePath,
                 localObject: record,
-                cancelAction: this.cancelRecordAction,
+                cancelAction: this.cancelRecordAction
             });
         })
 
@@ -121,7 +121,7 @@ export abstract class RecordActionsBase<TStateType, TStore extends Store<TStateT
                 link: `${this.addAdditionalPaths(packagePath)}/edit/${record.object.id}`,
                 packagePath,
                 localObject: record,
-                cancelAction: this.cancelRecordAction,
+                cancelAction: this.cancelRecordAction
             });
         })
 
@@ -156,7 +156,7 @@ export abstract class RecordActionsBase<TStateType, TStore extends Store<TStateT
     }
 
 
-    public delete<TRecord extends Record<TKey>, TKey>(records: LocalObject<TRecord, TKey>[], packagePath: string) {
+    public delete = <TRecord extends Record<TKey>, TKey>(records: LocalObject<TRecord, TKey>[], packagePath: string) => {
         let path = this.addAdditionalPaths(packagePath);
         path = path + '?ids=' + records.map(x => x.object.id).join(',');
 
@@ -167,6 +167,7 @@ export abstract class RecordActionsBase<TStateType, TStore extends Store<TStateT
                 packagePath,
                 localObject: record,
                 cancelAction: this.cancelRecordAction,
+                deleteAction: this.delete
             });
         });
 

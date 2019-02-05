@@ -32,4 +32,8 @@ export class QueueComponent implements OnInit {
     this.skysmackStore.setEditorItem(queueItem.localObject);
     this.router.navigate([queueItem.link]);
   }
+
+  public retryDelete(queueItem: QueueItem) {
+    queueItem.deleteAction([queueItem.localObject], queueItem.packagePath);
+  }
 }

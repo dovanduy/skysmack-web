@@ -9,6 +9,7 @@ export class QueueItem {
     public link: string;
     public localObject: LocalObject<any, any>;
     public cancelAction?: Function;
+    public deleteAction?: Function;
     public error: HttpErrorResponse;
     constructor(values: Partial<QueueItem>) {
         Object.assign(this, values);
