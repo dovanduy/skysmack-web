@@ -67,7 +67,7 @@ export class NgAccessPolicyPermissionsFieldsConfig extends FieldsConfig<AccessPo
             } as Field),
         ];
 
-        if (entity && entity.object.id && entity.status !== LocalObjectStatus.CREATING && entity.status !== LocalObjectStatus.ERROR) {
+        if (entity && entity.object.id && entity.status !== LocalObjectStatus.CREATING) {
             fields.push(new Field({
                 fieldType: FieldTypes.HiddenField,
                 value: entity ? entity.object.id : undefined,

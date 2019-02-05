@@ -8,6 +8,10 @@ import { NgPersonsFieldsConfig, NgPersonFormDependencies } from '@skysmack/ng-pa
 import { DocumentRecordFormComponent } from '@skysmack/portal-ui';
 import { NgPersonsStore } from '@skysmack/ng-packages';
 
+import { combineLatest } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { LocalObject } from '@skysmack/framework';
+
 @Component({
   selector: 'ss-persons-edit',
   templateUrl: './persons-edit.component.html',
@@ -31,4 +35,22 @@ export class PersonsEditComponent extends DocumentRecordFormComponent<PersonsApp
     super.ngOnInit();
     this.setEditFields();
   }
+  protected setEditFields() {
+    this.subscriptionHandler.register(
+      combineLatest(
+        this.initEditDocRecord(),
+        this.skysmackStore.getEditorItem()
+      ).pipe(
+        map(values => {
+          const entity = values[0][0];
+          const fields = values[0][1];
+          this.editorItem = values[1] as LocalObject<Person, number>;
+          this.editorItem ? this.selectedEntity = this.editorItem : this.selectedEntity = entity;
+
+          this.fields = this.getFields(this.selectedEntity, fields);
+        })
+      ).subscribe()
+    );
+  }
+
 }

@@ -69,7 +69,16 @@ export abstract class RecordActionsBase<TStateType, TStore extends Store<TStateT
     }
 
     public add<TRecord extends Record<TKey>, TKey>(records: LocalObject<TRecord, TKey>[], packagePath: string) {
-        this.setQueueItems(records, packagePath, 'ADDING')
+        const queueItems = records.map(record => {
+            return new QueueItem({
+                message: `${this.prefix.replace('_', '.')}QUEUE.ADDING`,
+                messageParams: this.getMessageParams(record),
+                link: `${this.addAdditionalPaths(packagePath)}/create`,
+                packagePath,
+                localObject: record,
+                cancelAction: this.cancelRecordAction,
+            });
+        })
 
         this.store.dispatch(Object.assign({}, new ReduxAction<any, ReduxOfflineMeta<TRecord[], HttpResponse, LocalObject<TRecord, TKey>[]>>({
             type: this.prefix + RecordActionsBase.ADD,
@@ -84,14 +93,16 @@ export abstract class RecordActionsBase<TStateType, TStore extends Store<TStateT
                         type: this.prefix + RecordActionsBase.ADD_SUCCESS,
                         meta: {
                             stateKey: packagePath,
-                            value: records
+                            value: records,
+                            queueItems
                         }
                     }),
                     new ReduxAction<any, RollbackMeta<LocalObject<TRecord, TKey>[]>>({
                         type: this.prefix + RecordActionsBase.ADD_FAILURE,
                         meta: {
                             stateKey: packagePath,
-                            value: records
+                            value: records,
+                            queueItems
                         }
                     })
                 )
@@ -103,7 +114,16 @@ export abstract class RecordActionsBase<TStateType, TStore extends Store<TStateT
         let path = this.addAdditionalPaths(packagePath);
         path = this.appendValues<TKey>(path, records.map(x => x.object.id));
 
-        this.setQueueItems(records, packagePath, 'UPDATING');
+        const queueItems = records.map(record => {
+            return new QueueItem({
+                message: `${this.prefix.replace('_', '.')}QUEUE.UPDATING`,
+                messageParams: this.getMessageParams(record),
+                link: `${this.addAdditionalPaths(packagePath)}/edit/${record.object.id}`,
+                packagePath,
+                localObject: record,
+                cancelAction: this.cancelRecordAction,
+            });
+        })
 
         this.store.dispatch(Object.assign({}, new ReduxAction<any, ReduxOfflineMeta<TRecord[], HttpResponse, LocalObject<TRecord, TKey>[]>>({
             type: this.prefix + RecordActionsBase.UPDATE,
@@ -118,14 +138,16 @@ export abstract class RecordActionsBase<TStateType, TStore extends Store<TStateT
                         type: this.prefix + RecordActionsBase.UPDATE_SUCCESS,
                         meta: {
                             stateKey: packagePath,
-                            value: records
+                            value: records,
+                            queueItems
                         }
                     }),
                     new ReduxAction<any, RollbackMeta<LocalObject<TRecord, TKey>[]>>({
                         type: this.prefix + RecordActionsBase.UPDATE_FAILURE,
                         meta: {
                             stateKey: packagePath,
-                            value: records
+                            value: records,
+                            queueItems
                         }
                     })
                 )
@@ -138,8 +160,15 @@ export abstract class RecordActionsBase<TStateType, TStore extends Store<TStateT
         let path = this.addAdditionalPaths(packagePath);
         path = path + '?ids=' + records.map(x => x.object.id).join(',');
 
-        this.setQueueItems(records, packagePath, 'DELETING');
-
+        const queueItems = records.map(record => {
+            return new QueueItem({
+                message: `${this.prefix.replace('_', '.')}QUEUE.DELETING`,
+                messageParams: this.getMessageParams(record),
+                packagePath,
+                localObject: record,
+                cancelAction: this.cancelRecordAction,
+            });
+        });
 
         this.store.dispatch(Object.assign({}, new ReduxAction<any, ReduxOfflineMeta<TRecord[], HttpResponse, LocalObject<TRecord, TKey>[]>>({
             type: this.prefix + RecordActionsBase.DELETE,
@@ -157,34 +186,21 @@ export abstract class RecordActionsBase<TStateType, TStore extends Store<TStateT
                         type: this.prefix + RecordActionsBase.DELETE_SUCCESS,
                         meta: {
                             stateKey: packagePath,
-                            value: records
+                            value: records,
+                            queueItems
                         }
                     }),
                     new ReduxAction<any, RollbackMeta<LocalObject<TRecord, TKey>[]>>({
                         type: this.prefix + RecordActionsBase.DELETE_FAILURE,
                         meta: {
                             stateKey: packagePath,
-                            value: records
+                            value: records,
+                            queueItems
                         }
                     })
                 )
             )
         })));
-    }
-
-    protected setQueueItems<TRecord extends Record<TKey>, TKey>(records: LocalObject<TRecord, TKey>[], packagePath: string, actionType: string): void {
-        this.store.dispatch({
-            type: QueueActions.SET_QUEUE_ITEMS,
-            payload: records.map(record => {
-                return new QueueItem({
-                    message: `${this.prefix.replace('_', '.')}QUEUE.${actionType.toUpperCase()}`,
-                    messageParams: this.getMessageParams(record),
-                    packagePath,
-                    localObject: record,
-                    cancelAction: this.cancelRecordAction,
-                });
-            })
-        });
     }
 
     // Make abstract and implement in child classes

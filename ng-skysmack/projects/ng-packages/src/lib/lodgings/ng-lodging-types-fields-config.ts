@@ -31,7 +31,7 @@ export class NgLodgingTypesFieldsConfig extends FieldsConfig<LodgingType, NgLodg
 
         // Id field must only be added for edit forms.
         // If added to a create form, it won't be able to bind in the backend.
-        if (entity && entity.object.id && entity.status !== LocalObjectStatus.CREATING && entity.status !== LocalObjectStatus.ERROR) {
+        if (entity && entity.object.id && entity.status !== LocalObjectStatus.CREATING) {
             fields.push(new Field({
                 fieldType: FieldTypes.HiddenField,
                 value: entity ? entity.object.id : undefined,

@@ -95,7 +95,9 @@ export function recordReducersBase<TState extends RecordState<TRecord, TKey>, TR
 function setActionError<TRecord extends Record<TKey>, TKey>(action: ReduxAction<HttpErrorResponse, RollbackMeta<LocalObject<TRecord, TKey>[]>>, message: string = 'Error: '): void {
     action.meta.value.forEach(record => {
         record.status = LocalObjectStatus.ERROR;
-        record.object.id = 0 as any;
+        if (!record.object.id) {
+            record.object.id = 0 as any;
+        }
     });
     // TODO: Delete this in production?
     console.log(message, action);

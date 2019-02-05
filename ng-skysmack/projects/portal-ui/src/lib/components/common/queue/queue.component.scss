@@ -1,7 +1,15 @@
 [data-status="CREATING"] {
-    color: rgb(78, 64, 0);
+    color: green;
 }
 
 [data-status="ERROR"] {
     color: red;
+}
+
+[data-status="MODIFYING"] {
+    color: purple;
+}
+
+[data-status="DELETING"] {
+    color: brown;
 }

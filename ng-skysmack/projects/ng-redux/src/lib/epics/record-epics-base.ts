@@ -1,8 +1,8 @@
 import { ofType, ActionsObservable, Epic } from 'redux-observable';
 import { switchMap, map } from 'rxjs/operators';
-import { Record, LocalObject, HttpErrorResponse, QueueItem } from '@skysmack/framework';
+import { Record, LocalObject, HttpErrorResponse, QueueItem, HttpResponse, LocalObjectStatus } from '@skysmack/framework';
 import { Observable } from 'rxjs';
-import { RecordRequests, ReduxAction, GetPagedRecordsPayload, GetPagedRecordsSuccessPayload, RecordActionsBase, GetSingleRecordPayload, GetSingleRecordSuccessPayload, CommitMeta, QueueActions, CancelActionPayload } from '@skysmack/redux';
+import { RecordRequests, ReduxAction, GetPagedRecordsPayload, GetPagedRecordsSuccessPayload, RecordActionsBase, GetSingleRecordPayload, GetSingleRecordSuccessPayload, CommitMeta, QueueActions, CancelActionPayload, ReduxOfflineMeta } from '@skysmack/redux';
 import { RecordNotifications } from './../notifications/record-notifications';
 
 export abstract class RecordEpicsBase<TRecord extends Record<TKey>, TKey> {
@@ -24,9 +24,10 @@ export abstract class RecordEpicsBase<TRecord extends Record<TKey>, TKey> {
             this.snackBarCreateFailureEpic,
             this.snackBarUpdateFailureEpic,
             this.snackBarRemoveFailureEpic,
-            this.cancelRecordActionEpic,
+            this.standardActionEpic,
             this.successActionEpic,
-            this.failureActionEpic
+            this.failureActionEpic,
+            this.cancelRecordActionEpic
         ];
     }
 
@@ -127,19 +128,16 @@ export abstract class RecordEpicsBase<TRecord extends Record<TKey>, TKey> {
     //#endregion
 
     //#region Queue
-    public cancelRecordActionEpic = (action$: ActionsObservable<ReduxAction<CancelActionPayload<TRecord, TKey>>>): Observable<ReduxAction<QueueItem[]>> => {
+    public standardActionEpic = (action$: ActionsObservable<ReduxAction<any, ReduxOfflineMeta<TRecord[], HttpResponse, LocalObject<TRecord, TKey>[]>>>): Observable<ReduxAction<QueueItem[]>> => {
         return action$.pipe(
-            ofType(this.prefix + RecordActionsBase.CANCEL_RECORD_ACTION),
+            ofType(
+                this.prefix + RecordActionsBase.ADD,
+                this.prefix + RecordActionsBase.UPDATE,
+                this.prefix + RecordActionsBase.DELETE,
+            ),
             map(action => ({
-                type: QueueActions.REMOVE_QUEUE_ITEMS,
-                payload: [
-                    new QueueItem({
-                        message: ``,
-                        messageParams: {},
-                        packagePath: action.payload.packagePath,
-                        localObject: action.payload.record
-                    })
-                ]
+                type: QueueActions.SET_QUEUE_ITEMS,
+                payload: action.meta.offline.commit.meta.queueItems
             }))
         );
     }
@@ -156,7 +154,6 @@ export abstract class RecordEpicsBase<TRecord extends Record<TKey>, TKey> {
                 payload: action.meta.value.map(record => {
                     return new QueueItem({
                         message: ``,
-                        messageParams: {},
                         packagePath: action.meta.stateKey,
                         localObject: record,
                     });
@@ -174,22 +171,30 @@ export abstract class RecordEpicsBase<TRecord extends Record<TKey>, TKey> {
             ),
             map(action => ({
                 type: QueueActions.SET_QUEUE_ITEMS,
-                payload: action.meta.value.map(record => {
-                    return new QueueItem({
-                        message: `${this.prefix.replace('_', '.')}QUEUE.ERROR`,
-                        // TODO: SET MESSAGE PARAMS - REQUIRES INHERITANCE OVERRIDE LIKE WITH ACTIONS
-                        messageParams: {
-                            0: record.object['displayName']
-                        },
-                        link: `${action.meta.stateKey}/create`,
-                        packagePath: action.meta.stateKey,
-                        localObject: record,
-                        error: action.payload
-                    });
+                payload: action.meta.queueItems.map(queueItems => {
+                    queueItems.message = `${this.prefix.replace('_', '.')}QUEUE.ERROR`;
+                    queueItems.localObject.status = LocalObjectStatus.ERROR;
+                    queueItems.error = action.payload;
+                    return queueItems;
                 })
+            }))
+        );
+    }
+
+    public cancelRecordActionEpic = (action$: ActionsObservable<ReduxAction<CancelActionPayload<TRecord, TKey>>>): Observable<ReduxAction<QueueItem[]>> => {
+        return action$.pipe(
+            ofType(this.prefix + RecordActionsBase.CANCEL_RECORD_ACTION),
+            map(action => ({
+                type: QueueActions.REMOVE_QUEUE_ITEMS,
+                payload: [
+                    new QueueItem({
+                        message: ``,
+                        packagePath: action.payload.packagePath,
+                        localObject: action.payload.record
+                    })
+                ]
             }))
         );
     }
     //#endregion
 }
-
