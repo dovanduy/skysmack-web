@@ -34,18 +34,4 @@ export class PersonsCreateComponent extends DocumentRecordFormComponent<PersonsA
     super.ngOnInit();
     this.setCreateFields();
   }
-  protected setCreateFields() {
-    this.subscriptionHandler.register(
-      combineLatest(
-        this.initCreateDocRecord(),
-        this.skysmackStore.getEditorItem()
-      ).pipe(
-        map(values => {
-          const fields = values[0];
-          this.editorItem = values[1] as LocalObject<Person, number>;
-          this.fields = this.getFields(this.editorItem, fields);
-        })
-      ).subscribe()
-    );
-  }
 }

@@ -10,6 +10,7 @@ import { NgRedux } from '@angular-redux/store';
 import { FormHelper } from '@skysmack/ng-ui';
 import { map } from 'rxjs/operators';
 import { NgRecordReduxStore } from '@skysmack/ng-redux';
+import { combineLatest } from 'rxjs';
 
 export class RecordFormComponent<TAppState, TRecord extends Record<TKey>, TKey, TDependencies> extends FormBaseComponent<TAppState, TRecord, TKey, TDependencies> implements OnInit, OnDestroy {
 
@@ -20,11 +21,11 @@ export class RecordFormComponent<TAppState, TRecord extends Record<TKey>, TKey, 
         public activatedRoute: ActivatedRoute,
         public editorNavService: EditorNavService,
         public actions: RecordActionsBase<TAppState, NgRedux<TAppState>>,
-        public redux: NgSkysmackStore,
+        public skysmackStore: NgSkysmackStore,
         public store: NgRecordReduxStore<TAppState, TRecord, TKey>,
         public fieldsConfig: FieldsConfig<TRecord, TDependencies>
     ) {
-        super(router, activatedRoute, editorNavService, actions, redux, fieldsConfig);
+        super(router, activatedRoute, editorNavService, actions, skysmackStore, fieldsConfig);
     }
 
     ngOnInit() {
@@ -38,16 +39,28 @@ export class RecordFormComponent<TAppState, TRecord extends Record<TKey>, TKey, 
     }
 
     protected setCreateFields() {
-        this.fields = this.getFields();
+        this.subscriptionHandler.register(this.skysmackStore.getEditorItem().pipe(
+            map(values => {
+                this.editorItem = values[0] as LocalObject<TRecord, TKey>;
+                this.fields = this.getFields(this.editorItem);
+            })
+        ).subscribe());
     }
 
     protected setEditFields() {
-        this.subscriptionHandler.register(this.initEditRecord().pipe(
-            map(entity => {
-                this.selectedEntity = entity;
-                return this.getFields(entity);
-            })
-        ).subscribe(fields => this.fields = fields));
+        this.subscriptionHandler.register(
+            combineLatest(
+                this.initEditRecord(),
+                this.skysmackStore.getEditorItem()
+            ).pipe(
+                map(values => {
+                    const entity = values[0];
+                    this.editorItem = values[1] as LocalObject<TRecord, TKey>;
+                    this.editorItem ? this.selectedEntity = this.editorItem : this.selectedEntity = entity;
+
+                    this.fields = this.getFields(this.selectedEntity);
+                })
+            ).subscribe());
     }
 
     protected initEditRecord() {

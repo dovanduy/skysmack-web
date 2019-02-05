@@ -18,11 +18,11 @@ export class DocumentRecordFormComponent<TAppState, TRecord extends Record<TKey>
         public activatedRoute: ActivatedRoute,
         public editorNavService: EditorNavService,
         public actions: DocumentRecordActionsBase<TAppState, NgRedux<TAppState>>,
-        public redux: NgSkysmackStore,
+        public skysmackStore: NgSkysmackStore,
         public store: NgDocumentRecordReduxStore<TAppState, TRecord, TKey>,
         public fieldsConfig: FieldsConfig<TRecord, TDependencies>
     ) {
-        super(router, activatedRoute, editorNavService, actions, redux, store, fieldsConfig);
+        super(router, activatedRoute, editorNavService, actions, skysmackStore, store, fieldsConfig);
     }
 
     ngOnInit() {
@@ -31,17 +31,34 @@ export class DocumentRecordFormComponent<TAppState, TRecord extends Record<TKey>
 
     // Use these set functions in the component when the form has no dependencies
     protected setCreateFields() {
-        this.subscriptionHandler.register(this.initCreateDocRecord().subscribe(fields => this.fields = this.getFields(undefined, fields)));
+        this.subscriptionHandler.register(
+            combineLatest(
+                this.initCreateDocRecord(),
+                this.skysmackStore.getEditorItem()
+            ).pipe(
+                map(values => {
+                    const fields = values[0];
+                    this.editorItem = values[1] as LocalObject<TRecord, TKey>;
+                    this.fields = this.getFields(this.editorItem, fields);
+                })
+            ).subscribe());
     }
 
     protected setEditFields() {
-        this.subscriptionHandler.register(this.initEditDocRecord().pipe(
-            map(values => {
-                const entity = values[0];
-                const dynamicFields = values[1];
-                return this.getFields(entity, dynamicFields);
-            })
-        ).subscribe(fields => this.fields = fields));
+        this.subscriptionHandler.register(
+            combineLatest(
+                this.initEditDocRecord(),
+                this.skysmackStore.getEditorItem()
+            ).pipe(
+                map(values => {
+                    const entity = values[0][0];
+                    const fields = values[0][1];
+                    this.editorItem = values[1] as LocalObject<TRecord, TKey>;
+                    this.editorItem ? this.selectedEntity = this.editorItem : this.selectedEntity = entity;
+
+                    this.fields = this.getFields(this.selectedEntity, fields);
+                })
+            ).subscribe());
     }
 
     // Use these init functions and override set functions in the component when the form has dependencies
