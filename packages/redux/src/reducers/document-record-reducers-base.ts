@@ -1,10 +1,11 @@
 import { DocumentRecordActionsBase } from "../actions";
-import { Record, toLocalObject, HttpSuccessResponse, LocalObject, FieldSchemaViewModel, HttpErrorResponse, LocalObjectExtensions, FieldValueProviderViewModel, replaceLocalInnerObject } from "@skysmack/framework";
+import { Record, toLocalObject, HttpSuccessResponse, LocalObject, FieldSchemaViewModel, HttpErrorResponse, LocalObjectExtensions, FieldValueProviderViewModel, replaceLocalInnerObject, LocalObjectStatus } from "@skysmack/framework";
 import { ReduxAction } from '../action-types/redux-action';
 import { PackagePathPayload, GetFieldsSuccessPayload, GetAvailableFieldsSuccessPayload, GetSingleFieldSuccessPayload } from './../payloads';
 import { DocumentRecordState } from './../states/document-record-state';
 import { recordReducersBase } from './record-reducers-base';
 import { cancelDynamicFieldAction } from './cancel-dynamic-field-action';
+import { RollbackMeta } from '../metas/offline-redux/rollback-meta';
 
 export function documentRecordReducersBase<TState extends DocumentRecordState<TRecord, TKey>, TRecord extends Record<TKey>, TKey>(state: TState, action: any, prefix: string = ''): TState {
     let newState = Object.assign({}, state);
@@ -61,8 +62,7 @@ export function documentRecordReducersBase<TState extends DocumentRecordState<TR
             return newState;
         }
         case prefix + DocumentRecordActionsBase.ADD_FIELD_FAILURE: {
-            const castedAction: ReduxAction<HttpErrorResponse> = action;
-            console.log('Fields add error', castedAction);
+            setFieldActionError(action, 'Field add error: ');
             return newState;
         }
         case prefix + DocumentRecordActionsBase.UPDATE_FIELD_SUCCESS: {
@@ -75,8 +75,7 @@ export function documentRecordReducersBase<TState extends DocumentRecordState<TR
             return newState;
         }
         case prefix + DocumentRecordActionsBase.UPDATE_FIELD_FAILURE: {
-            const castedAction: ReduxAction<HttpErrorResponse> = action;
-            console.log('Fields update error', castedAction);
+            setFieldActionError(action, 'Field update error: ');
             return newState;
         }
         case prefix + DocumentRecordActionsBase.DELETE_FIELD_SUCCESS: {
@@ -87,8 +86,7 @@ export function documentRecordReducersBase<TState extends DocumentRecordState<TR
             return newState;
         }
         case prefix + DocumentRecordActionsBase.DELETE_FIELD_FAILURE: {
-            const castedAction: ReduxAction<HttpErrorResponse> = action;
-            console.log('Fields delete error', castedAction);
+            setFieldActionError(action, 'Field delete error: ');
             return newState;
         }
         default:
@@ -97,4 +95,12 @@ export function documentRecordReducersBase<TState extends DocumentRecordState<TR
                 ...recordReducersBase(state, action, prefix) as any
             }
     }
+}
+
+function setFieldActionError<TRecord extends Record<TKey>, TKey>(action: ReduxAction<HttpErrorResponse, RollbackMeta<LocalObject<TRecord, TKey>[]>>, message: string = 'Error: '): void {
+    action.meta.value.forEach(record => {
+        record.status = LocalObjectStatus.ERROR;
+    });
+    // TODO: Delete this in production?
+    console.log(message, action);
 }

@@ -8,8 +8,9 @@ import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { NgDynamicFieldsFieldsConfig } from './../../ng-dynamic-fields-config';
 import { NgDocumentRecordReduxStore } from '@skysmack/ng-redux';
 import { map, switchMap } from 'rxjs/operators';
-import { DynamicFieldRouteData, toLocalObject, FieldSchemaViewModel, LocalObjectStatus, log } from '@skysmack/framework';
+import { DynamicFieldRouteData, toLocalObject, FieldSchemaViewModel, LocalObjectStatus, log, LocalObject } from '@skysmack/framework';
 import { FormHelper } from '@skysmack/ng-ui';
+import { combineLatest } from 'rxjs';
 
 @Component({
   selector: 'ss-dynamic-fields-create',
@@ -20,16 +21,17 @@ export class DynamicFieldsCreateComponent extends BaseComponent<DocumentRecordSt
   public fields: Field[];
   public actions: DocumentRecordActionsBase<any, any>;
   public store: NgDocumentRecordReduxStore<any, any, any>;
+  public editorItem: LocalObject<FieldSchemaViewModel, string>;
 
   constructor(
     public router: Router,
     public activatedRoute: ActivatedRoute,
     public editorNavService: EditorNavService,
-    public redux: NgSkysmackStore,
+    public skysmackStore: NgSkysmackStore,
     public fieldsConfig: NgDynamicFieldsFieldsConfig,
     public injector: Injector
   ) {
-    super(router, activatedRoute, redux);
+    super(router, activatedRoute, skysmackStore);
   }
 
   ngOnInit() {
@@ -40,9 +42,16 @@ export class DynamicFieldsCreateComponent extends BaseComponent<DocumentRecordSt
         this.actions = this.injector.get(data.actionToken);
 
         this.actions.getAvailableFields(this.packagePath);
-        return this.store.getAvailableFields(this.packagePath);
+        return combineLatest(
+          this.skysmackStore.getEditorItem(),
+          this.store.getAvailableFields(this.packagePath)
+        );
       }),
-      map(availableFields => this.fieldsConfig.getDynamicFields(availableFields)),
+      map(values => {
+        this.editorItem = values[0] as LocalObject<FieldSchemaViewModel, string>;
+        const availableFields = values[1];
+        return this.fieldsConfig.getDynamicFields(availableFields, this.editorItem);
+      }),
     ).subscribe(fields => this.fields = fields));
 
     this.editorNavService.showEditorNav();
@@ -50,14 +59,19 @@ export class DynamicFieldsCreateComponent extends BaseComponent<DocumentRecordSt
 
   onCreateSubmit(fh: FormHelper) {
     fh.formValid(() => {
-      this.actions.addFields([toLocalObject<FieldSchemaViewModel, string>(
+
+      const localObject = toLocalObject<FieldSchemaViewModel, string>(
         fh.form.getRawValue(),
         'key',
         undefined,
         LocalObjectStatus.CREATING,
         undefined,
         true
-      )], this.packagePath);
+      );
+
+      this.editorItem ? localObject.localId = this.editorItem.localId : localObject.localId = localObject.localId;
+
+      this.actions.addFields([localObject], this.packagePath);
       this.editorNavService.hideEditorNav();
     });
   }

@@ -75,6 +75,7 @@ export class DataTableComponent implements OnDestroy, OnInit {
   }
 
   public runCancelAction(entity: LocalObject<any, any>) {
+    console.log(entity, this.packagePath);
     this.cancelAction(entity, this.packagePath);
   }
 

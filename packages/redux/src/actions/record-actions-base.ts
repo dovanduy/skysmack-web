@@ -123,7 +123,7 @@ export abstract class RecordActionsBase<TStateType, TStore extends Store<TStateT
                 localObject: record,
                 cancelAction: this.cancelRecordAction
             });
-        })
+        });
 
         this.store.dispatch(Object.assign({}, new ReduxAction<any, ReduxOfflineMeta<TRecord[], HttpResponse, LocalObject<TRecord, TKey>[]>>({
             type: this.prefix + RecordActionsBase.UPDATE,
@@ -204,7 +204,6 @@ export abstract class RecordActionsBase<TStateType, TStore extends Store<TStateT
         })));
     }
 
-    // Make abstract and implement in child classes
     protected abstract getMessageParams(record: LocalObject<any, any>): NumIndex<string>;
 
     protected addAdditionalPaths(url: string): string {

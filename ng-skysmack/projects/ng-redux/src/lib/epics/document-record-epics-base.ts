@@ -1,9 +1,9 @@
 import { ofType, ActionsObservable } from 'redux-observable';
 import { switchMap, map } from 'rxjs/operators';
-import { Record, LocalObject, FieldSchemaViewModel } from '@skysmack/framework';
+import { Record, LocalObject, FieldSchemaViewModel, HttpResponse, HttpErrorResponse, QueueItem, LocalObjectStatus } from '@skysmack/framework';
 import { Observable } from 'rxjs';
 import { RecordEpicsBase } from './record-epics-base';
-import { DocumentRecordRequests, PackagePathPayload, ReduxAction, GetFieldsSuccessPayload, DocumentRecordActionsBase, CommitMeta } from '@skysmack/redux';
+import { DocumentRecordRequests, PackagePathPayload, ReduxAction, GetFieldsSuccessPayload, DocumentRecordActionsBase, CommitMeta, ReduxOfflineMeta, QueueActions, CancelDynamicFieldActionPayload } from '@skysmack/redux';
 import { DocumentRecordNotifications } from './../notifications/document-record-notifications';
 
 export abstract class DocumentRecordEpicsBase<TRecord extends Record<TKey>, TKey> extends RecordEpicsBase<TRecord, TKey> {
@@ -24,7 +24,11 @@ export abstract class DocumentRecordEpicsBase<TRecord extends Record<TKey>, TKey
             this.snackBarFieldRemoveSuccessEpic,
             this.snackBarFieldCreateFailureEpic,
             this.snackBarFieldUpdateFailureEpic,
-            this.snackBarFieldRemoveFailureEpic
+            this.snackBarFieldRemoveFailureEpic,
+            this.standardFieldActionEpic,
+            this.successFieldActionEpic,
+            this.failureFieldActionEpic,
+            this.cancelFieldActionEpic
         ]);
     }
 
@@ -43,9 +47,7 @@ export abstract class DocumentRecordEpicsBase<TRecord extends Record<TKey>, TKey
         switchMap(action => this.requests.getAvailableFields(action))
     )
 
-    // NOTIFICATIONS
-
-    // GET
+    //#region Notifications
     public snackBarGetFieldsFailureEpic = (action$: ActionsObservable<ReduxAction<any, CommitMeta<LocalObject<FieldSchemaViewModel, string>[]>>>): Observable<ReduxAction> => action$.pipe(
         ofType(this.prefix + DocumentRecordActionsBase.GET_FIELDS_FAILURE),
         map((action) => {
@@ -66,7 +68,6 @@ export abstract class DocumentRecordEpicsBase<TRecord extends Record<TKey>, TKey
         }),
     )
 
-    // ADD
     public snackBarFieldCreateSuccessEpic = (action$: ActionsObservable<ReduxAction<any, CommitMeta<LocalObject<FieldSchemaViewModel, string>[]>>>): Observable<ReduxAction> => action$.pipe(
         ofType(this.prefix + DocumentRecordActionsBase.ADD_FIELD_SUCCESS),
         map((action) => {
@@ -87,7 +88,6 @@ export abstract class DocumentRecordEpicsBase<TRecord extends Record<TKey>, TKey
         }),
     )
 
-    // UPDATE
     public snackBarFieldUpdateSuccessEpic = (action$: ActionsObservable<ReduxAction<any, CommitMeta<LocalObject<FieldSchemaViewModel, string>[]>>>): Observable<ReduxAction> => action$.pipe(
         ofType(this.prefix + DocumentRecordActionsBase.UPDATE_FIELD_SUCCESS),
         map(action => {
@@ -108,7 +108,6 @@ export abstract class DocumentRecordEpicsBase<TRecord extends Record<TKey>, TKey
         })
     )
 
-    // DELETE
     public snackBarFieldRemoveSuccessEpic = (action$: ActionsObservable<ReduxAction<any, CommitMeta<LocalObject<FieldSchemaViewModel, string>[]>>>): Observable<ReduxAction> => action$.pipe(
         ofType(this.prefix + DocumentRecordActionsBase.DELETE_FIELD_SUCCESS),
         map((action) => {
@@ -128,4 +127,77 @@ export abstract class DocumentRecordEpicsBase<TRecord extends Record<TKey>, TKey
             return { type: 'NOTIFICATION' };
         })
     )
+    //#endregion
+
+    //#region Queue
+    public standardFieldActionEpic = (action$: ActionsObservable<ReduxAction<any, ReduxOfflineMeta<TRecord[], HttpResponse, LocalObject<TRecord, TKey>[]>>>): Observable<ReduxAction<QueueItem[]>> => {
+        return action$.pipe(
+            ofType(
+                this.prefix + DocumentRecordActionsBase.ADD_FIELD,
+                this.prefix + DocumentRecordActionsBase.UPDATE_FIELD,
+                this.prefix + DocumentRecordActionsBase.DELETE_FIELD,
+            ),
+            map(action => ({
+                type: QueueActions.SET_QUEUE_ITEMS,
+                payload: action.meta.offline.commit.meta.queueItems
+            }))
+        );
+    }
+
+    public successFieldActionEpic = (action$: ActionsObservable<ReduxAction<HttpErrorResponse, CommitMeta<LocalObject<TRecord, TKey>[]>>>): Observable<ReduxAction<QueueItem[]>> => {
+        return action$.pipe(
+            ofType(
+                this.prefix + DocumentRecordActionsBase.ADD_FIELD_SUCCESS,
+                this.prefix + DocumentRecordActionsBase.UPDATE_FIELD_SUCCESS,
+                this.prefix + DocumentRecordActionsBase.DELETE_FIELD_SUCCESS,
+            ),
+            map(action => ({
+                type: QueueActions.REMOVE_QUEUE_ITEMS,
+                payload: action.meta.value.map(record => {
+                    return new QueueItem({
+                        message: ``,
+                        packagePath: action.meta.stateKey,
+                        localObject: record,
+                    });
+                })
+            }))
+        );
+    }
+
+    public failureFieldActionEpic = (action$: ActionsObservable<ReduxAction<HttpErrorResponse, CommitMeta<LocalObject<TRecord, TKey>[]>>>): Observable<ReduxAction<QueueItem[]>> => {
+        return action$.pipe(
+            ofType(
+                this.prefix + DocumentRecordActionsBase.ADD_FIELD_FAILURE,
+                this.prefix + DocumentRecordActionsBase.UPDATE_FIELD_FAILURE,
+                this.prefix + DocumentRecordActionsBase.DELETE_FIELD_FAILURE,
+            ),
+            map(action => ({
+                type: QueueActions.SET_QUEUE_ITEMS,
+                payload: action.meta.queueItems.map(queueItems => {
+                    queueItems.message = `${this.prefix.replace('_', '.')}QUEUE.ERROR`;
+                    queueItems.localObject.status = LocalObjectStatus.ERROR;
+                    queueItems.error = action.payload;
+                    return queueItems;
+                })
+            }))
+        );
+    }
+
+    public cancelFieldActionEpic = (action$: ActionsObservable<ReduxAction<CancelDynamicFieldActionPayload<FieldSchemaViewModel>>>): Observable<ReduxAction<QueueItem[]>> => {
+        return action$.pipe(
+            ofType(this.prefix + DocumentRecordActionsBase.CANCEL_DYNAMIC_FIELD_ACTION),
+            map(action => ({
+                type: QueueActions.REMOVE_QUEUE_ITEMS,
+                payload: [
+                    new QueueItem({
+                        message: ``,
+                        packagePath: action.payload.packagePath,
+                        localObject: action.payload.field
+                    })
+                ]
+            }))
+        );
+    }
+    //#endregion
+
 }

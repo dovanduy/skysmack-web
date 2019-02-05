@@ -3,8 +3,10 @@ import { Record, LocalObjectExtensions, PageExtensions, toLocalObject, HttpSucce
 import { RecordState } from './../states/record-state';
 import { GetPagedRecordsSuccessPayload, GetSingleRecordSuccessPayload, GetPagedRecordsPayload } from '../payloads';
 import { ReduxAction } from '../action-types/redux-action';
-import { ReduxOfflineMeta, CommitMeta, RollbackMeta } from './../metas';
 import { cancelRecordAction } from './cancel-record-action';
+import { ReduxOfflineMeta } from '../metas/offline-redux/redux-offline-meta';
+import { CommitMeta } from '../metas/offline-redux/commit-meta';
+import { RollbackMeta } from '../metas/offline-redux/rollback-meta';
 
 export function recordReducersBase<TState extends RecordState<TRecord, TKey>, TRecord extends Record<TKey>, TKey>(state: TState, action: any, prefix: string = ''): TState {
     let newState = Object.assign({}, state);

@@ -21,16 +21,17 @@ export class DynamicFieldsEditComponent extends BaseComponent<DocumentRecordStat
   public actions: DocumentRecordActionsBase<any, any>;
   public store: NgDocumentRecordReduxStore<any, any, any>;
   public selectedField: LocalObject<FieldSchemaViewModel, string>;
+  public editorItem: LocalObject<FieldSchemaViewModel, string>;
 
   constructor(
     public router: Router,
     public activatedRoute: ActivatedRoute,
     public editorNavService: EditorNavService,
-    public redux: NgSkysmackStore,
+    public skysmackStore: NgSkysmackStore,
     public fieldsConfig: NgDynamicFieldsFieldsConfig,
     public injector: Injector
   ) {
-    super(router, activatedRoute, redux);
+    super(router, activatedRoute, skysmackStore);
   }
 
   ngOnInit() {
@@ -44,12 +45,16 @@ export class DynamicFieldsEditComponent extends BaseComponent<DocumentRecordStat
         this.actions.getSingleField(this.packagePath);
         return combineLatest(
           this.store.getAvailableFields(this.packagePath),
-          this.store.getSingleField(this.packagePath, this.entityId)
+          this.store.getSingleField(this.packagePath, this.entityId),
+          this.skysmackStore.getEditorItem()
         );
       }),
       map(values => {
-        this.selectedField = values[1];
-        return this.fieldsConfig.getDynamicFields(values[0], values[1]);
+        const availableFields = values[0];
+        const field = values[1];
+        this.editorItem = values[2];
+        this.editorItem ? this.selectedField = this.editorItem : this.selectedField = field;
+        return this.fieldsConfig.getDynamicFields(availableFields, field);
       })
     ).subscribe(fields => this.fields = fields));
 

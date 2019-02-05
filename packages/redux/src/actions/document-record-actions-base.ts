@@ -2,7 +2,7 @@ import { Store } from 'redux';
 import { RecordActionsBase } from './record-actions-base';
 import { ReduxAction } from './../action-types';
 import { PackagePathPayload } from './../payloads/package-path-payload';
-import { FieldSchemaViewModel, LocalObject, HttpMethod, LocalObjectStatus } from '@skysmack/framework';
+import { FieldSchemaViewModel, LocalObject, HttpMethod, LocalObjectStatus, QueueItem, NumIndex } from '@skysmack/framework';
 import { Effect } from '../models/effect';
 import { EffectRequest } from '../models/effect-request';
 import { CancelActionMeta } from '../metas/offline-redux/cancel-action-meta';
@@ -83,6 +83,17 @@ export abstract class DocumentRecordActionsBase<TStateType, TStore extends Store
     }
 
     public addFields(fields: LocalObject<FieldSchemaViewModel, string>[], packagePath: string) {
+        const queueItems = fields.map(field => {
+            return new QueueItem({
+                message: `${this.prefix.replace('_', '.')}QUEUE.ADDING`,
+                messageParams: this.getFieldMessageParams(field),
+                link: `${this.addAdditionalPaths(packagePath)}/fields/create`,
+                packagePath,
+                localObject: field,
+                cancelAction: this.cancelDynamicFieldAction
+            });
+        })
+
         this.store.dispatch(Object.assign({}, new ReduxAction<any, any>({
             type: this.prefix + DocumentRecordActionsBase.ADD_FIELD,
             meta: {
@@ -96,14 +107,16 @@ export abstract class DocumentRecordActionsBase<TStateType, TStore extends Store
                         type: this.prefix + DocumentRecordActionsBase.ADD_FIELD_SUCCESS,
                         meta: {
                             value: fields,
-                            packagePath
+                            packagePath,
+                            queueItems
                         }
                     }),
                     rollback: new ReduxAction({
                         type: this.prefix + DocumentRecordActionsBase.ADD_FIELD_FAILURE,
                         meta: {
                             value: fields,
-                            packagePath
+                            packagePath,
+                            queueItems
                         }
                     })
                 }
@@ -112,6 +125,18 @@ export abstract class DocumentRecordActionsBase<TStateType, TStore extends Store
     }
 
     public updateFields(fields: LocalObject<FieldSchemaViewModel, string>[], packagePath: string) {
+
+        const queueItems = fields.map(field => {
+            return new QueueItem({
+                message: `${this.prefix.replace('_', '.')}QUEUE.UPDATING`,
+                messageParams: this.getFieldMessageParams(field),
+                link: `${this.addAdditionalPaths(packagePath)}/fields/edit/${field.object.key}`,
+                packagePath,
+                localObject: field,
+                cancelAction: this.cancelDynamicFieldAction
+            });
+        });
+
         this.store.dispatch(Object.assign({}, new ReduxAction<any, any>({
             type: this.prefix + DocumentRecordActionsBase.UPDATE_FIELD,
             meta: {
@@ -130,14 +155,16 @@ export abstract class DocumentRecordActionsBase<TStateType, TStore extends Store
                             value: fields,
                             packagePath,
                             // TODO: Remove below when fields return only the modified fields back
-                            temp: fields[0].object.key
+                            temp: fields[0].object.key,
+                            queueItems
                         }
                     }),
                     rollback: new ReduxAction({
                         type: this.prefix + DocumentRecordActionsBase.UPDATE_FIELD_FAILURE,
                         meta: {
                             value: fields,
-                            packagePath
+                            packagePath,
+                            queueItems
                         }
                     })
                 }
@@ -145,8 +172,19 @@ export abstract class DocumentRecordActionsBase<TStateType, TStore extends Store
         })));
     }
 
-    public deleteFields(fields: LocalObject<FieldSchemaViewModel, string>[], packagePath: string) {
+    public deleteFields = (fields: LocalObject<FieldSchemaViewModel, string>[], packagePath: string) => {
         const paths = '?keys=' + fields.map(x => x.object.key).join('&keys=');
+
+        const queueItems = fields.map(field => {
+            return new QueueItem({
+                message: `${this.prefix.replace('_', '.')}QUEUE.DELETING`,
+                messageParams: this.getFieldMessageParams(field),
+                packagePath,
+                localObject: field,
+                cancelAction: this.cancelDynamicFieldAction,
+                deleteAction: this.deleteFields
+            });
+        });
 
         this.store.dispatch(Object.assign({}, new ReduxAction<any, any>({
             type: this.prefix + DocumentRecordActionsBase.DELETE_FIELD,
@@ -164,18 +202,26 @@ export abstract class DocumentRecordActionsBase<TStateType, TStore extends Store
                         type: this.prefix + DocumentRecordActionsBase.DELETE_FIELD_SUCCESS,
                         meta: {
                             value: fields,
-                            packagePath
+                            packagePath,
+                            queueItems
                         }
                     }),
                     rollback: new ReduxAction({
                         type: this.prefix + DocumentRecordActionsBase.DELETE_FIELD_FAILURE,
                         meta: {
                             value: fields,
-                            packagePath
+                            packagePath,
+                            queueItems
                         }
                     })
                 }
             }
         })));
     }
+
+    protected getFieldMessageParams(field: LocalObject<FieldSchemaViewModel, string>): NumIndex<string> {
+        return {
+            0: field.object.display
+        };
+    };
 }
