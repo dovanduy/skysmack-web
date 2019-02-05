@@ -7,9 +7,6 @@ import { EditorNavService } from '@skysmack/portal-ui';
 import { NgPersonsFieldsConfig, NgPersonFormDependencies } from '@skysmack/ng-packages';
 import { DocumentRecordFormComponent } from '@skysmack/portal-ui';
 import { NgPersonsStore } from '@skysmack/ng-packages';
-import { combineLatest } from 'rxjs';
-import { map } from 'rxjs/operators';
-import { LocalObject } from '@skysmack/framework';
 
 @Component({
   selector: 'ss-persons-create',
