@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
-import { LocalObject } from '@skysmack/framework';
+import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { Assignment, AssignmentType } from '@skysmack/packages-maintenance';
 import { NgAssignmentsValidation } from './ng-assignments-validation';
 import { FieldsConfig, FormRule, Field, SelectField, FieldTypes } from '@skysmack/ng-ui';
@@ -59,7 +59,7 @@ export class NgAssignmentsFieldsConfig extends FieldsConfig<Assignment, NgAssign
 
         // Id field must only be added for edit forms.
         // If added to a create form, it won't be able to bind in the backend.
-        if (entity && entity.object.id) {
+        if (entity && entity.object.id && entity.status !== LocalObjectStatus.CREATING && entity.status !== LocalObjectStatus.ERROR) {
             fields.push(new Field({
                 fieldType: FieldTypes.HiddenField,
                 value: entity ? entity.object.id : undefined,

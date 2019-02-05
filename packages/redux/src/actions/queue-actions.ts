@@ -3,7 +3,7 @@ import { ReduxAction } from './../action-types';
 import { QueueItem } from '@skysmack/framework';
 
 export class QueueActions<TStore extends Store> {
-    public static SET_QUEUE_ITEMS = 'ADD_QUEUE_ITEMS';
+    public static SET_QUEUE_ITEMS = 'SET_QUEUE_ITEMS';
     public static REMOVE_QUEUE_ITEMS = 'REMOVE_QUEUE_ITEMS';
 
     constructor(

@@ -32,5 +32,4 @@ export class QueueComponent implements OnInit {
     this.skysmackStore.setEditorItem(queueItem.localObject);
     this.router.navigate([queueItem.link]);
   }
-
 }

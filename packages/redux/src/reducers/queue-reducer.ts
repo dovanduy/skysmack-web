@@ -20,7 +20,7 @@ export function queueReducer(state = new QueueState(), action: ReduxAction): Que
         case QueueActions.SET_QUEUE_ITEMS: {
             const castedAction = action as ReduxAction<QueueItem[]>;
 
-            // Remove existing items, if any
+            // Remove existing items, if any (LocalId is used as criteria for match)
             // https://stackoverflow.com/questions/19957348/javascript-arrays-remove-all-elements-contained-in-another-array - see answer 3
             for (let itemIndex = newState.items.length - 1; itemIndex >= 0; itemIndex--) {
                 for (let incomingItemIndex = 0; incomingItemIndex < castedAction.payload.length; incomingItemIndex++) {

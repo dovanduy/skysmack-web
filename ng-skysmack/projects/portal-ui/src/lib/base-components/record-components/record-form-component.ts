@@ -1,6 +1,6 @@
 import { Router, ActivatedRoute } from '@angular/router';
 import { OnInit, OnDestroy } from '@angular/core';
-import { Record } from '@skysmack/framework';
+import { Record, LocalObject } from '@skysmack/framework';
 import { FieldsConfig } from '@skysmack/ng-ui';
 import { EditorNavService } from './../../components/common/container/editor-nav.service';
 import { FormBaseComponent } from './../form-base-component';
@@ -12,6 +12,8 @@ import { map } from 'rxjs/operators';
 import { NgRecordReduxStore } from '@skysmack/ng-redux';
 
 export class RecordFormComponent<TAppState, TRecord extends Record<TKey>, TKey, TDependencies> extends FormBaseComponent<TAppState, TRecord, TKey, TDependencies> implements OnInit, OnDestroy {
+
+    public editorItem: LocalObject<TRecord, TKey>;
 
     constructor(
         public router: Router,
@@ -64,7 +66,9 @@ export class RecordFormComponent<TAppState, TRecord extends Record<TKey>, TKey, 
 
     protected create(fh: FormHelper) {
         fh.formValid(() => {
-            this.actions.add<TRecord, TKey>([this.extractFormValues(fh)], this.packagePath);
+            const localObject = this.extractFormValues(fh);
+            this.editorItem ? localObject.localId = this.editorItem.localId : localObject.localId = localObject.localId;
+            this.actions.add<TRecord, TKey>([localObject], this.packagePath);
             this.editorNavService.hideEditorNav();
         });
     }

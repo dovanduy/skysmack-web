@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { FormRule, SelectField } from '@skysmack/ng-ui';
-import { LocalObject } from '@skysmack/framework';
+import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { Field } from '@skysmack/ng-ui';
 import { FieldTypes } from '@skysmack/ng-ui';
 import { FieldsConfig } from '@skysmack/ng-ui';
@@ -55,7 +55,7 @@ export class NgAccessPolicyRulesFieldsConfig extends FieldsConfig<AccessPolicyRu
             } as Field)
         ];
 
-        if (entity && entity.object.id) {
+        if (entity && entity.object.id && entity.status !== LocalObjectStatus.CREATING && entity.status !== LocalObjectStatus.ERROR) {
             fields.push(new Field({
                 fieldType: FieldTypes.HiddenField,
                 value: entity ? entity.object.id : undefined,

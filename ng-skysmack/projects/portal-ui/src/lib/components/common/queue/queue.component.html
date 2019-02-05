@@ -11,7 +11,7 @@
         <p *ngIf="item.cancelAction" [attr.data-status]="item.localObject.object.status">
           {{ item.message | translate:item.messageParams }} -
           <a (click)="item.cancelAction(item.localObject, item.packagePath)">Cancel</a></p>
-        <p *ngIf="item.link" [attr.data-status]="item.localObject.object.status" (click)="toEditor(item)">
+        <p *ngIf="item.error" [attr.data-status]="item.localObject.object.status" (click)="toEditor(item)">
           {{ item.message | translate:item.messageParams }}</p>
       </ng-container>
     </ng-container>

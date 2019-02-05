@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { FormRule } from '@skysmack/ng-ui';
-import { LocalObject } from '@skysmack/framework';
+import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { Terminal } from '@skysmack/packages-terminal-payments';
 import { Field } from '@skysmack/ng-ui';
 import { FieldTypes } from '@skysmack/ng-ui';
@@ -34,7 +34,7 @@ export class NgTerminalsFieldsConfig extends FieldsConfig<Terminal, NgTerminalFo
 
         // Id field must only be added for edit forms.
         // If added to a create form, it won't be able to bind in the backend.
-        if (entity && entity.object.id) {
+        if (entity && entity.object.id && entity.status !== LocalObjectStatus.CREATING && entity.status !== LocalObjectStatus.ERROR) {
             fields.push(new Field({
                 fieldType: FieldTypes.HiddenField,
                 value: entity ? entity.object.id : undefined,

@@ -42,8 +42,8 @@ export class PersonsCreateComponent extends DocumentRecordFormComponent<PersonsA
       ).pipe(
         map(values => {
           const fields = values[0];
-          const editorItem = values[1] as LocalObject<Person, number>;
-          this.fields = this.getFields(editorItem, fields);
+          this.editorItem = values[1] as LocalObject<Person, number>;
+          this.fields = this.getFields(this.editorItem, fields);
         })
       ).subscribe()
     );

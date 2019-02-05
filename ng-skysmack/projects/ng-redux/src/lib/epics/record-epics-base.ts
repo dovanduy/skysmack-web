@@ -24,7 +24,9 @@ export abstract class RecordEpicsBase<TRecord extends Record<TKey>, TKey> {
             this.snackBarCreateFailureEpic,
             this.snackBarUpdateFailureEpic,
             this.snackBarRemoveFailureEpic,
-            this.cancelRecordActionEpic
+            this.cancelRecordActionEpic,
+            this.successActionEpic,
+            this.failureActionEpic
         ];
     }
 
@@ -50,7 +52,7 @@ export abstract class RecordEpicsBase<TRecord extends Record<TKey>, TKey> {
                 this.notifications.getPagedError(action);
             }
             return { type: 'NOTIFICATION' };
-        }),
+        })
     )
 
     public snackBarGetSingleFailureEpic = (action$: ActionsObservable<ReduxAction<HttpErrorResponse, CommitMeta<LocalObject<TRecord, TKey>>>>): Observable<ReduxAction> => action$.pipe(
@@ -60,7 +62,7 @@ export abstract class RecordEpicsBase<TRecord extends Record<TKey>, TKey> {
                 this.notifications.getSingleError(action);
             }
             return { type: 'NOTIFICATION' };
-        }),
+        })
     )
 
     public snackBarCreateSuccessEpic = (action$: ActionsObservable<ReduxAction<unknown, CommitMeta<LocalObject<TRecord, TKey>[]>>>): Observable<ReduxAction> => action$.pipe(
@@ -70,7 +72,7 @@ export abstract class RecordEpicsBase<TRecord extends Record<TKey>, TKey> {
                 this.notifications.addSuccess(action);
             }
             return { type: 'NOTIFICATION' };
-        }),
+        })
     )
 
     public snackBarCreateFailureEpic = (action$: ActionsObservable<ReduxAction<HttpErrorResponse, CommitMeta<LocalObject<TRecord, TKey>[]>>>): Observable<ReduxAction> => action$.pipe(
@@ -80,7 +82,7 @@ export abstract class RecordEpicsBase<TRecord extends Record<TKey>, TKey> {
                 this.notifications.addError(action);
             }
             return { type: 'NOTIFICATION' };
-        }),
+        })
     )
 
     public snackBarUpdateSuccessEpic = (action$: ActionsObservable<ReduxAction<unknown, CommitMeta<LocalObject<TRecord, TKey>[]>>>): Observable<ReduxAction> => action$.pipe(
@@ -138,6 +140,53 @@ export abstract class RecordEpicsBase<TRecord extends Record<TKey>, TKey> {
                         localObject: action.payload.record
                     })
                 ]
+            }))
+        );
+    }
+
+    public successActionEpic = (action$: ActionsObservable<ReduxAction<HttpErrorResponse, CommitMeta<LocalObject<TRecord, TKey>[]>>>): Observable<ReduxAction<QueueItem[]>> => {
+        return action$.pipe(
+            ofType(
+                this.prefix + RecordActionsBase.ADD_SUCCESS,
+                this.prefix + RecordActionsBase.UPDATE_SUCCESS,
+                this.prefix + RecordActionsBase.DELETE_SUCCESS,
+            ),
+            map(action => ({
+                type: QueueActions.REMOVE_QUEUE_ITEMS,
+                payload: action.meta.value.map(record => {
+                    return new QueueItem({
+                        message: ``,
+                        messageParams: {},
+                        packagePath: action.meta.stateKey,
+                        localObject: record,
+                    });
+                })
+            }))
+        );
+    }
+
+    public failureActionEpic = (action$: ActionsObservable<ReduxAction<HttpErrorResponse, CommitMeta<LocalObject<TRecord, TKey>[]>>>): Observable<ReduxAction<QueueItem[]>> => {
+        return action$.pipe(
+            ofType(
+                this.prefix + RecordActionsBase.ADD_FAILURE,
+                this.prefix + RecordActionsBase.UPDATE_FAILURE,
+                this.prefix + RecordActionsBase.DELETE_FAILURE,
+            ),
+            map(action => ({
+                type: QueueActions.SET_QUEUE_ITEMS,
+                payload: action.meta.value.map(record => {
+                    return new QueueItem({
+                        message: `${this.prefix.replace('_', '.')}QUEUE.ERROR`,
+                        // TODO: SET MESSAGE PARAMS - REQUIRES INHERITANCE OVERRIDE LIKE WITH ACTIONS
+                        messageParams: {
+                            0: record.object['displayName']
+                        },
+                        link: `${action.meta.stateKey}/create`,
+                        packagePath: action.meta.stateKey,
+                        localObject: record,
+                        error: action.payload
+                    });
+                })
             }))
         );
     }

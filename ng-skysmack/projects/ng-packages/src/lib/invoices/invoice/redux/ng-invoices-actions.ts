@@ -10,7 +10,7 @@ export class NgInvoicesActions extends DocumentRecordActionsBase<InvoicesAppStat
 
     protected getMessageParams(record: LocalObject<Invoice, number>): NumIndex<string> {
         return {
-            0: record.object.currencyCode
+            0: record.object.currencyCode.toString()
         };
     }
 }

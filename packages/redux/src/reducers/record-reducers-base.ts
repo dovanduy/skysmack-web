@@ -3,7 +3,7 @@ import { Record, LocalObjectExtensions, PageExtensions, toLocalObject, HttpSucce
 import { RecordState } from './../states/record-state';
 import { GetPagedRecordsSuccessPayload, GetSingleRecordSuccessPayload, GetPagedRecordsPayload } from '../payloads';
 import { ReduxAction } from '../action-types/redux-action';
-import { ReduxOfflineMeta, CommitMeta } from './../metas';
+import { ReduxOfflineMeta, CommitMeta, RollbackMeta } from './../metas';
 import { cancelRecordAction } from './cancel-record-action';
 
 export function recordReducersBase<TState extends RecordState<TRecord, TKey>, TRecord extends Record<TKey>, TKey>(state: TState, action: any, prefix: string = ''): TState {
@@ -24,20 +24,12 @@ export function recordReducersBase<TState extends RecordState<TRecord, TKey>, TR
                 sort: castedAction.payload.pagedQuery.sort.build()
             });
             newState.localPageTypes[castedAction.payload.packagePath] = PageExtensions.mergeOrAddPage(newState.localPageTypes[castedAction.payload.packagePath], page, 'loading');
-
-            // TODO: Show Morten
-            // console.log('GETTING', JSON.stringify(newState.localPageTypes[castedAction.payload.packagePath], undefined, 2));
-
             return newState;
         }
         case prefix + RecordActionsBase.GET_PAGED_SUCCESS: {
             const castedAction: ReduxAction<GetPagedRecordsSuccessPayload<TRecord, TKey>> = action;
             newState.localPageTypes[castedAction.payload.packagePath] = PageExtensions.mergeOrAddPage(newState.localPageTypes[castedAction.payload.packagePath], castedAction.payload.page);
             newState.localRecords[castedAction.payload.packagePath] = LocalObjectExtensions.mergeOrAddLocal(newState.localRecords[castedAction.payload.packagePath], castedAction.payload.records.map(x => toLocalObject(x)));
-
-            // TODO: Show Morten
-            // console.log('FINISHED', JSON.stringify(newState.localPageTypes[castedAction.payload.packagePath], undefined, 2));
-
             return newState;
         }
         case prefix + RecordActionsBase.GET_PAGED_FAILURE: {
@@ -70,8 +62,7 @@ export function recordReducersBase<TState extends RecordState<TRecord, TKey>, TR
             return newState;
         }
         case prefix + RecordActionsBase.ADD_FAILURE: {
-            const castedAction: ReduxAction<HttpErrorResponse> = action;
-            console.log('Add error', castedAction);
+            setActionError(action, 'Add error: ');
             return newState;
         }
         case prefix + RecordActionsBase.UPDATE_SUCCESS: {
@@ -82,8 +73,7 @@ export function recordReducersBase<TState extends RecordState<TRecord, TKey>, TR
             return newState;
         }
         case prefix + RecordActionsBase.UPDATE_FAILURE: {
-            const castedAction: ReduxAction<HttpErrorResponse> = action;
-            console.log('Update error', castedAction);
+            setActionError(action, 'Update error: ');
             return newState;
         }
         case prefix + RecordActionsBase.DELETE_SUCCESS: {
@@ -94,11 +84,19 @@ export function recordReducersBase<TState extends RecordState<TRecord, TKey>, TR
             return newState;
         }
         case prefix + RecordActionsBase.DELETE_FAILURE: {
-            const castedAction: ReduxAction<HttpErrorResponse> = action;
-            console.log('Delete error', castedAction);
+            setActionError(action, 'Delete error: ');
             return newState;
         }
         default:
             return state;
     }
+}
+
+function setActionError<TRecord extends Record<TKey>, TKey>(action: ReduxAction<HttpErrorResponse, RollbackMeta<LocalObject<TRecord, TKey>[]>>, message: string = 'Error: '): void {
+    action.meta.value.forEach(record => {
+        record.status = LocalObjectStatus.ERROR;
+        record.object.id = 0 as any;
+    });
+    // TODO: Delete this in production?
+    console.log(message, action);
 }

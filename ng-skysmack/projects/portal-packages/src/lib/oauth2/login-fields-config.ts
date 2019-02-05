@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { FormRule, FieldTypes, Field, FieldsConfig } from '@skysmack/ng-ui';
 import { LoginValidation } from './login-validation';
-import { LocalObject } from '@skysmack/framework';
+import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
 
 @Injectable({ providedIn: 'root' })
 export class LoginFieldsConfig extends FieldsConfig<any, any> {

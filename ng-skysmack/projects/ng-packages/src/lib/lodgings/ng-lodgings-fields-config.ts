@@ -2,7 +2,7 @@ import { Lodging, LodgingType } from '@skysmack/packages-lodgings';
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { FormRule, Field, FieldTypes, SelectField, FieldsConfig } from '@skysmack/ng-ui';
-import { LocalObject } from '@skysmack/framework';
+import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { NgLodgingsValidation } from './ng-lodgings-validation';
 
 export interface NgLodgingFormDependencies {
@@ -52,7 +52,7 @@ export class NgLodgingsFieldsConfig extends FieldsConfig<Lodging, NgLodgingFormD
 
         // Id field must only be added for edit forms.
         // If added to a create form, it won't be able to bind in the backend.
-        if (entity && entity.object.id) {
+        if (entity && entity.object.id && entity.status !== LocalObjectStatus.CREATING && entity.status !== LocalObjectStatus.ERROR) {
             fields.push(new Field({
                 fieldType: FieldTypes.HiddenField,
                 value: entity ? entity.object.id : undefined,
