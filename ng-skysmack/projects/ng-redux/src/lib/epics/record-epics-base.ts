@@ -11,7 +11,7 @@ export abstract class RecordEpicsBase<TRecord extends Record<TKey>, TKey> {
     constructor(
         protected requests: RecordRequests<TRecord, TKey>,
         protected prefix: string,
-        protected notifications?: RecordNotifications<TRecord, TKey>
+        protected notifications: RecordNotifications<TRecord, TKey>
     ) {
         this.epics = [
             this.getPagedEpic,
@@ -49,9 +49,7 @@ export abstract class RecordEpicsBase<TRecord extends Record<TKey>, TKey> {
     public snackBarGetPagedFailureEpic = (action$: ActionsObservable<ReduxAction<HttpErrorResponse, CommitMeta<LocalObject<TRecord, TKey>[]>>>): Observable<ReduxAction> => action$.pipe(
         ofType(this.prefix + RecordActionsBase.GET_PAGED_FAILURE),
         map((action) => {
-            if (this.notifications) {
-                this.notifications.getPagedError(action);
-            }
+            this.notifications.getPagedError(action);
             return { type: 'NOTIFICATION' };
         })
     )
@@ -59,9 +57,7 @@ export abstract class RecordEpicsBase<TRecord extends Record<TKey>, TKey> {
     public snackBarGetSingleFailureEpic = (action$: ActionsObservable<ReduxAction<HttpErrorResponse, CommitMeta<LocalObject<TRecord, TKey>>>>): Observable<ReduxAction> => action$.pipe(
         ofType(this.prefix + RecordActionsBase.GET_SINGLE_FAILURE),
         map((action) => {
-            if (this.notifications) {
-                this.notifications.getSingleError(action);
-            }
+            this.notifications.getSingleError(action);
             return { type: 'NOTIFICATION' };
         })
     )
@@ -69,9 +65,7 @@ export abstract class RecordEpicsBase<TRecord extends Record<TKey>, TKey> {
     public snackBarCreateSuccessEpic = (action$: ActionsObservable<ReduxAction<unknown, CommitMeta<LocalObject<TRecord, TKey>[]>>>): Observable<ReduxAction> => action$.pipe(
         ofType(this.prefix + RecordActionsBase.ADD_SUCCESS),
         map((action) => {
-            if (this.notifications) {
-                this.notifications.addSuccess(action);
-            }
+            this.notifications.addSuccess(action);
             return { type: 'NOTIFICATION' };
         })
     )
@@ -79,9 +73,7 @@ export abstract class RecordEpicsBase<TRecord extends Record<TKey>, TKey> {
     public snackBarCreateFailureEpic = (action$: ActionsObservable<ReduxAction<HttpErrorResponse, CommitMeta<LocalObject<TRecord, TKey>[]>>>): Observable<ReduxAction> => action$.pipe(
         ofType(this.prefix + RecordActionsBase.ADD_FAILURE),
         map((action) => {
-            if (this.notifications) {
-                this.notifications.addError(action);
-            }
+            this.notifications.addError(action);
             return { type: 'NOTIFICATION' };
         })
     )
@@ -89,9 +81,7 @@ export abstract class RecordEpicsBase<TRecord extends Record<TKey>, TKey> {
     public snackBarUpdateSuccessEpic = (action$: ActionsObservable<ReduxAction<unknown, CommitMeta<LocalObject<TRecord, TKey>[]>>>): Observable<ReduxAction> => action$.pipe(
         ofType(this.prefix + RecordActionsBase.UPDATE_SUCCESS),
         map(action => {
-            if (this.notifications) {
-                this.notifications.updateSuccess(action);
-            }
+            this.notifications.updateSuccess(action);
             return { type: 'NOTIFICATION' };
         })
     )
@@ -99,9 +89,7 @@ export abstract class RecordEpicsBase<TRecord extends Record<TKey>, TKey> {
     public snackBarUpdateFailureEpic = (action$: ActionsObservable<ReduxAction<HttpErrorResponse, CommitMeta<LocalObject<TRecord, TKey>[]>>>): Observable<ReduxAction> => action$.pipe(
         ofType(this.prefix + RecordActionsBase.UPDATE_FAILURE),
         map(action => {
-            if (this.notifications) {
-                this.notifications.updateError(action);
-            }
+            this.notifications.updateError(action);
             return { type: 'NOTIFICATION' };
         })
     )
@@ -109,9 +97,7 @@ export abstract class RecordEpicsBase<TRecord extends Record<TKey>, TKey> {
     public snackBarRemoveSuccessEpic = (action$: ActionsObservable<ReduxAction<unknown, CommitMeta<LocalObject<TRecord, TKey>[]>>>): Observable<ReduxAction> => action$.pipe(
         ofType(this.prefix + RecordActionsBase.DELETE_SUCCESS),
         map((action) => {
-            if (this.notifications) {
-                this.notifications.removeSuccess(action);
-            }
+            this.notifications.removeSuccess(action);
             return { type: 'NOTIFICATION' };
         })
     )
@@ -119,9 +105,7 @@ export abstract class RecordEpicsBase<TRecord extends Record<TKey>, TKey> {
     public snackBarRemoveFailureEpic = (action$: ActionsObservable<ReduxAction<HttpErrorResponse, CommitMeta<LocalObject<TRecord, TKey>[]>>>): Observable<ReduxAction> => action$.pipe(
         ofType(this.prefix + RecordActionsBase.DELETE_FAILURE),
         map((action) => {
-            if (this.notifications) {
-                this.notifications.removeError(action);
-            }
+            this.notifications.removeError(action);
             return { type: 'NOTIFICATION' };
         })
     )

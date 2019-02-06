@@ -10,15 +10,16 @@ export abstract class DocumentRecordEpicsBase<TRecord extends Record<TKey>, TKey
     constructor(
         protected requests: DocumentRecordRequests<TRecord, TKey>,
         protected prefix: string,
-        protected notifications?: DocumentRecordNotifications<TRecord, TKey>
+        protected notifications: DocumentRecordNotifications<TRecord, TKey>
     ) {
-        super(requests, prefix);
+        super(requests, prefix, notifications);
         this.epics = this.epics.concat([
             this.getFieldsEpic,
             this.getSingleFieldEpic,
             this.getAvailableFieldsEpic,
             this.snackBarGetFieldsFailureEpic,
             this.snackBarGetSingleFieldFailureEpic,
+            this.snackBarGetAvailableFieldsFailureEpic,
             this.snackBarFieldCreateSuccessEpic,
             this.snackBarFieldUpdateSuccessEpic,
             this.snackBarFieldRemoveSuccessEpic,
@@ -51,9 +52,7 @@ export abstract class DocumentRecordEpicsBase<TRecord extends Record<TKey>, TKey
     public snackBarGetFieldsFailureEpic = (action$: ActionsObservable<ReduxAction<any, CommitMeta<LocalObject<FieldSchemaViewModel, string>[]>>>): Observable<ReduxAction> => action$.pipe(
         ofType(this.prefix + DocumentRecordActionsBase.GET_FIELDS_FAILURE),
         map((action) => {
-            if (this.notifications) {
-                this.notifications.getFieldsError(action);
-            }
+            this.notifications.getFieldsError(action);
             return { type: 'NOTIFICATION' };
         }),
     )
@@ -61,9 +60,15 @@ export abstract class DocumentRecordEpicsBase<TRecord extends Record<TKey>, TKey
     public snackBarGetSingleFieldFailureEpic = (action$: ActionsObservable<ReduxAction<any, CommitMeta<LocalObject<FieldSchemaViewModel, string>>>>): Observable<ReduxAction> => action$.pipe(
         ofType(this.prefix + DocumentRecordActionsBase.GET_SINGLE_FAILURE),
         map((action) => {
-            if (this.notifications) {
-                this.notifications.getSingleFieldError(action);
-            }
+            this.notifications.getSingleFieldError(action);
+            return { type: 'NOTIFICATION' };
+        }),
+    )
+
+    public snackBarGetAvailableFieldsFailureEpic = (action$: ActionsObservable<ReduxAction<any, CommitMeta<LocalObject<FieldSchemaViewModel, string>>>>): Observable<ReduxAction> => action$.pipe(
+        ofType(this.prefix + DocumentRecordActionsBase.GET_AVAILABLE_FIELDS_FAILURE),
+        map((action) => {
+            this.notifications.getAvailableFieldsFailure(action);
             return { type: 'NOTIFICATION' };
         }),
     )
@@ -71,9 +76,7 @@ export abstract class DocumentRecordEpicsBase<TRecord extends Record<TKey>, TKey
     public snackBarFieldCreateSuccessEpic = (action$: ActionsObservable<ReduxAction<any, CommitMeta<LocalObject<FieldSchemaViewModel, string>[]>>>): Observable<ReduxAction> => action$.pipe(
         ofType(this.prefix + DocumentRecordActionsBase.ADD_FIELD_SUCCESS),
         map((action) => {
-            if (this.notifications) {
-                this.notifications.addFieldSuccess(action);
-            }
+            this.notifications.addFieldSuccess(action);
             return { type: 'NOTIFICATION' };
         }),
     )
@@ -81,9 +84,7 @@ export abstract class DocumentRecordEpicsBase<TRecord extends Record<TKey>, TKey
     public snackBarFieldCreateFailureEpic = (action$: ActionsObservable<ReduxAction<any, CommitMeta<LocalObject<FieldSchemaViewModel, string>[]>>>): Observable<ReduxAction> => action$.pipe(
         ofType(this.prefix + DocumentRecordActionsBase.ADD_FIELD_FAILURE),
         map((action) => {
-            if (this.notifications) {
-                this.notifications.addFieldError(action);
-            }
+            this.notifications.addFieldError(action);
             return { type: 'NOTIFICATION' };
         }),
     )
@@ -91,9 +92,7 @@ export abstract class DocumentRecordEpicsBase<TRecord extends Record<TKey>, TKey
     public snackBarFieldUpdateSuccessEpic = (action$: ActionsObservable<ReduxAction<any, CommitMeta<LocalObject<FieldSchemaViewModel, string>[]>>>): Observable<ReduxAction> => action$.pipe(
         ofType(this.prefix + DocumentRecordActionsBase.UPDATE_FIELD_SUCCESS),
         map(action => {
-            if (this.notifications) {
-                this.notifications.updateFieldSuccess(action);
-            }
+            this.notifications.updateFieldSuccess(action);
             return { type: 'NOTIFICATION' };
         })
     )
@@ -101,9 +100,7 @@ export abstract class DocumentRecordEpicsBase<TRecord extends Record<TKey>, TKey
     public snackBarFieldUpdateFailureEpic = (action$: ActionsObservable<ReduxAction<any, CommitMeta<LocalObject<FieldSchemaViewModel, string>[]>>>): Observable<ReduxAction> => action$.pipe(
         ofType(this.prefix + DocumentRecordActionsBase.UPDATE_FIELD_FAILURE),
         map(action => {
-            if (this.notifications) {
-                this.notifications.updateFieldError(action);
-            }
+            this.notifications.updateFieldError(action);
             return { type: 'NOTIFICATION' };
         })
     )
@@ -111,9 +108,7 @@ export abstract class DocumentRecordEpicsBase<TRecord extends Record<TKey>, TKey
     public snackBarFieldRemoveSuccessEpic = (action$: ActionsObservable<ReduxAction<any, CommitMeta<LocalObject<FieldSchemaViewModel, string>[]>>>): Observable<ReduxAction> => action$.pipe(
         ofType(this.prefix + DocumentRecordActionsBase.DELETE_FIELD_SUCCESS),
         map((action) => {
-            if (this.notifications) {
-                this.notifications.removeFieldSuccess(action);
-            }
+            this.notifications.removeFieldSuccess(action);
             return { type: 'NOTIFICATION' };
         })
     )
@@ -121,9 +116,7 @@ export abstract class DocumentRecordEpicsBase<TRecord extends Record<TKey>, TKey
     public snackBarFieldRemoveFailureEpic = (action$: ActionsObservable<ReduxAction<any, CommitMeta<LocalObject<FieldSchemaViewModel, string>[]>>>): Observable<ReduxAction> => action$.pipe(
         ofType(this.prefix + DocumentRecordActionsBase.DELETE_FIELD_FAILURE),
         map((action) => {
-            if (this.notifications) {
-                this.notifications.removeFieldError(action);
-            }
+            this.notifications.removeFieldError(action);
             return { type: 'NOTIFICATION' };
         })
     )

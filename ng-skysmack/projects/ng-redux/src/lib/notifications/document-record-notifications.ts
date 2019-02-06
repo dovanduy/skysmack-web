@@ -18,6 +18,12 @@ export abstract class DocumentRecordNotifications<TRecord, TKey> extends RecordN
         });
     }
 
+    public getAvailableFieldsFailure(action: ReduxAction<any, CommitMeta<LocalObject<FieldSchemaViewModel, string>>>) {
+        this.checkOfflineStatus(action, () => {
+            this.notifications.showTranslatedSnackbarMessage(this.defaultTranslationString + 'GET.AVAILABLE_FIELDs_FAILURE', this.getErrorParams(action), undefined, 2000);
+        });
+    }
+
     public addFieldSuccess(action: ReduxAction<any, CommitMeta<LocalObject<FieldSchemaViewModel, string>[]>>) {
         this.notifications.showTranslatedSnackbarMessage(this.defaultTranslationString + 'ADD.FIELD_SUCCESS', {}, undefined, 2000);
     }
