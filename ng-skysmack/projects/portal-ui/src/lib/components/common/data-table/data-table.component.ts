@@ -7,8 +7,6 @@ import { MenuItem } from '@skysmack/ng-ui';
 import { EditorNavService } from '../container/editor-nav.service';
 import { EntityAction } from '@skysmack/ng-ui';
 import { EntityComponentPageTitle } from './../../../models/entity-component-page-title';
-import { RecordActionsBase, AppState } from '@skysmack/redux';
-import { NgRedux } from '@angular-redux/store';
 
 @Component({
   selector: 'ss-data-table',
@@ -28,7 +26,6 @@ export class DataTableComponent implements OnDestroy, OnInit {
   @Input() public displayedColumns: string[] = [];
   @Input() public displayActions = true;
   @Input() public displayCheckboxes = false;
-  @Input() public showDelete = false;
   @Input() public entityActions: MenuItem[] | EntityAction[] = [];
 
   // Input needed for cancel action
@@ -75,7 +72,6 @@ export class DataTableComponent implements OnDestroy, OnInit {
   }
 
   public runCancelAction(entity: LocalObject<any, any>) {
-    console.log(entity, this.packagePath);
     this.cancelAction(entity, this.packagePath);
   }
 

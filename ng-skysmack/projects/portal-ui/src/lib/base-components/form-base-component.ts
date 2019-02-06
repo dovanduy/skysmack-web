@@ -38,8 +38,7 @@ export class FormBaseComponent<TAppState, TRecord extends Record<TKey>, TKey, TD
      * @param dynamicFields Any dynamic fields added to the package.
      * @param dependencies Any dependencies the form needs.
      */
-    protected getFields(entity?: LocalObject<TRecord, TKey>, dynamicFields?: LocalObject<FieldSchemaViewModel,
-        string>[], dependencies?: TDependencies): Field[] {
+    protected getFields(entity?: LocalObject<TRecord, TKey>, dynamicFields?: LocalObject<FieldSchemaViewModel, string>[], dependencies?: TDependencies): Field[] {
         const fields = this.fieldsConfig.getStaticFields(entity, dependencies);
         if (dynamicFields) {
             const returnfields = [

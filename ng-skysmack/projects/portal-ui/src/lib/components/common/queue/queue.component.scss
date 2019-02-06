@@ -2,14 +2,15 @@
     color: green;
 }
 
-[data-status="ERROR"] {
-    color: red;
-}
-
 [data-status="MODIFYING"] {
     color: purple;
 }
 
 [data-status="DELETING"] {
     color: brown;
+}
+
+
+[data-error="true"] {
+    color: red;
 }

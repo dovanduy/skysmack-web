@@ -84,7 +84,7 @@ export abstract class DocumentRecordActionsBase<TStateType, TStore extends Store
         })));
     }
 
-    public addFields(fields: LocalObject<FieldSchemaViewModel, string>[], packagePath: string) {
+    public addFields = (fields: LocalObject<FieldSchemaViewModel, string>[], packagePath: string) => {
         const queueItems = fields.map(field => {
             return new QueueItem({
                 message: `${this.prefix.replace('_', '.')}QUEUE.ADDING`,
@@ -126,7 +126,7 @@ export abstract class DocumentRecordActionsBase<TStateType, TStore extends Store
         })));
     }
 
-    public updateFields(fields: LocalObject<FieldSchemaViewModel, string>[], packagePath: string) {
+    public updateFields = (fields: LocalObject<FieldSchemaViewModel, string>[], packagePath: string) => {
 
         const queueItems = fields.map(field => {
             return new QueueItem({

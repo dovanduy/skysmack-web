@@ -8,10 +8,10 @@
     </ng-container>
     <ng-container *ngIf="queue.length > 0">
       <ng-container *ngFor="let item of queue$ | async">
-        <p [attr.data-status]="item.localObject.status">
+        <p [attr.data-status]="item.localObject.status" [attr.data-error]="item.localObject.error">
           {{ item.message | translate:item.messageParams }}
           <!-- ERROR -->
-          <ng-container *ngIf="item.localObject.status === 'ERROR'">
+          <ng-container *ngIf="item.localObject.error">
             <ng-container *ngIf="!item.deleteAction">
               - <a (click)="toEditor(item)">Retry</a>
             </ng-container>
@@ -22,10 +22,11 @@
             - <a (click)="retryDelete(item)">Retry</a>
           </ng-container>
 
-          <!-- IN QUEUE -->
-          <ng-container *ngIf="item.localObject.status !== 'ERROR'">
+          <!-- CANCEL -->
+          <ng-container *ngIf="item.localObject.status !== 'OK' || item.localObject.error">
             - <a (click)="item.cancelAction(item.localObject, item.packagePath)">Cancel</a>
           </ng-container>
+
         </p>
       </ng-container>
     </ng-container>
