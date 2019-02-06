@@ -7,11 +7,12 @@ import { Observable } from 'rxjs';
 import { HttpErrorResponse } from '@skysmack/framework';
 import { switchMap } from 'rxjs/operators';
 import { GetIntervalPayload, ReduxAction } from '@skysmack/redux';
+import { NgLodgingReservationsNotifications } from '../ng-lodging-reservations-notifications';
 
 @Injectable({ providedIn: 'root' })
 export class NgLodgingReservationsEpics extends RecordEpicsBase<LodgingReservation, number> {
-    constructor(protected requests: NgLodgingReservationsRequests) {
-        super(requests, 'LODGING_RESERVATIONS_');
+    constructor(protected requests: NgLodgingReservationsRequests, protected notifications: NgLodgingReservationsNotifications) {
+        super(requests, 'LODGING_RESERVATIONS_', notifications);
         this.epics = this.epics.concat([
             this.getAvailableLodgingsEpic
         ]);

@@ -8,11 +8,12 @@ import { HttpErrorResponse } from '@skysmack/framework';
 import { NgUsersRequests } from './ng-users-requests';
 import { NgUsersActions } from './ng-users-actions';
 import { Injectable } from '@angular/core';
+import { NgUsersNotifications } from '../ng-users-notifications';
 
 @Injectable({ providedIn: 'root' })
 export class NgUsersEpics extends RecordEpicsBase<User, number> {
-    constructor(protected requests: NgUsersRequests) {
-        super(requests, 'USERS_');
+    constructor(protected requests: NgUsersRequests, protected notifications: NgUsersNotifications) {
+        super(requests, 'USERS_', notifications);
         this.epics = this.epics.concat([
             this.getUsersRolesEpic
         ]);
