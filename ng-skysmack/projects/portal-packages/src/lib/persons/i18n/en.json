@@ -56,8 +56,29 @@
             "ACTIONS": "Actions"
         },
         "NOTIFICATIONS": {
+            "GET": {
+                "PAGED_ERROR": "Failed to get persons ({{ 0 }}).",
+                "SINGLE_FAILURE": "Failed to get {{ 1 }} ({{ 0 }}).",
+                "FIELDS_FAILURE": "Failed to get fields for persons ({{ 0 }}).",
+                "SINGLE_FIELD_FAILURE": "Failed to get {{ 1 }} field ({{ 0 }})."
+            },
             "ADD": {
-                "SUCCESS": "{{ 0 }} was created."
+                "SUCCESS": "Added {{ 1 }} succcessfully.",
+                "FAILURE": "Failed to add {{ 1 }} ({{ 0 }}).",
+                "FIELD_FAILURE": "Failed to add field for {{ 1 }} ({{ 0 }}).",
+                "FIELD_SUCCESS": "Added field for {{ 1 }} successfully."
+            },
+            "UPDATE": {
+                "SUCCESS": "Updated {{ 1 }} successfully.",
+                "FAILURE": "Failed to update {{ 1 }} ({{ 0 }}).",
+                "FIELD_SUCCESS": "Updated field for {{ 1 }} successfully.",
+                "FIELD_FAILURE": "Failed to update field for {{ 1 }} ({{ 0 }})"
+            },
+            "REMOVE": {
+                "SUCCESS": "Removed {{ 1 }} successfully.",
+                "FAILURE": "Failed to remove {{ 1 }} ({{ 0 }}).",
+                "FIELD_SUCCESS": "Removed field for {{ 1 }} succesfully.",
+                "FIELD_FAILURE": "Failed to remove field for {{ 1 }} ({{ 0 }})."
             }
         },
         "QUEUE": {
