@@ -171,15 +171,17 @@ export abstract class DocumentRecordEpicsBase<TRecord extends Record<TKey>, TKey
                 this.prefix + DocumentRecordActionsBase.UPDATE_FIELD_FAILURE,
                 this.prefix + DocumentRecordActionsBase.DELETE_FIELD_FAILURE,
             ),
-            map(action => ({
-                type: QueueActions.SET_QUEUE_ITEMS,
-                payload: action.meta.queueItems.map(queueItems => {
-                    queueItems.message = `${this.prefix.replace('_', '.')}QUEUE.ERROR`;
-                    queueItems.localObject.status = LocalObjectStatus.ERROR;
-                    queueItems.error = action.payload;
-                    return queueItems;
+            map(action => {
+                return ({
+                    type: QueueActions.SET_QUEUE_ITEMS,
+                    payload: action.meta.queueItems.map(queueItems => {
+                        queueItems.message = `${this.prefix.replace('_', '.')}QUEUE.ERROR`;
+                        queueItems.localObject.status = LocalObjectStatus.ERROR;
+                        queueItems.error = action.payload;
+                        return queueItems;
+                    })
                 })
-            }))
+            })
         );
     }
 
