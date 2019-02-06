@@ -72,14 +72,16 @@ export class LodgingReservationsActions extends RecordActionsBase<LodgingReserva
                         type: this.prefix + LodgingReservationsActions.CHECK_IN_SUCCESS,
                         meta: {
                             stateKey: packagePath,
-                            value: entity
+                            value: entity,
+                            queueItems: []
                         }
                     }),
                     new ReduxAction({
                         type: this.prefix + LodgingReservationsActions.CHECK_IN_FAILURE,
                         meta: {
                             stateKey: packagePath,
-                            value: entity
+                            value: entity,
+                            queueItems: []
                         }
                     })
                 )
@@ -100,14 +102,16 @@ export class LodgingReservationsActions extends RecordActionsBase<LodgingReserva
                         type: this.prefix + LodgingReservationsActions.UNDO_CHECK_IN_SUCCESS,
                         meta: {
                             stateKey: packagePath,
-                            value: entity
+                            value: entity,
+                            queueItems: []
                         }
                     }),
                     new ReduxAction({
                         type: this.prefix + LodgingReservationsActions.UNDO_CHECK_IN_FAILURE,
                         meta: {
                             stateKey: packagePath,
-                            value: entity
+                            value: entity,
+                            queueItems: []
                         }
                     })
                 )
@@ -129,14 +133,16 @@ export class LodgingReservationsActions extends RecordActionsBase<LodgingReserva
                         type: this.prefix + LodgingReservationsActions.CANCEL_SUCCESS,
                         meta: {
                             stateKey: packagePath,
-                            value: entity
+                            value: entity,
+                            queueItems: []
                         }
                     }),
                     new ReduxAction({
                         type: this.prefix + LodgingReservationsActions.CANCEL_FAILURE,
                         meta: {
                             stateKey: packagePath,
-                            value: entity
+                            value: entity,
+                            queueItems: []
                         }
                     })
                 )
@@ -157,14 +163,16 @@ export class LodgingReservationsActions extends RecordActionsBase<LodgingReserva
                         type: this.prefix + LodgingReservationsActions.UNDO_CANCEL_SUCCESS,
                         meta: {
                             stateKey: packagePath,
-                            value: entity
+                            value: entity,
+                            queueItems: []
                         }
                     }),
                     new ReduxAction({
                         type: this.prefix + LodgingReservationsActions.UNDO_CANCEL_FAILURE,
                         meta: {
                             stateKey: packagePath,
-                            value: entity
+                            value: entity,
+                            queueItems: []
                         }
                     })
                 )
@@ -186,14 +194,16 @@ export class LodgingReservationsActions extends RecordActionsBase<LodgingReserva
                         type: this.prefix + LodgingReservationsActions.CHECK_OUT_SUCCESS,
                         meta: {
                             stateKey: packagePath,
-                            value: entity
+                            value: entity,
+                            queueItems: []
                         }
                     }),
                     new ReduxAction({
                         type: this.prefix + LodgingReservationsActions.CHECK_OUT_FAILURE,
                         meta: {
                             stateKey: packagePath,
-                            value: entity
+                            value: entity,
+                            queueItems: []
                         }
                     })
                 )
@@ -214,14 +224,16 @@ export class LodgingReservationsActions extends RecordActionsBase<LodgingReserva
                         type: this.prefix + LodgingReservationsActions.UNDO_CHECK_OUT_SUCCESS,
                         meta: {
                             stateKey: packagePath,
-                            value: entity
+                            value: entity,
+                            queueItems: []
                         }
                     }),
                     new ReduxAction({
                         type: this.prefix + LodgingReservationsActions.UNDO_CHECK_OUT_FAILURE,
                         meta: {
                             stateKey: packagePath,
-                            value: entity
+                            value: entity,
+                            queueItems: []
                         }
                     })
                 )
@@ -243,14 +255,16 @@ export class LodgingReservationsActions extends RecordActionsBase<LodgingReserva
                         type: this.prefix + LodgingReservationsActions.MOVE_SUCCESS,
                         meta: {
                             stateKey: packagePath,
-                            value: entity
+                            value: entity,
+                            queueItems: []
                         }
                     }),
                     new ReduxAction({
                         type: this.prefix + LodgingReservationsActions.MOVE_FAILURE,
                         meta: {
                             stateKey: packagePath,
-                            value: entity
+                            value: entity,
+                            queueItems: []
                         }
                     })
                 )
@@ -272,14 +286,16 @@ export class LodgingReservationsActions extends RecordActionsBase<LodgingReserva
                         type: this.prefix + LodgingReservationsActions.UNDO_MOVE_SUCCESS,
                         meta: {
                             stateKey: packagePath,
-                            value: entity
+                            value: entity,
+                            queueItems: []
                         }
                     }),
                     new ReduxAction({
                         type: this.prefix + LodgingReservationsActions.UNDO_MOVE_FAILURE,
                         meta: {
                             stateKey: packagePath,
-                            value: entity
+                            value: entity,
+                            queueItems: []
                         }
                     })
                 )
@@ -301,14 +317,16 @@ export class LodgingReservationsActions extends RecordActionsBase<LodgingReserva
                         type: this.prefix + LodgingReservationsActions.NO_SHOW_SUCCESS,
                         meta: {
                             stateKey: packagePath,
-                            value: entity
+                            value: entity,
+                            queueItems: []
                         }
                     }),
                     new ReduxAction({
                         type: this.prefix + LodgingReservationsActions.NO_SHOW_FAILURE,
                         meta: {
                             stateKey: packagePath,
-                            value: entity
+                            value: entity,
+                            queueItems: []
                         }
                     })
                 )
@@ -329,14 +347,16 @@ export class LodgingReservationsActions extends RecordActionsBase<LodgingReserva
                         type: this.prefix + LodgingReservationsActions.UNDO_NO_SHOW_SUCCESS,
                         meta: {
                             stateKey: packagePath,
-                            value: entity
+                            value: entity,
+                            queueItems: []
                         }
                     }),
                     new ReduxAction({
                         type: this.prefix + LodgingReservationsActions.UNDO_NO_SHOW_FAILURE,
                         meta: {
                             stateKey: packagePath,
-                            value: entity
+                            value: entity,
+                            queueItems: []
                         }
                     })
                 )

@@ -4,7 +4,7 @@ import { Observable, of } from 'rxjs';
 import { map, retry, catchError } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { NgRecordRequests } from './ng-record-requests';
-import { DocumentRecordRequests } from '@skysmack/redux';
+import { DocumentRecordRequests, GetSingleFieldPayload } from '@skysmack/redux';
 
 export abstract class NgDocumentRecordRequests<TRecord extends Record<TKey>, TKey> extends NgRecordRequests<TRecord, TKey> implements DocumentRecordRequests<TRecord, TKey> {
 
@@ -42,10 +42,10 @@ export abstract class NgDocumentRecordRequests<TRecord extends Record<TKey>, TKe
       );
   }
 
-  public getSingleField(action: ReduxAction<PackagePathPayload>): Observable<ReduxAction<GetSingleFieldSuccessPayload> | ReduxAction<HttpErrorResponse>> {
+  public getSingleField(action: ReduxAction<GetSingleFieldPayload>): Observable<ReduxAction<GetSingleFieldSuccessPayload> | ReduxAction<HttpErrorResponse>> {
     let url = `${this.apiDomain.domain}/${action.payload.packagePath}`;
     url = this.additionalPaths ? [url, ...this.additionalPaths].join('/') : url;
-    url = `${url}/fields`;
+    url = `${url}/fields/${action.payload.fieldKey}`;
 
     return this.http.get<FieldSchemaViewModel>(url, { observe: 'response' }).pipe(
       map(httpResponse => Object.assign({}, new ReduxAction<GetSingleFieldSuccessPayload>({

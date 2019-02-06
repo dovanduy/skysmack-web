@@ -42,7 +42,7 @@ export class DynamicFieldsEditComponent extends BaseComponent<DocumentRecordStat
         this.actions = this.injector.get(data.actionToken);
 
         this.actions.getAvailableFields(this.packagePath);
-        this.actions.getSingleField(this.packagePath);
+        this.actions.getSingleField(this.packagePath, this.entityId);
         return combineLatest(
           this.store.getAvailableFields(this.packagePath),
           this.store.getSingleField(this.packagePath, this.entityId),
