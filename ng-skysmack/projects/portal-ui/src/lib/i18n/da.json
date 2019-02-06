@@ -33,28 +33,28 @@
     },
     "NOTIFICATIONS": {
         "GET": {
-            "PAGED_ERROR": "{{ 1 }} ({{ 0 }}).",
-            "SINGLE_FAILURE": "{{ 1 }} ({{ 0 }}).",
-            "FIELDS_FAILURE": "{{ 1 }} ({{ 0 }}).",
-            "SINGLE_FIELD_FAILURE": "{{ 1 }} ({{ 0 }})."
+            "PAGED_ERROR": "{{ errorMessage }} ({{ httpErrorCode }}).",
+            "SINGLE_FAILURE": "{{ errorMessage }} ({{ httpErrorCode }}).",
+            "FIELDS_FAILURE": "{{ errorMessage }} ({{ httpErrorCode }}).",
+            "SINGLE_FIELD_FAILURE": "{{ errorMessage }} ({{httpErrorCode }})."
         },
         "ADD": {
             "SUCCESS": "Tilføjelsen lykkedes.",
-            "FAILURE": "{{ 1 }} ({{ 0 }}).",
-            "FIELD_FAILURE": "{{ 1 }} ({{ 0 }}).",
+            "FAILURE": "{{ errorMessage }} ({{ httpErrorCode }}).",
+            "FIELD_FAILURE": "{{ errorMessage }} ({{ httpErrorCode }}).",
             "FIELD_SUCCESS": "Tilføjelsen lykkedes."
         },
         "UPDATE": {
             "SUCCESS": "Opdateringen lykkedes.",
-            "FAILURE": "{{ 1 }} ({{ 0 }}).",
+            "FAILURE": "{{ errorMessage }} ({{ httpErrorCode }}).",
             "FIELD_SUCCESS": "Opdateringen lykkedes.",
-            "FIELD_FAILURE": "{{ 1 }} ({{ 0 }})"
+            "FIELD_FAILURE": "{{ errorMessage }} ({httpErrorCode }})"
         },
         "REMOVE": {
             "SUCCESS": "Sletningen lykkedes.",
-            "FAILURE": "{{ 1 }} ({{ 0 }}).",
+            "FAILURE": "{{ errorMessage }} ({{ httpErrorCode }}).",
             "FIELD_SUCCESS": "Sletningen lykkedes.",
-            "FIELD_FAILURE": "{{ 1 }} ({{ 0 }})."
+            "FIELD_FAILURE": "{{ errorMessage }} ({{httpErrorCode }})."
         },
         "CONNECTION_ERROR": "Der kunne ikke oprettes forbindelse til serveren."
     }

@@ -28,7 +28,7 @@ public defaultTranslationString = 'PERSONS.NOTIFICATIONS.';
 
     public addError(action: ReduxAction<HttpErrorResponse, CommitMeta<LocalObject<Person, number>[]>>) {
         this.checkOfflineStatus(action, () => {
-            this.notifications.showTranslatedSnackbarMessage(this.defaultTranslationString + 'ADD.FAILURE', this.getErrorParams(action), undefined, 2000);
+            this.notifications.showTranslatedSnackbarMessage(this.defaultTranslationString + 'ADD.FAILURE', this.getPersonErrorParams(action), undefined, 2000);
         });
     }
 
@@ -38,7 +38,7 @@ public defaultTranslationString = 'PERSONS.NOTIFICATIONS.';
 
     public updateError(action: ReduxAction<HttpErrorResponse, CommitMeta<LocalObject<Person, number>[]>>) {
         this.checkOfflineStatus(action, () => {
-            this.notifications.showTranslatedSnackbarMessage(this.defaultTranslationString + 'UPDATE.FAILURE', this.getErrorParams(action), undefined, 2000);
+            this.notifications.showTranslatedSnackbarMessage(this.defaultTranslationString + 'UPDATE.FAILURE', this.getPersonErrorParams(action), undefined, 2000);
         });
     }
 
@@ -48,13 +48,13 @@ public defaultTranslationString = 'PERSONS.NOTIFICATIONS.';
 
     public removeError(action: ReduxAction<HttpErrorResponse, RollbackMeta<LocalObject<Person, number>[]>>) {
         this.checkOfflineStatus(action, () => {
-            this.notifications.showTranslatedSnackbarMessage(this.defaultTranslationString + 'REMOVE.FAILURE', this.getErrorParams(action), undefined, 2000);
+            this.notifications.showTranslatedSnackbarMessage(this.defaultTranslationString + 'REMOVE.FAILURE', this.getPersonErrorParams(action), undefined, 2000);
         });
     }
 
     public getFieldsError(action: ReduxAction<HttpErrorResponse, RollbackMeta<LocalObject<FieldSchemaViewModel, string>[]>>) {
         this.checkOfflineStatus(action, () => {
-            this.notifications.showTranslatedSnackbarMessage(this.defaultTranslationString + 'GET.FIELDS_FAILURE', this.getPersonFieldParams(action), undefined, 2000);
+            this.notifications.showTranslatedSnackbarMessage(this.defaultTranslationString + 'GET.FIELDS_FAILURE', this.getPersonFieldErrorParams(action), undefined, 2000);
         });
     }
 
@@ -72,7 +72,7 @@ public defaultTranslationString = 'PERSONS.NOTIFICATIONS.';
 
     public addFieldError(action: ReduxAction<HttpErrorResponse, RollbackMeta<LocalObject<FieldSchemaViewModel, string>[]>>) {
         this.checkOfflineStatus(action, () => {
-            this.notifications.showTranslatedSnackbarMessage(this.defaultTranslationString + 'ADD.FIELD_FAILURE', this.getPersonFieldParams(action), undefined, 2000);
+            this.notifications.showTranslatedSnackbarMessage(this.defaultTranslationString + 'ADD.FIELD_FAILURE', this.getPersonFieldErrorParams(action), undefined, 2000);
         });
     }
 
@@ -82,7 +82,7 @@ public defaultTranslationString = 'PERSONS.NOTIFICATIONS.';
 
     public updateFieldError(action: ReduxAction<HttpErrorResponse, RollbackMeta<LocalObject<FieldSchemaViewModel, string>[]>>) {
         this.checkOfflineStatus(action, () => {
-            this.notifications.showTranslatedSnackbarMessage(this.defaultTranslationString + 'UPDATE.FIELD_FAILURE', this.getPersonFieldParams(action), undefined, 2000);
+            this.notifications.showTranslatedSnackbarMessage(this.defaultTranslationString + 'UPDATE.FIELD_FAILURE', this.getPersonFieldErrorParams(action), undefined, 2000);
         });
     }
 
@@ -92,23 +92,33 @@ public defaultTranslationString = 'PERSONS.NOTIFICATIONS.';
 
     public removeFieldError(action: ReduxAction<HttpErrorResponse, RollbackMeta<LocalObject<FieldSchemaViewModel, string>[]>>) {
         this.checkOfflineStatus(action, () => {
-            this.notifications.showTranslatedSnackbarMessage(this.defaultTranslationString + 'REMOVE.FIELD_FAILURE', this.getPersonFieldParams(action), undefined, 2000);
+            this.notifications.showTranslatedSnackbarMessage(this.defaultTranslationString + 'REMOVE.FIELD_FAILURE', this.getPersonFieldErrorParams(action), undefined, 2000);
         });
     }
 
-    protected getPersonParams(action: ReduxAction<unknown, CommitMeta<LocalObject<Person, number>[]>>): NumIndex<any> {
+    protected getPersonParams(action: ReduxAction<unknown, CommitMeta<LocalObject<Person, number>[]>>): StrIndex<any> {
         return {
-            0: action.payload.status,
-            // TODO: Replace this with backend custom error.
-            1: action.meta.value[0].object.displayName
+            displayName: action.meta.value[0].object.displayName
+        };
+    }
+
+    protected getPersonErrorParams(action: ReduxAction<HttpErrorResponse, RollbackMeta<LocalObject<Person, number>[]>>): StrIndex<any> {
+        return {
+            displayName: action.meta.value[0].object.display,
+            httpError: action.payload.status
         };
     }
 
     protected getPersonFieldParams(action: ReduxAction<unknown, CommitMeta<LocalObject<FieldSchemaViewModel, string>[]>>): StrIndex<any> {
         return {
-            0: action.payload.status,
-            // TODO: Replace this with backend custom error.
-            1: action.meta.value[0].object.display
+            displayName: action.meta.value[0].object.display
+        };
+    }
+
+    protected getPersonFieldErrorParams(action: ReduxAction<HttpErrorResponse, RollbackMeta<LocalObject<FieldSchemaViewModel, string>[]>>): StrIndex<any> {
+        return {
+            displayName: action.meta.value[0].object.display,
+            httpErrorCode: action.payload.status
         };
     }
 }

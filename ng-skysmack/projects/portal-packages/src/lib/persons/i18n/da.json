@@ -57,28 +57,28 @@
         },
         "NOTIFICATIONS": {
             "GET": {
-                "PAGED_ERROR": "Mislykkede med at hente personer ({{ 0 }}).",
-                "SINGLE_FAILURE": "Mislykkede med at hente {{ 1 }} ({{ 0 }}).",
-                "FIELDS_FAILURE": "Mislykkede med at hente felterne for personer ({{ 0 }}).",
-                "SINGLE_FIELD_FAILURE": "Mislykkede med at hente {{ 1 }} feltet ({{ 0 }})."
+                "PAGED_ERROR": "Mislykkede med at hente personer ({{ httpErrorCode }}).",
+                "SINGLE_FAILURE": "Mislykkede med at hente {{ displayName }} ({{ httpErrorCode }}).",
+                "FIELDS_FAILURE": "Mislykkede med at hente felterne for personer ({{ httpErrorCode }}).",
+                "SINGLE_FIELD_FAILURE": "Mislykkede med at hente {{ displayName }} feltet ({{ httpErrorCode }})."
             },
             "ADD": {
-                "SUCCESS": "Tilføjelsen af {{ 1 }} lykkedes.",
-                "FAILURE": "Mislykkede med at tilføje {{ 1 }} ({{ 0 }}).",
-                "FIELD_FAILURE": "Mislykkede med at tilføje feltet for {{ 1 }} ({{ 0 }}).",
-                "FIELD_SUCCESS": "Tilføjede feltet for {{ 1 }} lykkedes."
+                "SUCCESS": "Tilføjelsen af {{ displayName }} lykkedes.",
+                "FAILURE": "Mislykkede med at tilføje {{ displayName }} ({{ httpErrorCode }}).",
+                "FIELD_FAILURE": "Mislykkede med at tilføje feltet for {{ displayName }} ({{ httpErrorCode }}).",
+                "FIELD_SUCCESS": "Tilføjede feltet for {{ displayName }} lykkedes."
             },
             "UPDATE": {
-                "SUCCESS": "Opdateringen af {{ 1 }} lykkedes.",
-                "FAILURE": "Mislykkede med at opdatere {{ 1 }} ({{ 0 }}).",
-                "FIELD_SUCCESS": "Opdaterede feltet for {{ 1 }} lykkedes.",
-                "FIELD_FAILURE": "Mislykkede med at opdatere feltet for {{ 1 }} ({{ 0 }})"
+                "SUCCESS": "Opdateringen af {{ displayName }} lykkedes.",
+                "FAILURE": "Mislykkede med at opdatere {{ displayName }} ({{ httpErrorCode }}).",
+                "FIELD_SUCCESS": "Opdaterede feltet for {{ displayName }} lykkedes.",
+                "FIELD_FAILURE": "Mislykkede med at opdatere feltet for {{ displayName }} ({{ httpErrorCode }})"
             },
             "REMOVE": {
-                "SUCCESS": "Sletningen af {{ 1 }} lykkedes.",
-                "FAILURE": "Mislykkede med at fjerne {{ 1 }} ({{ 0 }}).",
-                "FIELD_SUCCESS": "Sletningen af feltet for {{ 1 }} succesfully.",
-                "FIELD_FAILURE": "Mislykkede med at fjerne feltet for {{ 1 }} ({{ 0 }})."
+                "SUCCESS": "Sletningen af {{ displayName }} lykkedes.",
+                "FAILURE": "Mislykkede med at fjerne {{ displayName }} ({{ httpErrorCode }}).",
+                "FIELD_SUCCESS": "Sletningen af feltet for {{ displayName }} succesfully.",
+                "FIELD_FAILURE": "Mislykkede med at fjerne feltet for {{ displayName }} ({{ httpErrorCode }})."
             }
         },
         "QUEUE": {

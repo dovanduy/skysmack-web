@@ -57,28 +57,28 @@
         },
         "NOTIFICATIONS": {
             "GET": {
-                "PAGED_ERROR": "Failed to get persons ({{ 0 }}).",
-                "SINGLE_FAILURE": "Failed to get {{ 1 }} ({{ 0 }}).",
-                "FIELDS_FAILURE": "Failed to get fields for persons ({{ 0 }}).",
-                "SINGLE_FIELD_FAILURE": "Failed to get {{ 1 }} field ({{ 0 }})."
+                "PAGED_ERROR": "Failed to get persons ({{ httpErrorCode }}).",
+                "SINGLE_FAILURE": "Failed to get {{ displayName }} ({{ httpErrorCode }}).",
+                "FIELDS_FAILURE": "Failed to get fields for persons ({{ httpErrorCode }}).",
+                "SINGLE_FIELD_FAILURE": "Failed to get {{ displayName }} field ({{ httpErrorCode }})."
             },
             "ADD": {
-                "SUCCESS": "Added {{ 1 }} succcessfully.",
-                "FAILURE": "Failed to add {{ 1 }} ({{ 0 }}).",
-                "FIELD_FAILURE": "Failed to add field for {{ 1 }} ({{ 0 }}).",
-                "FIELD_SUCCESS": "Added field for {{ 1 }} successfully."
+                "SUCCESS": "Added {{ displayName }} succcessfully.",
+                "FAILURE": "Failed to add {{ displayName }} ({{ httpErrorCode }}).",
+                "FIELD_FAILURE": "Failed to add field for {{ displayName }} ({{ httpErrorCode }}).",
+                "FIELD_SUCCESS": "Added field for {{ displayName }} successfully."
             },
             "UPDATE": {
-                "SUCCESS": "Updated {{ 1 }} successfully.",
-                "FAILURE": "Failed to update {{ 1 }} ({{ 0 }}).",
-                "FIELD_SUCCESS": "Updated field for {{ 1 }} successfully.",
-                "FIELD_FAILURE": "Failed to update field for {{ 1 }} ({{ 0 }})"
+                "SUCCESS": "Updated {{ displayName }} successfully.",
+                "FAILURE": "Failed to update {{ displayName }} ({{ httpErrorCode }}).",
+                "FIELD_SUCCESS": "Updated field for {{ displayName }} successfully.",
+                "FIELD_FAILURE": "Failed to update field for {{ displayName }} ({{ httpErrorCode }})"
             },
             "REMOVE": {
-                "SUCCESS": "Removed {{ 1 }} successfully.",
-                "FAILURE": "Failed to remove {{ 1 }} ({{ 0 }}).",
-                "FIELD_SUCCESS": "Removed field for {{ 1 }} succesfully.",
-                "FIELD_FAILURE": "Failed to remove field for {{ 1 }} ({{ 0 }})."
+                "SUCCESS": "Removed {{ displayName }} successfully.",
+                "FAILURE": "Failed to remove {{ displayName }} ({{ httpErrorCode }}).",
+                "FIELD_SUCCESS": "Removed field for {{ displayName }} succesfully.",
+                "FIELD_FAILURE": "Failed to remove field for {{ displayName }} ({{ httpErrorCode }})."
             }
         },
         "QUEUE": {

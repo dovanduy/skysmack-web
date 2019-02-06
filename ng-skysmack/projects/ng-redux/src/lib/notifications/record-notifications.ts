@@ -1,4 +1,4 @@
-import { LocalObject, HttpErrorResponse, NumIndex } from '@skysmack/framework';
+import { LocalObject, HttpErrorResponse, NumIndex, StrIndex } from '@skysmack/framework';
 import { ReduxAction, CommitMeta } from '@skysmack/redux';
 import { Notifications } from './notifications';
 
@@ -49,11 +49,11 @@ export abstract class RecordNotifications<TRecord, TKey> {
         });
     }
 
-    protected getErrorParams(action: ReduxAction<HttpErrorResponse, unknown>): NumIndex<any> {
+    protected getErrorParams(action: ReduxAction<HttpErrorResponse, unknown>): StrIndex<any> {
         return {
-            0: action.payload.status,
+            httpErrorCode: action.payload.status,
             // TODO: Replace this with backend custom error.
-            1: 'An error occured'
+            errorMessage: 'An error occured'
         };
     }
 
