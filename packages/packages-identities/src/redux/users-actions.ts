@@ -44,14 +44,16 @@ export class UsersActions extends RecordActionsBase<UsersAppState, Store<UsersAp
                         type: this.prefix + UsersActions.ADD_ROLES_SUCCESS,
                         meta: {
                             stateKey: packagePath,
-                            value: userRolesDictionary
+                            value: userRolesDictionary,
+                            queueItems: [] as any
                         }
                     }),
                     new ReduxAction({
                         type: this.prefix + UsersActions.ADD_ROLES_FAILURE,
                         meta: {
                             stateKey: packagePath,
-                            value: userRolesDictionary
+                            value: userRolesDictionary,
+                            queueItems: [] as any
                         }
                     })
                 )
@@ -73,14 +75,16 @@ export class UsersActions extends RecordActionsBase<UsersAppState, Store<UsersAp
                         type: this.prefix + UsersActions.REMOVE_ROLES_SUCCESS,
                         meta: {
                             stateKey: packagePath,
-                            value: userRolesDictionary
+                            value: userRolesDictionary,
+                            queueItems: [] as any
                         }
                     }),
                     new ReduxAction({
                         type: this.prefix + UsersActions.REMOVE_ROLES_FAILURE,
                         meta: {
                             stateKey: packagePath,
-                            value: userRolesDictionary
+                            value: userRolesDictionary,
+                            queueItems: [] as any
                         }
                     })
                 )

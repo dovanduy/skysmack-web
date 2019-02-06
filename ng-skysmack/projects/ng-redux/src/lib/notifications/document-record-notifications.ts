@@ -13,7 +13,9 @@ export abstract class DocumentRecordNotifications<TRecord, TKey> extends RecordN
     }
 
     public getSingleFieldError(action: ReduxAction<any, CommitMeta<LocalObject<FieldSchemaViewModel, string>>>) {
-        this.notifications.showTranslatedSnackbarMessage(this.defaultTranslationString + 'GET.SINGLE_FIELD_FAILURE', {}, undefined, 2000);
+        this.checkOfflineStatus(action, () => {
+            this.notifications.showTranslatedSnackbarMessage(this.defaultTranslationString + 'GET.SINGLE_FIELD_FAILURE', this.getErrorParams(action), undefined, 2000);
+        });
     }
 
     public addFieldSuccess(action: ReduxAction<any, CommitMeta<LocalObject<FieldSchemaViewModel, string>[]>>) {
@@ -21,7 +23,9 @@ export abstract class DocumentRecordNotifications<TRecord, TKey> extends RecordN
     }
 
     public addFieldError(action: ReduxAction<any, CommitMeta<LocalObject<FieldSchemaViewModel, string>[]>>) {
-        this.notifications.showTranslatedSnackbarMessage(this.defaultTranslationString + 'ADD.FIELD_FAILURE', {}, undefined, 2000);
+        this.checkOfflineStatus(action, () => {
+            this.notifications.showTranslatedSnackbarMessage(this.defaultTranslationString + 'ADD.FIELD_FAILURE', this.getErrorParams(action), undefined, 2000);
+        });
     }
 
     public updateFieldSuccess(action: ReduxAction<any, CommitMeta<LocalObject<FieldSchemaViewModel, string>[]>>) {
@@ -29,7 +33,9 @@ export abstract class DocumentRecordNotifications<TRecord, TKey> extends RecordN
     }
 
     public updateFieldError(action: ReduxAction<any, CommitMeta<LocalObject<FieldSchemaViewModel, string>[]>>) {
-        this.notifications.showTranslatedSnackbarMessage(this.defaultTranslationString + 'UPDATE.FIELD_FAILURE', {}, undefined, 2000);
+        this.checkOfflineStatus(action, () => {
+            this.notifications.showTranslatedSnackbarMessage(this.defaultTranslationString + 'UPDATE.FIELD_FAILURE', this.getErrorParams(action), undefined, 2000);
+        });
     }
 
     public removeFieldSuccess(action: ReduxAction<any, CommitMeta<LocalObject<FieldSchemaViewModel, string>[]>>) {
@@ -37,6 +43,8 @@ export abstract class DocumentRecordNotifications<TRecord, TKey> extends RecordN
     }
 
     public removeFieldError(action: ReduxAction<any, CommitMeta<LocalObject<FieldSchemaViewModel, string>[]>>) {
-        this.notifications.showTranslatedSnackbarMessage(this.defaultTranslationString + 'REMOVE.FIELD_FAILURE', {}, undefined, 2000);
+        this.checkOfflineStatus(action, () => {
+            this.notifications.showTranslatedSnackbarMessage(this.defaultTranslationString + 'REMOVE.FIELD_FAILURE', this.getErrorParams(action), undefined, 2000);
+        });
     }
 }

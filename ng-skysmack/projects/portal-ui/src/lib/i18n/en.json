@@ -35,19 +35,26 @@
         "GET": {
             "PAGED_ERROR": "{{ 1 }} ({{ 0 }}).",
             "SINGLE_FAILURE": "{{ 1 }} ({{ 0 }}).",
-            "FIELDS_FAILURE": "{{ 1 }} ({{ 0 }})."
+            "FIELDS_FAILURE": "{{ 1 }} ({{ 0 }}).",
+            "SINGLE_FIELD_FAILURE": "{{ 1 }} ({{ 0 }})."
         },
         "ADD": {
             "SUCCESS": "Added successfully.",
-            "FAILURE": "{{ 1 }} ({{ 0 }})."
+            "FAILURE": "{{ 1 }} ({{ 0 }}).",
+            "FIELD_FAILURE": "{{ 1 }} ({{ 0 }}).",
+            "FIELD_SUCCESS": "Added successfully."
         },
         "UPDATE": {
             "SUCCESS": "Updated successfully.",
-            "FAILURE": "{{ 1 }} ({{ 0 }})."
+            "FAILURE": "{{ 1 }} ({{ 0 }}).",
+            "FIELD_SUCCESS": "Updated successfully.",
+            "FIELD_FAILURE": "{{ 1 }} ({{ 0 }})"
         },
         "REMOVE": {
             "SUCCESS": "Removed successfully.",
-            "FAILURE": "{{ 1 }} ({{ 0 }})."
+            "FAILURE": "{{ 1 }} ({{ 0 }}).",
+            "FIELD_SUCCESS": "Removed succesfully.",
+            "FIELD_FAILURE": "{{ 1 }} ({{ 0 }})."
         },
         "CONNECTION_ERROR": "Could not connect to the server."
     }
