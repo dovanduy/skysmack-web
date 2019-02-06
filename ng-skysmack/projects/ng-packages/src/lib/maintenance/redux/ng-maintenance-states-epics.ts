@@ -2,10 +2,11 @@ import { RecordEpicsBase } from '@skysmack/ng-redux';
 import { MaintenanceState } from '@skysmack/packages-maintenance';
 import { Injectable } from '@angular/core';
 import { NgMaintenanceStatesRequests } from './ng-maintenance-states-requests';
+import { NgMaintenanceStatesNotifications } from '../ng-maintenance-states-notifications';
 
 @Injectable({ providedIn: 'root' })
 export class NgMaintenanceStatesEpics extends RecordEpicsBase<MaintenanceState, number> {
-    constructor(protected requests: NgMaintenanceStatesRequests) {
-        super(requests, 'MAINTENANCE_STATE_');
+    constructor(protected requests: NgMaintenanceStatesRequests, protected notifications: NgMaintenanceStatesNotifications) {
+        super(requests, 'MAINTENANCE_STATE_', notifications);
     }
 }
