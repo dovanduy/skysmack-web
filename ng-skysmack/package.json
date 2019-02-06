@@ -4,7 +4,7 @@
   "scripts": {
     "build:lib": "ng build ng-redux && ng build ng-ui && ng build ng-packages && ng build portal-ui && ng build portal-packages",
     "ss:web:localization": "gulp webLocalization",
-    "build:c1:dev": "ng build --prod",
+    "build:c1:dev": "ng build --prod --stats-json",
     "build:c1:prod": "ng build --prod --deploy-url //cdn.skysmack.net/",
     "start-server": "cd dist/web-portal && http-server -a www.skysmack.test -p 4000 -o",
     "ss:c1": "npm run ss:web:localization && ng serve --host client1.skysmack.test --port 4000 --disable-host-check",
@@ -17,6 +17,7 @@
     "ss:build": "run-s ss:lerna build:lib ss:web:localization build:c1:prod",
     "ss:prod": "run-s ss:lerna build:lib ss:web:localization  build:c1:dev start-server",
     "ss:clean": "cd ../Assorted/scripts && clean.bat",
+    "ss:analyze": "webpack-bundle-analyzer dist/web-portal/stats.json",
     "ss:rebuild": "npm run ss:clean && npm i && npm run ss"
   },
   "private": true,
@@ -83,6 +84,7 @@
     "tslib": "^1.9.3",
     "tslint": "~5.12.1",
     "typescript": "~3.2.4",
-    "wait-on": "^3.2.0"
+    "wait-on": "^3.2.0",
+    "webpack-bundle-analyzer": "^3.0.3"
   }
 }
