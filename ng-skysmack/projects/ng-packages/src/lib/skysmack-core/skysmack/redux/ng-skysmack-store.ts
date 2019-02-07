@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { NgRedux } from '@angular-redux/store';
-import { map, filter, switchMap, take } from 'rxjs/operators';
+import { map, filter, take } from 'rxjs/operators';
 import { Observable, BehaviorSubject, of } from 'rxjs';
 import { LocalObject, toLocalObject, flatten, safeHasValue, Package, defined, hasValue, log } from '@skysmack/framework';
 import { Skysmack, SkysmackAppState } from '@skysmack/packages-skysmack-core';
@@ -57,18 +57,6 @@ export class NgSkysmackStore {
             filter((_package: Package) => _package.path === packagePath),
             map(_package => PackageLoader.toLoadedPackage(_package)),
             safeHasValue()
-        );
-    }
-
-    /**
-     * Gets the FIRST package described in the current packages dependencies array.
-     * @param packagePath The current package's path.
-     */
-    public getDependencyPackage(packagePath: string): Observable<LoadedPackage> {
-        return this.getCurrentPackage(packagePath).pipe(
-            map(loadedPackage => loadedPackage._package.dependencies[0]),
-            defined(),
-            switchMap((dependencyPackagePath: string) => this.getCurrentPackage(dependencyPackagePath))
         );
     }
 

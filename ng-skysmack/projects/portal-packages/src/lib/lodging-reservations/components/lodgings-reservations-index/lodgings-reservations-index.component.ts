@@ -86,15 +86,15 @@ export class LodgingsReservationsIndexComponent extends RecordIndexComponent<Lod
 
   ngOnInit() {
     super.ngOnInit();
-    this.extendedReservations$ = this.skysmackStore.getDependencyPackage(this.packagePath).pipe(
+    this.extendedReservations$ = this.skysmackStore.getCurrentPackage(this.packagePath).pipe(
       switchMap(loadedPackage => {
         // this.lodgingsActions.getPaged(loadedPackage._package.path, new PagedQuery({ pageNumber: 1, pageSize: 50 }));
         // this.lodgingTypesActions.getPaged(loadedPackage._package.path, new PagedQuery({ pageNumber: 1, pageSize: 50 }));
 
         return combineLatest(
           this.pagedEntities$,
-          this.lodgingsStore.get(loadedPackage._package.path),
-          this.lodgingTypesStore.get(loadedPackage._package.path)
+          this.lodgingsStore.get(loadedPackage._package.dependencies[0]),
+          this.lodgingTypesStore.get(loadedPackage._package.dependencies[0])
         ).pipe(
           map(values => {
             const reservations: LocalObject<LodgingReservation, number>[] = values[0];
