@@ -16,6 +16,7 @@ export class ReducerRegistry {
 
     public register(name: string, reducer: Function) {
         this.reducers = { ...this.reducers, [name]: reducer };
+        console.log(this.reducers);
         if (this.emitChange != null) {
             this.emitChange(this.getReducers());
         }
