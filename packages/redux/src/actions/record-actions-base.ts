@@ -5,7 +5,6 @@ import { GetPagedRecordsPayload, GetSingleRecordPayload, CancelActionPayload, } 
 import { CommitMeta, RollbackMeta, ReduxOfflineMeta, CancelActionMeta, OfflineMeta } from '../metas';
 import { EffectRequest } from '../models/effect-request';
 import { Effect } from './../models/effect';
-import { QueueActions } from './queue-actions';
 
 export abstract class RecordActionsBase<TStateType, TStore extends Store<TStateType>> {
     public static CANCEL_RECORD_ACTION = 'CANCEL_RECORD_ACTION';
@@ -48,7 +47,7 @@ export abstract class RecordActionsBase<TStateType, TStore extends Store<TStateT
         })))
     }
 
-    public getPaged(packagePath: string, pagedQuery: PagedQuery) {
+    public getPaged = (packagePath: string, pagedQuery: PagedQuery) => {
         this.store.dispatch(Object.assign({}, new ReduxAction<GetPagedRecordsPayload>({
             type: this.prefix + RecordActionsBase.GET_PAGED,
             payload: {
@@ -58,7 +57,7 @@ export abstract class RecordActionsBase<TStateType, TStore extends Store<TStateT
         })));
     }
 
-    public getSingle<TKey>(packagePath: string, id: TKey) {
+    public getSingle = <TKey>(packagePath: string, id: TKey) => {
         this.store.dispatch(Object.assign({}, new ReduxAction<GetSingleRecordPayload<TKey>>({
             type: this.prefix + RecordActionsBase.GET_SINGLE,
             payload: {

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { NgRedux } from '@angular-redux/store';
 import { map, filter, switchMap, take } from 'rxjs/operators';
 import { Observable, BehaviorSubject, of } from 'rxjs';
-import { LocalObject, toLocalObject, flatten, safeHasValue, Package, defined, hasValue } from '@skysmack/framework';
+import { LocalObject, toLocalObject, flatten, safeHasValue, Package, defined, hasValue, log } from '@skysmack/framework';
 import { Skysmack, SkysmackAppState } from '@skysmack/packages-skysmack-core';
 import { PackageLoader } from '../packages/package-loader';
 import { LoadedPackage } from '../packages/loaded-package';
