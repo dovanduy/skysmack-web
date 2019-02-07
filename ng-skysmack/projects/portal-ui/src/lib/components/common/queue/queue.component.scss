@@ -1,36 +1,55 @@
 [data-status="CREATING"] {
-    color: green;
+  // color: green;
 }
 
 [data-status="MODIFYING"] {
-    color: purple;
+  // color: purple;
 }
 
 [data-status="DELETING"] {
-    color: brown;
+  // color: brown;
 }
 
-
 [data-error="true"] {
-    color: red;
+  color: red;
+}
+
+.queue-item {
+  display: flex;
+  align-items: center;
+
+  .error-message {
+    font-size: .8rem;
+    padding: 0 .2rem;
+  }
+
+  .action-buttons {
+    align-self: flex-end;
+  }
+
+  &:not(:first-child) {
+    margin-top: 1rem;
+  }
 }
 
 .queue {
-    opacity: 1;
-	animation-name: fadeInOpacity;
-	animation-iteration-count: 1;
-	animation-timing-function: ease-in;
-	animation-duration: .5s;
+  opacity: 1;
+  animation-name: fadeInOpacity;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-in;
+  animation-duration: .5s;
 }
 
 @keyframes fadeInOpacity {
-	0% {
-		opacity: 0;
-    }
-    80% {
-		opacity: 0;
-	}
-	100% {
-		opacity: 1;
-	}
+  0% {
+    opacity: 0;
+  }
+
+  80% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }

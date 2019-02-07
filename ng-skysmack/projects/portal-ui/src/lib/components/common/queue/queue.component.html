@@ -4,31 +4,41 @@
       <mat-icon>all_inbox</mat-icon>
     </button>
     <mat-menu overlapTrigger="false" #queueMenu="matMenu">
-      <ng-container *ngIf="queue.length <= 0">
-        Queue is empty.
-      </ng-container>
       <ng-container *ngIf="queue.length > 0">
         <ng-container *ngFor="let item of queue$ | async">
-          <p [attr.data-status]="item.localObject.status" [attr.data-error]="item.localObject.error">
-            {{ item.message | translate:item.messageParams }}
-            <!-- ERROR -->
-            <ng-container *ngIf="item.localObject.error">
-              <ng-container *ngIf="!item.deleteAction">
-                - <a (click)="toEditor(item)">Retry</a>
+          <div class="queue-item" [attr.data-status]="item.localObject.status" [attr.data-error]="item.localObject.error">
+            <div class="error-message">
+              {{ item.message | translate:item.messageParams }}
+            </div>
+            <div class="action-buttons">
+              <!-- PROCESSING -->
+              <ng-container *ngIf="!item.localObject.error">
+                  <mat-icon>cloud_upload</mat-icon>
               </ng-container>
-            </ng-container>
 
-            <!-- DELETE ERROR -->
-            <ng-container *ngIf="item.deleteAction">
-              - <a (click)="retryDelete(item)">Retry</a>
-            </ng-container>
+              <!-- ERROR -->
+              <ng-container *ngIf="item.localObject.error && !item.deleteAction">
+                <button mat-icon-button (click)="toEditor(item)">
+                  <mat-icon>sync</mat-icon>
+                </button>
+              </ng-container>
 
-            <!-- CANCEL -->
-            <ng-container *ngIf="item.localObject.status !== 'OK' || item.localObject.error">
-              - <a (click)="item.cancelAction(item.localObject, item.packagePath)">Cancel</a>
-            </ng-container>
+              <!-- DELETE ERROR -->
+              <ng-container *ngIf="item.localObject.error && item.deleteAction">
+                <button mat-icon-button (click)="retryDelete(item)">
+                  <mat-icon>sync</mat-icon>
+                </button>
+              </ng-container>
 
-          </p>
+              <!-- CANCEL -->
+              <ng-container *ngIf="item.localObject.error">
+                <button mat-icon-button (click)="item.cancelAction(item.localObject, item.packagePath)">
+                  <mat-icon>undo</mat-icon>
+                </button>
+              </ng-container>
+            </div>
+          </div>
+          <mat-progress-bar [mode]="item.localObject.error ? 'determinate' : 'indeterminate'"></mat-progress-bar>
         </ng-container>
       </ng-container>
     </mat-menu>
