@@ -18,6 +18,7 @@ export class PackagesValidation extends Validation {
         },
         path: {
             required: '',
+            invalidStringLength: ''
         },
         type: {
             required: ''
