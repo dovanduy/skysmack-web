@@ -8,7 +8,7 @@
                 "PATH": "Path"
             },
             "PLACEHOLDERS": {
-                "TYPE": "Enter package type",
+                "TYPE": "Select package type",
                 "NAME": "Enter name",
                 "DESCRIPTION": "Enter description",
                 "PATH": "Enter path"

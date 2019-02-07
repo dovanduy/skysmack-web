@@ -8,7 +8,7 @@
                 "PATH": "PATH"
             },
             "PLACEHOLDERS": {
-                "TYPE": "Indtast en pakke type",
+                "TYPE": "Vælg en pakke type",
                 "NAME": "Indtast et navn",
                 "DESCRIPTION": "Indtast en beskrivelse",
                 "PATH": "Indtast en sti"
