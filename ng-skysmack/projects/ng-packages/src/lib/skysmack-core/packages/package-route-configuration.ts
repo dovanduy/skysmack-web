@@ -1,11 +1,11 @@
 import { Injectable, Injector } from '@angular/core';
 import { Router, Route } from '@angular/router';
-import { map, take } from 'rxjs/operators';
-import { Skysmack } from '@skysmack/packages-skysmack-core';
 import { hasValue } from '@skysmack/framework';
-import { DynamicPackageRouter } from './../models/dynamic-package-router';
-import { NgSkysmackStore } from '@skysmack/ng-packages';
-import { PackageLoader } from '@skysmack/ng-packages';
+import { Skysmack } from '@skysmack/packages-skysmack-core';
+import { map, take } from 'rxjs/operators';
+import { NgSkysmackStore } from '../skysmack/redux/ng-skysmack-store';
+import { PackageLoader } from '../skysmack/packages/package-loader';
+import { Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class PackageRouteConfiguration {
@@ -19,16 +19,12 @@ export class PackageRouteConfiguration {
         return this.injector.get(Router);
     }
 
-    private routingModules: DynamicPackageRouter[] = [
-        // new PersonRoutingModule,
-    ];
-
     constructor(
         public store: NgSkysmackStore,
         public injector: Injector
     ) { }
 
-    public configure() {
+    public configure(): Observable<void> {
         return this.store.getSkysmack()
             .pipe(
                 hasValue(),
@@ -41,8 +37,7 @@ export class PackageRouteConfiguration {
                         });
                     });
                 }),
-                take(1)
-            ).subscribe();
+            );
     }
 
     private addRoute(packageUrl: string, modulePath: string) {

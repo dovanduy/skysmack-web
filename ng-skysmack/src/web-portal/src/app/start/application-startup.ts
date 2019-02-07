@@ -1,11 +1,11 @@
-import { APP_INITIALIZER, Injectable } from '@angular/core';
+import { APP_INITIALIZER } from '@angular/core';
 import { SkysmackApiDomain } from '../../requests/skysmack-api-domain';
 import { loadPersonPackage } from '../packages/persons-package-manifest';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { loadProductPackage } from '../packages/products-package-manifest';
 import { loadLodgingPackage } from '../packages/lodgings-package-manifest';
 import { loadOauth2Package } from '../packages/oauth2-package-manifest';
-import { NgSkysmackActions, PackageLoader, NgLodgingsReservationsMenuItemProvider, NgSkysmackStore } from '@skysmack/ng-packages';
+import { NgSkysmackActions, PackageLoader } from '@skysmack/ng-packages';
 import { AuthorizationInterceptor, configureLanguage, LanguageService } from '@skysmack/portal-ui';
 import { loadMaintenancePackage } from '../packages/maintenance-package-manifest';
 import { loadIdentitiesPackage } from '../packages/identities-package-manifest';

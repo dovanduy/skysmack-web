@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Router, ActivatedRoute } from '@angular/router';
-import { PackageRouteConfiguration } from '../../../package-route-configuration';
 import { Skysmack } from '@skysmack/packages-skysmack-core';
-import { NgSkysmackStore } from '@skysmack/ng-packages';
+import { NgSkysmackStore, PackageRouteConfiguration } from '@skysmack/ng-packages';
+import { take } from 'rxjs/operators';
 
 // export class FallBackComponent extends EntityBase implements OnInit {
 
@@ -21,7 +21,7 @@ export class FallBackComponent implements OnInit {
     public router: Router,
     public activatedRoute: ActivatedRoute,
     public store: NgSkysmackStore,
-    public packageRouteConfiguration: PackageRouteConfiguration,
+    public packageRouteConfiguration: PackageRouteConfiguration
   ) {
     // super(router, activatedRoute, store);
   }
@@ -50,7 +50,7 @@ export class FallBackComponent implements OnInit {
     // }));
 
     // TODO: Remove this when entity base is implemented
-    this.skysmack$.subscribe((tenant) => {
+    this.skysmack$.pipe(take(1)).subscribe((tenant) => {
       if (tenant != null && tenant.name.length > 0) {
         if (this.router.onSameUrlNavigation !== 'reload') {
           this.router.onSameUrlNavigation = 'reload';
