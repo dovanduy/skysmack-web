@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
-import { FormRule } from '@skysmack/ng-ui';
+import { FormRule, SetFieldKeyRule } from '@skysmack/ng-ui';
 import { LocalObject, FieldValueProviderViewModel, FieldSchemaViewModel } from '@skysmack/framework';
 import { Field } from '@skysmack/ng-ui';
 import { FieldTypes } from '@skysmack/ng-ui';
@@ -16,6 +16,7 @@ export class NgDynamicFieldsFieldsConfig {
     public validation = new DynamicFieldsValidation();
 
     public formRules: FormRule[] = [
+        new SetFieldKeyRule(['display'])
     ];
 
     /**
