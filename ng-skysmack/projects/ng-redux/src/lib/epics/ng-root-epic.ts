@@ -14,8 +14,7 @@ export const registerRedux = (name: string, reducer: Function, epics: { epics: E
 export const registerEpics = (epicsClass: { epics: Epic[], [key: string]: any }, epicsName?: string): void => {
     const registered = epicRegister[epicsName];
     if (!registered) {
-        epicsClass.epics.forEach(epic => epic$.next(epic))
+        epicsClass.epics.forEach(epic => epic$.next(epic));
         epicRegister[epicsName] = epicsName;
-        console.log(epicRegister);
     }
 };

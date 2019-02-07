@@ -1,34 +1,36 @@
-<button mat-icon-button [matMenuTriggerFor]="queueMenu">
-  <mat-icon>all_inbox</mat-icon>
-</button>
-<mat-menu overlapTrigger="false" #queueMenu="matMenu">
-  <ng-container *ngIf="queue$ | async as queue">
-    <ng-container *ngIf="queue.length <= 0">
-      Queue is empty.
-    </ng-container>
-    <ng-container *ngIf="queue.length > 0">
-      <ng-container *ngFor="let item of queue$ | async">
-        <p [attr.data-status]="item.localObject.status" [attr.data-error]="item.localObject.error">
-          {{ item.message | translate:item.messageParams }}
-          <!-- ERROR -->
-          <ng-container *ngIf="item.localObject.error">
-            <ng-container *ngIf="!item.deleteAction">
-              - <a (click)="toEditor(item)">Retry</a>
-            </ng-container>
-          </ng-container>
-
-          <!-- DELETE ERROR -->
-          <ng-container *ngIf="item.deleteAction">
-            - <a (click)="retryDelete(item)">Retry</a>
-          </ng-container>
-
-          <!-- CANCEL -->
-          <ng-container *ngIf="item.localObject.status !== 'OK' || item.localObject.error">
-            - <a (click)="item.cancelAction(item.localObject, item.packagePath)">Cancel</a>
-          </ng-container>
-
-        </p>
+<ng-container *ngIf="queue$ | async as queue">
+  <div class="queue" *ngIf="queue.length > 0">
+    <button mat-icon-button [matMenuTriggerFor]="queueMenu">
+      <mat-icon>all_inbox</mat-icon>
+    </button>
+    <mat-menu overlapTrigger="false" #queueMenu="matMenu">
+      <ng-container *ngIf="queue.length <= 0">
+        Queue is empty.
       </ng-container>
-    </ng-container>
-  </ng-container>
-</mat-menu>
+      <ng-container *ngIf="queue.length > 0">
+        <ng-container *ngFor="let item of queue$ | async">
+          <p [attr.data-status]="item.localObject.status" [attr.data-error]="item.localObject.error">
+            {{ item.message | translate:item.messageParams }}
+            <!-- ERROR -->
+            <ng-container *ngIf="item.localObject.error">
+              <ng-container *ngIf="!item.deleteAction">
+                - <a (click)="toEditor(item)">Retry</a>
+              </ng-container>
+            </ng-container>
+
+            <!-- DELETE ERROR -->
+            <ng-container *ngIf="item.deleteAction">
+              - <a (click)="retryDelete(item)">Retry</a>
+            </ng-container>
+
+            <!-- CANCEL -->
+            <ng-container *ngIf="item.localObject.status !== 'OK' || item.localObject.error">
+              - <a (click)="item.cancelAction(item.localObject, item.packagePath)">Cancel</a>
+            </ng-container>
+
+          </p>
+        </ng-container>
+      </ng-container>
+    </mat-menu>
+  </div>
+</ng-container>
