@@ -31,9 +31,6 @@ export class DataTableComponent implements OnDestroy, OnInit {
   // Input needed for cancel action
   @Input() public packagePath: string;
 
-  @Input() public compareValue = 'localId';
-  @Input() public target: 'entities' | 'fields' = 'entities';
-
   public allColumns: string[] = [];
   public subscriptionHandler = new SubscriptionHandler();
   public dataSource$: Observable<MatTableDataSource<LocalObject<any, any>>>;
