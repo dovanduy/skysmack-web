@@ -1,7 +1,8 @@
-import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output, ViewChild } from '@angular/core';
 import { LocalObject, LoadingState } from '@skysmack/framework';
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 import { EntityAction } from '@skysmack/ng-ui';
+import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
 
 @Component({
   selector: 'ss-records-container',
@@ -9,6 +10,9 @@ import { EntityAction } from '@skysmack/ng-ui';
   styleUrls: ['./records-container.component.scss']
 })
 export class RecordsContainerComponent implements OnInit {
+  @ViewChild(CdkVirtualScrollViewport) viewport: CdkVirtualScrollViewport;
+  // public offset = new BehaviorSubject(null);
+
   // Input properties defined in the task
   @Input() public entities$: Observable<LocalObject<any, any>[]>;
   @Input() public entities: LocalObject<any, any>[];
@@ -17,7 +21,7 @@ export class RecordsContainerComponent implements OnInit {
   @Input() public entityActions: EntityAction[] = [];
 
   // Output properties defined in the task
-  @Output() public loadNext = new EventEmitter<boolean>(); // Is the emit type correct?
+  // @Output() public loadNext = new EventEmitter<boolean>(); // Is the emit type correct?
   // @Output() public sort = new EventEmitter<any>();
   // @Output() public filter = new EventEmitter<any>();
 
@@ -42,6 +46,22 @@ export class RecordsContainerComponent implements OnInit {
 
   public trackByLocalId(item: LocalObject<any, any>) {
     return item ? item.localId : undefined;
+  }
+
+  public loadNext(height: number) {
+    // if (this.theEnd) {
+    //   return;
+    // }
+
+    console.log(height);
+
+    const end = this.viewport.getRenderedRange().end;
+    const total = this.viewport.getDataLength();
+    // console.log(offset);
+    console.log(`${end}, '>=', ${total}`);
+    if (end === total) {
+      // this.offset.next(offset);
+    }
   }
 
 }

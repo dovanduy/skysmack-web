@@ -197,6 +197,6 @@ export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey>
             const scrollHeight = Math.max(0);
             return (scrollHeight - clientHeight);
         }
-        return 1000;
+        return 0;
     }
 }

@@ -4,7 +4,7 @@
   </mat-card-header>
 </mat-card>
 
-<cdk-virtual-scroll-viewport *ngIf="entities" itemSize="5">
+<cdk-virtual-scroll-viewport *ngIf="entities" itemSize="5" (scrolledIndexChange)="loadNext($event)">
   <mat-card *cdkVirtualFor="let entity of entities; trackBy: trackByLocalId">
     <mat-card-content>
       <p style="margin-right: 5px; display: inline-block;" *ngFor="let column of displayedColumns">
