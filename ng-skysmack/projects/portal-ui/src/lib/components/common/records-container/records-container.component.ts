@@ -11,6 +11,7 @@ import { EntityAction } from '@skysmack/ng-ui';
 export class RecordsContainerComponent implements OnInit {
   // Input properties defined in the task
   @Input() public entities$: Observable<LocalObject<any, any>[]>;
+  @Input() public entities: LocalObject<any, any>[];
   @Input() public totalCount: number;
   @Input() public loadingState: LoadingState;
   @Input() public entityActions: EntityAction[] = [];
@@ -30,8 +31,9 @@ export class RecordsContainerComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log('entities: ' + this.entities$ + '\n\n', 'totalCount: ' + this.totalCount + '\n\n', 'loadingState: ' + this.loadingState + '\n\n', 'entityActions: ' + this.entityActions + '\n\n', 'loadNext: ' + this.loadNext + '\n\n');
-    console.log('packagePath: ' + this.packagePath + '\n\n', 'title: ' + this.title + '\n\n', 'cancelAction: ' + this.cancelAction + '\n\n', 'displayedColumns: ' + this.displayedColumns + '\n\n');
+    this.entities$.subscribe(entities => this.entities = entities);
+    // console.log('entities: ' + this.entities$ + '\n\n', 'totalCount: ' + this.totalCount + '\n\n', 'loadingState: ' + this.loadingState + '\n\n', 'entityActions: ' + this.entityActions + '\n\n', 'loadNext: ' + this.loadNext + '\n\n');
+    // console.log('packagePath: ' + this.packagePath + '\n\n', 'title: ' + this.title + '\n\n', 'cancelAction: ' + this.cancelAction + '\n\n', 'displayedColumns: ' + this.displayedColumns + '\n\n');
   }
 
   public runCancelAction(entity: LocalObject<any, any>) {
