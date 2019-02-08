@@ -2,21 +2,50 @@
 
   <mat-card>
     <mat-card-header>
-      <p>First name</p> ---
-      <p>Last name</p>
+      <p style="margin-right: 10px; font-weight: 900;" *ngFor="let column of displayedColumns">{{ column }}</p>
     </mat-card-header>
   </mat-card>
 
   <cdk-virtual-scroll-viewport itemSize="5">
     <mat-card *cdkVirtualFor="let entity of entities; trackBy: trackByLocalId">
       <mat-card-content>
-        <p>{{ entity.object.displayName }}</p>
+        <p style="display: inline-block;">{{ entity.object.displayName }}</p>
+
+        <!-- ACTIONS -->
+        <!-- Hide the entities menu when in queue, or if the entity has a create error -->
+        <ng-container
+          *ngIf="entityActions.length > 0 && (entity.status === 'OK' || entity.status !== 'CREATING' && entity.error)">
+          <button mat-icon-button [matMenuTriggerFor]="menu">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+          <mat-menu #menu="matMenu">
+            <ng-container *ngFor="let entityAction of entityActions">
+              <!-- ACTION EVENT -->
+              <a *ngIf="entityAction.isActionEvent" showEntityAction [entityAction]="entityAction" [entity]="entity"
+                mat-menu-item
+                (click)="entityActionEvent.emit({ action: entityAction.action, value: entity, _this: entityAction._this })">
+                <i class="material-icons">{{ entityAction.icon }}</i> <span class="icon-text">{{
+                            entityAction.displayName }}</span>
+              </a>
+
+              <!-- URL EVENT -->
+              <a *ngIf="!entityAction.isActionEvent" mat-menu-item
+                [routerLink]="[entityAction.url, entity.objectIdentifier]">
+                <i class="material-icons">{{ entityAction.icon }}</i> <span class="icon-text">{{
+                            entityAction.displayName }}</span>
+              </a>
+            </ng-container>
+          </mat-menu>
+        </ng-container>
+
+        <!-- CANCEL ACTION -->
+        <a *ngIf="entity.error" mat-icon-button (click)="runCancelAction(entity);">
+          <i class="material-icons">undo</i>
+        </a>
+
       </mat-card-content>
-      <mat-card-actions>
-        <!-- ENTITY ACTIONS - MOVE TO RIGHT -->
-        <button mat-button>LIKE</button>
-        <button mat-button>SHARE</button>
-      </mat-card-actions>
+      <!-- TODO: SHOW LOADING INDICATOR OF SOME SORT -->
+
     </mat-card>
   </cdk-virtual-scroll-viewport>
 
