@@ -191,17 +191,12 @@ export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey>
      * Gets the max distance the user can scroll in a cross browser safe manner.
      */
     private getMaxScroll(): number {
-        const scrollHeight = Math.max(
-            document.body.scrollHeight,
-            document.body.offsetHeight,
-            document.body.clientHeight,
-            document.documentElement.scrollHeight,
-            document.documentElement.offsetHeight,
-            document.documentElement.clientHeight
-        );
-
-        const clientHeight = document.documentElement.clientHeight;
-
-        return (scrollHeight - clientHeight);
+        const containerComponent = document.getElementById('container-component');
+        if (containerComponent) {
+            const clientHeight = 0;
+            const scrollHeight = Math.max(0);
+            return (scrollHeight - clientHeight);
+        }
+        return 0;
     }
 }
