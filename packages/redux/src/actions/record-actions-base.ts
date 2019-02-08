@@ -1,3 +1,4 @@
+
 import { Store } from 'redux';
 import { PagedQuery, Record, LocalObject, HttpMethod, LocalObjectStatus, HttpResponse, QueueItem, NumIndex } from '@skysmack/framework';
 import { ReduxAction } from '../action-types/redux-action';
