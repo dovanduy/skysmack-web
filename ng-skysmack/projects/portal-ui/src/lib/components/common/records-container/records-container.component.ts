@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
-import { LocalObject, LoadingState, SubscriptionHandler } from '@skysmack/framework';
+import { LocalObject, LoadingState } from '@skysmack/framework';
 import { Observable } from 'rxjs';
 import { EntityAction } from '@skysmack/ng-ui';
 
@@ -36,6 +36,10 @@ export class RecordsContainerComponent implements OnInit {
 
   public runCancelAction(entity: LocalObject<any, any>) {
     this.cancelAction(entity, this.packagePath);
+  }
+
+  public trackByLocalId(item: LocalObject<any, any>) {
+    return item ? item.localId : undefined;
   }
 
 }
