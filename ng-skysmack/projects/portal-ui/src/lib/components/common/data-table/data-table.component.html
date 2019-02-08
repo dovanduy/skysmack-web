@@ -14,7 +14,8 @@
       <td mat-cell *matCellDef="let entity" style="text-align: right;">
 
         <!-- Hide the entities menu when in queue, or if the entity has a create error -->
-        <ng-container *ngIf="entityActions.length > 0 && (entity.status === 'OK' || entity.status !== 'CREATING' && entity.error)">
+        <ng-container
+          *ngIf="entityActions.length > 0 && (entity.status === 'OK' || entity.status !== 'CREATING' && entity.error)">
           <button mat-icon-button [matMenuTriggerFor]="menu">
             <mat-icon>more_vert</mat-icon>
           </button>
@@ -22,13 +23,15 @@
             <ng-container *ngFor="let entityAction of entityActions">
               <!-- ACTION EVENT -->
               <a *ngIf="entityAction.isActionEvent" showEntityAction [entityAction]="entityAction" [entity]="entity"
-                mat-menu-item (click)="entityActionEvent.emit({ action: entityAction.action, value: entity, _this: entityAction._this })">
+                mat-menu-item
+                (click)="entityActionEvent.emit({ action: entityAction.action, value: entity, _this: entityAction._this })">
                 <i class="material-icons">{{ entityAction.icon }}</i> <span class="icon-text">{{
                   entityAction.displayName }}</span>
               </a>
 
               <!-- URL EVENT -->
-              <a *ngIf="!entityAction.isActionEvent" mat-menu-item [routerLink]="[entityAction.url, entity.objectIdentifier]">
+              <a *ngIf="!entityAction.isActionEvent" mat-menu-item
+                [routerLink]="[entityAction.url, entity.objectIdentifier]">
                 <i class="material-icons">{{ entityAction.icon }}</i> <span class="icon-text">{{
                   entityAction.displayName }}</span>
               </a>
@@ -36,13 +39,12 @@
           </mat-menu>
         </ng-container>
 
-        <!-- IN QUEUE CANCEL ACTION -->
-        <a *ngIf="entity.status !== 'OK'" mat-icon-button (click)="runCancelAction(entity);">
+        <p></p>
+
+        <!-- CANCEL ACTION -->
+        <a *ngIf="entity.error" mat-icon-button (click)="runCancelAction(entity);">
           <i class="material-icons">undo</i>
         </a>
-
-        <!-- ABORT FROM ERROR CANCEL ACTION -->
-        <!-- HTML NEEDED -->
       </td>
     </ng-container>
 
@@ -58,8 +60,9 @@
 
     <tr mat-header-row *matHeaderRowDef="allColumns; sticky: true"></tr>
 
-    <tr mat-row *matRowDef="let entity; columns: allColumns;" class="entity-row" [class.row-is-loading]="entity.status !== 'OK' && !entity.error"
-      [class.row-is-success]="entity.isNew" [class.row-is-error]="entity.error"></tr>
+    <tr mat-row *matRowDef="let entity; columns: allColumns;" class="entity-row"
+      [class.row-is-loading]="entity.status !== 'OK' && !entity.error" [class.row-is-success]="entity.isNew"
+      [class.row-is-error]="entity.error"></tr>
     <tr mat-row *matRowDef="let row; columns: ['loadingDetail']" class="loading-row"></tr>
   </table>
   <ng-content></ng-content>

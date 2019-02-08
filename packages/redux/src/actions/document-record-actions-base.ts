@@ -85,6 +85,9 @@ export abstract class DocumentRecordActionsBase<TStateType, TStore extends Store
     }
 
     public addFields = (fields: LocalObject<FieldSchemaViewModel, string>[], packagePath: string) => {
+
+        fields.forEach(record => record.error = false);
+
         const queueItems = fields.map(field => {
             return new QueueItem({
                 message: `${this.prefix.replace('_', '.')}QUEUE.ADDING`,
@@ -127,6 +130,8 @@ export abstract class DocumentRecordActionsBase<TStateType, TStore extends Store
     }
 
     public updateFields = (fields: LocalObject<FieldSchemaViewModel, string>[], packagePath: string) => {
+
+        fields.forEach(record => record.error = false);
 
         const queueItems = fields.map(field => {
             return new QueueItem({
@@ -176,6 +181,8 @@ export abstract class DocumentRecordActionsBase<TStateType, TStore extends Store
 
     public deleteFields = (fields: LocalObject<FieldSchemaViewModel, string>[], packagePath: string) => {
         const paths = '?keys=' + fields.map(x => x.object.key).join('&keys=');
+
+        fields.forEach(record => record.error = false);
 
         const queueItems = fields.map(field => {
             return new QueueItem({

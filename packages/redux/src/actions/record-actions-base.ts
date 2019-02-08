@@ -69,6 +69,9 @@ export abstract class RecordActionsBase<TStateType, TStore extends Store<TStateT
     }
 
     public add = <TRecord extends Record<TKey>, TKey>(records: LocalObject<TRecord, TKey>[], packagePath: string) => {
+
+        records.forEach(record => record.error = false);
+
         const queueItems = records.map(record => {
             return new QueueItem({
                 message: `${this.prefix.replace('_', '.')}QUEUE.ADDING`,
@@ -113,6 +116,8 @@ export abstract class RecordActionsBase<TStateType, TStore extends Store<TStateT
     public update = <TRecord extends Record<TKey>, TKey>(records: LocalObject<TRecord, TKey>[], packagePath: string) => {
         let path = this.addAdditionalPaths(packagePath);
         path = this.appendValues<TKey>(path, records.map(x => x.object.id));
+
+        records.forEach(record => record.error = false);
 
         const queueItems = records.map(record => {
             return new QueueItem({
@@ -159,6 +164,8 @@ export abstract class RecordActionsBase<TStateType, TStore extends Store<TStateT
     public delete = <TRecord extends Record<TKey>, TKey>(records: LocalObject<TRecord, TKey>[], packagePath: string) => {
         let path = this.addAdditionalPaths(packagePath);
         path = path + '?ids=' + records.map(x => x.object.id).join(',');
+
+        records.forEach(record => record.error = false);
 
         const queueItems = records.map(record => {
             return new QueueItem({

@@ -14,13 +14,13 @@ If ($type -eq "f") {
     start powershell -argument "-noexit", "npm run ss:init"
 
     # Lerna
-    cd "$angular"
-    start powershell -argument "-noexit", "lerna run --stream --no-sort --concurrency 10 build:npm:watch"
+    cd "$angular\ng-skysmack"
+    start powershell -argument "-noexit", "npm run ss:lerna:watch"
 } 
 ElseIf ($type -eq "q") {
     # Lerna
-    cd "$angular"
-    start powershell -argument "-noexit", "lerna run --stream --no-sort --concurrency 10 build:npm:watch"
+    cd "$angular\ng-skysmack"
+    start powershell -argument "-noexit", "npm run ss:lerna:watch"
     # frontend runner
     cd "$angular\ng-skysmack"
     start powershell -argument "-noexit", "npm run ss:c1:open"
