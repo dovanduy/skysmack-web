@@ -1,8 +1,9 @@
-import { Component, OnInit, Input, EventEmitter, Output, ViewChild, OnDestroy } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, OnDestroy } from '@angular/core';
 import { LocalObject, LoadingState, SubscriptionHandler } from '@skysmack/framework';
-import { Observable, BehaviorSubject } from 'rxjs';
+import { Observable } from 'rxjs';
 import { EntityAction } from '@skysmack/ng-ui';
-import { CdkVirtualScrollViewport, ViewportRuler, CdkVirtualForOf } from '@angular/cdk/scrolling';
+import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'ss-records-container',
@@ -12,7 +13,7 @@ import { CdkVirtualScrollViewport, ViewportRuler, CdkVirtualForOf } from '@angul
 export class RecordsContainerComponent implements OnInit, OnDestroy {
   @ViewChild(CdkVirtualScrollViewport) viewport: CdkVirtualScrollViewport;
   @ViewChild('entitiesList') entitiesList: any;
-  public entitiesLoaded: number;
+  public showingRange: string = '0';
 
   // Input properties defined in the task
   @Input() public entities$: Observable<LocalObject<any, any>[]>;
@@ -31,7 +32,11 @@ export class RecordsContainerComponent implements OnInit, OnDestroy {
   constructor() { }
 
   ngOnInit() {
-    this.subscriptionHandler.register(this.entities$.subscribe(entities => this.entities = entities));
+    this.subscriptionHandler.register(this.entities$.pipe(
+      map(x => {
+        this.getShowingRange();
+        return x;
+      })).subscribe(entities => this.entities = entities));
   }
 
   ngOnDestroy() {
@@ -46,8 +51,20 @@ export class RecordsContainerComponent implements OnInit, OnDestroy {
     return item ? item.localId : undefined;
   }
 
-  public whenScrolling(height: number) {
-    const element = document.querySelector('#entity-list');
+  public whenScrolling() {
+    this.getShowingRange();
+  }
+
+  private getShowingRange() {
+    const element: Element = document.querySelector('#entity-list');
+    if (element) {
+      const currentVisibleEntities = Array.from(element.children[0].children);
+      if (currentVisibleEntities[0] && currentVisibleEntities[currentVisibleEntities.length - 1]) {
+        const lowest = Number(currentVisibleEntities[0].getAttribute('data-index')) + 1;
+        const highest = Number(currentVisibleEntities[currentVisibleEntities.length - 1].getAttribute('data-index')) + 1;
+        this.showingRange = `${lowest} - ${highest}`;
+      }
+    }
   }
 
 }

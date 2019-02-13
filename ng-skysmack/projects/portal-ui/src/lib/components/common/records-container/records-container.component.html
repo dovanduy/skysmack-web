@@ -4,7 +4,8 @@
   </mat-card-header>
 </mat-card>
 
-<cdk-virtual-scroll-viewport *ngIf="entities" itemSize="82.4" (scrolledIndexChange)="whenScrolling($event)">
+<cdk-virtual-scroll-viewport id="entity-list" *ngIf="entities" itemSize="82.4"
+  (scrolledIndexChange)="whenScrolling($event)">
   <mat-card *cdkVirtualFor="let entity of entities; trackBy: trackByLocalId; let i = index;" [attr.data-index]="i">
     <mat-card-content>
       <p style="margin-right: 5px; display: inline-block;" *ngFor="let column of displayedColumns">
@@ -48,7 +49,7 @@
   </mat-card>
 </cdk-virtual-scroll-viewport>
 <mat-card>
-  <p *ngIf="totalCount">Showing ?? out of {{ totalCount }}</p>
+  <p *ngIf="totalCount">Showing {{ showingRange }} of {{ totalCount }}</p>
   <ng-container [ngSwitch]="loadingState">
     <div *ngSwitchCase="2">
       Loading...
