@@ -4,8 +4,8 @@
   </mat-card-header>
 </mat-card>
 
-<cdk-virtual-scroll-viewport *ngIf="entities" itemSize="5" (scrolledIndexChange)="loadNext($event)">
-  <mat-card *cdkVirtualFor="let entity of entities; trackBy: trackByLocalId">
+<cdk-virtual-scroll-viewport *ngIf="entities" itemSize="82.4" (scrolledIndexChange)="whenScrolling($event)">
+  <mat-card *cdkVirtualFor="let entity of entities; trackBy: trackByLocalId; let i = index;" [attr.data-index]="i">
     <mat-card-content>
       <p style="margin-right: 5px; display: inline-block;" *ngFor="let column of displayedColumns">
         {{ entity.object[column] }}</p>
@@ -47,3 +47,16 @@
 
   </mat-card>
 </cdk-virtual-scroll-viewport>
+<mat-card>
+  <p *ngIf="totalCount">Showing ?? out of {{ totalCount }}</p>
+  <ng-container [ngSwitch]="loadingState">
+    <div *ngSwitchCase="2">
+      Loading...
+      <mat-spinner [diameter]="30"></mat-spinner>
+    </div>
+    <p *ngSwitchCase="3">All entities loaded</p>
+    <!-- Default is 0. This means the state is Awaiting (not currently loading, but can load more when needed) -->
+    <p *ngSwitchDefault></p>
+  </ng-container>
+
+</mat-card>

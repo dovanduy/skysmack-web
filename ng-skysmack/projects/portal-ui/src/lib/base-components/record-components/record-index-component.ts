@@ -24,8 +24,6 @@ export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey>
     public currentPageNumber = 1;
     public totalCount: number;
 
-    private loaderIsVisible = false;
-
     constructor(
         public router: Router,
         public activatedRoute: ActivatedRoute,
@@ -42,42 +40,28 @@ export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey>
         this.requestPage(true);
         this.loadPages();
         this.getPagedEntities();
-        // this.subscriptionHandler.subscribe(this.getScrollAsStream().subscribe());
+
     }
 
-    /**
- * Listens for and fires entity actions when set in the component.
- * @param event Event emitted from the ss-data-table
- */
+    private getEntities() {
+        this.entities$ = this.store.get(this.packagePath);
+    }
+
     public actionEvent(event: { action: Function, value: LocalObject<TRecord, TKey>, _this: any }) {
         event.action(event.value, event._this);
     }
 
-    /**
-     * Angular track by function used to track local objects in ngFor loops.
-     */
-    public trackByObjectId(item: LocalObject<any, TKey>) {
-        return item ? item.object.id : undefined;
-    }
-
-    /**
-     * Deletes an entity
-     * @param entity The entity to delete.
-     */
     protected delete(value: LocalObject<TRecord, TKey>, _this: RecordIndexComponent<any, any, any>) {
         _this.actions.delete([value], _this.packagePath);
     }
 
-    /**
-     * Loads the next page stored in skysmackStore. Also requests the next page if any.
-     */
-    public loadPages() {
+    private loadPages() {
         this.subscriptionHandler.register(this.store.getPages(this.packagePath).pipe(
             hasValue<StrIndex<LocalPageTypes<TKey>>>(),
             map(dictionary => {
+                // Part 1: Get current page
                 const query = this.pagedQuery.rsqlFilter.toList().build();
                 const queryDictionary = dictionary[query];
-
                 if (queryDictionary) {
                     const sort = this.pagedQuery.sort.build();
                     const pages = queryDictionary.pages[this.pagedQuery.pageSize + ':' + sort];
@@ -90,9 +74,13 @@ export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey>
                             return pages[key];
                         }
                     }));
-                    this.totalCount = queryDictionary.totalCount;
-                    this.currentPageNumber = lastPageKey;
 
+                    // Part 2: Load next page
+                    if (queryDictionary && queryDictionary.totalCount) {
+                        this.totalCount = queryDictionary.totalCount;
+                    }
+
+                    this.currentPageNumber = lastPageKey;
                     const lastPageLinks = lastPage.links;
 
                     if (lastPageLinks) {
@@ -114,16 +102,8 @@ export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey>
         ).subscribe());
     }
 
-    /**
-     * Loads the next page of entities if:
-     * 1. Forced to do so
-     * 2. The loading state is awaiting AND
-     *      - loaderIsVisible (inViewport directive is in view port :D )
-     *      - OR the user is scrolling close to the end of the page.
-     * @param force Gets a page regardless of other conditions if set to true.
-     */
-    public requestPage(force = false) {
-        if (force || (this.loadingState === LoadingState.Awaiting && (this.loaderIsVisible || this.getMaxScroll() - window.pageYOffset < 100))) {
+    private requestPage(force = false) {
+        if (force || (this.loadingState === LoadingState.Awaiting && (this.getMaxScroll() < 100))) {
             this.loadingState = LoadingState.Loading;
 
             this.pagedQuery.pageNumber = this.nextPageNumber;
@@ -133,31 +113,32 @@ export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey>
         }
     }
 
-    /**
-     * Requests a new page (if conditions are met) while the user is scrolling
-     */
-    public getScrollAsStream(): Observable<void> {
-        return fromEvent(window, 'scroll').pipe(
-            map(() => { this.requestPage(); })
-        );
-    }
+    public count = 2;
 
-    /**
-     * Requests the next page when option is true.
-     * @param param0 Object with the property visisble set to true or false. If true, anotherpage is requested.
-     */
-    public onIntersection({ visible = false }) {
-        this.loaderIsVisible = visible;
-        if (visible) {
-            setTimeout(() => { this.requestPage(); }, 50);
+    private getMaxScroll(): number {
+        // NEEDS TO RECIEVE HEIGHT FROM VIRTUAL SCROLL
+        const containerComponent = document.getElementById('container-component');
+        if (containerComponent) {
+            const clientHeight = 0;
+            const scrollHeight = Math.max(0);
+            return (scrollHeight - clientHeight);
         }
-    }
+        // Temp hack
 
+        this.count = this.count - 1;
+        // return 0;
+        if (0 < this.count) {
+            return 0;
+        } else {
+            return 1000;
+        }
+
+    }
 
     /**
      * Shows all entities from the entities$ stream, if the their id is part of one of the loaded pages.
      */
-    public getPagedEntities() {
+    private getPagedEntities() {
         if (this.pages$ && this.entities$) {
             this.pagedEntities$ = combineLatest(
                 this.pages$,
@@ -183,20 +164,15 @@ export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey>
         }
     }
 
-    private getEntities() {
-        this.entities$ = this.store.get(this.packagePath);
-    }
-
-    /**
-     * Gets the max distance the user can scroll in a cross browser safe manner.
-     */
-    private getMaxScroll(): number {
-        const containerComponent = document.getElementById('container-component');
-        if (containerComponent) {
-            const clientHeight = 0;
-            const scrollHeight = Math.max(0);
-            return (scrollHeight - clientHeight);
-        }
-        return 0;
-    }
+    // /**
+    //  * Requests the next page when option is true.
+    //  * @param param0 Object with the property visisble set to true or false. If true, anotherpage is requested.
+    //  */
+    // public onIntersection({ visible = false }) {
+    //     console.log('onIntersection');
+    //     this.loaderIsVisible = visible;
+    //     if (visible) {
+    //         setTimeout(() => { this.requestPage(); }, 50);
+    //     }
+    // }
 }

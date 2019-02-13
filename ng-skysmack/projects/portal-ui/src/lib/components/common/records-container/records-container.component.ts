@@ -1,17 +1,18 @@
-import { Component, OnInit, Input, EventEmitter, Output, ViewChild } from '@angular/core';
-import { LocalObject, LoadingState } from '@skysmack/framework';
+import { Component, OnInit, Input, EventEmitter, Output, ViewChild, OnDestroy } from '@angular/core';
+import { LocalObject, LoadingState, SubscriptionHandler } from '@skysmack/framework';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { EntityAction } from '@skysmack/ng-ui';
-import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
+import { CdkVirtualScrollViewport, ViewportRuler, CdkVirtualForOf } from '@angular/cdk/scrolling';
 
 @Component({
   selector: 'ss-records-container',
   templateUrl: './records-container.component.html',
   styleUrls: ['./records-container.component.scss']
 })
-export class RecordsContainerComponent implements OnInit {
+export class RecordsContainerComponent implements OnInit, OnDestroy {
   @ViewChild(CdkVirtualScrollViewport) viewport: CdkVirtualScrollViewport;
-  // public offset = new BehaviorSubject(null);
+  @ViewChild('entitiesList') entitiesList: any;
+  public entitiesLoaded: number;
 
   // Input properties defined in the task
   @Input() public entities$: Observable<LocalObject<any, any>[]>;
@@ -20,24 +21,21 @@ export class RecordsContainerComponent implements OnInit {
   @Input() public loadingState: LoadingState;
   @Input() public entityActions: EntityAction[] = [];
 
-  // Output properties defined in the task
-  // @Output() public loadNext = new EventEmitter<boolean>(); // Is the emit type correct?
-  // @Output() public sort = new EventEmitter<any>();
-  // @Output() public filter = new EventEmitter<any>();
-
   // Properties taken from Data table
   @Input() public packagePath: string;
   @Input() public title: string;
   @Input() public cancelAction: Function;
   @Input() public displayedColumns: string[] = [];
-  // public subscriptionHandler = new SubscriptionHandler();
+  public subscriptionHandler: SubscriptionHandler = new SubscriptionHandler();
 
   constructor() { }
 
   ngOnInit() {
-    this.entities$.subscribe(entities => this.entities = entities);
-    // console.log('entities: ' + this.entities$ + '\n\n', 'totalCount: ' + this.totalCount + '\n\n', 'loadingState: ' + this.loadingState + '\n\n', 'entityActions: ' + this.entityActions + '\n\n', 'loadNext: ' + this.loadNext + '\n\n');
-    // console.log('packagePath: ' + this.packagePath + '\n\n', 'title: ' + this.title + '\n\n', 'cancelAction: ' + this.cancelAction + '\n\n', 'displayedColumns: ' + this.displayedColumns + '\n\n');
+    this.subscriptionHandler.register(this.entities$.subscribe(entities => this.entities = entities));
+  }
+
+  ngOnDestroy() {
+    this.subscriptionHandler.unsubscribe();
   }
 
   public runCancelAction(entity: LocalObject<any, any>) {
@@ -48,20 +46,8 @@ export class RecordsContainerComponent implements OnInit {
     return item ? item.localId : undefined;
   }
 
-  public loadNext(height: number) {
-    // if (this.theEnd) {
-    //   return;
-    // }
-
-    console.log(height);
-
-    const end = this.viewport.getRenderedRange().end;
-    const total = this.viewport.getDataLength();
-    // console.log(offset);
-    console.log(`${end}, '>=', ${total}`);
-    if (end === total) {
-      // this.offset.next(offset);
-    }
+  public whenScrolling(height: number) {
+    const element = document.querySelector('#entity-list');
   }
 
 }
