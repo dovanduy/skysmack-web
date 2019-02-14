@@ -8,3 +8,4 @@ export * from './page-extensions';
 export * from './identifiable-extensions';
 export * from './rxjs-helpers';
 export * from './subscription-handler';
+export * from './logger';

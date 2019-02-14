@@ -1,7 +1,8 @@
 import { LocalPage, LocalPageTypes, PageResponse, StrIndex } from "../models";
+import { LoadingState } from './loading-state';
 
 export class PageExtensions {
-    public static mergeOrAddPage<TKey>(existingPages: StrIndex<LocalPageTypes<TKey>> = {}, newPage: PageResponse<TKey>, loadingState: 'OK' | 'loading' = 'OK'): StrIndex<LocalPageTypes<TKey>> {
+    public static mergeOrAddPage<TKey>(existingPages: StrIndex<LocalPageTypes<TKey>> = {}, newPage: PageResponse<TKey>, loadingState: LoadingState = LoadingState.OK): StrIndex<LocalPageTypes<TKey>> {
         let currentPageType = existingPages[newPage.query];
         if (!currentPageType || currentPageType === null) {
             currentPageType = new LocalPageTypes({

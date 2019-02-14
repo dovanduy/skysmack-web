@@ -3,8 +3,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { RecordActionsBase } from '@skysmack/redux';
 import { NgRedux } from '@angular-redux/store';
 import { NgSkysmackStore } from '@skysmack/ng-packages';
-import { LocalObject, LocalPage, PagedQuery, LoadingState, hasValue, StrIndex, LocalPageTypes, linq } from '@skysmack/framework';
-import { Observable, BehaviorSubject, fromEvent, combineLatest } from 'rxjs';
+import { LocalObject, LocalPage, PagedQuery, LoadingState, hasValue, StrIndex, LocalPageTypes, linq, Logger } from '@skysmack/framework';
+import { Observable, BehaviorSubject, combineLatest } from 'rxjs';
 import { NgRecordReduxStore } from '@skysmack/ng-redux';
 import { OnInit } from '@angular/core';
 import { Record } from '@skysmack/framework';
@@ -15,6 +15,9 @@ export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey>
     public pages$: BehaviorSubject<LocalPage<TKey>[]> = new BehaviorSubject<LocalPage<TKey>[]>([]);
     public pagedEntities$: Observable<LocalObject<TRecord, TKey>[]>;
     public pagedQuery = new PagedQuery();
+
+    public currentEntity: number;
+    public loadedEntitiesCount: number;
 
     public nextPageNumber = 1;
     public nextPageSize = this.pagedQuery.pageSize;
@@ -40,12 +43,13 @@ export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey>
         this.requestPage(true);
         this.loadPages();
         this.getPagedEntities();
-
     }
 
-    private getEntities() {
-        this.entities$ = this.store.get(this.packagePath);
+    public setCurrentEntity(number: number) {
+        this.currentEntity = number;
+        this.requestPage(false);
     }
+
 
     public actionEvent(event: { action: Function, value: LocalObject<TRecord, TKey>, _this: any }) {
         event.action(event.value, event._this);
@@ -53,6 +57,10 @@ export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey>
 
     protected delete(value: LocalObject<TRecord, TKey>, _this: RecordIndexComponent<any, any, any>) {
         _this.actions.delete([value], _this.packagePath);
+    }
+
+    private getEntities() {
+        this.entities$ = this.store.get(this.packagePath);
     }
 
     private loadPages() {
@@ -95,7 +103,7 @@ export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey>
                             this.loadingState = LoadingState.End;
                         }
                     } else {
-                        this.loadingState = LoadingState.End;
+                        this.loadingState = LoadingState.Loading;
                     }
                 }
             })
@@ -103,7 +111,11 @@ export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey>
     }
 
     private requestPage(force = false) {
-        if (force || (this.loadingState === LoadingState.Awaiting && (this.getMaxScroll() < 100))) {
+        if (force || (this.loadingState === LoadingState.Awaiting && (
+            this.currentEntity &&
+            this.loadedEntitiesCount &&
+            this.currentEntity >= (this.loadedEntitiesCount - 20)
+        ))) {
             this.loadingState = LoadingState.Loading;
 
             this.pagedQuery.pageNumber = this.nextPageNumber;
@@ -111,28 +123,6 @@ export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey>
 
             this.actions.getPaged(this.packagePath, this.pagedQuery);
         }
-    }
-
-    public count = 2;
-
-    private getMaxScroll(): number {
-        // NEEDS TO RECIEVE HEIGHT FROM VIRTUAL SCROLL
-        const containerComponent = document.getElementById('container-component');
-        if (containerComponent) {
-            const clientHeight = 0;
-            const scrollHeight = Math.max(0);
-            return (scrollHeight - clientHeight);
-        }
-        // Temp hack
-
-        this.count = this.count - 1;
-        // return 0;
-        if (0 < this.count) {
-            return 0;
-        } else {
-            return 1000;
-        }
-
     }
 
     /**
@@ -146,6 +136,7 @@ export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey>
             ).pipe(
                 map(values => {
                     const [pages, entities] = values;
+                    this.loadedEntitiesCount = entities.length;
 
                     const idsArray = linq<LocalPage<TKey>>(pages)
                         .defined()
@@ -163,16 +154,4 @@ export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey>
             );
         }
     }
-
-    // /**
-    //  * Requests the next page when option is true.
-    //  * @param param0 Object with the property visisble set to true or false. If true, anotherpage is requested.
-    //  */
-    // public onIntersection({ visible = false }) {
-    //     console.log('onIntersection');
-    //     this.loaderIsVisible = visible;
-    //     if (visible) {
-    //         setTimeout(() => { this.requestPage(); }, 50);
-    //     }
-    // }
 }

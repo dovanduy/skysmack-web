@@ -49,14 +49,19 @@
   </mat-card>
 </cdk-virtual-scroll-viewport>
 <mat-card>
-  <p *ngIf="totalCount">Showing {{ showingRange }} of {{ totalCount }}</p>
+  <p *ngIf="totalCount && showingRange">Showing {{ showingRange }} of {{ totalCount }}</p>
   <ng-container [ngSwitch]="loadingState">
+    <p *ngSwitchCase="0">OK</p>
+    <p *ngSwitchCase="1">Awaiting</p>
     <div *ngSwitchCase="2">
       Loading...
       <mat-spinner [diameter]="30"></mat-spinner>
     </div>
-    <p *ngSwitchCase="3">All entities loaded</p>
-    <!-- Default is 0. This means the state is Awaiting (not currently loading, but can load more when needed) -->
+    <p *ngSwitchCase="3">Reloading</p>
+    <p *ngSwitchCase="4">Not found</p>
+    <p *ngSwitchCase="5">Unauthorized</p>
+    <p *ngSwitchCase="6">Unauthenticated</p>
+    <p *ngSwitchCase="7">End</p>
     <p *ngSwitchDefault></p>
   </ng-container>
 

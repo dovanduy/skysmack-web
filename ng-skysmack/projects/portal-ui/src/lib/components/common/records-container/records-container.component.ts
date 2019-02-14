@@ -1,8 +1,7 @@
-import { Component, OnInit, Input, ViewChild, OnDestroy } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy, EventEmitter, Output } from '@angular/core';
 import { LocalObject, LoadingState, SubscriptionHandler } from '@skysmack/framework';
 import { Observable } from 'rxjs';
 import { EntityAction } from '@skysmack/ng-ui';
-import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
 import { map } from 'rxjs/operators';
 
 @Component({
@@ -11,9 +10,10 @@ import { map } from 'rxjs/operators';
   styleUrls: ['./records-container.component.scss']
 })
 export class RecordsContainerComponent implements OnInit, OnDestroy {
-  @ViewChild(CdkVirtualScrollViewport) viewport: CdkVirtualScrollViewport;
-  @ViewChild('entitiesList') entitiesList: any;
-  public showingRange: string = '0';
+  public subscriptionHandler: SubscriptionHandler = new SubscriptionHandler();
+  public showingRange: string;
+
+  @Output() public currentEntity = new EventEmitter<number>();
 
   // Input properties defined in the task
   @Input() public entities$: Observable<LocalObject<any, any>[]>;
@@ -27,7 +27,6 @@ export class RecordsContainerComponent implements OnInit, OnDestroy {
   @Input() public title: string;
   @Input() public cancelAction: Function;
   @Input() public displayedColumns: string[] = [];
-  public subscriptionHandler: SubscriptionHandler = new SubscriptionHandler();
 
   constructor() { }
 
@@ -37,6 +36,7 @@ export class RecordsContainerComponent implements OnInit, OnDestroy {
         this.getShowingRange();
         return x;
       })).subscribe(entities => this.entities = entities));
+
   }
 
   ngOnDestroy() {
@@ -56,15 +56,21 @@ export class RecordsContainerComponent implements OnInit, OnDestroy {
   }
 
   private getShowingRange() {
-    const element: Element = document.querySelector('#entity-list');
-    if (element) {
-      const currentVisibleEntities = Array.from(element.children[0].children);
-      if (currentVisibleEntities[0] && currentVisibleEntities[currentVisibleEntities.length - 1]) {
-        const lowest = Number(currentVisibleEntities[0].getAttribute('data-index')) + 1;
-        const highest = Number(currentVisibleEntities[currentVisibleEntities.length - 1].getAttribute('data-index')) + 1;
-        this.showingRange = `${lowest} - ${highest}`;
-      }
-    }
-  }
+    // TODO: Find way to make it show range from start WITHOUT setTimeout
+    setTimeout(() => {
+      const element: Element = document.querySelector('#entity-list');
 
+      if (element) {
+        const currentVisibleEntities = Array.from(element.children[0].children);
+
+        if (currentVisibleEntities[0] && currentVisibleEntities[currentVisibleEntities.length - 1]) {
+          const lowest = Number(currentVisibleEntities[0].getAttribute('data-index')) + 1;
+          const highest = Number(currentVisibleEntities[currentVisibleEntities.length - 1].getAttribute('data-index')) + 1;
+
+          this.currentEntity.emit(highest);
+          this.showingRange = `${lowest} - ${highest}`;
+        }
+      }
+    }, 0);
+  }
 }
