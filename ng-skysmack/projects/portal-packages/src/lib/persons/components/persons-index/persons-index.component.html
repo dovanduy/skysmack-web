@@ -2,7 +2,7 @@
     <ss-records-container [cancelAction]="actions.cancelRecordAction" [title]="loadedPackage._package.name"
         [displayedColumns]="displayedColumns" [entities$]="pagedEntities$" [entityActions]="entityActions"
         [packagePath]="packagePath" (entityActionEvent)="actionEvent($event)" [totalCount]="totalCount"
-        [loadingState]="loadingState" (requestPage)="requestPage($event)">
+        [loadingState]="loadingState" (requestPage)="requestPage()">
     </ss-records-container>
     <!-- <ss-data-table *ngIf="entities$" [cancelAction]="actions.cancelRecordAction" [title]="loadedPackage._package.name"
         [displayedColumns]="displayedColumns" [entities$]="pagedEntities$" [entityActions]="entityActions"

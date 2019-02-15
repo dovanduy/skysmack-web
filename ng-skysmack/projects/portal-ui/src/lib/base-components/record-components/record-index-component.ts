@@ -47,8 +47,8 @@ export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey>
     }
 
 
-    public requestPage(force: boolean) {
-        if (force) {
+    public requestPage(force = false) {
+        if (force || this.loadingState !== LoadingState.Loading) {
             this.loadingState = LoadingState.Loading;
 
             this.pagedQuery.pageNumber = this.nextPageNumber;
@@ -93,18 +93,10 @@ export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey>
 
                     this.currentPageNumber = lastPageKey;
                     const lastPageLinks = lastPage.links;
-
-                    if (lastPageLinks) {
-                        if (lastPageLinks.next) {
-                            setTimeout(() => {
-                                this.loadingState = LoadingState.Awaiting;
-                                this.requestPage();
-                            }, 50);
-                            this.nextPageNumber = lastPageLinks.next.pageNumber;
-                            this.nextPageSize = lastPageLinks.next.pageSize;
-                        } else {
-                            this.loadingState = LoadingState.End;
-                        }
+                    if (lastPageLinks && lastPageLinks.next) {
+                        this.loadingState = LoadingState.Awaiting;
+                        this.nextPageNumber = lastPageLinks.next.pageNumber;
+                        this.nextPageSize = lastPageLinks.next.pageSize;
                     } else {
                         // HERE
                         this.loadingState = LoadingState.Loading;

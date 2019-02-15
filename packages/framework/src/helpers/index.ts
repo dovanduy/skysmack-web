@@ -5,7 +5,7 @@ export * from './framework.helpers';
 export * from './linq';
 export * from './loading-state';
 export * from './page-extensions';
-export * from './identifiable-extensions';
+export * from './local-object-extensions';
 export * from './rxjs-helpers';
 export * from './subscription-handler';
 export * from './logger';
