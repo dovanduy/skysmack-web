@@ -12,8 +12,10 @@ import { map } from 'rxjs/operators';
 export class RecordsContainerComponent implements OnInit, OnDestroy {
   public subscriptionHandler: SubscriptionHandler = new SubscriptionHandler();
   public showingRange: string;
+  public loadedEntitiesCount: number;
+  public currentEntity: number;
 
-  @Output() public currentEntity = new EventEmitter<number>();
+  @Output() public requestPage = new EventEmitter<boolean>(false);
 
   // Input properties defined in the task
   @Input() public entities$: Observable<LocalObject<any, any>[]>;
@@ -32,9 +34,10 @@ export class RecordsContainerComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.subscriptionHandler.register(this.entities$.pipe(
-      map(x => {
+      map(entities => {
         this.getShowingRange();
-        return x;
+        this.loadedEntitiesCount = entities.length;
+        return entities;
       })).subscribe(entities => this.entities = entities));
 
   }
@@ -53,6 +56,9 @@ export class RecordsContainerComponent implements OnInit, OnDestroy {
 
   public whenScrolling() {
     this.getShowingRange();
+    if (this.currentEntity && this.loadedEntitiesCount && this.currentEntity >= (this.loadedEntitiesCount - 20)) {
+      this.requestPage.emit(true);
+    }
   }
 
   private getShowingRange() {
@@ -66,8 +72,7 @@ export class RecordsContainerComponent implements OnInit, OnDestroy {
         if (currentVisibleEntities[0] && currentVisibleEntities[currentVisibleEntities.length - 1]) {
           const lowest = Number(currentVisibleEntities[0].getAttribute('data-index')) + 1;
           const highest = Number(currentVisibleEntities[currentVisibleEntities.length - 1].getAttribute('data-index')) + 1;
-
-          this.currentEntity.emit(highest);
+          this.currentEntity = highest;
           this.showingRange = `${lowest} - ${highest}`;
         }
       }
