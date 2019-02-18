@@ -51,7 +51,7 @@ import { ShowEntityActionDirective } from './directives/show-entity-action.direc
 import { IsAuthenticatedDirective } from './autentication/is-authenticated.directive';
 import { IsAnonymousDirective } from './autentication/is-anonymous.directive';
 import { NgNotifications } from './notifications/ng-notifications';
-import { RecordsContainerComponent } from './components';
+import { RecordsContainerComponent } from './components/common/records-container/records-container.component';
 
 @NgModule({
   imports: [

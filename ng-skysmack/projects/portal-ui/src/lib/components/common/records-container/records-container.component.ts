@@ -16,6 +16,7 @@ export class RecordsContainerComponent implements OnInit, OnDestroy {
 
   @ViewChild('entityList') public entityList: CdkVirtualScrollViewport;
   @Output() public requestPage = new EventEmitter<boolean>(false);
+  @Output() public entityActionEvent = new EventEmitter<any>();
   @Input() public entities$: Observable<LocalObject<any, any>[]>;
   @Input() public entities: LocalObject<any, any>[];
   @Input() public totalCount: number;
