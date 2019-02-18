@@ -27,12 +27,13 @@ export class LanguageSelectComponent implements OnInit {
     this.menu$ = this.redux.getMenu();
   }
 
-  public setLanguage(selectedLanguage) {
-    this.translate.use(selectedLanguage);
-    this.settingsRedux.setLanguage(selectedLanguage);
+  public setLanguage(selectedLanguage: string) {
+    if (selectedLanguage.length > 0) {
+      this.settingsRedux.setLanguage(selectedLanguage);
+    }
   }
 
-  public toLangString(lang) {
+  public toLangString(lang: string) {
     switch (lang) {
       case 'da':
         return 'Dansk';
