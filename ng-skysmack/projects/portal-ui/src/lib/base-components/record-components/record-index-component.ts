@@ -3,12 +3,13 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { RecordActionsBase } from '@skysmack/redux';
 import { NgRedux } from '@angular-redux/store';
 import { NgSkysmackStore } from '@skysmack/ng-packages';
-import { LocalObject, LocalPage, PagedQuery, LoadingState, hasValue, StrIndex, LocalPageTypes, linq } from '@skysmack/framework';
+import { LocalObject, LocalPage, PagedQuery, LoadingState, hasValue, StrIndex, LocalPageTypes, linq, Logger } from '@skysmack/framework';
 import { Observable, BehaviorSubject, combineLatest } from 'rxjs';
 import { NgRecordReduxStore } from '@skysmack/ng-redux';
 import { OnInit } from '@angular/core';
 import { Record } from '@skysmack/framework';
 import { map } from 'rxjs/operators';
+import { load } from '@angular/core/src/render3';
 
 export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey> extends BaseComponent<TAppState, TKey> implements OnInit {
     public entities$: Observable<LocalObject<TRecord, TKey>[]>;
@@ -46,9 +47,8 @@ export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey>
         event.action(event.value, event._this);
     }
 
-
     public requestPage(force = false) {
-        if (force || this.loadingState !== LoadingState.Loading) {
+        if (force || (this.loadingState === LoadingState.OK || this.loadingState === LoadingState.Awaiting)) {
             this.loadingState = LoadingState.Loading;
 
             this.pagedQuery.pageNumber = this.nextPageNumber;
@@ -68,8 +68,8 @@ export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey>
 
     private loadPages() {
         this.subscriptionHandler.register(this.store.getPages(this.packagePath).pipe(
-            hasValue<StrIndex<LocalPageTypes<TKey>>>(),
-            map(dictionary => {
+            hasValue(),
+            map((dictionary: StrIndex<LocalPageTypes<TKey>>) => {
                 // Part 1: Get current page
                 const query = this.pagedQuery.rsqlFilter.toList().build();
                 const queryDictionary = dictionary[query];
@@ -80,26 +80,29 @@ export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey>
                     const lastPageKey = Number(pageKeys[pageKeys.length - 1]);
                     const lastPage: LocalPage<TKey> = pages[lastPageKey];
 
-                    this.pages$.next(Object.keys(pages).map(key => {
-                        if (Number(key) > 0) {
-                            return pages[key];
+                    if (lastPage.loadingState === LoadingState.OK) {
+                        this.pages$.next(Object.keys(pages).map(key => {
+                            if (Number(key) > 0) {
+                                return pages[key];
+                            }
+                        }));
+
+                        // Part 2: Load next page
+                        if (queryDictionary && queryDictionary.totalCount) {
+                            this.totalCount = queryDictionary.totalCount;
                         }
-                    }));
 
-                    // Part 2: Load next page
-                    if (queryDictionary && queryDictionary.totalCount) {
-                        this.totalCount = queryDictionary.totalCount;
-                    }
+                        this.currentPageNumber = lastPageKey;
+                        const lastPageLinks = lastPage.links;
 
-                    this.currentPageNumber = lastPageKey;
-                    const lastPageLinks = lastPage.links;
-                    if (lastPageLinks && lastPageLinks.next) {
-                        this.loadingState = LoadingState.Awaiting;
-                        this.nextPageNumber = lastPageLinks.next.pageNumber;
-                        this.nextPageSize = lastPageLinks.next.pageSize;
-                    } else {
-                        // HERE
-                        this.loadingState = LoadingState.Loading;
+
+                        if ((lastPageLinks && lastPageLinks.next)) {
+                            this.loadingState = LoadingState.Awaiting;
+                            this.nextPageNumber = lastPageLinks.next.pageNumber;
+                            this.nextPageSize = lastPageLinks.next.pageSize;
+                        } else {
+                            this.loadingState = LoadingState.End;
+                        }
                     }
                 }
             })

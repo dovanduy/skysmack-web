@@ -4,7 +4,7 @@
   </mat-card-header>
 </mat-card>
 
-<cdk-virtual-scroll-viewport id="entity-list" *ngIf="entities" itemSize="82.4"
+<cdk-virtual-scroll-viewport #entityList id="entity-list" *ngIf="entities" itemSize="82.4"
   (scrolledIndexChange)="whenScrolling($event)">
   <mat-card *cdkVirtualFor="let entity of entities; trackBy: trackByLocalId; let i = index;" [attr.data-index]="i">
     <mat-card-content>
@@ -44,25 +44,28 @@
       </a>
 
     </mat-card-content>
-    <!-- TODO: SHOW LOADING INDICATOR OF SOME SORT -->
-
   </mat-card>
 </cdk-virtual-scroll-viewport>
+
+<!-- TODO: SHOW LOADING INDICATOR OF SOME SORT -->
 <mat-card>
-  <p *ngIf="totalCount && showingRange">Showing {{ showingRange }} of {{ totalCount }}</p>
+  <p *ngIf="loadedEntitiesCount">Loaded {{ loadedEntitiesCount }} out of {{ totalCount }}</p>
   <ng-container [ngSwitch]="loadingState">
-    <p *ngSwitchCase="0">OK</p>
-    <p *ngSwitchCase="1">Awaiting</p>
+    <!-- 
+      *ngSwitchCase="0" // OK
+      *ngSwitchCase="1" // Awaiting
+      *ngSwitchCase="2" // Loading
+      *ngSwitchCase="3" // Reloading
+      *ngSwitchCase="4" // Not found
+      *ngSwitchCase="5" // Unauthorized
+      *ngSwitchCase="6" // Unauthenticated
+      *ngSwitchCase="7" // End
+    -->
     <div *ngSwitchCase="2">
-      Loading...
+      <!-- Loading -->
       <mat-spinner [diameter]="30"></mat-spinner>
     </div>
-    <p *ngSwitchCase="3">Reloading</p>
-    <p *ngSwitchCase="4">Not found</p>
-    <p *ngSwitchCase="5">Unauthorized</p>
-    <p *ngSwitchCase="6">Unauthenticated</p>
-    <p *ngSwitchCase="7">End</p>
-    <p *ngSwitchDefault></p>
+    <ng-container *ngSwitchDefault></ng-container>
   </ng-container>
 
 </mat-card>

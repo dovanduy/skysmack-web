@@ -1,8 +1,9 @@
-import { Component, OnInit, Input, OnDestroy, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy, EventEmitter, Output, ViewChild } from '@angular/core';
 import { LocalObject, LoadingState, SubscriptionHandler } from '@skysmack/framework';
 import { Observable } from 'rxjs';
 import { EntityAction } from '@skysmack/ng-ui';
 import { map } from 'rxjs/operators';
+import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
 
 @Component({
   selector: 'ss-records-container',
@@ -11,13 +12,10 @@ import { map } from 'rxjs/operators';
 })
 export class RecordsContainerComponent implements OnInit, OnDestroy {
   public subscriptionHandler: SubscriptionHandler = new SubscriptionHandler();
-  public showingRange: string;
   public loadedEntitiesCount: number;
-  public currentEntity: number;
 
+  @ViewChild('entityList') public entityList: CdkVirtualScrollViewport;
   @Output() public requestPage = new EventEmitter<boolean>(false);
-
-  // Input properties defined in the task
   @Input() public entities$: Observable<LocalObject<any, any>[]>;
   @Input() public entities: LocalObject<any, any>[];
   @Input() public totalCount: number;
@@ -35,11 +33,9 @@ export class RecordsContainerComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.subscriptionHandler.register(this.entities$.pipe(
       map(entities => {
-        this.getShowingRange();
+        this.entities = entities;
         this.loadedEntitiesCount = entities.length;
-        return entities;
-      })).subscribe(entities => this.entities = entities));
-
+      })).subscribe());
   }
 
   ngOnDestroy() {
@@ -55,27 +51,8 @@ export class RecordsContainerComponent implements OnInit, OnDestroy {
   }
 
   public whenScrolling() {
-    this.getShowingRange();
-    if (this.currentEntity && this.loadedEntitiesCount && this.currentEntity >= (this.loadedEntitiesCount - 20)) {
+    if (this.entityList.measureScrollOffset('bottom') < 150) {
       this.requestPage.emit(true);
     }
-  }
-
-  private getShowingRange() {
-    // TODO: Find way to make it show range from start WITHOUT setTimeout
-    setTimeout(() => {
-      const element: Element = document.querySelector('#entity-list');
-
-      if (element) {
-        const currentVisibleEntities = Array.from(element.children[0].children);
-
-        if (currentVisibleEntities[0] && currentVisibleEntities[currentVisibleEntities.length - 1]) {
-          const lowest = Number(currentVisibleEntities[0].getAttribute('data-index')) + 1;
-          const highest = Number(currentVisibleEntities[currentVisibleEntities.length - 1].getAttribute('data-index')) + 1;
-          this.currentEntity = highest;
-          this.showingRange = `${lowest} - ${highest}`;
-        }
-      }
-    }, 0);
   }
 }
