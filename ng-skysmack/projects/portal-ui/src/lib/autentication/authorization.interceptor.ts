@@ -16,40 +16,26 @@ export class AuthorizationInterceptor implements HttpInterceptor {
         public authenticationActions: NgAuthenticationActions
     ) { }
 
-    public addTokenToRequest(request: HttpRequest<any>, currentUser: CurrentUser): HttpRequest<any> {
-        if (currentUser) {
-            if (currentUser.token_type && currentUser.access_token) {
-                return request.clone({
-                    setHeaders: {
-                        Authorization: `${currentUser.token_type} ${currentUser.access_token}`
-                    }
-                });
-            } else {
-                return request;
-            }
-        } else {
-            return request;
-        }
-    }
-
     public intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any> | any> {
         return this.authenticationStore.getCurrentUser().pipe(
             take(1),
             mergeMap((currentUser: CurrentUser) => {
-                return next.handle(this.addTokenToRequest(request, currentUser)).pipe(catchError(error => {
-                    if (error instanceof HttpErrorResponse) {
-                        switch ((error as HttpErrorResponse).status) {
-                            case 401:
-                                return this.handle401Error(request, next);
-                            case 400:
-                                // TODO: Redirect missing.
-                                this.authenticationActions.logout();
-                                return request;
+                return next.handle(this.addTokenToRequest(request, currentUser)).pipe(
+                    catchError(error => {
+                        if (error instanceof HttpErrorResponse) {
+                            switch ((error as HttpErrorResponse).status) {
+                                case 401:
+                                    return this.handle401Error(request, next);
+                                case 400:
+                                    // TODO: Redirect missing?
+                                    this.authenticationActions.logout();
+                                    return request;
+                            }
+                        } else {
+                            return error;
                         }
-                    } else {
-                        return error;
-                    }
-                }));
+                    })
+                );
             })
         );
     }
@@ -80,6 +66,22 @@ export class AuthorizationInterceptor implements HttpInterceptor {
                 take(1),
                 switchMap(currentUser => next.handle(this.addTokenToRequest(request, currentUser)))
             );
+        }
+    }
+
+    public addTokenToRequest(request: HttpRequest<any>, currentUser: CurrentUser): HttpRequest<any> {
+        if (currentUser) {
+            if (currentUser.token_type && currentUser.access_token) {
+                return request.clone({
+                    setHeaders: {
+                        Authorization: `${currentUser.token_type} ${currentUser.access_token}`
+                    }
+                });
+            } else {
+                return request;
+            }
+        } else {
+            return request;
         }
     }
 }
