@@ -14,6 +14,7 @@ export enum FieldTypes {
     HiddenField,
     PasswordField,
     PackageDependenciesField,
+    AvailablePermissionsField,
     RecurringExpressionField,
     SelectField,
     TimeField,

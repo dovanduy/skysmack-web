@@ -48,10 +48,10 @@ export class AccessPolicyPermissionsEditComponent extends RecordFormComponent<Ac
     ).pipe(
       map(values => {
         const entity = values[0];
-        const availablePackages = values[1];
+        const installedPackages = values[1];
         const availableAccessPolicyRules = values[2];
         this.selectedEntity = entity;
-        return this.getFields(entity, undefined, { availablePackages, availableAccessPolicyRules });
+        return this.getFields(entity, undefined, { installedPackages, availableAccessPolicyRules });
       })
     ).subscribe(fields => this.fields = fields));
   }

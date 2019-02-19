@@ -52,6 +52,7 @@ import { IsAuthenticatedDirective } from './autentication/is-authenticated.direc
 import { IsAnonymousDirective } from './autentication/is-anonymous.directive';
 import { NgNotifications } from './notifications/ng-notifications';
 import { RecordsContainerComponent } from './components/common/records-container/records-container.component';
+import { AvailablePermissionsFieldComponent } from './components/fields/components/available-permissions-field/available-permissions-field.component';
 
 @NgModule({
   imports: [
@@ -116,6 +117,7 @@ import { RecordsContainerComponent } from './components/common/records-container
     StringFieldComponent,
     TimeFieldComponent,
     PackageDependenciesFieldComponent,
+    AvailablePermissionsFieldComponent,
     PageHeaderComponent,
     SpeedDialFabComponent
   ],
@@ -160,6 +162,7 @@ import { RecordsContainerComponent } from './components/common/records-container
     StringFieldComponent,
     TimeFieldComponent,
     PackageDependenciesFieldComponent,
+    AvailablePermissionsFieldComponent,
     SpeedDialFabComponent
   ]
 })

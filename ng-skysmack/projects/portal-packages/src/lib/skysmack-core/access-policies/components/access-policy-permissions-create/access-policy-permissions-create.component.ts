@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgAccessPolicyPermissionsActions, NgSkysmackActions, NgAccessPolicyRulesActions, NgAccessPolicyRulesStore } from '@skysmack/ng-packages';
+import { NgAccessPolicyPermissionsActions, NgSkysmackActions, NgAccessPolicyRulesActions, NgAccessPolicyRulesStore, NgPackagesActions } from '@skysmack/ng-packages';
 import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EditorNavService, RecordFormComponent } from '@skysmack/portal-ui';
@@ -26,6 +26,7 @@ export class AccessPolicyPermissionsCreateComponent extends RecordFormComponent<
     public skysmackActions: NgSkysmackActions,
     public accessPolicyRulesStore: NgAccessPolicyRulesStore,
     public accessPolicyRulesActions: NgAccessPolicyRulesActions,
+    public packagesActions: NgPackagesActions,
     public fieldsConfig: NgAccessPolicyPermissionsFieldsConfig,
   ) {
     super(router, activatedRoute, editorNavService, actions, skysmackStore, store, fieldsConfig);
@@ -37,7 +38,7 @@ export class AccessPolicyPermissionsCreateComponent extends RecordFormComponent<
   }
 
   public setCreateFields() {
-    this.skysmackActions.getSkysmack();
+    this.packagesActions.getAvailablePackages();
     this.accessPolicyRulesActions.getPaged(this.packagePath, new PagedQuery());
 
     this.subscriptionHandler.register(combineLatest(
@@ -45,9 +46,9 @@ export class AccessPolicyPermissionsCreateComponent extends RecordFormComponent<
       this.accessPolicyRulesStore.get(this.packagePath)
     ).pipe(
       map(values => {
-        const availablePackages = values[0];
+        const installedPackages = values[0];
         const availableAccessPolicyRules = values[1];
-        return this.getFields(undefined, undefined, { availablePackages, availableAccessPolicyRules });
+        return this.getFields(undefined, undefined, { installedPackages, availableAccessPolicyRules });
       })
     ).subscribe(fields => this.fields = fields));
   }

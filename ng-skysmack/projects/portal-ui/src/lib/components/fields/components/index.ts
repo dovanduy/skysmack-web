@@ -8,6 +8,8 @@ export * from './hidden-field/hidden-field.component';
 export * from './int-field/int-field.component';
 export * from './limited-string-field/limited-string-field.component';
 export * from './password-field/password-field.component';
+export * from './available-permissions-field/available-permissions-field.component';
+export * from './package-dependencies-field/package-dependencies-field.component';
 export * from './recurring-expression-field';
 export * from './select-field/select-field.component';
 export * from './string-field/string-field.component';
