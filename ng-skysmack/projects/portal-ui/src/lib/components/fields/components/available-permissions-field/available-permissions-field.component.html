@@ -1,6 +1,6 @@
 <ng-container [formGroup]="fh.form">
   <mat-form-field *ngIf="permissions">
-    <mat-select [formControlName]="field.key" [placeholder]="field.placeholder | translate"
+    <mat-select [formControlName]="field.key" [value]="field.value" [placeholder]="field.placeholder | translate"
       (selectionChange)="setPermission($event.value)">
       <mat-option *ngFor="let permission of permissions" [value]="permission">{{ permission }}</mat-option>
     </mat-select>

@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef, ViewChild, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FieldBaseComponent } from '../field-base-component';
 import { NgPackagesStore, NgSkysmackStore } from '@skysmack/ng-packages';
 import { switchMap, map } from 'rxjs/operators';
@@ -10,7 +10,7 @@ import { switchMap, map } from 'rxjs/operators';
 })
 export class AvailablePermissionsFieldComponent extends FieldBaseComponent implements OnInit {
   public permissions: string[];
-  public selectedPackagePath = '';
+  public selectedPackagePath: string;
 
   constructor(
     public packagesStore: NgPackagesStore,
@@ -19,6 +19,7 @@ export class AvailablePermissionsFieldComponent extends FieldBaseComponent imple
 
   ngOnInit() {
     super.ngOnInit();
+    this.selectedPackagePath = this.getOtherFieldValue('packagePath');
     this.getPermissions();
     this.resetOnPackagePathChange();
   }
