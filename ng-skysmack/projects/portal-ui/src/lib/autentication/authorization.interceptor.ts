@@ -26,10 +26,10 @@ export class AuthorizationInterceptor implements HttpInterceptor {
                             switch ((error as HttpErrorResponse).status) {
                                 case 401:
                                     return this.handle401Error(request, next);
-                                case 400:
-                                    // TODO: Redirect missing?
-                                    this.authenticationActions.logout();
-                                    return request;
+                                // case 400:
+                                //     // TODO: Redirect missing?
+                                //     this.authenticationActions.logout();
+                                //     return request;
                             }
                         } else {
                             return error;
@@ -48,6 +48,7 @@ export class AuthorizationInterceptor implements HttpInterceptor {
             // comes back from the refreshToken call.
             this.tokenSubject.next(null);
 
+            // TODO: getCurrentUser needs to be replaced with a method that actually refreshes the token.
             return this.authenticationStore.getCurrentUser()
                 .pipe(
                     switchMap((currentUser: CurrentUser) => {
