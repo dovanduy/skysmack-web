@@ -6,7 +6,13 @@
 
 <cdk-virtual-scroll-viewport #entityList id="entity-list" *ngIf="entities" itemSize="82.4"
   (scrolledIndexChange)="whenScrolling()">
-  <mat-card *cdkVirtualFor="let entity of entities; trackBy: trackByLocalId; let i = index;" [attr.data-index]="i">
+
+
+  <mat-card *cdkVirtualFor="let entity of entities; trackBy: trackByLocalId; let i = index;" [attr.data-index]="i"
+    class="entity-row" [class.row-is-loading]="entity.status !== 'OK' && !entity.error"
+    [class.row-is-success]="entity.isNew" [class.row-is-error]="entity.error">
+
+
     <mat-card-content>
       <p style="margin-right: 5px; display: inline-block;" *ngFor="let column of displayedColumns">
         {{ entity.object[column] }}</p>
@@ -43,6 +49,9 @@
         <i class="material-icons">undo</i>
       </a>
 
+      <div style="width: 100px; height: 5px;" *ngIf="entity.status !== 'OK' && !entity.error">
+        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+      </div>
     </mat-card-content>
   </mat-card>
 </cdk-virtual-scroll-viewport>

@@ -1,3 +1,5 @@
+@import "../../../../../../../assets/scss/_includes.scss";
+
 cdk-virtual-scroll-viewport {
   height: 50vh;
 
@@ -12,4 +14,49 @@ cdk-virtual-scroll-viewport {
 //   &::-webkit-scrollbar-thumb {
 //     background-color: rgb(238, 169, 79);
 //   }
+}
+
+
+
+.row-is-loading {
+  border-bottom: none;
+}
+
+.loading-row {
+  height: auto;
+}
+
+.row-is-success {
+  -webkit-animation: success-background 1.4s 1 ease-in-out forwards;
+  animation: success-background 1.4s 1 ease-in-out forwards;
+}
+.row-is-error {
+  -webkit-animation: error-background 1.4s 1 ease-in-out forwards;
+  animation: error-background 1.4s 1 ease-in-out forwards;
+}
+
+.icon-text {
+  position: relative;
+  left: 5px;
+  top: -7px;
+  font-size: 12px;
+  color: rgba(82, 82, 82, 0.87);
+}
+
+@keyframes success-background {
+  50% {
+    background-color: $color-brand-secondary;
+  }
+  100% {
+    background-color: lighten( $color-brand-secondary, 50%);
+  }
+}
+
+@keyframes error-background {
+  50% {
+    background-color: #ff5454;
+  }
+  100% {
+    background-color: lighten(#ff5454, 30%);
+  }
 }
