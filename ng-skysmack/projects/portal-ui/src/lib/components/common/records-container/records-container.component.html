@@ -1,0 +1,80 @@
+<mat-card>
+  <mat-card-header>
+    <p style="margin-right: 10px; font-weight: 900;" *ngFor="let column of displayedColumns">{{ column }}</p>
+  </mat-card-header>
+</mat-card>
+
+<cdk-virtual-scroll-viewport #entityList id="entity-list" *ngIf="entities" itemSize="82.4"
+  (scrolledIndexChange)="whenScrolling()">
+
+
+  <mat-card *cdkVirtualFor="let entity of entities; trackBy: trackByLocalId; let i = index;" [attr.data-index]="i"
+    class="entity-row" [class.row-is-loading]="entity.status !== 'OK' && !entity.error"
+    [class.row-is-success]="entity.isNew" [class.row-is-error]="entity.error">
+
+
+    <mat-card-content>
+      <p style="margin-right: 5px; display: inline-block;" *ngFor="let column of displayedColumns">
+        {{ entity.object[column] }}</p>
+
+      <!-- ACTIONS -->
+      <!-- Hide the entities menu when in queue, or if the entity has a create error -->
+      <ng-container
+        *ngIf="entityActions.length > 0 && (entity.status === 'OK' || entity.status !== 'CREATING' && entity.error)">
+        <button mat-icon-button [matMenuTriggerFor]="menu">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <ng-container *ngFor="let entityAction of entityActions">
+            <!-- ACTION EVENT -->
+            <a *ngIf="entityAction.isActionEvent" showEntityAction [entityAction]="entityAction" [entity]="entity"
+              mat-menu-item
+              (click)="entityActionEvent.emit({ action: entityAction.action, value: entity, _this: entityAction._this })">
+              <i class="material-icons">{{ entityAction.icon }}</i> <span class="icon-text">{{
+                            entityAction.displayName }}</span>
+            </a>
+
+            <!-- URL EVENT -->
+            <a *ngIf="!entityAction.isActionEvent" mat-menu-item
+              [routerLink]="[entityAction.url, entity.objectIdentifier]">
+              <i class="material-icons">{{ entityAction.icon }}</i>
+              <span class="icon-text">{{ entityAction.displayName }}</span>
+            </a>
+          </ng-container>
+        </mat-menu>
+      </ng-container>
+
+      <!-- CANCEL ACTION -->
+      <a *ngIf="entity.error" mat-icon-button (click)="runCancelAction(entity);">
+        <i class="material-icons">undo</i>
+      </a>
+
+      <div style="width: 100px; height: 5px;" *ngIf="entity.status !== 'OK' && !entity.error">
+        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</cdk-virtual-scroll-viewport>
+
+<!-- TODO: SHOW LOADING INDICATOR OF SOME SORT -->
+<mat-card>
+  <p *ngIf="loadedEntitiesCount">Loaded {{ loadedEntitiesCount }} out of {{ totalCount }}</p>
+  <ng-container [ngSwitch]="loadingState">
+    <!-- 
+      *ngSwitchCase="0" // OK
+      *ngSwitchCase="1" // Awaiting
+      *ngSwitchCase="2" // Loading
+      *ngSwitchCase="3" // Reloading
+      *ngSwitchCase="4" // Not found
+      *ngSwitchCase="5" // Unauthorized
+      *ngSwitchCase="6" // Unauthenticated
+      *ngSwitchCase="7" // End
+    -->
+    <div *ngSwitchCase="2">
+      <!-- Loading -->
+      <mat-spinner [diameter]="30"></mat-spinner>
+    </div>
+    <ng-container *ngSwitchDefault></ng-container>
+  </ng-container>
+
+</mat-card>

@@ -1,5 +1,5 @@
 import { RecordActionsBase } from "../actions";
-import { Record, LocalObjectExtensions, PageExtensions, toLocalObject, HttpSuccessResponse, HttpErrorResponse, LocalObjectStatus, PageResponse, replaceLocalInnerObject, LocalObject, HttpResponse } from "@skysmack/framework";
+import { Record, LocalObjectExtensions, PageExtensions, toLocalObject, HttpSuccessResponse, HttpErrorResponse, LocalObjectStatus, PageResponse, replaceLocalInnerObject, LocalObject, HttpResponse, LoadingState } from "@skysmack/framework";
 import { RecordState } from './../states/record-state';
 import { GetPagedRecordsSuccessPayload, GetSingleRecordSuccessPayload, GetPagedRecordsPayload } from '../payloads';
 import { ReduxAction } from '../action-types/redux-action';
@@ -25,7 +25,7 @@ export function recordReducersBase<TState extends RecordState<TRecord, TKey>, TR
                 query: castedAction.payload.pagedQuery.rsqlFilter.toList().build(),
                 sort: castedAction.payload.pagedQuery.sort.build()
             });
-            newState.localPageTypes[castedAction.payload.packagePath] = PageExtensions.mergeOrAddPage(newState.localPageTypes[castedAction.payload.packagePath], page, 'loading');
+            newState.localPageTypes[castedAction.payload.packagePath] = PageExtensions.mergeOrAddPage(newState.localPageTypes[castedAction.payload.packagePath], page, LoadingState.Loading);
             return newState;
         }
         case prefix + RecordActionsBase.GET_PAGED_SUCCESS: {
@@ -96,7 +96,7 @@ export function recordReducersBase<TState extends RecordState<TRecord, TKey>, TR
 
 function setActionError<TRecord extends Record<TKey>, TKey>(action: ReduxAction<HttpErrorResponse, RollbackMeta<LocalObject<TRecord, TKey>[]>>, message: string = 'Error: '): void {
     action.meta.value.forEach(record => {
-        record.status = LocalObjectStatus.ERROR;
+        record.error = true;
         if (!record.object.id) {
             record.object.id = 0 as any;
         }

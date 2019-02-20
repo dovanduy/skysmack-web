@@ -27,6 +27,7 @@ import {
   MatDividerModule
 } from '@angular/material';
 import { CdkAccordionModule } from '@angular/cdk/accordion';
+import { ScrollDispatchModule } from '@angular/cdk/scrolling';
 
 @NgModule({
   imports: [
@@ -44,6 +45,7 @@ import { CdkAccordionModule } from '@angular/cdk/accordion';
     MatMomentDateModule,
     MatSidenavModule,
     CdkAccordionModule,
+    ScrollDispatchModule,
     MatTooltipModule,
     MatSelectModule,
     MatSlideToggleModule,
@@ -73,6 +75,7 @@ import { CdkAccordionModule } from '@angular/cdk/accordion';
     MatMomentDateModule,
     MatSidenavModule,
     CdkAccordionModule,
+    ScrollDispatchModule,
     MatTooltipModule,
     MatSelectModule,
     MatSlideToggleModule,

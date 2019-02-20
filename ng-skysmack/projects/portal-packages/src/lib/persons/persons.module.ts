@@ -6,7 +6,7 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { NgPersonsModule } from '@skysmack/ng-packages';
 import { PortalUiModule, HttpLoaderFactory, DynamicFieldsModule } from '@skysmack/portal-ui';
 import { personsComponents } from './components/persons-components';
-import { TranslateLoader, TranslateService } from '@ngx-translate/core';
+import { TranslateLoader } from '@ngx-translate/core';
 import { LanguageService } from '@skysmack/portal-ui';
 
 @NgModule({
@@ -21,17 +21,15 @@ import { LanguageService } from '@skysmack/portal-ui';
   declarations: [
     ...personsComponents
   ],
-  providers: [{
-    provide: TranslateLoader,
-    useFactory: HttpLoaderFactory,
-    deps: [HttpClient]
-  }]
+  providers: [
+    LanguageService,
+    {
+      provide: TranslateLoader,
+      useFactory: HttpLoaderFactory,
+      deps: [HttpClient]
+    }
+  ]
 })
 export class PersonsModule {
-  constructor(
-    public languageService: LanguageService,
-    public translateService: TranslateService
-  ) {
-    this.languageService.settingsRedux.getSettings().subscribe(settings => this.translateService.use(settings.language));
-  }
+  constructor(public languageService: LanguageService) { }
 }

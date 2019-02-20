@@ -9,7 +9,7 @@ import { AccessPolicyPermissionsValidation } from './ng-access-policy-permission
 import { AccessPolicyPermission, AccessPolicyRule } from '@skysmack/packages-skysmack-core';
 
 export interface NgAccessPolicyPermissionFormDependencies {
-    availablePackages: LocalObject<Package, string>[];
+    installedPackages: LocalObject<Package, string>[];
     availableAccessPolicyRules: LocalObject<AccessPolicyRule, number>[];
 }
 
@@ -25,7 +25,7 @@ export class NgAccessPolicyPermissionsFieldsConfig extends FieldsConfig<AccessPo
                 fieldType: FieldTypes.SelectField,
                 value: entity ? entity.object.packagePath : undefined,
                 key: 'packagePath',
-                optionsData: dependencies.availablePackages,
+                optionsData: dependencies.installedPackages,
                 extraOptions: [{
                     value: null,
                     displayName: 'None'
@@ -44,7 +44,7 @@ export class NgAccessPolicyPermissionsFieldsConfig extends FieldsConfig<AccessPo
             } as SelectField),
 
             new Field({
-                fieldType: FieldTypes.string,
+                fieldType: FieldTypes.AvailablePermissionsField,
                 value: entity ? entity.object.permission : undefined,
                 key: 'permission',
                 order: 3,

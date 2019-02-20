@@ -6,7 +6,8 @@ import { FieldSchemaViewModel, LocalObject, HttpMethod, LocalObjectStatus, Queue
 import { Effect } from '../models/effect';
 import { EffectRequest } from '../models/effect-request';
 import { CancelActionMeta } from '../metas/offline-redux/cancel-action-meta';
-import { CancelDynamicFieldActionPayload } from '../payloads';
+import { CancelDynamicFieldActionPayload } from '../payloads/cancel-dynamic-field-action-payload';
+import { GetSingleFieldPayload } from '../payloads/get-single-field-payload';
 
 export abstract class DocumentRecordActionsBase<TStateType, TStore extends Store<TStateType>> extends RecordActionsBase<TStateType, TStore> {
     public static CANCEL_DYNAMIC_FIELD_ACTION = 'CANCEL_DYNAMIC_FIELD_ACTION';
@@ -64,11 +65,12 @@ export abstract class DocumentRecordActionsBase<TStateType, TStore extends Store
         })));
     }
 
-    public getSingleField(packagePath: string) {
-        this.store.dispatch(Object.assign({}, new ReduxAction<PackagePathPayload>({
+    public getSingleField(packagePath: string, fieldKey: string) {
+        this.store.dispatch(Object.assign({}, new ReduxAction<GetSingleFieldPayload>({
             type: this.prefix + DocumentRecordActionsBase.GET_SINGLE_FIELD,
             payload: {
-                packagePath
+                packagePath,
+                fieldKey
             }
         })));
     }
@@ -82,7 +84,10 @@ export abstract class DocumentRecordActionsBase<TStateType, TStore extends Store
         })));
     }
 
-    public addFields(fields: LocalObject<FieldSchemaViewModel, string>[], packagePath: string) {
+    public addFields = (fields: LocalObject<FieldSchemaViewModel, string>[], packagePath: string) => {
+
+        fields.forEach(record => record.error = false);
+
         const queueItems = fields.map(field => {
             return new QueueItem({
                 message: `${this.prefix.replace('_', '.')}QUEUE.ADDING`,
@@ -124,7 +129,9 @@ export abstract class DocumentRecordActionsBase<TStateType, TStore extends Store
         })));
     }
 
-    public updateFields(fields: LocalObject<FieldSchemaViewModel, string>[], packagePath: string) {
+    public updateFields = (fields: LocalObject<FieldSchemaViewModel, string>[], packagePath: string) => {
+
+        fields.forEach(record => record.error = false);
 
         const queueItems = fields.map(field => {
             return new QueueItem({
@@ -174,6 +181,8 @@ export abstract class DocumentRecordActionsBase<TStateType, TStore extends Store
 
     public deleteFields = (fields: LocalObject<FieldSchemaViewModel, string>[], packagePath: string) => {
         const paths = '?keys=' + fields.map(x => x.object.key).join('&keys=');
+
+        fields.forEach(record => record.error = false);
 
         const queueItems = fields.map(field => {
             return new QueueItem({

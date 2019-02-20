@@ -59,7 +59,6 @@ export class CustomValidators {
         };
     }
 
-
     /**
      * Checks if password is valid. Sets error 'invalidPassword' on invalid password.
      * Note this validator must be set for the password field, not the whole form.
@@ -72,6 +71,20 @@ export class CustomValidators {
             const passwordCriteriaExpression = new RegExp('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{6,})');
             if (!passwordCriteriaExpression.test(passwordControl.value)) {
                 return { invalidPassword: true };
+            } else {
+                return null;
+            }
+        };
+    }
+
+    /**
+     * Checks if a string is a min length.
+     * Note this validator must be set for the password field, not the whole form.
+     */
+    public static minStringLength(minLength: number): ValidatorFn {
+        return (stringFieldControl: AbstractControl): ValidationErrors | null => {
+            if (stringFieldControl.value !== null && stringFieldControl.value.length < minLength) {
+                return { invalidStringLength: true };
             } else {
                 return null;
             }

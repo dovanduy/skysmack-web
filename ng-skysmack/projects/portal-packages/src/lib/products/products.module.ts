@@ -24,17 +24,15 @@ import { LanguageService } from '@skysmack/portal-ui';
     ...productsComponents,
     ...productTypesComponents
   ],
-  providers: [{
-    provide: TranslateLoader,
-    useFactory: HttpLoaderFactory,
-    deps: [HttpClient]
-  }]
+  providers: [
+    LanguageService,
+    {
+      provide: TranslateLoader,
+      useFactory: HttpLoaderFactory,
+      deps: [HttpClient]
+    }
+  ]
 })
 export class ProductsModule {
-  constructor(
-    public languageService: LanguageService,
-    public translateService: TranslateService
-  ) {
-    this.languageService.settingsRedux.getSettings().subscribe(settings => this.translateService.use(settings.language));
-  }
+  constructor(public languageService: LanguageService) { }
 }

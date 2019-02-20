@@ -1,3 +1,4 @@
+
 import { Store } from 'redux';
 import { PagedQuery, Record, LocalObject, HttpMethod, LocalObjectStatus, HttpResponse, QueueItem, NumIndex, StrIndex } from '@skysmack/framework';
 import { ReduxAction } from '../action-types/redux-action';
@@ -5,7 +6,6 @@ import { GetPagedRecordsPayload, GetSingleRecordPayload, CancelActionPayload, } 
 import { CommitMeta, RollbackMeta, ReduxOfflineMeta, CancelActionMeta, OfflineMeta } from '../metas';
 import { EffectRequest } from '../models/effect-request';
 import { Effect } from './../models/effect';
-import { QueueActions } from './queue-actions';
 
 export abstract class RecordActionsBase<TStateType, TStore extends Store<TStateType>> {
     public static CANCEL_RECORD_ACTION = 'CANCEL_RECORD_ACTION';
@@ -48,7 +48,7 @@ export abstract class RecordActionsBase<TStateType, TStore extends Store<TStateT
         })))
     }
 
-    public getPaged(packagePath: string, pagedQuery: PagedQuery) {
+    public getPaged = (packagePath: string, pagedQuery: PagedQuery) => {
         this.store.dispatch(Object.assign({}, new ReduxAction<GetPagedRecordsPayload>({
             type: this.prefix + RecordActionsBase.GET_PAGED,
             payload: {
@@ -58,7 +58,7 @@ export abstract class RecordActionsBase<TStateType, TStore extends Store<TStateT
         })));
     }
 
-    public getSingle<TKey>(packagePath: string, id: TKey) {
+    public getSingle = <TKey>(packagePath: string, id: TKey) => {
         this.store.dispatch(Object.assign({}, new ReduxAction<GetSingleRecordPayload<TKey>>({
             type: this.prefix + RecordActionsBase.GET_SINGLE,
             payload: {
@@ -68,7 +68,10 @@ export abstract class RecordActionsBase<TStateType, TStore extends Store<TStateT
         })));
     }
 
-    public add<TRecord extends Record<TKey>, TKey>(records: LocalObject<TRecord, TKey>[], packagePath: string) {
+    public add = <TRecord extends Record<TKey>, TKey>(records: LocalObject<TRecord, TKey>[], packagePath: string) => {
+
+        records.forEach(record => record.error = false);
+
         const queueItems = records.map(record => {
             return new QueueItem({
                 message: `${this.prefix.replace('_', '.')}QUEUE.ADDING`,
@@ -110,9 +113,11 @@ export abstract class RecordActionsBase<TStateType, TStore extends Store<TStateT
         })));
     }
 
-    public update<TRecord extends Record<TKey>, TKey>(records: LocalObject<TRecord, TKey>[], packagePath: string) {
+    public update = <TRecord extends Record<TKey>, TKey>(records: LocalObject<TRecord, TKey>[], packagePath: string) => {
         let path = this.addAdditionalPaths(packagePath);
         path = this.appendValues<TKey>(path, records.map(x => x.object.id));
+
+        records.forEach(record => record.error = false);
 
         const queueItems = records.map(record => {
             return new QueueItem({
@@ -159,6 +164,8 @@ export abstract class RecordActionsBase<TStateType, TStore extends Store<TStateT
     public delete = <TRecord extends Record<TKey>, TKey>(records: LocalObject<TRecord, TKey>[], packagePath: string) => {
         let path = this.addAdditionalPaths(packagePath);
         path = path + '?ids=' + records.map(x => x.object.id).join(',');
+
+        records.forEach(record => record.error = false);
 
         const queueItems = records.map(record => {
             return new QueueItem({

@@ -22,6 +22,13 @@ export class FieldBaseComponent implements OnInit, OnDestroy {
     private addedEvents: AddedEvent[] = [];
 
     ngOnInit() {
+        this.ensureControlExists();
+    }
+
+    protected ensureControlExists() {
+        if (!this.fh.form.get(this.field.key)) {
+            this.fh.form.addControl(this.field.key, new FormControl());
+        }
     }
 
     /**

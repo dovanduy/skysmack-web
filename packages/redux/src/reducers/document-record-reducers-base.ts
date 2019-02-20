@@ -99,7 +99,7 @@ export function documentRecordReducersBase<TState extends DocumentRecordState<TR
 
 function setFieldActionError<TRecord extends Record<TKey>, TKey>(action: ReduxAction<HttpErrorResponse, RollbackMeta<LocalObject<TRecord, TKey>[]>>, message: string = 'Error: '): void {
     action.meta.value.forEach(record => {
-        record.status = LocalObjectStatus.ERROR;
+        record.error = true;
     });
     // TODO: Delete this in production?
     console.log(message, action);

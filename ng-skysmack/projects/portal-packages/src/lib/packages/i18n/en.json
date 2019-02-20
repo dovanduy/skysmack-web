@@ -8,7 +8,7 @@
                 "PATH": "Path"
             },
             "PLACEHOLDERS": {
-                "TYPE": "Enter package type",
+                "TYPE": "Select package type",
                 "NAME": "Enter name",
                 "DESCRIPTION": "Enter description",
                 "PATH": "Enter path"
@@ -24,7 +24,8 @@
                     "REQUIRED": "A description is required."
                 },
                 "PATH": {
-                    "REQUIRED": "A path is required."
+                    "REQUIRED": "A path is required.",
+                    "INVALIDSTRINGLENGTH": "The path must be at least 3 characters long."
                 }
             }
         },

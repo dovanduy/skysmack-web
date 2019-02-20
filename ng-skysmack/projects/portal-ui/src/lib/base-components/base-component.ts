@@ -1,4 +1,4 @@
-import { SubscriptionHandler, RSQLFilterBuilder, SortBuilder } from '@skysmack/framework';
+import { SubscriptionHandler } from '@skysmack/framework';
 import { LoadedPackage, NgSkysmackStore } from '@skysmack/ng-packages';
 import { Observable } from 'rxjs';
 import { Router, ActivatedRoute } from '@angular/router';

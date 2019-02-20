@@ -1,6 +1,7 @@
 <ng-container [formGroup]="fh.form">
   <mat-form-field>
-    <mat-select [id]="field.key" [formControlName]="field.key" [value]="field.value" [placeholder]="field.placeholder | translate">
+    <mat-select [id]="field.key" [formControlName]="field.key" [value]="field.value"
+      [placeholder]="field.placeholder | translate">
       <mat-option *ngFor="let opt of fieldOptions" [value]="opt.value">{{opt.displayName}}</mat-option>
     </mat-select>
 

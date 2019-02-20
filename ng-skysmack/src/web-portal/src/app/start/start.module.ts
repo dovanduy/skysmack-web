@@ -1,4 +1,3 @@
-// Do not remove these import
 import { NgReduxRouter, NgReduxRouterModule } from '@angular-redux/router';
 import { HttpClientModule } from '@angular/common/http';
 import { NgRedux, NgReduxModule } from '@angular-redux/store';
@@ -9,7 +8,7 @@ import { NgModule } from '@angular/core';
 import { SkysmackModule } from '@skysmack/portal-packages';
 import { FrontPageComponent } from './components/front-page/front-page.component';
 import { ReduxOfflineConfiguration } from '../redux/redux-offline.configuration';
-import { PortalUiModule } from '@skysmack/portal-ui';
+import { PortalUiModule, LanguageService } from '@skysmack/portal-ui';
 import { FallBackComponent } from './components/fall-back/fall-back.component';
 import { StartComponent } from './components/start/start.component';
 import { configureRedux } from './../redux/redux.configuration';
@@ -98,7 +97,8 @@ import { environment } from './../../environments/environment';
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
   providers: [
-    applicationStartup
+    applicationStartup,
+    LanguageService
   ],
   bootstrap: [StartComponent]
 })

@@ -18,11 +18,11 @@ export class LocalObject<TObject, TKey> {
     public status: LocalObjectStatus = LocalObjectStatus.OK;
     public modifyType: string;
     public isNew: boolean = false;
+    public error: boolean = false;
     public foreignKey: string;
     public object: TObject;
     public oldObject: TObject;
 
-    public error: any;
 
     public get objectIdentifier(): TKey {
         this.checkIdentifier();

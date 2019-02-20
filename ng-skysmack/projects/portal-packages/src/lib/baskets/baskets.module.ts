@@ -6,7 +6,7 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { NgBasketsModule } from '@skysmack/ng-packages';
 import { PortalUiModule, HttpLoaderFactory, DynamicFieldsModule } from '@skysmack/portal-ui';
 import { basketsComponents } from './components/baskets-components';
-import { TranslateLoader, TranslateService } from '@ngx-translate/core';
+import { TranslateLoader } from '@ngx-translate/core';
 import { LanguageService } from '@skysmack/portal-ui';
 
 @NgModule({
@@ -28,10 +28,5 @@ import { LanguageService } from '@skysmack/portal-ui';
   }]
 })
 export class BasketsModule {
-  constructor(
-    public languageService: LanguageService,
-    public translateService: TranslateService
-  ) {
-    this.languageService.settingsRedux.getSettings().subscribe(settings => this.translateService.use(settings.language));
-  }
+  constructor(public languageService: LanguageService) { }
 }

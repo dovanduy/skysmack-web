@@ -1,12 +1,8 @@
 import { Injectable } from '@angular/core';
-import { FormRule } from '@skysmack/ng-ui';
-import { LocalObject, Package, AvailablePackage } from '@skysmack/framework';
-import { Field } from '@skysmack/ng-ui';
-import { PackagesValidation } from './ng-packages-validation';
-import { SetPathRule } from '@skysmack/ng-ui';
-import { SelectField } from '@skysmack/ng-ui';
-import { FieldTypes } from '@skysmack/ng-ui';
 import { Validators } from '@angular/forms';
+import { LocalObject, Package, AvailablePackage } from '@skysmack/framework';
+import { FormRule, Field, CustomValidators, SetPathRule, SelectField, FieldTypes } from '@skysmack/ng-ui';
+import { PackagesValidation } from './ng-packages-validation';
 
 export interface NgPackageFormDependencies {
     availablePackages: LocalObject<AvailablePackage, string>[];
@@ -80,7 +76,7 @@ export class NgPackagesFieldsConfig {
                 value: _package ? _package.object.path : undefined,
                 key: 'path',
                 label: 'path',
-                validators: [Validators.required],
+                validators: [Validators.required, CustomValidators.minStringLength(3)],
                 order: 4,
                 placeholder: 'Enter path'
             } as Field),

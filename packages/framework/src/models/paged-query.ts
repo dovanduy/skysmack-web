@@ -1,4 +1,4 @@
-import { SortBuilder } from "../sort/sort-builder";
+import { SortBuilder } from '../sort/sort-builder';
 import { RSQLFilterBuilder } from '../rsql/rsql-filter-builder';
 
 export class PagedQuery {

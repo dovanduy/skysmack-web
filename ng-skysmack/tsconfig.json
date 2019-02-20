@@ -24,11 +24,23 @@
       "@skysmack/redux": [
         "../packages/redux"
       ],
-      "@skysmack/identities": [
+      "@skysmack/packages-identities": [
         "../packages/packages-identities"
+      ],
+      "@skysmack/packages-baskets": [
+        "../packages/packages-baskets"
+      ],
+      "@skysmack/packages-terminal-payments": [
+        "../packages/packages-terminal-payments"
+      ],
+      "@skysmack/packages-lodging-reservations": [
+        "../packages/packages-lodging-reservations"
       ],
       "@skysmack/packages-lodgings": [
         "../packages/packages-lodgings"
+      ],
+      "@skysmack/packages-invoices": [
+        "../packages/packages-invoices"
       ],
       "@skysmack/packages-maintenance": [
         "../packages/packages-maintenance"

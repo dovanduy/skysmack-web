@@ -19,6 +19,7 @@ Consider using the quick-naming.md guide for faster copy paste.
     skysmack/ng-packages/projects/portal-packages/package.json
     skysmack/ng-packages/projects/portal-packages/ng-package.json ???
 - Update skysmack/Assorted/scripts/clean.bat
+- Add package path to ng-skysmack/tsconfig.json under "paths" section.
 - Double check ALL index files are updated correctly. Remember /index for folder exports. Especially check:
     ng-packages/src/lib/index.ts
     portal-packages/src/lib/index.ts

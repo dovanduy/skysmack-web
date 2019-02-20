@@ -1,8 +1,7 @@
 import { Component, OnInit, ViewEncapsulation, OnDestroy } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Router, RouteConfigLoadStart, RouteConfigLoadEnd } from '@angular/router';
-import { NgSkysmackStore } from '@skysmack/ng-packages';
-import { PackageRouteConfiguration } from '../../../package-route-configuration';
+import { NgSkysmackStore, PackageRouteConfiguration } from '@skysmack/ng-packages';
 import { SubscriptionHandler } from '@skysmack/framework';
 import { Skysmack } from '@skysmack/packages-skysmack-core';
 
@@ -28,7 +27,7 @@ export class StartComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.packageRouteConfiguration.configure();
+    this.subscriptionHandler.register(this.packageRouteConfiguration.configure().subscribe());
     this.skysmack$ = this.store.getSkysmack();
     this.skysmackLoaded$ = this.store.getSkysmackLoaded();
     this.router.onSameUrlNavigation = 'ignore';

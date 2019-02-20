@@ -169,7 +169,7 @@ export abstract class DocumentRecordEpicsBase<TRecord extends Record<TKey>, TKey
                     type: QueueActions.SET_QUEUE_ITEMS,
                     payload: action.meta.queueItems.map(queueItems => {
                         queueItems.message = `${this.prefix.replace('_', '.')}QUEUE.ERROR`;
-                        queueItems.localObject.status = LocalObjectStatus.ERROR;
+                        queueItems.localObject.error = true;
                         queueItems.error = action.payload;
                         return queueItems;
                     })

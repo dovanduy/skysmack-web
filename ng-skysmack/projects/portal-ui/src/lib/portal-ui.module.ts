@@ -51,6 +51,8 @@ import { ShowEntityActionDirective } from './directives/show-entity-action.direc
 import { IsAuthenticatedDirective } from './autentication/is-authenticated.directive';
 import { IsAnonymousDirective } from './autentication/is-anonymous.directive';
 import { NgNotifications } from './notifications/ng-notifications';
+import { RecordsContainerComponent } from './components/common/records-container/records-container.component';
+import { AvailablePermissionsFieldComponent } from './components/fields/components/available-permissions-field/available-permissions-field.component';
 
 @NgModule({
   imports: [
@@ -93,6 +95,7 @@ import { NgNotifications } from './notifications/ng-notifications';
     ProgressComponent,
     NavBarComponent,
     QueueComponent,
+    RecordsContainerComponent,
     // Crud
     ContainerComponent,
     CardBodyComponent,
@@ -114,6 +117,7 @@ import { NgNotifications } from './notifications/ng-notifications';
     StringFieldComponent,
     TimeFieldComponent,
     PackageDependenciesFieldComponent,
+    AvailablePermissionsFieldComponent,
     PageHeaderComponent,
     SpeedDialFabComponent
   ],
@@ -135,6 +139,7 @@ import { NgNotifications } from './notifications/ng-notifications';
     ProgressComponent,
     NavBarComponent,
     QueueComponent,
+    RecordsContainerComponent,
     // Crud
     ContainerComponent,
     CardBodyComponent,
@@ -157,6 +162,7 @@ import { NgNotifications } from './notifications/ng-notifications';
     StringFieldComponent,
     TimeFieldComponent,
     PackageDependenciesFieldComponent,
+    AvailablePermissionsFieldComponent,
     SpeedDialFabComponent
   ]
 })

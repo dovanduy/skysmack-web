@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FieldBaseComponent } from '../field-base-component';
 
 @Component({
@@ -6,4 +6,8 @@ import { FieldBaseComponent } from '../field-base-component';
   templateUrl: './time-field.component.html',
   styleUrls: ['./time-field.component.scss']
 })
-export class TimeFieldComponent extends FieldBaseComponent { }
+export class TimeFieldComponent extends FieldBaseComponent implements OnInit {
+  ngOnInit() {
+    super.ngOnInit();
+  }
+}

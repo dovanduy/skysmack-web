@@ -8,7 +8,7 @@
                 "PATH": "PATH"
             },
             "PLACEHOLDERS": {
-                "TYPE": "Indtast en pakke type",
+                "TYPE": "Vælg en pakke type",
                 "NAME": "Indtast et navn",
                 "DESCRIPTION": "Indtast en beskrivelse",
                 "PATH": "Indtast en sti"
@@ -24,7 +24,8 @@
                     "REQUIRED": "En beskrivelse er påkrævet."
                 },
                 "PATH": {
-                    "REQUIRED": "En sti er påkrævet."
+                    "REQUIRED": "En sti er påkrævet.",
+                    "INVALIDSTRINGLENGTH": "Stien skal minimum være 3 karakterer lang."
                 }
             }
         },
@@ -37,7 +38,6 @@
             "INSTALL": "Installer pakke",
             "TITLE": "Pakker",
             "AVAILABLE_PACKAGES": "Ledige pakker"
-
         },
         "CREATE": {
             "INSTALL": "Installer pakke"
