@@ -2,7 +2,7 @@ import { RecordActionsBase } from '@skysmack/redux';
 import { Store } from 'redux';
 import { AccessPolicyRulesAppState } from './access-policy-rules-reducer';
 import { LocalObject, StrIndex } from '@skysmack/framework';
-import { AccessPolicyRule } from '@skysmack/packages-skysmack-core';
+import { AccessPolicyRule } from '../models/access-policy-rule';
 
 
 export class AccessPolicyRulesActions extends RecordActionsBase<AccessPolicyRulesAppState, Store<AccessPolicyRulesAppState>> {
@@ -10,7 +10,7 @@ export class AccessPolicyRulesActions extends RecordActionsBase<AccessPolicyRule
 
     protected getMessageParams(record: LocalObject<AccessPolicyRule, number>): StrIndex<string> {
         return {
-            id: record.object.id
+            id: record.object.id.toString()
         };
     }
 }
