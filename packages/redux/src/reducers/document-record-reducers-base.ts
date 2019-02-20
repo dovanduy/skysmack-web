@@ -1,5 +1,5 @@
 import { DocumentRecordActionsBase } from "../actions";
-import { Record, toLocalObject, HttpSuccessResponse, LocalObject, FieldSchemaViewModel, HttpErrorResponse, LocalObjectExtensions, FieldValueProviderViewModel, replaceLocalInnerObject, LocalObjectStatus } from "@skysmack/framework";
+import { Record, toLocalObject, HttpSuccessResponse, LocalObject, FieldSchemaViewModel, HttpErrorResponse, LocalObjectExtensions, FieldValueProviderViewModel, replaceLocalInnerObject } from "@skysmack/framework";
 import { ReduxAction } from '../action-types/redux-action';
 import { PackagePathPayload, GetFieldsSuccessPayload, GetAvailableFieldsSuccessPayload, GetSingleFieldSuccessPayload } from './../payloads';
 import { DocumentRecordState } from './../states/document-record-state';
