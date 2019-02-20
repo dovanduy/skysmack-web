@@ -3,6 +3,7 @@ export * from './ng-identities.module';
 
 export * from './ng-roles-validation';
 export * from './ng-roles-fields-config';
+export * from './ng-roles-notifications';
 
 export * from './ng-users-validation';
 export * from './ng-users-notifications';

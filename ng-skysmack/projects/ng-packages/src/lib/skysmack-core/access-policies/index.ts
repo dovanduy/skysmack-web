@@ -5,7 +5,7 @@ export * from './ng-access-policy-permissions-validation';
 export * from './ng-access-policy-permissions-notifications';
 export * from './ng-access-policy-roles-fields-config';
 export * from './ng-access-policy-roles-validation';
-export * from './ng-access-policy-roles-notifications'
+export * from './ng-access-policy-roles-notifications';
 export * from './ng-access-policy-rules-fields-config';
 export * from './ng-access-policy-rules-validation';
 export * from './ng-access-policy-rules-notifications';
