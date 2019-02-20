@@ -40,8 +40,8 @@ export class RecordFormComponent<TAppState, TRecord extends Record<TKey>, TKey, 
 
     protected setCreateFields() {
         this.subscriptionHandler.register(this.skysmackStore.getEditorItem().pipe(
-            map(values => {
-                this.editorItem = values[0] as LocalObject<TRecord, TKey>;
+            map(editorItem => {
+                this.editorItem = editorItem as LocalObject<TRecord, TKey>;
                 this.fields = this.getFields(this.editorItem);
             })
         ).subscribe());

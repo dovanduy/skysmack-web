@@ -28,8 +28,8 @@ export class NgUsersRequests extends NgRecordRequests<User, number>  {
             );
     }
 
-    public getUsersRoles(userPath: string, ids: number[]): Observable<ReduxAction<GetUsersRolesSuccessPayload> | ReduxAction<HttpErrorResponse>> {
-        let url = this.addAdditionalPaths(`${this.apiDomain.domain}/${userPath}`);
+    public getUsersRoles(packagePath: string, ids: number[]): Observable<ReduxAction<GetUsersRolesSuccessPayload> | ReduxAction<HttpErrorResponse>> {
+        let url = this.addAdditionalPaths(`${this.apiDomain.domain}/${packagePath}`);
         url = this.appendValues(url + '/roles', ids);
 
         return this.http.get<NumIndex<string[]>>(url, { observe: 'response' })
@@ -38,7 +38,7 @@ export class NgUsersRequests extends NgRecordRequests<User, number>  {
                     type: this.prefix + NgUsersActions.GET_ROLES_SUCCESS,
                     payload: {
                         userRoles: response.body,
-                        userPath
+                        packagePath
                     }
                 }))),
                 catchError((error) => of(Object.assign({}, new ReduxAction<HttpErrorResponse>({
@@ -47,60 +47,5 @@ export class NgUsersRequests extends NgRecordRequests<User, number>  {
                     payload: error
                 }))))
             );
-    }
-
-    public get(): Observable<ReduxAction<GetUsersSuccessPayload> | ReduxAction<HttpErrorResponse>> {
-        const url = this.apiDomain.domain + '/skysmack/users';
-        return this.http.get<User[]>(url, { observe: 'response' })
-            .pipe(
-                map(httpResponse => {
-                    return Object.assign({}, new ReduxAction<GetUsersSuccessPayload>({
-                        type: UsersActions.GET_USERS_SUCCESS,
-                        payload: {
-                            users: httpResponse.body ? httpResponse.body : []
-                        }
-                    }));
-                }),
-                retry(1),
-                catchError((error) => of(Object.assign({}, new ReduxAction({
-                    type: UsersActions.GET_USERS_FAILURE,
-                    payload: error,
-                    error: true
-                }))))
-            );
-    }
-
-    public getSingle(action: ReduxAction<UserPathPayload>): Observable<ReduxAction<GetUserSuccessPayload> | ReduxAction<HttpErrorResponse>> {
-        const url = `${this.apiDomain.domain}/skysmack/users/${action.payload.userPath}`;
-        return this.http.get<User>(url, { observe: 'response' }).pipe(
-            map(httpResponse => Object.assign({}, new ReduxAction<GetUserSuccessPayload>({
-                type: UsersActions.GET_SINGLE_USER_SUCCESS,
-                payload: {
-                    _user: httpResponse.body
-                }
-            }))),
-            catchError((error) => of(Object.assign({}, new ReduxAction({
-                type: UsersActions.GET_SINGLE_USER_FAILURE,
-                payload: error,
-                error: true
-            }))))
-        );
-    }
-
-    public getAvailableUsers(): Observable<ReduxAction<GetAvailableUsersSuccessPayload> | ReduxAction<HttpErrorResponse>> {
-        const url = this.apiDomain.domain + '/skysmack/available-users';
-        return this.http.get<User[]>(url, { observe: 'response' }).pipe(
-            map(httpResponse => Object.assign({}, new ReduxAction<GetAvailableUsersSuccessPayload>({
-                type: UsersActions.GET_AVAILABLE_USERS_SUCCESS,
-                payload: {
-                    availableUsers: httpResponse.body ? httpResponse.body : []
-                }
-            }))),
-            catchError((error) => of(Object.assign({}, new ReduxAction({
-                type: UsersActions.GET_AVAILABLE_USERS_FAILURE,
-                payload: error,
-                error: true
-            }))))
-        );
     }
 }

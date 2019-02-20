@@ -11,7 +11,7 @@ export class NgPersonsActions extends DocumentRecordActionsBase<PersonsAppState,
 
     protected getMessageParams(record: LocalObject<Person, number>): NumIndex<string> {
         return {
-            0: record.object.displayName
+            0: record.object.email
         };
     }
 }
