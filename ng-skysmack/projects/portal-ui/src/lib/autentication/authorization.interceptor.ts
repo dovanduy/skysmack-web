@@ -1,6 +1,6 @@
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, of, BehaviorSubject } from 'rxjs';
+import { Observable, of, BehaviorSubject, throwError } from 'rxjs';
 import { mergeMap, take, catchError, switchMap, finalize, filter } from 'rxjs/operators';
 import { CurrentUser } from '@skysmack/framework';
 import { NgAuthenticationStore, NgAuthenticationActions } from '@skysmack/ng-redux';
@@ -26,13 +26,11 @@ export class AuthorizationInterceptor implements HttpInterceptor {
                             switch ((error as HttpErrorResponse).status) {
                                 case 401:
                                     return this.handle401Error(request, next);
-                                // case 400:
-                                //     // TODO: Redirect missing?
-                                //     this.authenticationActions.logout();
-                                //     return request;
+                                default:
+                                    return throwError(error);
                             }
                         } else {
-                            return error;
+                            return throwError(error);
                         }
                     })
                 );

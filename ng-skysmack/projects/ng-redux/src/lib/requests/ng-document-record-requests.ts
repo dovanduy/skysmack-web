@@ -1,4 +1,4 @@
-import { Record, ApiDomain, FieldSchemaViewModel, FieldValueProviderViewModel, HttpErrorResponse } from '@skysmack/framework';
+import { Record, ApiDomain, FieldSchemaViewModel, FieldValueProviderViewModel, HttpErrorResponse, log } from '@skysmack/framework';
 import { ReduxAction, PackagePathPayload, GetFieldsSuccessPayload, DocumentRecordActionsBase, GetSingleFieldSuccessPayload, GetAvailableFieldsSuccessPayload, } from '@skysmack/redux';
 import { Observable, of } from 'rxjs';
 import { map, retry, catchError } from 'rxjs/operators';
