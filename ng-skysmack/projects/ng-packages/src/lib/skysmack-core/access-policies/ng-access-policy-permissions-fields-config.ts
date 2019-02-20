@@ -5,7 +5,7 @@ import { LocalObject, Package, LocalObjectStatus } from '@skysmack/framework';
 import { Field } from '@skysmack/ng-ui';
 import { FieldTypes } from '@skysmack/ng-ui';
 import { FieldsConfig } from '@skysmack/ng-ui';
-import { AccessPolicyPermissionsValidation } from './ng-acess-policy-permissions-validation';
+import { AccessPolicyPermissionsValidation } from './ng-access-policy-permissions-validation';
 import { AccessPolicyPermission, AccessPolicyRule } from '@skysmack/packages-skysmack-core';
 
 export interface NgAccessPolicyPermissionFormDependencies {
