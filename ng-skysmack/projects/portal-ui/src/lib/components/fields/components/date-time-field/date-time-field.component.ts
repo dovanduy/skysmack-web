@@ -1,4 +1,4 @@
-import { Component, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
+import { Component, ViewChild, ElementRef, AfterViewInit, OnInit } from '@angular/core';
 import { DateAdapter } from '@angular/material';
 import { combineLatest, of, fromEvent } from 'rxjs';
 import { FieldBaseComponent } from '../field-base-component';
@@ -10,9 +10,13 @@ import { DateTimeAdapter } from './date-time-adapter';
   styleUrls: ['./date-time-field.component.scss'],
   providers: [DateTimeAdapter, { provide: DateAdapter, useClass: DateTimeAdapter }]
 })
-export class DateTimeFieldComponent extends FieldBaseComponent implements AfterViewInit {
+export class DateTimeFieldComponent extends FieldBaseComponent implements AfterViewInit, OnInit {
 
   @ViewChild('timeInput') public timeInput: ElementRef;
+
+  ngOnInit() {
+    super.ngOnInit();
+  }
 
   ngAfterViewInit() {
     combineLatest(

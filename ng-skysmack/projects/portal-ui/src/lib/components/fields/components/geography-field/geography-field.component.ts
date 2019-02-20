@@ -8,7 +8,7 @@ interface Point { latitude: number; longtitude: number; }
   templateUrl: './geography-field.component.html',
   styleUrls: ['./geography-field.component.scss']
 })
-export class GeographyFieldComponent extends FieldBaseComponent implements AfterViewInit, OnDestroy {
+export class GeographyFieldComponent extends FieldBaseComponent implements AfterViewInit, OnDestroy, OnInit {
 
   @ViewChild('latitude') public latitude: ElementRef;
   @ViewChild('longtitude') public longtitude: ElementRef;
@@ -17,6 +17,10 @@ export class GeographyFieldComponent extends FieldBaseComponent implements After
     private component: ElementRef,
     private changeDetector: ChangeDetectorRef
   ) { super(); }
+
+  ngOnInit() {
+    super.ngOnInit();
+  }
 
   ngAfterViewInit() {
     this.initValues();

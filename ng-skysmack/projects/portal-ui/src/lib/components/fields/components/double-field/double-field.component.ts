@@ -6,4 +6,8 @@ import { FieldBaseComponent } from '../field-base-component';
   templateUrl: './double-field.component.html',
   styleUrls: ['./double-field.component.scss']
 })
-export class DoubleFieldComponent extends FieldBaseComponent { }
+export class DoubleFieldComponent extends FieldBaseComponent implements OnInit {
+  ngOnInit() {
+    super.ngOnInit();
+  }
+}
