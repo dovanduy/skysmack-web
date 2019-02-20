@@ -66,10 +66,11 @@
             "BACK": "Tilbage",
             "ACTIONS": "Handlinger"
         },
-        "NOTIFICATIONS": {
-            "ADD": {
-                "SUCCESS": "{{ 0 }} blev oprettet."
-            }
+        "QUEUE": {
+            "ADDING": "Tilføjer {{ description }}",
+            "UPDATING": "Opdatere {{ description }}",
+            "DELETING": "Sletter {{ description }}",
+            "ERROR": "Der opstod  en fejl ved {{ description }}. Ret og prøv igen."
         }
     }
 }

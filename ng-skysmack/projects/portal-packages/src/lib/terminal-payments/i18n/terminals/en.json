@@ -46,6 +46,12 @@
                 "FIELDS": "Fields",
                 "BACK": "Back"
             }
+        },
+        "QUEUE": {
+            "ADDING": "Adding terminal {{ id }}",
+            "UPDATING": "Updating terminal {{ id }}",
+            "DELETING": "Deleting terminal {{ id }}",
+            "ERROR": "An error occured with terminal {{ id }}. Correct and try again."
         }
     }
 }

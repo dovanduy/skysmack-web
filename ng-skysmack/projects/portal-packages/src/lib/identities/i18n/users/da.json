@@ -80,6 +80,12 @@
         },
         "SET_PASSWORD": {
             "PASSWORD_FOR": "Sæt adgangskoden til {{ object.email }}"
+        },
+        "QUEUE": {
+            "ADDING": "Tilføjer {{ email }}",
+            "UPDATING": "Opdatere {{ email }}",
+            "DELETING": "Sletter {{ email }}",
+            "ERROR": "Der opstod  en fejl ved {{ email }}. Ret og prøv igen."
         }
     }
 }

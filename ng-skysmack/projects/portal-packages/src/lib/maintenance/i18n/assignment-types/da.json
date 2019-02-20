@@ -93,6 +93,12 @@
                 "CREATE": {
                     "ADD": "Tilføj felt"
                 }
+            },
+            "QUEUE": {
+                "ADDING": "Tilføjer {{ description }}",
+                "UPDATING": "Opdatere {{ description }}",
+                "DELETING": "Sletter {{ description }}",
+                "ERROR": "Der opstod  en fejl ved {{ description }}. Ret og prøv igen."
             }
         }
     }

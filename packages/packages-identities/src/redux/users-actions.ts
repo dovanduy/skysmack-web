@@ -2,7 +2,7 @@ import { RecordActionsBase, ReduxAction, Effect, EffectRequest, OfflineMeta, Red
 import { UsersAppState } from './users-reducer';
 import { Store } from 'redux';
 import { GetUsersRolesPayload } from '../payloads/get-users-roles-payload';
-import { HttpMethod, NumIndex, HttpResponse, LocalObject } from '@skysmack/framework';
+import { HttpMethod, NumIndex, HttpResponse, LocalObject, StrIndex } from '@skysmack/framework';
 import { User } from '../models';
 
 export class UsersActions extends RecordActionsBase<UsersAppState, Store<UsersAppState>> {
@@ -92,9 +92,9 @@ export class UsersActions extends RecordActionsBase<UsersAppState, Store<UsersAp
         })));
     }
 
-    protected getMessageParams(record: LocalObject<User, number>): NumIndex<string> {
+    protected getMessageParams(record: LocalObject<User, number>): StrIndex<string> {
         return {
-            0: record.object.email
+            email: record.object.email
         };
     }
 }

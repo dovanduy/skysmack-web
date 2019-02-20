@@ -24,6 +24,12 @@
                 "AUTHENTICATED": "Authenticated",
                 "INCLUDEROLES": "Include roles"
             }
+        },
+        "QUEUE": {
+            "ADDING": "Adding access policy rules {{ id }}",
+            "UPDATING": "Updating access policy rules {{ id }}",
+            "DELETING": "Deleting access policy rules {{ id }}",
+            "ERROR": "An error occured with access policy rules {{ id }}. Correct and try again."
         }
     }
 }

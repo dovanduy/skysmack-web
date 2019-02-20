@@ -1,12 +1,16 @@
 import { RecordActionsBase } from '@skysmack/redux';
 import { Store } from 'redux';
 import { AccessPolicyRulesAppState } from './access-policy-rules-reducer';
-import { LocalObject, NumIndex } from '@skysmack/framework';
+import { LocalObject, StrIndex } from '@skysmack/framework';
+import { AccessPolicyRule } from '@skysmack/packages-skysmack-core';
+
 
 export class AccessPolicyRulesActions extends RecordActionsBase<AccessPolicyRulesAppState, Store<AccessPolicyRulesAppState>> {
     constructor(protected store: Store<AccessPolicyRulesAppState>) { super(store, 'ACCESS_POLICY_RULES_', ['access-policies', 'rules']); }
 
-    protected getMessageParams(record: LocalObject<any, number>): NumIndex<string> {
-        return {};
+    protected getMessageParams(record: LocalObject<AccessPolicyRule, number>): StrIndex<string> {
+        return {
+            id: record.object.id
+        };
     }
 }

@@ -1,5 +1,5 @@
 {
-    "PRODUCTS": {
+    "TERMINALS": {
         "FORM": {
             "LABELS": {
                 "NAME": "Navn",
@@ -46,6 +46,12 @@
                 "MANAGE": "Konfigurer",
                 "FIELDS": "Felter"
             }
+        },
+        "QUEUE": {
+            "ADDING": "Tilføjer terminal {{ id }}",
+            "UPDATING": "Opdatere terminal {{ id }}",
+            "DELETING": "Sletter terminal {{ id }}",
+            "ERROR": "Der opstod  en fejl ved terminal {{ id }}. Ret og prøv igen."
         }
     }
 }

@@ -45,10 +45,11 @@
             "MANAGE": "Manage",
             "ACTIONS": "Actions"
         },
-        "NOTIFICATIONS": {
-            "ADD": {
-                "SUCCESS": "{{ 0 }} was created."
-            }
+        "QUEUE": {
+            "ADDING": "Adding {{ currencyCode }}",
+            "UPDATING": "Updating {{ currencyCode }}",
+            "DELETING": "Deleting {{ currencyCode }}",
+            "ERROR": "An error occured with {{ currencyCode }}. Correct and try again."
         }
     }
 }

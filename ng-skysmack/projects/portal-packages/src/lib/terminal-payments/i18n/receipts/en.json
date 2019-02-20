@@ -1,5 +1,5 @@
 {
-    "PRODUCT_TYPES": {
+    "RECEIPTS": {
         "CREATE": {
             "CREATE": "Create"
         },
@@ -26,6 +26,12 @@
                     "REQUIRED": "Name is required."
                 }
             }
+        },
+        "QUEUE": {
+            "ADDING": "Adding receipt {{ id }}",
+            "UPDATING": "Updating receipt {{ id }}",
+            "DELETING": "Deleting receipt {{ id }}",
+            "ERROR": "An error occured with receipt {{ id }}. Correct and try again."
         }
     }
 }

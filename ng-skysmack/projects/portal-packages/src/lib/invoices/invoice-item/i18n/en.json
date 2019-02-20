@@ -76,10 +76,11 @@
             "BACK": "Back",
             "ACTIONS": "Actions"
         },
-        "NOTIFICATIONS": {
-            "ADD": {
-                "SUCCESS": "{{ 0 }} was created."
-            }
+        "QUEUE": {
+            "ADDING": "Adding {{ description }}",
+            "UPDATING": "Updating {{ description }}",
+            "DELETING": "Deleting {{ description }}",
+            "ERROR": "An error occured with {{ description }}. Correct and try again."
         }
     }
 }

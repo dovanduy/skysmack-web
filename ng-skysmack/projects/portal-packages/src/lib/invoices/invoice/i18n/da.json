@@ -47,10 +47,11 @@
             "ITEMS": "Enheder",
             "PAYMENTS": "Betalinger"
         },
-        "NOTIFICATIONS": {
-            "ADD": {
-                "SUCCESS": "{{ 0 }} blev oprettet."
-            }
+        "QUEUE": {
+            "ADDING": "Tilføjer {{ currencyCode }}",
+            "UPDATING": "Opdatere {{ currencyCode }}",
+            "DELETING": "Sletter {{ currencyCode }}",
+            "ERROR": "Der opstod  en fejl ved {{ currencyCode }}. Ret og prøv igen."
         }
     }
 }

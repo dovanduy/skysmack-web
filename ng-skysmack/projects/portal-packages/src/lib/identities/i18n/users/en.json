@@ -80,6 +80,12 @@
         },
         "SET_PASSWORD": {
             "PASSWORD_FOR": "Set password for {{ object.email }}"
+        },
+        "QUEUE": {
+            "ADDING": "Adding {{ email }}",
+            "UPDATING": "Updating {{ email }}",
+            "DELETING": "Deleting {{ email }}",
+            "ERROR": "An error occured with {{ email }}. Correct and try again."
         }
     }
 }

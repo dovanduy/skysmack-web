@@ -53,6 +53,12 @@
             "ARRIVALS": "Arrivals",
             "DEPARTURES": "Departures",
             "ALL": "All"
+        },
+        "QUEUE": {
+            "ADDING": "Adding lodging reservation {{ id }}",
+            "UPDATING": "Updating lodging reservation {{ id }}",
+            "DELETING": "Deleting lodging reservation {{ id }}",
+            "ERROR": "An error occured with lodging reservation {{ id }}. Correct and try again."
         }
     }
 }

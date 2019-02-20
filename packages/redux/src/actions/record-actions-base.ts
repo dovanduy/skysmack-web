@@ -1,5 +1,5 @@
 import { Store } from 'redux';
-import { PagedQuery, Record, LocalObject, HttpMethod, LocalObjectStatus, HttpResponse, QueueItem, NumIndex } from '@skysmack/framework';
+import { PagedQuery, Record, LocalObject, HttpMethod, LocalObjectStatus, HttpResponse, QueueItem, NumIndex, StrIndex } from '@skysmack/framework';
 import { ReduxAction } from '../action-types/redux-action';
 import { GetPagedRecordsPayload, GetSingleRecordPayload, CancelActionPayload, } from '../payloads';
 import { CommitMeta, RollbackMeta, ReduxOfflineMeta, CancelActionMeta, OfflineMeta } from '../metas';
@@ -204,7 +204,7 @@ export abstract class RecordActionsBase<TStateType, TStore extends Store<TStateT
         })));
     }
 
-    protected abstract getMessageParams(record: LocalObject<any, any>): NumIndex<string>;
+    protected abstract getMessageParams(record: LocalObject<any, any>): StrIndex<string>;
 
     protected addAdditionalPaths(url: string): string {
         return this.additionalPaths ? [url, ...this.additionalPaths].join('/') : url;

@@ -53,6 +53,12 @@
             "ARRIVALS": "Ankomster",
             "DEPARTURES": "Afgange",
             "ALL": "Alle"
+        },
+        "QUEUE": {
+            "ADDING": "Tilføjer rum reservations {{ id }}",
+            "UPDATING": "Opdatere rum reservations {{ id }}",
+            "DELETING": "Sletter rum reservations {{ id }}",
+            "ERROR": "Der opstod  en fejl ved rum reservations {{ id }}. Ret og prøv igen."
         }
     }
 }

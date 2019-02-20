@@ -27,6 +27,12 @@
                     "REQUIRED": "Navn er påkrævet"
                 }
             }
+        },
+        "QUEUE": {
+            "ADDING": "Tilføjer {{ roleId }}",
+            "UPDATING": "Opdatere {{ roleId }}",
+            "DELETING": "Sletter {{ roleId }}",
+            "ERROR": "Der opstod  en fejl ved {{ roleId }}. Ret og prøv igen."
         }
     }
 }

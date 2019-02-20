@@ -53,6 +53,12 @@
             "FIELDS": "Fields",
             "TYPES": "Types",
             "BACK": "Back"
+        },
+        "QUEUE": {
+            "ADDING": "Adding {{ name }}",
+            "UPDATING": "Updating {{ name }}",
+            "DELETING": "Deleting {{ name }}",
+            "ERROR": "An error occured with {{ name }}. Correct and try again."
         }
     }
 }

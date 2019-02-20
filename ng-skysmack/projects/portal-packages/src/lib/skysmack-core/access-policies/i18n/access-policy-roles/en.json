@@ -27,6 +27,12 @@
                     "REQUIRED": "A name is required."
                 }
             }
+        },
+        "QUEUE": {
+            "ADDING": "Adding {{ roleId }}",
+            "UPDATING": "Updating {{ roleId }}",
+            "DELETING": "Deleting {{ roleId }}",
+            "ERROR": "An error occured with {{ roleId }}. Correct and try again."
         }
     }
 }

@@ -24,6 +24,12 @@
                 "AUTHENTICATED": "Godkendt",
                 "INCLUDEROLES": "Inkluder roller"
             }
+        },
+        "QUEUE": {
+            "ADDING": "Tilføjer adgangspolitiske regler {{ id }}",
+            "UPDATING": "Opdatere adgangspolitiske regler {{ id }}",
+            "DELETING": "Sletter adgangspolitiske regler {{ id }}",
+            "ERROR": "Der opstod  en fejl ved adgangspolitiske regler {{ id }}. Ret og prøv igen."
         }
     }
 }

@@ -1,5 +1,5 @@
 import { RecordActionsBase, ReduxAction, Effect, EffectRequest, OfflineMeta, ReduxOfflineMeta, GetIntervalPayload } from '@skysmack/redux';
-import { HttpMethod, HttpResponse, LocalObject, NumIndex } from '@skysmack/framework';
+import { HttpMethod, HttpResponse, LocalObject, NumIndex, StrIndex } from '@skysmack/framework';
 import { LodgingReservationsAppState } from './lodging-reservations-reducer';
 import { Store } from 'redux';
 import { CheckIn } from './../models/check-in';
@@ -364,7 +364,9 @@ export class LodgingReservationsActions extends RecordActionsBase<LodgingReserva
         })));
     }
 
-    protected getMessageParams(record: LocalObject<any, number>): NumIndex<string> {
-        return {};
+    protected getMessageParams(record: LocalObject<LodgingReservation, number>): StrIndex<string> {
+        return {
+            id: record.object.id.toString()
+        };
     }
 }
