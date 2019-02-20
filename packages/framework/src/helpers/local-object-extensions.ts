@@ -16,6 +16,9 @@ export class LocalObjectExtensions {
 
         newRecords.forEach(newRecord => {
             const existingRecordKey = Object.keys(existingRecords).find(x => {
+                if (existingRecords[x].objectIdentifier === undefined || newRecord.objectIdentifier === undefined) {
+                    return false;
+                }
                 return existingRecords[x].objectIdentifier === newRecord.objectIdentifier;
             });
             if (existingRecordKey) {
