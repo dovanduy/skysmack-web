@@ -33,13 +33,13 @@ const cancelEditAction = (newState: PackagesState, action: ReduxAction<{ _packag
     const _package = action.payload._package;
     newState.localPackages[_package.localId].object = action.payload._package.oldObject;
     newState.localPackages[_package.localId].status = LocalObjectStatus.OK;
-    newState.localPackages[_package.localId].status = false;
+    newState.localPackages[_package.localId].error = false;
     return newState;
 };
 
 const cancelDeleteAction = (newState: PackagesState, action: ReduxAction<{ _package: LocalObject<Package, string> }, CancelActionMeta>): PackagesState => {
     const _package = action.payload._package;
     newState.localPackages[_package.localId].status = LocalObjectStatus.OK;
-    newState.localPackages[_package.localId].status = false;
+    newState.localPackages[_package.localId].error = false;
     return newState;
 };

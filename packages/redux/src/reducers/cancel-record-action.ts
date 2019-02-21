@@ -38,7 +38,7 @@ const cancelEditAction = <TState extends RecordState<TRecord, TKey>, TRecord ext
     const record = action.payload.record;
     newState.localRecords[packagePath][record.localId].object = action.payload.record.oldObject;
     newState.localRecords[packagePath][record.localId].status = LocalObjectStatus.OK;
-    newState.localRecords[packagePath][record.localId].status = false;
+    newState.localRecords[packagePath][record.localId].error = false;
     return newState;
 };
 
@@ -46,6 +46,6 @@ const cancelDeleteAction = <TState extends RecordState<TRecord, TKey>, TRecord e
     const packagePath = action.payload.packagePath;
     const record = action.payload.record;
     newState.localRecords[packagePath][record.localId].status = LocalObjectStatus.OK;
-    newState.localRecords[packagePath][record.localId].status = false;
+    newState.localRecords[packagePath][record.localId].error = false;
     return newState;
 };
