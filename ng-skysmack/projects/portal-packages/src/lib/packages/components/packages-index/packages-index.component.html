@@ -1,7 +1,6 @@
 <ss-container [sidebarMenu]="sidebarMenu">
-    <!-- [cancelAction]="actions.cancelRecordAction" -->
-    <ss-data-table *ngIf="packages$" [title]="'Packages'" [displayedColumns]="displayedColumns" [entities$]="packages$"
-        [entityActions]="entityActions" [packagePath]="packagePath" (entityActionEvent)="actionEvent($event)">
-        <!--  -->
+    <ss-data-table *ngIf="packages$" [cancelAction]="actions.cancelPackageAction" [title]="'Packages'"
+        [displayedColumns]="displayedColumns" [entities$]="packages$" [entityActions]="entityActions"
+        [packagePath]="packagePath" (entityActionEvent)="actionEvent($event)">
     </ss-data-table>
 </ss-container>

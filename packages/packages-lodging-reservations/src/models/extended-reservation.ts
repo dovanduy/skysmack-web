@@ -31,6 +31,6 @@ export class ExtendedReservation {
 
     private getStatus(reservation: LocalObject<LodgingReservation, number>): string {
         const lowercaseStatus = EnumHelpers.toIndexEnum(LodgingReservation.statusEnum)[reservation.object.status]
-        return lowercaseStatus.charAt(0).toUpperCase() + lowercaseStatus.slice(1);
+        return lowercaseStatus ? lowercaseStatus.charAt(0).toUpperCase() + lowercaseStatus.slice(1) : '';
     }
 }

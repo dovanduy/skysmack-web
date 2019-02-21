@@ -10,7 +10,7 @@ export class NgReceiptsActions extends DocumentRecordActionsBase<ReceiptsAppStat
 
     protected getMessageParams(record: LocalObject<Receipt, number>): StrIndex<string> {
         return {
-            id: record.object.id.toString()
+            id: 'Object'
         };
     }
 }

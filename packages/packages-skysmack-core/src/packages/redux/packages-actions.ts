@@ -1,9 +1,9 @@
 import { Store } from 'redux';
-import { ReduxAction, Effect, EffectRequest, PackagePathPayload } from '@skysmack/redux';
-import { Package, HttpMethod, LocalObject, LocalObjectStatus } from '@skysmack/framework';
+import { ReduxAction, Effect, EffectRequest, PackagePathPayload, CancelActionMeta } from '@skysmack/redux';
+import { Package, HttpMethod, LocalObject, LocalObjectStatus, Logger } from '@skysmack/framework';
 
 export class PackagesActions<TStateType, TStore extends Store<TStateType>> {
-    public static CANCEL_RECORD_ACTION = 'CANCEL_RECORD_ACTION';
+    public static CANCEL_PACKAGE_ACTION = 'CANCEL_PACKAGE_ACTION';
 
     public static GET_PACKAGES = 'GET_PACKAGES';
     public static GET_PACKAGES_SUCCESS = 'GET_PACKAGES_SUCCESS';
@@ -32,6 +32,16 @@ export class PackagesActions<TStateType, TStore extends Store<TStateType>> {
     constructor(
         protected store: TStore,
     ) { }
+
+    public cancelPackageAction = (_package: LocalObject<Package, string>): void => {
+        this.store.dispatch(Object.assign({}, new ReduxAction<any, CancelActionMeta>({
+            type: PackagesActions.CANCEL_PACKAGE_ACTION,
+            payload: {
+                _package,
+            },
+            meta: new CancelActionMeta()
+        })))
+    }
 
     public get() {
         this.store.dispatch(Object.assign({}, new ReduxAction({
@@ -82,6 +92,10 @@ export class PackagesActions<TStateType, TStore extends Store<TStateType>> {
 
     public update(packages: LocalObject<Package, string>[]) {
         const paths = '?paths=' + packages.map(x => x.object.path).join('&paths=');
+
+        console.log(packages);
+        Logger.log('packages', packages, true);
+        Logger.log('packages', packages);
 
         this.store.dispatch(Object.assign({}, new ReduxAction<any, any>({
             type: PackagesActions.UPDATE_PACKAGE,

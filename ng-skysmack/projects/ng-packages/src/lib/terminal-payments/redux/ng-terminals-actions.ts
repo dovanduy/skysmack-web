@@ -10,7 +10,7 @@ export class NgTerminalsActions extends DocumentRecordActionsBase<TerminalsAppSt
 
     protected getMessageParams(record: LocalObject<Terminal, number>): StrIndex<string> {
         return {
-            id: record.object.id.toString()
+            id: 'Object'
         };
     }
 }

@@ -10,7 +10,7 @@ export class AccessPolicyRulesActions extends RecordActionsBase<AccessPolicyRule
 
     protected getMessageParams(record: LocalObject<AccessPolicyRule, number>): StrIndex<string> {
         return {
-            id: record.object.id.toString()
+            id: 'Object'
         };
     }
 }

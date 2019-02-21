@@ -366,7 +366,7 @@ export class LodgingReservationsActions extends RecordActionsBase<LodgingReserva
 
     protected getMessageParams(record: LocalObject<LodgingReservation, number>): StrIndex<string> {
         return {
-            id: record.object.id.toString()
+            id: 'Object'
         };
     }
 }

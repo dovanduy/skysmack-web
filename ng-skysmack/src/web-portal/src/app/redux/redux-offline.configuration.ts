@@ -9,6 +9,7 @@ import { share } from 'rxjs/operators';
 import { TOOGLE_HYDRATED } from './hydrated-reducer';
 import { HttpMethod, ApiDomain, HttpSuccessResponse, HttpErrorResponse } from '@skysmack/framework';
 import { Effect, RecordActionsBase, DocumentRecordActionsBase, cancelRecordActionOutboxFilter, cancelDynamicFieldActionOutboxFilter, AuthenticationActions } from '@skysmack/redux';
+import { PackagesActions, cancelPackageActionOutboxFilter } from '@skysmack/packages-skysmack-core';
 
 // See https://github.com/redux-offline/redux-offline#configuration
 @Injectable({ providedIn: 'root' })
@@ -22,6 +23,7 @@ export class ReduxOfflineConfiguration implements Config {
             if (action.meta.isCancelAction) {
                 switch (action.type) {
                     case action.payload.prefix + RecordActionsBase.CANCEL_RECORD_ACTION: return cancelRecordActionOutboxFilter(outbox, action);
+                    case PackagesActions.CANCEL_PACKAGE_ACTION: return cancelPackageActionOutboxFilter(outbox, action);
                     case action.payload.prefix + DocumentRecordActionsBase.CANCEL_DYNAMIC_FIELD_ACTION: return cancelDynamicFieldActionOutboxFilter(outbox, action);
                     default:
                         return [...outbox, action];

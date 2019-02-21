@@ -5,7 +5,7 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { LanguageService } from '@skysmack/portal-ui';
 import { NgIdentitiesModule, NgLodgingReservationsModule } from '@skysmack/ng-packages';
 import { PortalUiModule, HttpLoaderFactory, DynamicFieldsModule } from '@skysmack/portal-ui';
-import { TranslateLoader, TranslateService } from '@ngx-translate/core';
+import { TranslateLoader } from '@ngx-translate/core';
 import { LodgingReservationsRoutingModule } from './lodging-reservations-routing.module';
 import { lodgingReservationsComponents } from './components/lodgings-reservations-components';
 import { LodgingsModule } from '../lodgings/lodgings.module';

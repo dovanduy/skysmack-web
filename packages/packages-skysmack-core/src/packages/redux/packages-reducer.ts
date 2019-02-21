@@ -2,6 +2,7 @@ import { LocalObject, Package, toLocalObject, HttpErrorResponse, HttpSuccessResp
 import { AppState, ReduxAction, GetAvailablePackagesSuccessPayload, sharedReducer, RollbackMeta } from '@skysmack/redux';
 import { PackagesActions } from './packages-actions';
 import { GetPackagesSuccessPayload, GetPackageSuccessPayload } from '../payloads';
+import { cancelPackageAction } from './cancel-package-action';
 
 /**
  * This is to be used when you want to access packages via the GLOBAL state. E.g. state.packages (where packages is the reducer name.)
@@ -20,6 +21,9 @@ export function packagesReducer(state = new PackagesState(), action: any): Packa
     const newState = Object.assign({}, state);
 
     switch (action.type) {
+        case PackagesActions.CANCEL_PACKAGE_ACTION: {
+            return cancelPackageAction(newState, action);
+        }
         case PackagesActions.GET_PACKAGES_SUCCESS: {
             const castedAction: ReduxAction<GetPackagesSuccessPayload> = action;
             const incomingPackages = castedAction.payload.packages.map(x => toLocalObject<Package, string>(x, 'path'));
@@ -75,6 +79,10 @@ export function packagesReducer(state = new PackagesState(), action: any): Packa
         case PackagesActions.ADD_PACKAGE_FAILURE: {
             setActionError(action, 'Add error: ');
             return newState;
+        }
+        case PackagesActions.UPDATE_PACKAGE: {
+            console.log(action)
+            return newState
         }
         case PackagesActions.UPDATE_PACKAGE_SUCCESS: {
             const castedAction: ReduxAction<HttpSuccessResponse<Package[] | Package>, any> = action;
