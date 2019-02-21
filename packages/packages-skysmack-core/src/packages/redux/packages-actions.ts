@@ -66,13 +66,13 @@ export class PackagesActions<TStateType, TStore extends Store<TStateType>> {
                     commit: new ReduxAction({
                         type: PackagesActions.ADD_PACKAGE_SUCCESS,
                         meta: {
-                            packages
+                            value: packages
                         }
                     }),
                     rollback: new ReduxAction({
                         type: PackagesActions.ADD_PACKAGE_FAILURE,
                         meta: {
-                            packages
+                            value: packages
                         }
                     })
                 }
@@ -81,25 +81,27 @@ export class PackagesActions<TStateType, TStore extends Store<TStateType>> {
     }
 
     public update(packages: LocalObject<Package, string>[]) {
+        const paths = '?paths=' + packages.map(x => x.object.path).join('&paths=');
+
         this.store.dispatch(Object.assign({}, new ReduxAction<any, any>({
             type: PackagesActions.UPDATE_PACKAGE,
             meta: {
                 offline: {
                     effect: new Effect<Package[]>(new EffectRequest<Package[]>(
-                        'skysmack/packages',
+                        'skysmack/packages' + paths,
                         HttpMethod.PUT,
                         packages.map(x => x.object)
                     )),
                     commit: new ReduxAction({
                         type: PackagesActions.UPDATE_PACKAGE_SUCCESS,
                         meta: {
-                            packages
+                            value: packages
                         }
                     }),
                     rollback: new ReduxAction({
                         type: PackagesActions.UPDATE_PACKAGE_FAILURE,
                         meta: {
-                            packages
+                            value: packages
                         }
                     })
                 }
@@ -125,13 +127,13 @@ export class PackagesActions<TStateType, TStore extends Store<TStateType>> {
                     commit: new ReduxAction({
                         type: PackagesActions.DELETE_PACKAGE_SUCCESS,
                         meta: {
-                            packages
+                            value: packages
                         }
                     }),
                     rollback: new ReduxAction({
                         type: PackagesActions.DELETE_PACKAGE_FAILURE,
                         meta: {
-                            packages
+                            value: packages
                         }
                     })
                 }

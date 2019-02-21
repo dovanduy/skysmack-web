@@ -16,6 +16,7 @@
     "ss:lerna:reboot": "run-s ss:lerna ss:lerna:watch",
     "ss:build": "run-s ss:lerna build:lib ss:web:localization build:prod",
     "ss:prod": "run-s ss:lerna build:lib ss:web:localization  build:dev start-server",
+    "ss:prod:q": "run-s build:dev start-server",
     "ss:clean": "cd ../Assorted/scripts && clean.bat",
     "ss:analyze": "webpack-bundle-analyzer dist/web-portal/stats.json",
     "ss:analyze:build": "run-s build:dev ss:analyze",

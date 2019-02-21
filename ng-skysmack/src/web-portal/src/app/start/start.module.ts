@@ -16,6 +16,7 @@ import { applicationStartup } from './application-startup';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from './../../environments/environment';
+import { GlobalProperties } from '@skysmack/framework';
 // import { NgxGraphModule } from '@swimlane/ngx-graph';
 // import { NgxChartsModule } from '@swimlane/ngx-charts';
 // NgxGraphModule,
@@ -109,5 +110,6 @@ export class StartModule {
     public reduxOfflineConfiguration: ReduxOfflineConfiguration
   ) {
     configureRedux(ngRedux, ngReduxRouter, reduxOfflineConfiguration);
+    GlobalProperties.production = environment.production;
   }
 }

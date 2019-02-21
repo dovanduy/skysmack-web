@@ -1,5 +1,5 @@
 import { RecordActionsBase } from "../actions";
-import { Record, LocalObjectExtensions, PageExtensions, toLocalObject, HttpSuccessResponse, HttpErrorResponse, LocalObjectStatus, PageResponse, replaceLocalInnerObject, LocalObject, HttpResponse, LoadingState } from "@skysmack/framework";
+import { Record, LocalObjectExtensions, PageExtensions, toLocalObject, HttpSuccessResponse, HttpErrorResponse, LocalObjectStatus, PageResponse, replaceLocalInnerObject, LocalObject, HttpResponse, LoadingState, GlobalProperties } from "@skysmack/framework";
 import { RecordState } from './../states/record-state';
 import { GetPagedRecordsSuccessPayload, GetSingleRecordSuccessPayload, GetPagedRecordsPayload } from '../payloads';
 import { ReduxAction } from '../action-types/redux-action';
@@ -36,7 +36,9 @@ export function recordReducersBase<TState extends RecordState<TRecord, TKey>, TR
         }
         case prefix + RecordActionsBase.GET_PAGED_FAILURE: {
             const castedAction: ReduxAction<HttpErrorResponse> = action;
-            console.log('Error. Error Action:', castedAction);
+            if (!GlobalProperties.production) {
+                console.log('Error. Error Action:', castedAction);
+            }
             return newState;
         }
         case prefix + RecordActionsBase.GET_SINGLE_SUCCESS: {
@@ -46,7 +48,9 @@ export function recordReducersBase<TState extends RecordState<TRecord, TKey>, TR
         }
         case prefix + RecordActionsBase.GET_SINGLE_FAILURE: {
             const castedAction: ReduxAction<HttpErrorResponse> = action;
-            console.log('Error. Error Action:', castedAction);
+            if (!GlobalProperties.production) {
+                console.log('Error. Error Action:', castedAction);
+            }
             return newState;
         }
         case prefix + RecordActionsBase.ADD: {
@@ -101,6 +105,7 @@ function setActionError<TRecord extends Record<TKey>, TKey>(action: ReduxAction<
             record.object.id = 0 as any;
         }
     });
-    // TODO: Delete this in production?
-    console.log(message, action);
+    if (!GlobalProperties.production) {
+        console.log(message, action);
+    }
 }

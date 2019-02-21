@@ -1,5 +1,5 @@
-import { LocalObject, Package, toLocalObject, HttpErrorResponse, HttpSuccessResponse, AvailablePackage, StrIndex, LocalObjectExtensions, replaceLocalInnerObject } from '@skysmack/framework';
-import { AppState, ReduxAction, GetAvailablePackagesSuccessPayload, sharedReducer } from '@skysmack/redux';
+import { LocalObject, Package, toLocalObject, HttpErrorResponse, HttpSuccessResponse, AvailablePackage, StrIndex, LocalObjectExtensions, replaceLocalInnerObject, GlobalProperties, Record } from '@skysmack/framework';
+import { AppState, ReduxAction, GetAvailablePackagesSuccessPayload, sharedReducer, RollbackMeta } from '@skysmack/redux';
 import { PackagesActions } from './packages-actions';
 import { GetPackagesSuccessPayload, GetPackageSuccessPayload } from '../payloads';
 
@@ -28,7 +28,9 @@ export function packagesReducer(state = new PackagesState(), action: any): Packa
         }
         case PackagesActions.GET_PACKAGES_FAILURE: {
             const castedAction: ReduxAction<HttpErrorResponse> = action;
-            console.log('Packages get error: ', castedAction);
+            if (!GlobalProperties.production) {
+                console.log('Error. Error Action:', castedAction);
+            }
             return newState;
         }
         case PackagesActions.GET_AVAILABLE_PACKAGES_SUCCESS: {
@@ -39,7 +41,9 @@ export function packagesReducer(state = new PackagesState(), action: any): Packa
         }
         case PackagesActions.GET_AVAILABLE_PACKAGES_FAILURE: {
             const castedAction: ReduxAction<HttpErrorResponse> = action;
-            console.log('Available packages get error: ', castedAction);
+            if (!GlobalProperties.production) {
+                console.log('Error. Error Action:', castedAction);
+            }
             return newState;
         }
         case PackagesActions.GET_SINGLE_PACKAGE_SUCCESS: {
@@ -50,52 +54,60 @@ export function packagesReducer(state = new PackagesState(), action: any): Packa
         }
         case PackagesActions.GET_SINGLE_PACKAGE_FAILURE: {
             const castedAction: ReduxAction<HttpErrorResponse> = action;
-            console.log('Get single package error: ', castedAction);
+            if (!GlobalProperties.production) {
+                console.log('Error. Error Action:', castedAction);
+            }
             return newState;
         }
         case PackagesActions.ADD_PACKAGE: {
             const castedAction: ReduxAction<any, any> = action;
-            const packagesToBeCreated = castedAction.meta.offline.commit.meta.packages;
+            const packagesToBeCreated = castedAction.meta.offline.commit.meta.value;
             newState.localPackages = LocalObjectExtensions.mergeOrAddLocal<Package, string>(newState.localPackages, packagesToBeCreated);
             return newState;
         }
         case PackagesActions.ADD_PACKAGE_SUCCESS: {
             const castedAction: ReduxAction<HttpSuccessResponse<Package[] | Package>, any> = action;
             const body = castedAction.payload.body;
-            const newPackages = (Array.isArray(body) ? body : [body]).map((newObject, index) => replaceLocalInnerObject<Package, string>(castedAction.meta.packages[index], newObject));
+            const newPackages = (Array.isArray(body) ? body : [body]).map((newObject, index) => replaceLocalInnerObject<Package, string>(castedAction.meta.value[index], newObject));
             newState.localPackages = LocalObjectExtensions.mergeOrAddLocal<Package, string>(newState.localPackages, newPackages);
             return newState;
         }
         case PackagesActions.ADD_PACKAGE_FAILURE: {
-            const castedAction: ReduxAction<HttpErrorResponse> = action;
-            console.log('Packages add error', castedAction);
+            setActionError(action, 'Add error: ');
             return newState;
         }
         case PackagesActions.UPDATE_PACKAGE_SUCCESS: {
             const castedAction: ReduxAction<HttpSuccessResponse<Package[] | Package>, any> = action;
             const body = castedAction.payload.body;
-            const updatedPackages = (Array.isArray(body) ? body : [body]).map((newObject, index) => replaceLocalInnerObject<Package, string>(castedAction.meta.packages[index], newObject));
+            const updatedPackages = (Array.isArray(body) ? body : [body]).map((newObject, index) => replaceLocalInnerObject<Package, string>(castedAction.meta.value[index], newObject));
             newState.localPackages = LocalObjectExtensions.mergeOrAddLocal<AvailablePackage, string>(newState.localPackages, updatedPackages);
             return newState;
         }
         case PackagesActions.UPDATE_PACKAGE_FAILURE: {
-            const castedAction: ReduxAction<HttpErrorResponse> = action;
-            console.log('Packages update error', castedAction);
+            setActionError(action, 'Update error: ');
             return newState;
         }
         case PackagesActions.DELETE_PACKAGE_SUCCESS: {
-            const castedAction: ReduxAction<HttpSuccessResponse<Package[] | Package>, { packages: LocalObject<Package, string>[] }> = action;
-            castedAction.meta.packages.forEach(_package => {
+            const castedAction: ReduxAction<HttpSuccessResponse<Package[] | Package>, { value: LocalObject<Package, string>[] }> = action;
+            castedAction.meta.value.forEach(_package => {
                 delete newState.localPackages[_package.object.path][_package.object.path];
             });
             return newState;
         }
         case PackagesActions.DELETE_PACKAGE_FAILURE: {
-            const castedAction: ReduxAction<HttpErrorResponse> = action;
-            console.log('Packages delete error', castedAction);
+            setActionError(action, 'Delete error: ');
             return newState;
         }
         default:
             return state;
+    }
+}
+
+function setActionError<TRecord extends Record<TKey>, TKey>(action: ReduxAction<HttpErrorResponse, RollbackMeta<LocalObject<TRecord, TKey>[]>>, message: string = 'Error: '): void {
+    action.meta.value.forEach(record => {
+        record.error = true;
+    });
+    if (!GlobalProperties.production) {
+        console.log(message, action);
     }
 }

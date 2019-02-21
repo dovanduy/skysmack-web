@@ -1,5 +1,5 @@
-import { LocalPageTypes, StrIndex, LocalObject, FieldSchemaViewModel, FieldValueProviderViewModel, NumIndex, HttpResponse, linq } from '@skysmack/framework';
-import { AppState, ReduxAction, RecordState, recordReducersBase, ReduxOfflineMeta, sharedReducer } from '@skysmack/redux';
+import { LocalPageTypes, StrIndex, LocalObject, FieldSchemaViewModel, FieldValueProviderViewModel, Record, NumIndex, HttpResponse, linq, GlobalProperties, HttpErrorResponse } from '@skysmack/framework';
+import { AppState, ReduxAction, RecordState, recordReducersBase, ReduxOfflineMeta, sharedReducer, RollbackMeta } from '@skysmack/redux';
 import { User } from './../models/user';
 import { UsersActions } from './users-actions';
 import { GetUsersRolesSuccessPayload } from '../payloads';
@@ -37,7 +37,9 @@ export function usersReducer(state = new UsersState(), action: ReduxAction, pref
             return newState;
         }
         case prefix + UsersActions.GET_ROLES_FAILURE: {
-            console.log('Get users roles error: ', action.payload);
+            if (!GlobalProperties.production) {
+                console.log('Error. Error Action:', action.payload);
+            }
             return state;
         }
 
@@ -52,7 +54,9 @@ export function usersReducer(state = new UsersState(), action: ReduxAction, pref
             return newState;
         }
         case prefix + UsersActions.ADD_ROLES_FAILURE: {
-            console.log('Add users roles error: ', action.payload);
+            if (!GlobalProperties.production) {
+                console.log('Error. Error Action:', action.payload);
+            }
             return state;
         }
 
@@ -70,7 +74,9 @@ export function usersReducer(state = new UsersState(), action: ReduxAction, pref
             return newState;
         }
         case prefix + UsersActions.REMOVE_ROLES_FAILURE: {
-            console.log('Remove users roles error: ', action.payload);
+            if (!GlobalProperties.production) {
+                console.log('Error. Error Action:', action.payload);
+            }
             return state;
         }
 

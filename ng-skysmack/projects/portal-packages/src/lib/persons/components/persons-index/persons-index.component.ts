@@ -8,7 +8,6 @@ import { Person, PersonsAppState } from '@skysmack/packages-persons';
 import { NgPersonsMenu } from './../../ng-persons-menu';
 import { EntityAction } from '@skysmack/ng-ui';
 
-
 @Component({
   selector: 'ss-persons-index',
   templateUrl: './persons-index.component.html',

@@ -14,10 +14,8 @@ export class SkysmackApiDomain implements ApiDomain {
     private getApiDomain(): string {
         let apiDomain = '';
 
-        // TODO: When is this needed?
-        const localApi = 'http://www.skysmack.test:4000';
-
         // Local production testing
+        const localApi = 'http://www.skysmack.test:4000';
         const localProdClient = 'www.skysmack.test:4000';
         const devHostClient = 'skysmack.test';
         const devPortalHostApi = 'skysmack-io.test:2000';

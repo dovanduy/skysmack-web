@@ -56,7 +56,7 @@ export class PackagesEditComponent extends BaseComponent<PackagesAppState, strin
 
   onUpdateSubmit(fh: FormHelper) {
     fh.formValid(() => {
-      const newPackage = toLocalObject<Package, string>(fh.form.getRawValue());
+      const newPackage = toLocalObject<Package, string>(fh.form.getRawValue(), 'path');
       newPackage.oldObject = this.selectedPackage.object;
       newPackage.status = LocalObjectStatus.MODIFYING;
       this.actions.update([newPackage]);

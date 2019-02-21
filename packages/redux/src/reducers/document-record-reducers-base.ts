@@ -1,5 +1,5 @@
 import { DocumentRecordActionsBase } from "../actions";
-import { Record, toLocalObject, HttpSuccessResponse, LocalObject, FieldSchemaViewModel, HttpErrorResponse, LocalObjectExtensions, FieldValueProviderViewModel, replaceLocalInnerObject } from "@skysmack/framework";
+import { Record, toLocalObject, HttpSuccessResponse, LocalObject, FieldSchemaViewModel, HttpErrorResponse, LocalObjectExtensions, FieldValueProviderViewModel, replaceLocalInnerObject, GlobalProperties } from "@skysmack/framework";
 import { ReduxAction } from '../action-types/redux-action';
 import { PackagePathPayload, GetFieldsSuccessPayload, GetAvailableFieldsSuccessPayload, GetSingleFieldSuccessPayload } from './../payloads';
 import { DocumentRecordState } from './../states/document-record-state';
@@ -22,7 +22,9 @@ export function documentRecordReducersBase<TState extends DocumentRecordState<TR
         }
         case prefix + DocumentRecordActionsBase.GET_FIELDS_FAILURE: {
             const castedAction: ReduxAction<PackagePathPayload> = action;
-            console.log('Fields failure. Error Action:', castedAction);
+            if (!GlobalProperties.production) {
+                console.log('Error. Error Action:', castedAction);
+            }
             return newState;
         }
         case prefix + DocumentRecordActionsBase.GET_AVAILABLE_FIELDS_SUCCESS: {
@@ -33,7 +35,9 @@ export function documentRecordReducersBase<TState extends DocumentRecordState<TR
         }
         case prefix + DocumentRecordActionsBase.GET_AVAILABLE_FIELDS_FAILURE: {
             const castedAction: ReduxAction<HttpErrorResponse> = action;
-            console.log('Available fields get error: ', castedAction);
+            if (!GlobalProperties.production) {
+                console.log('Error. Error Action:', castedAction);
+            }
             return newState;
         }
         case prefix + DocumentRecordActionsBase.GET_SINGLE_FIELD_SUCCESS: {
@@ -44,7 +48,9 @@ export function documentRecordReducersBase<TState extends DocumentRecordState<TR
         }
         case prefix + DocumentRecordActionsBase.GET_SINGLE_FIELD_FAILURE: {
             const castedAction: ReduxAction<HttpErrorResponse> = action;
-            console.log('Get single field error: ', castedAction);
+            if (!GlobalProperties.production) {
+                console.log('Error. Error Action:', castedAction);
+            }
             return newState;
         }
         case prefix + DocumentRecordActionsBase.ADD_FIELD: {
@@ -101,6 +107,7 @@ function setFieldActionError<TRecord extends Record<TKey>, TKey>(action: ReduxAc
     action.meta.value.forEach(record => {
         record.error = true;
     });
-    // TODO: Delete this in production?
-    console.log(message, action);
+    if (!GlobalProperties.production) {
+        console.log(message, action);
+    }
 }
