@@ -19,6 +19,7 @@ export class RecordFormComponent<TAppState, TRecord extends Record<TKey>, TKey, 
     constructor(
         public router: Router,
         public activatedRoute: ActivatedRoute,
+        // TODO: Remove this + from all child components.
         public editorNavService: EditorNavService,
         public actions: RecordActionsBase<TAppState, NgRedux<TAppState>>,
         public skysmackStore: NgSkysmackStore,
@@ -29,7 +30,6 @@ export class RecordFormComponent<TAppState, TRecord extends Record<TKey>, TKey, 
     }
 
     ngOnInit() {
-        this.editorNavService.showEditorNav();
         super.ngOnInit();
     }
 

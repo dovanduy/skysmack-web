@@ -1,7 +1,8 @@
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { SubscriptionLike } from 'rxjs';
 import { Field, FormRule, FormHelper, Validation } from '@skysmack/ng-ui';
+import { EditorNavService } from './../../common/container/editor-nav.service';
 
 @Component({
   selector: 'ss-dynamic-form',
@@ -21,10 +22,13 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
 
   @Output() public submitted: EventEmitter<FormHelper> = new EventEmitter();
 
-  constructor(public fb: FormBuilder) { }
+  constructor(public fb: FormBuilder, public editorNavService: EditorNavService) { }
 
   ngOnInit() {
     this.createForm();
+    setTimeout(() => {
+      this.editorNavService.showEditorNav();
+    }, 0);
   }
 
   public createForm(): void {

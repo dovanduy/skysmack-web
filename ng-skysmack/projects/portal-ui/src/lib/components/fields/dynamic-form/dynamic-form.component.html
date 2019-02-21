@@ -1,6 +1,6 @@
 <ng-content></ng-content>
 
-<form [formGroup]="fh.form" (ngSubmit)="onSubmit()">
+<form *ngIf="fh" [formGroup]="fh.form" (ngSubmit)="onSubmit()">
 
   <ng-container *ngFor="let field of fields">
     <ss-dynamic-form-field [fh]="fh" [field]="field" [fields]="fields" [rules]="rules"></ss-dynamic-form-field>

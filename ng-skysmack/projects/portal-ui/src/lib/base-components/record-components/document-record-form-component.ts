@@ -9,7 +9,7 @@ import { NgRedux } from '@angular-redux/store';
 import { RecordFormComponent } from './record-form-component';
 import { NgDocumentRecordReduxStore } from '@skysmack/ng-redux';
 import { map } from 'rxjs/operators';
-import { combineLatest, Observable, zip } from 'rxjs';
+import { combineLatest, Observable } from 'rxjs';
 
 export class DocumentRecordFormComponent<TAppState, TRecord extends Record<TKey>, TKey, TDependencies> extends RecordFormComponent<TAppState, TRecord, TKey, TDependencies> implements OnInit, OnDestroy {
 
