@@ -81,8 +81,10 @@ export function packagesReducer(state = new PackagesState(), action: any): Packa
             return newState;
         }
         case PackagesActions.UPDATE_PACKAGE: {
-            console.log(action)
-            return newState
+            const castedAction: ReduxAction<any, any> = action;
+            const packagesToBeUpdated = castedAction.meta.offline.commit.meta.value;
+            newState.localPackages = LocalObjectExtensions.mergeOrAddLocal<Package, string>(newState.localPackages, packagesToBeUpdated);
+            return newState;
         }
         case PackagesActions.UPDATE_PACKAGE_SUCCESS: {
             const castedAction: ReduxAction<HttpSuccessResponse<Package[] | Package>, any> = action;

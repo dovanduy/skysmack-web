@@ -93,10 +93,6 @@ export class PackagesActions<TStateType, TStore extends Store<TStateType>> {
     public update(packages: LocalObject<Package, string>[]) {
         const paths = '?paths=' + packages.map(x => x.object.path).join('&paths=');
 
-        console.log(packages);
-        Logger.log('packages', packages, true);
-        Logger.log('packages', packages);
-
         this.store.dispatch(Object.assign({}, new ReduxAction<any, any>({
             type: PackagesActions.UPDATE_PACKAGE,
             meta: {
