@@ -77,6 +77,18 @@ export class CustomValidators {
         };
     }
 
+    public static validEmail(): ValidatorFn {
+        return (emailControl: AbstractControl): ValidationErrors | null => {
+            const emailCriteria = new RegExp('[@]');
+            if (!emailCriteria.test(emailControl.value)) {
+                console.log('invalid!')
+                return { invalidEmail: true };
+            } else {
+                return null;
+            }
+        };
+    }
+
     /**
      * Checks if a string is a min length.
      * Note this validator must be set for the password field, not the whole form.

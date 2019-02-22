@@ -10,7 +10,8 @@ export class NgUsersValidation extends Validation {
 
     public validationMessages: StrIndex<{}> = {
         email: {
-            required: ''
+            required: '',
+            invalidEmail: ''
         },
         password: {
             required: '',

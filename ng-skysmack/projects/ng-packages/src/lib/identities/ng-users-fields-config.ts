@@ -23,7 +23,7 @@ export class NgUsersFieldsConfig extends FieldsConfig<User, NgUserFormDependenci
                 fieldType: FieldTypes.EmailField,
                 value: entity ? entity.object.email : undefined,
                 key: 'email',
-                validators: [Validators.required],
+                validators: [Validators.required, CustomValidators.validEmail()],
                 order: 1,
                 showColumn: true
             } as Field),
