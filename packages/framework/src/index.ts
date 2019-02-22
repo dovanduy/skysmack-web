@@ -4,3 +4,4 @@ export * from './helpers/index';
 export * from './models/index';
 export * from './rsql/index';
 export * from './sort/index';
+export * from './shared-services/index';

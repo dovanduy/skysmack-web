@@ -9,7 +9,6 @@ import { lodgingsComponents } from './components/lodgings-components';
 import { lodgingTypesComponents } from './components/lodging-types-component';
 import { TranslateLoader } from '@ngx-translate/core';
 import { LanguageService } from '@skysmack/portal-ui';
-import { LodgingReservationsModule } from '../lodging-reservations/lodging-reservations.module';
 
 @NgModule({
   imports: [
@@ -18,7 +17,7 @@ import { LodgingReservationsModule } from '../lodging-reservations/lodging-reser
     NgLodgingsModule,
     PortalUiModule,
     LodgingsRoutingModule,
-    DynamicFieldsModule,
+    DynamicFieldsModule
   ],
   exports: [],
   declarations: [

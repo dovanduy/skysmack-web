@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { of, Observable } from 'rxjs';
-import { MenuItemProvider, MenuItem } from '@skysmack/ng-ui';
 import { NgSkysmackStore } from './../skysmack-core/skysmack/redux/ng-skysmack-store';
-import { safeHasValue, Package } from '@skysmack/framework';
+import { safeHasValue, Package, MenuItemProvider, MenuItem } from '@skysmack/framework';
 import { map } from 'rxjs/operators';
 import { Skysmack } from '@skysmack/packages-skysmack-core';
 import { LodgingReservationsType } from '@skysmack/packages-lodging-reservations';

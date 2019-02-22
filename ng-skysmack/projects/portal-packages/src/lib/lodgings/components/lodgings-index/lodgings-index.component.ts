@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { EntityComponentPageTitle, DocumentRecordIndexComponent  } from '@skysmack/portal-ui';
+import { EntityComponentPageTitle, DocumentRecordIndexComponent } from '@skysmack/portal-ui';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { LodgingsAppState } from '@skysmack/packages-lodgings';
@@ -15,7 +15,7 @@ import { EntityAction } from '@skysmack/ng-ui';
   templateUrl: './lodgings-index.component.html',
   styleUrls: ['./lodgings-index.component.scss']
 })
-export class LodgingsIndexComponent extends DocumentRecordIndexComponent <LodgingsAppState, Lodging, number> implements OnInit {
+export class LodgingsIndexComponent extends DocumentRecordIndexComponent<LodgingsAppState, Lodging, number> implements OnInit {
 
   public displayedColumns = ['name'];
   public entityActions: EntityAction[] = [
@@ -33,7 +33,6 @@ export class LodgingsIndexComponent extends DocumentRecordIndexComponent <Lodgin
     public sidebarMenu: NgLodgingsMenu
   ) {
     super(router, activatedRoute, actions, redux, store);
-
   }
 
   ngOnInit() {

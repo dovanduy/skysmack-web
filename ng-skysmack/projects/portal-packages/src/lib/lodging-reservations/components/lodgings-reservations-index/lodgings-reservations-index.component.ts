@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Observable, combineLatest } from 'rxjs';
 import { switchMap, map } from 'rxjs/operators';
-import { LocalObject, EnumHelpers, toLocalObject, PagedQuery, RSQLFilterBuilder } from '@skysmack/framework';
+import { LocalObject, EnumHelpers, toLocalObject } from '@skysmack/framework';
 import { ExtendedReservation, LodgingReservationsAppState, LodgingReservation } from '@skysmack/packages-lodging-reservations';
 import { EntityAction } from '@skysmack/ng-ui';
 import { NgLodgingReservationsStore, NgLodgingsStore, NgLodgingTypesStore, NgLodgingReservationsFieldsConfig, NgLodgingsActions, NgLodgingTypesActions, NgLodgingReservationsActions, NgSkysmackStore } from '@skysmack/ng-packages';

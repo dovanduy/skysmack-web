@@ -10,21 +10,12 @@ import { AuthorizationInterceptor, configureLanguage, LanguageService } from '@s
 import { loadMaintenancePackage } from '../packages/maintenance-package-manifest';
 import { loadIdentitiesPackage } from '../packages/identities-package-manifest';
 import { loadLodgingReservationPackage } from '../packages/lodging-reservations-package-manifest';
-import { MenuItemProvider, MenuItem } from '@skysmack/ng-ui';
 import { loadTerminalPaymentsPackage } from '../packages/terminal-payments-manifest';
 import { loadBasketPackage } from '../packages/baskets-package-manifest';
 import { loadInvoicePackage } from '../packages/invoices-package-manifest';
-import { Observable, of } from 'rxjs';
 
 export function configureSkysmack(actions: NgSkysmackActions) {
     return () => actions.getSkysmack();
-}
-
-export class InitialMenuItemProvider extends MenuItemProvider {
-    public menuId = '';
-    public icon = '';
-    constructor() { super(); }
-    public getItems = (menuId: string, packagePath: string): Observable<MenuItem[]> => of([]);
 }
 
 export const configurations = [
@@ -49,10 +40,6 @@ export const packageLoaders = [
     { provide: APP_INITIALIZER, useFactory: loadTerminalPaymentsPackage, deps: [PackageLoader], multi: true }
 ];
 
-export const menuProviders = [
-    { provide: MenuItemProvider.TOKEN, useClass: InitialMenuItemProvider, multi: true }
-];
-
 export const injectionTokens = [
     { provide: 'ApiDomain', useClass: SkysmackApiDomain }
 ];
@@ -61,6 +48,5 @@ export const applicationStartup = [
     ...configurations,
     ...httpInterceptors,
     ...packageLoaders,
-    ...menuProviders,
     ...injectionTokens
 ];

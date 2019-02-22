@@ -1,9 +1,7 @@
 import { Observable } from 'rxjs';
-import { InjectionToken } from '@angular/core';
-import { MenuItem } from '../models/sidebar-menu/menu-item';
+import { MenuItem } from './../models/menu-item';
 
 export abstract class MenuItemProvider {
-    public static TOKEN = new InjectionToken<MenuItemProvider>('MenuItemProvider');
     public abstract menuId: string;
     public abstract icon: string;
 

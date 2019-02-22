@@ -1,10 +1,10 @@
-import { Injectable, Inject } from '@angular/core';
-import { Router, ActivatedRoute, ActivationEnd } from '@angular/router';
+import { Injectable } from '@angular/core';
+import { Router, ActivationEnd } from '@angular/router';
 import { SidebarMenu } from './../models/sidebar-menu/sidebar-menu';
 import { NgSkysmackStore } from '@skysmack/ng-packages';
-import { MenuItemProvider } from '@skysmack/ng-ui';
-import { MenuArea } from '@skysmack/ng-ui';
-import { MenuItem } from '@skysmack/ng-ui';
+import { MenuArea } from '@skysmack/framework';
+import { MenuItem } from '@skysmack/framework';
+import { NgMenuItemProviders } from '@skysmack/ng-redux';
 
 @Injectable({ providedIn: 'root' })
 export class NgDynamicFieldsMenu extends SidebarMenu {
@@ -14,7 +14,7 @@ export class NgDynamicFieldsMenu extends SidebarMenu {
     constructor(
         public redux: NgSkysmackStore,
         public router: Router,
-        @Inject(MenuItemProvider.TOKEN) menuItemProviders: MenuItemProvider[]
+        public menuItemProviders: NgMenuItemProviders
     ) {
         super(redux, router, menuItemProviders);
         this.setPrimaryMenu();

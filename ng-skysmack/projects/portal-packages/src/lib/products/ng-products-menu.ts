@@ -2,9 +2,9 @@ import { Injectable, Inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { SidebarMenu } from '@skysmack/portal-ui';
 import { NgSkysmackStore } from '@skysmack/ng-packages';
-import { MenuItemProvider } from '@skysmack/ng-ui';
-import { MenuArea } from '@skysmack/ng-ui';
-import { MenuItem } from '@skysmack/ng-ui';
+import { MenuArea } from '@skysmack/framework';
+import { MenuItem } from '@skysmack/framework';
+import { NgMenuItemProviders } from '@skysmack/ng-redux';
 
 @Injectable({ providedIn: 'root' })
 export class NgProductsMenu extends SidebarMenu {
@@ -14,7 +14,7 @@ export class NgProductsMenu extends SidebarMenu {
     constructor(
         public redux: NgSkysmackStore,
         public router: Router,
-        @Inject(MenuItemProvider.TOKEN) menuItemProviders: MenuItemProvider[],
+        public menuItemProviders: NgMenuItemProviders
     ) {
         super(redux, router, menuItemProviders);
         this.setPrimaryMenu();

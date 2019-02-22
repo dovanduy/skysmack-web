@@ -1,7 +1,9 @@
-import { Injectable, Inject } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { SidebarMenu } from '@skysmack/portal-ui';
-import { MenuItemProvider, MenuArea, MenuItem } from '@skysmack/ng-ui';
+import { MenuArea } from '@skysmack/framework';
+import { MenuItem } from '@skysmack/framework';
+import { NgMenuItemProviders } from '@skysmack/ng-redux';
 import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { map, take } from 'rxjs/operators';
 
@@ -13,7 +15,7 @@ export class NgLodgingsReservationsMenu extends SidebarMenu {
     constructor(
         public store: NgSkysmackStore,
         public router: Router,
-        @Inject(MenuItemProvider.TOKEN) menuItemProviders: MenuItemProvider[],
+        public menuItemProviders: NgMenuItemProviders
     ) {
         super(store, router, menuItemProviders);
         this.setPrimaryMenu();

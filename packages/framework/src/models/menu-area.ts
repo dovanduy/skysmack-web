@@ -1,4 +1,3 @@
-
 export class MenuArea {
     public displayName: string;
 

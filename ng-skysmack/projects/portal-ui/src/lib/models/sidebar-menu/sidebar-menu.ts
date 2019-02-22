@@ -1,11 +1,12 @@
-import { OnDestroy, Inject } from '@angular/core';
+import { OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { map, switchMap } from 'rxjs/operators';
-import { MenuItem } from '@skysmack/ng-ui';
-import { MenuArea } from '@skysmack/ng-ui';
+import { MenuArea } from '@skysmack/framework';
+import { MenuItem } from '@skysmack/framework';
+
 import { NgSkysmackStore, LoadedPackage } from '@skysmack/ng-packages';
 import { SubscriptionHandler } from '@skysmack/framework';
-import { MenuItemProvider } from '@skysmack/ng-ui';
+import { NgMenuItemProviders } from '@skysmack/ng-redux';
 
 export abstract class SidebarMenu implements OnDestroy {
     public abstract menuId: string;
@@ -24,7 +25,7 @@ export abstract class SidebarMenu implements OnDestroy {
     constructor(
         public store: NgSkysmackStore,
         public router: Router,
-        @Inject(MenuItemProvider.TOKEN) public menuItemProviders: MenuItemProvider[],
+        public menuItemProviders: NgMenuItemProviders
     ) {
         this.setPaths();
     }
@@ -43,7 +44,7 @@ export abstract class SidebarMenu implements OnDestroy {
     }
 
     protected runMenuItemProviders() {
-        this.menuItemProviders.forEach(provider => {
+        this.menuItemProviders.providers.forEach(provider => {
             this.subscriptionHandler.register(this.store.getCurrentPackage(this.packagePath).pipe(
                 switchMap((currentPackage: LoadedPackage) => provider.getItems(this.menuId, currentPackage._package.path)),
                 map((menuItems: MenuItem[]) => menuItems.forEach(menuItem => this.addItem(menuItem)))

@@ -2,8 +2,8 @@ import { Component, OnInit, ViewChild, Input, OnDestroy, Output, EventEmitter } 
 import { MatSort, MatPaginator, MatTableDataSource } from '@angular/material';
 import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { LocalObject, SubscriptionHandler } from '@skysmack/framework';
-import { MenuItem } from '@skysmack/ng-ui';
+import { LocalObject, SubscriptionHandler, MenuItem } from '@skysmack/framework';
+
 import { EditorNavService } from '../container/editor-nav.service';
 import { EntityAction } from '@skysmack/ng-ui';
 import { EntityComponentPageTitle } from './../../../models/entity-component-page-title';
