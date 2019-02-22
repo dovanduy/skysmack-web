@@ -58,7 +58,7 @@
 
 <!-- TODO: SHOW LOADING INDICATOR OF SOME SORT -->
 <mat-card>
-  <p *ngIf="loadedEntitiesCount">Loaded {{ loadedEntitiesCount }} out of {{ totalCount }}</p>
+  <p style="text-align:right;" *ngIf="loadedEntitiesCount">Loaded {{ loadedEntitiesCount }} out of {{ totalCount }}</p>
   <ng-container [ngSwitch]="loadingState">
     <!-- 
       *ngSwitchCase="0" // OK
@@ -72,7 +72,7 @@
     -->
     <div *ngSwitchCase="2">
       <!-- Loading -->
-      <mat-spinner [diameter]="30"></mat-spinner>
+      <mat-progress-bar mode="indeterminate"></mat-progress-bar>
     </div>
     <ng-container *ngSwitchDefault></ng-container>
   </ng-container>
