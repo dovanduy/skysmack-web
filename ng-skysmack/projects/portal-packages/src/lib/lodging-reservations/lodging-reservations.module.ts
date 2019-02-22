@@ -8,7 +8,6 @@ import { PortalUiModule, HttpLoaderFactory, DynamicFieldsModule } from '@skysmac
 import { TranslateLoader } from '@ngx-translate/core';
 import { LodgingReservationsRoutingModule } from './lodging-reservations-routing.module';
 import { lodgingReservationsComponents } from './components/lodgings-reservations-components';
-import { LodgingsModule } from '../lodgings/lodgings.module';
 
 @NgModule({
   imports: [
@@ -18,8 +17,7 @@ import { LodgingsModule } from '../lodgings/lodgings.module';
     LodgingReservationsRoutingModule,
     NgLodgingReservationsModule,
     NgIdentitiesModule,
-    DynamicFieldsModule,
-    LodgingsModule // TODO: Does this bundle the lodgings module along with reservation, or trigger a load of the bundled lazy loaded version?
+    DynamicFieldsModule
   ],
   declarations: [
     ...lodgingReservationsComponents,

@@ -2,7 +2,7 @@ import { NgReduxRouter, NgReduxRouterModule } from '@angular-redux/router';
 import { HttpClientModule } from '@angular/common/http';
 import { NgRedux, NgReduxModule } from '@angular-redux/store';
 
-import { RouterModule } from '@angular/router';
+import { RouterModule, PreloadAllModules } from '@angular/router';
 import { NgModule } from '@angular/core';
 
 import { SkysmackModule } from '@skysmack/portal-packages';
@@ -88,7 +88,9 @@ import { GlobalProperties } from '@skysmack/framework';
         path: '**',
         component: FallBackComponent
       }
-    ]),
+    ], {
+        preloadingStrategy: PreloadAllModules
+      }),
     BrowserAnimationsModule,
     HttpClientModule,
     PortalUiModule,

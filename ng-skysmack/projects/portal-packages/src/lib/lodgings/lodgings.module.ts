@@ -34,5 +34,7 @@ import { LanguageService } from '@skysmack/portal-ui';
   ]
 })
 export class LodgingsModule {
-  constructor(public languageService: LanguageService) { }
+  constructor(
+    public languageService: LanguageService
+  ) { }
 }
