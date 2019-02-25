@@ -1,6 +1,7 @@
 <mat-card>
   <mat-card-header>
-    <p style="margin-right: 10px; font-weight: 900;" *ngFor="let column of displayedColumns">{{ column }}</p>
+    <p style="margin-right: 10px; font-weight: 900;" *ngFor="let column of displayColumns">
+      {{ column.translationString | translate }}</p>
   </mat-card-header>
 </mat-card>
 
@@ -14,8 +15,9 @@
 
 
     <mat-card-content>
-      <p style="margin-right: 5px; display: inline-block;" *ngFor="let column of displayedColumns">
-        {{ entity.object[column] }}</p>
+      <ng-container *ngFor="let column of displayColumns">
+        <p style="margin-right: 5px; display: inline-block;">{{ entity.object[column.fieldKey] }}</p>
+      </ng-container>
 
       <!-- ACTIONS -->
       <!-- Hide the entities menu when in queue, or if the entity has a create error -->
@@ -30,8 +32,8 @@
             <a *ngIf="entityAction.isActionEvent" showEntityAction [entityAction]="entityAction" [entity]="entity"
               mat-menu-item
               (click)="entityActionEvent.emit({ action: entityAction.action, value: entity, _this: entityAction._this })">
-              <i class="material-icons">{{ entityAction.icon }}</i> <span class="icon-text">{{
-                            entityAction.displayName }}</span>
+              <i class="material-icons">{{ entityAction.icon }}</i> <span
+                class="icon-text">{{ entityAction.displayName }}</span>
             </a>
 
             <!-- URL EVENT -->

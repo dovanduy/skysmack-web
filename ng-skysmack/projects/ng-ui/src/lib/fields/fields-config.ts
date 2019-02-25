@@ -1,5 +1,5 @@
 import { FormRule } from '../forms/form-rule';
-import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
+import { LocalObject, DisplayColumn } from '@skysmack/framework';
 import { Field } from './field';
 import { Validation } from '../forms/validation';
 

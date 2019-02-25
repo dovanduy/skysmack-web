@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { EntityComponentPageTitle, DocumentRecordIndexComponent } from '@skysmack/portal-ui';
 import { Router, ActivatedRoute } from '@angular/router';
-import { NgPersonsActions } from '@skysmack/ng-packages';
+import { NgPersonsActions, NgPersonsFieldsConfig } from '@skysmack/ng-packages';
 import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { NgPersonsStore } from '@skysmack/ng-packages';
 import { Person, PersonsAppState } from '@skysmack/packages-persons';
 import { NgPersonsMenu } from './../../ng-persons-menu';
-import { EntityAction } from '@skysmack/ng-ui';
+import { EntityAction, Field } from '@skysmack/ng-ui';
 
 @Component({
   selector: 'ss-persons-index',
@@ -15,7 +15,7 @@ import { EntityAction } from '@skysmack/ng-ui';
 })
 export class PersonsIndexComponent extends DocumentRecordIndexComponent<PersonsAppState, Person, number> implements OnInit {
 
-  public displayedColumns = ['firstName', 'lastName'];
+  public fields: Field[];
   public entityActions: EntityAction[] = [
     new EntityAction().asUrlAction('edit', 'Edit', 'edit'),
     new EntityAction().asEventAction('Delete', this.delete, 'delete', this)
@@ -28,14 +28,15 @@ export class PersonsIndexComponent extends DocumentRecordIndexComponent<PersonsA
     public redux: NgSkysmackStore,
     public title: EntityComponentPageTitle,
     public store: NgPersonsStore,
-    public sidebarMenu: NgPersonsMenu
+    public sidebarMenu: NgPersonsMenu,
+    public fieldsConfig: NgPersonsFieldsConfig
   ) {
     super(router, activatedRoute, actions, redux, store);
-
   }
 
   ngOnInit() {
     super.ngOnInit();
     this.title.setTitle(this.packagePath);
+    this.fields = this.fieldsConfig.getStaticFields();
   }
 }

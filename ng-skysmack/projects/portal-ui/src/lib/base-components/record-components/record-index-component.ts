@@ -3,13 +3,12 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { RecordActionsBase } from '@skysmack/redux';
 import { NgRedux } from '@angular-redux/store';
 import { NgSkysmackStore } from '@skysmack/ng-packages';
-import { LocalObject, LocalPage, PagedQuery, LoadingState, hasValue, StrIndex, LocalPageTypes, linq, Logger } from '@skysmack/framework';
+import { LocalObject, LocalPage, PagedQuery, LoadingState, hasValue, StrIndex, LocalPageTypes, linq } from '@skysmack/framework';
 import { Observable, BehaviorSubject, combineLatest } from 'rxjs';
 import { NgRecordReduxStore } from '@skysmack/ng-redux';
 import { OnInit } from '@angular/core';
 import { Record } from '@skysmack/framework';
 import { map } from 'rxjs/operators';
-import { load } from '@angular/core/src/render3';
 
 export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey> extends BaseComponent<TAppState, TKey> implements OnInit {
     public entities$: Observable<LocalObject<TRecord, TKey>[]>;

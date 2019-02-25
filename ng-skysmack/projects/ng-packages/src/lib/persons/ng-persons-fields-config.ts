@@ -17,6 +17,7 @@ export interface NgPersonFormDependencies {
 export class NgPersonsFieldsConfig extends FieldsConfig<Person, NgPersonFormDependencies> {
     public validation = new NgPersonsValidation();
 
+
     public formRules: FormRule[] = [
         new SetDisplayNameRule(['firstName', 'lastName'])
     ];

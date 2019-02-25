@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, OnDestroy, EventEmitter, Output, ViewChild } from '@angular/core';
-import { LocalObject, LoadingState, SubscriptionHandler } from '@skysmack/framework';
+import { LocalObject, LoadingState, SubscriptionHandler, DisplayColumn } from '@skysmack/framework';
 import { Observable } from 'rxjs';
-import { EntityAction } from '@skysmack/ng-ui';
+import { EntityAction, Field } from '@skysmack/ng-ui';
 import { map } from 'rxjs/operators';
 import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
 
@@ -27,11 +27,16 @@ export class RecordsContainerComponent implements OnInit, OnDestroy {
   @Input() public packagePath: string;
   @Input() public title: string;
   @Input() public cancelAction: Function;
-  @Input() public displayedColumns: string[] = [];
+  @Input() public fields: Field[];
+  public displayColumns: DisplayColumn[];
 
   constructor() { }
 
   ngOnInit() {
+    // Set display columns
+    this.displayColumns = this.fields.map(field => this.displayColumnFromField(field)).filter(column => column.show);
+
+    // Set entities
     this.subscriptionHandler.register(this.entities$.pipe(
       map(entities => {
         this.entities = entities;
@@ -41,6 +46,14 @@ export class RecordsContainerComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.subscriptionHandler.unsubscribe();
+  }
+
+  public displayColumnFromField(field: Field) {
+    return new DisplayColumn({
+      fieldKey: field.key,
+      translationString: 'PERSONS.FORM.LABELS.' + field.key.toUpperCase(),
+      show: field.showColumn
+    });
   }
 
   public runCancelAction(entity: LocalObject<any, any>) {
