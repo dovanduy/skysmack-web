@@ -28,7 +28,9 @@ export class RecordsContainerComponent implements OnInit, OnDestroy {
   @Input() public title: string;
   @Input() public cancelAction: Function;
   @Input() public fields: Field[];
+
   public displayColumns: DisplayColumn[];
+  @Output() public sortChanged = new EventEmitter<DisplayColumn>();
 
   constructor() { }
 
@@ -39,6 +41,7 @@ export class RecordsContainerComponent implements OnInit, OnDestroy {
     // Set entities
     this.subscriptionHandler.register(this.entities$.pipe(
       map(entities => {
+        console.log(entities.length);
         this.entities = entities;
         this.loadedEntitiesCount = entities.length;
       })).subscribe());
@@ -68,5 +71,26 @@ export class RecordsContainerComponent implements OnInit, OnDestroy {
     if (this.entityList.measureScrollOffset('bottom') < 150) {
       this.requestPage.emit(true);
     }
+  }
+
+  public setSortOrder(displayColumn: DisplayColumn) {
+    this.entityList.scrollToIndex(0);
+    this.entities = [];
+    this.loadedEntitiesCount = undefined;
+    switch (displayColumn.sortOrder) {
+      case true: {
+        displayColumn.sortOrder = false;
+        break;
+      }
+      case false: {
+        displayColumn.sortOrder = undefined;
+        break;
+      }
+      default: {
+        displayColumn.sortOrder = true;
+        break;
+      }
+    }
+    this.sortChanged.emit(displayColumn);
   }
 }

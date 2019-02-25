@@ -75,13 +75,13 @@ export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey>
                 if (queryDictionary) {
                     const sort = this.pagedQuery.sort.build();
                     const pages = queryDictionary.pages[this.pagedQuery.pageSize + ':' + sort];
-                    const pageKeys = Object.keys(pages);
-                    const lastPageKey = Number(pageKeys[pageKeys.length - 1]);
+                    // const pageKeys = Object.keys(pages);
+                    const lastPageKey = this.currentPageNumber; //Number(pageKeys[pageKeys.length - 1]);
                     const lastPage: LocalPage<TKey> = pages[lastPageKey];
 
-                    if (lastPage.loadingState === LoadingState.OK) {
+                    if (lastPage && lastPage.loadingState === LoadingState.OK) {
                         this.pages$.next(Object.keys(pages).map(key => {
-                            if (Number(key) > 0) {
+                            if (Number(key) > 0 && Number(key) <= lastPageKey) {
                                 return pages[key];
                             }
                         }));
@@ -91,9 +91,8 @@ export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey>
                             this.totalCount = queryDictionary.totalCount;
                         }
 
-                        this.currentPageNumber = lastPageKey;
+                        this.currentPageNumber = lastPageKey + 1;
                         const lastPageLinks = lastPage.links;
-
 
                         if ((lastPageLinks && lastPageLinks.next)) {
                             this.loadingState = LoadingState.Awaiting;

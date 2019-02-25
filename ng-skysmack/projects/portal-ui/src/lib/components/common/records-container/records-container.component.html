@@ -1,7 +1,17 @@
 <mat-card>
   <mat-card-header>
-    <p style="margin-right: 10px; font-weight: 900;" *ngFor="let column of displayColumns">
-      {{ column.translationString | translate }}</p>
+    <div *ngFor="let column of displayColumns" (click)="setSortOrder(column)">
+      <!-- Current sort -->
+      <ng-container [ngSwitch]="column.sortOrder">
+        <i class="material-icons" *ngSwitchCase="true">keyboard_arrow_down</i>
+        <i class="material-icons" *ngSwitchCase="false">keyboard_arrow_up</i>
+        <ng-container *ngSwitchDefault></ng-container>
+      </ng-container>
+      <!-- Text -->
+      <div style="margin-right: 10px; font-weight: 900;">
+        {{ column.translationString | translate }}
+      </div>
+    </div>
   </mat-card-header>
 </mat-card>
 

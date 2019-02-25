@@ -7,6 +7,7 @@ import { NgPersonsStore } from '@skysmack/ng-packages';
 import { Person, PersonsAppState } from '@skysmack/packages-persons';
 import { NgPersonsMenu } from './../../ng-persons-menu';
 import { EntityAction, Field } from '@skysmack/ng-ui';
+import { DisplayColumn } from '@skysmack/framework';
 
 @Component({
   selector: 'ss-persons-index',
@@ -16,6 +17,7 @@ import { EntityAction, Field } from '@skysmack/ng-ui';
 export class PersonsIndexComponent extends DocumentRecordIndexComponent<PersonsAppState, Person, number> implements OnInit {
 
   public fields: Field[];
+
   public entityActions: EntityAction[] = [
     new EntityAction().asUrlAction('edit', 'Edit', 'edit'),
     new EntityAction().asEventAction('Delete', this.delete, 'delete', this)
@@ -38,5 +40,15 @@ export class PersonsIndexComponent extends DocumentRecordIndexComponent<PersonsA
     super.ngOnInit();
     this.title.setTitle(this.packagePath);
     this.fields = this.fieldsConfig.getStaticFields();
+  }
+
+  public sortChanged(displayColumn: DisplayColumn) {
+    this.pagedQuery.sort.remove(displayColumn.fieldKey);
+    this.nextPageNumber = 1;
+    this.currentPageNumber = 1;
+    if (displayColumn.sortOrder !== undefined) {
+      this.pagedQuery.sort.add(displayColumn.fieldKey, displayColumn.sortOrder);
+    }
+    this.requestPage(true);
   }
 }
