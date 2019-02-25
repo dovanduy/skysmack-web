@@ -49,4 +49,8 @@
 
   <ss-time-field [fh]="fh" [field]="field" [fields]="fields" [rules]="rules"
     *ngSwitchCase="fieldTypeConstants.TimeField"></ss-time-field>
+
+  <ss-validators-field [fh]="fh" [field]="field" [fields]="fields" [rules]="rules"
+    *ngSwitchCase="fieldTypeConstants.ValidatorsField">
+  </ss-validators-field>
 </div>

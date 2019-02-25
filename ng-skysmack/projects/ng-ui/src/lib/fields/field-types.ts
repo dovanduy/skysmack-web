@@ -18,4 +18,5 @@ export enum FieldTypes {
     RecurringExpressionField,
     SelectField,
     TimeField,
+    ValidatorsField
 }

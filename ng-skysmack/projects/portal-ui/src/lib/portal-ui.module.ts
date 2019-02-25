@@ -53,6 +53,7 @@ import { IsAnonymousDirective } from './autentication/is-anonymous.directive';
 import { NgNotifications } from './notifications/ng-notifications';
 import { RecordsContainerComponent } from './components/common/records-container/records-container.component';
 import { AvailablePermissionsFieldComponent } from './components/fields/components/available-permissions-field/available-permissions-field.component';
+import { ValidatorsFieldModule } from './components/fields/components/validators-field/validators-field.module';
 
 @NgModule({
   imports: [
@@ -66,6 +67,7 @@ import { AvailablePermissionsFieldComponent } from './components/fields/componen
       useFactory: adapterFactory
     }),
     RecurringExpressionFieldModule,
+    ValidatorsFieldModule,
     MaterialModule // Must come after BrowserAnimationsModule
   ],
   providers: [
@@ -158,6 +160,7 @@ import { AvailablePermissionsFieldComponent } from './components/fields/componen
     LimitedStringFieldComponent,
     PasswordFieldComponent,
     RecurringExpressionFieldModule,
+    ValidatorsFieldModule,
     SelectFieldComponent,
     StringFieldComponent,
     TimeFieldComponent,
