@@ -4,7 +4,7 @@ import { RecordActionsBase } from '@skysmack/redux';
 import { NgRedux } from '@angular-redux/store';
 import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { LocalObject, LocalPage, PagedQuery, LoadingState, hasValue, StrIndex, LocalPageTypes, linq, DisplayColumn } from '@skysmack/framework';
-import { Observable, BehaviorSubject, combineLatest } from 'rxjs';
+import { Observable, BehaviorSubject, combineLatest, of } from 'rxjs';
 import { NgRecordReduxStore } from '@skysmack/ng-redux';
 import { OnInit } from '@angular/core';
 import { Record } from '@skysmack/framework';
@@ -17,7 +17,7 @@ export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey>
     public pagedEntities$: Observable<LocalObject<TRecord, TKey>[]>;
     public pagedQuery = new PagedQuery();
 
-    public fields: Field[];
+    public fields$: Observable<Field[]>;
 
     public nextPageNumber = 1;
     public nextPageSize = this.pagedQuery.pageSize;
@@ -73,7 +73,7 @@ export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey>
     }
 
     protected setFields() {
-        this.fields = this.fieldsConfig ? this.fieldsConfig.getStaticFields() : [];
+        this.fields$ = of(this.fieldsConfig ? this.fieldsConfig.getStaticFields() : []);
     }
 
     protected delete(value: LocalObject<TRecord, TKey>, _this: RecordIndexComponent<any, any, any>) {

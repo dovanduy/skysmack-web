@@ -47,6 +47,11 @@ export class Field {
      */
     public showColumn = false;
 
+    /**
+     * Whether this field is dynamically created (e.g. not a static field).
+     */
+    public dynamicField = false;
+
     constructor(values: Field) {
         Object.assign(this, values);
     }

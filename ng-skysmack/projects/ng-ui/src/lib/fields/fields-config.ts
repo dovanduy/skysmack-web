@@ -39,6 +39,8 @@ export abstract class FieldsConfig<TRecord extends Record<TKey>, TKey, TDependen
                         label: dynamicField.object.display,
                         placeholder: dynamicField.object.display,
                         order: 4,
+                        showColumn: true,
+                        dynamicField: true
                     } as Field);
                 })
             ].sort((a, b) => a.order - b.order);

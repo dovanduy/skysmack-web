@@ -9,7 +9,8 @@
       </ng-container>
       <!-- Text -->
       <div style="margin-right: 10px; font-weight: 900;">
-        {{ column.translationString | translate }}
+        <ng-container *ngIf="!column.dynamicFieldName">{{ column.translationString | translate }}</ng-container>
+        <ng-container *ngIf="column.dynamicFieldName">{{ column.dynamicFieldName }}</ng-container>
       </div>
     </div>
   </mat-card-header>

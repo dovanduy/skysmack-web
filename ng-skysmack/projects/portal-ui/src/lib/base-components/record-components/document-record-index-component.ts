@@ -7,6 +7,7 @@ import { Record } from '@skysmack/framework';
 import { RecordIndexComponent } from './record-index-component';
 import { NgDocumentRecordReduxStore } from '@skysmack/ng-redux';
 import { FieldsConfig } from '@skysmack/ng-ui';
+import { map } from 'rxjs/operators';
 
 export class DocumentRecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey> extends RecordIndexComponent<TAppState, TRecord, TKey> implements OnInit {
 
@@ -24,5 +25,13 @@ export class DocumentRecordIndexComponent<TAppState, TRecord extends Record<TKey
     ngOnInit() {
         super.ngOnInit();
         this.actions.getFields(this.packagePath);
+        this.setFields();
+    }
+
+
+    protected setFields() {
+        this.fields$ = this.store.getFields(this.packagePath).pipe(
+            map(dynamicFields => this.fieldsConfig ? this.fieldsConfig.getFields(undefined, dynamicFields, this.fieldsConfig.getStaticFields()) : [])
+        );
     }
 }
