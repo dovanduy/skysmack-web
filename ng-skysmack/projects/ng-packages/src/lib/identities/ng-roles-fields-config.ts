@@ -10,7 +10,7 @@ export interface NgRoleFormDependencies {
 }
 
 @Injectable({ providedIn: 'root' })
-export class NgRolesFieldsConfig extends FieldsConfig<Role, NgRoleFormDependencies> {
+export class NgRolesFieldsConfig extends FieldsConfig<Role, number, NgRoleFormDependencies> {
     public validation = new NgRolesValidation();
 
     public formRules: FormRule[] = [];

@@ -10,7 +10,7 @@ export interface NgSetPasswordFormDependencies {
 }
 
 @Injectable({ providedIn: 'root' })
-export class NgSetPasswordFieldsConfig extends FieldsConfig<User, NgSetPasswordFormDependencies> {
+export class NgSetPasswordFieldsConfig extends FieldsConfig<User, number, NgSetPasswordFormDependencies> {
     public validation = new NgSetPasswordValidation();
     public formRules: FormRule[] = [];
 

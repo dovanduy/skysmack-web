@@ -12,7 +12,7 @@ export interface NgAccessPolicyRuleFormDependencies {
 }
 
 @Injectable({ providedIn: 'root' })
-export class NgAccessPolicyRulesFieldsConfig extends FieldsConfig<AccessPolicyRule, NgAccessPolicyRuleFormDependencies> {
+export class NgAccessPolicyRulesFieldsConfig extends FieldsConfig<AccessPolicyRule, number, NgAccessPolicyRuleFormDependencies> {
     public validation = new AccessPolicyRulesValidation();
 
     public formRules: FormRule[] = [];

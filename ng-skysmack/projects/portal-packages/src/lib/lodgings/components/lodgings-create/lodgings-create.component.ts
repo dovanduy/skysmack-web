@@ -48,7 +48,7 @@ export class LodgingsCreateComponent extends DocumentRecordFormComponent<Lodging
       map(values => {
         const dynamicFields = values[0];
         const availableLodgingTypes = values[1];
-        return this.getFields(undefined, dynamicFields, { availableLodgingTypes });
+        return this.fieldsConfig.getFields(undefined, dynamicFields, { availableLodgingTypes });
       })
     ).subscribe(fields => this.fields = fields));
   }

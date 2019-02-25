@@ -2,14 +2,14 @@ import { BaseComponent } from '../base-component';
 import { Router, ActivatedRoute } from '@angular/router';
 import { RecordActionsBase } from '@skysmack/redux';
 import { NgRedux } from '@angular-redux/store';
-import { NgSkysmackStore, NgPersonsFieldsConfig } from '@skysmack/ng-packages';
+import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { LocalObject, LocalPage, PagedQuery, LoadingState, hasValue, StrIndex, LocalPageTypes, linq, DisplayColumn } from '@skysmack/framework';
 import { Observable, BehaviorSubject, combineLatest } from 'rxjs';
 import { NgRecordReduxStore } from '@skysmack/ng-redux';
 import { OnInit } from '@angular/core';
 import { Record } from '@skysmack/framework';
 import { map } from 'rxjs/operators';
-import { Field } from '@skysmack/ng-ui';
+import { Field, FieldsConfig } from '@skysmack/ng-ui';
 
 export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey> extends BaseComponent<TAppState, TKey> implements OnInit {
     public entities$: Observable<LocalObject<TRecord, TKey>[]>;
@@ -33,7 +33,7 @@ export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey>
         public actions: RecordActionsBase<TAppState, NgRedux<TAppState>>,
         public skysmackStore: NgSkysmackStore,
         public store: NgRecordReduxStore<TAppState, TRecord, TKey>,
-        public fieldsConfig?: NgPersonsFieldsConfig
+        public fieldsConfig?: FieldsConfig<TRecord, TKey, any>
     ) {
         super(router, activatedRoute, skysmackStore);
     }
@@ -44,7 +44,7 @@ export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey>
         this.requestPage(true);
         this.loadPages();
         this.getPagedEntities();
-        this.fields = this.fieldsConfig ? this.fieldsConfig.getStaticFields() : [];
+        this.setFields();
     }
 
     public actionEvent(event: { action: Function, value: LocalObject<TRecord, TKey>, _this: any }) {
@@ -70,6 +70,10 @@ export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey>
             this.pagedQuery.sort.add(displayColumn.fieldKey, displayColumn.sortOrder);
         }
         this.requestPage(true);
+    }
+
+    protected setFields() {
+        this.fields = this.fieldsConfig ? this.fieldsConfig.getStaticFields() : [];
     }
 
     protected delete(value: LocalObject<TRecord, TKey>, _this: RecordIndexComponent<any, any, any>) {

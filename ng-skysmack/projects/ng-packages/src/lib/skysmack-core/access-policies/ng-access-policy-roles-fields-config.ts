@@ -15,7 +15,7 @@ export interface NgAccessPolicyRoleFormDependencies {
 }
 
 @Injectable({ providedIn: 'root' })
-export class NgAccessPolicyRolesFieldsConfig extends FieldsConfig<AccessPolicyRole, NgAccessPolicyRoleFormDependencies> {
+export class NgAccessPolicyRolesFieldsConfig extends FieldsConfig<AccessPolicyRole, number, NgAccessPolicyRoleFormDependencies> {
     public validation = new AccessPolicyRolesValidation();
 
     public formRules: FormRule[] = [];

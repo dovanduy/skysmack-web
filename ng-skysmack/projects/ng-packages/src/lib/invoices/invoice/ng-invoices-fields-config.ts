@@ -13,7 +13,7 @@ export interface NgInvoiceFormDependencies {
 }
 
 @Injectable({ providedIn: 'root' })
-export class NgInvoicesFieldsConfig extends FieldsConfig<Invoice, NgInvoiceFormDependencies> {
+export class NgInvoicesFieldsConfig extends FieldsConfig<Invoice, number, NgInvoiceFormDependencies> {
     public validation = new NgInvoicesValidation();
 
     public formRules: FormRule[] = [];

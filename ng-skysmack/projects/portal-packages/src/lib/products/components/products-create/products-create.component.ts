@@ -49,7 +49,7 @@ export class ProductsCreateComponent extends DocumentRecordFormComponent<Product
       map(values => {
         const dynamicFields = values[0];
         const availableProductTypes = values[1];
-        return this.getFields(undefined, dynamicFields, { availableProductTypes });
+        return this.fieldsConfig.getFields(undefined, dynamicFields, { availableProductTypes });
       })
     ).subscribe(fields => this.fields = fields));
   }

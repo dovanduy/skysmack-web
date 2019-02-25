@@ -14,7 +14,7 @@ export interface NgTerminalFormDependencies {
 }
 
 @Injectable({ providedIn: 'root' })
-export class NgTerminalsFieldsConfig extends FieldsConfig<Terminal, NgTerminalFormDependencies> {
+export class NgTerminalsFieldsConfig extends FieldsConfig<Terminal, number, NgTerminalFormDependencies> {
     public validation = new NgTerminalsValidation();
 
     public formRules: FormRule[] = [

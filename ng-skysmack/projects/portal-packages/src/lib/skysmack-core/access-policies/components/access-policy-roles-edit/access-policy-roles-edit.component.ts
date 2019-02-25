@@ -54,7 +54,7 @@ export class AccessPolicyRolesEditComponent extends RecordFormComponent<AccessPo
         const availableAccessPolicyRules = values[1];
         const availableRoles = values[2];
         this.selectedEntity = entity;
-        return this.getFields(entity, undefined, { availableAccessPolicyRules, availableRoles });
+        return this.fieldsConfig.getFields(entity, undefined, { availableAccessPolicyRules, availableRoles });
       })
     ).subscribe(fields => this.fields = fields));
   }

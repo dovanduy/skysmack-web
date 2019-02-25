@@ -50,7 +50,7 @@ export class AccessPolicyRolesCreateComponent extends RecordFormComponent<Access
       map(values => {
         const availableAccessPolicyRules = values[0];
         const availableRoles = values[1];
-        return this.getFields(undefined, undefined, { availableAccessPolicyRules, availableRoles });
+        return this.fieldsConfig.getFields(undefined, undefined, { availableAccessPolicyRules, availableRoles });
       })
     ).subscribe(fields => this.fields = fields));
   }

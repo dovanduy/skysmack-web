@@ -10,7 +10,7 @@ export interface NgLodgingFormDependencies {
 }
 
 @Injectable({ providedIn: 'root' })
-export class NgLodgingsFieldsConfig extends FieldsConfig<Lodging, NgLodgingFormDependencies> {
+export class NgLodgingsFieldsConfig extends FieldsConfig<Lodging, number, NgLodgingFormDependencies> {
     public validation = new NgLodgingsValidation();
 
     public formRules: FormRule[] = [];

@@ -20,7 +20,7 @@ export class DocumentRecordFormComponent<TAppState, TRecord extends Record<TKey>
         public actions: DocumentRecordActionsBase<TAppState, NgRedux<TAppState>>,
         public skysmackStore: NgSkysmackStore,
         public store: NgDocumentRecordReduxStore<TAppState, TRecord, TKey>,
-        public fieldsConfig: FieldsConfig<TRecord, TDependencies>
+        public fieldsConfig: FieldsConfig<TRecord, TKey, TDependencies>
     ) {
         super(router, activatedRoute, editorNavService, actions, skysmackStore, store, fieldsConfig);
     }
@@ -39,7 +39,7 @@ export class DocumentRecordFormComponent<TAppState, TRecord extends Record<TKey>
                 map(values => {
                     const fields = values[0];
                     this.editorItem = values[1] as LocalObject<TRecord, TKey>;
-                    this.fields = this.getFields(this.editorItem, fields);
+                    this.fields = this.fieldsConfig.getFields(this.editorItem, fields);
                 })
             ).subscribe());
     }
@@ -56,7 +56,7 @@ export class DocumentRecordFormComponent<TAppState, TRecord extends Record<TKey>
                     this.editorItem = values[1] as LocalObject<TRecord, TKey>;
                     this.editorItem ? this.selectedEntity = this.editorItem : this.selectedEntity = entity;
 
-                    this.fields = this.getFields(this.selectedEntity, fields);
+                    this.fields = this.fieldsConfig.getFields(this.selectedEntity, fields);
                 })
             ).subscribe());
     }

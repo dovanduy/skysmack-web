@@ -48,7 +48,7 @@ export class AccessPolicyPermissionsCreateComponent extends RecordFormComponent<
       map(values => {
         const installedPackages = values[0];
         const availableAccessPolicyRules = values[1];
-        return this.getFields(undefined, undefined, { installedPackages, availableAccessPolicyRules });
+        return this.fieldsConfig.getFields(undefined, undefined, { installedPackages, availableAccessPolicyRules });
       })
     ).subscribe(fields => this.fields = fields));
   }

@@ -1,10 +1,9 @@
 import { Router, ActivatedRoute } from '@angular/router';
 import { BaseComponent } from './base-component';
 import { Field } from '@skysmack/ng-ui';
-import { LocalObject, Record, toLocalObject, LocalObjectStatus, FieldSchemaViewModel } from '@skysmack/framework';
+import { LocalObject, Record, toLocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { FieldsConfig } from '@skysmack/ng-ui';
 import { NgSkysmackStore } from '@skysmack/ng-packages';
-import { FieldTypes } from '@skysmack/ng-ui';
 import { FormHelper } from '@skysmack/ng-ui';
 import { RecordActionsBase } from '@skysmack/redux';
 import { NgRedux } from '@angular-redux/store';
@@ -27,38 +26,9 @@ export class FormBaseComponent<TAppState, TRecord extends Record<TKey>, TKey, TD
         public editorNavService: EditorNavService,
         public actions: RecordActionsBase<TAppState, NgRedux<TAppState>>,
         public redux: NgSkysmackStore,
-        public fieldsConfig: FieldsConfig<TRecord, TDependencies>,
+        public fieldsConfig: FieldsConfig<TRecord, TKey, TDependencies>,
     ) {
         super(router, activatedRoute, redux);
-    }
-
-    /**
-     * Gets all fields needed to create a form. Combines standard and dynamic fields into one array.
-     * @param entity Entity used for edit forms.
-     * @param dynamicFields Any dynamic fields added to the package.
-     * @param dependencies Any dependencies the form needs.
-     */
-    protected getFields(entity?: LocalObject<TRecord, TKey>, dynamicFields?: LocalObject<FieldSchemaViewModel, string>[], dependencies?: TDependencies): Field[] {
-        const fields = this.fieldsConfig.getStaticFields(entity, dependencies);
-        if (dynamicFields) {
-            const returnfields = [
-                ...fields,
-                ...dynamicFields.map(dynamicField => {
-                    return new Field({
-                        fieldType: Number(FieldTypes[dynamicField.object.type]),
-                        value: entity ? entity.object[dynamicField.object.key] : undefined,
-                        key: dynamicField.object.key,
-                        label: dynamicField.object.display,
-                        placeholder: dynamicField.object.display,
-                        order: 4,
-                    } as Field);
-                })
-            ].sort((a, b) => a.order - b.order);
-
-            return returnfields;
-        } else {
-            return fields.sort((a, b) => a.order - b.order);
-        }
     }
 
     /**

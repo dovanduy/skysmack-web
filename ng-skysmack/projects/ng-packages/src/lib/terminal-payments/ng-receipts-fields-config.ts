@@ -13,7 +13,7 @@ export interface NgReceiptFormDependencies {
 }
 
 @Injectable({ providedIn: 'root' })
-export class NgReceiptsFieldsConfig extends FieldsConfig<Receipt, NgReceiptFormDependencies> {
+export class NgReceiptsFieldsConfig extends FieldsConfig<Receipt, number, NgReceiptFormDependencies> {
     public validation = new NgReceiptsValidation();
 
     public formRules: FormRule[] = [];

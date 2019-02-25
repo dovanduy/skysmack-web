@@ -40,7 +40,7 @@ export class RecurringAssignmentsCreateComponent extends RecordFormComponent<Rec
     ).pipe(
       map(values => {
         const availableRecurringAssignments = values[0];
-        return this.getFields(undefined, undefined, { availableRecurringAssignments });
+        return this.fieldsConfig.getFields(undefined, undefined, { availableRecurringAssignments });
       })
     ).subscribe(fields => this.fields = fields));
   }

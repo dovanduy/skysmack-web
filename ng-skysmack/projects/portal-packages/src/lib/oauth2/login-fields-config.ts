@@ -5,7 +5,7 @@ import { LoginValidation } from './login-validation';
 import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
 
 @Injectable({ providedIn: 'root' })
-export class LoginFieldsConfig extends FieldsConfig<any, any> {
+export class LoginFieldsConfig extends FieldsConfig<any, any, any> {
     public validation = new LoginValidation();
 
     public formRules: FormRule[] = [];

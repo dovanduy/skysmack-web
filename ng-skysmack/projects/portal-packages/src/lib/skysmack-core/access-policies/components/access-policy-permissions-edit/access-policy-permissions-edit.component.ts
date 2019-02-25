@@ -51,7 +51,7 @@ export class AccessPolicyPermissionsEditComponent extends RecordFormComponent<Ac
         const installedPackages = values[1];
         const availableAccessPolicyRules = values[2];
         this.selectedEntity = entity;
-        return this.getFields(entity, undefined, { installedPackages, availableAccessPolicyRules });
+        return this.fieldsConfig.getFields(entity, undefined, { installedPackages, availableAccessPolicyRules });
       })
     ).subscribe(fields => this.fields = fields));
   }

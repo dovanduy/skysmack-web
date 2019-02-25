@@ -13,7 +13,7 @@ export interface NgBasketFormDependencies {
 }
 
 @Injectable({ providedIn: 'root' })
-export class NgBasketsFieldsConfig extends FieldsConfig<Basket, NgBasketFormDependencies> {
+export class NgBasketsFieldsConfig extends FieldsConfig<Basket, number, NgBasketFormDependencies> {
     public validation = new BasketsValidation();
 
     public formRules: FormRule[] = [];

@@ -59,7 +59,7 @@ export class LodgingsReservationsCreateComponent extends RecordFormComponent<Lod
         const availableLodgings = values[0];
         const availableLodgingTypes = values[1];
 
-        return this.getFields(undefined, undefined, { availableLodgings, availableLodgingTypes });
+        return this.fieldsConfig.getFields(undefined, undefined, { availableLodgings, availableLodgingTypes });
       })
     ).subscribe(fields => this.fields = fields));
   }

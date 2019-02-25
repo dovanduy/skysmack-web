@@ -38,7 +38,7 @@ export class UsersEditComponent extends RecordFormComponent<UsersAppState, User,
       map(entity => {
         this.selectedEntity = entity;
         this.fieldsConfig.mode = 'edit';
-        return this.getFields(entity);
+        return this.fieldsConfig.getFields(entity);
       })
     ).subscribe(fields => this.fields = fields));
   }

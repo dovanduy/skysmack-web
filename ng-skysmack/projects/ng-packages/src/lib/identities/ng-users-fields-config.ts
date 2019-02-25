@@ -10,7 +10,7 @@ export interface NgUserFormDependencies {
 }
 
 @Injectable({ providedIn: 'root' })
-export class NgUsersFieldsConfig extends FieldsConfig<User, NgUserFormDependencies> {
+export class NgUsersFieldsConfig extends FieldsConfig<User, number, NgUserFormDependencies> {
     public validation = new NgUsersValidation();
 
     public formRules: FormRule[] = [];

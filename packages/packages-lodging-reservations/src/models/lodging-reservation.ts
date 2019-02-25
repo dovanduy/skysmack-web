@@ -2,7 +2,6 @@ import { Record } from "@skysmack/framework";
 import { Stay } from './stay';
 
 export class LodgingReservation extends Record<number> {
-    public id: number;
     public lodgingTypeId: number;
     public allocatedLodgingId?: number;
     public checkIn: Date;
