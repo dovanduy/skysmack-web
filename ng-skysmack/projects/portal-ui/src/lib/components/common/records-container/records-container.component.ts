@@ -36,7 +36,9 @@ export class RecordsContainerComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     // Set display columns
-    this.fields$.subscribe(fields => this.displayColumns = fields.map(field => this.displayColumnFromField(field)).filter(column => column.show))
+    this.subscriptionHandler.register(this.fields$.subscribe(fields => {
+      this.displayColumns = fields.map(field => this.displayColumnFromField(field)).filter(column => column.show);
+    }));
 
     // Set entities
     this.subscriptionHandler.register(this.entities$.pipe(
@@ -51,12 +53,17 @@ export class RecordsContainerComponent implements OnInit, OnDestroy {
   }
 
   public displayColumnFromField(field: Field) {
-    return new DisplayColumn({
-      fieldKey: field.key,
-      dynamicFieldName: field.dynamicField ? field.label : undefined,
-      translationString: 'PERSONS.FORM.LABELS.' + field.key.toUpperCase(),
-      show: field.showColumn
-    });
+    const foundColumn = this.displayColumns ? this.displayColumns.find(column => column.fieldKey === field.key) : undefined;
+    if (!foundColumn) {
+      return new DisplayColumn({
+        fieldKey: field.key,
+        dynamicFieldName: field.dynamicField ? field.label : undefined,
+        translationString: 'PERSONS.FORM.LABELS.' + field.key.toUpperCase(),
+        show: field.showColumn
+      });
+    } else {
+      return foundColumn;
+    }
   }
 
   public runCancelAction(entity: LocalObject<any, any>) {

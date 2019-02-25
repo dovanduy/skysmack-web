@@ -28,9 +28,9 @@ export class DocumentRecordIndexComponent<TAppState, TRecord extends Record<TKey
         this.setFields();
     }
 
-
     protected setFields() {
         this.fields$ = this.store.getFields(this.packagePath).pipe(
+            // TODO: Remove fieldsConfig check when records container is used everywhere
             map(dynamicFields => this.fieldsConfig ? this.fieldsConfig.getFields(undefined, dynamicFields, this.fieldsConfig.getStaticFields()) : [])
         );
     }
