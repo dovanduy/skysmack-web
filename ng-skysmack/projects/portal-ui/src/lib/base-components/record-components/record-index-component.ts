@@ -2,19 +2,22 @@ import { BaseComponent } from '../base-component';
 import { Router, ActivatedRoute } from '@angular/router';
 import { RecordActionsBase } from '@skysmack/redux';
 import { NgRedux } from '@angular-redux/store';
-import { NgSkysmackStore } from '@skysmack/ng-packages';
-import { LocalObject, LocalPage, PagedQuery, LoadingState, hasValue, StrIndex, LocalPageTypes, linq } from '@skysmack/framework';
+import { NgSkysmackStore, NgPersonsFieldsConfig } from '@skysmack/ng-packages';
+import { LocalObject, LocalPage, PagedQuery, LoadingState, hasValue, StrIndex, LocalPageTypes, linq, DisplayColumn } from '@skysmack/framework';
 import { Observable, BehaviorSubject, combineLatest } from 'rxjs';
 import { NgRecordReduxStore } from '@skysmack/ng-redux';
 import { OnInit } from '@angular/core';
 import { Record } from '@skysmack/framework';
 import { map } from 'rxjs/operators';
+import { Field } from '@skysmack/ng-ui';
 
 export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey> extends BaseComponent<TAppState, TKey> implements OnInit {
     public entities$: Observable<LocalObject<TRecord, TKey>[]>;
     public pages$: BehaviorSubject<LocalPage<TKey>[]> = new BehaviorSubject<LocalPage<TKey>[]>([]);
     public pagedEntities$: Observable<LocalObject<TRecord, TKey>[]>;
     public pagedQuery = new PagedQuery();
+
+    public fields: Field[];
 
     public nextPageNumber = 1;
     public nextPageSize = this.pagedQuery.pageSize;
@@ -29,7 +32,8 @@ export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey>
         public activatedRoute: ActivatedRoute,
         public actions: RecordActionsBase<TAppState, NgRedux<TAppState>>,
         public skysmackStore: NgSkysmackStore,
-        public store: NgRecordReduxStore<TAppState, TRecord, TKey>
+        public store: NgRecordReduxStore<TAppState, TRecord, TKey>,
+        public fieldsConfig?: NgPersonsFieldsConfig
     ) {
         super(router, activatedRoute, skysmackStore);
     }
@@ -40,6 +44,7 @@ export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey>
         this.requestPage(true);
         this.loadPages();
         this.getPagedEntities();
+        this.fields = this.fieldsConfig ? this.fieldsConfig.getStaticFields() : [];
     }
 
     public actionEvent(event: { action: Function, value: LocalObject<TRecord, TKey>, _this: any }) {
@@ -55,6 +60,16 @@ export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey>
 
             this.actions.getPaged(this.packagePath, this.pagedQuery);
         }
+    }
+
+    public sortChanged(displayColumn: DisplayColumn) {
+        this.pagedQuery.sort.remove(displayColumn.fieldKey);
+        this.nextPageNumber = 1;
+        this.currentPageNumber = 1;
+        if (displayColumn.sortOrder !== undefined) {
+            this.pagedQuery.sort.add(displayColumn.fieldKey, displayColumn.sortOrder);
+        }
+        this.requestPage(true);
     }
 
     protected delete(value: LocalObject<TRecord, TKey>, _this: RecordIndexComponent<any, any, any>) {
@@ -75,8 +90,7 @@ export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey>
                 if (queryDictionary) {
                     const sort = this.pagedQuery.sort.build();
                     const pages = queryDictionary.pages[this.pagedQuery.pageSize + ':' + sort];
-                    // const pageKeys = Object.keys(pages);
-                    const lastPageKey = this.currentPageNumber; //Number(pageKeys[pageKeys.length - 1]);
+                    const lastPageKey = this.currentPageNumber;
                     const lastPage: LocalPage<TKey> = pages[lastPageKey];
 
                     if (lastPage && lastPage.loadingState === LoadingState.OK) {

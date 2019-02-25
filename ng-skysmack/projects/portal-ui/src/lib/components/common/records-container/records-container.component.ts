@@ -41,7 +41,6 @@ export class RecordsContainerComponent implements OnInit, OnDestroy {
     // Set entities
     this.subscriptionHandler.register(this.entities$.pipe(
       map(entities => {
-        console.log(entities.length);
         this.entities = entities;
         this.loadedEntitiesCount = entities.length;
       })).subscribe());
@@ -75,8 +74,6 @@ export class RecordsContainerComponent implements OnInit, OnDestroy {
 
   public setSortOrder(displayColumn: DisplayColumn) {
     this.entityList.scrollToIndex(0);
-    this.entities = [];
-    this.loadedEntitiesCount = undefined;
     switch (displayColumn.sortOrder) {
       case true: {
         displayColumn.sortOrder = false;
