@@ -92,21 +92,33 @@ export class ValidatorsFieldComponent extends FieldBaseComponent implements OnIn
     this.currentValidator = new FieldValidator({});
   }
 
-  public done() {
-    this.currentValidator.name = this.selectedValidatorType;
-    this.addedValidators.push(this.currentValidator);
-    this.availableValidators = this.availableValidators.filter(availableValidator => availableValidator.name !== this.currentValidator.name);
-    this.setFieldValue(this.addedValidators);
-    this.currentValidator = undefined;
+  public setParameters(parameters: StrIndex<any>) {
+    this.currentValidator.parameters = parameters;
   }
 
-  public undo(validator: FieldValidator) {
+  public done() {
+    if (this.selectedValidatorType) {
+      // Set
+      this.currentValidator.name = this.selectedValidatorType;
+      this.addedValidators.push(this.currentValidator);
+      this.setFieldValue(this.addedValidators);
+
+      // Update
+      this.availableValidators = this.availableValidators.filter(availableValidator => availableValidator.name !== this.currentValidator.name);
+
+      // Clear
+      this.selectedValidatorType = undefined;
+      this.currentValidator = undefined;
+    }
+  }
+
+  public undo() {
+    this.selectedValidatorType = undefined;
     this.currentValidator = undefined;
   }
 
   public removeValidator(selectedValidator: FieldValidator) {
     this.addedValidators = this.addedValidators.filter(validator => validator.name !== selectedValidator.name);
     this.setFieldValue(this.addedValidators.length === 0 ? null : this.addedValidators);
-    // this.availableValidators.push(new FieldValidator({ name: selectedValidator.name }));
   }
 }

@@ -18,7 +18,7 @@
     </mat-form-field>
 
     <ng-container [ngSwitch]="selectedValidatorType">
-      <ss-range-validator *ngSwitchCase="'range'"></ss-range-validator>
+      <ss-range-validator (parameters)="setParameters($event)" *ngSwitchCase="'range'"></ss-range-validator>
       <ss-required-validator *ngSwitchCase="'required'"></ss-required-validator>
       <ng-container *ngSwitchDefault></ng-container>
     </ng-container>
