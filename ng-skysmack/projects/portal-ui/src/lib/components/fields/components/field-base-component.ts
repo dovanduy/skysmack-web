@@ -56,7 +56,7 @@ export class FieldBaseComponent implements OnInit, OnDestroy {
             }
         } else {
             console.log(`
-                Cannot find a field with the key ${fieldKey}. Check if:
+                Cannot find a field with the key ${fieldKey}. Check:
                 Is the key spelled correctly?
             `);
         }
