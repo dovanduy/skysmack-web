@@ -2,7 +2,7 @@
   <!-- Validator list -->
   <ng-container *ngIf="!currentValidator">
     <ng-container *ngFor="let validator of addedValidators">
-      {{ validator.type }}
+      {{ validator.name }}
       <i *ngIf="!currentValidator" class="material-icons" style="cursor:pointer;"
         (click)="removeValidator(validator)">delete</i>
       <br />
@@ -13,7 +13,7 @@
   <ng-container *ngIf="currentValidator">
     <mat-form-field>
       <mat-select placeholder="Please select a validator" [(value)]="selectedValidatorType">
-        <mat-option *ngFor="let opt of availableValidators" [value]="opt.value">{{opt.displayName}}</mat-option>
+        <mat-option *ngFor="let opt of availableValidators" [value]="opt.name">{{opt.name}}</mat-option>
       </mat-select>
     </mat-form-field>
 

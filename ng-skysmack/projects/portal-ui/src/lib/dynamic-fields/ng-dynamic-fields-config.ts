@@ -56,7 +56,7 @@ export class NgDynamicFieldsFieldsConfig {
 
             new SelectField({
                 fieldType: FieldTypes.ValidatorsField,
-                value: field ? field.object.validators : undefined,
+                value: field ? [field.object.validators] : undefined,
                 key: 'validators',
                 order: 4,
             } as SelectField),

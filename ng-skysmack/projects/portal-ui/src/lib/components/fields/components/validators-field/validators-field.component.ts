@@ -1,15 +1,16 @@
 import { Component, OnInit, Injector } from '@angular/core';
 import { FieldBaseComponent } from '../field-base-component';
 import { ActivatedRoute, Router } from '@angular/router';
-import { DynamicFieldRouteData, flatten, FieldValueProviderViewModel, LocalObject } from '@skysmack/framework';
+import { DynamicFieldRouteData, flatten, FieldValueProviderViewModel, LocalObject, StrIndex, log } from '@skysmack/framework';
 import { NgDocumentRecordReduxStore } from '@skysmack/ng-redux';
 import { map, switchMap, filter } from 'rxjs/operators';
+import { combineLatest } from 'rxjs';
 
 type ValidatorTypes = 'range' | 'required';
 
 class FieldValidator {
-  public type: ValidatorTypes;
-  public value: any;
+  public name: ValidatorTypes;
+  public parameters?: StrIndex<any>;
 
   constructor(values: Partial<FieldValidator>) {
     Object.assign(this, values);
@@ -28,7 +29,7 @@ export class ValidatorsFieldComponent extends FieldBaseComponent implements OnIn
   public selectedFieldType: string;
 
   // Possible validators to add.
-  public availableValidators: { value: string, displayName: string }[] = [];
+  public availableValidators: FieldValidator[] = [];
 
   // Current validator getting added.
   public selectedValidatorType: ValidatorTypes;
@@ -45,34 +46,46 @@ export class ValidatorsFieldComponent extends FieldBaseComponent implements OnIn
 
   ngOnInit() {
     super.ngOnInit();
-
     this.packagePath = this.router.url.split('/')[1];
 
-    this.subscriptions.push(this.fh.form.valueChanges.pipe(
+    // Get default values
+    this.addedValidators = this.getFieldValue() ? this.getFieldValue() : [];
+    this.selectedFieldType = this.getOtherFieldValue('type');
+
+    // Listen for form changes
+    const formValueChanged$ = this.fh.form.valueChanges.pipe(
       map(changes => {
+        // Listen for field type changes
         if (changes['type'] && this.selectedFieldType !== changes['type']) {
           this.selectedFieldType = changes['type'];
-          return true;
         }
-      }),
-      filter(x => x),
-      switchMap(() => this.activatedRoute.data),
-      map((data: DynamicFieldRouteData) => {
-        this.store = this.injector.get(data.storeToken);
-      }),
+        return changes;
+      })
+    );
+
+    const setAvailablValidators$ = this.activatedRoute.data.pipe(
+      map((data: DynamicFieldRouteData) => this.store = this.injector.get(data.storeToken)),
       switchMap(() => this.store.getAvailableFields(this.packagePath).pipe(
         flatten(),
+        // Create available validators
         filter((availableField: LocalObject<FieldValueProviderViewModel, string>) => availableField.object.name === this.selectedFieldType),
         map(selectedAvailableField => {
           this.availableValidators = Object.keys(selectedAvailableField.object.validators).map(key => {
-            return {
-              value: key,
-              displayName: key
-            };
+            return new FieldValidator({
+              name: key as ValidatorTypes
+            });
           });
+
+          // If a validator has already been added, remove it from available, as it should not be available twice.
+          this.availableValidators = this.availableValidators.filter(availableValidator => !this.addedValidators.find(addedValidator => addedValidator.name === availableValidator.name));
         })
       ))
-    ).subscribe());
+    );
+
+    // Set available validators on form change
+    this.subscriptions.push(formValueChanged$.pipe(switchMap(() => setAvailablValidators$)).subscribe());
+    // Set available validators on component startup
+    this.subscriptions.push(setAvailablValidators$.subscribe());
   }
 
   public addValidator() {
@@ -80,12 +93,10 @@ export class ValidatorsFieldComponent extends FieldBaseComponent implements OnIn
   }
 
   public done() {
-    this.currentValidator.type = this.selectedValidatorType;
+    this.currentValidator.name = this.selectedValidatorType;
     this.addedValidators.push(this.currentValidator);
-    this.availableValidators = this.availableValidators.filter(availableValidator => availableValidator.value !== this.currentValidator.type);
-    const validatorToAdd: { name: string, parameters?: {} } = { name: '' };
-    validatorToAdd.name = this.currentValidator.type;
-    this.setFieldValue([validatorToAdd]);
+    this.availableValidators = this.availableValidators.filter(availableValidator => availableValidator.name !== this.currentValidator.name);
+    this.setFieldValue(this.addedValidators);
     this.currentValidator = undefined;
   }
 
@@ -94,7 +105,8 @@ export class ValidatorsFieldComponent extends FieldBaseComponent implements OnIn
   }
 
   public removeValidator(selectedValidator: FieldValidator) {
-    this.addedValidators = this.addedValidators.filter(validator => validator.type !== selectedValidator.type);
-    this.availableValidators.push({ value: selectedValidator.type, displayName: selectedValidator.type });
+    this.addedValidators = this.addedValidators.filter(validator => validator.name !== selectedValidator.name);
+    this.setFieldValue(this.addedValidators.length === 0 ? null : this.addedValidators);
+    // this.availableValidators.push(new FieldValidator({ name: selectedValidator.name }));
   }
 }
