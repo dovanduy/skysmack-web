@@ -83,6 +83,9 @@ export class ValidatorsFieldComponent extends FieldBaseComponent implements OnIn
     this.currentValidator.type = this.selectedValidatorType;
     this.addedValidators.push(this.currentValidator);
     this.availableValidators = this.availableValidators.filter(availableValidator => availableValidator.value !== this.currentValidator.type);
+    const validatorToAdd: { name: string, parameters?: {} } = { name: '' };
+    validatorToAdd.name = this.currentValidator.type;
+    this.setFieldValue([validatorToAdd]);
     this.currentValidator = undefined;
   }
 
