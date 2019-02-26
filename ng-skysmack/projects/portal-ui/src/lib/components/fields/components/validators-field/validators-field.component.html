@@ -1,21 +1,34 @@
-<ng-container *ngIf="selectedType">
-  <ng-container *ngFor="let validator of addedValidators">
+<ng-container *ngIf="selectedFieldType">
+  <!-- Validator list -->
+  <ng-container *ngIf="!currentValidator">
+    <ng-container *ngFor="let validator of addedValidators">
+      {{ validator.type }}
+      <i *ngIf="!currentValidator" class="material-icons" style="cursor:pointer;"
+        (click)="removeValidator(validator)">delete</i>
+      <br />
+    </ng-container>
+  </ng-container>
 
+  <!-- Validator(s) "form" -->
+  <ng-container *ngIf="currentValidator">
     <mat-form-field>
-      <mat-select placeholder="Please select a validator" [(value)]="selectedValidator">
+      <mat-select placeholder="Please select a validator" [(value)]="selectedValidatorType">
         <mat-option *ngFor="let opt of availableValidators" [value]="opt.value">{{opt.displayName}}</mat-option>
       </mat-select>
     </mat-form-field>
 
-    <ng-container [ngSwitch]="selectedValidator">
+    <ng-container [ngSwitch]="selectedValidatorType">
       <ss-range-validator *ngSwitchCase="'range'"></ss-range-validator>
       <ss-required-validator *ngSwitchCase="'required'"></ss-required-validator>
       <ng-container *ngSwitchDefault></ng-container>
     </ng-container>
 
-    <i class="material-icons" style="color:red;cursor:pointer;" (click)="removeValidator()">delete</i>
-    <br />
+    <button mat-raised-button color="primary" type="button" (click)="done(currentValidator)">Done</button>
+    <button mat-raised-button color="danger" type="button" (click)="undo(currentValidator)">Undo</button>
   </ng-container>
 
-  <button mat-raised-button color="primary" type="button" (click)="addValidator()">+ Add validator</button>
+  <!-- Add validator -->
+  <button *ngIf="!currentValidator && availableValidators.length > 0" mat-raised-button color="primary" type="button"
+    (click)="addValidator()">+ Add
+    validator</button>
 </ng-container>

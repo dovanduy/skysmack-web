@@ -5,6 +5,17 @@ import { DynamicFieldRouteData, flatten, FieldValueProviderViewModel, LocalObjec
 import { NgDocumentRecordReduxStore } from '@skysmack/ng-redux';
 import { map, switchMap, filter } from 'rxjs/operators';
 
+type ValidatorTypes = 'range' | 'required';
+
+class FieldValidator {
+  public type: ValidatorTypes;
+  public value: any;
+
+  constructor(values: Partial<FieldValidator>) {
+    Object.assign(this, values);
+  }
+}
+
 @Component({
   selector: 'ss-validators-field',
   templateUrl: './validators-field.component.html',
@@ -17,13 +28,14 @@ export class ValidatorsFieldComponent extends FieldBaseComponent implements OnIn
   public selectedFieldType: string;
 
   // Possible validators to add.
-  public availableValidators = [];
+  public availableValidators: { value: string, displayName: string }[] = [];
 
   // Current validator getting added.
-  public selectedValidator: string;
+  public selectedValidatorType: ValidatorTypes;
+  public currentValidator: FieldValidator;
 
   // Validators added to the field
-  public addedValidators: any[] = [];
+  public addedValidators: FieldValidator[] = [];
 
   constructor(
     public injector: Injector,
@@ -50,11 +62,11 @@ export class ValidatorsFieldComponent extends FieldBaseComponent implements OnIn
       }),
       switchMap(() => this.store.getAvailableFields(this.packagePath).pipe(
         flatten(),
-        filter((availableField: LocalObject<FieldValueProviderViewModel, string>) => availableField.object.name === this.selectedType),
+        filter((availableField: LocalObject<FieldValueProviderViewModel, string>) => availableField.object.name === this.selectedFieldType),
         map(selectedAvailableField => {
           this.availableValidators = Object.keys(selectedAvailableField.object.validators).map(key => {
             return {
-              value: key, // selectedAvailableField.object.validators[key],
+              value: key,
               displayName: key
             };
           });
@@ -64,10 +76,22 @@ export class ValidatorsFieldComponent extends FieldBaseComponent implements OnIn
   }
 
   public addValidator() {
-    this.addedValidators.push('string');
+    this.currentValidator = new FieldValidator({});
   }
 
-  public removeValidator() {
-    this.addedValidators.pop();
+  public done() {
+    this.currentValidator.type = this.selectedValidatorType;
+    this.addedValidators.push(this.currentValidator);
+    this.availableValidators = this.availableValidators.filter(availableValidator => availableValidator.value !== this.currentValidator.type);
+    this.currentValidator = undefined;
+  }
+
+  public undo(validator: FieldValidator) {
+    this.currentValidator = undefined;
+  }
+
+  public removeValidator(selectedValidator: FieldValidator) {
+    this.addedValidators = this.addedValidators.filter(validator => validator.type !== selectedValidator.type);
+    this.availableValidators.push({ value: selectedValidator.type, displayName: selectedValidator.type });
   }
 }
