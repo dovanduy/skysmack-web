@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MaterialModule } from './../../../../material.module';
 import { ValidatorsFieldComponent } from './validators-field.component';
+import { RangeValidatorComponent } from './components/range-validator/range-validator.component';
+import { RequiredValidatorComponent } from './components/required-validator/required-validator.component';
 
 @NgModule({
   imports: [
@@ -11,7 +13,9 @@ import { ValidatorsFieldComponent } from './validators-field.component';
     MaterialModule
   ],
   declarations: [
-    ValidatorsFieldComponent
+    ValidatorsFieldComponent,
+    RangeValidatorComponent,
+    RequiredValidatorComponent
   ],
   exports: [ValidatorsFieldComponent]
 })

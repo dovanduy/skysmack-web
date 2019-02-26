@@ -1,11 +1,17 @@
 <ng-container *ngIf="selectedType">
-  <ng-container *ngFor="let validator of validators">
+  <ng-container *ngFor="let validator of addedValidators">
 
     <mat-form-field>
-      <mat-select placeholder="Please select a validator">
-        <mat-option *ngFor="let opt of validatorOptions" [value]="opt.value">{{opt.displayName}}</mat-option>
+      <mat-select placeholder="Please select a validator" [(value)]="selectedValidator">
+        <mat-option *ngFor="let opt of availableValidators" [value]="opt.value">{{opt.displayName}}</mat-option>
       </mat-select>
     </mat-form-field>
+
+    <ng-container [ngSwitch]="selectedValidator">
+      <ss-range-validator *ngSwitchCase="'range'"></ss-range-validator>
+      <ss-required-validator *ngSwitchCase="'required'"></ss-required-validator>
+      <ng-container *ngSwitchDefault></ng-container>
+    </ng-container>
 
     <i class="material-icons" style="color:red;cursor:pointer;" (click)="removeValidator()">delete</i>
     <br />

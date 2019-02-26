@@ -14,11 +14,16 @@ export class ValidatorsFieldComponent extends FieldBaseComponent implements OnIn
 
   public store: NgDocumentRecordReduxStore<any, any, any>;
   public packagePath: string;
-  public selectedType: string;
+  public selectedFieldType: string;
 
-  public validators: any[] = [];
+  // Possible validators to add.
+  public availableValidators = [];
 
-  public validatorOptions = [];
+  // Current validator getting added.
+  public selectedValidator: string;
+
+  // Validators added to the field
+  public addedValidators: any[] = [];
 
   constructor(
     public injector: Injector,
@@ -33,8 +38,8 @@ export class ValidatorsFieldComponent extends FieldBaseComponent implements OnIn
 
     this.subscriptions.push(this.fh.form.valueChanges.pipe(
       map(changes => {
-        if (changes['type'] && this.selectedType !== changes['type']) {
-          this.selectedType = changes['type'];
+        if (changes['type'] && this.selectedFieldType !== changes['type']) {
+          this.selectedFieldType = changes['type'];
           return true;
         }
       }),
@@ -47,9 +52,9 @@ export class ValidatorsFieldComponent extends FieldBaseComponent implements OnIn
         flatten(),
         filter((availableField: LocalObject<FieldValueProviderViewModel, string>) => availableField.object.name === this.selectedType),
         map(selectedAvailableField => {
-          this.validatorOptions = Object.keys(selectedAvailableField.object.validators).map(key => {
+          this.availableValidators = Object.keys(selectedAvailableField.object.validators).map(key => {
             return {
-              value: selectedAvailableField.object.validators[key],
+              value: key, // selectedAvailableField.object.validators[key],
               displayName: key
             };
           });
@@ -59,10 +64,10 @@ export class ValidatorsFieldComponent extends FieldBaseComponent implements OnIn
   }
 
   public addValidator() {
-    this.validators.push('string');
+    this.addedValidators.push('string');
   }
 
   public removeValidator() {
-    this.validators.pop();
+    this.addedValidators.pop();
   }
 }
