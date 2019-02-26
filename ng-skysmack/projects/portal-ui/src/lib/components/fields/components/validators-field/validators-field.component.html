@@ -1,13 +1,15 @@
-<ng-container *ngFor="let validator of validators">
+<ng-container *ngIf="selectedType">
+  <ng-container *ngFor="let validator of validators">
 
-  <mat-form-field>
-    <mat-select placeholder="Please select a validator">
-      <mat-option *ngFor="let opt of validatorOptions" [value]="opt.value">{{opt.displayName}}</mat-option>
-    </mat-select>
-  </mat-form-field>
+    <mat-form-field>
+      <mat-select placeholder="Please select a validator">
+        <mat-option *ngFor="let opt of validatorOptions" [value]="opt.value">{{opt.displayName}}</mat-option>
+      </mat-select>
+    </mat-form-field>
 
-  <i class="material-icons" style="color:red;cursor:pointer;" (click)="removeValidator()">delete</i>
-  <br />
+    <i class="material-icons" style="color:red;cursor:pointer;" (click)="removeValidator()">delete</i>
+    <br />
+  </ng-container>
+
+  <button mat-raised-button color="primary" type="button" (click)="addValidator()">+ Add validator</button>
 </ng-container>
-
-<button mat-raised-button color="primary" (click)="addValidator()">+ Add validator</button>
