@@ -54,26 +54,26 @@ export class NgDynamicFieldsFieldsConfig {
                 disabled: field ? true : false
             } as SelectField),
 
-            new SelectField({
+            new Field({
                 fieldType: FieldTypes.ValidatorsField,
                 value: field ? [field.object.validators] : undefined,
                 key: 'validators',
                 order: 4,
-            } as SelectField),
+            } as Field),
 
-            new SelectField({
-                fieldType: FieldTypes.SelectField,
+            new Field({
+                fieldType: FieldTypes.FieldPermissionField,
                 value: field ? field.object.writePermission : undefined,
                 key: 'writePermission',
                 order: 5,
-            } as SelectField),
+            } as Field),
 
-            new SelectField({
-                fieldType: FieldTypes.SelectField,
+            new Field({
+                fieldType: FieldTypes.FieldPermissionField,
                 value: field ? field.object.readPermission : undefined,
                 key: 'readPermission',
                 order: 6,
-            } as SelectField),
+            } as Field),
         ];
 
         return fields;

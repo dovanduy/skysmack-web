@@ -54,6 +54,7 @@ import { NgNotifications } from './notifications/ng-notifications';
 import { RecordsContainerComponent } from './components/common/records-container/records-container.component';
 import { AvailablePermissionsFieldComponent } from './components/fields/components/available-permissions-field/available-permissions-field.component';
 import { ValidatorsFieldModule } from './components/fields/components/validators-field/validators-field.module';
+import { FieldPermissionFieldComponent } from './components/fields/components/field-permission-field/field-permission-field.component';
 
 @NgModule({
   imports: [
@@ -120,6 +121,7 @@ import { ValidatorsFieldModule } from './components/fields/components/validators
     TimeFieldComponent,
     PackageDependenciesFieldComponent,
     AvailablePermissionsFieldComponent,
+    FieldPermissionFieldComponent,
     PageHeaderComponent,
     SpeedDialFabComponent
   ],
@@ -164,8 +166,9 @@ import { ValidatorsFieldModule } from './components/fields/components/validators
     SelectFieldComponent,
     StringFieldComponent,
     TimeFieldComponent,
-    PackageDependenciesFieldComponent,
     AvailablePermissionsFieldComponent,
+    FieldPermissionFieldComponent,
+    PackageDependenciesFieldComponent,
     SpeedDialFabComponent
   ]
 })

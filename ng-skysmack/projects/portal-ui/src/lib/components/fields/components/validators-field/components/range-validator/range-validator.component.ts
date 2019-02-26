@@ -14,6 +14,9 @@ export class RangeValidatorComponent implements OnInit {
   public set min(value: number) {
     this.rangeParams.minimum = value;
     this._min = value;
+    if (this.max < value) {
+      this.max = value;
+    }
     this.parameters.emit(this.rangeParams);
   }
 
@@ -24,6 +27,9 @@ export class RangeValidatorComponent implements OnInit {
   public set max(value: number) {
     this.rangeParams.maximum = value;
     this._max = value;
+    if (this.min > value) {
+      this.min = value;
+    }
     this.parameters.emit(this.rangeParams);
   }
 

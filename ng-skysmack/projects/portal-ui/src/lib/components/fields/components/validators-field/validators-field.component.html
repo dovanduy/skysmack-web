@@ -1,6 +1,7 @@
 <ng-container *ngIf="selectedFieldType">
   <!-- Validator list -->
   <ng-container *ngIf="!currentValidator">
+    <h4 *ngIf="addedValidators.length > 0">Validators</h4>
     <ng-container *ngFor="let validator of addedValidators">
       {{ validator.name }}
       <i *ngIf="!currentValidator" class="material-icons" style="cursor:pointer;"
@@ -23,8 +24,8 @@
       <ng-container *ngSwitchDefault></ng-container>
     </ng-container>
 
-    <button mat-raised-button color="primary" type="button" (click)="done(currentValidator)">Done</button>
-    <button mat-raised-button color="danger" type="button" (click)="undo(currentValidator)">Undo</button>
+    <button mat-raised-button color="primary" type="button" (click)="done()">Done</button>
+    <button mat-raised-button color="danger" type="button" (click)="undo()">Undo</button>
   </ng-container>
 
   <!-- Add validator -->

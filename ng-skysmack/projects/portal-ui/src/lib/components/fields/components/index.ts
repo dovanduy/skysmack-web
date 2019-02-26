@@ -10,9 +10,11 @@ export * from './limited-string-field/limited-string-field.component';
 export * from './password-field/password-field.component';
 export * from './available-permissions-field/available-permissions-field.component';
 export * from './package-dependencies-field/package-dependencies-field.component';
-export * from './recurring-expression-field';
+export * from './recurring-expression-field/index';
 export * from './select-field/select-field.component';
 export * from './string-field/string-field.component';
 export * from './time-field/time-field.component';
 export * from './field-base-component';
-export * from './validators-field';
+export * from './validators-field/index';
+export * from './field-permission-field/field-permission-field.component';
+
