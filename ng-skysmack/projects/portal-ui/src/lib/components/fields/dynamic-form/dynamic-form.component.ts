@@ -31,6 +31,10 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
     }, 0);
   }
 
+  public trackByFieldKey(field: Field) {
+    return field ? field.key : undefined;
+  }
+
   public createForm(): void {
     const formHelper = this.createFormHelper();
     this.disableFields(this.fields, formHelper);

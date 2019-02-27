@@ -2,7 +2,7 @@
 
 <form *ngIf="fh" [formGroup]="fh.form" (ngSubmit)="onSubmit()">
 
-  <ng-container *ngFor="let field of fields">
+  <ng-container *ngFor="let field of fields; trackBy: trackByFieldKey">
     <ss-dynamic-form-field [fh]="fh" [field]="field" [fields]="fields" [rules]="rules"></ss-dynamic-form-field>
   </ng-container>
 

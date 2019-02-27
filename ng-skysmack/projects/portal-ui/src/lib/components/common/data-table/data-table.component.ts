@@ -54,6 +54,10 @@ export class DataTableComponent implements OnDestroy, OnInit {
     this.subscriptionHandler.unsubscribe();
   }
 
+  public trackByLocalId(item: LocalObject<any, any>) {
+    return item ? item.localId : undefined;
+  }
+
   public initColumns() {
     if (this.displayCheckboxes) {
       this.allColumns.push('checkboxes');
