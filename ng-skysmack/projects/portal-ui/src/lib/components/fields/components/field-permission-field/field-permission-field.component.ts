@@ -32,13 +32,12 @@ export class FieldPermissionFieldComponent extends FieldBaseComponent implements
   }
   public set selectedAccessType(accessType: AccessTypes) {
     if (accessType === AccessTypes.authenticated) {
-      this.permission.roles = []
+      this.permission.roles = [];
     } else {
       this.permission.roles = undefined;
     }
     this.permission.access = accessType;
   }
-
 
   constructor(
     public rolesStore: NgRolesStore,
