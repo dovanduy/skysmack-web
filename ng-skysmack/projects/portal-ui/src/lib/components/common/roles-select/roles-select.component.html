@@ -1,3 +1,2 @@
-<p>
-  roles-select works!
-</p>
+<mat-checkbox *ngFor="let roleCheckBox of roleCheckBoxes; trackBy: trackByRoleId" [checked]="roleCheckBox.checked"
+  (click)="changeRoleInclusion(roleCheckBox)">{{ roleCheckBox.name }}</mat-checkbox>

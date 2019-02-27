@@ -39,6 +39,7 @@ export class RangeValidatorComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    this.parameters.emit(this.rangeParams);
   }
 
 }

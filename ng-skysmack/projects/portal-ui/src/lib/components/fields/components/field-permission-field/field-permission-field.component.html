@@ -12,6 +12,6 @@
 <ng-container *ngIf="selectedAccessType === 2">
   <mat-slide-toggle (click)="toggleIncludeRoles()">Include roles</mat-slide-toggle>
   <br />
-  <mat-checkbox *ngFor="let roleCheckBox of roleCheckBoxes; trackBy: trackByRoleId" [checked]="roleCheckBox.checked"
-    (click)="changeRoleInclusion(roleCheckBox)">{{ roleCheckBox.name }}</mat-checkbox>
+  <ss-roles-select [selectType]="'multiple'" [currentlySelectedIds]="permission.roles"
+    (selectIds)="selectedRoleIds($event)"></ss-roles-select>
 </ng-container>
