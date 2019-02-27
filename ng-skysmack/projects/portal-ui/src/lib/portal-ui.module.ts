@@ -55,7 +55,7 @@ import { RecordsContainerComponent } from './components/common/records-container
 import { AvailablePermissionsFieldComponent } from './components/fields/components/available-permissions-field/available-permissions-field.component';
 import { ValidatorsFieldModule } from './components/fields/components/validators-field/validators-field.module';
 import { FieldPermissionFieldComponent } from './components/fields/components/field-permission-field/field-permission-field.component';
-import { RolesSelectFieldComponent } from './components/fields/components/roles-select-field/roles-select-field.component';
+import { RolesSelectComponent } from './components/common/roles-select/roles-select.component';
 
 @NgModule({
   imports: [
@@ -100,6 +100,7 @@ import { RolesSelectFieldComponent } from './components/fields/components/roles-
     NavBarComponent,
     QueueComponent,
     RecordsContainerComponent,
+    RolesSelectComponent,
     // Crud
     ContainerComponent,
     CardBodyComponent,
@@ -124,8 +125,7 @@ import { RolesSelectFieldComponent } from './components/fields/components/roles-
     AvailablePermissionsFieldComponent,
     FieldPermissionFieldComponent,
     PageHeaderComponent,
-    SpeedDialFabComponent,
-    RolesSelectFieldComponent
+    SpeedDialFabComponent
   ],
   exports: [
     // Translation
@@ -146,6 +146,7 @@ import { RolesSelectFieldComponent } from './components/fields/components/roles-
     NavBarComponent,
     QueueComponent,
     RecordsContainerComponent,
+    RolesSelectComponent,
     // Crud
     ContainerComponent,
     CardBodyComponent,
@@ -171,8 +172,7 @@ import { RolesSelectFieldComponent } from './components/fields/components/roles-
     AvailablePermissionsFieldComponent,
     FieldPermissionFieldComponent,
     PackageDependenciesFieldComponent,
-    SpeedDialFabComponent,
-    RolesSelectFieldComponent
+    SpeedDialFabComponent
   ]
 })
 export class PortalUiModule {
