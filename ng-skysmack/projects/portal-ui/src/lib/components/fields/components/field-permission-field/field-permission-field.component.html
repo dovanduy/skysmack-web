@@ -12,6 +12,5 @@
 <ng-container *ngIf="selectedAccessType === 2">
   <mat-slide-toggle (click)="toggleIncludeRoles()">Include roles</mat-slide-toggle>
   <br />
-  <ss-roles-select [selectType]="'multiple'" [currentlySelectedIds]="permission.roles"
-    (selectIds)="selectedRoleIds($event)"></ss-roles-select>
+  <ss-roles-select [currentlySelectedIds]="permission.roles" (selectedIds)="selectedRoleIds($event)"></ss-roles-select>
 </ng-container>

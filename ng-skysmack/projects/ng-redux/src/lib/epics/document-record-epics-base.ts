@@ -1,5 +1,5 @@
 import { ofType, ActionsObservable } from 'redux-observable';
-import { switchMap, map } from 'rxjs/operators';
+import { map, mergeMap } from 'rxjs/operators';
 import { Record, LocalObject, FieldSchemaViewModel, HttpResponse, HttpErrorResponse, QueueItem, LocalObjectStatus } from '@skysmack/framework';
 import { Observable } from 'rxjs';
 import { RecordEpicsBase } from './record-epics-base';
@@ -35,17 +35,17 @@ export abstract class DocumentRecordEpicsBase<TRecord extends Record<TKey>, TKey
 
     public getFieldsEpic = (action$: ActionsObservable<ReduxAction<PackagePathPayload>>): Observable<ReduxAction<GetFieldsSuccessPayload> | ReduxAction> => action$.pipe(
         ofType(this.prefix + DocumentRecordActionsBase.GET_FIELDS),
-        switchMap(action => this.requests.getFields(action))
+        mergeMap(action => this.requests.getFields(action))
     )
 
     public getSingleFieldEpic = (action$: ActionsObservable<ReduxAction<PackagePathPayload>>): Observable<ReduxAction> => action$.pipe(
         ofType(this.prefix + DocumentRecordActionsBase.GET_SINGLE_FIELD),
-        switchMap(action => this.requests.getSingleField(action))
+        mergeMap(action => this.requests.getSingleField(action))
     )
 
     public getAvailableFieldsEpic = (action$: ActionsObservable<ReduxAction<PackagePathPayload>>): Observable<ReduxAction> => action$.pipe(
         ofType(this.prefix + DocumentRecordActionsBase.GET_AVAILABLE_FIELDS),
-        switchMap(action => this.requests.getAvailableFields(action))
+        mergeMap(action => this.requests.getAvailableFields(action))
     )
 
     //#region Notifications

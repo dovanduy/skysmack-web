@@ -2,11 +2,12 @@ import { Injectable } from '@angular/core';
 import { NgRedux } from '@angular-redux/store';
 import { map, filter, take } from 'rxjs/operators';
 import { Observable, BehaviorSubject, of } from 'rxjs';
-import { LocalObject, toLocalObject, flatten, safeHasValue, Package, defined, hasValue, log } from '@skysmack/framework';
+import { LocalObject, toLocalObject, flatten, safeHasValue, Package, hasValue } from '@skysmack/framework';
 import { Skysmack, SkysmackAppState } from '@skysmack/packages-skysmack-core';
 import { PackageLoader } from '../packages/package-loader';
 import { LoadedPackage } from '../packages/loaded-package';
 import { Oauth2Type } from '@skysmack/packages-oauth2';
+import { IdentitiesType } from '@skysmack/packages-identities';
 
 @Injectable({ providedIn: 'root' })
 export class NgSkysmackStore {
@@ -63,6 +64,12 @@ export class NgSkysmackStore {
     public getAuthenticationPackages(): Observable<Package[]> {
         return this.getSkysmack().pipe(
             map(skysmack => skysmack.packages.filter(_package => _package.type === Oauth2Type.id))
+        );
+    }
+
+    public getIdentityPackages(): Observable<Package[]> {
+        return this.getSkysmack().pipe(
+            map(skysmack => skysmack.packages.filter(_package => _package.type === IdentitiesType.id))
         );
     }
 }

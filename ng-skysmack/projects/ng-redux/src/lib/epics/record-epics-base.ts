@@ -1,6 +1,6 @@
 import { ofType, ActionsObservable, Epic } from 'redux-observable';
-import { switchMap, map } from 'rxjs/operators';
-import { Record, LocalObject, HttpErrorResponse, QueueItem, HttpResponse, LocalObjectStatus } from '@skysmack/framework';
+import { map, mergeMap, share } from 'rxjs/operators';
+import { Record, LocalObject, HttpErrorResponse, QueueItem, HttpResponse, log } from '@skysmack/framework';
 import { Observable } from 'rxjs';
 import { RecordRequests, ReduxAction, GetPagedRecordsPayload, GetPagedRecordsSuccessPayload, RecordActionsBase, GetSingleRecordPayload, GetSingleRecordSuccessPayload, CommitMeta, QueueActions, CancelActionPayload, ReduxOfflineMeta } from '@skysmack/redux';
 import { RecordNotifications } from './../notifications/record-notifications';
@@ -34,14 +34,14 @@ export abstract class RecordEpicsBase<TRecord extends Record<TKey>, TKey> {
     public getPagedEpic = (action$: ActionsObservable<ReduxAction<GetPagedRecordsPayload>>): Observable<ReduxAction<GetPagedRecordsSuccessPayload<TRecord, TKey>> | ReduxAction<GetPagedRecordsPayload>> => {
         return action$.pipe(
             ofType(this.prefix + RecordActionsBase.GET_PAGED),
-            switchMap(action => this.requests.getPaged(action))
+            mergeMap(action => this.requests.getPaged(action as any)),
         );
     }
 
     public getSingleEpic = (action$: ActionsObservable<ReduxAction<GetSingleRecordPayload<TKey>>>): Observable<ReduxAction<GetSingleRecordSuccessPayload<TRecord, TKey>> | ReduxAction<GetSingleRecordPayload<TKey>>> => {
         return action$.pipe(
             ofType(this.prefix + RecordActionsBase.GET_SINGLE),
-            switchMap(action => this.requests.getSingle(action))
+            mergeMap(action => this.requests.getSingle(action))
         );
     }
 

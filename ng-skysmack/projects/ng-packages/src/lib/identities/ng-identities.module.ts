@@ -3,7 +3,7 @@ import { ReducerRegistry } from '@skysmack/redux';
 import { rolesReducer, usersReducer } from '@skysmack/packages-identities';
 import { NgRolesEpics } from './redux/ng-roles-epics';
 import { NgUsersEpics } from './redux/ng-users-epics';
-import { registerEpics } from '@skysmack/ng-redux';
+import { registerEpics, registerRedux } from '@skysmack/ng-redux';
 
 @NgModule({
   imports: [],
@@ -15,9 +15,7 @@ export class NgIdentitiesModule {
     rolesEpics: NgRolesEpics,
     usersEpics: NgUsersEpics
   ) {
-    ReducerRegistry.Instance.register('roles', rolesReducer);
-    ReducerRegistry.Instance.register('users', usersReducer);
-    registerEpics(rolesEpics);
-    registerEpics(usersEpics);
+    registerRedux('roles', rolesReducer, rolesEpics);
+    registerRedux('users', usersReducer, usersEpics);
   }
 }
