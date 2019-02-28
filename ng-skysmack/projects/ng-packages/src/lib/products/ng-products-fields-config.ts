@@ -36,7 +36,7 @@ export class NgProductsFieldsConfig extends FieldsConfig<Product, number, NgProd
                 value: entity ? entity.object.productTypeId : undefined,
                 key: 'productTypeId',
                 label: 'Product type',
-                optionsData: dependencies.availableProductTypes,
+                optionsData: dependencies && dependencies.availableProductTypes,
                 extraOptions: [{
                     value: null,
                     displayName: 'None'

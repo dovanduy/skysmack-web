@@ -35,7 +35,7 @@ export class NgPackagesFieldsConfig {
                 label: 'Type',
                 key: 'type',
                 validators: [Validators.required],
-                optionsData: dependencies.availablePackages,
+                optionsData: dependencies && dependencies.availablePackages,
                 valueSelector: 'object.type',
                 displayNameSelector: 'object.name',
                 disabled: _package ? true : false,

@@ -25,7 +25,7 @@ export class NgAccessPolicyPermissionsFieldsConfig extends FieldsConfig<AccessPo
                 fieldType: FieldTypes.SelectField,
                 value: entity ? entity.object.packagePath : undefined,
                 key: 'packagePath',
-                optionsData: dependencies.installedPackages,
+                optionsData: dependencies && dependencies.installedPackages,
                 extraOptions: [{
                     value: null,
                     displayName: 'None'
@@ -38,7 +38,7 @@ export class NgAccessPolicyPermissionsFieldsConfig extends FieldsConfig<AccessPo
                 fieldType: FieldTypes.SelectField,
                 value: entity ? entity.object.ruleId : undefined,
                 key: 'ruleId',
-                optionsData: dependencies.availableAccessPolicyRules,
+                optionsData: dependencies && dependencies.availableAccessPolicyRules,
                 displayNameSelector: 'object.id',
                 order: 2,
             } as SelectField),

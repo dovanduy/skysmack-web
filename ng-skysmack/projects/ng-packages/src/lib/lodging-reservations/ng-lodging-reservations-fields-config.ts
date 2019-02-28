@@ -24,7 +24,7 @@ export class NgLodgingReservationsFieldsConfig extends FieldsConfig<LodgingReser
                 value: entity ? entity.object.lodgingTypeId : undefined,
                 key: 'lodgingTypeId',
                 validators: [Validators.required],
-                optionsData: dependencies.availableLodgingTypes,
+                optionsData: dependencies && dependencies.availableLodgingTypes,
                 displayNameSelector: 'object.name',
                 order: 1,
                 showColumn: true
@@ -34,7 +34,7 @@ export class NgLodgingReservationsFieldsConfig extends FieldsConfig<LodgingReser
                 value: entity ? entity.object.allocatedLodgingId : undefined,
                 key: 'allocatedLodgingId',
                 label: 'Allocated lodging',
-                optionsData: dependencies.availableLodgings,
+                optionsData: dependencies && dependencies.availableLodgings,
                 displayNameSelector: 'object.name',
                 extraOptions: [{
                     value: null,

@@ -23,7 +23,7 @@ export class NgRecurringAssignmentsFieldsConfig extends FieldsConfig<RecurringAs
                 value: entity ? entity.object.assignmentTypeId : undefined,
                 key: 'assignmentTypeId',
                 label: 'Assignment Type',
-                optionsData: dependencies.availableRecurringAssignments,
+                optionsData: dependencies && dependencies.availableRecurringAssignments,
                 validators: [Validators.required],
                 order: 1,
             } as SelectField),
