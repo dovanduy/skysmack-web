@@ -1,8 +1,8 @@
 @import "../../../../../../../assets/scss/_includes.scss";
 
 cdk-virtual-scroll-viewport {
-  height: 50vh;
-
+  height: calc(100vh - 250px);
+  width: 100%;
 //   &::-webkit-scrollbar {
 //     width: 1em;
 //   }
@@ -16,7 +16,59 @@ cdk-virtual-scroll-viewport {
 //   }
 }
 
+mat-card {
+  padding: 0;
+}
 
+table {
+  width: 100%;
+
+  thead tr {
+    height: 56px;
+
+    th.table-cell {
+      display: table-cell;
+      vertical-align: middle;
+      text-align: left;
+      white-space: nowrap;
+
+      .th-flex {
+        display: flex;
+        align-items: center;
+      }
+    }
+  }
+
+  .table-cell {
+    padding: 8px 16px;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+
+    &.sortable {
+
+      i {
+        font-size: 12px;
+        margin-left: 6px;
+
+        &.white {
+          color: #fff;
+        }
+      }
+
+      &:hover {
+        cursor: pointer;
+
+        i.white {
+          color: rgba(82, 82, 82, 0.87);
+        }
+      }
+    }
+
+    &.action-buttons {
+      text-align: right;
+    }
+  }
+}
 
 .row-is-loading {
   border-bottom: none;
@@ -41,6 +93,13 @@ cdk-virtual-scroll-viewport {
   top: -7px;
   font-size: 12px;
   color: rgba(82, 82, 82, 0.87);
+}
+
+.footer .inner {
+  text-align: right;
+  padding: 8px 16px;
+  color: rgba(82, 82, 82, 0.87);
+  font-size: .7rem;
 }
 
 @keyframes success-background {

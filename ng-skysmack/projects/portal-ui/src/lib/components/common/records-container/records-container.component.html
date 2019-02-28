@@ -1,93 +1,79 @@
 <mat-card>
-  <mat-card-header>
-    <div *ngFor="let column of displayColumns" (click)="setSortOrder(column)">
-      <!-- Current sort -->
-      <ng-container [ngSwitch]="column.sortOrder">
-        <i class="material-icons" *ngSwitchCase="true">keyboard_arrow_down</i>
-        <i class="material-icons" *ngSwitchCase="false">keyboard_arrow_up</i>
-        <ng-container *ngSwitchDefault></ng-container>
-      </ng-container>
-      <!-- Text -->
-      <div style="margin-right: 10px; font-weight: 900;">
-        <ng-container *ngIf="!column.dynamicFieldName">{{ column.translationString | translate }}</ng-container>
-        <ng-container *ngIf="column.dynamicFieldName">{{ column.dynamicFieldName }}</ng-container>
-      </div>
-    </div>
-  </mat-card-header>
-</mat-card>
 
-<cdk-virtual-scroll-viewport #entityList id="entity-list" *ngIf="entities" itemSize="82.4"
-  (scrolledIndexChange)="whenScrolling()">
-
-
-  <mat-card *cdkVirtualFor="let entity of entities; trackBy: trackByLocalId; let i = index;" [attr.data-index]="i"
-    class="entity-row" [class.row-is-loading]="entity.status !== 'OK' && !entity.error"
-    [class.row-is-success]="entity.isNew" [class.row-is-error]="entity.error">
-
-
-    <mat-card-content>
-      <ng-container *ngFor="let column of displayColumns">
-        <p style="margin-right: 5px; display: inline-block;">{{ entity.object[column.fieldKey] }}</p>
-      </ng-container>
-
-      <!-- ACTIONS -->
-      <!-- Hide the entities menu when in queue, or if the entity has a create error -->
-      <ng-container
-        *ngIf="entityActions.length > 0 && (entity.status === 'OK' || entity.status !== 'CREATING' && entity.error)">
-        <button mat-icon-button [matMenuTriggerFor]="menu">
-          <mat-icon>more_vert</mat-icon>
-        </button>
-        <mat-menu #menu="matMenu">
-          <ng-container *ngFor="let entityAction of entityActions">
-            <!-- ACTION EVENT -->
-            <a *ngIf="entityAction.isActionEvent" showEntityAction [entityAction]="entityAction" [entity]="entity"
-              mat-menu-item
-              (click)="entityActionEvent.emit({ action: entityAction.action, value: entity, _this: entityAction._this })">
-              <i class="material-icons">{{ entityAction.icon }}</i> <span
-                class="icon-text">{{ entityAction.displayName }}</span>
-            </a>
-
-            <!-- URL EVENT -->
-            <a *ngIf="!entityAction.isActionEvent" mat-menu-item
-              [routerLink]="[entityAction.url, entity.objectIdentifier]">
-              <i class="material-icons">{{ entityAction.icon }}</i>
-              <span class="icon-text">{{ entityAction.displayName }}</span>
-            </a>
+  <cdk-virtual-scroll-viewport #entityList id="entity-list" itemSize="60" (scrolledIndexChange)="whenScrolling()">
+    <table cellspacing="0" cellpadding="0" class="mat-table">
+      <thead class="mat-header-row">
+        <tr>
+        <th *ngFor="let column of displayColumns" (click)="setSortOrder(column)"
+          [ngClass]="column.sortable ? 'sortable' : ''" class="table-cell mat-header-cell">
+          <div class="th-flex">
+          <!-- Text -->
+          {{ column.dynamicFieldName ? (column.dynamicFieldName) : (column.translationString | translate) }}
+          <!-- Current sort -->
+          <ng-container *ngIf="column.sortable" [ngSwitch]="column.sortOrder">
+            <i class="material-icons" *ngSwitchCase="true">arrow_downward</i>
+            <i class="material-icons" *ngSwitchCase="false">arrow_upward</i>
+            <i class="material-icons white" *ngSwitchCase="">sort</i>
           </ng-container>
-        </mat-menu>
+          </div>
+        </th>
+        <th class="table-cell mat-header-cell"></th>
+      </tr>
+      </thead>
+      <tbody *ngIf="entities">
+        <ng-container *cdkVirtualFor="let entity of entities; trackBy: trackByLocalId; let i = index;" >
+        <tr class="entity-row table-row mat-row" [class.row-is-loading]="entity.status !== 'OK' && !entity.error"
+          [class.row-is-success]="entity.isNew" [class.row-is-error]="entity.error" [attr.data-index]="i">
+          <td *ngFor="let column of displayColumns" class="table-cell mat-cell">
+            {{ entity.object[column.fieldKey] }}
+          </td>
+          <td class="table-cell mat-cell action-buttons">
+            <ng-container
+              *ngIf="entityActions.length > 0 && (entity.status === 'OK' || entity.status !== 'CREATING' && entity.error)">
+              <button mat-icon-button [matMenuTriggerFor]="menu">
+                <mat-icon>more_vert</mat-icon>
+              </button>
+              <mat-menu #menu="matMenu">
+                <ng-container *ngFor="let entityAction of entityActions">
+                  <!-- ACTION EVENT -->
+                  <a *ngIf="entityAction.isActionEvent" showEntityAction [entityAction]="entityAction" [entity]="entity"
+                    mat-menu-item
+                    (click)="entityActionEvent.emit({ action: entityAction.action, value: entity, _this: entityAction._this })">
+                    <i class="material-icons">{{ entityAction.icon }}</i> <span
+                      class="icon-text">{{ entityAction.displayName }}</span>
+                  </a>
+                  <!-- URL EVENT -->
+                  <a *ngIf="!entityAction.isActionEvent" mat-menu-item
+                    [routerLink]="[entityAction.url, entity.objectIdentifier]">
+                    <i class="material-icons">{{ entityAction.icon }}</i>
+                    <span class="icon-text">{{ entityAction.displayName }}</span>
+                  </a>
+                </ng-container>
+              </mat-menu>
+            </ng-container>
+
+            <!-- CANCEL ACTION -->
+            <a *ngIf="entity.error" mat-icon-button (click)="runCancelAction(entity);">
+              <i class="material-icons">undo</i>
+            </a>
+          <td>
+        </tr>
+        <tr>
+          <td [colSpan]="displayColumns.length + 1" style="width: 100px; height: 5px;" >
+            <mat-progress-bar *ngIf="(entity.status !== 'OK' && !entity.error)" mode="indeterminate"></mat-progress-bar>
+          </td>
+        </tr>
       </ng-container>
+      </tbody>
+    </table>
+  </cdk-virtual-scroll-viewport>
 
-      <!-- CANCEL ACTION -->
-      <a *ngIf="entity.error" mat-icon-button (click)="runCancelAction(entity);">
-        <i class="material-icons">undo</i>
-      </a>
-
-      <div style="width: 100px; height: 5px;" *ngIf="entity.status !== 'OK' && !entity.error">
-        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
-      </div>
-    </mat-card-content>
-  </mat-card>
-</cdk-virtual-scroll-viewport>
-
-<!-- TODO: SHOW LOADING INDICATOR OF SOME SORT -->
-<mat-card>
-  <p style="text-align:right;" *ngIf="loadedEntitiesCount">Loaded {{ loadedEntitiesCount }} out of {{ totalCount }}</p>
-  <ng-container [ngSwitch]="loadingState">
-    <!-- 
-      *ngSwitchCase="0" // OK
-      *ngSwitchCase="1" // Awaiting
-      *ngSwitchCase="2" // Loading
-      *ngSwitchCase="3" // Reloading
-      *ngSwitchCase="4" // Not found
-      *ngSwitchCase="5" // Unauthorized
-      *ngSwitchCase="6" // Unauthenticated
-      *ngSwitchCase="7" // End
-    -->
-    <div *ngSwitchCase="2">
-      <!-- Loading -->
-      <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+  <div class="footer">
+    <div class="inner">
+      <span *ngIf="loadedEntitiesCount">Loaded {{ loadedEntitiesCount }} out of {{ totalCount }}</span>
     </div>
-    <ng-container *ngSwitchDefault></ng-container>
-  </ng-container>
-
+    <div style="width:100%;height:5px">
+      <mat-progress-bar *ngIf="loadingState === 2" mode="indeterminate"></mat-progress-bar>
+    </div>
+  </div>
 </mat-card>

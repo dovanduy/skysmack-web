@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, OnDestroy, EventEmitter, Output, ViewChild } from '@angular/core';
 import { LocalObject, LoadingState, SubscriptionHandler, DisplayColumn } from '@skysmack/framework';
 import { Observable } from 'rxjs';
-import { EntityAction, Field } from '@skysmack/ng-ui';
+import { EntityAction, Field, FieldTypes } from '@skysmack/ng-ui';
 import { map } from 'rxjs/operators';
 import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
 
@@ -55,11 +55,15 @@ export class RecordsContainerComponent implements OnInit, OnDestroy {
   public displayColumnFromField(field: Field) {
     const foundColumn = this.displayColumns ? this.displayColumns.find(column => column.fieldKey === field.key) : undefined;
     if (!foundColumn) {
+      const sortableFields: Array<FieldTypes> = [ FieldTypes.int, FieldTypes.dateTime, FieldTypes.decimal, FieldTypes.double, FieldTypes.limitedString ];
+      const sortable = sortableFields.indexOf(field.fieldType) > -1 || !field.dynamicField;
+      console.log(sortable, field.fieldType, field);
       return new DisplayColumn({
         fieldKey: field.key,
         dynamicFieldName: field.dynamicField ? field.label : undefined,
         translationString: 'PERSONS.FORM.LABELS.' + field.key.toUpperCase(),
-        show: field.showColumn
+        show: field.showColumn,
+        sortable: sortable
       });
     } else {
       return foundColumn;
@@ -81,21 +85,23 @@ export class RecordsContainerComponent implements OnInit, OnDestroy {
   }
 
   public setSortOrder(displayColumn: DisplayColumn) {
-    this.entityList.scrollToIndex(0);
-    switch (displayColumn.sortOrder) {
-      case true: {
-        displayColumn.sortOrder = false;
-        break;
+    if (displayColumn.sortable) {
+      this.entityList.scrollToIndex(0);
+      switch (displayColumn.sortOrder) {
+        case true: {
+          displayColumn.sortOrder = false;
+          break;
+        }
+        case false: {
+          displayColumn.sortOrder = undefined;
+          break;
+        }
+        default: {
+          displayColumn.sortOrder = true;
+          break;
+        }
       }
-      case false: {
-        displayColumn.sortOrder = undefined;
-        break;
-      }
-      default: {
-        displayColumn.sortOrder = true;
-        break;
-      }
+      this.sortChanged.emit(displayColumn);
     }
-    this.sortChanged.emit(displayColumn);
   }
 }

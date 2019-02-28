@@ -10,7 +10,7 @@ export class AccessPolicyRolesActions extends RecordActionsBase<AccessPolicyRole
 
     protected getMessageParams(record: LocalObject<AccessPolicyRole, number>): StrIndex<string> {
         return {
-            roleId: record.object.roleId.toString()
+            roleId: record.object.id.roleId.toString()
         };
     }
 }
