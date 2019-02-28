@@ -3,6 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { SubscriptionLike } from 'rxjs';
 import { Field, FormRule, FormHelper, Validation } from '@skysmack/ng-ui';
 import { EditorNavService } from './../../common/container/editor-nav.service';
+import { GlobalProperties } from '@skysmack/framework';
 
 @Component({
   selector: 'ss-dynamic-form',
@@ -15,6 +16,8 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
   @Input() public rules: FormRule[];
   @Input() public validation: Validation;
   @Input() public buttonText = 'Submit';
+
+  public production = GlobalProperties.production;
 
   public fh: FormHelper;
 

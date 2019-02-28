@@ -8,6 +8,5 @@
 
   <button mat-raised-button color="primary" type="submit" (click)="onSubmit()">{{ buttonText }}</button>
 
-  <!-- Keep below - outcomment when not needed -->
-  <pre>{{ fh.form.value | json }}</pre>
+  <pre *ngIf="!production">{{ fh.form.value | json }}</pre>
 </form>
