@@ -14,7 +14,7 @@ import { NgAssignmentsMenu } from '../../ng-assignments-menu';
 })
 export class AssignmentsIndexComponent extends RecordIndexComponent<AssignmentsAppState, Assignment, number> implements OnInit {
 
-  public displayedColumns = ['name'];
+  public displayedColumns = ['description'];
   public entityActions: EntityAction[] = [
     new EntityAction().asUrlAction('edit', 'Edit', 'edit'),
     new EntityAction().asEventAction('Delete', this.delete, 'delete', this)

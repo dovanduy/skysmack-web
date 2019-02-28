@@ -16,6 +16,7 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
   @Input() public rules: FormRule[];
   @Input() public validation: Validation;
   @Input() public buttonText = 'Submit';
+  @Input() public noSidebar: boolean;
 
   public production = GlobalProperties.production;
 
@@ -30,7 +31,9 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.createForm();
     setTimeout(() => {
-      this.editorNavService.showEditorNav();
+      if (!this.noSidebar) {
+        this.editorNavService.showEditorNav();
+      }
     }, 0);
   }
 

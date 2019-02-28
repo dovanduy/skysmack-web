@@ -8,8 +8,8 @@
 
       <div *ngIf="error" [@shrinkOut] [translate]="'OAUTH2.OAUTH2_LOGIN.ERROR_OCCURRED'"></div>
 
-      <ss-dynamic-form *ngIf="fields" [fields]="fields" [validation]="fieldsConfig.validation" [rules]="fieldsConfig.formRules"
-        [buttonText]="'Login'" (submitted)="onSubmit($event)">
+      <ss-dynamic-form *ngIf="fields" [noSidebar]="true" [fields]="fields" [validation]="fieldsConfig.validation"
+        [rules]="fieldsConfig.formRules" [buttonText]="'Login'" (submitted)="onSubmit($event)">
       </ss-dynamic-form>
       <a routerLink="/forgotPassword" [translate]="'OAUTH2.OAUTH2_LOGIN.FORGOT_PASSWORD'"></a>
 
