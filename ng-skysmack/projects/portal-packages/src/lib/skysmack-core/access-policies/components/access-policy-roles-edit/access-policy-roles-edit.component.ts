@@ -4,7 +4,7 @@ import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EditorNavService, RecordFormComponent } from '@skysmack/portal-ui';
 import { NgAccessPolicyRolesStore, NgAccessPolicyRoleFormDependencies, NgAccessPolicyRolesFieldsConfig } from '@skysmack/ng-packages';
-import { AccessPolicyRolesAppState, AccessPolicyRole } from '@skysmack/packages-skysmack-core';
+import { AccessPolicyRolesAppState, AccessPolicyRole, AccessPolicyRoleKey } from '@skysmack/packages-skysmack-core';
 import { combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { PagedQuery } from '@skysmack/framework';
@@ -14,7 +14,7 @@ import { PagedQuery } from '@skysmack/framework';
   templateUrl: './access-policy-roles-edit.component.html',
   styleUrls: ['./access-policy-roles-edit.component.scss']
 })
-export class AccessPolicyRolesEditComponent extends RecordFormComponent<AccessPolicyRolesAppState, AccessPolicyRole, number, NgAccessPolicyRoleFormDependencies> implements OnInit {
+export class AccessPolicyRolesEditComponent extends RecordFormComponent<AccessPolicyRolesAppState, AccessPolicyRole, AccessPolicyRoleKey, NgAccessPolicyRoleFormDependencies> implements OnInit {
 
   constructor(
     public router: Router,

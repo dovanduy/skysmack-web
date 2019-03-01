@@ -2,10 +2,10 @@ import { Injectable, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ApiDomain } from '@skysmack/framework';
 import { NgRecordRequests } from '@skysmack/ng-redux';
-import { AccessPolicyRole } from '@skysmack/packages-skysmack-core';
+import { AccessPolicyRole, AccessPolicyRoleKey } from '@skysmack/packages-skysmack-core';
 
 @Injectable({ providedIn: 'root' })
-export class NgAccessPolicyRolesRequests extends NgRecordRequests<AccessPolicyRole, number> {
+export class NgAccessPolicyRolesRequests extends NgRecordRequests<AccessPolicyRole, AccessPolicyRoleKey> {
     constructor(
         protected http: HttpClient,
         @Inject('ApiDomain') protected apiDomain: ApiDomain

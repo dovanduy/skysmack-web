@@ -5,7 +5,7 @@ import { NgAccessPolicyRolesActions } from '@skysmack/ng-packages';
 import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { NgAccessPolicyRolesStore } from '@skysmack/ng-packages';
 import { EntityAction } from '@skysmack/ng-ui';
-import { AccessPolicyRolesAppState, AccessPolicyRole } from '@skysmack/packages-skysmack-core';
+import { AccessPolicyRolesAppState, AccessPolicyRole, AccessPolicyRoleKey } from '@skysmack/packages-skysmack-core';
 import { NgAccessPolicyRolesMenu } from '../../ng-access-policy-roles-menu';
 
 
@@ -14,7 +14,7 @@ import { NgAccessPolicyRolesMenu } from '../../ng-access-policy-roles-menu';
   templateUrl: './access-policy-roles-index.component.html',
   styleUrls: ['./access-policy-roles-index.component.scss']
 })
-export class AccessPolicyRolesIndexComponent extends RecordIndexComponent<AccessPolicyRolesAppState, AccessPolicyRole, number> implements OnInit {
+export class AccessPolicyRolesIndexComponent extends RecordIndexComponent<AccessPolicyRolesAppState, AccessPolicyRole, AccessPolicyRoleKey> implements OnInit {
 
   public displayedColumns = ['ruleId', 'roleId'];
   public entityActions: EntityAction[] = [

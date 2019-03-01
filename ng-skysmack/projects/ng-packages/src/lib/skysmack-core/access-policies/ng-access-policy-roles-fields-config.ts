@@ -5,7 +5,7 @@ import { Field } from '@skysmack/ng-ui';
 import { FieldTypes } from '@skysmack/ng-ui';
 import { FieldsConfig } from '@skysmack/ng-ui';
 import { AccessPolicyRolesValidation } from './ng-access-policy-roles-validation';
-import { AccessPolicyRole, AccessPolicyRule } from '@skysmack/packages-skysmack-core';
+import { AccessPolicyRole, AccessPolicyRule, AccessPolicyRoleKey } from '@skysmack/packages-skysmack-core';
 import { Validators } from '@angular/forms';
 import { Role } from '@skysmack/packages-identities';
 
@@ -15,7 +15,7 @@ export interface NgAccessPolicyRoleFormDependencies {
 }
 
 @Injectable({ providedIn: 'root' })
-export class NgAccessPolicyRolesFieldsConfig extends FieldsConfig<AccessPolicyRole, number, NgAccessPolicyRoleFormDependencies> {
+export class NgAccessPolicyRolesFieldsConfig extends FieldsConfig<AccessPolicyRole, AccessPolicyRoleKey, NgAccessPolicyRoleFormDependencies> {
     public validation = new AccessPolicyRolesValidation();
 
     public formRules: FormRule[] = [];
@@ -24,22 +24,22 @@ export class NgAccessPolicyRolesFieldsConfig extends FieldsConfig<AccessPolicyRo
         const fields: Field[] = [
             new SelectField({
                 fieldType: FieldTypes.SelectField,
-                value: entity ? entity.object.ruleId : undefined,
+                value: entity ? entity.object.id.ruleId : undefined,
                 key: 'ruleId',
                 optionsData: dependencies && dependencies.availableAccessPolicyRules,
                 validators: [Validators.required],
                 displayNameSelector: 'object.id',
-                order: 2,
+                order: 2
             } as SelectField),
 
             new SelectField({
                 fieldType: FieldTypes.SelectField,
-                value: entity ? entity.object.roleId : undefined,
+                value: entity ? entity.object.id.roleId : undefined,
                 key: 'roleId',
                 optionsData: dependencies && dependencies.availableRoles,
                 validators: [Validators.required],
-                displayNameSelector: 'object.id',
-                order: 2,
+                displayNameSelector: 'object.name',
+                order: 2
             } as SelectField),
         ];
 
@@ -48,7 +48,7 @@ export class NgAccessPolicyRolesFieldsConfig extends FieldsConfig<AccessPolicyRo
                 fieldType: FieldTypes.HiddenField,
                 value: entity ? entity.object.id : undefined,
                 key: 'id',
-                order: 0,
+                order: 0
             } as Field));
         }
 

@@ -6,9 +6,10 @@ import { EditorNavService, RecordFormComponent } from '@skysmack/portal-ui';
 import { NgAccessPolicyPermissionsFieldsConfig, NgAccessPolicyPermissionFormDependencies } from '@skysmack/ng-packages';
 import { NgAccessPolicyPermissionsStore } from '@skysmack/ng-packages';
 import { AccessPolicyPermissionsAppState, AccessPolicyPermission } from '@skysmack/packages-skysmack-core';
-import { PagedQuery } from '@skysmack/framework';
+import { PagedQuery, LocalObjectStatus } from '@skysmack/framework';
 import { combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { FormHelper } from '@skysmack/ng-ui';
 
 @Component({
   selector: 'ss-access-policy-permissions-edit',
@@ -54,5 +55,18 @@ export class AccessPolicyPermissionsEditComponent extends RecordFormComponent<Ac
         return this.fieldsConfig.getFields(entity, undefined, { installedPackages, availableAccessPolicyRules });
       })
     ).subscribe(fields => this.fields = fields));
+  }
+
+  protected update(fh: FormHelper) {
+    fh.formValid(() => {
+      const oldValue = { ...this.selectedEntity };
+
+      this.selectedEntity.object = fh.form.getRawValue();
+      this.selectedEntity.status = LocalObjectStatus.MODIFYING;
+
+      this.selectedEntity.oldObject = oldValue.object;
+      this.actions.update([this.selectedEntity], this.packagePath);
+      this.editorNavService.hideEditorNav();
+    });
   }
 }

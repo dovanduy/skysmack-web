@@ -4,17 +4,18 @@ import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EditorNavService, RecordFormComponent } from '@skysmack/portal-ui';
 import { NgAccessPolicyRolesStore, NgAccessPolicyRoleFormDependencies, NgAccessPolicyRolesFieldsConfig } from '@skysmack/ng-packages';
-import { AccessPolicyRolesAppState, AccessPolicyRole } from '@skysmack/packages-skysmack-core';
+import { AccessPolicyRolesAppState, AccessPolicyRole, AccessPolicyRoleKey } from '@skysmack/packages-skysmack-core';
 import { combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { PagedQuery } from '@skysmack/framework';
+import { PagedQuery, toLocalObject } from '@skysmack/framework';
+import { FormHelper } from '@skysmack/ng-ui/lib';
 
 @Component({
   selector: 'ss-access-policy-roles-create',
   templateUrl: './access-policy-roles-create.component.html',
   styleUrls: ['./access-policy-roles-create.component.scss']
 })
-export class AccessPolicyRolesCreateComponent extends RecordFormComponent<AccessPolicyRolesAppState, AccessPolicyRole, number, NgAccessPolicyRoleFormDependencies> implements OnInit {
+export class AccessPolicyRolesCreateComponent extends RecordFormComponent<AccessPolicyRolesAppState, AccessPolicyRole, AccessPolicyRoleKey, NgAccessPolicyRoleFormDependencies> implements OnInit {
   constructor(
     public router: Router,
     public activatedRoute: ActivatedRoute,
@@ -40,6 +41,7 @@ export class AccessPolicyRolesCreateComponent extends RecordFormComponent<Access
     this.accessPolicyRulesActions.getPaged(this.packagePath, new PagedQuery());
     // TODO: FIX THIS!! MAJOR HACK!! WE NEED TO GET/CHOOSE ROLES AMONG ALL IDENTITY PACKAGES.
     // 'identities' BELOW IS JUST THE DEFAULT INSTALLED PACKAGE!
+    // The fix is using roles-select component.
     this.rolesActions.getPaged('identities', new PagedQuery());
 
     this.subscriptionHandler.register(combineLatest(
@@ -53,5 +55,14 @@ export class AccessPolicyRolesCreateComponent extends RecordFormComponent<Access
         return this.fieldsConfig.getFields(undefined, undefined, { availableAccessPolicyRules, availableRoles });
       })
     ).subscribe(fields => this.fields = fields));
+  }
+
+  protected create(fh: FormHelper) {
+    fh.formValid(() => {
+      const localObject = toLocalObject(new AccessPolicyRole({ id: fh.form.getRawValue() })); this.extractFormValues(fh);
+      this.editorItem ? localObject.localId = this.editorItem.localId : localObject.localId = localObject.localId;
+      this.actions.add([localObject], this.packagePath);
+      this.editorNavService.hideEditorNav();
+    });
   }
 }

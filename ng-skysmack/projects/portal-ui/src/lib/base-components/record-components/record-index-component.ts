@@ -74,7 +74,6 @@ export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey>
 
     protected setFields() {
         // TODO: Remove fieldsConfig check when records container is used everywhere
-        console.log(this.fieldsConfig)
         this.fields$ = of(this.fieldsConfig ? this.fieldsConfig.getStaticFields() : []);
     }
 
