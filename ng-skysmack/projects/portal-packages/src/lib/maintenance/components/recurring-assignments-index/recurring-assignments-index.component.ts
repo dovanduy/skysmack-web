@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { RecurringAssignment, RecurringAssignmentsAppState } from '@skysmack/packages-maintenance';
 import { RecordIndexComponent, EntityComponentPageTitle } from '@skysmack/portal-ui';
 import { EntityAction } from '@skysmack/ng-ui';
-import { NgRecurringAssignmentsActions, NgSkysmackStore, NgRecurringAssignmentsStore } from '@skysmack/ng-packages';
+import { NgRecurringAssignmentsActions, NgSkysmackStore, NgRecurringAssignmentsStore, NgRecurringAssignmentsFieldsConfig } from '@skysmack/ng-packages';
 import { NgRecurringAssignmentsMenu } from './../../ng-recurring-assignments-menu';
 
 @Component({
@@ -13,7 +13,6 @@ import { NgRecurringAssignmentsMenu } from './../../ng-recurring-assignments-men
 })
 export class RecurringAssignmentsIndexComponent extends RecordIndexComponent<RecurringAssignmentsAppState, RecurringAssignment, number> implements OnInit {
 
-  public displayedColumns = ['name'];
   public entityActions: EntityAction[] = [
     new EntityAction().asUrlAction('edit', 'Edit', 'edit'),
     new EntityAction().asEventAction('Delete', this.delete, 'delete', this)
@@ -26,9 +25,10 @@ export class RecurringAssignmentsIndexComponent extends RecordIndexComponent<Rec
     public redux: NgSkysmackStore,
     public title: EntityComponentPageTitle,
     public store: NgRecurringAssignmentsStore,
-    public sidebarMenu: NgRecurringAssignmentsMenu
+    public sidebarMenu: NgRecurringAssignmentsMenu,
+    public fieldsConfig: NgRecurringAssignmentsFieldsConfig
   ) {
-    super(router, activatedRoute, actions, redux, store);
+    super(router, activatedRoute, actions, redux, store, fieldsConfig);
 
   }
 

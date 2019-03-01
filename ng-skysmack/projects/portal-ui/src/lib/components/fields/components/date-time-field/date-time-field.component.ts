@@ -1,8 +1,9 @@
 import { Component, ViewChild, ElementRef, AfterViewInit, OnInit } from '@angular/core';
 import { DateAdapter } from '@angular/material';
-import { combineLatest, of, fromEvent } from 'rxjs';
+import { combineLatest, fromEvent } from 'rxjs';
 import { FieldBaseComponent } from '../field-base-component';
 import { DateTimeAdapter } from './date-time-adapter';
+import { Field } from '@skysmack/ng-ui';
 
 @Component({
   selector: 'ss-date-time-field',
@@ -17,6 +18,8 @@ export class DateTimeFieldComponent extends FieldBaseComponent implements AfterV
   ngOnInit() {
     super.ngOnInit();
   }
+
+  public init(fields: Field[]) { }
 
   ngAfterViewInit() {
     combineLatest(

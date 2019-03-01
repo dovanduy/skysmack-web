@@ -40,16 +40,16 @@ export class PackagesEditComponent extends BaseComponent<PackagesAppState, strin
     this.actions.getAvailablePackages();
     this.actions.getSingle(this.entityId);
 
-    this.subscriptionHandler.register(combineLatest(
+    this.fields$ = combineLatest(
       this.store.getSingle(this.entityId),
       this.store.getAvailablePackages()
     ).pipe(
       map(values => {
         const [_package, availablePackages] = values;
         this.selectedPackage = _package;
-        this.fields = this.fieldsConfig.getStaticFields(_package, { availablePackages });
+        return this.fieldsConfig.getStaticFields(_package, { availablePackages });
       })
-    ).subscribe());
+    );
 
     this.editorNavService.showEditorNav();
   }

@@ -39,16 +39,16 @@ export class RecordFormComponent<TAppState, TRecord extends Record<TKey>, TKey, 
     }
 
     protected setCreateFields() {
-        this.subscriptionHandler.register(this.skysmackStore.getEditorItem().pipe(
+        this.fields$ = this.skysmackStore.getEditorItem().pipe(
             map(editorItem => {
                 this.editorItem = editorItem as LocalObject<TRecord, TKey>;
-                this.fields = this.fieldsConfig.getFields(this.editorItem);
+                return this.fieldsConfig.getFields(this.editorItem);
             })
-        ).subscribe());
+        );
     }
 
     protected setEditFields() {
-        this.subscriptionHandler.register(
+        this.fields$ =
             combineLatest(
                 this.initEditRecord(),
                 this.skysmackStore.getEditorItem()
@@ -58,9 +58,9 @@ export class RecordFormComponent<TAppState, TRecord extends Record<TKey>, TKey, 
                     this.editorItem = values[1] as LocalObject<TRecord, TKey>;
                     this.editorItem ? this.selectedEntity = this.editorItem : this.selectedEntity = entity;
 
-                    this.fields = this.fieldsConfig.getFields(this.selectedEntity);
+                    return this.fieldsConfig.getFields(this.selectedEntity);
                 })
-            ).subscribe());
+            );
     }
 
     protected initEditRecord() {

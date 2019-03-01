@@ -41,7 +41,7 @@ export class AccessPolicyPermissionsCreateComponent extends RecordFormComponent<
     this.packagesActions.getAvailablePackages();
     this.accessPolicyRulesActions.getPaged(this.packagePath, new PagedQuery());
 
-    this.subscriptionHandler.register(combineLatest(
+    this.fields$ = combineLatest(
       this.skysmackStore.getPackages(),
       this.accessPolicyRulesStore.get(this.packagePath)
     ).pipe(
@@ -50,6 +50,6 @@ export class AccessPolicyPermissionsCreateComponent extends RecordFormComponent<
         const availableAccessPolicyRules = values[1];
         return this.fieldsConfig.getFields(undefined, undefined, { installedPackages, availableAccessPolicyRules });
       })
-    ).subscribe(fields => this.fields = fields));
+    );
   }
 }

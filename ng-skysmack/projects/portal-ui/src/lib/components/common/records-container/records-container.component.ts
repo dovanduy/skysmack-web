@@ -15,22 +15,23 @@ export class RecordsContainerComponent implements OnInit, OnDestroy {
   public loadedEntitiesCount: number;
 
   @ViewChild('entityList') public entityList: CdkVirtualScrollViewport;
+
   @Output() public requestPage = new EventEmitter<boolean>(false);
   @Output() public entityActionEvent = new EventEmitter<any>();
+  @Output() public sortChanged = new EventEmitter<DisplayColumn>();
+
   @Input() public entities$: Observable<LocalObject<any, any>[]>;
   @Input() public entities: LocalObject<any, any>[];
   @Input() public totalCount: number;
   @Input() public loadingState: LoadingState;
   @Input() public entityActions: EntityAction[] = [];
-
-  // Properties taken from Data table
   @Input() public packagePath: string;
   @Input() public title: string;
   @Input() public cancelAction: Function;
   @Input() public fields$: Observable<Field[]>;
+  @Input() public area: string;
 
   public displayColumns: DisplayColumn[];
-  @Output() public sortChanged = new EventEmitter<DisplayColumn>();
 
   constructor() { }
 
@@ -55,13 +56,12 @@ export class RecordsContainerComponent implements OnInit, OnDestroy {
   public displayColumnFromField(field: Field) {
     const foundColumn = this.displayColumns ? this.displayColumns.find(column => column.fieldKey === field.key) : undefined;
     if (!foundColumn) {
-      const sortableFields: Array<FieldTypes> = [ FieldTypes.int, FieldTypes.dateTime, FieldTypes.decimal, FieldTypes.double, FieldTypes.limitedString ];
+      const sortableFields: Array<FieldTypes> = [FieldTypes.int, FieldTypes.dateTime, FieldTypes.decimal, FieldTypes.double, FieldTypes.limitedString];
       const sortable = sortableFields.indexOf(field.fieldType) > -1 || !field.dynamicField;
-      console.log(sortable, field.fieldType, field);
       return new DisplayColumn({
         fieldKey: field.key,
         dynamicFieldName: field.dynamicField ? field.label : undefined,
-        translationString: 'PERSONS.FORM.LABELS.' + field.key.toUpperCase(),
+        translationString: this.area.toUpperCase() + '.FORM.LABELS.' + field.key.toUpperCase(),
         show: field.showColumn,
         sortable: sortable
       });

@@ -1,7 +1,7 @@
 <ss-container [sidebarMenu]="sidebarMenu" *ngIf="loadedPackage$ | async as loadedPackage">
-  <ss-data-table *ngIf="extendedReservations$" [cancelAction]="actions.cancelRecordAction" [title]="'Arrivals'"
-    [displayedColumns]="displayedColumns" [entities$]="extendedReservations$" [entityActions]="entityActions"
-    [packagePath]="packagePath" (entityActionEvent)="actionEvent($event)">
-    <!--  -->
-  </ss-data-table>
+  <ss-records-container [area]="'loding_reservations'" [cancelAction]="actions.cancelRecordAction" [title]="'Arrivals'"
+    [entities$]="extendedReservations$" [entityActions]="entityActions" [packagePath]="packagePath"
+    (entityActionEvent)="actionEvent($event)" [totalCount]="totalCount" [loadingState]="loadingState"
+    (requestPage)="requestPage()" [fields$]="fields$" (sortChanged)="sortChanged($event)">
+  </ss-records-container>
 </ss-container>

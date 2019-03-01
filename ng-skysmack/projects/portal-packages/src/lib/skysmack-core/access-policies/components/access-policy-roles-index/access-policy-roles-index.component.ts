@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { EntityComponentPageTitle, RecordIndexComponent } from '@skysmack/portal-ui';
 import { Router, ActivatedRoute } from '@angular/router';
-import { NgAccessPolicyRolesActions } from '@skysmack/ng-packages';
+import { NgAccessPolicyRolesActions, NgAccessPolicyRolesFieldsConfig } from '@skysmack/ng-packages';
 import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { NgAccessPolicyRolesStore } from '@skysmack/ng-packages';
 import { EntityAction } from '@skysmack/ng-ui';
@@ -16,7 +16,6 @@ import { NgAccessPolicyRolesMenu } from '../../ng-access-policy-roles-menu';
 })
 export class AccessPolicyRolesIndexComponent extends RecordIndexComponent<AccessPolicyRolesAppState, AccessPolicyRole, AccessPolicyRoleKey> implements OnInit {
 
-  public displayedColumns = ['ruleId', 'roleId'];
   public entityActions: EntityAction[] = [
     new EntityAction().asUrlAction('edit', 'Edit', 'edit'),
     new EntityAction().asEventAction('Delete', this.delete, 'delete', this)
@@ -29,9 +28,10 @@ export class AccessPolicyRolesIndexComponent extends RecordIndexComponent<Access
     public redux: NgSkysmackStore,
     public title: EntityComponentPageTitle,
     public store: NgAccessPolicyRolesStore,
-    public sidebarMenu: NgAccessPolicyRolesMenu
+    public sidebarMenu: NgAccessPolicyRolesMenu,
+    public fieldsConfig: NgAccessPolicyRolesFieldsConfig
   ) {
-    super(router, activatedRoute, actions, redux, store);
+    super(router, activatedRoute, actions, redux, store, fieldsConfig);
 
   }
 

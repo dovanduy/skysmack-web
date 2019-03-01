@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FieldBaseComponent } from '../field-base-component';
 import { stringIntToInt } from '@skysmack/framework';
 import { RecurringExpressionEvaluator } from './models/recurring-expression-evaluator';
+import { Field } from '@skysmack/ng-ui';
 
 @Component({
   selector: 'ss-recurring-expression-field',
@@ -16,6 +17,9 @@ export class RecurringExpressionFieldComponent extends FieldBaseComponent implem
 
   ngOnInit() {
     super.ngOnInit();
+  }
+
+  public init(fields: Field[]) {
     this.removeExpressionField();
   }
 

@@ -42,7 +42,7 @@ export class LodgingsEditComponent extends DocumentRecordFormComponent<LodgingsA
   public setEditFields() {
     this.lodgingTypeActions.getPaged(this.packagePath, new PagedQuery());
 
-    this.subscriptionHandler.register(combineLatest(
+    this.fields$ = combineLatest(
       this.initEditDocRecord(),
       this.lodgingTypeStore.get(this.packagePath)
     ).pipe(
@@ -53,6 +53,6 @@ export class LodgingsEditComponent extends DocumentRecordFormComponent<LodgingsA
         this.selectedEntity = entity;
         return this.fieldsConfig.getFields(entity, dynamicFields, { availableLodgingTypes });
       })
-    ).subscribe(fields => this.fields = fields));
+    );
   }
 }

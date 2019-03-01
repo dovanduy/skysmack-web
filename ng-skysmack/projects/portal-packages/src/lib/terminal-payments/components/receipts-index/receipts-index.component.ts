@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { EntityComponentPageTitle, DocumentRecordIndexComponent  } from '@skysmack/portal-ui';
+import { EntityComponentPageTitle, DocumentRecordIndexComponent } from '@skysmack/portal-ui';
 import { Router, ActivatedRoute } from '@angular/router';
-import { NgSkysmackStore, NgReceiptsActions, NgReceiptsStore } from '@skysmack/ng-packages';
+import { NgSkysmackStore, NgReceiptsActions, NgReceiptsStore, NgReceiptsFieldsConfig } from '@skysmack/ng-packages';
 import { ReceiptsAppState, Receipt } from '@skysmack/packages-terminal-payments';
 import { NgReceiptsMenu } from '../../ng-receipts-menu';
 import { EntityAction } from '@skysmack/ng-ui';
@@ -12,8 +12,7 @@ import { EntityAction } from '@skysmack/ng-ui';
   templateUrl: './receipts-index.component.html',
   styleUrls: ['./receipts-index.component.scss']
 })
-export class ReceiptsIndexComponent extends DocumentRecordIndexComponent <ReceiptsAppState, Receipt, number> implements OnInit {
-  public displayedColumns = ['name'];
+export class ReceiptsIndexComponent extends DocumentRecordIndexComponent<ReceiptsAppState, Receipt, number> implements OnInit {
   public entityActions: EntityAction[] = [
     new EntityAction().asUrlAction('edit', 'Edit', 'edit'),
     new EntityAction().asEventAction('Delete', this.delete, 'delete', this)
@@ -26,9 +25,10 @@ export class ReceiptsIndexComponent extends DocumentRecordIndexComponent <Receip
     public redux: NgSkysmackStore,
     public title: EntityComponentPageTitle,
     public store: NgReceiptsStore,
-    public sidebarMenu: NgReceiptsMenu
+    public sidebarMenu: NgReceiptsMenu,
+    public fieldsConfig: NgReceiptsFieldsConfig
   ) {
-    super(router, activatedRoute, actions, redux, store);
+    super(router, activatedRoute, actions, redux, store, fieldsConfig);
 
   }
 

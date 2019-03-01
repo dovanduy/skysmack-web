@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SelectField, DisableUntilValueRule } from '@skysmack/ng-ui';
+import { SelectField, DisableUntilValueRule, Field } from '@skysmack/ng-ui';
 import { FieldBaseComponent } from '../field-base-component';
 
 @Component({
@@ -12,15 +12,18 @@ export class SelectFieldComponent extends FieldBaseComponent implements OnInit {
 
   ngOnInit() {
     super.ngOnInit();
-    this.fieldOptions = (this.field as SelectField).getOptions();
-    this.runAllRulesOfType(DisableUntilValueRule.type, { fields: this.fields });
-    this.runRulesOnChange();
   }
 
-  public runRulesOnChange() {
+  public init(fields: Field[]) {
+    this.fieldOptions = (this.field as SelectField).getOptions();
+    this.runAllRulesOfType(DisableUntilValueRule.type, { fields });
+    this.runRulesOnChange(fields);
+  }
+
+  public runRulesOnChange(fields: Field[]) {
     this.subscribe(this.fh.form.valueChanges.subscribe(() => {
       this.runRules({
-        fields: this.fields,
+        fields,
         selectedValue: this.getFieldValue(),
       });
       this.fieldOptions = (this.field as SelectField).getOptions();

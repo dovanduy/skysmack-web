@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FieldBaseComponent } from '../field-base-component';
 import { FieldAccessPermission, AccessTypes } from '@skysmack/framework';
 import { FieldHelpers } from '@skysmack/ng-ui';
+import { Field } from '@skysmack/ng-ui';
 
 @Component({
   selector: 'ss-field-permission-field',
@@ -29,6 +30,9 @@ export class FieldPermissionFieldComponent extends FieldBaseComponent implements
 
   ngOnInit() {
     super.ngOnInit();
+  }
+
+  public init(fields: Field[]) {
     this.setAccessTypes();
     this.setPermission();
   }

@@ -1,7 +1,8 @@
 <ss-container [sidebarMenu]="sidebarMenu">
-    <ss-data-table *ngIf="entities$" [cancelAction]="actions.cancelRecordAction" [title]="'Access Policy Rules'"
-        [displayedColumns]="displayedColumns" [entities$]="pagedEntities$" [entityActions]="entityActions"
-        [packagePath]="packagePath" (entityActionEvent)="actionEvent($event)">
-
-    </ss-data-table>
+    <ss-records-container [area]="'access_policy_rules'" [cancelAction]="actions.cancelRecordAction"
+        [title]="'Access Policy Rules'" [entities$]="pagedEntities$" [entityActions]="entityActions"
+        [packagePath]="packagePath" (entityActionEvent)="actionEvent($event)" [totalCount]="totalCount"
+        [loadingState]="loadingState" (requestPage)="requestPage()" [fields$]="fields$"
+        (sortChanged)="sortChanged($event)">
+    </ss-records-container>
 </ss-container>

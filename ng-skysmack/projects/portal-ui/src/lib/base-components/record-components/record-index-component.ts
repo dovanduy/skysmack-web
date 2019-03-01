@@ -9,15 +9,13 @@ import { NgRecordReduxStore } from '@skysmack/ng-redux';
 import { OnInit } from '@angular/core';
 import { Record } from '@skysmack/framework';
 import { map } from 'rxjs/operators';
-import { Field, FieldsConfig } from '@skysmack/ng-ui';
+import { FieldsConfig } from '@skysmack/ng-ui';
 
 export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey> extends BaseComponent<TAppState, TKey> implements OnInit {
     public entities$: Observable<LocalObject<TRecord, TKey>[]>;
     public pages$: BehaviorSubject<LocalPage<TKey>[]> = new BehaviorSubject<LocalPage<TKey>[]>([]);
     public pagedEntities$: Observable<LocalObject<TRecord, TKey>[]>;
     public pagedQuery = new PagedQuery();
-
-    public fields$: Observable<Field[]>;
 
     public nextPageNumber = 1;
     public nextPageSize = this.pagedQuery.pageSize;
@@ -33,7 +31,7 @@ export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey>
         public actions: RecordActionsBase<TAppState, NgRedux<TAppState>>,
         public skysmackStore: NgSkysmackStore,
         public store: NgRecordReduxStore<TAppState, TRecord, TKey>,
-        public fieldsConfig?: FieldsConfig<TRecord, TKey, any>
+        public fieldsConfig: FieldsConfig<TRecord, TKey, any>
     ) {
         super(router, activatedRoute, skysmackStore);
     }
@@ -73,8 +71,7 @@ export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey>
     }
 
     protected setFields() {
-        // TODO: Remove fieldsConfig check when records container is used everywhere
-        this.fields$ = of(this.fieldsConfig ? this.fieldsConfig.getStaticFields() : []);
+        this.fields$ = of(this.fieldsConfig.getStaticFields());
     }
 
     protected delete(value: LocalObject<TRecord, TKey>, _this: RecordIndexComponent<any, any, any>) {

@@ -8,7 +8,7 @@ import { AccessPolicyRolesAppState, AccessPolicyRole, AccessPolicyRoleKey } from
 import { combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { PagedQuery, toLocalObject } from '@skysmack/framework';
-import { FormHelper } from '@skysmack/ng-ui/lib';
+import { FormHelper } from '@skysmack/ng-ui';
 
 @Component({
   selector: 'ss-access-policy-roles-create',
@@ -44,7 +44,7 @@ export class AccessPolicyRolesCreateComponent extends RecordFormComponent<Access
     // The fix is using roles-select component.
     this.rolesActions.getPaged('identities', new PagedQuery());
 
-    this.subscriptionHandler.register(combineLatest(
+    this.fields$ = combineLatest(
       this.accessPolicyRulesStore.get(this.packagePath),
       // TODO: FIX THIS TOO!!
       this.rolesStore.get('identities')
@@ -54,7 +54,7 @@ export class AccessPolicyRolesCreateComponent extends RecordFormComponent<Access
         const availableRoles = values[1];
         return this.fieldsConfig.getFields(undefined, undefined, { availableAccessPolicyRules, availableRoles });
       })
-    ).subscribe(fields => this.fields = fields));
+    );
   }
 
   protected create(fh: FormHelper) {

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FieldBaseComponent } from '../field-base-component';
 import { NgPackagesStore, NgSkysmackStore } from '@skysmack/ng-packages';
 import { switchMap, map } from 'rxjs/operators';
+import { Field } from '@skysmack/ng-ui';
 
 @Component({
   selector: 'ss-available-permissions-field',
@@ -19,6 +20,9 @@ export class AvailablePermissionsFieldComponent extends FieldBaseComponent imple
 
   ngOnInit() {
     super.ngOnInit();
+  }
+
+  public init(fields: Field[]) {
     this.selectedPackagePath = this.getOtherFieldValue('packagePath');
     this.getPermissions();
     this.resetOnPackagePathChange();

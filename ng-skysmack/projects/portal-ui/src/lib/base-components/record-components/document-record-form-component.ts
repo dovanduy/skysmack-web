@@ -31,34 +31,32 @@ export class DocumentRecordFormComponent<TAppState, TRecord extends Record<TKey>
 
     // Use these set functions in the component when the form has no dependencies
     protected setCreateFields() {
-        this.subscriptionHandler.register(
-            combineLatest(
-                this.initCreateDocRecord(),
-                this.skysmackStore.getEditorItem()
-            ).pipe(
-                map(values => {
-                    const fields = values[0];
-                    this.editorItem = values[1] as LocalObject<TRecord, TKey>;
-                    this.fields = this.fieldsConfig.getFields(this.editorItem, fields);
-                })
-            ).subscribe());
+        this.fields$ = combineLatest(
+            this.initCreateDocRecord(),
+            this.skysmackStore.getEditorItem()
+        ).pipe(
+            map(values => {
+                const fields = values[0];
+                this.editorItem = values[1] as LocalObject<TRecord, TKey>;
+                return this.fieldsConfig.getFields(this.editorItem, fields);
+            })
+        );
     }
 
     protected setEditFields() {
-        this.subscriptionHandler.register(
-            combineLatest(
-                this.initEditDocRecord(),
-                this.skysmackStore.getEditorItem()
-            ).pipe(
-                map(values => {
-                    const entity = values[0][0];
-                    const fields = values[0][1];
-                    this.editorItem = values[1] as LocalObject<TRecord, TKey>;
-                    this.editorItem ? this.selectedEntity = this.editorItem : this.selectedEntity = entity;
+        this.fields$ = combineLatest(
+            this.initEditDocRecord(),
+            this.skysmackStore.getEditorItem()
+        ).pipe(
+            map(values => {
+                const entity = values[0][0];
+                const fields = values[0][1];
+                this.editorItem = values[1] as LocalObject<TRecord, TKey>;
+                this.editorItem ? this.selectedEntity = this.editorItem : this.selectedEntity = entity;
 
-                    this.fields = this.fieldsConfig.getFields(this.selectedEntity, fields);
-                })
-            ).subscribe());
+                return this.fieldsConfig.getFields(this.selectedEntity, fields);
+            })
+        );
     }
 
     // Use these init functions and override set functions in the component when the form has dependencies

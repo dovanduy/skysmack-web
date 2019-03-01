@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { trigger, transition, style, animate } from '@angular/animations';
 import { FieldBaseComponent } from '../field-base-component';
+import { Field } from '@skysmack/ng-ui';
 
 @Component({
   selector: 'ss-email-field',
@@ -29,4 +30,6 @@ export class EmailFieldComponent extends FieldBaseComponent implements OnInit {
   ngOnInit() {
     super.ngOnInit();
   }
+
+  public init(fields: Field[]) { }
 }

@@ -5,24 +5,24 @@ import { DocumentRecordActionsBase, DocumentRecordState } from '@skysmack/redux'
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { EntityAction } from '@skysmack/ng-ui';
-import { BaseComponent } from './../../../base-components/base-component';
 import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { EntityComponentPageTitle } from './../../../models/entity-component-page-title';
 import { NgDocumentRecordReduxStore } from '@skysmack/ng-redux';
 import { NgDynamicFieldsMenu } from '../../ng-dynamic-fields-menu';
+import { RecordIndexComponent } from '../../../base-components/record-components/record-index-component';
+import { BaseComponent } from '../../../base-components/base-component';
 
 @Component({
   selector: 'ss-dynamic-fields-index',
   templateUrl: './dynamic-fields-index.component.html',
   styleUrls: ['./dynamic-fields-index.component.scss']
 })
-export class DynamicFieldsIndexComponent extends BaseComponent<DocumentRecordState<any, any>, any> implements OnInit {
+export class DynamicFieldsIndexComponent extends BaseComponent<any, any> implements OnInit { // extends RecordIndexComponent<DocumentRecordState<any, any>, any, any> implements OnInit {
 
-  public fields$: Observable<LocalObject<any, any>[]>;
+  public entities$: Observable<LocalObject<any, any>[]>;
   public actions: DocumentRecordActionsBase<any, any>;
   public store: NgDocumentRecordReduxStore<any, any, any>;
 
-  public displayedColumns = ['display'];
   public entityActions: EntityAction[] = [
     new EntityAction().asUrlAction('edit', 'Edit', 'edit'),
     new EntityAction().asEventAction('Delete', this.delete, 'delete', this)
@@ -36,6 +36,7 @@ export class DynamicFieldsIndexComponent extends BaseComponent<DocumentRecordSta
     public sidebarMenu: NgDynamicFieldsMenu,
     public injector: Injector
   ) {
+    // super(router, activatedRoute, undefined, redux, undefined, undefined);
     super(router, activatedRoute, redux);
   }
 
@@ -47,7 +48,7 @@ export class DynamicFieldsIndexComponent extends BaseComponent<DocumentRecordSta
         this.actions = this.injector.get(data.actionToken);
 
         this.actions.getFields(this.packagePath);
-        this.fields$ = this.store.getFields(this.packagePath);
+        this.entities$ = this.store.getFields(this.packagePath);
       })
     ).subscribe());
   }
@@ -56,7 +57,7 @@ export class DynamicFieldsIndexComponent extends BaseComponent<DocumentRecordSta
     event.action(event.value, event._this);
   }
 
-  private delete(value: LocalObject<any, any>, _this: DynamicFieldsIndexComponent) {
+  protected delete(value: LocalObject<any, any>, _this: DynamicFieldsIndexComponent) {
     _this.actions.deleteFields([value], _this.packagePath);
   }
 }

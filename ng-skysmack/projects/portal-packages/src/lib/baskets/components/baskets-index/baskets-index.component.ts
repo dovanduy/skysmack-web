@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { EntityComponentPageTitle, DocumentRecordIndexComponent } from '@skysmack/portal-ui';
 import { Router, ActivatedRoute } from '@angular/router';
-import { NgBasketsActions } from '@skysmack/ng-packages';
+import { NgBasketsActions, NgBasketsFieldsConfig } from '@skysmack/ng-packages';
 import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { NgBasketsStore } from '@skysmack/ng-packages';
 import { Basket, BasketsAppState } from '@skysmack/packages-baskets';
@@ -16,7 +16,6 @@ import { EntityAction } from '@skysmack/ng-ui';
 })
 export class BasketsIndexComponent extends DocumentRecordIndexComponent<BasketsAppState, Basket, number> implements OnInit {
 
-  public displayedColumns = ['currencyCode'];
   public entityActions: EntityAction[] = [
     new EntityAction().asUrlAction('edit', 'Edit', 'edit'),
     new EntityAction().asEventAction('Delete', this.delete, 'delete', this)
@@ -29,9 +28,11 @@ export class BasketsIndexComponent extends DocumentRecordIndexComponent<BasketsA
     public redux: NgSkysmackStore,
     public title: EntityComponentPageTitle,
     public store: NgBasketsStore,
-    public sidebarMenu: NgBasketsMenu
+    public sidebarMenu: NgBasketsMenu,
+    public fieldsConfig: NgBasketsFieldsConfig
+
   ) {
-    super(router, activatedRoute, actions, redux, store);
+    super(router, activatedRoute, actions, redux, store, fieldsConfig);
 
   }
 

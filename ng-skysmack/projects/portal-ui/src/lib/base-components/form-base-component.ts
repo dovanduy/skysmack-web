@@ -1,6 +1,5 @@
 import { Router, ActivatedRoute } from '@angular/router';
 import { BaseComponent } from './base-component';
-import { Field } from '@skysmack/ng-ui';
 import { LocalObject, Record, toLocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { FieldsConfig } from '@skysmack/ng-ui';
 import { NgSkysmackStore } from '@skysmack/ng-packages';
@@ -10,11 +9,6 @@ import { NgRedux } from '@angular-redux/store';
 import { EditorNavService } from './../components/common/container/editor-nav.service';
 
 export class FormBaseComponent<TAppState, TRecord extends Record<TKey>, TKey, TDependencies> extends BaseComponent<TAppState, TKey> {
-    /**
-     * Fields being sent the dynamic form component used to create the form.
-     */
-    public fields: Field[];
-
     /**
      * The selected entity needed for edit forms.
      */

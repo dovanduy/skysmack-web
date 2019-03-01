@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { EntityComponentPageTitle, DocumentRecordIndexComponent } from '@skysmack/portal-ui';
 import { Router, ActivatedRoute } from '@angular/router';
-import { NgInvoicesActions } from '@skysmack/ng-packages';
+import { NgInvoicesActions, NgInvoicesFieldsConfig } from '@skysmack/ng-packages';
 import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { NgInvoicesStore } from '@skysmack/ng-packages';
 import { Invoice, InvoicesAppState } from '@skysmack/packages-invoices';
@@ -16,7 +16,6 @@ import { EntityAction } from '@skysmack/ng-ui';
 })
 export class InvoicesIndexComponent extends DocumentRecordIndexComponent<InvoicesAppState, Invoice, number> implements OnInit {
 
-  public displayedColumns = ['currencyCode'];
   public entityActions: EntityAction[] = [
     new EntityAction().asUrlAction('edit', 'Edit', 'edit'),
     new EntityAction().asEventAction('Delete', this.delete, 'delete', this)
@@ -29,9 +28,10 @@ export class InvoicesIndexComponent extends DocumentRecordIndexComponent<Invoice
     public redux: NgSkysmackStore,
     public title: EntityComponentPageTitle,
     public store: NgInvoicesStore,
-    public sidebarMenu: NgInvoicesMenu
+    public sidebarMenu: NgInvoicesMenu,
+    public fieldsConfig: NgInvoicesFieldsConfig
   ) {
-    super(router, activatedRoute, actions, redux, store);
+    super(router, activatedRoute, actions, redux, store, fieldsConfig);
 
   }
 

@@ -14,7 +14,6 @@ import { RecordFormComponent, EditorNavService } from '@skysmack/portal-ui';
 })
 export class AssignmentsCreateComponent extends RecordFormComponent<AssignmentsAppState, Assignment, number, NgAssignmentFormDependencies> implements OnInit {
 
-
   constructor(
     public router: Router,
     public activatedRoute: ActivatedRoute,
@@ -37,13 +36,13 @@ export class AssignmentsCreateComponent extends RecordFormComponent<AssignmentsA
   public setCreateFields() {
     this.assignmentTypesActions.getPaged(this.packagePath, new PagedQuery());
 
-    this.subscriptionHandler.register(combineLatest(
+    this.fields$ = combineLatest(
       this.assignmentTypesStore.get(this.packagePath)
     ).pipe(
       map(values => {
         const availableAssignmentTypes = values[0];
         return this.fieldsConfig.getFields(undefined, undefined, { availableAssignmentTypes });
       })
-    ).subscribe(fields => this.fields = fields));
+    );
   }
 }

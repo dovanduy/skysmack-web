@@ -34,12 +34,12 @@ export class UsersEditComponent extends RecordFormComponent<UsersAppState, User,
   }
 
   protected setEditFields() {
-    this.subscriptionHandler.register(this.initEditRecord().pipe(
+    this.fields$ = this.initEditRecord().pipe(
       map(entity => {
         this.selectedEntity = entity;
         this.fieldsConfig.mode = 'edit';
         return this.fieldsConfig.getFields(entity);
       })
-    ).subscribe(fields => this.fields = fields));
+    );
   }
 }

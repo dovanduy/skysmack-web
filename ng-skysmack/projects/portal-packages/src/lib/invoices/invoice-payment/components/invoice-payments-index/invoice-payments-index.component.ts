@@ -1,13 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { EntityComponentPageTitle, DocumentRecordIndexComponent } from '@skysmack/portal-ui';
 import { Router, ActivatedRoute } from '@angular/router';
-import { NgInvoicePaymentsActions } from '@skysmack/ng-packages';
+import { NgInvoicePaymentsActions, NgInvoicePaymentsFieldsConfig } from '@skysmack/ng-packages';
 import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { NgInvoicePaymentsStore } from '@skysmack/ng-packages';
 import { InvoicePayment, InvoicePaymentsAppState } from '@skysmack/packages-invoices';
 import { NgInvoicePaymentsMenu } from './../../ng-invoice-payments-menu';
 import { EntityAction } from '@skysmack/ng-ui';
-
 
 @Component({
   selector: 'ss-invoice-payments-index',
@@ -16,7 +15,6 @@ import { EntityAction } from '@skysmack/ng-ui';
 })
 export class InvoicePaymentsIndexComponent extends DocumentRecordIndexComponent<InvoicePaymentsAppState, InvoicePayment, number> implements OnInit {
 
-  public displayedColumns = ['description', 'source', 'amount', 'ip', 'inventoryId'];
   public entityActions: EntityAction[] = [
     new EntityAction().asUrlAction('edit', 'Edit', 'edit'),
     new EntityAction().asEventAction('Delete', this.delete, 'delete', this)
@@ -29,9 +27,10 @@ export class InvoicePaymentsIndexComponent extends DocumentRecordIndexComponent<
     public redux: NgSkysmackStore,
     public title: EntityComponentPageTitle,
     public store: NgInvoicePaymentsStore,
-    public sidebarMenu: NgInvoicePaymentsMenu
+    public sidebarMenu: NgInvoicePaymentsMenu,
+    public fieldsConfig: NgInvoicePaymentsFieldsConfig
   ) {
-    super(router, activatedRoute, actions, redux, store);
+    super(router, activatedRoute, actions, redux, store, fieldsConfig);
 
   }
 

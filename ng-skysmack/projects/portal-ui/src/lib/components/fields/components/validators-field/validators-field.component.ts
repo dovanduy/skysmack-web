@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { DynamicFieldRouteData, flatten, FieldValueProviderViewModel, LocalObject, StrIndex, log } from '@skysmack/framework';
 import { NgDocumentRecordReduxStore } from '@skysmack/ng-redux';
 import { map, switchMap, filter } from 'rxjs/operators';
-import { combineLatest } from 'rxjs';
+import { Field } from '@skysmack/ng-ui';
 
 type ValidatorTypes = 'range' | 'required';
 
@@ -46,6 +46,9 @@ export class ValidatorsFieldComponent extends FieldBaseComponent implements OnIn
 
   ngOnInit() {
     super.ngOnInit();
+  }
+
+  public init(fields: Field[]) {
     this.packagePath = this.router.url.split('/')[1];
 
     // Get default values

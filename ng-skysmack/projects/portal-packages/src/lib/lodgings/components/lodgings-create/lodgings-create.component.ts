@@ -41,7 +41,7 @@ export class LodgingsCreateComponent extends DocumentRecordFormComponent<Lodging
   public setCreateFields() {
     this.lodgingTypeActions.getPaged(this.packagePath, new PagedQuery());
 
-    this.subscriptionHandler.register(combineLatest(
+    this.fields$ = combineLatest(
       this.initCreateDocRecord(),
       this.lodgingTypeStore.get(this.packagePath)
     ).pipe(
@@ -50,7 +50,7 @@ export class LodgingsCreateComponent extends DocumentRecordFormComponent<Lodging
         const availableLodgingTypes = values[1];
         return this.fieldsConfig.getFields(undefined, dynamicFields, { availableLodgingTypes });
       })
-    ).subscribe(fields => this.fields = fields));
+    );
   }
 
 }

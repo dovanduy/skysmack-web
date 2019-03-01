@@ -11,6 +11,7 @@ import { AuthenticationActions } from '@skysmack/redux';
 import { filter } from 'rxjs/operators';
 import { Oauth2Requests } from '@skysmack/ng-packages';
 import { Field, FormHelper } from '@skysmack/ng-ui';
+import { Observable, of } from 'rxjs';
 
 @Component({
   selector: 'ss-login',
@@ -39,7 +40,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   public loggingIn = false;
   public error = false;
   public success = false;
-  public fields: Field[];
+  public fields$: Observable<Field[]>;
   public subscriptionHandler = new SubscriptionHandler();
 
   constructor(
@@ -64,7 +65,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   public createForm() {
-    this.fields = this.fieldsConfig.getStaticFields();
+    this.fields$ = of(this.fieldsConfig.getStaticFields());
   }
 
   public onSubmit(fh: FormHelper) {

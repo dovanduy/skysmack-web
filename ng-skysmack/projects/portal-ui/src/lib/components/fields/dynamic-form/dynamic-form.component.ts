@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { SubscriptionLike } from 'rxjs';
+import { SubscriptionLike, Observable } from 'rxjs';
 import { Field, FormRule, FormHelper, Validation } from '@skysmack/ng-ui';
 import { EditorNavService } from './../../common/container/editor-nav.service';
 import { GlobalProperties } from '@skysmack/framework';
@@ -11,8 +11,7 @@ import { GlobalProperties } from '@skysmack/framework';
   styleUrls: ['./dynamic-form.component.scss']
 })
 export class DynamicFormComponent implements OnInit, OnDestroy {
-
-  @Input() public fields: Field[];
+  @Input() public fields$: Observable<Field[]>;
   @Input() public rules: FormRule[];
   @Input() public validation: Validation;
   @Input() public buttonText = 'Submit';
@@ -29,7 +28,7 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
   constructor(public fb: FormBuilder, public editorNavService: EditorNavService) { }
 
   ngOnInit() {
-    this.createForm();
+    this.fields$.subscribe(fields => this.createForm(fields));
     setTimeout(() => {
       if (!this.noSidebar) {
         this.editorNavService.showEditorNav();
@@ -41,9 +40,9 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
     return field ? field.key : undefined;
   }
 
-  public createForm(): void {
-    const formHelper = this.createFormHelper();
-    this.disableFields(this.fields, formHelper);
+  public createForm(fields: Field[]): void {
+    const formHelper = this.createFormHelper(fields);
+    this.disableFields(fields, formHelper);
     this.validateOnChange(formHelper);
     this.fh = formHelper;
   }
@@ -55,9 +54,10 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
   /**
    * Creates a form helper from a group of fields.
    */
-  private createFormHelper() {
+  private createFormHelper(fields: Field[]) {
+    // TODO: Only replace fields that do not already exist.
     const formGroup = {};
-    this.fields.forEach(field => {
+    fields.forEach(field => {
       formGroup[field.key] = field.validators ? [field.value, Validators.compose(field.validators)] : field.value;
     });
     const formHelper = new FormHelper(this.fb.group(formGroup, { validator: this.validation.formValidators }), this.validation);

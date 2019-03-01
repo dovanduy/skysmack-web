@@ -17,7 +17,7 @@ export class DocumentRecordIndexComponent<TAppState, TRecord extends Record<TKey
         public actions: DocumentRecordActionsBase<TAppState, NgRedux<TAppState>>,
         public redux: NgSkysmackStore,
         public store: NgDocumentRecordReduxStore<TAppState, TRecord, TKey>,
-        public fieldsConfig?: FieldsConfig<TRecord, TKey, any>
+        public fieldsConfig: FieldsConfig<TRecord, TKey, any>
     ) {
         super(router, activatedRoute, actions, redux, store, fieldsConfig);
     }

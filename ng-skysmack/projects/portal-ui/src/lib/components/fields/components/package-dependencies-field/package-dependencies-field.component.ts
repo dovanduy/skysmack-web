@@ -4,6 +4,7 @@ import { map } from 'rxjs/operators';
 import { combineLatest, Observable } from 'rxjs';
 import { NgPackagesStore } from '@skysmack/ng-packages';
 import { flatten, notNull, AvailablePackage, LocalObject } from '@skysmack/framework';
+import { Field } from '@skysmack/ng-ui';
 
 class SelectBox {
   index: number;
@@ -38,6 +39,9 @@ export class PackageDependenciesFieldComponent extends FieldBaseComponent implem
 
   ngOnInit() {
     super.ngOnInit();
+  }
+
+  public init(fields: Field[]) {
     this.createSelectBoxes();
   }
 

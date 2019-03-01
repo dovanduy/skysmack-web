@@ -17,7 +17,6 @@ import { LodgingsArrivalsComponent } from '../lodgings-arrivals/lodgings-arrival
   styleUrls: ['./lodgings-reservations-index.component.scss']
 })
 export class LodgingsReservationsIndexComponent extends RecordIndexComponent<LodgingReservationsAppState, LodgingReservation, number> implements OnInit {
-  public displayedColumns = ['checkIn', 'checkOut', 'persons', 'lodgingName', 'lodgingTypeName', 'status'];
   public entityActions: EntityAction[] = [
     // Checkin
     new EntityAction().asEventAction('Checkin', this.checkIn, 'label', this).setShowLogic((entity: LocalObject<ExtendedReservation, number>) => {
@@ -81,7 +80,7 @@ export class LodgingsReservationsIndexComponent extends RecordIndexComponent<Lod
     public sidebarMenu: NgLodgingsReservationsMenu,
     public pageTitle: EntityComponentPageTitle
   ) {
-    super(router, activatedRoute, actions, skysmackStore, store);
+    super(router, activatedRoute, actions, skysmackStore, store, fieldsConfig);
   }
 
   ngOnInit() {

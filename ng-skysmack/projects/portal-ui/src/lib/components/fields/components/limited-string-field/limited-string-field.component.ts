@@ -1,6 +1,7 @@
 import { animate, style, transition, trigger } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { FieldBaseComponent } from '../field-base-component';
+import { Field } from '@skysmack/ng-ui';
 
 @Component({
   selector: 'ss-limited-string-field',
@@ -33,6 +34,9 @@ export class LimitedStringFieldComponent extends FieldBaseComponent implements O
 
   ngOnInit() {
     super.ngOnInit();
+  }
+
+  public init(fields: Field[]) {
     this.setCharsLeft();
   }
 

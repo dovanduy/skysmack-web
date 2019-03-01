@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { EntityComponentPageTitle, BaseComponent } from '@skysmack/portal-ui';
 import { Router, ActivatedRoute } from '@angular/router';
-import { NgPackagesActions } from '@skysmack/ng-packages';
+import { NgPackagesActions, NgPackagesFieldsConfig } from '@skysmack/ng-packages';
 import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { NgPackagesStore } from '@skysmack/ng-packages';
 import { PackagesAppState } from '@skysmack/packages-skysmack-core';
@@ -19,7 +19,6 @@ export class PackagesIndexComponent extends BaseComponent<PackagesAppState, stri
 
   public packages$: Observable<LocalObject<Package, string>[]>;
 
-  public displayedColumns = ['name', 'path'];
   public entityActions: EntityAction[] = [
     new EntityAction().asUrlAction('edit', 'Edit', 'edit'),
     new EntityAction().asEventAction('Delete', this.delete, 'delete', this)
@@ -32,7 +31,8 @@ export class PackagesIndexComponent extends BaseComponent<PackagesAppState, stri
     public redux: NgSkysmackStore,
     public title: EntityComponentPageTitle,
     public store: NgPackagesStore,
-    public sidebarMenu: NgPackagesMenu
+    public sidebarMenu: NgPackagesMenu,
+    public fieldsConfig: NgPackagesFieldsConfig
   ) {
     super(router, activatedRoute, redux);
   }

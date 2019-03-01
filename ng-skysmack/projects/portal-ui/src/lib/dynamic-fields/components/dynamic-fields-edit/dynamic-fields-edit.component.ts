@@ -36,7 +36,7 @@ export class DynamicFieldsEditComponent extends BaseComponent<DocumentRecordStat
 
   ngOnInit() {
     super.ngOnInit();
-    this.subscriptionHandler.register(this.activatedRoute.data.pipe(
+    this.fields$ = this.activatedRoute.data.pipe(
       switchMap((data: DynamicFieldRouteData) => {
         this.store = this.injector.get(data.storeToken);
         this.actions = this.injector.get(data.actionToken);
@@ -56,7 +56,7 @@ export class DynamicFieldsEditComponent extends BaseComponent<DocumentRecordStat
         this.editorItem ? this.selectedField = this.editorItem : this.selectedField = field;
         return this.fieldsConfig.getDynamicFields(availableFields, field);
       })
-    ).subscribe(fields => this.fields = fields));
+    );
 
     this.editorNavService.showEditorNav();
   }

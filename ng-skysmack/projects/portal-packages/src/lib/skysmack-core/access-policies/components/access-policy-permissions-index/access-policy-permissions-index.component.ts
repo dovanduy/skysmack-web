@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { EntityComponentPageTitle, RecordIndexComponent } from '@skysmack/portal-ui';
 import { Router, ActivatedRoute } from '@angular/router';
-import { NgAccessPolicyPermissionsActions } from '@skysmack/ng-packages';
+import { NgAccessPolicyPermissionsActions, NgAccessPolicyPermissionsFieldsConfig } from '@skysmack/ng-packages';
 import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { NgAccessPolicyPermissionsStore } from '@skysmack/ng-packages';
 import { EntityAction } from '@skysmack/ng-ui';
@@ -16,7 +16,6 @@ import { NgAccessPolicyPermissionsMenu } from '../../ng-access-policy-permission
 })
 export class AccessPolicyPermissionsIndexComponent extends RecordIndexComponent<AccessPolicyPermissionsAppState, AccessPolicyPermission, number> implements OnInit {
 
-  public displayedColumns = ['ruleId', 'permission', 'packagePath', 'order', 'isTopLevel'];
   public entityActions: EntityAction[] = [
     new EntityAction().asUrlAction('edit', 'Edit', 'edit'),
     new EntityAction().asEventAction('Delete', this.delete, 'delete', this)
@@ -29,9 +28,10 @@ export class AccessPolicyPermissionsIndexComponent extends RecordIndexComponent<
     public redux: NgSkysmackStore,
     public title: EntityComponentPageTitle,
     public store: NgAccessPolicyPermissionsStore,
-    public sidebarMenu: NgAccessPolicyPermissionsMenu
+    public sidebarMenu: NgAccessPolicyPermissionsMenu,
+    public fieldsConfig: NgAccessPolicyPermissionsFieldsConfig
   ) {
-    super(router, activatedRoute, actions, redux, store);
+    super(router, activatedRoute, actions, redux, store, fieldsConfig);
   }
 
   ngOnInit() {

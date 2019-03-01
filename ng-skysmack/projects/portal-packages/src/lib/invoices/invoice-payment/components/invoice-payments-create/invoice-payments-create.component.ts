@@ -22,7 +22,7 @@ export class InvoicePaymentsCreateComponent extends DocumentRecordFormComponent<
     public actions: NgInvoicePaymentsActions,
     public redux: NgSkysmackStore,
     public fieldsConfig: NgInvoicePaymentsFieldsConfig,
-    public store: NgInvoicePaymentsStore,
+    public store: NgInvoicePaymentsStore
   ) {
     super(router, activatedRoute, editorNavService, actions, redux, store, fieldsConfig);
   }

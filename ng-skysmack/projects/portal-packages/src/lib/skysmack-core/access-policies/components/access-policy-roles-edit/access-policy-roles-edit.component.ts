@@ -43,7 +43,7 @@ export class AccessPolicyRolesEditComponent extends RecordFormComponent<AccessPo
     // 'identities' BELOW IS JUST THE DEFAULT INSTALLED PACKAGE!
     this.rolesActions.getPaged('identities', new PagedQuery());
 
-    this.subscriptionHandler.register(combineLatest(
+    this.fields$ = combineLatest(
       this.initEditRecord(),
       this.accessPolicyRulesStore.get(this.packagePath),
       // TODO: FIX THIS TOO!!
@@ -56,6 +56,6 @@ export class AccessPolicyRolesEditComponent extends RecordFormComponent<AccessPo
         this.selectedEntity = entity;
         return this.fieldsConfig.getFields(entity, undefined, { availableAccessPolicyRules, availableRoles });
       })
-    ).subscribe(fields => this.fields = fields));
+    );
   }
 }

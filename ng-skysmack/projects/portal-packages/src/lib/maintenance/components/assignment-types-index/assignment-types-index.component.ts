@@ -5,6 +5,7 @@ import { EntityComponentPageTitle, RecordIndexComponent } from '@skysmack/portal
 import { EntityAction } from '@skysmack/ng-ui';
 import { NgAssignmentTypesActions, NgSkysmackStore, NgAssignmentTypesStore } from '@skysmack/ng-packages';
 import { NgAssignmentTypesMenu } from './../../ng-assignment-types-menu';
+import { NgAssignmentTypesFieldsConfig } from '@skysmack/ng-packages';
 
 @Component({
   selector: 'ss-assignment-types-index',
@@ -13,7 +14,6 @@ import { NgAssignmentTypesMenu } from './../../ng-assignment-types-menu';
 })
 export class AssignmentTypesIndexComponent extends RecordIndexComponent<AssignmentTypesAppState, AssignmentType, number> implements OnInit {
 
-  public displayedColumns = ['name'];
   public entityActions: EntityAction[] = [
     new EntityAction().asUrlAction('edit', 'Edit', 'edit'),
     new EntityAction().asEventAction('Delete', this.delete, 'delete', this)
@@ -26,9 +26,10 @@ export class AssignmentTypesIndexComponent extends RecordIndexComponent<Assignme
     public redux: NgSkysmackStore,
     public title: EntityComponentPageTitle,
     public store: NgAssignmentTypesStore,
-    public sidebarMenu: NgAssignmentTypesMenu
+    public sidebarMenu: NgAssignmentTypesMenu,
+    public fieldsConfig: NgAssignmentTypesFieldsConfig
   ) {
-    super(router, activatedRoute, actions, redux, store);
+    super(router, activatedRoute, actions, redux, store, fieldsConfig);
 
   }
 

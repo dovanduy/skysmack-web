@@ -26,5 +26,4 @@ export class AssignmentTypesCreateComponent extends RecordFormComponent<Assignme
     super.ngOnInit();
     this.setCreateFields();
   }
-
 }

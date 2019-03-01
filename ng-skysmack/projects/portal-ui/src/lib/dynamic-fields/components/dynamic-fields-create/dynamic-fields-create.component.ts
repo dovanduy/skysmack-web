@@ -1,7 +1,6 @@
 import { Component, OnInit, Injector, OnDestroy } from '@angular/core';
 import { DocumentRecordState, DocumentRecordActionsBase } from '@skysmack/redux';
 import { BaseComponent } from './../../../base-components/base-component';
-import { Field } from '@skysmack/ng-ui';
 import { Router, ActivatedRoute } from '@angular/router';
 import { EditorNavService } from './../../../components/common/container/editor-nav.service';
 import { NgSkysmackStore } from '@skysmack/ng-packages';
@@ -18,7 +17,6 @@ import { combineLatest } from 'rxjs';
   styleUrls: ['./dynamic-fields-create.component.scss']
 })
 export class DynamicFieldsCreateComponent extends BaseComponent<DocumentRecordState<any, any>, any> implements OnInit, OnDestroy {
-  public fields: Field[];
   public actions: DocumentRecordActionsBase<any, any>;
   public store: NgDocumentRecordReduxStore<any, any, any>;
   public editorItem: LocalObject<FieldSchemaViewModel, string>;
@@ -36,7 +34,8 @@ export class DynamicFieldsCreateComponent extends BaseComponent<DocumentRecordSt
 
   ngOnInit() {
     super.ngOnInit();
-    this.subscriptionHandler.register(this.activatedRoute.data.pipe(
+
+    this.fields$ = this.activatedRoute.data.pipe(
       switchMap((data: DynamicFieldRouteData) => {
         this.store = this.injector.get(data.storeToken);
         this.actions = this.injector.get(data.actionToken);
@@ -51,8 +50,7 @@ export class DynamicFieldsCreateComponent extends BaseComponent<DocumentRecordSt
         this.editorItem = values[0] as LocalObject<FieldSchemaViewModel, string>;
         const availableFields = values[1];
         return this.fieldsConfig.getDynamicFields(availableFields, this.editorItem);
-      }),
-    ).subscribe(fields => this.fields = fields));
+      }));
 
     this.editorNavService.showEditorNav();
   }

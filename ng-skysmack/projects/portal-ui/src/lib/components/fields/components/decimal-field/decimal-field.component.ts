@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FieldBaseComponent } from '../field-base-component';
+import { Field } from '@skysmack/ng-ui';
 
 @Component({
   selector: 'ss-decimal-field',
@@ -7,4 +8,6 @@ import { FieldBaseComponent } from '../field-base-component';
   styleUrls: ['./decimal-field.component.scss']
 })
 export class DecimalFieldComponent extends FieldBaseComponent {
+
+  public init(fields: Field[]) { }
 }

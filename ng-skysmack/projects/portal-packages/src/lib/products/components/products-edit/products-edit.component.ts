@@ -43,7 +43,7 @@ export class ProductsEditComponent extends DocumentRecordFormComponent<ProductsA
   public setEditFields() {
     this.productTypeActions.getPaged(this.packagePath, new PagedQuery());
 
-    this.subscriptionHandler.register(combineLatest(
+    this.fields$ = combineLatest(
       this.initEditDocRecord(),
       this.productTypeStore.get(this.packagePath)
     ).pipe(
@@ -54,6 +54,6 @@ export class ProductsEditComponent extends DocumentRecordFormComponent<ProductsA
         this.selectedEntity = entity;
         return this.fieldsConfig.getFields(entity, dynamicFields, { availableProductTypes });
       })
-    ).subscribe(fields => this.fields = fields));
+    );
   }
 }

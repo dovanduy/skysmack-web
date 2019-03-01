@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { EntityComponentPageTitle, RecordIndexComponent, } from '@skysmack/portal-ui';
-import { NgUsersActions, NgUsersStore, NgSkysmackStore } from '@skysmack/ng-packages';
+import { NgUsersActions, NgUsersStore, NgSkysmackStore, NgUsersFieldsConfig } from '@skysmack/ng-packages';
 import { EntityAction } from '@skysmack/ng-ui';
 import { User, UsersAppState } from '@skysmack/packages-identities';
 import { NgUsersMenu } from './../../ng-users-menu';
@@ -14,7 +14,6 @@ import { NgUsersMenu } from './../../ng-users-menu';
 })
 export class UsersIndexComponent extends RecordIndexComponent<UsersAppState, User, number> implements OnInit {
 
-  public displayedColumns = ['email'];
   public entityActions: EntityAction[] = [
     new EntityAction().asUrlAction('edit', 'Edit', 'edit'),
     new EntityAction().asUrlAction('edit/set-password', 'Set password', 'https'),
@@ -29,9 +28,10 @@ export class UsersIndexComponent extends RecordIndexComponent<UsersAppState, Use
     public redux: NgSkysmackStore,
     public title: EntityComponentPageTitle,
     public store: NgUsersStore,
-    public sidebarMenu: NgUsersMenu
+    public sidebarMenu: NgUsersMenu,
+    public fieldsConfig: NgUsersFieldsConfig
   ) {
-    super(router, activatedRoute, actions, redux, store);
+    super(router, activatedRoute, actions, redux, store, fieldsConfig);
   }
 
   ngOnInit() {

@@ -4,10 +4,11 @@ import { Observable } from 'rxjs';
 import { Router, ActivatedRoute } from '@angular/router';
 import { OnInit, OnDestroy } from '@angular/core';
 import { take } from 'rxjs/operators';
+import { Field } from '@skysmack/ng-ui';
 
 export class BaseComponent<TAppState, TKey> implements OnInit, OnDestroy {
     public subscriptionHandler = new SubscriptionHandler();
-
+    public fields$: Observable<Field[]>;
     public entityId: TKey;
     public packagePath: string;
     public loadedPackage$: Observable<LoadedPackage>;

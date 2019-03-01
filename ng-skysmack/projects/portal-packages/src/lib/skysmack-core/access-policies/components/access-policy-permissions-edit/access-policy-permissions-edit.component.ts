@@ -42,7 +42,7 @@ export class AccessPolicyPermissionsEditComponent extends RecordFormComponent<Ac
     this.skysmackActions.getSkysmack();
     this.accessPolicyRulesActions.getPaged(this.packagePath, new PagedQuery());
 
-    this.subscriptionHandler.register(combineLatest(
+    this.fields$ = combineLatest(
       this.initEditRecord(),
       this.skysmackStore.getPackages(),
       this.accessPolicyRulesStore.get(this.packagePath)
@@ -54,7 +54,7 @@ export class AccessPolicyPermissionsEditComponent extends RecordFormComponent<Ac
         this.selectedEntity = entity;
         return this.fieldsConfig.getFields(entity, undefined, { installedPackages, availableAccessPolicyRules });
       })
-    ).subscribe(fields => this.fields = fields));
+    );
   }
 
   protected update(fh: FormHelper) {

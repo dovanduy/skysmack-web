@@ -12,7 +12,6 @@ import { NgAssignmentAllMenu } from './../../ng-assignments-all-menu';
 })
 export class AssignmentsAllIndexComponent implements OnInit {
 
-  public displayedColumns = ['name'];
   public entityActions: EntityAction[] = [
     new EntityAction().asUrlAction('edit', 'Edit', 'edit'),
   ];

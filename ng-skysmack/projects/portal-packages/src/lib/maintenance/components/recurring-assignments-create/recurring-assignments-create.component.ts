@@ -35,13 +35,13 @@ export class RecurringAssignmentsCreateComponent extends RecordFormComponent<Rec
   public setCreateFields() {
     this.actions.getPaged(this.packagePath, new PagedQuery());
 
-    this.subscriptionHandler.register(combineLatest(
+    this.fields$ = combineLatest(
       this.store.get(this.packagePath)
     ).pipe(
       map(values => {
         const availableRecurringAssignments = values[0];
         return this.fieldsConfig.getFields(undefined, undefined, { availableRecurringAssignments });
       })
-    ).subscribe(fields => this.fields = fields));
+    );
   }
 }
