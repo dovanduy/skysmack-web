@@ -7,7 +7,8 @@ import { DynamicFieldRouteData } from '@skysmack/framework';
 
 const data = {
   actionToken: 'NgPersonsActions',
-  storeToken: 'NgPersonsStore'
+  storeToken: 'NgPersonsStore',
+  fieldsConfigToken: 'NgPersonsFieldsConfig'
 } as DynamicFieldRouteData;
 
 export const personsRoutes: Routes = [
