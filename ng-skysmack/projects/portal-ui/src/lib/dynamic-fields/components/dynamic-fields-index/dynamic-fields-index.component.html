@@ -1,5 +1,5 @@
 <ss-container [sidebarMenu]="sidebarMenu" *ngIf="loadedPackage$ | async as loadedPackage">
-  <ss-records-container [area]="'fields'" [cancelAction]="actions.cancelDynamicFieldAction"
+  <ss-records-container [area]="'fields'" [cancelAction]="dynamicActions.cancelDynamicFieldAction"
     [title]="loadedPackage._package.name + ' fields'" [entities$]="entities$" [entityActions]="entityActions"
     [packagePath]="packagePath" (entityActionEvent)="actionEvent($event)" [totalCount]="totalCount"
     [loadingState]="loadingState" (requestPage)="requestPage()" [fields$]="fields$" (sortChanged)="sortChanged($event)">
