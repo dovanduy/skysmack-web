@@ -26,8 +26,8 @@ export class FieldActions<TStateType, TStore extends Store<TStateType>> implemen
     public static FIELD_GET_AVAILABLE_FIELDS_FAILURE = 'FIELD_GET_AVAILABLE_FIELDS_FAILURE';
 
     public static FIELD_ADD = 'FIELD_ADD';
-    public static FIELD_ADD_SUCCESS = 'FIELD_SUCCESS';
-    public static FIELD_ADD_FAILURE = 'FIELD_FAILURE';
+    public static FIELD_ADD_SUCCESS = 'FIELD_ADD_SUCCESS';
+    public static FIELD_ADD_FAILURE = 'FIELD_ADD_FAILURE';
 
     public static FIELD_UPDATE = 'FIELD_UPDATE';
     public static FIELD_UPDATE_SUCCESS = 'FIELD_UPDATE_SUCCESS';
@@ -107,6 +107,7 @@ export class FieldActions<TStateType, TStore extends Store<TStateType>> implemen
                     commit: new ReduxAction({
                         type: FieldActions.FIELD_ADD_SUCCESS,
                         meta: {
+                            stateKey: packagePath,
                             value: fields,
                             packagePath,
                             queueItems
@@ -115,6 +116,7 @@ export class FieldActions<TStateType, TStore extends Store<TStateType>> implemen
                     rollback: new ReduxAction({
                         type: FieldActions.FIELD_ADD_FAILURE,
                         meta: {
+                            stateKey: packagePath,
                             value: fields,
                             packagePath,
                             queueItems
@@ -144,27 +146,24 @@ export class FieldActions<TStateType, TStore extends Store<TStateType>> implemen
             type: FieldActions.FIELD_UPDATE,
             meta: {
                 offline: {
-                    // TODO: Add [] FieldSchemaViewModel both places below when fields accepts arrays.
-                    effect: new Effect<FieldSchemaViewModel>(new EffectRequest<FieldSchemaViewModel>(
-                        // TODO: Use this below when fields accepts array: packagePath + '/fields
-                        this.addAdditionalPaths(packagePath, additionalPaths) + '/fields/' + fields[0].object.key,
+                    effect: new Effect<FieldSchemaViewModel[]>(new EffectRequest<FieldSchemaViewModel[]>(
+                        this.addAdditionalPaths(packagePath, additionalPaths) + '/fields',
                         HttpMethod.PUT,
-                        // TODO: Use this below when fields accepts array: fields.map(x => x.object)
-                        fields[0].object
+                        fields.map(x => x.object)
                     )),
                     commit: new ReduxAction({
                         type: FieldActions.FIELD_UPDATE_SUCCESS,
                         meta: {
+                            stateKey: packagePath,
                             value: fields,
                             packagePath,
-                            // TODO: Remove below when fields return only the modified fields back
-                            temp: fields[0].object.key,
                             queueItems
                         }
                     }),
                     rollback: new ReduxAction({
                         type: FieldActions.FIELD_UPDATE_FAILURE,
                         meta: {
+                            stateKey: packagePath,
                             value: fields,
                             packagePath,
                             queueItems
@@ -176,9 +175,9 @@ export class FieldActions<TStateType, TStore extends Store<TStateType>> implemen
     }
 
     public delete = (fields: LocalObject<FieldSchemaViewModel, string>[], packagePath: string, additionalPaths?: string[]) => {
-        const paths = '?keys=' + fields.map(x => x.object.key).join('&keys=');
-
         fields.forEach(record => record.error = false);
+
+        const paths = '?keys=' + fields.map(x => x.object.key).join('&keys=');
 
         const queueItems = fields.map(field => {
             return new QueueItem({
@@ -206,6 +205,7 @@ export class FieldActions<TStateType, TStore extends Store<TStateType>> implemen
                     commit: new ReduxAction({
                         type: FieldActions.FIELD_DELETE_SUCCESS,
                         meta: {
+                            stateKey: packagePath,
                             value: fields,
                             packagePath,
                             queueItems
@@ -214,6 +214,7 @@ export class FieldActions<TStateType, TStore extends Store<TStateType>> implemen
                     rollback: new ReduxAction({
                         type: FieldActions.FIELD_DELETE_FAILURE,
                         meta: {
+                            stateKey: packagePath,
                             value: fields,
                             packagePath,
                             queueItems

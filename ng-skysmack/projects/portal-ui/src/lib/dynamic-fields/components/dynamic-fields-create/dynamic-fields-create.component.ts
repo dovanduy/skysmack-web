@@ -1,81 +1,54 @@
-import { Component, OnInit, Injector, OnDestroy } from '@angular/core';
-import { DocumentRecordState, DocumentRecordActionsBase } from '@skysmack/redux';
-import { BaseComponent } from './../../../base-components/base-component';
+import { Component, OnInit, Injector } from '@angular/core';
+import { FieldState } from '@skysmack/redux';
 import { Router, ActivatedRoute } from '@angular/router';
 import { EditorNavService } from './../../../components/common/container/editor-nav.service';
 import { NgSkysmackStore } from '@skysmack/ng-packages';
-import { NgDynamicFieldsFieldsConfig } from './../../ng-dynamic-fields-config';
-import { NgDocumentRecordReduxStore } from '@skysmack/ng-redux';
-import { map, switchMap } from 'rxjs/operators';
-import { DynamicFieldRouteData, toLocalObject, FieldSchemaViewModel, LocalObjectStatus, log, LocalObject } from '@skysmack/framework';
-import { FormHelper } from '@skysmack/ng-ui';
+import { NgDynamicFieldsFieldsConfig, NgDynamicFieldFormDependencies } from './../../ng-dynamic-fields-config';
+import { RecordFormComponent } from './../../../base-components/record-components/record-form-component';
+import { NgFieldActions, NgFieldReduxStore } from '@skysmack/ng-redux';
 import { combineLatest } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { LocalObject, FieldSchemaViewModel } from '@skysmack/framework';
 
 @Component({
   selector: 'ss-dynamic-fields-create',
   templateUrl: './dynamic-fields-create.component.html',
   styleUrls: ['./dynamic-fields-create.component.scss']
 })
-export class DynamicFieldsCreateComponent extends BaseComponent<DocumentRecordState<any, any>, any> implements OnInit, OnDestroy {
-  public actions: DocumentRecordActionsBase<any, any>;
-  public store: NgDocumentRecordReduxStore<any, any, any>;
-  public editorItem: LocalObject<FieldSchemaViewModel, string>;
+export class DynamicFieldsCreateComponent extends RecordFormComponent<FieldState, any, string, NgDynamicFieldFormDependencies> implements OnInit {
+  public objectIdentifier = 'key';
 
   constructor(
     public router: Router,
     public activatedRoute: ActivatedRoute,
     public editorNavService: EditorNavService,
+    public actions: NgFieldActions,
+    public store: NgFieldReduxStore,
     public skysmackStore: NgSkysmackStore,
     public fieldsConfig: NgDynamicFieldsFieldsConfig,
     public injector: Injector
   ) {
-    super(router, activatedRoute, skysmackStore);
+    super(router, activatedRoute, editorNavService, actions, skysmackStore, store, fieldsConfig);
   }
 
   ngOnInit() {
     super.ngOnInit();
+    this.setCreateFields();
+  }
 
-    this.fields$ = this.activatedRoute.data.pipe(
-      switchMap((data: DynamicFieldRouteData) => {
-        this.store = this.injector.get(data.storeToken);
-        this.actions = this.injector.get(data.actionToken);
+  public setCreateFields() {
+    this.actions.getAvailableFields(this.packagePath);
 
-        this.actions.getAvailableFields(this.packagePath);
-        return combineLatest(
-          this.skysmackStore.getEditorItem(),
-          this.store.getAvailableFields(this.packagePath)
-        );
-      }),
+    this.fields$ = combineLatest(
+      this.store.getAvailableFields(this.packagePath),
+      this.skysmackStore.getEditorItem()
+    ).pipe(
       map(values => {
-        this.editorItem = values[0] as LocalObject<FieldSchemaViewModel, string>;
-        const availableFields = values[1];
-        return this.fieldsConfig.getDynamicFields(availableFields, this.editorItem);
-      }));
+        const availableFields = values[0];
+        this.editorItem = values[1] as LocalObject<FieldSchemaViewModel, string>;
 
-    this.editorNavService.showEditorNav();
-  }
-
-  onCreateSubmit(fh: FormHelper) {
-    fh.formValid(() => {
-
-      const localObject = toLocalObject<FieldSchemaViewModel, string>(
-        fh.form.getRawValue(),
-        'key',
-        undefined,
-        LocalObjectStatus.CREATING,
-        undefined,
-        true
-      );
-
-      this.editorItem ? localObject.localId = this.editorItem.localId : localObject.localId = localObject.localId;
-
-      this.actions.addFields([localObject], this.packagePath);
-      this.editorNavService.hideEditorNav();
-    });
-  }
-
-  ngOnDestroy() {
-    super.ngOnDestroy();
-    this.editorNavService.hideEditorNav();
+        return this.fieldsConfig.getFields(this.editorItem, undefined, { availableFields });
+      })
+    );
   }
 }

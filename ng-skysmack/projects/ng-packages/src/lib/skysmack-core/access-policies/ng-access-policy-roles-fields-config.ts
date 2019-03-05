@@ -29,7 +29,8 @@ export class NgAccessPolicyRolesFieldsConfig extends FieldsConfig<AccessPolicyRo
                 optionsData: dependencies && dependencies.availableAccessPolicyRules,
                 validators: [Validators.required],
                 displayNameSelector: 'object.id',
-                order: 2
+                order: 2,
+                showColumn: true
             } as SelectField),
 
             new SelectField({
@@ -39,7 +40,8 @@ export class NgAccessPolicyRolesFieldsConfig extends FieldsConfig<AccessPolicyRo
                 optionsData: dependencies && dependencies.availableRoles,
                 validators: [Validators.required],
                 displayNameSelector: 'object.name',
-                order: 2
+                order: 2,
+                showColumn: true
             } as SelectField),
         ];
 

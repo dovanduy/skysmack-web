@@ -1,11 +1,10 @@
 import { Router, ActivatedRoute } from '@angular/router';
 import { BaseComponent } from './base-component';
 import { LocalObject, Record, toLocalObject, LocalObjectStatus, PagedQuery } from '@skysmack/framework';
-import { FieldsConfig } from '@skysmack/ng-ui';
+import { EntityFieldsConfig } from '@skysmack/ng-ui';
 import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { FormHelper } from '@skysmack/ng-ui';
-import { RecordActionsBase } from '@skysmack/redux';
-import { NgRedux } from '@angular-redux/store';
+import { EntityActions } from '@skysmack/redux';
 import { EditorNavService } from './../components/common/container/editor-nav.service';
 
 export class FormBaseComponent<TAppState, TRecord extends Record<TKey>, TKey, TDependencies> extends BaseComponent<TAppState, TKey> {
@@ -14,16 +13,17 @@ export class FormBaseComponent<TAppState, TRecord extends Record<TKey>, TKey, TD
      */
     public selectedEntity: LocalObject<TRecord, TKey>;
     public pagedQuery: PagedQuery = new PagedQuery();
+    public objectIdentifier = 'id';
 
     constructor(
         public router: Router,
         public activatedRoute: ActivatedRoute,
         public editorNavService: EditorNavService,
-        public actions: RecordActionsBase<TAppState, NgRedux<TAppState>>,
-        public redux: NgSkysmackStore,
-        public fieldsConfig: FieldsConfig<TRecord, TKey, TDependencies>,
+        public actions: EntityActions<any, TKey>,
+        public skysmackStore: NgSkysmackStore,
+        public fieldsConfig: EntityFieldsConfig<any, TKey, TDependencies>,
     ) {
-        super(router, activatedRoute, redux);
+        super(router, activatedRoute, skysmackStore);
     }
 
     /**
@@ -51,7 +51,7 @@ export class FormBaseComponent<TAppState, TRecord extends Record<TKey>, TKey, TD
             // Create new entity
             return toLocalObject<TRecord, TKey>(
                 formValues,
-                'id',
+                this.objectIdentifier,
                 undefined,
                 LocalObjectStatus.CREATING,
                 undefined,

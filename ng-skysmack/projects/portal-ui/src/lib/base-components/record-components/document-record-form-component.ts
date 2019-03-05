@@ -1,13 +1,12 @@
 import { Router, ActivatedRoute } from '@angular/router';
 import { OnInit, OnDestroy } from '@angular/core';
 import { Record, LocalObject, FieldSchemaViewModel } from '@skysmack/framework';
-import { FieldsConfig } from '@skysmack/ng-ui';
+import { EntityFieldsConfig } from '@skysmack/ng-ui';
 import { EditorNavService } from './../../components/common/container/editor-nav.service';
 import { NgSkysmackStore } from '@skysmack/ng-packages';
-import { DocumentRecordActionsBase } from '@skysmack/redux';
-import { NgRedux } from '@angular-redux/store';
+import { EntityActions, EntityStore } from '@skysmack/redux';
 import { RecordFormComponent } from './record-form-component';
-import { NgDocumentRecordReduxStore, NgFieldActions, NgFieldReduxStore } from '@skysmack/ng-redux';
+import { NgFieldActions, NgFieldReduxStore } from '@skysmack/ng-redux';
 import { map } from 'rxjs/operators';
 import { combineLatest, Observable } from 'rxjs';
 
@@ -17,10 +16,10 @@ export class DocumentRecordFormComponent<TAppState, TRecord extends Record<TKey>
         public router: Router,
         public activatedRoute: ActivatedRoute,
         public editorNavService: EditorNavService,
-        public actions: DocumentRecordActionsBase<TAppState, NgRedux<TAppState>>,
+        public actions: EntityActions<any, TKey>,
         public skysmackStore: NgSkysmackStore,
-        public store: NgDocumentRecordReduxStore<TAppState, TRecord, TKey>,
-        public fieldsConfig: FieldsConfig<TRecord, TKey, TDependencies>,
+        public store: EntityStore<any, TKey>,
+        public fieldsConfig: EntityFieldsConfig<any, TKey, TDependencies>,
         public fieldActions: NgFieldActions,
         public fieldStore: NgFieldReduxStore
     ) {

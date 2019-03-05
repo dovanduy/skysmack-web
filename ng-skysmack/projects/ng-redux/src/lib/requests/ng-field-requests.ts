@@ -1,5 +1,5 @@
 import { ApiDomain, FieldSchemaViewModel, FieldValueProviderViewModel } from '@skysmack/framework';
-import { ReduxAction, PackagePathPayload, DocumentRecordActionsBase, GetAvailableFieldsSuccessPayload, GetPagedRecordsPayload, GetPagedRecordsSuccessPayload, GetSingleRecordPayload, GetSingleRecordSuccessPayload, FieldActions, FieldRequests } from '@skysmack/redux';
+import { ReduxAction, PackagePathPayload, DocumentRecordActionsBase, GetAvailableFieldsSuccessPayload, GetPagedRecordsPayload, GetPagedRecordsSuccessPayload, GetSingleRecordPayload, GetSingleRecordSuccessPayload, FieldActions, FieldRequests, GetSingleFieldPayload } from '@skysmack/redux';
 import { Observable, of } from 'rxjs';
 import { map, retry, catchError } from 'rxjs/operators';
 import { HttpClient, HttpParams } from '@angular/common/http';
@@ -72,10 +72,10 @@ export class NgFieldRequests implements FieldRequests {
       );
   }
 
-  public getSingle(action: ReduxAction<GetSingleRecordPayload<any>>, additionalPaths?: string[]): Observable<ReduxAction<GetSingleRecordSuccessPayload<any, string>> | ReduxAction<GetSingleRecordPayload<string>>> {
+  public getSingle(action: ReduxAction<GetSingleFieldPayload>, additionalPaths?: string[]): Observable<ReduxAction<GetSingleRecordSuccessPayload<any, string>> | ReduxAction<GetSingleRecordPayload<string>>> {
     let url = `${this.apiDomain.domain}/${action.payload.packagePath}`;
     url = this.addAdditionalPaths(url, additionalPaths);
-    url = `${url}/fields/${action.payload.id}`;
+    url = `${url}/fields/${action.payload.fieldKey}`;
 
     return this.http.get<FieldSchemaViewModel>(url, { observe: 'response' })
       .pipe(
@@ -83,7 +83,7 @@ export class NgFieldRequests implements FieldRequests {
           return Object.assign({}, new ReduxAction<GetSingleRecordSuccessPayload<any, string>>({
             type: FieldActions.FIELD_GET_SINGLE_SUCCESS,
             payload: {
-              id: action.payload.id,
+              id: action.payload.fieldKey,
               record: httpResponse.body,
               packagePath: action.payload.packagePath
             }
@@ -105,14 +105,14 @@ export class NgFieldRequests implements FieldRequests {
 
     return this.http.get<FieldValueProviderViewModel[]>(url, { observe: 'response' }).pipe(
       map(httpResponse => Object.assign({}, new ReduxAction<GetAvailableFieldsSuccessPayload>({
-        type: DocumentRecordActionsBase.GET_AVAILABLE_FIELDS_SUCCESS,
+        type: FieldActions.FIELD_GET_AVAILABLE_FIELDS_SUCCESS,
         payload: {
           availableFields: httpResponse.body ? httpResponse.body : [],
           packagePath: action.payload.packagePath
         }
       }))),
       catchError((error) => of(Object.assign({}, new ReduxAction({
-        type: DocumentRecordActionsBase.GET_AVAILABLE_FIELDS_FAILURE,
+        type: FieldActions.FIELD_GET_AVAILABLE_FIELDS_FAILURE,
         payload: error,
         error: true
       }))))

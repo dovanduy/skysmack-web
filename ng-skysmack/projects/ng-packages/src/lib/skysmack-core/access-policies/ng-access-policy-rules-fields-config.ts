@@ -24,6 +24,7 @@ export class NgAccessPolicyRulesFieldsConfig extends FieldsConfig<AccessPolicyRu
                 value: entity ? entity.object.access : false,
                 key: 'access',
                 order: 1,
+                showColumn: true
             } as Field),
 
             new SelectField({
@@ -45,6 +46,7 @@ export class NgAccessPolicyRulesFieldsConfig extends FieldsConfig<AccessPolicyRu
                     }
                 ],
                 order: 2,
+                showColumn: true
             } as SelectField),
 
             new Field({
@@ -52,6 +54,7 @@ export class NgAccessPolicyRulesFieldsConfig extends FieldsConfig<AccessPolicyRu
                 value: entity ? entity.object.includeRoles : false,
                 key: 'includeRoles',
                 order: 3,
+                showColumn: true
             } as Field)
         ];
 
@@ -60,7 +63,7 @@ export class NgAccessPolicyRulesFieldsConfig extends FieldsConfig<AccessPolicyRu
                 fieldType: FieldTypes.HiddenField,
                 value: entity ? entity.object.id : undefined,
                 key: 'id',
-                order: 0,
+                order: 0
             } as Field));
         }
 

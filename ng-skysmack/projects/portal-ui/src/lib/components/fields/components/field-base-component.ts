@@ -23,7 +23,10 @@ export abstract class FieldBaseComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
         this.ensureControlExists();
-        this.subscriptions.push(this.fields$.subscribe(fields => this.init(fields)));
+        this.subscriptions.push(this.fields$.subscribe(fields => {
+            this.field = fields.find(incomingField => incomingField.key === this.field.key);
+            this.init(fields);
+        }));
     }
 
     public abstract init(fields: Field[]): void;

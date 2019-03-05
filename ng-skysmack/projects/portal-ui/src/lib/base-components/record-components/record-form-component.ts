@@ -1,15 +1,13 @@
 import { Router, ActivatedRoute } from '@angular/router';
 import { OnInit, OnDestroy } from '@angular/core';
 import { Record, LocalObject } from '@skysmack/framework';
-import { FieldsConfig } from '@skysmack/ng-ui';
+import { EntityFieldsConfig } from '@skysmack/ng-ui';
 import { EditorNavService } from './../../components/common/container/editor-nav.service';
 import { FormBaseComponent } from './../form-base-component';
 import { NgSkysmackStore } from '@skysmack/ng-packages';
-import { RecordActionsBase } from '@skysmack/redux';
-import { NgRedux } from '@angular-redux/store';
+import { EntityActions, EntityStore } from '@skysmack/redux';
 import { FormHelper } from '@skysmack/ng-ui';
 import { map } from 'rxjs/operators';
-import { NgRecordReduxStore } from '@skysmack/ng-redux';
 import { combineLatest } from 'rxjs';
 
 export class RecordFormComponent<TAppState, TRecord extends Record<TKey>, TKey, TDependencies> extends FormBaseComponent<TAppState, TRecord, TKey, TDependencies> implements OnInit, OnDestroy {
@@ -19,12 +17,11 @@ export class RecordFormComponent<TAppState, TRecord extends Record<TKey>, TKey, 
     constructor(
         public router: Router,
         public activatedRoute: ActivatedRoute,
-        // TODO: Remove this + from all child components.
         public editorNavService: EditorNavService,
-        public actions: RecordActionsBase<TAppState, NgRedux<TAppState>>,
+        public actions: EntityActions<any, TKey>,
         public skysmackStore: NgSkysmackStore,
-        public store: NgRecordReduxStore<TAppState, TRecord, TKey>,
-        public fieldsConfig: FieldsConfig<TRecord, TKey, TDependencies>
+        public store: EntityStore<any, TKey>,
+        public fieldsConfig: EntityFieldsConfig<any, TKey, TDependencies>
     ) {
         super(router, activatedRoute, editorNavService, actions, skysmackStore, fieldsConfig);
     }
@@ -81,7 +78,7 @@ export class RecordFormComponent<TAppState, TRecord extends Record<TKey>, TKey, 
         fh.formValid(() => {
             const localObject = this.extractFormValues(fh);
             this.editorItem ? localObject.localId = this.editorItem.localId : localObject.localId = localObject.localId;
-            this.actions.add<TRecord, TKey>([localObject], this.packagePath);
+            this.actions.add([localObject], this.packagePath);
             this.editorNavService.hideEditorNav();
         });
     }
@@ -91,7 +88,7 @@ export class RecordFormComponent<TAppState, TRecord extends Record<TKey>, TKey, 
             const oldValue = { ...this.selectedEntity };
             const newValue = this.extractFormValues(fh, this.selectedEntity);
             newValue.oldObject = oldValue.object;
-            this.actions.update<TRecord, TKey>([newValue], this.packagePath);
+            this.actions.update([newValue], this.packagePath);
             this.editorNavService.hideEditorNav();
         });
     }

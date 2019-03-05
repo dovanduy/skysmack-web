@@ -1,4 +1,4 @@
 <ss-dynamic-form *ngIf="fields$" [fields$]="fields$" [validation]="fieldsConfig.validation"
-  [rules]="fieldsConfig.formRules" [buttonText]="'Edit'" (submitted)="onEditSubmit($event)">
+  [rules]="fieldsConfig.formRules" [buttonText]="'Edit'" (submitted)="onUpdateSubmit($event)">
   <h2 [translate]="'FIELDS.EDIT.EDITING'"></h2>
 </ss-dynamic-form>
