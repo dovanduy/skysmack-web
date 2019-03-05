@@ -7,6 +7,7 @@ import { DocumentRecordFormComponent } from '@skysmack/portal-ui';
 import { NgReceiptsFieldsConfig, NgReceiptFormDependencies } from '@skysmack/ng-packages';
 import { NgReceiptsActions } from '@skysmack/ng-packages';
 import { NgReceiptsStore } from '@skysmack/ng-packages';
+import { NgFieldActions, NgFieldReduxStore } from '@skysmack/ng-redux';
 
 @Component({
   selector: 'ss-receipts-edit',
@@ -23,8 +24,10 @@ export class ReceiptsEditComponent extends DocumentRecordFormComponent<ReceiptsA
     public redux: NgSkysmackStore,
     public fieldsConfig: NgReceiptsFieldsConfig,
     public store: NgReceiptsStore,
+    public fieldActions: NgFieldActions,
+    public fieldStore: NgFieldReduxStore
   ) {
-    super(router, activatedRoute, editorNavService, actions, redux, store, fieldsConfig);
+    super(router, activatedRoute, editorNavService, actions, redux, store, fieldsConfig, fieldActions, fieldStore);
   }
 
   ngOnInit() {

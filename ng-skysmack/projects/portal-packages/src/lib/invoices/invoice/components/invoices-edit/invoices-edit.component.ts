@@ -7,6 +7,7 @@ import { EditorNavService } from '@skysmack/portal-ui';
 import { NgInvoicesFieldsConfig, NgInvoiceFormDependencies } from '@skysmack/ng-packages';
 import { DocumentRecordFormComponent } from '@skysmack/portal-ui';
 import { NgInvoicesStore } from '@skysmack/ng-packages';
+import { NgFieldActions, NgFieldReduxStore } from '@skysmack/ng-redux';
 
 @Component({
   selector: 'ss-invoices-edit',
@@ -23,8 +24,10 @@ export class InvoicesEditComponent extends DocumentRecordFormComponent<InvoicesA
     public redux: NgSkysmackStore,
     public fieldsConfig: NgInvoicesFieldsConfig,
     public store: NgInvoicesStore,
+    public fieldActions: NgFieldActions,
+    public fieldStore: NgFieldReduxStore
   ) {
-    super(router, activatedRoute, editorNavService, actions, redux, store, fieldsConfig);
+    super(router, activatedRoute, editorNavService, actions, redux, store, fieldsConfig, fieldActions, fieldStore);
   }
 
   ngOnInit() {

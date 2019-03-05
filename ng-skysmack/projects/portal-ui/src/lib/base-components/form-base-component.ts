@@ -1,6 +1,6 @@
 import { Router, ActivatedRoute } from '@angular/router';
 import { BaseComponent } from './base-component';
-import { LocalObject, Record, toLocalObject, LocalObjectStatus } from '@skysmack/framework';
+import { LocalObject, Record, toLocalObject, LocalObjectStatus, PagedQuery } from '@skysmack/framework';
 import { FieldsConfig } from '@skysmack/ng-ui';
 import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { FormHelper } from '@skysmack/ng-ui';
@@ -13,6 +13,7 @@ export class FormBaseComponent<TAppState, TRecord extends Record<TKey>, TKey, TD
      * The selected entity needed for edit forms.
      */
     public selectedEntity: LocalObject<TRecord, TKey>;
+    public pagedQuery: PagedQuery = new PagedQuery();
 
     constructor(
         public router: Router,

@@ -12,6 +12,7 @@ import { NgLodgingTypesActions } from '@skysmack/ng-packages';
 import { NgLodgingTypesStore } from '@skysmack/ng-packages';
 import { PagedQuery } from '@skysmack/framework';
 import { map } from 'rxjs/operators';
+import { NgFieldActions, NgFieldReduxStore } from '@skysmack/ng-redux';
 @Component({
   selector: 'ss-lodgings-create',
   templateUrl: './lodgings-create.component.html',
@@ -29,8 +30,10 @@ export class LodgingsCreateComponent extends DocumentRecordFormComponent<Lodging
     public lodgingTypeActions: NgLodgingTypesActions,
     public redux: NgSkysmackStore,
     public fieldsConfig: NgLodgingsFieldsConfig,
+    public fieldActions: NgFieldActions,
+    public fieldStore: NgFieldReduxStore
   ) {
-    super(router, activatedRoute, editorNavService, actions, redux, store, fieldsConfig);
+    super(router, activatedRoute, editorNavService, actions, redux, store, fieldsConfig, fieldActions, fieldStore);
   }
 
   ngOnInit() {

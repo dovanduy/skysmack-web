@@ -7,6 +7,7 @@ import { EditorNavService } from '@skysmack/portal-ui';
 import { NgBasketsFieldsConfig, NgBasketFormDependencies } from '@skysmack/ng-packages';
 import { DocumentRecordFormComponent } from '@skysmack/portal-ui';
 import { NgBasketsStore } from '@skysmack/ng-packages';
+import { NgFieldActions, NgFieldReduxStore } from '@skysmack/ng-redux';
 
 @Component({
   selector: 'ss-baskets-create',
@@ -23,8 +24,10 @@ export class BasketsCreateComponent extends DocumentRecordFormComponent<BasketsA
     public redux: NgSkysmackStore,
     public fieldsConfig: NgBasketsFieldsConfig,
     public store: NgBasketsStore,
+    public fieldActions: NgFieldActions,
+    public fieldStore: NgFieldReduxStore
   ) {
-    super(router, activatedRoute, editorNavService, actions, redux, store, fieldsConfig);
+    super(router, activatedRoute, editorNavService, actions, redux, store, fieldsConfig, fieldActions, fieldStore);
   }
 
   ngOnInit() {

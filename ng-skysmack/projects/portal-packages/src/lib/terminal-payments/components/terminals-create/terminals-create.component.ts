@@ -7,6 +7,7 @@ import { EditorNavService } from '@skysmack/portal-ui';
 import { DocumentRecordFormComponent } from '@skysmack/portal-ui';
 import { NgTerminalsStore } from '@skysmack/ng-packages';
 import { NgTerminalsFieldsConfig, NgTerminalFormDependencies } from '@skysmack/ng-packages';
+import { NgFieldActions, NgFieldReduxStore } from '@skysmack/ng-redux';
 
 @Component({
   selector: 'ss-terminals-create',
@@ -22,9 +23,11 @@ export class TerminalsCreateComponent extends DocumentRecordFormComponent<Termin
     public actions: NgTerminalsActions,
     public redux: NgSkysmackStore,
     public fieldsConfig: NgTerminalsFieldsConfig,
-    public store: NgTerminalsStore
+    public store: NgTerminalsStore,
+    public fieldActions: NgFieldActions,
+    public fieldStore: NgFieldReduxStore
   ) {
-    super(router, activatedRoute, editorNavService, actions, redux, store, fieldsConfig);
+    super(router, activatedRoute, editorNavService, actions, redux, store, fieldsConfig, fieldActions, fieldStore);
   }
 
   ngOnInit() {

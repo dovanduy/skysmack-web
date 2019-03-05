@@ -7,7 +7,7 @@ import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { DocumentRecordActionsBase } from '@skysmack/redux';
 import { NgRedux } from '@angular-redux/store';
 import { RecordFormComponent } from './record-form-component';
-import { NgDocumentRecordReduxStore } from '@skysmack/ng-redux';
+import { NgDocumentRecordReduxStore, NgFieldActions, NgFieldReduxStore } from '@skysmack/ng-redux';
 import { map } from 'rxjs/operators';
 import { combineLatest, Observable } from 'rxjs';
 
@@ -20,7 +20,9 @@ export class DocumentRecordFormComponent<TAppState, TRecord extends Record<TKey>
         public actions: DocumentRecordActionsBase<TAppState, NgRedux<TAppState>>,
         public skysmackStore: NgSkysmackStore,
         public store: NgDocumentRecordReduxStore<TAppState, TRecord, TKey>,
-        public fieldsConfig: FieldsConfig<TRecord, TKey, TDependencies>
+        public fieldsConfig: FieldsConfig<TRecord, TKey, TDependencies>,
+        public fieldActions: NgFieldActions,
+        public fieldStore: NgFieldReduxStore
     ) {
         super(router, activatedRoute, editorNavService, actions, skysmackStore, store, fieldsConfig);
     }
@@ -61,17 +63,17 @@ export class DocumentRecordFormComponent<TAppState, TRecord extends Record<TKey>
 
     // Use these init functions and override set functions in the component when the form has dependencies
     protected initCreateDocRecord(): Observable<LocalObject<FieldSchemaViewModel, string>[]> {
-        this.actions.getFields(this.packagePath);
-        return this.store.getFields(this.packagePath);
+        this.fieldActions.getPaged(this.packagePath, this.pagedQuery);
+        return this.fieldStore.get(this.packagePath);
     }
 
     protected initEditDocRecord(): Observable<[LocalObject<TRecord, TKey>, LocalObject<FieldSchemaViewModel, string>[]]> {
         this.actions.getSingle(this.packagePath, this.entityId);
-        this.actions.getFields(this.packagePath);
+        this.fieldActions.getPaged(this.packagePath, this.pagedQuery);
 
         return combineLatest(
             this.store.getSingle(this.packagePath, this.entityId),
-            this.store.getFields(this.packagePath)
+            this.fieldStore.get(this.packagePath)
         ).pipe(map(values => {
             this.selectedEntity = values[0];
             return values;
