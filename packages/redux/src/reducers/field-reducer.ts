@@ -1,15 +1,27 @@
-import { toLocalObject, HttpSuccessResponse, LocalObject, HttpErrorResponse, LocalObjectExtensions, replaceLocalInnerObject, GlobalProperties, PageResponse, PageExtensions, LoadingState, HttpResponse, FieldSchemaViewModel, LocalObjectStatus, FieldValueProviderViewModel } from "@skysmack/framework";
+import { toLocalObject, HttpSuccessResponse, LocalObject, HttpErrorResponse, LocalObjectExtensions, replaceLocalInnerObject, GlobalProperties, PageResponse, PageExtensions, LoadingState, HttpResponse, FieldSchemaViewModel, LocalObjectStatus, FieldValueProviderViewModel, LocalPageTypes, StrIndex } from "@skysmack/framework";
 import { ReduxAction } from '../action-types/redux-action';
 import { GetPagedRecordsPayload, GetPagedRecordsSuccessPayload, GetSingleRecordSuccessPayload, GetAvailableFieldsSuccessPayload } from './../payloads';
 import { cancelFieldAction } from './cancel-field-action';
-import { FieldState } from '../states/field-state';
 import { FieldActions } from '../actions/field-actions';
 import { ReduxOfflineMeta } from '../metas/offline-redux/redux-offline-meta';
 import { CommitMeta } from '../metas/offline-redux/commit-meta';
 import { RollbackMeta } from '../metas/offline-redux/rollback-meta';
+import { sharedReducer } from './shared-reducer';
+import { AppState } from '../states/app-state';
 
-export function fieldReducer(state: FieldState, action: any, prefix: string = ''): FieldState {
+export class FieldsAppState extends AppState {
+    public fields: FieldState;
+}
+
+export class FieldState {
+    localPageTypes: StrIndex<StrIndex<LocalPageTypes<string>>> = {};
+    fields: StrIndex<StrIndex<LocalObject<FieldSchemaViewModel, string>>> = {};
+    availableFields: StrIndex<StrIndex<LocalObject<FieldValueProviderViewModel, string>>> = {};
+}
+
+export function fieldReducer(state: FieldState = new FieldState(), action: any, prefix: string = ''): FieldState {
     let newState = Object.assign({}, state);
+    state = sharedReducer(state, action, new FieldState());
 
     switch (action.type) {
         case prefix + FieldActions.CANCEL_DYNAMIC_FIELD_ACTION: {

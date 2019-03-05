@@ -8,6 +8,7 @@ import { NgLodgingsActions } from '@skysmack/ng-packages';
 import { NgLodgingsStore } from '@skysmack/ng-packages';
 import { NgLodgingsMenu } from './../../ng-lodgings-menu';
 import { EntityAction } from '@skysmack/ng-ui';
+import { NgFieldActions, NgFieldReduxStore } from '@skysmack/ng-redux';
 
 
 @Component({
@@ -30,10 +31,13 @@ export class LodgingsIndexComponent extends DocumentRecordIndexComponent<Lodging
     public title: EntityComponentPageTitle,
     public store: NgLodgingsStore,
     public sidebarMenu: NgLodgingsMenu,
-    public fieldsConfig: NgLodgingsFieldsConfig
+    public fieldsConfig: NgLodgingsFieldsConfig,
+    public fieldActions: NgFieldActions,
+    public fieldStore: NgFieldReduxStore
   ) {
-    super(router, activatedRoute, actions, redux, store, fieldsConfig);
+    super(router, activatedRoute, actions, redux, store, fieldsConfig, fieldActions, fieldStore);
   }
+
 
   ngOnInit() {
     super.ngOnInit();

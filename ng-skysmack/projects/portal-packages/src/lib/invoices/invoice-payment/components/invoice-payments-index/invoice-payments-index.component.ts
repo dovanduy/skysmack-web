@@ -7,6 +7,7 @@ import { NgInvoicePaymentsStore } from '@skysmack/ng-packages';
 import { InvoicePayment, InvoicePaymentsAppState } from '@skysmack/packages-invoices';
 import { NgInvoicePaymentsMenu } from './../../ng-invoice-payments-menu';
 import { EntityAction } from '@skysmack/ng-ui';
+import { NgFieldActions, NgFieldReduxStore } from '@skysmack/ng-redux';
 
 @Component({
   selector: 'ss-invoice-payments-index',
@@ -28,11 +29,13 @@ export class InvoicePaymentsIndexComponent extends DocumentRecordIndexComponent<
     public title: EntityComponentPageTitle,
     public store: NgInvoicePaymentsStore,
     public sidebarMenu: NgInvoicePaymentsMenu,
-    public fieldsConfig: NgInvoicePaymentsFieldsConfig
+    public fieldsConfig: NgInvoicePaymentsFieldsConfig,
+    public fieldActions: NgFieldActions,
+    public fieldStore: NgFieldReduxStore
   ) {
-    super(router, activatedRoute, actions, redux, store, fieldsConfig);
-
+    super(router, activatedRoute, actions, redux, store, fieldsConfig, fieldActions, fieldStore);
   }
+
 
   ngOnInit() {
     super.ngOnInit();

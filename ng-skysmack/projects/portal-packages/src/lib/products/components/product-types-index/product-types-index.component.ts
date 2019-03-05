@@ -5,6 +5,7 @@ import { NgSkysmackStore, NgProductTypesActions, NgProductTypesStore, NgProductT
 import { ProductTypesAppState, ProductType } from '@skysmack/packages-products';
 import { NgProductTypesMenu } from '../../ng-product-types-menu';
 import { EntityAction } from '@skysmack/ng-ui';
+import { NgFieldActions, NgFieldReduxStore } from '@skysmack/ng-redux';
 
 
 @Component({
@@ -26,11 +27,13 @@ export class ProductTypesIndexComponent extends DocumentRecordIndexComponent<Pro
     public title: EntityComponentPageTitle,
     public store: NgProductTypesStore,
     public sidebarMenu: NgProductTypesMenu,
-    public fieldsConfig: NgProductTypesFieldsConfig
+    public fieldsConfig: NgProductTypesFieldsConfig,
+    public fieldActions: NgFieldActions,
+    public fieldStore: NgFieldReduxStore
   ) {
-    super(router, activatedRoute, actions, redux, store, fieldsConfig);
-
+    super(router, activatedRoute, actions, redux, store, fieldsConfig, fieldActions, fieldStore);
   }
+
 
   ngOnInit() {
     super.ngOnInit();

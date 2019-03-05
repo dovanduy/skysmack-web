@@ -9,7 +9,7 @@ export const epic$: BehaviorSubject<Epic<AnyAction>> = new BehaviorSubject(combi
 export const registerRedux = (name: string, reducer: Function, epics: { epics: Epic[], [key: string]: any }): void => {
     ReducerRegistry.Instance.register(name, reducer);
     registerEpics(epics, name);
-}
+};
 
 export const registerEpics = (epicsClass: { epics: Epic[], [key: string]: any }, epicsName?: string): void => {
     const registered = epicRegister[epicsName];

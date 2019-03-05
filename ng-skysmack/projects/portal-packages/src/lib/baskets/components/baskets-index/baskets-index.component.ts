@@ -7,6 +7,7 @@ import { NgBasketsStore } from '@skysmack/ng-packages';
 import { Basket, BasketsAppState } from '@skysmack/packages-baskets';
 import { NgBasketsMenu } from './../../ng-baskets-menu';
 import { EntityAction } from '@skysmack/ng-ui';
+import { NgFieldActions, NgFieldReduxStore } from '@skysmack/ng-redux';
 
 
 @Component({
@@ -29,12 +30,13 @@ export class BasketsIndexComponent extends DocumentRecordIndexComponent<BasketsA
     public title: EntityComponentPageTitle,
     public store: NgBasketsStore,
     public sidebarMenu: NgBasketsMenu,
-    public fieldsConfig: NgBasketsFieldsConfig
-
+    public fieldsConfig: NgBasketsFieldsConfig,
+    public fieldActions: NgFieldActions,
+    public fieldStore: NgFieldReduxStore
   ) {
-    super(router, activatedRoute, actions, redux, store, fieldsConfig);
-
+    super(router, activatedRoute, actions, redux, store, fieldsConfig, fieldActions, fieldStore);
   }
+
 
   ngOnInit() {
     super.ngOnInit();

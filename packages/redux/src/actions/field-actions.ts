@@ -1,13 +1,14 @@
 import { Store } from 'redux';
 import { ReduxAction } from './../action-types';
 import { PackagePathPayload } from './../payloads/package-path-payload';
-import { FieldSchemaViewModel, LocalObject, HttpMethod, LocalObjectStatus, QueueItem, StrIndex } from '@skysmack/framework';
+import { FieldSchemaViewModel, LocalObject, HttpMethod, LocalObjectStatus, QueueItem, StrIndex, PagedQuery } from '@skysmack/framework';
 import { Effect } from '../models/effect';
 import { EffectRequest } from '../models/effect-request';
 import { CancelActionMeta } from '../metas/offline-redux/cancel-action-meta';
 import { CancelDynamicFieldActionPayload } from '../payloads/cancel-dynamic-field-action-payload';
 import { GetSingleFieldPayload } from '../payloads/get-single-field-payload';
-import { EntityActions } from '../interfaces';
+import { GetPagedRecordsPayload } from '../payloads/get-paged-records-payload';
+import { EntityActions } from '../interfaces/entity-actions';
 
 export class FieldActions<TStateType, TStore extends Store<TStateType>> implements EntityActions<FieldSchemaViewModel, string> {
     public static CANCEL_DYNAMIC_FIELD_ACTION = 'CANCEL_DYNAMIC_FIELD_ACTION';
@@ -50,10 +51,11 @@ export class FieldActions<TStateType, TStore extends Store<TStateType>> implemen
         })))
     }
 
-    public getPaged(packagePath: string) {
-        this.store.dispatch(Object.assign({}, new ReduxAction<PackagePathPayload>({
+    public getPaged(packagePath: string, pagedQuery: PagedQuery) {
+        this.store.dispatch(Object.assign({}, new ReduxAction<GetPagedRecordsPayload>({
             type: FieldActions.FIELD_GET_PAGED,
             payload: {
+                pagedQuery,
                 packagePath
             }
         })));
@@ -63,8 +65,8 @@ export class FieldActions<TStateType, TStore extends Store<TStateType>> implemen
         this.store.dispatch(Object.assign({}, new ReduxAction<GetSingleFieldPayload>({
             type: FieldActions.FIELD_GET_SINGLE,
             payload: {
-                packagePath,
-                fieldKey
+                fieldKey,
+                packagePath
             }
         })));
     }

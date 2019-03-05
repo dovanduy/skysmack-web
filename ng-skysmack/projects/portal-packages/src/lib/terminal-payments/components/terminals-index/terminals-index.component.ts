@@ -7,6 +7,7 @@ import { NgTerminalsStore } from '@skysmack/ng-packages';
 import { Terminal, TerminalsAppState } from '@skysmack/packages-terminal-payments';
 import { NgTerminalsMenu } from './../../ng-terminals-menu';
 import { EntityAction } from '@skysmack/ng-ui';
+import { NgFieldActions, NgFieldReduxStore } from '@skysmack/ng-redux';
 
 
 @Component({
@@ -29,11 +30,13 @@ export class TerminalsIndexComponent extends DocumentRecordIndexComponent<Termin
     public title: EntityComponentPageTitle,
     public store: NgTerminalsStore,
     public sidebarMenu: NgTerminalsMenu,
-    public fieldsConfig: NgTerminalsFieldsConfig
+    public fieldsConfig: NgTerminalsFieldsConfig,
+    public fieldActions: NgFieldActions,
+    public fieldStore: NgFieldReduxStore
   ) {
-    super(router, activatedRoute, actions, redux, store, fieldsConfig);
-
+    super(router, activatedRoute, actions, redux, store, fieldsConfig, fieldActions, fieldStore);
   }
+
 
   ngOnInit() {
     super.ngOnInit();

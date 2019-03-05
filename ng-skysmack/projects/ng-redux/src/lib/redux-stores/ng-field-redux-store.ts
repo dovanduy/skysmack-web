@@ -2,12 +2,13 @@ import { FieldSchemaViewModel, LocalObject, safeUndefinedTo, FieldValueProviderV
 import { Observable } from 'rxjs';
 import { NgRedux } from '@angular-redux/store';
 import { map } from 'rxjs/operators';
-import { FieldState } from '@skysmack/redux';
+import { FieldState, EntityStore, FieldsAppState } from '@skysmack/redux';
+import { Injectable } from '@angular/core';
 
-export abstract class NgFieldReduxStore {
+@Injectable({ providedIn: 'root' })
+export class NgFieldReduxStore implements EntityStore<FieldSchemaViewModel, string> {
     constructor(
-        protected store: NgRedux<FieldState>,
-        protected stateKey: string
+        protected store: NgRedux<FieldsAppState>
     ) { }
 
     public get(packagePath: string): Observable<LocalObject<FieldSchemaViewModel, string>[]> {
@@ -41,6 +42,6 @@ export abstract class NgFieldReduxStore {
     }
 
     protected getState(): Observable<FieldState> {
-        return this.store.select(state => state[this.stateKey]);
+        return this.store.select(state => state.fields);
     }
 }
