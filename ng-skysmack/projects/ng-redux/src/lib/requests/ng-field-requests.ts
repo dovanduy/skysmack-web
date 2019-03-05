@@ -48,6 +48,7 @@ export class NgFieldRequests implements FieldRequests {
 
     let url = `${this.apiDomain.domain}/${action.payload.packagePath}`;
     url = this.addAdditionalPaths(url, additionalPaths);
+    url = url + '/fields';
 
     return this.http.get<FieldSchemaViewModel[]>(url, { observe: 'response', params: queryParameters })
       .pipe(
@@ -74,7 +75,7 @@ export class NgFieldRequests implements FieldRequests {
   public getSingle(action: ReduxAction<GetSingleRecordPayload<any>>, additionalPaths?: string[]): Observable<ReduxAction<GetSingleRecordSuccessPayload<any, string>> | ReduxAction<GetSingleRecordPayload<string>>> {
     let url = `${this.apiDomain.domain}/${action.payload.packagePath}`;
     url = this.addAdditionalPaths(url, additionalPaths);
-    url = `${url}/${action.payload.id}`;
+    url = `${url}/fields/${action.payload.id}`;
 
     return this.http.get<FieldSchemaViewModel>(url, { observe: 'response' })
       .pipe(
