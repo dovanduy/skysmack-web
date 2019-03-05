@@ -1,6 +1,6 @@
 import { ofType, ActionsObservable, Epic } from 'redux-observable';
 import { map, mergeMap } from 'rxjs/operators';
-import { LocalObject, FieldSchemaViewModel, HttpResponse, HttpErrorResponse, QueueItem } from '@skysmack/framework';
+import { LocalObject, FieldSchemaViewModel, HttpResponse, HttpErrorResponse, QueueItem, log } from '@skysmack/framework';
 import { Observable } from 'rxjs';
 import { PackagePathPayload, ReduxAction, FieldActions, CommitMeta, ReduxOfflineMeta, QueueActions, CancelDynamicFieldActionPayload, GetPagedRecordsPayload, GetPagedRecordsSuccessPayload, GetSingleRecordSuccessPayload, GetSingleRecordPayload } from '@skysmack/redux';
 import { NgFieldRequests } from '../requests/ng-field-requests';
@@ -38,7 +38,7 @@ export class NgFieldEpics {
     public getPagedEpic = (action$: ActionsObservable<ReduxAction<GetPagedRecordsPayload>>): Observable<ReduxAction<GetPagedRecordsSuccessPayload<any, string>> | ReduxAction<GetPagedRecordsPayload>> => {
         return action$.pipe(
             ofType(FieldActions.FIELD_GET_PAGED),
-            mergeMap(action => this.requests.getPaged(action as any)),
+            mergeMap(action => this.requests.getPaged(action))
         );
     }
 

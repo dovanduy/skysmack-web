@@ -55,7 +55,6 @@ import { AvailablePermissionsFieldComponent } from './components/fields/componen
 import { ValidatorsFieldModule } from './components/fields/components/validators-field/validators-field.module';
 import { FieldPermissionFieldComponent } from './components/fields/components/field-permission-field/field-permission-field.component';
 import { RolesSelectComponent } from './components/common/roles-select/roles-select.component';
-import { NgFieldEpics, registerRedux } from '@skysmack/ng-redux';
 
 @NgModule({
   imports: [
@@ -174,12 +173,9 @@ import { NgFieldEpics, registerRedux } from '@skysmack/ng-redux';
   ]
 })
 export class PortalUiModule {
-  constructor(
-    public fieldEpics: NgFieldEpics
-  ) {
+  constructor() {
     ReducerRegistry.Instance.register('ui', uiReducer);
     ReducerRegistry.Instance.register('settings', settingsReducer);
     ReducerRegistry.Instance.register('authentication', authenticationReducer);
-    registerRedux('fields', fieldReducer, fieldEpics);
   }
 }
