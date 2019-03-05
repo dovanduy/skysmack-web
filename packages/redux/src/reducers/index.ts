@@ -5,6 +5,6 @@ export * from './cancel-record-action';
 export * from './cancel-dynamic-field-action';
 export * from './shared-reducer';
 export * from './queue-reducer';
-export * from './field-reducers-base';
+export * from './field-reducer';
 export * from './cancel-field-action';
 

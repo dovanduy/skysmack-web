@@ -1,15 +1,13 @@
 import { BaseComponent } from '../base-component';
 import { Router, ActivatedRoute } from '@angular/router';
-import { RecordActionsBase } from '@skysmack/redux';
-import { NgRedux } from '@angular-redux/store';
+import { EntityActions, EntityStore } from '@skysmack/redux';
 import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { LocalObject, LocalPage, PagedQuery, LoadingState, hasValue, StrIndex, LocalPageTypes, linq, DisplayColumn } from '@skysmack/framework';
 import { Observable, BehaviorSubject, combineLatest, of } from 'rxjs';
-import { NgRecordReduxStore } from '@skysmack/ng-redux';
 import { OnInit } from '@angular/core';
 import { Record } from '@skysmack/framework';
 import { map } from 'rxjs/operators';
-import { FieldsConfig } from '@skysmack/ng-ui';
+import { EntityFieldsConfig } from '@skysmack/ng-ui';
 
 export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey> extends BaseComponent<TAppState, TKey> implements OnInit {
     public entities$: Observable<LocalObject<TRecord, TKey>[]>;
@@ -28,10 +26,10 @@ export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey>
     constructor(
         public router: Router,
         public activatedRoute: ActivatedRoute,
-        public actions: RecordActionsBase<TAppState, NgRedux<TAppState>>,
+        public actions: EntityActions<any, TKey>,
         public skysmackStore: NgSkysmackStore,
-        public store: NgRecordReduxStore<TAppState, TRecord, TKey>,
-        public fieldsConfig: FieldsConfig<TRecord, TKey, any>
+        public store: EntityStore<any, TKey>,
+        public fieldsConfig: EntityFieldsConfig<any, TKey, any>
     ) {
         super(router, activatedRoute, skysmackStore);
     }

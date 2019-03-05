@@ -2,7 +2,7 @@ import { ofType, ActionsObservable, Epic } from 'redux-observable';
 import { map, mergeMap } from 'rxjs/operators';
 import { LocalObject, FieldSchemaViewModel, HttpResponse, HttpErrorResponse, QueueItem } from '@skysmack/framework';
 import { Observable } from 'rxjs';
-import { PackagePathPayload, ReduxAction, FieldActionsBase, CommitMeta, ReduxOfflineMeta, QueueActions, CancelDynamicFieldActionPayload, GetPagedRecordsPayload, GetPagedRecordsSuccessPayload, GetSingleRecordSuccessPayload, GetSingleRecordPayload } from '@skysmack/redux';
+import { PackagePathPayload, ReduxAction, FieldActions, CommitMeta, ReduxOfflineMeta, QueueActions, CancelDynamicFieldActionPayload, GetPagedRecordsPayload, GetPagedRecordsSuccessPayload, GetSingleRecordSuccessPayload, GetSingleRecordPayload } from '@skysmack/redux';
 import { NgFieldRequests } from '../requests/ng-field-requests';
 import { Injectable } from '@angular/core';
 import { NgFieldNotifications } from '../notifications/ng-field-notifications';
@@ -37,26 +37,26 @@ export class NgFieldEpics {
 
     public getPagedEpic = (action$: ActionsObservable<ReduxAction<GetPagedRecordsPayload>>): Observable<ReduxAction<GetPagedRecordsSuccessPayload<any, string>> | ReduxAction<GetPagedRecordsPayload>> => {
         return action$.pipe(
-            ofType(FieldActionsBase.FIELD_GET_PAGED),
+            ofType(FieldActions.FIELD_GET_PAGED),
             mergeMap(action => this.requests.getPaged(action as any)),
         );
     }
 
     public getSingleEpic = (action$: ActionsObservable<ReduxAction<GetSingleRecordPayload<string>>>): Observable<ReduxAction<GetSingleRecordSuccessPayload<any, string>> | ReduxAction<GetSingleRecordPayload<string>>> => {
         return action$.pipe(
-            ofType(FieldActionsBase.FIELD_GET_SINGLE),
+            ofType(FieldActions.FIELD_GET_SINGLE),
             mergeMap(action => this.requests.getSingle(action))
         );
     }
 
     public getAvailableFieldsEpic = (action$: ActionsObservable<ReduxAction<PackagePathPayload>>): Observable<ReduxAction> => action$.pipe(
-        ofType(FieldActionsBase.FIELD_GET_AVAILABLE_FIELDS),
+        ofType(FieldActions.FIELD_GET_AVAILABLE_FIELDS),
         mergeMap(action => this.requests.getAvailableFields(action))
     )
 
     //#region Notifications
     public snackBarGetPagedFailureEpic = (action$: ActionsObservable<ReduxAction<HttpErrorResponse, CommitMeta<LocalObject<any, string>[]>>>): Observable<ReduxAction> => action$.pipe(
-        ofType(FieldActionsBase.FIELD_GET_PAGED_FAILURE),
+        ofType(FieldActions.FIELD_GET_PAGED_FAILURE),
         map((action) => {
             this.notifications.getPagedError(action);
             return { type: 'NOTIFICATION' };
@@ -64,7 +64,7 @@ export class NgFieldEpics {
     )
 
     public snackBarGetSingleFailureEpic = (action$: ActionsObservable<ReduxAction<HttpErrorResponse, CommitMeta<LocalObject<any, string>>>>): Observable<ReduxAction> => action$.pipe(
-        ofType(FieldActionsBase.FIELD_GET_SINGLE_FAILURE),
+        ofType(FieldActions.FIELD_GET_SINGLE_FAILURE),
         map((action) => {
             this.notifications.getSingleError(action);
             return { type: 'NOTIFICATION' };
@@ -72,7 +72,7 @@ export class NgFieldEpics {
     )
 
     public snackBarGetAvailableFieldsFailureEpic = (action$: ActionsObservable<ReduxAction<any, CommitMeta<LocalObject<FieldSchemaViewModel, string>>>>): Observable<ReduxAction> => action$.pipe(
-        ofType(FieldActionsBase.FIELD_GET_AVAILABLE_FIELDS_FAILURE),
+        ofType(FieldActions.FIELD_GET_AVAILABLE_FIELDS_FAILURE),
         map((action) => {
             this.notifications.getAvailableFieldsFailure(action);
             return { type: 'NOTIFICATION' };
@@ -80,7 +80,7 @@ export class NgFieldEpics {
     )
 
     public snackBarCreateSuccessEpic = (action$: ActionsObservable<ReduxAction<unknown, CommitMeta<LocalObject<any, string>[]>>>): Observable<ReduxAction> => action$.pipe(
-        ofType(FieldActionsBase.FIELD_ADD_SUCCESS),
+        ofType(FieldActions.FIELD_ADD_SUCCESS),
         map((action) => {
             this.notifications.addSuccess(action);
             return { type: 'NOTIFICATION' };
@@ -88,7 +88,7 @@ export class NgFieldEpics {
     )
 
     public snackBarCreateFailureEpic = (action$: ActionsObservable<ReduxAction<HttpErrorResponse, CommitMeta<LocalObject<any, string>[]>>>): Observable<ReduxAction> => action$.pipe(
-        ofType(FieldActionsBase.FIELD_ADD_FAILURE),
+        ofType(FieldActions.FIELD_ADD_FAILURE),
         map((action) => {
             this.notifications.addError(action);
             return { type: 'NOTIFICATION' };
@@ -96,7 +96,7 @@ export class NgFieldEpics {
     )
 
     public snackBarUpdateSuccessEpic = (action$: ActionsObservable<ReduxAction<unknown, CommitMeta<LocalObject<any, string>[]>>>): Observable<ReduxAction> => action$.pipe(
-        ofType(FieldActionsBase.FIELD_UPDATE_SUCCESS),
+        ofType(FieldActions.FIELD_UPDATE_SUCCESS),
         map(action => {
             this.notifications.updateSuccess(action);
             return { type: 'NOTIFICATION' };
@@ -104,7 +104,7 @@ export class NgFieldEpics {
     )
 
     public snackBarUpdateFailureEpic = (action$: ActionsObservable<ReduxAction<HttpErrorResponse, CommitMeta<LocalObject<any, string>[]>>>): Observable<ReduxAction> => action$.pipe(
-        ofType(FieldActionsBase.FIELD_UPDATE_FAILURE),
+        ofType(FieldActions.FIELD_UPDATE_FAILURE),
         map(action => {
             this.notifications.updateError(action);
             return { type: 'NOTIFICATION' };
@@ -112,7 +112,7 @@ export class NgFieldEpics {
     )
 
     public snackBarRemoveSuccessEpic = (action$: ActionsObservable<ReduxAction<unknown, CommitMeta<LocalObject<any, string>[]>>>): Observable<ReduxAction> => action$.pipe(
-        ofType(FieldActionsBase.FIELD_DELETE_SUCCESS),
+        ofType(FieldActions.FIELD_DELETE_SUCCESS),
         map((action) => {
             this.notifications.removeSuccess(action);
             return { type: 'NOTIFICATION' };
@@ -120,7 +120,7 @@ export class NgFieldEpics {
     )
 
     public snackBarRemoveFailureEpic = (action$: ActionsObservable<ReduxAction<HttpErrorResponse, CommitMeta<LocalObject<any, string>[]>>>): Observable<ReduxAction> => action$.pipe(
-        ofType(FieldActionsBase.FIELD_DELETE_FAILURE),
+        ofType(FieldActions.FIELD_DELETE_FAILURE),
         map((action) => {
             this.notifications.removeError(action);
             return { type: 'NOTIFICATION' };
@@ -132,9 +132,9 @@ export class NgFieldEpics {
     public standardActionEpic = (action$: ActionsObservable<ReduxAction<any, ReduxOfflineMeta<any[], HttpResponse, LocalObject<any, string>[]>>>): Observable<ReduxAction<QueueItem[]>> => {
         return action$.pipe(
             ofType(
-                FieldActionsBase.FIELD_ADD,
-                FieldActionsBase.FIELD_UPDATE,
-                FieldActionsBase.FIELD_DELETE,
+                FieldActions.FIELD_ADD,
+                FieldActions.FIELD_UPDATE,
+                FieldActions.FIELD_DELETE,
             ),
             map(action => ({
                 type: QueueActions.SET_QUEUE_ITEMS,
@@ -146,9 +146,9 @@ export class NgFieldEpics {
     public successActionEpic = (action$: ActionsObservable<ReduxAction<HttpErrorResponse, CommitMeta<LocalObject<any, string>[]>>>): Observable<ReduxAction<QueueItem[]>> => {
         return action$.pipe(
             ofType(
-                FieldActionsBase.FIELD_ADD_SUCCESS,
-                FieldActionsBase.FIELD_UPDATE_SUCCESS,
-                FieldActionsBase.FIELD_DELETE_SUCCESS,
+                FieldActions.FIELD_ADD_SUCCESS,
+                FieldActions.FIELD_UPDATE_SUCCESS,
+                FieldActions.FIELD_DELETE_SUCCESS,
             ),
             map(action => ({
                 type: QueueActions.REMOVE_QUEUE_ITEMS,
@@ -166,9 +166,9 @@ export class NgFieldEpics {
     public failureActionEpic = (action$: ActionsObservable<ReduxAction<HttpErrorResponse, CommitMeta<LocalObject<any, string>[]>>>): Observable<ReduxAction<QueueItem[]>> => {
         return action$.pipe(
             ofType(
-                FieldActionsBase.FIELD_ADD_FAILURE,
-                FieldActionsBase.FIELD_UPDATE_FAILURE,
-                FieldActionsBase.FIELD_DELETE_FAILURE,
+                FieldActions.FIELD_ADD_FAILURE,
+                FieldActions.FIELD_UPDATE_FAILURE,
+                FieldActions.FIELD_DELETE_FAILURE,
             ),
             map(action => ({
                 type: QueueActions.SET_QUEUE_ITEMS,
@@ -184,7 +184,7 @@ export class NgFieldEpics {
 
     public cancelFieldActionEpic = (action$: ActionsObservable<ReduxAction<CancelDynamicFieldActionPayload<FieldSchemaViewModel>>>): Observable<ReduxAction<QueueItem[]>> => {
         return action$.pipe(
-            ofType(FieldActionsBase.CANCEL_DYNAMIC_FIELD_ACTION),
+            ofType(FieldActions.CANCEL_DYNAMIC_FIELD_ACTION),
             map(action => ({
                 type: QueueActions.REMOVE_QUEUE_ITEMS,
                 payload: [

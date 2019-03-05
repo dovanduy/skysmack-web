@@ -1,15 +1,16 @@
 import { FormRule } from '../forms/form-rule';
-import { LocalObject, FieldSchemaViewModel, Record } from '@skysmack/framework';
+import { LocalObject, FieldSchemaViewModel } from '@skysmack/framework';
 import { Field } from './field';
 import { Validation } from '../forms/validation';
 import { FieldTypes } from './field-types';
+import { EntityFieldsConfig } from './entity-fields-config';
 
-export abstract class FieldsConfig<TRecord extends Record<TKey>, TKey, TDependencies> {
+export abstract class FieldsConfig<TRecord, TKey, TDependencies> implements EntityFieldsConfig<TRecord, TKey, TDependencies> {
     public abstract formRules: FormRule[];
     public abstract validation: Validation;
-    protected abstract getEntityFields(entity?: LocalObject<TRecord, any>, dependencies?: any): Field[];
+    protected abstract getEntityFields(entity?: LocalObject<TRecord, TKey>, dependencies?: TDependencies): Field[];
 
-    public getStaticFields(entity?: LocalObject<TRecord, any>, dependencies?: TDependencies): Field[] {
+    public getStaticFields(entity?: LocalObject<TRecord, TKey>, dependencies?: TDependencies): Field[] {
         const fieldArea = this.validation.area.toUpperCase() + '.FORM.';
         return this.getEntityFields(entity, dependencies).map(field => {
             // Labels
@@ -21,11 +22,11 @@ export abstract class FieldsConfig<TRecord extends Record<TKey>, TKey, TDependen
     }
 
     /**
-    * Gets all fields needed to create a form. Combines standard and dynamic fields into one array.
-    * @param entity Entity used for edit forms.
-    * @param dynamicFields Any dynamic fields added to the package.
-    * @param dependencies Any dependencies the form needs.
-    */
+     * Gets all fields needed to create a form. Combines standard and dynamic fields into one array.
+     * @param entity Entity used for edit forms.
+     * @param dynamicFields Any dynamic fields added to the package.
+     * @param dependencies Any dependencies the form needs.
+     */
     public getFields(entity?: LocalObject<TRecord, TKey>, dynamicFields?: LocalObject<FieldSchemaViewModel, string>[], dependencies?: TDependencies): Field[] {
         const fields = this.getStaticFields(entity, dependencies);
         if (dynamicFields) {

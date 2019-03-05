@@ -8,7 +8,7 @@ import { LocalObject, NumIndex, StrIndex } from '@skysmack/framework';
 export class NgAssignmentTypesActions extends RecordActionsBase<AssignmentTypesAppState, NgRedux<AssignmentTypesAppState>> {
     constructor(protected store: NgRedux<AssignmentTypesAppState>) { super(store, 'ASSIGNMENT_TYPES_', ['assignments', 'types',]); }
 
-    protected getMessageParams(record: LocalObject<AssignmentType, number>): StrIndex<string> {
+    public getMessageParams(record: LocalObject<AssignmentType, number>): StrIndex<string> {
         return {
             description: record.object.description
         };

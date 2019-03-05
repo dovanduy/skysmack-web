@@ -6,8 +6,9 @@ import { GetPagedRecordsPayload, GetSingleRecordPayload, CancelActionPayload, } 
 import { CommitMeta, RollbackMeta, ReduxOfflineMeta, CancelActionMeta, OfflineMeta } from '../metas';
 import { EffectRequest } from '../models/effect-request';
 import { Effect } from './../models/effect';
+import { EntityActions } from '../interfaces/entity-actions';
 
-export abstract class RecordActionsBase<TStateType, TStore extends Store<TStateType>> {
+export abstract class RecordActionsBase<TStateType, TStore extends Store<TStateType>> implements EntityActions<unknown, unknown> {
     public static CANCEL_RECORD_ACTION = 'CANCEL_RECORD_ACTION';
 
     public static GET_PAGED = 'GET_PAGED';
@@ -36,7 +37,7 @@ export abstract class RecordActionsBase<TStateType, TStore extends Store<TStateT
         protected additionalPaths: string[]
     ) { }
 
-    public cancelRecordAction = <TRecord extends Record<TKey>, TKey>(record: LocalObject<TRecord, TKey>, packagePath: string): void => {
+    public cancelAction = <TRecord extends Record<TKey>, TKey>(record: LocalObject<TRecord, TKey>, packagePath: string): void => {
         this.store.dispatch(Object.assign({}, new ReduxAction<CancelActionPayload<TRecord, TKey>, CancelActionMeta>({
             type: this.prefix + RecordActionsBase.CANCEL_RECORD_ACTION,
             payload: {
@@ -79,7 +80,7 @@ export abstract class RecordActionsBase<TStateType, TStore extends Store<TStateT
                 link: `${this.addAdditionalPaths(packagePath)}/create`,
                 packagePath,
                 localObject: record,
-                cancelAction: this.cancelRecordAction
+                cancelAction: this.cancelAction
             });
         })
 
@@ -126,7 +127,7 @@ export abstract class RecordActionsBase<TStateType, TStore extends Store<TStateT
                 link: `${this.addAdditionalPaths(packagePath)}/edit/${record.object.id}`,
                 packagePath,
                 localObject: record,
-                cancelAction: this.cancelRecordAction
+                cancelAction: this.cancelAction
             });
         });
 
@@ -173,7 +174,7 @@ export abstract class RecordActionsBase<TStateType, TStore extends Store<TStateT
                 messageParams: this.getMessageParams(record),
                 packagePath,
                 localObject: record,
-                cancelAction: this.cancelRecordAction,
+                cancelAction: this.cancelAction,
                 deleteAction: this.delete
             });
         });
@@ -211,7 +212,7 @@ export abstract class RecordActionsBase<TStateType, TStore extends Store<TStateT
         })));
     }
 
-    protected abstract getMessageParams(record: LocalObject<any, any>): StrIndex<string>;
+    public abstract getMessageParams(record: LocalObject<any, any>): StrIndex<string>;
 
     protected addAdditionalPaths(url: string): string {
         return this.additionalPaths ? [url, ...this.additionalPaths].join('/') : url;

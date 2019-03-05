@@ -1,7 +1,7 @@
 import { Component, OnInit, Injector } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LocalObject, DynamicFieldRouteData } from '@skysmack/framework';
-import { DocumentRecordActionsBase, DocumentRecordState } from '@skysmack/redux';
+import { DocumentRecordActionsBase } from '@skysmack/redux';
 import { Observable } from 'rxjs';
 import { map, take } from 'rxjs/operators';
 import { EntityAction, FieldsConfig } from '@skysmack/ng-ui';
@@ -10,13 +10,15 @@ import { EntityComponentPageTitle } from './../../../models/entity-component-pag
 import { NgDocumentRecordReduxStore } from '@skysmack/ng-redux';
 import { NgDynamicFieldsMenu } from '../../ng-dynamic-fields-menu';
 import { RecordIndexComponent } from '../../../base-components/record-components/record-index-component';
+import { NgFieldActions, NgFieldReduxStore } from '@skysmack/ng-redux';
+import { NgDynamicFieldsFieldsConfig } from '../../ng-dynamic-fields-config';
 
 @Component({
   selector: 'ss-dynamic-fields-index',
   templateUrl: './dynamic-fields-index.component.html',
   styleUrls: ['./dynamic-fields-index.component.scss']
 })
-export class DynamicFieldsIndexComponent extends RecordIndexComponent<DocumentRecordState<any, any>, any, any> implements OnInit {
+export class DynamicFieldsIndexComponent extends RecordIndexComponent<any, any, any> implements OnInit {
 
   public entities$: Observable<LocalObject<any, any>[]>;
   public dynamicActions: DocumentRecordActionsBase<any, any>;
@@ -32,20 +34,22 @@ export class DynamicFieldsIndexComponent extends RecordIndexComponent<DocumentRe
     public router: Router,
     public activatedRoute: ActivatedRoute,
     public title: EntityComponentPageTitle,
-    public redux: NgSkysmackStore,
+    public actions: NgFieldActions,
+    public store: NgFieldReduxStore,
+    public skysmackStore: NgSkysmackStore,
     public sidebarMenu: NgDynamicFieldsMenu,
+    public fieldsConfig: NgDynamicFieldsFieldsConfig,
     public injector: Injector
   ) {
-    super(router, activatedRoute, undefined, redux, undefined, undefined);
-    // super(router, activatedRoute, redux);
+    super(router, activatedRoute, actions, skysmackStore, store, fieldsConfig);
   }
 
   ngOnInit() {
     this.subscriptionHandler.register(this.activatedRoute.data.pipe(
       map((data: DynamicFieldRouteData) => {
         this.store = this.dynamicStore = this.injector.get(data.storeToken);
-        this.actions = this.dynamicActions = this.injector.get(data.actionToken);
-        this.fieldsConfig = this.dynamicFieldsConfig = this.injector.get(data.fieldsConfigToken);
+        // this.actions = this.dynamicActions = this.injector.get(data.actionToken);
+        // this.fieldsConfig = this.dynamicFieldsConfig = this.injector.get(data.fieldsConfigToken);
 
         this.dynamicActions.getFields(this.packagePath);
         this.entities$ = this.dynamicStore.getFields(this.packagePath);
@@ -59,7 +63,8 @@ export class DynamicFieldsIndexComponent extends RecordIndexComponent<DocumentRe
     event.action(event.value, event._this);
   }
 
-  protected delete(value: LocalObject<any, any>, _this: DynamicFieldsIndexComponent) {
+  // _this: any should be _this: DynamicFieldsIndexComponent
+  protected delete(value: LocalObject<any, any>, _this: any) {
     _this.dynamicActions.deleteFields([value], _this.packagePath);
   }
 }

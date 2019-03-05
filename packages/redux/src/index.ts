@@ -8,3 +8,4 @@ export * from './states';
 export * from './payloads';
 export * from './metas';
 export * from './models';
+export * from './interfaces';

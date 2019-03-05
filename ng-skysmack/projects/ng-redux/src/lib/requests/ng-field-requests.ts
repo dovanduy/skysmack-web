@@ -1,5 +1,5 @@
 import { ApiDomain, FieldSchemaViewModel, FieldValueProviderViewModel } from '@skysmack/framework';
-import { ReduxAction, PackagePathPayload, DocumentRecordActionsBase, GetAvailableFieldsSuccessPayload, GetPagedRecordsPayload, GetPagedRecordsSuccessPayload, GetSingleRecordPayload, GetSingleRecordSuccessPayload, FieldActionsBase, FieldRequests } from '@skysmack/redux';
+import { ReduxAction, PackagePathPayload, DocumentRecordActionsBase, GetAvailableFieldsSuccessPayload, GetPagedRecordsPayload, GetPagedRecordsSuccessPayload, GetSingleRecordPayload, GetSingleRecordSuccessPayload, FieldActions, FieldRequests } from '@skysmack/redux';
 import { Observable, of } from 'rxjs';
 import { map, retry, catchError } from 'rxjs/operators';
 import { HttpClient, HttpParams } from '@angular/common/http';
@@ -53,7 +53,7 @@ export class NgFieldRequests implements FieldRequests {
       .pipe(
         map(httpResponse => {
           return Object.assign({}, new ReduxAction<GetPagedRecordsSuccessPayload<any, string>>({
-            type: FieldActionsBase.FIELD_GET_PAGED_SUCCESS,
+            type: FieldActions.FIELD_GET_PAGED_SUCCESS,
             payload: {
               records: httpResponse.body ? httpResponse.body : [],
               packagePath: action.payload.packagePath,
@@ -64,7 +64,7 @@ export class NgFieldRequests implements FieldRequests {
         }),
         retry(this.retryTimes),
         catchError((error) => of(Object.assign({}, new ReduxAction<GetPagedRecordsPayload>({
-          type: FieldActionsBase.FIELD_GET_PAGED_FAILURE,
+          type: FieldActions.FIELD_GET_PAGED_FAILURE,
           payload: error,
           error: true
         }))))
@@ -80,7 +80,7 @@ export class NgFieldRequests implements FieldRequests {
       .pipe(
         map(httpResponse => {
           return Object.assign({}, new ReduxAction<GetSingleRecordSuccessPayload<any, string>>({
-            type: FieldActionsBase.FIELD_GET_SINGLE_SUCCESS,
+            type: FieldActions.FIELD_GET_SINGLE_SUCCESS,
             payload: {
               id: action.payload.id,
               record: httpResponse.body,
@@ -90,7 +90,7 @@ export class NgFieldRequests implements FieldRequests {
         }),
         retry(this.retryTimes),
         catchError((error) => of(Object.assign({}, new ReduxAction<GetSingleRecordPayload<string>>({
-          type: FieldActionsBase.FIELD_GET_SINGLE_FAILURE,
+          type: FieldActions.FIELD_GET_SINGLE_FAILURE,
           payload: error,
           error: true
         }))))

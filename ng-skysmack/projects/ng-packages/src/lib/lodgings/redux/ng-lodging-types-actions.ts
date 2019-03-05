@@ -8,7 +8,7 @@ import { LocalObject, StrIndex } from '@skysmack/framework';
 export class NgLodgingTypesActions extends DocumentRecordActionsBase<LodgingTypesAppState, NgRedux<LodgingTypesAppState>> {
     constructor(protected store: NgRedux<LodgingTypesAppState>) { super(store, 'LODGING_TYPES_', ['types']); }
 
-    protected getMessageParams(record: LocalObject<LodgingType, number>): StrIndex<string> {
+    public getMessageParams(record: LocalObject<LodgingType, number>): StrIndex<string> {
         return {
             name: record.object.name
         };

@@ -8,7 +8,7 @@ import { LocalObject, StrIndex } from '@skysmack/framework';
 export class NgTerminalsActions extends DocumentRecordActionsBase<TerminalsAppState, NgRedux<TerminalsAppState>> {
     constructor(protected store: NgRedux<TerminalsAppState>) { super(store, 'TERMINALS_', ['terminals']); }
 
-    protected getMessageParams(record: LocalObject<Terminal, number>): StrIndex<string> {
+    public getMessageParams(record: LocalObject<Terminal, number>): StrIndex<string> {
         return {
             id: 'Object'
         };

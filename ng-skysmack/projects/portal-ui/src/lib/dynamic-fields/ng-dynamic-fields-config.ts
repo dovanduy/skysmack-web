@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
-import { FormRule, SetFieldKeyRule } from '@skysmack/ng-ui';
+import { FormRule, SetFieldKeyRule, FieldsConfig } from '@skysmack/ng-ui';
 import { LocalObject, FieldValueProviderViewModel, FieldSchemaViewModel } from '@skysmack/framework';
 import { Field } from '@skysmack/ng-ui';
 import { FieldTypes } from '@skysmack/ng-ui';
@@ -8,11 +8,11 @@ import { DynamicFieldsValidation } from './ng-dynamic-fields-validation';
 import { SelectField } from '@skysmack/ng-ui';
 
 export interface NgDynamicFieldFormDependencies {
-    [key: string]: any;
+    availableFields: LocalObject<FieldValueProviderViewModel, string>[];
 }
 
 @Injectable({ providedIn: 'root' })
-export class NgDynamicFieldsFieldsConfig {
+export class NgDynamicFieldsFieldsConfig extends FieldsConfig<FieldSchemaViewModel, string, NgDynamicFieldFormDependencies> {
     public validation = new DynamicFieldsValidation();
 
     public formRules: FormRule[] = [
@@ -24,7 +24,7 @@ export class NgDynamicFieldsFieldsConfig {
      * @param availableFields Possible dynamic fields to create. Recieved from the backend.
      * @param field Optional field can be providedto set default values. Used to edit an existing field.
      */
-    protected dynamicFields(availableFields: LocalObject<FieldValueProviderViewModel, string>[], field?: LocalObject<FieldSchemaViewModel, string>): Field[] {
+    protected getEntityFields(field?: LocalObject<FieldSchemaViewModel, string>, dependencies?: NgDynamicFieldFormDependencies): Field[] {
         const fields = [
             new Field({
                 fieldType: FieldTypes.string,
@@ -49,7 +49,7 @@ export class NgDynamicFieldsFieldsConfig {
                 key: 'type',
                 validators: [Validators.required],
                 order: 3,
-                optionsData: availableFields,
+                optionsData: dependencies.availableFields,
                 valueSelector: 'object.name',
                 disabled: field ? true : false
             } as SelectField),
@@ -81,7 +81,7 @@ export class NgDynamicFieldsFieldsConfig {
 
 
     public getDynamicFields(availableFields: LocalObject<FieldValueProviderViewModel, string>[], field?: LocalObject<FieldSchemaViewModel, string>): Field[] {
-        return this.dynamicFields(availableFields, field).map(aField => {
+        return this.getEntityFields(field, { availableFields }).map(aField => {
             // Labels
             aField.label = 'FIELDS.FORM.LABELS.' + aField.key.toUpperCase();
             // Placeholders

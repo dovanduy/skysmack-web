@@ -1,14 +1,15 @@
 import { Store } from 'redux';
 import { ReduxAction } from './../action-types';
 import { PackagePathPayload } from './../payloads/package-path-payload';
-import { FieldSchemaViewModel, LocalObject, HttpMethod, LocalObjectStatus, QueueItem, NumIndex, StrIndex } from '@skysmack/framework';
+import { FieldSchemaViewModel, LocalObject, HttpMethod, LocalObjectStatus, QueueItem, StrIndex } from '@skysmack/framework';
 import { Effect } from '../models/effect';
 import { EffectRequest } from '../models/effect-request';
 import { CancelActionMeta } from '../metas/offline-redux/cancel-action-meta';
 import { CancelDynamicFieldActionPayload } from '../payloads/cancel-dynamic-field-action-payload';
 import { GetSingleFieldPayload } from '../payloads/get-single-field-payload';
+import { EntityActions } from '../interfaces';
 
-export class FieldActionsBase<TStateType, TStore extends Store<TStateType>> {
+export class FieldActions<TStateType, TStore extends Store<TStateType>> implements EntityActions<FieldSchemaViewModel, string> {
     public static CANCEL_DYNAMIC_FIELD_ACTION = 'CANCEL_DYNAMIC_FIELD_ACTION';
 
     public static FIELD_GET_PAGED = 'FIELD_GET_PAGED';
@@ -35,14 +36,11 @@ export class FieldActionsBase<TStateType, TStore extends Store<TStateType>> {
     public static FIELD_DELETE_SUCCESS = 'FIELD_DELETE_SUCCESS';
     public static FIELD_DELETE_FAILURE = 'FIELD_DELETE_FAILURE';
 
-    constructor(
-        protected store: TStore,
-        protected additionalPaths: string[]
-    ) { }
+    constructor(protected store: TStore) { }
 
-    public cancelDynamicFieldAction = (field: LocalObject<FieldSchemaViewModel, string>, packagePath: string): void => {
+    public cancelAction = (field: LocalObject<FieldSchemaViewModel, string>, packagePath: string): void => {
         this.store.dispatch(Object.assign({}, new ReduxAction<CancelDynamicFieldActionPayload<FieldSchemaViewModel>>({
-            type: FieldActionsBase.CANCEL_DYNAMIC_FIELD_ACTION,
+            type: FieldActions.CANCEL_DYNAMIC_FIELD_ACTION,
             payload: {
                 field,
                 packagePath,
@@ -54,7 +52,7 @@ export class FieldActionsBase<TStateType, TStore extends Store<TStateType>> {
 
     public getPaged(packagePath: string) {
         this.store.dispatch(Object.assign({}, new ReduxAction<PackagePathPayload>({
-            type: FieldActionsBase.FIELD_GET_PAGED,
+            type: FieldActions.FIELD_GET_PAGED,
             payload: {
                 packagePath
             }
@@ -63,7 +61,7 @@ export class FieldActionsBase<TStateType, TStore extends Store<TStateType>> {
 
     public getSingle(packagePath: string, fieldKey: string) {
         this.store.dispatch(Object.assign({}, new ReduxAction<GetSingleFieldPayload>({
-            type: FieldActionsBase.FIELD_GET_SINGLE,
+            type: FieldActions.FIELD_GET_SINGLE,
             payload: {
                 packagePath,
                 fieldKey
@@ -73,14 +71,14 @@ export class FieldActionsBase<TStateType, TStore extends Store<TStateType>> {
 
     public getAvailableFields(packagePath: string) {
         this.store.dispatch(Object.assign({}, new ReduxAction<PackagePathPayload>({
-            type: FieldActionsBase.FIELD_GET_AVAILABLE_FIELDS,
+            type: FieldActions.FIELD_GET_AVAILABLE_FIELDS,
             payload: {
                 packagePath
             }
         })));
     }
 
-    public add = (fields: LocalObject<FieldSchemaViewModel, string>[], packagePath: string) => {
+    public add = (fields: LocalObject<FieldSchemaViewModel, string>[], packagePath: string, additionalPaths?: string[]) => {
 
         fields.forEach(record => record.error = false);
 
@@ -88,24 +86,24 @@ export class FieldActionsBase<TStateType, TStore extends Store<TStateType>> {
             return new QueueItem({
                 message: `FIELDS.QUEUE.ADDING`, // TODO: Remember to rename this if needed.
                 messageParams: this.getMessageParams(field),
-                link: `${this.addAdditionalPaths(packagePath)}/fields/create`,
+                link: `${this.addAdditionalPaths(packagePath, additionalPaths)}/fields/create`,
                 packagePath,
                 localObject: field,
-                cancelAction: this.cancelDynamicFieldAction
+                cancelAction: this.cancelAction
             });
         })
 
         this.store.dispatch(Object.assign({}, new ReduxAction<any, any>({
-            type: FieldActionsBase.FIELD_ADD,
+            type: FieldActions.FIELD_ADD,
             meta: {
                 offline: {
                     effect: new Effect<FieldSchemaViewModel[]>(new EffectRequest<FieldSchemaViewModel[]>(
-                        this.addAdditionalPaths(packagePath) + '/fields',
+                        this.addAdditionalPaths(packagePath, additionalPaths) + '/fields',
                         HttpMethod.POST,
                         fields.map(x => x.object)
                     )),
                     commit: new ReduxAction({
-                        type: FieldActionsBase.FIELD_ADD_SUCCESS,
+                        type: FieldActions.FIELD_ADD_SUCCESS,
                         meta: {
                             value: fields,
                             packagePath,
@@ -113,7 +111,7 @@ export class FieldActionsBase<TStateType, TStore extends Store<TStateType>> {
                         }
                     }),
                     rollback: new ReduxAction({
-                        type: FieldActionsBase.FIELD_ADD_FAILURE,
+                        type: FieldActions.FIELD_ADD_FAILURE,
                         meta: {
                             value: fields,
                             packagePath,
@@ -125,7 +123,7 @@ export class FieldActionsBase<TStateType, TStore extends Store<TStateType>> {
         })));
     }
 
-    public update = (fields: LocalObject<FieldSchemaViewModel, string>[], packagePath: string) => {
+    public update = (fields: LocalObject<FieldSchemaViewModel, string>[], packagePath: string, additionalPaths?: string[]) => {
 
         fields.forEach(record => record.error = false);
 
@@ -133,27 +131,27 @@ export class FieldActionsBase<TStateType, TStore extends Store<TStateType>> {
             return new QueueItem({
                 message: `FIELDS.QUEUE.UPDATING`,
                 messageParams: this.getMessageParams(field),
-                link: `${this.addAdditionalPaths(packagePath)}/fields/edit/${field.object.key}`,
+                link: `${this.addAdditionalPaths(packagePath, additionalPaths)}/fields/edit/${field.object.key}`,
                 packagePath,
                 localObject: field,
-                cancelAction: this.cancelDynamicFieldAction
+                cancelAction: this.cancelAction
             });
         });
 
         this.store.dispatch(Object.assign({}, new ReduxAction<any, any>({
-            type: FieldActionsBase.FIELD_UPDATE,
+            type: FieldActions.FIELD_UPDATE,
             meta: {
                 offline: {
                     // TODO: Add [] FieldSchemaViewModel both places below when fields accepts arrays.
                     effect: new Effect<FieldSchemaViewModel>(new EffectRequest<FieldSchemaViewModel>(
                         // TODO: Use this below when fields accepts array: packagePath + '/fields
-                        this.addAdditionalPaths(packagePath) + '/fields/' + fields[0].object.key,
+                        this.addAdditionalPaths(packagePath, additionalPaths) + '/fields/' + fields[0].object.key,
                         HttpMethod.PUT,
                         // TODO: Use this below when fields accepts array: fields.map(x => x.object)
                         fields[0].object
                     )),
                     commit: new ReduxAction({
-                        type: FieldActionsBase.FIELD_UPDATE_SUCCESS,
+                        type: FieldActions.FIELD_UPDATE_SUCCESS,
                         meta: {
                             value: fields,
                             packagePath,
@@ -163,7 +161,7 @@ export class FieldActionsBase<TStateType, TStore extends Store<TStateType>> {
                         }
                     }),
                     rollback: new ReduxAction({
-                        type: FieldActionsBase.FIELD_UPDATE_FAILURE,
+                        type: FieldActions.FIELD_UPDATE_FAILURE,
                         meta: {
                             value: fields,
                             packagePath,
@@ -175,7 +173,7 @@ export class FieldActionsBase<TStateType, TStore extends Store<TStateType>> {
         })));
     }
 
-    public delete = (fields: LocalObject<FieldSchemaViewModel, string>[], packagePath: string) => {
+    public delete = (fields: LocalObject<FieldSchemaViewModel, string>[], packagePath: string, additionalPaths?: string[]) => {
         const paths = '?keys=' + fields.map(x => x.object.key).join('&keys=');
 
         fields.forEach(record => record.error = false);
@@ -186,17 +184,17 @@ export class FieldActionsBase<TStateType, TStore extends Store<TStateType>> {
                 messageParams: this.getMessageParams(field),
                 packagePath,
                 localObject: field,
-                cancelAction: this.cancelDynamicFieldAction,
+                cancelAction: this.cancelAction,
                 deleteAction: this.delete
             });
         });
 
         this.store.dispatch(Object.assign({}, new ReduxAction<any, any>({
-            type: FieldActionsBase.FIELD_DELETE,
+            type: FieldActions.FIELD_DELETE,
             meta: {
                 offline: {
                     effect: new Effect<FieldSchemaViewModel[]>(new EffectRequest<FieldSchemaViewModel[]>(
-                        this.addAdditionalPaths(packagePath) + '/fields' + paths,
+                        this.addAdditionalPaths(packagePath, additionalPaths) + '/fields' + paths,
                         HttpMethod.DELETE,
                         fields.map(x => {
                             x.status = LocalObjectStatus.DELETING
@@ -204,7 +202,7 @@ export class FieldActionsBase<TStateType, TStore extends Store<TStateType>> {
                         }),
                     )),
                     commit: new ReduxAction({
-                        type: FieldActionsBase.FIELD_DELETE_SUCCESS,
+                        type: FieldActions.FIELD_DELETE_SUCCESS,
                         meta: {
                             value: fields,
                             packagePath,
@@ -212,7 +210,7 @@ export class FieldActionsBase<TStateType, TStore extends Store<TStateType>> {
                         }
                     }),
                     rollback: new ReduxAction({
-                        type: FieldActionsBase.FIELD_DELETE_FAILURE,
+                        type: FieldActions.FIELD_DELETE_FAILURE,
                         meta: {
                             value: fields,
                             packagePath,
@@ -224,13 +222,13 @@ export class FieldActionsBase<TStateType, TStore extends Store<TStateType>> {
         })));
     }
 
-    protected getMessageParams(field: LocalObject<FieldSchemaViewModel, string>): StrIndex<string> {
+    public getMessageParams(field: LocalObject<FieldSchemaViewModel, string>): StrIndex<string> {
         return {
             0: field.object.display
         };
     };
 
-    protected addAdditionalPaths(url: string): string {
-        return this.additionalPaths ? [url, ...this.additionalPaths].join('/') : url;
+    protected addAdditionalPaths(url: string, additionalPaths: string[]): string {
+        return additionalPaths ? [url, ...additionalPaths].join('/') : url;
     }
 }

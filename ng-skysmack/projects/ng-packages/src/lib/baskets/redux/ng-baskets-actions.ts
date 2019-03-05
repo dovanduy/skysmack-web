@@ -8,7 +8,7 @@ import { LocalObject, StrIndex } from '@skysmack/framework';
 export class NgBasketsActions extends DocumentRecordActionsBase<BasketsAppState, NgRedux<BasketsAppState>> {
     constructor(protected store: NgRedux<BasketsAppState>) { super(store, 'BASKETS_', []); }
 
-    protected getMessageParams(record: LocalObject<Basket, number>): StrIndex<string> {
+    public getMessageParams(record: LocalObject<Basket, number>): StrIndex<string> {
         return {
             currencyCode: record.object.currencyCode
         };

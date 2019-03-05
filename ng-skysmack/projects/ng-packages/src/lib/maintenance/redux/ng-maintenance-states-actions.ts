@@ -8,7 +8,7 @@ import { LocalObject, StrIndex } from '@skysmack/framework';
 export class NgMaintenanceStatesActions extends RecordActionsBase<MaintenanceStatesAppState, NgRedux<MaintenanceStatesAppState>> {
     constructor(protected store: NgRedux<MaintenanceStatesAppState>) { super(store, 'MAINTENANCE_STATES_', []); }
 
-    protected getMessageParams(record: LocalObject<MaintenanceState, number>): StrIndex<string> {
+    public getMessageParams(record: LocalObject<MaintenanceState, number>): StrIndex<string> {
         return {
             description: record.object.description
         };

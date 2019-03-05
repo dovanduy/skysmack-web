@@ -1,5 +1,5 @@
 <ss-container [sidebarMenu]="sidebarMenu" *ngIf="loadedPackage$ | async as loadedPackage">
-  <ss-records-container [area]="'lodging_reservations'" [cancelAction]="actions.cancelRecordAction" [title]="'Stays'"
+  <ss-records-container [area]="'lodging_reservations'" [cancelAction]="actions.cancelAction" [title]="'Stays'"
     [entities$]="extendedReservations$" [entityActions]="entityActions" [packagePath]="packagePath"
     (entityActionEvent)="actionEvent($event)" [totalCount]="totalCount" [loadingState]="loadingState"
     (requestPage)="requestPage()" [fields$]="fields$" (sortChanged)="sortChanged($event)">

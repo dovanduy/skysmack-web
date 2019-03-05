@@ -20,7 +20,7 @@ export class NgAccessPolicyRolesFieldsConfig extends FieldsConfig<AccessPolicyRo
 
     public formRules: FormRule[] = [];
 
-    protected getEntityFields(entity?: LocalObject<AccessPolicyRole, number>, dependencies?: NgAccessPolicyRoleFormDependencies): Field[] {
+    protected getEntityFields(entity?: LocalObject<AccessPolicyRole, AccessPolicyRoleKey>, dependencies?: NgAccessPolicyRoleFormDependencies): Field[] {
         const fields: Field[] = [
             new SelectField({
                 fieldType: FieldTypes.SelectField,

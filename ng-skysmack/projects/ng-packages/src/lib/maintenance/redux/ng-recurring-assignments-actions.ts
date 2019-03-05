@@ -8,7 +8,7 @@ import { LocalObject, StrIndex } from '@skysmack/framework';
 export class NgRecurringAssignmentsActions extends RecordActionsBase<RecurringAssignmentsAppState, NgRedux<RecurringAssignmentsAppState>> {
     constructor(protected store: NgRedux<RecurringAssignmentsAppState>) { super(store, 'RECURRING_ASSIGNMENTS_', ['assignments', 'recurring']); }
 
-    protected getMessageParams(record: LocalObject<RecurringAssignment, number>): StrIndex<string> {
+    public getMessageParams(record: LocalObject<RecurringAssignment, number>): StrIndex<string> {
         return {
             description: record.object.description
         };

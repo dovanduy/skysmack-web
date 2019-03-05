@@ -8,7 +8,7 @@ import { AccessPolicyRule } from '../models/access-policy-rule';
 export class AccessPolicyRulesActions extends RecordActionsBase<AccessPolicyRulesAppState, Store<AccessPolicyRulesAppState>> {
     constructor(protected store: Store<AccessPolicyRulesAppState>) { super(store, 'ACCESS_POLICY_RULES_', ['access-policies', 'rules']); }
 
-    protected getMessageParams(record: LocalObject<AccessPolicyRule, number>): StrIndex<string> {
+    public getMessageParams(record: LocalObject<AccessPolicyRule, number>): StrIndex<string> {
         return {
             id: 'Object'
         };

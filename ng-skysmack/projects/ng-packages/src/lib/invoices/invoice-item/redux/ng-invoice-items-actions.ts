@@ -8,7 +8,7 @@ import { LocalObject, StrIndex } from '@skysmack/framework';
 export class NgInvoiceItemsActions extends DocumentRecordActionsBase<InvoiceItemsAppState, NgRedux<InvoiceItemsAppState>> {
     constructor(protected store: NgRedux<InvoiceItemsAppState>) { super(store, 'INVOICE_ITEMS_', ['items']); }
 
-    protected getMessageParams(record: LocalObject<InvoiceItem, number>): StrIndex<string> {
+    public getMessageParams(record: LocalObject<InvoiceItem, number>): StrIndex<string> {
         return {
             description: record.object.description
         };

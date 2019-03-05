@@ -9,7 +9,7 @@ import { Person } from '@skysmack/packages-persons';
 export class NgPersonsActions extends DocumentRecordActionsBase<PersonsAppState, NgRedux<PersonsAppState>> {
     constructor(protected store: NgRedux<PersonsAppState>) { super(store, 'PERSONS_', []); }
 
-    protected getMessageParams(record: LocalObject<Person, number>): StrIndex<string> {
+    public getMessageParams(record: LocalObject<Person, number>): StrIndex<string> {
         return {
             email: record.object.email
         };

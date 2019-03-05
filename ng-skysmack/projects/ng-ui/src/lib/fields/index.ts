@@ -5,3 +5,4 @@ export * from './field-helpers';
 export * from './fields-config';
 export * from './entity-field-validation';
 export * from './select-field';
+export * from './entity-fields-config';

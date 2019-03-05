@@ -92,7 +92,7 @@ export class UsersActions extends RecordActionsBase<UsersAppState, Store<UsersAp
         })));
     }
 
-    protected getMessageParams(record: LocalObject<User, number>): StrIndex<string> {
+    public getMessageParams(record: LocalObject<User, number>): StrIndex<string> {
         return {
             email: record.object.email
         };

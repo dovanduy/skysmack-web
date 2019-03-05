@@ -8,7 +8,7 @@ import { LocalObject, NumIndex, StrIndex } from '@skysmack/framework';
 export class NgProductTypesActions extends DocumentRecordActionsBase<ProductTypesAppState, NgRedux<ProductTypesAppState>> {
     constructor(protected store: NgRedux<ProductTypesAppState>) { super(store, 'PRODUCT_TYPES_', ['types']); }
 
-    protected getMessageParams(record: LocalObject<ProductType, number>): StrIndex<string> {
+    public getMessageParams(record: LocalObject<ProductType, number>): StrIndex<string> {
         return {
             name: record.object.name
         };
