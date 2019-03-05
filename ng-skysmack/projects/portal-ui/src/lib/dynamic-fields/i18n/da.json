@@ -13,6 +13,14 @@
             "EDITING": "Redigere"
         },
         "FORM": {
+            "LABELS": {
+                "KEY": "Nøgle",
+                "TYPE": "Type",
+                "DISPLAY": "Visningsnavn",
+                "VALIDATORS": "Valideringer",
+                "READPERMISSION": "Læse tilladelser",
+                "WRITEPERMISSION": "Skrive tilladelser"
+            },
             "PLACEHOLDERS": {
                 "KEY": "Nøgle",
                 "TYPE": "Type",

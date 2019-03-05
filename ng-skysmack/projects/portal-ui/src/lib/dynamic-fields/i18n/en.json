@@ -13,6 +13,14 @@
             "EDITING": "Editing"
         },
         "FORM": {
+            "LABELS": {
+                "KEY": "Key",
+                "TYPE": "Type",
+                "DISPLAY": "Display name",
+                "VALIDATORS": "Validators",
+                "READPERMISSION": "Read permission",
+                "WRITEPERMISSION": "Write permission"
+            },
             "PLACEHOLDERS": {
                 "KEY": "Key",
                 "TYPE": "Type",

@@ -32,6 +32,7 @@ export class NgDynamicFieldsFieldsConfig extends FieldsConfig<FieldSchemaViewMod
                 key: 'display',
                 validators: [Validators.required],
                 order: 1,
+                showColumn: true
             } as Field),
 
             new Field({
@@ -40,7 +41,8 @@ export class NgDynamicFieldsFieldsConfig extends FieldsConfig<FieldSchemaViewMod
                 key: 'key',
                 validators: [Validators.required],
                 order: 2,
-                disabled: field ? true : false
+                disabled: field ? true : false,
+                showColumn: true
             } as Field),
 
             new SelectField({
@@ -49,9 +51,10 @@ export class NgDynamicFieldsFieldsConfig extends FieldsConfig<FieldSchemaViewMod
                 key: 'type',
                 validators: [Validators.required],
                 order: 3,
-                optionsData: dependencies.availableFields,
+                optionsData: dependencies && dependencies.availableFields,
                 valueSelector: 'object.name',
-                disabled: field ? true : false
+                disabled: field ? true : false,
+                showColumn: true
             } as SelectField),
 
             new Field({

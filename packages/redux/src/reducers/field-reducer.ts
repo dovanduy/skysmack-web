@@ -43,7 +43,7 @@ export function fieldReducer(state: FieldState = new FieldState(), action: any, 
         case prefix + FieldActions.FIELD_GET_PAGED_SUCCESS: {
             const castedAction: ReduxAction<GetPagedRecordsSuccessPayload<any, string>> = action;
             newState.localPageTypes[castedAction.payload.packagePath] = PageExtensions.mergeOrAddPage(newState.localPageTypes[castedAction.payload.packagePath], castedAction.payload.page);
-            newState.fields[castedAction.payload.packagePath] = LocalObjectExtensions.mergeOrAddLocal(newState.fields[castedAction.payload.packagePath], castedAction.payload.records.map(x => toLocalObject(x)));
+            newState.fields[castedAction.payload.packagePath] = LocalObjectExtensions.mergeOrAddLocal(newState.fields[castedAction.payload.packagePath], castedAction.payload.records.map(x => toLocalObject(x, 'key')));
             return newState;
         }
         case prefix + FieldActions.FIELD_GET_PAGED_FAILURE: {
@@ -55,7 +55,7 @@ export function fieldReducer(state: FieldState = new FieldState(), action: any, 
         }
         case prefix + FieldActions.FIELD_GET_SINGLE_SUCCESS: {
             const castedAction: ReduxAction<GetSingleRecordSuccessPayload<any, string>> = action;
-            newState.fields[castedAction.payload.packagePath] = LocalObjectExtensions.mergeOrAddLocal(newState.fields[castedAction.payload.packagePath], [toLocalObject(castedAction.payload.record)]);
+            newState.fields[castedAction.payload.packagePath] = LocalObjectExtensions.mergeOrAddLocal(newState.fields[castedAction.payload.packagePath], [toLocalObject(castedAction.payload.record, 'key')]);
             return newState;
         }
         case prefix + FieldActions.FIELD_GET_SINGLE_FAILURE: {

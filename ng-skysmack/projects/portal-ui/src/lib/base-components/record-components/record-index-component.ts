@@ -53,7 +53,6 @@ export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey>
 
             this.pagedQuery.pageNumber = this.nextPageNumber;
             this.pagedQuery.pageSize = this.nextPageSize;
-
             this.actions.getPaged(this.packagePath, this.pagedQuery);
         }
     }
@@ -141,7 +140,7 @@ export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey>
                         linq<TKey>([])
                             .selectMany(idsArray)
                             .distinct()
-                            .select(id => entities.filter(entity => entity.object.id === id)[0])
+                            .select(id => entities.filter(entity => entity.objectIdentifier === id)[0])
                             .defined()
                             .ok()
                     );
