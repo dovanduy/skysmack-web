@@ -1,17 +1,17 @@
 import { LocalObjectStatus, FieldSchemaViewModel, LocalObject } from '@skysmack/framework';
 import { ReduxAction } from './../action-types/redux-action';
 import { CancelActionMeta } from './../metas/offline-redux/cancel-action-meta';
-import { CancelDynamicFieldActionPayload } from '../payloads/cancel-dynamic-field-action-payload';
+import { CancelFieldActionPayload } from '../payloads/cancel-field-action-payload';
 import { ReduxOfflineMeta } from '../metas/offline-redux/redux-offline-meta';
 import { FieldState } from './field-reducer';
 
-export const cancelFieldActionOutboxFilter = (outbox, action: ReduxAction<CancelDynamicFieldActionPayload<LocalObject<FieldSchemaViewModel, string>>, CancelActionMeta>) => {
+export const cancelFieldActionOutboxFilter = (outbox, action: ReduxAction<CancelFieldActionPayload<LocalObject<FieldSchemaViewModel, string>>, CancelActionMeta>) => {
     return outbox
         .filter((item: ReduxAction<any, ReduxOfflineMeta<any[], any, any>>) => (item && item.meta && item.meta.offline && item.meta.offline.commit && item.meta.offline.commit.meta) ? true : false)
         .filter((item: ReduxAction<any, ReduxOfflineMeta<any[], any, any>>) => item.meta.offline.commit.meta.value.find(field => field.localId === action.payload.field.localId ? false : true));
 };
 
-export const cancelFieldAction = (state: FieldState, action: ReduxAction<CancelDynamicFieldActionPayload<FieldSchemaViewModel>, CancelActionMeta>): FieldState => {
+export const cancelFieldAction = (state: FieldState, action: ReduxAction<CancelFieldActionPayload<FieldSchemaViewModel>, CancelActionMeta>): FieldState => {
     const newState = Object.assign({}, state);
 
     switch (action.payload.field.status) {
@@ -26,14 +26,14 @@ export const cancelFieldAction = (state: FieldState, action: ReduxAction<CancelD
     }
 };
 
-const cancelCreateAction = (newState: FieldState, action: ReduxAction<CancelDynamicFieldActionPayload<FieldSchemaViewModel>, CancelActionMeta>): FieldState => {
+const cancelCreateAction = (newState: FieldState, action: ReduxAction<CancelFieldActionPayload<FieldSchemaViewModel>, CancelActionMeta>): FieldState => {
     const packagePath = action.payload.packagePath;
     const field = action.payload.field;
     delete newState.fields[packagePath][field.localId];
     return newState;
 };
 
-const cancelEditAction = (newState: FieldState, action: ReduxAction<CancelDynamicFieldActionPayload<FieldSchemaViewModel>, CancelActionMeta>): FieldState => {
+const cancelEditAction = (newState: FieldState, action: ReduxAction<CancelFieldActionPayload<FieldSchemaViewModel>, CancelActionMeta>): FieldState => {
     const packagePath = action.payload.packagePath;
     const field = action.payload.field;
     newState.fields[packagePath][field.localId].object = action.payload.field.oldObject;
@@ -42,7 +42,7 @@ const cancelEditAction = (newState: FieldState, action: ReduxAction<CancelDynami
     return newState;
 };
 
-const cancelDeleteAction = (newState: FieldState, action: ReduxAction<CancelDynamicFieldActionPayload<FieldSchemaViewModel>, CancelActionMeta>): FieldState => {
+const cancelDeleteAction = (newState: FieldState, action: ReduxAction<CancelFieldActionPayload<FieldSchemaViewModel>, CancelActionMeta>): FieldState => {
     const packagePath = action.payload.packagePath;
     const field = action.payload.field;
     newState.fields[packagePath][field.localId].status = LocalObjectStatus.OK;

@@ -2,13 +2,13 @@ import { Routes } from '@angular/router';
 import { LodgingsIndexComponent } from './lodgings-index/lodgings-index.component';
 import { LodgingsCreateComponent } from './lodgings-create/lodgings-create.component';
 import { LodgingsEditComponent } from './lodgings-edit/lodgings-edit.component';
-import { DynamicFieldRouteData } from '@skysmack/framework';
-import { DynamicFieldsIndexComponent, DynamicFieldsCreateComponent } from '@skysmack/portal-ui';
+import { FieldRouteData } from '@skysmack/framework';
+import { FieldsIndexComponent, FieldsCreateComponent } from '@skysmack/portal-ui';
 
 const data = {
   actionToken: 'NgLodgingsActions',
   storeToken: 'NgLodgingsStore'
-} as DynamicFieldRouteData;
+} as FieldRouteData;
 
 export const lodgingsRoutes: Routes = [
   {
@@ -19,8 +19,8 @@ export const lodgingsRoutes: Routes = [
     ]
   },
   {
-    path: 'fields', component: DynamicFieldsIndexComponent, data, children: [
-      { path: 'create', component: DynamicFieldsCreateComponent, pathMatch: 'full', data }
+    path: 'fields', component: FieldsIndexComponent, data, children: [
+      { path: 'create', component: FieldsCreateComponent, pathMatch: 'full', data }
     ]
   }
 ];

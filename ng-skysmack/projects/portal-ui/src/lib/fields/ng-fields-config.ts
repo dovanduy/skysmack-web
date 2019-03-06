@@ -4,16 +4,16 @@ import { FormRule, SetFieldKeyRule, FieldsConfig } from '@skysmack/ng-ui';
 import { LocalObject, FieldValueProviderViewModel, FieldSchemaViewModel } from '@skysmack/framework';
 import { Field } from '@skysmack/ng-ui';
 import { FieldTypes } from '@skysmack/ng-ui';
-import { DynamicFieldsValidation } from './ng-dynamic-fields-validation';
+import { FieldsValidation } from './ng-fields-validation';
 import { SelectField } from '@skysmack/ng-ui';
 
-export interface NgDynamicFieldFormDependencies {
+export interface NgFieldFormDependencies {
     availableFields: LocalObject<FieldValueProviderViewModel, string>[];
 }
 
 @Injectable({ providedIn: 'root' })
-export class NgDynamicFieldsFieldsConfig extends FieldsConfig<FieldSchemaViewModel, string, NgDynamicFieldFormDependencies> {
-    public validation = new DynamicFieldsValidation();
+export class NgFieldsConfig extends FieldsConfig<FieldSchemaViewModel, string, NgFieldFormDependencies> {
+    public validation = new FieldsValidation();
 
     public formRules: FormRule[] = [
         new SetFieldKeyRule(['display'])
@@ -24,7 +24,7 @@ export class NgDynamicFieldsFieldsConfig extends FieldsConfig<FieldSchemaViewMod
      * @param availableFields Possible dynamic fields to create. Recieved from the backend.
      * @param field Optional field can be providedto set default values. Used to edit an existing field.
      */
-    protected getEntityFields(field?: LocalObject<FieldSchemaViewModel, string>, dependencies?: NgDynamicFieldFormDependencies): Field[] {
+    protected getEntityFields(field?: LocalObject<FieldSchemaViewModel, string>, dependencies?: NgFieldFormDependencies): Field[] {
         const fields = [
             new Field({
                 fieldType: FieldTypes.string,
@@ -80,16 +80,5 @@ export class NgDynamicFieldsFieldsConfig extends FieldsConfig<FieldSchemaViewMod
         ];
 
         return fields;
-    }
-
-
-    public getDynamicFields(availableFields: LocalObject<FieldValueProviderViewModel, string>[], field?: LocalObject<FieldSchemaViewModel, string>): Field[] {
-        return this.getEntityFields(field, { availableFields }).map(aField => {
-            // Labels
-            aField.label = 'FIELDS.FORM.LABELS.' + aField.key.toUpperCase();
-            // Placeholders
-            aField.placeholder = 'FIELDS.FORM.PLACEHOLDERS.' + aField.key.toUpperCase();
-            return aField;
-        });
     }
 }

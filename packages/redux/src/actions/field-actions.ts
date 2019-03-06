@@ -5,13 +5,13 @@ import { FieldSchemaViewModel, LocalObject, HttpMethod, LocalObjectStatus, Queue
 import { Effect } from '../models/effect';
 import { EffectRequest } from '../models/effect-request';
 import { CancelActionMeta } from '../metas/offline-redux/cancel-action-meta';
-import { CancelDynamicFieldActionPayload } from '../payloads/cancel-dynamic-field-action-payload';
+import { CancelFieldActionPayload } from '../payloads/cancel-field-action-payload';
 import { GetSingleFieldPayload } from '../payloads/get-single-field-payload';
 import { GetPagedRecordsPayload } from '../payloads/get-paged-records-payload';
 import { EntityActions } from '../interfaces/entity-actions';
 
 export class FieldActions<TStateType, TStore extends Store<TStateType>> implements EntityActions<FieldSchemaViewModel, string> {
-    public static CANCEL_DYNAMIC_FIELD_ACTION = 'CANCEL_DYNAMIC_FIELD_ACTION';
+    public static CANCEL_FIELD_ACTION = 'CANCEL_FIELD_ACTION';
 
     public static FIELD_GET_PAGED = 'FIELD_GET_PAGED';
     public static FIELD_GET_PAGED_SUCCESS = 'FIELD_GET_PAGED_SUCCESS';
@@ -40,8 +40,8 @@ export class FieldActions<TStateType, TStore extends Store<TStateType>> implemen
     constructor(protected store: TStore) { }
 
     public cancelAction = (field: LocalObject<FieldSchemaViewModel, string>, packagePath: string): void => {
-        this.store.dispatch(Object.assign({}, new ReduxAction<CancelDynamicFieldActionPayload<FieldSchemaViewModel>>({
-            type: FieldActions.CANCEL_DYNAMIC_FIELD_ACTION,
+        this.store.dispatch(Object.assign({}, new ReduxAction<CancelFieldActionPayload<FieldSchemaViewModel>>({
+            type: FieldActions.CANCEL_FIELD_ACTION,
             payload: {
                 field,
                 packagePath,

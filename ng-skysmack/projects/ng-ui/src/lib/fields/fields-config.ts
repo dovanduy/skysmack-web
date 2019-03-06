@@ -24,12 +24,12 @@ export abstract class FieldsConfig<TRecord, TKey, TDependencies> implements Enti
     /**
      * Gets all fields needed to create a form. Combines standard and dynamic fields into one array.
      * @param entity Entity used for edit forms.
-     * @param dynamicFields Any dynamic fields added to the package.
+     * @param fields Any dynamic fields added to the package.
      * @param dependencies Any dependencies the form needs.
      */
     public getFields(entity?: LocalObject<TRecord, TKey>, dynamicFields?: LocalObject<FieldSchemaViewModel, string>[], dependencies?: TDependencies): Field[] {
         const fields = this.getStaticFields(entity, dependencies);
-        if (dynamicFields) {
+        if (fields) {
             const returnfields = [
                 ...fields,
                 ...dynamicFields.map(dynamicField => {

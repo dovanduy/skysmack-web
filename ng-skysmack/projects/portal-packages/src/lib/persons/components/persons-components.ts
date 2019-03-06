@@ -2,14 +2,14 @@ import { Routes } from '@angular/router';
 import { PersonsIndexComponent } from './persons-index/persons-index.component';
 import { PersonsCreateComponent } from './persons-create/persons-create.component';
 import { PersonsEditComponent } from './persons-edit/persons-edit.component';
-import { DynamicFieldsIndexComponent, DynamicFieldsCreateComponent, DynamicFieldsEditComponent } from '@skysmack/portal-ui';
-import { DynamicFieldRouteData } from '@skysmack/framework';
+import { FieldsIndexComponent, FieldsCreateComponent, FieldsEditComponent } from '@skysmack/portal-ui';
+import { FieldRouteData } from '@skysmack/framework';
 
 const data = {
   actionToken: 'NgPersonsActions',
   storeToken: 'NgPersonsStore',
   fieldsConfigToken: 'NgPersonsFieldsConfig'
-} as DynamicFieldRouteData;
+} as FieldRouteData;
 
 export const personsRoutes: Routes = [
   {
@@ -20,9 +20,9 @@ export const personsRoutes: Routes = [
     ]
   },
   {
-    path: 'fields', component: DynamicFieldsIndexComponent, data, children: [
-      { path: 'create', component: DynamicFieldsCreateComponent, pathMatch: 'full', data },
-      { path: 'edit/:id', component: DynamicFieldsEditComponent, pathMatch: 'full', data }
+    path: 'fields', component: FieldsIndexComponent, data, children: [
+      { path: 'create', component: FieldsCreateComponent, pathMatch: 'full', data },
+      { path: 'edit/:id', component: FieldsEditComponent, pathMatch: 'full', data }
     ]
   }
 ];

@@ -2,13 +2,13 @@ import { Routes } from '@angular/router';
 import { TerminalsIndexComponent } from './terminals-index/terminals-index.component';
 import { TerminalsCreateComponent } from './terminals-create/terminals-create.component';
 import { TerminalsEditComponent } from './terminals-edit/terminals-edit.component';
-import { DynamicFieldsIndexComponent, DynamicFieldsCreateComponent } from '@skysmack/portal-ui';
-import { DynamicFieldRouteData } from '@skysmack/framework';
+import { FieldsIndexComponent, FieldsCreateComponent } from '@skysmack/portal-ui';
+import { FieldRouteData } from '@skysmack/framework';
 
 const data = {
   actionToken: 'NgTerminalsActions',
   storeToken: 'NgTerminalsStore'
-} as DynamicFieldRouteData;
+} as FieldRouteData;
 
 export const terminalsRoutes: Routes = [
   {
@@ -19,8 +19,8 @@ export const terminalsRoutes: Routes = [
     ]
   },
   {
-    path: 'fields', component: DynamicFieldsIndexComponent, data, children: [
-      { path: 'create', component: DynamicFieldsCreateComponent, pathMatch: 'full', data }
+    path: 'fields', component: FieldsIndexComponent, data, children: [
+      { path: 'create', component: FieldsCreateComponent, pathMatch: 'full', data }
     ]
   }
 ];

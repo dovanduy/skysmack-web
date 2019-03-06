@@ -1,8 +1,8 @@
-export class DynamicFieldRouteData {
+export class FieldRouteData {
     public actionToken: string;
     public storeToken: string;
     public fieldsConfigToken?: string;
-    constructor(values: Partial<DynamicFieldRouteData>) {
+    constructor(values: Partial<FieldRouteData>) {
         Object.assign(this, values);
     }
 }

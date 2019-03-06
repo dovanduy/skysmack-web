@@ -5,7 +5,7 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { PortalUiModule } from './../portal-ui.module';
 import { TranslateLoader } from '@ngx-translate/core';
 import { LanguageService } from './../language/language.service';
-import { dynamicFieldsComponents } from './components/dynamic-fields-components';
+import { fieldsComponents } from './components/fields-components';
 import { HttpLoaderFactory } from './../portal-ui.helper';
 
 
@@ -16,10 +16,10 @@ import { HttpLoaderFactory } from './../portal-ui.helper';
     PortalUiModule
   ],
   declarations: [
-    ...dynamicFieldsComponents
+    ...fieldsComponents
   ],
   exports: [
-    ...dynamicFieldsComponents
+    ...fieldsComponents
   ],
   providers: [
     LanguageService,
@@ -30,6 +30,6 @@ import { HttpLoaderFactory } from './../portal-ui.helper';
     }
   ]
 })
-export class DynamicFieldsModule {
+export class FieldsModule {
   constructor(public languageService: LanguageService) { }
 }

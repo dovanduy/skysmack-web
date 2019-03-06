@@ -1,7 +1,7 @@
 import { StrIndex } from '@skysmack/framework';
 import { Validation } from '@skysmack/ng-ui';
 
-export class DynamicFieldsValidation extends Validation {
+export class FieldsValidation extends Validation {
     public formErrors = {
         key: '',
         type: '',

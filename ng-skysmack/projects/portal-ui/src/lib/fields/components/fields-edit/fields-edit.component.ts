@@ -4,15 +4,15 @@ import { FieldState } from '@skysmack/redux';
 import { NgFieldReduxStore, NgFieldActions } from '@skysmack/ng-redux';
 import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { EditorNavService } from './../../../components/common/container/editor-nav.service';
-import { NgDynamicFieldsFieldsConfig, NgDynamicFieldFormDependencies } from './../../ng-dynamic-fields-config';
+import { NgFieldsConfig, NgFieldFormDependencies } from './../../ng-fields-config';
 import { RecordFormComponent } from './../../../base-components/record-components/record-form-component';
 
 @Component({
-  selector: 'ss-portal-ui-dynamic-fields-edit',
-  templateUrl: './dynamic-fields-edit.component.html',
-  styleUrls: ['./dynamic-fields-edit.component.scss']
+  selector: 'ss-portal-ui-fields-edit',
+  templateUrl: './fields-edit.component.html',
+  styleUrls: ['./fields-edit.component.scss']
 })
-export class DynamicFieldsEditComponent extends RecordFormComponent<FieldState, any, string, NgDynamicFieldFormDependencies> implements OnInit {
+export class FieldsEditComponent extends RecordFormComponent<FieldState, any, string, NgFieldFormDependencies> implements OnInit {
   constructor(
     public router: Router,
     public activatedRoute: ActivatedRoute,
@@ -20,7 +20,7 @@ export class DynamicFieldsEditComponent extends RecordFormComponent<FieldState, 
     public actions: NgFieldActions,
     public store: NgFieldReduxStore,
     public skysmackStore: NgSkysmackStore,
-    public fieldsConfig: NgDynamicFieldsFieldsConfig,
+    public fieldsConfig: NgFieldsConfig,
     public injector: Injector
   ) {
     super(router, activatedRoute, editorNavService, actions, skysmackStore, store, fieldsConfig);

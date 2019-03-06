@@ -2,13 +2,13 @@ import { Routes } from '@angular/router';
 import { LodgingTypesIndexComponent } from './lodging-types-index/lodging-types-index.component';
 import { LodgingTypesEditComponent } from './lodging-types-edit/lodging-types-edit.component';
 import { LodgingTypesCreateComponent } from './lodging-types-create/lodging-types-create.component';
-import { DynamicFieldsIndexComponent, DynamicFieldsCreateComponent, DynamicFieldsEditComponent } from '@skysmack/portal-ui';
-import { DynamicFieldRouteData } from '@skysmack/framework';
+import { FieldsIndexComponent, FieldsCreateComponent, FieldsEditComponent } from '@skysmack/portal-ui';
+import { FieldRouteData } from '@skysmack/framework';
 
 const data = {
     actionToken: 'NgLodgingTypesActions',
     storeToken: 'NgLodgingTypesStore'
-} as DynamicFieldRouteData;
+} as FieldRouteData;
 
 export const lodgingTypesRoutes: Routes = [
     {
@@ -19,9 +19,9 @@ export const lodgingTypesRoutes: Routes = [
         ]
     },
     {
-        path: 'types/fields', component: DynamicFieldsIndexComponent, data, children: [
-            { path: 'create', component: DynamicFieldsCreateComponent, pathMatch: 'full', data },
-            { path: 'edit/:id', component: DynamicFieldsEditComponent, pathMatch: 'full', data }
+        path: 'types/fields', component: FieldsIndexComponent, data, children: [
+            { path: 'create', component: FieldsCreateComponent, pathMatch: 'full', data },
+            { path: 'edit/:id', component: FieldsEditComponent, pathMatch: 'full', data }
         ]
     }
 ];

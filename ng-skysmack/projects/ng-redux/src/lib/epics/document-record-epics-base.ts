@@ -3,7 +3,7 @@ import { map, mergeMap } from 'rxjs/operators';
 import { Record, LocalObject, FieldSchemaViewModel, HttpResponse, HttpErrorResponse, QueueItem, LocalObjectStatus } from '@skysmack/framework';
 import { Observable } from 'rxjs';
 import { RecordEpicsBase } from './record-epics-base';
-import { DocumentRecordRequests, PackagePathPayload, ReduxAction, GetFieldsSuccessPayload, DocumentRecordActionsBase, CommitMeta, ReduxOfflineMeta, QueueActions, CancelDynamicFieldActionPayload } from '@skysmack/redux';
+import { DocumentRecordRequests, PackagePathPayload, ReduxAction, GetFieldsSuccessPayload, DocumentRecordActionsBase, CommitMeta, ReduxOfflineMeta, QueueActions, CancelFieldActionPayload } from '@skysmack/redux';
 import { DocumentRecordNotifications } from './../notifications/document-record-notifications';
 
 export abstract class DocumentRecordEpicsBase<TRecord extends Record<TKey>, TKey> extends RecordEpicsBase<TRecord, TKey> {
@@ -178,9 +178,9 @@ export abstract class DocumentRecordEpicsBase<TRecord extends Record<TKey>, TKey
         );
     }
 
-    public cancelFieldActionEpic = (action$: ActionsObservable<ReduxAction<CancelDynamicFieldActionPayload<FieldSchemaViewModel>>>): Observable<ReduxAction<QueueItem[]>> => {
+    public cancelFieldActionEpic = (action$: ActionsObservable<ReduxAction<CancelFieldActionPayload<FieldSchemaViewModel>>>): Observable<ReduxAction<QueueItem[]>> => {
         return action$.pipe(
-            ofType(this.prefix + DocumentRecordActionsBase.CANCEL_DYNAMIC_FIELD_ACTION),
+            ofType(this.prefix + DocumentRecordActionsBase.CANCEL_FIELD_ACTION),
             map(action => ({
                 type: QueueActions.REMOVE_QUEUE_ITEMS,
                 payload: [

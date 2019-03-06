@@ -1,7 +1,7 @@
 # Adding a new dynamic field
 
 - Add constant in `field-type.ts`
-- Navigate to `ng-skysmack -> portal-ui/components/fields/components` in cmd line
+- Navigate to `ng-skysmack -> portal-ui/components/field-components/components` in cmd line
 - Generate the field component `ng g c new-field-name --skip-import`
     > Remove "portal-ui-" from component selector.
     > Change css to scss in component style path.

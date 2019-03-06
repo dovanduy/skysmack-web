@@ -3,17 +3,17 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { EntityAction } from '@skysmack/ng-ui';
 import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { EntityComponentPageTitle } from './../../../models/entity-component-page-title';
-import { NgDynamicFieldsMenu } from '../../ng-dynamic-fields-menu';
+import { NgFieldsMenu } from '../../ng-fields-menu';
 import { RecordIndexComponent } from '../../../base-components/record-components/record-index-component';
 import { NgFieldActions, NgFieldReduxStore } from '@skysmack/ng-redux';
-import { NgDynamicFieldsFieldsConfig } from '../../ng-dynamic-fields-config';
+import { NgFieldsConfig } from '../../ng-fields-config';
 
 @Component({
-  selector: 'ss-dynamic-fields-index',
-  templateUrl: './dynamic-fields-index.component.html',
-  styleUrls: ['./dynamic-fields-index.component.scss']
+  selector: 'ss-fields-index',
+  templateUrl: './fields-index.component.html',
+  styleUrls: ['./fields-index.component.scss']
 })
-export class DynamicFieldsIndexComponent extends RecordIndexComponent<any, any, any> implements OnInit {
+export class FieldsIndexComponent extends RecordIndexComponent<any, any, any> implements OnInit {
   public entityActions: EntityAction[] = [
     new EntityAction().asUrlAction('edit', 'Edit', 'edit'),
     new EntityAction().asEventAction('Delete', this.delete, 'delete', this)
@@ -26,8 +26,8 @@ export class DynamicFieldsIndexComponent extends RecordIndexComponent<any, any, 
     public actions: NgFieldActions,
     public store: NgFieldReduxStore,
     public skysmackStore: NgSkysmackStore,
-    public sidebarMenu: NgDynamicFieldsMenu,
-    public fieldsConfig: NgDynamicFieldsFieldsConfig,
+    public sidebarMenu: NgFieldsMenu,
+    public fieldsConfig: NgFieldsConfig,
     public injector: Injector
   ) {
     super(router, activatedRoute, actions, skysmackStore, store, fieldsConfig);

@@ -4,15 +4,15 @@ import { ReduxAction } from '../action-types/redux-action';
 import { PackagePathPayload, GetFieldsSuccessPayload, GetAvailableFieldsSuccessPayload, GetSingleFieldSuccessPayload } from './../payloads';
 import { DocumentRecordState } from './../states/document-record-state';
 import { recordReducersBase } from './record-reducers-base';
-import { cancelDynamicFieldAction } from './cancel-dynamic-field-action';
+import { cancelFieldAction } from './cancel-field-action';
 import { RollbackMeta } from '../metas/offline-redux/rollback-meta';
 
 export function documentRecordReducersBase<TState extends DocumentRecordState<TRecord, TKey>, TRecord extends Record<TKey>, TKey>(state: TState, action: any, prefix: string = ''): TState {
     let newState = Object.assign({}, state);
 
     switch (action.type) {
-        case prefix + DocumentRecordActionsBase.CANCEL_DYNAMIC_FIELD_ACTION: {
-            return cancelDynamicFieldAction<TState, TRecord, TKey>(newState, action);
+        case prefix + DocumentRecordActionsBase.CANCEL_FIELD_ACTION: {
+            // return cancelFieldAction(newState, action);
         }
         case prefix + DocumentRecordActionsBase.GET_FIELDS_SUCCESS: {
             const castedAction: ReduxAction<GetFieldsSuccessPayload> = action;

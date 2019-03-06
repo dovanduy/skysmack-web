@@ -24,7 +24,7 @@ export function fieldReducer(state: FieldState = new FieldState(), action: any):
     state = sharedReducer(state, action, new FieldState());
 
     switch (action.type) {
-        case FieldActions.CANCEL_DYNAMIC_FIELD_ACTION: {
+        case FieldActions.CANCEL_FIELD_ACTION: {
             return cancelFieldAction(newState, action);
         }
         case FieldActions.FIELD_GET_PAGED: {

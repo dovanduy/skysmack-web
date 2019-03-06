@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { HttpClientModule, HttpClient } from '@angular/common/http';
-import { PortalUiModule, HttpLoaderFactory, DynamicFieldsModule } from '@skysmack/portal-ui';
+import { PortalUiModule, HttpLoaderFactory, FieldsModule } from '@skysmack/portal-ui';
 import { TranslateLoader } from '@ngx-translate/core';
 import { LanguageService } from '@skysmack/portal-ui';
 import { AccessPoliciesRoutingModule } from './access-policies-routing.module';
@@ -21,7 +21,7 @@ import { PackagesModule } from '../../packages';
     PortalUiModule,
     AccessPoliciesRoutingModule,
     NgAccessPoliciesModule,
-    DynamicFieldsModule,
+    FieldsModule,
     IdentitiesModule,
     PackagesModule
   ],

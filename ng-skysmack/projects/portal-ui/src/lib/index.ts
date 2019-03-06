@@ -2,7 +2,7 @@ export * from './autentication/index';
 export * from './components/index';
 export * from './base-components/index';
 export * from './directives/index';
-export * from './dynamic-fields/index';
+export * from './fields/index';
 export * from './language/index';
 export * from './models/index';
 export * from './redux/index';

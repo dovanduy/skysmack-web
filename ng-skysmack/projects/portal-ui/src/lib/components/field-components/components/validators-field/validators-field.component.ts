@@ -1,7 +1,7 @@
 import { Component, OnInit, Injector } from '@angular/core';
 import { FieldBaseComponent } from '../field-base-component';
 import { ActivatedRoute, Router } from '@angular/router';
-import { DynamicFieldRouteData, flatten, FieldValueProviderViewModel, LocalObject, StrIndex, log } from '@skysmack/framework';
+import { FieldRouteData, flatten, FieldValueProviderViewModel, LocalObject, StrIndex, log } from '@skysmack/framework';
 import { NgDocumentRecordReduxStore } from '@skysmack/ng-redux';
 import { map, switchMap, filter } from 'rxjs/operators';
 import { Field } from '@skysmack/ng-ui';
@@ -67,7 +67,7 @@ export class ValidatorsFieldComponent extends FieldBaseComponent implements OnIn
     );
 
     const setAvailablValidators$ = this.activatedRoute.data.pipe(
-      map((data: DynamicFieldRouteData) => this.store = this.injector.get(data.storeToken)),
+      map((data: FieldRouteData) => this.store = this.injector.get(data.storeToken)),
       switchMap(() => this.store.getAvailableFields(this.packagePath).pipe(
         flatten(),
         // Create available validators

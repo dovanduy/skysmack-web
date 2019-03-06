@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { BasketsRoutingModule } from './baskets-routing.module';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { NgBasketsModule } from '@skysmack/ng-packages';
-import { PortalUiModule, HttpLoaderFactory, DynamicFieldsModule } from '@skysmack/portal-ui';
+import { PortalUiModule, HttpLoaderFactory, FieldsModule } from '@skysmack/portal-ui';
 import { basketsComponents } from './components/baskets-components';
 import { TranslateLoader } from '@ngx-translate/core';
 import { LanguageService } from '@skysmack/portal-ui';
@@ -16,7 +16,7 @@ import { LanguageService } from '@skysmack/portal-ui';
     PortalUiModule,
     BasketsRoutingModule,
     NgBasketsModule,
-    DynamicFieldsModule
+    FieldsModule
   ],
   declarations: [
     ...basketsComponents

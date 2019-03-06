@@ -2,13 +2,13 @@ import { Routes } from '@angular/router';
 import { BasketsIndexComponent } from './baskets-index/baskets-index.component';
 import { BasketsCreateComponent } from './baskets-create/baskets-create.component';
 import { BasketsEditComponent } from './baskets-edit/baskets-edit.component';
-import { DynamicFieldsIndexComponent, DynamicFieldsCreateComponent, DynamicFieldsEditComponent } from '@skysmack/portal-ui';
-import { DynamicFieldRouteData } from '@skysmack/framework';
+import { FieldsIndexComponent, FieldsCreateComponent, FieldsEditComponent } from '@skysmack/portal-ui';
+import { FieldRouteData } from '@skysmack/framework';
 
 const data = {
   actionToken: 'NgBasketsActions',
   storeToken: 'NgBasketsStore'
-} as DynamicFieldRouteData;
+} as FieldRouteData;
 
 export const basketsRoutes: Routes = [
   {
@@ -19,9 +19,9 @@ export const basketsRoutes: Routes = [
     ]
   },
   {
-    path: 'fields', component: DynamicFieldsIndexComponent, data, children: [
-      { path: 'create', component: DynamicFieldsCreateComponent, pathMatch: 'full', data },
-      { path: 'edit/:id', component: DynamicFieldsEditComponent, pathMatch: 'full', data }
+    path: 'fields', component: FieldsIndexComponent, data, children: [
+      { path: 'create', component: FieldsCreateComponent, pathMatch: 'full', data },
+      { path: 'edit/:id', component: FieldsEditComponent, pathMatch: 'full', data }
     ]
   }
 ];

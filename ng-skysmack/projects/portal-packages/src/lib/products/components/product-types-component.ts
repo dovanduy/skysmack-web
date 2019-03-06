@@ -1,14 +1,14 @@
 import { ProductTypesIndexComponent } from './product-types-index/product-types-index.component';
 import { ProductTypesCreateComponent } from './product-types-create/product-types-create.component';
 import { ProductTypesEditComponent } from './product-types-edit/product-types-edit.component';
-import { DynamicFieldsIndexComponent, DynamicFieldsCreateComponent, DynamicFieldsEditComponent } from '@skysmack/portal-ui';
+import { FieldsIndexComponent, FieldsCreateComponent, FieldsEditComponent } from '@skysmack/portal-ui';
 import { Routes } from '@angular/router';
-import { DynamicFieldRouteData } from '@skysmack/framework';
+import { FieldRouteData } from '@skysmack/framework';
 
 const data = {
     actionToken: 'NgProductTypesActions',
     storeToken: 'NgProductTypesStore'
-} as DynamicFieldRouteData;
+} as FieldRouteData;
 
 export const productTypesRoutes: Routes = [
     {
@@ -18,9 +18,9 @@ export const productTypesRoutes: Routes = [
         ]
     },
     {
-        path: 'types/fields', component: DynamicFieldsIndexComponent, data, children: [
-            { path: 'create', component: DynamicFieldsCreateComponent, pathMatch: 'full', data },
-            { path: 'edit/:id', component: DynamicFieldsEditComponent, pathMatch: 'full', data }
+        path: 'types/fields', component: FieldsIndexComponent, data, children: [
+            { path: 'create', component: FieldsCreateComponent, pathMatch: 'full', data },
+            { path: 'edit/:id', component: FieldsEditComponent, pathMatch: 'full', data }
         ]
     }
 ];

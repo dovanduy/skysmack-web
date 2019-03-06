@@ -49,9 +49,9 @@ export class LodgingsCreateComponent extends DocumentRecordFormComponent<Lodging
       this.lodgingTypeStore.get(this.packagePath)
     ).pipe(
       map(values => {
-        const dynamicFields = values[0];
+        const fields = values[0];
         const availableLodgingTypes = values[1];
-        return this.fieldsConfig.getFields(undefined, dynamicFields, { availableLodgingTypes });
+        return this.fieldsConfig.getFields(undefined, fields, { availableLodgingTypes });
       })
     );
   }

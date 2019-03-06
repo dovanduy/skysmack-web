@@ -3,7 +3,7 @@ import { FieldState } from '@skysmack/redux';
 import { Router, ActivatedRoute } from '@angular/router';
 import { EditorNavService } from './../../../components/common/container/editor-nav.service';
 import { NgSkysmackStore } from '@skysmack/ng-packages';
-import { NgDynamicFieldsFieldsConfig, NgDynamicFieldFormDependencies } from './../../ng-dynamic-fields-config';
+import { NgFieldsConfig, NgFieldFormDependencies } from './../../ng-fields-config';
 import { RecordFormComponent } from './../../../base-components/record-components/record-form-component';
 import { NgFieldActions, NgFieldReduxStore } from '@skysmack/ng-redux';
 import { combineLatest } from 'rxjs';
@@ -11,11 +11,11 @@ import { map } from 'rxjs/operators';
 import { LocalObject, FieldSchemaViewModel } from '@skysmack/framework';
 
 @Component({
-  selector: 'ss-dynamic-fields-create',
-  templateUrl: './dynamic-fields-create.component.html',
-  styleUrls: ['./dynamic-fields-create.component.scss']
+  selector: 'ss-fields-create',
+  templateUrl: './fields-create.component.html',
+  styleUrls: ['./fields-create.component.scss']
 })
-export class DynamicFieldsCreateComponent extends RecordFormComponent<FieldState, any, string, NgDynamicFieldFormDependencies> implements OnInit {
+export class FieldsCreateComponent extends RecordFormComponent<FieldState, any, string, NgFieldFormDependencies> implements OnInit {
   public objectIdentifier = 'key';
 
   constructor(
@@ -25,7 +25,7 @@ export class DynamicFieldsCreateComponent extends RecordFormComponent<FieldState
     public actions: NgFieldActions,
     public store: NgFieldReduxStore,
     public skysmackStore: NgSkysmackStore,
-    public fieldsConfig: NgDynamicFieldsFieldsConfig,
+    public fieldsConfig: NgFieldsConfig,
     public injector: Injector
   ) {
     super(router, activatedRoute, editorNavService, actions, skysmackStore, store, fieldsConfig);

@@ -7,7 +7,7 @@ import { MenuItem } from '@skysmack/framework';
 import { NgMenuItemProviders } from '@skysmack/ng-redux';
 
 @Injectable({ providedIn: 'root' })
-export class NgDynamicFieldsMenu extends SidebarMenu {
+export class NgFieldsMenu extends SidebarMenu {
     public menuId = 'fields';
     public translationPrefix = 'FIELDS.INDEX.';
 

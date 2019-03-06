@@ -52,10 +52,10 @@ export class ProductsEditComponent extends DocumentRecordFormComponent<ProductsA
     ).pipe(
       map(values => {
         const entity = values[0][0];
-        const dynamicFields = values[0][1];
+        const fields = values[0][1];
         const availableProductTypes = values[1];
         this.selectedEntity = entity;
-        return this.fieldsConfig.getFields(entity, dynamicFields, { availableProductTypes });
+        return this.fieldsConfig.getFields(entity, fields, { availableProductTypes });
       })
     );
   }

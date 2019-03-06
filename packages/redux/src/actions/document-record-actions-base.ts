@@ -6,11 +6,11 @@ import { FieldSchemaViewModel, LocalObject, HttpMethod, LocalObjectStatus, Queue
 import { Effect } from '../models/effect';
 import { EffectRequest } from '../models/effect-request';
 import { CancelActionMeta } from '../metas/offline-redux/cancel-action-meta';
-import { CancelDynamicFieldActionPayload } from '../payloads/cancel-dynamic-field-action-payload';
+import { CancelFieldActionPayload } from '../payloads/cancel-field-action-payload';
 import { GetSingleFieldPayload } from '../payloads/get-single-field-payload';
 
 export abstract class DocumentRecordActionsBase<TStateType, TStore extends Store<TStateType>> extends RecordActionsBase<TStateType, TStore> {
-    public static CANCEL_DYNAMIC_FIELD_ACTION = 'CANCEL_DYNAMIC_FIELD_ACTION';
+    public static CANCEL_FIELD_ACTION = 'CANCEL_FIELD_ACTION';
 
     public static GET_FIELDS = 'GET_FIELDS';
     public static GET_FIELDS_SUCCESS = 'GET_FIELDS_SUCCESS';
@@ -44,9 +44,9 @@ export abstract class DocumentRecordActionsBase<TStateType, TStore extends Store
         super(store, prefix, additionalPaths);
     }
 
-    public cancelDynamicFieldAction = (field: LocalObject<FieldSchemaViewModel, string>, packagePath: string): void => {
-        this.store.dispatch(Object.assign({}, new ReduxAction<CancelDynamicFieldActionPayload<FieldSchemaViewModel>>({
-            type: this.prefix + DocumentRecordActionsBase.CANCEL_DYNAMIC_FIELD_ACTION,
+    public cancelFieldAction = (field: LocalObject<FieldSchemaViewModel, string>, packagePath: string): void => {
+        this.store.dispatch(Object.assign({}, new ReduxAction<CancelFieldActionPayload<FieldSchemaViewModel>>({
+            type: this.prefix + DocumentRecordActionsBase.CANCEL_FIELD_ACTION,
             payload: {
                 field,
                 packagePath,
@@ -95,7 +95,7 @@ export abstract class DocumentRecordActionsBase<TStateType, TStore extends Store
                 link: `${this.addAdditionalPaths(packagePath)}/fields/create`,
                 packagePath,
                 localObject: field,
-                cancelAction: this.cancelDynamicFieldAction
+                cancelAction: this.cancelFieldAction
             });
         })
 
@@ -140,7 +140,7 @@ export abstract class DocumentRecordActionsBase<TStateType, TStore extends Store
                 link: `${this.addAdditionalPaths(packagePath)}/fields/edit/${field.object.key}`,
                 packagePath,
                 localObject: field,
-                cancelAction: this.cancelDynamicFieldAction
+                cancelAction: this.cancelFieldAction
             });
         });
 
@@ -190,7 +190,7 @@ export abstract class DocumentRecordActionsBase<TStateType, TStore extends Store
                 messageParams: this.getFieldMessageParams(field),
                 packagePath,
                 localObject: field,
-                cancelAction: this.cancelDynamicFieldAction,
+                cancelAction: this.cancelFieldAction,
                 deleteAction: this.deleteFields
             });
         });

@@ -32,7 +32,7 @@ export class DocumentRecordIndexComponent<TAppState, TRecord extends Record<TKey
 
     protected setFields() {
         this.fields$ = this.fieldStore.get(this.packagePath).pipe(
-            map(dynamicFields => this.fieldsConfig.getFields(undefined, dynamicFields, this.fieldsConfig.getStaticFields()))
+            map(fields => this.fieldsConfig.getFields(undefined, fields, this.fieldsConfig.getStaticFields()))
         );
     }
 }

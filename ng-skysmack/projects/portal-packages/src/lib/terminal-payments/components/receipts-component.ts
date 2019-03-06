@@ -1,14 +1,14 @@
 import { ReceiptsIndexComponent } from './receipts-index/receipts-index.component';
 import { ReceiptsCreateComponent } from './receipts-create/receipts-create.component';
 import { ReceiptsEditComponent } from './receipts-edit/receipts-edit.component';
-import { DynamicFieldsIndexComponent, DynamicFieldsCreateComponent } from '@skysmack/portal-ui';
-import { DynamicFieldRouteData } from '@skysmack/framework';
+import { FieldsIndexComponent, FieldsCreateComponent } from '@skysmack/portal-ui';
+import { FieldRouteData } from '@skysmack/framework';
 import { Routes } from '@angular/router';
 
 const data = {
   actionToken: 'NgReceiptsActions',
   storeToken: 'NgReceiptsStore'
-} as DynamicFieldRouteData;
+} as FieldRouteData;
 
 export const receiptsRoutes: Routes = [
     {
@@ -18,8 +18,8 @@ export const receiptsRoutes: Routes = [
         ]
     },
     {
-      path: 'receipts/fields', component: DynamicFieldsIndexComponent, data, children: [
-        { path: 'create', component: DynamicFieldsCreateComponent, pathMatch: 'full', data }
+      path: 'receipts/fields', component: FieldsIndexComponent, data, children: [
+        { path: 'create', component: FieldsCreateComponent, pathMatch: 'full', data }
       ]
     }
 ];

@@ -2,7 +2,7 @@ import { ofType, ActionsObservable, Epic } from 'redux-observable';
 import { map, mergeMap } from 'rxjs/operators';
 import { LocalObject, FieldSchemaViewModel, HttpResponse, HttpErrorResponse, QueueItem, log } from '@skysmack/framework';
 import { Observable } from 'rxjs';
-import { PackagePathPayload, ReduxAction, FieldActions, CommitMeta, ReduxOfflineMeta, QueueActions, CancelDynamicFieldActionPayload, GetPagedRecordsPayload, GetPagedRecordsSuccessPayload, GetSingleRecordSuccessPayload, GetSingleRecordPayload, GetSingleFieldPayload } from '@skysmack/redux';
+import { PackagePathPayload, ReduxAction, FieldActions, CommitMeta, ReduxOfflineMeta, QueueActions, CancelFieldActionPayload, GetPagedRecordsPayload, GetPagedRecordsSuccessPayload, GetSingleRecordSuccessPayload, GetSingleRecordPayload, GetSingleFieldPayload } from '@skysmack/redux';
 import { NgFieldRequests } from '../requests/ng-field-requests';
 import { Injectable } from '@angular/core';
 import { NgFieldNotifications } from '../notifications/ng-field-notifications';
@@ -182,9 +182,9 @@ export class NgFieldEpics {
         );
     }
 
-    public cancelFieldActionEpic = (action$: ActionsObservable<ReduxAction<CancelDynamicFieldActionPayload<FieldSchemaViewModel>>>): Observable<ReduxAction<QueueItem[]>> => {
+    public cancelFieldActionEpic = (action$: ActionsObservable<ReduxAction<CancelFieldActionPayload<FieldSchemaViewModel>>>): Observable<ReduxAction<QueueItem[]>> => {
         return action$.pipe(
-            ofType(FieldActions.CANCEL_DYNAMIC_FIELD_ACTION),
+            ofType(FieldActions.CANCEL_FIELD_ACTION),
             map(action => ({
                 type: QueueActions.REMOVE_QUEUE_ITEMS,
                 payload: [
