@@ -1,5 +1,5 @@
 import { ApiDomain, FieldSchemaViewModel, FieldValueProviderViewModel, HttpErrorResponse } from '@skysmack/framework';
-import { ReduxAction, PackagePathPayload, GetAvailableFieldsSuccessPayload, GetPagedEntitiesPayload, GetPagedEntitiesSuccessPayload, GetSingleEntitySuccessPayload, FieldActions, FieldRequests, GetSingleEntityPayload } from '@skysmack/redux';
+import { ReduxAction, PackagePathPayload, GetAvailableFieldsSuccessPayload, GetPagedEntitiesPayload, GetPagedEntitiesSuccessPayload, GetSingleEntitySuccessPayload, FieldActions, FieldRequests, GetSingleEntityPayload, AdditionalPathsMeta } from '@skysmack/redux';
 import { Observable, of } from 'rxjs';
 import { map, retry, catchError } from 'rxjs/operators';
 import { HttpClient, HttpParams } from '@angular/common/http';
@@ -18,7 +18,7 @@ export class NgFieldRequests implements FieldRequests {
   ) {
   }
 
-  public getPaged(action: ReduxAction<GetPagedEntitiesPayload>, additionalPaths?: string[]): Observable<ReduxAction<GetPagedEntitiesSuccessPayload<FieldSchemaViewModel, string>> | ReduxAction<HttpErrorResponse>> {
+  public getPaged(action: ReduxAction<GetPagedEntitiesPayload, AdditionalPathsMeta>): Observable<ReduxAction<GetPagedEntitiesSuccessPayload<FieldSchemaViewModel, string>> | ReduxAction<HttpErrorResponse>> {
     let queryParameters = new HttpParams({ encoder: new CustomHttpUrlEncodingCodec() });
     let query = '';
     let sort = '';
@@ -46,19 +46,22 @@ export class NgFieldRequests implements FieldRequests {
     }
 
     let url = `${this.apiDomain.domain}/${action.payload.packagePath}`;
-    url = this.addAdditionalPaths(url, additionalPaths);
+    url = this.addAdditionalPaths(url, action.meta.additionalPaths);
     url = url + '/fields';
 
     return this.http.get<FieldSchemaViewModel[]>(url, { observe: 'response', params: queryParameters })
       .pipe(
         map(httpResponse => {
-          return Object.assign({}, new ReduxAction<GetPagedEntitiesSuccessPayload<FieldSchemaViewModel, string>>({
+          return Object.assign({}, new ReduxAction<GetPagedEntitiesSuccessPayload<FieldSchemaViewModel, string>, AdditionalPathsMeta>({
             type: FieldActions.FIELD_GET_PAGED_SUCCESS,
             payload: {
               entities: httpResponse.body ? httpResponse.body : [],
               packagePath: action.payload.packagePath,
               page: PageResponseExtensions.getPageResponse<string>(httpResponse.headers, httpResponse.body.map(record => record.key), query, sort),
               pagedQuery: action.payload.pagedQuery
+            },
+            meta: {
+              additionalPaths: action.meta.additionalPaths
             }
           }));
         }),
@@ -71,20 +74,23 @@ export class NgFieldRequests implements FieldRequests {
       );
   }
 
-  public getSingle = (action: ReduxAction<GetSingleEntityPayload<string>>, additionalPaths?: string[]): Observable<ReduxAction<GetSingleEntitySuccessPayload<FieldSchemaViewModel, string>> | ReduxAction<HttpErrorResponse>> => {
+  public getSingle = (action: ReduxAction<GetSingleEntityPayload<string>, AdditionalPathsMeta>): Observable<ReduxAction<GetSingleEntitySuccessPayload<FieldSchemaViewModel, string>> | ReduxAction<HttpErrorResponse>> => {
     let url = `${this.apiDomain.domain}/${action.payload.packagePath}`;
-    url = this.addAdditionalPaths(url, additionalPaths);
+    url = this.addAdditionalPaths(url, action.meta.additionalPaths);
     url = `${url}/fields/${action.payload.id}`;
 
     return this.http.get<FieldSchemaViewModel>(url, { observe: 'response' })
       .pipe(
         map(httpResponse => {
-          return Object.assign({}, new ReduxAction<GetSingleEntitySuccessPayload<FieldSchemaViewModel, string>>({
+          return Object.assign({}, new ReduxAction<GetSingleEntitySuccessPayload<FieldSchemaViewModel, string>, AdditionalPathsMeta>({
             type: FieldActions.FIELD_GET_SINGLE_SUCCESS,
             payload: {
               id: action.payload.id,
               entity: httpResponse.body,
               packagePath: action.payload.packagePath
+            },
+            meta: {
+              additionalPaths: action.meta.additionalPaths
             }
           }));
         }),
@@ -97,17 +103,20 @@ export class NgFieldRequests implements FieldRequests {
       );
   }
 
-  public getAvailableFields(action: ReduxAction<PackagePathPayload>, additionalPaths?: string[]): Observable<ReduxAction<GetAvailableFieldsSuccessPayload> | ReduxAction<HttpErrorResponse>> {
+  public getAvailableFields(action: ReduxAction<PackagePathPayload, AdditionalPathsMeta>): Observable<ReduxAction<GetAvailableFieldsSuccessPayload> | ReduxAction<HttpErrorResponse>> {
     let url = `${this.apiDomain.domain}/${action.payload.packagePath}`;
-    url = this.addAdditionalPaths(url, additionalPaths);
+    url = this.addAdditionalPaths(url, action.meta.additionalPaths);
     url = `${url}/fields-available`;
 
     return this.http.get<FieldValueProviderViewModel[]>(url, { observe: 'response' }).pipe(
-      map(httpResponse => Object.assign({}, new ReduxAction<GetAvailableFieldsSuccessPayload>({
+      map(httpResponse => Object.assign({}, new ReduxAction<GetAvailableFieldsSuccessPayload, AdditionalPathsMeta>({
         type: FieldActions.FIELD_GET_AVAILABLE_FIELDS_SUCCESS,
         payload: {
           availableFields: httpResponse.body ? httpResponse.body : [],
           packagePath: action.payload.packagePath
+        },
+        meta: {
+          additionalPaths: action.meta.additionalPaths
         }
       }))),
       catchError((error) => of(Object.assign({}, new ReduxAction<HttpErrorResponse>({

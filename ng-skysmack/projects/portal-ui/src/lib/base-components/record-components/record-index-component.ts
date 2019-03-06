@@ -43,6 +43,30 @@ export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey>
         this.setFields();
     }
 
+    protected actionsGetPaged() {
+        this.actions.getPaged(this.packagePath, this.pagedQuery);
+    }
+
+    protected storeGet() {
+        return this.store.get(this.packagePath);
+    }
+
+    protected storeGetPages() {
+        return this.store.getPages(this.packagePath);
+    }
+
+    protected getEntities() {
+        this.entities$ = this.storeGet();
+    }
+
+    protected setFields() {
+        this.fields$ = of(this.fieldsConfig.getStaticFields());
+    }
+
+    protected delete(value: LocalObject<TRecord, TKey>, _this: RecordIndexComponent<any, any, any>) {
+        _this.actions.delete([value], _this.packagePath);
+    }
+
     public actionEvent(event: { action: Function, value: LocalObject<TRecord, TKey>, _this: any }) {
         event.action(event.value, event._this);
     }
@@ -53,7 +77,7 @@ export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey>
 
             this.pagedQuery.pageNumber = this.nextPageNumber;
             this.pagedQuery.pageSize = this.nextPageSize;
-            this.actions.getPaged(this.packagePath, this.pagedQuery);
+            this.actionsGetPaged();
         }
     }
 
@@ -67,20 +91,8 @@ export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey>
         this.requestPage(true);
     }
 
-    protected setFields() {
-        this.fields$ = of(this.fieldsConfig.getStaticFields());
-    }
-
-    protected delete(value: LocalObject<TRecord, TKey>, _this: RecordIndexComponent<any, any, any>) {
-        _this.actions.delete([value], _this.packagePath);
-    }
-
-    private getEntities() {
-        this.entities$ = this.store.get(this.packagePath);
-    }
-
     private loadPages() {
-        this.subscriptionHandler.register(this.store.getPages(this.packagePath).pipe(
+        this.subscriptionHandler.register(this.storeGetPages().pipe(
             hasValue(),
             map((dictionary: StrIndex<LocalPageTypes<TKey>>) => {
                 // Part 1: Get current page

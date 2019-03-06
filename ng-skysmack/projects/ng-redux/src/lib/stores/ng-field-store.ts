@@ -1,4 +1,4 @@
-import { FieldSchemaViewModel, LocalObject, safeUndefinedTo, FieldValueProviderViewModel, hasValue, dictionaryToArray, StrIndex, LocalPageTypes } from '@skysmack/framework';
+import { FieldSchemaViewModel, LocalObject, safeUndefinedTo, FieldValueProviderViewModel, hasValue, dictionaryToArray, StrIndex, LocalPageTypes, log } from '@skysmack/framework';
 import { Observable } from 'rxjs';
 import { NgRedux } from '@angular-redux/store';
 import { map } from 'rxjs/operators';
@@ -11,31 +11,31 @@ export class NgFieldStore implements EntityStore<FieldSchemaViewModel, string> {
         protected store: NgRedux<FieldsAppState>
     ) { }
 
-    public get(packagePath: string): Observable<LocalObject<FieldSchemaViewModel, string>[]> {
+    public get(stateKey: string): Observable<LocalObject<FieldSchemaViewModel, string>[]> {
         return this.getState().pipe(
-            map(state => state.fields[packagePath]),
+            map(state => state.fields[stateKey]),
             safeUndefinedTo('object'),
             dictionaryToArray<LocalObject<FieldSchemaViewModel, string>>()
         );
     }
 
-    public getSingle(packagePath: string, key: string): Observable<LocalObject<FieldSchemaViewModel, string>> {
-        return this.get(packagePath).pipe(
+    public getSingle(stateKey: string, key: string): Observable<LocalObject<FieldSchemaViewModel, string>> {
+        return this.get(stateKey).pipe(
             map(fields => fields.find(record => record.object.key === key)),
             hasValue()
         );
     }
 
-    public getPages(packagePath: string): Observable<StrIndex<LocalPageTypes<string>>> {
+    public getPages(stateKey: string): Observable<StrIndex<LocalPageTypes<string>>> {
         return this.getState().pipe(
-            map(state => state.localPageTypes[packagePath]),
+            map(state => state.localPageTypes[stateKey]),
             hasValue<StrIndex<LocalPageTypes<string>>>()
         );
     }
 
-    public getAvailableFields(packagePath: string): Observable<LocalObject<FieldValueProviderViewModel, string>[]> {
+    public getAvailableFields(stateKey: string): Observable<LocalObject<FieldValueProviderViewModel, string>[]> {
         return this.getState().pipe(
-            map(state => state.availableFields[packagePath]),
+            map(state => state.availableFields[stateKey]),
             safeUndefinedTo('object'),
             dictionaryToArray<LocalObject<FieldValueProviderViewModel, string>>()
         );

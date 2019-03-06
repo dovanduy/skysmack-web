@@ -11,6 +11,7 @@ export class BaseComponent<TAppState, TKey> implements OnInit, OnDestroy {
     public fields$: Observable<Field[]>;
     public entityId: TKey;
     public packagePath: string;
+    public additionalPaths: string[] = [];
     public loadedPackage$: Observable<LoadedPackage>;
 
     constructor(
@@ -22,6 +23,8 @@ export class BaseComponent<TAppState, TKey> implements OnInit, OnDestroy {
     ngOnInit() {
         // Used together with dynamic routing in fallback component.
         this.router.onSameUrlNavigation = 'ignore';
+        this.setPackagePath();
+        this.setAdditionalPaths();
         this.getParams();
         this.getCurrentPackage();
     }
@@ -35,7 +38,6 @@ export class BaseComponent<TAppState, TKey> implements OnInit, OnDestroy {
     }
 
     private getParams() {
-        this.packagePath = this.router.url.split('/')[1];
         if (this.entityId === undefined) {
             if (this.activatedRoute) {
                 this.subscriptionHandler.register(this.activatedRoute.params
@@ -55,5 +57,23 @@ export class BaseComponent<TAppState, TKey> implements OnInit, OnDestroy {
 
     private getCurrentPackage() {
         this.loadedPackage$ = this.skysmackStore.getCurrentPackage(this.packagePath);
+    }
+
+    private setPackagePath() {
+        this.packagePath = this.router.url.split('/')[1];
+    }
+
+    private setAdditionalPaths() {
+        this.additionalPaths = [];
+        const chuncks = this.router.url.split('/');
+        for (let chunck of chuncks) {
+            if (chunck === 'edit' || chunck === 'create') {
+                break;
+            }
+
+            if (chunck !== '' && chunck !== 'fields' && chunck !== this.packagePath) {
+                this.additionalPaths.push(chunck);
+            }
+        }
     }
 }

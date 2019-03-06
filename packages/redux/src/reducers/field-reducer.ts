@@ -1,4 +1,4 @@
-import { toLocalObject, HttpSuccessResponse, LocalObject, HttpErrorResponse, LocalObjectExtensions, replaceLocalInnerObject, GlobalProperties, PageResponse, PageExtensions, LoadingState, HttpResponse, FieldSchemaViewModel, LocalObjectStatus, FieldValueProviderViewModel, LocalPageTypes, StrIndex } from "@skysmack/framework";
+import { toLocalObject, HttpSuccessResponse, LocalObject, HttpErrorResponse, LocalObjectExtensions, replaceLocalInnerObject, GlobalProperties, PageResponse, PageExtensions, LoadingState, HttpResponse, FieldSchemaViewModel, LocalObjectStatus, FieldValueProviderViewModel, LocalPageTypes, StrIndex, getFieldStateKey } from "@skysmack/framework";
 import { ReduxAction } from '../action-types/redux-action';
 import { GetPagedEntitiesPayload, GetPagedEntitiesSuccessPayload, GetSingleEntitySuccessPayload, GetAvailableFieldsSuccessPayload } from './../payloads';
 import { cancelFieldAction } from './cancel-field-action';
@@ -8,6 +8,7 @@ import { CommitMeta } from '../metas/offline-redux/commit-meta';
 import { RollbackMeta } from '../metas/offline-redux/rollback-meta';
 import { sharedReducer } from './shared-reducer';
 import { AppState } from '../states/app-state';
+import { AdditionalPathsMeta } from '../metas';
 
 export class FieldsAppState extends AppState {
     public fields: FieldState;
@@ -28,7 +29,8 @@ export function fieldReducer(state: FieldState = new FieldState(), action: any):
             return cancelFieldAction(newState, action);
         }
         case FieldActions.FIELD_GET_PAGED: {
-            const castedAction: ReduxAction<GetPagedEntitiesPayload> = action;
+            const castedAction: ReduxAction<GetPagedEntitiesPayload, AdditionalPathsMeta> = action;
+            const stateKey = getFieldStateKey(castedAction.payload.packagePath, castedAction.meta.additionalPaths);
             const page = new PageResponse<string>({
                 pageNumber: castedAction.payload.pagedQuery.pageNumber,
                 pageSize: castedAction.payload.pagedQuery.pageSize,
@@ -37,13 +39,14 @@ export function fieldReducer(state: FieldState = new FieldState(), action: any):
                 query: castedAction.payload.pagedQuery.rsqlFilter.toList().build(),
                 sort: castedAction.payload.pagedQuery.sort.build()
             });
-            newState.localPageTypes[castedAction.payload.packagePath] = PageExtensions.mergeOrAddPage(newState.localPageTypes[castedAction.payload.packagePath], page, LoadingState.Loading);
+            newState.localPageTypes[stateKey] = PageExtensions.mergeOrAddPage(newState.localPageTypes[stateKey], page, LoadingState.Loading);
             return newState;
         }
         case FieldActions.FIELD_GET_PAGED_SUCCESS: {
-            const castedAction: ReduxAction<GetPagedEntitiesSuccessPayload<FieldSchemaViewModel, string>> = action;
-            newState.localPageTypes[castedAction.payload.packagePath] = PageExtensions.mergeOrAddPage(newState.localPageTypes[castedAction.payload.packagePath], castedAction.payload.page);
-            newState.fields[castedAction.payload.packagePath] = LocalObjectExtensions.mergeOrAddLocal(newState.fields[castedAction.payload.packagePath], castedAction.payload.entities.map(x => toLocalObject(x, 'key')));
+            const castedAction: ReduxAction<GetPagedEntitiesSuccessPayload<FieldSchemaViewModel, string>, AdditionalPathsMeta> = action;
+            const stateKey = getFieldStateKey(castedAction.payload.packagePath, castedAction.meta.additionalPaths);
+            newState.localPageTypes[stateKey] = PageExtensions.mergeOrAddPage(newState.localPageTypes[stateKey], castedAction.payload.page);
+            newState.fields[stateKey] = LocalObjectExtensions.mergeOrAddLocal(newState.fields[stateKey], castedAction.payload.entities.map(x => toLocalObject(x, 'key')));
             return newState;
         }
         case FieldActions.FIELD_GET_PAGED_FAILURE: {
@@ -54,8 +57,9 @@ export function fieldReducer(state: FieldState = new FieldState(), action: any):
             return newState;
         }
         case FieldActions.FIELD_GET_SINGLE_SUCCESS: {
-            const castedAction: ReduxAction<GetSingleEntitySuccessPayload<FieldSchemaViewModel, string>> = action;
-            newState.fields[castedAction.payload.packagePath] = LocalObjectExtensions.mergeOrAddLocal(newState.fields[castedAction.payload.packagePath], [toLocalObject(castedAction.payload.entity, 'key')]);
+            const castedAction: ReduxAction<GetSingleEntitySuccessPayload<FieldSchemaViewModel, string>, AdditionalPathsMeta> = action;
+            const stateKey = getFieldStateKey(castedAction.payload.packagePath, castedAction.meta.additionalPaths);
+            newState.fields[stateKey] = LocalObjectExtensions.mergeOrAddLocal(newState.fields[stateKey], [toLocalObject(castedAction.payload.entity, 'key')]);
             return newState;
         }
         case FieldActions.FIELD_GET_SINGLE_FAILURE: {
@@ -66,9 +70,10 @@ export function fieldReducer(state: FieldState = new FieldState(), action: any):
             return newState;
         }
         case FieldActions.FIELD_GET_AVAILABLE_FIELDS_SUCCESS: {
-            const castedAction: ReduxAction<GetAvailableFieldsSuccessPayload> = action;
+            const castedAction: ReduxAction<GetAvailableFieldsSuccessPayload, AdditionalPathsMeta> = action;
+            const stateKey = getFieldStateKey(castedAction.payload.packagePath, castedAction.meta.additionalPaths);
             const incomingAvailableFields = castedAction.payload.availableFields.map(x => toLocalObject<FieldValueProviderViewModel, string>(x, 'name'));
-            newState.availableFields[castedAction.payload.packagePath] = LocalObjectExtensions.mergeOrAddLocal<FieldValueProviderViewModel, string>(newState.availableFields[castedAction.payload.packagePath], incomingAvailableFields);
+            newState.availableFields[stateKey] = LocalObjectExtensions.mergeOrAddLocal<FieldValueProviderViewModel, string>(newState.availableFields[stateKey], incomingAvailableFields);
             return newState;
         }
         case FieldActions.FIELD_GET_AVAILABLE_FIELDS_FAILURE: {

@@ -1,6 +1,7 @@
 import { Component, OnInit, Injector } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EntityAction } from '@skysmack/ng-ui';
+import { getFieldStateKey, LocalObject, FieldSchemaViewModel } from '@skysmack/framework';
 import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { EntityComponentPageTitle } from './../../../models/entity-component-page-title';
 import { NgFieldsMenu } from '../../ng-fields-menu';
@@ -36,5 +37,22 @@ export class FieldsIndexComponent extends RecordIndexComponent<any, any, any> im
 
   ngOnInit() {
     super.ngOnInit();
+    this.title.setTitle(`${this.packagePath} ${this.additionalPaths.join(' ')} fields`);
+  }
+
+  protected storeGet() {
+    return this.store.get(getFieldStateKey(this.packagePath, this.additionalPaths));
+  }
+
+  protected storeGetPages() {
+    return this.store.getPages(getFieldStateKey(this.packagePath, this.additionalPaths));
+  }
+
+  protected actionsGetPaged() {
+    this.actions.getPaged(this.packagePath, this.pagedQuery, this.additionalPaths);
+  }
+
+  protected delete(value: LocalObject<FieldSchemaViewModel, string>, _this: FieldsIndexComponent) {
+    _this.actions.delete([value], _this.packagePath, _this.additionalPaths);
   }
 }

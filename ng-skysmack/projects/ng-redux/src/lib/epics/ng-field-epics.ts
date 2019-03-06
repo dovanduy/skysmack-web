@@ -2,7 +2,7 @@ import { ofType, ActionsObservable, Epic } from 'redux-observable';
 import { map, mergeMap } from 'rxjs/operators';
 import { LocalObject, FieldSchemaViewModel, HttpResponse, HttpErrorResponse, QueueItem } from '@skysmack/framework';
 import { Observable } from 'rxjs';
-import { PackagePathPayload, ReduxAction, FieldActions, CommitMeta, ReduxOfflineMeta, QueueActions, CancelFieldActionPayload, GetPagedEntitiesPayload, GetPagedEntitiesSuccessPayload, GetSingleEntitySuccessPayload, GetSingleEntityPayload } from '@skysmack/redux';
+import { PackagePathPayload, ReduxAction, FieldActions, CommitMeta, ReduxOfflineMeta, QueueActions, CancelFieldActionPayload, GetPagedEntitiesPayload, GetPagedEntitiesSuccessPayload, GetSingleEntitySuccessPayload, GetSingleEntityPayload, AdditionalPathsMeta } from '@skysmack/redux';
 import { NgFieldRequests } from '../requests/ng-field-requests';
 import { Injectable } from '@angular/core';
 import { NgFieldNotifications } from '../notifications/ng-field-notifications';
@@ -35,21 +35,21 @@ export class NgFieldEpics {
         ];
     }
 
-    public getPagedEpic = (action$: ActionsObservable<ReduxAction<GetPagedEntitiesPayload>>): Observable<ReduxAction<GetPagedEntitiesSuccessPayload<any, string>> | ReduxAction<HttpErrorResponse>> => {
+    public getPagedEpic = (action$: ActionsObservable<ReduxAction<GetPagedEntitiesPayload, AdditionalPathsMeta>>): Observable<ReduxAction<GetPagedEntitiesSuccessPayload<any, string>> | ReduxAction<HttpErrorResponse>> => {
         return action$.pipe(
             ofType(FieldActions.FIELD_GET_PAGED),
             mergeMap(action => this.requests.getPaged(action))
         );
     }
 
-    public getSingleEpic = (action$: ActionsObservable<ReduxAction<GetSingleEntityPayload<string>>>): Observable<ReduxAction<GetSingleEntitySuccessPayload<any, string>> | ReduxAction<HttpErrorResponse>> => {
+    public getSingleEpic = (action$: ActionsObservable<ReduxAction<GetSingleEntityPayload<string>, AdditionalPathsMeta>>): Observable<ReduxAction<GetSingleEntitySuccessPayload<any, string>> | ReduxAction<HttpErrorResponse>> => {
         return action$.pipe(
             ofType(FieldActions.FIELD_GET_SINGLE),
             mergeMap(action => this.requests.getSingle(action))
         );
     }
 
-    public getAvailableFieldsEpic = (action$: ActionsObservable<ReduxAction<PackagePathPayload>>): Observable<ReduxAction> => action$.pipe(
+    public getAvailableFieldsEpic = (action$: ActionsObservable<ReduxAction<PackagePathPayload, AdditionalPathsMeta>>): Observable<ReduxAction> => action$.pipe(
         ofType(FieldActions.FIELD_GET_AVAILABLE_FIELDS),
         mergeMap(action => this.requests.getAvailableFields(action))
     )

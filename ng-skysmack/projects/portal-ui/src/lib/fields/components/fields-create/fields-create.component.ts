@@ -8,7 +8,8 @@ import { RecordFormComponent } from './../../../base-components/record-component
 import { NgFieldActions, NgFieldStore } from '@skysmack/ng-redux';
 import { combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { LocalObject, FieldSchemaViewModel } from '@skysmack/framework';
+import { LocalObject, FieldSchemaViewModel, getFieldStateKey } from '@skysmack/framework';
+import { FormHelper } from '@skysmack/ng-ui';
 
 @Component({
   selector: 'ss-fields-create',
@@ -37,10 +38,10 @@ export class FieldsCreateComponent extends RecordFormComponent<FieldState, any, 
   }
 
   public setCreateFields() {
-    this.actions.getAvailableFields(this.packagePath);
+    this.actions.getAvailableFields(this.packagePath, this.additionalPaths);
 
     this.fields$ = combineLatest(
-      this.store.getAvailableFields(this.packagePath),
+      this.store.getAvailableFields(getFieldStateKey(this.packagePath, this.additionalPaths)),
       this.skysmackStore.getEditorItem()
     ).pipe(
       map(values => {
@@ -50,5 +51,14 @@ export class FieldsCreateComponent extends RecordFormComponent<FieldState, any, 
         return this.fieldsConfig.getFields(this.editorItem, undefined, { availableFields });
       })
     );
+  }
+
+  protected create(fh: FormHelper) {
+    fh.formValid(() => {
+      const localObject = this.extractFormValues(fh);
+      this.editorItem ? localObject.localId = this.editorItem.localId : localObject.localId = localObject.localId;
+      this.actions.add([localObject], this.packagePath, this.additionalPaths);
+      this.editorNavService.hideEditorNav();
+    });
   }
 }

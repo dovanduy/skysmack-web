@@ -1,7 +1,7 @@
 import { Store } from 'redux';
 import { ReduxAction } from './../action-types';
 import { PackagePathPayload } from './../payloads/package-path-payload';
-import { FieldSchemaViewModel, LocalObject, HttpMethod, LocalObjectStatus, QueueItem, StrIndex, PagedQuery } from '@skysmack/framework';
+import { FieldSchemaViewModel, LocalObject, HttpMethod, LocalObjectStatus, QueueItem, StrIndex, PagedQuery, getFieldStateKey } from '@skysmack/framework';
 import { Effect } from '../models/effect';
 import { EffectRequest } from '../models/effect-request';
 import { CancelActionMeta } from '../metas/offline-redux/cancel-action-meta';
@@ -9,6 +9,7 @@ import { CancelFieldActionPayload } from '../payloads/cancel-field-action-payloa
 import { GetPagedEntitiesPayload } from '../payloads/get-paged-entities-payload';
 import { EntityActions } from '../interfaces/entity-actions';
 import { GetSingleEntityPayload } from '../payloads/get-single-entity-payload';
+import { AdditionalPathsMeta } from '../metas/additional-paths-meta';
 
 export class FieldActions<TStateType, TStore extends Store<TStateType>> implements EntityActions<FieldSchemaViewModel, string> {
     public static CANCEL_FIELD_ACTION = 'CANCEL_FIELD_ACTION';
@@ -50,31 +51,40 @@ export class FieldActions<TStateType, TStore extends Store<TStateType>> implemen
         })))
     }
 
-    public getPaged(packagePath: string, pagedQuery: PagedQuery) {
-        this.store.dispatch(Object.assign({}, new ReduxAction<GetPagedEntitiesPayload>({
+    public getPaged(packagePath: string, pagedQuery: PagedQuery, additionalPaths?: string[]) {
+        this.store.dispatch(Object.assign({}, new ReduxAction<GetPagedEntitiesPayload, AdditionalPathsMeta>({
             type: FieldActions.FIELD_GET_PAGED,
             payload: {
                 pagedQuery,
                 packagePath
+            },
+            meta: {
+                additionalPaths
             }
         })));
     }
 
-    public getSingle(packagePath: string, fieldKey: string) {
-        this.store.dispatch(Object.assign({}, new ReduxAction<GetSingleEntityPayload<string>>({
+    public getSingle(packagePath: string, fieldKey: string, additionalPaths?: string[]) {
+        this.store.dispatch(Object.assign({}, new ReduxAction<GetSingleEntityPayload<string>, AdditionalPathsMeta>({
             type: FieldActions.FIELD_GET_SINGLE,
             payload: {
                 id: fieldKey,
                 packagePath
+            },
+            meta: {
+                additionalPaths
             }
         })));
     }
 
-    public getAvailableFields(packagePath: string) {
-        this.store.dispatch(Object.assign({}, new ReduxAction<PackagePathPayload>({
+    public getAvailableFields(packagePath: string, additionalPaths?: string[]) {
+        this.store.dispatch(Object.assign({}, new ReduxAction<PackagePathPayload, AdditionalPathsMeta>({
             type: FieldActions.FIELD_GET_AVAILABLE_FIELDS,
             payload: {
                 packagePath
+            },
+            meta: {
+                additionalPaths
             }
         })));
     }
@@ -94,6 +104,8 @@ export class FieldActions<TStateType, TStore extends Store<TStateType>> implemen
             });
         })
 
+        const stateKey = getFieldStateKey(packagePath, additionalPaths);
+
         this.store.dispatch(Object.assign({}, new ReduxAction<any, any>({
             type: FieldActions.FIELD_ADD,
             meta: {
@@ -106,7 +118,7 @@ export class FieldActions<TStateType, TStore extends Store<TStateType>> implemen
                     commit: new ReduxAction({
                         type: FieldActions.FIELD_ADD_SUCCESS,
                         meta: {
-                            stateKey: packagePath,
+                            stateKey,
                             value: fields,
                             packagePath,
                             queueItems
@@ -115,7 +127,7 @@ export class FieldActions<TStateType, TStore extends Store<TStateType>> implemen
                     rollback: new ReduxAction({
                         type: FieldActions.FIELD_ADD_FAILURE,
                         meta: {
-                            stateKey: packagePath,
+                            stateKey,
                             value: fields,
                             packagePath,
                             queueItems
@@ -141,6 +153,8 @@ export class FieldActions<TStateType, TStore extends Store<TStateType>> implemen
             });
         });
 
+        const stateKey = getFieldStateKey(packagePath, additionalPaths);
+
         this.store.dispatch(Object.assign({}, new ReduxAction<any, any>({
             type: FieldActions.FIELD_UPDATE,
             meta: {
@@ -153,7 +167,7 @@ export class FieldActions<TStateType, TStore extends Store<TStateType>> implemen
                     commit: new ReduxAction({
                         type: FieldActions.FIELD_UPDATE_SUCCESS,
                         meta: {
-                            stateKey: packagePath,
+                            stateKey,
                             value: fields,
                             packagePath,
                             queueItems
@@ -162,7 +176,7 @@ export class FieldActions<TStateType, TStore extends Store<TStateType>> implemen
                     rollback: new ReduxAction({
                         type: FieldActions.FIELD_UPDATE_FAILURE,
                         meta: {
-                            stateKey: packagePath,
+                            stateKey,
                             value: fields,
                             packagePath,
                             queueItems
@@ -189,6 +203,8 @@ export class FieldActions<TStateType, TStore extends Store<TStateType>> implemen
             });
         });
 
+        const stateKey = getFieldStateKey(packagePath, additionalPaths);
+
         this.store.dispatch(Object.assign({}, new ReduxAction<any, any>({
             type: FieldActions.FIELD_DELETE,
             meta: {
@@ -204,7 +220,7 @@ export class FieldActions<TStateType, TStore extends Store<TStateType>> implemen
                     commit: new ReduxAction({
                         type: FieldActions.FIELD_DELETE_SUCCESS,
                         meta: {
-                            stateKey: packagePath,
+                            stateKey,
                             value: fields,
                             packagePath,
                             queueItems
@@ -213,7 +229,7 @@ export class FieldActions<TStateType, TStore extends Store<TStateType>> implemen
                     rollback: new ReduxAction({
                         type: FieldActions.FIELD_DELETE_FAILURE,
                         meta: {
-                            stateKey: packagePath,
+                            stateKey,
                             value: fields,
                             packagePath,
                             queueItems
@@ -232,5 +248,9 @@ export class FieldActions<TStateType, TStore extends Store<TStateType>> implemen
 
     protected addAdditionalPaths(url: string, additionalPaths: string[]): string {
         return additionalPaths ? [url, ...additionalPaths].join('/') : url;
+    }
+
+    protected getStateKey(packagePath: string, additionalPaths: string[]) {
+        return `${packagePath}-${additionalPaths.join('-')}`
     }
 }
