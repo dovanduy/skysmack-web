@@ -41,7 +41,7 @@ export function fieldReducer(state: FieldState = new FieldState(), action: any):
             return newState;
         }
         case FieldActions.FIELD_GET_PAGED_SUCCESS: {
-            const castedAction: ReduxAction<GetPagedEntitiesSuccessPayload<any, string>> = action;
+            const castedAction: ReduxAction<GetPagedEntitiesSuccessPayload<FieldSchemaViewModel, string>> = action;
             newState.localPageTypes[castedAction.payload.packagePath] = PageExtensions.mergeOrAddPage(newState.localPageTypes[castedAction.payload.packagePath], castedAction.payload.page);
             newState.fields[castedAction.payload.packagePath] = LocalObjectExtensions.mergeOrAddLocal(newState.fields[castedAction.payload.packagePath], castedAction.payload.entities.map(x => toLocalObject(x, 'key')));
             return newState;
@@ -54,7 +54,7 @@ export function fieldReducer(state: FieldState = new FieldState(), action: any):
             return newState;
         }
         case FieldActions.FIELD_GET_SINGLE_SUCCESS: {
-            const castedAction: ReduxAction<GetSingleEntitySuccessPayload<any, string>> = action;
+            const castedAction: ReduxAction<GetSingleEntitySuccessPayload<FieldSchemaViewModel, string>> = action;
             newState.fields[castedAction.payload.packagePath] = LocalObjectExtensions.mergeOrAddLocal(newState.fields[castedAction.payload.packagePath], [toLocalObject(castedAction.payload.entity, 'key')]);
             return newState;
         }
@@ -128,7 +128,7 @@ function setActionError(action: ReduxAction<HttpErrorResponse, RollbackMeta<Loca
     action.meta.value.forEach(record => {
         record.error = true;
         if (!record.object.key) {
-            record.object.key = '' as any;
+            record.object.key = '';
         }
     });
     if (!GlobalProperties.production) {
