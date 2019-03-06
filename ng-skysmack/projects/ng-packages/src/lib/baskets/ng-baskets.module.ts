@@ -10,12 +10,7 @@ import { registerEpics } from '@skysmack/ng-redux';
 @NgModule({
   imports: [],
   exports: [],
-  providers: [
-    [
-      { provide: 'NgBasketsActions', useClass: NgBasketsActions },
-      { provide: 'NgBasketsStore', useClass: NgBasketsStore }
-    ]
-  ],
+  providers: [],
 })
 export class NgBasketsModule {
   constructor(epics: NgBasketsEpics) {

@@ -3,12 +3,6 @@ import { InvoiceItemsIndexComponent } from './invoice-items-index/invoice-items-
 import { InvoiceItemsCreateComponent } from './invoice-items-create/invoice-items-create.component';
 import { InvoiceItemsEditComponent } from './invoice-items-edit/invoice-items-edit.component';
 import { FieldsIndexComponent, FieldsCreateComponent, FieldsEditComponent } from '@skysmack/portal-ui';
-import { FieldRouteData } from '@skysmack/framework';
-
-const data = {
-  actionToken: 'NgInvoiceItemsActions',
-  storeToken: 'NgInvoiceItemsStore'
-} as FieldRouteData;
 
 export const invoiceItemsRoutes: Routes = [
   {
@@ -19,9 +13,9 @@ export const invoiceItemsRoutes: Routes = [
     ]
   },
   {
-    path: 'items/fields', component: FieldsIndexComponent, data, children: [
-      { path: 'create', component: FieldsCreateComponent, pathMatch: 'full', data },
-      { path: 'edit/:id', component: FieldsEditComponent, pathMatch: 'full', data }
+    path: 'items/fields', component: FieldsIndexComponent, children: [
+      { path: 'create', component: FieldsCreateComponent, pathMatch: 'full' },
+      { path: 'edit/:id', component: FieldsEditComponent, pathMatch: 'full' }
     ]
   }
 ];

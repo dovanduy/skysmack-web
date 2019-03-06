@@ -3,12 +3,6 @@ import { ProductTypesCreateComponent } from './product-types-create/product-type
 import { ProductTypesEditComponent } from './product-types-edit/product-types-edit.component';
 import { FieldsIndexComponent, FieldsCreateComponent, FieldsEditComponent } from '@skysmack/portal-ui';
 import { Routes } from '@angular/router';
-import { FieldRouteData } from '@skysmack/framework';
-
-const data = {
-    actionToken: 'NgProductTypesActions',
-    storeToken: 'NgProductTypesStore'
-} as FieldRouteData;
 
 export const productTypesRoutes: Routes = [
     {
@@ -18,9 +12,9 @@ export const productTypesRoutes: Routes = [
         ]
     },
     {
-        path: 'types/fields', component: FieldsIndexComponent, data, children: [
-            { path: 'create', component: FieldsCreateComponent, pathMatch: 'full', data },
-            { path: 'edit/:id', component: FieldsEditComponent, pathMatch: 'full', data }
+        path: 'types/fields', component: FieldsIndexComponent, children: [
+            { path: 'create', component: FieldsCreateComponent, pathMatch: 'full' },
+            { path: 'edit/:id', component: FieldsEditComponent, pathMatch: 'full' }
         ]
     }
 ];

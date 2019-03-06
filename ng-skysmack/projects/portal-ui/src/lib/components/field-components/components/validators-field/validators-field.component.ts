@@ -1,8 +1,8 @@
 import { Component, OnInit, Injector } from '@angular/core';
 import { FieldBaseComponent } from '../field-base-component';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FieldRouteData, flatten, FieldValueProviderViewModel, LocalObject, StrIndex, log } from '@skysmack/framework';
-import { NgDocumentRecordReduxStore } from '@skysmack/ng-redux';
+import { flatten, FieldValueProviderViewModel, LocalObject, StrIndex, log } from '@skysmack/framework';
+import { NgDocumentRecordReduxStore, NgFieldReduxStore } from '@skysmack/ng-redux';
 import { map, switchMap, filter } from 'rxjs/operators';
 import { Field } from '@skysmack/ng-ui';
 
@@ -39,9 +39,8 @@ export class ValidatorsFieldComponent extends FieldBaseComponent implements OnIn
   public addedValidators: FieldValidator[] = [];
 
   constructor(
-    public injector: Injector,
     public router: Router,
-    public activatedRoute: ActivatedRoute,
+    public fieldsStore: NgFieldReduxStore
   ) { super(); }
 
   ngOnInit() {
@@ -66,23 +65,20 @@ export class ValidatorsFieldComponent extends FieldBaseComponent implements OnIn
       })
     );
 
-    const setAvailablValidators$ = this.activatedRoute.data.pipe(
-      map((data: FieldRouteData) => this.store = this.injector.get(data.storeToken)),
-      switchMap(() => this.store.getAvailableFields(this.packagePath).pipe(
-        flatten(),
-        // Create available validators
-        filter((availableField: LocalObject<FieldValueProviderViewModel, string>) => availableField.object.name === this.selectedFieldType),
-        map(selectedAvailableField => {
-          this.availableValidators = Object.keys(selectedAvailableField.object.validators).map(key => {
-            return new FieldValidator({
-              name: key as ValidatorTypes
-            });
+    const setAvailablValidators$ = this.fieldsStore.getAvailableFields(this.packagePath).pipe(
+      flatten(),
+      // Create available validators
+      filter((availableField: LocalObject<FieldValueProviderViewModel, string>) => availableField.object.name === this.selectedFieldType),
+      map(selectedAvailableField => {
+        this.availableValidators = Object.keys(selectedAvailableField.object.validators).map(key => {
+          return new FieldValidator({
+            name: key as ValidatorTypes
           });
+        });
 
-          // If a validator has already been added, remove it from available, as it should not be available twice.
-          this.availableValidators = this.availableValidators.filter(availableValidator => !this.addedValidators.find(addedValidator => addedValidator.name === availableValidator.name));
-        })
-      ))
+        // If a validator has already been added, remove it from available, as it should not be available twice.
+        this.availableValidators = this.availableValidators.filter(availableValidator => !this.addedValidators.find(addedValidator => addedValidator.name === availableValidator.name));
+      })
     );
 
     // Set available validators on form change
