@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { LocalObject, Package, AvailablePackage } from '@skysmack/framework';
-import { FormRule, Field, CustomValidators, SetPathRule, SelectField, FieldTypes } from '@skysmack/ng-ui';
+import { FormRule, Field, CustomValidators, SetPathRule, SelectField, FieldTypes, FieldsConfig } from '@skysmack/ng-ui';
 import { PackagesValidation } from './ng-packages-validation';
 
 export interface NgPackageFormDependencies {
@@ -9,23 +9,12 @@ export interface NgPackageFormDependencies {
 }
 
 @Injectable({ providedIn: 'root' })
-export class NgPackagesFieldsConfig {
+export class NgPackagesFieldsConfig extends FieldsConfig<Package, string, NgPackageFormDependencies> {
     public validation = new PackagesValidation();
 
     public formRules: FormRule[] = [
         new SetPathRule(['name'])
     ];
-
-    public getStaticFields(entity?: LocalObject<Package, string>, dependencies?: NgPackageFormDependencies): Field[] {
-        const fieldArea = this.validation.area.toUpperCase() + '.FORM.';
-        return this.getEntityFields(entity, dependencies).map(field => {
-            // Labels
-            field.label = fieldArea + 'LABELS.' + field.key.toUpperCase();
-            // Placeholders
-            field.placeholder = fieldArea + 'PLACEHOLDERS.' + field.key.toUpperCase();
-            return field;
-        });
-    }
 
     protected getEntityFields(_package?: LocalObject<Package, string>, dependencies?: NgPackageFormDependencies): Field[] {
         return [
@@ -39,17 +28,15 @@ export class NgPackagesFieldsConfig {
                 valueSelector: 'object.type',
                 displayNameSelector: 'object.name',
                 disabled: _package ? true : false,
-                order: 1,
+                order: 1
             } as SelectField),
 
             new Field({
                 fieldType: FieldTypes.PackageDependenciesField,
                 value: _package ? _package.object.name : undefined,
-                key: 'name',
-                label: 'Name',
+                key: 'dependencies',
                 validators: [Validators.required],
                 order: 2,
-                placeholder: 'Enter name'
             } as Field),
 
             new Field({
@@ -59,7 +46,8 @@ export class NgPackagesFieldsConfig {
                 label: 'Name',
                 validators: [Validators.required],
                 order: 2,
-                placeholder: 'Enter name'
+                placeholder: 'Enter name',
+                showColumn: true
             } as Field),
 
             new Field({
@@ -78,7 +66,8 @@ export class NgPackagesFieldsConfig {
                 label: 'path',
                 validators: [Validators.required, CustomValidators.minStringLength(3)],
                 order: 4,
-                placeholder: 'Enter path'
+                placeholder: 'Enter path',
+                showColumn: true
             } as Field),
 
             new Field({

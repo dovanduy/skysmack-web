@@ -1,6 +1,6 @@
 import { ofType, ActionsObservable, Epic } from 'redux-observable';
-import { ReduxAction, PackagePathPayload, GetAvailablePackagesSuccessPayload, CommitMeta, RollbackMeta } from '@skysmack/redux';
-import { switchMap, map } from 'rxjs/operators';
+import { ReduxAction, PackagePathPayload, GetAvailablePackagesSuccessPayload, CommitMeta, RollbackMeta, GetPagedEntitiesPayload, GetPagedEntitiesSuccessPayload } from '@skysmack/redux';
+import { map, mergeMap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { NgPackagesRequests } from './ng-packages-requests';
@@ -15,6 +15,7 @@ export class NgPackagesEpics {
 
     constructor(protected requests: NgPackagesRequests, protected notifications: NgPackagesNotifications) {
         this.epics = [
+            this.getPagedEpic,
             this.getEpic,
             this.getSingleEpic,
             this.getAvailablePackagesEpic,
@@ -29,24 +30,31 @@ export class NgPackagesEpics {
         ];
     }
 
+    public getPagedEpic = (action$: ActionsObservable<ReduxAction<GetPagedEntitiesPayload>>): Observable<ReduxAction<GetPagedEntitiesSuccessPayload<any, string>> | ReduxAction<HttpErrorResponse>> => {
+        return action$.pipe(
+            ofType(NgPackagesActions.PACKAGES_GET_PAGED),
+            mergeMap(action => this.requests.getPaged(action))
+        );
+    }
+
     public getEpic = (action$: ActionsObservable<ReduxAction>): Observable<ReduxAction<GetPackagesSuccessPayload> | ReduxAction<HttpErrorResponse>> => {
         return action$.pipe(
             ofType(NgPackagesActions.GET_PACKAGES),
-            switchMap(() => this.requests.get())
+            mergeMap(() => this.requests.get())
         );
     }
 
     public getSingleEpic = (action$: ActionsObservable<ReduxAction<PackagePathPayload>>): Observable<ReduxAction<GetPackageSuccessPayload> | ReduxAction<HttpErrorResponse>> => {
         return action$.pipe(
             ofType(NgPackagesActions.GET_SINGLE_PACKAGE),
-            switchMap(action => this.requests.getSingle(action))
+            mergeMap(action => this.requests.getSingle(action))
         );
     }
 
     public getAvailablePackagesEpic = (action$: ActionsObservable<ReduxAction>): Observable<ReduxAction<GetAvailablePackagesSuccessPayload> | ReduxAction<HttpErrorResponse>> => {
         return action$.pipe(
             ofType(NgPackagesActions.GET_AVAILABLE_PACKAGES),
-            switchMap(() => this.requests.getAvailablePackages())
+            mergeMap(() => this.requests.getAvailablePackages())
         );
     }
 

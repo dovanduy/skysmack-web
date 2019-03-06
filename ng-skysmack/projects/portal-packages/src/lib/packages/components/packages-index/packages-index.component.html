@@ -1,7 +1,7 @@
 <ss-container [sidebarMenu]="sidebarMenu">
-    <!-- <ss-records-container [area]="'packages'" [cancelAction]="actions.cancelPackageAction" [title]="'Packages'" [entities$]="packages$"
-        [entityActions]="entityActions" [packagePath]="packagePath" (entityActionEvent)="actionEvent($event)"
-        [totalCount]="totalCount" [loadingState]="loadingState" (requestPage)="requestPage()" [fields$]="fields$"
-        (sortChanged)="sortChanged($event)">
-    </ss-records-container> -->
+    <ss-records-container [area]="'packages'" [cancelAction]="actions.cancelAction" [title]="'Packages'"
+        [entities$]="packages$" [entityActions]="entityActions" [packagePath]="packagePath"
+        (entityActionEvent)="actionEvent($event)" [totalCount]="totalCount" [loadingState]="loadingState"
+        (requestPage)="requestPage()" [fields$]="fields$" (sortChanged)="sortChanged($event)">
+    </ss-records-container>
 </ss-container>

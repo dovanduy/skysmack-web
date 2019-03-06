@@ -1,20 +1,21 @@
 import { Injectable } from '@angular/core';
-import { PackagesAppState } from '@skysmack/packages-skysmack-core';
+import { PackagesAppState, PackagesState } from '@skysmack/packages-skysmack-core';
 import { NgRedux } from '@angular-redux/store';
 import { Observable } from 'rxjs';
-import { LocalObject, Package, safeUndefinedTo, AvailablePackage, dictionaryToArray, hasValue, log } from '@skysmack/framework';
+import { LocalObject, Package, safeUndefinedTo, AvailablePackage, dictionaryToArray, hasValue, log, StrIndex, LocalPageTypes } from '@skysmack/framework';
 import { map } from 'rxjs/operators';
+import { EntityStore } from '@skysmack/redux';
 
 @Injectable({ providedIn: 'root' })
-export class NgPackagesStore {
+export class NgPackagesStore implements EntityStore<Package, string> {
 
     constructor(
         protected store: NgRedux<PackagesAppState>
     ) { }
 
     public get(): Observable<LocalObject<Package, string>[]> {
-        return this.store.select(state => state.packages).pipe(
-            map(packages => packages.localPackages),
+        return this.getState().pipe(
+            map(packages => packages.packages),
             safeUndefinedTo('object'),
             dictionaryToArray<LocalObject<Package, string>>()
         );
@@ -27,8 +28,15 @@ export class NgPackagesStore {
         );
     }
 
+    public getPages(): Observable<StrIndex<LocalPageTypes<string>>> {
+        return this.getState().pipe(
+            map(state => state.packages),
+            hasValue<StrIndex<LocalPageTypes<string>>>()
+        );
+    }
+
     public getAvailablePackages(): Observable<LocalObject<AvailablePackage, string>[]> {
-        return this.store.select(state => state.packages).pipe(
+        return this.getState().pipe(
             map(packages => packages.availablePackages),
             safeUndefinedTo('object'),
             dictionaryToArray(),
@@ -41,5 +49,9 @@ export class NgPackagesStore {
             hasValue(),
             map((availablePackage: LocalObject<AvailablePackage, string>) => availablePackage.object.permissions),
         );
+    }
+
+    protected getState(): Observable<PackagesState> {
+        return this.store.select(state => state.packages);
     }
 }

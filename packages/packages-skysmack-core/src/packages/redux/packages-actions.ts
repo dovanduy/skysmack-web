@@ -1,9 +1,13 @@
 import { Store } from 'redux';
-import { ReduxAction, Effect, EffectRequest, PackagePathPayload, CancelActionMeta } from '@skysmack/redux';
-import { Package, HttpMethod, LocalObject, LocalObjectStatus, Logger } from '@skysmack/framework';
+import { ReduxAction, Effect, EffectRequest, PackagePathPayload, CancelActionMeta, EntityActions, GetPagedEntitiesPayload } from '@skysmack/redux';
+import { Package, HttpMethod, LocalObject, LocalObjectStatus, StrIndex, PagedQuery } from '@skysmack/framework';
 
-export class PackagesActions<TStateType, TStore extends Store<TStateType>> {
+export class PackagesActions<TStateType, TStore extends Store<TStateType>> implements EntityActions<Package, string> {
     public static CANCEL_PACKAGE_ACTION = 'CANCEL_PACKAGE_ACTION';
+
+    public static PACKAGES_GET_PAGED = 'PACKAGES_GET_PAGED';
+    public static PACKAGES_GET_PAGED_SUCCESS = 'PACKAGES_GET_PAGED_SUCCESS';
+    public static PACKAGES_GET_PAGED_FAILURE = 'PACKAGES_GET_PAGED_FAILURE';
 
     public static GET_PACKAGES = 'GET_PACKAGES';
     public static GET_PACKAGES_SUCCESS = 'GET_PACKAGES_SUCCESS';
@@ -33,7 +37,7 @@ export class PackagesActions<TStateType, TStore extends Store<TStateType>> {
         protected store: TStore,
     ) { }
 
-    public cancelPackageAction = (_package: LocalObject<Package, string>): void => {
+    public cancelAction = (_package: LocalObject<Package, string>): void => {
         this.store.dispatch(Object.assign({}, new ReduxAction<any, CancelActionMeta>({
             type: PackagesActions.CANCEL_PACKAGE_ACTION,
             payload: {
@@ -41,6 +45,16 @@ export class PackagesActions<TStateType, TStore extends Store<TStateType>> {
             },
             meta: new CancelActionMeta()
         })))
+    }
+
+    public getPaged(packagePath: string, pagedQuery: PagedQuery) {
+        this.store.dispatch(Object.assign({}, new ReduxAction<GetPagedEntitiesPayload>({
+            type: PackagesActions.PACKAGES_GET_PAGED,
+            payload: {
+                pagedQuery,
+                packagePath
+            }
+        })));
     }
 
     public get() {
@@ -150,4 +164,10 @@ export class PackagesActions<TStateType, TStore extends Store<TStateType>> {
             }
         })));
     }
+
+    public getMessageParams(_package: LocalObject<Package, string>): StrIndex<string> {
+        return {
+            0: _package.object.name
+        };
+    };
 }

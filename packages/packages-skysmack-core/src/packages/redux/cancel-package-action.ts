@@ -25,21 +25,21 @@ export const cancelPackageAction = (state: PackagesState, action: ReduxAction<{ 
 
 const cancelCreateAction = (newState: PackagesState, action: ReduxAction<{ _package: LocalObject<Package, string> }, CancelActionMeta>): PackagesState => {
     const _package = action.payload._package;
-    delete newState.localPackages[_package.localId];
+    delete newState.packages[_package.localId];
     return newState;
 };
 
 const cancelEditAction = (newState: PackagesState, action: ReduxAction<{ _package: LocalObject<Package, string> }, CancelActionMeta>): PackagesState => {
     const _package = action.payload._package;
-    newState.localPackages[_package.localId].object = action.payload._package.oldObject;
-    newState.localPackages[_package.localId].status = LocalObjectStatus.OK;
-    newState.localPackages[_package.localId].error = false;
+    newState.packages[_package.localId].object = action.payload._package.oldObject;
+    newState.packages[_package.localId].status = LocalObjectStatus.OK;
+    newState.packages[_package.localId].error = false;
     return newState;
 };
 
 const cancelDeleteAction = (newState: PackagesState, action: ReduxAction<{ _package: LocalObject<Package, string> }, CancelActionMeta>): PackagesState => {
     const _package = action.payload._package;
-    newState.localPackages[_package.localId].status = LocalObjectStatus.OK;
-    newState.localPackages[_package.localId].error = false;
+    newState.packages[_package.localId].status = LocalObjectStatus.OK;
+    newState.packages[_package.localId].error = false;
     return newState;
 };

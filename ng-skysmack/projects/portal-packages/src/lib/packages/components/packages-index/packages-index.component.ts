@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { EntityComponentPageTitle, BaseComponent } from '@skysmack/portal-ui';
+import { EntityComponentPageTitle, RecordIndexComponent } from '@skysmack/portal-ui';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgPackagesActions, NgPackagesFieldsConfig } from '@skysmack/ng-packages';
 import { NgSkysmackStore } from '@skysmack/ng-packages';
@@ -15,8 +15,9 @@ import { EntityAction } from '@skysmack/ng-ui';
   templateUrl: './packages-index.component.html',
   styleUrls: ['./packages-index.component.scss']
 })
-export class PackagesIndexComponent extends BaseComponent<PackagesAppState, string> implements OnInit {
+export class PackagesIndexComponent extends RecordIndexComponent<PackagesAppState, any, string> implements OnInit {
 
+  // TODO: Remove + replace with pagedEntities in html when pagination works for packages.
   public packages$: Observable<LocalObject<Package, string>[]>;
 
   public entityActions: EntityAction[] = [
@@ -28,27 +29,20 @@ export class PackagesIndexComponent extends BaseComponent<PackagesAppState, stri
     public router: Router,
     public activatedRoute: ActivatedRoute,
     public actions: NgPackagesActions,
-    public redux: NgSkysmackStore,
+    public skysmackStore: NgSkysmackStore,
     public title: EntityComponentPageTitle,
     public store: NgPackagesStore,
     public sidebarMenu: NgPackagesMenu,
     public fieldsConfig: NgPackagesFieldsConfig
   ) {
-    super(router, activatedRoute, redux);
+    super(router, activatedRoute, actions, skysmackStore, store, fieldsConfig);
   }
 
   ngOnInit() {
     super.ngOnInit();
+    // TODO: Remove actions.get and store.get when pagination works for packages.
     this.actions.get();
     this.packages$ = this.store.get();
     this.title.setTitle(this.packagePath);
-  }
-
-  public actionEvent(event: { action: Function, value: LocalObject<Package, string>, _this: any }) {
-    event.action(event.value, event._this);
-  }
-
-  private delete(value: LocalObject<Package, string>, _this: PackagesIndexComponent) {
-    _this.actions.delete([value]);
   }
 }

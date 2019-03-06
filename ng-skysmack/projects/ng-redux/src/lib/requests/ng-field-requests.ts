@@ -11,7 +11,6 @@ import { Injectable, Inject } from '@angular/core';
 export class NgFieldRequests implements FieldRequests {
 
   protected retryTimes = 3;
-  protected epics: any;
 
   constructor(
     protected http: HttpClient,
