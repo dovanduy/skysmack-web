@@ -72,7 +72,7 @@ export class NgFieldRequests implements FieldRequests {
       );
   }
 
-  public getSingle(action: ReduxAction<GetSingleFieldPayload>, additionalPaths?: string[]): Observable<ReduxAction<GetSingleRecordSuccessPayload<any, string>> | ReduxAction<GetSingleRecordPayload<string>>> {
+  public getSingle = (action: ReduxAction<GetSingleFieldPayload>, additionalPaths?: string[]): Observable<ReduxAction<GetSingleRecordSuccessPayload<any, string>> | ReduxAction<GetSingleRecordPayload<string>>> => {
     let url = `${this.apiDomain.domain}/${action.payload.packagePath}`;
     url = this.addAdditionalPaths(url, additionalPaths);
     url = `${url}/fields/${action.payload.fieldKey}`;

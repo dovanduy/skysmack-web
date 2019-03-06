@@ -2,7 +2,7 @@ import { ofType, ActionsObservable, Epic } from 'redux-observable';
 import { map, mergeMap } from 'rxjs/operators';
 import { LocalObject, FieldSchemaViewModel, HttpResponse, HttpErrorResponse, QueueItem, log } from '@skysmack/framework';
 import { Observable } from 'rxjs';
-import { PackagePathPayload, ReduxAction, FieldActions, CommitMeta, ReduxOfflineMeta, QueueActions, CancelDynamicFieldActionPayload, GetPagedRecordsPayload, GetPagedRecordsSuccessPayload, GetSingleRecordSuccessPayload, GetSingleRecordPayload } from '@skysmack/redux';
+import { PackagePathPayload, ReduxAction, FieldActions, CommitMeta, ReduxOfflineMeta, QueueActions, CancelDynamicFieldActionPayload, GetPagedRecordsPayload, GetPagedRecordsSuccessPayload, GetSingleRecordSuccessPayload, GetSingleRecordPayload, GetSingleFieldPayload } from '@skysmack/redux';
 import { NgFieldRequests } from '../requests/ng-field-requests';
 import { Injectable } from '@angular/core';
 import { NgFieldNotifications } from '../notifications/ng-field-notifications';
@@ -42,7 +42,7 @@ export class NgFieldEpics {
         );
     }
 
-    public getSingleEpic = (action$: ActionsObservable<ReduxAction<GetSingleRecordPayload<string>>>): Observable<ReduxAction<GetSingleRecordSuccessPayload<any, string>> | ReduxAction<GetSingleRecordPayload<string>>> => {
+    public getSingleEpic = (action$: ActionsObservable<ReduxAction<GetSingleFieldPayload>>): Observable<ReduxAction<GetSingleRecordSuccessPayload<any, string>> | ReduxAction<GetSingleRecordPayload<string>>> => {
         return action$.pipe(
             ofType(FieldActions.FIELD_GET_SINGLE),
             mergeMap(action => this.requests.getSingle(action))

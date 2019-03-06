@@ -3,7 +3,7 @@ import { ReduxAction } from './../action-types/redux-action';
 import { CancelActionMeta } from './../metas/offline-redux/cancel-action-meta';
 import { CancelDynamicFieldActionPayload } from '../payloads/cancel-dynamic-field-action-payload';
 import { ReduxOfflineMeta } from '../metas/offline-redux/redux-offline-meta';
-import { FieldState } from '../states/field-state';
+import { FieldState } from './field-reducer';
 
 export const cancelFieldActionOutboxFilter = (outbox, action: ReduxAction<CancelDynamicFieldActionPayload<LocalObject<FieldSchemaViewModel, string>>, CancelActionMeta>) => {
     return outbox
