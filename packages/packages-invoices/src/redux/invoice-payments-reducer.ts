@@ -1,5 +1,5 @@
-import { LocalPageTypes, StrIndex, LocalObject, FieldSchemaViewModel, FieldValueProviderViewModel } from '@skysmack/framework';
-import { AppState, ReduxAction, DocumentRecordState, documentRecordReducersBase } from '@skysmack/redux';
+import { LocalPageTypes, StrIndex, LocalObject } from '@skysmack/framework';
+import { AppState, ReduxAction, RecordState, recordReducersBase } from '@skysmack/redux';
 import { sharedReducer } from '@skysmack/redux';
 import { InvoicePayment } from '../models/invoice-payment';
 
@@ -10,11 +10,9 @@ export class InvoicePaymentsAppState extends AppState {
     public invoicePayments: InvoicePaymentsState;
 }
 
-export class InvoicePaymentsState implements DocumentRecordState<InvoicePayment, number> {
+export class InvoicePaymentsState implements RecordState<InvoicePayment, number> {
     public localPageTypes: StrIndex<StrIndex<LocalPageTypes<number>>> = {};
     public localRecords: StrIndex<StrIndex<LocalObject<InvoicePayment, number>>> = {};
-    public availableFields: StrIndex<StrIndex<LocalObject<FieldValueProviderViewModel, string>>> = {};
-    public fields: StrIndex<StrIndex<LocalObject<FieldSchemaViewModel, string>>> = {};
 }
 
 export function invoicePaymentsReducer(state = new InvoicePaymentsState(), action: ReduxAction, prefix: string = 'INVOICE_PAYMENTS_'): InvoicePaymentsState {
@@ -24,7 +22,7 @@ export function invoicePaymentsReducer(state = new InvoicePaymentsState(), actio
         default:
             return {
                 ...state,
-                ...documentRecordReducersBase<InvoicePaymentsState, InvoicePayment, number>(state, action, prefix)
+                ...recordReducersBase<InvoicePaymentsState, InvoicePayment, number>(state, action, prefix)
             };
     }
 }

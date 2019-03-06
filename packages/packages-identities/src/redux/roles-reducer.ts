@@ -12,8 +12,6 @@ export class RolesAppState extends AppState {
 export class RolesState implements RecordState<Role, number> {
     public localPageTypes: StrIndex<StrIndex<LocalPageTypes<number>>> = {};
     public localRecords: StrIndex<StrIndex<LocalObject<Role, number>>> = {};
-    public availableFields: StrIndex<StrIndex<LocalObject<FieldValueProviderViewModel, string>>> = {};
-    public fields: StrIndex<StrIndex<LocalObject<FieldSchemaViewModel, string>>> = {};
 }
 
 export function rolesReducer(state = new RolesState(), action: ReduxAction, prefix: string = 'ROLES_'): RolesState {

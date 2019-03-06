@@ -1,8 +1,8 @@
 import { Injectable, Inject } from '@angular/core';
-import { DocumentRecordNotifications, Notifications } from '@skysmack/ng-redux';
+import { RecordNotifications, Notifications } from '@skysmack/ng-redux';
 import { LodgingType } from '@skysmack/packages-lodgings';
 
 @Injectable({ providedIn: 'root' })
-export class NgLodgingTypesNotifications extends DocumentRecordNotifications<LodgingType, number> {
+export class NgLodgingTypesNotifications extends RecordNotifications<LodgingType, number> {
     constructor(@Inject('Notifications') public notifications: Notifications) { super(notifications); }
 }

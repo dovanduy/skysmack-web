@@ -1,5 +1,5 @@
-import { LocalPageTypes, StrIndex, LocalObject, FieldSchemaViewModel, FieldValueProviderViewModel, Record, NumIndex, HttpResponse, linq, GlobalProperties, HttpErrorResponse } from '@skysmack/framework';
-import { AppState, ReduxAction, RecordState, recordReducersBase, ReduxOfflineMeta, sharedReducer, RollbackMeta } from '@skysmack/redux';
+import { LocalPageTypes, StrIndex, LocalObject, NumIndex, HttpResponse, linq, GlobalProperties } from '@skysmack/framework';
+import { AppState, ReduxAction, RecordState, recordReducersBase, ReduxOfflineMeta, sharedReducer } from '@skysmack/redux';
 import { User } from './../models/user';
 import { UsersActions } from './users-actions';
 import { GetUsersRolesSuccessPayload } from '../payloads';
@@ -14,8 +14,6 @@ export class UsersAppState extends AppState {
 export class UsersState implements RecordState<User, number> {
     public localPageTypes: StrIndex<StrIndex<LocalPageTypes<number>>> = {};
     public localRecords: StrIndex<StrIndex<LocalObject<User, number>>> = {};
-    public availableFields: StrIndex<StrIndex<LocalObject<FieldValueProviderViewModel, string>>> = {};
-    public fields: StrIndex<StrIndex<LocalObject<FieldSchemaViewModel, string>>> = {};
     public usersRoles: StrIndex<NumIndex<string[]>> = {};
 }
 

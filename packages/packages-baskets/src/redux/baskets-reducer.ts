@@ -1,5 +1,5 @@
-import { LocalPageTypes, StrIndex, LocalObject, FieldSchemaViewModel, FieldValueProviderViewModel } from '@skysmack/framework';
-import { AppState, ReduxAction, DocumentRecordState, documentRecordReducersBase } from '@skysmack/redux';
+import { LocalPageTypes, StrIndex, LocalObject } from '@skysmack/framework';
+import { AppState, ReduxAction, RecordState, recordReducersBase } from '@skysmack/redux';
 import { Basket } from './../models/basket';
 import { sharedReducer } from '@skysmack/redux';
 
@@ -10,11 +10,9 @@ export class BasketsAppState extends AppState {
     public baskets: BasketsState;
 }
 
-export class BasketsState implements DocumentRecordState<Basket, number> {
+export class BasketsState implements RecordState<Basket, number> {
     public localPageTypes: StrIndex<StrIndex<LocalPageTypes<number>>> = {};
     public localRecords: StrIndex<StrIndex<LocalObject<Basket, number>>> = {};
-    public availableFields: StrIndex<StrIndex<LocalObject<FieldValueProviderViewModel, string>>> = {};
-    public fields: StrIndex<StrIndex<LocalObject<FieldSchemaViewModel, string>>> = {};
 }
 
 export function basketsReducer(state = new BasketsState(), action: ReduxAction, prefix: string = 'BASKETS_'): BasketsState {
@@ -24,7 +22,7 @@ export function basketsReducer(state = new BasketsState(), action: ReduxAction, 
         default:
             return {
                 ...state,
-                ...documentRecordReducersBase<BasketsState, Basket, number>(state, action, prefix)
+                ...recordReducersBase<BasketsState, Basket, number>(state, action, prefix)
             };
     }
 }

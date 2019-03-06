@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { NgRedux } from '@angular-redux/store';
 import { Person, PersonsAppState } from '@skysmack/packages-persons';
-import { NgDocumentRecordStore } from '@skysmack/ng-redux';
+import { NgRecordStore } from '@skysmack/ng-redux';
 
 @Injectable({ providedIn: 'root' })
-export class NgPersonsStore extends NgDocumentRecordStore<PersonsAppState, Person, number> {
+export class NgPersonsStore extends NgRecordStore<PersonsAppState, Person, number> {
     constructor(protected ngRedux: NgRedux<PersonsAppState>) { super(ngRedux, 'persons'); }
 }

@@ -2,7 +2,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { EntityActions, EntityStore } from '@skysmack/redux';
 import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { OnInit } from '@angular/core';
-import { Record } from '@skysmack/framework';
+import { Record, log } from '@skysmack/framework';
 import { RecordIndexComponent } from './record-index-component';
 import { NgFieldActions } from '@skysmack/ng-redux';
 import { EntityFieldsConfig } from '@skysmack/ng-ui';
@@ -26,13 +26,16 @@ export class DocumentRecordIndexComponent<TAppState, TRecord extends Record<TKey
 
     ngOnInit() {
         super.ngOnInit();
-        this.fieldActions.getPaged(this.packagePath, this.pagedQuery);
+        // TODO: Remove this when field pagination is fixed in the backend.
+        const newPagedQuery = { ...this.pagedQuery };
+        newPagedQuery.pageSize = 10;
+        this.fieldActions.getPaged(this.packagePath, newPagedQuery);
         this.setFields();
     }
 
     protected setFields() {
         this.fields$ = this.fieldStore.get(this.packagePath).pipe(
-            map(fields => this.fieldsConfig.getFields(undefined, fields, this.fieldsConfig.getStaticFields()))
+            map(fields => this.fieldsConfig.getFields(undefined, fields, this.fieldsConfig.getStaticFields())),
         );
     }
 }

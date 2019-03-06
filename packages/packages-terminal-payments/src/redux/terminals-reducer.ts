@@ -1,5 +1,5 @@
-import { LocalPageTypes, StrIndex, LocalObject, FieldSchemaViewModel, FieldValueProviderViewModel } from '@skysmack/framework';
-import { AppState, ReduxAction, DocumentRecordState, documentRecordReducersBase, sharedReducer } from '@skysmack/redux';
+import { LocalPageTypes, StrIndex, LocalObject } from '@skysmack/framework';
+import { AppState, ReduxAction, sharedReducer, RecordState, recordReducersBase } from '@skysmack/redux';
 import { Terminal } from './../models/index';
 
 /**
@@ -9,11 +9,9 @@ export class TerminalsAppState extends AppState {
     public terminals: TerminalsState;
 }
 
-export class TerminalsState implements DocumentRecordState<Terminal, number> {
+export class TerminalsState implements RecordState<Terminal, number> {
     public localPageTypes: StrIndex<StrIndex<LocalPageTypes<number>>> = {};
     public localRecords: StrIndex<StrIndex<LocalObject<Terminal, number>>> = {};
-    public availableFields: StrIndex<StrIndex<LocalObject<FieldValueProviderViewModel, string>>> = {};
-    public fields: StrIndex<StrIndex<LocalObject<FieldSchemaViewModel, string>>> = {};
 }
 
 export function terminalsReducer(state = new TerminalsState(), action: ReduxAction, prefix: string = 'TERMINALS_'): TerminalsState {
@@ -22,7 +20,7 @@ export function terminalsReducer(state = new TerminalsState(), action: ReduxActi
         default:
             return {
                 ...state,
-                ...documentRecordReducersBase<TerminalsState, Terminal, number>(state, action, prefix)
+                ...recordReducersBase<TerminalsState, Terminal, number>(state, action, prefix)
             };
     }
 }

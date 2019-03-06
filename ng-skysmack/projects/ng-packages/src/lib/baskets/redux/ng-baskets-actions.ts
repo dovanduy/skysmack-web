@@ -1,11 +1,11 @@
-import { DocumentRecordActionsBase } from '@skysmack/redux';
+import { RecordActionsBase } from '@skysmack/redux';
 import { NgRedux } from '@angular-redux/store';
 import { Injectable } from '@angular/core';
 import { BasketsAppState, Basket } from '@skysmack/packages-baskets';
 import { LocalObject, StrIndex } from '@skysmack/framework';
 
 @Injectable({ providedIn: 'root' })
-export class NgBasketsActions extends DocumentRecordActionsBase<BasketsAppState, NgRedux<BasketsAppState>> {
+export class NgBasketsActions extends RecordActionsBase<BasketsAppState, NgRedux<BasketsAppState>> {
     constructor(protected store: NgRedux<BasketsAppState>) { super(store, 'BASKETS_', []); }
 
     public getMessageParams(record: LocalObject<Basket, number>): StrIndex<string> {

@@ -1,5 +1,5 @@
-import { LocalPageTypes, StrIndex, LocalObject, FieldSchemaViewModel, FieldValueProviderViewModel } from '@skysmack/framework';
-import { AppState, ReduxAction, DocumentRecordState, documentRecordReducersBase, sharedReducer } from '@skysmack/redux';
+import { LocalPageTypes, StrIndex, LocalObject } from '@skysmack/framework';
+import { AppState, ReduxAction, sharedReducer, RecordState, recordReducersBase } from '@skysmack/redux';
 import { Product } from './../models/product';
 
 /**
@@ -9,11 +9,9 @@ export class ProductsAppState extends AppState {
     public products: ProductsState;
 }
 
-export class ProductsState implements DocumentRecordState<Product, number> {
+export class ProductsState implements RecordState<Product, number> {
     public localPageTypes: StrIndex<StrIndex<LocalPageTypes<number>>> = {};
     public localRecords: StrIndex<StrIndex<LocalObject<Product, number>>> = {};
-    public availableFields: StrIndex<StrIndex<LocalObject<FieldValueProviderViewModel, string>>> = {};
-    public fields: StrIndex<StrIndex<LocalObject<FieldSchemaViewModel, string>>> = {};
 }
 
 export function productsReducer(state = new ProductsState(), action: ReduxAction, prefix: string = 'PRODUCTS_'): ProductsState {
@@ -22,7 +20,7 @@ export function productsReducer(state = new ProductsState(), action: ReduxAction
         default:
             return {
                 ...state,
-                ...documentRecordReducersBase<ProductsState, Product, number>(state, action, prefix)
+                ...recordReducersBase<ProductsState, Product, number>(state, action, prefix)
             };
     }
 }

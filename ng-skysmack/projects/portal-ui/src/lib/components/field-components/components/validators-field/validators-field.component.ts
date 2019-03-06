@@ -2,7 +2,7 @@ import { Component, OnInit, Injector } from '@angular/core';
 import { FieldBaseComponent } from '../field-base-component';
 import { ActivatedRoute, Router } from '@angular/router';
 import { flatten, FieldValueProviderViewModel, LocalObject, StrIndex, log } from '@skysmack/framework';
-import { NgDocumentRecordStore, NgFieldStore } from '@skysmack/ng-redux';
+import { NgRecordStore, NgFieldStore } from '@skysmack/ng-redux';
 import { map, switchMap, filter } from 'rxjs/operators';
 import { Field } from '@skysmack/ng-ui';
 
@@ -24,7 +24,7 @@ class FieldValidator {
 })
 export class ValidatorsFieldComponent extends FieldBaseComponent implements OnInit {
 
-  public store: NgDocumentRecordStore<any, any, any>;
+  public store: NgRecordStore<any, any, any>;
   public packagePath: string;
   public selectedFieldType: string;
 

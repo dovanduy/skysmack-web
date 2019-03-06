@@ -1,5 +1,5 @@
-import { LocalPageTypes, StrIndex, LocalObject, FieldSchemaViewModel, FieldValueProviderViewModel } from '@skysmack/framework';
-import { AppState, ReduxAction, DocumentRecordState, documentRecordReducersBase, sharedReducer } from '@skysmack/redux';
+import { LocalPageTypes, StrIndex, LocalObject } from '@skysmack/framework';
+import { AppState, ReduxAction, sharedReducer, RecordState, recordReducersBase } from '@skysmack/redux';
 import { LodgingType } from '../models/lodging-type';
 
 /**
@@ -9,11 +9,9 @@ export class LodgingTypesAppState extends AppState {
     public LodgingsTypes: LodgingTypesState;
 }
 
-export class LodgingTypesState implements DocumentRecordState<LodgingType, number> {
+export class LodgingTypesState implements RecordState<LodgingType, number> {
     public localPageTypes: StrIndex<StrIndex<LocalPageTypes<number>>> = {};
     public localRecords: StrIndex<StrIndex<LocalObject<LodgingType, number>>> = {};
-    public availableFields: StrIndex<StrIndex<LocalObject<FieldValueProviderViewModel, string>>> = {};
-    public fields: StrIndex<StrIndex<LocalObject<FieldSchemaViewModel, string>>> = {};
 }
 
 export function lodgingTypesReducer(state = new LodgingTypesState(), action: ReduxAction, prefix: string = 'LODGING_TYPES_'): LodgingTypesState {
@@ -22,7 +20,7 @@ export function lodgingTypesReducer(state = new LodgingTypesState(), action: Red
         default:
             return {
                 ...state,
-                ...documentRecordReducersBase<LodgingTypesState, LodgingType, number>(state, action, prefix)
+                ...recordReducersBase<LodgingTypesState, LodgingType, number>(state, action, prefix)
             };
     }
 }

@@ -1,5 +1,5 @@
 import { ApiDomain, FieldSchemaViewModel, FieldValueProviderViewModel } from '@skysmack/framework';
-import { ReduxAction, PackagePathPayload, DocumentRecordActionsBase, GetAvailableFieldsSuccessPayload, GetPagedRecordsPayload, GetPagedRecordsSuccessPayload, GetSingleRecordPayload, GetSingleRecordSuccessPayload, FieldActions, FieldRequests, GetSingleFieldPayload } from '@skysmack/redux';
+import { ReduxAction, PackagePathPayload, RecordActionsBase, GetAvailableFieldsSuccessPayload, GetPagedRecordsPayload, GetPagedRecordsSuccessPayload, GetSingleRecordPayload, GetSingleRecordSuccessPayload, FieldActions, FieldRequests, GetSingleFieldPayload } from '@skysmack/redux';
 import { Observable, of } from 'rxjs';
 import { map, retry, catchError } from 'rxjs/operators';
 import { HttpClient, HttpParams } from '@angular/common/http';

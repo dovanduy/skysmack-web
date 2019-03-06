@@ -1,5 +1,5 @@
-import { LocalPageTypes, StrIndex, LocalObject, FieldSchemaViewModel, FieldValueProviderViewModel } from '@skysmack/framework';
-import { AppState, ReduxAction, DocumentRecordState, documentRecordReducersBase } from '@skysmack/redux';
+import { LocalPageTypes, StrIndex, LocalObject } from '@skysmack/framework';
+import { AppState, ReduxAction, RecordState, recordReducersBase } from '@skysmack/redux';
 import { Person } from './../models/person';
 import { sharedReducer } from '@skysmack/redux';
 
@@ -10,11 +10,9 @@ export class PersonsAppState extends AppState {
     public persons: PersonsState;
 }
 
-export class PersonsState implements DocumentRecordState<Person, number> {
+export class PersonsState implements RecordState<Person, number> {
     public localPageTypes: StrIndex<StrIndex<LocalPageTypes<number>>> = {};
     public localRecords: StrIndex<StrIndex<LocalObject<Person, number>>> = {};
-    public availableFields: StrIndex<StrIndex<LocalObject<FieldValueProviderViewModel, string>>> = {};
-    public fields: StrIndex<StrIndex<LocalObject<FieldSchemaViewModel, string>>> = {};
 }
 
 export function personsReducer(state = new PersonsState(), action: ReduxAction, prefix: string = 'PERSONS_'): PersonsState {
@@ -24,7 +22,7 @@ export function personsReducer(state = new PersonsState(), action: ReduxAction, 
         default:
             return {
                 ...state,
-                ...documentRecordReducersBase<PersonsState, Person, number>(state, action, prefix)
+                ...recordReducersBase<PersonsState, Person, number>(state, action, prefix)
             };
     }
 }

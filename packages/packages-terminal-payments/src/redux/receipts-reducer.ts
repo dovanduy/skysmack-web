@@ -1,5 +1,5 @@
-import { LocalPageTypes, StrIndex, LocalObject, FieldSchemaViewModel, FieldValueProviderViewModel } from '@skysmack/framework';
-import { AppState, ReduxAction, DocumentRecordState, documentRecordReducersBase, sharedReducer } from '@skysmack/redux';
+import { LocalPageTypes, StrIndex, LocalObject } from '@skysmack/framework';
+import { AppState, ReduxAction, sharedReducer, RecordState, recordReducersBase } from '@skysmack/redux';
 import { Receipt } from './../models/receipt';
 
 /**
@@ -9,11 +9,9 @@ export class ReceiptsAppState extends AppState {
     public receipts: ReceiptsState;
 }
 
-export class ReceiptsState implements DocumentRecordState<Receipt, number> {
+export class ReceiptsState implements RecordState<Receipt, number> {
     public localPageTypes: StrIndex<StrIndex<LocalPageTypes<number>>> = {};
     public localRecords: StrIndex<StrIndex<LocalObject<Receipt, number>>> = {};
-    public availableFields: StrIndex<StrIndex<LocalObject<FieldValueProviderViewModel, string>>> = {};
-    public fields: StrIndex<StrIndex<LocalObject<FieldSchemaViewModel, string>>> = {};
 }
 
 export function receiptsReducer(state = new ReceiptsState(), action: ReduxAction, prefix: string = 'RECEIPTS_'): ReceiptsState {
@@ -22,7 +20,7 @@ export function receiptsReducer(state = new ReceiptsState(), action: ReduxAction
         default:
             return {
                 ...state,
-                ...documentRecordReducersBase<ReceiptsState, Receipt, number>(state, action, prefix)
+                ...recordReducersBase<ReceiptsState, Receipt, number>(state, action, prefix)
             };
     }
 }
