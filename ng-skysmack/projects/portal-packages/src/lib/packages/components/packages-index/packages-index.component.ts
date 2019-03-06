@@ -16,10 +16,6 @@ import { EntityAction } from '@skysmack/ng-ui';
   styleUrls: ['./packages-index.component.scss']
 })
 export class PackagesIndexComponent extends RecordIndexComponent<PackagesAppState, any, string> implements OnInit {
-
-  // TODO: Remove + replace with pagedEntities in html when pagination works for packages.
-  public packages$: Observable<LocalObject<Package, string>[]>;
-
   public entityActions: EntityAction[] = [
     new EntityAction().asUrlAction('edit', 'Edit', 'edit'),
     new EntityAction().asEventAction('Delete', this.delete, 'delete', this)
@@ -40,9 +36,6 @@ export class PackagesIndexComponent extends RecordIndexComponent<PackagesAppStat
 
   ngOnInit() {
     super.ngOnInit();
-    // TODO: Remove actions.get and store.get when pagination works for packages.
-    this.actions.get();
-    this.packages$ = this.store.get();
     this.title.setTitle(this.packagePath);
   }
 }

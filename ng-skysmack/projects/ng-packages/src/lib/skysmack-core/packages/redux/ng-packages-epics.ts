@@ -4,7 +4,7 @@ import { map, mergeMap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { NgPackagesRequests } from './ng-packages-requests';
-import { GetPackagesSuccessPayload, GetPackageSuccessPayload } from '@skysmack/packages-skysmack-core';
+import { GetPackageSuccessPayload } from '@skysmack/packages-skysmack-core';
 import { NgPackagesActions } from './ng-packages-actions';
 import { HttpErrorResponse, LocalObject, Package } from '@skysmack/framework';
 import { NgPackagesNotifications } from '../ng-packages-notifications';
@@ -16,7 +16,6 @@ export class NgPackagesEpics {
     constructor(protected requests: NgPackagesRequests, protected notifications: NgPackagesNotifications) {
         this.epics = [
             this.getPagedEpic,
-            this.getEpic,
             this.getSingleEpic,
             this.getAvailablePackagesEpic,
             this.snackBarGetPackageFailureEpic,
@@ -37,13 +36,6 @@ export class NgPackagesEpics {
         );
     }
 
-    public getEpic = (action$: ActionsObservable<ReduxAction>): Observable<ReduxAction<GetPackagesSuccessPayload> | ReduxAction<HttpErrorResponse>> => {
-        return action$.pipe(
-            ofType(NgPackagesActions.GET_PACKAGES),
-            mergeMap(() => this.requests.get())
-        );
-    }
-
     public getSingleEpic = (action$: ActionsObservable<ReduxAction<PackagePathPayload>>): Observable<ReduxAction<GetPackageSuccessPayload> | ReduxAction<HttpErrorResponse>> => {
         return action$.pipe(
             ofType(NgPackagesActions.GET_SINGLE_PACKAGE),
@@ -59,7 +51,7 @@ export class NgPackagesEpics {
     }
 
     public snackBarGetPackageFailureEpic = (action$: ActionsObservable<ReduxAction<HttpErrorResponse, RollbackMeta<LocalObject<Package, string>[]>>>): Observable<ReduxAction> => action$.pipe(
-        ofType(NgPackagesActions.GET_PACKAGES_FAILURE),
+        ofType(NgPackagesActions.PACKAGES_GET_PAGED_FAILURE),
         map((action) => {
             this.notifications.getPagedError(action);
             return { type: 'NOTIFICATION' };

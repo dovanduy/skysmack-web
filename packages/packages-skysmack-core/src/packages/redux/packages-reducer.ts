@@ -1,7 +1,7 @@
 import { LocalObject, Package, toLocalObject, HttpErrorResponse, HttpSuccessResponse, AvailablePackage, StrIndex, LocalObjectExtensions, replaceLocalInnerObject, GlobalProperties, Record, PageResponse, PageExtensions, LoadingState, LocalPageTypes } from '@skysmack/framework';
 import { AppState, ReduxAction, GetAvailablePackagesSuccessPayload, sharedReducer, RollbackMeta, GetPagedEntitiesPayload, GetPagedEntitiesSuccessPayload } from '@skysmack/redux';
 import { PackagesActions } from './packages-actions';
-import { GetPackagesSuccessPayload, GetPackageSuccessPayload } from '../payloads';
+import { GetPackageSuccessPayload } from '../payloads';
 import { cancelPackageAction } from './cancel-package-action';
 
 /**
@@ -26,6 +26,7 @@ export function packagesReducer(state = new PackagesState(), action: any): Packa
             return cancelPackageAction(newState, action);
         }
         case PackagesActions.PACKAGES_GET_PAGED: {
+            console.log('packages get paged');
             const castedAction: ReduxAction<GetPagedEntitiesPayload> = action;
             const page = new PageResponse<string>({
                 pageNumber: castedAction.payload.pagedQuery.pageNumber,
@@ -40,24 +41,14 @@ export function packagesReducer(state = new PackagesState(), action: any): Packa
         }
         case PackagesActions.PACKAGES_GET_PAGED_SUCCESS: {
             const castedAction: ReduxAction<GetPagedEntitiesSuccessPayload<Package, string>> = action;
+            console.log('packages get paged success', castedAction);
+            const entities = castedAction.payload.entities.map(x => toLocalObject<Package, string>(x, 'path'));
             newState.localPageTypes = PageExtensions.mergeOrAddPage(newState.localPageTypes, castedAction.payload.page);
-            newState.packages = LocalObjectExtensions.mergeOrAddLocal(newState.packages, castedAction.payload.entities.map(x => toLocalObject(x, 'path')));
+            newState.packages = LocalObjectExtensions.mergeOrAddLocal<Package, string>(newState.packages, entities);
+            console.log(newState);
             return newState;
         }
         case PackagesActions.PACKAGES_GET_PAGED_FAILURE: {
-            const castedAction: ReduxAction<HttpErrorResponse> = action;
-            if (!GlobalProperties.production) {
-                console.log('Error. Error Action:', castedAction);
-            }
-            return newState;
-        }
-        case PackagesActions.GET_PACKAGES_SUCCESS: {
-            const castedAction: ReduxAction<GetPackagesSuccessPayload> = action;
-            const incomingPackages = castedAction.payload.packages.map(x => toLocalObject<Package, string>(x, 'path'));
-            newState.packages = LocalObjectExtensions.mergeOrAddLocal<AvailablePackage, string>(newState.packages, incomingPackages);
-            return newState;
-        }
-        case PackagesActions.GET_PACKAGES_FAILURE: {
             const castedAction: ReduxAction<HttpErrorResponse> = action;
             if (!GlobalProperties.production) {
                 console.log('Error. Error Action:', castedAction);

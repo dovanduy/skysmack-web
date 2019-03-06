@@ -9,10 +9,6 @@ export class PackagesActions<TStateType, TStore extends Store<TStateType>> imple
     public static PACKAGES_GET_PAGED_SUCCESS = 'PACKAGES_GET_PAGED_SUCCESS';
     public static PACKAGES_GET_PAGED_FAILURE = 'PACKAGES_GET_PAGED_FAILURE';
 
-    public static GET_PACKAGES = 'GET_PACKAGES';
-    public static GET_PACKAGES_SUCCESS = 'GET_PACKAGES_SUCCESS';
-    public static GET_PACKAGES_FAILURE = 'GET_PACKAGES_FAILURE';
-
     public static GET_AVAILABLE_PACKAGES = 'GET_AVAILABLE_PACKAGES';
     public static GET_AVAILABLE_PACKAGES_SUCCESS = 'GET_AVAILABLE_PACKAGES_SUCCESS';
     public static GET_AVAILABLE_PACKAGES_FAILURE = 'GET_AVAILABLE_PACKAGES_FAILURE';
@@ -54,12 +50,6 @@ export class PackagesActions<TStateType, TStore extends Store<TStateType>> imple
                 pagedQuery,
                 packagePath
             }
-        })));
-    }
-
-    public get() {
-        this.store.dispatch(Object.assign({}, new ReduxAction({
-            type: PackagesActions.GET_PACKAGES
         })));
     }
 

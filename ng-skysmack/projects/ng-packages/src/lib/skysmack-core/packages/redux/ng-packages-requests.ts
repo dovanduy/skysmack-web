@@ -1,7 +1,7 @@
 import { Injectable, Inject } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { ApiDomain, Package, HttpErrorResponse } from '@skysmack/framework';
-import { PackagesRequests, GetPackagesSuccessPayload, PackagesActions, GetPackageSuccessPayload } from '@skysmack/packages-skysmack-core';
+import { PackagesRequests, PackagesActions, GetPackageSuccessPayload } from '@skysmack/packages-skysmack-core';
 import { Observable, of } from 'rxjs';
 import { map, catchError, retry } from 'rxjs/operators';
 import { ReduxAction, PackagePathPayload, GetAvailablePackagesSuccessPayload, GetPagedEntitiesPayload, GetPagedEntitiesSuccessPayload } from '@skysmack/redux';
@@ -49,7 +49,7 @@ export class NgPackagesRequests implements PackagesRequests {
         return this.http.get<Package[]>(url, { observe: 'response', params: queryParameters })
             .pipe(
                 map(httpResponse => {
-                    return Object.assign({}, new ReduxAction<GetPagedEntitiesSuccessPayload<Package, string>>({
+                    const thing = Object.assign({}, new ReduxAction<GetPagedEntitiesSuccessPayload<Package, string>>({
                         type: PackagesActions.PACKAGES_GET_PAGED_SUCCESS,
                         payload: {
                             entities: httpResponse.body ? httpResponse.body : [],
@@ -58,31 +58,12 @@ export class NgPackagesRequests implements PackagesRequests {
                             pagedQuery: action.payload.pagedQuery
                         }
                     }));
+                    console.log(thing);
+                    return thing;
                 }),
                 retry(this.retryTimes),
                 catchError((error) => of(Object.assign({}, new ReduxAction<HttpErrorResponse>({
                     type: PackagesActions.PACKAGES_GET_PAGED_FAILURE,
-                    payload: error,
-                    error: true
-                }))))
-            );
-    }
-
-    public get(): Observable<ReduxAction<GetPackagesSuccessPayload> | ReduxAction<HttpErrorResponse>> {
-        const url = this.apiDomain.domain + '/skysmack/packages';
-        return this.http.get<Package[]>(url, { observe: 'response' })
-            .pipe(
-                map(httpResponse => {
-                    return Object.assign({}, new ReduxAction<GetPackagesSuccessPayload>({
-                        type: PackagesActions.GET_PACKAGES_SUCCESS,
-                        payload: {
-                            packages: httpResponse.body ? httpResponse.body : []
-                        }
-                    }));
-                }),
-                retry(1),
-                catchError((error) => of(Object.assign({}, new ReduxAction({
-                    type: PackagesActions.GET_PACKAGES_FAILURE,
                     payload: error,
                     error: true
                 }))))
