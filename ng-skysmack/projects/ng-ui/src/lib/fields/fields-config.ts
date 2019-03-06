@@ -29,7 +29,7 @@ export abstract class FieldsConfig<TRecord, TKey, TDependencies> implements Enti
      */
     public getFields(entity?: LocalObject<TRecord, TKey>, dynamicFields?: LocalObject<FieldSchemaViewModel, string>[], dependencies?: TDependencies): Field[] {
         const fields = this.getStaticFields(entity, dependencies);
-        if (fields) {
+        if (dynamicFields) {
             const returnfields = [
                 ...fields,
                 ...dynamicFields.map(dynamicField => {
