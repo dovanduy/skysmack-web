@@ -1,10 +1,10 @@
 import { Record, StrIndex, LocalPageTypes, LocalObject, hasValue, dictionaryToArray, safeUndefinedTo, log } from '@skysmack/framework';
-import { RecordReduxStore, RecordState } from '@skysmack/redux';
+import { RecordStore, RecordState } from '@skysmack/redux';
 import { Observable } from 'rxjs';
 import { NgRedux } from '@angular-redux/store';
 import { map } from 'rxjs/operators';
 
-export abstract class NgRecordReduxStore<TState, TRecord extends Record<TKey>, TKey> implements RecordReduxStore<TRecord, TKey>  {
+export abstract class NgRecordStore<TState, TRecord extends Record<TKey>, TKey> implements RecordStore<TRecord, TKey>  {
     constructor(
         protected store: NgRedux<TState>,
         protected stateKey: string

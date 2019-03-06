@@ -2,10 +2,10 @@ import { Record, FieldSchemaViewModel, LocalObject, safeUndefinedTo, FieldValueP
 import { Observable } from 'rxjs';
 import { NgRedux } from '@angular-redux/store';
 import { map } from 'rxjs/operators';
-import { NgRecordReduxStore } from './ng-record-redux-store';
+import { NgRecordStore } from './ng-record-store';
 import { DocumentRecordState } from '@skysmack/redux';
 
-export abstract class NgDocumentRecordReduxStore<TState, TRecord extends Record<TKey>, TKey> extends NgRecordReduxStore<TState, TRecord, TKey>  {
+export abstract class NgDocumentRecordStore<TState, TRecord extends Record<TKey>, TKey> extends NgRecordStore<TState, TRecord, TKey>  {
     constructor(
         protected store: NgRedux<TState>,
         protected stateKey: string

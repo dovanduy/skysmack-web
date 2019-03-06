@@ -12,7 +12,7 @@ import { NgLodgingTypesStore } from '@skysmack/ng-packages';
 import { PagedQuery } from '@skysmack/framework';
 import { combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { NgFieldActions, NgFieldReduxStore } from '@skysmack/ng-redux';
+import { NgFieldActions, NgFieldStore } from '@skysmack/ng-redux';
 
 @Component({
   selector: 'ss-lodgings-edit',
@@ -32,7 +32,7 @@ export class LodgingsEditComponent extends DocumentRecordFormComponent<LodgingsA
     public store: NgLodgingsStore,
     public lodgingTypeStore: NgLodgingTypesStore,
     public fieldActions: NgFieldActions,
-    public fieldStore: NgFieldReduxStore
+    public fieldStore: NgFieldStore
   ) {
     super(router, activatedRoute, editorNavService, actions, redux, store, fieldsConfig, fieldActions, fieldStore);
   }

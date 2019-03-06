@@ -7,7 +7,7 @@ import { NgInvoiceItemsStore } from '@skysmack/ng-packages';
 import { InvoiceItem, InvoiceItemsAppState } from '@skysmack/packages-invoices';
 import { NgInvoiceItemsMenu } from './../../ng-invoice-items-menu';
 import { EntityAction } from '@skysmack/ng-ui';
-import { NgFieldActions, NgFieldReduxStore } from '@skysmack/ng-redux';
+import { NgFieldActions, NgFieldStore } from '@skysmack/ng-redux';
 
 
 @Component({
@@ -32,7 +32,7 @@ export class InvoiceItemsIndexComponent extends DocumentRecordIndexComponent<Inv
     public sidebarMenu: NgInvoiceItemsMenu,
     public fieldsConfig: NgInvoiceItemsFieldsConfig,
     public fieldActions: NgFieldActions,
-    public fieldStore: NgFieldReduxStore
+    public fieldStore: NgFieldStore
   ) {
     super(router, activatedRoute, actions, redux, store, fieldsConfig, fieldActions, fieldStore);
   }

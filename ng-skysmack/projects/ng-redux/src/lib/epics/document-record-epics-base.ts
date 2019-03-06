@@ -1,6 +1,6 @@
 import { ofType, ActionsObservable } from 'redux-observable';
 import { map, mergeMap } from 'rxjs/operators';
-import { Record, LocalObject, FieldSchemaViewModel, HttpResponse, HttpErrorResponse, QueueItem, LocalObjectStatus } from '@skysmack/framework';
+import { Record, LocalObject, FieldSchemaViewModel, HttpResponse, HttpErrorResponse, QueueItem } from '@skysmack/framework';
 import { Observable } from 'rxjs';
 import { RecordEpicsBase } from './record-epics-base';
 import { DocumentRecordRequests, PackagePathPayload, ReduxAction, GetFieldsSuccessPayload, DocumentRecordActionsBase, CommitMeta, ReduxOfflineMeta, QueueActions, CancelFieldActionPayload } from '@skysmack/redux';

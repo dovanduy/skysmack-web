@@ -1,7 +1,7 @@
 import { Component, OnInit, Injector } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FieldState } from '@skysmack/redux';
-import { NgFieldReduxStore, NgFieldActions } from '@skysmack/ng-redux';
+import { NgFieldStore, NgFieldActions } from '@skysmack/ng-redux';
 import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { EditorNavService } from './../../../components/common/container/editor-nav.service';
 import { NgFieldsConfig, NgFieldFormDependencies } from './../../ng-fields-config';
@@ -18,7 +18,7 @@ export class FieldsEditComponent extends RecordFormComponent<FieldState, any, st
     public activatedRoute: ActivatedRoute,
     public editorNavService: EditorNavService,
     public actions: NgFieldActions,
-    public store: NgFieldReduxStore,
+    public store: NgFieldStore,
     public skysmackStore: NgSkysmackStore,
     public fieldsConfig: NgFieldsConfig,
     public injector: Injector

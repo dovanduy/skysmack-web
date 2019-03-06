@@ -2,7 +2,7 @@ export * from './action-types';
 export * from './authentication';
 export * from './actions';
 export * from './reducers';
-export * from './redux-stores';
+export * from './stores';
 export * from './requests';
 export * from './states';
 export * from './payloads';

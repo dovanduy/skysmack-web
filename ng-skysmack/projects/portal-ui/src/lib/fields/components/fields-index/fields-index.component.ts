@@ -5,7 +5,7 @@ import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { EntityComponentPageTitle } from './../../../models/entity-component-page-title';
 import { NgFieldsMenu } from '../../ng-fields-menu';
 import { RecordIndexComponent } from '../../../base-components/record-components/record-index-component';
-import { NgFieldActions, NgFieldReduxStore } from '@skysmack/ng-redux';
+import { NgFieldActions, NgFieldStore } from '@skysmack/ng-redux';
 import { NgFieldsConfig } from '../../ng-fields-config';
 
 @Component({
@@ -24,7 +24,7 @@ export class FieldsIndexComponent extends RecordIndexComponent<any, any, any> im
     public activatedRoute: ActivatedRoute,
     public title: EntityComponentPageTitle,
     public actions: NgFieldActions,
-    public store: NgFieldReduxStore,
+    public store: NgFieldStore,
     public skysmackStore: NgSkysmackStore,
     public sidebarMenu: NgFieldsMenu,
     public fieldsConfig: NgFieldsConfig,

@@ -6,7 +6,7 @@ import { FieldState, EntityStore, FieldsAppState } from '@skysmack/redux';
 import { Injectable } from '@angular/core';
 
 @Injectable({ providedIn: 'root' })
-export class NgFieldReduxStore implements EntityStore<FieldSchemaViewModel, string> {
+export class NgFieldStore implements EntityStore<FieldSchemaViewModel, string> {
     constructor(
         protected store: NgRedux<FieldsAppState>
     ) { }

@@ -2,7 +2,7 @@ import { Component, OnInit, Injector } from '@angular/core';
 import { FieldBaseComponent } from '../field-base-component';
 import { ActivatedRoute, Router } from '@angular/router';
 import { flatten, FieldValueProviderViewModel, LocalObject, StrIndex, log } from '@skysmack/framework';
-import { NgDocumentRecordReduxStore, NgFieldReduxStore } from '@skysmack/ng-redux';
+import { NgDocumentRecordStore, NgFieldStore } from '@skysmack/ng-redux';
 import { map, switchMap, filter } from 'rxjs/operators';
 import { Field } from '@skysmack/ng-ui';
 
@@ -24,7 +24,7 @@ class FieldValidator {
 })
 export class ValidatorsFieldComponent extends FieldBaseComponent implements OnInit {
 
-  public store: NgDocumentRecordReduxStore<any, any, any>;
+  public store: NgDocumentRecordStore<any, any, any>;
   public packagePath: string;
   public selectedFieldType: string;
 
@@ -40,7 +40,7 @@ export class ValidatorsFieldComponent extends FieldBaseComponent implements OnIn
 
   constructor(
     public router: Router,
-    public fieldsStore: NgFieldReduxStore
+    public fieldsStore: NgFieldStore
   ) { super(); }
 
   ngOnInit() {

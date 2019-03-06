@@ -7,7 +7,7 @@ import { EditorNavService } from '@skysmack/portal-ui';
 import { NgInvoicePaymentsFieldsConfig, NgInvoicePaymentFormDependencies } from '@skysmack/ng-packages';
 import { DocumentRecordFormComponent } from '@skysmack/portal-ui';
 import { NgInvoicePaymentsStore } from '@skysmack/ng-packages';
-import { NgFieldActions, NgFieldReduxStore } from '@skysmack/ng-redux';
+import { NgFieldActions, NgFieldStore } from '@skysmack/ng-redux';
 
 @Component({
   selector: 'ss-invoice-payments-create',
@@ -25,7 +25,7 @@ export class InvoicePaymentsCreateComponent extends DocumentRecordFormComponent<
     public fieldsConfig: NgInvoicePaymentsFieldsConfig,
     public store: NgInvoicePaymentsStore,
     public fieldActions: NgFieldActions,
-    public fieldStore: NgFieldReduxStore
+    public fieldStore: NgFieldStore
   ) {
     super(router, activatedRoute, editorNavService, actions, redux, store, fieldsConfig, fieldActions, fieldStore);
   }

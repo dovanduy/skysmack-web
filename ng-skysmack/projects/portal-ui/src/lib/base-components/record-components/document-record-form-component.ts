@@ -6,7 +6,7 @@ import { EditorNavService } from './../../components/common/container/editor-nav
 import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { EntityActions, EntityStore } from '@skysmack/redux';
 import { RecordFormComponent } from './record-form-component';
-import { NgFieldActions, NgFieldReduxStore } from '@skysmack/ng-redux';
+import { NgFieldActions, NgFieldStore } from '@skysmack/ng-redux';
 import { map } from 'rxjs/operators';
 import { combineLatest, Observable } from 'rxjs';
 
@@ -21,7 +21,7 @@ export class DocumentRecordFormComponent<TAppState, TRecord extends Record<TKey>
         public store: EntityStore<any, TKey>,
         public fieldsConfig: EntityFieldsConfig<any, TKey, TDependencies>,
         public fieldActions: NgFieldActions,
-        public fieldStore: NgFieldReduxStore
+        public fieldStore: NgFieldStore
     ) {
         super(router, activatedRoute, editorNavService, actions, skysmackStore, store, fieldsConfig);
     }

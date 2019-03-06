@@ -7,7 +7,7 @@ import { EditorNavService } from '@skysmack/portal-ui';
 import { NgPersonsFieldsConfig, NgPersonFormDependencies } from '@skysmack/ng-packages';
 import { DocumentRecordFormComponent } from '@skysmack/portal-ui';
 import { NgPersonsStore } from '@skysmack/ng-packages';
-import { NgFieldActions, NgFieldReduxStore } from '@skysmack/ng-redux';
+import { NgFieldActions, NgFieldStore } from '@skysmack/ng-redux';
 
 @Component({
   selector: 'ss-persons-edit',
@@ -25,7 +25,7 @@ export class PersonsEditComponent extends DocumentRecordFormComponent<PersonsApp
     public fieldsConfig: NgPersonsFieldsConfig,
     public store: NgPersonsStore,
     public fieldActions: NgFieldActions,
-    public fieldStore: NgFieldReduxStore
+    public fieldStore: NgFieldStore
   ) {
     super(router, activatedRoute, editorNavService, actions, redux, store, fieldsConfig, fieldActions, fieldStore);
   }

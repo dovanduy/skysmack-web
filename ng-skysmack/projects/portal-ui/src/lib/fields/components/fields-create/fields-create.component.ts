@@ -5,7 +5,7 @@ import { EditorNavService } from './../../../components/common/container/editor-
 import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { NgFieldsConfig, NgFieldFormDependencies } from './../../ng-fields-config';
 import { RecordFormComponent } from './../../../base-components/record-components/record-form-component';
-import { NgFieldActions, NgFieldReduxStore } from '@skysmack/ng-redux';
+import { NgFieldActions, NgFieldStore } from '@skysmack/ng-redux';
 import { combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { LocalObject, FieldSchemaViewModel } from '@skysmack/framework';
@@ -23,7 +23,7 @@ export class FieldsCreateComponent extends RecordFormComponent<FieldState, any, 
     public activatedRoute: ActivatedRoute,
     public editorNavService: EditorNavService,
     public actions: NgFieldActions,
-    public store: NgFieldReduxStore,
+    public store: NgFieldStore,
     public skysmackStore: NgSkysmackStore,
     public fieldsConfig: NgFieldsConfig,
     public injector: Injector

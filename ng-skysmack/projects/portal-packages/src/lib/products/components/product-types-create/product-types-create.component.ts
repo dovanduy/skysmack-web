@@ -6,7 +6,7 @@ import { DocumentRecordFormComponent, EditorNavService } from '@skysmack/portal-
 import { NgProductTypesFieldsConfig, NgProductTypeFormDependencies } from '@skysmack/ng-packages';
 import { NgProductTypesActions } from '@skysmack/ng-packages';
 import { NgProductTypesStore } from '@skysmack/ng-packages';
-import { NgFieldActions, NgFieldReduxStore } from '@skysmack/ng-redux';
+import { NgFieldActions, NgFieldStore } from '@skysmack/ng-redux';
 
 @Component({
   selector: 'ss-product-types-create',
@@ -24,7 +24,7 @@ export class ProductTypesCreateComponent extends DocumentRecordFormComponent<Pro
     public fieldsConfig: NgProductTypesFieldsConfig,
     public store: NgProductTypesStore,
     public fieldActions: NgFieldActions,
-    public fieldStore: NgFieldReduxStore
+    public fieldStore: NgFieldStore
   ) {
     super(router, activatedRoute, editorNavService, actions, redux, store, fieldsConfig, fieldActions, fieldStore);
   }

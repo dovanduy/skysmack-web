@@ -7,7 +7,7 @@ import { RecordIndexComponent } from './record-index-component';
 import { NgFieldActions } from '@skysmack/ng-redux';
 import { EntityFieldsConfig } from '@skysmack/ng-ui';
 import { map } from 'rxjs/operators';
-import { NgFieldReduxStore } from '@skysmack/ng-redux';
+import { NgFieldStore } from '@skysmack/ng-redux';
 
 export class DocumentRecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey> extends RecordIndexComponent<TAppState, TRecord, TKey> implements OnInit {
 
@@ -19,7 +19,7 @@ export class DocumentRecordIndexComponent<TAppState, TRecord extends Record<TKey
         public store: EntityStore<any, TKey>,
         public fieldsConfig: EntityFieldsConfig<any, TKey, any>,
         public fieldActions: NgFieldActions,
-        public fieldStore: NgFieldReduxStore
+        public fieldStore: NgFieldStore
     ) {
         super(router, activatedRoute, actions, redux, store, fieldsConfig);
     }

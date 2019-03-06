@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { LodgingTypesAppState, LodgingType } from '@skysmack/packages-lodgings';
 import { NgLodgingTypesFieldsConfig, NgLodgingTypeFormDependencies, NgLodgingTypesStore, NgSkysmackStore, NgLodgingTypesActions } from '@skysmack/ng-packages';
 import { EditorNavService, DocumentRecordFormComponent } from '@skysmack/portal-ui';
-import { NgFieldActions, NgFieldReduxStore } from '@skysmack/ng-redux';
+import { NgFieldActions, NgFieldStore } from '@skysmack/ng-redux';
 
 @Component({
   selector: 'ss-lodging-types-create',
@@ -21,7 +21,7 @@ export class LodgingTypesCreateComponent extends DocumentRecordFormComponent<Lod
     public fieldsConfig: NgLodgingTypesFieldsConfig,
     public store: NgLodgingTypesStore,
     public fieldActions: NgFieldActions,
-    public fieldStore: NgFieldReduxStore
+    public fieldStore: NgFieldStore
   ) {
     super(router, activatedRoute, editorNavService, actions, redux, store, fieldsConfig, fieldActions, fieldStore);
   }

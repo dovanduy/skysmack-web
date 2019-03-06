@@ -6,7 +6,7 @@ import { DocumentRecordFormComponent, EditorNavService } from '@skysmack/portal-
 import { NgReceiptsFieldsConfig, NgReceiptFormDependencies } from '@skysmack/ng-packages';
 import { NgReceiptsActions } from '@skysmack/ng-packages';
 import { NgReceiptsStore } from '@skysmack/ng-packages';
-import { NgFieldActions, NgFieldReduxStore } from '@skysmack/ng-redux';
+import { NgFieldActions, NgFieldStore } from '@skysmack/ng-redux';
 
 @Component({
   selector: 'ss-receipts-create',
@@ -24,7 +24,7 @@ export class ReceiptsCreateComponent extends DocumentRecordFormComponent<Receipt
     public fieldsConfig: NgReceiptsFieldsConfig,
     public store: NgReceiptsStore,
     public fieldActions: NgFieldActions,
-    public fieldStore: NgFieldReduxStore
+    public fieldStore: NgFieldStore
   ) {
     super(router, activatedRoute, editorNavService, actions, redux, store, fieldsConfig, fieldActions, fieldStore);
   }

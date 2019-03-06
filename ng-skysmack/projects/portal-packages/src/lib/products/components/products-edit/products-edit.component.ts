@@ -12,7 +12,7 @@ import { combineLatest } from 'rxjs';
 import { PagedQuery } from '@skysmack/framework';
 import { map } from 'rxjs/operators';
 import { NgProductTypesStore } from '@skysmack/ng-packages';
-import { NgFieldActions, NgFieldReduxStore } from '@skysmack/ng-redux';
+import { NgFieldActions, NgFieldStore } from '@skysmack/ng-redux';
 
 @Component({
   selector: 'ss-products-edit',
@@ -33,7 +33,7 @@ export class ProductsEditComponent extends DocumentRecordFormComponent<ProductsA
     public store: NgProductsStore,
     public productTypeStore: NgProductTypesStore,
     public fieldActions: NgFieldActions,
-    public fieldStore: NgFieldReduxStore
+    public fieldStore: NgFieldStore
   ) {
     super(router, activatedRoute, editorNavService, actions, redux, store, fieldsConfig, fieldActions, fieldStore);
   }

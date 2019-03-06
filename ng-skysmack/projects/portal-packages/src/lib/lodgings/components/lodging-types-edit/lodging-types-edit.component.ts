@@ -7,7 +7,7 @@ import { DocumentRecordFormComponent } from '@skysmack/portal-ui';
 import { NgLodgingTypesFieldsConfig, NgLodgingTypeFormDependencies } from '@skysmack/ng-packages';
 import { NgLodgingTypesActions } from '@skysmack/ng-packages';
 import { NgLodgingTypesStore } from '@skysmack/ng-packages';
-import { NgFieldActions, NgFieldReduxStore } from '@skysmack/ng-redux';
+import { NgFieldActions, NgFieldStore } from '@skysmack/ng-redux';
 
 @Component({
   selector: 'ss-lodging-types-edit',
@@ -25,7 +25,7 @@ export class LodgingTypesEditComponent extends DocumentRecordFormComponent<Lodgi
     public fieldsConfig: NgLodgingTypesFieldsConfig,
     public store: NgLodgingTypesStore,
     public fieldActions: NgFieldActions,
-    public fieldStore: NgFieldReduxStore
+    public fieldStore: NgFieldStore
   ) {
     super(router, activatedRoute, editorNavService, actions, redux, store, fieldsConfig, fieldActions, fieldStore);
   }
