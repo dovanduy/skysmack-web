@@ -173,7 +173,7 @@ export abstract class DocumentRecordEpicsBase<TRecord extends Record<TKey>, TKey
                         queueItems.error = action.payload;
                         return queueItems;
                     })
-                })
+                });
             })
         );
     }
