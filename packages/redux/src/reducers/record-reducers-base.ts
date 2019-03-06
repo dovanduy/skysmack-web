@@ -1,7 +1,7 @@
 import { RecordActionsBase } from "../actions";
 import { Record, LocalObjectExtensions, PageExtensions, toLocalObject, HttpSuccessResponse, HttpErrorResponse, LocalObjectStatus, PageResponse, replaceLocalInnerObject, LocalObject, HttpResponse, LoadingState, GlobalProperties } from "@skysmack/framework";
 import { RecordState } from './../states/record-state';
-import { GetPagedRecordsSuccessPayload, GetSingleRecordSuccessPayload, GetPagedRecordsPayload } from '../payloads';
+import { GetPagedEntitiesSuccessPayload, GetSingleEntitySuccessPayload, GetPagedEntitiesPayload } from '../payloads';
 import { ReduxAction } from '../action-types/redux-action';
 import { cancelRecordAction } from './cancel-record-action';
 import { ReduxOfflineMeta } from '../metas/offline-redux/redux-offline-meta';
@@ -16,7 +16,7 @@ export function recordReducersBase<TState extends RecordState<TRecord, TKey>, TR
             return cancelRecordAction<TState, TRecord, TKey>(newState, action);
         }
         case prefix + RecordActionsBase.GET_PAGED: {
-            const castedAction: ReduxAction<GetPagedRecordsPayload> = action;
+            const castedAction: ReduxAction<GetPagedEntitiesPayload> = action;
             const page = new PageResponse<TKey>({
                 pageNumber: castedAction.payload.pagedQuery.pageNumber,
                 pageSize: castedAction.payload.pagedQuery.pageSize,
@@ -29,9 +29,9 @@ export function recordReducersBase<TState extends RecordState<TRecord, TKey>, TR
             return newState;
         }
         case prefix + RecordActionsBase.GET_PAGED_SUCCESS: {
-            const castedAction: ReduxAction<GetPagedRecordsSuccessPayload<TRecord, TKey>> = action;
+            const castedAction: ReduxAction<GetPagedEntitiesSuccessPayload<TRecord, TKey>> = action;
             newState.localPageTypes[castedAction.payload.packagePath] = PageExtensions.mergeOrAddPage(newState.localPageTypes[castedAction.payload.packagePath], castedAction.payload.page);
-            newState.localRecords[castedAction.payload.packagePath] = LocalObjectExtensions.mergeOrAddLocal(newState.localRecords[castedAction.payload.packagePath], castedAction.payload.records.map(x => toLocalObject(x)));
+            newState.localRecords[castedAction.payload.packagePath] = LocalObjectExtensions.mergeOrAddLocal(newState.localRecords[castedAction.payload.packagePath], castedAction.payload.entities.map(x => toLocalObject(x)));
             return newState;
         }
         case prefix + RecordActionsBase.GET_PAGED_FAILURE: {
@@ -42,8 +42,8 @@ export function recordReducersBase<TState extends RecordState<TRecord, TKey>, TR
             return newState;
         }
         case prefix + RecordActionsBase.GET_SINGLE_SUCCESS: {
-            const castedAction: ReduxAction<GetSingleRecordSuccessPayload<TRecord, TKey>> = action;
-            newState.localRecords[castedAction.payload.packagePath] = LocalObjectExtensions.mergeOrAddLocal(newState.localRecords[castedAction.payload.packagePath], [toLocalObject(castedAction.payload.record)]);
+            const castedAction: ReduxAction<GetSingleEntitySuccessPayload<TRecord, TKey>> = action;
+            newState.localRecords[castedAction.payload.packagePath] = LocalObjectExtensions.mergeOrAddLocal(newState.localRecords[castedAction.payload.packagePath], [toLocalObject(castedAction.payload.entity)]);
             return newState;
         }
         case prefix + RecordActionsBase.GET_SINGLE_FAILURE: {

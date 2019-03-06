@@ -1,5 +1,5 @@
-import { Record, ApiDomain } from '@skysmack/framework';
-import { RecordRequests, RecordActionsBase, ReduxAction, GetPagedRecordsPayload, GetPagedRecordsSuccessPayload, GetSingleRecordPayload, GetSingleRecordSuccessPayload } from '@skysmack/redux';
+import { Record, ApiDomain, HttpErrorResponse } from '@skysmack/framework';
+import { RecordRequests, RecordActionsBase, ReduxAction, GetPagedEntitiesPayload, GetPagedEntitiesSuccessPayload, GetSingleEntityPayload, GetSingleEntitySuccessPayload } from '@skysmack/redux';
 import { Observable } from 'rxjs';
 import { map, retry, catchError, share } from 'rxjs/operators';
 import { HttpClient, HttpParams } from '@angular/common/http';
@@ -19,7 +19,7 @@ export abstract class NgRecordRequests<TRecord extends Record<TKey>, TKey> imple
     ) {
     }
 
-    public getPaged(action: ReduxAction<GetPagedRecordsPayload>): Observable<ReduxAction<GetPagedRecordsSuccessPayload<TRecord, TKey>> | ReduxAction<GetPagedRecordsPayload>> {
+    public getPaged(action: ReduxAction<GetPagedEntitiesPayload>): Observable<ReduxAction<GetPagedEntitiesSuccessPayload<TRecord, TKey>> | ReduxAction<HttpErrorResponse>> {
         let queryParameters = new HttpParams({ encoder: new CustomHttpUrlEncodingCodec() });
         let query = '';
         let sort = '';
@@ -52,10 +52,10 @@ export abstract class NgRecordRequests<TRecord extends Record<TKey>, TKey> imple
         return this.http.get<TRecord[]>(url, { observe: 'response', params: queryParameters })
             .pipe(
                 map(httpResponse => {
-                    return Object.assign({}, new ReduxAction<GetPagedRecordsSuccessPayload<TRecord, TKey>>({
+                    return Object.assign({}, new ReduxAction<GetPagedEntitiesSuccessPayload<TRecord, TKey>>({
                         type: this.prefix + RecordActionsBase.GET_PAGED_SUCCESS,
                         payload: {
-                            records: httpResponse.body ? httpResponse.body : [],
+                            entities: httpResponse.body ? httpResponse.body : [],
                             packagePath: action.payload.packagePath,
                             page: PageResponseExtensions.getPageResponse<TKey>(httpResponse.headers, httpResponse.body.map(record => record.id), query, sort),
                             pagedQuery: action.payload.pagedQuery
@@ -63,7 +63,7 @@ export abstract class NgRecordRequests<TRecord extends Record<TKey>, TKey> imple
                     }));
                 }),
                 retry(this.retryTimes),
-                catchError((error) => of(Object.assign({}, new ReduxAction<GetPagedRecordsPayload>({
+                catchError((error) => of(Object.assign({}, new ReduxAction<HttpErrorResponse>({
                     type: this.prefix + RecordActionsBase.GET_PAGED_FAILURE,
                     payload: error,
                     error: true
@@ -71,7 +71,7 @@ export abstract class NgRecordRequests<TRecord extends Record<TKey>, TKey> imple
             );
     }
 
-    public getSingle(action: ReduxAction<GetSingleRecordPayload<TKey>>): Observable<ReduxAction<GetSingleRecordSuccessPayload<TRecord, TKey>> | ReduxAction<GetSingleRecordPayload<TKey>>> {
+    public getSingle(action: ReduxAction<GetSingleEntityPayload<TKey>>): Observable<ReduxAction<GetSingleEntitySuccessPayload<TRecord, TKey>> | ReduxAction<HttpErrorResponse>> {
         let url = `${this.apiDomain.domain}/${action.payload.packagePath}`;
         url = this.addAdditionalPaths(url);
         url = `${url}/${action.payload.id}`;
@@ -79,17 +79,17 @@ export abstract class NgRecordRequests<TRecord extends Record<TKey>, TKey> imple
         return this.http.get<TRecord>(url, { observe: 'response' })
             .pipe(
                 map(httpResponse => {
-                    return Object.assign({}, new ReduxAction<GetSingleRecordSuccessPayload<TRecord, TKey>>({
+                    return Object.assign({}, new ReduxAction<GetSingleEntitySuccessPayload<TRecord, TKey>>({
                         type: this.prefix + RecordActionsBase.GET_SINGLE_SUCCESS,
                         payload: {
                             id: action.payload.id,
-                            record: httpResponse.body,
+                            entity: httpResponse.body,
                             packagePath: action.payload.packagePath
                         }
                     }));
                 }),
                 retry(this.retryTimes),
-                catchError((error) => of(Object.assign({}, new ReduxAction<GetSingleRecordPayload<TKey>>({
+                catchError((error) => of(Object.assign({}, new ReduxAction<HttpErrorResponse>({
                     type: this.prefix + RecordActionsBase.GET_SINGLE_FAILURE,
                     payload: error,
                     error: true

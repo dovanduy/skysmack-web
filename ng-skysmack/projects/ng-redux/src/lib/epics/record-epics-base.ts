@@ -2,7 +2,7 @@ import { ofType, ActionsObservable, Epic } from 'redux-observable';
 import { map, mergeMap, share } from 'rxjs/operators';
 import { Record, LocalObject, HttpErrorResponse, QueueItem, HttpResponse, log } from '@skysmack/framework';
 import { Observable } from 'rxjs';
-import { RecordRequests, ReduxAction, GetPagedRecordsPayload, GetPagedRecordsSuccessPayload, RecordActionsBase, GetSingleRecordPayload, GetSingleRecordSuccessPayload, CommitMeta, QueueActions, CancelActionPayload, ReduxOfflineMeta } from '@skysmack/redux';
+import { RecordRequests, ReduxAction, GetPagedEntitiesPayload, GetPagedEntitiesSuccessPayload, RecordActionsBase, GetSingleEntityPayload, GetSingleEntitySuccessPayload, CommitMeta, QueueActions, CancelActionPayload, ReduxOfflineMeta } from '@skysmack/redux';
 import { RecordNotifications } from './../notifications/record-notifications';
 
 export abstract class RecordEpicsBase<TRecord extends Record<TKey>, TKey> {
@@ -31,14 +31,14 @@ export abstract class RecordEpicsBase<TRecord extends Record<TKey>, TKey> {
         ];
     }
 
-    public getPagedEpic = (action$: ActionsObservable<ReduxAction<GetPagedRecordsPayload>>): Observable<ReduxAction<GetPagedRecordsSuccessPayload<TRecord, TKey>> | ReduxAction<GetPagedRecordsPayload>> => {
+    public getPagedEpic = (action$: ActionsObservable<ReduxAction<GetPagedEntitiesPayload>>): Observable<ReduxAction<GetPagedEntitiesSuccessPayload<TRecord, TKey>> | ReduxAction<HttpErrorResponse>> => {
         return action$.pipe(
             ofType(this.prefix + RecordActionsBase.GET_PAGED),
             mergeMap(action => this.requests.getPaged(action as any)),
         );
     }
 
-    public getSingleEpic = (action$: ActionsObservable<ReduxAction<GetSingleRecordPayload<TKey>>>): Observable<ReduxAction<GetSingleRecordSuccessPayload<TRecord, TKey>> | ReduxAction<GetSingleRecordPayload<TKey>>> => {
+    public getSingleEpic = (action$: ActionsObservable<ReduxAction<GetSingleEntityPayload<TKey>>>): Observable<ReduxAction<GetSingleEntitySuccessPayload<TRecord, TKey>> | ReduxAction<HttpErrorResponse>> => {
         return action$.pipe(
             ofType(this.prefix + RecordActionsBase.GET_SINGLE),
             mergeMap(action => this.requests.getSingle(action))

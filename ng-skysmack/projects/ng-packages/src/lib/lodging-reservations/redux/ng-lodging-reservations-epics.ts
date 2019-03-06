@@ -4,9 +4,9 @@ import { NgLodgingReservationsRequests } from './ng-lodging-reservations-request
 import { Injectable } from '@angular/core';
 import { ActionsObservable, ofType } from 'redux-observable';
 import { Observable } from 'rxjs';
-import { HttpErrorResponse, RSQLFilterBuilder, PagedQuery } from '@skysmack/framework';
+import { HttpErrorResponse, RSQLFilterBuilder, PagedQuery, StrIndex } from '@skysmack/framework';
 import { switchMap, map, take } from 'rxjs/operators';
-import { GetIntervalPayload, ReduxAction, GetPagedRecordsSuccessPayload } from '@skysmack/redux';
+import { GetIntervalPayload, ReduxAction, GetPagedEntitiesSuccessPayload } from '@skysmack/redux';
 import { NgLodgingTypesActions } from './../../lodgings/redux/ng-lodging-types-actions';
 import { NgSkysmackStore } from './../../skysmack-core/skysmack/redux/ng-skysmack-store';
 import { NgLodgingsActions } from './../../lodgings/redux/ng-lodgings-actions';
@@ -29,8 +29,7 @@ export class NgLodgingReservationsEpics extends RecordEpicsBase<LodgingReservati
         ]);
     }
 
-    // TODO: Set proper return type.
-    public getAvailableLodgingsEpic = (action$: ActionsObservable<any>): Observable<any | HttpErrorResponse> => action$.pipe(
+    public getAvailableLodgingsEpic = (action$: ActionsObservable<any>): Observable<ReduxAction<StrIndex<StrIndex<number>>> | ReduxAction<HttpErrorResponse>> => action$.pipe(
         ofType(LodgingReservationsActions.GET_AVAILABLE_LODGINGS),
         switchMap((action: ReduxAction<GetIntervalPayload>) => this.requests.getAvailableLodgings(
             action.payload.packagePath,
@@ -39,11 +38,10 @@ export class NgLodgingReservationsEpics extends RecordEpicsBase<LodgingReservati
         ))
     )
 
-
     public getReservationLodgingTypesEpic = (action$: ActionsObservable<any>) => action$.pipe(
         ofType(this.prefix + LodgingReservationsActions.GET_PAGED_SUCCESS),
-        map((action: ReduxAction<GetPagedRecordsSuccessPayload<LodgingReservation, number>>) => {
-            const lodgingTypeIds = Array.from(new Set(action.payload.records.map(record => record.lodgingTypeId).filter(x => x)));
+        map((action: ReduxAction<GetPagedEntitiesSuccessPayload<LodgingReservation, number>>) => {
+            const lodgingTypeIds: number[] = Array.from(new Set(action.payload.entities.map(record => record.lodgingTypeId).filter(x => x)));
             if (lodgingTypeIds && lodgingTypeIds.length > 0) {
                 const rsqlFilter = new RSQLFilterBuilder();
                 rsqlFilter.column('id').in(lodgingTypeIds);
@@ -62,8 +60,8 @@ export class NgLodgingReservationsEpics extends RecordEpicsBase<LodgingReservati
 
     public getReservationLodgingsEpic = (action$: ActionsObservable<any>) => action$.pipe(
         ofType(this.prefix + LodgingReservationsActions.GET_PAGED_SUCCESS),
-        map((action: ReduxAction<GetPagedRecordsSuccessPayload<LodgingReservation, number>>) => {
-            const lodgingIds = Array.from(new Set(action.payload.records.map(record => record.allocatedLodgingId).filter(x => x)));
+        map((action: ReduxAction<GetPagedEntitiesSuccessPayload<LodgingReservation, number>>) => {
+            const lodgingIds: number[] = Array.from(new Set(action.payload.entities.map(record => record.allocatedLodgingId).filter(x => x)));
             if (lodgingIds && lodgingIds.length > 0) {
                 const rsqlFilter = new RSQLFilterBuilder();
                 rsqlFilter.column('id').in(lodgingIds);

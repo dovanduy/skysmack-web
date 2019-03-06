@@ -1,6 +1,6 @@
 import { PackagePathPayload } from './package-path-payload';
 import { PagedQuery } from '@skysmack/framework';
 
-export interface GetPagedRecordsPayload extends PackagePathPayload {
+export interface GetPagedEntitiesPayload extends PackagePathPayload {
     pagedQuery: PagedQuery;
 }

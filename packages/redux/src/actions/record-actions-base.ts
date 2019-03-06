@@ -2,7 +2,7 @@
 import { Store } from 'redux';
 import { PagedQuery, Record, LocalObject, HttpMethod, LocalObjectStatus, HttpResponse, QueueItem, StrIndex } from '@skysmack/framework';
 import { ReduxAction } from '../action-types/redux-action';
-import { GetPagedRecordsPayload, GetSingleRecordPayload, CancelActionPayload, } from '../payloads';
+import { GetPagedEntitiesPayload, GetSingleEntityPayload, CancelActionPayload, } from '../payloads';
 import { CommitMeta, RollbackMeta, ReduxOfflineMeta, CancelActionMeta, OfflineMeta } from '../metas';
 import { EffectRequest } from '../models/effect-request';
 import { Effect } from './../models/effect';
@@ -50,7 +50,7 @@ export abstract class RecordActionsBase<TStateType, TStore extends Store<TStateT
     }
 
     public getPaged = (packagePath: string, pagedQuery: PagedQuery) => {
-        this.store.dispatch(Object.assign({}, new ReduxAction<GetPagedRecordsPayload>({
+        this.store.dispatch(Object.assign({}, new ReduxAction<GetPagedEntitiesPayload>({
             type: this.prefix + RecordActionsBase.GET_PAGED,
             payload: {
                 pagedQuery,
@@ -60,7 +60,7 @@ export abstract class RecordActionsBase<TStateType, TStore extends Store<TStateT
     }
 
     public getSingle = <TKey>(packagePath: string, id: TKey) => {
-        this.store.dispatch(Object.assign({}, new ReduxAction<GetSingleRecordPayload<TKey>>({
+        this.store.dispatch(Object.assign({}, new ReduxAction<GetSingleEntityPayload<TKey>>({
             type: this.prefix + RecordActionsBase.GET_SINGLE,
             payload: {
                 id,

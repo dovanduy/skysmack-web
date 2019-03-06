@@ -1,6 +1,6 @@
 import { Injectable, Inject } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { ApiDomain, StrIndex } from '@skysmack/framework';
+import { HttpClient } from '@angular/common/http';
+import { ApiDomain, StrIndex, HttpErrorResponse } from '@skysmack/framework';
 import { LodgingReservation } from '@skysmack/packages-lodging-reservations';
 import { NgRecordRequests } from '@skysmack/ng-redux';
 import { Observable, of } from 'rxjs';
@@ -30,7 +30,7 @@ export class NgLodgingReservationsRequests extends NgRecordRequests<LodgingReser
                 }
             }))),
             retry(this.retryTimes),
-            catchError((error) => of(Object.assign({}, new ReduxAction({
+            catchError((error) => of(Object.assign({}, new ReduxAction<HttpErrorResponse>({
                 type: this.prefix + NgLodgingReservationsActions.GET_AVAILABLE_LODGINGS_FAILURE,
                 payload: error,
                 error: true

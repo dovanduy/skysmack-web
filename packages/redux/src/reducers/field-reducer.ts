@@ -1,6 +1,6 @@
 import { toLocalObject, HttpSuccessResponse, LocalObject, HttpErrorResponse, LocalObjectExtensions, replaceLocalInnerObject, GlobalProperties, PageResponse, PageExtensions, LoadingState, HttpResponse, FieldSchemaViewModel, LocalObjectStatus, FieldValueProviderViewModel, LocalPageTypes, StrIndex } from "@skysmack/framework";
 import { ReduxAction } from '../action-types/redux-action';
-import { GetPagedRecordsPayload, GetPagedRecordsSuccessPayload, GetSingleRecordSuccessPayload, GetAvailableFieldsSuccessPayload } from './../payloads';
+import { GetPagedEntitiesPayload, GetPagedEntitiesSuccessPayload, GetSingleEntitySuccessPayload, GetAvailableFieldsSuccessPayload } from './../payloads';
 import { cancelFieldAction } from './cancel-field-action';
 import { FieldActions } from '../actions/field-actions';
 import { ReduxOfflineMeta } from '../metas/offline-redux/redux-offline-meta';
@@ -28,7 +28,7 @@ export function fieldReducer(state: FieldState = new FieldState(), action: any):
             return cancelFieldAction(newState, action);
         }
         case FieldActions.FIELD_GET_PAGED: {
-            const castedAction: ReduxAction<GetPagedRecordsPayload> = action;
+            const castedAction: ReduxAction<GetPagedEntitiesPayload> = action;
             const page = new PageResponse<string>({
                 pageNumber: castedAction.payload.pagedQuery.pageNumber,
                 pageSize: castedAction.payload.pagedQuery.pageSize,
@@ -41,9 +41,9 @@ export function fieldReducer(state: FieldState = new FieldState(), action: any):
             return newState;
         }
         case FieldActions.FIELD_GET_PAGED_SUCCESS: {
-            const castedAction: ReduxAction<GetPagedRecordsSuccessPayload<any, string>> = action;
+            const castedAction: ReduxAction<GetPagedEntitiesSuccessPayload<any, string>> = action;
             newState.localPageTypes[castedAction.payload.packagePath] = PageExtensions.mergeOrAddPage(newState.localPageTypes[castedAction.payload.packagePath], castedAction.payload.page);
-            newState.fields[castedAction.payload.packagePath] = LocalObjectExtensions.mergeOrAddLocal(newState.fields[castedAction.payload.packagePath], castedAction.payload.records.map(x => toLocalObject(x, 'key')));
+            newState.fields[castedAction.payload.packagePath] = LocalObjectExtensions.mergeOrAddLocal(newState.fields[castedAction.payload.packagePath], castedAction.payload.entities.map(x => toLocalObject(x, 'key')));
             return newState;
         }
         case FieldActions.FIELD_GET_PAGED_FAILURE: {
@@ -54,8 +54,8 @@ export function fieldReducer(state: FieldState = new FieldState(), action: any):
             return newState;
         }
         case FieldActions.FIELD_GET_SINGLE_SUCCESS: {
-            const castedAction: ReduxAction<GetSingleRecordSuccessPayload<any, string>> = action;
-            newState.fields[castedAction.payload.packagePath] = LocalObjectExtensions.mergeOrAddLocal(newState.fields[castedAction.payload.packagePath], [toLocalObject(castedAction.payload.record, 'key')]);
+            const castedAction: ReduxAction<GetSingleEntitySuccessPayload<any, string>> = action;
+            newState.fields[castedAction.payload.packagePath] = LocalObjectExtensions.mergeOrAddLocal(newState.fields[castedAction.payload.packagePath], [toLocalObject(castedAction.payload.entity, 'key')]);
             return newState;
         }
         case FieldActions.FIELD_GET_SINGLE_FAILURE: {

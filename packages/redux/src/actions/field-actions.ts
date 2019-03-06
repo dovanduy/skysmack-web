@@ -6,9 +6,9 @@ import { Effect } from '../models/effect';
 import { EffectRequest } from '../models/effect-request';
 import { CancelActionMeta } from '../metas/offline-redux/cancel-action-meta';
 import { CancelFieldActionPayload } from '../payloads/cancel-field-action-payload';
-import { GetSingleFieldPayload } from '../payloads/get-single-field-payload';
-import { GetPagedRecordsPayload } from '../payloads/get-paged-records-payload';
+import { GetPagedEntitiesPayload } from '../payloads/get-paged-entities-payload';
 import { EntityActions } from '../interfaces/entity-actions';
+import { GetSingleEntityPayload } from '../payloads/get-single-entity-payload';
 
 export class FieldActions<TStateType, TStore extends Store<TStateType>> implements EntityActions<FieldSchemaViewModel, string> {
     public static CANCEL_FIELD_ACTION = 'CANCEL_FIELD_ACTION';
@@ -44,15 +44,14 @@ export class FieldActions<TStateType, TStore extends Store<TStateType>> implemen
             type: FieldActions.CANCEL_FIELD_ACTION,
             payload: {
                 field,
-                packagePath,
-                prefix: '' // TODO: Remove this and refactor other code accordingly.
+                packagePath
             },
             meta: new CancelActionMeta()
         })))
     }
 
     public getPaged(packagePath: string, pagedQuery: PagedQuery) {
-        this.store.dispatch(Object.assign({}, new ReduxAction<GetPagedRecordsPayload>({
+        this.store.dispatch(Object.assign({}, new ReduxAction<GetPagedEntitiesPayload>({
             type: FieldActions.FIELD_GET_PAGED,
             payload: {
                 pagedQuery,
@@ -62,10 +61,10 @@ export class FieldActions<TStateType, TStore extends Store<TStateType>> implemen
     }
 
     public getSingle(packagePath: string, fieldKey: string) {
-        this.store.dispatch(Object.assign({}, new ReduxAction<GetSingleFieldPayload>({
+        this.store.dispatch(Object.assign({}, new ReduxAction<GetSingleEntityPayload<string>>({
             type: FieldActions.FIELD_GET_SINGLE,
             payload: {
-                fieldKey,
+                id: fieldKey,
                 packagePath
             }
         })));
