@@ -26,6 +26,7 @@ export class RecordsContainerComponent implements OnInit, OnDestroy {
   @Input() public loadingState: LoadingState;
   @Input() public entityActions: EntityAction[] = [];
   @Input() public packagePath: string;
+  @Input() public additionalPaths?: string[];
   @Input() public title: string;
   @Input() public cancelAction: Function;
   @Input() public fields$: Observable<Field[]>;
@@ -72,7 +73,7 @@ export class RecordsContainerComponent implements OnInit, OnDestroy {
   }
 
   public runCancelAction(entity: LocalObject<any, any>) {
-    this.cancelAction(entity, this.packagePath);
+    this.additionalPaths ? this.cancelAction(entity, this.packagePath, this.additionalPaths) : this.cancelAction(entity, this.packagePath);
   }
 
   public trackByLocalId(item: LocalObject<any, any>) {

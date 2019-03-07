@@ -40,12 +40,12 @@ export class FieldActions<TStateType, TStore extends Store<TStateType>> implemen
 
     constructor(protected store: TStore) { }
 
-    public cancelAction = (field: LocalObject<FieldSchemaViewModel, string>, packagePath: string): void => {
+    public cancelAction = (field: LocalObject<FieldSchemaViewModel, string>, packagePath: string, addAdditionalPaths: string[]): void => {
         this.store.dispatch(Object.assign({}, new ReduxAction<CancelFieldActionPayload<FieldSchemaViewModel>>({
             type: FieldActions.CANCEL_FIELD_ACTION,
             payload: {
                 field,
-                packagePath
+                packagePath: getFieldStateKey(packagePath, addAdditionalPaths)
             },
             meta: new CancelActionMeta()
         })))
