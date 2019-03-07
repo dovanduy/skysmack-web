@@ -16,6 +16,16 @@ export class NgIdentitiesSettingsNotifications {
         });
     }
 
+    public updateSuccess(action: ReduxAction<unknown, CommitMeta<LocalObject<IdentitiesSettings, unknown>>>) {
+        this.notifications.showTranslatedSnackbarMessage(this.defaultTranslationString + 'UPDATE.SUCCESS', {}, undefined, 2000);
+    }
+
+    public updateError(action: ReduxAction<HttpErrorResponse, CommitMeta<LocalObject<IdentitiesSettings, unknown>>>) {
+        this.checkOfflineStatus(action, () => {
+            this.notifications.showTranslatedSnackbarMessage(this.defaultTranslationString + 'UPDATE.FAILURE', this.getErrorParams(action), undefined, 2000);
+        });
+    }
+
     protected getErrorParams(action: ReduxAction<HttpErrorResponse, unknown>): StrIndex<any> {
         return {
             httpErrorCode: action.payload.status,

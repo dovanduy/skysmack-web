@@ -9,7 +9,6 @@ import { of } from 'rxjs';
 
 export abstract class NgRecordRequests<TRecord extends Record<TKey>, TKey> implements RecordRequests<TRecord, TKey> {
     protected retryTimes = 3;
-    protected epics: any;
 
     constructor(
         protected http: HttpClient,

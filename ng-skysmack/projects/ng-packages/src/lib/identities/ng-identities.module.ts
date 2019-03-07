@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
-import { rolesReducer, usersReducer } from '@skysmack/packages-identities';
+import { rolesReducer, usersReducer, identitiesSettingsReducer } from '@skysmack/packages-identities';
 import { NgRolesEpics } from './redux/ng-roles-epics';
 import { NgUsersEpics } from './redux/ng-users-epics';
 import { registerRedux } from '@skysmack/ng-redux';
+import { NgIdentitiesSettingsEpics } from './redux/ng-identities-settings-epics';
 
 @NgModule({
   imports: [],
@@ -12,9 +13,11 @@ import { registerRedux } from '@skysmack/ng-redux';
 export class NgIdentitiesModule {
   constructor(
     rolesEpics: NgRolesEpics,
-    usersEpics: NgUsersEpics
+    usersEpics: NgUsersEpics,
+    identitiesSettingsEpics: NgIdentitiesSettingsEpics
   ) {
     registerRedux('roles', rolesReducer, rolesEpics);
     registerRedux('users', usersReducer, usersEpics);
+    registerRedux('identitiesSettings', identitiesSettingsReducer, identitiesSettingsEpics);
   }
 }

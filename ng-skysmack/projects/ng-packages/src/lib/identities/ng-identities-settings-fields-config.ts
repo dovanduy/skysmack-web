@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Validators } from '@angular/forms';
-import { FormRule, CustomValidators, Field, FieldTypes, FieldsConfig } from '@skysmack/ng-ui';
+import { FormRule, Field, FieldTypes, FieldsConfig } from '@skysmack/ng-ui';
 import { LocalObject } from '@skysmack/framework';
 import { IdentitiesSettings } from '@skysmack/packages-identities';
 import { NgIdentitiesSettingsValidation } from './ng-identities-settings-validation';
