@@ -32,7 +32,6 @@ export class FieldsIndexComponent extends RecordIndexComponent<any, any, any> im
     public injector: Injector
   ) {
     super(router, activatedRoute, actions, skysmackStore, store, fieldsConfig);
-    // this.nextPageSize = 10;
   }
 
   ngOnInit() {

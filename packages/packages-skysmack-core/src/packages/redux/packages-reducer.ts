@@ -26,7 +26,6 @@ export function packagesReducer(state = new PackagesState(), action: any): Packa
             return cancelPackageAction(newState, action);
         }
         case PackagesActions.PACKAGES_GET_PAGED: {
-            console.log('packages get paged');
             const castedAction: ReduxAction<GetPagedEntitiesPayload> = action;
             const page = new PageResponse<string>({
                 pageNumber: castedAction.payload.pagedQuery.pageNumber,
@@ -41,11 +40,9 @@ export function packagesReducer(state = new PackagesState(), action: any): Packa
         }
         case PackagesActions.PACKAGES_GET_PAGED_SUCCESS: {
             const castedAction: ReduxAction<GetPagedEntitiesSuccessPayload<Package, string>> = action;
-            console.log('packages get paged success', castedAction);
             const entities = castedAction.payload.entities.map(x => toLocalObject<Package, string>(x, 'path'));
             newState.localPageTypes = PageExtensions.mergeOrAddPage(newState.localPageTypes, castedAction.payload.page);
             newState.packages = LocalObjectExtensions.mergeOrAddLocal<Package, string>(newState.packages, entities);
-            console.log(newState);
             return newState;
         }
         case PackagesActions.PACKAGES_GET_PAGED_FAILURE: {

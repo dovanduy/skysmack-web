@@ -49,7 +49,7 @@ export class NgPackagesRequests implements PackagesRequests {
         return this.http.get<Package[]>(url, { observe: 'response', params: queryParameters })
             .pipe(
                 map(httpResponse => {
-                    const thing = Object.assign({}, new ReduxAction<GetPagedEntitiesSuccessPayload<Package, string>>({
+                    return Object.assign({}, new ReduxAction<GetPagedEntitiesSuccessPayload<Package, string>>({
                         type: PackagesActions.PACKAGES_GET_PAGED_SUCCESS,
                         payload: {
                             entities: httpResponse.body ? httpResponse.body : [],
@@ -58,8 +58,6 @@ export class NgPackagesRequests implements PackagesRequests {
                             pagedQuery: action.payload.pagedQuery
                         }
                     }));
-                    console.log(thing);
-                    return thing;
                 }),
                 retry(this.retryTimes),
                 catchError((error) => of(Object.assign({}, new ReduxAction<HttpErrorResponse>({

@@ -15,7 +15,7 @@ export class NgPackagesStore implements EntityStore<Package, string> {
 
     public get(): Observable<LocalObject<Package, string>[]> {
         return this.getState().pipe(
-            map(packages => packages.packages),
+            map(state => state.packages),
             safeUndefinedTo('object'),
             dictionaryToArray<LocalObject<Package, string>>()
         );
@@ -30,14 +30,14 @@ export class NgPackagesStore implements EntityStore<Package, string> {
 
     public getPages(): Observable<StrIndex<LocalPageTypes<string>>> {
         return this.getState().pipe(
-            map(state => state.packages),
+            map(state => state.localPageTypes),
             hasValue<StrIndex<LocalPageTypes<string>>>()
         );
     }
 
     public getAvailablePackages(): Observable<LocalObject<AvailablePackage, string>[]> {
         return this.getState().pipe(
-            map(packages => packages.availablePackages),
+            map(state => state.availablePackages),
             safeUndefinedTo('object'),
             dictionaryToArray(),
         );
