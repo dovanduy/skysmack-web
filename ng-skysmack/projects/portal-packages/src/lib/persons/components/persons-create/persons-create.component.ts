@@ -21,13 +21,13 @@ export class PersonsCreateComponent extends DocumentRecordFormComponent<PersonsA
     public activatedRoute: ActivatedRoute,
     public editorNavService: EditorNavService,
     public actions: NgPersonsActions,
-    public redux: NgSkysmackStore,
+    public skysmackStore: NgSkysmackStore,
     public fieldsConfig: NgPersonsFieldsConfig,
     public store: NgPersonsStore,
     public fieldActions: NgFieldActions,
     public fieldStore: NgFieldStore
   ) {
-    super(router, activatedRoute, editorNavService, actions, redux, store, fieldsConfig, fieldActions, fieldStore);
+    super(router, activatedRoute, editorNavService, actions, skysmackStore, store, fieldsConfig, fieldActions, fieldStore);
   }
 
   ngOnInit() {

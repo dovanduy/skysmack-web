@@ -33,8 +33,8 @@
             },
             "VALIDATION": {}
         },
-        "EDIT": {
-            "EDIT": "Edit settings"
+        "CREATE": {
+            "CREATE": "Edit settings"
         },
         "QUEUE": {
             "UPDATING": "Updating",

@@ -9,12 +9,12 @@ export interface NgIdentitiesSettingsFormDependencies {
 }
 
 @Injectable({ providedIn: 'root' })
-export class NgIdentitiesSettingsFieldsConfig extends FieldsConfig<IdentitiesSettings, number, NgIdentitiesSettingsFormDependencies> {
+export class NgIdentitiesSettingsFieldsConfig extends FieldsConfig<IdentitiesSettings, unknown, NgIdentitiesSettingsFormDependencies> {
     public validation = new NgIdentitiesSettingsValidation();
 
     public formRules: FormRule[] = [];
 
-    protected getEntityFields(settings?: LocalObject<IdentitiesSettings, number>, dependencies?: NgIdentitiesSettingsFormDependencies): Field[] {
+    protected getEntityFields(settings?: LocalObject<IdentitiesSettings, unknown>, dependencies?: NgIdentitiesSettingsFormDependencies): Field[] {
         const fields = [
             // UserOptions
             new Field({

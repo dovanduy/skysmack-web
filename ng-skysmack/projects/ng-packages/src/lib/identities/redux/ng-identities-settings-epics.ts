@@ -13,7 +13,7 @@ export class NgIdentitiesSettingsEpics {
     public epics: Epic[];
 
     constructor(protected requests: NgIdentitiesSettingsRequests, protected notifications: NgIdentitiesSettingsNotifications) {
-        this.epics.concat([
+        this.epics = [
             this.getEpic,
             this.snackBarGetFailureEpic,
             this.snackBarUpdateSuccessEpic,
@@ -21,7 +21,7 @@ export class NgIdentitiesSettingsEpics {
             this.standardActionEpic,
             this.successActionEpic,
             this.failureActionEpic
-        ]);
+        ];
     }
 
     public getEpic = (action$: ActionsObservable<ReduxAction<any, any>>): Observable<ReduxAction<any> | ReduxAction<HttpErrorResponse>> => {

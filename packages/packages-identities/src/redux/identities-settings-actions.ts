@@ -1,7 +1,6 @@
 import { HttpMethod, HttpResponse, LocalObject, QueueItem } from '@skysmack/framework';
-import { ReduxAction, Effect, EffectRequest, OfflineMeta, ReduxOfflineMeta, CommitMeta, RollbackMeta } from '@skysmack/redux';
+import { ReduxAction, Effect, EffectRequest, OfflineMeta, ReduxOfflineMeta, CommitMeta, RollbackMeta, PackagePathPayload } from '@skysmack/redux';
 import { Store } from 'redux';
-import { GetUsersRolesPayload } from '../payloads/get-users-roles-payload';
 import { IdentitiesSettings } from '../models';
 import { IdentitiesSettingsAppState } from './identities-settings-reducer';
 
@@ -21,12 +20,11 @@ export class IdentitiesSettingsActions {
         throw new Error('This method has not been implemented');
     }
 
-    public get(packagePath: string, ids: number[]): void {
-        this.store.dispatch(Object.assign({}, new ReduxAction<GetUsersRolesPayload>({
+    public get(packagePath: string): void {
+        this.store.dispatch(Object.assign({}, new ReduxAction<PackagePathPayload>({
             type: IdentitiesSettingsActions.GET_IDENTITY_SETTINGS,
             payload: {
                 packagePath,
-                ids
             }
         })));
     }
