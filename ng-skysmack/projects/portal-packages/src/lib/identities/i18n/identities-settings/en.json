@@ -1,0 +1,44 @@
+{
+    "IDENTITIES_SETTINGS": {
+        "FORM": {
+            "LABELS": {
+                "ALLOWEDUSERNAMECHARACTERS": "Allowed user name characters",
+                "REQUIREUNIQUEEMAIL": "Require unique email",
+                "REQUIREDLENGTH": "Required length",
+                "REQUIREDUNIQUECHARS": "Required unique characters",
+                "REQUIRENONALPHANUMERIC": "Require non alphanumeric",
+                "REQUIRELOWERCASE": "Require lowercase",
+                "REQUIREUPPERCASE": "Require uppercase",
+                "REQUIREDIGIT": "Require digit",
+                "ALLOWEDFORNEWUSERS": "Allowed for new users",
+                "MAXFAILEDACCESSATTEMPTS": "Max failed access attempts",
+                "DEFAULTLOCKOUTTIMESPAN": "Default lockout time span",
+                "REQUIRECONFIRMEDEMAIL": "Require confirmed email",
+                "REQUIRECONFIRMEDPHONENUMBER": "Require confirmed phone number"
+            },
+            "PLACEHOLDERS": {
+                "ALLOWEDUSERNAMECHARACTERS": "Allowed user name characters",
+                "REQUIREUNIQUEEMAIL": "Require unique email",
+                "REQUIREDLENGTH": "Required length",
+                "REQUIREDUNIQUECHARS": "Required unique characters",
+                "REQUIRENONALPHANUMERIC": "Require non alphanumeric",
+                "REQUIRELOWERCASE": "Require lowercase",
+                "REQUIREUPPERCASE": "Require uppercase",
+                "REQUIREDIGIT": "Require digit",
+                "ALLOWEDFORNEWUSERS": "Allowed for new users",
+                "MAXFAILEDACCESSATTEMPTS": "Max failed access attempts",
+                "DEFAULTLOCKOUTTIMESPAN": "Default lockout time span",
+                "REQUIRECONFIRMEDEMAIL": "Require confirmed email",
+                "REQUIRECONFIRMEDPHONENUMBER": "Require confirmed phone number"
+            },
+            "VALIDATION": {}
+        },
+        "EDIT": {
+            "EDIT": "Edit settings"
+        },
+        "QUEUE": {
+            "UPDATING": "Updating",
+            "ERROR": "Error occured updating settings."
+        }
+    }
+}

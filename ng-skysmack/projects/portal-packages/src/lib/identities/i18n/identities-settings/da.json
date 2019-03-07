@@ -1,0 +1,44 @@
+{
+    "IDENTITIES_SETTINGS": {
+        "FORM": {
+            "LABELS": {
+                "ALLOWEDUSERNAMECHARACTERS": "Tilladte tegn i brugernavn",
+                "REQUIREUNIQUEEMAIL": "Email skal være unik",
+                "REQUIREDLENGTH": "Minimums længde",
+                "REQUIREDUNIQUECHARS": "Påkrævet unikke karakterer",
+                "REQUIRENONALPHANUMERIC": "Påkrævet ikke-alfabetiske karakterer.",
+                "REQUIRELOWERCASE": "Små bogstaver påkrævet",
+                "REQUIREUPPERCASE": "Store bogstaver påkrævet",
+                "REQUIREDIGIT": "Tal påkrævet",
+                "ALLOWEDFORNEWUSERS": "Tilladt for nye brugere",
+                "MAXFAILEDACCESSATTEMPTS": "Max antal fejlede login forsøg",
+                "DEFAULTLOCKOUTTIMESPAN": "Standard lockout tid",
+                "REQUIRECONFIRMEDEMAIL": "Email skal bekræftes",
+                "REQUIRECONFIRMEDPHONENUMBER": "Telefon nummer skal bekræftes"
+            },
+            "PLACEHOLDERS": {
+                "ALLOWEDUSERNAMECHARACTERS": "Tilladte tegn i brugernavn",
+                "REQUIREUNIQUEEMAIL": "Email skal være unik",
+                "REQUIREDLENGTH": "Minimums længde",
+                "REQUIREDUNIQUECHARS": "Påkrævet unikke karakterer",
+                "REQUIRENONALPHANUMERIC": "Påkrævet ikke-alfabetiske karakterer.",
+                "REQUIRELOWERCASE": "Små bogstaver påkrævet",
+                "REQUIREUPPERCASE": "Store bogstaver påkrævet",
+                "REQUIREDIGIT": "Tal påkrævet",
+                "ALLOWEDFORNEWUSERS": "Tilladt for nye brugere",
+                "MAXFAILEDACCESSATTEMPTS": "Max antal fejlede login forsøg",
+                "DEFAULTLOCKOUTTIMESPAN": "Standard lockout tid",
+                "REQUIRECONFIRMEDEMAIL": "Email skal bekræftes",
+                "REQUIRECONFIRMEDPHONENUMBER": "Telefon nummer skal bekræftes"
+            },
+            "VALIDATION": {}
+        },
+        "EDIT": {
+            "EDIT": "Ret indstillinger"
+        },
+        "QUEUE": {
+            "UPDATING": "Opdaterer",
+            "ERROR": "Der skete en fejl ved opdatering af indstillingerne."
+        }
+    }
+}
