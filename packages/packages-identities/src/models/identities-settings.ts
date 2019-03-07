@@ -4,8 +4,8 @@ import { LockoutOptions } from './lockout-options';
 import { SignInOptions } from './sign-in-options';
 
 export class IdentitiesSettings {
-    public userOptions: UserOptions;
-    public passwordOptions: PasswordOptions;
-    public lockoutOptions: LockoutOptions;
-    public signInOptions: SignInOptions;
+    public userOptions: UserOptions = new UserOptions({});
+    public passwordOptions: PasswordOptions = new PasswordOptions({});
+    public lockoutOptions: LockoutOptions = new LockoutOptions({});
+    public signInOptions: SignInOptions = new SignInOptions({});
 }

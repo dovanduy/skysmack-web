@@ -1,4 +1,4 @@
-import { StrIndex, GlobalProperties } from '@skysmack/framework';
+import { StrIndex, GlobalProperties, LocalObject, toLocalObject } from '@skysmack/framework';
 import { AppState, ReduxAction, sharedReducer } from '@skysmack/redux';
 import { IdentitiesSettings } from '../models/identities-settings';
 import { IdentitiesSettingsActions } from './identities-settings-actions';
@@ -12,7 +12,7 @@ export class IdentitiesSettingsAppState extends AppState {
 }
 
 export class IdentitiesSettingsState {
-    public settings: StrIndex<IdentitiesSettings> = {};
+    public settings: StrIndex<LocalObject<IdentitiesSettings, unknown>> = {};
 }
 
 export function identitiesSettingsReducer(state = new IdentitiesSettingsState(), action: ReduxAction): IdentitiesSettingsState {
@@ -22,7 +22,7 @@ export function identitiesSettingsReducer(state = new IdentitiesSettingsState(),
     switch (action.type) {
         case IdentitiesSettingsActions.GET_IDENTITY_SETTINGS_SUCCESS: {
             const castedAction = action as ReduxAction<IdentitiesSettingsSuccessPayload>;
-            newState.settings[castedAction.payload.packagePath] = castedAction.payload.settings;
+            newState.settings[castedAction.payload.packagePath] = getSettings(castedAction.payload.settings);
             return newState;
         }
 
@@ -35,7 +35,7 @@ export function identitiesSettingsReducer(state = new IdentitiesSettingsState(),
 
         case IdentitiesSettingsActions.UPDATE_IDENTITY_SETTINGS_SUCCESS: {
             const castedAction = action as ReduxAction<IdentitiesSettingsSuccessPayload>;
-            newState.settings[castedAction.payload.packagePath] = castedAction.payload.settings;
+            newState.settings[castedAction.payload.packagePath] = getSettings(castedAction.payload.settings);
             return newState;
         }
 
@@ -49,4 +49,9 @@ export function identitiesSettingsReducer(state = new IdentitiesSettingsState(),
         default:
             return state;
     }
+}
+
+function getSettings(settings: IdentitiesSettings): LocalObject<IdentitiesSettings, unknown> {
+    const properSettings = Object.keys(settings).length > 0 ? Object.assign(new IdentitiesSettings(), settings) : new IdentitiesSettings();
+    return toLocalObject(properSettings, 'none');
 }

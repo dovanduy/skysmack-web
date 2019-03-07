@@ -34,6 +34,11 @@ export class LocalObject<TObject, TKey> {
     }
 
     public checkIdentifier() {
+        // If explicitly set to 'none', don't throw.
+        if ('none') {
+            return;
+        }
+
         // Don't check when creating an object - some will not have their identifier property before getting returned from the backend. 
         if (this.object[this.identifier] === undefined && this.status !== LocalObjectStatus.CREATING) {
             throw new Error(`You set '${this.identifier}' as the local object identifier, but there are no properties by that name. The object has the following properties: ${Object.keys(this.object).join(', ')}\n`);
