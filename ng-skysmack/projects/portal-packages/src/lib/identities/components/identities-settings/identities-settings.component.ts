@@ -4,7 +4,7 @@ import { IdentitiesSettingsAppState, IdentitiesSettings } from '@skysmack/packag
 import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgIdentitiesSetingsActions, NgIdentitiesSettingsStore, NgIdentitiesSettingsFieldsConfig } from '@skysmack/ng-packages';
-import { LocalObject } from '@skysmack/framework';
+import { LocalObject, toLocalObject } from '@skysmack/framework';
 import { combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { FormHelper } from '@skysmack/ng-ui';
@@ -41,8 +41,16 @@ export class IdentitiesSettingsComponent extends BaseComponent<IdentitiesSetting
     super.ngOnDestroy();
   }
 
-  public onCreateSubmit(fh: FormHelper) {
-
+  public onSubmit(fh: FormHelper) {
+    const values = fh.form.getRawValue();
+    const updatedSettings = new IdentitiesSettings();
+    Object.keys(updatedSettings).forEach(updatedSettingsKey => {
+      const subOption = updatedSettings[updatedSettingsKey];
+      Object.keys(subOption).forEach(subOptionKey => {
+        updatedSettings[updatedSettingsKey][subOptionKey] = values[subOptionKey]
+      });
+    });
+    this.actions.update(toLocalObject(updatedSettings, 'none'), this.packagePath);
   }
 
   protected setFields() {

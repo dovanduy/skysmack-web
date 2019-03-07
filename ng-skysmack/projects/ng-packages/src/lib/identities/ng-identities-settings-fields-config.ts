@@ -34,7 +34,7 @@ export class NgIdentitiesSettingsFieldsConfig extends FieldsConfig<IdentitiesSet
             new Field({
                 fieldType: FieldTypes.int,
                 value: settings ? settings.object.passwordOptions.requiredLength : undefined,
-                key: 'allowedUserNameCharacters',
+                key: 'requiredLength',
                 order: 3
             } as Field),
             new Field({
@@ -82,7 +82,7 @@ export class NgIdentitiesSettingsFieldsConfig extends FieldsConfig<IdentitiesSet
                 order: 10
             } as Field),
             new Field({
-                fieldType: FieldTypes.string,
+                fieldType: FieldTypes.TimeField,
                 value: settings ? settings.object.lockoutOptions.defaultLockoutTimeSpan : undefined,
                 key: 'defaultLockoutTimeSpan',
                 order: 11

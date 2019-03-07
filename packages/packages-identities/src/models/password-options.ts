@@ -1,6 +1,6 @@
 export class PasswordOptions {
-    public requiredLength: number;
-    public requiredUniqueChars: number;
+    public requiredLength: number = 0;
+    public requiredUniqueChars: number = 0;
     public requireNonAlphanumeric: boolean = true;
     public requireLowercase: boolean = true;
     public requireUppercase: boolean = true;

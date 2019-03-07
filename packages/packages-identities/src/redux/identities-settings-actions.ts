@@ -34,7 +34,7 @@ export class IdentitiesSettingsActions {
         const queueItems = [
             new QueueItem({
                 message: `IDENTITIES_SEETINGS.QUEUE.UPDATING`,
-                messageParams: '???',
+                messageParams: {},
                 link: `${packagePath}/settings`,
                 packagePath,
                 localObject: settings,
@@ -47,7 +47,7 @@ export class IdentitiesSettingsActions {
             meta: new ReduxOfflineMeta(
                 new OfflineMeta<LocalObject<IdentitiesSettings, unknown>, HttpResponse, LocalObject<IdentitiesSettings, unknown>>(
                     new Effect<LocalObject<IdentitiesSettings, unknown>>(new EffectRequest<LocalObject<IdentitiesSettings, unknown>>(
-                        packagePath,
+                        packagePath + '/settings',
                         HttpMethod.PUT,
                         settings
                     )),
