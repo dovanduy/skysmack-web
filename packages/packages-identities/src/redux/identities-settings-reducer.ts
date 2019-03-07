@@ -34,9 +34,13 @@ export function identitiesSettingsReducer(state = new IdentitiesSettingsState(),
         }
 
         case IdentitiesSettingsActions.UPDATE_IDENTITY_SETTINGS_SUCCESS: {
-            const castedAction = action as ReduxAction<IdentitiesSettingsSuccessPayload>;
-            newState.settings[castedAction.payload.packagePath] = getSettings(castedAction.payload.settings);
-            return newState;
+            try {
+                const castedAction = action as ReduxAction<IdentitiesSettingsSuccessPayload>;
+                newState.settings[castedAction.payload.packagePath] = getSettings(castedAction.payload.settings);
+                return newState;
+            } catch (err) {
+                console.log(err);
+            }
         }
 
         case IdentitiesSettingsActions.UPDATE_IDENTITY_SETTINGS_FAILURE: {

@@ -3,7 +3,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { Observable } from 'rxjs';
 import { Menu } from '@skysmack/ng-ui';
 import { UIRedux } from './../../../redux/ui-redux';
-import { SettingsRedux } from './../../../redux/settings/settings-redux';
+import { StandardSettingsRedux } from './../../../redux/settings/standard-settings-redux';
 
 @Component({
   selector: 'ss-language-select',
@@ -16,7 +16,7 @@ export class LanguageSelectComponent implements OnInit {
 
   constructor(
     public translate: TranslateService,
-    public settingsRedux: SettingsRedux,
+    public settingsRedux: StandardSettingsRedux,
     public redux: UIRedux
   ) {
 

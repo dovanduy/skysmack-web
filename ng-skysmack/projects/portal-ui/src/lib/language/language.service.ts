@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { SettingsRedux } from './../redux/settings/settings-redux';
+import { StandardSettingsRedux } from './../redux/settings/standard-settings-redux';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 
@@ -11,7 +11,7 @@ export class LanguageService {
 
     constructor(
         public translateService: TranslateService,
-        public settingsRedux: SettingsRedux
+        public settingsRedux: StandardSettingsRedux
     ) {
         this.configure();
     }

@@ -14,13 +14,13 @@ export class QueueActions<TStore extends Store> {
         this.store.dispatch(Object.assign({}, new ReduxAction<QueueItem[]>({
             type: QueueActions.SET_QUEUE_ITEMS,
             payload: queueItems
-        })))
+        })));
     }
 
     public removeQueueItems = (queueItems: QueueItem[]): void => {
         this.store.dispatch(Object.assign({}, new ReduxAction<QueueItem[]>({
             type: QueueActions.REMOVE_QUEUE_ITEMS,
             payload: queueItems
-        })))
+        })));
     }
 }

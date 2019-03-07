@@ -33,7 +33,7 @@ export class IdentitiesSettingsActions {
 
         const queueItems = [
             new QueueItem({
-                message: `IDENTITIES_SEETINGS.QUEUE.UPDATING`,
+                message: `IDENTITIES_SETTINGS.QUEUE.UPDATING`,
                 messageParams: {},
                 link: `${packagePath}/settings`,
                 packagePath,

@@ -1,3 +1,3 @@
-export * from './settings-actions';
-export * from './settings-reducers';
-export * from './settings-redux';
+export * from './standard-settings-actions';
+export * from './standard-settings-reducers';
+export * from './standard-settings-redux';

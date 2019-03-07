@@ -1,4 +1,4 @@
-import { SettingsActions } from './settings-actions';
+import { StandardSettingsActions } from './standard-settings-actions';
 import { Settings } from '@skysmack/ng-ui';
 import { sharedReducer } from '@skysmack/redux';
 
@@ -9,12 +9,12 @@ export class SettingsState {
     };
 }
 
-export function settingsReducer(state = new SettingsState(), action: any) {
+export function standardSettingsReducer(state = new SettingsState(), action: any) {
     state = sharedReducer(state, action, new SettingsState());
     const newState = Object.assign({}, state);
 
     switch (action.type) {
-        case SettingsActions.SET_LANGUAGE: {
+        case StandardSettingsActions.SET_LANGUAGE: {
             newState.settings = {
                 ...state.settings,
                 language: action.payload
@@ -22,7 +22,7 @@ export function settingsReducer(state = new SettingsState(), action: any) {
 
             return newState;
         }
-        case SettingsActions.SET_TENANT_URL: {
+        case StandardSettingsActions.SET_TENANT_URL: {
             newState.settings = {
                 ...state.settings,
                 tenantUrl: action.payload

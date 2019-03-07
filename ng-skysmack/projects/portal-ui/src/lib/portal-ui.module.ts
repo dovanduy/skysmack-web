@@ -41,7 +41,7 @@ import { SpeedDialFabComponent } from './components/common/speed-dial-fab/speed-
 
 import { MaterialModule } from './material.module';
 import { uiReducer } from './redux/ui-reducers';
-import { settingsReducer } from './redux/settings';
+import { standardSettingsReducer } from './redux/settings';
 
 import { PackageDependenciesFieldComponent } from './components/field-components/components/package-dependencies-field/package-dependencies-field.component';
 import { QueueComponent } from './components/common/queue/queue.component';
@@ -175,7 +175,7 @@ import { RolesSelectComponent } from './components/common/roles-select/roles-sel
 export class PortalUiModule {
   constructor() {
     ReducerRegistry.Instance.register('ui', uiReducer);
-    ReducerRegistry.Instance.register('settings', settingsReducer);
+    ReducerRegistry.Instance.register('standardSettings', standardSettingsReducer);
     ReducerRegistry.Instance.register('authentication', authenticationReducer);
   }
 }
