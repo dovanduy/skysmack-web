@@ -25,7 +25,8 @@ export class NgIdentitiesIndexMenu extends SidebarMenu {
     public setPrimaryMenu() {
         this.primaryMenuAreas.push(new MenuArea('manage', this.translationPrefix, 1));
         this.primaryMenuItems.push(new MenuItem('roles', this.translationPrefix + 'ROLES', 'manage', 1, 'groupAdd'));
-        this.primaryMenuItems.push(new MenuItem('users', this.translationPrefix + 'USERS', 'manage', 1, 'groupAdd'));
+        this.primaryMenuItems.push(new MenuItem('users', this.translationPrefix + 'USERS', 'manage', 2, 'groupAdd'));
+        this.primaryMenuItems.push(new MenuItem('settings', this.translationPrefix + 'SETTINGS', 'manage', 3, 'groupAdd'));
     }
 
     public setSpeedDialMenu() {

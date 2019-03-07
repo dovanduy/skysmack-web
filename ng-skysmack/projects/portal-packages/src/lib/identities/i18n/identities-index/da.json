@@ -2,6 +2,7 @@
     "IDENTITIES_INDEX": {
         "ROLES": "Roller",
         "USERS": "Brugere",
+        "SETTINGS": "Indstillinger",
         "MANAGE": "Konfigurer"
     }
 }

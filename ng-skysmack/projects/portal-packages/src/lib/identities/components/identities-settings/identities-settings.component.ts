@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'ss-portal-package-identities-settings',
+  selector: 'ss-identities-settings',
   templateUrl: './identities-settings.component.html',
   styleUrls: ['./identities-settings.component.scss']
 })
