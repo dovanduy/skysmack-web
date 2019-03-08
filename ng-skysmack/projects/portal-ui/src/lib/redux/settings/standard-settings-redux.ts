@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { StandardSettingsActions } from './standard-settings-actions';
 import { Settings } from '@skysmack/ng-ui';
+import { map } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
 export class StandardSettingsRedux {
@@ -21,5 +22,11 @@ export class StandardSettingsRedux {
         this.ngRedux.dispatch(this.actions.setTenantUrl(tenantUrl));
     }
 
-    public getSettings = (): Observable<Settings> => this.ngRedux.select((state: any) => state.settings.settings);
+    public getSettings = (): Observable<Settings> => {
+        return this.ngRedux.select((state: any) => state).pipe(
+            map(state => {
+                return state.standardSettings.settings;
+            })
+        );
+    }
 }
