@@ -9,21 +9,17 @@ import { sharedReducer } from './shared-reducer';
  * This is to be used when you want to access users via the GLOBAL state. E.g. state.users (where users is the reducer name.)
  */
 export class SettingsAppState extends AppState {
-    public settings: SettingsState;
+    [key: string]: LocalObject<any, unknown>;
 }
 
-export class SettingsState {
-    public settings: StrIndex<LocalObject<any, unknown>> = {};
-}
-
-export function settingsReducer(state = new SettingsState(), action: ReduxAction): SettingsState {
-    state = sharedReducer(state, action, new SettingsState());
+export function settingsReducer(state = {}, action: ReduxAction): SettingsAppState {
+    state = sharedReducer(state, action, {});
     const newState = Object.assign({}, state);
 
     switch (action.type) {
         case SettingsActions.GET_SETTINGS_SUCCESS: {
             const castedAction = action as ReduxAction<SettingsSuccessPayload>;
-            newState.settings[castedAction.payload.packagePath] = toLocalObject(castedAction.payload.settings, 'none');
+            newState[castedAction.payload.packagePath] = toLocalObject(castedAction.payload.settings, 'none');
             return newState;
         }
 
@@ -37,7 +33,7 @@ export function settingsReducer(state = new SettingsState(), action: ReduxAction
         case SettingsActions.UPDATE_SETTINGS_SUCCESS: {
             try {
                 const castedAction = action as ReduxAction<SettingsSuccessPayload>;
-                newState.settings[castedAction.payload.packagePath] = toLocalObject(castedAction.payload.settings, 'none');
+                newState[castedAction.payload.packagePath] = toLocalObject(castedAction.payload.settings, 'none');
                 return newState;
             } catch (err) {
                 console.log(err);
