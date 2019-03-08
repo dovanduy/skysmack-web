@@ -6,5 +6,5 @@ export * from './ng-lodgings-fields-config';
 export * from './ng-lodging-types-validation';
 export * from './ng-lodging-types-fields-config';
 export * from './ng-lodging-types-notifications';
-
-
+export * from './ng-lodging-settings-fields-config';
+export * from './ng-lodging-settings-validation';

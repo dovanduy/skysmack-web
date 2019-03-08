@@ -11,7 +11,7 @@ export class NgSettingsStore implements SettingsStore {
 
     public get<TSettings>(packagePath: string): Observable<LocalObject<TSettings, unknown>> {
         return this.store.select(state => state).pipe(
-            map((state: SettingsAppState) => state.settings.settings[packagePath]),
+            map((state: SettingsAppState) => state.settings[packagePath]),
             defined()
         );
     }

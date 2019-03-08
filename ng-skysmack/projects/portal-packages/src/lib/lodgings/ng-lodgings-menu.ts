@@ -30,6 +30,7 @@ export class NgLodgingsMenu extends SidebarMenu {
         this.primaryMenuItems.push(new MenuItem('create', this.translationPrefix + 'CREATE', 'actions', 1, 'groupAdd'));
         this.primaryMenuItems.push(new MenuItem('types', this.translationPrefix + 'TYPES', 'manage', 2, 'description'));
         this.primaryMenuItems.push(new MenuItem('fields', this.translationPrefix + 'FIELDS', 'manage', 2, 'shortText'));
+        this.primaryMenuItems.push(new MenuItem('settings', this.translationPrefix + 'SETTINGS', 'manage', 3, 'groupAdd'));
     }
 
     public setSpeedDialMenu() {

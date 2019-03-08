@@ -1,0 +1,26 @@
+{
+    "LODGING_SETTINGS": {
+        "FORM": {
+            "LABELS": {
+                "NAME": "Name",
+                "DEFAULTCHECKIN": "Default check in",
+                "DEFAULTCHECKOUT": "Default check out",
+                "TIMEZONEID": "Time zone id"
+            },
+            "PLACEHOLDERS": {
+                "NAME": "Name",
+                "DEFAULTCHECKIN": "Default check in",
+                "DEFAULTCHECKOUT": "Default check out",
+                "TIMEZONEID": "Time zone id"
+            },
+            "VALIDATION": {}
+        },
+        "EDIT": {
+            "EDIT": "Ret indstillinger"
+        },
+        "QUEUE": {
+            "UPDATING": "Opdaterer",
+            "ERROR": "Der skete en fejl ved opdatering af indstillingerne."
+        }
+    }
+}

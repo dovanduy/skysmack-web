@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy, Injector } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { LocalObject, RouteData, toLocalObject } from '@skysmack/framework';
 import { NgSkysmackStore } from '@skysmack/ng-packages';
-import { FormHelper, FieldsConfig, Validation } from '@skysmack/ng-ui';
+import { FormHelper, FieldsConfig } from '@skysmack/ng-ui';
 import { combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { NgSettingsActions, NgSettingsStore } from '@skysmack/ng-redux';
@@ -51,11 +51,11 @@ export class SettingsComponent extends BaseComponent<SettingsAppState, unknown> 
   protected setFields() {
     this.actions.get(this.packagePath);
 
-    this.activatedRoute.data.pipe(
+    this.subscriptionHandler.register(this.activatedRoute.data.pipe(
       map((data: RouteData) => {
         this.fieldsConfig = this.injector.get(data.fieldsConfigToken);
       })
-    ).subscribe();
+    ).subscribe());
 
     this.fields$ = combineLatest(
       this.store.get(this.packagePath),
@@ -65,6 +65,7 @@ export class SettingsComponent extends BaseComponent<SettingsAppState, unknown> 
         const settings = values[0];
         this.editorItem = values[1] as LocalObject<any, unknown>;
         this.editorItem ? this.selectedSettings = this.editorItem : this.selectedSettings = settings;
+
 
         return this.fieldsConfig ? this.fieldsConfig.getFields(this.selectedSettings) : [];
       })
