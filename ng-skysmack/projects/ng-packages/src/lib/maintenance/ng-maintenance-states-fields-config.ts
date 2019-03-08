@@ -24,7 +24,8 @@ export class NgMaintenanceStatesFieldsConfig extends FieldsConfig<MaintenanceSta
                 key: 'description',
                 label: 'Description',
                 validators: [Validators.required],
-                order: 1
+                order: 1,
+                showColumn: true
             } as Field),
 
             new Field({
@@ -33,16 +34,8 @@ export class NgMaintenanceStatesFieldsConfig extends FieldsConfig<MaintenanceSta
                 key: 'status',
                 label: 'Status',
                 validators: [Validators.required],
-                order: 2
-            } as Field),
-
-            new Field({
-                fieldType: FieldTypes.string,
-                value: entity ? entity.object.id : undefined,
-                key: 'id',
-                label: 'Id',
-                validators: [Validators.required],
-                order: 3
+                order: 2,
+                showColumn: true
             } as Field)
         ];
 

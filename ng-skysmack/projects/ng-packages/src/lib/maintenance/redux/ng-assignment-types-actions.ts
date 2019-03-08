@@ -2,7 +2,7 @@ import { RecordActionsBase } from '@skysmack/redux';
 import { NgRedux } from '@angular-redux/store';
 import { Injectable } from '@angular/core';
 import { AssignmentTypesAppState, AssignmentType } from '@skysmack/packages-maintenance';
-import { LocalObject, NumIndex, StrIndex } from '@skysmack/framework';
+import { LocalObject, StrIndex } from '@skysmack/framework';
 
 @Injectable({ providedIn: 'root' })
 export class NgAssignmentTypesActions extends RecordActionsBase<AssignmentTypesAppState, NgRedux<AssignmentTypesAppState>> {

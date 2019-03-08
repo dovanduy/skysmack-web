@@ -26,6 +26,7 @@ export class NgRecurringAssignmentsFieldsConfig extends FieldsConfig<RecurringAs
                 optionsData: dependencies && dependencies.availableRecurringAssignments,
                 validators: [Validators.required],
                 order: 1,
+                showColumn: true
             } as SelectField),
 
             new Field({
@@ -34,7 +35,8 @@ export class NgRecurringAssignmentsFieldsConfig extends FieldsConfig<RecurringAs
                 key: 'start',
                 label: 'Start',
                 validators: [Validators.required],
-                order: 3
+                order: 3,
+                showColumn: true
             } as Field),
 
             new Field({
@@ -43,7 +45,8 @@ export class NgRecurringAssignmentsFieldsConfig extends FieldsConfig<RecurringAs
                 key: 'end',
                 label: 'End',
                 validators: [Validators.required],
-                order: 5
+                order: 5,
+                showColumn: true
             } as Field)
         ];
 

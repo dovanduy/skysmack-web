@@ -6,7 +6,7 @@ import { Assignment } from './../models/assignment';
  * This is to be used when you want to access assignment via the GLOBAL state. E.g. state.assignment (where assignment is the reducer name.)
  */
 export class AssignmentsAppState extends AppState {
-    public Assignment: AssignmentsState;
+    public assignment: AssignmentsState;
 }
 
 export class AssignmentsState implements RecordState<Assignment, number> {

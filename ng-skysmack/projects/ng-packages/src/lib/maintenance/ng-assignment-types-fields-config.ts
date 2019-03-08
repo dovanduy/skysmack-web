@@ -29,7 +29,8 @@ export class NgAssignmentTypesFieldsConfig extends FieldsConfig<AssignmentType, 
                 optionsData: [], // dependencies.availableAssignmentTypes,
                 displayNameSelector: 'object.description',
                 validators: [Validators.required],
-                order: 1
+                order: 1,
+                showColumn: true
             } as SelectField),
 
             new Field({
@@ -37,7 +38,8 @@ export class NgAssignmentTypesFieldsConfig extends FieldsConfig<AssignmentType, 
                 value: entity ? entity.object.description : undefined,
                 key: 'description',
                 validators: [Validators.required],
-                order: 2
+                order: 2,
+                showColumn: true
             } as Field),
 
             new Field({

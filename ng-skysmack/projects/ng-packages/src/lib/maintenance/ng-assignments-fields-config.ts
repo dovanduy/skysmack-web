@@ -24,7 +24,8 @@ export class NgAssignmentsFieldsConfig extends FieldsConfig<Assignment, number, 
                 key: 'description',
                 label: 'Description',
                 validators: [Validators.required],
-                order: 2
+                order: 2,
+                showColumn: true
             } as Field),
 
             new SelectField({
@@ -35,7 +36,8 @@ export class NgAssignmentsFieldsConfig extends FieldsConfig<Assignment, number, 
                 validators: [Validators.required],
                 optionsData: Assignment.OccupationStateEnum,
                 optionsDataType: 'enum',
-                order: 3
+                order: 3,
+                showColumn: true
             } as SelectField),
 
             new Field({
@@ -44,7 +46,8 @@ export class NgAssignmentsFieldsConfig extends FieldsConfig<Assignment, number, 
                 key: 'from',
                 label: 'From',
                 validators: [Validators.required],
-                order: 4
+                order: 4,
+                showColumn: true
             } as Field),
 
             new Field({
@@ -53,7 +56,8 @@ export class NgAssignmentsFieldsConfig extends FieldsConfig<Assignment, number, 
                 key: 'due',
                 label: 'Due',
                 validators: [Validators.required],
-                order: 5
+                order: 5,
+                showColumn: true
             } as Field)
         ];
 

@@ -6,7 +6,7 @@ import { AssignmentType } from '../models/assignment-type';
  * This is to be used when you want to access assignmentsTypes via the GLOBAL state. E.g. state.assignmentsTypes (where assignmentsTypes is the reducer name.)
  */
 export class AssignmentTypesAppState extends AppState {
-    public AssignmentTypes: AssignmentTypesState;
+    public assignmentTypes: AssignmentTypesState;
 }
 
 export class AssignmentTypesState implements RecordState<AssignmentType, number> {
@@ -14,8 +14,9 @@ export class AssignmentTypesState implements RecordState<AssignmentType, number>
     public localRecords: StrIndex<StrIndex<LocalObject<AssignmentType, number>>> = {};
 }
 
-export function assignmentTypesReducer(state = new AssignmentTypesState(), action: ReduxAction, prefix: string = 'ASSIGMENT_TYPES_'): AssignmentTypesState {
+export function assignmentTypesReducer(state = new AssignmentTypesState(), action: ReduxAction, prefix: string = 'ASSIGNMENT_TYPES_'): AssignmentTypesState {
     state = sharedReducer(state, action, new AssignmentTypesState());
+
     switch (action.type) {
         default:
             return {
