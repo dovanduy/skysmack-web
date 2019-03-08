@@ -10,6 +10,6 @@ export class NgMaintenanceStatesRequests extends NgRecordRequests<MaintenanceSta
         protected http: HttpClient,
         @Inject('ApiDomain') protected apiDomain: ApiDomain
     ) {
-        super(http, apiDomain, 'MAINTENANCE_STATE_', []);
+        super(http, apiDomain, 'MAINTENANCE_STATES_', ['states']);
     }
 }

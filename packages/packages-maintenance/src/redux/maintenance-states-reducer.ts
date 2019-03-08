@@ -14,7 +14,7 @@ export class MaintenanceStateState implements RecordState<MaintenanceState, numb
     public localRecords: StrIndex<StrIndex<LocalObject<MaintenanceState, number>>> = {};
 }
 
-export function maintenanceStateReducer(state = new MaintenanceStateState(), action: ReduxAction, prefix: string = 'MAINTENANCE_STATE_'): MaintenanceStateState {
+export function maintenanceStateReducer(state = new MaintenanceStateState(), action: ReduxAction, prefix: string = 'MAINTENANCE_STATES_'): MaintenanceStateState {
     state = sharedReducer(state, action, new MaintenanceStateState());
     switch (action.type) {
         default:

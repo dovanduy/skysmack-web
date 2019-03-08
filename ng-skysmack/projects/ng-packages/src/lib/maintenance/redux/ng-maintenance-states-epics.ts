@@ -7,6 +7,6 @@ import { NgMaintenanceStatesNotifications } from '../ng-maintenance-states-notif
 @Injectable({ providedIn: 'root' })
 export class NgMaintenanceStatesEpics extends RecordEpicsBase<MaintenanceState, number> {
     constructor(protected requests: NgMaintenanceStatesRequests, protected notifications: NgMaintenanceStatesNotifications) {
-        super(requests, 'MAINTENANCE_STATE_', notifications);
+        super(requests, 'MAINTENANCE_STATES_', notifications);
     }
 }

@@ -6,7 +6,7 @@ import { LocalObject, StrIndex } from '@skysmack/framework';
 
 @Injectable({ providedIn: 'root' })
 export class NgMaintenanceStatesActions extends RecordActionsBase<MaintenanceStatesAppState, NgRedux<MaintenanceStatesAppState>> {
-    constructor(protected store: NgRedux<MaintenanceStatesAppState>) { super(store, 'MAINTENANCE_STATES_', []); }
+    constructor(protected store: NgRedux<MaintenanceStatesAppState>) { super(store, 'MAINTENANCE_STATES_', ['states']); }
 
     public getMessageParams(record: LocalObject<MaintenanceState, number>): StrIndex<string> {
         return {
