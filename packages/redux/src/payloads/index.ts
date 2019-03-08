@@ -12,3 +12,4 @@ export * from './get-available-packages-success-payload';
 export * from './get-available-fields-success-payload';
 export * from './get-interval-payload';
 
+export * from './settings-success-payload';

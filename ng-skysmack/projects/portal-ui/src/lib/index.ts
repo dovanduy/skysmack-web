@@ -7,6 +7,7 @@ export * from './language/index';
 export * from './models/index';
 export * from './redux/index';
 export * from './notifications/index';
+export * from './settings/index';
 
 export * from './portal-ui.module';
 export * from './material.module';

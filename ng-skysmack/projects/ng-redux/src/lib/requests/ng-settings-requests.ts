@@ -2,12 +2,11 @@ import { Injectable, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ApiDomain, HttpErrorResponse } from '@skysmack/framework';
 import { catchError, map, retry } from 'rxjs/operators';
-import { ReduxAction } from '@skysmack/redux';
+import { ReduxAction, SettingsActions } from '@skysmack/redux';
 import { of, Observable } from 'rxjs';
-import { IdentitiesSettings, IdentitiesSettingsActions } from '@skysmack/packages-identities';
 
 @Injectable({ providedIn: 'root' })
-export class NgIdentitiesSettingsRequests {
+export class NgSettingsRequests {
     protected retryTimes = 3;
 
     constructor(
@@ -18,11 +17,11 @@ export class NgIdentitiesSettingsRequests {
     public get(action: ReduxAction<any>): Observable<ReduxAction<any> | ReduxAction<HttpErrorResponse>> {
         const url = `${this.apiDomain.domain}/${action.payload.packagePath}/settings`;
 
-        return this.http.get<IdentitiesSettings>(url, { observe: 'response' })
+        return this.http.get(url, { observe: 'response' })
             .pipe(
                 map(httpResponse => {
                     return Object.assign({}, new ReduxAction<any>({
-                        type: IdentitiesSettingsActions.GET_IDENTITY_SETTINGS_SUCCESS,
+                        type: SettingsActions.GET_SETTINGS_SUCCESS,
                         payload: {
                             settings: httpResponse.body ? httpResponse.body : {},
                             packagePath: action.payload.packagePath,
@@ -31,7 +30,7 @@ export class NgIdentitiesSettingsRequests {
                 }),
                 retry(this.retryTimes),
                 catchError((error) => of(Object.assign({}, new ReduxAction<HttpErrorResponse>({
-                    type: IdentitiesSettingsActions.GET_IDENTITY_SETTINGS_FAILURE,
+                    type: SettingsActions.GET_SETTINGS_FAILURE,
                     payload: error,
                     error: true
                 }))))

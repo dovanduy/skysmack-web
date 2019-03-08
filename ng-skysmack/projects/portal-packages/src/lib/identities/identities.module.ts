@@ -4,7 +4,7 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 
 import { LanguageService } from '@skysmack/portal-ui';
 import { NgIdentitiesModule } from '@skysmack/ng-packages';
-import { PortalUiModule, HttpLoaderFactory, FieldsModule } from '@skysmack/portal-ui';
+import { PortalUiModule, HttpLoaderFactory, FieldsModule, SettingsModule } from '@skysmack/portal-ui';
 import { TranslateLoader } from '@ngx-translate/core';
 import { IdentitiesRoutingModule } from './identities-routing.module';
 import { identitiesComponents } from './components/identities-components';
@@ -17,7 +17,8 @@ import { rolesComponents, usersComponents } from './components';
     PortalUiModule,
     IdentitiesRoutingModule,
     NgIdentitiesModule,
-    FieldsModule
+    FieldsModule,
+    SettingsModule
   ],
   declarations: [
     ...identitiesComponents,

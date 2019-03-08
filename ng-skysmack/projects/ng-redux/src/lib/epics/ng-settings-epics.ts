@@ -1,18 +1,17 @@
-import { IdentitiesSettingsActions, IdentitiesSettings } from '@skysmack/packages-identities';
 import { ActionsObservable, ofType, Epic } from 'redux-observable';
-import { ReduxAction, CommitMeta, ReduxOfflineMeta, QueueActions } from '@skysmack/redux';
+import { ReduxAction, CommitMeta, ReduxOfflineMeta, QueueActions, SettingsActions } from '@skysmack/redux';
 import { Observable } from 'rxjs';
 import { map, mergeMap } from 'rxjs/operators';
 import { HttpErrorResponse, LocalObject, HttpResponse, QueueItem } from '@skysmack/framework';
 import { Injectable } from '@angular/core';
-import { NgIdentitiesSettingsNotifications } from '../ng-identities-settings-notifications';
-import { NgIdentitiesSettingsRequests } from './ng-identities-settings-requests';
+import { NgSettingsRequests } from '../requests/ng-settings-requests';
+import { NgSettingsNotifications } from '../notifications/ng-settings-notifications';
 
 @Injectable({ providedIn: 'root' })
-export class NgIdentitiesSettingsEpics {
+export class NgSettingsEpics {
     public epics: Epic[];
 
-    constructor(protected requests: NgIdentitiesSettingsRequests, protected notifications: NgIdentitiesSettingsNotifications) {
+    constructor(protected requests: NgSettingsRequests, protected notifications: NgSettingsNotifications) {
         this.epics = [
             this.getEpic,
             this.snackBarGetFailureEpic,
@@ -26,30 +25,30 @@ export class NgIdentitiesSettingsEpics {
 
     public getEpic = (action$: ActionsObservable<ReduxAction<any, any>>): Observable<ReduxAction<any> | ReduxAction<HttpErrorResponse>> => {
         return action$.pipe(
-            ofType(IdentitiesSettingsActions.GET_IDENTITY_SETTINGS),
+            ofType(SettingsActions.GET_SETTINGS),
             mergeMap(action => this.requests.get(action)),
         );
     }
 
     //#region Notifications
-    public snackBarGetFailureEpic = (action$: ActionsObservable<ReduxAction<HttpErrorResponse, CommitMeta<LocalObject<IdentitiesSettings, unknown>>>>): Observable<ReduxAction> => action$.pipe(
-        ofType(IdentitiesSettingsActions.GET_IDENTITY_SETTINGS_FAILURE),
+    public snackBarGetFailureEpic = (action$: ActionsObservable<ReduxAction<HttpErrorResponse, CommitMeta<LocalObject<any, unknown>>>>): Observable<ReduxAction> => action$.pipe(
+        ofType(SettingsActions.GET_SETTINGS_FAILURE),
         map((action) => {
             this.notifications.getError(action);
             return { type: 'NOTIFICATION' };
         })
     )
 
-    public snackBarUpdateSuccessEpic = (action$: ActionsObservable<ReduxAction<unknown, CommitMeta<LocalObject<IdentitiesSettings, unknown>>>>): Observable<ReduxAction> => action$.pipe(
-        ofType(IdentitiesSettingsActions.UPDATE_IDENTITY_SETTINGS_SUCCESS),
+    public snackBarUpdateSuccessEpic = (action$: ActionsObservable<ReduxAction<unknown, CommitMeta<LocalObject<any, unknown>>>>): Observable<ReduxAction> => action$.pipe(
+        ofType(SettingsActions.UPDATE_SETTINGS_SUCCESS),
         map(action => {
             this.notifications.updateSuccess(action);
             return { type: 'NOTIFICATION' };
         })
     )
 
-    public snackBarUpdateFailureEpic = (action$: ActionsObservable<ReduxAction<HttpErrorResponse, CommitMeta<LocalObject<IdentitiesSettings, unknown>>>>): Observable<ReduxAction> => action$.pipe(
-        ofType(IdentitiesSettingsActions.UPDATE_IDENTITY_SETTINGS_FAILURE),
+    public snackBarUpdateFailureEpic = (action$: ActionsObservable<ReduxAction<HttpErrorResponse, CommitMeta<LocalObject<any, unknown>>>>): Observable<ReduxAction> => action$.pipe(
+        ofType(SettingsActions.UPDATE_SETTINGS_FAILURE),
         map(action => {
             this.notifications.updateError(action);
             return { type: 'NOTIFICATION' };
@@ -58,10 +57,10 @@ export class NgIdentitiesSettingsEpics {
     //#endregion
 
     //#region Queue
-    public standardActionEpic = (action$: ActionsObservable<ReduxAction<any, ReduxOfflineMeta<IdentitiesSettings, HttpResponse, LocalObject<IdentitiesSettings, unknown>>>>): Observable<ReduxAction<QueueItem[]>> => {
+    public standardActionEpic = (action$: ActionsObservable<ReduxAction<any, ReduxOfflineMeta<any, HttpResponse, LocalObject<any, unknown>>>>): Observable<ReduxAction<QueueItem[]>> => {
         return action$.pipe(
             ofType(
-                IdentitiesSettingsActions.UPDATE_IDENTITY_SETTINGS,
+                SettingsActions.UPDATE_SETTINGS,
             ),
             map(action => ({
                 type: QueueActions.SET_QUEUE_ITEMS,
@@ -70,10 +69,10 @@ export class NgIdentitiesSettingsEpics {
         );
     }
 
-    public successActionEpic = (action$: ActionsObservable<ReduxAction<HttpErrorResponse, CommitMeta<LocalObject<IdentitiesSettings, unknown>>>>): Observable<ReduxAction<QueueItem[]>> => {
+    public successActionEpic = (action$: ActionsObservable<ReduxAction<HttpErrorResponse, CommitMeta<LocalObject<any, unknown>>>>): Observable<ReduxAction<QueueItem[]>> => {
         return action$.pipe(
             ofType(
-                IdentitiesSettingsActions.UPDATE_IDENTITY_SETTINGS_SUCCESS,
+                SettingsActions.UPDATE_SETTINGS_SUCCESS,
             ),
             map(action => ({
                 type: QueueActions.REMOVE_QUEUE_ITEMS,
@@ -86,10 +85,10 @@ export class NgIdentitiesSettingsEpics {
         );
     }
 
-    public failureActionEpic = (action$: ActionsObservable<ReduxAction<HttpErrorResponse, CommitMeta<LocalObject<IdentitiesSettings, unknown>>>>): Observable<ReduxAction<QueueItem[]>> => {
+    public failureActionEpic = (action$: ActionsObservable<ReduxAction<HttpErrorResponse, CommitMeta<LocalObject<any, unknown>>>>): Observable<ReduxAction<QueueItem[]>> => {
         return action$.pipe(
             ofType(
-                IdentitiesSettingsActions.UPDATE_IDENTITY_SETTINGS_FAILURE
+                SettingsActions.UPDATE_SETTINGS_FAILURE
             ),
             map(action => ({
                 type: QueueActions.SET_QUEUE_ITEMS,
@@ -106,7 +105,7 @@ export class NgIdentitiesSettingsEpics {
     // TODO: Do we need this?
     // public cancelRecordActionEpic = (action$: ActionsObservable<ReduxAction<CancelActionPayload<TRecord, TKey>>>): Observable<ReduxAction<QueueItem[]>> => {
     //     return action$.pipe(
-    //         ofType(IdentitiesSettingsActions.CANCEL_RECORD_ACTION),
+    //         ofType(SettingsActions.CANCEL_RECORD_ACTION),
     //         map(action => ({
     //             type: QueueActions.REMOVE_QUEUE_ITEMS,
     //             payload: [

@@ -1,26 +1,25 @@
-import { Injectable, Inject } from '@angular/core';
-import { Notifications } from '@skysmack/ng-redux';
-import { IdentitiesSettings } from '@skysmack/packages-identities';
+import { LocalObject, HttpErrorResponse, StrIndex } from '@skysmack/framework';
 import { ReduxAction, CommitMeta } from '@skysmack/redux';
-import { HttpErrorResponse, LocalObject, StrIndex } from '@skysmack/framework';
+import { Notifications } from './notifications';
+import { Injectable, Inject } from '@angular/core';
 
 @Injectable({ providedIn: 'root' })
-export class NgIdentitiesSettingsNotifications {
+export class NgSettingsNotifications {
     protected defaultTranslationString = 'NOTIFICATIONS.';
 
     constructor(@Inject('Notifications') public notifications: Notifications) { }
 
-    public getError(action: ReduxAction<HttpErrorResponse, CommitMeta<LocalObject<IdentitiesSettings, unknown>>>) {
+    public getError(action: ReduxAction<HttpErrorResponse, CommitMeta<LocalObject<any, unknown>>>) {
         this.checkOfflineStatus(action, () => {
             this.notifications.showTranslatedSnackbarMessage(this.defaultTranslationString + 'GET.ERROR', this.getErrorParams(action), undefined, 2000);
         });
     }
 
-    public updateSuccess(action: ReduxAction<unknown, CommitMeta<LocalObject<IdentitiesSettings, unknown>>>) {
+    public updateSuccess(action: ReduxAction<unknown, CommitMeta<LocalObject<any, unknown>>>) {
         this.notifications.showTranslatedSnackbarMessage(this.defaultTranslationString + 'UPDATE.SUCCESS', {}, undefined, 2000);
     }
 
-    public updateError(action: ReduxAction<HttpErrorResponse, CommitMeta<LocalObject<IdentitiesSettings, unknown>>>) {
+    public updateError(action: ReduxAction<HttpErrorResponse, CommitMeta<LocalObject<any, unknown>>>) {
         this.checkOfflineStatus(action, () => {
             this.notifications.showTranslatedSnackbarMessage(this.defaultTranslationString + 'UPDATE.FAILURE', this.getErrorParams(action), undefined, 2000);
         });
@@ -42,4 +41,3 @@ export class NgIdentitiesSettingsNotifications {
         }
     }
 }
-

@@ -21,3 +21,4 @@ export * from './queue-item';
 export * from './menu-area';
 export * from './menu-item';
 export * from './display-column';
+export * from './route-data';

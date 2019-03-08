@@ -17,8 +17,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from './../../environments/environment';
 import { GlobalProperties } from '@skysmack/framework';
-import { NgFieldEpics, registerRedux } from '@skysmack/ng-redux';
-import { fieldReducer } from '@skysmack/redux';
+import { NgFieldEpics, registerRedux, NgSettingsEpics } from '@skysmack/ng-redux';
+import { fieldReducer, settingsReducer } from '@skysmack/redux';
 // import { NgxGraphModule } from '@swimlane/ngx-graph';
 // import { NgxChartsModule } from '@swimlane/ngx-charts';
 // NgxGraphModule,
@@ -112,10 +112,12 @@ export class StartModule {
     public ngRedux: NgRedux<any>,
     public ngReduxRouter: NgReduxRouter,
     public reduxOfflineConfiguration: ReduxOfflineConfiguration,
-    public fieldEpics: NgFieldEpics
+    public fieldEpics: NgFieldEpics,
+    public settingsEpics: NgSettingsEpics
   ) {
     configureRedux(ngRedux, ngReduxRouter, reduxOfflineConfiguration);
     registerRedux('fields', fieldReducer, fieldEpics);
+    registerRedux('settings', settingsReducer, settingsEpics);
     GlobalProperties.production = environment.production;
   }
 }

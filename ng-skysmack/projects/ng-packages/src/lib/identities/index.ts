@@ -9,9 +9,5 @@ export * from './ng-users-validation';
 export * from './ng-users-notifications';
 export * from './ng-users-fields-config';
 
-export * from './ng-identities-settings-validation';
-export * from './ng-identities-settings-notifications';
-export * from './ng-identities-settings-fields-config';
-
 export * from './ng-set-password-validation';
 export * from './ng-set-password-fields-config';
