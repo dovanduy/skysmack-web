@@ -7,9 +7,6 @@ export class Assignment extends DocumentRecord<number> {
     [key: string]: any;
     public occupationState: 'created' | 'pending' | 'ongoing' | 'done' | 'canceled' | 'faulted';
     public static OccupationStateEnum = {
-        Vacant: 'vacant',
-        Occupied: 'occupied',
-        Disabled: 'disabled',
         Created: 'created',
         Pending: 'pending',
         Ongoing: 'ongoing',
