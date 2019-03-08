@@ -31,13 +31,13 @@ export class NgLodgingSettingsFieldsConfig extends FieldsConfig<LodgingSettings,
                 order: 1
             } as Field),
             new Field({
-                fieldType: FieldTypes.dateTime,
+                fieldType: FieldTypes.DateField,
                 value: initializedSettings ? initializedSettings.object.DefaultCheckIn : undefined,
                 key: 'DefaultCheckIn',
                 order: 2
             } as Field),
             new Field({
-                fieldType: FieldTypes.dateTime,
+                fieldType: FieldTypes.DateField,
                 value: initializedSettings ? initializedSettings.object.DefaultCheckOut : undefined,
                 key: 'DefaultCheckOut',
                 order: 3
