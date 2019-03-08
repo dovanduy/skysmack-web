@@ -1,4 +1,4 @@
-import { AssignmentType } from '@skysmack/packages-maintenance';
+import { AssignmentType, MaintenanceState } from '@skysmack/packages-maintenance';
 import { NgAssignmentTypesValidation } from './ng-assignment-types-validation';
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
@@ -10,7 +10,7 @@ import { SelectField } from '@skysmack/ng-ui';
 import { FieldsConfig } from '@skysmack/ng-ui';
 
 export interface NgAssignmentTypeFormDependencies {
-    availableAssignmentTypes: LocalObject<AssignmentType, number>[];
+    availableMaintenanceStates: LocalObject<MaintenanceState, number>[];
 }
 
 @Injectable({ providedIn: 'root' })
@@ -26,7 +26,7 @@ export class NgAssignmentTypesFieldsConfig extends FieldsConfig<AssignmentType, 
                 fieldType: FieldTypes.SelectField,
                 value: entity ? entity.object.stateId : undefined,
                 key: 'stateId',
-                optionsData: [], // dependencies.availableAssignmentTypes,
+                optionsData: dependencies && dependencies.availableMaintenanceStates,
                 displayNameSelector: 'object.description',
                 validators: [Validators.required],
                 order: 1,
