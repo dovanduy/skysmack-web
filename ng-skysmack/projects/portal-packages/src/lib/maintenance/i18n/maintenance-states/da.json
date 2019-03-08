@@ -1,53 +1,51 @@
 {
-    "MAINTENANCE": {
-        "MAINTENANCE_STATES": {
-            "FORM": {
-                "LABELS": {
-                    "DESCRIPTION": "Beskrivelse",
-                    "STATUS": "Status",
-                    "ID": "Id"                    
+    "MAINTENANCE_STATES": {
+        "FORM": {
+            "LABELS": {
+                "DESCRIPTION": "Beskrivelse",
+                "STATUS": "Status",
+                "ID": "Id"
+            },
+            "PLACEHOLDERS": {
+                "DESCRIPTION": "Indtast beskrivelse",
+                "STATUS": "Vælg Status",
+                "ID": "Vælg et Id"
+            },
+            "VALIDATION": {
+                "DESCRIPTION": {
+                    "REQUIRED": "Beskrivelse er påkrævet."
                 },
-                "PLACEHOLDERS": {
-                    "DESCRIPTION": "Indtast beskrivelse",
-                    "STATUS": "Vælg Status",
-                    "ID": "Vælg et Id"
+                "STATUS": {
+                    "REQUIRED": "Status er påkrævet"
                 },
-                "VALIDATION": {
-                    "DESCRIPTION": {
-                        "REQUIRED": "Beskrivelse er påkrævet."
-                    },
-                    "STATUS": {
-                        "REQUIRED": "Status er påkrævet"
-                    },
-                    "ID": {
-                        "REQUIRED": "Id er påkrævet"
-                    }
+                "ID": {
+                    "REQUIRED": "Id er påkrævet"
                 }
-            },
-            "CREATE": {
-                "CREATE": "Opret"
-            },
-            "EDIT": {
-                "EDIT": "Ret"
-            },
-            "INDEX": {
-                "ACTIONS": "Handlinger",
-                "CREATE": "Opret",
-                "EDIT": "Ret",
-                "DELETE": "Slet",
-                "MANAGE": "Konfigurer",
-                "FIELDS": "Felter",
-                "BACK": "Tilbage"
-            },
-            "MANAGE": {
-                "BACK": "Tilbage"
-            },
-            "QUEUE": {
-                "ADDING": "Tilføjer {{ description }}",
-                "UPDATING": "Opdatere {{ description }}",
-                "DELETING": "Sletter {{ description }}",
-                "ERROR": "Der opstod  en fejl ved {{ description }}. Ret og prøv igen."
             }
+        },
+        "CREATE": {
+            "CREATE": "Opret"
+        },
+        "EDIT": {
+            "EDIT": "Ret"
+        },
+        "INDEX": {
+            "ACTIONS": "Handlinger",
+            "CREATE": "Opret",
+            "EDIT": "Ret",
+            "DELETE": "Slet",
+            "MANAGE": "Konfigurer",
+            "FIELDS": "Felter",
+            "BACK": "Tilbage"
+        },
+        "MANAGE": {
+            "BACK": "Tilbage"
+        },
+        "QUEUE": {
+            "ADDING": "Tilføjer {{ description }}",
+            "UPDATING": "Opdatere {{ description }}",
+            "DELETING": "Sletter {{ description }}",
+            "ERROR": "Der opstod  en fejl ved {{ description }}. Ret og prøv igen."
         }
     }
 }

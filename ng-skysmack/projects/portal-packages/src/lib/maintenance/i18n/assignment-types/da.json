@@ -1,6 +1,54 @@
 {
-    "MAINTENANCE": {
-        "ASSIGNMENT_TYPES": {
+    "ASSIGNMENT_TYPES": {
+        "FORM": {
+            "LABELS": {
+                "STATEID": "Tilstand",
+                "DESCRIPTION": "Beskrivelse",
+                "EXPRESSION": "Udtryk",
+                "DUEPERIOD": "Due date"
+            },
+            "PLACEHOLDERS": {
+                "STATEID": "Vælg tilstand",
+                "DESCRIPTION": "Indtast beskrivelse",
+                "EXPRESSION": "Indtast udtryk",
+                "DUEPERIOD": "Vælg udløbsdato"
+            },
+            "VALIDATION": {
+                "STATEID": {
+                    "REQUIRED": "Tilstand er påkrævet."
+                },
+                "DESCRIPTION": {
+                    "REQUIRED": "Beskrivelse er påkrævet."
+                },
+                "EXPRESSION": {
+                    "REQUIRED": "Udtryk er påkrævet."
+                },
+                "DUEPERIOD": {
+                    "REQUIRED": "Udløbsdato er påkrævet."
+                }
+            },
+            "BUTTONS": {
+                "CREATE": "Opret",
+                "EDIT": "Rediger"
+            }
+        },
+        "CREATE": {
+            "CREATE": "Opret"
+        },
+        "EDIT": {
+            "EDIT": "Ret"
+        },
+        "INDEX": {
+            "ACTIONS": "Handlinger",
+            "CREATE": "Opret",
+            "EDIT": "Ret",
+            "DELETE": "Slet",
+            "MANAGE": "Konfigurer",
+            "BACK": "Tilbage",
+            "FIELDS": "Felter",
+            "ENTITIES": "Enheder"
+        },
+        "FIELDS": {
             "FORM": {
                 "LABELS": {
                     "STATEID": "Tilstand",
@@ -33,73 +81,23 @@
                     "EDIT": "Rediger"
                 }
             },
-            "CREATE": {
-                "CREATE": "Opret"
-            },
-            "EDIT": {
-                "EDIT": "Ret"
-            },
             "INDEX": {
                 "ACTIONS": "Handlinger",
                 "CREATE": "Opret",
-                "EDIT": "Ret",
-                "DELETE": "Slet",
-                "MANAGE": "Konfigurer",
+                "ASSIGNMENT_TYPES": "Opgaver",
+                "FIELDS": "Opgave felter",
                 "BACK": "Tilbage",
-                "FIELDS": "Felter",
-                "ENTITIES": "Enheder"
+                "OTHER": "Andet"
             },
-            "FIELDS": {
-                "FORM": {
-                    "LABELS": {
-                        "STATEID": "Tilstand",
-                        "DESCRIPTION": "Beskrivelse",
-                        "EXPRESSION": "Udtryk",
-                        "DUEPERIOD": "Due date"
-                    },
-                    "PLACEHOLDERS": {
-                        "STATEID": "Vælg tilstand",
-                        "DESCRIPTION": "Indtast beskrivelse",
-                        "EXPRESSION": "Indtast udtryk",
-                        "DUEPERIOD": "Vælg udløbsdato"
-                    },
-                    "VALIDATION": {
-                        "STATEID": {
-                            "REQUIRED": "Tilstand er påkrævet."
-                        },
-                        "DESCRIPTION": {
-                            "REQUIRED": "Beskrivelse er påkrævet."
-                        },
-                        "EXPRESSION": {
-                            "REQUIRED": "Udtryk er påkrævet."
-                        },
-                        "DUEPERIOD": {
-                            "REQUIRED": "Udløbsdato er påkrævet."
-                        }
-                    },
-                    "BUTTONS": {
-                        "CREATE": "Opret",
-                        "EDIT": "Rediger"
-                    }
-                },
-                "INDEX": {
-                    "ACTIONS": "Handlinger",
-                    "CREATE": "Opret",
-                    "ASSIGNMENT_TYPES": "Opgaver",
-                    "FIELDS": "Opgave felter",
-                    "BACK": "Tilbage",
-                    "OTHER": "Andet"
-                },
-                "CREATE": {
-                    "ADD": "Tilføj felt"
-                }
-            },
-            "QUEUE": {
-                "ADDING": "Tilføjer {{ description }}",
-                "UPDATING": "Opdatere {{ description }}",
-                "DELETING": "Sletter {{ description }}",
-                "ERROR": "Der opstod  en fejl ved {{ description }}. Ret og prøv igen."
+            "CREATE": {
+                "ADD": "Tilføj felt"
             }
+        },
+        "QUEUE": {
+            "ADDING": "Tilføjer {{ description }}",
+            "UPDATING": "Opdatere {{ description }}",
+            "DELETING": "Sletter {{ description }}",
+            "ERROR": "Der opstod  en fejl ved {{ description }}. Ret og prøv igen."
         }
     }
 }
