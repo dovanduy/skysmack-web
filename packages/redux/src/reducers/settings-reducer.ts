@@ -1,14 +1,13 @@
-import { StrIndex, GlobalProperties, LocalObject, toLocalObject } from '@skysmack/framework';
+import { GlobalProperties, LocalObject, toLocalObject } from '@skysmack/framework';
 import { SettingsSuccessPayload } from '../payloads/settings-success-payload';
 import { SettingsActions } from '../actions/settings-actions';
-import { AppState } from '../states/app-state';
 import { ReduxAction } from '../action-types/redux-action';
 import { sharedReducer } from './shared-reducer';
 
 /**
  * This is to be used when you want to access users via the GLOBAL state. E.g. state.users (where users is the reducer name.)
  */
-export class SettingsAppState extends AppState {
+export class SettingsAppState {
     [key: string]: LocalObject<any, unknown>;
 }
 

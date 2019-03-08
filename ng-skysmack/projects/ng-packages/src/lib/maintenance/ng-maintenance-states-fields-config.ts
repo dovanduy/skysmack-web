@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
-import { MaintenanceState } from '@skysmack/packages-maintenance';
+import { MaintenanceState, MaintenanceEntityStatus } from '@skysmack/packages-maintenance';
 import { NgMaintenanceStatesValidation } from './ng-maintenance-states-validation';
-import { FieldsConfig, FormRule, Field, FieldTypes } from '@skysmack/ng-ui';
+import { FieldsConfig, FormRule, Field, FieldTypes, SelectField } from '@skysmack/ng-ui';
 
 export interface NgMaintenanceStateFormDependencies {
     availableMaintenanceStates: LocalObject<MaintenanceState, number>[];
@@ -28,15 +28,17 @@ export class NgMaintenanceStatesFieldsConfig extends FieldsConfig<MaintenanceSta
                 showColumn: true
             } as Field),
 
-            new Field({
-                fieldType: FieldTypes.string,
+            new SelectField({
+                fieldType: FieldTypes.SelectField,
                 value: entity ? entity.object.status : undefined,
                 key: 'status',
                 label: 'Status',
                 validators: [Validators.required],
+                optionsData: MaintenanceEntityStatus,
+                optionsDataType: 'ts-enum',
                 order: 2,
                 showColumn: true
-            } as Field)
+            } as SelectField)
         ];
 
         // Id field must only be added for edit forms.
