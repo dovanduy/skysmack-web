@@ -71,7 +71,7 @@ export class BaseComponent<TAppState, TKey> implements OnInit, OnDestroy {
                 break;
             }
 
-            if (chunck !== '' && chunck !== 'fields' && chunck !== this.packagePath) {
+            if (chunck !== '' && chunck !== 'fields' && chunck !== 'settings' && chunck !== this.packagePath) {
                 this.additionalPaths.push(chunck);
             }
         }

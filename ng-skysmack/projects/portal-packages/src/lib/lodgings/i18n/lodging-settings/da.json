@@ -1,0 +1,26 @@
+{
+    "LODGING_SETTINGS": {
+        "FORM": {
+            "LABELS": {
+                "NAME": "Navn",
+                "DEFAULTCHECKIN": "Standard check in",
+                "DEFAULTCHECKOUT": "Standard checkud",
+                "TIMEZONEID": "Tidszone id"
+            },
+            "PLACEHOLDERS": {
+                "NAME": "Navn",
+                "DEFAULTCHECKIN": "Standard check in",
+                "DEFAULTCHECKOUT": "Standard checkud",
+                "TIMEZONEID": "Tidszone id"
+            },
+            "VALIDATION": {}
+        },
+        "EDIT": {
+            "EDIT": "Ret indstillinger"
+        },
+        "QUEUE": {
+            "UPDATING": "Opdaterer",
+            "ERROR": "Der skete en fejl ved opdatering af indstillingerne."
+        }
+    }
+}
