@@ -78,7 +78,7 @@ export class LodgingsAvailablityComponent implements OnInit {
 }
 
 const toCalendarEvents = () => pipe(
-  map((dates: StrIndex<StrIndex<number>>) => Object.keys(dates).map(dateKey => {
+  map((dates: StrIndex<number[]>) => Object.keys(dates).map(dateKey => {
     const date = dateKey;
     let freeLodgingsBadge = 0;
 
