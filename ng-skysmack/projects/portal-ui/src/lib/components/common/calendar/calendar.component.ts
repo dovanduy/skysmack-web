@@ -23,8 +23,7 @@ export class CalendarComponent {
   beforeMonthViewRender({ body }: { body: CalendarMonthViewDay[] }): void {
     body.forEach(cell => {
       cell.events.forEach((event: CalendarEvent<any>) => {
-        cell['freeLodgingsBadge'] = event.meta.freeLodgingsBadge;
-        cell['lodgingTypeBadges'] = event.meta.lodgingTypeBadges;
+        cell['freeLodgingsBadges'] = event.meta.freeLodgingsBadges;
       });
     });
   }

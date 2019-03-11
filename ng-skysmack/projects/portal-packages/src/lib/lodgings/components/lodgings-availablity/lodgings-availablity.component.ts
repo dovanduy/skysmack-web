@@ -2,12 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { EntityComponentPageTitle } from '@skysmack/portal-ui';
 import { NgSkysmackStore, NgLodgingsStore, NgLodgingsActions } from '@skysmack/ng-packages';
-import { Observable, pipe, BehaviorSubject } from 'rxjs';
-import { map, delay } from 'rxjs/operators';
+import { Observable, combineLatest } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { CalendarEvent, EventColor, EventAction } from 'calendar-utils';
 
 import * as _moment from 'moment';
-import { StrIndex, PagedQuery, defined } from '@skysmack/framework';
+import { PagedQuery, defined } from '@skysmack/framework';
 import { NgLodgingsMenu } from '../../ng-lodgings-menu';
 import { SelectFieldOption } from '@skysmack/ng-ui';
 const moment = _moment;
@@ -21,7 +21,7 @@ const moment = _moment;
 export class LodgingsAvailablityComponent implements OnInit {
   public packagePath = this.router.url.split('/')[1];
   public events$: Observable<CalendarEvent[]>;
-  public selectedLodgings: number[] = [];
+  public selectedLodgingIds: number[] = [];
   public lodgingOptions$: Observable<SelectFieldOption[]>;
   public currentSelectedDate: Date = new Date();
   public startOfMonth: string;
@@ -52,7 +52,7 @@ export class LodgingsAvailablityComponent implements OnInit {
   }
 
   public getAvailableLodgings() {
-    this.actions.getAvailableLodgings(this.packagePath, this.startOfMonth, this.endOfMonth, this.selectedLodgings);
+    this.actions.getAvailableLodgings(this.packagePath, this.startOfMonth, this.endOfMonth, this.selectedLodgingIds);
   }
 
   private getLodgings() {
@@ -65,49 +65,69 @@ export class LodgingsAvailablityComponent implements OnInit {
     );
   }
 
-  private setAvailableLodgings() {
-    this.requestPeriod(this.currentSelectedDate);
-    this.events$ = this.store.getAvailableLodgings(this.packagePath).pipe(toCalendarEvents());
-  }
-
   private setCurrentDate(date: Date) {
     this.currentSelectedDate = date;
     this.startOfMonth = moment(this.currentSelectedDate).startOf('month').format('YYYY-MM-DD');
     this.endOfMonth = moment(this.currentSelectedDate).endOf('month').format('YYYY-MM-DD');
   }
+
+  private setAvailableLodgings() {
+    this.requestPeriod(this.currentSelectedDate);
+
+    this.events$ = combineLatest(
+      this.store.get(this.packagePath),
+      this.store.getAvailableLodgings(this.packagePath)
+    ).pipe(
+      map(values => {
+        const lodgings = values[0];
+        const dates = values[1];
+
+        return Object.keys(dates).map(dateKey => {
+          const date = dateKey;
+          let freeLodgingsBadges: {
+            name: string,
+            available: boolean
+          }[];
+
+          freeLodgingsBadges = this.selectedLodgingIds.map(selectedLodgingId => {
+            return {
+              name: lodgings.find(lodging => lodging.object.id === selectedLodgingId).object.name,
+              available: dates[dateKey].includes(selectedLodgingId)
+            };
+          });
+
+          // console.log(dates);
+
+          // let freeLodgingsBadge = 0;
+
+          // const lodgingTypeBadges = Object.keys(dates[dateKey]).map(lodgingTypeKey => {
+          //   const lodgingType = lodgingTypeKey;
+          //   freeLodgingsBadge += dates[dateKey][lodgingTypeKey];
+
+          //   return {
+          //     type: lodgingType,
+          //     free: dates[dateKey][lodgingTypeKey]
+          //   };
+          // });
+
+          return {
+            start: new Date(date),
+            title: '',
+            color: { primary: '#0033cc', secondary: '#3399ff' } as EventColor,
+            actions: [] as EventAction[],
+            allDay: true,
+            cssClass: 'available-booking',
+            resizable: {
+              beforeStart: false,
+              afterEnd: false,
+            },
+            draggable: false,
+            meta: {
+              freeLodgingsBadges
+            }
+          } as CalendarEvent;
+        });
+      })
+    );
+  }
 }
-
-const toCalendarEvents = () => pipe(
-  map((dates: StrIndex<number[]>) => Object.keys(dates).map(dateKey => {
-    const date = dateKey;
-    let freeLodgingsBadge = 0;
-
-    const lodgingTypeBadges = Object.keys(dates[dateKey]).map(lodgingTypeKey => {
-      const lodgingType = lodgingTypeKey;
-      freeLodgingsBadge += dates[dateKey][lodgingTypeKey];
-
-      return {
-        type: lodgingType,
-        free: dates[dateKey][lodgingTypeKey]
-      };
-    });
-
-    return {
-      start: new Date(date),
-      title: '',
-      color: { primary: '#0033cc', secondary: '#3399ff' } as EventColor,
-      actions: [] as EventAction[],
-      allDay: true,
-      cssClass: 'available-booking',
-      resizable: {
-        beforeStart: false,
-        afterEnd: false,
-      },
-      draggable: false,
-      meta: {
-        freeLodgingsBadge,
-        lodgingTypeBadges
-      }
-    } as CalendarEvent;
-  }))
-);

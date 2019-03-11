@@ -18,7 +18,7 @@ export class NgLodgingTypesEpics extends RecordEpicsBase<LodgingType, number> {
     ) {
         super(requests, 'LODGING_TYPES_', notifications);
         this.epics = this.epics.concat([
-            this.getAvailableLodgingsEpic,
+            // this.getAvailableLodgingsEpic
         ]);
     }
 

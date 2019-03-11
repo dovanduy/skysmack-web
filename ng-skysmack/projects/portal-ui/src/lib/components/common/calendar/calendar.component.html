@@ -1,19 +1,21 @@
 <ng-template #customCellTemplate let-day="day" let-locale="locale">
-  <ng-container *ngIf="day.lodgingTypeBadges">
+  <ng-container *ngIf="day.freeLodgingsBadges">
     <div class="cal-cell-top">
-      <span class="total-badge" matBadge="{{ day.freeLodgingsBadge }}"></span>
+      <!-- <span class="total-badge" matBadge="{{ day.freeLodgingsBadge }}"></span> -->
       <span class="cal-day-number">{{ day.date | calendarDate:'monthViewDayNumber':locale }}</span>
     </div>
     <div class="cell-totals">
-      <ng-container *ngFor="let lodgingTypeBadge of day.lodgingTypeBadges">
-        <span class="tooltip" [matTooltipPosition]="'above'" [matTooltip]="lodgingTypeBadge.type">
-          <span class="badge" *ngIf="lodgingTypeBadge.free > 0" matBadge="{{lodgingTypeBadge.free}}"
-            matBadgeColor="accent"></span>
-        </span>
-        <span class="tooltip" [matTooltipPosition]="'above'" [matTooltip]="lodgingTypeBadge.type">
+      <ng-container *ngFor="let freeLodgingsBadge of day.freeLodgingsBadges">
+        <!-- <span class="tooltip" [matTooltipPosition]="'above'"  [matTooltip]="lodgingTypeBadge.type"></span>
+      </span>-->
+        <!-- <span class="badge" matBadge="{{ freeLodgingsBadge.name }}" matBadgeColor="accent"></span> -->
+        <p *ngIf="freeLodgingsBadge.available" style="color:green;">{{ freeLodgingsBadge.name }} ✓</p>
+        <p *ngIf="!freeLodgingsBadge.available" style="color:red;">{{ freeLodgingsBadge.name }} ✘</p>
+
+        <!-- <span class="tooltip" [matTooltipPosition]="'above'" [matTooltip]="lodgingTypeBadge.type">
           <span class="badge" *ngIf="lodgingTypeBadge.free === 0" matBadge="{{lodgingTypeBadge.free}}"
-            matBadgeColor="warn"></span>
-        </span>
+          matBadgeColor="warn"></span>
+          </span> -->
       </ng-container>
     </div>
   </ng-container>
