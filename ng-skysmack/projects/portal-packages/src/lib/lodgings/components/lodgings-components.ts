@@ -18,7 +18,7 @@ export const lodgingsRoutes: Routes = [
     children: [
       { path: 'create', component: LodgingsCreateComponent, pathMatch: 'full' },
       { path: 'edit/:id', component: LodgingsEditComponent, pathMatch: 'full' },
-      { path: 'settings', component: SettingsComponent, pathMatch: 'full', data }
+      { path: 'settings', component: SettingsComponent, pathMatch: 'full', data },
     ]
   },
   {
@@ -26,7 +26,7 @@ export const lodgingsRoutes: Routes = [
       { path: 'create', component: FieldsCreateComponent, pathMatch: 'full' }
     ]
   },
-  { path: 'availability', component: LodgingsAvailablityComponent },
+  { path: 'availability', component: LodgingsAvailablityComponent }
 ];
 
 export const lodgingsComponents: any[] = [

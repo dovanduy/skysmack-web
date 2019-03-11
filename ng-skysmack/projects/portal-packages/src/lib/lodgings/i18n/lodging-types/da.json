@@ -27,6 +27,7 @@
             "CREATE": "Opret",
             "TYPE": "Opret ny type",
             "MANAGE": "Konfigurer",
+            "AVAILABILITY": "Tilgængelighed",
             "TYPES_FIELDS": "Type felt",
             "BACK": "Tilbage",
             "FIELDS": "Felter"

@@ -13,7 +13,7 @@ export class LodgingsAppState extends AppState {
 export class LodgingsState implements RecordState<Lodging, number> {
     public localPageTypes: StrIndex<StrIndex<LocalPageTypes<number>>> = {};
     public localRecords: StrIndex<StrIndex<LocalObject<Lodging, number>>> = {};
-    public availableLodgings: StrIndex<StrIndex<StrIndex<number>>> = {};
+    public availableLodgings: StrIndex<StrIndex<number[]>> = {};
 }
 
 export function lodgingsReducer(state = new LodgingsState(), action: ReduxAction, prefix: string = 'LODGINGS_'): LodgingsState {
@@ -22,7 +22,7 @@ export function lodgingsReducer(state = new LodgingsState(), action: ReduxAction
 
     switch (action.type) {
         case prefix + LodgingsActions.GET_AVAILABLE_LODGINGS_SUCCESS: {
-            const castedAction = action as ReduxAction<StrIndex<StrIndex<number>>, StateKeyMeta>;
+            const castedAction = action as ReduxAction<StrIndex<number[]>, StateKeyMeta>;
             // TODO: Merge available lodgings instead of overwriting them.
             newState.availableLodgings[castedAction.meta.stateKey] = castedAction.payload;
             return newState;

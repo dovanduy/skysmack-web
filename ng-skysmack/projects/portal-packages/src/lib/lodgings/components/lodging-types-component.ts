@@ -3,6 +3,7 @@ import { LodgingTypesIndexComponent } from './lodging-types-index/lodging-types-
 import { LodgingTypesEditComponent } from './lodging-types-edit/lodging-types-edit.component';
 import { LodgingTypesCreateComponent } from './lodging-types-create/lodging-types-create.component';
 import { FieldsIndexComponent, FieldsCreateComponent, FieldsEditComponent } from '@skysmack/portal-ui';
+import { LodgingsAvailablityComponent } from './lodgings-availablity/lodgings-availablity.component';
 
 export const lodgingTypesRoutes: Routes = [
     {
@@ -17,7 +18,8 @@ export const lodgingTypesRoutes: Routes = [
             { path: 'create', component: FieldsCreateComponent, pathMatch: 'full' },
             { path: 'edit/:id', component: FieldsEditComponent, pathMatch: 'full' }
         ]
-    }
+    },
+    { path: 'types/availability', component: LodgingsAvailablityComponent }
 ];
 
 export const lodgingTypesComponents: any[] = [
