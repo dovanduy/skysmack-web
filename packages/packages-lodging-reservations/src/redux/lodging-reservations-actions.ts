@@ -6,10 +6,6 @@ import { CheckIn } from './../models/check-in';
 import { LodgingReservation } from './../models/lodging-reservation';
 
 export class LodgingReservationsActions extends RecordActionsBase<LodgingReservationsAppState, Store<LodgingReservationsAppState>> {
-    public static GET_AVAILABLE_LODGINGS = 'GET_AVAILABLE_LODGINGS';
-    public static GET_AVAILABLE_LODGINGS_SUCCESS = 'GET_AVAILABLE_LODGINGS_SUCCESS';
-    public static GET_AVAILABLE_LODGINGS_FAILURE = 'GET_AVAILABLE_LODGINGS_FAILURE';
-
     public static CHECK_IN = 'CHECK_IN';
     public static CHECK_IN_SUCCESS = 'CHECK_IN_SUCCESS';
     public static CHECK_IN_FAILURE = 'CHECK_IN_FAILURE';
@@ -46,17 +42,6 @@ export class LodgingReservationsActions extends RecordActionsBase<LodgingReserva
     public static UNDO_NO_SHOW_FAILURE = 'UNDO_NO_SHOW_FAILURE';
 
     constructor(protected store: Store<LodgingReservationsAppState>) { super(store, 'LODGING_RESERVATIONS_', []); }
-
-    public getAvailableLodgings(packagePath: string, start: string, end: string) {
-        this.store.dispatch(Object.assign({}, new ReduxAction<GetIntervalPayload>({
-            type: LodgingReservationsActions.GET_AVAILABLE_LODGINGS,
-            payload: {
-                packagePath,
-                start,
-                end
-            }
-        })))
-    }
 
     public checkIn(packagePath: string, entity: LocalObject<LodgingReservation, number>, checkIns: CheckIn[]) {
         this.store.dispatch(Object.assign({}, new ReduxAction<any, ReduxOfflineMeta<CheckIn[], HttpResponse, CheckIn[]>>({

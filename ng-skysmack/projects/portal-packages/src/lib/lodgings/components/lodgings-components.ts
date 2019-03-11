@@ -4,6 +4,8 @@ import { LodgingsCreateComponent } from './lodgings-create/lodgings-create.compo
 import { LodgingsEditComponent } from './lodgings-edit/lodgings-edit.component';
 import { FieldsIndexComponent, FieldsCreateComponent, SettingsComponent } from '@skysmack/portal-ui';
 import { RouteData } from '@skysmack/framework';
+import { LodgingsAvailablityComponent } from './lodgings-availablity/lodgings-availablity.component';
+
 
 const data = {
   fieldsConfigToken: 'NgLodgingSettingsFieldsConfig'
@@ -23,11 +25,13 @@ export const lodgingsRoutes: Routes = [
     path: 'fields', component: FieldsIndexComponent, children: [
       { path: 'create', component: FieldsCreateComponent, pathMatch: 'full' }
     ]
-  }
+  },
+  { path: 'availability', component: LodgingsAvailablityComponent },
 ];
 
 export const lodgingsComponents: any[] = [
   LodgingsIndexComponent,
   LodgingsCreateComponent,
   LodgingsEditComponent,
+  LodgingsAvailablityComponent
 ];

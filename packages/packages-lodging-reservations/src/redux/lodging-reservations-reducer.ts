@@ -14,7 +14,6 @@ export class LodgingReservationsAppState extends AppState {
 export class LodgingReservationsState implements RecordState<LodgingReservation, number> {
     public localPageTypes: StrIndex<StrIndex<LocalPageTypes<number>>> = {};
     public localRecords: StrIndex<StrIndex<LocalObject<LodgingReservation, number>>> = {};
-    public availableLodgings: StrIndex<StrIndex<StrIndex<number>>> = {};
 }
 
 
@@ -31,18 +30,6 @@ export function lodgingReservationsReducer(state = new LodgingReservationsState(
     const newState = Object.assign({}, state);
 
     switch (action.type) {
-        // GET AVAILABLE LODGINGS
-        case prefix + LodgingReservationsActions.GET_AVAILABLE_LODGINGS_SUCCESS: {
-            const castedAction = action as ReduxAction<StrIndex<StrIndex<number>>, StateKeyMeta>;
-            // TODO: Merge available lodgings instead of overwriting them.
-            newState.availableLodgings[castedAction.meta.stateKey] = castedAction.payload;
-            return newState;
-        }
-        case prefix + LodgingReservationsActions.GET_AVAILABLE_LODGINGS_FAILURE: {
-            console.log('error:', action);
-            return newState;
-        }
-
         // CHECK IN
         case prefix + LodgingReservationsActions.CHECK_IN_SUCCESS: {
             return updateLodgingReservation(action, newState);

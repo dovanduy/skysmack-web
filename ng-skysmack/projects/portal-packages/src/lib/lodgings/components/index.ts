@@ -6,4 +6,4 @@ export * from './lodging-types-create/lodging-types-create.component';
 export * from './lodging-types-edit/lodging-types-edit.component';
 export * from './lodgings-components';
 export * from './lodging-types-component';
-
+export * from './lodgings-availablity/lodgings-availablity.component';

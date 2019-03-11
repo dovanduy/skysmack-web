@@ -3,10 +3,9 @@ import { LodgingReservation, LodgingReservationsActions } from '@skysmack/packag
 import { NgLodgingReservationsRequests } from './ng-lodging-reservations-requests';
 import { Injectable } from '@angular/core';
 import { ActionsObservable, ofType } from 'redux-observable';
-import { Observable } from 'rxjs';
-import { HttpErrorResponse, RSQLFilterBuilder, PagedQuery, StrIndex } from '@skysmack/framework';
-import { switchMap, map, take } from 'rxjs/operators';
-import { GetIntervalPayload, ReduxAction, GetPagedEntitiesSuccessPayload } from '@skysmack/redux';
+import { RSQLFilterBuilder, PagedQuery } from '@skysmack/framework';
+import { map, take } from 'rxjs/operators';
+import { ReduxAction, GetPagedEntitiesSuccessPayload } from '@skysmack/redux';
 import { NgLodgingTypesActions } from './../../lodgings/redux/ng-lodging-types-actions';
 import { NgSkysmackStore } from './../../skysmack-core/skysmack/redux/ng-skysmack-store';
 import { NgLodgingsActions } from './../../lodgings/redux/ng-lodgings-actions';
@@ -23,20 +22,10 @@ export class NgLodgingReservationsEpics extends RecordEpicsBase<LodgingReservati
     ) {
         super(requests, 'LODGING_RESERVATIONS_', notifications);
         this.epics = this.epics.concat([
-            this.getAvailableLodgingsEpic,
             this.getReservationLodgingTypesEpic,
             this.getReservationLodgingsEpic
         ]);
     }
-
-    public getAvailableLodgingsEpic = (action$: ActionsObservable<any>): Observable<ReduxAction<StrIndex<StrIndex<number>>> | ReduxAction<HttpErrorResponse>> => action$.pipe(
-        ofType(LodgingReservationsActions.GET_AVAILABLE_LODGINGS),
-        switchMap((action: ReduxAction<GetIntervalPayload>) => this.requests.getAvailableLodgings(
-            action.payload.packagePath,
-            action.payload.start,
-            action.payload.end
-        ))
-    )
 
     public getReservationLodgingTypesEpic = (action$: ActionsObservable<any>) => action$.pipe(
         ofType(this.prefix + LodgingReservationsActions.GET_PAGED_SUCCESS),

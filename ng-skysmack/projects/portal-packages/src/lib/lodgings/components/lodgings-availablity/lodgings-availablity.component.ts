@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { EntityComponentPageTitle } from '@skysmack/portal-ui';
-import { NgSkysmackStore, NgLodgingReservationsStore, NgLodgingReservationsActions } from '@skysmack/ng-packages';
-import { NgLodgingsReservationsMenu } from '../../ng-lodgings-reservations-menu';
+import { NgSkysmackStore, NgLodgingsStore, NgLodgingsActions } from '@skysmack/ng-packages';
 import { Observable, pipe } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { CalendarEvent, EventColor, EventAction } from 'calendar-utils';
 
 import * as _moment from 'moment';
 import { StrIndex } from '@skysmack/framework';
+import { NgLodgingsMenu } from '../../ng-lodgings-menu';
 const moment = _moment;
 
 @Component({
@@ -25,10 +25,10 @@ export class LodgingsAvailablityComponent implements OnInit {
     public router: Router,
     public activatedRoute: ActivatedRoute,
     public skysmackStore: NgSkysmackStore,
-    public store: NgLodgingReservationsStore,
-    public actions: NgLodgingReservationsActions,
+    public store: NgLodgingsStore,
+    public actions: NgLodgingsActions,
     public pageTitle: EntityComponentPageTitle,
-    public sidebarMenu: NgLodgingsReservationsMenu
+    public sidebarMenu: NgLodgingsMenu
   ) {
     pageTitle.setTitle('Availability');
   }

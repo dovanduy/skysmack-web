@@ -1,16 +1,8 @@
-import { RecordActionsBase } from '@skysmack/redux';
 import { NgRedux } from '@angular-redux/store';
 import { Injectable } from '@angular/core';
-import { LodgingsAppState, Lodging } from '@skysmack/packages-lodgings';
-import { LocalObject, StrIndex } from '@skysmack/framework';
+import { LodgingsAppState, LodgingsActions } from '@skysmack/packages-lodgings';
 
 @Injectable({ providedIn: 'root' })
-export class NgLodgingsActions extends RecordActionsBase<LodgingsAppState, NgRedux<LodgingsAppState>> {
-    constructor(protected store: NgRedux<LodgingsAppState>) { super(store, 'LODGINGS_', []); }
-
-    public getMessageParams(record: LocalObject<Lodging, number>): StrIndex<string> {
-        return {
-            name: record.object.name
-        };
-    }
+export class NgLodgingsActions extends LodgingsActions {
+    constructor(protected store: NgRedux<LodgingsAppState>) { super(store); }
 }
