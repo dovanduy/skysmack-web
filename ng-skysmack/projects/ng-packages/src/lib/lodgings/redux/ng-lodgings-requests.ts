@@ -19,7 +19,7 @@ export class NgLodgingsRequests extends NgRecordRequests<Lodging, number> {
 
     // TODO: Ensure success return type is correct.
     public getAvailableLodgings(action: ReduxAction<GetIntervalPayload, SelectedLodgingIdsMeta>): Observable<ReduxAction<StrIndex<StrIndex<number>>> | ReduxAction<HttpErrorResponse>> {
-        let url = `${this.apiDomain.domain}/${action.payload.packagePath}/available/${action.payload.start}/${action.payload.end}`;
+        let url = `${this.apiDomain.domain}/${action.payload.packagePath}/available/daily/${action.payload.start}/${action.payload.end}`;
         url = `${url}?${action.meta.lodgingIds.map(id => `lodgingIds=${id}`).join('&')}`;
 
         return this.http.get<any>(url, { observe: 'response' }).pipe(

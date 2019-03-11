@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { EntityComponentPageTitle } from '@skysmack/portal-ui';
 import { NgSkysmackStore, NgLodgingsStore, NgLodgingsActions } from '@skysmack/ng-packages';
-import { Observable, pipe } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Observable, pipe, BehaviorSubject } from 'rxjs';
+import { map, delay } from 'rxjs/operators';
 import { CalendarEvent, EventColor, EventAction } from 'calendar-utils';
 
 import * as _moment from 'moment';
@@ -46,11 +46,6 @@ export class LodgingsAvailablityComponent implements OnInit {
     this.setAvailableLodgings();
   }
 
-  public setAvailableLodgings() {
-    this.requestPeriod(this.currentSelectedDate);
-    this.events$ = this.store.getAvailableLodgings(this.packagePath).pipe(toCalendarEvents());
-  }
-
   public requestPeriod(date: Date) {
     this.setCurrentDate(date);
     this.getAvailableLodgings();
@@ -68,6 +63,11 @@ export class LodgingsAvailablityComponent implements OnInit {
       }),
       defined()
     );
+  }
+
+  private setAvailableLodgings() {
+    this.requestPeriod(this.currentSelectedDate);
+    this.events$ = this.store.getAvailableLodgings(this.packagePath).pipe(toCalendarEvents());
   }
 
   private setCurrentDate(date: Date) {
@@ -109,5 +109,5 @@ const toCalendarEvents = () => pipe(
         lodgingTypeBadges
       }
     } as CalendarEvent;
-  })),
+  }))
 );
