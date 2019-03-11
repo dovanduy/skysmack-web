@@ -3,6 +3,7 @@ import { Store } from 'redux';
 import { LodgingsAppState } from './lodgings-reducer';
 import { LocalObject, StrIndex } from '@skysmack/framework';
 import { Lodging } from '../models/lodging';
+import { SelectedLodgingIdsMeta } from '../metas/selected-lodging-ids-meta';
 
 export class LodgingsActions extends RecordActionsBase<LodgingsAppState, Store<LodgingsAppState>> {
     public static GET_AVAILABLE_LODGINGS = 'GET_AVAILABLE_LODGINGS';
@@ -11,13 +12,16 @@ export class LodgingsActions extends RecordActionsBase<LodgingsAppState, Store<L
 
     constructor(protected store: Store<LodgingsAppState>) { super(store, 'LODGINGS_', []); }
 
-    public getAvailableLodgings(packagePath: string, start: string, end: string) {
-        this.store.dispatch(Object.assign({}, new ReduxAction<GetIntervalPayload>({
+    public getAvailableLodgings(packagePath: string, start: string, end: string, selectedLodgingIds: number[]) {
+        this.store.dispatch(Object.assign({}, new ReduxAction<GetIntervalPayload, SelectedLodgingIdsMeta>({
             type: LodgingsActions.GET_AVAILABLE_LODGINGS,
             payload: {
                 packagePath,
                 start,
                 end
+            },
+            meta: {
+                lodgingIds: selectedLodgingIds
             }
         })))
     }

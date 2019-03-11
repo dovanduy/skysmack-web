@@ -1,3 +1,13 @@
 <ss-container [sidebarMenu]="sidebarMenu">
+
+  <!-- Lodgings selection -->
+  <mat-form-field>
+    <mat-select [(value)]="selectedLodgings" placeholder="Select lodgings" multiple>
+      <mat-option *ngFor="let opt of lodgingOptions$ | async" [value]="opt.value" (click)="getAvailableLodgings()">
+        {{opt.displayName}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <!-- Calendar -->
   <ss-calendar *ngIf="events$ | async as events" [events]="events" (currentDate)="requestPeriod($event)"></ss-calendar>
 </ss-container>

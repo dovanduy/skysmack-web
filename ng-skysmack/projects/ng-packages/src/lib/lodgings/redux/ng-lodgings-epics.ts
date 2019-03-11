@@ -1,5 +1,5 @@
 import { RecordEpicsBase } from '@skysmack/ng-redux';
-import { Lodging, LodgingsActions } from '@skysmack/packages-lodgings';
+import { Lodging, LodgingsActions, SelectedLodgingIdsMeta } from '@skysmack/packages-lodgings';
 import { Injectable } from '@angular/core';
 import { NgLodgingsRequests } from './ng-lodgings-requests';
 import { NgLodgingsNotifications } from '../ng-lodgings-notifications';
@@ -24,10 +24,6 @@ export class NgLodgingsEpics extends RecordEpicsBase<Lodging, number> {
 
     public getAvailableLodgingsEpic = (action$: ActionsObservable<any>): Observable<ReduxAction<StrIndex<StrIndex<number>>> | ReduxAction<HttpErrorResponse>> => action$.pipe(
         ofType(LodgingsActions.GET_AVAILABLE_LODGINGS),
-        switchMap((action: ReduxAction<GetIntervalPayload>) => this.requests.getAvailableLodgings(
-            action.payload.packagePath,
-            action.payload.start,
-            action.payload.end
-        ))
+        switchMap((action: ReduxAction<GetIntervalPayload, SelectedLodgingIdsMeta>) => this.requests.getAvailableLodgings(action))
     )
 }
