@@ -20,6 +20,10 @@ export class CalendarComponent {
     this._viewDate = v;
   }
 
+  public trackById(index: any, item: any) {
+    return item.id;
+  }
+
   beforeMonthViewRender({ body }: { body: CalendarMonthViewDay[] }): void {
     body.forEach(cell => {
       cell.events.forEach((event: CalendarEvent<any>) => {

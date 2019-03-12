@@ -5,7 +5,7 @@
       <span class="cal-day-number">{{ day.date | calendarDate:'monthViewDayNumber':locale }}</span>
     </div>
     <div class="cell-totals">
-      <ng-container *ngFor="let freeLodgingsBadge of day.freeLodgingsBadges">
+      <ng-container *ngFor="let freeLodgingsBadge of day.freeLodgingsBadges; trackBy: trackById">
         <!-- <span class="tooltip" [matTooltipPosition]="'above'"  [matTooltip]="lodgingTypeBadge.type"></span>
       </span>-->
         <!-- <span class="badge" matBadge="{{ freeLodgingsBadge.name }}" matBadgeColor="accent"></span> -->

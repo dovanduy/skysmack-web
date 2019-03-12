@@ -85,30 +85,20 @@ export class LodgingsAvailablityComponent implements OnInit {
         return Object.keys(dates).map(dateKey => {
           const date = dateKey;
           let freeLodgingsBadges: {
+            id: string,
             name: string,
             available: boolean
           }[];
 
+
           freeLodgingsBadges = this.selectedLodgingIds.map(selectedLodgingId => {
+            const lodgingName = lodgings.find(lodging => lodging.object.id === selectedLodgingId).object.name;
             return {
-              name: lodgings.find(lodging => lodging.object.id === selectedLodgingId).object.name,
+              id: date.split('T')[0] + lodgingName,
+              name: lodgingName,
               available: dates[dateKey].includes(selectedLodgingId)
             };
           });
-
-          // console.log(dates);
-
-          // let freeLodgingsBadge = 0;
-
-          // const lodgingTypeBadges = Object.keys(dates[dateKey]).map(lodgingTypeKey => {
-          //   const lodgingType = lodgingTypeKey;
-          //   freeLodgingsBadge += dates[dateKey][lodgingTypeKey];
-
-          //   return {
-          //     type: lodgingType,
-          //     free: dates[dateKey][lodgingTypeKey]
-          //   };
-          // });
 
           return {
             start: new Date(date),
