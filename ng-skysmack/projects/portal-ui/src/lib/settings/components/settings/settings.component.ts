@@ -15,11 +15,12 @@ import { BaseComponent } from '../../../base-components/base-component';
   templateUrl: './settings.component.html',
   styleUrls: ['./settings.component.scss']
 })
-export class SettingsComponent extends BaseComponent<SettingsAppState, unknown> implements OnInit, OnDestroy {
+export class SettingsComponent extends BaseComponent<SettingsAppState<any>, unknown> implements OnInit, OnDestroy {
 
   public editorItem: LocalObject<any, unknown>;
   public selectedSettings: LocalObject<any, unknown>;
   public fieldsConfig: FieldsConfig<any, any, any>;
+  public settingsKey: string;
 
   constructor(
     public router: Router,
@@ -35,6 +36,8 @@ export class SettingsComponent extends BaseComponent<SettingsAppState, unknown> 
 
   ngOnInit() {
     super.ngOnInit();
+    this.settingsKey = this.router.url.split('/')[3];
+    this.actions.get(this.packagePath, this.settingsKey);
     this.setFields();
   }
 
@@ -43,14 +46,12 @@ export class SettingsComponent extends BaseComponent<SettingsAppState, unknown> 
     super.ngOnDestroy();
   }
 
-  public onSubmit(fh: FormHelper) {
+  public onSettingsSubmit(fh: FormHelper) {
     const values = fh.form.getRawValue();
-    this.actions.update(toLocalObject(values, 'none'), this.packagePath);
+    this.actions.update(toLocalObject(values, 'none'), this.packagePath, this.settingsKey);
   }
 
   protected setFields() {
-    this.actions.get(this.packagePath);
-
     this.subscriptionHandler.register(this.activatedRoute.data.pipe(
       map((data: RouteData) => {
         this.fieldsConfig = this.injector.get(data.fieldsConfigToken);
@@ -58,15 +59,13 @@ export class SettingsComponent extends BaseComponent<SettingsAppState, unknown> 
     ).subscribe());
 
     this.fields$ = combineLatest(
-      this.store.get(this.packagePath),
+      this.store.get(this.packagePath, this.settingsKey),
       this.skysmackStore.getEditorItem(),
     ).pipe(
       map(values => {
         const settings = values[0];
         this.editorItem = values[1] as LocalObject<any, unknown>;
         this.editorItem ? this.selectedSettings = this.editorItem : this.selectedSettings = settings;
-
-
         return this.fieldsConfig ? this.fieldsConfig.getFields(this.selectedSettings) : [];
       })
     );

@@ -52,7 +52,7 @@ export class Field {
      */
     public dynamicField = false;
 
-    constructor(values: Field) {
+    constructor(values: Partial<Field>) {
         Object.assign(this, values);
     }
 }

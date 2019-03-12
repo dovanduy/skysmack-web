@@ -16,14 +16,11 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
   @Input() public validation: Validation;
   @Input() public buttonText = 'Submit';
   @Input() public noSidebar: boolean;
+  @Output() public submitted: EventEmitter<FormHelper> = new EventEmitter();
 
   public production = GlobalProperties.production;
-
   public fh: FormHelper;
-
   public subscription: SubscriptionLike;
-
-  @Output() public submitted: EventEmitter<FormHelper> = new EventEmitter();
 
   constructor(public fb: FormBuilder, public editorNavService: EditorNavService) { }
 
@@ -47,7 +44,8 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
     this.fh = formHelper;
   }
 
-  public onSubmit() {
+  public onSubmit(event) {
+    event.preventDefault();
     this.submitted.emit(this.fh);
   }
 

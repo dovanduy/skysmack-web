@@ -4,5 +4,5 @@ import { SettingsAppState, SettingsActions } from '@skysmack/redux';
 
 @Injectable({ providedIn: 'root' })
 export class NgSettingsActions extends SettingsActions {
-    constructor(protected store: NgRedux<SettingsAppState>) { super(store); }
+    constructor(protected store: NgRedux<SettingsAppState<unknown>>) { super(store); }
 }

@@ -3,13 +3,13 @@ import { rolesReducer, usersReducer } from '@skysmack/packages-identities';
 import { NgRolesEpics } from './redux/ng-roles-epics';
 import { NgUsersEpics } from './redux/ng-users-epics';
 import { registerRedux } from '@skysmack/ng-redux';
-import { NgIdentitiesSettingsFieldsConfig } from './ng-identities-settings-fields-config';
+import { NgLockoutSettingsFieldsConfig } from './ng-lockout-settings-fields-config';
 
 @NgModule({
   imports: [],
   exports: [],
   providers: [
-    { provide: 'NgIdentitiesSettingsFieldsConfig', useClass: NgIdentitiesSettingsFieldsConfig }
+    { provide: 'NgLockoutSettingsFieldsConfig', useClass: NgLockoutSettingsFieldsConfig }
   ],
 })
 export class NgIdentitiesModule {

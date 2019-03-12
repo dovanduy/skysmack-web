@@ -4,14 +4,14 @@ import { RouteData } from '@skysmack/framework';
 import { SettingsComponent } from '@skysmack/portal-ui';
 
 const data = {
-  fieldsConfigToken: 'NgIdentitiesSettingsFieldsConfig'
+  fieldsConfigToken: 'NgLockoutSettingsFieldsConfig'
 } as RouteData;
 
 export const identitiesRoutes: Routes = [
   {
     path: '', component: IdentitiesIndexComponent,
     children: [
-      { path: 'settings', component: SettingsComponent, pathMatch: 'full', data }
+      { path: 'settings/lockout', component: SettingsComponent, pathMatch: 'full', data }
     ]
   }
 ];

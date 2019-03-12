@@ -11,3 +11,6 @@ export * from './ng-users-fields-config';
 
 export * from './ng-set-password-validation';
 export * from './ng-set-password-fields-config';
+
+export * from './ng-lockout-settings-fields-config';
+export * from './ng-lockout-settings-validation';

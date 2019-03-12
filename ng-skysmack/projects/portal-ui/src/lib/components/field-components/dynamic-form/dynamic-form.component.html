@@ -7,7 +7,7 @@
     </ss-dynamic-form-field>
   </ng-container>
 
-  <button mat-raised-button color="primary" type="submit" (click)="onSubmit()">{{ buttonText }}</button>
+  <button mat-raised-button color="primary" type="submit" (click)="onSubmit($event)">{{ buttonText }}</button>
 
   <pre *ngIf="!production">{{ fh.form.value | json }}</pre>
 </form>

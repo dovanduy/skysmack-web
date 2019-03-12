@@ -13,3 +13,4 @@ export * from './get-available-fields-success-payload';
 export * from './get-interval-payload';
 
 export * from './settings-success-payload';
+export * from './get-settings-payload';

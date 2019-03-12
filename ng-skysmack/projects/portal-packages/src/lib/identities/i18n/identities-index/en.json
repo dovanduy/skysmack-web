@@ -2,7 +2,9 @@
     "IDENTITIES_INDEX": {
         "ROLES": "Roles",
         "USERS": "Users",
-        "SETTINGS": "Settings",
-        "MANAGE": "Manage"
+        "MANAGE": "Manage",
+        "SETTINGS": {
+            "LOCKOUT": "Lockout settings"
+        }
     }
 }

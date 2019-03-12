@@ -1,11 +1,11 @@
-import { UserOptions } from './user-options';
-import { PasswordOptions } from './password-options';
-import { LockoutOptions } from './lockout-options';
-import { SignInOptions } from './sign-in-options';
+import { UserSettings } from './user-settings';
+import { PasswordSettings } from './password-settings';
+import { LockoutSettings } from './lockout-settings';
+import { SignInSettings } from './sign-in-settings';
 
 export class IdentitiesSettings {
-    public userOptions: UserOptions = new UserOptions({});
-    public passwordOptions: PasswordOptions = new PasswordOptions({});
-    public lockoutOptions: LockoutOptions = new LockoutOptions({});
-    public signInOptions: SignInOptions = new SignInOptions({});
+    public userSettings: UserSettings;
+    public passwordSettings: PasswordSettings;
+    public lockoutSettings: LockoutSettings;
+    public signInSettings: SignInSettings;
 }
