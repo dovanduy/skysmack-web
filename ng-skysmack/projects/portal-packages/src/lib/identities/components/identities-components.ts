@@ -16,6 +16,16 @@ export const identitiesRoutes: Routes = [
         path: 'settings/user', component: SettingsComponent, pathMatch: 'full', data: {
           fieldsConfigToken: 'NgUserSettingsFieldsConfig'
         } as RouteData
+      },
+      {
+        path: 'settings/password', component: SettingsComponent, pathMatch: 'full', data: {
+          fieldsConfigToken: 'NgPasswordSettingsFieldsConfig'
+        } as RouteData
+      },
+      {
+        path: 'settings/sign-in', component: SettingsComponent, pathMatch: 'full', data: {
+          fieldsConfigToken: 'NgSignInSettingsFieldsConfig'
+        } as RouteData
       }
     ]
   }

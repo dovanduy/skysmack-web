@@ -6,7 +6,9 @@
         "SETTINGS": "Settings",
         "AVAILABLE_SETTINGS": {
             "LOCKOUT": "Lockout",
-            "USER": "User"
+            "USER": "User",
+            "PASSWORD": "Password",
+            "SIGNIN": "Sign in"
         }
     }
 }

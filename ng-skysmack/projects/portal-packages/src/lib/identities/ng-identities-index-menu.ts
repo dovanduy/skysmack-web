@@ -29,6 +29,8 @@ export class NgIdentitiesIndexMenu extends SidebarMenu {
         this.primaryMenuItems.push(new MenuItem('users', this.translationPrefix + 'USERS', 'manage', 2, 'groupAdd'));
         this.primaryMenuItems.push(new MenuItem('settings/lockout', this.translationPrefix + 'AVAILABLE_SETTINGS.LOCKOUT', 'settings', 1, 'groupAdd'));
         this.primaryMenuItems.push(new MenuItem('settings/user', this.translationPrefix + 'AVAILABLE_SETTINGS.USER', 'settings', 2, 'groupAdd'));
+        this.primaryMenuItems.push(new MenuItem('settings/password', this.translationPrefix + 'AVAILABLE_SETTINGS.PASSWORD', 'settings', 2, 'groupAdd'));
+        this.primaryMenuItems.push(new MenuItem('settings/sign-in', this.translationPrefix + 'AVAILABLE_SETTINGS.SIGNIN', 'settings', 2, 'groupAdd'));
     }
 
     public setSpeedDialMenu() {
