@@ -49,6 +49,7 @@ export class SettingsComponent extends BaseComponent<SettingsAppState<any>, unkn
   public onSettingsSubmit(fh: FormHelper) {
     const values = fh.form.getRawValue();
     this.actions.update(toLocalObject(values, 'none'), this.packagePath, this.settingsKey);
+    this.ngOnDestroy();
   }
 
   protected setFields() {

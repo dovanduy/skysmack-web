@@ -3,15 +3,20 @@ import { IdentitiesIndexComponent } from './identities-index/identities-index.co
 import { RouteData } from '@skysmack/framework';
 import { SettingsComponent } from '@skysmack/portal-ui';
 
-const data = {
-  fieldsConfigToken: 'NgLockoutSettingsFieldsConfig'
-} as RouteData;
-
 export const identitiesRoutes: Routes = [
   {
     path: '', component: IdentitiesIndexComponent,
     children: [
-      { path: 'settings/lockout', component: SettingsComponent, pathMatch: 'full', data }
+      {
+        path: 'settings/lockout', component: SettingsComponent, pathMatch: 'full', data: {
+          fieldsConfigToken: 'NgLockoutSettingsFieldsConfig'
+        } as RouteData
+      },
+      {
+        path: 'settings/user', component: SettingsComponent, pathMatch: 'full', data: {
+          fieldsConfigToken: 'NgUserSettingsFieldsConfig'
+        } as RouteData
+      }
     ]
   }
 ];

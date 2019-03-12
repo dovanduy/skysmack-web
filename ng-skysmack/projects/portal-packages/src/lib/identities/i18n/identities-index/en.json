@@ -3,8 +3,10 @@
         "ROLES": "Roles",
         "USERS": "Users",
         "MANAGE": "Manage",
-        "SETTINGS": {
-            "LOCKOUT": "Lockout settings"
+        "SETTINGS": "Settings",
+        "AVAILABLE_SETTINGS": {
+            "LOCKOUT": "Lockout",
+            "USER": "User"
         }
     }
 }

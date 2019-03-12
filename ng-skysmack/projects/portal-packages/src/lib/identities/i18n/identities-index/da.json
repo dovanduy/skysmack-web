@@ -3,8 +3,10 @@
         "ROLES": "Roller",
         "USERS": "Brugere",
         "MANAGE": "Konfigurer",
-        "SETTINGS": {
-            "LOCKOUT": "Lockout indstillinger"
+        "SETTINGS": "Indstillinger",
+        "AVAILABLE_SETTINGS": {
+            "LOCKOUT": "Lockout",
+            "USER": "Brugere"
         }
     }
 }
