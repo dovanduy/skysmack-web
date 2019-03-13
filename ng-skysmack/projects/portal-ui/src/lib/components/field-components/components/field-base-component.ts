@@ -18,7 +18,8 @@ export abstract class FieldBaseComponent implements OnInit, OnDestroy {
     @Input() public field: Field;
     @Input() public fields$: Observable<Field[]>;
     @Input() public rules: FormRule[];
-    @Input() public subscriptionHandler: SubscriptionHandler;
+
+    public subscriptionHandler = new SubscriptionHandler();
 
 
     private oldFieldValue: string;
