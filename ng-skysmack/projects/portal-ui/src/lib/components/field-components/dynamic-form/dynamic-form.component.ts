@@ -1,9 +1,9 @@
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
-import { SubscriptionLike, Observable } from 'rxjs';
+import { FormBuilder, Validators, FormGroup, FormControl } from '@angular/forms';
+import { Observable } from 'rxjs';
 import { Field, FormRule, FormHelper, Validation } from '@skysmack/ng-ui';
 import { EditorNavService } from './../../common/container/editor-nav.service';
-import { GlobalProperties } from '@skysmack/framework';
+import { GlobalProperties, SubscriptionHandler } from '@skysmack/framework';
 
 @Component({
   selector: 'ss-dynamic-form',
@@ -20,12 +20,19 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
 
   public production = GlobalProperties.production;
   public fh: FormHelper;
-  public subscription: SubscriptionLike;
+  public subscriptionHander = new SubscriptionHandler();
 
   constructor(public fb: FormBuilder, public editorNavService: EditorNavService) { }
 
   ngOnInit() {
-    this.fields$.subscribe(fields => this.createForm(fields));
+    // Init form w. validation check
+    this.fh = new FormHelper(new FormGroup({}, this.validation.formValidators), this.validation);
+    this.validateOnChange(this.fh);
+
+    // Update the form (FormGroup) on field changes
+    this.subscriptionHander.register(this.fields$.subscribe(fields => this.updateForm(fields)));
+
+    // Show sidebar
     setTimeout(() => {
       if (!this.noSidebar) {
         this.editorNavService.showEditorNav();
@@ -33,55 +40,36 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
     }, 0);
   }
 
+  ngOnDestroy() {
+    this.subscriptionHander.unsubscribe();
+  }
+
   public trackByFieldKey(field: Field) {
     return field ? field.key : undefined;
   }
 
-  public createForm(fields: Field[]): void {
-    const formHelper = this.createFormHelper(fields);
-    this.disableFields(fields, formHelper);
-    this.validateOnChange(formHelper);
-    this.fh = formHelper;
-  }
-
-  public onSubmit(event) {
-    event.preventDefault();
-    this.submitted.emit(this.fh);
-  }
-
-  /**
-   * Creates a form helper from a group of fields.
-   */
-  private createFormHelper(fields: Field[]) {
-    // TODO: Only replace fields that do not already exist.
-    const formGroup = {};
+  public updateForm(fields: Field[]): void {
+    // Update the forms internal controls
     fields.forEach(field => {
-      formGroup[field.key] = field.validators ? [field.value, Validators.compose(field.validators)] : field.value;
-    });
-    const formHelper = new FormHelper(this.fb.group(formGroup, { validator: this.validation.formValidators }), this.validation);
-    return formHelper;
-  }
-
-  /**
-   * Disable fields set to be disabled
-   */
-  private disableFields(fields: Field[], formHelper: FormHelper) {
-    fields.filter(field => field.disabled === true).forEach(field => {
-      const control = formHelper.form.controls[field.key];
-      if (control) {
-        control.disable();
+      // Add new fields
+      if (!this.fh.form.contains(field.key)) {
+        const fieldFormControl = field.validators ? new FormControl(field.value, Validators.compose(field.validators)) : new FormControl(field.value);
+        if (field.disabled) {
+          fieldFormControl.disable();
+        }
+        this.fh.form.addControl(field.key, fieldFormControl);
       }
     });
+  }
+
+  public onSubmit() {
+    this.submitted.emit(this.fh);
   }
 
   /**
    * Subscribes to any changes in the form. The form is validated when a change occurs or the form is submitted.
    */
   private validateOnChange(formHelper: FormHelper) {
-    this.subscription = formHelper.form.valueChanges.subscribe(() => formHelper.validateForm(formHelper.form));
-  }
-
-  ngOnDestroy() {
-    this.subscription.unsubscribe();
+    this.subscriptionHander.register(formHelper.form.valueChanges.subscribe(() => formHelper.validateForm(formHelper.form)));
   }
 }

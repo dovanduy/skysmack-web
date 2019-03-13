@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FieldBaseComponent } from '../field-base-component';
-import { NgPackagesStore, NgSkysmackStore } from '@skysmack/ng-packages';
+import { NgPackagesStore, NgSkysmackStore, NgPackagesActions } from '@skysmack/ng-packages';
 import { switchMap, map } from 'rxjs/operators';
 import { Field } from '@skysmack/ng-ui';
+import { log } from '@skysmack/framework';
 
 @Component({
   selector: 'ss-available-permissions-field',
@@ -15,23 +16,27 @@ export class AvailablePermissionsFieldComponent extends FieldBaseComponent imple
 
   constructor(
     public packagesStore: NgPackagesStore,
-    public skysmackStore: NgSkysmackStore
+    public skysmackStore: NgSkysmackStore,
+    public packagesActions: NgPackagesActions
   ) { super(); }
 
   ngOnInit() {
     super.ngOnInit();
-  }
-
-  public init(fields: Field[]) {
     this.selectedPackagePath = this.getOtherFieldValue('packagePath');
     this.getPermissions();
     this.resetOnPackagePathChange();
   }
 
+  public init(fields: Field[]) {
+
+  }
+
   private getPermissions() {
     this.subscriptions.push(this.fh.form.valueChanges.pipe(
       switchMap(() => this.skysmackStore.getCurrentPackage(this.getOtherFieldValue('packagePath'))),
-      switchMap(x => this.packagesStore.getPermissions(x._package.type)),
+      switchMap(x => {
+        return this.packagesStore.getPermissions(x._package.type)
+      }),
       map(permissions => {
         if (permissions && permissions.length > 0) {
           this.permissions = permissions;

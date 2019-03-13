@@ -40,6 +40,7 @@ export class AccessPolicyPermissionsCreateComponent extends RecordFormComponent<
   public setCreateFields() {
     this.skysmackActions.getSkysmack();
     this.accessPolicyRulesActions.getPaged(this.packagePath, new PagedQuery());
+    this.packagesActions.getAvailablePackages();
 
     this.fields$ = combineLatest(
       this.skysmackStore.getPackages(),

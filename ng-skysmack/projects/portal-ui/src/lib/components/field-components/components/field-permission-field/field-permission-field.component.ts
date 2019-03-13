@@ -15,7 +15,7 @@ export class FieldPermissionFieldComponent extends FieldBaseComponent implements
   public permission: FieldAccessPermission;
 
   public get selectedAccessType(): AccessTypes {
-    return this.permission.access;
+    return this.permission && this.permission.access;
   }
   public set selectedAccessType(accessType: AccessTypes) {
     if (accessType === AccessTypes.authenticated) {
@@ -33,6 +33,7 @@ export class FieldPermissionFieldComponent extends FieldBaseComponent implements
   }
 
   public init(fields: Field[]) {
+    console.log('init field permission');
     this.setAccessTypes();
     this.setPermission();
   }

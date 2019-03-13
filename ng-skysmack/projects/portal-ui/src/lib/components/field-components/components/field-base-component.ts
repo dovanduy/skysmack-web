@@ -2,6 +2,7 @@ import { Input, OnDestroy, ElementRef, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { SubscriptionLike as ISubscription, Observable } from 'rxjs';
 import { FormHelper, Field, FormRule } from '@skysmack/ng-ui';
+import { pairwise, filter } from 'rxjs/operators';
 
 interface AddedEvent {
     component: ElementRef;
@@ -20,12 +21,29 @@ export abstract class FieldBaseComponent implements OnInit, OnDestroy {
 
     private oldFieldValue: string;
     private addedEvents: AddedEvent[] = [];
+    public initted: boolean;
 
     ngOnInit() {
+        // this.fh.form.valueChanges.subscribe(x => console.log('fh value changes', x));
         this.ensureControlExists();
-        this.subscriptions.push(this.fields$.subscribe(fields => {
-            this.field = fields.find(incomingField => incomingField.key === this.field.key);
-            this.init(fields);
+        this.initFieldComponent();
+    }
+
+    public initFieldComponent() {
+        this.subscriptions.push(this.fields$.pipe(
+            pairwise(),
+            filter(values => !Object.is(JSON.stringify(values[0]), JSON.stringify(values[1])))
+        ).subscribe(values => {
+            const newFields = values[1];
+            const newField = newFields.find(incomingField => incomingField.key === this.field.key);
+
+            if (!Object.is(JSON.stringify(this.field), JSON.stringify(newField))) {
+                this.field = newField;
+                this.init(newFields);
+            } else if (!this.initted) {
+                this.init(newFields);
+                this.initted = true;
+            }
         }));
     }
 
