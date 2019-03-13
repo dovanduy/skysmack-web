@@ -35,7 +35,6 @@ export class NgPackagesFieldsConfig extends FieldsConfig<Package, string, NgPack
                 fieldType: FieldTypes.PackageDependenciesField,
                 value: _package ? _package.object.name : undefined,
                 key: 'dependencies',
-                validators: [Validators.required],
                 order: 2,
             } as Field),
 

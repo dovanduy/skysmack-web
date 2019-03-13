@@ -74,8 +74,9 @@ export abstract class RecordActionsBase<TStateType, TStore extends Store<TStateT
         records.forEach(record => record.error = false);
 
         const queueItems = records.map(record => {
+            const withQueue = this.prefix + 'QUEUE';
             return new QueueItem({
-                message: `${this.prefix.replace('_', '.')}QUEUE.ADDING`,
+                message: `${withQueue.replace('_QUEUE', '.QUEUE')}.ADDING`,
                 messageParams: this.getMessageParams(record),
                 link: `${this.addAdditionalPaths(packagePath)}/create`,
                 packagePath,
@@ -121,8 +122,9 @@ export abstract class RecordActionsBase<TStateType, TStore extends Store<TStateT
         records.forEach(record => record.error = false);
 
         const queueItems = records.map(record => {
+            const withQueue = this.prefix + 'QUEUE';
             return new QueueItem({
-                message: `${this.prefix.replace('_', '.')}QUEUE.UPDATING`,
+                message: `${withQueue.replace('_QUEUE', '.QUEUE')}.UPDATING`,
                 messageParams: this.getMessageParams(record),
                 link: `${this.addAdditionalPaths(packagePath)}/edit/${record.object.id}`,
                 packagePath,
@@ -169,8 +171,9 @@ export abstract class RecordActionsBase<TStateType, TStore extends Store<TStateT
         records.forEach(record => record.error = false);
 
         const queueItems = records.map(record => {
+            const withQueue = this.prefix + 'QUEUE';
             return new QueueItem({
-                message: `${this.prefix.replace('_', '.')}QUEUE.DELETING`,
+                message: `${withQueue.replace('_QUEUE', '.QUEUE')}.DELETING`,
                 messageParams: this.getMessageParams(record),
                 packagePath,
                 localObject: record,

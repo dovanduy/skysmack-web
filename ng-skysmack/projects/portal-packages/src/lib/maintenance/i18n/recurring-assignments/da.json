@@ -1,56 +1,54 @@
 {
-    "MAINTENANCE": {
-        "RECURRING_ASSIGNMENTS": {
-            "FORM": {
-                "LABELS": {
-                    "ASSIGNMENTTYPEID": "Opgave type",
-                    "ENTITYID": "Enhed",
-                    "START": "Start tidspunkt",
-                    "END": "Slut tidspunkt"
+    "RECURRING_ASSIGNMENTS": {
+        "FORM": {
+            "LABELS": {
+                "ASSIGNMENTTYPEID": "Opgave type",
+                "ENTITYID": "Enhed",
+                "START": "Start tidspunkt",
+                "END": "Slut tidspunkt"
+            },
+            "PLACEHOLDERS": {
+                "ASSIGNMENTTYPEID": "Opgave type",
+                "ENTITYID": "Enhed",
+                "START": "Start tidspunkt",
+                "END": "Slut tidspunkt"
+            },
+            "VALIDATION": {
+                "ASSIGNMENTTYPEID": {
+                    "REQUIRED": "Opgave type er påkrævet."
                 },
-                "PLACEHOLDERS": {
-                    "ASSIGNMENTTYPEID": "Opgave type",
-                    "ENTITYID": "Enhed",
-                    "START": "Start tidspunkt",
-                    "END": "Slut tidspunkt"
+                "ENTITYID": {
+                    "REQUIRED": "Enhed er påkrævet"
                 },
-                "VALIDATION": {
-                    "ASSIGNMENTTYPEID": {
-                        "REQUIRED": "Opgave type er påkrævet."
-                    },
-                    "ENTITYID": {
-                        "REQUIRED": "Enhed er påkrævet"
-                    },
-                    "START": {
-                        "REQUIRED": "Start tidspunkt er påkrævet"
-                    },
-                    "END": {
-                        "REQUIRED": "Slut tidspunkt er påkrævet"
-                    }
+                "START": {
+                    "REQUIRED": "Start tidspunkt er påkrævet"
+                },
+                "END": {
+                    "REQUIRED": "Slut tidspunkt er påkrævet"
                 }
-            },
-            "CREATE": {
-                "CREATE": "Opret"
-            },
-            "EDIT": {
-                "EDIT": "Ret"
-            },
-            "INDEX": {
-                "ACTIONS": "Handlinger",
-                "CREATE": "Opret",
-                "EDIT": "Ret",
-                "DELETE": "Slet",
-                "MANAGE": "Konfigurer",
-                "FIELDS": "Felter",
-                "STATES": "Tilstande",
-                "BACK": "Tilbage"
-            },
-            "QUEUE": {
-                "ADDING": "Tilføjer {{ description }}",
-                "UPDATING": "Opdatere {{ description }}",
-                "DELETING": "Sletter {{ description }}",
-                "ERROR": "Der opstod  en fejl ved {{ description }}. Ret og prøv igen."
             }
+        },
+        "CREATE": {
+            "CREATE": "Opret"
+        },
+        "EDIT": {
+            "EDIT": "Ret"
+        },
+        "INDEX": {
+            "ACTIONS": "Handlinger",
+            "CREATE": "Opret",
+            "EDIT": "Ret",
+            "DELETE": "Slet",
+            "MANAGE": "Konfigurer",
+            "FIELDS": "Felter",
+            "STATES": "Tilstande",
+            "BACK": "Tilbage"
+        },
+        "QUEUE": {
+            "ADDING": "Tilføjer {{ description }}",
+            "UPDATING": "Opdatere {{ description }}",
+            "DELETING": "Sletter {{ description }}",
+            "ERROR": "Der opstod  en fejl ved {{ description }}. Ret og prøv igen."
         }
     }
 }

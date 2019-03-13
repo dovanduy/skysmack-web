@@ -82,10 +82,10 @@
             }
         },
         "QUEUE": {
-            "ADDING": "Tilføjer {{ email }}",
-            "UPDATING": "Opdatere {{ email }}",
-            "DELETING": "Sletter {{ email }}",
-            "ERROR": "Der opstod en fejl ved {{ email }}. Ret og prøv igen."
+            "ADDING": "Tilføjer {{ displayName }}",
+            "UPDATING": "Opdatere {{ displayName }}",
+            "DELETING": "Sletter {{ displayName }}",
+            "ERROR": "Der opstod en fejl ved {{ displayName }}. Ret og prøv igen."
         }
     }
 }
