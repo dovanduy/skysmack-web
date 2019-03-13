@@ -1,12 +1,12 @@
 import { ofType, ActionsObservable, Epic } from 'redux-observable';
-import { ReduxAction, PackagePathPayload, GetAvailablePackagesSuccessPayload, CommitMeta, RollbackMeta, GetPagedEntitiesPayload, GetPagedEntitiesSuccessPayload } from '@skysmack/redux';
+import { ReduxAction, PackagePathPayload, GetAvailablePackagesSuccessPayload, CommitMeta, RollbackMeta, GetPagedEntitiesPayload, GetPagedEntitiesSuccessPayload, ReduxOfflineMeta, QueueActions, CancelActionPayload } from '@skysmack/redux';
 import { map, mergeMap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { NgPackagesRequests } from './ng-packages-requests';
 import { GetPackageSuccessPayload } from '@skysmack/packages-skysmack-core';
 import { NgPackagesActions } from './ng-packages-actions';
-import { HttpErrorResponse, LocalObject, Package } from '@skysmack/framework';
+import { HttpErrorResponse, LocalObject, Package, HttpResponse, QueueItem } from '@skysmack/framework';
 import { NgPackagesNotifications } from '../ng-packages-notifications';
 
 @Injectable({ providedIn: 'root' })
@@ -26,6 +26,10 @@ export class NgPackagesEpics {
             this.snackBarCreateFailureEpic,
             this.snackBarUpdateFailureEpic,
             this.snackBarRemoveFailureEpic,
+            this.standardActionEpic,
+            this.successActionEpic,
+            this.failureActionEpic,
+            this.cancelActionEpic
         ];
     }
 
@@ -113,4 +117,76 @@ export class NgPackagesEpics {
             return { type: 'NOTIFICATION' };
         })
     )
+
+
+        //#region Queue
+        public standardActionEpic = (action$: ActionsObservable<ReduxAction<any, ReduxOfflineMeta<Package[], HttpResponse, LocalObject<Package, string>[]>>>): Observable<ReduxAction<QueueItem[]>> => {
+            return action$.pipe(
+                ofType(
+                    NgPackagesActions.ADD_PACKAGE,
+                    NgPackagesActions.UPDATE_PACKAGE,
+                    NgPackagesActions.DELETE_PACKAGE,
+                ),
+                map(action => ({
+                    type: QueueActions.SET_QUEUE_ITEMS,
+                    payload: action.meta.offline.commit.meta.queueItems
+                }))
+            );
+        }
+    
+        public successActionEpic = (action$: ActionsObservable<ReduxAction<HttpErrorResponse, CommitMeta<LocalObject<Package, string>[]>>>): Observable<ReduxAction<QueueItem[]>> => {
+            return action$.pipe(
+                ofType(
+                   NgPackagesActions.ADD_PACKAGE_SUCCESS,
+                   NgPackagesActions.UPDATE_PACKAGE_SUCCESS,
+                   NgPackagesActions.DELETE_PACKAGE_SUCCESS,
+                ),
+                map(action => ({
+                    type: QueueActions.REMOVE_QUEUE_ITEMS,
+                    payload: action.meta.value.map(record => {
+                        return new QueueItem({
+                            message: ``,
+                            packagePath: action.meta.stateKey,
+                            localObject: record,
+                        });
+                    })
+                }))
+            );
+        }
+    
+        public failureActionEpic = (action$: ActionsObservable<ReduxAction<HttpErrorResponse, CommitMeta<LocalObject<Package, string>[]>>>): Observable<ReduxAction<QueueItem[]>> => {
+            return action$.pipe(
+                ofType(
+                    NgPackagesActions.ADD_PACKAGE_FAILURE,
+                    NgPackagesActions.UPDATE_PACKAGE_FAILURE,
+                    NgPackagesActions.DELETE_PACKAGE_FAILURE,
+                ),
+                map(action => ({
+                    type: QueueActions.SET_QUEUE_ITEMS,
+                    payload: action.meta.queueItems.map(queueItems => {
+                        queueItems.message = `PACKAGES.ERROR`;
+                        queueItems.localObject.error = true;
+                        queueItems.error = action.payload;
+                        return queueItems;
+                    })
+                }))
+            );
+        }
+    
+        public cancelActionEpic = (action$: ActionsObservable<ReduxAction<{ _package: LocalObject<Package, string>}>>): Observable<ReduxAction<QueueItem[]>> => {
+            return action$.pipe(
+                ofType(NgPackagesActions.CANCEL_PACKAGE_ACTION),
+                map(action => ({
+                    type: QueueActions.REMOVE_QUEUE_ITEMS,
+                    payload: [
+                        new QueueItem({
+                            message: ``,
+                            packagePath: '',
+                            localObject: action.payload._package
+                        })
+                    ]
+                }))
+            );
+        }
+        //#endregion
 }
