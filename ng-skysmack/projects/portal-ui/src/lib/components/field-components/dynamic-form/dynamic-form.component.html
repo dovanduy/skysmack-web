@@ -1,6 +1,6 @@
 <ng-content></ng-content>
 
-<form *ngIf="fh" [formGroup]="fh.form" (ngSubmit)="onSubmit()">
+<form *ngIf="fh" [formGroup]="fh.form">
 
   <ng-container *ngFor="let field of fields$ | async; trackBy: trackByFieldKey">
     <ss-dynamic-form-field [fh]="fh" [field]="field" [fields$]="fields$" [rules]="rules">

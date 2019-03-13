@@ -11,7 +11,7 @@ export class NgPersonsActions extends RecordActionsBase<PersonsAppState, NgRedux
 
     public getMessageParams(record: LocalObject<Person, number>): StrIndex<string> {
         return {
-            email: record.object.email
+            displayName: record.object.displayName
         };
     }
 }

@@ -82,10 +82,10 @@
             }
         },
         "QUEUE": {
-            "ADDING": "Adding {{ email }}",
-            "UPDATING": "Updating {{ email }}",
-            "DELETING": "Deleting {{ email }}",
-            "ERROR": "An error occured with {{ email }}. Correct and try again."
+            "ADDING": "Adding {{ displayName }}",
+            "UPDATING": "Updating {{ displayName }}",
+            "DELETING": "Deleting {{ displayName }}",
+            "ERROR": "An error occured with {{ displayName }}. Correct and try again."
         }
     }
 }
