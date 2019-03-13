@@ -133,7 +133,7 @@ export class NgPackagesEpics {
                 }))
             );
         }
-    
+
         public successActionEpic = (action$: ActionsObservable<ReduxAction<HttpErrorResponse, CommitMeta<LocalObject<Package, string>[]>>>): Observable<ReduxAction<QueueItem[]>> => {
             return action$.pipe(
                 ofType(
@@ -153,7 +153,7 @@ export class NgPackagesEpics {
                 }))
             );
         }
-    
+
         public failureActionEpic = (action$: ActionsObservable<ReduxAction<HttpErrorResponse, CommitMeta<LocalObject<Package, string>[]>>>): Observable<ReduxAction<QueueItem[]>> => {
             return action$.pipe(
                 ofType(
@@ -172,7 +172,7 @@ export class NgPackagesEpics {
                 }))
             );
         }
-    
+
         public cancelActionEpic = (action$: ActionsObservable<ReduxAction<{ _package: LocalObject<Package, string>}>>): Observable<ReduxAction<QueueItem[]>> => {
             return action$.pipe(
                 ofType(NgPackagesActions.CANCEL_PACKAGE_ACTION),

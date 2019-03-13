@@ -210,7 +210,7 @@ export class PackagesActions<TStateType, TStore extends Store<TStateType>> imple
 
     public getMessageParams(_package: LocalObject<Package, string>): StrIndex<string> {
         return {
-            0: _package.object.name
+            name: _package.object.name
         };
     };
 
