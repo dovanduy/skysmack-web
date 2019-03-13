@@ -1,60 +1,61 @@
-<div [ngSwitch]="field.fieldType">
-  <ss-int-field [fh]="fh" [field]="field" [fields$]="fields$" [rules]="rules" *ngSwitchCase="fieldTypeConstants.int">
+<div [ngSwitch]="fieldType">
+  <ss-int-field [fh]="fh" [fieldKey]="fieldKey" [fields$]="fields$" [rules]="rules"
+    *ngSwitchCase="fieldTypeConstants.int">
   </ss-int-field>
 
-  <ss-string-field [fh]="fh" [field]="field" [fields$]="fields$" [rules]="rules"
+  <ss-string-field [fh]="fh" [fieldKey]="fieldKey" [fields$]="fields$" [rules]="rules"
     *ngSwitchCase="fieldTypeConstants.string"></ss-string-field>
 
-  <ss-date-time-field [fh]="fh" [field]="field" [fields$]="fields$" [rules]="rules"
+  <ss-date-time-field [fh]="fh" [fieldKey]="fieldKey" [fields$]="fields$" [rules]="rules"
     *ngSwitchCase="fieldTypeConstants.dateTime"></ss-date-time-field>
 
-  <ss-decimal-field [fh]="fh" [field]="field" [fields$]="fields$" [rules]="rules"
+  <ss-decimal-field [fh]="fh" [fieldKey]="fieldKey" [fields$]="fields$" [rules]="rules"
     *ngSwitchCase="fieldTypeConstants.decimal"></ss-decimal-field>
 
-  <ss-double-field [fh]="fh" [field]="field" [fields$]="fields$" [rules]="rules"
+  <ss-double-field [fh]="fh" [fieldKey]="fieldKey" [fields$]="fields$" [rules]="rules"
     *ngSwitchCase="fieldTypeConstants.double"></ss-double-field>
 
-  <ss-geography-field [fh]="fh" [field]="field" [fields$]="fields$" [rules]="rules"
+  <ss-geography-field [fh]="fh" [fieldKey]="fieldKey" [fields$]="fields$" [rules]="rules"
     *ngSwitchCase="fieldTypeConstants.geography"></ss-geography-field>
 
-  <ss-limited-string-field [fh]="fh" [field]="field" [fields$]="fields$" [rules]="rules"
+  <ss-limited-string-field [fh]="fh" [fieldKey]="fieldKey" [fields$]="fields$" [rules]="rules"
     *ngSwitchCase="fieldTypeConstants.limitedString"></ss-limited-string-field>
 
-  <ss-checkbox-field [fh]="fh" [field]="field" [fields$]="fields$" [rules]="rules"
+  <ss-checkbox-field [fh]="fh" [fieldKey]="fieldKey" [fields$]="fields$" [rules]="rules"
     *ngSwitchCase="fieldTypeConstants.CheckboxField"></ss-checkbox-field>
 
-  <ss-date-field [fh]="fh" [field]="field" [fields$]="fields$" [rules]="rules"
+  <ss-date-field [fh]="fh" [fieldKey]="fieldKey" [fields$]="fields$" [rules]="rules"
     *ngSwitchCase="fieldTypeConstants.DateField"></ss-date-field>
 
-  <ss-email-field [fh]="fh" [field]="field" [fields$]="fields$" [rules]="rules"
+  <ss-email-field [fh]="fh" [fieldKey]="fieldKey" [fields$]="fields$" [rules]="rules"
     *ngSwitchCase="fieldTypeConstants.EmailField"></ss-email-field>
 
-  <ss-hidden-field [fh]="fh" [field]="field" [fields$]="fields$" [rules]="rules"
+  <ss-hidden-field [fh]="fh" [fieldKey]="fieldKey" [fields$]="fields$" [rules]="rules"
     *ngSwitchCase="fieldTypeConstants.HiddenField"></ss-hidden-field>
 
-  <ss-password-field [fh]="fh" [field]="field" [fields$]="fields$" [rules]="rules"
+  <ss-password-field [fh]="fh" [fieldKey]="fieldKey" [fields$]="fields$" [rules]="rules"
     *ngSwitchCase="fieldTypeConstants.PasswordField"></ss-password-field>
 
-  <ss-package-dependencies-field [fh]="fh" [field]="field" [fields$]="fields$" [rules]="rules"
+  <ss-package-dependencies-field [fh]="fh" [fieldKey]="fieldKey" [fields$]="fields$" [rules]="rules"
     *ngSwitchCase="fieldTypeConstants.PackageDependenciesField"></ss-package-dependencies-field>
 
-  <ss-available-permissions-field [fh]="fh" [field]="field" [fields$]="fields$" [rules]="rules"
+  <ss-available-permissions-field [fh]="fh" [fieldKey]="fieldKey" [fields$]="fields$" [rules]="rules"
     *ngSwitchCase="fieldTypeConstants.AvailablePermissionsField"></ss-available-permissions-field>
 
-  <ss-recurring-expression-field [fh]="fh" [field]="field" [fields$]="fields$" [rules]="rules"
+  <ss-recurring-expression-field [fh]="fh" [fieldKey]="fieldKey" [fields$]="fields$" [rules]="rules"
     *ngSwitchCase="fieldTypeConstants.RecurringExpressionField"></ss-recurring-expression-field>
 
-  <ss-select-field [fh]="fh" [field]="field" [fields$]="fields$" [rules]="rules"
+  <ss-select-field [fh]="fh" [fieldKey]="fieldKey" [fields$]="fields$" [rules]="rules"
     *ngSwitchCase="fieldTypeConstants.SelectField"></ss-select-field>
 
-  <ss-time-field [fh]="fh" [field]="field" [fields$]="fields$" [rules]="rules"
+  <ss-time-field [fh]="fh" [fieldKey]="fieldKey" [fields$]="fields$" [rules]="rules"
     *ngSwitchCase="fieldTypeConstants.TimeField"></ss-time-field>
 
-  <ss-validators-field [fh]="fh" [field]="field" [fields$]="fields$" [rules]="rules"
+  <ss-validators-field [fh]="fh" [fieldKey]="fieldKey" [fields$]="fields$" [rules]="rules"
     *ngSwitchCase="fieldTypeConstants.ValidatorsField">
   </ss-validators-field>
 
-  <ss-field-permission-field [fh]="fh" [field]="field" [fields$]="fields$" [rules]="rules"
+  <ss-field-permission-field [fh]="fh" [fieldKey]="fieldKey" [fields$]="fields$" [rules]="rules"
     *ngSwitchCase="fieldTypeConstants.FieldPermissionField">
   </ss-field-permission-field>
 </div>

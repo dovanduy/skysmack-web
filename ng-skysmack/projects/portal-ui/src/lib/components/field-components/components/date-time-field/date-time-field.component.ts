@@ -19,8 +19,6 @@ export class DateTimeFieldComponent extends FieldBaseComponent implements AfterV
     super.ngOnInit();
   }
 
-  public init(fields: Field[]) { }
-
   ngAfterViewInit() {
     combineLatest(
       this.getFormField().valueChanges,

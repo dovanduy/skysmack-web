@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormHelper, Field, FormRule, FieldTypes } from '@skysmack/ng-ui';
 import { Observable } from 'rxjs';
 
@@ -9,7 +9,8 @@ import { Observable } from 'rxjs';
 })
 export class DynamicFormFieldComponent {
   @Input() fh: FormHelper;
-  @Input() field: Field;
+  @Input() fieldType: FieldTypes;
+  @Input() fieldKey: string;
   @Input() fields$: Observable<Field[]>;
   @Input() rules: FormRule[];
 

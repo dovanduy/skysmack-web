@@ -17,9 +17,6 @@ export class RecurringExpressionFieldComponent extends FieldBaseComponent implem
 
   ngOnInit() {
     super.ngOnInit();
-  }
-
-  public init(fields: Field[]) {
     this.removeExpressionField();
   }
 

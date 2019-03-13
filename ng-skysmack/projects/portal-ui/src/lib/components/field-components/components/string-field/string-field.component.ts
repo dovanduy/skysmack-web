@@ -12,8 +12,6 @@ export class StringFieldComponent extends FieldBaseComponent implements OnInit {
     super.ngOnInit();
   }
 
-  public init(fields: Field[]) { }
-
   public focusLost() {
     this.runRules();
   }

@@ -45,9 +45,6 @@ export class ValidatorsFieldComponent extends FieldBaseComponent implements OnIn
 
   ngOnInit() {
     super.ngOnInit();
-  }
-
-  public init(fields: Field[]) {
     this.packagePath = this.router.url.split('/')[1];
 
     // Get default values

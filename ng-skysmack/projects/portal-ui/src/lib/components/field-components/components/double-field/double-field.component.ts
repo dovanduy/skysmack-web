@@ -11,6 +11,4 @@ export class DoubleFieldComponent extends FieldBaseComponent implements OnInit {
   ngOnInit() {
     super.ngOnInit();
   }
-
-  public init(fields: Field[]) { }
 }

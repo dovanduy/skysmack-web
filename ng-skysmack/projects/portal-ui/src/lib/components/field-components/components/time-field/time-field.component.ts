@@ -11,6 +11,4 @@ export class TimeFieldComponent extends FieldBaseComponent implements OnInit {
   ngOnInit() {
     super.ngOnInit();
   }
-
-  public init(fields: Field[]) { }
 }

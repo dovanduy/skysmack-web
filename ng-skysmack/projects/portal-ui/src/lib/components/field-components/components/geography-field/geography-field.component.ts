@@ -23,8 +23,6 @@ export class GeographyFieldComponent extends FieldBaseComponent implements After
     super.ngOnInit();
   }
 
-  public init(fields: Field[]) { }
-
   ngAfterViewInit() {
     this.initValues();
     this.changeDetector.detectChanges();

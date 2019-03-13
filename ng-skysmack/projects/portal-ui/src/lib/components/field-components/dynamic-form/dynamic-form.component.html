@@ -3,7 +3,8 @@
 <form *ngIf="fh" [formGroup]="fh.form">
 
   <ng-container *ngFor="let field of fields$ | async; trackBy: trackByFieldKey">
-    <ss-dynamic-form-field [fh]="fh" [field]="field" [fields$]="fields$" [rules]="rules">
+    <ss-dynamic-form-field [fh]="fh" [fieldKey]="field.key" [fieldType]="field.fieldType" [fields$]="fields$"
+      [rules]="rules">
     </ss-dynamic-form-field>
   </ng-container>
 

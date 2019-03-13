@@ -30,6 +30,4 @@ export class EmailFieldComponent extends FieldBaseComponent implements OnInit {
   ngOnInit() {
     super.ngOnInit();
   }
-
-  public init(fields: Field[]) { }
 }

@@ -34,9 +34,6 @@ export class LimitedStringFieldComponent extends FieldBaseComponent implements O
 
   ngOnInit() {
     super.ngOnInit();
-  }
-
-  public init(fields: Field[]) {
     this.setCharsLeft();
   }
 

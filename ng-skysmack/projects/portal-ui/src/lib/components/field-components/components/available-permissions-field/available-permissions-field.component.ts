@@ -27,10 +27,6 @@ export class AvailablePermissionsFieldComponent extends FieldBaseComponent imple
     this.resetOnPackagePathChange();
   }
 
-  public init(fields: Field[]) {
-
-  }
-
   private getPermissions() {
     this.subscriptions.push(this.fh.form.valueChanges.pipe(
       switchMap(() => this.skysmackStore.getCurrentPackage(this.getOtherFieldValue('packagePath'))),

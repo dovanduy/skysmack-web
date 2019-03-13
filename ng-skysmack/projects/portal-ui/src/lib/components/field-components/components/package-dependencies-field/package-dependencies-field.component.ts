@@ -39,9 +39,6 @@ export class PackageDependenciesFieldComponent extends FieldBaseComponent implem
 
   ngOnInit() {
     super.ngOnInit();
-  }
-
-  public init(fields: Field[]) {
     this.createSelectBoxes();
   }
 

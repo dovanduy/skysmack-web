@@ -10,9 +10,6 @@ import { Field } from '@skysmack/ng-ui';
 export class IntFieldComponent extends FieldBaseComponent implements OnInit {
   ngOnInit() {
     super.ngOnInit();
-  }
-
-  public init(fields: Field[]) {
     this.subscriptions.push(this.fh.form.valueChanges.subscribe(() => {
       const itemValue = this.getFieldValue();
       if (itemValue !== undefined && itemValue !== null) {

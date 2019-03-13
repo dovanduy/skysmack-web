@@ -12,12 +12,14 @@ export class SelectFieldComponent extends FieldBaseComponent implements OnInit {
 
   ngOnInit() {
     super.ngOnInit();
-  }
+    this.subscriptions.push(this.fields$.subscribe((fields: any) => {
+      if (this.field) {
 
-  public init(fields: Field[]) {
-    this.fieldOptions = (this.field as SelectField).getOptions();
-    this.runAllRulesOfType(DisableUntilValueRule.type, { fields });
-    this.runRulesOnChange(fields);
+        this.runAllRulesOfType(DisableUntilValueRule.type, { fields });
+        this.runRulesOnChange(fields);
+        this.fieldOptions = (this.field as SelectField).getOptions();
+      }
+    }));
   }
 
   public runRulesOnChange(fields: Field[]) {

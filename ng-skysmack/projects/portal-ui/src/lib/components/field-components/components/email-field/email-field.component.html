@@ -1,8 +1,9 @@
 <div [formGroup]="fh.form">
   <mat-form-field>
-    <input matInput type="email" [attr.id]="field.key" [name]="field.label" [formControlName]="field.key" [placeholder]="field.placeholder | translate">
-    <mat-error *ngIf="fh.formErrors[field.key]">
-      {{ fh.formErrors[field.key] | translate }}
+    <input matInput type="email" [attr.id]="fieldKey" [name]="field.label" [formControlName]="fieldKey"
+      [placeholder]="field.placeholder | translate">
+    <mat-error *ngIf="fh.formErrors[fieldKey]">
+      {{ fh.formErrors[fieldKey] | translate }}
     </mat-error>
   </mat-form-field>
 </div>

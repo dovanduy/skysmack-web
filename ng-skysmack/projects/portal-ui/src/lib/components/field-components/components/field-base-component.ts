@@ -2,7 +2,7 @@ import { Input, OnDestroy, ElementRef, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { SubscriptionLike as ISubscription, Observable } from 'rxjs';
 import { FormHelper, Field, FormRule } from '@skysmack/ng-ui';
-import { pairwise, filter } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 
 interface AddedEvent {
     component: ElementRef;
@@ -13,7 +13,8 @@ interface AddedEvent {
 
 export abstract class FieldBaseComponent implements OnInit, OnDestroy {
     @Input() public fh: FormHelper;
-    @Input() public field: Field;
+    @Input() public fieldKey: string;
+    public field: Field;
     @Input() public fields$: Observable<Field[]>;
     @Input() public rules: FormRule[];
 
@@ -24,35 +25,7 @@ export abstract class FieldBaseComponent implements OnInit, OnDestroy {
     public initted: boolean;
 
     ngOnInit() {
-        // this.fh.form.valueChanges.subscribe(x => console.log('fh value changes', x));
-        this.ensureControlExists();
-        this.initFieldComponent();
-    }
-
-    public initFieldComponent() {
-        this.subscriptions.push(this.fields$.pipe(
-            pairwise(),
-            filter(values => !Object.is(JSON.stringify(values[0]), JSON.stringify(values[1])))
-        ).subscribe(values => {
-            const newFields = values[1];
-            const newField = newFields.find(incomingField => incomingField.key === this.field.key);
-
-            if (!Object.is(JSON.stringify(this.field), JSON.stringify(newField))) {
-                this.field = newField;
-                this.init(newFields);
-            } else if (!this.initted) {
-                this.init(newFields);
-                this.initted = true;
-            }
-        }));
-    }
-
-    public abstract init(fields: Field[]): void;
-
-    protected ensureControlExists() {
-        if (!this.fh.form.get(this.field.key)) {
-            this.fh.form.addControl(this.field.key, new FormControl());
-        }
+        this.subscriptions.push(this.fields$.pipe(map(fields => { this.field = fields.find(field => field.key === this.fieldKey); })).subscribe());
     }
 
     /**

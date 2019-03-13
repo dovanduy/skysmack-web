@@ -30,10 +30,6 @@ export class FieldPermissionFieldComponent extends FieldBaseComponent implements
 
   ngOnInit() {
     super.ngOnInit();
-  }
-
-  public init(fields: Field[]) {
-    console.log('init field permission');
     this.setAccessTypes();
     this.setPermission();
   }
