@@ -3,6 +3,8 @@ import { FormControl } from '@angular/forms';
 import { SubscriptionLike as ISubscription, Observable } from 'rxjs';
 import { FormHelper, Field, FormRule } from '@skysmack/ng-ui';
 import { pairwise, filter } from 'rxjs/operators';
+import { SubscriptionHandler } from '@skysmack/framework';
+
 
 interface AddedEvent {
     component: ElementRef;
@@ -16,8 +18,8 @@ export abstract class FieldBaseComponent implements OnInit, OnDestroy {
     @Input() public field: Field;
     @Input() public fields$: Observable<Field[]>;
     @Input() public rules: FormRule[];
+    @Input() public subscriptionHandler: SubscriptionHandler;
 
-    protected subscriptions: ISubscription[] = [];
 
     private oldFieldValue: string;
     private addedEvents: AddedEvent[] = [];
@@ -30,7 +32,7 @@ export abstract class FieldBaseComponent implements OnInit, OnDestroy {
     }
 
     public initFieldComponent() {
-        this.subscriptions.push(this.fields$.pipe(
+        this.subscriptionHandler.register(this.fields$.pipe(
             pairwise(),
             filter(values => !Object.is(JSON.stringify(values[0]), JSON.stringify(values[1])))
         ).subscribe(values => {
@@ -145,7 +147,7 @@ export abstract class FieldBaseComponent implements OnInit, OnDestroy {
     }
 
     protected subscribe(subscription: ISubscription): ISubscription {
-        this.subscriptions.push(subscription);
+        this.subscriptionHandler.register(subscription);
         return subscription;
     }
 
@@ -160,7 +162,6 @@ export abstract class FieldBaseComponent implements OnInit, OnDestroy {
     }
 
     ngOnDestroy() {
-        this.subscriptions.forEach(subscription => subscription.unsubscribe());
-        this.removeEvents();
+        this.subscriptionHandler.unsubscribe();
     }
 }
