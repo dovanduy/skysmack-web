@@ -147,6 +147,7 @@ export abstract class RecordEpicsBase<TRecord extends Record<TKey>, TKey> {
     }
 
     public failureActionEpic = (action$: ActionsObservable<ReduxAction<HttpErrorResponse, CommitMeta<LocalObject<TRecord, TKey>[]>>>): Observable<ReduxAction<QueueItem[]>> => {
+        const withQueue = this.prefix + 'QUEUE';
         return action$.pipe(
             ofType(
                 this.prefix + RecordActionsBase.ADD_FAILURE,
@@ -156,7 +157,7 @@ export abstract class RecordEpicsBase<TRecord extends Record<TKey>, TKey> {
             map(action => ({
                 type: QueueActions.SET_QUEUE_ITEMS,
                 payload: action.meta.queueItems.map(queueItems => {
-                    queueItems.message = `${this.prefix.replace('_', '.')}QUEUE.ERROR`;
+                    queueItems.message = `${withQueue.replace('_QUEUE', '.QUEUE')}.ERROR`;
                     queueItems.localObject.error = true;
                     queueItems.error = action.payload;
                     return queueItems;
