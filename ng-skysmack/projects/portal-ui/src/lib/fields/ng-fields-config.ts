@@ -59,7 +59,7 @@ export class NgFieldsConfig extends FieldsConfig<FieldSchemaViewModel, string, N
 
             new Field({
                 fieldType: FieldTypes.ValidatorsField,
-                value: field ? [field.object.validators] : undefined,
+                value: field ? field.object.validators : undefined,
                 key: 'validators',
                 order: 4,
             } as Field),

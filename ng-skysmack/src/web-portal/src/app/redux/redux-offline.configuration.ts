@@ -24,7 +24,7 @@ export class ReduxOfflineConfiguration implements Config {
                 switch (action.type) {
                     case action.payload.prefix + RecordActionsBase.CANCEL_RECORD_ACTION: return cancelRecordActionOutboxFilter(outbox, action);
                     case PackagesActions.CANCEL_PACKAGE_ACTION: return cancelPackageActionOutboxFilter(outbox, action);
-                    case action.payload.prefix + FieldActions.CANCEL_FIELD_ACTION: return cancelFieldActionOutboxFilter(outbox, action);
+                    case FieldActions.CANCEL_FIELD_ACTION: return cancelFieldActionOutboxFilter(outbox, action);
                     default:
                         return [...outbox, action];
                 }
