@@ -34,7 +34,7 @@ export class PackagesActions<TStateType, TStore extends Store<TStateType>> imple
     ) { }
 
     public cancelAction = (_package: LocalObject<Package, string>): void => {
-        this.store.dispatch(Object.assign({}, new ReduxAction<{ _package: LocalObject<Package, string>}, CancelActionMeta>({
+        this.store.dispatch(Object.assign({}, new ReduxAction<{ _package: LocalObject<Package, string> }, CancelActionMeta>({
             type: PackagesActions.CANCEL_PACKAGE_ACTION,
             payload: {
                 _package,
@@ -93,7 +93,7 @@ export class PackagesActions<TStateType, TStore extends Store<TStateType>> imple
                     new ReduxAction<any, CommitMeta<LocalObject<Package, string>[]>>({
                         type: PackagesActions.ADD_PACKAGE_SUCCESS,
                         meta: {
-                            stateKey:'',
+                            stateKey: '',
                             value: packages,
                             queueItems
                         }
@@ -101,7 +101,7 @@ export class PackagesActions<TStateType, TStore extends Store<TStateType>> imple
                     new ReduxAction<any, RollbackMeta<LocalObject<Package, string>[]>>({
                         type: PackagesActions.ADD_PACKAGE_FAILURE,
                         meta: {
-                            stateKey:'',
+                            stateKey: '',
                             value: packages,
                             queueItems
                         }
@@ -133,14 +133,14 @@ export class PackagesActions<TStateType, TStore extends Store<TStateType>> imple
             meta: new ReduxOfflineMeta(
                 new OfflineMeta<Package[], HttpResponse, LocalObject<Package, string>[]>(
                     new Effect<Package[]>(new EffectRequest<Package[]>(
-                        paths,
+                        'skysmack/packages' + paths,
                         HttpMethod.PUT,
                         packages.map(x => x.object)
                     )),
                     new ReduxAction<any, CommitMeta<LocalObject<Package, string>[]>>({
                         type: PackagesActions.UPDATE_PACKAGE_SUCCESS,
                         meta: {
-                            stateKey:'',
+                            stateKey: '',
                             value: packages,
                             queueItems
                         }
@@ -148,7 +148,7 @@ export class PackagesActions<TStateType, TStore extends Store<TStateType>> imple
                     new ReduxAction<any, RollbackMeta<LocalObject<Package, string>[]>>({
                         type: PackagesActions.UPDATE_PACKAGE_FAILURE,
                         meta: {
-                            stateKey:'',
+                            stateKey: '',
                             value: packages,
                             queueItems
                         }
@@ -168,7 +168,7 @@ export class PackagesActions<TStateType, TStore extends Store<TStateType>> imple
             return new QueueItem({
                 message: `PACKAGES.DELETING`,
                 messageParams: this.getMessageParams(_package),
-                packagePath:  'skysmack/packages' + paths,
+                packagePath: 'skysmack/packages' + paths,
                 localObject: _package,
                 cancelAction: this.cancelAction,
                 deleteAction: this.delete
@@ -180,7 +180,7 @@ export class PackagesActions<TStateType, TStore extends Store<TStateType>> imple
             meta: new ReduxOfflineMeta(
                 new OfflineMeta<Package[], HttpResponse, LocalObject<Package, string>[]>(
                     new Effect<Package[]>(new EffectRequest<Package[]>(
-                        paths,
+                        'skysmack/packages' + paths,
                         HttpMethod.DELETE,
                         packages.map(x => {
                             x.status = LocalObjectStatus.DELETING
@@ -190,7 +190,7 @@ export class PackagesActions<TStateType, TStore extends Store<TStateType>> imple
                     new ReduxAction<any, CommitMeta<LocalObject<Package, string>[]>>({
                         type: PackagesActions.DELETE_PACKAGE_SUCCESS,
                         meta: {
-                            stateKey:'',
+                            stateKey: '',
                             value: packages,
                             queueItems
                         }
@@ -198,7 +198,7 @@ export class PackagesActions<TStateType, TStore extends Store<TStateType>> imple
                     new ReduxAction<any, RollbackMeta<LocalObject<Package, string>[]>>({
                         type: PackagesActions.DELETE_PACKAGE_FAILURE,
                         meta: {
-                            stateKey:'',
+                            stateKey: '',
                             value: packages,
                             queueItems
                         }
@@ -213,10 +213,6 @@ export class PackagesActions<TStateType, TStore extends Store<TStateType>> imple
             name: _package.object.name
         };
     };
-
-    protected addAdditionalPaths(url: string): string {
-        return this.additionalPaths ? [url, ...this.additionalPaths].join('/') : url;
-    }
 
     protected appendValues<T>(url, values: T[], prefix: string = '?ids=', seperator: string = ','): string {
         return url + prefix + values.join(seperator);
