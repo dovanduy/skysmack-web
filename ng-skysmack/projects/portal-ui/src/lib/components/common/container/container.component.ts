@@ -1,9 +1,12 @@
-import { Component, Input, ViewChild, OnInit, OnDestroy } from '@angular/core';
+import { Component, Input, ViewChild, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
 import { MatSidenav } from '@angular/material';
 import { Router } from '@angular/router';
 import { SidebarMenu } from './../../../models/sidebar-menu/sidebar-menu';
-import { SubscriptionHandler } from '@skysmack/framework';
+import { SubscriptionHandler, log } from '@skysmack/framework';
 import { EditorNavService } from './editor-nav.service';
+import { NgSkysmackStore } from '@skysmack/ng-packages';
+import { Observable, of } from 'rxjs';
+import { map, filter, switchMap } from 'rxjs/operators';
 
 const SMALL_WIDTH_BREAKPOINT = 720;
 
@@ -17,42 +20,69 @@ export class ContainerComponent implements OnInit, OnDestroy {
   @ViewChild(MatSidenav) public sidenav: MatSidenav;
   @ViewChild('editornav') public editornav: MatSidenav;
 
+  public access$: Observable<boolean>;
+
   public path: string;
   public subscriptionHandler = new SubscriptionHandler();
   private mediaMatcher: MediaQueryList = matchMedia(`(max-width: ${SMALL_WIDTH_BREAKPOINT}px)`);
 
   constructor(
     public router: Router,
-    public editorNavService: EditorNavService
+    public editorNavService: EditorNavService,
+    public skysmackStore: NgSkysmackStore,
+    public changeDetectorRef: ChangeDetectorRef
   ) { }
 
   ngOnInit(): void {
     this.path = this.router.url;
 
-    this.subscriptionHandler.register(this.editornav.closedStart.subscribe(() => {
-      const splittedPath = this.path.split('/');
+    const packagePath = this.router.url.split('/')[1];
+    if (!packagePath || packagePath === '' || packagePath === 'skysmack') {
+      this.access$ = of(true);
+    } else {
+      this.access$ = this.skysmackStore.getCurrentPackage(packagePath).pipe(
+        map(_package => _package._package.access)
+        // map(_package => false)
+      );
+    }
 
-      if (this.path.endsWith('/create')) {
-        const newPath = this.path.slice(0, this.path.length - '/create'.length);
-        this.router.navigate([newPath]);
-      } else if (splittedPath.find(x => x === 'edit')) {
-        const newPath = this.path.split('/edit/')[0];
-        this.router.navigate([newPath]);
-      } else if (this.path.endsWith('/settings')) {
-        const newPath = this.path.slice(0, this.path.length - '/settings'.length);
-        this.router.navigate([newPath]);
-      } else {
-        this.router.navigate([this.path]);
-      }
-    }));
 
-    this.subscriptionHandler.register(this.editorNavService.isVisible.subscribe(visible => {
-      if (visible && !this.editornav.opened) {
-        this.editornav.open();
-      } else if (!visible && this.editornav.opened) {
-        this.editornav.close();
-      }
-    }));
+
+    this.subscriptionHandler.register(this.access$.pipe(
+      filter(access => access),
+      map(() => this.changeDetectorRef.detectChanges()),
+      switchMap(() => this.editornav.closedStart),
+      map(() => {
+        const splittedPath = this.path.split('/');
+
+        if (this.path.endsWith('/create')) {
+          const newPath = this.path.slice(0, this.path.length - '/create'.length);
+          this.router.navigate([newPath]);
+        } else if (splittedPath.find(x => x === 'edit')) {
+          const newPath = this.path.split('/edit/')[0];
+          this.router.navigate([newPath]);
+        } else if (this.path.endsWith('/settings')) {
+          const newPath = this.path.slice(0, this.path.length - '/settings'.length);
+          this.router.navigate([newPath]);
+        } else {
+          this.router.navigate([this.path]);
+        }
+      })
+    ).subscribe());
+
+
+    this.subscriptionHandler.register(this.access$.pipe(
+      filter(access => access),
+      map(() => this.changeDetectorRef.detectChanges()),
+      switchMap(() => this.editorNavService.isVisible),
+      map(visible => {
+        if (visible && !this.editornav.opened) {
+          this.editornav.open();
+        } else if (!visible && this.editornav.opened) {
+          this.editornav.close();
+        }
+      })
+    ).subscribe());
   }
 
 

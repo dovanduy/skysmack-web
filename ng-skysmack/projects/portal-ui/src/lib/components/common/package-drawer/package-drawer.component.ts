@@ -24,7 +24,7 @@ export class PackageDrawerComponent implements OnInit {
   ngOnInit() {
     this.loadedPackages$ = this.skysmackStore.getLoadedPackages().pipe(
       // Remove Oauth packages.
-      map(packages => packages.filter(_package => _package._package.type !== Oauth2Type.id))
+      map(packages => packages.filter(_package => _package._package.access).filter(_package => _package._package.type !== Oauth2Type.id))
     );
     this.menu$ = this.uiRedux.getMenu();
   }
