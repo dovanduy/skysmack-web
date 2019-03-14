@@ -7,7 +7,7 @@ import { AccessPolicyRoleKey } from '../models/access-policy-role-key';
 
 
 export class AccessPolicyRolesActions extends RecordActionsBase<AccessPolicyRolesAppState, Store<AccessPolicyRolesAppState>> {
-    constructor(protected store: Store<AccessPolicyRolesAppState>) { super(store, 'ACCESS_POLICY_ROLE_', ['access-policies', 'roles']); }
+    constructor(protected store: Store<AccessPolicyRolesAppState>) { super(store, 'ACCESS_POLICY_ROLES_', ['access-policies', 'roles']); }
 
     public getMessageParams(record: LocalObject<AccessPolicyRole, AccessPolicyRoleKey>): StrIndex<string> {
         return {

@@ -16,7 +16,7 @@ export class AccessPolicyRolesState implements RecordState<AccessPolicyRole, Acc
     public localRecords: StrIndex<StrIndex<LocalObject<AccessPolicyRole, AccessPolicyRoleKey>>> = {};
 }
 
-export function accessPolicyRolesReducer(state = new AccessPolicyRolesState(), action: ReduxAction, prefix: string = 'ACCESS_POLICY_ROLE_'): AccessPolicyRolesState {
+export function accessPolicyRolesReducer(state = new AccessPolicyRolesState(), action: ReduxAction, prefix: string = 'ACCESS_POLICY_ROLES_'): AccessPolicyRolesState {
     state = sharedReducer(state, action, new AccessPolicyRolesState());
 
     switch (action.type) {
