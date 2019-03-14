@@ -12,6 +12,7 @@ import { GlobalProperties, SubscriptionHandler } from '@skysmack/framework';
 })
 export class DynamicFormComponent implements OnInit, OnDestroy {
   @Input() public fields$: Observable<Field[]>;
+  public fields: Field[];
   @Input() public rules: FormRule[];
   @Input() public validation: Validation;
   @Input() public buttonText = 'Submit';
@@ -29,8 +30,11 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
     this.fh = new FormHelper(new FormGroup({}, this.validation.formValidators), this.validation);
     this.validateOnChange(this.fh);
 
-    // Update the form (FormGroup) on field changes
-    this.subscriptionHander.register(this.fields$.subscribe(fields => this.updateForm(fields)));
+    // Update the fields and  form (FormGroup) on field changes
+    this.subscriptionHander.register(this.fields$.subscribe(fields => {
+      this.fields = fields;
+      this.updateForm(fields);
+    }));
 
     // Show sidebar
     setTimeout(() => {
