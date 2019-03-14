@@ -37,10 +37,16 @@ export class LodgingsReservationsEditComponent extends RecordFormComponent<Lodgi
   public setEditFields() {
     this.actions.getSingle(this.packagePath, this.entityId);
 
-    this.fields$ = this.skysmackStore.getCurrentPackage(this.packagePath).pipe(
+    // TODO: Find better way to prevent multiple requests getting fired...
+    let requested = false;
+
+    this.fields$ = this.loadedPackage$.pipe(
       switchMap(loadedPackage => {
-        this.lodgingsActions.getPaged(loadedPackage._package.dependencies[0], new PagedQuery());
-        this.lodgingTypesActions.getPaged(loadedPackage._package.dependencies[0], new PagedQuery());
+        if (!requested) {
+          this.lodgingsActions.getPaged(loadedPackage._package.dependencies[0], new PagedQuery());
+          this.lodgingTypesActions.getPaged(loadedPackage._package.dependencies[0], new PagedQuery());
+          requested = true;
+        }
         return combineLatest(
           this.store.getSingle(this.packagePath, this.entityId),
           this.lodgingsStore.get(loadedPackage._package.dependencies[0]),

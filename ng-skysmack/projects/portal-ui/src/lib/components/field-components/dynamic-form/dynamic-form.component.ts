@@ -12,13 +12,13 @@ import { GlobalProperties, SubscriptionHandler } from '@skysmack/framework';
 })
 export class DynamicFormComponent implements OnInit, OnDestroy {
   @Input() public fields$: Observable<Field[]>;
-  public fields: Field[];
   @Input() public rules: FormRule[];
   @Input() public validation: Validation;
   @Input() public buttonText = 'Submit';
   @Input() public noSidebar: boolean;
   @Output() public submitted: EventEmitter<FormHelper> = new EventEmitter();
 
+  public fields: Field[];
   public production = GlobalProperties.production;
   public fh: FormHelper;
   public subscriptionHander = new SubscriptionHandler();

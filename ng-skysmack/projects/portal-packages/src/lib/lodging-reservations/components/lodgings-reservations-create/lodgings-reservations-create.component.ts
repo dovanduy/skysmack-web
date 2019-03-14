@@ -45,10 +45,16 @@ export class LodgingsReservationsCreateComponent extends RecordFormComponent<Lod
   }
 
   public setCreateFields() {
-    this.fields$ = this.skysmackStore.getCurrentPackage(this.packagePath).pipe(
+    // TODO: Find better way to prevent multiple requests getting fired...
+    let requested = false;
+
+    this.fields$ = this.loadedPackage$.pipe(
       switchMap(loadedPackage => {
-        this.lodgingsActions.getPaged(loadedPackage._package.dependencies[0], new PagedQuery());
-        this.lodgingTypesActions.getPaged(loadedPackage._package.dependencies[0], new PagedQuery());
+        if (!requested) {
+          this.lodgingsActions.getPaged(loadedPackage._package.dependencies[0], new PagedQuery());
+          this.lodgingTypesActions.getPaged(loadedPackage._package.dependencies[0], new PagedQuery());
+          requested = true;
+        }
 
         return combineLatest(
           this.lodgingsStore.get(loadedPackage._package.dependencies[0]),
