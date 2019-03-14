@@ -6,7 +6,7 @@ import { ReducerRegistry } from '@skysmack/redux';
 import { skysmackReducer } from '@skysmack/packages-skysmack-core';
 import { NgSkysmackRequests } from './redux/ng-skysmack-requests';
 import { NgSkysmackEpics } from './redux/ng-skysmack-epics';
-import { registerEpics } from '@skysmack/ng-redux';
+import { registerEpics, registerRedux } from '@skysmack/ng-redux';
 
 @NgModule({
   imports: [
@@ -18,7 +18,6 @@ import { registerEpics } from '@skysmack/ng-redux';
 })
 export class NgSkysmackModule {
   constructor(epics: NgSkysmackEpics) {
-    ReducerRegistry.Instance.register('skysmack', skysmackReducer);
-    registerEpics(epics);
+    registerRedux('skysmack', skysmackReducer, epics);
   }
 }
