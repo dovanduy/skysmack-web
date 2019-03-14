@@ -10,7 +10,7 @@ import { EntityStore } from '@skysmack/redux';
 export class NgPackagesStore implements EntityStore<Package, string> {
 
     constructor(
-        protected store: NgRedux<PackagesAppState>
+        protected store: NgRedux<PackagesAppState>,
     ) { }
 
     public get(): Observable<LocalObject<Package, string>[]> {

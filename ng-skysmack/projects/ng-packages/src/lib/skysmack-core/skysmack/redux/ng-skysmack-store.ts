@@ -37,13 +37,13 @@ export class NgSkysmackStore {
 
     public getPackages(): Observable<LocalObject<Package, string>[]> {
         return this.getSkysmack().pipe(
-            map(skysmack => skysmack.packages.map(_package => toLocalObject(_package, 'path')))
+            map(skysmack => skysmack.packages.filter(_package => _package.access).map(_package => toLocalObject(_package, 'path')))
         );
     }
 
     public getLoadedPackages(): Observable<LoadedPackage[]> {
-        return this.getSkysmack().pipe(
-            map(skysmack => skysmack.packages.map(_package => PackageLoader.toLoadedPackage(_package)))
+        return this.getPackages().pipe(
+            map(packages => packages.map(_package => PackageLoader.toLoadedPackage(_package.object)))
         );
     }
 
@@ -52,24 +52,23 @@ export class NgSkysmackStore {
     }
 
     public getCurrentPackage(packagePath: string): Observable<LoadedPackage> {
-        return this.getSkysmack().pipe(
-            map(skysmack => skysmack.packages),
+        return this.getPackages().pipe(
             flatten(),
-            filter((_package: Package) => _package.path === packagePath),
-            map(_package => PackageLoader.toLoadedPackage(_package)),
+            filter((_package: LocalObject<Package, string>) => _package.object.path === packagePath),
+            map(_package => PackageLoader.toLoadedPackage(_package.object)),
             safeHasValue()
         );
     }
 
     public getAuthenticationPackages(): Observable<Package[]> {
-        return this.getSkysmack().pipe(
-            map(skysmack => skysmack.packages.filter(_package => _package.type === Oauth2Type.id))
+        return this.getPackages().pipe(
+            map(packages => packages.filter(_package => _package.object.type === Oauth2Type.id).map(x => x.object))
         );
     }
 
     public getIdentityPackages(): Observable<Package[]> {
-        return this.getSkysmack().pipe(
-            map(skysmack => skysmack.packages.filter(_package => _package.type === IdentitiesType.id))
+        return this.getPackages().pipe(
+            map(packages => packages.filter(_package => _package.object.type === IdentitiesType.id).map(x => x.object))
         );
     }
 }
