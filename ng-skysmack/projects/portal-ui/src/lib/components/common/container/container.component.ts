@@ -2,11 +2,12 @@ import { Component, Input, ViewChild, OnInit, OnDestroy, ChangeDetectorRef } fro
 import { MatSidenav } from '@angular/material';
 import { Router } from '@angular/router';
 import { SidebarMenu } from './../../../models/sidebar-menu/sidebar-menu';
-import { SubscriptionHandler, log } from '@skysmack/framework';
+import { SubscriptionHandler } from '@skysmack/framework';
 import { EditorNavService } from './editor-nav.service';
 import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { Observable, of } from 'rxjs';
 import { map, filter, switchMap } from 'rxjs/operators';
+import { NgAuthenticationStore } from '@skysmack/ng-redux';
 
 const SMALL_WIDTH_BREAKPOINT = 720;
 
@@ -21,6 +22,7 @@ export class ContainerComponent implements OnInit, OnDestroy {
   @ViewChild('editornav') public editornav: MatSidenav;
 
   public access$: Observable<boolean>;
+  public authenticated$: Observable<boolean>;
 
   public path: string;
   public subscriptionHandler = new SubscriptionHandler();
@@ -30,7 +32,8 @@ export class ContainerComponent implements OnInit, OnDestroy {
     public router: Router,
     public editorNavService: EditorNavService,
     public skysmackStore: NgSkysmackStore,
-    public changeDetectorRef: ChangeDetectorRef
+    public changeDetectorRef: ChangeDetectorRef,
+    public authentication: NgAuthenticationStore
   ) { }
 
   ngOnInit(): void {
@@ -42,10 +45,9 @@ export class ContainerComponent implements OnInit, OnDestroy {
     } else {
       this.access$ = this.skysmackStore.getCurrentPackage(packagePath).pipe(
         map(_package => _package._package.access)
-        // map(_package => false)
       );
+      this.authenticated$ = this.authentication.isCurrentUserAuthenticated();
     }
-
 
 
     this.subscriptionHandler.register(this.access$.pipe(
