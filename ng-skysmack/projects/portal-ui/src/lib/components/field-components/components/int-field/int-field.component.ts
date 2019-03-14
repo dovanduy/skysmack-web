@@ -10,7 +10,7 @@ import { Field } from '@skysmack/ng-ui';
 export class IntFieldComponent extends FieldBaseComponent implements OnInit {
   ngOnInit() {
     super.ngOnInit();
-    this.subscriptions.push(this.fh.form.valueChanges.subscribe(() => {
+    this.subscriptionHandler.register(this.fh.form.valueChanges.subscribe(() => {
       const itemValue = this.getFieldValue();
       if (itemValue !== undefined && itemValue !== null) {
         const value = itemValue.toString();

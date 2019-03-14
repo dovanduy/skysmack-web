@@ -118,11 +118,6 @@ export abstract class FieldBaseComponent implements OnInit, OnDestroy {
             .removeEventListener(addedEvent.event, addedEvent.callback.bind(this)));
     }
 
-    protected subscribe(subscription: ISubscription): ISubscription {
-        this.subscriptionHandler.register(subscription);
-        return subscription;
-    }
-
     protected runRules(dependencies?: any) {
         if (this.rules) {
             this.rules.forEach(rule => {

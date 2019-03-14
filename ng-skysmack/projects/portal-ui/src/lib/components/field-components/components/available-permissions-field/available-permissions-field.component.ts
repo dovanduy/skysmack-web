@@ -28,7 +28,7 @@ export class AvailablePermissionsFieldComponent extends FieldBaseComponent imple
   }
 
   private getPermissions() {
-    this.subscriptions.push(this.fh.form.valueChanges.pipe(
+    this.subscriptionHandler.register(this.fh.form.valueChanges.pipe(
       switchMap(() => this.skysmackStore.getCurrentPackage(this.getOtherFieldValue('packagePath'))),
       switchMap(x => {
         return this.packagesStore.getPermissions(x._package.type)
@@ -44,7 +44,7 @@ export class AvailablePermissionsFieldComponent extends FieldBaseComponent imple
   }
 
   private resetOnPackagePathChange() {
-    this.subscriptions.push(this.fh.form.valueChanges.subscribe(values => {
+    this.subscriptionHandler.register(this.fh.form.valueChanges.subscribe(values => {
       if (this.selectedPackagePath !== values['packagePath']) {
         this.selectedPackagePath = values['packagePath'];
         this.setPermission(null);

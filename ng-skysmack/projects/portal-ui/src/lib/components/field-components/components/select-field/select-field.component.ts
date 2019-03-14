@@ -12,7 +12,7 @@ export class SelectFieldComponent extends FieldBaseComponent implements OnInit {
 
   ngOnInit() {
     super.ngOnInit();
-    this.subscriptions.push(this.fields$.subscribe((fields: any) => {
+    this.subscriptionHandler.register(this.fields$.subscribe((fields: any) => {
       if (this.field) {
 
         this.runAllRulesOfType(DisableUntilValueRule.type, { fields });
@@ -23,7 +23,7 @@ export class SelectFieldComponent extends FieldBaseComponent implements OnInit {
   }
 
   public runRulesOnChange(fields: Field[]) {
-    this.subscribe(this.fh.form.valueChanges.subscribe(() => {
+    this.subscriptionHandler.register(this.fh.form.valueChanges.subscribe(() => {
       this.runRules({
         fields,
         selectedValue: this.getFieldValue(),

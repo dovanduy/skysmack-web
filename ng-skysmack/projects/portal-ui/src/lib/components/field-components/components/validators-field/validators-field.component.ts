@@ -79,9 +79,9 @@ export class ValidatorsFieldComponent extends FieldBaseComponent implements OnIn
     );
 
     // Set available validators on form change
-    this.subscriptions.push(formValueChanged$.pipe(switchMap(() => setAvailablValidators$)).subscribe());
+    this.subscriptionHandler.register(formValueChanged$.pipe(switchMap(() => setAvailablValidators$)).subscribe());
     // Set available validators on component startup
-    this.subscriptions.push(setAvailablValidators$.subscribe());
+    this.subscriptionHandler.register(setAvailablValidators$.subscribe());
   }
 
   public addValidator() {
