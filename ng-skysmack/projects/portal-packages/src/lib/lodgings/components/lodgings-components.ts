@@ -18,7 +18,6 @@ export const lodgingsRoutes: Routes = [
     children: [
       { path: 'create', component: LodgingsCreateComponent, pathMatch: 'full' },
       { path: 'edit/:id', component: LodgingsEditComponent, pathMatch: 'full' },
-      { path: 'settings', component: SettingsComponent, pathMatch: 'full', data },
     ]
   },
   {
