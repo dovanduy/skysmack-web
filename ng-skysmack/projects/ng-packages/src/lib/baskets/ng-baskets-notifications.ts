@@ -4,5 +4,5 @@ import { RecordNotifications, Notifications } from '@skysmack/ng-redux';
 
 @Injectable({ providedIn: 'root' })
 export class NgBasketsNotifications extends RecordNotifications<Basket, number> {
-    constructor(@Inject('Notifications') public notifications: Notifications) { super(notifications); }
+    constructor(@Inject(NOTIFICATIONS_INJECTOR_TOKEN) public notifications: Notifications) { super(notifications); }
 }

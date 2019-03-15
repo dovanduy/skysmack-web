@@ -1,6 +1,6 @@
 import { Injectable, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { ApiDomain, } from '@skysmack/framework';
+import { ApiDomain, API_DOMAIN_INJECTOR_TOKEN, } from '@skysmack/framework';
 import { LodgingReservation } from '@skysmack/packages-lodging-reservations';
 import { NgRecordRequests } from '@skysmack/ng-redux';
 
@@ -9,7 +9,7 @@ import { NgRecordRequests } from '@skysmack/ng-redux';
 export class NgLodgingReservationsRequests extends NgRecordRequests<LodgingReservation, number> {
     constructor(
         protected http: HttpClient,
-        @Inject('ApiDomain') protected apiDomain: ApiDomain
+        @Inject(API_DOMAIN_INJECTOR_TOKEN) protected apiDomain: ApiDomain
     ) {
         super(http, apiDomain, 'LODGING_RESERVATIONS_', []);
     }

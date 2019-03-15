@@ -1,14 +1,14 @@
 import { LocalObject, HttpErrorResponse, StrIndex, Package } from '@skysmack/framework';
 import { ReduxAction, CommitMeta } from '@skysmack/redux';
 import { Injectable, Inject } from '@angular/core';
-import { Notifications } from '@skysmack/ng-redux';
+import { Notifications, NOTIFICATIONS_INJECTOR_TOKEN } from '@skysmack/ng-redux';
 
 
 @Injectable({ providedIn: 'root' })
 export class NgPackagesNotifications {
     protected defaultTranslationString = 'NOTIFICATIONS.';
 
-    constructor(@Inject('Notifications') public notifications: Notifications) {}
+    constructor(@Inject(NOTIFICATIONS_INJECTOR_TOKEN) public notifications: Notifications) { }
 
     public getPagedError(action: ReduxAction<HttpErrorResponse, CommitMeta<LocalObject<Package, string>[]>>) {
         this.checkOfflineStatus(action, () => {

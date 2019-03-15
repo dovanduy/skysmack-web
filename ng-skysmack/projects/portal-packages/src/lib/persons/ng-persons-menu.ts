@@ -5,11 +5,12 @@ import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { MenuArea } from '@skysmack/framework';
 import { MenuItem } from '@skysmack/framework';
 import { NgMenuItemProviders } from '@skysmack/ng-redux';
+import { PERSONS_AREA_KEY } from '@skysmack/packages-persons';
 
 
 @Injectable({ providedIn: 'root' })
 export class NgPersonsMenu extends SidebarMenu {
-    public menuId = 'persons';
+    public menuId = PERSONS_AREA_KEY;
     public translationPrefix = 'PERSONS.INDEX.';
 
     constructor(

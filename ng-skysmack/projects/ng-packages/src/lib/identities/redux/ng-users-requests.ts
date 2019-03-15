@@ -1,6 +1,6 @@
 import { Injectable, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { ApiDomain, HttpErrorResponse, NumIndex } from '@skysmack/framework';
+import { ApiDomain, HttpErrorResponse, NumIndex, API_DOMAIN_INJECTOR_TOKEN } from '@skysmack/framework';
 import { catchError, map } from 'rxjs/operators';
 import { ReduxAction } from '@skysmack/redux';
 import { of, Observable } from 'rxjs';
@@ -12,7 +12,7 @@ import { User, GetUsersRolesSuccessPayload } from '@skysmack/packages-identities
 export class NgUsersRequests extends NgRecordRequests<User, number>  {
     constructor(
         protected http: HttpClient,
-        @Inject('ApiDomain') protected apiDomain: ApiDomain
+        @Inject(API_DOMAIN_INJECTOR_TOKEN) protected apiDomain: ApiDomain
     ) {
         super(http, apiDomain, 'USERS_', ['users']);
     }

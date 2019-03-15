@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 
-import { personsReducer } from '@skysmack/packages-persons';
+import { personsReducer, PERSONS_AREA_KEY } from '@skysmack/packages-persons';
 import { NgPersonsEpics } from './redux/ng-persons-epics';
 import { registerRedux } from '@skysmack/ng-redux';
 
@@ -11,6 +11,6 @@ import { registerRedux } from '@skysmack/ng-redux';
 })
 export class NgPersonsModule {
   constructor(epics: NgPersonsEpics) {
-    registerRedux('persons', personsReducer, epics);
+    registerRedux(PERSONS_AREA_KEY, personsReducer, epics);
   }
 }

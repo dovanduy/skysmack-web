@@ -2,7 +2,7 @@ import { Injectable, Inject } from '@angular/core';
 import { map, catchError } from 'rxjs/operators';
 import { AuthenticationActions, ReduxAction } from '@skysmack/redux';
 import { of, Observable } from 'rxjs';
-import { ApiDomain, CurrentUser, HttpErrorResponse } from '@skysmack/framework';
+import { ApiDomain, CurrentUser, HttpErrorResponse, API_DOMAIN_INJECTOR_TOKEN } from '@skysmack/framework';
 import { HttpParams, HttpClient } from '@angular/common/http';
 import { OpenIdConnectResponse } from '@skysmack/packages-oauth2';
 import * as _moment from 'moment';
@@ -12,7 +12,7 @@ const moment = _moment;
 export class Oauth2Requests {
     constructor(
         protected http: HttpClient,
-        @Inject('ApiDomain') protected apiDomain: ApiDomain
+        @Inject(API_DOMAIN_INJECTOR_TOKEN) protected apiDomain: ApiDomain
     ) { }
 
     login(email: string, password: string, authPath: string): Observable<ReduxAction<CurrentUser> | ReduxAction<HttpErrorResponse>> {

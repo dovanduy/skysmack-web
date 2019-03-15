@@ -1,5 +1,6 @@
 import { StrIndex } from '@skysmack/framework';
 import { Validation } from '@skysmack/ng-ui';
+import { PERSONS_AREA_KEY } from '@skysmack/packages-persons';
 
 export class NgPersonsValidation extends Validation {
     public formErrors = {
@@ -20,7 +21,7 @@ export class NgPersonsValidation extends Validation {
         }
     };
 
-    public area = 'persons';
+    public area = PERSONS_AREA_KEY;
 
     public formValidators = [];
 

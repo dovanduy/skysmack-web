@@ -1,4 +1,4 @@
-import { ApiDomain, FieldSchemaViewModel, FieldValueProviderViewModel, HttpErrorResponse } from '@skysmack/framework';
+import { ApiDomain, FieldSchemaViewModel, FieldValueProviderViewModel, HttpErrorResponse, API_DOMAIN_INJECTOR_TOKEN } from '@skysmack/framework';
 import { ReduxAction, PackagePathPayload, GetAvailableFieldsSuccessPayload, GetPagedEntitiesPayload, GetPagedEntitiesSuccessPayload, GetSingleEntitySuccessPayload, FieldActions, FieldRequests, GetSingleEntityPayload, AdditionalPathsMeta } from '@skysmack/redux';
 import { Observable, of } from 'rxjs';
 import { map, retry, catchError } from 'rxjs/operators';
@@ -14,7 +14,7 @@ export class NgFieldRequests implements FieldRequests {
 
   constructor(
     protected http: HttpClient,
-    @Inject('ApiDomain') protected apiDomain: ApiDomain
+    @Inject(API_DOMAIN_INJECTOR_TOKEN) protected apiDomain: ApiDomain
   ) {
   }
 

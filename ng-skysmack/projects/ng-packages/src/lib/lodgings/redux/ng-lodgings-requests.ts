@@ -1,7 +1,7 @@
 import { Lodging, SelectedLodgingIdsMeta } from '@skysmack/packages-lodgings';
 import { Injectable, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { ApiDomain, StrIndex, HttpErrorResponse } from '@skysmack/framework';
+import { ApiDomain, StrIndex, HttpErrorResponse, API_DOMAIN_INJECTOR_TOKEN } from '@skysmack/framework';
 import { NgRecordRequests } from '@skysmack/ng-redux';
 import { Observable, of } from 'rxjs';
 import { retry, catchError, map } from 'rxjs/operators';
@@ -12,7 +12,7 @@ import { NgLodgingsActions } from './ng-lodgings-actions';
 export class NgLodgingsRequests extends NgRecordRequests<Lodging, number> {
     constructor(
         protected http: HttpClient,
-        @Inject('ApiDomain') protected apiDomain: ApiDomain
+        @Inject(API_DOMAIN_INJECTOR_TOKEN) protected apiDomain: ApiDomain
     ) {
         super(http, apiDomain, 'LODGINGS_', []);
     }

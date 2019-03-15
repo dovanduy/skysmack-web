@@ -1,6 +1,6 @@
 import { Injectable, Inject } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { ApiDomain, Package, HttpErrorResponse } from '@skysmack/framework';
+import { ApiDomain, Package, HttpErrorResponse, API_DOMAIN_INJECTOR_TOKEN } from '@skysmack/framework';
 import { PackagesRequests, PackagesActions, GetPackageSuccessPayload } from '@skysmack/packages-skysmack-core';
 import { Observable, of } from 'rxjs';
 import { map, catchError, retry } from 'rxjs/operators';
@@ -13,7 +13,7 @@ export class NgPackagesRequests implements PackagesRequests {
 
     constructor(
         protected http: HttpClient,
-        @Inject('ApiDomain') protected apiDomain: ApiDomain
+        @Inject(API_DOMAIN_INJECTOR_TOKEN) protected apiDomain: ApiDomain
     ) {
     }
 

@@ -1,6 +1,6 @@
 import { Injectable, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { ApiDomain, HttpErrorResponse } from '@skysmack/framework';
+import { ApiDomain, HttpErrorResponse, API_DOMAIN_INJECTOR_TOKEN } from '@skysmack/framework';
 import { catchError, map, retry } from 'rxjs/operators';
 import { ReduxAction, SettingsActions, GetSettingsPayload, SettingsSuccessPayload } from '@skysmack/redux';
 import { of, Observable } from 'rxjs';
@@ -11,7 +11,7 @@ export class NgSettingsRequests {
 
     constructor(
         protected http: HttpClient,
-        @Inject('ApiDomain') protected apiDomain: ApiDomain
+        @Inject(API_DOMAIN_INJECTOR_TOKEN) protected apiDomain: ApiDomain
     ) { }
 
     public get(action: ReduxAction<GetSettingsPayload>): Observable<ReduxAction<SettingsSuccessPayload> | ReduxAction<HttpErrorResponse>> {

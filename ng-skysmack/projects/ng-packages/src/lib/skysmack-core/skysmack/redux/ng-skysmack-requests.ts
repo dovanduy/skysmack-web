@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { SkysmackRequests, Skysmack, SkysmackActions } from '@skysmack/packages-skysmack-core';
 import { Observable, of } from 'rxjs';
 import { map, take, retry, catchError } from 'rxjs/operators';
-import { ApiDomain, HttpErrorResponse } from '@skysmack/framework';
+import { ApiDomain, HttpErrorResponse, API_DOMAIN_INJECTOR_TOKEN } from '@skysmack/framework';
 import { ReduxAction } from '@skysmack/redux';
 
 @Injectable({
@@ -15,7 +15,7 @@ export class NgSkysmackRequests implements SkysmackRequests {
     protected prefix: 'SKYSMACK_';
     constructor(
         protected http: HttpClient,
-        @Inject('ApiDomain') private apiDomain: ApiDomain
+        @Inject(API_DOMAIN_INJECTOR_TOKEN) private apiDomain: ApiDomain
     ) { }
 
     public get(): Observable<ReduxAction<Skysmack> | ReduxAction<HttpErrorResponse>> {

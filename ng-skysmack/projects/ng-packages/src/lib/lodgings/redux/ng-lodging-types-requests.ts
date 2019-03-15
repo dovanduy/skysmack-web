@@ -1,6 +1,6 @@
 import { Injectable, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { ApiDomain, StrIndex, HttpErrorResponse } from '@skysmack/framework';
+import { ApiDomain, StrIndex, HttpErrorResponse, API_DOMAIN_INJECTOR_TOKEN } from '@skysmack/framework';
 import { NgRecordRequests } from '@skysmack/ng-redux';
 import { Lodging, SelectedLodgingIdsMeta } from '@skysmack/packages-lodgings';
 import { ReduxAction, GetIntervalPayload, StateKeyMeta } from '@skysmack/redux';
@@ -12,7 +12,7 @@ import { NgLodgingsActions } from './ng-lodgings-actions';
 export class NgLodgingTypesRequests extends NgRecordRequests<Lodging, number> {
     constructor(
         protected http: HttpClient,
-        @Inject('ApiDomain') protected apiDomain: ApiDomain
+        @Inject(API_DOMAIN_INJECTOR_TOKEN) protected apiDomain: ApiDomain
     ) {
         super(http, apiDomain, 'LODGING_TYPES_', ['types']);
     }

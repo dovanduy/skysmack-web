@@ -1,7 +1,8 @@
 import { APP_INITIALIZER } from '@angular/core';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { API_DOMAIN_INJECTOR_TOKEN } from '@skysmack/framework';
 import { SkysmackApiDomain } from '../../requests/skysmack-api-domain';
 import { loadPersonPackage } from '../packages/persons-package-manifest';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { loadProductPackage } from '../packages/products-package-manifest';
 import { loadLodgingPackage } from '../packages/lodgings-package-manifest';
 import { loadOauth2Package } from '../packages/oauth2-package-manifest';
@@ -41,7 +42,7 @@ export const packageLoaders = [
 ];
 
 export const injectionTokens = [
-    { provide: 'ApiDomain', useClass: SkysmackApiDomain }
+    { provide: API_DOMAIN_INJECTOR_TOKEN, useClass: SkysmackApiDomain }
 ];
 
 export const applicationStartup = [

@@ -2,12 +2,13 @@ import { LocalObject, HttpErrorResponse, StrIndex } from '@skysmack/framework';
 import { ReduxAction, CommitMeta } from '@skysmack/redux';
 import { Notifications } from './notifications';
 import { Injectable, Inject } from '@angular/core';
+import { NOTIFICATIONS_INJECTOR_TOKEN } from '@skysmack/ng-redux';
 
 @Injectable({ providedIn: 'root' })
 export class NgSettingsNotifications {
     protected defaultTranslationString = 'NOTIFICATIONS.';
 
-    constructor(@Inject('Notifications') public notifications: Notifications) { }
+    constructor(@Inject(NOTIFICATIONS_INJECTOR_TOKEN) public notifications: Notifications) { }
 
     public getError(action: ReduxAction<HttpErrorResponse, CommitMeta<LocalObject<any, unknown>>>) {
         this.checkOfflineStatus(action, () => {
