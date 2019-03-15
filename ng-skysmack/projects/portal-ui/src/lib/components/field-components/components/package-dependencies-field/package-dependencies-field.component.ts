@@ -22,8 +22,6 @@ class SelectBox {
   }
 }
 
-
-
 @Component({
   selector: 'ss-package-dependencies-field',
   templateUrl: './package-dependencies-field.component.html',

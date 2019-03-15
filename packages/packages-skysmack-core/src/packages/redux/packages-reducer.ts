@@ -115,7 +115,7 @@ export function packagesReducer(state = new PackagesState(), action: any): Packa
         case PackagesActions.DELETE_PACKAGE_SUCCESS: {
             const castedAction: ReduxAction<HttpSuccessResponse<Package[] | Package>, { value: LocalObject<Package, string>[] }> = action;
             castedAction.meta.value.forEach(_package => {
-                delete newState.packages[_package.object.path][_package.object.path];
+                delete newState.packages[_package.localId];
             });
             return newState;
         }
