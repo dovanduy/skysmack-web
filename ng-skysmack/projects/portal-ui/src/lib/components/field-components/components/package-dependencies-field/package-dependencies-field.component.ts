@@ -4,7 +4,6 @@ import { map } from 'rxjs/operators';
 import { combineLatest, Observable } from 'rxjs';
 import { NgPackagesStore } from '@skysmack/ng-packages';
 import { flatten, notNull, AvailablePackage, LocalObject } from '@skysmack/framework';
-import { Field } from '@skysmack/ng-ui';
 
 class SelectBox {
   index: number;
@@ -23,6 +22,8 @@ class SelectBox {
   }
 }
 
+
+
 @Component({
   selector: 'ss-package-dependencies-field',
   templateUrl: './package-dependencies-field.component.html',
@@ -32,6 +33,7 @@ export class PackageDependenciesFieldComponent extends FieldBaseComponent implem
   public selectedDepTypes = {};
   public selectBoxes$: Observable<SelectBox[]>;
   public showBoxes = false;
+  public nrOfRequiredDependencies: number;
 
   constructor(
     public packagesStore: NgPackagesStore
@@ -83,6 +85,13 @@ export class PackageDependenciesFieldComponent extends FieldBaseComponent implem
     ).pipe(
       map(values => {
         const [dependencies, installedPackages, availablePackages] = values;
+
+        // Set select field to invalid if number of selected dependencies doesn't match the required number.
+        this.nrOfRequiredDependencies = (dependencies as string[]).length;
+        if (this.nrOfRequiredDependencies !== this.getFieldValue()) {
+          this.setOtherFieldErrors('type', { depsMissing: true });
+        }
+
         let index = 0;
         // Only run this when setting NEW dependencies, not when valus are set...
         return (dependencies as string[]).map(dependency => {
@@ -100,7 +109,7 @@ export class PackageDependenciesFieldComponent extends FieldBaseComponent implem
             name,
             dependency,
             values: possibleValues
-          })
+          });
         });
       }),
     );
@@ -113,5 +122,10 @@ export class PackageDependenciesFieldComponent extends FieldBaseComponent implem
     deps[selectBox.index] = selectedDepType;
 
     this.setOtherFieldValue('dependencies', deps);
+
+    // Remove errors if nr. of selected deps matches the needed amount.
+    if (this.nrOfRequiredDependencies === this.getFieldValue().length) {
+      this.setOtherFieldErrors('type', null);
+    }
   }
 }

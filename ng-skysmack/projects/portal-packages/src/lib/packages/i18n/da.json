@@ -19,7 +19,8 @@
             },
             "VALIDATION": {
                 "TYPE": {
-                    "REQUIRED": "En pakke type er påkrævet."
+                    "REQUIRED": "En pakke type er påkrævet.",
+                    "DEPSMISSING": "Ikke alle pakker er valgt."
                 },
                 "NAME": {
                     "REQUIRED": "Et navn er påkrævet."

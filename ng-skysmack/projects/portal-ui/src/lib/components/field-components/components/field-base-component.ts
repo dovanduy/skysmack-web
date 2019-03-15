@@ -3,7 +3,7 @@ import { FormControl } from '@angular/forms';
 import { SubscriptionLike as ISubscription, Observable } from 'rxjs';
 import { FormHelper, Field, FormRule } from '@skysmack/ng-ui';
 import { map } from 'rxjs/operators';
-import { SubscriptionHandler } from '@skysmack/framework';
+import { SubscriptionHandler, StrIndex } from '@skysmack/framework';
 
 
 interface AddedEvent {
@@ -76,6 +76,14 @@ export abstract class FieldBaseComponent implements OnInit, OnDestroy {
             return undefined;
         }
         return fieldValue;
+    }
+
+    protected setOtherFieldErrors(fieldKey: string, errors: StrIndex<boolean>) {
+        const field = this.fh.form.controls[fieldKey];
+        if (field) {
+            return field.setErrors(errors);
+        }
+        throw new Error('Field not found. Please add it to fields config, or fix typo');
     }
 
     protected getOtherFieldValue(fieldKey: string) {

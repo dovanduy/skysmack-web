@@ -19,7 +19,8 @@
             },
             "VALIDATION": {
                 "TYPE": {
-                    "REQUIRED": "Please choose a package."
+                    "REQUIRED": "Please choose a package.",
+                    "DEPSMISSING": "Not all dependencies have been chosen."
                 },
                 "NAME": {
                     "REQUIRED": "Name is required."

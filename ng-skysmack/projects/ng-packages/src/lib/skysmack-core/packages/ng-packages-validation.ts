@@ -21,7 +21,8 @@ export class PackagesValidation extends Validation {
             invalidStringLength: ''
         },
         type: {
-            required: ''
+            required: '',
+            depsMissing: ''
         },
     };
     public area = 'packages';
