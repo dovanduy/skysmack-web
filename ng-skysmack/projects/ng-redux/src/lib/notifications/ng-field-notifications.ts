@@ -1,8 +1,7 @@
 import { LocalObject, HttpErrorResponse, StrIndex, FieldSchemaViewModel } from '@skysmack/framework';
 import { ReduxAction, CommitMeta } from '@skysmack/redux';
-import { Notifications } from './notifications';
+import { Notifications, NOTIFICATIONS_INJECTOR_TOKEN } from './notifications';
 import { Injectable, Inject } from '@angular/core';
-import { NOTIFICATIONS_INJECTOR_TOKEN } from '@skysmack/ng-redux';
 
 @Injectable({ providedIn: 'root' })
 export class NgFieldNotifications {

@@ -55,6 +55,7 @@ import { AvailablePermissionsFieldComponent } from './components/field-component
 import { ValidatorsFieldModule } from './components/field-components/components/validators-field/validators-field.module';
 import { FieldPermissionFieldComponent } from './components/field-components/components/field-permission-field/field-permission-field.component';
 import { RolesSelectComponent } from './components/common/roles-select/roles-select.component';
+import { NOTIFICATIONS_INJECTOR_TOKEN } from '@skysmack/ng-redux';
 
 @NgModule({
   imports: [
@@ -78,7 +79,7 @@ import { RolesSelectComponent } from './components/common/roles-select/roles-sel
       deps: [HttpClient]
     },
     {
-      provide: 'Notifications', useClass: NgNotifications
+      provide: NOTIFICATIONS_INJECTOR_TOKEN, useClass: NgNotifications
     }
   ],
   declarations: [
