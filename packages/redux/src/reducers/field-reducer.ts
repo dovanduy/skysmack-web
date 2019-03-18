@@ -59,7 +59,7 @@ export function fieldReducer(state: FieldState = new FieldState(), action: any):
         case FieldActions.FIELD_GET_SINGLE_SUCCESS: {
             const castedAction: ReduxAction<GetSingleEntitySuccessPayload<FieldSchemaViewModel, string>, AdditionalPathsMeta> = action;
             const stateKey = getFieldStateKey(castedAction.payload.packagePath, castedAction.meta.additionalPaths);
-            newState.fields[stateKey] = LocalObjectExtensions.mergeOrAddLocal(newState.fields[stateKey], [toLocalObject(castedAction.payload.entity, 'key')]);
+            newState.fields[stateKey] = LocalObjectExtensions.mergeOrAddLocal(newState.fields[stateKey], [toLocalObject(castedAction.payload.entity, 'key')], undefined, true);
             return newState;
         }
         case FieldActions.FIELD_GET_SINGLE_FAILURE: {

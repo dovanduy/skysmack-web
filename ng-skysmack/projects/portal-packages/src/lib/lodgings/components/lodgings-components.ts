@@ -2,7 +2,7 @@ import { Routes } from '@angular/router';
 import { LodgingsIndexComponent } from './lodgings-index/lodgings-index.component';
 import { LodgingsCreateComponent } from './lodgings-create/lodgings-create.component';
 import { LodgingsEditComponent } from './lodgings-edit/lodgings-edit.component';
-import { FieldsIndexComponent, FieldsCreateComponent, SettingsComponent } from '@skysmack/portal-ui';
+import { FieldsIndexComponent, FieldsCreateComponent } from '@skysmack/portal-ui';
 import { RouteData } from '@skysmack/framework';
 import { LodgingsAvailablityComponent } from './lodgings-availablity/lodgings-availablity.component';
 
@@ -29,6 +29,7 @@ export const lodgingsRoutes: Routes = [
 ];
 
 export const lodgingsComponents: any[] = [
+
   LodgingsIndexComponent,
   LodgingsCreateComponent,
   LodgingsEditComponent,

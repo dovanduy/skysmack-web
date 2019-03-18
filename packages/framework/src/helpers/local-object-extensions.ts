@@ -1,7 +1,7 @@
 import { LocalObject, LocalObjectStatus, StrIndex } from '../models';
 
 export class LocalObjectExtensions {
-    public static mergeOrAddLocal<TObject, TKey>(existingRecords: StrIndex<LocalObject<TObject, TKey>>, newRecords: LocalObject<TObject, TKey>[], expectedState: LocalObjectStatus = LocalObjectStatus.OK): StrIndex<LocalObject<TObject, TKey>> {
+    public static mergeOrAddLocal<TObject, TKey>(existingRecords: StrIndex<LocalObject<TObject, TKey>>, newRecords: LocalObject<TObject, TKey>[], expectedState: LocalObjectStatus = LocalObjectStatus.OK, preserveIsNew: boolean = false): StrIndex<LocalObject<TObject, TKey>> {
         if (!newRecords || newRecords === null || newRecords.length === 0) {
             return existingRecords;
         }
@@ -24,6 +24,11 @@ export class LocalObjectExtensions {
             if (existingRecordKey) {
                 if (existingRecords[existingRecordKey].status === expectedState) {
                     newRecord.localId = existingRecordKey;
+
+                    if (preserveIsNew) {
+                        newRecord.isNew = existingRecords[existingRecordKey].isNew;
+                    }
+
                     existingRecords[existingRecordKey] = newRecord;
                 }
             } else {

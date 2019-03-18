@@ -55,7 +55,7 @@ export function packagesReducer(state = new PackagesState(), action: any): Packa
         case PackagesActions.GET_SINGLE_PACKAGE_SUCCESS: {
             const castedAction: ReduxAction<GetPackageSuccessPayload> = action;
             const _newPackage = [toLocalObject<Package, string>(castedAction.payload._package, 'path')];
-            newState.packages = LocalObjectExtensions.mergeOrAddLocal<Package, string>(newState.packages, _newPackage);
+            newState.packages = LocalObjectExtensions.mergeOrAddLocal<Package, string>(newState.packages, _newPackage, undefined, true);
             return newState;
         }
         case PackagesActions.GET_SINGLE_PACKAGE_FAILURE: {
