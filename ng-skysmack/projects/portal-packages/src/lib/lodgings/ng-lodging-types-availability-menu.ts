@@ -24,9 +24,7 @@ export class NgLodgingTypesAvailabilityMenu extends SidebarMenu {
     }
 
     public setPrimaryMenu() {
-        // this.primaryMenuAreas.push(new MenuArea('actions', this.translationPrefix, 1));
         this.primaryMenuAreas.push(new MenuArea('manage', this.translationPrefix, 2));
-
         this.primaryMenuItems.push(new MenuItem('/' + this.packagePath + '/types', this.translationPrefix + 'BACK', 'manage', 4, 'groupAdd'));
     }
 

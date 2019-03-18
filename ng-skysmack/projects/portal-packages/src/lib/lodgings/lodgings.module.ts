@@ -9,6 +9,8 @@ import { lodgingsComponents } from './components/lodgings-components';
 import { lodgingTypesComponents } from './components/lodging-types-component';
 import { TranslateLoader } from '@ngx-translate/core';
 import { LanguageService } from '@skysmack/portal-ui';
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 
 @NgModule({
   imports: [
@@ -18,7 +20,12 @@ import { LanguageService } from '@skysmack/portal-ui';
     PortalUiModule,
     LodgingsRoutingModule,
     FieldsModule,
-    SettingsModule
+    SettingsModule,
+    // Note: Below setup works with ng-packgr (running ng build portal-ui)
+    CalendarModule.forRoot({
+      provide: DateAdapter,
+      useFactory: adapterFactory
+    }),
   ],
   exports: [],
   declarations: [

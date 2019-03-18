@@ -6,10 +6,7 @@ import { HttpClient } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 
-import { CalendarModule, DateAdapter } from 'angular-calendar';
-import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { RecurringExpressionFieldModule } from './components/field-components/components/recurring-expression-field/recurring-expression-field.module';
-import { CalendarComponent } from './components/common/calendar/calendar.component';
 import { DropDownBlockComponent } from './components/common/dropdown-block/dropdown-block.component';
 import { SidebarMenuComponent } from './components/common/sidebar-menu/sidebar-menu.component';
 import { LanguageSelectComponent } from './components/common/language-select/language-select.component';
@@ -63,11 +60,6 @@ import { NOTIFICATIONS_INJECTOR_TOKEN } from '@skysmack/ng-redux';
     RouterModule,
     ReactiveFormsModule,
     TranslateModule.forRoot(),
-    // Note: Below setup works with ng-packgr (running ng build portal-ui)
-    CalendarModule.forRoot({
-      provide: DateAdapter,
-      useFactory: adapterFactory
-    }),
     RecurringExpressionFieldModule,
     ValidatorsFieldModule,
     MaterialModule // Must come after BrowserAnimationsModule
@@ -88,7 +80,6 @@ import { NOTIFICATIONS_INJECTOR_TOKEN } from '@skysmack/ng-redux';
     IsAuthenticatedDirective,
     IsAnonymousDirective,
     // Components
-    CalendarComponent,
     DropDownBlockComponent,
     SidebarMenuComponent,
     LanguageSelectComponent,
@@ -132,7 +123,6 @@ import { NOTIFICATIONS_INJECTOR_TOKEN } from '@skysmack/ng-redux';
     // Material
     MaterialModule,
     // Components
-    CalendarComponent,
     DropDownBlockComponent,
     SidebarMenuComponent,
     LanguageSelectComponent,

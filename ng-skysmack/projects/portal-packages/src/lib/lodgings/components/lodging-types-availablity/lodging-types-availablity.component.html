@@ -9,5 +9,42 @@
   </mat-form-field>
 
   <!-- Calendar -->
-  <ss-calendar *ngIf="events$ | async as events" [events]="events" (currentDate)="requestPeriod($event)"></ss-calendar>
+  <ng-template #customCellTemplate let-day="day" let-locale="locale">
+    <ng-container *ngIf="day.freeLodgings">
+      <div class="cal-cell-top">
+        <span class="cal-day-number">{{ day.date | calendarDate:'monthViewDayNumber':locale }}</span>
+      </div>
+      <div class="cell-totals">
+        <ng-container *ngFor="let freeLodgings of day.freeLodgings; trackBy: trackById">
+          <p *ngIf="freeLodgings.available" style="color:green;">{{ freeLodgings.name }} ✓</p>
+          <p *ngIf="!freeLodgings.available" style="color:red;">{{ freeLodgings.name }} ✘</p>
+        </ng-container>
+      </div>
+    </ng-container>
+  </ng-template>
+  <ng-container *ngIf="events$ | async as events">
+    <div [ngSwitch]="view">
+      <button mat-raised-button color="primary" mwlCalendarPreviousView [view]="view" [(viewDate)]="viewDate">
+        Previous
+      </button>
+      <button mat-raised-button color="primary" mwlCalendarToday [(viewDate)]="viewDate">
+        Today
+      </button>
+      <button mat-raised-button color="primary" mwlCalendarNextView [view]="view" [(viewDate)]="viewDate">
+        Next
+      </button>
+
+      <h3>{{ viewDate | calendarDate:(view + 'ViewTitle'):'en' }}</h3>
+
+      <mwl-calendar-month-view *ngSwitchCase="'month'" [viewDate]="viewDate" [events]="events"
+        (dayClicked)="viewDate = $event.day.date;" (beforeViewRender)="beforeMonthViewRender($event)"
+        [cellTemplate]="customCellTemplate">
+      </mwl-calendar-month-view>
+      <mwl-calendar-week-view *ngSwitchCase="'week'" [viewDate]="viewDate" [events]="events"
+        (dayHeaderClicked)="viewDate = $event.day.date; view = 'day';">
+      </mwl-calendar-week-view>
+      <mwl-calendar-day-view *ngSwitchCase="'day'" [viewDate]="viewDate" [events]="events">
+      </mwl-calendar-day-view>
+    </div>
+  </ng-container>
 </ss-container>

@@ -8,7 +8,6 @@ export * from './progress/progress.component';
 export * from './navbar/index';
 export * from './sidebar-menu/sidebar-menu.component';
 export * from './speed-dial-fab/speed-dial-fab.component';
-export * from './calendar/calendar.component';
 export * from './queue/queue.component';
 export * from './records-container/records-container.component';
 export * from './roles-select/roles-select.component';

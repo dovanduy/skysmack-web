@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { EntityComponentPageTitle } from '@skysmack/portal-ui';
 import { NgSkysmackStore, NgLodgingsStore, NgLodgingsActions } from '@skysmack/ng-packages';
@@ -10,6 +10,7 @@ import * as _moment from 'moment';
 import { PagedQuery, defined } from '@skysmack/framework';
 import { SelectFieldOption } from '@skysmack/ng-ui';
 import { NgLodgingsAvailabilityMenu } from '../../ng-lodgings-availability-menu';
+import { CalendarMonthViewDay } from 'angular-calendar';
 const moment = _moment;
 
 @Component({
@@ -26,6 +27,16 @@ export class LodgingsAvailablityComponent implements OnInit {
   public currentSelectedDate: Date = new Date();
   public startOfMonth: string;
   public endOfMonth: string;
+
+  public view = 'month';
+  private _viewDate: Date = new Date();
+  public get viewDate(): Date {
+    return this._viewDate;
+  }
+  public set viewDate(date: Date) {
+    this.requestPeriod(date);
+    this._viewDate = date;
+  }
 
   constructor(
     public router: Router,
@@ -53,6 +64,18 @@ export class LodgingsAvailablityComponent implements OnInit {
 
   public getAvailableLodgings() {
     this.actions.getAvailableLodgings(this.packagePath, this.startOfMonth, this.endOfMonth, this.selectedLodgingIds);
+  }
+
+  public beforeMonthViewRender({ body }: { body: CalendarMonthViewDay[] }): void {
+    body.forEach(cell => {
+      cell.events.forEach((event: CalendarEvent<any>) => {
+        cell['freeLodgings'] = event.meta.freeLodgings;
+      });
+    });
+  }
+
+  public trackById(index: any, item: any) {
+    return item.id;
   }
 
   private getLodgings() {
@@ -84,14 +107,14 @@ export class LodgingsAvailablityComponent implements OnInit {
 
         return Object.keys(dates).map(dateKey => {
           const date = dateKey;
-          let freeLodgingsBadges: {
+          let freeLodgings: {
             id: string,
             name: string,
             available: boolean
           }[];
 
 
-          freeLodgingsBadges = this.selectedLodgingIds.map(selectedLodgingId => {
+          freeLodgings = this.selectedLodgingIds.map(selectedLodgingId => {
             const lodgingName = lodgings.find(lodging => lodging.object.id === selectedLodgingId).object.name;
             return {
               id: date.split('T')[0] + lodgingName,
@@ -113,7 +136,7 @@ export class LodgingsAvailablityComponent implements OnInit {
             },
             draggable: false,
             meta: {
-              freeLodgingsBadges
+              freeLodgings
             }
           } as CalendarEvent;
         });
