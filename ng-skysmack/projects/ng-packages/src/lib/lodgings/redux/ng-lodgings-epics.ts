@@ -22,7 +22,7 @@ export class NgLodgingsEpics extends RecordEpicsBase<Lodging, number> {
         ]);
     }
 
-    public getAvailableLodgingsEpic = (action$: ActionsObservable<any>): Observable<ReduxAction<StrIndex<StrIndex<number>>> | ReduxAction<HttpErrorResponse>> => action$.pipe(
+    public getAvailableLodgingsEpic = (action$: ActionsObservable<any>): Observable<ReduxAction<StrIndex<StrIndex<number[]>>> | ReduxAction<HttpErrorResponse>> => action$.pipe(
         ofType(LodgingsActions.GET_AVAILABLE_LODGINGS),
         switchMap((action: ReduxAction<GetIntervalPayload, SelectedIdsMeta<number>>) => this.requests.getAvailableLodgings(action))
     )

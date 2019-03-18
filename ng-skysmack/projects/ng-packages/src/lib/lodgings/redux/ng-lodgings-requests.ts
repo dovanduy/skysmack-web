@@ -17,12 +17,12 @@ export class NgLodgingsRequests extends NgRecordRequests<Lodging, number> {
         super(http, apiDomain, 'LODGINGS_', []);
     }
 
-    public getAvailableLodgings(action: ReduxAction<GetIntervalPayload, SelectedIdsMeta<number>>): Observable<ReduxAction<StrIndex<StrIndex<number>>> | ReduxAction<HttpErrorResponse>> {
+    public getAvailableLodgings(action: ReduxAction<GetIntervalPayload, SelectedIdsMeta<number>>): Observable<ReduxAction<StrIndex<StrIndex<number[]>>> | ReduxAction<HttpErrorResponse>> {
         let url = `${this.apiDomain.domain}/${action.payload.packagePath}/available/daily/${action.payload.start}/${action.payload.end}`;
         url = `${url}?${action.meta.ids.map(id => `lodgingIds=${id}`).join('&')}`;
 
         return this.http.get<any>(url, { observe: 'response' }).pipe(
-            map(httpResponse => Object.assign({}, new ReduxAction<StrIndex<StrIndex<number>>, StateKeyMeta>({
+            map(httpResponse => Object.assign({}, new ReduxAction<StrIndex<StrIndex<number[]>>, StateKeyMeta>({
                 type: this.prefix + NgLodgingsActions.GET_AVAILABLE_LODGINGS_SUCCESS,
                 payload: httpResponse.body,
                 meta: {

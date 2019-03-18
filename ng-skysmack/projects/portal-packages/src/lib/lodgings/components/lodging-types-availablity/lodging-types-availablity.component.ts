@@ -23,7 +23,7 @@ export class LodgingTypesAvailablityComponent implements OnInit {
   public packagePath = this.router.url.split('/')[1];
   public events$: Observable<CalendarEvent[]>;
   public selectedLodgingTypeIds: number[] = [];
-  public lodgingOptions$: Observable<SelectFieldOption[]>;
+  public lodgingTypeOptions$: Observable<SelectFieldOption[]>;
   public currentSelectedDate: Date = new Date();
   public startOfMonth: string;
   public endOfMonth: string;
@@ -80,7 +80,7 @@ export class LodgingTypesAvailablityComponent implements OnInit {
 
   private getLodgings() {
     this.actions.getPaged(this.packagePath, new PagedQuery());
-    this.lodgingOptions$ = this.store.get(this.packagePath).pipe(
+    this.lodgingTypeOptions$ = this.store.get(this.packagePath).pipe(
       map(lodgings => {
         return lodgings.map(x => ({ value: x.object.id, displayName: x.object.name } as SelectFieldOption));
       }),
@@ -143,8 +143,6 @@ export class LodgingTypesAvailablityComponent implements OnInit {
             } as CalendarEvent;
           });
         }).reduce((acc, current) => acc.concat(current), []).filter(x => x);
-
-        console.log(result);
 
         return result;
       })
