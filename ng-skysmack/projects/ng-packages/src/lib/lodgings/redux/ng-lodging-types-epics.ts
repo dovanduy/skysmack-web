@@ -18,7 +18,8 @@ export class NgLodgingTypesEpics extends RecordEpicsBase<LodgingType, number> {
     ) {
         super(requests, 'LODGING_TYPES_', notifications);
         this.epics = this.epics.concat([
-            this.getAvailableLodgingTypesEpic
+            this.getAvailableLodgingTypesEpic,
+            this.getAvailableLodgingTypesCountEpic
         ]);
     }
 
@@ -26,5 +27,10 @@ export class NgLodgingTypesEpics extends RecordEpicsBase<LodgingType, number> {
     public getAvailableLodgingTypesEpic = (action$: ActionsObservable<any>): Observable<ReduxAction<StrIndex<StrIndex<number[]>>> | ReduxAction<HttpErrorResponse>> => action$.pipe(
         ofType(LodgingTypesActions.GET_AVAILABLE_LODGING_TYPES),
         switchMap((action: ReduxAction<GetIntervalPayload, SelectedIdsMeta<number>>) => this.requests.getAvailableLodgingTypes(action))
+    )
+
+    public getAvailableLodgingTypesCountEpic = (action$: ActionsObservable<any>): Observable<ReduxAction<StrIndex<StrIndex<number>>> | ReduxAction<HttpErrorResponse>> => action$.pipe(
+        ofType(LodgingTypesActions.GET_AVAILABLE_LODGING_TYPES_COUNT),
+        switchMap((action: ReduxAction<GetIntervalPayload, SelectedIdsMeta<number>>) => this.requests.getAvailableLodgingTypesCount(action))
     )
 }

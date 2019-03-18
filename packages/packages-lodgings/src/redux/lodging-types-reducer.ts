@@ -14,6 +14,7 @@ export class LodgingTypesState implements RecordState<LodgingType, number> {
     public localPageTypes: StrIndex<StrIndex<LocalPageTypes<number>>> = {};
     public localRecords: StrIndex<StrIndex<LocalObject<LodgingType, number>>> = {};
     public availableLodgingTypes: StrIndex<StrIndex<StrIndex<number[]>>> = {};
+    public availableLodgingTypesCount: StrIndex<StrIndex<StrIndex<number>>> = {};
 }
 
 export function lodgingTypesReducer(state = new LodgingTypesState(), action: ReduxAction, prefix: string = 'LODGING_TYPES_'): LodgingTypesState {
@@ -28,6 +29,17 @@ export function lodgingTypesReducer(state = new LodgingTypesState(), action: Red
             return newState;
         }
         case prefix + LodgingTypesActions.GET_AVAILABLE_LODGING_TYPES_FAILURE: {
+            console.log('error:', action);
+            return newState;
+        }
+
+        case prefix + LodgingTypesActions.GET_AVAILABLE_LODGING_TYPES_COUNT_SUCCESS: {
+            const castedAction = action as ReduxAction<StrIndex<StrIndex<number>>, StateKeyMeta>;
+            // TODO: Merge available lodgings instead of overwriting them.
+            newState.availableLodgingTypesCount[castedAction.meta.stateKey] = castedAction.payload;
+            return newState;
+        }
+        case prefix + LodgingTypesActions.GET_AVAILABLE_LODGING_TYPES_COUNT_FAILURE: {
             console.log('error:', action);
             return newState;
         }

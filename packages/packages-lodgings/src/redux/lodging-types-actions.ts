@@ -9,11 +9,29 @@ export class LodgingTypesActions extends RecordActionsBase<LodgingTypesAppState,
     public static GET_AVAILABLE_LODGING_TYPES_SUCCESS = 'GET_AVAILABLE_LODGING_TYPES_SUCCESS';
     public static GET_AVAILABLE_LODGING_TYPES_FAILURE = 'GET_AVAILABLE_LODGING_TYPES_FAILURE';
 
+    public static GET_AVAILABLE_LODGING_TYPES_COUNT = 'GET_AVAILABLE_LODGING_TYPES_COUNT';
+    public static GET_AVAILABLE_LODGING_TYPES_COUNT_SUCCESS = 'GET_AVAILABLE_LODGING_TYPES_COUNT_SUCCESS';
+    public static GET_AVAILABLE_LODGING_TYPES_COUNT_FAILURE = 'GET_AVAILABLE_LODGING_TYPES_COUNT_FAILURE';
+
     constructor(protected store: Store<LodgingTypesAppState>) { super(store, 'LODGING_TYPES_', ['types']); }
 
     public getAvailableLodgingTypes(packagePath: string, start: string, end: string, selectedLodgingIds: number[]) {
         this.store.dispatch(Object.assign({}, new ReduxAction<GetIntervalPayload, SelectedIdsMeta<number>>({
             type: LodgingTypesActions.GET_AVAILABLE_LODGING_TYPES,
+            payload: {
+                packagePath,
+                start,
+                end
+            },
+            meta: {
+                ids: selectedLodgingIds
+            }
+        })));
+    }
+
+    public getAvailableLodgingTypesCount(packagePath: string, start: string, end: string, selectedLodgingIds: number[]) {
+        this.store.dispatch(Object.assign({}, new ReduxAction<GetIntervalPayload, SelectedIdsMeta<number>>({
+            type: LodgingTypesActions.GET_AVAILABLE_LODGING_TYPES_COUNT,
             payload: {
                 packagePath,
                 start,

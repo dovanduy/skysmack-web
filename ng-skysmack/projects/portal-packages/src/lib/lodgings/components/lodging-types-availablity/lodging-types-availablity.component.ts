@@ -63,7 +63,7 @@ export class LodgingTypesAvailablityComponent implements OnInit {
   }
 
   public getAvailableLodgingTypes() {
-    this.actions.getAvailableLodgingTypes(this.packagePath, this.startOfMonth, this.endOfMonth, this.selectedLodgingTypeIds);
+    this.actions.getAvailableLodgingTypesCount(this.packagePath, this.startOfMonth, this.endOfMonth, this.selectedLodgingTypeIds);
   }
 
   public beforeMonthViewRender({ body }: { body: CalendarMonthViewDay[] }): void {
@@ -99,14 +99,14 @@ export class LodgingTypesAvailablityComponent implements OnInit {
 
     this.events$ = combineLatest(
       this.store.get(this.packagePath),
-      this.store.getAvailableLodgingTypes(this.packagePath)
+      this.store.getAvailableLodgingTypesCount(this.packagePath)
     ).pipe(
       map(values => {
         const lodgings = values[0];
-        const idIndex = values[1];
+        const availableLodgingTypesCount = values[1];
 
-        const result = Object.keys(idIndex).map(idKey => {
-          const dates = idIndex[idKey];
+        return Object.keys(availableLodgingTypesCount).map(availableLodgingTypesCountKey => {
+          const dates = availableLodgingTypesCount[availableLodgingTypesCountKey];
           return Object.keys(dates).map(dateKey => {
             const date = dateKey;
             let freeLodgingTypes: {
@@ -121,7 +121,7 @@ export class LodgingTypesAvailablityComponent implements OnInit {
               return {
                 id: date.split('T')[0] + lodgingTypeName,
                 name: lodgingTypeName,
-                count: dates[dateKey].length
+                count: availableLodgingTypesCount[availableLodgingTypesCountKey][date]
               };
             });
 
@@ -142,9 +142,7 @@ export class LodgingTypesAvailablityComponent implements OnInit {
               }
             } as CalendarEvent;
           });
-        }).reduce((acc, current) => acc.concat(current), []).filter(x => x);
-
-        return result;
+        }).reduce((acc, current) => acc.concat(current), []);
       })
     );
   }
