@@ -8,8 +8,8 @@ import { NgMenuItemProviders } from '@skysmack/ng-redux';
 import { SidebarMenu } from '@skysmack/portal-ui';
 
 @Injectable({ providedIn: 'root' })
-export class NgLodgingsAvailabilityMenu extends SidebarMenu {
-    public menuId = 'lodgingsAvailability';
+export class NgLodgingTypesAvailabilityMenu extends SidebarMenu {
+    public menuId = 'lodgingTypesAvailability';
     public translationPrefix = 'LODGINGS.INDEX.';
 
     constructor(
@@ -24,8 +24,10 @@ export class NgLodgingsAvailabilityMenu extends SidebarMenu {
     }
 
     public setPrimaryMenu() {
+        // this.primaryMenuAreas.push(new MenuArea('actions', this.translationPrefix, 1));
         this.primaryMenuAreas.push(new MenuArea('manage', this.translationPrefix, 2));
-        this.primaryMenuItems.push(new MenuItem('/' + this.packagePath, this.translationPrefix + 'BACK', 'manage', 4, 'groupAdd'));
+
+        this.primaryMenuItems.push(new MenuItem('/' + this.packagePath + '/types', this.translationPrefix + 'BACK', 'manage', 4, 'groupAdd'));
     }
 
     public setSpeedDialMenu() {

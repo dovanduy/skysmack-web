@@ -29,7 +29,6 @@ export const lodgingsRoutes: Routes = [
 ];
 
 export const lodgingsComponents: any[] = [
-
   LodgingsIndexComponent,
   LodgingsCreateComponent,
   LodgingsEditComponent,
