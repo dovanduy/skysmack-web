@@ -8,7 +8,8 @@ import { FieldBaseComponent } from '../field-base-component';
   styleUrls: ['./select-field.component.scss']
 })
 export class SelectFieldComponent extends FieldBaseComponent implements OnInit {
-  public fieldOptions = [];
+  public fieldOptions: { value: any, displayName: string }[] = [];
+  public nullDisplayName = undefined;
 
   ngOnInit() {
     super.ngOnInit();
@@ -18,6 +19,8 @@ export class SelectFieldComponent extends FieldBaseComponent implements OnInit {
         this.runAllRulesOfType(DisableUntilValueRule.type, { fields });
         this.runRulesOnChange(fields);
         this.fieldOptions = (this.field as SelectField).getOptions();
+        const nullValueOption = this.fieldOptions.find(x => x.value === null);
+        this.nullDisplayName = nullValueOption ? nullValueOption.displayName : undefined;
       }
     }));
   }

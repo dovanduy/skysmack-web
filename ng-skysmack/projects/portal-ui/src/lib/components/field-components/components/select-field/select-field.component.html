@@ -1,5 +1,6 @@
 <ng-container *ngIf="field" [formGroup]="fh.form">
   <mat-form-field>
+    <mat-label *ngIf="nullDisplayName">{{ nullDisplayName }}</mat-label>
     <mat-select [id]="fieldKey" [formControlName]="fieldKey" [value]="field.value"
       [placeholder]="field.placeholder | translate">
       <mat-option *ngFor="let opt of fieldOptions" [value]="opt.value">{{opt.displayName}}</mat-option>
