@@ -8,8 +8,8 @@ import { CalendarEvent, EventColor, EventAction } from 'calendar-utils';
 
 import * as _moment from 'moment';
 import { PagedQuery, defined } from '@skysmack/framework';
-import { NgLodgingsMenu } from '../../ng-lodgings-menu';
 import { SelectFieldOption } from '@skysmack/ng-ui';
+import { NgLodgingsAvailabilityMenu } from '../../ng-lodgings-availability-menu';
 const moment = _moment;
 
 @Component({
@@ -34,9 +34,9 @@ export class LodgingsAvailablityComponent implements OnInit {
     public store: NgLodgingsStore,
     public actions: NgLodgingsActions,
     public pageTitle: EntityComponentPageTitle,
-    public sidebarMenu: NgLodgingsMenu
+    public sidebarMenu: NgLodgingsAvailabilityMenu
   ) {
-    pageTitle.setTitle('Availability');
+    pageTitle.setTitle('Lodgings Availability');
   }
 
   ngOnInit() {
