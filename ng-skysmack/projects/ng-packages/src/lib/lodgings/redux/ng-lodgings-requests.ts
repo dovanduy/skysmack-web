@@ -1,11 +1,11 @@
-import { Lodging, SelectedLodgingIdsMeta } from '@skysmack/packages-lodgings';
+import { Lodging } from '@skysmack/packages-lodgings';
 import { Injectable, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ApiDomain, StrIndex, HttpErrorResponse, API_DOMAIN_INJECTOR_TOKEN } from '@skysmack/framework';
 import { NgRecordRequests } from '@skysmack/ng-redux';
 import { Observable, of } from 'rxjs';
 import { retry, catchError, map } from 'rxjs/operators';
-import { ReduxAction, StateKeyMeta, GetIntervalPayload } from '@skysmack/redux';
+import { ReduxAction, StateKeyMeta, GetIntervalPayload, SelectedIdsMeta } from '@skysmack/redux';
 import { NgLodgingsActions } from './ng-lodgings-actions';
 
 @Injectable({ providedIn: 'root' })
@@ -17,9 +17,9 @@ export class NgLodgingsRequests extends NgRecordRequests<Lodging, number> {
         super(http, apiDomain, 'LODGINGS_', []);
     }
 
-    public getAvailableLodgings(action: ReduxAction<GetIntervalPayload, SelectedLodgingIdsMeta>): Observable<ReduxAction<StrIndex<StrIndex<number>>> | ReduxAction<HttpErrorResponse>> {
+    public getAvailableLodgings(action: ReduxAction<GetIntervalPayload, SelectedIdsMeta<number>>): Observable<ReduxAction<StrIndex<StrIndex<number>>> | ReduxAction<HttpErrorResponse>> {
         let url = `${this.apiDomain.domain}/${action.payload.packagePath}/available/daily/${action.payload.start}/${action.payload.end}`;
-        url = `${url}?${action.meta.lodgingIds.map(id => `lodgingIds=${id}`).join('&')}`;
+        url = `${url}?${action.meta.ids.map(id => `lodgingIds=${id}`).join('&')}`;
 
         return this.http.get<any>(url, { observe: 'response' }).pipe(
             map(httpResponse => Object.assign({}, new ReduxAction<StrIndex<StrIndex<number>>, StateKeyMeta>({

@@ -13,7 +13,7 @@ export class LodgingTypesAppState extends AppState {
 export class LodgingTypesState implements RecordState<LodgingType, number> {
     public localPageTypes: StrIndex<StrIndex<LocalPageTypes<number>>> = {};
     public localRecords: StrIndex<StrIndex<LocalObject<LodgingType, number>>> = {};
-    public availableLodgings: StrIndex<StrIndex<StrIndex<number>>> = {};
+    public availableLodgingTypes: StrIndex<StrIndex<StrIndex<number[]>>> = {};
 }
 
 export function lodgingTypesReducer(state = new LodgingTypesState(), action: ReduxAction, prefix: string = 'LODGING_TYPES_'): LodgingTypesState {
@@ -21,13 +21,13 @@ export function lodgingTypesReducer(state = new LodgingTypesState(), action: Red
     const newState = Object.assign({}, state);
 
     switch (action.type) {
-        case prefix + LodgingTypesActions.GET_AVAILABLE_LODGINGS_SUCCESS: {
-            const castedAction = action as ReduxAction<StrIndex<StrIndex<number>>, StateKeyMeta>;
+        case prefix + LodgingTypesActions.GET_AVAILABLE_LODGING_TYPES_SUCCESS: {
+            const castedAction = action as ReduxAction<StrIndex<StrIndex<number[]>>, StateKeyMeta>;
             // TODO: Merge available lodgings instead of overwriting them.
-            newState.availableLodgings[castedAction.meta.stateKey] = castedAction.payload;
+            newState.availableLodgingTypes[castedAction.meta.stateKey] = castedAction.payload;
             return newState;
         }
-        case prefix + LodgingTypesActions.GET_AVAILABLE_LODGINGS_FAILURE: {
+        case prefix + LodgingTypesActions.GET_AVAILABLE_LODGING_TYPES_FAILURE: {
             console.log('error:', action);
             return newState;
         }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { EntityComponentPageTitle } from '@skysmack/portal-ui';
-import { NgSkysmackStore, NgLodgingsStore, NgLodgingsActions } from '@skysmack/ng-packages';
+import { NgSkysmackStore, NgLodgingTypesStore, NgLodgingTypesActions } from '@skysmack/ng-packages';
 import { Observable, combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { CalendarEvent, EventColor, EventAction } from 'calendar-utils';
@@ -22,7 +22,7 @@ const moment = _moment;
 export class LodgingTypesAvailablityComponent implements OnInit {
   public packagePath = this.router.url.split('/')[1];
   public events$: Observable<CalendarEvent[]>;
-  public selectedLodgingIds: number[] = [];
+  public selectedLodgingTypeIds: number[] = [];
   public lodgingOptions$: Observable<SelectFieldOption[]>;
   public currentSelectedDate: Date = new Date();
   public startOfMonth: string;
@@ -42,8 +42,8 @@ export class LodgingTypesAvailablityComponent implements OnInit {
     public router: Router,
     public activatedRoute: ActivatedRoute,
     public skysmackStore: NgSkysmackStore,
-    public store: NgLodgingsStore,
-    public actions: NgLodgingsActions,
+    public store: NgLodgingTypesStore,
+    public actions: NgLodgingTypesActions,
     public pageTitle: EntityComponentPageTitle,
     public sidebarMenu: NgLodgingTypesAvailabilityMenu
   ) {
@@ -59,17 +59,17 @@ export class LodgingTypesAvailablityComponent implements OnInit {
 
   public requestPeriod(date: Date) {
     this.setCurrentDate(date);
-    this.getAvailableLodgings();
+    this.getAvailableLodgingTypes();
   }
 
-  public getAvailableLodgings() {
-    this.actions.getAvailableLodgings(this.packagePath, this.startOfMonth, this.endOfMonth, this.selectedLodgingIds);
+  public getAvailableLodgingTypes() {
+    this.actions.getAvailableLodgingTypes(this.packagePath, this.startOfMonth, this.endOfMonth, this.selectedLodgingTypeIds);
   }
 
   public beforeMonthViewRender({ body }: { body: CalendarMonthViewDay[] }): void {
     body.forEach(cell => {
       cell.events.forEach((event: CalendarEvent<any>) => {
-        cell['freeLodgings'] = event.meta.freeLodgings;
+        cell['freeLodgingTypes'] = event.meta.freeLodgingTypes;
       });
     });
   }
@@ -99,47 +99,54 @@ export class LodgingTypesAvailablityComponent implements OnInit {
 
     this.events$ = combineLatest(
       this.store.get(this.packagePath),
-      this.store.getAvailableLodgings(this.packagePath)
+      this.store.getAvailableLodgingTypes(this.packagePath)
     ).pipe(
       map(values => {
         const lodgings = values[0];
-        const dates = values[1];
+        const idIndex = values[1];
 
-        return Object.keys(dates).map(dateKey => {
-          const date = dateKey;
-          let freeLodgings: {
-            id: string,
-            name: string,
-            available: boolean
-          }[];
+        const result = Object.keys(idIndex).map(idKey => {
+          const dates = idIndex[idKey];
+          return Object.keys(dates).map(dateKey => {
+            const date = dateKey;
+            let freeLodgingTypes: {
+              id: string,
+              name: string,
+              count: number
+            }[];
 
 
-          freeLodgings = this.selectedLodgingIds.map(selectedLodgingId => {
-            const lodgingName = lodgings.find(lodging => lodging.object.id === selectedLodgingId).object.name;
+            freeLodgingTypes = this.selectedLodgingTypeIds.map(selectedLodgingTypeId => {
+              const lodgingTypeName = lodgings.find(lodging => lodging.object.id === selectedLodgingTypeId).object.name;
+              return {
+                id: date.split('T')[0] + lodgingTypeName,
+                name: lodgingTypeName,
+                count: dates[dateKey].length
+              };
+            });
+
             return {
-              id: date.split('T')[0] + lodgingName,
-              name: lodgingName,
-              available: dates[dateKey].includes(selectedLodgingId)
-            };
+              start: new Date(date),
+              title: '',
+              color: { primary: '#0033cc', secondary: '#3399ff' } as EventColor,
+              actions: [] as EventAction[],
+              allDay: true,
+              cssClass: 'available-booking',
+              resizable: {
+                beforeStart: false,
+                afterEnd: false,
+              },
+              draggable: false,
+              meta: {
+                freeLodgingTypes
+              }
+            } as CalendarEvent;
           });
+        }).reduce((acc, current) => acc.concat(current), []).filter(x => x);
 
-          return {
-            start: new Date(date),
-            title: '',
-            color: { primary: '#0033cc', secondary: '#3399ff' } as EventColor,
-            actions: [] as EventAction[],
-            allDay: true,
-            cssClass: 'available-booking',
-            resizable: {
-              beforeStart: false,
-              afterEnd: false,
-            },
-            draggable: false,
-            meta: {
-              freeLodgings
-            }
-          } as CalendarEvent;
-        });
+        console.log(result);
+
+        return result;
       })
     );
   }

@@ -2,22 +2,24 @@
 
   <!-- Lodgings selection -->
   <mat-form-field>
-    <mat-select [(value)]="selectedLodgingIds" placeholder="Select lodgings" multiple>
-      <mat-option *ngFor="let opt of lodgingOptions$ | async" [value]="opt.value" (click)="getAvailableLodgings()">
+    <mat-select [(value)]="selectedLodgingTypeIds" placeholder="Select lodging types" multiple>
+      <mat-option *ngFor="let opt of lodgingOptions$ | async" [value]="opt.value" (click)="getAvailableLodgingTypes()">
         {{opt.displayName}}</mat-option>
     </mat-select>
   </mat-form-field>
 
   <!-- Calendar -->
   <ng-template #customCellTemplate let-day="day" let-locale="locale">
-    <ng-container *ngIf="day.freeLodgings">
+    <ng-container *ngIf="day.freeLodgingTypes">
       <div class="cal-cell-top">
         <span class="cal-day-number">{{ day.date | calendarDate:'monthViewDayNumber':locale }}</span>
       </div>
       <div class="cell-totals">
-        <ng-container *ngFor="let freeLodgings of day.freeLodgings; trackBy: trackById">
-          <p *ngIf="freeLodgings.available" style="color:green;">{{ freeLodgings.name }} ✓</p>
-          <p *ngIf="!freeLodgings.available" style="color:red;">{{ freeLodgings.name }} ✘</p>
+        <ng-container *ngFor="let freeLodgingTypes of day.freeLodgingTypes; trackBy: trackById">
+          <p *ngIf="freeLodgingTypes.count > 0" style="color:green;">{{ freeLodgingTypes.name }} - {{
+            freeLodgingTypes.count }}</p>
+          <p *ngIf="freeLodgingTypes.count === 0" style="color:red;">{{ freeLodgingTypes.name }} - {{
+            freeLodgingTypes.count }}</p>
         </ng-container>
       </div>
     </ng-container>

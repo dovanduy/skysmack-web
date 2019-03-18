@@ -1,11 +1,11 @@
 import { RecordEpicsBase } from '@skysmack/ng-redux';
-import { LodgingType, LodgingTypesActions, SelectedLodgingIdsMeta } from '@skysmack/packages-lodgings';
+import { LodgingType, LodgingTypesActions } from '@skysmack/packages-lodgings';
 import { Injectable } from '@angular/core';
 import { NgLodgingTypesRequests } from './ng-lodging-types-requests';
 import { NgLodgingTypesNotifications } from '../ng-lodging-types-notifications';
 import { ActionsObservable, ofType } from 'redux-observable';
 import { Observable } from 'rxjs';
-import { ReduxAction, GetIntervalPayload } from '@skysmack/redux';
+import { ReduxAction, GetIntervalPayload, SelectedIdsMeta } from '@skysmack/redux';
 import { StrIndex, HttpErrorResponse } from '@skysmack/framework';
 import { switchMap } from 'rxjs/operators';
 
@@ -18,13 +18,13 @@ export class NgLodgingTypesEpics extends RecordEpicsBase<LodgingType, number> {
     ) {
         super(requests, 'LODGING_TYPES_', notifications);
         this.epics = this.epics.concat([
-            // this.getAvailableLodgingsEpic
+            this.getAvailableLodgingTypesEpic
         ]);
     }
 
 
-    public getAvailableLodgingsEpic = (action$: ActionsObservable<any>): Observable<ReduxAction<StrIndex<StrIndex<number>>> | ReduxAction<HttpErrorResponse>> => action$.pipe(
-        ofType(LodgingTypesActions.GET_AVAILABLE_LODGINGS),
-        switchMap((action: ReduxAction<GetIntervalPayload, SelectedLodgingIdsMeta>) => this.requests.getAvailableLodgings(action))
+    public getAvailableLodgingTypesEpic = (action$: ActionsObservable<any>): Observable<ReduxAction<StrIndex<StrIndex<number[]>>> | ReduxAction<HttpErrorResponse>> => action$.pipe(
+        ofType(LodgingTypesActions.GET_AVAILABLE_LODGING_TYPES),
+        switchMap((action: ReduxAction<GetIntervalPayload, SelectedIdsMeta<number>>) => this.requests.getAvailableLodgingTypes(action))
     )
 }

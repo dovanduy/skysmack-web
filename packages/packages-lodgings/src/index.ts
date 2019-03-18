@@ -1,4 +1,3 @@
-export * from './metas/index';
 export * from './models/index';
 export * from './redux/index';
 

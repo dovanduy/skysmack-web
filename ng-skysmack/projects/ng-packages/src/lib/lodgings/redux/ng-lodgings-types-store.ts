@@ -10,10 +10,10 @@ import { map } from 'rxjs/operators';
 export class NgLodgingTypesStore extends NgRecordStore<LodgingTypesAppState, LodgingType, number> {
     constructor(protected ngRedux: NgRedux<LodgingTypesAppState>) { super(ngRedux, 'lodgingTypes'); }
 
-    public getAvailableLodgings(packagePath: string): Observable<StrIndex<StrIndex<number>>> {
+    public getAvailableLodgingTypes(packagePath: string): Observable<StrIndex<StrIndex<number[]>>> {
         return this.ngRedux.select(state => state).pipe(
             map(state => state.lodgingTypes),
-            map(state => state.availableLodgings[packagePath]),
+            map(state => state.availableLodgingTypes[packagePath]),
             defined()
         );
     }
