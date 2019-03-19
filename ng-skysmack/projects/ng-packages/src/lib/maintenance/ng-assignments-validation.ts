@@ -29,7 +29,7 @@ export class NgAssignmentsValidation extends Validation {
         }
     };
 
-    public area = 'maintenance.assignments';
+    public area = 'assignments';
 
     public formValidators = [];
 

@@ -3,6 +3,7 @@ import { Validation } from '@skysmack/ng-ui';
 
 export class NgAssignmentTypesValidation extends Validation {
     public formErrors = {
+        assignmentTypeId: '',
         stateId: '',
         description: '',
         expression: '',
@@ -10,6 +11,9 @@ export class NgAssignmentTypesValidation extends Validation {
     };
 
     public validationMessages: StrIndex<{}> = {
+        assignmentTypeId: {
+            required: ''
+        },
         description: {
             required: '',
         },

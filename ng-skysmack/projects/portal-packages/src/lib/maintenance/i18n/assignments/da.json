@@ -2,7 +2,7 @@
     "ASSIGNMENTS": {
         "FORM": {
             "LABELS": {
-                "ASSIGNMENTTYPEID": "Enhed",
+                "ASSIGNMENTTYPEID": "Opgave type",
                 "DESCRIPTION": "Beskrivelse",
                 "OCCUPATIONSTATE": "Beskæftigelses tilstand",
                 "STATUS": "Status",
@@ -10,7 +10,7 @@
                 "FROM": "Kan startes fra"
             },
             "PLACEHOLDERS": {
-                "ASSIGNMENTTYPEID": "Vælg enhed",
+                "ASSIGNMENTTYPEID": "Opgave type",
                 "DESCRIPTION": "Indtast beskrivelse",
                 "OCCUPATIONSTATE": "Vælg beskæftigelses tilstand",
                 "STATUS": "Vælg status",
@@ -19,7 +19,7 @@
             },
             "VALIDATION": {
                 "ASSIGNMENTTYPEID": {
-                    "REQUIRED": "Enhed er påkrævet."
+                    "REQUIRED": "Opgave type er påkrævet."
                 },
                 "DESCRIPTION": {
                     "REQUIRED": "Beskrivelse er påkrævet."
@@ -56,57 +56,6 @@
             "STATES": "Tilstande",
             "TYPES": "Typer",
             "BACK": "Tilbage"
-        },
-        "FIELDS": {
-            "FORM": {
-                "LABELS": {
-                    "ENTITYID": "Enhed",
-                    "DESCRIPTION": "Beskrivelse",
-                    "STATUS": "Status",
-                    "DUE": "Udløbsdato",
-                    "FROM": "Kan startes fra"
-                },
-                "PLACEHOLDERS": {
-                    "ENTITYID": "Vælg enhed",
-                    "DESCRIPTION": "Indtast beskrivelse",
-                    "STATUS": "Vælg status",
-                    "DUE": " Vælg udløbsdato",
-                    "FROM": "Vælg hvornår opgaven kan startes"
-                },
-                "VALIDATION": {
-                    "ENTITYID": {
-                        "REQUIRED": "Enhed er påkrævet."
-                    },
-                    "DESCRIPTION": {
-                        "REQUIRED": "Beskrivelse er påkrævet."
-                    },
-                    "STATUS": {
-                        "REQUIRED": "Status er påkrævet."
-                    },
-                    "DUE": {
-                        "REQUIRED": "Udløbsdato er påkrævet.",
-                        "NOTBEFORE": "Udløbsdatoen må ikke være før startdatoen."
-                    },
-                    "FROM": {
-                        "REQUIRED": "En dato fra hvornår opgaven kan startes er påkrævet."
-                    }
-                },
-                "BUTTONS": {
-                    "CREATE": "Opret",
-                    "EDIT": "Rediger"
-                }
-            },
-            "INDEX": {
-                "ACTIONS": "Handlinger",
-                "CREATE": "Opret",
-                "ASSIGNMENTS": "Opgaver",
-                "FIELDS": "Opgave felter",
-                "MANAGE": "Konfigurer",
-                "BACK": "Tilbage"
-            },
-            "CREATE": {
-                "ADD": "Tilføj felt"
-            }
         },
         "QUEUE": {
             "ADDING": "Tilføjer {{ description }}",
