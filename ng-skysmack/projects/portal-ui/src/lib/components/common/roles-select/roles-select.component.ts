@@ -1,8 +1,8 @@
-import { Component, OnInit, Input, Output, EventEmitter, OnDestroy, ViewChild, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnDestroy } from '@angular/core';
 import { SubscriptionHandler, PagedQuery, Package } from '@skysmack/framework';
 import { NgRolesStore, NgRolesActions, NgSkysmackStore } from '@skysmack/ng-packages';
 import { map } from 'rxjs/operators';
-import { MatSelectChange, MatSelect } from '@angular/material';
+import { MatSelectChange } from '@angular/material';
 
 @Component({
   selector: 'ss-roles-select',

@@ -39,6 +39,11 @@ export class SelectField extends Field {
     public filters?: { key: any, value: any }[] = [];
 
     /**
+     * Value used for select fields where you can select between single and multiple values.
+     */
+    public selectType: 'single' | 'multiple' = 'single';
+
+    /**
      * Gets the SelectFieldOptions for the SelectField.
      */
     public getOptions(): SelectFieldOption[] {

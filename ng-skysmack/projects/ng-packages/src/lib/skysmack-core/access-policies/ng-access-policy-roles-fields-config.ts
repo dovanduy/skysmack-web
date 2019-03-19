@@ -34,15 +34,13 @@ export class NgAccessPolicyRolesFieldsConfig extends FieldsConfig<AccessPolicyRo
             } as SelectField),
 
             new SelectField({
-                fieldType: FieldTypes.SelectField,
+                fieldType: FieldTypes.RolesSelectField,
                 value: entity ? entity.object.id.roleId : undefined,
                 key: 'roleId',
-                optionsData: dependencies && dependencies.availableRoles,
                 validators: [Validators.required],
-                displayNameSelector: 'object.name',
                 order: 2,
                 showColumn: true
-            } as SelectField),
+            } as SelectField)
         ];
 
         if (entity && entity.object.id && entity.status !== LocalObjectStatus.CREATING) {

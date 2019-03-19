@@ -1,6 +1,6 @@
 import { Input, OnDestroy, ElementRef, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { SubscriptionLike as ISubscription, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { FormHelper, Field, FormRule } from '@skysmack/ng-ui';
 import { map } from 'rxjs/operators';
 import { SubscriptionHandler, StrIndex } from '@skysmack/framework';

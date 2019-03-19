@@ -1,8 +1,3 @@
-<!-- <mat-checkbox *ngFor="let roleCheckBox of roleCheckBoxes; trackBy: trackByRoleId" [checked]="roleCheckBox.checked"
-  (click)="changeRoleInclusion(roleCheckBox)">{{ roleCheckBox.name }}</mat-checkbox> -->
-
-
-<h4>Roles</h4>
 <mat-form-field>
   <mat-select [(value)]="value" (selectionChange)="selectionChanged($event)" *ngIf="selectType === 'multiple'"
     placeholder="Select roles" multiple>

@@ -7,6 +7,6 @@
     > Change css to scss in component style path.
     > Change style.css to style.scss.
 - Register in PortalUiModule
-- Add selector to DynamicFormField html
+- Add selector to dynamic-form-field.component.html
 - Add logic and styles to the component
 - Test it

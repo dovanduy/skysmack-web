@@ -17,3 +17,4 @@ export * from './time-field/time-field.component';
 export * from './field-base-component';
 export * from './validators-field/index';
 export * from './field-permission-field/field-permission-field.component';
+export * from './roles-select-field/roles-select-field.component';

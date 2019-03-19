@@ -53,6 +53,7 @@ import { ValidatorsFieldModule } from './components/field-components/components/
 import { FieldPermissionFieldComponent } from './components/field-components/components/field-permission-field/field-permission-field.component';
 import { RolesSelectComponent } from './components/common/roles-select/roles-select.component';
 import { NOTIFICATIONS_INJECTOR_TOKEN } from '@skysmack/ng-redux';
+import { RolesSelectFieldComponent } from './components/field-components/components/roles-select-field/roles-select-field.component';
 
 @NgModule({
   imports: [
@@ -115,7 +116,8 @@ import { NOTIFICATIONS_INJECTOR_TOKEN } from '@skysmack/ng-redux';
     AvailablePermissionsFieldComponent,
     FieldPermissionFieldComponent,
     PageHeaderComponent,
-    SpeedDialFabComponent
+    SpeedDialFabComponent,
+    RolesSelectFieldComponent
   ],
   exports: [
     // Translation
@@ -160,7 +162,8 @@ import { NOTIFICATIONS_INJECTOR_TOKEN } from '@skysmack/ng-redux';
     AvailablePermissionsFieldComponent,
     FieldPermissionFieldComponent,
     PackageDependenciesFieldComponent,
-    SpeedDialFabComponent
+    SpeedDialFabComponent,
+    RolesSelectFieldComponent
   ]
 })
 export class PortalUiModule {

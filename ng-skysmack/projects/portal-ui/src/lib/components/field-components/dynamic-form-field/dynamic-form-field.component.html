@@ -58,4 +58,8 @@
   <ss-field-permission-field [fh]="fh" [fieldKey]="fieldKey" [fields$]="fields$" [rules]="rules"
     *ngSwitchCase="fieldTypeConstants.FieldPermissionField">
   </ss-field-permission-field>
+
+  <ss-roles-select-field [fh]="fh" [fieldKey]="fieldKey" [fields$]="fields$" [rules]="rules"
+    *ngSwitchCase="fieldTypeConstants.RolesSelectField">
+  </ss-roles-select-field>
 </div>
