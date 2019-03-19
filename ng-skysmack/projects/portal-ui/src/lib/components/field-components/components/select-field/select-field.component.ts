@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SelectField, DisableUntilValueRule, Field } from '@skysmack/ng-ui';
+import { SelectField, DisableUntilValueRule, Field, SelectFieldOption } from '@skysmack/ng-ui';
 import { FieldBaseComponent } from '../field-base-component';
 
 @Component({
@@ -8,7 +8,7 @@ import { FieldBaseComponent } from '../field-base-component';
   styleUrls: ['./select-field.component.scss']
 })
 export class SelectFieldComponent extends FieldBaseComponent implements OnInit {
-  public fieldOptions: { value: any, displayName: string }[] = [];
+  public fieldOptions: SelectFieldOption[] = [];
   public nullDisplayName = undefined;
 
   ngOnInit() {

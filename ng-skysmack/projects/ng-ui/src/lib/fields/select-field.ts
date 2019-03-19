@@ -44,6 +44,17 @@ export class SelectField extends Field {
     public selectType: 'single' | 'multiple' = 'single';
 
     /**
+     * Custom function that recieves the generated SelectFieldOption[]
+     * Ensure it returns the options with updated displayName
+     */
+    public modifyDisplayName: Function;
+
+    constructor(values: Partial<SelectField>) {
+        super(values);
+        Object.assign(this, values);
+    }
+
+    /**
      * Gets the SelectFieldOptions for the SelectField.
      */
     public getOptions(): SelectFieldOption[] {
@@ -88,12 +99,16 @@ export class SelectField extends Field {
      * @param optionsData An array or enum
      */
     private dataToOptions(optionsData: any): SelectFieldOption[] {
+        let options: SelectFieldOption[];
+
         switch (this.optionsDataType) {
-            case 'array': return FieldHelpers.getFieldOptionsOfArray(optionsData, this.valueSelector, this.displayNameSelector);
-            case 'enum': return FieldHelpers.getFieldOptionsOfEnum(optionsData);
-            case 'ts-enum': return FieldHelpers.getFieldOptionsOfEnum(optionsData, true);
-            default: return [];
+            case 'array': options = FieldHelpers.getFieldOptionsOfArray(optionsData, this.valueSelector, this.displayNameSelector); break;
+            case 'enum': options = FieldHelpers.getFieldOptionsOfEnum(optionsData); break;
+            case 'ts-enum': options = FieldHelpers.getFieldOptionsOfEnum(optionsData, true); break;
+            default: options = []; break;
         }
+
+        return this.modifyDisplayName ? this.modifyDisplayName(options) : options;
     }
 
     /**

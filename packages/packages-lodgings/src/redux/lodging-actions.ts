@@ -13,7 +13,7 @@ export class LodgingsActions extends RecordActionsBase<LodgingsAppState, Store<L
     constructor(protected store: Store<LodgingsAppState>) { super(store, 'LODGINGS_', []); }
 
     public getAvailableLodgings(packagePath: string, start: string, end: string, selectedLodgingIds: number[]) {
-        this.store.dispatch(Object.assign({}, new ReduxAction<GetIntervalPayload, SelectedIdsMeta>({
+        this.store.dispatch(Object.assign({}, new ReduxAction<GetIntervalPayload, SelectedIdsMeta<number>>({
             type: LodgingsActions.GET_AVAILABLE_LODGINGS,
             payload: {
                 packagePath,

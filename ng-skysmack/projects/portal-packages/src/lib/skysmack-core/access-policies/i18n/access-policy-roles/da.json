@@ -15,11 +15,11 @@
         },
         "FORM": {
             "LABELS": {
-                "RULEID": "Regel Id",
+                "RULEID": "Regel",
                 "ROLEID": "Rolle"
             },
             "PLACEHOLDERS": {
-                "RULEID": "Regel Id",
+                "RULEID": "Regel",
                 "ROLEID": "Rolle"
             },
             "VALIDATION": {
