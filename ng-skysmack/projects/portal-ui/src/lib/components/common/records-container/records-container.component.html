@@ -21,48 +21,49 @@
         </tr>
       </thead>
       <tbody *cdkVirtualFor="let entity of entities; trackBy: trackByLocalId; let i = index;">
-          <tr class="entity-row table-row mat-row" [class.row-is-loading]="entity.status !== 'OK' && !entity.error"
-            [class.row-is-success]="entity.isNew" [class.row-is-error]="entity.error" [attr.data-index]="i">
-            <td *ngFor="let column of displayColumns" class="table-cell mat-cell">
-              {{ entity.object[column.fieldKey] }}
-            </td>
-            <td class="table-cell mat-cell action-buttons">
-              <ng-container
-                *ngIf="entityActions.length > 0 && (entity.status === 'OK' || entity.status !== 'CREATING' && entity.error)">
-                <button mat-icon-button [matMenuTriggerFor]="menu">
-                  <mat-icon>more_vert</mat-icon>
-                </button>
-                <mat-menu #menu="matMenu">
-                  <ng-container *ngFor="let entityAction of entityActions">
-                    <!-- ACTION EVENT -->
-                    <a *ngIf="entityAction.isActionEvent" showEntityAction [entityAction]="entityAction"
-                      [entity]="entity" mat-menu-item
-                      (click)="entityActionEvent.emit({ action: entityAction.action, value: entity, _this: entityAction._this })">
-                      <i class="material-icons">{{ entityAction.icon }}</i> <span
-                        class="icon-text">{{ entityAction.displayName }}</span>
-                    </a>
-                    <!-- URL EVENT -->
-                    <a *ngIf="!entityAction.isActionEvent" mat-menu-item
-                      [routerLink]="[entityAction.url, entity.objectIdentifier]">
-                      <i class="material-icons">{{ entityAction.icon }}</i>
-                      <span class="icon-text">{{ entityAction.displayName }}</span>
-                    </a>
-                  </ng-container>
-                </mat-menu>
-              </ng-container>
+        <tr class="entity-row table-row mat-row" [class.row-is-loading]="entity.status !== 'OK' && !entity.error"
+          [class.row-is-success]="entity.isNew && entity.status !== 'CREATING'" [class.row-is-error]="entity.error"
+          [attr.data-index]="i">
+          <td *ngFor="let column of displayColumns" class="table-cell mat-cell">
+            {{ entity.object[column.fieldKey] }}
+          </td>
+          <td class="table-cell mat-cell action-buttons">
+            <ng-container
+              *ngIf="entityActions.length > 0 && (entity.status === 'OK' || entity.status !== 'CREATING' && entity.error)">
+              <button mat-icon-button [matMenuTriggerFor]="menu">
+                <mat-icon>more_vert</mat-icon>
+              </button>
+              <mat-menu #menu="matMenu">
+                <ng-container *ngFor="let entityAction of entityActions">
+                  <!-- ACTION EVENT -->
+                  <a *ngIf="entityAction.isActionEvent" showEntityAction [entityAction]="entityAction" [entity]="entity"
+                    mat-menu-item
+                    (click)="entityActionEvent.emit({ action: entityAction.action, value: entity, _this: entityAction._this })">
+                    <i class="material-icons">{{ entityAction.icon }}</i> <span
+                      class="icon-text">{{ entityAction.displayName }}</span>
+                  </a>
+                  <!-- URL EVENT -->
+                  <a *ngIf="!entityAction.isActionEvent" mat-menu-item
+                    [routerLink]="[entityAction.url, entity.objectIdentifier]">
+                    <i class="material-icons">{{ entityAction.icon }}</i>
+                    <span class="icon-text">{{ entityAction.displayName }}</span>
+                  </a>
+                </ng-container>
+              </mat-menu>
+            </ng-container>
 
-              <!-- CANCEL ACTION -->
-              <a *ngIf="entity.error" mat-icon-button (click)="runCancelAction(entity);">
-                <i class="material-icons">undo</i>
-              </a>
-            </td>
-          </tr>
-          <tr>
-            <td [colSpan]="displayColumns.length + 1" style="width: 100px; height: 5px;">
-              <mat-progress-bar *ngIf="(entity.status !== 'OK' && !entity.error)" mode="indeterminate">
-              </mat-progress-bar>
-            </td>
-          </tr>
+            <!-- CANCEL ACTION -->
+            <a *ngIf="entity.error" mat-icon-button (click)="runCancelAction(entity);">
+              <i class="material-icons">undo</i>
+            </a>
+          </td>
+        </tr>
+        <tr>
+          <td [colSpan]="displayColumns.length + 1" style="width: 100px; height: 5px;">
+            <mat-progress-bar *ngIf="(entity.status !== 'OK' && !entity.error)" mode="indeterminate">
+            </mat-progress-bar>
+          </td>
+        </tr>
       </tbody>
     </table>
   </cdk-virtual-scroll-viewport>
