@@ -5,6 +5,7 @@ import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { MenuArea } from '@skysmack/framework';
 import { MenuItem } from '@skysmack/framework';
 import { NgMenuItemProviders } from '@skysmack/ng-redux';
+import { ROLES_AREA_KEY } from '@skysmack/packages-identities';
 
 @Injectable({ providedIn: 'root' })
 export class NgIdentitiesIndexMenu extends SidebarMenu {
@@ -25,7 +26,7 @@ export class NgIdentitiesIndexMenu extends SidebarMenu {
     public setPrimaryMenu() {
         this.primaryMenuAreas.push(new MenuArea('manage', this.translationPrefix, 1));
         this.primaryMenuAreas.push(new MenuArea('settings', this.translationPrefix, 2));
-        this.primaryMenuItems.push(new MenuItem('roles', this.translationPrefix + 'ROLES', 'manage', 1, 'groupAdd'));
+        this.primaryMenuItems.push(new MenuItem(ROLES_AREA_KEY, this.translationPrefix + 'ROLES', 'manage', 1, 'groupAdd'));
         this.primaryMenuItems.push(new MenuItem('users', this.translationPrefix + 'USERS', 'manage', 2, 'groupAdd'));
         this.primaryMenuItems.push(new MenuItem('settings/lockout', this.translationPrefix + 'AVAILABLE_SETTINGS.LOCKOUT', 'settings', 1, 'groupAdd'));
         this.primaryMenuItems.push(new MenuItem('settings/user', this.translationPrefix + 'AVAILABLE_SETTINGS.USER', 'settings', 2, 'groupAdd'));

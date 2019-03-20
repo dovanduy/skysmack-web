@@ -9,6 +9,7 @@ import { combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { PagedQuery, toLocalObject } from '@skysmack/framework';
 import { FormHelper } from '@skysmack/ng-ui';
+import { IDENTITES_AREA_KEY } from '@skysmack/packages-identities';
 
 @Component({
   selector: 'ss-access-policy-roles-create',
@@ -40,14 +41,14 @@ export class AccessPolicyRolesCreateComponent extends RecordFormComponent<Access
   public setCreateFields() {
     this.accessPolicyRulesActions.getPaged(this.packagePath, new PagedQuery());
     // TODO: FIX THIS!! MAJOR HACK!! WE NEED TO GET/CHOOSE ROLES AMONG ALL IDENTITY PACKAGES.
-    // 'identities' BELOW IS JUST THE DEFAULT INSTALLED PACKAGE!
+    // IDENTITES_AREA_KEY BELOW IS JUST THE DEFAULT INSTALLED PACKAGE!
     // The fix is using roles-select component.
-    this.rolesActions.getPaged('identities', new PagedQuery());
+    this.rolesActions.getPaged(IDENTITES_AREA_KEY, new PagedQuery());
 
     this.fields$ = combineLatest(
       this.accessPolicyRulesStore.get(this.packagePath),
       // TODO: FIX THIS TOO!!
-      this.rolesStore.get('identities')
+      this.rolesStore.get(IDENTITES_AREA_KEY)
     ).pipe(
       map(values => {
         const availableAccessPolicyRules = values[0];

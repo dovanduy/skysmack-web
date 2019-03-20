@@ -1,4 +1,4 @@
-export * from './models';
+export * from './models/index';
 export * from './products-type';
-export * from './redux';
-export * from './constants';
+export * from './redux/index';
+export * from './constants/index';
