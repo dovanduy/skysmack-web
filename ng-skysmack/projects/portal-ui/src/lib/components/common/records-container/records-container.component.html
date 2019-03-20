@@ -25,7 +25,8 @@
           [class.row-is-success]="entity.isNew && entity.status !== 'CREATING'" [class.row-is-error]="entity.error"
           [attr.data-index]="i">
           <td *ngFor="let column of displayColumns" class="table-cell mat-cell">
-            {{ entity.object[column.fieldKey] }}
+            <!-- TODO(GET_DEPS): Can we do so we don't call getProperty here? -->
+            {{ getProperty(entity, 'object.' + column.fieldDisplayKey, false) }}
           </td>
           <td class="table-cell mat-cell action-buttons">
             <ng-container

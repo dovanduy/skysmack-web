@@ -3,6 +3,7 @@
         [title]="loadedPackage._package.name" [entities$]="pagedEntities$" [entityActions]="entityActions"
         [packagePath]="packagePath" (entityActionEvent)="actionEvent($event)" [totalCount]="totalCount"
         [loadingState]="loadingState" (requestPage)="requestPage()" [fields$]="fields$"
-        (sortChanged)="sortChanged($event)">
+        (sortChanged)="sortChanged($event)" [modifyLocalObject]="modifyLocalObject">
+        <!-- TODO(GET_DEPS): Remove this when get deps system is implemented. -->
     </ss-records-container>
 </ss-container>

@@ -18,10 +18,12 @@ export class NgAssignmentsFieldsConfig extends FieldsConfig<Assignment, number, 
 
     protected getEntityFields(entity?: LocalObject<Assignment, number>, dependencies?: NgAssignmentFormDependencies): Field[] {
         const fields = [
+            // TODO(GET_DEPS): DisplayKet is new here - is that still needed?
             new SelectField({
                 fieldType: FieldTypes.SelectField,
                 value: entity && entity.object ? entity.object.assignmentTypeId : undefined,
                 key: 'assignmentTypeId',
+                displayKey: 'assignmentType.object.description',
                 validators: [Validators.required],
                 optionsData: dependencies && dependencies.availableAssignmentTypes,
                 displayNameSelector: 'object.description',
@@ -41,11 +43,11 @@ export class NgAssignmentsFieldsConfig extends FieldsConfig<Assignment, number, 
 
             new SelectField({
                 fieldType: FieldTypes.SelectField,
-                value: entity && entity.object ? entity.object.occupationState : undefined,
+                value: entity && entity.object ? entity.object.status : undefined,
                 label: 'Occupation state',
-                key: 'occupationState',
+                key: 'status',
                 validators: [Validators.required],
-                optionsData: Assignment.OccupationStateEnum,
+                optionsData: Assignment.StatusEnum,
                 optionsDataType: 'enum',
                 order: 3,
                 showColumn: true

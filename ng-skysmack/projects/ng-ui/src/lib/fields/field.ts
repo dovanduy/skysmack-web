@@ -7,6 +7,12 @@ export class Field {
      */
     public key: string;
 
+    // TODO(GET_DEPS): This is new - is it still relevant when the other parts of the system is implemented?
+    /**
+     * DisplayKey (property) e.g. "assignmentType" (to replace the actual key)
+     */
+    public displayKey: string;
+
     /**
      * Form label e.g. "First Name"
      */

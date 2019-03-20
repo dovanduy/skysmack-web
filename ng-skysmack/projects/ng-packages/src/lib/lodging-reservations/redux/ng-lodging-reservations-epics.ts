@@ -27,6 +27,7 @@ export class NgLodgingReservationsEpics extends RecordEpicsBase<LodgingReservati
         ]);
     }
 
+    // TODO(GET_DEPS): Do this for assignment (get assignment types and add to assignment prop)
     public getReservationLodgingTypesEpic = (action$: ActionsObservable<any>) => action$.pipe(
         ofType(this.prefix + LodgingReservationsActions.GET_PAGED_SUCCESS),
         map((action: ReduxAction<GetPagedEntitiesSuccessPayload<LodgingReservation, number>>) => {

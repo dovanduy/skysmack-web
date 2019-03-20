@@ -4,8 +4,10 @@ import { AssignmentsAppState } from '@skysmack/packages-maintenance';
 import { Assignment } from '@skysmack/packages-maintenance';
 import { EntityComponentPageTitle, RecordIndexComponent } from '@skysmack/portal-ui';
 import { EntityAction } from '@skysmack/ng-ui';
-import { NgAssignmentsActions, NgSkysmackStore, NgAssignmentsStore, NgAssignmentsFieldsConfig } from '@skysmack/ng-packages';
+import { NgAssignmentsActions, NgSkysmackStore, NgAssignmentsStore, NgAssignmentsFieldsConfig, NgAssignmentTypesStore, NgAssignmentTypesActions } from '@skysmack/ng-packages';
 import { NgAssignmentsMenu } from '../../ng-assignments-menu';
+import { LocalObject } from '@skysmack/framework';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'ss-assignments-index',
@@ -19,6 +21,7 @@ export class AssignmentsIndexComponent extends RecordIndexComponent<AssignmentsA
     new EntityAction().asEventAction('Delete', this.delete, 'delete', this)
   ];
 
+
   constructor(
     public router: Router,
     public activatedRoute: ActivatedRoute,
@@ -27,14 +30,27 @@ export class AssignmentsIndexComponent extends RecordIndexComponent<AssignmentsA
     public title: EntityComponentPageTitle,
     public store: NgAssignmentsStore,
     public sidebarMenu: NgAssignmentsMenu,
-    public fieldsConfig: NgAssignmentsFieldsConfig
+    public fieldsConfig: NgAssignmentsFieldsConfig,
+    public assignmentTypesStore: NgAssignmentTypesStore,
+    public assignmentTypesActions: NgAssignmentTypesActions,
   ) {
     super(router, activatedRoute, actions, skysmackStore, store, fieldsConfig);
-
   }
 
   ngOnInit() {
     super.ngOnInit();
     this.title.setTitle(this.packagePath);
+    this.assignmentTypesActions.getPaged(this.packagePath, this.pagedQuery);
+  }
+  // TODO(GET_DEPS): Remove this when epics work.
+  public modifyLocalObject = (entities: LocalObject<Assignment, number>[]) => {
+    return this.assignmentTypesStore.get(this.packagePath).pipe(
+      map(assignmentTypes => {
+        return entities.map(entity => {
+          entity.object.assignmentType = assignmentTypes.find(assignmentType => assignmentType.object.id === entity.object.assignmentTypeId);
+          return entity;
+        });
+      })
+    );
   }
 }

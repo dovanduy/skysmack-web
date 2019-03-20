@@ -31,11 +31,11 @@ export class NgLodgingsFieldsConfig extends FieldsConfig<Lodging, number, NgLodg
 
             new SelectField({
                 fieldType: FieldTypes.SelectField,
-                value: entity && entity.object ? entity.object.occupationState : undefined,
+                value: entity && entity.object ? entity.object.status : undefined,
                 label: 'Occupation state',
-                key: 'occupationState',
+                key: 'status',
                 validators: [Validators.required],
-                optionsData: Lodging.OccupationStateEnum,
+                optionsData: Lodging.StatusEnum,
                 optionsDataType: 'enum',
                 order: 2,
             } as SelectField),

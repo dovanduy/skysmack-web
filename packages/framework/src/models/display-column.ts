@@ -1,5 +1,7 @@
 export class DisplayColumn {
     public fieldKey: string;
+    // TODO(GET_DEPS): Newly added. Is this still needed when get deps has been implemented?
+    public fieldDisplayKey: string;
     public show: boolean;
 
     public translationString: string;
