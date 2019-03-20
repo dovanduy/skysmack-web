@@ -11,7 +11,7 @@
 
   <!-- Time -->
   <mat-form-field>
-    <input matInput #timeInput type="time" [attr.id]="fieldKey" [name]="field.label">
+    <input matInput #timeInput type="time" [(value)]="time" (input)="onTimeChanged($event)">
     <mat-error *ngIf="fh.formErrors[fieldKey]">
       {{ fh.formErrors[fieldKey] | translate }}
     </mat-error>
