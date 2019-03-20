@@ -5,10 +5,11 @@ import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { MenuArea } from '@skysmack/framework';
 import { MenuItem } from '@skysmack/framework';
 import { NgMenuItemProviders } from '@skysmack/ng-redux';
+import { ASSIGNMENTS_AREA_KEY } from '@skysmack/packages-maintenance';
 
 @Injectable({ providedIn: 'root' })
 export class NgAssignmentsMenu extends SidebarMenu {
-    public menuId = 'assignments';
+    public menuId = ASSIGNMENTS_AREA_KEY;
     public translationPrefix = 'MAINTENANCE.ASSIGNMENTS.INDEX.';
 
     constructor(
