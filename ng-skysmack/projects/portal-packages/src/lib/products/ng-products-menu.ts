@@ -5,10 +5,11 @@ import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { MenuArea } from '@skysmack/framework';
 import { MenuItem } from '@skysmack/framework';
 import { NgMenuItemProviders } from '@skysmack/ng-redux';
+import { PRODUCTS_AREA_KEY } from '@skysmack/packages-products';
 
 @Injectable({ providedIn: 'root' })
 export class NgProductsMenu extends SidebarMenu {
-    public menuId = 'Products';
+    public menuId = PRODUCTS_AREA_KEY;
     public translationPrefix = 'PRODUCTS.INDEX.';
 
     constructor(
