@@ -33,4 +33,29 @@ export class PageExtensions {
 
         return existingPages;
     }
+
+    public static mergeOrAddPageStatus<TKey>(existingPages: StrIndex<LocalPageTypes<TKey>> = {}, newPage: PageResponse<TKey>, loadingState: LoadingState = LoadingState.OK): StrIndex<LocalPageTypes<TKey>> {
+        let currentPageType = existingPages[newPage.query];
+        if (!currentPageType || currentPageType === null) {
+            currentPageType = new LocalPageTypes();
+            existingPages[newPage.query] = currentPageType;
+        }
+
+        let currentPages = currentPageType.pages[newPage.pageSize + ':' + newPage.sort];
+        if (!currentPages || currentPages === null) {
+            currentPageType.pages[newPage.pageSize + ':' + newPage.sort] = [];
+        }
+
+        let currentPage = currentPageType.pages[newPage.pageSize + ':' + newPage.sort][newPage.pageNumber];
+        if (!currentPage || currentPage === null) {
+            currentPageType.pages[newPage.pageSize + ':' + newPage.sort][newPage.pageNumber] = new LocalPage({
+                loadingState,
+                ids: []
+            });
+        } else {
+            currentPage.loadingState = loadingState;
+        }
+
+        return existingPages;
+    }
 }

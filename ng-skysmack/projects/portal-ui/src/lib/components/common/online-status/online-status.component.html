@@ -1,9 +1,9 @@
-<!-- *ngIf="online$|async as online"> -->    
-  <ng-container *ngIf="online$|async as online">
-    <button mat-icon-button [matMenuTriggerFor]="offlineMenu">
-      <mat-icon color="warn">wifi_off</mat-icon>
-    </button>
-    <mat-menu overlapTrigger="false" #offlineMenu="matMenu">
-      <span [translate]="'UI.ONLINE_STATUS.OFFLINE'"></span>
-    </mat-menu>
-  </ng-container>
+<!-- *ngIf="online$|async as online"> -->
+<ng-container *ngIf="online$|async as online">
+  <button mat-icon-button [matMenuTriggerFor]="offlineMenu">
+    <mat-icon color="warn">wifi_off</mat-icon>
+  </button>
+  <mat-menu overlapTrigger="false" #offlineMenu="matMenu">
+    <span [translate]="'UI.ONLINE_STATUS.OFFLINE'"></span>
+  </mat-menu>
+</ng-container>

@@ -25,7 +25,7 @@ export function recordReducersBase<TState extends RecordState<TRecord, TKey>, TR
                 query: castedAction.payload.pagedQuery.rsqlFilter.toList().build(),
                 sort: castedAction.payload.pagedQuery.sort.build()
             });
-            newState.localPageTypes[castedAction.payload.packagePath] = PageExtensions.mergeOrAddPage(newState.localPageTypes[castedAction.payload.packagePath], page, LoadingState.Loading);
+            newState.localPageTypes[castedAction.payload.packagePath] = PageExtensions.mergeOrAddPageStatus(newState.localPageTypes[castedAction.payload.packagePath], page, LoadingState.Loading);
             return newState;
         }
         case prefix + RecordActionsBase.GET_PAGED_SUCCESS: {
