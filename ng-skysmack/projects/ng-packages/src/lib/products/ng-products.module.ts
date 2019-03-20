@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 
-import { productsReducer, productTypesReducer } from '@skysmack/packages-products';
+import { productsReducer, productTypesReducer, PRODUCTS_AREA_KEY } from '@skysmack/packages-products';
 import { NgProductsEpics } from './redux/ng-products-epics';
 import { NgProductTypesEpics } from './redux/ng-product-types-epics';
 import { registerRedux } from '@skysmack/ng-redux';
@@ -15,7 +15,7 @@ export class NgProductsModule {
     productsEpics: NgProductsEpics,
     productTypesEpics: NgProductTypesEpics
   ) {
-    registerRedux('products', productsReducer, productsEpics);
+    registerRedux(PRODUCTS_AREA_KEY, productsReducer, productsEpics);
     registerRedux('productTypes', productTypesReducer, productTypesEpics);
   }
 }

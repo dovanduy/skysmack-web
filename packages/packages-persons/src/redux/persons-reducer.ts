@@ -2,7 +2,7 @@ import { LocalPageTypes, StrIndex, LocalObject } from '@skysmack/framework';
 import { AppState, ReduxAction, RecordState, recordReducersBase } from '@skysmack/redux';
 import { Person } from './../models/person';
 import { sharedReducer } from '@skysmack/redux';
-import { PERSONS_REDUX_KEY } from '../keys/keys';
+import { PERSONS_REDUX_KEY } from '../constants/constants';
 
 /**
  * This is to be used when you want to access persons via the GLOBAL state. E.g. state.persons (where persons is the reducer name.)

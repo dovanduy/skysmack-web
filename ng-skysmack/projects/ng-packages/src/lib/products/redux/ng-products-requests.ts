@@ -1,4 +1,4 @@
-import { Product } from '@skysmack/packages-products';
+import { Product, PRODUCTS_REDUX_KEY } from '@skysmack/packages-products';
 import { Injectable, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ApiDomain, API_DOMAIN_INJECTOR_TOKEN } from '@skysmack/framework';
@@ -10,6 +10,6 @@ export class NgProductsRequests extends NgRecordRequests<Product, number> {
         protected http: HttpClient,
         @Inject(API_DOMAIN_INJECTOR_TOKEN) protected apiDomain: ApiDomain
     ) {
-        super(http, apiDomain, 'PRODUCTS_', []);
+        super(http, apiDomain, PRODUCTS_REDUX_KEY, []);
     }
 }
