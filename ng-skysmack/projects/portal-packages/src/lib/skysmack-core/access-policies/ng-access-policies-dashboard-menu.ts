@@ -28,7 +28,7 @@ export class NgAccessPoliciesDashboardMenu extends SidebarMenu {
         this.primaryMenuAreas.push(new MenuArea('manage', this.translationPrefix, 2));
 
         this.primaryMenuItems.push(new MenuItem('permissions', this.translationPrefix + 'PERMISSIONS', 'manage', 1, 'groupAdd'));
-        this.primaryMenuItems.push(new MenuItem(ROLES_AREA_KEY, this.translationPrefix + 'ROLES', 'manage', 2, 'groupAdd'));
+        this.primaryMenuItems.push(new MenuItem('roles', this.translationPrefix + 'ROLES', 'manage', 2, 'groupAdd'));
         this.primaryMenuItems.push(new MenuItem('rules', this.translationPrefix + 'RULES', 'manage', 3, 'groupAdd'));
     }
 

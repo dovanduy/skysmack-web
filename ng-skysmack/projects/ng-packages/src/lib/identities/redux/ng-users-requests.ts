@@ -6,7 +6,7 @@ import { ReduxAction } from '@skysmack/redux';
 import { of, Observable } from 'rxjs';
 import { NgRecordRequests } from '@skysmack/ng-redux';
 import { NgUsersActions } from './ng-users-actions';
-import { User, GetUsersRolesSuccessPayload } from '@skysmack/packages-identities';
+import { User, GetUsersRolesSuccessPayload, USERS_ADDITIONAL_PATHS, USERS_REDUX_KEY } from '@skysmack/packages-identities';
 
 @Injectable({ providedIn: 'root' })
 export class NgUsersRequests extends NgRecordRequests<User, number>  {
@@ -14,7 +14,7 @@ export class NgUsersRequests extends NgRecordRequests<User, number>  {
         protected http: HttpClient,
         @Inject(API_DOMAIN_INJECTOR_TOKEN) protected apiDomain: ApiDomain
     ) {
-        super(http, apiDomain, 'USERS_', ['users']);
+        super(http, apiDomain, USERS_REDUX_KEY, USERS_ADDITIONAL_PATHS);
     }
 
     public setPassword(values: { password: string, confirmPassword: string }, userPath: string, id: number) {
@@ -47,5 +47,6 @@ export class NgUsersRequests extends NgRecordRequests<User, number>  {
                     payload: error
                 }))))
             );
+            
     }
 }
