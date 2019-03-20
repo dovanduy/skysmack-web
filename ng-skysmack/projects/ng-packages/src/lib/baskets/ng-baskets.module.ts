@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 
 import { ReducerRegistry } from '@skysmack/redux';
-import { basketsReducer } from '@skysmack/packages-baskets';
+import { basketsReducer, BASKETS_AREA_KEY } from '@skysmack/packages-baskets';
 import { NgBasketsEpics } from './redux/ng-baskets-epics';
 import { registerEpics, registerRedux } from '@skysmack/ng-redux';
 
@@ -12,6 +12,6 @@ import { registerEpics, registerRedux } from '@skysmack/ng-redux';
 })
 export class NgBasketsModule {
   constructor(epics: NgBasketsEpics) {
-    registerRedux('baskets', basketsReducer, epics);
+    registerRedux(BASKETS_AREA_KEY, basketsReducer, epics);
   }
 }

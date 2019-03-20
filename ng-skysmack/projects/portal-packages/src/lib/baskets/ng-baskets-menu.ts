@@ -5,11 +5,12 @@ import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { NgMenuItemProviders } from '@skysmack/ng-redux';
 import { MenuArea } from '@skysmack/framework';
 import { MenuItem } from '@skysmack/framework';
+import { BASKETS_AREA_KEY } from '@skysmack/packages-baskets/lib/constants';
 
 
 @Injectable({ providedIn: 'root' })
 export class NgBasketsMenu extends SidebarMenu {
-    public menuId = 'baskets';
+    public menuId = BASKETS_AREA_KEY;
     public translationPrefix = 'BASKETS.INDEX.';
 
     constructor(
