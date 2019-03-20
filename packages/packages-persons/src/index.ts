@@ -1,4 +1,4 @@
 export * from './models';
 export * from './redux';
-export * from './keys';
+export * from './constants';
 export * from './persons-type';
