@@ -1,5 +1,6 @@
 import { StrIndex } from '@skysmack/framework';
 import { Validation } from '@skysmack/ng-ui';
+import { INVOICE_PAYMENTS_AREA_KEY } from '@skysmack/packages-invoices';
 
 export class NgInvoicePaymentsValidation extends Validation {
     public formErrors = {
@@ -28,7 +29,7 @@ export class NgInvoicePaymentsValidation extends Validation {
         }
     };
 
-    public area = 'invoice_payments';
+    public area = INVOICE_PAYMENTS_AREA_KEY;
 
     public formValidators = [];
 

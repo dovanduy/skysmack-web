@@ -4,6 +4,7 @@ import { LodgingReservationsAppState } from './lodging-reservations-reducer';
 import { Store } from 'redux';
 import { CheckIn } from './../models/check-in';
 import { LodgingReservation } from './../models/lodging-reservation';
+import { LODGING_RESERVATIONS_REDUX_KEY, LODGING_RESERVATIONS_ADDITIONAL_PATHS } from '../constants';
 
 export class LodgingReservationsActions extends RecordActionsBase<LodgingReservationsAppState, Store<LodgingReservationsAppState>> {
     public static CHECK_IN = 'CHECK_IN';
@@ -41,7 +42,7 @@ export class LodgingReservationsActions extends RecordActionsBase<LodgingReserva
     public static UNDO_NO_SHOW_SUCCESS = 'UNDO_NO_SHOW_SUCCESS';
     public static UNDO_NO_SHOW_FAILURE = 'UNDO_NO_SHOW_FAILURE';
 
-    constructor(protected store: Store<LodgingReservationsAppState>) { super(store, 'LODGING_RESERVATIONS_', []); }
+    constructor(protected store: Store<LodgingReservationsAppState>) { super(store, LODGING_RESERVATIONS_REDUX_KEY, LODGING_RESERVATIONS_ADDITIONAL_PATHS); }
 
     public checkIn(packagePath: string, entity: LocalObject<LodgingReservation, number>, checkIns: CheckIn[]) {
         this.store.dispatch(Object.assign({}, new ReduxAction<any, ReduxOfflineMeta<CheckIn[], HttpResponse, CheckIn[]>>({
