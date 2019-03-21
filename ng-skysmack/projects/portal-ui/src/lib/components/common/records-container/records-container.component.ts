@@ -33,9 +33,6 @@ export class RecordsContainerComponent implements OnInit, OnDestroy {
   @Input() public fields$: Observable<Field[]>;
   @Input() public area: string;
 
-  // TODO(GET_DEPS): Remove this when getDeps epics work. Also see below todo.
-  @Input() public modifyLocalObject: Function;
-
   public displayColumns: DisplayColumn[];
 
   constructor() { }
@@ -51,7 +48,6 @@ export class RecordsContainerComponent implements OnInit, OnDestroy {
     // Set entities
     this.subscriptionHandler.register(this.entities$.pipe(
       // TODO(GET_DEPS): See above todo.
-      switchMap(entities => this.modifyLocalObject ? this.modifyLocalObject(entities) : of(entities)),
       map((entities: LocalObject<any, any>[]) => {
         this.entities = entities;
         this.loadedEntitiesCount = entities.length;

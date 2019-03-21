@@ -43,14 +43,14 @@ export class AssignmentsIndexComponent extends RecordIndexComponent<AssignmentsA
     this.assignmentTypesActions.getPaged(this.packagePath, this.pagedQuery);
   }
   // TODO(GET_DEPS): Remove this when epics work.
-  public modifyLocalObject = (entities: LocalObject<Assignment, number>[]) => {
-    return this.assignmentTypesStore.get(this.packagePath).pipe(
-      map(assignmentTypes => {
-        return entities.map(entity => {
-          entity.object.assignmentType = assignmentTypes.find(assignmentType => assignmentType.object.id === entity.object.assignmentTypeId);
-          return entity;
-        });
-      })
-    );
-  }
+  // public modifyLocalObject = (entities: LocalObject<Assignment, number>[]) => {
+  //   return this.assignmentTypesStore.get(this.packagePath).pipe(
+  //     map(assignmentTypes => {
+  //       return entities.map(entity => {
+  //         entity.object.assignmentType = assignmentTypes.find(assignmentType => assignmentType.object.id === entity.object.assignmentTypeId);
+  //         return entity;
+  //       });
+  //     })
+  //   );
+  // }
 }

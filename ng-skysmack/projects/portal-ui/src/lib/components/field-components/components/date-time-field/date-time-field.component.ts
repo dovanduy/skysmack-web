@@ -33,7 +33,7 @@ export class DateTimeFieldComponent extends FieldBaseComponent implements AfterV
   }
 
   public onTimeChanged(event: Event) {
-    this.time = event.target.value;
+    this.time = (event.target as any).value;
   }
 
   ngAfterViewInit() {
@@ -41,7 +41,6 @@ export class DateTimeFieldComponent extends FieldBaseComponent implements AfterV
       this.getFormField().valueChanges,
       fromEvent(this.timeInput.nativeElement, 'input'),
     ).subscribe(values => {
-      console.log(this.timeInput.nativeElement);
       const date: Date = new Date(values[0]);
       let time = this.time;
       if (date && typeof date.toISOString === 'function') {
