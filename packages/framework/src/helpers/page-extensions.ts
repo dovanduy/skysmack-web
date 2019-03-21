@@ -1,5 +1,8 @@
-import { LocalPage, LocalPageTypes, PageResponse, StrIndex } from "../models";
 import { LoadingState } from './loading-state';
+import { StrIndex } from '../models/indexes';
+import { LocalPageTypes } from '../models/local-page-types';
+import { PageResponse } from '../models/page-response';
+import { LocalPage } from '../models/local-page';
 
 export class PageExtensions {
     public static mergeOrAddPage<TKey>(existingPages: StrIndex<LocalPageTypes<TKey>> = {}, newPage: PageResponse<TKey>, loadingState: LoadingState = LoadingState.OK): StrIndex<LocalPageTypes<TKey>> {

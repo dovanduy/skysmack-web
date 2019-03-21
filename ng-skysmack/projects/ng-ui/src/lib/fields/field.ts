@@ -14,6 +14,11 @@ export class Field {
     public displayKey: string;
 
     /**
+     * Modifies how the field value will be displayed in the column.
+     */
+    public displayModifier: Function;
+
+    /**
      * Form label e.g. "First Name"
      */
     public label = '';

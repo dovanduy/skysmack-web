@@ -26,7 +26,7 @@ export class NgAssignmentsEpics extends RecordEpicsBase<Assignment, number> {
         ]);
     }
 
-    // TODO(GET_DEPS): Just a mark :) Can be deleted when implemented.
+    // TODO(GET_DEPS): Make configurable operators for below + make it work with multiple deps.
     public getDeps = (action$: ActionsObservable<any>) => action$.pipe(
         ofType(this.prefix + NgAssignmentsActions.GET_PAGED_SUCCESS),
         map((action: ReduxAction<GetPagedEntitiesSuccessPayload<Assignment, number>>) => {
@@ -49,7 +49,7 @@ export class NgAssignmentsEpics extends RecordEpicsBase<Assignment, number> {
                     hasValue(),
                     map((deps: LocalObject<AssignmentType, number>[]) => {
                         entities.forEach(entity => {
-                            entity.assignmentType = deps.find(dep => dep.object.id === entity.id);
+                            entity.assignmentType = deps.find(dep => dep.object.id === entity.assignmentTypeId);
                         });
                     }),
                     take(1)
@@ -78,4 +78,6 @@ export class NgAssignmentsEpics extends RecordEpicsBase<Assignment, number> {
         }),
         map(() => ({ type: 'RETRIEVED_ASSIGNMENT_TYPE_BY_ID' }))
     )
+
+    // Add get deps for create
 }

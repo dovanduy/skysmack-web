@@ -67,6 +67,7 @@ export class RecordsContainerComponent implements OnInit, OnDestroy {
         fieldKey: field.key,
         fieldDisplayKey: field.displayKey ? field.displayKey : field.key,
         dynamicFieldName: field.dynamicField ? field.label : undefined,
+        displayModifier: field.displayModifier,
         translationString: this.area.toUpperCase() + '.FORM.LABELS.' + field.key.toUpperCase(),
         show: field.showColumn,
         sortable: sortable
