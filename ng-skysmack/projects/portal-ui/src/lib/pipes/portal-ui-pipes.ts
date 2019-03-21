@@ -1,5 +1,6 @@
-import { DisplayValuePipe } from './display-value.pipe';
+import { DisplayValuePipe, DisplayModifierPipe } from './display-value.pipe';
 
 export const portailUiPipes = [
-    DisplayValuePipe
+    DisplayValuePipe,
+    DisplayModifierPipe
 ];

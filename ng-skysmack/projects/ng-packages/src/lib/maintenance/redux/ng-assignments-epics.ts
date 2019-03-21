@@ -166,7 +166,7 @@ function genGetDep(options: GenGetDepOptions) {
 
     // Get dep
     const packagePath = options.action.payload.packagePath;
-    options.actions.getSingle<number>(packagePath, entity.id);
+    options.actions.getSingle<number>(packagePath, entity[options.relationIdSelector]);
 
     // Match dep
     options.store.getSingle(packagePath, entity[options.relationIdSelector]).pipe(
