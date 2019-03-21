@@ -5,18 +5,11 @@ export class DisplayColumn {
     public fieldKey: string;
     // TODO(GET_DEPS): Newly added. Is this still needed when get deps has been implemented?
     public fieldDisplayKey: string;
+    public fieldDisplaySubKey: string;
 
     public static count: number = 0;
 
     public displayModifier: Function;
-
-    public getDisplay(entity: LocalObject<any, any>) {
-        // DisplayColumn.count = DisplayColumn.count + 1;
-        // console.log(DisplayColumn.count);
-        const key = this.fieldDisplayKey ? this.fieldDisplayKey : this.fieldKey;
-        const displayValue = getProperty(entity, 'object.' + key, false);
-        return this.displayModifier ? this.displayModifier(displayValue) : displayValue;
-    }
 
     public show: boolean;
 

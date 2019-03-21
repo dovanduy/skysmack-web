@@ -26,7 +26,7 @@
           [attr.data-index]="i">
           <td *ngFor="let column of displayColumns" class="table-cell mat-cell">
             <!-- TODO(GET_DEPS): Can we do so we don't call getProperty here? -->
-            {{ entity | displayValue:column | displayModifier:column }}
+            {{ entity.object[column.fieldDisplayKey ? column.fieldDisplayKey : column.fieldKey] | displayValue:column | displayModifier:column }}
           </td>
           <td class="table-cell mat-cell action-buttons">
             <ng-container

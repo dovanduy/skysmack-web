@@ -1,17 +1,12 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { LocalObject, DisplayColumn, getProperty } from '@skysmack/framework';
+import { DisplayColumn, getProperty } from '@skysmack/framework';
 
-@Pipe({ name: 'displayValue', pure: false })
+@Pipe({ name: 'displayValue' })
 export class DisplayValuePipe implements PipeTransform {
-    transform(entity: LocalObject<any, any>, column: DisplayColumn) {
-        const key = column.fieldDisplayKey ? column.fieldDisplayKey : column.fieldKey;
-        return getProperty(entity, 'object.' + key, false);
-    }
-}
-
-@Pipe({ name: 'displayModifier' })
-export class DisplayModifierPipe implements PipeTransform {
-    transform(displayValue: any, column: DisplayColumn) {
-        return column.displayModifier ? column.displayModifier(displayValue) : displayValue;
+    transform(entity: any, column: DisplayColumn) {
+        if (column.fieldDisplaySubKey) {
+            return getProperty(entity, column.fieldDisplaySubKey, false);
+        }
+        return entity;
     }
 }

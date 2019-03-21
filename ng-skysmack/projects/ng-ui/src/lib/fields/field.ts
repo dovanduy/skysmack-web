@@ -7,11 +7,18 @@ export class Field {
      */
     public key: string;
 
-    // TODO(GET_DEPS): This is new - is it still relevant when the other parts of the system is implemented?
     /**
      * DisplayKey (property) e.g. "assignmentType" (to replace the actual key)
      */
     public displayKey: string;
+
+    /**
+     * If displayKey points to a property containing an object,
+     * the displaySubKey lets you specify a path to the prop you want to display.
+     * E.g. displayKey points to "LocalObject<AssignmentType, number>", then specify "object.description" to display
+     * the description.
+     */
+    public displaySubKey: string;
 
     /**
      * Modifies how the field value will be displayed in the column.
