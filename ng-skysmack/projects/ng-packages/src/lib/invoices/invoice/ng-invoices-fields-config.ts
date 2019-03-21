@@ -27,7 +27,7 @@ export class NgInvoicesFieldsConfig extends FieldsConfig<Invoice, number, NgInvo
                 validators: [Validators.required],
                 order: 1,
                 showColumn: true
-            } as Field)
+            })
         ];
 
         // Id field must only be added for edit forms.
@@ -38,7 +38,7 @@ export class NgInvoicesFieldsConfig extends FieldsConfig<Invoice, number, NgInvo
                 value: entity ? entity.object.id : undefined,
                 key: 'id',
                 order: 0,
-            } as Field));
+            }));
         }
 
         return fields;

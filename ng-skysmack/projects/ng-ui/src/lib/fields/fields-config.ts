@@ -42,7 +42,7 @@ export abstract class FieldsConfig<TRecord, TKey, TDependencies> implements Enti
                         order: 4,
                         showColumn: true,
                         dynamicField: true
-                    } as Field);
+                    });
                 })
             ].sort((a, b) => a.order - b.order);
 

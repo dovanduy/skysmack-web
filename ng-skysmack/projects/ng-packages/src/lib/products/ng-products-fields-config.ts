@@ -29,7 +29,7 @@ export class NgProductsFieldsConfig extends FieldsConfig<Product, number, NgProd
                 validators: [Validators.required],
                 order: 1,
                 showColumn: true
-            } as Field),
+            }),
 
             new SelectField({
                 fieldType: FieldTypes.SelectField,
@@ -42,7 +42,7 @@ export class NgProductsFieldsConfig extends FieldsConfig<Product, number, NgProd
                     displayName: 'None'
                 }],
                 order: 1,
-            } as SelectField),
+            }),
 
         ];
 
@@ -54,7 +54,7 @@ export class NgProductsFieldsConfig extends FieldsConfig<Product, number, NgProd
                 value: entity ? entity.object.id : undefined,
                 key: 'id',
                 order: 0,
-            } as Field));
+            }));
         }
 
         return fields;

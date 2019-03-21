@@ -12,6 +12,7 @@ export class DisplayColumn {
 
     public getDisplay(entity: LocalObject<any, any>) {
         // DisplayColumn.count = DisplayColumn.count + 1;
+        // console.log(DisplayColumn.count);
         const key = this.fieldDisplayKey ? this.fieldDisplayKey : this.fieldKey;
         const displayValue = getProperty(entity, 'object.' + key, false);
         return this.displayModifier ? this.displayModifier(displayValue) : displayValue;

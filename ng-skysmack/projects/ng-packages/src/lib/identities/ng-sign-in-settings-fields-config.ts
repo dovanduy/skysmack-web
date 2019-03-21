@@ -17,13 +17,13 @@ export class NgSignInSettingsFieldsConfig extends FieldsConfig<SignInSettings, u
                 value: settings ? settings.object.requireConfirmedEmail : undefined,
                 key: 'requireConfirmedEmail',
                 order: 12
-            } as Field),
+            }),
             new Field({
                 fieldType: FieldTypes.CheckboxField,
                 value: settings ? settings.object.requireConfirmedPhoneNumber : undefined,
                 key: 'requireConfirmedPhoneNumber',
                 order: 13
-            } as Field)
+            })
         ];
 
         return fields;

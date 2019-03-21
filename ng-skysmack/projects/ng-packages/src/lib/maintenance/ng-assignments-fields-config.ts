@@ -29,7 +29,7 @@ export class NgAssignmentsFieldsConfig extends FieldsConfig<Assignment, number, 
                 displayNameSelector: 'object.description',
                 order: 3,
                 showColumn: true
-            } as SelectField),
+            }),
 
             new Field({
                 fieldType: FieldTypes.string,
@@ -39,7 +39,7 @@ export class NgAssignmentsFieldsConfig extends FieldsConfig<Assignment, number, 
                 validators: [Validators.required],
                 order: 2,
                 showColumn: true
-            } as Field),
+            }),
 
             new SelectField({
                 fieldType: FieldTypes.SelectField,
@@ -55,7 +55,7 @@ export class NgAssignmentsFieldsConfig extends FieldsConfig<Assignment, number, 
                 optionsDataType: 'enum',
                 order: 3,
                 showColumn: true
-            } as SelectField),
+            }),
 
             new Field({
                 fieldType: FieldTypes.dateTime,
@@ -65,7 +65,7 @@ export class NgAssignmentsFieldsConfig extends FieldsConfig<Assignment, number, 
                 validators: [Validators.required],
                 order: 4,
                 showColumn: true
-            } as Field),
+            }),
 
             new Field({
                 fieldType: FieldTypes.dateTime,
@@ -75,7 +75,7 @@ export class NgAssignmentsFieldsConfig extends FieldsConfig<Assignment, number, 
                 validators: [Validators.required],
                 order: 5,
                 showColumn: true
-            } as Field)
+            })
         ];
 
         // Id field must only be added for edit forms.
@@ -86,7 +86,7 @@ export class NgAssignmentsFieldsConfig extends FieldsConfig<Assignment, number, 
                 value: entity ? entity.object.id : undefined,
                 key: 'id',
                 order: 0,
-            } as Field));
+            }));
         }
 
         return fields;

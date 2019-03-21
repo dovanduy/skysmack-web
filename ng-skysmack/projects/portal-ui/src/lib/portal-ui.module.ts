@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReducerRegistry, authenticationReducer, fieldReducer } from '@skysmack/redux';
+import { ReducerRegistry, authenticationReducer } from '@skysmack/redux';
 import { RouterModule } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -54,6 +54,7 @@ import { FieldPermissionFieldComponent } from './components/field-components/com
 import { RolesSelectComponent } from './components/common/roles-select/roles-select.component';
 import { NOTIFICATIONS_INJECTOR_TOKEN } from '@skysmack/ng-redux';
 import { RolesSelectFieldComponent } from './components/field-components/components/roles-select-field/roles-select-field.component';
+import { portailUiPipes } from './pipes/portal-ui-pipes';
 
 @NgModule({
   imports: [
@@ -117,7 +118,9 @@ import { RolesSelectFieldComponent } from './components/field-components/compone
     FieldPermissionFieldComponent,
     PageHeaderComponent,
     SpeedDialFabComponent,
-    RolesSelectFieldComponent
+    RolesSelectFieldComponent,
+    // Pipes
+    ...portailUiPipes
   ],
   exports: [
     // Translation

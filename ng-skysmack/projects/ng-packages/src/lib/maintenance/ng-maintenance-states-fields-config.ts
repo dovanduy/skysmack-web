@@ -26,7 +26,7 @@ export class NgMaintenanceStatesFieldsConfig extends FieldsConfig<MaintenanceSta
                 validators: [Validators.required],
                 order: 1,
                 showColumn: true
-            } as Field),
+            }),
 
             new SelectField({
                 fieldType: FieldTypes.SelectField,
@@ -38,7 +38,7 @@ export class NgMaintenanceStatesFieldsConfig extends FieldsConfig<MaintenanceSta
                 optionsDataType: 'ts-enum',
                 order: 2,
                 showColumn: true
-            } as SelectField)
+            })
         ];
 
         // Id field must only be added for edit forms.
@@ -49,7 +49,7 @@ export class NgMaintenanceStatesFieldsConfig extends FieldsConfig<MaintenanceSta
                 value: entity ? entity.object.id : undefined,
                 key: 'id',
                 order: 0,
-            } as Field));
+            }));
         }
 
         return fields;

@@ -27,7 +27,7 @@ export class NgReceiptsFieldsConfig extends FieldsConfig<Receipt, number, NgRece
                 validators: [Validators.required],
                 order: 1,
                 showColumn: true
-            } as Field)
+            })
         ];
 
         // Id field must only be added for edit forms.
@@ -38,7 +38,7 @@ export class NgReceiptsFieldsConfig extends FieldsConfig<Receipt, number, NgRece
                 value: entity ? entity.object.id : undefined,
                 key: 'id',
                 order: 0,
-            } as Field));
+            }));
         }
 
         return fields;

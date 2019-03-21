@@ -18,7 +18,7 @@ export class LoginFieldsConfig extends FieldsConfig<any, any, any> {
                 key: 'email',
                 validators: [Validators.required],
                 order: 1,
-            } as Field),
+            }),
 
             new Field({
                 fieldType: FieldTypes.PasswordField,
@@ -26,7 +26,7 @@ export class LoginFieldsConfig extends FieldsConfig<any, any, any> {
                 key: 'password',
                 validators: [Validators.required],
                 order: 2,
-            } as Field)
+            })
         ];
 
         return fields;

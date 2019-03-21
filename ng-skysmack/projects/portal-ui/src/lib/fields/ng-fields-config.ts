@@ -33,7 +33,7 @@ export class NgFieldsConfig extends FieldsConfig<FieldSchemaViewModel, string, N
                 validators: [Validators.required],
                 order: 1,
                 showColumn: true
-            } as Field),
+            }),
 
             new Field({
                 fieldType: FieldTypes.string,
@@ -43,7 +43,7 @@ export class NgFieldsConfig extends FieldsConfig<FieldSchemaViewModel, string, N
                 order: 2,
                 disabled: field ? true : false,
                 showColumn: true
-            } as Field),
+            }),
 
             new SelectField({
                 fieldType: FieldTypes.SelectField,
@@ -55,28 +55,28 @@ export class NgFieldsConfig extends FieldsConfig<FieldSchemaViewModel, string, N
                 valueSelector: 'object.name',
                 disabled: field ? true : false,
                 showColumn: true
-            } as SelectField),
+            }),
 
             new Field({
                 fieldType: FieldTypes.ValidatorsField,
                 value: field ? field.object.validators : undefined,
                 key: 'validators',
                 order: 4,
-            } as Field),
+            }),
 
             new Field({
                 fieldType: FieldTypes.FieldPermissionField,
                 value: field ? field.object.writePermission : undefined,
                 key: 'writePermission',
                 order: 5,
-            } as Field),
+            }),
 
             new Field({
                 fieldType: FieldTypes.FieldPermissionField,
                 value: field ? field.object.readPermission : undefined,
                 key: 'readPermission',
                 order: 6,
-            } as Field),
+            }),
         ];
 
         return fields;

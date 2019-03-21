@@ -1,7 +1,7 @@
 import { DocumentRecord, LocalObject } from "@skysmack/framework";
 import { AssignmentType } from './assignment-type';
 
-type Status = 'created' | 'pending' | 'ongoing' | 'done' | 'canceled' | 'faulted'
+type Status = 'created' | 'pending' | 'ongoing' | 'done' | 'canceled' | 'faulted';
 
 export class Assignment extends DocumentRecord<number> {
     public id: number;

@@ -24,7 +24,7 @@ export class NgRolesFieldsConfig extends FieldsConfig<Role, number, NgRoleFormDe
                 validators: [Validators.required],
                 order: 1,
                 showColumn: true
-            } as Field),
+            }),
         ];
 
         // Id field must only be added for edit forms.
@@ -35,7 +35,7 @@ export class NgRolesFieldsConfig extends FieldsConfig<Role, number, NgRoleFormDe
                 value: entity ? entity.object.id : undefined,
                 key: 'id',
                 order: 0,
-            } as Field));
+            }));
         }
 
         return fields;

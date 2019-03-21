@@ -27,7 +27,7 @@ export class NgRecurringAssignmentsFieldsConfig extends FieldsConfig<RecurringAs
                 validators: [Validators.required],
                 order: 1,
                 showColumn: true
-            } as SelectField),
+            }),
 
             new Field({
                 fieldType: FieldTypes.dateTime,
@@ -37,7 +37,7 @@ export class NgRecurringAssignmentsFieldsConfig extends FieldsConfig<RecurringAs
                 validators: [Validators.required],
                 order: 3,
                 showColumn: true
-            } as Field),
+            }),
 
             new Field({
                 fieldType: FieldTypes.dateTime,
@@ -47,7 +47,7 @@ export class NgRecurringAssignmentsFieldsConfig extends FieldsConfig<RecurringAs
                 validators: [Validators.required],
                 order: 5,
                 showColumn: true
-            } as Field)
+            })
         ];
 
         // Id field must only be added for edit forms.
@@ -58,7 +58,7 @@ export class NgRecurringAssignmentsFieldsConfig extends FieldsConfig<RecurringAs
                 value: entity ? entity.object.id : undefined,
                 key: 'id',
                 order: 0,
-            } as Field));
+            }));
         }
 
         return fields;

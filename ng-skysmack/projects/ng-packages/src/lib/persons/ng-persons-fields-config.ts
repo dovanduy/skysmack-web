@@ -31,7 +31,7 @@ export class NgPersonsFieldsConfig extends FieldsConfig<Person, number, NgPerson
                 validators: [Validators.required],
                 order: 1,
                 showColumn: true
-            } as Field),
+            }),
 
             new Field({
                 fieldType: FieldTypes.string,
@@ -40,7 +40,7 @@ export class NgPersonsFieldsConfig extends FieldsConfig<Person, number, NgPerson
                 validators: [Validators.required],
                 order: 2,
                 showColumn: true
-            } as Field),
+            }),
 
             new Field({
                 fieldType: FieldTypes.string,
@@ -48,7 +48,7 @@ export class NgPersonsFieldsConfig extends FieldsConfig<Person, number, NgPerson
                 key: 'displayName',
                 validators: [Validators.required],
                 order: 3
-            } as Field)
+            })
         ];
 
         // Id field must only be added for edit forms.
@@ -59,7 +59,7 @@ export class NgPersonsFieldsConfig extends FieldsConfig<Person, number, NgPerson
                 value: entity ? entity.object.id : undefined,
                 key: 'id',
                 order: 0,
-            } as Field));
+            }));
         }
 
         return fields;

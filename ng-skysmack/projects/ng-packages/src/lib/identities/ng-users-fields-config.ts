@@ -26,7 +26,7 @@ export class NgUsersFieldsConfig extends FieldsConfig<User, number, NgUserFormDe
                 validators: [Validators.required, CustomValidators.validEmail()],
                 order: 1,
                 showColumn: true
-            } as Field),
+            }),
         ];
 
         // If we are creating a user, provide the password fields.
@@ -41,7 +41,7 @@ export class NgUsersFieldsConfig extends FieldsConfig<User, number, NgUserFormDe
                     validators: [Validators.required, CustomValidators.validPassword()],
                     order: 2,
                     placeholder: 'Password',
-                } as Field),
+                }),
 
                 new Field({
                     fieldType: FieldTypes.PasswordField,
@@ -51,7 +51,7 @@ export class NgUsersFieldsConfig extends FieldsConfig<User, number, NgUserFormDe
                     validators: [Validators.required],
                     order: 3,
                     placeholder: 'Password',
-                } as Field)
+                })
             ];
             passwordFields.forEach(pwf => fields.push(pwf));
         }
@@ -64,7 +64,7 @@ export class NgUsersFieldsConfig extends FieldsConfig<User, number, NgUserFormDe
                 value: entity ? entity.object.id : undefined,
                 key: 'id',
                 order: 0,
-            } as Field));
+            }));
         }
 
         return fields;

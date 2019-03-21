@@ -33,7 +33,7 @@ export class NgAccessPolicyPermissionsFieldsConfig extends FieldsConfig<AccessPo
                 valueSelector: 'object.path',
                 order: 2,
                 showColumn: true
-            } as SelectField),
+            }),
 
             new SelectField({
                 fieldType: FieldTypes.SelectField,
@@ -43,7 +43,7 @@ export class NgAccessPolicyPermissionsFieldsConfig extends FieldsConfig<AccessPo
                 displayNameSelector: 'object.id',
                 order: 2,
                 showColumn: true
-            } as SelectField),
+            }),
 
             new Field({
                 fieldType: FieldTypes.AvailablePermissionsField,
@@ -51,7 +51,7 @@ export class NgAccessPolicyPermissionsFieldsConfig extends FieldsConfig<AccessPo
                 key: 'permission',
                 order: 3,
                 showColumn: true
-            } as Field),
+            }),
 
             new Field({
                 fieldType: FieldTypes.int,
@@ -60,7 +60,7 @@ export class NgAccessPolicyPermissionsFieldsConfig extends FieldsConfig<AccessPo
                 validators: [Validators.required],
                 order: 4,
                 showColumn: true
-            } as Field),
+            }),
 
             new Field({
                 fieldType: FieldTypes.CheckboxField,
@@ -69,7 +69,7 @@ export class NgAccessPolicyPermissionsFieldsConfig extends FieldsConfig<AccessPo
                 validators: [Validators.required],
                 order: 4,
                 showColumn: true
-            } as Field),
+            }),
         ];
 
         if (entity && entity.object.id && entity.status !== LocalObjectStatus.CREATING) {
@@ -78,7 +78,7 @@ export class NgAccessPolicyPermissionsFieldsConfig extends FieldsConfig<AccessPo
                 value: entity ? entity.object.id : undefined,
                 key: 'id',
                 order: 0
-            } as Field));
+            }));
         }
 
         return fields;

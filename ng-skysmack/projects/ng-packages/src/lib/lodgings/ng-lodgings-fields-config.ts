@@ -27,7 +27,7 @@ export class NgLodgingsFieldsConfig extends FieldsConfig<Lodging, number, NgLodg
                 displayNameSelector: 'object.name',
                 disabled: entity && entity.object ? true : false,
                 order: 1,
-            } as SelectField),
+            }),
 
             new SelectField({
                 fieldType: FieldTypes.SelectField,
@@ -38,7 +38,7 @@ export class NgLodgingsFieldsConfig extends FieldsConfig<Lodging, number, NgLodg
                 optionsData: Lodging.StatusEnum,
                 optionsDataType: 'enum',
                 order: 2,
-            } as SelectField),
+            }),
 
             new Field({
                 fieldType: FieldTypes.string,
@@ -47,7 +47,7 @@ export class NgLodgingsFieldsConfig extends FieldsConfig<Lodging, number, NgLodg
                 validators: [Validators.required],
                 order: 3,
                 showColumn: true
-            } as Field)
+            })
         ];
 
         // Id field must only be added for edit forms.
@@ -58,7 +58,7 @@ export class NgLodgingsFieldsConfig extends FieldsConfig<Lodging, number, NgLodg
                 value: entity ? entity.object.id : undefined,
                 key: 'id',
                 order: 0,
-            } as Field));
+            }));
         }
 
         return fields;

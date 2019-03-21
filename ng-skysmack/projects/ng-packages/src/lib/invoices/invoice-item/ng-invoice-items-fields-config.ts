@@ -27,7 +27,7 @@ export class NgInvoiceItemsFieldsConfig extends FieldsConfig<InvoiceItem, number
                 validators: [Validators.required],
                 order: 1,
                 showColumn: true
-            } as Field),
+            }),
 
             new Field({
                 fieldType: FieldTypes.int,
@@ -36,7 +36,7 @@ export class NgInvoiceItemsFieldsConfig extends FieldsConfig<InvoiceItem, number
                 validators: [Validators.required],
                 order: 2,
                 showColumn: true
-            } as Field),
+            }),
 
             new Field({
                 fieldType: FieldTypes.int,
@@ -45,7 +45,7 @@ export class NgInvoiceItemsFieldsConfig extends FieldsConfig<InvoiceItem, number
                 validators: [Validators.required],
                 order: 3,
                 showColumn: true
-            } as Field),
+            }),
 
             new Field({
                 fieldType: FieldTypes.int,
@@ -54,7 +54,7 @@ export class NgInvoiceItemsFieldsConfig extends FieldsConfig<InvoiceItem, number
                 validators: [Validators.required],
                 order: 4,
                 showColumn: true
-            } as Field),
+            }),
 
             new Field({
                 fieldType: FieldTypes.int,
@@ -63,7 +63,7 @@ export class NgInvoiceItemsFieldsConfig extends FieldsConfig<InvoiceItem, number
                 validators: [Validators.required],
                 order: 5,
                 showColumn: true
-            } as Field),
+            }),
 
             new Field({
                 fieldType: FieldTypes.int,
@@ -72,7 +72,7 @@ export class NgInvoiceItemsFieldsConfig extends FieldsConfig<InvoiceItem, number
                 validators: [Validators.required],
                 order: 6,
                 showColumn: true
-            } as Field),
+            }),
 
             new Field({
                 fieldType: FieldTypes.int,
@@ -81,7 +81,7 @@ export class NgInvoiceItemsFieldsConfig extends FieldsConfig<InvoiceItem, number
                 validators: [Validators.required],
                 order: 7,
                 showColumn: true
-            } as Field)
+            })
         ];
 
         // Id field must only be added for edit forms.
@@ -92,7 +92,7 @@ export class NgInvoiceItemsFieldsConfig extends FieldsConfig<InvoiceItem, number
                 value: entity ? entity.object.id : undefined,
                 key: 'id',
                 order: 0,
-            } as Field));
+            }));
         }
 
         return fields;
