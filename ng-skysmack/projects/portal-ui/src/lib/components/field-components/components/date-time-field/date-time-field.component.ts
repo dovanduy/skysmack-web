@@ -3,7 +3,6 @@ import { DateAdapter } from '@angular/material';
 import { combineLatest, fromEvent } from 'rxjs';
 import { FieldBaseComponent } from '../field-base-component';
 import { DateTimeAdapter } from './date-time-adapter';
-import { Field } from '@skysmack/ng-ui';
 
 @Component({
   selector: 'ss-date-time-field',
@@ -14,26 +13,15 @@ import { Field } from '@skysmack/ng-ui';
 export class DateTimeFieldComponent extends FieldBaseComponent implements AfterViewInit, OnInit {
 
   @ViewChild('timeInput') public timeInput: ElementRef;
-  public time = '';
+  public time: string;
+
+  public date: string;
+
 
   ngOnInit() {
     super.ngOnInit();
-
-    const currentValue = this.getFieldValue();
-    if (currentValue && currentValue.length > 0) {
-      const date = new Date(currentValue);
-      if (date) {
-        this.time = this.getTimeWithLeadingZeros(date.getHours()) + ':' + this.getTimeWithLeadingZeros(date.getMinutes());
-      }
-    }
-  }
-
-  private getTimeWithLeadingZeros(time: Number): string {
-    return (time < 10 ? '0' : '') + time;
-  }
-
-  public onTimeChanged(event: Event) {
-    this.time = (event.target as any).value;
+    this.setDate(this.getFieldValue());
+    this.setTime(this.getFieldValue());
   }
 
   ngAfterViewInit() {
@@ -54,5 +42,26 @@ export class DateTimeFieldComponent extends FieldBaseComponent implements AfterV
         this.setFieldValue(date);
       }
     });
+  }
+
+  public onTimeChanged(event: Event) {
+    this.time = (event.target as any).value;
+  }
+
+  private setDate(currentValue: string) {
+    this.date = currentValue;
+  }
+
+  private setTime(currentValue: string) {
+    if (currentValue && currentValue.length > 0) {
+      const date = new Date(currentValue);
+      if (date) {
+        this.time = this.getTimeWithLeadingZeros(date.getHours()) + ':' + this.getTimeWithLeadingZeros(date.getMinutes());
+      }
+    }
+  }
+
+  private getTimeWithLeadingZeros(time: Number): string {
+    return (time < 10 ? '0' : '') + time;
   }
 }

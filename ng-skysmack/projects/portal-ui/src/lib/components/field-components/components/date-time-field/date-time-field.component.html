@@ -1,7 +1,7 @@
 <ng-container *ngIf="field" [formGroup]="fh.form">
   <!-- Date -->
   <mat-form-field>
-    <input matInput [formControlName]="fieldKey" [matDatepicker]="picker" [placeholder]="field.placeholder | translate">
+    <input matInput [(value)]="date" [matDatepicker]="picker" [placeholder]="field.placeholder | translate">
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker touchUi #picker></mat-datepicker>
     <mat-error *ngIf="fh.formErrors[fieldKey]">
