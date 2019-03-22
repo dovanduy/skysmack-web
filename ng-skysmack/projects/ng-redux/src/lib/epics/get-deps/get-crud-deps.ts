@@ -16,9 +16,9 @@ export interface GetCrudDependencies {
     actions: RecordActionsBase<any, any>;
 }
 
-export const getCrudDependencies = (options: GetCrudDependencies) => {
+export const getCrudDependencies = (options: GetCrudDependencies): any => {
 
-    const getDeps = (action$: ActionsObservable<any>) => action$.pipe(
+    const getDeps = (action$: ActionsObservable<any>): any => action$.pipe(
         ofType(options.prefix + RecordActionsBase.GET_PAGED_SUCCESS),
         map((action: ReduxAction<GetPagedEntitiesSuccessPayload<any, any>>) => getDependencies({
             action,
@@ -31,7 +31,7 @@ export const getCrudDependencies = (options: GetCrudDependencies) => {
         map(() => ({ type: options.prefix + 'RETRIEVED_DEPENDENCIES_GET_PAGED_SUCCESS' }))
     );
 
-    const getSingleDeps = (action$: ActionsObservable<any>) => action$.pipe(
+    const getSingleDeps = (action$: ActionsObservable<any>): any => action$.pipe(
         ofType(options.prefix + RecordActionsBase.GET_SINGLE_SUCCESS),
         map((action: ReduxAction<GetSingleEntitySuccessPayload<any, any>>) => getSingleDependency({
             action,
@@ -43,7 +43,7 @@ export const getCrudDependencies = (options: GetCrudDependencies) => {
         map(() => ({ type: options.prefix + 'RETRIEVED_DEPENDENCIES_GET_SINGLE_SUCCESS' }))
     );
 
-    const getCreateUpdateDeps = (action$: ActionsObservable<any>) => action$.pipe(
+    const getCreateUpdateDeps = (action$: ActionsObservable<any>): any => action$.pipe(
         ofType(
             options.prefix + RecordActionsBase.ADD_SUCCESS,
             options.prefix + RecordActionsBase.UPDATE_SUCCESS
