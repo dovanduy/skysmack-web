@@ -4,10 +4,9 @@ FROM node:alpine as builder
 RUN apk update && apk add --no-cache make git
 
 # Build
-# WORKDIR /ss-app
+WORKDIR /ss-app
 RUN npm i -g @angular/cli@7.3.5 lerna@3.10.7
 COPY . .
-RUN ls
 RUN cd ng-skysmack && npm i && npm run ss:lerna && npm run build:prod
 
 FROM nginx:alpine
