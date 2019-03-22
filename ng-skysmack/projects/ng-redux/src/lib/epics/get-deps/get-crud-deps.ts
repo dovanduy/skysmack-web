@@ -11,6 +11,7 @@ export interface GetCrudDependencies {
     prefix: string;
     relationIdSelector: string;
     relationSelector: string;
+    rsqlIdSelector: string;
     store: NgRecordStore<any, any, any>;
     actions: RecordActionsBase<any, any>;
 }
@@ -23,10 +24,11 @@ export const getCrudDependencies = (options: GetCrudDependencies) => {
             action,
             relationIdSelector: options.relationIdSelector,
             relationSelector: options.relationSelector,
+            rsqlIdSelector: options.rsqlIdSelector,
             store: options.store,
             actions: options.actions
         } as GetDependenciesOptions)),
-        map(() => ({ type: 'RETRIVED_DEPENDENCIES_GET_PAGED_SUCCESS' }))
+        map(() => ({ type: options.prefix + 'RETRIEVED_DEPENDENCIES_GET_PAGED_SUCCESS' }))
     );
 
     const getSingleDeps = (action$: ActionsObservable<any>) => action$.pipe(
@@ -38,7 +40,7 @@ export const getCrudDependencies = (options: GetCrudDependencies) => {
             store: options.store,
             actions: options.actions
         } as GetSingleDependencyOptions)),
-        map(() => ({ type: 'RETRIVED_DEPENDENCIES_GET_SINGLE_SUCCESS' }))
+        map(() => ({ type: options.prefix + 'RETRIEVED_DEPENDENCIES_GET_SINGLE_SUCCESS' }))
     );
 
     const getCreateUpdateDeps = (action$: ActionsObservable<any>) => action$.pipe(
@@ -50,10 +52,11 @@ export const getCrudDependencies = (options: GetCrudDependencies) => {
             action,
             relationIdSelector: options.relationIdSelector,
             relationSelector: options.relationSelector,
+            rsqlIdSelector: options.rsqlIdSelector,
             store: options.store,
             actions: options.actions
         } as GetCreateUpdateDependenciesOptions)),
-        map(() => ({ type: 'RETRIVED_DEPENDENCIES_CREATE_UPDATE_SUCCESS' }))
+        map(() => ({ type: options.prefix + 'RETRIEVED_DEPENDENCIES_CREATE_UPDATE_SUCCESS' }))
     );
 
     return [

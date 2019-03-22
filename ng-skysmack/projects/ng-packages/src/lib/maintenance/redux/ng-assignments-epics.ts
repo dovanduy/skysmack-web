@@ -21,6 +21,7 @@ export class NgAssignmentsEpics extends RecordEpicsBase<Assignment, number> {
                 prefix: 'ASSIGNMENTS_',
                 relationIdSelector: 'assignmentTypeId',
                 relationSelector: 'assignmentType',
+                rsqlIdSelector: 'id',
                 store: this.assignmentTypesStore,
                 actions: this.assignmentTypesActions
             })

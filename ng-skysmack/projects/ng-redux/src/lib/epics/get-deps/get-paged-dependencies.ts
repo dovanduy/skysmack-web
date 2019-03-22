@@ -8,6 +8,7 @@ export interface GetDependenciesOptions {
     action: ReduxAction<GetPagedEntitiesSuccessPayload<any, any>>;
     relationIdSelector: string;
     relationSelector: string;
+    rsqlIdSelector: string;
     store: NgRecordStore<any, any, any>;
     actions: RecordActionsBase<any, any>;
 }
@@ -20,7 +21,7 @@ export function getDependencies(options: GetDependenciesOptions) {
     if (depIds && depIds.length > 0) {
         // Prepare query to get relevant deps
         const rsqlFilter = new RSQLFilterBuilder();
-        rsqlFilter.column('id').in(depIds);
+        rsqlFilter.column(options.rsqlIdSelector).in(depIds);
         const query = new PagedQuery({ rsqlFilter });
 
         // Get deps
