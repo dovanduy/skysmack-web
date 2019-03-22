@@ -20,6 +20,28 @@ export class NgAccessPolicyPermissionsFieldsConfig extends FieldsConfig<AccessPo
     public formRules: FormRule[] = [];
 
     protected getEntityFields(entity?: LocalObject<AccessPolicyPermission, number>, dependencies?: NgAccessPolicyPermissionFormDependencies): Field[] {
+
+        const modifyDisplayName = (options: SelectFieldOption[]) => {
+            const accessPolicyRules = dependencies && dependencies.availableAccessPolicyRules;
+            return options.map(option => {
+                if (accessPolicyRules) {
+                    const matchingRule = accessPolicyRules.find(rule => rule.object.id === option.value);
+
+                    let authenticated;
+                    if (matchingRule.object.authenticated === true) {
+                        authenticated = 'authenticated';
+                    } else if (matchingRule.object.authenticated === false) {
+                        authenticated = 'anonymous';
+                    } else {
+                        authenticated = 'both';
+                    }
+
+                    option.displayName = `${matchingRule.object.access ? 'Grant' : 'Deny'} ${authenticated}`;
+                }
+                return option;
+            });
+        };
+
         const fields = [
             new SelectField({
                 fieldType: FieldTypes.SelectField,

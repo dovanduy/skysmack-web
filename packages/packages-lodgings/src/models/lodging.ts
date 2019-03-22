@@ -4,12 +4,7 @@ export class Lodging extends DocumentRecord<number> {
     public id: number;
     public name: string;
     public lodgingTypeId: number;
-    public status: 'vacant' | 'occupied' | 'disabled';
-    public static StatusEnum = {
-        Vacant: 'vacant',
-        Occupied: 'occupied',
-        Disabled: 'disabled'
-    }
+    public disabled: boolean;
 
     public constructor(init?: Partial<Lodging>) {
         super();

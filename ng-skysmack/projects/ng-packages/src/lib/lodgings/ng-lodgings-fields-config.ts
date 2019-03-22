@@ -29,15 +29,14 @@ export class NgLodgingsFieldsConfig extends FieldsConfig<Lodging, number, NgLodg
                 order: 1,
             }),
 
-            new SelectField({
-                fieldType: FieldTypes.SelectField,
-                value: entity && entity.object ? entity.object.status : undefined,
-                label: 'Occupation state',
-                key: 'status',
+            new Field({
+                fieldType: FieldTypes.CheckboxField,
+                value: entity && entity.object ? entity.object.disabled : false,
+                label: 'Enabled',
+                key: 'disabled',
                 validators: [Validators.required],
-                optionsData: Lodging.StatusEnum,
-                optionsDataType: 'enum',
                 order: 2,
+                showColumn: true
             }),
 
             new Field({
