@@ -9,7 +9,7 @@ import { NgMenuItemProviders } from '@skysmack/ng-redux';
 @Injectable({ providedIn: 'root' })
 export class NgAssignmentsMenu extends SidebarMenu {
     public menuId = 'assignments';
-    public translationPrefix = 'MAINTENANCE.ASSIGNMENTS.INDEX.';
+    public translationPrefix = 'ASSIGNMENTS.INDEX.';
 
     constructor(
         public redux: NgSkysmackStore,
