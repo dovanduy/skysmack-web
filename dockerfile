@@ -13,5 +13,5 @@ FROM nginx:alpine
 RUN rm -rf /usr/share/nginx/html/*
 COPY --from=builder /ss-app/ng-skysmack/dist/web-portal /usr/share/nginx/html
 COPY /ng-skysmack/nginx.default.conf /etc/nginx/conf.d/default.conf
-EXPOSE 80
+EXPOSE 80 4403
 CMD ["nginx", "-g", "daemon off;"]
