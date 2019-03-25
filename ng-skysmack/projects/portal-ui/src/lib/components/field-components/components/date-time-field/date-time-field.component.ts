@@ -36,7 +36,7 @@ export class DateTimeFieldComponent extends FieldBaseComponent implements AfterV
   }
 
   public updateFieldValue() {
-    const date: Date = new Date(this.date);
+    const date: Date = this.date ? new Date(this.date) : new Date();
     let time = this.time;
     if (date && typeof date.toISOString === 'function') {
       time = time ? time : '00:00';
