@@ -29,8 +29,9 @@ export abstract class FieldsConfig<TRecord, TKey, TDependencies> implements Enti
      */
     public getFields(entity?: LocalObject<TRecord, TKey>, dynamicFields?: LocalObject<FieldSchemaViewModel, string>[], dependencies?: TDependencies): Field[] {
         const fields = this.getStaticFields(entity, dependencies);
+        let returnfields
         if (dynamicFields) {
-            const returnfields = [
+            returnfields = [
                 ...fields,
                 ...dynamicFields.map(dynamicField => {
                     return new Field({
@@ -45,10 +46,14 @@ export abstract class FieldsConfig<TRecord, TKey, TDependencies> implements Enti
                     });
                 })
             ].sort((a, b) => a.order - b.order);
-
-            return returnfields;
         } else {
-            return fields.sort((a, b) => a.order - b.order);
+            returnfields = fields.sort((a, b) => a.order - b.order);
         }
+
+        if (entity && entity.apiError) {
+            returnfields.forEach(field => field.validationErrors = entity.apiError.validationErrors.find(error => error.fieldKey === field.key));
+        }
+
+        return returnfields;
     }
 }

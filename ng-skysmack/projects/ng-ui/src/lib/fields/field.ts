@@ -1,5 +1,6 @@
 import { ValidatorFn } from '@angular/forms';
 import { FieldTypes } from './field-types';
+import { ValidationError } from '@skysmack/framework';
 
 export class Field {
     /**
@@ -69,6 +70,11 @@ export class Field {
      * Whether this field is dynamically created (e.g. not a static field).
      */
     public dynamicField = false;
+
+    /**
+     * Validation errors returned from the backend
+     */
+    public validationErrors: string[];
 
     constructor(values: Partial<Field>) {
         Object.assign(this, values);

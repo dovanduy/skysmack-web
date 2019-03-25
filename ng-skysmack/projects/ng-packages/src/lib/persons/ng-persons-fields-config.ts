@@ -28,7 +28,7 @@ export class NgPersonsFieldsConfig extends FieldsConfig<Person, number, NgPerson
                 fieldType: FieldTypes.string,
                 value: entity ? entity.object.firstName : undefined,
                 key: 'firstName',
-                validators: [Validators.required],
+                // validators: [Validators.required],
                 order: 1,
                 showColumn: true
             }),

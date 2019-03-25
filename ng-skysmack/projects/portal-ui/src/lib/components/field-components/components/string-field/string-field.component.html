@@ -3,7 +3,18 @@
     <input matInput type="text" [attr.id]="fieldKey" [name]="field.label" [formControlName]="fieldKey"
       [placeholder]="field.placeholder | translate" (blur)="focusLost()">
     <mat-error *ngIf="fh.formErrors[fieldKey]">
-      {{ fh.formErrors[fieldKey] | translate }}
+      <!-- Frontend errors -->
+      <ng-container *ngIf="fh.formErrors[fieldKey]">
+        {{ fh.formErrors[fieldKey] | translate }}
+      </ng-container>
     </mat-error>
   </mat-form-field>
+
+  <!-- Backend errors -->
+  <ng-container *ngIf="field.validationErrors">
+    <ng-container *ngFor="let error of field.validationErrors">
+      <p style="color: red; font-size: 10px;">{{ error }}</p>
+    </ng-container>
+  </ng-container>
+
 </ng-container>

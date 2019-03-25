@@ -1,6 +1,6 @@
 import { ofType, ActionsObservable, Epic } from 'redux-observable';
 import { map, mergeMap } from 'rxjs/operators';
-import { Record, LocalObject, HttpErrorResponse, QueueItem, HttpResponse, log } from '@skysmack/framework';
+import { Record, LocalObject, HttpErrorResponse, QueueItem, HttpResponse, log, ApiError } from '@skysmack/framework';
 import { Observable } from 'rxjs';
 import { RecordRequests, ReduxAction, GetPagedEntitiesPayload, GetPagedEntitiesSuccessPayload, RecordActionsBase, GetSingleEntityPayload, GetSingleEntitySuccessPayload, CommitMeta, QueueActions, CancelActionPayload, ReduxOfflineMeta } from '@skysmack/redux';
 import { RecordNotifications } from './../notifications/record-notifications';
@@ -161,6 +161,7 @@ export abstract class RecordEpicsBase<TRecord extends Record<TKey>, TKey> {
                     queueItems.message = `${withQueue.replace('_QUEUE', '.QUEUE')}.ERROR`;
                     queueItems.localObject.error = true;
                     queueItems.error = action.payload;
+                    queueItems.localObject.apiError = new ApiError(action.payload);
                     return queueItems;
                 })
             }))

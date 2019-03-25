@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { Observable } from 'rxjs';
-import { QueueItem, log, LocalObjectStatus } from '@skysmack/framework';
+import { QueueItem, LocalObjectStatus } from '@skysmack/framework';
 import { Router } from '@angular/router';
 import { NgRedux } from '@angular-redux/store';
 import { QueuesAppState, QueueActions } from '@skysmack/redux';
@@ -31,6 +31,7 @@ export class QueueComponent implements OnInit {
   public toEditor(queueItem: QueueItem) {
     queueItem.localObject.error = false;
     queueItem.localObject.status = LocalObjectStatus.OK;
+    queueItem.localObject.isNew = false;
     this.ngRedux.dispatch({
       type: QueueActions.REMOVE_QUEUE_ITEMS,
       payload: [queueItem]
