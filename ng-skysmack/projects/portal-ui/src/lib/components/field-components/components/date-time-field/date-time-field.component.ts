@@ -1,8 +1,9 @@
 import { Component, ViewChild, ElementRef, AfterViewInit, OnInit } from '@angular/core';
 import { DateAdapter } from '@angular/material';
-import { combineLatest, fromEvent } from 'rxjs';
+import { fromEvent } from 'rxjs';
 import { FieldBaseComponent } from '../field-base-component';
 import { DateTimeAdapter } from './date-time-adapter';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'ss-date-time-field',
@@ -15,8 +16,8 @@ export class DateTimeFieldComponent extends FieldBaseComponent implements AfterV
   @ViewChild('timeInput') public timeInput: ElementRef;
   public time: string;
 
+  @ViewChild('dateInput') public dateInput: ElementRef;
   public date: string;
-
 
   ngOnInit() {
     super.ngOnInit();
@@ -25,27 +26,28 @@ export class DateTimeFieldComponent extends FieldBaseComponent implements AfterV
   }
 
   ngAfterViewInit() {
-    combineLatest(
-      this.getFormField().valueChanges,
-      fromEvent(this.timeInput.nativeElement, 'input'),
-    ).subscribe(values => {
-      const date: Date = new Date(values[0]);
-      let time = this.time;
-      if (date && typeof date.toISOString === 'function') {
-        time = time ? time : '00:00';
-        const hours = time.split(':')[0];
-        const minutes = time.split(':')[1];
-
-        date.setMinutes(Number(minutes));
-        date.setHours(Number(hours));
-
-        this.setFieldValue(date);
-      }
-    });
+    this.subscriptionHandler.register(fromEvent(this.timeInput.nativeElement, 'input').pipe(
+      map(() => this.updateFieldValue())
+    ).subscribe());
   }
 
   public onTimeChanged(event: Event) {
     this.time = (event.target as any).value;
+  }
+
+  public updateFieldValue() {
+    const date: Date = new Date(this.date);
+    let time = this.time;
+    if (date && typeof date.toISOString === 'function') {
+      time = time ? time : '00:00';
+      const hours = time.split(':')[0];
+      const minutes = time.split(':')[1];
+
+      date.setMinutes(Number(minutes));
+      date.setHours(Number(hours));
+
+      this.setFieldValue(date);
+    }
   }
 
   private setDate(currentValue: string) {
