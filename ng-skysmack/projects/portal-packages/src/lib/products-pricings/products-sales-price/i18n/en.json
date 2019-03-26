@@ -1,0 +1,37 @@
+{
+    "PRODUCTS_SALES_PRICE": {
+        "CREATE": {
+            "CREATE": "Create"
+        },
+        "EDIT": {
+            "EDIT": "Edit"
+        },
+        "INDEX": {
+            "ACTIONS": "Actions",
+            "CREATE": "Create new type",
+            "DELETE": "Delete",
+            "MANAGE": "Manage",
+            "FIELDS": "Fields",
+            "BACK": "Back"
+        },
+        "FORM": {
+            "LABELS": {
+                "NAME": "Name"
+            },
+            "PLACEHOLDERS": {
+                "NAME": "Enter name"
+            },
+            "VALIDATION": {
+                "NAME": {
+                    "REQUIRED": "Name is required."
+                }
+            }
+        },
+        "QUEUE": {
+            "ADDING": "Adding {{ name }}",
+            "UPDATING": "Updating {{ name }}",
+            "DELETING": "Deleting {{ name }}",
+            "ERROR": "An error occured with {{ name }}. Correct and try again."
+        }
+    }
+}
