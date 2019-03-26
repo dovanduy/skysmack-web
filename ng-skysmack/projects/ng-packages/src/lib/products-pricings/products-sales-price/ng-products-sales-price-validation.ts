@@ -1,39 +1,27 @@
 import { StrIndex } from '@skysmack/framework';
 import { Validation } from '@skysmack/ng-ui';
+import { PRODUCTS_SALES_PRICE_AREA_KEY } from '@skysmack/packages-products-pricings';
 
-export class NgLodgingReservationsValidation extends Validation {
+export class NgProductsSalesPriceValidation extends Validation {
     public formErrors = {
-        lodgingTypeId: '',
-        allocatedLodgingId: '',
-        checkIn: '',
-        checkOut: '',
-        stays: '',
-        status: '',
-        persons: ''
+        currencyCode: '',
+        price: '',
+        public: ''
     };
 
     public validationMessages: StrIndex<{}> = {
-        lodgingTypeId: {
+        currencyCode: {
             required: ''
         },
-        checkIn: {
+        price: {
             required: '',
         },
-        checkOut: {
-            required: '',
-        },
-        stays: {
-            required: '',
-        },
-        status: {
-            required: '',
-        },
-        persons: {
+        recordId: {
             required: '',
         }
     };
 
-    public area = 'lodging_reservations';
+    public area = PRODUCTS_SALES_PRICE_AREA_KEY;
 
     public formValidators = [];
 

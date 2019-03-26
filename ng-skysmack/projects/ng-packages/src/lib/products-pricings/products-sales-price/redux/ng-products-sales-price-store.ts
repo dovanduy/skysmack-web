@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { NgRedux } from '@angular-redux/store';
-import { LodgingReservation, LodgingReservationsAppState } from '@skysmack/packages-lodging-reservations';
+import { ProductsSalesPrice, ProductsSalesPriceAppState } from '@skysmack/packages-products-pricings';
 import { NgRecordStore } from '@skysmack/ng-redux';
+import { PRODUCTS_SALES_PRICE_AREA_KEY } from '@skysmack/packages-products-pricings';
 
 
 @Injectable({ providedIn: 'root' })
-export class NgLodgingReservationsStore extends NgRecordStore<LodgingReservationsAppState, LodgingReservation, number> {
-    constructor(protected ngRedux: NgRedux<LodgingReservationsAppState>) { super(ngRedux, 'lodgingReservations'); }
+export class NgProductsSalesPriceStore extends NgRecordStore<ProductsSalesPriceAppState, ProductsSalesPrice, number> {
+    constructor(protected ngRedux: NgRedux<ProductsSalesPriceAppState>) { super(ngRedux, PRODUCTS_SALES_PRICE_AREA_KEY); }
 }

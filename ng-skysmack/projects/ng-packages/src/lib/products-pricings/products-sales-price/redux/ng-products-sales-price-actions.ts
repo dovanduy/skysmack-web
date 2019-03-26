@@ -1,8 +1,8 @@
 import { NgRedux } from '@angular-redux/store';
 import { Injectable } from '@angular/core';
-import { LodgingReservationsAppState, LodgingReservationsActions } from '@skysmack/packages-lodging-reservations';
+import { ProductsSalesPriceAppState, ProductsSalesPriceActions } from '@skysmack/packages-products-pricings';
 
 @Injectable({ providedIn: 'root' })
-export class NgLodgingReservationsActions extends LodgingReservationsActions {
-    constructor(protected store: NgRedux<LodgingReservationsAppState>) { super(store); }
+export class NgProductsSalesPriceActions extends ProductsSalesPriceActions {
+    constructor(protected store: NgRedux<ProductsSalesPriceAppState>) { super(store); }
 }
