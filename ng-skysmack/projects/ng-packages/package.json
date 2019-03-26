@@ -13,6 +13,7 @@
     "@skysmack/packages-invoices": "*",
     "@skysmack/packages-baskets": "*",
     "@skysmack/packages-products": "*",
+    "@skysmack/packages-products-pricings": "*",
     "@skysmack/packages-skysmack-core": "*",
     "@skysmack/packages-terminal-payments": "*"
   },

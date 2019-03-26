@@ -6,7 +6,7 @@ import { MaintenanceState } from '../models/maintenance-state';
  * This is to be used when you want to access maintenances via the GLOBAL state. E.g. state.maintenances (where maintenances is the reducer name.)
  */
 export class MaintenanceStatesAppState extends AppState {
-    public Maintenance: MaintenanceStateState;
+    public maintenance: MaintenanceStateState;
 }
 
 export class MaintenanceStateState implements RecordState<MaintenanceState, number> {

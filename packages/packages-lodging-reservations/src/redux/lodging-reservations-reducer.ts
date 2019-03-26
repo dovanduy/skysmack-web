@@ -2,7 +2,6 @@ import { LocalPageTypes, StrIndex, LocalObject, HttpSuccessResponse, replaceLoca
 import { AppState, ReduxAction, recordReducersBase, RecordState, sharedReducer } from '@skysmack/redux';
 import { LodgingReservation } from './../models/lodging-reservation';
 import { LodgingReservationsActions } from './lodging-reservations-actions';
-import { StateKeyMeta } from '@skysmack/redux';
 
 /**
  * This is to be used when you want to access lodging reservations via the GLOBAL state. E.g. state.lodgingReservations (where lodgingReservations is the reducer name.)

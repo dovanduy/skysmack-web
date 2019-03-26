@@ -17,6 +17,7 @@
     "@skysmack/packages-baskets",
     "@skysmack/packages-invoices",
     "@skysmack/packages-products",
+    "@skysmack/packages-products-pricings",
     "@skysmack/packages-skysmack-core",
     "@skysmack/packages-maintenance",
     "@skysmack/packages-terminal-payments"
