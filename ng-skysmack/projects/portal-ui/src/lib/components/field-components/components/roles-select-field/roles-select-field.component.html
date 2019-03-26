@@ -1,3 +1,5 @@
 <ss-roles-select [currentlySelectedIds]="currentRoleIds" [selectType]="selectType"
   (selectedIds)="selectedRoleIds($event)">
 </ss-roles-select>
+
+<ss-backend-errors *ngIf="field" [field]="field"></ss-backend-errors>

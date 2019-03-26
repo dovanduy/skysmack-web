@@ -17,9 +17,9 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
   @Input() public validation: Validation;
   @Input() public buttonText = 'Submit';
   @Input() public noSidebar: boolean;
-  public editorItem$: Observable<LocalObject<any, any>>;
   @Output() public submitted: EventEmitter<FormHelper> = new EventEmitter();
 
+  public editorItem$: Observable<LocalObject<any, any>>;
   public fields: Field[];
   public production = GlobalProperties.production;
   public fh: FormHelper;

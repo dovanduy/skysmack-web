@@ -19,7 +19,6 @@ import { DayOfWeekComponent } from './components/recurring-daily/day-of-week/day
 import { DatesComponent } from './components/recurring-daily/dates/dates.component';
 import { MonthsComponent } from './components/recurring-monthly/months/months.component';
 
-
 @NgModule({
     imports: [
         CommonModule,
@@ -42,7 +41,7 @@ import { MonthsComponent } from './components/recurring-monthly/months/months.co
         TimeUnitComponent,
         DayOfWeekComponent,
         DatesComponent,
-        MonthsComponent,
+        MonthsComponent
     ],
     exports: [RecurringExpressionFieldComponent],
     providers: []

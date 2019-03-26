@@ -1,3 +1,6 @@
-<div *ngIf="field" [formGroup]="fh.form">
+<ng-container *ngIf="field" [formGroup]="fh.form">
   <mat-checkbox [attr.id]="fieldKey" [formControlName]="fieldKey">{{ field.label | translate }}</mat-checkbox>
-</div>
+
+  <ss-backend-errors [field]="field"></ss-backend-errors>
+
+</ng-container>

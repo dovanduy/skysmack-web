@@ -10,12 +10,6 @@
     </mat-error>
   </mat-form-field>
 
-  <!-- Backend errors -->
-  <ng-container *ngIf="field.errors">
-    <ng-container *ngFor="let error of field.errors">
-      <p style="color: red; font-size: 10px;">{{ error }}</p>
-    </ng-container>
-    <br />
-  </ng-container>
+  <ss-backend-errors [field]="field"></ss-backend-errors>
 
 </ng-container>

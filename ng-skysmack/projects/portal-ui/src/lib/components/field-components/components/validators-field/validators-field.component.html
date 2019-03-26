@@ -33,4 +33,12 @@
   <button *ngIf="!currentValidator && availableValidators.length > 0" mat-raised-button color="primary" type="button"
     (click)="addValidator()">+ Add
     validator</button>
+
+  <!-- Backend errors -->
+  <ng-container *ngIf="field && field.errors">
+    <ng-container *ngFor="let error of field.errors">
+      <p style="color: red; font-size: 10px;">{{ error }}</p>
+    </ng-container>
+    <br />
+  </ng-container>
 </ng-container>
