@@ -11,10 +11,11 @@
   </mat-form-field>
 
   <!-- Backend errors -->
-  <ng-container *ngIf="field.validationErrors">
-    <ng-container *ngFor="let error of field.validationErrors">
+  <ng-container *ngIf="field.errors">
+    <ng-container *ngFor="let error of field.errors">
       <p style="color: red; font-size: 10px;">{{ error }}</p>
     </ng-container>
+    <br />
   </ng-container>
 
 </ng-container>

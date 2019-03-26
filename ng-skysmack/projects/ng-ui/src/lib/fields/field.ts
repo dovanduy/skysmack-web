@@ -74,7 +74,7 @@ export class Field {
     /**
      * Validation errors returned from the backend
      */
-    public validationErrors: string[];
+    public errors: string[];
 
     constructor(values: Partial<Field>) {
         Object.assign(this, values);

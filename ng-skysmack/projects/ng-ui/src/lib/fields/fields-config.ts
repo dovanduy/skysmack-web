@@ -29,7 +29,7 @@ export abstract class FieldsConfig<TRecord, TKey, TDependencies> implements Enti
      */
     public getFields(entity?: LocalObject<TRecord, TKey>, dynamicFields?: LocalObject<FieldSchemaViewModel, string>[], dependencies?: TDependencies): Field[] {
         const fields = this.getStaticFields(entity, dependencies);
-        let returnfields
+        let returnfields;
         if (dynamicFields) {
             returnfields = [
                 ...fields,
@@ -51,7 +51,10 @@ export abstract class FieldsConfig<TRecord, TKey, TDependencies> implements Enti
         }
 
         if (entity && entity.apiError) {
-            returnfields.forEach(field => field.validationErrors = entity.apiError.validationErrors.find(error => error.fieldKey === field.key));
+            returnfields.forEach(field => {
+                const validationErrors = entity.apiError.validationErrors.find(error => error.fieldKey === field.key);
+                field.errors = validationErrors && validationErrors.errors;
+            });
         }
 
         return returnfields;
