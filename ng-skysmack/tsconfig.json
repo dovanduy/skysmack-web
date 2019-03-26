@@ -54,6 +54,9 @@
       "@skysmack/packages-products": [
         "../packages/packages-products"
       ],
+      "@skysmack/packages-products-pricings": [
+        "../packages/packages-products-pricings"
+      ],
       "@skysmack/packages-skysmack-core": [
         "../packages/packages-skysmack-core"
       ]

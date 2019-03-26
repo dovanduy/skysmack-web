@@ -14,5 +14,6 @@ export * from './modules/oauth2_wrapper.module';
 export * from './modules/packages_wrapper.module';
 export * from './modules/persons_wrapper.module';
 export * from './modules/products_wrapper.module';
+export * from './modules/products_pricings_wrapper.module';
 export * from './modules/lodging_reservations_wrapper.module';
 export * from './modules/terminal_payments_wrapper.module';

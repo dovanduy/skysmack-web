@@ -61,6 +61,10 @@ import { fieldReducer, settingsReducer } from '@skysmack/redux';
         loadChildren: './../packages/modules/products_wrapper.module#ProductsWrapperModule'
       },
       {
+        path: 'skysmack/loadPackages/products-pricings',
+        loadChildren: './../packages/modules/products_pricings_wrapper.module#ProductsPricingsWrapperModule'
+      },
+      {
         path: 'skysmack/loadPackages/lodgings',
         loadChildren: './../packages/modules/lodgings_wrapper.module#LodgingsWrapperModule'
       },

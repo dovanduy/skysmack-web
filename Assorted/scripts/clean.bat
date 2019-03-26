@@ -99,6 +99,14 @@ RD /s /q "%~dp0\..\..\packages\packages-products\node_modules";
 echo Deleted packages-products\node_modules;
 del /s /q "%~dp0\..\..\packages\packages-products\package-lock.json";
 
+rem packages-products-pricings
+RD /s /q "%~dp0\..\..\packages\packages-products-pricings\lib";
+mkdir "%~dp0\..\..\packages\packages-products-pricings\lib";
+echo Deleted packages-products-pricings\lib;
+RD /s /q "%~dp0\..\..\packages\packages-products-pricings\node_modules";
+echo Deleted packages-products-pricings\node_modules;
+del /s /q "%~dp0\..\..\packages\packages-products-pricings\package-lock.json";
+
 rem packages-maintenance
 RD /s /q "%~dp0\..\..\packages\packages-skysmack-core\lib";
 mkdir "%~dp0\..\..\packages\packages-skysmack-core\lib";
