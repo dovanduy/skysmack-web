@@ -14,11 +14,16 @@ export class ApiError {
         this.status = response.error.status;
         this.instance = response.error.instance;
         this.validationErrors = Object.keys(response.error.validationErrors).map(validationErrorKey => {
-            const fieldNameUpperCase = validationErrorKey.split('.')[1];
-            const firstLetter = fieldNameUpperCase.charAt(0);
-            const lowercaseFirstLetter = fieldNameUpperCase.substr(0, 1).toLowerCase();
+            let fieldNameUpperCase = validationErrorKey.split('.')[1];
+            let fieldKey;
+            if (fieldNameUpperCase) {
+                const firstLetter = fieldNameUpperCase.charAt(0);
+                const lowercaseFirstLetter = fieldNameUpperCase.substr(0, 1).toLowerCase();
+                fieldKey = fieldNameUpperCase.replace(firstLetter, lowercaseFirstLetter);
+            }
+
             return {
-                fieldKey: fieldNameUpperCase.replace(firstLetter, lowercaseFirstLetter),
+                fieldKey,
                 errors: response.error.validationErrors[validationErrorKey]
             } as ValidationError;
         });
