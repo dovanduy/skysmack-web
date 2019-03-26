@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Field, FormRule, FormHelper, Validation } from '@skysmack/ng-ui';
 import { EditorNavService } from './../../common/container/editor-nav.service';
 import { GlobalProperties, SubscriptionHandler, LocalObject } from '@skysmack/framework';
+import { NgSkysmackStore } from '@skysmack/ng-packages';
 
 @Component({
   selector: 'ss-dynamic-form',
@@ -16,7 +17,7 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
   @Input() public validation: Validation;
   @Input() public buttonText = 'Submit';
   @Input() public noSidebar: boolean;
-  @Input() public editorItem: LocalObject<any, any>;
+  public editorItem$: Observable<LocalObject<any, any>>;
   @Output() public submitted: EventEmitter<FormHelper> = new EventEmitter();
 
   public fields: Field[];
@@ -24,7 +25,11 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
   public fh: FormHelper;
   public subscriptionHander = new SubscriptionHandler();
 
-  constructor(public fb: FormBuilder, public editorNavService: EditorNavService) { }
+  constructor(
+    public fb: FormBuilder,
+    public editorNavService: EditorNavService,
+    public skysmackStore: NgSkysmackStore
+  ) { }
 
   ngOnInit() {
     // Init form w. validation check
@@ -43,6 +48,8 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
         this.editorNavService.showEditorNav();
       }
     }, 0);
+
+    this.editorItem$ = this.skysmackStore.getEditorItem(true);
   }
 
   ngOnDestroy() {
