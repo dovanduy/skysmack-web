@@ -5,5 +5,5 @@ import { AccessPolicyPermissionsAppState, AccessPolicyPermission } from '@skysma
 
 @Injectable({ providedIn: 'root' })
 export class NgAccessPolicyPermissionsStore extends NgRecordStore<AccessPolicyPermissionsAppState, AccessPolicyPermission, number> {
-    constructor(protected ngRedux: NgRedux<AccessPolicyPermissionsAppState>) { super(ngRedux, 'accessPolicyPermissions'); }
+    constructor(protected ngRedux: NgRedux<AccessPolicyPermissionsAppState>) { super(ngRedux, ACCESS_POLICY_PERMISSIONS_AREA_KEY); }
 }

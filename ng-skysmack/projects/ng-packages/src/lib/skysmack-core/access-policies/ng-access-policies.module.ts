@@ -16,8 +16,8 @@ export class NgAccessPoliciesModule {
     rolesEpics: NgAccessPolicyRolesEpics,
     rulesEpics: NgAccessPolicyRulesEpics
   ) {
-    registerRedux('accessPolicyPermissions', accessPolicyPermissionsReducer, permissionsEpics);
-    registerRedux('accessPolicyRoles', accessPolicyRolesReducer, rolesEpics);
-    registerRedux('accessPolicyRules', accessPolicyRulesReducer, rulesEpics);
+    registerRedux(ACCESS_POLICY_PERMISSIONS_AREA_KEY, accessPolicyPermissionsReducer, permissionsEpics);
+    registerRedux(ACCESS_POLICY_ROLES_AREA_KEY, accessPolicyRolesReducer, rolesEpics);
+    registerRedux(ACCESS_POLICY_RULES_AREA_KEY, accessPolicyRulesReducer, rulesEpics);
   }
 }
