@@ -3,7 +3,7 @@ import { ProductsSalesPriceIndexComponent } from './products-sales-price-index/p
 import { ProductsSalesPriceCreateComponent } from './products-sales-price-create/products-sales-price-create.component';
 import { ProductsSalesPriceEditComponent } from './products-sales-price-edit/products-sales-price-edit.component';
 
-export const productsRoutes: Routes = [
+export const productsSalesPriceRoutes: Routes = [
   {
     path: '', component: ProductsSalesPriceIndexComponent,
     children: [
@@ -13,7 +13,7 @@ export const productsRoutes: Routes = [
   }
 ];
 
-export const productsComponents: any[] = [
+export const productsSalesPriceComponents: any[] = [
   ProductsSalesPriceIndexComponent,
   ProductsSalesPriceCreateComponent,
   ProductsSalesPriceEditComponent

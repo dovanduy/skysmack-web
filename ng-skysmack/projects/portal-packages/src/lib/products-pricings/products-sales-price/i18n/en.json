@@ -16,14 +16,24 @@
         },
         "FORM": {
             "LABELS": {
-                "NAME": "Name"
+                "CURRENCYCODE": "Currency code",
+                "RECORDID": "Product",
+                "PRICE": "Price"
             },
             "PLACEHOLDERS": {
-                "NAME": "Enter name"
+                "CURRENCYCODE": "Currency code",
+                "RECORDID": "Product",
+                "PRICE": "Price"
             },
             "VALIDATION": {
-                "NAME": {
-                    "REQUIRED": "Name is required."
+                "CURRENCYCODE": {
+                    "REQUIRED": "Currency code is required"
+                },
+                "RECORDID": {
+                    "REQUIRED": "Product is required"
+                },
+                "PRICE": {
+                    "REQUIRED": "Price is required"
                 }
             }
         },

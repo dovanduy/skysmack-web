@@ -1,5 +1,4 @@
-export * from './components/index';
-export * from './products-routing.module';
-export * from './products.module';
-export * from './ng-products-menu';
-export * from './ng-product-types-menu';
+export * from './products-sales-price/index';
+
+export * from './products-pricings-routing.module';
+export * from './products-pricings.module';

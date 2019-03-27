@@ -8,7 +8,7 @@ import { NgProductsSalesPriceFieldsConfig } from '@skysmack/ng-packages';
 import { NgProductsSalesPriceStore } from '@skysmack/ng-packages';
 import { combineLatest } from 'rxjs';
 import { PagedQuery, LocalObject } from '@skysmack/framework';
-import { map } from 'rxjs/operators';
+import { map, switchMap } from 'rxjs/operators';
 import { NgProductsSalesPriceFormDependencies } from '@skysmack/ng-packages';
 
 @Component({
@@ -39,13 +39,21 @@ export class ProductsSalesPriceEditComponent extends RecordFormComponent<Product
   }
 
   public setEditFields() {
-    this.productsActions.getPaged(this.packagePath, new PagedQuery());
+    // TODO: Find better way to prevent multiple requests getting fired...
+    let requested = false;
 
-    this.fields$ = combineLatest(
-      this.initEditRecord(),
-      this.productsStore.get(this.packagePath),
-      this.skysmackStore.getEditorItem()
-    ).pipe(
+    this.fields$ = this.loadedPackage$.pipe(
+      switchMap(loadedPackage => {
+        if (!requested) {
+          this.productsActions.getPaged(loadedPackage._package.dependencies[0], new PagedQuery());
+          requested = true;
+        }
+        return combineLatest(
+          this.initEditRecord(),
+          this.productsStore.get(loadedPackage._package.dependencies[0]),
+          this.skysmackStore.getEditorItem()
+        );
+      }),
       map(values => {
         const entity = values[0];
         const availableProducts = values[1];

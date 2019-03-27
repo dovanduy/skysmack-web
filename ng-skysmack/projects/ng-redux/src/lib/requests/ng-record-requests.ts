@@ -1,7 +1,7 @@
 import { Record, ApiDomain, HttpErrorResponse } from '@skysmack/framework';
 import { RecordRequests, RecordActionsBase, ReduxAction, GetPagedEntitiesPayload, GetPagedEntitiesSuccessPayload, GetSingleEntityPayload, GetSingleEntitySuccessPayload } from '@skysmack/redux';
 import { Observable } from 'rxjs';
-import { map, retry, catchError, share } from 'rxjs/operators';
+import { map, retry, catchError } from 'rxjs/operators';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { CustomHttpUrlEncodingCodec } from './custom-http-url-encoding-codec';
 import { PageResponseExtensions } from './page-response-extensions';
@@ -15,8 +15,7 @@ export abstract class NgRecordRequests<TRecord extends Record<TKey>, TKey> imple
         protected apiDomain: ApiDomain,
         protected prefix: string,
         protected additionalPaths: string[]
-    ) {
-    }
+    ) { }
 
     public getPaged(action: ReduxAction<GetPagedEntitiesPayload>): Observable<ReduxAction<GetPagedEntitiesSuccessPayload<TRecord, TKey>> | ReduxAction<HttpErrorResponse>> {
         let queryParameters = new HttpParams({ encoder: new CustomHttpUrlEncodingCodec() });

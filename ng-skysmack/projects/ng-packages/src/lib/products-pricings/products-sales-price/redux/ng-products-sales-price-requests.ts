@@ -4,7 +4,6 @@ import { ApiDomain, API_DOMAIN_INJECTOR_TOKEN, } from '@skysmack/framework';
 import { ProductsSalesPrice, PRODUCTS_SALES_PRICE_REDUX_KEY, PRODUCTS_SALES_PRICE_ADDITIONAL_PATHS } from '@skysmack/packages-products-pricings';
 import { NgRecordRequests } from '@skysmack/ng-redux';
 
-
 @Injectable({ providedIn: 'root' })
 export class NgProductsSalesPriceRequests extends NgRecordRequests<ProductsSalesPrice, number> {
     constructor(

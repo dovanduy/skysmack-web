@@ -7,7 +7,7 @@ import { EditorNavService, RecordFormComponent } from '@skysmack/portal-ui';
 import { NgProductsSalesPriceStore } from '@skysmack/ng-packages';
 import { NgProductsSalesPriceFieldsConfig } from '@skysmack/ng-packages';
 import { combineLatest } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, switchMap } from 'rxjs/operators';
 import { PagedQuery } from '@skysmack/framework';
 import { NgProductsStore } from '@skysmack/ng-packages';
 import { NgProductsSalesPriceFormDependencies } from '@skysmack/ng-packages';
@@ -39,12 +39,20 @@ export class ProductsSalesPriceCreateComponent extends RecordFormComponent<Produ
   }
 
   public setCreateFields() {
-    this.productsActions.getPaged(this.packagePath, new PagedQuery());
+    // TODO: Find better way to prevent multiple requests getting fired...
+    let requested = false;
 
-    this.fields$ = combineLatest(
-      this.productsStore.get(this.packagePath),
-      this.skysmackStore.getEditorItem(),
-    ).pipe(
+    this.fields$ = this.loadedPackage$.pipe(
+      switchMap(loadedPackage => {
+        if (!requested) {
+          this.productsActions.getPaged(loadedPackage._package.dependencies[0], new PagedQuery());
+          requested = true;
+        }
+        return combineLatest(
+          this.productsStore.get(loadedPackage._package.dependencies[0]),
+          this.skysmackStore.getEditorItem()
+        );
+      }),
       map(values => {
         const availableProducts = values[0];
         this.editorItem = values[1];

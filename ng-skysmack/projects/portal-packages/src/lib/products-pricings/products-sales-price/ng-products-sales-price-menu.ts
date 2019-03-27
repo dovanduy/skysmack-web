@@ -1,11 +1,11 @@
-import { Injectable, Inject } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { SidebarMenu } from '@skysmack/portal-ui';
 import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { MenuArea } from '@skysmack/framework';
 import { MenuItem } from '@skysmack/framework';
 import { NgMenuItemProviders } from '@skysmack/ng-redux';
-import { PRODUCTS_SALES_PRICE_AREA_KEY } from '@skysmack/packages-products';
+import { PRODUCTS_SALES_PRICE_AREA_KEY } from '@skysmack/packages-products-pricings';
 
 @Injectable({ providedIn: 'root' })
 export class NgProductsSalesPriceMenu extends SidebarMenu {

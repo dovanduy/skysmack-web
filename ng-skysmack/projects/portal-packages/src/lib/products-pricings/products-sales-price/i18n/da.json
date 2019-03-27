@@ -8,7 +8,7 @@
         },
         "INDEX": {
             "ACTIONS": "Handlinger",
-            "CREATE": "Opret ny type",
+            "CREATE": "Opret",
             "DELETE": "Slet",
             "MANAGE": "Konfigurer",
             "FIELDS": "Felter",
@@ -16,14 +16,24 @@
         },
         "FORM": {
             "LABELS": {
-                "NAME": "Navn"
+                "CURRENCYCODE": "Valuta kode",
+                "RECORDID": "Produkt",
+                "PRICE": "Pris"
             },
             "PLACEHOLDERS": {
-                "NAME": "Indtast navn"
+                "CURRENCYCODE": "Valuta kode",
+                "RECORDID": "Produkt",
+                "PRICE": "Pris"
             },
             "VALIDATION": {
-                "NAME": {
-                    "REQUIRED": "Et navn er påkrævet."
+                "CURRENCYCODE": {
+                    "REQUIRED": "Valuta kode er påkrævet"
+                },
+                "RECORDID": {
+                    "REQUIRED": "Produkt er påkrævet."
+                },
+                "PRICE": {
+                    "REQUIRED": "Pris er påkrævet."
                 }
             }
         },

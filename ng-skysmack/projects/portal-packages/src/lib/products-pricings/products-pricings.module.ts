@@ -7,6 +7,7 @@ import { PortalUiModule, HttpLoaderFactory, FieldsModule } from '@skysmack/porta
 import { TranslateLoader } from '@ngx-translate/core';
 import { LanguageService } from '@skysmack/portal-ui';
 import { ProductsPricingsRoutingModule } from './products-pricings-routing.module';
+import { productsSalesPriceComponents } from './products-sales-price/components/products-sales-price-components';
 
 @NgModule({
   imports: [
@@ -30,6 +31,6 @@ import { ProductsPricingsRoutingModule } from './products-pricings-routing.modul
     }
   ]
 })
-export class ProductPricingssModule {
+export class ProductsPricingsModule {
   constructor(public languageService: LanguageService) { }
 }
