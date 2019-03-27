@@ -4,7 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { NgInvoicesActions, NgInvoicesFieldsConfig } from '@skysmack/ng-packages';
 import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { NgInvoicesStore } from '@skysmack/ng-packages';
-import { Invoice, InvoicesAppState } from '@skysmack/packages-invoices';
+import { Invoice, InvoicesAppState, INVOICES_AREA_KEY } from '@skysmack/packages-invoices';
 import { NgInvoicesMenu } from './../../ng-invoices-menu';
 import { EntityAction } from '@skysmack/ng-ui';
 import { NgFieldActions, NgFieldStore } from '@skysmack/ng-redux';
@@ -17,6 +17,7 @@ import { NgFieldActions, NgFieldStore } from '@skysmack/ng-redux';
 })
 export class InvoicesIndexComponent extends DocumentRecordIndexComponent<InvoicesAppState, Invoice, number> implements OnInit {
 
+  public area: string = INVOICES_AREA_KEY;
   public entityActions: EntityAction[] = [
     new EntityAction().asUrlAction('edit', 'Edit', 'edit'),
     new EntityAction().asEventAction('Delete', this.delete, 'delete', this)
