@@ -1,6 +1,6 @@
 import { Store } from 'redux';
 import { ReduxAction } from './../action-types/redux-action';
-import { RESET_STATE } from '@redux-offline/redux-offline/lib/constants';
+import { RESET_STATE } from '@redux-offline/redux-offline';
 
 export class AuthenticationActions<TStateType, TStore extends Store<TStateType>> {
 

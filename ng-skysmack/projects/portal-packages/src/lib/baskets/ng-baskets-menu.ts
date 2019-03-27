@@ -5,7 +5,7 @@ import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { NgMenuItemProviders } from '@skysmack/ng-redux';
 import { MenuArea } from '@skysmack/framework';
 import { MenuItem } from '@skysmack/framework';
-import { BASKETS_AREA_KEY } from '@skysmack/packages-baskets/lib/constants';
+import { BASKETS_AREA_KEY } from '@skysmack/packages-baskets';
 
 
 @Injectable({ providedIn: 'root' })

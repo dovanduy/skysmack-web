@@ -1,6 +1,6 @@
 import { StrIndex } from '@skysmack/framework';
 import { Validation } from '@skysmack/ng-ui';
-import { BASKETS_AREA_KEY } from '@skysmack/packages-baskets/lib/constants';
+import { BASKETS_AREA_KEY } from '@skysmack/packages-baskets';
 
 export class BasketsValidation extends Validation {
     public formErrors = {

@@ -2,7 +2,7 @@ import { Routes } from '@angular/router';
 import { AccessPolicyRolesIndexComponent } from './access-policy-roles-index/access-policy-roles-index.component';
 import { AccessPolicyRolesCreateComponent } from './access-policy-roles-create/access-policy-roles-create.component';
 import { AccessPolicyRolesEditComponent } from './access-policy-roles-edit/access-policy-roles-edit.component';
-import { ROLES_AREA_KEY } from '@skysmack/packages-identities/lib/constants/constants';
+import { ROLES_AREA_KEY } from '@skysmack/packages-identities';
 
 export const accessPolicyRolesRoutes: Routes = [
   {
