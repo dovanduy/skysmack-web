@@ -50,11 +50,11 @@ export class DateTimeFieldComponent extends FieldBaseComponent implements AfterV
     }
   }
 
-  private setDate(currentValue: string) {
+  public setDate(currentValue: string) {
     this.date = currentValue;
   }
 
-  private setTime(currentValue: string) {
+  public setTime(currentValue: string) {
     // currentValue might be a date object, if the value is coming from a queue item. Checking for that too.
     if (currentValue && currentValue.length > 0 || currentValue && (typeof (currentValue as any).getMonth === 'function')) {
       const date = new Date(currentValue);
