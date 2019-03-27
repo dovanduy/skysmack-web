@@ -3,7 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Observable, combineLatest } from 'rxjs';
 import { switchMap, map } from 'rxjs/operators';
 import { LocalObject, EnumHelpers, toLocalObject } from '@skysmack/framework';
-import { ExtendedReservation, LodgingReservationsAppState, LodgingReservation } from '@skysmack/packages-lodging-reservations';
+import { ExtendedReservation, LodgingReservationsAppState, LodgingReservation, LODGING_RESERVATIONS_AREA_KEY } from '@skysmack/packages-lodging-reservations';
 import { EntityAction } from '@skysmack/ng-ui';
 import { NgLodgingReservationsStore, NgLodgingsStore, NgLodgingTypesStore, NgLodgingReservationsFieldsConfig, NgLodgingsActions, NgLodgingTypesActions, NgLodgingReservationsActions, NgSkysmackStore } from '@skysmack/ng-packages';
 import { RecordIndexComponent, EntityComponentPageTitle } from '@skysmack/portal-ui';
@@ -67,6 +67,7 @@ export class LodgingsReservationsIndexComponent extends RecordIndexComponent<Lod
   public extendedReservations$: Observable<LocalObject<ExtendedReservation, number>[]>;
 
   constructor(
+    public area: string = LODGING_RESERVATIONS_AREA_KEY,
     public router: Router,
     public activatedRoute: ActivatedRoute,
     public skysmackStore: NgSkysmackStore,
