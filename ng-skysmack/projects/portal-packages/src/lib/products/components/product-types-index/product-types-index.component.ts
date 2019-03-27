@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { EntityComponentPageTitle, DocumentRecordIndexComponent } from '@skysmack/portal-ui';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgSkysmackStore, NgProductTypesActions, NgProductTypesStore, NgProductTypesFieldsConfig } from '@skysmack/ng-packages';
-import { ProductTypesAppState, ProductType } from '@skysmack/packages-products';
+import { ProductTypesAppState, ProductType, PRODUCT_TYPES_AREA_KEY } from '@skysmack/packages-products';
 import { NgProductTypesMenu } from '../../ng-product-types-menu';
 import { EntityAction } from '@skysmack/ng-ui';
 import { NgFieldActions, NgFieldStore } from '@skysmack/ng-redux';
@@ -14,6 +14,8 @@ import { NgFieldActions, NgFieldStore } from '@skysmack/ng-redux';
   styleUrls: ['./product-types-index.component.scss']
 })
 export class ProductTypesIndexComponent extends DocumentRecordIndexComponent<ProductTypesAppState, ProductType, number> implements OnInit {
+  
+  public area: string = PRODUCT_TYPES_AREA_KEY;
   public entityActions: EntityAction[] = [
     new EntityAction().asUrlAction('edit', 'Edit', 'edit'),
     new EntityAction().asEventAction('Delete', this.delete, 'delete', this)
