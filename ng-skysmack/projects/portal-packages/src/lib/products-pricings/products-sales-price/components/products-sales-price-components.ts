@@ -5,7 +5,7 @@ import { ProductsSalesPriceEditComponent } from './products-sales-price-edit/pro
 
 export const productsSalesPriceRoutes: Routes = [
   {
-    path: '', component: ProductsSalesPriceIndexComponent,
+    path: 'sales-prices', component: ProductsSalesPriceIndexComponent,
     children: [
       { path: 'create', component: ProductsSalesPriceCreateComponent, pathMatch: 'full' },
       { path: 'edit/:id', component: ProductsSalesPriceEditComponent, pathMatch: 'full' }

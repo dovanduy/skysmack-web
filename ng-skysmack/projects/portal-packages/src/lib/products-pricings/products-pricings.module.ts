@@ -8,6 +8,8 @@ import { TranslateLoader } from '@ngx-translate/core';
 import { LanguageService } from '@skysmack/portal-ui';
 import { ProductsPricingsRoutingModule } from './products-pricings-routing.module';
 import { productsSalesPriceComponents } from './products-sales-price/components/products-sales-price-components';
+import { productTypeSalesPriceComponents } from './product-type-sales-price/components/product-type-sales-price-components';
+import { ProductsPricingsIndexComponent } from './components/products-pricings-index/products-pricings-index.component';
 
 @NgModule({
   imports: [
@@ -20,7 +22,9 @@ import { productsSalesPriceComponents } from './products-sales-price/components/
   ],
   exports: [],
   declarations: [
-    ...productsSalesPriceComponents
+    ProductsPricingsIndexComponent,
+    ...productsSalesPriceComponents,
+    ...productTypeSalesPriceComponents
   ],
   providers: [
     LanguageService,

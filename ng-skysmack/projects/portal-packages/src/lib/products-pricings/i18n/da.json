@@ -1,0 +1,9 @@
+{
+    "PRODUCTS_PRICINGS": {
+        "INDEX": {
+            "MANAGE": "Konfigurer",
+            "SALES_PRICES": "Produkt salgs priser",
+            "SALES_PRICES_TYPES": "Produkt typer salgs priser"
+        }
+    }
+}

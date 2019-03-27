@@ -1,0 +1,9 @@
+{
+    "PRODUCTS_PRICINGS": {
+        "INDEX": {
+            "MANAGE": "Manage",
+            "SALES_PRICES": "Products sale prices",
+            "SALES_PRICES_TYPES": "Product types sale prices"
+        }
+    }
+}

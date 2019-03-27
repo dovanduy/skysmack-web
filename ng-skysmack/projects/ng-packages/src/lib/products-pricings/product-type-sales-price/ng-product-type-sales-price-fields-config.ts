@@ -7,7 +7,7 @@ import { LodgingType } from '@skysmack/packages-lodgings';
 import { NgProductTypeSalesPriceValidation } from './ng-product-type-sales-price-validation';
 
 export interface NgProductTypeSalesPriceFormDependencies {
-    availableProducts: LocalObject<LodgingType, number>[];
+    availableProductTypes: LocalObject<LodgingType, number>[];
 }
 
 @Injectable({ providedIn: 'root' })
@@ -41,7 +41,7 @@ export class NgProductTypeSalesPriceFieldsConfig extends FieldsConfig<ProductTyp
                 value: entity ? entity.object.recordId : undefined,
                 key: 'recordId',
                 validators: [Validators.required],
-                optionsData: dependencies && dependencies.availableProducts,
+                optionsData: dependencies && dependencies.availableProductTypes,
                 displayNameSelector: 'object.name',
                 order: 2,
                 showColumn: true
