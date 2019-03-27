@@ -32,7 +32,7 @@
             },
             "INDEX": {
                 "ACTIONS": "Actions",
-                "CREATE": "Create field",
+                "CREATE": "Create",
                 "MANAGE": "Manage",
                 "OTHER": "Other",
                 "FIELDS": "Fields",

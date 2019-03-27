@@ -8,7 +8,7 @@
         },
         "INDEX": {
             "ACTIONS": "Actions",
-            "CREATE": "Create new type",
+            "CREATE": "Create",
             "DELETE": "Delete",
             "MANAGE": "Manage",
             "FIELDS": "Fields",

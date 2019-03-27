@@ -9,7 +9,7 @@
             },
             "INDEX": {
                 "ACTIONS": "Actions",
-                "CREATE": "Create field",
+                "CREATE": "Create",
                 "OTHER": "Other",
                 "FIELDS": "Fields",
                 "BACK": "Back"

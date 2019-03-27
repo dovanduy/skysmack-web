@@ -40,7 +40,7 @@
             },
             "INDEX": {
                 "ACTIONS": "Actions",
-                "CREATE": "Create new type field",
+                "CREATE": "Create",
                 "MANAGE": "Manage",
                 "TYPES": "Types",
                 "FIELDS": "Fields",
