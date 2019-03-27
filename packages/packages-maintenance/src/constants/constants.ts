@@ -9,8 +9,8 @@ export const ASSIGNMENT_TYPES_ADDITIONAL_PATHS = ['assignments', 'types']; // ac
 
 export const MAINTENANCE_STATES_AREA_KEY = 'maintenance_states'; // validation, registerRedux, store, menu
 export const MAINTENANCE_STATES_REDUX_KEY = 'MAINTENANCE_STATES_'; // reducer prefix, action, epics, Requests
-export const MAINTENANCE_STATES_ADDITIONAL_PATHS = []; // actions, requests
+export const MAINTENANCE_STATES_ADDITIONAL_PATHS = ['states']; // actions, requests
 
 export const RECURRING_ASSIGNMENTS_AREA_KEY = 'recurring_assignments'; // validation, registerRedux, store, menu
 export const RECURRING_ASSIGNMENTS_REDUX_KEY = 'RECURRING_ASSIGNMENTS_'; // reducer prefix, action, epics, Requests
-export const RECURRING_ASSIGNMENTS_ADDITIONAL_PATHS = []; // actions, requests
+export const RECURRING_ASSIGNMENTS_ADDITIONAL_PATHS = ['assignments', 'recurring']; // actions, requests

@@ -6,7 +6,7 @@ import { ASSIGNMENTS_AREA_KEY } from '@skysmack/packages-maintenance';
 
 export const assignmentsRoutes: Routes = [
   {
-    path: ASSIGNMENTS_AREA_KEY, component: AssignmentsIndexComponent,
+    path: 'assignments', component: AssignmentsIndexComponent,
     children: [
       { path: 'create', component: AssignmentsCreateComponent, pathMatch: 'full' },
       { path: 'edit/:id', component: AssignmentsEditComponent, pathMatch: 'full' },
