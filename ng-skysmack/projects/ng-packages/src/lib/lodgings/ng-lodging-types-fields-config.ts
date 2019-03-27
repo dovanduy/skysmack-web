@@ -25,7 +25,7 @@ export class NgLodgingTypesFieldsConfig extends FieldsConfig<LodgingType, number
                 validators: [Validators.required],
                 order: 1,
                 showColumn: true
-            } as Field)
+            })
 
         ];
 
@@ -37,7 +37,7 @@ export class NgLodgingTypesFieldsConfig extends FieldsConfig<LodgingType, number
                 value: entity ? entity.object.id : undefined,
                 key: 'id',
                 order: 0,
-            } as Field));
+            }));
         }
 
         return fields;

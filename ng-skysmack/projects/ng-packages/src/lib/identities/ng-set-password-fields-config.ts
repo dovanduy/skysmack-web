@@ -24,7 +24,7 @@ export class NgSetPasswordFieldsConfig extends FieldsConfig<User, number, NgSetP
                 validators: [Validators.required, CustomValidators.validPassword()],
                 order: 2,
                 placeholder: 'Password',
-            } as Field),
+            }),
 
             new Field({
                 fieldType: FieldTypes.PasswordField,
@@ -34,7 +34,7 @@ export class NgSetPasswordFieldsConfig extends FieldsConfig<User, number, NgSetP
                 validators: [Validators.required],
                 order: 3,
                 placeholder: 'Password',
-            } as Field)
+            })
         ];
 
         return fields;

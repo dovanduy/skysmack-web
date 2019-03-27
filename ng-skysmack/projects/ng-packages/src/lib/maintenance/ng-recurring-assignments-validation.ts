@@ -28,7 +28,7 @@ export class NgRecurringAssignmentsValidation extends Validation {
         }
     };
 
-    public area = 'maintenance.recurring_assignments';
+    public area = 'recurring_assignments';
 
     public formValidators = [];
 

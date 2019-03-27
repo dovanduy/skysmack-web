@@ -17,37 +17,37 @@ export class NgPasswordSettingsFieldsConfig extends FieldsConfig<PasswordSetting
                 value: settings ? settings.object.requiredLength : undefined,
                 key: 'requiredLength',
                 order: 1
-            } as Field),
+            }),
             new Field({
                 fieldType: FieldTypes.int,
                 value: settings ? settings.object.requiredUniqueChars : undefined,
                 key: 'requiredUniqueChars',
                 order: 2
-            } as Field),
+            }),
             new Field({
                 fieldType: FieldTypes.CheckboxField,
                 value: settings ? settings.object.requireNonAlphanumeric : undefined,
                 key: 'requireNonAlphanumeric',
                 order: 3
-            } as Field),
+            }),
             new Field({
                 fieldType: FieldTypes.CheckboxField,
                 value: settings ? settings.object.requireLowercase : undefined,
                 key: 'requireLowercase',
                 order: 4
-            } as Field),
+            }),
             new Field({
                 fieldType: FieldTypes.CheckboxField,
                 value: settings ? settings.object.requireUppercase : undefined,
                 key: 'requireUppercase',
                 order: 5
-            } as Field),
+            }),
             new Field({
                 fieldType: FieldTypes.CheckboxField,
                 value: settings ? settings.object.requireDigit : undefined,
                 key: 'requireDigit',
                 order: 6
-            } as Field)
+            })
         ];
 
         return fields;

@@ -24,7 +24,7 @@ export class NgMaintenanceStatesValidation extends Validation {
         }
     };
 
-    public area = 'maintenance.maintenance_states';
+    public area = 'maintenance_states';
 
     public formValidators = [];
 

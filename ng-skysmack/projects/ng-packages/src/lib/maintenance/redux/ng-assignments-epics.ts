@@ -3,10 +3,28 @@ import { Assignment, ASSIGNMENTS_REDUX_KEY } from '@skysmack/packages-maintenanc
 import { Injectable } from '@angular/core';
 import { NgAssignmentsRequests } from './ng-assignments-requests';
 import { NgAssignmentsNotifications } from '../ng-assignments-notifications';
+import { NgAssignmentTypesActions } from './ng-assignment-types-actions';
+import { NgAssignmentTypesStore } from './ng-assignment-types-store';
+import { getCrudDependencies } from '@skysmack/ng-redux';
 
 @Injectable({ providedIn: 'root' })
 export class NgAssignmentsEpics extends RecordEpicsBase<Assignment, number> {
-    constructor(protected requests: NgAssignmentsRequests, protected notifications: NgAssignmentsNotifications) {
+    constructor(
+        protected requests: NgAssignmentsRequests,
+        protected notifications: NgAssignmentsNotifications,
+        protected assignmentTypesActions: NgAssignmentTypesActions,
+        protected assignmentTypesStore: NgAssignmentTypesStore
+    ) {
         super(requests, ASSIGNMENTS_REDUX_KEY, notifications);
+        this.epics = this.epics.concat([
+            ...getCrudDependencies({
+                prefix: ASSIGNMENTS_REDUX_KEY,
+                relationIdSelector: 'assignmentTypeId',
+                relationSelector: 'assignmentType',
+                rsqlIdSelector: 'id',
+                store: this.assignmentTypesStore,
+                actions: this.assignmentTypesActions
+            })
+        ]);
     }
 }

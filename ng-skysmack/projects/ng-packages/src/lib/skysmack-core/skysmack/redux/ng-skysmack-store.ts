@@ -21,9 +21,11 @@ export class NgSkysmackStore {
         this.editorItem = new BehaviorSubject(value);
     }
 
-    public getEditorItem(): Observable<LocalObject<any, any>> {
+    public getEditorItem(clear?: boolean): Observable<LocalObject<any, any>> {
         const copy = this.editorItem;
-        this.editorItem = undefined;
+        if (clear) {
+            this.editorItem = undefined;
+        }
         return copy ? copy : of(undefined).pipe(take(1));
     }
 

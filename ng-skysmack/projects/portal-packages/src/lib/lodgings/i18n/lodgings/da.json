@@ -4,12 +4,12 @@
             "LABELS": {
                 "LODGINGTYPEID": "Type ID",
                 "NAME": "Navn",
-                "OCCUPATIONSTATE": "Reservations tilstand"
+                "DISABLED": "Tilgængelig"
             },
             "PLACEHOLDERS": {
                 "LODGINGTYPEID": "Type",
                 "NAME": "Navn",
-                "OCCUPATIONSTATE": "Reservations tilstand"
+                "DISABLED": "Tilgængelig"
             },
             "VALIDATION": {
                 "LODGINGTYPEID": {
@@ -18,8 +18,8 @@
                 "NAME": {
                     "REQUIRED": "Navn er påkrævet."
                 },
-                "OCCUPATIONSTATE": {
-                    "REQUIRED": "Reservations tilstand er påkrævet."
+                "DISABLED": {
+                    "REQUIRED": "Tilgængelighed er påkrævet."
                 }
             }
         },

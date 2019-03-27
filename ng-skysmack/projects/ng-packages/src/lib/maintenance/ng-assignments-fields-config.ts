@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
-import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
+import { LocalObject, LocalObjectStatus, EnumHelpers } from '@skysmack/framework';
 import { Assignment, AssignmentType } from '@skysmack/packages-maintenance';
 import { NgAssignmentsValidation } from './ng-assignments-validation';
 import { FieldsConfig, FormRule, Field, SelectField, FieldTypes } from '@skysmack/ng-ui';
@@ -18,38 +18,45 @@ export class NgAssignmentsFieldsConfig extends FieldsConfig<Assignment, number, 
 
     protected getEntityFields(entity?: LocalObject<Assignment, number>, dependencies?: NgAssignmentFormDependencies): Field[] {
         const fields = [
+            // TODO(GET_DEPS): DisplayKet is new here - is that still needed?
             new SelectField({
                 fieldType: FieldTypes.SelectField,
                 value: entity && entity.object ? entity.object.assignmentTypeId : undefined,
                 key: 'assignmentTypeId',
-                validators: [Validators.required],
+                displayKey: 'assignmentType',
+                displaySubKey: 'object.description',
+                // validators: [Validators.required],
                 optionsData: dependencies && dependencies.availableAssignmentTypes,
                 displayNameSelector: 'object.description',
                 order: 3,
                 showColumn: true
-            } as SelectField),
+            }),
 
             new Field({
                 fieldType: FieldTypes.string,
                 value: entity ? entity.object.description : undefined,
                 key: 'description',
                 label: 'Description',
-                validators: [Validators.required],
+                // validators: [Validators.required],
                 order: 2,
                 showColumn: true
-            } as Field),
+            }),
 
             new SelectField({
                 fieldType: FieldTypes.SelectField,
-                value: entity && entity.object ? entity.object.occupationState : undefined,
+                value: entity && entity.object ? entity.object.status : undefined,
                 label: 'Occupation state',
-                key: 'occupationState',
+                key: 'status',
+                displayModifier: (originalValue: number) => {
+                    const lowercaseStatus = EnumHelpers.toIndexEnum(Assignment.StatusEnum)[originalValue];
+                    return lowercaseStatus ? lowercaseStatus.charAt(0).toUpperCase() + lowercaseStatus.slice(1) : lowercaseStatus;
+                },
                 validators: [Validators.required],
-                optionsData: Assignment.OccupationStateEnum,
+                optionsData: Assignment.StatusEnum,
                 optionsDataType: 'enum',
                 order: 3,
                 showColumn: true
-            } as SelectField),
+            }),
 
             new Field({
                 fieldType: FieldTypes.dateTime,
@@ -59,7 +66,7 @@ export class NgAssignmentsFieldsConfig extends FieldsConfig<Assignment, number, 
                 validators: [Validators.required],
                 order: 4,
                 showColumn: true
-            } as Field),
+            }),
 
             new Field({
                 fieldType: FieldTypes.dateTime,
@@ -69,7 +76,7 @@ export class NgAssignmentsFieldsConfig extends FieldsConfig<Assignment, number, 
                 validators: [Validators.required],
                 order: 5,
                 showColumn: true
-            } as Field)
+            })
         ];
 
         // Id field must only be added for edit forms.
@@ -80,7 +87,7 @@ export class NgAssignmentsFieldsConfig extends FieldsConfig<Assignment, number, 
                 value: entity ? entity.object.id : undefined,
                 key: 'id',
                 order: 0,
-            } as Field));
+            }));
         }
 
         return fields;

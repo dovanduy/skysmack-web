@@ -1,11 +1,30 @@
 import { ValidatorFn } from '@angular/forms';
 import { FieldTypes } from './field-types';
+import { ValidationError } from '@skysmack/framework';
 
 export class Field {
     /**
      * Key (property) e.g. "firstName"
      */
     public key: string;
+
+    /**
+     * DisplayKey (property) e.g. "assignmentType" (to replace the actual key)
+     */
+    public displayKey: string;
+
+    /**
+     * If displayKey points to a property containing an object,
+     * the displaySubKey lets you specify a path to the prop you want to display.
+     * E.g. displayKey points to "LocalObject<AssignmentType, number>", then specify "object.description" to display
+     * the description.
+     */
+    public displaySubKey: string;
+
+    /**
+     * Modifies how the field value will be displayed in the column.
+     */
+    public displayModifier: Function;
 
     /**
      * Form label e.g. "First Name"
@@ -51,6 +70,11 @@ export class Field {
      * Whether this field is dynamically created (e.g. not a static field).
      */
     public dynamicField = false;
+
+    /**
+     * Validation errors returned from the backend
+     */
+    public errors: string[];
 
     constructor(values: Partial<Field>) {
         Object.assign(this, values);

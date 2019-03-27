@@ -1,12 +1,18 @@
-import { DocumentRecord } from "@skysmack/framework";
+import { DocumentRecord, LocalObject } from "@skysmack/framework";
+import { AssignmentType } from './assignment-type';
+
+type Status = 'created' | 'pending' | 'ongoing' | 'done' | 'canceled' | 'faulted';
 
 export class Assignment extends DocumentRecord<number> {
     public id: number;
     public description: string;
+
+    // TODO(GET_DEPS): Add "assignmentType" when a relation id exists (e.g. assignmentTypeId).
     public assignmentTypeId: number;
-    [key: string]: any;
-    public occupationState: 'created' | 'pending' | 'ongoing' | 'done' | 'canceled' | 'faulted';
-    public static OccupationStateEnum = {
+    public assignmentType: LocalObject<AssignmentType, number>;
+
+    public status: Status;
+    public static StatusEnum = {
         Created: 'created',
         Pending: 'pending',
         Ongoing: 'ongoing',
@@ -14,7 +20,6 @@ export class Assignment extends DocumentRecord<number> {
         Canceled: 'canceled',
         Faulted: 'faulted'
     }
-
 
     public constructor(init?: Partial<Assignment>) {
         super();

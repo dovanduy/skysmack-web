@@ -17,10 +17,12 @@
       </div>
       <div class="cell-totals">
         <ng-container *ngFor="let freeLodgingTypes of day.freeLodgingTypes; trackBy: trackById">
-          <p *ngIf="freeLodgingTypes.count > 0" style="color:green;">{{ freeLodgingTypes.name }} - {{
+          <p *ngIf="freeLodgingTypes.count > 0" style="color:green;">{{ freeLodgingTypes.name }}: {{
             freeLodgingTypes.count }}</p>
-          <p *ngIf="freeLodgingTypes.count === 0" style="color:red;">{{ freeLodgingTypes.name }} - {{
+          <p *ngIf="freeLodgingTypes.count === 0" style="color:black;">{{ freeLodgingTypes.name }}: {{
             freeLodgingTypes.count }}</p>
+            <p *ngIf="freeLodgingTypes.count < 0" style="color:red;">{{ freeLodgingTypes.name }}: {{
+              freeLodgingTypes.count }}</p>
         </ng-container>
       </div>
     </ng-container>

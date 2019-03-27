@@ -29,14 +29,14 @@ export class NgPackagesFieldsConfig extends FieldsConfig<Package, string, NgPack
                 displayNameSelector: 'object.name',
                 disabled: _package ? true : false,
                 order: 1
-            } as SelectField),
+            }),
 
             new Field({
                 fieldType: FieldTypes.PackageDependenciesField,
                 value: _package ? _package.object.name : undefined,
                 key: 'dependencies',
                 order: 2,
-            } as Field),
+            }),
 
             new Field({
                 fieldType: FieldTypes.string,
@@ -47,7 +47,7 @@ export class NgPackagesFieldsConfig extends FieldsConfig<Package, string, NgPack
                 order: 2,
                 placeholder: 'Enter name',
                 showColumn: true
-            } as Field),
+            }),
 
             new Field({
                 fieldType: FieldTypes.string,
@@ -56,7 +56,7 @@ export class NgPackagesFieldsConfig extends FieldsConfig<Package, string, NgPack
                 label: 'Description',
                 order: 3,
                 placeholder: 'Enter description'
-            } as Field),
+            }),
 
             new Field({
                 fieldType: FieldTypes.string,
@@ -67,7 +67,7 @@ export class NgPackagesFieldsConfig extends FieldsConfig<Package, string, NgPack
                 order: 4,
                 placeholder: 'Enter path',
                 showColumn: true
-            } as Field),
+            }),
 
             new Field({
                 fieldType: FieldTypes.HiddenField,
@@ -75,7 +75,7 @@ export class NgPackagesFieldsConfig extends FieldsConfig<Package, string, NgPack
                 key: 'dependencies',
                 label: 'dependencies',
                 order: 4,
-            } as Field)
+            })
         ];
     }
 }

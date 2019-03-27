@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { PagedQuery } from '@skysmack/framework';
+import { PagedQuery, LocalObject } from '@skysmack/framework';
 import { Assignment, AssignmentsAppState } from '@skysmack/packages-maintenance';
 import { combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -37,11 +37,16 @@ export class AssignmentsCreateComponent extends RecordFormComponent<AssignmentsA
     this.assignmentTypesActions.getPaged(this.packagePath, new PagedQuery());
 
     this.fields$ = combineLatest(
-      this.assignmentTypesStore.get(this.packagePath)
+      this.assignmentTypesStore.get(this.packagePath),
+      this.skysmackStore.getEditorItem()
     ).pipe(
       map(values => {
         const availableAssignmentTypes = values[0];
-        return this.fieldsConfig.getFields(undefined, undefined, { availableAssignmentTypes });
+        const editorItem = values[1] as LocalObject<Assignment, number>;
+        this.editorItem = editorItem;
+
+
+        return this.fieldsConfig.getFields(this.editorItem, undefined, { availableAssignmentTypes });
       })
     );
   }

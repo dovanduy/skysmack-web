@@ -2,7 +2,11 @@
   <mat-form-field *ngIf="permissions">
     <mat-select [formControlName]="fieldKey" [value]="field.value" [placeholder]="field.placeholder | translate"
       (selectionChange)="setPermission($event.value)">
+      <mat-option [value]="null">None</mat-option>
       <mat-option *ngFor="let permission of permissions" [value]="permission">{{ permission }}</mat-option>
     </mat-select>
   </mat-form-field>
+
+  <ss-backend-errors [field]="field"></ss-backend-errors>
+
 </ng-container>

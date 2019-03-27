@@ -75,6 +75,7 @@ export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey>
         if (force || (this.loadingState === LoadingState.OK || this.loadingState === LoadingState.Awaiting)) {
             this.loadingState = LoadingState.Loading;
 
+            this.currentPageNumber = this.nextPageNumber;
             this.pagedQuery.pageNumber = this.nextPageNumber;
             this.pagedQuery.pageSize = this.nextPageSize;
             this.actionsGetPaged();
@@ -104,26 +105,26 @@ export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey>
                     const lastPageKey = this.currentPageNumber;
                     const lastPage: LocalPage<TKey> = pages[lastPageKey];
 
-                    if (lastPage && lastPage.loadingState === LoadingState.OK) {
-                        this.pages$.next(Object.keys(pages).map(key => {
-                            if (Number(key) > 0 && Number(key) <= lastPageKey) {
-                                return pages[key];
-                            }
-                        }));
-
+                    // console.log('lastPage: ', lastPage, lastPageKey, lastPage.ids, lastPage.links);
+                    if (lastPage) {
+                        if (lastPage.ids && lastPage.ids !== null && lastPage.ids.length > 0) {
+                            this.pages$.next(Object.keys(pages).map(key => {
+                                if (Number(key) > 0 && Number(key) <= lastPageKey) {
+                                    return pages[key];
+                                }
+                            }));
+                        }
                         // Part 2: Load next page
                         if (queryDictionary && queryDictionary.totalCount) {
                             this.totalCount = queryDictionary.totalCount;
                         }
-
-                        this.currentPageNumber = lastPageKey + 1;
                         const lastPageLinks = lastPage.links;
 
                         if ((lastPageLinks && lastPageLinks.next)) {
                             this.loadingState = LoadingState.Awaiting;
                             this.nextPageNumber = lastPageLinks.next.pageNumber;
                             this.nextPageSize = lastPageLinks.next.pageSize;
-                        } else {
+                        } else if (lastPage.loadingState === LoadingState.OK) {
                             this.loadingState = LoadingState.End;
                         }
                     }

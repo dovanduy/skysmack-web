@@ -31,7 +31,7 @@ export class NgAssignmentTypesFieldsConfig extends FieldsConfig<AssignmentType, 
                 validators: [Validators.required],
                 order: 1,
                 showColumn: true
-            } as SelectField),
+            }),
 
             new Field({
                 fieldType: FieldTypes.string,
@@ -40,7 +40,7 @@ export class NgAssignmentTypesFieldsConfig extends FieldsConfig<AssignmentType, 
                 validators: [Validators.required],
                 order: 2,
                 showColumn: true
-            } as Field),
+            }),
 
             new Field({
                 fieldType: FieldTypes.string,
@@ -48,14 +48,14 @@ export class NgAssignmentTypesFieldsConfig extends FieldsConfig<AssignmentType, 
                 key: 'duePeriod',
                 validators: [Validators.required],
                 order: 3
-            } as Field),
+            }),
 
             new Field({
                 fieldType: FieldTypes.RecurringExpressionField,
                 value: entity ? entity.object.expression : undefined,
                 key: 'expression',
                 order: 4
-            } as Field),
+            }),
         ];
 
 
@@ -68,7 +68,7 @@ export class NgAssignmentTypesFieldsConfig extends FieldsConfig<AssignmentType, 
                 value: entity ? entity.object.id : undefined,
                 key: 'id',
                 order: 0,
-            } as Field));
+            }));
         }
 
         return fields;

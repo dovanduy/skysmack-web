@@ -42,7 +42,7 @@ export class NgLodgingReservationsFieldsConfig extends FieldsConfig<LodgingReser
                 }] as SelectFieldOption[],
                 order: 2,
                 showColumn: true
-            } as SelectField),
+            }),
             new Field({
                 fieldType: FieldTypes.DateField,
                 value: entity ? entity.object.checkIn : undefined,
@@ -50,7 +50,7 @@ export class NgLodgingReservationsFieldsConfig extends FieldsConfig<LodgingReser
                 validators: [Validators.required],
                 order: 3,
                 showColumn: true
-            } as Field),
+            }),
             new Field({
                 fieldType: FieldTypes.DateField,
                 value: entity ? entity.object.checkOut : undefined,
@@ -58,7 +58,7 @@ export class NgLodgingReservationsFieldsConfig extends FieldsConfig<LodgingReser
                 validators: [Validators.required],
                 order: 4,
                 showColumn: true
-            } as Field),
+            }),
             new Field({
                 fieldType: FieldTypes.int,
                 value: entity ? entity.object.persons : undefined,
@@ -67,7 +67,7 @@ export class NgLodgingReservationsFieldsConfig extends FieldsConfig<LodgingReser
                 validators: [Validators.required],
                 order: 5,
                 showColumn: true
-            } as Field),
+            }),
         ];
 
         // Id field must only be added for edit forms.
@@ -78,7 +78,7 @@ export class NgLodgingReservationsFieldsConfig extends FieldsConfig<LodgingReser
                 value: entity ? entity.object.id : undefined,
                 key: 'id',
                 order: 0,
-            } as Field));
+            }));
         }
 
         return fields;

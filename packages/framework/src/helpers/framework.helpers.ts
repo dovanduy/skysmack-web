@@ -17,16 +17,16 @@ import { LocalObjectStatus } from '../models/local-object-status';
  *
  * @return the value of the property in question
  */
-export const getProperty = (object: any, path: string, noThrowOn: string[] = ['id', 'key']) => {
+export const getProperty = (object: any, path: string, throwOnErrors: boolean = true) => {
+    const noThrowOn: string[] = ['id', 'key'];
     const parts = path.split('.');
     const length = parts.length;
     let property = object || this;
 
     for (let i = 0; i < length; i++) {
-        property = property[parts[i]];
         if (property === undefined) {
-            if (!noThrowOn.includes(parts[i])) {
-                const message = `Target property is undefined. Selector path "${path}" is incorrect. Check for case sensitivity and spelling errors.
+            if (throwOnErrors && !noThrowOn.includes(parts[i])) {
+                const message = `Target property is undefined. Selector path "${path}" is incorrect. Check for case sensitivity and spelling errors. 
 ---
 Object
 ---
@@ -34,7 +34,9 @@ ${JSON.stringify(object, null, 2)}
 `;
                 throw new Error(message);
             }
+            break;
         }
+        property = property[parts[i]];
     }
 
     return property;
@@ -75,6 +77,16 @@ export const replaceLocalInnerObject = <TObject, TKey>(localObject: LocalObject<
     localObject.object = newObject;
     localObject.status = localObjectStatus;
     return localObject;
+}
+
+/**
+ * Clones a local object, including methods.
+ * Use when you want a complete clone, and severe all references to the old local object.
+ */
+export const cloneLocalObject = <TObject, TKey>(localObject: LocalObject<TObject, TKey>) => {
+    const clone = Object.assign(Object.create(localObject), localObject);
+    clone.object = { ...localObject.object };
+    return clone
 }
 
 export const isObject = (value) => {

@@ -1,7 +1,12 @@
 <ng-container *ngIf="field" [formGroup]="fh.form">
+
+  <input type="hidden" [formControlName]="field.key">
+
   <!-- Date -->
+  <!-- (selectedChanged)="setDate($event);updateFieldValue()" -->
   <mat-form-field>
-    <input matInput [formControlName]="fieldKey" [matDatepicker]="picker" [placeholder]="field.placeholder | translate">
+    <input matInput [value]="date" (dateInput)="setDate($event.value);updateFieldValue()" [matDatepicker]="picker"
+      [placeholder]="field.placeholder | translate">
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker touchUi #picker></mat-datepicker>
     <mat-error *ngIf="fh.formErrors[fieldKey]">
@@ -11,9 +16,12 @@
 
   <!-- Time -->
   <mat-form-field>
-    <input matInput #timeInput type="time" [attr.id]="fieldKey" [name]="field.label">
+    <input matInput #timeInput type="time" [(value)]="time" (input)="onTimeChanged($event)">
     <mat-error *ngIf="fh.formErrors[fieldKey]">
       {{ fh.formErrors[fieldKey] | translate }}
     </mat-error>
   </mat-form-field>
+
+  <ss-backend-errors [field]="field"></ss-backend-errors>
+
 </ng-container>

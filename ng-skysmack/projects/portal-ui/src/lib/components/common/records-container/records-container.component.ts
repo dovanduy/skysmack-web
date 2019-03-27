@@ -1,9 +1,10 @@
 import { Component, OnInit, Input, OnDestroy, EventEmitter, Output, ViewChild } from '@angular/core';
-import { LocalObject, LoadingState, SubscriptionHandler, DisplayColumn } from '@skysmack/framework';
-import { Observable } from 'rxjs';
+import { LocalObject, LoadingState, SubscriptionHandler, DisplayColumn, EnumHelpers, cloneLocalObject, getProperty } from '@skysmack/framework';
+import { Observable, of } from 'rxjs';
 import { EntityAction, Field, FieldTypes } from '@skysmack/ng-ui';
-import { map } from 'rxjs/operators';
+import { map, switchMap } from 'rxjs/operators';
 import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
+import { Assignment } from '@skysmack/packages-maintenance';
 
 @Component({
   selector: 'ss-records-container',
@@ -36,6 +37,8 @@ export class RecordsContainerComponent implements OnInit, OnDestroy {
 
   constructor() { }
 
+  public getProperty = getProperty;
+
   ngOnInit() {
     // Set display columns
     this.subscriptionHandler.register(this.fields$.subscribe(fields => {
@@ -44,7 +47,8 @@ export class RecordsContainerComponent implements OnInit, OnDestroy {
 
     // Set entities
     this.subscriptionHandler.register(this.entities$.pipe(
-      map(entities => {
+      // TODO(GET_DEPS): See above todo.
+      map((entities: LocalObject<any, any>[]) => {
         this.entities = entities;
         this.loadedEntitiesCount = entities.length;
       })).subscribe());
@@ -61,7 +65,10 @@ export class RecordsContainerComponent implements OnInit, OnDestroy {
       const sortable = sortableFields.indexOf(field.fieldType) > -1 || !field.dynamicField;
       const column = new DisplayColumn({
         fieldKey: field.key,
+        fieldDisplayKey: field.displayKey ? field.displayKey : field.key,
+        fieldDisplaySubKey: field.displaySubKey,
         dynamicFieldName: field.dynamicField ? field.label : undefined,
+        displayModifier: field.displayModifier,
         translationString: this.area.toUpperCase() + '.FORM.LABELS.' + field.key.toUpperCase(),
         show: field.showColumn,
         sortable: sortable

@@ -28,7 +28,7 @@ export class NgAssignmentTypesValidation extends Validation {
         },
     };
 
-    public area = 'maintenance.assignment_types';
+    public area = 'assignment_types';
 
     public formValidators = [];
 

@@ -1,10 +1,9 @@
-import { Component, OnInit, Injector } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FieldBaseComponent } from '../field-base-component';
-import { ActivatedRoute, Router } from '@angular/router';
-import { flatten, FieldValueProviderViewModel, LocalObject, StrIndex, log } from '@skysmack/framework';
+import { Router } from '@angular/router';
+import { flatten, FieldValueProviderViewModel, LocalObject, StrIndex } from '@skysmack/framework';
 import { NgRecordStore, NgFieldStore } from '@skysmack/ng-redux';
 import { map, switchMap, filter } from 'rxjs/operators';
-import { Field } from '@skysmack/ng-ui';
 
 type ValidatorTypes = 'range' | 'required';
 
@@ -90,6 +89,10 @@ export class ValidatorsFieldComponent extends FieldBaseComponent implements OnIn
 
   public setParameters(parameters: StrIndex<any>) {
     this.currentValidator.parameters = parameters;
+  }
+
+  public removeParameters() {
+    this.currentValidator.parameters = undefined;
   }
 
   public done() {

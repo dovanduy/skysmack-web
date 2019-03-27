@@ -27,18 +27,17 @@ export class NgLodgingsFieldsConfig extends FieldsConfig<Lodging, number, NgLodg
                 displayNameSelector: 'object.name',
                 disabled: entity && entity.object ? true : false,
                 order: 1,
-            } as SelectField),
+            }),
 
-            new SelectField({
-                fieldType: FieldTypes.SelectField,
-                value: entity && entity.object ? entity.object.occupationState : undefined,
-                label: 'Occupation state',
-                key: 'occupationState',
+            new Field({
+                fieldType: FieldTypes.CheckboxField,
+                value: entity && entity.object ? entity.object.disabled : false,
+                label: 'Enabled',
+                key: 'disabled',
                 validators: [Validators.required],
-                optionsData: Lodging.OccupationStateEnum,
-                optionsDataType: 'enum',
                 order: 2,
-            } as SelectField),
+                showColumn: true
+            }),
 
             new Field({
                 fieldType: FieldTypes.string,
@@ -47,7 +46,7 @@ export class NgLodgingsFieldsConfig extends FieldsConfig<Lodging, number, NgLodg
                 validators: [Validators.required],
                 order: 3,
                 showColumn: true
-            } as Field)
+            })
         ];
 
         // Id field must only be added for edit forms.
@@ -58,7 +57,7 @@ export class NgLodgingsFieldsConfig extends FieldsConfig<Lodging, number, NgLodg
                 value: entity ? entity.object.id : undefined,
                 key: 'id',
                 order: 0,
-            } as Field));
+            }));
         }
 
         return fields;

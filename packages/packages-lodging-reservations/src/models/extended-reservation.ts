@@ -11,7 +11,7 @@ export class ExtendedReservation {
     public persons: number;
     public checkIn: string;
     public checkOut: string;
-    public status: string;
+    public disabled: boolean;
 
     constructor(
         public reservation: LocalObject<LodgingReservation, number>,
@@ -26,11 +26,6 @@ export class ExtendedReservation {
         }
         this.lodgingName = lodging ? lodging.object.name : '';
         this.lodgingTypeName = lodgingType ? lodgingType.object.name : '';
-        this.status = this.getStatus(reservation);
-    }
-
-    private getStatus(reservation: LocalObject<LodgingReservation, number>): string {
-        const lowercaseStatus = EnumHelpers.toIndexEnum(LodgingReservation.statusEnum)[reservation.object.status]
-        return lowercaseStatus ? lowercaseStatus.charAt(0).toUpperCase() + lowercaseStatus.slice(1) : '';
+        this.disabled = lodging ? lodging.object.disabled : undefined;
     }
 }

@@ -25,7 +25,7 @@ export class NgAccessPolicyRulesFieldsConfig extends FieldsConfig<AccessPolicyRu
                 key: 'access',
                 order: 1,
                 showColumn: true
-            } as Field),
+            }),
 
             new SelectField({
                 fieldType: FieldTypes.SelectField,
@@ -47,7 +47,7 @@ export class NgAccessPolicyRulesFieldsConfig extends FieldsConfig<AccessPolicyRu
                 ],
                 order: 2,
                 showColumn: true
-            } as SelectField),
+            }),
 
             new Field({
                 fieldType: FieldTypes.CheckboxField,
@@ -55,7 +55,7 @@ export class NgAccessPolicyRulesFieldsConfig extends FieldsConfig<AccessPolicyRu
                 key: 'includeRoles',
                 order: 3,
                 showColumn: true
-            } as Field)
+            })
         ];
 
         if (entity && entity.object.id && entity.status !== LocalObjectStatus.CREATING) {
@@ -64,7 +64,7 @@ export class NgAccessPolicyRulesFieldsConfig extends FieldsConfig<AccessPolicyRu
                 value: entity ? entity.object.id : undefined,
                 key: 'id',
                 order: 0
-            } as Field));
+            }));
         }
 
         return fields;

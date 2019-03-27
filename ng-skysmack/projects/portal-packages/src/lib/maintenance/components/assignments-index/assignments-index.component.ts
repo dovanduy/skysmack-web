@@ -4,8 +4,10 @@ import { AssignmentsAppState } from '@skysmack/packages-maintenance';
 import { Assignment } from '@skysmack/packages-maintenance';
 import { EntityComponentPageTitle, RecordIndexComponent } from '@skysmack/portal-ui';
 import { EntityAction } from '@skysmack/ng-ui';
-import { NgAssignmentsActions, NgSkysmackStore, NgAssignmentsStore, NgAssignmentsFieldsConfig } from '@skysmack/ng-packages';
+import { NgAssignmentsActions, NgSkysmackStore, NgAssignmentsStore, NgAssignmentsFieldsConfig, NgAssignmentTypesStore, NgAssignmentTypesActions } from '@skysmack/ng-packages';
 import { NgAssignmentsMenu } from '../../ng-assignments-menu';
+import { LocalObject } from '@skysmack/framework';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'ss-assignments-index',
@@ -27,14 +29,16 @@ export class AssignmentsIndexComponent extends RecordIndexComponent<AssignmentsA
     public title: EntityComponentPageTitle,
     public store: NgAssignmentsStore,
     public sidebarMenu: NgAssignmentsMenu,
-    public fieldsConfig: NgAssignmentsFieldsConfig
+    public fieldsConfig: NgAssignmentsFieldsConfig,
+    public assignmentTypesStore: NgAssignmentTypesStore,
+    public assignmentTypesActions: NgAssignmentTypesActions,
   ) {
     super(router, activatedRoute, actions, skysmackStore, store, fieldsConfig);
-
   }
 
   ngOnInit() {
     super.ngOnInit();
     this.title.setTitle(this.packagePath);
+    this.assignmentTypesActions.getPaged(this.packagePath, this.pagedQuery);
   }
 }

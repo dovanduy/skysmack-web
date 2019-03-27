@@ -27,7 +27,7 @@ export class NgBasketsFieldsConfig extends FieldsConfig<Basket, number, NgBasket
                 validators: [Validators.required],
                 order: 1,
                 showColumn: true
-            } as Field)
+            })
         ];
 
         // Id field must only be added for edit forms.
@@ -38,7 +38,7 @@ export class NgBasketsFieldsConfig extends FieldsConfig<Basket, number, NgBasket
                 value: entity ? entity.object.id : undefined,
                 key: 'id',
                 order: 0,
-            } as Field));
+            }));
         }
 
         return fields;
