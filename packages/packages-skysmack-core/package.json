@@ -23,6 +23,7 @@
     "@skysmack/redux": "*",
     "rxjs": "^6.4.0",
     "redux": "^4.0.1",
-    "redux-observable": "^1.0.0"
+    "redux-observable": "^1.0.0",
+    "tslib": "^1.9.3"
   }
 }
