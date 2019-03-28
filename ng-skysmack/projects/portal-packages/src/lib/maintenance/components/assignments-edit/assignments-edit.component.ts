@@ -32,7 +32,6 @@ export class AssignmentsEditComponent extends RecordFormComponent<AssignmentsApp
     super.ngOnInit();
     this.setEditFields();
   }
-
   public setEditFields() {
     this.assignmentTypesActions.getPaged(this.packagePath, new PagedQuery());
 
