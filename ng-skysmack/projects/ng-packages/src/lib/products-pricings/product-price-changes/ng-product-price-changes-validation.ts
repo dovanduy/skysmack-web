@@ -17,19 +17,19 @@ export class NgProductPriceChangesValidation extends Validation {
             required: ''
         },
         change: {
-            required: '',
+            required: ''
         },
         changeType: {
-            required: '',
+            required: ''
         },
         validFrom: {
-            required: '',
+            required: ''
         },
         validTo: {
-            required: '',
+            required: ''
         },
         recordId: {
-            required: '',
+            required: ''
         }
     };
 
