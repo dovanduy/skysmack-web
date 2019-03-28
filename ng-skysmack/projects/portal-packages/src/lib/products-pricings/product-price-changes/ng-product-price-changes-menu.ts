@@ -5,11 +5,12 @@ import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { MenuArea } from '@skysmack/framework';
 import { MenuItem } from '@skysmack/framework';
 import { NgMenuItemProviders } from '@skysmack/ng-redux';
+import { PRODUCT_PRICE_CHANGES_AREA_KEY } from '@skysmack/packages-products-pricings';
 
 @Injectable({ providedIn: 'root' })
-export class NgProductsPricingsMenu extends SidebarMenu {
-    public menuId = 'productsPricings';
-    public translationPrefix = 'PRODUCTS_PRICINGS.INDEX.';
+export class NgProductPriceChangesMenu extends SidebarMenu {
+    public menuId = PRODUCT_PRICE_CHANGES_AREA_KEY;
+    public translationPrefix = 'PRODUCT_PRICE_CHANGES.INDEX.';
 
     constructor(
         public redux: NgSkysmackStore,
@@ -23,13 +24,10 @@ export class NgProductsPricingsMenu extends SidebarMenu {
     }
 
     public setPrimaryMenu() {
-        this.primaryMenuAreas.push(new MenuArea('manage', this.translationPrefix, 1));
+        this.primaryMenuAreas.push(new MenuArea('actions', this.translationPrefix, 1));
+        this.primaryMenuAreas.push(new MenuArea('manage', this.translationPrefix, 2));
 
-        this.primaryMenuItems.push(new MenuItem('sales-prices', this.translationPrefix + 'SALES_PRICES', 'manage', 2, 'groupAdd'));
-        this.primaryMenuItems.push(new MenuItem('types/sales-prices', this.translationPrefix + 'SALES_PRICES_TYPES', 'manage', 3, 'shortText'));
-
-        this.primaryMenuItems.push(new MenuItem('price-changes', this.translationPrefix + 'PRICE_CHANGES', 'manage', 2, 'groupAdd'));
-        this.primaryMenuItems.push(new MenuItem('types/price-changes', this.translationPrefix + 'PRICE_TYPE_CHANGES', 'manage', 2, 'groupAdd'));
+        this.primaryMenuItems.push(new MenuItem('create', this.translationPrefix + 'CREATE', 'actions', 1, 'groupAdd'));
     }
 
     public setSpeedDialMenu() {

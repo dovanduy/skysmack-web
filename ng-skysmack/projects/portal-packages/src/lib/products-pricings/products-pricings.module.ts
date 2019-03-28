@@ -10,6 +10,7 @@ import { ProductsPricingsRoutingModule } from './products-pricings-routing.modul
 import { productsSalesPriceComponents } from './products-sales-price/components/products-sales-price-components';
 import { productTypeSalesPriceComponents } from './product-type-sales-price/components/product-type-sales-price-components';
 import { ProductsPricingsIndexComponent } from './components/products-pricings-index/products-pricings-index.component';
+import { productPriceChangesComponents } from './product-price-changes/components/product-price-changes-components';
 
 @NgModule({
   imports: [
@@ -24,7 +25,8 @@ import { ProductsPricingsIndexComponent } from './components/products-pricings-i
   declarations: [
     ProductsPricingsIndexComponent,
     ...productsSalesPriceComponents,
-    ...productTypeSalesPriceComponents
+    ...productTypeSalesPriceComponents,
+    ...productPriceChangesComponents
   ],
   providers: [
     LanguageService,

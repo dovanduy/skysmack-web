@@ -15,8 +15,8 @@
 |Word|Replacement|
 |-|-|
 |lodgingType|`productType`|
-|lodging-type|`product-type`|
 |LodgingType|`ProductType`|
+|lodging-type|`product-type`|
 |LODGING_TYPE|`PRODUCT_TYPE`|
 
 Remember to change DocumentRecord to Record if necessary.

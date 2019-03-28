@@ -3,7 +3,9 @@
         "INDEX": {
             "MANAGE": "Konfigurer",
             "SALES_PRICES": "Produkt salgs priser",
-            "SALES_PRICES_TYPES": "Produkt typer salgs priser"
+            "SALES_PRICES_TYPES": "Produkt typer salgs priser",
+            "PRICE_CHANGES": "Pris ændringer",
+            "PRICE_TYPE_CHANGES": "Pris type ændringer"
         }
     }
 }
