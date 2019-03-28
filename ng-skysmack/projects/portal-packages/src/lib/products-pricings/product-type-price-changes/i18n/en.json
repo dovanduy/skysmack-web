@@ -1,0 +1,62 @@
+{
+    "PRODUCT_TYPE_PRICE_CHANGES": {
+        "CREATE": {
+            "CREATE": "Create"
+        },
+        "EDIT": {
+            "EDIT": "Edit"
+        },
+        "INDEX": {
+            "ACTIONS": "Actions",
+            "CREATE": "Create",
+            "DELETE": "Delete",
+            "MANAGE": "Manage",
+            "FIELDS": "Fields",
+            "BACK": "Back"
+        },
+        "FORM": {
+            "LABELS": {
+                "CURRENCYCODE": "Currency code",
+                "RECORDID": "Product sales price",
+                "CHANGE": "Price change",
+                "CHANGETYPE": "Price change type",
+                "VALIDFROM": "Valid from",
+                "VALIDTO": "Valid to"
+            },
+            "PLACEHOLDERS": {
+                "CURRENCYCODE": "Currency code",
+                "RECORDID": "Product sales price",
+                "CHANGE": "Price change",
+                "CHANGETYPE": "Price change type",
+                "VALIDFROM": "Valid from",
+                "VALIDTO": "Valid to"
+            },
+            "VALIDATION": {
+                "CURRENCYCODE": {
+                    "REQUIRED": "Currency code is required"
+                },
+                "RECORDID": {
+                    "REQUIRED": "Product is required"
+                },
+                "CHANGE": {
+                    "REQUIRED": "Change is required"
+                },
+                "CHANGETYPE": {
+                    "REQUIRED": "Change type is required"
+                },
+                "VALIDFROM": {
+                    "REQUIRED": "Valid from is required"
+                },
+                "VALIDTO": {
+                    "REQUIRED": "Valid to is required"
+                }
+            }
+        },
+        "QUEUE": {
+            "ADDING": "Adding {{ name }}",
+            "UPDATING": "Updating {{ name }}",
+            "DELETING": "Deleting {{ name }}",
+            "ERROR": "An error occured with {{ name }}. Correct and try again."
+        }
+    }
+}

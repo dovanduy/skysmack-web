@@ -1,0 +1,62 @@
+{
+    "PRODUCT_TYPE_PRICE_CHANGES": {
+        "CREATE": {
+            "CREATE": "Opret"
+        },
+        "EDIT": {
+            "EDIT": "Rediger"
+        },
+        "INDEX": {
+            "ACTIONS": "Handlinger",
+            "CREATE": "Opret",
+            "DELETE": "Slet",
+            "MANAGE": "Konfigurer",
+            "FIELDS": "Felter",
+            "BACK": "Tilbage"
+        },
+        "FORM": {
+            "LABELS": {
+                "CURRENCYCODE": "Valuta kode",
+                "RECORDID": "Produkt salgs pris",
+                "CHANGE": "Pris ændring",
+                "CHANGETYPE": "Pris ændrings type",
+                "VALIDFROM": "Gældende fra",
+                "VALIDTO": "Gældende til"
+            },
+            "PLACEHOLDERS": {
+                "CURRENCYCODE": "Valuta kode",
+                "RECORDID": "Produkt salgs pris",
+                "CHANGE": "Pris ændring",
+                "CHANGETYPE": "Pris ændrings type",
+                "VALIDFROM": "Gældende fra",
+                "VALIDTO": "Gældende til"
+            },
+            "VALIDATION": {
+                "CURRENCYCODE": {
+                    "REQUIRED": "Valuta kode er påkrævet"
+                },
+                "RECORDID": {
+                    "REQUIRED": "Products salgs pris er påkrævet"
+                },
+                "CHANGE": {
+                    "REQUIRED": "Pris ændring er påkrævet"
+                },
+                "CHANGETYPE": {
+                    "REQUIRED": "Pris ændrings type er påkrævet"
+                },
+                "VALIDFROM": {
+                    "REQUIRED": "Gældende fra er påkrævet"
+                },
+                "VALIDTO": {
+                    "REQUIRED": "Gældende til er påkrævet"
+                }
+            }
+        },
+        "QUEUE": {
+            "ADDING": "Tilføjer {{ name }}",
+            "UPDATING": "Opdatere {{ name }}",
+            "DELETING": "Sletter {{ name }}",
+            "ERROR": "Der opstod  en fejl ved {{ name }}. Ret og prøv igen."
+        }
+    }
+}

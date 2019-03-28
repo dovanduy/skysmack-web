@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
-import { ProductTypePriceChange, ProductsSalesPrice, PriceChangeType } from '@skysmack/packages-products-pricings';
+import { ProductTypePriceChange, PriceChangeType, ProductTypeSalesPrice } from '@skysmack/packages-products-pricings';
 import { FormRule, FieldTypes, FieldsConfig, SelectField, Field } from '@skysmack/ng-ui';
 import { NgProductTypePriceChangesValidation } from './ng-product-type-price-changes-validation';
 
 export interface NgProductTypePriceChangesFormDependencies {
-    availableProductsSalesPrices: LocalObject<ProductsSalesPrice, number>[];
+    availableProductTypeSalesPrices: LocalObject<ProductTypeSalesPrice, number>[];
 }
 
 @Injectable({ providedIn: 'root' })
@@ -40,7 +40,7 @@ export class NgProductTypePriceChangesFieldsConfig extends FieldsConfig<ProductT
                 value: entity ? entity.object.recordId : undefined,
                 key: 'recordId',
                 validators: [Validators.required],
-                optionsData: dependencies && dependencies.availableProductsSalesPrices,
+                optionsData: dependencies && dependencies.availableProductTypeSalesPrices,
                 displayNameSelector: 'object.price',
                 order: 2,
                 showColumn: true

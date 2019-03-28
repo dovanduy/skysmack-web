@@ -11,6 +11,7 @@ import { productsSalesPriceComponents } from './products-sales-price/components/
 import { productTypeSalesPriceComponents } from './product-type-sales-price/components/product-type-sales-price-components';
 import { ProductsPricingsIndexComponent } from './components/products-pricings-index/products-pricings-index.component';
 import { productPriceChangesComponents } from './product-price-changes/components/product-price-changes-components';
+import { productTypePriceChangesComponents } from './product-type-price-changes/components/product-type-price-changes-components';
 
 @NgModule({
   imports: [
@@ -26,7 +27,8 @@ import { productPriceChangesComponents } from './product-price-changes/component
     ProductsPricingsIndexComponent,
     ...productsSalesPriceComponents,
     ...productTypeSalesPriceComponents,
-    ...productPriceChangesComponents
+    ...productPriceChangesComponents,
+    ...productTypePriceChangesComponents
   ],
   providers: [
     LanguageService,

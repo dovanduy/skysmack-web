@@ -4,13 +4,15 @@ import { productsSalesPriceRoutes } from './products-sales-price/components/prod
 import { productTypeSalesPriceRoutes } from './product-type-sales-price/components/product-type-sales-price-components';
 import { ProductsPricingsIndexComponent } from './components/products-pricings-index/products-pricings-index.component';
 import { productPriceChangesRoutes } from './product-price-changes';
+import { productTypePriceChangesRoutes } from './product-type-price-changes/components/product-type-price-changes-components';
 
 @NgModule({
   imports: [RouterModule.forChild([
     ...[{ path: '', component: ProductsPricingsIndexComponent }],
     ...productsSalesPriceRoutes,
     ...productTypeSalesPriceRoutes,
-    ...productPriceChangesRoutes
+    ...productPriceChangesRoutes,
+    ...productTypePriceChangesRoutes
   ]
   )],
   exports: [RouterModule]
