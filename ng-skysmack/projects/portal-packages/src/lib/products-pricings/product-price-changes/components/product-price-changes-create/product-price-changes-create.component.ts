@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductPriceChangesAppState, ProductPriceChanges } from '@skysmack/packages-products-pricings';
+import { ProductPriceChangesAppState, ProductPriceChange } from '@skysmack/packages-products-pricings';
 import { NgProductPriceChangesActions, NgProductsSalesPriceActions, NgProductsSalesPriceStore } from '@skysmack/ng-packages';
 import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -16,7 +16,7 @@ import { NgProductPriceChangesFormDependencies } from '@skysmack/ng-packages';
   templateUrl: './product-price-changes-create.component.html',
   styleUrls: ['./product-price-changes-create.component.scss']
 })
-export class ProductPriceChangesCreateComponent extends RecordFormComponent<ProductPriceChangesAppState, ProductPriceChanges, number, NgProductPriceChangesFormDependencies> implements OnInit {
+export class ProductPriceChangesCreateComponent extends RecordFormComponent<ProductPriceChangesAppState, ProductPriceChange, number, NgProductPriceChangesFormDependencies> implements OnInit {
 
   constructor(
     public router: Router,
@@ -38,20 +38,12 @@ export class ProductPriceChangesCreateComponent extends RecordFormComponent<Prod
   }
 
   public setCreateFields() {
-    // TODO: Find better way to prevent multiple requests getting fired...
-    let requested = false;
+    this.productsSalesPriceActions.getPaged(this.packagePath, new PagedQuery());
 
-    this.fields$ = this.loadedPackage$.pipe(
-      switchMap(loadedPackage => {
-        if (!requested) {
-          this.productsSalesPriceActions.getPaged(loadedPackage._package.dependencies[0], new PagedQuery());
-          requested = true;
-        }
-        return combineLatest(
-          this.productsSalesPriceStore.get(loadedPackage._package.dependencies[0]),
-          this.skysmackStore.getEditorItem()
-        );
-      }),
+    this.fields$ = combineLatest(
+      this.productsSalesPriceStore.get(this.packagePath),
+      this.skysmackStore.getEditorItem()
+    ).pipe(
       map(values => {
         const availableProductsSalesPrices = values[0];
         this.editorItem = values[1];

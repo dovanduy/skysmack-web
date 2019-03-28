@@ -4,7 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { NgProductPriceChangesActions, NgProductPriceChangesFieldsConfig } from '@skysmack/ng-packages';
 import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { NgProductPriceChangesStore } from '@skysmack/ng-packages';
-import { ProductPriceChangesAppState, PRODUCT_PRICE_CHANGES_AREA_KEY, ProductPriceChanges } from '@skysmack/packages-products-pricings';
+import { ProductPriceChangesAppState, PRODUCT_PRICE_CHANGES_AREA_KEY, ProductPriceChange } from '@skysmack/packages-products-pricings';
 import { NgProductPriceChangesMenu } from '../../ng-product-price-changes-menu';
 import { EntityAction } from '@skysmack/ng-ui';
 
@@ -13,7 +13,7 @@ import { EntityAction } from '@skysmack/ng-ui';
   templateUrl: './product-price-changes-index.component.html',
   styleUrls: ['./product-price-changes-index.component.scss']
 })
-export class ProductPriceChangesIndexComponent extends RecordIndexComponent<ProductPriceChangesAppState, ProductPriceChanges, number> implements OnInit {
+export class ProductPriceChangesIndexComponent extends RecordIndexComponent<ProductPriceChangesAppState, ProductPriceChange, number> implements OnInit {
 
   public area: string = PRODUCT_PRICE_CHANGES_AREA_KEY;
   public entityActions: EntityAction[] = [

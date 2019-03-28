@@ -41,7 +41,7 @@ export class NgProductPriceChangesFieldsConfig extends FieldsConfig<ProductPrice
                 key: 'recordId',
                 validators: [Validators.required],
                 optionsData: dependencies && dependencies.availableProductsSalesPrices,
-                displayNameSelector: 'object.name',
+                displayNameSelector: 'object.price',
                 order: 2,
                 showColumn: true
             }),
@@ -64,7 +64,7 @@ export class NgProductPriceChangesFieldsConfig extends FieldsConfig<ProductPrice
                 showColumn: true
             }),
             new Field({
-                fieldType: FieldTypes.DateField,
+                fieldType: FieldTypes.dateTime,
                 value: entity ? entity.object.validFrom : undefined,
                 key: 'validFrom',
                 validators: [Validators.required],
@@ -72,7 +72,7 @@ export class NgProductPriceChangesFieldsConfig extends FieldsConfig<ProductPrice
                 showColumn: true
             }),
             new Field({
-                fieldType: FieldTypes.DateField,
+                fieldType: FieldTypes.dateTime,
                 value: entity ? entity.object.validTo : undefined,
                 key: 'validTo',
                 validators: [Validators.required],
