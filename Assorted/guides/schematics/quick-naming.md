@@ -14,8 +14,8 @@
 ## Words to replace (standard crud)
 |Word|Replacement|
 |-|-|
-|lodging-type|`product-type`|
 |lodgingType|`productType`|
+|lodging-type|`product-type`|
 |LodgingType|`ProductType`|
 |LODGING_TYPE|`PRODUCT_TYPE`|
 
