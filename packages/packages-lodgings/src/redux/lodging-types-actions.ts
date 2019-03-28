@@ -3,6 +3,7 @@ import { Store } from 'redux';
 import { LocalObject, StrIndex } from '@skysmack/framework';
 import { LodgingTypesAppState } from './lodging-types-reducer';
 import { LodgingType } from '../models/lodging-type';
+import { LODGING_TYPES_REDUX_KEY, LODGING_TYPES_ADDITIONAL_PATHS } from '../constants';
 
 export class LodgingTypesActions extends RecordActionsBase<LodgingTypesAppState, Store<LodgingTypesAppState>> {
     public static GET_AVAILABLE_LODGING_TYPES = 'GET_AVAILABLE_LODGING_TYPES';
@@ -13,7 +14,7 @@ export class LodgingTypesActions extends RecordActionsBase<LodgingTypesAppState,
     public static GET_AVAILABLE_LODGING_TYPES_COUNT_SUCCESS = 'GET_AVAILABLE_LODGING_TYPES_COUNT_SUCCESS';
     public static GET_AVAILABLE_LODGING_TYPES_COUNT_FAILURE = 'GET_AVAILABLE_LODGING_TYPES_COUNT_FAILURE';
 
-    constructor(protected store: Store<LodgingTypesAppState>) { super(store, 'LODGING_TYPES_', ['types']); }
+    constructor(protected store: Store<LodgingTypesAppState>) { super(store, LODGING_TYPES_REDUX_KEY, LODGING_TYPES_ADDITIONAL_PATHS); }
 
     public getAvailableLodgingTypes(packagePath: string, start: string, end: string, selectedLodgingIds: number[]) {
         this.store.dispatch(Object.assign({}, new ReduxAction<GetIntervalPayload, SelectedIdsMeta<number>>({

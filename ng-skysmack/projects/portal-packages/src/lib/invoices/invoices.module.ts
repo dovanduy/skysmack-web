@@ -5,7 +5,7 @@ import { InvoicesRoutingModule } from './invoices-routing.module';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { NgInvoicesModule } from '@skysmack/ng-packages';
 import { PortalUiModule, HttpLoaderFactory, FieldsModule } from '@skysmack/portal-ui';
-import { TranslateLoader, TranslateService } from '@ngx-translate/core';
+import { TranslateLoader } from '@ngx-translate/core';
 import { LanguageService } from '@skysmack/portal-ui';
 import { invoicesComponents } from './invoice/components/invoices-components';
 import { invoiceItemsComponents } from './invoice-item/components/invoice-items-components';

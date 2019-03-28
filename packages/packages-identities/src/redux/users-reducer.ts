@@ -3,6 +3,7 @@ import { AppState, ReduxAction, RecordState, recordReducersBase, ReduxOfflineMet
 import { User } from './../models/user';
 import { UsersActions } from './users-actions';
 import { GetUsersRolesSuccessPayload } from '../payloads';
+import { USERS_REDUX_KEY } from '../constants';
 
 /**
  * This is to be used when you want to access users via the GLOBAL state. E.g. state.users (where users is the reducer name.)
@@ -17,7 +18,7 @@ export class UsersState implements RecordState<User, number> {
     public usersRoles: StrIndex<NumIndex<string[]>> = {};
 }
 
-export function usersReducer(state = new UsersState(), action: ReduxAction, prefix: string = 'USERS_'): UsersState {
+export function usersReducer(state = new UsersState(), action: ReduxAction, prefix: string = USERS_REDUX_KEY): UsersState {
     state = sharedReducer(state, action, new UsersState());
     const newState = Object.assign({}, state);
 

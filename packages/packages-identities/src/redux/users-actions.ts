@@ -4,6 +4,7 @@ import { Store } from 'redux';
 import { GetUsersRolesPayload } from '../payloads/get-users-roles-payload';
 import { HttpMethod, NumIndex, HttpResponse, LocalObject, StrIndex } from '@skysmack/framework';
 import { User } from '../models';
+import { USERS_REDUX_KEY, USERS_ADDITIONAL_PATHS } from '../constants';
 
 export class UsersActions extends RecordActionsBase<UsersAppState, Store<UsersAppState>> {
     public static GET_ROLES = 'GET_ROLES';
@@ -18,7 +19,7 @@ export class UsersActions extends RecordActionsBase<UsersAppState, Store<UsersAp
     public static REMOVE_ROLES_SUCCESS = 'REMOVE_ROLES_SUCCESS';
     public static REMOVE_ROLES_FAILURE = 'REMOVE_ROLES_FAILURE';
 
-    constructor(protected store: Store<UsersAppState>) { super(store, 'USERS_', ['users']); }
+    constructor(protected store: Store<UsersAppState>) { super(store, USERS_REDUX_KEY, USERS_ADDITIONAL_PATHS); }
 
     public getUsersRoles(packagePath: string, ids: number[]): void {
         this.store.dispatch(Object.assign({}, new ReduxAction<GetUsersRolesPayload>({

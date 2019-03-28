@@ -15,7 +15,7 @@ export class BasketsState implements RecordState<Basket, number> {
     public localRecords: StrIndex<StrIndex<LocalObject<Basket, number>>> = {};
 }
 
-export function basketsReducer(state = new BasketsState(), action: ReduxAction, prefix: string = 'BASKETS_'): BasketsState {
+export function basketsReducer(state = new BasketsState(), action: ReduxAction, prefix: string = 'BASKETS_REDUX_KEY'): BasketsState {
     state = sharedReducer(state, action, new BasketsState());
 
     switch (action.type) {

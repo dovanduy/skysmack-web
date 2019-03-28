@@ -8,6 +8,8 @@ import { AccessPolicyRolesAppState, AccessPolicyRole, AccessPolicyRoleKey } from
 import { combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { PagedQuery } from '@skysmack/framework';
+import { IDENTITES_AREA_KEY } from '@skysmack/packages-identities';
+
 
 @Component({
   selector: 'ss-access-policy-roles-edit',
@@ -40,14 +42,14 @@ export class AccessPolicyRolesEditComponent extends RecordFormComponent<AccessPo
   public setCreateFields() {
     this.accessPolicyRulesActions.getPaged(this.packagePath, new PagedQuery());
     // TODO: FIX THIS!! MAJOR HACK!! WE NEED TO GET/CHOOSE ROLES AMONG ALL IDENTITY PACKAGES.
-    // 'identities' BELOW IS JUST THE DEFAULT INSTALLED PACKAGE!
-    this.rolesActions.getPaged('identities', new PagedQuery());
+    // IDENTITES_AREA_KEY BELOW IS JUST THE DEFAULT INSTALLED PACKAGE!
+    this.rolesActions.getPaged(IDENTITES_AREA_KEY, new PagedQuery());
 
     this.fields$ = combineLatest(
       this.initEditRecord(),
       this.accessPolicyRulesStore.get(this.packagePath),
       // TODO: FIX THIS TOO!!
-      this.rolesStore.get('identities')
+      this.rolesStore.get(IDENTITES_AREA_KEY)
     ).pipe(
       map(values => {
         const entity = values[0];

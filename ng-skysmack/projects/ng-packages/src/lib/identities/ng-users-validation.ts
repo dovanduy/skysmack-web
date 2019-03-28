@@ -1,5 +1,6 @@
 import { StrIndex } from '@skysmack/framework';
 import { Validation, CustomValidators } from '@skysmack/ng-ui';
+import { USERS_AREA_KEY } from '@skysmack/packages-identities';
 
 export class NgUsersValidation extends Validation {
     public formErrors = {
@@ -23,7 +24,7 @@ export class NgUsersValidation extends Validation {
         }
     };
 
-    public area = 'users';
+    public area = USERS_AREA_KEY;
 
     public formValidators = [CustomValidators.comparePassword()];
 

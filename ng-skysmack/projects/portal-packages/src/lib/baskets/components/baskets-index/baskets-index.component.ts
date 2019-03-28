@@ -4,7 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { NgBasketsActions, NgBasketsFieldsConfig } from '@skysmack/ng-packages';
 import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { NgBasketsStore } from '@skysmack/ng-packages';
-import { Basket, BasketsAppState } from '@skysmack/packages-baskets';
+import { Basket, BasketsAppState, BASKETS_AREA_KEY } from '@skysmack/packages-baskets';
 import { NgBasketsMenu } from './../../ng-baskets-menu';
 import { EntityAction } from '@skysmack/ng-ui';
 import { NgFieldActions, NgFieldStore } from '@skysmack/ng-redux';
@@ -17,6 +17,7 @@ import { NgFieldActions, NgFieldStore } from '@skysmack/ng-redux';
 })
 export class BasketsIndexComponent extends DocumentRecordIndexComponent<BasketsAppState, Basket, number> implements OnInit {
 
+  public area: string = BASKETS_AREA_KEY;
   public entityActions: EntityAction[] = [
     new EntityAction().asUrlAction('edit', 'Edit', 'edit'),
     new EntityAction().asEventAction('Delete', this.delete, 'delete', this)

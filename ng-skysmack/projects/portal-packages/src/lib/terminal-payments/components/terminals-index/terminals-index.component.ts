@@ -4,7 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { NgTerminalsActions, NgTerminalsFieldsConfig } from '@skysmack/ng-packages';
 import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { NgTerminalsStore } from '@skysmack/ng-packages';
-import { Terminal, TerminalsAppState } from '@skysmack/packages-terminal-payments';
+import { Terminal, TerminalsAppState, TERMINALS_REDUCER_AREA_KEY } from '@skysmack/packages-terminal-payments';
 import { NgTerminalsMenu } from './../../ng-terminals-menu';
 import { EntityAction } from '@skysmack/ng-ui';
 import { NgFieldActions, NgFieldStore } from '@skysmack/ng-redux';
@@ -17,6 +17,7 @@ import { NgFieldActions, NgFieldStore } from '@skysmack/ng-redux';
 })
 export class TerminalsIndexComponent extends DocumentRecordIndexComponent<TerminalsAppState, Terminal, number> implements OnInit {
 
+  public area: string = TERMINALS_REDUCER_AREA_KEY;
   public entityActions: EntityAction[] = [
     new EntityAction().asUrlAction('edit', 'Edit', 'edit'),
     new EntityAction().asEventAction('Delete', this.delete, 'delete', this)

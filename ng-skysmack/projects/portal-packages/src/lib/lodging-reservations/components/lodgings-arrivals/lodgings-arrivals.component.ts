@@ -6,7 +6,7 @@ import { LodgingsReservationsIndexComponent } from '../lodgings-reservations-ind
 import { RSQLFilterBuilder, SortBuilder } from '@skysmack/framework';
 import * as _moment from 'moment';
 const moment = _moment;
-import { LodgingReservation } from '@skysmack/packages-lodging-reservations';
+import { LodgingReservation, LODGING_RESERVATIONS_AREA_KEY } from '@skysmack/packages-lodging-reservations';
 import { NgLodgingsReservationsMenu } from '../../ng-lodgings-reservations-menu';
 
 @Component({
@@ -29,7 +29,7 @@ export class LodgingsArrivalsComponent extends LodgingsReservationsIndexComponen
     public sidebarMenu: NgLodgingsReservationsMenu,
     public pageTitle: EntityComponentPageTitle
   ) {
-    super(router, activatedRoute, skysmackStore, store, lodgingsStore, lodgingTypesStore, actions, lodgingsActions, lodgingTypesActions, fieldsConfig, sidebarMenu, pageTitle);
+    super( router, activatedRoute, skysmackStore, store, lodgingsStore, lodgingTypesStore, actions, lodgingsActions, lodgingTypesActions, fieldsConfig, sidebarMenu, pageTitle);
     pageTitle.setTitle('Arrivals');
   }
 

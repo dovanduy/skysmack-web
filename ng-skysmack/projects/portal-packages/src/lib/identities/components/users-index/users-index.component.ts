@@ -3,7 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { EntityComponentPageTitle, RecordIndexComponent, } from '@skysmack/portal-ui';
 import { NgUsersActions, NgUsersStore, NgSkysmackStore, NgUsersFieldsConfig } from '@skysmack/ng-packages';
 import { EntityAction } from '@skysmack/ng-ui';
-import { User, UsersAppState } from '@skysmack/packages-identities';
+import { User, UsersAppState, USERS_AREA_KEY } from '@skysmack/packages-identities';
 import { NgUsersMenu } from './../../ng-users-menu';
 
 
@@ -14,6 +14,7 @@ import { NgUsersMenu } from './../../ng-users-menu';
 })
 export class UsersIndexComponent extends RecordIndexComponent<UsersAppState, User, number> implements OnInit {
 
+  public area: string = USERS_AREA_KEY;
   public entityActions: EntityAction[] = [
     new EntityAction().asUrlAction('edit', 'Edit', 'edit'),
     new EntityAction().asUrlAction('edit/set-password', 'Set password', 'https'),

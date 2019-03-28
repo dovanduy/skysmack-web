@@ -1,5 +1,6 @@
 import { StrIndex } from '@skysmack/framework';
 import { Validation } from '@skysmack/ng-ui';
+import { RECURRING_ASSIGNMENTS_AREA_KEY } from '@skysmack/packages-maintenance';
 
 export class NgRecurringAssignmentsValidation extends Validation {
     public formErrors = {
@@ -28,7 +29,7 @@ export class NgRecurringAssignmentsValidation extends Validation {
         }
     };
 
-    public area = 'recurring_assignments';
+    public area = RECURRING_ASSIGNMENTS_AREA_KEY;
 
     public formValidators = [];
 
