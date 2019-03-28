@@ -24,10 +24,10 @@ export class ProductTypeSalesPriceCreateComponent extends RecordFormComponent<Pr
     public editorNavService: EditorNavService,
     public actions: NgProductTypeSalesPriceActions,
     public productTypesActions: NgProductTypesActions,
+    public productTypesStore: NgProductTypesStore,
     public redux: NgSkysmackStore,
     public fieldsConfig: NgProductTypeSalesPriceFieldsConfig,
     public store: NgProductTypeSalesPriceStore,
-    public productTypesStore: NgProductTypesStore,
   ) {
     super(router, activatedRoute, editorNavService, actions, redux, store, fieldsConfig);
   }

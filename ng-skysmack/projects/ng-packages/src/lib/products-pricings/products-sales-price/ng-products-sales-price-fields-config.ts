@@ -3,11 +3,11 @@ import { Validators } from '@angular/forms';
 import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { ProductsSalesPrice } from '@skysmack/packages-products-pricings';
 import { FormRule, FieldTypes, FieldsConfig, SelectField, Field } from '@skysmack/ng-ui';
-import { LodgingType } from '@skysmack/packages-lodgings';
 import { NgProductsSalesPriceValidation } from './ng-products-sales-price-validation';
+import { Product } from '@skysmack/packages-products';
 
 export interface NgProductsSalesPriceFormDependencies {
-    availableProducts: LocalObject<LodgingType, number>[];
+    availableProducts: LocalObject<Product, number>[];
 }
 
 @Injectable({ providedIn: 'root' })

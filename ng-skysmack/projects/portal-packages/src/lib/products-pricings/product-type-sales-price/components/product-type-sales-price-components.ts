@@ -5,7 +5,7 @@ import { ProductTypeSalesPriceEditComponent } from './product-type-sales-price-e
 
 export const productTypeSalesPriceRoutes: Routes = [
   {
-    path: 'sales-prices/types', component: ProductTypeSalesPriceIndexComponent,
+    path: 'types/sales-prices', component: ProductTypeSalesPriceIndexComponent,
     children: [
       { path: 'create', component: ProductTypeSalesPriceCreateComponent, pathMatch: 'full' },
       { path: 'edit/:id', component: ProductTypeSalesPriceEditComponent, pathMatch: 'full' }
