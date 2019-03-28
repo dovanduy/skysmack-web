@@ -91,6 +91,14 @@ RD /s /q "%~dp0\..\..\packages\packages-baskets\node_modules";
 echo Deleted packages-baskets\node_modules;
 del /s /q "%~dp0\..\..\packages\packages-baskets\package-lock.json";
 
+rem packages-persons-lodging-reservations
+RD /s /q "%~dp0\..\..\packages\packages-persons-lodging-reservations\lib";
+mkdir "%~dp0\..\..\packages\packages-persons-lodging-reservations\lib";
+echo Deleted packages-persons-lodging-reservations\lib;
+RD /s /q "%~dp0\..\..\packages\packages-persons-lodging-reservations\node_modules";
+echo Deleted packages-persons-lodging-reservations\node_modules;
+del /s /q "%~dp0\..\..\packages\packages-persons-lodging-reservations\package-lock.json";
+
 rem packages-products
 RD /s /q "%~dp0\..\..\packages\packages-products\lib";
 mkdir "%~dp0\..\..\packages\packages-products\lib";

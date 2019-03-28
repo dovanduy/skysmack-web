@@ -73,6 +73,10 @@ import { fieldReducer, settingsReducer } from '@skysmack/redux';
         loadChildren: './../packages/modules/lodging_reservations_wrapper.module#LodgingReservationsWrapperModule'
       },
       {
+        path: 'skysmack/loadPackages/personsLodgingReservations',
+        loadChildren: './../packages/modules/persons_lodging_reservations_wrapper.module#PersonsLodgingReservationsWrapperModule'
+      },
+      {
         path: 'skysmack/loadPackages/oauth2',
         loadChildren: './../packages/modules/oauth2_wrapper.module#OAuth2WrapperModule'
       },
@@ -119,6 +123,7 @@ export class StartModule {
     public fieldEpics: NgFieldEpics,
     public settingsEpics: NgSettingsEpics
   ) {
+    console.log('1');
     configureRedux(ngRedux, ngReduxRouter, reduxOfflineConfiguration);
     registerRedux('fields', fieldReducer, fieldEpics);
     registerRedux('settings', settingsReducer, settingsEpics);

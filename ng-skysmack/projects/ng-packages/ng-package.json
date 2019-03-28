@@ -16,6 +16,7 @@
     "@skysmack/packages-persons",
     "@skysmack/packages-baskets",
     "@skysmack/packages-invoices",
+    "@skysmack/packages-persons-lodging-reservations",
     "@skysmack/packages-products",
     "@skysmack/packages-products-pricings",
     "@skysmack/packages-skysmack-core",

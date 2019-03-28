@@ -51,6 +51,9 @@
       "@skysmack/packages-persons": [
         "../packages/packages-persons"
       ],
+      "@skysmack/packages-persons-lodging-reservations": [
+        "../packages/packages-persons-lodging-reservations"
+      ],
       "@skysmack/packages-products": [
         "../packages/packages-products"
       ],
