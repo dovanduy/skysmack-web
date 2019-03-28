@@ -65,9 +65,9 @@ export class LodgingsReservationsIndexComponent extends RecordIndexComponent<Lod
   ];
 
   public extendedReservations$: Observable<LocalObject<ExtendedReservation, number>[]>;
+  public area: string = LODGING_RESERVATIONS_AREA_KEY;
 
   constructor(
-    public area: string = LODGING_RESERVATIONS_AREA_KEY,
     public router: Router,
     public activatedRoute: ActivatedRoute,
     public skysmackStore: NgSkysmackStore,

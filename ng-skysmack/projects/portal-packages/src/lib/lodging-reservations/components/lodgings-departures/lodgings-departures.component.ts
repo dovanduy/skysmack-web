@@ -17,7 +17,6 @@ import { NgLodgingsReservationsMenu } from '../../ng-lodgings-reservations-menu'
 })
 export class LodgingsDeparturesComponent extends LodgingsReservationsIndexComponent implements OnInit {
   constructor(
-    public area: string = LODGING_RESERVATIONS_AREA_KEY,
     public router: Router,
     public activatedRoute: ActivatedRoute,
     public skysmackStore: NgSkysmackStore,
@@ -31,7 +30,7 @@ export class LodgingsDeparturesComponent extends LodgingsReservationsIndexCompon
     public sidebarMenu: NgLodgingsReservationsMenu,
     public pageTitle: EntityComponentPageTitle
   ) {
-    super(area, router, activatedRoute, skysmackStore, store, lodgingsStore, lodgingTypesStore, actions, lodgingsActions, lodgingTypesActions, fieldsConfig, sidebarMenu, pageTitle);
+    super( router, activatedRoute, skysmackStore, store, lodgingsStore, lodgingTypesStore, actions, lodgingsActions, lodgingTypesActions, fieldsConfig, sidebarMenu, pageTitle);
   }
 
   ngOnInit() {
