@@ -5,7 +5,7 @@ import { NgAccessPolicyRolesActions, NgAccessPolicyRolesFieldsConfig } from '@sk
 import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { NgAccessPolicyRolesStore } from '@skysmack/ng-packages';
 import { EntityAction } from '@skysmack/ng-ui';
-import { AccessPolicyRolesAppState, AccessPolicyRole, AccessPolicyRoleKey } from '@skysmack/packages-skysmack-core';
+import { AccessPolicyRolesAppState, AccessPolicyRole, AccessPolicyRoleKey, ACCESS_POLICY_ROLES_AREA_KEY } from '@skysmack/packages-skysmack-core';
 import { NgAccessPolicyRolesMenu } from '../../ng-access-policy-roles-menu';
 
 
@@ -16,6 +16,7 @@ import { NgAccessPolicyRolesMenu } from '../../ng-access-policy-roles-menu';
 })
 export class AccessPolicyRolesIndexComponent extends RecordIndexComponent<AccessPolicyRolesAppState, AccessPolicyRole, AccessPolicyRoleKey> implements OnInit {
 
+  public area: string = ACCESS_POLICY_ROLES_AREA_KEY;
   public entityActions: EntityAction[] = [
     new EntityAction().asUrlAction('edit', 'Edit', 'edit'),
     new EntityAction().asEventAction('Delete', this.delete, 'delete', this)

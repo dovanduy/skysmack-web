@@ -1,5 +1,5 @@
 <ss-container [sidebarMenu]="sidebarMenu">
-    <ss-records-container [area]="'access_policy_roles'" [cancelAction]="actions.cancelAction"
+    <ss-records-container [area]="area" [cancelAction]="actions.cancelAction"
         [title]="'Access Policy Roles'" [entities$]="pagedEntities$" [entityActions]="entityActions"
         [packagePath]="packagePath" (entityActionEvent)="actionEvent($event)" [totalCount]="totalCount"
         [loadingState]="loadingState" (requestPage)="requestPage()" [fields$]="fields$"
