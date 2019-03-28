@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductPriceChangesAppState, ProductPriceChanges } from '@skysmack/packages-products-pricings';
-import { NgProductPriceChangesActions, NgProductsActions, NgProductsStore } from '@skysmack/ng-packages';
+import { NgProductPriceChangesActions, NgProductsSalesPriceActions, NgProductsSalesPriceStore } from '@skysmack/ng-packages';
 import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EditorNavService, RecordFormComponent } from '@skysmack/portal-ui';
@@ -24,8 +24,8 @@ export class ProductPriceChangesEditComponent extends RecordFormComponent<Produc
     public activatedRoute: ActivatedRoute,
     public editorNavService: EditorNavService,
     public actions: NgProductPriceChangesActions,
-    public productsActions: NgProductsActions,
-    public productsStore: NgProductsStore,
+    public productsSalesPriceActions: NgProductsSalesPriceActions,
+    public productsSalesPriceStore: NgProductsSalesPriceStore,
     public redux: NgSkysmackStore,
     public fieldsConfig: NgProductPriceChangesFieldsConfig,
     public store: NgProductPriceChangesStore
@@ -45,21 +45,21 @@ export class ProductPriceChangesEditComponent extends RecordFormComponent<Produc
     this.fields$ = this.loadedPackage$.pipe(
       switchMap(loadedPackage => {
         if (!requested) {
-          this.productsActions.getPaged(loadedPackage._package.dependencies[0], new PagedQuery());
+          this.productsSalesPriceActions.getPaged(loadedPackage._package.dependencies[0], new PagedQuery());
           requested = true;
         }
         return combineLatest(
           this.initEditRecord(),
-          this.productsStore.get(loadedPackage._package.dependencies[0]),
+          this.productsSalesPriceStore.get(loadedPackage._package.dependencies[0]),
           this.skysmackStore.getEditorItem()
         );
       }),
       map(values => {
         const entity = values[0];
-        const availableProducts = values[1];
+        const availableProductsSalesPrices = values[1];
         this.editorItem = values[2] as LocalObject<ProductPriceChanges, number>;
         this.editorItem ? this.selectedEntity = this.editorItem : this.selectedEntity = entity;
-        return this.fieldsConfig.getFields(this.selectedEntity, undefined, { availableProducts });
+        return this.fieldsConfig.getFields(this.selectedEntity, undefined, { availableProductsSalesPrices });
       })
     );
   }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductPriceChangesAppState, ProductPriceChanges } from '@skysmack/packages-products-pricings';
-import { NgProductPriceChangesActions, NgProductsActions } from '@skysmack/ng-packages';
+import { NgProductPriceChangesActions, NgProductsSalesPriceActions, NgProductsSalesPriceStore } from '@skysmack/ng-packages';
 import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EditorNavService, RecordFormComponent } from '@skysmack/portal-ui';
@@ -9,7 +9,6 @@ import { NgProductPriceChangesFieldsConfig } from '@skysmack/ng-packages';
 import { combineLatest } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
 import { PagedQuery } from '@skysmack/framework';
-import { NgProductsStore } from '@skysmack/ng-packages';
 import { NgProductPriceChangesFormDependencies } from '@skysmack/ng-packages';
 
 @Component({
@@ -24,11 +23,11 @@ export class ProductPriceChangesCreateComponent extends RecordFormComponent<Prod
     public activatedRoute: ActivatedRoute,
     public editorNavService: EditorNavService,
     public actions: NgProductPriceChangesActions,
-    public productsActions: NgProductsActions,
+    public productsSalesPriceActions: NgProductsSalesPriceActions,
+    public productsSalesPriceStore: NgProductsSalesPriceStore,
     public redux: NgSkysmackStore,
     public fieldsConfig: NgProductPriceChangesFieldsConfig,
     public store: NgProductPriceChangesStore,
-    public productsStore: NgProductsStore,
   ) {
     super(router, activatedRoute, editorNavService, actions, redux, store, fieldsConfig);
   }
@@ -45,19 +44,19 @@ export class ProductPriceChangesCreateComponent extends RecordFormComponent<Prod
     this.fields$ = this.loadedPackage$.pipe(
       switchMap(loadedPackage => {
         if (!requested) {
-          this.productsActions.getPaged(loadedPackage._package.dependencies[0], new PagedQuery());
+          this.productsSalesPriceActions.getPaged(loadedPackage._package.dependencies[0], new PagedQuery());
           requested = true;
         }
         return combineLatest(
-          this.productsStore.get(loadedPackage._package.dependencies[0]),
+          this.productsSalesPriceStore.get(loadedPackage._package.dependencies[0]),
           this.skysmackStore.getEditorItem()
         );
       }),
       map(values => {
-        const availableProducts = values[0];
+        const availableProductsSalesPrices = values[0];
         this.editorItem = values[1];
 
-        return this.fieldsConfig.getFields(this.editorItem, undefined, { availableProducts });
+        return this.fieldsConfig.getFields(this.editorItem, undefined, { availableProductsSalesPrices });
       })
     );
   }

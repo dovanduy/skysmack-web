@@ -4,7 +4,6 @@ import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { ProductPriceChange, ProductsSalesPrice, PriceChangeType } from '@skysmack/packages-products-pricings';
 import { FormRule, FieldTypes, FieldsConfig, SelectField, Field } from '@skysmack/ng-ui';
 import { NgProductPriceChangesValidation } from './ng-product-price-changes-validation';
-import { Product } from '@skysmack/packages-products';
 
 export interface NgProductPriceChangesFormDependencies {
     availableProductsSalesPrices: LocalObject<ProductsSalesPrice, number>[];
