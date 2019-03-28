@@ -25,7 +25,7 @@ export class NgLodgingsAvailabilityMenu extends SidebarMenu {
 
     public setPrimaryMenu() {
         this.primaryMenuAreas.push(new MenuArea('manage', this.translationPrefix, 2));
-        this.primaryMenuItems.push(new MenuItem('/' + this.packagePath, this.translationPrefix + 'BACK', 'manage', 4, 'groupAdd'));
+        this.setBackButton();
     }
 
     public setSpeedDialMenu() {

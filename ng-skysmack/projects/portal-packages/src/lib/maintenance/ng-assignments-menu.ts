@@ -29,7 +29,7 @@ export class NgAssignmentsMenu extends SidebarMenu {
         this.primaryMenuItems.push(new MenuItem('create', this.translationPrefix + 'CREATE', 'actions', 1, 'groupAdd'));
         this.primaryMenuItems.push(new MenuItem('types', this.translationPrefix + 'TYPES', 'manage', 2, 'description'));
         this.primaryMenuItems.push(new MenuItem('maintenance-states', this.translationPrefix + 'STATES', 'manage', 3, 'shortText'));
-        this.primaryMenuItems.push(new MenuItem('/' + this.packagePath, this.translationPrefix + 'BACK', 'manage', 4, 'arrowBack'));
+        this.setBackButton();
     }
 
     public setSpeedDialMenu() {

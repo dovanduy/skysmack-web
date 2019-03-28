@@ -29,6 +29,9 @@
             "ACC_SET": "Account settings",
             "CHAN_PASS": "Change passeword",
             "LOG_OUT": "Log out"
+        },
+        "MISC": {
+            "BACK": "Back"
         }
     },
     "NOTIFICATIONS": {

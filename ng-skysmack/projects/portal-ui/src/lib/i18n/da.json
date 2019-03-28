@@ -29,6 +29,9 @@
             "ACC_SET": "Bruger indstillinger",
             "CHAN_PASS": "Skift adgangskode",
             "LOG_OUT": "Log ud"
+        },
+        "MISC": {
+            "BACK": "Tilbage"
         }
     },
     "NOTIFICATIONS": {
