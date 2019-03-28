@@ -5,6 +5,7 @@ import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { MenuArea } from '@skysmack/framework';
 import { MenuItem } from '@skysmack/framework';
 import { NgMenuItemProviders } from '@skysmack/ng-redux';
+import { map, take } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
 export class NgProductsPricingsMenu extends SidebarMenu {
@@ -12,11 +13,11 @@ export class NgProductsPricingsMenu extends SidebarMenu {
     public translationPrefix = 'PRODUCTS_PRICINGS.INDEX.';
 
     constructor(
-        public redux: NgSkysmackStore,
+        public store: NgSkysmackStore,
         public router: Router,
         public menuItemProviders: NgMenuItemProviders
     ) {
-        super(redux, router, menuItemProviders);
+        super(store, router, menuItemProviders);
         this.setPrimaryMenu();
         this.setSpeedDialMenu();
         this.runMenuItemProviders();
@@ -30,6 +31,11 @@ export class NgProductsPricingsMenu extends SidebarMenu {
 
         this.primaryMenuItems.push(new MenuItem('price-changes', this.translationPrefix + 'PRICE_CHANGES', 'manage', 2, 'groupAdd'));
         this.primaryMenuItems.push(new MenuItem('types/price-changes', this.translationPrefix + 'PRICE_TYPE_CHANGES', 'manage', 2, 'groupAdd'));
+
+        this.store.getCurrentPackage(this.packagePath).pipe(
+            map(loadedPackage => this.primaryMenuItems.push(new MenuItem('/' + loadedPackage._package.dependencies[0], loadedPackage._package.dependencies[0], 'manage', 2, 'arrowBack'))),
+            take(1)
+        ).subscribe();
     }
 
     public setSpeedDialMenu() {

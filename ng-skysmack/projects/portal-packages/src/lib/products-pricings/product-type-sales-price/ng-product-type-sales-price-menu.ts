@@ -28,6 +28,7 @@ export class NgProductTypeSalesPriceMenu extends SidebarMenu {
         this.primaryMenuAreas.push(new MenuArea('manage', this.translationPrefix, 2));
 
         this.primaryMenuItems.push(new MenuItem('create', this.translationPrefix + 'CREATE', 'actions', 1, 'groupAdd'));
+        this.setBackButton();
     }
 
     public setSpeedDialMenu() {
