@@ -63,6 +63,7 @@ export class NgAccessPolicyPermissionsFieldsConfig extends FieldsConfig<AccessPo
                 key: 'ruleId',
                 optionsData: dependencies && dependencies.availableAccessPolicyRules,
                 displayNameSelector: 'object.id',
+                modifyDisplayName,
                 order: 2,
                 showColumn: true
             }),

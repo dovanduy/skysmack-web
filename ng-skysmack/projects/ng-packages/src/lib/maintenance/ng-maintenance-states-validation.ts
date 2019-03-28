@@ -1,5 +1,6 @@
 import { StrIndex } from '@skysmack/framework';
 import { Validation } from '@skysmack/ng-ui';
+import { MAINTENANCE_STATES_AREA_KEY } from '@skysmack/packages-maintenance';
 
 export class NgMaintenanceStatesValidation extends Validation {
     public formErrors = {
@@ -24,7 +25,7 @@ export class NgMaintenanceStatesValidation extends Validation {
         }
     };
 
-    public area = 'maintenance.maintenance_states';
+    public area = MAINTENANCE_STATES_AREA_KEY;
 
     public formValidators = [];
 

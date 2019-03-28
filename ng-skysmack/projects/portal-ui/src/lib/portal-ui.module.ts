@@ -55,6 +55,7 @@ import { RolesSelectComponent } from './components/common/roles-select/roles-sel
 import { NOTIFICATIONS_INJECTOR_TOKEN } from '@skysmack/ng-redux';
 import { RolesSelectFieldComponent } from './components/field-components/components/roles-select-field/roles-select-field.component';
 import { portailUiPipes } from './pipes/portal-ui-pipes';
+import { BackendErrorsComponent } from './components/common/backend-errors/backend-errors.component';
 
 @NgModule({
   imports: [
@@ -93,6 +94,7 @@ import { portailUiPipes } from './pipes/portal-ui-pipes';
     QueueComponent,
     RecordsContainerComponent,
     RolesSelectComponent,
+    BackendErrorsComponent,
     // Crud
     ContainerComponent,
     CardBodyComponent,
@@ -140,6 +142,7 @@ import { portailUiPipes } from './pipes/portal-ui-pipes';
     QueueComponent,
     RecordsContainerComponent,
     RolesSelectComponent,
+    BackendErrorsComponent,
     // Crud
     ContainerComponent,
     CardBodyComponent,

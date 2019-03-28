@@ -1,5 +1,6 @@
 import { LocalObjectStatus } from './local-object-status';
 import { Guid } from 'guid-typescript';
+import { ApiError } from './api-error';
 
 export class LocalObject<TObject, TKey> {
     public localId: string = Guid.create().toString();
@@ -22,7 +23,7 @@ export class LocalObject<TObject, TKey> {
     public foreignKey: string;
     public object: TObject;
     public oldObject: TObject;
-
+    public apiError: ApiError;
 
     public get objectIdentifier(): TKey {
         this.checkIdentifier();

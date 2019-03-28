@@ -1,5 +1,6 @@
 import { StrIndex } from '@skysmack/framework';
 import { Validation } from '@skysmack/ng-ui';
+import { LODGING_RESERVATIONS_AREA_KEY } from '@skysmack/packages-lodging-reservations';
 
 export class NgLodgingReservationsValidation extends Validation {
     public formErrors = {
@@ -33,7 +34,7 @@ export class NgLodgingReservationsValidation extends Validation {
         }
     };
 
-    public area = 'lodging_reservations';
+    public area = LODGING_RESERVATIONS_AREA_KEY;
 
     public formValidators = [];
 

@@ -1,6 +1,8 @@
 import { LocalPageTypes, StrIndex, LocalObject } from '@skysmack/framework';
 import { AppState, ReduxAction, RecordState, recordReducersBase, sharedReducer } from '@skysmack/redux';
 import { AssignmentType } from '../models/assignment-type';
+import { ASSIGNMENT_TYPES_REDUX_KEY } from '../constants';
+
 
 /**
  * This is to be used when you want to access assignmentsTypes via the GLOBAL state. E.g. state.assignmentsTypes (where assignmentsTypes is the reducer name.)
@@ -14,7 +16,7 @@ export class AssignmentTypesState implements RecordState<AssignmentType, number>
     public localRecords: StrIndex<StrIndex<LocalObject<AssignmentType, number>>> = {};
 }
 
-export function assignmentTypesReducer(state = new AssignmentTypesState(), action: ReduxAction, prefix: string = 'ASSIGNMENT_TYPES_'): AssignmentTypesState {
+export function assignmentTypesReducer(state = new AssignmentTypesState(), action: ReduxAction, prefix: string = ASSIGNMENT_TYPES_REDUX_KEY): AssignmentTypesState {
     state = sharedReducer(state, action, new AssignmentTypesState());
 
     switch (action.type) {

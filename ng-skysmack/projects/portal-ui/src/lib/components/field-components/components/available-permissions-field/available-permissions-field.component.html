@@ -6,4 +6,7 @@
       <mat-option *ngFor="let permission of permissions" [value]="permission">{{ permission }}</mat-option>
     </mat-select>
   </mat-form-field>
+
+  <ss-backend-errors [field]="field"></ss-backend-errors>
+
 </ng-container>

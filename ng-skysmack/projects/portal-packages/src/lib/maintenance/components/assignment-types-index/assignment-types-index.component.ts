@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { AssignmentTypesAppState, AssignmentType } from '@skysmack/packages-maintenance';
+import { AssignmentTypesAppState, AssignmentType, ASSIGNMENT_TYPES_AREA_KEY } from '@skysmack/packages-maintenance';
 import { EntityComponentPageTitle, RecordIndexComponent } from '@skysmack/portal-ui';
 import { EntityAction } from '@skysmack/ng-ui';
 import { NgAssignmentTypesActions, NgSkysmackStore, NgAssignmentTypesStore } from '@skysmack/ng-packages';
@@ -14,6 +14,7 @@ import { NgAssignmentTypesFieldsConfig } from '@skysmack/ng-packages';
 })
 export class AssignmentTypesIndexComponent extends RecordIndexComponent<AssignmentTypesAppState, AssignmentType, number> implements OnInit {
 
+  public area: string = ASSIGNMENT_TYPES_AREA_KEY;
   public entityActions: EntityAction[] = [
     new EntityAction().asUrlAction('edit', 'Edit', 'edit'),
     new EntityAction().asEventAction('Delete', this.delete, 'delete', this)

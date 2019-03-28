@@ -12,7 +12,7 @@
     "ss:init": "npm run ss:clean && npm i && npm run ss:lerna && npm run build:lib && npm run ss:c1:open",
     "ss": "run-s ss:lerna build:lib ss:web:localization ss:c1",
     "ss:lerna": "lerna bootstrap && lerna run build:npm",
-    "ss:lerna:watch": "lerna run --stream --no-sort --concurrency 20 build:npm:watch",
+    "ss:lerna:watch": "lerna run --stream --no-sort --concurrency 30 build:npm:watch",
     "ss:lerna:reboot": "run-s ss:lerna ss:lerna:watch",
     "ss:build": "run-s ss:lerna build:lib ss:web:localization build:prod",
     "ss:prod": "run-s ss:lerna build:lib ss:web:localization  build:dev start-server",

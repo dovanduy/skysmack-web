@@ -1,5 +1,10 @@
 <ng-content></ng-content>
 
+<ng-container *ngIf="editorItem$ | async as editorItem">
+  <h5 style="color:red;">{{ editorItem.apiError.title }}</h5>
+  <p style="color:red;">{{ editorItem.apiError.detail }}</p>
+</ng-container>
+
 <form *ngIf="fh" [formGroup]="fh.form">
 
   <ng-container *ngFor="let field of fields; trackBy: trackByFieldKey">

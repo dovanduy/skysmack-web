@@ -3,7 +3,7 @@
 
 # current folder path
 $location = get-location
-$skysmack = (get-item $location).parent.parent.parent.FullName + "\Skysmack"
+$skysmack = (get-item $location).parent.parent.parent.FullName + "\skysmack-api"
 $angular = (get-item $location).parent.parent.FullName
 
 # Full or quick startup

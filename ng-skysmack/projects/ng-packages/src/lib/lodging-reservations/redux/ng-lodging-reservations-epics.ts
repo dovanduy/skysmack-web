@@ -1,5 +1,5 @@
 import { RecordEpicsBase } from '@skysmack/ng-redux';
-import { LodgingReservation, LodgingReservationsActions } from '@skysmack/packages-lodging-reservations';
+import { LodgingReservation, LodgingReservationsActions, LODGING_RESERVATIONS_REDUX_KEY } from '@skysmack/packages-lodging-reservations';
 import { NgLodgingReservationsRequests } from './ng-lodging-reservations-requests';
 import { Injectable } from '@angular/core';
 import { ActionsObservable, ofType } from 'redux-observable';
@@ -20,7 +20,7 @@ export class NgLodgingReservationsEpics extends RecordEpicsBase<LodgingReservati
         protected lodgingsActions: NgLodgingsActions,
         protected notifications: NgLodgingReservationsNotifications
     ) {
-        super(requests, 'LODGING_RESERVATIONS_', notifications);
+        super(requests, LODGING_RESERVATIONS_REDUX_KEY, notifications);
         this.epics = this.epics.concat([
             this.getReservationLodgingTypesEpic,
             this.getReservationLodgingsEpic

@@ -29,9 +29,19 @@
 
       <ng-container *ngSwitchCase="true">
         <!-- CUSTOMLY >:D -->
-        <ss-recurring-custom-expression (selectedValues)="updateExpressionWith($event)"></ss-recurring-custom-expression>
+        <ss-recurring-custom-expression (selectedValues)="updateExpressionWith($event)">
+        </ss-recurring-custom-expression>
       </ng-container>
 
     </ng-container>
   </ng-container>
+
+  <!-- Backend errors -->
+  <ng-container *ngIf="field && field.errors">
+    <ng-container *ngFor="let error of field.errors">
+      <p style="color: red; font-size: 10px;">{{ error }}</p>
+    </ng-container>
+    <br />
+  </ng-container>
+
 </ng-container>

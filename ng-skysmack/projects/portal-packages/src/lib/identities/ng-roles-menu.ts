@@ -5,10 +5,11 @@ import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { MenuArea } from '@skysmack/framework';
 import { MenuItem } from '@skysmack/framework';
 import { NgMenuItemProviders } from '@skysmack/ng-redux';
+import { ROLES_AREA_KEY } from '@skysmack/packages-identities';
 
 @Injectable({ providedIn: 'root' })
 export class NgRolesMenu extends SidebarMenu {
-    public menuId = 'roles';
+    public menuId = ROLES_AREA_KEY;
     public translationPrefix = 'ROLES.INDEX.';
 
     constructor(

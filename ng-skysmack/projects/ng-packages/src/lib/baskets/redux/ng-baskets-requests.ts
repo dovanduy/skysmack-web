@@ -1,4 +1,4 @@
-import { Basket } from '@skysmack/packages-baskets';
+import { Basket, BASKETS_REDUX_KEY } from '@skysmack/packages-baskets';
 import { Injectable, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ApiDomain, API_DOMAIN_INJECTOR_TOKEN } from '@skysmack/framework';
@@ -10,6 +10,6 @@ export class NgBasketsRequests extends NgRecordRequests<Basket, number> {
         protected http: HttpClient,
         @Inject(API_DOMAIN_INJECTOR_TOKEN) protected apiDomain: ApiDomain
     ) {
-        super(http, apiDomain, 'BASKETS_', []);
+        super(http, apiDomain, BASKETS_REDUX_KEY, []);
     }
 }

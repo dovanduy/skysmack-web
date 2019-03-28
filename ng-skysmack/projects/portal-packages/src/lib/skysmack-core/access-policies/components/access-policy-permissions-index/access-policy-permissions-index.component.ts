@@ -5,7 +5,7 @@ import { NgAccessPolicyPermissionsActions, NgAccessPolicyPermissionsFieldsConfig
 import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { NgAccessPolicyPermissionsStore } from '@skysmack/ng-packages';
 import { EntityAction } from '@skysmack/ng-ui';
-import { AccessPolicyPermissionsAppState, AccessPolicyPermission } from '@skysmack/packages-skysmack-core';
+import { AccessPolicyPermissionsAppState, AccessPolicyPermission, ACCESS_POLICY_PERMISSIONS_AREA_KEY } from '@skysmack/packages-skysmack-core';
 import { NgAccessPolicyPermissionsMenu } from '../../ng-access-policy-permissions-menu';
 
 
@@ -16,6 +16,7 @@ import { NgAccessPolicyPermissionsMenu } from '../../ng-access-policy-permission
 })
 export class AccessPolicyPermissionsIndexComponent extends RecordIndexComponent<AccessPolicyPermissionsAppState, AccessPolicyPermission, number> implements OnInit {
 
+  public area: string = ACCESS_POLICY_PERMISSIONS_AREA_KEY;
   public entityActions: EntityAction[] = [
     new EntityAction().asUrlAction('edit', 'Edit', 'edit'),
     new EntityAction().asEventAction('Delete', this.delete, 'delete', this)

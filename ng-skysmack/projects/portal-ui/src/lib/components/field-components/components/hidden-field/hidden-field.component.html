@@ -1,3 +1,6 @@
 <ng-container *ngIf="field" [formGroup]="fh.form">
   <input class="form-control" type="hidden" [attr.id]="fieldKey" [name]="field.label" [formControlName]="fieldKey">
+
+  <ss-backend-errors [field]="field"></ss-backend-errors>
+
 </ng-container>

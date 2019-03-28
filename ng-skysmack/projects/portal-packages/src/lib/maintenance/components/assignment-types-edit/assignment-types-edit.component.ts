@@ -36,8 +36,7 @@ export class AssignmentTypesEditComponent extends RecordFormComponent<Assignment
   protected setEditFields() {
     this.maintenanceStateActions.getPaged(this.packagePath, this.pagedQuery);
 
-    this.fields$ =
-      combineLatest(
+    this.fields$ = combineLatest(
         this.initEditRecord(),
         this.skysmackStore.getEditorItem(),
         this.maintenanceStateStore.get(this.packagePath)
