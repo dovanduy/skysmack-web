@@ -123,7 +123,6 @@ export class StartModule {
     public fieldEpics: NgFieldEpics,
     public settingsEpics: NgSettingsEpics
   ) {
-    console.log('1');
     configureRedux(ngRedux, ngReduxRouter, reduxOfflineConfiguration);
     registerRedux('fields', fieldReducer, fieldEpics);
     registerRedux('settings', settingsReducer, settingsEpics);

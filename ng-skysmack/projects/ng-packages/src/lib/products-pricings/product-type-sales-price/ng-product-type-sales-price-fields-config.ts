@@ -2,9 +2,11 @@ import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { ProductTypeSalesPrice } from '@skysmack/packages-products-pricings';
-import { FormRule, FieldTypes, FieldsConfig, SelectField, Field } from '@skysmack/ng-ui';
+import { FormRule, FieldTypes, FieldsConfig, SelectField, Field, FieldProviders } from '@skysmack/ng-ui';
 import { NgProductTypeSalesPriceValidation } from './ng-product-type-sales-price-validation';
 import { ProductType } from '@skysmack/packages-products';
+import { NgSkysmackStore } from '../../skysmack-core/skysmack/redux/ng-skysmack-store';
+
 
 export interface NgProductTypeSalesPriceFormDependencies {
     availableProductTypes: LocalObject<ProductType, number>[];
@@ -15,6 +17,13 @@ export class NgProductTypeSalesPriceFieldsConfig extends FieldsConfig<ProductTyp
     public validation = new NgProductTypeSalesPriceValidation();
 
     public formRules: FormRule[] = [];
+
+    constructor(
+        fieldProviders: FieldProviders,
+        skysmackStore: NgSkysmackStore
+    ) {
+        super(fieldProviders, skysmackStore);
+    }
 
     protected getEntityFields(entity?: LocalObject<ProductTypeSalesPrice, number>, dependencies?: NgProductTypeSalesPriceFormDependencies): Field[] {
         const fields = [

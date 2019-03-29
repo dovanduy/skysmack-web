@@ -1,6 +1,5 @@
 import { ValidatorFn } from '@angular/forms';
 import { FieldTypes } from './field-types';
-import { ValidationError } from '@skysmack/framework';
 
 export class Field {
     /**

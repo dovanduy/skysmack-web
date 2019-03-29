@@ -9,3 +9,4 @@ export * from './local-object-extensions';
 export * from './rxjs-helpers';
 export * from './subscription-handler';
 export * from './logger';
+export * from './url';

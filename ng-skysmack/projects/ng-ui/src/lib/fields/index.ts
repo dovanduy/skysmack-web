@@ -6,3 +6,5 @@ export * from './fields-config';
 export * from './entity-field-validation';
 export * from './select-field';
 export * from './entity-fields-config';
+export * from './field-provider';
+export * from './field-providers';
