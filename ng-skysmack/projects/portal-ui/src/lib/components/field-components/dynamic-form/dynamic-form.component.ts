@@ -3,7 +3,7 @@ import { FormBuilder, Validators, FormGroup, FormControl } from '@angular/forms'
 import { Observable } from 'rxjs';
 import { Field, FormRule, FormHelper, Validation } from '@skysmack/ng-ui';
 import { EditorNavService } from './../../common/container/editor-nav.service';
-import { GlobalProperties, SubscriptionHandler, LocalObject } from '@skysmack/framework';
+import { GlobalProperties, SubscriptionHandler, LocalObject, StrIndex } from '@skysmack/framework';
 import { NgSkysmackStore } from '@skysmack/ng-packages';
 
 @Component({
@@ -80,6 +80,54 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
 
   public onSubmit() {
     this.submitted.emit(this.fh);
+  }
+
+  /**
+     * This method is only used for development!
+     * Please keep in sync with formatExtendedData() method in form-base-component.ts
+     */
+  public previewExtendedData(): StrIndex<any> {
+    if (this.fh && this.fh.form) {
+      const formValuesClone = { ...this.fh.form.getRawValue() };
+
+      Object.keys(formValuesClone).forEach(key => {
+        if (!key.split('.')[1]) {
+          delete formValuesClone[key];
+        }
+        // Format extended data
+        const extendedDataKeyParts = key.split('.');
+        const packagePath = extendedDataKeyParts[1];
+        const keyProp = extendedDataKeyParts[2];
+        const extendedData = formValuesClone[key];
+
+        // If packagePath is defined, we have some extended data.
+        if (packagePath) {
+
+          // Set the extendedData prop if it hasn't been created yet.
+          if (!formValuesClone['extendedData']) {
+            formValuesClone['extendedData'] = {};
+          }
+
+          if (!formValuesClone['extendedData'][packagePath]) {
+            // We havent set any data yet for this package. Create its dictionary.
+            formValuesClone['extendedData'][packagePath] = {};
+            // Set data for the current field
+            formValuesClone['extendedData'][packagePath][keyProp] = extendedData;
+          } else {
+            // Extented data for package already exists. Set data for the current field
+            formValuesClone['extendedData'][packagePath][keyProp] = extendedData;
+          }
+
+          // Deleted the individual, dot notated extended data, as it is no longer needed,
+          // and shouldn't be posted to the backend
+          delete formValuesClone[key];
+        }
+      });
+
+      return formValuesClone;
+    } else {
+      return {};
+    }
   }
 
   /**

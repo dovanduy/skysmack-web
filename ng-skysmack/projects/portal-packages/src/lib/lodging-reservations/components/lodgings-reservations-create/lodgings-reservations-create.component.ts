@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { combineLatest } from 'rxjs';
+import { combineLatest, Observable } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
 import {
   NgLodgingReservationFormDependencies,
@@ -15,7 +15,9 @@ import {
 } from '@skysmack/ng-packages';
 import { LodgingReservation, LodgingReservationsAppState } from '@skysmack/packages-lodging-reservations';
 import { RecordFormComponent, EditorNavService } from '@skysmack/portal-ui';
-import { PagedQuery } from '@skysmack/framework';
+import { PagedQuery, toLocalObject } from '@skysmack/framework';
+import { Field } from '@skysmack/ng-ui';
+import { FieldProviders } from '@skysmack/ng-ui';
 
 @Component({
   selector: 'ss-lodgings-reservations-create',
@@ -34,7 +36,8 @@ export class LodgingsReservationsCreateComponent extends RecordFormComponent<Lod
     public actions: NgLodgingReservationsActions,
     public lodgingsActions: NgLodgingsActions,
     public lodgingTypesActions: NgLodgingTypesActions,
-    public fieldsConfig: NgLodgingReservationsFieldsConfig
+    public fieldsConfig: NgLodgingReservationsFieldsConfig,
+    public fieldProviders: FieldProviders
   ) {
     super(router, activatedRoute, editorNavService, actions, skysmackStore, store, fieldsConfig);
   }
@@ -42,6 +45,18 @@ export class LodgingsReservationsCreateComponent extends RecordFormComponent<Lod
   ngOnInit() {
     super.ngOnInit();
     this.setCreateFields();
+  }
+
+  protected getProvidedFields(packagePath: string): Observable<Field[]> {
+    return combineLatest(
+      this.fieldProviders.providers.map(provider => {
+        return provider.getFields(packagePath);
+      })
+    ).pipe(
+      map((values: [Field[]]) => {
+        return values.reduce((acc: Field[], cur: Field[]) => acc.concat(cur), []);
+      })
+    );
   }
 
   public setCreateFields() {
@@ -58,14 +73,16 @@ export class LodgingsReservationsCreateComponent extends RecordFormComponent<Lod
 
         return combineLatest(
           this.lodgingsStore.get(loadedPackage._package.dependencies[0]),
-          this.lodgingTypesStore.get(loadedPackage._package.dependencies[0])
+          this.lodgingTypesStore.get(loadedPackage._package.dependencies[0]),
+          this.getProvidedFields(this.packagePath)
         );
       }),
       map(values => {
         const availableLodgings = values[0];
         const availableLodgingTypes = values[1];
+        const providedFields = values[2];
 
-        return this.fieldsConfig.getFields(undefined, undefined, { availableLodgings, availableLodgingTypes });
+        return this.fieldsConfig.getFields(undefined, undefined, { availableLodgings, availableLodgingTypes }).concat(providedFields);
       })
     );
   }

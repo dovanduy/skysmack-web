@@ -15,5 +15,10 @@
 
   <button mat-raised-button color="primary" type="submit" (click)="onSubmit()">{{ buttonText }}</button>
 
-  <pre *ngIf="!production">{{ fh.form.value | json }}</pre>
+  <ng-container *ngIf="!production">
+    <p>Form values</p>
+    <pre>{{ fh.form.value | json }}</pre>
+    <p>Extented data preview</p>
+    <pre>{{ previewExtendedData(fh.form.value) | json }}</pre>
+  </ng-container>
 </form>
