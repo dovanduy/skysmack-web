@@ -1,13 +1,11 @@
 import { Router, ActivatedRoute } from '@angular/router';
 import { BaseComponent } from './base-component';
-import { LocalObject, Record, toLocalObject, LocalObjectStatus, PagedQuery, StrIndex } from '@skysmack/framework';
+import { LocalObject, Record, toLocalObject, LocalObjectStatus, PagedQuery } from '@skysmack/framework';
 import { EntityFieldsConfig } from '@skysmack/ng-ui';
 import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { FormHelper } from '@skysmack/ng-ui';
 import { EntityActions } from '@skysmack/redux';
 import { EditorNavService } from './../components/common/container/editor-nav.service';
-import { FormGroup } from '@angular/forms';
-import { map } from 'rxjs/operators';
 
 export class FormBaseComponent<TAppState, TRecord extends Record<TKey>, TKey, TDependencies> extends BaseComponent<TAppState, TKey> {
     /**
@@ -90,14 +88,9 @@ export class FormBaseComponent<TAppState, TRecord extends Record<TKey>, TKey, TD
                 formExtendedData[packagePath][keyProp] = extendedData;
             }
 
-            // Deleted the individual, dot notated extended data, as it is no longer needed,
+            // Delete the individual, dot notated extended data, as it is no longer needed,
             // and shouldn't be posted to the backend
             delete formValues[key];
-
-            // TEMP
-            if (formExtendedData[packagePath][keyProp]) {
-                formExtendedData[packagePath][keyProp] = formExtendedData[packagePath][keyProp].split(',').map(x => Number(x));
-            }
         }
     }
 }
