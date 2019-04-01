@@ -56,6 +56,7 @@ import { NOTIFICATIONS_INJECTOR_TOKEN } from '@skysmack/ng-redux';
 import { RolesSelectFieldComponent } from './components/field-components/components/roles-select-field/roles-select-field.component';
 import { portailUiPipes } from './pipes/portal-ui-pipes';
 import { BackendErrorsComponent } from './components/common/backend-errors/backend-errors.component';
+import { ManagePersonsFieldComponent } from './components/field-components/components/manage-persons-field/manage-persons-field.component';
 
 @NgModule({
   imports: [
@@ -121,6 +122,7 @@ import { BackendErrorsComponent } from './components/common/backend-errors/backe
     PageHeaderComponent,
     SpeedDialFabComponent,
     RolesSelectFieldComponent,
+    ManagePersonsFieldComponent,
     // Pipes
     ...portailUiPipes
   ],
@@ -169,7 +171,8 @@ import { BackendErrorsComponent } from './components/common/backend-errors/backe
     FieldPermissionFieldComponent,
     PackageDependenciesFieldComponent,
     SpeedDialFabComponent,
-    RolesSelectFieldComponent
+    RolesSelectFieldComponent,
+    ManagePersonsFieldComponent
   ]
 })
 export class PortalUiModule {

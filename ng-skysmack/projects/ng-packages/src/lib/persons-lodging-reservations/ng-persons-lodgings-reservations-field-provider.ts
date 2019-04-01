@@ -39,7 +39,7 @@ export class NgPersonsLodgingReservationsFieldProvider extends FieldProvider {
                                 switch (settings.object.shouldBeExistingPersons) {
                                     case true: return [
                                         new Field({
-                                            fieldType: FieldTypes.string,
+                                            fieldType: FieldTypes.ManagePersonsField,
                                             value: undefined,
                                             key: 'extendedData.' + _package.object.path + '.attach',
                                             label: '',
@@ -50,7 +50,7 @@ export class NgPersonsLodgingReservationsFieldProvider extends FieldProvider {
                                     ];
                                     case false: return [
                                         new Field({
-                                            fieldType: FieldTypes.string,
+                                            fieldType: FieldTypes.ManagePersonsField,
                                             value: undefined,
                                             key: 'extendedData.' + _package.object.path + '.add',
                                             label: '',
@@ -61,7 +61,7 @@ export class NgPersonsLodgingReservationsFieldProvider extends FieldProvider {
                                     ];
                                     default: return [
                                         new Field({
-                                            fieldType: FieldTypes.string,
+                                            fieldType: FieldTypes.ManagePersonsField,
                                             value: undefined,
                                             key: 'extendedData.' + _package.object.path + '.attach',
                                             label: '',
@@ -70,7 +70,7 @@ export class NgPersonsLodgingReservationsFieldProvider extends FieldProvider {
                                             showColumn: true
                                         }),
                                         new Field({
-                                            fieldType: FieldTypes.string,
+                                            fieldType: FieldTypes.ManagePersonsField,
                                             value: undefined,
                                             key: 'extendedData.' + _package.object.path + '.add',
                                             label: '',

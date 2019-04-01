@@ -4,13 +4,13 @@
     "directive-selector": [
       true,
       "attribute",
-      "ss-portal-ui",
+      "ss",
       "camelCase"
     ],
     "component-selector": [
       true,
       "element",
-      "ss-portal-ui",
+      "ss",
       "kebab-case"
     ]
   }

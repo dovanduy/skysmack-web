@@ -206,7 +206,7 @@
       "root": "projects/portal-ui",
       "sourceRoot": "projects/portal-ui/src",
       "projectType": "library",
-      "prefix": "ss-portal-ui",
+      "prefix": "ss",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",

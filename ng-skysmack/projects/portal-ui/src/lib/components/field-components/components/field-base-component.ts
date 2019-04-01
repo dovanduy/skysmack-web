@@ -5,7 +5,6 @@ import { FormHelper, Field, FormRule } from '@skysmack/ng-ui';
 import { map } from 'rxjs/operators';
 import { SubscriptionHandler, StrIndex } from '@skysmack/framework';
 
-
 interface AddedEvent {
     component: ElementRef;
     querySelector: string;
