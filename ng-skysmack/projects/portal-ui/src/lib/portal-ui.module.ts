@@ -59,6 +59,8 @@ import { ManagePersonsFieldComponent } from './components/field-components/compo
 import { MultiSelectFieldComponent } from './components/field-components/components/multi-select-field/multi-select-field.component';
 import { DynamicFormFieldDirective } from './components/field-components/dynamic-form-field.directive';
 import { DynamicFormFieldTemplateComponent } from './components/field-components/dynamic-form-field-template/dynamic-form-field-template.component';
+import { RecurringExpressionFieldComponent } from './components/field-components/components/recurring-expression-field/recurring-expression-field.component';
+import { ValidatorsFieldComponent } from './components/field-components/components/validators-field/validators-field.component';
 
 @NgModule({
   imports: [
@@ -191,8 +193,8 @@ import { DynamicFormFieldTemplateComponent } from './components/field-components
     IntFieldComponent,
     LimitedStringFieldComponent,
     PasswordFieldComponent,
-    RecurringExpressionFieldModule,
-    ValidatorsFieldModule,
+    RecurringExpressionFieldComponent,
+    ValidatorsFieldComponent,
     SelectFieldComponent,
     StringFieldComponent,
     TimeFieldComponent,

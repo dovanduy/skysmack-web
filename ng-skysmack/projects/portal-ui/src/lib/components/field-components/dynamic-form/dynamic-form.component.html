@@ -8,8 +8,8 @@
 <form *ngIf="fh" [formGroup]="fh.form">
 
   <ng-container *ngFor="let field of fields; trackBy: trackByFieldKey">
-    <ss-dynamic-form-field-template [field]="field" [fh]="fh" [fieldKey]="field.key" [fields$]="fields$"
-      [rules]="rules">
+    <ss-dynamic-form-field-template *ngIf="field.component" [field]="field" [fh]="fh" [fieldKey]="field.key"
+      [fields$]="fields$" [rules]="rules">
     </ss-dynamic-form-field-template>
   </ng-container>
 
