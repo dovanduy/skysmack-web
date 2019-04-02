@@ -179,7 +179,30 @@ import { DynamicFormFieldTemplateComponent } from './components/field-components
     MultiSelectFieldComponent
   ],
   entryComponents: [
-    StringFieldComponent
+    DynamicFormComponent,
+    CheckboxFieldComponent,
+    DateFieldComponent,
+    DateTimeFieldComponent,
+    DecimalFieldComponent,
+    DoubleFieldComponent,
+    EmailFieldComponent,
+    GeographyFieldComponent,
+    HiddenFieldComponent,
+    IntFieldComponent,
+    LimitedStringFieldComponent,
+    PasswordFieldComponent,
+    RecurringExpressionFieldModule,
+    ValidatorsFieldModule,
+    SelectFieldComponent,
+    StringFieldComponent,
+    TimeFieldComponent,
+    AvailablePermissionsFieldComponent,
+    FieldPermissionFieldComponent,
+    PackageDependenciesFieldComponent,
+    SpeedDialFabComponent,
+    RolesSelectFieldComponent,
+    ManagePersonsFieldComponent,
+    MultiSelectFieldComponent
   ]
 })
 export class PortalUiModule {
