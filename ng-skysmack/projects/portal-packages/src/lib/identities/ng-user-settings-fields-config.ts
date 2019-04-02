@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { FormRule, Field, FieldTypes, FieldsConfig } from '@skysmack/ng-ui';
 import { LocalObject } from '@skysmack/framework';
 import { UserSettings } from '@skysmack/packages-identities';
-import { NgUserSettingsValidation } from './ng-user-settings-validation';
+import { NgUserSettingsValidation } from '@skysmack/ng-packages';
 
 @Injectable({ providedIn: 'root' })
 export class NgUserSettingsFieldsConfig extends FieldsConfig<UserSettings, unknown, any> {

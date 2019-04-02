@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { EntityComponentPageTitle, RecordIndexComponent, } from '@skysmack/portal-ui';
 import { Router, ActivatedRoute } from '@angular/router';
-import { NgRolesActions, NgRolesFieldsConfig } from '@skysmack/ng-packages';
+import { NgRolesActions } from '@skysmack/ng-packages';
 import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { NgRolesStore } from '@skysmack/ng-packages';
 import { Role, RolesAppState } from '@skysmack/packages-identities';
 import { NgRolesMenu } from './../../ng-roles-menu';
 import { EntityAction } from '@skysmack/ng-ui';
+import { NgRolesFieldsConfig } from '../../ng-roles-fields-config';
 
 
 @Component({

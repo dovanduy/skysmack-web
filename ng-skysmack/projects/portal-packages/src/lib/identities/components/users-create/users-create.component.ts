@@ -4,7 +4,7 @@ import { NgUsersActions } from '@skysmack/ng-packages';
 import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EditorNavService } from '@skysmack/portal-ui';
-import { NgUsersFieldsConfig, NgUserFormDependencies } from '@skysmack/ng-packages';
+import { NgUsersFieldsConfig, NgUserFormDependencies } from '../../ng-users-fields-config';
 import { RecordFormComponent } from '@skysmack/portal-ui';
 import { NgUsersStore } from '@skysmack/ng-packages';
 

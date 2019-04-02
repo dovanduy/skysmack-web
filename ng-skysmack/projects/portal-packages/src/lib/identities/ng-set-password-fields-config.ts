@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
-import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
+import { LocalObject } from '@skysmack/framework';
 import { FieldsConfig, Field, FormRule, CustomValidators, FieldTypes } from '@skysmack/ng-ui';
-import { NgSetPasswordValidation } from './ng-set-password-validation';
 import { User } from '@skysmack/packages-identities';
+import { NgSetPasswordValidation } from '@skysmack/ng-packages';
 
 export interface NgSetPasswordFormDependencies {
     [key: string]: any;

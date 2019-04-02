@@ -4,9 +4,9 @@ import { NgRolesActions } from '@skysmack/ng-packages';
 import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EditorNavService } from '@skysmack/portal-ui';
-import { NgRolesFieldsConfig, NgRoleFormDependencies } from '@skysmack/ng-packages';
 import { RecordFormComponent } from '@skysmack/portal-ui';
 import { NgRolesStore } from '@skysmack/ng-packages';
+import { NgRoleFormDependencies, NgRolesFieldsConfig } from '../../ng-roles-fields-config';
 
 @Component({
   selector: 'ss-roles-edit',

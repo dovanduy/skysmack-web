@@ -3,7 +3,7 @@ import { Validators } from '@angular/forms';
 import { FormRule, CustomValidators, Field, FieldTypes, FieldsConfig } from '@skysmack/ng-ui';
 import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { User } from '@skysmack/packages-identities';
-import { NgUsersValidation } from './ng-users-validation';
+import { NgUsersValidation } from '@skysmack/ng-packages';
 
 export interface NgUserFormDependencies {
     [key: string]: any;

@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { FormRule, Field, FieldTypes, FieldsConfig } from '@skysmack/ng-ui';
 import { LockoutSettings } from '@skysmack/packages-identities';
-import { NgLockoutSettingsValidation } from './ng-lockout-settings-validation';
 import { LocalObject } from '@skysmack/framework';
+import { NgLockoutSettingsValidation } from '@skysmack/ng-packages';
 
 @Injectable({ providedIn: 'root' })
 export class NgLockoutSettingsFieldsConfig extends FieldsConfig<LockoutSettings, unknown, any> {

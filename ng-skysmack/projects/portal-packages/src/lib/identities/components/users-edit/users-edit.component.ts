@@ -4,10 +4,10 @@ import { NgUsersActions } from '@skysmack/ng-packages';
 import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EditorNavService } from '@skysmack/portal-ui';
-import { NgUsersFieldsConfig, NgUserFormDependencies } from '@skysmack/ng-packages';
 import { RecordFormComponent } from '@skysmack/portal-ui';
 import { NgUsersStore } from '@skysmack/ng-packages';
 import { map } from 'rxjs/operators';
+import { NgUsersFieldsConfig, NgUserFormDependencies } from '../../ng-users-fields-config';
 
 @Component({
   selector: 'ss-users-edit',
