@@ -3,11 +3,9 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { combineLatest, Observable } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
 import {
-  NgLodgingReservationFormDependencies,
   NgLodgingReservationsStore,
   NgLodgingsStore,
   NgLodgingTypesStore,
-  NgLodgingReservationsFieldsConfig,
   NgSkysmackStore,
   NgLodgingReservationsActions,
   NgLodgingsActions,
@@ -15,9 +13,10 @@ import {
 } from '@skysmack/ng-packages';
 import { LodgingReservation, LodgingReservationsAppState } from '@skysmack/packages-lodging-reservations';
 import { RecordFormComponent, EditorNavService } from '@skysmack/portal-ui';
-import { PagedQuery, toLocalObject } from '@skysmack/framework';
+import { PagedQuery } from '@skysmack/framework';
 import { Field } from '@skysmack/ng-ui';
 import { FieldProviders } from '@skysmack/ng-ui';
+import { NgLodgingReservationsFieldsConfig, NgLodgingReservationFormDependencies } from '../../ng-lodging-reservations-fields-config';
 
 @Component({
   selector: 'ss-lodgings-reservations-create',

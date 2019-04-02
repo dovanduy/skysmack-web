@@ -2,10 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { switchMap, map } from 'rxjs/operators';
 import { combineLatest } from 'rxjs';
-import { NgLodgingReservationFormDependencies, NgLodgingReservationsStore, NgLodgingsStore, NgLodgingTypesStore, NgLodgingReservationsFieldsConfig, NgSkysmackStore, NgLodgingReservationsActions, NgLodgingsActions, NgLodgingTypesActions } from '@skysmack/ng-packages';
+import { NgLodgingReservationsStore, NgLodgingsStore, NgLodgingTypesStore, NgSkysmackStore, NgLodgingReservationsActions, NgLodgingsActions, NgLodgingTypesActions } from '@skysmack/ng-packages';
 import { LodgingReservation, LodgingReservationsAppState } from '@skysmack/packages-lodging-reservations';
 import { RecordFormComponent, EditorNavService } from '@skysmack/portal-ui';
 import { PagedQuery } from '@skysmack/framework';
+import { NgLodgingReservationsFieldsConfig, NgLodgingReservationFormDependencies } from '../../ng-lodging-reservations-fields-config';
 
 @Component({
   selector: 'ss-lodgings-reservations-edit',
