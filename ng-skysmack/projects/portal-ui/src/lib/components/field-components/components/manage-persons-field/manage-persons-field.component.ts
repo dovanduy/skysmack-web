@@ -3,8 +3,7 @@ import { FieldBaseComponent } from '../field-base-component';
 import { NgPersonsStore, NgPersonsActions, NgSkysmackStore, NgPersonsLodgingReservationsType } from '@skysmack/ng-packages';
 import { MatSelectChange } from '@angular/material';
 import { Package, PagedQuery, LocalObject } from '@skysmack/framework';
-import { map, filter } from 'rxjs/operators';
-import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'ss-manage-persons-field',

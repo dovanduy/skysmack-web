@@ -21,5 +21,5 @@ export enum FieldTypes {
     ValidatorsField,
     FieldPermissionField,
     RolesSelectField,
-    ManagePersonsField
+    MultiSelectField
 }

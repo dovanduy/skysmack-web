@@ -57,6 +57,7 @@ import { RolesSelectFieldComponent } from './components/field-components/compone
 import { portailUiPipes } from './pipes/portal-ui-pipes';
 import { BackendErrorsComponent } from './components/common/backend-errors/backend-errors.component';
 import { ManagePersonsFieldComponent } from './components/field-components/components/manage-persons-field/manage-persons-field.component';
+import { MultiSelectFieldComponent } from './components/field-components/components/multi-select-field/multi-select-field.component';
 
 @NgModule({
   imports: [
@@ -123,6 +124,7 @@ import { ManagePersonsFieldComponent } from './components/field-components/compo
     SpeedDialFabComponent,
     RolesSelectFieldComponent,
     ManagePersonsFieldComponent,
+    MultiSelectFieldComponent,
     // Pipes
     ...portailUiPipes
   ],
@@ -172,7 +174,8 @@ import { ManagePersonsFieldComponent } from './components/field-components/compo
     PackageDependenciesFieldComponent,
     SpeedDialFabComponent,
     RolesSelectFieldComponent,
-    ManagePersonsFieldComponent
+    ManagePersonsFieldComponent,
+    MultiSelectFieldComponent
   ]
 })
 export class PortalUiModule {

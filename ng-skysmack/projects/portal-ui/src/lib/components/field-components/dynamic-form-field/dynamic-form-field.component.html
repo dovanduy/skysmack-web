@@ -1,3 +1,5 @@
+<ng-template dynamic-field [fh]="fh" [fieldKey]="fieldKey" [fields$]="fields$" [rules]="rules"></ng-template>
+
 <div [ngSwitch]="fieldType">
   <ss-int-field [fh]="fh" [fieldKey]="fieldKey" [fields$]="fields$" [rules]="rules"
     *ngSwitchCase="fieldTypeConstants.int">
@@ -48,6 +50,13 @@
   <ss-select-field [fh]="fh" [fieldKey]="fieldKey" [fields$]="fields$" [rules]="rules"
     *ngSwitchCase="fieldTypeConstants.SelectField"></ss-select-field>
 
+  <ss-multi-select-field [fh]="fh" [fieldKey]="fieldKey" [fields$]="fields$" [rules]="rules"
+    *ngSwitchCase="fieldTypeConstants.MultiSelectField"></ss-multi-select-field>
+
+  <ss-roles-select-field [fh]="fh" [fieldKey]="fieldKey" [fields$]="fields$" [rules]="rules"
+    *ngSwitchCase="fieldTypeConstants.RolesSelectField">
+  </ss-roles-select-field>
+
   <ss-time-field [fh]="fh" [fieldKey]="fieldKey" [fields$]="fields$" [rules]="rules"
     *ngSwitchCase="fieldTypeConstants.TimeField"></ss-time-field>
 
@@ -58,10 +67,6 @@
   <ss-field-permission-field [fh]="fh" [fieldKey]="fieldKey" [fields$]="fields$" [rules]="rules"
     *ngSwitchCase="fieldTypeConstants.FieldPermissionField">
   </ss-field-permission-field>
-
-  <ss-roles-select-field [fh]="fh" [fieldKey]="fieldKey" [fields$]="fields$" [rules]="rules"
-    *ngSwitchCase="fieldTypeConstants.RolesSelectField">
-  </ss-roles-select-field>
 
   <ss-manage-persons-field [fh]="fh" [fieldKey]="fieldKey" [fields$]="fields$" [rules]="rules"
     *ngSwitchCase="fieldTypeConstants.ManagePersonsField">

@@ -1,18 +1,21 @@
 import { Injectable } from '@angular/core';
-import { FieldProvider, Field, FieldTypes } from '@skysmack/ng-ui';
+import { FieldProvider, Field, FieldTypes, SelectField } from '@skysmack/ng-ui';
 import { NgSkysmackStore } from '../skysmack-core/skysmack/redux/ng-skysmack-store';
 import { map, switchMap } from 'rxjs/operators';
 import { PersonsLodgingReservationsType, PersonsLodgingReservationsSettings } from '@skysmack/packages-persons-lodging-reservations';
 import { Observable, combineLatest } from 'rxjs';
 import { NgSettingsActions, NgSettingsStore } from '@skysmack/ng-redux';
-import { StrIndex } from '@skysmack/framework';
+import { StrIndex, PagedQuery } from '@skysmack/framework';
+import { NgPersonsStore, NgPersonsActions } from '../persons/redux';
 
 @Injectable({ providedIn: 'root' })
 export class NgPersonsLodgingReservationsFieldProvider extends FieldProvider {
     public areaKey = 'test';
-    public settingsRequested: StrIndex<boolean> = {};
+    public requested: StrIndex<boolean> = {};
 
     constructor(
+        public personsStore: NgPersonsStore,
+        public personsActions: NgPersonsActions,
         public skysmackStore: NgSkysmackStore,
         public settingsActions: NgSettingsActions,
         public settingsStore: NgSettingsStore
@@ -21,65 +24,87 @@ export class NgPersonsLodgingReservationsFieldProvider extends FieldProvider {
     }
 
     public getFields(packagePath: string): Observable<Field[]> {
+
         return this.skysmackStore.getPackages().pipe(
             map(packages => packages.filter(_package => _package.object.type === PersonsLodgingReservationsType.id)),
             switchMap(packages => {
                 const fieldStreams$ = packages.map(_package => {
+
                     if (_package.object.dependencies[1] === packagePath) {
+
                         // Request the package settings - only ONCE per. package per. app lifetime.
                         const depPackagePath = _package.object.path;
-                        if (!this.settingsRequested[depPackagePath]) {
+                        if (!this.requested[depPackagePath]) {
                             this.settingsActions.get(depPackagePath, 'persons-reservations');
-                            this.settingsRequested[depPackagePath] = true;
+                            this.requested[depPackagePath] = true;
                         }
 
-                        // Get settings
-                        return this.settingsStore.get<PersonsLodgingReservationsSettings>(depPackagePath, 'persons-reservations').pipe(
-                            map(settings => {
-                                switch (settings.object.shouldBeExistingPersons) {
-                                    case true: return [
-                                        new Field({
-                                            fieldType: FieldTypes.ManagePersonsField,
-                                            value: undefined,
-                                            key: 'extendedData.' + _package.object.path + '.attach',
-                                            label: '',
-                                            placeholder: '',
-                                            order: 4,
-                                            showColumn: true
-                                        })
-                                    ];
-                                    case false: return [
-                                        new Field({
-                                            fieldType: FieldTypes.ManagePersonsField,
-                                            value: undefined,
-                                            key: 'extendedData.' + _package.object.path + '.add',
-                                            label: '',
-                                            placeholder: '',
-                                            order: 4,
-                                            showColumn: true
-                                        })
-                                    ];
-                                    default: return [
-                                        new Field({
-                                            fieldType: FieldTypes.ManagePersonsField,
-                                            value: undefined,
-                                            key: 'extendedData.' + _package.object.path + '.attach',
-                                            label: '',
-                                            placeholder: '',
-                                            order: 4,
-                                            showColumn: true
-                                        }),
-                                        new Field({
-                                            fieldType: FieldTypes.ManagePersonsField,
-                                            value: undefined,
-                                            key: 'extendedData.' + _package.object.path + '.add',
-                                            label: '',
-                                            placeholder: '',
-                                            order: 4,
-                                            showColumn: true
-                                        })
-                                    ];
-                                }
+                        // Request the pesons - only ONCE per. package per. app lifetime.
+                        const personsPackagePath = _package.object.dependencies[0];
+                        if (!this.requested[personsPackagePath]) {
+                            this.personsActions.getPaged(personsPackagePath, new PagedQuery());
+                            this.requested[personsPackagePath] = true;
+                        }
+
+                        return this.personsStore.get(personsPackagePath).pipe(
+                            switchMap(persons => {
+                                // Get settings
+                                return this.settingsStore.get<PersonsLodgingReservationsSettings>(depPackagePath, 'persons-reservations').pipe(
+                                    map(settings => {
+                                        switch (settings.object.shouldBeExistingPersons) {
+                                            case true: return [
+                                                new SelectField({
+                                                    fieldType: FieldTypes.MultiSelectField,
+                                                    value: undefined,
+                                                    key: 'extendedData.' + _package.object.path + '.attach',
+                                                    optionsData: persons,
+                                                    displayNameSelector: 'object.displayName',
+                                                    label: personsPackagePath,
+                                                    placeholder: personsPackagePath,
+                                                    order: 4,
+                                                    showColumn: true
+                                                })
+                                            ];
+                                            case false: return [
+                                                new SelectField({
+                                                    fieldType: FieldTypes.MultiSelectField,
+                                                    value: undefined,
+                                                    key: 'extendedData.' + _package.object.path + '.add',
+                                                    optionsData: persons,
+                                                    displayNameSelector: 'object.displayName',
+                                                    label: personsPackagePath,
+                                                    placeholder: personsPackagePath,
+                                                    order: 4,
+                                                    showColumn: true
+                                                })
+                                            ];
+                                            default: return [
+                                                new SelectField({
+                                                    fieldType: FieldTypes.MultiSelectField,
+                                                    value: undefined,
+                                                    key: 'extendedData.' + _package.object.path + '.attach',
+                                                    optionsData: persons,
+                                                    displayNameSelector: 'object.displayName',
+                                                    label: personsPackagePath,
+                                                    placeholder: personsPackagePath,
+                                                    order: 4,
+                                                    showColumn: true
+                                                }),
+                                                new SelectField({
+                                                    fieldType: FieldTypes.MultiSelectField,
+                                                    value: undefined,
+                                                    key: 'extendedData.' + _package.object.path + '.add',
+                                                    optionsData: persons,
+                                                    displayNameSelector: 'object.displayName',
+                                                    label: personsPackagePath,
+                                                    placeholder: personsPackagePath,
+                                                    order: 4,
+                                                    showColumn: true
+                                                })
+                                            ];
+                                        }
+                                    })
+                                );
                             })
                         );
                     }
