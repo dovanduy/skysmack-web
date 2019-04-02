@@ -4,10 +4,10 @@ import { NgTerminalsActions } from '@skysmack/ng-packages';
 import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EditorNavService } from '@skysmack/portal-ui';
-import { NgTerminalsFieldsConfig, NgTerminalFormDependencies } from '@skysmack/ng-packages';
 import { DocumentRecordFormComponent } from '@skysmack/portal-ui';
 import { NgTerminalsStore } from '@skysmack/ng-packages';
 import { NgFieldActions, NgFieldStore } from '@skysmack/ng-redux';
+import { NgTerminalsFieldsConfig, NgTerminalFormDependencies } from '../../ng-terminals-fields-config';
 
 @Component({
   selector: 'ss-terminals-edit',

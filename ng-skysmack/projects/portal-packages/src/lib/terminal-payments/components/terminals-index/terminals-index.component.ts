@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { EntityComponentPageTitle, DocumentRecordIndexComponent } from '@skysmack/portal-ui';
 import { Router, ActivatedRoute } from '@angular/router';
-import { NgTerminalsActions, NgTerminalsFieldsConfig } from '@skysmack/ng-packages';
+import { NgTerminalsActions } from '@skysmack/ng-packages';
 import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { NgTerminalsStore } from '@skysmack/ng-packages';
 import { Terminal, TerminalsAppState } from '@skysmack/packages-terminal-payments';
 import { NgTerminalsMenu } from './../../ng-terminals-menu';
 import { EntityAction } from '@skysmack/ng-ui';
 import { NgFieldActions, NgFieldStore } from '@skysmack/ng-redux';
-
+import { NgTerminalsFieldsConfig } from '../../ng-terminals-fields-config';
 
 @Component({
   selector: 'ss-terminals-index',

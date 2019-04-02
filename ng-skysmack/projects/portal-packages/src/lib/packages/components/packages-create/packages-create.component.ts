@@ -3,13 +3,13 @@ import { NgPackagesActions } from '@skysmack/ng-packages';
 import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EditorNavService } from '@skysmack/portal-ui';
-import { NgPackagesFieldsConfig } from '@skysmack/ng-packages';
 import { NgPackagesStore } from '@skysmack/ng-packages';
 import { BaseComponent } from '@skysmack/portal-ui';
 import { PackagesAppState } from '@skysmack/packages-skysmack-core';
 import { FormHelper } from '@skysmack/ng-ui';
 import { LocalObjectStatus, toLocalObject, Package } from '@skysmack/framework';
 import { map } from 'rxjs/operators';
+import { NgPackagesFieldsConfig } from '../../ng-packages-fields-config';
 
 @Component({
   selector: 'ss-packages-create',

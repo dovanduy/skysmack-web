@@ -3,10 +3,10 @@ import { ReceiptsAppState, Receipt } from '@skysmack/packages-terminal-payments'
 import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DocumentRecordFormComponent, EditorNavService } from '@skysmack/portal-ui';
-import { NgReceiptsFieldsConfig, NgReceiptFormDependencies } from '@skysmack/ng-packages';
 import { NgReceiptsActions } from '@skysmack/ng-packages';
 import { NgReceiptsStore } from '@skysmack/ng-packages';
 import { NgFieldActions, NgFieldStore } from '@skysmack/ng-redux';
+import { NgReceiptsFieldsConfig, NgReceiptFormDependencies } from '../../ng-receipts-fields-config';
 
 @Component({
   selector: 'ss-receipts-create',

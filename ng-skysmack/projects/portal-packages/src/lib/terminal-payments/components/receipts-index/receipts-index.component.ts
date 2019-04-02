@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { EntityComponentPageTitle, DocumentRecordIndexComponent } from '@skysmack/portal-ui';
 import { Router, ActivatedRoute } from '@angular/router';
-import { NgSkysmackStore, NgReceiptsActions, NgReceiptsStore, NgReceiptsFieldsConfig } from '@skysmack/ng-packages';
+import { NgSkysmackStore, NgReceiptsActions, NgReceiptsStore } from '@skysmack/ng-packages';
 import { ReceiptsAppState, Receipt } from '@skysmack/packages-terminal-payments';
 import { NgReceiptsMenu } from '../../ng-receipts-menu';
 import { EntityAction } from '@skysmack/ng-ui';
 import { NgFieldActions, NgFieldStore } from '@skysmack/ng-redux';
-
+import { NgReceiptsFieldsConfig } from '../../ng-receipts-fields-config';
 
 @Component({
   selector: 'ss-receipts-index',
