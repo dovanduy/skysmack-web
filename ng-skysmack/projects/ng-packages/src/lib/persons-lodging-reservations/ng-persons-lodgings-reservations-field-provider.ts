@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { FieldProvider, Field, FieldTypes, SelectField } from '@skysmack/ng-ui';
-import { NgSkysmackStore } from '../skysmack-core/skysmack/redux/ng-skysmack-store';
 import { map, switchMap } from 'rxjs/operators';
 import { PersonsLodgingReservationsType, PersonsLodgingReservationsSettings } from '@skysmack/packages-persons-lodging-reservations';
 import { Observable, combineLatest } from 'rxjs';
-import { NgSettingsActions, NgSettingsStore } from '@skysmack/ng-redux';
 import { StrIndex, PagedQuery } from '@skysmack/framework';
-import { NgPersonsStore, NgPersonsActions } from '../persons/redux';
+import { NgSettingsActions, NgSettingsStore } from '@skysmack/ng-redux';
+import { NgPersonsStore } from '../persons/redux/ng-persons-store';
+import { NgPersonsActions } from '../persons/redux/ng-persons-actions';
+import { NgSkysmackStore } from '../skysmack-core/skysmack/redux/ng-skysmack-store';
 
 @Injectable({ providedIn: 'root' })
 export class NgPersonsLodgingReservationsFieldProvider extends FieldProvider {
@@ -24,7 +25,6 @@ export class NgPersonsLodgingReservationsFieldProvider extends FieldProvider {
     }
 
     public getFields(packagePath: string): Observable<Field[]> {
-
         return this.skysmackStore.getPackages().pipe(
             map(packages => packages.filter(_package => _package.object.type === PersonsLodgingReservationsType.id)),
             switchMap(packages => {
