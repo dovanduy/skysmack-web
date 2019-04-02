@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { EntityComponentPageTitle, DocumentRecordIndexComponent } from '@skysmack/portal-ui';
 import { Router, ActivatedRoute } from '@angular/router';
-import { NgInvoicePaymentsActions, NgInvoicePaymentsFieldsConfig } from '@skysmack/ng-packages';
+import { NgInvoicePaymentsActions } from '@skysmack/ng-packages';
 import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { NgInvoicePaymentsStore } from '@skysmack/ng-packages';
 import { InvoicePayment, InvoicePaymentsAppState } from '@skysmack/packages-invoices';
 import { NgInvoicePaymentsMenu } from './../../ng-invoice-payments-menu';
 import { EntityAction } from '@skysmack/ng-ui';
 import { NgFieldActions, NgFieldStore } from '@skysmack/ng-redux';
+import { NgInvoicePaymentsFieldsConfig } from '../../ng-invoice-payments-fields-config';
 
 @Component({
   selector: 'ss-invoice-payments-index',

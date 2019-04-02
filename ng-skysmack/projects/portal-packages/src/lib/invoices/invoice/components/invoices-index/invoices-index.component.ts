@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { EntityComponentPageTitle, DocumentRecordIndexComponent } from '@skysmack/portal-ui';
 import { Router, ActivatedRoute } from '@angular/router';
-import { NgInvoicesActions, NgInvoicesFieldsConfig } from '@skysmack/ng-packages';
+import { NgInvoicesActions } from '@skysmack/ng-packages';
 import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { NgInvoicesStore } from '@skysmack/ng-packages';
 import { Invoice, InvoicesAppState } from '@skysmack/packages-invoices';
 import { NgInvoicesMenu } from './../../ng-invoices-menu';
 import { EntityAction } from '@skysmack/ng-ui';
 import { NgFieldActions, NgFieldStore } from '@skysmack/ng-redux';
+import { NgInvoicesFieldsConfig } from '../../ng-invoices-fields-config';
 
 
 @Component({

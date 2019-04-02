@@ -4,10 +4,10 @@ import { NgInvoicePaymentsActions } from '@skysmack/ng-packages';
 import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EditorNavService } from '@skysmack/portal-ui';
-import { NgInvoicePaymentsFieldsConfig, NgInvoicePaymentFormDependencies } from '@skysmack/ng-packages';
 import { DocumentRecordFormComponent } from '@skysmack/portal-ui';
 import { NgInvoicePaymentsStore } from '@skysmack/ng-packages';
 import { NgFieldActions, NgFieldStore } from '@skysmack/ng-redux';
+import { NgInvoicePaymentsFieldsConfig, NgInvoicePaymentFormDependencies } from '../../ng-invoice-payments-fields-config';
 
 @Component({
   selector: 'ss-invoice-payments-create',

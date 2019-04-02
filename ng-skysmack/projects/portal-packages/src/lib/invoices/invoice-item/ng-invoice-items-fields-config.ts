@@ -5,8 +5,8 @@ import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { InvoiceItem } from '@skysmack/packages-invoices';
 import { Field } from '@skysmack/ng-ui';
 import { FieldTypes } from '@skysmack/ng-ui';
-import { NgInvoiceItemsValidation } from './ng-invoice-items-validation';
 import { FieldsConfig } from '@skysmack/ng-ui';
+import { NgInvoiceItemsValidation } from '@skysmack/ng-packages';
 
 export interface NgInvoiceItemFormDependencies {
     [key: string]: any;

@@ -4,10 +4,10 @@ import { NgInvoiceItemsActions } from '@skysmack/ng-packages';
 import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EditorNavService } from '@skysmack/portal-ui';
-import { NgInvoiceItemsFieldsConfig, NgInvoiceItemFormDependencies } from '@skysmack/ng-packages';
 import { DocumentRecordFormComponent } from '@skysmack/portal-ui';
 import { NgInvoiceItemsStore } from '@skysmack/ng-packages';
 import { NgFieldActions, NgFieldStore } from '@skysmack/ng-redux';
+import { NgInvoiceItemsFieldsConfig, NgInvoiceItemFormDependencies } from '../../ng-invoice-items-fields-config';
 
 @Component({
   selector: 'ss-invoice-items-edit',
