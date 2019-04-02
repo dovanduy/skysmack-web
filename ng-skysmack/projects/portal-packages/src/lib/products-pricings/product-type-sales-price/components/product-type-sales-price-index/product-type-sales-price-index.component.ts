@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { EntityComponentPageTitle, RecordIndexComponent } from '@skysmack/portal-ui';
 import { Router, ActivatedRoute } from '@angular/router';
-import { NgProductTypeSalesPriceActions, NgProductTypeSalesPriceFieldsConfig } from '@skysmack/ng-packages';
+import { NgProductTypeSalesPriceActions } from '@skysmack/ng-packages';
 import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { NgProductTypeSalesPriceStore } from '@skysmack/ng-packages';
 import { ProductTypeSalesPriceAppState, PRODUCT_TYPE_SALES_PRICE_AREA_KEY, ProductTypeSalesPrice } from '@skysmack/packages-products-pricings';
 import { NgProductTypeSalesPriceMenu } from '../../ng-product-type-sales-price-menu';
 import { EntityAction } from '@skysmack/ng-ui';
+import { NgProductTypeSalesPriceFieldsConfig } from '../../ng-product-type-sales-price-fields-config';
 
 @Component({
   selector: 'ss-product-type-sales-price-index',

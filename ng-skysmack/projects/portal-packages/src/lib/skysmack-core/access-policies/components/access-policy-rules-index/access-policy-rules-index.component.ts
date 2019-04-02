@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { EntityComponentPageTitle, RecordIndexComponent } from '@skysmack/portal-ui';
 import { Router, ActivatedRoute } from '@angular/router';
-import { NgAccessPolicyRulesActions, NgAccessPolicyRulesFieldsConfig } from '@skysmack/ng-packages';
+import { NgAccessPolicyRulesActions } from '@skysmack/ng-packages';
 import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { NgAccessPolicyRulesStore } from '@skysmack/ng-packages';
 import { EntityAction } from '@skysmack/ng-ui';
 import { AccessPolicyRulesAppState, AccessPolicyRule } from '@skysmack/packages-skysmack-core';
 import { NgAccessPolicyRulesMenu } from '../../ng-access-policy-rules-menu';
-
+import { NgAccessPolicyRulesFieldsConfig } from '../../ng-access-policy-rules-fields-config';
 
 @Component({
   selector: 'ss-access-policy-rules-index',

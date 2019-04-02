@@ -3,13 +3,13 @@ import { NgAccessPolicyPermissionsActions, NgSkysmackActions, NgAccessPolicyRule
 import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EditorNavService, RecordFormComponent } from '@skysmack/portal-ui';
-import { NgAccessPolicyPermissionsFieldsConfig, NgAccessPolicyPermissionFormDependencies } from '@skysmack/ng-packages';
 import { NgAccessPolicyPermissionsStore } from '@skysmack/ng-packages';
 import { AccessPolicyPermissionsAppState, AccessPolicyPermission } from '@skysmack/packages-skysmack-core';
 import { PagedQuery, LocalObjectStatus } from '@skysmack/framework';
 import { combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { FormHelper } from '@skysmack/ng-ui';
+import { NgAccessPolicyPermissionsFieldsConfig, NgAccessPolicyPermissionFormDependencies } from '../../ng-access-policy-permissions-fields-config';
 
 @Component({
   selector: 'ss-access-policy-permissions-edit',

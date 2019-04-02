@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { EntityComponentPageTitle, RecordIndexComponent } from '@skysmack/portal-ui';
 import { Router, ActivatedRoute } from '@angular/router';
-import { NgAccessPolicyPermissionsActions, NgAccessPolicyPermissionsFieldsConfig } from '@skysmack/ng-packages';
+import { NgAccessPolicyPermissionsActions } from '@skysmack/ng-packages';
 import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { NgAccessPolicyPermissionsStore } from '@skysmack/ng-packages';
 import { EntityAction } from '@skysmack/ng-ui';
 import { AccessPolicyPermissionsAppState, AccessPolicyPermission } from '@skysmack/packages-skysmack-core';
 import { NgAccessPolicyPermissionsMenu } from '../../ng-access-policy-permissions-menu';
-
+import { NgAccessPolicyPermissionsFieldsConfig } from '../../ng-access-policy-permissions-fields-config';
 
 @Component({
   selector: 'ss-access-policy-permissions-index',

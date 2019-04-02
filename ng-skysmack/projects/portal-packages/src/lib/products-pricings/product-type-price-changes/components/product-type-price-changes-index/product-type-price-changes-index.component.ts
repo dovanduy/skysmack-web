@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { EntityComponentPageTitle, RecordIndexComponent } from '@skysmack/portal-ui';
 import { Router, ActivatedRoute } from '@angular/router';
-import { NgProductTypePriceChangesActions, NgProductTypePriceChangesFieldsConfig } from '@skysmack/ng-packages';
+import { NgProductTypePriceChangesActions } from '@skysmack/ng-packages';
 import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { NgProductTypePriceChangesStore } from '@skysmack/ng-packages';
 import { ProductTypePriceChangesAppState, PRODUCT_TYPE_PRICE_CHANGES_AREA_KEY, ProductPriceChange } from '@skysmack/packages-products-pricings';
 import { NgProductTypePriceChangesMenu } from '../../ng-product-type-price-changes-menu';
 import { EntityAction } from '@skysmack/ng-ui';
+import { NgProductTypePriceChangesFieldsConfig } from '../../ng-product-type-price-changes-fields-config';
 
 @Component({
   selector: 'ss-product-type-price-changes-index',

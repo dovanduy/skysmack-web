@@ -1,22 +1,23 @@
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
-import { ProductsSalesPrice } from '@skysmack/packages-products-pricings';
+import { ProductTypeSalesPrice } from '@skysmack/packages-products-pricings';
 import { FormRule, FieldTypes, FieldsConfig, SelectField, Field } from '@skysmack/ng-ui';
-import { NgProductsSalesPriceValidation } from './ng-products-sales-price-validation';
-import { Product } from '@skysmack/packages-products';
+import { ProductType } from '@skysmack/packages-products';
+import { NgProductTypeSalesPriceValidation } from '@skysmack/ng-packages';
 
-export interface NgProductsSalesPriceFormDependencies {
-    availableProducts: LocalObject<Product, number>[];
+
+export interface NgProductTypeSalesPriceFormDependencies {
+    availableProductTypes: LocalObject<ProductType, number>[];
 }
 
 @Injectable({ providedIn: 'root' })
-export class NgProductsSalesPriceFieldsConfig extends FieldsConfig<ProductsSalesPrice, number, NgProductsSalesPriceFormDependencies> {
-    public validation = new NgProductsSalesPriceValidation();
+export class NgProductTypeSalesPriceFieldsConfig extends FieldsConfig<ProductTypeSalesPrice, number, NgProductTypeSalesPriceFormDependencies> {
+    public validation = new NgProductTypeSalesPriceValidation();
 
     public formRules: FormRule[] = [];
 
-    protected getEntityFields(entity?: LocalObject<ProductsSalesPrice, number>, dependencies?: NgProductsSalesPriceFormDependencies): Field[] {
+    protected getEntityFields(entity?: LocalObject<ProductTypeSalesPrice, number>, dependencies?: NgProductTypeSalesPriceFormDependencies): Field[] {
         const fields = [
             new SelectField({
                 fieldType: FieldTypes.SelectField,
@@ -31,7 +32,7 @@ export class NgProductsSalesPriceFieldsConfig extends FieldsConfig<ProductsSales
                     {
                         value: 'DKK',
                         displayName: 'DKK'
-                    },
+                    }
                 ],
                 order: 1,
                 showColumn: true
@@ -41,7 +42,7 @@ export class NgProductsSalesPriceFieldsConfig extends FieldsConfig<ProductsSales
                 value: entity ? entity.object.recordId : undefined,
                 key: 'recordId',
                 validators: [Validators.required],
-                optionsData: dependencies && dependencies.availableProducts,
+                optionsData: dependencies && dependencies.availableProductTypes,
                 displayNameSelector: 'object.name',
                 order: 2,
                 showColumn: true

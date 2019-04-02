@@ -5,11 +5,10 @@ import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EditorNavService, RecordFormComponent } from '@skysmack/portal-ui';
 import { NgProductTypeSalesPriceStore } from '@skysmack/ng-packages';
-import { NgProductTypeSalesPriceFieldsConfig } from '@skysmack/ng-packages';
 import { combineLatest } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
 import { PagedQuery } from '@skysmack/framework';
-import { NgProductTypeSalesPriceFormDependencies } from '@skysmack/ng-packages';
+import { NgProductTypeSalesPriceFormDependencies, NgProductTypeSalesPriceFieldsConfig } from '../../ng-product-type-sales-price-fields-config';
 
 @Component({
   selector: 'ss-product-type-sales-price-create',

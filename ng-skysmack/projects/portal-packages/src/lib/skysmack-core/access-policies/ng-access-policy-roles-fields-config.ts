@@ -4,11 +4,11 @@ import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { Field } from '@skysmack/ng-ui';
 import { FieldTypes } from '@skysmack/ng-ui';
 import { FieldsConfig } from '@skysmack/ng-ui';
-import { AccessPolicyRolesValidation } from './ng-access-policy-roles-validation';
 import { AccessPolicyRole, AccessPolicyRule, AccessPolicyRoleKey } from '@skysmack/packages-skysmack-core';
 import { Validators } from '@angular/forms';
 import { Role } from '@skysmack/packages-identities';
 import { SelectFieldOption } from '@skysmack/ng-ui';
+import { AccessPolicyRolesValidation } from '@skysmack/ng-packages';
 
 export interface NgAccessPolicyRoleFormDependencies {
     availableAccessPolicyRules: LocalObject<AccessPolicyRule, number>[];

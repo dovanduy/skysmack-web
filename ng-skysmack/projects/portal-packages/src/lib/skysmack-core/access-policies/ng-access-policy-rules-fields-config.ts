@@ -4,8 +4,8 @@ import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { Field } from '@skysmack/ng-ui';
 import { FieldTypes } from '@skysmack/ng-ui';
 import { FieldsConfig } from '@skysmack/ng-ui';
-import { AccessPolicyRulesValidation } from './ng-access-policy-rules-validation';
 import { AccessPolicyRule } from '@skysmack/packages-skysmack-core';
+import { AccessPolicyRulesValidation } from '@skysmack/ng-packages';
 
 export interface NgAccessPolicyRuleFormDependencies {
     [key: string]: any;

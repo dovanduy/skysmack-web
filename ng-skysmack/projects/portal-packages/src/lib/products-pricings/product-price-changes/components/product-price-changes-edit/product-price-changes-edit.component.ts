@@ -4,12 +4,11 @@ import { NgProductPriceChangesActions, NgProductsSalesPriceActions, NgProductsSa
 import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EditorNavService, RecordFormComponent } from '@skysmack/portal-ui';
-import { NgProductPriceChangesFieldsConfig } from '@skysmack/ng-packages';
 import { NgProductPriceChangesStore } from '@skysmack/ng-packages';
 import { combineLatest } from 'rxjs';
 import { PagedQuery, LocalObject } from '@skysmack/framework';
-import { map, switchMap } from 'rxjs/operators';
-import { NgProductPriceChangesFormDependencies } from '@skysmack/ng-packages';
+import { map } from 'rxjs/operators';
+import { NgProductPriceChangesFieldsConfig, NgProductPriceChangesFormDependencies } from '../../ng-product-price-changes-fields-config';
 
 @Component({
   selector: 'ss-product-price-changes-edit',

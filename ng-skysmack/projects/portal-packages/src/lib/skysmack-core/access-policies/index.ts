@@ -7,3 +7,7 @@ export * from './ng-access-policy-permissions-menu';
 export * from './ng-access-policy-roles-menu';
 export * from './ng-access-policy-rules-menu';
 export * from './ng-access-policies-dashboard-menu';
+
+export * from './ng-access-policy-rules-fields-config';
+export * from './ng-access-policy-roles-fields-config';
+export * from './ng-access-policy-permissions-fields-config';

@@ -3,12 +3,13 @@ import { NgAccessPolicyRolesActions, NgAccessPolicyRulesStore, NgAccessPolicyRul
 import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EditorNavService, RecordFormComponent } from '@skysmack/portal-ui';
-import { NgAccessPolicyRolesStore, NgAccessPolicyRoleFormDependencies, NgAccessPolicyRolesFieldsConfig } from '@skysmack/ng-packages';
+import { NgAccessPolicyRolesStore } from '@skysmack/ng-packages';
 import { AccessPolicyRolesAppState, AccessPolicyRole, AccessPolicyRoleKey } from '@skysmack/packages-skysmack-core';
 import { combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { PagedQuery, toLocalObject } from '@skysmack/framework';
 import { FormHelper } from '@skysmack/ng-ui';
+import { NgAccessPolicyRolesFieldsConfig, NgAccessPolicyRoleFormDependencies } from '../../ng-access-policy-roles-fields-config';
 
 @Component({
   selector: 'ss-access-policy-roles-create',
