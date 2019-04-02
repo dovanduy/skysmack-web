@@ -52,7 +52,7 @@ export class Field {
     public fieldType: FieldTypes = FieldTypes.undefined;
 
     /**
-     * EXPERIMENTAL
+     * The field component used to render this field.
      */
     public component: Type<any>;
 

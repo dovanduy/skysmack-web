@@ -1,5 +1,5 @@
 import { Component, OnInit, ComponentFactoryResolver, Input, ViewChild } from '@angular/core';
-import { FieldTypes, FormHelper, Field, FormRule } from '@skysmack/ng-ui';
+import { FormHelper, Field, FormRule } from '@skysmack/ng-ui';
 import { Observable } from 'rxjs';
 import { DynamicFormFieldDirective } from '../dynamic-form-field.directive';
 import { DynamicField } from '../dynamic-field';
@@ -12,7 +12,6 @@ export class DynamicFormFieldTemplateComponent implements OnInit {
 
   @Input() fh: FormHelper;
   @Input() field: Field;
-  @Input() fieldType: FieldTypes;
   @Input() fieldKey: string;
   @Input() fields$: Observable<Field[]>;
   @Input() rules: FormRule[];

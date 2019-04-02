@@ -18,7 +18,6 @@ import { NavBarComponent } from './components/common/navbar/navbar.component';
 import { ContainerComponent } from './components/common/container/container.component';
 import { CardBodyComponent } from './components/common/card-body/card-body.component';
 import { DynamicFormComponent } from './components/field-components/dynamic-form/dynamic-form.component';
-import { DynamicFormFieldComponent } from './components/field-components/dynamic-form-field/dynamic-form-field.component';
 import { CheckboxFieldComponent } from './components/field-components/components/checkbox-field/checkbox-field.component';
 import { DateFieldComponent } from './components/field-components/components/date-field/date-field.component';
 import { DateTimeFieldComponent } from './components/field-components/components/date-time-field/date-time-field.component';
@@ -106,7 +105,6 @@ import { DynamicFormFieldTemplateComponent } from './components/field-components
     // Fields
     DynamicFormFieldTemplateComponent,
     DynamicFormComponent,
-    DynamicFormFieldComponent,
     CheckboxFieldComponent,
     DateFieldComponent,
     DateTimeFieldComponent,
@@ -156,7 +154,6 @@ import { DynamicFormFieldTemplateComponent } from './components/field-components
     CardBodyComponent,
     // Fields
     DynamicFormComponent,
-    DynamicFormFieldComponent,
     CheckboxFieldComponent,
     DateFieldComponent,
     DateTimeFieldComponent,

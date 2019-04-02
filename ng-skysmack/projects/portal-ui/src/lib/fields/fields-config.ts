@@ -39,6 +39,7 @@ export abstract class FieldsConfig<TRecord, TKey, TDependencies> implements Enti
                 ...fields,
                 ...dynamicFields.map(dynamicField => {
                     return new Field({
+                        fieldType: Number(FieldTypes[dynamicField.object.type]),
                         component: this.getComponentFromDynamicFieldType(dynamicField.object.type),
                         value: entity ? entity.object[dynamicField.object.key] : undefined,
                         key: dynamicField.object.key,

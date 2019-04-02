@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
-import { FormRule, Field, FieldTypes } from '@skysmack/ng-ui';
+import { FormRule, Field } from '@skysmack/ng-ui';
 import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { LodgingType } from '@skysmack/packages-lodgings';
 import { NgLodgingTypesValidation } from '@skysmack/ng-packages';

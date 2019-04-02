@@ -1,10 +1,9 @@
 import { Component, OnInit, Input, OnDestroy, EventEmitter, Output, ViewChild } from '@angular/core';
-import { LocalObject, LoadingState, SubscriptionHandler, DisplayColumn, EnumHelpers, cloneLocalObject, getProperty } from '@skysmack/framework';
-import { Observable, of } from 'rxjs';
+import { LocalObject, LoadingState, SubscriptionHandler, DisplayColumn, getProperty } from '@skysmack/framework';
+import { Observable } from 'rxjs';
 import { EntityAction, Field, FieldTypes } from '@skysmack/ng-ui';
-import { map, switchMap } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
-import { Assignment } from '@skysmack/packages-maintenance';
 
 @Component({
   selector: 'ss-records-container',

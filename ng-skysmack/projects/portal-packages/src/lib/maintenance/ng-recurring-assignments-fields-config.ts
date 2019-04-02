@@ -3,7 +3,7 @@ import { Validators } from '@angular/forms';
 import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { RecurringAssignment } from '@skysmack/packages-maintenance';
 import { NgRecurringAssignmentsValidation } from '@skysmack/ng-packages';
-import { FormRule, SelectField, Field, FieldTypes } from '@skysmack/ng-ui';
+import { FormRule, SelectField, Field } from '@skysmack/ng-ui';
 import { FieldsConfig, SelectFieldComponent, HiddenFieldComponent, DateTimeFieldComponent } from '@skysmack/portal-ui';
 
 export interface NgRecurringAssignmentFormDependencies {

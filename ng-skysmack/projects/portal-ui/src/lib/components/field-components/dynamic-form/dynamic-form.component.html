@@ -8,12 +8,9 @@
 <form *ngIf="fh" [formGroup]="fh.form">
 
   <ng-container *ngFor="let field of fields; trackBy: trackByFieldKey">
-    <ss-dynamic-form-field-template [field]="field" [fh]="fh" [fieldKey]="field.key" [fieldType]="field.fieldType"
-      [fields$]="fields$" [rules]="rules">
-    </ss-dynamic-form-field-template>
-    <!-- <ss-dynamic-form-field [fh]="fh" [fieldKey]="field.key" [fieldType]="field.fieldType" [fields$]="fields$"
+    <ss-dynamic-form-field-template [field]="field" [fh]="fh" [fieldKey]="field.key" [fields$]="fields$"
       [rules]="rules">
-    </ss-dynamic-form-field> -->
+    </ss-dynamic-form-field-template>
   </ng-container>
 
   <button mat-raised-button color="primary" type="submit" (click)="onSubmit()">{{ buttonText }}</button>
