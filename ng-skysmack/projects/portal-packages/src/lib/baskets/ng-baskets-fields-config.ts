@@ -5,8 +5,8 @@ import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { Basket } from '@skysmack/packages-baskets';
 import { Field } from '@skysmack/ng-ui';
 import { FieldTypes } from '@skysmack/ng-ui';
-import { BasketsValidation } from './ng-baskets-validation';
-import { FieldsConfig } from '@skysmack/ng-ui';
+import { BasketsValidation } from '@skysmack/ng-packages';
+import { FieldsConfig } from '@skysmack/portal-ui';
 
 export interface NgBasketFormDependencies {
     [key: string]: any;

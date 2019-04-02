@@ -3,7 +3,8 @@ import { Validators } from '@angular/forms';
 import { LocalObject, LocalObjectStatus, EnumHelpers } from '@skysmack/framework';
 import { Assignment, AssignmentType } from '@skysmack/packages-maintenance';
 import { NgAssignmentsValidation } from '@skysmack/ng-packages';
-import { FieldsConfig, FormRule, Field, SelectField, FieldTypes } from '@skysmack/ng-ui';
+import { FormRule, Field, SelectField, FieldTypes } from '@skysmack/ng-ui';
+import { FieldsConfig } from '@skysmack/portal-ui';
 
 export interface NgAssignmentFormDependencies {
     availableAssignmentTypes: LocalObject<AssignmentType, number>[];

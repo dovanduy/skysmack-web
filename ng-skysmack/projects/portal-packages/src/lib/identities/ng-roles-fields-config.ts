@@ -2,8 +2,9 @@ import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { Role } from '@skysmack/packages-identities';
-import { Field, FormRule, FieldTypes, FieldsConfig } from '@skysmack/ng-ui';
+import { Field, FormRule, FieldTypes } from '@skysmack/ng-ui';
 import { NgRolesValidation } from '@skysmack/ng-packages';
+import { FieldsConfig } from '@skysmack/portal-ui';
 
 export interface NgRoleFormDependencies {
     [key: string]: any;

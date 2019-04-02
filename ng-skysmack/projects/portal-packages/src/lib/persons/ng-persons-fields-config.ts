@@ -6,9 +6,8 @@ import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { Person } from '@skysmack/packages-persons';
 import { Field } from '@skysmack/ng-ui';
 import { FieldTypes } from '@skysmack/ng-ui';
-import { FieldsConfig } from '@skysmack/ng-ui';
+import { FieldsConfig, StringFieldComponent } from '@skysmack/portal-ui';
 import { NgPersonsValidation } from '@skysmack/ng-packages';
-import { StringFieldComponent } from '@skysmack/portal-ui';
 
 export interface NgPersonFormDependencies {
     [key: string]: any;

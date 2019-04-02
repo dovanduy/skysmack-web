@@ -3,7 +3,7 @@ import { FormRule, SelectField } from '@skysmack/ng-ui';
 import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { Field } from '@skysmack/ng-ui';
 import { FieldTypes } from '@skysmack/ng-ui';
-import { FieldsConfig } from '@skysmack/ng-ui';
+import { FieldsConfig } from '@skysmack/portal-ui';
 import { AccessPolicyRole, AccessPolicyRule, AccessPolicyRoleKey } from '@skysmack/packages-skysmack-core';
 import { Validators } from '@angular/forms';
 import { Role } from '@skysmack/packages-identities';

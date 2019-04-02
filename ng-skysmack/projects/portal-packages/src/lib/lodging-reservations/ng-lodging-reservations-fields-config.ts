@@ -2,9 +2,10 @@ import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { LodgingReservation } from '@skysmack/packages-lodging-reservations';
-import { FormRule, FieldTypes, FieldsConfig, SelectField, Field, SelectFieldOption } from '@skysmack/ng-ui';
+import { FormRule, FieldTypes, SelectField, Field, SelectFieldOption } from '@skysmack/ng-ui';
 import { LodgingType, Lodging } from '@skysmack/packages-lodgings';
 import { NgLodgingReservationsValidation } from '@skysmack/ng-packages';
+import { FieldsConfig } from '@skysmack/portal-ui';
 
 export interface NgLodgingReservationFormDependencies {
     availableLodgingTypes: LocalObject<LodgingType, number>[];

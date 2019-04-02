@@ -5,7 +5,7 @@ import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { ProductType } from '@skysmack/packages-products';
 import { Field } from '@skysmack/ng-ui';
 import { FieldTypes } from '@skysmack/ng-ui';
-import { FieldsConfig } from '@skysmack/ng-ui';
+import { FieldsConfig } from '@skysmack/portal-ui';
 import { NgProductTypesValidation } from '@skysmack/ng-packages';
 
 export interface NgProductTypeFormDependencies {

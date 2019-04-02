@@ -1,9 +1,5 @@
-import { FormRule } from '../forms/form-rule';
 import { LocalObject, FieldSchemaViewModel } from '@skysmack/framework';
-import { Field } from './field';
-import { Validation } from '../forms/validation';
-import { FieldTypes } from './field-types';
-import { EntityFieldsConfig } from './entity-fields-config';
+import { EntityFieldsConfig, FormRule, Validation, Field, FieldTypes } from '@skysmack/ng-ui';
 
 export abstract class FieldsConfig<TRecord, TKey, TDependencies> implements EntityFieldsConfig<TRecord, TKey, TDependencies> {
     public abstract formRules: FormRule[];

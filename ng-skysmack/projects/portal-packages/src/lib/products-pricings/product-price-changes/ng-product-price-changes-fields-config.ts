@@ -2,8 +2,10 @@ import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { ProductPriceChange, ProductsSalesPrice, PriceChangeType } from '@skysmack/packages-products-pricings';
-import { FormRule, FieldTypes, FieldsConfig, SelectField, Field } from '@skysmack/ng-ui';
+import { FormRule, FieldTypes, SelectField, Field } from '@skysmack/ng-ui';
 import { NgProductPriceChangesValidation } from '@skysmack/ng-packages';
+import { FieldsConfig } from '@skysmack/portal-ui';
+
 
 export interface NgProductPriceChangesFormDependencies {
     availableProductsSalesPrices: LocalObject<ProductsSalesPrice, number>[];

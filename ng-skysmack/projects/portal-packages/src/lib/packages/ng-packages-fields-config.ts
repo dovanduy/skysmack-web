@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { LocalObject, Package, AvailablePackage } from '@skysmack/framework';
-import { FormRule, Field, CustomValidators, SetPathRule, SelectField, FieldTypes, FieldsConfig } from '@skysmack/ng-ui';
+import { FormRule, Field, CustomValidators, SetPathRule, SelectField, FieldTypes } from '@skysmack/ng-ui';
 import { PackagesValidation } from '@skysmack/ng-packages';
+import { FieldsConfig } from '@skysmack/portal-ui';
 
 export interface NgPackageFormDependencies {
     availablePackages: LocalObject<AvailablePackage, string>[];

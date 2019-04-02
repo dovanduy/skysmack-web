@@ -6,7 +6,7 @@ import { Product, ProductType } from '@skysmack/packages-products';
 import { Field } from '@skysmack/ng-ui';
 import { FieldTypes } from '@skysmack/ng-ui';
 import { SelectField } from '@skysmack/ng-ui';
-import { FieldsConfig } from '@skysmack/ng-ui';
+import { FieldsConfig } from '@skysmack/portal-ui';
 import { NgProductsValidation } from '@skysmack/ng-packages';
 
 export interface NgProductFormDependencies {

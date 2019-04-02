@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
-import { FormRule, SetFieldKeyRule, FieldsConfig } from '@skysmack/ng-ui';
+import { FormRule, SetFieldKeyRule } from '@skysmack/ng-ui';
 import { LocalObject, FieldValueProviderViewModel, FieldSchemaViewModel } from '@skysmack/framework';
 import { Field } from '@skysmack/ng-ui';
 import { FieldTypes } from '@skysmack/ng-ui';
 import { FieldsValidation } from './ng-fields-validation';
 import { SelectField } from '@skysmack/ng-ui';
+import { FieldsConfig } from './fields-config';
 
 export interface NgFieldFormDependencies {
     availableFields: LocalObject<FieldValueProviderViewModel, string>[];

@@ -6,8 +6,8 @@ import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { Field } from '@skysmack/ng-ui';
 import { FieldTypes } from '@skysmack/ng-ui';
 import { SelectField } from '@skysmack/ng-ui';
-import { FieldsConfig } from '@skysmack/ng-ui';
 import { NgAssignmentTypesValidation } from '@skysmack/ng-packages';
+import { FieldsConfig } from '@skysmack/portal-ui';
 
 export interface NgAssignmentTypeFormDependencies {
     availableMaintenanceStates: LocalObject<MaintenanceState, number>[];

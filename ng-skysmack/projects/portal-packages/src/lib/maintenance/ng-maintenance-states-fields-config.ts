@@ -3,7 +3,8 @@ import { Validators } from '@angular/forms';
 import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { MaintenanceState, MaintenanceEntityStatus } from '@skysmack/packages-maintenance';
 import { NgMaintenanceStatesValidation } from '@skysmack/ng-packages';
-import { FieldsConfig, FormRule, Field, FieldTypes, SelectField } from '@skysmack/ng-ui';
+import { FormRule, Field, FieldTypes, SelectField } from '@skysmack/ng-ui';
+import { FieldsConfig } from '@skysmack/portal-ui';
 
 export interface NgMaintenanceStateFormDependencies {
     availableMaintenanceStates: LocalObject<MaintenanceState, number>[];

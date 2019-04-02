@@ -2,13 +2,14 @@ import { Component, OnInit, OnDestroy, Injector } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { LocalObject, RouteData, toLocalObject } from '@skysmack/framework';
 import { NgSkysmackStore } from '@skysmack/ng-packages';
-import { FormHelper, FieldsConfig } from '@skysmack/ng-ui';
+import { FormHelper } from '@skysmack/ng-ui';
 import { combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { NgSettingsActions, NgSettingsStore } from '@skysmack/ng-redux';
 import { SettingsAppState } from '@skysmack/redux';
 import { EditorNavService } from '../../../components/common/container/editor-nav.service';
 import { BaseComponent } from '../../../base-components/base-component';
+import { FieldsConfig } from '../../../fields/fields-config';
 
 @Component({
   selector: 'ss-settings',

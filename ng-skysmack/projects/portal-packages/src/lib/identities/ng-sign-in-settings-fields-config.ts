@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import { FormRule, Field, FieldTypes, FieldsConfig } from '@skysmack/ng-ui';
+import { FormRule, Field, FieldTypes } from '@skysmack/ng-ui';
 import { LocalObject } from '@skysmack/framework';
 import { SignInSettings } from '@skysmack/packages-identities';
 import { NgSignInSettingsValidation } from '@skysmack/ng-packages';
+import { FieldsConfig } from '@skysmack/portal-ui';
 
 @Injectable({ providedIn: 'root' })
 export class NgSignInSettingsFieldsConfig extends FieldsConfig<SignInSettings, unknown, any> {

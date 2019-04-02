@@ -4,10 +4,10 @@ import { NgBasketsActions } from '@skysmack/ng-packages';
 import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EditorNavService } from '@skysmack/portal-ui';
-import { NgBasketsFieldsConfig, NgBasketFormDependencies } from '@skysmack/ng-packages';
 import { DocumentRecordFormComponent } from '@skysmack/portal-ui';
 import { NgBasketsStore } from '@skysmack/ng-packages';
 import { NgFieldActions, NgFieldStore } from '@skysmack/ng-redux';
+import { NgBasketsFieldsConfig, NgBasketFormDependencies } from '../../ng-baskets-fields-config';
 
 @Component({
   selector: 'ss-baskets-create',

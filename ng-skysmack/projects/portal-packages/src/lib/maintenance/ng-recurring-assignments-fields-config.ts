@@ -3,7 +3,8 @@ import { Validators } from '@angular/forms';
 import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { RecurringAssignment } from '@skysmack/packages-maintenance';
 import { NgRecurringAssignmentsValidation } from '@skysmack/ng-packages';
-import { FormRule, FieldsConfig, SelectField, Field, FieldTypes } from '@skysmack/ng-ui';
+import { FormRule, SelectField, Field, FieldTypes } from '@skysmack/ng-ui';
+import { FieldsConfig } from '@skysmack/portal-ui';
 
 export interface NgRecurringAssignmentFormDependencies {
     availableRecurringAssignments: LocalObject<RecurringAssignment, number>[];
