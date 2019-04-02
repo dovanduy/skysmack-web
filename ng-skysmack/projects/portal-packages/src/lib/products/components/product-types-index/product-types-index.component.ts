@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { EntityComponentPageTitle, DocumentRecordIndexComponent } from '@skysmack/portal-ui';
 import { Router, ActivatedRoute } from '@angular/router';
-import { NgSkysmackStore, NgProductTypesActions, NgProductTypesStore, NgProductTypesFieldsConfig } from '@skysmack/ng-packages';
+import { NgSkysmackStore, NgProductTypesActions, NgProductTypesStore } from '@skysmack/ng-packages';
 import { ProductTypesAppState, ProductType } from '@skysmack/packages-products';
 import { NgProductTypesMenu } from '../../ng-product-types-menu';
 import { EntityAction } from '@skysmack/ng-ui';
 import { NgFieldActions, NgFieldStore } from '@skysmack/ng-redux';
-
+import { NgProductTypesFieldsConfig } from '../../ng-product-types-fields-config';
 
 @Component({
   selector: 'ss-product-types-index',

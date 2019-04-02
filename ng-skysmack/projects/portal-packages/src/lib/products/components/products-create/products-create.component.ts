@@ -6,13 +6,13 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { EditorNavService } from '@skysmack/portal-ui';
 import { DocumentRecordFormComponent } from '@skysmack/portal-ui';
 import { NgProductsStore } from '@skysmack/ng-packages';
-import { NgProductsFieldsConfig, NgProductFormDependencies } from '@skysmack/ng-packages';
 import { combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { PagedQuery } from '@skysmack/framework';
 import { NgProductTypesActions } from '@skysmack/ng-packages';
 import { NgProductTypesStore } from '@skysmack/ng-packages';
 import { NgFieldActions, NgFieldStore } from '@skysmack/ng-redux';
+import { NgProductsFieldsConfig, NgProductFormDependencies } from '../../ng-products-fields-config';
 
 @Component({
   selector: 'ss-products-create',

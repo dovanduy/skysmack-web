@@ -2,23 +2,25 @@ import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { FormRule } from '@skysmack/ng-ui';
 import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
-import { ProductType } from '@skysmack/packages-products';
+import { Product, ProductType } from '@skysmack/packages-products';
 import { Field } from '@skysmack/ng-ui';
 import { FieldTypes } from '@skysmack/ng-ui';
-import { NgProductTypesValidation } from './ng-product-types-validation';
+import { SelectField } from '@skysmack/ng-ui';
 import { FieldsConfig } from '@skysmack/ng-ui';
+import { NgProductsValidation } from '@skysmack/ng-packages';
 
-export interface NgProductTypeFormDependencies {
-    [key: string]: any;
+export interface NgProductFormDependencies {
+    availableProductTypes: LocalObject<ProductType, number>[];
 }
 
 @Injectable({ providedIn: 'root' })
-export class NgProductTypesFieldsConfig extends FieldsConfig<ProductType, number, NgProductTypeFormDependencies> {
-    public validation = new NgProductTypesValidation();
+export class NgProductsFieldsConfig extends FieldsConfig<Product, number, NgProductFormDependencies> {
+    public validation = new NgProductsValidation();
 
-    public formRules: FormRule[] = [];
+    public formRules: FormRule[] = [
+    ];
 
-    protected getEntityFields(entity?: LocalObject<ProductType, number>, dependencies?: NgProductTypeFormDependencies): Field[] {
+    protected getEntityFields(entity?: LocalObject<Product, number>, dependencies?: NgProductFormDependencies): Field[] {
         const fields = [
             new Field({
                 fieldType: FieldTypes.string,
@@ -27,7 +29,21 @@ export class NgProductTypesFieldsConfig extends FieldsConfig<ProductType, number
                 validators: [Validators.required],
                 order: 1,
                 showColumn: true
-            })
+            }),
+
+            new SelectField({
+                fieldType: FieldTypes.SelectField,
+                value: entity ? entity.object.productTypeId : undefined,
+                key: 'productTypeId',
+                label: 'Product type',
+                optionsData: dependencies && dependencies.availableProductTypes,
+                extraOptions: [{
+                    value: null,
+                    displayName: 'None'
+                }],
+                order: 1,
+            }),
+
         ];
 
         // Id field must only be added for edit forms.

@@ -3,10 +3,10 @@ import { ProductTypesAppState, ProductType } from '@skysmack/packages-products';
 import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DocumentRecordFormComponent, EditorNavService } from '@skysmack/portal-ui';
-import { NgProductTypesFieldsConfig, NgProductTypeFormDependencies } from '@skysmack/ng-packages';
 import { NgProductTypesActions } from '@skysmack/ng-packages';
 import { NgProductTypesStore } from '@skysmack/ng-packages';
 import { NgFieldActions, NgFieldStore } from '@skysmack/ng-redux';
+import { NgProductTypesFieldsConfig, NgProductTypeFormDependencies } from '../../ng-product-types-fields-config';
 
 @Component({
   selector: 'ss-product-types-create',

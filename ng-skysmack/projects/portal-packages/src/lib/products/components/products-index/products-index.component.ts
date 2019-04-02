@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { EntityComponentPageTitle, DocumentRecordIndexComponent } from '@skysmack/portal-ui';
 import { Router, ActivatedRoute } from '@angular/router';
-import { NgProductsActions, NgProductsFieldsConfig } from '@skysmack/ng-packages';
+import { NgProductsActions } from '@skysmack/ng-packages';
 import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { NgProductsStore } from '@skysmack/ng-packages';
 import { Product, ProductsAppState, PRODUCTS_AREA_KEY } from '@skysmack/packages-products';
 import { NgProductsMenu } from '../../ng-products-menu';
 import { EntityAction } from '@skysmack/ng-ui';
 import { NgFieldActions, NgFieldStore } from '@skysmack/ng-redux';
-
+import { NgProductsFieldsConfig } from '../../ng-products-fields-config';
 
 @Component({
   selector: 'ss-products-index',
