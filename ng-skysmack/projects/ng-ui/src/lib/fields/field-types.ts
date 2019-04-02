@@ -1,4 +1,5 @@
 export enum FieldTypes {
+    undefined,
     // Returned from backend
     int,
     string,
@@ -6,20 +7,5 @@ export enum FieldTypes {
     decimal,
     double,
     geography,
-    limitedString,
-    // Only defined in front end
-    CheckboxField,
-    DateField,
-    EmailField,
-    HiddenField,
-    PasswordField,
-    PackageDependenciesField,
-    AvailablePermissionsField,
-    RecurringExpressionField,
-    SelectField,
-    TimeField,
-    ValidatorsField,
-    FieldPermissionField,
-    RolesSelectField,
-    MultiSelectField
+    limitedString
 }

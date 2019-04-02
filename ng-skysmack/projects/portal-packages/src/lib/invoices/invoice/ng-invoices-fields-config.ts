@@ -4,8 +4,8 @@ import { FormRule } from '@skysmack/ng-ui';
 import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { Invoice } from '@skysmack/packages-invoices';
 import { Field } from '@skysmack/ng-ui';
-import { FieldTypes } from '@skysmack/ng-ui';
-import { FieldsConfig } from '@skysmack/portal-ui';
+
+import { FieldsConfig, StringFieldComponent, HiddenFieldComponent } from '@skysmack/portal-ui';
 import { NgInvoicesValidation } from '@skysmack/ng-packages';
 
 export interface NgInvoiceFormDependencies {
@@ -21,7 +21,7 @@ export class NgInvoicesFieldsConfig extends FieldsConfig<Invoice, number, NgInvo
     protected getEntityFields(entity?: LocalObject<Invoice, number>, dependencies?: NgInvoiceFormDependencies): Field[] {
         const fields = [
             new Field({
-                fieldType: FieldTypes.string,
+                component: StringFieldComponent,
                 value: entity ? entity.object.currencyCode : undefined,
                 key: 'currencyCode',
                 validators: [Validators.required],
@@ -34,7 +34,7 @@ export class NgInvoicesFieldsConfig extends FieldsConfig<Invoice, number, NgInvo
         // If added to a create form, it won't be able to bind in the backend.
         if (entity && entity.object.id && entity.status !== LocalObjectStatus.CREATING) {
             fields.push(new Field({
-                fieldType: FieldTypes.HiddenField,
+                component: HiddenFieldComponent,
                 value: entity ? entity.object.id : undefined,
                 key: 'id',
                 order: 0,

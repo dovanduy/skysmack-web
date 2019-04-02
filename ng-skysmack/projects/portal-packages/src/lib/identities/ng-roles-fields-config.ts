@@ -4,7 +4,7 @@ import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { Role } from '@skysmack/packages-identities';
 import { Field, FormRule, FieldTypes } from '@skysmack/ng-ui';
 import { NgRolesValidation } from '@skysmack/ng-packages';
-import { FieldsConfig } from '@skysmack/portal-ui';
+import { FieldsConfig, StringFieldComponent, HiddenFieldComponent } from '@skysmack/portal-ui';
 
 export interface NgRoleFormDependencies {
     [key: string]: any;
@@ -19,7 +19,7 @@ export class NgRolesFieldsConfig extends FieldsConfig<Role, number, NgRoleFormDe
     protected getEntityFields(entity?: LocalObject<Role, number>, dependencies?: NgRoleFormDependencies): Field[] {
         const fields = [
             new Field({
-                fieldType: FieldTypes.string,
+                component: StringFieldComponent,
                 value: entity ? entity.object.name : undefined,
                 key: 'name',
                 validators: [Validators.required],
@@ -32,7 +32,7 @@ export class NgRolesFieldsConfig extends FieldsConfig<Role, number, NgRoleFormDe
         // If added to a create form, it won't be able to bind in the backend.
         if (entity && entity.object.id && entity.status !== LocalObjectStatus.CREATING) {
             fields.push(new Field({
-                fieldType: FieldTypes.HiddenField,
+                component: HiddenFieldComponent,
                 value: entity ? entity.object.id : undefined,
                 key: 'id',
                 order: 0,

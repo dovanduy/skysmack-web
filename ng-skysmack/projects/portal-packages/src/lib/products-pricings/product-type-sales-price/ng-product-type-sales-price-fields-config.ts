@@ -2,10 +2,10 @@ import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { ProductTypeSalesPrice } from '@skysmack/packages-products-pricings';
-import { FormRule, FieldTypes, SelectField, Field } from '@skysmack/ng-ui';
+import { FormRule, SelectField, Field } from '@skysmack/ng-ui';
 import { ProductType } from '@skysmack/packages-products';
 import { NgProductTypeSalesPriceValidation } from '@skysmack/ng-packages';
-import { FieldsConfig } from '@skysmack/portal-ui';
+import { FieldsConfig, SelectFieldComponent, HiddenFieldComponent, DecimalFieldComponent } from '@skysmack/portal-ui';
 
 export interface NgProductTypeSalesPriceFormDependencies {
     availableProductTypes: LocalObject<ProductType, number>[];
@@ -20,7 +20,7 @@ export class NgProductTypeSalesPriceFieldsConfig extends FieldsConfig<ProductTyp
     protected getEntityFields(entity?: LocalObject<ProductTypeSalesPrice, number>, dependencies?: NgProductTypeSalesPriceFormDependencies): Field[] {
         const fields = [
             new SelectField({
-                fieldType: FieldTypes.SelectField,
+                component: SelectFieldComponent,
                 value: entity ? entity.object.currencyCode : undefined,
                 key: 'currencyCode',
                 validators: [Validators.required],
@@ -38,7 +38,7 @@ export class NgProductTypeSalesPriceFieldsConfig extends FieldsConfig<ProductTyp
                 showColumn: true
             } as SelectField),
             new SelectField({
-                fieldType: FieldTypes.SelectField,
+                component: SelectFieldComponent,
                 value: entity ? entity.object.recordId : undefined,
                 key: 'recordId',
                 validators: [Validators.required],
@@ -48,7 +48,7 @@ export class NgProductTypeSalesPriceFieldsConfig extends FieldsConfig<ProductTyp
                 showColumn: true
             }),
             new Field({
-                fieldType: FieldTypes.decimal,
+                component: DecimalFieldComponent,
                 value: entity ? entity.object.price : undefined,
                 key: 'price',
                 validators: [Validators.required],
@@ -61,7 +61,7 @@ export class NgProductTypeSalesPriceFieldsConfig extends FieldsConfig<ProductTyp
         // If added to a create form, it won't be able to bind in the backend.
         if (entity && entity.object.id && entity.status !== LocalObjectStatus.CREATING) {
             fields.push(new Field({
-                fieldType: FieldTypes.HiddenField,
+                component: HiddenFieldComponent,
                 value: entity ? entity.object.id : undefined,
                 key: 'id',
                 order: 0,

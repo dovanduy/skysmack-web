@@ -3,7 +3,7 @@ import { FormRule, Field, FieldTypes } from '@skysmack/ng-ui';
 import { LocalObject } from '@skysmack/framework';
 import { SignInSettings } from '@skysmack/packages-identities';
 import { NgSignInSettingsValidation } from '@skysmack/ng-packages';
-import { FieldsConfig } from '@skysmack/portal-ui';
+import { FieldsConfig, CheckboxFieldComponent } from '@skysmack/portal-ui';
 
 @Injectable({ providedIn: 'root' })
 export class NgSignInSettingsFieldsConfig extends FieldsConfig<SignInSettings, unknown, any> {
@@ -14,13 +14,13 @@ export class NgSignInSettingsFieldsConfig extends FieldsConfig<SignInSettings, u
     protected getEntityFields(settings?: LocalObject<SignInSettings, unknown>, dependencies?: any): Field[] {
         const fields = [
             new Field({
-                fieldType: FieldTypes.CheckboxField,
+                component: CheckboxFieldComponent,
                 value: settings ? settings.object.requireConfirmedEmail : undefined,
                 key: 'requireConfirmedEmail',
                 order: 12
             }),
             new Field({
-                fieldType: FieldTypes.CheckboxField,
+                component: CheckboxFieldComponent,
                 value: settings ? settings.object.requireConfirmedPhoneNumber : undefined,
                 key: 'requireConfirmedPhoneNumber',
                 order: 13

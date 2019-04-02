@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { FormRule, SelectField } from '@skysmack/ng-ui';
 import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { Field } from '@skysmack/ng-ui';
-import { FieldTypes } from '@skysmack/ng-ui';
-import { FieldsConfig } from '@skysmack/portal-ui';
+
+import { FieldsConfig, SelectFieldComponent, HiddenFieldComponent, RolesSelectFieldComponent } from '@skysmack/portal-ui';
 import { AccessPolicyRole, AccessPolicyRule, AccessPolicyRoleKey } from '@skysmack/packages-skysmack-core';
 import { Validators } from '@angular/forms';
 import { Role } from '@skysmack/packages-identities';
@@ -46,7 +46,7 @@ export class NgAccessPolicyRolesFieldsConfig extends FieldsConfig<AccessPolicyRo
 
         const fields: Field[] = [
             new SelectField({
-                fieldType: FieldTypes.SelectField,
+                component: SelectFieldComponent,
                 value: entity ? entity.object.id.ruleId : undefined,
                 key: 'ruleId',
                 optionsData: dependencies && dependencies.availableAccessPolicyRules,
@@ -58,7 +58,7 @@ export class NgAccessPolicyRolesFieldsConfig extends FieldsConfig<AccessPolicyRo
             }),
 
             new SelectField({
-                fieldType: FieldTypes.RolesSelectField,
+                component: RolesSelectFieldComponent,
                 value: entity ? entity.object.id.roleId : undefined,
                 key: 'roleId',
                 validators: [Validators.required],
@@ -69,7 +69,7 @@ export class NgAccessPolicyRolesFieldsConfig extends FieldsConfig<AccessPolicyRo
 
         if (entity && entity.object.id && entity.status !== LocalObjectStatus.CREATING) {
             fields.push(new Field({
-                fieldType: FieldTypes.HiddenField,
+                component: HiddenFieldComponent,
                 value: entity ? entity.object.id : undefined,
                 key: 'id',
                 order: 0

@@ -2,8 +2,7 @@ import { Injectable } from '@angular/core';
 import { FormRule, SelectField } from '@skysmack/ng-ui';
 import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { Field } from '@skysmack/ng-ui';
-import { FieldTypes } from '@skysmack/ng-ui';
-import { FieldsConfig } from '@skysmack/portal-ui';
+import { FieldsConfig, SelectFieldComponent, HiddenFieldComponent, CheckboxFieldComponent } from '@skysmack/portal-ui';
 import { AccessPolicyRule } from '@skysmack/packages-skysmack-core';
 import { AccessPolicyRulesValidation } from '@skysmack/ng-packages';
 
@@ -20,7 +19,7 @@ export class NgAccessPolicyRulesFieldsConfig extends FieldsConfig<AccessPolicyRu
     protected getEntityFields(entity?: LocalObject<AccessPolicyRule, number>, dependencies?: NgAccessPolicyRuleFormDependencies): Field[] {
         const fields = [
             new Field({
-                fieldType: FieldTypes.CheckboxField,
+                component: CheckboxFieldComponent,
                 value: entity ? entity.object.access : false,
                 key: 'access',
                 order: 1,
@@ -28,7 +27,7 @@ export class NgAccessPolicyRulesFieldsConfig extends FieldsConfig<AccessPolicyRu
             }),
 
             new SelectField({
-                fieldType: FieldTypes.SelectField,
+                component: SelectFieldComponent,
                 value: entity ? entity.object.authenticated : undefined,
                 key: 'authenticated',
                 extraOptions: [
@@ -50,7 +49,7 @@ export class NgAccessPolicyRulesFieldsConfig extends FieldsConfig<AccessPolicyRu
             }),
 
             new Field({
-                fieldType: FieldTypes.CheckboxField,
+                component: CheckboxFieldComponent,
                 value: entity ? entity.object.includeRoles : false,
                 key: 'includeRoles',
                 order: 3,
@@ -60,7 +59,7 @@ export class NgAccessPolicyRulesFieldsConfig extends FieldsConfig<AccessPolicyRu
 
         if (entity && entity.object.id && entity.status !== LocalObjectStatus.CREATING) {
             fields.push(new Field({
-                fieldType: FieldTypes.HiddenField,
+                component: HiddenFieldComponent,
                 value: entity ? entity.object.id : undefined,
                 key: 'id',
                 order: 0

@@ -4,8 +4,8 @@ import { FormRule } from '@skysmack/ng-ui';
 import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { InvoiceItem } from '@skysmack/packages-invoices';
 import { Field } from '@skysmack/ng-ui';
-import { FieldTypes } from '@skysmack/ng-ui';
-import { FieldsConfig } from '@skysmack/portal-ui';
+
+import { FieldsConfig, StringFieldComponent, HiddenFieldComponent, IntFieldComponent } from '@skysmack/portal-ui';
 import { NgInvoiceItemsValidation } from '@skysmack/ng-packages';
 
 export interface NgInvoiceItemFormDependencies {
@@ -21,7 +21,7 @@ export class NgInvoiceItemsFieldsConfig extends FieldsConfig<InvoiceItem, number
     protected getEntityFields(entity?: LocalObject<InvoiceItem, number>, dependencies?: NgInvoiceItemFormDependencies): Field[] {
         const fields = [
             new Field({
-                fieldType: FieldTypes.string,
+                component: StringFieldComponent,
                 value: entity ? entity.object.description : undefined,
                 key: 'description',
                 validators: [Validators.required],
@@ -30,7 +30,7 @@ export class NgInvoiceItemsFieldsConfig extends FieldsConfig<InvoiceItem, number
             }),
 
             new Field({
-                fieldType: FieldTypes.int,
+                component: IntFieldComponent,
                 value: entity ? entity.object.order : undefined,
                 key: 'order',
                 validators: [Validators.required],
@@ -39,7 +39,7 @@ export class NgInvoiceItemsFieldsConfig extends FieldsConfig<InvoiceItem, number
             }),
 
             new Field({
-                fieldType: FieldTypes.int,
+                component: IntFieldComponent,
                 value: entity ? entity.object.units : undefined,
                 key: 'units',
                 validators: [Validators.required],
@@ -48,7 +48,7 @@ export class NgInvoiceItemsFieldsConfig extends FieldsConfig<InvoiceItem, number
             }),
 
             new Field({
-                fieldType: FieldTypes.int,
+                component: IntFieldComponent,
                 value: entity ? entity.object.unitPrice : undefined,
                 key: 'unitPrice',
                 validators: [Validators.required],
@@ -57,7 +57,7 @@ export class NgInvoiceItemsFieldsConfig extends FieldsConfig<InvoiceItem, number
             }),
 
             new Field({
-                fieldType: FieldTypes.int,
+                component: IntFieldComponent,
                 value: entity ? entity.object.unitDiscount : undefined,
                 key: 'unitDiscount',
                 validators: [Validators.required],
@@ -66,7 +66,7 @@ export class NgInvoiceItemsFieldsConfig extends FieldsConfig<InvoiceItem, number
             }),
 
             new Field({
-                fieldType: FieldTypes.int,
+                component: IntFieldComponent,
                 value: entity ? entity.object.unitTax : undefined,
                 key: 'unitTax',
                 validators: [Validators.required],
@@ -75,7 +75,7 @@ export class NgInvoiceItemsFieldsConfig extends FieldsConfig<InvoiceItem, number
             }),
 
             new Field({
-                fieldType: FieldTypes.int,
+                component: IntFieldComponent,
                 value: entity ? entity.object.inventoryId : undefined,
                 key: 'inventoryId',
                 validators: [Validators.required],
@@ -88,7 +88,7 @@ export class NgInvoiceItemsFieldsConfig extends FieldsConfig<InvoiceItem, number
         // If added to a create form, it won't be able to bind in the backend.
         if (entity && entity.object.id && entity.status !== LocalObjectStatus.CREATING) {
             fields.push(new Field({
-                fieldType: FieldTypes.HiddenField,
+                component: HiddenFieldComponent,
                 value: entity ? entity.object.id : undefined,
                 key: 'id',
                 order: 0,

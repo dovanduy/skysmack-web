@@ -4,8 +4,8 @@ import { FormRule } from '@skysmack/ng-ui';
 import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { Receipt } from '@skysmack/packages-terminal-payments';
 import { Field } from '@skysmack/ng-ui';
-import { FieldTypes } from '@skysmack/ng-ui';
-import { FieldsConfig } from '@skysmack/portal-ui';
+
+import { FieldsConfig, StringFieldComponent, HiddenFieldComponent } from '@skysmack/portal-ui';
 import { NgReceiptsValidation } from '@skysmack/ng-packages';
 
 export interface NgReceiptFormDependencies {
@@ -21,7 +21,7 @@ export class NgReceiptsFieldsConfig extends FieldsConfig<Receipt, number, NgRece
     protected getEntityFields(entity?: LocalObject<Receipt, number>, dependencies?: NgReceiptFormDependencies): Field[] {
         const fields = [
             new Field({
-                fieldType: FieldTypes.string,
+                component: StringFieldComponent,
                 value: entity ? entity.object.name : undefined,
                 key: 'name',
                 validators: [Validators.required],
@@ -34,7 +34,7 @@ export class NgReceiptsFieldsConfig extends FieldsConfig<Receipt, number, NgRece
         // If added to a create form, it won't be able to bind in the backend.
         if (entity && entity.object.id && entity.status !== LocalObjectStatus.CREATING) {
             fields.push(new Field({
-                fieldType: FieldTypes.HiddenField,
+                component: HiddenFieldComponent,
                 value: entity ? entity.object.id : undefined,
                 key: 'id',
                 order: 0,

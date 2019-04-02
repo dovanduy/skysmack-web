@@ -3,10 +3,14 @@ import { Validators } from '@angular/forms';
 import { FormRule, SetFieldKeyRule } from '@skysmack/ng-ui';
 import { LocalObject, FieldValueProviderViewModel, FieldSchemaViewModel } from '@skysmack/framework';
 import { Field } from '@skysmack/ng-ui';
-import { FieldTypes } from '@skysmack/ng-ui';
+
 import { FieldsValidation } from './ng-fields-validation';
 import { SelectField } from '@skysmack/ng-ui';
 import { FieldsConfig } from './fields-config';
+import { StringFieldComponent } from '../components/field-components/components/string-field/string-field.component';
+import { SelectFieldComponent } from '../components/field-components/components/select-field/select-field.component';
+import { ValidatorsFieldComponent } from '../components/field-components/components/validators-field/validators-field.component';
+import { FieldPermissionFieldComponent } from '../components/field-components/components/field-permission-field/field-permission-field.component';
 
 export interface NgFieldFormDependencies {
     availableFields: LocalObject<FieldValueProviderViewModel, string>[];
@@ -28,7 +32,7 @@ export class NgFieldsConfig extends FieldsConfig<FieldSchemaViewModel, string, N
     protected getEntityFields(field?: LocalObject<FieldSchemaViewModel, string>, dependencies?: NgFieldFormDependencies): Field[] {
         const fields = [
             new Field({
-                fieldType: FieldTypes.string,
+                component: StringFieldComponent,
                 value: field ? field.object.display : undefined,
                 key: 'display',
                 validators: [Validators.required],
@@ -37,7 +41,7 @@ export class NgFieldsConfig extends FieldsConfig<FieldSchemaViewModel, string, N
             }),
 
             new Field({
-                fieldType: FieldTypes.string,
+                component: StringFieldComponent,
                 value: field ? field.object.key : undefined,
                 key: 'key',
                 validators: [Validators.required],
@@ -47,7 +51,7 @@ export class NgFieldsConfig extends FieldsConfig<FieldSchemaViewModel, string, N
             }),
 
             new SelectField({
-                fieldType: FieldTypes.SelectField,
+                component: SelectFieldComponent,
                 value: field ? field.object.type : undefined,
                 key: 'type',
                 validators: [Validators.required],
@@ -59,21 +63,21 @@ export class NgFieldsConfig extends FieldsConfig<FieldSchemaViewModel, string, N
             }),
 
             new Field({
-                fieldType: FieldTypes.ValidatorsField,
+                component: ValidatorsFieldComponent,
                 value: field ? field.object.validators : undefined,
                 key: 'validators',
                 order: 4,
             }),
 
             new Field({
-                fieldType: FieldTypes.FieldPermissionField,
+                component: FieldPermissionFieldComponent,
                 value: field ? field.object.writePermission : undefined,
                 key: 'writePermission',
                 order: 5,
             }),
 
             new Field({
-                fieldType: FieldTypes.FieldPermissionField,
+                component: FieldPermissionFieldComponent,
                 value: field ? field.object.readPermission : undefined,
                 key: 'readPermission',
                 order: 6,

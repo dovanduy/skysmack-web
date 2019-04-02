@@ -4,7 +4,7 @@ import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { RecurringAssignment } from '@skysmack/packages-maintenance';
 import { NgRecurringAssignmentsValidation } from '@skysmack/ng-packages';
 import { FormRule, SelectField, Field, FieldTypes } from '@skysmack/ng-ui';
-import { FieldsConfig } from '@skysmack/portal-ui';
+import { FieldsConfig, SelectFieldComponent, HiddenFieldComponent, DateTimeFieldComponent } from '@skysmack/portal-ui';
 
 export interface NgRecurringAssignmentFormDependencies {
     availableRecurringAssignments: LocalObject<RecurringAssignment, number>[];
@@ -20,7 +20,7 @@ export class NgRecurringAssignmentsFieldsConfig extends FieldsConfig<RecurringAs
     protected getEntityFields(entity?: LocalObject<RecurringAssignment, number>, dependencies?: NgRecurringAssignmentFormDependencies): Field[] {
         const fields = [
             new SelectField({
-                fieldType: FieldTypes.SelectField,
+                component: SelectFieldComponent,
                 value: entity ? entity.object.assignmentTypeId : undefined,
                 key: 'assignmentTypeId',
                 label: 'Assignment Type',
@@ -31,7 +31,7 @@ export class NgRecurringAssignmentsFieldsConfig extends FieldsConfig<RecurringAs
             }),
 
             new Field({
-                fieldType: FieldTypes.dateTime,
+                component: DateTimeFieldComponent,
                 value: entity ? entity.object.start : undefined,
                 key: 'start',
                 label: 'Start',
@@ -41,7 +41,7 @@ export class NgRecurringAssignmentsFieldsConfig extends FieldsConfig<RecurringAs
             }),
 
             new Field({
-                fieldType: FieldTypes.dateTime,
+                component: DateTimeFieldComponent,
                 value: entity ? entity.object.end : undefined,
                 key: 'end',
                 label: 'End',
@@ -55,7 +55,7 @@ export class NgRecurringAssignmentsFieldsConfig extends FieldsConfig<RecurringAs
         // If added to a create form, it won't be able to bind in the backend.
         if (entity && entity.object.id && entity.status !== LocalObjectStatus.CREATING) {
             fields.push(new Field({
-                fieldType: FieldTypes.HiddenField,
+                component: HiddenFieldComponent,
                 value: entity ? entity.object.id : undefined,
                 key: 'id',
                 order: 0,

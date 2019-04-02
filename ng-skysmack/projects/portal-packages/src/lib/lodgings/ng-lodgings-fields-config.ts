@@ -1,10 +1,10 @@
 import { Lodging, LodgingType } from '@skysmack/packages-lodgings';
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
-import { FormRule, Field, FieldTypes, SelectField } from '@skysmack/ng-ui';
+import { FormRule, Field, SelectField } from '@skysmack/ng-ui';
 import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { NgLodgingsValidation } from '@skysmack/ng-packages';
-import { FieldsConfig } from '@skysmack/portal-ui';
+import { FieldsConfig, StringFieldComponent, SelectFieldComponent, HiddenFieldComponent, CheckboxFieldComponent } from '@skysmack/portal-ui';
 
 export interface NgLodgingFormDependencies {
     availableLodgingTypes: LocalObject<LodgingType, number>[];
@@ -19,7 +19,7 @@ export class NgLodgingsFieldsConfig extends FieldsConfig<Lodging, number, NgLodg
     protected getEntityFields(entity?: LocalObject<Lodging, number>, dependencies?: NgLodgingFormDependencies): Field[] {
         const fields = [
             new SelectField({
-                fieldType: FieldTypes.SelectField,
+                component: SelectFieldComponent,
                 value: entity && entity.object ? entity.object.lodgingTypeId : undefined,
                 label: 'Lodging type',
                 key: 'lodgingTypeId',
@@ -31,7 +31,7 @@ export class NgLodgingsFieldsConfig extends FieldsConfig<Lodging, number, NgLodg
             }),
 
             new Field({
-                fieldType: FieldTypes.CheckboxField,
+                component: CheckboxFieldComponent,
                 value: entity && entity.object ? entity.object.disabled : false,
                 label: 'Enabled',
                 key: 'disabled',
@@ -41,7 +41,7 @@ export class NgLodgingsFieldsConfig extends FieldsConfig<Lodging, number, NgLodg
             }),
 
             new Field({
-                fieldType: FieldTypes.string,
+                component: StringFieldComponent,
                 value: entity ? entity.object.name : undefined,
                 key: 'name',
                 validators: [Validators.required],
@@ -54,7 +54,7 @@ export class NgLodgingsFieldsConfig extends FieldsConfig<Lodging, number, NgLodg
         // If added to a create form, it won't be able to bind in the backend.
         if (entity && entity.object.id && entity.status !== LocalObjectStatus.CREATING) {
             fields.push(new Field({
-                fieldType: FieldTypes.HiddenField,
+                component: HiddenFieldComponent,
                 value: entity ? entity.object.id : undefined,
                 key: 'id',
                 order: 0,

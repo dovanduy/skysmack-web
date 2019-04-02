@@ -2,10 +2,10 @@ import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { LodgingReservation } from '@skysmack/packages-lodging-reservations';
-import { FormRule, FieldTypes, SelectField, Field, SelectFieldOption } from '@skysmack/ng-ui';
+import { FormRule, SelectField, Field, SelectFieldOption } from '@skysmack/ng-ui';
 import { LodgingType, Lodging } from '@skysmack/packages-lodgings';
 import { NgLodgingReservationsValidation } from '@skysmack/ng-packages';
-import { FieldsConfig } from '@skysmack/portal-ui';
+import { FieldsConfig, SelectFieldComponent, HiddenFieldComponent, IntFieldComponent, DateFieldComponent } from '@skysmack/portal-ui';
 
 export interface NgLodgingReservationFormDependencies {
     availableLodgingTypes: LocalObject<LodgingType, number>[];
@@ -21,7 +21,7 @@ export class NgLodgingReservationsFieldsConfig extends FieldsConfig<LodgingReser
     protected getEntityFields(entity?: LocalObject<LodgingReservation, number>, dependencies?: NgLodgingReservationFormDependencies): Field[] {
         const fields = [
             new SelectField({
-                fieldType: FieldTypes.SelectField,
+                component: SelectFieldComponent,
                 value: entity ? entity.object.lodgingTypeId : undefined,
                 key: 'lodgingTypeId',
                 validators: [Validators.required],
@@ -31,7 +31,7 @@ export class NgLodgingReservationsFieldsConfig extends FieldsConfig<LodgingReser
                 showColumn: true
             } as SelectField),
             new SelectField({
-                fieldType: FieldTypes.SelectField,
+                component: SelectFieldComponent,
                 value: entity ? entity.object.allocatedLodgingId : undefined,
                 key: 'allocatedLodgingId',
                 label: 'Allocated lodging',
@@ -45,7 +45,7 @@ export class NgLodgingReservationsFieldsConfig extends FieldsConfig<LodgingReser
                 showColumn: true
             }),
             new Field({
-                fieldType: FieldTypes.DateField,
+                component: DateFieldComponent,
                 value: entity ? entity.object.checkIn : undefined,
                 key: 'checkIn',
                 validators: [Validators.required],
@@ -53,7 +53,7 @@ export class NgLodgingReservationsFieldsConfig extends FieldsConfig<LodgingReser
                 showColumn: true
             }),
             new Field({
-                fieldType: FieldTypes.DateField,
+                component: DateFieldComponent,
                 value: entity ? entity.object.checkOut : undefined,
                 key: 'checkOut',
                 validators: [Validators.required],
@@ -61,7 +61,7 @@ export class NgLodgingReservationsFieldsConfig extends FieldsConfig<LodgingReser
                 showColumn: true
             }),
             new Field({
-                fieldType: FieldTypes.int,
+                component: IntFieldComponent,
                 value: entity ? entity.object.persons : undefined,
                 key: 'persons',
                 label: 'Persons',
@@ -75,7 +75,7 @@ export class NgLodgingReservationsFieldsConfig extends FieldsConfig<LodgingReser
         // If added to a create form, it won't be able to bind in the backend.
         if (entity && entity.object.id && entity.status !== LocalObjectStatus.CREATING) {
             fields.push(new Field({
-                fieldType: FieldTypes.HiddenField,
+                component: HiddenFieldComponent,
                 value: entity ? entity.object.id : undefined,
                 key: 'id',
                 order: 0,

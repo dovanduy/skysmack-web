@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
-import { FormRule, CustomValidators, Field, FieldTypes } from '@skysmack/ng-ui';
+import { FormRule, CustomValidators, Field } from '@skysmack/ng-ui';
 import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { User } from '@skysmack/packages-identities';
 import { NgUsersValidation } from '@skysmack/ng-packages';
-import { FieldsConfig } from '@skysmack/portal-ui';
+import { FieldsConfig, HiddenFieldComponent, PasswordFieldComponent, EmailFieldComponent } from '@skysmack/portal-ui';
 
 export interface NgUserFormDependencies {
     [key: string]: any;
@@ -21,7 +21,7 @@ export class NgUsersFieldsConfig extends FieldsConfig<User, number, NgUserFormDe
     protected getEntityFields(entity?: LocalObject<User, number>, dependencies?: NgUserFormDependencies): Field[] {
         const fields = [
             new Field({
-                fieldType: FieldTypes.EmailField,
+                component: EmailFieldComponent,
                 value: entity ? entity.object.email : undefined,
                 key: 'email',
                 validators: [Validators.required, CustomValidators.validEmail()],
@@ -35,7 +35,7 @@ export class NgUsersFieldsConfig extends FieldsConfig<User, number, NgUserFormDe
         if (this.mode === 'create') {
             const passwordFields = [
                 new Field({
-                    fieldType: FieldTypes.PasswordField,
+                    component: PasswordFieldComponent,
                     value: undefined,
                     key: 'password',
                     label: 'Password',
@@ -45,7 +45,7 @@ export class NgUsersFieldsConfig extends FieldsConfig<User, number, NgUserFormDe
                 }),
 
                 new Field({
-                    fieldType: FieldTypes.PasswordField,
+                    component: PasswordFieldComponent,
                     value: undefined,
                     key: 'confirmPassword',
                     label: 'Confirm password',
@@ -61,7 +61,7 @@ export class NgUsersFieldsConfig extends FieldsConfig<User, number, NgUserFormDe
         // If added to a create form, it won't be able to bind in the backend.
         if (entity && entity.object.id && entity.status !== LocalObjectStatus.CREATING) {
             fields.push(new Field({
-                fieldType: FieldTypes.HiddenField,
+                component: HiddenFieldComponent,
                 value: entity ? entity.object.id : undefined,
                 key: 'id',
                 order: 0,

@@ -3,8 +3,8 @@ import { Validators } from '@angular/forms';
 import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { MaintenanceState, MaintenanceEntityStatus } from '@skysmack/packages-maintenance';
 import { NgMaintenanceStatesValidation } from '@skysmack/ng-packages';
-import { FormRule, Field, FieldTypes, SelectField } from '@skysmack/ng-ui';
-import { FieldsConfig } from '@skysmack/portal-ui';
+import { FormRule, Field, SelectField } from '@skysmack/ng-ui';
+import { FieldsConfig, StringFieldComponent, SelectFieldComponent, HiddenFieldComponent } from '@skysmack/portal-ui';
 
 export interface NgMaintenanceStateFormDependencies {
     availableMaintenanceStates: LocalObject<MaintenanceState, number>[];
@@ -20,7 +20,7 @@ export class NgMaintenanceStatesFieldsConfig extends FieldsConfig<MaintenanceSta
     protected getEntityFields(entity?: LocalObject<MaintenanceState, number>, dependencies?: NgMaintenanceStateFormDependencies): Field[] {
         const fields = [
             new Field({
-                fieldType: FieldTypes.string,
+                component: StringFieldComponent,
                 value: entity ? entity.object.description : undefined,
                 key: 'description',
                 label: 'Description',
@@ -30,7 +30,7 @@ export class NgMaintenanceStatesFieldsConfig extends FieldsConfig<MaintenanceSta
             }),
 
             new SelectField({
-                fieldType: FieldTypes.SelectField,
+                component: SelectFieldComponent,
                 value: entity ? entity.object.status : undefined,
                 key: 'status',
                 label: 'Status',
@@ -46,7 +46,7 @@ export class NgMaintenanceStatesFieldsConfig extends FieldsConfig<MaintenanceSta
         // If added to a create form, it won't be able to bind in the backend.
         if (entity && entity.object.id && entity.status !== LocalObjectStatus.CREATING) {
             fields.push(new Field({
-                fieldType: FieldTypes.HiddenField,
+                component: HiddenFieldComponent,
                 value: entity ? entity.object.id : undefined,
                 key: 'id',
                 order: 0,

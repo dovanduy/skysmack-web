@@ -3,8 +3,7 @@ import { FormRule } from '@skysmack/ng-ui';
 import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { Terminal } from '@skysmack/packages-terminal-payments';
 import { Field } from '@skysmack/ng-ui';
-import { FieldTypes } from '@skysmack/ng-ui';
-import { FieldsConfig } from '@skysmack/portal-ui';
+import { FieldsConfig, HiddenFieldComponent } from '@skysmack/portal-ui';
 import { NgTerminalsValidation } from '@skysmack/ng-packages';
 
 export interface NgTerminalFormDependencies {
@@ -21,7 +20,7 @@ export class NgTerminalsFieldsConfig extends FieldsConfig<Terminal, number, NgTe
     protected getEntityFields(entity?: LocalObject<Terminal, number>, dependencies?: NgTerminalFormDependencies): Field[] {
         const fields = [
             // new Field({
-            //     fieldType: FieldTypes.string,
+            //     component: StringFieldComponent,
             //     value: entity ? entity.object.name : undefined,
             //     key: 'name',
             //     validators: [Validators.required],
@@ -34,7 +33,7 @@ export class NgTerminalsFieldsConfig extends FieldsConfig<Terminal, number, NgTe
         // If added to a create form, it won't be able to bind in the backend.
         if (entity && entity.object.id && entity.status !== LocalObjectStatus.CREATING) {
             fields.push(new Field({
-                fieldType: FieldTypes.HiddenField,
+                component: HiddenFieldComponent,
                 value: entity ? entity.object.id : undefined,
                 key: 'id',
                 order: 0,

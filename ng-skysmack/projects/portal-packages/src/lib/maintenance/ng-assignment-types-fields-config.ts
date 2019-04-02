@@ -4,10 +4,9 @@ import { Validators } from '@angular/forms';
 import { FormRule } from '@skysmack/ng-ui';
 import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { Field } from '@skysmack/ng-ui';
-import { FieldTypes } from '@skysmack/ng-ui';
 import { SelectField } from '@skysmack/ng-ui';
 import { NgAssignmentTypesValidation } from '@skysmack/ng-packages';
-import { FieldsConfig } from '@skysmack/portal-ui';
+import { FieldsConfig, StringFieldComponent, SelectFieldComponent, HiddenFieldComponent, RecurringExpressionFieldComponent } from '@skysmack/portal-ui';
 
 export interface NgAssignmentTypeFormDependencies {
     availableMaintenanceStates: LocalObject<MaintenanceState, number>[];
@@ -23,7 +22,7 @@ export class NgAssignmentTypesFieldsConfig extends FieldsConfig<AssignmentType, 
     protected getEntityFields(entity?: LocalObject<AssignmentType, number>, dependencies?: NgAssignmentTypeFormDependencies): Field[] {
         const fields = [
             new SelectField({
-                fieldType: FieldTypes.SelectField,
+                component: SelectFieldComponent,
                 value: entity ? entity.object.stateId : undefined,
                 key: 'stateId',
                 optionsData: dependencies && dependencies.availableMaintenanceStates,
@@ -34,7 +33,7 @@ export class NgAssignmentTypesFieldsConfig extends FieldsConfig<AssignmentType, 
             }),
 
             new Field({
-                fieldType: FieldTypes.string,
+                component: StringFieldComponent,
                 value: entity ? entity.object.description : undefined,
                 key: 'description',
                 validators: [Validators.required],
@@ -43,7 +42,7 @@ export class NgAssignmentTypesFieldsConfig extends FieldsConfig<AssignmentType, 
             }),
 
             new Field({
-                fieldType: FieldTypes.string,
+                component: StringFieldComponent,
                 value: 'P1DT1H1M1S1s', // entity ? entity.object.duePeriod : undefined,
                 key: 'duePeriod',
                 validators: [Validators.required],
@@ -51,7 +50,7 @@ export class NgAssignmentTypesFieldsConfig extends FieldsConfig<AssignmentType, 
             }),
 
             new Field({
-                fieldType: FieldTypes.RecurringExpressionField,
+                component: RecurringExpressionFieldComponent,
                 value: entity ? entity.object.expression : undefined,
                 key: 'expression',
                 order: 4
@@ -64,7 +63,7 @@ export class NgAssignmentTypesFieldsConfig extends FieldsConfig<AssignmentType, 
         // If added to a create form, it won't be able to bind in the backend.
         if (entity && entity.object.id && entity.status !== LocalObjectStatus.CREATING) {
             fields.push(new Field({
-                fieldType: FieldTypes.HiddenField,
+                component: HiddenFieldComponent,
                 value: entity ? entity.object.id : undefined,
                 key: 'id',
                 order: 0,

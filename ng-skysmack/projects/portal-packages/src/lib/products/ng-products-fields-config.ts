@@ -4,9 +4,9 @@ import { FormRule } from '@skysmack/ng-ui';
 import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { Product, ProductType } from '@skysmack/packages-products';
 import { Field } from '@skysmack/ng-ui';
-import { FieldTypes } from '@skysmack/ng-ui';
+
 import { SelectField } from '@skysmack/ng-ui';
-import { FieldsConfig } from '@skysmack/portal-ui';
+import { FieldsConfig, StringFieldComponent, SelectFieldComponent, HiddenFieldComponent } from '@skysmack/portal-ui';
 import { NgProductsValidation } from '@skysmack/ng-packages';
 
 export interface NgProductFormDependencies {
@@ -23,7 +23,7 @@ export class NgProductsFieldsConfig extends FieldsConfig<Product, number, NgProd
     protected getEntityFields(entity?: LocalObject<Product, number>, dependencies?: NgProductFormDependencies): Field[] {
         const fields = [
             new Field({
-                fieldType: FieldTypes.string,
+                component: StringFieldComponent,
                 value: entity ? entity.object.name : undefined,
                 key: 'name',
                 validators: [Validators.required],
@@ -32,7 +32,7 @@ export class NgProductsFieldsConfig extends FieldsConfig<Product, number, NgProd
             }),
 
             new SelectField({
-                fieldType: FieldTypes.SelectField,
+                component: SelectFieldComponent,
                 value: entity ? entity.object.productTypeId : undefined,
                 key: 'productTypeId',
                 label: 'Product type',
@@ -50,7 +50,7 @@ export class NgProductsFieldsConfig extends FieldsConfig<Product, number, NgProd
         // If added to a create form, it won't be able to bind in the backend.
         if (entity && entity.object.id && entity.status !== LocalObjectStatus.CREATING) {
             fields.push(new Field({
-                fieldType: FieldTypes.HiddenField,
+                component: HiddenFieldComponent,
                 value: entity ? entity.object.id : undefined,
                 key: 'id',
                 order: 0,

@@ -3,7 +3,6 @@ import { FieldTypes, FormHelper, Field, FormRule } from '@skysmack/ng-ui';
 import { Observable } from 'rxjs';
 import { DynamicFormFieldDirective } from '../dynamic-form-field.directive';
 import { DynamicField } from '../dynamic-field';
-import { StringFieldComponent } from '../components/string-field/string-field.component';
 
 @Component({
   selector: 'ss-dynamic-form-field-template',

@@ -4,8 +4,8 @@ import { FormRule } from '@skysmack/ng-ui';
 import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { ProductType } from '@skysmack/packages-products';
 import { Field } from '@skysmack/ng-ui';
-import { FieldTypes } from '@skysmack/ng-ui';
-import { FieldsConfig } from '@skysmack/portal-ui';
+
+import { FieldsConfig, StringFieldComponent, HiddenFieldComponent } from '@skysmack/portal-ui';
 import { NgProductTypesValidation } from '@skysmack/ng-packages';
 
 export interface NgProductTypeFormDependencies {
@@ -21,7 +21,7 @@ export class NgProductTypesFieldsConfig extends FieldsConfig<ProductType, number
     protected getEntityFields(entity?: LocalObject<ProductType, number>, dependencies?: NgProductTypeFormDependencies): Field[] {
         const fields = [
             new Field({
-                fieldType: FieldTypes.string,
+                component: StringFieldComponent,
                 value: entity ? entity.object.name : undefined,
                 key: 'name',
                 validators: [Validators.required],
@@ -34,7 +34,7 @@ export class NgProductTypesFieldsConfig extends FieldsConfig<ProductType, number
         // If added to a create form, it won't be able to bind in the backend.
         if (entity && entity.object.id && entity.status !== LocalObjectStatus.CREATING) {
             fields.push(new Field({
-                fieldType: FieldTypes.HiddenField,
+                component: HiddenFieldComponent,
                 value: entity ? entity.object.id : undefined,
                 key: 'id',
                 order: 0,

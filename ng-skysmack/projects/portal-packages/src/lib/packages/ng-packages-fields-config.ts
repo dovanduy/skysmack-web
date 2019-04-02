@@ -3,7 +3,7 @@ import { Validators } from '@angular/forms';
 import { LocalObject, Package, AvailablePackage } from '@skysmack/framework';
 import { FormRule, Field, CustomValidators, SetPathRule, SelectField, FieldTypes } from '@skysmack/ng-ui';
 import { PackagesValidation } from '@skysmack/ng-packages';
-import { FieldsConfig } from '@skysmack/portal-ui';
+import { FieldsConfig, StringFieldComponent, SelectFieldComponent, HiddenFieldComponent, PackageDependenciesFieldComponent } from '@skysmack/portal-ui';
 
 export interface NgPackageFormDependencies {
     availablePackages: LocalObject<AvailablePackage, string>[];
@@ -20,7 +20,7 @@ export class NgPackagesFieldsConfig extends FieldsConfig<Package, string, NgPack
     protected getEntityFields(_package?: LocalObject<Package, string>, dependencies?: NgPackageFormDependencies): Field[] {
         return [
             new SelectField({
-                fieldType: FieldTypes.SelectField,
+                component: SelectFieldComponent,
                 value: _package ? _package.object.type : undefined,
                 label: 'Type',
                 key: 'type',
@@ -33,14 +33,14 @@ export class NgPackagesFieldsConfig extends FieldsConfig<Package, string, NgPack
             }),
 
             new Field({
-                fieldType: FieldTypes.PackageDependenciesField,
+                component: PackageDependenciesFieldComponent,
                 value: _package ? _package.object.name : undefined,
                 key: 'dependencies',
                 order: 2,
             }),
 
             new Field({
-                fieldType: FieldTypes.string,
+                component: StringFieldComponent,
                 value: _package ? _package.object.name : undefined,
                 key: 'name',
                 label: 'Name',
@@ -51,7 +51,7 @@ export class NgPackagesFieldsConfig extends FieldsConfig<Package, string, NgPack
             }),
 
             new Field({
-                fieldType: FieldTypes.string,
+                component: StringFieldComponent,
                 value: _package ? _package.object.description : undefined,
                 key: 'description',
                 label: 'Description',
@@ -60,7 +60,7 @@ export class NgPackagesFieldsConfig extends FieldsConfig<Package, string, NgPack
             }),
 
             new Field({
-                fieldType: FieldTypes.string,
+                component: StringFieldComponent,
                 value: _package ? _package.object.path : undefined,
                 key: 'path',
                 label: 'path',
@@ -71,7 +71,7 @@ export class NgPackagesFieldsConfig extends FieldsConfig<Package, string, NgPack
             }),
 
             new Field({
-                fieldType: FieldTypes.HiddenField,
+                component: HiddenFieldComponent,
                 value: _package ? _package.object.dependencies : undefined,
                 key: 'dependencies',
                 label: 'dependencies',

@@ -49,17 +49,12 @@ export class Field {
     /**
      * Field type e.g. datetime field, select field, etc.
      */
-    public fieldType: FieldTypes;
-
-
+    public fieldType: FieldTypes = FieldTypes.undefined;
 
     /**
      * EXPERIMENTAL
      */
     public component: Type<any>;
-
-
-
 
     /**
      * Placeholder content e.g. "Write your first name here, please"

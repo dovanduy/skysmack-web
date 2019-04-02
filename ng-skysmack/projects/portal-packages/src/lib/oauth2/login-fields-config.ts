@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
-import { FormRule, FieldTypes, Field } from '@skysmack/ng-ui';
+import { FormRule, Field } from '@skysmack/ng-ui';
 import { LoginValidation } from './login-validation';
 import { LocalObject } from '@skysmack/framework';
-import { FieldsConfig } from '@skysmack/portal-ui';
+import { FieldsConfig, PasswordFieldComponent, EmailFieldComponent } from '@skysmack/portal-ui';
 
 @Injectable({ providedIn: 'root' })
 export class LoginFieldsConfig extends FieldsConfig<any, any, any> {
@@ -14,7 +14,7 @@ export class LoginFieldsConfig extends FieldsConfig<any, any, any> {
     protected getEntityFields(entity?: LocalObject<any, any>, dependencies?: any): Field[] {
         const fields = [
             new Field({
-                fieldType: FieldTypes.EmailField,
+                component: EmailFieldComponent,
                 value: undefined,
                 key: 'email',
                 validators: [Validators.required],
@@ -22,7 +22,7 @@ export class LoginFieldsConfig extends FieldsConfig<any, any, any> {
             }),
 
             new Field({
-                fieldType: FieldTypes.PasswordField,
+                component: PasswordFieldComponent,
                 value: undefined,
                 key: 'password',
                 validators: [Validators.required],

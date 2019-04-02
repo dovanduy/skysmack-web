@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { ProductPriceChange, ProductsSalesPrice, PriceChangeType } from '@skysmack/packages-products-pricings';
-import { FormRule, FieldTypes, SelectField, Field } from '@skysmack/ng-ui';
+import { FormRule, SelectField, Field } from '@skysmack/ng-ui';
 import { NgProductPriceChangesValidation } from '@skysmack/ng-packages';
-import { FieldsConfig } from '@skysmack/portal-ui';
+import { FieldsConfig, SelectFieldComponent, HiddenFieldComponent, DecimalFieldComponent, DateTimeFieldComponent } from '@skysmack/portal-ui';
 
 
 export interface NgProductPriceChangesFormDependencies {
@@ -20,7 +20,7 @@ export class NgProductPriceChangesFieldsConfig extends FieldsConfig<ProductPrice
     protected getEntityFields(entity?: LocalObject<ProductPriceChange, number>, dependencies?: NgProductPriceChangesFormDependencies): Field[] {
         const fields = [
             new SelectField({
-                fieldType: FieldTypes.SelectField,
+                component: SelectFieldComponent,
                 value: entity ? entity.object.currencyCode : undefined,
                 key: 'currencyCode',
                 validators: [Validators.required],
@@ -38,7 +38,7 @@ export class NgProductPriceChangesFieldsConfig extends FieldsConfig<ProductPrice
                 showColumn: true
             } as SelectField),
             new SelectField({
-                fieldType: FieldTypes.SelectField,
+                component: SelectFieldComponent,
                 value: entity ? entity.object.recordId : undefined,
                 key: 'recordId',
                 validators: [Validators.required],
@@ -48,7 +48,7 @@ export class NgProductPriceChangesFieldsConfig extends FieldsConfig<ProductPrice
                 showColumn: true
             }),
             new SelectField({
-                fieldType: FieldTypes.SelectField,
+                component: SelectFieldComponent,
                 value: entity ? entity.object.changeType : undefined,
                 key: 'changeType',
                 validators: [Validators.required],
@@ -58,7 +58,7 @@ export class NgProductPriceChangesFieldsConfig extends FieldsConfig<ProductPrice
                 showColumn: true
             }),
             new Field({
-                fieldType: FieldTypes.decimal,
+                component: DecimalFieldComponent,
                 value: entity ? entity.object.change : undefined,
                 key: 'change',
                 validators: [Validators.required],
@@ -66,7 +66,7 @@ export class NgProductPriceChangesFieldsConfig extends FieldsConfig<ProductPrice
                 showColumn: true
             }),
             new Field({
-                fieldType: FieldTypes.dateTime,
+                component: DateTimeFieldComponent,
                 value: entity ? entity.object.validFrom : undefined,
                 key: 'validFrom',
                 validators: [Validators.required],
@@ -74,7 +74,7 @@ export class NgProductPriceChangesFieldsConfig extends FieldsConfig<ProductPrice
                 showColumn: true
             }),
             new Field({
-                fieldType: FieldTypes.dateTime,
+                component: DateTimeFieldComponent,
                 value: entity ? entity.object.validTo : undefined,
                 key: 'validTo',
                 validators: [Validators.required],
@@ -87,7 +87,7 @@ export class NgProductPriceChangesFieldsConfig extends FieldsConfig<ProductPrice
         // If added to a create form, it won't be able to bind in the backend.
         if (entity && entity.object.id && entity.status !== LocalObjectStatus.CREATING) {
             fields.push(new Field({
-                fieldType: FieldTypes.HiddenField,
+                component: HiddenFieldComponent,
                 value: entity ? entity.object.id : undefined,
                 key: 'id',
                 order: 0,

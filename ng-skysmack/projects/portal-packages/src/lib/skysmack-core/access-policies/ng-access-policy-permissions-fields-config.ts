@@ -3,8 +3,7 @@ import { Validators } from '@angular/forms';
 import { FormRule, SelectField, SelectFieldOption } from '@skysmack/ng-ui';
 import { LocalObject, Package, LocalObjectStatus } from '@skysmack/framework';
 import { Field } from '@skysmack/ng-ui';
-import { FieldTypes } from '@skysmack/ng-ui';
-import { FieldsConfig } from '@skysmack/portal-ui';
+import { FieldsConfig, SelectFieldComponent, HiddenFieldComponent, CheckboxFieldComponent, IntFieldComponent, AvailablePermissionsFieldComponent } from '@skysmack/portal-ui';
 import { AccessPolicyPermission, AccessPolicyRule } from '@skysmack/packages-skysmack-core';
 import { AccessPolicyPermissionsValidation } from '@skysmack/ng-packages';
 
@@ -44,7 +43,7 @@ export class NgAccessPolicyPermissionsFieldsConfig extends FieldsConfig<AccessPo
 
         const fields = [
             new SelectField({
-                fieldType: FieldTypes.SelectField,
+                component: SelectFieldComponent,
                 value: entity ? entity.object.packagePath : undefined,
                 key: 'packagePath',
                 optionsData: dependencies && dependencies.installedPackages,
@@ -58,7 +57,7 @@ export class NgAccessPolicyPermissionsFieldsConfig extends FieldsConfig<AccessPo
             }),
 
             new SelectField({
-                fieldType: FieldTypes.SelectField,
+                component: SelectFieldComponent,
                 value: entity ? entity.object.ruleId : undefined,
                 key: 'ruleId',
                 optionsData: dependencies && dependencies.availableAccessPolicyRules,
@@ -69,7 +68,7 @@ export class NgAccessPolicyPermissionsFieldsConfig extends FieldsConfig<AccessPo
             }),
 
             new Field({
-                fieldType: FieldTypes.AvailablePermissionsField,
+                component: AvailablePermissionsFieldComponent,
                 value: entity ? entity.object.permission : undefined,
                 key: 'permission',
                 order: 3,
@@ -77,7 +76,7 @@ export class NgAccessPolicyPermissionsFieldsConfig extends FieldsConfig<AccessPo
             }),
 
             new Field({
-                fieldType: FieldTypes.int,
+                component: IntFieldComponent,
                 value: entity ? entity.object.order : false,
                 key: 'order',
                 validators: [Validators.required],
@@ -86,7 +85,7 @@ export class NgAccessPolicyPermissionsFieldsConfig extends FieldsConfig<AccessPo
             }),
 
             new Field({
-                fieldType: FieldTypes.CheckboxField,
+                component: CheckboxFieldComponent,
                 value: entity ? entity.object.isTopLevel : false,
                 key: 'isTopLevel',
                 validators: [Validators.required],
@@ -97,7 +96,7 @@ export class NgAccessPolicyPermissionsFieldsConfig extends FieldsConfig<AccessPo
 
         if (entity && entity.object.id && entity.status !== LocalObjectStatus.CREATING) {
             fields.push(new Field({
-                fieldType: FieldTypes.HiddenField,
+                component: HiddenFieldComponent,
                 value: entity ? entity.object.id : undefined,
                 key: 'id',
                 order: 0

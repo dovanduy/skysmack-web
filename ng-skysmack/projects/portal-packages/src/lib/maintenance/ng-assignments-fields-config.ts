@@ -4,7 +4,7 @@ import { LocalObject, LocalObjectStatus, EnumHelpers } from '@skysmack/framework
 import { Assignment, AssignmentType } from '@skysmack/packages-maintenance';
 import { NgAssignmentsValidation } from '@skysmack/ng-packages';
 import { FormRule, Field, SelectField, FieldTypes } from '@skysmack/ng-ui';
-import { FieldsConfig } from '@skysmack/portal-ui';
+import { FieldsConfig, StringFieldComponent, SelectFieldComponent, HiddenFieldComponent, DateTimeFieldComponent } from '@skysmack/portal-ui';
 
 export interface NgAssignmentFormDependencies {
     availableAssignmentTypes: LocalObject<AssignmentType, number>[];
@@ -21,7 +21,7 @@ export class NgAssignmentsFieldsConfig extends FieldsConfig<Assignment, number, 
         const fields = [
             // TODO(GET_DEPS): DisplayKet is new here - is that still needed?
             new SelectField({
-                fieldType: FieldTypes.SelectField,
+                component: SelectFieldComponent,
                 value: entity && entity.object ? entity.object.assignmentTypeId : undefined,
                 key: 'assignmentTypeId',
                 displayKey: 'assignmentType',
@@ -34,7 +34,7 @@ export class NgAssignmentsFieldsConfig extends FieldsConfig<Assignment, number, 
             }),
 
             new Field({
-                fieldType: FieldTypes.string,
+                component: StringFieldComponent,
                 value: entity ? entity.object.description : undefined,
                 key: 'description',
                 label: 'Description',
@@ -44,7 +44,7 @@ export class NgAssignmentsFieldsConfig extends FieldsConfig<Assignment, number, 
             }),
 
             new SelectField({
-                fieldType: FieldTypes.SelectField,
+                component: SelectFieldComponent,
                 value: entity && entity.object ? entity.object.status : undefined,
                 label: 'Occupation state',
                 key: 'status',
@@ -60,7 +60,7 @@ export class NgAssignmentsFieldsConfig extends FieldsConfig<Assignment, number, 
             }),
 
             new Field({
-                fieldType: FieldTypes.dateTime,
+                component: DateTimeFieldComponent,
                 value: entity ? entity.object.from : undefined,
                 key: 'from',
                 label: 'From',
@@ -70,7 +70,7 @@ export class NgAssignmentsFieldsConfig extends FieldsConfig<Assignment, number, 
             }),
 
             new Field({
-                fieldType: FieldTypes.dateTime,
+                component: DateTimeFieldComponent,
                 value: entity ? entity.object.due : undefined,
                 key: 'due',
                 label: 'Due',
@@ -84,7 +84,7 @@ export class NgAssignmentsFieldsConfig extends FieldsConfig<Assignment, number, 
         // If added to a create form, it won't be able to bind in the backend.
         if (entity && entity.object.id && entity.status !== LocalObjectStatus.CREATING) {
             fields.push(new Field({
-                fieldType: FieldTypes.HiddenField,
+                component: HiddenFieldComponent,
                 value: entity ? entity.object.id : undefined,
                 key: 'id',
                 order: 0,

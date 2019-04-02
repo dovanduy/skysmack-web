@@ -3,7 +3,7 @@ import { FormRule, Field, FieldTypes } from '@skysmack/ng-ui';
 import { LocalObject, toLocalObject } from '@skysmack/framework';
 import { LodgingSettings } from '@skysmack/packages-lodgings';
 import { NgLodgingSettingsValidation } from '@skysmack/ng-packages';
-import { FieldsConfig } from '@skysmack/portal-ui';
+import { FieldsConfig, StringFieldComponent, DateFieldComponent } from '@skysmack/portal-ui';
 
 export interface NgLodgingSettingsFormDependencies {
     [key: string]: any;
@@ -26,25 +26,25 @@ export class NgLodgingSettingsFieldsConfig extends FieldsConfig<LodgingSettings,
 
         const fields = [
             new Field({
-                fieldType: FieldTypes.string,
+                component: StringFieldComponent,
                 value: initializedSettings ? initializedSettings.object.name : undefined,
                 key: 'name',
                 order: 1
             }),
             new Field({
-                fieldType: FieldTypes.DateField,
+                component: DateFieldComponent,
                 value: initializedSettings ? initializedSettings.object.DefaultCheckIn : undefined,
                 key: 'DefaultCheckIn',
                 order: 2
             }),
             new Field({
-                fieldType: FieldTypes.DateField,
+                component: DateFieldComponent,
                 value: initializedSettings ? initializedSettings.object.DefaultCheckOut : undefined,
                 key: 'DefaultCheckOut',
                 order: 3
             }),
             new Field({
-                fieldType: FieldTypes.string,
+                component: StringFieldComponent,
                 value: initializedSettings ? initializedSettings.object.timeZoneId : undefined,
                 key: 'timeZoneId',
                 order: 3
