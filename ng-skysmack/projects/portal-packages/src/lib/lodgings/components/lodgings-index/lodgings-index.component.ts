@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { EntityComponentPageTitle, DocumentRecordIndexComponent } from '@skysmack/portal-ui';
 import { Router, ActivatedRoute } from '@angular/router';
-import { NgSkysmackStore, NgLodgingsFieldsConfig } from '@skysmack/ng-packages';
+import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { LodgingsAppState } from '@skysmack/packages-lodgings';
 import { Lodging } from '@skysmack/packages-lodgings';
 import { NgLodgingsActions } from '@skysmack/ng-packages';
@@ -9,6 +9,7 @@ import { NgLodgingsStore } from '@skysmack/ng-packages';
 import { NgLodgingsMenu } from './../../ng-lodgings-menu';
 import { EntityAction } from '@skysmack/ng-ui';
 import { NgFieldActions, NgFieldStore } from '@skysmack/ng-redux';
+import { NgLodgingsFieldsConfig } from '../../ng-lodgings-fields-config';
 
 
 @Component({

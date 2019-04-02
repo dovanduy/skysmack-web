@@ -3,7 +3,7 @@ import { Validators } from '@angular/forms';
 import { FormRule, Field, FieldTypes, FieldsConfig } from '@skysmack/ng-ui';
 import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { LodgingType } from '@skysmack/packages-lodgings';
-import { NgLodgingTypesValidation } from './ng-lodging-types-validation';
+import { NgLodgingTypesValidation } from '@skysmack/ng-packages';
 
 export interface NgLodgingTypeFormDependencies {
     [key: string]: any;

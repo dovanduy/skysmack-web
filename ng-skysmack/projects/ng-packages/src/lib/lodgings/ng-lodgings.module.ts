@@ -4,14 +4,11 @@ import { lodgingsReducer, lodgingTypesReducer } from '@skysmack/packages-lodging
 import { registerRedux } from '@skysmack/ng-redux';
 import { NgLodgingsEpics } from './redux/ng-lodgings-epics';
 import { NgLodgingTypesEpics } from './redux/ng-lodging-types-epics';
-import { NgLodgingSettingsFieldsConfig } from './ng-lodging-settings-fields-config';
 
 @NgModule({
   imports: [],
   exports: [],
-  providers: [
-    { provide: 'NgLodgingSettingsFieldsConfig', useClass: NgLodgingSettingsFieldsConfig }
-  ],
+  providers: []
 })
 export class NgLodgingsModule {
   constructor(

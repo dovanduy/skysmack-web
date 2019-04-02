@@ -4,10 +4,10 @@ import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EditorNavService } from '@skysmack/portal-ui';
 import { DocumentRecordFormComponent } from '@skysmack/portal-ui';
-import { NgLodgingTypesFieldsConfig, NgLodgingTypeFormDependencies } from '@skysmack/ng-packages';
 import { NgLodgingTypesActions } from '@skysmack/ng-packages';
 import { NgLodgingTypesStore } from '@skysmack/ng-packages';
 import { NgFieldActions, NgFieldStore } from '@skysmack/ng-redux';
+import { NgLodgingTypesFieldsConfig, NgLodgingTypeFormDependencies } from '../../ng-lodging-types-fields-config';
 
 @Component({
   selector: 'ss-lodging-types-edit',

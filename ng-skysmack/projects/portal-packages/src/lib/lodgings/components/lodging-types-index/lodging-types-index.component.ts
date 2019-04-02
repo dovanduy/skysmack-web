@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { EntityComponentPageTitle, DocumentRecordIndexComponent } from '@skysmack/portal-ui';
 import { Router, ActivatedRoute } from '@angular/router';
-import { NgSkysmackStore, NgLodgingTypesFieldsConfig } from '@skysmack/ng-packages';
+import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { LodgingTypesAppState, LodgingType } from '@skysmack/packages-lodgings';
 import { NgLodgingTypesStore } from '@skysmack/ng-packages';
 import { NgLodgingTypesActions } from '@skysmack/ng-packages';
 import { EntityAction } from '@skysmack/ng-ui';
 import { NgLodgingTypesMenu } from './../../ng-lodging-types-menu';
 import { NgFieldActions, NgFieldStore } from '@skysmack/ng-redux';
-
+import { NgLodgingTypesFieldsConfig } from '../../ng-lodging-types-fields-config';
 
 @Component({
   selector: 'ss-lodging-types-index',

@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { FormRule, Field, FieldTypes, FieldsConfig } from '@skysmack/ng-ui';
 import { LocalObject, toLocalObject } from '@skysmack/framework';
-import { NgLodgingSettingsValidation } from './ng-lodging-settings-validation';
 import { LodgingSettings } from '@skysmack/packages-lodgings';
+import { NgLodgingSettingsValidation } from '@skysmack/ng-packages';
 
 export interface NgLodgingSettingsFormDependencies {
     [key: string]: any;

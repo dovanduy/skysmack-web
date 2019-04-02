@@ -4,3 +4,6 @@ export * from './lodgings.module';
 export * from './ng-lodgings-menu';
 export * from './ng-lodging-types-menu';
 export * from './ng-lodgings-availability-menu';
+export * from './ng-lodgings-fields-config';
+export * from './ng-lodging-settings-fields-config';
+export * from './ng-lodging-types-fields-config';

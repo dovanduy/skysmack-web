@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LodgingTypesAppState, LodgingType } from '@skysmack/packages-lodgings';
-import { NgLodgingTypesFieldsConfig, NgLodgingTypeFormDependencies, NgLodgingTypesStore, NgSkysmackStore, NgLodgingTypesActions } from '@skysmack/ng-packages';
+import { NgLodgingTypesStore, NgSkysmackStore, NgLodgingTypesActions } from '@skysmack/ng-packages';
 import { EditorNavService, DocumentRecordFormComponent } from '@skysmack/portal-ui';
 import { NgFieldActions, NgFieldStore } from '@skysmack/ng-redux';
+import { NgLodgingTypesFieldsConfig, NgLodgingTypeFormDependencies } from '../../ng-lodging-types-fields-config';
 
 @Component({
   selector: 'ss-lodging-types-create',

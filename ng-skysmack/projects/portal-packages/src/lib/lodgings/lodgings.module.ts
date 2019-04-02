@@ -11,6 +11,7 @@ import { TranslateLoader } from '@ngx-translate/core';
 import { LanguageService } from '@skysmack/portal-ui';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { NgLodgingSettingsFieldsConfig } from './ng-lodging-settings-fields-config';
 
 @NgModule({
   imports: [
@@ -38,7 +39,8 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
       provide: TranslateLoader,
       useFactory: HttpLoaderFactory,
       deps: [HttpClient]
-    }
+    },
+    { provide: 'NgLodgingSettingsFieldsConfig', useClass: NgLodgingSettingsFieldsConfig }
   ]
 })
 export class LodgingsModule {

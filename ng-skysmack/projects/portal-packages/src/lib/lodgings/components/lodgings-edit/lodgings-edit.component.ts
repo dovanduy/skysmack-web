@@ -5,7 +5,6 @@ import { EditorNavService } from '@skysmack/portal-ui';
 import { DocumentRecordFormComponent } from '@skysmack/portal-ui';
 import { LodgingsAppState, Lodging } from '@skysmack/packages-lodgings';
 import { NgLodgingsActions } from '@skysmack/ng-packages';
-import { NgLodgingsFieldsConfig, NgLodgingFormDependencies } from '@skysmack/ng-packages';
 import { NgLodgingsStore } from '@skysmack/ng-packages';
 import { NgLodgingTypesActions } from '@skysmack/ng-packages';
 import { NgLodgingTypesStore } from '@skysmack/ng-packages';
@@ -13,6 +12,7 @@ import { PagedQuery } from '@skysmack/framework';
 import { combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { NgFieldActions, NgFieldStore } from '@skysmack/ng-redux';
+import { NgLodgingsFieldsConfig, NgLodgingFormDependencies } from '../../ng-lodgings-fields-config';
 
 @Component({
   selector: 'ss-lodgings-edit',
