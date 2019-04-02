@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { EntityComponentPageTitle, DocumentRecordIndexComponent } from '@skysmack/portal-ui';
 import { Router, ActivatedRoute } from '@angular/router';
-import { NgPersonsActions, NgPersonsFieldsConfig } from '@skysmack/ng-packages';
+import { NgPersonsActions } from '@skysmack/ng-packages';
 import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { NgPersonsStore } from '@skysmack/ng-packages';
 import { Person, PersonsAppState, PERSONS_AREA_KEY } from '@skysmack/packages-persons';
 import { NgPersonsMenu } from './../../ng-persons-menu';
 import { EntityAction } from '@skysmack/ng-ui';
 import { NgFieldActions, NgFieldStore } from '@skysmack/ng-redux';
+import { NgPersonsFieldsConfig } from '../../ng-persons-fields-config';
 
 @Component({
   selector: 'ss-persons-index',

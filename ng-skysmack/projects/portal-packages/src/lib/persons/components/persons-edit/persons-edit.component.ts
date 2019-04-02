@@ -4,10 +4,10 @@ import { NgPersonsActions } from '@skysmack/ng-packages';
 import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EditorNavService } from '@skysmack/portal-ui';
-import { NgPersonsFieldsConfig, NgPersonFormDependencies } from '@skysmack/ng-packages';
 import { DocumentRecordFormComponent } from '@skysmack/portal-ui';
 import { NgPersonsStore } from '@skysmack/ng-packages';
 import { NgFieldActions, NgFieldStore } from '@skysmack/ng-redux';
+import { NgPersonsFieldsConfig, NgPersonFormDependencies } from '../../ng-persons-fields-config';
 
 @Component({
   selector: 'ss-persons-edit',

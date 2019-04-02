@@ -58,6 +58,8 @@ import { portailUiPipes } from './pipes/portal-ui-pipes';
 import { BackendErrorsComponent } from './components/common/backend-errors/backend-errors.component';
 import { ManagePersonsFieldComponent } from './components/field-components/components/manage-persons-field/manage-persons-field.component';
 import { MultiSelectFieldComponent } from './components/field-components/components/multi-select-field/multi-select-field.component';
+import { DynamicFormFieldDirective } from './components/field-components/dynamic-form-field.directive';
+import { DynamicFormFieldTemplateComponent } from './components/field-components/dynamic-form-field-template/dynamic-form-field-template.component';
 
 @NgModule({
   imports: [
@@ -84,6 +86,7 @@ import { MultiSelectFieldComponent } from './components/field-components/compone
     ShowEntityActionDirective,
     IsAuthenticatedDirective,
     IsAnonymousDirective,
+    DynamicFormFieldDirective,
     // Components
     DropDownBlockComponent,
     SidebarMenuComponent,
@@ -101,6 +104,7 @@ import { MultiSelectFieldComponent } from './components/field-components/compone
     ContainerComponent,
     CardBodyComponent,
     // Fields
+    DynamicFormFieldTemplateComponent,
     DynamicFormComponent,
     DynamicFormFieldComponent,
     CheckboxFieldComponent,
@@ -176,6 +180,9 @@ import { MultiSelectFieldComponent } from './components/field-components/compone
     RolesSelectFieldComponent,
     ManagePersonsFieldComponent,
     MultiSelectFieldComponent
+  ],
+  entryComponents: [
+    StringFieldComponent
   ]
 })
 export class PortalUiModule {

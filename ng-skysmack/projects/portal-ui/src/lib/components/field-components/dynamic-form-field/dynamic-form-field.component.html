@@ -1,5 +1,3 @@
-<ng-template dynamic-field [fh]="fh" [fieldKey]="fieldKey" [fields$]="fields$" [rules]="rules"></ng-template>
-
 <div [ngSwitch]="fieldType">
   <ss-int-field [fh]="fh" [fieldKey]="fieldKey" [fields$]="fields$" [rules]="rules"
     *ngSwitchCase="fieldTypeConstants.int">

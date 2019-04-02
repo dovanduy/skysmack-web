@@ -6,8 +6,9 @@ import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { Person } from '@skysmack/packages-persons';
 import { Field } from '@skysmack/ng-ui';
 import { FieldTypes } from '@skysmack/ng-ui';
-import { NgPersonsValidation } from './ng-persons-validation';
 import { FieldsConfig } from '@skysmack/ng-ui';
+import { NgPersonsValidation } from '@skysmack/ng-packages';
+import { StringFieldComponent } from '@skysmack/portal-ui';
 
 export interface NgPersonFormDependencies {
     [key: string]: any;
@@ -30,7 +31,8 @@ export class NgPersonsFieldsConfig extends FieldsConfig<Person, number, NgPerson
                 key: 'firstName',
                 validators: [Validators.required],
                 order: 1,
-                showColumn: true
+                showColumn: true,
+                component: StringFieldComponent
             }),
 
             new Field({
@@ -39,7 +41,8 @@ export class NgPersonsFieldsConfig extends FieldsConfig<Person, number, NgPerson
                 key: 'lastName',
                 validators: [Validators.required],
                 order: 2,
-                showColumn: true
+                showColumn: true,
+                component: StringFieldComponent
             }),
 
             new Field({
@@ -47,7 +50,8 @@ export class NgPersonsFieldsConfig extends FieldsConfig<Person, number, NgPerson
                 value: entity ? entity.object.displayName : undefined,
                 key: 'displayName',
                 validators: [Validators.required],
-                order: 3
+                order: 3,
+                component: StringFieldComponent
             })
         ];
 

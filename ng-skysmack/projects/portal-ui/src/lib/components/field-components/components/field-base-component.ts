@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { FormHelper, Field, FormRule } from '@skysmack/ng-ui';
 import { map } from 'rxjs/operators';
 import { SubscriptionHandler, StrIndex } from '@skysmack/framework';
+import { DynamicField } from '../dynamic-field';
 
 interface AddedEvent {
     component: ElementRef;
@@ -12,7 +13,7 @@ interface AddedEvent {
     callback: Function;
 }
 
-export abstract class FieldBaseComponent implements OnInit, OnDestroy {
+export abstract class FieldBaseComponent implements DynamicField, OnInit, OnDestroy {
     @Input() public fh: FormHelper;
     @Input() public fieldKey: string;
     public field: Field;

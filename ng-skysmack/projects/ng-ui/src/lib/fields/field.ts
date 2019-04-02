@@ -1,5 +1,6 @@
 import { ValidatorFn } from '@angular/forms';
 import { FieldTypes } from './field-types';
+import { Type } from '@angular/core';
 
 export class Field {
     /**
@@ -49,6 +50,16 @@ export class Field {
      * Field type e.g. datetime field, select field, etc.
      */
     public fieldType: FieldTypes;
+
+
+
+    /**
+     * EXPERIMENTAL
+     */
+    public component: Type<any>;
+
+
+
 
     /**
      * Placeholder content e.g. "Write your first name here, please"
