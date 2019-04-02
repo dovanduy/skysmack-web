@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MaintenanceState, MaintenanceStatesAppState } from '@skysmack/packages-maintenance';
-import { NgMaintenanceStateFormDependencies, NgMaintenanceStatesActions, NgSkysmackStore, NgMaintenanceStatesFieldsConfig, NgMaintenanceStatesStore } from '@skysmack/ng-packages';
-import { DocumentRecordFormComponent, EditorNavService, RecordFormComponent } from '@skysmack/portal-ui';
+import { NgMaintenanceStatesActions, NgSkysmackStore, NgMaintenanceStatesStore } from '@skysmack/ng-packages';
+import { EditorNavService, RecordFormComponent } from '@skysmack/portal-ui';
+import { NgMaintenanceStatesFieldsConfig, NgMaintenanceStateFormDependencies } from '../../ng-maintenance-states-fields-config';
 
 @Component({
   selector: 'ss-maintenance-states-create',

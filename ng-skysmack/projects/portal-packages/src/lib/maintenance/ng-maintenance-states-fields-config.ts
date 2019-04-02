@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { MaintenanceState, MaintenanceEntityStatus } from '@skysmack/packages-maintenance';
-import { NgMaintenanceStatesValidation } from './ng-maintenance-states-validation';
+import { NgMaintenanceStatesValidation } from '@skysmack/ng-packages';
 import { FieldsConfig, FormRule, Field, FieldTypes, SelectField } from '@skysmack/ng-ui';
 
 export interface NgMaintenanceStateFormDependencies {

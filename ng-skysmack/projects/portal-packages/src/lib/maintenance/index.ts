@@ -6,3 +6,7 @@ export * from './ng-recurring-assignments-menu';
 export * from './ng-assignments-menu';
 export * from './ng-assignment-types-menu';
 export * from './ng-maintenance-states-menu';
+export * from './ng-assignments-fields-config';
+export * from './ng-assignment-types-fields-config';
+export * from './ng-maintenance-states-fields-config';
+export * from './ng-recurring-assignments-fields-config';

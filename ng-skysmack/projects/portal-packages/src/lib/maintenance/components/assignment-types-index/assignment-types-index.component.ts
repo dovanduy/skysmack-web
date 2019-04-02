@@ -5,7 +5,7 @@ import { EntityComponentPageTitle, RecordIndexComponent } from '@skysmack/portal
 import { EntityAction } from '@skysmack/ng-ui';
 import { NgAssignmentTypesActions, NgSkysmackStore, NgAssignmentTypesStore } from '@skysmack/ng-packages';
 import { NgAssignmentTypesMenu } from './../../ng-assignment-types-menu';
-import { NgAssignmentTypesFieldsConfig } from '@skysmack/ng-packages';
+import { NgAssignmentTypesFieldsConfig } from '../../ng-assignment-types-fields-config';
 
 @Component({
   selector: 'ss-assignment-types-index',

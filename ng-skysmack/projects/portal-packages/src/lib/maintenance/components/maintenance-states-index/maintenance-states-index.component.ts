@@ -3,8 +3,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { MaintenanceState, MaintenanceStatesAppState } from '@skysmack/packages-maintenance';
 import { EntityComponentPageTitle, RecordIndexComponent } from '@skysmack/portal-ui';
 import { EntityAction } from '@skysmack/ng-ui';
-import { NgMaintenanceStatesActions, NgSkysmackStore, NgMaintenanceStatesStore, NgMaintenanceStatesFieldsConfig } from '@skysmack/ng-packages';
+import { NgMaintenanceStatesActions, NgSkysmackStore, NgMaintenanceStatesStore } from '@skysmack/ng-packages';
 import { NgMaintenanceStatesMenu } from './../../ng-maintenance-states-menu';
+import { NgMaintenanceStatesFieldsConfig } from '../../ng-maintenance-states-fields-config';
 
 
 @Component({

@@ -1,5 +1,4 @@
 import { AssignmentType, MaintenanceState } from '@skysmack/packages-maintenance';
-import { NgAssignmentTypesValidation } from './ng-assignment-types-validation';
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { FormRule } from '@skysmack/ng-ui';
@@ -8,6 +7,7 @@ import { Field } from '@skysmack/ng-ui';
 import { FieldTypes } from '@skysmack/ng-ui';
 import { SelectField } from '@skysmack/ng-ui';
 import { FieldsConfig } from '@skysmack/ng-ui';
+import { NgAssignmentTypesValidation } from '@skysmack/ng-packages';
 
 export interface NgAssignmentTypeFormDependencies {
     availableMaintenanceStates: LocalObject<MaintenanceState, number>[];

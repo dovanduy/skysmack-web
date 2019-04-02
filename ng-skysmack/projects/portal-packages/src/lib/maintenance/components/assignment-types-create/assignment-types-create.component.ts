@@ -2,10 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AssignmentType, AssignmentTypesAppState } from '@skysmack/packages-maintenance';
 import { EditorNavService, RecordFormComponent } from '@skysmack/portal-ui';
-import { NgAssignmentTypesActions, NgSkysmackStore, NgAssignmentTypesFieldsConfig, NgAssignmentTypesStore, NgAssignmentTypeFormDependencies, NgMaintenanceStatesActions, NgMaintenanceStatesStore } from '@skysmack/ng-packages';
+import { NgAssignmentTypesActions, NgSkysmackStore, NgAssignmentTypesStore, NgMaintenanceStatesActions, NgMaintenanceStatesStore } from '@skysmack/ng-packages';
 import { combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { LocalObject } from '@skysmack/framework';
+import { NgAssignmentTypesFieldsConfig, NgAssignmentTypeFormDependencies } from '../../ng-assignment-types-fields-config';
 
 @Component({
   selector: 'ss-assignment-types-create',

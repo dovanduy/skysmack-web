@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { LocalObject, LocalObjectStatus, EnumHelpers } from '@skysmack/framework';
 import { Assignment, AssignmentType } from '@skysmack/packages-maintenance';
-import { NgAssignmentsValidation } from './ng-assignments-validation';
+import { NgAssignmentsValidation } from '@skysmack/ng-packages';
 import { FieldsConfig, FormRule, Field, SelectField, FieldTypes } from '@skysmack/ng-ui';
 
 export interface NgAssignmentFormDependencies {

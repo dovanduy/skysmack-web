@@ -4,10 +4,9 @@ import { AssignmentsAppState } from '@skysmack/packages-maintenance';
 import { Assignment } from '@skysmack/packages-maintenance';
 import { EntityComponentPageTitle, RecordIndexComponent } from '@skysmack/portal-ui';
 import { EntityAction } from '@skysmack/ng-ui';
-import { NgAssignmentsActions, NgSkysmackStore, NgAssignmentsStore, NgAssignmentsFieldsConfig, NgAssignmentTypesStore, NgAssignmentTypesActions } from '@skysmack/ng-packages';
+import { NgAssignmentsActions, NgSkysmackStore, NgAssignmentsStore, NgAssignmentTypesStore, NgAssignmentTypesActions } from '@skysmack/ng-packages';
 import { NgAssignmentsMenu } from '../../ng-assignments-menu';
-import { LocalObject } from '@skysmack/framework';
-import { map } from 'rxjs/operators';
+import { NgAssignmentsFieldsConfig } from '../../ng-assignments-fields-config';
 
 @Component({
   selector: 'ss-assignments-index',

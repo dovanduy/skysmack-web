@@ -4,8 +4,9 @@ import { PagedQuery, LocalObject } from '@skysmack/framework';
 import { Assignment, AssignmentsAppState } from '@skysmack/packages-maintenance';
 import { combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { NgAssignmentFormDependencies, NgAssignmentsActions, NgSkysmackStore, NgAssignmentsFieldsConfig, NgAssignmentsStore, NgAssignmentTypesStore, NgAssignmentTypesActions } from '@skysmack/ng-packages';
+import { NgAssignmentsActions, NgSkysmackStore, NgAssignmentsStore, NgAssignmentTypesStore, NgAssignmentTypesActions } from '@skysmack/ng-packages';
 import { RecordFormComponent, EditorNavService } from '@skysmack/portal-ui';
+import { NgAssignmentsFieldsConfig, NgAssignmentFormDependencies } from '../../ng-assignments-fields-config';
 
 @Component({
   selector: 'ss-assignments-create',
