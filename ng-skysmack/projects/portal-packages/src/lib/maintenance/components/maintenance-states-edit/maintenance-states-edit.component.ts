@@ -6,8 +6,7 @@ import { NgMaintenanceStateFormDependencies, NgMaintenanceStatesActions, NgSkysm
 
 @Component({
   selector: 'ss-maintenance-states-edit',
-  templateUrl: './maintenance-states-edit.component.html',
-  styleUrls: ['./maintenance-states-edit.component.scss']
+  templateUrl: './maintenance-states-edit.component.html'
 })
 export class MaintenanceStatesEditComponent extends RecordFormComponent<MaintenanceStatesAppState, MaintenanceState, number, NgMaintenanceStateFormDependencies> implements OnInit {
 

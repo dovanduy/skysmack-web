@@ -9,8 +9,7 @@ import { RecordFormComponent, EditorNavService } from '@skysmack/portal-ui';
 
 @Component({
   selector: 'ss-assignments-create',
-  templateUrl: './assignments-create.component.html',
-  styleUrls: ['./assignments-create.component.scss']
+  templateUrl: './assignments-create.component.html'
 })
 export class AssignmentsCreateComponent extends RecordFormComponent<AssignmentsAppState, Assignment, number, NgAssignmentFormDependencies> implements OnInit {
 

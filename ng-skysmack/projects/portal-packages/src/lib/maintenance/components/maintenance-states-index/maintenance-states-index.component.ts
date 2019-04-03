@@ -9,8 +9,7 @@ import { NgMaintenanceStatesMenu } from './../../ng-maintenance-states-menu';
 
 @Component({
   selector: 'ss-maintenance-states-index',
-  templateUrl: './maintenance-states-index.component.html',
-  styleUrls: ['./maintenance-states-index.component.scss']
+  templateUrl: './maintenance-states-index.component.html'
 })
 export class MaintenanceStatesIndexComponent extends RecordIndexComponent<MaintenanceStatesAppState, MaintenanceState, number> implements OnInit {
 

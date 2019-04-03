@@ -9,8 +9,7 @@ import { LocalObject } from '@skysmack/framework';
 
 @Component({
   selector: 'ss-assignment-types-create',
-  templateUrl: './assignment-types-create.component.html',
-  styleUrls: ['./assignment-types-create.component.scss']
+  templateUrl: './assignment-types-create.component.html'
 })
 export class AssignmentTypesCreateComponent extends RecordFormComponent<AssignmentTypesAppState, AssignmentType, number, NgAssignmentTypeFormDependencies> implements OnInit {
   constructor(

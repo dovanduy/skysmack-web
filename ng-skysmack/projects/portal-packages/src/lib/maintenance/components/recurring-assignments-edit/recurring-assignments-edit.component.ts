@@ -9,8 +9,7 @@ import { combineLatest } from 'rxjs';
 
 @Component({
   selector: 'ss-recurring-assignments-edit',
-  templateUrl: './recurring-assignments-edit.component.html',
-  styleUrls: ['./recurring-assignments-edit.component.scss']
+  templateUrl: './recurring-assignments-edit.component.html'
 })
 export class RecurringAssignmentsEditComponent extends RecordFormComponent<RecurringAssignmentsAppState, RecurringAssignment, number, NgRecurringAssignmentFormDependencies> implements OnInit {
 

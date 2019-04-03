@@ -7,8 +7,7 @@ import { NgAssignmentAllMenu } from './../../ng-assignments-all-menu';
 
 @Component({
   selector: 'ss-assignments-all',
-  templateUrl: './assignments-all.component.html',
-  styleUrls: ['./assignments-all.component.scss']
+  templateUrl: './assignments-all.component.html'
 })
 export class AssignmentsAllIndexComponent implements OnInit {
 

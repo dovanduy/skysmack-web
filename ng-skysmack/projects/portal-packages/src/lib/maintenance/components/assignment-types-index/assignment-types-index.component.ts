@@ -9,8 +9,7 @@ import { NgAssignmentTypesFieldsConfig } from '@skysmack/ng-packages';
 
 @Component({
   selector: 'ss-assignment-types-index',
-  templateUrl: './assignment-types-index.component.html',
-  styleUrls: ['./assignment-types-index.component.scss']
+  templateUrl: './assignment-types-index.component.html'
 })
 export class AssignmentTypesIndexComponent extends RecordIndexComponent<AssignmentTypesAppState, AssignmentType, number> implements OnInit {
 

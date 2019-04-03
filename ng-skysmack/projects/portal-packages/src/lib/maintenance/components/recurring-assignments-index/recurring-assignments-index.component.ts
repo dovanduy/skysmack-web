@@ -8,8 +8,7 @@ import { NgRecurringAssignmentsMenu } from './../../ng-recurring-assignments-men
 
 @Component({
   selector: 'ss-recurring-assignments-index',
-  templateUrl: './recurring-assignments-index.component.html',
-  styleUrls: ['./recurring-assignments-index.component.scss']
+  templateUrl: './recurring-assignments-index.component.html'
 })
 export class RecurringAssignmentsIndexComponent extends RecordIndexComponent<RecurringAssignmentsAppState, RecurringAssignment, number> implements OnInit {
 

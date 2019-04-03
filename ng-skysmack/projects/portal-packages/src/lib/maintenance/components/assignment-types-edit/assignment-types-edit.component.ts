@@ -9,8 +9,7 @@ import { LocalObject } from '@skysmack/framework';
 
 @Component({
   selector: 'ss-assignment-types-edit',
-  templateUrl: './assignment-types-edit.component.html',
-  styleUrls: ['./assignment-types-edit.component.scss']
+  templateUrl: './assignment-types-edit.component.html'
 })
 export class AssignmentTypesEditComponent extends RecordFormComponent<AssignmentTypesAppState, AssignmentType, number, NgAssignmentTypeFormDependencies> implements OnInit {
 

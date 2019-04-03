@@ -9,8 +9,7 @@ import { combineLatest } from 'rxjs';
 
 @Component({
   selector: 'ss-assignments-edit',
-  templateUrl: './assignments-edit.component.html',
-  styleUrls: ['./assignments-edit.component.scss']
+  templateUrl: './assignments-edit.component.html'
 })
 export class AssignmentsEditComponent extends RecordFormComponent<AssignmentsAppState, Assignment, number, NgAssignmentFormDependencies> implements OnInit {
 

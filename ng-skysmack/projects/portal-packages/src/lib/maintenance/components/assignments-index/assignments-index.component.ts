@@ -11,8 +11,7 @@ import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'ss-assignments-index',
-  templateUrl: './assignments-index.component.html',
-  styleUrls: ['./assignments-index.component.scss']
+  templateUrl: './assignments-index.component.html'
 })
 export class AssignmentsIndexComponent extends RecordIndexComponent<AssignmentsAppState, Assignment, number> implements OnInit {
 
