@@ -13,8 +13,7 @@ import { NgProductsSalesPriceFormDependencies } from '@skysmack/ng-packages';
 
 @Component({
   selector: 'ss-products-sales-price-edit',
-  templateUrl: './products-sales-price-edit.component.html',
-  styleUrls: ['./products-sales-price-edit.component.scss']
+  templateUrl: './products-sales-price-edit.component.html'
 })
 export class ProductsSalesPriceEditComponent extends RecordFormComponent<ProductsSalesPriceAppState, ProductsSalesPrice, number, NgProductsSalesPriceFormDependencies> implements OnInit {
   protected productTypes$;

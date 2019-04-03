@@ -10,8 +10,7 @@ import { EntityAction } from '@skysmack/ng-ui';
 
 @Component({
   selector: 'ss-product-price-changes-index',
-  templateUrl: './product-price-changes-index.component.html',
-  styleUrls: ['./product-price-changes-index.component.scss']
+  templateUrl: './product-price-changes-index.component.html'
 })
 export class ProductPriceChangesIndexComponent extends RecordIndexComponent<ProductPriceChangesAppState, ProductPriceChange, number> implements OnInit {
 

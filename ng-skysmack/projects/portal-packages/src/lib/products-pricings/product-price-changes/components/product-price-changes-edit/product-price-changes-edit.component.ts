@@ -8,13 +8,12 @@ import { NgProductPriceChangesFieldsConfig } from '@skysmack/ng-packages';
 import { NgProductPriceChangesStore } from '@skysmack/ng-packages';
 import { combineLatest } from 'rxjs';
 import { PagedQuery, LocalObject } from '@skysmack/framework';
-import { map, switchMap } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { NgProductPriceChangesFormDependencies } from '@skysmack/ng-packages';
 
 @Component({
   selector: 'ss-product-price-changes-edit',
-  templateUrl: './product-price-changes-edit.component.html',
-  styleUrls: ['./product-price-changes-edit.component.scss']
+  templateUrl: './product-price-changes-edit.component.html'
 })
 export class ProductPriceChangesEditComponent extends RecordFormComponent<ProductPriceChangesAppState, ProductPriceChange, number, NgProductPriceChangesFormDependencies> implements OnInit {
   protected productTypes$;
