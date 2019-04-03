@@ -4,8 +4,7 @@ import { Field } from '@skysmack/ng-ui';
 
 @Component({
   selector: 'ss-double-field',
-  templateUrl: './double-field.component.html',
-  styleUrls: ['./double-field.component.scss']
+  templateUrl: './double-field.component.html'
 })
 export class DoubleFieldComponent extends FieldBaseComponent implements OnInit {
   ngOnInit() {

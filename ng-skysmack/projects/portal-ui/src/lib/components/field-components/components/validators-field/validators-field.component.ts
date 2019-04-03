@@ -18,8 +18,7 @@ class FieldValidator {
 
 @Component({
   selector: 'ss-validators-field',
-  templateUrl: './validators-field.component.html',
-  styleUrls: ['./validators-field.component.scss']
+  templateUrl: './validators-field.component.html'
 })
 export class ValidatorsFieldComponent extends FieldBaseComponent implements OnInit {
 

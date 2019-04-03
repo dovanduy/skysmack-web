@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'ss-required-validator',
-  templateUrl: './required-validator.component.html',
-  styleUrls: ['./required-validator.component.scss']
+  templateUrl: './required-validator.component.html'
 })
 export class RequiredValidatorComponent implements OnInit {
 

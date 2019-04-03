@@ -8,7 +8,6 @@ const moment = _moment;
 @Component({
   selector: 'ss-date-field',
   templateUrl: './date-field.component.html',
-  styleUrls: ['./date-field.component.scss'],
   providers: [DateOnlyAdapter, { provide: DateAdapter, useClass: DateOnlyAdapter }]
 })
 export class DateFieldComponent extends FieldBaseComponent implements OnInit {

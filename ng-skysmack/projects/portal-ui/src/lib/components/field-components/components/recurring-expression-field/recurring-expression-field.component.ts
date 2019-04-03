@@ -2,12 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FieldBaseComponent } from '../field-base-component';
 import { stringIntToInt } from '@skysmack/framework';
 import { RecurringExpressionEvaluator } from './models/recurring-expression-evaluator';
-import { Field } from '@skysmack/ng-ui';
 
 @Component({
   selector: 'ss-recurring-expression-field',
-  templateUrl: './recurring-expression-field.component.html',
-  styleUrls: ['./recurring-expression-field.component.scss']
+  templateUrl: './recurring-expression-field.component.html'
 })
 export class RecurringExpressionFieldComponent extends FieldBaseComponent implements OnInit {
 

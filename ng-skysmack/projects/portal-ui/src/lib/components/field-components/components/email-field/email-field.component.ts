@@ -6,7 +6,6 @@ import { Field } from '@skysmack/ng-ui';
 @Component({
   selector: 'ss-email-field',
   templateUrl: './email-field.component.html',
-  styleUrls: ['./email-field.component.scss'],
   animations: [
     trigger(
       'shrinkOut',

@@ -1,13 +1,11 @@
 import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
 import { FieldBaseComponent } from '../field-base-component';
-import { Field } from '@skysmack/ng-ui';
 
 interface Point { latitude: number; longtitude: number; }
 
 @Component({
   selector: 'ss-geography-field',
-  templateUrl: './geography-field.component.html',
-  styleUrls: ['./geography-field.component.scss']
+  templateUrl: './geography-field.component.html'
 })
 export class GeographyFieldComponent extends FieldBaseComponent implements AfterViewInit, OnDestroy, OnInit {
 

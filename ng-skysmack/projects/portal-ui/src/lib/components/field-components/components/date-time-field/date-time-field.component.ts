@@ -8,7 +8,6 @@ import { map } from 'rxjs/operators';
 @Component({
   selector: 'ss-date-time-field',
   templateUrl: './date-time-field.component.html',
-  styleUrls: ['./date-time-field.component.scss'],
   providers: [DateTimeAdapter, { provide: DateAdapter, useClass: DateTimeAdapter }]
 })
 export class DateTimeFieldComponent extends FieldBaseComponent implements AfterViewInit, OnInit {

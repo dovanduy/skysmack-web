@@ -24,8 +24,7 @@ class SelectBox {
 
 @Component({
   selector: 'ss-package-dependencies-field',
-  templateUrl: './package-dependencies-field.component.html',
-  styleUrls: ['./package-dependencies-field.component.scss']
+  templateUrl: './package-dependencies-field.component.html'
 })
 export class PackageDependenciesFieldComponent extends FieldBaseComponent implements OnInit {
   public selectedDepTypes = {};

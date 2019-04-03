@@ -5,8 +5,7 @@ import { FieldHelpers } from '@skysmack/ng-ui';
 
 @Component({
   selector: 'ss-field-permission-field',
-  templateUrl: './field-permission-field.component.html',
-  styleUrls: ['./field-permission-field.component.scss']
+  templateUrl: './field-permission-field.component.html'
 })
 export class FieldPermissionFieldComponent extends FieldBaseComponent implements OnInit {
 

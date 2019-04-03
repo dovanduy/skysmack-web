@@ -3,8 +3,7 @@ import { ExpressionValues } from '../../../models/expression-values';
 
 @Component({
   selector: 'ss-specific-time',
-  templateUrl: './specific-time.component.html',
-  styleUrls: ['./specific-time.component.scss']
+  templateUrl: './specific-time.component.html'
 })
 export class SpecificTimeComponent extends ExpressionValues {
 

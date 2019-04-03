@@ -3,8 +3,7 @@ import { FieldBaseComponent } from '../field-base-component';
 
 @Component({
   selector: 'ss-string-field',
-  templateUrl: './string-field.component.html',
-  styleUrls: ['./string-field.component.scss'],
+  templateUrl: './string-field.component.html'
 })
 export class StringFieldComponent extends FieldBaseComponent implements OnInit {
   ngOnInit() {

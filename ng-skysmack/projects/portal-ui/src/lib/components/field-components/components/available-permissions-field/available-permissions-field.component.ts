@@ -5,8 +5,7 @@ import { switchMap, map } from 'rxjs/operators';
 
 @Component({
   selector: 'ss-available-permissions-field',
-  templateUrl: './available-permissions-field.component.html',
-  styleUrls: ['./available-permissions-field.component.scss']
+  templateUrl: './available-permissions-field.component.html'
 })
 export class AvailablePermissionsFieldComponent extends FieldBaseComponent implements OnInit {
   public permissions: string[];
