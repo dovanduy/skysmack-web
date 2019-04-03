@@ -11,8 +11,7 @@ import { NgAccessPolicyRolesMenu } from '../../ng-access-policy-roles-menu';
 
 @Component({
   selector: 'ss-access-policy-roles-index',
-  templateUrl: './access-policy-roles-index.component.html',
-  styleUrls: ['./access-policy-roles-index.component.scss']
+  templateUrl: './access-policy-roles-index.component.html'
 })
 export class AccessPolicyRolesIndexComponent extends RecordIndexComponent<AccessPolicyRolesAppState, AccessPolicyRole, AccessPolicyRoleKey> implements OnInit {
 

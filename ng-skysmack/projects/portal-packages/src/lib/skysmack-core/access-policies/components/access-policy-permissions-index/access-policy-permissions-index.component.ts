@@ -11,8 +11,7 @@ import { NgAccessPolicyPermissionsMenu } from '../../ng-access-policy-permission
 
 @Component({
   selector: 'ss-access-policy-permissions-index',
-  templateUrl: './access-policy-permissions-index.component.html',
-  styleUrls: ['./access-policy-permissions-index.component.scss']
+  templateUrl: './access-policy-permissions-index.component.html'
 })
 export class AccessPolicyPermissionsIndexComponent extends RecordIndexComponent<AccessPolicyPermissionsAppState, AccessPolicyPermission, number> implements OnInit {
 

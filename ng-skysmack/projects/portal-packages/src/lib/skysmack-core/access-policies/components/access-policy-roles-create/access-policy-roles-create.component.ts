@@ -13,8 +13,7 @@ import { IDENTITES_AREA_KEY } from '@skysmack/packages-identities';
 
 @Component({
   selector: 'ss-access-policy-roles-create',
-  templateUrl: './access-policy-roles-create.component.html',
-  styleUrls: ['./access-policy-roles-create.component.scss']
+  templateUrl: './access-policy-roles-create.component.html'
 })
 export class AccessPolicyRolesCreateComponent extends RecordFormComponent<AccessPolicyRolesAppState, AccessPolicyRole, AccessPolicyRoleKey, NgAccessPolicyRoleFormDependencies> implements OnInit {
   constructor(

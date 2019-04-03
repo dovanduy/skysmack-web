@@ -11,8 +11,7 @@ import { NgAccessPolicyRulesMenu } from '../../ng-access-policy-rules-menu';
 
 @Component({
   selector: 'ss-access-policy-rules-index',
-  templateUrl: './access-policy-rules-index.component.html',
-  styleUrls: ['./access-policy-rules-index.component.scss']
+  templateUrl: './access-policy-rules-index.component.html'
 })
 export class AccessPolicyRulesIndexComponent extends RecordIndexComponent<AccessPolicyRulesAppState, AccessPolicyRule, number> implements OnInit {
 

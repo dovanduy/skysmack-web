@@ -13,8 +13,7 @@ import { FormHelper } from '@skysmack/ng-ui';
 
 @Component({
   selector: 'ss-access-policy-permissions-edit',
-  templateUrl: './access-policy-permissions-edit.component.html',
-  styleUrls: ['./access-policy-permissions-edit.component.scss']
+  templateUrl: './access-policy-permissions-edit.component.html'
 })
 export class AccessPolicyPermissionsEditComponent extends RecordFormComponent<AccessPolicyPermissionsAppState, AccessPolicyPermission, number, NgAccessPolicyPermissionFormDependencies> implements OnInit {
 
