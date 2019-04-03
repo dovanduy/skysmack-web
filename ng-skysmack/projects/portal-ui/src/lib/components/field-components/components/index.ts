@@ -19,3 +19,4 @@ export * from './validators-field/index';
 export * from './field-permission-field/field-permission-field.component';
 export * from './roles-select-field/roles-select-field.component';
 export * from './multi-select-field/multi-select-field.component';
+export * from './add-record-field/add-record-field.component';

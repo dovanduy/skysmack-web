@@ -60,6 +60,7 @@ import { DynamicFormFieldDirective } from './components/field-components/dynamic
 import { DynamicFormFieldTemplateComponent } from './components/field-components/dynamic-form-field-template/dynamic-form-field-template.component';
 import { RecurringExpressionFieldComponent } from './components/field-components/components/recurring-expression-field/recurring-expression-field.component';
 import { ValidatorsFieldComponent } from './components/field-components/components/validators-field/validators-field.component';
+import { AddRecordFieldComponent } from './components/field-components/components/add-record-field/add-record-field.component';
 
 @NgModule({
   imports: [
@@ -127,6 +128,7 @@ import { ValidatorsFieldComponent } from './components/field-components/componen
     SpeedDialFabComponent,
     RolesSelectFieldComponent,
     MultiSelectFieldComponent,
+    AddRecordFieldComponent,
     // Pipes
     ...portailUiPipes
   ],
@@ -175,7 +177,8 @@ import { ValidatorsFieldComponent } from './components/field-components/componen
     PackageDependenciesFieldComponent,
     SpeedDialFabComponent,
     RolesSelectFieldComponent,
-    MultiSelectFieldComponent
+    MultiSelectFieldComponent,
+    AddRecordFieldComponent
   ],
   entryComponents: [
     DynamicFormComponent,
@@ -200,7 +203,8 @@ import { ValidatorsFieldComponent } from './components/field-components/componen
     PackageDependenciesFieldComponent,
     SpeedDialFabComponent,
     RolesSelectFieldComponent,
-    MultiSelectFieldComponent
+    MultiSelectFieldComponent,
+    AddRecordFieldComponent
   ]
 })
 export class PortalUiModule {

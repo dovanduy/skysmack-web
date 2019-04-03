@@ -6,8 +6,8 @@ import { Observable, combineLatest } from 'rxjs';
 import { StrIndex, PagedQuery } from '@skysmack/framework';
 import { NgSettingsActions, NgSettingsStore } from '@skysmack/ng-redux';
 import { NgPersonsStore, NgPersonsActions, NgSkysmackStore } from '@skysmack/ng-packages';
-import { MultiSelectFieldComponent } from '@skysmack/portal-ui';
-
+import { MultiSelectFieldComponent, AddField, AddRecordFieldComponent } from '@skysmack/portal-ui';
+import { NgPersonsFieldsConfig } from '../persons/ng-persons-fields-config';
 
 @Injectable({ providedIn: 'root' })
 export class NgPersonsLodgingReservationsFieldProvider extends FieldProvider {
@@ -17,6 +17,7 @@ export class NgPersonsLodgingReservationsFieldProvider extends FieldProvider {
     constructor(
         public personsStore: NgPersonsStore,
         public personsActions: NgPersonsActions,
+        public personsFieldsConfig: NgPersonsFieldsConfig,
         public skysmackStore: NgSkysmackStore,
         public settingsActions: NgSettingsActions,
         public settingsStore: NgSettingsStore
@@ -53,57 +54,33 @@ export class NgPersonsLodgingReservationsFieldProvider extends FieldProvider {
                                 // Get settings
                                 return this.settingsStore.get<PersonsLodgingReservationsSettings>(depPackagePath, 'persons-reservations').pipe(
                                     map(settings => {
+                                        const addField = new AddField({
+                                            fieldsConfig: this.personsFieldsConfig,
+                                            component: AddRecordFieldComponent,
+                                            value: undefined,
+                                            key: 'extendedData.' + _package.object.path + '.add',
+                                            label: personsPackagePath,
+                                            placeholder: personsPackagePath,
+                                            order: 4,
+                                            showColumn: true
+                                        });
+
+                                        const selectField = new SelectField({
+                                            component: MultiSelectFieldComponent,
+                                            value: undefined,
+                                            key: 'extendedData.' + _package.object.path + '.attach',
+                                            optionsData: persons,
+                                            displayNameSelector: 'object.displayName',
+                                            label: personsPackagePath,
+                                            placeholder: personsPackagePath,
+                                            order: 4,
+                                            showColumn: true
+                                        });
+
                                         switch (settings.object.shouldBeExistingPersons) {
-                                            case true: return [
-                                                new SelectField({
-                                                    component: MultiSelectFieldComponent,
-                                                    value: undefined,
-                                                    key: 'extendedData.' + _package.object.path + '.attach',
-                                                    optionsData: persons,
-                                                    displayNameSelector: 'object.displayName',
-                                                    label: personsPackagePath,
-                                                    placeholder: personsPackagePath,
-                                                    order: 4,
-                                                    showColumn: true
-                                                })
-                                            ];
-                                            case false: return [
-                                                new SelectField({
-                                                    component: MultiSelectFieldComponent,
-                                                    value: undefined,
-                                                    key: 'extendedData.' + _package.object.path + '.add',
-                                                    optionsData: persons,
-                                                    displayNameSelector: 'object.displayName',
-                                                    label: personsPackagePath,
-                                                    placeholder: personsPackagePath,
-                                                    order: 4,
-                                                    showColumn: true
-                                                })
-                                            ];
-                                            default: return [
-                                                new SelectField({
-                                                    component: MultiSelectFieldComponent,
-                                                    value: undefined,
-                                                    key: 'extendedData.' + _package.object.path + '.attach',
-                                                    optionsData: persons,
-                                                    displayNameSelector: 'object.displayName',
-                                                    label: personsPackagePath,
-                                                    placeholder: personsPackagePath,
-                                                    order: 4,
-                                                    showColumn: true
-                                                }),
-                                                new SelectField({
-                                                    component: MultiSelectFieldComponent,
-                                                    value: undefined,
-                                                    key: 'extendedData.' + _package.object.path + '.add',
-                                                    optionsData: persons,
-                                                    displayNameSelector: 'object.displayName',
-                                                    label: personsPackagePath,
-                                                    placeholder: personsPackagePath,
-                                                    order: 4,
-                                                    showColumn: true
-                                                })
-                                            ];
+                                            case true: return [selectField];
+                                            case false: return [addField];
+                                            default: return [selectField, addField];
                                         }
                                     })
                                 );
