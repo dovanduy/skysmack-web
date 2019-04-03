@@ -12,8 +12,7 @@ import { NgFieldActions, NgFieldStore } from '@skysmack/ng-redux';
 
 @Component({
   selector: 'ss-baskets-index',
-  templateUrl: './baskets-index.component.html',
-  styleUrls: ['./baskets-index.component.scss']
+  templateUrl: './baskets-index.component.html'
 })
 export class BasketsIndexComponent extends DocumentRecordIndexComponent<BasketsAppState, Basket, number> implements OnInit {
 

@@ -11,8 +11,7 @@ import { NgFieldActions, NgFieldStore } from '@skysmack/ng-redux';
 
 @Component({
   selector: 'ss-baskets-create',
-  templateUrl: './baskets-create.component.html',
-  styleUrls: ['./baskets-create.component.scss']
+  templateUrl: './baskets-create.component.html'
 })
 export class BasketsCreateComponent extends DocumentRecordFormComponent<BasketsAppState, Basket, number, NgBasketFormDependencies> implements OnInit {
 
