@@ -7,8 +7,7 @@ import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'ss-fall-back',
-  templateUrl: './fall-back.component.html',
-  styleUrls: ['./fall-back.component.scss']
+  templateUrl: './fall-back.component.html'
 })
 export class FallBackComponent implements OnInit {
   public skysmack$: Observable<Skysmack>;
