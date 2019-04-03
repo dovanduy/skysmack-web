@@ -52,6 +52,10 @@ export abstract class SidebarMenu implements OnDestroy {
         });
     }
 
+    protected setBackButton() {
+        this.primaryMenuItems.push(new MenuItem('/' + this.packagePath, 'UI.MISC.BACK', 'manage', 2, 'arrowBack'));
+    }
+
     private addItem(item: MenuItem): void {
         const match = this.primaryMenuItems.find(menuItem => {
             if (menuItem.displayName === item.displayName && menuItem.url === item.url) {

@@ -8,6 +8,9 @@
         "ONLINE_STATUS": {
             "OFFLINE": "Intet netværk! Kører offline tilstand."
         },
+        "MISC": {
+            "BACK": "Tilbage"
+        },
         "PACKAGE_DRAWER": {
             "SETTINGS": "Indstillinger",
             "SECURITY": "Sikkerhed",
