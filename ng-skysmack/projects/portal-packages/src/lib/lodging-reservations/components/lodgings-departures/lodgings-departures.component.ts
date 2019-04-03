@@ -7,13 +7,12 @@ import { RSQLFilterBuilder, SortBuilder } from '@skysmack/framework';
 import * as _moment from 'moment';
 const moment = _moment;
 
-import { LodgingReservation, LODGING_RESERVATIONS_AREA_KEY } from '@skysmack/packages-lodging-reservations';
+import { LodgingReservation } from '@skysmack/packages-lodging-reservations';
 import { NgLodgingsReservationsMenu } from '../../ng-lodgings-reservations-menu';
 
 @Component({
   selector: 'ss-lodgings-departures',
-  templateUrl: './lodgings-departures.component.html',
-  styleUrls: ['./lodgings-departures.component.scss']
+  templateUrl: './lodgings-departures.component.html'
 })
 export class LodgingsDeparturesComponent extends LodgingsReservationsIndexComponent implements OnInit {
   constructor(

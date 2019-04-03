@@ -10,8 +10,7 @@ import { NgLodgingsReservationsMenu } from '../../ng-lodgings-reservations-menu'
 
 @Component({
   selector: 'ss-lodgings-stays',
-  templateUrl: './lodgings-stays.component.html',
-  styleUrls: ['./lodgings-stays.component.scss']
+  templateUrl: './lodgings-stays.component.html'
 })
 export class LodgingsStaysComponent extends LodgingsReservationsIndexComponent implements OnInit {
   constructor(

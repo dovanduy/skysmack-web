@@ -19,8 +19,7 @@ import { PagedQuery } from '@skysmack/framework';
 
 @Component({
   selector: 'ss-lodgings-reservations-create',
-  templateUrl: './lodgings-reservations-create.component.html',
-  styleUrls: ['./lodgings-reservations-create.component.scss']
+  templateUrl: './lodgings-reservations-create.component.html'
 })
 export class LodgingsReservationsCreateComponent extends RecordFormComponent<LodgingReservationsAppState, LodgingReservation, number, NgLodgingReservationFormDependencies> implements OnInit {
   constructor(

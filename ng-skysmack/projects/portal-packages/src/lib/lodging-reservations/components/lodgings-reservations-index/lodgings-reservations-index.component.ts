@@ -13,8 +13,7 @@ import { LodgingsArrivalsComponent } from '../lodgings-arrivals/lodgings-arrival
 
 @Component({
   selector: 'ss-lodgings-reservations-index',
-  templateUrl: './lodgings-reservations-index.component.html',
-  styleUrls: ['./lodgings-reservations-index.component.scss']
+  templateUrl: './lodgings-reservations-index.component.html'
 })
 export class LodgingsReservationsIndexComponent extends RecordIndexComponent<LodgingReservationsAppState, LodgingReservation, number> implements OnInit {
   public entityActions: EntityAction[] = [
