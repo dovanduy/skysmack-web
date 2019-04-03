@@ -3,8 +3,7 @@ import { Field } from '@skysmack/ng-ui';
 
 @Component({
   selector: 'ss-backend-errors',
-  templateUrl: './backend-errors.component.html',
-  styleUrls: ['./backend-errors.component.scss']
+  templateUrl: './backend-errors.component.html'
 })
 export class BackendErrorsComponent implements OnInit {
 

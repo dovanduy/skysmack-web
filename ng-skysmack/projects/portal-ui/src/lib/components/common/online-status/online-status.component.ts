@@ -6,8 +6,7 @@ import { UIRedux } from './../../../redux/ui-redux';
 
 @Component({
   selector: 'ss-online-status',
-  templateUrl: './online-status.component.html',
-  styleUrls: ['./online-status.component.scss']
+  templateUrl: './online-status.component.html'
 })
 export class OnlineStatusComponent implements OnInit {
 
