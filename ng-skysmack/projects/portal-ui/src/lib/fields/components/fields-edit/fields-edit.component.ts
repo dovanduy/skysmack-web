@@ -13,8 +13,7 @@ import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'ss-portal-ui-fields-edit',
-  templateUrl: './fields-edit.component.html',
-  styleUrls: ['./fields-edit.component.scss']
+  templateUrl: './fields-edit.component.html'
 })
 export class FieldsEditComponent extends RecordFormComponent<FieldState, any, string, NgFieldFormDependencies> implements OnInit {
   constructor(
