@@ -5,7 +5,7 @@ import { PagedQuery } from '@skysmack/framework';
 import { combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { EditorNavService, RecordFormComponent } from '@skysmack/portal-ui';
-import { NgRecurringAssignmentFormDependencies, NgRecurringAssignmentsActions, NgSkysmackStore, NgRecurringAssignmentsFieldsConfig, NgRecurringAssignmentsStore } from '@skysmack/ng-packages';
+import { NgAssignmentTypesStore, NgAssignmentTypesActions, NgRecurringAssignmentFormDependencies, NgRecurringAssignmentsActions, NgSkysmackStore, NgRecurringAssignmentsFieldsConfig, NgRecurringAssignmentsStore } from '@skysmack/ng-packages';
 
 @Component({
   selector: 'ss-recurring-assignments-create',
@@ -22,6 +22,8 @@ export class RecurringAssignmentsCreateComponent extends RecordFormComponent<Rec
     public redux: NgSkysmackStore,
     public fieldsConfig: NgRecurringAssignmentsFieldsConfig,
     public store: NgRecurringAssignmentsStore,
+    public assignmentTypeStore: NgAssignmentTypesStore,
+    public assignmentTypeActions: NgAssignmentTypesActions
 
   ) {
     super(router, activatedRoute, editorNavService, actions, redux, store, fieldsConfig);
@@ -33,14 +35,14 @@ export class RecurringAssignmentsCreateComponent extends RecordFormComponent<Rec
   }
 
   public setCreateFields() {
-    this.actions.getPaged(this.packagePath, new PagedQuery());
+    this.assignmentTypeActions.getPaged(this.packagePath, new PagedQuery());
 
     this.fields$ = combineLatest(
-      this.store.get(this.packagePath)
+      this.assignmentTypeStore.get(this.packagePath)
     ).pipe(
       map(values => {
-        const availableRecurringAssignments = values[0];
-        return this.fieldsConfig.getFields(undefined, undefined, { availableRecurringAssignments });
+        const availableAssignmentTypes = values[0];
+        return this.fieldsConfig.getFields(undefined, undefined, { availableAssignmentTypes });
       })
     );
   }

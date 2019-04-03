@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
-import { RecurringAssignment } from '@skysmack/packages-maintenance';
+import { RecurringAssignment, AssignmentType } from '@skysmack/packages-maintenance';
 import { NgRecurringAssignmentsValidation } from './ng-recurring-assignments-validation';
 import { FormRule, FieldsConfig, SelectField, Field, FieldTypes } from '@skysmack/ng-ui';
 
 export interface NgRecurringAssignmentFormDependencies {
-    availableRecurringAssignments: LocalObject<RecurringAssignment, number>[];
+    availableAssignmentTypes: LocalObject<AssignmentType, number>[];
 }
 
 @Injectable({ providedIn: 'root' })
@@ -23,14 +23,15 @@ export class NgRecurringAssignmentsFieldsConfig extends FieldsConfig<RecurringAs
                 value: entity ? entity.object.assignmentTypeId : undefined,
                 key: 'assignmentTypeId',
                 label: 'Assignment Type',
-                optionsData: dependencies && dependencies.availableRecurringAssignments,
+                optionsData: dependencies && dependencies.availableAssignmentTypes,
+                displayNameSelector: 'object.description',
                 validators: [Validators.required],
                 order: 1,
                 showColumn: true
             }),
 
             new Field({
-                fieldType: FieldTypes.dateTime,
+                fieldType: FieldTypes.DateField,
                 value: entity ? entity.object.start : undefined,
                 key: 'start',
                 label: 'Start',
@@ -40,7 +41,7 @@ export class NgRecurringAssignmentsFieldsConfig extends FieldsConfig<RecurringAs
             }),
 
             new Field({
-                fieldType: FieldTypes.dateTime,
+                fieldType: FieldTypes.DateField,
                 value: entity ? entity.object.end : undefined,
                 key: 'end',
                 label: 'End',
