@@ -13,8 +13,7 @@ import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'ss-packages-create',
-  templateUrl: './packages-create.component.html',
-  styleUrls: ['./packages-create.component.scss']
+  templateUrl: './packages-create.component.html'
 })
 export class PackagesCreateComponent extends BaseComponent<PackagesAppState, string> implements OnInit, OnDestroy {
 

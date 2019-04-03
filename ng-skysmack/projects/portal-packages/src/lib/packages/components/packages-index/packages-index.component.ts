@@ -10,8 +10,7 @@ import { EntityAction } from '@skysmack/ng-ui';
 
 @Component({
   selector: 'ss-packages-index',
-  templateUrl: './packages-index.component.html',
-  styleUrls: ['./packages-index.component.scss']
+  templateUrl: './packages-index.component.html'
 })
 export class PackagesIndexComponent extends RecordIndexComponent<PackagesAppState, any, string> implements OnInit {
   public area: string = PACKAGES_AREA_KEY;

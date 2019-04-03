@@ -15,8 +15,7 @@ import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'ss-packages-edit',
-  templateUrl: './packages-edit.component.html',
-  styleUrls: ['./packages-edit.component.scss']
+  templateUrl: './packages-edit.component.html'
 })
 export class PackagesEditComponent extends BaseComponent<PackagesAppState, string> implements OnInit, OnDestroy {
 
