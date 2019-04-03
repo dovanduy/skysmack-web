@@ -5,11 +5,9 @@ import { PersonsLodgingReservationsType, PersonsLodgingReservationsSettings } fr
 import { Observable, combineLatest } from 'rxjs';
 import { StrIndex, PagedQuery } from '@skysmack/framework';
 import { NgSettingsActions, NgSettingsStore } from '@skysmack/ng-redux';
+import { NgPersonsStore, NgPersonsActions, NgSkysmackStore } from '@skysmack/ng-packages';
+import { MultiSelectFieldComponent } from '@skysmack/portal-ui';
 
-
-import { NgPersonsStore } from '../persons/redux/ng-persons-store';
-import { NgPersonsActions } from '../persons/redux/ng-persons-actions';
-import { NgSkysmackStore } from '../skysmack-core/skysmack/redux/ng-skysmack-store';
 
 @Injectable({ providedIn: 'root' })
 export class NgPersonsLodgingReservationsFieldProvider extends FieldProvider {
@@ -56,7 +54,7 @@ export class NgPersonsLodgingReservationsFieldProvider extends FieldProvider {
                                         switch (settings.object.shouldBeExistingPersons) {
                                             case true: return [
                                                 new SelectField({
-                                                    // component: MultiSelectFieldComponent,
+                                                    component: MultiSelectFieldComponent,
                                                     value: undefined,
                                                     key: 'extendedData.' + _package.object.path + '.attach',
                                                     optionsData: persons,
@@ -69,7 +67,7 @@ export class NgPersonsLodgingReservationsFieldProvider extends FieldProvider {
                                             ];
                                             case false: return [
                                                 new SelectField({
-                                                    // component: MultiSelectFieldComponent,
+                                                    component: MultiSelectFieldComponent,
                                                     value: undefined,
                                                     key: 'extendedData.' + _package.object.path + '.add',
                                                     optionsData: persons,
@@ -82,7 +80,7 @@ export class NgPersonsLodgingReservationsFieldProvider extends FieldProvider {
                                             ];
                                             default: return [
                                                 new SelectField({
-                                                    // component: MultiSelectFieldComponent,
+                                                    component: MultiSelectFieldComponent,
                                                     value: undefined,
                                                     key: 'extendedData.' + _package.object.path + '.attach',
                                                     optionsData: persons,
