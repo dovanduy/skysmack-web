@@ -14,7 +14,6 @@ import { NgFieldActions, NgFieldStore } from '@skysmack/ng-redux';
 @Component({
   selector: 'ss-lodgings-index',
   templateUrl: './lodgings-index.component.html',
-  styleUrls: ['./lodgings-index.component.scss']
 })
 export class LodgingsIndexComponent extends DocumentRecordIndexComponent<LodgingsAppState, Lodging, number> implements OnInit {
 

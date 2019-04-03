@@ -11,8 +11,7 @@ import { NgFieldActions, NgFieldStore } from '@skysmack/ng-redux';
 
 @Component({
   selector: 'ss-lodging-types-edit',
-  templateUrl: './lodging-types-edit.component.html',
-  styleUrls: ['./lodging-types-edit.component.scss']
+  templateUrl: './lodging-types-edit.component.html'
 })
 export class LodgingTypesEditComponent extends DocumentRecordFormComponent<LodgingTypesAppState, LodgingType, number, NgLodgingTypeFormDependencies> implements OnInit {
 

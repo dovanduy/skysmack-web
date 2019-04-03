@@ -12,8 +12,7 @@ import { NgFieldActions, NgFieldStore } from '@skysmack/ng-redux';
 
 @Component({
   selector: 'ss-lodging-types-index',
-  templateUrl: './lodging-types-index.component.html',
-  styleUrls: ['./lodging-types-index.component.scss']
+  templateUrl: './lodging-types-index.component.html'
 })
 export class LodgingTypesIndexComponent extends DocumentRecordIndexComponent<LodgingTypesAppState, LodgingType, number> implements OnInit {
   public area: string = LODGING_TYPES_AREA_KEY;

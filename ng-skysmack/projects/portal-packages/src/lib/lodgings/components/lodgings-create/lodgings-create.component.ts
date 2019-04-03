@@ -15,8 +15,7 @@ import { map } from 'rxjs/operators';
 import { NgFieldActions, NgFieldStore } from '@skysmack/ng-redux';
 @Component({
   selector: 'ss-lodgings-create',
-  templateUrl: './lodgings-create.component.html',
-  styleUrls: ['./lodgings-create.component.scss']
+  templateUrl: './lodgings-create.component.html'
 })
 export class LodgingsCreateComponent extends DocumentRecordFormComponent<LodgingsAppState, Lodging, number, NgLodgingFormDependencies> implements OnInit {
 
