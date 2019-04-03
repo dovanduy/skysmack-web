@@ -93,7 +93,7 @@ export class NgPersonsLodgingReservationsFieldProvider extends FieldProvider {
                                                     showColumn: true
                                                 }),
                                                 new SelectField({
-                                                    // component: MultiSelectFieldComponent,
+                                                    component: MultiSelectFieldComponent,
                                                     value: undefined,
                                                     key: 'extendedData.' + _package.object.path + '.add',
                                                     optionsData: persons,

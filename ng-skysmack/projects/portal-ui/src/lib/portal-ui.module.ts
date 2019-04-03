@@ -55,7 +55,6 @@ import { NOTIFICATIONS_INJECTOR_TOKEN } from '@skysmack/ng-redux';
 import { RolesSelectFieldComponent } from './components/field-components/components/roles-select-field/roles-select-field.component';
 import { portailUiPipes } from './pipes/portal-ui-pipes';
 import { BackendErrorsComponent } from './components/common/backend-errors/backend-errors.component';
-import { ManagePersonsFieldComponent } from './components/field-components/components/manage-persons-field/manage-persons-field.component';
 import { MultiSelectFieldComponent } from './components/field-components/components/multi-select-field/multi-select-field.component';
 import { DynamicFormFieldDirective } from './components/field-components/dynamic-form-field.directive';
 import { DynamicFormFieldTemplateComponent } from './components/field-components/dynamic-form-field-template/dynamic-form-field-template.component';
@@ -127,7 +126,6 @@ import { ValidatorsFieldComponent } from './components/field-components/componen
     PageHeaderComponent,
     SpeedDialFabComponent,
     RolesSelectFieldComponent,
-    ManagePersonsFieldComponent,
     MultiSelectFieldComponent,
     // Pipes
     ...portailUiPipes
@@ -177,7 +175,6 @@ import { ValidatorsFieldComponent } from './components/field-components/componen
     PackageDependenciesFieldComponent,
     SpeedDialFabComponent,
     RolesSelectFieldComponent,
-    ManagePersonsFieldComponent,
     MultiSelectFieldComponent
   ],
   entryComponents: [
@@ -203,7 +200,6 @@ import { ValidatorsFieldComponent } from './components/field-components/componen
     PackageDependenciesFieldComponent,
     SpeedDialFabComponent,
     RolesSelectFieldComponent,
-    ManagePersonsFieldComponent,
     MultiSelectFieldComponent
   ]
 })
