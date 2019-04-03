@@ -30,7 +30,6 @@
     "@skysmack/packages-products-pricings": "*",
     "@skysmack/packages-persons": "*",
     "@skysmack/packages-invoices": "*",
-    "@skysmack/packages-baskets": "*",
     "@skysmack/packages-skysmack-core": "*",
     "@skysmack/packages-terminal-payments": "*",
     "@skysmack/ng-redux": "*",
