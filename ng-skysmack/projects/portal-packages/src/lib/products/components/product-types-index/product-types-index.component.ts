@@ -10,8 +10,7 @@ import { NgFieldActions, NgFieldStore } from '@skysmack/ng-redux';
 
 @Component({
   selector: 'ss-product-types-index',
-  templateUrl: './product-types-index.component.html',
-  styleUrls: ['./product-types-index.component.scss']
+  templateUrl: './product-types-index.component.html'
 })
 export class ProductTypesIndexComponent extends DocumentRecordIndexComponent<ProductTypesAppState, ProductType, number> implements OnInit {
   

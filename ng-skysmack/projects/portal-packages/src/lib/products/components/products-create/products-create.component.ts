@@ -16,8 +16,7 @@ import { NgFieldActions, NgFieldStore } from '@skysmack/ng-redux';
 
 @Component({
   selector: 'ss-products-create',
-  templateUrl: './products-create.component.html',
-  styleUrls: ['./products-create.component.scss']
+  templateUrl: './products-create.component.html'
 })
 export class ProductsCreateComponent extends DocumentRecordFormComponent<ProductsAppState, Product, number, NgProductFormDependencies> implements OnInit {
 

@@ -11,8 +11,7 @@ import { NgFieldActions, NgFieldStore } from '@skysmack/ng-redux';
 
 @Component({
   selector: 'ss-product-types-edit',
-  templateUrl: './product-types-edit.component.html',
-  styleUrls: ['./product-types-edit.component.scss']
+  templateUrl: './product-types-edit.component.html'
 })
 export class ProductTypesEditComponent extends DocumentRecordFormComponent<ProductTypesAppState, ProductType, number, NgProductTypeFormDependencies> implements OnInit {
 
