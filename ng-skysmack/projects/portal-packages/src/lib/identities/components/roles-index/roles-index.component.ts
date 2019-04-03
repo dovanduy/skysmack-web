@@ -11,8 +11,7 @@ import { EntityAction } from '@skysmack/ng-ui';
 
 @Component({
   selector: 'ss-roles-index',
-  templateUrl: './roles-index.component.html',
-  styleUrls: ['./roles-index.component.scss']
+  templateUrl: './roles-index.component.html'
 })
 export class RolesIndexComponent extends RecordIndexComponent<RolesAppState, Role, number> implements OnInit {
 

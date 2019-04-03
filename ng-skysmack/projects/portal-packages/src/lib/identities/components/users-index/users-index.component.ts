@@ -9,8 +9,7 @@ import { NgUsersMenu } from './../../ng-users-menu';
 
 @Component({
   selector: 'ss-users-index',
-  templateUrl: './users-index.component.html',
-  styleUrls: ['./users-index.component.scss']
+  templateUrl: './users-index.component.html'
 })
 export class UsersIndexComponent extends RecordIndexComponent<UsersAppState, User, number> implements OnInit {
 

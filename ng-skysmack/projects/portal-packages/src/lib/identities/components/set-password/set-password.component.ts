@@ -9,8 +9,7 @@ import { of } from 'rxjs';
 
 @Component({
   selector: 'ss-portal-package-set-password',
-  templateUrl: './set-password.component.html',
-  styleUrls: ['./set-password.component.scss']
+  templateUrl: './set-password.component.html'
 })
 export class SetPasswordComponent extends FormBaseComponent<UsersAppState, User, number, NgSetPasswordFormDependencies> implements OnInit {
 

@@ -10,8 +10,7 @@ import { NgRolesStore } from '@skysmack/ng-packages';
 
 @Component({
   selector: 'ss-roles-edit',
-  templateUrl: './roles-edit.component.html',
-  styleUrls: ['./roles-edit.component.scss']
+  templateUrl: './roles-edit.component.html'
 })
 export class RolesEditComponent extends RecordFormComponent<RolesAppState, Role, number, NgRoleFormDependencies> implements OnInit {
 

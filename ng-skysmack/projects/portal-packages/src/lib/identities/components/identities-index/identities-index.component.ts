@@ -5,8 +5,7 @@ import { IDENTITES_AREA_KEY } from '@skysmack/packages-identities';
 
 @Component({
   selector: 'ss-portal-package-identities-index',
-  templateUrl: './identities-index.component.html',
-  styleUrls: ['./identities-index.component.scss']
+  templateUrl: './identities-index.component.html'
 })
 export class IdentitiesIndexComponent implements OnInit {
 
