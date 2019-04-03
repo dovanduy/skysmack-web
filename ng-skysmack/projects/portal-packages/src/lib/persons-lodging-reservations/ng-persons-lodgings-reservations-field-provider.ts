@@ -32,6 +32,8 @@ export class NgPersonsLodgingReservationsFieldProvider extends FieldProvider {
 
                     if (_package.object.dependencies[1] === packagePath) {
 
+                        // TODO: Do something about requests only being done once (but beware they aren't fired more than once pr. "component life time")
+
                         // Request the package settings - only ONCE per. package per. app lifetime.
                         const depPackagePath = _package.object.path;
                         if (!this.requested[depPackagePath]) {
