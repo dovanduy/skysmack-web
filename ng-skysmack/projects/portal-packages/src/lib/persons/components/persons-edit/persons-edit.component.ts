@@ -11,8 +11,7 @@ import { NgFieldActions, NgFieldStore } from '@skysmack/ng-redux';
 
 @Component({
   selector: 'ss-persons-edit',
-  templateUrl: './persons-edit.component.html',
-  styleUrls: ['./persons-edit.component.scss']
+  templateUrl: './persons-edit.component.html'
 })
 export class PersonsEditComponent extends DocumentRecordFormComponent<PersonsAppState, Person, number, NgPersonFormDependencies> implements OnInit {
 
