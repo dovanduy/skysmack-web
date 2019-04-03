@@ -10,8 +10,7 @@ import { NgFieldActions, NgFieldStore } from '@skysmack/ng-redux';
 
 @Component({
   selector: 'ss-receipts-index',
-  templateUrl: './receipts-index.component.html',
-  styleUrls: ['./receipts-index.component.scss']
+  templateUrl: './receipts-index.component.html'
 })
 export class ReceiptsIndexComponent extends DocumentRecordIndexComponent<ReceiptsAppState, Receipt, number> implements OnInit {
   public area: string = RECEIPTS_REDUCER_AREA_KEY;

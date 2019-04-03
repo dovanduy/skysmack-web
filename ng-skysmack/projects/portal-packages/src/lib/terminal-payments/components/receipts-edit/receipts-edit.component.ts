@@ -11,8 +11,7 @@ import { NgFieldActions, NgFieldStore } from '@skysmack/ng-redux';
 
 @Component({
   selector: 'ss-receipts-edit',
-  templateUrl: './receipts-edit.component.html',
-  styleUrls: ['./receipts-edit.component.scss']
+  templateUrl: './receipts-edit.component.html'
 })
 export class ReceiptsEditComponent extends DocumentRecordFormComponent<ReceiptsAppState, Receipt, number, NgReceiptFormDependencies> implements OnInit {
 

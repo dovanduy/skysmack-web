@@ -11,8 +11,7 @@ import { NgFieldActions, NgFieldStore } from '@skysmack/ng-redux';
 
 @Component({
   selector: 'ss-terminals-edit',
-  templateUrl: './terminals-edit.component.html',
-  styleUrls: ['./terminals-edit.component.scss']
+  templateUrl: './terminals-edit.component.html'
 })
 export class TerminalsEditComponent extends DocumentRecordFormComponent<TerminalsAppState, Terminal, number, NgTerminalFormDependencies> implements OnInit {
   constructor(

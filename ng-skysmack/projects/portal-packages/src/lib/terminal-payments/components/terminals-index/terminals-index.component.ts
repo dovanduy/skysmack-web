@@ -12,8 +12,7 @@ import { NgFieldActions, NgFieldStore } from '@skysmack/ng-redux';
 
 @Component({
   selector: 'ss-terminals-index',
-  templateUrl: './terminals-index.component.html',
-  styleUrls: ['./terminals-index.component.scss']
+  templateUrl: './terminals-index.component.html'
 })
 export class TerminalsIndexComponent extends DocumentRecordIndexComponent<TerminalsAppState, Terminal, number> implements OnInit {
 

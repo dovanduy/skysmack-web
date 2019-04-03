@@ -11,8 +11,7 @@ import { NgFieldActions, NgFieldStore } from '@skysmack/ng-redux';
 
 @Component({
   selector: 'ss-terminals-create',
-  templateUrl: './terminals-create.component.html',
-  styleUrls: ['./terminals-create.component.scss']
+  templateUrl: './terminals-create.component.html'
 })
 export class TerminalsCreateComponent extends DocumentRecordFormComponent<TerminalsAppState, Terminal, number, NgTerminalFormDependencies> implements OnInit {
 
