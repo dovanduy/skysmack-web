@@ -11,8 +11,7 @@ import { NgFieldActions, NgFieldStore } from '@skysmack/ng-redux';
 
 @Component({
   selector: 'ss-invoice-payments-index',
-  templateUrl: './invoice-payments-index.component.html',
-  styleUrls: ['./invoice-payments-index.component.scss']
+  templateUrl: './invoice-payments-index.component.html'
 })
 export class InvoicePaymentsIndexComponent extends DocumentRecordIndexComponent<InvoicePaymentsAppState, InvoicePayment, number> implements OnInit {
 

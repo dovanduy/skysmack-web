@@ -11,8 +11,7 @@ import { NgFieldActions, NgFieldStore } from '@skysmack/ng-redux';
 
 @Component({
   selector: 'ss-invoice-items-create',
-  templateUrl: './invoice-items-create.component.html',
-  styleUrls: ['./invoice-items-create.component.scss']
+  templateUrl: './invoice-items-create.component.html'
 })
 export class InvoiceItemsCreateComponent extends DocumentRecordFormComponent<InvoiceItemsAppState, InvoiceItem, number, NgInvoiceItemFormDependencies> implements OnInit {
 
