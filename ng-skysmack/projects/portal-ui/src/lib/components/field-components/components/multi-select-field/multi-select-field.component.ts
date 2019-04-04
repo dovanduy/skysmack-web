@@ -1,14 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { SelectField, DisableUntilValueRule, Field, SelectFieldOption } from '@skysmack/ng-ui';
+import { SelectField, DisableUntilValueRule, Field } from '@skysmack/ng-ui';
 import { FieldBaseComponent } from '../field-base-component';
 
 @Component({
   selector: 'ss-multi-select-field',
   templateUrl: './multi-select-field.component.html'
 })
-export class MultiSelectFieldComponent extends FieldBaseComponent<Field> implements OnInit {
-  public fieldOptions: SelectFieldOption[] = [];
-  public nullDisplayName = undefined;
+export class MultiSelectFieldComponent extends FieldBaseComponent<SelectField> implements OnInit {
 
   ngOnInit() {
     super.ngOnInit();
@@ -16,9 +14,6 @@ export class MultiSelectFieldComponent extends FieldBaseComponent<Field> impleme
       if (this.field) {
         this.runAllRulesOfType(DisableUntilValueRule.type, { fields });
         this.runRulesOnChange(fields);
-        this.fieldOptions = (this.field as SelectField).getOptions();
-        const nullValueOption = this.fieldOptions.find(x => x.value === null);
-        this.nullDisplayName = nullValueOption ? nullValueOption.displayName : undefined;
       }
     }));
   }
@@ -29,7 +24,6 @@ export class MultiSelectFieldComponent extends FieldBaseComponent<Field> impleme
         fields,
         selectedValue: this.getFieldValue(),
       });
-      this.fieldOptions = (this.field as SelectField).getOptions();
     }));
   }
 }

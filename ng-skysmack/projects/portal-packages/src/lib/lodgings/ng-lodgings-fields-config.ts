@@ -30,7 +30,7 @@ export class NgLodgingsFieldsConfig extends FieldsConfig<Lodging, number, NgLodg
                 label: 'Lodging type',
                 key: 'lodgingTypeId',
                 validators: [Validators.required],
-                optionsData: this.lodgingTypeStore.get(loadedPackage._package.path),
+                optionsData$: this.lodgingTypeStore.get(loadedPackage._package.path),
                 displayNameSelector: 'name',
                 disabled: entity && entity.object ? true : false,
                 order: 1,

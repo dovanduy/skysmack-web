@@ -5,6 +5,7 @@ import { ProductPriceChange, ProductsSalesPrice, PriceChangeType } from '@skysma
 import { FormRule, SelectField, Field } from '@skysmack/ng-ui';
 import { NgProductPriceChangesValidation, LoadedPackage, NgProductsSalesPriceStore } from '@skysmack/ng-packages';
 import { FieldsConfig, SelectFieldComponent, HiddenFieldComponent, DecimalFieldComponent, DateTimeFieldComponent } from '@skysmack/portal-ui';
+import { of } from 'rxjs';
 
 
 export interface NgProductPriceChangesFormDependencies {
@@ -58,7 +59,7 @@ export class NgProductPriceChangesFieldsConfig extends FieldsConfig<ProductPrice
                 value: entity ? entity.object.changeType : undefined,
                 key: 'changeType',
                 validators: [Validators.required],
-                optionsData: PriceChangeType,
+                optionsData$: of(PriceChangeType),
                 optionsDataType: 'ts-enum',
                 order: 3,
                 showColumn: true

@@ -44,7 +44,7 @@ export class RecordFormComponent<TAppState, TRecord extends Record<TKey>, TKey, 
                 this.editorItem = values[0] as LocalObject<TRecord, TKey>;
                 const loadedPackage = values[1];
 
-                return this.fieldsConfig.getFields(this.editorItem);
+                return this.fieldsConfig.getFields(this.editorItem, undefined, undefined, loadedPackage);
             })
         );
     }
@@ -62,7 +62,7 @@ export class RecordFormComponent<TAppState, TRecord extends Record<TKey>, TKey, 
                     const loadedPackage = values[2];
                     this.editorItem ? this.selectedEntity = this.editorItem : this.selectedEntity = entity;
 
-                    return this.fieldsConfig.getFields(this.selectedEntity);
+                    return this.fieldsConfig.getFields(this.selectedEntity, undefined, undefined, loadedPackage);
                 })
             );
     }

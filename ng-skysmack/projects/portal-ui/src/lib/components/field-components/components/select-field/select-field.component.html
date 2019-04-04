@@ -3,11 +3,13 @@
   <mat-form-field>
     <mat-select [id]="fieldKey" [formControlName]="fieldKey" [value]="field.value"
       [placeholder]="field.placeholder | translate">
-      <mat-option *ngFor="let opt of field.extraOptions" [value]="opt.value">
+      <ng-container *ngIf="field.extraOptions">
+        <mat-option *ngFor="let opt of field.extraOptions" [value]="opt.value">
+          {{ opt.displayName }}
+        </mat-option>
+      </ng-container>
+      <mat-option *ngFor="let opt of field.optionsData$ | async" [value]="opt.value">
         {{ opt.displayName }}
-      </mat-option>
-      <mat-option *ngFor="let opt of field.optionsData$ | async" [value]="opt.object[field.valueSelector]">
-        {{opt.object[field.displayNameSelector]}}
       </mat-option>
     </mat-select>
 

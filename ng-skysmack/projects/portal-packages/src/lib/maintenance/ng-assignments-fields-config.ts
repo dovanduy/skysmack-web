@@ -5,6 +5,7 @@ import { Assignment, AssignmentType } from '@skysmack/packages-maintenance';
 import { NgAssignmentsValidation, LoadedPackage, NgAssignmentTypesStore } from '@skysmack/ng-packages';
 import { FormRule, Field, SelectField } from '@skysmack/ng-ui';
 import { FieldsConfig, StringFieldComponent, SelectFieldComponent, HiddenFieldComponent, DateTimeFieldComponent } from '@skysmack/portal-ui';
+import { of } from 'rxjs';
 
 export interface NgAssignmentFormDependencies {
     availableAssignmentTypes: LocalObject<AssignmentType, number>[];
@@ -14,15 +15,11 @@ export interface NgAssignmentFormDependencies {
 export class NgAssignmentsFieldsConfig extends FieldsConfig<Assignment, number, NgAssignmentFormDependencies> {
     public validation = new NgAssignmentsValidation();
 
-    public formRules: FormRule[] = [
-    ];
+    public formRules: FormRule[] = [];
 
     constructor(
         public assignmentTypesStore: NgAssignmentTypesStore
-    ) {
-        super();
-    }
-
+    ) { super(); }
 
     protected getEntityFields(entity?: LocalObject<Assignment, number>, dependencies?: NgAssignmentFormDependencies, loadedPackage?: LoadedPackage): Field[] {
         const fields = [
@@ -33,7 +30,7 @@ export class NgAssignmentsFieldsConfig extends FieldsConfig<Assignment, number, 
                 key: 'assignmentTypeId',
                 displayKey: 'assignmentType',
                 displaySubKey: 'object.description',
-                optionsData: this.assignmentTypesStore.get(loadedPackage._package.path),
+                optionsData$: this.assignmentTypesStore.get(loadedPackage._package.path),
                 displayNameSelector: 'object.description',
                 order: 3,
                 showColumn: true
@@ -58,7 +55,7 @@ export class NgAssignmentsFieldsConfig extends FieldsConfig<Assignment, number, 
                     return lowercaseStatus ? lowercaseStatus.charAt(0).toUpperCase() + lowercaseStatus.slice(1) : lowercaseStatus;
                 },
                 validators: [Validators.required],
-                optionsData: Assignment.StatusEnum,
+                optionsData$: of(Assignment.StatusEnum),
                 optionsDataType: 'enum',
                 order: 3,
                 showColumn: true

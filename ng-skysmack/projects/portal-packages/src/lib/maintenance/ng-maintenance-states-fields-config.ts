@@ -5,6 +5,7 @@ import { MaintenanceState, MaintenanceEntityStatus } from '@skysmack/packages-ma
 import { NgMaintenanceStatesValidation, LoadedPackage } from '@skysmack/ng-packages';
 import { FormRule, Field, SelectField } from '@skysmack/ng-ui';
 import { FieldsConfig, StringFieldComponent, SelectFieldComponent, HiddenFieldComponent } from '@skysmack/portal-ui';
+import { of } from 'rxjs';
 
 export interface NgMaintenanceStateFormDependencies {
     availableMaintenanceStates: LocalObject<MaintenanceState, number>[];
@@ -35,7 +36,7 @@ export class NgMaintenanceStatesFieldsConfig extends FieldsConfig<MaintenanceSta
                 key: 'status',
                 label: 'Status',
                 validators: [Validators.required],
-                optionsData: MaintenanceEntityStatus,
+                optionsData$: of(MaintenanceEntityStatus),
                 optionsDataType: 'ts-enum',
                 order: 2,
                 showColumn: true
