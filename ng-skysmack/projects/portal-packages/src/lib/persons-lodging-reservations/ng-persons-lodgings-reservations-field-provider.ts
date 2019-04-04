@@ -49,41 +49,40 @@ export class NgPersonsLodgingReservationsFieldProvider extends FieldProvider {
                             this.requested[personsPackagePath] = true;
                         }
 
-                        return this.personsStore.get(personsPackagePath).pipe(
-                            switchMap(persons => {
-                                // Get settings
-                                return this.settingsStore.get<PersonsLodgingReservationsSettings>(depPackagePath, 'persons-reservations').pipe(
-                                    map(settings => {
-                                        const addField = new AddField({
-                                            fieldsConfig: this.personsFieldsConfig,
-                                            component: AddRecordFieldComponent,
-                                            value: undefined,
-                                            key: 'extendedData.' + _package.object.path + '.add',
-                                            label: personsPackagePath,
-                                            placeholder: personsPackagePath,
-                                            order: 4,
-                                            showColumn: true
-                                        });
+                        return this.settingsStore.get<PersonsLodgingReservationsSettings>(depPackagePath, 'persons-reservations').pipe(
+                            map(settings => {
+                                const addField = new AddField({
+                                    component: AddRecordFieldComponent,
+                                    actions: this.personsActions,
+                                    store: this.personsStore,
+                                    fieldsConfig: this.personsFieldsConfig,
+                                    dynamicFields: true,
+                                    titleTranslationString: 'PERSONS.CREATE.CREATE',
+                                    value: undefined,
+                                    key: 'extendedData.' + _package.object.path + '.add',
+                                    label: personsPackagePath,
+                                    placeholder: personsPackagePath,
+                                    order: 4,
+                                    showColumn: true
+                                });
 
-                                        const selectField = new SelectField({
-                                            component: MultiSelectFieldComponent,
-                                            value: undefined,
-                                            key: 'extendedData.' + _package.object.path + '.attach',
-                                            optionsData: persons,
-                                            displayNameSelector: 'object.displayName',
-                                            label: personsPackagePath,
-                                            placeholder: personsPackagePath,
-                                            order: 4,
-                                            showColumn: true
-                                        });
+                                const selectField = new SelectField({
+                                    component: MultiSelectFieldComponent,
+                                    value: undefined,
+                                    key: 'extendedData.' + _package.object.path + '.attach',
+                                    optionsData$: this.personsStore.get(personsPackagePath),
+                                    displayNameSelector: 'object.displayName',
+                                    label: personsPackagePath,
+                                    placeholder: personsPackagePath,
+                                    order: 4,
+                                    showColumn: true
+                                });
 
-                                        switch (settings.object.shouldBeExistingPersons) {
-                                            case true: return [selectField];
-                                            case false: return [addField];
-                                            default: return [selectField, addField];
-                                        }
-                                    })
-                                );
+                                switch (settings.object.shouldBeExistingPersons) {
+                                    case true: return [selectField];
+                                    case false: return [addField];
+                                    default: return [selectField, addField];
+                                }
                             })
                         );
                     }

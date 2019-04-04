@@ -5,7 +5,7 @@ import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { Basket } from '@skysmack/packages-baskets';
 import { Field } from '@skysmack/ng-ui';
 
-import { BasketsValidation } from '@skysmack/ng-packages';
+import { BasketsValidation, LoadedPackage } from '@skysmack/ng-packages';
 import { FieldsConfig, StringFieldComponent, HiddenFieldComponent } from '@skysmack/portal-ui';
 
 export interface NgBasketFormDependencies {
@@ -18,7 +18,7 @@ export class NgBasketsFieldsConfig extends FieldsConfig<Basket, number, NgBasket
 
     public formRules: FormRule[] = [];
 
-    protected getEntityFields(entity?: LocalObject<Basket, number>, dependencies?: NgBasketFormDependencies): Field[] {
+    protected getEntityFields(entity?: LocalObject<Basket, number>, dependencies?: NgBasketFormDependencies, loadedPackage?: LoadedPackage): Field[] {
         const fields = [
             new Field({
                 component: StringFieldComponent,

@@ -7,9 +7,8 @@ import { FieldBaseComponent } from '../field-base-component';
   templateUrl: './select-field.component.html',
   styleUrls: ['./select-field.component.scss']
 })
-export class SelectFieldComponent extends FieldBaseComponent implements OnInit {
+export class SelectFieldComponent extends FieldBaseComponent<SelectField> implements OnInit {
   public fieldOptions: SelectFieldOption[] = [];
-  public nullDisplayName = undefined;
 
   ngOnInit() {
     super.ngOnInit();
@@ -18,9 +17,7 @@ export class SelectFieldComponent extends FieldBaseComponent implements OnInit {
 
         this.runAllRulesOfType(DisableUntilValueRule.type, { fields });
         this.runRulesOnChange(fields);
-        this.fieldOptions = (this.field as SelectField).getOptions();
-        const nullValueOption = this.fieldOptions.find(x => x.value === null);
-        this.nullDisplayName = nullValueOption ? nullValueOption.displayName : undefined;
+        this.fieldOptions = this.field.getOptions();
       }
     }));
   }
@@ -31,7 +28,7 @@ export class SelectFieldComponent extends FieldBaseComponent implements OnInit {
         fields,
         selectedValue: this.getFieldValue(),
       });
-      this.fieldOptions = (this.field as SelectField).getOptions();
+      this.fieldOptions = this.field.getOptions();
     }));
   }
 }

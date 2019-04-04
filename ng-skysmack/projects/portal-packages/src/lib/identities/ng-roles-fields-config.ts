@@ -3,7 +3,7 @@ import { Validators } from '@angular/forms';
 import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { Role } from '@skysmack/packages-identities';
 import { Field, FormRule } from '@skysmack/ng-ui';
-import { NgRolesValidation } from '@skysmack/ng-packages';
+import { NgRolesValidation, LoadedPackage } from '@skysmack/ng-packages';
 import { FieldsConfig, StringFieldComponent, HiddenFieldComponent } from '@skysmack/portal-ui';
 
 export interface NgRoleFormDependencies {
@@ -16,7 +16,7 @@ export class NgRolesFieldsConfig extends FieldsConfig<Role, number, NgRoleFormDe
 
     public formRules: FormRule[] = [];
 
-    protected getEntityFields(entity?: LocalObject<Role, number>, dependencies?: NgRoleFormDependencies): Field[] {
+    protected getEntityFields(entity?: LocalObject<Role, number>, dependencies?: NgRoleFormDependencies, loadedPackage?: LoadedPackage): Field[] {
         const fields = [
             new Field({
                 component: StringFieldComponent,

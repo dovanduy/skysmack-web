@@ -2,6 +2,7 @@ import { Field } from './field';
 import { SelectFieldOption } from './select-field-option';
 import { getProperty } from '@skysmack/framework';
 import { FieldHelpers } from './field-helpers';
+import { Observable } from 'rxjs';
 
 export class SelectField extends Field {
     /**
@@ -48,6 +49,9 @@ export class SelectField extends Field {
      * Ensure it returns the options with updated displayName
      */
     public modifyDisplayName: Function;
+
+    // EXPERIMENTAL
+    public optionsData$: Observable<any>;
 
     constructor(values: Partial<SelectField>) {
         super(values);
@@ -116,7 +120,7 @@ export class SelectField extends Field {
      */
     private setDefaults() {
         this.optionsDataType ? this.optionsDataType = this.optionsDataType : this.optionsDataType = 'array';
-        this.valueSelector ? this.valueSelector = this.valueSelector : this.valueSelector = 'object.id';
-        this.displayNameSelector ? this.displayNameSelector = this.displayNameSelector : this.displayNameSelector = 'object.name';
+        this.valueSelector ? this.valueSelector = this.valueSelector : this.valueSelector = 'id';
+        this.displayNameSelector ? this.displayNameSelector = this.displayNameSelector : this.displayNameSelector = 'name';
     }
 }

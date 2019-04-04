@@ -6,7 +6,7 @@ import { Receipt } from '@skysmack/packages-terminal-payments';
 import { Field } from '@skysmack/ng-ui';
 
 import { FieldsConfig, StringFieldComponent, HiddenFieldComponent } from '@skysmack/portal-ui';
-import { NgReceiptsValidation } from '@skysmack/ng-packages';
+import { NgReceiptsValidation, LoadedPackage } from '@skysmack/ng-packages';
 
 export interface NgReceiptFormDependencies {
     [key: string]: any;
@@ -18,7 +18,7 @@ export class NgReceiptsFieldsConfig extends FieldsConfig<Receipt, number, NgRece
 
     public formRules: FormRule[] = [];
 
-    protected getEntityFields(entity?: LocalObject<Receipt, number>, dependencies?: NgReceiptFormDependencies): Field[] {
+    protected getEntityFields(entity?: LocalObject<Receipt, number>, dependencies?: NgReceiptFormDependencies, loadedPackage?: LoadedPackage): Field[] {
         const fields = [
             new Field({
                 component: StringFieldComponent,

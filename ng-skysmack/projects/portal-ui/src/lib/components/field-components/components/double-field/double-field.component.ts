@@ -7,7 +7,7 @@ import { Field } from '@skysmack/ng-ui';
   templateUrl: './double-field.component.html',
   styleUrls: ['./double-field.component.scss']
 })
-export class DoubleFieldComponent extends FieldBaseComponent implements OnInit {
+export class DoubleFieldComponent extends FieldBaseComponent<Field> implements OnInit {
   ngOnInit() {
     super.ngOnInit();
   }

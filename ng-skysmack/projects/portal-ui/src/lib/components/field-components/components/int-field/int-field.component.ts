@@ -7,7 +7,7 @@ import { Field } from '@skysmack/ng-ui';
   templateUrl: './int-field.component.html',
   styleUrls: ['./int-field.component.scss']
 })
-export class IntFieldComponent extends FieldBaseComponent implements OnInit {
+export class IntFieldComponent extends FieldBaseComponent<Field> implements OnInit {
   ngOnInit() {
     super.ngOnInit();
     this.subscriptionHandler.register(this.fh.form.valueChanges.subscribe(() => {

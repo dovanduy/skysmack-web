@@ -4,7 +4,7 @@ import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { Field } from '@skysmack/ng-ui';
 import { FieldsConfig, SelectFieldComponent, HiddenFieldComponent, CheckboxFieldComponent } from '@skysmack/portal-ui';
 import { AccessPolicyRule } from '@skysmack/packages-skysmack-core';
-import { AccessPolicyRulesValidation } from '@skysmack/ng-packages';
+import { AccessPolicyRulesValidation, LoadedPackage } from '@skysmack/ng-packages';
 
 export interface NgAccessPolicyRuleFormDependencies {
     [key: string]: any;
@@ -16,7 +16,7 @@ export class NgAccessPolicyRulesFieldsConfig extends FieldsConfig<AccessPolicyRu
 
     public formRules: FormRule[] = [];
 
-    protected getEntityFields(entity?: LocalObject<AccessPolicyRule, number>, dependencies?: NgAccessPolicyRuleFormDependencies): Field[] {
+    protected getEntityFields(entity?: LocalObject<AccessPolicyRule, number>, dependencies?: NgAccessPolicyRuleFormDependencies, loadedPackage?: LoadedPackage): Field[] {
         const fields = [
             new Field({
                 component: CheckboxFieldComponent,

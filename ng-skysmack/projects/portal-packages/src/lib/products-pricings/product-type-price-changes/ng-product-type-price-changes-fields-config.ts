@@ -3,7 +3,7 @@ import { Validators } from '@angular/forms';
 import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { ProductTypePriceChange, PriceChangeType, ProductTypeSalesPrice } from '@skysmack/packages-products-pricings';
 import { FormRule, SelectField, Field } from '@skysmack/ng-ui';
-import { NgProductTypePriceChangesValidation } from '@skysmack/ng-packages';
+import { NgProductTypePriceChangesValidation, LoadedPackage } from '@skysmack/ng-packages';
 import { FieldsConfig, SelectFieldComponent, HiddenFieldComponent, DecimalFieldComponent, DateTimeFieldComponent } from '@skysmack/portal-ui';
 
 export interface NgProductTypePriceChangesFormDependencies {
@@ -16,7 +16,7 @@ export class NgProductTypePriceChangesFieldsConfig extends FieldsConfig<ProductT
 
     public formRules: FormRule[] = [];
 
-    protected getEntityFields(entity?: LocalObject<ProductTypePriceChange, number>, dependencies?: NgProductTypePriceChangesFormDependencies): Field[] {
+    protected getEntityFields(entity?: LocalObject<ProductTypePriceChange, number>, dependencies?: NgProductTypePriceChangesFormDependencies, loadedPackage?: LoadedPackage): Field[] {
         const fields = [
             new SelectField({
                 component: SelectFieldComponent,

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { LocalObject, Package, AvailablePackage } from '@skysmack/framework';
 import { FormRule, Field, CustomValidators, SetPathRule, SelectField } from '@skysmack/ng-ui';
-import { PackagesValidation } from '@skysmack/ng-packages';
+import { PackagesValidation, LoadedPackage } from '@skysmack/ng-packages';
 import { FieldsConfig, StringFieldComponent, SelectFieldComponent, HiddenFieldComponent, PackageDependenciesFieldComponent } from '@skysmack/portal-ui';
 
 export interface NgPackageFormDependencies {
@@ -17,7 +17,11 @@ export class NgPackagesFieldsConfig extends FieldsConfig<Package, string, NgPack
         new SetPathRule(['name'])
     ];
 
-    protected getEntityFields(_package?: LocalObject<Package, string>, dependencies?: NgPackageFormDependencies): Field[] {
+    constructor() {
+        super();
+    }
+
+    protected getEntityFields(_package?: LocalObject<Package, string>, dependencies?: NgPackageFormDependencies, loadedPackage?: LoadedPackage): Field[] {
         return [
             new SelectField({
                 component: SelectFieldComponent,

@@ -7,7 +7,7 @@ import { Field } from '@skysmack/ng-ui';
   templateUrl: './time-field.component.html',
   styleUrls: ['./time-field.component.scss']
 })
-export class TimeFieldComponent extends FieldBaseComponent implements OnInit {
+export class TimeFieldComponent extends FieldBaseComponent<Field> implements OnInit {
   ngOnInit() {
     super.ngOnInit();
   }

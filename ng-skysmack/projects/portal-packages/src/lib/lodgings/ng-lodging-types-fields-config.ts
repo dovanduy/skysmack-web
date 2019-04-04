@@ -3,7 +3,7 @@ import { Validators } from '@angular/forms';
 import { FormRule, Field } from '@skysmack/ng-ui';
 import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { LodgingType } from '@skysmack/packages-lodgings';
-import { NgLodgingTypesValidation } from '@skysmack/ng-packages';
+import { NgLodgingTypesValidation, LoadedPackage } from '@skysmack/ng-packages';
 import { FieldsConfig, StringFieldComponent, HiddenFieldComponent } from '@skysmack/portal-ui';
 
 export interface NgLodgingTypeFormDependencies {
@@ -17,7 +17,7 @@ export class NgLodgingTypesFieldsConfig extends FieldsConfig<LodgingType, number
     public formRules: FormRule[] = [
     ];
 
-    protected getEntityFields(entity?: LocalObject<LodgingType, number>, dependencies?: NgLodgingTypeFormDependencies): Field[] {
+    protected getEntityFields(entity?: LocalObject<LodgingType, number>, dependencies?: NgLodgingTypeFormDependencies, loadedPackage?: LoadedPackage): Field[] {
         const fields = [
             new Field({
                 component: StringFieldComponent,

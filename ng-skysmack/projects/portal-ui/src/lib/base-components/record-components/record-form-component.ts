@@ -36,9 +36,14 @@ export class RecordFormComponent<TAppState, TRecord extends Record<TKey>, TKey, 
     }
 
     protected setCreateFields() {
-        this.fields$ = this.skysmackStore.getEditorItem().pipe(
-            map(editorItem => {
-                this.editorItem = editorItem as LocalObject<TRecord, TKey>;
+        this.fields$ = combineLatest(
+            this.skysmackStore.getEditorItem(),
+            this.loadedPackage$
+        ).pipe(
+            map(values => {
+                this.editorItem = values[0] as LocalObject<TRecord, TKey>;
+                const loadedPackage = values[1];
+
                 return this.fieldsConfig.getFields(this.editorItem);
             })
         );
@@ -48,11 +53,13 @@ export class RecordFormComponent<TAppState, TRecord extends Record<TKey>, TKey, 
         this.fields$ =
             combineLatest(
                 this.initEditRecord(),
-                this.skysmackStore.getEditorItem()
+                this.skysmackStore.getEditorItem(),
+                this.loadedPackage$
             ).pipe(
                 map(values => {
                     const entity = values[0];
                     this.editorItem = values[1] as LocalObject<TRecord, TKey>;
+                    const loadedPackage = values[2];
                     this.editorItem ? this.selectedEntity = this.editorItem : this.selectedEntity = entity;
 
                     return this.fieldsConfig.getFields(this.selectedEntity);

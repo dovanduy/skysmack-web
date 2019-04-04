@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { LocalObject, LocalObjectStatus, EnumHelpers } from '@skysmack/framework';
 import { Assignment, AssignmentType } from '@skysmack/packages-maintenance';
-import { NgAssignmentsValidation } from '@skysmack/ng-packages';
+import { NgAssignmentsValidation, LoadedPackage } from '@skysmack/ng-packages';
 import { FormRule, Field, SelectField } from '@skysmack/ng-ui';
 import { FieldsConfig, StringFieldComponent, SelectFieldComponent, HiddenFieldComponent, DateTimeFieldComponent } from '@skysmack/portal-ui';
 
@@ -17,7 +17,7 @@ export class NgAssignmentsFieldsConfig extends FieldsConfig<Assignment, number, 
     public formRules: FormRule[] = [
     ];
 
-    protected getEntityFields(entity?: LocalObject<Assignment, number>, dependencies?: NgAssignmentFormDependencies): Field[] {
+    protected getEntityFields(entity?: LocalObject<Assignment, number>, dependencies?: NgAssignmentFormDependencies, loadedPackage?: LoadedPackage): Field[] {
         const fields = [
             // TODO(GET_DEPS): DisplayKet is new here - is that still needed?
             new SelectField({

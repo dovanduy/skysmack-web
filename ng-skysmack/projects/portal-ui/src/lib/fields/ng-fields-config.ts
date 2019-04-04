@@ -11,6 +11,8 @@ import { StringFieldComponent } from '../components/field-components/components/
 import { SelectFieldComponent } from '../components/field-components/components/select-field/select-field.component';
 import { ValidatorsFieldComponent } from '../components/field-components/components/validators-field/validators-field.component';
 import { FieldPermissionFieldComponent } from '../components/field-components/components/field-permission-field/field-permission-field.component';
+import { NgFieldStore } from '@skysmack/ng-redux';
+import { LoadedPackage } from '@skysmack/ng-packages';
 
 export interface NgFieldFormDependencies {
     availableFields: LocalObject<FieldValueProviderViewModel, string>[];
@@ -24,12 +26,16 @@ export class NgFieldsConfig extends FieldsConfig<FieldSchemaViewModel, string, N
         new SetFieldKeyRule(['display'])
     ];
 
+    constructor(public store: NgFieldStore) {
+        super();
+    }
+
     /**
      * Gets the fields for the form used to create or edit a dynamic field.
      * @param availableFields Possible dynamic fields to create. Recieved from the backend.
      * @param field Optional field can be providedto set default values. Used to edit an existing field.
      */
-    protected getEntityFields(field?: LocalObject<FieldSchemaViewModel, string>, dependencies?: NgFieldFormDependencies): Field[] {
+    protected getEntityFields(field?: LocalObject<FieldSchemaViewModel, string>, dependencies?: NgFieldFormDependencies, loadedPackage?: LoadedPackage): Field[] {
         const fields = [
             new Field({
                 component: StringFieldComponent,

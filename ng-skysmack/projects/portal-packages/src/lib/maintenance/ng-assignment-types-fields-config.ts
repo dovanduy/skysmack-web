@@ -5,7 +5,7 @@ import { FormRule } from '@skysmack/ng-ui';
 import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { Field } from '@skysmack/ng-ui';
 import { SelectField } from '@skysmack/ng-ui';
-import { NgAssignmentTypesValidation } from '@skysmack/ng-packages';
+import { NgAssignmentTypesValidation, LoadedPackage } from '@skysmack/ng-packages';
 import { FieldsConfig, StringFieldComponent, SelectFieldComponent, HiddenFieldComponent, RecurringExpressionFieldComponent } from '@skysmack/portal-ui';
 
 export interface NgAssignmentTypeFormDependencies {
@@ -19,7 +19,13 @@ export class NgAssignmentTypesFieldsConfig extends FieldsConfig<AssignmentType, 
     public formRules: FormRule[] = [
     ];
 
-    protected getEntityFields(entity?: LocalObject<AssignmentType, number>, dependencies?: NgAssignmentTypeFormDependencies): Field[] {
+    constructor(
+        // public lodgingTypeStore: NgLodgingTypesStore
+    ) {
+        super();
+    }
+
+    protected getEntityFields(entity?: LocalObject<AssignmentType, number>, dependencies?: NgAssignmentTypeFormDependencies, loadedPackage?: LoadedPackage): Field[] {
         const fields = [
             new SelectField({
                 component: SelectFieldComponent,

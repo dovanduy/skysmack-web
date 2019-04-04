@@ -4,6 +4,7 @@ import { fromEvent } from 'rxjs';
 import { FieldBaseComponent } from '../field-base-component';
 import { DateTimeAdapter } from './date-time-adapter';
 import { map } from 'rxjs/operators';
+import { Field } from '@skysmack/ng-ui';
 
 @Component({
   selector: 'ss-date-time-field',
@@ -11,7 +12,7 @@ import { map } from 'rxjs/operators';
   styleUrls: ['./date-time-field.component.scss'],
   providers: [DateTimeAdapter, { provide: DateAdapter, useClass: DateTimeAdapter }]
 })
-export class DateTimeFieldComponent extends FieldBaseComponent implements AfterViewInit, OnInit {
+export class DateTimeFieldComponent extends FieldBaseComponent<Field> implements AfterViewInit, OnInit {
 
   @ViewChild('timeInput') public timeInput: ElementRef;
   public time: string;

@@ -6,7 +6,7 @@ import { ProductType } from '@skysmack/packages-products';
 import { Field } from '@skysmack/ng-ui';
 
 import { FieldsConfig, StringFieldComponent, HiddenFieldComponent } from '@skysmack/portal-ui';
-import { NgProductTypesValidation } from '@skysmack/ng-packages';
+import { NgProductTypesValidation, LoadedPackage } from '@skysmack/ng-packages';
 
 export interface NgProductTypeFormDependencies {
     [key: string]: any;
@@ -18,7 +18,7 @@ export class NgProductTypesFieldsConfig extends FieldsConfig<ProductType, number
 
     public formRules: FormRule[] = [];
 
-    protected getEntityFields(entity?: LocalObject<ProductType, number>, dependencies?: NgProductTypeFormDependencies): Field[] {
+    protected getEntityFields(entity?: LocalObject<ProductType, number>, dependencies?: NgProductTypeFormDependencies, loadedPackage?: LoadedPackage): Field[] {
         const fields = [
             new Field({
                 component: StringFieldComponent,

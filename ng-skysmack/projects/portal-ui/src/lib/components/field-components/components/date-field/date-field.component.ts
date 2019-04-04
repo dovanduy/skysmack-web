@@ -3,6 +3,7 @@ import { FieldBaseComponent } from '../field-base-component';
 import * as _moment from 'moment';
 import { DateAdapter } from '@angular/material';
 import { DateOnlyAdapter } from './date-only-adapter';
+import { Field } from '@skysmack/ng-ui';
 const moment = _moment;
 
 @Component({
@@ -11,7 +12,7 @@ const moment = _moment;
   styleUrls: ['./date-field.component.scss'],
   providers: [DateOnlyAdapter, { provide: DateAdapter, useClass: DateOnlyAdapter }]
 })
-export class DateFieldComponent extends FieldBaseComponent implements OnInit {
+export class DateFieldComponent extends FieldBaseComponent<Field> implements OnInit {
   ngOnInit() {
     super.ngOnInit();
     this.getFormField().valueChanges.subscribe((value: Date) => {

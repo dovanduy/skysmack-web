@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { MaintenanceState, MaintenanceEntityStatus } from '@skysmack/packages-maintenance';
-import { NgMaintenanceStatesValidation } from '@skysmack/ng-packages';
+import { NgMaintenanceStatesValidation, LoadedPackage } from '@skysmack/ng-packages';
 import { FormRule, Field, SelectField } from '@skysmack/ng-ui';
 import { FieldsConfig, StringFieldComponent, SelectFieldComponent, HiddenFieldComponent } from '@skysmack/portal-ui';
 
@@ -17,7 +17,7 @@ export class NgMaintenanceStatesFieldsConfig extends FieldsConfig<MaintenanceSta
     public formRules: FormRule[] = [
     ];
 
-    protected getEntityFields(entity?: LocalObject<MaintenanceState, number>, dependencies?: NgMaintenanceStateFormDependencies): Field[] {
+    protected getEntityFields(entity?: LocalObject<MaintenanceState, number>, dependencies?: NgMaintenanceStateFormDependencies, loadedPackage?: LoadedPackage): Field[] {
         const fields = [
             new Field({
                 component: StringFieldComponent,

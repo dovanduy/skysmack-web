@@ -3,7 +3,7 @@ import { Validators } from '@angular/forms';
 import { FormRule, CustomValidators, Field } from '@skysmack/ng-ui';
 import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { User } from '@skysmack/packages-identities';
-import { NgUsersValidation } from '@skysmack/ng-packages';
+import { NgUsersValidation, LoadedPackage } from '@skysmack/ng-packages';
 import { FieldsConfig, HiddenFieldComponent, PasswordFieldComponent, EmailFieldComponent } from '@skysmack/portal-ui';
 
 export interface NgUserFormDependencies {
@@ -18,7 +18,7 @@ export class NgUsersFieldsConfig extends FieldsConfig<User, number, NgUserFormDe
 
     public mode: 'create' | 'edit' = 'create';
 
-    protected getEntityFields(entity?: LocalObject<User, number>, dependencies?: NgUserFormDependencies): Field[] {
+    protected getEntityFields(entity?: LocalObject<User, number>, dependencies?: NgUserFormDependencies, loadedPackage?: LoadedPackage): Field[] {
         const fields = [
             new Field({
                 component: EmailFieldComponent,

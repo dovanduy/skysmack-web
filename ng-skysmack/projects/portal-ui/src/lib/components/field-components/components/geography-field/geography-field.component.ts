@@ -9,7 +9,7 @@ interface Point { latitude: number; longtitude: number; }
   templateUrl: './geography-field.component.html',
   styleUrls: ['./geography-field.component.scss']
 })
-export class GeographyFieldComponent extends FieldBaseComponent implements AfterViewInit, OnDestroy, OnInit {
+export class GeographyFieldComponent extends FieldBaseComponent<Field> implements AfterViewInit, OnDestroy, OnInit {
 
   @ViewChild('latitude') public latitude: ElementRef;
   @ViewChild('longtitude') public longtitude: ElementRef;

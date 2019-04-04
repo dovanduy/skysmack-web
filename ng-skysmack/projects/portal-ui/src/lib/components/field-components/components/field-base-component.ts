@@ -13,10 +13,10 @@ interface AddedEvent {
     callback: Function;
 }
 
-export abstract class FieldBaseComponent implements DynamicField, OnInit, OnDestroy {
+export abstract class FieldBaseComponent<TField extends Field> implements DynamicField, OnInit, OnDestroy {
     @Input() public fh: FormHelper;
     @Input() public fieldKey: string;
-    public field: Field;
+    public field: TField;
     @Input() public fields$: Observable<Field[]>;
     @Input() public rules: FormRule[];
 
@@ -26,7 +26,7 @@ export abstract class FieldBaseComponent implements DynamicField, OnInit, OnDest
     public initted: boolean;
 
     ngOnInit() {
-        this.subscriptionHandler.register(this.fields$.pipe(map(fields => { this.field = fields.find(field => field.key === this.fieldKey); })).subscribe());
+        this.subscriptionHandler.register(this.fields$.pipe(map(fields => { this.field = fields.find(field => field.key === this.fieldKey) as TField; })).subscribe());
     }
 
     /**

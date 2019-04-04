@@ -7,7 +7,7 @@ import { Field } from '@skysmack/ng-ui';
 
 import { SelectField } from '@skysmack/ng-ui';
 import { FieldsConfig, StringFieldComponent, SelectFieldComponent, HiddenFieldComponent } from '@skysmack/portal-ui';
-import { NgProductsValidation } from '@skysmack/ng-packages';
+import { NgProductsValidation, NgProductTypesStore, LoadedPackage } from '@skysmack/ng-packages';
 
 export interface NgProductFormDependencies {
     availableProductTypes: LocalObject<ProductType, number>[];
@@ -20,7 +20,13 @@ export class NgProductsFieldsConfig extends FieldsConfig<Product, number, NgProd
     public formRules: FormRule[] = [
     ];
 
-    protected getEntityFields(entity?: LocalObject<Product, number>, dependencies?: NgProductFormDependencies): Field[] {
+    constructor(
+        public productTypeStore: NgProductTypesStore
+    ) {
+        super();
+    }
+
+    protected getEntityFields(entity?: LocalObject<Product, number>, dependencies?: NgProductFormDependencies, loadedPackage?: LoadedPackage): Field[] {
         const fields = [
             new Field({
                 component: StringFieldComponent,
@@ -36,14 +42,13 @@ export class NgProductsFieldsConfig extends FieldsConfig<Product, number, NgProd
                 value: entity ? entity.object.productTypeId : undefined,
                 key: 'productTypeId',
                 label: 'Product type',
-                optionsData: dependencies && dependencies.availableProductTypes,
+                optionsData$: this.productTypeStore.get(loadedPackage._package.path),
                 extraOptions: [{
                     value: null,
                     displayName: 'None'
                 }],
                 order: 1,
             }),
-
         ];
 
         // Id field must only be added for edit forms.

@@ -2,13 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { FieldBaseComponent } from '../field-base-component';
 import { NgPackagesStore, NgSkysmackStore, NgPackagesActions } from '@skysmack/ng-packages';
 import { switchMap, map } from 'rxjs/operators';
+import { Field } from '@skysmack/ng-ui';
 
 @Component({
   selector: 'ss-available-permissions-field',
   templateUrl: './available-permissions-field.component.html',
   styleUrls: ['./available-permissions-field.component.scss']
 })
-export class AvailablePermissionsFieldComponent extends FieldBaseComponent implements OnInit {
+export class AvailablePermissionsFieldComponent extends FieldBaseComponent<Field> implements OnInit {
   public permissions: string[];
   public selectedPackagePath: string;
 

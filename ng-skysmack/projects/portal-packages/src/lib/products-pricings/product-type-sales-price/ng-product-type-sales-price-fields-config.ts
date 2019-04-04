@@ -4,7 +4,7 @@ import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { ProductTypeSalesPrice } from '@skysmack/packages-products-pricings';
 import { FormRule, SelectField, Field } from '@skysmack/ng-ui';
 import { ProductType } from '@skysmack/packages-products';
-import { NgProductTypeSalesPriceValidation } from '@skysmack/ng-packages';
+import { NgProductTypeSalesPriceValidation, LoadedPackage } from '@skysmack/ng-packages';
 import { FieldsConfig, SelectFieldComponent, HiddenFieldComponent, DecimalFieldComponent } from '@skysmack/portal-ui';
 
 export interface NgProductTypeSalesPriceFormDependencies {
@@ -17,7 +17,7 @@ export class NgProductTypeSalesPriceFieldsConfig extends FieldsConfig<ProductTyp
 
     public formRules: FormRule[] = [];
 
-    protected getEntityFields(entity?: LocalObject<ProductTypeSalesPrice, number>, dependencies?: NgProductTypeSalesPriceFormDependencies): Field[] {
+    protected getEntityFields(entity?: LocalObject<ProductTypeSalesPrice, number>, dependencies?: NgProductTypeSalesPriceFormDependencies, loadedPackage?: LoadedPackage): Field[] {
         const fields = [
             new SelectField({
                 component: SelectFieldComponent,

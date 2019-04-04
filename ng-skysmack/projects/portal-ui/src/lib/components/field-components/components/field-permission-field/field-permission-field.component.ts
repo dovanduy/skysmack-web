@@ -2,13 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { FieldBaseComponent } from '../field-base-component';
 import { FieldAccessPermission, AccessTypes } from '@skysmack/framework';
 import { FieldHelpers } from '@skysmack/ng-ui';
+import { Field } from '@skysmack/ng-ui';
 
 @Component({
   selector: 'ss-field-permission-field',
   templateUrl: './field-permission-field.component.html',
   styleUrls: ['./field-permission-field.component.scss']
 })
-export class FieldPermissionFieldComponent extends FieldBaseComponent implements OnInit {
+export class FieldPermissionFieldComponent extends FieldBaseComponent<Field> implements OnInit {
 
   public accessTypes: { value: number, displayName: string }[];
   public permission: FieldAccessPermission;

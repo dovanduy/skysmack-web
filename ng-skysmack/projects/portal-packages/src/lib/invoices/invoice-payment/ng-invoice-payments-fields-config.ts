@@ -6,7 +6,7 @@ import { InvoicePayment } from '@skysmack/packages-invoices';
 import { Field } from '@skysmack/ng-ui';
 
 import { FieldsConfig, StringFieldComponent, HiddenFieldComponent, IntFieldComponent } from '@skysmack/portal-ui';
-import { NgInvoicePaymentsValidation } from '@skysmack/ng-packages';
+import { NgInvoicePaymentsValidation, LoadedPackage } from '@skysmack/ng-packages';
 
 export interface NgInvoicePaymentFormDependencies {
     [key: string]: any;
@@ -18,7 +18,7 @@ export class NgInvoicePaymentsFieldsConfig extends FieldsConfig<InvoicePayment, 
 
     public formRules: FormRule[] = [];
 
-    protected getEntityFields(entity?: LocalObject<InvoicePayment, number>, dependencies?: NgInvoicePaymentFormDependencies): Field[] {
+    protected getEntityFields(entity?: LocalObject<InvoicePayment, number>, dependencies?: NgInvoicePaymentFormDependencies, loadedPackage?: LoadedPackage): Field[] {
         const fields = [
             new Field({
                 component: StringFieldComponent,

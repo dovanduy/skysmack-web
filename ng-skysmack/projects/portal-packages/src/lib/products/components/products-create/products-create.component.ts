@@ -6,8 +6,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { EditorNavService } from '@skysmack/portal-ui';
 import { DocumentRecordFormComponent } from '@skysmack/portal-ui';
 import { NgProductsStore } from '@skysmack/ng-packages';
-import { combineLatest } from 'rxjs';
-import { map } from 'rxjs/operators';
 import { PagedQuery } from '@skysmack/framework';
 import { NgProductTypesActions } from '@skysmack/ng-packages';
 import { NgProductTypesStore } from '@skysmack/ng-packages';
@@ -39,21 +37,7 @@ export class ProductsCreateComponent extends DocumentRecordFormComponent<Product
 
   ngOnInit() {
     super.ngOnInit();
-    this.setCreateFields();
-  }
-
-  public setCreateFields() {
     this.productTypeActions.getPaged(this.packagePath, new PagedQuery());
-
-    this.fields$ = combineLatest(
-      this.initCreateDocRecord(),
-      this.productTypeStore.get(this.packagePath)
-    ).pipe(
-      map(values => {
-        const fields = values[0];
-        const availableProductTypes = values[1];
-        return this.fieldsConfig.getFields(undefined, fields, { availableProductTypes });
-      })
-    );
+    this.setCreateFields();
   }
 }

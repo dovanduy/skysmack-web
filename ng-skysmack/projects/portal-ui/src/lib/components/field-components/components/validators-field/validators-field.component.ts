@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { flatten, FieldValueProviderViewModel, LocalObject, StrIndex } from '@skysmack/framework';
 import { NgRecordStore, NgFieldStore } from '@skysmack/ng-redux';
 import { map, switchMap, filter } from 'rxjs/operators';
+import { Field } from '@skysmack/ng-ui';
 
 type ValidatorTypes = 'range' | 'required';
 
@@ -21,7 +22,7 @@ class FieldValidator {
   templateUrl: './validators-field.component.html',
   styleUrls: ['./validators-field.component.scss']
 })
-export class ValidatorsFieldComponent extends FieldBaseComponent implements OnInit {
+export class ValidatorsFieldComponent extends FieldBaseComponent<Field> implements OnInit {
 
   public store: NgRecordStore<any, any, any>;
   public packagePath: string;

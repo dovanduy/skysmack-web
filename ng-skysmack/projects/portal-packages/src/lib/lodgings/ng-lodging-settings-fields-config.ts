@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { FormRule, Field } from '@skysmack/ng-ui';
 import { LocalObject, toLocalObject } from '@skysmack/framework';
 import { LodgingSettings } from '@skysmack/packages-lodgings';
-import { NgLodgingSettingsValidation } from '@skysmack/ng-packages';
+import { NgLodgingSettingsValidation, LoadedPackage } from '@skysmack/ng-packages';
 import { FieldsConfig, StringFieldComponent, DateFieldComponent } from '@skysmack/portal-ui';
 
 export interface NgLodgingSettingsFormDependencies {
@@ -15,7 +15,7 @@ export class NgLodgingSettingsFieldsConfig extends FieldsConfig<LodgingSettings,
 
     public formRules: FormRule[] = [];
 
-    protected getEntityFields(settings?: LocalObject<LodgingSettings, unknown>, dependencies?: NgLodgingSettingsFormDependencies): Field[] {
+    protected getEntityFields(settings?: LocalObject<LodgingSettings, unknown>, dependencies?: NgLodgingSettingsFormDependencies, loadedPackage?: LoadedPackage): Field[] {
         let initializedSettings: LocalObject<LodgingSettings, unknown>;
         if (Object.keys(settings).length > 0) {
             Object.assign(settings.object, new LodgingSettings({}));

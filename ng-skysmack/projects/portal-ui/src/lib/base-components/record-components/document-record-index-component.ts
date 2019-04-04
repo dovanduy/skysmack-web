@@ -8,6 +8,7 @@ import { NgFieldActions } from '@skysmack/ng-redux';
 import { EntityFieldsConfig } from '@skysmack/ng-ui';
 import { map } from 'rxjs/operators';
 import { NgFieldStore } from '@skysmack/ng-redux';
+import { combineLatest } from 'rxjs';
 
 export class DocumentRecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey> extends RecordIndexComponent<TAppState, TRecord, TKey> implements OnInit {
 
@@ -34,8 +35,14 @@ export class DocumentRecordIndexComponent<TAppState, TRecord extends Record<TKey
     }
 
     protected setFields() {
-        this.fields$ = this.fieldStore.get(getFieldStateKey(this.packagePath, this.additionalPaths)).pipe(
-            map(fields => this.fieldsConfig.getFields(undefined, fields, this.fieldsConfig.getStaticFields())),
+        this.fields$ = combineLatest(
+            this.fieldStore.get(getFieldStateKey(this.packagePath, this.additionalPaths)),
+            this.loadedPackage$
+        ).pipe(
+            map(values => {
+                const [fields, loadedPackage] = values;
+                return this.fieldsConfig.getFields(undefined, fields, this.fieldsConfig.getStaticFields(undefined, undefined, loadedPackage), loadedPackage);
+            })
         );
     }
 }

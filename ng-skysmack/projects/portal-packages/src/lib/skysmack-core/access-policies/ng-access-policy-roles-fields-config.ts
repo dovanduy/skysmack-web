@@ -8,7 +8,7 @@ import { AccessPolicyRole, AccessPolicyRule, AccessPolicyRoleKey } from '@skysma
 import { Validators } from '@angular/forms';
 import { Role } from '@skysmack/packages-identities';
 import { SelectFieldOption } from '@skysmack/ng-ui';
-import { AccessPolicyRolesValidation } from '@skysmack/ng-packages';
+import { AccessPolicyRolesValidation, LoadedPackage } from '@skysmack/ng-packages';
 
 export interface NgAccessPolicyRoleFormDependencies {
     availableAccessPolicyRules: LocalObject<AccessPolicyRule, number>[];
@@ -21,7 +21,7 @@ export class NgAccessPolicyRolesFieldsConfig extends FieldsConfig<AccessPolicyRo
 
     public formRules: FormRule[] = [];
 
-    protected getEntityFields(entity?: LocalObject<AccessPolicyRole, AccessPolicyRoleKey>, dependencies?: NgAccessPolicyRoleFormDependencies): Field[] {
+    protected getEntityFields(entity?: LocalObject<AccessPolicyRole, AccessPolicyRoleKey>, dependencies?: NgAccessPolicyRoleFormDependencies, loadedPackage?: LoadedPackage): Field[] {
 
         const modifyDisplayName = (options: SelectFieldOption[]) => {
             const accessPolicyRules = dependencies && dependencies.availableAccessPolicyRules;

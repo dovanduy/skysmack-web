@@ -1,3 +1,6 @@
-<p>
-  add-record-field works!
-</p>
+<hr />
+<ss-dynamic-form *ngIf="addFields$" [fields$]="addFields$" [validation]="this.field.fieldsConfig.validation"
+  [rules]="this.field.fieldsConfig.formRules" [buttonText]="'Create'" (submitted)="onCreateSubmit($event)">
+  <h2 [translate]="this.field.titleTranslationString"></h2>
+</ss-dynamic-form>
+<hr />

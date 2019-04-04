@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { FormRule, Field, SelectField } from '@skysmack/ng-ui';
 import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
-import { NgLodgingsValidation } from '@skysmack/ng-packages';
+import { NgLodgingsValidation, NgLodgingTypesStore, LoadedPackage } from '@skysmack/ng-packages';
 import { FieldsConfig, StringFieldComponent, SelectFieldComponent, HiddenFieldComponent, CheckboxFieldComponent } from '@skysmack/portal-ui';
 
 export interface NgLodgingFormDependencies {
@@ -16,7 +16,13 @@ export class NgLodgingsFieldsConfig extends FieldsConfig<Lodging, number, NgLodg
 
     public formRules: FormRule[] = [];
 
-    protected getEntityFields(entity?: LocalObject<Lodging, number>, dependencies?: NgLodgingFormDependencies): Field[] {
+    constructor(
+        public lodgingTypeStore: NgLodgingTypesStore
+    ) {
+        super();
+    }
+
+    protected getEntityFields(entity?: LocalObject<Lodging, number>, dependencies?: NgLodgingFormDependencies, loadedPackage?: LoadedPackage): Field[] {
         const fields = [
             new SelectField({
                 component: SelectFieldComponent,
@@ -24,8 +30,8 @@ export class NgLodgingsFieldsConfig extends FieldsConfig<Lodging, number, NgLodg
                 label: 'Lodging type',
                 key: 'lodgingTypeId',
                 validators: [Validators.required],
-                optionsData: dependencies && dependencies.availableLodgingTypes,
-                displayNameSelector: 'object.name',
+                optionsData: this.lodgingTypeStore.get(loadedPackage._package.path),
+                displayNameSelector: 'name',
                 disabled: entity && entity.object ? true : false,
                 order: 1,
             }),

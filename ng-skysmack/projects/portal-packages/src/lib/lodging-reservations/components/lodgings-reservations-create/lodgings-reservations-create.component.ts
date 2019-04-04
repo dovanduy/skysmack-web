@@ -61,10 +61,12 @@ export class LodgingsReservationsCreateComponent extends RecordFormComponent<Lod
   public setCreateFields() {
     // TODO: Find better way to prevent multiple requests getting fired...
     let requested = false;
+    let loadedPackage;
 
     this.fields$ = this.loadedPackage$.pipe(
       switchMap(loadedPackage => {
         if (!requested) {
+          loadedPackage = loadedPackage;
           this.lodgingsActions.getPaged(loadedPackage._package.dependencies[0], new PagedQuery());
           this.lodgingTypesActions.getPaged(loadedPackage._package.dependencies[0], new PagedQuery());
           requested = true;
@@ -81,7 +83,7 @@ export class LodgingsReservationsCreateComponent extends RecordFormComponent<Lod
         const availableLodgingTypes = values[1];
         const providedFields = values[2];
 
-        return this.fieldsConfig.getFields(undefined, undefined, { availableLodgings, availableLodgingTypes }).concat(providedFields);
+        return this.fieldsConfig.getFields(undefined, undefined, { availableLodgings, availableLodgingTypes }, loadedPackage).concat(providedFields);
       })
     );
   }

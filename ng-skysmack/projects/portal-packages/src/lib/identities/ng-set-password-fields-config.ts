@@ -3,7 +3,7 @@ import { Validators } from '@angular/forms';
 import { LocalObject } from '@skysmack/framework';
 import { Field, FormRule, CustomValidators } from '@skysmack/ng-ui';
 import { User } from '@skysmack/packages-identities';
-import { NgSetPasswordValidation } from '@skysmack/ng-packages';
+import { NgSetPasswordValidation, LoadedPackage } from '@skysmack/ng-packages';
 import { FieldsConfig, PasswordFieldComponent } from '@skysmack/portal-ui';
 
 export interface NgSetPasswordFormDependencies {
@@ -15,7 +15,7 @@ export class NgSetPasswordFieldsConfig extends FieldsConfig<User, number, NgSetP
     public validation = new NgSetPasswordValidation();
     public formRules: FormRule[] = [];
 
-    protected getEntityFields(entity?: LocalObject<User, number>, dependencies?: NgSetPasswordFormDependencies): Field[] {
+    protected getEntityFields(entity?: LocalObject<User, number>, dependencies?: NgSetPasswordFormDependencies, loadedPackage?: LoadedPackage): Field[] {
         const fields = [
             new Field({
                 component: PasswordFieldComponent,

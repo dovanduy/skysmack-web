@@ -4,7 +4,7 @@ import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { Terminal } from '@skysmack/packages-terminal-payments';
 import { Field } from '@skysmack/ng-ui';
 import { FieldsConfig, HiddenFieldComponent } from '@skysmack/portal-ui';
-import { NgTerminalsValidation } from '@skysmack/ng-packages';
+import { NgTerminalsValidation, LoadedPackage } from '@skysmack/ng-packages';
 
 export interface NgTerminalFormDependencies {
 
@@ -17,7 +17,7 @@ export class NgTerminalsFieldsConfig extends FieldsConfig<Terminal, number, NgTe
     public formRules: FormRule[] = [
     ];
 
-    protected getEntityFields(entity?: LocalObject<Terminal, number>, dependencies?: NgTerminalFormDependencies): Field[] {
+    protected getEntityFields(entity?: LocalObject<Terminal, number>, dependencies?: NgTerminalFormDependencies, loadedPackage?: LoadedPackage): Field[] {
         const fields = [
             // new Field({
             //     component: StringFieldComponent,

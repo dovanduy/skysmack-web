@@ -5,7 +5,7 @@ import { LocalObject, Package, LocalObjectStatus } from '@skysmack/framework';
 import { Field } from '@skysmack/ng-ui';
 import { FieldsConfig, SelectFieldComponent, HiddenFieldComponent, CheckboxFieldComponent, IntFieldComponent, AvailablePermissionsFieldComponent } from '@skysmack/portal-ui';
 import { AccessPolicyPermission, AccessPolicyRule } from '@skysmack/packages-skysmack-core';
-import { AccessPolicyPermissionsValidation } from '@skysmack/ng-packages';
+import { AccessPolicyPermissionsValidation, LoadedPackage } from '@skysmack/ng-packages';
 
 export interface NgAccessPolicyPermissionFormDependencies {
     installedPackages: LocalObject<Package, string>[];
@@ -18,7 +18,7 @@ export class NgAccessPolicyPermissionsFieldsConfig extends FieldsConfig<AccessPo
 
     public formRules: FormRule[] = [];
 
-    protected getEntityFields(entity?: LocalObject<AccessPolicyPermission, number>, dependencies?: NgAccessPolicyPermissionFormDependencies): Field[] {
+    protected getEntityFields(entity?: LocalObject<AccessPolicyPermission, number>, dependencies?: NgAccessPolicyPermissionFormDependencies, loadedPackage?: LoadedPackage): Field[] {
 
         const modifyDisplayName = (options: SelectFieldOption[]) => {
             const accessPolicyRules = dependencies && dependencies.availableAccessPolicyRules;

@@ -7,7 +7,7 @@ import { Field } from '@skysmack/ng-ui';
   templateUrl: './checkbox-field.component.html',
   styleUrls: ['./checkbox-field.component.scss']
 })
-export class CheckboxFieldComponent extends FieldBaseComponent implements OnInit {
+export class CheckboxFieldComponent extends FieldBaseComponent<Field> implements OnInit {
   ngOnInit() {
     super.ngOnInit();
   }

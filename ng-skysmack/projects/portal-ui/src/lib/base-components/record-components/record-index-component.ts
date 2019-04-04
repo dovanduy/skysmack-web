@@ -60,7 +60,9 @@ export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey>
     }
 
     protected setFields() {
-        this.fields$ = of(this.fieldsConfig.getStaticFields());
+        this.fields$ = this.loadedPackage$.pipe(
+            map(loadedPackage => this.fieldsConfig.getStaticFields(undefined, undefined, loadedPackage))
+        );
     }
 
     protected delete(value: LocalObject<TRecord, TKey>, _this: RecordIndexComponent<any, any, any>) {

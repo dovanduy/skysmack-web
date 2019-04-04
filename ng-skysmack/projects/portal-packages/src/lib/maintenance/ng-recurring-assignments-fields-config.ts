@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { RecurringAssignment } from '@skysmack/packages-maintenance';
-import { NgRecurringAssignmentsValidation } from '@skysmack/ng-packages';
+import { NgRecurringAssignmentsValidation, LoadedPackage } from '@skysmack/ng-packages';
 import { FormRule, SelectField, Field } from '@skysmack/ng-ui';
 import { FieldsConfig, SelectFieldComponent, HiddenFieldComponent, DateTimeFieldComponent } from '@skysmack/portal-ui';
 
@@ -17,7 +17,7 @@ export class NgRecurringAssignmentsFieldsConfig extends FieldsConfig<RecurringAs
     public formRules: FormRule[] = [
     ];
 
-    protected getEntityFields(entity?: LocalObject<RecurringAssignment, number>, dependencies?: NgRecurringAssignmentFormDependencies): Field[] {
+    protected getEntityFields(entity?: LocalObject<RecurringAssignment, number>, dependencies?: NgRecurringAssignmentFormDependencies, loadedPackage?: LoadedPackage): Field[] {
         const fields = [
             new SelectField({
                 component: SelectFieldComponent,

@@ -26,7 +26,7 @@ import { Field } from '@skysmack/ng-ui';
     )
   ]
 })
-export class EmailFieldComponent extends FieldBaseComponent implements OnInit {
+export class EmailFieldComponent extends FieldBaseComponent<Field> implements OnInit {
   ngOnInit() {
     super.ngOnInit();
   }

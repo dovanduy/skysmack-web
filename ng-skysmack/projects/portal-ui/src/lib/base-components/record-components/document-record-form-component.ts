@@ -3,7 +3,7 @@ import { OnInit, OnDestroy } from '@angular/core';
 import { Record, LocalObject, FieldSchemaViewModel } from '@skysmack/framework';
 import { EntityFieldsConfig } from '@skysmack/ng-ui';
 import { EditorNavService } from './../../components/common/container/editor-nav.service';
-import { NgSkysmackStore } from '@skysmack/ng-packages';
+import { NgSkysmackStore, LoadedPackage } from '@skysmack/ng-packages';
 import { EntityActions, EntityStore } from '@skysmack/redux';
 import { RecordFormComponent } from './record-form-component';
 import { NgFieldActions, NgFieldStore } from '@skysmack/ng-redux';
@@ -34,12 +34,14 @@ export class DocumentRecordFormComponent<TAppState, TRecord extends Record<TKey>
     protected setCreateFields() {
         this.fields$ = combineLatest(
             this.initCreateDocRecord(),
-            this.skysmackStore.getEditorItem()
+            this.skysmackStore.getEditorItem(),
+            this.loadedPackage$
         ).pipe(
             map(values => {
                 const fields = values[0];
                 this.editorItem = values[1] as LocalObject<TRecord, TKey>;
-                return this.fieldsConfig.getFields(this.editorItem, fields);
+                const loadedPackage = values[2];
+                return this.fieldsConfig.getFields(this.editorItem, fields, undefined, loadedPackage);
             })
         );
     }
@@ -52,10 +54,10 @@ export class DocumentRecordFormComponent<TAppState, TRecord extends Record<TKey>
             map(values => {
                 const entity = values[0][0];
                 const fields = values[0][1];
+                const loadedPackage = values[0][2];
                 this.editorItem = values[1] as LocalObject<TRecord, TKey>;
                 this.editorItem ? this.selectedEntity = this.editorItem : this.selectedEntity = entity;
-
-                return this.fieldsConfig.getFields(this.selectedEntity, fields);
+                return this.fieldsConfig.getFields(this.selectedEntity, fields, undefined, loadedPackage);
             })
         );
     }
@@ -66,13 +68,14 @@ export class DocumentRecordFormComponent<TAppState, TRecord extends Record<TKey>
         return this.fieldStore.get(this.packagePath);
     }
 
-    protected initEditDocRecord(): Observable<[LocalObject<TRecord, TKey>, LocalObject<FieldSchemaViewModel, string>[]]> {
+    protected initEditDocRecord(): Observable<[LocalObject<TRecord, TKey>, LocalObject<FieldSchemaViewModel, string>[], LoadedPackage]> {
         this.actions.getSingle(this.packagePath, this.entityId);
         this.fieldActions.getPaged(this.packagePath, this.pagedQuery);
 
         return combineLatest(
             this.store.getSingle(this.packagePath, this.entityId),
-            this.fieldStore.get(this.packagePath)
+            this.fieldStore.get(this.packagePath),
+            this.loadedPackage$
         ).pipe(map(values => {
             this.selectedEntity = values[0];
             return values;

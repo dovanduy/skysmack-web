@@ -7,7 +7,7 @@ import { Field } from '@skysmack/ng-ui';
   templateUrl: './password-field.component.html',
   styleUrls: ['./password-field.component.scss'],
 })
-export class PasswordFieldComponent extends FieldBaseComponent implements OnInit {
+export class PasswordFieldComponent extends FieldBaseComponent<Field> implements OnInit {
   ngOnInit() {
     super.ngOnInit();
   }

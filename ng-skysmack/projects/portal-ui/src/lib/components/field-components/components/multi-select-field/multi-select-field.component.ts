@@ -6,7 +6,7 @@ import { FieldBaseComponent } from '../field-base-component';
   selector: 'ss-multi-select-field',
   templateUrl: './multi-select-field.component.html'
 })
-export class MultiSelectFieldComponent extends FieldBaseComponent implements OnInit {
+export class MultiSelectFieldComponent extends FieldBaseComponent<Field> implements OnInit {
   public fieldOptions: SelectFieldOption[] = [];
   public nullDisplayName = undefined;
 

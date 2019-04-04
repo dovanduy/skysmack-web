@@ -88,9 +88,6 @@ export class LodgingsReservationsIndexComponent extends RecordIndexComponent<Lod
     super.ngOnInit();
     this.extendedReservations$ = this.loadedPackage$.pipe(
       switchMap(loadedPackage => {
-        // this.lodgingsActions.getPaged(loadedPackage._package.path, new PagedQuery({ pageNumber: 1, pageSize: 50 }));
-        // this.lodgingTypesActions.getPaged(loadedPackage._package.path, new PagedQuery({ pageNumber: 1, pageSize: 50 }));
-
         return combineLatest(
           this.pagedEntities$,
           this.lodgingsStore.get(loadedPackage._package.dependencies[0]),

@@ -4,7 +4,7 @@ import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { LodgingReservation } from '@skysmack/packages-lodging-reservations';
 import { FormRule, SelectField, Field, SelectFieldOption } from '@skysmack/ng-ui';
 import { LodgingType, Lodging } from '@skysmack/packages-lodgings';
-import { NgLodgingReservationsValidation } from '@skysmack/ng-packages';
+import { NgLodgingReservationsValidation, NgLodgingTypesStore, NgLodgingsStore, LoadedPackage } from '@skysmack/ng-packages';
 import { FieldsConfig, SelectFieldComponent, HiddenFieldComponent, IntFieldComponent, DateFieldComponent } from '@skysmack/portal-ui';
 
 export interface NgLodgingReservationFormDependencies {
@@ -18,15 +18,22 @@ export class NgLodgingReservationsFieldsConfig extends FieldsConfig<LodgingReser
 
     public formRules: FormRule[] = [];
 
-    protected getEntityFields(entity?: LocalObject<LodgingReservation, number>, dependencies?: NgLodgingReservationFormDependencies): Field[] {
+    constructor(
+        public lodgingsStore: NgLodgingsStore,
+        public lodgingTypeStore: NgLodgingTypesStore
+    ) {
+        super();
+    }
+
+    protected getEntityFields(entity?: LocalObject<LodgingReservation, number>, dependencies?: NgLodgingReservationFormDependencies, loadedPackage?: LoadedPackage): Field[] {
         const fields = [
             new SelectField({
                 component: SelectFieldComponent,
                 value: entity ? entity.object.lodgingTypeId : undefined,
                 key: 'lodgingTypeId',
                 validators: [Validators.required],
-                optionsData: dependencies && dependencies.availableLodgingTypes,
-                displayNameSelector: 'object.name',
+                optionsData$: this.lodgingTypeStore.get(loadedPackage._package.dependencies[0]),
+                displayNameSelector: 'name',
                 order: 1,
                 showColumn: true
             } as SelectField),
@@ -35,8 +42,8 @@ export class NgLodgingReservationsFieldsConfig extends FieldsConfig<LodgingReser
                 value: entity ? entity.object.allocatedLodgingId : undefined,
                 key: 'allocatedLodgingId',
                 label: 'Allocated lodging',
-                optionsData: dependencies && dependencies.availableLodgings,
-                displayNameSelector: 'object.name',
+                optionsData$: this.lodgingsStore.get(loadedPackage._package.dependencies[0]),
+                displayNameSelector: 'name',
                 extraOptions: [{
                     value: null,
                     displayName: 'None'

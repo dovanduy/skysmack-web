@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { FormRule, Field } from '@skysmack/ng-ui';
 import { LocalObject } from '@skysmack/framework';
 import { SignInSettings } from '@skysmack/packages-identities';
-import { NgSignInSettingsValidation } from '@skysmack/ng-packages';
+import { NgSignInSettingsValidation, LoadedPackage } from '@skysmack/ng-packages';
 import { FieldsConfig, CheckboxFieldComponent } from '@skysmack/portal-ui';
 
 @Injectable({ providedIn: 'root' })

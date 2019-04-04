@@ -4,6 +4,7 @@ import { map } from 'rxjs/operators';
 import { combineLatest, Observable } from 'rxjs';
 import { NgPackagesStore } from '@skysmack/ng-packages';
 import { flatten, notNull, AvailablePackage, LocalObject } from '@skysmack/framework';
+import { Field } from '@skysmack/ng-ui';
 
 class SelectBox {
   index: number;
@@ -27,7 +28,7 @@ class SelectBox {
   templateUrl: './package-dependencies-field.component.html',
   styleUrls: ['./package-dependencies-field.component.scss']
 })
-export class PackageDependenciesFieldComponent extends FieldBaseComponent implements OnInit {
+export class PackageDependenciesFieldComponent extends FieldBaseComponent<Field> implements OnInit {
   public selectedDepTypes = {};
   public selectBoxes$: Observable<SelectBox[]>;
   public showBoxes = false;
