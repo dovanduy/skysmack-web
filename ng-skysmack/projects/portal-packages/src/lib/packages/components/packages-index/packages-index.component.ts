@@ -35,6 +35,7 @@ export class PackagesIndexComponent extends RecordIndexComponent<PackagesAppStat
 
   ngOnInit() {
     super.ngOnInit();
+    this.actions.getAvailablePackages();
     this.title.setTitle(this.packagePath);
   }
 }

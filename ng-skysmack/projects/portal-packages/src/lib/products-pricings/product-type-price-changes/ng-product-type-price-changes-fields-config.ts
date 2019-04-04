@@ -3,7 +3,7 @@ import { Validators } from '@angular/forms';
 import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { ProductTypePriceChange, PriceChangeType, ProductTypeSalesPrice } from '@skysmack/packages-products-pricings';
 import { FormRule, SelectField, Field } from '@skysmack/ng-ui';
-import { NgProductTypePriceChangesValidation, LoadedPackage, NgProductTypeSalesPriceStore } from '@skysmack/ng-packages';
+import { NgProductTypePriceChangesValidation, LoadedPackage, NgProductTypesStore } from '@skysmack/ng-packages';
 import { FieldsConfig, SelectFieldComponent, HiddenFieldComponent, DecimalFieldComponent, DateTimeFieldComponent } from '@skysmack/portal-ui';
 import { of } from 'rxjs';
 
@@ -18,7 +18,7 @@ export class NgProductTypePriceChangesFieldsConfig extends FieldsConfig<ProductT
     public formRules: FormRule[] = [];
 
     constructor(
-        public productTypeSalesPriceStore: NgProductTypeSalesPriceStore
+        public productTypesStore: NgProductTypesStore
     ) {
         super();
     }
@@ -48,8 +48,8 @@ export class NgProductTypePriceChangesFieldsConfig extends FieldsConfig<ProductT
                 value: entity ? entity.object.recordId : undefined,
                 key: 'recordId',
                 validators: [Validators.required],
-                optionsData$: this.productTypeSalesPriceStore.get(loadedPackage._package.path),
-                displayNameSelector: 'object.price',
+                optionsData$: this.productTypesStore.get(loadedPackage._package.dependencies[0]),
+                displayNameSelector: 'object.name',
                 order: 2,
                 showColumn: true
             }),

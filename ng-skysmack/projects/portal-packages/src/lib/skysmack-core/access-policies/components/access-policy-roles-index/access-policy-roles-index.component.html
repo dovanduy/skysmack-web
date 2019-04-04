@@ -1,4 +1,4 @@
-<ss-container [sidebarMenu]="sidebarMenu">
+<ss-container [sidebarMenu]="sidebarMenu" *ngIf="loadedPackage$ | async as loadedPackage">
     <ss-records-container [area]="'access_policy_roles'" [cancelAction]="actions.cancelAction"
         [title]="'Access Policy Roles'" [entities$]="pagedEntities$" [entityActions]="entityActions"
         [packagePath]="packagePath" (entityActionEvent)="actionEvent($event)" [totalCount]="totalCount"

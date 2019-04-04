@@ -67,7 +67,7 @@ export class NgAccessPolicyPermissionsFieldsConfig extends FieldsConfig<AccessPo
                 component: SelectFieldComponent,
                 value: entity ? entity.object.ruleId : undefined,
                 key: 'ruleId',
-                optionsData$: this.accessPolicyRulesStore.get(loadedPackage._package.path),
+                optionsData$: this.accessPolicyRulesStore.get('skysmack'),
                 displayNameSelector: 'object.id',
                 order: 2,
                 showColumn: true

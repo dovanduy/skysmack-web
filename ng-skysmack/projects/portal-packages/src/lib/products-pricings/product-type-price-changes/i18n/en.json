@@ -17,17 +17,17 @@
         "FORM": {
             "LABELS": {
                 "CURRENCYCODE": "Currency code",
-                "RECORDID": "Product sales price",
-                "CHANGE": "Price change",
-                "CHANGETYPE": "Price change type",
+                "RECORDID": "Product type",
+                "CHANGE": "Change",
+                "CHANGETYPE": "Change type",
                 "VALIDFROM": "Valid from",
                 "VALIDTO": "Valid to"
             },
             "PLACEHOLDERS": {
                 "CURRENCYCODE": "Currency code",
-                "RECORDID": "Product sales price",
-                "CHANGE": "Price change",
-                "CHANGETYPE": "Price change type",
+                "RECORDID": "Product type",
+                "CHANGE": "Change",
+                "CHANGETYPE": "Change type",
                 "VALIDFROM": "Valid from",
                 "VALIDTO": "Valid to"
             },

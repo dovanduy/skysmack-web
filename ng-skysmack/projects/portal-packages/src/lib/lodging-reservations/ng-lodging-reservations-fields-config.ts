@@ -33,7 +33,6 @@ export class NgLodgingReservationsFieldsConfig extends FieldsConfig<LodgingReser
                 key: 'lodgingTypeId',
                 validators: [Validators.required],
                 optionsData$: this.lodgingTypeStore.get(loadedPackage._package.dependencies[0]),
-                displayNameSelector: 'name',
                 order: 1,
                 showColumn: true
             } as SelectField),
@@ -43,7 +42,6 @@ export class NgLodgingReservationsFieldsConfig extends FieldsConfig<LodgingReser
                 key: 'allocatedLodgingId',
                 label: 'Allocated lodging',
                 optionsData$: this.lodgingsStore.get(loadedPackage._package.dependencies[0]),
-                displayNameSelector: 'name',
                 extraOptions: [{
                     value: null,
                     displayName: 'None'

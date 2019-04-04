@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FieldBaseComponent } from '../field-base-component';
-import { NgPackagesStore, NgSkysmackStore, NgPackagesActions } from '@skysmack/ng-packages';
-import { switchMap, map } from 'rxjs/operators';
+import { NgPackagesStore, NgSkysmackStore, NgPackagesActions, LoadedPackage } from '@skysmack/ng-packages';
+import { switchMap, map, filter } from 'rxjs/operators';
 import { Field } from '@skysmack/ng-ui';
 
 @Component({
@@ -29,7 +29,8 @@ export class AvailablePermissionsFieldComponent extends FieldBaseComponent<Field
   private getPermissions() {
     this.subscriptionHandler.register(this.fh.form.valueChanges.pipe(
       switchMap(() => this.skysmackStore.getCurrentPackage(this.getOtherFieldValue('packagePath'))),
-      switchMap(x => {
+      filter(x => x._package !== null),
+      switchMap((x: LoadedPackage) => {
         return this.packagesStore.getPermissions(x._package.type);
       }),
       map(permissions => {

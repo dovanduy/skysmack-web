@@ -49,7 +49,7 @@ export class SelectField extends Field {
         this.valueSelector = DEFAULT_VALUE_SELECTOR;
         this.displayNameSelector = DEFAULT_DISPLAY_NAME_SELECTOR;
         Object.assign(this, values);
-        this.optionsData$ = this.optionsData$.pipe(this.dataToOptions());
+        this.optionsData$ = this.optionsData$ ? this.optionsData$.pipe(this.dataToOptions()) : undefined;
     }
 
     /**

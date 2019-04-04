@@ -1,6 +1,6 @@
 import { OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
-import { map, switchMap } from 'rxjs/operators';
+import { map, switchMap, filter } from 'rxjs/operators';
 import { MenuArea } from '@skysmack/framework';
 import { MenuItem } from '@skysmack/framework';
 
@@ -46,6 +46,7 @@ export abstract class SidebarMenu implements OnDestroy {
     protected runMenuItemProviders() {
         this.menuItemProviders.providers.forEach(provider => {
             this.subscriptionHandler.register(this.store.getCurrentPackage(this.packagePath).pipe(
+                filter(loadedPackage => loadedPackage._package !== null),
                 switchMap((currentPackage: LoadedPackage) => provider.getItems(this.menuId, currentPackage._package.path)),
                 map((menuItems: MenuItem[]) => menuItems.forEach(menuItem => this.addItem(menuItem)))
             ).subscribe());

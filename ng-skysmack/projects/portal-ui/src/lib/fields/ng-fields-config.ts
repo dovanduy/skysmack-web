@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { FormRule, SetFieldKeyRule } from '@skysmack/ng-ui';
-import { LocalObject, FieldValueProviderViewModel, FieldSchemaViewModel } from '@skysmack/framework';
+import { LocalObject, FieldValueProviderViewModel, FieldSchemaViewModel, log } from '@skysmack/framework';
 import { Field } from '@skysmack/ng-ui';
-
 import { FieldsValidation } from './ng-fields-validation';
 import { SelectField } from '@skysmack/ng-ui';
 import { FieldsConfig } from './fields-config';
@@ -62,7 +61,7 @@ export class NgFieldsConfig extends FieldsConfig<FieldSchemaViewModel, string, N
                 key: 'type',
                 validators: [Validators.required],
                 order: 3,
-                optionsData$: this.store.get(loadedPackage._package.path),
+                optionsData$: this.store.getAvailableFields(loadedPackage._package.path),
                 valueSelector: 'object.name',
                 disabled: field ? true : false,
                 showColumn: true

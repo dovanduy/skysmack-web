@@ -4,7 +4,7 @@ import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { RecurringAssignment } from '@skysmack/packages-maintenance';
 import { NgRecurringAssignmentsValidation, LoadedPackage, NgAssignmentTypesStore } from '@skysmack/ng-packages';
 import { FormRule, SelectField, Field } from '@skysmack/ng-ui';
-import { FieldsConfig, SelectFieldComponent, HiddenFieldComponent, DateTimeFieldComponent } from '@skysmack/portal-ui';
+import { FieldsConfig, SelectFieldComponent, HiddenFieldComponent, DateFieldComponent } from '@skysmack/portal-ui';
 
 export interface NgRecurringAssignmentFormDependencies {
     availableRecurringAssignments: LocalObject<RecurringAssignment, number>[];
@@ -32,13 +32,14 @@ export class NgRecurringAssignmentsFieldsConfig extends FieldsConfig<RecurringAs
                 key: 'assignmentTypeId',
                 label: 'Assignment Type',
                 optionsData$: this.assignmentTypeStore.get(loadedPackage._package.path),
+                displayNameSelector: 'object.description',
                 validators: [Validators.required],
                 order: 1,
                 showColumn: true
             }),
 
             new Field({
-                component: DateTimeFieldComponent,
+                component: DateFieldComponent,
                 value: entity ? entity.object.start : undefined,
                 key: 'start',
                 label: 'Start',
@@ -48,7 +49,7 @@ export class NgRecurringAssignmentsFieldsConfig extends FieldsConfig<RecurringAs
             }),
 
             new Field({
-                component: DateTimeFieldComponent,
+                component: DateFieldComponent,
                 value: entity ? entity.object.end : undefined,
                 key: 'end',
                 label: 'End',

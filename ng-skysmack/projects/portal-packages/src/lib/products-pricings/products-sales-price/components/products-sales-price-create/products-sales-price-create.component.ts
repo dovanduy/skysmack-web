@@ -33,6 +33,7 @@ export class ProductsSalesPriceCreateComponent extends RecordFormComponent<Produ
 
   ngOnInit() {
     super.ngOnInit();
+    this.getDeps();
     this.setCreateFields();
   }
 

@@ -3,7 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { EntityActions, EntityStore } from '@skysmack/redux';
 import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { LocalObject, LocalPage, PagedQuery, LoadingState, hasValue, StrIndex, LocalPageTypes, linq, DisplayColumn, log } from '@skysmack/framework';
-import { Observable, BehaviorSubject, combineLatest, of } from 'rxjs';
+import { Observable, BehaviorSubject, combineLatest } from 'rxjs';
 import { OnInit } from '@angular/core';
 import { Record } from '@skysmack/framework';
 import { map } from 'rxjs/operators';

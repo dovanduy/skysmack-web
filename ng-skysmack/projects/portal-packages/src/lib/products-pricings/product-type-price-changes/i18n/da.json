@@ -17,15 +17,15 @@
         "FORM": {
             "LABELS": {
                 "CURRENCYCODE": "Valuta kode",
-                "RECORDID": "Produkt salgs pris",
-                "CHANGE": "Pris ændring",
-                "CHANGETYPE": "Pris ændrings type",
+                "RECORDID": "Produkt type",
+                "CHANGE": "Ændring",
+                "CHANGETYPE": "Ændringstype",
                 "VALIDFROM": "Gældende fra",
                 "VALIDTO": "Gældende til"
             },
             "PLACEHOLDERS": {
                 "CURRENCYCODE": "Valuta kode",
-                "RECORDID": "Produkt salgs pris",
+                "RECORDID": "Produkt type",
                 "CHANGE": "Pris ændring",
                 "CHANGETYPE": "Pris ændrings type",
                 "VALIDFROM": "Gældende fra",
