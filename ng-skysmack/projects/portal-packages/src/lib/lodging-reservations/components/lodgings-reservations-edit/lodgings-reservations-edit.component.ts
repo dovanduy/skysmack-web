@@ -5,14 +5,14 @@ import { NgLodgingReservationsStore, NgSkysmackStore, NgLodgingReservationsActio
 import { LodgingReservation, LodgingReservationsAppState } from '@skysmack/packages-lodging-reservations';
 import { RecordFormComponent, EditorNavService } from '@skysmack/portal-ui';
 import { PagedQuery, defined } from '@skysmack/framework';
-import { NgLodgingReservationsFieldsConfig, NgLodgingReservationFormDependencies } from '../../ng-lodging-reservations-fields-config';
+import { NgLodgingReservationsFieldsConfig } from '../../ng-lodging-reservations-fields-config';
 
 @Component({
   selector: 'ss-lodgings-reservations-edit',
   templateUrl: './lodgings-reservations-edit.component.html',
   styleUrls: ['./lodgings-reservations-edit.component.scss']
 })
-export class LodgingsReservationsEditComponent extends RecordFormComponent<LodgingReservationsAppState, LodgingReservation, number, NgLodgingReservationFormDependencies> implements OnInit {
+export class LodgingsReservationsEditComponent extends RecordFormComponent<LodgingReservationsAppState, LodgingReservation, number> implements OnInit {
   constructor(
     public router: Router,
     public activatedRoute: ActivatedRoute,

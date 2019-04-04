@@ -4,14 +4,14 @@ import { RecurringAssignment, RecurringAssignmentsAppState } from '@skysmack/pac
 import { PagedQuery } from '@skysmack/framework';
 import { EditorNavService, RecordFormComponent } from '@skysmack/portal-ui';
 import { NgRecurringAssignmentsActions, NgSkysmackStore, NgRecurringAssignmentsStore, NgAssignmentTypesActions } from '@skysmack/ng-packages';
-import { NgRecurringAssignmentsFieldsConfig, NgRecurringAssignmentFormDependencies } from '../../ng-recurring-assignments-fields-config';
+import { NgRecurringAssignmentsFieldsConfig } from '../../ng-recurring-assignments-fields-config';
 
 @Component({
   selector: 'ss-recurring-assignments-create',
   templateUrl: './recurring-assignments-create.component.html',
   styleUrls: ['./recurring-assignments-create.component.scss']
 })
-export class RecurringAssignmentsCreateComponent extends RecordFormComponent<RecurringAssignmentsAppState, RecurringAssignment, number, NgRecurringAssignmentFormDependencies> implements OnInit {
+export class RecurringAssignmentsCreateComponent extends RecordFormComponent<RecurringAssignmentsAppState, RecurringAssignment, number> implements OnInit {
 
   constructor(
     public router: Router,

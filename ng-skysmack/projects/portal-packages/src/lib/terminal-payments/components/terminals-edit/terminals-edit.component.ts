@@ -7,14 +7,14 @@ import { EditorNavService } from '@skysmack/portal-ui';
 import { DocumentRecordFormComponent } from '@skysmack/portal-ui';
 import { NgTerminalsStore } from '@skysmack/ng-packages';
 import { NgFieldActions, NgFieldStore } from '@skysmack/ng-redux';
-import { NgTerminalsFieldsConfig, NgTerminalFormDependencies } from '../../ng-terminals-fields-config';
+import { NgTerminalsFieldsConfig } from '../../ng-terminals-fields-config';
 
 @Component({
   selector: 'ss-terminals-edit',
   templateUrl: './terminals-edit.component.html',
   styleUrls: ['./terminals-edit.component.scss']
 })
-export class TerminalsEditComponent extends DocumentRecordFormComponent<TerminalsAppState, Terminal, number, NgTerminalFormDependencies> implements OnInit {
+export class TerminalsEditComponent extends DocumentRecordFormComponent<TerminalsAppState, Terminal, number> implements OnInit {
   constructor(
     public router: Router,
     public activatedRoute: ActivatedRoute,

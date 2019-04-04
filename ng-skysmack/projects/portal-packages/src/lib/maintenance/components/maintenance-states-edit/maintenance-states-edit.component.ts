@@ -3,14 +3,14 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { MaintenanceState, MaintenanceStatesAppState } from '@skysmack/packages-maintenance';
 import { EditorNavService, RecordFormComponent } from '@skysmack/portal-ui';
 import { NgMaintenanceStatesActions, NgSkysmackStore, NgMaintenanceStatesStore } from '@skysmack/ng-packages';
-import { NgMaintenanceStatesFieldsConfig, NgMaintenanceStateFormDependencies } from '../../ng-maintenance-states-fields-config';
+import { NgMaintenanceStatesFieldsConfig } from '../../ng-maintenance-states-fields-config';
 
 @Component({
   selector: 'ss-maintenance-states-edit',
   templateUrl: './maintenance-states-edit.component.html',
   styleUrls: ['./maintenance-states-edit.component.scss']
 })
-export class MaintenanceStatesEditComponent extends RecordFormComponent<MaintenanceStatesAppState, MaintenanceState, number, NgMaintenanceStateFormDependencies> implements OnInit {
+export class MaintenanceStatesEditComponent extends RecordFormComponent<MaintenanceStatesAppState, MaintenanceState, number> implements OnInit {
 
   constructor(
     public router: Router,

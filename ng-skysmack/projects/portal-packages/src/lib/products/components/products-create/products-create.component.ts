@@ -10,14 +10,14 @@ import { PagedQuery } from '@skysmack/framework';
 import { NgProductTypesActions } from '@skysmack/ng-packages';
 import { NgProductTypesStore } from '@skysmack/ng-packages';
 import { NgFieldActions, NgFieldStore } from '@skysmack/ng-redux';
-import { NgProductsFieldsConfig, NgProductFormDependencies } from '../../ng-products-fields-config';
+import { NgProductsFieldsConfig } from '../../ng-products-fields-config';
 
 @Component({
   selector: 'ss-products-create',
   templateUrl: './products-create.component.html',
   styleUrls: ['./products-create.component.scss']
 })
-export class ProductsCreateComponent extends DocumentRecordFormComponent<ProductsAppState, Product, number, NgProductFormDependencies> implements OnInit {
+export class ProductsCreateComponent extends DocumentRecordFormComponent<ProductsAppState, Product, number> implements OnInit {
 
   constructor(
     public router: Router,

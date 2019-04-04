@@ -3,14 +3,14 @@ import { AssignmentTypesAppState, AssignmentType } from '@skysmack/packages-main
 import { ActivatedRoute, Router } from '@angular/router';
 import { RecordFormComponent, EditorNavService } from '@skysmack/portal-ui';
 import { NgAssignmentTypesActions, NgSkysmackStore, NgAssignmentTypesStore, NgMaintenanceStatesStore, NgMaintenanceStatesActions } from '@skysmack/ng-packages';
-import { NgAssignmentTypesFieldsConfig, NgAssignmentTypeFormDependencies } from '../../ng-assignment-types-fields-config';
+import { NgAssignmentTypesFieldsConfig } from '../../ng-assignment-types-fields-config';
 
 @Component({
   selector: 'ss-assignment-types-edit',
   templateUrl: './assignment-types-edit.component.html',
   styleUrls: ['./assignment-types-edit.component.scss']
 })
-export class AssignmentTypesEditComponent extends RecordFormComponent<AssignmentTypesAppState, AssignmentType, number, NgAssignmentTypeFormDependencies> implements OnInit {
+export class AssignmentTypesEditComponent extends RecordFormComponent<AssignmentTypesAppState, AssignmentType, number> implements OnInit {
 
   constructor(
     public router: Router,

@@ -9,12 +9,8 @@ import { SelectField } from '@skysmack/ng-ui';
 import { FieldsConfig, StringFieldComponent, SelectFieldComponent, HiddenFieldComponent } from '@skysmack/portal-ui';
 import { NgProductsValidation, NgProductTypesStore, LoadedPackage } from '@skysmack/ng-packages';
 
-export interface NgProductFormDependencies {
-    availableProductTypes: LocalObject<ProductType, number>[];
-}
-
 @Injectable({ providedIn: 'root' })
-export class NgProductsFieldsConfig extends FieldsConfig<Product, number, NgProductFormDependencies> {
+export class NgProductsFieldsConfig extends FieldsConfig<Product, number> {
     public validation = new NgProductsValidation();
 
     public formRules: FormRule[] = [
@@ -26,7 +22,7 @@ export class NgProductsFieldsConfig extends FieldsConfig<Product, number, NgProd
         super();
     }
 
-    protected getEntityFields(entity?: LocalObject<Product, number>, dependencies?: NgProductFormDependencies, loadedPackage?: LoadedPackage): Field[] {
+    protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<Product, number>): Field[] {
         const fields = [
             new Field({
                 component: StringFieldComponent,

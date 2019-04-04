@@ -5,14 +5,14 @@ import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgRolesStore } from '@skysmack/ng-packages';
 import { RecordFormComponent, EditorNavService } from '@skysmack/portal-ui';
-import { NgRoleFormDependencies, NgRolesFieldsConfig } from '../../ng-roles-fields-config';
+import { NgRolesFieldsConfig } from '../../ng-roles-fields-config';
 
 @Component({
   selector: 'ss-roles-create',
   templateUrl: './roles-create.component.html',
   styleUrls: ['./roles-create.component.scss']
 })
-export class RolesCreateComponent extends RecordFormComponent<RolesAppState, Role, number, NgRoleFormDependencies> implements OnInit {
+export class RolesCreateComponent extends RecordFormComponent<RolesAppState, Role, number> implements OnInit {
 
   constructor(
     public router: Router,

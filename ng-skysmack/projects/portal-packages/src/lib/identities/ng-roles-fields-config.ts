@@ -6,17 +6,13 @@ import { Field, FormRule } from '@skysmack/ng-ui';
 import { NgRolesValidation, LoadedPackage } from '@skysmack/ng-packages';
 import { FieldsConfig, StringFieldComponent, HiddenFieldComponent } from '@skysmack/portal-ui';
 
-export interface NgRoleFormDependencies {
-    [key: string]: any;
-}
-
 @Injectable({ providedIn: 'root' })
-export class NgRolesFieldsConfig extends FieldsConfig<Role, number, NgRoleFormDependencies> {
+export class NgRolesFieldsConfig extends FieldsConfig<Role, number> {
     public validation = new NgRolesValidation();
 
     public formRules: FormRule[] = [];
 
-    protected getEntityFields(entity?: LocalObject<Role, number>, dependencies?: NgRoleFormDependencies, loadedPackage?: LoadedPackage): Field[] {
+    protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<Role, number>): Field[] {
         const fields = [
             new Field({
                 component: StringFieldComponent,

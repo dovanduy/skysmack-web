@@ -6,19 +6,15 @@ import { User } from '@skysmack/packages-identities';
 import { NgUsersValidation, LoadedPackage } from '@skysmack/ng-packages';
 import { FieldsConfig, HiddenFieldComponent, PasswordFieldComponent, EmailFieldComponent } from '@skysmack/portal-ui';
 
-export interface NgUserFormDependencies {
-    [key: string]: any;
-}
-
 @Injectable({ providedIn: 'root' })
-export class NgUsersFieldsConfig extends FieldsConfig<User, number, NgUserFormDependencies> {
+export class NgUsersFieldsConfig extends FieldsConfig<User, number> {
     public validation = new NgUsersValidation();
 
     public formRules: FormRule[] = [];
 
     public mode: 'create' | 'edit' = 'create';
 
-    protected getEntityFields(entity?: LocalObject<User, number>, dependencies?: NgUserFormDependencies, loadedPackage?: LoadedPackage): Field[] {
+    protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<User, number>): Field[] {
         const fields = [
             new Field({
                 component: EmailFieldComponent,

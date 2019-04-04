@@ -4,14 +4,14 @@ import { PagedQuery } from '@skysmack/framework';
 import { Assignment, AssignmentsAppState } from '@skysmack/packages-maintenance';
 import { NgAssignmentsActions, NgSkysmackStore, NgAssignmentsStore, NgAssignmentTypesActions } from '@skysmack/ng-packages';
 import { RecordFormComponent, EditorNavService } from '@skysmack/portal-ui';
-import { NgAssignmentsFieldsConfig, NgAssignmentFormDependencies } from '../../ng-assignments-fields-config';
+import { NgAssignmentsFieldsConfig } from '../../ng-assignments-fields-config';
 
 @Component({
   selector: 'ss-assignments-create',
   templateUrl: './assignments-create.component.html',
   styleUrls: ['./assignments-create.component.scss']
 })
-export class AssignmentsCreateComponent extends RecordFormComponent<AssignmentsAppState, Assignment, number, NgAssignmentFormDependencies> implements OnInit {
+export class AssignmentsCreateComponent extends RecordFormComponent<AssignmentsAppState, Assignment, number> implements OnInit {
 
   constructor(
     public router: Router,

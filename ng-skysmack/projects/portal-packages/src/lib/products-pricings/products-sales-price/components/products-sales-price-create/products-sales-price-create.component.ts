@@ -8,14 +8,14 @@ import { NgProductsSalesPriceStore } from '@skysmack/ng-packages';
 import { map, take } from 'rxjs/operators';
 import { PagedQuery, defined } from '@skysmack/framework';
 import { NgProductsStore } from '@skysmack/ng-packages';
-import { NgProductsSalesPriceFieldsConfig, NgProductsSalesPriceFormDependencies } from '../../ng-products-sales-price-fields-config';
+import { NgProductsSalesPriceFieldsConfig } from '../../ng-products-sales-price-fields-config';
 
 @Component({
   selector: 'ss-products-sales-price-create',
   templateUrl: './products-sales-price-create.component.html',
   styleUrls: ['./products-sales-price-create.component.scss']
 })
-export class ProductsSalesPriceCreateComponent extends RecordFormComponent<ProductsSalesPriceAppState, ProductsSalesPrice, number, NgProductsSalesPriceFormDependencies> implements OnInit {
+export class ProductsSalesPriceCreateComponent extends RecordFormComponent<ProductsSalesPriceAppState, ProductsSalesPrice, number> implements OnInit {
 
   constructor(
     public router: Router,

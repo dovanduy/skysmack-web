@@ -7,12 +7,8 @@ import { FormRule, Field, SelectField } from '@skysmack/ng-ui';
 import { FieldsConfig, StringFieldComponent, SelectFieldComponent, HiddenFieldComponent, DateTimeFieldComponent } from '@skysmack/portal-ui';
 import { of } from 'rxjs';
 
-export interface NgAssignmentFormDependencies {
-    availableAssignmentTypes: LocalObject<AssignmentType, number>[];
-}
-
 @Injectable({ providedIn: 'root' })
-export class NgAssignmentsFieldsConfig extends FieldsConfig<Assignment, number, NgAssignmentFormDependencies> {
+export class NgAssignmentsFieldsConfig extends FieldsConfig<Assignment, number> {
     public validation = new NgAssignmentsValidation();
 
     public formRules: FormRule[] = [];
@@ -21,7 +17,7 @@ export class NgAssignmentsFieldsConfig extends FieldsConfig<Assignment, number, 
         public assignmentTypesStore: NgAssignmentTypesStore
     ) { super(); }
 
-    protected getEntityFields(entity?: LocalObject<Assignment, number>, dependencies?: NgAssignmentFormDependencies, loadedPackage?: LoadedPackage): Field[] {
+    protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<Assignment, number>): Field[] {
         const fields = [
             // TODO(GET_DEPS): DisplayKet is new here - is that still needed?
             new SelectField({

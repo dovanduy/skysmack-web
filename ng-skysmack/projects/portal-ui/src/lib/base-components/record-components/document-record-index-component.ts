@@ -18,7 +18,7 @@ export class DocumentRecordIndexComponent<TAppState, TRecord extends Record<TKey
         public actions: EntityActions<any, TKey>,
         public redux: NgSkysmackStore,
         public store: EntityStore<any, TKey>,
-        public fieldsConfig: EntityFieldsConfig<any, TKey, any>,
+        public fieldsConfig: EntityFieldsConfig<any, TKey>,
         public fieldActions: NgFieldActions,
         public fieldStore: NgFieldStore
     ) {
@@ -41,7 +41,7 @@ export class DocumentRecordIndexComponent<TAppState, TRecord extends Record<TKey
         ).pipe(
             map(values => {
                 const [fields, loadedPackage] = values;
-                return this.fieldsConfig.getFields(undefined, fields, this.fieldsConfig.getStaticFields(undefined, undefined, loadedPackage), loadedPackage);
+                return this.fieldsConfig.getFields(loadedPackage, undefined, fields);
             })
         );
     }

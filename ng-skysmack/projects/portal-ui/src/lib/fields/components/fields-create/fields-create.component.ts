@@ -3,7 +3,7 @@ import { FieldState } from '@skysmack/redux';
 import { Router, ActivatedRoute } from '@angular/router';
 import { EditorNavService } from './../../../components/common/container/editor-nav.service';
 import { NgSkysmackStore } from '@skysmack/ng-packages';
-import { NgFieldsConfig, NgFieldFormDependencies } from './../../ng-fields-config';
+import { NgFieldsConfig } from './../../ng-fields-config';
 import { RecordFormComponent } from './../../../base-components/record-components/record-form-component';
 import { NgFieldActions, NgFieldStore } from '@skysmack/ng-redux';
 import { FormHelper } from '@skysmack/ng-ui';
@@ -13,7 +13,7 @@ import { FormHelper } from '@skysmack/ng-ui';
   templateUrl: './fields-create.component.html',
   styleUrls: ['./fields-create.component.scss']
 })
-export class FieldsCreateComponent extends RecordFormComponent<FieldState, any, string, NgFieldFormDependencies> implements OnInit {
+export class FieldsCreateComponent extends RecordFormComponent<FieldState, any, string> implements OnInit {
   public objectIdentifier = 'key';
 
   constructor(

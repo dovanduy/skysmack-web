@@ -7,14 +7,14 @@ import { DocumentRecordFormComponent } from '@skysmack/portal-ui';
 import { NgProductTypesActions } from '@skysmack/ng-packages';
 import { NgProductTypesStore } from '@skysmack/ng-packages';
 import { NgFieldActions, NgFieldStore } from '@skysmack/ng-redux';
-import { NgProductTypesFieldsConfig, NgProductTypeFormDependencies } from '../../ng-product-types-fields-config';
+import { NgProductTypesFieldsConfig } from '../../ng-product-types-fields-config';
 
 @Component({
   selector: 'ss-product-types-edit',
   templateUrl: './product-types-edit.component.html',
   styleUrls: ['./product-types-edit.component.scss']
 })
-export class ProductTypesEditComponent extends DocumentRecordFormComponent<ProductTypesAppState, ProductType, number, NgProductTypeFormDependencies> implements OnInit {
+export class ProductTypesEditComponent extends DocumentRecordFormComponent<ProductTypesAppState, ProductType, number> implements OnInit {
 
   constructor(
     public router: Router,

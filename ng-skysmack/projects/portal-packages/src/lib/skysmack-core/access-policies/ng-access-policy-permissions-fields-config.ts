@@ -7,13 +7,8 @@ import { FieldsConfig, SelectFieldComponent, HiddenFieldComponent, CheckboxField
 import { AccessPolicyPermission, AccessPolicyRule } from '@skysmack/packages-skysmack-core';
 import { AccessPolicyPermissionsValidation, LoadedPackage, NgAccessPolicyRulesStore, NgSkysmackStore } from '@skysmack/ng-packages';
 
-export interface NgAccessPolicyPermissionFormDependencies {
-    installedPackages: LocalObject<Package, string>[];
-    availableAccessPolicyRules: LocalObject<AccessPolicyRule, number>[];
-}
-
 @Injectable({ providedIn: 'root' })
-export class NgAccessPolicyPermissionsFieldsConfig extends FieldsConfig<AccessPolicyPermission, number, NgAccessPolicyPermissionFormDependencies> {
+export class NgAccessPolicyPermissionsFieldsConfig extends FieldsConfig<AccessPolicyPermission, number> {
     public validation = new AccessPolicyPermissionsValidation();
 
     public formRules: FormRule[] = [];
@@ -24,11 +19,11 @@ export class NgAccessPolicyPermissionsFieldsConfig extends FieldsConfig<AccessPo
     ) { super(); }
 
 
-    protected getEntityFields(entity?: LocalObject<AccessPolicyPermission, number>, dependencies?: NgAccessPolicyPermissionFormDependencies, loadedPackage?: LoadedPackage): Field[] {
+    protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<AccessPolicyPermission, number>): Field[] {
 
         // TODO: Work this into ruleId field stream
         const modifyDisplayName = (options: SelectFieldOption[]) => {
-            const accessPolicyRules = dependencies.availableAccessPolicyRules;
+            const accessPolicyRules = [];//dependencies.availableAccessPolicyRules;
             return options.map(option => {
                 if (accessPolicyRules) {
                     const matchingRule = accessPolicyRules.find(rule => rule.object.id === option.value);

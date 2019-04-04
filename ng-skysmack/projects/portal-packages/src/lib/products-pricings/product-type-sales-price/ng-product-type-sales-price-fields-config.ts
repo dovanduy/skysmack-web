@@ -12,7 +12,7 @@ export interface NgProductTypeSalesPriceFormDependencies {
 }
 
 @Injectable({ providedIn: 'root' })
-export class NgProductTypeSalesPriceFieldsConfig extends FieldsConfig<ProductTypeSalesPrice, number, NgProductTypeSalesPriceFormDependencies> {
+export class NgProductTypeSalesPriceFieldsConfig extends FieldsConfig<ProductTypeSalesPrice, number> {
     public validation = new NgProductTypeSalesPriceValidation();
 
     public formRules: FormRule[] = [];
@@ -24,7 +24,7 @@ export class NgProductTypeSalesPriceFieldsConfig extends FieldsConfig<ProductTyp
     }
 
 
-    protected getEntityFields(entity?: LocalObject<ProductTypeSalesPrice, number>, dependencies?: NgProductTypeSalesPriceFormDependencies, loadedPackage?: LoadedPackage): Field[] {
+    protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<ProductTypeSalesPrice, number>): Field[] {
         const fields = [
             new SelectField({
                 component: SelectFieldComponent,

@@ -29,7 +29,7 @@ export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey>
         public actions: EntityActions<any, TKey>,
         public skysmackStore: NgSkysmackStore,
         public store: EntityStore<any, TKey>,
-        public fieldsConfig: EntityFieldsConfig<any, TKey, any>
+        public fieldsConfig: EntityFieldsConfig<any, TKey>
     ) {
         super(router, activatedRoute, skysmackStore);
     }
@@ -61,7 +61,7 @@ export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey>
 
     protected setFields() {
         this.fields$ = this.loadedPackage$.pipe(
-            map(loadedPackage => this.fieldsConfig.getStaticFields(undefined, undefined, loadedPackage))
+            map(loadedPackage => this.fieldsConfig.getStaticFields(loadedPackage))
         );
     }
 

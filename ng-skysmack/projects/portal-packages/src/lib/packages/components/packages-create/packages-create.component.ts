@@ -31,7 +31,7 @@ export class PackagesCreateComponent extends BaseComponent<PackagesAppState, str
   ngOnInit() {
     super.ngOnInit();
     this.actions.getAvailablePackages();
-    this.fields$ = this.loadedPackage$.pipe(map(loadedPackage => this.fieldsConfig.getStaticFields(undefined, undefined, loadedPackage)));
+    this.fields$ = this.loadedPackage$.pipe(map(loadedPackage => this.fieldsConfig.getStaticFields(loadedPackage)));
     this.editorNavService.showEditorNav();
   }
 

@@ -5,17 +5,13 @@ import { LodgingSettings } from '@skysmack/packages-lodgings';
 import { NgLodgingSettingsValidation, LoadedPackage } from '@skysmack/ng-packages';
 import { FieldsConfig, StringFieldComponent, DateFieldComponent } from '@skysmack/portal-ui';
 
-export interface NgLodgingSettingsFormDependencies {
-    [key: string]: any;
-}
-
 @Injectable({ providedIn: 'root' })
-export class NgLodgingSettingsFieldsConfig extends FieldsConfig<LodgingSettings, unknown, NgLodgingSettingsFormDependencies> {
+export class NgLodgingSettingsFieldsConfig extends FieldsConfig<LodgingSettings, unknown> {
     public validation = new NgLodgingSettingsValidation();
 
     public formRules: FormRule[] = [];
 
-    protected getEntityFields(settings?: LocalObject<LodgingSettings, unknown>, dependencies?: NgLodgingSettingsFormDependencies, loadedPackage?: LoadedPackage): Field[] {
+    protected getEntityFields(loadedPackage: LoadedPackage, settings?: LocalObject<LodgingSettings, unknown>): Field[] {
         let initializedSettings: LocalObject<LodgingSettings, unknown>;
         if (Object.keys(settings).length > 0) {
             Object.assign(settings.object, new LodgingSettings({}));

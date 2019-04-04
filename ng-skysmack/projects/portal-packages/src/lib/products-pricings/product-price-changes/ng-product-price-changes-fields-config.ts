@@ -7,13 +7,8 @@ import { NgProductPriceChangesValidation, LoadedPackage, NgProductsSalesPriceSto
 import { FieldsConfig, SelectFieldComponent, HiddenFieldComponent, DecimalFieldComponent, DateTimeFieldComponent } from '@skysmack/portal-ui';
 import { of } from 'rxjs';
 
-
-export interface NgProductPriceChangesFormDependencies {
-    availableProductsSalesPrices: LocalObject<ProductsSalesPrice, number>[];
-}
-
 @Injectable({ providedIn: 'root' })
-export class NgProductPriceChangesFieldsConfig extends FieldsConfig<ProductPriceChange, number, NgProductPriceChangesFormDependencies> {
+export class NgProductPriceChangesFieldsConfig extends FieldsConfig<ProductPriceChange, number> {
     public validation = new NgProductPriceChangesValidation();
 
     public formRules: FormRule[] = [];
@@ -24,7 +19,7 @@ export class NgProductPriceChangesFieldsConfig extends FieldsConfig<ProductPrice
         super();
     }
 
-    protected getEntityFields(entity?: LocalObject<ProductPriceChange, number>, dependencies?: NgProductPriceChangesFormDependencies, loadedPackage?: LoadedPackage): Field[] {
+    protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<ProductPriceChange, number>): Field[] {
         const fields = [
             new SelectField({
                 component: SelectFieldComponent,

@@ -7,14 +7,14 @@ import { EditorNavService, RecordFormComponent } from '@skysmack/portal-ui';
 import { NgProductTypeSalesPriceStore } from '@skysmack/ng-packages';
 import { PagedQuery, defined } from '@skysmack/framework';
 import { map, take } from 'rxjs/operators';
-import { NgProductTypeSalesPriceFormDependencies, NgProductTypeSalesPriceFieldsConfig } from '../../ng-product-type-sales-price-fields-config';
+import { NgProductTypeSalesPriceFieldsConfig } from '../../ng-product-type-sales-price-fields-config';
 
 @Component({
   selector: 'ss-product-type-sales-price-edit',
   templateUrl: './product-type-sales-price-edit.component.html',
   styleUrls: ['./product-type-sales-price-edit.component.scss']
 })
-export class ProductTypeSalesPriceEditComponent extends RecordFormComponent<ProductTypeSalesPriceAppState, ProductTypeSalesPrice, number, NgProductTypeSalesPriceFormDependencies> implements OnInit {
+export class ProductTypeSalesPriceEditComponent extends RecordFormComponent<ProductTypeSalesPriceAppState, ProductTypeSalesPrice, number> implements OnInit {
   protected productTypes$;
 
   constructor(

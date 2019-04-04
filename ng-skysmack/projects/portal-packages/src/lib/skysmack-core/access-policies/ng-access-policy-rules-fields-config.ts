@@ -6,17 +6,13 @@ import { FieldsConfig, SelectFieldComponent, HiddenFieldComponent, CheckboxField
 import { AccessPolicyRule } from '@skysmack/packages-skysmack-core';
 import { AccessPolicyRulesValidation, LoadedPackage } from '@skysmack/ng-packages';
 
-export interface NgAccessPolicyRuleFormDependencies {
-    [key: string]: any;
-}
-
 @Injectable({ providedIn: 'root' })
-export class NgAccessPolicyRulesFieldsConfig extends FieldsConfig<AccessPolicyRule, number, NgAccessPolicyRuleFormDependencies> {
+export class NgAccessPolicyRulesFieldsConfig extends FieldsConfig<AccessPolicyRule, number> {
     public validation = new AccessPolicyRulesValidation();
 
     public formRules: FormRule[] = [];
 
-    protected getEntityFields(entity?: LocalObject<AccessPolicyRule, number>, dependencies?: NgAccessPolicyRuleFormDependencies, loadedPackage?: LoadedPackage): Field[] {
+    protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<AccessPolicyRule, number>): Field[] {
         const fields = [
             new Field({
                 component: CheckboxFieldComponent,

@@ -8,17 +8,13 @@ import { Field } from '@skysmack/ng-ui';
 import { FieldsConfig, StringFieldComponent, HiddenFieldComponent } from '@skysmack/portal-ui';
 import { NgReceiptsValidation, LoadedPackage } from '@skysmack/ng-packages';
 
-export interface NgReceiptFormDependencies {
-    [key: string]: any;
-}
-
 @Injectable({ providedIn: 'root' })
-export class NgReceiptsFieldsConfig extends FieldsConfig<Receipt, number, NgReceiptFormDependencies> {
+export class NgReceiptsFieldsConfig extends FieldsConfig<Receipt, number> {
     public validation = new NgReceiptsValidation();
 
     public formRules: FormRule[] = [];
 
-    protected getEntityFields(entity?: LocalObject<Receipt, number>, dependencies?: NgReceiptFormDependencies, loadedPackage?: LoadedPackage): Field[] {
+    protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<Receipt, number>): Field[] {
         const fields = [
             new Field({
                 component: StringFieldComponent,

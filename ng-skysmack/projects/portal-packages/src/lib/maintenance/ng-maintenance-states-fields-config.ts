@@ -12,13 +12,13 @@ export interface NgMaintenanceStateFormDependencies {
 }
 
 @Injectable({ providedIn: 'root' })
-export class NgMaintenanceStatesFieldsConfig extends FieldsConfig<MaintenanceState, number, NgMaintenanceStateFormDependencies> {
+export class NgMaintenanceStatesFieldsConfig extends FieldsConfig<MaintenanceState, number> {
     public validation = new NgMaintenanceStatesValidation();
 
     public formRules: FormRule[] = [
     ];
 
-    protected getEntityFields(entity?: LocalObject<MaintenanceState, number>, dependencies?: NgMaintenanceStateFormDependencies, loadedPackage?: LoadedPackage): Field[] {
+    protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<MaintenanceState, number>): Field[] {
         const fields = [
             new Field({
                 component: StringFieldComponent,

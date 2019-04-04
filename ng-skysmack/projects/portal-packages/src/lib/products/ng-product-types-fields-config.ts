@@ -8,17 +8,13 @@ import { Field } from '@skysmack/ng-ui';
 import { FieldsConfig, StringFieldComponent, HiddenFieldComponent } from '@skysmack/portal-ui';
 import { NgProductTypesValidation, LoadedPackage } from '@skysmack/ng-packages';
 
-export interface NgProductTypeFormDependencies {
-    [key: string]: any;
-}
-
 @Injectable({ providedIn: 'root' })
-export class NgProductTypesFieldsConfig extends FieldsConfig<ProductType, number, NgProductTypeFormDependencies> {
+export class NgProductTypesFieldsConfig extends FieldsConfig<ProductType, number> {
     public validation = new NgProductTypesValidation();
 
     public formRules: FormRule[] = [];
 
-    protected getEntityFields(entity?: LocalObject<ProductType, number>, dependencies?: NgProductTypeFormDependencies, loadedPackage?: LoadedPackage): Field[] {
+    protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<ProductType, number>): Field[] {
         const fields = [
             new Field({
                 component: StringFieldComponent,

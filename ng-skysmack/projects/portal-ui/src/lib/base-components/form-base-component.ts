@@ -7,7 +7,7 @@ import { FormHelper } from '@skysmack/ng-ui';
 import { EntityActions } from '@skysmack/redux';
 import { EditorNavService } from './../components/common/container/editor-nav.service';
 
-export class FormBaseComponent<TAppState, TRecord extends Record<TKey>, TKey, TDependencies> extends BaseComponent<TAppState, TKey> {
+export class FormBaseComponent<TAppState, TRecord extends Record<TKey>, TKey> extends BaseComponent<TAppState, TKey> {
     /**
      * The selected entity needed for edit forms.
      */
@@ -21,7 +21,7 @@ export class FormBaseComponent<TAppState, TRecord extends Record<TKey>, TKey, TD
         public editorNavService: EditorNavService,
         public actions: EntityActions<any, TKey>,
         public skysmackStore: NgSkysmackStore,
-        public fieldsConfig: EntityFieldsConfig<any, TKey, TDependencies>,
+        public fieldsConfig: EntityFieldsConfig<any, TKey>,
     ) {
         super(router, activatedRoute, skysmackStore);
     }

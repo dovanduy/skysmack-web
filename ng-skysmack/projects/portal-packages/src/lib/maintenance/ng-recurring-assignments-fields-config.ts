@@ -6,12 +6,8 @@ import { NgRecurringAssignmentsValidation, LoadedPackage, NgAssignmentTypesStore
 import { FormRule, SelectField, Field } from '@skysmack/ng-ui';
 import { FieldsConfig, SelectFieldComponent, HiddenFieldComponent, DateFieldComponent } from '@skysmack/portal-ui';
 
-export interface NgRecurringAssignmentFormDependencies {
-    availableRecurringAssignments: LocalObject<RecurringAssignment, number>[];
-}
-
 @Injectable({ providedIn: 'root' })
-export class NgRecurringAssignmentsFieldsConfig extends FieldsConfig<RecurringAssignment, number, NgRecurringAssignmentFormDependencies> {
+export class NgRecurringAssignmentsFieldsConfig extends FieldsConfig<RecurringAssignment, number> {
     public validation = new NgRecurringAssignmentsValidation();
 
     public formRules: FormRule[] = [
@@ -24,7 +20,7 @@ export class NgRecurringAssignmentsFieldsConfig extends FieldsConfig<RecurringAs
     }
 
 
-    protected getEntityFields(entity?: LocalObject<RecurringAssignment, number>, dependencies?: NgRecurringAssignmentFormDependencies, loadedPackage?: LoadedPackage): Field[] {
+    protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<RecurringAssignment, number>): Field[] {
         const fields = [
             new SelectField({
                 component: SelectFieldComponent,

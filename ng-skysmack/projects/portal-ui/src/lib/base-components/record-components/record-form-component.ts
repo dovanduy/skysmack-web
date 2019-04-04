@@ -10,7 +10,7 @@ import { FormHelper } from '@skysmack/ng-ui';
 import { map } from 'rxjs/operators';
 import { combineLatest } from 'rxjs';
 
-export class RecordFormComponent<TAppState, TRecord extends Record<TKey>, TKey, TDependencies> extends FormBaseComponent<TAppState, TRecord, TKey, TDependencies> implements OnInit, OnDestroy {
+export class RecordFormComponent<TAppState, TRecord extends Record<TKey>, TKey> extends FormBaseComponent<TAppState, TRecord, TKey> implements OnInit, OnDestroy {
 
     public editorItem: LocalObject<TRecord, TKey>;
 
@@ -21,7 +21,7 @@ export class RecordFormComponent<TAppState, TRecord extends Record<TKey>, TKey, 
         public actions: EntityActions<any, TKey>,
         public skysmackStore: NgSkysmackStore,
         public store: EntityStore<any, TKey>,
-        public fieldsConfig: EntityFieldsConfig<any, TKey, TDependencies>
+        public fieldsConfig: EntityFieldsConfig<any, TKey>
     ) {
         super(router, activatedRoute, editorNavService, actions, skysmackStore, fieldsConfig);
     }
@@ -44,7 +44,7 @@ export class RecordFormComponent<TAppState, TRecord extends Record<TKey>, TKey, 
                 this.editorItem = values[0] as LocalObject<TRecord, TKey>;
                 const loadedPackage = values[1];
 
-                return this.fieldsConfig.getFields(this.editorItem, undefined, undefined, loadedPackage);
+                return this.fieldsConfig.getFields(loadedPackage, this.editorItem);
             })
         );
     }
@@ -62,7 +62,7 @@ export class RecordFormComponent<TAppState, TRecord extends Record<TKey>, TKey, 
                     const loadedPackage = values[2];
                     this.editorItem ? this.selectedEntity = this.editorItem : this.selectedEntity = entity;
 
-                    return this.fieldsConfig.getFields(this.selectedEntity, undefined, undefined, loadedPackage);
+                    return this.fieldsConfig.getFields(loadedPackage, this.selectedEntity);
                 })
             );
     }

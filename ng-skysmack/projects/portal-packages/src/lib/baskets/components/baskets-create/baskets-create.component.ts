@@ -7,14 +7,14 @@ import { EditorNavService } from '@skysmack/portal-ui';
 import { DocumentRecordFormComponent } from '@skysmack/portal-ui';
 import { NgBasketsStore } from '@skysmack/ng-packages';
 import { NgFieldActions, NgFieldStore } from '@skysmack/ng-redux';
-import { NgBasketsFieldsConfig, NgBasketFormDependencies } from '../../ng-baskets-fields-config';
+import { NgBasketsFieldsConfig } from '../../ng-baskets-fields-config';
 
 @Component({
   selector: 'ss-baskets-create',
   templateUrl: './baskets-create.component.html',
   styleUrls: ['./baskets-create.component.scss']
 })
-export class BasketsCreateComponent extends DocumentRecordFormComponent<BasketsAppState, Basket, number, NgBasketFormDependencies> implements OnInit {
+export class BasketsCreateComponent extends DocumentRecordFormComponent<BasketsAppState, Basket, number> implements OnInit {
 
   constructor(
     public router: Router,

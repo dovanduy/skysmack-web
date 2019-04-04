@@ -4,14 +4,15 @@ import { FormRule, Field } from '@skysmack/ng-ui';
 import { LoginValidation } from './login-validation';
 import { LocalObject } from '@skysmack/framework';
 import { FieldsConfig, PasswordFieldComponent, EmailFieldComponent } from '@skysmack/portal-ui';
+import { LoadedPackage } from '@skysmack/ng-packages';
 
 @Injectable({ providedIn: 'root' })
-export class LoginFieldsConfig extends FieldsConfig<any, any, any> {
+export class LoginFieldsConfig extends FieldsConfig<any, any> {
     public validation = new LoginValidation();
 
     public formRules: FormRule[] = [];
 
-    protected getEntityFields(entity?: LocalObject<any, any>, dependencies?: any): Field[] {
+    protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<any, any>): Field[] {
         const fields = [
             new Field({
                 component: EmailFieldComponent,

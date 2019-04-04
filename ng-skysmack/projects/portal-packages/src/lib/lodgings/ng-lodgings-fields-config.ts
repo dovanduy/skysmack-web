@@ -11,7 +11,7 @@ export interface NgLodgingFormDependencies {
 }
 
 @Injectable({ providedIn: 'root' })
-export class NgLodgingsFieldsConfig extends FieldsConfig<Lodging, number, NgLodgingFormDependencies> {
+export class NgLodgingsFieldsConfig extends FieldsConfig<Lodging, number> {
     public validation = new NgLodgingsValidation();
 
     public formRules: FormRule[] = [];
@@ -22,7 +22,7 @@ export class NgLodgingsFieldsConfig extends FieldsConfig<Lodging, number, NgLodg
         super();
     }
 
-    protected getEntityFields(entity?: LocalObject<Lodging, number>, dependencies?: NgLodgingFormDependencies, loadedPackage?: LoadedPackage): Field[] {
+    protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<Lodging, number>): Field[] {
         const fields = [
             new SelectField({
                 component: SelectFieldComponent,

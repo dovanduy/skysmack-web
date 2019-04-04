@@ -4,14 +4,14 @@ import { Assignment, AssignmentsAppState } from '@skysmack/packages-maintenance'
 import { RecordFormComponent, EditorNavService } from '@skysmack/portal-ui';
 import { NgAssignmentsActions, NgSkysmackStore, NgAssignmentsStore, NgAssignmentTypesActions } from '@skysmack/ng-packages';
 import { PagedQuery } from '@skysmack/framework';
-import { NgAssignmentsFieldsConfig, NgAssignmentFormDependencies } from '../../ng-assignments-fields-config';
+import { NgAssignmentsFieldsConfig } from '../../ng-assignments-fields-config';
 
 @Component({
   selector: 'ss-assignments-edit',
   templateUrl: './assignments-edit.component.html',
   styleUrls: ['./assignments-edit.component.scss']
 })
-export class AssignmentsEditComponent extends RecordFormComponent<AssignmentsAppState, Assignment, number, NgAssignmentFormDependencies> implements OnInit {
+export class AssignmentsEditComponent extends RecordFormComponent<AssignmentsAppState, Assignment, number> implements OnInit {
 
   constructor(
     public router: Router,

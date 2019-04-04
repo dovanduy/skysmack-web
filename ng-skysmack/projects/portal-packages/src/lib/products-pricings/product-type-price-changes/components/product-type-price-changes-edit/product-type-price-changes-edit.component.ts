@@ -6,7 +6,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { EditorNavService, RecordFormComponent } from '@skysmack/portal-ui';
 import { NgProductTypePriceChangesStore } from '@skysmack/ng-packages';
 import { PagedQuery, defined } from '@skysmack/framework';
-import { NgProductTypePriceChangesFieldsConfig, NgProductTypePriceChangesFormDependencies } from '../../ng-product-type-price-changes-fields-config';
+import { NgProductTypePriceChangesFieldsConfig } from '../../ng-product-type-price-changes-fields-config';
 import { map, take } from 'rxjs/operators';
 
 @Component({
@@ -14,7 +14,7 @@ import { map, take } from 'rxjs/operators';
   templateUrl: './product-type-price-changes-edit.component.html',
   styleUrls: ['./product-type-price-changes-edit.component.scss']
 })
-export class ProductTypePriceChangesEditComponent extends RecordFormComponent<ProductTypePriceChangesAppState, ProductPriceChange, number, NgProductTypePriceChangesFormDependencies> implements OnInit {
+export class ProductTypePriceChangesEditComponent extends RecordFormComponent<ProductTypePriceChangesAppState, ProductPriceChange, number> implements OnInit {
   protected productTypes$;
 
   constructor(

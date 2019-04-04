@@ -6,14 +6,14 @@ import { EditorNavService, RecordFormComponent } from '@skysmack/portal-ui';
 import { NgAccessPolicyPermissionsStore } from '@skysmack/ng-packages';
 import { AccessPolicyPermission, AccessPolicyPermissionsAppState } from '@skysmack/packages-skysmack-core';
 import { PagedQuery } from '@skysmack/framework';
-import { NgAccessPolicyPermissionsFieldsConfig, NgAccessPolicyPermissionFormDependencies } from '../../ng-access-policy-permissions-fields-config';
+import { NgAccessPolicyPermissionsFieldsConfig } from '../../ng-access-policy-permissions-fields-config';
 
 @Component({
   selector: 'ss-access-policy-permissions-create',
   templateUrl: './access-policy-permissions-create.component.html',
   styleUrls: ['./access-policy-permissions-create.component.scss']
 })
-export class AccessPolicyPermissionsCreateComponent extends RecordFormComponent<AccessPolicyPermissionsAppState, AccessPolicyPermission, number, NgAccessPolicyPermissionFormDependencies> implements OnInit {
+export class AccessPolicyPermissionsCreateComponent extends RecordFormComponent<AccessPolicyPermissionsAppState, AccessPolicyPermission, number> implements OnInit {
   constructor(
     public router: Router,
     public activatedRoute: ActivatedRoute,

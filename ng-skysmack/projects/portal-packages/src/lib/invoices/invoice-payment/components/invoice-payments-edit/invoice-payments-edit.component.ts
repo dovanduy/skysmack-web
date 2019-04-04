@@ -7,14 +7,14 @@ import { EditorNavService } from '@skysmack/portal-ui';
 import { DocumentRecordFormComponent } from '@skysmack/portal-ui';
 import { NgInvoicePaymentsStore } from '@skysmack/ng-packages';
 import { NgFieldActions, NgFieldStore } from '@skysmack/ng-redux';
-import { NgInvoicePaymentsFieldsConfig, NgInvoicePaymentFormDependencies } from '../../ng-invoice-payments-fields-config';
+import { NgInvoicePaymentsFieldsConfig } from '../../ng-invoice-payments-fields-config';
 
 @Component({
   selector: 'ss-invoice-payments-edit',
   templateUrl: './invoice-payments-edit.component.html',
   styleUrls: ['./invoice-payments-edit.component.scss']
 })
-export class InvoicePaymentsEditComponent extends DocumentRecordFormComponent<InvoicePaymentsAppState, InvoicePayment, number, NgInvoicePaymentFormDependencies> implements OnInit {
+export class InvoicePaymentsEditComponent extends DocumentRecordFormComponent<InvoicePaymentsAppState, InvoicePayment, number> implements OnInit {
 
   constructor(
     public router: Router,

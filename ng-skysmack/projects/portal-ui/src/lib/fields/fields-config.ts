@@ -10,14 +10,14 @@ import { DateTimeFieldComponent } from '../components/field-components/component
 import { StringFieldComponent } from '../components/field-components/components/string-field/string-field.component';
 import { LoadedPackage } from '@skysmack/ng-packages';
 
-export abstract class FieldsConfig<TRecord, TKey, TDependencies> implements EntityFieldsConfig<TRecord, TKey, TDependencies> {
+export abstract class FieldsConfig<TRecord, TKey> implements EntityFieldsConfig<TRecord, TKey> {
     public abstract formRules: FormRule[];
     public abstract validation: Validation;
-    protected abstract getEntityFields(entity?: LocalObject<TRecord, TKey>, dependencies?: TDependencies, loadedPackage?: LoadedPackage): Field[];
+    protected abstract getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<TRecord, TKey>): Field[];
 
-    public getStaticFields(entity?: LocalObject<TRecord, TKey>, dependencies?: TDependencies, loadedPackage?: LoadedPackage): Field[] {
+    public getStaticFields(loadedPackage: LoadedPackage, entity?: LocalObject<TRecord, TKey>): Field[] {
         const fieldArea = this.validation.area.toUpperCase() + '.FORM.';
-        return this.getEntityFields(entity, dependencies, loadedPackage).map(field => {
+        return this.getEntityFields(loadedPackage, entity).map(field => {
             // Labels
             field.label = fieldArea + 'LABELS.' + field.key.toUpperCase();
             // Placeholders
@@ -32,8 +32,8 @@ export abstract class FieldsConfig<TRecord, TKey, TDependencies> implements Enti
      * @param fields Any dynamic fields added to the package.
      * @param dependencies Any dependencies the form needs.
      */
-    public getFields(entity?: LocalObject<TRecord, TKey>, dynamicFields?: LocalObject<FieldSchemaViewModel, string>[], dependencies?: TDependencies, loadedPackage?: LoadedPackage): Field[] {
-        const fields = this.getStaticFields(entity, dependencies, loadedPackage);
+    public getFields(loadedPackage: LoadedPackage, entity?: LocalObject<TRecord, TKey>, dynamicFields?: LocalObject<FieldSchemaViewModel, string>[]): Field[] {
+        const fields = this.getStaticFields(loadedPackage, entity);
         let returnfields;
         if (dynamicFields) {
             returnfields = [

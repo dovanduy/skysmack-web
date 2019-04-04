@@ -4,7 +4,7 @@ import { NgUsersActions } from '@skysmack/ng-packages';
 import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EditorNavService } from '@skysmack/portal-ui';
-import { NgUsersFieldsConfig, NgUserFormDependencies } from '../../ng-users-fields-config';
+import { NgUsersFieldsConfig } from '../../ng-users-fields-config';
 import { RecordFormComponent } from '@skysmack/portal-ui';
 import { NgUsersStore } from '@skysmack/ng-packages';
 
@@ -13,7 +13,7 @@ import { NgUsersStore } from '@skysmack/ng-packages';
   templateUrl: './users-create.component.html',
   styleUrls: ['./users-create.component.scss']
 })
-export class UsersCreateComponent extends RecordFormComponent<UsersAppState, User, number, NgUserFormDependencies> implements OnInit {
+export class UsersCreateComponent extends RecordFormComponent<UsersAppState, User, number> implements OnInit {
 
   constructor(
     public router: Router,

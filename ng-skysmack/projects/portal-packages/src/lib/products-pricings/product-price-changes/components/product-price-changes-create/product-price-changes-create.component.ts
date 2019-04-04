@@ -6,14 +6,14 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { EditorNavService, RecordFormComponent } from '@skysmack/portal-ui';
 import { NgProductPriceChangesStore } from '@skysmack/ng-packages';
 import { PagedQuery } from '@skysmack/framework';
-import { NgProductPriceChangesFieldsConfig, NgProductPriceChangesFormDependencies } from '../../ng-product-price-changes-fields-config';
+import { NgProductPriceChangesFieldsConfig } from '../../ng-product-price-changes-fields-config';
 
 @Component({
   selector: 'ss-product-price-changes-create',
   templateUrl: './product-price-changes-create.component.html',
   styleUrls: ['./product-price-changes-create.component.scss']
 })
-export class ProductPriceChangesCreateComponent extends RecordFormComponent<ProductPriceChangesAppState, ProductPriceChange, number, NgProductPriceChangesFormDependencies> implements OnInit {
+export class ProductPriceChangesCreateComponent extends RecordFormComponent<ProductPriceChangesAppState, ProductPriceChange, number> implements OnInit {
 
   constructor(
     public router: Router,

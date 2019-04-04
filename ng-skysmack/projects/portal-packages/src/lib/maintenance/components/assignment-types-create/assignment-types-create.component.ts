@@ -3,17 +3,14 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AssignmentType, AssignmentTypesAppState } from '@skysmack/packages-maintenance';
 import { EditorNavService, RecordFormComponent } from '@skysmack/portal-ui';
 import { NgAssignmentTypesActions, NgSkysmackStore, NgAssignmentTypesStore, NgMaintenanceStatesActions, NgMaintenanceStatesStore } from '@skysmack/ng-packages';
-import { combineLatest } from 'rxjs';
-import { map } from 'rxjs/operators';
-import { LocalObject } from '@skysmack/framework';
-import { NgAssignmentTypesFieldsConfig, NgAssignmentTypeFormDependencies } from '../../ng-assignment-types-fields-config';
+import { NgAssignmentTypesFieldsConfig } from '../../ng-assignment-types-fields-config';
 
 @Component({
   selector: 'ss-assignment-types-create',
   templateUrl: './assignment-types-create.component.html',
   styleUrls: ['./assignment-types-create.component.scss']
 })
-export class AssignmentTypesCreateComponent extends RecordFormComponent<AssignmentTypesAppState, AssignmentType, number, NgAssignmentTypeFormDependencies> implements OnInit {
+export class AssignmentTypesCreateComponent extends RecordFormComponent<AssignmentTypesAppState, AssignmentType, number> implements OnInit {
   constructor(
     public router: Router,
     public activatedRoute: ActivatedRoute,

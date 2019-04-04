@@ -6,16 +6,12 @@ import { User } from '@skysmack/packages-identities';
 import { NgSetPasswordValidation, LoadedPackage } from '@skysmack/ng-packages';
 import { FieldsConfig, PasswordFieldComponent } from '@skysmack/portal-ui';
 
-export interface NgSetPasswordFormDependencies {
-    [key: string]: any;
-}
-
 @Injectable({ providedIn: 'root' })
-export class NgSetPasswordFieldsConfig extends FieldsConfig<User, number, NgSetPasswordFormDependencies> {
+export class NgSetPasswordFieldsConfig extends FieldsConfig<User, number> {
     public validation = new NgSetPasswordValidation();
     public formRules: FormRule[] = [];
 
-    protected getEntityFields(entity?: LocalObject<User, number>, dependencies?: NgSetPasswordFormDependencies, loadedPackage?: LoadedPackage): Field[] {
+    protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<User, number>): Field[] {
         const fields = [
             new Field({
                 component: PasswordFieldComponent,

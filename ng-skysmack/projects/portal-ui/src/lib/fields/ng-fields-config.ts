@@ -13,12 +13,8 @@ import { FieldPermissionFieldComponent } from '../components/field-components/co
 import { NgFieldStore } from '@skysmack/ng-redux';
 import { LoadedPackage } from '@skysmack/ng-packages';
 
-export interface NgFieldFormDependencies {
-    availableFields: LocalObject<FieldValueProviderViewModel, string>[];
-}
-
 @Injectable({ providedIn: 'root' })
-export class NgFieldsConfig extends FieldsConfig<FieldSchemaViewModel, string, NgFieldFormDependencies> {
+export class NgFieldsConfig extends FieldsConfig<FieldSchemaViewModel, string> {
     public validation = new FieldsValidation();
 
     public formRules: FormRule[] = [
@@ -34,7 +30,7 @@ export class NgFieldsConfig extends FieldsConfig<FieldSchemaViewModel, string, N
      * @param availableFields Possible dynamic fields to create. Recieved from the backend.
      * @param field Optional field can be providedto set default values. Used to edit an existing field.
      */
-    protected getEntityFields(field?: LocalObject<FieldSchemaViewModel, string>, dependencies?: NgFieldFormDependencies, loadedPackage?: LoadedPackage): Field[] {
+    protected getEntityFields(loadedPackage: LoadedPackage, field?: LocalObject<FieldSchemaViewModel, string>): Field[] {
         const fields = [
             new Field({
                 component: StringFieldComponent,

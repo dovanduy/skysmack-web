@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { RecurringAssignment, RecurringAssignmentsAppState } from '@skysmack/packages-maintenance';
 import { RecordFormComponent, EditorNavService } from '@skysmack/portal-ui';
 import { NgRecurringAssignmentsActions, NgSkysmackStore, NgRecurringAssignmentsStore } from '@skysmack/ng-packages';
-import { NgRecurringAssignmentsFieldsConfig, NgRecurringAssignmentFormDependencies } from '../../ng-recurring-assignments-fields-config';
+import { NgRecurringAssignmentsFieldsConfig } from '../../ng-recurring-assignments-fields-config';
 
 
 @Component({
@@ -11,7 +11,7 @@ import { NgRecurringAssignmentsFieldsConfig, NgRecurringAssignmentFormDependenci
   templateUrl: './recurring-assignments-edit.component.html',
   styleUrls: ['./recurring-assignments-edit.component.scss']
 })
-export class RecurringAssignmentsEditComponent extends RecordFormComponent<RecurringAssignmentsAppState, RecurringAssignment, number, NgRecurringAssignmentFormDependencies> implements OnInit {
+export class RecurringAssignmentsEditComponent extends RecordFormComponent<RecurringAssignmentsAppState, RecurringAssignment, number> implements OnInit {
 
   constructor(
     public router: Router,

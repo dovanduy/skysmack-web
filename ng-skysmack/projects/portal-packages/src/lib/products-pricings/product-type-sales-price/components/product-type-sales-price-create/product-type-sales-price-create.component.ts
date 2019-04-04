@@ -5,17 +5,16 @@ import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EditorNavService, RecordFormComponent } from '@skysmack/portal-ui';
 import { NgProductTypeSalesPriceStore } from '@skysmack/ng-packages';
-import { combineLatest } from 'rxjs';
-import { map, switchMap, take } from 'rxjs/operators';
+import { map, take } from 'rxjs/operators';
 import { PagedQuery, defined } from '@skysmack/framework';
-import { NgProductTypeSalesPriceFormDependencies, NgProductTypeSalesPriceFieldsConfig } from '../../ng-product-type-sales-price-fields-config';
+import { NgProductTypeSalesPriceFieldsConfig } from '../../ng-product-type-sales-price-fields-config';
 
 @Component({
   selector: 'ss-product-type-sales-price-create',
   templateUrl: './product-type-sales-price-create.component.html',
   styleUrls: ['./product-type-sales-price-create.component.scss']
 })
-export class ProductTypeSalesPriceCreateComponent extends RecordFormComponent<ProductTypeSalesPriceAppState, ProductTypeSalesPrice, number, NgProductTypeSalesPriceFormDependencies> implements OnInit {
+export class ProductTypeSalesPriceCreateComponent extends RecordFormComponent<ProductTypeSalesPriceAppState, ProductTypeSalesPrice, number> implements OnInit {
 
   constructor(
     public router: Router,

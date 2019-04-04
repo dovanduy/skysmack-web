@@ -13,12 +13,12 @@ export interface NgInvoiceFormDependencies {
 }
 
 @Injectable({ providedIn: 'root' })
-export class NgInvoicesFieldsConfig extends FieldsConfig<Invoice, number, NgInvoiceFormDependencies> {
+export class NgInvoicesFieldsConfig extends FieldsConfig<Invoice, number> {
     public validation = new NgInvoicesValidation();
 
     public formRules: FormRule[] = [];
 
-    protected getEntityFields(entity?: LocalObject<Invoice, number>, dependencies?: NgInvoiceFormDependencies, loadedPackage?: LoadedPackage): Field[] {
+    protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<Invoice, number>): Field[] {
         const fields = [
             new Field({
                 component: StringFieldComponent,

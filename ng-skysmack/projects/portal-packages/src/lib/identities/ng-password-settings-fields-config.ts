@@ -6,12 +6,12 @@ import { NgPasswordSettingsValidation, LoadedPackage } from '@skysmack/ng-packag
 import { FieldsConfig, CheckboxFieldComponent, IntFieldComponent } from '@skysmack/portal-ui';
 
 @Injectable({ providedIn: 'root' })
-export class NgPasswordSettingsFieldsConfig extends FieldsConfig<PasswordSettings, unknown, any> {
+export class NgPasswordSettingsFieldsConfig extends FieldsConfig<PasswordSettings, unknown> {
     public validation = new NgPasswordSettingsValidation();
 
     public formRules: FormRule[] = [];
 
-    protected getEntityFields(settings?: LocalObject<PasswordSettings, unknown>, dependencies?: any): Field[] {
+    protected getEntityFields(loadedPackage: LoadedPackage, settings?: LocalObject<PasswordSettings, unknown>): Field[] {
         const fields = [
             new Field({
                 component: IntFieldComponent,

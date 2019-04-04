@@ -10,14 +10,14 @@ import { NgProductTypesActions } from '@skysmack/ng-packages';
 import { PagedQuery } from '@skysmack/framework';
 import { NgProductTypesStore } from '@skysmack/ng-packages';
 import { NgFieldActions, NgFieldStore } from '@skysmack/ng-redux';
-import { NgProductsFieldsConfig, NgProductFormDependencies } from '../../ng-products-fields-config';
+import { NgProductsFieldsConfig } from '../../ng-products-fields-config';
 
 @Component({
   selector: 'ss-products-edit',
   templateUrl: './products-edit.component.html',
   styleUrls: ['./products-edit.component.scss']
 })
-export class ProductsEditComponent extends DocumentRecordFormComponent<ProductsAppState, Product, number, NgProductFormDependencies> implements OnInit {
+export class ProductsEditComponent extends DocumentRecordFormComponent<ProductsAppState, Product, number> implements OnInit {
   protected productTypes$;
 
   constructor(

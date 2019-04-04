@@ -13,7 +13,7 @@ export interface NgAssignmentTypeFormDependencies {
 }
 
 @Injectable({ providedIn: 'root' })
-export class NgAssignmentTypesFieldsConfig extends FieldsConfig<AssignmentType, number, NgAssignmentTypeFormDependencies> {
+export class NgAssignmentTypesFieldsConfig extends FieldsConfig<AssignmentType, number> {
     public validation = new NgAssignmentTypesValidation();
 
     public formRules: FormRule[] = [
@@ -25,7 +25,7 @@ export class NgAssignmentTypesFieldsConfig extends FieldsConfig<AssignmentType, 
         super();
     }
 
-    protected getEntityFields(entity?: LocalObject<AssignmentType, number>, dependencies?: NgAssignmentTypeFormDependencies, loadedPackage?: LoadedPackage): Field[] {
+    protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<AssignmentType, number>): Field[] {
         const fields = [
             new SelectField({
                 component: SelectFieldComponent,

@@ -9,14 +9,14 @@ import { NgLodgingsStore } from '@skysmack/ng-packages';
 import { NgLodgingTypesActions } from '@skysmack/ng-packages';
 import { PagedQuery } from '@skysmack/framework';
 import { NgFieldActions, NgFieldStore } from '@skysmack/ng-redux';
-import { NgLodgingsFieldsConfig, NgLodgingFormDependencies } from '../../ng-lodgings-fields-config';
+import { NgLodgingsFieldsConfig } from '../../ng-lodgings-fields-config';
 
 @Component({
   selector: 'ss-lodgings-create',
   templateUrl: './lodgings-create.component.html',
   styleUrls: ['./lodgings-create.component.scss']
 })
-export class LodgingsCreateComponent extends DocumentRecordFormComponent<LodgingsAppState, Lodging, number, NgLodgingFormDependencies> implements OnInit {
+export class LodgingsCreateComponent extends DocumentRecordFormComponent<LodgingsAppState, Lodging, number> implements OnInit {
 
   constructor(
     public router: Router,

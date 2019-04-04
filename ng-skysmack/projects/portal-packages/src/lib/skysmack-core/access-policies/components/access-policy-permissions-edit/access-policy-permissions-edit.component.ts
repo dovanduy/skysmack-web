@@ -7,14 +7,14 @@ import { NgAccessPolicyPermissionsStore } from '@skysmack/ng-packages';
 import { AccessPolicyPermissionsAppState, AccessPolicyPermission } from '@skysmack/packages-skysmack-core';
 import { PagedQuery, LocalObjectStatus } from '@skysmack/framework';
 import { FormHelper } from '@skysmack/ng-ui';
-import { NgAccessPolicyPermissionsFieldsConfig, NgAccessPolicyPermissionFormDependencies } from '../../ng-access-policy-permissions-fields-config';
+import { NgAccessPolicyPermissionsFieldsConfig } from '../../ng-access-policy-permissions-fields-config';
 
 @Component({
   selector: 'ss-access-policy-permissions-edit',
   templateUrl: './access-policy-permissions-edit.component.html',
   styleUrls: ['./access-policy-permissions-edit.component.scss']
 })
-export class AccessPolicyPermissionsEditComponent extends RecordFormComponent<AccessPolicyPermissionsAppState, AccessPolicyPermission, number, NgAccessPolicyPermissionFormDependencies> implements OnInit {
+export class AccessPolicyPermissionsEditComponent extends RecordFormComponent<AccessPolicyPermissionsAppState, AccessPolicyPermission, number> implements OnInit {
 
   constructor(
     public router: Router,

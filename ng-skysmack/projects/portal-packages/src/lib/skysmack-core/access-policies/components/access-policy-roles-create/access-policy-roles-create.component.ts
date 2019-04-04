@@ -7,14 +7,14 @@ import { NgAccessPolicyRolesStore } from '@skysmack/ng-packages';
 import { AccessPolicyRolesAppState, AccessPolicyRole, AccessPolicyRoleKey } from '@skysmack/packages-skysmack-core';
 import { PagedQuery, toLocalObject } from '@skysmack/framework';
 import { FormHelper } from '@skysmack/ng-ui';
-import { NgAccessPolicyRolesFieldsConfig, NgAccessPolicyRoleFormDependencies } from '../../ng-access-policy-roles-fields-config';
+import { NgAccessPolicyRolesFieldsConfig } from '../../ng-access-policy-roles-fields-config';
 
 @Component({
   selector: 'ss-access-policy-roles-create',
   templateUrl: './access-policy-roles-create.component.html',
   styleUrls: ['./access-policy-roles-create.component.scss']
 })
-export class AccessPolicyRolesCreateComponent extends RecordFormComponent<AccessPolicyRolesAppState, AccessPolicyRole, AccessPolicyRoleKey, NgAccessPolicyRoleFormDependencies> implements OnInit {
+export class AccessPolicyRolesCreateComponent extends RecordFormComponent<AccessPolicyRolesAppState, AccessPolicyRole, AccessPolicyRoleKey> implements OnInit {
   constructor(
     public router: Router,
     public activatedRoute: ActivatedRoute,

@@ -4,19 +4,13 @@ import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { Field } from '@skysmack/ng-ui';
 
 import { FieldsConfig, SelectFieldComponent, HiddenFieldComponent, RolesSelectFieldComponent } from '@skysmack/portal-ui';
-import { AccessPolicyRole, AccessPolicyRule, AccessPolicyRoleKey } from '@skysmack/packages-skysmack-core';
+import { AccessPolicyRole, AccessPolicyRoleKey } from '@skysmack/packages-skysmack-core';
 import { Validators } from '@angular/forms';
-import { Role } from '@skysmack/packages-identities';
 import { SelectFieldOption } from '@skysmack/ng-ui';
 import { AccessPolicyRolesValidation, LoadedPackage, NgAccessPolicyRulesStore } from '@skysmack/ng-packages';
 
-export interface NgAccessPolicyRoleFormDependencies {
-    availableAccessPolicyRules: LocalObject<AccessPolicyRule, number>[];
-    availableRoles: LocalObject<Role, number>[];
-}
-
 @Injectable({ providedIn: 'root' })
-export class NgAccessPolicyRolesFieldsConfig extends FieldsConfig<AccessPolicyRole, AccessPolicyRoleKey, NgAccessPolicyRoleFormDependencies> {
+export class NgAccessPolicyRolesFieldsConfig extends FieldsConfig<AccessPolicyRole, AccessPolicyRoleKey> {
     public validation = new AccessPolicyRolesValidation();
 
     public formRules: FormRule[] = [];
@@ -25,11 +19,11 @@ export class NgAccessPolicyRolesFieldsConfig extends FieldsConfig<AccessPolicyRo
         public accessPolicyRulesStore: NgAccessPolicyRulesStore
     ) { super(); }
 
-    protected getEntityFields(entity?: LocalObject<AccessPolicyRole, AccessPolicyRoleKey>, dependencies?: NgAccessPolicyRoleFormDependencies, loadedPackage?: LoadedPackage): Field[] {
+    protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<AccessPolicyRole, AccessPolicyRoleKey>): Field[] {
 
         // TODO: Work this into ruleId field stream
         const modifyDisplayName = (options: SelectFieldOption[]) => {
-            const accessPolicyRules = dependencies.availableAccessPolicyRules;
+            const accessPolicyRules = []; //dependencies.availableAccessPolicyRules;
             return options.map(option => {
                 if (accessPolicyRules) {
                     const matchingRule = accessPolicyRules.find(rule => rule.object.id === option.value);

@@ -9,12 +9,8 @@ import { Field } from '@skysmack/ng-ui';
 import { FieldsConfig, StringFieldComponent, HiddenFieldComponent } from '@skysmack/portal-ui';
 import { NgPersonsValidation, LoadedPackage } from '@skysmack/ng-packages';
 
-export interface NgPersonFormDependencies {
-    [key: string]: any;
-}
-
 @Injectable({ providedIn: 'root' })
-export class NgPersonsFieldsConfig extends FieldsConfig<Person, number, NgPersonFormDependencies> {
+export class NgPersonsFieldsConfig extends FieldsConfig<Person, number> {
     public validation = new NgPersonsValidation();
 
 
@@ -22,7 +18,7 @@ export class NgPersonsFieldsConfig extends FieldsConfig<Person, number, NgPerson
         new SetDisplayNameRule(['firstName', 'lastName'])
     ];
 
-    protected getEntityFields(entity?: LocalObject<Person, number>, dependencies?: NgPersonFormDependencies, loadedPackage?: LoadedPackage): Field[] {
+    protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<Person, number>): Field[] {
         const fields = [
             new Field({
                 component: StringFieldComponent,

@@ -7,13 +7,8 @@ import { LodgingType, Lodging } from '@skysmack/packages-lodgings';
 import { NgLodgingReservationsValidation, NgLodgingTypesStore, NgLodgingsStore, LoadedPackage } from '@skysmack/ng-packages';
 import { FieldsConfig, SelectFieldComponent, HiddenFieldComponent, IntFieldComponent, DateFieldComponent } from '@skysmack/portal-ui';
 
-export interface NgLodgingReservationFormDependencies {
-    availableLodgingTypes: LocalObject<LodgingType, number>[];
-    availableLodgings: LocalObject<Lodging, number>[];
-}
-
 @Injectable({ providedIn: 'root' })
-export class NgLodgingReservationsFieldsConfig extends FieldsConfig<LodgingReservation, number, NgLodgingReservationFormDependencies> {
+export class NgLodgingReservationsFieldsConfig extends FieldsConfig<LodgingReservation, number> {
     public validation = new NgLodgingReservationsValidation();
 
     public formRules: FormRule[] = [];
@@ -25,7 +20,7 @@ export class NgLodgingReservationsFieldsConfig extends FieldsConfig<LodgingReser
         super();
     }
 
-    protected getEntityFields(entity?: LocalObject<LodgingReservation, number>, dependencies?: NgLodgingReservationFormDependencies, loadedPackage?: LoadedPackage): Field[] {
+    protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<LodgingReservation, number>): Field[] {
         const fields = [
             new SelectField({
                 component: SelectFieldComponent,

@@ -47,7 +47,7 @@ export class PackagesEditComponent extends BaseComponent<PackagesAppState, strin
       map(values => {
         const [_package, availablePackages] = values;
         this.selectedPackage = _package;
-        return this.fieldsConfig.getStaticFields(_package, { availablePackages });
+        return this.fieldsConfig.getStaticFields(undefined, _package);
       })
     );
 

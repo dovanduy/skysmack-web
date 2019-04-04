@@ -6,12 +6,12 @@ import { NgUserSettingsValidation, LoadedPackage } from '@skysmack/ng-packages';
 import { FieldsConfig, StringFieldComponent, CheckboxFieldComponent } from '@skysmack/portal-ui';
 
 @Injectable({ providedIn: 'root' })
-export class NgUserSettingsFieldsConfig extends FieldsConfig<UserSettings, unknown, any> {
+export class NgUserSettingsFieldsConfig extends FieldsConfig<UserSettings, unknown> {
     public validation = new NgUserSettingsValidation();
 
     public formRules: FormRule[] = [];
 
-    protected getEntityFields(settings?: LocalObject<UserSettings, unknown>, dependencies?: any): Field[] {
+    protected getEntityFields(loadedPackage: LoadedPackage, settings?: LocalObject<UserSettings, unknown>): Field[] {
         const fields = [
             new Field({
                 component: StringFieldComponent,

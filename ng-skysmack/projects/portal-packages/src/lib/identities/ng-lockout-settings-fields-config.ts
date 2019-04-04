@@ -6,12 +6,12 @@ import { NgLockoutSettingsValidation, LoadedPackage } from '@skysmack/ng-package
 import { FieldsConfig, CheckboxFieldComponent, IntFieldComponent, TimeFieldComponent } from '@skysmack/portal-ui';
 
 @Injectable({ providedIn: 'root' })
-export class NgLockoutSettingsFieldsConfig extends FieldsConfig<LockoutSettings, unknown, any> {
+export class NgLockoutSettingsFieldsConfig extends FieldsConfig<LockoutSettings, unknown> {
     public validation = new NgLockoutSettingsValidation();
 
     public formRules: FormRule[] = [];
 
-    protected getEntityFields(settings?: LocalObject<LockoutSettings, unknown>, dependencies?: any): Field[] {
+    protected getEntityFields(loadedPackage: LoadedPackage, settings?: LocalObject<LockoutSettings, unknown>): Field[] {
         const fields = [
             new Field({
                 component: CheckboxFieldComponent,

@@ -6,18 +6,14 @@ import { Field } from '@skysmack/ng-ui';
 import { FieldsConfig, HiddenFieldComponent } from '@skysmack/portal-ui';
 import { NgTerminalsValidation, LoadedPackage } from '@skysmack/ng-packages';
 
-export interface NgTerminalFormDependencies {
-
-}
-
 @Injectable({ providedIn: 'root' })
-export class NgTerminalsFieldsConfig extends FieldsConfig<Terminal, number, NgTerminalFormDependencies> {
+export class NgTerminalsFieldsConfig extends FieldsConfig<Terminal, number> {
     public validation = new NgTerminalsValidation();
 
     public formRules: FormRule[] = [
     ];
 
-    protected getEntityFields(entity?: LocalObject<Terminal, number>, dependencies?: NgTerminalFormDependencies, loadedPackage?: LoadedPackage): Field[] {
+    protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<Terminal, number>): Field[] {
         const fields = [
             // new Field({
             //     component: StringFieldComponent,
