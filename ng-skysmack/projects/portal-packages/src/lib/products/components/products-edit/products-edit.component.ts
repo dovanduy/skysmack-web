@@ -7,9 +7,7 @@ import { EditorNavService } from '@skysmack/portal-ui';
 import { DocumentRecordFormComponent } from '@skysmack/portal-ui';
 import { NgProductsStore } from '@skysmack/ng-packages';
 import { NgProductTypesActions } from '@skysmack/ng-packages';
-import { combineLatest } from 'rxjs';
 import { PagedQuery } from '@skysmack/framework';
-import { map } from 'rxjs/operators';
 import { NgProductTypesStore } from '@skysmack/ng-packages';
 import { NgFieldActions, NgFieldStore } from '@skysmack/ng-redux';
 import { NgProductsFieldsConfig, NgProductFormDependencies } from '../../ng-products-fields-config';
@@ -40,23 +38,7 @@ export class ProductsEditComponent extends DocumentRecordFormComponent<ProductsA
 
   ngOnInit() {
     super.ngOnInit();
-    this.setEditFields();
-  }
-
-  public setEditFields() {
     this.productTypeActions.getPaged(this.packagePath, new PagedQuery());
-
-    this.fields$ = combineLatest(
-      this.initEditDocRecord(),
-      this.productTypeStore.get(this.packagePath)
-    ).pipe(
-      map(values => {
-        const entity = values[0][0];
-        const fields = values[0][1];
-        const availableProductTypes = values[1];
-        this.selectedEntity = entity;
-        return this.fieldsConfig.getFields(entity, fields, { availableProductTypes });
-      })
-    );
+    this.setEditFields();
   }
 }

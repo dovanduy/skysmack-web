@@ -3,9 +3,6 @@ import { AssignmentTypesAppState, AssignmentType } from '@skysmack/packages-main
 import { ActivatedRoute, Router } from '@angular/router';
 import { RecordFormComponent, EditorNavService } from '@skysmack/portal-ui';
 import { NgAssignmentTypesActions, NgSkysmackStore, NgAssignmentTypesStore, NgMaintenanceStatesStore, NgMaintenanceStatesActions } from '@skysmack/ng-packages';
-import { combineLatest } from 'rxjs';
-import { map } from 'rxjs/operators';
-import { LocalObject } from '@skysmack/framework';
 import { NgAssignmentTypesFieldsConfig, NgAssignmentTypeFormDependencies } from '../../ng-assignment-types-fields-config';
 
 @Component({
@@ -31,26 +28,7 @@ export class AssignmentTypesEditComponent extends RecordFormComponent<Assignment
 
   ngOnInit() {
     super.ngOnInit();
-    this.setEditFields();
-  }
-
-  protected setEditFields() {
     this.maintenanceStateActions.getPaged(this.packagePath, this.pagedQuery);
-
-    this.fields$ =
-      combineLatest(
-        this.initEditRecord(),
-        this.skysmackStore.getEditorItem(),
-        this.maintenanceStateStore.get(this.packagePath)
-      ).pipe(
-        map(values => {
-          const entity = values[0];
-          this.editorItem = values[1] as LocalObject<AssignmentType, number>;
-          const availableMaintenanceStates = values[2];
-          this.editorItem ? this.selectedEntity = this.editorItem : this.selectedEntity = entity;
-
-          return this.fieldsConfig.getFields(this.selectedEntity, undefined, { availableMaintenanceStates });
-        })
-      );
+    this.setEditFields();
   }
 }

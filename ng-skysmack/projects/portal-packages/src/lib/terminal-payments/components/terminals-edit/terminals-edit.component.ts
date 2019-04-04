@@ -33,7 +33,4 @@ export class TerminalsEditComponent extends DocumentRecordFormComponent<Terminal
     super.ngOnInit();
     this.setEditFields();
   }
-
-  public setEditFields() {
-  }
 }

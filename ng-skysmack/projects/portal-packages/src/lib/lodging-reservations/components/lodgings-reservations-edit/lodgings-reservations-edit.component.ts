@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { switchMap, map } from 'rxjs/operators';
-import { combineLatest } from 'rxjs';
-import { NgLodgingReservationsStore, NgLodgingsStore, NgLodgingTypesStore, NgSkysmackStore, NgLodgingReservationsActions, NgLodgingsActions, NgLodgingTypesActions } from '@skysmack/ng-packages';
+import { map, take } from 'rxjs/operators';
+import { NgLodgingReservationsStore, NgSkysmackStore, NgLodgingReservationsActions, NgLodgingsActions, NgLodgingTypesActions, LoadedPackage } from '@skysmack/ng-packages';
 import { LodgingReservation, LodgingReservationsAppState } from '@skysmack/packages-lodging-reservations';
 import { RecordFormComponent, EditorNavService } from '@skysmack/portal-ui';
-import { PagedQuery } from '@skysmack/framework';
+import { PagedQuery, defined } from '@skysmack/framework';
 import { NgLodgingReservationsFieldsConfig, NgLodgingReservationFormDependencies } from '../../ng-lodging-reservations-fields-config';
 
 @Component({
@@ -20,8 +19,6 @@ export class LodgingsReservationsEditComponent extends RecordFormComponent<Lodgi
     public editorNavService: EditorNavService,
     public skysmackStore: NgSkysmackStore,
     public store: NgLodgingReservationsStore,
-    public lodgingsStore: NgLodgingsStore,
-    public lodgingTypesStore: NgLodgingTypesStore,
     public actions: NgLodgingReservationsActions,
     public lodgingsActions: NgLodgingsActions,
     public lodgingTypesActions: NgLodgingTypesActions,
@@ -35,33 +32,14 @@ export class LodgingsReservationsEditComponent extends RecordFormComponent<Lodgi
     this.setEditFields();
   }
 
-  public setEditFields() {
-    this.actions.getSingle(this.packagePath, this.entityId);
-
-    // TODO: Find better way to prevent multiple requests getting fired...
-    let requested = false;
-
-    this.fields$ = this.loadedPackage$.pipe(
-      switchMap(loadedPackage => {
-        if (!requested) {
-          this.lodgingsActions.getPaged(loadedPackage._package.dependencies[0], new PagedQuery());
-          this.lodgingTypesActions.getPaged(loadedPackage._package.dependencies[0], new PagedQuery());
-          requested = true;
-        }
-        return combineLatest(
-          this.store.getSingle(this.packagePath, this.entityId),
-          this.lodgingsStore.get(loadedPackage._package.dependencies[0]),
-          this.lodgingTypesStore.get(loadedPackage._package.dependencies[0])
-        );
+  public getDeps() {
+    this.loadedPackage$.pipe(
+      defined(),
+      map((loadedPackage: LoadedPackage) => {
+        this.lodgingsActions.getPaged(loadedPackage._package.dependencies[0], new PagedQuery());
+        this.lodgingTypesActions.getPaged(loadedPackage._package.dependencies[0], new PagedQuery());
       }),
-      map(values => {
-        const entity = values[0];
-        const availableLodgings = values[1];
-        const availableLodgingTypes = values[2];
-        this.selectedEntity = entity;
-
-        return this.fieldsConfig.getFields(entity, undefined, { availableLodgings, availableLodgingTypes });
-      })
-    );
+      take(1)
+    ).subscribe();
   }
 }

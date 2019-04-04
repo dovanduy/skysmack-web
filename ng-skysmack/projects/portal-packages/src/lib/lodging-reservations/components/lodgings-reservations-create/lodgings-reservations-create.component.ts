@@ -1,19 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { combineLatest, Observable } from 'rxjs';
-import { map, switchMap } from 'rxjs/operators';
+import { map, take } from 'rxjs/operators';
 import {
   NgLodgingReservationsStore,
-  NgLodgingsStore,
-  NgLodgingTypesStore,
   NgSkysmackStore,
   NgLodgingReservationsActions,
   NgLodgingsActions,
-  NgLodgingTypesActions
+  NgLodgingTypesActions,
+  LoadedPackage
 } from '@skysmack/ng-packages';
 import { LodgingReservation, LodgingReservationsAppState } from '@skysmack/packages-lodging-reservations';
 import { RecordFormComponent, EditorNavService } from '@skysmack/portal-ui';
-import { PagedQuery } from '@skysmack/framework';
+import { PagedQuery, defined } from '@skysmack/framework';
 import { Field } from '@skysmack/ng-ui';
 import { FieldProviders } from '@skysmack/ng-ui';
 import { NgLodgingReservationsFieldsConfig, NgLodgingReservationFormDependencies } from '../../ng-lodging-reservations-fields-config';
@@ -30,8 +29,6 @@ export class LodgingsReservationsCreateComponent extends RecordFormComponent<Lod
     public editorNavService: EditorNavService,
     public skysmackStore: NgSkysmackStore,
     public store: NgLodgingReservationsStore,
-    public lodgingsStore: NgLodgingsStore,
-    public lodgingTypesStore: NgLodgingTypesStore,
     public actions: NgLodgingReservationsActions,
     public lodgingsActions: NgLodgingsActions,
     public lodgingTypesActions: NgLodgingTypesActions,
@@ -43,6 +40,7 @@ export class LodgingsReservationsCreateComponent extends RecordFormComponent<Lod
 
   ngOnInit() {
     super.ngOnInit();
+    this.getDeps();
     this.setCreateFields();
   }
 
@@ -58,33 +56,14 @@ export class LodgingsReservationsCreateComponent extends RecordFormComponent<Lod
     );
   }
 
-  public setCreateFields() {
-    // TODO: Find better way to prevent multiple requests getting fired...
-    let requested = false;
-    let loadedPackage;
-
-    this.fields$ = this.loadedPackage$.pipe(
-      switchMap(loadedPackage => {
-        if (!requested) {
-          loadedPackage = loadedPackage;
-          this.lodgingsActions.getPaged(loadedPackage._package.dependencies[0], new PagedQuery());
-          this.lodgingTypesActions.getPaged(loadedPackage._package.dependencies[0], new PagedQuery());
-          requested = true;
-        }
-
-        return combineLatest(
-          this.lodgingsStore.get(loadedPackage._package.dependencies[0]),
-          this.lodgingTypesStore.get(loadedPackage._package.dependencies[0]),
-          this.getProvidedFields(this.packagePath)
-        );
+  public getDeps() {
+    this.loadedPackage$.pipe(
+      defined(),
+      map((loadedPackage: LoadedPackage) => {
+        this.lodgingsActions.getPaged(loadedPackage._package.dependencies[0], new PagedQuery());
+        this.lodgingTypesActions.getPaged(loadedPackage._package.dependencies[0], new PagedQuery());
       }),
-      map(values => {
-        const availableLodgings = values[0];
-        const availableLodgingTypes = values[1];
-        const providedFields = values[2];
-
-        return this.fieldsConfig.getFields(undefined, undefined, { availableLodgings, availableLodgingTypes }, loadedPackage).concat(providedFields);
-      })
-    );
+      take(1)
+    ).subscribe();
   }
 }

@@ -7,10 +7,7 @@ import { LodgingsAppState, Lodging } from '@skysmack/packages-lodgings';
 import { NgLodgingsActions } from '@skysmack/ng-packages';
 import { NgLodgingsStore } from '@skysmack/ng-packages';
 import { NgLodgingTypesActions } from '@skysmack/ng-packages';
-import { NgLodgingTypesStore } from '@skysmack/ng-packages';
 import { PagedQuery } from '@skysmack/framework';
-import { combineLatest } from 'rxjs';
-import { map } from 'rxjs/operators';
 import { NgFieldActions, NgFieldStore } from '@skysmack/ng-redux';
 import { NgLodgingsFieldsConfig, NgLodgingFormDependencies } from '../../ng-lodgings-fields-config';
 
@@ -30,7 +27,6 @@ export class LodgingsEditComponent extends DocumentRecordFormComponent<LodgingsA
     public redux: NgSkysmackStore,
     public fieldsConfig: NgLodgingsFieldsConfig,
     public store: NgLodgingsStore,
-    public lodgingTypeStore: NgLodgingTypesStore,
     public fieldActions: NgFieldActions,
     public fieldStore: NgFieldStore
   ) {
@@ -39,23 +35,7 @@ export class LodgingsEditComponent extends DocumentRecordFormComponent<LodgingsA
 
   ngOnInit() {
     super.ngOnInit();
-    this.setEditFields();
-  }
-
-  public setEditFields() {
     this.lodgingTypeActions.getPaged(this.packagePath, new PagedQuery());
-
-    this.fields$ = combineLatest(
-      this.initEditDocRecord(),
-      this.lodgingTypeStore.get(this.packagePath)
-    ).pipe(
-      map(values => {
-        const entity = values[0][0];
-        const fields = values[0][1];
-        const availableLodgingTypes = values[1];
-        this.selectedEntity = entity;
-        return this.fieldsConfig.getFields(entity, fields, { availableLodgingTypes });
-      })
-    );
+    this.setEditFields();
   }
 }
