@@ -6,14 +6,14 @@ import { User, UsersAppState } from '@skysmack/packages-identities';
 import { FormHelper } from '@skysmack/ng-ui';
 import { HttpClient } from '@angular/common/http';
 import { of } from 'rxjs';
-import { NgSetPasswordFormDependencies, NgSetPasswordFieldsConfig } from '../../ng-set-password-fields-config';
+import { NgSetPasswordFieldsConfig } from '../../ng-set-password-fields-config';
 
 @Component({
   selector: 'ss-portal-package-set-password',
   templateUrl: './set-password.component.html',
   styleUrls: ['./set-password.component.scss']
 })
-export class SetPasswordComponent extends FormBaseComponent<UsersAppState, User, number, NgSetPasswordFormDependencies> implements OnInit {
+export class SetPasswordComponent extends FormBaseComponent<UsersAppState, User, number> implements OnInit {
 
   constructor(
     public router: Router,
@@ -30,7 +30,7 @@ export class SetPasswordComponent extends FormBaseComponent<UsersAppState, User,
   ngOnInit() {
     super.ngOnInit();
     this.editorNavService.showEditorNav();
-    this.fields$ = of(this.fieldsConfig.getFields());
+    this.fields$ = of(this.fieldsConfig.getFields(undefined));
   }
 
   public onSetPasswordSubmit(fh: FormHelper) {

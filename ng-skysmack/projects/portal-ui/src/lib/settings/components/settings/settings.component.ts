@@ -20,7 +20,7 @@ export class SettingsComponent extends BaseComponent<SettingsAppState<any>, unkn
 
   public editorItem: LocalObject<any, unknown>;
   public selectedSettings: LocalObject<any, unknown>;
-  public fieldsConfig: FieldsConfig<any, any, any>;
+  public fieldsConfig: FieldsConfig<any, any>;
   public settingsKey: string;
 
   constructor(
@@ -68,7 +68,7 @@ export class SettingsComponent extends BaseComponent<SettingsAppState<any>, unkn
         const settings = values[0];
         this.editorItem = values[1] as LocalObject<any, unknown>;
         this.editorItem ? this.selectedSettings = this.editorItem : this.selectedSettings = settings;
-        return this.fieldsConfig ? this.fieldsConfig.getFields(this.selectedSettings) : [];
+        return this.fieldsConfig ? this.fieldsConfig.getFields(undefined, this.selectedSettings) : [];
       })
     );
   }

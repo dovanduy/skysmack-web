@@ -1,7 +1,6 @@
 import { Router, ActivatedRoute } from '@angular/router';
 import { OnInit, OnDestroy } from '@angular/core';
 import { Record, LocalObject, FieldSchemaViewModel } from '@skysmack/framework';
-import { EntityFieldsConfig } from '@skysmack/ng-ui';
 import { EditorNavService } from './../../components/common/container/editor-nav.service';
 import { NgSkysmackStore, LoadedPackage } from '@skysmack/ng-packages';
 import { EntityActions, EntityStore } from '@skysmack/redux';
@@ -9,8 +8,9 @@ import { RecordFormComponent } from './record-form-component';
 import { NgFieldActions, NgFieldStore } from '@skysmack/ng-redux';
 import { map } from 'rxjs/operators';
 import { combineLatest, Observable } from 'rxjs';
+import { EntityFieldsConfig } from '../../fields/entity-fields-config';
 
-export class DocumentRecordFormComponent<TAppState, TRecord extends Record<TKey>, TKey, TDependencies> extends RecordFormComponent<TAppState, TRecord, TKey, TDependencies> implements OnInit, OnDestroy {
+export class DocumentRecordFormComponent<TAppState, TRecord extends Record<TKey>, TKey> extends RecordFormComponent<TAppState, TRecord, TKey> implements OnInit, OnDestroy {
 
     constructor(
         public router: Router,
@@ -19,7 +19,7 @@ export class DocumentRecordFormComponent<TAppState, TRecord extends Record<TKey>
         public actions: EntityActions<any, TKey>,
         public skysmackStore: NgSkysmackStore,
         public store: EntityStore<any, TKey>,
-        public fieldsConfig: EntityFieldsConfig<any, TKey, TDependencies>,
+        public fieldsConfig: EntityFieldsConfig<any, TKey>,
         public fieldActions: NgFieldActions,
         public fieldStore: NgFieldStore
     ) {
@@ -41,7 +41,7 @@ export class DocumentRecordFormComponent<TAppState, TRecord extends Record<TKey>
                 const fields = values[0];
                 this.editorItem = values[1] as LocalObject<TRecord, TKey>;
                 const loadedPackage = values[2];
-                return this.fieldsConfig.getFields(this.editorItem, fields, undefined, loadedPackage);
+                return this.fieldsConfig.getFields(loadedPackage, this.editorItem, fields);
             })
         );
     }
@@ -57,7 +57,7 @@ export class DocumentRecordFormComponent<TAppState, TRecord extends Record<TKey>
                 const loadedPackage = values[0][2];
                 this.editorItem = values[1] as LocalObject<TRecord, TKey>;
                 this.editorItem ? this.selectedEntity = this.editorItem : this.selectedEntity = entity;
-                return this.fieldsConfig.getFields(this.selectedEntity, fields, undefined, loadedPackage);
+                return this.fieldsConfig.getFields(loadedPackage, this.selectedEntity, fields);
             })
         );
     }

@@ -1,5 +1,5 @@
 import { LocalObject, FieldSchemaViewModel } from '@skysmack/framework';
-import { EntityFieldsConfig, FormRule, Validation, Field, FieldTypes } from '@skysmack/ng-ui';
+import { FormRule, Validation, Field, FieldTypes } from '@skysmack/ng-ui';
 import { IntFieldComponent } from '../components/field-components/components/int-field/int-field.component';
 import { Type } from '@angular/core';
 import { LimitedStringFieldComponent } from '../components/field-components/components/limited-string-field/limited-string-field.component';
@@ -9,6 +9,7 @@ import { DecimalFieldComponent } from '../components/field-components/components
 import { DateTimeFieldComponent } from '../components/field-components/components/date-time-field/date-time-field.component';
 import { StringFieldComponent } from '../components/field-components/components/string-field/string-field.component';
 import { LoadedPackage } from '@skysmack/ng-packages';
+import { EntityFieldsConfig } from './entity-fields-config';
 
 export abstract class FieldsConfig<TRecord, TKey> implements EntityFieldsConfig<TRecord, TKey> {
     public abstract formRules: FormRule[];

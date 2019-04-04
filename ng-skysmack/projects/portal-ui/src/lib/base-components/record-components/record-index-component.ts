@@ -7,7 +7,7 @@ import { Observable, BehaviorSubject, combineLatest } from 'rxjs';
 import { OnInit } from '@angular/core';
 import { Record } from '@skysmack/framework';
 import { map } from 'rxjs/operators';
-import { EntityFieldsConfig } from '@skysmack/ng-ui';
+import { EntityFieldsConfig } from '../../fields/entity-fields-config';
 
 export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey> extends BaseComponent<TAppState, TKey> implements OnInit {
     public entities$: Observable<LocalObject<TRecord, TKey>[]>;

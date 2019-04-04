@@ -4,8 +4,7 @@ import { NgRecordStore } from '@skysmack/ng-redux';
 import { RecordActionsBase } from '@skysmack/redux';
 
 export class AddField extends Field {
-
-    public fieldsConfig: FieldsConfig<any, any, any>;
+    public fieldsConfig: FieldsConfig<any, any>;
     public actions: RecordActionsBase<any, any>;
     public store: NgRecordStore<any, any, any>;
     public dynamicFields: boolean;

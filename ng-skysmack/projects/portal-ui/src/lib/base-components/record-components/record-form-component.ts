@@ -1,7 +1,6 @@
 import { Router, ActivatedRoute } from '@angular/router';
 import { OnInit, OnDestroy } from '@angular/core';
 import { Record, LocalObject } from '@skysmack/framework';
-import { EntityFieldsConfig } from '@skysmack/ng-ui';
 import { EditorNavService } from './../../components/common/container/editor-nav.service';
 import { FormBaseComponent } from './../form-base-component';
 import { NgSkysmackStore } from '@skysmack/ng-packages';
@@ -9,6 +8,7 @@ import { EntityActions, EntityStore } from '@skysmack/redux';
 import { FormHelper } from '@skysmack/ng-ui';
 import { map } from 'rxjs/operators';
 import { combineLatest } from 'rxjs';
+import { EntityFieldsConfig } from '../../fields/entity-fields-config';
 
 export class RecordFormComponent<TAppState, TRecord extends Record<TKey>, TKey> extends FormBaseComponent<TAppState, TRecord, TKey> implements OnInit, OnDestroy {
 
