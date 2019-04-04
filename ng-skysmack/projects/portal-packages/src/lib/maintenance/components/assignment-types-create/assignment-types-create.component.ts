@@ -30,23 +30,7 @@ export class AssignmentTypesCreateComponent extends RecordFormComponent<Assignme
 
   ngOnInit() {
     super.ngOnInit();
-    this.setCreateFields();
-  }
-
-  public setCreateFields() {
     this.maintenanceStateActions.getPaged(this.packagePath, this.pagedQuery);
-
-    this.fields$ = combineLatest(
-      this.skysmackStore.getEditorItem(),
-      this.maintenanceStateStore.get(this.packagePath)
-    ).pipe(
-      map(values => {
-        const editorItem = values[0];
-        const availableMaintenanceStates = values[1];
-        this.editorItem = editorItem as LocalObject<AssignmentType, number>;
-
-        return this.fieldsConfig.getFields(undefined, undefined, { availableMaintenanceStates });
-      })
-    );
+    this.setCreateFields();
   }
 }

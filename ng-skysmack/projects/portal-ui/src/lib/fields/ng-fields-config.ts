@@ -62,7 +62,7 @@ export class NgFieldsConfig extends FieldsConfig<FieldSchemaViewModel, string, N
                 key: 'type',
                 validators: [Validators.required],
                 order: 3,
-                optionsData: dependencies && dependencies.availableFields,
+                optionsData$: this.store.get(loadedPackage._package.path),
                 valueSelector: 'object.name',
                 disabled: field ? true : false,
                 showColumn: true

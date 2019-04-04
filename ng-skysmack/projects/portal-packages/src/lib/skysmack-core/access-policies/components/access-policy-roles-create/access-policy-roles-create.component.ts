@@ -1,12 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { NgAccessPolicyRolesActions, NgAccessPolicyRulesStore, NgAccessPolicyRulesActions, NgRolesStore, NgRolesActions } from '@skysmack/ng-packages';
+import { NgAccessPolicyRolesActions, NgAccessPolicyRulesActions } from '@skysmack/ng-packages';
 import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EditorNavService, RecordFormComponent } from '@skysmack/portal-ui';
 import { NgAccessPolicyRolesStore } from '@skysmack/ng-packages';
 import { AccessPolicyRolesAppState, AccessPolicyRole, AccessPolicyRoleKey } from '@skysmack/packages-skysmack-core';
-import { combineLatest } from 'rxjs';
-import { map } from 'rxjs/operators';
 import { PagedQuery, toLocalObject } from '@skysmack/framework';
 import { FormHelper } from '@skysmack/ng-ui';
 import { NgAccessPolicyRolesFieldsConfig, NgAccessPolicyRoleFormDependencies } from '../../ng-access-policy-roles-fields-config';
@@ -25,37 +23,15 @@ export class AccessPolicyRolesCreateComponent extends RecordFormComponent<Access
     public actions: NgAccessPolicyRolesActions,
     public store: NgAccessPolicyRolesStore,
     public skysmackStore: NgSkysmackStore,
-    public accessPolicyRulesStore: NgAccessPolicyRulesStore,
-    public accessPolicyRulesActions: NgAccessPolicyRulesActions,
-    public rolesStore: NgRolesStore,
-    public rolesActions: NgRolesActions
+    public accessPolicyRulesActions: NgAccessPolicyRulesActions
   ) {
     super(router, activatedRoute, editorNavService, actions, skysmackStore, store, fieldsConfig);
   }
 
   ngOnInit() {
     super.ngOnInit();
-    this.setCreateFields();
-  }
-
-  public setCreateFields() {
     this.accessPolicyRulesActions.getPaged(this.packagePath, new PagedQuery());
-    // TODO: FIX THIS!! MAJOR HACK!! WE NEED TO GET/CHOOSE ROLES AMONG ALL IDENTITY PACKAGES.
-    // 'identities' BELOW IS JUST THE DEFAULT INSTALLED PACKAGE!
-    // The fix is using roles-select component.
-    this.rolesActions.getPaged('identities', new PagedQuery());
-
-    this.fields$ = combineLatest(
-      this.accessPolicyRulesStore.get(this.packagePath),
-      // TODO: FIX THIS TOO!!
-      this.rolesStore.get('identities')
-    ).pipe(
-      map(values => {
-        const availableAccessPolicyRules = values[0];
-        const availableRoles = values[1];
-        return this.fieldsConfig.getFields(undefined, undefined, { availableAccessPolicyRules, availableRoles });
-      })
-    );
+    this.setCreateFields();
   }
 
   protected create(fh: FormHelper) {

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { RecurringAssignment } from '@skysmack/packages-maintenance';
-import { NgRecurringAssignmentsValidation, LoadedPackage } from '@skysmack/ng-packages';
+import { NgRecurringAssignmentsValidation, LoadedPackage, NgAssignmentTypesStore } from '@skysmack/ng-packages';
 import { FormRule, SelectField, Field } from '@skysmack/ng-ui';
 import { FieldsConfig, SelectFieldComponent, HiddenFieldComponent, DateTimeFieldComponent } from '@skysmack/portal-ui';
 
@@ -17,6 +17,13 @@ export class NgRecurringAssignmentsFieldsConfig extends FieldsConfig<RecurringAs
     public formRules: FormRule[] = [
     ];
 
+    constructor(
+        public assignmentTypeStore: NgAssignmentTypesStore
+    ) {
+        super();
+    }
+
+
     protected getEntityFields(entity?: LocalObject<RecurringAssignment, number>, dependencies?: NgRecurringAssignmentFormDependencies, loadedPackage?: LoadedPackage): Field[] {
         const fields = [
             new SelectField({
@@ -24,7 +31,7 @@ export class NgRecurringAssignmentsFieldsConfig extends FieldsConfig<RecurringAs
                 value: entity ? entity.object.assignmentTypeId : undefined,
                 key: 'assignmentTypeId',
                 label: 'Assignment Type',
-                optionsData: dependencies && dependencies.availableRecurringAssignments,
+                optionsData$: this.assignmentTypeStore.get(loadedPackage._package.path),
                 validators: [Validators.required],
                 order: 1,
                 showColumn: true

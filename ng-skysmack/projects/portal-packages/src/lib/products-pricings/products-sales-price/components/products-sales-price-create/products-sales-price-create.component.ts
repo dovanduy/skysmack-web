@@ -1,13 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductsSalesPriceAppState, ProductsSalesPrice } from '@skysmack/packages-products-pricings';
-import { NgProductsSalesPriceActions, NgProductsActions } from '@skysmack/ng-packages';
+import { NgProductsSalesPriceActions, NgProductsActions, LoadedPackage } from '@skysmack/ng-packages';
 import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EditorNavService, RecordFormComponent } from '@skysmack/portal-ui';
 import { NgProductsSalesPriceStore } from '@skysmack/ng-packages';
-import { combineLatest } from 'rxjs';
-import { map, switchMap } from 'rxjs/operators';
-import { PagedQuery } from '@skysmack/framework';
+import { map, take } from 'rxjs/operators';
+import { PagedQuery, defined } from '@skysmack/framework';
 import { NgProductsStore } from '@skysmack/ng-packages';
 import { NgProductsSalesPriceFieldsConfig, NgProductsSalesPriceFormDependencies } from '../../ng-products-sales-price-fields-config';
 
@@ -37,27 +36,11 @@ export class ProductsSalesPriceCreateComponent extends RecordFormComponent<Produ
     this.setCreateFields();
   }
 
-  public setCreateFields() {
-    // TODO: Find better way to prevent multiple requests getting fired...
-    let requested = false;
-
-    this.fields$ = this.loadedPackage$.pipe(
-      switchMap(loadedPackage => {
-        if (!requested) {
-          this.productsActions.getPaged(loadedPackage._package.dependencies[0], new PagedQuery());
-          requested = true;
-        }
-        return combineLatest(
-          this.productsStore.get(loadedPackage._package.dependencies[0]),
-          this.skysmackStore.getEditorItem()
-        );
-      }),
-      map(values => {
-        const availableProducts = values[0];
-        this.editorItem = values[1];
-
-        return this.fieldsConfig.getFields(this.editorItem, undefined, { availableProducts });
-      })
-    );
+  public getDeps() {
+    this.loadedPackage$.pipe(
+      defined(),
+      map((loadedPackage: LoadedPackage) => this.productsActions.getPaged(loadedPackage._package.dependencies[0], new PagedQuery())),
+      take(1)
+    ).subscribe();
   }
 }

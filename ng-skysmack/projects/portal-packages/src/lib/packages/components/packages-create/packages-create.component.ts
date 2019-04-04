@@ -3,7 +3,6 @@ import { NgPackagesActions } from '@skysmack/ng-packages';
 import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EditorNavService } from '@skysmack/portal-ui';
-import { NgPackagesStore } from '@skysmack/ng-packages';
 import { BaseComponent } from '@skysmack/portal-ui';
 import { PackagesAppState } from '@skysmack/packages-skysmack-core';
 import { FormHelper } from '@skysmack/ng-ui';
@@ -23,22 +22,16 @@ export class PackagesCreateComponent extends BaseComponent<PackagesAppState, str
     public activatedRoute: ActivatedRoute,
     public editorNavService: EditorNavService,
     public actions: NgPackagesActions,
-    public redux: NgSkysmackStore,
+    public store: NgSkysmackStore,
     public fieldsConfig: NgPackagesFieldsConfig,
-    public store: NgPackagesStore,
   ) {
-    super(router, activatedRoute, redux);
+    super(router, activatedRoute, store);
   }
 
   ngOnInit() {
     super.ngOnInit();
     this.actions.getAvailablePackages();
-
-    this.fields$ = this.store.getAvailablePackages().pipe(
-      map(availablePackages => {
-        return this.fieldsConfig.getStaticFields(undefined, { availablePackages });
-      }));
-
+    this.fields$ = this.loadedPackage$.pipe(map(loadedPackage => this.fieldsConfig.getStaticFields(undefined, undefined, loadedPackage)));
     this.editorNavService.showEditorNav();
   }
 

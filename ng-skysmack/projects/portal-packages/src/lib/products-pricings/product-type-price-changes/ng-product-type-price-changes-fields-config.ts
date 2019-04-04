@@ -3,7 +3,7 @@ import { Validators } from '@angular/forms';
 import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { ProductTypePriceChange, PriceChangeType, ProductTypeSalesPrice } from '@skysmack/packages-products-pricings';
 import { FormRule, SelectField, Field } from '@skysmack/ng-ui';
-import { NgProductTypePriceChangesValidation, LoadedPackage } from '@skysmack/ng-packages';
+import { NgProductTypePriceChangesValidation, LoadedPackage, NgProductTypeSalesPriceStore } from '@skysmack/ng-packages';
 import { FieldsConfig, SelectFieldComponent, HiddenFieldComponent, DecimalFieldComponent, DateTimeFieldComponent } from '@skysmack/portal-ui';
 
 export interface NgProductTypePriceChangesFormDependencies {
@@ -15,6 +15,12 @@ export class NgProductTypePriceChangesFieldsConfig extends FieldsConfig<ProductT
     public validation = new NgProductTypePriceChangesValidation();
 
     public formRules: FormRule[] = [];
+
+    constructor(
+        public productTypeSalesPriceStore: NgProductTypeSalesPriceStore
+    ) {
+        super();
+    }
 
     protected getEntityFields(entity?: LocalObject<ProductTypePriceChange, number>, dependencies?: NgProductTypePriceChangesFormDependencies, loadedPackage?: LoadedPackage): Field[] {
         const fields = [
@@ -31,7 +37,7 @@ export class NgProductTypePriceChangesFieldsConfig extends FieldsConfig<ProductT
                     {
                         value: 'DKK',
                         displayName: 'DKK'
-                    },
+                    }
                 ],
                 order: 1,
                 showColumn: true
@@ -41,7 +47,7 @@ export class NgProductTypePriceChangesFieldsConfig extends FieldsConfig<ProductT
                 value: entity ? entity.object.recordId : undefined,
                 key: 'recordId',
                 validators: [Validators.required],
-                optionsData: dependencies && dependencies.availableProductTypeSalesPrices,
+                optionsData$: this.productTypeSalesPriceStore.get(loadedPackage._package.path),
                 displayNameSelector: 'object.price',
                 order: 2,
                 showColumn: true

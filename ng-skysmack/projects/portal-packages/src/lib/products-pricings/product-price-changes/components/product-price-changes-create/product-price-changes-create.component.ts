@@ -1,12 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductPriceChangesAppState, ProductPriceChange } from '@skysmack/packages-products-pricings';
-import { NgProductPriceChangesActions, NgProductsSalesPriceActions, NgProductsSalesPriceStore } from '@skysmack/ng-packages';
+import { NgProductPriceChangesActions, NgProductsSalesPriceActions } from '@skysmack/ng-packages';
 import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EditorNavService, RecordFormComponent } from '@skysmack/portal-ui';
 import { NgProductPriceChangesStore } from '@skysmack/ng-packages';
-import { combineLatest } from 'rxjs';
-import { map, switchMap } from 'rxjs/operators';
 import { PagedQuery } from '@skysmack/framework';
 import { NgProductPriceChangesFieldsConfig, NgProductPriceChangesFormDependencies } from '../../ng-product-price-changes-fields-config';
 
@@ -23,7 +21,6 @@ export class ProductPriceChangesCreateComponent extends RecordFormComponent<Prod
     public editorNavService: EditorNavService,
     public actions: NgProductPriceChangesActions,
     public productsSalesPriceActions: NgProductsSalesPriceActions,
-    public productsSalesPriceStore: NgProductsSalesPriceStore,
     public redux: NgSkysmackStore,
     public fieldsConfig: NgProductPriceChangesFieldsConfig,
     public store: NgProductPriceChangesStore,
@@ -33,22 +30,7 @@ export class ProductPriceChangesCreateComponent extends RecordFormComponent<Prod
 
   ngOnInit() {
     super.ngOnInit();
-    this.setCreateFields();
-  }
-
-  public setCreateFields() {
     this.productsSalesPriceActions.getPaged(this.packagePath, new PagedQuery());
-
-    this.fields$ = combineLatest(
-      this.productsSalesPriceStore.get(this.packagePath),
-      this.skysmackStore.getEditorItem()
-    ).pipe(
-      map(values => {
-        const availableProductsSalesPrices = values[0];
-        this.editorItem = values[1];
-
-        return this.fieldsConfig.getFields(this.editorItem, undefined, { availableProductsSalesPrices });
-      })
-    );
+    this.setCreateFields();
   }
 }

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { LocalObject, LocalObjectStatus, EnumHelpers } from '@skysmack/framework';
 import { Assignment, AssignmentType } from '@skysmack/packages-maintenance';
-import { NgAssignmentsValidation, LoadedPackage } from '@skysmack/ng-packages';
+import { NgAssignmentsValidation, LoadedPackage, NgAssignmentTypesStore } from '@skysmack/ng-packages';
 import { FormRule, Field, SelectField } from '@skysmack/ng-ui';
 import { FieldsConfig, StringFieldComponent, SelectFieldComponent, HiddenFieldComponent, DateTimeFieldComponent } from '@skysmack/portal-ui';
 
@@ -17,6 +17,13 @@ export class NgAssignmentsFieldsConfig extends FieldsConfig<Assignment, number, 
     public formRules: FormRule[] = [
     ];
 
+    constructor(
+        public assignmentTypesStore: NgAssignmentTypesStore
+    ) {
+        super();
+    }
+
+
     protected getEntityFields(entity?: LocalObject<Assignment, number>, dependencies?: NgAssignmentFormDependencies, loadedPackage?: LoadedPackage): Field[] {
         const fields = [
             // TODO(GET_DEPS): DisplayKet is new here - is that still needed?
@@ -26,8 +33,7 @@ export class NgAssignmentsFieldsConfig extends FieldsConfig<Assignment, number, 
                 key: 'assignmentTypeId',
                 displayKey: 'assignmentType',
                 displaySubKey: 'object.description',
-                // validators: [Validators.required],
-                optionsData: dependencies && dependencies.availableAssignmentTypes,
+                optionsData: this.assignmentTypesStore.get(loadedPackage._package.path),
                 displayNameSelector: 'object.description',
                 order: 3,
                 showColumn: true
@@ -38,7 +44,6 @@ export class NgAssignmentsFieldsConfig extends FieldsConfig<Assignment, number, 
                 value: entity ? entity.object.description : undefined,
                 key: 'description',
                 label: 'Description',
-                // validators: [Validators.required],
                 order: 2,
                 showColumn: true
             }),

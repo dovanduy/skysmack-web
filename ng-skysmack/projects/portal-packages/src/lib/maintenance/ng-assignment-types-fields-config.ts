@@ -5,7 +5,7 @@ import { FormRule } from '@skysmack/ng-ui';
 import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { Field } from '@skysmack/ng-ui';
 import { SelectField } from '@skysmack/ng-ui';
-import { NgAssignmentTypesValidation, LoadedPackage } from '@skysmack/ng-packages';
+import { NgAssignmentTypesValidation, LoadedPackage, NgMaintenanceStatesStore } from '@skysmack/ng-packages';
 import { FieldsConfig, StringFieldComponent, SelectFieldComponent, HiddenFieldComponent, RecurringExpressionFieldComponent } from '@skysmack/portal-ui';
 
 export interface NgAssignmentTypeFormDependencies {
@@ -20,7 +20,7 @@ export class NgAssignmentTypesFieldsConfig extends FieldsConfig<AssignmentType, 
     ];
 
     constructor(
-        // public lodgingTypeStore: NgLodgingTypesStore
+        public maintenanceStateStore: NgMaintenanceStatesStore
     ) {
         super();
     }
@@ -31,7 +31,7 @@ export class NgAssignmentTypesFieldsConfig extends FieldsConfig<AssignmentType, 
                 component: SelectFieldComponent,
                 value: entity ? entity.object.stateId : undefined,
                 key: 'stateId',
-                optionsData: dependencies && dependencies.availableMaintenanceStates,
+                optionsData$: this.maintenanceStateStore.get(loadedPackage._package.path),
                 displayNameSelector: 'object.description',
                 validators: [Validators.required],
                 order: 1,

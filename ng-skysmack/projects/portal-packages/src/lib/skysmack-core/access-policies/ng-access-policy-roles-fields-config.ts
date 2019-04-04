@@ -8,7 +8,7 @@ import { AccessPolicyRole, AccessPolicyRule, AccessPolicyRoleKey } from '@skysma
 import { Validators } from '@angular/forms';
 import { Role } from '@skysmack/packages-identities';
 import { SelectFieldOption } from '@skysmack/ng-ui';
-import { AccessPolicyRolesValidation, LoadedPackage } from '@skysmack/ng-packages';
+import { AccessPolicyRolesValidation, LoadedPackage, NgAccessPolicyRulesStore } from '@skysmack/ng-packages';
 
 export interface NgAccessPolicyRoleFormDependencies {
     availableAccessPolicyRules: LocalObject<AccessPolicyRule, number>[];
@@ -21,10 +21,15 @@ export class NgAccessPolicyRolesFieldsConfig extends FieldsConfig<AccessPolicyRo
 
     public formRules: FormRule[] = [];
 
+    constructor(
+        public accessPolicyRulesStore: NgAccessPolicyRulesStore
+    ) { super(); }
+
     protected getEntityFields(entity?: LocalObject<AccessPolicyRole, AccessPolicyRoleKey>, dependencies?: NgAccessPolicyRoleFormDependencies, loadedPackage?: LoadedPackage): Field[] {
 
+        // TODO: Work this into ruleId field stream
         const modifyDisplayName = (options: SelectFieldOption[]) => {
-            const accessPolicyRules = dependencies && dependencies.availableAccessPolicyRules;
+            const accessPolicyRules = dependencies.availableAccessPolicyRules;
             return options.map(option => {
                 if (accessPolicyRules) {
                     const matchingRule = accessPolicyRules.find(rule => rule.object.id === option.value);
@@ -49,10 +54,9 @@ export class NgAccessPolicyRolesFieldsConfig extends FieldsConfig<AccessPolicyRo
                 component: SelectFieldComponent,
                 value: entity ? entity.object.id.ruleId : undefined,
                 key: 'ruleId',
-                optionsData: dependencies && dependencies.availableAccessPolicyRules,
+                optionsData$: this.accessPolicyRulesStore.get(loadedPackage._package.path),
                 validators: [Validators.required],
                 displayNameSelector: 'object.id',
-                modifyDisplayName,
                 order: 2,
                 showColumn: true
             }),
