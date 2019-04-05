@@ -24,8 +24,7 @@ export class LodgingTypesEditComponent extends DocumentRecordFormComponent<Lodgi
     public redux: NgSkysmackStore,
     public fieldsConfig: NgLodgingTypesFieldsConfig,
     public store: NgLodgingTypesStore,
-    public fieldActions: NgFieldActions,
-    public fieldStore: NgFieldStore
+    public fieldActions: NgFieldActions
   ) {
     super(router, activatedRoute, editorNavService, actions, redux, store, fieldsConfig, fieldActions);
   }
