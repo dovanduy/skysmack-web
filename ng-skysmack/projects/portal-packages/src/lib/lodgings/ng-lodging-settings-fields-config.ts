@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { FormRule, Field } from '@skysmack/ng-ui';
+import { FormRule, Field, FieldProviders } from '@skysmack/ng-ui';
 import { LocalObject, toLocalObject } from '@skysmack/framework';
 import { LodgingSettings } from '@skysmack/packages-lodgings';
 import { NgLodgingSettingsValidation, LoadedPackage } from '@skysmack/ng-packages';
@@ -10,6 +10,10 @@ export class NgLodgingSettingsFieldsConfig extends FieldsConfig<LodgingSettings,
     public validation = new NgLodgingSettingsValidation();
 
     public formRules: FormRule[] = [];
+
+    constructor(public fieldProviders: FieldProviders) {
+        super(fieldProviders);
+    }
 
     protected getEntityFields(loadedPackage: LoadedPackage, settings?: LocalObject<LodgingSettings, unknown>): Field[] {
         let initializedSettings: LocalObject<LodgingSettings, unknown>;

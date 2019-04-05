@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
-import { ProductTypePriceChange, PriceChangeType, ProductTypeSalesPrice } from '@skysmack/packages-products-pricings';
-import { FormRule, SelectField, Field } from '@skysmack/ng-ui';
+import { ProductTypePriceChange, PriceChangeType } from '@skysmack/packages-products-pricings';
+import { FormRule, SelectField, Field, FieldProviders } from '@skysmack/ng-ui';
 import { NgProductTypePriceChangesValidation, LoadedPackage, NgProductTypesStore } from '@skysmack/ng-packages';
 import { FieldsConfig, SelectFieldComponent, HiddenFieldComponent, DecimalFieldComponent, DateTimeFieldComponent } from '@skysmack/portal-ui';
 import { of } from 'rxjs';
@@ -14,9 +14,10 @@ export class NgProductTypePriceChangesFieldsConfig extends FieldsConfig<ProductT
     public formRules: FormRule[] = [];
 
     constructor(
-        public productTypesStore: NgProductTypesStore
+        public productTypesStore: NgProductTypesStore,
+        public fieldProviders: FieldProviders
     ) {
-        super();
+        super(fieldProviders);
     }
 
     protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<ProductTypePriceChange, number>): Field[] {

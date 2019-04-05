@@ -6,7 +6,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { EditorNavService } from '@skysmack/portal-ui';
 import { RecordFormComponent } from '@skysmack/portal-ui';
 import { NgUsersStore } from '@skysmack/ng-packages';
-import { map } from 'rxjs/operators';
+import { switchMap } from 'rxjs/operators';
 import { NgUsersFieldsConfig } from '../../ng-users-fields-config';
 
 @Component({
@@ -35,7 +35,7 @@ export class UsersEditComponent extends RecordFormComponent<UsersAppState, User,
 
   protected setEditFields() {
     this.fields$ = this.initEditRecord().pipe(
-      map(entity => {
+      switchMap(entity => {
         this.selectedEntity = entity;
         this.fieldsConfig.mode = 'edit';
         return this.fieldsConfig.getFields(undefined, entity);

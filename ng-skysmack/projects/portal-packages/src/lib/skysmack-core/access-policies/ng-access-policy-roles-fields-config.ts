@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { FormRule, SelectField } from '@skysmack/ng-ui';
+import { FormRule, SelectField, FieldProviders } from '@skysmack/ng-ui';
 import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { Field } from '@skysmack/ng-ui';
 
@@ -16,8 +16,9 @@ export class NgAccessPolicyRolesFieldsConfig extends FieldsConfig<AccessPolicyRo
     public formRules: FormRule[] = [];
 
     constructor(
-        public accessPolicyRulesStore: NgAccessPolicyRulesStore
-    ) { super(); }
+        public accessPolicyRulesStore: NgAccessPolicyRulesStore,
+        public fieldProviders: FieldProviders
+    ) { super(fieldProviders); }
 
     protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<AccessPolicyRole, AccessPolicyRoleKey>): Field[] {
 

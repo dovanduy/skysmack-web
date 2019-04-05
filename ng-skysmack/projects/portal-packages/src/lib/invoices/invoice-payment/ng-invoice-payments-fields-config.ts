@@ -1,18 +1,22 @@
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
-import { FormRule } from '@skysmack/ng-ui';
+import { FormRule, FieldProviders } from '@skysmack/ng-ui';
 import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { InvoicePayment } from '@skysmack/packages-invoices';
 import { Field } from '@skysmack/ng-ui';
 
-import { FieldsConfig, StringFieldComponent, HiddenFieldComponent, IntFieldComponent } from '@skysmack/portal-ui';
+import { DocFieldsConfig, StringFieldComponent, HiddenFieldComponent, IntFieldComponent } from '@skysmack/portal-ui';
 import { NgInvoicePaymentsValidation, LoadedPackage } from '@skysmack/ng-packages';
 
 @Injectable({ providedIn: 'root' })
-export class NgInvoicePaymentsFieldsConfig extends FieldsConfig<InvoicePayment, number> {
+export class NgInvoicePaymentsFieldsConfig extends DocFieldsConfig<InvoicePayment, number> {
     public validation = new NgInvoicePaymentsValidation();
 
     public formRules: FormRule[] = [];
+
+    constructor(public fieldProviders: FieldProviders) {
+        super(fieldProviders);
+    }
 
     protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<InvoicePayment, number>): Field[] {
         const fields = [

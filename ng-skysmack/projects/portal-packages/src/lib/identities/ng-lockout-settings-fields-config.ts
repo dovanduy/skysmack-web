@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { FormRule, Field } from '@skysmack/ng-ui';
+import { FormRule, Field, FieldProviders } from '@skysmack/ng-ui';
 import { LockoutSettings } from '@skysmack/packages-identities';
 import { LocalObject } from '@skysmack/framework';
 import { NgLockoutSettingsValidation, LoadedPackage } from '@skysmack/ng-packages';
@@ -10,6 +10,10 @@ export class NgLockoutSettingsFieldsConfig extends FieldsConfig<LockoutSettings,
     public validation = new NgLockoutSettingsValidation();
 
     public formRules: FormRule[] = [];
+
+    constructor(public fieldProviders: FieldProviders) {
+        super(fieldProviders);
+    }
 
     protected getEntityFields(loadedPackage: LoadedPackage, settings?: LocalObject<LockoutSettings, unknown>): Field[] {
         const fields = [

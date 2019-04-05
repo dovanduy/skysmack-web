@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { LocalObject, Package } from '@skysmack/framework';
-import { FormRule, Field, CustomValidators, SetPathRule, SelectField } from '@skysmack/ng-ui';
+import { FormRule, Field, CustomValidators, SetPathRule, SelectField, FieldProviders } from '@skysmack/ng-ui';
 import { PackagesValidation, LoadedPackage, NgPackagesStore } from '@skysmack/ng-packages';
 import { FieldsConfig, StringFieldComponent, SelectFieldComponent, HiddenFieldComponent, PackageDependenciesFieldComponent } from '@skysmack/portal-ui';
 
@@ -14,9 +14,10 @@ export class NgPackagesFieldsConfig extends FieldsConfig<Package, string> {
     ];
 
     constructor(
-        public store: NgPackagesStore
+        public store: NgPackagesStore,
+        public fieldProviders: FieldProviders
     ) {
-        super();
+        super(fieldProviders);
     }
 
     protected getEntityFields(loadedPackage: LoadedPackage, _package?: LocalObject<Package, string>): Field[] {

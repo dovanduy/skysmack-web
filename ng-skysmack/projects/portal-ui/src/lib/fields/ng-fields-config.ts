@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
-import { FormRule, SetFieldKeyRule } from '@skysmack/ng-ui';
-import { LocalObject, FieldValueProviderViewModel, FieldSchemaViewModel, log } from '@skysmack/framework';
+import { FormRule, SetFieldKeyRule, FieldProviders } from '@skysmack/ng-ui';
+import { LocalObject, FieldSchemaViewModel, log } from '@skysmack/framework';
 import { Field } from '@skysmack/ng-ui';
 import { FieldsValidation } from './ng-fields-validation';
 import { SelectField } from '@skysmack/ng-ui';
@@ -21,8 +21,11 @@ export class NgFieldsConfig extends FieldsConfig<FieldSchemaViewModel, string> {
         new SetFieldKeyRule(['display'])
     ];
 
-    constructor(public store: NgFieldStore) {
-        super();
+    constructor(
+        public store: NgFieldStore,
+        public fieldProviders: FieldProviders
+    ) {
+        super(fieldProviders);
     }
 
     /**

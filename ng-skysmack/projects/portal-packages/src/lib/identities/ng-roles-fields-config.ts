@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { Role } from '@skysmack/packages-identities';
-import { Field, FormRule } from '@skysmack/ng-ui';
+import { Field, FormRule, FieldProviders } from '@skysmack/ng-ui';
 import { NgRolesValidation, LoadedPackage } from '@skysmack/ng-packages';
 import { FieldsConfig, StringFieldComponent, HiddenFieldComponent } from '@skysmack/portal-ui';
 
@@ -11,6 +11,10 @@ export class NgRolesFieldsConfig extends FieldsConfig<Role, number> {
     public validation = new NgRolesValidation();
 
     public formRules: FormRule[] = [];
+
+    constructor(public fieldProviders: FieldProviders) {
+        super(fieldProviders);
+    }
 
     protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<Role, number>): Field[] {
         const fields = [

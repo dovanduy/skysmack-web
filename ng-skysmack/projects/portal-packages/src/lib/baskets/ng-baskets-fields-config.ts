@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
-import { FormRule } from '@skysmack/ng-ui';
+import { FormRule, FieldProviders } from '@skysmack/ng-ui';
 import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { Basket } from '@skysmack/packages-baskets';
 import { Field } from '@skysmack/ng-ui';
@@ -13,6 +13,10 @@ export class NgBasketsFieldsConfig extends FieldsConfig<Basket, number> {
     public validation = new BasketsValidation();
 
     public formRules: FormRule[] = [];
+
+    constructor(public fieldProviders: FieldProviders) {
+        super(fieldProviders);
+    }
 
     protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<Basket, number>): Field[] {
         const fields = [

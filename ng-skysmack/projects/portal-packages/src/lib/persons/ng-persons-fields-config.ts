@@ -1,22 +1,28 @@
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
-import { FormRule } from '@skysmack/ng-ui';
+import { FormRule, FieldProviders } from '@skysmack/ng-ui';
 import { SetDisplayNameRule } from '@skysmack/ng-ui';
 import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { Person } from '@skysmack/packages-persons';
 import { Field } from '@skysmack/ng-ui';
 
-import { FieldsConfig, StringFieldComponent, HiddenFieldComponent } from '@skysmack/portal-ui';
+import { StringFieldComponent, HiddenFieldComponent } from '@skysmack/portal-ui';
 import { NgPersonsValidation, LoadedPackage } from '@skysmack/ng-packages';
+import { DocFieldsConfig } from '@skysmack/portal-ui';
 
 @Injectable({ providedIn: 'root' })
-export class NgPersonsFieldsConfig extends FieldsConfig<Person, number> {
+export class NgPersonsFieldsConfig extends DocFieldsConfig<Person, number> {
     public validation = new NgPersonsValidation();
-
 
     public formRules: FormRule[] = [
         new SetDisplayNameRule(['firstName', 'lastName'])
     ];
+
+    constructor(
+        public fieldProviders: FieldProviders
+    ) {
+        super(fieldProviders);
+    }
 
     protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<Person, number>): Field[] {
         const fields = [

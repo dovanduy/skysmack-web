@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { LocalObject, LocalObjectStatus, EnumHelpers } from '@skysmack/framework';
-import { Assignment, AssignmentType } from '@skysmack/packages-maintenance';
+import { Assignment } from '@skysmack/packages-maintenance';
 import { NgAssignmentsValidation, LoadedPackage, NgAssignmentTypesStore } from '@skysmack/ng-packages';
-import { FormRule, Field, SelectField } from '@skysmack/ng-ui';
+import { FormRule, Field, SelectField, FieldProviders } from '@skysmack/ng-ui';
 import { FieldsConfig, StringFieldComponent, SelectFieldComponent, HiddenFieldComponent, DateTimeFieldComponent } from '@skysmack/portal-ui';
 import { of } from 'rxjs';
 
@@ -14,8 +14,9 @@ export class NgAssignmentsFieldsConfig extends FieldsConfig<Assignment, number> 
     public formRules: FormRule[] = [];
 
     constructor(
-        public assignmentTypesStore: NgAssignmentTypesStore
-    ) { super(); }
+        public assignmentTypesStore: NgAssignmentTypesStore,
+        public fieldProviders: FieldProviders
+    ) { super(fieldProviders); }
 
     protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<Assignment, number>): Field[] {
         const fields = [

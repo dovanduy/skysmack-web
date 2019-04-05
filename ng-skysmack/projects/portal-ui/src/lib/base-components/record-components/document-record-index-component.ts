@@ -5,7 +5,7 @@ import { OnInit } from '@angular/core';
 import { Record, getFieldStateKey } from '@skysmack/framework';
 import { RecordIndexComponent } from './record-index-component';
 import { NgFieldActions } from '@skysmack/ng-redux';
-import { map } from 'rxjs/operators';
+import { map, switchMap } from 'rxjs/operators';
 import { NgFieldStore } from '@skysmack/ng-redux';
 import { combineLatest } from 'rxjs';
 import { EntityFieldsConfig } from '../../fields/entity-fields-config';
@@ -39,7 +39,7 @@ export class DocumentRecordIndexComponent<TAppState, TRecord extends Record<TKey
             this.fieldStore.get(getFieldStateKey(this.packagePath, this.additionalPaths)),
             this.loadedPackage$
         ).pipe(
-            map(values => {
+            switchMap(values => {
                 const [fields, loadedPackage] = values;
                 return this.fieldsConfig.getFields(loadedPackage, undefined, fields);
             })

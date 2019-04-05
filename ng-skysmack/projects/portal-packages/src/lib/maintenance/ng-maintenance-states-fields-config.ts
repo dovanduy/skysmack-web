@@ -3,7 +3,7 @@ import { Validators } from '@angular/forms';
 import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { MaintenanceState, MaintenanceEntityStatus } from '@skysmack/packages-maintenance';
 import { NgMaintenanceStatesValidation, LoadedPackage } from '@skysmack/ng-packages';
-import { FormRule, Field, SelectField } from '@skysmack/ng-ui';
+import { FormRule, Field, SelectField, FieldProviders } from '@skysmack/ng-ui';
 import { FieldsConfig, StringFieldComponent, SelectFieldComponent, HiddenFieldComponent } from '@skysmack/portal-ui';
 import { of } from 'rxjs';
 
@@ -17,6 +17,10 @@ export class NgMaintenanceStatesFieldsConfig extends FieldsConfig<MaintenanceSta
 
     public formRules: FormRule[] = [
     ];
+
+    constructor(public fieldProviders: FieldProviders) {
+        super(fieldProviders);
+    }
 
     protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<MaintenanceState, number>): Field[] {
         const fields = [

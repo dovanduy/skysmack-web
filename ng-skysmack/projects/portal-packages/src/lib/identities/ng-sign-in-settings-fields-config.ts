@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { FormRule, Field } from '@skysmack/ng-ui';
+import { FormRule, Field, FieldProviders } from '@skysmack/ng-ui';
 import { LocalObject } from '@skysmack/framework';
 import { SignInSettings } from '@skysmack/packages-identities';
 import { NgSignInSettingsValidation, LoadedPackage } from '@skysmack/ng-packages';
@@ -10,6 +10,10 @@ export class NgSignInSettingsFieldsConfig extends FieldsConfig<SignInSettings, u
     public validation = new NgSignInSettingsValidation();
 
     public formRules: FormRule[] = [];
+
+    constructor(public fieldProviders: FieldProviders) {
+        super(fieldProviders);
+    }
 
     protected getEntityFields(loadedPackage: LoadedPackage, settings?: LocalObject<SignInSettings, unknown>): Field[] {
         const fields = [

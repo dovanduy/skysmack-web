@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { ProductTypeSalesPrice } from '@skysmack/packages-products-pricings';
-import { FormRule, SelectField, Field } from '@skysmack/ng-ui';
+import { FormRule, SelectField, Field, FieldProviders } from '@skysmack/ng-ui';
 import { ProductType } from '@skysmack/packages-products';
 import { NgProductTypeSalesPriceValidation, LoadedPackage, NgProductTypesStore } from '@skysmack/ng-packages';
 import { FieldsConfig, SelectFieldComponent, HiddenFieldComponent, DecimalFieldComponent } from '@skysmack/portal-ui';
@@ -18,9 +18,10 @@ export class NgProductTypeSalesPriceFieldsConfig extends FieldsConfig<ProductTyp
     public formRules: FormRule[] = [];
 
     constructor(
-        public productTypesStore: NgProductTypesStore
+        public productTypesStore: NgProductTypesStore,
+        public fieldProviders: FieldProviders
     ) {
-        super();
+        super(fieldProviders);
     }
 
 

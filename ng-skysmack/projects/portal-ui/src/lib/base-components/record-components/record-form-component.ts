@@ -5,9 +5,9 @@ import { EditorNavService } from './../../components/common/container/editor-nav
 import { FormBaseComponent } from './../form-base-component';
 import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { EntityActions, EntityStore } from '@skysmack/redux';
-import { FormHelper } from '@skysmack/ng-ui';
-import { map } from 'rxjs/operators';
-import { combineLatest } from 'rxjs';
+import { FormHelper, Field } from '@skysmack/ng-ui';
+import { map, switchMap } from 'rxjs/operators';
+import { combineLatest, Observable } from 'rxjs';
 import { EntityFieldsConfig } from '../../fields/entity-fields-config';
 
 export class RecordFormComponent<TAppState, TRecord extends Record<TKey>, TKey> extends FormBaseComponent<TAppState, TRecord, TKey> implements OnInit, OnDestroy {
@@ -40,7 +40,7 @@ export class RecordFormComponent<TAppState, TRecord extends Record<TKey>, TKey> 
             this.skysmackStore.getEditorItem(),
             this.loadedPackage$
         ).pipe(
-            map(values => {
+            switchMap(values => {
                 this.editorItem = values[0] as LocalObject<TRecord, TKey>;
                 const loadedPackage = values[1];
 
@@ -56,7 +56,7 @@ export class RecordFormComponent<TAppState, TRecord extends Record<TKey>, TKey> 
                 this.skysmackStore.getEditorItem(),
                 this.loadedPackage$
             ).pipe(
-                map(values => {
+                switchMap(values => {
                     const entity = values[0];
                     this.editorItem = values[1] as LocalObject<TRecord, TKey>;
                     const loadedPackage = values[2];

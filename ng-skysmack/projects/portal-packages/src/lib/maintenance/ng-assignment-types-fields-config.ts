@@ -1,16 +1,12 @@
-import { AssignmentType, MaintenanceState } from '@skysmack/packages-maintenance';
+import { AssignmentType } from '@skysmack/packages-maintenance';
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
-import { FormRule } from '@skysmack/ng-ui';
+import { FormRule, FieldProviders } from '@skysmack/ng-ui';
 import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { Field } from '@skysmack/ng-ui';
 import { SelectField } from '@skysmack/ng-ui';
 import { NgAssignmentTypesValidation, LoadedPackage, NgMaintenanceStatesStore } from '@skysmack/ng-packages';
 import { FieldsConfig, StringFieldComponent, SelectFieldComponent, HiddenFieldComponent, RecurringExpressionFieldComponent } from '@skysmack/portal-ui';
-
-export interface NgAssignmentTypeFormDependencies {
-    availableMaintenanceStates: LocalObject<MaintenanceState, number>[];
-}
 
 @Injectable({ providedIn: 'root' })
 export class NgAssignmentTypesFieldsConfig extends FieldsConfig<AssignmentType, number> {
@@ -20,9 +16,10 @@ export class NgAssignmentTypesFieldsConfig extends FieldsConfig<AssignmentType, 
     ];
 
     constructor(
-        public maintenanceStateStore: NgMaintenanceStatesStore
+        public maintenanceStateStore: NgMaintenanceStatesStore,
+        public fieldProviders: FieldProviders
     ) {
-        super();
+        super(fieldProviders);
     }
 
     protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<AssignmentType, number>): Field[] {

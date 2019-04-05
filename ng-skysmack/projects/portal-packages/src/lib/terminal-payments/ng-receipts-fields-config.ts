@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
-import { FormRule } from '@skysmack/ng-ui';
+import { FormRule, FieldProviders } from '@skysmack/ng-ui';
 import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { Receipt } from '@skysmack/packages-terminal-payments';
 import { Field } from '@skysmack/ng-ui';
@@ -13,6 +13,12 @@ export class NgReceiptsFieldsConfig extends FieldsConfig<Receipt, number> {
     public validation = new NgReceiptsValidation();
 
     public formRules: FormRule[] = [];
+
+    constructor(
+        public fieldProviders: FieldProviders
+    ) {
+        super(fieldProviders);
+    }
 
     protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<Receipt, number>): Field[] {
         const fields = [

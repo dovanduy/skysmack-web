@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { combineLatest, Observable } from 'rxjs';
 import { map, take } from 'rxjs/operators';
 import {
   NgLodgingReservationsStore,
@@ -13,7 +12,6 @@ import {
 import { LodgingReservation, LodgingReservationsAppState } from '@skysmack/packages-lodging-reservations';
 import { RecordFormComponent, EditorNavService } from '@skysmack/portal-ui';
 import { PagedQuery, defined } from '@skysmack/framework';
-import { Field } from '@skysmack/ng-ui';
 import { FieldProviders } from '@skysmack/ng-ui';
 import { NgLodgingReservationsFieldsConfig } from '../../ng-lodging-reservations-fields-config';
 
@@ -42,18 +40,6 @@ export class LodgingsReservationsCreateComponent extends RecordFormComponent<Lod
     super.ngOnInit();
     this.getDeps();
     this.setCreateFields();
-  }
-
-  protected getProvidedFields(packagePath: string): Observable<Field[]> {
-    return combineLatest(
-      this.fieldProviders.providers.map(provider => {
-        return provider.getFields(packagePath);
-      })
-    ).pipe(
-      map((values: [Field[]]) => {
-        return values.reduce((acc: Field[], cur: Field[]) => acc.concat(cur), []);
-      })
-    );
   }
 
   public getDeps() {

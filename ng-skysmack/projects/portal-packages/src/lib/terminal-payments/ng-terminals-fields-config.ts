@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { FormRule } from '@skysmack/ng-ui';
+import { FormRule, FieldProviders } from '@skysmack/ng-ui';
 import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { Terminal } from '@skysmack/packages-terminal-payments';
 import { Field } from '@skysmack/ng-ui';
@@ -12,6 +12,12 @@ export class NgTerminalsFieldsConfig extends FieldsConfig<Terminal, number> {
 
     public formRules: FormRule[] = [
     ];
+
+    constructor(
+        public fieldProviders: FieldProviders
+    ) {
+        super(fieldProviders);
+    }
 
     protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<Terminal, number>): Field[] {
         const fields = [

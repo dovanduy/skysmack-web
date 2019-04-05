@@ -3,8 +3,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { LocalObject, RouteData, toLocalObject } from '@skysmack/framework';
 import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { FormHelper } from '@skysmack/ng-ui';
-import { combineLatest } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { combineLatest, of } from 'rxjs';
+import { map, switchMap } from 'rxjs/operators';
 import { NgSettingsActions, NgSettingsStore } from '@skysmack/ng-redux';
 import { SettingsAppState } from '@skysmack/redux';
 import { EditorNavService } from '../../../components/common/container/editor-nav.service';
@@ -64,11 +64,11 @@ export class SettingsComponent extends BaseComponent<SettingsAppState<any>, unkn
       this.store.get(this.packagePath, this.settingsKey),
       this.skysmackStore.getEditorItem(),
     ).pipe(
-      map(values => {
+      switchMap(values => {
         const settings = values[0];
         this.editorItem = values[1] as LocalObject<any, unknown>;
         this.editorItem ? this.selectedSettings = this.editorItem : this.selectedSettings = settings;
-        return this.fieldsConfig ? this.fieldsConfig.getFields(undefined, this.selectedSettings) : [];
+        return this.fieldsConfig ? this.fieldsConfig.getFields(undefined, this.selectedSettings) : of([]);
       })
     );
   }

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { FormRule, Field } from '@skysmack/ng-ui';
+import { FormRule, Field, FieldProviders } from '@skysmack/ng-ui';
 import { LocalObject } from '@skysmack/framework';
 import { PasswordSettings } from '@skysmack/packages-identities';
 import { NgPasswordSettingsValidation, LoadedPackage } from '@skysmack/ng-packages';
@@ -10,6 +10,10 @@ export class NgPasswordSettingsFieldsConfig extends FieldsConfig<PasswordSetting
     public validation = new NgPasswordSettingsValidation();
 
     public formRules: FormRule[] = [];
+
+    constructor(public fieldProviders: FieldProviders) {
+        super(fieldProviders);
+    }
 
     protected getEntityFields(loadedPackage: LoadedPackage, settings?: LocalObject<PasswordSettings, unknown>): Field[] {
         const fields = [

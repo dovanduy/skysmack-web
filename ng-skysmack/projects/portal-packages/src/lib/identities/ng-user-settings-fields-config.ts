@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { FormRule, Field } from '@skysmack/ng-ui';
+import { FormRule, Field, FieldProviders } from '@skysmack/ng-ui';
 import { LocalObject } from '@skysmack/framework';
 import { UserSettings } from '@skysmack/packages-identities';
 import { NgUserSettingsValidation, LoadedPackage } from '@skysmack/ng-packages';
@@ -10,6 +10,10 @@ export class NgUserSettingsFieldsConfig extends FieldsConfig<UserSettings, unkno
     public validation = new NgUserSettingsValidation();
 
     public formRules: FormRule[] = [];
+
+    constructor(public fieldProviders: FieldProviders) {
+        super(fieldProviders);
+    }
 
     protected getEntityFields(loadedPackage: LoadedPackage, settings?: LocalObject<UserSettings, unknown>): Field[] {
         const fields = [

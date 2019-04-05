@@ -5,20 +5,20 @@ import { RecurringAssignment } from '@skysmack/packages-maintenance';
 import { NgRecurringAssignmentsValidation, LoadedPackage, NgAssignmentTypesStore } from '@skysmack/ng-packages';
 import { FormRule, SelectField, Field } from '@skysmack/ng-ui';
 import { FieldsConfig, SelectFieldComponent, HiddenFieldComponent, DateFieldComponent } from '@skysmack/portal-ui';
+import { FieldProviders } from 'ng-ui/src/lib';
 
 @Injectable({ providedIn: 'root' })
 export class NgRecurringAssignmentsFieldsConfig extends FieldsConfig<RecurringAssignment, number> {
     public validation = new NgRecurringAssignmentsValidation();
 
-    public formRules: FormRule[] = [
-    ];
+    public formRules: FormRule[] = [];
 
     constructor(
-        public assignmentTypeStore: NgAssignmentTypesStore
+        public assignmentTypeStore: NgAssignmentTypesStore,
+        public fieldProviders: FieldProviders
     ) {
-        super();
+        super(fieldProviders);
     }
-
 
     protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<RecurringAssignment, number>): Field[] {
         const fields = [

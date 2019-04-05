@@ -6,7 +6,7 @@ import { NgSkysmackStore, LoadedPackage } from '@skysmack/ng-packages';
 import { EntityActions, EntityStore } from '@skysmack/redux';
 import { RecordFormComponent } from './record-form-component';
 import { NgFieldActions, NgFieldStore } from '@skysmack/ng-redux';
-import { map } from 'rxjs/operators';
+import { map, switchMap } from 'rxjs/operators';
 import { combineLatest, Observable } from 'rxjs';
 import { EntityFieldsConfig } from '../../fields/entity-fields-config';
 
@@ -37,7 +37,7 @@ export class DocumentRecordFormComponent<TAppState, TRecord extends Record<TKey>
             this.skysmackStore.getEditorItem(),
             this.loadedPackage$
         ).pipe(
-            map(values => {
+            switchMap(values => {
                 const fields = values[0];
                 this.editorItem = values[1] as LocalObject<TRecord, TKey>;
                 const loadedPackage = values[2];
@@ -51,7 +51,7 @@ export class DocumentRecordFormComponent<TAppState, TRecord extends Record<TKey>
             this.initEditDocRecord(),
             this.skysmackStore.getEditorItem()
         ).pipe(
-            map(values => {
+            switchMap(values => {
                 const entity = values[0][0];
                 const fields = values[0][1];
                 const loadedPackage = values[0][2];
