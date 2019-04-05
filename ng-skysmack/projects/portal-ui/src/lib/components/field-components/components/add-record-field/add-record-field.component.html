@@ -1,6 +1,7 @@
-<hr />
-<ss-dynamic-form *ngIf="addFields$" [fields$]="addFields$" [validation]="this.field.fieldsConfig.validation"
-  [rules]="this.field.fieldsConfig.formRules" [buttonText]="'Create'" (submitted)="onCreateSubmit($event)">
-  <h2 [translate]="this.field.titleTranslationString"></h2>
-</ss-dynamic-form>
-<hr />
+<div style="background-color: rgba(0,0,0,0.1); padding: 0 .2rem">
+
+
+  <ss-dynamic-form *ngIf="addFields$" [fields$]="addFields$" [validation]="this.field.fieldsConfig.validation"
+    [rules]="this.field.fieldsConfig.formRules" [buttonText]="'Create'" (submitted)="onCreateSubmit($event)">
+  </ss-dynamic-form>
+</div>

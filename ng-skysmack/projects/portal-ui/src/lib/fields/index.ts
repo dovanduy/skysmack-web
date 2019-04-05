@@ -5,6 +5,6 @@ export * from './ng-fields-menu';
 export * from './ng-fields-validation';
 export * from './add-field';
 export * from './fields-config';
-export * from './doc-fields-config';
+export * from './document-fields-config';
 export * from './entity-fields-config';
 

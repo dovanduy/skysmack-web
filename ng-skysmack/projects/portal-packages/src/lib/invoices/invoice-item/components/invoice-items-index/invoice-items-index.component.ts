@@ -32,10 +32,9 @@ export class InvoiceItemsIndexComponent extends DocumentRecordIndexComponent<Inv
     public store: NgInvoiceItemsStore,
     public sidebarMenu: NgInvoiceItemsMenu,
     public fieldsConfig: NgInvoiceItemsFieldsConfig,
-    public fieldActions: NgFieldActions,
-    public fieldStore: NgFieldStore
+    public fieldActions: NgFieldActions
   ) {
-    super(router, activatedRoute, actions, redux, store, fieldsConfig, fieldActions, fieldStore);
+    super(router, activatedRoute, actions, redux, store, fieldsConfig, fieldActions);
   }
 
   ngOnInit() {

@@ -4,21 +4,25 @@ import { FormRule, Field, FieldProviders } from '@skysmack/ng-ui';
 import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { LodgingType } from '@skysmack/packages-lodgings';
 import { NgLodgingTypesValidation, LoadedPackage } from '@skysmack/ng-packages';
-import { DocFieldsConfig, StringFieldComponent, HiddenFieldComponent } from '@skysmack/portal-ui';
+import { DocumentFieldsConfig, StringFieldComponent, HiddenFieldComponent } from '@skysmack/portal-ui';
+import { NgFieldStore } from '@skysmack/ng-redux';
 
 export interface NgLodgingTypeFormDependencies {
     [key: string]: any;
 }
 
 @Injectable({ providedIn: 'root' })
-export class NgLodgingTypesFieldsConfig extends DocFieldsConfig<LodgingType, number> {
+export class NgLodgingTypesFieldsConfig extends DocumentFieldsConfig<LodgingType, number> {
     public validation = new NgLodgingTypesValidation();
 
     public formRules: FormRule[] = [
     ];
 
-    constructor(public fieldProviders: FieldProviders) {
-        super(fieldProviders);
+    constructor(
+        public fieldProviders: FieldProviders,
+        public fieldsStore: NgFieldStore
+    ) {
+        super(fieldProviders, fieldsStore);
     }
 
     protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<LodgingType, number>): Field[] {

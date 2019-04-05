@@ -9,7 +9,7 @@ import { NgProductsStore } from '@skysmack/ng-packages';
 import { NgProductTypesActions } from '@skysmack/ng-packages';
 import { PagedQuery } from '@skysmack/framework';
 import { NgProductTypesStore } from '@skysmack/ng-packages';
-import { NgFieldActions, NgFieldStore } from '@skysmack/ng-redux';
+import { NgFieldActions } from '@skysmack/ng-redux';
 import { NgProductsFieldsConfig } from '../../ng-products-fields-config';
 
 @Component({
@@ -30,10 +30,9 @@ export class ProductsEditComponent extends DocumentRecordFormComponent<ProductsA
     public fieldsConfig: NgProductsFieldsConfig,
     public store: NgProductsStore,
     public productTypeStore: NgProductTypesStore,
-    public fieldActions: NgFieldActions,
-    public fieldStore: NgFieldStore
+    public fieldActions: NgFieldActions
   ) {
-    super(router, activatedRoute, editorNavService, actions, redux, store, fieldsConfig, fieldActions, fieldStore);
+    super(router, activatedRoute, editorNavService, actions, redux, store, fieldsConfig, fieldActions);
   }
 
   ngOnInit() {

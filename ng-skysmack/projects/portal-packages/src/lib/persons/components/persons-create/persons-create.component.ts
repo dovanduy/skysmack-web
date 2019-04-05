@@ -6,7 +6,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { EditorNavService } from '@skysmack/portal-ui';
 import { DocumentRecordFormComponent } from '@skysmack/portal-ui';
 import { NgPersonsStore } from '@skysmack/ng-packages';
-import { NgFieldActions, NgFieldStore } from '@skysmack/ng-redux';
+import { NgFieldActions } from '@skysmack/ng-redux';
 import { NgPersonsFieldsConfig } from '../../ng-persons-fields-config';
 
 @Component({
@@ -24,10 +24,9 @@ export class PersonsCreateComponent extends DocumentRecordFormComponent<PersonsA
     public skysmackStore: NgSkysmackStore,
     public fieldsConfig: NgPersonsFieldsConfig,
     public store: NgPersonsStore,
-    public fieldActions: NgFieldActions,
-    public fieldStore: NgFieldStore
+    public fieldActions: NgFieldActions
   ) {
-    super(router, activatedRoute, editorNavService, actions, skysmackStore, store, fieldsConfig, fieldActions, fieldStore);
+    super(router, activatedRoute, editorNavService, actions, skysmackStore, store, fieldsConfig, fieldActions);
   }
 
   ngOnInit() {

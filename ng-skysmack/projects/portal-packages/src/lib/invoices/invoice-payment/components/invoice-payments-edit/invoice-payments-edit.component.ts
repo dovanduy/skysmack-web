@@ -27,7 +27,7 @@ export class InvoicePaymentsEditComponent extends DocumentRecordFormComponent<In
     public fieldActions: NgFieldActions,
     public fieldStore: NgFieldStore
   ) {
-    super(router, activatedRoute, editorNavService, actions, redux, store, fieldsConfig, fieldActions, fieldStore);
+    super(router, activatedRoute, editorNavService, actions, redux, store, fieldsConfig, fieldActions);
   }
 
   ngOnInit() {

@@ -5,7 +5,7 @@ import { NgSkysmackStore, NgReceiptsActions, NgReceiptsStore } from '@skysmack/n
 import { ReceiptsAppState, Receipt } from '@skysmack/packages-terminal-payments';
 import { NgReceiptsMenu } from '../../ng-receipts-menu';
 import { EntityAction } from '@skysmack/ng-ui';
-import { NgFieldActions, NgFieldStore } from '@skysmack/ng-redux';
+import { NgFieldActions } from '@skysmack/ng-redux';
 import { NgReceiptsFieldsConfig } from '../../ng-receipts-fields-config';
 
 @Component({
@@ -28,10 +28,9 @@ export class ReceiptsIndexComponent extends DocumentRecordIndexComponent<Receipt
     public store: NgReceiptsStore,
     public sidebarMenu: NgReceiptsMenu,
     public fieldsConfig: NgReceiptsFieldsConfig,
-    public fieldActions: NgFieldActions,
-    public fieldStore: NgFieldStore
+    public fieldActions: NgFieldActions
   ) {
-    super(router, activatedRoute, actions, redux, store, fieldsConfig, fieldActions, fieldStore);
+    super(router, activatedRoute, actions, redux, store, fieldsConfig, fieldActions);
   }
 
 

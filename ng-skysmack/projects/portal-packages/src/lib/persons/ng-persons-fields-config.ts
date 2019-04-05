@@ -8,10 +8,11 @@ import { Field } from '@skysmack/ng-ui';
 
 import { StringFieldComponent, HiddenFieldComponent } from '@skysmack/portal-ui';
 import { NgPersonsValidation, LoadedPackage } from '@skysmack/ng-packages';
-import { DocFieldsConfig } from '@skysmack/portal-ui';
+import { DocumentFieldsConfig } from '@skysmack/portal-ui';
+import { NgFieldStore } from '@skysmack/ng-redux';
 
 @Injectable({ providedIn: 'root' })
-export class NgPersonsFieldsConfig extends DocFieldsConfig<Person, number> {
+export class NgPersonsFieldsConfig extends DocumentFieldsConfig<Person, number> {
     public validation = new NgPersonsValidation();
 
     public formRules: FormRule[] = [
@@ -19,10 +20,12 @@ export class NgPersonsFieldsConfig extends DocFieldsConfig<Person, number> {
     ];
 
     constructor(
-        public fieldProviders: FieldProviders
+        public fieldProviders: FieldProviders,
+        public fieldsStore: NgFieldStore
     ) {
-        super(fieldProviders);
+        super(fieldProviders, fieldsStore);
     }
+
 
     protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<Person, number>): Field[] {
         const fields = [

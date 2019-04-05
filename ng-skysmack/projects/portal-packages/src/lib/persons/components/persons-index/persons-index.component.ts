@@ -7,7 +7,7 @@ import { NgPersonsStore } from '@skysmack/ng-packages';
 import { Person, PersonsAppState, PERSONS_AREA_KEY } from '@skysmack/packages-persons';
 import { NgPersonsMenu } from './../../ng-persons-menu';
 import { EntityAction } from '@skysmack/ng-ui';
-import { NgFieldActions, NgFieldStore } from '@skysmack/ng-redux';
+import { NgFieldActions } from '@skysmack/ng-redux';
 import { NgPersonsFieldsConfig } from '../../ng-persons-fields-config';
 
 @Component({
@@ -33,10 +33,9 @@ export class PersonsIndexComponent extends DocumentRecordIndexComponent<PersonsA
     public store: NgPersonsStore,
     public sidebarMenu: NgPersonsMenu,
     public fieldsConfig: NgPersonsFieldsConfig,
-    public fieldActions: NgFieldActions,
-    public fieldStore: NgFieldStore
+    public fieldActions: NgFieldActions
   ) {
-    super(router, activatedRoute, actions, redux, store, fieldsConfig, fieldActions, fieldStore);
+    super(router, activatedRoute, actions, redux, store, fieldsConfig, fieldActions);
   }
 
   ngOnInit() {

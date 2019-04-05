@@ -5,17 +5,21 @@ import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { InvoiceItem } from '@skysmack/packages-invoices';
 import { Field } from '@skysmack/ng-ui';
 
-import { DocFieldsConfig, StringFieldComponent, HiddenFieldComponent, IntFieldComponent } from '@skysmack/portal-ui';
+import { DocumentFieldsConfig, StringFieldComponent, HiddenFieldComponent, IntFieldComponent } from '@skysmack/portal-ui';
 import { NgInvoiceItemsValidation, LoadedPackage } from '@skysmack/ng-packages';
+import { NgFieldStore } from '@skysmack/ng-redux';
 
 @Injectable({ providedIn: 'root' })
-export class NgInvoiceItemsFieldsConfig extends DocFieldsConfig<InvoiceItem, number> {
+export class NgInvoiceItemsFieldsConfig extends DocumentFieldsConfig<InvoiceItem, number> {
     public validation = new NgInvoiceItemsValidation();
 
     public formRules: FormRule[] = [];
 
-    constructor(public fieldProviders: FieldProviders) {
-        super(fieldProviders);
+    constructor(
+        public fieldProviders: FieldProviders,
+        public fieldsStore: NgFieldStore
+    ) {
+        super(fieldProviders, fieldsStore);
     }
 
     protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<InvoiceItem, number>): Field[] {

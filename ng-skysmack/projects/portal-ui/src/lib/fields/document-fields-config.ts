@@ -1,5 +1,5 @@
 import { LocalObject, FieldSchemaViewModel } from '@skysmack/framework';
-import { Field, FieldTypes } from '@skysmack/ng-ui';
+import { Field, FieldTypes, FieldProviders } from '@skysmack/ng-ui';
 import { IntFieldComponent } from '../components/field-components/components/int-field/int-field.component';
 import { Type } from '@angular/core';
 import { LimitedStringFieldComponent } from '../components/field-components/components/limited-string-field/limited-string-field.component';
@@ -10,13 +10,25 @@ import { DateTimeFieldComponent } from '../components/field-components/component
 import { StringFieldComponent } from '../components/field-components/components/string-field/string-field.component';
 import { LoadedPackage } from '@skysmack/ng-packages';
 import { FieldsConfig } from './fields-config';
-import { Observable } from 'rxjs';
+import { Observable, combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-export abstract class DocFieldsConfig<TRecord, TKey> extends FieldsConfig<TRecord, TKey> {
-    public getFields(loadedPackage: LoadedPackage, entity?: LocalObject<TRecord, TKey>, dynamicFields: LocalObject<FieldSchemaViewModel, string>[] = []): Observable<Field[]> {
-        return this.getRecordFields(loadedPackage, entity).pipe(
-            map(fields => fields.concat(this.toFields(entity, dynamicFields))),
+import { NgFieldStore } from '@skysmack/ng-redux';
+
+export abstract class DocumentFieldsConfig<TRecord, TKey> extends FieldsConfig<TRecord, TKey> {
+    constructor(
+        public fieldProviders: FieldProviders,
+        public fieldsStore: NgFieldStore
+    ) {
+        super(fieldProviders);
+    }
+
+    public getFields(loadedPackage: LoadedPackage, entity?: LocalObject<TRecord, TKey>): Observable<Field[]> {
+        return combineLatest(
+            this.getRecordFields(loadedPackage, entity),
+            this.fieldsStore.get(loadedPackage._package.path)
+        ).pipe(
+            map(values => values[0].concat(this.toFields(entity, values[1]))),
             map(fields => this.addValidationErrors(fields, entity).sort((a, b) => a.order - b.order))
         );
     }

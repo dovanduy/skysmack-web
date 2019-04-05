@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { LodgingTypesAppState, LodgingType } from '@skysmack/packages-lodgings';
 import { NgLodgingTypesStore, NgSkysmackStore, NgLodgingTypesActions } from '@skysmack/ng-packages';
 import { EditorNavService, DocumentRecordFormComponent } from '@skysmack/portal-ui';
-import { NgFieldActions, NgFieldStore } from '@skysmack/ng-redux';
+import { NgFieldActions } from '@skysmack/ng-redux';
 import { NgLodgingTypesFieldsConfig } from '../../ng-lodging-types-fields-config';
 
 @Component({
@@ -21,10 +21,9 @@ export class LodgingTypesCreateComponent extends DocumentRecordFormComponent<Lod
     public redux: NgSkysmackStore,
     public fieldsConfig: NgLodgingTypesFieldsConfig,
     public store: NgLodgingTypesStore,
-    public fieldActions: NgFieldActions,
-    public fieldStore: NgFieldStore
+    public fieldActions: NgFieldActions
   ) {
-    super(router, activatedRoute, editorNavService, actions, redux, store, fieldsConfig, fieldActions, fieldStore);
+    super(router, activatedRoute, editorNavService, actions, redux, store, fieldsConfig, fieldActions);
   }
 
   ngOnInit() {

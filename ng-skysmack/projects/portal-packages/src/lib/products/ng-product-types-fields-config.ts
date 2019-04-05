@@ -5,18 +5,23 @@ import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { ProductType } from '@skysmack/packages-products';
 import { Field } from '@skysmack/ng-ui';
 
-import { DocFieldsConfig, StringFieldComponent, HiddenFieldComponent } from '@skysmack/portal-ui';
+import { DocumentFieldsConfig, StringFieldComponent, HiddenFieldComponent } from '@skysmack/portal-ui';
 import { NgProductTypesValidation, LoadedPackage } from '@skysmack/ng-packages';
+import { NgFieldStore } from '@skysmack/ng-redux';
 
 @Injectable({ providedIn: 'root' })
-export class NgProductTypesFieldsConfig extends DocFieldsConfig<ProductType, number> {
+export class NgProductTypesFieldsConfig extends DocumentFieldsConfig<ProductType, number> {
     public validation = new NgProductTypesValidation();
 
     public formRules: FormRule[] = [];
 
-    constructor(public fieldProviders: FieldProviders) {
-        super(fieldProviders);
+    constructor(
+        public fieldProviders: FieldProviders,
+        public fieldsStore: NgFieldStore
+    ) {
+        super(fieldProviders, fieldsStore);
     }
+
 
     protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<ProductType, number>): Field[] {
         const fields = [

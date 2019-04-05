@@ -8,7 +8,7 @@ import { NgLodgingsActions } from '@skysmack/ng-packages';
 import { NgLodgingsStore } from '@skysmack/ng-packages';
 import { NgLodgingTypesActions } from '@skysmack/ng-packages';
 import { PagedQuery } from '@skysmack/framework';
-import { NgFieldActions, NgFieldStore } from '@skysmack/ng-redux';
+import { NgFieldActions } from '@skysmack/ng-redux';
 import { NgLodgingsFieldsConfig } from '../../ng-lodgings-fields-config';
 
 @Component({
@@ -27,10 +27,9 @@ export class LodgingsEditComponent extends DocumentRecordFormComponent<LodgingsA
     public redux: NgSkysmackStore,
     public fieldsConfig: NgLodgingsFieldsConfig,
     public store: NgLodgingsStore,
-    public fieldActions: NgFieldActions,
-    public fieldStore: NgFieldStore
+    public fieldActions: NgFieldActions
   ) {
-    super(router, activatedRoute, editorNavService, actions, redux, store, fieldsConfig, fieldActions, fieldStore);
+    super(router, activatedRoute, editorNavService, actions, redux, store, fieldsConfig, fieldActions);
   }
 
   ngOnInit() {

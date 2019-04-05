@@ -5,7 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { DocumentRecordFormComponent, EditorNavService } from '@skysmack/portal-ui';
 import { NgProductTypesActions } from '@skysmack/ng-packages';
 import { NgProductTypesStore } from '@skysmack/ng-packages';
-import { NgFieldActions, NgFieldStore } from '@skysmack/ng-redux';
+import { NgFieldActions } from '@skysmack/ng-redux';
 import { NgProductTypesFieldsConfig } from '../../ng-product-types-fields-config';
 
 @Component({
@@ -23,10 +23,9 @@ export class ProductTypesCreateComponent extends DocumentRecordFormComponent<Pro
     public redux: NgSkysmackStore,
     public fieldsConfig: NgProductTypesFieldsConfig,
     public store: NgProductTypesStore,
-    public fieldActions: NgFieldActions,
-    public fieldStore: NgFieldStore
+    public fieldActions: NgFieldActions
   ) {
-    super(router, activatedRoute, editorNavService, actions, redux, store, fieldsConfig, fieldActions, fieldStore);
+    super(router, activatedRoute, editorNavService, actions, redux, store, fieldsConfig, fieldActions);
   }
 
   ngOnInit() {
