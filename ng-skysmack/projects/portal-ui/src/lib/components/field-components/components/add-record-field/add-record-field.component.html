@@ -2,6 +2,6 @@
 
 
   <ss-dynamic-form *ngIf="addFields$" [fields$]="addFields$" [validation]="this.field.fieldsConfig.validation"
-    [rules]="this.field.fieldsConfig.formRules" [buttonText]="'Create'" (submitted)="onCreateSubmit($event)">
+    [rules]="this.field.fieldsConfig.formRules" [buttonText]="'Add'" (submitted)="onAddSubmit($event)">
   </ss-dynamic-form>
 </div>

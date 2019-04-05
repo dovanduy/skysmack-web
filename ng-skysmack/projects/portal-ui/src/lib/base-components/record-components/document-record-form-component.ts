@@ -1,17 +1,16 @@
 import { Router, ActivatedRoute } from '@angular/router';
 import { OnInit, OnDestroy } from '@angular/core';
-import { Record, LocalObject } from '@skysmack/framework';
+import { Record, LocalObject, defined } from '@skysmack/framework';
 import { EditorNavService } from './../../components/common/container/editor-nav.service';
 import { NgSkysmackStore, LoadedPackage } from '@skysmack/ng-packages';
 import { EntityActions, EntityStore } from '@skysmack/redux';
 import { RecordFormComponent } from './record-form-component';
 import { NgFieldActions } from '@skysmack/ng-redux';
-import { map, switchMap } from 'rxjs/operators';
-import { combineLatest, Observable } from 'rxjs';
+import { map, switchMap, take, mergeMap, } from 'rxjs/operators';
+import { combineLatest, Observable, zip } from 'rxjs';
 import { EntityFieldsConfig } from '../../fields/entity-fields-config';
 
 export class DocumentRecordFormComponent<TAppState, TRecord extends Record<TKey>, TKey> extends RecordFormComponent<TAppState, TRecord, TKey> implements OnInit, OnDestroy {
-
     constructor(
         public router: Router,
         public activatedRoute: ActivatedRoute,
@@ -31,15 +30,19 @@ export class DocumentRecordFormComponent<TAppState, TRecord extends Record<TKey>
     }
 
     protected setCreateFields() {
+        // this.skysmackStore.getEditorItem(). subscribe(x => console.log('editor'));
+        //     this.loadedPackage$.subscribe(x => console.log('loaded'));
         this.fields$ = combineLatest(
             this.skysmackStore.getEditorItem(),
             this.loadedPackage$
         ).pipe(
             switchMap(values => {
+                console.log('setCreateFields stream');
                 this.editorItem = values[0] as LocalObject<TRecord, TKey>;
                 const loadedPackage = values[1];
                 return this.fieldsConfig.getFields(loadedPackage, this.editorItem);
-            })
+            }),
+            take(1)
         );
     }
 

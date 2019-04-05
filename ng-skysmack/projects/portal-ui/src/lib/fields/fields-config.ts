@@ -13,17 +13,15 @@ export abstract class FieldsConfig<TRecord, TKey> implements EntityFieldsConfig<
     constructor(public fieldProviders: FieldProviders) { }
 
     public getFields(loadedPackage: LoadedPackage, entity?: LocalObject<TRecord, TKey>): Observable<Field[]> {
+        console.log('am I called many times?');
         return this.getRecordFields(loadedPackage, entity).pipe(
             map(fields => this.addValidationErrors(fields, entity).sort((a, b) => a.order - b.order))
         );
     }
 
     protected getRecordFields(loadedPackage: LoadedPackage, entity?: LocalObject<TRecord, TKey>): Observable<Field[]> {
-        return combineLatest(
-            of(this.getStaticFields(loadedPackage, entity)),
-            this.getProvidedFields(loadedPackage)
-        ).pipe(
-            map(values => values[0].concat(values[1]))
+        return this.getProvidedFields(loadedPackage).pipe(
+            map(values => this.getStaticFields(loadedPackage, entity).concat(values))
         );
     }
 
@@ -53,27 +51,22 @@ export abstract class FieldsConfig<TRecord, TKey> implements EntityFieldsConfig<
     }
 
     private getProvidedFields(loadedPackage: LoadedPackage): Observable<Field[]> {
-        console.log(JSON.stringify(this.fieldProviders, undefined, 2));
-        // Object.keys(this.fieldProviders.providers).forEach(key =>
-        //     console.log('key', key, loadedPackage.packageManifest.id, key === loadedPackage.packageManifest.id)
-        // );
-        console.log(this.fieldProviders.providers)
-        const providers = Array.isArray(this.fieldProviders.providers[loadedPackage.packageManifest.id]) ? this.fieldProviders.providers[loadedPackage.packageManifest.id] : [];
-        console.log('providers', providers);
-        if (providers && providers.length > 0) {
-            console.log('provided fields');
-            return combineLatest(
-                providers.map(provider => {
-                    console.log('getProvidedFields', loadedPackage);
-                    return provider.getFields(loadedPackage._package.path);
-                })
-            ).pipe(
-                map((values: [Field[]]) => {
-                    return values.reduce((acc: Field[], cur: Field[]) => acc.concat(cur), []);
-                })
-            );
+        if (this.fieldProviders) {
+            const providers = this.fieldProviders.providers[loadedPackage.packageManifest.id];
+            if (providers && providers.length > 0) {
+                return combineLatest(
+                    providers.map(provider => {
+                        return provider.getFields(loadedPackage._package.path);
+                    })
+                ).pipe(
+                    map((values: [Field[]]) => {
+                        return values.reduce((acc: Field[], cur: Field[]) => acc.concat(cur), []);
+                    })
+                );
+            } else {
+                return of([]);
+            }
         } else {
-            console.log('no provided fields');
             return of([]);
         }
     }

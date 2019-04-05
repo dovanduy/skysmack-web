@@ -26,7 +26,7 @@ export class AddRecordFieldComponent extends FieldBaseComponent<AddField> implem
     );
   }
 
-  public onCreateSubmit(fh: FormHelper) {
+  public onAddSubmit(fh: FormHelper) {
     console.log(this.fh.form);
   }
 

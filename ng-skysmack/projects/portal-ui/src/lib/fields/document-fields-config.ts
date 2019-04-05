@@ -26,6 +26,9 @@ export abstract class DocumentFieldsConfig<TRecord, TKey> extends FieldsConfig<T
     }
 
     public getFields(loadedPackage: LoadedPackage, entity?: LocalObject<TRecord, TKey>): Observable<Field[]> {
+        console.log('am I called many times?');
+        this.getRecordFields(loadedPackage, entity).subscribe();
+
         return combineLatest(
             this.getRecordFields(loadedPackage, entity),
             this.fieldsStore.get(loadedPackage._package.path)
