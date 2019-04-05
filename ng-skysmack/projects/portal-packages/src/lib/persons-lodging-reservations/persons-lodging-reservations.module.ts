@@ -7,8 +7,9 @@ import { PortalUiModule, HttpLoaderFactory, FieldsModule } from '@skysmack/porta
 import { TranslateLoader } from '@ngx-translate/core';
 import { NgPersonsLodgingReservationsModule } from '@skysmack/ng-packages';
 import { PersonsLodgingReservationsRoutingModule } from './persons-lodging-reservations-routing.module';
-import { FieldProviders } from '@skysmack/ng-ui';
+import { FieldProviders } from '@skysmack/portal-ui';
 import { NgPersonsLodgingReservationsFieldProvider } from './ng-persons-lodgings-reservations-field-provider';
+import { LodgingReservationsType } from '@skysmack/packages-lodging-reservations';
 
 @NgModule({
   imports: [
@@ -35,6 +36,6 @@ export class PersonsLodgingReservationsModule {
     fieldProviders: FieldProviders,
     personsLodgingsReservationsFieldProvider: NgPersonsLodgingReservationsFieldProvider,
   ) {
-    fieldProviders.add(personsLodgingsReservationsFieldProvider);
+    fieldProviders.add(LodgingReservationsType.id, personsLodgingsReservationsFieldProvider);
   }
 }

@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { LocalObject, Package } from '@skysmack/framework';
-import { FormRule, Field, CustomValidators, SetPathRule, SelectField, FieldProviders } from '@skysmack/ng-ui';
+import { FormRule, Field, CustomValidators, SetPathRule, SelectField } from '@skysmack/ng-ui';
 import { PackagesValidation, LoadedPackage, NgPackagesStore } from '@skysmack/ng-packages';
 import { FieldsConfig, StringFieldComponent, SelectFieldComponent, HiddenFieldComponent, PackageDependenciesFieldComponent } from '@skysmack/portal-ui';
+import { FieldProviders } from '@skysmack/portal-ui';
 
 @Injectable({ providedIn: 'root' })
 export class NgPackagesFieldsConfig extends FieldsConfig<Package, string> {

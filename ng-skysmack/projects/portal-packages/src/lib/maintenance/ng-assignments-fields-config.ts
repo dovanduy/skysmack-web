@@ -3,9 +3,10 @@ import { Validators } from '@angular/forms';
 import { LocalObject, LocalObjectStatus, EnumHelpers } from '@skysmack/framework';
 import { Assignment } from '@skysmack/packages-maintenance';
 import { NgAssignmentsValidation, LoadedPackage, NgAssignmentTypesStore } from '@skysmack/ng-packages';
-import { FormRule, Field, SelectField, FieldProviders } from '@skysmack/ng-ui';
+import { FormRule, Field, SelectField } from '@skysmack/ng-ui';
 import { FieldsConfig, StringFieldComponent, SelectFieldComponent, HiddenFieldComponent, DateTimeFieldComponent } from '@skysmack/portal-ui';
 import { of } from 'rxjs';
+import { FieldProviders } from '@skysmack/portal-ui';
 
 @Injectable({ providedIn: 'root' })
 export class NgAssignmentsFieldsConfig extends FieldsConfig<Assignment, number> {

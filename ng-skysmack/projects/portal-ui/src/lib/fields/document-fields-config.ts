@@ -1,5 +1,5 @@
 import { LocalObject, FieldSchemaViewModel } from '@skysmack/framework';
-import { Field, FieldTypes, FieldProviders } from '@skysmack/ng-ui';
+import { Field, FieldTypes } from '@skysmack/ng-ui';
 import { IntFieldComponent } from '../components/field-components/components/int-field/int-field.component';
 import { Type } from '@angular/core';
 import { LimitedStringFieldComponent } from '../components/field-components/components/limited-string-field/limited-string-field.component';
@@ -13,7 +13,9 @@ import { FieldsConfig } from './fields-config';
 import { Observable, combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
 
+
 import { NgFieldStore } from '@skysmack/ng-redux';
+import { FieldProviders } from './field-providers';
 
 export abstract class DocumentFieldsConfig<TRecord, TKey> extends FieldsConfig<TRecord, TKey> {
     constructor(

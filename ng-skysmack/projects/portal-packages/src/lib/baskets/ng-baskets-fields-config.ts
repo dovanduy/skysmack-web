@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
-import { FormRule, FieldProviders } from '@skysmack/ng-ui';
+import { FormRule } from '@skysmack/ng-ui';
 import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { Basket } from '@skysmack/packages-baskets';
 import { Field } from '@skysmack/ng-ui';
 
 import { BasketsValidation, LoadedPackage } from '@skysmack/ng-packages';
 import { FieldsConfig, StringFieldComponent, HiddenFieldComponent } from '@skysmack/portal-ui';
+import { FieldProviders } from '@skysmack/portal-ui';
 
 @Injectable({ providedIn: 'root' })
 export class NgBasketsFieldsConfig extends FieldsConfig<Basket, number> {

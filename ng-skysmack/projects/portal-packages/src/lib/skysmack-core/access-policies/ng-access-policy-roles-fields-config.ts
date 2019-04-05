@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { FormRule, SelectField, FieldProviders } from '@skysmack/ng-ui';
+import { FormRule, SelectField } from '@skysmack/ng-ui';
 import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { Field } from '@skysmack/ng-ui';
 
@@ -8,6 +8,7 @@ import { AccessPolicyRole, AccessPolicyRoleKey } from '@skysmack/packages-skysma
 import { Validators } from '@angular/forms';
 import { SelectFieldOption } from '@skysmack/ng-ui';
 import { AccessPolicyRolesValidation, LoadedPackage, NgAccessPolicyRulesStore } from '@skysmack/ng-packages';
+import { FieldProviders } from '@skysmack/portal-ui';
 
 @Injectable({ providedIn: 'root' })
 export class NgAccessPolicyRolesFieldsConfig extends FieldsConfig<AccessPolicyRole, AccessPolicyRoleKey> {

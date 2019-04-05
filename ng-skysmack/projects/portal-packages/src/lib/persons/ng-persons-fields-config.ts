@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
-import { FormRule, FieldProviders } from '@skysmack/ng-ui';
+import { FormRule } from '@skysmack/ng-ui';
 import { SetDisplayNameRule } from '@skysmack/ng-ui';
 import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { Person } from '@skysmack/packages-persons';
@@ -9,6 +9,7 @@ import { Field } from '@skysmack/ng-ui';
 import { StringFieldComponent, HiddenFieldComponent } from '@skysmack/portal-ui';
 import { NgPersonsValidation, LoadedPackage } from '@skysmack/ng-packages';
 import { DocumentFieldsConfig } from '@skysmack/portal-ui';
+import { FieldProviders } from '@skysmack/portal-ui';
 import { NgFieldStore } from '@skysmack/ng-redux';
 
 @Injectable({ providedIn: 'root' })

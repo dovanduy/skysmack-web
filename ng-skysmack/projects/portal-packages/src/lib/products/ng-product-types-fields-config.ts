@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
-import { FormRule, FieldProviders } from '@skysmack/ng-ui';
+import { FormRule } from '@skysmack/ng-ui';
 import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { ProductType } from '@skysmack/packages-products';
 import { Field } from '@skysmack/ng-ui';
@@ -8,6 +8,7 @@ import { Field } from '@skysmack/ng-ui';
 import { DocumentFieldsConfig, StringFieldComponent, HiddenFieldComponent } from '@skysmack/portal-ui';
 import { NgProductTypesValidation, LoadedPackage } from '@skysmack/ng-packages';
 import { NgFieldStore } from '@skysmack/ng-redux';
+import { FieldProviders } from '@skysmack/portal-ui';
 
 @Injectable({ providedIn: 'root' })
 export class NgProductTypesFieldsConfig extends DocumentFieldsConfig<ProductType, number> {

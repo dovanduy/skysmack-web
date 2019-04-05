@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
-import { FormRule, Field, FieldProviders } from '@skysmack/ng-ui';
+import { FormRule, Field } from '@skysmack/ng-ui';
 import { LocalObject } from '@skysmack/framework';
 import { PasswordSettings } from '@skysmack/packages-identities';
 import { NgPasswordSettingsValidation, LoadedPackage } from '@skysmack/ng-packages';
 import { FieldsConfig, CheckboxFieldComponent, IntFieldComponent } from '@skysmack/portal-ui';
+import { FieldProviders } from '@skysmack/portal-ui';
 
 @Injectable({ providedIn: 'root' })
 export class NgPasswordSettingsFieldsConfig extends FieldsConfig<PasswordSettings, unknown> {

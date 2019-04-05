@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
-import { FormRule, SetFieldKeyRule, FieldProviders } from '@skysmack/ng-ui';
-import { LocalObject, FieldSchemaViewModel, log } from '@skysmack/framework';
+import { FormRule, SetFieldKeyRule } from '@skysmack/ng-ui';
+import { LocalObject, FieldSchemaViewModel } from '@skysmack/framework';
 import { Field } from '@skysmack/ng-ui';
 import { FieldsValidation } from './ng-fields-validation';
 import { SelectField } from '@skysmack/ng-ui';
@@ -12,6 +12,7 @@ import { ValidatorsFieldComponent } from '../components/field-components/compone
 import { FieldPermissionFieldComponent } from '../components/field-components/components/field-permission-field/field-permission-field.component';
 import { NgFieldStore } from '@skysmack/ng-redux';
 import { LoadedPackage } from '@skysmack/ng-packages';
+import { FieldProviders } from './field-providers';
 
 @Injectable({ providedIn: 'root' })
 export class NgFieldsConfig extends FieldsConfig<FieldSchemaViewModel, string> {

@@ -1,9 +1,10 @@
 import { LocalObject } from '@skysmack/framework';
-import { FormRule, Validation, Field, FieldProviders } from '@skysmack/ng-ui';
+import { FormRule, Validation, Field } from '@skysmack/ng-ui';
 import { LoadedPackage } from '@skysmack/ng-packages';
 import { EntityFieldsConfig } from './entity-fields-config';
 import { Observable, combineLatest, of } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { FieldProviders } from './field-providers';
 
 export abstract class FieldsConfig<TRecord, TKey> implements EntityFieldsConfig<TRecord, TKey> {
     public abstract formRules: FormRule[];
@@ -20,7 +21,7 @@ export abstract class FieldsConfig<TRecord, TKey> implements EntityFieldsConfig<
     protected getRecordFields(loadedPackage: LoadedPackage, entity?: LocalObject<TRecord, TKey>): Observable<Field[]> {
         return combineLatest(
             of(this.getStaticFields(loadedPackage, entity)),
-            this.getProvidedFields(loadedPackage._package.path)
+            this.getProvidedFields(loadedPackage)
         ).pipe(
             map(values => values[0].concat(values[1]))
         );
@@ -51,15 +52,29 @@ export abstract class FieldsConfig<TRecord, TKey> implements EntityFieldsConfig<
         }
     }
 
-    private getProvidedFields(packagePath: string): Observable<Field[]> {
-        return combineLatest(
-            this.fieldProviders.providers.map(provider => {
-                return provider.getFields(packagePath);
-            })
-        ).pipe(
-            map((values: [Field[]]) => {
-                return values.reduce((acc: Field[], cur: Field[]) => acc.concat(cur), []);
-            })
-        );
+    private getProvidedFields(loadedPackage: LoadedPackage): Observable<Field[]> {
+        console.log(JSON.stringify(this.fieldProviders, undefined, 2));
+        // Object.keys(this.fieldProviders.providers).forEach(key =>
+        //     console.log('key', key, loadedPackage.packageManifest.id, key === loadedPackage.packageManifest.id)
+        // );
+        console.log(this.fieldProviders.providers)
+        const providers = Array.isArray(this.fieldProviders.providers[loadedPackage.packageManifest.id]) ? this.fieldProviders.providers[loadedPackage.packageManifest.id] : [];
+        console.log('providers', providers);
+        if (providers && providers.length > 0) {
+            console.log('provided fields');
+            return combineLatest(
+                providers.map(provider => {
+                    console.log('getProvidedFields', loadedPackage);
+                    return provider.getFields(loadedPackage._package.path);
+                })
+            ).pipe(
+                map((values: [Field[]]) => {
+                    return values.reduce((acc: Field[], cur: Field[]) => acc.concat(cur), []);
+                })
+            );
+        } else {
+            console.log('no provided fields');
+            return of([]);
+        }
     }
 }

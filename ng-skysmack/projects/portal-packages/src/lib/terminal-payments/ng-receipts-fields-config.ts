@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
-import { FormRule, FieldProviders } from '@skysmack/ng-ui';
+import { FormRule } from '@skysmack/ng-ui';
 import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { Receipt } from '@skysmack/packages-terminal-payments';
 import { Field } from '@skysmack/ng-ui';
-
 import { FieldsConfig, StringFieldComponent, HiddenFieldComponent } from '@skysmack/portal-ui';
 import { NgReceiptsValidation, LoadedPackage } from '@skysmack/ng-packages';
+import { FieldProviders } from '@skysmack/portal-ui';
 
 @Injectable({ providedIn: 'root' })
 export class NgReceiptsFieldsConfig extends FieldsConfig<Receipt, number> {

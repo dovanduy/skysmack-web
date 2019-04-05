@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { FieldProvider, Field, SelectField } from '@skysmack/ng-ui';
+import { Field, SelectField } from '@skysmack/ng-ui';
 import { map, switchMap } from 'rxjs/operators';
 import { PersonsLodgingReservationsType, PersonsLodgingReservationsSettings } from '@skysmack/packages-persons-lodging-reservations';
 import { Observable, combineLatest, of } from 'rxjs';
@@ -8,6 +8,7 @@ import { NgSettingsActions, NgSettingsStore } from '@skysmack/ng-redux';
 import { NgPersonsStore, NgPersonsActions, NgSkysmackStore } from '@skysmack/ng-packages';
 import { MultiSelectFieldComponent, AddField, AddRecordFieldComponent } from '@skysmack/portal-ui';
 import { NgPersonsFieldsConfig } from '../persons/ng-persons-fields-config';
+import { FieldProvider } from '@skysmack/portal-ui';
 
 @Injectable({ providedIn: 'root' })
 export class NgPersonsLodgingReservationsFieldProvider extends FieldProvider {
@@ -27,66 +28,59 @@ export class NgPersonsLodgingReservationsFieldProvider extends FieldProvider {
 
     public getFields(packagePath: string): Observable<Field[]> {
         return this.skysmackStore.getPackages().pipe(
-            map(packages => packages.filter(_package => _package.object.type === PersonsLodgingReservationsType.id)),
+            map(packages => packages.filter(_package => _package.object.type === PersonsLodgingReservationsType.id && _package.object.dependencies[1] === packagePath)),
             switchMap(packages => {
                 const fieldStreams$ = packages.map(_package => {
-                    if (_package.object.dependencies[1] === packagePath) {
+                    console.log(packagePath, _package);
+                    // TODO: Do something about requests only being done once (but beware they aren't fired more than once pr. "component life time")
 
-                        // TODO: Do something about requests only being done once (but beware they aren't fired more than once pr. "component life time")
-
-                        // Request the package settings - only ONCE per. package per. app lifetime.
-                        const depPackagePath = _package.object.path;
-                        if (!this.requested[depPackagePath]) {
-                            this.settingsActions.get(depPackagePath, 'persons-reservations');
-                            this.requested[depPackagePath] = true;
-                        }
-
-                        // Request the pesons - only ONCE per. package per. app lifetime.
-                        const personsPackagePath = _package.object.dependencies[0];
-                        if (!this.requested[personsPackagePath]) {
-                            this.personsActions.getPaged(personsPackagePath, new PagedQuery());
-                            this.requested[personsPackagePath] = true;
-                        }
-
-                        return this.settingsStore.get<PersonsLodgingReservationsSettings>(depPackagePath, 'persons-reservations').pipe(
-                            map(settings => {
-                                const addField = new AddField({
-                                    component: AddRecordFieldComponent,
-                                    actions: this.personsActions,
-                                    store: this.personsStore,
-                                    fieldsConfig: this.personsFieldsConfig,
-                                    dynamicFields: true,
-                                    titleTranslationString: 'PERSONS.CREATE.CREATE',
-                                    value: undefined,
-                                    key: 'extendedData.' + _package.object.path + '.add',
-                                    label: personsPackagePath,
-                                    placeholder: personsPackagePath,
-                                    order: 4,
-                                    showColumn: true
-                                });
-
-                                const selectField = new SelectField({
-                                    component: MultiSelectFieldComponent,
-                                    value: undefined,
-                                    key: 'extendedData.' + _package.object.path + '.attach',
-                                    optionsData$: this.personsStore.get(personsPackagePath),
-                                    displayNameSelector: 'object.displayName',
-                                    label: personsPackagePath,
-                                    placeholder: personsPackagePath,
-                                    order: 4,
-                                    showColumn: true
-                                });
-
-                                switch (settings.object.shouldBeExistingPersons) {
-                                    case true: return [selectField];
-                                    case false: return [addField];
-                                    default: return [selectField, addField];
-                                }
-                            })
-                        );
-                    } else {
-                        return of([]);
+                    // Request the package settings - only ONCE per. package per. app lifetime.
+                    const depPackagePath = _package.object.path;
+                    if (!this.requested[depPackagePath]) {
+                        this.settingsActions.get(depPackagePath, 'persons-reservations');
+                        this.requested[depPackagePath] = true;
                     }
+
+                    // Request the pesons - only ONCE per. package per. app lifetime.
+                    const personsPackagePath = _package.object.dependencies[0];
+                    if (!this.requested[personsPackagePath]) {
+                        this.personsActions.getPaged(personsPackagePath, new PagedQuery());
+                        this.requested[personsPackagePath] = true;
+                    }
+
+                    return this.settingsStore.get<PersonsLodgingReservationsSettings>(depPackagePath, 'persons-reservations').pipe(
+                        map(settings => {
+                            const addField = new AddField({
+                                component: AddRecordFieldComponent,
+                                actions: this.personsActions,
+                                store: this.personsStore,
+                                fieldsConfig: this.personsFieldsConfig,
+                                packagePath,
+                                value: undefined,
+                                key: 'extendedData.' + _package.object.path + '.add',
+                                label: personsPackagePath,
+                                placeholder: personsPackagePath,
+                                order: 4
+                            });
+
+                            const selectField = new SelectField({
+                                component: MultiSelectFieldComponent,
+                                value: undefined,
+                                key: 'extendedData.' + _package.object.path + '.attach',
+                                optionsData$: this.personsStore.get(personsPackagePath),
+                                displayNameSelector: 'object.displayName',
+                                label: personsPackagePath,
+                                placeholder: personsPackagePath,
+                                order: 4
+                            });
+
+                            switch (settings.object.shouldBeExistingPersons) {
+                                case true: return [selectField];
+                                case false: return [addField];
+                                default: return [selectField, addField];
+                            }
+                        })
+                    );
                 });
 
                 return combineLatest(fieldStreams$);

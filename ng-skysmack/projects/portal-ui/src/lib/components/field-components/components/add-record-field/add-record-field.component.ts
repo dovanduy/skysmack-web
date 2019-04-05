@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FieldBaseComponent } from '../field-base-component';
 import { AddField } from '../../../../fields/add-field';
-import { NgFieldActions, NgFieldStore } from '@skysmack/ng-redux';
 import { FormHelper, Field } from '@skysmack/ng-ui';
 import { Observable, of } from 'rxjs';
+import { NgSkysmackStore } from '@skysmack/ng-packages';
+import { switchMap, take } from 'rxjs/operators';
 
 @Component({
   selector: 'ss-add-record-field',
@@ -13,16 +14,16 @@ export class AddRecordFieldComponent extends FieldBaseComponent<AddField> implem
 
   public addFields$: Observable<Field[]>;
 
-  constructor(
-
-  ) {
+  constructor(public skysmackStore: NgSkysmackStore) {
     super();
   }
 
   ngOnInit() {
     super.ngOnInit();
     const addField = this.field as AddField;
-    this.addFields$ = of([]); // addField.fieldsConfig.getFields();
+    this.addFields$ = this.skysmackStore.getCurrentPackage(addField.packagePath).pipe(
+      switchMap(loadedPackage => addField.fieldsConfig.getFields(loadedPackage)),
+    );
   }
 
   public onCreateSubmit(fh: FormHelper) {

@@ -3,13 +3,10 @@ import { Validators } from '@angular/forms';
 import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { MaintenanceState, MaintenanceEntityStatus } from '@skysmack/packages-maintenance';
 import { NgMaintenanceStatesValidation, LoadedPackage } from '@skysmack/ng-packages';
-import { FormRule, Field, SelectField, FieldProviders } from '@skysmack/ng-ui';
+import { FormRule, Field, SelectField } from '@skysmack/ng-ui';
 import { FieldsConfig, StringFieldComponent, SelectFieldComponent, HiddenFieldComponent } from '@skysmack/portal-ui';
 import { of } from 'rxjs';
-
-export interface NgMaintenanceStateFormDependencies {
-    availableMaintenanceStates: LocalObject<MaintenanceState, number>[];
-}
+import { FieldProviders } from '@skysmack/portal-ui';
 
 @Injectable({ providedIn: 'root' })
 export class NgMaintenanceStatesFieldsConfig extends FieldsConfig<MaintenanceState, number> {

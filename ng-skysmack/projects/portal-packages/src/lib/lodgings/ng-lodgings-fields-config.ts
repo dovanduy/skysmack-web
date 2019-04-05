@@ -1,14 +1,11 @@
 import { Lodging, LodgingType } from '@skysmack/packages-lodgings';
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
-import { FormRule, Field, SelectField, FieldProviders } from '@skysmack/ng-ui';
+import { FormRule, Field, SelectField } from '@skysmack/ng-ui';
 import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { NgLodgingsValidation, NgLodgingTypesStore, LoadedPackage } from '@skysmack/ng-packages';
 import { FieldsConfig, StringFieldComponent, SelectFieldComponent, HiddenFieldComponent, CheckboxFieldComponent } from '@skysmack/portal-ui';
-
-export interface NgLodgingFormDependencies {
-    availableLodgingTypes: LocalObject<LodgingType, number>[];
-}
+import { FieldProviders } from '@skysmack/portal-ui';
 
 @Injectable({ providedIn: 'root' })
 export class NgLodgingsFieldsConfig extends FieldsConfig<Lodging, number> {

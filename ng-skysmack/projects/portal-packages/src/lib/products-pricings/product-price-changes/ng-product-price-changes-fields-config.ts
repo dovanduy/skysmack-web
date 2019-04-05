@@ -2,10 +2,11 @@ import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { ProductPriceChange, PriceChangeType } from '@skysmack/packages-products-pricings';
-import { FormRule, SelectField, Field, FieldProviders } from '@skysmack/ng-ui';
+import { FormRule, SelectField, Field } from '@skysmack/ng-ui';
 import { NgProductPriceChangesValidation, LoadedPackage, NgProductsSalesPriceStore } from '@skysmack/ng-packages';
 import { FieldsConfig, SelectFieldComponent, HiddenFieldComponent, DecimalFieldComponent, DateTimeFieldComponent } from '@skysmack/portal-ui';
 import { of } from 'rxjs';
+import { FieldProviders } from '@skysmack/portal-ui';
 
 @Injectable({ providedIn: 'root' })
 export class NgProductPriceChangesFieldsConfig extends FieldsConfig<ProductPriceChange, number> {

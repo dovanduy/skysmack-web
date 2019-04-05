@@ -12,7 +12,6 @@ import {
 import { LodgingReservation, LodgingReservationsAppState } from '@skysmack/packages-lodging-reservations';
 import { RecordFormComponent, EditorNavService } from '@skysmack/portal-ui';
 import { PagedQuery, defined } from '@skysmack/framework';
-import { FieldProviders } from '@skysmack/ng-ui';
 import { NgLodgingReservationsFieldsConfig } from '../../ng-lodging-reservations-fields-config';
 
 @Component({
@@ -30,8 +29,7 @@ export class LodgingsReservationsCreateComponent extends RecordFormComponent<Lod
     public actions: NgLodgingReservationsActions,
     public lodgingsActions: NgLodgingsActions,
     public lodgingTypesActions: NgLodgingTypesActions,
-    public fieldsConfig: NgLodgingReservationsFieldsConfig,
-    public fieldProviders: FieldProviders
+    public fieldsConfig: NgLodgingReservationsFieldsConfig
   ) {
     super(router, activatedRoute, editorNavService, actions, skysmackStore, store, fieldsConfig);
   }

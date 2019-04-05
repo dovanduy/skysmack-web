@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
-import { FormRule, CustomValidators, Field, FieldProviders } from '@skysmack/ng-ui';
+import { FormRule, CustomValidators, Field } from '@skysmack/ng-ui';
 import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { User } from '@skysmack/packages-identities';
 import { NgUsersValidation, LoadedPackage } from '@skysmack/ng-packages';
 import { FieldsConfig, HiddenFieldComponent, PasswordFieldComponent, EmailFieldComponent } from '@skysmack/portal-ui';
+import { FieldProviders } from '@skysmack/portal-ui';
 
 @Injectable({ providedIn: 'root' })
 export class NgUsersFieldsConfig extends FieldsConfig<User, number> {
