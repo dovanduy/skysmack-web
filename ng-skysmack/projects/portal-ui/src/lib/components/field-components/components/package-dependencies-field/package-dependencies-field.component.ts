@@ -74,7 +74,7 @@ export class PackageDependenciesFieldComponent extends FieldBaseComponent<Field>
         depTypes ? this.showBoxes = true : this.showBoxes = false;
         return depTypes;
       }),
-      notNull<string[]>()
+      notNull()
     );
 
     this.selectBoxes$ = combineLatest(

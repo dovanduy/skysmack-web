@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Field, SelectField } from '@skysmack/ng-ui';
 import { map, switchMap } from 'rxjs/operators';
 import { PersonsLodgingReservationsType, PersonsLodgingReservationsSettings } from '@skysmack/packages-persons-lodging-reservations';
-import { Observable, combineLatest, of } from 'rxjs';
+import { Observable, combineLatest } from 'rxjs';
 import { StrIndex, PagedQuery } from '@skysmack/framework';
 import { NgSettingsActions, NgSettingsStore } from '@skysmack/ng-redux';
 import { NgPersonsStore, NgPersonsActions, NgSkysmackStore } from '@skysmack/ng-packages';

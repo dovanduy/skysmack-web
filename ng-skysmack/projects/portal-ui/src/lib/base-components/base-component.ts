@@ -1,4 +1,4 @@
-import { SubscriptionHandler, defined } from '@skysmack/framework';
+import { SubscriptionHandler } from '@skysmack/framework';
 import { LoadedPackage, NgSkysmackStore } from '@skysmack/ng-packages';
 import { Observable } from 'rxjs';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -56,7 +56,7 @@ export class BaseComponent<TAppState, TKey> implements OnInit, OnDestroy {
     }
 
     private getCurrentPackage() {
-        this.loadedPackage$ = this.skysmackStore.getCurrentPackage(this.packagePath).pipe(defined(), take(1));
+        this.loadedPackage$ = this.skysmackStore.getCurrentPackage(this.packagePath);
     }
 
     private setPackagePath() {
