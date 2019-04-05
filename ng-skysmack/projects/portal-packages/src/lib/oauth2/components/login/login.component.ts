@@ -65,7 +65,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   public createForm() {
-    this.fields$ = of(this.fieldsConfig.getStaticFields(undefined));
+    this.fields$ = this.fieldsConfig.getFields(undefined);
   }
 
   public onSubmit(fh: FormHelper) {

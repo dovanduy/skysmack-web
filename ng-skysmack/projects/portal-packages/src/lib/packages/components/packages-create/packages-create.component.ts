@@ -7,7 +7,7 @@ import { BaseComponent } from '@skysmack/portal-ui';
 import { PackagesAppState } from '@skysmack/packages-skysmack-core';
 import { FormHelper } from '@skysmack/ng-ui';
 import { LocalObjectStatus, toLocalObject, Package } from '@skysmack/framework';
-import { map } from 'rxjs/operators';
+import { map, switchMap } from 'rxjs/operators';
 import { NgPackagesFieldsConfig } from '../../ng-packages-fields-config';
 
 @Component({
@@ -31,7 +31,7 @@ export class PackagesCreateComponent extends BaseComponent<PackagesAppState, str
   ngOnInit() {
     super.ngOnInit();
     this.actions.getAvailablePackages();
-    this.fields$ = this.loadedPackage$.pipe(map(loadedPackage => this.fieldsConfig.getStaticFields(loadedPackage)));
+    this.fields$ = this.loadedPackage$.pipe(switchMap(loadedPackage => this.fieldsConfig.getFields(loadedPackage)));
     this.editorNavService.showEditorNav();
   }
 

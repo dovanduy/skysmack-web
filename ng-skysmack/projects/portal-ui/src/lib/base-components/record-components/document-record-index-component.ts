@@ -2,13 +2,14 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { EntityActions, EntityStore } from '@skysmack/redux';
 import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { OnInit } from '@angular/core';
-import { Record, getFieldStateKey } from '@skysmack/framework';
+import { Record, getFieldStateKey, log } from '@skysmack/framework';
 import { RecordIndexComponent } from './record-index-component';
 import { NgFieldActions } from '@skysmack/ng-redux';
 import { map, switchMap } from 'rxjs/operators';
 import { NgFieldStore } from '@skysmack/ng-redux';
 import { combineLatest } from 'rxjs';
 import { EntityFieldsConfig } from '../../fields/entity-fields-config';
+import { Field } from '@skysmack/ng-ui';
 
 export class DocumentRecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey> extends RecordIndexComponent<TAppState, TRecord, TKey> implements OnInit {
 

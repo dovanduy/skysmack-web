@@ -10,7 +10,7 @@ import { Field } from '@skysmack/ng-ui';
 import { FormHelper } from '@skysmack/ng-ui';
 import { Package, LocalObject, toLocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { combineLatest } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, switchMap } from 'rxjs/operators';
 import { NgPackagesFieldsConfig } from '../../ng-packages-fields-config';
 
 @Component({
@@ -44,10 +44,10 @@ export class PackagesEditComponent extends BaseComponent<PackagesAppState, strin
       this.store.getSingle(this.entityId),
       this.store.getAvailablePackages()
     ).pipe(
-      map(values => {
+      switchMap(values => {
         const [_package, availablePackages] = values;
         this.selectedPackage = _package;
-        return this.fieldsConfig.getStaticFields(undefined, _package);
+        return this.fieldsConfig.getFields(undefined, _package);
       })
     );
 

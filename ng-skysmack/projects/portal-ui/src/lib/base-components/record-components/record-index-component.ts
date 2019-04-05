@@ -2,11 +2,11 @@ import { BaseComponent } from '../base-component';
 import { Router, ActivatedRoute } from '@angular/router';
 import { EntityActions, EntityStore } from '@skysmack/redux';
 import { NgSkysmackStore } from '@skysmack/ng-packages';
-import { LocalObject, LocalPage, PagedQuery, LoadingState, hasValue, StrIndex, LocalPageTypes, linq, DisplayColumn, log } from '@skysmack/framework';
+import { LocalObject, LocalPage, PagedQuery, LoadingState, hasValue, StrIndex, LocalPageTypes, linq, DisplayColumn } from '@skysmack/framework';
 import { Observable, BehaviorSubject, combineLatest } from 'rxjs';
 import { OnInit } from '@angular/core';
 import { Record } from '@skysmack/framework';
-import { map } from 'rxjs/operators';
+import { map, switchMap } from 'rxjs/operators';
 import { EntityFieldsConfig } from '../../fields/entity-fields-config';
 
 export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey> extends BaseComponent<TAppState, TKey> implements OnInit {
@@ -61,7 +61,7 @@ export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey>
 
     protected setFields() {
         this.fields$ = this.loadedPackage$.pipe(
-            map(loadedPackage => this.fieldsConfig.getStaticFields(loadedPackage))
+            switchMap(loadedPackage => this.fieldsConfig.getFields(loadedPackage))
         );
     }
 

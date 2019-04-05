@@ -5,7 +5,7 @@ import { RecurringAssignment } from '@skysmack/packages-maintenance';
 import { NgRecurringAssignmentsValidation, LoadedPackage, NgAssignmentTypesStore } from '@skysmack/ng-packages';
 import { FormRule, SelectField, Field } from '@skysmack/ng-ui';
 import { FieldsConfig, SelectFieldComponent, HiddenFieldComponent, DateFieldComponent } from '@skysmack/portal-ui';
-import { FieldProviders } from 'ng-ui/src/lib';
+import { FieldProviders } from '@skysmack/ng-ui';
 
 @Injectable({ providedIn: 'root' })
 export class NgRecurringAssignmentsFieldsConfig extends FieldsConfig<RecurringAssignment, number> {

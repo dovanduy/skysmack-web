@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { FieldProvider, Field, SelectField } from '@skysmack/ng-ui';
 import { map, switchMap } from 'rxjs/operators';
 import { PersonsLodgingReservationsType, PersonsLodgingReservationsSettings } from '@skysmack/packages-persons-lodging-reservations';
-import { Observable, combineLatest } from 'rxjs';
+import { Observable, combineLatest, of } from 'rxjs';
 import { StrIndex, PagedQuery } from '@skysmack/framework';
 import { NgSettingsActions, NgSettingsStore } from '@skysmack/ng-redux';
 import { NgPersonsStore, NgPersonsActions, NgSkysmackStore } from '@skysmack/ng-packages';
@@ -30,7 +30,6 @@ export class NgPersonsLodgingReservationsFieldProvider extends FieldProvider {
             map(packages => packages.filter(_package => _package.object.type === PersonsLodgingReservationsType.id)),
             switchMap(packages => {
                 const fieldStreams$ = packages.map(_package => {
-
                     if (_package.object.dependencies[1] === packagePath) {
 
                         // TODO: Do something about requests only being done once (but beware they aren't fired more than once pr. "component life time")
@@ -85,6 +84,8 @@ export class NgPersonsLodgingReservationsFieldProvider extends FieldProvider {
                                 }
                             })
                         );
+                    } else {
+                        return of([]);
                     }
                 });
 

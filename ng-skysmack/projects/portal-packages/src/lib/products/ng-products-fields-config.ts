@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
-import { FormRule } from '@skysmack/ng-ui';
+import { FormRule, FieldProviders } from '@skysmack/ng-ui';
 import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
-import { Product, ProductType } from '@skysmack/packages-products';
+import { Product } from '@skysmack/packages-products';
 import { Field } from '@skysmack/ng-ui';
 
 import { SelectField } from '@skysmack/ng-ui';
@@ -17,9 +17,10 @@ export class NgProductsFieldsConfig extends FieldsConfig<Product, number> {
     ];
 
     constructor(
-        public productTypeStore: NgProductTypesStore
+        public productTypeStore: NgProductTypesStore,
+        public fieldProviders: FieldProviders
     ) {
-        super();
+        super(fieldProviders);
     }
 
     protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<Product, number>): Field[] {
