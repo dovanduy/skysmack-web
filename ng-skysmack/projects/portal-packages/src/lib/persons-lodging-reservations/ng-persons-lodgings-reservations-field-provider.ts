@@ -50,7 +50,6 @@ export class NgPersonsLodgingReservationsFieldProvider extends FieldProvider {
                         this.requested[personsPackagePath] = true;
                     }
 
-
                     return this.settingsStore.get<PersonsLodgingReservationsSettings>(depPackagePath, 'persons-reservations').pipe(
                         map(settings => {
                             const addField = new AddField({

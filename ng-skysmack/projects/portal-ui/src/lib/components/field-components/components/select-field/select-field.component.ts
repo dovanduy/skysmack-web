@@ -10,13 +10,11 @@ export class SelectFieldComponent extends FieldBaseComponent<SelectField> implem
 
   ngOnInit() {
     super.ngOnInit();
-    this.subscriptionHandler.register(this.fields$.subscribe((fields: any) => {
-      if (this.field) {
-
-        this.runAllRulesOfType(DisableUntilValueRule.type, { fields });
-        this.runRulesOnChange(fields);
-      }
-    }));
+    if (this.field) {
+      const fields = this.fields;
+      this.runAllRulesOfType(DisableUntilValueRule.type, { fields });
+      this.runRulesOnChange(fields);
+    }
   }
 
   public runRulesOnChange(fields: Field[]) {

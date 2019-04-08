@@ -1,6 +1,6 @@
 import { Router, ActivatedRoute } from '@angular/router';
 import { OnInit, OnDestroy } from '@angular/core';
-import { Record, LocalObject, defined } from '@skysmack/framework';
+import { Record, LocalObject } from '@skysmack/framework';
 import { EditorNavService } from './../../components/common/container/editor-nav.service';
 import { NgSkysmackStore, LoadedPackage } from '@skysmack/ng-packages';
 import { EntityActions, EntityStore } from '@skysmack/redux';

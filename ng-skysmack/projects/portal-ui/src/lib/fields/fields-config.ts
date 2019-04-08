@@ -3,7 +3,7 @@ import { FormRule, Validation, Field } from '@skysmack/ng-ui';
 import { LoadedPackage } from '@skysmack/ng-packages';
 import { EntityFieldsConfig } from './entity-fields-config';
 import { Observable, combineLatest, of } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, distinctUntilChanged } from 'rxjs/operators';
 import { FieldProviders } from './field-providers';
 
 export abstract class FieldsConfig<TRecord, TKey> implements EntityFieldsConfig<TRecord, TKey> {
@@ -20,6 +20,7 @@ export abstract class FieldsConfig<TRecord, TKey> implements EntityFieldsConfig<
 
     protected getRecordFields(loadedPackage: LoadedPackage, entity?: LocalObject<TRecord, TKey>): Observable<Field[]> {
         return this.getProvidedFields(loadedPackage, entity).pipe(
+            distinctUntilChanged(),
             map(values => this.getStaticFields(loadedPackage, entity).concat(values))
         );
     }
@@ -58,9 +59,10 @@ export abstract class FieldsConfig<TRecord, TKey> implements EntityFieldsConfig<
                         return provider.getFields(loadedPackage._package.path, entity);
                     })
                 ).pipe(
+                    distinctUntilChanged(),
                     map((values: [Field[]]) => {
                         return values.reduce((acc: Field[], cur: Field[]) => acc.concat(cur), []);
-                    })
+                    }),
                 );
             } else {
                 return of([]);

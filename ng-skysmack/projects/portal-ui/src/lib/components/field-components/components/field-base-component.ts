@@ -1,8 +1,6 @@
 import { Input, OnDestroy, ElementRef, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { Observable } from 'rxjs';
 import { FormHelper, Field, FormRule } from '@skysmack/ng-ui';
-import { map } from 'rxjs/operators';
 import { SubscriptionHandler, StrIndex } from '@skysmack/framework';
 import { DynamicField } from '../dynamic-field';
 
@@ -16,8 +14,8 @@ interface AddedEvent {
 export abstract class FieldBaseComponent<TField extends Field> implements DynamicField, OnInit, OnDestroy {
     @Input() public fh: FormHelper;
     @Input() public fieldKey: string;
-    public field: TField;
-    @Input() public fields$: Observable<Field[]>;
+    @Input() public field: TField;
+    @Input() public fields: Field[];
     @Input() public rules: FormRule[];
 
     public subscriptionHandler = new SubscriptionHandler();
@@ -26,7 +24,7 @@ export abstract class FieldBaseComponent<TField extends Field> implements Dynami
     public initted: boolean;
 
     ngOnInit() {
-        this.subscriptionHandler.register(this.fields$.pipe(map(fields => { this.field = fields.find(field => field.key === this.fieldKey) as TField; })).subscribe());
+        // this.subscriptionHandler.register(this.fields$.pipe(map(fields => { this.field = fields.find(field => field.key === this.fieldKey) as TField; })).subscribe());
     }
 
     /**

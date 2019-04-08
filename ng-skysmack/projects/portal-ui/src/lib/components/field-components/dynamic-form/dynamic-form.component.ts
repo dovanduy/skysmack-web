@@ -5,6 +5,7 @@ import { Field, FormRule, FormHelper, Validation } from '@skysmack/ng-ui';
 import { EditorNavService } from './../../common/container/editor-nav.service';
 import { GlobalProperties, SubscriptionHandler, LocalObject, StrIndex } from '@skysmack/framework';
 import { NgSkysmackStore } from '@skysmack/ng-packages';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'ss-dynamic-form',
@@ -20,7 +21,6 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
   @Output() public submitted: EventEmitter<FormHelper> = new EventEmitter();
 
   public editorItem$: Observable<LocalObject<any, any>>;
-  public fields: Field[];
   public production = GlobalProperties.production;
   public fh: FormHelper;
   public subscriptionHander = new SubscriptionHandler();
@@ -36,10 +36,12 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
     this.fh = new FormHelper(new FormGroup({}, this.validation.formValidators), this.validation);
     this.validateOnChange(this.fh);
 
+    this.editorItem$ = this.skysmackStore.getEditorItem(true);
+
     // Update the fields and  form (FormGroup) on field changes
-    this.subscriptionHander.register(this.fields$.subscribe(fields => {
-      this.fields = fields;
+    this.fields$ = this.fields$.pipe(map(fields => {
       this.updateForm(fields);
+      return fields;
     }));
 
     // Show sidebar
@@ -48,8 +50,6 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
         this.editorNavService.showEditorNav();
       }
     }, 0);
-
-    this.editorItem$ = this.skysmackStore.getEditorItem(true);
   }
 
   ngOnDestroy() {

@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 export interface DynamicField {
     fh: FormHelper;
     fieldKey: string;
-    fields$: Observable<Field[]>;
+    field: Field;
+    fields: Field[];
     rules: FormRule[];
 }
