@@ -27,9 +27,6 @@
       "@skysmack/packages-identities": [
         "../packages/packages-identities"
       ],
-      "@skysmack/packages-baskets": [
-        "../packages/packages-baskets"
-      ],
       "@skysmack/packages-terminal-payments": [
         "../packages/packages-terminal-payments"
       ],

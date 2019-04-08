@@ -11,8 +11,7 @@ import { NgUsersFieldsConfig } from '../../ng-users-fields-config';
 
 @Component({
   selector: 'ss-users-edit',
-  templateUrl: './users-edit.component.html',
-  styleUrls: ['./users-edit.component.scss']
+  templateUrl: './users-edit.component.html'
 })
 export class UsersEditComponent extends RecordFormComponent<UsersAppState, User, number> implements OnInit {
 

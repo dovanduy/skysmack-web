@@ -10,8 +10,7 @@ import { NgUsersStore } from '@skysmack/ng-packages';
 
 @Component({
   selector: 'ss-users-create',
-  templateUrl: './users-create.component.html',
-  styleUrls: ['./users-create.component.scss']
+  templateUrl: './users-create.component.html'
 })
 export class UsersCreateComponent extends RecordFormComponent<UsersAppState, User, number> implements OnInit {
 

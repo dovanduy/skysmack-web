@@ -4,8 +4,7 @@ import { Field } from '@skysmack/ng-ui';
 
 @Component({
   selector: 'ss-hidden-field',
-  templateUrl: './hidden-field.component.html',
-  styleUrls: ['./hidden-field.component.scss']
+  templateUrl: './hidden-field.component.html'
 })
 export class HiddenFieldComponent extends FieldBaseComponent<Field> implements OnInit {
   ngOnInit() { super.ngOnInit(); }

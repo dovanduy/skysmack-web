@@ -11,8 +11,7 @@ import { map, take } from 'rxjs/operators';
 
 @Component({
   selector: 'ss-product-type-price-changes-create',
-  templateUrl: './product-type-price-changes-create.component.html',
-  styleUrls: ['./product-type-price-changes-create.component.scss']
+  templateUrl: './product-type-price-changes-create.component.html'
 })
 export class ProductTypePriceChangesCreateComponent extends RecordFormComponent<ProductTypePriceChangesAppState, ProductPriceChange, number> implements OnInit {
 

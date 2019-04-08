@@ -3,8 +3,7 @@ import { ExpressionValues } from '../../models';
 
 @Component({
   selector: 'ss-recurring-custom-expression',
-  templateUrl: './recurring-custom-expression.component.html',
-  styleUrls: ['./recurring-custom-expression.component.scss']
+  templateUrl: './recurring-custom-expression.component.html'
 })
 export class RecurringCustomExpressionComponent extends ExpressionValues {
   private _expression: string;

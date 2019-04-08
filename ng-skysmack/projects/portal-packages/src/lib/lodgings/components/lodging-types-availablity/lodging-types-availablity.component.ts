@@ -5,7 +5,6 @@ import { NgSkysmackStore, NgLodgingTypesStore, NgLodgingTypesActions } from '@sk
 import { Observable, combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { CalendarEvent, EventColor, EventAction } from 'calendar-utils';
-
 import * as _moment from 'moment';
 import { PagedQuery, defined } from '@skysmack/framework';
 import { SelectFieldOption } from '@skysmack/ng-ui';
@@ -15,9 +14,7 @@ const moment = _moment;
 
 @Component({
   selector: 'ss-lodging-types-availablity',
-  templateUrl: './lodging-types-availablity.component.html',
-  styleUrls: ['./lodging-types-availablity.component.scss'],
-
+  templateUrl: './lodging-types-availablity.component.html'
 })
 export class LodgingTypesAvailablityComponent implements OnInit {
   public packagePath = this.router.url.split('/')[1];

@@ -8,8 +8,7 @@ import { NgAssignmentsFieldsConfig } from '../../ng-assignments-fields-config';
 
 @Component({
   selector: 'ss-assignments-create',
-  templateUrl: './assignments-create.component.html',
-  styleUrls: ['./assignments-create.component.scss']
+  templateUrl: './assignments-create.component.html'
 })
 export class AssignmentsCreateComponent extends RecordFormComponent<AssignmentsAppState, Assignment, number> implements OnInit {
 

@@ -6,8 +6,7 @@ import { MatSelectChange } from '@angular/material';
 
 @Component({
   selector: 'ss-roles-select',
-  templateUrl: './roles-select.component.html',
-  styleUrls: ['./roles-select.component.scss']
+  templateUrl: './roles-select.component.html'
 })
 export class RolesSelectComponent implements OnInit, OnDestroy {
 

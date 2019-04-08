@@ -4,17 +4,17 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { NgPackagesActions } from '@skysmack/ng-packages';
 import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { NgPackagesStore } from '@skysmack/ng-packages';
-import { PackagesAppState } from '@skysmack/packages-skysmack-core';
+import { PackagesAppState, PACKAGES_AREA_KEY } from '@skysmack/packages-skysmack-core';
 import { NgPackagesMenu } from './../../ng-packages-menu';
 import { EntityAction } from '@skysmack/ng-ui';
 import { NgPackagesFieldsConfig } from '../../ng-packages-fields-config';
 
 @Component({
   selector: 'ss-packages-index',
-  templateUrl: './packages-index.component.html',
-  styleUrls: ['./packages-index.component.scss']
+  templateUrl: './packages-index.component.html'
 })
 export class PackagesIndexComponent extends RecordIndexComponent<PackagesAppState, any, string> implements OnInit {
+  public area: string = PACKAGES_AREA_KEY;
   public entityActions: EntityAction[] = [
     new EntityAction().asUrlAction('edit', 'Edit', 'edit'),
     new EntityAction().asEventAction('Delete', this.delete, 'delete', this)

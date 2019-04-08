@@ -12,8 +12,7 @@ import { NgProductsFieldsConfig } from '../../ng-products-fields-config';
 
 @Component({
   selector: 'ss-products-index',
-  templateUrl: './products-index.component.html',
-  styleUrls: ['./products-index.component.scss']
+  templateUrl: './products-index.component.html'
 })
 export class ProductsIndexComponent extends DocumentRecordIndexComponent<ProductsAppState, Product, number> implements OnInit {
 

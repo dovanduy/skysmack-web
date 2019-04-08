@@ -4,8 +4,7 @@ import { Field } from '@skysmack/ng-ui';
 
 @Component({
   selector: 'ss-int-field',
-  templateUrl: './int-field.component.html',
-  styleUrls: ['./int-field.component.scss']
+  templateUrl: './int-field.component.html'
 })
 export class IntFieldComponent extends FieldBaseComponent<Field> implements OnInit {
   ngOnInit() {

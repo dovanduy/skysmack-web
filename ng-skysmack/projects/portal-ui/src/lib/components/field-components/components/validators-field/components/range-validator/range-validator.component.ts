@@ -3,8 +3,7 @@ import { StrIndex } from '@skysmack/framework';
 
 @Component({
   selector: 'ss-range-validator',
-  templateUrl: './range-validator.component.html',
-  styleUrls: ['./range-validator.component.scss']
+  templateUrl: './range-validator.component.html'
 })
 export class RangeValidatorComponent implements OnInit {
   private _min = 0;

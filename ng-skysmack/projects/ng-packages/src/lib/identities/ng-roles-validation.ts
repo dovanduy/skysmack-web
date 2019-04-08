@@ -1,5 +1,6 @@
 import { StrIndex } from '@skysmack/framework';
 import { Validation } from '@skysmack/ng-ui';
+import { ROLES_AREA_KEY } from '@skysmack/packages-identities';
 
 export class NgRolesValidation extends Validation {
     public formErrors = {
@@ -12,7 +13,7 @@ export class NgRolesValidation extends Validation {
         }
     };
 
-    public area = 'roles';
+    public area = ROLES_AREA_KEY;
 
     public formValidators = [];
 

@@ -10,8 +10,7 @@ import { NgReceiptsFieldsConfig } from '../../ng-receipts-fields-config';
 
 @Component({
   selector: 'ss-receipts-create',
-  templateUrl: './receipts-create.component.html',
-  styleUrls: ['./receipts-create.component.scss']
+  templateUrl: './receipts-create.component.html'
 })
 export class ReceiptsCreateComponent extends DocumentRecordFormComponent<ReceiptsAppState, Receipt, number> implements OnInit {
 

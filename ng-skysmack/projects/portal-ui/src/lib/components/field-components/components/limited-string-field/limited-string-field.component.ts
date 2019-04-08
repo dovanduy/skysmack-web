@@ -6,7 +6,6 @@ import { Field } from '@skysmack/ng-ui';
 @Component({
   selector: 'ss-limited-string-field',
   templateUrl: './limited-string-field.component.html',
-  styleUrls: ['./limited-string-field.component.scss'],
   animations: [
     trigger(
       'shrinkOut',

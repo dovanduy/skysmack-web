@@ -3,8 +3,7 @@ import { ExpressionValues } from '../../../models/expression-values';
 
 @Component({
   selector: 'ss-time-unit',
-  templateUrl: './time-unit.component.html',
-  styleUrls: ['./time-unit.component.scss']
+  templateUrl: './time-unit.component.html'
 })
 export class TimeUnitComponent extends ExpressionValues {
 

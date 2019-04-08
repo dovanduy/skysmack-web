@@ -5,7 +5,6 @@ export * from './maintenance/index';
 export * from './oauth2/index';
 export * from './persons/index';
 export * from './invoices/index';
-export * from './baskets/index';
 export * from './persons-lodging-reservations/index';
 export * from './products/index';
 export * from './products-pricings/index';

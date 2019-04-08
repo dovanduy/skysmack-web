@@ -11,8 +11,7 @@ import { NgLodgingTypesFieldsConfig } from '../../ng-lodging-types-fields-config
 
 @Component({
   selector: 'ss-lodging-types-edit',
-  templateUrl: './lodging-types-edit.component.html',
-  styleUrls: ['./lodging-types-edit.component.scss']
+  templateUrl: './lodging-types-edit.component.html'
 })
 export class LodgingTypesEditComponent extends DocumentRecordFormComponent<LodgingTypesAppState, LodgingType, number> implements OnInit {
 

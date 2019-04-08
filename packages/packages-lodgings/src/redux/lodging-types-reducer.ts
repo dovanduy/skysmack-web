@@ -2,6 +2,7 @@ import { LocalPageTypes, StrIndex, LocalObject } from '@skysmack/framework';
 import { AppState, ReduxAction, sharedReducer, RecordState, recordReducersBase, StateKeyMeta } from '@skysmack/redux';
 import { LodgingType } from '../models/lodging-type';
 import { LodgingTypesActions } from './lodging-types-actions';
+import { LODGING_TYPES_REDUX_KEY } from '../constants';
 
 /**
  * This is to be used when you want to access lodgingsTypes via the GLOBAL state. E.g. state.lodgingsTypes (where lodgingsTypes is the reducer name.)
@@ -17,7 +18,7 @@ export class LodgingTypesState implements RecordState<LodgingType, number> {
     public availableLodgingTypesCount: StrIndex<StrIndex<StrIndex<number>>> = {};
 }
 
-export function lodgingTypesReducer(state = new LodgingTypesState(), action: ReduxAction, prefix: string = 'LODGING_TYPES_'): LodgingTypesState {
+export function lodgingTypesReducer(state = new LodgingTypesState(), action: ReduxAction, prefix: string = LODGING_TYPES_REDUX_KEY): LodgingTypesState {
     state = sharedReducer(state, action, new LodgingTypesState());
     const newState = Object.assign({}, state);
 

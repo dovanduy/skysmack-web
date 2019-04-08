@@ -11,8 +11,7 @@ import { NgProductTypeSalesPriceFieldsConfig } from '../../ng-product-type-sales
 
 @Component({
   selector: 'ss-product-type-sales-price-create',
-  templateUrl: './product-type-sales-price-create.component.html',
-  styleUrls: ['./product-type-sales-price-create.component.scss']
+  templateUrl: './product-type-sales-price-create.component.html'
 })
 export class ProductTypeSalesPriceCreateComponent extends RecordFormComponent<ProductTypeSalesPriceAppState, ProductTypeSalesPrice, number> implements OnInit {
 

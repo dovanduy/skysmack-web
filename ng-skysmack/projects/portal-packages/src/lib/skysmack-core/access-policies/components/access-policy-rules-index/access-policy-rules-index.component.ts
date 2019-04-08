@@ -5,17 +5,17 @@ import { NgAccessPolicyRulesActions } from '@skysmack/ng-packages';
 import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { NgAccessPolicyRulesStore } from '@skysmack/ng-packages';
 import { EntityAction } from '@skysmack/ng-ui';
-import { AccessPolicyRulesAppState, AccessPolicyRule } from '@skysmack/packages-skysmack-core';
+import { AccessPolicyRulesAppState, AccessPolicyRule, ACCESS_POLICY_RULES_AREA_KEY } from '@skysmack/packages-skysmack-core';
 import { NgAccessPolicyRulesMenu } from '../../ng-access-policy-rules-menu';
 import { NgAccessPolicyRulesFieldsConfig } from '../../ng-access-policy-rules-fields-config';
 
 @Component({
   selector: 'ss-access-policy-rules-index',
-  templateUrl: './access-policy-rules-index.component.html',
-  styleUrls: ['./access-policy-rules-index.component.scss']
+  templateUrl: './access-policy-rules-index.component.html'
 })
 export class AccessPolicyRulesIndexComponent extends RecordIndexComponent<AccessPolicyRulesAppState, AccessPolicyRule, number> implements OnInit {
 
+  public area: string = ACCESS_POLICY_RULES_AREA_KEY;
   public entityActions: EntityAction[] = [
     new EntityAction().asUrlAction('edit', 'Edit', 'edit'),
     new EntityAction().asEventAction('Delete', this.delete, 'delete', this)

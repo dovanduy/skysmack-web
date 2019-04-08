@@ -11,8 +11,7 @@ import { NgInvoicePaymentsFieldsConfig } from '../../ng-invoice-payments-fields-
 
 @Component({
   selector: 'ss-invoice-payments-edit',
-  templateUrl: './invoice-payments-edit.component.html',
-  styleUrls: ['./invoice-payments-edit.component.scss']
+  templateUrl: './invoice-payments-edit.component.html'
 })
 export class InvoicePaymentsEditComponent extends DocumentRecordFormComponent<InvoicePaymentsAppState, InvoicePayment, number> implements OnInit {
 

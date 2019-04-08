@@ -7,8 +7,7 @@ import { NgMaintenanceStatesFieldsConfig } from '../../ng-maintenance-states-fie
 
 @Component({
   selector: 'ss-maintenance-states-edit',
-  templateUrl: './maintenance-states-edit.component.html',
-  styleUrls: ['./maintenance-states-edit.component.scss']
+  templateUrl: './maintenance-states-edit.component.html'
 })
 export class MaintenanceStatesEditComponent extends RecordFormComponent<MaintenanceStatesAppState, MaintenanceState, number> implements OnInit {
 

@@ -4,7 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { NgRolesActions } from '@skysmack/ng-packages';
 import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { NgRolesStore } from '@skysmack/ng-packages';
-import { Role, RolesAppState } from '@skysmack/packages-identities';
+import { Role, RolesAppState, ROLES_AREA_KEY } from '@skysmack/packages-identities';
 import { NgRolesMenu } from './../../ng-roles-menu';
 import { EntityAction } from '@skysmack/ng-ui';
 import { NgRolesFieldsConfig } from '../../ng-roles-fields-config';
@@ -12,11 +12,11 @@ import { NgRolesFieldsConfig } from '../../ng-roles-fields-config';
 
 @Component({
   selector: 'ss-roles-index',
-  templateUrl: './roles-index.component.html',
-  styleUrls: ['./roles-index.component.scss']
+  templateUrl: './roles-index.component.html'
 })
 export class RolesIndexComponent extends RecordIndexComponent<RolesAppState, Role, number> implements OnInit {
 
+  public area: string = ROLES_AREA_KEY;
   public entityActions: EntityAction[] = [
     new EntityAction().asUrlAction('edit', 'Edit', 'edit'),
     new EntityAction().asEventAction('Delete', this.delete, 'delete', this)

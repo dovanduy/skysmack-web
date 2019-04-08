@@ -15,8 +15,7 @@ import { NgPackagesFieldsConfig } from '../../ng-packages-fields-config';
 
 @Component({
   selector: 'ss-packages-edit',
-  templateUrl: './packages-edit.component.html',
-  styleUrls: ['./packages-edit.component.scss']
+  templateUrl: './packages-edit.component.html'
 })
 export class PackagesEditComponent extends BaseComponent<PackagesAppState, string> implements OnInit, OnDestroy {
 

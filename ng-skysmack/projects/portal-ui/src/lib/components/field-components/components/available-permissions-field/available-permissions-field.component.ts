@@ -6,8 +6,7 @@ import { Field } from '@skysmack/ng-ui';
 
 @Component({
   selector: 'ss-available-permissions-field',
-  templateUrl: './available-permissions-field.component.html',
-  styleUrls: ['./available-permissions-field.component.scss']
+  templateUrl: './available-permissions-field.component.html'
 })
 export class AvailablePermissionsFieldComponent extends FieldBaseComponent<Field> implements OnInit {
   public permissions: string[];

@@ -11,8 +11,7 @@ import { NgInvoicesFieldsConfig } from '../../ng-invoices-fields-config';
 
 @Component({
   selector: 'ss-invoices-create',
-  templateUrl: './invoices-create.component.html',
-  styleUrls: ['./invoices-create.component.scss']
+  templateUrl: './invoices-create.component.html'
 })
 export class InvoicesCreateComponent extends DocumentRecordFormComponent<InvoicesAppState, Invoice, number> implements OnInit {
 

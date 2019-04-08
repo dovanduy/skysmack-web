@@ -9,8 +9,7 @@ import { NgRolesFieldsConfig } from '../../ng-roles-fields-config';
 
 @Component({
   selector: 'ss-roles-create',
-  templateUrl: './roles-create.component.html',
-  styleUrls: ['./roles-create.component.scss']
+  templateUrl: './roles-create.component.html'
 })
 export class RolesCreateComponent extends RecordFormComponent<RolesAppState, Role, number> implements OnInit {
 

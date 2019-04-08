@@ -11,8 +11,7 @@ import { NgFieldsConfig } from '../../ng-fields-config';
 
 @Component({
   selector: 'ss-fields-index',
-  templateUrl: './fields-index.component.html',
-  styleUrls: ['./fields-index.component.scss']
+  templateUrl: './fields-index.component.html'
 })
 export class FieldsIndexComponent extends RecordIndexComponent<any, any, any> implements OnInit {
   public entityActions: EntityAction[] = [

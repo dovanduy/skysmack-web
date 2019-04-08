@@ -1,5 +1,5 @@
 import { RecordEpicsBase } from '@skysmack/ng-redux';
-import { LodgingType, LodgingTypesActions } from '@skysmack/packages-lodgings';
+import { LodgingType, LodgingTypesActions, LODGING_TYPES_REDUX_KEY } from '@skysmack/packages-lodgings';
 import { Injectable } from '@angular/core';
 import { NgLodgingTypesRequests } from './ng-lodging-types-requests';
 import { NgLodgingTypesNotifications } from '../ng-lodging-types-notifications';
@@ -16,7 +16,7 @@ export class NgLodgingTypesEpics extends RecordEpicsBase<LodgingType, number> {
         protected requests: NgLodgingTypesRequests,
         protected notifications: NgLodgingTypesNotifications
     ) {
-        super(requests, 'LODGING_TYPES_', notifications);
+        super(requests, LODGING_TYPES_REDUX_KEY, notifications);
         this.epics = this.epics.concat([
             this.getAvailableLodgingTypesEpic,
             this.getAvailableLodgingTypesCountEpic

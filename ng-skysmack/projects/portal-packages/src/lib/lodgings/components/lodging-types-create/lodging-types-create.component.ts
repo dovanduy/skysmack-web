@@ -8,8 +8,7 @@ import { NgLodgingTypesFieldsConfig } from '../../ng-lodging-types-fields-config
 
 @Component({
   selector: 'ss-lodging-types-create',
-  templateUrl: './lodging-types-create.component.html',
-  styleUrls: ['./lodging-types-create.component.scss']
+  templateUrl: './lodging-types-create.component.html'
 })
 export class LodgingTypesCreateComponent extends DocumentRecordFormComponent<LodgingTypesAppState, LodgingType, number> implements OnInit {
 

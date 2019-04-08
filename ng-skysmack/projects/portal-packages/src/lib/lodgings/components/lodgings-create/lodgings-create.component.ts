@@ -13,8 +13,7 @@ import { NgLodgingsFieldsConfig } from '../../ng-lodgings-fields-config';
 
 @Component({
   selector: 'ss-lodgings-create',
-  templateUrl: './lodgings-create.component.html',
-  styleUrls: ['./lodgings-create.component.scss']
+  templateUrl: './lodgings-create.component.html'
 })
 export class LodgingsCreateComponent extends DocumentRecordFormComponent<LodgingsAppState, Lodging, number> implements OnInit {
 

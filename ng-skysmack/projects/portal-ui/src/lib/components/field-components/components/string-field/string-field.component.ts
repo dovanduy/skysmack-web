@@ -4,8 +4,7 @@ import { Field } from '@skysmack/ng-ui';
 
 @Component({
   selector: 'ss-string-field',
-  templateUrl: './string-field.component.html',
-  styleUrls: ['./string-field.component.scss'],
+  templateUrl: './string-field.component.html'
 })
 export class StringFieldComponent extends FieldBaseComponent<Field> implements OnInit {
   ngOnInit() {

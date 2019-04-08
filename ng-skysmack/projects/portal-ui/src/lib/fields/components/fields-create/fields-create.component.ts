@@ -10,8 +10,7 @@ import { FormHelper } from '@skysmack/ng-ui';
 
 @Component({
   selector: 'ss-fields-create',
-  templateUrl: './fields-create.component.html',
-  styleUrls: ['./fields-create.component.scss']
+  templateUrl: './fields-create.component.html'
 })
 export class FieldsCreateComponent extends RecordFormComponent<FieldState, any, string> implements OnInit {
   public objectIdentifier = 'key';

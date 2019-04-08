@@ -5,11 +5,12 @@ import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { MenuArea } from '@skysmack/framework';
 import { MenuItem } from '@skysmack/framework';
 import { NgMenuItemProviders } from '@skysmack/ng-redux';
+import { USERS_AREA_KEY } from '@skysmack/packages-identities';
 
 
 @Injectable({ providedIn: 'root' })
 export class NgUsersMenu extends SidebarMenu {
-    public menuId = 'users';
+    public menuId = USERS_AREA_KEY;
     public translationPrefix = 'USERS.INDEX.';
 
     constructor(
@@ -28,7 +29,7 @@ export class NgUsersMenu extends SidebarMenu {
         this.primaryMenuAreas.push(new MenuArea('manage', this.translationPrefix, 2));
 
         this.primaryMenuItems.push(new MenuItem('create', this.translationPrefix + 'CREATE', 'actions', 1, 'groupAdd'));
-        this.primaryMenuItems.push(new MenuItem('/' + this.packagePath, this.translationPrefix + 'BACK', 'manage', 4, 'arrowBack'));
+        this.setBackButton();
     }
 
     public setSpeedDialMenu() {

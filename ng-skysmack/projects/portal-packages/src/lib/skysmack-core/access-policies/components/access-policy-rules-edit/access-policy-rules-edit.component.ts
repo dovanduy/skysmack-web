@@ -9,8 +9,7 @@ import { NgAccessPolicyRulesFieldsConfig } from '../../ng-access-policy-rules-fi
 
 @Component({
   selector: 'ss-access-policy-rules-edit',
-  templateUrl: './access-policy-rules-edit.component.html',
-  styleUrls: ['./access-policy-rules-edit.component.scss']
+  templateUrl: './access-policy-rules-edit.component.html'
 })
 export class AccessPolicyRulesEditComponent extends RecordFormComponent<AccessPolicyRulesAppState, AccessPolicyRule, number> implements OnInit {
 

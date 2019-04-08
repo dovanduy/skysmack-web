@@ -13,8 +13,7 @@ import { FieldsConfig } from '../../../fields/fields-config';
 
 @Component({
   selector: 'ss-settings',
-  templateUrl: './settings.component.html',
-  styleUrls: ['./settings.component.scss']
+  templateUrl: './settings.component.html'
 })
 export class SettingsComponent extends BaseComponent<SettingsAppState<any>, unknown> implements OnInit, OnDestroy {
 

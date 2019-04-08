@@ -3,8 +3,7 @@ import { EntityComponentPageTitle } from '@skysmack/portal-ui';
 
 @Component({
   selector: 'ss-front-page',
-  templateUrl: './front-page.component.html',
-  styleUrls: ['./front-page.component.scss']
+  templateUrl: './front-page.component.html'
 })
 export class FrontPageComponent implements OnInit {
 

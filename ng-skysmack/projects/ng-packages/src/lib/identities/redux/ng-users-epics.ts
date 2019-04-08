@@ -1,5 +1,5 @@
 import { RecordEpicsBase } from '@skysmack/ng-redux';
-import { User, GetUsersRolesPayload, GetUsersRolesSuccessPayload } from '@skysmack/packages-identities';
+import { User, GetUsersRolesPayload, GetUsersRolesSuccessPayload, USERS_REDUX_KEY } from '@skysmack/packages-identities';
 import { ActionsObservable, ofType } from 'redux-observable';
 import { ReduxAction } from '@skysmack/redux';
 import { Observable } from 'rxjs';
@@ -13,7 +13,7 @@ import { NgUsersNotifications } from '../ng-users-notifications';
 @Injectable({ providedIn: 'root' })
 export class NgUsersEpics extends RecordEpicsBase<User, number> {
     constructor(protected requests: NgUsersRequests, protected notifications: NgUsersNotifications) {
-        super(requests, 'USERS_', notifications);
+        super(requests, USERS_REDUX_KEY, notifications);
         this.epics = this.epics.concat([
             this.getUsersRolesEpic
         ]);

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { RecurringAssignment, RecurringAssignmentsAppState } from '@skysmack/packages-maintenance';
+import { RecurringAssignment, RecurringAssignmentsAppState, RECURRING_ASSIGNMENTS_AREA_KEY } from '@skysmack/packages-maintenance';
 import { RecordIndexComponent, EntityComponentPageTitle } from '@skysmack/portal-ui';
 import { EntityAction } from '@skysmack/ng-ui';
 import { NgRecurringAssignmentsActions, NgSkysmackStore, NgRecurringAssignmentsStore } from '@skysmack/ng-packages';
@@ -9,11 +9,11 @@ import { NgRecurringAssignmentsFieldsConfig } from '../../ng-recurring-assignmen
 
 @Component({
   selector: 'ss-recurring-assignments-index',
-  templateUrl: './recurring-assignments-index.component.html',
-  styleUrls: ['./recurring-assignments-index.component.scss']
+  templateUrl: './recurring-assignments-index.component.html'
 })
 export class RecurringAssignmentsIndexComponent extends RecordIndexComponent<RecurringAssignmentsAppState, RecurringAssignment, number> implements OnInit {
 
+  public area: string = RECURRING_ASSIGNMENTS_AREA_KEY;
   public entityActions: EntityAction[] = [
     new EntityAction().asUrlAction('edit', 'Edit', 'edit'),
     new EntityAction().asEventAction('Delete', this.delete, 'delete', this)

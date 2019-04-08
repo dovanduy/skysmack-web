@@ -11,8 +11,7 @@ import { NgInvoiceItemsFieldsConfig } from '../../ng-invoice-items-fields-config
 
 @Component({
   selector: 'ss-invoice-items-create',
-  templateUrl: './invoice-items-create.component.html',
-  styleUrls: ['./invoice-items-create.component.scss']
+  templateUrl: './invoice-items-create.component.html'
 })
 export class InvoiceItemsCreateComponent extends DocumentRecordFormComponent<InvoiceItemsAppState, InvoiceItem, number> implements OnInit {
 

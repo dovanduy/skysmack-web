@@ -13,8 +13,7 @@ import { NgLodgingReservationsFieldsConfig } from '../../ng-lodging-reservations
 
 @Component({
   selector: 'ss-lodgings-departures',
-  templateUrl: './lodgings-departures.component.html',
-  styleUrls: ['./lodgings-departures.component.scss']
+  templateUrl: './lodgings-departures.component.html'
 })
 export class LodgingsDeparturesComponent extends LodgingsReservationsIndexComponent implements OnInit {
   constructor(
@@ -31,7 +30,7 @@ export class LodgingsDeparturesComponent extends LodgingsReservationsIndexCompon
     public sidebarMenu: NgLodgingsReservationsMenu,
     public pageTitle: EntityComponentPageTitle
   ) {
-    super(router, activatedRoute, skysmackStore, store, lodgingsStore, lodgingTypesStore, actions, lodgingsActions, lodgingTypesActions, fieldsConfig, sidebarMenu, pageTitle);
+    super( router, activatedRoute, skysmackStore, store, lodgingsStore, lodgingTypesStore, actions, lodgingsActions, lodgingTypesActions, fieldsConfig, sidebarMenu, pageTitle);
   }
 
   ngOnInit() {

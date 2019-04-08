@@ -8,8 +8,7 @@ import { NgRecurringAssignmentsFieldsConfig } from '../../ng-recurring-assignmen
 
 @Component({
   selector: 'ss-recurring-assignments-create',
-  templateUrl: './recurring-assignments-create.component.html',
-  styleUrls: ['./recurring-assignments-create.component.scss']
+  templateUrl: './recurring-assignments-create.component.html'
 })
 export class RecurringAssignmentsCreateComponent extends RecordFormComponent<RecurringAssignmentsAppState, RecurringAssignment, number> implements OnInit {
 

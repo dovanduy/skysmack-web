@@ -4,14 +4,13 @@ import { NgLodgingReservationsStore, NgLodgingsStore, NgLodgingTypesStore, NgLod
 import { EntityComponentPageTitle } from '@skysmack/portal-ui';
 import { LodgingsReservationsIndexComponent } from '../lodgings-reservations-index/lodgings-reservations-index.component';
 import { RSQLFilterBuilder, SortBuilder } from '@skysmack/framework';
-import { LodgingReservation } from '@skysmack/packages-lodging-reservations';
+import { LodgingReservation, LODGING_RESERVATIONS_AREA_KEY } from '@skysmack/packages-lodging-reservations';
 import { NgLodgingsReservationsMenu } from '../../ng-lodgings-reservations-menu';
 import { NgLodgingReservationsFieldsConfig } from '../../ng-lodging-reservations-fields-config';
 
 @Component({
   selector: 'ss-lodgings-stays',
-  templateUrl: './lodgings-stays.component.html',
-  styleUrls: ['./lodgings-stays.component.scss']
+  templateUrl: './lodgings-stays.component.html'
 })
 export class LodgingsStaysComponent extends LodgingsReservationsIndexComponent implements OnInit {
   constructor(
@@ -28,7 +27,7 @@ export class LodgingsStaysComponent extends LodgingsReservationsIndexComponent i
     public sidebarMenu: NgLodgingsReservationsMenu,
     public pageTitle: EntityComponentPageTitle
   ) {
-    super(router, activatedRoute, skysmackStore, store, lodgingsStore, lodgingTypesStore, actions, lodgingsActions, lodgingTypesActions, fieldsConfig, sidebarMenu, pageTitle);
+    super( router, activatedRoute, skysmackStore, store, lodgingsStore, lodgingTypesStore, actions, lodgingsActions, lodgingTypesActions, fieldsConfig, sidebarMenu, pageTitle);
   }
 
 

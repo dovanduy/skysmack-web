@@ -1,5 +1,6 @@
 import { StrIndex } from '@skysmack/framework';
 import { Validation } from '@skysmack/ng-ui';
+import { ASSIGNMENT_TYPES_AREA_KEY } from '@skysmack/packages-maintenance';
 
 export class NgAssignmentTypesValidation extends Validation {
     public formErrors = {
@@ -28,7 +29,7 @@ export class NgAssignmentTypesValidation extends Validation {
         },
     };
 
-    public area = 'assignment_types';
+    public area = ASSIGNMENT_TYPES_AREA_KEY;
 
     public formValidators = [];
 

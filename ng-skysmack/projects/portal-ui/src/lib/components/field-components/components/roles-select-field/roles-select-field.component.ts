@@ -5,8 +5,7 @@ import { Field } from '@skysmack/ng-ui';
 
 @Component({
   selector: 'ss-roles-select-field',
-  templateUrl: './roles-select-field.component.html',
-  styleUrls: ['./roles-select-field.component.scss']
+  templateUrl: './roles-select-field.component.html'
 })
 export class RolesSelectFieldComponent extends FieldBaseComponent<Field> implements OnInit {
 

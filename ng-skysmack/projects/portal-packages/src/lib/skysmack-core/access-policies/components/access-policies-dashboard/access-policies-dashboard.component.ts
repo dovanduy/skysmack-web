@@ -4,8 +4,7 @@ import { EntityComponentPageTitle } from '@skysmack/portal-ui';
 
 @Component({
   selector: 'ss-access-policies-dashboard',
-  templateUrl: './access-policies-dashboard.component.html',
-  styleUrls: ['./access-policies-dashboard.component.scss']
+  templateUrl: './access-policies-dashboard.component.html'
 })
 export class AccessPoliciesDashboardComponent implements OnInit {
 

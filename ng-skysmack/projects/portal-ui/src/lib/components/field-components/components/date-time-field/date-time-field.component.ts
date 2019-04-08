@@ -9,7 +9,6 @@ import { Field } from '@skysmack/ng-ui';
 @Component({
   selector: 'ss-date-time-field',
   templateUrl: './date-time-field.component.html',
-  styleUrls: ['./date-time-field.component.scss'],
   providers: [DateTimeAdapter, { provide: DateAdapter, useClass: DateTimeAdapter }]
 })
 export class DateTimeFieldComponent extends FieldBaseComponent<Field> implements AfterViewInit, OnInit {

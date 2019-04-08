@@ -3,18 +3,18 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { EntityComponentPageTitle, RecordIndexComponent, } from '@skysmack/portal-ui';
 import { NgUsersActions, NgUsersStore, NgSkysmackStore } from '@skysmack/ng-packages';
 import { EntityAction } from '@skysmack/ng-ui';
-import { User, UsersAppState } from '@skysmack/packages-identities';
+import { User, UsersAppState, USERS_AREA_KEY } from '@skysmack/packages-identities';
 import { NgUsersMenu } from './../../ng-users-menu';
 import { NgUsersFieldsConfig } from '../../ng-users-fields-config';
 
 
 @Component({
   selector: 'ss-users-index',
-  templateUrl: './users-index.component.html',
-  styleUrls: ['./users-index.component.scss']
+  templateUrl: './users-index.component.html'
 })
 export class UsersIndexComponent extends RecordIndexComponent<UsersAppState, User, number> implements OnInit {
 
+  public area: string = USERS_AREA_KEY;
   public entityActions: EntityAction[] = [
     new EntityAction().asUrlAction('edit', 'Edit', 'edit'),
     new EntityAction().asUrlAction('edit/set-password', 'Set password', 'https'),

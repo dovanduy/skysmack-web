@@ -12,8 +12,7 @@ import { NgPersonsFieldsConfig } from '../../ng-persons-fields-config';
 
 @Component({
   selector: 'ss-persons-index',
-  templateUrl: './persons-index.component.html',
-  styleUrls: ['./persons-index.component.scss']
+  templateUrl: './persons-index.component.html'
 })
 export class PersonsIndexComponent extends DocumentRecordIndexComponent<PersonsAppState, Person, number> implements OnInit {
 

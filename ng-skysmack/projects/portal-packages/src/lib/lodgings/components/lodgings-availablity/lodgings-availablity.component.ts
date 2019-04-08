@@ -15,9 +15,7 @@ const moment = _moment;
 
 @Component({
   selector: 'ss-lodgings-availablity',
-  templateUrl: './lodgings-availablity.component.html',
-  styleUrls: ['./lodgings-availablity.component.scss'],
-
+  templateUrl: './lodgings-availablity.component.html'
 })
 export class LodgingsAvailablityComponent implements OnInit {
   public packagePath = this.router.url.split('/')[1];

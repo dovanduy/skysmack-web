@@ -11,8 +11,7 @@ import { NgProductTypeSalesPriceFieldsConfig } from '../../ng-product-type-sales
 
 @Component({
   selector: 'ss-product-type-sales-price-index',
-  templateUrl: './product-type-sales-price-index.component.html',
-  styleUrls: ['./product-type-sales-price-index.component.scss']
+  templateUrl: './product-type-sales-price-index.component.html'
 })
 export class ProductTypeSalesPriceIndexComponent extends RecordIndexComponent<ProductTypeSalesPriceAppState, ProductTypeSalesPrice, number> implements OnInit {
 

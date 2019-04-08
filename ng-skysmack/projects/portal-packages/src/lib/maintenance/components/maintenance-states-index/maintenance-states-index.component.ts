@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { MaintenanceState, MaintenanceStatesAppState } from '@skysmack/packages-maintenance';
+import { MaintenanceState, MaintenanceStatesAppState, MAINTENANCE_STATES_AREA_KEY } from '@skysmack/packages-maintenance';
 import { EntityComponentPageTitle, RecordIndexComponent } from '@skysmack/portal-ui';
 import { EntityAction } from '@skysmack/ng-ui';
 import { NgMaintenanceStatesActions, NgSkysmackStore, NgMaintenanceStatesStore } from '@skysmack/ng-packages';
@@ -10,11 +10,11 @@ import { NgMaintenanceStatesFieldsConfig } from '../../ng-maintenance-states-fie
 
 @Component({
   selector: 'ss-maintenance-states-index',
-  templateUrl: './maintenance-states-index.component.html',
-  styleUrls: ['./maintenance-states-index.component.scss']
+  templateUrl: './maintenance-states-index.component.html'
 })
 export class MaintenanceStatesIndexComponent extends RecordIndexComponent<MaintenanceStatesAppState, MaintenanceState, number> implements OnInit {
 
+  public area: string = MAINTENANCE_STATES_AREA_KEY;
   public entityActions: EntityAction[] = [
     new EntityAction().asUrlAction('edit', 'Edit', 'edit'),
     new EntityAction().asEventAction('Delete', this.delete, 'delete', this)

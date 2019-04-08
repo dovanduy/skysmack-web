@@ -10,8 +10,7 @@ import { NgAccessPolicyRolesFieldsConfig } from '../../ng-access-policy-roles-fi
 
 @Component({
   selector: 'ss-access-policy-roles-edit',
-  templateUrl: './access-policy-roles-edit.component.html',
-  styleUrls: ['./access-policy-roles-edit.component.scss']
+  templateUrl: './access-policy-roles-edit.component.html'
 })
 export class AccessPolicyRolesEditComponent extends RecordFormComponent<AccessPolicyRolesAppState, AccessPolicyRole, AccessPolicyRoleKey> implements OnInit {
 

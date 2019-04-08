@@ -6,8 +6,7 @@ import { NgProductsPricingsMenu } from '../../ng-products-pricings-menu';
 
 @Component({
   selector: 'ss-products-pricings-index',
-  templateUrl: './products-pricings-index.component.html',
-  styleUrls: ['./products-pricings-index.component.scss']
+  templateUrl: './products-pricings-index.component.html'
 })
 export class ProductsPricingsIndexComponent implements OnInit {
 

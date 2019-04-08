@@ -10,8 +10,7 @@ import { NgProductPriceChangesFieldsConfig } from '../../ng-product-price-change
 
 @Component({
   selector: 'ss-product-price-changes-edit',
-  templateUrl: './product-price-changes-edit.component.html',
-  styleUrls: ['./product-price-changes-edit.component.scss']
+  templateUrl: './product-price-changes-edit.component.html'
 })
 export class ProductPriceChangesEditComponent extends RecordFormComponent<ProductPriceChangesAppState, ProductPriceChange, number> implements OnInit {
   protected productTypes$;

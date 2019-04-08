@@ -8,6 +8,9 @@
         "ONLINE_STATUS": {
             "OFFLINE": "No network! Offline mode activated."
         },
+        "MISC": {
+            "BACK": "Back"
+        },
         "PACKAGE_DRAWER": {
             "SETTINGS": "Settings",
             "SECURITY": "Security",

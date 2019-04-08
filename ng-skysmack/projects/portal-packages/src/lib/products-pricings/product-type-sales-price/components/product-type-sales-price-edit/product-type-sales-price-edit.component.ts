@@ -11,8 +11,7 @@ import { NgProductTypeSalesPriceFieldsConfig } from '../../ng-product-type-sales
 
 @Component({
   selector: 'ss-product-type-sales-price-edit',
-  templateUrl: './product-type-sales-price-edit.component.html',
-  styleUrls: ['./product-type-sales-price-edit.component.scss']
+  templateUrl: './product-type-sales-price-edit.component.html'
 })
 export class ProductTypeSalesPriceEditComponent extends RecordFormComponent<ProductTypeSalesPriceAppState, ProductTypeSalesPrice, number> implements OnInit {
   protected productTypes$;

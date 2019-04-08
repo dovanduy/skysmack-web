@@ -1,5 +1,6 @@
 import { StrIndex } from '@skysmack/framework';
 import { Validation } from '@skysmack/ng-ui';
+import { ACCESS_POLICY_ROLES_AREA_KEY } from '@skysmack/packages-skysmack-core';
 
 export class AccessPolicyRolesValidation extends Validation {
     public formErrors = {
@@ -16,7 +17,7 @@ export class AccessPolicyRolesValidation extends Validation {
         }
     };
 
-    public area = 'access_policy_roles';
+    public area = ACCESS_POLICY_ROLES_AREA_KEY;
 
     public formValidators = [];
 

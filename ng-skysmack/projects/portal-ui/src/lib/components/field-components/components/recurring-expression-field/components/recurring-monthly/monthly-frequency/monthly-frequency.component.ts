@@ -3,8 +3,7 @@ import { ExpressionValues } from '../../../models/expression-values';
 
 @Component({
   selector: 'ss-monthly-frequency',
-  templateUrl: './monthly-frequency.component.html',
-  styleUrls: ['./monthly-frequency.component.scss']
+  templateUrl: './monthly-frequency.component.html'
 })
 export class MonthlyFrequencyComponent extends ExpressionValues implements OnInit {
   private _selectedFrequency: number;

@@ -12,7 +12,6 @@ import { loadMaintenancePackage } from '../packages/maintenance-package-manifest
 import { loadIdentitiesPackage } from '../packages/identities-package-manifest';
 import { loadLodgingReservationPackage } from '../packages/lodging-reservations-package-manifest';
 import { loadTerminalPaymentsPackage } from '../packages/terminal-payments-manifest';
-import { loadBasketPackage } from '../packages/baskets-package-manifest';
 import { loadInvoicePackage } from '../packages/invoices-package-manifest';
 import { loadProductsPricingsPackage } from '../packages/products-pricings-package-manifest';
 import { loadPersonsLodgingReservationsPackage } from '../packages/persons-lodging-reservations-package-manifest';
@@ -32,7 +31,6 @@ export const httpInterceptors = [
 
 export const packageLoaders = [
     { provide: APP_INITIALIZER, useFactory: loadIdentitiesPackage, deps: [PackageLoader], multi: true },
-    { provide: APP_INITIALIZER, useFactory: loadBasketPackage, deps: [PackageLoader], multi: true },
     { provide: APP_INITIALIZER, useFactory: loadInvoicePackage, deps: [PackageLoader], multi: true },
     { provide: APP_INITIALIZER, useFactory: loadPersonPackage, deps: [PackageLoader], multi: true },
     { provide: APP_INITIALIZER, useFactory: loadProductPackage, deps: [PackageLoader], multi: true },

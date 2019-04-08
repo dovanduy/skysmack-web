@@ -11,8 +11,7 @@ import { NgPersonsFieldsConfig } from '../../ng-persons-fields-config';
 
 @Component({
   selector: 'ss-persons-edit',
-  templateUrl: './persons-edit.component.html',
-  styleUrls: ['./persons-edit.component.scss']
+  templateUrl: './persons-edit.component.html'
 })
 export class PersonsEditComponent extends DocumentRecordFormComponent<PersonsAppState, Person, number> implements OnInit {
 

@@ -10,8 +10,7 @@ import { NgAccessPolicyPermissionsFieldsConfig } from '../../ng-access-policy-pe
 
 @Component({
   selector: 'ss-access-policy-permissions-create',
-  templateUrl: './access-policy-permissions-create.component.html',
-  styleUrls: ['./access-policy-permissions-create.component.scss']
+  templateUrl: './access-policy-permissions-create.component.html'
 })
 export class AccessPolicyPermissionsCreateComponent extends RecordFormComponent<AccessPolicyPermissionsAppState, AccessPolicyPermission, number> implements OnInit {
   constructor(

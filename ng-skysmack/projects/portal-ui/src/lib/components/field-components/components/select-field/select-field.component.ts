@@ -4,8 +4,7 @@ import { FieldBaseComponent } from '../field-base-component';
 
 @Component({
   selector: 'ss-select-field',
-  templateUrl: './select-field.component.html',
-  styleUrls: ['./select-field.component.scss']
+  templateUrl: './select-field.component.html'
 })
 export class SelectFieldComponent extends FieldBaseComponent<SelectField> implements OnInit {
 

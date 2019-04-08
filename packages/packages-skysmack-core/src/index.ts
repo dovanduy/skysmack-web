@@ -1,3 +1,3 @@
-export * from './access-policies';
-export * from './core';
-export * from './packages';
+export * from './access-policies/index';
+export * from './core/index';
+export * from './packages/index';
