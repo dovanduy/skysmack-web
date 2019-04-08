@@ -9,12 +9,12 @@ export class ApiError {
     public validationErrors: ValidationError[];
 
     constructor(response: HttpErrorResponse) {
-        this.title = response.error.title;
-        this.detail = response.error.detail;
-        this.status = response.error.status;
-        this.instance = response.error.instance;
+        this.title = response && response.error && response.error.title;
+        this.detail = response && response.error && response.error.detail;
+        this.status = response && response.error && response.error.status;
+        this.instance = response && response.error && response.error.instance;
 
-        if (response.error.validationErrors) {
+        if (response && response.error && response.error.validationErrors) {
             this.validationErrors = Object.keys(response.error.validationErrors).map(validationErrorKey => {
                 let fieldNameUpperCase = validationErrorKey.split('.')[1];
                 let fieldKey;

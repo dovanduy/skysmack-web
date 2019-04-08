@@ -10,9 +10,10 @@ import { StringFieldComponent } from '../components/field-components/components/
 import { SelectFieldComponent } from '../components/field-components/components/select-field/select-field.component';
 import { ValidatorsFieldComponent } from '../components/field-components/components/validators-field/validators-field.component';
 import { FieldPermissionFieldComponent } from '../components/field-components/components/field-permission-field/field-permission-field.component';
-import { NgFieldStore } from '@skysmack/ng-redux';
+import { NgFieldStore, getAdditionalPaths } from '@skysmack/ng-redux';
 import { LoadedPackage } from '@skysmack/ng-packages';
 import { FieldProviders } from './field-providers';
+import { Router } from '@angular/router';
 
 @Injectable({ providedIn: 'root' })
 export class NgFieldsConfig extends FieldsConfig<FieldSchemaViewModel, string> {
@@ -24,7 +25,8 @@ export class NgFieldsConfig extends FieldsConfig<FieldSchemaViewModel, string> {
 
     constructor(
         public store: NgFieldStore,
-        public fieldProviders: FieldProviders
+        public fieldProviders: FieldProviders,
+        public router: Router
     ) {
         super(fieldProviders);
     }
@@ -35,6 +37,8 @@ export class NgFieldsConfig extends FieldsConfig<FieldSchemaViewModel, string> {
      * @param field Optional field can be providedto set default values. Used to edit an existing field.
      */
     protected getEntityFields(loadedPackage: LoadedPackage, field?: LocalObject<FieldSchemaViewModel, string>): Field[] {
+        const stateKey = loadedPackage._package.path + '-' + getAdditionalPaths(this.router, loadedPackage._package.path);
+
         const fields = [
             new Field({
                 component: StringFieldComponent,
@@ -61,7 +65,7 @@ export class NgFieldsConfig extends FieldsConfig<FieldSchemaViewModel, string> {
                 key: 'type',
                 validators: [Validators.required],
                 order: 3,
-                optionsData$: this.store.getAvailableFields(loadedPackage._package.path),
+                optionsData$: this.store.getAvailableFields(stateKey),
                 valueSelector: 'object.name',
                 disabled: field ? true : false,
                 showColumn: true
