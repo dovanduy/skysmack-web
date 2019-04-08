@@ -13,8 +13,8 @@
     "@skysmack/ng-packages": "*",
     "@skysmack/ng-ui": "*",
     "@skysmack/ng-redux": "*",
-    "moment": "^2.23.0",
-    "calendar-utils": "^0.2.3"
+    "moment": "^2.24.0",
+    "calendar-utils": "^0.3.0"
   },
   "main": "./lib/public_api.js",
   "types": "./lib/public_api.d.ts",
