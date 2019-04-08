@@ -43,7 +43,7 @@ export const safeUndefinedTo = (type: 'array' | 'object'): UnaryFunction<any, an
 */
 export const notNull = (): UnaryFunction<any, any> => pipe(
     defined(),
-    filter<T>((x: any) => x !== null)
+    filter((x: any) => x !== null)
 );
 
 /**
