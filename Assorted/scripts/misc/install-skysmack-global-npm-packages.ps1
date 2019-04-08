@@ -3,10 +3,10 @@ write-host "Installing required global npm packages "
 write-host "----------------------------`n"
 
 # NPM Package versions
-$gulp_cli_version = ">=1.2.2 <=2.0.1"
-$angular_cli_version = ">=7.3.2 <=7.3.5"
+$gulp_cli_version = ">=2.0.1 <=2.0.1"
+$angular_cli_version = ">=7.3.8 <=7.3.8"
 $http_server_version = ">=0.11.1 <=0.11.1"
-$lerna_version = ">=3.10.7 <=3.10.7"
+$lerna_version = ">=3.13.1 <=3.13.1"
 $typescript_version = ">=3.2.4 <=3.2.4"
 
 # Gulp cli
