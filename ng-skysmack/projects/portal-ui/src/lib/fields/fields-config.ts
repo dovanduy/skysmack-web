@@ -13,7 +13,6 @@ export abstract class FieldsConfig<TRecord, TKey> implements EntityFieldsConfig<
     constructor(public fieldProviders: FieldProviders) { }
 
     public getFields(loadedPackage: LoadedPackage, entity?: LocalObject<TRecord, TKey>): Observable<Field[]> {
-        console.log('am I called many times?');
         return this.getRecordFields(loadedPackage, entity).pipe(
             map(fields => this.addValidationErrors(fields, entity).sort((a, b) => a.order - b.order))
         );

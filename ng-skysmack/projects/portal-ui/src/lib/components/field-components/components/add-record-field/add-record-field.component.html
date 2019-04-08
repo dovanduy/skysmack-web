@@ -1,7 +1,24 @@
 <div style="background-color: rgba(0,0,0,0.1); padding: 0 .2rem">
+  <ng-container *ngIf="!adding">
+    <h4>{{ field.addTitle}}</h4>
+    <ng-container *ngIf="added && added.length === 0">
+      <p>None</p>
+    </ng-container>
+    <ng-container *ngIf="added && added.length > 0">
+      <p *ngFor="let record of added; let i = index">{{ record[field.displaySelector] }} - <i class="material-icons"
+          style="cursor:pointer;" (click)="remove(i)">delete</i></p>
+    </ng-container>
+    <button mat-raised-button color="primary" type="submit" (click)="toggleAdding()">Add</button>
+  </ng-container>
 
 
-  <ss-dynamic-form *ngIf="addFields$" [fields$]="addFields$" [validation]="this.field.fieldsConfig.validation"
-    [rules]="this.field.fieldsConfig.formRules" [buttonText]="'Add'" (submitted)="onAddSubmit($event)">
-  </ss-dynamic-form>
+  <ng-container *ngIf="adding">
+    <button mat-raised-button color="default" type="submit" (click)="toggleAdding()">Cancel</button>
+    <ss-dynamic-form *ngIf="addFields$" [fields$]="addFields$" [validation]="this.field.fieldsConfig.validation"
+      [rules]="this.field.fieldsConfig.formRules" [buttonText]="'Add'" (submitted)="onAddSubmit($event)">
+    </ss-dynamic-form>
+  </ng-container>
+
+
+
 </div>

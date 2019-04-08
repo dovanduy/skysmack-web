@@ -4,7 +4,7 @@ import { map, switchMap } from 'rxjs/operators';
 import { PersonsLodgingReservationsType, PersonsLodgingReservationsSettings } from '@skysmack/packages-persons-lodging-reservations';
 import { Observable, combineLatest } from 'rxjs';
 import { StrIndex, PagedQuery } from '@skysmack/framework';
-import { NgSettingsActions, NgSettingsStore } from '@skysmack/ng-redux';
+import { NgSettingsActions, NgSettingsStore, NgFieldActions } from '@skysmack/ng-redux';
 import { NgPersonsStore, NgPersonsActions, NgSkysmackStore } from '@skysmack/ng-packages';
 import { MultiSelectFieldComponent, AddField, AddRecordFieldComponent } from '@skysmack/portal-ui';
 import { NgPersonsFieldsConfig } from '../persons/ng-persons-fields-config';
@@ -21,7 +21,8 @@ export class NgPersonsLodgingReservationsFieldProvider extends FieldProvider {
         public personsFieldsConfig: NgPersonsFieldsConfig,
         public skysmackStore: NgSkysmackStore,
         public settingsActions: NgSettingsActions,
-        public settingsStore: NgSettingsStore
+        public settingsStore: NgSettingsStore,
+        public fieldActions: NgFieldActions
     ) {
         super();
     }
@@ -40,17 +41,21 @@ export class NgPersonsLodgingReservationsFieldProvider extends FieldProvider {
                         this.requested[depPackagePath] = true;
                     }
 
-                    // Request the pesons - only ONCE per. package per. app lifetime.
+                    // Request pesons + added fields - only ONCE per. package per. app lifetime.
                     const personsPackagePath = _package.object.dependencies[0];
                     if (!this.requested[personsPackagePath]) {
                         this.personsActions.getPaged(personsPackagePath, new PagedQuery());
+                        this.fieldActions.getPaged(personsPackagePath, new PagedQuery());
                         this.requested[personsPackagePath] = true;
                     }
+
 
                     return this.settingsStore.get<PersonsLodgingReservationsSettings>(depPackagePath, 'persons-reservations').pipe(
                         map(settings => {
                             const addField = new AddField({
                                 component: AddRecordFieldComponent,
+                                addTitle: 'Add persons',
+                                displaySelector: 'displayName',
                                 actions: this.personsActions,
                                 store: this.personsStore,
                                 fieldsConfig: this.personsFieldsConfig,

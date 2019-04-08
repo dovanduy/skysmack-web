@@ -6,6 +6,7 @@ import { LodgingReservation, LodgingReservationsAppState } from '@skysmack/packa
 import { RecordFormComponent, EditorNavService } from '@skysmack/portal-ui';
 import { PagedQuery, defined } from '@skysmack/framework';
 import { NgLodgingReservationsFieldsConfig } from '../../ng-lodging-reservations-fields-config';
+import { NgFieldActions } from '@skysmack/ng-redux';
 
 @Component({
   selector: 'ss-lodgings-reservations-edit',

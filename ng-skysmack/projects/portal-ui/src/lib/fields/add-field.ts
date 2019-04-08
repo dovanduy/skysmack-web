@@ -8,6 +8,8 @@ export class AddField extends Field {
     public actions: RecordActionsBase<any, any>;
     public store: NgRecordStore<any, any, any>;
     public packagePath: string;
+    public displaySelector: string;
+    public addTitle: string;
 
     constructor(values: Partial<AddField>) {
         super(values);

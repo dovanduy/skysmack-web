@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FieldBaseComponent } from '../field-base-component';
 import { AddField } from '../../../../fields/add-field';
 import { FormHelper, Field } from '@skysmack/ng-ui';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { NgSkysmackStore } from '@skysmack/ng-packages';
-import { switchMap, take } from 'rxjs/operators';
+import { switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'ss-add-record-field',
@@ -13,6 +13,8 @@ import { switchMap, take } from 'rxjs/operators';
 export class AddRecordFieldComponent extends FieldBaseComponent<AddField> implements OnInit {
 
   public addFields$: Observable<Field[]>;
+  public adding: boolean;
+  public added: any[] = [];
 
   constructor(public skysmackStore: NgSkysmackStore) {
     super();
@@ -26,8 +28,28 @@ export class AddRecordFieldComponent extends FieldBaseComponent<AddField> implem
     );
   }
 
+  public toggleAdding() {
+    this.adding = !this.adding;
+  }
+
   public onAddSubmit(fh: FormHelper) {
-    console.log(this.fh.form);
+    const postedValues = fh.form.getRawValue();
+    let currentValues = this.getFieldValue();
+
+    if (!currentValues) {
+      currentValues = [];
+    }
+
+    currentValues.push(postedValues);
+
+    this.added = currentValues;
+    this.setFieldValue(currentValues);
+    this.toggleAdding();
+  }
+
+  public remove(index: number) {
+    this.added.splice(index, 1);
+    this.setFieldValue(this.added);
   }
 
 }
