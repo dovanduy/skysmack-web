@@ -60,7 +60,6 @@ export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey>
     }
 
     protected setFields() {
-        console.log('hit')
         this.fields$ = this.loadedPackage$.pipe(
             switchMap(loadedPackage => this.fieldsConfig.getFields(loadedPackage))
         );

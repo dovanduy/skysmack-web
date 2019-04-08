@@ -19,7 +19,7 @@ export abstract class FieldsConfig<TRecord, TKey> implements EntityFieldsConfig<
     }
 
     protected getRecordFields(loadedPackage: LoadedPackage, entity?: LocalObject<TRecord, TKey>): Observable<Field[]> {
-        return this.getProvidedFields(loadedPackage).pipe(
+        return this.getProvidedFields(loadedPackage, entity).pipe(
             map(values => this.getStaticFields(loadedPackage, entity).concat(values))
         );
     }
@@ -49,13 +49,13 @@ export abstract class FieldsConfig<TRecord, TKey> implements EntityFieldsConfig<
         }
     }
 
-    private getProvidedFields(loadedPackage: LoadedPackage): Observable<Field[]> {
+    private getProvidedFields(loadedPackage: LoadedPackage, entity?: LocalObject<TRecord, TKey>): Observable<Field[]> {
         if (this.fieldProviders) {
             const providers = this.fieldProviders.providers[loadedPackage && loadedPackage.packageManifest && loadedPackage.packageManifest.id];
             if (providers && providers.length > 0) {
                 return combineLatest(
                     providers.map(provider => {
-                        return provider.getFields(loadedPackage._package.path);
+                        return provider.getFields(loadedPackage._package.path, entity);
                     })
                 ).pipe(
                     map((values: [Field[]]) => {

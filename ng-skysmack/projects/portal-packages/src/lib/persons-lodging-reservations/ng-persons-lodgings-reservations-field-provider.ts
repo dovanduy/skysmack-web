@@ -3,12 +3,13 @@ import { Field, SelectField } from '@skysmack/ng-ui';
 import { map, switchMap } from 'rxjs/operators';
 import { PersonsLodgingReservationsType, PersonsLodgingReservationsSettings } from '@skysmack/packages-persons-lodging-reservations';
 import { Observable, combineLatest } from 'rxjs';
-import { StrIndex, PagedQuery } from '@skysmack/framework';
+import { StrIndex, PagedQuery, LocalObject } from '@skysmack/framework';
 import { NgSettingsActions, NgSettingsStore, NgFieldActions } from '@skysmack/ng-redux';
 import { NgPersonsStore, NgPersonsActions, NgSkysmackStore } from '@skysmack/ng-packages';
-import { MultiSelectFieldComponent, AddField, AddRecordFieldComponent } from '@skysmack/portal-ui';
+import { MultiSelectFieldComponent, AddField, AddRecordFieldComponent, HiddenFieldComponent } from '@skysmack/portal-ui';
 import { NgPersonsFieldsConfig } from '../persons/ng-persons-fields-config';
 import { FieldProvider } from '@skysmack/portal-ui';
+import { Person } from '@skysmack/packages-persons';
 
 @Injectable({ providedIn: 'root' })
 export class NgPersonsLodgingReservationsFieldProvider extends FieldProvider {
@@ -27,7 +28,7 @@ export class NgPersonsLodgingReservationsFieldProvider extends FieldProvider {
         super();
     }
 
-    public getFields(packagePath: string): Observable<Field[]> {
+    public getFields(packagePath: string, entity?: LocalObject<Person, number>): Observable<Field[]> {
         return this.skysmackStore.getPackages().pipe(
             map(packages => packages.filter(_package => _package.object.type === PersonsLodgingReservationsType.id && _package.object.dependencies[1] === packagePath)),
             switchMap(packages => {
@@ -64,7 +65,7 @@ export class NgPersonsLodgingReservationsFieldProvider extends FieldProvider {
                                 key: 'extendedData.' + _package.object.path + '.add',
                                 label: personsPackagePath,
                                 placeholder: personsPackagePath,
-                                order: 4
+                                order: 1
                             });
 
                             const selectField = new SelectField({
@@ -75,13 +76,22 @@ export class NgPersonsLodgingReservationsFieldProvider extends FieldProvider {
                                 displayNameSelector: 'object.displayName',
                                 label: personsPackagePath,
                                 placeholder: personsPackagePath,
-                                order: 4
+                                order: 2
+                            });
+
+                            const extendedData = entity ? entity.object['extendedData'] : undefined;
+
+                            const currentlySelectedIdsField = new Field({
+                                component: HiddenFieldComponent,
+                                value: extendedData ? extendedData[depPackagePath]['ids'] : undefined,
+                                key: 'extendedData.' + _package.object.path + '.ids',
+                                order: 3
                             });
 
                             switch (settings.object.shouldBeExistingPersons) {
-                                case true: return [selectField];
+                                case true: return [selectField,];
                                 case false: return [addField];
-                                default: return [selectField, addField];
+                                default: return [selectField, currentlySelectedIdsField, addField];
                             }
                         })
                     );
