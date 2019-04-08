@@ -51,7 +51,7 @@ export abstract class FieldsConfig<TRecord, TKey> implements EntityFieldsConfig<
 
     private getProvidedFields(loadedPackage: LoadedPackage): Observable<Field[]> {
         if (this.fieldProviders) {
-            const providers = this.fieldProviders.providers[loadedPackage.packageManifest.id];
+            const providers = this.fieldProviders.providers[loadedPackage && loadedPackage.packageManifest && loadedPackage.packageManifest.id];
             if (providers && providers.length > 0) {
                 return combineLatest(
                     providers.map(provider => {
