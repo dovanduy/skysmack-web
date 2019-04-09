@@ -6,8 +6,10 @@ export class ReducerRegistry {
         return this._instance || (this._instance = new this());
     }
 
-    public reducers: any;
-    public emitChange: any;
+    private reducers: any;
+    private emitChange: any;
+
+    private reducerNames = {};
 
     private constructor(initialReducers = {}) {
         this.reducers = { ...initialReducers };
@@ -15,9 +17,12 @@ export class ReducerRegistry {
     }
 
     public register(name: string, reducer: Function) {
-        this.reducers = { ...this.reducers, [name]: reducer };
-        if (this.emitChange != null) {
-            this.emitChange(this.getReducers());
+        if (!this.reducerNames[name]) {
+            this.reducerNames[name] = name;
+            this.reducers = { ...this.reducers, [name]: reducer };
+            if (this.emitChange != null) {
+                this.emitChange(this.getReducers());
+            }
         }
     }
 

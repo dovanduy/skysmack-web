@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { StandardSettingsRedux } from './../redux/settings/standard-settings-redux';
 import { map } from 'rxjs/operators';
-import { Observable } from 'rxjs';
 
 @Injectable()
 export class LanguageService {

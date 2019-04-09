@@ -10,7 +10,6 @@ import { map, switchMap } from 'rxjs/operators';
 import { EntityFieldsConfig } from '../../fields/entity-fields-config';
 
 export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey> extends BaseComponent<TAppState, TKey> implements OnInit {
-    public entities$: Observable<LocalObject<TRecord, TKey>[]>;
     public pages$: BehaviorSubject<LocalPage<TKey>[]> = new BehaviorSubject<LocalPage<TKey>[]>([]);
     public pagedEntities$: Observable<LocalObject<TRecord, TKey>[]>;
     public pagedQuery = new PagedQuery();
@@ -36,7 +35,6 @@ export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey>
 
     ngOnInit() {
         super.ngOnInit();
-        this.getEntities();
         this.requestPage(true);
         this.loadPages();
         this.getPagedEntities();
@@ -53,10 +51,6 @@ export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey>
 
     protected storeGetPages() {
         return this.store.getPages(this.packagePath);
-    }
-
-    protected getEntities() {
-        this.entities$ = this.storeGet();
     }
 
     protected setFields() {
@@ -95,27 +89,22 @@ export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey>
     }
 
     private loadPages() {
-        this.subscriptionHandler.register(this.storeGetPages().pipe(
-            hasValue(),
+        return this.storeGetPages().pipe(
+            // tap(x => console.log(x)),
             map((dictionary: StrIndex<LocalPageTypes<TKey>>) => {
                 // Part 1: Get current page
                 const query = this.pagedQuery.rsqlFilter.toList().build();
                 const queryDictionary = dictionary[query];
+                // console.log('queryDic', queryDictionary);
                 if (queryDictionary) {
                     const sort = this.pagedQuery.sort.build();
                     const pages = queryDictionary.pages[this.pagedQuery.pageSize + ':' + sort];
                     const lastPageKey = this.currentPageNumber;
                     const lastPage: LocalPage<TKey> = pages[lastPageKey];
 
+                    // console.log('lastPage', lastPage, 'pages', pages);
                     // console.log('lastPage: ', lastPage, lastPageKey, lastPage.ids, lastPage.links);
                     if (lastPage) {
-                        if (lastPage.ids && lastPage.ids !== null && lastPage.ids.length > 0) {
-                            this.pages$.next(Object.keys(pages).map(key => {
-                                if (Number(key) > 0 && Number(key) <= lastPageKey) {
-                                    return pages[key];
-                                }
-                            }));
-                        }
                         // Part 2: Load next page
                         if (queryDictionary && queryDictionary.totalCount) {
                             this.totalCount = queryDictionary.totalCount;
@@ -129,24 +118,32 @@ export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey>
                         } else if (lastPage.loadingState === LoadingState.OK) {
                             this.loadingState = LoadingState.End;
                         }
+
+                        if (lastPage.ids && lastPage.ids !== null && lastPage.ids.length > 0) {
+                            return Object.keys(pages).map(key => {
+                                if (Number(key) > 0 && Number(key) <= lastPageKey) {
+                                    return pages[key];
+                                }
+                            });
+                        }
                     }
                 }
             })
-        ).subscribe());
+        );
     }
 
     /**
      * Shows all entities from the entities$ stream, if the their id is part of one of the loaded pages.
      */
     private getPagedEntities() {
-        if (this.pages$ && this.entities$) {
-            this.pagedEntities$ = combineLatest(
-                this.pages$,
-                this.entities$
-            ).pipe(
-                map(values => {
-                    const [pages, entities] = values;
+        this.pagedEntities$ = combineLatest(
+            this.loadPages(),
+            this.storeGet()
+        ).pipe(
+            map(values => {
+                const [pages, entities] = values;
 
+                if (pages && entities) {
                     const idsArray = linq<LocalPage<TKey>>(pages)
                         .defined()
                         .select(x => x.ids);
@@ -159,8 +156,9 @@ export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey>
                             .defined()
                             .ok()
                     );
-                })
-            );
-        }
+                }
+                return [];
+            })
+        );
     }
 }
