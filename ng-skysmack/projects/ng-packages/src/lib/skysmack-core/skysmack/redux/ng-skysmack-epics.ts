@@ -15,11 +15,13 @@ export class NgSkysmackEpics {
         protected requests: NgSkysmackRequests
     ) {
         this.epics = [
-            this.get
+            // DO NOT CREATE MORE EPICS HERE - GO TO PACKAGES EPICS (bottom of class) INSTEAD.
+            // Any other epic than the last here won't register/fire.
+            this.getEpic
         ];
     }
 
-    public get = (action$) => {
+    public getEpic = (action$) => {
         return action$.pipe(
             ofType(
                 NgSkysmackActions.GET_SKYSMACK,

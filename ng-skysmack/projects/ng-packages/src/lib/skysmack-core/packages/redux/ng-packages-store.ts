@@ -43,14 +43,6 @@ export class NgPackagesStore implements EntityStore<Package, string> {
         );
     }
 
-    public getPermissions(packageType: string): Observable<string[]> {
-        return this.getAvailablePackages().pipe(
-            map(availablePackages => availablePackages.find(availablePackage => availablePackage.object.type === packageType)),
-            hasValue(),
-            map((availablePackage: LocalObject<AvailablePackage, string>) => availablePackage.object.permissions),
-        );
-    }
-
     protected getState(): Observable<PackagesState> {
         return this.store.select(state => state.packages);
     }

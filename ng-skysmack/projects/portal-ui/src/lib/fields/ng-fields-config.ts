@@ -37,7 +37,12 @@ export class NgFieldsConfig extends FieldsConfig<FieldSchemaViewModel, string> {
      * @param field Optional field can be providedto set default values. Used to edit an existing field.
      */
     protected getEntityFields(loadedPackage: LoadedPackage, field?: LocalObject<FieldSchemaViewModel, string>): Field[] {
-        const stateKey = loadedPackage._package.path + '-' + getAdditionalPaths(this.router, loadedPackage._package.path);
+        let stateKey = loadedPackage._package.path;
+        const additionalPaths = getAdditionalPaths(this.router, loadedPackage._package.path);
+
+        if (additionalPaths && additionalPaths.length > 0) {
+            stateKey = stateKey + '-' + additionalPaths;
+        }
 
         const fields = [
             new Field({
