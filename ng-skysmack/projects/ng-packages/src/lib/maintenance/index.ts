@@ -1,10 +1,6 @@
-export * from './redux/index';
 export * from './ng-assignments.module';
-export * from './ng-assignments-validation';
-export * from './ng-assignments-notifications';
-export * from './ng-recurring-assignments-validation';
-export * from './ng-recurring-assignments-notifications';
-export * from './ng-assignment-types-validation';
-export * from './ng-assignment-types-notifications';
-export * from './ng-maintenance-states-validation';
-export * from './ng-maintenance-states-notifications';
+export * from './assignment-types/index';
+export * from './assignments/index';
+export * from './maintenance-states/index';
+export * from './recurring-assignments/index';
+

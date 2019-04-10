@@ -4,7 +4,7 @@ import { RecurringAssignment, RecurringAssignmentsAppState, RECURRING_ASSIGNMENT
 import { RecordIndexComponent, EntityComponentPageTitle } from '@skysmack/portal-ui';
 import { EntityAction } from '@skysmack/ng-ui';
 import { NgRecurringAssignmentsActions, NgSkysmackStore, NgRecurringAssignmentsStore } from '@skysmack/ng-packages';
-import { NgRecurringAssignmentsMenu } from './../../ng-recurring-assignments-menu';
+import { NgRecurringAssignmentsMenu } from '../../ng-recurring-assignments-menu';
 import { NgRecurringAssignmentsFieldsConfig } from '../../ng-recurring-assignments-fields-config';
 
 @Component({
