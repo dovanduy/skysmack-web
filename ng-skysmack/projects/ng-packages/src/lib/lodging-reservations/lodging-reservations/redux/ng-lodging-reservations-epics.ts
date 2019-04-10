@@ -6,9 +6,9 @@ import { ActionsObservable, ofType } from 'redux-observable';
 import { RSQLFilterBuilder, PagedQuery } from '@skysmack/framework';
 import { map, take } from 'rxjs/operators';
 import { ReduxAction, GetPagedEntitiesSuccessPayload } from '@skysmack/redux';
-import { NgLodgingTypesActions } from './../../lodgings/redux/ng-lodging-types-actions';
-import { NgSkysmackStore } from './../../skysmack-core/skysmack/redux/ng-skysmack-store';
-import { NgLodgingsActions } from './../../lodgings/redux/ng-lodgings-actions';
+import { NgLodgingTypesActions } from '../../../lodgings/redux/ng-lodging-types-actions';
+import { NgSkysmackStore } from '../../../skysmack-core/skysmack/redux/ng-skysmack-store';
+import { NgLodgingsActions } from '../../../lodgings/redux/ng-lodgings-actions';
 import { NgLodgingReservationsNotifications } from '../ng-lodging-reservations-notifications';
 
 @Injectable({ providedIn: 'root' })

@@ -7,7 +7,7 @@ import { NgIdentitiesModule, NgLodgingReservationsModule } from '@skysmack/ng-pa
 import { PortalUiModule, HttpLoaderFactory, FieldsModule } from '@skysmack/portal-ui';
 import { TranslateLoader } from '@ngx-translate/core';
 import { LodgingReservationsRoutingModule } from './lodging-reservations-routing.module';
-import { lodgingReservationsComponents } from './components/lodgings-reservations-components';
+import { lodgingReservationsComponents } from './lodging-reservations/lodgings-reservations-components';
 
 @NgModule({
   imports: [
