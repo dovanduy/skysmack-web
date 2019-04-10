@@ -149,20 +149,21 @@ export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey>
             map(values => {
                 const [pages, entities] = values;
 
-
                 if (pages && entities) {
-                    const idsArray = linq<LocalPage<TKey>>(pages)
+                    const idsArray = linq<TKey>([]).selectMany(linq<LocalPage<TKey>>(pages)
                         .defined()
-                        .select(x => x.ids);
+                        .select(x => x.ids))
+                        .distinct()
+                        .ok();
 
-                    return entities.filter(entity => entity.isNew).concat(
-                        linq<TKey>([])
-                            .selectMany(idsArray)
-                            .distinct()
-                            .select(id => entities.filter(entity => entity.objectIdentifier === id)[0])
-                            .defined()
-                            .ok()
-                    );
+                    return entities
+                        .filter(entity => entity.isNew && !idsArray.includes(entity.objectIdentifier))
+                        .concat(idsArray
+                            .map(id => entities.filter(entity => entity.objectIdentifier === id)[0])
+                            .filter(x => x)
+                        );
+                } else if (entities) {
+                    return entities.filter(entity => entity.isNew);
                 }
                 return [];
             })
