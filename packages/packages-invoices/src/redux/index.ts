@@ -1,3 +1,3 @@
-export * from './invoices-reducer';
-export * from './invoice-items-reducer';
-export * from './invoice-payments-reducer';
+export * from './invoice-items/index';
+export * from './invoices/index';
+export * from './invoice-payments/index';

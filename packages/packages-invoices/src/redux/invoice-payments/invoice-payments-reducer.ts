@@ -1,8 +1,8 @@
 import { LocalPageTypes, StrIndex, LocalObject } from '@skysmack/framework';
 import { AppState, ReduxAction, RecordState, recordReducersBase } from '@skysmack/redux';
 import { sharedReducer } from '@skysmack/redux';
-import { InvoicePayment } from '../models/invoice-payment';
-import { INVOICE_PAYMENTS_REDUX_KEY } from '../constants';
+import { InvoicePayment } from '../../models/invoice-payment';
+import { INVOICE_PAYMENTS_REDUX_KEY } from '../../constants';
 
 /**
  * This is to be used when you want to access invoicePayments via the GLOBAL state. E.g. state.invoicePayments (where invoicePayments is the reducer name.)

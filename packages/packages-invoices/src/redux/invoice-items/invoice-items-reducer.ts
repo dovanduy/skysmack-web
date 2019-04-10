@@ -1,8 +1,8 @@
 import { LocalPageTypes, StrIndex, LocalObject } from '@skysmack/framework';
 import { AppState, ReduxAction, RecordState, recordReducersBase } from '@skysmack/redux';
-import { InvoiceItem } from './../models/invoice-item';
+import { InvoiceItem } from '../../models/invoice-item';
 import { sharedReducer } from '@skysmack/redux';
-import { INVOICE_ITEMS_REDUX_KEY } from '../constants';
+import { INVOICE_ITEMS_REDUX_KEY } from '../../constants';
 
 /**
  * This is to be used when you want to access invoiceItems via the GLOBAL state. E.g. state.invoiceItems (where invoiceItems is the reducer name.)
