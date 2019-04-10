@@ -15,11 +15,11 @@ export class NgFieldStore implements EntityStore<FieldSchemaViewModel, string> {
         return this.getState().pipe(
             map(state => state.fields[stateKey]),
             defined(),
-            distinctUntilChanged((x, y) => {
-                const xRecordIds = Object.keys(x);
-                const yRecordIds = Object.keys(y);
-                return !(xRecordIds.length === yRecordIds.length && xRecordIds.every((value, index) => value === yRecordIds[index]));
-            }),
+            // distinctUntilChanged((x, y) => {
+            //     const xRecordIds = Object.keys(x);
+            //     const yRecordIds = Object.keys(y);
+            //     return !(xRecordIds.length === yRecordIds.length && xRecordIds.every((value, index) => value === yRecordIds[index]));
+            // }),
             safeUndefinedTo('object'),
             dictionaryToArray<LocalObject<FieldSchemaViewModel, string>>(),
         );
