@@ -5,8 +5,8 @@ import { ProductsRoutingModule } from './products-routing.module';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { NgProductsModule } from '@skysmack/ng-packages';
 import { PortalUiModule, HttpLoaderFactory, FieldsModule } from '@skysmack/portal-ui';
-import { productsComponents } from './components/products-components';
-import { productTypesComponents } from './components/product-types-component';
+import { productsComponents } from './products/components/products-components';
+import { productTypesComponents } from './product-types/components/product-types-component';
 import { TranslateLoader, TranslateService } from '@ngx-translate/core';
 import { LanguageService } from '@skysmack/portal-ui';
 
