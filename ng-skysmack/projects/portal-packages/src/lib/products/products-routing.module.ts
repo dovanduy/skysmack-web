@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { productsRoutes } from './components/products-components';
-import { productTypesRoutes } from './components/product-types-component';
+import { productsRoutes } from './products/components/products-components';
+import { productTypesRoutes } from './product-types/components/product-types-component';
 
 @NgModule({
   imports: [RouterModule.forChild([
