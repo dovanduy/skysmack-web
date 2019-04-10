@@ -6,7 +6,7 @@ import { LodgingTypesAppState, LodgingType, LODGING_TYPES_AREA_KEY } from '@skys
 import { NgLodgingTypesStore } from '@skysmack/ng-packages';
 import { NgLodgingTypesActions } from '@skysmack/ng-packages';
 import { EntityAction } from '@skysmack/ng-ui';
-import { NgLodgingTypesMenu } from './../../ng-lodging-types-menu';
+import { NgLodgingTypesMenu } from '../../ng-lodging-types-menu';
 import { NgFieldActions } from '@skysmack/ng-redux';
 import { NgLodgingTypesFieldsConfig } from '../../ng-lodging-types-fields-config';
 

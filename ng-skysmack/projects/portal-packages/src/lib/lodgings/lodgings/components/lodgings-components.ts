@@ -4,7 +4,7 @@ import { LodgingsCreateComponent } from './lodgings-create/lodgings-create.compo
 import { LodgingsEditComponent } from './lodgings-edit/lodgings-edit.component';
 import { FieldsIndexComponent, FieldsCreateComponent } from '@skysmack/portal-ui';
 import { RouteData } from '@skysmack/framework';
-import { LodgingsAvailablityComponent } from './lodgings-availablity/lodgings-availablity.component';
+import { LodgingsavailabilityComponent } from './lodgings-availability/lodgings-availability.component';
 
 
 const data = {
@@ -25,12 +25,12 @@ export const lodgingsRoutes: Routes = [
       { path: 'create', component: FieldsCreateComponent, pathMatch: 'full' }
     ]
   },
-  { path: 'availability', component: LodgingsAvailablityComponent }
+  { path: 'availability', component: LodgingsavailabilityComponent }
 ];
 
 export const lodgingsComponents: any[] = [
   LodgingsIndexComponent,
   LodgingsCreateComponent,
   LodgingsEditComponent,
-  LodgingsAvailablityComponent
+  LodgingsavailabilityComponent
 ];
