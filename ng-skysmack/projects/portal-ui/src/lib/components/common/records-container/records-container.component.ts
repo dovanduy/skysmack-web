@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, EventEmitter, Output, ViewChild } from '@angular/core';
-import { LocalObject, LoadingState, DisplayColumn, getProperty } from '@skysmack/framework';
+import { LocalObject, LoadingState, DisplayColumn } from '@skysmack/framework';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { EntityAction, Field, FieldTypes } from '@skysmack/ng-ui';
 import { map } from 'rxjs/operators';
@@ -33,8 +33,6 @@ export class RecordsContainerComponent implements OnInit {
   public displayColumns$: Observable<DisplayColumn[]>;
 
   constructor() { }
-
-  public getProperty = getProperty;
 
   ngOnInit() {
     // Set display columns

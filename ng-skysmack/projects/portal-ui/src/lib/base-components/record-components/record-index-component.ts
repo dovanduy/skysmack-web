@@ -22,6 +22,7 @@ export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey>
 
     public currentPageNumber = 1;
     public totalCount$: BehaviorSubject<number> = new BehaviorSubject<number>(0);
+    public totalCount = 0;
 
     constructor(
         public router: Router,
@@ -91,14 +92,9 @@ export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey>
     }
 
     private loadPages() {
-        return combineLatest(
-            this.storeGetPages(),
-            this.totalCount$
-        ).pipe(
-            map((values) => {
+        return this.storeGetPages().pipe(
+            map((dictionary) => {
                 // Part 1: Get current page
-                const dictionary: StrIndex<LocalPageTypes<TKey>> = values[0];
-                const totalCount = values[1];
                 const query = this.pagedQuery.rsqlFilter.toList().build();
                 const queryDictionary = dictionary[query];
                 if (queryDictionary) {
@@ -109,7 +105,8 @@ export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey>
 
                     if (lastPage) {
                         // Part 2: Load next page
-                        if (queryDictionary && queryDictionary.totalCount && totalCount !== queryDictionary.totalCount) {
+                        if (queryDictionary && queryDictionary.totalCount && this.totalCount !== queryDictionary.totalCount) {
+                            this.totalCount = queryDictionary.totalCount;
                             this.totalCount$.next(queryDictionary.totalCount);
                         }
                         const lastPageLinks = lastPage.links;
