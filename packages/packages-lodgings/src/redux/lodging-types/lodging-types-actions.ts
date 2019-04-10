@@ -2,8 +2,8 @@ import { RecordActionsBase, ReduxAction, GetIntervalPayload, SelectedIdsMeta } f
 import { Store } from 'redux';
 import { LocalObject, StrIndex } from '@skysmack/framework';
 import { LodgingTypesAppState } from './lodging-types-reducer';
-import { LodgingType } from '../models/lodging-type';
-import { LODGING_TYPES_REDUX_KEY, LODGING_TYPES_ADDITIONAL_PATHS } from '../constants';
+import { LodgingType } from '../../models/lodging-type';
+import { LODGING_TYPES_REDUX_KEY, LODGING_TYPES_ADDITIONAL_PATHS } from '../../constants';
 
 export class LodgingTypesActions extends RecordActionsBase<LodgingTypesAppState, Store<LodgingTypesAppState>> {
     public static GET_AVAILABLE_LODGING_TYPES = 'GET_AVAILABLE_LODGING_TYPES';

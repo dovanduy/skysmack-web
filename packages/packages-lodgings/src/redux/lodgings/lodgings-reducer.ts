@@ -1,8 +1,8 @@
 import { LocalPageTypes, StrIndex, LocalObject } from '@skysmack/framework';
 import { AppState, ReduxAction, sharedReducer, RecordState, recordReducersBase, StateKeyMeta } from '@skysmack/redux';
-import { Lodging } from './../models/lodging';
+import { Lodging } from '../../models/lodging';
 import { LodgingsActions } from './lodging-actions';
-import { LODGINGS_REDUX_KEY } from '../constants';
+import { LODGINGS_REDUX_KEY } from '../../constants';
 
 /**
  * This is to be used when you want to access lodgings via the GLOBAL state. E.g. state.lodgings (where lodgings is the reducer name.)

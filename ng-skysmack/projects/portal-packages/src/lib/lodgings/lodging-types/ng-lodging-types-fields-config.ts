@@ -1,12 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
-import { FormRule, Field } from '@skysmack/ng-ui';
 import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { LodgingType } from '@skysmack/packages-lodgings';
+import { FieldProviders, DocumentFieldsConfig, StringFieldComponent, HiddenFieldComponent } from '@skysmack/portal-ui';
 import { NgLodgingTypesValidation, LoadedPackage } from '@skysmack/ng-packages';
-import { DocumentFieldsConfig, StringFieldComponent, HiddenFieldComponent } from '@skysmack/portal-ui';
+import { FormRule, Field } from '@skysmack/ng-ui';
 import { NgFieldStore } from '@skysmack/ng-redux';
-import { FieldProviders } from '@skysmack/portal-ui';
 
 @Injectable({ providedIn: 'root' })
 export class NgLodgingTypesFieldsConfig extends DocumentFieldsConfig<LodgingType, number> {

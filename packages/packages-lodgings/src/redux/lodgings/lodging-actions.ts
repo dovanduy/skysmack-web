@@ -2,8 +2,8 @@ import { RecordActionsBase, ReduxAction, GetIntervalPayload, SelectedIdsMeta } f
 import { Store } from 'redux';
 import { LodgingsAppState } from './lodgings-reducer';
 import { LocalObject, StrIndex } from '@skysmack/framework';
-import { Lodging } from '../models/lodging';
-import { LODGINGS_REDUX_KEY, LODGINGS_ADDITIONAL_PATHS } from '../constants';
+import { Lodging } from '../../models/lodging';
+import { LODGINGS_REDUX_KEY, LODGINGS_ADDITIONAL_PATHS } from '../../constants';
 
 
 export class LodgingsActions extends RecordActionsBase<LodgingsAppState, Store<LodgingsAppState>> {
