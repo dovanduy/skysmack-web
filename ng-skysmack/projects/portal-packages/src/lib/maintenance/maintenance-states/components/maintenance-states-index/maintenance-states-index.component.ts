@@ -4,7 +4,7 @@ import { MaintenanceState, MaintenanceStatesAppState, MAINTENANCE_STATES_AREA_KE
 import { EntityComponentPageTitle, RecordIndexComponent } from '@skysmack/portal-ui';
 import { EntityAction } from '@skysmack/ng-ui';
 import { NgMaintenanceStatesActions, NgSkysmackStore, NgMaintenanceStatesStore } from '@skysmack/ng-packages';
-import { NgMaintenanceStatesMenu } from './../../ng-maintenance-states-menu';
+import { NgMaintenanceStatesMenu } from '../../ng-maintenance-states-menu';
 import { NgMaintenanceStatesFieldsConfig } from '../../ng-maintenance-states-fields-config';
 
 

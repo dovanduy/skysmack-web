@@ -2,10 +2,10 @@ import { RecordEpicsBase } from '@skysmack/ng-redux';
 import { Assignment, ASSIGNMENTS_REDUX_KEY } from '@skysmack/packages-maintenance';
 import { Injectable } from '@angular/core';
 import { NgAssignmentsRequests } from './ng-assignments-requests';
-import { NgAssignmentsNotifications } from '../ng-assignments-notifications';
-import { NgAssignmentTypesActions } from './ng-assignment-types-actions';
-import { NgAssignmentTypesStore } from './ng-assignment-types-store';
+import { NgAssignmentTypesActions } from '../../assignment-types/redux/ng-assignment-types-actions';
+import { NgAssignmentTypesStore } from '../../assignment-types/redux/ng-assignment-types-store';
 import { getCrudDependencies } from '@skysmack/ng-redux';
+import { NgAssignmentsNotifications } from '../ng-assignments-notifications';
 
 @Injectable({ providedIn: 'root' })
 export class NgAssignmentsEpics extends RecordEpicsBase<Assignment, number> {
