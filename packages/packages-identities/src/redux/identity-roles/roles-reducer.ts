@@ -1,7 +1,7 @@
 import { LocalPageTypes, StrIndex, LocalObject, FieldSchemaViewModel, FieldValueProviderViewModel } from '@skysmack/framework';
 import { AppState, ReduxAction, RecordState, recordReducersBase, sharedReducer } from '@skysmack/redux';
-import { Role } from './../models/role';
-import { ROLES_REDUX_KEY } from '../constants';
+import { Role } from '../../models/role';
+import { ROLES_REDUX_KEY } from '../../constants';
 
 /**
  * This is to be used when you want to access roles via the GLOBAL state. E.g. state.roles (where roles is the reducer name.)

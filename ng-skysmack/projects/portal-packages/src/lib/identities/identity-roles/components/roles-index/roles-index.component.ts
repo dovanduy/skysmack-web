@@ -5,7 +5,7 @@ import { NgRolesActions } from '@skysmack/ng-packages';
 import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { NgRolesStore } from '@skysmack/ng-packages';
 import { Role, RolesAppState, ROLES_AREA_KEY } from '@skysmack/packages-identities';
-import { NgRolesMenu } from './../../ng-roles-menu';
+import { NgRolesMenu } from '../../ng-roles-menu';
 import { EntityAction } from '@skysmack/ng-ui';
 import { NgRolesFieldsConfig } from '../../ng-roles-fields-config';
 

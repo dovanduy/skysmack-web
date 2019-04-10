@@ -4,7 +4,7 @@ import { EntityComponentPageTitle, RecordIndexComponent, } from '@skysmack/porta
 import { NgUsersActions, NgUsersStore, NgSkysmackStore } from '@skysmack/ng-packages';
 import { EntityAction } from '@skysmack/ng-ui';
 import { User, UsersAppState, USERS_AREA_KEY } from '@skysmack/packages-identities';
-import { NgUsersMenu } from './../../ng-users-menu';
+import { NgUsersMenu } from '../../ng-users-menu';
 import { NgUsersFieldsConfig } from '../../ng-users-fields-config';
 
 

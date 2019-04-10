@@ -1,11 +1,6 @@
-export * from './redux/index';
+export * from './identity-users/index';
+export * from './identity-roles/index';
 export * from './ng-identities.module';
-
-export * from './ng-roles-notifications';
-export * from './ng-roles-validation';
-
-export * from './ng-users-validation';
-export * from './ng-users-notifications';
 
 export * from './ng-set-password-validation';
 

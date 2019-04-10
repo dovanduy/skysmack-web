@@ -1,10 +1,10 @@
 import { RecordActionsBase, ReduxAction, Effect, EffectRequest, OfflineMeta, ReduxOfflineMeta } from '@skysmack/redux';
 import { UsersAppState } from './users-reducer';
 import { Store } from 'redux';
-import { GetUsersRolesPayload } from '../payloads/get-users-roles-payload';
+import { GetUsersRolesPayload } from '../../payloads/get-users-roles-payload';
 import { HttpMethod, NumIndex, HttpResponse, LocalObject, StrIndex } from '@skysmack/framework';
-import { User } from '../models';
-import { USERS_REDUX_KEY, USERS_ADDITIONAL_PATHS } from '../constants';
+import { User } from '../../models';
+import { USERS_REDUX_KEY, USERS_ADDITIONAL_PATHS } from '../../constants';
 
 export class UsersActions extends RecordActionsBase<UsersAppState, Store<UsersAppState>> {
     public static GET_ROLES = 'GET_ROLES';

@@ -1,9 +1,9 @@
 import { LocalPageTypes, StrIndex, LocalObject, NumIndex, HttpResponse, linq, GlobalProperties } from '@skysmack/framework';
 import { AppState, ReduxAction, RecordState, recordReducersBase, ReduxOfflineMeta, sharedReducer } from '@skysmack/redux';
-import { User } from './../models/user';
+import { User } from '../../models/user';
 import { UsersActions } from './users-actions';
-import { GetUsersRolesSuccessPayload } from '../payloads';
-import { USERS_REDUX_KEY } from '../constants';
+import { GetUsersRolesSuccessPayload } from '../../payloads';
+import { USERS_REDUX_KEY } from '../../constants';
 
 /**
  * This is to be used when you want to access users via the GLOBAL state. E.g. state.users (where users is the reducer name.)
