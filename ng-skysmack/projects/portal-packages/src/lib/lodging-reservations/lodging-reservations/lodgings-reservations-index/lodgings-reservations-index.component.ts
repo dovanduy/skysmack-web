@@ -9,7 +9,7 @@ import { NgLodgingReservationsStore, NgLodgingsStore, NgLodgingTypesStore, NgLod
 import { RecordIndexComponent, EntityComponentPageTitle } from '@skysmack/portal-ui';
 import { NgLodgingsReservationsMenu } from '../../ng-lodgings-reservations-menu';
 import { CheckIn } from '@skysmack/packages-lodging-reservations';
-import { LodgingsArrivalsComponent } from '../lodgings-arrivals/lodgings-arrivals.component';
+import { LodgingsArrivalsComponent } from '../../components/lodgings-arrivals/lodgings-arrivals.component';
 import { NgLodgingReservationsFieldsConfig } from '../../ng-lodging-reservations-fields-config';
 
 @Component({
