@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
-import { LodgingsStaysComponent } from './lodgings-stays/lodgings-stays.component';
-import { LodgingsArrivalsComponent } from './lodgings-arrivals/lodgings-arrivals.component';
-import { LodgingsDeparturesComponent } from './lodgings-departures/lodgings-departures.component';
+import { LodgingsStaysComponent } from '../components/lodgings-stays/lodgings-stays.component';
+import { LodgingsArrivalsComponent } from '../components/lodgings-arrivals/lodgings-arrivals.component';
+import { LodgingsDeparturesComponent } from '../components/lodgings-departures/lodgings-departures.component';
 import { LodgingsReservationsIndexComponent } from './lodgings-reservations-index/lodgings-reservations-index.component';
 import { LodgingsReservationsCreateComponent } from './lodgings-reservations-create/lodgings-reservations-create.component';
 import { LodgingsReservationsEditComponent } from './lodgings-reservations-edit/lodgings-reservations-edit.component';

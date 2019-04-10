@@ -2,9 +2,9 @@ import { RecordActionsBase, ReduxAction, Effect, EffectRequest, OfflineMeta, Red
 import { HttpMethod, HttpResponse, LocalObject, NumIndex, StrIndex } from '@skysmack/framework';
 import { LodgingReservationsAppState } from './lodging-reservations-reducer';
 import { Store } from 'redux';
-import { CheckIn } from './../models/check-in';
-import { LodgingReservation } from './../models/lodging-reservation';
-import { LODGING_RESERVATIONS_REDUX_KEY, LODGING_RESERVATIONS_ADDITIONAL_PATHS } from '../constants';
+import { CheckIn } from '../../models/check-in';
+import { LodgingReservation } from '../../models/lodging-reservation';
+import { LODGING_RESERVATIONS_REDUX_KEY, LODGING_RESERVATIONS_ADDITIONAL_PATHS } from '../../constants';
 
 export class LodgingReservationsActions extends RecordActionsBase<LodgingReservationsAppState, Store<LodgingReservationsAppState>> {
     public static CHECK_IN = 'CHECK_IN';
