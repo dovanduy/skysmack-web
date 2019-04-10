@@ -1,8 +1,8 @@
-import { Component, OnInit, Input, OnDestroy, EventEmitter, Output, ViewChild } from '@angular/core';
-import { LocalObject, LoadingState, SubscriptionHandler, DisplayColumn, getProperty } from '@skysmack/framework';
+import { Component, OnInit, Input, EventEmitter, Output, ViewChild, ChangeDetectorRef } from '@angular/core';
+import { LocalObject, LoadingState, DisplayColumn, getProperty } from '@skysmack/framework';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { EntityAction, Field, FieldTypes } from '@skysmack/ng-ui';
-import { map, tap } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
 
 @Component({
@@ -10,8 +10,7 @@ import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
   templateUrl: './records-container.component.html',
   styleUrls: ['./records-container.component.scss']
 })
-export class RecordsContainerComponent implements OnInit, OnDestroy {
-  public subscriptionHandler: SubscriptionHandler = new SubscriptionHandler();
+export class RecordsContainerComponent implements OnInit {
   public loadedEntitiesCount: number;
 
   @ViewChild('entityList') public entityList: CdkVirtualScrollViewport;
@@ -45,20 +44,13 @@ export class RecordsContainerComponent implements OnInit, OnDestroy {
 
     // Set entities
     this.entities$ = this.entities$.pipe(
-      // TODO(GET_DEPS): See above todo.
       map((entities: LocalObject<any, any>[]) => {
         this.loadedEntitiesCount = entities.length;
         return entities;
       }));
   }
 
-  ngOnDestroy() {
-    this.subscriptionHandler.unsubscribe();
-  }
-
   public displayColumnFromField(field: Field) {
-    // const foundColumn = this.displayColumns ? this.displayColumns.find(column => column.fieldKey === field.key) : undefined;
-    // if (!foundColumn) {
     const sortableFields: Array<FieldTypes> = [FieldTypes.int, FieldTypes.dateTime, FieldTypes.decimal, FieldTypes.double, FieldTypes.limitedString];
     const sortable = sortableFields.indexOf(field.fieldType) > -1 || !field.dynamicField;
     const column = new DisplayColumn({
