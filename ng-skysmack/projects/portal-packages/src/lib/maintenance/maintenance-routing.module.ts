@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { assignmentsRoutes } from './components/assignments-components';
-import { assignmentTypesRoutes } from './components/assignment-types-components';
-import { maintenanceStatesRoutes } from './components/maintenance-states-components';
-import { recurringAssignmentsRoutes } from './components/recurring-assignments-components';
+import { assignmentsRoutes } from './assignments/components/assignments-components';
+import { assignmentTypesRoutes } from './assignment-types/components/assignment-types-components';
+import { maintenanceStatesRoutes } from './maintenance-states/components/maintenance-states-components';
+import { recurringAssignmentsRoutes } from './recurring-assignments/components/recurring-assignments-components';
 import { assignmentsAllRoutes } from './components/assignments-all-components';
 
 @NgModule({

@@ -1,7 +1,7 @@
 import { LocalPageTypes, StrIndex, LocalObject } from '@skysmack/framework';
 import { AppState, ReduxAction, RecordState, recordReducersBase, sharedReducer } from '@skysmack/redux';
-import { AssignmentType } from '../models/assignment-type';
-import { ASSIGNMENT_TYPES_REDUX_KEY } from '../constants';
+import { AssignmentType } from '../../models/assignment-type';
+import { ASSIGNMENT_TYPES_REDUX_KEY } from '../../constants';
 
 
 /**

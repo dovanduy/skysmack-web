@@ -1,6 +1,6 @@
 import { StrIndex, LocalObject, LocalPageTypes } from '@skysmack/framework';
 import { AppState, ReduxAction, RecordState, recordReducersBase, sharedReducer } from '@skysmack/redux';
-import { RecurringAssignment } from '../models/recurring-assignment';
+import { RecurringAssignment } from '../../models/recurring-assignment';
 
 /**
  * This is to be used when you want to access maintenances via the GLOBAL state. E.g. state.maintenances (where maintenances is the reducer name.)

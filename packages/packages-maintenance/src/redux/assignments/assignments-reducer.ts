@@ -1,7 +1,7 @@
 import { LocalPageTypes, StrIndex, LocalObject } from '@skysmack/framework';
 import { AppState, ReduxAction, RecordState, recordReducersBase, sharedReducer } from '@skysmack/redux';
-import { Assignment } from './../models/assignment';
-import { ASSIGNMENTS_REDUX_KEY } from '../constants';
+import { Assignment } from '../../models/assignment';
+import { ASSIGNMENTS_REDUX_KEY } from '../../constants';
 
 /**
  * This is to be used when you want to access assignment via the GLOBAL state. E.g. state.assignment (where assignment is the reducer name.)
