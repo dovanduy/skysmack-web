@@ -5,10 +5,10 @@ import { NgPersonsActions } from '@skysmack/ng-packages';
 import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { NgPersonsStore } from '@skysmack/ng-packages';
 import { Person, PersonsAppState, PERSONS_AREA_KEY } from '@skysmack/packages-persons';
-import { NgPersonsMenu } from './../../ng-persons-menu';
+import { NgPersonsMenu } from '../../../ng-persons-menu';
 import { EntityAction } from '@skysmack/ng-ui';
 import { NgFieldActions } from '@skysmack/ng-redux';
-import { NgPersonsFieldsConfig } from '../../ng-persons-fields-config';
+import { NgPersonsFieldsConfig } from '../../../ng-persons-fields-config';
 
 @Component({
   selector: 'ss-persons-index',

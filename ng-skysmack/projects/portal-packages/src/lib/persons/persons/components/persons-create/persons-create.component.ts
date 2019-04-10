@@ -7,7 +7,7 @@ import { EditorNavService } from '@skysmack/portal-ui';
 import { DocumentRecordFormComponent } from '@skysmack/portal-ui';
 import { NgPersonsStore } from '@skysmack/ng-packages';
 import { NgFieldActions } from '@skysmack/ng-redux';
-import { NgPersonsFieldsConfig } from '../../ng-persons-fields-config';
+import { NgPersonsFieldsConfig } from '../../../ng-persons-fields-config';
 
 @Component({
   selector: 'ss-persons-create',
