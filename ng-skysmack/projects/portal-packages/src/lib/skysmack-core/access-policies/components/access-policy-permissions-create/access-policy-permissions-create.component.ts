@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgAccessPolicyPermissionsActions, NgSkysmackActions, NgAccessPolicyRulesActions, NgPackagesActions } from '@skysmack/ng-packages';
+import { NgAccessPolicyPermissionsActions, NgSkysmackActions, NgAccessPolicyRulesActions } from '@skysmack/ng-packages';
 import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EditorNavService, RecordFormComponent } from '@skysmack/portal-ui';
@@ -22,7 +22,6 @@ export class AccessPolicyPermissionsCreateComponent extends RecordFormComponent<
     public skysmackStore: NgSkysmackStore,
     public skysmackActions: NgSkysmackActions,
     public accessPolicyRulesActions: NgAccessPolicyRulesActions,
-    public packagesActions: NgPackagesActions,
     public fieldsConfig: NgAccessPolicyPermissionsFieldsConfig,
   ) {
     super(router, activatedRoute, editorNavService, actions, skysmackStore, store, fieldsConfig);
@@ -31,7 +30,6 @@ export class AccessPolicyPermissionsCreateComponent extends RecordFormComponent<
   ngOnInit() {
     super.ngOnInit();
     this.skysmackActions.getSkysmack();
-    this.packagesActions.getAvailablePackages();
     this.accessPolicyRulesActions.getPaged(this.packagePath, new PagedQuery());
     this.setCreateFields();
   }

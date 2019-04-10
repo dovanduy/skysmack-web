@@ -1,8 +1,8 @@
 import { Component, OnInit, Input, OnDestroy, EventEmitter, Output, ViewChild } from '@angular/core';
 import { LocalObject, LoadingState, SubscriptionHandler, DisplayColumn, getProperty } from '@skysmack/framework';
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 import { EntityAction, Field, FieldTypes } from '@skysmack/ng-ui';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
 
 @Component({
@@ -21,18 +21,17 @@ export class RecordsContainerComponent implements OnInit, OnDestroy {
   @Output() public sortChanged = new EventEmitter<DisplayColumn>();
 
   @Input() public entities$: Observable<LocalObject<any, any>[]>;
-  @Input() public entities: LocalObject<any, any>[];
-  @Input() public totalCount: number;
-  @Input() public loadingState: LoadingState;
+  @Input() public fields$: Observable<Field[]>;
+  @Input() public totalCount$: BehaviorSubject<number>;
+  @Input() public loadingState$: BehaviorSubject<LoadingState>;
   @Input() public entityActions: EntityAction[] = [];
   @Input() public packagePath: string;
   @Input() public additionalPaths?: string[];
   @Input() public title: string;
   @Input() public cancelAction: Function;
-  @Input() public fields$: Observable<Field[]>;
   @Input() public area: string;
 
-  public displayColumns: DisplayColumn[];
+  public displayColumns$: Observable<DisplayColumn[]>;
 
   constructor() { }
 
@@ -40,17 +39,17 @@ export class RecordsContainerComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     // Set display columns
-    this.subscriptionHandler.register(this.fields$.subscribe(fields => {
-      this.displayColumns = fields.map(field => this.displayColumnFromField(field)).filter(column => column.show);
-    }));
+    this.displayColumns$ = this.fields$.pipe(
+      map(fields => fields.map(field => this.displayColumnFromField(field)).filter(column => column.show)),
+    );
 
     // Set entities
-    this.subscriptionHandler.register(this.entities$.pipe(
+    this.entities$ = this.entities$.pipe(
       // TODO(GET_DEPS): See above todo.
       map((entities: LocalObject<any, any>[]) => {
-        this.entities = entities;
         this.loadedEntitiesCount = entities.length;
-      })).subscribe());
+        return entities;
+      }));
   }
 
   ngOnDestroy() {
@@ -58,24 +57,21 @@ export class RecordsContainerComponent implements OnInit, OnDestroy {
   }
 
   public displayColumnFromField(field: Field) {
-    const foundColumn = this.displayColumns ? this.displayColumns.find(column => column.fieldKey === field.key) : undefined;
-    if (!foundColumn) {
-      const sortableFields: Array<FieldTypes> = [FieldTypes.int, FieldTypes.dateTime, FieldTypes.decimal, FieldTypes.double, FieldTypes.limitedString];
-      const sortable = sortableFields.indexOf(field.fieldType) > -1 || !field.dynamicField;
-      const column = new DisplayColumn({
-        fieldKey: field.key,
-        fieldDisplayKey: field.displayKey ? field.displayKey : field.key,
-        fieldDisplaySubKey: field.displaySubKey,
-        dynamicFieldName: field.dynamicField ? field.label : undefined,
-        displayModifier: field.displayModifier,
-        translationString: this.area.toUpperCase() + '.FORM.LABELS.' + field.key.toUpperCase(),
-        show: field.showColumn,
-        sortable: sortable
-      });
-      return column;
-    } else {
-      return foundColumn;
-    }
+    // const foundColumn = this.displayColumns ? this.displayColumns.find(column => column.fieldKey === field.key) : undefined;
+    // if (!foundColumn) {
+    const sortableFields: Array<FieldTypes> = [FieldTypes.int, FieldTypes.dateTime, FieldTypes.decimal, FieldTypes.double, FieldTypes.limitedString];
+    const sortable = sortableFields.indexOf(field.fieldType) > -1 || !field.dynamicField;
+    const column = new DisplayColumn({
+      fieldKey: field.key,
+      fieldDisplayKey: field.displayKey ? field.displayKey : field.key,
+      fieldDisplaySubKey: field.displaySubKey,
+      dynamicFieldName: field.dynamicField ? field.label : undefined,
+      displayModifier: field.displayModifier,
+      translationString: this.area.toUpperCase() + '.FORM.LABELS.' + field.key.toUpperCase(),
+      show: field.showColumn,
+      sortable: sortable
+    });
+    return column;
   }
 
   public runCancelAction(entity: LocalObject<any, any>) {

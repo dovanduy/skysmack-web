@@ -2,7 +2,7 @@ import { BaseComponent } from '../base-component';
 import { Router, ActivatedRoute } from '@angular/router';
 import { EntityActions, EntityStore } from '@skysmack/redux';
 import { NgSkysmackStore } from '@skysmack/ng-packages';
-import { LocalObject, LocalPage, PagedQuery, LoadingState, hasValue, StrIndex, LocalPageTypes, linq, DisplayColumn } from '@skysmack/framework';
+import { LocalObject, LocalPage, PagedQuery, LoadingState, StrIndex, LocalPageTypes, linq, DisplayColumn } from '@skysmack/framework';
 import { Observable, BehaviorSubject, combineLatest } from 'rxjs';
 import { OnInit } from '@angular/core';
 import { Record } from '@skysmack/framework';
@@ -18,9 +18,10 @@ export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey>
     public nextPageSize = this.pagedQuery.pageSize;
 
     public loadingState: LoadingState = LoadingState.Loading;
+    public loadingState$: BehaviorSubject<LoadingState> = new BehaviorSubject(LoadingState.Loading);
 
     public currentPageNumber = 1;
-    public totalCount: number;
+    public totalCount$: BehaviorSubject<number> = new BehaviorSubject<number>(0);
 
     constructor(
         public router: Router,
@@ -70,6 +71,7 @@ export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey>
     public requestPage(force = false) {
         if (force || (this.loadingState === LoadingState.OK || this.loadingState === LoadingState.Awaiting)) {
             this.loadingState = LoadingState.Loading;
+            this.loadingState$.next(LoadingState.Loading);
 
             this.currentPageNumber = this.nextPageNumber;
             this.pagedQuery.pageNumber = this.nextPageNumber;
@@ -89,34 +91,38 @@ export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey>
     }
 
     private loadPages() {
-        return this.storeGetPages().pipe(
-            // tap(x => console.log(x)),
-            map((dictionary: StrIndex<LocalPageTypes<TKey>>) => {
+        return combineLatest(
+            this.storeGetPages(),
+            this.totalCount$
+        ).pipe(
+            map((values) => {
                 // Part 1: Get current page
+                const dictionary: StrIndex<LocalPageTypes<TKey>> = values[0];
+                const totalCount = values[1];
                 const query = this.pagedQuery.rsqlFilter.toList().build();
                 const queryDictionary = dictionary[query];
-                // console.log('queryDic', queryDictionary);
                 if (queryDictionary) {
                     const sort = this.pagedQuery.sort.build();
                     const pages = queryDictionary.pages[this.pagedQuery.pageSize + ':' + sort];
                     const lastPageKey = this.currentPageNumber;
                     const lastPage: LocalPage<TKey> = pages[lastPageKey];
 
-                    // console.log('lastPage', lastPage, 'pages', pages);
-                    // console.log('lastPage: ', lastPage, lastPageKey, lastPage.ids, lastPage.links);
                     if (lastPage) {
                         // Part 2: Load next page
-                        if (queryDictionary && queryDictionary.totalCount) {
-                            this.totalCount = queryDictionary.totalCount;
+                        if (queryDictionary && queryDictionary.totalCount && totalCount !== queryDictionary.totalCount) {
+                            this.totalCount$.next(queryDictionary.totalCount);
                         }
                         const lastPageLinks = lastPage.links;
 
                         if ((lastPageLinks && lastPageLinks.next)) {
                             this.loadingState = LoadingState.Awaiting;
+                            this.loadingState$.next(LoadingState.Awaiting);
+
                             this.nextPageNumber = lastPageLinks.next.pageNumber;
                             this.nextPageSize = lastPageLinks.next.pageSize;
                         } else if (lastPage.loadingState === LoadingState.OK) {
                             this.loadingState = LoadingState.End;
+                            this.loadingState$.next(LoadingState.End);
                         }
 
                         if (lastPage.ids && lastPage.ids !== null && lastPage.ids.length > 0) {
@@ -142,6 +148,7 @@ export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey>
         ).pipe(
             map(values => {
                 const [pages, entities] = values;
+
 
                 if (pages && entities) {
                     const idsArray = linq<LocalPage<TKey>>(pages)

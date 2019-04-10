@@ -2,7 +2,7 @@
   <ss-records-container [area]="'fields'" [cancelAction]="actions.cancelAction"
     [title]="loadedPackage._package.name + ' fields'" [entities$]="pagedEntities$" [entityActions]="entityActions"
     [packagePath]="packagePath" [additionalPaths]="additionalPaths" (entityActionEvent)="actionEvent($event)"
-    [totalCount]="totalCount" [loadingState]="loadingState" (requestPage)="requestPage()" [fields$]="fields$"
+    [totalCount$]="totalCount$" [loadingState$]="loadingState$" (requestPage)="requestPage()" [fields$]="fields$"
     (sortChanged)="sortChanged($event)">
   </ss-records-container>
 </ss-container>

@@ -1,21 +1,25 @@
 import { Component, OnInit } from '@angular/core';
 import { FieldBaseComponent } from '../field-base-component';
-import { NgPackagesStore, NgSkysmackStore, NgPackagesActions, LoadedPackage } from '@skysmack/ng-packages';
-import { switchMap, map, filter } from 'rxjs/operators';
+import { NgPackagesStore, NgSkysmackStore, NgSkysmackActions } from '@skysmack/ng-packages';
+import { switchMap, map } from 'rxjs/operators';
 import { Field } from '@skysmack/ng-ui';
+import { StrIndex } from '@skysmack/framework';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'ss-available-permissions-field',
   templateUrl: './available-permissions-field.component.html'
 })
 export class AvailablePermissionsFieldComponent extends FieldBaseComponent<Field> implements OnInit {
-  public permissions: string[];
+  public permissions$: Observable<string[]>;
   public selectedPackagePath: string;
+
+  public requestedPermissions: StrIndex<boolean> = {};
 
   constructor(
     public packagesStore: NgPackagesStore,
     public skysmackStore: NgSkysmackStore,
-    public packagesActions: NgPackagesActions
+    public skysmackActions: NgSkysmackActions
   ) { super(); }
 
   ngOnInit() {
@@ -26,20 +30,17 @@ export class AvailablePermissionsFieldComponent extends FieldBaseComponent<Field
   }
 
   private getPermissions() {
-    this.subscriptionHandler.register(this.fh.form.valueChanges.pipe(
-      switchMap(() => this.skysmackStore.getCurrentPackage(this.getOtherFieldValue('packagePath'))),
-      filter(x => x._package !== null),
-      switchMap((x: LoadedPackage) => {
-        return this.packagesStore.getPermissions(x._package.type);
-      }),
-      map(permissions => {
-        if (permissions && permissions.length > 0) {
-          this.permissions = permissions;
-        } else {
-          this.permissions = undefined;
+    this.permissions$ = this.fh.form.valueChanges.pipe(
+      switchMap(() => {
+        const packagePath = this.getOtherFieldValue('packagePath');
+        if (packagePath && !this.requestedPermissions[packagePath]) {
+          this.skysmackActions.getPermissions(packagePath);
+          this.requestedPermissions[packagePath] = true;
         }
-      })
-    ).subscribe());
+        return this.skysmackStore.getPermissions(packagePath);
+      }),
+      map(permissions => Object.keys(permissions).map(key => permissions[key]))
+    );
   }
 
   private resetOnPackagePathChange() {
