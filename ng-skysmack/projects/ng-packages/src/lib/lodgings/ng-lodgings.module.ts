@@ -2,8 +2,8 @@ import { NgModule } from '@angular/core';
 
 import { lodgingsReducer, lodgingTypesReducer, LODGINGS_AREA_KEY, LODGING_TYPES_AREA_KEY } from '@skysmack/packages-lodgings';
 import { registerRedux } from '@skysmack/ng-redux';
-import { NgLodgingsEpics } from './redux/ng-lodgings-epics';
-import { NgLodgingTypesEpics } from './redux/ng-lodging-types-epics';
+import { NgLodgingsEpics } from './lodgings/redux/ng-lodgings-epics';
+import { NgLodgingTypesEpics } from './lodging-types/redux/ng-lodging-types-epics';
 
 @NgModule({
   imports: [],

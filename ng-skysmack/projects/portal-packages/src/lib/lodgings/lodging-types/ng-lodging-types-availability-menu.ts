@@ -1,16 +1,16 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { SidebarMenu } from '@skysmack/portal-ui';
-import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { MenuArea } from '@skysmack/framework';
 import { MenuItem } from '@skysmack/framework';
 import { NgMenuItemProviders } from '@skysmack/ng-redux';
+import { SidebarMenu } from '@skysmack/portal-ui';
+import { NgSkysmackStore } from '@skysmack/ng-packages';
 
 
 @Injectable({ providedIn: 'root' })
-export class NgLodgingTypesMenu extends SidebarMenu {
-    public menuId = 'Lodging-types';
-    public translationPrefix = 'LODGING_TYPES.INDEX.';
+export class NgLodgingTypesAvailabilityMenu extends SidebarMenu {
+    public menuId = 'lodgingTypesAvailability';
+    public translationPrefix = 'LODGINGS.INDEX.';
 
     constructor(
         public redux: NgSkysmackStore,
@@ -24,13 +24,8 @@ export class NgLodgingTypesMenu extends SidebarMenu {
     }
 
     public setPrimaryMenu() {
-        this.primaryMenuAreas.push(new MenuArea('actions', this.translationPrefix, 1));
         this.primaryMenuAreas.push(new MenuArea('manage', this.translationPrefix, 2));
-
-        this.primaryMenuItems.push(new MenuItem('create', this.translationPrefix + 'CREATE', 'actions', 1, 'groupAdd'));
-        this.primaryMenuItems.push(new MenuItem('fields', this.translationPrefix + 'FIELDS', 'manage', 2, 'shortText'));
-        this.setBackButton();
-        this.primaryMenuItems.push(new MenuItem('/' + this.packagePath + '/types/availability', this.translationPrefix + 'AVAILABILITY', 'manage', 4, 'groupAdd'));
+        this.primaryMenuItems.push(new MenuItem('/' + this.packagePath + '/types', this.translationPrefix + 'BACK', 'manage', 4, 'groupAdd'));
     }
 
     public setSpeedDialMenu() {

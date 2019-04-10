@@ -13,10 +13,10 @@ import { CalendarMonthViewDay } from 'angular-calendar';
 const moment = _moment;
 
 @Component({
-  selector: 'ss-lodging-types-availablity',
-  templateUrl: './lodging-types-availablity.component.html'
+  selector: 'ss-lodging-types-availability',
+  templateUrl: './lodging-types-availability.component.html'
 })
-export class LodgingTypesAvailablityComponent implements OnInit {
+export class LodgingTypesavailabilityComponent implements OnInit {
   public packagePath = this.router.url.split('/')[1];
   public events$: Observable<CalendarEvent[]>;
   public selectedLodgingTypeIds: number[] = [];
