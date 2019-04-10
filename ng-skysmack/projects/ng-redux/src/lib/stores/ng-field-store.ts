@@ -1,4 +1,4 @@
-import { FieldSchemaViewModel, LocalObject, safeUndefinedTo, FieldValueProviderViewModel, hasValue, dictionaryToArray, StrIndex, LocalPageTypes, log } from '@skysmack/framework';
+import { FieldSchemaViewModel, LocalObject, safeUndefinedTo, FieldValueProviderViewModel, hasValue, dictionaryToArray, StrIndex, LocalPageTypes, log, defined } from '@skysmack/framework';
 import { Observable } from 'rxjs';
 import { NgRedux } from '@angular-redux/store';
 import { map, distinctUntilChanged } from 'rxjs/operators';
@@ -14,7 +14,12 @@ export class NgFieldStore implements EntityStore<FieldSchemaViewModel, string> {
     public get(stateKey: string): Observable<LocalObject<FieldSchemaViewModel, string>[]> {
         return this.getState().pipe(
             map(state => state.fields[stateKey]),
-            distinctUntilChanged(),
+            defined(),
+            distinctUntilChanged((x, y) => {
+                const xRecordIds = Object.keys(x);
+                const yRecordIds = Object.keys(y);
+                return !(xRecordIds.length === yRecordIds.length && xRecordIds.every((value, index) => value === yRecordIds[index]));
+            }),
             safeUndefinedTo('object'),
             dictionaryToArray<LocalObject<FieldSchemaViewModel, string>>(),
         );

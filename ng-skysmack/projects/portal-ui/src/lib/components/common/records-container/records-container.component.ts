@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, EventEmitter, Output, ViewChild, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output, ViewChild } from '@angular/core';
 import { LocalObject, LoadingState, DisplayColumn, getProperty } from '@skysmack/framework';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { EntityAction, Field, FieldTypes } from '@skysmack/ng-ui';
