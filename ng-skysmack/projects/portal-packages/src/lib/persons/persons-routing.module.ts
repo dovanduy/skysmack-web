@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { personsRoutes } from './components/persons-components';
+import { personsRoutes } from './persons/components/persons-components';
 
 @NgModule({
   imports: [RouterModule.forChild(personsRoutes)],

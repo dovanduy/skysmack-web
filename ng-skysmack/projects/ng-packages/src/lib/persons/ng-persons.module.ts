@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 
 import { personsReducer, PERSONS_AREA_KEY } from '@skysmack/packages-persons';
-import { NgPersonsEpics } from './redux/ng-persons-epics';
+import { NgPersonsEpics } from './persons/redux/ng-persons-epics';
 import { registerRedux } from '@skysmack/ng-redux';
 
 @NgModule({

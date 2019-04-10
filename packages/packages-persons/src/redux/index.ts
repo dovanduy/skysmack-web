@@ -1,1 +1,1 @@
-export * from './persons-reducer';
+export * from './persons/index';

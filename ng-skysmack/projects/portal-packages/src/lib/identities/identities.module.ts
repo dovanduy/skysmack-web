@@ -8,11 +8,12 @@ import { PortalUiModule, HttpLoaderFactory, FieldsModule, SettingsModule } from 
 import { TranslateLoader } from '@ngx-translate/core';
 import { IdentitiesRoutingModule } from './identities-routing.module';
 import { identitiesComponents } from './components/identities-components';
-import { rolesComponents, usersComponents } from './components';
 import { NgLockoutSettingsFieldsConfig } from './ng-lockout-settings-fields-config';
 import { NgUserSettingsFieldsConfig } from './ng-user-settings-fields-config';
 import { NgPasswordSettingsFieldsConfig } from './ng-password-settings-fields-config';
 import { NgSignInSettingsFieldsConfig } from './ng-sign-in-settings-fields-config';
+import { rolesComponents } from './identity-roles/components';
+import { usersComponents } from './identity-users/components';
 
 @NgModule({
   imports: [

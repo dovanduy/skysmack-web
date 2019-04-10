@@ -5,7 +5,7 @@ import { PersonsRoutingModule } from './persons-routing.module';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { NgPersonsModule } from '@skysmack/ng-packages';
 import { PortalUiModule, HttpLoaderFactory, FieldsModule } from '@skysmack/portal-ui';
-import { personsComponents } from './components/persons-components';
+import { personsComponents } from './persons/components/persons-components';
 import { TranslateLoader } from '@ngx-translate/core';
 import { LanguageService } from '@skysmack/portal-ui';
 
