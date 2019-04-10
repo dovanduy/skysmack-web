@@ -1,3 +1,3 @@
-export * from '../lodging-reservations/lodgings-reservations-components';
-export * from '../lodging-reservations/lodgings-reservations-index/lodgings-reservations-index.component';
 export * from './lodgings-stays/lodgings-stays.component';
+export * from './lodgings-arrivals/lodgings-arrivals.component';
+export * from './lodgings-departures/lodgings-departures.component';
