@@ -32,10 +32,7 @@ export class NgProductsPricingsMenu extends SidebarMenu {
         this.primaryMenuItems.push(new MenuItem('price-changes', this.translationPrefix + 'PRICE_CHANGES', 'manage', 2, 'groupAdd'));
         this.primaryMenuItems.push(new MenuItem('types/price-changes', this.translationPrefix + 'PRICE_TYPE_CHANGES', 'manage', 2, 'groupAdd'));
 
-        this.store.getCurrentPackage(this.packagePath).pipe(
-            map(loadedPackage => this.primaryMenuItems.push(new MenuItem('/' + loadedPackage._package.dependencies[0], loadedPackage._package.dependencies[0], 'manage', 2, 'arrowBack'))),
-            take(1)
-        ).subscribe();
+        this.setBackButton({ connectedPackage: true });
     }
 
     public setSpeedDialMenu() {

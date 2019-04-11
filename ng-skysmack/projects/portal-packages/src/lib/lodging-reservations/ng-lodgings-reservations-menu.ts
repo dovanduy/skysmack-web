@@ -5,7 +5,6 @@ import { MenuArea } from '@skysmack/framework';
 import { MenuItem } from '@skysmack/framework';
 import { NgMenuItemProviders } from '@skysmack/ng-redux';
 import { NgSkysmackStore } from '@skysmack/ng-packages';
-import { map, take } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
 export class NgLodgingsReservationsMenu extends SidebarMenu {
@@ -35,11 +34,7 @@ export class NgLodgingsReservationsMenu extends SidebarMenu {
         this.primaryMenuItems.push(new MenuItem('/' + this.packagePath + '/stays', this.translationPrefix + 'STAYS', 'reservations', 2, 'groupAdd'));
         this.primaryMenuItems.push(new MenuItem('/' + this.packagePath + '/departures', this.translationPrefix + 'DEPARTURES', 'reservations', 3, 'groupAdd'));
 
-
-        this.store.getCurrentPackage(this.packagePath).pipe(
-            map(loadedPackage => this.primaryMenuItems.push(new MenuItem('/' + loadedPackage._package.dependencies[0], loadedPackage._package.dependencies[0], 'manage', 2, 'arrowBack'))),
-            take(1)
-        ).subscribe();
+        this.setBackButton({ connectedPackage: true });
     }
 
     public setSpeedDialMenu() {

@@ -1,12 +1,17 @@
 import { OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
-import { map, switchMap, filter } from 'rxjs/operators';
+import { map, switchMap, filter, take } from 'rxjs/operators';
 import { MenuArea } from '@skysmack/framework';
 import { MenuItem } from '@skysmack/framework';
 
 import { NgSkysmackStore, LoadedPackage } from '@skysmack/ng-packages';
 import { SubscriptionHandler } from '@skysmack/framework';
-import { NgMenuItemProviders } from '@skysmack/ng-redux';
+import { NgMenuItemProviders, getAdditionalPaths } from '@skysmack/ng-redux';
+
+interface BackButtonOptions {
+    connectedPackage?: boolean;
+    customPath?: string;
+}
 
 export abstract class SidebarMenu implements OnDestroy {
     public abstract menuId: string;
@@ -40,7 +45,7 @@ export abstract class SidebarMenu implements OnDestroy {
 
     public setPaths() {
         this.packagePath = this.router.url.split('/')[1];
-        this.additionalPaths = this.router.url.split('/').slice(2).filter(x => x !== 'fields');
+        this.additionalPaths = getAdditionalPaths(this.router, this.packagePath);
     }
 
     protected runMenuItemProviders() {
@@ -53,8 +58,18 @@ export abstract class SidebarMenu implements OnDestroy {
         });
     }
 
-    protected setBackButton() {
-        this.primaryMenuItems.push(new MenuItem('/' + this.packagePath, 'UI.MISC.BACK', 'manage', 2, 'arrowBack'));
+    protected setBackButton(options?: BackButtonOptions) {
+        if (!options) {
+            this.primaryMenuItems.push(new MenuItem('/' + this.packagePath, 'UI.MISC.BACK', 'manage', 2, 'arrowBack'));
+        } else if (options.connectedPackage) {
+            this.store.getCurrentPackage(this.packagePath).pipe(
+                map(loadedPackage => this.primaryMenuItems.push(new MenuItem('/' + loadedPackage._package.dependencies[0], loadedPackage._package.dependencies[0], 'manage', 2, 'arrowBack'))),
+                take(1)
+            ).subscribe();
+        } else {
+            const path = options.customPath ? options.customPath : '/' + this.packagePath;
+            this.primaryMenuItems.push(new MenuItem(path, 'UI.MISC.BACK', 'manage', 2, 'arrowBack'));
+        }
     }
 
     private addItem(item: MenuItem): void {
