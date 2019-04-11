@@ -24,7 +24,6 @@ export abstract class FieldBaseComponent<TField extends Field> implements Dynami
     public initted: boolean;
 
     ngOnInit() {
-        // this.subscriptionHandler.register(this.fields$.pipe(map(fields => { this.field = fields.find(field => field.key === this.fieldKey) as TField; })).subscribe());
     }
 
     /**

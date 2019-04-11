@@ -3,7 +3,7 @@ import { FormRule, Validation, Field } from '@skysmack/ng-ui';
 import { LoadedPackage } from '@skysmack/ng-packages';
 import { EntityFieldsConfig } from './entity-fields-config';
 import { Observable, combineLatest, of } from 'rxjs';
-import { map, distinctUntilChanged } from 'rxjs/operators';
+import { map, distinctUntilChanged, switchMap, tap } from 'rxjs/operators';
 import { FieldProviders } from './field-providers';
 
 export abstract class FieldsConfig<TRecord, TKey> implements EntityFieldsConfig<TRecord, TKey> {
@@ -14,14 +14,17 @@ export abstract class FieldsConfig<TRecord, TKey> implements EntityFieldsConfig<
 
     public getFields(loadedPackage: LoadedPackage, entity?: LocalObject<TRecord, TKey>): Observable<Field[]> {
         return this.getRecordFields(loadedPackage, entity).pipe(
-            map(fields => this.addValidationErrors(fields, entity).sort((a, b) => a.order - b.order))
+            map(fields => this.addValidationErrors(fields, entity))
         );
     }
 
     protected getRecordFields(loadedPackage: LoadedPackage, entity?: LocalObject<TRecord, TKey>): Observable<Field[]> {
+        const staticFields = this.getStaticFields(loadedPackage, entity);
         return this.getProvidedFields(loadedPackage, entity).pipe(
             distinctUntilChanged(),
-            map(values => this.getStaticFields(loadedPackage, entity).concat(values))
+            map(values => {
+                return staticFields.concat(values);
+            })
         );
     }
 
@@ -51,24 +54,24 @@ export abstract class FieldsConfig<TRecord, TKey> implements EntityFieldsConfig<
     }
 
     private getProvidedFields(loadedPackage: LoadedPackage, entity?: LocalObject<TRecord, TKey>): Observable<Field[]> {
-        if (this.fieldProviders) {
-            const providers = this.fieldProviders.providers[loadedPackage && loadedPackage.packageManifest && loadedPackage.packageManifest.id];
-            if (providers && providers.length > 0) {
-                return combineLatest(
-                    providers.map(provider => {
-                        return provider.getFields(loadedPackage._package.path, entity);
-                    })
-                ).pipe(
-                    distinctUntilChanged(),
-                    map((values: [Field[]]) => {
-                        return values.reduce((acc: Field[], cur: Field[]) => acc.concat(cur), []);
-                    }),
-                );
-            } else {
-                return of([]);
-            }
-        } else {
-            return of([]);
-        }
+        return this.fieldProviders.providers$.pipe(
+            switchMap(providers => {
+                const extractedProviders = providers[loadedPackage && loadedPackage.packageManifest && loadedPackage.packageManifest.id];
+                if (extractedProviders && extractedProviders.length > 0) {
+                    return combineLatest(
+                        extractedProviders.map(provider => {
+                            return provider.getFields(loadedPackage._package.path, entity);
+                        })
+                    ).pipe(
+                        distinctUntilChanged(),
+                        map((values: [Field[]]) => {
+                            return values.reduce((acc: Field[], cur: Field[]) => acc.concat(cur), []);
+                        })
+                    );
+                } else {
+                    return of([]);
+                }
+            })
+        );
     }
 }

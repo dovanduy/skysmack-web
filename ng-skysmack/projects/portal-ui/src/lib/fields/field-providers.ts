@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
 import { FieldProvider } from './field-provider';
 import { StrIndex } from '@skysmack/framework';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class FieldProviders {
     public providers: StrIndex<FieldProvider[]> = {};
+    public providers$: BehaviorSubject<StrIndex<FieldProvider[]>> = new BehaviorSubject({});
     private register = {};
 
     public add(type: string, fp: FieldProvider) {
@@ -13,8 +15,10 @@ export class FieldProviders {
         if (!registered) {
             if (!this.providers[type]) {
                 this.providers[type] = [];
+                this.providers$.next(this.providers);
             }
             this.providers[type].push(fp);
+            this.providers$.next(this.providers);
             this.register[fpName] = fpName;
         }
     }
