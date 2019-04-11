@@ -1,7 +1,7 @@
 import { LocalPageTypes, StrIndex, LocalObject } from '@skysmack/framework';
 import { AppState, ReduxAction, sharedReducer, RecordState, recordReducersBase } from '@skysmack/redux';
-import { Product } from './../models/product';
-import { PRODUCTS_REDUX_KEY } from '../constants';
+import { Product } from '../../../models/product';
+import { PRODUCTS_REDUX_KEY } from '../../../constants';
 
 /**
  * This is to be used when you want to access products via the GLOBAL state. E.g. state.products (where products is the reducer name.)
