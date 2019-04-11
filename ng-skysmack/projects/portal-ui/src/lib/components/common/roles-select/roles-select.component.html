@@ -1,7 +1,7 @@
 <mat-form-field>
   <mat-select [(value)]="value" (selectionChange)="selectionChanged($event)" *ngIf="selectType === 'multiple'"
     placeholder="Select roles" multiple>
-    <ng-container *ngFor="let iRoles of identityRoles">
+    <ng-container *ngFor="let iRoles of identityRoles; trackBy: trackByName">
       <mat-optgroup [label]="iRoles.name + ' roles'">
         <mat-option *ngFor="let role of iRoles.roles | async" [value]="role.object.id">
           {{ role.object.name }}
@@ -11,7 +11,7 @@
   </mat-select>
   <mat-select [(value)]="value" (selectionChange)="selectionChanged($event)" *ngIf="selectType === 'single'"
     placeholder="Select role">
-    <ng-container *ngFor="let iRoles of identityRoles">
+    <ng-container *ngFor="let iRoles of identityRoles; trackBy: trackByName">
       <mat-optgroup [label]="iRoles.name + ' roles'">
         <mat-option *ngFor="let role of iRoles.roles | async" [value]="role.object.id">
           {{ role.object.name }}

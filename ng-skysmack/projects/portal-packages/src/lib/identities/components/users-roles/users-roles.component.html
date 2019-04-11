@@ -4,7 +4,7 @@
         <h3>Users current roles</h3>
         <ng-container *ngIf="userRoles$ | async as userRoles">
             <ng-container *ngIf="userRoles.length > 0; else noUserRoles">
-                <ng-container *ngFor="let role of userRoles">
+                <ng-container *ngFor="let role of userRoles; trackBy: trackById">
                     <div>
                         {{ role }} <button mat-raised-button color="primary" (click)="removeRole(role)">{{
                             'USERS.ROLES.REMOVE' | translate }}</button>
@@ -24,7 +24,7 @@
         <p>{{ message }}</p>
         <ng-container *ngIf="roles$ | async as roles">
             <ng-container *ngIf="roles.length > 0; else noAvailableRoles">
-                <ng-container *ngFor="let role of roles">
+                <ng-container *ngFor="let role of roles trackBy: trackById">
                     {{ role.object.name }} <button mat-raised-button color="primary" (click)="addRole(role)">{{
                         'USERS.ROLES.ADD' | translate }}</button><br /><br />
                 </ng-container>
