@@ -11,10 +11,8 @@ export abstract class NgRecordStore<TState, TRecord extends Record<TKey>, TKey> 
     ) { }
 
     public get(packagePath: string): Observable<LocalObject<TRecord, TKey>[]> {
-        console.log('get');
         return this.getState<RecordState<TRecord, TKey>>().pipe(
             map(state => state.localRecords[packagePath]),
-            tap(x => console.log('get', x)),
             safeUndefinedTo('object'),
             dictionaryToArray<LocalObject<TRecord, TKey>>()
         );
@@ -28,9 +26,7 @@ export abstract class NgRecordStore<TState, TRecord extends Record<TKey>, TKey> 
     }
 
     public getPages(packagePath: string): Observable<StrIndex<LocalPageTypes<TKey>>> {
-        console.log('getPages');
         return this.getState<RecordState<TRecord, TKey>>().pipe(
-            tap(x => console.log('getPages stream', x)),
             map(state => state.localPageTypes[packagePath]),
             hasValue()
         );

@@ -14,12 +14,8 @@ export class NgFieldStore implements EntityStore<FieldSchemaViewModel, string> {
     public get(stateKey: string): Observable<LocalObject<FieldSchemaViewModel, string>[]> {
         return this.getState().pipe(
             map(state => state.fields[stateKey]),
-            defined(),
-            // distinctUntilChanged((x, y) => {
-            //     const xRecordIds = Object.keys(x);
-            //     const yRecordIds = Object.keys(y);
-            //     return !(xRecordIds.length === yRecordIds.length && xRecordIds.every((value, index) => value === yRecordIds[index]));
-            // }),
+            // defined() <-- kills stream if a document record has no fields!
+            distinctUntilChanged(),
             safeUndefinedTo('object'),
             dictionaryToArray<LocalObject<FieldSchemaViewModel, string>>(),
         );

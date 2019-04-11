@@ -2,7 +2,7 @@ import { BaseComponent } from '../base-component';
 import { Router, ActivatedRoute } from '@angular/router';
 import { EntityActions, EntityStore } from '@skysmack/redux';
 import { NgSkysmackStore } from '@skysmack/ng-packages';
-import { LocalObject, LocalPage, PagedQuery, LoadingState, StrIndex, LocalPageTypes, linq, DisplayColumn } from '@skysmack/framework';
+import { LocalObject, LocalPage, PagedQuery, LoadingState, linq, DisplayColumn } from '@skysmack/framework';
 import { Observable, BehaviorSubject, combineLatest } from 'rxjs';
 import { OnInit } from '@angular/core';
 import { Record } from '@skysmack/framework';
