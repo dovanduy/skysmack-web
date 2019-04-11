@@ -2,7 +2,7 @@
 
     <ng-container *ngIf="loadedPackages$ | async as loadedPackages">
         <nav class="nav">
-            <ng-container *ngFor="let loadedPackage of loadedPackages">
+            <ng-container *ngFor="let loadedPackage of loadedPackages; trackBy: trackById">
                 <ng-container *ngIf="loadedPackage.packageManifest">
                     <a *ngIf="loadedPackage.packageManifest.menuLocation === 'main'" class="app-link" [routerLink]="[loadedPackage._package.path]">
                         <i class="material-icons md-light app-icon">{{ loadedPackage.packageManifest.icon }}</i>
@@ -21,7 +21,7 @@
                 <i class="material-icons md-light app-icon">apps</i>
                 <h5 class="app-name">{{ 'UI.PACKAGE_DRAWER.PACKAGES' | translate }}</h5>
             </a>
-            <ng-container *ngFor="let loadedPackage of loadedPackages">
+            <ng-container *ngFor="let loadedPackage of loadedPackages; trackBy: trackById">
                 <ng-container *ngIf="loadedPackage.packageManifest">
                     <a class="app-link" *ngIf="loadedPackage.packageManifest.menuLocation === 'docker'" [routerLink]="loadedPackage._package.path">
                         <i class="material-icons md-light app-icon">{{ loadedPackage.packageManifest.icon }}</i>

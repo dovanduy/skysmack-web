@@ -28,4 +28,8 @@ export class PackageDrawerComponent implements OnInit {
     );
     this.menu$ = this.uiRedux.getMenu();
   }
+
+  public trackById(index: any, item: any) {
+    return item.id;
+  }
 }

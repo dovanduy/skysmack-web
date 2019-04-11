@@ -55,4 +55,8 @@ export class AvailablePermissionsFieldComponent extends FieldBaseComponent<Field
   public setPermission(permission: string): void {
     this.setFieldValue(permission);
   }
+
+  public trackById(index: any, item: any) {
+    return item.id;
+  }
 }

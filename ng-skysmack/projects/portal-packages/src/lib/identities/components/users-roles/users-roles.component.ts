@@ -50,6 +50,10 @@ export class UsersRolesComponent extends BaseComponent<User, number> implements 
     this.actions.addUsersRoles(this.packagePath, dic);
   }
 
+  public trackById(index: any, item: any) {
+    return item.id;
+  }
+
   public removeRole(userRole: string): void {
     const dic = {};
     dic[this.entityId] = [userRole];

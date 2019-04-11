@@ -37,6 +37,10 @@ export class RolesSelectComponent implements OnInit, OnDestroy {
     this.selectedIds.emit(change.value);
   }
 
+  public trackById(index: any, item: any) {
+    return item.name;
+  }
+
   private getRoles() {
     this.subscriptionHander.register(this.skysmackStore.getIdentityPackages().pipe(
       map((identityPackages: Package[]) => {
