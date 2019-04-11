@@ -5,7 +5,7 @@ import { NgTerminalsActions } from '@skysmack/ng-packages';
 import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { NgTerminalsStore } from '@skysmack/ng-packages';
 import { Terminal, TerminalsAppState, TERMINALS_REDUCER_AREA_KEY } from '@skysmack/packages-terminal-payments';
-import { NgTerminalsMenu } from './../../ng-terminals-menu';
+import { NgTerminalsMenu } from '../../ng-terminals-menu';
 import { EntityAction } from '@skysmack/ng-ui';
 import { NgFieldActions } from '@skysmack/ng-redux';
 import { NgTerminalsFieldsConfig } from '../../ng-terminals-fields-config';

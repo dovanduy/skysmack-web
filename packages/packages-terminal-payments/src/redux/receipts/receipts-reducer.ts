@@ -1,7 +1,7 @@
 import { LocalPageTypes, StrIndex, LocalObject } from '@skysmack/framework';
 import { AppState, ReduxAction, sharedReducer, RecordState, recordReducersBase } from '@skysmack/redux';
-import { Receipt } from './../models/receipt';
-import { RECEIPTS_REDUCER_REDUX_KEY } from '../constants';
+import { Receipt } from '../../models/receipt';
+import { RECEIPTS_REDUCER_REDUX_KEY } from '../../constants';
 
 /**
  * This is to be used when you want to access receipts via the GLOBAL state. E.g. state.receipts (where receipts is the reducer name.)

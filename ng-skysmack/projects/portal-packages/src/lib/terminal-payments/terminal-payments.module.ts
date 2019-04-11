@@ -5,8 +5,8 @@ import { TerminalPaymentsRoutingModule } from './terminal-payments-routing.modul
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { NgTerminalPaymentsModule } from '@skysmack/ng-packages';
 import { PortalUiModule, HttpLoaderFactory, FieldsModule } from '@skysmack/portal-ui';
-import { terminalsComponents } from './components/terminals-components';
-import { receiptsComponents } from './components/receipts-component';
+import { terminalsComponents } from './terminals/components/terminals-components';
+import { receiptsComponents } from './receipts/components/receipts-component';
 import { TranslateLoader, TranslateService } from '@ngx-translate/core';
 import { LanguageService } from '@skysmack/portal-ui';
 

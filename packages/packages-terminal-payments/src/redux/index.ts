@@ -1,2 +1,2 @@
-export * from './receipts-reducer';
-export * from './terminals-reducer';
+export * from './receipts/index';
+export * from './terminals/index';

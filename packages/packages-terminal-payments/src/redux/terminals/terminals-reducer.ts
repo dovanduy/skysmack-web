@@ -1,7 +1,7 @@
 import { LocalPageTypes, StrIndex, LocalObject } from '@skysmack/framework';
 import { AppState, ReduxAction, sharedReducer, RecordState, recordReducersBase } from '@skysmack/redux';
-import { Terminal } from './../models/index';
-import { TERMINALS_REDUCER_REDUX_KEY } from '../constants';
+import { Terminal } from '../../models/index';
+import { TERMINALS_REDUCER_REDUX_KEY } from '../../constants';
 
 /**
  * This is to be used when you want to access terminals via the GLOBAL state. E.g. state.terminals (where terminals is the reducer name.)
