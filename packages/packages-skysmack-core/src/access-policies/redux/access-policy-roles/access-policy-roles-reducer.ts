@@ -1,9 +1,9 @@
 import { LocalPageTypes, StrIndex, LocalObject } from '@skysmack/framework';
 import { AppState, ReduxAction, RecordState, recordReducersBase } from '@skysmack/redux';
 import { sharedReducer } from '@skysmack/redux';
-import { AccessPolicyRole } from '../models/access-policy-role';
-import { AccessPolicyRoleKey } from '../models/access-policy-role-key';
-import { ACCESS_POLICY_ROLES_REDUX_KEY } from '../constants';
+import { AccessPolicyRole } from '../../models/access-policy-role';
+import { AccessPolicyRoleKey } from '../../models/access-policy-role-key';
+import { ACCESS_POLICY_ROLES_REDUX_KEY } from '../../constants';
 
 /**
  * This is to be used when you want to access accessPolicyRoles via the GLOBAL state. E.g. state.accessPolicyRoles (where accessPolicyRoles is the reducer name.)

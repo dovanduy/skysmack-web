@@ -1,8 +1,8 @@
 import { LocalPageTypes, StrIndex, LocalObject } from '@skysmack/framework';
 import { AppState, ReduxAction, RecordState, recordReducersBase } from '@skysmack/redux';
 import { sharedReducer } from '@skysmack/redux';
-import { AccessPolicyRule } from '../models/access-policy-rule';
-import { ACCESS_POLICY_RULES_REDUX_KEY } from '../constants';
+import { AccessPolicyRule } from '../../models/access-policy-rule';
+import { ACCESS_POLICY_RULES_REDUX_KEY } from '../../constants';
 
 /**
  * This is to be used when you want to access accessPolicyRules via the GLOBAL state. E.g. state.accessPolicyRules (where accessPolicyRules is the reducer name.)

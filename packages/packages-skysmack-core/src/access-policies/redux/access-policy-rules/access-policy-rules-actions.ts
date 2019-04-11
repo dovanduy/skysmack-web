@@ -2,8 +2,8 @@ import { RecordActionsBase } from '@skysmack/redux';
 import { Store } from 'redux';
 import { AccessPolicyRulesAppState } from './access-policy-rules-reducer';
 import { LocalObject, StrIndex } from '@skysmack/framework';
-import { AccessPolicyRule } from '../models/access-policy-rule';
-import { ACCESS_POLICY_RULES_ADDITIONAL_PATHS, ACCESS_POLICY_RULES_REDUX_KEY } from '../constants';
+import { AccessPolicyRule } from '../../models/access-policy-rule';
+import { ACCESS_POLICY_RULES_ADDITIONAL_PATHS, ACCESS_POLICY_RULES_REDUX_KEY } from '../../constants';
 
 
 export class AccessPolicyRulesActions extends RecordActionsBase<AccessPolicyRulesAppState, Store<AccessPolicyRulesAppState>> {
