@@ -27,6 +27,6 @@ export class NgProductsPricingsModule {
     registerRedux(PRODUCT_PRICE_CHANGES_AREA_KEY, productPriceChangesReducer, productPriceChangesEpics);
     registerRedux(PRODUCT_TYPE_PRICE_CHANGES_AREA_KEY, productTypePriceChangesReducer, productTypePriceChangesEpics);
 
-    ngMenuItemProviders.providers.push(menuItemProvider);
+    ngMenuItemProviders.add(menuItemProvider);
   }
 }

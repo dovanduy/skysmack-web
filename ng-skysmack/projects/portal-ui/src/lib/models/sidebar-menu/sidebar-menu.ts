@@ -1,12 +1,13 @@
 import { OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
-import { map, switchMap, filter, take } from 'rxjs/operators';
+import { map, switchMap, filter, take, tap } from 'rxjs/operators';
 import { MenuArea } from '@skysmack/framework';
 import { MenuItem } from '@skysmack/framework';
 
 import { NgSkysmackStore, LoadedPackage } from '@skysmack/ng-packages';
 import { SubscriptionHandler } from '@skysmack/framework';
 import { NgMenuItemProviders, getAdditionalPaths } from '@skysmack/ng-redux';
+import { combineLatest } from 'rxjs';
 
 interface BackButtonOptions {
     connectedPackage?: boolean;
@@ -49,13 +50,15 @@ export abstract class SidebarMenu implements OnDestroy {
     }
 
     protected runMenuItemProviders() {
-        this.menuItemProviders.providers.forEach(provider => {
-            this.subscriptionHandler.register(this.store.getCurrentPackage(this.packagePath).pipe(
-                filter(loadedPackage => loadedPackage._package !== null),
-                switchMap((currentPackage: LoadedPackage) => provider.getItems(this.menuId, currentPackage._package.path)),
-                map((menuItems: MenuItem[]) => menuItems.forEach(menuItem => this.addItem(menuItem)))
-            ).subscribe());
-        });
+        this.subscriptionHandler.register(this.menuItemProviders.providers$.pipe(
+            switchMap(providers => combineLatest(
+                providers.map(provider => this.store.getCurrentPackage(this.packagePath).pipe(
+                    filter(loadedPackage => loadedPackage._package !== null),
+                    switchMap((currentPackage: LoadedPackage) => provider.getItems(this.menuId, currentPackage._package.path)),
+                    map((menuItems: MenuItem[]) => menuItems.forEach(menuItem => this.addItem(menuItem)))
+                ))
+            ))
+        ).subscribe());
     }
 
     protected setBackButton(options?: BackButtonOptions) {
