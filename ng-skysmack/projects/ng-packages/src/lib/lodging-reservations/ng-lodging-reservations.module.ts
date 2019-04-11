@@ -16,6 +16,6 @@ export class NgLodgingReservationsModule {
     menuItemProvider: NgLodgingsReservationsMenuItemProvider
   ) {
     registerRedux(LODGING_RESERVATIONS_AREA_KEY, lodgingReservationsReducer, lodgingReservationsEpics);
-    ngMenuItemProviders.providers.push(menuItemProvider);
+    ngMenuItemProviders.add(menuItemProvider);
   }
 }

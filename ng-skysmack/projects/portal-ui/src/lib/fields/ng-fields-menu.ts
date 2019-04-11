@@ -43,7 +43,7 @@ export class NgFieldsMenu extends SidebarMenu {
 
     public addPrimaryMenuItems() {
         this.primaryMenuItems.push(new MenuItem('create', this.translationPrefix + 'CREATE', 'actions', 1, 'groupAdd'));
-        this.primaryMenuItems.push(new MenuItem(`/${this.packagePath}/${this.additionalPaths.join('/')}`, this.translationPrefix + 'BACK', 'manage', 2, 'arrowBack'));
+        this.setBackButton({ customPath: `/${this.packagePath}/${this.additionalPaths.join('/')}` });
     }
 
     public setSpeedDialMenu() {

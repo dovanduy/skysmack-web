@@ -37,9 +37,9 @@ export class InvoicesIndexComponent extends DocumentRecordIndexComponent<Invoice
     super(router, activatedRoute, actions, redux, store, fieldsConfig, fieldActions);
   }
 
-
   ngOnInit() {
     super.ngOnInit();
     this.title.setTitle(this.packagePath);
+    console.log('Index');
   }
 }

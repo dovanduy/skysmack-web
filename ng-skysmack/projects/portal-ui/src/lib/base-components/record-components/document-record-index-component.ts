@@ -26,12 +26,5 @@ export class DocumentRecordIndexComponent<TAppState, TRecord extends Record<TKey
         super.ngOnInit();
         const fieldPagedQuery = new PagedQuery({});
         this.fieldActions.getPaged(this.packagePath, fieldPagedQuery, this.additionalPaths);
-        this.setFields();
-    }
-
-    protected setFields() {
-        this.fields$ = this.loadedPackage$.pipe(
-            switchMap(loadedPackage => this.fieldsConfig.getFields(loadedPackage))
-        );
     }
 }

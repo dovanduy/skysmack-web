@@ -29,8 +29,8 @@ export class NgLodgingTypesMenu extends SidebarMenu {
 
         this.primaryMenuItems.push(new MenuItem('create', this.translationPrefix + 'CREATE', 'actions', 1, 'groupAdd'));
         this.primaryMenuItems.push(new MenuItem('fields', this.translationPrefix + 'FIELDS', 'manage', 2, 'shortText'));
-        this.setBackButton();
         this.primaryMenuItems.push(new MenuItem('/' + this.packagePath + '/types/availability', this.translationPrefix + 'AVAILABILITY', 'manage', 4, 'groupAdd'));
+        this.setBackButton();
     }
 
     public setSpeedDialMenu() {

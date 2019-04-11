@@ -2,7 +2,7 @@ import { Record, StrIndex, LocalPageTypes, LocalObject, hasValue, dictionaryToAr
 import { RecordStore, RecordState } from '@skysmack/redux';
 import { Observable } from 'rxjs';
 import { NgRedux } from '@angular-redux/store';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 
 export abstract class NgRecordStore<TState, TRecord extends Record<TKey>, TKey> implements RecordStore<TRecord, TKey>  {
     constructor(
@@ -13,7 +13,6 @@ export abstract class NgRecordStore<TState, TRecord extends Record<TKey>, TKey> 
     public get(packagePath: string): Observable<LocalObject<TRecord, TKey>[]> {
         return this.getState<RecordState<TRecord, TKey>>().pipe(
             map(state => state.localRecords[packagePath]),
-            defined(),
             safeUndefinedTo('object'),
             dictionaryToArray<LocalObject<TRecord, TKey>>()
         );
