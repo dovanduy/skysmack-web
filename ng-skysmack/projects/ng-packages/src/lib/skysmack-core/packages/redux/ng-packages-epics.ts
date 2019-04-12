@@ -36,7 +36,8 @@ export class NgPackagesEpics {
             this.successActionEpic,
             this.failureActionEpic,
             this.cancelActionEpic,
-            this.getPermissionsEpic
+            this.getPermissionsEpic,
+            this.getAvailablePermissionsEpic
         ];
     }
 
@@ -201,6 +202,13 @@ export class NgPackagesEpics {
         return action$.pipe(
             ofType(NgSkysmackActions.GET_PACKAGE_PERMISSIONS),
             mergeMap(action => this.skysmackRequests.getPermissions(action as any))
+        );
+    }
+
+    public getAvailablePermissionsEpic = (action$: ActionsObservable<ReduxAction<string>>): Observable<ReduxAction<StrIndex<string>> | ReduxAction<HttpErrorResponse>> => {
+        return action$.pipe(
+            ofType(NgSkysmackActions.GET_PACKAGE_PERMISSIONS),
+            mergeMap(action => this.skysmackRequests.getAvailablePermissions(action as any))
         );
     }
 }

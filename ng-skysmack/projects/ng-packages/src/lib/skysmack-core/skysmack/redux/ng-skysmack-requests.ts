@@ -48,4 +48,21 @@ export class NgSkysmackRequests implements SkysmackRequests {
             }))))
         );
     }
+
+
+    public getAvailablePermissions(action: ReduxAction<string>): Observable<ReduxAction<StrIndex<string>, string> | ReduxAction<HttpErrorResponse>> {
+        return this.http.get<StrIndex<string>>(`${this.apiDomain.domain}/skysmack/permissions/available/${action.payload}`, { observe: 'response' }).pipe(
+            map(response => Object.assign({}, new ReduxAction<StrIndex<string>, string>({
+                type: SkysmackActions.GET_AVAILABLE_PACKAGE_PERMISSIONS_SUCCESS,
+                payload: response.body,
+                meta: action.payload
+            }))),
+            retry(this.retryTimes),
+            catchError((error) => of(Object.assign({}, new ReduxAction<HttpErrorResponse>({
+                type: SkysmackActions.GET_AVAILABLE_PACKAGE_PERMISSIONS_FAILURE,
+                payload: error,
+                error: true
+            }))))
+        );
+    }
 }

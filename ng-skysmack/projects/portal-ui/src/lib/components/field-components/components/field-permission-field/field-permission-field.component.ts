@@ -18,7 +18,7 @@ export class FieldPermissionFieldComponent extends FieldBaseComponent<Field> imp
   }
   public set selectedAccessType(accessType: AccessTypes) {
     if (accessType === AccessTypes.authenticated) {
-      this.permission.roles = []
+      this.permission.roles = [];
     } else {
       this.permission.roles = undefined;
     }

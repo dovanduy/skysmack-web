@@ -27,12 +27,12 @@ export function skysmackReducer(state = new SkysmackState(), action: any): Skysm
             return newState;
         }
 
-        case SkysmackActions.GET_PACKAGE_PERMISSIONS_SUCCESS: {
+        case SkysmackActions.GET_AVAILABLE_PACKAGE_PERMISSIONS_SUCCESS: {
             const castedAction = action as ReduxAction<StrIndex<string>, string>;
             newState.permissions[castedAction.meta] = castedAction.payload;
             return newState;
         }
-        case SkysmackActions.GET_PACKAGE_PERMISSIONS_FAILURE: {
+        case SkysmackActions.GET_AVAILABLE_PACKAGE_PERMISSIONS_FAILURE: {
             const castedAction = action as ReduxAction<HttpErrorResponse>;
             if (!GlobalProperties.production) {
                 console.log('Error getting permissions: ', castedAction);

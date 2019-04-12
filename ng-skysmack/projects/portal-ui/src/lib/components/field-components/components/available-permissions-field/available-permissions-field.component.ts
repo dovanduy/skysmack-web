@@ -34,10 +34,10 @@ export class AvailablePermissionsFieldComponent extends FieldBaseComponent<Field
       switchMap(() => {
         const packagePath = this.getOtherFieldValue('packagePath');
         if (packagePath && !this.requestedPermissions[packagePath]) {
-          this.skysmackActions.getPermissions(packagePath);
+          this.skysmackActions.getAvailablePermissions(packagePath);
           this.requestedPermissions[packagePath] = true;
         }
-        return this.skysmackStore.getPermissions(packagePath);
+        return this.skysmackStore.getAvailablePermissions(packagePath);
       }),
       map(permissions => Object.keys(permissions).map(key => permissions[key]))
     );
