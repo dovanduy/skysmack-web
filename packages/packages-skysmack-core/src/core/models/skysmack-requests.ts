@@ -5,6 +5,6 @@ import { HttpErrorResponse, StrIndex } from '@skysmack/framework';
 
 export interface SkysmackRequests {
     get(): Observable<ReduxAction<Skysmack> | ReduxAction<HttpErrorResponse>>
-    getPermissions(action: ReduxAction<string>): Observable<ReduxAction<StrIndex<string>, string> | ReduxAction<HttpErrorResponse>>
+    getPermissions(action: ReduxAction<string>): Observable<ReduxAction<string[], string> | ReduxAction<HttpErrorResponse>>
     getAvailablePermissions(action: ReduxAction<string>): Observable<ReduxAction<StrIndex<string>, string> | ReduxAction<HttpErrorResponse>>
 }

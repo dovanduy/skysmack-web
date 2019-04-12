@@ -9,7 +9,8 @@ export class SkysmackAppState extends AppState {
 export class SkysmackState {
     public skysmack = {};
     public tenantLoaded = false;
-    public permissions = {}
+    public permissions: StrIndex<string[]> = {};
+    public availablePermissions: StrIndex<StrIndex<string>> = {};
 }
 
 export function skysmackReducer(state = new SkysmackState(), action: any): SkysmackState {
@@ -27,15 +28,28 @@ export function skysmackReducer(state = new SkysmackState(), action: any): Skysm
             return newState;
         }
 
+        case SkysmackActions.GET_PACKAGE_PERMISSIONS_SUCCESS: {
+            const castedAction = action as ReduxAction<string[], string>;
+            newState.permissions[castedAction.meta] = castedAction.payload;
+            return newState;
+        }
+        case SkysmackActions.GET_PACKAGE_PERMISSIONS_FAILURE: {
+            const castedAction = action as ReduxAction<HttpErrorResponse>;
+            if (!GlobalProperties.production) {
+                console.log('Error getting permissions: ', castedAction);
+            }
+            return newState;
+        }
+
         case SkysmackActions.GET_AVAILABLE_PACKAGE_PERMISSIONS_SUCCESS: {
             const castedAction = action as ReduxAction<StrIndex<string>, string>;
-            newState.permissions[castedAction.meta] = castedAction.payload;
+            newState.availablePermissions[castedAction.meta] = castedAction.payload;
             return newState;
         }
         case SkysmackActions.GET_AVAILABLE_PACKAGE_PERMISSIONS_FAILURE: {
             const castedAction = action as ReduxAction<HttpErrorResponse>;
             if (!GlobalProperties.production) {
-                console.log('Error getting permissions: ', castedAction);
+                console.log('Error getting available permissions: ', castedAction);
             }
             return newState;
         }

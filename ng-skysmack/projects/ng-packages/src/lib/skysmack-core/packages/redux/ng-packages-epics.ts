@@ -198,7 +198,7 @@ export class NgPackagesEpics {
     //#endregion
 
     // ADDITIONAL SKYSMACK EPICS
-    public getPermissionsEpic = (action$: ActionsObservable<ReduxAction<string>>): Observable<ReduxAction<StrIndex<string>> | ReduxAction<HttpErrorResponse>> => {
+    public getPermissionsEpic = (action$: ActionsObservable<ReduxAction<string>>): Observable<ReduxAction<string[]> | ReduxAction<HttpErrorResponse>> => {
         return action$.pipe(
             ofType(NgSkysmackActions.GET_PACKAGE_PERMISSIONS),
             mergeMap(action => this.skysmackRequests.getPermissions(action as any))

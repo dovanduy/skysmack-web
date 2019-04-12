@@ -75,10 +75,18 @@ export class NgSkysmackStore {
         );
     }
 
-    public getAvailablePermissions(packagePath): Observable<StrIndex<string>> {
+    public getPermissions(packagePath): Observable<string[]> {
         return this.ngRedux.select((state: SkysmackAppState) => state.skysmack).pipe(
             map(skysmack => skysmack.permissions),
             map(permissions => permissions[packagePath]),
+            safeUndefinedTo('object'),
+        );
+    }
+
+    public getAvailablePermissions(packagePath): Observable<StrIndex<string>> {
+        return this.ngRedux.select((state: SkysmackAppState) => state.skysmack).pipe(
+            map(skysmack => skysmack.availablePermissions),
+            map(availablePermissions => availablePermissions[packagePath]),
             safeUndefinedTo('object'),
         );
     }
