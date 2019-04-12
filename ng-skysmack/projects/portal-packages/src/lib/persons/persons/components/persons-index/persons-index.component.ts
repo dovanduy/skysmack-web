@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { EntityComponentPageTitle, DocumentRecordIndexComponent } from '@skysmack/portal-ui';
 import { Router, ActivatedRoute } from '@angular/router';
-import { NgPersonsActions } from '@skysmack/ng-packages';
+import { NgPersonsActions, NgSkysmackActions } from '@skysmack/ng-packages';
 import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { NgPersonsStore } from '@skysmack/ng-packages';
 import { Person, PersonsAppState, PERSONS_AREA_KEY } from '@skysmack/packages-persons';
@@ -27,18 +27,20 @@ export class PersonsIndexComponent extends DocumentRecordIndexComponent<PersonsA
     public router: Router,
     public activatedRoute: ActivatedRoute,
     public actions: NgPersonsActions,
-    public redux: NgSkysmackStore,
+    public skysmackStore: NgSkysmackStore,
+    public skysmackActions: NgSkysmackActions,
     public title: EntityComponentPageTitle,
     public store: NgPersonsStore,
     public sidebarMenu: NgPersonsMenu,
     public fieldsConfig: NgPersonsFieldsConfig,
     public fieldActions: NgFieldActions
   ) {
-    super(router, activatedRoute, actions, redux, store, fieldsConfig, fieldActions);
+    super(router, activatedRoute, actions, skysmackStore, store, fieldsConfig, fieldActions);
   }
 
   ngOnInit() {
     super.ngOnInit();
     this.title.setTitle(this.packagePath);
+    this.skysmackActions.getPermissions(this.packagePath);
   }
 }

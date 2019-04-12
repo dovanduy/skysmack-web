@@ -79,7 +79,7 @@ export class NgSkysmackStore {
         return this.ngRedux.select((state: SkysmackAppState) => state.skysmack).pipe(
             map(skysmack => skysmack.permissions),
             map(permissions => permissions[packagePath]),
-            safeUndefinedTo('object'),
+            safeUndefinedTo('array'),
         );
     }
 

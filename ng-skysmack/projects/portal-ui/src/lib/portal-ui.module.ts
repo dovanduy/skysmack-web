@@ -61,6 +61,8 @@ import { DynamicFormFieldTemplateComponent } from './components/field-components
 import { RecurringExpressionFieldComponent } from './components/field-components/components/recurring-expression-field/recurring-expression-field.component';
 import { ValidatorsFieldComponent } from './components/field-components/components/validators-field/validators-field.component';
 import { AddRecordFieldComponent } from './components/field-components/components/add-record-field/add-record-field.component';
+import { IsAnyPermissionDirective } from './autentication/in-any-permissions.directive';
+import { InPermissionDirective } from './autentication/in-permissions.directive';
 
 @NgModule({
   imports: [
@@ -87,6 +89,8 @@ import { AddRecordFieldComponent } from './components/field-components/component
     ShowEntityActionDirective,
     IsAuthenticatedDirective,
     IsAnonymousDirective,
+    IsAnyPermissionDirective,
+    InPermissionDirective,
     DynamicFormFieldDirective,
     // Components
     DropDownBlockComponent,

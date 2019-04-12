@@ -1,6 +1,7 @@
 import { Directive, OnInit, TemplateRef, ViewContainerRef, OnDestroy } from '@angular/core';
 import { SubscriptionLike } from 'rxjs';
 import { NgAuthenticationStore } from '@skysmack/ng-redux';
+import { map } from 'rxjs/operators';
 
 
 // tslint:disable-next-line:directive-selector
@@ -16,18 +17,16 @@ export class IsAnonymousDirective implements OnInit, OnDestroy {
     ) { }
 
     ngOnInit() {
-        this.subscription = this.store.isCurrentUserAuthenticated().subscribe(authenticated => {
-            this.showIfAnonymous(authenticated);
-        });
-    }
-
-    public showIfAnonymous(loggedIn: boolean) {
-        if (loggedIn) {
-            this.viewContainer.clear();
-        } else {
-            this.viewContainer.clear();
-            this.viewContainer.createEmbeddedView(this.templateRef);
-        }
+        this.subscription = this.store.isCurrentUserAuthenticated().pipe(
+            map(authenticated => {
+                if (authenticated) {
+                    this.viewContainer.clear();
+                } else {
+                    this.viewContainer.clear();
+                    this.viewContainer.createEmbeddedView(this.templateRef);
+                }
+            })
+        ).subscribe();
     }
 
     ngOnDestroy() {
