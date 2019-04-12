@@ -207,7 +207,7 @@ export class NgPackagesEpics {
 
     public getAvailablePermissionsEpic = (action$: ActionsObservable<ReduxAction<string>>): Observable<ReduxAction<StrIndex<string>> | ReduxAction<HttpErrorResponse>> => {
         return action$.pipe(
-            ofType(NgSkysmackActions.GET_PACKAGE_PERMISSIONS),
+            ofType(NgSkysmackActions.GET_AVAILABLE_PACKAGE_PERMISSIONS),
             mergeMap(action => this.skysmackRequests.getAvailablePermissions(action as any))
         );
     }

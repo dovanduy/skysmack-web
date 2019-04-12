@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { NgRedux } from '@angular-redux/store';
-import { map, filter, take, tap } from 'rxjs/operators';
+import { map, take } from 'rxjs/operators';
 import { Observable, BehaviorSubject, of } from 'rxjs';
-import { LocalObject, toLocalObject, Package, hasValue, StrIndex, safeUndefinedTo } from '@skysmack/framework';
+import { LocalObject, toLocalObject, Package, hasValue, StrIndex, safeUndefinedTo, defined } from '@skysmack/framework';
 import { Skysmack, SkysmackAppState } from '@skysmack/packages-skysmack-core';
 import { PackageLoader } from '../packages/package-loader';
 import { LoadedPackage } from '../packages/loaded-package';
@@ -79,7 +79,7 @@ export class NgSkysmackStore {
         return this.ngRedux.select((state: SkysmackAppState) => state.skysmack).pipe(
             map(skysmack => skysmack.permissions),
             map(permissions => permissions[packagePath]),
-            safeUndefinedTo('array'),
+            defined()
         );
     }
 

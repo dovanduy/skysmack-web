@@ -11,7 +11,7 @@
       <ul [@bodyExpansion]="panel.expanded ? 'expanded' : 'collapsed'" id="panel-{{ menuArea.id }}">
         <ng-container *ngFor="let menuItem of sidebarMenu.primaryMenuItems">
           <ng-container *ngIf="menuItem.area === menuArea.area">
-            <li>
+            <li *inAnyPermission="menuItem.permissions">
               <a [routerLink]="[menuItem.url]">
                 {{ menuItem.displayName | translate }}
               </a>
@@ -24,6 +24,3 @@
     </nav>
   </div>
 </div>
-
-
-<!-- ; permissions: ['from'] -->

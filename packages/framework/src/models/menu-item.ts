@@ -5,6 +5,7 @@ export class MenuItem {
         public area: string,
         public order: number,
         public icon: string,
+        public permissions?: string[]
     ) {
     }
 }

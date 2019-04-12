@@ -17,13 +17,13 @@ export class IsAnyPermissionDirective implements OnInit, OnDestroy {
         public router: Router
     ) { }
 
-    private displaying = true;
+    private displaying = false;
 
-    private _permissions: string[];
+    private _permissions: string[] = [];
     @Input() set inAnyPermission(permissions: string[] | string) {
         if (Array.isArray(permissions)) {
             this._permissions = permissions;
-        } else {
+        } else if (permissions && permissions.length > 0) {
             this._permissions = [permissions];
         }
     }
@@ -34,9 +34,9 @@ export class IsAnyPermissionDirective implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
-        if (this._permissions.length > 0) {
-            if (!this._showDefault) {
-                this.show(false);
+        if (this._permissions && this._permissions.length > 0) {
+            if (this._showDefault) {
+                this.show(true);
             }
 
             const packagePath = this.router.url.split('/')[1];
@@ -45,6 +45,8 @@ export class IsAnyPermissionDirective implements OnInit, OnDestroy {
                     this.show(this.includesAny(this._permissions, permissions));
                 })
             ).subscribe();
+        } else {
+            this.viewContainer.createEmbeddedView(this.templateRef);
         }
     }
 
