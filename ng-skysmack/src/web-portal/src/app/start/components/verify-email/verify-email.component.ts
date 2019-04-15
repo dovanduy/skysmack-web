@@ -41,6 +41,6 @@ export class VerifyEmailComponent implements OnInit, OnDestroy {
 
   private submit(tokenObject: { token: string }) {
     const token = tokenObject.token;
-    this.router.navigate(['/skysmack/recover-password'], { queryParams: { token } });
+    console.log(token);
   }
 }
