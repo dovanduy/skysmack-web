@@ -1,8 +1,8 @@
-import { Component, OnInit, Input, EventEmitter, Output, ViewChild } from '@angular/core';
-import { LocalObject, LoadingState, DisplayColumn } from '@skysmack/framework';
-import { Observable, BehaviorSubject } from 'rxjs';
+import { Component, OnInit, Input, EventEmitter, Output, ViewChild, OnDestroy } from '@angular/core';
+import { LocalObject, LoadingState, DisplayColumn, SubscriptionHandler } from '@skysmack/framework';
+import { Observable, BehaviorSubject, combineLatest } from 'rxjs';
 import { EntityAction, Field, FieldTypes } from '@skysmack/ng-ui';
-import { map } from 'rxjs/operators';
+import { map, delay } from 'rxjs/operators';
 import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
 
 @Component({
@@ -10,7 +10,9 @@ import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
   templateUrl: './records-container.component.html',
   styleUrls: ['./records-container.component.scss']
 })
-export class RecordsContainerComponent implements OnInit {
+export class RecordsContainerComponent implements OnInit, OnDestroy {
+
+  public loadedEntitiesCount$: BehaviorSubject<number> = new BehaviorSubject(0).pipe(delay(0)) as BehaviorSubject<number>;
   public loadedEntitiesCount: number;
 
   @ViewChild('entityList') public entityList: CdkVirtualScrollViewport;
@@ -22,7 +24,9 @@ export class RecordsContainerComponent implements OnInit {
   @Input() public entities$: Observable<LocalObject<any, any>[]>;
   @Input() public fields$: Observable<Field[]>;
   @Input() public totalCount$: BehaviorSubject<number>;
+  public totalCount: number;
   @Input() public loadingState$: BehaviorSubject<LoadingState>;
+  public loadingState: LoadingState;
   @Input() public entityActions: EntityAction[] = [];
   @Input() public packagePath: string;
   @Input() public additionalPaths?: string[];
@@ -31,6 +35,7 @@ export class RecordsContainerComponent implements OnInit {
   @Input() public area: string;
 
   public displayColumns$: Observable<DisplayColumn[]>;
+  public subscriptionHandler = new SubscriptionHandler();
 
   constructor() { }
 
@@ -44,10 +49,27 @@ export class RecordsContainerComponent implements OnInit {
     this.entities$ = this.entities$.pipe(
       map((entities: LocalObject<any, any>[]) => {
         if (entities) {
-          this.loadedEntitiesCount = entities.length;
+          this.loadedEntitiesCount$.next(entities.length);
         }
         return entities;
       }));
+
+    // This is done to avoid ExpressionHasChanged error
+    this.subscriptionHandler.register(combineLatest(
+      this.loadingState$,
+      this.totalCount$,
+      this.loadedEntitiesCount$
+    ).pipe(
+      delay(0),
+      map(values => {
+        this.loadingState = values[0];
+        this.totalCount = values[1];
+        this.loadedEntitiesCount = values[1];
+      })).subscribe());
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptionHandler.unsubscribe();
   }
 
   public displayColumnFromField(field: Field) {
