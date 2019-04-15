@@ -2,7 +2,7 @@ import { BaseComponent } from '../base-component';
 import { Router, ActivatedRoute } from '@angular/router';
 import { EntityActions, EntityStore } from '@skysmack/redux';
 import { NgSkysmackStore } from '@skysmack/ng-packages';
-import { LocalObject, LocalPage, PagedQuery, LoadingState, linq, DisplayColumn } from '@skysmack/framework';
+import { LocalObject, LocalPage, PagedQuery, LoadingState, linq, DisplayColumn, defined } from '@skysmack/framework';
 import { Observable, BehaviorSubject, combineLatest } from 'rxjs';
 import { OnInit } from '@angular/core';
 import { Record } from '@skysmack/framework';
@@ -122,14 +122,25 @@ export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey>
                             this.loadingState$.next(LoadingState.End);
                         }
 
-                        if (lastPage.ids && lastPage.ids !== null && lastPage.ids.length > 0) {
-                            return Object.keys(pages).map(key => {
-                                if (Number(key) > 0 && Number(key) <= lastPageKey) {
-                                    return pages[key];
-                                }
-                            });
-                        }
+                        // if (lastPage.ids && lastPage.ids !== null && lastPage.ids.length > 0) {
+                        //     return Object.keys(pages).map(key => {
+                        //         if (Number(key) > 0 && Number(key) <= lastPageKey) {
+                        //             return pages[key];
+                        //         }
+                        //     });
+                        // }
                     }
+
+                    const pages2 = Object.keys(pages).map(key => {
+                        if (Number(key) > 0 && Number(key) <= lastPageKey) {
+                            return pages[key];
+                        }
+                    });
+                    return linq<TKey>([]).selectMany(linq<LocalPage<TKey>>(pages2)
+                        .defined()
+                        .select(x => x.ids))
+                        .distinct()
+                        .ok();
                 }
             })
         );
@@ -147,23 +158,24 @@ export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey>
                 const [pages, entities] = values;
 
                 if (pages && entities) {
-                    const idsArray = linq<TKey>([]).selectMany(linq<LocalPage<TKey>>(pages)
-                        .defined()
-                        .select(x => x.ids))
-                        .distinct()
-                        .ok();
+                    // const idsArray = linq<TKey>([]).selectMany(linq<LocalPage<TKey>>(pages)
+                    //     .defined()
+                    //     .select(x => x.ids))
+                    //     .distinct()
+                    //     .ok();
 
                     return entities
-                        .filter(entity => entity.isNew && !idsArray.includes(entity.objectIdentifier))
-                        .concat(idsArray
-                            .map(id => entities.filter(entity => entity.objectIdentifier === id)[0])
-                            .filter(x => x)
-                        );
-                } else if (entities) {
-                    return entities.filter(entity => entity.isNew);
+                        .filter(entity => entity.isNew && !pages.includes(entity.objectIdentifier))
+                        .concat(entities.filter(entity => pages.includes(entity.objectIdentifier)));
                 }
-                return [];
-            })
+                // else if (entities) {
+                //     console.log('normal entities');
+                //     return entities.filter(entity => entity.isNew);
+                // }
+                // console.log('empty array');
+                // return [];
+            }),
+            defined()
         );
     }
 }

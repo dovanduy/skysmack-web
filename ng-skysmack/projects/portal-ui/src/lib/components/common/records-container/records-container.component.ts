@@ -43,7 +43,9 @@ export class RecordsContainerComponent implements OnInit {
     // Set entities
     this.entities$ = this.entities$.pipe(
       map((entities: LocalObject<any, any>[]) => {
-        this.loadedEntitiesCount = entities.length;
+        if (entities) {
+          this.loadedEntitiesCount = entities.length;
+        }
         return entities;
       }));
   }
@@ -68,7 +70,7 @@ export class RecordsContainerComponent implements OnInit {
     this.additionalPaths ? this.cancelAction(entity, this.packagePath, this.additionalPaths) : this.cancelAction(entity, this.packagePath);
   }
 
-  public trackByLocalId(item: LocalObject<any, any>) {
+  public trackByLocalId(index: any, item: LocalObject<any, any>) {
     return item ? item.localId : undefined;
   }
 
