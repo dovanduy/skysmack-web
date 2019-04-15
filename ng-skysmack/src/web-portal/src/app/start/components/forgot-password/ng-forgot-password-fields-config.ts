@@ -14,9 +14,7 @@ import { NgForgotPasswordValidation } from './ng-forgot-password-validation';
 export class NgForgotPasswordFieldsConfig extends FieldsConfig<string, unknown> {
     public validation = new NgForgotPasswordValidation();
 
-    public formRules: FormRule[] = [
-        new SetDisplayNameRule(['firstName', 'lastName'])
-    ];
+    public formRules: FormRule[] = [];
 
     constructor(
         public fieldProviders: FieldProviders

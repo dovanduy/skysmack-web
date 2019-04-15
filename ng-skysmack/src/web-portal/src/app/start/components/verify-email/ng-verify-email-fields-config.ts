@@ -14,9 +14,7 @@ import { NgVerifyEmailValidation } from './ng-verify-email-validation';
 export class NgVerifyEmailFieldsConfig extends FieldsConfig<string, unknown> {
     public validation = new NgVerifyEmailValidation();
 
-    public formRules: FormRule[] = [
-        new SetDisplayNameRule(['firstName', 'lastName'])
-    ];
+    public formRules: FormRule[] = [];
 
     constructor(
         public fieldProviders: FieldProviders
