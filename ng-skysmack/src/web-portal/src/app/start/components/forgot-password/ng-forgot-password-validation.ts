@@ -1,24 +1,19 @@
-import { Validation } from '@skysmack/ng-ui';
 import { StrIndex } from '@skysmack/framework';
+import { Validation } from '@skysmack/ng-ui';
 
-export class LoginValidation extends Validation {
-
+export class NgForgotPasswordValidation extends Validation {
     public formErrors = {
-        email: '',
-        password: ''
+        email: ''
     };
 
     public validationMessages: StrIndex<{}> = {
         email: {
             required: '',
             invalidEmail: ''
-        },
-        password: {
-            required: ''
         }
     };
 
-    public area = 'OAUTH2';
+    public area = 'UI';
 
     public formValidators = [];
 

@@ -20,8 +20,8 @@ import { GlobalProperties } from '@skysmack/framework';
 import { NgFieldEpics, registerRedux, NgSettingsEpics } from '@skysmack/ng-redux';
 import { fieldReducer, settingsReducer } from '@skysmack/redux';
 import { RecoverPasswordComponent } from './components/recover-password/recover-password.component';
-import { LostPasswordComponent } from './components/lost-password/lost-password.component';
 import { VerifyEmailComponent } from './components/verify-email/verify-email.component';
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 // import { NgxGraphModule } from '@swimlane/ngx-graph';
 // import { NgxChartsModule } from '@swimlane/ngx-charts';
 // NgxGraphModule,
@@ -33,8 +33,8 @@ const extraRoutes = [
     component: VerifyEmailComponent
   },
   {
-    path: 'skysmack/lost-password',
-    component: LostPasswordComponent
+    path: 'skysmack/forgot-password',
+    component: ForgotPasswordComponent
   },
   {
     path: 'skysmack/recover-password',
@@ -48,7 +48,7 @@ const extraRoutes = [
     FrontPageComponent,
     FallBackComponent,
     RecoverPasswordComponent,
-    LostPasswordComponent,
+    ForgotPasswordComponent,
     VerifyEmailComponent,
   ],
   imports: [

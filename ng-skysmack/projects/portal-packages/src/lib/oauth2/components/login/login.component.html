@@ -11,7 +11,7 @@
       <ss-dynamic-form *ngIf="fields$" [noSidebar]="true" [fields$]="fields$" [validation]="fieldsConfig.validation"
         [rules]="fieldsConfig.formRules" [buttonText]="'Login'" (submitted)="onSubmit($event)">
       </ss-dynamic-form>
-      <a routerLink="/forgotPassword" [translate]="'OAUTH2.OAUTH2_LOGIN.FORGOT_PASSWORD'"></a>
+      <a [routerLink]="['/skysmack/forgot-password']" [translate]="'OAUTH2.OAUTH2_LOGIN.FORGOT_PASSWORD'"></a>
 
       <div *ngIf="success" [translate]="'OAUTH2.OAUTH2_LOGIN.LOGGING_IN'"></div>
     </mat-card-content>
