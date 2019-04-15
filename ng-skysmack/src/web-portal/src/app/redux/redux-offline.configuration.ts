@@ -10,6 +10,7 @@ import { TOOGLE_HYDRATED } from './hydrated-reducer';
 import { HttpMethod, ApiDomain, HttpSuccessResponse, HttpErrorResponse } from '@skysmack/framework';
 import { Effect, RecordActionsBase, cancelRecordActionOutboxFilter, cancelFieldActionOutboxFilter, FieldActions } from '@skysmack/redux';
 import { PackagesActions, cancelPackageActionOutboxFilter } from '@skysmack/packages-skysmack-core';
+import * as localForage from 'localforage';
 
 // See https://github.com/redux-offline/redux-offline#configuration
 @Injectable({ providedIn: 'root' })
@@ -55,6 +56,7 @@ export class ReduxOfflineConfiguration implements Config {
 
     // Overrides =============
     public persistOptions = {
+        storage: localForage,
         transforms: [
             createTransform(
                 (inboundState) => {

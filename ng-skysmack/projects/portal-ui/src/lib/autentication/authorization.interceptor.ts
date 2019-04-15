@@ -1,7 +1,7 @@
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of, BehaviorSubject, throwError } from 'rxjs';
-import { mergeMap, take, catchError, switchMap, finalize, filter } from 'rxjs/operators';
+import { mergeMap, take, catchError, switchMap, finalize, filter, tap } from 'rxjs/operators';
 import { CurrentUser } from '@skysmack/framework';
 import { NgAuthenticationStore, NgAuthenticationActions } from '@skysmack/ng-redux';
 

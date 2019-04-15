@@ -21,6 +21,7 @@
   "dependencies": {
     "@skysmack/framework": "*",
     "@redux-offline/redux-offline": "^2.5.1",
+    "localforage": "^1.7.3",
     "redux": "^4.0.1",
     "redux-observable": "^1.1.0",
     "rxjs": "^6.4.0",
