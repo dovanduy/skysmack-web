@@ -3,7 +3,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Assignment, AssignmentsAppState } from '@skysmack/packages-maintenance';
 import { RecordFormComponent, EditorNavService } from '@skysmack/portal-ui';
 import { NgAssignmentsActions, NgSkysmackStore, NgAssignmentsStore, NgAssignmentTypesActions } from '@skysmack/ng-packages';
-import { PagedQuery } from '@skysmack/framework';
 import { NgAssignmentsFieldsConfig } from '../../ng-assignments-fields-config';
 
 @Component({
@@ -27,7 +26,6 @@ export class AssignmentsEditComponent extends RecordFormComponent<AssignmentsApp
 
   ngOnInit() {
     super.ngOnInit();
-    this.assignmentTypesActions.getPaged(this.packagePath, new PagedQuery());
     this.setEditFields();
   }
 }

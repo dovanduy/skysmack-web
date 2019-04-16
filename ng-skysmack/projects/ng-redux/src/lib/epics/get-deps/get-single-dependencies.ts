@@ -18,12 +18,11 @@ export function getSingleDependency(options: GetSingleDependencyOptions) {
 
     // Get dep
     const packagePath = options.action.payload.packagePath;
-    options.actions.getSingle<number>(packagePath, entity[options.relationIdSelector]);
 
     if (options.packageDependencyIndex || options.packageDependencyIndex === 0) {
         options.skysmackStore.getCurrentPackage(packagePath).pipe(
             map(_package => {
-                return options.actions.getSingle<number>(packagePath, entity[options.relationIdSelector]);
+                return options.actions.getSingle<number>(_package._package.dependencies[options.packageDependencyIndex], entity[options.relationIdSelector]);
             }),
             take(1),
         ).subscribe();

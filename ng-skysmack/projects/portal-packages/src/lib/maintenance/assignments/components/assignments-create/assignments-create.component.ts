@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { PagedQuery } from '@skysmack/framework';
 import { Assignment, AssignmentsAppState } from '@skysmack/packages-maintenance';
 import { NgAssignmentsActions, NgSkysmackStore, NgAssignmentsStore, NgAssignmentTypesActions } from '@skysmack/ng-packages';
 import { RecordFormComponent, EditorNavService } from '@skysmack/portal-ui';
@@ -28,7 +27,6 @@ export class AssignmentsCreateComponent extends RecordFormComponent<AssignmentsA
 
   ngOnInit() {
     super.ngOnInit();
-    this.assignmentTypesActions.getPaged(this.packagePath, new PagedQuery());
     this.setCreateFields();
   }
 }
