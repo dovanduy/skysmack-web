@@ -41,7 +41,7 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
     // Update the fields and  form (FormGroup) on field changes
     this.fields$ = this.fields$.pipe(map(fields => {
       this.updateForm(fields);
-      return fields;
+      return fields.filter(field => field.includeInForm);
     }));
 
     // Show sidebar
@@ -63,17 +63,19 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
   public updateForm(fields: Field[]): void {
     // Update the forms internal controls
     fields.forEach(field => {
-      // Add new fields
-      const fieldFormControl = field.validators ? new FormControl(field.value, Validators.compose(field.validators)) : new FormControl(field.value);
-      // console.log('Hello field... ', field.key, fieldFormControl, field);
-      if (field.disabled) {
-        fieldFormControl.disable();
-      }
-      if (!this.fh.form.contains(field.key)) {
-        this.fh.form.addControl(field.key, fieldFormControl);
-      } else {
-        // const fieldFormControl = this.fh.form.get(field.key);
-        // this.fh.form.setControl(field.key, fieldFormControl);
+      if (field.includeInForm) {
+        // Add new fields
+        const fieldFormControl = field.validators ? new FormControl(field.value, Validators.compose(field.validators)) : new FormControl(field.value);
+        // console.log('Hello field... ', field.key, fieldFormControl, field);
+        if (field.disabled) {
+          fieldFormControl.disable();
+        }
+        if (!this.fh.form.contains(field.key)) {
+          this.fh.form.addControl(field.key, fieldFormControl);
+        } else {
+          // const fieldFormControl = this.fh.form.get(field.key);
+          // this.fh.form.setControl(field.key, fieldFormControl);
+        }
       }
     });
   }

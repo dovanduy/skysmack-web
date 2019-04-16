@@ -81,6 +81,12 @@ export class Field {
      */
     public errors: string[];
 
+    /**
+     * Whether the field should be included in the form or not.
+     * Used when you want to display the field on index, but not in editor.
+     */
+    public includeInForm = true;
+
     constructor(values: Partial<Field>) {
         Object.assign(this, values);
     }

@@ -25,7 +25,7 @@
           [class.row-is-success]="entity.isNew && entity.status !== 'CREATING'" [class.row-is-error]="entity.error"
           [attr.data-index]="i">
           <td *ngFor="let column of displayColumns" class="table-cell mat-cell">
-            {{ entity.object[column.fieldDisplayKey ? column.fieldDisplayKey : column.fieldKey] | displayValue:column | displayModifier:column }}
+            {{ entity.object[column.fieldDisplayKey ? column.fieldDisplayKey : column.fieldKey] | displayValue:column | displayModifier:column:entity }}
           </td>
           <td class="table-cell mat-cell action-buttons">
             <ng-container

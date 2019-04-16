@@ -1,9 +1,5 @@
-import { LocalObject } from './local-object';
-import { getProperty } from '../helpers/framework.helpers';
-
 export class DisplayColumn {
     public fieldKey: string;
-    // TODO(GET_DEPS): Newly added. Is this still needed when get deps has been implemented?
     public fieldDisplayKey: string;
     public fieldDisplaySubKey: string;
 

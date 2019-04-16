@@ -43,5 +43,12 @@
             "DELETING": "Deleting {{ name }}",
             "ERROR": "An error occured with {{ name }}. Correct and try again."
         }
+    },
+    "PRODUCTS": {
+        "FORM": {
+            "LABELS": {
+                "PRODUCTSPRICING": "Price"
+            }
+        }
     }
 }

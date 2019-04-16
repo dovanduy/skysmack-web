@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
-import { LocalObject, LocalObjectStatus, EnumHelpers } from '@skysmack/framework';
+import { LocalObject, LocalObjectStatus, EnumHelpers, DisplayColumn } from '@skysmack/framework';
 import { Assignment } from '@skysmack/packages-maintenance';
 import { NgAssignmentsValidation, LoadedPackage, NgAssignmentTypesStore } from '@skysmack/ng-packages';
 import { FormRule, Field, SelectField } from '@skysmack/ng-ui';
@@ -48,8 +48,8 @@ export class NgAssignmentsFieldsConfig extends FieldsConfig<Assignment, number> 
                 value: entity && entity.object ? entity.object.status : undefined,
                 label: 'Occupation state',
                 key: 'status',
-                displayModifier: (originalValue: number) => {
-                    const lowercaseStatus = EnumHelpers.toIndexEnum(Assignment.StatusEnum)[originalValue];
+                displayModifier: (column: DisplayColumn, providedEntity: LocalObject<Assignment, number>) => {
+                    const lowercaseStatus = EnumHelpers.toIndexEnum(Assignment.StatusEnum)[providedEntity.object.status];
                     return lowercaseStatus ? lowercaseStatus.charAt(0).toUpperCase() + lowercaseStatus.slice(1) : lowercaseStatus;
                 },
                 validators: [Validators.required],

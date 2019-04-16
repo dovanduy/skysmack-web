@@ -3,47 +3,74 @@ import { Field } from '@skysmack/ng-ui';
 import { map } from 'rxjs/operators';
 import { PersonsLodgingReservationsType } from '@skysmack/packages-persons-lodging-reservations';
 import { Observable } from 'rxjs';
-import { StrIndex, LocalObject } from '@skysmack/framework';
-import { NgSettingsActions, NgSettingsStore, NgFieldActions } from '@skysmack/ng-redux';
-import { NgPersonsStore, NgPersonsActions, NgSkysmackStore } from '@skysmack/ng-packages';
+import { StrIndex, LocalObject, DisplayColumn } from '@skysmack/framework';
+import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { StringFieldComponent } from '@skysmack/portal-ui';
-import { NgPersonsFieldsConfig } from '../persons/ng-persons-fields-config';
 import { FieldProvider } from '@skysmack/portal-ui';
-import { Person } from '@skysmack/packages-persons';
 import { Validators } from '@angular/forms';
+import { Product } from '@skysmack/packages-products';
 
 @Injectable({ providedIn: 'root' })
 export class NgProductPricingsFieldProvider extends FieldProvider {
     public requested: StrIndex<boolean> = {};
 
     constructor(
-        public personsStore: NgPersonsStore,
-        public personsActions: NgPersonsActions,
-        public personsFieldsConfig: NgPersonsFieldsConfig,
         public skysmackStore: NgSkysmackStore,
-        public settingsActions: NgSettingsActions,
-        public settingsStore: NgSettingsStore,
-        public fieldActions: NgFieldActions
     ) {
         super();
     }
-
-    public getFields(packagePath: string, entity?: LocalObject<Person, number>): Observable<Field[]> {
+    public getFields(packagePath: string, entity?: LocalObject<any, any>): Observable<Field[]> {
         return this.skysmackStore.getPackages().pipe(
             map(packages => packages.filter(_package => _package.object.type === PersonsLodgingReservationsType.id && _package.object.dependencies[1] === packagePath)),
             map(() => {
+
+                const displayModifier = (column: DisplayColumn, providedEntity: LocalObject<Product, number>): string => {
+                    if (column.sortable) {
+                        // Prevents ExpressionHasChanged error
+                        setTimeout(() => {
+                            column.sortable = false;
+                        }, 0);
+                    }
+
+                    const extendedData: StrIndex<StrIndex<StrIndex<number>>> = providedEntity.object['extendedData'];
+
+                    if (extendedData) {
+                        return Object.keys(extendedData)
+                            .map(packageKey => {
+                                const productPricings: StrIndex<StrIndex<number>> = extendedData[packageKey];
+                                let currencyCodes: StrIndex<number>;
+                                if (productPricings) {
+                                    currencyCodes = productPricings['prices'];
+                                }
+
+                                if (currencyCodes) {
+                                    return Object.keys(currencyCodes).map(currencyCodeKey => {
+                                        const currencyCode = currencyCodeKey.toUpperCase();
+                                        const price = currencyCodes[currencyCodeKey]['price'];
+                                        return `${price} ${currencyCode}`;
+                                    }).join(', ');
+                                }
+
+                                return '';
+                            })[0];
+                    } else {
+
+                    }
+                };
+
                 return [
                     new Field({
                         component: StringFieldComponent,
-                        value: entity ? entity.object.name : undefined,
-                        key: 'name',
+                        value: undefined,
+                        key: 'productsPricing',
                         validators: [Validators.required],
                         order: 1,
+                        displayModifier,
+                        includeInForm: false,
                         showColumn: true
                     })
                 ];
-            }),
-            // map(values => values.reduce((acc, cur) => acc.concat(cur), []).filter(x => x))
+            })
         );
     }
 }

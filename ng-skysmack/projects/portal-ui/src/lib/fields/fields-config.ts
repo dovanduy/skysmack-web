@@ -33,9 +33,7 @@ export abstract class FieldsConfig<TRecord, TKey> implements EntityFieldsConfig<
     protected getStaticFields(loadedPackage: LoadedPackage, entity?: LocalObject<TRecord, TKey>): Field[] {
         const fieldArea = this.validation.area.toUpperCase() + '.FORM.';
         return this.getEntityFields(loadedPackage, entity).map(field => {
-            // Labels
             field.label = fieldArea + 'LABELS.' + field.key.toUpperCase();
-            // Placeholders
             field.placeholder = fieldArea + 'PLACEHOLDERS.' + field.key.toUpperCase();
             return field;
         });
