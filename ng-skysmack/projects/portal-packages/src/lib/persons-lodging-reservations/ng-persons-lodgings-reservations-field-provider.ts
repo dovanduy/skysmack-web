@@ -13,7 +13,6 @@ import { Person } from '@skysmack/packages-persons';
 
 @Injectable({ providedIn: 'root' })
 export class NgPersonsLodgingReservationsFieldProvider extends FieldProvider {
-    public areaKey = 'test';
     public requested: StrIndex<boolean> = {};
 
     constructor(
