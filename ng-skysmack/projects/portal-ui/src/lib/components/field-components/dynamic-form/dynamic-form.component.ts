@@ -39,10 +39,12 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
     this.editorItem$ = this.skysmackStore.getEditorItem(true);
 
     // Update the fields and  form (FormGroup) on field changes
-    this.fields$ = this.fields$.pipe(map(fields => {
-      this.updateForm(fields);
-      return fields.filter(field => field.includeInForm);
-    }));
+    this.fields$ = this.fields$.pipe(
+      map(fields => {
+        this.updateForm(fields);
+        return fields.filter(field => field.includeInForm);
+      })
+    );
 
     // Show sidebar
     setTimeout(() => {

@@ -87,6 +87,11 @@ export class Field {
      */
     public includeInForm = true;
 
+    /**
+     * Whether the field should be sortable on the index page.
+     */
+    public sortable = false;
+
     constructor(values: Partial<Field>) {
         Object.assign(this, values);
     }

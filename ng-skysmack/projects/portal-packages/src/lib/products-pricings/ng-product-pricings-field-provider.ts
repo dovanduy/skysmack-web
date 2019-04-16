@@ -25,13 +25,6 @@ export class NgProductPricingsFieldProvider extends FieldProvider {
             map(() => {
 
                 const displayModifier = (column: DisplayColumn, providedEntity: LocalObject<Product, number>): string => {
-                    if (column.sortable) {
-                        // Prevents ExpressionHasChanged error
-                        setTimeout(() => {
-                            column.sortable = false;
-                        }, 0);
-                    }
-
                     const extendedData: StrIndex<StrIndex<StrIndex<number>>> = providedEntity.object['extendedData'];
 
                     if (extendedData) {
@@ -54,7 +47,7 @@ export class NgProductPricingsFieldProvider extends FieldProvider {
                                 return '';
                             })[0];
                     } else {
-
+                        // TODO: Undecided. A trello task has been made.
                     }
                 };
 

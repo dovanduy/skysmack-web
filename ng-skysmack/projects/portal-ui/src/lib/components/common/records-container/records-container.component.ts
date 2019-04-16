@@ -73,8 +73,6 @@ export class RecordsContainerComponent implements OnInit, OnDestroy {
   }
 
   public displayColumnFromField(field: Field) {
-    const sortableFields: Array<FieldTypes> = [FieldTypes.int, FieldTypes.dateTime, FieldTypes.decimal, FieldTypes.double, FieldTypes.limitedString];
-    const sortable = sortableFields.indexOf(field.fieldType) > -1 || !field.dynamicField;
     const column = new DisplayColumn({
       fieldKey: field.key,
       fieldDisplayKey: field.displayKey ? field.displayKey : field.key,
@@ -83,8 +81,14 @@ export class RecordsContainerComponent implements OnInit, OnDestroy {
       displayModifier: field.displayModifier,
       translationString: this.area.toUpperCase() + '.FORM.LABELS.' + field.key.toUpperCase(),
       show: field.showColumn,
-      sortable: sortable
+      sortable: field.sortable
     });
+
+    if (field.dynamicField) {
+      const sortableFields: Array<FieldTypes> = [FieldTypes.int, FieldTypes.dateTime, FieldTypes.decimal, FieldTypes.double, FieldTypes.limitedString];
+      field.sortable = sortableFields.indexOf(field.fieldType) > -1 || !field.dynamicField;
+    }
+
     return column;
   }
 

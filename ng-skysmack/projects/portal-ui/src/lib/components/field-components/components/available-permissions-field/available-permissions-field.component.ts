@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FieldBaseComponent } from '../field-base-component';
 import { NgPackagesStore, NgSkysmackStore, NgSkysmackActions } from '@skysmack/ng-packages';
-import { switchMap, map } from 'rxjs/operators';
+import { switchMap, map, startWith } from 'rxjs/operators';
 import { Field } from '@skysmack/ng-ui';
 import { StrIndex } from '@skysmack/framework';
 import { Observable } from 'rxjs';
