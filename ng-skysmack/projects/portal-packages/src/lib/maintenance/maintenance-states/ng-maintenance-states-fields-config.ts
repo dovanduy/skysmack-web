@@ -2,11 +2,12 @@ import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { MaintenanceState, MaintenanceEntityStatus } from '@skysmack/packages-maintenance';
-import { NgMaintenanceStatesValidation, LoadedPackage } from '@skysmack/ng-packages';
+import { NgMaintenanceStatesValidation } from '@skysmack/ng-packages';
 import { FormRule, Field, SelectField } from '@skysmack/ng-ui';
 import { FieldsConfig, StringFieldComponent, SelectFieldComponent, HiddenFieldComponent } from '@skysmack/portal-ui';
 import { of } from 'rxjs';
 import { FieldProviders } from '@skysmack/portal-ui';
+import { LoadedPackage } from '@skysmack/ng-redux';
 
 @Injectable({ providedIn: 'root' })
 export class NgMaintenanceStatesFieldsConfig extends FieldsConfig<MaintenanceState, number> {

@@ -2,9 +2,10 @@ import { Injectable } from '@angular/core';
 import { FormRule, Field } from '@skysmack/ng-ui';
 import { LocalObject, toLocalObject } from '@skysmack/framework';
 import { LodgingSettings } from '@skysmack/packages-lodgings';
-import { NgLodgingSettingsValidation, LoadedPackage } from '@skysmack/ng-packages';
+import { NgLodgingSettingsValidation } from '@skysmack/ng-packages';
 import { FieldsConfig, StringFieldComponent, DateFieldComponent } from '@skysmack/portal-ui';
 import { FieldProviders } from '@skysmack/portal-ui';
+import { LoadedPackage } from '@skysmack/ng-redux';
 
 @Injectable({ providedIn: 'root' })
 export class NgLodgingSettingsFieldsConfig extends FieldsConfig<LodgingSettings, unknown> {

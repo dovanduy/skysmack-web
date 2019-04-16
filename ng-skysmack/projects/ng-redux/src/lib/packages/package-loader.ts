@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { LoadedPackage } from './loaded-package';
-import { PackageManifest } from '@skysmack/ng-ui';
 import { Package } from '@skysmack/framework';
+import { PackageManifest } from './package-manifest';
 
 @Injectable({ providedIn: 'root' })
 export class PackageLoader {

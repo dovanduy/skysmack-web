@@ -5,5 +5,5 @@ import { SortPipe } from './sort.pipe';
 export const portailUiPipes = [
     DisplayValuePipe,
     DisplayModifierPipe,
-    SortPipe
+    SortPipe,
 ];

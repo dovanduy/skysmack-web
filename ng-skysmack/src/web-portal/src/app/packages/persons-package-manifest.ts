@@ -1,7 +1,5 @@
 import { PersonsType } from '@skysmack/packages-persons';
-import { PackageManifest } from '@skysmack/ng-ui';
-import { PackageLoader } from '@skysmack/ng-packages';
-
+import { PackageLoader, PackageManifest } from '@skysmack/ng-redux';
 export class PersonsPackageManifest extends PersonsType implements PackageManifest {
     public icon = 'face';
     public menuLocation = 'main';

@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
-import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
+import { LocalObject, LocalObjectStatus, DisplayColumn, defined, hasValue } from '@skysmack/framework';
 import { LodgingReservation } from '@skysmack/packages-lodging-reservations';
 import { FormRule, SelectField, Field, SelectFieldOption } from '@skysmack/ng-ui';
-import { NgLodgingReservationsValidation, NgLodgingTypesStore, NgLodgingsStore, LoadedPackage } from '@skysmack/ng-packages';
+import { NgLodgingReservationsValidation, NgLodgingTypesStore, NgLodgingsStore } from '@skysmack/ng-packages';
 import { FieldsConfig, SelectFieldComponent, HiddenFieldComponent, IntFieldComponent, DateFieldComponent } from '@skysmack/portal-ui';
 import { FieldProviders } from '@skysmack/portal-ui';
+import { map, take } from 'rxjs/operators';
+import { LoadedPackage } from '@skysmack/ng-redux';
 
 @Injectable({ providedIn: 'root' })
 export class NgLodgingReservationsFieldsConfig extends FieldsConfig<LodgingReservation, number> {
@@ -22,21 +24,37 @@ export class NgLodgingReservationsFieldsConfig extends FieldsConfig<LodgingReser
     }
 
     protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<LodgingReservation, number>): Field[] {
+        const lodgingTypeIdDisplayModifier = (column: DisplayColumn, providedEntity: LocalObject<LodgingReservation, number>) => {
+            this.lodgingTypeStore.get(loadedPackage._package.dependencies[0]).pipe(
+                hasValue(),
+                take(1),
+                map((lodgingTypes: LocalObject<LodgingReservation, number>[]) => {
+                    const found = lodgingTypes.find(lt => lt.object.id === providedEntity.object.lodgingTypeId);
+                    console.log(found);
+                }),
+            ).subscribe();
+            return 'flop';
+        };
+
         const fields = [
             new SelectField({
                 component: SelectFieldComponent,
                 value: entity ? entity.object.lodgingTypeId : undefined,
                 key: 'lodgingTypeId',
+                displayKey: 'lodgingType',
+                displaySubKey: 'object.name',
                 validators: [Validators.required],
                 optionsData$: this.lodgingTypeStore.get(loadedPackage._package.dependencies[0]),
+                // displayModifier: lodgingTypeIdDisplayModifier,
                 order: 1,
                 showColumn: true
-            } as SelectField),
+            }),
             new SelectField({
                 component: SelectFieldComponent,
                 value: entity ? entity.object.allocatedLodgingId : undefined,
                 key: 'allocatedLodgingId',
-                label: 'Allocated lodging',
+                displayKey: 'allocatedLodging',
+                displaySubKey: 'object.name',
                 optionsData$: this.lodgingsStore.get(loadedPackage._package.dependencies[0]),
                 extraOptions: [{
                     value: null,

@@ -4,10 +4,11 @@ import { map, switchMap, filter, take, tap } from 'rxjs/operators';
 import { MenuArea } from '@skysmack/framework';
 import { MenuItem } from '@skysmack/framework';
 
-import { NgSkysmackStore, LoadedPackage } from '@skysmack/ng-packages';
+import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { SubscriptionHandler } from '@skysmack/framework';
 import { NgMenuItemProviders, getAdditionalPaths } from '@skysmack/ng-redux';
 import { combineLatest } from 'rxjs';
+import { LoadedPackage } from '@skysmack/ng-redux';
 
 interface BackButtonOptions {
     connectedPackage?: boolean;

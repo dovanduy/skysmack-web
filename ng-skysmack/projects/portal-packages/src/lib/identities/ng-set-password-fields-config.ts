@@ -3,7 +3,8 @@ import { Validators } from '@angular/forms';
 import { LocalObject } from '@skysmack/framework';
 import { Field, FormRule, CustomValidators } from '@skysmack/ng-ui';
 import { User } from '@skysmack/packages-identities';
-import { NgSetPasswordValidation, LoadedPackage } from '@skysmack/ng-packages';
+import { LoadedPackage } from '@skysmack/ng-redux';
+import { NgSetPasswordValidation } from '@skysmack/ng-packages';
 import { FieldsConfig, PasswordFieldComponent } from '@skysmack/portal-ui';
 import { FieldProviders } from '@skysmack/portal-ui';
 

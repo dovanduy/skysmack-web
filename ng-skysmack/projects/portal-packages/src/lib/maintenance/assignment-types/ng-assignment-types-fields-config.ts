@@ -5,9 +5,10 @@ import { FormRule } from '@skysmack/ng-ui';
 import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { Field } from '@skysmack/ng-ui';
 import { SelectField } from '@skysmack/ng-ui';
-import { NgAssignmentTypesValidation, LoadedPackage, NgMaintenanceStatesStore } from '@skysmack/ng-packages';
+import { NgAssignmentTypesValidation, NgMaintenanceStatesStore } from '@skysmack/ng-packages';
 import { FieldsConfig, StringFieldComponent, SelectFieldComponent, HiddenFieldComponent, RecurringExpressionFieldComponent } from '@skysmack/portal-ui';
 import { FieldProviders } from '@skysmack/portal-ui';
+import { LoadedPackage } from '@skysmack/ng-redux';
 
 @Injectable({ providedIn: 'root' })
 export class NgAssignmentTypesFieldsConfig extends FieldsConfig<AssignmentType, number> {

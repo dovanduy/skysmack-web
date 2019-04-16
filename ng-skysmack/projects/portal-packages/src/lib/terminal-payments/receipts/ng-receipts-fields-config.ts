@@ -5,8 +5,9 @@ import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { Receipt } from '@skysmack/packages-terminal-payments';
 import { Field } from '@skysmack/ng-ui';
 import { FieldsConfig, StringFieldComponent, HiddenFieldComponent } from '@skysmack/portal-ui';
-import { NgReceiptsValidation, LoadedPackage } from '@skysmack/ng-packages';
+import { NgReceiptsValidation } from '@skysmack/ng-packages';
 import { FieldProviders } from '@skysmack/portal-ui';
+import { LoadedPackage } from '@skysmack/ng-redux';
 
 @Injectable({ providedIn: 'root' })
 export class NgReceiptsFieldsConfig extends FieldsConfig<Receipt, number> {

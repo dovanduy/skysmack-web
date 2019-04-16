@@ -7,8 +7,9 @@ import { Field } from '@skysmack/ng-ui';
 
 import { SelectField } from '@skysmack/ng-ui';
 import { FieldsConfig, StringFieldComponent, SelectFieldComponent, HiddenFieldComponent } from '@skysmack/portal-ui';
-import { NgProductsValidation, NgProductTypesStore, LoadedPackage } from '@skysmack/ng-packages';
+import { NgProductsValidation, NgProductTypesStore } from '@skysmack/ng-packages';
 import { FieldProviders } from '@skysmack/portal-ui';
+import { LoadedPackage } from '@skysmack/ng-redux';
 
 @Injectable({ providedIn: 'root' })
 export class NgProductsFieldsConfig extends FieldsConfig<Product, number> {

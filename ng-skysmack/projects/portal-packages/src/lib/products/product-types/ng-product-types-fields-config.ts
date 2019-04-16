@@ -6,8 +6,8 @@ import { ProductType } from '@skysmack/packages-products';
 import { Field } from '@skysmack/ng-ui';
 
 import { DocumentFieldsConfig, StringFieldComponent, HiddenFieldComponent } from '@skysmack/portal-ui';
-import { NgProductTypesValidation, LoadedPackage } from '@skysmack/ng-packages';
-import { NgFieldStore } from '@skysmack/ng-redux';
+import { NgProductTypesValidation } from '@skysmack/ng-packages';
+import { NgFieldStore, LoadedPackage } from '@skysmack/ng-redux';
 import { FieldProviders } from '@skysmack/portal-ui';
 
 @Injectable({ providedIn: 'root' })

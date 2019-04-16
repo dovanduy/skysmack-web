@@ -1,5 +1,5 @@
 import { Package } from '@skysmack/framework';
-import { PackageManifest } from '@skysmack/ng-ui';
+import { PackageManifest } from './package-manifest';
 
 export class LoadedPackage {
     constructor(
@@ -7,3 +7,4 @@ export class LoadedPackage {
         public packageManifest: PackageManifest
     ) { }
 }
+

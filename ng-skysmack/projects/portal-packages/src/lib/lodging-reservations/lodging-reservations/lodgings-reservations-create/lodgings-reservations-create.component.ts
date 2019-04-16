@@ -1,17 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { map, take } from 'rxjs/operators';
 import {
   NgLodgingReservationsStore,
   NgSkysmackStore,
   NgLodgingReservationsActions,
   NgLodgingsActions,
-  NgLodgingTypesActions,
-  LoadedPackage
+  NgLodgingTypesActions
 } from '@skysmack/ng-packages';
 import { LodgingReservation, LodgingReservationsAppState } from '@skysmack/packages-lodging-reservations';
 import { RecordFormComponent, EditorNavService } from '@skysmack/portal-ui';
-import { PagedQuery, defined } from '@skysmack/framework';
 import { NgLodgingReservationsFieldsConfig } from '../../ng-lodging-reservations-fields-config';
 
 @Component({
@@ -35,18 +32,6 @@ export class LodgingsReservationsCreateComponent extends RecordFormComponent<Lod
 
   ngOnInit() {
     super.ngOnInit();
-    this.getDeps();
     this.setCreateFields();
-  }
-
-  public getDeps() {
-    this.loadedPackage$.pipe(
-      defined(),
-      map((loadedPackage: LoadedPackage) => {
-        this.lodgingsActions.getPaged(loadedPackage._package.dependencies[0], new PagedQuery());
-        this.lodgingTypesActions.getPaged(loadedPackage._package.dependencies[0], new PagedQuery());
-      }),
-      take(1)
-    ).subscribe();
   }
 }

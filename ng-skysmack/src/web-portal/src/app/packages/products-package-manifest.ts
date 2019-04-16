@@ -1,6 +1,5 @@
 import { ProductsType } from '@skysmack/packages-products';
-import { PackageManifest } from '@skysmack/ng-ui';
-import { PackageLoader } from '@skysmack/ng-packages';
+import { PackageLoader, PackageManifest } from '@skysmack/ng-redux';
 
 export class ProductsPackageManifest extends ProductsType implements PackageManifest {
     public icon = 'folder';

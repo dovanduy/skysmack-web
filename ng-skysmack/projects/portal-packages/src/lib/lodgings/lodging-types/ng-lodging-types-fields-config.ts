@@ -3,9 +3,9 @@ import { Validators } from '@angular/forms';
 import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { LodgingType } from '@skysmack/packages-lodgings';
 import { FieldProviders, DocumentFieldsConfig, StringFieldComponent, HiddenFieldComponent } from '@skysmack/portal-ui';
-import { NgLodgingTypesValidation, LoadedPackage } from '@skysmack/ng-packages';
+import { NgLodgingTypesValidation } from '@skysmack/ng-packages';
 import { FormRule, Field } from '@skysmack/ng-ui';
-import { NgFieldStore } from '@skysmack/ng-redux';
+import { NgFieldStore, LoadedPackage } from '@skysmack/ng-redux';
 
 @Injectable({ providedIn: 'root' })
 export class NgLodgingTypesFieldsConfig extends DocumentFieldsConfig<LodgingType, number> {

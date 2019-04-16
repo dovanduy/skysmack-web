@@ -1,6 +1,6 @@
 import { LodgingsType } from '@skysmack/packages-lodgings';
-import { PackageManifest } from '@skysmack/ng-ui';
-import { PackageLoader } from '@skysmack/ng-packages';
+import { PackageLoader, PackageManifest } from '@skysmack/ng-redux';
+
 
 export class LodgingsPackageManifest extends LodgingsType implements PackageManifest {
     public icon = 'domain';

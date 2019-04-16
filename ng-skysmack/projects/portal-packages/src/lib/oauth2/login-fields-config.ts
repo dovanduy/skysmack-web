@@ -4,8 +4,8 @@ import { FormRule, Field, CustomValidators } from '@skysmack/ng-ui';
 import { LoginValidation } from './login-validation';
 import { LocalObject } from '@skysmack/framework';
 import { FieldsConfig, PasswordFieldComponent, EmailFieldComponent } from '@skysmack/portal-ui';
-import { LoadedPackage } from '@skysmack/ng-packages';
 import { FieldProviders } from '@skysmack/portal-ui';
+import { LoadedPackage } from '@skysmack/ng-redux';
 
 @Injectable({ providedIn: 'root' })
 export class LoginFieldsConfig extends FieldsConfig<any, any> {

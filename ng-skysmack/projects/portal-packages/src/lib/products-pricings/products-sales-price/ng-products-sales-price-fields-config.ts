@@ -3,9 +3,10 @@ import { Validators } from '@angular/forms';
 import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { ProductsSalesPrice } from '@skysmack/packages-products-pricings';
 import { FormRule, SelectField, Field } from '@skysmack/ng-ui';
-import { NgProductsSalesPriceValidation, LoadedPackage, NgProductsStore } from '@skysmack/ng-packages';
+import { NgProductsSalesPriceValidation, NgProductsStore } from '@skysmack/ng-packages';
 import { FieldsConfig, SelectFieldComponent, HiddenFieldComponent, DecimalFieldComponent } from '@skysmack/portal-ui';
 import { FieldProviders } from '@skysmack/portal-ui';
+import { LoadedPackage } from '@skysmack/ng-redux';
 
 @Injectable({ providedIn: 'root' })
 export class NgProductsSalesPriceFieldsConfig extends FieldsConfig<ProductsSalesPrice, number> {

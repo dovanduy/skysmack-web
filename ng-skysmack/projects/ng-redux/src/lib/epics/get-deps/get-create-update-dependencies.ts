@@ -3,14 +3,17 @@ import { map, take } from 'rxjs/operators';
 import { AssignmentType } from '@skysmack/packages-maintenance';
 import { NgRecordStore } from '../../stores/ng-record-store';
 import { RecordActionsBase, ReduxAction, CommitMeta } from '@skysmack/redux';
+import { SkysmackStore } from '../../stores/skysmack-store';
 
 export interface GetCreateUpdateDependenciesOptions {
     action: ReduxAction<HttpSuccessResponse<any>, CommitMeta<any>>;
     relationIdSelector: string;
     relationSelector: string;
     rsqlIdSelector: string;
+    skysmackStore: SkysmackStore;
     store: NgRecordStore<any, any, any>;
     actions: RecordActionsBase<any, any>;
+    packageDependencyIndex?: number;
 }
 
 export function getCreateUpdateDependencies(options: GetCreateUpdateDependenciesOptions) {
@@ -26,7 +29,17 @@ export function getCreateUpdateDependencies(options: GetCreateUpdateDependencies
 
         // Get deps
         const packagePath = options.action.meta.stateKey;
-        options.actions.getPaged(packagePath, query);
+
+        if (options.packageDependencyIndex || options.packageDependencyIndex === 0) {
+            options.skysmackStore.getCurrentPackage(packagePath).pipe(
+                map(_package => {
+                    return options.actions.getPaged(_package._package.dependencies[options.packageDependencyIndex], query);
+                }),
+                take(1),
+            ).subscribe();
+        } else {
+            options.actions.getPaged(packagePath, query);
+        }
 
         // Match deps
         options.store.get(packagePath).pipe(

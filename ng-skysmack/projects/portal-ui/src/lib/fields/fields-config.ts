@@ -1,10 +1,10 @@
 import { LocalObject } from '@skysmack/framework';
 import { FormRule, Validation, Field } from '@skysmack/ng-ui';
-import { LoadedPackage } from '@skysmack/ng-packages';
 import { EntityFieldsConfig } from './entity-fields-config';
 import { Observable, combineLatest, of } from 'rxjs';
 import { map, distinctUntilChanged, switchMap, tap } from 'rxjs/operators';
 import { FieldProviders } from './field-providers';
+import { LoadedPackage } from '@skysmack/ng-redux';
 
 export abstract class FieldsConfig<TRecord, TKey> implements EntityFieldsConfig<TRecord, TKey> {
     public abstract formRules: FormRule[];

@@ -7,8 +7,9 @@ import { FieldsConfig, SelectFieldComponent, HiddenFieldComponent, RolesSelectFi
 import { AccessPolicyRole, AccessPolicyRoleKey } from '@skysmack/packages-skysmack-core';
 import { Validators } from '@angular/forms';
 import { SelectFieldOption } from '@skysmack/ng-ui';
-import { AccessPolicyRolesValidation, LoadedPackage, NgAccessPolicyRulesStore } from '@skysmack/ng-packages';
+import { AccessPolicyRolesValidation, NgAccessPolicyRulesStore } from '@skysmack/ng-packages';
 import { FieldProviders } from '@skysmack/portal-ui';
+import { LoadedPackage } from '@skysmack/ng-redux';
 
 @Injectable({ providedIn: 'root' })
 export class NgAccessPolicyRolesFieldsConfig extends FieldsConfig<AccessPolicyRole, AccessPolicyRoleKey> {

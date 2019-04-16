@@ -5,8 +5,9 @@ import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { Field } from '@skysmack/ng-ui';
 import { FieldsConfig, SelectFieldComponent, HiddenFieldComponent, CheckboxFieldComponent, IntFieldComponent, AvailablePermissionsFieldComponent } from '@skysmack/portal-ui';
 import { AccessPolicyPermission } from '@skysmack/packages-skysmack-core';
-import { AccessPolicyPermissionsValidation, LoadedPackage, NgAccessPolicyRulesStore, NgSkysmackStore } from '@skysmack/ng-packages';
+import { AccessPolicyPermissionsValidation, NgAccessPolicyRulesStore, NgSkysmackStore } from '@skysmack/ng-packages';
 import { FieldProviders } from '@skysmack/portal-ui';
+import { LoadedPackage } from '@skysmack/ng-redux';
 
 @Injectable({ providedIn: 'root' })
 export class NgAccessPolicyPermissionsFieldsConfig extends FieldsConfig<AccessPolicyPermission, number> {

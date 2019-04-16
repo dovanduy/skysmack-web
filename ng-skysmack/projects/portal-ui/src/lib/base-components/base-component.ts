@@ -1,11 +1,12 @@
 import { SubscriptionHandler } from '@skysmack/framework';
-import { LoadedPackage, NgSkysmackStore } from '@skysmack/ng-packages';
+import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { Observable } from 'rxjs';
 import { Router, ActivatedRoute } from '@angular/router';
 import { OnInit, OnDestroy } from '@angular/core';
 import { take } from 'rxjs/operators';
 import { Field } from '@skysmack/ng-ui';
 import { getAdditionalPaths } from '@skysmack/ng-redux';
+import { LoadedPackage } from '@skysmack/ng-redux';
 
 export class BaseComponent<TAppState, TKey> implements OnInit, OnDestroy {
     public subscriptionHandler = new SubscriptionHandler();

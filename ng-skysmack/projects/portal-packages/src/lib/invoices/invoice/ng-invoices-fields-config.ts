@@ -6,7 +6,8 @@ import { Invoice } from '@skysmack/packages-invoices';
 import { Field } from '@skysmack/ng-ui';
 
 import { FieldsConfig, StringFieldComponent, HiddenFieldComponent, FieldProviders } from '@skysmack/portal-ui';
-import { NgInvoicesValidation, LoadedPackage } from '@skysmack/ng-packages';
+import { NgInvoicesValidation } from '@skysmack/ng-packages';
+import { LoadedPackage } from '@skysmack/ng-redux';
 
 export interface NgInvoiceFormDependencies {
     [key: string]: any;

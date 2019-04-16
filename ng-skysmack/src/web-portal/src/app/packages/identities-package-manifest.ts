@@ -1,6 +1,5 @@
 import { IdentitiesType } from '@skysmack/packages-identities';
-import { PackageManifest } from '@skysmack/ng-ui';
-import { PackageLoader } from '@skysmack/ng-packages';
+import { PackageLoader, PackageManifest } from '@skysmack/ng-redux';
 
 export class IdentitiesPackageManifest extends IdentitiesType implements PackageManifest {
     public icon = 'perm_identity';

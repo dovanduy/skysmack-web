@@ -1,6 +1,5 @@
 import { PersonsLodgingReservationsType } from '@skysmack/packages-persons-lodging-reservations';
-import { PackageManifest } from '@skysmack/ng-ui';
-import { PackageLoader } from '@skysmack/ng-packages';
+import { PackageLoader, PackageManifest } from '@skysmack/ng-redux';
 
 export class PersonsLodgingReservationsPackageManifest extends PersonsLodgingReservationsType implements PackageManifest {
     public icon = 'style';

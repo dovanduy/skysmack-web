@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductTypeSalesPriceAppState, ProductTypeSalesPrice } from '@skysmack/packages-products-pricings';
-import { NgProductTypeSalesPriceActions, NgProductTypesActions, LoadedPackage } from '@skysmack/ng-packages';
+import { NgProductTypeSalesPriceActions, NgProductTypesActions } from '@skysmack/ng-packages';
 import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EditorNavService, RecordFormComponent } from '@skysmack/portal-ui';
@@ -8,6 +8,7 @@ import { NgProductTypeSalesPriceStore } from '@skysmack/ng-packages';
 import { PagedQuery, defined } from '@skysmack/framework';
 import { map, take } from 'rxjs/operators';
 import { NgProductTypeSalesPriceFieldsConfig } from '../../ng-product-type-sales-price-fields-config';
+import { LoadedPackage } from '@skysmack/ng-redux';
 
 @Component({
   selector: 'ss-product-type-sales-price-edit',

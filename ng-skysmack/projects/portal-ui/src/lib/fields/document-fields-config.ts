@@ -8,13 +8,10 @@ import { DoubleFieldComponent } from '../components/field-components/components/
 import { DecimalFieldComponent } from '../components/field-components/components/decimal-field/decimal-field.component';
 import { DateTimeFieldComponent } from '../components/field-components/components/date-time-field/date-time-field.component';
 import { StringFieldComponent } from '../components/field-components/components/string-field/string-field.component';
-import { LoadedPackage } from '@skysmack/ng-packages';
 import { FieldsConfig } from './fields-config';
 import { Observable, combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
-
-
-import { NgFieldStore } from '@skysmack/ng-redux';
+import { NgFieldStore, LoadedPackage } from '@skysmack/ng-redux';
 import { FieldProviders } from './field-providers';
 
 export abstract class DocumentFieldsConfig<TRecord, TKey> extends FieldsConfig<TRecord, TKey> {

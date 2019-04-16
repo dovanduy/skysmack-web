@@ -1,9 +1,14 @@
-import { Record } from "@skysmack/framework";
+import { Record, LocalObject } from "@skysmack/framework";
 import { Stay } from './stay';
+import { LodgingType, Lodging } from '@skysmack/packages-lodgings';
 
 export class LodgingReservation extends Record<number> {
     public lodgingTypeId: number;
+    public lodgingType: LocalObject<LodgingType, number>;
+
     public allocatedLodgingId?: number;
+    public allocatedLodging: LocalObject<Lodging, number>;
+
     public checkIn: Date;
     public checkOut: Date;
     public stays: Stay[];

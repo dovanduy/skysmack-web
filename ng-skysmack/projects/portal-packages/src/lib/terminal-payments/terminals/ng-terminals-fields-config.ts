@@ -4,8 +4,9 @@ import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { Terminal } from '@skysmack/packages-terminal-payments';
 import { Field } from '@skysmack/ng-ui';
 import { FieldsConfig, HiddenFieldComponent } from '@skysmack/portal-ui';
-import { NgTerminalsValidation, LoadedPackage } from '@skysmack/ng-packages';
+import { NgTerminalsValidation } from '@skysmack/ng-packages';
 import { FieldProviders } from '@skysmack/portal-ui';
+import { LoadedPackage } from '@skysmack/ng-redux';
 
 @Injectable({ providedIn: 'root' })
 export class NgTerminalsFieldsConfig extends FieldsConfig<Terminal, number> {

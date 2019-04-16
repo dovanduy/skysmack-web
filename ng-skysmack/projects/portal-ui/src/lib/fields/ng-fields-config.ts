@@ -11,7 +11,7 @@ import { SelectFieldComponent } from '../components/field-components/components/
 import { ValidatorsFieldComponent } from '../components/field-components/components/validators-field/validators-field.component';
 import { FieldPermissionFieldComponent } from '../components/field-components/components/field-permission-field/field-permission-field.component';
 import { NgFieldStore, getAdditionalPaths } from '@skysmack/ng-redux';
-import { LoadedPackage } from '@skysmack/ng-packages';
+import { LoadedPackage } from '@skysmack/ng-redux';
 import { FieldProviders } from './field-providers';
 import { Router } from '@angular/router';
 

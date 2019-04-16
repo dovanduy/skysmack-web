@@ -3,9 +3,9 @@ import { Observable } from 'rxjs';
 import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { Menu } from '@skysmack/ng-ui';
 import { UIRedux } from './../../../redux/ui-redux';
-import { LoadedPackage } from '@skysmack/ng-packages';
 import { map } from 'rxjs/operators';
 import { Oauth2Type } from '@skysmack/packages-oauth2';
+import { LoadedPackage } from '@skysmack/ng-redux';
 
 @Component({
   selector: 'ss-package-drawer',

@@ -6,7 +6,7 @@ import { loadPersonPackage } from '../packages/persons-package-manifest';
 import { loadProductPackage } from '../packages/products-package-manifest';
 import { loadLodgingPackage } from '../packages/lodgings-package-manifest';
 import { loadOauth2Package } from '../packages/oauth2-package-manifest';
-import { NgSkysmackActions, PackageLoader } from '@skysmack/ng-packages';
+import { NgSkysmackActions } from '@skysmack/ng-packages';
 import { AuthorizationInterceptor, configureLanguage, LanguageService } from '@skysmack/portal-ui';
 import { loadMaintenancePackage } from '../packages/maintenance-package-manifest';
 import { loadIdentitiesPackage } from '../packages/identities-package-manifest';
@@ -15,6 +15,7 @@ import { loadTerminalPaymentsPackage } from '../packages/terminal-payments-manif
 import { loadInvoicePackage } from '../packages/invoices-package-manifest';
 import { loadProductsPricingsPackage } from '../packages/products-pricings-package-manifest';
 import { loadPersonsLodgingReservationsPackage } from '../packages/persons-lodging-reservations-package-manifest';
+import { PackageLoader } from '@skysmack/ng-redux';
 
 export function configureSkysmack(actions: NgSkysmackActions) {
     return () => actions.getSkysmack();

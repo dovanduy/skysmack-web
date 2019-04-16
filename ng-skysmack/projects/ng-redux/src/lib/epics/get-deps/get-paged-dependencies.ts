@@ -3,17 +3,20 @@ import { map, take } from 'rxjs/operators';
 import { AssignmentType } from '@skysmack/packages-maintenance';
 import { NgRecordStore } from '../../stores/ng-record-store';
 import { RecordActionsBase, ReduxAction, GetPagedEntitiesSuccessPayload } from '@skysmack/redux';
+import { SkysmackStore } from '../../stores/skysmack-store';
 
 export interface GetDependenciesOptions {
     action: ReduxAction<GetPagedEntitiesSuccessPayload<any, any>>;
     relationIdSelector: string;
     relationSelector: string;
     rsqlIdSelector: string;
+    skysmackStore: SkysmackStore;
     store: NgRecordStore<any, any, any>;
     actions: RecordActionsBase<any, any>;
+    packageDependencyIndex?: number;
 }
 
-export function getDependencies(options: GetDependenciesOptions) {
+export function getPagedDependencies(options: GetDependenciesOptions) {
     // Get ids from the relation id prop.
     const entities = options.action.payload.entities;
     const depIds: number[] = Array.from(new Set(entities.map(record => record[options.relationIdSelector]).filter(x => x)));
@@ -26,7 +29,17 @@ export function getDependencies(options: GetDependenciesOptions) {
 
         // Get deps
         const packagePath = options.action.payload.packagePath;
-        options.actions.getPaged(packagePath, query);
+
+        if (options.packageDependencyIndex || options.packageDependencyIndex === 0) {
+            options.skysmackStore.getCurrentPackage(packagePath).pipe(
+                map(_package => {
+                    return options.actions.getPaged(_package._package.dependencies[options.packageDependencyIndex], query);
+                }),
+                take(1),
+            ).subscribe();
+        } else {
+            options.actions.getPaged(packagePath, query);
+        }
 
         // Match deps
         options.store.get(packagePath).pipe(

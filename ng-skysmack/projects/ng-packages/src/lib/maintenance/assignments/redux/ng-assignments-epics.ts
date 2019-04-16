@@ -6,12 +6,14 @@ import { NgAssignmentTypesActions } from '../../assignment-types/redux/ng-assign
 import { NgAssignmentTypesStore } from '../../assignment-types/redux/ng-assignment-types-store';
 import { getCrudDependencies } from '@skysmack/ng-redux';
 import { NgAssignmentsNotifications } from '../ng-assignments-notifications';
+import { NgSkysmackStore } from '../../../skysmack-core/skysmack/redux/ng-skysmack-store';
 
 @Injectable({ providedIn: 'root' })
 export class NgAssignmentsEpics extends RecordEpicsBase<Assignment, number> {
     constructor(
         protected requests: NgAssignmentsRequests,
         protected notifications: NgAssignmentsNotifications,
+        protected skysmackStore: NgSkysmackStore,
         protected assignmentTypesActions: NgAssignmentTypesActions,
         protected assignmentTypesStore: NgAssignmentTypesStore
     ) {
@@ -22,6 +24,7 @@ export class NgAssignmentsEpics extends RecordEpicsBase<Assignment, number> {
                 relationIdSelector: 'assignmentTypeId',
                 relationSelector: 'assignmentType',
                 rsqlIdSelector: 'id',
+                skysmackStore: this.skysmackStore,
                 store: this.assignmentTypesStore,
                 actions: this.assignmentTypesActions
             })

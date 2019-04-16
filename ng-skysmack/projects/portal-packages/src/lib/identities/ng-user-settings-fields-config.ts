@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { FormRule, Field } from '@skysmack/ng-ui';
 import { LocalObject } from '@skysmack/framework';
 import { UserSettings } from '@skysmack/packages-identities';
-import { NgUserSettingsValidation, LoadedPackage } from '@skysmack/ng-packages';
+import { NgUserSettingsValidation } from '@skysmack/ng-packages';
+import { LoadedPackage } from '@skysmack/ng-redux';
 import { FieldsConfig, StringFieldComponent, CheckboxFieldComponent } from '@skysmack/portal-ui';
 import { FieldProviders } from '@skysmack/portal-ui';
 

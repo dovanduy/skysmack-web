@@ -7,10 +7,10 @@ import { Person } from '@skysmack/packages-persons';
 import { Field } from '@skysmack/ng-ui';
 
 import { StringFieldComponent, HiddenFieldComponent } from '@skysmack/portal-ui';
-import { NgPersonsValidation, LoadedPackage } from '@skysmack/ng-packages';
+import { NgPersonsValidation } from '@skysmack/ng-packages';
 import { DocumentFieldsConfig } from '@skysmack/portal-ui';
 import { FieldProviders } from '@skysmack/portal-ui';
-import { NgFieldStore } from '@skysmack/ng-redux';
+import { NgFieldStore, LoadedPackage } from '@skysmack/ng-redux';
 
 @Injectable({ providedIn: 'root' })
 export class NgPersonsFieldsConfig extends DocumentFieldsConfig<Person, number> {

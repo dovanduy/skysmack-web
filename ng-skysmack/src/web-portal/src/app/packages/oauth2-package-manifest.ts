@@ -1,6 +1,5 @@
-import { PackageManifest } from '@skysmack/ng-ui';
-import { PackageLoader } from '@skysmack/ng-packages';
 import { Oauth2Type } from '@skysmack/packages-oauth2';
+import { PackageLoader, PackageManifest } from '@skysmack/ng-redux';
 
 export class Oauth2PackageManifest extends Oauth2Type implements PackageManifest {
     public icon = 'lock';

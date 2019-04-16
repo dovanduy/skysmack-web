@@ -6,8 +6,8 @@ import { InvoicePayment } from '@skysmack/packages-invoices';
 import { Field } from '@skysmack/ng-ui';
 
 import { DocumentFieldsConfig, StringFieldComponent, HiddenFieldComponent, IntFieldComponent } from '@skysmack/portal-ui';
-import { NgInvoicePaymentsValidation, LoadedPackage } from '@skysmack/ng-packages';
-import { NgFieldStore } from '@skysmack/ng-redux';
+import { NgInvoicePaymentsValidation } from '@skysmack/ng-packages';
+import { NgFieldStore, LoadedPackage } from '@skysmack/ng-redux';
 import { FieldProviders } from '@skysmack/portal-ui';
 
 @Injectable({ providedIn: 'root' })

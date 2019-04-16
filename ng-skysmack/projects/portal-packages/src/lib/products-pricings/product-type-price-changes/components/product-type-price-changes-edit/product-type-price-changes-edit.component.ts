@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductTypePriceChangesAppState, ProductPriceChange } from '@skysmack/packages-products-pricings';
-import { NgProductTypePriceChangesActions, NgProductTypesActions, LoadedPackage } from '@skysmack/ng-packages';
+import { NgProductTypePriceChangesActions, NgProductTypesActions } from '@skysmack/ng-packages';
 import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EditorNavService, RecordFormComponent } from '@skysmack/portal-ui';
@@ -8,6 +8,7 @@ import { NgProductTypePriceChangesStore } from '@skysmack/ng-packages';
 import { PagedQuery, defined } from '@skysmack/framework';
 import { NgProductTypePriceChangesFieldsConfig } from '../../ng-product-type-price-changes-fields-config';
 import { map, take } from 'rxjs/operators';
+import { LoadedPackage } from '@skysmack/ng-redux';
 
 @Component({
   selector: 'ss-product-type-price-changes-edit',

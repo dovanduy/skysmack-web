@@ -6,7 +6,7 @@ import { LocalObject } from '@skysmack/framework';
 import { Field } from '@skysmack/ng-ui';
 
 import { FieldsConfig, PasswordFieldComponent, StringFieldComponent, } from '@skysmack/portal-ui';
-import { LoadedPackage } from '@skysmack/ng-packages';
+import { LoadedPackage } from '@skysmack/ng-redux';
 import { FieldProviders } from '@skysmack/portal-ui';
 import { NgRecoverPasswordValidation } from './ng-recover-password-validation';
 
