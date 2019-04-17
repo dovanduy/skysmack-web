@@ -27,9 +27,27 @@ export class NgAccessPoliciesDashboardMenu extends SidebarMenu {
     public setPrimaryMenu() {
         this.primaryMenuAreas.push(new MenuArea('manage', this.translationPrefix, 2));
 
-        this.primaryMenuItems.push(new MenuItem('permissions', this.translationPrefix + 'PERMISSIONS', 'manage', 1, 'groupAdd'));
-        this.primaryMenuItems.push(new MenuItem('roles', this.translationPrefix + 'ROLES', 'manage', 2, 'groupAdd'));
-        this.primaryMenuItems.push(new MenuItem('rules', this.translationPrefix + 'RULES', 'manage', 3, 'groupAdd'));
+        this.primaryMenuItems.push(new MenuItem({
+            url: 'permissions',
+            displayName: this.translationPrefix + 'PERMISSIONS',
+            area: 'manage',
+            order: 1,
+            icon: 'groupAdd',
+        }));
+        this.primaryMenuItems.push(new MenuItem({
+            url: 'roles',
+            displayName: this.translationPrefix + 'ROLES',
+            area: 'manage',
+            order: 2,
+            icon: 'groupAdd',
+        }));
+        this.primaryMenuItems.push(new MenuItem({
+            url: 'rules',
+            displayName: this.translationPrefix + 'RULES',
+            area: 'manage',
+            order: 3,
+            icon: 'groupAdd',
+        }));
     }
 
     public setSpeedDialMenu() {

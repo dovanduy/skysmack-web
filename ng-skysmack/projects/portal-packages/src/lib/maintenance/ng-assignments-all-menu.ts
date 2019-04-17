@@ -24,13 +24,31 @@ export class NgAssignmentAllMenu extends SidebarMenu {
 
     public setPrimaryMenu() {
         this.primaryMenuAreas.push(new MenuArea('manage', this.translationPrefix, 1));
-        this.primaryMenuItems.push(new MenuItem('assignments', this.translationPrefix + 'SINGLE_ASSIGNMENTS', 'manage', 2, 'groupAdd'));
-        this.primaryMenuItems.push(new MenuItem('assignments/recurring', this.translationPrefix + 'RECURRING_ASSIGNMENTS', 'manage', 3, 'shortText'));
+        this.primaryMenuItems.push(new MenuItem({
+            url: 'assignments',
+            displayName: this.translationPrefix + 'SINGLE_ASSIGNMENTS',
+            area: 'manage',
+            order: 2,
+            icon: 'groupAdd',
+        }));
+        this.primaryMenuItems.push(new MenuItem({
+            url: 'assignments/recurring',
+            displayName: this.translationPrefix + 'RECURRING_ASSIGNMENTS',
+            area: 'manage',
+            order: 3,
+            icon: 'shortText',
+        }));
     }
 
     public setSpeedDialMenu() {
         this.speedDialMenu = [
-            new MenuItem('create', this.translationPrefix + 'CREATE', undefined, 1, 'add'),
+            new MenuItem({
+                url: 'create',
+                displayName: this.translationPrefix + 'CREATE',
+                area: undefined,
+                order: 1,
+                icon: 'add',
+            }),
         ];
     }
 }
