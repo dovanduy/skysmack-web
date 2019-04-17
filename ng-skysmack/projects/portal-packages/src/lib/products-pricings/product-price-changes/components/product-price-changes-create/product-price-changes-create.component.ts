@@ -5,7 +5,6 @@ import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EditorNavService, RecordFormComponent } from '@skysmack/portal-ui';
 import { NgProductPriceChangesStore } from '@skysmack/ng-packages';
-import { PagedQuery } from '@skysmack/framework';
 import { NgProductPriceChangesFieldsConfig } from '../../ng-product-price-changes-fields-config';
 
 @Component({
@@ -29,7 +28,6 @@ export class ProductPriceChangesCreateComponent extends RecordFormComponent<Prod
 
   ngOnInit() {
     super.ngOnInit();
-    this.productsSalesPriceActions.getPaged(this.packagePath, new PagedQuery());
     this.setCreateFields();
   }
 }
