@@ -63,6 +63,7 @@ import { ValidatorsFieldComponent } from './components/field-components/componen
 import { AddRecordFieldComponent } from './components/field-components/components/add-record-field/add-record-field.component';
 import { IsAnyPermissionDirective } from './autentication/in-any-permissions.directive';
 import { InPermissionDirective } from './autentication/in-permissions.directive';
+import { LanguageService } from './language/language.service';
 
 @NgModule({
   imports: [
@@ -212,7 +213,7 @@ import { InPermissionDirective } from './autentication/in-permissions.directive'
   ]
 })
 export class PortalUiModule {
-  constructor() {
+  constructor(public languageService: LanguageService) {
     ReducerRegistry.Instance.register('ui', uiReducer);
     ReducerRegistry.Instance.register('standardSettings', standardSettingsReducer);
     ReducerRegistry.Instance.register('authentication', authenticationReducer);

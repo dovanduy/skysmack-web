@@ -35,11 +35,6 @@ import { NgLodgingSettingsFieldsConfig } from './ng-lodging-settings-fields-conf
   ],
   providers: [
     LanguageService,
-    {
-      provide: TranslateLoader,
-      useFactory: HttpLoaderFactory,
-      deps: [HttpClient]
-    },
     { provide: 'NgLodgingSettingsFieldsConfig', useClass: NgLodgingSettingsFieldsConfig }
   ]
 })

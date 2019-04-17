@@ -33,12 +33,7 @@ import { ProductsType } from '@skysmack/packages-products';
     ...productTypePriceChangesComponents
   ],
   providers: [
-    LanguageService,
-    {
-      provide: TranslateLoader,
-      useFactory: HttpLoaderFactory,
-      deps: [HttpClient]
-    }
+    LanguageService
   ]
 })
 export class ProductsPricingsModule {

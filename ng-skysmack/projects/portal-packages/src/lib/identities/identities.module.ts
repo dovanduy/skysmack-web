@@ -1,11 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 
 import { LanguageService } from '@skysmack/portal-ui';
 import { NgIdentitiesModule } from '@skysmack/ng-packages';
-import { PortalUiModule, HttpLoaderFactory, FieldsModule, SettingsModule } from '@skysmack/portal-ui';
-import { TranslateLoader } from '@ngx-translate/core';
+import { PortalUiModule, FieldsModule, SettingsModule } from '@skysmack/portal-ui';
 import { IdentitiesRoutingModule } from './identities-routing.module';
 import { identitiesComponents } from './components/identities-components';
 import { NgLockoutSettingsFieldsConfig } from './ng-lockout-settings-fields-config';
@@ -32,11 +31,6 @@ import { usersComponents } from './identity-users/components';
   ],
   providers: [
     LanguageService,
-    {
-      provide: TranslateLoader,
-      useFactory: HttpLoaderFactory,
-      deps: [HttpClient]
-    },
     { provide: 'NgLockoutSettingsFieldsConfig', useClass: NgLockoutSettingsFieldsConfig },
     { provide: 'NgUserSettingsFieldsConfig', useClass: NgUserSettingsFieldsConfig },
     { provide: 'NgPasswordSettingsFieldsConfig', useClass: NgPasswordSettingsFieldsConfig },
@@ -44,5 +38,5 @@ import { usersComponents } from './identity-users/components';
   ]
 })
 export class IdentitiesModule {
-  constructor(public languageService: LanguageService) { }
+  constructor() { }
 }

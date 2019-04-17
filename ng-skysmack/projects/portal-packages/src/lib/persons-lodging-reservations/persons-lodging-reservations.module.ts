@@ -23,12 +23,7 @@ import { LodgingReservationsType } from '@skysmack/packages-lodging-reservations
   declarations: [
   ],
   providers: [
-    LanguageService,
-    {
-      provide: TranslateLoader,
-      useFactory: HttpLoaderFactory,
-      deps: [HttpClient]
-    }
+    LanguageService
   ]
 })
 export class PersonsLodgingReservationsModule {
