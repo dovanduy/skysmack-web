@@ -8,8 +8,8 @@ import { NgMenuItemProviders } from '@skysmack/ng-redux';
 
 @Injectable({ providedIn: 'root' })
 export class NgIdentitiesIndexMenu extends SidebarMenu {
-    public menuId = 'identities-index';
-    public translationPrefix = 'IDENTITIES_INDEX.';
+    public menuId = 'identities';
+    public translationPrefix = 'IDENTITIES.INDEX.';
 
     constructor(
         public redux: NgSkysmackStore,
@@ -25,17 +25,60 @@ export class NgIdentitiesIndexMenu extends SidebarMenu {
     public setPrimaryMenu() {
         this.primaryMenuAreas.push(new MenuArea('manage', this.translationPrefix, 1));
         this.primaryMenuAreas.push(new MenuArea('settings', this.translationPrefix, 2));
-        this.primaryMenuItems.push(new MenuItem('roles', this.translationPrefix + 'ROLES', 'manage', 1, 'groupAdd'));
-        this.primaryMenuItems.push(new MenuItem('users', this.translationPrefix + 'USERS', 'manage', 2, 'groupAdd'));
-        this.primaryMenuItems.push(new MenuItem('settings/lockout', this.translationPrefix + 'AVAILABLE_SETTINGS.LOCKOUT', 'settings', 1, 'groupAdd'));
-        this.primaryMenuItems.push(new MenuItem('settings/user', this.translationPrefix + 'AVAILABLE_SETTINGS.USER', 'settings', 2, 'groupAdd'));
-        this.primaryMenuItems.push(new MenuItem('settings/password', this.translationPrefix + 'AVAILABLE_SETTINGS.PASSWORD', 'settings', 2, 'groupAdd'));
-        this.primaryMenuItems.push(new MenuItem('settings/sign-in', this.translationPrefix + 'AVAILABLE_SETTINGS.SIGNIN', 'settings', 2, 'groupAdd'));
+
+        this.primaryMenuItems.push(new MenuItem({
+            url: 'roles',
+            displayName: this.translationPrefix + 'ROLES',
+            area: 'manage',
+            order: 1,
+            icon: 'groupAdd',
+        }));
+        this.primaryMenuItems.push(new MenuItem({
+            url: 'users',
+            displayName: this.translationPrefix + 'USERS',
+            area: 'manage',
+            order: 2,
+            icon: 'groupAdd',
+        }));
+        this.primaryMenuItems.push(new MenuItem({
+            url: 'settings/lockout',
+            displayName: this.translationPrefix + 'AVAILABLE_SETTINGS.LOCKOUT',
+            area: 'settings',
+            order: 1,
+            icon: 'groupAdd',
+        }));
+        this.primaryMenuItems.push(new MenuItem({
+            url: 'settings/user',
+            displayName: this.translationPrefix + 'AVAILABLE_SETTINGS.USER',
+            area: 'settings',
+            order: 2,
+            icon: 'groupAdd',
+        }));
+        this.primaryMenuItems.push(new MenuItem({
+            url: 'settings/password',
+            displayName: this.translationPrefix + 'AVAILABLE_SETTINGS.PASSWORD',
+            area: 'settings',
+            order: 2,
+            icon: 'groupAdd',
+        }));
+        this.primaryMenuItems.push(new MenuItem({
+            url: 'settings/sign-in',
+            displayName: this.translationPrefix + 'AVAILABLE_SETTINGS.SIGNIN',
+            area: 'settings',
+            order: 2,
+            icon: 'groupAdd',
+        }));
     }
 
     public setSpeedDialMenu() {
         this.speedDialMenu = [
-            new MenuItem('create', this.translationPrefix + 'CREATE', undefined, 1, 'add'),
+            new MenuItem({
+                url: 'create',
+                displayName: this.translationPrefix + 'CREATE',
+                area: undefined,
+                order: 1,
+                icon: 'add',
+            }),
         ];
     }
 }

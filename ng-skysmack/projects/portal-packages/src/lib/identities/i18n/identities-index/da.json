@@ -1,14 +1,16 @@
 {
-    "IDENTITIES_INDEX": {
-        "ROLES": "Roller",
-        "USERS": "Brugere",
-        "MANAGE": "Konfigurer",
-        "SETTINGS": "Indstillinger",
-        "AVAILABLE_SETTINGS": {
-            "LOCKOUT": "Lockout",
-            "USER": "Brugere",
-            "PASSWORD": "Kodeord",
-            "SIGNIN": "Log ind"
+    "IDENTITIES":{
+        "INDEX": {
+            "ROLES": "Roller",
+            "USERS": "Brugere",
+            "MANAGE": "Konfigurer",
+            "SETTINGS": "Indstillinger",
+            "AVAILABLE_SETTINGS": {
+                "LOCKOUT": "Lockout",
+                "USER": "Brugere",
+                "PASSWORD": "Kodeord",
+                "SIGNIN": "Log ind"
+            }
         }
     }
 }

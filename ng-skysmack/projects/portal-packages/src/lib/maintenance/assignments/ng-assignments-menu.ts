@@ -27,15 +27,39 @@ export class NgAssignmentsMenu extends SidebarMenu {
         this.primaryMenuAreas.push(new MenuArea('actions', this.translationPrefix, 1));
         this.primaryMenuAreas.push(new MenuArea('manage', this.translationPrefix, 2));
 
-        this.primaryMenuItems.push(new MenuItem('create', this.translationPrefix + 'CREATE', 'actions', 1, 'groupAdd'));
-        this.primaryMenuItems.push(new MenuItem('types', this.translationPrefix + 'TYPES', 'manage', 2, 'description'));
-        this.primaryMenuItems.push(new MenuItem('maintenance-states', this.translationPrefix + 'STATES', 'manage', 3, 'shortText'));
+        this.primaryMenuItems.push(new MenuItem({
+            url: 'create',
+            displayName: this.translationPrefix + 'CREATE',
+            area: 'actions',
+            order: 1,
+            icon: 'groupAdd'
+            }));
+        this.primaryMenuItems.push(new MenuItem({
+            url: 'types',
+            displayName: this.translationPrefix + 'TYPES',
+            area: 'manage',
+            order: 2,
+            icon: 'description',
+        }));
+        this.primaryMenuItems.push(new MenuItem({
+            url: 'maintenance-states',
+            displayName: this.translationPrefix + 'STATES',
+            area: 'manage',
+            order: 3,
+            icon: 'shortText',
+        }));
         this.setBackButton();
     }
 
     public setSpeedDialMenu() {
         this.speedDialMenu = [
-            new MenuItem('create', this.translationPrefix + 'CREATE', undefined, 1, 'add'),
+            new MenuItem({
+                url: 'create',
+                displayName: this.translationPrefix + 'CREATE',
+                area: undefined,
+                order: 1,
+                icon: 'add',
+            }),
         ];
     }
 }

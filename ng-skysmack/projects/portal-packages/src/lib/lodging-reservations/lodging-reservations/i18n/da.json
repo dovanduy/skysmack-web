@@ -51,7 +51,8 @@
             "RESERVATIONS": "Reservationer",
             "ARRIVALS": "Ankomster",
             "DEPARTURES": "Afgange",
-            "ALL": "Alle"
+            "ALL": "Alle",
+            "CONNECTED PACKAGES": "Tilsluttede pakker"
         },
         "QUEUE": {
             "ADDING": "Tilføjer rum reservations {{ id }}",

@@ -26,20 +26,57 @@ export class NgLodgingsReservationsMenu extends SidebarMenu {
         this.primaryMenuAreas.push(new MenuArea('actions', this.translationPrefix, 1));
         this.primaryMenuAreas.push(new MenuArea('reservations', this.translationPrefix, 2));
         this.primaryMenuAreas.push(new MenuArea('manage', this.translationPrefix, 3));
+        this.primaryMenuAreas.push(new MenuArea('connected packages', this.translationPrefix, 4));
 
-        this.primaryMenuItems.push(new MenuItem('/' + this.packagePath + '/create', this.translationPrefix + 'CREATE', 'actions', 1, 'groupAdd'));
+        this.primaryMenuItems.push(new MenuItem({
+            url: '/' + this.packagePath + '/create',
+            displayName: this.translationPrefix + 'CREATE',
+            area: 'actions',
+            order: 1,
+            icon: 'groupAdd',
+        }));
 
-        this.primaryMenuItems.push(new MenuItem('/' + this.packagePath, this.translationPrefix + 'ALL', 'reservations', 1, 'groupAdd'));
-        this.primaryMenuItems.push(new MenuItem('/' + this.packagePath + '/arrivals', this.translationPrefix + 'ARRIVALS', 'reservations', 1, 'groupAdd'));
-        this.primaryMenuItems.push(new MenuItem('/' + this.packagePath + '/stays', this.translationPrefix + 'STAYS', 'reservations', 2, 'groupAdd'));
-        this.primaryMenuItems.push(new MenuItem('/' + this.packagePath + '/departures', this.translationPrefix + 'DEPARTURES', 'reservations', 3, 'groupAdd'));
+        this.primaryMenuItems.push(new MenuItem({
+            url: '/' + this.packagePath,
+            displayName: this.translationPrefix + 'ALL',
+            area: 'reservations',
+            order: 1,
+            icon: 'groupAdd',
+        }));
+        this.primaryMenuItems.push(new MenuItem({
+            url: '/' + this.packagePath + '/arrivals',
+            displayName: this.translationPrefix + 'ARRIVALS',
+            area: 'reservations',
+            order: 1,
+            icon: 'groupAdd',
+        }));
+        this.primaryMenuItems.push(new MenuItem({
+            url: '/' + this.packagePath + '/stays',
+            displayName: this.translationPrefix + 'STAYS',
+            area: 'reservations',
+            order: 2,
+            icon: 'groupAdd',
+        }));
+        this.primaryMenuItems.push(new MenuItem({
+            url: '/' + this.packagePath + '/departures',
+            displayName: this.translationPrefix + 'DEPARTURES',
+            area: 'reservations',
+            order: 3,
+            icon: 'groupAdd',
+        }));
 
         this.setBackButton({ connectedPackage: true });
     }
 
     public setSpeedDialMenu() {
         this.speedDialMenu = [
-            new MenuItem('/' + this.packagePath + '/create', this.translationPrefix + 'CREATE', undefined, 1, 'add'),
+            new MenuItem({
+                url: '/' + this.packagePath + '/create',
+                displayName: this.translationPrefix + 'CREATE',
+                area: undefined,
+                order: 1,
+                icon: 'add',
+            }),
         ];
     }
 }

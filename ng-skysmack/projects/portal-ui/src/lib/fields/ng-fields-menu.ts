@@ -42,13 +42,25 @@ export class NgFieldsMenu extends SidebarMenu {
     }
 
     public addPrimaryMenuItems() {
-        this.primaryMenuItems.push(new MenuItem('create', this.translationPrefix + 'CREATE', 'actions', 1, 'groupAdd'));
+        this.primaryMenuItems.push(new MenuItem({
+            url: 'create',
+            displayName: this.translationPrefix + 'CREATE',
+            area: 'actions',
+            order: 1,
+            icon: 'groupAdd',
+        }));
         this.setBackButton({ customPath: `/${this.packagePath}/${this.additionalPaths.join('/')}` });
     }
 
     public setSpeedDialMenu() {
         this.speedDialMenu = [
-            new MenuItem('create', this.translationPrefix + 'CREATE', undefined, 1, 'add'),
+            new MenuItem({
+                url: 'create',
+                displayName: this.translationPrefix + 'CREATE',
+                area: undefined,
+                order: 1,
+                icon: 'add',
+            }),
         ];
     }
 }

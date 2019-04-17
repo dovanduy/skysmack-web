@@ -25,19 +25,50 @@ export class NgProductsPricingsMenu extends SidebarMenu {
 
     public setPrimaryMenu() {
         this.primaryMenuAreas.push(new MenuArea('manage', this.translationPrefix, 1));
+        this.primaryMenuAreas.push(new MenuArea('connected packages', this.translationPrefix, 2));
 
-        this.primaryMenuItems.push(new MenuItem('sales-prices', this.translationPrefix + 'SALES_PRICES', 'manage', 2, 'groupAdd'));
-        this.primaryMenuItems.push(new MenuItem('types/sales-prices', this.translationPrefix + 'SALES_PRICES_TYPES', 'manage', 3, 'shortText'));
+        this.primaryMenuItems.push(new MenuItem({
+            url: 'sales-prices',
+            displayName: this.translationPrefix + 'SALES_PRICES',
+            area: 'manage',
+            order: 2,
+            icon: 'groupAdd',
+        }));
+        this.primaryMenuItems.push(new MenuItem({
+            url: 'types/sales-prices',
+            displayName: this.translationPrefix + 'SALES_PRICES_TYPES',
+            area: 'manage',
+            order: 3,
+            icon: 'shortText',
+        }));
 
-        this.primaryMenuItems.push(new MenuItem('price-changes', this.translationPrefix + 'PRICE_CHANGES', 'manage', 2, 'groupAdd'));
-        this.primaryMenuItems.push(new MenuItem('types/price-changes', this.translationPrefix + 'PRICE_TYPE_CHANGES', 'manage', 2, 'groupAdd'));
+        this.primaryMenuItems.push(new MenuItem({
+            url: 'price-changes',
+            displayName: this.translationPrefix + 'PRICE_CHANGES',
+            area: 'manage',
+            order: 2,
+            icon: 'groupAdd',
+        }));
+        this.primaryMenuItems.push(new MenuItem({
+            url: 'types/price-changes',
+            displayName: this.translationPrefix + 'PRICE_TYPE_CHANGES',
+            area: 'manage',
+            order: 2,
+            icon: 'groupAdd',
+        }));
 
         this.setBackButton({ connectedPackage: true });
     }
 
     public setSpeedDialMenu() {
         this.speedDialMenu = [
-            new MenuItem('create', this.translationPrefix + 'CREATE', undefined, 1, 'add'),
+            new MenuItem({
+                url: 'create',
+                displayName: this.translationPrefix + 'CREATE',
+                area: undefined,
+                order: 1,
+                icon: 'add',
+            }),
         ];
     }
 }

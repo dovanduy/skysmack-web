@@ -19,7 +19,13 @@ export class NgProductsPricingsMenuItemProvider extends MenuItemProvider {
                 safeHasValue(),
                 map((currentTenant: Skysmack) => currentTenant.packages
                     .filter((_package: Package) => _package.type === ProductsPricingsType.id && _package.dependencies.find(dep => dep === packagePath))
-                    .map(_package => new MenuItem('/' + _package.path, _package.name, 'manage', 20, this.icon))
+                    .map(_package => new MenuItem({
+                        url: '/' + _package.path,
+                        displayName: _package.name,
+                        area: 'connected packages',
+                        order: 20,
+                        icon: this.icon,
+                    }))
                 )
             );
         } else {
