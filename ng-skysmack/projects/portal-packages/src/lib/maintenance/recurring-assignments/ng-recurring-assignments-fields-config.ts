@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
-import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
+import { LocalObject, LocalObjectStatus, PagedQuery } from '@skysmack/framework';
 import { RecurringAssignment } from '@skysmack/packages-maintenance';
 import { NgRecurringAssignmentsValidation, NgAssignmentTypesStore } from '@skysmack/ng-packages';
 import { FormRule, SelectField, Field } from '@skysmack/ng-ui';
 import { FieldsConfig, SelectFieldComponent, HiddenFieldComponent, DateFieldComponent } from '@skysmack/portal-ui';
 import { FieldProviders } from '@skysmack/portal-ui';
 import { LoadedPackage } from '@skysmack/ng-redux';
+import { NgAssignmentTypesActions } from '../../../../../ng-packages/src/lib/maintenance/assignment-types/redux/ng-assignment-types-actions';
 
 @Injectable({ providedIn: 'root' })
 export class NgRecurringAssignmentsFieldsConfig extends FieldsConfig<RecurringAssignment, number> {
@@ -16,7 +17,8 @@ export class NgRecurringAssignmentsFieldsConfig extends FieldsConfig<RecurringAs
 
     constructor(
         public assignmentTypeStore: NgAssignmentTypesStore,
-        public fieldProviders: FieldProviders
+        public fieldProviders: FieldProviders,
+        public assignmentTypesActions: NgAssignmentTypesActions
     ) {
         super(fieldProviders);
     }
@@ -28,7 +30,11 @@ export class NgRecurringAssignmentsFieldsConfig extends FieldsConfig<RecurringAs
                 value: entity ? entity.object.assignmentTypeId : undefined,
                 key: 'assignmentTypeId',
                 label: 'Assignment Type',
+                displayKey: 'assignmentType',
+                displaySubKey: 'object.description',
                 optionsData$: this.assignmentTypeStore.get(loadedPackage._package.path),
+                getDependencies: () => { this.assignmentTypesActions.getPaged(loadedPackage._package.path, new PagedQuery()); },
+
                 displayNameSelector: 'object.description',
                 validators: [Validators.required],
                 order: 1,

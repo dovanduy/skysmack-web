@@ -4,7 +4,6 @@ import { RecurringAssignment, RecurringAssignmentsAppState } from '@skysmack/pac
 import { RecordFormComponent, EditorNavService } from '@skysmack/portal-ui';
 import { NgRecurringAssignmentsActions, NgSkysmackStore, NgRecurringAssignmentsStore, NgAssignmentTypesActions } from '@skysmack/ng-packages';
 import { NgRecurringAssignmentsFieldsConfig } from '../../ng-recurring-assignments-fields-config';
-import { PagedQuery } from '@skysmack/framework';
 
 
 @Component({
@@ -28,7 +27,6 @@ export class RecurringAssignmentsEditComponent extends RecordFormComponent<Recur
 
   ngOnInit() {
     super.ngOnInit();
-    this.assignmentTypeActions.getPaged(this.packagePath, new PagedQuery());
     this.setEditFields();
   }
 }
