@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
-import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
+import { LocalObject, LocalObjectStatus, PagedQuery } from '@skysmack/framework';
 import { ProductsSalesPrice } from '@skysmack/packages-products-pricings';
 import { FormRule, SelectField, Field } from '@skysmack/ng-ui';
-import { NgProductsSalesPriceValidation, NgProductsStore } from '@skysmack/ng-packages';
+import { NgProductsSalesPriceValidation, NgProductsStore, NgProductTypesActions, NgProductsActions } from '@skysmack/ng-packages';
 import { FieldsConfig, SelectFieldComponent, HiddenFieldComponent, DecimalFieldComponent } from '@skysmack/portal-ui';
 import { FieldProviders } from '@skysmack/portal-ui';
 import { LoadedPackage } from '@skysmack/ng-redux';
@@ -16,7 +16,9 @@ export class NgProductsSalesPriceFieldsConfig extends FieldsConfig<ProductsSales
 
     constructor(
         public productsStore: NgProductsStore,
-        public fieldProviders: FieldProviders
+        public fieldProviders: FieldProviders,
+        public productTypeActions: NgProductTypesActions,
+        public productActions: NgProductsActions,
     ) { super(fieldProviders); }
 
     protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<ProductsSalesPrice, number>): Field[] {
@@ -43,8 +45,11 @@ export class NgProductsSalesPriceFieldsConfig extends FieldsConfig<ProductsSales
                 component: SelectFieldComponent,
                 value: entity ? entity.object.recordId : undefined,
                 key: 'recordId',
+                displayKey: 'products',
+                displaySubKey: 'object.name',
                 validators: [Validators.required],
                 optionsData$: this.productsStore.get(loadedPackage._package.dependencies[0]),
+                getDependencies: () => { this.productActions.getPaged(loadedPackage._package.dependencies[0], new PagedQuery()); },
                 displayNameSelector: 'object.name',
                 order: 2,
                 showColumn: true

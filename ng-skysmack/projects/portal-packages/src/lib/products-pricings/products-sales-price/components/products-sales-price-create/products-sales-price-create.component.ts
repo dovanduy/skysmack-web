@@ -5,11 +5,8 @@ import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EditorNavService, RecordFormComponent } from '@skysmack/portal-ui';
 import { NgProductsSalesPriceStore } from '@skysmack/ng-packages';
-import { map, take } from 'rxjs/operators';
-import { PagedQuery, defined } from '@skysmack/framework';
 import { NgProductsStore } from '@skysmack/ng-packages';
 import { NgProductsSalesPriceFieldsConfig } from '../../ng-products-sales-price-fields-config';
-import { LoadedPackage } from '@skysmack/ng-redux';
 
 @Component({
   selector: 'ss-products-sales-price-create',
@@ -33,15 +30,6 @@ export class ProductsSalesPriceCreateComponent extends RecordFormComponent<Produ
 
   ngOnInit() {
     super.ngOnInit();
-    this.getDeps();
     this.setCreateFields();
-  }
-
-  public getDeps() {
-    this.loadedPackage$.pipe(
-      defined(),
-      map((loadedPackage: LoadedPackage) => this.productsActions.getPaged(loadedPackage._package.dependencies[0], new PagedQuery())),
-      take(1)
-    ).subscribe();
   }
 }
