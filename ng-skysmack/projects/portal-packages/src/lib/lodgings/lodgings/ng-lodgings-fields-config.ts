@@ -1,11 +1,12 @@
 import { Lodging } from '@skysmack/packages-lodgings';
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
-import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
+import { LocalObject, LocalObjectStatus, PagedQuery } from '@skysmack/framework';
 import { FieldsConfig, FieldProviders, SelectFieldComponent, CheckboxFieldComponent, StringFieldComponent, HiddenFieldComponent } from '@skysmack/portal-ui';
 import { NgLodgingsValidation, NgLodgingTypesStore } from '@skysmack/ng-packages';
 import { LoadedPackage } from '@skysmack/ng-redux';
 import { FormRule, Field, SelectField } from '@skysmack/ng-ui';
+import { NgLodgingTypesActions } from '../../../../../ng-packages/src/lib/lodgings/lodging-types/redux/ng-lodging-types-actions';
 
 @Injectable({ providedIn: 'root' })
 export class NgLodgingsFieldsConfig extends FieldsConfig<Lodging, number> {
@@ -15,7 +16,8 @@ export class NgLodgingsFieldsConfig extends FieldsConfig<Lodging, number> {
 
     constructor(
         public lodgingTypeStore: NgLodgingTypesStore,
-        public fieldProvideres: FieldProviders
+        public fieldProvideres: FieldProviders,
+        public lodgingTypesActions: NgLodgingTypesActions
     ) {
         super(fieldProvideres);
     }
@@ -27,8 +29,11 @@ export class NgLodgingsFieldsConfig extends FieldsConfig<Lodging, number> {
                 value: entity && entity.object ? entity.object.lodgingTypeId : undefined,
                 label: 'Lodging type',
                 key: 'lodgingTypeId',
+                displayKey: 'lodgingTypes',
+                displaySubKey: 'object.description',
                 validators: [Validators.required],
                 optionsData$: this.lodgingTypeStore.get(loadedPackage._package.path),
+                getDependencies: () => { this.lodgingTypesActions.getPaged(loadedPackage._package.path, new PagedQuery()); },
                 displayNameSelector: 'name',
                 disabled: entity && entity.object ? true : false,
                 order: 1,

@@ -8,17 +8,35 @@ import { Observable } from 'rxjs';
 import { ReduxAction, GetIntervalPayload, SelectedIdsMeta } from '@skysmack/redux';
 import { StrIndex, HttpErrorResponse } from '@skysmack/framework';
 import { switchMap } from 'rxjs/operators';
+import { NgLodgingTypesStore } from '../../lodging-types/redux/ng-lodgings-types-store';
+import { NgLodgingTypesActions } from '../../lodging-types/redux/ng-lodging-types-actions';
+import { NgSkysmackStore } from '../../../skysmack-core/skysmack/redux/ng-skysmack-store';
+import { getReadDependencies } from '@skysmack/ng-redux';
 
 
 @Injectable({ providedIn: 'root' })
 export class NgLodgingsEpics extends RecordEpicsBase<Lodging, number> {
     constructor(
         protected requests: NgLodgingsRequests,
-        protected notifications: NgLodgingsNotifications
+        protected notifications: NgLodgingsNotifications,
+        protected lodgingTypesStore: NgLodgingTypesStore,
+        protected lodgingTypesActions: NgLodgingTypesActions,
+        protected skysmackStore: NgSkysmackStore
     ) {
         super(requests, LODGINGS_REDUX_KEY, notifications);
         this.epics = this.epics.concat([
             this.getAvailableLodgingsEpic,
+        ]);
+        this.epics = this.epics.concat([
+            ...getReadDependencies({
+                prefix: LODGINGS_REDUX_KEY,
+                relationIdSelector: 'lodgingTypeId',
+                relationSelector: 'lodgingType',
+                rsqlIdSelector: 'id',
+                skysmackStore: this.skysmackStore,
+                store: this.lodgingTypesStore,
+                actions: this.lodgingTypesActions
+            })
         ]);
     }
 

@@ -7,7 +7,6 @@ import { LodgingsAppState, Lodging } from '@skysmack/packages-lodgings';
 import { NgLodgingsActions } from '@skysmack/ng-packages';
 import { NgLodgingsStore } from '@skysmack/ng-packages';
 import { NgLodgingTypesActions } from '@skysmack/ng-packages';
-import { PagedQuery } from '@skysmack/framework';
 import { NgFieldActions } from '@skysmack/ng-redux';
 import { NgLodgingsFieldsConfig } from '../../ng-lodgings-fields-config';
 
@@ -33,7 +32,6 @@ export class LodgingsCreateComponent extends DocumentRecordFormComponent<Lodging
 
   ngOnInit() {
     super.ngOnInit();
-    this.lodgingTypeActions.getPaged(this.packagePath, new PagedQuery());
     this.setCreateFields();
   }
 }
