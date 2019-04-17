@@ -64,15 +64,33 @@ export abstract class SidebarMenu implements OnDestroy {
 
     protected setBackButton(options?: BackButtonOptions) {
         if (!options) {
-            this.primaryMenuItems.push(new MenuItem('/' + this.packagePath, 'UI.MISC.BACK', 'manage', 2, 'arrowBack'));
+            this.primaryMenuItems.push(new MenuItem({
+                url: '/' + this.packagePath,
+                displayName: 'UI.MISC.BACK',
+                area: 'manage',
+                order: 2,
+                icon: 'arrowBack',
+            }));
         } else if (options.connectedPackage) {
             this.store.getCurrentPackage(this.packagePath).pipe(
-                map(loadedPackage => this.primaryMenuItems.push(new MenuItem('/' + loadedPackage._package.dependencies[0], loadedPackage._package.dependencies[0], 'connected packages', 2, 'arrowBack'))),
+                map(loadedPackage => this.primaryMenuItems.push(new MenuItem({
+                    url: '/' + loadedPackage._package.dependencies[0],
+                    displayName: loadedPackage._package.dependencies[0],
+                    area: 'connected packages',
+                    order: 2,
+                    icon: 'arrowBack',
+                }))),
                 take(1)
             ).subscribe();
         } else {
             const path = options.customPath ? options.customPath : '/' + this.packagePath;
-            this.primaryMenuItems.push(new MenuItem(path, 'UI.MISC.BACK', 'manage', 2, 'arrowBack'));
+            this.primaryMenuItems.push(new MenuItem({
+                url: path,
+                displayName: 'UI.MISC.BACK',
+                area: 'manage',
+                order: 2,
+                icon: 'arrowBack',
+            }));
         }
     }
 
