@@ -97,6 +97,7 @@ export class LodgingsReservationsIndexComponent extends RecordIndexComponent<Lod
             const reservations: LocalObject<LodgingReservation, number>[] = values[0];
             const lodgings = values[1];
             const lodgingTypes = values[2];
+
             if (!reservations || reservations.length === 0) {
               return [] as LocalObject<ExtendedReservation, number>[];
             } else {
@@ -162,3 +163,4 @@ export class LodgingsReservationsIndexComponent extends RecordIndexComponent<Lod
     _this.actions.undoNoShow(_this.packagePath, entity.object.reservation, [entity.object.id]);
   }
 }
+
