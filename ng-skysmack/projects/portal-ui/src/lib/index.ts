@@ -12,4 +12,4 @@ export * from './pipes/index';
 
 export * from './portal-ui.module';
 export * from './material.module';
-export * from './portal-ui.helper';
+export * from './http-loader-factory';

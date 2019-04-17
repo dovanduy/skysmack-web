@@ -41,7 +41,7 @@ import { standardSettingsReducer } from './redux/settings';
 
 import { PackageDependenciesFieldComponent } from './components/field-components/components/package-dependencies-field/package-dependencies-field.component';
 import { QueueComponent } from './components/common/queue/queue.component';
-import { HttpLoaderFactory } from './portal-ui.helper';
+import { HttpLoaderFactory } from './http-loader-factory';
 import { ShowEntityActionDirective } from './directives/show-entity-action.directive';
 import { IsAuthenticatedDirective } from './autentication/is-authenticated.directive';
 import { IsAnonymousDirective } from './autentication/is-anonymous.directive';
