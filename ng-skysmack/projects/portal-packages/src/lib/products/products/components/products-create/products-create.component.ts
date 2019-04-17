@@ -35,7 +35,6 @@ export class ProductsCreateComponent extends DocumentRecordFormComponent<Product
 
   ngOnInit() {
     super.ngOnInit();
-    this.productTypeActions.getPaged(this.packagePath, new PagedQuery());
     this.setCreateFields();
   }
 }

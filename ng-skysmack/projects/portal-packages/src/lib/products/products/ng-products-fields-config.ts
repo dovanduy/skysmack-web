@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { FormRule } from '@skysmack/ng-ui';
-import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
+import { LocalObject, LocalObjectStatus, PagedQuery } from '@skysmack/framework';
 import { Product } from '@skysmack/packages-products';
 import { Field } from '@skysmack/ng-ui';
 
 import { SelectField } from '@skysmack/ng-ui';
 import { FieldsConfig, StringFieldComponent, SelectFieldComponent, HiddenFieldComponent } from '@skysmack/portal-ui';
-import { NgProductsValidation, NgProductTypesStore } from '@skysmack/ng-packages';
+import { NgProductsValidation, NgProductTypesStore, NgProductTypesActions } from '@skysmack/ng-packages';
 import { FieldProviders } from '@skysmack/portal-ui';
 import { LoadedPackage } from '@skysmack/ng-redux';
 
@@ -20,7 +20,8 @@ export class NgProductsFieldsConfig extends FieldsConfig<Product, number> {
 
     constructor(
         public productTypeStore: NgProductTypesStore,
-        public fieldProviders: FieldProviders
+        public fieldProviders: FieldProviders,
+        public productTypesActions: NgProductTypesActions
     ) {
         super(fieldProviders);
     }
@@ -41,7 +42,10 @@ export class NgProductsFieldsConfig extends FieldsConfig<Product, number> {
                 value: entity ? entity.object.productTypeId : undefined,
                 key: 'productTypeId',
                 label: 'Product type',
+                displayKey: 'productType',
+                displaySubKey: 'object.name',
                 optionsData$: this.productTypeStore.get(loadedPackage._package.path),
+                getDependencies: () => { this.productTypesActions.getPaged(loadedPackage._package.path, new PagedQuery()); },
                 extraOptions: [{
                     value: null,
                     displayName: 'None'

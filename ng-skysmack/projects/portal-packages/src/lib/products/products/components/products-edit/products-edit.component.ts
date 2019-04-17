@@ -36,7 +36,6 @@ export class ProductsEditComponent extends DocumentRecordFormComponent<ProductsA
 
   ngOnInit() {
     super.ngOnInit();
-    this.productTypeActions.getPaged(this.packagePath, new PagedQuery());
     this.setEditFields();
   }
 }
