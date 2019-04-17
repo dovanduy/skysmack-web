@@ -29,7 +29,8 @@
             "ITEM": "Item",
             "MANAGE": "Manage",
             "ACTIONS": "Actions",
-            "TYPES": "Types"
+            "TYPES": "Types",
+            "CONNECTED PACKAGES": "Connected packages"
         },
         "FIELDS": {
             "CREATE": {

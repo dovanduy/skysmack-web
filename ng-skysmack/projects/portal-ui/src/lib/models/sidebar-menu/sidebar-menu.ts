@@ -67,7 +67,7 @@ export abstract class SidebarMenu implements OnDestroy {
             this.primaryMenuItems.push(new MenuItem('/' + this.packagePath, 'UI.MISC.BACK', 'manage', 2, 'arrowBack'));
         } else if (options.connectedPackage) {
             this.store.getCurrentPackage(this.packagePath).pipe(
-                map(loadedPackage => this.primaryMenuItems.push(new MenuItem('/' + loadedPackage._package.dependencies[0], loadedPackage._package.dependencies[0], 'manage', 2, 'arrowBack'))),
+                map(loadedPackage => this.primaryMenuItems.push(new MenuItem('/' + loadedPackage._package.dependencies[0], loadedPackage._package.dependencies[0], 'connected packages', 2, 'arrowBack'))),
                 take(1)
             ).subscribe();
         } else {

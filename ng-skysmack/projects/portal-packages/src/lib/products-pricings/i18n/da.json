@@ -5,7 +5,8 @@
             "SALES_PRICES": "Produkt salgs priser",
             "SALES_PRICES_TYPES": "Produkt typer salgs priser",
             "PRICE_CHANGES": "Produkt pris ændringer",
-            "PRICE_TYPE_CHANGES": "Produkt type pris ændringer"
+            "PRICE_TYPE_CHANGES": "Produkt type pris ændringer",
+            "CONNECTED PACKAGES": "Tilsluttede pakker"
         }
     }
 }

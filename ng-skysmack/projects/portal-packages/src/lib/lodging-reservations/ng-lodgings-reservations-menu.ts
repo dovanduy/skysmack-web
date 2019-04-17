@@ -26,6 +26,7 @@ export class NgLodgingsReservationsMenu extends SidebarMenu {
         this.primaryMenuAreas.push(new MenuArea('actions', this.translationPrefix, 1));
         this.primaryMenuAreas.push(new MenuArea('reservations', this.translationPrefix, 2));
         this.primaryMenuAreas.push(new MenuArea('manage', this.translationPrefix, 3));
+        this.primaryMenuAreas.push(new MenuArea('connected packages', this.translationPrefix, 4));
 
         this.primaryMenuItems.push(new MenuItem('/' + this.packagePath + '/create', this.translationPrefix + 'CREATE', 'actions', 1, 'groupAdd'));
 

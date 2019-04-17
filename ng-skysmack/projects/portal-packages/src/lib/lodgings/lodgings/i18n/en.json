@@ -53,7 +53,8 @@
             "MANAGE": "Manage",
             "FIELDS": "Fields",
             "TYPES": "Types",
-            "BACK": "Back"
+            "BACK": "Back",
+            "CONNECTED PACKAGES": "Connected packages"
         },
         "QUEUE": {
             "ADDING": "Adding {{ name }}",

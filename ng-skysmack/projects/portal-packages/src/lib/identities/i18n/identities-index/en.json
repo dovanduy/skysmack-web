@@ -1,14 +1,16 @@
 {
-    "IDENTITIES_INDEX": {
-        "ROLES": "Roles",
-        "USERS": "Users",
-        "MANAGE": "Manage",
-        "SETTINGS": "Settings",
-        "AVAILABLE_SETTINGS": {
-            "LOCKOUT": "Lockout",
-            "USER": "User",
-            "PASSWORD": "Password",
-            "SIGNIN": "Sign in"
+    "IDENTITIES": {
+        "INDEX": {
+            "ROLES": "Roles",
+            "USERS": "Users",
+            "MANAGE": "Manage",
+            "SETTINGS": "Settings",
+            "AVAILABLE_SETTINGS": {
+                "LOCKOUT": "Lockout",
+                "USER": "User",
+                "PASSWORD": "Password",
+                "SIGNIN": "Sign in"
+            }
         }
     }
 }

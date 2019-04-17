@@ -8,8 +8,8 @@ import { NgMenuItemProviders } from '@skysmack/ng-redux';
 
 @Injectable({ providedIn: 'root' })
 export class NgIdentitiesIndexMenu extends SidebarMenu {
-    public menuId = 'identities-index';
-    public translationPrefix = 'IDENTITIES_INDEX.';
+    public menuId = 'identities';
+    public translationPrefix = 'IDENTITIES.INDEX.';
 
     constructor(
         public redux: NgSkysmackStore,
@@ -25,6 +25,7 @@ export class NgIdentitiesIndexMenu extends SidebarMenu {
     public setPrimaryMenu() {
         this.primaryMenuAreas.push(new MenuArea('manage', this.translationPrefix, 1));
         this.primaryMenuAreas.push(new MenuArea('settings', this.translationPrefix, 2));
+
         this.primaryMenuItems.push(new MenuItem('roles', this.translationPrefix + 'ROLES', 'manage', 1, 'groupAdd'));
         this.primaryMenuItems.push(new MenuItem('users', this.translationPrefix + 'USERS', 'manage', 2, 'groupAdd'));
         this.primaryMenuItems.push(new MenuItem('settings/lockout', this.translationPrefix + 'AVAILABLE_SETTINGS.LOCKOUT', 'settings', 1, 'groupAdd'));

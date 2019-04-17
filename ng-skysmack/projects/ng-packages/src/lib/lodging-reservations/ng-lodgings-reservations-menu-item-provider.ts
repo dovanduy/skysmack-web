@@ -19,7 +19,7 @@ export class NgLodgingsReservationsMenuItemProvider extends MenuItemProvider {
                 safeHasValue(),
                 map((currentTenant: Skysmack) => currentTenant.packages
                     .filter((_package: Package) => _package.type === LodgingReservationsType.id && _package.dependencies.find(dep => dep === packagePath))
-                    .map(_package => new MenuItem('/' + _package.path, _package.name, 'manage', 20, this.icon))
+                    .map(_package => new MenuItem('/' + _package.path, _package.name, 'connected packages', 20, this.icon))
                 )
             );
         } else {
