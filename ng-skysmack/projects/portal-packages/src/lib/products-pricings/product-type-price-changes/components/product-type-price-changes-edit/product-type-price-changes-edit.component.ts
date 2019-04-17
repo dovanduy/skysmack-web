@@ -5,10 +5,7 @@ import { NgSkysmackStore } from '@skysmack/ng-packages';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EditorNavService, RecordFormComponent } from '@skysmack/portal-ui';
 import { NgProductTypePriceChangesStore } from '@skysmack/ng-packages';
-import { PagedQuery, defined } from '@skysmack/framework';
 import { NgProductTypePriceChangesFieldsConfig } from '../../ng-product-type-price-changes-fields-config';
-import { map, take } from 'rxjs/operators';
-import { LoadedPackage } from '@skysmack/ng-redux';
 
 @Component({
   selector: 'ss-product-type-price-changes-edit',
@@ -32,17 +29,6 @@ export class ProductTypePriceChangesEditComponent extends RecordFormComponent<Pr
 
   ngOnInit() {
     super.ngOnInit();
-    this.getDeps();
     this.setEditFields();
-  }
-
-  public getDeps() {
-    this.loadedPackage$.pipe(
-      defined(),
-      map((loadedPackage: LoadedPackage) => {
-        this.productTypesActions.getPaged(loadedPackage._package.dependencies[0], new PagedQuery());
-      }),
-      take(1)
-    ).subscribe();
   }
 }
