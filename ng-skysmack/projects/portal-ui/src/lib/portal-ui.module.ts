@@ -41,7 +41,7 @@ import { standardSettingsReducer } from './redux/settings';
 
 import { PackageDependenciesFieldComponent } from './components/field-components/components/package-dependencies-field/package-dependencies-field.component';
 import { QueueComponent } from './components/common/queue/queue.component';
-import { HttpLoaderFactory } from './portal-ui.helper';
+import { HttpLoaderFactory } from './http-loader-factory';
 import { ShowEntityActionDirective } from './directives/show-entity-action.directive';
 import { IsAuthenticatedDirective } from './autentication/is-authenticated.directive';
 import { IsAnonymousDirective } from './autentication/is-anonymous.directive';
@@ -63,6 +63,7 @@ import { ValidatorsFieldComponent } from './components/field-components/componen
 import { AddRecordFieldComponent } from './components/field-components/components/add-record-field/add-record-field.component';
 import { IsAnyPermissionDirective } from './autentication/in-any-permissions.directive';
 import { InPermissionDirective } from './autentication/in-permissions.directive';
+import { LanguageService } from './language/language.service';
 
 @NgModule({
   imports: [
@@ -212,7 +213,7 @@ import { InPermissionDirective } from './autentication/in-permissions.directive'
   ]
 })
 export class PortalUiModule {
-  constructor() {
+  constructor(public languageService: LanguageService) {
     ReducerRegistry.Instance.register('ui', uiReducer);
     ReducerRegistry.Instance.register('standardSettings', standardSettingsReducer);
     ReducerRegistry.Instance.register('authentication', authenticationReducer);

@@ -1,10 +1,12 @@
 import { NgRedux } from '@angular-redux/store';
-import { Observable } from 'rxjs';
+import { Observable, from } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { HttpErrorResponse, CurrentUser } from '@skysmack/framework';
-import * as _moment from 'moment';
 import { Injectable } from '@angular/core';
 import { AuthenticationStore, AuthenticationAppState } from '@skysmack/redux';
+
+import * as localForage from 'localforage';
+import * as _moment from 'moment';
 const moment = _moment;
 
 @Injectable({ providedIn: 'root' })
@@ -35,6 +37,6 @@ export class NgOauth2Store implements AuthenticationStore {
     }
 
     public getCurrentUser(): Observable<CurrentUser> {
-        return this.store.select((state: AuthenticationAppState) => state.authentication.currentUser);
+        return from(localForage.getItem<CurrentUser>('currentUser'));
     }
 }

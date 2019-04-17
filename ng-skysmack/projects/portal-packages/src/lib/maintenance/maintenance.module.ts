@@ -1,9 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { TranslateLoader } from '@ngx-translate/core';
 import { NgAssignmentsModule } from '@skysmack/ng-packages';
-import { PortalUiModule, HttpLoaderFactory, LanguageService } from '@skysmack/portal-ui';
+import { PortalUiModule, LanguageService } from '@skysmack/portal-ui';
 import { assignmentTypesComponents } from './assignment-types/components/assignment-types-components';
 import { assignmentsComponents } from './assignments/components/assignments-components';
 import { MaintenanceRoutingModule } from './maintenance-routing.module';
@@ -27,14 +26,9 @@ import { assignmentsAllComponents } from './components/assignments-all-component
     ...maintenanceStatesComponents,
   ],
   providers: [
-    LanguageService,
-    {
-      provide: TranslateLoader,
-      useFactory: HttpLoaderFactory,
-      deps: [HttpClient]
-    }
+    LanguageService
   ]
 })
 export class MaintenanceModule {
-  constructor(public languageService: LanguageService) { }
+  constructor() { }
 }

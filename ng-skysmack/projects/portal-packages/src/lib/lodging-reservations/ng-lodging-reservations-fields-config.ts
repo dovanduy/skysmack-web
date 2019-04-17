@@ -1,12 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
-import { LocalObject, LocalObjectStatus, DisplayColumn, defined, hasValue, PagedQuery } from '@skysmack/framework';
+import { LocalObject, LocalObjectStatus, PagedQuery } from '@skysmack/framework';
 import { LodgingReservation } from '@skysmack/packages-lodging-reservations';
 import { FormRule, SelectField, Field, SelectFieldOption } from '@skysmack/ng-ui';
 import { NgLodgingReservationsValidation, NgLodgingTypesStore, NgLodgingsStore, NgLodgingsActions, NgLodgingTypesActions } from '@skysmack/ng-packages';
 import { FieldsConfig, SelectFieldComponent, HiddenFieldComponent, IntFieldComponent, DateFieldComponent } from '@skysmack/portal-ui';
 import { FieldProviders } from '@skysmack/portal-ui';
-import { map, take } from 'rxjs/operators';
 import { LoadedPackage } from '@skysmack/ng-redux';
 
 @Injectable({ providedIn: 'root' })
@@ -52,7 +51,7 @@ export class NgLodgingReservationsFieldsConfig extends FieldsConfig<LodgingReser
                     value: null,
                     displayName: 'None'
                 }] as SelectFieldOption[],
-                getDependencies: () => { this.lodgingsActions.getPaged(depPackagePath, new PagedQuery()); },
+                getDependencies: () => { console.log('Am I getting getted?'); this.lodgingsActions.getPaged(depPackagePath, new PagedQuery()); },
                 order: 2,
                 showColumn: true
             }),

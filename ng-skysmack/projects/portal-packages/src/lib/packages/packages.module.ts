@@ -2,10 +2,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { PackagesRoutingModule } from './packages-routing.module';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
-import { PortalUiModule, HttpLoaderFactory } from '@skysmack/portal-ui';
+import { HttpClientModule } from '@angular/common/http';
+import { PortalUiModule } from '@skysmack/portal-ui';
 import { packagesComponents } from './components/packages-components';
-import { TranslateLoader } from '@ngx-translate/core';
 import { LanguageService } from '@skysmack/portal-ui';
 import { NgPackagesModule } from '@skysmack/ng-packages';
 
@@ -37,14 +36,9 @@ import { NgPackagesModule } from '@skysmack/ng-packages';
     ...packagesComponents
   ],
   providers: [
-    LanguageService,
-    {
-      provide: TranslateLoader,
-      useFactory: HttpLoaderFactory,
-      deps: [HttpClient]
-    }
+    LanguageService
   ]
 })
 export class PackagesModule {
-  constructor(public languageService: LanguageService) { }
+  constructor() { }
 }

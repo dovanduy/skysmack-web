@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { PortalUiModule, HttpLoaderFactory, FieldsModule } from '@skysmack/portal-ui';
-import { TranslateLoader } from '@ngx-translate/core';
 import { LanguageService } from '@skysmack/portal-ui';
 import { AccessPoliciesRoutingModule } from './access-policies-routing.module';
 import { NgAccessPoliciesModule } from '@skysmack/ng-packages';
@@ -32,14 +31,9 @@ import { PackagesModule } from '../../packages';
     ...accessPoliciesComponents
   ],
   providers: [
-    LanguageService,
-    {
-      provide: TranslateLoader,
-      useFactory: HttpLoaderFactory,
-      deps: [HttpClient]
-    }
+    LanguageService
   ]
 })
 export class AccessPoliciesModule {
-  constructor(public languageService: LanguageService) { }
+  constructor() { }
 }
