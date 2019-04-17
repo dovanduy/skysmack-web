@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 import { NgAssignmentsRequests } from './ng-assignments-requests';
 import { NgAssignmentTypesActions } from '../../assignment-types/redux/ng-assignment-types-actions';
 import { NgAssignmentTypesStore } from '../../assignment-types/redux/ng-assignment-types-store';
-import { getCrudDependencies } from '@skysmack/ng-redux';
+import { getReadDependencies } from '@skysmack/ng-redux';
 import { NgAssignmentsNotifications } from '../ng-assignments-notifications';
 import { NgSkysmackStore } from '../../../skysmack-core/skysmack/redux/ng-skysmack-store';
 
@@ -19,7 +19,7 @@ export class NgAssignmentsEpics extends RecordEpicsBase<Assignment, number> {
     ) {
         super(requests, ASSIGNMENTS_REDUX_KEY, notifications);
         this.epics = this.epics.concat([
-            ...getCrudDependencies({
+            ...getReadDependencies({
                 prefix: ASSIGNMENTS_REDUX_KEY,
                 relationIdSelector: 'assignmentTypeId',
                 relationSelector: 'assignmentType',

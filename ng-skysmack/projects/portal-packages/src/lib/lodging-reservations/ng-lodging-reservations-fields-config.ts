@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
-import { LocalObject, LocalObjectStatus, DisplayColumn, defined, hasValue } from '@skysmack/framework';
+import { LocalObject, LocalObjectStatus, DisplayColumn, defined, hasValue, PagedQuery } from '@skysmack/framework';
 import { LodgingReservation } from '@skysmack/packages-lodging-reservations';
 import { FormRule, SelectField, Field, SelectFieldOption } from '@skysmack/ng-ui';
-import { NgLodgingReservationsValidation, NgLodgingTypesStore, NgLodgingsStore } from '@skysmack/ng-packages';
+import { NgLodgingReservationsValidation, NgLodgingTypesStore, NgLodgingsStore, NgLodgingsActions, NgLodgingTypesActions } from '@skysmack/ng-packages';
 import { FieldsConfig, SelectFieldComponent, HiddenFieldComponent, IntFieldComponent, DateFieldComponent } from '@skysmack/portal-ui';
 import { FieldProviders } from '@skysmack/portal-ui';
 import { map, take } from 'rxjs/operators';
@@ -17,24 +17,16 @@ export class NgLodgingReservationsFieldsConfig extends FieldsConfig<LodgingReser
 
     constructor(
         public lodgingsStore: NgLodgingsStore,
+        public lodgingsActions: NgLodgingsActions,
         public lodgingTypeStore: NgLodgingTypesStore,
+        public lodgingTypeActions: NgLodgingTypesActions,
         public fieldProviders: FieldProviders
     ) {
         super(fieldProviders);
     }
 
     protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<LodgingReservation, number>): Field[] {
-        const lodgingTypeIdDisplayModifier = (column: DisplayColumn, providedEntity: LocalObject<LodgingReservation, number>) => {
-            this.lodgingTypeStore.get(loadedPackage._package.dependencies[0]).pipe(
-                hasValue(),
-                take(1),
-                map((lodgingTypes: LocalObject<LodgingReservation, number>[]) => {
-                    const found = lodgingTypes.find(lt => lt.object.id === providedEntity.object.lodgingTypeId);
-                    console.log(found);
-                }),
-            ).subscribe();
-            return 'flop';
-        };
+        const depPackagePath = loadedPackage._package.dependencies[0];
 
         const fields = [
             new SelectField({
@@ -44,8 +36,8 @@ export class NgLodgingReservationsFieldsConfig extends FieldsConfig<LodgingReser
                 displayKey: 'lodgingType',
                 displaySubKey: 'object.name',
                 validators: [Validators.required],
-                optionsData$: this.lodgingTypeStore.get(loadedPackage._package.dependencies[0]),
-                // displayModifier: lodgingTypeIdDisplayModifier,
+                optionsData$: this.lodgingTypeStore.get(depPackagePath),
+                getDependencies: () => { this.lodgingTypeActions.getPaged(depPackagePath, new PagedQuery()); },
                 order: 1,
                 showColumn: true
             }),
@@ -55,11 +47,12 @@ export class NgLodgingReservationsFieldsConfig extends FieldsConfig<LodgingReser
                 key: 'allocatedLodgingId',
                 displayKey: 'allocatedLodging',
                 displaySubKey: 'object.name',
-                optionsData$: this.lodgingsStore.get(loadedPackage._package.dependencies[0]),
+                optionsData$: this.lodgingsStore.get(depPackagePath),
                 extraOptions: [{
                     value: null,
                     displayName: 'None'
                 }] as SelectFieldOption[],
+                getDependencies: () => { this.lodgingsActions.getPaged(depPackagePath, new PagedQuery()); },
                 order: 2,
                 showColumn: true
             }),
@@ -104,3 +97,4 @@ export class NgLodgingReservationsFieldsConfig extends FieldsConfig<LodgingReser
         return fields;
     }
 }
+

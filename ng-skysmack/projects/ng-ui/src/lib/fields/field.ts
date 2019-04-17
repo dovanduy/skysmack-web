@@ -92,6 +92,11 @@ export class Field {
      */
     public sortable = false;
 
+    /**
+     * A function containing redux action calls to ensure relevant data is retrieved.
+     */
+    public getDependencies: Function;
+
     constructor(values: Partial<Field>) {
         Object.assign(this, values);
     }

@@ -17,8 +17,8 @@ export interface GetCrudDependencies {
     packageDependencyIndex?: number;
 }
 
-export const getCrudDependencies = (options: GetCrudDependencies): any => {
-    const getDeps = (action$: ActionsObservable<any>): any => action$.pipe(
+export const getReadDependencies = (options: GetCrudDependencies): any => {
+    const getPagedDeps = (action$: ActionsObservable<any>): any => action$.pipe(
         ofType(options.prefix + RecordActionsBase.GET_PAGED_SUCCESS),
         map((action: ReduxAction<GetPagedEntitiesSuccessPayload<any, any>>) => getPagedDependencies({
             action,
@@ -48,7 +48,7 @@ export const getCrudDependencies = (options: GetCrudDependencies): any => {
     );
 
     return [
-        getDeps,
+        getPagedDeps,
         getSingleDeps
     ];
 };

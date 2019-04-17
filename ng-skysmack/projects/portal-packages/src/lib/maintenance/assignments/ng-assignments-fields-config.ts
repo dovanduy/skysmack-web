@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
-import { LocalObject, LocalObjectStatus, EnumHelpers, DisplayColumn } from '@skysmack/framework';
+import { LocalObject, LocalObjectStatus, EnumHelpers, DisplayColumn, PagedQuery } from '@skysmack/framework';
 import { Assignment } from '@skysmack/packages-maintenance';
-import { NgAssignmentsValidation, NgAssignmentTypesStore } from '@skysmack/ng-packages';
+import { NgAssignmentsValidation, NgAssignmentTypesStore, NgAssignmentTypesActions } from '@skysmack/ng-packages';
 import { FormRule, Field, SelectField } from '@skysmack/ng-ui';
 import { FieldsConfig, StringFieldComponent, SelectFieldComponent, HiddenFieldComponent, DateTimeFieldComponent } from '@skysmack/portal-ui';
 import { of } from 'rxjs';
@@ -17,12 +17,12 @@ export class NgAssignmentsFieldsConfig extends FieldsConfig<Assignment, number> 
 
     constructor(
         public assignmentTypesStore: NgAssignmentTypesStore,
+        public assignmentTypesActions: NgAssignmentTypesActions,
         public fieldProviders: FieldProviders
     ) { super(fieldProviders); }
 
     protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<Assignment, number>): Field[] {
         const fields = [
-            // TODO(GET_DEPS): DisplayKet is new here - is that still needed?
             new SelectField({
                 component: SelectFieldComponent,
                 value: entity && entity.object ? entity.object.assignmentTypeId : undefined,
@@ -31,6 +31,7 @@ export class NgAssignmentsFieldsConfig extends FieldsConfig<Assignment, number> 
                 displaySubKey: 'object.description',
                 optionsData$: this.assignmentTypesStore.get(loadedPackage._package.path),
                 displayNameSelector: 'object.description',
+                getDependencies: () => { this.assignmentTypesActions.getPaged(loadedPackage._package.path, new PagedQuery()); },
                 order: 3,
                 showColumn: true
             }),

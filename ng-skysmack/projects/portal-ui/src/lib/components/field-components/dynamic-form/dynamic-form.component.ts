@@ -20,6 +20,9 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
   @Input() public noSidebar: boolean;
   @Output() public submitted: EventEmitter<FormHelper> = new EventEmitter();
 
+  // Prevents multiple gets
+  public requestedDependencies: StrIndex<boolean> = {};
+
   public editorItem$: Observable<LocalObject<any, any>>;
   public production = GlobalProperties.production;
   public fh: FormHelper;
@@ -41,7 +44,7 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
     // Update the fields and  form (FormGroup) on field changes
     this.fields$ = this.fields$.pipe(
       map(fields => {
-        this.updateForm(fields);
+        this.initForm(fields);
         return fields.filter(field => field.includeInForm);
       })
     );
@@ -62,9 +65,12 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
     return field ? field.key : undefined;
   }
 
-  public updateForm(fields: Field[]): void {
+  public initForm(fields: Field[]): void {
     // Update the forms internal controls
     fields.forEach(field => {
+
+      this.getFieldDependencies(field);
+
       if (field.includeInForm) {
         // Add new fields
         const fieldFormControl = field.validators ? new FormControl(field.value, Validators.compose(field.validators)) : new FormControl(field.value);
@@ -131,6 +137,13 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
       return formValuesClone;
     } else {
       return {};
+    }
+  }
+
+  private getFieldDependencies(field: Field) {
+    if (!this.requestedDependencies[field.key] && field.getDependencies) {
+      field.getDependencies();
+      this.requestedDependencies[field.key] = true;
     }
   }
 

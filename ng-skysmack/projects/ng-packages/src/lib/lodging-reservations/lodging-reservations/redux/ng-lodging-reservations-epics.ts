@@ -1,4 +1,4 @@
-import { RecordEpicsBase, getCrudDependencies } from '@skysmack/ng-redux';
+import { RecordEpicsBase, getReadDependencies } from '@skysmack/ng-redux';
 import { LodgingReservation, LODGING_RESERVATIONS_REDUX_KEY } from '@skysmack/packages-lodging-reservations';
 import { NgLodgingReservationsRequests } from './ng-lodging-reservations-requests';
 import { Injectable } from '@angular/core';
@@ -22,7 +22,7 @@ export class NgLodgingReservationsEpics extends RecordEpicsBase<LodgingReservati
     ) {
         super(requests, LODGING_RESERVATIONS_REDUX_KEY, notifications);
         this.epics = this.epics.concat([
-            ...getCrudDependencies({
+            ...getReadDependencies({
                 prefix: LODGING_RESERVATIONS_REDUX_KEY,
                 relationIdSelector: 'lodgingTypeId',
                 relationSelector: 'lodgingType',
@@ -32,7 +32,7 @@ export class NgLodgingReservationsEpics extends RecordEpicsBase<LodgingReservati
                 actions: this.lodgingTypesActions,
                 packageDependencyIndex: 0
             }),
-            ...getCrudDependencies({
+            ...getReadDependencies({
                 prefix: LODGING_RESERVATIONS_REDUX_KEY,
                 relationIdSelector: 'allocatedLodgingId',
                 relationSelector: 'allocatedLodging',
