@@ -24,8 +24,16 @@ export class NgProductsPricingsMenu extends SidebarMenu {
     }
 
     public setPrimaryMenu() {
-        this.primaryMenuAreas.push(new MenuArea('manage', this.translationPrefix, 1));
-        this.primaryMenuAreas.push(new MenuArea('connected packages', this.translationPrefix, 2));
+        this.primaryMenuAreas.push(new MenuArea({
+            area: 'manage',
+            translationPrefix: this.translationPrefix,
+            order: 1,
+        }));
+        this.primaryMenuAreas.push(new MenuArea({
+            area: 'connected packages',
+            translationPrefix: this.translationPrefix,
+            order: 2,
+        }));
 
         this.primaryMenuItems.push(new MenuItem({
             url: 'sales-prices',

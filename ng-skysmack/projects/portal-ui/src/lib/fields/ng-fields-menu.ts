@@ -23,8 +23,16 @@ export class NgFieldsMenu extends SidebarMenu {
     }
 
     public setPrimaryMenu() {
-        this.primaryMenuAreas.push(new MenuArea('actions', this.translationPrefix, 1));
-        this.primaryMenuAreas.push(new MenuArea('manage', this.translationPrefix, 2));
+        this.primaryMenuAreas.push(new MenuArea({
+            area: 'actions',
+            translationPrefix: this.translationPrefix,
+            order: 1,
+        }));
+        this.primaryMenuAreas.push(new MenuArea({
+            area: 'manage',
+            translationPrefix: this.translationPrefix,
+            order: 2,
+        }));
 
         // Since the below router subscription isn't fired on first page load, initial menu items have to be set.
         this.addPrimaryMenuItems();

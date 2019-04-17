@@ -24,7 +24,11 @@ export class NgLodgingTypesAvailabilityMenu extends SidebarMenu {
     }
 
     public setPrimaryMenu() {
-        this.primaryMenuAreas.push(new MenuArea('manage', this.translationPrefix, 2));
+        this.primaryMenuAreas.push(new MenuArea({
+            area: 'manage',
+            translationPrefix: this.translationPrefix,
+            order: 2,
+        }));
         this.setBackButton({ customPath: '/' + this.packagePath + '/types' });
     }
 

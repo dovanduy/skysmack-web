@@ -23,7 +23,12 @@ export class NgAssignmentAllMenu extends SidebarMenu {
     }
 
     public setPrimaryMenu() {
-        this.primaryMenuAreas.push(new MenuArea('manage', this.translationPrefix, 1));
+        this.primaryMenuAreas.push(new MenuArea({
+            area: 'manage',
+            translationPrefix: this.translationPrefix,
+            order: 1,
+        }));
+
         this.primaryMenuItems.push(new MenuItem({
             url: 'assignments',
             displayName: this.translationPrefix + 'SINGLE_ASSIGNMENTS',

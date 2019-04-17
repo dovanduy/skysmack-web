@@ -23,8 +23,16 @@ export class NgIdentitiesIndexMenu extends SidebarMenu {
     }
 
     public setPrimaryMenu() {
-        this.primaryMenuAreas.push(new MenuArea('manage', this.translationPrefix, 1));
-        this.primaryMenuAreas.push(new MenuArea('settings', this.translationPrefix, 2));
+        this.primaryMenuAreas.push(new MenuArea({
+            area: 'manage',
+            translationPrefix: this.translationPrefix,
+            order: 1,
+        }));
+        this.primaryMenuAreas.push(new MenuArea({
+            area: 'settings',
+            translationPrefix: this.translationPrefix,
+            order: 2,
+        }));
 
         this.primaryMenuItems.push(new MenuItem({
             url: 'roles',
