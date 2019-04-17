@@ -32,15 +32,6 @@ export class ProductTypeSalesPriceCreateComponent extends RecordFormComponent<Pr
 
   ngOnInit() {
     super.ngOnInit();
-    this.getDeps();
     this.setCreateFields();
-  }
-
-  public getDeps() {
-    this.loadedPackage$.pipe(
-      defined(),
-      map((loadedPackage: LoadedPackage) => this.productTypesActions.getPaged(loadedPackage._package.dependencies[0], new PagedQuery())),
-      take(1)
-    ).subscribe();
   }
 }
