@@ -9,6 +9,7 @@ import { DocumentFieldsConfig, StringFieldComponent, HiddenFieldComponent } from
 import { NgProductTypesValidation } from '@skysmack/ng-packages';
 import { NgFieldStore, LoadedPackage } from '@skysmack/ng-redux';
 import { FieldProviders } from '@skysmack/portal-ui';
+import { Router } from '@angular/router';
 
 @Injectable({ providedIn: 'root' })
 export class NgProductTypesFieldsConfig extends DocumentFieldsConfig<ProductType, number> {
@@ -18,9 +19,10 @@ export class NgProductTypesFieldsConfig extends DocumentFieldsConfig<ProductType
 
     constructor(
         public fieldProviders: FieldProviders,
-        public fieldsStore: NgFieldStore
+        public fieldsStore: NgFieldStore,
+        public router: Router
     ) {
-        super(fieldProviders, fieldsStore);
+        super(fieldProviders, fieldsStore, router);
     }
 
 

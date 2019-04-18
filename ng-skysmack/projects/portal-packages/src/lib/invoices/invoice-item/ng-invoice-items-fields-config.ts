@@ -9,6 +9,7 @@ import { DocumentFieldsConfig, StringFieldComponent, HiddenFieldComponent, IntFi
 import { NgInvoiceItemsValidation } from '@skysmack/ng-packages';
 import { NgFieldStore, LoadedPackage } from '@skysmack/ng-redux';
 import { FieldProviders } from '@skysmack/portal-ui';
+import { Router } from '@angular/router';
 
 @Injectable({ providedIn: 'root' })
 export class NgInvoiceItemsFieldsConfig extends DocumentFieldsConfig<InvoiceItem, number> {
@@ -18,9 +19,10 @@ export class NgInvoiceItemsFieldsConfig extends DocumentFieldsConfig<InvoiceItem
 
     constructor(
         public fieldProviders: FieldProviders,
-        public fieldsStore: NgFieldStore
+        public fieldsStore: NgFieldStore,
+        public router: Router
     ) {
-        super(fieldProviders, fieldsStore);
+        super(fieldProviders, fieldsStore, router);
     }
 
     protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<InvoiceItem, number>): Field[] {

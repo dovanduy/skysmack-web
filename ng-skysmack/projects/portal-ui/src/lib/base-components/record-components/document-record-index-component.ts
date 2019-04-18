@@ -5,7 +5,6 @@ import { OnInit } from '@angular/core';
 import { Record, PagedQuery } from '@skysmack/framework';
 import { RecordIndexComponent } from './record-index-component';
 import { NgFieldActions } from '@skysmack/ng-redux';
-import { switchMap } from 'rxjs/operators';
 import { EntityFieldsConfig } from '../../fields/entity-fields-config';
 
 export class DocumentRecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey> extends RecordIndexComponent<TAppState, TRecord, TKey> implements OnInit {

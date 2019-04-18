@@ -6,6 +6,7 @@ import { FieldProviders, DocumentFieldsConfig, StringFieldComponent, HiddenField
 import { NgLodgingTypesValidation } from '@skysmack/ng-packages';
 import { FormRule, Field } from '@skysmack/ng-ui';
 import { NgFieldStore, LoadedPackage } from '@skysmack/ng-redux';
+import { Router } from '@angular/router';
 
 @Injectable({ providedIn: 'root' })
 export class NgLodgingTypesFieldsConfig extends DocumentFieldsConfig<LodgingType, number> {
@@ -16,9 +17,10 @@ export class NgLodgingTypesFieldsConfig extends DocumentFieldsConfig<LodgingType
 
     constructor(
         public fieldProviders: FieldProviders,
-        public fieldsStore: NgFieldStore
+        public fieldsStore: NgFieldStore,
+        public router: Router
     ) {
-        super(fieldProviders, fieldsStore);
+        super(fieldProviders, fieldsStore, router);
     }
 
     protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<LodgingType, number>): Field[] {

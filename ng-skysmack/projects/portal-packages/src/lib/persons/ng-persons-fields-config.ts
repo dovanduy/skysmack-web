@@ -11,6 +11,7 @@ import { NgPersonsValidation } from '@skysmack/ng-packages';
 import { DocumentFieldsConfig } from '@skysmack/portal-ui';
 import { FieldProviders } from '@skysmack/portal-ui';
 import { NgFieldStore, LoadedPackage } from '@skysmack/ng-redux';
+import { Router } from '@angular/router';
 
 @Injectable({ providedIn: 'root' })
 export class NgPersonsFieldsConfig extends DocumentFieldsConfig<Person, number> {
@@ -22,9 +23,10 @@ export class NgPersonsFieldsConfig extends DocumentFieldsConfig<Person, number> 
 
     constructor(
         public fieldProviders: FieldProviders,
-        public fieldsStore: NgFieldStore
+        public fieldsStore: NgFieldStore,
+        public router: Router
     ) {
-        super(fieldProviders, fieldsStore);
+        super(fieldProviders, fieldsStore, router);
     }
 
 

@@ -6,13 +6,14 @@ import { Product } from '@skysmack/packages-products';
 import { Field } from '@skysmack/ng-ui';
 
 import { SelectField } from '@skysmack/ng-ui';
-import { FieldsConfig, StringFieldComponent, SelectFieldComponent, HiddenFieldComponent } from '@skysmack/portal-ui';
+import { StringFieldComponent, SelectFieldComponent, HiddenFieldComponent, DocumentFieldsConfig } from '@skysmack/portal-ui';
 import { NgProductsValidation, NgProductTypesStore, NgProductTypesActions } from '@skysmack/ng-packages';
 import { FieldProviders } from '@skysmack/portal-ui';
-import { LoadedPackage } from '@skysmack/ng-redux';
+import { LoadedPackage, NgFieldStore } from '@skysmack/ng-redux';
+import { Router } from '@angular/router';
 
 @Injectable({ providedIn: 'root' })
-export class NgProductsFieldsConfig extends FieldsConfig<Product, number> {
+export class NgProductsFieldsConfig extends DocumentFieldsConfig<Product, number> {
     public validation = new NgProductsValidation();
 
     public formRules: FormRule[] = [
@@ -21,9 +22,11 @@ export class NgProductsFieldsConfig extends FieldsConfig<Product, number> {
     constructor(
         public productTypeStore: NgProductTypesStore,
         public fieldProviders: FieldProviders,
-        public productTypesActions: NgProductTypesActions
+        public fieldStore: NgFieldStore,
+        public productTypesActions: NgProductTypesActions,
+        public router: Router
     ) {
-        super(fieldProviders);
+        super(fieldProviders, fieldStore, router);
     }
 
     protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<Product, number>): Field[] {
@@ -51,6 +54,7 @@ export class NgProductsFieldsConfig extends FieldsConfig<Product, number> {
                     displayName: 'None'
                 }],
                 order: 1,
+                showColumn: true
             }),
         ];
 
