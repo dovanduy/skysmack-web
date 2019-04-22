@@ -1,0 +1,13 @@
+{
+  "$schema": "../../../node_modules/ng-packagr/package.schema.json",
+  "name": "@skysmack/packages-skysmack-core",
+  "description": "Core packages, always installed",
+  "version": "1.0.0",
+  "peerDependencies": {
+    "@skysmack/framework": "*",
+    "@skysmack/redux": "*",
+    "rxjs": "^6.4.0",
+    "redux": "^4.0.1",
+    "redux-observable": "^1.1.0"
+  }
+}

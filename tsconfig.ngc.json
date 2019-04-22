@@ -1,0 +1,60 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es5",
+    "module": "es2015",
+    "typeRoots": ["node_modules/@types"],
+    "lib": ["es2017", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@skysmack/framework": ["./dist/@skysmack/framework"],
+      "@skysmack/redux": ["./dist/@skysmack/redux"],
+      "@skysmack/packages-skysmack-core": ["./dist/@skysmack/packages-skysmack-core"],
+      "@skysmack/packages-baskets": [
+        "./dist/@skysmack/packages-baskets"
+      ],
+      "@skysmack/packages-identities": [
+        "./dist/@skysmack/packages-identities"
+      ],
+      "@skysmack/packages-invoices": [
+        "./dist/@skysmack/packages-invoices"
+      ],
+      "@skysmack/packages-lodging-reservations": [
+        "./dist/@skysmack/packages-lodging-reservations"
+      ],
+      "@skysmack/packages-lodgings": [
+        "./dist/@skysmack/packages-lodgings"
+      ],
+      "@skysmack/packages-maintenance": [
+        "./dist/@skysmack/packages-maintenance"
+      ],
+      "@skysmack/packages-oauth2": [
+        "./dist/@skysmack/packages-oauth2"
+      ],
+      "@skysmack/packages-persons": [
+        "./dist/@skysmack/packages-persons"
+      ],
+      "@skysmack/packages-persons-lodging-reservations": [
+        "./dist/@skysmack/packages-persons-lodging-reservations"
+      ],
+      "@skysmack/packages-products": [
+        "./dist/@skysmack/packages-products"
+      ],
+      "@skysmack/packages-products-pricings": [
+        "./dist/@skysmack/packages-products-pricings"
+      ],
+      "@skysmack/packages-terminal-payments": [
+        "./dist/@skysmack/packages-terminal-payments"
+      ]
+    }
+  },
+  "exclude": ["node_modules", "tmp"]
+}

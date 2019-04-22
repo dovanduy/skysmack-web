@@ -1,0 +1,766 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "",
+  "projects": {
+    "shared-framework": {
+      "root": "libs/shared/framework",
+      "sourceRoot": "libs/shared/framework/src",
+      "projectType": "library",
+      "prefix": "skysmack",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "libs/shared/framework/tsconfig.lib.json",
+            "project": "libs/shared/framework/ng-package.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/shared/framework/tsconfig.lib.json",
+              "libs/shared/framework/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "libs/shared/framework/jest.config.js",
+            "tsConfig": "libs/shared/framework/tsconfig.spec.json"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/schematics:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "shared-redux": {
+      "root": "libs/shared/redux",
+      "sourceRoot": "libs/shared/redux/src",
+      "projectType": "library",
+      "prefix": "skysmack",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "libs/shared/redux/tsconfig.lib.json",
+            "project": "libs/shared/redux/ng-package.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/shared/redux/tsconfig.lib.json",
+              "libs/shared/redux/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "libs/shared/redux/jest.config.js",
+            "tsConfig": "libs/shared/redux/tsconfig.spec.json"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/schematics:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "packages-skysmack-core": {
+      "root": "libs/packages/skysmack-core",
+      "sourceRoot": "libs/packages/skysmack-core/src",
+      "projectType": "library",
+      "prefix": "skysmack",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/packages/skysmack-core/tsconfig.lib.json",
+              "libs/packages/skysmack-core/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "libs/packages/skysmack-core/jest.config.js",
+            "tsConfig": "libs/packages/skysmack-core/tsconfig.spec.json"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/schematics:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "packages-identities": {
+      "root": "libs/packages/packages-identities",
+      "sourceRoot": "libs/packages/packages-identities/src",
+      "projectType": "library",
+      "prefix": "skysmack",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/packages/packages-identities/tsconfig.lib.json",
+              "libs/packages/packages-identities/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "libs/packages/packages-identities/jest.config.js",
+            "tsConfig": "libs/packages/packages-identities/tsconfig.spec.json"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/schematics:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "packages-invoices": {
+      "root": "libs/packages/packages-invoices",
+      "sourceRoot": "libs/packages/packages-invoices/src",
+      "projectType": "library",
+      "prefix": "skysmack",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/packages/packages-invoices/tsconfig.lib.json",
+              "libs/packages/packages-invoices/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "libs/packages/packages-invoices/jest.config.js",
+            "tsConfig": "libs/packages/packages-invoices/tsconfig.spec.json"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/schematics:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "packages-lodging-reservations": {
+      "root": "libs/packages/packages-lodging-reservations",
+      "sourceRoot": "libs/packages/packages-lodging-reservations/src",
+      "projectType": "library",
+      "prefix": "skysmack",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/packages/packages-lodging-reservations/tsconfig.lib.json",
+              "libs/packages/packages-lodging-reservations/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "libs/packages/packages-lodging-reservations/jest.config.js",
+            "tsConfig": "libs/packages/packages-lodging-reservations/tsconfig.spec.json"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/schematics:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "packages-lodgings": {
+      "root": "libs/packages/packages-lodgings",
+      "sourceRoot": "libs/packages/packages-lodgings/src",
+      "projectType": "library",
+      "prefix": "skysmack",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/packages/packages-lodgings/tsconfig.lib.json",
+              "libs/packages/packages-lodgings/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "libs/packages/packages-lodgings/jest.config.js",
+            "tsConfig": "libs/packages/packages-lodgings/tsconfig.spec.json"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/schematics:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "packages-maintenance": {
+      "root": "libs/packages/packages-maintenance",
+      "sourceRoot": "libs/packages/packages-maintenance/src",
+      "projectType": "library",
+      "prefix": "skysmack",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/packages/packages-maintenance/tsconfig.lib.json",
+              "libs/packages/packages-maintenance/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "libs/packages/packages-maintenance/jest.config.js",
+            "tsConfig": "libs/packages/packages-maintenance/tsconfig.spec.json"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/schematics:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "packages-oauth2": {
+      "root": "libs/packages/packages-oauth2",
+      "sourceRoot": "libs/packages/packages-oauth2/src",
+      "projectType": "library",
+      "prefix": "skysmack",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/packages/packages-oauth2/tsconfig.lib.json",
+              "libs/packages/packages-oauth2/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "libs/packages/packages-oauth2/jest.config.js",
+            "tsConfig": "libs/packages/packages-oauth2/tsconfig.spec.json"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/schematics:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "packages-persons": {
+      "root": "libs/packages/packages-persons",
+      "sourceRoot": "libs/packages/packages-persons/src",
+      "projectType": "library",
+      "prefix": "skysmack",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/packages/packages-persons/tsconfig.lib.json",
+              "libs/packages/packages-persons/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "libs/packages/packages-persons/jest.config.js",
+            "tsConfig": "libs/packages/packages-persons/tsconfig.spec.json"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/schematics:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "packages-persons-lodging-reservations": {
+      "root": "libs/packages/packages-persons-lodging-reservations",
+      "sourceRoot": "libs/packages/packages-persons-lodging-reservations/src",
+      "projectType": "library",
+      "prefix": "skysmack",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/packages/packages-persons-lodging-reservations/tsconfig.lib.json",
+              "libs/packages/packages-persons-lodging-reservations/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "libs/packages/packages-persons-lodging-reservations/jest.config.js",
+            "tsConfig": "libs/packages/packages-persons-lodging-reservations/tsconfig.spec.json"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/schematics:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "packages-products": {
+      "root": "libs/packages/packages-products",
+      "sourceRoot": "libs/packages/packages-products/src",
+      "projectType": "library",
+      "prefix": "skysmack",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/packages/packages-products/tsconfig.lib.json",
+              "libs/packages/packages-products/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "libs/packages/packages-products/jest.config.js",
+            "tsConfig": "libs/packages/packages-products/tsconfig.spec.json"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/schematics:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "packages-products-pricings": {
+      "root": "libs/packages/packages-products-pricings",
+      "sourceRoot": "libs/packages/packages-products-pricings/src",
+      "projectType": "library",
+      "prefix": "skysmack",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/packages/packages-products-pricings/tsconfig.lib.json",
+              "libs/packages/packages-products-pricings/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "libs/packages/packages-products-pricings/jest.config.js",
+            "tsConfig": "libs/packages/packages-products-pricings/tsconfig.spec.json"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/schematics:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "packages-terminal-payments": {
+      "root": "libs/packages/packages-terminal-payments",
+      "sourceRoot": "libs/packages/packages-terminal-payments/src",
+      "projectType": "library",
+      "prefix": "skysmack",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/packages/packages-terminal-payments/tsconfig.lib.json",
+              "libs/packages/packages-terminal-payments/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "libs/packages/packages-terminal-payments/jest.config.js",
+            "tsConfig": "libs/packages/packages-terminal-payments/tsconfig.spec.json"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/schematics:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "ng-packages": {
+      "root": "libs/ng-packages",
+      "sourceRoot": "libs/ng-packages/src",
+      "projectType": "library",
+      "prefix": "skysmack",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/ng-packages/tsconfig.lib.json",
+              "libs/ng-packages/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "libs/ng-packages/jest.config.js",
+            "tsConfig": "libs/ng-packages/tsconfig.spec.json",
+            "setupFile": "libs/ng-packages/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/schematics:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "ng-redux": {
+      "root": "libs/ng-redux",
+      "sourceRoot": "libs/ng-redux/src",
+      "projectType": "library",
+      "prefix": "skysmack",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/ng-redux/tsconfig.lib.json",
+              "libs/ng-redux/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "libs/ng-redux/jest.config.js",
+            "tsConfig": "libs/ng-redux/tsconfig.spec.json",
+            "setupFile": "libs/ng-redux/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/schematics:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "ng-ui": {
+      "root": "libs/ng-ui",
+      "sourceRoot": "libs/ng-ui/src",
+      "projectType": "library",
+      "prefix": "skysmack",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/ng-ui/tsconfig.lib.json",
+              "libs/ng-ui/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "libs/ng-ui/jest.config.js",
+            "tsConfig": "libs/ng-ui/tsconfig.spec.json",
+            "setupFile": "libs/ng-ui/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/schematics:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "portal-packages": {
+      "root": "libs/portal-packages",
+      "sourceRoot": "libs/portal-packages/src",
+      "projectType": "library",
+      "prefix": "skysmack",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/portal-packages/tsconfig.lib.json",
+              "libs/portal-packages/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "libs/portal-packages/jest.config.js",
+            "tsConfig": "libs/portal-packages/tsconfig.spec.json",
+            "setupFile": "libs/portal-packages/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/schematics:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "portal-ui": {
+      "root": "libs/portal-ui",
+      "sourceRoot": "libs/portal-ui/src",
+      "projectType": "library",
+      "prefix": "skysmack",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/portal-ui/tsconfig.lib.json",
+              "libs/portal-ui/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "libs/portal-ui/jest.config.js",
+            "tsConfig": "libs/portal-ui/tsconfig.spec.json",
+            "setupFile": "libs/portal-ui/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/schematics:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "web-portal": {
+      "root": "apps/web/web-portal/",
+      "sourceRoot": "apps/web/web-portal/src",
+      "projectType": "application",
+      "prefix": "skysmack",
+      "schematics": {
+        "@nrwl/schematics:component": {
+          "style": "scss"
+        }
+      },
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/web/web-portal",
+            "index": "apps/web/web-portal/src/index.html",
+            "main": "apps/web/web-portal/src/main.ts",
+            "polyfills": "apps/web/web-portal/src/polyfills.ts",
+            "tsConfig": "apps/web/web-portal/tsconfig.app.json",
+            "assets": [
+              "apps/web/web-portal/src/favicon.ico",
+              "apps/web/web-portal/src/assets"
+            ],
+            "styles": ["apps/web/web-portal/src/styles.scss"],
+            "scripts": [],
+            "es5BrowserSupport": true,
+            "vendorSourceMap": false
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/web/web-portal/src/environments/environment.ts",
+                  "with": "apps/web/web-portal/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": false,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": true,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": false,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "web-portal:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "web-portal:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "web-portal:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/web/web-portal/tsconfig.app.json",
+              "apps/web/web-portal/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "apps/web/web-portal/jest.config.js",
+            "tsConfig": "apps/web/web-portal/tsconfig.spec.json",
+            "setupFile": "apps/web/web-portal/src/test-setup.ts"
+          }
+        }
+      }
+    },
+    "ng-core": {
+      "root": "libs/ng-core",
+      "sourceRoot": "libs/ng-core/src",
+      "projectType": "library",
+      "prefix": "skysmack",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/ng-core/tsconfig.lib.json",
+              "libs/ng-core/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "libs/ng-core/jest.config.js",
+            "tsConfig": "libs/ng-core/tsconfig.spec.json",
+            "setupFile": "libs/ng-core/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/schematics:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "portal-core": {
+      "root": "libs/portal-core",
+      "sourceRoot": "libs/portal-core/src",
+      "projectType": "library",
+      "prefix": "skysmack",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/portal-core/tsconfig.lib.json",
+              "libs/portal-core/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "libs/portal-core/jest.config.js",
+            "tsConfig": "libs/portal-core/tsconfig.spec.json",
+            "setupFile": "libs/portal-core/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/schematics:component": {
+          "styleext": "scss"
+        }
+      }
+    }
+  },
+  "cli": {
+    "warnings": {
+      "typescriptMismatch": false,
+      "versionMismatch": false
+    },
+    "defaultCollection": "@nrwl/schematics"
+  },
+  "schematics": {
+    "@nrwl/schematics:application": {
+      "style": "scss"
+    },
+    "@nrwl/schematics:library": {
+      "style": "scss"
+    }
+  },
+  "defaultProject": "web-portal"
+}

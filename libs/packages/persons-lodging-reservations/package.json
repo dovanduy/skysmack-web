@@ -1,0 +1,16 @@
+{
+  "$schema": "../../../node_modules/ng-packagr/package.schema.json",
+  "name": "@skysmack/packages-persons-lodging-reservations",
+  "version": "1.0.0",
+  "peerDependencies": {
+    "@skysmack/framework": "*",
+    "@skysmack/redux": "*",
+    "@skysmack/packages-persons": "*",
+    "@skysmack/packages-lodging-reservations": "*",
+    "tslib": "^1.9.3",
+    "redux": "^4.0.1",
+    "rxjs": "^6.4.0",
+    "redux-observable": "^1.1.0",
+    "moment": "^2.24.0"
+  }
+}

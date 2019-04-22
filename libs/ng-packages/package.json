@@ -1,0 +1,37 @@
+{
+  "name": "@skysmack/ng-packages",
+  "version": "0.0.1",
+  "peerDependencies": {
+    "@angular/common": "^7.0.0",
+    "@angular/core": "^7.0.0",
+    "@skysmack/ng-redux": "*",
+    "@skysmack/ng-ui": "*",
+    "@skysmack/framework": "*",
+    "@skysmack/redux": "*",
+    "@skysmack/packages-identities": "*",
+    "@skysmack/packages-lodging-reservations": "*",
+    "@skysmack/packages-lodgings": "*",
+    "@skysmack/packages-maintenance": "*",
+    "@skysmack/packages-oauth2": "*",
+    "@skysmack/packages-persons": "*",
+    "@skysmack/packages-invoices": "*",
+    "@skysmack/packages-persons-lodging-reservations": "*",
+    "@skysmack/packages-products": "*",
+    "@skysmack/packages-products-pricings": "*",
+    "@skysmack/packages-skysmack-core": "*",
+    "@skysmack/packages-terminal-payments": "*"
+  },
+  "main": "./lib/public_api.js",
+  "types": "./lib/public_api.d.ts",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1",
+    "build": "ng build ng-packages"
+  }
+}

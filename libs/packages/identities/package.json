@@ -1,0 +1,13 @@
+{
+  "$schema": "../../../node_modules/ng-packagr/package.schema.json",
+  "name": "@skysmack/packages-identities",
+  "version": "1.0.0",
+  "peerDependencies": {
+    "@skysmack/framework": "*",
+    "@skysmack/redux": "*",
+    "tslib": "^1.9.3",
+    "redux": "^4.0.1",
+    "rxjs": "^6.4.0",
+    "redux-observable": "^1.1.0"
+  }
+}

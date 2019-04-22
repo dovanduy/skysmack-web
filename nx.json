@@ -1,0 +1,81 @@
+{
+  "npmScope": "skysmack",
+  "implicitDependencies": {
+    "angular.json": "*",
+    "package.json": "*",
+    "tsconfig.json": "*",
+    "tslint.json": "*",
+    "nx.json": "*"
+  },
+  "projects": {
+    "shared-framework": {
+      "tags": ["shared", "framework"]
+    },
+    "shared-redux": {
+      "tags": ["shared", "redux"]
+    },
+    "packages-skysmack-core": {
+      "tags": ["packages", "skysmack-core"]
+    },
+    "packages-baskets": {
+      "tags": []
+    },
+    "packages-identities": {
+      "tags": []
+    },
+    "packages-invoices": {
+      "tags": []
+    },
+    "packages-lodging-reservations": {
+      "tags": []
+    },
+    "packages-lodgings": {
+      "tags": []
+    },
+    "packages-maintenance": {
+      "tags": []
+    },
+    "packages-oauth2": {
+      "tags": []
+    },
+    "packages-persons": {
+      "tags": []
+    },
+    "packages-persons-lodging-reservations": {
+      "tags": []
+    },
+    "packages-products": {
+      "tags": []
+    },
+    "packages-products-pricings": {
+      "tags": []
+    },
+    "packages-terminal-payments": {
+      "tags": []
+    },
+    "ng-packages": {
+      "tags": []
+    },
+    "ng-redux": {
+      "tags": []
+    },
+    "ng-ui": {
+      "tags": []
+    },
+    "portal-packages": {
+      "tags": []
+    },
+    "portal-ui": {
+      "tags": []
+    },
+    "web-portal": {
+      "tags": []
+    },
+    "ng-core": {
+      "tags": []
+    },
+    "portal-core": {
+      "tags": []
+    }
+  }
+}

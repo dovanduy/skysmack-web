@@ -1,0 +1,14 @@
+{
+  "$schema": "../../../node_modules/ng-packagr/package.schema.json",
+  "name": "@skysmack/redux",
+  "description": "Shared base code for redux implementations in Skysmack",
+  "version": "1.0.0",
+  "peerDependencies": {
+    "@skysmack/framework": "*",
+    "rxjs": "^6.4.0",
+    "@redux-offline/redux-offline": "^2.5.1",
+    "localforage": "^1.7.3",
+    "redux": "^4.0.1",
+    "redux-observable": "^1.1.0"
+  }
+}

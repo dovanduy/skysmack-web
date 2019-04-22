@@ -1,8 +1,0 @@
-{
-  "packages": [
-    "packages/*",
-    "ng-skysmack/projects/*",
-    ""
-  ],
-  "version": "0.0.0"
-}
