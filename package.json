@@ -67,7 +67,6 @@
     "@redux-offline/redux-offline": "^2.5.1",
     "angular-calendar": "^0.27.5",
     "guid-typescript": "^1.0.9",
-    "hammerjs": "^2.0.8",
     "localforage": "^1.7.3",
     "moment": "^2.24.0",
     "parse-link-header": "^1.0.1",
