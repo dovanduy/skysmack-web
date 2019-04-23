@@ -25,7 +25,6 @@ export class NgPackagesFieldsConfig extends FieldsConfig<Package, string> {
     protected getEntityFields(loadedPackage: LoadedPackage, _package?: LocalObject<Package, string>): Field[] {
         return [
             new SelectField({
-                ''
                 component: SelectFieldComponent,
                 value: _package ? _package.object.type : undefined,
                 label: 'Type',

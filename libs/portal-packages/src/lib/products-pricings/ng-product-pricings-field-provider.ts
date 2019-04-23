@@ -7,7 +7,7 @@ import { NgSkysmackStore } from '@skysmack/ng-core';
 import { StringFieldComponent } from '@skysmack/portal-ui';
 import { FieldProvider } from '@skysmack/portal-ui';
 import { Validators } from '@angular/forms';
-import { Product, ProductsType } from '@skysmack/packages-products';
+import { Product } from '@skysmack/packages-products';
 import { getAdditionalPaths } from '@skysmack/ng-redux';
 import { ProductsPricingsType } from '@skysmack/packages-products-pricings';
 import { Router } from '@angular/router';
@@ -22,6 +22,7 @@ export class NgProductPricingsFieldProvider extends FieldProvider {
     ) {
         super();
     }
+
     public getFields(packagePath: string, entity?: LocalObject<any, any>): Observable<Field[]> {
         return this.skysmackStore.getPackages().pipe(
             map(packages => packages.filter(_package => _package.object.type === ProductsPricingsType.id)),
