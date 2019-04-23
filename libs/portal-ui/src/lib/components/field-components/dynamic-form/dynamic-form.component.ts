@@ -74,7 +74,7 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
       if (field.includeInForm) {
         // Add new fields
         const fieldFormControl = field.validators ? new FormControl(field.value, Validators.compose(field.validators)) : new FormControl(field.value);
-        // console.log('Hello field... ', field.key, fieldFormControl, field);
+
         if (field.disabled) {
           fieldFormControl.disable();
         }
@@ -142,8 +142,8 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
 
   private getFieldDependencies(field: Field) {
     if (!this.requestedDependencies[field.key] && field.getDependencies) {
-      field.getDependencies();
       this.requestedDependencies[field.key] = true;
+      field.getDependencies();
     }
   }
 

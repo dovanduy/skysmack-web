@@ -7,7 +7,6 @@ import { EditorNavService } from '@skysmack/portal-ui';
 import { DocumentRecordFormComponent } from '@skysmack/portal-ui';
 import { NgProductsStore } from '@skysmack/ng-packages';
 import { NgProductTypesActions } from '@skysmack/ng-packages';
-import { PagedQuery } from '@skysmack/framework';
 import { NgProductTypesStore } from '@skysmack/ng-packages';
 import { NgFieldActions } from '@skysmack/ng-redux';
 import { NgProductsFieldsConfig } from '../../ng-products-fields-config';

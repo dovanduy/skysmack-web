@@ -1,4 +1,5 @@
 import { LocalObject, LocalObjectStatus, StrIndex } from '../models';
+import { GlobalProperties } from '../global-properties';
 
 export class LocalObjectExtensions {
     public static mergeOrAddLocal<TObject, TKey>(existingRecords: StrIndex<LocalObject<TObject, TKey>>, newRecords: LocalObject<TObject, TKey>[], expectedState: LocalObjectStatus = LocalObjectStatus.OK, preserveIsNew: boolean = false): StrIndex<LocalObject<TObject, TKey>> {
@@ -32,7 +33,9 @@ export class LocalObjectExtensions {
 
                     existingRecords[existingRecordKey] = newRecord;
                 } else {
-                    console.log(`Existing record status ${existingRecords[existingRecordKey].status} did not match expected state ${expectedState}`)
+                    if (!GlobalProperties.production) {
+                        console.log(`Existing record status ${existingRecords[existingRecordKey].status} did not match expected state ${expectedState}`)
+                    }
                 }
             } else {
                 existingRecords[newRecord.localId] = newRecord;

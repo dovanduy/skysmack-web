@@ -1,10 +1,11 @@
-import { RecordActionsBase, ReduxAction, GetPagedEntitiesSuccessPayload, GetSingleEntitySuccessPayload } from '@skysmack/redux';
+import { RecordActionsBase, ReduxAction, GetPagedEntitiesSuccessPayload, GetSingleEntitySuccessPayload, CommitMeta } from '@skysmack/redux';
 import { ActionsObservable, ofType } from 'redux-observable';
 import { map } from 'rxjs/operators';
 import { GetSingleDependencyOptions, getSingleDependency } from './get-single-dependencies';
 import { GetDependenciesOptions, getPagedDependencies } from './get-paged-dependencies';
 import { NgRecordStore } from '../../stores/ng-record-store';
 import { SkysmackStore } from '../../stores/skysmack-store';
+import { HttpSuccessResponse, LocalObject } from '@skysmack/framework';
 
 export interface GetCrudDependencies {
     prefix: string;
@@ -36,7 +37,8 @@ export const getReadDependencies = (options: GetCrudDependencies): any => {
     const getSingleDeps = (action$: ActionsObservable<any>): any => action$.pipe(
         ofType(options.prefix + RecordActionsBase.GET_SINGLE_SUCCESS),
         map((action: ReduxAction<GetSingleEntitySuccessPayload<any, any>>) => getSingleDependency({
-            action,
+            entity: action.payload.entity,
+            packagePath: action.payload.packagePath,
             relationIdSelector: options.relationIdSelector,
             relationSelector: options.relationSelector,
             skysmackStore: options.skysmackStore,
@@ -47,8 +49,24 @@ export const getReadDependencies = (options: GetCrudDependencies): any => {
         map(() => ({ type: options.prefix + 'RETRIEVED_DEPENDENCIES_GET_SINGLE_SUCCESS' }))
     );
 
+    const getSingleDepsOnUpdateSuccess = (action$: ActionsObservable<any>): any => action$.pipe(
+        ofType(options.prefix + RecordActionsBase.UPDATE_SUCCESS),
+        map((action: ReduxAction<HttpSuccessResponse<any[]>, CommitMeta<LocalObject<any, any>[]>>) => getSingleDependency({
+            entity: action.payload.body[0],
+            packagePath: action.meta.stateKey,
+            relationIdSelector: options.relationIdSelector,
+            relationSelector: options.relationSelector,
+            skysmackStore: options.skysmackStore,
+            store: options.store,
+            actions: options.actions,
+            packageDependencyIndex: options.packageDependencyIndex
+        } as GetSingleDependencyOptions)),
+        map(() => ({ type: options.prefix + 'RETRIEVED_DEPENDENCIES_GET_SINGLE_SUCCESS_ON_UPDATE_SUCCESS' }))
+    );
+
     return [
         getPagedDeps,
-        getSingleDeps
+        getSingleDeps,
+        getSingleDepsOnUpdateSuccess
     ];
 };
