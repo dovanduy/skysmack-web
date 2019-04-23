@@ -51,7 +51,7 @@ export class NgLodgingReservationsFieldsConfig extends FieldsConfig<LodgingReser
                     value: null,
                     displayName: 'None'
                 }] as SelectFieldOption[],
-                getDependencies: () => { console.log('Am I getting getted?'); this.lodgingsActions.getPaged(depPackagePath, new PagedQuery()); },
+                getDependencies: () => { this.lodgingsActions.getPaged(depPackagePath, new PagedQuery()); },
                 order: 2,
                 showColumn: true
             }),

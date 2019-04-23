@@ -1,10 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 
 import { LanguageService } from '@skysmack/portal-ui';
-import { PortalUiModule, HttpLoaderFactory, FieldsModule } from '@skysmack/portal-ui';
-import { TranslateLoader } from '@ngx-translate/core';
+import { PortalUiModule, FieldsModule } from '@skysmack/portal-ui';
 import { NgPersonsLodgingReservationsModule } from '@skysmack/ng-packages';
 import { PersonsLodgingReservationsRoutingModule } from './persons-lodging-reservations-routing.module';
 import { FieldProviders } from '@skysmack/portal-ui';

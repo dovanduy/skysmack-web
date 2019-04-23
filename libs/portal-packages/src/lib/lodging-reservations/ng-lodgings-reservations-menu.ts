@@ -34,11 +34,6 @@ export class NgLodgingsReservationsMenu extends SidebarMenu {
             order: 2,
         }));
         this.primaryMenuAreas.push(new MenuArea({
-            area: 'manage',
-            translationPrefix: this.translationPrefix,
-            order: 3,
-        }));
-        this.primaryMenuAreas.push(new MenuArea({
             area: 'connected packages',
             translationPrefix: this.translationPrefix,
             order: 4,
