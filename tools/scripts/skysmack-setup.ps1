@@ -8,6 +8,3 @@ write-host "----------------------------"
 
 ### NPM packages
 & "$PSScriptRoot\misc\install-skysmack-global-npm-packages.ps1"
-
-### Next
-& "$PSScriptRoot\run-dev.ps1"
