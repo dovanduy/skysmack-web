@@ -67,7 +67,7 @@ export class SelectField extends Field {
                 default: options = []; break;
             }
 
-            return this.modifyDisplayName ? this.modifyDisplayName(options) : options;
+            return this.modifyDisplayName ? this.modifyDisplayName(options, optionsData) : options;
         })
     )
 }

@@ -4,7 +4,7 @@ import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { Field } from '@skysmack/ng-ui';
 
 import { FieldsConfig, SelectFieldComponent, HiddenFieldComponent, RolesSelectFieldComponent } from '@skysmack/portal-ui';
-import { AccessPolicyRole, AccessPolicyRoleKey } from '@skysmack/packages-skysmack-core';
+import { AccessPolicyRole, AccessPolicyRoleKey, AccessPolicyRule } from '@skysmack/packages-skysmack-core';
 import { Validators } from '@angular/forms';
 import { SelectFieldOption } from '@skysmack/ng-ui';
 import { AccessPolicyRolesValidation, NgAccessPolicyRulesStore } from '@skysmack/ng-core';
@@ -24,9 +24,8 @@ export class NgAccessPolicyRolesFieldsConfig extends FieldsConfig<AccessPolicyRo
 
     protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<AccessPolicyRole, AccessPolicyRoleKey>): Field[] {
 
-        // TODO: Work this into ruleId field stream
-        const modifyDisplayName = (options: SelectFieldOption[]) => {
-            const accessPolicyRules = []; //dependencies.availableAccessPolicyRules;
+        const modifyDisplayName = (options: SelectFieldOption[], optionsData: LocalObject<AccessPolicyRule, number>[]) => {
+            const accessPolicyRules = optionsData;
             return options.map(option => {
                 if (accessPolicyRules) {
                     const matchingRule = accessPolicyRules.find(rule => rule.object.id === option.value);
@@ -54,6 +53,7 @@ export class NgAccessPolicyRolesFieldsConfig extends FieldsConfig<AccessPolicyRo
                 optionsData$: this.accessPolicyRulesStore.get('skysmack'),
                 validators: [Validators.required],
                 displayNameSelector: 'object.id',
+                modifyDisplayName,
                 order: 2,
                 showColumn: true
             }),
