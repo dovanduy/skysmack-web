@@ -651,7 +651,12 @@
             "tsConfig": "apps/web/web-portal/tsconfig.app.json",
             "assets": [
               "apps/web/web-portal/src/favicon.ico",
-              "apps/web/web-portal/src/assets"
+              "apps/web/web-portal/src/assets",
+              {
+                "glob": "**/*",
+                "input": "apps/web/web-portal/src/i18n/",
+                "output": "/i18n/"
+              }
             ],
             "styles": [
               "apps/web/web-portal/src/styles.scss"
