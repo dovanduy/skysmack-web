@@ -3,6 +3,7 @@ import { SubscriptionHandler, PagedQuery, Package } from '@skysmack/framework';
 import { NgSkysmackStore } from '@skysmack/ng-core';
 import { map } from 'rxjs/operators';
 import { MatSelectChange } from '@angular/material';
+import { NgRolesStore, NgRolesActions } from '@skysmack/ng-packages';
 
 @Component({
   selector: 'ss-roles-select',
@@ -20,8 +21,8 @@ export class RolesSelectComponent implements OnInit, OnDestroy {
 
 
   constructor(
-    // public rolesStore: NgRolesStore,
-    // public rolesActions: NgRolesActions,
+    public rolesStore: NgRolesStore,
+    public rolesActions: NgRolesActions,
     public skysmackStore: NgSkysmackStore
   ) { }
 
