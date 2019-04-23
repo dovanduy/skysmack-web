@@ -6,7 +6,6 @@ write-host "----------------------------`n"
 $gulp_cli_version = ">=2.0.1 <=2.0.1"
 $angular_cli_version = ">=7.3.8 <=7.3.8"
 $http_server_version = ">=0.11.1 <=0.11.1"
-$lerna_version = ">=3.13.1 <=3.13.1"
 $typescript_version = ">=3.2.4 <=3.2.4"
 
 # Gulp cli
@@ -20,10 +19,6 @@ npm i -g "@angular/cli@$angular_cli_version"
 # Http-server
 write-host "Installing http-server"
 npm i -g "http-server@$http_server_version"
-
-# Lerna
-write-host "Installing lerna"
-npm i -g "lerna@$lerna_version"
 
 # Typescript
 write-host "Installing typescript"
