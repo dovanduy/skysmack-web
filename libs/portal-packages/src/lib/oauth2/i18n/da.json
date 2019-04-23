@@ -12,7 +12,7 @@
             "VALIDATION": {
                 "EMAIL": {
                     "REQUIRED": "En Email er påkrævet.",
-                    "EMAIL": "Indtast en gyldig email."
+                    "INVALIDEMAIL": "Indtast en gyldig email."
                 },
                 "PASSWORD": {
                     "REQUIRED": "En adgangskode er påkrævet."

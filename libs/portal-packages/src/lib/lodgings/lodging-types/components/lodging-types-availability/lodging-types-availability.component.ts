@@ -100,7 +100,6 @@ export class LodgingTypesavailabilityComponent implements OnInit {
       this.store.getAvailableLodgingTypesCount(this.packagePath)
     ).pipe(
       map(values => {
-        console.log({ values });
         const lodgings = values[0];
         const availableLodgingTypesCount = values[1];
 

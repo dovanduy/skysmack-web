@@ -25,6 +25,7 @@ export class NgPackagesFieldsConfig extends FieldsConfig<Package, string> {
     protected getEntityFields(loadedPackage: LoadedPackage, _package?: LocalObject<Package, string>): Field[] {
         return [
             new SelectField({
+                ''
                 component: SelectFieldComponent,
                 value: _package ? _package.object.type : undefined,
                 label: 'Type',
@@ -32,7 +33,6 @@ export class NgPackagesFieldsConfig extends FieldsConfig<Package, string> {
                 validators: [Validators.required],
                 optionsData$: this.store.getAvailablePackages(),
                 valueSelector: 'object.type',
-                displayNameSelector: 'object.name',
                 disabled: _package ? true : false,
                 order: 1
             }),

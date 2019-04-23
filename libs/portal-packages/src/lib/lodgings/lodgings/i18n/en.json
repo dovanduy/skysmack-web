@@ -2,7 +2,7 @@
     "LODGINGS": {
         "FORM": {
             "LABELS": {
-                "LODGINGTYPEID": "Type ID",
+                "LODGINGTYPEID": "Type",
                 "NAME": "Name",
                 "DISABLED": "Disabled"
             },
@@ -13,7 +13,7 @@
             },
             "VALIDATION": {
                 "LODGINGTYPEID": {
-                    "REQUIRED": "A type ID is required."
+                    "REQUIRED": "Type is required."
                 },
                 "NAME": {
                     "REQUIRED": "A name is required."

@@ -23,39 +23,36 @@ export class NgLodgingsFieldsConfig extends FieldsConfig<Lodging, number> {
 
     protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<Lodging, number>): Field[] {
         const fields = [
+            new Field({
+                component: StringFieldComponent,
+                value: entity ? entity.object.name : undefined,
+                key: 'name',
+                validators: [Validators.required],
+                order: 1,
+                showColumn: true
+            }),
             new SelectField({
                 component: SelectFieldComponent,
                 value: entity && entity.object ? entity.object.lodgingTypeId : undefined,
-                label: 'Lodging type',
                 key: 'lodgingTypeId',
-                displayKey: 'lodgingTypes',
-                displaySubKey: 'object.description',
+                displayKey: 'lodgingType',
+                displaySubKey: 'object.name',
                 validators: [Validators.required],
                 optionsData$: this.lodgingTypeStore.get(loadedPackage._package.path),
                 getDependencies: () => { this.lodgingTypesActions.getPaged(loadedPackage._package.path, new PagedQuery()); },
-                displayNameSelector: 'name',
                 disabled: entity && entity.object ? true : false,
-                order: 1,
+                order: 2,
+                showColumn: true
             }),
-
             new Field({
                 component: CheckboxFieldComponent,
                 value: entity && entity.object ? entity.object.disabled : false,
                 label: 'Enabled',
                 key: 'disabled',
                 validators: [Validators.required],
-                order: 2,
-                showColumn: true
-            }),
-
-            new Field({
-                component: StringFieldComponent,
-                value: entity ? entity.object.name : undefined,
-                key: 'name',
-                validators: [Validators.required],
                 order: 3,
                 showColumn: true
-            })
+            }),
         ];
 
         // Id field must only be added for edit forms.

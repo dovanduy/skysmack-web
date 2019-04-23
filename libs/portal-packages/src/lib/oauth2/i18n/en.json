@@ -12,7 +12,7 @@
             "VALIDATION": {
                 "EMAIL": {
                     "REQUIRED": "Email is required.",
-                    "EMAIL": "Please enter a valid email."
+                    "INVALIDEMAIL": "Please enter a valid email."
                 },
                 "PASSWORD": {
                     "REQUIRED": "Password is required."

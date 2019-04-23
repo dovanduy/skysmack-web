@@ -38,6 +38,7 @@ export class ProductTypesIndexComponent extends DocumentRecordIndexComponent<Pro
 
   ngOnInit() {
     super.ngOnInit();
-    this.title.setTitle(this.packagePath);
+    const title = this.additionalPaths.length > 0 ? this.packagePath + ' ' + this.additionalPaths.join(' ') : this.packagePath;
+    this.title.setTitle(title);
   }
 }

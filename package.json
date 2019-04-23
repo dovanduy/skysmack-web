@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "ng": "node --max_old_space_size=8000 ./node_modules/@angular/cli/bin/ng",
-    "start": "ng serve web-portal --host client1.skysmack.test --port 4000 --disableHostCheck",
+    "start": "ng serve web-portal --host client1.skysmack.test --port 4001 --disableHostCheck",
     "build": "ng build",
     "test": "ng test",
     "lint": "./node_modules/.bin/nx lint && ng lint",

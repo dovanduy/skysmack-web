@@ -105,7 +105,7 @@ export function fieldReducer(state: FieldState = new FieldState(), action: any):
             const castedAction: ReduxAction<HttpSuccessResponse<FieldSchemaViewModel[]>, CommitMeta<LocalObject<FieldSchemaViewModel, string>[]>> = action;
             const body = castedAction.payload.body;
             const updatedObjects = body.map((newObject, index) => replaceLocalInnerObject(castedAction.meta.value[index], newObject));
-            newState.fields[castedAction.meta.stateKey] = LocalObjectExtensions.mergeOrAddLocal<FieldSchemaViewModel, string>(newState.fields[castedAction.meta.stateKey], updatedObjects, LocalObjectStatus.MODIFYING);
+            newState.fields[castedAction.meta.stateKey] = LocalObjectExtensions.mergeOrAddLocal<FieldSchemaViewModel, string>(newState.fields[castedAction.meta.stateKey], updatedObjects);
             return newState;
         }
         case FieldActions.FIELD_UPDATE_FAILURE: {

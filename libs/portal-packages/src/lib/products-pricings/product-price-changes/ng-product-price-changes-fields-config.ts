@@ -20,7 +20,7 @@ export class NgProductPriceChangesFieldsConfig extends FieldsConfig<ProductPrice
         public productsSalesPriceStore: NgProductsSalesPriceStore,
         public fieldProviders: FieldProviders,
         public productSalesPriceActions: NgProductsSalesPriceActions,
-        public productPrinceChangeActions: NgProductPriceChangesActions
+        public productPriceChangeActions: NgProductPriceChangesActions
     ) {
         super(fieldProviders);
     }
@@ -54,7 +54,7 @@ export class NgProductPriceChangesFieldsConfig extends FieldsConfig<ProductPrice
                 displaySubKey: 'object.name',
                 optionsData$: this.productsSalesPriceStore.get(loadedPackage._package.path),
                 getDependencies: () => { this.productSalesPriceActions.getPaged(loadedPackage._package.path, new PagedQuery()); },
-                displayNameSelector: 'object.price',
+                displayNameSelector: 'object.change',
                 order: 2,
                 showColumn: true
             }),
@@ -63,11 +63,11 @@ export class NgProductPriceChangesFieldsConfig extends FieldsConfig<ProductPrice
                 value: entity ? entity.object.changeType : undefined,
                 key: 'changeType',
                 validators: [Validators.required],
-                displayKey: 'productPrinceChange',
+                displayKey: 'productPriceChange',
                 displaySubKey: 'object.name',
                 optionsData$: of(PriceChangeType),
                 optionsDataType: 'ts-enum',
-                getDependencies: () => { this.productPrinceChangeActions.getPaged(loadedPackage._package.path, new PagedQuery()); },
+                getDependencies: () => { this.productPriceChangeActions.getPaged(loadedPackage._package.path, new PagedQuery()); },
                 order: 3,
                 showColumn: true
             }),

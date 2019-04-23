@@ -21,6 +21,7 @@ export class LocalObjectExtensions {
                 }
                 return existingRecords[x].objectIdentifier === newRecord.objectIdentifier;
             });
+
             if (existingRecordKey) {
                 if (existingRecords[existingRecordKey].status === expectedState) {
                     newRecord.localId = existingRecordKey;
@@ -30,6 +31,8 @@ export class LocalObjectExtensions {
                     }
 
                     existingRecords[existingRecordKey] = newRecord;
+                } else {
+                    console.log(`Existing record status ${existingRecords[existingRecordKey].status} did not match expected state ${expectedState}`)
                 }
             } else {
                 existingRecords[newRecord.localId] = newRecord;
