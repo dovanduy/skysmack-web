@@ -7,6 +7,7 @@ import { Oauth2Type } from '@skysmack/packages-oauth2';
 import { IdentitiesType } from '@skysmack/packages-identities';
 import { LoadedPackage } from '../packages/loaded-package';
 import { PackageLoader } from '../packages/package-loader';
+import { AccountType } from 'libs/packages/account/src';
 
 export class SkysmackStore {
     public stateKey = 'skysmack';
@@ -64,6 +65,12 @@ export class SkysmackStore {
     public getAuthenticationPackages(): Observable<Package[]> {
         return this.getSkysmack().pipe(
             map(skysmack => skysmack.packages.filter(_package => _package.type === Oauth2Type.id))
+        );
+    }
+
+    public getAccountPackages(): Observable<Package[]> {
+        return this.getSkysmack().pipe(
+            map(skysmack => skysmack.packages.filter(_package => _package.type === AccountType.id))
         );
     }
 

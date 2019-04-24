@@ -70,7 +70,7 @@
         <mat-menu overlapTrigger="false" #loginMenu="matMenu">
           <ng-container *ngFor="let authPackage of authPackages">
             <button mat-menu-item [routerLink]="['/' + authPackage.path]" title="Account Menu" *isAnonymous>
-              {{ authPackage.description }}
+              {{ authPackage.name }}
             </button>
           </ng-container>
         </mat-menu>
@@ -85,7 +85,8 @@
       <mat-icon>account_circle</mat-icon>
     </button>
     <mat-menu overlapTrigger="false" #accountMenu="matMenu">
-      <button mat-menu-item [routerLink]="['/account']">{{ 'UI.TOP_BAR.ACCOUNT'| translate}}</button>
+      <button mat-menu-item *ngFor="let accountPackage of accountPackages$ | async"
+        [routerLink]="['/' + accountPackage.path]">{{ accountPackage.name }}</button>
       <button mat-menu-item class="non-anchor" (click)="logout()" [routerLink]="['/']">{{
         'UI.TOP_BAR.LOG_OUT'| translate }}</button>
     </mat-menu>

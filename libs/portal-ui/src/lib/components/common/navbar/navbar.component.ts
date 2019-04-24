@@ -20,6 +20,7 @@ export class NavBarComponent implements OnInit {
   public skysmack$: Observable<Skysmack>;
   public menu$: Observable<Menu>;
   public authenticationPackages$: Observable<Package[]>;
+  public accountPackages$: Observable<Package[]>;
 
   constructor(
     public uiStore: UIRedux,
@@ -33,6 +34,7 @@ export class NavBarComponent implements OnInit {
     this.skysmack$ = this.skysmackStore.getSkysmack();
     this.menu$ = this.uiStore.getMenu();
     this.authenticationPackages$ = this.skysmackStore.getAuthenticationPackages();
+    this.accountPackages$ = this.skysmackStore.getAccountPackages();
   }
 
   public toggleEditor() {
