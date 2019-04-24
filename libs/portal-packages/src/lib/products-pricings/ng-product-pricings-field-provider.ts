@@ -1,14 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Field } from '@skysmack/ng-ui';
 import { map } from 'rxjs/operators';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { StrIndex, LocalObject, DisplayColumn } from '@skysmack/framework';
 import { NgSkysmackStore } from '@skysmack/ng-core';
 import { StringFieldComponent } from '@skysmack/portal-ui';
 import { FieldProvider } from '@skysmack/portal-ui';
 import { Validators } from '@angular/forms';
-import { Product } from '@skysmack/packages-products';
-import { getAdditionalPaths } from '@skysmack/ng-redux';
+import { Product, PRODUCTS_AREA_KEY } from '@skysmack/packages-products';
 import { ProductsPricingsType } from '@skysmack/packages-products-pricings';
 import { Router } from '@angular/router';
 
@@ -23,15 +22,12 @@ export class NgProductPricingsFieldProvider extends FieldProvider {
         super();
     }
 
-    public getFields(packagePath: string, entity?: LocalObject<any, any>): Observable<Field[]> {
-        return this.skysmackStore.getPackages().pipe(
-            map(packages => packages.filter(_package => _package.object.type === ProductsPricingsType.id)),
-            map(productPricingPackages => {
-                if (productPricingPackages && productPricingPackages.length > 0) {
-                    const additionalPaths = getAdditionalPaths(this.router, packagePath);
-                    additionalPaths.push('fields');
-                    // Only provide this field for the base type (products). Not types, etc.
-                    if (additionalPaths && additionalPaths.length === 0) {
+    public getFields(packagePath: string, area: string, entity?: LocalObject<any, any>): Observable<Field[]> {
+        if (area == PRODUCTS_AREA_KEY) {
+            return this.skysmackStore.getPackages().pipe(
+                map(packages => packages.filter(_package => _package.object.type === ProductsPricingsType.id)),
+                map(productPricingPackages => {
+                    if (productPricingPackages && productPricingPackages.length > 0) {
                         return productPricingPackages.map(productPricingPackage => {
                             const displayModifier = (column: DisplayColumn, providedEntity: LocalObject<Product, number>): string => {
                                 const extendedData: StrIndex<StrIndex<StrIndex<number>>> = providedEntity.object['extendedData'];
@@ -75,9 +71,10 @@ export class NgProductPricingsFieldProvider extends FieldProvider {
                         }).reduce((a, b) => a.concat(b), []);
                     }
                     return [];
-                }
-                return [];
-            })
-        );
+                })
+            );
+        } else {
+            return of([]);
+        }
     }
 }

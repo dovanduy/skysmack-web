@@ -9,6 +9,7 @@ import { LoadedPackage } from '@skysmack/ng-redux';
 export abstract class FieldsConfig<TRecord, TKey> implements EntityFieldsConfig<TRecord, TKey> {
     public abstract formRules: FormRule[];
     public abstract validation: Validation;
+    public area?: string;
 
     constructor(public fieldProviders: FieldProviders) { }
 
@@ -58,7 +59,7 @@ export abstract class FieldsConfig<TRecord, TKey> implements EntityFieldsConfig<
                 if (extractedProviders && extractedProviders.length > 0) {
                     return combineLatest(
                         extractedProviders.map(provider => {
-                            return provider.getFields(loadedPackage._package.path, entity);
+                            return provider.getFields(loadedPackage._package.path, this.area, entity);
                         })
                     ).pipe(
                         distinctUntilChanged(),

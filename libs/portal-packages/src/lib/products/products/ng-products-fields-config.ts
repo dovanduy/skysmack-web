@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { FormRule } from '@skysmack/ng-ui';
 import { LocalObject, LocalObjectStatus, PagedQuery } from '@skysmack/framework';
-import { Product } from '@skysmack/packages-products';
+import { Product, PRODUCTS_AREA_KEY } from '@skysmack/packages-products';
 import { Field } from '@skysmack/ng-ui';
 
 import { SelectField } from '@skysmack/ng-ui';
@@ -14,8 +14,8 @@ import { Router } from '@angular/router';
 
 @Injectable({ providedIn: 'root' })
 export class NgProductsFieldsConfig extends DocumentFieldsConfig<Product, number> {
+    public area = PRODUCTS_AREA_KEY;
     public validation = new NgProductsValidation();
-
     public formRules: FormRule[] = [
     ];
 
