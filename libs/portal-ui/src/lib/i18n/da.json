@@ -30,11 +30,8 @@
             "NO_CONVER": "Ingen samtaler",
             "NO_NOTI": "Ingen meddelser",
             "ACC_SET": "Bruger indstillinger",
-            "CHAN_PASS": "Skift adgangskode",
+            "ACCOUNT": "Konto",
             "LOG_OUT": "Log ud"
-        },
-        "MISC": {
-            "BACK": "Tilbage"
         }
     },
     "NOTIFICATIONS": {

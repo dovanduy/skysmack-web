@@ -30,11 +30,8 @@
             "NO_CONVER": "No conversations",
             "NO_NOTI": "No notifications",
             "ACC_SET": "Account settings",
-            "CHAN_PASS": "Change passeword",
+            "ACCOUNT": "Account",
             "LOG_OUT": "Log out"
-        },
-        "MISC": {
-            "BACK": "Back"
         }
     },
     "NOTIFICATIONS": {

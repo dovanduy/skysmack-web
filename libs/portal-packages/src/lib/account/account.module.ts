@@ -14,7 +14,7 @@ import { accountsComponents } from './accounts/components/accounts-components';
     HttpClientModule,
     PortalUiModule,
     AccountRoutingModule,
-    NgAccountModule,
+    NgAccountModule
   ],
   exports: [],
   declarations: [

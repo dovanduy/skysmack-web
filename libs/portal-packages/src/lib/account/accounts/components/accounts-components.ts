@@ -12,4 +12,6 @@ export const accountsRoutes: Routes = [
 ];
 
 export const accountsComponents: any[] = [
+    AccountComponent,
+    ChangePasswordComponent
 ];
