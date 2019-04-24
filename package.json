@@ -22,10 +22,11 @@
     "format:check": "./node_modules/.bin/nx format:check",
     "build:libs": "yarn build:libs:shared && yarn build:libs:packages",
     "build:libs:shared": "yarn libs:shared:framework:build && yarn libs:shared:redux:build",
-    "build:libs:packages": "yarn libs:packages:skysmack-core:build && yarn libs:packages:oauth2:build && yarn libs:packages:identities:build && yarn libs:packages:persons:build && yarn libs:packages:lodgings:build && yarn libs:packages:products:build && yarn libs:packages:invoices:build && yarn libs:packages:maintenance:build && yarn libs:packages:products-pricings:build && yarn libs:packages:lodging-reservations:build && yarn libs:packages:persons-lodging-reservations:build && yarn libs:packages:terminal-payments:build ",
+    "build:libs:packages": "yarn libs:packages:skysmack-core:build && yarn libs:packages:oauth2:build && yarn libs:packages:identities:build && yarn libs:packages:account:build && yarn libs:packages:persons:build && yarn libs:packages:lodgings:build && yarn libs:packages:products:build && yarn libs:packages:invoices:build && yarn libs:packages:maintenance:build && yarn libs:packages:products-pricings:build && yarn libs:packages:lodging-reservations:build && yarn libs:packages:persons-lodging-reservations:build && yarn libs:packages:terminal-payments:build ",
     "libs:shared:framework:build": "ng-packagr -p libs/shared/framework/package.json",
     "libs:shared:redux:build": "node libs/shared/redux/ng-packagr-api.js",
     "libs:packages:skysmack-core:build": "node libs/packages/skysmack-core/ng-packagr-api.js",
+    "libs:packages:account:build": "node libs/packages/account/ng-packagr-api.js",
     "libs:packages:identities:build": "node libs/packages/identities/ng-packagr-api.js",
     "libs:packages:invoices:build": "node libs/packages/invoices/ng-packagr-api.js",
     "libs:packages:lodging-reservations:build": "node libs/packages/lodging-reservations/ng-packagr-api.js",
@@ -76,6 +77,7 @@
     "gulp": "^4.0.1"
   },
   "devDependencies": {
+    "ts-jest": "24.0.2",
     "jest-preset-angular": "7.1.0",
     "@angular/compiler-cli": "~7.2.13",
     "@angular/language-service": "^7.2.13",
@@ -93,7 +95,6 @@
     "ng-packagr": "^4.7.1",
     "normalize-scss": "^7.0.1",
     "prettier": "1.16.4",
-    "ts-jest": "24.0.2",
     "ts-node": "~8.1.0",
     "tsickle": ">=0.34.0",
     "tslib": "^1.9.3",

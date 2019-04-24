@@ -9,15 +9,26 @@
     "importHelpers": true,
     "target": "es5",
     "module": "es2015",
-    "typeRoots": ["node_modules/@types"],
-    "lib": ["es2017", "dom"],
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "lib": [
+      "es2017",
+      "dom"
+    ],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@skysmack/framework": ["./dist/@skysmack/framework"],
-      "@skysmack/redux": ["./dist/@skysmack/redux"],
-      "@skysmack/packages-skysmack-core": ["./dist/@skysmack/packages-skysmack-core"],
+      "@skysmack/framework": [
+        "./dist/@skysmack/framework"
+      ],
+      "@skysmack/redux": [
+        "./dist/@skysmack/redux"
+      ],
+      "@skysmack/packages-skysmack-core": [
+        "./dist/@skysmack/packages-skysmack-core"
+      ],
       "@skysmack/packages-baskets": [
         "./dist/@skysmack/packages-baskets"
       ],
@@ -53,8 +64,14 @@
       ],
       "@skysmack/packages-terminal-payments": [
         "./dist/@skysmack/packages-terminal-payments"
+      ],
+      "@skysmack/packages-account": [
+        "./dist/@skysmack/packages-account"
       ]
     }
   },
-  "exclude": ["node_modules", "tmp"]
+  "exclude": [
+    "node_modules",
+    "tmp"
+  ]
 }

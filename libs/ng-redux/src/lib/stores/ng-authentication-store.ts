@@ -19,7 +19,6 @@ export class NgAuthenticationStore implements AuthenticationStore {
         return this.getCurrentUser().pipe(
             map((currentUser: CurrentUser) => {
                 let tokenExpired = true;
-
                 if (currentUser) {
                     const loginTime = currentUser.loginTime;
                     const tokenExpires = moment(loginTime).add(currentUser.expires_in, 'seconds');

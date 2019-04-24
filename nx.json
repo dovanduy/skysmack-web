@@ -76,6 +76,9 @@
     },
     "portal-core": {
       "tags": []
+    },
+    "packages-account": {
+      "tags": []
     }
   }
 }
