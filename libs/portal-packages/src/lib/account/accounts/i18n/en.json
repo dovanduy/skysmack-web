@@ -1,0 +1,30 @@
+{
+    "ACCOUNTS": {
+        "FORM": {
+            "LABELS": {
+                "EMAIL": "Email",
+                "PASSWORD": "Password",
+                "REPEATPASSWORD": "Repeat password"
+            },
+            "PLACEHOLDERS": {
+                "EMAIL": "Email",
+                "PASSWORD": "Password",
+                "REPEATPASSWORD": "Repeat password"
+            },
+            "VALIDATION": {
+                "EMAIL": {
+                    "REQUIRED": "Email is required"
+                },
+                "PASSWORD": {
+                    "REQUIRED": "Password is required."
+                },
+                "REPEATPASSWORD": {
+                    "REQUIRED": "Repeat password is required."
+                }
+            }
+        },
+        "INDEX": {},
+        "NOTIFICATIONS": {},
+        "QUEUE": {}
+    }
+}

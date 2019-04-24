@@ -24,3 +24,4 @@ export * from './products-pricings/index';
 // export * from './skysmack-core/index';
 export * from './terminal-payments/index';
 export * from './products-pricings/index';
+export * from './account/index';
