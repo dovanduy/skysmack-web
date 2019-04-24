@@ -10,4 +10,4 @@ export * from './persons-lodging-reservations/persons-lodging-reservations.modul
 export * from './products/products.module';
 export * from './products-pricings/products-pricings.module';
 export * from './terminal-payments/terminal-payments.module';
-export * frp, './account/account.module'
+export * from './account/account.module'

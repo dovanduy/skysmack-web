@@ -24,6 +24,6 @@ import { accountsComponents } from './accounts/components/accounts-components';
     LanguageService
   ]
 })
-export class PackagesModule {
+export class AccountModule {
   constructor() { }
 }
