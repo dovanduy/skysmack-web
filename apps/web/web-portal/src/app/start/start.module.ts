@@ -107,6 +107,10 @@ const extraRoutes = [
         loadChildren: './../packages/modules/terminal_payments_wrapper.module#TerminalPaymentsWrapperModule'
       },
       {
+        path: 'skysmack/loadPackages/account',
+        loadChildren: './../packages/modules/account_wrapper.module#AccountWrapperModule'
+      },
+      {
         path: '',
         component: FrontPageComponent,
         redirectTo: '',

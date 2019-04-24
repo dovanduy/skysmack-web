@@ -16,6 +16,7 @@ import { loadOauth2Package } from '../packages/oauth2-package-manifest';
 import { loadMaintenancePackage } from '../packages/maintenance-package-manifest';
 import { loadTerminalPaymentsPackage } from '../packages/terminal-payments-manifest';
 import { loadIdentitiesPackage } from '../packages/identities-package-manifest';
+import { loadAccountPackage } from '../packages/account-manifest';
 
 export function configureSkysmack(actions: NgSkysmackActions) {
     return () => actions.getSkysmack();
@@ -41,7 +42,8 @@ export const packageLoaders = [
     { provide: APP_INITIALIZER, useFactory: loadPersonsLodgingReservationsPackage, deps: [PackageLoader], multi: true },
     { provide: APP_INITIALIZER, useFactory: loadOauth2Package, deps: [PackageLoader], multi: true },
     { provide: APP_INITIALIZER, useFactory: loadMaintenancePackage, deps: [PackageLoader], multi: true },
-    { provide: APP_INITIALIZER, useFactory: loadTerminalPaymentsPackage, deps: [PackageLoader], multi: true }
+    { provide: APP_INITIALIZER, useFactory: loadTerminalPaymentsPackage, deps: [PackageLoader], multi: true },
+    { provide: APP_INITIALIZER, useFactory: loadAccountPackage, deps: [PackageLoader], multi: true },
 ];
 
 export const injectionTokens = [
