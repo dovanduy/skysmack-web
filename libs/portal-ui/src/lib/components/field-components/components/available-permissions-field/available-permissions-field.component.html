@@ -4,12 +4,11 @@
       <mat-select [formControlName]="fieldKey" [value]="field.value" [placeholder]="field.placeholder | translate"
         (selectionChange)="setPermission($event.value)">
         <mat-option [value]="null">None</mat-option>
-        <mat-option *ngFor="let permission of permissions; trackBy: trackById" [value]="permission">{{ permission }}
+        <mat-option *ngFor="let permission of permissions; trackBy: trackById" [value]="permission.value">
+          {{ permission.displayName }}
         </mat-option>
       </mat-select>
     </mat-form-field>
   </ng-container>
-
   <ss-backend-errors [field]="field"></ss-backend-errors>
-
 </ng-container>

@@ -17,12 +17,12 @@
         "FORM": {
             "LABELS": {
                 "CURRENCYCODE": "Currency code",
-                "RECORDID": "Product",
+                "RECORDID": "Product type",
                 "PRICE": "Price"
             },
             "PLACEHOLDERS": {
                 "CURRENCYCODE": "Currency code",
-                "RECORDID": "Product",
+                "RECORDID": "Product type",
                 "PRICE": "Price"
             },
             "VALIDATION": {

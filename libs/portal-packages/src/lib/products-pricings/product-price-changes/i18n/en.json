@@ -25,7 +25,7 @@
             },
             "PLACEHOLDERS": {
                 "CURRENCYCODE": "Currency code",
-                "RECORDID": "Product sales price",
+                "RECORDID": "Product",
                 "CHANGE": "Price change",
                 "CHANGETYPE": "Price change type",
                 "VALIDFROM": "Valid from",

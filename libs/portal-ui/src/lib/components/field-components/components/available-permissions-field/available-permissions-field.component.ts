@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FieldBaseComponent } from '../field-base-component';
 import { NgPackagesStore, NgSkysmackStore, NgSkysmackActions } from '@skysmack/ng-core';
 import { switchMap, map } from 'rxjs/operators';
-import { Field } from '@skysmack/ng-ui';
+import { Field, SelectFieldOption } from '@skysmack/ng-ui';
 import { StrIndex } from '@skysmack/framework';
 import { Observable } from 'rxjs';
 
@@ -11,7 +11,7 @@ import { Observable } from 'rxjs';
   templateUrl: './available-permissions-field.component.html'
 })
 export class AvailablePermissionsFieldComponent extends FieldBaseComponent<Field> implements OnInit {
-  public permissions$: Observable<string[]>;
+  public permissions$: Observable<SelectFieldOption[]>;
   public selectedPackagePath: string;
 
   public requestedPermissions: StrIndex<boolean> = {};
@@ -39,7 +39,12 @@ export class AvailablePermissionsFieldComponent extends FieldBaseComponent<Field
         }
         return this.skysmackStore.getAvailablePermissions(packagePath);
       }),
-      map(permissions => Object.keys(permissions).map(key => permissions[key]))
+      map(permissions => Object.keys(permissions).map(key => {
+        return {
+          value: key,
+          displayName: permissions[key]
+        };
+      }))
     );
   }
 

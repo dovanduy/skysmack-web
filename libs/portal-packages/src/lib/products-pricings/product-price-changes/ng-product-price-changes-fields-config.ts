@@ -3,12 +3,12 @@ import { Validators } from '@angular/forms';
 import { LocalObject, LocalObjectStatus, PagedQuery } from '@skysmack/framework';
 import { ProductPriceChange, PriceChangeType } from '@skysmack/packages-products-pricings';
 import { FormRule, SelectField, Field } from '@skysmack/ng-ui';
-import { NgProductPriceChangesValidation, NgProductsSalesPriceStore } from '@skysmack/ng-packages';
+import { NgProductPriceChangesValidation, NgProductsSalesPriceStore, NgProductsStore, NgProductsActions } from '@skysmack/ng-packages';
 import { FieldsConfig, SelectFieldComponent, HiddenFieldComponent, DecimalFieldComponent, DateTimeFieldComponent } from '@skysmack/portal-ui';
 import { of } from 'rxjs';
 import { FieldProviders } from '@skysmack/portal-ui';
 import { LoadedPackage } from '@skysmack/ng-redux';
-import { NgProductsSalesPriceActions, NgProductPriceChangesActions } from '@skysmack/ng-packages';
+import { NgProductsSalesPriceActions } from '@skysmack/ng-packages';
 
 @Injectable({ providedIn: 'root' })
 export class NgProductPriceChangesFieldsConfig extends FieldsConfig<ProductPriceChange, number> {
@@ -20,7 +20,8 @@ export class NgProductPriceChangesFieldsConfig extends FieldsConfig<ProductPrice
         public productsSalesPriceStore: NgProductsSalesPriceStore,
         public fieldProviders: FieldProviders,
         public productSalesPriceActions: NgProductsSalesPriceActions,
-        public productPriceChangeActions: NgProductPriceChangesActions
+        public productsStore: NgProductsStore,
+        public productsActions: NgProductsActions,
     ) {
         super(fieldProviders);
     }
@@ -51,10 +52,10 @@ export class NgProductPriceChangesFieldsConfig extends FieldsConfig<ProductPrice
                 key: 'recordId',
                 validators: [Validators.required],
                 displayKey: 'productSalesPrice',
-                displaySubKey: 'object.name',
-                optionsData$: this.productsSalesPriceStore.get(loadedPackage._package.path),
-                getDependencies: () => { this.productSalesPriceActions.getPaged(loadedPackage._package.path, new PagedQuery()); },
-                displayNameSelector: 'object.change',
+                displaySubKey: 'object.change',
+                optionsData$: this.productsStore.get(loadedPackage._package.dependencies[0]),
+                getDependencies: () => { this.productsActions.getPaged(loadedPackage._package.dependencies[0], new PagedQuery()); },
+                displayNameSelector: 'object.name',
                 order: 2,
                 showColumn: true
             }),
@@ -63,11 +64,8 @@ export class NgProductPriceChangesFieldsConfig extends FieldsConfig<ProductPrice
                 value: entity ? entity.object.changeType : undefined,
                 key: 'changeType',
                 validators: [Validators.required],
-                displayKey: 'productPriceChange',
-                displaySubKey: 'object.name',
                 optionsData$: of(PriceChangeType),
                 optionsDataType: 'ts-enum',
-                getDependencies: () => { this.productPriceChangeActions.getPaged(loadedPackage._package.path, new PagedQuery()); },
                 order: 3,
                 showColumn: true
             }),
@@ -111,3 +109,4 @@ export class NgProductPriceChangesFieldsConfig extends FieldsConfig<ProductPrice
         return fields;
     }
 }
+
