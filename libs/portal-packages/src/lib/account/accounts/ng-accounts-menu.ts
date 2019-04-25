@@ -11,7 +11,7 @@ import { ACCOUNT_AREA_KEY } from '@skysmack/packages-account';
 @Injectable({ providedIn: 'root' })
 export class NgAccountsMenu extends SidebarMenu {
     public menuId = ACCOUNT_AREA_KEY;
-    public translationPrefix = 'ACCOUNT.INDEX.';
+    public translationPrefix = 'ACCOUNTS.INDEX.';
 
     constructor(
         public store: NgSkysmackStore,

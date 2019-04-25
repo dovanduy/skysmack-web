@@ -23,7 +23,10 @@
                 }
             }
         },
-        "INDEX": {},
+        "INDEX": {
+            "ACTIONS": "Actions",
+            "CHANGE_PASSWORD": "Change password"
+        },
         "NOTIFICATIONS": {},
         "QUEUE": {}
     }

@@ -23,7 +23,10 @@
                 }
             }
         },
-        "INDEX": {},
+        "INDEX": {
+            "ACTIONS": "Handlinger",
+            "CHANGE_PASSWORD": "Skift kodeord"
+        },
         "NOTIFICATIONS": {},
         "QUEUE": {}
     }
