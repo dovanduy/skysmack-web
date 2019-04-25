@@ -1,5 +1,5 @@
 import { ChangePassword } from '../models';
-import { HttpResponse } from '@skysmack/framework';
+import { HttpResponse, HttpErrorResponse } from '@skysmack/framework';
 import { Observable } from 'rxjs';
 
 export interface AccountRequests {

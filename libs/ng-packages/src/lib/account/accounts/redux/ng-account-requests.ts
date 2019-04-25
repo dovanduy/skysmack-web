@@ -11,10 +11,9 @@ export class NgAccountRequests implements AccountRequests {
     constructor(
         protected http: HttpClient,
         @Inject(API_DOMAIN_INJECTOR_TOKEN) protected apiDomain: ApiDomain
-    ) {
-    }
+    ) { }
 
-    changePassword(packagePath: string, changePassword: ChangePassword): Observable<HttpResponse | HttpErrorResponse> {
+    public changePassword(packagePath: string, changePassword: ChangePassword): Observable<HttpResponse | HttpErrorResponse> {
         const url = `${this.apiDomain.domain}/${packagePath}/change-password`;
         return this.http.put<any>(url, changePassword, { observe: 'response' }).pipe(
             map((response) => {
