@@ -6,7 +6,7 @@ import { FieldsIndexComponent, FieldsCreateComponent, FieldsEditComponent } from
 
 export const invoiceItemsRoutes: Routes = [
   {
-    path: 'items', component: InvoiceItemsIndexComponent,
+    path: 'items/:invoiceId', component: InvoiceItemsIndexComponent,
     children: [
       { path: 'create', component: InvoiceItemsCreateComponent, pathMatch: 'full' },
       { path: 'edit/:id', component: InvoiceItemsEditComponent, pathMatch: 'full' }

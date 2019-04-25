@@ -17,6 +17,8 @@ export class NgInvoiceItemsFieldsConfig extends DocumentFieldsConfig<InvoiceItem
 
     public formRules: FormRule[] = [];
 
+    public inventoryId: number;
+
     constructor(
         public fieldProviders: FieldProviders,
         public fieldsStore: NgFieldStore,
@@ -26,6 +28,10 @@ export class NgInvoiceItemsFieldsConfig extends DocumentFieldsConfig<InvoiceItem
     }
 
     protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<InvoiceItem, number>): Field[] {
+
+        let inventoryId = entity ? entity.object.inventoryId : undefined
+        inventoryId = inventoryId ? inventoryId : this.inventoryId;
+
         const fields = [
             new Field({
                 component: StringFieldComponent,
@@ -82,12 +88,11 @@ export class NgInvoiceItemsFieldsConfig extends DocumentFieldsConfig<InvoiceItem
             }),
 
             new Field({
-                component: IntFieldComponent,
-                value: entity ? entity.object.inventoryId : undefined,
+                component: HiddenFieldComponent,
+                value: inventoryId,
                 key: 'inventoryId',
                 validators: [Validators.required],
-                order: 7,
-                showColumn: true
+                order: 7
             })
         ];
 

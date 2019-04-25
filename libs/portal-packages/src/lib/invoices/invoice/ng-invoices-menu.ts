@@ -51,13 +51,6 @@ export class NgInvoicesMenu extends SidebarMenu {
             icon: 'shortText',
         }));
         this.primaryMenuItems.push(new MenuItem({
-            url: 'items',
-            displayName: this.translationPrefix + 'ITEMS',
-            area: 'manage',
-            order: 2,
-            icon: 'shortText',
-        }));
-        this.primaryMenuItems.push(new MenuItem({
             url: 'payments',
             displayName: this.translationPrefix + 'PAYMENTS',
             area: 'manage',

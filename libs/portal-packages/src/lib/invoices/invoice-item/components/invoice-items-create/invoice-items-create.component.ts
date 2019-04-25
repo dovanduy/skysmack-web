@@ -8,6 +8,7 @@ import { DocumentRecordFormComponent } from '@skysmack/portal-ui';
 import { NgInvoiceItemsStore } from '@skysmack/ng-packages';
 import { NgFieldActions } from '@skysmack/ng-redux';
 import { NgInvoiceItemsFieldsConfig } from '../../ng-invoice-items-fields-config';
+import { map, take } from 'rxjs/operators';
 
 @Component({
   selector: 'ss-invoice-items-create',
@@ -29,6 +30,14 @@ export class InvoiceItemsCreateComponent extends DocumentRecordFormComponent<Inv
   }
 
   ngOnInit() {
+
+    this.activatedRoute.parent.params.pipe(
+      map(params => {
+        this.fieldsConfig.inventoryId = params.id;
+      }),
+      take(1)
+    ).subscribe();
+
     super.ngOnInit();
     this.setCreateFields();
   }

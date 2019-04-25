@@ -19,6 +19,7 @@ export class InvoicesIndexComponent extends DocumentRecordIndexComponent<Invoice
 
   public area: string = INVOICES_AREA_KEY;
   public entityActions: EntityAction[] = [
+    new EntityAction().asUrlAction('items', 'Items', 'reorder'),
     new EntityAction().asUrlAction('edit', 'Edit', 'edit'),
     new EntityAction().asEventAction('Delete', this.delete, 'delete', this)
   ];
@@ -40,6 +41,5 @@ export class InvoicesIndexComponent extends DocumentRecordIndexComponent<Invoice
   ngOnInit() {
     super.ngOnInit();
     this.title.setTitle(this.packagePath);
-    console.log('Index');
   }
 }

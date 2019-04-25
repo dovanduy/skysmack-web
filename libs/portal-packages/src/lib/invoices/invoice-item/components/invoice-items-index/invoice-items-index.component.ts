@@ -7,8 +7,10 @@ import { NgInvoiceItemsStore } from '@skysmack/ng-packages';
 import { InvoiceItem, InvoiceItemsAppState, INVOICE_ITEMS_AREA_KEY } from '@skysmack/packages-invoices';
 import { NgInvoiceItemsMenu } from './../../ng-invoice-items-menu';
 import { EntityAction } from '@skysmack/ng-ui';
-import { NgFieldActions, NgFieldStore } from '@skysmack/ng-redux';
+import { NgFieldActions } from '@skysmack/ng-redux';
 import { NgInvoiceItemsFieldsConfig } from '../../ng-invoice-items-fields-config';
+import { RSQLFilterBuilder } from '@skysmack/framework';
+import { take, map } from 'rxjs/operators';
 
 
 @Component({
@@ -38,6 +40,16 @@ export class InvoiceItemsIndexComponent extends DocumentRecordIndexComponent<Inv
   }
 
   ngOnInit() {
+    // Only get items related to inventoryId
+    this.activatedRoute.params.pipe(
+      map(params => {
+        const filter = new RSQLFilterBuilder();
+        filter.column('inventoryId').in([params.invoiceId]);
+        this.pagedQuery.rsqlFilter = filter;
+      }),
+      take(1)
+    ).subscribe();
+
     super.ngOnInit();
     this.title.setTitle(this.packagePath);
   }
