@@ -7,7 +7,12 @@ export class HydratedState {
 export const TOOGLE_HYDRATED = 'TOOGLE_HYDRATED';
 
 export function hydratedReducer(state = new HydratedState(), action: any): HydratedState {
-    state = sharedReducer(state, action, new HydratedState());
+    // Hydrated must be true on logout, or the app loads forever on logout
+    // This happens because the auth interceptor listens for hydrated: "true"
+    // which it normally only becomes in app startup.
+    const logoutState = new HydratedState();
+    logoutState.hydrated = true;
+    state = sharedReducer(state, action, logoutState);
     const newState = Object.assign({}, state);
 
     switch (action.type) {
