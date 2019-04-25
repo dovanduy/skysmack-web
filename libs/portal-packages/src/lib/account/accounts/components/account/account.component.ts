@@ -21,6 +21,7 @@ export class AccountComponent extends BaseComponent<AccountState, unknown> imple
   }
 
   ngOnInit() {
+    super.ngOnInit();
   }
 
 }

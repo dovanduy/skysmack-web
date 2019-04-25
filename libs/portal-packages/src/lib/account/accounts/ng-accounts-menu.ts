@@ -5,12 +5,12 @@ import { NgSkysmackStore } from '@skysmack/ng-core';
 import { MenuArea } from '@skysmack/framework';
 import { MenuItem } from '@skysmack/framework';
 import { NgMenuItemProviders } from '@skysmack/ng-redux';
-import { ACCOUNT_AREA_KEY } from '@skysmack/packages-account';
+import { ACCOUNTS_AREA_KEY } from '@skysmack/packages-account';
 
 
 @Injectable({ providedIn: 'root' })
 export class NgAccountsMenu extends SidebarMenu {
-    public menuId = ACCOUNT_AREA_KEY;
+    public menuId = ACCOUNTS_AREA_KEY;
     public translationPrefix = 'ACCOUNTS.INDEX.';
 
     constructor(
@@ -32,7 +32,7 @@ export class NgAccountsMenu extends SidebarMenu {
         }));
 
         this.primaryMenuItems.push(new MenuItem({
-            url: 'create',
+            url: 'change-password',
             displayName: this.translationPrefix + 'CHANGE_PASSWORD',
             area: 'actions',
             order: 1,
@@ -42,13 +42,6 @@ export class NgAccountsMenu extends SidebarMenu {
 
     public setSpeedDialMenu() {
         this.speedDialMenu = [
-            new MenuItem({
-                url: 'create',
-                displayName: this.translationPrefix + 'CREATE',
-                area: undefined,
-                order: 1,
-                icon: 'add',
-            }),
         ];
     }
 }

@@ -5,9 +5,9 @@ import { EditorNavService } from './../../components/common/container/editor-nav
 import { FormBaseComponent } from './../form-base-component';
 import { NgSkysmackStore } from '@skysmack/ng-core';
 import { EntityActions, EntityStore } from '@skysmack/redux';
-import { FormHelper, Field } from '@skysmack/ng-ui';
-import { map, switchMap } from 'rxjs/operators';
-import { combineLatest, Observable } from 'rxjs';
+import { FormHelper } from '@skysmack/ng-ui';
+import { switchMap } from 'rxjs/operators';
+import { combineLatest } from 'rxjs';
 import { EntityFieldsConfig } from '../../fields/entity-fields-config';
 
 export class RecordFormComponent<TAppState, TRecord extends Record<TKey>, TKey> extends FormBaseComponent<TAppState, TRecord, TKey> implements OnInit, OnDestroy {

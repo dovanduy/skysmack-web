@@ -1,4 +1,4 @@
 // Ensure area key is the same as the reducer name without the "Reducer" part.
-export const ACCOUNT_AREA_KEY = 'account'; // validation, registerRedux, store, menu
-export const ACCOUNT_REDUX_KEY = 'ACCOUNT_'; // reducer prefix, action, epics, Requests
-export const ACCOUNT_ADDITIONAL_PATHS = []; // actions, requests
+export const ACCOUNTS_AREA_KEY = 'accounts'; // validation, registerRedux, store, menu
+export const ACCOUNTS_REDUX_KEY = 'ACCOUNTS_'; // reducer prefix, action, epics, Requests
+export const ACCOUNTS_ADDITIONAL_PATHS = []; // actions, requests

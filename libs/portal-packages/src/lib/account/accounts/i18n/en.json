@@ -2,26 +2,30 @@
     "ACCOUNTS": {
         "FORM": {
             "LABELS": {
-                "EMAIL": "Email",
-                "PASSWORD": "Password",
-                "REPEATPASSWORD": "Repeat password"
+                "CURRENTPASSWORD": "Current password",
+                "NEWPASSWORD": "New password",
+                "CONFIRMNEWPASSWORD": "Confirm new password"
             },
             "PLACEHOLDERS": {
-                "EMAIL": "Email",
-                "PASSWORD": "Password",
-                "REPEATPASSWORD": "Repeat password"
+                "CURRENTPASSWORD": "Current password",
+                "NEWPASSWORD": "New password",
+                "CONFIRMNEWPASSWORD": "Confirm new password"
             },
             "VALIDATION": {
-                "EMAIL": {
-                    "REQUIRED": "Email is required"
+                "CURRENTPASSWORD": {
+                    "REQUIRED": "Current password is required."
                 },
-                "PASSWORD": {
-                    "REQUIRED": "Password is required."
+                "NEWPASSWORD": {
+                    "REQUIRED": "New password is required."
                 },
-                "REPEATPASSWORD": {
-                    "REQUIRED": "Repeat password is required."
+                "CONFIRMNEWPASSWORD": {
+                    "REQUIRED": "Please repeat the new password.",
+                    "PASSWORDMISMATCH": "Passwords must match."
                 }
             }
+        },
+        "CHANGE_PASSWORD": {
+            "TITLE": "Change password"
         },
         "INDEX": {
             "ACTIONS": "Actions",

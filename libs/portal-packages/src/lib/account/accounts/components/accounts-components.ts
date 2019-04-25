@@ -4,10 +4,11 @@ import { AccountComponent } from './account/account.component';
 
 export const accountsRoutes: Routes = [
     {
-        path: '', component: AccountComponent
-    },
-    {
-        path: 'change-password', component: ChangePasswordComponent
+        path: '', component: AccountComponent, children: [
+            {
+                path: 'change-password', component: ChangePasswordComponent
+            }
+        ]
     }
 ];
 

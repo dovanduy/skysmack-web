@@ -66,6 +66,9 @@ export class ContainerComponent implements OnInit, OnDestroy {
         } else if (this.path.endsWith('/settings')) {
           const newPath = this.path.slice(0, this.path.length - '/settings'.length);
           this.router.navigate([newPath]);
+        } else if (this.path.endsWith('/change-password')) {
+          const newPath = this.path.slice(0, this.path.length - '/change-password'.length);
+          this.router.navigate([newPath]);
         } else {
           this.router.navigate([this.path]);
         }

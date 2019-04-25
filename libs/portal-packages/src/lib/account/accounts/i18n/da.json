@@ -2,26 +2,30 @@
     "ACCOUNTS": {
         "FORM": {
             "LABELS": {
-                "EMAIL": "Email",
-                "PASSWORD": "Password",
-                "REPEATPASSWORD": "Repeat password"
+                "CURRENTPASSWORD": "Nuværende kodeord",
+                "NEWPASSWORD": "Nyt kodeord",
+                "CONFIRMNEWPASSWORD": "Bekræft kodeord"
             },
             "PLACEHOLDERS": {
-                "EMAIL": "Email",
-                "PASSWORD": "Password",
-                "REPEATPASSWORD": "Repeat password"
+                "CURRENTPASSWORD": "Nuværende kodeord",
+                "NEWPASSWORD": "Nyt kodeord",
+                "CONFIRMNEWPASSWORD": "Bekræft kodeord"
             },
             "VALIDATION": {
-                "EMAIL": {
-                    "REQUIRED": "Email is required"
+                "CURRENTPASSWORD": {
+                    "REQUIRED": "Nuværende kodeord er påkrævet."
                 },
-                "PASSWORD": {
-                    "REQUIRED": "Password is required."
+                "NEWPASSWORD": {
+                    "REQUIRED": "Nyt kodeord er påkrævet."
                 },
-                "REPEATPASSWORD": {
-                    "REQUIRED": "Repeat password is required."
+                "CONFIRMNEWPASSWORD": {
+                    "REQUIRED": "Gentag det nye kodeord.",
+                    "PASSWORDMISMATCH": "Kodeord skal være ens."
                 }
             }
+        },
+        "CHANGE_PASSWORD": {
+            "TITLE": "Change password"
         },
         "INDEX": {
             "ACTIONS": "Handlinger",

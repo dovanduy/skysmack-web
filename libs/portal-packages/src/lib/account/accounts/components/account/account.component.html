@@ -1,4 +1,1 @@
-<!-- *ngIf="loadedPackage$ | async as loadedPackage" -->
-<ss-container [sidebarMenu]="sidebarMenu">
-
-</ss-container>
+<ss-container [sidebarMenu]="sidebarMenu" *ngIf="loadedPackage$ | async as loadedPackage"></ss-container>
