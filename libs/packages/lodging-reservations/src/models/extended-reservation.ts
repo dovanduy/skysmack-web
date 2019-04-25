@@ -1,4 +1,4 @@
-import { LocalObject, EnumHelpers } from '@skysmack/framework';
+import { LocalObject } from '@skysmack/framework';
 import { LodgingReservation } from './lodging-reservation';
 import { Lodging, LodgingType } from '@skysmack/packages-lodgings';
 import * as _moment from 'moment';
@@ -24,6 +24,7 @@ export class ExtendedReservation {
             this.checkIn = moment(reservation.object.checkIn).format('DD-MM-YYYY');
             this.checkOut = moment(reservation.object.checkOut).format('DD-MM-YYYY');
         }
+
         this.lodgingName = lodging ? lodging.object.name : '';
         this.lodgingTypeName = lodgingType ? lodgingType.object.name : '';
         this.disabled = lodging ? lodging.object.disabled : undefined;
