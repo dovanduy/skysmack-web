@@ -2,7 +2,6 @@ import { animate, style, transition, trigger } from '@angular/animations';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { EntityComponentPageTitle } from '@skysmack/portal-ui';
-import { NgOauth2Store } from '@skysmack/ng-packages';
 import { NgSkysmackStore } from '@skysmack/ng-core';
 import { LoginFieldsConfig } from './../../login-fields-config';
 import { NgSkysmackActions } from '@skysmack/ng-core';
@@ -11,7 +10,9 @@ import { AuthenticationActions } from '@skysmack/redux';
 import { filter } from 'rxjs/operators';
 import { Oauth2Requests } from '@skysmack/ng-packages';
 import { Field, FormHelper } from '@skysmack/ng-ui';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
+import { NgAuthenticationStore } from '@skysmack/ng-redux';
+import { NgRedux } from '@angular-redux/store';
 
 @Component({
   selector: 'ss-login',
@@ -46,7 +47,8 @@ export class LoginComponent implements OnInit, OnDestroy {
   constructor(
     public componentPageTitle: EntityComponentPageTitle,
     public router: Router,
-    public store: NgOauth2Store,
+    public store: NgAuthenticationStore,
+    public ngRedux: NgRedux<any>,
     public skysmackStore: NgSkysmackStore,
     public skysmackActions: NgSkysmackActions,
     public fieldsConfig: LoginFieldsConfig,
@@ -78,9 +80,9 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   private login(credentials: { email: string, password: string }) {
-    this.store.store.dispatch({ type: AuthenticationActions.CLEAR_LOGIN_ERROR });
+    this.ngRedux.dispatch({ type: AuthenticationActions.CLEAR_LOGIN_ERROR });
     const authPath = this.router.url.split('/')[1];
-    this.subscriptionHandler.register(this.requests.login(credentials.email, credentials.password, authPath).subscribe(loginResultAction => this.store.store.dispatch(loginResultAction)));
+    this.subscriptionHandler.register(this.requests.login(credentials.email, credentials.password, authPath).subscribe(loginResultAction => this.ngRedux.dispatch(loginResultAction)));
     this.loggingIn = true;
 
     this.subscriptionHandler.register(this.store.isCurrentUserAuthenticated()
@@ -103,6 +105,6 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   private clearLoginErrors() {
-    this.subscriptionHandler.register(this.skysmackStore.getHydrated().pipe(filter(x => x === true)).subscribe(() => this.store.store.dispatch({ type: AuthenticationActions.CLEAR_LOGIN_ERROR })));
+    this.subscriptionHandler.register(this.skysmackStore.getHydrated().pipe(filter(x => x === true)).subscribe(() => this.ngRedux.dispatch({ type: AuthenticationActions.CLEAR_LOGIN_ERROR })));
   }
 }
