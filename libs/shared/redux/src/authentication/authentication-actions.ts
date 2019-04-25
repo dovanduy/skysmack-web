@@ -1,8 +1,6 @@
 import { Store } from 'redux';
 import { ReduxAction } from './../action-types/redux-action';
 import { RESET_STATE } from '@redux-offline/redux-offline/lib/constants';
-import { CurrentUser } from '@skysmack/framework';
-import * as localForage from 'localforage';
 
 export class AuthenticationActions<TStateType, TStore extends Store<TStateType>> {
 
@@ -23,7 +21,6 @@ export class AuthenticationActions<TStateType, TStore extends Store<TStateType>>
 
     public logout(): void {
         this.store.dispatch({ type: RESET_STATE });
-        localForage.setItem<CurrentUser>('currentUser', undefined);
         this.store.dispatch(Object.assign({}, new ReduxAction({
             type: AuthenticationActions.LOG_OUT
         })));

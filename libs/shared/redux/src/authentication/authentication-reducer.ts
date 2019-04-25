@@ -3,7 +3,6 @@ import { AuthenticationActions } from './authentication-actions';
 import { AuthenticationState } from './authentication-state';
 import { ReduxAction } from './../action-types/redux-action';
 import { sharedReducer } from './../reducers';
-import * as localForage from 'localforage';
 
 export function authenticationReducer(state = new AuthenticationState(), action: ReduxAction): AuthenticationState {
     state = sharedReducer(state, action, new AuthenticationState());
@@ -13,7 +12,6 @@ export function authenticationReducer(state = new AuthenticationState(), action:
         case AuthenticationActions.LOG_IN_SUCCESS: {
             const castedAction = action as ReduxAction<CurrentUser>;
             newState.currentUser = castedAction.payload;
-            localForage.setItem('currentUser', castedAction.payload);
             newState.loginError = null;
             return newState;
         }

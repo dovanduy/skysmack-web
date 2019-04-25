@@ -1,9 +1,10 @@
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, of, BehaviorSubject, throwError } from 'rxjs';
+import { Observable, BehaviorSubject, throwError } from 'rxjs';
 import { mergeMap, take, catchError, switchMap, finalize, filter, tap } from 'rxjs/operators';
 import { CurrentUser } from '@skysmack/framework';
 import { NgAuthenticationStore, NgAuthenticationActions } from '@skysmack/ng-redux';
+import { NgRedux } from '@angular-redux/store';
 
 
 @Injectable({ providedIn: 'root' })
@@ -13,28 +14,33 @@ export class AuthorizationInterceptor implements HttpInterceptor {
 
     constructor(
         public authenticationStore: NgAuthenticationStore,
-        public authenticationActions: NgAuthenticationActions
+        public authenticationActions: NgAuthenticationActions,
+        public ngRedux: NgRedux<{ hydrated: { hydrated: boolean } }>
     ) { }
 
     public intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any> | any> {
-        return this.authenticationStore.getCurrentUser().pipe(
+        return this.ngRedux.select(store => store.hydrated).pipe(
+            filter(state => state.hydrated === true),
             take(1),
-            mergeMap((currentUser: CurrentUser) => {
-                return next.handle(this.addTokenToRequest(request, currentUser)).pipe(
-                    catchError(error => {
-                        if (error instanceof HttpErrorResponse) {
-                            switch ((error as HttpErrorResponse).status) {
-                                case 401:
-                                    return this.handle401Error(request, next);
-                                default:
-                                    return throwError(error);
+            switchMap(() => this.authenticationStore.getCurrentUser().pipe(
+                take(1),
+                mergeMap((currentUser: CurrentUser) => {
+                    return next.handle(this.addTokenToRequest(request, currentUser)).pipe(
+                        catchError(error => {
+                            if (error instanceof HttpErrorResponse) {
+                                switch ((error as HttpErrorResponse).status) {
+                                    case 401:
+                                        return this.handle401Error(request, next);
+                                    default:
+                                        return throwError(error);
+                                }
+                            } else {
+                                return throwError(error);
                             }
-                        } else {
-                            return throwError(error);
-                        }
-                    })
-                );
-            })
+                        })
+                    );
+                })
+            ))
         );
     }
 
