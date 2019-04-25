@@ -31,7 +31,6 @@ export function getPagedDependencies(options: GetDependenciesOptions) {
         const packagePath = options.action.payload.packagePath;
 
         if (options.packageDependencyIndex || options.packageDependencyIndex === 0) {
-            console.log('connected package');
             options.skysmackStore.getCurrentPackage(packagePath).pipe(
                 map(_package => {
                     return options.actions.getPaged(_package._package.dependencies[options.packageDependencyIndex], query);
@@ -49,8 +48,6 @@ export function getPagedDependencies(options: GetDependenciesOptions) {
             ).subscribe();
 
         } else {
-            console.log('standard');
-
             options.actions.getPaged(packagePath, query);
 
             // Match deps
