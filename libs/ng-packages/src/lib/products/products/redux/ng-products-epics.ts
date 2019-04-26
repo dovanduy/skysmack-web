@@ -4,9 +4,9 @@ import { NgProductsRequests } from './ng-products-requests';
 import { Injectable } from '@angular/core';
 import { NgProductsNotifications } from '../ng-products-notifications';
 import { getReadDependencies } from '@skysmack/ng-redux';
-import { NgProductTypesStore } from '../../../products/product-types/redux/ng-product-types-store';
-import { NgProductTypesActions } from '../../product-types/redux/ng-product-types-actions';
 import { NgSkysmackStore } from '@skysmack/ng-core';
+import { NgProductTypesStore } from '../../product-types/redux/ng-product-types-store';
+import { NgProductTypesActions } from '../../product-types/redux/ng-product-types-actions';
 
 @Injectable({ providedIn: 'root' })
 export class NgProductsEpics extends RecordEpicsBase<Product, number> {
@@ -16,7 +16,7 @@ export class NgProductsEpics extends RecordEpicsBase<Product, number> {
         protected skysmackStore: NgSkysmackStore,
         protected productTypesStore: NgProductTypesStore,
         protected productTypesActions: NgProductTypesActions
-        ) {
+    ) {
         super(requests, PRODUCTS_REDUX_KEY, notifications);
         this.epics = this.epics.concat([
             ...getReadDependencies({
