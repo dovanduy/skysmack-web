@@ -45,7 +45,7 @@ export class NgProductsSalesPriceFieldsConfig extends FieldsConfig<ProductsSales
                 component: SelectFieldComponent,
                 value: entity ? entity.object.recordId : undefined,
                 key: 'recordId',
-                displayKey: 'products',
+                displayKey: 'product',
                 displaySubKey: 'object.name',
                 validators: [Validators.required],
                 optionsData$: this.productsStore.get(loadedPackage._package.dependencies[0]),

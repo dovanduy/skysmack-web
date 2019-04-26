@@ -26,7 +26,8 @@ export class NgProductsSalesPriceEpics extends RecordEpicsBase<ProductsSalesPric
                 rsqlIdSelector: 'id',
                 skysmackStore: this.skysmackStore,
                 store: this.productsStore,
-                actions: this.productsActions
+                actions: this.productsActions,
+                packageDependencyIndex: 0
             })
         ]);
     }

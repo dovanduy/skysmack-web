@@ -33,14 +33,13 @@ export class NgProductPricingsFieldProvider extends FieldProvider {
                                 const extendedData: StrIndex<StrIndex<StrIndex<number>>> = providedEntity.object['extendedData'];
                                 if (extendedData) {
                                     return Object.keys(extendedData)
-                                        .filter(packageKey => packageKey !== productPricingPackage.object.path)
+                                        .filter(packageKey => packageKey === productPricingPackage.object.path)
                                         .map(packageKey => {
                                             const productPricings: StrIndex<StrIndex<number>> = extendedData[packageKey];
                                             let currencyCodes: StrIndex<number>;
                                             if (productPricings) {
                                                 currencyCodes = productPricings['prices'];
                                             }
-
                                             if (currencyCodes) {
                                                 return Object.keys(currencyCodes).map(currencyCodeKey => {
                                                     const currencyCode = currencyCodeKey.toUpperCase();
