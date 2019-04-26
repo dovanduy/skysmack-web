@@ -1,0 +1,54 @@
+{
+    "LODGING_PRICES": {
+        "CREATE": {
+            "CREATE": "Create"
+        },
+        "EDIT": {
+            "EDIT": "Edit"
+        },
+        "INDEX": {
+            "ACTIONS": "Actions",
+            "CREATE": "Create",
+            "DELETE": "Delete",
+            "MANAGE": "Manage",
+            "FIELDS": "Fields",
+            "BACK": "Back"
+        },
+        "FORM": {
+            "LABELS": {
+                "CURRENCYCODE": "Currency code",
+                "RECORDID": "Product",
+                "PRICE": "Price"
+            },
+            "PLACEHOLDERS": {
+                "CURRENCYCODE": "Currency code",
+                "RECORDID": "Product",
+                "PRICE": "Price"
+            },
+            "VALIDATION": {
+                "CURRENCYCODE": {
+                    "REQUIRED": "Currency code is required"
+                },
+                "RECORDID": {
+                    "REQUIRED": "Product is required"
+                },
+                "PRICE": {
+                    "REQUIRED": "Price is required"
+                }
+            }
+        },
+        "QUEUE": {
+            "ADDING": "Adding {{ name }}",
+            "UPDATING": "Updating {{ name }}",
+            "DELETING": "Deleting {{ name }}",
+            "ERROR": "An error occured with {{ name }}. Correct and try again."
+        }
+    },
+    "PRODUCTS": {
+        "FORM": {
+            "LABELS": {
+                "PRODUCTSPRICING": "Price"
+            }
+        }
+    }
+}

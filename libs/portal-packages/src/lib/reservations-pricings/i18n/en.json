@@ -1,0 +1,12 @@
+{
+    "RESERVATIONS_PRICINGS": {
+        "INDEX": {
+            "MANAGE": "Manage",
+            "ALLOCATED_PRICES": "Allocated lodging prices",
+            "PRICES": "Lodging prices",
+            "ALLOCATED_PRICES_TYPES": "Allocated lodging type prices",
+            "PRICES_TYPES": "Lodging type prices",
+            "CONNECTED PACKAGES": "Connected packages"
+        }
+    }
+}

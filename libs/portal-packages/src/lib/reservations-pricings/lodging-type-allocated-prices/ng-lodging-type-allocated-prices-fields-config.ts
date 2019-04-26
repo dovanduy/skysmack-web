@@ -1,33 +1,28 @@
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { LocalObject, LocalObjectStatus, PagedQuery } from '@skysmack/framework';
-import { ProductPriceChange } from '@skysmack/packages-products-pricings';
 import { FormRule, SelectField, Field } from '@skysmack/ng-ui';
-import { NgProductPriceChangesValidation, NgProductsSalesPriceStore, NgProductsStore, NgProductsActions } from '@skysmack/ng-packages';
+import { NgLodgingTypeAllocatedPricesValidation, NgLodgingTypesStore, NgLodgingTypesActions } from '@skysmack/ng-packages';
 import { FieldsConfig, SelectFieldComponent, HiddenFieldComponent, DecimalFieldComponent, DateTimeFieldComponent } from '@skysmack/portal-ui';
-import { of } from 'rxjs';
 import { FieldProviders } from '@skysmack/portal-ui';
 import { LoadedPackage } from '@skysmack/ng-redux';
-import { NgProductsSalesPriceActions } from '@skysmack/ng-packages';
+import { LodgingTypeAllocatedPrice } from '@skysmack/packages-reservations-pricings';
+import { of } from 'rxjs';
 import { PriceChangeType } from '@skysmack/pricings';
 
 @Injectable({ providedIn: 'root' })
-export class NgProductPriceChangesFieldsConfig extends FieldsConfig<ProductPriceChange, number> {
-    public validation = new NgProductPriceChangesValidation();
+export class NgLodgingTypeAllocatedPricesFieldsConfig extends FieldsConfig<LodgingTypeAllocatedPrice, number> {
+    public validation = new NgLodgingTypeAllocatedPricesValidation();
 
     public formRules: FormRule[] = [];
 
     constructor(
-        public productsSalesPriceStore: NgProductsSalesPriceStore,
-        public fieldProviders: FieldProviders,
-        public productSalesPriceActions: NgProductsSalesPriceActions,
-        public productsStore: NgProductsStore,
-        public productsActions: NgProductsActions,
-    ) {
-        super(fieldProviders);
-    }
+        public lodgingTypesStore: NgLodgingTypesStore,
+        public lodgingTypesActions: NgLodgingTypesActions,
+        public fieldProviders: FieldProviders
+    ) { super(fieldProviders); }
 
-    protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<ProductPriceChange, number>): Field[] {
+    protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<LodgingTypeAllocatedPrice, number>): Field[] {
         const fields = [
             new SelectField({
                 component: SelectFieldComponent,
@@ -51,11 +46,11 @@ export class NgProductPriceChangesFieldsConfig extends FieldsConfig<ProductPrice
                 component: SelectFieldComponent,
                 value: entity ? entity.object.recordId : undefined,
                 key: 'recordId',
+                displayKey: 'lodging',
+                displaySubKey: 'object.name',
                 validators: [Validators.required],
-                displayKey: 'productSalesPrice',
-                displaySubKey: 'object.change',
-                optionsData$: this.productsStore.get(loadedPackage._package.dependencies[0]),
-                getDependencies: () => { this.productsActions.getPaged(loadedPackage._package.dependencies[0], new PagedQuery()); },
+                optionsData$: this.lodgingTypesStore.get(loadedPackage._package.dependencies[0]),
+                getDependencies: () => { this.lodgingTypesActions.getPaged(loadedPackage._package.dependencies[0], new PagedQuery()); },
                 displayNameSelector: 'object.name',
                 order: 2,
                 showColumn: true
@@ -93,6 +88,22 @@ export class NgProductPriceChangesFieldsConfig extends FieldsConfig<ProductPrice
                 validators: [Validators.required],
                 order: 6,
                 showColumn: true
+            }),
+            new Field({
+                component: DateTimeFieldComponent,
+                value: entity ? entity.object.start : undefined,
+                key: 'start',
+                validators: [Validators.required],
+                order: 5,
+                showColumn: true
+            }),
+            new Field({
+                component: DateTimeFieldComponent,
+                value: entity ? entity.object.end : undefined,
+                key: 'end',
+                validators: [Validators.required],
+                order: 6,
+                showColumn: true
             })
         ];
 
@@ -110,4 +121,3 @@ export class NgProductPriceChangesFieldsConfig extends FieldsConfig<ProductPrice
         return fields;
     }
 }
-

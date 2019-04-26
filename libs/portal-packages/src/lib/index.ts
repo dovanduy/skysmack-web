@@ -9,5 +9,6 @@ export * from './invoices/invoices.module';
 export * from './persons-lodging-reservations/persons-lodging-reservations.module';
 export * from './products/products.module';
 export * from './products-pricings/products-pricings.module';
+export * from './reservations-pricings/reservations-pricings.module';
 export * from './terminal-payments/terminal-payments.module';
 export * from './account/account.module'
