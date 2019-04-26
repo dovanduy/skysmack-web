@@ -5,7 +5,8 @@
   "scripts": {
     "ng": "node --max_old_space_size=8000 ./node_modules/@angular/cli/bin/ng",
     "start": "ng serve web-portal --host client1.skysmack.test --port 4000 --disableHostCheck",
-    "build": "ng build",
+    "build": "ng build --prod --deploy-url //cdn.skysmack.net/",
+    "build:dev": "ng build --prod --stats-json && cd dist/apps/web/web-portal && http-server -a www.skysmack.test -p 4000 -o",
     "test": "ng test",
     "lint": "./node_modules/.bin/nx lint && ng lint",
     "e2e": "ng e2e",

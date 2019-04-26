@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
 import { LocalObject, EnumHelpers } from '@skysmack/framework';
 import { LodgingReservationsAppState, LodgingReservation, LODGING_RESERVATIONS_AREA_KEY } from '@skysmack/packages-lodging-reservations';
 import { EntityAction } from '@skysmack/ng-ui';
