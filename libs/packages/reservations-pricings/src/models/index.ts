@@ -1,5 +1,4 @@
-export * from './product-type-sales-price';
-export * from './products-sales-price';
-
-export * from './product-price-change';
-export * from './product-type-price-change';
+export * from './lodging-allocated-price';
+export * from './lodging-price';
+export * from './lodging-type-allocated-price';
+export * from './lodging-type-price';
