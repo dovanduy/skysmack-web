@@ -91,6 +91,10 @@ const extraRoutes = [
         loadChildren: './../packages/modules/lodging_reservations_wrapper.module#LodgingReservationsWrapperModule'
       },
       {
+        path: 'skysmack/loadPackages/reservations-pricings',
+        loadChildren: './../packages/modules/reservations_pricings_wrapper.module#ReservationsPricingsWrapperModule'
+      },
+      {
         path: 'skysmack/loadPackages/personsLodgingReservations',
         loadChildren: './../packages/modules/persons_lodging_reservations_wrapper.module#PersonsLodgingReservationsWrapperModule'
       },

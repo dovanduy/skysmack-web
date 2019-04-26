@@ -5,8 +5,8 @@ import { EntityComponentPageTitle } from '@skysmack/portal-ui';
 import { NgReservationsPricingsMenu } from '../../ng-reservations-pricings-menu';
 
 @Component({
-  selector: 'ss-reservations-prices-index',
-  templateUrl: './reservations-prices-index.component.html'
+  selector: 'ss-reservations-pricings-index',
+  templateUrl: './reservations-pricings-index.component.html'
 })
 export class ReservationsPricingsIndexComponent implements OnInit {
 
