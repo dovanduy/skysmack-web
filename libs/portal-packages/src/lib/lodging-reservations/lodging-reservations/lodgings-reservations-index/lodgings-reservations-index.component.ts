@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { LocalObject, EnumHelpers } from '@skysmack/framework';
-import { ExtendedReservation, LodgingReservationsAppState, LodgingReservation, LODGING_RESERVATIONS_AREA_KEY } from '@skysmack/packages-lodging-reservations';
+import { LodgingReservationsAppState, LodgingReservation, LODGING_RESERVATIONS_AREA_KEY } from '@skysmack/packages-lodging-reservations';
 import { EntityAction } from '@skysmack/ng-ui';
 import { NgLodgingReservationsStore, NgLodgingsStore, NgLodgingTypesStore, NgLodgingsActions, NgLodgingTypesActions, NgLodgingReservationsActions } from '@skysmack/ng-packages';
 import { RecordIndexComponent, EntityComponentPageTitle } from '@skysmack/portal-ui';
@@ -87,46 +87,46 @@ export class LodgingsReservationsIndexComponent extends RecordIndexComponent<Lod
     super.ngOnInit();
   }
 
-  public checkIn(entity: LocalObject<ExtendedReservation, number>, _this: LodgingsArrivalsComponent) {
+  public checkIn(entity: LocalObject<LodgingReservation, number>, _this: LodgingsArrivalsComponent) {
     let checkIn;
-    if (entity.object.lodging) {
-      checkIn = { reservationId: entity.object.id, lodgingId: entity.object.lodging.object.id };
+    if (entity.object.allocatedLodgingId && entity.object.allocatedLodgingId > 0) {
+      checkIn = { reservationId: entity.object.id, lodgingId: entity.object.allocatedLodgingId };
     } else {
       checkIn = { reservationId: entity.object.id };
     }
 
-    _this.actions.checkIn(_this.packagePath, entity.object.reservation, [new CheckIn(checkIn)]);
+    _this.actions.checkIn(_this.packagePath, entity, [new CheckIn(checkIn)]);
   }
-  public undoCheckin(entity: LocalObject<ExtendedReservation, number>, _this: LodgingsArrivalsComponent) {
-    _this.actions.undoCheckIn(_this.packagePath, entity.object.reservation, [entity.object.id]);
-  }
-
-  public checkOut(entity: LocalObject<ExtendedReservation, number>, _this: LodgingsArrivalsComponent) {
-    _this.actions.checkOut(_this.packagePath, entity.object.reservation, [entity.object.id]);
-  }
-  public undoCheckout(entity: LocalObject<ExtendedReservation, number>, _this: LodgingsArrivalsComponent) {
-    _this.actions.undoCheckOut(_this.packagePath, entity.object.reservation, [entity.object.id]);
+  public undoCheckin(entity: LocalObject<LodgingReservation, number>, _this: LodgingsArrivalsComponent) {
+    _this.actions.undoCheckIn(_this.packagePath, entity, [entity.object.id]);
   }
 
-  public cancel(entity: LocalObject<ExtendedReservation, number>, _this: LodgingsArrivalsComponent) {
-    _this.actions.cancel(_this.packagePath, entity.object.reservation, [entity.object.id]);
+  public checkOut(entity: LocalObject<LodgingReservation, number>, _this: LodgingsArrivalsComponent) {
+    _this.actions.checkOut(_this.packagePath, entity, [entity.object.id]);
   }
-  public undoCancel(entity: LocalObject<ExtendedReservation, number>, _this: LodgingsArrivalsComponent) {
-    _this.actions.undoCancel(_this.packagePath, entity.object.reservation, [entity.object.id]);
-  }
-
-  public move(entity: LocalObject<ExtendedReservation, number>, _this: LodgingsArrivalsComponent) {
-    _this.actions.move(_this.packagePath, entity.object.reservation, [new CheckIn({ reservationId: entity.object.id })]);
-  }
-  public undoMove(entity: LocalObject<ExtendedReservation, number>, _this: LodgingsArrivalsComponent) {
-    _this.actions.undoMove(_this.packagePath, entity.object.reservation, [entity.object.id]);
+  public undoCheckout(entity: LocalObject<LodgingReservation, number>, _this: LodgingsArrivalsComponent) {
+    _this.actions.undoCheckOut(_this.packagePath, entity, [entity.object.id]);
   }
 
-  public noShow(entity: LocalObject<ExtendedReservation, number>, _this: LodgingsArrivalsComponent) {
-    _this.actions.noShow(_this.packagePath, entity.object.reservation, [entity.object.id]);
+  public cancel(entity: LocalObject<LodgingReservation, number>, _this: LodgingsArrivalsComponent) {
+    _this.actions.cancel(_this.packagePath, entity, [entity.object.id]);
   }
-  public undoNoShow(entity: LocalObject<ExtendedReservation, number>, _this: LodgingsArrivalsComponent) {
-    _this.actions.undoNoShow(_this.packagePath, entity.object.reservation, [entity.object.id]);
+  public undoCancel(entity: LocalObject<LodgingReservation, number>, _this: LodgingsArrivalsComponent) {
+    _this.actions.undoCancel(_this.packagePath, entity, [entity.object.id]);
+  }
+
+  public move(entity: LocalObject<LodgingReservation, number>, _this: LodgingsArrivalsComponent) {
+    _this.actions.move(_this.packagePath, entity, [new CheckIn({ reservationId: entity.object.id })]);
+  }
+  public undoMove(entity: LocalObject<LodgingReservation, number>, _this: LodgingsArrivalsComponent) {
+    _this.actions.undoMove(_this.packagePath, entity, [entity.object.id]);
+  }
+
+  public noShow(entity: LocalObject<LodgingReservation, number>, _this: LodgingsArrivalsComponent) {
+    _this.actions.noShow(_this.packagePath, entity, [entity.object.id]);
+  }
+  public undoNoShow(entity: LocalObject<LodgingReservation, number>, _this: LodgingsArrivalsComponent) {
+    _this.actions.undoNoShow(_this.packagePath, entity, [entity.object.id]);
   }
 }
 
