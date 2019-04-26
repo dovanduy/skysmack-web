@@ -1,4 +1,4 @@
-import { SalesPrice } from './sales-price';
+import { SalesPrice } from '@skysmack/pricings';
 import { Product } from '@skysmack/packages-products';
 import { LocalObject } from '@skysmack/framework';
 

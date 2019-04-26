@@ -14,6 +14,7 @@
     "@skysmack/packages-invoices": "*",
     "@skysmack/packages-skysmack-core": "*",
     "@skysmack/packages-terminal-payments": "*",
+    "@skysmack/packages-reservations-pricings": "*",
     "@skysmack/ng-redux": "*",
     "@skysmack/ng-packages": "*",
     "@skysmack/ng-ui": "*",

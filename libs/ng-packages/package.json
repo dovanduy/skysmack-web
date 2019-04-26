@@ -18,6 +18,7 @@
     "@skysmack/packages-persons-lodging-reservations": "*",
     "@skysmack/packages-products": "*",
     "@skysmack/packages-products-pricings": "*",
+    "@skysmack/packages-reservations-pricings": "*",
     "@skysmack/packages-skysmack-core": "*",
     "@skysmack/packages-terminal-payments": "*"
   },

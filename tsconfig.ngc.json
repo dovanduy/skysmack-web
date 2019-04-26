@@ -26,6 +26,9 @@
       "@skysmack/redux": [
         "./dist/@skysmack/redux"
       ],
+      "@skysmack/pricings": [
+        "./dist/@skysmack/pricings"
+      ],
       "@skysmack/packages-skysmack-core": [
         "./dist/@skysmack/packages-skysmack-core"
       ],

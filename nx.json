@@ -9,13 +9,25 @@
   },
   "projects": {
     "shared-framework": {
-      "tags": ["shared", "framework"]
+      "tags": [
+        "shared",
+        "framework"
+      ]
     },
     "shared-redux": {
-      "tags": ["shared", "redux"]
+      "tags": [
+        "shared",
+        "redux"
+      ]
+    },
+    "shared-pricings": {
+      "tags": []
     },
     "packages-skysmack-core": {
-      "tags": ["packages", "skysmack-core"]
+      "tags": [
+        "packages",
+        "skysmack-core"
+      ]
     },
     "packages-baskets": {
       "tags": []
@@ -51,6 +63,9 @@
       "tags": []
     },
     "packages-terminal-payments": {
+      "tags": []
+    },
+    "packages-reservations-pricings": {
       "tags": []
     },
     "ng-packages": {

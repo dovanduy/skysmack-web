@@ -26,6 +26,9 @@
       "@skysmack/redux": [
         "./libs/shared/redux/public_api.ts"
       ],
+      "@skysmack/pricings": [
+        "./libs/shared/pricings/public_api.ts"
+      ],
       "@skysmack/packages-skysmack-core": [
         "libs/packages/skysmack-core/public_api.ts"
       ],
@@ -65,6 +68,9 @@
       "@skysmack/packages-terminal-payments": [
         "libs/packages/terminal-payments/public_api.ts"
       ],
+      "@skysmack/packages-reservations-pricings": [
+        "libs/packages/reservations-pricings/public_api.ts"
+      ],
       "@skysmack/ng-packages": [
         "libs/ng-packages/src/public_api.ts"
       ],
@@ -88,10 +94,7 @@
       ],
       "@skysmack/packages-account": [
         "libs/packages/account/public_api.ts"
-      ],
-      "@skysmack/packages-reservations-pricings": [
-        "libs/packages/reservations-pricings/public_api.ts"
-      ],
+      ]
     }
   },
   "exclude": [

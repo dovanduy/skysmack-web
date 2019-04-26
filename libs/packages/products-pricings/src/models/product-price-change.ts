@@ -1,5 +1,5 @@
-import { PriceChange } from './price-change';
 import { LocalObject } from '@skysmack/framework';
+import { PriceChange } from '@skysmack/pricings';
 import { ProductsSalesPrice } from './products-sales-price';
 import { ProductTypePriceChange } from './product-type-price-change';
 
