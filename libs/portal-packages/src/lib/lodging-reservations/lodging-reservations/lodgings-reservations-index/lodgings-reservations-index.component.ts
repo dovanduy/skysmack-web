@@ -88,8 +88,8 @@ export class LodgingsReservationsIndexComponent extends RecordIndexComponent<Lod
 
   public checkIn(entity: LocalObject<LodgingReservation, number>, _this: LodgingsArrivalsComponent) {
     let checkIn;
-    if (entity.object.allocatedLodging) {
-      checkIn = { reservationId: entity.object.id, lodgingId: entity.object.allocatedLodging.object.id };
+    if (entity.object.allocatedLodgingId && entity.object.allocatedLodgingId > 0) {
+      checkIn = { reservationId: entity.object.id, lodgingId: entity.object.allocatedLodgingId };
     } else {
       checkIn = { reservationId: entity.object.id };
     }
