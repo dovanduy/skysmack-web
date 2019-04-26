@@ -88,7 +88,10 @@
       ],
       "@skysmack/packages-account": [
         "libs/packages/account/public_api.ts"
-      ]
+      ],
+      "@skysmack/packages-reservations-pricings": [
+        "libs/packages/reservations-pricings/public_api.ts"
+      ],
     }
   },
   "exclude": [
