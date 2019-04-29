@@ -21,7 +21,7 @@
                 "CHANGETYPE": "Price change type",
                 "VALIDFROM": "Valid from",
                 "VALIDTO": "Valid to",
-                "RECORDID": "Allocated lodging",
+                "RECORDID": "Allocated lodging type",
                 "START": "Start",
                 "END": "End"
             },

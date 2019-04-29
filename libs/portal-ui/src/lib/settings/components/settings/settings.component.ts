@@ -36,7 +36,8 @@ export class SettingsComponent extends BaseComponent<SettingsAppState<any>, unkn
 
   ngOnInit() {
     super.ngOnInit();
-    this.settingsKey = this.router.url.split('/')[3];
+    const settingsKey = this.router.url.split('/')[3];
+    this.settingsKey = settingsKey ? settingsKey : 'default';
     this.actions.get(this.packagePath, this.settingsKey);
     this.setFields();
   }

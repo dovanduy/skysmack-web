@@ -17,12 +17,12 @@
         "FORM": {
             "LABELS": {
                 "CURRENCYCODE": "Valuta kode",
-                "RECORDID": "Produkt",
+                "RECORDID": "Værelse",
                 "PRICE": "Pris"
             },
             "PLACEHOLDERS": {
                 "CURRENCYCODE": "Valuta kode",
-                "RECORDID": "Produkt",
+                "RECORDID": "Værelse",
                 "PRICE": "Pris"
             },
             "VALIDATION": {
@@ -30,7 +30,7 @@
                     "REQUIRED": "Valuta kode er påkrævet"
                 },
                 "RECORDID": {
-                    "REQUIRED": "Produkt er påkrævet."
+                    "REQUIRED": "Værelse er påkrævet."
                 },
                 "PRICE": {
                     "REQUIRED": "Pris er påkrævet."

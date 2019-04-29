@@ -2,11 +2,12 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 
-import { LanguageService } from '@skysmack/portal-ui';
+import { LanguageService, SettingsModule } from '@skysmack/portal-ui';
 import { NgIdentitiesModule, NgLodgingReservationsModule } from '@skysmack/ng-packages';
 import { PortalUiModule, FieldsModule } from '@skysmack/portal-ui';
 import { LodgingReservationsRoutingModule } from './lodging-reservations-routing.module';
 import { lodgingReservationsComponents } from './lodging-reservations/lodgings-reservations-components';
+import { NgLodgingReservationsSettingsFieldsConfig } from './ng-lodging-reservations-settings-fields-config';
 
 @NgModule({
   imports: [
@@ -16,13 +17,15 @@ import { lodgingReservationsComponents } from './lodging-reservations/lodgings-r
     LodgingReservationsRoutingModule,
     NgLodgingReservationsModule,
     NgIdentitiesModule,
-    FieldsModule
+    FieldsModule,
+    SettingsModule
   ],
   declarations: [
     ...lodgingReservationsComponents,
   ],
   providers: [
-    LanguageService
+    LanguageService,
+    { provide: 'NgLodgingReservationsSettingsFieldsConfig', useClass: NgLodgingReservationsSettingsFieldsConfig },
   ]
 })
 export class LodgingReservationsModule {

@@ -34,6 +34,12 @@ export class NgLodgingsReservationsMenu extends SidebarMenu {
             order: 2,
         }));
         this.primaryMenuAreas.push(new MenuArea({
+            area: 'settings',
+            translationPrefix: this.translationPrefix,
+            order: 4,
+        }));
+
+        this.primaryMenuAreas.push(new MenuArea({
             area: 'connected packages',
             translationPrefix: this.translationPrefix,
             order: 4,
@@ -72,6 +78,13 @@ export class NgLodgingsReservationsMenu extends SidebarMenu {
             url: '/' + this.packagePath + '/departures',
             displayName: this.translationPrefix + 'DEPARTURES',
             area: 'reservations',
+            order: 3,
+            icon: 'groupAdd',
+        }));
+        this.primaryMenuItems.push(new MenuItem({
+            url: '/' + this.packagePath + '/settings',
+            displayName: this.translationPrefix + 'SETTINGS',
+            area: 'settings',
             order: 3,
             icon: 'groupAdd',
         }));

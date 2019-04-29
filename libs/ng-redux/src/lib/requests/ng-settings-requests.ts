@@ -15,7 +15,9 @@ export class NgSettingsRequests {
     ) { }
 
     public get(action: ReduxAction<GetSettingsPayload>): Observable<ReduxAction<SettingsSuccessPayload> | ReduxAction<HttpErrorResponse>> {
-        const url = `${this.apiDomain.domain}/${action.payload.packagePath}/settings/${action.payload.settingKey}`;
+        const settingsKey = action.payload.settingKey === 'default' ? undefined : action.payload.settingKey;
+        let url = `${this.apiDomain.domain}/${action.payload.packagePath}/settings`;
+        url = settingsKey ? `${url}/${settingsKey}` : url;
 
         return this.http.get(url, { observe: 'response' })
             .pipe(

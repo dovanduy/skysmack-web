@@ -1,6 +1,5 @@
 import { RSQLFilterBuilder, PagedQuery, hasValue, LocalObject } from '@skysmack/framework';
-import { map, take, tap, switchMap } from 'rxjs/operators';
-import { AssignmentType } from '@skysmack/packages-maintenance';
+import { map, take, switchMap } from 'rxjs/operators';
 import { NgRecordStore } from '../../stores/ng-record-store';
 import { RecordActionsBase, ReduxAction, GetPagedEntitiesSuccessPayload } from '@skysmack/redux';
 import { SkysmackStore } from '../../stores/skysmack-store';

@@ -5,10 +5,12 @@ import { FormRule, SelectField, Field } from '@skysmack/ng-ui';
 import { NgLodgingTypeAllocatedPricesValidation, NgLodgingTypesStore, NgLodgingTypesActions } from '@skysmack/ng-packages';
 import { FieldsConfig, SelectFieldComponent, HiddenFieldComponent, DecimalFieldComponent, DateTimeFieldComponent } from '@skysmack/portal-ui';
 import { FieldProviders } from '@skysmack/portal-ui';
-import { LoadedPackage } from '@skysmack/ng-redux';
+import { LoadedPackage, getParentPackageDependency } from '@skysmack/ng-redux';
 import { LodgingTypeAllocatedPrice } from '@skysmack/packages-reservations-pricings';
 import { of } from 'rxjs';
 import { PriceChangeType } from '@skysmack/pricings';
+import { NgSkysmackStore } from '@skysmack/ng-core';
+import { map, take, switchMap } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
 export class NgLodgingTypeAllocatedPricesFieldsConfig extends FieldsConfig<LodgingTypeAllocatedPrice, number> {
@@ -17,12 +19,15 @@ export class NgLodgingTypeAllocatedPricesFieldsConfig extends FieldsConfig<Lodgi
     public formRules: FormRule[] = [];
 
     constructor(
+        public skysmackStore: NgSkysmackStore,
         public lodgingTypesStore: NgLodgingTypesStore,
         public lodgingTypesActions: NgLodgingTypesActions,
         public fieldProviders: FieldProviders
     ) { super(fieldProviders); }
 
     protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<LodgingTypeAllocatedPrice, number>): Field[] {
+        const lodgingTypePackage$ = getParentPackageDependency(this.skysmackStore, loadedPackage._package.dependencies[0]);
+
         const fields = [
             new SelectField({
                 component: SelectFieldComponent,
@@ -46,11 +51,16 @@ export class NgLodgingTypeAllocatedPricesFieldsConfig extends FieldsConfig<Lodgi
                 component: SelectFieldComponent,
                 value: entity ? entity.object.recordId : undefined,
                 key: 'recordId',
-                displayKey: 'lodging',
+                displayKey: 'record',
                 displaySubKey: 'object.name',
                 validators: [Validators.required],
-                optionsData$: this.lodgingTypesStore.get(loadedPackage._package.dependencies[0]),
-                getDependencies: () => { this.lodgingTypesActions.getPaged(loadedPackage._package.dependencies[0], new PagedQuery()); },
+                optionsData$: lodgingTypePackage$.pipe(switchMap(lodgingTypePackage => this.lodgingTypesStore.get(lodgingTypePackage.object.path))),
+                getDependencies: () => {
+                    lodgingTypePackage$.pipe(
+                        map(lodgingTypePackage => this.lodgingTypesActions.getPaged(lodgingTypePackage.object.path, new PagedQuery())),
+                        take(1)
+                    ).subscribe();
+                },
                 displayNameSelector: 'object.name',
                 order: 2,
                 showColumn: true

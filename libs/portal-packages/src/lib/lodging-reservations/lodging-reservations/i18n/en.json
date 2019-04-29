@@ -50,6 +50,7 @@
             "STAYS": "Stays",
             "RESERVATIONS": "Reservations",
             "ARRIVALS": "Arrivals",
+            "SETTINGS": "Settings",
             "DEPARTURES": "Departures",
             "ALL": "All",
             "CONNECTED PACKAGES": "Connected packages"
@@ -59,6 +60,26 @@
             "UPDATING": "Updating lodging reservation {{ id }}",
             "DELETING": "Deleting lodging reservation {{ id }}",
             "ERROR": "An error occured with lodging reservation {{ id }}. Correct and try again."
+        }
+    },
+    "LODGING_RESERVATIONS_SETTINGS": {
+        "FORM": {
+            "LABELS": {
+                "EARLIESTCHECKIN": "Earliest check in",
+                "LATESTCHECKOUT": "Latest check out"
+            },
+            "PLACEHOLDERS": {
+                "EARLIESTCHECKIN": "Earliest check in",
+                "LATESTCHECKOUT": "Latest check out"
+            },
+            "VALIDATION": {
+                "EARLIESTCHECKIN": {
+                    "REQUIRED": "Earliest check in is required"
+                },
+                "LATESTCHECKOUT": {
+                    "REQUIRED": "Latest check out is required"
+                }
+            }
         }
     }
 }

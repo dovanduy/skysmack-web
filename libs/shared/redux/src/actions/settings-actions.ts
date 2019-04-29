@@ -36,12 +36,15 @@ export class SettingsActions {
     }
 
     public update = (settings: LocalObject<any, unknown>, packagePath: string, settingsKey: string) => {
+        const updatedSettingsKey = settingsKey === 'default' ? undefined : settingsKey;
+        let url = `${packagePath}/settings`;
+        url = updatedSettingsKey ? `${url}/${updatedSettingsKey}` : url;
 
         const queueItems = [
             new QueueItem({
                 message: `SETTINGS.QUEUE.UPDATING`,
                 messageParams: {},
-                link: `${packagePath}/settings/${settingsKey}`,
+                link: url,
                 packagePath,
                 localObject: settings,
                 cancelAction: this.cancelAction
@@ -53,7 +56,7 @@ export class SettingsActions {
             meta: new ReduxOfflineMeta(
                 new OfflineMeta<LocalObject<any, unknown>, HttpResponse, LocalObject<any, unknown>>(
                     new Effect<LocalObject<any, unknown>>(new EffectRequest<LocalObject<any, unknown>>(
-                        `${packagePath}/settings/${settingsKey}`,
+                        url,
                         HttpMethod.PUT,
                         settings.object
                     )),

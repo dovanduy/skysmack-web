@@ -22,7 +22,7 @@ export class NgLodgingAllocatedPricesEpics extends RecordEpicsBase<LodgingAlloca
             ...getReadDependencies({
                 prefix: LODGING_ALLOCATED_PRICES_REDUX_KEY,
                 relationIdSelector: 'recordId',
-                relationSelector: 'product',
+                relationSelector: 'record',
                 rsqlIdSelector: 'id',
                 skysmackStore: this.skysmackStore,
                 store: this.lodgingsStore,

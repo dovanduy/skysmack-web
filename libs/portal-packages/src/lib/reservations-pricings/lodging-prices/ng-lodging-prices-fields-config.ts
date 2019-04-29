@@ -5,8 +5,10 @@ import { FormRule, SelectField, Field } from '@skysmack/ng-ui';
 import { NgLodgingPricesValidation, NgLodgingsStore, NgLodgingsActions } from '@skysmack/ng-packages';
 import { FieldsConfig, SelectFieldComponent, HiddenFieldComponent, DecimalFieldComponent } from '@skysmack/portal-ui';
 import { FieldProviders } from '@skysmack/portal-ui';
-import { LoadedPackage } from '@skysmack/ng-redux';
+import { LoadedPackage, getParentPackageDependency } from '@skysmack/ng-redux';
 import { LodgingPrice } from '@skysmack/packages-reservations-pricings';
+import { NgSkysmackStore } from '@skysmack/ng-core';
+import { switchMap, map, take, shareReplay } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
 export class NgLodgingPricesFieldsConfig extends FieldsConfig<LodgingPrice, number> {
@@ -17,10 +19,13 @@ export class NgLodgingPricesFieldsConfig extends FieldsConfig<LodgingPrice, numb
     constructor(
         public lodgingsStore: NgLodgingsStore,
         public lodgingsActions: NgLodgingsActions,
-        public fieldProviders: FieldProviders
+        public fieldProviders: FieldProviders,
+        public skysmackStore: NgSkysmackStore
     ) { super(fieldProviders); }
 
     protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<LodgingPrice, number>): Field[] {
+        const lodgingPackage$ = getParentPackageDependency(this.skysmackStore, loadedPackage._package.dependencies[0]);
+
         const fields = [
             new SelectField({
                 component: SelectFieldComponent,
@@ -44,11 +49,16 @@ export class NgLodgingPricesFieldsConfig extends FieldsConfig<LodgingPrice, numb
                 component: SelectFieldComponent,
                 value: entity ? entity.object.recordId : undefined,
                 key: 'recordId',
-                displayKey: 'product',
+                displayKey: 'record',
                 displaySubKey: 'object.name',
                 validators: [Validators.required],
-                optionsData$: this.lodgingsStore.get(loadedPackage._package.dependencies[0]),
-                getDependencies: () => { this.lodgingsActions.getPaged(loadedPackage._package.dependencies[0], new PagedQuery()); },
+                optionsData$: lodgingPackage$.pipe(switchMap(lodgingPackage => this.lodgingsStore.get(lodgingPackage.object.path))),
+                getDependencies: () => {
+                    lodgingPackage$.pipe(
+                        map(lodgingPackage => this.lodgingsActions.getPaged(lodgingPackage.object.path, new PagedQuery())),
+                        take(1)
+                    ).subscribe();
+                },
                 displayNameSelector: 'object.name',
                 order: 2,
                 showColumn: true

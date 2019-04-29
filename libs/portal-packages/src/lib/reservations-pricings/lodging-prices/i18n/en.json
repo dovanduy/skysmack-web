@@ -17,12 +17,12 @@
         "FORM": {
             "LABELS": {
                 "CURRENCYCODE": "Currency code",
-                "RECORDID": "Product",
+                "RECORDID": "Lodging",
                 "PRICE": "Price"
             },
             "PLACEHOLDERS": {
                 "CURRENCYCODE": "Currency code",
-                "RECORDID": "Product",
+                "RECORDID": "Lodging",
                 "PRICE": "Price"
             },
             "VALIDATION": {
@@ -30,7 +30,7 @@
                     "REQUIRED": "Currency code is required"
                 },
                 "RECORDID": {
-                    "REQUIRED": "Product is required"
+                    "REQUIRED": "Lodging is required"
                 },
                 "PRICE": {
                     "REQUIRED": "Price is required"

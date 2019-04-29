@@ -21,7 +21,7 @@
                 "CHANGETYPE": "Pris ændrings type",
                 "VALIDFROM": "Gældende fra",
                 "VALIDTO": "Gældende til",
-                "RECORDID": "Allokeret værelse",
+                "RECORDID": "Allokeret værelsestype",
                 "START": "Start",
                 "END": "Slut"
             },
