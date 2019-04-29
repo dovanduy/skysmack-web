@@ -3,13 +3,15 @@ import { InvoicesIndexComponent } from './invoices-index/invoices-index.componen
 import { InvoicesCreateComponent } from './invoices-create/invoices-create.component';
 import { InvoicesEditComponent } from './invoices-edit/invoices-edit.component';
 import { FieldsIndexComponent, FieldsCreateComponent, FieldsEditComponent } from '@skysmack/portal-ui';
+import { InvoicesDetailsComponent } from './invoices-details/invoices-details.component';
 
 export const invoicesRoutes: Routes = [
   {
     path: '', component: InvoicesIndexComponent,
     children: [
       { path: 'create', component: InvoicesCreateComponent, pathMatch: 'full' },
-      { path: 'edit/:id', component: InvoicesEditComponent, pathMatch: 'full' }
+      { path: 'edit/:id', component: InvoicesEditComponent, pathMatch: 'full' },
+      { path: 'details/:id', component: InvoicesDetailsComponent, pathMatch: 'full' },
     ]
   },
   {
@@ -23,5 +25,6 @@ export const invoicesRoutes: Routes = [
 export const invoicesComponents: any[] = [
   InvoicesIndexComponent,
   InvoicesCreateComponent,
-  InvoicesEditComponent
+  InvoicesEditComponent,
+  InvoicesDetailsComponent
 ];
