@@ -7,7 +7,7 @@ import { PRODUCT_TYPE_SALES_PRICE_REDUX_KEY } from '../../constants';
  * This is to be used when you want to access lodging reservations via the GLOBAL state. E.g. state.ProductTypeSalesPrice (where ProductTypeSalesPrice is the reducer name.)
  */
 export class ProductTypeSalesPriceAppState extends AppState {
-    public productsSalesPrice: ProductTypeSalesPriceState;
+    public productTypesSalesPrice: ProductTypeSalesPriceState;
 }
 
 export class ProductTypeSalesPriceState implements RecordState<ProductTypeSalesPrice, number> {

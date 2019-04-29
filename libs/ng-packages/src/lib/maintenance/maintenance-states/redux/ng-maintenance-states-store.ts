@@ -5,5 +5,5 @@ import { NgRecordStore } from '@skysmack/ng-redux';
 
 @Injectable({ providedIn: 'root' })
 export class NgMaintenanceStatesStore extends NgRecordStore<MaintenanceStatesAppState, MaintenanceState, number> {
-    constructor(protected ngRedux: NgRedux<MaintenanceStatesAppState>) { super(ngRedux, MAINTENANCE_STATES_AREA_KEY); }
+    constructor(protected ngRedux: NgRedux<MaintenanceStatesAppState>) { super(ngRedux, 'maintenanceStates'); }
 }

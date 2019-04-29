@@ -5,5 +5,5 @@ import { NgRecordStore } from '@skysmack/ng-redux';
 
 @Injectable({ providedIn: 'root' })
 export class NgRecurringAssignmentsStore extends NgRecordStore<RecurringAssignmentsAppState, RecurringAssignment, number> {
-    constructor(protected ngRedux: NgRedux<RecurringAssignmentsAppState>) { super(ngRedux, ASSIGNMENTS_AREA_KEY); }
+    constructor(protected ngRedux: NgRedux<RecurringAssignmentsAppState>) { super(ngRedux, 'recurringAssignments'); }
 }

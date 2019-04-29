@@ -8,7 +8,7 @@ import { map, tap } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
 export class NgLodgingTypesStore extends NgRecordStore<LodgingTypesAppState, LodgingType, number> {
-    constructor(protected ngRedux: NgRedux<LodgingTypesAppState>) { super(ngRedux, LODGING_TYPES_AREA_KEY); }
+    constructor(protected ngRedux: NgRedux<LodgingTypesAppState>) { super(ngRedux, 'lodgingTypes'); }
 
     public getAvailableLodgingTypes(packagePath: string): Observable<StrIndex<StrIndex<number[]>>> {
         return this.ngRedux.select(state => state).pipe(
@@ -20,7 +20,7 @@ export class NgLodgingTypesStore extends NgRecordStore<LodgingTypesAppState, Lod
 
     public getAvailableLodgingTypesCount(packagePath: string): Observable<StrIndex<StrIndex<number>>> {
         return this.ngRedux.select(state => state).pipe(
-            map(state => state['lodging_types']),
+            map(state => state.lodgingTypes),
             map(lodgingTypesState => lodgingTypesState.availableLodgingTypesCount),
             map(availableLodgingTypesCount => availableLodgingTypesCount[packagePath]),
             safeUndefinedTo('object')

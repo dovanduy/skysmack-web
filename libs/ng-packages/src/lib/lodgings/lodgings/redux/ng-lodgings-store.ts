@@ -8,7 +8,7 @@ import { map } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
 export class NgLodgingsStore extends NgRecordStore<LodgingsAppState, Lodging, number> {
-    constructor(protected ngRedux: NgRedux<LodgingsAppState>) { super(ngRedux, LODGINGS_AREA_KEY); }
+    constructor(protected ngRedux: NgRedux<LodgingsAppState>) { super(ngRedux, 'lodgings'); }
 
     public getAvailableLodgings(packagePath: string): Observable<StrIndex<number[]>> {
         return this.ngRedux.select(state => state).pipe(

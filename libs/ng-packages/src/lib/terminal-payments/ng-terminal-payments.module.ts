@@ -12,6 +12,6 @@ import { registerRedux } from '@skysmack/ng-redux';
 export class NgTerminalPaymentsModule {
   constructor(terminalsEpics: TerminalsEpics, receiptsEpics: ReceiptsEpics) {
     registerRedux('terminals', terminalsReducer, terminalsEpics);
-    registerRedux('reciepts', receiptsReducer, receiptsEpics);
+    registerRedux('receipts', receiptsReducer, receiptsEpics);
   }
 }

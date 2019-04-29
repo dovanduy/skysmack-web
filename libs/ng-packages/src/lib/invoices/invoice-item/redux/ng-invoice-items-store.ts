@@ -5,5 +5,5 @@ import { NgRecordStore } from '@skysmack/ng-redux';
 
 @Injectable({ providedIn: 'root' })
 export class NgInvoiceItemsStore extends NgRecordStore<InvoiceItemsAppState, InvoiceItem, number> {
-    constructor(protected ngRedux: NgRedux<InvoiceItemsAppState>) { super(ngRedux, INVOICE_ITEMS_AREA_KEY); }
+    constructor(protected ngRedux: NgRedux<InvoiceItemsAppState>) { super(ngRedux, 'invoiceItems'); }
 }

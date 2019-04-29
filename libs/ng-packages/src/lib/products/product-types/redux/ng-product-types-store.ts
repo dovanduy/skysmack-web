@@ -5,5 +5,5 @@ import { NgRecordStore } from '@skysmack/ng-redux';
 
 @Injectable({ providedIn: 'root' })
 export class NgProductTypesStore extends NgRecordStore<ProductTypesAppState, ProductType, number> {
-    constructor(protected ngRedux: NgRedux<ProductTypesAppState>) { super(ngRedux, PRODUCT_TYPES_AREA_KEY); }
+    constructor(protected ngRedux: NgRedux<ProductTypesAppState>) { super(ngRedux, 'productTypes'); }
 }
