@@ -16,24 +16,49 @@
         },
         "FORM": {
             "LABELS": {
+                "CHANGE": "Pris ændring",
                 "CURRENCYCODE": "Valuta kode",
-                "RECORDID": "Produkt",
-                "PRICE": "Pris"
+                "CHANGETYPE": "Pris ændrings type",
+                "VALIDFROM": "Gældende fra",
+                "VALIDTO": "Gældende til",
+                "RECORDID": "Allokeret værelse",
+                "START": "Start",
+                "END": "Slut"
             },
             "PLACEHOLDERS": {
                 "CURRENCYCODE": "Valuta kode",
-                "RECORDID": "Produkt",
-                "PRICE": "Pris"
+                "RECORDID": "Allokeret værelse",
+                "CHANGE": "Pris ændring",
+                "CHANGETYPE": "Pris ændrings type",
+                "VALIDFROM": "Gældende fra",
+                "VALIDTO": "Gældende til",
+                "START": "Start",
+                "END": "Slut"
             },
             "VALIDATION": {
                 "CURRENCYCODE": {
                     "REQUIRED": "Valuta kode er påkrævet"
                 },
                 "RECORDID": {
-                    "REQUIRED": "Produkt er påkrævet."
+                    "REQUIRED": "Allokeret værelse er påkrævet"
                 },
-                "PRICE": {
-                    "REQUIRED": "Pris er påkrævet."
+                "CHANGE": {
+                    "REQUIRED": "Pris ændring er påkrævet"
+                },
+                "CHANGETYPE": {
+                    "REQUIRED": "Pris ændrings type er påkrævet"
+                },
+                "VALIDFROM": {
+                    "REQUIRED": "Gældende fra er påkrævet"
+                },
+                "VALIDTO": {
+                    "REQUIRED": "Gældende til er påkrævet"
+                },
+                "START": {
+                    "REQUIRED": "Start er påkrævet"
+                },
+                "END": {
+                    "REQUIRED": "Slut er påkrævet"
                 }
             }
         },

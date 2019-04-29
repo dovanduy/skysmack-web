@@ -8,7 +8,7 @@ import { NgSkysmackStore } from '@skysmack/ng-core';
 
 @Injectable({ providedIn: 'root' })
 export class NgReservationsPricingsMenuItemProvider extends MenuItemProvider {
-    public menuId = 'lodgingReservations';
+    public menuId = 'lodgingsReservations';
     public icon = 'shortText';
 
     constructor(public store: NgSkysmackStore) { super(); }

@@ -16,24 +16,49 @@
         },
         "FORM": {
             "LABELS": {
+                "CHANGE": "Price change",
                 "CURRENCYCODE": "Currency code",
-                "RECORDID": "Product",
-                "PRICE": "Price"
+                "CHANGETYPE": "Price change type",
+                "VALIDFROM": "Valid from",
+                "VALIDTO": "Valid to",
+                "RECORDID": "Allocated lodging",
+                "START": "Start",
+                "END": "End"
             },
             "PLACEHOLDERS": {
                 "CURRENCYCODE": "Currency code",
-                "RECORDID": "Product",
-                "PRICE": "Price"
+                "RECORDID": "Lodging",
+                "CHANGE": "Price change",
+                "CHANGETYPE": "Price change type",
+                "VALIDFROM": "Valid from",
+                "VALIDTO": "Valid to",
+                "START": "Start",
+                "END": "End"
             },
             "VALIDATION": {
                 "CURRENCYCODE": {
                     "REQUIRED": "Currency code is required"
                 },
                 "RECORDID": {
-                    "REQUIRED": "Product is required"
+                    "REQUIRED": "Allocated Lodging is required"
                 },
-                "PRICE": {
-                    "REQUIRED": "Price is required"
+                "CHANGE": {
+                    "REQUIRED": "Price change is required"
+                },
+                "CHANGETYPE": {
+                    "REQUIRED": "Price change type is required"
+                },
+                "VALIDFROM": {
+                    "REQUIRED": "Valid from is required"
+                },
+                "VALIDTO": {
+                    "REQUIRED": "Valid to is required"
+                },
+                "START": {
+                    "REQUIRED": "Start is required"
+                },
+                "END": {
+                    "REQUIRED": "End is required"
                 }
             }
         },
