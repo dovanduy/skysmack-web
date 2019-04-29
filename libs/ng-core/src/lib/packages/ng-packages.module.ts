@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { packagesReducer, PACKAGES_AREA_KEY } from '@skysmack/packages-skysmack-core';
+import { packagesReducer } from '@skysmack/packages-skysmack-core';
 import { NgPackagesEpics } from './redux/ng-packages-epics';
 import { registerRedux } from '@skysmack/ng-redux';
 
@@ -10,6 +10,6 @@ import { registerRedux } from '@skysmack/ng-redux';
 })
 export class NgPackagesModule {
   constructor(epics: NgPackagesEpics) {
-    registerRedux(PACKAGES_AREA_KEY, packagesReducer, epics)
+    registerRedux('packages', packagesReducer, epics)
   }
 }

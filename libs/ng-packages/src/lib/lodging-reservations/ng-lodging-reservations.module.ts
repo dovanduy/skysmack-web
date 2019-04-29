@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { lodgingReservationsReducer, LODGING_RESERVATIONS_AREA_KEY } from '@skysmack/packages-lodging-reservations';
+import { lodgingReservationsReducer } from '@skysmack/packages-lodging-reservations';
 import { NgLodgingReservationsEpics } from './lodging-reservations/redux/ng-lodging-reservations-epics';
 import { NgMenuItemProviders, registerRedux } from '@skysmack/ng-redux';
 import { NgLodgingsReservationsMenuItemProvider } from './ng-lodgings-reservations-menu-item-provider';
@@ -15,7 +15,7 @@ export class NgLodgingReservationsModule {
     ngMenuItemProviders: NgMenuItemProviders,
     menuItemProvider: NgLodgingsReservationsMenuItemProvider
   ) {
-    registerRedux(LODGING_RESERVATIONS_AREA_KEY, lodgingReservationsReducer, lodgingReservationsEpics);
+    registerRedux('lodgingReservations', lodgingReservationsReducer, lodgingReservationsEpics);
     ngMenuItemProviders.add(menuItemProvider);
   }
 }

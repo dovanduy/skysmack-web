@@ -12,6 +12,6 @@ export class NgAccountModule {
   constructor(
     epics: NgAccountEpics
   ) {
-    registerRedux(ACCOUNTS_AREA_KEY, accountReducer, epics);
+    registerRedux('accounts', accountReducer, epics);
   }
 }

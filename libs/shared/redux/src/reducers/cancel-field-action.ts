@@ -16,24 +16,24 @@ export const cancelFieldAction = (state: FieldState, action: ReduxAction<CancelF
 
     switch (action.payload.field.status) {
         case LocalObjectStatus.CREATING:
-            return cancelCreateAction(newState, action);
+            return cancelFieldCreateAction(newState, action);
         case LocalObjectStatus.MODIFYING:
-            return cancelEditAction(newState, action);
+            return cancelFieldEditAction(newState, action);
         case LocalObjectStatus.DELETING:
-            return cancelDeleteAction(newState, action);
+            return cancelFieldDeleteAction(newState, action);
         default:
             return newState;
     }
 };
 
-const cancelCreateAction = (newState: FieldState, action: ReduxAction<CancelFieldActionPayload<FieldSchemaViewModel>, CancelActionMeta>): FieldState => {
+const cancelFieldCreateAction = (newState: FieldState, action: ReduxAction<CancelFieldActionPayload<FieldSchemaViewModel>, CancelActionMeta>): FieldState => {
     const packagePath = action.payload.packagePath;
     const field = action.payload.field;
     delete newState.fields[packagePath][field.localId];
     return newState;
 };
 
-const cancelEditAction = (newState: FieldState, action: ReduxAction<CancelFieldActionPayload<FieldSchemaViewModel>, CancelActionMeta>): FieldState => {
+const cancelFieldEditAction = (newState: FieldState, action: ReduxAction<CancelFieldActionPayload<FieldSchemaViewModel>, CancelActionMeta>): FieldState => {
     const packagePath = action.payload.packagePath;
     const field = action.payload.field;
     newState.fields[packagePath][field.localId].object = action.payload.field.oldObject;
@@ -42,7 +42,7 @@ const cancelEditAction = (newState: FieldState, action: ReduxAction<CancelFieldA
     return newState;
 };
 
-const cancelDeleteAction = (newState: FieldState, action: ReduxAction<CancelFieldActionPayload<FieldSchemaViewModel>, CancelActionMeta>): FieldState => {
+const cancelFieldDeleteAction = (newState: FieldState, action: ReduxAction<CancelFieldActionPayload<FieldSchemaViewModel>, CancelActionMeta>): FieldState => {
     const packagePath = action.payload.packagePath;
     const field = action.payload.field;
     newState.fields[packagePath][field.localId].status = LocalObjectStatus.OK;
