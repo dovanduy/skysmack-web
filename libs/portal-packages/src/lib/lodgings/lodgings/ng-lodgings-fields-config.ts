@@ -1,4 +1,4 @@
-import { Lodging } from '@skysmack/packages-lodgings';
+import { Lodging, LODGINGS_AREA_KEY } from '@skysmack/packages-lodgings';
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { LocalObject, LocalObjectStatus, PagedQuery } from '@skysmack/framework';
@@ -10,7 +10,7 @@ import { FormRule, Field, SelectField } from '@skysmack/ng-ui';
 @Injectable({ providedIn: 'root' })
 export class NgLodgingsFieldsConfig extends FieldsConfig<Lodging, number> {
     public validation = new NgLodgingsValidation();
-
+    public area = LODGINGS_AREA_KEY;
     public formRules: FormRule[] = [];
 
     constructor(

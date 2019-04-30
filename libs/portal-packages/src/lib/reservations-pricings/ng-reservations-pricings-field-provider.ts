@@ -9,11 +9,13 @@ import { FieldProvider } from '@skysmack/portal-ui';
 import { Validators } from '@angular/forms';
 import { ReservationsPricingsType } from '@skysmack/packages-reservations-pricings';
 import { Router } from '@angular/router';
-import { LODGING_RESERVATIONS_AREA_KEY, LodgingReservation } from '@skysmack/packages-lodging-reservations';
+import { LodgingReservation } from '@skysmack/packages-lodging-reservations';
+import { LODGINGS_AREA_KEY } from '@skysmack/packages-lodgings';
 
 @Injectable({ providedIn: 'root' })
 export class NgReservationsPricingsFieldProvider extends FieldProvider {
     public requested: StrIndex<boolean> = {};
+    public area = '';
 
     constructor(
         public skysmackStore: NgSkysmackStore,
@@ -23,7 +25,7 @@ export class NgReservationsPricingsFieldProvider extends FieldProvider {
     }
 
     public getFields(packagePath: string, area: string, entity?: LocalObject<any, any>): Observable<Field[]> {
-        if (area == LODGING_RESERVATIONS_AREA_KEY) {
+        if (area == LODGINGS_AREA_KEY) {
             return this.skysmackStore.getPackages().pipe(
                 map(packages => packages.filter(_package => _package.object.type === ReservationsPricingsType.id)),
                 map(lodgingReservationPricingPackages => {
@@ -51,7 +53,7 @@ export class NgReservationsPricingsFieldProvider extends FieldProvider {
                                             return '';
                                         })[0];
                                 } else {
-                                    // TODO: Undecided. A trello task has been made.
+                                    // TODO: Undecided. A trello card has been made.
                                 }
                             };
 

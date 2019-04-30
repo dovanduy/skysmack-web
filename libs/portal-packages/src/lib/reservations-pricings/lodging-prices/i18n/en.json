@@ -44,10 +44,10 @@
             "ERROR": "An error occured with {{ name }}. Correct and try again."
         }
     },
-    "PRODUCTS": {
+    "LODGINGS": {
         "FORM": {
             "LABELS": {
-                "PRODUCTSPRICING": "Price"
+                "LODGINGRESERVATIONSPRICING": "Price"
             }
         }
     }

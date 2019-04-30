@@ -7,12 +7,12 @@ import { PortalUiModule, FieldsModule, FieldProviders } from '@skysmack/portal-u
 import { LanguageService } from '@skysmack/portal-ui';
 import { ReservationsPricingsIndexComponent } from './components/reservations-pricings-index/reservations-pricings-index.component';
 import { ReservationsPricingsRoutingModule } from './reservations-pricings-routing.module';
-import { ReservationsPricingsType } from '@skysmack/packages-reservations-pricings';
 import { NgReservationsPricingsFieldProvider } from './ng-reservations-pricings-field-provider';
 import { lodgingAllocatedPricesComponents } from './lodging-allocated-prices/components/lodging-allocated-prices-components';
 import { lodgingTypeAllocatedPricesComponents } from './lodging-type-allocated-prices/components/lodging-type-allocated-prices-components';
 import { lodgingPricesComponents } from './lodging-prices/components/lodging-prices-components';
 import { lodgingTypePricesComponents } from './lodging-type-prices/components/lodging-type-prices-components';
+import { LodgingsType } from '@skysmack/packages-lodgings';
 
 @NgModule({
   imports: [
@@ -40,6 +40,6 @@ export class ReservationsPricingsModule {
     fieldProviders: FieldProviders,
     reservationsPricingsFieldProvider: NgReservationsPricingsFieldProvider,
   ) {
-    fieldProviders.add(ReservationsPricingsType.id, reservationsPricingsFieldProvider);
+    fieldProviders.add(LodgingsType.id, reservationsPricingsFieldProvider);
   }
 }

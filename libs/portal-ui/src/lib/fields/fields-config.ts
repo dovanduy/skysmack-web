@@ -2,7 +2,7 @@ import { LocalObject } from '@skysmack/framework';
 import { FormRule, Validation, Field } from '@skysmack/ng-ui';
 import { EntityFieldsConfig } from './entity-fields-config';
 import { Observable, combineLatest, of } from 'rxjs';
-import { map, distinctUntilChanged, switchMap, tap } from 'rxjs/operators';
+import { map, distinctUntilChanged, switchMap } from 'rxjs/operators';
 import { FieldProviders } from './field-providers';
 import { LoadedPackage } from '@skysmack/ng-redux';
 

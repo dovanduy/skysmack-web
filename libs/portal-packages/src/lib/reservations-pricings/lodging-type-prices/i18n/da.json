@@ -44,10 +44,10 @@
             "ERROR": "Der opstod  en fejl ved {{ name }}. Ret og prøv igen."
         }
     },
-    "PRODUCTS": {
+    "LODGINGS": {
         "FORM": {
             "LABELS": {
-                "PRODUCTSPRICING": "Pris"
+                "LODGINGRESERVATIONSPRICING": "Pris"
             }
         }
     }
