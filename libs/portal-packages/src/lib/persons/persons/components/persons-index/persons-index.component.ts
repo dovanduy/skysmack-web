@@ -19,6 +19,7 @@ export class PersonsIndexComponent extends DocumentRecordIndexComponent<PersonsA
 
   public area: string = PERSONS_AREA_KEY;
   public entityActions: EntityAction[] = [
+    new EntityAction().asUrlAction('details', 'Details', 'list'),
     new EntityAction().asUrlAction('edit', 'Edit', 'edit'),
     new EntityAction().asEventAction('Delete', this.delete, 'delete', this)
   ];
