@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { BaseComponent, EditorNavService } from '@skysmack/portal-ui';
+import { EditorNavService, DetailsBaseComponent } from '@skysmack/portal-ui';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgSkysmackStore } from '@skysmack/ng-core';
-import { Observable, combineLatest } from 'rxjs';
-import { Field } from '@skysmack/ng-ui';
-import { switchMap } from 'rxjs/operators';
 import { NgPersonsActions, NgPersonsStore } from '@skysmack/ng-packages';
 import { PersonsAppState } from '@skysmack/packages-persons';
 import { NgPersonsFieldsConfig } from '../../../ng-persons-fields-config';
@@ -13,10 +10,7 @@ import { NgPersonsFieldsConfig } from '../../../ng-persons-fields-config';
   selector: 'ss-persons-details',
   templateUrl: './persons-details.component.html'
 })
-export class PersonsDetailsComponent extends BaseComponent<PersonsAppState, number> implements OnInit {
-
-  public fields$: Observable<Field[]>;
-
+export class PersonsDetailsComponent extends DetailsBaseComponent<PersonsAppState, number> implements OnInit {
   constructor(
     public router: Router,
     public activatedRoute: ActivatedRoute,
@@ -26,18 +20,10 @@ export class PersonsDetailsComponent extends BaseComponent<PersonsAppState, numb
     public fieldsConfig: NgPersonsFieldsConfig,
     public editorNavService: EditorNavService
   ) {
-    super(router, activatedRoute, skysmackStore);
+    super(router, activatedRoute, skysmackStore, actions, store, fieldsConfig, editorNavService);
   }
 
   ngOnInit() {
     super.ngOnInit();
-    this.editorNavService.showEditorNav();
-    this.actions.getSingle(this.packagePath, this.entityId);
-
-    this.fields$ = combineLatest(
-      this.loadedPackage$,
-      this.store.getSingle(this.packagePath, this.entityId)
-    ).pipe(switchMap(values => this.fieldsConfig.getFields(values[0], values[1])));
   }
-
 }

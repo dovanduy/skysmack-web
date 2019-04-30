@@ -1,22 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { BaseComponent, EditorNavService } from '@skysmack/portal-ui';
+import { EditorNavService, DetailsBaseComponent } from '@skysmack/portal-ui';
 import { InvoicesAppState } from 'libs/packages/invoices/src';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgSkysmackStore } from '@skysmack/ng-core';
 import { NgInvoicesFieldsConfig } from '../../ng-invoices-fields-config';
-import { Observable, combineLatest } from 'rxjs';
-import { Field } from '@skysmack/ng-ui';
-import { switchMap } from 'rxjs/operators';
 import { NgInvoicesActions, NgInvoicesStore } from '@skysmack/ng-packages';
 
 @Component({
   selector: 'ss-invoices-details',
   templateUrl: './invoices-details.component.html'
 })
-export class InvoicesDetailsComponent extends BaseComponent<InvoicesAppState, number> implements OnInit {
-
-  public fields$: Observable<Field[]>;
-
+export class InvoicesDetailsComponent extends DetailsBaseComponent<InvoicesAppState, number> implements OnInit {
   constructor(
     public router: Router,
     public activatedRoute: ActivatedRoute,
@@ -26,18 +20,10 @@ export class InvoicesDetailsComponent extends BaseComponent<InvoicesAppState, nu
     public fieldsConfig: NgInvoicesFieldsConfig,
     public editorNavService: EditorNavService
   ) {
-    super(router, activatedRoute, skysmackStore);
+    super(router, activatedRoute, skysmackStore, actions, store, fieldsConfig, editorNavService);
   }
 
   ngOnInit() {
     super.ngOnInit();
-    this.editorNavService.showEditorNav();
-    this.actions.getSingle(this.packagePath, this.entityId);
-
-    this.fields$ = combineLatest(
-      this.loadedPackage$,
-      this.store.getSingle(this.packagePath, this.entityId)
-    ).pipe(switchMap(values => this.fieldsConfig.getFields(values[0], values[1])));
   }
-
 }
