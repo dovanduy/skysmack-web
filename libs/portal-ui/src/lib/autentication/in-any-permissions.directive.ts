@@ -1,6 +1,6 @@
 import { Directive, OnInit, TemplateRef, ViewContainerRef, OnDestroy, Input } from '@angular/core';
 import { SubscriptionLike } from 'rxjs';
-import { NgSkysmackStore } from '@skysmack/ng-core';
+import { NgSkysmackStore, NgSkysmackActions } from '@skysmack/ng-core';
 import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
 
@@ -8,12 +8,14 @@ import { Router } from '@angular/router';
 // tslint:disable-next-line:directive-selector
 @Directive({ selector: '[inAnyPermission]' })
 export class IsAnyPermissionDirective implements OnInit, OnDestroy {
+    public static register = {};
     public subscription: SubscriptionLike;
 
     constructor(
         public templateRef: TemplateRef<any>,
         public viewContainer: ViewContainerRef,
-        public store: NgSkysmackStore,
+        public skysmackStore: NgSkysmackStore,
+        public skysmackActions: NgSkysmackActions,
         public router: Router
     ) { }
 
@@ -38,9 +40,10 @@ export class IsAnyPermissionDirective implements OnInit, OnDestroy {
             if (this._showDefault) {
                 this.show(true);
             }
-
             const packagePath = this.router.url.split('/')[1];
-            this.subscription = this.store.getPermissions(packagePath).pipe(
+            this.getPermissions(packagePath);
+
+            this.subscription = this.skysmackStore.getPermissions(packagePath).pipe(
                 map(permissions => {
                     this.show(this.includesAny(this._permissions, permissions));
                 })
@@ -77,6 +80,13 @@ export class IsAnyPermissionDirective implements OnInit, OnDestroy {
                 this.viewContainer.clear();
             }
             this.displaying = false;
+        }
+    }
+
+    private getPermissions(packagePath: string): void {
+        if (!IsAnyPermissionDirective.register[packagePath]) {
+            IsAnyPermissionDirective.register[packagePath] = true;
+            this.skysmackActions.getPermissions(packagePath)
         }
     }
 }

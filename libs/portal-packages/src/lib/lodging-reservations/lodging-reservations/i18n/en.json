@@ -6,14 +6,16 @@
                 "ALLOCATEDLODGINGID": "Allocated lodging",
                 "CHECKIN": "Check in",
                 "CHECKOUT": "Check out",
-                "PERSONS": "Persons"
+                "PERSONS": "Persons",
+                "STATUS": "Status"
             },
             "PLACEHOLDERS": {
                 "LODGINGTYPEID": "Choose lodging type",
                 "ALLOCATEDLODGINGID": "Choose allocated lodging",
                 "CHECKIN": "Choose check in date",
                 "CHECKOUT": "Choose check out date",
-                "PERSONS": "Choose number of persons"
+                "PERSONS": "Choose number of persons",
+                "STATUS": "Status"
             },
             "VALIDATION": {
                 "LODGINGTYPEID": {

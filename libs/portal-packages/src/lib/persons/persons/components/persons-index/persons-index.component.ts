@@ -42,6 +42,5 @@ export class PersonsIndexComponent extends DocumentRecordIndexComponent<PersonsA
   ngOnInit() {
     super.ngOnInit();
     this.title.setTitle(this.packagePath);
-    this.skysmackActions.getPermissions(this.packagePath);
   }
 }

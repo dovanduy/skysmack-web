@@ -1,5 +1,5 @@
 import { NgRedux } from '@angular-redux/store';
-import { map, take } from 'rxjs/operators';
+import { map, take, tap } from 'rxjs/operators';
 import { Observable, BehaviorSubject, of } from 'rxjs';
 import { LocalObject, toLocalObject, Package, hasValue, StrIndex, safeUndefinedTo, defined } from '@skysmack/framework';
 import { Skysmack, SkysmackAppState } from '@skysmack/packages-skysmack-core';

@@ -6,14 +6,16 @@
                 "ALLOCATEDLODGINGID": "Tildelt rum",
                 "CHECKIN": "Tjek ind",
                 "CHECKOUT": "Tjek ud",
-                "PERSONS": "Personer"
+                "PERSONS": "Personer",
+                "STATUS": "Status"
             },
             "PLACEHOLDERS": {
                 "LODGINGTYPEID": "Indtast rum type",
                 "ALLOCATEDLODGINGID": "Indtast tildelt rum",
                 "CHECKIN": "Indtast tjek ind",
                 "CHECKOUT": "Indtast tjek ud",
-                "PERSONS": "Indtast personer"
+                "PERSONS": "Indtast personer",
+                "STATUS": "Status"
             },
             "VALIDATION": {
                 "LODGINGTYPEID": {

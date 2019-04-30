@@ -8,9 +8,11 @@
 <form *ngIf="fh" [formGroup]="fh.form">
 
   <ng-container *ngFor="let field of fields$ | async as fields; trackBy: trackByFieldKey">
-    <ss-dynamic-form-field-template *ngIf="field.component" [field]="field" [fh]="fh" [fieldKey]="field.key"
-      [fields]="fields" [rules]="rules">
-    </ss-dynamic-form-field-template>
+    <ng-container *inAnyPermission="field.permissions">
+      <ss-dynamic-form-field-template *ngIf="field.component" [field]="field" [fh]="fh" [fieldKey]="field.key"
+        [fields]="fields" [rules]="rules">
+      </ss-dynamic-form-field-template>
+    </ng-container>
   </ng-container>
 
   <button mat-raised-button color="primary" type="submit" (click)="onSubmit()">{{ buttonText }}</button>

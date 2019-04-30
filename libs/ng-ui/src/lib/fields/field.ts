@@ -97,6 +97,11 @@ export class Field {
      */
     public getDependencies: Function;
 
+    /**
+     * Permissions required to be able to view a field
+     */
+    public permissions: string[] = [];
+
     constructor(values: Partial<Field>) {
         Object.assign(this, values);
     }
