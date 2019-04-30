@@ -1,3 +1,5 @@
+export * from './common-components'
+
 export * from './card-body/card-body.component';
 export * from './container/container.component';
 export * from './container/editor-nav.service';

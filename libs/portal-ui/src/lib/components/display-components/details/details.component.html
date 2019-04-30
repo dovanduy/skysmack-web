@@ -1,0 +1,4 @@
+<ng-container *ngFor="let field of fields$ | async as fields; trackBy: trackByFieldKey">
+  <h5>{{ field.placeholder | translate }}</h5>
+  <p>{{ field.value }}</p>
+</ng-container>
