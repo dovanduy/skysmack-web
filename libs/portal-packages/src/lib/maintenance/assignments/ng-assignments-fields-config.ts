@@ -29,6 +29,7 @@ export class NgAssignmentsFieldsConfig extends FieldsConfig<Assignment, number> 
                 key: 'assignmentTypeId',
                 displayKey: 'assignmentType',
                 displaySubKey: 'object.description',
+                validators: [Validators.required],
                 optionsData$: this.assignmentTypesStore.get(loadedPackage._package.path),
                 displayNameSelector: 'object.description',
                 getDependencies: () => { this.assignmentTypesActions.getPaged(loadedPackage._package.path, new PagedQuery()); },

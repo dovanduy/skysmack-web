@@ -87,7 +87,6 @@ export class NgLodgingAllocatedPricesFieldsConfig extends FieldsConfig<LodgingAl
                 component: DateTimeFieldComponent,
                 value: entity ? entity.object.validFrom : undefined,
                 key: 'validFrom',
-                validators: [Validators.required],
                 order: 5,
                 showColumn: true
             }),
@@ -95,7 +94,6 @@ export class NgLodgingAllocatedPricesFieldsConfig extends FieldsConfig<LodgingAl
                 component: DateTimeFieldComponent,
                 value: entity ? entity.object.validTo : undefined,
                 key: 'validTo',
-                validators: [Validators.required],
                 order: 6,
                 showColumn: true
             }),

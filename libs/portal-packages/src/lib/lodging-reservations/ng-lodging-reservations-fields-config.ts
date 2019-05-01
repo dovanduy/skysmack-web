@@ -8,7 +8,7 @@ import { FieldsConfig, SelectFieldComponent, HiddenFieldComponent, IntFieldCompo
 import { FieldProviders } from '@skysmack/portal-ui';
 import { LoadedPackage } from '@skysmack/ng-redux';
 import { of } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, tap, take } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
 export class NgLodgingReservationsFieldsConfig extends FieldsConfig<LodgingReservation, number> {
@@ -93,8 +93,8 @@ export class NgLodgingReservationsFieldsConfig extends FieldsConfig<LodgingReser
                     .reduce((newEnum, key) => {
                         newEnum[key] = lse[key];
                         return newEnum;
-                    }, {})
-                )),
+                    }, {}))
+                ),
                 optionsDataType: 'ts-enum',
                 validators: [Validators.required],
                 order: 5,

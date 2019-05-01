@@ -8,7 +8,7 @@ import { FieldProviders } from '@skysmack/portal-ui';
 import { LoadedPackage, getParentPackageDependency } from '@skysmack/ng-redux';
 import { LodgingPrice } from '@skysmack/packages-reservations-pricings';
 import { NgSkysmackStore } from '@skysmack/ng-core';
-import { switchMap, map, take, shareReplay } from 'rxjs/operators';
+import { switchMap, map, take } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
 export class NgLodgingPricesFieldsConfig extends FieldsConfig<LodgingPrice, number> {

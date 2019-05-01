@@ -24,12 +24,6 @@ export class NgLodgingTypeAllocatedPricesValidation extends Validation {
         changeType: {
             required: '',
         },
-        validFrom: {
-            required: '',
-        },
-        validTo: {
-            required: '',
-        },
         recordId: {
             required: '',
         },
