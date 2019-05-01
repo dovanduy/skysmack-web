@@ -14,7 +14,7 @@ export const lodgingReservationsRoutes: Routes = [
             { path: 'create', component: LodgingsReservationsCreateComponent, pathMatch: 'full' },
             { path: 'edit/:id', component: LodgingsReservationsEditComponent, pathMatch: 'full' },
             {
-                path: 'settings', component: SettingsComponent, pathMatch: 'full', data: {
+                path: 'settings/checkin', component: SettingsComponent, pathMatch: 'full', data: {
                     fieldsConfigToken: 'NgLodgingReservationsSettingsFieldsConfig'
                 } as RouteData
             }

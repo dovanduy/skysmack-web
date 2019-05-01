@@ -82,7 +82,7 @@ export class NgLodgingsReservationsMenu extends SidebarMenu {
             icon: 'groupAdd',
         }));
         this.primaryMenuItems.push(new MenuItem({
-            url: '/' + this.packagePath + '/settings',
+            url: '/' + this.packagePath + '/settings/checkin',
             displayName: this.translationPrefix + 'SETTINGS',
             area: 'settings',
             order: 3,
