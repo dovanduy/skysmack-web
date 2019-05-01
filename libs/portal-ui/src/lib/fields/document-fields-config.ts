@@ -30,7 +30,7 @@ export abstract class DocumentFieldsConfig<TRecord, TKey> extends FieldsConfig<T
         const stateKey = additionalPaths.length > 0 ? `${loadedPackage._package.path}-${additionalPaths.join('-')}` : loadedPackage._package.path;
         return combineLatest(
             this.getRecordFields(loadedPackage, entity),
-            this.fieldsStore.get(stateKey).pipe(tap(x => console.log(stateKey)))
+            this.fieldsStore.get(stateKey)
         ).pipe(
             map(values => values[0].concat(this.toFields(entity, values[1]))),
             map(fields => this.addValidationErrors(fields, entity).sort((a, b) => a.order - b.order))

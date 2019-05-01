@@ -8,7 +8,7 @@ import { FieldsConfig, SelectFieldComponent, HiddenFieldComponent, IntFieldCompo
 import { FieldProviders } from '@skysmack/portal-ui';
 import { LoadedPackage } from '@skysmack/ng-redux';
 import { of } from 'rxjs';
-import { map, tap, take } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
 export class NgLodgingReservationsFieldsConfig extends FieldsConfig<LodgingReservation, number> {
@@ -83,7 +83,7 @@ export class NgLodgingReservationsFieldsConfig extends FieldsConfig<LodgingReser
             }),
             new SelectField({
                 component: SelectFieldComponent,
-                value: entity ? entity.object.status : undefined,
+                value: entity ? entity.object.status : 0, // 0 equals "processing"
                 key: 'status',
                 optionsData$: of(LodgingReservation.statusEnum).pipe(map(lse => Object.keys(lse)
                     .filter(key => [
@@ -96,7 +96,6 @@ export class NgLodgingReservationsFieldsConfig extends FieldsConfig<LodgingReser
                     }, {}))
                 ),
                 optionsDataType: 'ts-enum',
-                validators: [Validators.required],
                 order: 5,
                 permissions: ['SkipProcessingStatus']
             }),
