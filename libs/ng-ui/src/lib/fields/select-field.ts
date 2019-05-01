@@ -2,7 +2,7 @@ import { Field } from './field';
 import { SelectFieldOption } from './select-field-option';
 import { FieldHelpers } from './field-helpers';
 import { Observable, pipe, UnaryFunction } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, debounceTime } from 'rxjs/operators';
 
 type OptionsDataType = 'array' | 'enum' | 'ts-enum';
 const DEFAULT_VALUE_SELECTOR = 'object.id';
@@ -49,7 +49,7 @@ export class SelectField extends Field {
         this.valueSelector = DEFAULT_VALUE_SELECTOR;
         this.displayNameSelector = DEFAULT_DISPLAY_NAME_SELECTOR;
         Object.assign(this, values);
-        this.optionsData$ = this.optionsData$ ? this.optionsData$.pipe(this.dataToOptions()) : undefined;
+        this.optionsData$ = this.optionsData$ ? this.optionsData$.pipe(debounceTime(0), this.dataToOptions()) : undefined;
     }
 
     /**

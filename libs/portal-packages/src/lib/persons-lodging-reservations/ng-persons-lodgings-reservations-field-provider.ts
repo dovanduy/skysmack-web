@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnDestroy } from '@angular/core';
 import { Field, SelectField } from '@skysmack/ng-ui';
 import { map, switchMap } from 'rxjs/operators';
 import { PersonsLodgingReservationsType, PersonsLodgingReservationsSettings } from '@skysmack/packages-persons-lodging-reservations';
@@ -15,7 +15,8 @@ import { LODGING_RESERVATIONS_AREA_KEY } from 'libs/packages/lodging-reservation
 
 @Injectable({ providedIn: 'root' })
 export class NgPersonsLodgingReservationsFieldProvider extends FieldProvider {
-    public requested: StrIndex<boolean> = {};
+
+    public register: StrIndex<boolean> = {};
 
     constructor(
         public personsStore: NgPersonsStore,
@@ -30,6 +31,7 @@ export class NgPersonsLodgingReservationsFieldProvider extends FieldProvider {
     }
 
     public getFields(packagePath: string, area: string, entity?: LocalObject<Person, number>): Observable<Field[]> {
+        this.register = {};
         if (area === LODGING_RESERVATIONS_AREA_KEY) {
             return this.skysmackStore.getPackages().pipe(
                 map(packages => packages.filter(_package => _package.object.type === PersonsLodgingReservationsType.id && _package.object.dependencies[1] === packagePath)),
@@ -38,19 +40,19 @@ export class NgPersonsLodgingReservationsFieldProvider extends FieldProvider {
                         const fieldStreams$ = packages.map(_package => {
                             // TODO: Do something about requests only being done once (but beware they aren't fired more than once pr. "component life time")
 
-                            // Request the package settings - only ONCE per. package per. app lifetime.
+                            // Request the package settings - only ONCE per. getFields() call.
                             const depPackagePath = _package.object.path;
-                            if (!this.requested[depPackagePath]) {
+                            if (!this.register[depPackagePath]) {
                                 this.settingsActions.get(depPackagePath, 'persons-reservations');
-                                this.requested[depPackagePath] = true;
+                                this.register[depPackagePath] = true;
                             }
 
-                            // Request pesons + added fields - only ONCE per. package per. app lifetime.
+                            // Request pesons + added fields - only ONCE per. getFields() call.
                             const personsPackagePath = _package.object.dependencies[0];
-                            if (!this.requested[personsPackagePath]) {
+                            if (!this.register[personsPackagePath]) {
                                 this.personsActions.getPaged(personsPackagePath, new PagedQuery());
                                 this.fieldActions.getPaged(personsPackagePath, new PagedQuery());
-                                this.requested[personsPackagePath] = true;
+                                this.register[personsPackagePath] = true;
                             }
 
                             return this.settingsStore.get<PersonsLodgingReservationsSettings>(depPackagePath, 'persons-reservations').pipe(

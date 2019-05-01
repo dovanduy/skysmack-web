@@ -85,15 +85,16 @@ export class NgLodgingReservationsFieldsConfig extends FieldsConfig<LodgingReser
                 component: SelectFieldComponent,
                 value: entity ? entity.object.status : 0, // 0 equals "processing"
                 key: 'status',
-                optionsData$: of(LodgingReservation.statusEnum).pipe(map(lse => Object.keys(lse)
-                    .filter(key => [
-                        LodgingReservation.statusEnum.Processing,
-                        LodgingReservation.statusEnum.Reserved
-                    ].includes(lse[key]))
-                    .reduce((newEnum, key) => {
-                        newEnum[key] = lse[key];
-                        return newEnum;
-                    }, {}))
+                optionsData$: of(LodgingReservation.statusEnum).pipe(
+                    map(lse => Object.keys(lse)
+                        .filter(key => [
+                            LodgingReservation.statusEnum.Processing,
+                            LodgingReservation.statusEnum.Reserved
+                        ].includes(lse[key]))
+                        .reduce((newEnum, key) => {
+                            newEnum[key] = lse[key];
+                            return newEnum;
+                        }, {}))
                 ),
                 optionsDataType: 'ts-enum',
                 order: 5,
