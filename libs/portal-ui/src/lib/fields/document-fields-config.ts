@@ -25,11 +25,12 @@ export abstract class DocumentFieldsConfig<TRecord, TKey> extends FieldsConfig<T
     }
 
     public getFields(loadedPackage: LoadedPackage, entity?: LocalObject<TRecord, TKey>): Observable<Field[]> {
-        const additionalPaths = getAdditionalPaths(this.router, loadedPackage._package.path);
+        const packagePath = this.router.url.split('/')[1];
+        const additionalPaths = getAdditionalPaths(this.router, packagePath);
         const stateKey = additionalPaths.length > 0 ? `${loadedPackage._package.path}-${additionalPaths.join('-')}` : loadedPackage._package.path;
         return combineLatest(
             this.getRecordFields(loadedPackage, entity),
-            this.fieldsStore.get(stateKey)
+            this.fieldsStore.get(stateKey).pipe(tap(x => console.log(stateKey)))
         ).pipe(
             map(values => values[0].concat(this.toFields(entity, values[1]))),
             map(fields => this.addValidationErrors(fields, entity).sort((a, b) => a.order - b.order))
