@@ -24,18 +24,9 @@ export class EntityComponentPageTitle {
         private bodyTitle: Title,
         private store: NgSkysmackStore
     ) {
-        this.store.getSkysmack().pipe(hasValue(), map((tenant: Skysmack) => { if (tenant !== undefined) { return tenant; } }), take(1)).subscribe(tenant => {
-            if (tenant.name) {
-                this.tenantTitle = tenant.name;
-            }
-        });
-
-        translate.onLangChange.subscribe(() => {
-            if (this.translateTitle) {
-                this.setTranslatedTitle();
-            }
-        });
+        this.setTenantTitle();
     }
+
 
     public setTitle(_title: string, translate: boolean = false, show: boolean = true) {
         this.show = show;
@@ -43,7 +34,11 @@ export class EntityComponentPageTitle {
         if (translate) {
             this.titleTranslation = _title;
             this.translateTitle = translate;
-            this.setTranslatedTitle();
+            // TODO: Ensure the title gets translated.
+            // Ensure below chunck is only called in constructor if used.
+            // this.translate.onLangChange.subscribe(() => {
+            //     // Translate title???
+            // });
         } else {
             this.translateTitle = translate;
             this.title = _title;
@@ -58,10 +53,20 @@ export class EntityComponentPageTitle {
         this.bodyTitle.setTitle(`${_title}${this.tenantTitle}`);
     }
 
-    private setTranslatedTitle() {
-        // this.translate.get(this.titleTranslation).pipe(take(1)).subscribe((title: string) => {
-        //     this.title = title;
-        //     this.setBodyTitle(title);
-        // });
+    private setTenantTitle() {
+        this.store.getSkysmack().pipe(
+            hasValue(),
+            map((tenant: Skysmack) => {
+                if (tenant !== undefined) {
+                    return tenant;
+                }
+            }),
+            map(tenant => {
+                if (tenant.name) {
+                    this.tenantTitle = tenant.name;
+                }
+            }),
+            take(1)
+        ).subscribe();
     }
 }

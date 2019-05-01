@@ -4,12 +4,12 @@
             "LABELS": {
                 "LODGINGTYPEID": "Type",
                 "NAME": "Navn",
-                "DISABLED": "Tilgængelig"
+                "DISABLED": "Utilgængelig"
             },
             "PLACEHOLDERS": {
                 "LODGINGTYPEID": "Type",
                 "NAME": "Navn",
-                "DISABLED": "Tilgængelig"
+                "DISABLED": "Utilgængelig"
             },
             "VALIDATION": {
                 "LODGINGTYPEID": {
@@ -19,7 +19,7 @@
                     "REQUIRED": "Navn er påkrævet."
                 },
                 "DISABLED": {
-                    "REQUIRED": "Tilgængelighed er påkrævet."
+                    "REQUIRED": "Utilgængeligheds status er påkrævet."
                 }
             }
         },
