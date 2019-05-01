@@ -7,12 +7,15 @@ import { EntityComponentPageTitle } from './../../../models/entity-component-pag
   styleUrls: ['./page-header.component.scss']
 })
 export class PageHeaderComponent implements OnDestroy {
-  constructor(public _componentPageTitle: EntityComponentPageTitle) { }
-
   @Output() toggleSidenav = new EventEmitter<void>();
+
+  constructor(
+    public componentPageTitle: EntityComponentPageTitle
+  ) { }
 
   ngOnDestroy() {
     // Ensures a previous components title isn't visible on the next component.
-    this._componentPageTitle.title = '';
+    this.componentPageTitle.title = '';
+    this.componentPageTitle.titleExtraTranslationString = undefined;
   }
 }

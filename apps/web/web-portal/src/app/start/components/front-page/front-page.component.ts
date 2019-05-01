@@ -10,7 +10,7 @@ export class FrontPageComponent implements OnInit {
   constructor(public componentPageTitle: EntityComponentPageTitle) { }
 
   ngOnInit() {
-    this.componentPageTitle.setTitle('Skysmack', true);
+    this.componentPageTitle.setTitle('Skysmack');
   }
 
 }

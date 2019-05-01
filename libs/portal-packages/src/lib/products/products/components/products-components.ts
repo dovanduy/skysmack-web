@@ -3,6 +3,7 @@ import { ProductsIndexComponent } from './products-index/products-index.componen
 import { ProductsCreateComponent } from './products-create/products-create.component';
 import { ProductsEditComponent } from './products-edit/products-edit.component';
 import { FieldsIndexComponent, FieldsCreateComponent, FieldsEditComponent } from '@skysmack/portal-ui';
+import { PRODUCTS_AREA_KEY } from '@skysmack/packages-products';
 
 export const productsRoutes: Routes = [
   {
@@ -16,7 +17,9 @@ export const productsRoutes: Routes = [
     path: 'fields', component: FieldsIndexComponent, children: [
       { path: 'create', component: FieldsCreateComponent, pathMatch: 'full' },
       { path: 'edit/:id', component: FieldsEditComponent, pathMatch: 'full' }
-    ]
+    ], data: {
+      areaKey: PRODUCTS_AREA_KEY
+    }
   }
 ];
 

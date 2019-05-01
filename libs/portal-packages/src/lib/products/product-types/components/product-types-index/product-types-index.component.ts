@@ -15,7 +15,8 @@ import { NgSkysmackStore } from '@skysmack/ng-core';
 })
 export class ProductTypesIndexComponent extends DocumentRecordIndexComponent<ProductTypesAppState, ProductType, number> implements OnInit {
 
-  public area: string = PRODUCT_TYPES_AREA_KEY;
+  public areaKey = PRODUCT_TYPES_AREA_KEY;
+  public titleExtras = true;
   public entityActions: EntityAction[] = [
     new EntityAction().asUrlAction('edit', 'Edit', 'edit'),
     new EntityAction().asEventAction('Delete', this.delete, 'delete', this)
@@ -26,19 +27,17 @@ export class ProductTypesIndexComponent extends DocumentRecordIndexComponent<Pro
     public activatedRoute: ActivatedRoute,
     public actions: NgProductTypesActions,
     public redux: NgSkysmackStore,
-    public title: EntityComponentPageTitle,
     public store: NgProductTypesStore,
     public sidebarMenu: NgProductTypesMenu,
     public fieldsConfig: NgProductTypesFieldsConfig,
-    public fieldActions: NgFieldActions
+    public fieldActions: NgFieldActions,
+    public title: EntityComponentPageTitle
   ) {
-    super(router, activatedRoute, actions, redux, store, fieldsConfig, fieldActions);
+    super(router, activatedRoute, actions, redux, store, fieldsConfig, fieldActions, title);
   }
 
 
   ngOnInit() {
     super.ngOnInit();
-    const title = this.additionalPaths.length > 0 ? this.packagePath + ' ' + this.additionalPaths.join(' ') : this.packagePath;
-    this.title.setTitle(title);
   }
 }

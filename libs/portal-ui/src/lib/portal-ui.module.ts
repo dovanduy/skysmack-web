@@ -19,6 +19,7 @@ import { commonComponents } from './components/common/common-components';
 import { fieldComponents } from './components';
 import { displayComponents } from './components/display-components/display-components';
 import { directives } from './directives';
+import { ValidatorsFieldComponent } from './components/field-components/components/validators-field/validators-field.component';
 
 @NgModule({
   imports: [
@@ -56,7 +57,8 @@ import { directives } from './directives';
   ],
   entryComponents: [
     ...fieldComponents,
-    ...displayComponents
+    ...displayComponents,
+    ValidatorsFieldComponent
   ]
 })
 export class PortalUiModule {

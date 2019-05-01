@@ -4,6 +4,11 @@
   </button>
 
   <h1 focusOnNavigation>
-    <ng-container *ngIf="_componentPageTitle.show">{{ _componentPageTitle.title }}</ng-container>
+    <ng-container *ngIf="componentPageTitle.show">
+      {{ componentPageTitle.title }}
+      <span
+        *ngIf="componentPageTitle.titleExtraTranslationString">{{ componentPageTitle.titleExtraTranslationString | translate }}
+      </span>
+    </ng-container>
   </h1>
 </div>

@@ -16,7 +16,7 @@ import { NgProductsFieldsConfig } from '../../ng-products-fields-config';
 })
 export class ProductsIndexComponent extends DocumentRecordIndexComponent<ProductsAppState, Product, number> implements OnInit {
 
-  public area: string = PRODUCTS_AREA_KEY;
+  public areaKey: string = PRODUCTS_AREA_KEY;
   public entityActions: EntityAction[] = [
     new EntityAction().asUrlAction('edit', 'Edit', 'edit'),
     new EntityAction().asEventAction('Delete', this.delete, 'delete', this)
@@ -27,18 +27,16 @@ export class ProductsIndexComponent extends DocumentRecordIndexComponent<Product
     public activatedRoute: ActivatedRoute,
     public actions: NgProductsActions,
     public redux: NgSkysmackStore,
-    public title: EntityComponentPageTitle,
     public store: NgProductsStore,
     public sidebarMenu: NgProductsMenu,
     public fieldsConfig: NgProductsFieldsConfig,
-    public fieldActions: NgFieldActions
+    public fieldActions: NgFieldActions,
+    public title: EntityComponentPageTitle
   ) {
-    super(router, activatedRoute, actions, redux, store, fieldsConfig, fieldActions);
+    super(router, activatedRoute, actions, redux, store, fieldsConfig, fieldActions, title);
   }
-
 
   ngOnInit() {
     super.ngOnInit();
-    this.title.setTitle(this.packagePath);
   }
 }

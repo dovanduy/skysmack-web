@@ -47,5 +47,5 @@ export const fieldComponents = [
     SpeedDialFabComponent,
     RolesSelectFieldComponent,
     MultiSelectFieldComponent,
-    AddRecordFieldComponent,
+    AddRecordFieldComponent
 ];

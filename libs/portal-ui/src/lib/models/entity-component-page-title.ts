@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { TranslateService } from '@ngx-translate/core';
 import { take, map } from 'rxjs/operators';
 import { NgSkysmackStore } from '@skysmack/ng-core';
 import { hasValue } from '@skysmack/framework';
@@ -13,14 +12,10 @@ import { Skysmack } from '@skysmack/packages-skysmack-core';
 export class EntityComponentPageTitle {
     public title: string;
     public show = true;
-
-    private titleTranslation = '';
-    private translateTitle = false;
-
+    public titleExtraTranslationString: string;
     private tenantTitle = 'Skysmack';
 
     constructor(
-        private translate: TranslateService,
         private bodyTitle: Title,
         private store: NgSkysmackStore
     ) {
@@ -28,29 +23,18 @@ export class EntityComponentPageTitle {
     }
 
 
-    public setTitle(_title: string, translate: boolean = false, show: boolean = true) {
+    public setTitle(title: string, titleExtraTranslationString?: string, show: boolean = true, ) {
         this.show = show;
-
-        if (translate) {
-            this.titleTranslation = _title;
-            this.translateTitle = translate;
-            // TODO: Ensure the title gets translated.
-            // Ensure below chunck is only called in constructor if used.
-            // this.translate.onLangChange.subscribe(() => {
-            //     // Translate title???
-            // });
-        } else {
-            this.translateTitle = translate;
-            this.title = _title;
-            this.setBodyTitle(_title);
-        }
+        this.title = title;
+        this.titleExtraTranslationString = titleExtraTranslationString;
+        this.setBodyTitle(title);
     }
 
-    private setBodyTitle(_title: string) {
-        if (_title !== '') {
-            _title = `${_title} | `;
+    private setBodyTitle(title: string) {
+        if (title !== '') {
+            title = `${title} | `;
         }
-        this.bodyTitle.setTitle(`${_title}${this.tenantTitle}`);
+        this.bodyTitle.setTitle(`${title}${this.tenantTitle}`);
     }
 
     private setTenantTitle() {

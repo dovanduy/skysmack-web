@@ -8,6 +8,8 @@ import { NgFieldsMenu } from '../../ng-fields-menu';
 import { RecordIndexComponent } from '../../../base-components/record-components/record-index-component';
 import { NgFieldActions, NgFieldStore } from '@skysmack/ng-redux';
 import { NgFieldsConfig } from '../../ng-fields-config';
+import { map, take } from 'rxjs/operators';
+import { combineLatest } from 'rxjs';
 
 @Component({
   selector: 'ss-fields-index',
@@ -30,12 +32,18 @@ export class FieldsIndexComponent extends RecordIndexComponent<any, any, any> im
     public fieldsConfig: NgFieldsConfig,
     public injector: Injector
   ) {
-    super(router, activatedRoute, actions, skysmackStore, store, fieldsConfig);
+    super(router, activatedRoute, actions, skysmackStore, store, fieldsConfig, title);
   }
 
   ngOnInit() {
     super.ngOnInit();
-    this.title.setTitle(`${this.packagePath} ${this.additionalPaths.join(' ')} fields`);
+    combineLatest(
+      this.loadedPackage$,
+      this.activatedRoute.data
+    ).pipe(
+      map(([loadedPackage, data]) => this.title.setTitle(loadedPackage._package.name, data.areaKey ? `${data.areaKey.toUpperCase()}.INDEX.FIELDS_TITLE` : undefined)),
+      take(1)
+    ).subscribe()
   }
 
   protected storeGet() {

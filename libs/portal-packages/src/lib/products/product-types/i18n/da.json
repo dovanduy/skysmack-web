@@ -7,11 +7,13 @@
             "EDIT": "Rediger"
         },
         "INDEX": {
+            "TITLE_EXTRA": "(typer)",
             "ACTIONS": "Handlinger",
             "CREATE": "Opret ny type",
             "DELETE": "Slet",
             "MANAGE": "Konfigurer",
             "FIELDS": "Felter",
+            "FIELDS_TITLE": "(type felter)",
             "BACK": "Tilbage"
         },
         "FORM": {

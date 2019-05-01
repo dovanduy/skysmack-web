@@ -3,6 +3,7 @@ import { ProductTypesCreateComponent } from './product-types-create/product-type
 import { ProductTypesEditComponent } from './product-types-edit/product-types-edit.component';
 import { FieldsIndexComponent, FieldsCreateComponent, FieldsEditComponent } from '@skysmack/portal-ui';
 import { Routes } from '@angular/router';
+import { PRODUCT_TYPES_AREA_KEY } from 'libs/packages/products/src';
 
 export const productTypesRoutes: Routes = [
     {
@@ -15,7 +16,9 @@ export const productTypesRoutes: Routes = [
         path: 'types/fields', component: FieldsIndexComponent, children: [
             { path: 'create', component: FieldsCreateComponent, pathMatch: 'full' },
             { path: 'edit/:id', component: FieldsEditComponent, pathMatch: 'full' }
-        ]
+        ], data: {
+            areaKey: PRODUCT_TYPES_AREA_KEY
+        }
     }
 ];
 

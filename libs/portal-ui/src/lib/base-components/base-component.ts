@@ -3,10 +3,11 @@ import { NgSkysmackStore } from '@skysmack/ng-core';
 import { Observable } from 'rxjs';
 import { Router, ActivatedRoute } from '@angular/router';
 import { OnInit, OnDestroy } from '@angular/core';
-import { take } from 'rxjs/operators';
+import { take, map } from 'rxjs/operators';
 import { Field } from '@skysmack/ng-ui';
 import { getAdditionalPaths } from '@skysmack/ng-redux';
 import { LoadedPackage } from '@skysmack/ng-redux';
+import { EntityComponentPageTitle } from '../models/entity-component-page-title';
 
 export class BaseComponent<TAppState, TKey> implements OnInit, OnDestroy {
     public subscriptionHandler = new SubscriptionHandler();
@@ -15,11 +16,15 @@ export class BaseComponent<TAppState, TKey> implements OnInit, OnDestroy {
     public packagePath: string;
     public additionalPaths: string[] = [];
     public loadedPackage$: Observable<LoadedPackage>;
+    public titleExtras = false;
+    public areaKey = '';
+
 
     constructor(
         public router: Router,
         public activatedRoute: ActivatedRoute,
-        public skysmackStore: NgSkysmackStore
+        public skysmackStore: NgSkysmackStore,
+        public title?: EntityComponentPageTitle
     ) { }
 
     ngOnInit() {
@@ -29,6 +34,7 @@ export class BaseComponent<TAppState, TKey> implements OnInit, OnDestroy {
         this.setAdditionalPaths();
         this.getParams();
         this.getCurrentPackage();
+        this.setTitle();
     }
 
     ngOnDestroy() {
@@ -67,5 +73,16 @@ export class BaseComponent<TAppState, TKey> implements OnInit, OnDestroy {
 
     private setAdditionalPaths() {
         this.additionalPaths = getAdditionalPaths(this.router, this.packagePath);
+    }
+
+    private setTitle() {
+        if (this.title) {
+            let titleExtra;
+            if (this.titleExtras) {
+                titleExtra = `${this.areaKey.toUpperCase()}.INDEX.TITLE_EXTRA`;
+            }
+
+            this.loadedPackage$.pipe(map(loadedPackage => this.title.setTitle(loadedPackage._package.name, titleExtra)), take(1)).subscribe();
+        }
     }
 }

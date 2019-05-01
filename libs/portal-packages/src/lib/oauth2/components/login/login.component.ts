@@ -56,7 +56,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
-    this.componentPageTitle.setTitle('OAUTH2.OAUTH2_LOGIN.SIGN_IN', true, false);
+    this.componentPageTitle.setTitle('OAUTH2.OAUTH2_LOGIN.SIGN_IN', undefined, false);
     this.clearLoginErrors();
     this.createForm();
     this.listenForErrors();

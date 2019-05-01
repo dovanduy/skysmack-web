@@ -7,11 +7,13 @@
             "EDIT": "Edit"
         },
         "INDEX": {
+            "TITLE_EXTRA": "(types)",
             "ACTIONS": "Actions",
             "CREATE": "Create",
             "DELETE": "Delete",
             "MANAGE": "Manage",
             "FIELDS": "Fields",
+            "FIELDS_TITLE": "(type fields)",
             "BACK": "Back"
         },
         "FORM": {

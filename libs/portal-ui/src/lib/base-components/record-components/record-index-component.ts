@@ -8,6 +8,7 @@ import { OnInit } from '@angular/core';
 import { Record } from '@skysmack/framework';
 import { map, switchMap } from 'rxjs/operators';
 import { EntityFieldsConfig } from '../../fields/entity-fields-config';
+import { EntityComponentPageTitle } from '../../models/entity-component-page-title';
 
 export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey> extends BaseComponent<TAppState, TKey> implements OnInit {
     public pages$: BehaviorSubject<LocalPage<TKey>[]> = new BehaviorSubject<LocalPage<TKey>[]>([]);
@@ -30,9 +31,10 @@ export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey>
         public actions: EntityActions<any, TKey>,
         public skysmackStore: NgSkysmackStore,
         public store: EntityStore<any, TKey>,
-        public fieldsConfig: EntityFieldsConfig<any, TKey>
+        public fieldsConfig: EntityFieldsConfig<any, TKey>,
+        public title?: EntityComponentPageTitle
     ) {
-        super(router, activatedRoute, skysmackStore);
+        super(router, activatedRoute, skysmackStore, title);
     }
 
     ngOnInit() {
@@ -42,6 +44,8 @@ export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey>
         this.getPagedEntities();
         this.setFields();
     }
+
+
 
     protected actionsGetPaged() {
         this.actions.getPaged(this.packagePath, this.pagedQuery);
