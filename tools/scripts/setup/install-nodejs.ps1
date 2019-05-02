@@ -7,7 +7,7 @@ if (Get-Command node -errorAction SilentlyContinue) {
 }
 
 if(-Not  $node_installed) {
-    $node_version = "10.15.3"
+    $node_version = "11.14.0"
     $node_url = "https://nodejs.org/dist/v$node_version/node-v$node_version-x64.msi"
 
     $filename = "node-v$node_version-x64.msi"
