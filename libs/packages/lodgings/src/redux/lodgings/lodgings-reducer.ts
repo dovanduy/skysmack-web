@@ -24,8 +24,13 @@ export function lodgingsReducer(state = new LodgingsState(), action: ReduxAction
     switch (action.type) {
         case prefix + LodgingsActions.GET_AVAILABLE_LODGINGS_SUCCESS: {
             const castedAction = action as ReduxAction<StrIndex<number[]>, StateKeyMeta>;
-            // TODO: Merge available lodgings instead of overwriting them.
-            newState.availableLodgings[castedAction.meta.stateKey] = castedAction.payload;
+
+            // Merge data
+            const incoming = castedAction.payload;
+            const current = newState.availableLodgings[castedAction.meta.stateKey] ? newState.availableLodgings[castedAction.meta.stateKey] : {};
+            Object.keys(incoming).forEach((incomingKey) => current[incomingKey] = incoming[incomingKey]);
+
+            newState.availableLodgings[castedAction.meta.stateKey] = current;
             return newState;
         }
         case prefix + LodgingsActions.GET_AVAILABLE_LODGINGS_FAILURE: {

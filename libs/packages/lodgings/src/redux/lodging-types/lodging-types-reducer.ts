@@ -25,8 +25,13 @@ export function lodgingTypesReducer(state = new LodgingTypesState(), action: Red
     switch (action.type) {
         case prefix + LodgingTypesActions.GET_AVAILABLE_LODGING_TYPES_SUCCESS: {
             const castedAction = action as ReduxAction<StrIndex<StrIndex<number[]>>, StateKeyMeta>;
-            // TODO: Merge available lodgings instead of overwriting them.
-            newState.availableLodgingTypes[castedAction.meta.stateKey] = castedAction.payload;
+
+            // Merge data
+            const incoming = castedAction.payload;
+            const current = newState.availableLodgingTypes[castedAction.meta.stateKey] ? newState.availableLodgingTypes[castedAction.meta.stateKey] : {};
+            Object.keys(incoming).forEach((key) => current[key] = incoming[key]);
+
+            newState.availableLodgingTypes[castedAction.meta.stateKey] = current;
             return newState;
         }
         case prefix + LodgingTypesActions.GET_AVAILABLE_LODGING_TYPES_FAILURE: {
@@ -36,8 +41,20 @@ export function lodgingTypesReducer(state = new LodgingTypesState(), action: Red
 
         case prefix + LodgingTypesActions.GET_AVAILABLE_LODGING_TYPES_COUNT_SUCCESS: {
             const castedAction = action as ReduxAction<StrIndex<StrIndex<number>>, StateKeyMeta>;
-            // TODO: Merge available lodgings instead of overwriting them.
-            newState.availableLodgingTypesCount[castedAction.meta.stateKey] = castedAction.payload;
+
+            // Merge data
+            const incoming = castedAction.payload;
+            const current = newState.availableLodgingTypesCount[castedAction.meta.stateKey] ? newState.availableLodgingTypesCount[castedAction.meta.stateKey] : {};
+
+            Object.keys(incoming).forEach(someId => {
+                Object.keys(incoming[someId]).forEach(date => {
+                    current[someId] = current[someId] ? current[someId] : {};
+                    current[someId][date] = incoming[someId][date]
+                });
+            });
+
+            newState.availableLodgingTypesCount[castedAction.meta.stateKey] = current;
+
             return newState;
         }
         case prefix + LodgingTypesActions.GET_AVAILABLE_LODGING_TYPES_COUNT_FAILURE: {
