@@ -14,6 +14,6 @@ RUN npm run build
 FROM nginx:alpine
 RUN rm -rf /usr/share/nginx/html/*
 COPY --from=builder /ss-app/dist/apps/web/web-portal /usr/share/nginx/html
-COPY /ng-skysmack/nginx.default.conf /etc/nginx/conf.d/default.conf
+COPY /nginx.default.conf /etc/nginx/conf.d/default.conf
 EXPOSE 80 443
 CMD ["nginx", "-g", "daemon off;"]
