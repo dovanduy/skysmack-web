@@ -31,6 +31,7 @@ export class LocalObjectExtensions {
                         newRecord.isNew = existingRecords[existingRecordKey].isNew;
                     }
 
+                    newRecord.object = { ...existingRecords[existingRecordKey].object, ...newRecord.object };
                     existingRecords[existingRecordKey] = newRecord;
                 } else {
                     if (!GlobalProperties.production) {
