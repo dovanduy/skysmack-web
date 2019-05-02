@@ -6,7 +6,7 @@ import { RecurringAssignment } from '../../models/recurring-assignment';
  * This is to be used when you want to access maintenances via the GLOBAL state. E.g. state.maintenances (where maintenances is the reducer name.)
  */
 export class RecurringAssignmentsAppState extends AppState {
-    public 'recurringAssignments': RecurringAssignmentState;
+    public recurringAssignments: RecurringAssignmentState;
 }
 
 export class RecurringAssignmentState implements RecordState<RecurringAssignment, number> {

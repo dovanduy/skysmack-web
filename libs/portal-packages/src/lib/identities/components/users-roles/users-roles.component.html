@@ -1,41 +1,39 @@
-<ss-container>
-    <div class="user-roles-container">
-        <!-- CURRENT USER ROLES -->
-        <h3>Users current roles</h3>
-        <ng-container *ngIf="userRoles$ | async as userRoles">
-            <ng-container *ngIf="userRoles.length > 0; else noUserRoles">
-                <ng-container *ngFor="let role of userRoles; trackBy: trackById">
-                    <div>
-                        {{ role }} <button mat-raised-button color="primary" (click)="removeRole(role)">{{
+<div class="user-roles-container">
+    <!-- CURRENT USER ROLES -->
+    <h3>Users current roles</h3>
+    <ng-container *ngIf="userRoles$ | async as userRoles">
+        <ng-container *ngIf="userRoles.length > 0; else noUserRoles">
+            <ng-container *ngFor="let role of userRoles; trackBy: trackById">
+                <div>
+                    {{ role }} <button mat-raised-button color="primary" (click)="removeRole(role)">{{
                             'USERS.ROLES.REMOVE' | translate }}</button>
-                    </div>
-                </ng-container>
+                </div>
             </ng-container>
-
-            <!-- NO USER ROLES -->
-            <ng-template #noUserRoles>
-                <p [translate]="'USERS.ROLES.NO_ROLES_APPLIED'"></p>
-            </ng-template>
         </ng-container>
-        <hr />
 
-        <!-- AVAILABLE ROLES -->
-        <h3>Available roles</h3>
-        <p>{{ message }}</p>
-        <ng-container *ngIf="roles$ | async as roles">
-            <ng-container *ngIf="roles.length > 0; else noAvailableRoles">
-                <ng-container *ngFor="let role of roles trackBy: trackById">
-                    {{ role.object.name }} <button mat-raised-button color="primary" (click)="addRole(role)">{{
+        <!-- NO USER ROLES -->
+        <ng-template #noUserRoles>
+            <p [translate]="'USERS.ROLES.NO_ROLES_APPLIED'"></p>
+        </ng-template>
+    </ng-container>
+    <hr />
+
+    <!-- AVAILABLE ROLES -->
+    <h3>Available roles</h3>
+    <p>{{ message }}</p>
+    <ng-container *ngIf="roles$ | async as roles">
+        <ng-container *ngIf="roles.length > 0; else noAvailableRoles">
+            <ng-container *ngFor="let role of roles trackBy: trackById">
+                {{ role.object.name }} <button mat-raised-button color="primary" (click)="addRole(role)">{{
                         'USERS.ROLES.ADD' | translate }}</button><br /><br />
-                </ng-container>
             </ng-container>
-
-            <!-- NO AVAILABLE ROLES -->
-            <ng-template #noAvailableRoles>
-                <p [translate]="'USERS.ROLES.ROLES_APPLIED'"></p>
-            </ng-template>
         </ng-container>
 
+        <!-- NO AVAILABLE ROLES -->
+        <ng-template #noAvailableRoles>
+            <p [translate]="'USERS.ROLES.ROLES_APPLIED'"></p>
+        </ng-template>
+    </ng-container>
 
-    </div>
-</ss-container>
+
+</div>
