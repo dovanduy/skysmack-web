@@ -5,9 +5,10 @@ RUN apk update && apk add --no-cache make git
 
 # Build
 WORKDIR /ss-app
-RUN ls
 RUN npm i -g "@angular/cli@>=7.3.8 <=7.3.8"
+COPY package*.json ./
 RUN npm i
+COPY . .
 RUN npm run build
 
 FROM nginx:alpine
