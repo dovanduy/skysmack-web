@@ -5,6 +5,7 @@ RUN apk update && apk add --no-cache make git
 
 # Build
 WORKDIR /ss-app
+RUN ls
 RUN npm i -g "@angular/cli@>=7.3.8 <=7.3.8"
 RUN npm i
 RUN npm run build
