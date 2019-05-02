@@ -11,7 +11,7 @@ export class AccessPolicyPermissionsActions extends RecordActionsBase<AccessPoli
 
     public getMessageParams(record: LocalObject<AccessPolicyPermission, number>): StrIndex<string> {
         return {
-            ruleId: record.object.ruleId.toString()
+            value: 'AccessPolicyPermission'
         };
     }
 }

@@ -3,7 +3,7 @@ import { NgSkysmackStore } from '@skysmack/ng-core';
 import { Observable } from 'rxjs';
 import { Router, ActivatedRoute } from '@angular/router';
 import { OnInit, OnDestroy } from '@angular/core';
-import { take, map } from 'rxjs/operators';
+import { take, map, filter } from 'rxjs/operators';
 import { Field } from '@skysmack/ng-ui';
 import { getAdditionalPaths } from '@skysmack/ng-redux';
 import { LoadedPackage } from '@skysmack/ng-redux';
@@ -82,7 +82,11 @@ export class BaseComponent<TAppState, TKey> implements OnInit, OnDestroy {
                 titleExtra = `${this.areaKey.toUpperCase()}.INDEX.TITLE_EXTRA`;
             }
 
-            this.loadedPackage$.pipe(map(loadedPackage => this.title.setTitle(loadedPackage._package.name, titleExtra)), take(1)).subscribe();
+            this.loadedPackage$.pipe(
+                filter(loadedPackage => loadedPackage._package !== undefined && loadedPackage._package !== null),
+                map(loadedPackage => this.title.setTitle(loadedPackage._package.name, titleExtra)),
+                take(1)
+            ).subscribe();
         }
     }
 }
