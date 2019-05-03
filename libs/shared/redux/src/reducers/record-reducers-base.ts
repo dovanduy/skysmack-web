@@ -71,10 +71,22 @@ export function recordReducersBase<TState extends RecordState<TRecord, TKey>, TR
             setActionError(action, 'Add error: ');
             return newState;
         }
+        case prefix + RecordActionsBase.UPDATE: {
+            const castedAction: ReduxAction<null, ReduxOfflineMeta<TRecord[], HttpResponse, LocalObject<TRecord, TKey>[]>> = action;
+            const stateKey = castedAction.meta.offline.commit.meta.stateKey;
+            const recordsToBeUpdated = castedAction.meta.offline.commit.meta.value;
+            newState.localRecords[stateKey] = LocalObjectExtensions.mergeOrAddLocal(newState.localRecords[stateKey], recordsToBeUpdated, LocalObjectStatus.MODIFYING);
+
+            return newState;
+        }
+
         case prefix + RecordActionsBase.UPDATE_SUCCESS: {
             const castedAction: ReduxAction<HttpSuccessResponse<TRecord[] | TRecord>, CommitMeta<LocalObject<TRecord, TKey>[]>> = action;
             const body = castedAction.payload.body;
-            const updatedObjects = (Array.isArray(body) ? body : [body]).map((newObject, index) => replaceLocalInnerObject(castedAction.meta.value[index], newObject));
+            const updatedObjects = (Array.isArray(body) ? body : [body]).map((newObject, index) => {
+                replaceLocalInnerObject(castedAction.meta.value[index], newObject, LocalObjectStatus.MODIFYING);
+                castedAction.meta.value[index].status = LocalObjectStatus.OK;
+            });
             newState.localRecords[castedAction.meta.stateKey] = LocalObjectExtensions.mergeOrAddLocal<TRecord, TKey>(newState.localRecords[castedAction.meta.stateKey], updatedObjects, LocalObjectStatus.MODIFYING);
             return newState;
         }
