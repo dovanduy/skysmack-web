@@ -29,9 +29,10 @@ export class LodgingsDeparturesComponent extends LodgingsReservationsIndexCompon
     public lodgingTypesActions: NgLodgingTypesActions,
     public fieldsConfig: NgLodgingReservationsFieldsConfig,
     public sidebarMenu: NgLodgingsReservationsMenu,
-    public pageTitle: EntityComponentPageTitle
+    public pageTitle: EntityComponentPageTitle,
+    public title: EntityComponentPageTitle
   ) {
-    super( router, activatedRoute, skysmackStore, store, lodgingsStore, lodgingTypesStore, actions, lodgingsActions, lodgingTypesActions, fieldsConfig, sidebarMenu, pageTitle);
+    super( router, activatedRoute, skysmackStore, store, lodgingsStore, lodgingTypesStore, actions, lodgingsActions, lodgingTypesActions, fieldsConfig, sidebarMenu, pageTitle, title);
   }
 
   ngOnInit() {
