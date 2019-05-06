@@ -15,7 +15,8 @@ import { NgSkysmackStore } from '@skysmack/ng-core';
 })
 export class MaintenanceStatesIndexComponent extends RecordIndexComponent<MaintenanceStatesAppState, MaintenanceState, number> implements OnInit {
 
-  public area: string = MAINTENANCE_STATES_AREA_KEY;
+  public areaKey: string = MAINTENANCE_STATES_AREA_KEY;
+  public titleExtras = true;
   public entityActions: EntityAction[] = [
     new EntityAction().asUrlAction('edit', 'Edit', 'edit'),
     new EntityAction().asEventAction('Delete', this.delete, 'delete', this)
@@ -26,17 +27,16 @@ export class MaintenanceStatesIndexComponent extends RecordIndexComponent<Mainte
     public activatedRoute: ActivatedRoute,
     public actions: NgMaintenanceStatesActions,
     public redux: NgSkysmackStore,
-    public title: EntityComponentPageTitle,
     public store: NgMaintenanceStatesStore,
     public sidebarMenu: NgMaintenanceStatesMenu,
-    public fieldsConfig: NgMaintenanceStatesFieldsConfig
+    public fieldsConfig: NgMaintenanceStatesFieldsConfig,
+    public title: EntityComponentPageTitle
   ) {
-    super(router, activatedRoute, actions, redux, store, fieldsConfig);
+    super(router, activatedRoute, actions, redux, store, fieldsConfig, title);
 
   }
 
   ngOnInit() {
     super.ngOnInit();
-    this.title.setTitle(this.packagePath);
   }
 }

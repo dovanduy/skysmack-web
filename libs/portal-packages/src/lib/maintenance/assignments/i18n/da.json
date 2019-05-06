@@ -53,6 +53,7 @@
             "DELETE": "Slet",
             "MANAGE": "Konfigurer",
             "FIELDS": "Felter",
+            "FIELDS_TITLE": "(felter)",
             "STATES": "Tilstande",
             "TYPES": "Typer",
             "BACK": "Tilbage"

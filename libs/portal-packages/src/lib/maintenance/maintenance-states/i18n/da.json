@@ -30,6 +30,7 @@
             "EDIT": "Ret"
         },
         "INDEX": {
+            "TITLE_EXTRA": "(tilstand)",
             "ACTIONS": "Handlinger",
             "CREATE": "Opret",
             "EDIT": "Ret",
