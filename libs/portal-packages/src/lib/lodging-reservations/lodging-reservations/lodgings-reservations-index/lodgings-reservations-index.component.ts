@@ -63,7 +63,7 @@ export class LodgingsReservationsIndexComponent extends RecordIndexComponent<Lod
     new EntityAction().asEventAction('Delete', this.delete, 'delete', this),
   ];
 
-  public area: string = LODGING_RESERVATIONS_AREA_KEY;
+  public areaKey: string = LODGING_RESERVATIONS_AREA_KEY;
 
   constructor(
     public router: Router,
@@ -77,9 +77,10 @@ export class LodgingsReservationsIndexComponent extends RecordIndexComponent<Lod
     public lodgingTypesActions: NgLodgingTypesActions,
     public fieldsConfig: NgLodgingReservationsFieldsConfig,
     public sidebarMenu: NgLodgingsReservationsMenu,
-    public pageTitle: EntityComponentPageTitle
+    public pageTitle: EntityComponentPageTitle,
+    public title: EntityComponentPageTitle
   ) {
-    super(router, activatedRoute, actions, skysmackStore, store, fieldsConfig);
+    super(router, activatedRoute, actions, skysmackStore, store, fieldsConfig, title);
   }
 
   ngOnInit() {
