@@ -14,7 +14,7 @@ import { NgSkysmackStore } from '@skysmack/ng-core';
   templateUrl: './receipts-index.component.html'
 })
 export class ReceiptsIndexComponent extends DocumentRecordIndexComponent<ReceiptsAppState, Receipt, number> implements OnInit {
-  public area: string = RECEIPTS_REDUCER_AREA_KEY;
+  public areaKey: string = RECEIPTS_REDUCER_AREA_KEY;
   public entityActions: EntityAction[] = [
     new EntityAction().asUrlAction('edit', 'Edit', 'edit'),
     new EntityAction().asEventAction('Delete', this.delete, 'delete', this)
@@ -25,18 +25,17 @@ export class ReceiptsIndexComponent extends DocumentRecordIndexComponent<Receipt
     public activatedRoute: ActivatedRoute,
     public actions: NgReceiptsActions,
     public redux: NgSkysmackStore,
-    public title: EntityComponentPageTitle,
     public store: NgReceiptsStore,
     public sidebarMenu: NgReceiptsMenu,
     public fieldsConfig: NgReceiptsFieldsConfig,
-    public fieldActions: NgFieldActions
+    public fieldActions: NgFieldActions,
+    public title: EntityComponentPageTitle
   ) {
-    super(router, activatedRoute, actions, redux, store, fieldsConfig, fieldActions);
+    super(router, activatedRoute, actions, redux, store, fieldsConfig, fieldActions, title);
   }
 
 
   ngOnInit() {
     super.ngOnInit();
-    this.title.setTitle(this.packagePath);
   }
 }
