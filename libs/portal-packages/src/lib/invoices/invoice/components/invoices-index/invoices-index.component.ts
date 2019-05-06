@@ -41,6 +41,5 @@ export class InvoicesIndexComponent extends DocumentRecordIndexComponent<Invoice
 
   ngOnInit() {
     super.ngOnInit();
-    this.title.setTitle(this.packagePath);
   }
 }

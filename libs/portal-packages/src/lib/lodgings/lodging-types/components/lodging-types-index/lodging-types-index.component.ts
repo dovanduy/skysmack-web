@@ -15,7 +15,8 @@ import { NgLodgingTypesFieldsConfig } from '../../ng-lodging-types-fields-config
   templateUrl: './lodging-types-index.component.html'
 })
 export class LodgingTypesIndexComponent extends DocumentRecordIndexComponent<LodgingTypesAppState, LodgingType, number> implements OnInit {
-  public area: string = LODGING_TYPES_AREA_KEY;
+  public areaKey: string = LODGING_TYPES_AREA_KEY;
+  public titleExtras = true;
   public entityActions: EntityAction[] = [
     new EntityAction().asUrlAction('edit', 'Edit', 'edit'),
     new EntityAction().asEventAction('Delete', this.delete, 'delete', this)
@@ -26,18 +27,17 @@ export class LodgingTypesIndexComponent extends DocumentRecordIndexComponent<Lod
     public activatedRoute: ActivatedRoute,
     public actions: NgLodgingTypesActions,
     public skysmackStore: NgSkysmackStore,
-    public title: EntityComponentPageTitle,
     public store: NgLodgingTypesStore,
     public sidebarMenu: NgLodgingTypesMenu,
     public fieldsConfig: NgLodgingTypesFieldsConfig,
-    public fieldActions: NgFieldActions
+    public fieldActions: NgFieldActions,
+    public title: EntityComponentPageTitle
   ) {
-    super(router, activatedRoute, actions, skysmackStore, store, fieldsConfig, fieldActions);
+    super(router, activatedRoute, actions, skysmackStore, store, fieldsConfig, fieldActions, title);
   }
 
 
   ngOnInit() {
     super.ngOnInit();
-    this.title.setTitle(this.packagePath);
   }
 }
