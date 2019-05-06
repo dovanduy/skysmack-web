@@ -79,15 +79,11 @@ export function recordReducersBase<TState extends RecordState<TRecord, TKey>, TR
 
             return newState;
         }
-
         case prefix + RecordActionsBase.UPDATE_SUCCESS: {
             const castedAction: ReduxAction<HttpSuccessResponse<TRecord[] | TRecord>, CommitMeta<LocalObject<TRecord, TKey>[]>> = action;
             const body = castedAction.payload.body;
-            const updatedObjects = (Array.isArray(body) ? body : [body]).map((newObject, index) => {
-                replaceLocalInnerObject(castedAction.meta.value[index], newObject, LocalObjectStatus.MODIFYING);
-                castedAction.meta.value[index].status = LocalObjectStatus.OK;
-            });
-            newState.localRecords[castedAction.meta.stateKey] = LocalObjectExtensions.mergeOrAddLocal<TRecord, TKey>(newState.localRecords[castedAction.meta.stateKey], updatedObjects, LocalObjectStatus.MODIFYING);
+            const updatedObjects = (Array.isArray(body) ? body : [body]).map((newObject, index) => replaceLocalInnerObject(castedAction.meta.value[index], newObject, LocalObjectStatus.OK));
+            newState.localRecords[castedAction.meta.stateKey] = LocalObjectExtensions.mergeOrAddLocal<TRecord, TKey>(newState.localRecords[castedAction.meta.stateKey], updatedObjects, LocalObjectStatus.OK);
             return newState;
         }
         case prefix + RecordActionsBase.UPDATE_FAILURE: {

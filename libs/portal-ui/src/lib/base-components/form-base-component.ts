@@ -46,7 +46,6 @@ export class FormBaseComponent<TAppState, TRecord extends Record<TKey>, TKey> ex
         if (entity) {
             // Update existing entity
             entity.object = formValues;
-            entity.status = LocalObjectStatus.MODIFYING;
             return entity;
         } else {
             // Create new entity

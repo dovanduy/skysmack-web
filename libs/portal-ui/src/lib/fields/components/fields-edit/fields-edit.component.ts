@@ -7,7 +7,7 @@ import { EditorNavService } from './../../../components/common/container/editor-
 import { NgFieldsConfig } from './../../ng-fields-config';
 import { RecordFormComponent } from './../../../base-components/record-components/record-form-component';
 import { FormHelper } from '@skysmack/ng-ui';
-import { getFieldStateKey } from '@skysmack/framework';
+import { getFieldStateKey, LocalObjectStatus, LocalObject } from '@skysmack/framework';
 
 @Component({
   selector: 'ss-portal-ui-fields-edit',
@@ -43,6 +43,7 @@ export class FieldsEditComponent extends RecordFormComponent<FieldState, any, st
       const oldValue = { ...this.selectedEntity };
       const newValue = this.extractFormValues(fh, this.selectedEntity);
       newValue.oldObject = oldValue.object;
+      newValue.status = LocalObjectStatus.MODIFYING;
       this.actions.update([newValue], this.packagePath, this.additionalPaths);
       this.editorNavService.hideEditorNav();
     });

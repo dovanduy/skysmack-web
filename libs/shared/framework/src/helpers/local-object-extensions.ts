@@ -31,10 +31,8 @@ export class LocalObjectExtensions {
                         newRecord.isNew = existingRecords[existingRecordKey].isNew;
                     }
 
-                    // console.log('Before', JSON.stringify(existingRecords, undefined, 2));
                     newRecord.object = { ...existingRecords[existingRecordKey].object, ...newRecord.object };
                     existingRecords[existingRecordKey] = newRecord;
-                    // console.log('After', JSON.stringify(existingRecords, undefined, 2));
                 } else {
                     if (!GlobalProperties.production) {
                         console.log(`Existing record status ${existingRecords[existingRecordKey].status} did not match expected state ${expectedState}`)

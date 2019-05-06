@@ -1,6 +1,6 @@
 import { Router, ActivatedRoute } from '@angular/router';
 import { OnInit, OnDestroy } from '@angular/core';
-import { Record, LocalObject } from '@skysmack/framework';
+import { Record, LocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { EditorNavService } from './../../components/common/container/editor-nav.service';
 import { FormBaseComponent } from './../form-base-component';
 import { NgSkysmackStore } from '@skysmack/ng-core';
@@ -95,6 +95,7 @@ export class RecordFormComponent<TAppState, TRecord extends Record<TKey>, TKey> 
             const oldValue = { ...this.selectedEntity };
             const newValue = this.extractFormValues(fh, this.selectedEntity);
             newValue.oldObject = oldValue.object;
+            newValue.status = LocalObjectStatus.MODIFYING;
             this.actions.update([newValue], this.packagePath);
             this.editorNavService.hideEditorNav();
         });

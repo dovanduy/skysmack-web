@@ -23,7 +23,7 @@ export function getSingleDependency(options: GetSingleDependencyOptions) {
     if (options.packageDependencyIndex || options.packageDependencyIndex === 0 && entityId) {
         options.skysmackStore.getCurrentPackage(packagePath).pipe(
             map(_package => options.actions.getSingle<number>(_package._package.dependencies[options.packageDependencyIndex], entityId)),
-            take(1),
+            take(1)
         ).subscribe();
     } else if (entityId) {
         options.actions.getSingle<number>(packagePath, entityId);
