@@ -43,7 +43,6 @@ export abstract class NgRecordStore<TState, TRecord extends Record<TKey>, TKey> 
             );
     }
 
-
     protected getSingleWithDependencies = (packagePath: string, id: TKey, relationSelector: string, relationIdSelector: string, stateSelector: string): Observable<LocalObject<TRecord, TKey>> => {
         return combineLatest(
             this.getSingleRecord(packagePath, id),
@@ -58,7 +57,6 @@ export abstract class NgRecordStore<TState, TRecord extends Record<TKey>, TKey> 
                 })
             );
     }
-
 
     protected getState<TStateType>(): Observable<TStateType> {
         return this.store.select(state => state[this.stateKey]);
