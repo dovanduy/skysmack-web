@@ -14,6 +14,6 @@ export class NgProductsStore extends NgRecordStore<ProductsAppState, Product, nu
     }
 
     public getSingle(packagePath: string, id: number): Observable<LocalObject<Product, number>> {
-        return this.getSingleWithDependencies(packagePath, id, 'productType', 'productTypeId', 'productTypes');
+        return this.getSingleWithDependency(packagePath, id, 'productType', 'productTypeId', 'productTypes');
     }
 }

@@ -15,7 +15,7 @@ export class NgLodgingsStore extends NgRecordStore<LodgingsAppState, Lodging, nu
     }
 
     public getSingle(packagePath: string, id: number): Observable<LocalObject<Lodging, number>> {
-        return this.getSingleWithDependencies(packagePath, id, 'lodgingType', 'lodgingTypeId', 'lodgingTypes');
+        return this.getSingleWithDependency(packagePath, id, 'lodgingType', 'lodgingTypeId', 'lodgingTypes');
     }
 
     public getAvailableLodgings(packagePath: string): Observable<StrIndex<number[]>> {

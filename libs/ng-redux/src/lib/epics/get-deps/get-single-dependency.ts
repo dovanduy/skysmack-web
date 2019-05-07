@@ -2,9 +2,8 @@ import { map, take } from 'rxjs/operators';
 import { NgRecordStore } from '../../stores/ng-record-store';
 import { RecordActionsBase } from '@skysmack/redux';
 import { SkysmackStore } from '../../stores/skysmack-store';
-import { RSQLFilterBuilder, PagedQuery } from '@skysmack/framework';
 
-export interface GetSingleDependenciesOptions {
+export interface GetSingleDependencyOptions {
     entity: any;
     packagePath: string;
     relationIdSelector: string;
@@ -15,20 +14,17 @@ export interface GetSingleDependenciesOptions {
     packageDependencyIndex?: number;
 }
 
-export function getSingleDependencies(options: GetSingleDependenciesOptions): void {
+export function getSingleDependency(options: GetSingleDependencyOptions): void {
     const entity = options.entity;
     const packagePath = options.packagePath;
+    const entityId = entity[options.relationIdSelector];
 
-    const rsqlFilter = new RSQLFilterBuilder();
-    rsqlFilter.column(options.relationIdSelector).equalTo(entity.id);
-    const query = new PagedQuery({ rsqlFilter });
-
-    if (options.packageDependencyIndex || options.packageDependencyIndex === 0) {
+    if (options.packageDependencyIndex || options.packageDependencyIndex === 0 && entityId) {
         options.skysmackStore.getCurrentPackage(packagePath).pipe(
-            map(_package => options.actions.getPaged(_package._package.dependencies[options.packageDependencyIndex], query)),
+            map(_package => options.actions.getSingle<number>(_package._package.dependencies[options.packageDependencyIndex], entityId)),
             take(1)
         ).subscribe();
-    } else {
-        options.actions.getPaged(packagePath, query);
+    } else if (entityId) {
+        options.actions.getSingle<number>(packagePath, entityId);
     }
 }

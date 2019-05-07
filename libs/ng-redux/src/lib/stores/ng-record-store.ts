@@ -28,34 +28,50 @@ export abstract class NgRecordStore<TState, TRecord extends Record<TKey>, TKey> 
     protected getWithDependencies = (packagePath: string, relationSelector: string, relationIdSelector: string, stateSelector: string): Observable<LocalObject<TRecord, TKey>[]> => {
         return combineLatest(
             this.getRecords(packagePath),
-            this.getDependencies(packagePath, stateSelector)).pipe(
-                map(values => {
-                    const records = values[0];
-                    const dependencies = values[1];
-                    for (let index = 0; index < records.length; index++) {
-                        const record = records[index];
-                        if (record.object[relationIdSelector] && record.object[relationIdSelector] > 0) {
-                            record.object[relationSelector] = dependencies.find(dependency => dependency.object.id === record.object[relationIdSelector]);
-                        }
+            this.getDependencies(packagePath, stateSelector)
+        ).pipe(
+            map(values => {
+                const records = values[0];
+                const dependencies = values[1];
+                for (let index = 0; index < records.length; index++) {
+                    const record = records[index];
+                    if (record.object[relationIdSelector] && record.object[relationIdSelector] > 0) {
+                        record.object[relationSelector] = dependencies.find(dependency => dependency.object.id === record.object[relationIdSelector]);
                     }
-                    return records;
-                })
-            );
+                }
+                return records;
+            })
+        );
+    }
+
+    protected getSingleWithDependency = (packagePath: string, id: TKey, relationSelector: string, relationIdSelector: string, stateSelector: string): Observable<LocalObject<TRecord, TKey>> => {
+        return combineLatest(
+            this.getSingleRecord(packagePath, id),
+            this.getDependencies(packagePath, stateSelector)
+        ).pipe(
+            map(values => {
+                const record = values[0];
+                const dependencies = values[1];
+                if (record.object[relationIdSelector] && record.object[relationIdSelector] > 0) {
+                    record.object[relationSelector] = dependencies.find(dependency => dependency.object.id === record.object[relationIdSelector]);
+                }
+                return record;
+            })
+        );
     }
 
     protected getSingleWithDependencies = (packagePath: string, id: TKey, relationSelector: string, relationIdSelector: string, stateSelector: string): Observable<LocalObject<TRecord, TKey>> => {
         return combineLatest(
             this.getSingleRecord(packagePath, id),
-            this.getDependencies(packagePath, stateSelector)).pipe(
-                map(values => {
-                    const record = values[0];
-                    const dependencies = values[1];
-                    if (record.object[relationIdSelector] && record.object[relationIdSelector] > 0) {
-                        record.object[relationSelector] = dependencies.find(dependency => dependency.object.id === record.object[relationIdSelector]);
-                    }
-                    return record;
-                })
-            );
+            this.getDependencies(packagePath, stateSelector)
+        ).pipe(
+            map(values => {
+                const record = values[0];
+                const dependencies = values[1];
+                record.object[relationSelector] = dependencies.filter(dependency => dependency.object[relationIdSelector] === record.object.id);
+                return record;
+            })
+        );
     }
 
     protected getState<TStateType>(): Observable<TStateType> {
