@@ -64,7 +64,7 @@ export const getReadDependencies = (options: GetCrudDependencies): any => {
             actions: options.actions,
             packageDependencyIndex: options.packageDependencyIndex
         } as GetSingleDependencyOptions)),
-        map(() => ({ type: options.prefix + + 'DEPENDENCY_REQUESTED' }))
+        map(() => ({ type: options.prefix + 'DEPENDENCY_REQUESTED' }))
     );
 
     return [

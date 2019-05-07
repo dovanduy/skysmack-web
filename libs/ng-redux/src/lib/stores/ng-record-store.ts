@@ -2,7 +2,7 @@ import { Record, StrIndex, LocalPageTypes, LocalObject, hasValue, dictionaryToAr
 import { RecordStore, RecordState } from '@skysmack/redux';
 import { Observable, combineLatest } from 'rxjs';
 import { NgRedux } from '@angular-redux/store';
-import { map, tap } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 
 export abstract class NgRecordStore<TState, TRecord extends Record<TKey>, TKey> implements RecordStore<TRecord, TKey>  {
     constructor(
