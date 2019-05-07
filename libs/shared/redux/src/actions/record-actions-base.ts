@@ -1,5 +1,5 @@
 
-import { Store } from 'redux';
+import { Store, AnyAction } from 'redux';
 import { PagedQuery, Record, LocalObject, HttpMethod, LocalObjectStatus, HttpResponse, QueueItem, StrIndex } from '@skysmack/framework';
 import { ReduxAction } from '../action-types/redux-action';
 import { GetPagedEntitiesPayload, GetSingleEntityPayload, CancelActionPayload, } from '../payloads';
@@ -12,24 +12,24 @@ export abstract class RecordActionsBase<TStateType, TStore extends Store<TStateT
     public static CANCEL_RECORD_ACTION = 'CANCEL_RECORD_ACTION';
 
     public static GET_PAGED = 'GET_PAGED';
-    public static GET_PAGED_SUCCESS = RecordActionsBase.GET_PAGED + '_SUCCESS';
-    public static GET_PAGED_FAILURE = RecordActionsBase.GET_PAGED + '_FAILURE';
+    public static GET_PAGED_SUCCESS = 'GET_PAGED_SUCCESS';
+    public static GET_PAGED_FAILURE = 'GET_PAGED_FAILURE';
 
     public static GET_SINGLE = 'GET_SINGLE';
-    public static GET_SINGLE_SUCCESS = RecordActionsBase.GET_SINGLE + '_SUCCESS';
-    public static GET_SINGLE_FAILURE = RecordActionsBase.GET_SINGLE + '_FAILURE';
+    public static GET_SINGLE_SUCCESS = 'GET_SINGLE_SUCCESS';
+    public static GET_SINGLE_FAILURE = 'GET_SINGLE_FAILURE';
 
     public static ADD = 'ADD';
-    public static ADD_SUCCESS = RecordActionsBase.ADD + '_SUCCESS';
-    public static ADD_FAILURE = RecordActionsBase.ADD + '_FAILURE';
+    public static ADD_SUCCESS = 'ADD_SUCCESS';
+    public static ADD_FAILURE = 'ADD_FAILURE';
 
     public static UPDATE = 'UPDATE';
-    public static UPDATE_SUCCESS = RecordActionsBase.UPDATE + '_SUCCESS';
-    public static UPDATE_FAILURE = RecordActionsBase.UPDATE + '_FAILURE';
+    public static UPDATE_SUCCESS = 'UPDATE_SUCCESS';
+    public static UPDATE_FAILURE = 'UPDATE_FAILURE';
 
     public static DELETE = 'DELETE';
-    public static DELETE_SUCCESS = RecordActionsBase.DELETE + '_SUCCESS';
-    public static DELETE_FAILURE = RecordActionsBase.DELETE + '_FAILURE';
+    public static DELETE_SUCCESS = 'DELETE_SUCCESS';
+    public static DELETE_FAILURE = 'DELETE_FAILURE';
 
     constructor(
         protected store: TStore,

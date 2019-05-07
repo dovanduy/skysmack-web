@@ -1,4 +1,4 @@
-import { map, take, tap } from 'rxjs/operators';
+import { map, take } from 'rxjs/operators';
 import { NgRecordStore } from '../../stores/ng-record-store';
 import { RecordActionsBase } from '@skysmack/redux';
 import { SkysmackStore } from '../../stores/skysmack-store';
@@ -14,9 +14,8 @@ export interface GetSingleDependencyOptions {
     packageDependencyIndex?: number;
 }
 
-export function getSingleDependency(options: GetSingleDependencyOptions) {
+export function getSingleDependency(options: GetSingleDependencyOptions): void {
     const entity = options.entity;
-    // Get dep
     const packagePath = options.packagePath;
     const entityId = entity[options.relationIdSelector];
 
@@ -27,15 +26,5 @@ export function getSingleDependency(options: GetSingleDependencyOptions) {
         ).subscribe();
     } else if (entityId) {
         options.actions.getSingle<number>(packagePath, entityId);
-    }
-
-    // Match dep
-    if (entityId) {
-        options.store.getSingle(packagePath, entityId).pipe(
-            map(dep => {
-                entity[options.relationSelector] = dep;
-            }),
-            take(1)
-        ).subscribe();
     }
 }

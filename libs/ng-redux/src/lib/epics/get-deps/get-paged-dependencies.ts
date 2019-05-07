@@ -1,5 +1,5 @@
-import { RSQLFilterBuilder, PagedQuery, hasValue, LocalObject } from '@skysmack/framework';
-import { map, take, switchMap } from 'rxjs/operators';
+import { RSQLFilterBuilder, PagedQuery } from '@skysmack/framework';
+import { map, take } from 'rxjs/operators';
 import { NgRecordStore } from '../../stores/ng-record-store';
 import { RecordActionsBase, ReduxAction, GetPagedEntitiesSuccessPayload } from '@skysmack/redux';
 import { SkysmackStore } from '../../stores/skysmack-store';
@@ -15,18 +15,15 @@ export interface GetDependenciesOptions {
     packageDependencyIndex?: number;
 }
 
-export function getPagedDependencies(options: GetDependenciesOptions) {
-    // Get ids from the relation id prop.
+export function getDependencies(options: GetDependenciesOptions): void {
     const entities = options.action.payload.entities;
     const depIds: number[] = Array.from(new Set(entities.map(record => record[options.relationIdSelector]).filter(x => x)));
 
     if (depIds && depIds.length > 0) {
-        // Prepare query to get relevant deps
         const rsqlFilter = new RSQLFilterBuilder();
         rsqlFilter.column(options.rsqlIdSelector).in(depIds);
         const query = new PagedQuery({ rsqlFilter });
 
-        // Get deps
         const packagePath = options.action.payload.packagePath;
 
         if (options.packageDependencyIndex || options.packageDependencyIndex === 0) {
@@ -36,31 +33,8 @@ export function getPagedDependencies(options: GetDependenciesOptions) {
                 }),
                 take(1),
             ).subscribe();
-
-            // Match deps
-            options.skysmackStore.getCurrentPackage(packagePath).pipe(
-                switchMap(_package => options.store.get(_package._package.dependencies[options.packageDependencyIndex]).pipe(
-                    hasValue(),
-                    map((deps: LocalObject<any, number>[]) => match(entities, deps, options)),
-                    take(1)
-                ))
-            ).subscribe();
-
         } else {
             options.actions.getPaged(packagePath, query);
-
-            // Match deps
-            options.store.get(packagePath).pipe(
-                hasValue(),
-                map((deps: LocalObject<any, number>[]) => match(entities, deps, options)),
-                take(1)
-            ).subscribe();
         }
     }
-}
-
-function match(entities, deps, options) {
-    entities.forEach(entity => {
-        entity[options.relationSelector] = deps.find(dep => dep.object.id === entity[options.relationIdSelector]);
-    });
 }
