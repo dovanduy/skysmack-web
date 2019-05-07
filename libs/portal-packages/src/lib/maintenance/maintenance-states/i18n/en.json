@@ -30,6 +30,7 @@
             "EDIT": "Edit"
         },
         "INDEX": {
+            "TITLE_EXTRA": "(states)",
             "ACTIONS": "Actions",
             "CREATE": "Create",
             "EDIT": "Edit",

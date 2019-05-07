@@ -15,7 +15,7 @@ import { NgProductTypePriceChangesFieldsConfig } from '../../ng-product-type-pri
 })
 export class ProductTypePriceChangesIndexComponent extends RecordIndexComponent<ProductTypePriceChangesAppState, ProductPriceChange, number> implements OnInit {
 
-  public area: string = PRODUCT_TYPE_PRICE_CHANGES_AREA_KEY;
+  public areaKey: string = PRODUCT_TYPE_PRICE_CHANGES_AREA_KEY;
   public entityActions: EntityAction[] = [
     new EntityAction().asUrlAction('edit', 'Edit', 'edit'),
     new EntityAction().asEventAction('Delete', this.delete, 'delete', this)
@@ -26,17 +26,16 @@ export class ProductTypePriceChangesIndexComponent extends RecordIndexComponent<
     public activatedRoute: ActivatedRoute,
     public actions: NgProductTypePriceChangesActions,
     public redux: NgSkysmackStore,
-    public title: EntityComponentPageTitle,
     public store: NgProductTypePriceChangesStore,
     public sidebarMenu: NgProductTypePriceChangesMenu,
     public fieldsConfig: NgProductTypePriceChangesFieldsConfig,
+    public title: EntityComponentPageTitle
   ) {
-    super(router, activatedRoute, actions, redux, store, fieldsConfig);
+    super(router, activatedRoute, actions, redux, store, fieldsConfig, title);
   }
 
 
   ngOnInit() {
     super.ngOnInit();
-    this.title.setTitle(this.packagePath);
   }
 }

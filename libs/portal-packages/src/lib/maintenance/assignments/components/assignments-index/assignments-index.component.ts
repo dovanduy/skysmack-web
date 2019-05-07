@@ -15,7 +15,7 @@ import { NgSkysmackStore } from '@skysmack/ng-core';
 })
 export class AssignmentsIndexComponent extends RecordIndexComponent<AssignmentsAppState, Assignment, number> implements OnInit {
 
-  public area: string = ASSIGNMENTS_AREA_KEY;
+  public areaKey: string = ASSIGNMENTS_AREA_KEY;
   public entityActions: EntityAction[] = [
     new EntityAction().asUrlAction('edit', 'Edit', 'edit'),
     new EntityAction().asEventAction('Delete', this.delete, 'delete', this)
@@ -26,19 +26,18 @@ export class AssignmentsIndexComponent extends RecordIndexComponent<AssignmentsA
     public activatedRoute: ActivatedRoute,
     public actions: NgAssignmentsActions,
     public skysmackStore: NgSkysmackStore,
-    public title: EntityComponentPageTitle,
     public store: NgAssignmentsStore,
     public sidebarMenu: NgAssignmentsMenu,
     public fieldsConfig: NgAssignmentsFieldsConfig,
     public assignmentTypesStore: NgAssignmentTypesStore,
     public assignmentTypesActions: NgAssignmentTypesActions,
+    public title: EntityComponentPageTitle
   ) {
-    super(router, activatedRoute, actions, skysmackStore, store, fieldsConfig);
+    super(router, activatedRoute, actions, skysmackStore, store, fieldsConfig, title);
   }
 
   ngOnInit() {
     super.ngOnInit();
-    this.title.setTitle(this.packagePath);
     this.assignmentTypesActions.getPaged(this.packagePath, this.pagedQuery);
   }
 }

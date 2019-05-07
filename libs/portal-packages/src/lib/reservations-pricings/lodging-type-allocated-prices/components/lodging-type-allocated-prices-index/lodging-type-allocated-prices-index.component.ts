@@ -14,7 +14,7 @@ import { NgLodgingTypeAllocatedPricesFieldsConfig } from '../../ng-lodging-type-
 })
 export class LodgingTypeAllocatedPricesIndexComponent extends RecordIndexComponent<LodgingTypeAllocatedPricesAppState, LodgingTypeAllocatedPrice, number> implements OnInit {
 
-  public area: string = LODGING_TYPE_ALLOCATED_PRICES_AREA_KEY;
+  public areaKey: string = LODGING_TYPE_ALLOCATED_PRICES_AREA_KEY;
   public entityActions: EntityAction[] = [
     new EntityAction().asUrlAction('edit', 'Edit', 'edit'),
     new EntityAction().asEventAction('Delete', this.delete, 'delete', this)
@@ -25,17 +25,16 @@ export class LodgingTypeAllocatedPricesIndexComponent extends RecordIndexCompone
     public activatedRoute: ActivatedRoute,
     public actions: NgLodgingTypeAllocatedPricesActions,
     public redux: NgSkysmackStore,
-    public title: EntityComponentPageTitle,
     public store: NgLodgingTypeAllocatedPricesStore,
     public sidebarMenu: NgLodgingTypeAllocatedPricesMenu,
     public fieldsConfig: NgLodgingTypeAllocatedPricesFieldsConfig,
+    public title: EntityComponentPageTitle
   ) {
-    super(router, activatedRoute, actions, redux, store, fieldsConfig);
+    super(router, activatedRoute, actions, redux, store, fieldsConfig, title);
   }
 
 
   ngOnInit() {
     super.ngOnInit();
-    this.title.setTitle(this.packagePath);
   }
 }

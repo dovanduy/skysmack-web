@@ -12,6 +12,7 @@
             "DELETE": "Slet",
             "MANAGE": "Konfigurer",
             "FIELDS": "Felter",
+            "FIELDS_TITLE": "(felter)",
             "BACK": "Tilbage"
         },
         "FORM": {

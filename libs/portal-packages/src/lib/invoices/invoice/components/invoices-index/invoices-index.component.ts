@@ -17,7 +17,7 @@ import { NgInvoicesFieldsConfig } from '../../ng-invoices-fields-config';
 })
 export class InvoicesIndexComponent extends DocumentRecordIndexComponent<InvoicesAppState, Invoice, number> implements OnInit {
 
-  public area: string = INVOICES_AREA_KEY;
+  public areaKey: string = INVOICES_AREA_KEY;
   public entityActions: EntityAction[] = [
     new EntityAction().asUrlAction('items', 'Items', 'reorder'),
     new EntityAction().asUrlAction('details', 'Details', 'list'),
@@ -30,17 +30,16 @@ export class InvoicesIndexComponent extends DocumentRecordIndexComponent<Invoice
     public activatedRoute: ActivatedRoute,
     public actions: NgInvoicesActions,
     public redux: NgSkysmackStore,
-    public title: EntityComponentPageTitle,
     public store: NgInvoicesStore,
     public sidebarMenu: NgInvoicesMenu,
     public fieldsConfig: NgInvoicesFieldsConfig,
-    public fieldActions: NgFieldActions
+    public fieldActions: NgFieldActions,
+    public title: EntityComponentPageTitle
   ) {
-    super(router, activatedRoute, actions, redux, store, fieldsConfig, fieldActions);
+    super(router, activatedRoute, actions, redux, store, fieldsConfig, fieldActions, title);
   }
 
   ngOnInit() {
     super.ngOnInit();
-    this.title.setTitle(this.packagePath);
   }
 }

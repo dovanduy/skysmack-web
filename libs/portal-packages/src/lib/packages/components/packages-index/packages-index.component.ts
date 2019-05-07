@@ -14,7 +14,7 @@ import { NgPackagesFieldsConfig } from '../../ng-packages-fields-config';
   templateUrl: './packages-index.component.html'
 })
 export class PackagesIndexComponent extends RecordIndexComponent<PackagesAppState, any, string> implements OnInit {
-  public area: string = PACKAGES_AREA_KEY;
+  public areaKey: string = PACKAGES_AREA_KEY;
   public entityActions: EntityAction[] = [
     new EntityAction().asUrlAction('edit', 'Edit', 'edit'),
     new EntityAction().asEventAction('Delete', this.delete, 'delete', this)
@@ -25,17 +25,16 @@ export class PackagesIndexComponent extends RecordIndexComponent<PackagesAppStat
     public activatedRoute: ActivatedRoute,
     public actions: NgPackagesActions,
     public skysmackStore: NgSkysmackStore,
-    public title: EntityComponentPageTitle,
     public store: NgPackagesStore,
     public sidebarMenu: NgPackagesMenu,
-    public fieldsConfig: NgPackagesFieldsConfig
+    public fieldsConfig: NgPackagesFieldsConfig,
+    public title: EntityComponentPageTitle
   ) {
-    super(router, activatedRoute, actions, skysmackStore, store, fieldsConfig);
+    super(router, activatedRoute, actions, skysmackStore, store, fieldsConfig, title);
   }
 
   ngOnInit() {
     super.ngOnInit();
     this.actions.getAvailablePackages();
-    this.title.setTitle(this.packagePath);
   }
 }

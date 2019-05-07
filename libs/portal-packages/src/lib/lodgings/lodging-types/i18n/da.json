@@ -23,12 +23,14 @@
             "EDIT": "Rediger"
         },
         "INDEX": {
+            "TITLE_EXTRA": "(typer)",
             "ACTIONS": "Handlinger",
             "CREATE": "Opret",
             "TYPE": "Opret ny type",
             "MANAGE": "Konfigurer",
             "AVAILABILITY": "Tilgængelighed",
             "TYPES_FIELDS": "Type felt",
+            "FIELDS_TITLE": "(type felt)",
             "BACK": "Tilbage",
             "FIELDS": "Felter"
         },

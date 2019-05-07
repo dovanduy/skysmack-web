@@ -14,7 +14,7 @@ import { NgLodgingTypePricesFieldsConfig } from '../../ng-lodging-type-prices-fi
 })
 export class LodgingTypePricesIndexComponent extends RecordIndexComponent<LodgingTypePricesAppState, LodgingTypePrice, number> implements OnInit {
 
-  public area: string = LODGING_TYPE_PRICES_AREA_KEY;
+  public areaKey: string = LODGING_TYPE_PRICES_AREA_KEY;
   public entityActions: EntityAction[] = [
     new EntityAction().asUrlAction('edit', 'Edit', 'edit'),
     new EntityAction().asEventAction('Delete', this.delete, 'delete', this)
@@ -25,17 +25,16 @@ export class LodgingTypePricesIndexComponent extends RecordIndexComponent<Lodgin
     public activatedRoute: ActivatedRoute,
     public actions: NgLodgingTypePricesActions,
     public redux: NgSkysmackStore,
-    public title: EntityComponentPageTitle,
     public store: NgLodgingTypePricesStore,
     public sidebarMenu: NgLodgingTypePricesMenu,
     public fieldsConfig: NgLodgingTypePricesFieldsConfig,
+    public title: EntityComponentPageTitle
   ) {
-    super(router, activatedRoute, actions, redux, store, fieldsConfig);
+    super(router, activatedRoute, actions, redux, store, fieldsConfig, title);
   }
 
 
   ngOnInit() {
     super.ngOnInit();
-    this.title.setTitle(this.packagePath);
   }
 }

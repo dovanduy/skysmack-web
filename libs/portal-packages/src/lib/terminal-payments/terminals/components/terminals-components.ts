@@ -3,6 +3,7 @@ import { TerminalsIndexComponent } from './terminals-index/terminals-index.compo
 import { TerminalsCreateComponent } from './terminals-create/terminals-create.component';
 import { TerminalsEditComponent } from './terminals-edit/terminals-edit.component';
 import { FieldsIndexComponent, FieldsCreateComponent } from '@skysmack/portal-ui';
+import { TERMINALS_REDUCER_AREA_KEY } from '@skysmack/packages-terminal-payments';
 
 
 export const terminalsRoutes: Routes = [
@@ -16,7 +17,9 @@ export const terminalsRoutes: Routes = [
   {
     path: 'fields', component: FieldsIndexComponent, children: [
       { path: 'create', component: FieldsCreateComponent, pathMatch: 'full' }
-    ]
+    ], data: {
+      areaKey: TERMINALS_REDUCER_AREA_KEY
+    }
   }
 ];
 
