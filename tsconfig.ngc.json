@@ -41,6 +41,9 @@
       "@skysmack/packages-invoices": [
         "./dist/@skysmack/packages-invoices"
       ],
+      "@skysmack/packages-invoices-cash-payments": [
+        "./dist/@skysmack/packages-invoices-cash-payments"
+      ],
       "@skysmack/packages-lodging-reservations": [
         "./dist/@skysmack/packages-lodging-reservations"
       ],
