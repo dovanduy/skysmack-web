@@ -1,0 +1,58 @@
+{
+    "INVOICES": {
+        "FORM": {
+            "LABELS": {
+                "CURRENCYCODE": "Valuta kode"
+            },
+            "PLACEHOLDERS": {
+                "CURRENCYCODE": "Vælg valuta kode"
+            },
+            "VALIDATION": {
+                "CURRENCYCODE": {
+                    "REQUIRED": "Valuta kode er påkrævet."
+                }
+            }
+        },
+        "FIELDS": {
+            "CREATE": {
+                "ADD": "Tilføj nyt felt"
+            },
+            "EDIT": {
+                "EDITING": "Redigere"
+            },
+            "INDEX": {
+                "ACTIONS": "Handlinger",
+                "CREATE": "Tilføj nyt felt",
+                "OTHER": "Andre",
+                "BACK": "Tilbage",
+                "FIELDS": "Felter",
+                "EDIT": "Rediger"
+            }
+        },
+        "CREATE": {
+            "CREATE": "Opret"
+        },
+        "EDIT": {
+            "EDIT": "Rediger"
+        },
+        "INDEX": {
+            "PACKAGES": "Pakker",
+            "CREATE": "Opret",
+            "EDIT": "Rediger",
+            "DELETE": "Ret",
+            "FIELDS": "Felter",
+            "FIELDS_TITLE": "(Felter)",
+            "ITEM": "Enhed",
+            "MANAGE": "Konfigurer",
+            "ACTIONS": "Handlinger",
+            "ITEMS": "Enheder",
+            "PAYMENTS": "Betalinger"
+        },
+        "QUEUE": {
+            "ADDING": "Tilføjer {{ currencyCode }}",
+            "UPDATING": "Opdatere {{ currencyCode }}",
+            "DELETING": "Sletter {{ currencyCode }}",
+            "ERROR": "Der opstod  en fejl ved {{ currencyCode }}. Ret og prøv igen."
+        }
+    }
+}

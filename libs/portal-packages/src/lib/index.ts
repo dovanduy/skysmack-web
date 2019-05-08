@@ -6,6 +6,7 @@ export * from './oauth2/oauth2.module';
 export * from './packages/packages.module';
 export * from './persons/persons.module';
 export * from './invoices/invoices.module';
+export * from './invoices-cash-payments/invoices-cash-payments.module';
 export * from './persons-lodging-reservations/persons-lodging-reservations.module';
 export * from './products/products.module';
 export * from './products-pricings/products-pricings.module';
