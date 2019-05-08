@@ -2,11 +2,13 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 
-import { LanguageService } from '@skysmack/portal-ui';
+import { LanguageService, EntityActionProviders } from '@skysmack/portal-ui';
 import { InvoicesCashPaymentsRoutingModule } from './invoices-cash-payments-routing.module';
 import { NgInvoicesCashPaymentsModule } from '@skysmack/ng-packages';
 import { PortalUiModule, FieldsModule } from '@skysmack/portal-ui';
 import { invoicesCashPaymentsComponents } from './invoices-cash-payments/components/invoices-cash-payments-components';
+import { NgInvoicesCashPaymentsEntityActionProvider } from './ng-invoices-cash-payments-entity-action-provider';
+import { InvoicesType } from 'libs/packages/invoices/src';
 
 @NgModule({
   imports: [
@@ -25,5 +27,10 @@ import { invoicesCashPaymentsComponents } from './invoices-cash-payments/compone
   ]
 })
 export class InvoicesCashPaymentsModule {
-  constructor() { }
+  constructor(
+    entityActionProviders: EntityActionProviders,
+    invoicesCashPaymentsEntityProvider: NgInvoicesCashPaymentsEntityActionProvider,
+  ) {
+    entityActionProviders.add(InvoicesType.id, invoicesCashPaymentsEntityProvider);
+  }
 }
