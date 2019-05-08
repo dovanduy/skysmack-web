@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { MenuArea } from '@skysmack/framework';
 import { MenuItem } from '@skysmack/framework';
 import { SidebarMenu } from '@skysmack/portal-ui';
-    import { NgSkysmackStore } from '@skysmack/ng-core';
+import { NgSkysmackStore } from '@skysmack/ng-core';
 import { NgMenuItemProviders } from '@skysmack/ng-redux';
 
 
@@ -35,8 +35,9 @@ export class NgLodgingsMenu extends SidebarMenu {
             order: 2,
         }));
         this.primaryMenuAreas.push(new MenuArea({
-            area: 'connected packages',
-            translationPrefix: this.translationPrefix,
+            area: 'connected_packages',
+            displayName: '',
+            translationPrefix: 'UI.MISC.',
             order: 3,
         }));
 

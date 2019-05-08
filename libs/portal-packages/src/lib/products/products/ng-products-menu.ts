@@ -35,8 +35,8 @@ export class NgProductsMenu extends SidebarMenu {
             order: 2,
         }));
         this.primaryMenuAreas.push(new MenuArea({
-            area: 'connected packages',
-            translationPrefix: this.translationPrefix,
+            area: 'connected_packages',
+            translationPrefix: 'UI.MISC.',
             order: 3,
         }));
 

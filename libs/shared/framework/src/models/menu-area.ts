@@ -9,6 +9,6 @@ export class MenuArea extends DocumentRecord<number>{
     public constructor(init?: Partial<MenuArea>) {
         super();
         Object.assign(this, init);
-        this.displayName = this.translationPrefix + this.area.toUpperCase();
+        this.displayName = `${this.translationPrefix}${this.area.toUpperCase()}`;
     }
 }

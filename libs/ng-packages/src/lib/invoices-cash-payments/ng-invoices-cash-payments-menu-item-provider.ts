@@ -3,12 +3,13 @@ import { of, Observable } from 'rxjs';
 import { safeHasValue, Package, MenuItemProvider, MenuItem } from '@skysmack/framework';
 import { map } from 'rxjs/operators';
 import { Skysmack } from '@skysmack/packages-skysmack-core';
-import { LodgingReservationsType } from '@skysmack/packages-lodging-reservations';
 import { NgSkysmackStore } from '@skysmack/ng-core';
+import { InvoicesCashPaymentsType } from '@skysmack/packages-invoices-cash-payments';
+import { INVOICES_AREA_KEY } from 'libs/packages/invoices/src';
 
 @Injectable({ providedIn: 'root' })
-export class NgLodgingsReservationsMenuItemProvider extends MenuItemProvider {
-    public menuId = 'lodgings';
+export class NgInvoicesCashPaymentsMenuItemProvider extends MenuItemProvider {
+    public menuId = INVOICES_AREA_KEY;
     public icon = 'shortText';
 
     constructor(public store: NgSkysmackStore) { super(); }
@@ -18,7 +19,7 @@ export class NgLodgingsReservationsMenuItemProvider extends MenuItemProvider {
             return this.store.getSkysmack().pipe(
                 safeHasValue(),
                 map((currentTenant: Skysmack) => currentTenant.packages
-                    .filter((_package: Package) => _package.type === LodgingReservationsType.id && _package.dependencies.find(dep => dep === packagePath))
+                    .filter((_package: Package) => _package.type === InvoicesCashPaymentsType.id && _package.dependencies.find(dep => dep === packagePath))
                     .map(_package => new MenuItem({
                         url: '/' + _package.path,
                         displayName: _package.name,

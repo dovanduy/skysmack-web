@@ -55,8 +55,7 @@
             "ARRIVALS": "Arrivals",
             "SETTINGS": "Settings",
             "DEPARTURES": "Departures",
-            "ALL": "All",
-            "CONNECTED PACKAGES": "Connected packages"
+            "ALL": "All"
         },
         "QUEUE": {
             "ADDING": "Adding lodging reservation {{ id }}",

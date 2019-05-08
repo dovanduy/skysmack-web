@@ -5,8 +5,7 @@
             "SALES_PRICES": "Products sale prices",
             "SALES_PRICES_TYPES": "Product types sale prices",
             "PRICE_CHANGES": "Product price changes",
-            "PRICE_TYPE_CHANGES": "Product type price changes",
-            "CONNECTED PACKAGES": "Connected packages"
+            "PRICE_TYPE_CHANGES": "Product type price changes"
         }
     }
 }

@@ -1,7 +1,7 @@
 import { OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { map, switchMap, filter, take, tap } from 'rxjs/operators';
-import { MenuArea } from '@skysmack/framework';
+import { MenuArea, hasValue } from '@skysmack/framework';
 import { MenuItem } from '@skysmack/framework';
 
 import { NgSkysmackStore } from '@skysmack/ng-core';
@@ -76,7 +76,7 @@ export abstract class SidebarMenu implements OnDestroy {
                 map(loadedPackage => this.primaryMenuItems.push(new MenuItem({
                     url: '/' + loadedPackage._package.dependencies[0],
                     displayName: loadedPackage._package.dependencies[0],
-                    area: 'connected packages',
+                    area: 'connected_packages',
                     order: 2,
                     icon: 'arrowBack',
                 }))),

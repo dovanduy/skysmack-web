@@ -5,7 +5,6 @@ import { NgSkysmackStore } from '@skysmack/ng-core';
 import { MenuArea } from '@skysmack/framework';
 import { MenuItem } from '@skysmack/framework';
 import { NgMenuItemProviders } from '@skysmack/ng-redux';
-import { map, take } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
 export class NgProductsPricingsMenu extends SidebarMenu {
@@ -30,8 +29,8 @@ export class NgProductsPricingsMenu extends SidebarMenu {
             order: 1,
         }));
         this.primaryMenuAreas.push(new MenuArea({
-            area: 'connected packages',
-            translationPrefix: this.translationPrefix,
+            area: 'connected_packages',
+            translationPrefix: 'UI.MISC.',
             order: 2,
         }));
 
