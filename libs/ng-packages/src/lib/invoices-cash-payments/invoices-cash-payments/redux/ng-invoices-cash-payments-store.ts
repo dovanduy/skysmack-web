@@ -5,5 +5,5 @@ import { InvoicesCashPaymentsAppState, CashPayment } from '@skysmack/packages-in
 
 @Injectable({ providedIn: 'root' })
 export class NgInvoicesCashPaymentsStore extends NgRecordStore<InvoicesCashPaymentsAppState, CashPayment, number> {
-    constructor(protected ngRedux: NgRedux<InvoicesCashPaymentsAppState>) { super(ngRedux, 'invoicePayments'); }
+    constructor(protected ngRedux: NgRedux<InvoicesCashPaymentsAppState>) { super(ngRedux, 'invoicesCashPayments'); }
 }

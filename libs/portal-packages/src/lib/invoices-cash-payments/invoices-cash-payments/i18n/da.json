@@ -1,15 +1,30 @@
 {
-    "INVOICES": {
+    "INVOICES_CASH_PAYMENTS": {
         "FORM": {
             "LABELS": {
-                "CURRENCYCODE": "Valuta kode"
+                "DESCRIPTION": "Beskrivelse",
+                "CURRENCYCODE": "Valuta kode",
+                "AMOUNT": "Mængde",
+                "INVOICEID": "Faktura"
             },
             "PLACEHOLDERS": {
-                "CURRENCYCODE": "Vælg valuta kode"
+                "DESCRIPTION": "Beskrivelse",
+                "CURRENCYCODE": "Vælg valuta kode",
+                "AMOUNT": "Mængde",
+                "INVOICEID": "Faktura"
             },
             "VALIDATION": {
-                "CURRENCYCODE": {
+                "DESCRIPTION": {
                     "REQUIRED": "Valuta kode er påkrævet."
+                },
+                "CURRENCYCODE": {
+                    "REQUIRED": "Beskrivelse er påkrævet."
+                },
+                "AMOUNT": {
+                    "REQUIRED": "Mængde er påkrævet."
+                },
+                "INVOICEID": {
+                    "REQUIRED": "Faktura er påkrævet."
                 }
             }
         },

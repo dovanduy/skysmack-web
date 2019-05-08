@@ -1,15 +1,30 @@
 {
-    "INVOICES": {
+    "INVOICES_CASH_PAYMENTS": {
         "FORM": {
             "LABELS": {
-                "CURRENCYCODE": "Currency code"
+                "DESCRIPTION": "Description",
+                "CURRENCYCODE": "Currency code",
+                "AMOUNT": "Amount",
+                "INVOICEID": "Invoice"
             },
             "PLACEHOLDERS": {
-                "CURRENCYCODE": "Currency code"
+                "DESCRIPTION": "Description",
+                "CURRENCYCODE": "Currency code",
+                "AMOUNT": "Amount",
+                "INVOICEID": "Invoice"
             },
             "VALIDATION": {
+                "DESCRIPTION": {
+                    "REQUIRED": "Description is required."
+                },
                 "CURRENCYCODE": {
                     "REQUIRED": "Currency code is required."
+                },
+                "AMOUNT": {
+                    "REQUIRED": "Amount is required."
+                },
+                "INVOICEID": {
+                    "REQUIRED": "Invoice is required."
                 }
             }
         },
