@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 
-import { invoicesCashPaymentsReducer } from '@skysmack/packages-invoices-cash-payments';
 import { NgInvoicesCashPaymentsEpics } from './invoices-cash-payments/redux/ng-invoices-cash-payments-epics';
 import { registerRedux } from '@skysmack/ng-redux';
+import { invoicesCashPaymentsReducer } from '@skysmack/packages-invoices-cash-payments';
 
 @NgModule({
   imports: [],

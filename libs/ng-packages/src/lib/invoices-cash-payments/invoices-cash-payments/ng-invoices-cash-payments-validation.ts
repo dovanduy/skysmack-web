@@ -1,35 +1,31 @@
 import { StrIndex } from '@skysmack/framework';
 import { Validation } from '@skysmack/ng-ui';
-import { INVOICE_PAYMENTS_AREA_KEY } from '@skysmack/packages-invoices-cash-payments';
+import { INVOICES_CASH_PAYMENTS_AREA_KEY } from '@skysmack/packages-invoices-cash-payments';
 
 export class NgInvoicesCashPaymentsValidation extends Validation {
     public formErrors = {
         description: '',
-        source: '',
+        currencyCode: '',
         amount: '',
-        ip: '',
-        inventoryId: ''
+        invoiceId: ''
     };
 
     public validationMessages: StrIndex<{}> = {
         description: {
             required: ''
         },
-        source: {
+        currencyCode: {
             required: ''
         },
         amount: {
             required: ''
         },
-        ip: {
-            required: ''
-        },
-        inventoryId: {
+        invoiceId: {
             required: ''
         }
     };
 
-    public area = INVOICE_PAYMENTS_AREA_KEY;
+    public area = INVOICES_CASH_PAYMENTS_AREA_KEY;
 
     public formValidators = [];
 
