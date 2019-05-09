@@ -1,5 +1,6 @@
 <div *ngIf="sidebarMenu" class="docs-component-viewer-nav">
   <div class="docs-component-viewer-nav-content">
+
     <nav *ngFor="let menuArea of sidebarMenu.primaryMenuAreas; let last = last;">
       <button cdkAccordionItem #panel="cdkAccordionItem" (click)="panel.toggle()" expanded="true"
         class="docs-nav-content-btn" [attr.aria-label]="menuArea.displayName + ', section toggle'"
