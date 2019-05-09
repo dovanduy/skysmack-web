@@ -47,7 +47,7 @@
                     </a>
                     <!-- URL EVENT -->
                     <a *ngIf="!entityAction.isActionEvent" mat-menu-item
-                      [routerLink]="[entityAction.url, entity.objectIdentifier]">
+                      [routerLink]="[entityAction.url, entity.objectIdentifier, entityAction.urlPostfix]">
                       <i class="material-icons">{{ entityAction.icon }}</i>
                       <span class="icon-text">{{ entityAction.displayName }}</span>
                     </a>

@@ -28,24 +28,8 @@
                 }
             }
         },
-        "FIELDS": {
-            "CREATE": {
-                "ADD": "Tilføj nyt felt"
-            },
-            "EDIT": {
-                "EDITING": "Redigere"
-            },
-            "INDEX": {
-                "ACTIONS": "Handlinger",
-                "CREATE": "Tilføj nyt felt",
-                "OTHER": "Andre",
-                "BACK": "Tilbage",
-                "FIELDS": "Felter",
-                "EDIT": "Rediger"
-            }
-        },
         "CREATE": {
-            "CREATE": "Opret"
+            "PAYMENT": "Kontant betaling"
         },
         "EDIT": {
             "EDIT": "Rediger"

@@ -28,24 +28,8 @@
                 }
             }
         },
-        "FIELDS": {
-            "CREATE": {
-                "ADD": "Add new field"
-            },
-            "EDIT": {
-                "EDITING": "Editing"
-            },
-            "INDEX": {
-                "ACTIONS": "Actions",
-                "CREATE": "Create new field",
-                "OTHER": "Other",
-                "BACK": "Back",
-                "FIELDS": "Fields",
-                "EDIT": "Edit"
-            }
-        },
         "CREATE": {
-            "CREATE": "Create"
+            "PAYMENT": "Cash payment"
         },
         "EDIT": {
             "EDIT": "Edit"

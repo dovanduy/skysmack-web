@@ -36,10 +36,27 @@ export class NgInvoicesCashPaymentsFieldsConfig extends FieldsConfig<CashPayment
         );
 
         const fields = [
+            new SelectField({
+                component: SelectFieldComponent,
+                value: entity ? entity.object.invoiceId : undefined,
+                key: 'invoiceId',
+                displayKey: 'invoice',
+                displaySubKey: 'object.currencyCode',
+                optionsData$: invoicePackage$.pipe(switchMap(invoicePackage => this.invoicesStore.get(invoicePackage.object.path))),
+                displayNameSelector: 'object.currencyCode',
+                getDependencies: () => {
+                    invoicePackage$.pipe(
+                        map(invoicePackage => this.invoicesActions.getPaged(invoicePackage.object.path, new PagedQuery())),
+                        take(1)
+                    ).subscribe();
+                },
+                order: 1,
+                showColumn: true
+            }),
             new Field({
-                component: StringFieldComponent,
-                value: entity ? entity.object.description : undefined,
-                key: 'description',
+                component: IntFieldComponent,
+                value: entity ? entity.object.amount : undefined,
+                key: 'amount',
                 validators: [Validators.required],
                 order: 1,
                 showColumn: true
@@ -53,29 +70,17 @@ export class NgInvoicesCashPaymentsFieldsConfig extends FieldsConfig<CashPayment
                 showColumn: true
             }),
             new Field({
-                component: IntFieldComponent,
-                value: entity ? entity.object.amount : undefined,
-                key: 'amount',
-                validators: [Validators.required],
+                component: StringFieldComponent,
+                value: entity ? entity.object.description : undefined,
+                key: 'description',
                 order: 1,
                 showColumn: true
             }),
-            new SelectField({
-                component: SelectFieldComponent,
-                value: entity ? entity.object.invoiceId : undefined,
-                key: 'invoiceId',
-                displayKey: 'invoice',
-                displaySubKey: 'object.currencyCode',
-                optionsData$: invoicePackage$.pipe(switchMap(lodgingPackage => this.invoicesStore.get(lodgingPackage.object.path))),
-                displayNameSelector: 'object.currencyCode',
-                getDependencies: () => {
-                    invoicePackage$.pipe(
-                        map(invoicePackage => this.invoicesActions.getPaged(invoicePackage.object.path, new PagedQuery())),
-                        take(1)
-                    ).subscribe();
-                },
+            new Field({
+                component: HiddenFieldComponent,
+                value: entity ? entity.object.time : undefined,
+                key: 'time',
                 order: 1,
-                showColumn: true
             }),
         ];
 
