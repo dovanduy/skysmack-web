@@ -4,7 +4,7 @@ import { LocalObject, EnumHelpers } from '@skysmack/framework';
 import { LodgingReservationsAppState, LodgingReservation, LODGING_RESERVATIONS_AREA_KEY } from '@skysmack/packages-lodging-reservations';
 import { EntityAction } from '@skysmack/ng-ui';
 import { NgLodgingReservationsStore, NgLodgingsStore, NgLodgingTypesStore, NgLodgingsActions, NgLodgingTypesActions, NgLodgingReservationsActions } from '@skysmack/ng-packages';
-import { RecordIndexComponent, EntityComponentPageTitle } from '@skysmack/portal-ui';
+import { RecordIndexComponent, EntityComponentPageTitle, EntityActionProviders } from '@skysmack/portal-ui';
 import { NgLodgingsReservationsMenu } from '../../ng-lodgings-reservations-menu';
 import { CheckIn } from '@skysmack/packages-lodging-reservations';
 import { LodgingsArrivalsComponent } from '../../components/lodgings-arrivals/lodgings-arrivals.component';
@@ -78,9 +78,10 @@ export class LodgingsReservationsIndexComponent extends RecordIndexComponent<Lod
     public fieldsConfig: NgLodgingReservationsFieldsConfig,
     public sidebarMenu: NgLodgingsReservationsMenu,
     public pageTitle: EntityComponentPageTitle,
-    public title: EntityComponentPageTitle
+    public title: EntityComponentPageTitle,
+    public entityActionProviders: EntityActionProviders
   ) {
-    super(router, activatedRoute, actions, skysmackStore, store, fieldsConfig, title);
+    super(router, activatedRoute, actions, skysmackStore, store, fieldsConfig, entityActionProviders, title);
   }
 
   ngOnInit() {

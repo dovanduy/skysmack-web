@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { EntityComponentPageTitle, RecordIndexComponent, } from '@skysmack/portal-ui';
+import { EntityComponentPageTitle, RecordIndexComponent, EntityActionProviders, } from '@skysmack/portal-ui';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgRolesActions } from '@skysmack/ng-packages';
 import { NgSkysmackStore } from '@skysmack/ng-core';
@@ -30,9 +30,10 @@ export class RolesIndexComponent extends RecordIndexComponent<RolesAppState, Rol
     public title: EntityComponentPageTitle,
     public store: NgRolesStore,
     public sidebarMenu: NgRolesMenu,
-    public fieldsConfig: NgRolesFieldsConfig
+    public fieldsConfig: NgRolesFieldsConfig,
+    public entityActionProviders: EntityActionProviders
   ) {
-    super(router, activatedRoute, actions, redux, store, fieldsConfig);
+    super(router, activatedRoute, actions, redux, store, fieldsConfig, entityActionProviders);
   }
 
   ngOnInit() {

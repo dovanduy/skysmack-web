@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AssignmentsAppState, ASSIGNMENTS_AREA_KEY } from '@skysmack/packages-maintenance';
 import { Assignment } from '@skysmack/packages-maintenance';
-import { EntityComponentPageTitle, RecordIndexComponent } from '@skysmack/portal-ui';
+import { EntityComponentPageTitle, RecordIndexComponent, EntityActionProviders } from '@skysmack/portal-ui';
 import { EntityAction } from '@skysmack/ng-ui';
 import { NgAssignmentsActions, NgAssignmentsStore, NgAssignmentTypesStore, NgAssignmentTypesActions } from '@skysmack/ng-packages';
 import { NgAssignmentsMenu } from '../../ng-assignments-menu';
@@ -31,9 +31,10 @@ export class AssignmentsIndexComponent extends RecordIndexComponent<AssignmentsA
     public fieldsConfig: NgAssignmentsFieldsConfig,
     public assignmentTypesStore: NgAssignmentTypesStore,
     public assignmentTypesActions: NgAssignmentTypesActions,
-    public title: EntityComponentPageTitle
+    public title: EntityComponentPageTitle,
+    public entityActionProviders: EntityActionProviders
   ) {
-    super(router, activatedRoute, actions, skysmackStore, store, fieldsConfig, title);
+    super(router, activatedRoute, actions, skysmackStore, store, fieldsConfig, entityActionProviders, title);
   }
 
   ngOnInit() {

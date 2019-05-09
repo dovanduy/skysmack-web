@@ -10,6 +10,7 @@ import { NgFieldActions, NgFieldStore } from '@skysmack/ng-redux';
 import { NgFieldsConfig } from '../../ng-fields-config';
 import { map, take } from 'rxjs/operators';
 import { combineLatest } from 'rxjs';
+import { EntityActionProviders } from '../../../entity-actions/entity-action-providers';
 
 @Component({
   selector: 'ss-fields-index',
@@ -30,9 +31,10 @@ export class FieldsIndexComponent extends RecordIndexComponent<any, any, any> im
     public skysmackStore: NgSkysmackStore,
     public sidebarMenu: NgFieldsMenu,
     public fieldsConfig: NgFieldsConfig,
-    public injector: Injector
+    public injector: Injector,
+    public entityActionProviders: EntityActionProviders
   ) {
-    super(router, activatedRoute, actions, skysmackStore, store, fieldsConfig, title);
+    super(router, activatedRoute, actions, skysmackStore, store, fieldsConfig, entityActionProviders, title);
   }
 
   ngOnInit() {

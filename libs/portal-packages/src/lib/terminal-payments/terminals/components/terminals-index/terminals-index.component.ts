@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { EntityComponentPageTitle, DocumentRecordIndexComponent } from '@skysmack/portal-ui';
+import { EntityComponentPageTitle, DocumentRecordIndexComponent, EntityActionProviders } from '@skysmack/portal-ui';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgTerminalsActions } from '@skysmack/ng-packages';
 import { NgSkysmackStore } from '@skysmack/ng-core';
@@ -31,11 +31,11 @@ export class TerminalsIndexComponent extends DocumentRecordIndexComponent<Termin
     public sidebarMenu: NgTerminalsMenu,
     public fieldsConfig: NgTerminalsFieldsConfig,
     public fieldActions: NgFieldActions,
-    public title: EntityComponentPageTitle
+    public title: EntityComponentPageTitle,
+    public entityActionProviders: EntityActionProviders
   ) {
-    super(router, activatedRoute, actions, redux, store, fieldsConfig, fieldActions, title);
+    super(router, activatedRoute, actions, redux, store, fieldsConfig, fieldActions, entityActionProviders, title);
   }
-
 
   ngOnInit() {
     super.ngOnInit();

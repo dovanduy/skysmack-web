@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { EntityComponentPageTitle, RecordIndexComponent } from '@skysmack/portal-ui';
+import { EntityComponentPageTitle, RecordIndexComponent, EntityActionProviders } from '@skysmack/portal-ui';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgInvoicesCashPaymentsActions } from '@skysmack/ng-packages';
 import { NgSkysmackStore } from '@skysmack/ng-core';
@@ -32,9 +32,10 @@ export class InvoicesCashPaymentsIndexComponent extends RecordIndexComponent<Inv
     public sidebarMenu: NgInvoicesCashPaymentsMenu,
     public fieldsConfig: NgInvoicesCashPaymentsFieldsConfig,
     public fieldActions: NgFieldActions,
-    public title: EntityComponentPageTitle
+    public title: EntityComponentPageTitle,
+    public entityActionProviders: EntityActionProviders
   ) {
-    super(router, activatedRoute, actions, redux, store, fieldsConfig, title);
+    super(router, activatedRoute, actions, redux, store, fieldsConfig, entityActionProviders, title);
   }
 
   ngOnInit() {

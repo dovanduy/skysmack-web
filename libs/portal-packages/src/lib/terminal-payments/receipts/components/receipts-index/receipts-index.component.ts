@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { EntityComponentPageTitle, DocumentRecordIndexComponent } from '@skysmack/portal-ui';
+import { EntityComponentPageTitle, DocumentRecordIndexComponent, EntityActionProviders } from '@skysmack/portal-ui';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgReceiptsActions, NgReceiptsStore } from '@skysmack/ng-packages';
 import { ReceiptsAppState, Receipt, RECEIPTS_REDUCER_AREA_KEY } from '@skysmack/packages-terminal-payments';
@@ -29,9 +29,10 @@ export class ReceiptsIndexComponent extends DocumentRecordIndexComponent<Receipt
     public sidebarMenu: NgReceiptsMenu,
     public fieldsConfig: NgReceiptsFieldsConfig,
     public fieldActions: NgFieldActions,
-    public title: EntityComponentPageTitle
+    public title: EntityComponentPageTitle,
+    public entityActionProviders: EntityActionProviders
   ) {
-    super(router, activatedRoute, actions, redux, store, fieldsConfig, fieldActions, title);
+    super(router, activatedRoute, actions, redux, store, fieldsConfig, fieldActions, entityActionProviders, title);
   }
 
 

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { EntityComponentPageTitle, RecordIndexComponent } from '@skysmack/portal-ui';
+import { EntityComponentPageTitle, RecordIndexComponent, EntityActionProviders } from '@skysmack/portal-ui';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgProductPriceChangesActions } from '@skysmack/ng-packages';
 import { NgSkysmackStore } from '@skysmack/ng-core';
@@ -29,9 +29,10 @@ export class ProductPriceChangesIndexComponent extends RecordIndexComponent<Prod
     public store: NgProductPriceChangesStore,
     public sidebarMenu: NgProductPriceChangesMenu,
     public fieldsConfig: NgProductPriceChangesFieldsConfig,
-    public title: EntityComponentPageTitle
+    public title: EntityComponentPageTitle,
+    public entityActionProviders: EntityActionProviders
   ) {
-    super(router, activatedRoute, actions, redux, store, fieldsConfig, title);
+    super(router, activatedRoute, actions, redux, store, fieldsConfig, entityActionProviders, title);
   }
 
 

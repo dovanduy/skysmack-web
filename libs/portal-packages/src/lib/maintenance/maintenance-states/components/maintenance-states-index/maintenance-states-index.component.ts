@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MaintenanceState, MaintenanceStatesAppState, MAINTENANCE_STATES_AREA_KEY } from '@skysmack/packages-maintenance';
-import { EntityComponentPageTitle, RecordIndexComponent } from '@skysmack/portal-ui';
+import { EntityComponentPageTitle, RecordIndexComponent, EntityActionProviders } from '@skysmack/portal-ui';
 import { EntityAction } from '@skysmack/ng-ui';
 import { NgMaintenanceStatesActions, NgMaintenanceStatesStore } from '@skysmack/ng-packages';
 import { NgMaintenanceStatesMenu } from '../../ng-maintenance-states-menu';
@@ -30,9 +30,11 @@ export class MaintenanceStatesIndexComponent extends RecordIndexComponent<Mainte
     public store: NgMaintenanceStatesStore,
     public sidebarMenu: NgMaintenanceStatesMenu,
     public fieldsConfig: NgMaintenanceStatesFieldsConfig,
-    public title: EntityComponentPageTitle
+    public title: EntityComponentPageTitle,
+    public entityActionProviders: EntityActionProviders
+
   ) {
-    super(router, activatedRoute, actions, redux, store, fieldsConfig, title);
+    super(router, activatedRoute, actions, redux, store, fieldsConfig, entityActionProviders, title);
 
   }
 

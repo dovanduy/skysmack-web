@@ -28,29 +28,34 @@
             {{ entity.object[column.fieldDisplayKey ? column.fieldDisplayKey : column.fieldKey] | displayValue:column | displayModifier:column:entity }}
           </td>
           <td class="table-cell mat-cell action-buttons">
-            <ng-container
-              *ngIf="entityActions.length > 0 && (entity.status === 'OK' || entity.status !== 'CREATING' && entity.error)">
-              <button mat-icon-button [matMenuTriggerFor]="menu">
-                <mat-icon>more_vert</mat-icon>
-              </button>
-              <mat-menu #menu="matMenu">
-                <ng-container *ngFor="let entityAction of entityActions">
-                  <!-- ACTION EVENT -->
-                  <a *ngIf="entityAction.isActionEvent" showEntityAction [entityAction]="entityAction" [entity]="entity"
-                    mat-menu-item
-                    (click)="entityActionEvent.emit({ action: entityAction.action, value: entity, _this: entityAction._this })">
-                    <i class="material-icons">{{ entityAction.icon }}</i> <span
-                      class="icon-text">{{ entityAction.displayName }}</span>
-                  </a>
-                  <!-- URL EVENT -->
-                  <a *ngIf="!entityAction.isActionEvent" mat-menu-item
-                    [routerLink]="[entityAction.url, entity.objectIdentifier]">
-                    <i class="material-icons">{{ entityAction.icon }}</i>
-                    <span class="icon-text">{{ entityAction.displayName }}</span>
-                  </a>
-                </ng-container>
-              </mat-menu>
+
+            <!-- ENTITY ACTIONS -->
+            <ng-container *ngIf="entityActions$ | async as entityActions">
+              <ng-container
+                *ngIf="entityActions.length > 0 && (entity.status === 'OK' || entity.status !== 'CREATING' && entity.error)">
+                <button mat-icon-button [matMenuTriggerFor]="menu">
+                  <mat-icon>more_vert</mat-icon>
+                </button>
+                <mat-menu #menu="matMenu">
+                  <ng-container *ngFor="let entityAction of entityActions">
+                    <!-- ACTION EVENT -->
+                    <a *ngIf="entityAction.isActionEvent" showEntityAction [entityAction]="entityAction"
+                      [entity]="entity" mat-menu-item
+                      (click)="entityActionEvent.emit({ action: entityAction.action, value: entity, _this: entityAction._this })">
+                      <i class="material-icons">{{ entityAction.icon }}</i> <span
+                        class="icon-text">{{ entityAction.displayName }}</span>
+                    </a>
+                    <!-- URL EVENT -->
+                    <a *ngIf="!entityAction.isActionEvent" mat-menu-item
+                      [routerLink]="[entityAction.url, entity.objectIdentifier]">
+                      <i class="material-icons">{{ entityAction.icon }}</i>
+                      <span class="icon-text">{{ entityAction.displayName }}</span>
+                    </a>
+                  </ng-container>
+                </mat-menu>
+              </ng-container>
             </ng-container>
+
 
             <!-- CANCEL ACTION -->
             <a *ngIf="entity.error" mat-icon-button (click)="runCancelAction(entity);">

@@ -9,9 +9,6 @@ import { NgInvoicesMenu } from './../../ng-invoices-menu';
 import { EntityAction } from '@skysmack/ng-ui';
 import { NgFieldActions } from '@skysmack/ng-redux';
 import { NgInvoicesFieldsConfig } from '../../ng-invoices-fields-config';
-import { map, switchMap, distinctUntilChanged, tap } from 'rxjs/operators';
-import { combineLatest, of } from 'rxjs';
-
 
 @Component({
   selector: 'ss-invoices-index',
@@ -39,32 +36,10 @@ export class InvoicesIndexComponent extends DocumentRecordIndexComponent<Invoice
     public title: EntityComponentPageTitle,
     public entityActionProviders: EntityActionProviders
   ) {
-    super(router, activatedRoute, actions, skysmackStore, store, fieldsConfig, fieldActions, title);
+    super(router, activatedRoute, actions, skysmackStore, store, fieldsConfig, fieldActions, entityActionProviders, title);
   }
 
   ngOnInit() {
     super.ngOnInit();
-    this.loadedPackage$.pipe(
-      switchMap(loadedPackage => this.entityActionProviders.providers$.pipe(
-        switchMap(providers => {
-          const extractedProviders = providers[loadedPackage && loadedPackage.packageManifest && loadedPackage.packageManifest.id];
-          if (extractedProviders && extractedProviders.length > 0) {
-            return combineLatest(
-              extractedProviders.map(provider => {
-                return provider.getEntityActions(loadedPackage._package.path, this.areaKey);
-              })
-            ).pipe(
-              distinctUntilChanged(),
-              map((values: [EntityAction[]]) => {
-                return values.reduce((acc: EntityAction[], cur: EntityAction[]) => acc.concat(cur), []);
-              })
-            );
-          } else {
-            return of([]);
-          }
-        })
-      )),
-      tap(x => console.log(x))
-    ).subscribe();
   }
 }

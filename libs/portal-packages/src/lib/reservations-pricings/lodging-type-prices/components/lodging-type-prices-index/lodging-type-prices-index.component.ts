@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { EntityComponentPageTitle, RecordIndexComponent } from '@skysmack/portal-ui';
+import { EntityComponentPageTitle, RecordIndexComponent, EntityActionProviders } from '@skysmack/portal-ui';
 import { Router, ActivatedRoute } from '@angular/router';
 import { LODGING_TYPE_PRICES_AREA_KEY, LodgingTypePricesAppState, LodgingTypePrice } from '@skysmack/packages-reservations-pricings';
 import { EntityAction } from '@skysmack/ng-ui';
@@ -28,9 +28,10 @@ export class LodgingTypePricesIndexComponent extends RecordIndexComponent<Lodgin
     public store: NgLodgingTypePricesStore,
     public sidebarMenu: NgLodgingTypePricesMenu,
     public fieldsConfig: NgLodgingTypePricesFieldsConfig,
-    public title: EntityComponentPageTitle
+    public title: EntityComponentPageTitle,
+    public entityActionProviders: EntityActionProviders
   ) {
-    super(router, activatedRoute, actions, redux, store, fieldsConfig, title);
+    super(router, activatedRoute, actions, redux, store, fieldsConfig, entityActionProviders, title);
   }
 
 
