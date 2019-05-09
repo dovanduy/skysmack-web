@@ -1,9 +1,10 @@
-import { map, take, tap } from 'rxjs/operators';
+import { map, take } from 'rxjs/operators';
 import { NgRecordStore } from '../../stores/ng-record-store';
 import { RecordActionsBase } from '@skysmack/redux';
 import { SkysmackStore } from '../../stores/skysmack-store';
+import { RSQLFilterBuilder, PagedQuery } from '@skysmack/framework';
 
-export interface GetSingleDependencyOptions {
+export interface GetSingleDependenciesOptions {
     entity: any;
     packagePath: string;
     relationIdSelector: string;
@@ -14,28 +15,20 @@ export interface GetSingleDependencyOptions {
     packageDependencyIndex?: number;
 }
 
-export function getSingleDependency(options: GetSingleDependencyOptions) {
+export function getSingleDependencies(options: GetSingleDependenciesOptions): void {
     const entity = options.entity;
-    // Get dep
     const packagePath = options.packagePath;
-    const entityId = entity[options.relationIdSelector];
 
-    if (options.packageDependencyIndex || options.packageDependencyIndex === 0 && entityId) {
+    const rsqlFilter = new RSQLFilterBuilder();
+    rsqlFilter.column(options.relationIdSelector).equalTo(entity.id);
+    const query = new PagedQuery({ rsqlFilter });
+
+    if (options.packageDependencyIndex || options.packageDependencyIndex === 0) {
         options.skysmackStore.getCurrentPackage(packagePath).pipe(
-            map(_package => options.actions.getSingle<number>(_package._package.dependencies[options.packageDependencyIndex], entityId)),
+            map(_package => options.actions.getPaged(_package._package.dependencies[options.packageDependencyIndex], query)),
             take(1)
         ).subscribe();
-    } else if (entityId) {
-        options.actions.getSingle<number>(packagePath, entityId);
-    }
-
-    // Match dep
-    if (entityId) {
-        options.store.getSingle(packagePath, entityId).pipe(
-            map(dep => {
-                entity[options.relationSelector] = dep;
-            }),
-            take(1)
-        ).subscribe();
+    } else {
+        options.actions.getPaged(packagePath, query);
     }
 }

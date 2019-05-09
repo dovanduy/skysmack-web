@@ -9,7 +9,8 @@
             "OFFLINE": "No network! Offline mode activated."
         },
         "MISC": {
-            "BACK": "Back"
+            "BACK": "Back",
+            "CONNECTED_PACKAGES": "Connected packages"
         },
         "PACKAGE_DRAWER": {
             "SETTINGS": "Settings",

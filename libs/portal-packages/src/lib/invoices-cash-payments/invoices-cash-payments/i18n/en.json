@@ -1,0 +1,57 @@
+{
+    "INVOICES_CASH_PAYMENTS": {
+        "FORM": {
+            "LABELS": {
+                "DESCRIPTION": "Description",
+                "CURRENCYCODE": "Currency code",
+                "AMOUNT": "Amount",
+                "INVOICEID": "Invoice"
+            },
+            "PLACEHOLDERS": {
+                "DESCRIPTION": "Description",
+                "CURRENCYCODE": "Currency code",
+                "AMOUNT": "Amount",
+                "INVOICEID": "Invoice"
+            },
+            "VALIDATION": {
+                "DESCRIPTION": {
+                    "REQUIRED": "Description is required."
+                },
+                "CURRENCYCODE": {
+                    "REQUIRED": "Currency code is required."
+                },
+                "AMOUNT": {
+                    "REQUIRED": "Amount is required."
+                },
+                "INVOICEID": {
+                    "REQUIRED": "Invoice is required."
+                }
+            }
+        },
+        "CREATE": {
+            "PAYMENT": "Cash payment"
+        },
+        "EDIT": {
+            "EDIT": "Edit"
+        },
+        "INDEX": {
+            "PACKAGES": "Packages",
+            "CREATE": "Create",
+            "EDIT": "Edit",
+            "DELETE": "Delete",
+            "FIELDS": "Fields",
+            "FIELDS_TITLE": "(fields)",
+            "ITEM": "Item",
+            "MANAGE": "Manage",
+            "ACTIONS": "Actions",
+            "ITEMS": "Items",
+            "PAYMENTS": "Payments"
+        },
+        "QUEUE": {
+            "ADDING": "Adding {{ currencyCode }}",
+            "UPDATING": "Updating {{ currencyCode }}",
+            "DELETING": "Deleting {{ currencyCode }}",
+            "ERROR": "An error occured with {{ currencyCode }}. Correct and try again."
+        }
+    }
+}

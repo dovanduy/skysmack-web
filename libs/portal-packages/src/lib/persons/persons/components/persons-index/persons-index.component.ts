@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { EntityComponentPageTitle, DocumentRecordIndexComponent } from '@skysmack/portal-ui';
+import { EntityComponentPageTitle, DocumentRecordIndexComponent, EntityActionProviders } from '@skysmack/portal-ui';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgPersonsActions } from '@skysmack/ng-packages';
 import { NgSkysmackStore, NgSkysmackActions } from '@skysmack/ng-core';
@@ -17,7 +17,7 @@ import { NgPersonsFieldsConfig } from '../../../ng-persons-fields-config';
 export class PersonsIndexComponent extends DocumentRecordIndexComponent<PersonsAppState, Person, number> implements OnInit {
 
 
-  public area: string = PERSONS_AREA_KEY;
+  public areaKey: string = PERSONS_AREA_KEY;
   public entityActions: EntityAction[] = [
     new EntityAction().asUrlAction('details', 'Details', 'list'),
     new EntityAction().asUrlAction('edit', 'Edit', 'edit'),
@@ -30,17 +30,18 @@ export class PersonsIndexComponent extends DocumentRecordIndexComponent<PersonsA
     public actions: NgPersonsActions,
     public skysmackStore: NgSkysmackStore,
     public skysmackActions: NgSkysmackActions,
-    public title: EntityComponentPageTitle,
     public store: NgPersonsStore,
     public sidebarMenu: NgPersonsMenu,
     public fieldsConfig: NgPersonsFieldsConfig,
-    public fieldActions: NgFieldActions
+    public fieldActions: NgFieldActions,
+    public title: EntityComponentPageTitle,
+    public entityActionProviders: EntityActionProviders
+
   ) {
-    super(router, activatedRoute, actions, skysmackStore, store, fieldsConfig, fieldActions);
+    super(router, activatedRoute, actions, skysmackStore, store, fieldsConfig, fieldActions, entityActionProviders, title);
   }
 
   ngOnInit() {
     super.ngOnInit();
-    this.title.setTitle(this.packagePath);
   }
 }

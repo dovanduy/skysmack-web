@@ -1,7 +1,9 @@
-import { DocumentRecord } from "@skysmack/framework";
+import { DocumentRecord, LocalObject } from "@skysmack/framework";
+import { InvoiceItem } from './invoice-item';
 
 export class Invoice extends DocumentRecord<number> {
     public currencyCode: number;
+    public invoiceItems: LocalObject<InvoiceItem, number>;
 
     public status: 'draft' | 'processing' | 'invoiced';
     public paid: boolean;

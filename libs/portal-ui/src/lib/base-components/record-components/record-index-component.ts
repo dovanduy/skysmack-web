@@ -3,17 +3,21 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { EntityActions, EntityStore } from '@skysmack/redux';
 import { NgSkysmackStore } from '@skysmack/ng-core';
 import { LocalObject, LocalPage, PagedQuery, LoadingState, linq, DisplayColumn, defined } from '@skysmack/framework';
-import { Observable, BehaviorSubject, combineLatest } from 'rxjs';
+import { Observable, BehaviorSubject, combineLatest, of } from 'rxjs';
 import { OnInit } from '@angular/core';
 import { Record } from '@skysmack/framework';
-import { map, switchMap } from 'rxjs/operators';
+import { map, switchMap, distinctUntilChanged } from 'rxjs/operators';
 import { EntityFieldsConfig } from '../../fields/entity-fields-config';
 import { EntityComponentPageTitle } from '../../models/entity-component-page-title';
+import { EntityAction } from '@skysmack/ng-ui';
+import { EntityActionProviders } from '@skysmack/portal-ui';
 
 export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey> extends BaseComponent<TAppState, TKey> implements OnInit {
     public pages$: BehaviorSubject<LocalPage<TKey>[]> = new BehaviorSubject<LocalPage<TKey>[]>([]);
     public pagedEntities$: Observable<LocalObject<TRecord, TKey>[]>;
     public pagedQuery = new PagedQuery();
+    public entityActions$: Observable<EntityAction[]>;
+    public entityActions: EntityAction[];
 
     public nextPageNumber = 1;
     public nextPageSize = this.pagedQuery.pageSize;
@@ -32,7 +36,8 @@ export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey>
         public skysmackStore: NgSkysmackStore,
         public store: EntityStore<any, TKey>,
         public fieldsConfig: EntityFieldsConfig<any, TKey>,
-        public title?: EntityComponentPageTitle
+        public entityActionProviders: EntityActionProviders,
+        public title?: EntityComponentPageTitle,
     ) {
         super(router, activatedRoute, skysmackStore, title);
     }
@@ -43,9 +48,8 @@ export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey>
         this.loadPages();
         this.getPagedEntities();
         this.setFields();
+        this.setEntityActions();
     }
-
-
 
     protected actionsGetPaged() {
         this.actions.getPaged(this.packagePath, this.pagedQuery);
@@ -180,6 +184,30 @@ export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey>
                 // return [];
             }),
             defined()
+        );
+    }
+
+    public setEntityActions(): void {
+        this.entityActions$ = this.loadedPackage$.pipe(
+            switchMap(loadedPackage => this.entityActionProviders.providers$.pipe(
+                switchMap(providers => {
+                    const extractedProviders = providers[loadedPackage && loadedPackage.packageManifest && loadedPackage.packageManifest.id];
+                    if (extractedProviders && extractedProviders.length > 0) {
+                        return combineLatest(
+                            extractedProviders.map(provider => {
+                                return provider.getEntityActions(loadedPackage._package.path, this.areaKey);
+                            })
+                        ).pipe(
+                            distinctUntilChanged(),
+                            map((values: [EntityAction[]]) => {
+                                return values.reduce((acc: EntityAction[], cur: EntityAction[]) => acc.concat(cur), []).concat(this.entityActions);
+                            })
+                        );
+                    } else {
+                        return of(this.entityActions);
+                    }
+                })
+            )),
         );
     }
 }

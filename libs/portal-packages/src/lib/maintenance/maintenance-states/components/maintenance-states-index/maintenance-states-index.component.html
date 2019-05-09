@@ -1,6 +1,6 @@
 <ss-container [sidebarMenu]="sidebarMenu" *ngIf="loadedPackage$ | async as loadedPackage">
-    <ss-records-container [area]="area" [cancelAction]="actions.cancelAction"
-        [title]="loadedPackage._package.name + ' states'" [entities$]="pagedEntities$" [entityActions]="entityActions"
+    <ss-records-container [area]="areaKey" [cancelAction]="actions.cancelAction"
+        [title]="loadedPackage._package.name + ' states'" [entities$]="pagedEntities$" [entityActions$]="entityActions$"
         [packagePath]="packagePath" (entityActionEvent)="actionEvent($event)" [totalCount$]="totalCount$"
         [loadingState$]="loadingState$" (requestPage)="requestPage()" [fields$]="fields$"
         (sortChanged)="sortChanged($event)">

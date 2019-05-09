@@ -20,9 +20,9 @@ export class NgProductsFieldsConfig extends DocumentFieldsConfig<Product, number
     ];
 
     constructor(
-        public productTypeStore: NgProductTypesStore,
         public fieldProviders: FieldProviders,
         public fieldStore: NgFieldStore,
+        public productTypeStore: NgProductTypesStore,
         public productTypesActions: NgProductTypesActions,
         public router: Router
     ) {

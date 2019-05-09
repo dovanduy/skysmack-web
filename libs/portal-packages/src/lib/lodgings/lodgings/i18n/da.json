@@ -51,9 +51,9 @@
             "SETTINGS": "Indstillinger",
             "AVAILABILITY": "Tilgængelighed",
             "FIELDS": "Felter",
+            "FIELDS_TITLE": "(Felter)",
             "TYPES": "Typer",
-            "BACK": "Tilbage",
-            "CONNECTED PACKAGES": "Tilsuttede pakker"
+            "BACK": "Tilbage"
         },
         "QUEUE": {
             "ADDING": "Tilføjer {{ name }}",

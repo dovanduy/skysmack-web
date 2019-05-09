@@ -41,6 +41,9 @@
       "@skysmack/packages-invoices": [
         "libs/packages/invoices/public_api.ts"
       ],
+      "@skysmack/packages-invoices-cash-payments": [
+        "libs/packages/invoices-cash-payments/public_api.ts"
+      ],
       "@skysmack/packages-lodging-reservations": [
         "libs/packages/lodging-reservations/public_api.ts"
       ],

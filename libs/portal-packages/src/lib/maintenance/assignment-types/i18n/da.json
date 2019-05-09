@@ -39,6 +39,7 @@
             "EDIT": "Ret"
         },
         "INDEX": {
+            "TITLE_EXTRA": "(typer)",
             "ACTIONS": "Handlinger",
             "CREATE": "Opret",
             "EDIT": "Ret",
@@ -46,6 +47,7 @@
             "MANAGE": "Konfigurer",
             "BACK": "Tilbage",
             "FIELDS": "Felter",
+            "FIELDS_TITLE": "(type felter)",
             "ENTITIES": "Enheder"
         },
         "FIELDS": {

@@ -22,11 +22,13 @@
             "EDIT": "Edit"
         },
         "INDEX": {
+            "TITLE_EXTRA": "(types)",
             "ACTIONS": "Actions",
             "CREATE": "Create",
             "MANAGE": "Manage",
             "AVAILABILITY": "Availability",
             "FIELDS": "Fields",
+            "FIELDS_TITLE": "(type fields)",
             "TYPES": "types",
             "BACK": "Back"
         },

@@ -840,6 +840,36 @@
           "styleext": "scss"
         }
       }
+    },
+    "packages-invoices-cash-payments": {
+      "root": "libs/packages/invoices-cash-payments",
+      "sourceRoot": "libs/packages/invoices-cash-payments/src",
+      "projectType": "library",
+      "prefix": "skysmack",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/packages/invoices-cash-payments/tsconfig.lib.json",
+              "libs/packages/invoices-cash-payments/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "libs/packages/invoices-cash-payments/jest.config.js",
+            "tsConfig": "libs/packages/invoices-cash-payments/tsconfig.spec.json"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/schematics:component": {
+          "styleext": "scss"
+        }
+      }
     }
   },
   "cli": {

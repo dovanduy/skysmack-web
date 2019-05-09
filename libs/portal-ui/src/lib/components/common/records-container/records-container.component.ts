@@ -22,12 +22,12 @@ export class RecordsContainerComponent implements OnInit, OnDestroy {
   @Output() public sortChanged = new EventEmitter<DisplayColumn>();
 
   @Input() public entities$: Observable<LocalObject<any, any>[]>;
+  @Input() public entityActions$: Observable<EntityAction[]>;
   @Input() public fields$: Observable<Field[]>;
   @Input() public totalCount$: BehaviorSubject<number>;
   public totalCount: number;
   @Input() public loadingState$: BehaviorSubject<LoadingState>;
   public loadingState: LoadingState;
-  @Input() public entityActions: EntityAction[] = [];
   @Input() public packagePath: string;
   @Input() public additionalPaths?: string[];
   @Input() public title: string;

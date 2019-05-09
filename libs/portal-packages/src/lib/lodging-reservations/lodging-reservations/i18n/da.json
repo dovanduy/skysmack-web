@@ -46,6 +46,7 @@
             "EDIT": "Rediger",
             "DELETE": "Ret",
             "FIELDS": "Felter",
+            "FIELDS_TITLE": "(felter)",
             "ITEM": "Enhed",
             "MANAGE": "Konfigurer",
             "ACTIONS": "Handlinger",
@@ -54,8 +55,7 @@
             "ARRIVALS": "Ankomster",
             "SETTINGS": "Indstillinger",
             "DEPARTURES": "Afgange",
-            "ALL": "Alle",
-            "CONNECTED PACKAGES": "Tilsluttede pakker"
+            "ALL": "Alle"
         },
         "QUEUE": {
             "ADDING": "Tilføjer rum reservations {{ id }}",

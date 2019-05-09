@@ -9,7 +9,8 @@
             "OFFLINE": "Intet netværk! Kører offline tilstand."
         },
         "MISC": {
-            "BACK": "Tilbage"
+            "BACK": "Tilbage",
+            "CONNECTED_PACKAGES": "Tilsluttede pakker"
         },
         "PACKAGE_DRAWER": {
             "SETTINGS": "Indstillinger",

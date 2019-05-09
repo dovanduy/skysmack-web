@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { EntityComponentPageTitle, DocumentRecordIndexComponent } from '@skysmack/portal-ui';
+import { EntityComponentPageTitle, DocumentRecordIndexComponent, EntityActionProviders } from '@skysmack/portal-ui';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgInvoiceItemsActions } from '@skysmack/ng-packages';
 import { NgSkysmackStore } from '@skysmack/ng-core';
@@ -19,7 +19,7 @@ import { take, map } from 'rxjs/operators';
 })
 export class InvoiceItemsIndexComponent extends DocumentRecordIndexComponent<InvoiceItemsAppState, InvoiceItem, number> implements OnInit {
 
-  public area: string = INVOICE_ITEMS_AREA_KEY;
+  public areaKey: string = INVOICE_ITEMS_AREA_KEY;
   public entityActions: EntityAction[] = [
     new EntityAction().asUrlAction('edit', 'Edit', 'edit'),
     new EntityAction().asEventAction('Delete', this.delete, 'delete', this)
@@ -30,13 +30,14 @@ export class InvoiceItemsIndexComponent extends DocumentRecordIndexComponent<Inv
     public activatedRoute: ActivatedRoute,
     public actions: NgInvoiceItemsActions,
     public redux: NgSkysmackStore,
-    public title: EntityComponentPageTitle,
     public store: NgInvoiceItemsStore,
     public sidebarMenu: NgInvoiceItemsMenu,
     public fieldsConfig: NgInvoiceItemsFieldsConfig,
-    public fieldActions: NgFieldActions
+    public fieldActions: NgFieldActions,
+    public title: EntityComponentPageTitle,
+    public entityActionProviders: EntityActionProviders
   ) {
-    super(router, activatedRoute, actions, redux, store, fieldsConfig, fieldActions);
+    super(router, activatedRoute, actions, redux, store, fieldsConfig, fieldActions, entityActionProviders, title);
   }
 
   ngOnInit() {
@@ -51,6 +52,5 @@ export class InvoiceItemsIndexComponent extends DocumentRecordIndexComponent<Inv
     ).subscribe();
 
     super.ngOnInit();
-    this.title.setTitle(this.packagePath);
   }
 }

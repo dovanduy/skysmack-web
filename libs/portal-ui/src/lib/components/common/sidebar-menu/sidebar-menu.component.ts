@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { trigger, state, style, transition, animate } from '@angular/animations';
@@ -16,7 +16,7 @@ import { SidebarMenu } from './../../../models/sidebar-menu/sidebar-menu';
     ]),
   ],
 })
-export class SidebarMenuComponent {
+export class SidebarMenuComponent implements OnInit {
   @Input() public sidebarMenu: SidebarMenu;
   public expansions: any = {};
 
@@ -25,6 +25,16 @@ export class SidebarMenuComponent {
     public activatedRoute: ActivatedRoute,
     public translate: TranslateService
   ) {
+  }
+
+  ngOnInit() {
+    this.removeEmptyMenuAreas();
+  }
+
+  public removeEmptyMenuAreas() {
+    const menuAreas = this.sidebarMenu.primaryMenuAreas;
+    const menuItems = this.sidebarMenu.primaryMenuItems;
+    this.sidebarMenu.primaryMenuAreas = menuAreas.filter(menuArea => menuItems.find(menuItem => menuItem.area === menuArea.area) ? true : false);
   }
 
   /** Toggles the expanded state */

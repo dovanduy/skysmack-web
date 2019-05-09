@@ -4,6 +4,7 @@ import { LodgingTypesEditComponent } from './lodging-types-edit/lodging-types-ed
 import { LodgingTypesCreateComponent } from './lodging-types-create/lodging-types-create.component';
 import { FieldsIndexComponent, FieldsCreateComponent, FieldsEditComponent } from '@skysmack/portal-ui';
 import { LodgingTypesavailabilityComponent } from './lodging-types-availability/lodging-types-availability.component';
+import { LODGING_TYPES_AREA_KEY } from '@skysmack/packages-lodgings';
 
 export const lodgingTypesRoutes: Routes = [
     {
@@ -17,7 +18,9 @@ export const lodgingTypesRoutes: Routes = [
         path: 'types/fields', component: FieldsIndexComponent, children: [
             { path: 'create', component: FieldsCreateComponent, pathMatch: 'full' },
             { path: 'edit/:id', component: FieldsEditComponent, pathMatch: 'full' }
-        ]
+        ], data: {
+            areaKey: LODGING_TYPES_AREA_KEY
+          }
     },
     { path: 'types/availability', component: LodgingTypesavailabilityComponent }
 ];

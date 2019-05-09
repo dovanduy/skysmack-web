@@ -52,9 +52,9 @@
             "AVAILABILITY": "Availability",
             "MANAGE": "Manage",
             "FIELDS": "Fields",
+            "FIELDS_TITLE": "(fields)",
             "TYPES": "Types",
-            "BACK": "Back",
-            "CONNECTED PACKAGES": "Connected packages"
+            "BACK": "Back"
         },
         "QUEUE": {
             "ADDING": "Adding {{ name }}",

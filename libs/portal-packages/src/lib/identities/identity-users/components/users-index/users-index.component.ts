@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { EntityComponentPageTitle, RecordIndexComponent, } from '@skysmack/portal-ui';
+import { EntityComponentPageTitle, RecordIndexComponent, EntityActionProviders, } from '@skysmack/portal-ui';
 import { NgUsersActions, NgUsersStore } from '@skysmack/ng-packages';
 import { EntityAction } from '@skysmack/ng-ui';
 import { User, UsersAppState, USERS_AREA_KEY } from '@skysmack/packages-identities';
@@ -31,9 +31,10 @@ export class UsersIndexComponent extends RecordIndexComponent<UsersAppState, Use
     public title: EntityComponentPageTitle,
     public store: NgUsersStore,
     public sidebarMenu: NgUsersMenu,
-    public fieldsConfig: NgUsersFieldsConfig
+    public fieldsConfig: NgUsersFieldsConfig,
+    public entityActionProviders: EntityActionProviders
   ) {
-    super(router, activatedRoute, actions, redux, store, fieldsConfig);
+    super(router, activatedRoute, actions, redux, store, fieldsConfig, entityActionProviders);
   }
 
   ngOnInit() {

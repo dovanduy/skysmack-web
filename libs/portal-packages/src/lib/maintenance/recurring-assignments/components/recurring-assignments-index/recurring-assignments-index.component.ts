@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RecurringAssignment, RecurringAssignmentsAppState, RECURRING_ASSIGNMENTS_AREA_KEY } from '@skysmack/packages-maintenance';
-import { RecordIndexComponent, EntityComponentPageTitle } from '@skysmack/portal-ui';
+import { RecordIndexComponent, EntityComponentPageTitle, EntityActionProviders } from '@skysmack/portal-ui';
 import { EntityAction } from '@skysmack/ng-ui';
 import { NgRecurringAssignmentsActions, NgRecurringAssignmentsStore } from '@skysmack/ng-packages';
 import { NgRecurringAssignmentsMenu } from '../../ng-recurring-assignments-menu';
@@ -28,9 +28,11 @@ export class RecurringAssignmentsIndexComponent extends RecordIndexComponent<Rec
     public title: EntityComponentPageTitle,
     public store: NgRecurringAssignmentsStore,
     public sidebarMenu: NgRecurringAssignmentsMenu,
-    public fieldsConfig: NgRecurringAssignmentsFieldsConfig
+    public fieldsConfig: NgRecurringAssignmentsFieldsConfig,
+    public entityActionProviders: EntityActionProviders
+
   ) {
-    super(router, activatedRoute, actions, redux, store, fieldsConfig);
+    super(router, activatedRoute, actions, redux, store, fieldsConfig, entityActionProviders);
 
   }
 

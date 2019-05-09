@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { EntityComponentPageTitle, DocumentRecordIndexComponent } from '@skysmack/portal-ui';
+import { EntityComponentPageTitle, DocumentRecordIndexComponent, EntityActionProviders } from '@skysmack/portal-ui';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgTerminalsActions } from '@skysmack/ng-packages';
 import { NgSkysmackStore } from '@skysmack/ng-core';
@@ -16,7 +16,7 @@ import { NgTerminalsFieldsConfig } from '../../ng-terminals-fields-config';
 })
 export class TerminalsIndexComponent extends DocumentRecordIndexComponent<TerminalsAppState, Terminal, number> implements OnInit {
 
-  public area: string = TERMINALS_REDUCER_AREA_KEY;
+  public areaKey: string = TERMINALS_REDUCER_AREA_KEY;
   public entityActions: EntityAction[] = [
     new EntityAction().asUrlAction('edit', 'Edit', 'edit'),
     new EntityAction().asEventAction('Delete', this.delete, 'delete', this)
@@ -27,18 +27,17 @@ export class TerminalsIndexComponent extends DocumentRecordIndexComponent<Termin
     public activatedRoute: ActivatedRoute,
     public actions: NgTerminalsActions,
     public redux: NgSkysmackStore,
-    public title: EntityComponentPageTitle,
     public store: NgTerminalsStore,
     public sidebarMenu: NgTerminalsMenu,
     public fieldsConfig: NgTerminalsFieldsConfig,
-    public fieldActions: NgFieldActions
+    public fieldActions: NgFieldActions,
+    public title: EntityComponentPageTitle,
+    public entityActionProviders: EntityActionProviders
   ) {
-    super(router, activatedRoute, actions, redux, store, fieldsConfig, fieldActions);
+    super(router, activatedRoute, actions, redux, store, fieldsConfig, fieldActions, entityActionProviders, title);
   }
-
 
   ngOnInit() {
     super.ngOnInit();
-    this.title.setTitle(this.packagePath);
   }
 }

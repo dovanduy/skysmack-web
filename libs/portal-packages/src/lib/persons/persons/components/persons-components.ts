@@ -4,6 +4,7 @@ import { PersonsCreateComponent } from './persons-create/persons-create.componen
 import { PersonsEditComponent } from './persons-edit/persons-edit.component';
 import { FieldsIndexComponent, FieldsCreateComponent, FieldsEditComponent } from '@skysmack/portal-ui';
 import { PersonsDetailsComponent } from './persons-details/persons-details.component';
+import { PERSONS_AREA_KEY } from '@skysmack/packages-persons';
 
 export const personsRoutes: Routes = [
   {
@@ -18,7 +19,9 @@ export const personsRoutes: Routes = [
     path: 'fields', component: FieldsIndexComponent, children: [
       { path: 'create', component: FieldsCreateComponent, pathMatch: 'full' },
       { path: 'edit/:id', component: FieldsEditComponent, pathMatch: 'full' }
-    ]
+    ], data: {
+      areaKey: PERSONS_AREA_KEY
+    }
   }
 ];
 

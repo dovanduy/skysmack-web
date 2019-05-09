@@ -75,6 +75,10 @@ const extraRoutes = [
         loadChildren: './../packages/modules/invoices_wrapper.module#InvoicesWrapperModule'
       },
       {
+        path: 'skysmack/loadPackages/invoices-cash-payments',
+        loadChildren: './../packages/modules/invoices_cash_payments_wrapper.module#InvoicesCashPaymentsWrapperModule'
+      },
+      {
         path: 'skysmack/loadPackages/products',
         loadChildren: './../packages/modules/products_wrapper.module#ProductsWrapperModule'
       },

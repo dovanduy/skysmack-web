@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { EntityComponentPageTitle, DocumentRecordIndexComponent } from '@skysmack/portal-ui';
+import { EntityComponentPageTitle, DocumentRecordIndexComponent, EntityActionProviders } from '@skysmack/portal-ui';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgInvoicePaymentsActions } from '@skysmack/ng-packages';
 import { NgSkysmackStore } from '@skysmack/ng-core';
@@ -31,9 +31,10 @@ export class InvoicePaymentsIndexComponent extends DocumentRecordIndexComponent<
     public store: NgInvoicePaymentsStore,
     public sidebarMenu: NgInvoicePaymentsMenu,
     public fieldsConfig: NgInvoicePaymentsFieldsConfig,
-    public fieldActions: NgFieldActions
+    public fieldActions: NgFieldActions,
+    public entityActionProviders: EntityActionProviders
   ) {
-    super(router, activatedRoute, actions, redux, store, fieldsConfig, fieldActions);
+    super(router, activatedRoute, actions, redux, store, fieldsConfig, fieldActions, entityActionProviders);
   }
 
 

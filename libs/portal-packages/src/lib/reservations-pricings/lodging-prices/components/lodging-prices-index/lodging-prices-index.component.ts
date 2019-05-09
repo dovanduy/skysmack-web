@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { EntityComponentPageTitle, RecordIndexComponent } from '@skysmack/portal-ui';
+import { EntityComponentPageTitle, RecordIndexComponent, EntityActionProviders } from '@skysmack/portal-ui';
 import { Router, ActivatedRoute } from '@angular/router';
 import { LODGING_PRICES_AREA_KEY, LodgingPricesAppState, LodgingPrice } from '@skysmack/packages-reservations-pricings';
 import { EntityAction } from '@skysmack/ng-ui';
@@ -14,7 +14,7 @@ import { NgLodgingPricesFieldsConfig } from '../../ng-lodging-prices-fields-conf
 })
 export class LodgingPricesIndexComponent extends RecordIndexComponent<LodgingPricesAppState, LodgingPrice, number> implements OnInit {
 
-  public area: string = LODGING_PRICES_AREA_KEY;
+  public areaKey: string = LODGING_PRICES_AREA_KEY;
   public entityActions: EntityAction[] = [
     new EntityAction().asUrlAction('edit', 'Edit', 'edit'),
     new EntityAction().asEventAction('Delete', this.delete, 'delete', this)
@@ -25,17 +25,17 @@ export class LodgingPricesIndexComponent extends RecordIndexComponent<LodgingPri
     public activatedRoute: ActivatedRoute,
     public actions: NgLodgingPricesActions,
     public redux: NgSkysmackStore,
-    public title: EntityComponentPageTitle,
     public store: NgLodgingPricesStore,
     public sidebarMenu: NgLodgingPricesMenu,
     public fieldsConfig: NgLodgingPricesFieldsConfig,
+    public title: EntityComponentPageTitle,
+    public entityActionProviders: EntityActionProviders
   ) {
-    super(router, activatedRoute, actions, redux, store, fieldsConfig);
+    super(router, activatedRoute, actions, redux, store, fieldsConfig, entityActionProviders, title);
   }
 
 
   ngOnInit() {
     super.ngOnInit();
-    this.title.setTitle(this.packagePath);
   }
 }

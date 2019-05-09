@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { EntityComponentPageTitle, DocumentRecordIndexComponent } from '@skysmack/portal-ui';
+import { EntityComponentPageTitle, DocumentRecordIndexComponent, EntityActionProviders } from '@skysmack/portal-ui';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgSkysmackStore } from '@skysmack/ng-core';
 import { LodgingTypesAppState, LodgingType, LODGING_TYPES_AREA_KEY } from '@skysmack/packages-lodgings';
@@ -15,7 +15,8 @@ import { NgLodgingTypesFieldsConfig } from '../../ng-lodging-types-fields-config
   templateUrl: './lodging-types-index.component.html'
 })
 export class LodgingTypesIndexComponent extends DocumentRecordIndexComponent<LodgingTypesAppState, LodgingType, number> implements OnInit {
-  public area: string = LODGING_TYPES_AREA_KEY;
+  public areaKey: string = LODGING_TYPES_AREA_KEY;
+  public titleExtras = true;
   public entityActions: EntityAction[] = [
     new EntityAction().asUrlAction('edit', 'Edit', 'edit'),
     new EntityAction().asEventAction('Delete', this.delete, 'delete', this)
@@ -26,18 +27,18 @@ export class LodgingTypesIndexComponent extends DocumentRecordIndexComponent<Lod
     public activatedRoute: ActivatedRoute,
     public actions: NgLodgingTypesActions,
     public skysmackStore: NgSkysmackStore,
-    public title: EntityComponentPageTitle,
     public store: NgLodgingTypesStore,
     public sidebarMenu: NgLodgingTypesMenu,
     public fieldsConfig: NgLodgingTypesFieldsConfig,
-    public fieldActions: NgFieldActions
+    public fieldActions: NgFieldActions,
+    public title: EntityComponentPageTitle,
+    public entityActionProviders: EntityActionProviders
   ) {
-    super(router, activatedRoute, actions, skysmackStore, store, fieldsConfig, fieldActions);
+    super(router, activatedRoute, actions, skysmackStore, store, fieldsConfig, fieldActions, entityActionProviders, title);
   }
 
 
   ngOnInit() {
     super.ngOnInit();
-    this.title.setTitle(this.packagePath);
   }
 }

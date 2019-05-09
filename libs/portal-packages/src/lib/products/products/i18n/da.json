@@ -30,8 +30,7 @@
             "ITEM": "Enhed",
             "MANAGE": "Konfigurer",
             "ACTIONS": "Handlinger",
-            "TYPES": "Typer",
-            "CONNECTED PACKAGES": "Tilsluttede pakker"
+            "TYPES": "Typer"
         },
         "FIELDS": {
             "CREATE": {

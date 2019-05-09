@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { EntityComponentPageTitle, RecordIndexComponent } from '@skysmack/portal-ui';
+import { EntityComponentPageTitle, RecordIndexComponent, EntityActionProviders } from '@skysmack/portal-ui';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgAccessPolicyPermissionsActions } from '@skysmack/ng-core';
 import { NgSkysmackStore } from '@skysmack/ng-core';
@@ -29,9 +29,10 @@ export class AccessPolicyPermissionsIndexComponent extends RecordIndexComponent<
     public title: EntityComponentPageTitle,
     public store: NgAccessPolicyPermissionsStore,
     public sidebarMenu: NgAccessPolicyPermissionsMenu,
-    public fieldsConfig: NgAccessPolicyPermissionsFieldsConfig
+    public fieldsConfig: NgAccessPolicyPermissionsFieldsConfig,
+    public entityActionProviders: EntityActionProviders
   ) {
-    super(router, activatedRoute, actions, redux, store, fieldsConfig);
+    super(router, activatedRoute, actions, redux, store, fieldsConfig, entityActionProviders);
   }
 
   ngOnInit() {

@@ -86,12 +86,10 @@ export class RSQLFilterExpression {
     filterString += this.field;
     switch (this.operator) {
       case Operators.Equal:
-        filterString +=
-          '=in=' + shouldQuote ? this.quote(valueString) : valueString;
+        filterString = `${filterString}=in=${shouldQuote ? this.quote(valueString) : valueString}`;
         break;
       case Operators.NotEqual:
-        filterString +=
-          '!=' + shouldQuote ? this.quote(valueString) : valueString;
+        filterString += '!=' + shouldQuote ? this.quote(valueString) : valueString;
         break;
       case Operators.Like:
         filterString += '==' + this.quote(valueString);

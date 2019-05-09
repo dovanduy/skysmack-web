@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgLodgingReservationsStore, NgLodgingsStore, NgLodgingTypesStore, NgLodgingsActions, NgLodgingTypesActions, NgLodgingReservationsActions } from '@skysmack/ng-packages';
-import { EntityComponentPageTitle } from '@skysmack/portal-ui';
+import { EntityComponentPageTitle, EntityActionProviders } from '@skysmack/portal-ui';
 import { LodgingsReservationsIndexComponent } from '../../lodging-reservations/lodgings-reservations-index/lodgings-reservations-index.component';
 import { RSQLFilterBuilder, SortBuilder } from '@skysmack/framework';
 import * as _moment from 'moment';
@@ -29,9 +29,11 @@ export class LodgingsDeparturesComponent extends LodgingsReservationsIndexCompon
     public lodgingTypesActions: NgLodgingTypesActions,
     public fieldsConfig: NgLodgingReservationsFieldsConfig,
     public sidebarMenu: NgLodgingsReservationsMenu,
-    public pageTitle: EntityComponentPageTitle
+    public pageTitle: EntityComponentPageTitle,
+    public title: EntityComponentPageTitle,
+    public entityActionProviders: EntityActionProviders
   ) {
-    super( router, activatedRoute, skysmackStore, store, lodgingsStore, lodgingTypesStore, actions, lodgingsActions, lodgingTypesActions, fieldsConfig, sidebarMenu, pageTitle);
+    super(router, activatedRoute, skysmackStore, store, lodgingsStore, lodgingTypesStore, actions, lodgingsActions, lodgingTypesActions, fieldsConfig, sidebarMenu, pageTitle, title, entityActionProviders);
   }
 
   ngOnInit() {

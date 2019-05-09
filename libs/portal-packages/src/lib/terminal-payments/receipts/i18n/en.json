@@ -12,6 +12,7 @@
             "DELETE": "Delete",
             "MANAGE": "Manage",
             "FIELDS": "Fields",
+            "FIELDS_TITLE": "(fields)",
             "BACK": "Back"
         },
         "FORM": {

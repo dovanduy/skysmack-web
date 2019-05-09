@@ -22,7 +22,7 @@ export class NgLodgingsReservationsMenuItemProvider extends MenuItemProvider {
                     .map(_package => new MenuItem({
                         url: '/' + _package.path,
                         displayName: _package.name,
-                        area: 'connected packages',
+                        area: 'connected_packages',
                         order: 20,
                         icon: this.icon,
                     }))

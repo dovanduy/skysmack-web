@@ -39,6 +39,7 @@
             "EDIT": "Edit"
         },
         "INDEX": {
+            "TITLE_EXTRA": "(types)",
             "ACTIONS": "Actions",
             "CREATE": "Create",
             "EDIT": "Edit",
@@ -46,6 +47,7 @@
             "MANAGE": "Manage",
             "BACK": "Back",
             "FIELDS": "Fields",
+            "FIELDS_TITLE": "(fields)",
             "ENTITIES": "Entities"
         },
         "FIELDS": {

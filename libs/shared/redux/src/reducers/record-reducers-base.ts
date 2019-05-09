@@ -53,6 +53,7 @@ export function recordReducersBase<TState extends RecordState<TRecord, TKey>, TR
             }
             return newState;
         }
+
         case prefix + RecordActionsBase.ADD: {
             const castedAction: ReduxAction<null, ReduxOfflineMeta<TRecord[], HttpResponse, LocalObject<TRecord, TKey>[]>> = action;
             const stateKey = castedAction.meta.offline.commit.meta.stateKey;

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { EntityComponentPageTitle, RecordIndexComponent } from '@skysmack/portal-ui';
+import { EntityComponentPageTitle, RecordIndexComponent, EntityActionProviders } from '@skysmack/portal-ui';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgProductTypeSalesPriceActions } from '@skysmack/ng-packages';
 import { NgSkysmackStore } from '@skysmack/ng-core';
@@ -15,7 +15,7 @@ import { NgProductTypeSalesPriceFieldsConfig } from '../../ng-product-type-sales
 })
 export class ProductTypeSalesPriceIndexComponent extends RecordIndexComponent<ProductTypeSalesPriceAppState, ProductTypeSalesPrice, number> implements OnInit {
 
-  public area: string = PRODUCT_TYPE_SALES_PRICE_AREA_KEY;
+  public areaKey: string = PRODUCT_TYPE_SALES_PRICE_AREA_KEY;
   public entityActions: EntityAction[] = [
     new EntityAction().asUrlAction('edit', 'Edit', 'edit'),
     new EntityAction().asEventAction('Delete', this.delete, 'delete', this)
@@ -26,16 +26,16 @@ export class ProductTypeSalesPriceIndexComponent extends RecordIndexComponent<Pr
     public activatedRoute: ActivatedRoute,
     public actions: NgProductTypeSalesPriceActions,
     public redux: NgSkysmackStore,
-    public title: EntityComponentPageTitle,
     public store: NgProductTypeSalesPriceStore,
     public sidebarMenu: NgProductTypeSalesPriceMenu,
     public fieldsConfig: NgProductTypeSalesPriceFieldsConfig,
+    public title: EntityComponentPageTitle,
+    public entityActionProviders: EntityActionProviders
   ) {
-    super(router, activatedRoute, actions, redux, store, fieldsConfig);
+    super(router, activatedRoute, actions, redux, store, fieldsConfig, entityActionProviders, title);
   }
 
   ngOnInit() {
     super.ngOnInit();
-    this.title.setTitle(this.packagePath);
   }
 }

@@ -3,6 +3,7 @@ import { ReceiptsCreateComponent } from './receipts-create/receipts-create.compo
 import { ReceiptsEditComponent } from './receipts-edit/receipts-edit.component';
 import { FieldsIndexComponent, FieldsCreateComponent } from '@skysmack/portal-ui';
 import { Routes } from '@angular/router';
+import { RECEIPTS_REDUCER_AREA_KEY } from '@skysmack/packages-terminal-payments';
 
 export const receiptsRoutes: Routes = [
   {
@@ -14,7 +15,9 @@ export const receiptsRoutes: Routes = [
   {
     path: 'receipts/fields', component: FieldsIndexComponent, children: [
       { path: 'create', component: FieldsCreateComponent, pathMatch: 'full' }
-    ]
+    ], data: {
+      areaKey: RECEIPTS_REDUCER_AREA_KEY
+    }
   }
 ];
 
