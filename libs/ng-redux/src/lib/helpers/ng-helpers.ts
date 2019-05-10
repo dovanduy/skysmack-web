@@ -35,6 +35,7 @@ export const getNParentPackageDependency = (packages: LocalObject<Package, strin
 /**
  * Helper to make it easy to get a required package as a stream
  * If the dependency index array is empty, the current package is returned.
+ * TODO: Note: This could be refactored into the skysmack store, instead of receiving it as an argument.
  */
 export const getPackageDendencyAsStream = (skysmackStore: SkysmackStore, packagePath: string, dependencyIndexes: number[] = []) => {
     return combineLatest(
