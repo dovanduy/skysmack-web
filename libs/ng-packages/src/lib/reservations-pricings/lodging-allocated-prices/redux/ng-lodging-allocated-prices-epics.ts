@@ -26,7 +26,7 @@ export class NgLodgingAllocatedPricesEpics extends RecordEpicsBase<LodgingAlloca
                 skysmackStore: this.skysmackStore,
                 store: this.lodgingsStore,
                 actions: this.lodgingsActions,
-                dependencyIndexes: [0]
+                dependencyIndexes: [0, 0]
             })
         ]);
     }
