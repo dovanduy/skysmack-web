@@ -5,7 +5,7 @@ import { FormRule, SelectField, Field } from '@skysmack/ng-ui';
 import { NgLodgingTypePricesValidation, NgLodgingTypesStore, NgLodgingTypesActions } from '@skysmack/ng-packages';
 import { FieldsConfig, SelectFieldComponent, HiddenFieldComponent, DecimalFieldComponent } from '@skysmack/portal-ui';
 import { FieldProviders } from '@skysmack/portal-ui';
-import { LoadedPackage, getNParentPackageDependency } from '@skysmack/ng-redux';
+import { LoadedPackage, getPackageDendencyAsStream } from '@skysmack/ng-redux';
 import { LodgingTypePrice } from '@skysmack/packages-reservations-pricings';
 import { switchMap, map, take } from 'rxjs/operators';
 import { NgSkysmackStore } from '@skysmack/ng-core';
@@ -24,7 +24,7 @@ export class NgLodgingTypePricesFieldsConfig extends FieldsConfig<LodgingTypePri
     ) { super(fieldProviders); }
 
     protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<LodgingTypePrice, number>): Field[] {
-        const lodgingTypePackage$ = this.skysmackStore.getPackages().pipe(map(packages => getNParentPackageDependency(packages, loadedPackage._package, [0, 0])));
+        const lodgingTypePackage$ = getPackageDendencyAsStream(this.skysmackStore, loadedPackage._package.path, [0, 0]);
 
         const fields = [
             new SelectField({

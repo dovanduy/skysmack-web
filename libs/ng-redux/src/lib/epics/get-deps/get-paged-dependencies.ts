@@ -1,9 +1,9 @@
 import { RSQLFilterBuilder, PagedQuery } from '@skysmack/framework';
-import { map, take, switchMap } from 'rxjs/operators';
+import { map, take } from 'rxjs/operators';
 import { NgRecordStore } from '../../stores/ng-record-store';
 import { RecordActionsBase, ReduxAction, GetPagedEntitiesSuccessPayload } from '@skysmack/redux';
 import { SkysmackStore } from '../../stores/skysmack-store';
-import { getNParentPackageDependency } from '../../helpers/ng-helpers';
+import { getPackageDendencyAsStream } from '../../helpers/ng-helpers';
 
 export interface GetDependenciesOptions {
     action: ReduxAction<GetPagedEntitiesSuccessPayload<any, any>>;
@@ -26,13 +26,8 @@ export function getDependencies(options: GetDependenciesOptions): void {
 
         const packagePath = options.action.payload.packagePath;
         options.dependencyIndexes = options.dependencyIndexes ? options.dependencyIndexes : [];
-
-        options.skysmackStore.getCurrentPackage(packagePath).pipe(
-            switchMap(_package => options.skysmackStore.getPackages().pipe(
-                map(packages => getNParentPackageDependency(packages, _package._package, options.dependencyIndexes)),
-                map(targetPackage => options.actions.getPaged(targetPackage.object.path, query)),
-                take(1)
-            )),
+        getPackageDendencyAsStream(options.skysmackStore, packagePath, options.dependencyIndexes).pipe(
+            map(targetPackage => options.actions.getPaged(targetPackage.object.path, query)),
             take(1)
         ).subscribe();
     }

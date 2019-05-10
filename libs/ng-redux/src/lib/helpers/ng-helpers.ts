@@ -1,5 +1,8 @@
 import { Router } from '@angular/router';
 import { Package, LocalObject, toLocalObject } from '@skysmack/framework';
+import { map } from 'rxjs/operators';
+import { combineLatest } from 'rxjs';
+import { SkysmackStore } from '../stores/skysmack-store';
 
 export const getAdditionalPaths = (router: Router, packagePath): string[] => {
     const chuncks = router.url.split('/');
@@ -27,4 +30,17 @@ export const getNParentPackageDependency = (packages: LocalObject<Package, strin
         return getNParentPackageDependency(packages, parentPackage.object, dependencyIndexes.slice(1));
     }
     return toLocalObject(currentPackage);
+}
+
+/**
+ * Helper to make it easy to get a required package as a stream
+ * If the dependency index array is empty, the current package is returned.
+ */
+export const getPackageDendencyAsStream = (skysmackStore: SkysmackStore, packagePath: string, dependencyIndexes: number[] = []) => {
+    return combineLatest(
+        skysmackStore.getPackages(),
+        skysmackStore.getCurrentPackage(packagePath)
+    ).pipe(
+        map(([packages, currentPackage]) => getNParentPackageDependency(packages, currentPackage._package, dependencyIndexes)),
+    );
 }

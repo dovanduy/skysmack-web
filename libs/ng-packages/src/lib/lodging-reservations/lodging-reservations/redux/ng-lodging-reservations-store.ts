@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { NgRedux } from '@angular-redux/store';
 import { LodgingReservation, LodgingReservationsAppState } from '@skysmack/packages-lodging-reservations';
-import { NgRecordStore, getNParentPackageDependency } from '@skysmack/ng-redux';
+import { NgRecordStore, getPackageDendencyAsStream } from '@skysmack/ng-redux';
 import { Observable, combineLatest } from 'rxjs';
 import { LocalObject } from '@skysmack/framework';
 import { map, switchMap } from 'rxjs/operators';
@@ -16,11 +16,7 @@ export class NgLodgingReservationsStore extends NgRecordStore<LodgingReservation
     ) { super(ngRedux, 'lodgingReservations'); }
 
     public get(packagePath: string): Observable<LocalObject<LodgingReservation, number>[]> {
-        return combineLatest(
-            this.skysmackStore.getPackages(),
-            this.skysmackStore.getCurrentPackage(packagePath)
-        ).pipe(
-            map(([packages, currentPackage]) => getNParentPackageDependency(packages, currentPackage._package, [0])),
+        return getPackageDendencyAsStream(this.skysmackStore, packagePath, [0]).pipe(
             switchMap(targetPackage => combineLatest(
                 this.getRecords(packagePath),
                 this.getDependencies(targetPackage.object.path, 'lodgings'),
@@ -36,11 +32,7 @@ export class NgLodgingReservationsStore extends NgRecordStore<LodgingReservation
     }
 
     public getSingle(packagePath: string, id: number): Observable<LocalObject<LodgingReservation, number>> {
-        return combineLatest(
-            this.skysmackStore.getPackages(),
-            this.skysmackStore.getCurrentPackage(packagePath)
-        ).pipe(
-            map(([packages, currentPackage]) => getNParentPackageDependency(packages, currentPackage._package, [0])),
+        return getPackageDendencyAsStream(this.skysmackStore, packagePath, [0]).pipe(
             switchMap(targetPackage => combineLatest(
                 this.getSingleRecord(packagePath, id),
                 this.getDependencies(targetPackage.object.path, 'lodgings'),

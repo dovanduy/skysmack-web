@@ -1,9 +1,9 @@
-import { map, take, switchMap } from 'rxjs/operators';
+import { map, take } from 'rxjs/operators';
 import { NgRecordStore } from '../../stores/ng-record-store';
 import { RecordActionsBase } from '@skysmack/redux';
 import { SkysmackStore } from '../../stores/skysmack-store';
 import { RSQLFilterBuilder, PagedQuery } from '@skysmack/framework';
-import { getNParentPackageDependency } from '../../helpers/ng-helpers';
+import { getPackageDendencyAsStream } from '../../helpers/ng-helpers';
 
 export interface GetSingleDependenciesOptions {
     entity: any;
@@ -23,12 +23,8 @@ export function getSingleDependencies(options: GetSingleDependenciesOptions): vo
     rsqlFilter.column(options.relationIdSelector).equalTo(entity.id);
     const query = new PagedQuery({ rsqlFilter });
 
-    options.skysmackStore.getCurrentPackage(packagePath).pipe(
-        switchMap(_package => options.skysmackStore.getPackages().pipe(
-            map(packages => getNParentPackageDependency(packages, _package._package, options.dependencyIndexes)),
-            map(targetPackage => options.actions.getPaged(targetPackage.object.path, query)),
-            take(1)
-        )),
+    getPackageDendencyAsStream(options.skysmackStore, packagePath, options.dependencyIndexes).pipe(
+        map(targetPackage => options.actions.getPaged(targetPackage.object.path, query)),
         take(1)
     ).subscribe();
 }
