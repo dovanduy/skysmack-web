@@ -21,10 +21,10 @@ export class NgLodgingReservationsStore extends NgRecordStore<LodgingReservation
             this.skysmackStore.getCurrentPackage(packagePath)
         ).pipe(
             map(([packages, currentPackage]) => getNParentPackageDependency(packages, currentPackage._package, [0])),
-            switchMap(parentPackage => combineLatest(
+            switchMap(targetPackage => combineLatest(
                 this.getRecords(packagePath),
-                this.getDependencies(parentPackage.object.path, 'lodgings'),
-                this.getDependencies(parentPackage.object.path, 'lodgingTypes')
+                this.getDependencies(targetPackage.object.path, 'lodgings'),
+                this.getDependencies(targetPackage.object.path, 'lodgingTypes')
             ).pipe(
                 map(([records, lodgings, lodgingTypes]) => {
                     this.mapDependencies(records, lodgings, 'allocatedLodgingId', 'allocatedLodging');
@@ -41,10 +41,10 @@ export class NgLodgingReservationsStore extends NgRecordStore<LodgingReservation
             this.skysmackStore.getCurrentPackage(packagePath)
         ).pipe(
             map(([packages, currentPackage]) => getNParentPackageDependency(packages, currentPackage._package, [0])),
-            switchMap(parentPackage => combineLatest(
+            switchMap(targetPackage => combineLatest(
                 this.getSingleRecord(packagePath, id),
-                this.getDependencies(parentPackage.object.path, 'lodgings'),
-                this.getDependencies(parentPackage.object.path, 'lodgingTypes')
+                this.getDependencies(targetPackage.object.path, 'lodgings'),
+                this.getDependencies(targetPackage.object.path, 'lodgingTypes')
             ).pipe(
                 map(([record, lodgings, lodgingTypes]) => {
                     this.mapDependency(record, lodgings, 'allocatedLodgingId', 'allocatedLodging');

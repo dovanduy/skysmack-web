@@ -103,6 +103,9 @@ export class LodgingTypesavailabilityComponent implements OnInit {
         const lodgings = values[0];
         const availableLodgingTypesCount = values[1];
 
+        // Note: THIS IS WRONG! We either need to restructure the dictionary so the date comes first, or first create the events, and then push the date.
+        // It is also possible the backend will change how this data is returned.
+        // Leave it 'as is' for now, then fix later.
         return Object.keys(availableLodgingTypesCount).map(availableLodgingTypesCountKey => {
           const dates = availableLodgingTypesCount[availableLodgingTypesCountKey];
           return Object.keys(dates).map(dateKey => {

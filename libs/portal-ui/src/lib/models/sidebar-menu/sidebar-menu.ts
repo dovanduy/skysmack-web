@@ -6,12 +6,13 @@ import { MenuItem } from '@skysmack/framework';
 
 import { NgSkysmackStore } from '@skysmack/ng-core';
 import { SubscriptionHandler } from '@skysmack/framework';
-import { NgMenuItemProviders, getAdditionalPaths } from '@skysmack/ng-redux';
+import { NgMenuItemProviders, getAdditionalPaths, getNParentPackageDependency } from '@skysmack/ng-redux';
 import { combineLatest } from 'rxjs';
 import { LoadedPackage } from '@skysmack/ng-redux';
 
 interface BackButtonOptions {
     connectedPackage?: boolean;
+    dependencyIndexes?: number[];
     customPath?: string;
 }
 
@@ -72,16 +73,20 @@ export abstract class SidebarMenu implements OnDestroy {
                 icon: 'arrowBack',
             }));
         } else if (options.connectedPackage) {
-            this.store.getCurrentPackage(this.packagePath).pipe(
-                map(loadedPackage => this.primaryMenuItems.push(new MenuItem({
-                    url: '/' + loadedPackage._package.dependencies[0],
-                    displayName: loadedPackage._package.dependencies[0],
+            combineLatest(
+                this.store.getPackages(),
+                this.store.getCurrentPackage(this.packagePath)
+            ).pipe(
+                map(([packages, currentPackage]) => getNParentPackageDependency(packages, currentPackage._package, options.dependencyIndexes ? options.dependencyIndexes : [0])),
+                map(targetPackage => this.primaryMenuItems.push(new MenuItem({
+                    url: '/' + targetPackage.object.path,
+                    displayName: targetPackage.object.name,
                     area: 'connected_packages',
                     order: 2,
                     icon: 'arrowBack',
                 }))),
                 take(1)
-            ).subscribe();
+            ).subscribe()
         } else {
             const path = options.customPath ? options.customPath : '/' + this.packagePath;
             this.primaryMenuItems.push(new MenuItem({
