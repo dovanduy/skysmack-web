@@ -22,11 +22,11 @@ export class NgInvoicesEpics extends RecordEpicsBase<Invoice, number> {
             ...getReadDependencies({
                 prefix: INVOICES_REDUX_KEY,
                 relationIdSelector: 'inventoryId',
-                relationSelector: 'invoiceItems',
                 rsqlIdSelector: 'id',
                 skysmackStore: this.skysmackStore,
                 store: this.invoiceItemsStore,
-                actions: this.invoiceItemsActions
+                actions: this.invoiceItemsActions,
+                many: true
             })
         ]);
     }

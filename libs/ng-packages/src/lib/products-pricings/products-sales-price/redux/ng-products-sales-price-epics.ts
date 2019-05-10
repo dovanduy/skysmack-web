@@ -22,12 +22,11 @@ export class NgProductsSalesPriceEpics extends RecordEpicsBase<ProductsSalesPric
             ...getReadDependencies({
                 prefix: PRODUCTS_SALES_PRICE_REDUX_KEY,
                 relationIdSelector: 'recordId',
-                relationSelector: 'product',
                 rsqlIdSelector: 'id',
                 skysmackStore: this.skysmackStore,
                 store: this.productsStore,
                 actions: this.productsActions,
-                packageDependencyIndex: 0
+                dependencyIndexes: [0]
             })
         ]);
     }

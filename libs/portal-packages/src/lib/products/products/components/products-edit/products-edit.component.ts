@@ -16,8 +16,6 @@ import { NgProductsFieldsConfig } from '../../ng-products-fields-config';
   templateUrl: './products-edit.component.html'
 })
 export class ProductsEditComponent extends DocumentRecordFormComponent<ProductsAppState, Product, number> implements OnInit {
-  protected productTypes$;
-
   constructor(
     public router: Router,
     public activatedRoute: ActivatedRoute,

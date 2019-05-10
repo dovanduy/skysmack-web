@@ -83,11 +83,10 @@ export abstract class NgRecordStore<TState, TRecord extends Record<TKey>, TKey> 
             map(state => state.localRecords[packagePath]),
             safeUndefinedTo('object'),
             dictionaryToArray<LocalObject<TRecord, TKey>>(),
-            hasValue()
         );
     }
 
-    private getRecords(packagePath: string): Observable<LocalObject<TRecord, TKey>[]> {
+    protected getRecords(packagePath: string): Observable<LocalObject<TRecord, TKey>[]> {
         return this.getState<RecordState<TRecord, TKey>>().pipe(
             map(state => state.localRecords[packagePath]),
             safeUndefinedTo('object'),
@@ -95,7 +94,7 @@ export abstract class NgRecordStore<TState, TRecord extends Record<TKey>, TKey> 
         );
     }
 
-    public getSingleRecord(packagePath: string, id: TKey): Observable<LocalObject<TRecord, TKey>> {
+    protected getSingleRecord(packagePath: string, id: TKey): Observable<LocalObject<TRecord, TKey>> {
         return this.get(packagePath).pipe(
             map(records => records.find(record => record.object.id.toString() === id.toString())),
             hasValue()

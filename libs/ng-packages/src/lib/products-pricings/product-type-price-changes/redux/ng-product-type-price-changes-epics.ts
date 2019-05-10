@@ -22,7 +22,6 @@ export class NgProductTypePriceChangesEpics extends RecordEpicsBase<ProductTypeP
             ...getReadDependencies({
                 prefix: PRODUCT_TYPE_PRICE_CHANGES_REDUX_KEY,
                 relationIdSelector: 'recordId',
-                relationSelector: 'productType',
                 rsqlIdSelector: 'id',
                 skysmackStore: this.skysmackStore,
                 store: this.productTypesStore,
