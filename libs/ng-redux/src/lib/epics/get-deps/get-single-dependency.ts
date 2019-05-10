@@ -20,12 +20,14 @@ export function getSingleDependency(options: GetSingleDependencyOptions): void {
     const packagePath = options.packagePath;
     options.dependencyIndexes = options.dependencyIndexes ? options.dependencyIndexes : [];
 
-    options.skysmackStore.getCurrentPackage(packagePath).pipe(
-        switchMap(_package => options.skysmackStore.getPackages().pipe(
-            map(packages => getNParentPackageDependency(packages, _package._package, options.dependencyIndexes)),
-            map(targetPackage => options.actions.getSingle<number>(targetPackage.object.path, entityId)),
+    if (entityId) {
+        options.skysmackStore.getCurrentPackage(packagePath).pipe(
+            switchMap(_package => options.skysmackStore.getPackages().pipe(
+                map(packages => getNParentPackageDependency(packages, _package._package, options.dependencyIndexes)),
+                map(targetPackage => options.actions.getSingle<number>(targetPackage.object.path, entityId)),
+                take(1)
+            )),
             take(1)
-        )),
-        take(1)
-    ).subscribe();
+        ).subscribe();
+    }
 }
