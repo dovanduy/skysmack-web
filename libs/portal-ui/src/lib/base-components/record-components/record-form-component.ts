@@ -6,7 +6,7 @@ import { FormBaseComponent } from './../form-base-component';
 import { NgSkysmackStore } from '@skysmack/ng-core';
 import { EntityActions, EntityStore } from '@skysmack/redux';
 import { FormHelper } from '@skysmack/ng-ui';
-import { switchMap } from 'rxjs/operators';
+import { switchMap, take, tap } from 'rxjs/operators';
 import { combineLatest } from 'rxjs';
 import { EntityFieldsConfig } from '../../fields/entity-fields-config';
 
@@ -61,15 +61,14 @@ export class RecordFormComponent<TAppState, TRecord extends Record<TKey>, TKey> 
                     this.editorItem = values[1] as LocalObject<TRecord, TKey>;
                     const loadedPackage = values[2];
                     this.editorItem ? this.selectedEntity = this.editorItem : this.selectedEntity = entity;
-
                     return this.fieldsConfig.getFields(loadedPackage, this.selectedEntity);
-                })
+                }),
             );
     }
 
     protected initEditRecord() {
         this.actions.getSingle(this.packagePath, this.entityId);
-        return this.store.getSingle(this.packagePath, this.entityId);
+        return this.store.getSingle(this.packagePath, this.entityId).pipe(take(1));
     }
 
     //#region default form submission

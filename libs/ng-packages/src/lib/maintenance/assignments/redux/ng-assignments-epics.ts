@@ -22,7 +22,6 @@ export class NgAssignmentsEpics extends RecordEpicsBase<Assignment, number> {
             ...getReadDependencies({
                 prefix: ASSIGNMENTS_REDUX_KEY,
                 relationIdSelector: 'assignmentTypeId',
-                relationSelector: 'assignmentType',
                 rsqlIdSelector: 'id',
                 skysmackStore: this.skysmackStore,
                 store: this.assignmentTypesStore,

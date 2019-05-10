@@ -25,22 +25,20 @@ export class NgLodgingReservationsEpics extends RecordEpicsBase<LodgingReservati
             ...getReadDependencies({
                 prefix: LODGING_RESERVATIONS_REDUX_KEY,
                 relationIdSelector: 'lodgingTypeId',
-                relationSelector: 'lodgingType',
                 rsqlIdSelector: 'id',
                 skysmackStore: this.skysmackStore,
                 store: this.lodgingTypesStore,
                 actions: this.lodgingTypesActions,
-                packageDependencyIndex: 0
+                dependencyIndexes: [0]
             }),
             ...getReadDependencies({
                 prefix: LODGING_RESERVATIONS_REDUX_KEY,
                 relationIdSelector: 'allocatedLodgingId',
-                relationSelector: 'allocatedLodging',
                 rsqlIdSelector: 'id',
                 skysmackStore: this.skysmackStore,
                 store: this.lodgingsStore,
                 actions: this.lodgingsActions,
-                packageDependencyIndex: 0
+                dependencyIndexes: [0]
             })
         ]);
     }

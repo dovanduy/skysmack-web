@@ -16,13 +16,12 @@ export class NgRecurringAssignmentsEpics extends RecordEpicsBase<RecurringAssign
         protected assignmentTypesStore: NgAssignmentTypesStore,
         protected assignmentTypesActions: NgAssignmentTypesActions,
         protected skysmackStore: NgSkysmackStore
-        ) {
+    ) {
         super(requests, RECURRING_ASSIGNMENTS_REDUX_KEY, notifications);
         this.epics = this.epics.concat([
             ...getReadDependencies({
                 prefix: RECURRING_ASSIGNMENTS_REDUX_KEY,
                 relationIdSelector: 'assignmentTypeId',
-                relationSelector: 'assignmentType',
                 rsqlIdSelector: 'id',
                 skysmackStore: this.skysmackStore,
                 store: this.assignmentTypesStore,

@@ -22,7 +22,6 @@ export class NgProductsEpics extends RecordEpicsBase<Product, number> {
             ...getReadDependencies({
                 prefix: PRODUCTS_REDUX_KEY,
                 relationIdSelector: 'productTypeId',
-                relationSelector: 'productType',
                 rsqlIdSelector: 'id',
                 skysmackStore: this.skysmackStore,
                 store: this.productTypesStore,

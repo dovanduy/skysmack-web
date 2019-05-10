@@ -38,8 +38,6 @@ export class NgPersonsLodgingReservationsFieldProvider extends FieldProvider {
                 switchMap(packages => {
                     if (packages && packages.length > 0) {
                         const fieldStreams$ = packages.map(_package => {
-                            // TODO: Do something about requests only being done once (but beware they aren't fired more than once pr. "component life time")
-
                             // Request the package settings - only ONCE per. getFields() call.
                             const depPackagePath = _package.object.path;
                             if (!this.register[depPackagePath]) {

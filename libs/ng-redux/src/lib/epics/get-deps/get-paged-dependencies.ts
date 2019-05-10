@@ -1,18 +1,18 @@
 import { RSQLFilterBuilder, PagedQuery } from '@skysmack/framework';
-import { map, take } from 'rxjs/operators';
+import { map, take, switchMap } from 'rxjs/operators';
 import { NgRecordStore } from '../../stores/ng-record-store';
 import { RecordActionsBase, ReduxAction, GetPagedEntitiesSuccessPayload } from '@skysmack/redux';
 import { SkysmackStore } from '../../stores/skysmack-store';
+import { getNParentPackageDependency } from '../../helpers/ng-helpers';
 
 export interface GetDependenciesOptions {
     action: ReduxAction<GetPagedEntitiesSuccessPayload<any, any>>;
     relationIdSelector: string;
-    relationSelector: string;
     rsqlIdSelector: string;
     skysmackStore: SkysmackStore;
     store: NgRecordStore<any, any, any>;
     actions: RecordActionsBase<any, any>;
-    packageDependencyIndex?: number;
+    dependencyIndexes?: number[];
 }
 
 export function getDependencies(options: GetDependenciesOptions): void {
@@ -25,16 +25,15 @@ export function getDependencies(options: GetDependenciesOptions): void {
         const query = new PagedQuery({ rsqlFilter });
 
         const packagePath = options.action.payload.packagePath;
+        options.dependencyIndexes = options.dependencyIndexes ? options.dependencyIndexes : [];
 
-        if (options.packageDependencyIndex || options.packageDependencyIndex === 0) {
-            options.skysmackStore.getCurrentPackage(packagePath).pipe(
-                map(_package => {
-                    return options.actions.getPaged(_package._package.dependencies[options.packageDependencyIndex], query);
-                }),
-                take(1),
-            ).subscribe();
-        } else {
-            options.actions.getPaged(packagePath, query);
-        }
+        options.skysmackStore.getCurrentPackage(packagePath).pipe(
+            switchMap(_package => options.skysmackStore.getPackages().pipe(
+                map(packages => getNParentPackageDependency(packages, _package._package, options.dependencyIndexes)),
+                map(targetPackage => options.actions.getPaged(targetPackage.object.path, query)),
+                take(1)
+            )),
+            take(1)
+        ).subscribe();
     }
 }
