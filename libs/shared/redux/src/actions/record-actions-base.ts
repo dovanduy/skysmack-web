@@ -165,6 +165,8 @@ export abstract class RecordActionsBase<TStateType, TStore extends Store<TStateT
     public delete = <TRecord extends Record<TKey>, TKey>(records: LocalObject<TRecord, TKey>[], packagePath: string) => {
         let path = this.addAdditionalPaths(packagePath);
 
+        path = path + '?ids=' + records.map(x => x.object.id).join(',');
+
         records.forEach(record => record.error = false);
 
         const queueItems = records.map(record => {
