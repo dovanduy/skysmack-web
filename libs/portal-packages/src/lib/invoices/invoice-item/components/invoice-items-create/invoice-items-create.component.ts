@@ -30,10 +30,9 @@ export class InvoiceItemsCreateComponent extends DocumentRecordFormComponent<Inv
   }
 
   ngOnInit() {
-
     this.activatedRoute.parent.params.pipe(
       map(params => {
-        this.fieldsConfig.inventoryId = params.id;
+        this.fieldsConfig.inventoryId = params.invoiceId;
       }),
       take(1)
     ).subscribe();
