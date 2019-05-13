@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { NgRedux } from '@angular-redux/store';
 import { Invoice, InvoicesAppState } from '@skysmack/packages-invoices';
 import { NgRecordStore } from '@skysmack/ng-redux';
-import { LocalObject } from '@skysmack/framework';
+import { LocalObject, DependencyOptions } from '@skysmack/framework';
 import { Observable } from 'rxjs';
 import { NgSkysmackStore } from '@skysmack/ng-core';
 
@@ -14,6 +14,10 @@ export class NgInvoicesStore extends NgRecordStore<InvoicesAppState, Invoice, nu
     ) { super(ngRedux, skysmackStore, 'invoices'); }
 
     public getSingle(packagePath: string, id: number): Observable<LocalObject<Invoice, number>> {
-        return this.getSingleWithDependencies(packagePath, id, 'invoiceItems', 'inventoryId', 'invoiceItems');
+        return this.getSingleWithDependencies(packagePath, id, new DependencyOptions({
+            relationSelector: 'invoiceItems',
+            relationIdSelector: 'inventoryId',
+            stateSelector: 'invoiceItems'
+        }));
     }
 }

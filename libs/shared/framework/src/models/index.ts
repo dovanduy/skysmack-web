@@ -1,3 +1,4 @@
+export * from './dependency-options';
 export * from './document-record';
 export * from './api-domain';
 export * from './indexes';
