@@ -16,7 +16,7 @@ import { NOTIFICATIONS_INJECTOR_TOKEN } from '@skysmack/ng-redux';
 import { portailUiPipes } from './pipes/portal-ui-pipes';
 import { LanguageService } from './language/language.service';
 import { commonComponents } from './components/common/common-components';
-import { fieldComponents } from './components';
+import { fieldComponents, RecurringExpressionFieldComponent } from './components';
 import { displayComponents } from './components/display-components/display-components';
 import { directives } from './directives';
 import { ValidatorsFieldComponent } from './components/field-components/components/validators-field/validators-field.component';
@@ -58,7 +58,8 @@ import { ValidatorsFieldComponent } from './components/field-components/componen
   entryComponents: [
     ...fieldComponents,
     ...displayComponents,
-    ValidatorsFieldComponent
+    ValidatorsFieldComponent,
+    RecurringExpressionFieldComponent
   ]
 })
 export class PortalUiModule {

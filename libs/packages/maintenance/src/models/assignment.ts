@@ -7,7 +7,6 @@ export class Assignment extends DocumentRecord<number> {
     public id: number;
     public description: string;
 
-    // TODO(GET_DEPS): Add "assignmentType" when a relation id exists (e.g. assignmentTypeId).
     public assignmentTypeId: number;
     public assignmentType: LocalObject<AssignmentType, number>;
 

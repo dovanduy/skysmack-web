@@ -3,11 +3,29 @@ import { NgRedux } from '@angular-redux/store';
 import { Assignment, AssignmentsAppState } from '@skysmack/packages-maintenance';
 import { NgRecordStore } from '@skysmack/ng-redux';
 import { NgSkysmackStore } from '@skysmack/ng-core';
+import { DependencyOptions, LocalObject } from '@skysmack/framework';
+import { Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class NgAssignmentsStore extends NgRecordStore<AssignmentsAppState, Assignment, number> {
+    private deps = [
+        new DependencyOptions({
+            relationSelector: 'assignmentType',
+            relationIdSelector: 'assignmentTypeId',
+            stateSelector: 'assignmentTypes'
+        })
+    ];
+
     constructor(
         protected ngRedux: NgRedux<AssignmentsAppState>,
         protected skysmackStore: NgSkysmackStore
     ) { super(ngRedux, skysmackStore, 'assignments'); }
+
+    public get(packagePath: string): Observable<LocalObject<Assignment, number>[]> {
+        return this.getWithDependencies(packagePath, this.deps);
+    }
+
+    public getSingle(packagePath: string, id: number): Observable<LocalObject<Assignment, number>> {
+        return this.getSingleWithDependency(packagePath, id, this.deps);
+    }
 }

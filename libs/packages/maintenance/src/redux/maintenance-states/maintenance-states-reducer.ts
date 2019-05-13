@@ -6,7 +6,7 @@ import { MaintenanceState } from '../../models/maintenance-state';
  * This is to be used when you want to access maintenances via the GLOBAL state. E.g. state.maintenances (where maintenances is the reducer name.)
  */
 export class MaintenanceStatesAppState extends AppState {
-    public maintenanceState: MaintenanceStateState;
+    public maintenanceStates: MaintenanceStateState;
 }
 
 export class MaintenanceStateState implements RecordState<MaintenanceState, number> {
@@ -14,7 +14,7 @@ export class MaintenanceStateState implements RecordState<MaintenanceState, numb
     public localRecords: StrIndex<StrIndex<LocalObject<MaintenanceState, number>>> = {};
 }
 
-export function maintenanceStateReducer(state = new MaintenanceStateState(), action: ReduxAction, prefix: string = 'MAINTENANCE_STATES_'): MaintenanceStateState {
+export function maintenanceStatesReducer(state = new MaintenanceStateState(), action: ReduxAction, prefix: string = 'MAINTENANCE_STATES_'): MaintenanceStateState {
     state = sharedReducer(state, action, new MaintenanceStateState());
     switch (action.type) {
         default:
