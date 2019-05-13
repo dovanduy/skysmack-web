@@ -35,6 +35,7 @@
             "EDIT": "Edit"
         },
         "INDEX": {
+            "TITLE_EXTRA": "(recurring assignments)",
             "ACTIONS": "Actions",
             "CREATE": "Create",
             "EDIT": "Edit",

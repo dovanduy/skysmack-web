@@ -47,6 +47,7 @@
             "EDIT": "Ret"
         },
         "INDEX": {
+            "TITLE_EXTRA": "(opgaver)",
             "ACTIONS": "Handlinger",
             "CREATE": "Opret",
             "EDIT": "Ret",

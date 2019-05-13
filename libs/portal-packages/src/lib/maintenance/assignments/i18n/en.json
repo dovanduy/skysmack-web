@@ -50,6 +50,7 @@
             "EDIT": "Edit"
         },
         "INDEX": {
+            "TITLE_EXTRA": "(assignments)",
             "ACTIONS": "Actions",
             "CREATE": "Create",
             "EDIT": "Edit",

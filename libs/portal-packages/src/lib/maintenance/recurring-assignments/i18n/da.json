@@ -35,6 +35,7 @@
             "EDIT": "Ret"
         },
         "INDEX": {
+            "TITLE_EXTRA": "(gentagne opgaver)",
             "ACTIONS": "Handlinger",
             "CREATE": "Opret",
             "EDIT": "Ret",
