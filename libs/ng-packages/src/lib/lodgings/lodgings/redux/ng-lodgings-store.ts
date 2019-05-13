@@ -3,19 +3,31 @@ import { NgRedux } from '@angular-redux/store';
 import { Lodging, LodgingsAppState } from '@skysmack/packages-lodgings';
 import { NgRecordStore } from '@skysmack/ng-redux';
 import { Observable } from 'rxjs';
-import { StrIndex, defined, LocalObject } from '@skysmack/framework';
+import { StrIndex, defined, LocalObject, DependencyOptions } from '@skysmack/framework';
 import { map } from 'rxjs/operators';
+import { NgSkysmackStore } from '@skysmack/ng-core';
 
 @Injectable({ providedIn: 'root' })
 export class NgLodgingsStore extends NgRecordStore<LodgingsAppState, Lodging, number> {
-    constructor(protected ngRedux: NgRedux<LodgingsAppState>) { super(ngRedux, 'lodgings'); }
+    constructor(
+        protected ngRedux: NgRedux<LodgingsAppState>,
+        protected skysmackStore: NgSkysmackStore
+    ) { super(ngRedux, skysmackStore, 'lodgings'); }
 
     public get(packagePath: string): Observable<LocalObject<Lodging, number>[]> {
-        return this.getWithDependencies(packagePath, 'lodgingType', 'lodgingTypeId', 'lodgingTypes');
+        return this.getWithDependencies(packagePath, new DependencyOptions({
+            relationSelector: 'lodgingType',
+            relationIdSelector: 'lodgingTypeId',
+            stateSelector: 'lodgingTypes'
+        }));
     }
 
     public getSingle(packagePath: string, id: number): Observable<LocalObject<Lodging, number>> {
-        return this.getSingleWithDependency(packagePath, id, 'lodgingType', 'lodgingTypeId', 'lodgingTypes');
+        return this.getSingleWithDependency(packagePath, id, new DependencyOptions({
+            relationSelector: 'lodgingType',
+            relationIdSelector: 'lodgingTypeId',
+            stateSelector: 'lodgingTypes'
+        }));
     }
 
     public getAvailableLodgings(packagePath: string): Observable<StrIndex<number[]>> {

@@ -14,7 +14,8 @@ import { NgSkysmackStore } from '@skysmack/ng-core';
 })
 export class RecurringAssignmentsIndexComponent extends RecordIndexComponent<RecurringAssignmentsAppState, RecurringAssignment, number> implements OnInit {
 
-  public area: string = RECURRING_ASSIGNMENTS_AREA_KEY;
+  public areaKey: string = RECURRING_ASSIGNMENTS_AREA_KEY;
+  public titleExtras = true;
   public entityActions: EntityAction[] = [
     new EntityAction().asUrlAction('edit', 'Edit', 'edit'),
     new EntityAction().asEventAction('Delete', this.delete, 'delete', this)
@@ -38,6 +39,5 @@ export class RecurringAssignmentsIndexComponent extends RecordIndexComponent<Rec
 
   ngOnInit() {
     super.ngOnInit();
-    this.title.setTitle(this.packagePath);
   }
 }

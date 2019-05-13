@@ -6,12 +6,13 @@ import { MenuItem } from '@skysmack/framework';
 
 import { NgSkysmackStore } from '@skysmack/ng-core';
 import { SubscriptionHandler } from '@skysmack/framework';
-import { NgMenuItemProviders, getAdditionalPaths } from '@skysmack/ng-redux';
+import { NgMenuItemProviders, getAdditionalPaths, getPackageDendencyAsStream } from '@skysmack/ng-redux';
 import { combineLatest } from 'rxjs';
 import { LoadedPackage } from '@skysmack/ng-redux';
 
 interface BackButtonOptions {
     connectedPackage?: boolean;
+    dependencyIndexes?: number[];
     customPath?: string;
 }
 
@@ -30,7 +31,7 @@ export abstract class SidebarMenu implements OnDestroy {
     public defaultMenuArea = 'manage';
 
     constructor(
-        public store: NgSkysmackStore,
+        public skysmackStore: NgSkysmackStore,
         public router: Router,
         public menuItemProviders: NgMenuItemProviders
     ) {
@@ -53,7 +54,7 @@ export abstract class SidebarMenu implements OnDestroy {
     protected runMenuItemProviders() {
         this.subscriptionHandler.register(this.menuItemProviders.providers$.pipe(
             switchMap(providers => combineLatest(
-                providers.map(provider => this.store.getCurrentPackage(this.packagePath).pipe(
+                providers.map(provider => this.skysmackStore.getCurrentPackage(this.packagePath).pipe(
                     filter(loadedPackage => loadedPackage._package !== null),
                     switchMap((currentPackage: LoadedPackage) => provider.getItems(this.menuId, currentPackage._package.path)),
                     map((menuItems: MenuItem[]) => menuItems.forEach(menuItem => this.addItem(menuItem)))
@@ -72,16 +73,16 @@ export abstract class SidebarMenu implements OnDestroy {
                 icon: 'arrowBack',
             }));
         } else if (options.connectedPackage) {
-            this.store.getCurrentPackage(this.packagePath).pipe(
-                map(loadedPackage => this.primaryMenuItems.push(new MenuItem({
-                    url: '/' + loadedPackage._package.dependencies[0],
-                    displayName: loadedPackage._package.dependencies[0],
+            getPackageDendencyAsStream(this.skysmackStore, this.packagePath, options.dependencyIndexes ? options.dependencyIndexes : [0]).pipe(
+                map(targetPackage => this.primaryMenuItems.push(new MenuItem({
+                    url: '/' + targetPackage.object.path,
+                    displayName: targetPackage.object.name,
                     area: 'connected_packages',
                     order: 2,
                     icon: 'arrowBack',
                 }))),
                 take(1)
-            ).subscribe();
+            ).subscribe()
         } else {
             const path = options.customPath ? options.customPath : '/' + this.packagePath;
             this.primaryMenuItems.push(new MenuItem({

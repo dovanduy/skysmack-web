@@ -17,6 +17,7 @@ export class ProductTypesIndexComponent extends DocumentRecordIndexComponent<Pro
 
   public areaKey = PRODUCT_TYPES_AREA_KEY;
   public titleExtras = true;
+
   public entityActions: EntityAction[] = [
     new EntityAction().asUrlAction('edit', 'Edit', 'edit'),
     new EntityAction().asEventAction('Delete', this.delete, 'delete', this)

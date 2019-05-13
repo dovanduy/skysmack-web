@@ -16,6 +16,7 @@ import { NgSkysmackStore } from '@skysmack/ng-core';
 export class AssignmentsIndexComponent extends RecordIndexComponent<AssignmentsAppState, Assignment, number> implements OnInit {
 
   public areaKey: string = ASSIGNMENTS_AREA_KEY;
+  public titleExtras = true;
   public entityActions: EntityAction[] = [
     new EntityAction().asUrlAction('edit', 'Edit', 'edit'),
     new EntityAction().asEventAction('Delete', this.delete, 'delete', this)
