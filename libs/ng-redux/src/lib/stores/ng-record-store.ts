@@ -30,16 +30,8 @@ export abstract class NgRecordStore<TState, TRecord extends Record<TKey>, TKey> 
             this.getRecords(packagePath),
             this.getDependencies(packagePath, stateSelector)
         ).pipe(
-            map(values => {
-                const records = values[0];
-                const dependencies = values[1];
-                for (let index = 0; index < records.length; index++) {
-                    const record = records[index];
-                    if (record.object[relationIdSelector] && record.object[relationIdSelector] > 0) {
-                        record.object[relationSelector] = dependencies.find(dependency => dependency.object.id === record.object[relationIdSelector]);
-                    }
-                }
-                return records;
+            map(([records, dependencies]) => {
+                return this.mapRecordsDependencies(records, dependencies, relationIdSelector, relationSelector);
             })
         );
     }
@@ -49,13 +41,8 @@ export abstract class NgRecordStore<TState, TRecord extends Record<TKey>, TKey> 
             this.getSingleRecord(packagePath, id),
             this.getDependencies(packagePath, stateSelector)
         ).pipe(
-            map(values => {
-                const record = values[0];
-                const dependencies = values[1];
-                if (record.object[relationIdSelector] && record.object[relationIdSelector] > 0) {
-                    record.object[relationSelector] = dependencies.find(dependency => dependency.object.id === record.object[relationIdSelector]);
-                }
-                return record;
+            map(([record, dependencies]) => {
+                return this.mapRecordDependency(record, dependencies, relationIdSelector, relationSelector);
             })
         );
     }
@@ -65,9 +52,7 @@ export abstract class NgRecordStore<TState, TRecord extends Record<TKey>, TKey> 
             this.getSingleRecord(packagePath, id),
             this.getDependencies(packagePath, stateSelector)
         ).pipe(
-            map(values => {
-                const record = values[0];
-                const dependencies = values[1];
+            map(([record, dependencies]) => {
                 record.object[relationSelector] = dependencies.filter(dependency => dependency.object[relationIdSelector] === record.object.id);
                 return record;
             })
@@ -99,6 +84,21 @@ export abstract class NgRecordStore<TState, TRecord extends Record<TKey>, TKey> 
             map(records => records.find(record => record.object.id.toString() === id.toString())),
             hasValue()
         );
+    }
+
+    protected mapRecordDependency(record: LocalObject<any, any>, dependencies: LocalObject<any, any>[], relationIdSelector: string, relationSelector: string): LocalObject<any, any> {
+        record.object[relationSelector] = dependencies.filter(dependency => dependency.object[relationIdSelector] === record.object.id);
+        return record;
+    }
+
+    protected mapRecordsDependencies(records: LocalObject<any, any>[], dependencies: LocalObject<any, any>[], relationIdSelector: string, relationSelector: string): LocalObject<any, any>[] {
+        for (let index = 0; index < records.length; index++) {
+            const record = records[index];
+            if (record.object[relationIdSelector] && record.object[relationIdSelector] > 0) {
+                record.object[relationSelector] = dependencies.find(dependency => dependency.object.id === record.object[relationIdSelector]);
+            }
+        }
+        return records;
     }
 }
 

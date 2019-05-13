@@ -8,7 +8,7 @@ import { combineLatest, Observable } from 'rxjs';
 import { EditorNavService } from '@skysmack/portal-ui';
 import { NgRolesStore, NgRolesActions } from '@skysmack/ng-packages';
 import { LocalObject, PagedQuery } from '@skysmack/framework';
-import { map, take } from 'rxjs/operators';
+import { map, take, tap } from 'rxjs/operators';
 import { NgSkysmackStore } from '@skysmack/ng-core';
 
 @Component({
@@ -40,7 +40,7 @@ export class UsersRolesComponent extends BaseComponent<User, number> implements 
   ngOnInit() {
     super.ngOnInit();
     this.actions.getUsersRoles(this.packagePath, [this.entityId]);
-    this.userRoles$ = this.store.getUserRoles(this.packagePath, this.entityId);
+    this.userRoles$ = this.store.getUserRoles(this.packagePath, this.entityId).pipe(tap((x) => console.log(x)));
     this.getRoles();
     this.editorNav.showEditorNav();
   }
