@@ -13,9 +13,17 @@ export class NgLodgingReservationsStore extends NgRecordStore<LodgingReservation
     constructor(
         protected ngRedux: NgRedux<LodgingReservationsAppState>,
         protected skysmackStore: NgSkysmackStore
-    ) { super(ngRedux, 'lodgingReservations'); }
+    ) { super(ngRedux, skysmackStore, 'lodgingReservations'); }
 
     public get(packagePath: string): Observable<LocalObject<LodgingReservation, number>[]> {
+
+        const depDefinitions: {
+            relationSelector: string,
+            relationIdSelector: string,
+            stateSelector: string,
+            dependencyIndexes: number[]
+        }[] = [];
+
         return getPackageDendencyAsStream(this.skysmackStore, packagePath, [0]).pipe(
             switchMap(targetPackage => combineLatest(
                 this.getRecords(packagePath),

@@ -2,11 +2,14 @@ import { Record, StrIndex, LocalPageTypes, LocalObject, hasValue, dictionaryToAr
 import { RecordStore, RecordState } from '@skysmack/redux';
 import { Observable, combineLatest } from 'rxjs';
 import { NgRedux } from '@angular-redux/store';
-import { map } from 'rxjs/operators';
+import { map, switchMap } from 'rxjs/operators';
+import { getPackageDendencyAsStream } from '../helpers/ng-helpers';
+import { NgSkysmackStore } from '@skysmack/ng-core';
 
 export abstract class NgRecordStore<TState, TRecord extends Record<TKey>, TKey> implements RecordStore<TRecord, TKey>  {
     constructor(
         protected store: NgRedux<TState>,
+        protected skysmackStore: NgSkysmackStore,
         protected stateKey: string
     ) { }
 
@@ -25,37 +28,42 @@ export abstract class NgRecordStore<TState, TRecord extends Record<TKey>, TKey> 
         );
     }
 
-    protected getWithDependencies = (packagePath: string, relationSelector: string, relationIdSelector: string, stateSelector: string): Observable<LocalObject<TRecord, TKey>[]> => {
-        return combineLatest(
-            this.getRecords(packagePath),
-            this.getDependencies(packagePath, stateSelector)
-        ).pipe(
-            map(([records, dependencies]) => {
-                return this.mapRecordsDependencies(records, dependencies, relationIdSelector, relationSelector);
-            })
+    protected getWithDependencies = (packagePath: string, relationSelector: string, relationIdSelector: string, stateSelector: string, dependencyIndexes: number[] = []): Observable<LocalObject<TRecord, TKey>[]> => {
+        return getPackageDendencyAsStream(this.skysmackStore, packagePath, dependencyIndexes).pipe(
+            switchMap(targetPackage => combineLatest(
+                this.getRecords(targetPackage.object.path),
+                this.getDependencies(targetPackage.object.path, stateSelector)
+            ).pipe(
+                map(([records, dependencies]) => {
+                    return this.mapRecordsDependencies(records, dependencies, relationIdSelector, relationSelector);
+                })
+            ))
         );
     }
 
-    protected getSingleWithDependency = (packagePath: string, id: TKey, relationSelector: string, relationIdSelector: string, stateSelector: string): Observable<LocalObject<TRecord, TKey>> => {
-        return combineLatest(
-            this.getSingleRecord(packagePath, id),
-            this.getDependencies(packagePath, stateSelector)
-        ).pipe(
-            map(([record, dependencies]) => {
-                return this.mapRecordDependency(record, dependencies, relationIdSelector, relationSelector);
-            })
+    protected getSingleWithDependency = (packagePath: string, id: TKey, relationSelector: string, relationIdSelector: string, stateSelector: string, dependencyIndexes: number[] = []): Observable<LocalObject<TRecord, TKey>> => {
+        return getPackageDendencyAsStream(this.skysmackStore, packagePath, dependencyIndexes).pipe(
+            switchMap(targetPackage => combineLatest(
+                this.getSingleRecord(targetPackage.object.path, id),
+                this.getDependencies(targetPackage.object.path, stateSelector)
+            ).pipe(
+                map(([record, dependencies]) => {
+                    return this.mapRecordDependency(record, dependencies, relationIdSelector, relationSelector);
+                })
+            ))
         );
     }
 
-    protected getSingleWithDependencies = (packagePath: string, id: TKey, relationSelector: string, relationIdSelector: string, stateSelector: string): Observable<LocalObject<TRecord, TKey>> => {
-        return combineLatest(
-            this.getSingleRecord(packagePath, id),
-            this.getDependencies(packagePath, stateSelector)
-        ).pipe(
-            map(([record, dependencies]) => {
-                record.object[relationSelector] = dependencies.filter(dependency => dependency.object[relationIdSelector] === record.object.id);
-                return record;
-            })
+    protected getSingleWithDependencies = (packagePath: string, id: TKey, relationSelector: string, relationIdSelector: string, stateSelector: string, dependencyIndexes: number[] = []): Observable<LocalObject<TRecord, TKey>> => {
+        return getPackageDendencyAsStream(this.skysmackStore, packagePath, dependencyIndexes).pipe(
+            switchMap(targetPackage => combineLatest(
+                this.getSingleRecord(targetPackage.object.path, id),
+                this.getDependencies(targetPackage.object.path, stateSelector)
+            ).pipe(
+                map(([record, dependencies]) => {
+                    return this.mapRecordDependency(record, dependencies, relationIdSelector, relationSelector);
+                })
+            ))
         );
     }
 

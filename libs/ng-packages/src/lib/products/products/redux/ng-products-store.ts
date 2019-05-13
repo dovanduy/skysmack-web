@@ -4,10 +4,14 @@ import { Product, ProductsAppState } from '@skysmack/packages-products';
 import { NgRecordStore } from '@skysmack/ng-redux';
 import { LocalObject } from '@skysmack/framework';
 import { Observable } from 'rxjs';
+import { NgSkysmackStore } from '@skysmack/ng-core';
 
 @Injectable({ providedIn: 'root' })
 export class NgProductsStore extends NgRecordStore<ProductsAppState, Product, number> {
-    constructor(protected ngRedux: NgRedux<ProductsAppState>) { super(ngRedux, 'products'); }
+    constructor(
+        protected ngRedux: NgRedux<ProductsAppState>,
+        protected skysmackStore: NgSkysmackStore
+    ) { super(ngRedux, skysmackStore, 'products'); }
 
     public get(packagePath: string): Observable<LocalObject<Product, number>[]> {
         return this.getWithDependencies(packagePath, 'productType', 'productTypeId', 'productTypes');

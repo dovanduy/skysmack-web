@@ -5,10 +5,14 @@ import { NgRecordStore } from '@skysmack/ng-redux';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { defined } from '@skysmack/framework';
+import { NgSkysmackStore } from '@skysmack/ng-core';
 
 @Injectable({ providedIn: 'root' })
 export class NgUsersStore extends NgRecordStore<UsersAppState, User, number> {
-    constructor(protected ngRedux: NgRedux<UsersAppState>) { super(ngRedux, 'users'); }
+    constructor(
+        protected ngRedux: NgRedux<UsersAppState>,
+        protected skysmackStore: NgSkysmackStore
+    ) { super(ngRedux, skysmackStore, 'users'); }
 
     public getUserRoles(packagePath: string, id: number): Observable<string[]> {
         return this.getState<UsersState>().pipe(
