@@ -2,10 +2,19 @@
     "INVOICES": {
         "FORM": {
             "LABELS": {
-                "CURRENCYCODE": "Currency code"
+                "CURRENCYCODE": "Currency code",
+                "TOTAL": "Total",
+                "TOTALTAX": "Total tax",
+                "BALANCE": "Balance",
+                "PAID": "Paid",
+                "STATUS": "Status"
             },
             "PLACEHOLDERS": {
-                "CURRENCYCODE": "Currency code"
+                "CURRENCYCODE": "Currency code",
+                "TOTAL": "Total",
+                "TOTALTAX": "Total tax",
+                "BALANCE": "Balance",
+                "PAID": "Paid"
             },
             "VALIDATION": {
                 "CURRENCYCODE": {

@@ -2,10 +2,20 @@
     "INVOICES": {
         "FORM": {
             "LABELS": {
-                "CURRENCYCODE": "Valuta kode"
+                "CURRENCYCODE": "Valuta kode",
+                "TOTAL": "Total",
+                "TOTALTAX": "Total skat",
+                "BALANCE": "Balance",
+                "PAID": "Betalt",
+                "STATUS": "Status"
             },
             "PLACEHOLDERS": {
-                "CURRENCYCODE": "Vælg valuta kode"
+                "CURRENCYCODE": "Vælg valuta kode",
+                "TOTAL": "Total",
+                "TOTALTAX": "Total skat",
+                "BALANCE": "Balance",
+                "PAID": "Betalt",
+                "STATUS": "Status"
             },
             "VALIDATION": {
                 "CURRENCYCODE": {
