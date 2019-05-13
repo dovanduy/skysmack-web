@@ -35,6 +35,7 @@ export class PackagesIndexComponent extends RecordIndexComponent<PackagesAppStat
   }
 
   ngOnInit() {
+    this.titleFallback = 'PACKAGES.INDEX.TITLE';
     super.ngOnInit();
     this.actions.getAvailablePackages();
   }

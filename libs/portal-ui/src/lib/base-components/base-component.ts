@@ -1,6 +1,6 @@
 import { SubscriptionHandler } from '@skysmack/framework';
 import { NgSkysmackStore } from '@skysmack/ng-core';
-import { Observable } from 'rxjs';
+import { Observable, merge } from 'rxjs';
 import { Router, ActivatedRoute } from '@angular/router';
 import { OnInit, OnDestroy } from '@angular/core';
 import { take, map, filter } from 'rxjs/operators';
@@ -16,6 +16,8 @@ export class BaseComponent<TAppState, TKey> implements OnInit, OnDestroy {
     public packagePath: string;
     public additionalPaths: string[] = [];
     public loadedPackage$: Observable<LoadedPackage>;
+
+    public titleFallback = '';
     public titleExtras = false;
     public areaKey = '';
 
@@ -82,11 +84,17 @@ export class BaseComponent<TAppState, TKey> implements OnInit, OnDestroy {
                 titleExtra = `${this.areaKey.toUpperCase()}.INDEX.TITLE_EXTRA`;
             }
 
-            this.loadedPackage$.pipe(
+            const isInstalledPackage$ = this.loadedPackage$.pipe(
                 filter(loadedPackage => loadedPackage._package !== undefined && loadedPackage._package !== null),
-                map(loadedPackage => this.title.setTitle(loadedPackage._package.name, titleExtra)),
-                take(1)
-            ).subscribe();
+                map(loadedPackage => this.title.setTitle(loadedPackage._package.name, titleExtra))
+            );
+
+            const fallback$ = this.loadedPackage$.pipe(
+                filter(loadedPackage => loadedPackage._package === undefined || loadedPackage._package === null),
+                map(() => this.title.setTitle(this.titleFallback, titleExtra))
+            );
+
+            merge(isInstalledPackage$, fallback$).pipe(take(1)).subscribe();
         }
     }
 }
