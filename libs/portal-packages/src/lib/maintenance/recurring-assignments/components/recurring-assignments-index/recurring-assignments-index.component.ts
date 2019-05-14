@@ -26,14 +26,15 @@ export class RecurringAssignmentsIndexComponent extends RecordIndexComponent<Rec
     public activatedRoute: ActivatedRoute,
     public actions: NgRecurringAssignmentsActions,
     public redux: NgSkysmackStore,
-    public title: EntityComponentPageTitle,
     public store: NgRecurringAssignmentsStore,
     public sidebarMenu: NgRecurringAssignmentsMenu,
     public fieldsConfig: NgRecurringAssignmentsFieldsConfig,
-    public entityActionProviders: EntityActionProviders
+    public entityActionProviders: EntityActionProviders,
+    public title: EntityComponentPageTitle
+    
 
   ) {
-    super(router, activatedRoute, actions, redux, store, fieldsConfig, entityActionProviders);
+    super(router, activatedRoute, actions, redux, store, fieldsConfig, entityActionProviders, title);
 
   }
 
