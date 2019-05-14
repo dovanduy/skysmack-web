@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { NgRedux } from '@angular-redux/store';
-import { Product, ProductsAppState } from '@skysmack/packages-products';
+import { Product, ProductsAppState, PRODUCTS_REDUCER_KEY } from '@skysmack/packages-products';
 import { NgRecordStore } from '@skysmack/ng-redux';
 import { LocalObject, DependencyOptions } from '@skysmack/framework';
 import { Observable } from 'rxjs';
@@ -20,7 +20,7 @@ export class NgProductsStore extends NgRecordStore<ProductsAppState, Product, nu
     constructor(
         protected ngRedux: NgRedux<ProductsAppState>,
         protected skysmackStore: NgSkysmackStore
-    ) { super(ngRedux, skysmackStore, 'products'); }
+    ) { super(ngRedux, skysmackStore, PRODUCTS_REDUCER_KEY); }
 
     public get(packagePath: string): Observable<LocalObject<Product, number>[]> {
         return this.getWithDependencies(packagePath, this.deps);
