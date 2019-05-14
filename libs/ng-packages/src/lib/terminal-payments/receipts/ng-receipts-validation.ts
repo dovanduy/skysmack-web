@@ -1,6 +1,6 @@
 import { StrIndex } from '@skysmack/framework';
 import { Validation } from '@skysmack/ng-ui';
-import { RECEIPTS_REDUCER_AREA_KEY } from '@skysmack/packages-terminal-payments';
+import { RECEIPTS_AREA_KEY } from '@skysmack/packages-terminal-payments';
 
 
 export class NgReceiptsValidation extends Validation {
@@ -14,7 +14,7 @@ export class NgReceiptsValidation extends Validation {
         }
     };
 
-    public area = RECEIPTS_REDUCER_AREA_KEY;
+    public area = RECEIPTS_AREA_KEY;
 
     public formValidators = [];
 

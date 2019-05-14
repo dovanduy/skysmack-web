@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { FormRule, CustomValidators, Field } from '@skysmack/ng-ui';
 import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
-import { User } from '@skysmack/packages-identities';
+import { User, USERS_AREA_KEY } from '@skysmack/packages-identities';
 import { NgUsersValidation } from '@skysmack/ng-packages';
 import { LoadedPackage } from '@skysmack/ng-redux';
 import { FieldsConfig, HiddenFieldComponent, PasswordFieldComponent, EmailFieldComponent } from '@skysmack/portal-ui';
@@ -11,7 +11,7 @@ import { FieldProviders } from '@skysmack/portal-ui';
 @Injectable({ providedIn: 'root' })
 export class NgUsersFieldsConfig extends FieldsConfig<User, number> {
     public validation = new NgUsersValidation();
-
+    public area = USERS_AREA_KEY;
     public formRules: FormRule[] = [];
 
     public mode: 'create' | 'edit' = 'create';

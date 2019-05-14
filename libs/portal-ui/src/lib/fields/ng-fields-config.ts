@@ -14,11 +14,12 @@ import { NgFieldStore, getAdditionalPaths } from '@skysmack/ng-redux';
 import { LoadedPackage } from '@skysmack/ng-redux';
 import { FieldProviders } from './field-providers';
 import { Router } from '@angular/router';
+import { UI_AREA_KEY } from '../constants/entity-action-translation-constants';
 
 @Injectable({ providedIn: 'root' })
 export class NgFieldsConfig extends FieldsConfig<FieldSchemaViewModel, string> {
     public validation = new FieldsValidation();
-
+    public area = UI_AREA_KEY;
     public formRules: FormRule[] = [
         new SetFieldKeyRule(['display'])
     ];

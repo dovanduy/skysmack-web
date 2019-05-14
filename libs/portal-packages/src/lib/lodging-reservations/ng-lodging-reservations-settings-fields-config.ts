@@ -4,13 +4,13 @@ import { LocalObject } from '@skysmack/framework';
 import { LoadedPackage } from '@skysmack/ng-redux';
 import { FieldsConfig, IntFieldComponent } from '@skysmack/portal-ui';
 import { FieldProviders } from '@skysmack/portal-ui';
-import { LodgingReservationsSettings } from '@skysmack/packages-lodging-reservations';
+import { LodgingReservationsSettings, LODGING_RESERVATIONS_AREA_KEY } from '@skysmack/packages-lodging-reservations';
 import { NgLodgingReservationsSettingsValidation } from '@skysmack/ng-packages';
 
 @Injectable({ providedIn: 'root' })
 export class NgLodgingReservationsSettingsFieldsConfig extends FieldsConfig<LodgingReservationsSettings, unknown> {
     public validation = new NgLodgingReservationsSettingsValidation();
-
+    public area = LODGING_RESERVATIONS_AREA_KEY;
     public formRules: FormRule[] = [];
 
     constructor(public fieldProviders: FieldProviders) {

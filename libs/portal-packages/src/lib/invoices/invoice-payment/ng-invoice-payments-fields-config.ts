@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { FormRule } from '@skysmack/ng-ui';
 import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
-import { InvoicePayment } from '@skysmack/packages-invoices';
+import { InvoicePayment, INVOICE_PAYMENTS_AREA_KEY } from '@skysmack/packages-invoices';
 import { Field } from '@skysmack/ng-ui';
 
 import { DocumentFieldsConfig, StringFieldComponent, HiddenFieldComponent, IntFieldComponent } from '@skysmack/portal-ui';
@@ -14,7 +14,7 @@ import { Router } from '@angular/router';
 @Injectable({ providedIn: 'root' })
 export class NgInvoicePaymentsFieldsConfig extends DocumentFieldsConfig<InvoicePayment, number> {
     public validation = new NgInvoicePaymentsValidation();
-
+    public area = INVOICE_PAYMENTS_AREA_KEY;
     public formRules: FormRule[] = [];
 
     constructor(

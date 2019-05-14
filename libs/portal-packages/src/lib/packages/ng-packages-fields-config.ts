@@ -6,11 +6,12 @@ import { PackagesValidation, NgPackagesStore } from '@skysmack/ng-core';
 import { FieldsConfig, StringFieldComponent, SelectFieldComponent, HiddenFieldComponent, PackageDependenciesFieldComponent } from '@skysmack/portal-ui';
 import { FieldProviders } from '@skysmack/portal-ui';
 import { LoadedPackage } from '@skysmack/ng-redux';
+import { PACKAGES_AREA_KEY } from '@skysmack/packages-skysmack-core';
 
 @Injectable({ providedIn: 'root' })
 export class NgPackagesFieldsConfig extends FieldsConfig<Package, string> {
     public validation = new PackagesValidation();
-
+    public area = PACKAGES_AREA_KEY;
     public formRules: FormRule[] = [
         new SetPathRule(['name'])
     ];

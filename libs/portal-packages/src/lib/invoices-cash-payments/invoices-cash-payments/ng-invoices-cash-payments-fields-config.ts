@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { FormRule, SelectField } from '@skysmack/ng-ui';
 import { LocalObject, LocalObjectStatus, PagedQuery } from '@skysmack/framework';
-import { CashPayment } from '@skysmack/packages-invoices-cash-payments';
+import { CashPayment, INVOICES_CASH_PAYMENTS_AREA_KEY } from '@skysmack/packages-invoices-cash-payments';
 import { Field } from '@skysmack/ng-ui';
 
 import { FieldsConfig, StringFieldComponent, HiddenFieldComponent, FieldProviders, IntFieldComponent, SelectFieldComponent } from '@skysmack/portal-ui';
@@ -18,7 +18,7 @@ export interface NgInvoiceFormDependencies {
 @Injectable({ providedIn: 'root' })
 export class NgInvoicesCashPaymentsFieldsConfig extends FieldsConfig<CashPayment, number> {
     public validation = new NgInvoicesCashPaymentsValidation();
-
+    public area = INVOICES_CASH_PAYMENTS_AREA_KEY;
     public formRules: FormRule[] = [];
 
     constructor(

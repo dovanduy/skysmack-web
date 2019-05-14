@@ -3,7 +3,7 @@ import { Validators } from '@angular/forms';
 import { FormRule } from '@skysmack/ng-ui';
 import { SetDisplayNameRule } from '@skysmack/ng-ui';
 import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
-import { Person } from '@skysmack/packages-persons';
+import { Person, PERSONS_AREA_KEY } from '@skysmack/packages-persons';
 import { Field } from '@skysmack/ng-ui';
 
 import { StringFieldComponent, HiddenFieldComponent } from '@skysmack/portal-ui';
@@ -16,7 +16,7 @@ import { Router } from '@angular/router';
 @Injectable({ providedIn: 'root' })
 export class NgPersonsFieldsConfig extends DocumentFieldsConfig<Person, number> {
     public validation = new NgPersonsValidation();
-
+    public area = PERSONS_AREA_KEY;
     public formRules: FormRule[] = [
         new SetDisplayNameRule(['firstName', 'lastName'])
     ];

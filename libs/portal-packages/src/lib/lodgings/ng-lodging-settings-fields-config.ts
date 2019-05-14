@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { FormRule, Field } from '@skysmack/ng-ui';
 import { LocalObject, toLocalObject } from '@skysmack/framework';
-import { LodgingSettings } from '@skysmack/packages-lodgings';
+import { LodgingSettings, LODGINGS_AREA_KEY } from '@skysmack/packages-lodgings';
 import { NgLodgingSettingsValidation } from '@skysmack/ng-packages';
 import { FieldsConfig, StringFieldComponent, DateFieldComponent } from '@skysmack/portal-ui';
 import { FieldProviders } from '@skysmack/portal-ui';
@@ -10,7 +10,7 @@ import { LoadedPackage } from '@skysmack/ng-redux';
 @Injectable({ providedIn: 'root' })
 export class NgLodgingSettingsFieldsConfig extends FieldsConfig<LodgingSettings, unknown> {
     public validation = new NgLodgingSettingsValidation();
-
+    public area = LODGINGS_AREA_KEY;
     public formRules: FormRule[] = [];
 
     constructor(public fieldProviders: FieldProviders) {

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { FormRule } from '@skysmack/ng-ui';
 import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
-import { Terminal } from '@skysmack/packages-terminal-payments';
+import { Terminal, TERMINALS_AREA_KEY } from '@skysmack/packages-terminal-payments';
 import { Field } from '@skysmack/ng-ui';
 import { FieldsConfig, HiddenFieldComponent } from '@skysmack/portal-ui';
 import { NgTerminalsValidation } from '@skysmack/ng-packages';
@@ -11,7 +11,7 @@ import { LoadedPackage } from '@skysmack/ng-redux';
 @Injectable({ providedIn: 'root' })
 export class NgTerminalsFieldsConfig extends FieldsConfig<Terminal, number> {
     public validation = new NgTerminalsValidation();
-
+    public area = TERMINALS_AREA_KEY;
     public formRules: FormRule[] = [
     ];
 

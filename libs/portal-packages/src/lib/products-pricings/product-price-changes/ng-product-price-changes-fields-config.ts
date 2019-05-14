@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { LocalObject, LocalObjectStatus, PagedQuery } from '@skysmack/framework';
-import { ProductPriceChange } from '@skysmack/packages-products-pricings';
+import { ProductPriceChange, PRODUCT_PRICE_CHANGES_AREA_KEY } from '@skysmack/packages-products-pricings';
 import { FormRule, SelectField, Field } from '@skysmack/ng-ui';
 import { NgProductPriceChangesValidation, NgProductsSalesPriceStore, NgProductsStore, NgProductsActions } from '@skysmack/ng-packages';
 import { FieldsConfig, SelectFieldComponent, HiddenFieldComponent, DecimalFieldComponent, DateTimeFieldComponent } from '@skysmack/portal-ui';
@@ -14,7 +14,7 @@ import { PriceChangeType } from '@skysmack/pricings';
 @Injectable({ providedIn: 'root' })
 export class NgProductPriceChangesFieldsConfig extends FieldsConfig<ProductPriceChange, number> {
     public validation = new NgProductPriceChangesValidation();
-
+    public area = PRODUCT_PRICE_CHANGES_AREA_KEY;
     public formRules: FormRule[] = [];
 
     constructor(

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { LocalObject, LocalObjectStatus, PagedQuery } from '@skysmack/framework';
-import { ProductTypeSalesPrice } from '@skysmack/packages-products-pricings';
+import { ProductTypeSalesPrice, PRODUCT_TYPE_SALES_PRICE_AREA_KEY } from '@skysmack/packages-products-pricings';
 import { FormRule, SelectField, Field } from '@skysmack/ng-ui';
 import { ProductType } from '@skysmack/packages-products';
 import { NgProductTypeSalesPriceValidation, NgProductTypesStore, NgProductTypesActions } from '@skysmack/ng-packages';
@@ -16,7 +16,7 @@ export interface NgProductTypeSalesPriceFormDependencies {
 @Injectable({ providedIn: 'root' })
 export class NgProductTypeSalesPriceFieldsConfig extends FieldsConfig<ProductTypeSalesPrice, number> {
     public validation = new NgProductTypeSalesPriceValidation();
-
+    public area = PRODUCT_TYPE_SALES_PRICE_AREA_KEY;
     public formRules: FormRule[] = [];
 
     constructor(

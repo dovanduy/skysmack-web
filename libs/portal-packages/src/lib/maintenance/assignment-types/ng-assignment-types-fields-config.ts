@@ -1,4 +1,4 @@
-import { AssignmentType } from '@skysmack/packages-maintenance';
+import { AssignmentType, ASSIGNMENT_TYPES_AREA_KEY } from '@skysmack/packages-maintenance';
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { FormRule } from '@skysmack/ng-ui';
@@ -13,7 +13,7 @@ import { LoadedPackage } from '@skysmack/ng-redux';
 @Injectable({ providedIn: 'root' })
 export class NgAssignmentTypesFieldsConfig extends FieldsConfig<AssignmentType, number> {
     public validation = new NgAssignmentTypesValidation();
-
+    public area = ASSIGNMENT_TYPES_AREA_KEY;
     public formRules: FormRule[] = [
     ];
 

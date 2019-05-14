@@ -9,7 +9,7 @@ import { LoadedPackage } from '@skysmack/ng-redux';
 export abstract class FieldsConfig<TRecord, TKey> implements EntityFieldsConfig<TRecord, TKey> {
     public abstract formRules: FormRule[];
     public abstract validation: Validation;
-    public area?: string;
+    public abstract area: string;
 
     constructor(public fieldProviders: FieldProviders) { }
 

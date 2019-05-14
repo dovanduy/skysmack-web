@@ -6,14 +6,14 @@ import { NgLodgingPricesValidation, NgLodgingsStore, NgLodgingsActions } from '@
 import { FieldsConfig, SelectFieldComponent, HiddenFieldComponent, DecimalFieldComponent } from '@skysmack/portal-ui';
 import { FieldProviders } from '@skysmack/portal-ui';
 import { LoadedPackage, getPackageDendencyAsStream } from '@skysmack/ng-redux';
-import { LodgingPrice } from '@skysmack/packages-reservations-pricings';
+import { LodgingPrice, LODGING_PRICES_AREA_KEY } from '@skysmack/packages-reservations-pricings';
 import { NgSkysmackStore } from '@skysmack/ng-core';
 import { switchMap, map, take, tap } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
 export class NgLodgingPricesFieldsConfig extends FieldsConfig<LodgingPrice, number> {
     public validation = new NgLodgingPricesValidation();
-
+    public area = LODGING_PRICES_AREA_KEY;
     public formRules: FormRule[] = [];
 
     constructor(
