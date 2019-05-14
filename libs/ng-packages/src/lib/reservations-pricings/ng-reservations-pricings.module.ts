@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { NgMenuItemProviders, registerRedux } from '@skysmack/ng-redux';
 import { NgReservationsPricingsMenuItemProvider } from './ng-reservations-pricings-menu-item-provider';
-import { lodgingAllocatedPricesReducer, lodgingTypeAllocatedPricesReducer, lodgingPricesReducer, lodgingTypePricesReducer } from '@skysmack/packages-reservations-pricings';
-import { NgLodgingAllocatedPricesEpics } from './lodging-allocated-prices/redux/ng-lodging-allocated-prices-epics';
-import { NgLodgingTypeAllocatedPricesEpics } from './lodging-type-allocated-prices/redux/ng-lodging-type-allocated-prices-epics';
+import { lodgingReservationPriceChangesReducer, lodgingTypeReservationPriceChangesReducer, lodgingPricesReducer, lodgingTypePricesReducer } from '@skysmack/packages-reservations-pricings';
+import { NgLodgingReservationPriceChangesEpics } from './lodging-reservation-price-changes/redux/ng-lodging-reservation-price-changes-epics';
+import { NgLodgingTypeReservationPriceChangesEpics } from './lodging-type-reservation-price-changes/redux/ng-lodging-type-reservation-price-changes-epics';
 import { NgLodgingPricesEpics } from './lodging-prices/redux/ng-lodging-prices-epics';
 import { NgLodgingTypePricesEpics } from './lodging-type-prices/redux/ng-lodging-type-prices-epics';
 
@@ -16,13 +16,13 @@ export class NgReservationsPricingsModule {
   constructor(
     ngMenuItemProviders: NgMenuItemProviders,
     menuItemProvider: NgReservationsPricingsMenuItemProvider,
-    lodgingAllocatedPricesEpics: NgLodgingAllocatedPricesEpics,
-    lodgingTypeAllocatedPricesEpics: NgLodgingTypeAllocatedPricesEpics,
+    lodgingReservationPriceChangesEpics: NgLodgingReservationPriceChangesEpics,
+    lodgingTypeReservationPriceChangesEpics: NgLodgingTypeReservationPriceChangesEpics,
     lodgingPricesEpics: NgLodgingPricesEpics,
     lodgingTypePricesEpics: NgLodgingTypePricesEpics
   ) {
-    registerRedux('lodgingAllocatedPrices', lodgingAllocatedPricesReducer, lodgingAllocatedPricesEpics);
-    registerRedux('lodgingTypeAllocatedPrices', lodgingTypeAllocatedPricesReducer, lodgingTypeAllocatedPricesEpics);
+    registerRedux('lodgingReservationPriceChanges', lodgingReservationPriceChangesReducer, lodgingReservationPriceChangesEpics);
+    registerRedux('lodgingTypeReservationPriceChanges', lodgingTypeReservationPriceChangesReducer, lodgingTypeReservationPriceChangesEpics);
     registerRedux('lodgingPrices', lodgingPricesReducer, lodgingPricesEpics);
     registerRedux('lodgingTypePrices', lodgingTypePricesReducer, lodgingTypePricesEpics);
 

@@ -2,9 +2,9 @@
     "RESERVATIONS_PRICINGS": {
         "INDEX": {
             "MANAGE": "Konfigurer",
-            "ALLOCATED_PRICES": "Allokerede værelses priser",
+            "RESERVATION_PRICE_CHANGES": "Allokerede værelses priser",
             "PRICES": "Værelses priser",
-            "ALLOCATED_PRICES_TYPES": "Allokerede værelses type priser",
+            "RESERVATION_PRICE_CHANGES_TYPES": "Allokerede værelses type priser",
             "PRICES_TYPES": "Værelses type priser"
         }
     }

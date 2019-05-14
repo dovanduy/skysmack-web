@@ -35,8 +35,8 @@ export class NgReservationsPricingsMenu extends SidebarMenu {
         }));
 
         this.primaryMenuItems.push(new MenuItem({
-            url: 'allocated-prices',
-            displayName: this.translationPrefix + 'ALLOCATED_PRICES',
+            url: 'reservation-price-changes',
+            displayName: this.translationPrefix + 'RESERVATION_PRICE_CHANGES',
             area: 'manage',
             order: 2,
             icon: 'groupAdd',
@@ -51,8 +51,8 @@ export class NgReservationsPricingsMenu extends SidebarMenu {
         }));
 
         this.primaryMenuItems.push(new MenuItem({
-            url: 'types/allocated-prices',
-            displayName: this.translationPrefix + 'ALLOCATED_PRICES_TYPES',
+            url: 'types/reservation-price-changes',
+            displayName: this.translationPrefix + 'RESERVATION_PRICE_CHANGES_TYPES',
             area: 'manage',
             order: 3,
             icon: 'shortText',

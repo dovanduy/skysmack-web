@@ -1,0 +1,79 @@
+{
+    "LODGING_RESERVATION_PRICE_CHANGES": {
+        "CREATE": {
+            "CREATE": "Opret"
+        },
+        "EDIT": {
+            "EDIT": "Rediger"
+        },
+        "INDEX": {
+            "ACTIONS": "Handlinger",
+            "CREATE": "Opret",
+            "DELETE": "Slet",
+            "MANAGE": "Konfigurer",
+            "FIELDS": "Felter",
+            "BACK": "Tilbage"
+        },
+        "FORM": {
+            "LABELS": {
+                "CHANGE": "Pris ændring",
+                "CURRENCYCODE": "Valuta kode",
+                "CHANGETYPE": "Pris ændrings type",
+                "VALIDFROM": "Gældende fra",
+                "VALIDTO": "Gældende til",
+                "RECORDID": "Allokeret værelse",
+                "START": "Start",
+                "END": "Slut"
+            },
+            "PLACEHOLDERS": {
+                "CURRENCYCODE": "Valuta kode",
+                "RECORDID": "Allokeret værelse",
+                "CHANGE": "Pris ændring",
+                "CHANGETYPE": "Pris ændrings type",
+                "VALIDFROM": "Gældende fra",
+                "VALIDTO": "Gældende til",
+                "START": "Start",
+                "END": "Slut"
+            },
+            "VALIDATION": {
+                "CURRENCYCODE": {
+                    "REQUIRED": "Valuta kode er påkrævet"
+                },
+                "RECORDID": {
+                    "REQUIRED": "Allokeret værelse er påkrævet"
+                },
+                "CHANGE": {
+                    "REQUIRED": "Pris ændring er påkrævet"
+                },
+                "CHANGETYPE": {
+                    "REQUIRED": "Pris ændrings type er påkrævet"
+                },
+                "VALIDFROM": {
+                    "REQUIRED": "Gældende fra er påkrævet"
+                },
+                "VALIDTO": {
+                    "REQUIRED": "Gældende til er påkrævet"
+                },
+                "START": {
+                    "REQUIRED": "Start er påkrævet"
+                },
+                "END": {
+                    "REQUIRED": "Slut er påkrævet"
+                }
+            }
+        },
+        "QUEUE": {
+            "ADDING": "Tilføjer {{ name }}",
+            "UPDATING": "Opdatere {{ name }}",
+            "DELETING": "Sletter {{ name }}",
+            "ERROR": "Der opstod  en fejl ved {{ name }}. Ret og prøv igen."
+        }
+    },
+    "LODGINGS": {
+        "FORM": {
+            "LABELS": {
+                "LODGINGRESERVATIONSPRICING": "Pris"
+            }
+        }
+    }
+}
