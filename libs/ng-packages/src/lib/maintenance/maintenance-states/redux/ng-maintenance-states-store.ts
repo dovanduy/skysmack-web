@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { NgRedux } from '@angular-redux/store';
-import { MaintenanceState, MaintenanceStatesAppState } from '@skysmack/packages-maintenance';
+import { MaintenanceState, MaintenanceStatesAppState, MAINTENANCE_STATES_REDUCER_KEY } from '@skysmack/packages-maintenance';
 import { NgRecordStore } from '@skysmack/ng-redux';
 import { NgSkysmackStore } from '@skysmack/ng-core';
 
