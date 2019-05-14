@@ -1,15 +1,16 @@
 import { Injectable } from '@angular/core';
 import { FormRule, SelectField } from '@skysmack/ng-ui';
-import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
+import { LocalObject, LocalObjectStatus, PagedQuery } from '@skysmack/framework';
 import { Field } from '@skysmack/ng-ui';
 
 import { FieldsConfig, SelectFieldComponent, HiddenFieldComponent, RolesSelectFieldComponent } from '@skysmack/portal-ui';
 import { AccessPolicyRole, AccessPolicyRoleKey, AccessPolicyRule, ACCESS_POLICY_ROLES_AREA_KEY } from '@skysmack/packages-skysmack-core';
 import { Validators } from '@angular/forms';
 import { SelectFieldOption } from '@skysmack/ng-ui';
-import { AccessPolicyRolesValidation, NgAccessPolicyRulesStore } from '@skysmack/ng-core';
+import { AccessPolicyRolesValidation, NgAccessPolicyRulesStore, NgAccessPolicyRulesActions } from '@skysmack/ng-core';
 import { FieldProviders } from '@skysmack/portal-ui';
 import { LoadedPackage } from '@skysmack/ng-redux';
+import { NgRolesStore, NgRolesActions } from '@skysmack/ng-packages';
 
 @Injectable({ providedIn: 'root' })
 export class NgAccessPolicyRolesFieldsConfig extends FieldsConfig<AccessPolicyRole, AccessPolicyRoleKey> {
@@ -19,6 +20,9 @@ export class NgAccessPolicyRolesFieldsConfig extends FieldsConfig<AccessPolicyRo
 
     constructor(
         public accessPolicyRulesStore: NgAccessPolicyRulesStore,
+        public accessPolicyRulesActions: NgAccessPolicyRulesActions,
+        public rolesStore: NgRolesStore,
+        public rolesActions: NgRolesActions,
         public fieldProviders: FieldProviders
     ) { super(fieldProviders); }
 
@@ -50,7 +54,10 @@ export class NgAccessPolicyRolesFieldsConfig extends FieldsConfig<AccessPolicyRo
                 component: SelectFieldComponent,
                 value: entity ? entity.object.id.ruleId : undefined,
                 key: 'ruleId',
+                displayKey: 'rule',
+                displaySubKey: 'object.id',
                 optionsData$: this.accessPolicyRulesStore.get('skysmack'),
+                getDependencies: () => { this.accessPolicyRulesActions.getPaged('skysmack', new PagedQuery()); },
                 validators: [Validators.required],
                 displayNameSelector: 'object.id',
                 modifyDisplayName,

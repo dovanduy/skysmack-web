@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { FormRule, SelectField, SelectFieldOption } from '@skysmack/ng-ui';
-import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
+import { LocalObject, LocalObjectStatus, PagedQuery } from '@skysmack/framework';
 import { Field } from '@skysmack/ng-ui';
 import { FieldsConfig, SelectFieldComponent, HiddenFieldComponent, CheckboxFieldComponent, IntFieldComponent, AvailablePermissionsFieldComponent } from '@skysmack/portal-ui';
-import { AccessPolicyPermission, AccessPolicyRule, ACCESS_POLICY_PERMISSIONS_AREA_KEY } from '@skysmack/packages-skysmack-core';
-import { AccessPolicyPermissionsValidation, NgAccessPolicyRulesStore, NgSkysmackStore } from '@skysmack/ng-core';
+import { AccessPolicyPermission, AccessPolicyRule, ACCESS_POLICY_PERMISSIONS_AREA_KEY, Skysmack } from '@skysmack/packages-skysmack-core';
+import { AccessPolicyPermissionsValidation, NgAccessPolicyRulesStore, NgSkysmackStore, NgAccessPolicyRulesActions } from '@skysmack/ng-core';
 import { FieldProviders } from '@skysmack/portal-ui';
 import { LoadedPackage } from '@skysmack/ng-redux';
 
@@ -17,6 +17,7 @@ export class NgAccessPolicyPermissionsFieldsConfig extends FieldsConfig<AccessPo
 
     constructor(
         public accessPolicyRulesStore: NgAccessPolicyRulesStore,
+        public accessPolicyRulesActions: NgAccessPolicyRulesActions,
         public skysmackStore: NgSkysmackStore,
         public fieldProviders: FieldProviders
     ) { super(fieldProviders); }
@@ -63,7 +64,10 @@ export class NgAccessPolicyPermissionsFieldsConfig extends FieldsConfig<AccessPo
                 component: SelectFieldComponent,
                 value: entity ? entity.object.ruleId : undefined,
                 key: 'ruleId',
+                displayKey: 'rule',
+                displaySubKey: 'object.id',
                 optionsData$: this.accessPolicyRulesStore.get('skysmack'),
+                getDependencies: () => { this.accessPolicyRulesActions.getPaged('skysmack', new PagedQuery()); },
                 displayNameSelector: 'object.id',
                 modifyDisplayName,
                 order: 2,

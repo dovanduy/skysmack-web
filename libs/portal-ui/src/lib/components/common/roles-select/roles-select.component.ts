@@ -43,14 +43,14 @@ export class RolesSelectComponent implements OnInit, OnDestroy {
       map((identityPackages: Package[]) => {
         // GET
         identityPackages.forEach(_package => {
-          // this.rolesActions.getPaged(_package.path, new PagedQuery());
+          this.rolesActions.getPaged(_package.path, new PagedQuery());
         });
 
         // SET
         this.identityRoles = identityPackages.map(_package => {
           return {
             name: _package.name,
-            // roles: this.rolesStore.get(_package.path)
+            roles: this.rolesStore.get(_package.path)
           };
         });
         this.value = this.currentlySelectedIds;

@@ -5,7 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { EditorNavService, RecordFormComponent } from '@skysmack/portal-ui';
 import { NgAccessPolicyPermissionsStore } from '@skysmack/ng-core';
 import { AccessPolicyPermissionsAppState, AccessPolicyPermission } from '@skysmack/packages-skysmack-core';
-import { PagedQuery, LocalObjectStatus } from '@skysmack/framework';
+import { LocalObjectStatus } from '@skysmack/framework';
 import { FormHelper } from '@skysmack/ng-ui';
 import { NgAccessPolicyPermissionsFieldsConfig } from '../../ng-access-policy-permissions-fields-config';
 
@@ -31,7 +31,6 @@ export class AccessPolicyPermissionsEditComponent extends RecordFormComponent<Ac
 
   ngOnInit() {
     super.ngOnInit();
-    this.accessPolicyRulesActions.getPaged(this.packagePath, new PagedQuery());
     this.setEditFields();
   }
 

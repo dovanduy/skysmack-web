@@ -5,7 +5,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { EditorNavService, RecordFormComponent } from '@skysmack/portal-ui';
 import { NgAccessPolicyPermissionsStore } from '@skysmack/ng-core';
 import { AccessPolicyPermission, AccessPolicyPermissionsAppState } from '@skysmack/packages-skysmack-core';
-import { PagedQuery } from '@skysmack/framework';
 import { NgAccessPolicyPermissionsFieldsConfig } from '../../ng-access-policy-permissions-fields-config';
 
 @Component({
@@ -29,8 +28,8 @@ export class AccessPolicyPermissionsCreateComponent extends RecordFormComponent<
 
   ngOnInit() {
     super.ngOnInit();
-    this.skysmackActions.getSkysmack();
-    this.accessPolicyRulesActions.getPaged(this.packagePath, new PagedQuery());
+    // TODO: Is it necesssary?
+    this.skysmackActions.getSkysmack(); 
     this.setCreateFields();
   }
 }
