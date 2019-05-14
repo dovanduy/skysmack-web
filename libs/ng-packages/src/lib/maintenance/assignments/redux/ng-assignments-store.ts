@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { NgRedux } from '@angular-redux/store';
-import { Assignment, AssignmentsAppState } from '@skysmack/packages-maintenance';
+import { Assignment, AssignmentsAppState, ASSIGNMENTS_REDUCER_KEY } from '@skysmack/packages-maintenance';
 import { NgRecordStore } from '@skysmack/ng-redux';
 import { NgSkysmackStore } from '@skysmack/ng-core';
 import { DependencyOptions, LocalObject } from '@skysmack/framework';
@@ -19,7 +19,7 @@ export class NgAssignmentsStore extends NgRecordStore<AssignmentsAppState, Assig
     constructor(
         protected ngRedux: NgRedux<AssignmentsAppState>,
         protected skysmackStore: NgSkysmackStore
-    ) { super(ngRedux, skysmackStore, 'assignments'); }
+    ) { super(ngRedux, skysmackStore, ASSIGNMENTS_REDUCER_KEY); }
 
     public get(packagePath: string): Observable<LocalObject<Assignment, number>[]> {
         return this.getWithDependencies(packagePath, this.deps);

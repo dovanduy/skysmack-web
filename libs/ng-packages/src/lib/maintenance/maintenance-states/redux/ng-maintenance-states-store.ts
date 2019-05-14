@@ -9,5 +9,5 @@ export class NgMaintenanceStatesStore extends NgRecordStore<MaintenanceStatesApp
     constructor(
         protected ngRedux: NgRedux<MaintenanceStatesAppState>,
         protected skysmackStore: NgSkysmackStore
-    ) { super(ngRedux, skysmackStore, 'maintenanceStates'); }
+    ) { super(ngRedux, skysmackStore, MAINTENANCE_STATES_REDUCER_KEY); }
 }

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { NgRedux } from '@angular-redux/store';
-import { Lodging, LodgingsAppState } from '@skysmack/packages-lodgings';
+import { Lodging, LodgingsAppState, LODGINGS_REDUCER_KEY } from '@skysmack/packages-lodgings';
 import { NgRecordStore } from '@skysmack/ng-redux';
 import { Observable } from 'rxjs';
 import { StrIndex, defined, LocalObject, DependencyOptions } from '@skysmack/framework';
@@ -21,7 +21,7 @@ export class NgLodgingsStore extends NgRecordStore<LodgingsAppState, Lodging, nu
     constructor(
         protected ngRedux: NgRedux<LodgingsAppState>,
         protected skysmackStore: NgSkysmackStore
-    ) { super(ngRedux, skysmackStore, 'lodgings'); }
+    ) { super(ngRedux, skysmackStore, LODGINGS_REDUCER_KEY); }
 
     public get(packagePath: string): Observable<LocalObject<Lodging, number>[]> {
         return this.getWithDependencies(packagePath, this.deps);

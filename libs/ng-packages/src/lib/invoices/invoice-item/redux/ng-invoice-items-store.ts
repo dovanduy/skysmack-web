@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { NgRedux } from '@angular-redux/store';
-import { InvoiceItem, InvoiceItemsAppState } from '@skysmack/packages-invoices';
+import { InvoiceItem, InvoiceItemsAppState, INVOICE_ITEMS_REDUCER_KEY } from '@skysmack/packages-invoices';
 import { NgRecordStore } from '@skysmack/ng-redux';
 import { NgSkysmackStore } from '@skysmack/ng-core';
 
@@ -9,5 +9,5 @@ export class NgInvoiceItemsStore extends NgRecordStore<InvoiceItemsAppState, Inv
     constructor(
         protected ngRedux: NgRedux<InvoiceItemsAppState>,
         protected skysmackStore: NgSkysmackStore
-    ) { super(ngRedux, skysmackStore, 'invoiceItems'); }
+    ) { super(ngRedux, skysmackStore, INVOICE_ITEMS_REDUCER_KEY); }
 }
