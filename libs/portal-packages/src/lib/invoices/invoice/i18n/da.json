@@ -63,6 +63,9 @@
             "UPDATING": "Opdatere {{ currencyCode }}",
             "DELETING": "Sletter {{ currencyCode }}",
             "ERROR": "Der opstod  en fejl ved {{ currencyCode }}. Ret og prøv igen."
+        },
+        "ENTITY_ACTION": {
+            "ITEMS":"Enheder"
         }
     }
 }

@@ -18,8 +18,8 @@ export class UsersIndexComponent extends RecordIndexComponent<UsersAppState, Use
   public area: string = USERS_AREA_KEY;
   public entityActions: EntityAction[] = [
     new EntityAction().asUrlAction('edit', ENTITY_ACTIONS_EDIT, 'edit'),
-    new EntityAction().asUrlAction('edit/set-password', 'Set password', 'https'),
-    new EntityAction().asUrlAction('edit/roles', 'Roles', 'android'),
+    new EntityAction().asUrlAction('edit/set-password', 'USERS.ENTITY_ACTION.SET_PASSWORD', 'https'),
+    new EntityAction().asUrlAction('edit/roles', 'USERS.ENTITY_ACTION.ROLES', 'android'),
     new EntityAction().asEventAction(ENTITY_ACTIONS_DELETE, this.delete, 'delete', this)
   ];
 

@@ -52,6 +52,11 @@
             "UPDATING": "Updating {{ currencyCode }}",
             "DELETING": "Deleting {{ currencyCode }}",
             "ERROR": "An error occured with {{ currencyCode }}. Correct and try again."
+        },
+        "ENTITY_ACTION_PROVIDER": {
+            "ENTITY_ACTION": {
+                "CASH_PAYMENT": "Cash payment"
+            }
         }
     }
 }

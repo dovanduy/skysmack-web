@@ -27,7 +27,7 @@ export class NgInvoicesCashPaymentsEntityActionProvider extends EntityActionProv
                     if (packages && packages.length > 0) {
                         const entityActionStreams$ = packages.map(_package => {
                             return of([
-                                new EntityAction().asUrlAction(`/${_package.object.path}`, 'Cash payment', 'attach_money', 'pay')
+                                new EntityAction().asUrlAction(`/${_package.object.path}`, "INVOICES_CASH_PAYMENTS.ENTITY_ACTION_PROVIDER.ENTITY_ACTION.CASH_PAYMENT", 'attach_money', 'pay')
                             ]);
                         });
                         return combineLatest(entityActionStreams$);

@@ -86,6 +86,10 @@
             "UPDATING": "Opdatere {{ email }}",
             "DELETING": "Sletter {{ email }}",
             "ERROR": "Der opstod  en fejl ved {{ email }}. Ret og prøv igen."
+        },
+        "ENTITY_ACTION": {
+            "SET_PASSWORD": "Lav adgangskode",
+            "ROLES": "Roller"
         }
     }
 }

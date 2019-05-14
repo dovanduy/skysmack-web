@@ -65,7 +65,9 @@
             "ANONYMOUS": "Anonymous",
             "AUTHENTICATED": "Authenticated",
             "USERS": "Users",
-            "BACK": "Back"
+            "BACK": "Back",
+            "ENTITY_ACTION_SET_PASSWWORD": "Set password",
+            "ENTITY_ACTION_ROLES": "Roles"
         },
         "ROLES": {
             "CURRENT_ROLES": "{{ object.email }} current roles",
@@ -86,6 +88,10 @@
             "UPDATING": "Updating {{ email }}",
             "DELETING": "Deleting {{ email }}",
             "ERROR": "An error occured with {{ email }}. Correct and try again."
+        },
+        "ENTITY_ACTION": {
+            "SET_PASSWORD": "Set password",
+            "ROLES": "Roles"
         }
     }
 }
