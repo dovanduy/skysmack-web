@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { EntityComponentPageTitle, DocumentRecordIndexComponent, EntityActionProviders } from '@skysmack/portal-ui';
+import { EntityComponentPageTitle, DocumentRecordIndexComponent, EntityActionProviders, ENTITY_ACTIONS_EDIT, ENTITY_ACTIONS_DELETE } from '@skysmack/portal-ui';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgProductTypesActions, NgProductTypesStore } from '@skysmack/ng-packages';
 import { ProductTypesAppState, ProductType, PRODUCT_TYPES_AREA_KEY } from '@skysmack/packages-products';
@@ -19,8 +19,8 @@ export class ProductTypesIndexComponent extends DocumentRecordIndexComponent<Pro
   public titleExtras = true;
 
   public entityActions: EntityAction[] = [
-    new EntityAction().asUrlAction('edit', 'Edit', 'edit'),
-    new EntityAction().asEventAction('Delete', this.delete, 'delete', this)
+    new EntityAction().asUrlAction('edit', ENTITY_ACTIONS_EDIT, 'edit'),
+    new EntityAction().asEventAction(ENTITY_ACTIONS_DELETE, this.delete, 'delete', this)
   ];
 
   constructor(

@@ -4,7 +4,7 @@ import { LocalObject, EnumHelpers } from '@skysmack/framework';
 import { LodgingReservationsAppState, LodgingReservation, LODGING_RESERVATIONS_AREA_KEY } from '@skysmack/packages-lodging-reservations';
 import { EntityAction } from '@skysmack/ng-ui';
 import { NgLodgingReservationsStore, NgLodgingsStore, NgLodgingTypesStore, NgLodgingsActions, NgLodgingTypesActions, NgLodgingReservationsActions } from '@skysmack/ng-packages';
-import { RecordIndexComponent, EntityComponentPageTitle, EntityActionProviders } from '@skysmack/portal-ui';
+import { RecordIndexComponent, EntityComponentPageTitle, EntityActionProviders, ENTITY_ACTIONS_EDIT, ENTITY_ACTIONS_DELETE } from '@skysmack/portal-ui';
 import { NgLodgingsReservationsMenu } from '../../ng-lodgings-reservations-menu';
 import { CheckIn } from '@skysmack/packages-lodging-reservations';
 import { LodgingsArrivalsComponent } from '../../components/lodgings-arrivals/lodgings-arrivals.component';
@@ -59,8 +59,8 @@ export class LodgingsReservationsIndexComponent extends RecordIndexComponent<Lod
     }),
 
     // Misc
-    new EntityAction().asUrlAction('edit', 'Edit', 'edit'),
-    new EntityAction().asEventAction('Delete', this.delete, 'delete', this),
+    new EntityAction().asUrlAction('edit', ENTITY_ACTIONS_EDIT, 'edit'),
+    new EntityAction().asEventAction(ENTITY_ACTIONS_DELETE, this.delete, 'delete', this),
   ];
 
   public areaKey: string = LODGING_RESERVATIONS_AREA_KEY;

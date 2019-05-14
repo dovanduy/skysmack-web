@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { EntityComponentPageTitle, RecordIndexComponent, EntityActionProviders, } from '@skysmack/portal-ui';
+import { EntityComponentPageTitle, RecordIndexComponent, EntityActionProviders, ENTITY_ACTIONS_EDIT, ENTITY_ACTIONS_DELETE, } from '@skysmack/portal-ui';
 import { NgUsersActions, NgUsersStore } from '@skysmack/ng-packages';
 import { EntityAction } from '@skysmack/ng-ui';
 import { User, UsersAppState, USERS_AREA_KEY } from '@skysmack/packages-identities';
@@ -17,10 +17,10 @@ export class UsersIndexComponent extends RecordIndexComponent<UsersAppState, Use
 
   public area: string = USERS_AREA_KEY;
   public entityActions: EntityAction[] = [
-    new EntityAction().asUrlAction('edit', 'Edit', 'edit'),
+    new EntityAction().asUrlAction('edit', ENTITY_ACTIONS_EDIT, 'edit'),
     new EntityAction().asUrlAction('edit/set-password', 'Set password', 'https'),
     new EntityAction().asUrlAction('edit/roles', 'Roles', 'android'),
-    new EntityAction().asEventAction('Delete', this.delete, 'delete', this)
+    new EntityAction().asEventAction(ENTITY_ACTIONS_DELETE, this.delete, 'delete', this)
   ];
 
   constructor(

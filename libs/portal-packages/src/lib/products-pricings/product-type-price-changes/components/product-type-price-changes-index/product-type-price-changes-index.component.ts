@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { EntityComponentPageTitle, RecordIndexComponent, EntityActionProviders } from '@skysmack/portal-ui';
+import { EntityComponentPageTitle, RecordIndexComponent, EntityActionProviders, ENTITY_ACTIONS_EDIT, ENTITY_ACTIONS_DELETE } from '@skysmack/portal-ui';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgProductTypePriceChangesActions } from '@skysmack/ng-packages';
 import { NgSkysmackStore } from '@skysmack/ng-core';
@@ -17,8 +17,8 @@ export class ProductTypePriceChangesIndexComponent extends RecordIndexComponent<
 
   public areaKey: string = PRODUCT_TYPE_PRICE_CHANGES_AREA_KEY;
   public entityActions: EntityAction[] = [
-    new EntityAction().asUrlAction('edit', 'Edit', 'edit'),
-    new EntityAction().asEventAction('Delete', this.delete, 'delete', this)
+    new EntityAction().asUrlAction('edit', ENTITY_ACTIONS_EDIT, 'edit'),
+    new EntityAction().asEventAction(ENTITY_ACTIONS_DELETE, this.delete, 'delete', this)
   ];
 
   constructor(

@@ -21,11 +21,6 @@
             "HELP": "Hjælp",
             "PAYMENTS": "Betalinger"
         },
-        "SWITCH_CASES": {
-            "QUE_CREATION": "Kø til oprettelse",
-            "QUE_UPDATING": "Kø til opdatering",
-            "QUE_DELETION": "Kø til sletning"
-        },
         "TOP_BAR": {
             "PACKAGES": "Pakker",
             "NO_CONVER": "Ingen samtaler",
@@ -33,6 +28,11 @@
             "ACC_SET": "Bruger indstillinger",
             "ACCOUNT": "Konto",
             "LOG_OUT": "Log ud"
+        },
+        "ENTITY_ACTIONS": {
+            "EDIT": "Rediger",
+            "DELETE": "Slet",
+            "DETAILS": "Detaljer"
         }
     },
     "NOTIFICATIONS": {

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EntityAction } from '@skysmack/ng-ui';
 import { NgSkysmackStore } from '@skysmack/ng-core';
-import { EntityComponentPageTitle } from '@skysmack/portal-ui';
+import { EntityComponentPageTitle, ENTITY_ACTIONS_EDIT } from '@skysmack/portal-ui';
 import { NgAssignmentAllMenu } from './../../ng-assignments-all-menu';
 
 @Component({
@@ -12,7 +12,7 @@ import { NgAssignmentAllMenu } from './../../ng-assignments-all-menu';
 export class AssignmentsAllIndexComponent implements OnInit {
 
   public entityActions: EntityAction[] = [
-    new EntityAction().asUrlAction('edit', 'Edit', 'edit'),
+    new EntityAction().asUrlAction('edit', ENTITY_ACTIONS_EDIT, 'edit'),
   ];
 
   constructor(

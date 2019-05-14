@@ -11,6 +11,7 @@ import { NgFieldsConfig } from '../../ng-fields-config';
 import { map, take } from 'rxjs/operators';
 import { combineLatest } from 'rxjs';
 import { EntityActionProviders } from '../../../entity-actions/entity-action-providers';
+import { ENTITY_ACTIONS_EDIT, ENTITY_ACTIONS_DELETE } from '../../../constants/entity-action-translation-constants';
 
 @Component({
   selector: 'ss-fields-index',
@@ -18,8 +19,8 @@ import { EntityActionProviders } from '../../../entity-actions/entity-action-pro
 })
 export class FieldsIndexComponent extends RecordIndexComponent<any, any, any> implements OnInit {
   public entityActions: EntityAction[] = [
-    new EntityAction().asUrlAction('edit', 'Edit', 'edit'),
-    new EntityAction().asEventAction('Delete', this.delete, 'delete', this)
+    new EntityAction().asUrlAction('edit', ENTITY_ACTIONS_EDIT, 'edit'),
+    new EntityAction().asEventAction(ENTITY_ACTIONS_DELETE, this.delete, 'delete', this)
   ];
 
   constructor(

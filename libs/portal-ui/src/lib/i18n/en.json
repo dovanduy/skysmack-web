@@ -21,11 +21,6 @@
             "HELP": "Help",
             "PAYMENTS": "Payments"
         },
-        "SWITCH_CASES": {
-            "QUE_CREATION": "Queued for creation",
-            "QUE_UPDATING": "Queued for updating",
-            "QUE_DELETION": "Queued for deletion"
-        },
         "TOP_BAR": {
             "PACKAGES": "Packages",
             "NO_CONVER": "No conversations",
@@ -33,6 +28,11 @@
             "ACC_SET": "Account settings",
             "ACCOUNT": "Account",
             "LOG_OUT": "Log out"
+        },
+        "ENTITY_ACTIONS": {
+            "EDIT": "Edit",
+            "DELETE": "Delete",
+            "DETAILS": "Details"
         }
     },
     "NOTIFICATIONS": {

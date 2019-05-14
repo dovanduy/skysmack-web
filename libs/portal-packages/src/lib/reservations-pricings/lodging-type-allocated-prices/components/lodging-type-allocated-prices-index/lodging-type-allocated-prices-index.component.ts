@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { EntityComponentPageTitle, RecordIndexComponent, EntityActionProviders } from '@skysmack/portal-ui';
+import { EntityComponentPageTitle, RecordIndexComponent, EntityActionProviders, ENTITY_ACTIONS_EDIT, ENTITY_ACTIONS_DELETE } from '@skysmack/portal-ui';
 import { Router, ActivatedRoute } from '@angular/router';
 import { LODGING_TYPE_ALLOCATED_PRICES_AREA_KEY, LodgingTypeAllocatedPricesAppState, LodgingTypeAllocatedPrice } from '@skysmack/packages-reservations-pricings';
 import { EntityAction } from '@skysmack/ng-ui';
@@ -16,8 +16,8 @@ export class LodgingTypeAllocatedPricesIndexComponent extends RecordIndexCompone
 
   public areaKey: string = LODGING_TYPE_ALLOCATED_PRICES_AREA_KEY;
   public entityActions: EntityAction[] = [
-    new EntityAction().asUrlAction('edit', 'Edit', 'edit'),
-    new EntityAction().asEventAction('Delete', this.delete, 'delete', this)
+    new EntityAction().asUrlAction('edit', ENTITY_ACTIONS_EDIT, 'edit'),
+    new EntityAction().asEventAction(ENTITY_ACTIONS_DELETE, this.delete, 'delete', this)
   ];
 
   constructor(

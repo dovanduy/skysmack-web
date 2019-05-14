@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { EntityComponentPageTitle, DocumentRecordIndexComponent, EntityActionProviders } from '@skysmack/portal-ui';
+import { EntityComponentPageTitle, DocumentRecordIndexComponent, EntityActionProviders, ENTITY_ACTIONS_EDIT, ENTITY_ACTION_DETAILS, ENTITY_ACTIONS_DELETE } from '@skysmack/portal-ui';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgPersonsActions } from '@skysmack/ng-packages';
 import { NgSkysmackStore, NgSkysmackActions } from '@skysmack/ng-core';
@@ -19,9 +19,9 @@ export class PersonsIndexComponent extends DocumentRecordIndexComponent<PersonsA
 
   public areaKey: string = PERSONS_AREA_KEY;
   public entityActions: EntityAction[] = [
-    new EntityAction().asUrlAction('details', 'Details', 'list'),
-    new EntityAction().asUrlAction('edit', 'Edit', 'edit'),
-    new EntityAction().asEventAction('Delete', this.delete, 'delete', this)
+    new EntityAction().asUrlAction('details', ENTITY_ACTION_DETAILS, 'list'),
+    new EntityAction().asUrlAction('edit', ENTITY_ACTIONS_EDIT, 'edit'),
+    new EntityAction().asEventAction(ENTITY_ACTIONS_DELETE, this.delete, 'delete', this)
   ];
 
   constructor(

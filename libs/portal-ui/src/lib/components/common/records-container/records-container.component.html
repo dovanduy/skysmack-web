@@ -43,13 +43,13 @@
                       [entity]="entity" mat-menu-item
                       (click)="entityActionEvent.emit({ action: entityAction.action, value: entity, _this: entityAction._this })">
                       <i class="material-icons">{{ entityAction.icon }}</i> <span
-                        class="icon-text">{{ entityAction.displayName }}</span>
+                        class="icon-text">{{ entityAction.displayName | translate }}</span>
                     </a>
                     <!-- URL EVENT -->
                     <a *ngIf="!entityAction.isActionEvent" mat-menu-item
                       [routerLink]="[entityAction.url, entity.objectIdentifier, entityAction.urlPostfix]">
                       <i class="material-icons">{{ entityAction.icon }}</i>
-                      <span class="icon-text">{{ entityAction.displayName }}</span>
+                      <span class="icon-text">{{ entityAction.displayName | translate }}</span>
                     </a>
                   </ng-container>
                 </mat-menu>
