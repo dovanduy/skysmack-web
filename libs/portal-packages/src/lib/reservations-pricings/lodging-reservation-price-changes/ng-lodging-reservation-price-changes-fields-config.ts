@@ -116,10 +116,10 @@ export class NgLodgingReservationPriceChangesFieldsConfig extends FieldsConfig<L
             }),
             new SelectField({
                 component: FlaggedEnumFieldComponent,
-                value: entity ? entity.object.daysOfWeek : 0,
+                value: entity ? entity.object.excludeDaysOfWeek : 0,
                 optionsData$: of(DaysOfWeekFlagged),
                 optionsDataType: 'flag-enum',
-                key: 'daysOfWeek',
+                key: 'excludeDaysOfWeek',
                 order: 1,
                 showColumn: true
             } as SelectField)

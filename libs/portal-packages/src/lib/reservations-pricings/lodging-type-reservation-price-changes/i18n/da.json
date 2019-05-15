@@ -24,7 +24,7 @@
                 "RECORDID": "Allokeret værelsestype",
                 "START": "Start",
                 "END": "Slut",
-                "DAYSOFWEEK": "Uge dage"
+                "EXCLUDEDAYSOFWEEK": "Ekskluder uge dage"
             },
             "PLACEHOLDERS": {
                 "CURRENCYCODE": "Valuta kode",
@@ -35,7 +35,7 @@
                 "VALIDTO": "Gældende til",
                 "START": "Start",
                 "END": "Slut",
-                "DAYSOFWEEK": "Uge dage"
+                "EXCLUDEDAYSOFWEEK": "Ekskluder uge dage"
             },
             "VALIDATION": {
                 "CURRENCYCODE": {
