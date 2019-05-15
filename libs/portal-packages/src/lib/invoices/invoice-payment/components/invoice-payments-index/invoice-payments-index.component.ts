@@ -16,7 +16,8 @@ import { NgInvoicePaymentsFieldsConfig } from '../../ng-invoice-payments-fields-
 })
 export class InvoicePaymentsIndexComponent extends DocumentRecordIndexComponent<InvoicePaymentsAppState, InvoicePayment, number> implements OnInit {
 
-  public area: string = INVOICE_PAYMENTS_AREA_KEY;
+  public areaKey: string = INVOICE_PAYMENTS_AREA_KEY;
+  public titleExtras = true;
   public entityActions: EntityAction[] = [
     new EntityAction().asUrlAction('edit', ENTITY_ACTIONS_EDIT, 'edit'),
     new EntityAction().asEventAction(ENTITY_ACTIONS_DELETE, this.delete, 'delete', this)
@@ -34,12 +35,11 @@ export class InvoicePaymentsIndexComponent extends DocumentRecordIndexComponent<
     public fieldActions: NgFieldActions,
     public entityActionProviders: EntityActionProviders
   ) {
-    super(router, activatedRoute, actions, redux, store, fieldsConfig, fieldActions, entityActionProviders);
+    super(router, activatedRoute, actions, redux, store, fieldsConfig, fieldActions, entityActionProviders, title);
   }
 
 
   ngOnInit() {
     super.ngOnInit();
-    this.title.setTitle(this.packagePath);
   }
 }

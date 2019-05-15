@@ -2,9 +2,9 @@
     "RESERVATIONS_PRICINGS": {
         "INDEX": {
             "MANAGE": "Manage",
-            "ALLOCATED_PRICES": "Allocated lodging prices",
+            "RESERVATION_PRICE_CHANGES": "Lodging reservation price changes",
             "PRICES": "Lodging prices",
-            "ALLOCATED_PRICES_TYPES": "Allocated lodging type prices",
+            "RESERVATION_PRICE_CHANGES_TYPES": "Lodging type reservation price changes",
             "PRICES_TYPES": "Lodging type prices"
         }
     }

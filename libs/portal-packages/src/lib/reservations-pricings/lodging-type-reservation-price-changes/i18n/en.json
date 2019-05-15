@@ -1,0 +1,81 @@
+{
+    "LODGING_TYPE_RESERVATION_PRICE_CHANGES": {
+        "CREATE": {
+            "CREATE": "Create"
+        },
+        "EDIT": {
+            "EDIT": "Edit"
+        },
+        "INDEX": {
+            "ACTIONS": "Actions",
+            "CREATE": "Create",
+            "DELETE": "Delete",
+            "MANAGE": "Manage",
+            "FIELDS": "Fields",
+            "BACK": "Back"
+        },
+        "FORM": {
+            "LABELS": {
+                "CHANGE": "Price change",
+                "CURRENCYCODE": "Currency code",
+                "CHANGETYPE": "Price change type",
+                "VALIDFROM": "Valid from",
+                "VALIDTO": "Valid to",
+                "RECORDID": "Allocated lodging type",
+                "START": "Start",
+                "END": "End",
+                "DAYSOFWEEK": "Week days"
+            },
+            "PLACEHOLDERS": {
+                "CURRENCYCODE": "Currency code",
+                "RECORDID": "Lodging",
+                "CHANGE": "Price change",
+                "CHANGETYPE": "Price change type",
+                "VALIDFROM": "Valid from",
+                "VALIDTO": "Valid to",
+                "START": "Start",
+                "END": "End",
+                "DAYSOFWEEK": "Week days"
+            },
+            "VALIDATION": {
+                "CURRENCYCODE": {
+                    "REQUIRED": "Currency code is required"
+                },
+                "RECORDID": {
+                    "REQUIRED": "Allocated Lodging is required"
+                },
+                "CHANGE": {
+                    "REQUIRED": "Price change is required"
+                },
+                "CHANGETYPE": {
+                    "REQUIRED": "Price change type is required"
+                },
+                "VALIDFROM": {
+                    "REQUIRED": "Valid from is required"
+                },
+                "VALIDTO": {
+                    "REQUIRED": "Valid to is required"
+                },
+                "START": {
+                    "REQUIRED": "Start is required"
+                },
+                "END": {
+                    "REQUIRED": "End is required"
+                }
+            }
+        },
+        "QUEUE": {
+            "ADDING": "Adding {{ name }}",
+            "UPDATING": "Updating {{ name }}",
+            "DELETING": "Deleting {{ name }}",
+            "ERROR": "An error occured with {{ name }}. Correct and try again."
+        }
+    },
+    "LODGINGS": {
+        "FORM": {
+            "LABELS": {
+                "LODGINGRESERVATIONSPRICING": "Price"
+            }
+        }
+    }
+}

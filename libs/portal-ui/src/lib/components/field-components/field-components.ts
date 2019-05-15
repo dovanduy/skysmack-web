@@ -22,6 +22,7 @@ import { SpeedDialFabComponent } from '../common/speed-dial-fab/speed-dial-fab.c
 import { RolesSelectFieldComponent } from './components/roles-select-field/roles-select-field.component';
 import { MultiSelectFieldComponent } from './components/multi-select-field/multi-select-field.component';
 import { AddRecordFieldComponent } from './components/add-record-field/add-record-field.component';
+import { FlaggedEnumFieldComponent } from './components/flagged-enum-field/flagged-enum-field.component';
 
 export const fieldComponents = [
     DynamicFormFieldTemplateComponent,
@@ -43,6 +44,7 @@ export const fieldComponents = [
     PackageDependenciesFieldComponent,
     AvailablePermissionsFieldComponent,
     FieldPermissionFieldComponent,
+    FlaggedEnumFieldComponent,
     PageHeaderComponent,
     SpeedDialFabComponent,
     RolesSelectFieldComponent,

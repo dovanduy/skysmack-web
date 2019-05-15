@@ -8,8 +8,8 @@ import { LanguageService } from '@skysmack/portal-ui';
 import { ReservationsPricingsIndexComponent } from './components/reservations-pricings-index/reservations-pricings-index.component';
 import { ReservationsPricingsRoutingModule } from './reservations-pricings-routing.module';
 import { NgReservationsPricingsFieldProvider } from './ng-reservations-pricings-field-provider';
-import { lodgingAllocatedPricesComponents } from './lodging-allocated-prices/components/lodging-allocated-prices-components';
-import { lodgingTypeAllocatedPricesComponents } from './lodging-type-allocated-prices/components/lodging-type-allocated-prices-components';
+import { lodgingReservationPriceChangesComponents } from './lodging-reservation-price-changes/components/lodging-reservation-price-changes-components';
+import { lodgingTypeReservationPriceChangesComponents } from './lodging-type-reservation-price-changes/components/lodging-type-reservation-price-changes-components';
 import { lodgingPricesComponents } from './lodging-prices/components/lodging-prices-components';
 import { lodgingTypePricesComponents } from './lodging-type-prices/components/lodging-type-prices-components';
 import { LodgingsType } from '@skysmack/packages-lodgings';
@@ -26,9 +26,9 @@ import { LodgingsType } from '@skysmack/packages-lodgings';
   exports: [],
   declarations: [
     ReservationsPricingsIndexComponent,
-    ...lodgingAllocatedPricesComponents,
+    ...lodgingReservationPriceChangesComponents,
     ...lodgingPricesComponents,
-    ...lodgingTypeAllocatedPricesComponents,
+    ...lodgingTypeReservationPriceChangesComponents,
     ...lodgingTypePricesComponents,
   ],
   providers: [

@@ -129,14 +129,6 @@ export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey>
                             this.loadingState = LoadingState.End;
                             this.loadingState$.next(LoadingState.End);
                         }
-
-                        // if (lastPage.ids && lastPage.ids !== null && lastPage.ids.length > 0) {
-                        //     return Object.keys(pages).map(key => {
-                        //         if (Number(key) > 0 && Number(key) <= lastPageKey) {
-                        //             return pages[key];
-                        //         }
-                        //     });
-                        // }
                     }
 
                     const pages2 = Object.keys(pages).map(key => {
@@ -164,24 +156,11 @@ export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey>
         ).pipe(
             map(values => {
                 const [pages, entities] = values;
-
                 if (pages && entities) {
-                    // const idsArray = linq<TKey>([]).selectMany(linq<LocalPage<TKey>>(pages)
-                    //     .defined()
-                    //     .select(x => x.ids))
-                    //     .distinct()
-                    //     .ok();
-
                     return entities
                         .filter(entity => entity.isNew && !pages.includes(entity.objectIdentifier))
                         .concat(entities.filter(entity => pages.includes(entity.objectIdentifier)));
                 }
-                // else if (entities) {
-                //     console.log('normal entities');
-                //     return entities.filter(entity => entity.isNew);
-                // }
-                // console.log('empty array');
-                // return [];
             }),
             defined()
         );

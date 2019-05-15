@@ -1,4 +1,4 @@
-export * from './lodging-allocated-prices/index';
+export * from './lodging-reservation-price-changes/index';
 
 export * from './reservations-pricings-routing.module';
 export * from './reservations-pricings.module';

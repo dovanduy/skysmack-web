@@ -3,7 +3,7 @@ import { PackageLoader, PackageManifest } from '@skysmack/ng-redux';
 
 export class PersonsLodgingReservationsPackageManifest extends PersonsLodgingReservationsType implements PackageManifest {
     public icon = 'style';
-    public menuLocation = 'main';
+    public menuLocation = '';
     public modulePath = './../packages/modules/persons_lodging_reservations_wrapper.module#PersonsLodgingReservationsWrapperModule';
 }
 

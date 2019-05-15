@@ -32,4 +32,24 @@ export class FieldHelpers {
             };
         });
     }
+
+    public static getFieldOptionsOfFlagEnum(targetEnums: any): SelectFieldOption[] {
+        // When using the typescript enum keyword, the enum gets too many props.
+        // Code below transform the typescript enum to have same structure as enums generated from swagger code gen.
+        const processed = {};
+        Object.keys(targetEnums).forEach(key => {
+            if (!Number.isInteger(Number(key))) {
+                processed[key] = targetEnums[key];
+            }
+        });
+        targetEnums = processed;
+
+        // Convert the enum object into a proper options object for the select field.
+        return Object.keys(targetEnums).map(key => {
+            return {
+                value: targetEnums[key],
+                displayName: key
+            };
+        });
+    }
 }

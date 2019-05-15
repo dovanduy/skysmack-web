@@ -10,5 +10,5 @@ export class ReservationPriceChange extends Record<number> {
     public recordId: number;
     public start: Date;
     public end: Date;
-    // public daysOfWeek: DaysOfWeek; <-- This days of week is likey not what we want
+    public daysOfWeek: number;
 }

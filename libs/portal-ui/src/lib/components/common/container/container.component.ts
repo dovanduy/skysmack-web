@@ -66,6 +66,9 @@ export class ContainerComponent implements OnInit, OnDestroy {
         } else if (splittedPath.find(x => x === 'details')) {
           const newPath = this.path.split('/details/')[0];
           this.router.navigate([newPath]);
+        } else if (this.path.endsWith('skysmack/settings')) {
+          const newPath = this.path.slice(0, this.path.length - 'skysmack/settings'.length);
+          this.router.navigate([newPath]);
         } else if (this.path.endsWith('/settings')) {
           const newPath = this.path.slice(0, this.path.length - '/settings'.length);
           this.router.navigate([newPath]);

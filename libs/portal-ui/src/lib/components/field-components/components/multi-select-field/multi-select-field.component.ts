@@ -10,6 +10,7 @@ export class MultiSelectFieldComponent extends FieldBaseComponent<SelectField> i
 
   ngOnInit() {
     super.ngOnInit();
+
     if (this.field) {
       const fields = this.fields;
       this.runAllRulesOfType(DisableUntilValueRule.type, { fields });

@@ -3,7 +3,7 @@ import { PackageLoader, PackageManifest } from '@skysmack/ng-redux';
 
 export class ReservationsPricingsPackageManifest extends ReservationsPricingsType implements PackageManifest {
     public icon = 'timeline';
-    public menuLocation = 'main';
+    public menuLocation = '';
     public modulePath = './../packages/modules/reservations_pricings_wrapper.module#ReservationsPricingsWrapperModule';
 }
 
