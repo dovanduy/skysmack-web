@@ -2,7 +2,7 @@ import { Component, OnInit, Input, EventEmitter, Output, ViewChild, OnDestroy } 
 import { LocalObject, LoadingState, DisplayColumn, SubscriptionHandler } from '@skysmack/framework';
 import { Observable, BehaviorSubject, combineLatest } from 'rxjs';
 import { EntityAction, Field, FieldTypes } from '@skysmack/ng-ui';
-import { map, delay, tap } from 'rxjs/operators';
+import { map, delay } from 'rxjs/operators';
 import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
 
 @Component({
@@ -64,7 +64,7 @@ export class RecordsContainerComponent implements OnInit, OnDestroy {
       map(values => {
         this.loadingState = values[0];
         this.totalCount = values[1];
-        this.loadedEntitiesCount = values[1];
+        this.loadedEntitiesCount = values[2];
       })).subscribe());
   }
 
