@@ -8,7 +8,7 @@ export const getAdditionalPaths = (router: Router, packagePath): string[] => {
     const chuncks = router.url.split('/');
     const additionalPaths: string[] = [];
     for (let chunck of chuncks) {
-        if (chunck === 'edit' || chunck === 'create') {
+        if (chunck === 'edit' || chunck === 'create' || chunck === 'details') {
             break;
         }
 

@@ -7,7 +7,6 @@ import { NgInvoicesCashPaymentsStore } from '@skysmack/ng-packages';
 import { InvoicesCashPaymentsAppState, CashPayment, INVOICES_CASH_PAYMENTS_AREA_KEY } from '@skysmack/packages-invoices-cash-payments';
 import { NgInvoicesCashPaymentsMenu } from './../../ng-invoices-cash-payments-menu';
 import { EntityAction } from '@skysmack/ng-ui';
-import { NgFieldActions } from '@skysmack/ng-redux';
 import { NgInvoicesCashPaymentsFieldsConfig } from '../../ng-invoices-cash-payments-fields-config';
 
 
@@ -31,7 +30,6 @@ export class InvoicesCashPaymentsIndexComponent extends RecordIndexComponent<Inv
     public store: NgInvoicesCashPaymentsStore,
     public sidebarMenu: NgInvoicesCashPaymentsMenu,
     public fieldsConfig: NgInvoicesCashPaymentsFieldsConfig,
-    public fieldActions: NgFieldActions,
     public title: EntityComponentPageTitle,
     public entityActionProviders: EntityActionProviders
   ) {
