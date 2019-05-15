@@ -2,10 +2,10 @@ import { AssignmentType, ASSIGNMENT_TYPES_AREA_KEY } from '@skysmack/packages-ma
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { FormRule } from '@skysmack/ng-ui';
-import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
+import { LocalObject, LocalObjectStatus, PagedQuery } from '@skysmack/framework';
 import { Field } from '@skysmack/ng-ui';
 import { SelectField } from '@skysmack/ng-ui';
-import { NgAssignmentTypesValidation, NgMaintenanceStatesStore } from '@skysmack/ng-packages';
+import { NgAssignmentTypesValidation, NgMaintenanceStatesStore, NgMaintenanceStatesActions } from '@skysmack/ng-packages';
 import { FieldsConfig, StringFieldComponent, SelectFieldComponent, HiddenFieldComponent, RecurringExpressionFieldComponent } from '@skysmack/portal-ui';
 import { FieldProviders } from '@skysmack/portal-ui';
 import { LoadedPackage } from '@skysmack/ng-redux';
@@ -14,11 +14,11 @@ import { LoadedPackage } from '@skysmack/ng-redux';
 export class NgAssignmentTypesFieldsConfig extends FieldsConfig<AssignmentType, number> {
     public validation = new NgAssignmentTypesValidation();
     public area = ASSIGNMENT_TYPES_AREA_KEY;
-    public formRules: FormRule[] = [
-    ];
+    public formRules: FormRule[] = [];
 
     constructor(
         public maintenanceStateStore: NgMaintenanceStatesStore,
+        public maintenanceStateAction: NgMaintenanceStatesActions,
         public fieldProviders: FieldProviders
     ) {
         super(fieldProviders);
@@ -33,6 +33,7 @@ export class NgAssignmentTypesFieldsConfig extends FieldsConfig<AssignmentType, 
                 displayKey: 'state',
                 displaySubKey: 'object.description',
                 optionsData$: this.maintenanceStateStore.get(loadedPackage._package.path),
+                getDependencies: () => { this.maintenanceStateAction.getPaged(loadedPackage._package.path, new PagedQuery()); },
                 displayNameSelector: 'object.description',
                 validators: [Validators.required],
                 order: 1,

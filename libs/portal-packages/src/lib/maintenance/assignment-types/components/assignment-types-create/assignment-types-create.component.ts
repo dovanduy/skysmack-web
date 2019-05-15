@@ -27,7 +27,6 @@ export class AssignmentTypesCreateComponent extends RecordFormComponent<Assignme
 
   ngOnInit() {
     super.ngOnInit();
-    this.maintenanceStateActions.getPaged(this.packagePath, this.pagedQuery);
     this.setCreateFields();
   }
 }

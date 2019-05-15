@@ -110,4 +110,3 @@ export class NgProductPriceChangesFieldsConfig extends FieldsConfig<ProductPrice
         return fields;
     }
 }
-

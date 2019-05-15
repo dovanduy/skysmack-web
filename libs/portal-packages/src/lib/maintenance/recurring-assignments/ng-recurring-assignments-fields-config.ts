@@ -33,7 +33,6 @@ export class NgRecurringAssignmentsFieldsConfig extends FieldsConfig<RecurringAs
                 displaySubKey: 'object.description',
                 optionsData$: this.assignmentTypeStore.get(loadedPackage._package.path),
                 getDependencies: () => { this.assignmentTypesActions.getPaged(loadedPackage._package.path, new PagedQuery()); },
-
                 displayNameSelector: 'object.description',
                 validators: [Validators.required],
                 order: 1,

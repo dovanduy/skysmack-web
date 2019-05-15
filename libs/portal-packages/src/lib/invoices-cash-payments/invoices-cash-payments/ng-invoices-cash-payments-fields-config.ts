@@ -4,7 +4,6 @@ import { FormRule, SelectField } from '@skysmack/ng-ui';
 import { LocalObject, LocalObjectStatus, PagedQuery } from '@skysmack/framework';
 import { CashPayment, INVOICES_CASH_PAYMENTS_AREA_KEY } from '@skysmack/packages-invoices-cash-payments';
 import { Field } from '@skysmack/ng-ui';
-
 import { FieldsConfig, StringFieldComponent, HiddenFieldComponent, FieldProviders, IntFieldComponent, SelectFieldComponent } from '@skysmack/portal-ui';
 import { NgInvoicesCashPaymentsValidation, NgInvoicesStore, NgInvoicesActions } from '@skysmack/ng-packages';
 import { LoadedPackage } from '@skysmack/ng-redux';
@@ -44,9 +43,7 @@ export class NgInvoicesCashPaymentsFieldsConfig extends FieldsConfig<CashPayment
                 displaySubKey: 'object.currencyCode',
                 optionsData$: invoicePackage$.pipe(switchMap(invoicePackage => this.invoicesStore.get(invoicePackage.object.path))),
                 displayNameSelector: 'object.currencyCode',
-                getDependencies: () => {
-                    invoicePackage$.pipe(
-                        map(invoicePackage => this.invoicesActions.getPaged(invoicePackage.object.path, new PagedQuery())),
+                getDependencies: () => { invoicePackage$.pipe(map(invoicePackage => this.invoicesActions.getPaged(invoicePackage.object.path, new PagedQuery())),
                         take(1)
                     ).subscribe();
                 },

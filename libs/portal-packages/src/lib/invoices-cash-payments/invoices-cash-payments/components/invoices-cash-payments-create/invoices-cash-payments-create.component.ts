@@ -29,5 +29,4 @@ export class InvoicesCashPaymentsCreateComponent extends RecordFormComponent<Inv
     super.ngOnInit();
     this.setCreateFields();
   }
-
 }
