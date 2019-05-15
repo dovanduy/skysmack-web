@@ -23,7 +23,8 @@
                 "VALIDTO": "Gældende til",
                 "RECORDID": "Allokeret værelse",
                 "START": "Start",
-                "END": "Slut"
+                "END": "Slut",
+                "DAYSOFWEEK": "Uge dage"
             },
             "PLACEHOLDERS": {
                 "CURRENCYCODE": "Valuta kode",
@@ -33,7 +34,8 @@
                 "VALIDFROM": "Gældende fra",
                 "VALIDTO": "Gældende til",
                 "START": "Start",
-                "END": "Slut"
+                "END": "Slut",
+                "DAYSOFWEEK": "Uge dage"
             },
             "VALIDATION": {
                 "CURRENCYCODE": {

@@ -3,7 +3,7 @@ import { Validators } from '@angular/forms';
 import { LocalObject, LocalObjectStatus, PagedQuery } from '@skysmack/framework';
 import { FormRule, SelectField, Field } from '@skysmack/ng-ui';
 import { NgLodgingReservationPriceChangesValidation, NgLodgingsStore, NgLodgingsActions } from '@skysmack/ng-packages';
-import { FieldsConfig, SelectFieldComponent, HiddenFieldComponent, DecimalFieldComponent, DateTimeFieldComponent } from '@skysmack/portal-ui';
+import { FieldsConfig, SelectFieldComponent, HiddenFieldComponent, DecimalFieldComponent, DateTimeFieldComponent, MultiSelectFieldComponent, FlaggedEnumFieldComponent, DaysOfWeekFlagged } from '@skysmack/portal-ui';
 import { FieldProviders } from '@skysmack/portal-ui';
 import { LoadedPackage, getPackageDendencyAsStream } from '@skysmack/ng-redux';
 import { LodgingReservationPriceChange } from '@skysmack/packages-reservations-pricings';
@@ -112,7 +112,16 @@ export class NgLodgingReservationPriceChangesFieldsConfig extends FieldsConfig<L
                 validators: [Validators.required],
                 order: 6,
                 showColumn: true
-            })
+            }),
+            new SelectField({
+                component: FlaggedEnumFieldComponent,
+                value: entity ? entity.object.daysOfWeek : 0,
+                optionsData$: of(DaysOfWeekFlagged),
+                optionsDataType: 'flag-enum',
+                key: 'daysOfWeek',
+                order: 1,
+                showColumn: true
+            } as SelectField)
         ];
 
         // Id field must only be added for edit forms.

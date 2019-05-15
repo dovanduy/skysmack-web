@@ -1,3 +1,8 @@
+export * from './field-base-component';
+
+export * from './recurring-expression-field/index';
+export * from './validators-field/index';
+
 export * from './checkbox-field/checkbox-field.component';
 export * from './date-field/date-field.component';
 export * from './date-time-field/date-time-field.component';
@@ -10,12 +15,10 @@ export * from './limited-string-field/limited-string-field.component';
 export * from './password-field/password-field.component';
 export * from './available-permissions-field/available-permissions-field.component';
 export * from './package-dependencies-field/package-dependencies-field.component';
-export * from './recurring-expression-field/index';
 export * from './select-field/select-field.component';
 export * from './string-field/string-field.component';
+export * from './flagged-enum-field/flagged-enum-field.component';
 export * from './time-field/time-field.component';
-export * from './field-base-component';
-export * from './validators-field/index';
 export * from './field-permission-field/field-permission-field.component';
 export * from './roles-select-field/roles-select-field.component';
 export * from './multi-select-field/multi-select-field.component';

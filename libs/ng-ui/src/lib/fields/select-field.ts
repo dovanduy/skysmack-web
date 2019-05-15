@@ -4,7 +4,7 @@ import { FieldHelpers } from './field-helpers';
 import { Observable, pipe, UnaryFunction } from 'rxjs';
 import { map, debounceTime } from 'rxjs/operators';
 
-type OptionsDataType = 'array' | 'enum' | 'ts-enum';
+type OptionsDataType = 'array' | 'enum' | 'ts-enum' | 'flag-enum';
 const DEFAULT_VALUE_SELECTOR = 'object.id';
 const DEFAULT_DISPLAY_NAME_SELECTOR = 'object.name';
 const DEFAULT_OPTIONS_DATA_TYPE = 'array';
@@ -64,6 +64,8 @@ export class SelectField extends Field {
                 case 'array': options = FieldHelpers.getFieldOptionsOfArray(optionsData, this.valueSelector, this.displayNameSelector); break;
                 case 'enum': options = FieldHelpers.getFieldOptionsOfEnum(optionsData); break;
                 case 'ts-enum': options = FieldHelpers.getFieldOptionsOfEnum(optionsData, true); break;
+                case 'flag-enum': options = FieldHelpers.getFieldOptionsOfFlagEnum(optionsData); break;
+
                 default: options = []; break;
             }
 

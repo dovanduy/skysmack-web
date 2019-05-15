@@ -1,5 +1,6 @@
 export * from './day-of-week';
 export * from './days-of-week';
+export * from './days-of-week-flagged';
 export * from './recurring-month';
 export * from './recurring-months';
 export * from './recurring-type';
