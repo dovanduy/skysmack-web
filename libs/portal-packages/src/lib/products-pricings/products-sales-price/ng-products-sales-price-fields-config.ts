@@ -6,7 +6,9 @@ import { FormRule, SelectField, Field } from '@skysmack/ng-ui';
 import { NgProductsSalesPriceValidation, NgProductsStore, NgProductTypesActions, NgProductsActions } from '@skysmack/ng-packages';
 import { FieldsConfig, SelectFieldComponent, HiddenFieldComponent, DecimalFieldComponent } from '@skysmack/portal-ui';
 import { FieldProviders } from '@skysmack/portal-ui';
-import { LoadedPackage } from '@skysmack/ng-redux';
+import { LoadedPackage, getPackageDendencyAsStream } from '@skysmack/ng-redux';
+import { map, take } from 'rxjs/operators';
+import { NgSkysmackStore } from '@skysmack/ng-core';
 
 @Injectable({ providedIn: 'root' })
 export class NgProductsSalesPriceFieldsConfig extends FieldsConfig<ProductsSalesPrice, number> {
@@ -17,11 +19,13 @@ export class NgProductsSalesPriceFieldsConfig extends FieldsConfig<ProductsSales
     constructor(
         public productsStore: NgProductsStore,
         public fieldProviders: FieldProviders,
-        public productTypeActions: NgProductTypesActions,
-        public productActions: NgProductsActions,
+        public productsActions: NgProductsActions,
+        public skysmackStore: NgSkysmackStore
     ) { super(fieldProviders); }
 
     protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<ProductsSalesPrice, number>): Field[] {
+        const productPackage$ = getPackageDendencyAsStream(this.skysmackStore, loadedPackage._package.path, [0])
+
         const fields = [
             new SelectField({
                 component: SelectFieldComponent,
@@ -45,11 +49,16 @@ export class NgProductsSalesPriceFieldsConfig extends FieldsConfig<ProductsSales
                 component: SelectFieldComponent,
                 value: entity ? entity.object.recordId : undefined,
                 key: 'recordId',
-                displayKey: 'product',
+                displayKey: 'record',
                 displaySubKey: 'object.name',
                 validators: [Validators.required],
                 optionsData$: this.productsStore.get(loadedPackage._package.dependencies[0]),
-                getDependencies: () => { this.productActions.getPaged(loadedPackage._package.dependencies[0], new PagedQuery()); },
+                getDependencies: () => {
+                    productPackage$.pipe(
+                        map(productPackage => this.productsActions.getPaged(productPackage.object.path, new PagedQuery())),
+                        take(1)
+                    ).subscribe();
+                },                
                 displayNameSelector: 'object.name',
                 order: 2,
                 showColumn: true

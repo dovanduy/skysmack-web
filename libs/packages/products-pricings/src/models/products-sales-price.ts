@@ -5,5 +5,5 @@ import { LocalObject } from '@skysmack/framework';
 export class ProductsSalesPrice extends SalesPrice {
 
     public recordId: number;
-    public product: LocalObject<Product, number>;
+    public record: LocalObject<Product, number>;
 }
