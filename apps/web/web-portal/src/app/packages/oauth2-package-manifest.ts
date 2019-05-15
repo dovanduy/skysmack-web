@@ -3,7 +3,7 @@ import { PackageLoader, PackageManifest } from '@skysmack/ng-redux';
 
 export class Oauth2PackageManifest extends Oauth2Type implements PackageManifest {
     public icon = 'lock';
-    public menuLocation = 'main';
+    public menuLocation = '';
     public modulePath = './../packages/modules/oauth2_wrapper.module#OAuth2WrapperModule';
 }
 

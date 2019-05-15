@@ -15,6 +15,10 @@
         </nav>
 
         <div class="sys-docker">
+            <a class="app-link" [routerLink]="['/skysmack/settings']">
+                <i class="material-icons md-light app-icon">settings</i>
+                <h5 class="app-name">{{ 'UI.PACKAGE_DRAWER.SETTINGS' | translate }}</h5>
+            </a>
             <a class="app-link" [routerLink]="['/skysmack/access-policies']">
                 <i class="material-icons md-light app-icon">security</i>
                 <h5 class="app-name">{{ 'ACCESS_POLICIES.DASHBOARD.ACCESS_POLICIES' | translate }}</h5>

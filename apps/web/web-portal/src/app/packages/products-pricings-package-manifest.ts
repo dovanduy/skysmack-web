@@ -3,7 +3,7 @@ import { PackageLoader, PackageManifest } from '@skysmack/ng-redux';
 
 export class ProductsPricingsPackageManifest extends ProductsPricingsType implements PackageManifest {
     public icon = 'euro_symbol';
-    public menuLocation = 'main';
+    public menuLocation = '';
     public modulePath = './../packages/modules/products_pricings_wrapper.module#ProductsPricingsWrapperModule';
 }
 
