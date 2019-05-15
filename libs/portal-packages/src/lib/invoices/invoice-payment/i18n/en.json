@@ -64,7 +64,9 @@
             "ITEM": "Item",
             "MANAGE": "Manage",
             "BACK": "Back",
-            "ACTIONS": "Actions"
+            "ACTIONS": "Actions",
+            "TITLE_EXTRA": "(payments)",
+            "FIELDS_TITLE": "(payment fields)"
         },
         "QUEUE": {
             "ADDING": "Adding {{ description }}",

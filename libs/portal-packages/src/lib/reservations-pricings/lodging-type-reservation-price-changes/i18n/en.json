@@ -23,7 +23,8 @@
                 "VALIDTO": "Valid to",
                 "RECORDID": "Allocated lodging type",
                 "START": "Start",
-                "END": "End"
+                "END": "End",
+                "DAYSOFWEEK": "Week days"
             },
             "PLACEHOLDERS": {
                 "CURRENCYCODE": "Currency code",
@@ -33,7 +34,8 @@
                 "VALIDFROM": "Valid from",
                 "VALIDTO": "Valid to",
                 "START": "Start",
-                "END": "End"
+                "END": "End",
+                "DAYSOFWEEK": "Week days"
             },
             "VALIDATION": {
                 "CURRENCYCODE": {

@@ -64,7 +64,9 @@
             "ITEM": "Enhed",
             "MANAGE": "Konfigurer",
             "BACK": "Tilbage",
-            "ACTIONS": "Handlinger"
+            "ACTIONS": "Handlinger",
+            "TITLE_EXTRA": "(betalinger)",
+            "FIELDS_TITLE": "(betalingsfelter)"
         },
         "QUEUE": {
             "ADDING": "Tilføjer {{ description }}",
