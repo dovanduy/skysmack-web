@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { accessPolicyPermissionsReducer, accessPolicyRolesReducer, accessPolicyRulesReducer } from '@skysmack/packages-skysmack-core';
+import { accessPolicyPermissionsReducer, accessPolicyRolesReducer, accessPolicyRulesReducer, ACCESS_POLICY_PERMISSIONS_REDUCER_KEY, ACCESS_POLICY_ROLES_REDUCER_KEY, ACCESS_POLICY_RULES_REDUCER_KEY } from '@skysmack/packages-skysmack-core';
 import { registerRedux } from '@skysmack/ng-redux';
 import { NgAccessPolicyPermissionsEpics } from './access-policy-permissions/redux/ng-access-policy-permissions-epics';
 import { NgAccessPolicyRolesEpics } from './access-policy-roles/redux/ng-access-policy-roles-epics';
@@ -16,8 +16,8 @@ export class NgAccessPoliciesModule {
     rolesEpics: NgAccessPolicyRolesEpics,
     rulesEpics: NgAccessPolicyRulesEpics
   ) {
-    registerRedux('accessPolicyPermissions', accessPolicyPermissionsReducer, permissionsEpics);
-    registerRedux('accessPolicyRoles', accessPolicyRolesReducer, rolesEpics);
-    registerRedux('accessPolicyRules', accessPolicyRulesReducer, rulesEpics);
+    registerRedux(ACCESS_POLICY_PERMISSIONS_REDUCER_KEY, accessPolicyPermissionsReducer, permissionsEpics);
+    registerRedux(ACCESS_POLICY_ROLES_REDUCER_KEY, accessPolicyRolesReducer, rolesEpics);
+    registerRedux(ACCESS_POLICY_RULES_REDUCER_KEY, accessPolicyRulesReducer, rulesEpics);
   }
 }

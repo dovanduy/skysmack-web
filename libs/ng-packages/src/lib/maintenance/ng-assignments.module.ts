@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { assignmentReducer, assignmentTypesReducer, maintenanceStatesReducer, recurringAssignmentsReducer } from '@skysmack/packages-maintenance';
+import { assignmentReducer, assignmentTypesReducer, maintenanceStatesReducer, recurringAssignmentsReducer, RECURRING_ASSIGNMENTS_REDUCER_KEY, MAINTENANCE_STATES_REDUCER_KEY, ASSIGNMENT_TYPES_REDUCER_KEY, ASSIGNMENTS_REDUCER_KEY } from '@skysmack/packages-maintenance';
 
 import { registerRedux } from '@skysmack/ng-redux';
 import { NgAssignmentsEpics } from './assignments/redux/ng-assignments-epics';
@@ -19,9 +19,9 @@ export class NgAssignmentsModule {
     maintenanceStatesEpics: NgMaintenanceStatesEpics,
     recurringAssignmentsEpics: NgRecurringAssignmentsEpics
   ) {
-    registerRedux('assignments', assignmentReducer, assignmentsEpics);
-    registerRedux('assignmentTypes', assignmentTypesReducer, assignmentTypesEpics);
-    registerRedux('maintenanceStates', maintenanceStatesReducer, maintenanceStatesEpics);
-    registerRedux('recurringAssignments', recurringAssignmentsReducer, recurringAssignmentsEpics);
+    registerRedux(ASSIGNMENTS_REDUCER_KEY, assignmentReducer, assignmentsEpics);
+    registerRedux(ASSIGNMENT_TYPES_REDUCER_KEY, assignmentTypesReducer, assignmentTypesEpics);
+    registerRedux(MAINTENANCE_STATES_REDUCER_KEY, maintenanceStatesReducer, maintenanceStatesEpics);
+    registerRedux(RECURRING_ASSIGNMENTS_REDUCER_KEY, recurringAssignmentsReducer, recurringAssignmentsEpics);
   }
 }

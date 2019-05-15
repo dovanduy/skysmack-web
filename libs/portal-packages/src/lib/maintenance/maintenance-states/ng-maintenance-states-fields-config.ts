@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
-import { MaintenanceState, MaintenanceEntityStatus } from '@skysmack/packages-maintenance';
+import { MaintenanceState, MaintenanceEntityStatus, MAINTENANCE_STATES_AREA_KEY } from '@skysmack/packages-maintenance';
 import { NgMaintenanceStatesValidation } from '@skysmack/ng-packages';
 import { FormRule, Field, SelectField } from '@skysmack/ng-ui';
 import { FieldsConfig, StringFieldComponent, SelectFieldComponent, HiddenFieldComponent } from '@skysmack/portal-ui';
@@ -12,7 +12,7 @@ import { LoadedPackage } from '@skysmack/ng-redux';
 @Injectable({ providedIn: 'root' })
 export class NgMaintenanceStatesFieldsConfig extends FieldsConfig<MaintenanceState, number> {
     public validation = new NgMaintenanceStatesValidation();
-
+    public area = MAINTENANCE_STATES_AREA_KEY;
     public formRules: FormRule[] = [
     ];
 

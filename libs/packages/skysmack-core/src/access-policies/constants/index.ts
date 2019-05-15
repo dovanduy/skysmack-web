@@ -1,1 +1,1 @@
-export * from './access-policies-constants';
+export * from './constants';

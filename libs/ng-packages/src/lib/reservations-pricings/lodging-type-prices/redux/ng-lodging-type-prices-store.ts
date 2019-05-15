@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { NgRedux } from '@angular-redux/store';
-import { LodgingTypePrice, LodgingTypePricesAppState } from '@skysmack/packages-reservations-pricings';
+import { LodgingTypePrice, LodgingTypePricesAppState, LODGING_TYPE_PRICES_REDUCER_KEY } from '@skysmack/packages-reservations-pricings';
 import { NgRecordStore } from '@skysmack/ng-redux';
 import { NgSkysmackStore } from '@skysmack/ng-core';
 
@@ -10,5 +10,5 @@ export class NgLodgingTypePricesStore extends NgRecordStore<LodgingTypePricesApp
     constructor(
         protected ngRedux: NgRedux<LodgingTypePricesAppState>,
         protected skysmackStore: NgSkysmackStore
-    ) { super(ngRedux, skysmackStore, 'lodgingTypePrices'); }
+    ) { super(ngRedux, skysmackStore, LODGING_TYPE_PRICES_REDUCER_KEY); }
 }

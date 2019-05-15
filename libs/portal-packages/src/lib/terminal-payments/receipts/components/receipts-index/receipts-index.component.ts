@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { EntityComponentPageTitle, DocumentRecordIndexComponent, EntityActionProviders, ENTITY_ACTIONS_EDIT, ENTITY_ACTIONS_DELETE } from '@skysmack/portal-ui';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgReceiptsActions, NgReceiptsStore } from '@skysmack/ng-packages';
-import { ReceiptsAppState, Receipt, RECEIPTS_REDUCER_AREA_KEY } from '@skysmack/packages-terminal-payments';
+import { ReceiptsAppState, Receipt, RECEIPTS_AREA_KEY } from '@skysmack/packages-terminal-payments';
 import { NgReceiptsMenu } from '../../ng-receipts-menu';
 import { EntityAction } from '@skysmack/ng-ui';
 import { NgFieldActions } from '@skysmack/ng-redux';
@@ -14,7 +14,7 @@ import { NgSkysmackStore } from '@skysmack/ng-core';
   templateUrl: './receipts-index.component.html'
 })
 export class ReceiptsIndexComponent extends DocumentRecordIndexComponent<ReceiptsAppState, Receipt, number> implements OnInit {
-  public areaKey: string = RECEIPTS_REDUCER_AREA_KEY;
+  public areaKey: string = RECEIPTS_AREA_KEY;
   public entityActions: EntityAction[] = [
     new EntityAction().asUrlAction('edit', ENTITY_ACTIONS_EDIT, 'edit'),
     new EntityAction().asEventAction(ENTITY_ACTIONS_DELETE, this.delete, 'delete', this)

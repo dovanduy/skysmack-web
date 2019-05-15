@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { LocalObject, LocalObjectStatus, EnumHelpers, DisplayColumn, PagedQuery } from '@skysmack/framework';
-import { Assignment } from '@skysmack/packages-maintenance';
+import { Assignment, ASSIGNMENTS_AREA_KEY } from '@skysmack/packages-maintenance';
 import { NgAssignmentsValidation, NgAssignmentTypesStore, NgAssignmentTypesActions } from '@skysmack/ng-packages';
 import { FormRule, Field, SelectField } from '@skysmack/ng-ui';
 import { FieldsConfig, StringFieldComponent, SelectFieldComponent, HiddenFieldComponent, DateTimeFieldComponent } from '@skysmack/portal-ui';
@@ -12,7 +12,7 @@ import { LoadedPackage } from '@skysmack/ng-redux';
 @Injectable({ providedIn: 'root' })
 export class NgAssignmentsFieldsConfig extends FieldsConfig<Assignment, number> {
     public validation = new NgAssignmentsValidation();
-
+    public area = ASSIGNMENTS_AREA_KEY;
     public formRules: FormRule[] = [];
 
     constructor(

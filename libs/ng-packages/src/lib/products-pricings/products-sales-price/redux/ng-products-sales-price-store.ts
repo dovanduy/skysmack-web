@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { NgRedux } from '@angular-redux/store';
-import { ProductsSalesPrice, ProductsSalesPriceAppState } from '@skysmack/packages-products-pricings';
+import { ProductsSalesPrice, ProductsSalesPriceAppState, PRODUCTS_SALES_PRICE_REDUCER_KEY } from '@skysmack/packages-products-pricings';
 import { NgRecordStore } from '@skysmack/ng-redux';
 import { NgSkysmackStore } from '@skysmack/ng-core';
 
@@ -9,5 +9,5 @@ export class NgProductsSalesPriceStore extends NgRecordStore<ProductsSalesPriceA
     constructor(
         protected ngRedux: NgRedux<ProductsSalesPriceAppState>,
         protected skysmackStore: NgSkysmackStore
-    ) { super(ngRedux, skysmackStore, 'productsSalesPrice'); }
+    ) { super(ngRedux, skysmackStore, PRODUCTS_SALES_PRICE_REDUCER_KEY); }
 }

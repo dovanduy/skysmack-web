@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { NgRedux } from '@angular-redux/store';
 import { NgRecordStore } from '@skysmack/ng-redux';
-import { LodgingTypesAppState, LodgingType } from '@skysmack/packages-lodgings';
+import { LodgingTypesAppState, LodgingType, LODGING_TYPES_REDUCER_KEY } from '@skysmack/packages-lodgings';
 import { Observable } from 'rxjs';
 import { StrIndex, defined, safeUndefinedTo } from '@skysmack/framework';
 import { map, tap } from 'rxjs/operators';
@@ -12,7 +12,7 @@ export class NgLodgingTypesStore extends NgRecordStore<LodgingTypesAppState, Lod
     constructor(
         protected ngRedux: NgRedux<LodgingTypesAppState>,
         protected skysmackStore: NgSkysmackStore
-    ) { super(ngRedux, skysmackStore, 'lodgingTypes'); }
+    ) { super(ngRedux, skysmackStore, LODGING_TYPES_REDUCER_KEY); }
 
     public getAvailableLodgingTypes(packagePath: string): Observable<StrIndex<StrIndex<number[]>>> {
         return this.ngRedux.select(state => state).pipe(

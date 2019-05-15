@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { LocalObject, LocalObjectStatus, PagedQuery } from '@skysmack/framework';
-import { ProductsSalesPrice } from '@skysmack/packages-products-pricings';
+import { ProductsSalesPrice, PRODUCTS_SALES_PRICE_AREA_KEY } from '@skysmack/packages-products-pricings';
 import { FormRule, SelectField, Field } from '@skysmack/ng-ui';
 import { NgProductsSalesPriceValidation, NgProductsStore, NgProductTypesActions, NgProductsActions } from '@skysmack/ng-packages';
 import { FieldsConfig, SelectFieldComponent, HiddenFieldComponent, DecimalFieldComponent } from '@skysmack/portal-ui';
@@ -11,7 +11,7 @@ import { LoadedPackage } from '@skysmack/ng-redux';
 @Injectable({ providedIn: 'root' })
 export class NgProductsSalesPriceFieldsConfig extends FieldsConfig<ProductsSalesPrice, number> {
     public validation = new NgProductsSalesPriceValidation();
-
+    public area = PRODUCTS_SALES_PRICE_AREA_KEY;
     public formRules: FormRule[] = [];
 
     constructor(

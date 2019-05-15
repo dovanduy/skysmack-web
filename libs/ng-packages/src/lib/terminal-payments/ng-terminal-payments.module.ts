@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { terminalsReducer, receiptsReducer } from '@skysmack/packages-terminal-payments';
+import { terminalsReducer, receiptsReducer, TERMINALS_REDUCER_KEY, RECEIPTS_REDUCER_KEY } from '@skysmack/packages-terminal-payments';
 import { TerminalsEpics } from './terminals/redux/ng-terminals-epics';
 import { ReceiptsEpics } from './receipts/redux/ng-receipts-epics';
 import { registerRedux } from '@skysmack/ng-redux';
@@ -11,7 +11,7 @@ import { registerRedux } from '@skysmack/ng-redux';
 })
 export class NgTerminalPaymentsModule {
   constructor(terminalsEpics: TerminalsEpics, receiptsEpics: ReceiptsEpics) {
-    registerRedux('terminals', terminalsReducer, terminalsEpics);
-    registerRedux('receipts', receiptsReducer, receiptsEpics);
+    registerRedux(TERMINALS_REDUCER_KEY, terminalsReducer, terminalsEpics);
+    registerRedux(RECEIPTS_REDUCER_KEY, receiptsReducer, receiptsEpics);
   }
 }

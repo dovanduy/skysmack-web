@@ -6,11 +6,12 @@ import { NgSignInSettingsValidation } from '@skysmack/ng-packages';
 import { LoadedPackage } from '@skysmack/ng-redux';
 import { FieldsConfig, CheckboxFieldComponent } from '@skysmack/portal-ui';
 import { FieldProviders } from '@skysmack/portal-ui';
+import { OAUTH2_AREA_KEY } from 'libs/packages/oauth2/src';
 
 @Injectable({ providedIn: 'root' })
 export class NgSignInSettingsFieldsConfig extends FieldsConfig<SignInSettings, unknown> {
     public validation = new NgSignInSettingsValidation();
-
+    public area = OAUTH2_AREA_KEY;
     public formRules: FormRule[] = [];
 
     constructor(public fieldProviders: FieldProviders) {

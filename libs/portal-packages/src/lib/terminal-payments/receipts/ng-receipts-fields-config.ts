@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { FormRule } from '@skysmack/ng-ui';
 import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
-import { Receipt } from '@skysmack/packages-terminal-payments';
+import { Receipt, RECEIPTS_AREA_KEY } from '@skysmack/packages-terminal-payments';
 import { Field } from '@skysmack/ng-ui';
 import { FieldsConfig, StringFieldComponent, HiddenFieldComponent } from '@skysmack/portal-ui';
 import { NgReceiptsValidation } from '@skysmack/ng-packages';
@@ -12,7 +12,7 @@ import { LoadedPackage } from '@skysmack/ng-redux';
 @Injectable({ providedIn: 'root' })
 export class NgReceiptsFieldsConfig extends FieldsConfig<Receipt, number> {
     public validation = new NgReceiptsValidation();
-
+    public area = RECEIPTS_AREA_KEY
     public formRules: FormRule[] = [];
 
     constructor(

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 
-import { invoicesReducer, invoiceItemsReducer, invoicePaymentsReducer } from '@skysmack/packages-invoices';
+import { invoicesReducer, invoiceItemsReducer, invoicePaymentsReducer, INVOICES_REDUCER_KEY, INVOICE_ITEMS_REDUCER_KEY, INVOICE_PAYMENTS_REDUCER_KEY } from '@skysmack/packages-invoices';
 import { NgInvoicesEpics } from './invoice/redux/ng-invoices-epics';
 import { NgInvoiceItemsEpics } from './invoice-item/redux/ng-invoice-items-epics';
 import { NgInvoicePaymentsEpics } from './invoice-payment/redux/ng-invoice-payments-epics';
@@ -17,8 +17,8 @@ export class NgInvoicesModule {
     invoiceItemsEpics: NgInvoiceItemsEpics,
     invoicePaymentsEpics: NgInvoicePaymentsEpics
   ) {
-    registerRedux('invoices', invoicesReducer, invoicesEpics);
-    registerRedux('invoiceItems', invoiceItemsReducer, invoiceItemsEpics);
-    registerRedux('invoicePayments', invoicePaymentsReducer, invoicePaymentsEpics);
+    registerRedux(INVOICES_REDUCER_KEY, invoicesReducer, invoicesEpics);
+    registerRedux(INVOICE_ITEMS_REDUCER_KEY, invoiceItemsReducer, invoiceItemsEpics);
+    registerRedux(INVOICE_PAYMENTS_REDUCER_KEY , invoicePaymentsReducer, invoicePaymentsEpics);
   }
 }

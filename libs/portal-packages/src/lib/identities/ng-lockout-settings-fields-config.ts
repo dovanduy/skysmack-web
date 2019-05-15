@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { FormRule, Field } from '@skysmack/ng-ui';
-import { LockoutSettings } from '@skysmack/packages-identities';
+import { LockoutSettings, IDENTITES_AREA_KEY } from '@skysmack/packages-identities';
 import { LocalObject } from '@skysmack/framework';
 import { NgLockoutSettingsValidation } from '@skysmack/ng-packages';
 import { LoadedPackage } from '@skysmack/ng-redux';
@@ -10,7 +10,7 @@ import { FieldProviders } from '@skysmack/portal-ui';
 @Injectable({ providedIn: 'root' })
 export class NgLockoutSettingsFieldsConfig extends FieldsConfig<LockoutSettings, unknown> {
     public validation = new NgLockoutSettingsValidation();
-
+    public area = IDENTITES_AREA_KEY;
     public formRules: FormRule[] = [];
 
     constructor(public fieldProviders: FieldProviders) {

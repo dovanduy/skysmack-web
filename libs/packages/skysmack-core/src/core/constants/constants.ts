@@ -1,0 +1,1 @@
+export const SKYSMACK_REDUCER_KEY = 'skysmack';

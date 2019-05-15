@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
-import { Role } from '@skysmack/packages-identities';
+import { Role, ROLES_AREA_KEY } from '@skysmack/packages-identities';
 import { Field, FormRule } from '@skysmack/ng-ui';
 import { NgRolesValidation } from '@skysmack/ng-packages';
 import { LoadedPackage } from '@skysmack/ng-redux';
@@ -11,7 +11,7 @@ import { FieldProviders } from '@skysmack/portal-ui';
 @Injectable({ providedIn: 'root' })
 export class NgRolesFieldsConfig extends FieldsConfig<Role, number> {
     public validation = new NgRolesValidation();
-
+    public area = ROLES_AREA_KEY;
     public formRules: FormRule[] = [];
 
     constructor(public fieldProviders: FieldProviders) {

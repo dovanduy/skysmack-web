@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { LocalObject, LocalObjectStatus, PagedQuery } from '@skysmack/framework';
-import { RecurringAssignment } from '@skysmack/packages-maintenance';
+import { RecurringAssignment, RECURRING_ASSIGNMENTS_AREA_KEY } from '@skysmack/packages-maintenance';
 import { NgRecurringAssignmentsValidation, NgAssignmentTypesStore, NgAssignmentTypesActions } from '@skysmack/ng-packages';
 import { FormRule, SelectField, Field } from '@skysmack/ng-ui';
 import { FieldsConfig, SelectFieldComponent, HiddenFieldComponent, DateFieldComponent } from '@skysmack/portal-ui';
@@ -11,7 +11,7 @@ import { LoadedPackage } from '@skysmack/ng-redux';
 @Injectable({ providedIn: 'root' })
 export class NgRecurringAssignmentsFieldsConfig extends FieldsConfig<RecurringAssignment, number> {
     public validation = new NgRecurringAssignmentsValidation();
-
+    public area = RECURRING_ASSIGNMENTS_AREA_KEY;
     public formRules: FormRule[] = [];
 
     constructor(

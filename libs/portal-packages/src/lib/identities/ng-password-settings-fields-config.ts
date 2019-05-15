@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { FormRule, Field } from '@skysmack/ng-ui';
 import { LocalObject } from '@skysmack/framework';
-import { PasswordSettings } from '@skysmack/packages-identities';
+import { PasswordSettings, IDENTITES_AREA_KEY } from '@skysmack/packages-identities';
 import { NgPasswordSettingsValidation } from '@skysmack/ng-packages';
 import { LoadedPackage } from '@skysmack/ng-redux';
 import { FieldsConfig, CheckboxFieldComponent, IntFieldComponent } from '@skysmack/portal-ui';
@@ -10,7 +10,7 @@ import { FieldProviders } from '@skysmack/portal-ui';
 @Injectable({ providedIn: 'root' })
 export class NgPasswordSettingsFieldsConfig extends FieldsConfig<PasswordSettings, unknown> {
     public validation = new NgPasswordSettingsValidation();
-
+    public area = IDENTITES_AREA_KEY;
     public formRules: FormRule[] = [];
 
     constructor(public fieldProviders: FieldProviders) {

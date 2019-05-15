@@ -6,7 +6,7 @@ import { NgLodgingTypeReservationPriceChangesValidation, NgLodgingTypesStore, Ng
 import { FieldsConfig, SelectFieldComponent, HiddenFieldComponent, DecimalFieldComponent, DateTimeFieldComponent, FlaggedEnumFieldComponent, DaysOfWeekFlagged } from '@skysmack/portal-ui';
 import { FieldProviders } from '@skysmack/portal-ui';
 import { LoadedPackage, getPackageDendencyAsStream } from '@skysmack/ng-redux';
-import { LodgingTypeReservationPriceChange } from '@skysmack/packages-reservations-pricings';
+import { LodgingTypeReservationPriceChange, LODGING_TYPE_RESERVATION_PRICE_CHANGES_AREA_KEY } from '@skysmack/packages-reservations-pricings';
 import { of } from 'rxjs';
 import { PriceChangeType } from '@skysmack/pricings';
 import { NgSkysmackStore } from '@skysmack/ng-core';
@@ -15,7 +15,7 @@ import { map, take, switchMap } from 'rxjs/operators';
 @Injectable({ providedIn: 'root' })
 export class NgLodgingTypeReservationPriceChangesFieldsConfig extends FieldsConfig<LodgingTypeReservationPriceChange, number> {
     public validation = new NgLodgingTypeReservationPriceChangesValidation();
-
+    public area = LODGING_TYPE_RESERVATION_PRICE_CHANGES_AREA_KEY;
     public formRules: FormRule[] = [];
 
     constructor(

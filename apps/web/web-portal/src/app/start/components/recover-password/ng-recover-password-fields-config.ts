@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { FormRule, CustomValidators } from '@skysmack/ng-ui';
-import { SetDisplayNameRule } from '@skysmack/ng-ui';
 import { LocalObject } from '@skysmack/framework';
 import { Field } from '@skysmack/ng-ui';
 
@@ -9,11 +8,12 @@ import { FieldsConfig, PasswordFieldComponent, StringFieldComponent, } from '@sk
 import { LoadedPackage } from '@skysmack/ng-redux';
 import { FieldProviders } from '@skysmack/portal-ui';
 import { NgRecoverPasswordValidation } from './ng-recover-password-validation';
+import { OAUTH2_AREA_KEY } from '@skysmack/packages-oauth2';
 
 @Injectable({ providedIn: 'root' })
 export class NgRecoverPasswordFieldsConfig extends FieldsConfig<string, unknown> {
     public validation = new NgRecoverPasswordValidation();
-
+    public area = OAUTH2_AREA_KEY;
     public formRules: FormRule[] = [];
 
     constructor(

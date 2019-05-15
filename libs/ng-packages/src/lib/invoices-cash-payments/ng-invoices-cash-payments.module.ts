@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 
 import { NgInvoicesCashPaymentsEpics } from './invoices-cash-payments/redux/ng-invoices-cash-payments-epics';
 import { registerRedux, NgMenuItemProviders } from '@skysmack/ng-redux';
-import { invoicesCashPaymentsReducer } from '@skysmack/packages-invoices-cash-payments';
+import { invoicesCashPaymentsReducer, INVOICES_CASH_PAYMENTS_REDUCER_KEY } from '@skysmack/packages-invoices-cash-payments';
 import { NgInvoicesCashPaymentsMenuItemProvider } from './ng-invoices-cash-payments-menu-item-provider';
 
 @NgModule({
@@ -16,7 +16,7 @@ export class NgInvoicesCashPaymentsModule {
     menuItemProvider: NgInvoicesCashPaymentsMenuItemProvider,
     invoicesCashPaymentsEpics: NgInvoicesCashPaymentsEpics
   ) {
-    registerRedux('invoicesCashPayments', invoicesCashPaymentsReducer, invoicesCashPaymentsEpics);
+    registerRedux(INVOICES_CASH_PAYMENTS_REDUCER_KEY , invoicesCashPaymentsReducer, invoicesCashPaymentsEpics);
     ngMenuItemProviders.add(menuItemProvider);
   }
 }

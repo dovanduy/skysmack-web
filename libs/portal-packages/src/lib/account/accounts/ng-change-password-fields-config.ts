@@ -1,21 +1,19 @@
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { FormRule } from '@skysmack/ng-ui';
-import { SetDisplayNameRule } from '@skysmack/ng-ui';
-import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
-import { Person } from '@skysmack/packages-persons';
+import { LocalObject } from '@skysmack/framework';
 import { Field } from '@skysmack/ng-ui';
 
 import { PasswordFieldComponent, FieldsConfig } from '@skysmack/portal-ui';
 import { FieldProviders } from '@skysmack/portal-ui';
 import { LoadedPackage } from '@skysmack/ng-redux';
-import { ChangePassword } from '@skysmack/packages-account';
+import { ChangePassword, ACCOUNTS_AREA_KEY } from '@skysmack/packages-account';
 import { NgChangePasswordValidation } from '@skysmack/ng-packages';
 
 @Injectable({ providedIn: 'root' })
 export class NgChangePasswordFieldsConfig extends FieldsConfig<ChangePassword, number> {
     public validation = new NgChangePasswordValidation();
-
+    public area = ACCOUNTS_AREA_KEY;
     public formRules: FormRule[] = [];
 
     constructor(

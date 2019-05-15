@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { NgAccountEpics } from './accounts';
 import { registerRedux } from '@skysmack/ng-redux';
-import { ACCOUNTS_AREA_KEY, accountReducer } from '@skysmack/packages-account';
+import { ACCOUNTS_AREA_KEY, accountReducer, ACCOUNTS_REDUCER_KEY } from '@skysmack/packages-account';
 
 @NgModule({
   imports: [],
@@ -12,6 +12,6 @@ export class NgAccountModule {
   constructor(
     epics: NgAccountEpics
   ) {
-    registerRedux('accounts', accountReducer, epics);
+    registerRedux(ACCOUNTS_REDUCER_KEY, accountReducer, epics);
   }
 }

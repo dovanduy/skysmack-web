@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
-import { LodgingType } from '@skysmack/packages-lodgings';
+import { LodgingType, LODGING_TYPES_AREA_KEY } from '@skysmack/packages-lodgings';
 import { FieldProviders, DocumentFieldsConfig, StringFieldComponent, HiddenFieldComponent } from '@skysmack/portal-ui';
 import { NgLodgingTypesValidation } from '@skysmack/ng-packages';
 import { FormRule, Field } from '@skysmack/ng-ui';
@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 @Injectable({ providedIn: 'root' })
 export class NgLodgingTypesFieldsConfig extends DocumentFieldsConfig<LodgingType, number> {
     public validation = new NgLodgingTypesValidation();
-
+    public area = LODGING_TYPES_AREA_KEY;
     public formRules: FormRule[] = [
     ];
 

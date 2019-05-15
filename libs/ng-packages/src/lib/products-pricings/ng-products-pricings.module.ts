@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { NgMenuItemProviders, registerRedux } from '@skysmack/ng-redux';
 import { NgProductsPricingsMenuItemProvider } from './ng-products-pricings-menu-item-provider';
-import { productsSalesPriceReducer, productTypeSalesPriceReducer, productPriceChangesReducer, productTypePriceChangesReducer } from '@skysmack/packages-products-pricings';
+import { productsSalesPriceReducer, productTypeSalesPriceReducer, productPriceChangesReducer, productTypePriceChangesReducer, PRODUCT_TYPE_PRICE_CHANGES_REDUCER_KEY, PRODUCT_PRICE_CHANGES_REDUCER_KEY, PRODUCT_TYPE_SALES_PRICE_REDUCER_KEY, PRODUCTS_SALES_PRICE_REDUCER_KEY } from '@skysmack/packages-products-pricings';
 import { NgProductsSalesPriceEpics } from './products-sales-price/redux/ng-products-sales-price-epics';
 import { NgProductTypeSalesPriceEpics } from './product-type-sales-price/redux/ng-product-type-sales-price-epics';
 import { NgProductPriceChangesEpics } from './product-price-changes/redux/ng-product-price-changes-epics';
@@ -21,11 +21,11 @@ export class NgProductsPricingsModule {
     productPriceChangesEpics: NgProductPriceChangesEpics,
     productTypePriceChangesEpics: NgProductTypePriceChangesEpics
   ) {
-    registerRedux('productsSalesPrice', productsSalesPriceReducer, productsSalesPriceEpics);
-    registerRedux('productTypeSalesPrice', productTypeSalesPriceReducer, productTypeSalesPriceEpics);
+    registerRedux(PRODUCTS_SALES_PRICE_REDUCER_KEY, productsSalesPriceReducer, productsSalesPriceEpics);
+    registerRedux(PRODUCT_TYPE_SALES_PRICE_REDUCER_KEY, productTypeSalesPriceReducer, productTypeSalesPriceEpics);
 
-    registerRedux('productPriceChanges', productPriceChangesReducer, productPriceChangesEpics);
-    registerRedux('productTypePriceChanges', productTypePriceChangesReducer, productTypePriceChangesEpics);
+    registerRedux(PRODUCT_PRICE_CHANGES_REDUCER_KEY, productPriceChangesReducer, productPriceChangesEpics);
+    registerRedux(PRODUCT_TYPE_PRICE_CHANGES_REDUCER_KEY, productTypePriceChangesReducer, productTypePriceChangesEpics);
 
     ngMenuItemProviders.add(menuItemProvider);
   }
