@@ -48,6 +48,13 @@
     </mat-menu>
   </ng-container>
 
+  <!-- SETTINGS -->
+  <!-- *isAnonymous -->
+  <a mat-icon-button title="Account Menu" [routerLink]="['/skysmack/settings']"
+    (click)="uiStore.setPackageDrawerStatus(false)">
+    <mat-icon>settings</mat-icon>
+  </a>
+
   <!-- LANGUAGE -->
   <ss-language-select></ss-language-select>
 

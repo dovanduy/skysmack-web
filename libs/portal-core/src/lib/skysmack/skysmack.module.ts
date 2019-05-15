@@ -5,9 +5,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { SkysmackIndexComponent } from './components';
 import { SkysmackRoutingModule } from './skysmack-routing.module';
 import { NgSkysmackModule } from '@skysmack/ng-core';
+import { NgSkysmackSettingsFieldsConfig } from './ng-skysmack-settings-fields-config';
+import { SettingsModule, PortalUiModule } from '@skysmack/portal-ui';
 
 @NgModule({
   imports: [
+    PortalUiModule,
+    SettingsModule,
     CommonModule,
     HttpClientModule,
     SkysmackRoutingModule,
@@ -15,6 +19,8 @@ import { NgSkysmackModule } from '@skysmack/ng-core';
   ],
   exports: [],
   declarations: [SkysmackIndexComponent],
-  providers: [],
+  providers: [
+    { provide: 'NgSkysmackSettingsFieldsConfig', useClass: NgSkysmackSettingsFieldsConfig },
+  ],
 })
 export class SkysmackModule { }
