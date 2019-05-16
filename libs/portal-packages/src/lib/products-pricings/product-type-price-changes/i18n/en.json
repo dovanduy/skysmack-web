@@ -21,7 +21,10 @@
                 "CHANGE": "Change",
                 "CHANGETYPE": "Change type",
                 "VALIDFROM": "Valid from",
-                "VALIDTO": "Valid to"
+                "VALIDTO": "Valid to",
+                "MINUNITS": "Minimum units",
+                "MAXUNITS": "Maximum units",
+                "CHANGEINCLUDESALLUNITS": "Change includes all units"
             },
             "PLACEHOLDERS": {
                 "CURRENCYCODE": "Currency code",
@@ -29,7 +32,10 @@
                 "CHANGE": "Change",
                 "CHANGETYPE": "Change type",
                 "VALIDFROM": "Valid from",
-                "VALIDTO": "Valid to"
+                "VALIDTO": "Valid to",
+                "MINUNITS": "Minimum units",
+                "MAXUNITS": "Maximum units",
+                "CHANGEINCLUDESALLUNITS": "Change includes all units"
             },
             "VALIDATION": {
                 "CURRENCYCODE": {
@@ -49,6 +55,12 @@
                 },
                 "VALIDTO": {
                     "REQUIRED": "Valid to is required"
+                },
+                "MINUNITS": {
+                    "REQUIRED": "Minimum units is required"
+                },
+                "MAXUNITS": {
+                    "REQUIRED": "Maximum units is required"
                 }
             }
         },

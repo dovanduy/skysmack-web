@@ -24,7 +24,14 @@
                 "RECORDID": "Allokeret værelsestype",
                 "START": "Start",
                 "END": "Slut",
-                "EXCLUDEDAYSOFWEEK": "Ekskluder uge dage"
+                "EXCLUDEDAYSOFWEEK": "Ekskluder uge dage",
+                "MINUNITS": "Minimum antal enheder",
+                "MAXUNITS": "Maximum antal enheder",
+                "CHANGEINCLUDESALLUNITS": "Ændring skal gælde alle enheder",
+                "MINUNITSOFTIME": "Minimum antal tidsenheder",
+                "MAXUNITSOFTIME": "Maximum antal tidsenheder",
+                "CHANGEINCLUDEALLUNITSOFTIME": "Ændring skal gælde alle tidsenheder",
+                "PERUNITOFTIME": "Ændring skal gælde pr. tidsenhed"
             },
             "PLACEHOLDERS": {
                 "CURRENCYCODE": "Valuta kode",
@@ -35,7 +42,14 @@
                 "VALIDTO": "Gældende til",
                 "START": "Start",
                 "END": "Slut",
-                "EXCLUDEDAYSOFWEEK": "Ekskluder uge dage"
+                "EXCLUDEDAYSOFWEEK": "Ekskluder uge dage",
+                "MINUNITS": "Minimum antal enheder",
+                "MAXUNITS": "Maximum antal enheder",
+                "CHANGEINCLUDESALLUNITS": "Ændring skal gælde alle enheder",
+                "MINUNITSOFTIME": "Minimum antal tidsenheder",
+                "MAXUNITSOFTIME": "Maximum antal tidsenheder",
+                "CHANGEINCLUDEALLUNITSOFTIME": "Ændring skal gælde alle tidsenheder",
+                "PERUNITOFTIME": "Ændring skal gælde pr. tidsenhed"
             },
             "VALIDATION": {
                 "CURRENCYCODE": {
@@ -61,6 +75,18 @@
                 },
                 "END": {
                     "REQUIRED": "Slut er påkrævet"
+                },
+                "MINUNITS": {
+                    "REQUIRED": "Minimum antal enheder er påkrævet"
+                },
+                "MAXUNITS": {
+                    "REQUIRED": "Maximum antal enheder er påkrævet"
+                },
+                "MINUNITSOFTIME": {
+                    "REQUIRED": "Minimum antal tidsenheder er påkrævet"
+                },
+                "MAXUNITSOFTIME": {
+                    "REQUIRED": "Maximum antal tidsenheder er påkrævet"
                 }
             }
         },

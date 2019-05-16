@@ -9,7 +9,10 @@ export class NgProductPriceChangesValidation extends Validation {
         changeType: '',
         validFrom: '',
         validTo: '',
-        recordId: ''
+        recordId: '',
+        minUnits: '',
+        maxUnits: '',
+        changeIncludesAllUnits: ''
     };
 
     public validationMessages: StrIndex<{}> = {
@@ -29,6 +32,15 @@ export class NgProductPriceChangesValidation extends Validation {
             required: ''
         },
         recordId: {
+            required: ''
+        },
+        minUnits: {
+            required: ''
+        },
+        maxUnits: {
+            required: ''
+        },
+        changeIncludesAllUnits: {
             required: ''
         }
     };

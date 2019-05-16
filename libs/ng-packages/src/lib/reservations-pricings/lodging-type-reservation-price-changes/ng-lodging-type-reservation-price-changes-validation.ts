@@ -11,7 +11,14 @@ export class NgLodgingTypeReservationPriceChangesValidation extends Validation {
         validTo: '',
         recordId: '',
         start: '',
-        end: ''
+        end: '',
+        minUnits: '',
+        maxUnits: '',
+        changeIncludesAllUnits: '',
+        minUnitsOfTime: '',
+        maxUnitsOfTime: '',
+        changeIncludeAllUnitsOfTime: '',
+        perUnitOfTime: ''
     };
 
     public validationMessages: StrIndex<{}> = {
@@ -31,6 +38,27 @@ export class NgLodgingTypeReservationPriceChangesValidation extends Validation {
             required: '',
         },
         end: {
+            required: ''
+        },
+        minUnits: {
+            required: ''
+        },
+        maxUnits: {
+            required: ''
+        },
+        changeIncludesAllUnits: {
+            required: ''
+        },
+        minUnitsOfTime: {
+            required: ''
+        },
+        maxUnitsOfTime: {
+            required: ''
+        },
+        changeIncludeAllUnitsOfTime: {
+            required: ''
+        },
+        perUnitOfTime: {
             required: ''
         }
     };

@@ -9,9 +9,7 @@ export class PriceChange extends Record<number> {
     public validTo: Date;
     public recordId: number;
 
-    // START HERE: Add below props, then add these + those in ReservationPriceChange to lodging  reservation price change cruds, and only those in this model to product price change cruds.
-
-    // public int MinUnits
-    // public int MaxUnits
-    // public bool ChangeIncludesAllUnits
+    public minUnits: number;
+    public maxUnits: number;
+    public changeIncludesAllUnits: boolean;
 }

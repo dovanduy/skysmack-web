@@ -21,7 +21,10 @@
                 "CHANGE": "Ændring",
                 "CHANGETYPE": "Ændringstype",
                 "VALIDFROM": "Gældende fra",
-                "VALIDTO": "Gældende til"
+                "VALIDTO": "Gældende til",
+                "MINUNITS": "Minimum antal enheder",
+                "MAXUNITS": "Maximum antal enheder",
+                "CHANGEINCLUDESALLUNITS": "Ændring skal gælde alle enheder"
             },
             "PLACEHOLDERS": {
                 "CURRENCYCODE": "Valuta kode",
@@ -29,7 +32,10 @@
                 "CHANGE": "Pris ændring",
                 "CHANGETYPE": "Pris ændrings type",
                 "VALIDFROM": "Gældende fra",
-                "VALIDTO": "Gældende til"
+                "VALIDTO": "Gældende til",
+                "MINUNITS": "Minimum antal enheder",
+                "MAXUNITS": "Maximum antal enheder",
+                "CHANGEINCLUDESALLUNITS": "Ændring skal gælde alle enheder"
             },
             "VALIDATION": {
                 "CURRENCYCODE": {
@@ -49,6 +55,12 @@
                 },
                 "VALIDTO": {
                     "REQUIRED": "Gældende til er påkrævet"
+                },
+                "MINUNITS": {
+                    "REQUIRED": "Minimum antal enheder er påkrævet"
+                },
+                "MAXUNITS": {
+                    "REQUIRED": "Maximum antal enheder er påkrævet"
                 }
             }
         },
