@@ -62,6 +62,18 @@
             "UPDATING": "Opdatere rum reservations {{ id }}",
             "DELETING": "Sletter rum reservations {{ id }}",
             "ERROR": "Der opstod  en fejl ved rum reservations {{ id }}. Ret og prøv igen."
+        },
+        "ENTITY_ACTIONS": {
+            "CHECKIN": "Check ind",
+            "UNDOCHECKIN": "Fortryd check ind",
+            "CHECKOUT": "Check ud",
+            "UNDOCHECKOUT": "Fortryd check ud",
+            "CANCEL": "Aflys",
+            "UNDOCANCEL": "Fortryd aflysning",
+            "MOVE": "Flyt",
+            "UNDOMOVE": "Fortryd flytning",
+            "NOSHOW": "Ingen fremmøde",
+            "UNDONOSHOW": "Fortryd ingen fremmøde"
         }
     },
     "LODGING_RESERVATIONS_SETTINGS": {

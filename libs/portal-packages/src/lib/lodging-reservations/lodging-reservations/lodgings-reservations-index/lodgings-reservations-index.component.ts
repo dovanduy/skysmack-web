@@ -16,45 +16,47 @@ import { NgSkysmackStore } from '@skysmack/ng-core';
   templateUrl: './lodgings-reservations-index.component.html'
 })
 export class LodgingsReservationsIndexComponent extends RecordIndexComponent<LodgingReservationsAppState, LodgingReservation, number> implements OnInit {
+  public translationPrefix = 'LODGING_RESERVATIONS.ENTITY_ACTIONS.';
+
   public entityActions: EntityAction[] = [
     // Checkin
-    new EntityAction().asEventAction('Checkin', this.checkIn, 'label', this).setShowLogic((entity: LocalObject<LodgingReservation, number>) => {
+    new EntityAction().asEventAction(`${this.translationPrefix}CHECKIN`, this.checkIn, 'label', this).setShowLogic((entity: LocalObject<LodgingReservation, number>) => {
       return EnumHelpers.toIndexEnum(LodgingReservation.statusEnum)[entity.object.status] === LodgingReservation.statusEnum.Reserved;
     }),
-    new EntityAction().asEventAction('Undo Checkin', this.undoCheckin, 'label', this).setShowLogic((entity: LocalObject<LodgingReservation, number>) => {
+    new EntityAction().asEventAction(`${this.translationPrefix}UNDOCHECKIN`, this.undoCheckin, 'label', this).setShowLogic((entity: LocalObject<LodgingReservation, number>) => {
       return EnumHelpers.toIndexEnum(LodgingReservation.statusEnum)[entity.object.status] === LodgingReservation.statusEnum.InStay;
     }),
 
     // Checkout
-    new EntityAction().asEventAction('Checkout', this.checkOut, 'label_off', this).setShowLogic((entity: LocalObject<LodgingReservation, number>) => {
+    new EntityAction().asEventAction(`${this.translationPrefix}CHECKOUT`, this.checkOut, 'label_off', this).setShowLogic((entity: LocalObject<LodgingReservation, number>) => {
       return EnumHelpers.toIndexEnum(LodgingReservation.statusEnum)[entity.object.status] === LodgingReservation.statusEnum.InStay;
     }),
-    new EntityAction().asEventAction('Undo Checkout', this.undoCheckout, 'label_off', this).setShowLogic((entity: LocalObject<LodgingReservation, number>) => {
+    new EntityAction().asEventAction(`${this.translationPrefix}UNDOCHECKOUT`, this.undoCheckout, 'label_off', this).setShowLogic((entity: LocalObject<LodgingReservation, number>) => {
       return EnumHelpers.toIndexEnum(LodgingReservation.statusEnum)[entity.object.status] === LodgingReservation.statusEnum.CheckedOut;
     }),
 
     // Cancel
-    new EntityAction().asEventAction('Cancel', this.cancel, 'cancel', this).setShowLogic((entity: LocalObject<LodgingReservation, number>) => {
+    new EntityAction().asEventAction(`${this.translationPrefix}CANCEL`, this.cancel, 'cancel', this).setShowLogic((entity: LocalObject<LodgingReservation, number>) => {
       return EnumHelpers.toIndexEnum(LodgingReservation.statusEnum)[entity.object.status] === LodgingReservation.statusEnum.Reserved;
     }),
-    new EntityAction().asEventAction('Undo Cancel', this.undoCancel, 'cancel', this).setShowLogic((entity: LocalObject<LodgingReservation, number>) => {
+    new EntityAction().asEventAction(`${this.translationPrefix}UNDOCANCEL`, this.undoCancel, 'cancel', this).setShowLogic((entity: LocalObject<LodgingReservation, number>) => {
       return EnumHelpers.toIndexEnum(LodgingReservation.statusEnum)[entity.object.status] === LodgingReservation.statusEnum.Cancelled;
     }),
 
     // Move
-    new EntityAction().asEventAction('Move', this.move, 'compare_arrows', this).setShowLogic((entity: LocalObject<LodgingReservation, number>) => {
+    new EntityAction().asEventAction(`${this.translationPrefix}MOVE`, this.move, 'compare_arrows', this).setShowLogic((entity: LocalObject<LodgingReservation, number>) => {
       return EnumHelpers.toIndexEnum(LodgingReservation.statusEnum)[entity.object.status] === LodgingReservation.statusEnum.InStay;
     }),
-    new EntityAction().asEventAction('Undo move', this.undoMove, 'compare_arrows', this).setShowLogic((entity: LocalObject<LodgingReservation, number>) => {
+    new EntityAction().asEventAction(`${this.translationPrefix}UNDOMOVE`, this.undoMove, 'compare_arrows', this).setShowLogic((entity: LocalObject<LodgingReservation, number>) => {
       // TODO: This is likely NOT correct...
       return EnumHelpers.toIndexEnum(LodgingReservation.statusEnum)[entity.object.status] === LodgingReservation.statusEnum.InStay;
     }),
 
     // No show
-    new EntityAction().asEventAction('No show', this.noShow, 'highlight_off', this).setShowLogic((entity: LocalObject<LodgingReservation, number>) => {
+    new EntityAction().asEventAction(`${this.translationPrefix}NOSHOW`, this.noShow, 'highlight_off', this).setShowLogic((entity: LocalObject<LodgingReservation, number>) => {
       return EnumHelpers.toIndexEnum(LodgingReservation.statusEnum)[entity.object.status] === LodgingReservation.statusEnum.Reserved;
     }),
-    new EntityAction().asEventAction('Undo no show', this.undoNoShow, 'highlight_off', this).setShowLogic((entity: LocalObject<LodgingReservation, number>) => {
+    new EntityAction().asEventAction(`${this.translationPrefix}UNDONOSHOW`, this.undoNoShow, 'highlight_off', this).setShowLogic((entity: LocalObject<LodgingReservation, number>) => {
       return EnumHelpers.toIndexEnum(LodgingReservation.statusEnum)[entity.object.status] === LodgingReservation.statusEnum.NoShow;
     }),
 
