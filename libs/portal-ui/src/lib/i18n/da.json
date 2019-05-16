@@ -61,5 +61,13 @@
             "FIELD_FAILURE": "{{ errorMessage }} ({{httpErrorCode }})."
         },
         "CONNECTION_ERROR": "Der kunne ikke oprettes forbindelse til serveren."
+    },
+    "SKYSMACK": {
+        "FORM": {
+            "PLACEHOLDERS": {
+                "NAME": "Navn",
+                "DEFAULTTAX": "Moms"
+            }
+        }
     }
 }
