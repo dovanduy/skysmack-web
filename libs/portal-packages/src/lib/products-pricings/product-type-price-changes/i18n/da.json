@@ -19,23 +19,25 @@
                 "CURRENCYCODE": "Valuta kode",
                 "RECORDID": "Produkt type",
                 "CHANGE": "Ændring",
-                "CHANGETYPE": "Ændringstype",
+                "ISPERCENTAGE": "Ændring er i procent (%)",
+                "PERUNIT": "Per enhed",
                 "VALIDFROM": "Gældende fra",
                 "VALIDTO": "Gældende til",
                 "MINUNITS": "Minimum antal enheder",
                 "MAXUNITS": "Maximum antal enheder",
-                "CHANGEINCLUDESALLUNITS": "Ændring skal gælde alle enheder"
+                "ONLYVALIDUNITS": "Ændring gælder kun enheder indenfor min og max"
             },
             "PLACEHOLDERS": {
                 "CURRENCYCODE": "Valuta kode",
                 "RECORDID": "Produkt type",
                 "CHANGE": "Pris ændring",
-                "CHANGETYPE": "Pris ændrings type",
+                "PERUNIT": "Per enhed",
+                "ISPERCENTAGE": "Ændring er i procent (%)",
                 "VALIDFROM": "Gældende fra",
                 "VALIDTO": "Gældende til",
                 "MINUNITS": "Minimum antal enheder",
                 "MAXUNITS": "Maximum antal enheder",
-                "CHANGEINCLUDESALLUNITS": "Ændring skal gælde alle enheder"
+                "ONLYVALIDUNITS": "Ændring gælder kun enheder indenfor min og max"
             },
             "VALIDATION": {
                 "CURRENCYCODE": {
@@ -47,8 +49,8 @@
                 "CHANGE": {
                     "REQUIRED": "Pris ændring er påkrævet"
                 },
-                "CHANGETYPE": {
-                    "REQUIRED": "Pris ændrings type er påkrævet"
+                "ISPERCENTAGE": {
+                    "REQUIRED": "Felt er påkrævet"
                 },
                 "VALIDFROM": {
                     "REQUIRED": "Gældende fra er påkrævet"

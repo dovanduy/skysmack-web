@@ -19,23 +19,25 @@
                 "CURRENCYCODE": "Currency code",
                 "RECORDID": "Product type",
                 "CHANGE": "Change",
-                "CHANGETYPE": "Change type",
+                "ISPERCENTAGE": "Change is in Percent (%)",
+                "PERUNIT": "Per unit",
                 "VALIDFROM": "Valid from",
                 "VALIDTO": "Valid to",
                 "MINUNITS": "Minimum units",
                 "MAXUNITS": "Maximum units",
-                "CHANGEINCLUDESALLUNITS": "Change includes all units"
+                "ONLYVALIDUNITS": "Change only counts for units within min and max"
             },
             "PLACEHOLDERS": {
                 "CURRENCYCODE": "Currency code",
                 "RECORDID": "Product type",
                 "CHANGE": "Change",
-                "CHANGETYPE": "Change type",
+                "ISPERCENTAGE": "Change is in Percent (%)",
+                "PERUNIT": "Per unit",
                 "VALIDFROM": "Valid from",
                 "VALIDTO": "Valid to",
                 "MINUNITS": "Minimum units",
                 "MAXUNITS": "Maximum units",
-                "CHANGEINCLUDESALLUNITS": "Change includes all units"
+                "ONLYVALIDUNITS": "Change only counts for units within min and max"
             },
             "VALIDATION": {
                 "CURRENCYCODE": {
@@ -47,8 +49,8 @@
                 "CHANGE": {
                     "REQUIRED": "Change is required"
                 },
-                "CHANGETYPE": {
-                    "REQUIRED": "Change type is required"
+                "ISPERCENTAGE": {
+                    "REQUIRED": "Field is required"
                 },
                 "VALIDFROM": {
                     "REQUIRED": "Valid from is required"

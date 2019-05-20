@@ -22,13 +22,13 @@ export class NgSignInSettingsFieldsConfig extends FieldsConfig<SignInSettings, u
         const fields = [
             new Field({
                 component: CheckboxFieldComponent,
-                value: settings ? settings.object.requireConfirmedEmail : undefined,
+                value: settings ? settings.object.requireConfirmedEmail : false,
                 key: 'requireConfirmedEmail',
                 order: 12
             }),
             new Field({
                 component: CheckboxFieldComponent,
-                value: settings ? settings.object.requireConfirmedPhoneNumber : undefined,
+                value: settings ? settings.object.requireConfirmedPhoneNumber : false,
                 key: 'requireConfirmedPhoneNumber',
                 order: 13
             })

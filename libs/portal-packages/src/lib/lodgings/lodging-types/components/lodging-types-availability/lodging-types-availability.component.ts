@@ -101,28 +101,22 @@ export class LodgingTypesavailabilityComponent implements OnInit {
     ).pipe(
       map(values => {
         const lodgings = values[0];
-        const availableLodgingTypesCount = values[1];
+        const dictionary = values[1];
+        const datesArray = Object.keys(dictionary);
+        let freeLodgingTypes: {
+          id: string,
+          name: string,
+          count: number
+        }[];
 
-        // Note: THIS IS WRONG! We either need to restructure the dictionary so the date comes first, or first create the events, and then push the date.
-        // It is also possible the backend will change how this data is returned.
-        // Leave it 'as is' for now, then fix later.
-        return Object.keys(availableLodgingTypesCount).map(availableLodgingTypesCountKey => {
-          const dates = availableLodgingTypesCount[availableLodgingTypesCountKey];
-          return Object.keys(dates).map(dateKey => {
-            const date = dateKey;
-            let freeLodgingTypes: {
-              id: string,
-              name: string,
-              count: number
-            }[];
-
-
+        return datesArray.map(date => {
+          return Object.keys(dictionary[date]).map(() => {
             freeLodgingTypes = this.selectedLodgingTypeIds.map(selectedLodgingTypeId => {
               const lodgingTypeName = lodgings.find(lodging => lodging.object.id === selectedLodgingTypeId).object.name;
               return {
                 id: date.split('T')[0] + lodgingTypeName,
                 name: lodgingTypeName,
-                count: availableLodgingTypesCount[availableLodgingTypesCountKey][date]
+                count: dictionary[date][selectedLodgingTypeId]
               };
             });
 

@@ -16,7 +16,7 @@ export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey>
     public pages$: BehaviorSubject<LocalPage<TKey>[]> = new BehaviorSubject<LocalPage<TKey>[]>([]);
     public pagedEntities$: Observable<LocalObject<TRecord, TKey>[]>;
     public pagedQuery = new PagedQuery();
-    public entityActions$: Observable<EntityAction[]>;
+    public entityActions$ = new BehaviorSubject<EntityAction[]>([]);
     public entityActions: EntityAction[];
 
     public nextPageNumber = 1;
@@ -167,7 +167,7 @@ export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey>
     }
 
     public setEntityActions(): void {
-        this.entityActions$ = this.loadedPackage$.pipe(
+        this.subscriptionHandler.register(this.loadedPackage$.pipe(
             switchMap(loadedPackage => this.entityActionProviders.providers$.pipe(
                 switchMap(providers => {
                     const extractedProviders = providers[loadedPackage && loadedPackage.packageManifest && loadedPackage.packageManifest.id];
@@ -187,6 +187,7 @@ export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey>
                     }
                 })
             )),
-        );
+            map(x => this.entityActions$.next(x))
+        ).subscribe());
     }
 }

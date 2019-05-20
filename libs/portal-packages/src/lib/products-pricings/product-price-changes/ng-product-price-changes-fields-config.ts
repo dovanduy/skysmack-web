@@ -5,11 +5,9 @@ import { ProductPriceChange, PRODUCT_PRICE_CHANGES_AREA_KEY } from '@skysmack/pa
 import { FormRule, SelectField, Field } from '@skysmack/ng-ui';
 import { NgProductPriceChangesValidation, NgProductsSalesPriceStore, NgProductsStore, NgProductsActions } from '@skysmack/ng-packages';
 import { FieldsConfig, SelectFieldComponent, HiddenFieldComponent, DecimalFieldComponent, DateTimeFieldComponent, IntFieldComponent, CheckboxFieldComponent } from '@skysmack/portal-ui';
-import { of } from 'rxjs';
 import { FieldProviders } from '@skysmack/portal-ui';
 import { LoadedPackage } from '@skysmack/ng-redux';
 import { NgProductsSalesPriceActions } from '@skysmack/ng-packages';
-import { PriceChangeType } from '@skysmack/pricings';
 
 @Injectable({ providedIn: 'root' })
 export class NgProductPriceChangesFieldsConfig extends FieldsConfig<ProductPriceChange, number> {
@@ -60,14 +58,18 @@ export class NgProductPriceChangesFieldsConfig extends FieldsConfig<ProductPrice
                 order: 2,
                 showColumn: true
             }),
-            new SelectField({
-                component: SelectFieldComponent,
-                value: entity ? entity.object.changeType : undefined,
-                key: 'changeType',
-                validators: [Validators.required],
-                optionsData$: of(PriceChangeType),
-                optionsDataType: 'ts-enum',
-                order: 3,
+            new Field({
+                component: CheckboxFieldComponent,
+                value: entity ? entity.object.perUnit : false,
+                key: 'perUnit',
+                order: 4,
+                showColumn: true
+            }),
+            new Field({
+                component: CheckboxFieldComponent,
+                value: entity ? entity.object.isPercentage : false,
+                key: 'isPercentage',
+                order: 4,
                 showColumn: true
             }),
             new Field({
@@ -96,8 +98,8 @@ export class NgProductPriceChangesFieldsConfig extends FieldsConfig<ProductPrice
             }),
             new Field({
                 component: CheckboxFieldComponent,
-                value: entity ? entity.object.changeIncludesAllUnits : false,
-                key: 'changeIncludesAllUnits',
+                value: entity ? entity.object.onlyValidUnits : false,
+                key: 'onlyValidUnits',
                 order: 4,
                 showColumn: true
             }),

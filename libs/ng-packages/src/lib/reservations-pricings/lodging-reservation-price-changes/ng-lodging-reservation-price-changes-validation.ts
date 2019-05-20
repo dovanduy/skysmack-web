@@ -6,7 +6,7 @@ export class NgLodgingReservationPriceChangesValidation extends Validation {
     public formErrors = {
         change: '',
         currencyCode: '',
-        changeType: '',
+        isPercentage: '',
         validFrom: '',
         validTo: '',
         recordId: '',
@@ -14,10 +14,11 @@ export class NgLodgingReservationPriceChangesValidation extends Validation {
         end: '',
         minUnits: '',
         maxUnits: '',
-        changeIncludesAllUnits: '',
+        onlyValidUnits: '',
         minUnitsOfTime: '',
         maxUnitsOfTime: '',
-        changeIncludeAllUnitsOfTime: '',
+        perUnit: '',
+        onlyValidUnitsOfTime: '',
         perUnitOfTime: ''
     };
 
@@ -28,7 +29,7 @@ export class NgLodgingReservationPriceChangesValidation extends Validation {
         currencyCode: {
             required: '',
         },
-        changeType: {
+        isPercentage: {
             required: '',
         },
         recordId: {
@@ -46,7 +47,7 @@ export class NgLodgingReservationPriceChangesValidation extends Validation {
         maxUnits: {
             required: ''
         },
-        changeIncludesAllUnits: {
+        onlyValidUnits: {
             required: ''
         },
         minUnitsOfTime: {
@@ -55,7 +56,10 @@ export class NgLodgingReservationPriceChangesValidation extends Validation {
         maxUnitsOfTime: {
             required: ''
         },
-        changeIncludeAllUnitsOfTime: {
+        perUnit: {
+            required: ''
+        },
+        onlyValidUnitsOfTime: {
             required: ''
         },
         perUnitOfTime: {
