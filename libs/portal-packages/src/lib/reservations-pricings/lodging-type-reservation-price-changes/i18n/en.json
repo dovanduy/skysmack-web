@@ -18,7 +18,7 @@
             "LABELS": {
                 "CHANGE": "Price change",
                 "CURRENCYCODE": "Currency code",
-                "CHANGETYPE": "Price change type",
+                "ISPERCENTAGE": "Change is in percentage (%)",
                 "VALIDFROM": "Valid from",
                 "VALIDTO": "Valid to",
                 "RECORDID": "Allocated lodging type",
@@ -27,17 +27,18 @@
                 "EXCLUDEDAYSOFWEEK": "Exclude week days",
                 "MINUNITS": "Minimum units",
                 "MAXUNITS": "Maximum units",
-                "CHANGEINCLUDESALLUNITS": "Change includes all units",
+                "PERUNIT": "Per unit",
+                "ONLYVALIDUNITS": "Change only counts for units within min and max",
                 "MINUNITSOFTIME": "Minimum units of time",
                 "MAXUNITSOFTIME": "Maximum units of time",
-                "CHANGEINCLUDEALLUNITSOFTIME": "Change include all units of time",
+                "ONLYVALIDUNITSOFTIME": "Change only counts for units within the min and max time period",
                 "PERUNITOFTIME": "Per unit of time"
             },
             "PLACEHOLDERS": {
                 "CURRENCYCODE": "Currency code",
                 "RECORDID": "Lodging",
                 "CHANGE": "Price change",
-                "CHANGETYPE": "Price change type",
+                "ISPERCENTAGE": "Change is in percentage (%)",
                 "VALIDFROM": "Valid from",
                 "VALIDTO": "Valid to",
                 "START": "Start",
@@ -45,10 +46,11 @@
                 "EXCLUDEDAYSOFWEEK": "Exclude week days",
                 "MINUNITS": "Minimum units",
                 "MAXUNITS": "Maximum units",
-                "CHANGEINCLUDESALLUNITS": "Change includes all units",
+                "PERUNIT": "Per unit",
+                "ONLYVALIDUNITS": "Change only counts for units within min and max",
                 "MINUNITSOFTIME": "Minimum units of time",
                 "MAXUNITSOFTIME": "Maximum units of time",
-                "CHANGEINCLUDEALLUNITSOFTIME": "Change include all units of time",
+                "ONLYVALIDUNITSOFTIME": "Change only counts for units within the min and max time period",
                 "PERUNITOFTIME": "Per unit of time"
             },
             "VALIDATION": {
@@ -61,7 +63,7 @@
                 "CHANGE": {
                     "REQUIRED": "Price change is required"
                 },
-                "CHANGETYPE": {
+                "ISPERCENTAGE": {
                     "REQUIRED": "Price change type is required"
                 },
                 "VALIDFROM": {

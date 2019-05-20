@@ -9,7 +9,6 @@ import { LoadedPackage, getPackageDendencyAsStream } from '@skysmack/ng-redux';
 import { LodgingReservationPriceChange } from '@skysmack/packages-reservations-pricings';
 import { LODGING_RESERVATION_PRICE_CHANGES_AREA_KEY } from '@skysmack/packages-reservations-pricings';
 import { of } from 'rxjs';
-import { PriceChangeType } from '@skysmack/pricings';
 import { NgSkysmackStore } from '@skysmack/ng-core';
 import { map, take, switchMap } from 'rxjs/operators';
 
@@ -66,14 +65,20 @@ export class NgLodgingReservationPriceChangesFieldsConfig extends FieldsConfig<L
                 order: 2,
                 showColumn: true
             }),
-            new SelectField({
-                component: SelectFieldComponent,
-                value: entity ? entity.object.changeType : undefined,
-                key: 'changeType',
+            new Field({
+                component: CheckboxFieldComponent,
+                value: entity ? entity.object.perUnit : undefined,
+                key: 'perUnit',
                 validators: [Validators.required],
-                optionsData$: of(PriceChangeType),
-                optionsDataType: 'ts-enum',
-                order: 3,
+                order: 4,
+                showColumn: true
+            }),
+            new Field({
+                component: CheckboxFieldComponent,
+                value: entity ? entity.object.isPercentage : undefined,
+                key: 'isPercentage',
+                validators: [Validators.required],
+                order: 4,
                 showColumn: true
             }),
             new Field({
@@ -102,8 +107,8 @@ export class NgLodgingReservationPriceChangesFieldsConfig extends FieldsConfig<L
             }),
             new Field({
                 component: CheckboxFieldComponent,
-                value: entity ? entity.object.changeIncludesAllUnits : false,
-                key: 'changeIncludesAllUnits',
+                value: entity ? entity.object.onlyValidUnits : false,
+                key: 'onlyValidUnits',
                 order: 4,
                 showColumn: true
             }),
@@ -125,8 +130,8 @@ export class NgLodgingReservationPriceChangesFieldsConfig extends FieldsConfig<L
             }),
             new Field({
                 component: CheckboxFieldComponent,
-                value: entity ? entity.object.changeIncludeAllUnitsOfTime : false,
-                key: 'changeIncludeAllUnitsOfTime',
+                value: entity ? entity.object.onlyValidUnitsOfTime : false,
+                key: 'onlyValidUnitsOfTime',
                 order: 4,
                 showColumn: true
             }),
