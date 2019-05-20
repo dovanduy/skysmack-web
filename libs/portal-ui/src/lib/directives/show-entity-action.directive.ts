@@ -14,6 +14,7 @@ export class ShowEntityActionDirective implements OnInit {
     }
 
     ngOnInit() {
+        // console.log('updating entity action show status');
         if (!this.entityAction.runShowLogic(this.entity)) {
             this.renderer.setElementStyle(this.el.nativeElement, 'display', 'none');
         }

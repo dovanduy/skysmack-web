@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { LocalObject, EnumHelpers } from '@skysmack/framework';
 import { LodgingReservationsAppState, LodgingReservation, LODGING_RESERVATIONS_AREA_KEY } from '@skysmack/packages-lodging-reservations';
@@ -81,7 +81,7 @@ export class LodgingsReservationsIndexComponent extends RecordIndexComponent<Lod
     public sidebarMenu: NgLodgingsReservationsMenu,
     public pageTitle: EntityComponentPageTitle,
     public title: EntityComponentPageTitle,
-    public entityActionProviders: EntityActionProviders
+    public entityActionProviders: EntityActionProviders,
   ) {
     super(router, activatedRoute, actions, skysmackStore, store, fieldsConfig, entityActionProviders, title);
   }
