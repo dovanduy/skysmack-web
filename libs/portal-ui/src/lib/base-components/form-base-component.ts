@@ -39,6 +39,14 @@ export class FormBaseComponent<TAppState, TRecord extends Record<TKey>, TKey> ex
             if (formValues[key] === 'undefined' || formValues[key] === undefined) {
                 delete formValues[key];
             }
+
+            // TODO: HACK: Removes Z from date times. This should be removed when the backend binds correctly with noda time
+            if (formValues[key] instanceof Date) {
+                formValues[key] = formValues[key].toISOString().replace('Z', '')
+                console.log(formValues[key]);
+            }
+
+
             this.formatExtendedData(key, formValues);
         });
 
