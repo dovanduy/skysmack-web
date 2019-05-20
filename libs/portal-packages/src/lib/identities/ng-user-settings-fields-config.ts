@@ -27,7 +27,7 @@ export class NgUserSettingsFieldsConfig extends FieldsConfig<UserSettings, unkno
             }),
             new Field({
                 component: CheckboxFieldComponent,
-                value: settings ? settings.object.requireUniqueEmail : undefined,
+                value: settings ? settings.object.requireUniqueEmail : false,
                 key: 'requireUniqueEmail',
                 order: 2
             })

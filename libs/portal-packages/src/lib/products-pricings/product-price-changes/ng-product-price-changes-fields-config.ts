@@ -60,17 +60,15 @@ export class NgProductPriceChangesFieldsConfig extends FieldsConfig<ProductPrice
             }),
             new Field({
                 component: CheckboxFieldComponent,
-                value: entity ? entity.object.perUnit : undefined,
+                value: entity ? entity.object.perUnit : false,
                 key: 'perUnit',
-                validators: [Validators.required],
                 order: 4,
                 showColumn: true
             }),
             new Field({
                 component: CheckboxFieldComponent,
-                value: entity ? entity.object.isPercentage : undefined,
+                value: entity ? entity.object.isPercentage : false,
                 key: 'isPercentage',
-                validators: [Validators.required],
                 order: 4,
                 showColumn: true
             }),

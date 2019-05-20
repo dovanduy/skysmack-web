@@ -21,7 +21,7 @@ export class NgLockoutSettingsFieldsConfig extends FieldsConfig<LockoutSettings,
         const fields = [
             new Field({
                 component: CheckboxFieldComponent,
-                value: settings ? settings.object.allowedForNewUsers : undefined,
+                value: settings ? settings.object.allowedForNewUsers : false,
                 key: 'allowedForNewUsers',
                 order: 1
             }),
