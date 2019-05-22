@@ -51,6 +51,7 @@ export class RecordsContainerComponent implements OnInit, OnDestroy {
         if (entities) {
           this.loadedEntitiesCount$.next(entities.length);
         }
+
         return entities;
       }));
 
