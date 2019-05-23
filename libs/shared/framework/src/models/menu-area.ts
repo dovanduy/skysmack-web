@@ -5,6 +5,7 @@ export class MenuArea extends DocumentRecord<number>{
     public area: string;
     public translationPrefix: string;
     public order: number;
+    public display = true;
 
     public constructor(init?: Partial<MenuArea>) {
         super();

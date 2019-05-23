@@ -1,4 +1,4 @@
-import { Directive, OnInit, TemplateRef, ViewContainerRef, OnDestroy, Input } from '@angular/core';
+import { Directive, OnInit, TemplateRef, ViewContainerRef, OnDestroy, Input, Output, EventEmitter } from '@angular/core';
 import { SubscriptionLike } from 'rxjs';
 import { NgSkysmackStore, NgSkysmackActions } from '@skysmack/ng-core';
 import { map } from 'rxjs/operators';
@@ -10,15 +10,6 @@ import { Router } from '@angular/router';
 export class IsAnyPermissionDirective implements OnInit, OnDestroy {
     public static register = {};
     public subscription: SubscriptionLike;
-
-    constructor(
-        public templateRef: TemplateRef<any>,
-        public viewContainer: ViewContainerRef,
-        public skysmackStore: NgSkysmackStore,
-        public skysmackActions: NgSkysmackActions,
-        public router: Router
-    ) { }
-
     private displaying = false;
 
     private _permissions: string[] = [];
@@ -35,6 +26,17 @@ export class IsAnyPermissionDirective implements OnInit, OnDestroy {
         this._showDefault = showDefault;
     }
 
+    @Output() public permissionsChecked = new EventEmitter();
+
+
+    constructor(
+        public templateRef: TemplateRef<any>,
+        public viewContainer: ViewContainerRef,
+        public skysmackStore: NgSkysmackStore,
+        public skysmackActions: NgSkysmackActions,
+        public router: Router
+    ) { }
+
     ngOnInit() {
         if (this._permissions && this._permissions.length > 0) {
             if (this._showDefault) {
@@ -46,6 +48,7 @@ export class IsAnyPermissionDirective implements OnInit, OnDestroy {
             this.subscription = this.skysmackStore.getPermissions(packagePath).pipe(
                 map(permissions => {
                     this.show(this.includesAny(this._permissions, permissions));
+                    this.permissionsChecked.next(this.displaying);
                 })
             ).subscribe();
         } else {
