@@ -39,12 +39,6 @@ export class NgLodgingsReservationsMenu extends SidebarMenu {
             order: 4,
         }));
 
-        this.primaryMenuAreas.push(new MenuArea({
-            area: 'connected_packages',
-            translationPrefix: 'UI.MISC.',
-            order: 4,
-        }));
-
         this.primaryMenuItems.push(new MenuItem({
             url: '/' + this.packagePath + '/create',
             displayName: this.translationPrefix + 'CREATE',

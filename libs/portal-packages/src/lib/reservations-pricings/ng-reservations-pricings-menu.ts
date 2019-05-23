@@ -28,11 +28,6 @@ export class NgReservationsPricingsMenu extends SidebarMenu {
             translationPrefix: this.translationPrefix,
             order: 1,
         }));
-        this.primaryMenuAreas.push(new MenuArea({
-            area: 'connected_packages',
-            translationPrefix: 'UI.MISC.',
-            order: 2,
-        }));
 
         this.primaryMenuItems.push(new MenuItem({
             url: 'reservation-price-changes',

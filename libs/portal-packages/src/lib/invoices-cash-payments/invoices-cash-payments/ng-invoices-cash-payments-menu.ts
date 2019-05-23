@@ -35,11 +35,6 @@ export class NgInvoicesCashPaymentsMenu extends SidebarMenu {
             translationPrefix: this.translationPrefix,
             order: 2,
         }));
-        this.primaryMenuAreas.push(new MenuArea({
-            area: 'connected_packages',
-            translationPrefix: 'UI.MISC.',
-            order: 2,
-        }));
 
         this.primaryMenuItems.push(new MenuItem({
             url: 'create',
