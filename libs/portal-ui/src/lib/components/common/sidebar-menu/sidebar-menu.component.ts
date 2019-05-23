@@ -1,10 +1,9 @@
-import { Component, Input, OnInit, ViewChild, ElementRef, ViewChildren, QueryList } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { SidebarMenu } from './../../../models/sidebar-menu/sidebar-menu';
-import { element } from '@angular/core/src/render3';
-import { MenuItem, MenuArea } from '@skysmack/framework';
+import { MenuItem } from '@skysmack/framework';
 
 @Component({
   selector: 'ss-sidebar-menu',
