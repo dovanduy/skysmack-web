@@ -46,6 +46,10 @@ export class ValidatorsFieldComponent extends FieldBaseComponent<Field> implemen
     super.ngOnInit();
     this.packagePath = this.router.url.split('/')[1];
 
+    if (!this.field.value) {
+      this.setFieldValue([]);
+    }
+
     // Get default values
     this.addedValidators = this.getFieldValue() ? this.getFieldValue() : [];
     this.selectedFieldType = this.getOtherFieldValue('type');
@@ -118,6 +122,6 @@ export class ValidatorsFieldComponent extends FieldBaseComponent<Field> implemen
 
   public removeValidator(selectedValidator: FieldValidator) {
     this.addedValidators = this.addedValidators.filter(validator => validator.name !== selectedValidator.name);
-    this.setFieldValue(this.addedValidators.length === 0 ? null : this.addedValidators);
+    this.setFieldValue(this.addedValidators.length === 0 ? [] : this.addedValidators);
   }
 }
