@@ -63,7 +63,7 @@ export abstract class SidebarMenu implements OnDestroy {
                             this.primaryMenuAreas.push(new MenuArea({
                                 area: 'connected_packages',
                                 translationPrefix: 'UI.MISC.',
-                                order: 4,
+                                order: 1000,
                             }));
                         }
 
