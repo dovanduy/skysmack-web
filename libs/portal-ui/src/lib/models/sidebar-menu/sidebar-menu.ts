@@ -58,7 +58,7 @@ export abstract class SidebarMenu implements OnDestroy {
                     filter(loadedPackage => loadedPackage._package !== null),
                     switchMap((currentPackage: LoadedPackage) => provider.getItems(this.menuId, currentPackage._package.path)),
                     map((menuItems: MenuItem[]) => {
-                        // Add  the Connected Packages area if any menu items is provided, and it doesn't alreadt exist.
+                        // Add the Connected Packages area if any menu items is provided, and it doesn't already exist.
                         if (menuItems.length > 0 && !this.primaryMenuAreas.find(area => area.area === 'connected_packages')) {
                             this.primaryMenuAreas.push(new MenuArea({
                                 area: 'connected_packages',

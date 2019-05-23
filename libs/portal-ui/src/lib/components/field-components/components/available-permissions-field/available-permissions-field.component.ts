@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FieldBaseComponent } from '../field-base-component';
 import { NgPackagesStore, NgSkysmackStore, NgSkysmackActions } from '@skysmack/ng-core';
-import { switchMap, map } from 'rxjs/operators';
+import { switchMap, map, startWith } from 'rxjs/operators';
 import { Field, SelectFieldOption } from '@skysmack/ng-ui';
 import { StrIndex } from '@skysmack/framework';
 import { Observable } from 'rxjs';
@@ -31,6 +31,7 @@ export class AvailablePermissionsFieldComponent extends FieldBaseComponent<Field
 
   private getPermissions() {
     this.permissions$ = this.fh.form.valueChanges.pipe(
+      startWith(null),
       switchMap(() => {
         const packagePath = this.getOtherFieldValue('packagePath');
         if (packagePath && !this.requestedPermissions[packagePath]) {

@@ -42,7 +42,7 @@ export class NgPersonsMenu extends SidebarMenu {
             area: 'actions',
             order: 1,
             icon: 'groupAdd',
-            // permissions: ['AddPersons']
+            permissions: ['AddPersons']
         }));
         this.primaryMenuItems.push(new MenuItem({
             url: 'fields',
@@ -50,7 +50,7 @@ export class NgPersonsMenu extends SidebarMenu {
             area: 'manage',
             order: 2,
             icon: 'shortText',
-            // permissions: ['FindPersonFields', 'AddPersonFields', 'UpdatePersonFields', 'RemovePersonFields']
+            permissions: ['FindPersonFields', 'AddPersonFields', 'UpdatePersonFields', 'RemovePersonFields']
         }));
     }
 
