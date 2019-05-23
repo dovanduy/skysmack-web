@@ -5,7 +5,7 @@ import { LodgingType, LODGING_TYPES_AREA_KEY } from '@skysmack/packages-lodgings
 import { FieldProviders, DocumentFieldsConfig, StringFieldComponent, HiddenFieldComponent } from '@skysmack/portal-ui';
 import { NgLodgingTypesValidation } from '@skysmack/ng-packages';
 import { FormRule, Field } from '@skysmack/ng-ui';
-import { NgFieldStore, LoadedPackage } from '@skysmack/ng-redux';
+import { NgFieldStore, LoadedPackage } from '@skysmack/ng-framework';
 import { Router } from '@angular/router';
 
 @Injectable({ providedIn: 'root' })

@@ -5,7 +5,7 @@ import { NgReceiptsActions, NgReceiptsStore } from '@skysmack/ng-packages';
 import { ReceiptsAppState, Receipt, RECEIPTS_AREA_KEY } from '@skysmack/packages-terminal-payments';
 import { NgReceiptsMenu } from '../../ng-receipts-menu';
 import { EntityAction } from '@skysmack/ng-ui';
-import { NgFieldActions } from '@skysmack/ng-redux';
+import { NgFieldActions } from '@skysmack/ng-framework';
 import { NgReceiptsFieldsConfig } from '../../ng-receipts-fields-config';
 import { NgSkysmackStore } from '@skysmack/ng-core';
 

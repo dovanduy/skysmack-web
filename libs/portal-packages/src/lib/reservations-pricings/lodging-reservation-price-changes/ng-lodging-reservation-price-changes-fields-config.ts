@@ -5,7 +5,7 @@ import { FormRule, SelectField, Field } from '@skysmack/ng-ui';
 import { NgLodgingReservationPriceChangesValidation, NgLodgingsStore, NgLodgingsActions } from '@skysmack/ng-packages';
 import { FieldsConfig, SelectFieldComponent, HiddenFieldComponent, DecimalFieldComponent, DateTimeFieldComponent, FlaggedEnumFieldComponent, DaysOfWeekFlagged, IntFieldComponent, CheckboxFieldComponent } from '@skysmack/portal-ui';
 import { FieldProviders } from '@skysmack/portal-ui';
-import { LoadedPackage, getPackageDendencyAsStream } from '@skysmack/ng-redux';
+import { LoadedPackage, getPackageDendencyAsStream } from '@skysmack/ng-framework';
 import { LodgingReservationPriceChange } from '@skysmack/packages-reservations-pricings';
 import { LODGING_RESERVATION_PRICE_CHANGES_AREA_KEY } from '@skysmack/packages-reservations-pricings';
 import { of } from 'rxjs';

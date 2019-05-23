@@ -1,9 +1,9 @@
-import { RecordEpicsBase } from '@skysmack/ng-redux';
+import { RecordEpicsBase } from '@skysmack/ng-framework';
 import { Product, PRODUCTS_REDUX_KEY } from '@skysmack/packages-products';
 import { NgProductsRequests } from './ng-products-requests';
 import { Injectable } from '@angular/core';
 import { NgProductsNotifications } from '../ng-products-notifications';
-import { getReadDependencies } from '@skysmack/ng-redux';
+import { getReadDependencies } from '@skysmack/ng-framework';
 import { NgSkysmackStore } from '@skysmack/ng-core';
 import { NgProductTypesStore } from '../../product-types/redux/ng-product-types-store';
 import { NgProductTypesActions } from '../../product-types/redux/ng-product-types-actions';

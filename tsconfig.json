@@ -77,8 +77,8 @@
       "@skysmack/ng-packages": [
         "libs/ng-packages/src/public_api.ts"
       ],
-      "@skysmack/ng-redux": [
-        "libs/ng-redux/src/public_api.ts"
+      "@skysmack/ng-framework": [
+        "libs/ng-framework/src/public_api.ts"
       ],
       "@skysmack/ng-ui": [
         "libs/ng-ui/src/public_api.ts"

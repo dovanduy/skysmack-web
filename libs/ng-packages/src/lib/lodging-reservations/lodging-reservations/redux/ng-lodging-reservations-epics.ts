@@ -1,4 +1,4 @@
-import { RecordEpicsBase, getReadDependencies } from '@skysmack/ng-redux';
+import { RecordEpicsBase, getReadDependencies } from '@skysmack/ng-framework';
 import { LodgingReservation, LODGING_RESERVATIONS_REDUX_KEY } from '@skysmack/packages-lodging-reservations';
 import { NgLodgingReservationsRequests } from './ng-lodging-reservations-requests';
 import { Injectable } from '@angular/core';

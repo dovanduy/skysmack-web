@@ -5,7 +5,7 @@ import { LodgingSettings, LODGINGS_AREA_KEY } from '@skysmack/packages-lodgings'
 import { NgLodgingSettingsValidation } from '@skysmack/ng-packages';
 import { FieldsConfig, StringFieldComponent, DateFieldComponent } from '@skysmack/portal-ui';
 import { FieldProviders } from '@skysmack/portal-ui';
-import { LoadedPackage } from '@skysmack/ng-redux';
+import { LoadedPackage } from '@skysmack/ng-framework';
 
 @Injectable({ providedIn: 'root' })
 export class NgLodgingSettingsFieldsConfig extends FieldsConfig<LodgingSettings, unknown> {

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { NgRedux } from '@angular-redux/store';
 import { User, UsersAppState, UsersState, USERS_REDUCER_KEY } from '@skysmack/packages-identities';
-import { NgRecordStore } from '@skysmack/ng-redux';
+import { NgRecordStore } from '@skysmack/ng-framework';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { defined } from '@skysmack/framework';

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { NgRedux } from '@angular-redux/store';
 import { LodgingReservation, LodgingReservationsAppState, LODGING_RESERVATIONS_REDUCER_KEY } from '@skysmack/packages-lodging-reservations';
-import { NgRecordStore } from '@skysmack/ng-redux';
+import { NgRecordStore } from '@skysmack/ng-framework';
 import { Observable } from 'rxjs';
 import { LocalObject, DependencyOptions } from '@skysmack/framework';
 import { NgSkysmackStore } from '@skysmack/ng-core';

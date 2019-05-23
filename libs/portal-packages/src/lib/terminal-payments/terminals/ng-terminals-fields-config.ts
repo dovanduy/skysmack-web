@@ -6,7 +6,7 @@ import { Field } from '@skysmack/ng-ui';
 import { FieldsConfig, HiddenFieldComponent } from '@skysmack/portal-ui';
 import { NgTerminalsValidation } from '@skysmack/ng-packages';
 import { FieldProviders } from '@skysmack/portal-ui';
-import { LoadedPackage } from '@skysmack/ng-redux';
+import { LoadedPackage } from '@skysmack/ng-framework';
 
 @Injectable({ providedIn: 'root' })
 export class NgTerminalsFieldsConfig extends FieldsConfig<Terminal, number> {

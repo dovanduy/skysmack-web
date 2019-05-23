@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { NgRedux } from '@angular-redux/store';
 import { ReceiptsAppState, Receipt, RECEIPTS_REDUCER_KEY } from '@skysmack/packages-terminal-payments';
-import { NgRecordStore } from '@skysmack/ng-redux';
+import { NgRecordStore } from '@skysmack/ng-framework';
 import { NgSkysmackStore } from '@skysmack/ng-core';
 
 @Injectable({ providedIn: 'root' })

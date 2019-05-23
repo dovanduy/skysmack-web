@@ -7,7 +7,7 @@ import { NgInvoicePaymentsStore } from '@skysmack/ng-packages';
 import { InvoicePayment, InvoicePaymentsAppState, INVOICE_PAYMENTS_AREA_KEY } from '@skysmack/packages-invoices';
 import { NgInvoicePaymentsMenu } from './../../ng-invoice-payments-menu';
 import { EntityAction } from '@skysmack/ng-ui';
-import { NgFieldActions } from '@skysmack/ng-redux';
+import { NgFieldActions } from '@skysmack/ng-framework';
 import { NgInvoicePaymentsFieldsConfig } from '../../ng-invoice-payments-fields-config';
 
 @Component({

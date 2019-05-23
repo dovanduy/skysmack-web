@@ -1,4 +1,4 @@
-import { RecordEpicsBase } from '@skysmack/ng-redux';
+import { RecordEpicsBase } from '@skysmack/ng-framework';
 import { LodgingType, LodgingTypesActions, LODGING_TYPES_REDUX_KEY } from '@skysmack/packages-lodgings';
 import { Injectable } from '@angular/core';
 import { NgLodgingTypesRequests } from './ng-lodging-types-requests';

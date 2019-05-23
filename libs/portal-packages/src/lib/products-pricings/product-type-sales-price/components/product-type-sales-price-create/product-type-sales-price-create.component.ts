@@ -8,7 +8,7 @@ import { NgProductTypeSalesPriceStore } from '@skysmack/ng-packages';
 import { map, take } from 'rxjs/operators';
 import { PagedQuery, defined } from '@skysmack/framework';
 import { NgProductTypeSalesPriceFieldsConfig } from '../../ng-product-type-sales-price-fields-config';
-import { LoadedPackage } from '@skysmack/ng-redux';
+import { LoadedPackage } from '@skysmack/ng-framework';
 
 @Component({
   selector: 'ss-product-type-sales-price-create',

@@ -8,7 +8,7 @@ import { NgLodgingsActions } from '@skysmack/ng-packages';
 import { NgLodgingsStore } from '@skysmack/ng-packages';
 import { NgLodgingsMenu } from '../../ng-lodgings-menu';
 import { EntityAction } from '@skysmack/ng-ui';
-import { NgFieldActions } from '@skysmack/ng-redux';
+import { NgFieldActions } from '@skysmack/ng-framework';
 import { NgLodgingsFieldsConfig } from '../../ng-lodgings-fields-config';
 
 

@@ -6,9 +6,9 @@ import { MenuItem } from '@skysmack/framework';
 
 import { NgSkysmackStore } from '@skysmack/ng-core';
 import { SubscriptionHandler } from '@skysmack/framework';
-import { NgMenuItemProviders, getAdditionalPaths, getPackageDendencyAsStream } from '@skysmack/ng-redux';
+import { NgMenuItemProviders, getAdditionalPaths, getPackageDendencyAsStream } from '@skysmack/ng-framework';
 import { combineLatest } from 'rxjs';
-import { LoadedPackage } from '@skysmack/ng-redux';
+import { LoadedPackage } from '@skysmack/ng-framework';
 
 interface BackButtonOptions {
     connectedPackage?: boolean;

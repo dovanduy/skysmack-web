@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { NgRedux } from '@angular-redux/store';
 import { Invoice, InvoicesAppState, INVOICES_REDUCER_KEY } from '@skysmack/packages-invoices';
-import { NgRecordStore } from '@skysmack/ng-redux';
+import { NgRecordStore } from '@skysmack/ng-framework';
 import { LocalObject, DependencyOptions } from '@skysmack/framework';
 import { Observable } from 'rxjs';
 import { NgSkysmackStore } from '@skysmack/ng-core';

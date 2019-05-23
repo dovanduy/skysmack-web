@@ -2,7 +2,7 @@ import { Person, PERSONS_REDUX_KEY, PERSONS_ADDITIONAL_PATHS } from '@skysmack/p
 import { Injectable, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ApiDomain, API_DOMAIN_INJECTOR_TOKEN } from '@skysmack/framework';
-import { NgRecordRequests } from '@skysmack/ng-redux';
+import { NgRecordRequests } from '@skysmack/ng-framework';
 
 @Injectable({ providedIn: 'root' })
 export class NgPersonsRequests extends NgRecordRequests<Person, number> {

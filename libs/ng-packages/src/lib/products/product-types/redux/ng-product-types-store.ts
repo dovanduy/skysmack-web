@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { NgRedux } from '@angular-redux/store';
 import { ProductTypesAppState, ProductType } from '@skysmack/packages-products';
-import { NgRecordStore } from '@skysmack/ng-redux';
+import { NgRecordStore } from '@skysmack/ng-framework';
 import { NgSkysmackStore } from '@skysmack/ng-core';
 
 @Injectable({ providedIn: 'root' })

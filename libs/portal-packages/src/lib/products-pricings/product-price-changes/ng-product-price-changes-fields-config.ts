@@ -6,7 +6,7 @@ import { FormRule, SelectField, Field } from '@skysmack/ng-ui';
 import { NgProductPriceChangesValidation, NgProductsSalesPriceStore, NgProductsStore, NgProductsActions } from '@skysmack/ng-packages';
 import { FieldsConfig, SelectFieldComponent, HiddenFieldComponent, DecimalFieldComponent, DateTimeFieldComponent, IntFieldComponent, CheckboxFieldComponent } from '@skysmack/portal-ui';
 import { FieldProviders } from '@skysmack/portal-ui';
-import { LoadedPackage } from '@skysmack/ng-redux';
+import { LoadedPackage } from '@skysmack/ng-framework';
 import { NgProductsSalesPriceActions } from '@skysmack/ng-packages';
 
 @Injectable({ providedIn: 'root' })

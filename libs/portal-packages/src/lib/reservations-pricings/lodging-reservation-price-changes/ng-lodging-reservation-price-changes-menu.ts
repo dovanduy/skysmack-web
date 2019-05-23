@@ -4,7 +4,7 @@ import { SidebarMenu } from '@skysmack/portal-ui';
 import { NgSkysmackStore } from '@skysmack/ng-core';
 import { MenuArea } from '@skysmack/framework';
 import { MenuItem } from '@skysmack/framework';
-import { NgMenuItemProviders } from '@skysmack/ng-redux';
+import { NgMenuItemProviders } from '@skysmack/ng-framework';
 import { LODGING_RESERVATION_PRICE_CHANGES_AREA_KEY } from '@skysmack/packages-reservations-pricings';
 
 @Injectable({ providedIn: 'root' })

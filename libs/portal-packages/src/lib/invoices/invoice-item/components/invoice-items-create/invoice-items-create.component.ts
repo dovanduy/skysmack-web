@@ -6,7 +6,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { EditorNavService } from '@skysmack/portal-ui';
 import { DocumentRecordFormComponent } from '@skysmack/portal-ui';
 import { NgInvoiceItemsStore } from '@skysmack/ng-packages';
-import { NgFieldActions } from '@skysmack/ng-redux';
+import { NgFieldActions } from '@skysmack/ng-framework';
 import { NgInvoiceItemsFieldsConfig } from '../../ng-invoice-items-fields-config';
 import { map, take } from 'rxjs/operators';
 

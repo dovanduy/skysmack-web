@@ -8,7 +8,7 @@ import { ReducerRegistry, queueReducer } from '@skysmack/redux';
 import { portalReducer } from './portal-reducer';
 import { hydratedReducer } from './hydrated-reducer';
 import { mergeMap } from 'rxjs/operators';
-import { epic$ } from '@skysmack/ng-redux';
+import { epic$ } from '@skysmack/ng-framework';
 
 export const configureRedux = (ngRedux: NgRedux<any>, ngReduxRouter: NgReduxRouter, reduxOfflineConfiguration: ReduxOfflineConfiguration) => {
     const initialState: DeepPartial<any> = {};

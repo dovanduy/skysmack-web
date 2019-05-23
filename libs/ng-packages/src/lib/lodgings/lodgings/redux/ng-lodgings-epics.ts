@@ -1,4 +1,4 @@
-import { RecordEpicsBase } from '@skysmack/ng-redux';
+import { RecordEpicsBase } from '@skysmack/ng-framework';
 import { Lodging, LodgingsActions, LODGINGS_REDUX_KEY } from '@skysmack/packages-lodgings';
 import { Injectable } from '@angular/core';
 import { NgLodgingsRequests } from './ng-lodgings-requests';
@@ -11,7 +11,7 @@ import { switchMap } from 'rxjs/operators';
 import { NgLodgingTypesStore } from '../../lodging-types/redux/ng-lodgings-types-store';
 import { NgLodgingTypesActions } from '../../lodging-types/redux/ng-lodging-types-actions';
 import { NgSkysmackStore } from '@skysmack/ng-core';
-import { getReadDependencies } from '@skysmack/ng-redux';
+import { getReadDependencies } from '@skysmack/ng-framework';
 
 
 @Injectable({ providedIn: 'root' })

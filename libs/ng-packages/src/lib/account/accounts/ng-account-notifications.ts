@@ -1,5 +1,5 @@
 import { Injectable, Inject } from '@angular/core';
-import { Notifications, NOTIFICATIONS_INJECTOR_TOKEN } from '@skysmack/ng-redux';
+import { Notifications, NOTIFICATIONS_INJECTOR_TOKEN } from '@skysmack/ng-framework';
 
 
 @Injectable({ providedIn: 'root' })

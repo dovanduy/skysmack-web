@@ -2,7 +2,7 @@ import { AssignmentType, ASSIGNMENT_TYPES_REDUX_KEY, ASSIGNMENT_TYPES_ADDITIONAL
 import { Injectable, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ApiDomain, API_DOMAIN_INJECTOR_TOKEN } from '@skysmack/framework';
-import { NgRecordRequests } from '@skysmack/ng-redux';
+import { NgRecordRequests } from '@skysmack/ng-framework';
 
 @Injectable({ providedIn: 'root' })
 export class NgAssignmentTypesRequests extends NgRecordRequests<AssignmentType, number> {

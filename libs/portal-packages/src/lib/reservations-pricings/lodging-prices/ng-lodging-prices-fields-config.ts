@@ -5,7 +5,7 @@ import { FormRule, SelectField, Field } from '@skysmack/ng-ui';
 import { NgLodgingPricesValidation, NgLodgingsStore, NgLodgingsActions } from '@skysmack/ng-packages';
 import { FieldsConfig, SelectFieldComponent, HiddenFieldComponent, DecimalFieldComponent } from '@skysmack/portal-ui';
 import { FieldProviders } from '@skysmack/portal-ui';
-import { LoadedPackage, getPackageDendencyAsStream } from '@skysmack/ng-redux';
+import { LoadedPackage, getPackageDendencyAsStream } from '@skysmack/ng-framework';
 import { LodgingPrice, LODGING_PRICES_AREA_KEY } from '@skysmack/packages-reservations-pricings';
 import { NgSkysmackStore } from '@skysmack/ng-core';
 import { switchMap, map, take, tap } from 'rxjs/operators';

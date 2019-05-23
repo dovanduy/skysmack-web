@@ -7,7 +7,7 @@ import { LodgingsAppState, Lodging } from '@skysmack/packages-lodgings';
 import { NgLodgingsActions } from '@skysmack/ng-packages';
 import { NgLodgingsStore } from '@skysmack/ng-packages';
 import { NgLodgingTypesActions } from '@skysmack/ng-packages';
-import { NgFieldActions } from '@skysmack/ng-redux';
+import { NgFieldActions } from '@skysmack/ng-framework';
 import { NgLodgingsFieldsConfig } from '../../ng-lodgings-fields-config';
 
 @Component({

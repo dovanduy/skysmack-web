@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
 import { ApiDomain, API_DOMAIN_INJECTOR_TOKEN } from '@skysmack/framework';
 import { RecurringAssignment, RECURRING_ASSIGNMENTS_REDUX_KEY, RECURRING_ASSIGNMENTS_ADDITIONAL_PATHS } from '@skysmack/packages-maintenance';
-import { NgRecordRequests } from '@skysmack/ng-redux';
+import { NgRecordRequests } from '@skysmack/ng-framework';
 
 @Injectable({ providedIn: 'root' })
 export class NgRecurringAssignmentsRequests extends NgRecordRequests<RecurringAssignment, number> {

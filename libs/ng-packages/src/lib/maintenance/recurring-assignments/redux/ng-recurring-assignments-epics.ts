@@ -1,11 +1,11 @@
-import { RecordEpicsBase } from '@skysmack/ng-redux';
+import { RecordEpicsBase } from '@skysmack/ng-framework';
 import { RecurringAssignment, RECURRING_ASSIGNMENTS_REDUX_KEY } from '@skysmack/packages-maintenance';
 import { NgRecurringAssignmentsRequests } from './ng-recurring-assignments-requests';
 import { Injectable } from '@angular/core';
 import { NgRecurringAssignmentsNotifications } from '../ng-recurring-assignments-notifications';
 import { NgAssignmentTypesActions } from '../../assignment-types/redux/ng-assignment-types-actions';
 import { NgAssignmentTypesStore } from '../../assignment-types/redux/ng-assignment-types-store';
-import { getReadDependencies } from '@skysmack/ng-redux';
+import { getReadDependencies } from '@skysmack/ng-framework';
 import { NgSkysmackStore } from '@skysmack/ng-core';
 
 @Injectable({ providedIn: 'root' })

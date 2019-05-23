@@ -3,7 +3,7 @@ import { take } from 'rxjs/operators';
 import { TranslateService } from '@ngx-translate/core';
 import { NumIndex } from '@skysmack/framework';
 import { Injectable } from '@angular/core';
-import { Notifications } from '@skysmack/ng-redux';
+import { Notifications } from '@skysmack/ng-framework';
 
 @Injectable({ providedIn: 'root' })
 export class NgNotifications implements Notifications {

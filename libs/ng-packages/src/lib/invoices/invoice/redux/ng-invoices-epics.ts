@@ -1,7 +1,7 @@
 import { NgInvoicesRequests } from './ng-invoices-requests';
 import { Invoice, INVOICES_REDUX_KEY } from '@skysmack/packages-invoices';
 import { Injectable } from '@angular/core';
-import { RecordEpicsBase, getReadDependencies } from '@skysmack/ng-redux';
+import { RecordEpicsBase, getReadDependencies } from '@skysmack/ng-framework';
 import { NgInvoicesNotifications } from '../ng-invoices-notifications';
 import { NgSkysmackStore } from '@skysmack/ng-core';
 import { NgInvoiceItemsStore } from '../../invoice-item/redux/ng-invoice-items-store';

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { NgAccountEpics } from './accounts';
-import { registerRedux } from '@skysmack/ng-redux';
+import { registerRedux } from '@skysmack/ng-framework';
 import { ACCOUNTS_AREA_KEY, accountReducer, ACCOUNTS_REDUCER_KEY } from '@skysmack/packages-account';
 
 @NgModule({

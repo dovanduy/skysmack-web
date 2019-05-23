@@ -1,5 +1,5 @@
 import { LodgingsType } from '@skysmack/packages-lodgings';
-import { PackageLoader, PackageManifest } from '@skysmack/ng-redux';
+import { PackageLoader, PackageManifest } from '@skysmack/ng-framework';
 
 
 export class LodgingsPackageManifest extends LodgingsType implements PackageManifest {

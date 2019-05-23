@@ -1,7 +1,7 @@
 import { NgPersonsRequests } from './ng-persons-requests';
 import { Person, PERSONS_REDUX_KEY } from '@skysmack/packages-persons';
 import { Injectable } from '@angular/core';
-import { RecordEpicsBase } from '@skysmack/ng-redux';
+import { RecordEpicsBase } from '@skysmack/ng-framework';
 import { NgPersonsNotifications } from '../ng-persons-notifications';
 
 

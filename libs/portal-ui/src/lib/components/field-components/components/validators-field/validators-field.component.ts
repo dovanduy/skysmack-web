@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FieldBaseComponent } from '../field-base-component';
 import { Router } from '@angular/router';
 import { flatten, FieldValueProviderViewModel, LocalObject, StrIndex } from '@skysmack/framework';
-import { NgRecordStore, NgFieldStore } from '@skysmack/ng-redux';
+import { NgRecordStore, NgFieldStore } from '@skysmack/ng-framework';
 import { map, switchMap, filter } from 'rxjs/operators';
 import { Field } from '@skysmack/ng-ui';
 

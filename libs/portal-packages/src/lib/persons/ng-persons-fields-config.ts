@@ -10,7 +10,7 @@ import { StringFieldComponent, HiddenFieldComponent } from '@skysmack/portal-ui'
 import { NgPersonsValidation } from '@skysmack/ng-packages';
 import { DocumentFieldsConfig } from '@skysmack/portal-ui';
 import { FieldProviders } from '@skysmack/portal-ui';
-import { NgFieldStore, LoadedPackage } from '@skysmack/ng-redux';
+import { NgFieldStore, LoadedPackage } from '@skysmack/ng-framework';
 import { Router } from '@angular/router';
 
 @Injectable({ providedIn: 'root' })

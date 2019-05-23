@@ -8,7 +8,7 @@ import { DocumentRecordFormComponent } from '@skysmack/portal-ui';
 import { NgProductsStore } from '@skysmack/ng-packages';
 import { NgProductTypesActions } from '@skysmack/ng-packages';
 import { NgProductTypesStore } from '@skysmack/ng-packages';
-import { NgFieldActions } from '@skysmack/ng-redux';
+import { NgFieldActions } from '@skysmack/ng-framework';
 import { NgProductsFieldsConfig } from '../../ng-products-fields-config';
 
 @Component({

@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { NgSkysmackStore } from '@skysmack/ng-core';
 import { MenuArea } from '@skysmack/framework';
 import { MenuItem } from '@skysmack/framework';
-import { NgMenuItemProviders } from '@skysmack/ng-redux';
+import { NgMenuItemProviders } from '@skysmack/ng-framework';
 
 import { SidebarMenu } from '@skysmack/portal-ui';
 

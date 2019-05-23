@@ -6,7 +6,7 @@ import { Field } from '@skysmack/ng-ui';
 
 import { PasswordFieldComponent, FieldsConfig } from '@skysmack/portal-ui';
 import { FieldProviders } from '@skysmack/portal-ui';
-import { LoadedPackage } from '@skysmack/ng-redux';
+import { LoadedPackage } from '@skysmack/ng-framework';
 import { ChangePassword, ACCOUNTS_AREA_KEY } from '@skysmack/packages-account';
 import { NgChangePasswordValidation } from '@skysmack/ng-packages';
 

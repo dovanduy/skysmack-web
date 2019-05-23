@@ -6,7 +6,7 @@ import { EditorNavService } from '@skysmack/portal-ui';
 import { DocumentRecordFormComponent } from '@skysmack/portal-ui';
 import { NgLodgingTypesActions } from '@skysmack/ng-packages';
 import { NgLodgingTypesStore } from '@skysmack/ng-packages';
-import { NgFieldActions } from '@skysmack/ng-redux';
+import { NgFieldActions } from '@skysmack/ng-framework';
 import { NgLodgingTypesFieldsConfig } from '../../ng-lodging-types-fields-config';
 
 @Component({

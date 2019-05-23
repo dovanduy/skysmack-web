@@ -9,7 +9,7 @@ import { NgProductsStore } from '@skysmack/ng-packages';
 import { PagedQuery } from '@skysmack/framework';
 import { NgProductTypesActions } from '@skysmack/ng-packages';
 import { NgProductTypesStore } from '@skysmack/ng-packages';
-import { NgFieldActions } from '@skysmack/ng-redux';
+import { NgFieldActions } from '@skysmack/ng-framework';
 import { NgProductsFieldsConfig } from '../../ng-products-fields-config';
 
 @Component({

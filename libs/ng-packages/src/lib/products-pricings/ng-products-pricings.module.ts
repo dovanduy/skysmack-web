@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { NgMenuItemProviders, registerRedux } from '@skysmack/ng-redux';
+import { NgMenuItemProviders, registerRedux } from '@skysmack/ng-framework';
 import { NgProductsPricingsMenuItemProvider } from './ng-products-pricings-menu-item-provider';
 import { productsSalesPriceReducer, productTypeSalesPriceReducer, productPriceChangesReducer, productTypePriceChangesReducer, PRODUCT_TYPE_PRICE_CHANGES_REDUCER_KEY, PRODUCT_PRICE_CHANGES_REDUCER_KEY, PRODUCT_TYPE_SALES_PRICE_REDUCER_KEY, PRODUCTS_SALES_PRICE_REDUCER_KEY } from '@skysmack/packages-products-pricings';
 import { NgProductsSalesPriceEpics } from './products-sales-price/redux/ng-products-sales-price-epics';

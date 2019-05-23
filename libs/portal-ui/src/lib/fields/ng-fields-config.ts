@@ -10,8 +10,8 @@ import { StringFieldComponent } from '../components/field-components/components/
 import { SelectFieldComponent } from '../components/field-components/components/select-field/select-field.component';
 import { ValidatorsFieldComponent } from '../components/field-components/components/validators-field/validators-field.component';
 import { FieldPermissionFieldComponent } from '../components/field-components/components/field-permission-field/field-permission-field.component';
-import { NgFieldStore, getAdditionalPaths } from '@skysmack/ng-redux';
-import { LoadedPackage } from '@skysmack/ng-redux';
+import { NgFieldStore, getAdditionalPaths } from '@skysmack/ng-framework';
+import { LoadedPackage } from '@skysmack/ng-framework';
 import { FieldProviders } from './field-providers';
 import { Router } from '@angular/router';
 import { UI_AREA_KEY } from '../constants/entity-action-translation-constants';

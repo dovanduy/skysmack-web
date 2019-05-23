@@ -5,7 +5,7 @@ import { NgSkysmackStore } from '@skysmack/ng-core';
 import { FormHelper } from '@skysmack/ng-ui';
 import { combineLatest, of } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
-import { NgSettingsActions, NgSettingsStore } from '@skysmack/ng-redux';
+import { NgSettingsActions, NgSettingsStore } from '@skysmack/ng-framework';
 import { SettingsAppState } from '@skysmack/redux';
 import { EditorNavService } from '../../../components/common/container/editor-nav.service';
 import { BaseComponent } from '../../../base-components/base-component';

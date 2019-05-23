@@ -1,5 +1,5 @@
 import { ProductsPricingsType } from '@skysmack/packages-products-pricings';
-import { PackageLoader, PackageManifest } from '@skysmack/ng-redux';
+import { PackageLoader, PackageManifest } from '@skysmack/ng-framework';
 
 export class ProductsPricingsPackageManifest extends ProductsPricingsType implements PackageManifest {
     public icon = 'euro_symbol';

@@ -10,7 +10,7 @@ import { HttpErrorResponse, LocalObject, Package, HttpResponse, QueueItem, StrIn
 import { NgPackagesNotifications } from '../ng-packages-notifications';
 import { NgSkysmackActions } from '../../skysmack/redux/ng-skysmack-actions';
 import { NgSkysmackRequests } from '../../skysmack/redux/ng-skysmack-requests';
-import { NgSettingsActions } from '@skysmack/ng-redux';
+import { NgSettingsActions } from '@skysmack/ng-framework';
 
 @Injectable({ providedIn: 'root' })
 export class NgPackagesEpics {

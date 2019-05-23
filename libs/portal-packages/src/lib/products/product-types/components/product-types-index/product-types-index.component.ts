@@ -5,7 +5,7 @@ import { NgProductTypesActions, NgProductTypesStore } from '@skysmack/ng-package
 import { ProductTypesAppState, ProductType, PRODUCT_TYPES_AREA_KEY } from '@skysmack/packages-products';
 import { NgProductTypesMenu } from '../../ng-product-types-menu';
 import { EntityAction } from '@skysmack/ng-ui';
-import { NgFieldActions } from '@skysmack/ng-redux';
+import { NgFieldActions } from '@skysmack/ng-framework';
 import { NgProductTypesFieldsConfig } from '../../ng-product-types-fields-config';
 import { NgSkysmackStore } from '@skysmack/ng-core';
 

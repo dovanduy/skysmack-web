@@ -498,9 +498,9 @@
         }
       }
     },
-    "ng-redux": {
-      "root": "libs/ng-redux",
-      "sourceRoot": "libs/ng-redux/src",
+    "ng-framework": {
+      "root": "libs/ng-framework",
+      "sourceRoot": "libs/ng-framework/src",
       "projectType": "library",
       "prefix": "skysmack",
       "architect": {
@@ -508,8 +508,8 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "libs/ng-redux/tsconfig.lib.json",
-              "libs/ng-redux/tsconfig.spec.json"
+              "libs/ng-framework/tsconfig.lib.json",
+              "libs/ng-framework/tsconfig.spec.json"
             ],
             "exclude": ["**/node_modules/**"]
           }
@@ -517,9 +517,9 @@
         "test": {
           "builder": "@nrwl/builders:jest",
           "options": {
-            "jestConfig": "libs/ng-redux/jest.config.js",
-            "tsConfig": "libs/ng-redux/tsconfig.spec.json",
-            "setupFile": "libs/ng-redux/src/test-setup.ts"
+            "jestConfig": "libs/ng-framework/jest.config.js",
+            "tsConfig": "libs/ng-framework/tsconfig.spec.json",
+            "setupFile": "libs/ng-framework/src/test-setup.ts"
           }
         }
       },

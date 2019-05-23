@@ -6,7 +6,7 @@ import { FieldsConfig, SelectFieldComponent, HiddenFieldComponent, CheckboxField
 import { AccessPolicyRule, ACCESS_POLICY_RULES_AREA_KEY } from '@skysmack/packages-skysmack-core';
 import { AccessPolicyRulesValidation } from '@skysmack/ng-core';
 import { FieldProviders } from '@skysmack/portal-ui';
-import { LoadedPackage } from '@skysmack/ng-redux';
+import { LoadedPackage } from '@skysmack/ng-framework';
 
 @Injectable({ providedIn: 'root' })
 export class NgAccessPolicyRulesFieldsConfig extends FieldsConfig<AccessPolicyRule, number> {

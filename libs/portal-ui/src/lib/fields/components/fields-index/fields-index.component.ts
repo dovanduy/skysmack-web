@@ -6,7 +6,7 @@ import { NgSkysmackStore } from '@skysmack/ng-core';
 import { EntityComponentPageTitle } from './../../../models/entity-component-page-title';
 import { NgFieldsMenu } from '../../ng-fields-menu';
 import { RecordIndexComponent } from '../../../base-components/record-components/record-index-component';
-import { NgFieldActions, NgFieldStore } from '@skysmack/ng-redux';
+import { NgFieldActions, NgFieldStore } from '@skysmack/ng-framework';
 import { NgFieldsConfig } from '../../ng-fields-config';
 import { map, take } from 'rxjs/operators';
 import { combineLatest } from 'rxjs';

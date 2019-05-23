@@ -2,7 +2,7 @@ import { Terminal, TERMINALS_REDUX_KEY, TERMINALS_ADDITIONAL_PATHS } from '@skys
 import { Injectable, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ApiDomain, API_DOMAIN_INJECTOR_TOKEN } from '@skysmack/framework';
-import { NgRecordRequests } from '@skysmack/ng-redux';
+import { NgRecordRequests } from '@skysmack/ng-framework';
 
 @Injectable({ providedIn: 'root' })
 export class NgTerminalsRequests extends NgRecordRequests<Terminal, number> {

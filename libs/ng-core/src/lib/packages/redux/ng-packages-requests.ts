@@ -5,7 +5,7 @@ import { PackagesRequests, PackagesActions, GetPackageSuccessPayload } from '@sk
 import { Observable, of } from 'rxjs';
 import { map, catchError, retry } from 'rxjs/operators';
 import { ReduxAction, PackagePathPayload, GetAvailablePackagesSuccessPayload, GetPagedEntitiesPayload, GetPagedEntitiesSuccessPayload } from '@skysmack/redux';
-import { CustomHttpUrlEncodingCodec, PageResponseExtensions } from '@skysmack/ng-redux';
+import { CustomHttpUrlEncodingCodec, PageResponseExtensions } from '@skysmack/ng-framework';
 
 @Injectable({ providedIn: 'root' })
 export class NgPackagesRequests implements PackagesRequests {

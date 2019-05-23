@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { FormRule, Field } from '@skysmack/ng-ui';
 import { LocalObject } from '@skysmack/framework';
-import { LoadedPackage } from '@skysmack/ng-redux';
+import { LoadedPackage } from '@skysmack/ng-framework';
 import { FieldsConfig, IntFieldComponent } from '@skysmack/portal-ui';
 import { FieldProviders } from '@skysmack/portal-ui';
 import { LodgingReservationsSettings, LODGING_RESERVATIONS_AREA_KEY } from '@skysmack/packages-lodging-reservations';

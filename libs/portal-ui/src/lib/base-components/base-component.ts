@@ -5,8 +5,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { OnInit, OnDestroy } from '@angular/core';
 import { take, map, filter } from 'rxjs/operators';
 import { Field } from '@skysmack/ng-ui';
-import { getAdditionalPaths, getPackageDendencyAsStream } from '@skysmack/ng-redux';
-import { LoadedPackage } from '@skysmack/ng-redux';
+import { getAdditionalPaths, getPackageDendencyAsStream } from '@skysmack/ng-framework';
+import { LoadedPackage } from '@skysmack/ng-framework';
 import { EntityComponentPageTitle } from '../models/entity-component-page-title';
 
 export class BaseComponent<TAppState, TKey> implements OnInit, OnDestroy {

@@ -2,7 +2,7 @@ import { Lodging, LODGINGS_REDUX_KEY, LODGINGS_ADDITIONAL_PATHS } from '@skysmac
 import { Injectable, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ApiDomain, StrIndex, HttpErrorResponse, API_DOMAIN_INJECTOR_TOKEN } from '@skysmack/framework';
-import { NgRecordRequests } from '@skysmack/ng-redux';
+import { NgRecordRequests } from '@skysmack/ng-framework';
 import { Observable, of } from 'rxjs';
 import { retry, catchError, map } from 'rxjs/operators';
 import { ReduxAction, StateKeyMeta, GetIntervalPayload, SelectedIdsMeta } from '@skysmack/redux';

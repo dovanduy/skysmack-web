@@ -3,7 +3,7 @@ import { FormRule, Field } from '@skysmack/ng-ui';
 import { LocalObject } from '@skysmack/framework';
 import { UserSettings, USERS_AREA_KEY } from '@skysmack/packages-identities';
 import { NgUserSettingsValidation } from '@skysmack/ng-packages';
-import { LoadedPackage } from '@skysmack/ng-redux';
+import { LoadedPackage } from '@skysmack/ng-framework';
 import { FieldsConfig, StringFieldComponent, CheckboxFieldComponent } from '@skysmack/portal-ui';
 import { FieldProviders } from '@skysmack/portal-ui';
 

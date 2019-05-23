@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { NgRedux } from '@angular-redux/store';
 import { Lodging, LodgingsAppState, LODGINGS_REDUCER_KEY } from '@skysmack/packages-lodgings';
-import { NgRecordStore } from '@skysmack/ng-redux';
+import { NgRecordStore } from '@skysmack/ng-framework';
 import { Observable } from 'rxjs';
 import { StrIndex, defined, LocalObject, DependencyOptions } from '@skysmack/framework';
 import { map } from 'rxjs/operators';

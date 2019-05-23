@@ -9,7 +9,7 @@ import { SelectField } from '@skysmack/ng-ui';
 import { StringFieldComponent, SelectFieldComponent, HiddenFieldComponent, DocumentFieldsConfig } from '@skysmack/portal-ui';
 import { NgProductsValidation, NgProductTypesStore, NgProductTypesActions } from '@skysmack/ng-packages';
 import { FieldProviders } from '@skysmack/portal-ui';
-import { LoadedPackage, NgFieldStore } from '@skysmack/ng-redux';
+import { LoadedPackage, NgFieldStore } from '@skysmack/ng-framework';
 import { Router } from '@angular/router';
 
 @Injectable({ providedIn: 'root' })

@@ -1,7 +1,7 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "outDir": "../../dist/out-tsc/libs/ng-redux",
+    "outDir": "../../dist/out-tsc/libs/ng-framework",
     "module": "commonjs",
     "types": ["jest", "node"]
   },
