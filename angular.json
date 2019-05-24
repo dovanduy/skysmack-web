@@ -684,6 +684,7 @@
             "assets": [
               "apps/web/web-portal/src/assets/favicon.ico",
               "apps/web/web-portal/src/assets",
+              "apps/web/web-portal/src/manifest.json",
               {
                 "glob": "**/*",
                 "input": "apps/web/web-portal/src/i18n/",
@@ -720,7 +721,9 @@
                   "maximumWarning": "2mb",
                   "maximumError": "5mb"
                 }
-              ]
+              ],
+              "serviceWorker": true,
+              "ngswConfigPath": "apps/web/web-portal/src/ngsw-config.json"
             }
           }
         },
