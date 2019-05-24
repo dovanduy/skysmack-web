@@ -7,9 +7,9 @@ import { ProductType } from '@skysmack/packages-products';
 import { NgProductTypeSalesPriceValidation, NgProductTypesStore, NgProductTypesActions } from '@skysmack/ng-packages';
 import { FieldsConfig, SelectFieldComponent, HiddenFieldComponent, DecimalFieldComponent } from '@skysmack/portal-ui';
 import { FieldProviders } from '@skysmack/portal-ui';
-import { LoadedPackage, getPackageDendencyAsStream } from '@skysmack/ng-redux';
 import { NgSkysmackStore } from '@skysmack/ng-core';
 import { map, take } from 'rxjs/operators';
+import { LoadedPackage, getPackageDendencyAsStream } from '@skysmack/ng-framework';
 
 export interface NgProductTypeSalesPriceFormDependencies {
     availableProductTypes: LocalObject<ProductType, number>[];

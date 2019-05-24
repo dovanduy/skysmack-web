@@ -9,8 +9,8 @@ import { Validators } from '@angular/forms';
 import { SelectFieldOption } from '@skysmack/ng-ui';
 import { AccessPolicyRolesValidation, NgAccessPolicyRulesStore, NgAccessPolicyRulesActions } from '@skysmack/ng-core';
 import { FieldProviders } from '@skysmack/portal-ui';
-import { LoadedPackage } from '@skysmack/ng-redux';
 import { NgRolesStore, NgRolesActions } from '@skysmack/ng-packages';
+import { LoadedPackage } from '@skysmack/ng-framework';
 
 @Injectable({ providedIn: 'root' })
 export class NgAccessPolicyRolesFieldsConfig extends FieldsConfig<AccessPolicyRole, AccessPolicyRoleKey> {

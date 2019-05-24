@@ -3,12 +3,12 @@ import { Validators } from '@angular/forms';
 import { LocalObject, LocalObjectStatus, PagedQuery } from '@skysmack/framework';
 import { ProductsSalesPrice, PRODUCTS_SALES_PRICE_AREA_KEY } from '@skysmack/packages-products-pricings';
 import { FormRule, SelectField, Field } from '@skysmack/ng-ui';
-import { NgProductsSalesPriceValidation, NgProductsStore, NgProductTypesActions, NgProductsActions } from '@skysmack/ng-packages';
+import { NgProductsSalesPriceValidation, NgProductsStore, NgProductsActions } from '@skysmack/ng-packages';
 import { FieldsConfig, SelectFieldComponent, HiddenFieldComponent, DecimalFieldComponent } from '@skysmack/portal-ui';
 import { FieldProviders } from '@skysmack/portal-ui';
-import { LoadedPackage, getPackageDendencyAsStream } from '@skysmack/ng-redux';
 import { map, take } from 'rxjs/operators';
 import { NgSkysmackStore } from '@skysmack/ng-core';
+import { LoadedPackage, getPackageDendencyAsStream } from '@skysmack/ng-framework';
 
 @Injectable({ providedIn: 'root' })
 export class NgProductsSalesPriceFieldsConfig extends FieldsConfig<ProductsSalesPrice, number> {
