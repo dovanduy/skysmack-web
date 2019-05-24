@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { terminalsReducer, receiptsReducer, TERMINALS_REDUCER_KEY, RECEIPTS_REDUCER_KEY } from '@skysmack/packages-terminal-payments';
 import { TerminalsEpics } from './terminals/redux/ng-terminals-epics';
 import { ReceiptsEpics } from './receipts/redux/ng-receipts-epics';
-import { registerRedux } from '@skysmack/ng-redux';
+import { registerRedux } from '@skysmack/ng-framework';
 
 @NgModule({
   imports: [],

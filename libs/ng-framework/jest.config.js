@@ -1,7 +1,7 @@
 module.exports = {
-  name: 'ng-redux',
+  name: 'ng-framework',
   preset: '../../jest.config.js',
-  coverageDirectory: '../../coverage/libs/ng-redux',
+  coverageDirectory: '../../coverage/libs/ng-framework',
   snapshotSerializers: [
     'jest-preset-angular/AngularSnapshotSerializer.js',
     'jest-preset-angular/HTMLCommentSerializer.js'

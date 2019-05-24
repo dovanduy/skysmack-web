@@ -17,25 +17,41 @@
         "FORM": {
             "LABELS": {
                 "CHANGE": "Pris ændring",
+                "ISPERCENTAGE": "Ændring er i procent (%)",
                 "CURRENCYCODE": "Valuta kode",
-                "CHANGETYPE": "Pris ændrings type",
                 "VALIDFROM": "Gældende fra",
                 "VALIDTO": "Gældende til",
                 "RECORDID": "Allokeret værelse",
                 "START": "Start",
                 "END": "Slut",
-                "DAYSOFWEEK": "Uge dage"
+                "EXCLUDEDAYSOFWEEK": "Ekskluder uge dage",
+                "MINUNITS": "Minimum antal enheder",
+                "MAXUNITS": "Maximum antal enheder",
+                "PERUNIT": "Per enhed",
+                "ONLYVALIDUNITS": "Ændring gælder kun enheder indenfor min og max",
+                "MINUNITSOFTIME": "Minimum antal tidsenheder",
+                "MAXUNITSOFTIME": "Maximum antal tidsenheder",
+                "ONLYVALIDUNITSOFTIME": "Ændring skal gælde enheder der er indenfor tidsintervallets min og max",
+                "PERUNITOFTIME": "Ændring skal gælde pr. tidsenhed"
             },
             "PLACEHOLDERS": {
                 "CURRENCYCODE": "Valuta kode",
                 "RECORDID": "Allokeret værelse",
                 "CHANGE": "Pris ændring",
-                "CHANGETYPE": "Pris ændrings type",
+                "ISPERCENTAGE": "Ændring er i procent (%)",
                 "VALIDFROM": "Gældende fra",
                 "VALIDTO": "Gældende til",
                 "START": "Start",
                 "END": "Slut",
-                "DAYSOFWEEK": "Uge dage"
+                "EXCLUDEDAYSOFWEEK": "Ekskluder uge dage",
+                "MINUNITS": "Minimum antal enheder",
+                "MAXUNITS": "Maximum antal enheder",
+                "PERUNIT": "Per enhed",
+                "ONLYVALIDUNITS": "Ændring gælder kun enheder indenfor min og max",
+                "MINUNITSOFTIME": "Minimum antal tidsenheder",
+                "MAXUNITSOFTIME": "Maximum antal tidsenheder",
+                "ONLYVALIDUNITSOFTIME": "Ændring skal gælde enheder der er indenfor tidsintervallets min og max",
+                "PERUNITOFTIME": "Ændring skal gælde pr. tidsenhed"
             },
             "VALIDATION": {
                 "CURRENCYCODE": {
@@ -47,8 +63,8 @@
                 "CHANGE": {
                     "REQUIRED": "Pris ændring er påkrævet"
                 },
-                "CHANGETYPE": {
-                    "REQUIRED": "Pris ændrings type er påkrævet"
+                "ISPERCENTAGE": {
+                    "REQUIRED": "Felt er påkrævet"
                 },
                 "VALIDFROM": {
                     "REQUIRED": "Gældende fra er påkrævet"
@@ -61,6 +77,18 @@
                 },
                 "END": {
                     "REQUIRED": "Slut er påkrævet"
+                },
+                "MINUNITS": {
+                    "REQUIRED": "Minimum antal enheder er påkrævet"
+                },
+                "MAXUNITS": {
+                    "REQUIRED": "Maximum antal enheder er påkrævet"
+                },
+                "MINUNITSOFTIME": {
+                    "REQUIRED": "Minimum antal tidsenheder er påkrævet"
+                },
+                "MAXUNITSOFTIME": {
+                    "REQUIRED": "Maximum antal tidsenheder er påkrævet"
                 }
             }
         },

@@ -1,5 +1,5 @@
 import { MaintenanceType } from '@skysmack/packages-maintenance';
-import { PackageLoader, PackageManifest } from '@skysmack/ng-redux';
+import { PackageLoader, PackageManifest } from '@skysmack/ng-framework';
 
 export class MaintenancePackageManifest extends MaintenanceType implements PackageManifest {
     public icon = 'build';

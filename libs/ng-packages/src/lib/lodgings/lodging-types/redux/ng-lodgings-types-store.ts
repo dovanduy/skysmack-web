@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { NgRedux } from '@angular-redux/store';
-import { NgRecordStore } from '@skysmack/ng-redux';
+import { NgRecordStore } from '@skysmack/ng-framework';
 import { LodgingTypesAppState, LodgingType, LODGING_TYPES_REDUCER_KEY } from '@skysmack/packages-lodgings';
 import { Observable } from 'rxjs';
 import { StrIndex, defined, safeUndefinedTo } from '@skysmack/framework';

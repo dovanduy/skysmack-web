@@ -11,7 +11,7 @@ import { filter } from 'rxjs/operators';
 import { Oauth2Requests } from '@skysmack/ng-packages';
 import { Field, FormHelper } from '@skysmack/ng-ui';
 import { Observable } from 'rxjs';
-import { NgAuthenticationStore } from '@skysmack/ng-redux';
+import { NgAuthenticationStore } from '@skysmack/ng-framework';
 import { NgRedux } from '@angular-redux/store';
 
 @Component({

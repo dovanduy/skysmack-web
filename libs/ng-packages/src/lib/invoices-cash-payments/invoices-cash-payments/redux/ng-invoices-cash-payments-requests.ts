@@ -1,7 +1,7 @@
 import { Injectable, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ApiDomain, API_DOMAIN_INJECTOR_TOKEN } from '@skysmack/framework';
-import { NgRecordRequests } from '@skysmack/ng-redux';
+import { NgRecordRequests } from '@skysmack/ng-framework';
 import { INVOICES_CASH_PAYMENTS_REDUX_KEY, INVOICES_CASH_PAYMENTS_ADDITIONAL_PATHS, CashPayment } from '@skysmack/packages-invoices-cash-payments';
 
 @Injectable({ providedIn: 'root' })

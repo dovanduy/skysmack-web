@@ -4,7 +4,7 @@ import { invoicesReducer, invoiceItemsReducer, invoicePaymentsReducer, INVOICES_
 import { NgInvoicesEpics } from './invoice/redux/ng-invoices-epics';
 import { NgInvoiceItemsEpics } from './invoice-item/redux/ng-invoice-items-epics';
 import { NgInvoicePaymentsEpics } from './invoice-payment/redux/ng-invoice-payments-epics';
-import { registerRedux } from '@skysmack/ng-redux';
+import { registerRedux } from '@skysmack/ng-framework';
 
 @NgModule({
   imports: [],

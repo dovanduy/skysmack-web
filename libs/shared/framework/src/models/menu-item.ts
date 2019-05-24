@@ -7,8 +7,9 @@ export class MenuItem extends DocumentRecord<number>{
     public order: number;
     public icon: string;
     public permissions?: string[]
+    public display = true;
 
-     public constructor(init?: Partial<MenuItem>) {
+    public constructor(init?: Partial<MenuItem>) {
         super();
         Object.assign(this, init);
     }

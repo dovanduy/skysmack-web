@@ -5,7 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { skysmackReducer, SKYSMACK_REDUCER_KEY } from '@skysmack/packages-skysmack-core';
 import { NgSkysmackRequests } from './redux/ng-skysmack-requests';
 import { NgSkysmackEpics } from './redux/ng-skysmack-epics';
-import { registerRedux } from '@skysmack/ng-redux';
+import { registerRedux } from '@skysmack/ng-framework';
 
 @NgModule({
   imports: [

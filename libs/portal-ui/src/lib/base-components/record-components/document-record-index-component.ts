@@ -4,7 +4,7 @@ import { NgSkysmackStore } from '@skysmack/ng-core';
 import { OnInit } from '@angular/core';
 import { Record, PagedQuery } from '@skysmack/framework';
 import { RecordIndexComponent } from './record-index-component';
-import { NgFieldActions } from '@skysmack/ng-redux';
+import { NgFieldActions } from '@skysmack/ng-framework';
 import { EntityFieldsConfig } from '../../fields/entity-fields-config';
 import { EntityComponentPageTitle } from '../../models/entity-component-page-title';
 import { EntityActionProviders } from '@skysmack/portal-ui';

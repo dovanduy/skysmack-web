@@ -1,27 +1,31 @@
 <div *ngIf="sidebarMenu" class="docs-component-viewer-nav">
   <div class="docs-component-viewer-nav-content">
+    <ng-container *ngFor="let menuArea of sidebarMenu.primaryMenuAreas; let last = last;">
+      <nav *ngIf="menuArea.display">
+        <button cdkAccordionItem #panel="cdkAccordionItem" (click)="panel.toggle()" expanded="true"
+          class="docs-nav-content-btn" [attr.aria-label]="menuArea.displayName + ', section toggle'"
+          [attr.aria-controls]="'panel-' + menuArea.id" [attr.aria-expanded]="panel.expanded">
+          <mat-icon>{{panel.expanded ? 'keyboard_arrow_up' : 'keyboard_arrow_down'}}</mat-icon>
+          {{ menuArea.displayName | translate }}
+        </button>
 
-    <nav *ngFor="let menuArea of sidebarMenu.primaryMenuAreas; let last = last;">
-      <button cdkAccordionItem #panel="cdkAccordionItem" (click)="panel.toggle()" expanded="true"
-        class="docs-nav-content-btn" [attr.aria-label]="menuArea.displayName + ', section toggle'"
-        [attr.aria-controls]="'panel-' + menuArea.id" [attr.aria-expanded]="panel.expanded">
-        <mat-icon>{{panel.expanded ? 'keyboard_arrow_up' : 'keyboard_arrow_down'}}</mat-icon>
-        {{ menuArea.displayName | translate }}
-      </button>
-
-      <ul [@bodyExpansion]="panel.expanded ? 'expanded' : 'collapsed'" id="panel-{{ menuArea.id }}">
-        <ng-container *ngFor="let menuItem of sidebarMenu.primaryMenuItems">
-          <ng-container *ngIf="menuItem.area === menuArea.area">
-            <li *inAnyPermission="menuItem.permissions">
-              <a [routerLink]="[menuItem.url]">
-                {{ menuItem.displayName | translate }}
-              </a>
-            </li>
+        <ul [@bodyExpansion]="panel.expanded ? 'expanded' : 'collapsed'" id="panel-{{ menuArea.id }}">
+          <ng-container *ngFor="let menuItem of sidebarMenu.primaryMenuItems">
+            <ng-container *ngIf="menuItem.area === menuArea.area">
+              <ng-template [inAnyPermission]="menuItem.permissions"
+                (permissionsChecked)="permissionsChecked($event, menuItem)">
+                <li *ngIf="menuItem.display">
+                  <a [routerLink]="[menuItem.url]">
+                    {{ menuItem.displayName | translate }}
+                  </a>
+                </li>
+              </ng-template>
+            </ng-container>
           </ng-container>
-        </ng-container>
-      </ul>
+        </ul>
 
-      <hr *ngIf="!last" />
-    </nav>
+        <hr *ngIf="!last" />
+      </nav>
+    </ng-container>
   </div>
 </div>

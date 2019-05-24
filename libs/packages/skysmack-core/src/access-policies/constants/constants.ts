@@ -10,6 +10,6 @@ export const ACCESS_POLICY_ROLES_REDUX_KEY = 'ACCESS_POLICY_ROLES_'; // reducer 
 export const ACCESS_POLICY_ROLES_ADDITIONAL_PATHS = ['access-policies', 'roles']; // actions, requests
 
 export const ACCESS_POLICY_RULES_REDUCER_KEY = 'accessPolicyRules';
-export const ACCESS_POLICY_RULES_AREA_KEY = 'access-policy-rules'; // validation, store, menu
+export const ACCESS_POLICY_RULES_AREA_KEY = 'access_policy_rules'; // validation, store, menu
 export const ACCESS_POLICY_RULES_REDUX_KEY = 'ACCESS_POLICY_RULES_'; // reducer prefix, action, epics, Requests
 export const ACCESS_POLICY_RULES_ADDITIONAL_PATHS = ['access-policies', 'rules']; // actions, requests

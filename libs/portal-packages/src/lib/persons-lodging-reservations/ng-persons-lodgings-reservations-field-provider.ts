@@ -4,7 +4,7 @@ import { map, switchMap } from 'rxjs/operators';
 import { PersonsLodgingReservationsType, PersonsLodgingReservationsSettings } from '@skysmack/packages-persons-lodging-reservations';
 import { Observable, combineLatest, of } from 'rxjs';
 import { StrIndex, PagedQuery, LocalObject } from '@skysmack/framework';
-import { NgSettingsActions, NgSettingsStore, NgFieldActions } from '@skysmack/ng-redux';
+import { NgSettingsActions, NgSettingsStore, NgFieldActions } from '@skysmack/ng-framework';
 import { NgPersonsStore, NgPersonsActions } from '@skysmack/ng-packages';
 import { MultiSelectFieldComponent, AddField, AddRecordFieldComponent, HiddenFieldComponent } from '@skysmack/portal-ui';
 import { NgPersonsFieldsConfig } from '../persons/ng-persons-fields-config';

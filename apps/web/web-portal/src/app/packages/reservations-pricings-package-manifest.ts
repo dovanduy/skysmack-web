@@ -1,5 +1,5 @@
 import { ReservationsPricingsType } from '@skysmack/packages-reservations-pricings';
-import { PackageLoader, PackageManifest } from '@skysmack/ng-redux';
+import { PackageLoader, PackageManifest } from '@skysmack/ng-framework';
 
 export class ReservationsPricingsPackageManifest extends ReservationsPricingsType implements PackageManifest {
     public icon = 'timeline';

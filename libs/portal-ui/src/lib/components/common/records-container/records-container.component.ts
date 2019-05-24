@@ -22,7 +22,7 @@ export class RecordsContainerComponent implements OnInit, OnDestroy {
   @Output() public sortChanged = new EventEmitter<DisplayColumn>();
 
   @Input() public entities$: Observable<LocalObject<any, any>[]>;
-  @Input() public entityActions$: Observable<EntityAction[]>;
+  @Input() public entityActions$: BehaviorSubject<EntityAction[]>;
   @Input() public fields$: Observable<Field[]>;
   @Input() public totalCount$: BehaviorSubject<number>;
   public totalCount: number;
@@ -51,6 +51,7 @@ export class RecordsContainerComponent implements OnInit, OnDestroy {
         if (entities) {
           this.loadedEntitiesCount$.next(entities.length);
         }
+
         return entities;
       }));
 

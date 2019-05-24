@@ -1,5 +1,5 @@
 import { Field } from '@skysmack/ng-ui';
-import { NgRecordStore } from '@skysmack/ng-redux';
+import { NgRecordStore } from '@skysmack/ng-framework';
 import { RecordActionsBase } from '@skysmack/redux';
 import { EntityFieldsConfig } from './entity-fields-config';
 

@@ -6,9 +6,9 @@ import { MenuItem } from '@skysmack/framework';
 
 import { NgSkysmackStore } from '@skysmack/ng-core';
 import { SubscriptionHandler } from '@skysmack/framework';
-import { NgMenuItemProviders, getAdditionalPaths, getPackageDendencyAsStream } from '@skysmack/ng-redux';
+import { NgMenuItemProviders, getAdditionalPaths, getPackageDendencyAsStream } from '@skysmack/ng-framework';
 import { combineLatest } from 'rxjs';
-import { LoadedPackage } from '@skysmack/ng-redux';
+import { LoadedPackage } from '@skysmack/ng-framework';
 
 interface BackButtonOptions {
     connectedPackage?: boolean;
@@ -57,7 +57,19 @@ export abstract class SidebarMenu implements OnDestroy {
                 providers.map(provider => this.skysmackStore.getCurrentPackage(this.packagePath).pipe(
                     filter(loadedPackage => loadedPackage._package !== null),
                     switchMap((currentPackage: LoadedPackage) => provider.getItems(this.menuId, currentPackage._package.path)),
-                    map((menuItems: MenuItem[]) => menuItems.forEach(menuItem => this.addItem(menuItem)))
+                    map((menuItems: MenuItem[]) => {
+                        // Add the Connected Packages area if any menu items is provided, and it doesn't already exist.
+                        if (menuItems.length > 0 && !this.primaryMenuAreas.find(area => area.area === 'connected_packages')) {
+                            this.primaryMenuAreas.push(new MenuArea({
+                                area: 'connected_packages',
+                                translationPrefix: 'UI.MISC.',
+                                order: 1000,
+                            }));
+                        }
+
+                        // Add provided menu items
+                        menuItems.forEach(menuItem => this.addItem(menuItem));
+                    })
                 ))
             ))
         ).subscribe());

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { SidebarMenu } from '@skysmack/portal-ui';
 import { NgSkysmackStore } from '@skysmack/ng-core';
-import { NgMenuItemProviders } from '@skysmack/ng-redux';
+import { NgMenuItemProviders } from '@skysmack/ng-framework';
 import { MenuArea } from '@skysmack/framework';
 import { MenuItem } from '@skysmack/framework';
 import { INVOICES_CASH_PAYMENTS_AREA_KEY } from '@skysmack/packages-invoices-cash-payments';
@@ -33,11 +33,6 @@ export class NgInvoicesCashPaymentsMenu extends SidebarMenu {
         this.primaryMenuAreas.push(new MenuArea({
             area: 'manage',
             translationPrefix: this.translationPrefix,
-            order: 2,
-        }));
-        this.primaryMenuAreas.push(new MenuArea({
-            area: 'connected_packages',
-            translationPrefix: 'UI.MISC.',
             order: 2,
         }));
 

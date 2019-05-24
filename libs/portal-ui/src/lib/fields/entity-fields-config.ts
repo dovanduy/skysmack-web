@@ -1,7 +1,7 @@
 import { LocalObject } from '@skysmack/framework';
 import { Field, FormRule, Validation } from '@skysmack/ng-ui';
 import { Observable } from 'rxjs';
-import { LoadedPackage } from '@skysmack/ng-redux';
+import { LoadedPackage } from '@skysmack/ng-framework';
 
 
 export interface EntityFieldsConfig<TObject, TKey> {

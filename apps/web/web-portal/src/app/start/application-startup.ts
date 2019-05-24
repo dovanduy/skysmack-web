@@ -4,7 +4,7 @@ import { API_DOMAIN_INJECTOR_TOKEN } from '@skysmack/framework';
 import { SkysmackApiDomain } from '../../requests/skysmack-api-domain';
 import { NgSkysmackActions } from '@skysmack/ng-core';
 import { AuthorizationInterceptor, configureLanguage, LanguageService } from '@skysmack/portal-ui';
-import { PackageLoader } from '@skysmack/ng-redux';
+import { PackageLoader } from '@skysmack/ng-framework';
 import { loadInvoicePackage } from '../packages/invoices-package-manifest';
 import { loadPersonPackage } from '../packages/persons-package-manifest';
 import { loadProductPackage } from '../packages/products-package-manifest';

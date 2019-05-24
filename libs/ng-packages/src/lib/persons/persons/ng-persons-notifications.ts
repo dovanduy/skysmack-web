@@ -1,6 +1,6 @@
 import { Injectable, Inject } from '@angular/core';
 import { Person } from '@skysmack/packages-persons';
-import { RecordNotifications, Notifications, NOTIFICATIONS_INJECTOR_TOKEN } from '@skysmack/ng-redux';
+import { RecordNotifications, Notifications, NOTIFICATIONS_INJECTOR_TOKEN } from '@skysmack/ng-framework';
 import { ReduxAction, CommitMeta, RollbackMeta } from '@skysmack/redux';
 import { LocalObject, FieldSchemaViewModel, HttpErrorResponse, StrIndex } from '@skysmack/framework';
 

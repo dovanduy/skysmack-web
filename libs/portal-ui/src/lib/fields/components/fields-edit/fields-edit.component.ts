@@ -1,7 +1,7 @@
 import { Component, OnInit, Injector } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FieldState } from '@skysmack/redux';
-import { NgFieldStore, NgFieldActions } from '@skysmack/ng-redux';
+import { NgFieldStore, NgFieldActions } from '@skysmack/ng-framework';
 import { NgSkysmackStore } from '@skysmack/ng-core';
 import { EditorNavService } from './../../../components/common/container/editor-nav.service';
 import { NgFieldsConfig } from './../../ng-fields-config';

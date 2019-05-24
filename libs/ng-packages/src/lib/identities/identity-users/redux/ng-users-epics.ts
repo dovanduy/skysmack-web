@@ -1,4 +1,4 @@
-import { RecordEpicsBase } from '@skysmack/ng-redux';
+import { RecordEpicsBase } from '@skysmack/ng-framework';
 import { User, GetUsersRolesPayload, GetUsersRolesSuccessPayload, USERS_REDUX_KEY } from '@skysmack/packages-identities';
 import { ActionsObservable, ofType } from 'redux-observable';
 import { ReduxAction } from '@skysmack/redux';

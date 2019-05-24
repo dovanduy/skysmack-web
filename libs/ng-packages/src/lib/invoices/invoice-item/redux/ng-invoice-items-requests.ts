@@ -2,7 +2,7 @@ import { InvoiceItem, INVOICE_ITEMS_REDUX_KEY, INVOICE_ITEMS_ADDITIONAL_PATHS } 
 import { Injectable, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ApiDomain, API_DOMAIN_INJECTOR_TOKEN } from '@skysmack/framework';
-import { NgRecordRequests } from '@skysmack/ng-redux';
+import { NgRecordRequests } from '@skysmack/ng-framework';
 
 @Injectable({ providedIn: 'root' })
 export class NgInvoiceItemsRequests extends NgRecordRequests<InvoiceItem, number> {

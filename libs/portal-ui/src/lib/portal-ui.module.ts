@@ -12,7 +12,7 @@ import { standardSettingsReducer } from './redux/settings';
 import { HttpLoaderFactory } from './http-loader-factory';
 import { NgNotifications } from './notifications/ng-notifications';
 import { ValidatorsFieldModule } from './components/field-components/components/validators-field/validators-field.module';
-import { NOTIFICATIONS_INJECTOR_TOKEN } from '@skysmack/ng-redux';
+import { NOTIFICATIONS_INJECTOR_TOKEN } from '@skysmack/ng-framework';
 import { portailUiPipes } from './pipes/portal-ui-pipes';
 import { LanguageService } from './language/language.service';
 import { commonComponents } from './components/common/common-components';

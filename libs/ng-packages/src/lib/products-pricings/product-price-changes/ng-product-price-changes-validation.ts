@@ -6,10 +6,14 @@ export class NgProductPriceChangesValidation extends Validation {
     public formErrors = {
         currencyCode: '',
         change: '',
-        changeType: '',
+        isPercentage: '',
         validFrom: '',
         validTo: '',
-        recordId: ''
+        recordId: '',
+        minUnits: '',
+        maxUnits: '',
+        perUnit: '',
+        onlyValidUnits: ''
     };
 
     public validationMessages: StrIndex<{}> = {
@@ -19,7 +23,7 @@ export class NgProductPriceChangesValidation extends Validation {
         change: {
             required: ''
         },
-        changeType: {
+        isPercentage: {
             required: ''
         },
         validFrom: {
@@ -29,6 +33,18 @@ export class NgProductPriceChangesValidation extends Validation {
             required: ''
         },
         recordId: {
+            required: ''
+        },
+        minUnits: {
+            required: ''
+        },
+        maxUnits: {
+            required: ''
+        },
+        perUnit: {
+            required: ''
+        },
+        onlyValidUnits: {
             required: ''
         }
     };

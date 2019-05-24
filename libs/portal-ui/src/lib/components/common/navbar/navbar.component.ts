@@ -5,7 +5,7 @@ import { Skysmack } from '@skysmack/packages-skysmack-core';
 import { Menu } from '@skysmack/ng-ui';
 import { NgSkysmackStore } from '@skysmack/ng-core';
 import { UIRedux } from './../../../redux/ui-redux';
-import { NgAuthenticationActions } from '@skysmack/ng-redux';
+import { NgAuthenticationActions } from '@skysmack/ng-framework';
 import { Package } from '@skysmack/framework';
 import { NgRedux } from '@angular-redux/store';
 import { persistStore } from 'redux-persist';

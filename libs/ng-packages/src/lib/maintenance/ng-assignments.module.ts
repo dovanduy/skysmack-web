@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { assignmentReducer, assignmentTypesReducer, maintenanceStatesReducer, recurringAssignmentsReducer, RECURRING_ASSIGNMENTS_REDUCER_KEY, MAINTENANCE_STATES_REDUCER_KEY, ASSIGNMENT_TYPES_REDUCER_KEY, ASSIGNMENTS_REDUCER_KEY } from '@skysmack/packages-maintenance';
 
-import { registerRedux } from '@skysmack/ng-redux';
+import { registerRedux } from '@skysmack/ng-framework';
 import { NgAssignmentsEpics } from './assignments/redux/ng-assignments-epics';
 import { NgAssignmentTypesEpics } from './assignment-types/redux/ng-assignment-types-epics';
 import { NgMaintenanceStatesEpics } from './maintenance-states/redux/ng-maintenance-states-epics';

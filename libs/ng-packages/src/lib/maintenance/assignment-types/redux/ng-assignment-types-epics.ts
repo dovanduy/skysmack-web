@@ -1,5 +1,5 @@
 import { NgAssignmentTypesRequests } from './ng-assignment-types-requests';
-import { RecordEpicsBase, getReadDependencies } from '@skysmack/ng-redux';
+import { RecordEpicsBase, getReadDependencies } from '@skysmack/ng-framework';
 import { AssignmentType, ASSIGNMENT_TYPES_REDUX_KEY } from '@skysmack/packages-maintenance';
 import { Injectable } from '@angular/core';
 import { NgAssignmentTypesNotifications } from '../ng-assignment-types-notifications';

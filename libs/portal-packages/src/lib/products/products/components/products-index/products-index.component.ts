@@ -7,7 +7,7 @@ import { NgProductsStore } from '@skysmack/ng-packages';
 import { Product, ProductsAppState, PRODUCTS_AREA_KEY } from '@skysmack/packages-products';
 import { NgProductsMenu } from '../../ng-products-menu';
 import { EntityAction } from '@skysmack/ng-ui';
-import { NgFieldActions } from '@skysmack/ng-redux';
+import { NgFieldActions } from '@skysmack/ng-framework';
 import { NgProductsFieldsConfig } from '../../ng-products-fields-config';
 
 @Component({

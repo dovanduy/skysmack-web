@@ -1,6 +1,6 @@
 import { Directive, OnInit, TemplateRef, ViewContainerRef, OnDestroy } from '@angular/core';
 import { SubscriptionLike } from 'rxjs';
-import { NgAuthenticationStore } from '@skysmack/ng-redux';
+import { NgAuthenticationStore } from '@skysmack/ng-framework';
 import { map } from 'rxjs/operators';
 
 

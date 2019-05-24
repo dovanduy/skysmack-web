@@ -4,12 +4,10 @@ import { LocalObject, LocalObjectStatus, PagedQuery } from '@skysmack/framework'
 import { ProductPriceChange, PRODUCT_PRICE_CHANGES_AREA_KEY } from '@skysmack/packages-products-pricings';
 import { FormRule, SelectField, Field } from '@skysmack/ng-ui';
 import { NgProductPriceChangesValidation, NgProductsSalesPriceStore, NgProductsStore, NgProductsActions } from '@skysmack/ng-packages';
-import { FieldsConfig, SelectFieldComponent, HiddenFieldComponent, DecimalFieldComponent, DateTimeFieldComponent } from '@skysmack/portal-ui';
-import { of } from 'rxjs';
+import { FieldsConfig, SelectFieldComponent, HiddenFieldComponent, DecimalFieldComponent, DateTimeFieldComponent, IntFieldComponent, CheckboxFieldComponent } from '@skysmack/portal-ui';
 import { FieldProviders } from '@skysmack/portal-ui';
-import { LoadedPackage } from '@skysmack/ng-redux';
+import { LoadedPackage } from '@skysmack/ng-framework';
 import { NgProductsSalesPriceActions } from '@skysmack/ng-packages';
-import { PriceChangeType } from '@skysmack/pricings';
 
 @Injectable({ providedIn: 'root' })
 export class NgProductPriceChangesFieldsConfig extends FieldsConfig<ProductPriceChange, number> {
@@ -60,14 +58,18 @@ export class NgProductPriceChangesFieldsConfig extends FieldsConfig<ProductPrice
                 order: 2,
                 showColumn: true
             }),
-            new SelectField({
-                component: SelectFieldComponent,
-                value: entity ? entity.object.changeType : undefined,
-                key: 'changeType',
-                validators: [Validators.required],
-                optionsData$: of(PriceChangeType),
-                optionsDataType: 'ts-enum',
-                order: 3,
+            new Field({
+                component: CheckboxFieldComponent,
+                value: entity ? entity.object.perUnit : false,
+                key: 'perUnit',
+                order: 4,
+                showColumn: true
+            }),
+            new Field({
+                component: CheckboxFieldComponent,
+                value: entity ? entity.object.isPercentage : false,
+                key: 'isPercentage',
+                order: 4,
                 showColumn: true
             }),
             new Field({
@@ -75,6 +77,29 @@ export class NgProductPriceChangesFieldsConfig extends FieldsConfig<ProductPrice
                 value: entity ? entity.object.change : undefined,
                 key: 'change',
                 validators: [Validators.required],
+                order: 4,
+                showColumn: true
+            }),
+            new Field({
+                component: IntFieldComponent,
+                value: entity ? entity.object.minUnits : undefined,
+                key: 'minUnits',
+                validators: [Validators.required],
+                order: 4,
+                showColumn: true
+            }),
+            new Field({
+                component: IntFieldComponent,
+                value: entity ? entity.object.maxUnits : undefined,
+                key: 'maxUnits',
+                validators: [Validators.required],
+                order: 4,
+                showColumn: true
+            }),
+            new Field({
+                component: CheckboxFieldComponent,
+                value: entity ? entity.object.onlyValidUnits : false,
+                key: 'onlyValidUnits',
                 order: 4,
                 showColumn: true
             }),

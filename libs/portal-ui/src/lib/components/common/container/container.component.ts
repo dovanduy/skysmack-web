@@ -7,7 +7,7 @@ import { EditorNavService } from './editor-nav.service';
 import { NgSkysmackStore } from '@skysmack/ng-core';
 import { Observable, of } from 'rxjs';
 import { map, filter, switchMap } from 'rxjs/operators';
-import { NgAuthenticationStore } from '@skysmack/ng-redux';
+import { NgAuthenticationStore } from '@skysmack/ng-framework';
 
 const SMALL_WIDTH_BREAKPOINT = 720;
 

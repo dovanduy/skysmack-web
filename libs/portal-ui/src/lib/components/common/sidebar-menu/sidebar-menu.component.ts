@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { SidebarMenu } from './../../../models/sidebar-menu/sidebar-menu';
+import { MenuItem } from '@skysmack/framework';
 
 @Component({
   selector: 'ss-sidebar-menu',
@@ -30,6 +31,13 @@ export class SidebarMenuComponent implements OnInit {
   ngOnInit() {
     this.removeEmptyMenuAreas();
   }
+
+  public permissionsChecked(displaying: boolean, menuItem: MenuItem) {
+    menuItem.display = displaying;
+    const menuArea = this.sidebarMenu.primaryMenuAreas.find(x => x.area === menuItem.area);
+    menuArea.display = this.sidebarMenu.primaryMenuItems.filter(x => x.area === menuItem.area && x.display).length > 0;
+  }
+
 
   public removeEmptyMenuAreas() {
     const menuAreas = this.sidebarMenu.primaryMenuAreas;

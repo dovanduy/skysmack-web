@@ -12,6 +12,6 @@
     "@skysmack/packages-oauth2",
     "@skysmack/ng-packages",
     "@skysmack/ng-ui",
-    "@skysmack/ng-redux"
+    "@skysmack/ng-framework"
   ]
 }

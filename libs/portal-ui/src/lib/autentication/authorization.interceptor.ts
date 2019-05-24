@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, BehaviorSubject, throwError } from 'rxjs';
 import { mergeMap, take, catchError, switchMap, finalize, filter, tap } from 'rxjs/operators';
 import { CurrentUser } from '@skysmack/framework';
-import { NgAuthenticationStore, NgAuthenticationActions } from '@skysmack/ng-redux';
+import { NgAuthenticationStore, NgAuthenticationActions } from '@skysmack/ng-framework';
 import { NgRedux } from '@angular-redux/store';
 
 

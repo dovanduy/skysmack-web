@@ -5,7 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { DocumentRecordFormComponent, EditorNavService } from '@skysmack/portal-ui';
 import { NgProductTypesActions } from '@skysmack/ng-packages';
 import { NgProductTypesStore } from '@skysmack/ng-packages';
-import { NgFieldActions } from '@skysmack/ng-redux';
+import { NgFieldActions } from '@skysmack/ng-framework';
 import { NgProductTypesFieldsConfig } from '../../ng-product-types-fields-config';
 
 @Component({

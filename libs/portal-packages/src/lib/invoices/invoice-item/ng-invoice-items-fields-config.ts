@@ -7,7 +7,7 @@ import { Field } from '@skysmack/ng-ui';
 
 import { DocumentFieldsConfig, StringFieldComponent, HiddenFieldComponent, IntFieldComponent } from '@skysmack/portal-ui';
 import { NgInvoiceItemsValidation } from '@skysmack/ng-packages';
-import { NgFieldStore, LoadedPackage } from '@skysmack/ng-redux';
+import { NgFieldStore, LoadedPackage } from '@skysmack/ng-framework';
 import { FieldProviders } from '@skysmack/portal-ui';
 import { Router } from '@angular/router';
 

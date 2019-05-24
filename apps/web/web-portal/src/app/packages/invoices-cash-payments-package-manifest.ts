@@ -1,4 +1,4 @@
-import { PackageLoader, PackageManifest } from '@skysmack/ng-redux';
+import { PackageLoader, PackageManifest } from '@skysmack/ng-framework';
 import { InvoicesCashPaymentsType } from '@skysmack/packages-invoices-cash-payments';
 
 export class InvoicesCashPaymentsPackageManifest extends InvoicesCashPaymentsType implements PackageManifest {

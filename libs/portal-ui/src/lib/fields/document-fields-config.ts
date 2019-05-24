@@ -11,7 +11,7 @@ import { StringFieldComponent } from '../components/field-components/components/
 import { FieldsConfig } from './fields-config';
 import { Observable, combineLatest } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
-import { NgFieldStore, LoadedPackage, getAdditionalPaths } from '@skysmack/ng-redux';
+import { NgFieldStore, LoadedPackage, getAdditionalPaths } from '@skysmack/ng-framework';
 import { FieldProviders } from './field-providers';
 import { Router } from '@angular/router';
 

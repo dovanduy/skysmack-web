@@ -1,5 +1,5 @@
 import { AccountType } from '@skysmack/packages-account';
-import { PackageLoader, PackageManifest } from '@skysmack/ng-redux';
+import { PackageLoader, PackageManifest } from '@skysmack/ng-framework';
 
 export class AccountPackageManifest extends AccountType implements PackageManifest {
     public icon = 'account_box';

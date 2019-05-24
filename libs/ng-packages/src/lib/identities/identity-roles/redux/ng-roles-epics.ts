@@ -1,4 +1,4 @@
-import { RecordEpicsBase } from '@skysmack/ng-redux';
+import { RecordEpicsBase } from '@skysmack/ng-framework';
 import { Role, ROLES_REDUX_KEY } from '@skysmack/packages-identities';
 import { NgRolesRequests } from './ng-roles-requests';
 import { Injectable } from '@angular/core';

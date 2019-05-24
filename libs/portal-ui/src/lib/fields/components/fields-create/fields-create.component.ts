@@ -5,7 +5,7 @@ import { EditorNavService } from './../../../components/common/container/editor-
 import { NgSkysmackStore } from '@skysmack/ng-core';
 import { NgFieldsConfig } from './../../ng-fields-config';
 import { RecordFormComponent } from './../../../base-components/record-components/record-form-component';
-import { NgFieldActions, NgFieldStore } from '@skysmack/ng-redux';
+import { NgFieldActions, NgFieldStore } from '@skysmack/ng-framework';
 import { FormHelper } from '@skysmack/ng-ui';
 
 @Component({

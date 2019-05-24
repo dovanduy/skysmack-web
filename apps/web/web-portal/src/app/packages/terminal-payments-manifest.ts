@@ -1,5 +1,5 @@
 import { TerminalPaymentsType } from '@skysmack/packages-terminal-payments';
-import { PackageLoader, PackageManifest } from '@skysmack/ng-redux';
+import { PackageLoader, PackageManifest } from '@skysmack/ng-framework';
 
 export class TerminalPaymentsPackageManifest extends TerminalPaymentsType implements PackageManifest {
     public icon = 'payment';

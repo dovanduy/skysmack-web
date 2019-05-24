@@ -1,7 +1,7 @@
-import { RecordEpicsBase } from '@skysmack/ng-redux';
+import { RecordEpicsBase } from '@skysmack/ng-framework';
 import { LODGING_RESERVATION_PRICE_CHANGES_REDUX_KEY, LodgingReservationPriceChange } from '@skysmack/packages-reservations-pricings';
 import { Injectable } from '@angular/core';
-import { getReadDependencies } from '@skysmack/ng-redux';
+import { getReadDependencies } from '@skysmack/ng-framework';
 import { NgSkysmackStore } from '@skysmack/ng-core';
 import { NgLodgingsStore } from '../../../lodgings/lodgings/redux/ng-lodgings-store';
 import { NgLodgingsActions } from '../../../lodgings/lodgings/redux/ng-lodgings-actions';

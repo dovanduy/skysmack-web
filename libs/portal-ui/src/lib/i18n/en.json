@@ -61,5 +61,13 @@
             "FIELD_FAILURE": "{{ errorMessage }} ({{ httpErrorCode }})."
         },
         "CONNECTION_ERROR": "Could not connect to the server."
+    },
+    "SKYSMACK": {
+        "FORM": {
+            "PLACEHOLDERS": {
+                "NAME": "Name",
+                "DEFAULTTAX": "Default tax"
+            }
+        }
     }
 }

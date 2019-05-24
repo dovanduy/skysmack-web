@@ -3,12 +3,11 @@ import { Validators } from '@angular/forms';
 import { LocalObject, LocalObjectStatus, PagedQuery } from '@skysmack/framework';
 import { FormRule, SelectField, Field } from '@skysmack/ng-ui';
 import { NgLodgingTypeReservationPriceChangesValidation, NgLodgingTypesStore, NgLodgingTypesActions } from '@skysmack/ng-packages';
-import { FieldsConfig, SelectFieldComponent, HiddenFieldComponent, DecimalFieldComponent, DateTimeFieldComponent, FlaggedEnumFieldComponent, DaysOfWeekFlagged } from '@skysmack/portal-ui';
+import { FieldsConfig, SelectFieldComponent, HiddenFieldComponent, DecimalFieldComponent, DateTimeFieldComponent, FlaggedEnumFieldComponent, DaysOfWeekFlagged, IntFieldComponent, CheckboxFieldComponent } from '@skysmack/portal-ui';
 import { FieldProviders } from '@skysmack/portal-ui';
-import { LoadedPackage, getPackageDendencyAsStream } from '@skysmack/ng-redux';
+import { LoadedPackage, getPackageDendencyAsStream } from '@skysmack/ng-framework';
 import { LodgingTypeReservationPriceChange, LODGING_TYPE_RESERVATION_PRICE_CHANGES_AREA_KEY } from '@skysmack/packages-reservations-pricings';
 import { of } from 'rxjs';
-import { PriceChangeType } from '@skysmack/pricings';
 import { NgSkysmackStore } from '@skysmack/ng-core';
 import { map, take, switchMap } from 'rxjs/operators';
 
@@ -65,20 +64,82 @@ export class NgLodgingTypeReservationPriceChangesFieldsConfig extends FieldsConf
                 order: 2,
                 showColumn: true
             }),
-            new SelectField({
-                component: SelectFieldComponent,
-                value: entity ? entity.object.changeType : undefined,
-                key: 'changeType',
+            new Field({
+                component: CheckboxFieldComponent,
+                value: entity ? entity.object.perUnit : false,
+                key: 'perUnit',
                 validators: [Validators.required],
-                optionsData$: of(PriceChangeType),
-                optionsDataType: 'ts-enum',
-                order: 3,
+                order: 4,
+                showColumn: true
+            }),
+            new Field({
+                component: CheckboxFieldComponent,
+                value: entity ? entity.object.isPercentage : false,
+                key: 'isPercentage',
+                validators: [Validators.required],
+                order: 4,
                 showColumn: true
             }),
             new Field({
                 component: DecimalFieldComponent,
                 value: entity ? entity.object.change : undefined,
                 key: 'change',
+                validators: [Validators.required],
+                order: 4,
+                showColumn: true
+            }),
+            new Field({
+                component: IntFieldComponent,
+                value: entity ? entity.object.minUnits : undefined,
+                key: 'minUnits',
+                validators: [Validators.required],
+                order: 4,
+                showColumn: true
+            }),
+            new Field({
+                component: IntFieldComponent,
+                value: entity ? entity.object.maxUnits : undefined,
+                key: 'maxUnits',
+                validators: [Validators.required],
+                order: 4,
+                showColumn: true
+            }),
+            new Field({
+                component: CheckboxFieldComponent,
+                value: entity ? entity.object.onlyValidUnits : false,
+                key: 'onlyValidUnits',
+                validators: [Validators.required],
+                order: 4,
+                showColumn: true
+            }),
+            new Field({
+                component: IntFieldComponent,
+                value: entity ? entity.object.minUnitsOfTime : undefined,
+                key: 'minUnitsOfTime',
+                validators: [Validators.required],
+                order: 4,
+                showColumn: true
+            }),
+            new Field({
+                component: IntFieldComponent,
+                value: entity ? entity.object.maxUnitsOfTime : undefined,
+                key: 'maxUnitsOfTime',
+                validators: [Validators.required],
+                order: 4,
+                showColumn: true
+            }),
+            new Field({
+                component: CheckboxFieldComponent,
+                value: entity ? entity.object.onlyValidUnitsOfTime : false,
+                key: 'onlyValidUnitsOfTime',
+                validators: [Validators.required],
+                order: 4,
+                showColumn: true
+            }),
+            new Field({
+                component: CheckboxFieldComponent,
+                value: entity ? entity.object.perUnitOfTime : false,
+                key: 'perUnitOfTime',
                 validators: [Validators.required],
                 order: 4,
                 showColumn: true
@@ -115,10 +176,10 @@ export class NgLodgingTypeReservationPriceChangesFieldsConfig extends FieldsConf
             }),
             new SelectField({
                 component: FlaggedEnumFieldComponent,
-                value: entity ? entity.object.daysOfWeek : 0,
+                value: entity ? entity.object.excludeDaysOfWeek : 0,
                 optionsData$: of(DaysOfWeekFlagged),
                 optionsDataType: 'flag-enum',
-                key: 'daysOfWeek',
+                key: 'excludeDaysOfWeek',
                 order: 1,
                 showColumn: true
             } as SelectField)

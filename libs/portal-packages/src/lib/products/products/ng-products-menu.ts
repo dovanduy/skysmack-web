@@ -4,7 +4,7 @@ import { SidebarMenu } from '@skysmack/portal-ui';
 import { NgSkysmackStore } from '@skysmack/ng-core';
 import { MenuArea } from '@skysmack/framework';
 import { MenuItem } from '@skysmack/framework';
-import { NgMenuItemProviders } from '@skysmack/ng-redux';
+import { NgMenuItemProviders } from '@skysmack/ng-framework';
 import { PRODUCTS_AREA_KEY } from '@skysmack/packages-products';
 
 @Injectable({ providedIn: 'root' })
@@ -33,11 +33,6 @@ export class NgProductsMenu extends SidebarMenu {
             area: 'manage',
             translationPrefix: this.translationPrefix,
             order: 2,
-        }));
-        this.primaryMenuAreas.push(new MenuArea({
-            area: 'connected_packages',
-            translationPrefix: 'UI.MISC.',
-            order: 3,
         }));
 
         this.primaryMenuItems.push(new MenuItem({

@@ -38,9 +38,8 @@
                 </button>
                 <mat-menu #menu="matMenu">
                   <ng-container *ngFor="let entityAction of entityActions">
-                    <!-- ACTION EVENT -->
-                    <a *ngIf="entityAction.isActionEvent" showEntityAction [entityAction]="entityAction"
-                      [entity]="entity" mat-menu-item
+                    <!-- ACTION EVENT  -->
+                    <a *ngIf="entityAction.isActionEvent && (entityAction | showEntityAction:entity)" mat-menu-item
                       (click)="entityActionEvent.emit({ action: entityAction.action, value: entity, _this: entityAction._this })">
                       <i class="material-icons">{{ entityAction.icon }}</i> <span
                         class="icon-text">{{ entityAction.displayName | translate }}</span>

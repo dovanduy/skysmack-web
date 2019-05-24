@@ -1,11 +1,11 @@
-import { RecordEpicsBase } from '@skysmack/ng-redux';
+import { RecordEpicsBase } from '@skysmack/ng-framework';
 import { ProductTypeSalesPrice, PRODUCT_TYPE_SALES_PRICE_REDUX_KEY } from '@skysmack/packages-products-pricings';
 import { Injectable } from '@angular/core';
 import { NgProductTypeSalesPriceRequests } from './ng-product-type-sales-price-requests';
 import { NgProductTypeSalesPriceNotifications } from '../ng-product-type-sales-price-notifications';
 import { NgProductTypesStore } from '../../../products/product-types/redux/ng-product-types-store';
 import { NgProductTypesActions } from '../../../products/product-types/redux/ng-product-types-actions';
-import { getReadDependencies } from '@skysmack/ng-redux';
+import { getReadDependencies } from '@skysmack/ng-framework';
 import { NgSkysmackStore } from '@skysmack/ng-core';
 
 @Injectable({ providedIn: 'root' })

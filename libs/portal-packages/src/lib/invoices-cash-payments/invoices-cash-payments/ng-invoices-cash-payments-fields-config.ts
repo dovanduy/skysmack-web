@@ -6,7 +6,7 @@ import { CashPayment, INVOICES_CASH_PAYMENTS_AREA_KEY } from '@skysmack/packages
 import { Field } from '@skysmack/ng-ui';
 import { FieldsConfig, StringFieldComponent, HiddenFieldComponent, FieldProviders, IntFieldComponent, SelectFieldComponent } from '@skysmack/portal-ui';
 import { NgInvoicesCashPaymentsValidation, NgInvoicesStore, NgInvoicesActions } from '@skysmack/ng-packages';
-import { LoadedPackage } from '@skysmack/ng-redux';
+import { LoadedPackage } from '@skysmack/ng-framework';
 import { NgSkysmackStore } from '@skysmack/ng-core';
 import { switchMap, take, map } from 'rxjs/operators';
 

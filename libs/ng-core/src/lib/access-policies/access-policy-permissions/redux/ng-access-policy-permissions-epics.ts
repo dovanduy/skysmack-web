@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { RecordEpicsBase } from '@skysmack/ng-redux';
+import { RecordEpicsBase } from '@skysmack/ng-framework';
 import { NgAccessPolicyPermissionsRequests } from './ng-access-policy-permissions-requests';
 import { AccessPolicyPermission, ACCESS_POLICY_PERMISSIONS_REDUX_KEY } from '@skysmack/packages-skysmack-core';
 import { NgAccessPolicyPermissionsNotifications } from '../ng-access-policy-permissions-notifications';

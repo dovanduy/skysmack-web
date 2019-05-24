@@ -7,7 +7,7 @@ import { NgLodgingTypesStore } from '@skysmack/ng-packages';
 import { NgLodgingTypesActions } from '@skysmack/ng-packages';
 import { EntityAction } from '@skysmack/ng-ui';
 import { NgLodgingTypesMenu } from '../../ng-lodging-types-menu';
-import { NgFieldActions } from '@skysmack/ng-redux';
+import { NgFieldActions } from '@skysmack/ng-framework';
 import { NgLodgingTypesFieldsConfig } from '../../ng-lodging-types-fields-config';
 
 @Component({

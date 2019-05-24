@@ -2,7 +2,7 @@ import { Injectable, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ApiDomain, API_DOMAIN_INJECTOR_TOKEN, } from '@skysmack/framework';
 import { LODGING_PRICES_REDUX_KEY, LodgingPrice, LODGING_PRICES_ADDITIONAL_PATHS } from '@skysmack/packages-reservations-pricings';
-import { NgRecordRequests } from '@skysmack/ng-redux';
+import { NgRecordRequests } from '@skysmack/ng-framework';
 
 @Injectable({ providedIn: 'root' })
 export class NgLodgingPricesRequests extends NgRecordRequests<LodgingPrice, number> {

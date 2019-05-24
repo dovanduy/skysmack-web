@@ -4,7 +4,7 @@ import { ApiDomain, HttpErrorResponse, NumIndex, API_DOMAIN_INJECTOR_TOKEN } fro
 import { catchError, map } from 'rxjs/operators';
 import { ReduxAction } from '@skysmack/redux';
 import { of, Observable } from 'rxjs';
-import { NgRecordRequests } from '@skysmack/ng-redux';
+import { NgRecordRequests } from '@skysmack/ng-framework';
 import { NgUsersActions } from './ng-users-actions';
 import { User, GetUsersRolesSuccessPayload, USERS_ADDITIONAL_PATHS, USERS_REDUX_KEY } from '@skysmack/packages-identities';
 

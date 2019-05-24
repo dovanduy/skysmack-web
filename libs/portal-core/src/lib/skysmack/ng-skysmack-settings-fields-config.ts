@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { FormRule, Field } from '@skysmack/ng-ui';
 import { LocalObject } from '@skysmack/framework';
 import { USERS_AREA_KEY } from '@skysmack/packages-identities';
-import { LoadedPackage } from '@skysmack/ng-redux';
+import { LoadedPackage } from '@skysmack/ng-framework';
 import { FieldsConfig, StringFieldComponent, IntFieldComponent } from '@skysmack/portal-ui';
 import { FieldProviders } from '@skysmack/portal-ui';
 import { SkysmackSettings } from '@skysmack/packages-skysmack-core';

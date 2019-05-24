@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { RecordEpicsBase } from '@skysmack/ng-redux';
+import { RecordEpicsBase } from '@skysmack/ng-framework';
 import { CashPayment, INVOICES_CASH_PAYMENTS_REDUX_KEY } from '@skysmack/packages-invoices-cash-payments';
 import { NgInvoicesCashPaymentsRequests } from './ng-invoices-cash-payments-requests';
 import { NgInvoicesCashPaymentsNotifications } from '../ng-invoices-cash-payments-notifications';

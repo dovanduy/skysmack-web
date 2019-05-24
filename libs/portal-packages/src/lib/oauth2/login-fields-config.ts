@@ -5,7 +5,7 @@ import { LoginValidation } from './login-validation';
 import { LocalObject } from '@skysmack/framework';
 import { FieldsConfig, PasswordFieldComponent, EmailFieldComponent } from '@skysmack/portal-ui';
 import { FieldProviders } from '@skysmack/portal-ui';
-import { LoadedPackage } from '@skysmack/ng-redux';
+import { LoadedPackage } from '@skysmack/ng-framework';
 import { OAUTH2_AREA_KEY } from '@skysmack/packages-oauth2';
 
 @Injectable({ providedIn: 'root' })

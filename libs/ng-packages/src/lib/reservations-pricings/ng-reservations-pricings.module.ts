@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { NgMenuItemProviders, registerRedux } from '@skysmack/ng-redux';
+import { NgMenuItemProviders, registerRedux } from '@skysmack/ng-framework';
 import { NgReservationsPricingsMenuItemProvider } from './ng-reservations-pricings-menu-item-provider';
 import { lodgingPricesReducer, lodgingTypePricesReducer, LODGING_PRICES_REDUCER_KEY, LODGING_TYPE_PRICES_REDUCER_KEY, LODGING_RESERVATION_PRICE_CHANGES_REDUCER_KEY, LODGING_TYPE_RESERVATION_PRICE_CHANGES_REDUCER_KEY, lodgingReservationPriceChangesReducer, lodgingTypeReservationPriceChangesReducer } from '@skysmack/packages-reservations-pricings';
 import { NgLodgingPricesEpics } from './lodging-prices/redux/ng-lodging-prices-epics';

@@ -1,6 +1,4 @@
 export class EntityAction {
-
-    public show = true;
     public showLogic: Function;
 
     // Event Action Props

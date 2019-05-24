@@ -5,7 +5,7 @@ import { FormRule, Field, CustomValidators, SetPathRule, SelectField } from '@sk
 import { PackagesValidation, NgPackagesStore } from '@skysmack/ng-core';
 import { FieldsConfig, StringFieldComponent, SelectFieldComponent, HiddenFieldComponent, PackageDependenciesFieldComponent } from '@skysmack/portal-ui';
 import { FieldProviders } from '@skysmack/portal-ui';
-import { LoadedPackage } from '@skysmack/ng-redux';
+import { LoadedPackage } from '@skysmack/ng-framework';
 import { PACKAGES_AREA_KEY } from '@skysmack/packages-skysmack-core';
 
 @Injectable({ providedIn: 'root' })

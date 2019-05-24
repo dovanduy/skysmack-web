@@ -17,7 +17,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from './../../environments/environment';
 import { GlobalProperties } from '@skysmack/framework';
-import { NgFieldEpics, registerRedux, NgSettingsEpics } from '@skysmack/ng-redux';
+import { NgFieldEpics, registerRedux, NgSettingsEpics } from '@skysmack/ng-framework';
 import { fieldReducer, settingsReducer } from '@skysmack/redux';
 import { RecoverPasswordComponent } from './components/recover-password/recover-password.component';
 import { VerifyEmailComponent } from './components/verify-email/verify-email.component';

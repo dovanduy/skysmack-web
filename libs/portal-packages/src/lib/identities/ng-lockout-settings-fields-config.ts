@@ -3,7 +3,7 @@ import { FormRule, Field } from '@skysmack/ng-ui';
 import { LockoutSettings, IDENTITES_AREA_KEY } from '@skysmack/packages-identities';
 import { LocalObject } from '@skysmack/framework';
 import { NgLockoutSettingsValidation } from '@skysmack/ng-packages';
-import { LoadedPackage } from '@skysmack/ng-redux';
+import { LoadedPackage } from '@skysmack/ng-framework';
 import { FieldsConfig, CheckboxFieldComponent, IntFieldComponent, TimeFieldComponent } from '@skysmack/portal-ui';
 import { FieldProviders } from '@skysmack/portal-ui';
 
@@ -21,7 +21,7 @@ export class NgLockoutSettingsFieldsConfig extends FieldsConfig<LockoutSettings,
         const fields = [
             new Field({
                 component: CheckboxFieldComponent,
-                value: settings ? settings.object.allowedForNewUsers : undefined,
+                value: settings ? settings.object.allowedForNewUsers : false,
                 key: 'allowedForNewUsers',
                 order: 1
             }),
