@@ -5,7 +5,7 @@
   "version": "1.0.0",
   "peerDependencies": {
     "@skysmack/framework": "*",
-    "rxjs": "^6.4.0",
+    "rxjs": "^6.5.2",
     "@redux-offline/redux-offline": "^2.5.1",
     "localforage": "^1.7.3",
     "redux": "^4.0.1",
