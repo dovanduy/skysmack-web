@@ -38,18 +38,22 @@
                 </button>
                 <mat-menu #menu="matMenu">
                   <ng-container *ngFor="let entityAction of entityActions">
-                    <!-- ACTION EVENT  -->
-                    <a *ngIf="entityAction.isActionEvent && (entityAction | showEntityAction:entity)" mat-menu-item
-                      (click)="entityActionEvent.emit({ action: entityAction.action, value: entity, _this: entityAction._this })">
-                      <i class="material-icons">{{ entityAction.icon }}</i> <span
-                        class="icon-text">{{ entityAction.displayName | translate }}</span>
-                    </a>
-                    <!-- URL EVENT -->
-                    <a *ngIf="!entityAction.isActionEvent" mat-menu-item
-                      [routerLink]="[entityAction.url, entity.objectIdentifier, entityAction.urlPostfix]">
-                      <i class="material-icons">{{ entityAction.icon }}</i>
-                      <span class="icon-text">{{ entityAction.displayName | translate }}</span>
-                    </a>
+                    <ng-template [inAnyPermission]="entityAction.permissions"
+                      (permissionsChecked)="entityAction.display = $event">
+                      <!-- ACTION EVENT  -->
+                      <a *ngIf="entityAction.isActionEvent && (entityAction | showEntityAction:entity) && entityAction.display"
+                        mat-menu-item
+                        (click)="entityActionEvent.emit({ action: entityAction.action, value: entity, _this: entityAction._this })">
+                        <i class="material-icons">{{ entityAction.icon }}</i> <span
+                          class="icon-text">{{ entityAction.displayName | translate }}</span>
+                      </a>
+                      <!-- URL EVENT -->
+                      <a *ngIf="!entityAction.isActionEvent && entityAction.display" mat-menu-item
+                        [routerLink]="[entityAction.url, entity.objectIdentifier, entityAction.urlPostfix]">
+                        <i class="material-icons">{{ entityAction.icon }}</i>
+                        <span class="icon-text">{{ entityAction.displayName | translate }}</span>
+                      </a>
+                    </ng-template>
                   </ng-container>
                 </mat-menu>
               </ng-container>

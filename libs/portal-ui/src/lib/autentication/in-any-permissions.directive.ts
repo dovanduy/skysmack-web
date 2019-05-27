@@ -69,6 +69,7 @@ export class IsAnyPermissionDirective implements OnInit, OnDestroy {
         if (this.subscription) {
             this.subscription.unsubscribe();
         }
+        IsAnyPermissionDirective.register = {};
     }
 
     private show(show: boolean = false) {

@@ -13,6 +13,8 @@ export class EntityAction {
     public area: string;
     public order: number;
     public icon: string;
+    public permissions: string[];
+    public display = true;
 
     constructor() { }
 
@@ -27,6 +29,11 @@ export class EntityAction {
 
     public asEventAction(displayName: string, action: Function, icon: string, _this?: any): EntityAction {
         Object.assign(this, { isActionEvent: true, displayName, action, icon, _this });
+        return this;
+    }
+
+    public setPermissions(permissions: string[]): EntityAction {
+        this.permissions = permissions;
         return this;
     }
 
