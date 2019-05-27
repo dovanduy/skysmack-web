@@ -72,7 +72,7 @@
     "@redux-offline/redux-offline": "^2.5.1",
     "angular-calendar": "^0.27.8",
     "calendar-utils": "^0.3.1",
-    "core-js": "^2.5.4",
+    "core-js": "^2.6.8",
     "guid-typescript": "^1.0.9",
     "gulp": "^4.0.2",
     "localforage": "^1.7.3",
@@ -82,7 +82,7 @@
     "redux": "^4.0.1",
     "redux-observable": "^1.1.0",
     "rxjs": "^6.5.2",
-    "zone.js": "^0.8.26"
+    "zone.js": "^0.9.1"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^0.13.9",
