@@ -28,33 +28,23 @@ export class SkysmackApiDomain implements ApiDomain {
 
         const notLocalTesting = urlInfo.host !== localProdClient;
 
-        console.log({ notLocalTesting, urlInfo, localProdClient });
-        console.log('--------------------');
-
         if (environment.production && notLocalTesting) {
-            console.log('NOT LOCAL');
             if (urlInfo.noPortHost.endsWith(prodHostClient) && urlInfo.subdomain.length > 0) {
                 apiDomain = 'https://' + urlInfo.subdomain + '.' + prodHostApi;
             } else {
                 apiDomain = 'https://' + prodHostApi;
             }
         } else {
-            console.log('LOCAL');
             if (urlInfo.noPortHost.endsWith(devHostClient)) {
                 if (urlInfo.subdomain.length > 0) {
-                    console.log(1);
                     apiDomain = urlInfo.httpProtocol + urlInfo.subdomain + '.' + devPortalHostApi;
                 } else {
-                    console.log(2);
                     apiDomain = urlInfo.httpProtocol + devTenantsHostApi;
                 }
             } else {
                 apiDomain = localApi;
             }
         }
-
-        console.log('--------------------');
-        console.log({ apiDomain });
 
         return apiDomain;
     }
