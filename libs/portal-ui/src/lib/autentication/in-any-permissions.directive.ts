@@ -28,7 +28,6 @@ export class IsAnyPermissionDirective implements OnInit, OnDestroy {
 
     @Output() public permissionsChecked = new EventEmitter();
 
-
     constructor(
         public templateRef: TemplateRef<any>,
         public viewContainer: ViewContainerRef,

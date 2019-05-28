@@ -7,7 +7,7 @@ import { RecordNotifications } from './../notifications/record-notifications';
 
 export abstract class RecordEpicsBase<TRecord extends Record<TKey>, TKey> {
     public epics: Epic[];
-    private NOTIFICATIONS = 'NOTIFICATION';
+    protected NOTIFICATION = 'NOTIFICATION';
 
     constructor(
         protected requests: RecordRequests<TRecord, TKey>,
@@ -51,7 +51,7 @@ export abstract class RecordEpicsBase<TRecord extends Record<TKey>, TKey> {
         ofType(this.prefix + RecordActionsBase.GET_PAGED_FAILURE),
         map((action) => {
             this.notifications.getPagedError(action);
-            return { type: this.NOTIFICATIONS };
+            return { type: this.NOTIFICATION };
         })
     )
 
@@ -59,7 +59,7 @@ export abstract class RecordEpicsBase<TRecord extends Record<TKey>, TKey> {
         ofType(this.prefix + RecordActionsBase.GET_SINGLE_FAILURE),
         map((action) => {
             this.notifications.getSingleError(action);
-            return { type: this.NOTIFICATIONS };
+            return { type: this.NOTIFICATION };
         })
     )
 
@@ -67,7 +67,7 @@ export abstract class RecordEpicsBase<TRecord extends Record<TKey>, TKey> {
         ofType(this.prefix + RecordActionsBase.ADD_SUCCESS),
         map((action) => {
             this.notifications.addSuccess(action);
-            return { type: this.NOTIFICATIONS };
+            return { type: this.NOTIFICATION };
         })
     )
 
@@ -75,7 +75,7 @@ export abstract class RecordEpicsBase<TRecord extends Record<TKey>, TKey> {
         ofType(this.prefix + RecordActionsBase.ADD_FAILURE),
         map((action) => {
             this.notifications.addError(action);
-            return { type: this.NOTIFICATIONS };
+            return { type: this.NOTIFICATION };
         })
     )
 
@@ -83,7 +83,7 @@ export abstract class RecordEpicsBase<TRecord extends Record<TKey>, TKey> {
         ofType(this.prefix + RecordActionsBase.UPDATE_SUCCESS),
         map(action => {
             this.notifications.updateSuccess(action);
-            return { type: this.NOTIFICATIONS };
+            return { type: this.NOTIFICATION };
         })
     )
 
@@ -91,7 +91,7 @@ export abstract class RecordEpicsBase<TRecord extends Record<TKey>, TKey> {
         ofType(this.prefix + RecordActionsBase.UPDATE_FAILURE),
         map(action => {
             this.notifications.updateError(action);
-            return { type: this.NOTIFICATIONS };
+            return { type: this.NOTIFICATION };
         })
     )
 
@@ -99,7 +99,7 @@ export abstract class RecordEpicsBase<TRecord extends Record<TKey>, TKey> {
         ofType(this.prefix + RecordActionsBase.DELETE_SUCCESS),
         map((action) => {
             this.notifications.removeSuccess(action);
-            return { type: this.NOTIFICATIONS };
+            return { type: this.NOTIFICATION };
         })
     )
 
@@ -107,7 +107,7 @@ export abstract class RecordEpicsBase<TRecord extends Record<TKey>, TKey> {
         ofType(this.prefix + RecordActionsBase.DELETE_FAILURE),
         map((action) => {
             this.notifications.removeError(action);
-            return { type: this.NOTIFICATIONS };
+            return { type: this.NOTIFICATION };
         })
     )
     //#endregion

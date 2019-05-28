@@ -17,6 +17,12 @@ export abstract class RecordNotifications<TRecord, TKey> {
 
     constructor(public notifications: Notifications) { }
 
+    public getBackendError(action: ReduxAction<HttpErrorResponse, any>) {
+        this.checkOfflineStatus(action, () => {
+            this.notifications.showSnackbarMessage(this.getErrorMessage(action), undefined, 2000);
+        });
+    }
+
     public getPagedError(action: ReduxAction<HttpErrorResponse, CommitMeta<LocalObject<TRecord, TKey>[]>>) {
         this.checkOfflineStatus(action, () => {
             this.notifications.showTranslatedSnackbarMessage(this.defaultTranslationString + this.GET_PAGED_ERROR, this.getErrorParams(action), undefined, 2000);
@@ -65,6 +71,18 @@ export abstract class RecordNotifications<TRecord, TKey> {
             // TODO: Replace this with backend custom error.
             errorMessage: 'An error occured'
         };
+    }
+
+    protected getErrorMessage(action: ReduxAction<HttpErrorResponse, unknown>): string {
+        const validationErrors: StrIndex<string[]> = action.payload.error && action.payload.error.validationErrors;
+
+        if (validationErrors) {
+            const errors = Object.keys(validationErrors).reduce((acc, key) => acc.concat(validationErrors[key]), []).join(`,\n`);
+            const errorMessage = `${errors} (${action.payload.status})`;
+            return errorMessage;
+        } else {
+            return 'An error ocurred';
+        }
     }
 
     protected checkOfflineStatus(action: ReduxAction<HttpErrorResponse, unknown>, ifOk: Function) {
