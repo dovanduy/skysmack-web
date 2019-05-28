@@ -14,7 +14,8 @@
                 "TOTAL": "Total",
                 "TOTALTAX": "Total tax",
                 "BALANCE": "Balance",
-                "PAID": "Paid"
+                "PAID": "Paid",
+                "STATUS": "Status"
             },
             "VALIDATION": {
                 "CURRENCYCODE": {

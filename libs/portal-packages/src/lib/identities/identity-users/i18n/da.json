@@ -66,6 +66,8 @@
             "AUTHENTICATED": "Autentificeret",
             "USERS": "Brugere",
             "BACK": "Tilbage",
+            "ENTITY_ACTION_SET_PASSWWORD": "Sæt adgangskode",
+            "ENTITY_ACTION_ROLES": "Roller",
             "FIELDS_TITLE": "(felter)"
         },
         "ROLES": {

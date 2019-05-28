@@ -33,6 +33,7 @@
             "INDEX": {
                 "ACTIONS": "Handlinger",
                 "CREATE": "Opret nyt felt",
+                "MANAGE": "Konfigurer",
                 "OTHER": "Andre",
                 "FIELDS": "Felter",
                 "BACK": "Tilbage"
