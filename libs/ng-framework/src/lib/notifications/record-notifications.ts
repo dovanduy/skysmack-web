@@ -1,4 +1,4 @@
-import { LocalObject, HttpErrorResponse, NumIndex, StrIndex } from '@skysmack/framework';
+import { LocalObject, HttpErrorResponse, StrIndex } from '@skysmack/framework';
 import { ReduxAction, CommitMeta } from '@skysmack/redux';
 import { Notifications } from './notifications';
 
