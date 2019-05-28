@@ -25,7 +25,7 @@
             }
         },
         "CHANGE_PASSWORD": {
-            "TITLE": "Change password"
+            "TITLE": "Skift kodeord"
         },
         "INDEX": {
             "ACTIONS": "Handlinger",
