@@ -67,7 +67,8 @@
             "USERS": "Users",
             "BACK": "Back",
             "ENTITY_ACTION_SET_PASSWWORD": "Set password",
-            "ENTITY_ACTION_ROLES": "Roles"
+            "ENTITY_ACTION_ROLES": "Roles",
+            "FIELDS_TITLE": "(fields)"
         },
         "ROLES": {
             "CURRENT_ROLES": "{{ object.email }} current roles",

@@ -11,7 +11,8 @@
             "CREATE": "Opret",
             "MANAGE": "Konfigurer",
             "BACK": "Tilbage",
-            "ROLES": "Roller"
+            "ROLES": "Roller",
+            "FIELDS_TITLE": "(felter)"
         },
         "FORM": {
             "LABELS": {
@@ -29,6 +30,12 @@
                 "PERMISSION": "Tilladelse"
             },
             "VALIDATION": {}
+        },
+        "QUEUE": {
+            "ADDING": "Tilføjer {{ ruleId }}",
+            "UPDATING": "Opdatere {{ ruleId }}",
+            "DELETING": "Sletter {{ ruleId }}",
+            "ERROR": "Der skete en fejl med {{ ruleId }}. Justere den og prøv igen."
         }
     }
 }

@@ -11,7 +11,8 @@
             "CREATE": "Opret",
             "MANAGE": "Konfigurer",
             "BACK": "Tilbage",
-            "ROLES": "Roller"
+            "ROLES": "Roller",
+            "FIELDS_TITLE": "(felter)"
         },
         "FORM": {
             "LABELS": {

@@ -16,7 +16,7 @@ import { NgRolesFieldsConfig } from '../../ng-roles-fields-config';
 })
 export class RolesIndexComponent extends RecordIndexComponent<RolesAppState, Role, number> implements OnInit {
 
-  public area: string = ROLES_AREA_KEY;
+  public areaKey: string = ROLES_AREA_KEY;
   public entityActions: EntityAction[] = [
     new EntityAction().asUrlAction('edit', ENTITY_ACTIONS_EDIT, 'edit'),
     new EntityAction().asEventAction(ENTITY_ACTIONS_DELETE, this.delete, 'delete', this)
@@ -33,11 +33,10 @@ export class RolesIndexComponent extends RecordIndexComponent<RolesAppState, Rol
     public fieldsConfig: NgRolesFieldsConfig,
     public entityActionProviders: EntityActionProviders
   ) {
-    super(router, activatedRoute, actions, redux, store, fieldsConfig, entityActionProviders);
+    super(router, activatedRoute, actions, redux, store, fieldsConfig, entityActionProviders, title);
   }
 
   ngOnInit() {
     super.ngOnInit();
-    this.title.setTitle(this.packagePath);
   }
 }

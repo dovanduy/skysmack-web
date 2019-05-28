@@ -65,7 +65,8 @@
             "ANONYMOUS": "Anonym",
             "AUTHENTICATED": "Autentificeret",
             "USERS": "Brugere",
-            "BACK": "Tilbage"
+            "BACK": "Tilbage",
+            "FIELDS_TITLE": "(felter)"
         },
         "ROLES": {
             "CURRENT_ROLES": "{{ object.email }} nuværende roller",
