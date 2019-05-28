@@ -32,7 +32,7 @@
             "ADDING": "Tilføjer kvittering {{ id }}",
             "UPDATING": "Opdatere kvittering {{ id }}",
             "DELETING": "Sletter kvittering {{ id }}",
-            "ERROR": "Der opstod  en fejl ved kvittering {{ id }}. Ret og prøv igen."
+            "ERROR": "Der opstod en fejl ved kvittering {{ id }}. Ret og prøv igen."
         }
     }
 }

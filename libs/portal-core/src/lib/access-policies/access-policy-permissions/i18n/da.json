@@ -35,7 +35,7 @@
             "ADDING": "Tilføjer {{ ruleId }}",
             "UPDATING": "Opdatere {{ ruleId }}",
             "DELETING": "Sletter {{ ruleId }}",
-            "ERROR": "Der skete en fejl med {{ ruleId }}. Justere den og prøv igen."
+            "ERROR": "Der skete en fejl med {{ ruleId }}. Ret og prøv igen."
         }
     }
 }
