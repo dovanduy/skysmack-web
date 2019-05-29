@@ -10,7 +10,7 @@ export class SettingsAppState<TSettings> {
 }
 
 export function settingsReducer<TSettings>(state = {}, action: ReduxAction): SettingsAppState<TSettings> {
-    state = sharedReducer(state, action, {});
+    state = sharedReducer(state, action, {}, 'settings');
     const newState = Object.assign({}, state);
 
     switch (action.type) {

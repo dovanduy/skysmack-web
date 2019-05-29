@@ -1,6 +1,7 @@
 import { Menu } from '@skysmack/ng-ui';
 import { UIActions } from './ui-actions';
 import { sharedReducer } from '@skysmack/redux';
+import { UI_REDUCER_KEY } from '../constants';
 
 export class UIState {
     public menu: Menu = {
@@ -17,7 +18,7 @@ export class UIState {
 }
 
 export function uiReducer(state = new UIState(), action: any) {
-    state = sharedReducer(state, action, new UIState());
+    state = sharedReducer(state, action, new UIState(), UI_REDUCER_KEY);
     const newState = Object.assign({}, state);
 
     switch (action.type) {

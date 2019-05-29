@@ -1,7 +1,7 @@
 import { ReduxAction, AppState, sharedReducer } from '@skysmack/redux';
 
 export function portalReducer(state: AppState = {}, action: ReduxAction): AppState {
-    state = sharedReducer(state, action, {});
+    state = sharedReducer(state, action, {}, 'portal');
     const newState = Object.assign({}, state);
 
     switch (action.type) {

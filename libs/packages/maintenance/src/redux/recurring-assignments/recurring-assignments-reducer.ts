@@ -1,6 +1,7 @@
 import { StrIndex, LocalObject, LocalPageTypes } from '@skysmack/framework';
 import { AppState, ReduxAction, RecordState, recordReducersBase, sharedReducer } from '@skysmack/redux';
 import { RecurringAssignment } from '../../models/recurring-assignment';
+import { RECURRING_ASSIGNMENTS_REDUCER_KEY } from '../../constants';
 
 /**
  * This is to be used when you want to access maintenances via the GLOBAL state. E.g. state.maintenances (where maintenances is the reducer name.)
@@ -15,7 +16,7 @@ export class RecurringAssignmentState implements RecordState<RecurringAssignment
 }
 
 export function recurringAssignmentsReducer(state = new RecurringAssignmentState(), action: ReduxAction, prefix: string = 'RECURRING_ASSIGNMENT_'): RecurringAssignmentState {
-    state = sharedReducer(state, action, new RecurringAssignmentState());
+    state = sharedReducer(state, action, new RecurringAssignmentState(), RECURRING_ASSIGNMENTS_REDUCER_KEY);
     switch (action.type) {
         default:
             return {

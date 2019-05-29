@@ -22,7 +22,7 @@ export class FieldState {
 
 export function fieldReducer(state: FieldState = new FieldState(), action: any): FieldState {
     let newState = Object.assign({}, state);
-    state = sharedReducer(state, action, new FieldState());
+    state = sharedReducer(state, action, new FieldState(), 'field');
 
     switch (action.type) {
         case FieldActions.CANCEL_FIELD_ACTION: {

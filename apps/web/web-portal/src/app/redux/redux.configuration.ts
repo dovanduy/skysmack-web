@@ -12,7 +12,8 @@ import { epic$ } from '@skysmack/ng-framework';
 
 export const configureRedux = (ngRedux: NgRedux<any>, ngReduxRouter: NgReduxRouter, reduxOfflineConfiguration: ReduxOfflineConfiguration) => {
     const initialState: DeepPartial<any> = {};
-    const offlineEnhancer = createOffline(reduxOfflineConfiguration);
+    // const offlineEnhancer = createOffline(reduxOfflineConfiguration);
+    const { middleware, enhanceReducer, enhanceStore } = createOffline(reduxOfflineConfiguration);
     const epicMiddleware: EpicMiddleware<AnyAction> = createEpicMiddleware();
 
     const composeEnhancers = (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -35,11 +36,10 @@ export const configureRedux = (ngRedux: NgRedux<any>, ngReduxRouter: NgReduxRout
     const rootReducer = combine(reducerRegistry.getReducers());
 
     const store: Store<any> = createStore(
-        offlineEnhancer.enhanceReducer(rootReducer),
-        initialState,
+        enhanceReducer(rootReducer),
         composeEnhancers(
-            offlineEnhancer.enhanceStore,
-            applyMiddleware(offlineEnhancer.middleware as any, epicMiddleware),
+            enhanceStore,
+            applyMiddleware(middleware, epicMiddleware),
         )
     );
 

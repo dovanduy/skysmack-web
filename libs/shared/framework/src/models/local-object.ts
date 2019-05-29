@@ -5,7 +5,7 @@ import { ApiError } from './api-error';
 export class LocalObject<TObject, TKey> {
     public localId: string = Guid.create().toString();
 
-    private _identifier: string;
+    public _identifier: string; // This property is set to public on purpose. Is used in the sharedReducer.
     public get identifier(): string {
         if (!this._identifier) {
             return 'id'

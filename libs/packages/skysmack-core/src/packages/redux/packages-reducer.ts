@@ -3,6 +3,7 @@ import { AppState, ReduxAction, GetAvailablePackagesSuccessPayload, sharedReduce
 import { PackagesActions } from './packages-actions';
 import { GetPackageSuccessPayload } from '../payloads';
 import { cancelPackageAction } from './cancel-package-action';
+import { PACKAGES_REDUCER_KEY } from '../constants';
 
 /**
  * This is to be used when you want to access packages via the GLOBAL state. E.g. state.packages (where packages is the reducer name.)
@@ -18,7 +19,7 @@ export class PackagesState {
 }
 
 export function packagesReducer(state = new PackagesState(), action: any): PackagesState {
-    state = sharedReducer(state, action, new PackagesState());
+    state = sharedReducer(state, action, new PackagesState(), PACKAGES_REDUCER_KEY);
     const newState = Object.assign({}, state);
 
     switch (action.type) {

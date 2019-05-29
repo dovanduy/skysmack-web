@@ -1,6 +1,6 @@
 import { LocalPageTypes, StrIndex, LocalObject } from '@skysmack/framework';
 import { AppState, ReduxAction, recordReducersBase, RecordState, sharedReducer } from '@skysmack/redux';
-import { LODGING_TYPE_PRICES_REDUX_KEY } from '../../constants/constants';
+import { LODGING_TYPE_PRICES_REDUX_KEY, LODGING_TYPE_PRICES_REDUCER_KEY } from '../../constants/constants';
 import { LodgingTypePrice } from '../../models/lodging-type-price';
 
 /**
@@ -16,7 +16,7 @@ export class LodgingTypePricesState implements RecordState<LodgingTypePrice, num
 }
 
 export function lodgingTypePricesReducer(state = new LodgingTypePricesState(), action: ReduxAction, prefix: string = LODGING_TYPE_PRICES_REDUX_KEY): LodgingTypePricesState {
-    state = sharedReducer(state, action, new LodgingTypePricesState());
+    state = sharedReducer(state, action, new LodgingTypePricesState(), LODGING_TYPE_PRICES_REDUCER_KEY);
     const newState = Object.assign({}, state);
 
     switch (action.type) {

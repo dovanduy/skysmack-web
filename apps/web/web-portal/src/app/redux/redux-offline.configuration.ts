@@ -49,33 +49,32 @@ export class ReduxOfflineConfiguration implements Config {
     public persist: (store: any) => any;
     public retry: (action: OfflineAction, retries: number) => number | void;
     public persistAutoRehydrate: (config?: { [key: string]: any; }) => (next: any) => any;
-    public offlineActionTracker: { // Else we want the locally stored data in redux.
+    public offlineActionTracker: {
         registerAction: (number: any) => Promise<any> | (() => void); resolveAction: (number: any, any: any) => void | (() => void); rejectAction: (number: any, Error: any) => void | (() => void);
     };
-
 
     // Overrides =============
     public persistOptions = {
         storage: localForage,
-        transforms: [
-            createTransform(
-                (inboundState) => {
-                    return inboundState;
-                },
-                (outboundState) => {
-                    const online = (this.ngRedux.getState() as AppState).offline.online;
-                    if (online) {
-                        // If we are online, we want fresh data from the server.
-                        if (this.hydrated) {
-                            return outboundState;
-                        }
-                    } else {
-                        // Else we want the locally stored data in redux.
-                        return outboundState;
-                    }
-                }, { blacklist: ['offline', 'authentication', 'settings'] }
-            )
-        ]
+        // transforms: [
+        //     createTransform(
+        //         (inboundState) => {
+        //             return inboundState;
+        //         },
+        //         (outboundState) => {
+        //             const online = (this.ngRedux.getState() as AppState).offline.online;
+        //             if (online) {
+        //                 // If we are online, we want fresh data from the server.
+        //                 if (this.hydrated) {
+        //                     return outboundState;
+        //                 }
+        //             } else {
+        //                 // Else we want the locally stored data in redux.
+        //                 return outboundState;
+        //             }
+        //         }, { blacklist: ['offline', 'authentication', 'settings'] }
+        //     )
+        // ]
     };
 
     public persistCallback = () => {
