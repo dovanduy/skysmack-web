@@ -56,67 +56,67 @@ const extraRoutes = [
       ...extraRoutes,
       {
         path: 'skysmack/packages',
-        loadChildren: './../packages/modules/packages_wrapper.module#PackagesWrapperModule'
+        loadChildren: () => import('./../packages/modules/packages_wrapper.module').then(m => m.PackagesWrapperModule)
       },
       {
         path: 'skysmack/access-policies',
-        loadChildren: './../packages/modules/access_policies_wrapper.module#AccessPoliciesWrapperModule'
+        loadChildren: () => import('./../packages/modules/access_policies_wrapper.module').then(m => m.AccessPoliciesWrapperModule)
       },
       {
         path: 'skysmack/loadPackages/identities',
-        loadChildren: './../packages/modules/identities_wrapper.module#IdentitiesWrapperModule'
+        loadChildren: () => import('./../packages/modules/identities_wrapper.module').then(m => m.IdentitiesWrapperModule)
       },
       {
         path: 'skysmack/loadPackages/persons',
-        loadChildren: './../packages/modules/persons_wrapper.module#PersonsWrapperModule'
+        loadChildren: () => import('./../packages/modules/persons_wrapper.module').then(m => m.PersonsWrapperModule)
       },
       {
         path: 'skysmack/loadPackages/invoices',
-        loadChildren: './../packages/modules/invoices_wrapper.module#InvoicesWrapperModule'
+        loadChildren: () => import('./../packages/modules/invoices_wrapper.module').then(m => m.InvoicesWrapperModule)
       },
       {
         path: 'skysmack/loadPackages/invoices-cash-payments',
-        loadChildren: './../packages/modules/invoices_cash_payments_wrapper.module#InvoicesCashPaymentsWrapperModule'
+        loadChildren: () => import('./../packages/modules/invoices_cash_payments_wrapper.module').then(m => m.InvoicesCashPaymentsWrapperModule)
       },
       {
         path: 'skysmack/loadPackages/products',
-        loadChildren: './../packages/modules/products_wrapper.module#ProductsWrapperModule'
+        loadChildren: () => import('./../packages/modules/products_wrapper.module').then(m => m.ProductsWrapperModule)
       },
       {
         path: 'skysmack/loadPackages/products-pricings',
-        loadChildren: './../packages/modules/products_pricings_wrapper.module#ProductsPricingsWrapperModule'
+        loadChildren: () => import('./../packages/modules/products_pricings_wrapper.module').then(m => m.ProductsPricingsWrapperModule)
       },
       {
         path: 'skysmack/loadPackages/lodgings',
-        loadChildren: './../packages/modules/lodgings_wrapper.module#LodgingsWrapperModule'
+        loadChildren: () => import('./../packages/modules/lodgings_wrapper.module').then(m => m.LodgingsWrapperModule)
       },
       {
         path: 'skysmack/loadPackages/lodgingReservations',
-        loadChildren: './../packages/modules/lodging_reservations_wrapper.module#LodgingReservationsWrapperModule'
+        loadChildren: () => import('./../packages/modules/lodging_reservations_wrapper.module').then(m => m.LodgingReservationsWrapperModule)
       },
       {
         path: 'skysmack/loadPackages/reservations-pricings',
-        loadChildren: './../packages/modules/reservations_pricings_wrapper.module#ReservationsPricingsWrapperModule'
+        loadChildren: () => import('./../packages/modules/reservations_pricings_wrapper.module').then(m => m.ReservationsPricingsWrapperModule)
       },
       {
         path: 'skysmack/loadPackages/personsLodgingReservations',
-        loadChildren: './../packages/modules/persons_lodging_reservations_wrapper.module#PersonsLodgingReservationsWrapperModule'
+        loadChildren: () => import('./../packages/modules/persons_lodging_reservations_wrapper.module').then(m => m.PersonsLodgingReservationsWrapperModule)
       },
       {
         path: 'skysmack/loadPackages/oauth2',
-        loadChildren: './../packages/modules/oauth2_wrapper.module#OAuth2WrapperModule'
+        loadChildren: () => import('./../packages/modules/oauth2_wrapper.module').then(m => m.OAuth2WrapperModule)
       },
       {
         path: 'skysmack/loadPackages/maintenance',
-        loadChildren: './../packages/modules/maintenance_wrapper.module#MaintenanceWrapperModule'
+        loadChildren: () => import('./../packages/modules/maintenance_wrapper.module').then(m => m.MaintenanceWrapperModule)
       },
       {
         path: 'skysmack/loadPackages/terminal-payments',
-        loadChildren: './../packages/modules/terminal_payments_wrapper.module#TerminalPaymentsWrapperModule'
+        loadChildren: () => import('./../packages/modules/terminal_payments_wrapper.module').then(m => m.TerminalPaymentsWrapperModule)
       },
       {
         path: 'skysmack/loadPackages/account',
-        loadChildren: './../packages/modules/account_wrapper.module#AccountWrapperModule'
+        loadChildren: () => import('./../packages/modules/account_wrapper.module').then(m => m.AccountWrapperModule)
       },
       {
         path: '',

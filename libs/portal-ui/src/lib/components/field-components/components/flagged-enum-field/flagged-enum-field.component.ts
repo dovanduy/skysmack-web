@@ -9,7 +9,7 @@ import { MatSelect } from '@angular/material';
   templateUrl: './flagged-enum-field.component.html'
 })
 export class FlaggedEnumFieldComponent extends FieldBaseComponent<Field> implements OnInit, AfterViewInit {
-  @ViewChild('selectInput') public selectInput: MatSelect;
+  @ViewChild('selectInput', { static: false }) public selectInput: MatSelect;
 
   ngOnInit() {
     super.ngOnInit();

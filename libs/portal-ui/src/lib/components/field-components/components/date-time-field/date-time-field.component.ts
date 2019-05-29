@@ -13,10 +13,10 @@ import { Field } from '@skysmack/ng-ui';
 })
 export class DateTimeFieldComponent extends FieldBaseComponent<Field> implements AfterViewInit, OnInit {
 
-  @ViewChild('timeInput') public timeInput: ElementRef;
+  @ViewChild('timeInput', { static: false }) public timeInput: ElementRef;
   public time: string;
 
-  @ViewChild('dateInput') public dateInput: ElementRef;
+  @ViewChild('dateInput', { static: false }) public dateInput: ElementRef;
   public date: string;
 
   ngOnInit() {

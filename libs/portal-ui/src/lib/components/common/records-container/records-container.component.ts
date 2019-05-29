@@ -15,7 +15,7 @@ export class RecordsContainerComponent implements OnInit, OnDestroy {
   public loadedEntitiesCount$: BehaviorSubject<number> = new BehaviorSubject(0).pipe(delay(0)) as BehaviorSubject<number>;
   public loadedEntitiesCount: number;
 
-  @ViewChild('entityList') public entityList: CdkVirtualScrollViewport;
+  @ViewChild('entityList', { static: true }) public entityList: CdkVirtualScrollViewport;
 
   @Output() public requestPage = new EventEmitter<boolean>(false);
   @Output() public entityActionEvent = new EventEmitter<any>();
