@@ -5,7 +5,7 @@
                 "STATEID": "Tilstand",
                 "DESCRIPTION": "Beskrivelse",
                 "EXPRESSION": "Udtryk",
-                "DUEPERIOD": "Due date"
+                "DUEPERIOD": "Udløbsdato"
             },
             "PLACEHOLDERS": {
                 "STATEID": "Vælg tilstand",

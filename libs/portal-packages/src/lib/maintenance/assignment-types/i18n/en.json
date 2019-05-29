@@ -89,8 +89,7 @@
                 "ASSIGNMENT_TYPES": "AssignmentTypes",
                 "FIELDS": "AssignmentType fields",
                 "OTHER": "Other",
-                "BACK": "Back",
-                "ADD": "Add field"
+                "BACK": "Back"
             },
             "CREATE": {
                 "ADD": "Add field"

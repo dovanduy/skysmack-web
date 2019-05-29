@@ -6,7 +6,7 @@
             "MANAGE": "Konfigurer",
             "SETTINGS": "Indstillinger",
             "AVAILABLE_SETTINGS": {
-                "LOCKOUT": "Lockout",
+                "LOCKOUT": "Lås ude",
                 "USER": "Brugere",
                 "PASSWORD": "Kodeord",
                 "SIGNIN": "Log ind"

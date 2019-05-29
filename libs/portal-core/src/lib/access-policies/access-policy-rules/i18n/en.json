@@ -11,7 +11,8 @@
             "CREATE": "Create",
             "MANAGE": "Manage",
             "BACK": "Back",
-            "ROLES": "Roles"
+            "ROLES": "Roles",
+            "FIELDS_TITLE": "(fields)"
         },
         "FORM": {
             "LABELS": {

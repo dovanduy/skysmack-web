@@ -4,7 +4,7 @@
             "CREATE_ROLE": "Create new role"
         },
         "EDIT": {
-            "EDITING": "Rediger {{object.name}}"
+            "EDITING": "Edit {{ name }}"
         },
         "INDEX": {
             "ACTIONS": "Actions",
@@ -13,7 +13,8 @@
             "SECURITY": "Security",
             "SECURITY_AND_USERS": "Users and security",
             "ROLES": "Roles",
-            "BACK": "Back"
+            "BACK": "Back",
+            "FIELDS_TITLE": "(fields)"
         },
         "FORM": {
             "LABELS": {

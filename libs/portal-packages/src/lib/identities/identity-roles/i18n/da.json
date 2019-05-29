@@ -4,7 +4,7 @@
             "CREATE_ROLE": "Opret ny rolle"
         },
         "EDIT": {
-            "EDITING": "Rediger {{ object.name }}"
+            "EDITING": "Rediger {{ name }}"
         },
         "INDEX": {
             "ACTIONS": "Handlinger",
@@ -13,7 +13,8 @@
             "SECURITY": "Sikkerhed",
             "SECURITY_AND_USERS": "Brugere og sikkerhed",
             "ROLES": "Roller",
-            "BACK": "Tilbage"
+            "BACK": "Tilbage",
+            "FIELDS_TITLE": "(felter)"
         },
         "FORM": {
             "LABELS": {

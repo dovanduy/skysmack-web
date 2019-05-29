@@ -15,7 +15,7 @@ import { NgSkysmackStore } from '@skysmack/ng-core';
 })
 export class UsersIndexComponent extends RecordIndexComponent<UsersAppState, User, number> implements OnInit {
 
-  public area: string = USERS_AREA_KEY;
+  public areaKey: string = USERS_AREA_KEY;
   public entityActions: EntityAction[] = [
     new EntityAction().asUrlAction('edit', ENTITY_ACTIONS_EDIT, 'edit'),
     new EntityAction().asUrlAction('edit/set-password', 'USERS.ENTITY_ACTION.SET_PASSWORD', 'https'),
@@ -32,13 +32,13 @@ export class UsersIndexComponent extends RecordIndexComponent<UsersAppState, Use
     public store: NgUsersStore,
     public sidebarMenu: NgUsersMenu,
     public fieldsConfig: NgUsersFieldsConfig,
-    public entityActionProviders: EntityActionProviders
+    public entityActionProviders: EntityActionProviders,
+    
   ) {
-    super(router, activatedRoute, actions, redux, store, fieldsConfig, entityActionProviders);
+    super(router, activatedRoute, actions, redux, store, fieldsConfig, entityActionProviders, title);
   }
 
   ngOnInit() {
     super.ngOnInit();
-    this.title.setTitle(this.packagePath);
   }
 }

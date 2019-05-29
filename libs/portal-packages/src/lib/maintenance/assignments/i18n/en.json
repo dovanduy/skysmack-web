@@ -24,9 +24,6 @@
                 "DESCRIPTION": {
                     "REQUIRED": "Description is required."
                 },
-                "OCCUPATIONSTATE": {
-                    "REQUIRED": "Occupation state is required"
-                },
                 "STATUS": {
                     "REQUIRED": "Status is required."
                 },
