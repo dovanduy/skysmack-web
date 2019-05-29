@@ -29,23 +29,23 @@ export const cancelFieldAction = (state: FieldState, action: ReduxAction<CancelF
 const cancelFieldCreateAction = (newState: FieldState, action: ReduxAction<CancelFieldActionPayload<FieldSchemaViewModel>, CancelActionMeta>): FieldState => {
     const packagePath = action.payload.packagePath;
     const field = action.payload.field;
-    delete newState.fields[packagePath][field.localId];
+    delete newState.localRecords[packagePath][field.localId];
     return newState;
 };
 
 const cancelFieldEditAction = (newState: FieldState, action: ReduxAction<CancelFieldActionPayload<FieldSchemaViewModel>, CancelActionMeta>): FieldState => {
     const packagePath = action.payload.packagePath;
     const field = action.payload.field;
-    newState.fields[packagePath][field.localId].object = action.payload.field.oldObject;
-    newState.fields[packagePath][field.localId].status = LocalObjectStatus.OK;
-    newState.fields[packagePath][field.localId].error = false;
+    newState.localRecords[packagePath][field.localId].object = action.payload.field.oldObject;
+    newState.localRecords[packagePath][field.localId].status = LocalObjectStatus.OK;
+    newState.localRecords[packagePath][field.localId].error = false;
     return newState;
 };
 
 const cancelFieldDeleteAction = (newState: FieldState, action: ReduxAction<CancelFieldActionPayload<FieldSchemaViewModel>, CancelActionMeta>): FieldState => {
     const packagePath = action.payload.packagePath;
     const field = action.payload.field;
-    newState.fields[packagePath][field.localId].status = LocalObjectStatus.OK;
-    newState.fields[packagePath][field.localId].error = false;
+    newState.localRecords[packagePath][field.localId].status = LocalObjectStatus.OK;
+    newState.localRecords[packagePath][field.localId].error = false;
     return newState;
 };

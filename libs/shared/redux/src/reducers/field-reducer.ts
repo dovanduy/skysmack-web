@@ -16,13 +16,13 @@ export class FieldsAppState extends AppState {
 
 export class FieldState {
     localPageTypes: StrIndex<StrIndex<LocalPageTypes<string>>> = {};
-    fields: StrIndex<StrIndex<LocalObject<FieldSchemaViewModel, string>>> = {};
+    localRecords: StrIndex<StrIndex<LocalObject<FieldSchemaViewModel, string>>> = {};
     availableFields: StrIndex<StrIndex<LocalObject<FieldValueProviderViewModel, string>>> = {};
 }
 
 export function fieldReducer(state: FieldState = new FieldState(), action: any): FieldState {
+    state = sharedReducer(state, action, new FieldState(), 'fields');
     let newState = Object.assign({}, state);
-    state = sharedReducer(state, action, new FieldState(), 'field');
 
     switch (action.type) {
         case FieldActions.CANCEL_FIELD_ACTION: {
@@ -46,7 +46,9 @@ export function fieldReducer(state: FieldState = new FieldState(), action: any):
             const castedAction: ReduxAction<GetPagedEntitiesSuccessPayload<FieldSchemaViewModel, string>, AdditionalPathsMeta> = action;
             const stateKey = getFieldStateKey(castedAction.payload.packagePath, castedAction.meta.additionalPaths);
             newState.localPageTypes[stateKey] = PageExtensions.mergeOrAddPage(newState.localPageTypes[stateKey], castedAction.payload.page);
-            newState.fields[stateKey] = LocalObjectExtensions.mergeOrAddLocal(newState.fields[stateKey], castedAction.payload.entities.map(x => toLocalObject(x, 'key')));
+
+            newState.localRecords[stateKey] = LocalObjectExtensions.mergeOrAddLocal(newState.localRecords[stateKey], castedAction.payload.entities.map(x => toLocalObject(x, 'key')));
+
             return newState;
         }
         case FieldActions.FIELD_GET_PAGED_FAILURE: {
@@ -59,7 +61,7 @@ export function fieldReducer(state: FieldState = new FieldState(), action: any):
         case FieldActions.FIELD_GET_SINGLE_SUCCESS: {
             const castedAction: ReduxAction<GetSingleEntitySuccessPayload<FieldSchemaViewModel, string>, AdditionalPathsMeta> = action;
             const stateKey = getFieldStateKey(castedAction.payload.packagePath, castedAction.meta.additionalPaths);
-            newState.fields[stateKey] = LocalObjectExtensions.mergeOrAddLocal(newState.fields[stateKey], [toLocalObject(castedAction.payload.entity, 'key')], undefined, true);
+            newState.localRecords[stateKey] = LocalObjectExtensions.mergeOrAddLocal(newState.localRecords[stateKey], [toLocalObject(castedAction.payload.entity, 'key')], undefined, true);
             return newState;
         }
         case FieldActions.FIELD_GET_SINGLE_FAILURE: {
@@ -87,14 +89,14 @@ export function fieldReducer(state: FieldState = new FieldState(), action: any):
             const castedAction: ReduxAction<null, ReduxOfflineMeta<FieldSchemaViewModel[], HttpResponse, LocalObject<FieldSchemaViewModel, string>[]>> = action;
             const stateKey = castedAction.meta.offline.commit.meta.stateKey;
             const recordsToBeCreated = castedAction.meta.offline.commit.meta.value;
-            newState.fields[stateKey] = LocalObjectExtensions.mergeOrAddLocal(newState.fields[stateKey], recordsToBeCreated);
+            newState.localRecords[stateKey] = LocalObjectExtensions.mergeOrAddLocal(newState.localRecords[stateKey], recordsToBeCreated);
             return newState;
         }
         case FieldActions.FIELD_ADD_SUCCESS: {
             const castedAction: ReduxAction<HttpSuccessResponse<FieldSchemaViewModel[]>, CommitMeta<LocalObject<FieldSchemaViewModel, string>[]>> = action;
             const body = castedAction.payload.body;
             const newObjects = body.map((newObject, index) => replaceLocalInnerObject(castedAction.meta.value[index], newObject));
-            newState.fields[castedAction.meta.stateKey] = LocalObjectExtensions.mergeOrAddLocal<FieldSchemaViewModel, string>(newState.fields[castedAction.meta.stateKey], newObjects);
+            newState.localRecords[castedAction.meta.stateKey] = LocalObjectExtensions.mergeOrAddLocal<FieldSchemaViewModel, string>(newState.localRecords[castedAction.meta.stateKey], newObjects);
             return newState;
         }
         case FieldActions.FIELD_ADD_FAILURE: {
@@ -105,7 +107,7 @@ export function fieldReducer(state: FieldState = new FieldState(), action: any):
             const castedAction: ReduxAction<HttpSuccessResponse<FieldSchemaViewModel[]>, CommitMeta<LocalObject<FieldSchemaViewModel, string>[]>> = action;
             const body = castedAction.payload.body;
             const updatedObjects = body.map((newObject, index) => replaceLocalInnerObject(castedAction.meta.value[index], newObject));
-            newState.fields[castedAction.meta.stateKey] = LocalObjectExtensions.mergeOrAddLocal<FieldSchemaViewModel, string>(newState.fields[castedAction.meta.stateKey], updatedObjects);
+            newState.localRecords[castedAction.meta.stateKey] = LocalObjectExtensions.mergeOrAddLocal<FieldSchemaViewModel, string>(newState.localRecords[castedAction.meta.stateKey], updatedObjects);
             return newState;
         }
         case FieldActions.FIELD_UPDATE_FAILURE: {
@@ -115,7 +117,7 @@ export function fieldReducer(state: FieldState = new FieldState(), action: any):
         case FieldActions.FIELD_DELETE_SUCCESS: {
             const castedAction: ReduxAction<HttpSuccessResponse<FieldSchemaViewModel[] | FieldSchemaViewModel>, CommitMeta<LocalObject<FieldSchemaViewModel, string>[]>> = action;
             castedAction.meta.value.forEach(record => {
-                delete newState.fields[castedAction.meta.stateKey][record.localId];
+                delete newState.localRecords[castedAction.meta.stateKey][record.localId];
             });
             return newState;
         }
