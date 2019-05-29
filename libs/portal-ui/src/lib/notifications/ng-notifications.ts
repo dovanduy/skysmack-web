@@ -1,4 +1,4 @@
-import { MatSnackBar, MatSnackBarConfig } from '@angular/material';
+import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 import { take } from 'rxjs/operators';
 import { TranslateService } from '@ngx-translate/core';
 import { NumIndex } from '@skysmack/framework';

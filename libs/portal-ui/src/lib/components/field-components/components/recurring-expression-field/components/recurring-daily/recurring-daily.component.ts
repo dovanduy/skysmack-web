@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ExpressionValues } from '../../models';
-import { MatTabChangeEvent } from '@angular/material';
+import { MatTabChangeEvent } from '@angular/material/tabs';
 
 @Component({
   selector: 'ss-recurring-daily',

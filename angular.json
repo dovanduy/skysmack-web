@@ -681,6 +681,7 @@
             "main": "apps/web/web-portal/src/main.ts",
             "polyfills": "apps/web/web-portal/src/polyfills.ts",
             "tsConfig": "apps/web/web-portal/tsconfig.app.json",
+            "preserveSymlinks": true,
             "assets": [
               "apps/web/web-portal/src/assets/favicon.ico",
               "apps/web/web-portal/src/assets",

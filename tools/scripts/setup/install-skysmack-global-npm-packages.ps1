@@ -4,9 +4,9 @@ write-host "----------------------------`n"
 
 # NPM Package versions
 $gulp_cli_version = ">=2.0.1 <=2.0.1"
-$angular_cli_version = ">=7.3.8 <=7.3.8"
+$angular_cli_version = ">=8.0.0 <=8.0.0"
 $http_server_version = ">=0.11.1 <=0.11.1"
-$typescript_version = ">=3.2.4 <=3.2.4"
+$typescript_version = ">=3.4.5 <=3.4.5"
 $yarn_version = ">=1.15.2 <=1.15.2"
 
 # Gulp cli
