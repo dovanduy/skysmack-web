@@ -7,7 +7,7 @@
     <ng-container [ngSwitch]="showCustom">
 
       <!-- TOGGLE CUSTOM EXPRESSION -->
-      <mat-slide-toggle (click)="toggleCustom()">Advanced</mat-slide-toggle>
+      <mat-slide-toggle (click)="toggleCustom()">{{ 'UI.TOGGLE' | translate }}</mat-slide-toggle>
 
       <ng-container *ngSwitchCase="false">
         <!-- TIME -->
