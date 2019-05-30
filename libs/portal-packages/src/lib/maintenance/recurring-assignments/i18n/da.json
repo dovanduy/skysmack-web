@@ -29,10 +29,12 @@
             }
         },
         "CREATE": {
-            "CREATE": "Opret"
+            "CREATE": "Opret",
+            "BUTTON_CREATE": "Opret"
         },
         "EDIT": {
-            "EDIT": "Ret"
+            "EDIT": "Ret",
+            "BUTTON_EDIT": "Opdater"
         },
         "INDEX": {
             "TITLE_EXTRA": "(gentagne opgaver)",

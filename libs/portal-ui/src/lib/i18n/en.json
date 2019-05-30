@@ -36,7 +36,8 @@
         },
         "BUTTON_ADD": "Add",
         "BUTTON_VALIDATOR": "+ Add validator",
-        "SET_ACCESS": "Set access"
+        "SET_ACCESS": "Set access",
+        "TOGGLE": "Toggle repeat"
     },
     "NOTIFICATIONS": {
         "GET": {
