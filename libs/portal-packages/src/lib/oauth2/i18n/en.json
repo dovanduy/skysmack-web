@@ -24,7 +24,8 @@
             "ENTER_CRED": "Please enter your credentials below",
             "ERROR_OCCURRED": "Error occurred, please verify email and/or password",
             "FORGOT_PASSWORD": "Forgot password?",
-            "LOGGING_IN": "Logging in..."
+            "LOGGING_IN": "Logging in...",
+            "BUTTON_LOGIN": "Login"
         }
     }
 }

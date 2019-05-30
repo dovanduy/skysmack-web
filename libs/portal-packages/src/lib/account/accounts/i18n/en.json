@@ -25,7 +25,8 @@
             }
         },
         "CHANGE_PASSWORD": {
-            "TITLE": "Change password"
+            "TITLE": "Change password",
+            "BUTTON_EDIT": "Update"
         },
         "INDEX": {
             "ACTIONS": "Actions",

@@ -1,4 +1,4 @@
 <ss-dynamic-form *ngIf="fields$" [fields$]="fields$" [validation]="fieldsConfig.validation"
-  [rules]="fieldsConfig.formRules" [buttonText]="'Create'" (submitted)="onCreateSubmit($event)">
-  <h2 [translate]="'PRODUCTS.CREATE.CREATE'"></h2>
+  [rules]="fieldsConfig.formRules" [buttonText]="'PRODUCT_TYPE_PRICE_CHANGES.CREATE.BUTTON_CREATE' | translate" (submitted)="onCreateSubmit($event)">
+  <h2 [translate]="'PRODUCT_TYPE_PRICE_CHANGES.CREATE.CREATE'"></h2>
 </ss-dynamic-form>

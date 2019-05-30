@@ -7,10 +7,12 @@
             "BACK": "Tilbage"
         },
         "CREATE": {
-            "CREATE": "Opret felt"
+            "CREATE": "Opret felt",
+            "BUTTON_CREATE": "Opret"
         },
         "EDIT": {
-            "EDITING": "Redigere"
+            "EDITING": "Redigere",
+            "BUTTON_EDIT": "Opdater"
         },
         "FORM": {
             "LABELS": {

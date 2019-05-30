@@ -18,12 +18,14 @@ import { MonthlyFrequencyComponent } from './components/recurring-monthly/monthl
 import { DayOfWeekComponent } from './components/recurring-daily/day-of-week/day-of-week.component';
 import { DatesComponent } from './components/recurring-daily/dates/dates.component';
 import { MonthsComponent } from './components/recurring-monthly/months/months.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
     imports: [
         CommonModule,
         FormsModule,
-        MaterialModule
+        MaterialModule,
+        TranslateModule
     ],
     declarations: [
         RecurringExpressionFieldComponent,

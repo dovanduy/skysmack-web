@@ -29,10 +29,15 @@
             }
         },
         "CREATE": {
-            "PAYMENT": "Cash payment"
+            "PAYMENT": "Cash payment",
+            "BUTTON_CREATE": "Create"
         },
         "EDIT": {
-            "EDIT": "Edit"
+            "EDIT": "Edit",
+            "BUTTON_EDIT": "Update"
+        },
+        "PAY": {
+            "BUTTON_PAY": "Pay"
         },
         "INDEX": {
             "PACKAGES": "Packages",

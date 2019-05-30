@@ -1,6 +1,7 @@
 {
     "MAINTENANCE": {
         "ASSIGNMENT_ALL": {
+            "TITLE": "Alle opgaver",
             "INDEX": {
                 "SINGLE_ASSIGNMENTS": "Opgaver",
                 "RECURRING_ASSIGNMENTS": "Gentagne opgaver",
