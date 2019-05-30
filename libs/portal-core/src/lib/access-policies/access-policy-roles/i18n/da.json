@@ -1,10 +1,12 @@
 {
     "ACCESS_POLICY_ROLES": {
         "CREATE": {
-            "CREATE": "Opret"
+            "CREATE": "Opret",
+            "BUTTON_CREATE": "Opret"
         },
         "EDIT": {
-            "EDITING": "Rediger"
+            "EDITING": "Rediger",
+            "BUTTON_EDIT": "Opdater"
         },
         "INDEX": {
             "ACTIONS": "Handlinger",

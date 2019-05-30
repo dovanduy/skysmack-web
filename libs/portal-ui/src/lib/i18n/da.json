@@ -33,7 +33,14 @@
             "EDIT": "Rediger",
             "DELETE": "Slet",
             "DETAILS": "Detaljer"
-        }
+        },
+        "BUTTON_ADD": "Tilføj",
+        "BUTTON_VALIDATOR": "+ Tilføj validator",
+        "SET_ACCESS": "Sæt adgang",
+        "TOGGLE": "Aktiver gentagelse",
+        "ADVANCED": "Avanceret",
+        "SELECT_ROLES": "Vælg roller",
+        "SELECT_ROLE": "Vælg rolle"
     },
     "NOTIFICATIONS": {
         "GET": {

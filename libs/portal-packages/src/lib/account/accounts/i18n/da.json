@@ -25,7 +25,8 @@
             }
         },
         "CHANGE_PASSWORD": {
-            "TITLE": "Skift kodeord"
+            "TITLE": "Skift kodeord",
+            "BUTTON_EDIT": "Opdater"
         },
         "INDEX": {
             "ACTIONS": "Handlinger",

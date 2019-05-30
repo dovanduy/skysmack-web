@@ -1,10 +1,12 @@
 {
     "ROLES": {
         "CREATE": {
-            "CREATE_ROLE": "Opret ny rolle"
+            "CREATE_ROLE": "Opret ny rolle",
+            "BUTTON_CREATE": "Opret"
         },
         "EDIT": {
-            "EDITING": "Rediger {{ name }}"
+            "EDITING": "Rediger {{ name }}",
+            "BUTTON_EDIT": "Opdater"
         },
         "INDEX": {
             "ACTIONS": "Handlinger",

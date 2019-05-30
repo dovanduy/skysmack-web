@@ -39,7 +39,7 @@ export class LodgingsDeparturesComponent extends LodgingsReservationsIndexCompon
   ngOnInit() {
     this.filter();
     this.sort();
-    this.pageTitle.setTitle('Departures');
+    this.pageTitle.setTitle('LODGING_RESERVATIONS.DEPARTURES');
     super.ngOnInit();
   }
 

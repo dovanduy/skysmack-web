@@ -1,6 +1,7 @@
 {
     "MAINTENANCE": {
         "ASSIGNMENT_ALL": {
+            "TITLE": "All assignments",
             "INDEX": {
                 "SINGLE_ASSIGNMENTS": "Assignments",
                 "RECURRING_ASSIGNMENTS": "Recurring assignments",

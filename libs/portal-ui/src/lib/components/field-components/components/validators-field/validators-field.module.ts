@@ -5,12 +5,14 @@ import { MaterialModule } from './../../../../material.module';
 import { ValidatorsFieldComponent } from './validators-field.component';
 import { RangeValidatorComponent } from './components/range-validator/range-validator.component';
 import { RequiredValidatorComponent } from './components/required-validator/required-validator.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
-    MaterialModule
+    MaterialModule,
+    TranslateModule
   ],
   declarations: [
     ValidatorsFieldComponent,

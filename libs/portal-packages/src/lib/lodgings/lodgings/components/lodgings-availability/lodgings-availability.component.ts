@@ -46,7 +46,7 @@ export class LodgingsavailabilityComponent implements OnInit {
     public pageTitle: EntityComponentPageTitle,
     public sidebarMenu: NgLodgingsAvailabilityMenu
   ) {
-    pageTitle.setTitle('Lodgings Availability');
+    pageTitle.setTitle('LODGINGS_AVAILABILITY.TITLE');
   }
 
   ngOnInit() {

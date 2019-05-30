@@ -45,10 +45,12 @@
             "AVAILABLE_PACKAGES": "Available packages"
         },
         "CREATE": {
-            "INSTALL": "Install package"
+            "INSTALL": "Install package",
+            "BUTTON_CREATE": "Create"
         },
         "EDIT": {
-            "EDITING": "Editing {{ object.name }} package"
+            "EDITING": "Editing {{ object.name }} package",
+            "BUTTON_EDIT": "Update"
         }
     },
     "ADAPTORS": {

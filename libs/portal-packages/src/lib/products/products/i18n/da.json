@@ -16,10 +16,12 @@
             }
         },
         "CREATE": {
-            "CREATE": "Opret"
+            "CREATE": "Opret",
+            "BUTTON_CREATE": "Opret"
         },
         "EDIT": {
-            "EDIT": "Rediger"
+            "EDIT": "Rediger",
+            "BUTTON_EDIT": "Opdater"
         },
         "INDEX": {
             "CREATE": "Opret",

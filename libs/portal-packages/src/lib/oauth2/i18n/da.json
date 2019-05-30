@@ -24,7 +24,8 @@
             "ENTER_CRED": "Indtast dine log ind informationer herunder",
             "ERROR_OCCURRED": "Der skete en fejl, bekræft at den rigtige email og adgangskode er indtastet",
             "FORGOT_PASSWORD": "Glemt adgangskode?",
-            "LOGGING_IN": "Logger ind..."
+            "LOGGING_IN": "Logger ind...",
+            "BUTTON_LOGIN": "Log ind"
         }
     }
 }

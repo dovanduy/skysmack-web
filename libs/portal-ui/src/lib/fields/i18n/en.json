@@ -7,10 +7,12 @@
             "BACK": "Back"
         },
         "CREATE": {
-            "CREATE": "Create"
+            "CREATE": "Create",
+            "BUTTON_CREATE": "Create"
         },
         "EDIT": {
-            "EDITING": "Editing"
+            "EDITING": "Editing",
+            "BUTTON_EDIT": "Update"
         },
         "FORM": {
             "LABELS": {

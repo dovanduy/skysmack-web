@@ -1,5 +1,6 @@
 {
     "ACCESS_POLICIES": {
+        "TITLE": "Access policies",
         "DASHBOARD": {
             "ACCESS_POLICIES": "Access policies"
         },

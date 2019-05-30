@@ -33,13 +33,13 @@ export class LodgingsArrivalsComponent extends LodgingsReservationsIndexComponen
     public entityActionProviders: EntityActionProviders
   ) {
     super(router, activatedRoute, skysmackStore, store, lodgingsStore, lodgingTypesStore, actions, lodgingsActions, lodgingTypesActions, fieldsConfig, sidebarMenu, pageTitle, title, entityActionProviders);
-    pageTitle.setTitle('Arrivals');
+    pageTitle.setTitle('LODGING_RESERVATIONS.ARRIVALS');
   }
 
   ngOnInit() {
     this.filter();
     this.sort();
-    this.pageTitle.setTitle('Arrivals');
+    this.pageTitle.setTitle('LODGING_RESERVATIONS.ARRIVALS');
     super.ngOnInit();
   }
 
