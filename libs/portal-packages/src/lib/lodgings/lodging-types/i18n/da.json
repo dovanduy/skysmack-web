@@ -57,7 +57,8 @@
             "PLACEHOLDER": "Vælg rumtyper",
             "PREVIOUS": "Tidligere",
             "TODAY": "I dag",
-            "NEXT": "Næste"
+            "NEXT": "Næste",
+            "TITLE": "Rum typer tilgængelighed"
         }
     }
 }

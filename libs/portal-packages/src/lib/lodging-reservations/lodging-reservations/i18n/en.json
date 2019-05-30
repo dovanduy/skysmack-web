@@ -1,5 +1,8 @@
 {
     "LODGING_RESERVATIONS": {
+        "ARRIVALS": "Arrivals",
+        "DEPARTURES": "Departures",
+        "STAYS": "Stays",        
         "FORM": {
             "LABELS": {
                 "LODGINGTYPEID": "Lodging type",

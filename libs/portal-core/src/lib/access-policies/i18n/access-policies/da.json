@@ -1,5 +1,6 @@
 {
     "ACCESS_POLICIES": {
+        "TITLE": "Adgangspolitikker",
         "DASHBOARD": {
             "ACCESS_POLICIES": "Adgangs politikker"
         },

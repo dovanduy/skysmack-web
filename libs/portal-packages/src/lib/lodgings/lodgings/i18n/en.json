@@ -66,6 +66,7 @@
         }
     },
     "LODGINGS_AVAILABILITY": {
-        "SELECT_LODGINGS": "Select lodgings"
+        "SELECT_LODGINGS": "Select lodgings",
+        "TITLE": "Lodgings Availability"
     }
 }

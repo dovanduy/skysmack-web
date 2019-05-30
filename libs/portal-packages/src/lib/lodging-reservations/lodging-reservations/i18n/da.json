@@ -1,5 +1,8 @@
 {
     "LODGING_RESERVATIONS": {
+        "ARRIVALS": "Ankomster",
+        "DEPARTURES": "Afgange",
+        "STAYS": "Ophold",
         "FORM": {
             "LABELS": {
                 "LODGINGTYPEID": "Rum type",

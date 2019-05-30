@@ -57,7 +57,8 @@
             "PLACEHOLDER": "Select lodging types",
             "PREVIOUS": "Previous",
             "TODAY": "Today",
-            "NEXT": "Next"
+            "NEXT": "Next",
+            "TITLE": "Lodging types availability"
         }
     }
 }
