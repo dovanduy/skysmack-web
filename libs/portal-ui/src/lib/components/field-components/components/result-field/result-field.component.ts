@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FieldBaseComponent } from '../field-base-component';
 import { ResultField } from '@skysmack/ng-ui';
-import { map } from 'rxjs/operators';
+import { map, switchMap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -13,7 +13,7 @@ export class ResultFieldComponent extends FieldBaseComponent<ResultField> implem
   ngOnInit() {
     super.ngOnInit();
     this.result$ = this.fh.form.valueChanges.pipe(
-      map(changes => {
+      switchMap<string, string>(changes => {
         return this.field.resultLogic(changes, this.fields, this.fh.form);
       })
     );

@@ -1,8 +1,8 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import { Field, ResultField } from '@skysmack/ng-ui';
-import { map } from 'rxjs/operators';
+import { map, catchError } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
-import { StrIndex, LocalObject } from '@skysmack/framework';
+import { StrIndex, LocalObject, API_DOMAIN_INJECTOR_TOKEN, ApiDomain } from '@skysmack/framework';
 import { NgSkysmackStore } from '@skysmack/ng-core';
 import { ResultFieldComponent } from '@skysmack/portal-ui';
 import { FieldProvider } from '@skysmack/portal-ui';
@@ -10,6 +10,8 @@ import { FormGroup } from '@angular/forms';
 import { ReservationsPricingsType } from '@skysmack/packages-reservations-pricings';
 import { Router } from '@angular/router';
 import { LODGING_RESERVATIONS_AREA_KEY } from '@skysmack/packages-lodging-reservations';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { CustomHttpUrlEncodingCodec } from '@skysmack/ng-framework';
 
 @Injectable({ providedIn: 'root' })
 export class NgLodgingReservationsReservationsPricingsFieldProvider extends FieldProvider {
@@ -18,7 +20,9 @@ export class NgLodgingReservationsReservationsPricingsFieldProvider extends Fiel
 
     constructor(
         public skysmackStore: NgSkysmackStore,
-        public router: Router
+        public router: Router,
+        public httpClient: HttpClient,
+        @Inject(API_DOMAIN_INJECTOR_TOKEN) protected apiDomain: ApiDomain
     ) {
         super();
     }
@@ -38,13 +42,42 @@ export class NgLodgingReservationsReservationsPricingsFieldProvider extends Fiel
                                     disabled: true,
                                     includeInRequest: false,
                                     resultLogic: (valueChanges: StrIndex<any>, fields: Field[], form: FormGroup) => {
-                                        const persons = Number(form.get('persons').value);
+                                        const lodgingTypeId = Number(form.get('lodgingTypeId').value);
+                                        const persons = form.get('persons').value;
                                         const checkIn = form.get('checkIn').value;
                                         const checkOut = form.get('checkOut').value;
-                                        if (persons && checkIn && checkOut) {
-                                            return `Staying ${persons} from ${checkIn ? checkIn : '???'} to ${checkOut ? checkOut : '???'} costs ${persons * 1000}`;
+
+                                        if (lodgingTypeId && persons && checkIn && checkOut) {
+                                            let queryParameters = new HttpParams({ encoder: new CustomHttpUrlEncodingCodec() });
+                                            queryParameters = queryParameters.set('units', persons);
+                                            queryParameters = queryParameters.set('start', checkIn);
+                                            queryParameters = queryParameters.set('end', checkOut);
+                                            return this.httpClient.get<any>(`${this.apiDomain.domain}/${lodgingReservationPricingPackage.object.path}/types/prices/prices/${lodgingTypeId}`, { observe: 'response', params: queryParameters })
+                                                .pipe(
+                                                    map(httpResponse => {
+                                                        const body: {
+                                                            extendedData?: {
+                                                                [key: string]: {
+                                                                    prices: {
+                                                                        change: number,
+                                                                        currencyCode: string,
+                                                                        price: number
+                                                                    }[]
+                                                                };
+                                                            }
+                                                        } = httpResponse.body;
+
+                                                        const priceInfo = body && body.extendedData && body.extendedData && body.extendedData.rooms && body.extendedData.rooms.prices[0];
+
+                                                        return `Price: ${priceInfo ? priceInfo.price : '???'}  ${priceInfo ? priceInfo.currencyCode : '???'}`;
+                                                    }),
+                                                    catchError((error) => {
+                                                        console.log(error);
+                                                        return of('');
+                                                    })
+                                                );
                                         } else {
-                                            return undefined;
+                                            return of('');
                                         }
                                     }
                                 })
