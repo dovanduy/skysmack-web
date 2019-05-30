@@ -35,6 +35,8 @@
             "DETAILS": "Details"
         },
         "BUTTON_ADD": "Add",
+        "BUTTON_EDIT": "Update",
+        "BUTTON_VERIFY": "Verify",
         "BUTTON_VALIDATOR": "+ Add validator",
         "SET_ACCESS": "Set access",
         "TOGGLE": "Toggle repeat",
