@@ -54,28 +54,7 @@ export class ReduxOfflineConfiguration implements Config {
     };
 
     // Overrides =============
-    public persistOptions = {
-        storage: localForage,
-        // transforms: [
-        //     createTransform(
-        //         (inboundState) => {
-        //             return inboundState;
-        //         },
-        //         (outboundState) => {
-        //             const online = (this.ngRedux.getState() as AppState).offline.online;
-        //             if (online) {
-        //                 // If we are online, we want fresh data from the server.
-        //                 if (this.hydrated) {
-        //                     return outboundState;
-        //                 }
-        //             } else {
-        //                 // Else we want the locally stored data in redux.
-        //                 return outboundState;
-        //             }
-        //         }, { blacklist: ['offline', 'authentication', 'settings'] }
-        //     )
-        // ]
-    };
+    public persistOptions = { storage: localForage };
 
     public persistCallback = () => {
         this.hydrated = true;
@@ -121,7 +100,7 @@ export class ReduxOfflineConfiguration implements Config {
             return false;
         }
 
-        // Retry 3 times on 5xx errors (takes roughly 25 seconds before giving up)
+        // Retry 3 times on 5xx and 0 errors (takes roughly 25 seconds before giving up)
         if (error.status >= 500) {
             // First retry is 0.
             if (retries <= 2) {
@@ -129,6 +108,11 @@ export class ReduxOfflineConfiguration implements Config {
             } else {
                 return true;
             }
+        }
+
+        // Retry for as long as possible on 0 errors.
+        if (error.status === 0) {
+            return false;
         }
 
         // Don't retry on < 4xx errors

@@ -1,4 +1,4 @@
-import { OfflineState } from '@redux-offline/redux-offline/lib/types';
+import { OfflineState } from '@skysmack/framework';
 
 export abstract class AppState {
     public offline?: OfflineState;
