@@ -40,10 +40,12 @@
             }
         },
         "CREATE": {
-            "CREATE": "Opret"
+            "CREATE": "Opret",
+            "BUTTON_CREATE": "Opret"
         },
         "EDIT": {
-            "EDIT": "Rediger"
+            "EDIT": "Rediger",
+            "BUTTON_EDIT": "Opdater"
         },
         "INDEX": {
             "ACTIONS": "Handlinger",
@@ -62,5 +64,8 @@
             "DELETING": "Sletter {{ name }}",
             "ERROR": "Der opstod  en fejl ved {{ name }}. Ret og prøv igen."
         }
+    },
+    "LODGINGS_AVAILABILITY": {
+        "SELECT_LODGINGS": "Vælg rum"
     }
 }

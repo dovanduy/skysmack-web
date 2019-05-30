@@ -40,10 +40,12 @@
             }
         },
         "CREATE": {
-            "CREATE": "Create"
+            "CREATE": "Create",
+            "BUTTON_CREATE": "Create"
         },
         "EDIT": {
-            "EDIT": "Edit"
+            "EDIT": "Edit",
+            "BUTTON_EDIT": "Update"
         },
         "INDEX": {
             "ACTIONS": "Actions",
@@ -62,5 +64,8 @@
             "DELETING": "Deleting {{ name }}",
             "ERROR": "An error occured with {{ name }}. Correct and try again."
         }
+    },
+    "LODGINGS_AVAILABILITY": {
+        "SELECT_LODGINGS": "Select lodgings"
     }
 }

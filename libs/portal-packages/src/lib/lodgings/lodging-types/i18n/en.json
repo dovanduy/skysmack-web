@@ -16,10 +16,12 @@
             }
         },
         "CREATE": {
-            "CREATE": "Create"
+            "CREATE": "Create",
+            "BUTTON_CREATE": "Create"
         },
         "EDIT": {
-            "EDIT": "Edit"
+            "EDIT": "Edit",
+            "BUTTON_EDIT": "Update"
         },
         "INDEX": {
             "TITLE_EXTRA": "(types)",
@@ -52,7 +54,10 @@
             "ERROR": "An error occured with {{ name }}. Correct and try again."
         },
         "AVAILABILITY": {
-            "PLACEHOLDER": "Select lodging types"
+            "PLACEHOLDER": "Select lodging types",
+            "PREVIOUS": "Previous",
+            "TODAY": "Today",
+            "NEXT": "Next"
         }
     }
 }

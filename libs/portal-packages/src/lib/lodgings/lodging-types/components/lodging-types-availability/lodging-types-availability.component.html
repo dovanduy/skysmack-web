@@ -30,13 +30,13 @@
   <ng-container *ngIf="events$ | async as events">
     <div [ngSwitch]="view">
       <button mat-raised-button color="primary" mwlCalendarPreviousView [view]="view" [(viewDate)]="viewDate">
-        Previous
+        {{ 'LODGING_TYPES.AVAILABILITY.PREVIOUS' | translate }}
       </button>
       <button mat-raised-button color="primary" mwlCalendarToday [(viewDate)]="viewDate">
-        Today
+        {{ 'LODGING_TYPES.AVAILABILITY.TODAY' | translate }}
       </button>
       <button mat-raised-button color="primary" mwlCalendarNextView [view]="view" [(viewDate)]="viewDate">
-        Next
+        {{ 'LODGING_TYPES.AVAILABILITY.NEXT' | translate }}
       </button>
 
       <h3>{{ viewDate | calendarDate:(view + 'ViewTitle'):'en' }}</h3>
