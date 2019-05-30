@@ -3,6 +3,7 @@
         "INDEX": {
             "ROLES": "Roller",
             "USERS": "Brugere",
+            "USERS_ROLES_TITLE": "Bruger roller",
             "MANAGE": "Konfigurer",
             "SETTINGS": "Indstillinger",
             "AVAILABLE_SETTINGS": {

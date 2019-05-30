@@ -26,11 +26,6 @@
                 "INVOICEID": {
                     "REQUIRED": "Faktura er påkrævet."
                 }
-            },
-            "ENTITY_ACTION_PROVIDER": {
-                "ENTITY_ACTION": {
-                    "CASH_PAYMENT": "Kontant betaling"
-                }
             }
         },
         "CREATE": {
@@ -62,6 +57,11 @@
             "UPDATING": "Opdatere {{ currencyCode }}",
             "DELETING": "Sletter {{ currencyCode }}",
             "ERROR": "Der opstod  en fejl ved {{ currencyCode }}. Ret og prøv igen."
+        },
+        "ENTITY_ACTION_PROVIDER": {
+            "ENTITY_ACTION": {
+                "CASH_PAYMENT": "Kontant betaling"
+            }
         }
     }
 }

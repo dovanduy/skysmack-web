@@ -35,12 +35,24 @@
             "DETAILS": "Detaljer"
         },
         "BUTTON_ADD": "Tilføj",
+        "BUTTON_EDIT": "Opdater",
+        "BUTTON_VERIFY": "Verificere",
         "BUTTON_VALIDATOR": "+ Tilføj validator",
         "SET_ACCESS": "Sæt adgang",
         "TOGGLE": "Aktiver gentagelse",
         "ADVANCED": "Avanceret",
         "SELECT_ROLES": "Vælg roller",
-        "SELECT_ROLE": "Vælg rolle"
+        "SELECT_ROLE": "Vælg rolle",
+        "SEARCH": "Søg...",
+        "LONGITUDE": "Længdegrad",
+        "LANGTITUDE": "Bredegrad",
+        "FREQUENCY": "Frekvens",
+        "EXPRESSION": "Ekspression",
+        "ENTER_NUMBER": "Indtast nummer",
+        "HOURS": "Timer",
+        "MINUTES": "Minutter",
+        "SECONDS": "Sekunder",
+        "SELECT_VALIDATOR": "Venligst vælg en validator"
     },
     "NOTIFICATIONS": {
         "GET": {
