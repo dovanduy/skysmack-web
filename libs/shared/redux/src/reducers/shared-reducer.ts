@@ -15,18 +15,15 @@ const reinstantiateLocalRecord = (localRecord: LocalObject<any, any>) => {
     );
 }
 
-export function sharedReducer(state: any, action: any, initialState: any, reduxArea: string): any {
+export function sharedReducer(state: any, action: any, initialState: any, reduxArea: string, stateKeysContainingLocalObjects: string[] = ['localRecords']): any {
     state = Object.freeze(state);
 
     switch (action.type) {
         case REHYDRATE: { // Reinstantiate localRecords so their functions gets defined agian.
             const newState = { ...action.payload[reduxArea] };
-            const propNames = [ // Make into sharedReducer param, then update AAAAAAALL the reducers ;_; - or make a default :D
-                'localRecords'
-            ];
 
             const localObjectsToReinstantiate = Object.keys(newState).map(key => {
-                return propNames.includes(key) ? key : undefined
+                return stateKeysContainingLocalObjects.includes(key) ? key : undefined
             }).filter(x => x);
 
             if (newState && localObjectsToReinstantiate.length > 0) {
