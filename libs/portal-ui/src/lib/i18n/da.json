@@ -34,7 +34,9 @@
             "DELETE": "Slet",
             "DETAILS": "Detaljer"
         },
-        "BUTTON_ADD": "Add"
+        "BUTTON_ADD": "Tilføj",
+        "BUTTON_VALIDATOR": "+ Tilføj validator",
+        "SET_ACCESS": "Sæt adgang"
     },
     "NOTIFICATIONS": {
         "GET": {

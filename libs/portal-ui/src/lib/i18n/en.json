@@ -34,7 +34,9 @@
             "DELETE": "Delete",
             "DETAILS": "Details"
         },
-        "BUTTON_ADD": "Add"
+        "BUTTON_ADD": "Add",
+        "BUTTON_VALIDATOR": "+ Add validator",
+        "SET_ACCESS": "Set access"
     },
     "NOTIFICATIONS": {
         "GET": {

@@ -31,8 +31,7 @@
 
   <!-- Add validator -->
   <button *ngIf="!currentValidator && availableValidators.length > 0" mat-raised-button color="primary" type="button"
-    (click)="addValidator()">+ Add
-    validator</button>
+    (click)="addValidator()" >{{ 'UI.BUTTON_VALIDATOR' | translate }}</button>
 
   <!-- Backend errors -->
   <ng-container *ngIf="field && field.errors">
