@@ -1,5 +1,6 @@
 {
     "SETTINGS": {
-        "SETTINGS": "Indstillinger"
+        "SETTINGS": "Indstillinger",
+        "BUTTON_SUBMIT": "Indsend"
     }
 }

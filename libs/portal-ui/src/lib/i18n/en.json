@@ -33,7 +33,8 @@
             "EDIT": "Edit",
             "DELETE": "Delete",
             "DETAILS": "Details"
-        }
+        },
+        "BUTTON_ADD": "Add"
     },
     "NOTIFICATIONS": {
         "GET": {

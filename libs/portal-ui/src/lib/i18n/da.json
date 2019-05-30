@@ -33,7 +33,8 @@
             "EDIT": "Rediger",
             "DELETE": "Slet",
             "DETAILS": "Detaljer"
-        }
+        },
+        "BUTTON_ADD": "Add"
     },
     "NOTIFICATIONS": {
         "GET": {
