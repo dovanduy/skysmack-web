@@ -49,10 +49,12 @@
             }
         },
         "CREATE": {
-            "CREATE_USER": "Create a new user"
+            "CREATE_USER": "Create a new user",
+            "BUTTON_CREATE": "Create"
         },
         "EDIT": {
-            "EDIT": "Edit user"
+            "EDIT": "Edit user",
+            "BUTTON_EDIT": "Update"
         },
         "INDEX": {
             "ACTIONS": "Actions",

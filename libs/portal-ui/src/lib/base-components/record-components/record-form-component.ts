@@ -58,6 +58,7 @@ export class RecordFormComponent<TAppState, TRecord extends Record<TKey>, TKey> 
             ).pipe(
                 switchMap(values => {
                     const entity = values[0];
+                    this.selectedEntity = entity;
                     this.editorItem = values[1] as LocalObject<TRecord, TKey>;
                     const loadedPackage = values[2];
                     this.editorItem ? this.selectedEntity = this.editorItem : this.selectedEntity = entity;

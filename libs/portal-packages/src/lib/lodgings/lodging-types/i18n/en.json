@@ -50,6 +50,9 @@
             "UPDATING": "Updating {{ name }}",
             "DELETING": "Deleting {{ name }}",
             "ERROR": "An error occured with {{ name }}. Correct and try again."
+        },
+        "AVAILABILITY": {
+            "PLACEHOLDER": "Select lodging types"
         }
     }
 }

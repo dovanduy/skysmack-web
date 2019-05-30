@@ -50,6 +50,9 @@
             "UPDATING": "Opdatere {{ name }}",
             "DELETING": "Sletter {{ name }}",
             "ERROR": "Der opstod  en fejl ved {{ name }}. Ret og prøv igen."
+        },
+        "AVAILABILITY": {
+            "PLACEHOLDER": "Vælg rumtyper"
         }
     }
 }

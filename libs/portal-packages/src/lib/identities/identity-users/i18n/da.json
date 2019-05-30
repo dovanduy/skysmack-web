@@ -49,10 +49,12 @@
             }
         },
         "CREATE": {
-            "CREATE_USER": "Opret ny bruger"
+            "CREATE_USER": "Opret ny bruger",
+            "BUTTON_CREATE": "Opret"
         },
         "EDIT": {
-            "EDIT": "Rediger bruger"
+            "EDIT": "Rediger bruger",
+            "BUTTON_EDIT": "Opdater"
         },
         "INDEX": {
             "ACTIONS": "Handlinger",
