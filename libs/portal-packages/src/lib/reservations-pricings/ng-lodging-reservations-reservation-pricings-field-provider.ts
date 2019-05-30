@@ -2,7 +2,7 @@ import { Injectable, Inject } from '@angular/core';
 import { Field, ResultField } from '@skysmack/ng-ui';
 import { map, catchError } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
-import { StrIndex, LocalObject, API_DOMAIN_INJECTOR_TOKEN, ApiDomain } from '@skysmack/framework';
+import { StrIndex, LocalObject, API_DOMAIN_INJECTOR_TOKEN, ApiDomain, GlobalProperties } from '@skysmack/framework';
 import { NgSkysmackStore } from '@skysmack/ng-core';
 import { ResultFieldComponent } from '@skysmack/portal-ui';
 import { FieldProvider } from '@skysmack/portal-ui';
@@ -72,7 +72,9 @@ export class NgLodgingReservationsReservationsPricingsFieldProvider extends Fiel
                                                         return `Price: ${priceInfo ? priceInfo.price : '???'}  ${priceInfo ? priceInfo.currencyCode : '???'}`;
                                                     }),
                                                     catchError((error) => {
-                                                        console.log(error);
+                                                        if (!GlobalProperties.production) {
+                                                            console.log(error); // TODO: How should this error be handled?
+                                                        }
                                                         return of('');
                                                     })
                                                 );
