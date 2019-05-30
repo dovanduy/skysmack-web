@@ -88,6 +88,13 @@ export class Field {
     public includeInForm = true;
 
     /**
+     * Whether the value should be included in the data set sent to the backend
+     * Used to display a value in the form, but prevent it from being sent.
+     * Best used with disabled = true, so it isn't shown in the data preview.
+     */
+    public includeInRequest = true;
+
+    /**
      * Whether the field should be sortable on the index page.
      */
     public sortable = false;

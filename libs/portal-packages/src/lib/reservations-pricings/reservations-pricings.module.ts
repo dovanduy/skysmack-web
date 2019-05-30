@@ -13,6 +13,8 @@ import { lodgingTypeReservationPriceChangesComponents } from './lodging-type-res
 import { lodgingPricesComponents } from './lodging-prices/components/lodging-prices-components';
 import { lodgingTypePricesComponents } from './lodging-type-prices/components/lodging-type-prices-components';
 import { LodgingsType } from '@skysmack/packages-lodgings';
+import { NgLodgingReservationsReservationsPricingsFieldProvider } from './ng-lodging-reservations-reservation-pricings-field-provider';
+import { LodgingReservationsType } from 'libs/packages/lodging-reservations/src';
 
 @NgModule({
   imports: [
@@ -39,7 +41,9 @@ export class ReservationsPricingsModule {
   constructor(
     fieldProviders: FieldProviders,
     reservationsPricingsFieldProvider: NgReservationsPricingsFieldProvider,
+    lodgingReservationsReservationsPricingsFieldProvider: NgLodgingReservationsReservationsPricingsFieldProvider,
   ) {
     fieldProviders.add(LodgingsType.id, reservationsPricingsFieldProvider);
+    fieldProviders.add(LodgingReservationsType.id, lodgingReservationsReservationsPricingsFieldProvider);
   }
 }
