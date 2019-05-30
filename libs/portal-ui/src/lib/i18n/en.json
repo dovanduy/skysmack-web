@@ -42,8 +42,18 @@
         "TOGGLE": "Toggle repeat",
         "ADVANCED": "Advanced",
         "SELECT_ROLES": "Select roles",
-        "SELECT_ROLE": "Select role"
-    },
+        "SELECT_ROLE": "Select role",
+        "SEARCH": "Search...",
+        "LONGTITUDE": "Longtitude",
+        "LANGTITUDE": "Langtitude",
+        "FREQUENCY": "Frequency",
+        "EXPRESSION": "Expression",
+        "ENTER_NUMBER": "Enter number",
+        "HOURS": "Hours",
+        "MINUTES": "Minutes",
+        "SECONDS": "Seconds",
+        "SELECT_VALIDATOR": "Please select a validator"
+        },
     "NOTIFICATIONS": {
         "GET": {
             "PAGED_ERROR": "{{ errorMessage }} ({{ httpErrorCode }}).",

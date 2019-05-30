@@ -33,8 +33,8 @@
             },
             "VALIDATION": {}
         },
-        "EDIT": {
-            "EDIT": "Ret indstillinger"
+        "CREATE": {
+            "CREATE": "Ret indstillinger"
         },
         "QUEUE": {
             "UPDATING": "Opdaterer",

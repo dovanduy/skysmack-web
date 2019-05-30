@@ -1,10 +1,10 @@
 At
 <mat-form-field>
-  <input matInput [(ngModel)]="hours" type="number" placeholder="Hours">
+  <input matInput [(ngModel)]="hours" type="number" [placeholder]="'UI.HOURS' | translate">
 </mat-form-field>
 <mat-form-field>
-  <input matInput [(ngModel)]="minutes" type="number" placeholder="Minutes">
+  <input matInput [(ngModel)]="minutes" type="number" [placeholder]="'UI.MINUTES' | translate">
 </mat-form-field>
 <mat-form-field>
-  <input matInput [(ngModel)]="seconds" type="number" placeholder="Seconds">
+  <input matInput [(ngModel)]="seconds" type="number" [placeholder]="'UI.SECONDS' | translate">
 </mat-form-field>

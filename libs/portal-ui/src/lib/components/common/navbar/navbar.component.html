@@ -24,7 +24,7 @@
   </button>
   <div id="app-drawer" *ngIf="menu$ | async as menu" [ngClass]="{ 'open' : menu.search }">
     <fieldset class="field-container">
-      <input type="text" placeholder="Search..." class="field" />
+      <input type="text" [placeholder]="'UI.SEARCH' | translate" class="field" />
     </fieldset>
   </div>
 
