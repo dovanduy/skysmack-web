@@ -77,7 +77,8 @@
             "ITEM": "Enhed",
             "MANAGE": "Konfigurer",
             "BACK": "Tilbage",
-            "ACTIONS": "Handlinger"
+            "ACTIONS": "Handlinger",
+            "FIELDS_TITLE": "(fields)"
         },
         "QUEUE": {
             "ADDING": "Tilføjer {{ description }}",
