@@ -38,7 +38,9 @@
         "BUTTON_VALIDATOR": "+ Add validator",
         "SET_ACCESS": "Set access",
         "TOGGLE": "Toggle repeat",
-        "ADVANCED": "Advanced"
+        "ADVANCED": "Advanced",
+        "SELECT_ROLES": "Select roles",
+        "SELECT_ROLE": "Select role"
     },
     "NOTIFICATIONS": {
         "GET": {

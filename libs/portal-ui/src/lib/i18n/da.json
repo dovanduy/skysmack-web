@@ -38,7 +38,9 @@
         "BUTTON_VALIDATOR": "+ Tilføj validator",
         "SET_ACCESS": "Sæt adgang",
         "TOGGLE": "Aktiver gentagelse",
-        "ADVANCED": "Avanceret"
+        "ADVANCED": "Avanceret",
+        "SELECT_ROLES": "Vælg roller",
+        "SELECT_ROLE": "Vælg rolle"
     },
     "NOTIFICATIONS": {
         "GET": {

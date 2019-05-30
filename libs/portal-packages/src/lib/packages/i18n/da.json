@@ -45,10 +45,12 @@
             "AVAILABLE_PACKAGES": "Ledige pakker"
         },
         "CREATE": {
-            "INSTALL": "Installer pakke"
+            "INSTALL": "Installer pakke",
+            "BUTTON_CREATE": "Opret"
         },
         "EDIT": {
-            "EDITING": "Ret {{ object.name }} pakke"
+            "EDITING": "Ret {{ object.name }} pakke",
+            "BUTTON_EDIT": "Opdater"
         }
     },
     "ADAPTORS": {
