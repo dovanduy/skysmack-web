@@ -19,7 +19,7 @@ export function sharedReducer(state: any, action: any, initialState: any, reduxA
     state = Object.freeze(state);
 
     switch (action.type) {
-        case REHYDRATE: { // Reinstantiate localRecords so their functions gets defined agian.
+        case REHYDRATE: { // Reinstantiate localRecords so their functions gets defined again.
             const newState = { ...action.payload[reduxArea] };
 
             const localObjectsToReinstantiate = Object.keys(newState).map(key => {
@@ -36,7 +36,9 @@ export function sharedReducer(state: any, action: any, initialState: any, reduxA
                             });
                         });
                     } else {
-                        // If not localRecords
+                        Object.keys(newState[propName]).map(localRecordKey => {
+                            newState[propName][localRecordKey] = reinstantiateLocalRecord(newState[propName][localRecordKey])
+                        });
                     }
                 });
 

@@ -19,7 +19,7 @@ export class PackagesState {
 }
 
 export function packagesReducer(state = new PackagesState(), action: any): PackagesState {
-    state = sharedReducer(state, action, new PackagesState(), PACKAGES_REDUCER_KEY);
+    state = sharedReducer(state, action, new PackagesState(), PACKAGES_REDUCER_KEY, ['packages', 'availablePackages']);
     const newState = Object.assign({}, state);
 
     switch (action.type) {
