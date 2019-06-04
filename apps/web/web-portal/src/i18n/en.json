@@ -5,7 +5,7 @@
 			"BUTTON_CREATE": "Create"
 		},
 		"EDIT": {
-			"EDITING": "Rediger",
+			"EDITING": "Edit",
 			"BUTTON_EDIT": "Update"
 		},
 		"INDEX": {
@@ -46,7 +46,7 @@
 			"BUTTON_CREATE": "Create"
 		},
 		"EDIT": {
-			"EDITING": "Rediger",
+			"EDITING": "Edit",
 			"BUTTON_EDIT": "Update"
 		},
 		"INDEX": {
@@ -2067,40 +2067,18 @@
 			"PAYMENTS": "Payments"
 		},
 		"TOP_BAR": {
+			"SEARCH": "Search...",
 			"PACKAGES": "Packages",
 			"NO_CONVER": "No conversations",
 			"NO_NOTI": "No notifications",
 			"ACC_SET": "Account settings",
 			"ACCOUNT": "Account",
-			"LOG_OUT": "Log out",
-			"SEARCH": "Search..."
+			"LOG_OUT": "Log out"
 		},
 		"ENTITY_ACTIONS": {
 			"EDIT": "Edit",
 			"DELETE": "Delete",
 			"DETAILS": "Details"
-		},
-		"BUTTON_ADD": "Add",
-		"BUTTON_EDIT": "Update",
-		"BUTTON_VERIFY": "Verify",
-		"BUTTON_VALIDATOR": "+ Add validator",
-		"SET_ACCESS": "Set access",
-		"TOGGLE": "Toggle repeat",
-		"ADVANCED": "Advanced",
-		"SELECT_ROLES": "Select roles",
-		"SELECT_ROLE": "Select role",
-		"SEARCH": "Search...",
-		"LONGTITUDE": "Longtitude",
-		"LANGTITUDE": "Langtitude",
-		"FREQUENCY": "Frequency",
-		"EXPRESSION": "Expression",
-		"ENTER_NUMBER": "Enter number",
-		"HOURS": "Hours",
-		"MINUTES": "Minutes",
-		"SECONDS": "Seconds",
-		"SELECT_VALIDATOR": "Please select a validator",
-		"RECORD_CONTAINER": {
-			"LOADED": "Loaded {{ value }} out of"
 		},
 		"RECORDS_CONTAINER": {
 			"LOADED": "Loaded {{ value }} out of"
@@ -2132,7 +2110,9 @@
 			"HOURS": "Hours",
 			"MINUTES": "Minutes",
 			"SECONDS": "Seconds"
-		}
+		},
+		"ADVANCED": "Advanced",
+		"SELECT_VALIDATOR": "Please select a validator"
 	},
 	"NOTIFICATIONS": {
 		"GET": {

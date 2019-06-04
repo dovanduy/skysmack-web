@@ -2061,47 +2061,25 @@
 		"PACKAGE_DRAWER": {
 			"SETTINGS": "Indstillinger",
 			"SECURITY": "Sikkerhed",
-			"TENANTS": "Tenants",
+			"TENANTS": "beboerne",
 			"PACKAGES": "Pakker",
 			"ROLES": "Roller",
 			"HELP": "Hjælp",
 			"PAYMENTS": "Betalinger"
 		},
 		"TOP_BAR": {
+			"SEARCH": "Søg...",
 			"PACKAGES": "Pakker",
 			"NO_CONVER": "Ingen samtaler",
 			"NO_NOTI": "Ingen meddelser",
 			"ACC_SET": "Bruger indstillinger",
 			"ACCOUNT": "Konto",
-			"LOG_OUT": "Log ud",
-			"SEARCH": "Søg..."
+			"LOG_OUT": "Log ud"
 		},
 		"ENTITY_ACTIONS": {
 			"EDIT": "Rediger",
 			"DELETE": "Slet",
 			"DETAILS": "Detaljer"
-		},
-		"BUTTON_ADD": "Tilføj",
-		"BUTTON_EDIT": "Opdater",
-		"BUTTON_VERIFY": "Verificere",
-		"BUTTON_VALIDATOR": "+ Tilføj validator",
-		"SET_ACCESS": "Sæt adgang",
-		"TOGGLE": "Aktiver gentagelse",
-		"ADVANCED": "Avanceret",
-		"SELECT_ROLES": "Vælg roller",
-		"SELECT_ROLE": "Vælg rolle",
-		"SEARCH": "Søg...",
-		"LONGITUDE": "Længdegrad",
-		"LANGTITUDE": "Bredegrad",
-		"FREQUENCY": "Frekvens",
-		"EXPRESSION": "Ekspression",
-		"ENTER_NUMBER": "Indtast nummer",
-		"HOURS": "Timer",
-		"MINUTES": "Minutter",
-		"SECONDS": "Sekunder",
-		"SELECT_VALIDATOR": "Venligst vælg en validator",
-		"RECORD_CONTAINER": {
-			"LOADED": "Hentet {{ value }} ud af"
 		},
 		"RECORDS_CONTAINER": {
 			"LOADED": "Hentet {{ value }} ud af"
@@ -2133,7 +2111,9 @@
 			"HOURS": "Timer",
 			"MINUTES": "Minutter",
 			"SECONDS": "Sekunder"
-		}
+		},
+		"ADVANCED": "Avanceret",
+		"SELECT_VALIDATOR": "Venligst vælg en validator"
 	},
 	"NOTIFICATIONS": {
 		"GET": {

@@ -15,7 +15,7 @@
         "PACKAGE_DRAWER": {
             "SETTINGS": "Indstillinger",
             "SECURITY": "Sikkerhed",
-            "TENANTS": "Tenants",
+            "TENANTS": "beboerne",
             "PACKAGES": "Pakker",
             "ROLES": "Roller",
             "HELP": "Hjælp",
