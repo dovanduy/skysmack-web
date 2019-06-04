@@ -55,11 +55,11 @@ const extraRoutes = [
     RouterModule.forRoot([
       ...extraRoutes,
       {
-        path: 'skysmack/packages',
+        path: 'skysmack/loadPackages/packages',
         loadChildren: './../packages/modules/packages_wrapper.module#PackagesWrapperModule'
       },
       {
-        path: 'skysmack/access-policies',
+        path: 'skysmack/loadPackages/access-policies',
         loadChildren: './../packages/modules/access_policies_wrapper.module#AccessPoliciesWrapperModule'
       },
       {

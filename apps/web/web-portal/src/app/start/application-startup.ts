@@ -19,6 +19,8 @@ import { loadIdentitiesPackage } from '../packages/identities-package-manifest';
 import { loadAccountPackage } from '../packages/account-manifest';
 import { loadReservationsPricingsPackage } from '../packages/reservations-pricings-package-manifest';
 import { loadInvoicesCashPaymentsPackage } from '../packages/invoices-cash-payments-package-manifest';
+import { loadPackagesPackage } from '../packages/packages-package-manifest';
+import { loadAccessPoliciesPackage } from '../packages/access-policies-package-manifest';
 
 export function configureSkysmack(actions: NgSkysmackActions) {
     return () => actions.getSkysmack();
@@ -34,6 +36,8 @@ export const httpInterceptors = [
 ];
 
 export const packageLoaders = [
+    { provide: APP_INITIALIZER, useFactory: loadPackagesPackage, deps: [PackageLoader], multi: true },
+    { provide: APP_INITIALIZER, useFactory: loadAccessPoliciesPackage, deps: [PackageLoader], multi: true },
     { provide: APP_INITIALIZER, useFactory: loadIdentitiesPackage, deps: [PackageLoader], multi: true },
     { provide: APP_INITIALIZER, useFactory: loadInvoicePackage, deps: [PackageLoader], multi: true },
     { provide: APP_INITIALIZER, useFactory: loadInvoicesCashPaymentsPackage, deps: [PackageLoader], multi: true },
