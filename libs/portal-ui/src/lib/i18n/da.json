@@ -22,6 +22,7 @@
             "PAYMENTS": "Betalinger"
         },
         "TOP_BAR": {
+            "SEARCH": "Søg...",
             "PACKAGES": "Pakker",
             "NO_CONVER": "Ingen samtaler",
             "NO_NOTI": "Ingen meddelser",
@@ -37,24 +38,35 @@
         "RECORDS_CONTAINER": {
             "LOADED": "Hentet {{ value }} ud af"
         },
-        "BUTTON_ADD": "Tilføj",
-        "BUTTON_EDIT": "Opdater",
-        "BUTTON_VERIFY": "Verificere",
-        "BUTTON_VALIDATOR": "+ Tilføj validator",
-        "SET_ACCESS": "Sæt adgang",
-        "TOGGLE": "Aktiver gentagelse",
+        "BUTTONS": {
+            "BUTTON_ADD": "Tilføj",
+            "BUTTON_EDIT": "Opdater",
+            "BUTTON_VERIFY": "Verificere",
+            "BUTTON_VALIDATOR": "+ Tilføj validator"
+        },
+        "PERMISSION": {
+            "SET_ACCESS": "Sæt adgang"
+        },
+        "RECURRING_EXPRESSION": {
+            "TOGGLE": "Aktiver gentagelse",
+            "EXPRESSION": "Ekspression"
+        }, 
+        "ROLE_SELECT": {
+            "SELECT_ROLES": "Vælg roller",
+            "SELECT_ROLE": "Vælg rolle"
+        },
+        "GEOGRAPHY": {
+            "LONGITUDE": "Længdegrad",
+            "LANGTITUDE": "Bredegrad"
+        }, 
+        "TIME": {
+            "FREQUENCY": "Frekvens",
+            "ENTER_NUMBER": "Indtast nummer",
+            "HOURS": "Timer",
+            "MINUTES": "Minutter",
+            "SECONDS": "Sekunder"
+        },        
         "ADVANCED": "Avanceret",
-        "SELECT_ROLES": "Vælg roller",
-        "SELECT_ROLE": "Vælg rolle",
-        "SEARCH": "Søg...",
-        "LONGITUDE": "Længdegrad",
-        "LANGTITUDE": "Bredegrad",
-        "FREQUENCY": "Frekvens",
-        "EXPRESSION": "Ekspression",
-        "ENTER_NUMBER": "Indtast nummer",
-        "HOURS": "Timer",
-        "MINUTES": "Minutter",
-        "SECONDS": "Sekunder",
         "SELECT_VALIDATOR": "Venligst vælg en validator"
     },
     "NOTIFICATIONS": {

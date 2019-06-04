@@ -15,7 +15,7 @@
   <ng-container *ngIf="adding">
     <button mat-raised-button color="default" type="submit" (click)="toggleAdding()">Cancel</button>
     <ss-dynamic-form *ngIf="addFields$" [fields$]="addFields$" [validation]="this.field.fieldsConfig.validation"
-      [rules]="this.field.fieldsConfig.formRules" [buttonText]="'UI.BUTTON_ADD' | translate" (submitted)="onAddSubmit($event)">
+      [rules]="this.field.fieldsConfig.formRules" [buttonText]="'UI.BUTTONS.BUTTON_ADD' | translate" (submitted)="onAddSubmit($event)">
     </ss-dynamic-form>
   </ng-container>
 
