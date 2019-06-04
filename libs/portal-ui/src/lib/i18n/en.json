@@ -34,6 +34,9 @@
             "DELETE": "Delete",
             "DETAILS": "Details"
         },
+        "RECORDS_CONTAINER": {
+            "LOADED": "Loaded {{ value }} out of"
+        },
         "BUTTON_ADD": "Add",
         "BUTTON_EDIT": "Update",
         "BUTTON_VERIFY": "Verify",

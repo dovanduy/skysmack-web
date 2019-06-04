@@ -34,6 +34,9 @@
             "DELETE": "Slet",
             "DETAILS": "Detaljer"
         },
+        "RECORDS_CONTAINER": {
+            "LOADED": "Hentet {{ value }} ud af"
+        },
         "BUTTON_ADD": "Tilføj",
         "BUTTON_EDIT": "Opdater",
         "BUTTON_VERIFY": "Verificere",

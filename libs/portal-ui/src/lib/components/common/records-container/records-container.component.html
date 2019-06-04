@@ -79,7 +79,7 @@
   <div class="footer">
     <div class="inner">
       <!-- totalCount$ | async as -->
-      <span>Loaded {{ loadedEntitiesCount }} out of
+      <span>{{'UI.RECORDS_CONTAINER.LOADED' | translate: { value: loadedEntitiesCount } }}
         <span *ngIf="totalCount">{{ totalCount }}</span>
       </span>
     </div>
