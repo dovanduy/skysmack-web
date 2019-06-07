@@ -24,7 +24,7 @@
                     <a class="app-link" *ngIf="loadedPackage.packageManifest.menuLocation === 'docker'"
                         [routerLink]="loadedPackage._package.path">
                         <i class="material-icons md-light app-icon">{{ loadedPackage.packageManifest.icon }}</i>
-                        <h5 class="app-name" [translate]="loadedPackage.packageManifest.translationString"></h5>
+                        <h5 class="app-name">{{ loadedPackage._package.name }}</h5>
                     </a>
                 </ng-container>
             </ng-container>
