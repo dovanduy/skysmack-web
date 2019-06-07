@@ -8,12 +8,13 @@ import { PackagesAppState, PACKAGES_AREA_KEY } from '@skysmack/packages-skysmack
 import { NgPackagesMenu } from './../../ng-packages-menu';
 import { EntityAction } from '@skysmack/ng-ui';
 import { NgPackagesFieldsConfig } from '../../ng-packages-fields-config';
+import { Package } from '@skysmack/framework';
 
 @Component({
   selector: 'ss-packages-index',
   templateUrl: './packages-index.component.html'
 })
-export class PackagesIndexComponent extends RecordIndexComponent<PackagesAppState, any, string> implements OnInit {
+export class PackagesIndexComponent extends RecordIndexComponent<PackagesAppState, Package, string> implements OnInit {
   public areaKey: string = PACKAGES_AREA_KEY;
   public entityActions: EntityAction[] = [
     new EntityAction().asUrlAction('edit', ENTITY_ACTIONS_EDIT, 'edit'),
@@ -35,8 +36,6 @@ export class PackagesIndexComponent extends RecordIndexComponent<PackagesAppStat
   }
 
   ngOnInit() {
-    this.titleFallback = 'PACKAGES.INDEX.TITLE';
     super.ngOnInit();
-    this.actions.getAvailablePackages();
   }
 }

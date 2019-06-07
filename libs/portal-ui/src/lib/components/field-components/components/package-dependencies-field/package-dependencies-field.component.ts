@@ -78,7 +78,7 @@ export class PackageDependenciesFieldComponent extends FieldBaseComponent<Field>
 
     this.selectBoxes$ = combineLatest(
       dependencies$,
-      this.packagesStore.get(),
+      this.packagesStore.get('packages'),
       availablePackages$
     ).pipe(
       map(values => {
