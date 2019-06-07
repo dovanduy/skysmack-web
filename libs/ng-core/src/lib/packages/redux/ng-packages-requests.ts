@@ -86,7 +86,7 @@ export class NgPackagesRequests implements PackagesRequests {
     }
 
     public getAvailablePackages(): Observable<ReduxAction<GetAvailablePackagesSuccessPayload> | ReduxAction<HttpErrorResponse>> {
-        const url = this.apiDomain.domain + 'packages/available-packages';
+        const url = this.apiDomain.domain + '/skysmack/available-packages';
         return this.http.get<Package[]>(url, { observe: 'response' }).pipe(
             map(httpResponse => Object.assign({}, new ReduxAction<GetAvailablePackagesSuccessPayload>({
                 type: PackagesActions.GET_AVAILABLE_PACKAGES_SUCCESS,
