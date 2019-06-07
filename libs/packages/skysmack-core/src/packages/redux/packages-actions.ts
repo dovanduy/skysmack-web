@@ -74,8 +74,8 @@ export class PackagesActions<TStateType, TStore extends Store<TStateType>> imple
             return new QueueItem({
                 message: `PACKAGES.ADDING`,
                 messageParams: this.getMessageParams(_package),
-                link: `skysmack/packages/create`,
-                packagePath: 'skysmack/packages',
+                link: `packages/create`,
+                packagePath: 'packages',
                 localObject: _package,
                 cancelAction: this.cancelAction
             });
@@ -86,7 +86,7 @@ export class PackagesActions<TStateType, TStore extends Store<TStateType>> imple
             meta: new ReduxOfflineMeta(
                 new OfflineMeta<Package[], HttpResponse, LocalObject<Package, string>[]>(
                     new Effect<Package[]>(new EffectRequest<Package[]>(
-                        'skysmack/packages',
+                        'packages',
                         HttpMethod.POST,
                         packages.map(x => x.object)
                     )),
@@ -121,8 +121,8 @@ export class PackagesActions<TStateType, TStore extends Store<TStateType>> imple
             return new QueueItem({
                 message: `PACKAGES.UPDATING`,
                 messageParams: this.getMessageParams(_package),
-                link: `skysmack/packages`,
-                packagePath: 'skysmack/packages' + paths,
+                link: `packages`,
+                packagePath: 'packages' + paths,
                 localObject: _package,
                 cancelAction: this.cancelAction
             });
@@ -133,7 +133,7 @@ export class PackagesActions<TStateType, TStore extends Store<TStateType>> imple
             meta: new ReduxOfflineMeta(
                 new OfflineMeta<Package[], HttpResponse, LocalObject<Package, string>[]>(
                     new Effect<Package[]>(new EffectRequest<Package[]>(
-                        'skysmack/packages' + paths,
+                        'packages' + paths,
                         HttpMethod.PUT,
                         packages.map(x => x.object)
                     )),
@@ -168,7 +168,7 @@ export class PackagesActions<TStateType, TStore extends Store<TStateType>> imple
             return new QueueItem({
                 message: `PACKAGES.DELETING`,
                 messageParams: this.getMessageParams(_package),
-                packagePath: 'skysmack/packages' + paths,
+                packagePath: 'packages' + paths,
                 localObject: _package,
                 cancelAction: this.cancelAction,
                 deleteAction: this.delete
@@ -180,7 +180,7 @@ export class PackagesActions<TStateType, TStore extends Store<TStateType>> imple
             meta: new ReduxOfflineMeta(
                 new OfflineMeta<Package[], HttpResponse, LocalObject<Package, string>[]>(
                     new Effect<Package[]>(new EffectRequest<Package[]>(
-                        'skysmack/packages' + paths,
+                        'packages' + paths,
                         HttpMethod.DELETE,
                         packages.map(x => {
                             x.status = LocalObjectStatus.DELETING

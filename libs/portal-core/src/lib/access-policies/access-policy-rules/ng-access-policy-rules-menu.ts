@@ -42,7 +42,7 @@ export class NgAccessPolicyRulesMenu extends SidebarMenu {
             order: 1,
             icon: 'groupAdd',
         }));
-        this.setBackButton({ customPath: '/skysmack/access-policies' });
+        this.setBackButton({ customPath: '/access-policies' });
     }
 
     public setSpeedDialMenu() {

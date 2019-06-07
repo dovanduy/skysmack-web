@@ -44,7 +44,7 @@ export class NgPackagesRequests implements PackagesRequests {
             queryParameters = queryParameters.set('pageSize', action.payload.pagedQuery.pageSize.toString());
         }
 
-        const url = `${this.apiDomain.domain}/skysmack/packages`;
+        const url = `${this.apiDomain.domain}/packages`;
 
         return this.http.get<Package[]>(url, { observe: 'response', params: queryParameters })
             .pipe(
@@ -69,7 +69,7 @@ export class NgPackagesRequests implements PackagesRequests {
     }
 
     public getSingle(action: ReduxAction<PackagePathPayload>): Observable<ReduxAction<GetPackageSuccessPayload> | ReduxAction<HttpErrorResponse>> {
-        const url = `${this.apiDomain.domain}/skysmack/packages/${action.payload.packagePath}`;
+        const url = `${this.apiDomain.domain}/packages/${action.payload.packagePath}`;
         return this.http.get<Package>(url, { observe: 'response' }).pipe(
             map(httpResponse => Object.assign({}, new ReduxAction<GetPackageSuccessPayload>({
                 type: PackagesActions.GET_SINGLE_PACKAGE_SUCCESS,
@@ -86,7 +86,7 @@ export class NgPackagesRequests implements PackagesRequests {
     }
 
     public getAvailablePackages(): Observable<ReduxAction<GetAvailablePackagesSuccessPayload> | ReduxAction<HttpErrorResponse>> {
-        const url = this.apiDomain.domain + '/skysmack/available-packages';
+        const url = this.apiDomain.domain + 'packages/available-packages';
         return this.http.get<Package[]>(url, { observe: 'response' }).pipe(
             map(httpResponse => Object.assign({}, new ReduxAction<GetAvailablePackagesSuccessPayload>({
                 type: PackagesActions.GET_AVAILABLE_PACKAGES_SUCCESS,
