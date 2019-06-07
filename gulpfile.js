@@ -49,7 +49,7 @@ const webPaths = {
 const webLocalizationOutputPath = `${webPaths.project}/src/i18n`;
 
 // Translate once - keep this task name in sync with pack.json build script (currently 'gulp loc')
-const webLocalization = (done) => gulp.parallel(runLocalization(webPaths, 'da', webLocalizationOutputPath), runLocalization(webPaths, 'en', webLocalizationOutputPath))(done);
+const webLocalization = (done) => gulp.parallel(runLocalization(webPaths, 'en', webLocalizationOutputPath) /*, runLocalization(webPaths, 'fr', webLocalizationOutputPath) */ )(done);
 const webLocalizationWatch = () => gulp.watch(getLocalizationWatchersArray(webPaths), webLocalization);
 gulp.task('webLocalization', webLocalization);
 gulp.task('webLocalizationWatch', webLocalizationWatch);

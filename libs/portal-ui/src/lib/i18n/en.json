@@ -22,6 +22,7 @@
             "PAYMENTS": "Payments"
         },
         "TOP_BAR": {
+            "SEARCH": "Search...",
             "PACKAGES": "Packages",
             "NO_CONVER": "No conversations",
             "NO_NOTI": "No notifications",
@@ -34,26 +35,40 @@
             "DELETE": "Delete",
             "DETAILS": "Details"
         },
-        "BUTTON_ADD": "Add",
-        "BUTTON_EDIT": "Update",
-        "BUTTON_VERIFY": "Verify",
-        "BUTTON_VALIDATOR": "+ Add validator",
-        "SET_ACCESS": "Set access",
-        "TOGGLE": "Toggle repeat",
-        "ADVANCED": "Advanced",
-        "SELECT_ROLES": "Select roles",
-        "SELECT_ROLE": "Select role",
-        "SEARCH": "Search...",
-        "LONGTITUDE": "Longtitude",
-        "LANGTITUDE": "Langtitude",
-        "FREQUENCY": "Frequency",
-        "EXPRESSION": "Expression",
-        "ENTER_NUMBER": "Enter number",
-        "HOURS": "Hours",
-        "MINUTES": "Minutes",
-        "SECONDS": "Seconds",
-        "SELECT_VALIDATOR": "Please select a validator"
+        "RECORDS_CONTAINER": {
+            "LOADED": "Loaded {{ value }} out of"
         },
+        "BUTTONS": {
+            "BUTTON_ADD": "Add",
+            "BUTTON_EDIT": "Update",
+            "BUTTON_VERIFY": "Verify",
+            "BUTTON_VALIDATOR": "+ Add validator"
+        },
+        "PERMISSION": {
+            "SET_ACCESS": "Set access"
+        },
+        "RECURRING_EXPRESSION": {
+            "TOGGLE": "Toggle repeat",
+            "EXPRESSION": "Expression"
+        }, 
+        "ROLE_SELECT": {
+            "SELECT_ROLES": "Select roles",
+            "SELECT_ROLE": "Select role"
+        },
+        "GEOGRAPHY": {
+            "LONGTITUDE": "Longtitude",
+            "LANGTITUDE": "Langtitude"
+        }, 
+        "TIME": {
+            "FREQUENCY": "Frequency",
+            "ENTER_NUMBER": "Enter number",
+            "HOURS": "Hours",
+            "MINUTES": "Minutes",
+            "SECONDS": "Seconds"
+        },         
+        "ADVANCED": "Advanced",
+        "SELECT_VALIDATOR": "Please select a validator"
+    },
     "NOTIFICATIONS": {
         "GET": {
             "PAGED_ERROR": "{{ errorMessage }} ({{ httpErrorCode }}).",
