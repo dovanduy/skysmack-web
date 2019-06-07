@@ -3,7 +3,7 @@ import { Validators } from '@angular/forms';
 import { LocalObject, LocalObjectStatus, PagedQuery } from '@skysmack/framework';
 import { FormRule, SelectField, Field } from '@skysmack/ng-ui';
 import { NgLodgingReservationPriceChangesValidation, NgLodgingsStore, NgLodgingsActions } from '@skysmack/ng-packages';
-import { FieldsConfig, SelectFieldComponent, HiddenFieldComponent, DecimalFieldComponent, DateTimeFieldComponent, FlaggedEnumFieldComponent, DaysOfWeekFlagged, IntFieldComponent, CheckboxFieldComponent } from '@skysmack/portal-ui';
+import { FieldsConfig, SelectFieldComponent, HiddenFieldComponent, DecimalFieldComponent, DateTimeFieldComponent, FlaggedEnumFieldComponent, DaysOfWeekFlagged, IntFieldComponent, CheckboxFieldComponent, DateFieldComponent } from '@skysmack/portal-ui';
 import { FieldProviders } from '@skysmack/portal-ui';
 import { LoadedPackage, getPackageDendencyAsStream } from '@skysmack/ng-framework';
 import { LodgingReservationPriceChange } from '@skysmack/packages-reservations-pricings';
@@ -157,7 +157,7 @@ export class NgLodgingReservationPriceChangesFieldsConfig extends FieldsConfig<L
                 showColumn: true
             }),
             new Field({
-                component: DateTimeFieldComponent,
+                component: DateFieldComponent,
                 value: entity ? entity.object.start : undefined,
                 key: 'start',
                 validators: [Validators.required],
@@ -165,7 +165,7 @@ export class NgLodgingReservationPriceChangesFieldsConfig extends FieldsConfig<L
                 showColumn: true
             }),
             new Field({
-                component: DateTimeFieldComponent,
+                component: DateFieldComponent,
                 value: entity ? entity.object.end : undefined,
                 key: 'end',
                 validators: [Validators.required],
