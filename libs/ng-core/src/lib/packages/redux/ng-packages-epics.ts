@@ -1,5 +1,5 @@
 import { ofType, ActionsObservable } from 'redux-observable';
-import { ReduxAction, SettingsCommitMeta } from '@skysmack/redux';
+import { ReduxAction, SettingsCommitMeta, GetAvailablePackagesSuccessPayload } from '@skysmack/redux';
 import { mergeMap } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
 import { Injectable } from '@angular/core';
@@ -10,6 +10,7 @@ import { NgSkysmackActions } from '../../skysmack/redux/ng-skysmack-actions';
 import { NgSkysmackRequests } from '../../skysmack/redux/ng-skysmack-requests';
 import { NgSettingsActions, RecordEpicsBase } from '@skysmack/ng-framework';
 import { PACKAGES_REDUX_KEY } from '@skysmack/packages-skysmack-core';
+import { NgPackagesActions } from './ng-packages-actions';
 
 @Injectable({ providedIn: 'root' })
 export class NgPackagesEpics extends RecordEpicsBase<Package, string> {
@@ -22,6 +23,7 @@ export class NgPackagesEpics extends RecordEpicsBase<Package, string> {
         super(requests, PACKAGES_REDUX_KEY, notifications);
         this.epics = this.epics.concat([
             // Additional skysmack epics
+            this.getAvailablePackagesEpic,
             this.getPermissionsEpic,
             this.getAvailablePermissionsEpic,
             this.getSkysmackOnSettingsUpdateEpic
@@ -30,6 +32,13 @@ export class NgPackagesEpics extends RecordEpicsBase<Package, string> {
 
     // ADDITIONAL SKYSMACK EPICS
     // These are added here, since the ng-skysmack-epics.ts file only accepts one epic for some reason...
+    public getAvailablePackagesEpic = (action$: ActionsObservable<ReduxAction<string>>): Observable<ReduxAction<GetAvailablePackagesSuccessPayload> | ReduxAction<HttpErrorResponse>> => {
+        return action$.pipe(
+            ofType(NgPackagesActions.GET_AVAILABLE_PACKAGES),
+            mergeMap(() => this.requests.getAvailablePackages())
+        );
+    }
+
     public getPermissionsEpic = (action$: ActionsObservable<ReduxAction<string>>): Observable<ReduxAction<string[]> | ReduxAction<HttpErrorResponse>> => {
         return action$.pipe(
             ofType(NgSkysmackActions.GET_PACKAGE_PERMISSIONS),
