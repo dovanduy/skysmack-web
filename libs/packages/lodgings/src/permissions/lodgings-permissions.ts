@@ -12,18 +12,18 @@ export class LodgingsPermissions {
     public updateLodgings = UPDATE + this.lodgings;
     public removeLodgings = REMOVE + this.lodgings;
 
-    public findLodgingsFields = FIND + this.lodgingFields;
-    public addLodgingsFields = ADD + this.lodgingFields;
-    public updateLodgingsFields = UPDATE + this.lodgingFields;
-    public removeLodgingsFields = REMOVE + this.lodgingFields;
+    public findLodgingFields = FIND + this.lodgingFields;
+    public addLodgingFields = ADD + this.lodgingFields;
+    public updateLodgingFields = UPDATE + this.lodgingFields;
+    public removeLodgingFields = REMOVE + this.lodgingFields;
 
     public findLodgingTypes = FIND + this.lodgingTypes;
     public addLodgingTypes = ADD + this.lodgingTypes;
     public updateLodgingTypes = UPDATE + this.lodgingTypes;
     public removeLodgingTypes = REMOVE + this.lodgingTypes;
 
-    public findLodgingTypesFields = FIND + this.lodgingTypeFields;
-    public addLodgingTypesFields = ADD + this.lodgingTypeFields;
-    public updateLodgingTypesFields = UPDATE + this.lodgingTypeFields;
-    public removeLodgingTypesFields = REMOVE + this.lodgingTypeFields;
+    public findLodgingTypeFields = FIND + this.lodgingTypeFields;
+    public addLodgingTypeFields = ADD + this.lodgingTypeFields;
+    public updateLodgingTypeFields = UPDATE + this.lodgingTypeFields;
+    public removeLodgingTypeFields = REMOVE + this.lodgingTypeFields;
 }
