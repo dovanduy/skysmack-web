@@ -86,7 +86,7 @@ export class PackageDependenciesFieldComponent extends FieldBaseComponent<Field>
 
         // Set select field to invalid if number of selected dependencies doesn't match the required number.
         this.nrOfRequiredDependencies = (dependencies as string[]).length;
-        if (this.nrOfRequiredDependencies !== this.getFieldValue()) {
+        if (this.nrOfRequiredDependencies !== this.getFieldValue().length) {
           this.setOtherFieldErrors('type', { depsMissing: true });
         }
 

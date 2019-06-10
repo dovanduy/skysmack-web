@@ -17,7 +17,6 @@ export class NgPackagesStore extends NgRecordStore<PackagesState, Package, strin
     public getAvailablePackages(): Observable<LocalObject<AvailablePackage, string>[]> {
         return this.getState<PackagesState>().pipe(
             map(state => state.availablePackages),
-            log(),
             safeUndefinedTo('object'),
             dictionaryToArray(),
         );
