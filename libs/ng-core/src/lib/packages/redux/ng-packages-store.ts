@@ -3,7 +3,7 @@ import { PACKAGES_REDUCER_KEY, PackagesState } from '@skysmack/packages-skysmack
 import { NgRedux } from '@angular-redux/store';
 import { Observable } from 'rxjs';
 import { LocalObject, Package, safeUndefinedTo, AvailablePackage, dictionaryToArray, log } from '@skysmack/framework';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 import { NgRecordStore } from '@skysmack/ng-framework';
 import { NgSkysmackStore } from '../../skysmack/redux/ng-skysmack-store';
 
@@ -17,9 +17,9 @@ export class NgPackagesStore extends NgRecordStore<PackagesState, Package, strin
         protected skysmackStore: NgSkysmackStore
     ) { super(ngRedux, skysmackStore, PACKAGES_REDUCER_KEY); }
 
-    public getAvailablePackages(): Observable<LocalObject<AvailablePackage, string>[]> {
+    public getAvailablePackages(packagePath: string): Observable<LocalObject<AvailablePackage, string>[]> {
         return this.getState<PackagesState>().pipe(
-            map(state => state.availablePackages),
+            map(state => state.availablePackages[packagePath]),
             safeUndefinedTo('object'),
             dictionaryToArray(),
         );

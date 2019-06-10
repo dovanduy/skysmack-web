@@ -13,7 +13,7 @@ export class PackagesAppState extends AppState {
 export class PackagesState implements RecordState<Package, string> {
     public localPageTypes: StrIndex<StrIndex<LocalPageTypes<string>>> = {};
     public localRecords: StrIndex<StrIndex<LocalObject<Package, string>>> = {};
-    public availablePackages: StrIndex<LocalObject<AvailablePackage, string>> = {};
+    public availablePackages: StrIndex<StrIndex<LocalObject<AvailablePackage, string>>> = {};
 }
 
 export function packagesReducer(state = new PackagesState(), action: ReduxAction, prefix: string = PACKAGES_REDUX_KEY): PackagesState {
@@ -25,7 +25,7 @@ export function packagesReducer(state = new PackagesState(), action: ReduxAction
         case PackagesActions.GET_AVAILABLE_PACKAGES_SUCCESS: {
             const castedAction = action as ReduxAction<GetAvailablePackagesSuccessPayload>;
             const incomingAvailablePackages = castedAction.payload.availablePackages.map(x => toLocalObject<AvailablePackage, string>(x, 'type'));
-            newState.availablePackages = LocalObjectExtensions.mergeOrAddLocal<AvailablePackage, string>(newState.availablePackages, incomingAvailablePackages);
+            newState.availablePackages[castedAction.payload.stateKey] = LocalObjectExtensions.mergeOrAddLocal<AvailablePackage, string>(newState.availablePackages[castedAction.payload.stateKey], incomingAvailablePackages);
             return newState;
         }
         case PackagesActions.GET_AVAILABLE_PACKAGES_FAILURE: {

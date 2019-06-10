@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { LocalObject, Package } from '@skysmack/framework';
 import { FormRule, Field, CustomValidators, SetPathRule, SelectField } from '@skysmack/ng-ui';
-import { PackagesValidation, NgPackagesStore } from '@skysmack/ng-core';
+import { PackagesValidation, NgPackagesStore, NgPackagesActions } from '@skysmack/ng-core';
 import { FieldsConfig, StringFieldComponent, SelectFieldComponent, HiddenFieldComponent, PackageDependenciesFieldComponent } from '@skysmack/portal-ui';
 import { FieldProviders } from '@skysmack/portal-ui';
 import { LoadedPackage } from '@skysmack/ng-framework';
@@ -18,6 +18,7 @@ export class NgPackagesFieldsConfig extends FieldsConfig<Package, string> {
 
     constructor(
         public store: NgPackagesStore,
+        public actions: NgPackagesActions,
         public fieldProviders: FieldProviders
     ) {
         super(fieldProviders);
@@ -31,7 +32,8 @@ export class NgPackagesFieldsConfig extends FieldsConfig<Package, string> {
                 label: 'Type',
                 key: 'type',
                 validators: [Validators.required],
-                optionsData$: this.store.getAvailablePackages(),
+                optionsData$: this.store.getAvailablePackages(loadedPackage._package.path),
+                getDependencies: () => { this.actions.getAvailablePackages(loadedPackage._package.path); },
                 valueSelector: 'object.type',
                 disabled: _package ? true : false,
                 order: 1

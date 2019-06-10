@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FieldBaseComponent } from '../field-base-component';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 import { combineLatest, Observable } from 'rxjs';
 import { NgPackagesStore } from '@skysmack/ng-core';
 import { flatten, notNull, AvailablePackage, LocalObject } from '@skysmack/framework';
@@ -34,6 +34,8 @@ export class PackageDependenciesFieldComponent extends FieldBaseComponent<Field>
   public showBoxes = false;
   public nrOfRequiredDependencies: number;
 
+  private packagePath: string;
+
   constructor(
     public packagesStore: NgPackagesStore,
     public router: Router
@@ -41,6 +43,7 @@ export class PackageDependenciesFieldComponent extends FieldBaseComponent<Field>
 
   ngOnInit() {
     super.ngOnInit();
+    this.packagePath = this.router.url.split('/')[1];
     this.createSelectBoxes();
   }
 
@@ -58,7 +61,7 @@ export class PackageDependenciesFieldComponent extends FieldBaseComponent<Field>
       notNull(),
     );
 
-    const availablePackages$ = this.packagesStore.getAvailablePackages();
+    const availablePackages$ = this.packagesStore.getAvailablePackages(this.packagePath);
 
     const dependencies$ = combineLatest(
       selectedPackageType$,
@@ -80,7 +83,7 @@ export class PackageDependenciesFieldComponent extends FieldBaseComponent<Field>
 
     this.selectBoxes$ = combineLatest(
       dependencies$,
-      this.packagesStore.get(this.router.url.split('/')[1]),
+      this.packagesStore.get(this.packagePath),
       availablePackages$
     ).pipe(
       map(values => {
