@@ -9,6 +9,8 @@ export class PackagesActions extends RecordActionsBase<PackagesAppState, Store<P
     public static GET_AVAILABLE_PACKAGES_SUCCESS = 'GET_AVAILABLE_PACKAGES_SUCCESS';
     public static GET_AVAILABLE_PACKAGES_FAILURE = 'GET_AVAILABLE_PACKAGES_FAILURE';
 
+    protected identifier = 'path';
+
     constructor(protected store: Store<PackagesAppState>) { super(store, PACKAGES_REDUX_KEY, PACKAGES_ADDITIONAL_PATHS); }
 
     public getAvailablePackages(packagePath: string) {

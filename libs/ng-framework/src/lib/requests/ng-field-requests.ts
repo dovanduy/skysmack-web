@@ -130,8 +130,4 @@ export class NgFieldRequests implements FieldRequests {
   protected addAdditionalPaths(url: string, additionalPaths: string[]) {
     return additionalPaths ? [url, ...additionalPaths].join('/') : url;
   }
-
-  protected appendValues<T>(url, values: T[], prefix: string = '?ids=', seperator: string = ','): string {
-    return url + prefix + values.join(seperator);
-  }
 }
