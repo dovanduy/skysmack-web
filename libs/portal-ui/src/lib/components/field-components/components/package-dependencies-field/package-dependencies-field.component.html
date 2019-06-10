@@ -2,7 +2,8 @@
   <ng-container *ngIf="showBoxes">
     <ng-container *ngFor=" let selectBox of selectBoxes">
       <mat-form-field>
-        <mat-select [placeholder]="selectBox.name | translate">
+        <mat-select [placeholder]="selectBox.name | translate"
+          (selectionChange)="setDependencies(selectBox, $event.value)">
           <mat-option *ngFor="let opt of selectBox.values" [value]="opt.value">{{opt.displayName}}</mat-option>
         </mat-select>
       </mat-form-field>

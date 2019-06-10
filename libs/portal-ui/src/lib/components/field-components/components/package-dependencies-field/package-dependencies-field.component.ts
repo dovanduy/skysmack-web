@@ -84,11 +84,8 @@ export class PackageDependenciesFieldComponent extends FieldBaseComponent<Field>
       map(values => {
         const [dependencies, installedPackages, availablePackages] = values;
 
-        // Set select field to invalid if number of selected dependencies doesn't match the required number.
         this.nrOfRequiredDependencies = (dependencies as string[]).length;
-        if (this.nrOfRequiredDependencies !== this.getFieldValue().length) {
-          this.setOtherFieldErrors('type', { depsMissing: true });
-        }
+        this.checkDependenciesAreSet();
 
         let index = 0;
         // Only run this when setting NEW dependencies, not when valus are set...
@@ -120,9 +117,18 @@ export class PackageDependenciesFieldComponent extends FieldBaseComponent<Field>
     deps[selectBox.index] = selectedDepType;
 
     this.setOtherFieldValue('dependencies', deps);
+    this.checkDependenciesAreSet();
+  }
 
-    // Remove errors if nr. of selected deps matches the needed amount.
-    if (this.nrOfRequiredDependencies === this.getFieldValue().length) {
+  public checkDependenciesAreSet() {
+    const currentValue = this.getFieldValue();
+    const currentValueAsNumber = Array.isArray(currentValue) ? currentValue.length : 0;
+
+    if (this.nrOfRequiredDependencies !== currentValueAsNumber) {
+      // Not all required deps have been selected. Set error.
+      this.setOtherFieldErrors('type', { depsMissing: true });
+    } else {
+      // The required number of deps have been selected. Remove error.
       this.setOtherFieldErrors('type', null);
     }
   }
