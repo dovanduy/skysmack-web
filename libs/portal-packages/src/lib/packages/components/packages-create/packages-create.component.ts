@@ -12,6 +12,8 @@ import { NgPackagesFieldsConfig } from '../../ng-packages-fields-config';
   templateUrl: './packages-create.component.html'
 })
 export class PackagesCreateComponent extends RecordFormComponent<PackagesAppState, Package, string> implements OnInit {
+  public objectIdentifier = 'path';
+
   constructor(
     public router: Router,
     public activatedRoute: ActivatedRoute,
