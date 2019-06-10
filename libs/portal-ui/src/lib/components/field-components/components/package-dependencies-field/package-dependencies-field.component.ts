@@ -5,6 +5,7 @@ import { combineLatest, Observable } from 'rxjs';
 import { NgPackagesStore } from '@skysmack/ng-core';
 import { flatten, notNull, AvailablePackage, LocalObject } from '@skysmack/framework';
 import { Field } from '@skysmack/ng-ui';
+import { Router } from '@angular/router';
 
 class SelectBox {
   index: number;
@@ -34,7 +35,8 @@ export class PackageDependenciesFieldComponent extends FieldBaseComponent<Field>
   public nrOfRequiredDependencies: number;
 
   constructor(
-    public packagesStore: NgPackagesStore
+    public packagesStore: NgPackagesStore,
+    public router: Router
   ) { super(); }
 
   ngOnInit() {
@@ -78,7 +80,7 @@ export class PackageDependenciesFieldComponent extends FieldBaseComponent<Field>
 
     this.selectBoxes$ = combineLatest(
       dependencies$,
-      this.packagesStore.get('packages'),
+      this.packagesStore.get(this.router.url.split('/')[1]),
       availablePackages$
     ).pipe(
       map(values => {
