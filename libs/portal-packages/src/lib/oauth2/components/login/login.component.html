@@ -6,14 +6,27 @@
     </mat-card-header>
     <mat-card-content>
 
-      <div *ngIf="error" [@shrinkOut] [translate]="'OAUTH2.OAUTH2_LOGIN.ERROR_OCCURRED'"></div>
+      <div style="margin: 0 8px">
+        <div *ngIf="error" [@shrinkOut] [translate]="'OAUTH2.OAUTH2_LOGIN.ERROR_OCCURRED'"></div>
 
-      <ss-dynamic-form *ngIf="fields$" [noSidebar]="true" [fields$]="fields$" [validation]="fieldsConfig.validation"
-        [rules]="fieldsConfig.formRules" [buttonText]="'OAUTH2.OAUTH2_LOGIN.BUTTON_LOGIN' | translate" (submitted)="onSubmit($event)">
-      </ss-dynamic-form>
-      <a [routerLink]="['/skysmack/forgot-password']" [translate]="'OAUTH2.OAUTH2_LOGIN.FORGOT_PASSWORD'"></a>
+        <ss-dynamic-form *ngIf="fields$" [noSidebar]="true" [fields$]="fields$" [validation]="fieldsConfig.validation"
+          [rules]="fieldsConfig.formRules" [buttonText]="'OAUTH2.OAUTH2_LOGIN.BUTTON_LOGIN' | translate"
+          (submitted)="onSubmit($event)">
+        </ss-dynamic-form>
 
-      <div *ngIf="success" [translate]="'OAUTH2.OAUTH2_LOGIN.LOGGING_IN'"></div>
+        <div *ngIf="success" [translate]="'OAUTH2.OAUTH2_LOGIN.LOGGING_IN'"></div>
+      </div>
+
+      <div style="margin: 0 8px; min-height: 2rem">
+        <ng-container *ngFor="let accountPackage of accountPackages$ | async as accountPackages">
+          <a mat-button [routerLink]="['/' + accountPackage.path + '/forgot-password']">            
+            <span [translate]="'OAUTH2.OAUTH2_LOGIN.FORGOT_PASSWORD'">{{ skysmack.name }}</span>
+          </a>
+          <a mat-button [routerLink]="['/' + accountPackage.path + '/confirm-email']">              
+            <span [translate]="'OAUTH2.OAUTH2_LOGIN.CONFIRM_EMAIL'">{{ skysmack.name }}</span>
+          </a>
+        </ng-container>
+      </div>
     </mat-card-content>
   </mat-card>
 </ss-container>

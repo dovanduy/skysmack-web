@@ -47,6 +47,6 @@ export class NgUsersRequests extends NgRecordRequests<User, number>  {
                     payload: error
                 }))))
             );
-            
+
     }
 }

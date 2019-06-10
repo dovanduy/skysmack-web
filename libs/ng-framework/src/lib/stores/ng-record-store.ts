@@ -2,7 +2,7 @@ import { Record, StrIndex, LocalPageTypes, LocalObject, hasValue, dictionaryToAr
 import { RecordStore, RecordState } from '@skysmack/redux';
 import { Observable, combineLatest, from } from 'rxjs';
 import { NgRedux } from '@angular-redux/store';
-import { map, switchMap, mergeMap } from 'rxjs/operators';
+import { map, mergeMap } from 'rxjs/operators';
 import { getPackageDendencyAsStream } from '../helpers/ng-helpers';
 import { NgSkysmackStore } from '@skysmack/ng-core';
 

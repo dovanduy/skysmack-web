@@ -19,20 +19,12 @@
                 <i class="material-icons md-light app-icon">settings</i>
                 <h5 class="app-name">{{ 'UI.PACKAGE_DRAWER.SETTINGS' | translate }}</h5>
             </a>
-            <a class="app-link" [routerLink]="['/skysmack/access-policies']">
-                <i class="material-icons md-light app-icon">security</i>
-                <h5 class="app-name">{{ 'ACCESS_POLICIES.DASHBOARD.ACCESS_POLICIES' | translate }}</h5>
-            </a>
-            <a class="app-link" [routerLink]="['/skysmack/packages']">
-                <i class="material-icons md-light app-icon">apps</i>
-                <h5 class="app-name">{{ 'UI.PACKAGE_DRAWER.PACKAGES' | translate }}</h5>
-            </a>
             <ng-container *ngFor="let loadedPackage of loadedPackages">
                 <ng-container *ngIf="loadedPackage.packageManifest">
                     <a class="app-link" *ngIf="loadedPackage.packageManifest.menuLocation === 'docker'"
                         [routerLink]="loadedPackage._package.path">
                         <i class="material-icons md-light app-icon">{{ loadedPackage.packageManifest.icon }}</i>
-                        <h5 class="app-name" [translate]="loadedPackage.packageManifest.translationString"></h5>
+                        <h5 class="app-name">{{ loadedPackage._package.name }}</h5>
                     </a>
                 </ng-container>
             </ng-container>

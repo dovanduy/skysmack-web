@@ -2,14 +2,12 @@ import { NgRedux } from '@angular-redux/store';
 import { HttpClient, HttpEvent } from '@angular/common/http';
 import { Injectable, Inject } from '@angular/core';
 import defaultQueue from '@redux-offline/redux-offline/lib/defaults/queue';
-import { Config, OfflineAction, OfflineState, AppState } from '@redux-offline/redux-offline/lib/types';
-import { createTransform } from 'redux-persist';
+import { Config, OfflineAction, OfflineState } from '@redux-offline/redux-offline/lib/types';
 import { Observable } from 'rxjs';
 import { share } from 'rxjs/operators';
 import { TOOGLE_HYDRATED } from './hydrated-reducer';
 import { HttpMethod, ApiDomain, HttpSuccessResponse, HttpErrorResponse } from '@skysmack/framework';
 import { Effect, RecordActionsBase, cancelRecordActionOutboxFilter, cancelFieldActionOutboxFilter, FieldActions } from '@skysmack/redux';
-import { PackagesActions, cancelPackageActionOutboxFilter } from '@skysmack/packages-skysmack-core';
 import * as localForage from 'localforage';
 
 // See https://github.com/redux-offline/redux-offline#configuration
@@ -24,7 +22,6 @@ export class ReduxOfflineConfiguration implements Config {
             if (action.meta.isCancelAction) {
                 switch (action.type) {
                     case action.payload.prefix + RecordActionsBase.CANCEL_RECORD_ACTION: return cancelRecordActionOutboxFilter(outbox, action);
-                    case PackagesActions.CANCEL_PACKAGE_ACTION: return cancelPackageActionOutboxFilter(outbox, action);
                     case FieldActions.CANCEL_FIELD_ACTION: return cancelFieldActionOutboxFilter(outbox, action);
                     default:
                         return [...outbox, action];

@@ -5,7 +5,7 @@ import { EntityComponentPageTitle } from '@skysmack/portal-ui';
 import { NgSkysmackStore } from '@skysmack/ng-core';
 import { LoginFieldsConfig } from './../../login-fields-config';
 import { NgSkysmackActions } from '@skysmack/ng-core';
-import { SubscriptionHandler } from '@skysmack/framework';
+import { SubscriptionHandler, Package } from '@skysmack/framework';
 import { AuthenticationActions } from '@skysmack/redux';
 import { filter } from 'rxjs/operators';
 import { Oauth2Requests } from '@skysmack/ng-packages';
@@ -43,6 +43,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   public success = false;
   public fields$: Observable<Field[]>;
   public subscriptionHandler = new SubscriptionHandler();
+  public accountPackages$: Observable<Package[]>;
 
   constructor(
     public componentPageTitle: EntityComponentPageTitle,
@@ -60,6 +61,8 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.clearLoginErrors();
     this.createForm();
     this.listenForErrors();
+
+    this.accountPackages$ = this.skysmackStore.getAccountPackages();
   }
 
   ngOnDestroy() {
