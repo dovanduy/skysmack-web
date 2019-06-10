@@ -1,4 +1,4 @@
-import { FIND, ADD, UPDATE, REMOVE, FIELDS } from '@skysmack/framework';
+import { FIND, ADD, UPDATE, REMOVE } from '@skysmack/framework';
 
 export class ReservationsPermissions {
     private reservations = 'Reservations';
