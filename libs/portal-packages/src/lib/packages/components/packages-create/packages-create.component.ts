@@ -28,7 +28,7 @@ export class PackagesCreateComponent extends RecordFormComponent<PackagesAppStat
 
   ngOnInit() {
     super.ngOnInit();
-    this.actions.getAvailablePackages();
+    this.actions.getAvailablePackages('packages');
     this.setCreateFields();
   }
 }

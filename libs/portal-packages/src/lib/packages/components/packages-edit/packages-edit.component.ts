@@ -27,7 +27,7 @@ export class PackagesEditComponent extends RecordFormComponent<PackagesAppState,
 
   ngOnInit() {
     super.ngOnInit();
-    this.actions.getAvailablePackages();
+    this.actions.getAvailablePackages('packages');
     this.setEditFields();
   }
 }

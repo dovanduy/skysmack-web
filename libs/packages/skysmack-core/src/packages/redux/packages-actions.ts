@@ -11,9 +11,10 @@ export class PackagesActions extends RecordActionsBase<PackagesAppState, Store<P
 
     constructor(protected store: Store<PackagesAppState>) { super(store, PACKAGES_REDUX_KEY, PACKAGES_ADDITIONAL_PATHS); }
 
-    public getAvailablePackages() {
-        this.store.dispatch(Object.assign({}, new ReduxAction({
-            type: PackagesActions.GET_AVAILABLE_PACKAGES
+    public getAvailablePackages(packagePath: string) {
+        this.store.dispatch(Object.assign({}, new ReduxAction<string>({
+            type: PackagesActions.GET_AVAILABLE_PACKAGES,
+            payload: packagePath
         })));
     }
 

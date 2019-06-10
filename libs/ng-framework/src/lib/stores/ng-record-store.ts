@@ -7,6 +7,9 @@ import { getPackageDendencyAsStream } from '../helpers/ng-helpers';
 import { NgSkysmackStore } from '@skysmack/ng-core';
 
 export abstract class NgRecordStore<TState, TRecord extends Record<TKey>, TKey> implements RecordStore<TRecord, TKey>  {
+
+    protected identifier = 'id';
+
     constructor(
         protected store: NgRedux<TState>,
         protected skysmackStore: NgSkysmackStore,
@@ -101,7 +104,7 @@ export abstract class NgRecordStore<TState, TRecord extends Record<TKey>, TKey> 
 
     protected getSingleRecord(packagePath: string, id: TKey): Observable<LocalObject<TRecord, TKey>> {
         return this.get(packagePath).pipe(
-            map(records => records.find(record => record.object.id.toString() === id.toString())),
+            map(records => records.find(record => record.object[this.identifier].toString() === id.toString())),
             hasValue()
         );
     }
