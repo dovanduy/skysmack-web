@@ -17,10 +17,6 @@ export const accountsRoutes: Routes = [
                 path: 'confirm-email', component: ConfirmEmailComponent
             },
             {
-                path: 'verify-email',
-                component: VerifyEmailComponent
-            },
-            {
                 path: 'forgot-password',
                 component: ForgotPasswordComponent
             },
@@ -36,7 +32,6 @@ export const accountsComponents: any[] = [
     AccountComponent,
     ChangePasswordComponent,
     ConfirmEmailComponent,
-    VerifyEmailComponent,
     ForgotPasswordComponent,
     RecoverPasswordComponent
 ];
