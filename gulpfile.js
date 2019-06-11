@@ -3,7 +3,6 @@ const gulp = require('gulp');
 const mergeJson = require('gulp-merge-json');
 const plumber = require('gulp-plumber');
 
-//#region LOCALIZATION
 const throwOnWrongPathsObject = (pathsObject) => {
     if (!pathsObject.project || !pathsObject.lib) {
         throw new Error('The paths object must define a project and lib property.')
@@ -39,22 +38,23 @@ const getLocalizationWatchersArray = (pathsObject) => {
         `!${pathsObject.project}/src/i18n/**/*.json`
     ];
 }
-//#endregion
 
-//#region WEB PROJECT
 const webPaths = {
     project: './apps/web/web-portal',
     lib: './libs'
 };
 const webLocalizationOutputPath = `${webPaths.project}/src/i18n`;
 
-// Translate once - keep this task name in sync with pack.json build script (currently 'gulp loc')
-const webLocalization = (done) => gulp.parallel(runLocalization(webPaths, 'en', webLocalizationOutputPath) /*, runLocalization(webPaths, 'fr', webLocalizationOutputPath) */ )(done);
-const webLocalizationWatch = () => gulp.watch(getLocalizationWatchersArray(webPaths), webLocalization);
+const webLocalization = (done) => gulp.parallel(runLocalization(webPaths, 'en', webLocalizationOutputPath) /*, runLocalization(webPaths, 'fr', webLocalizationOutputPath) */)(done);
+const webLocalizationWatch = (done) => gulp.watch(getLocalizationWatchersArray(webPaths), webLocalization)(done);
 gulp.task('webLocalization', webLocalization);
 gulp.task('webLocalizationWatch', webLocalizationWatch);
-//#endregion
 
 // DEFAULT
-const defaultTasks = (done) => gulp.series(() => { })(done);
-gulp.task('default', defaultTasks);
+function defaultTask(cb) {
+    console.log(`\nRUNNING DEFAULT TASK - NOTE: IT DOES NOTHING\n(Pssst. try 'gulp webLocalization or 'gulp webLocalizationWatch' instead\n`);
+    cb();
+}
+
+
+gulp.task('default', defaultTask);
