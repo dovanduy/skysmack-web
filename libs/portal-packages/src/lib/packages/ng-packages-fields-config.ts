@@ -73,6 +73,7 @@ export class NgPackagesFieldsConfig extends FieldsConfig<Package, string> {
                 label: 'path',
                 validators: [Validators.required, CustomValidators.minStringLength(3)],
                 order: 4,
+                disabled: _package ? true : false,
                 placeholder: 'Enter path',
                 showColumn: true
             }),
