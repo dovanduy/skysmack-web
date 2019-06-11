@@ -25,7 +25,7 @@ import { ForgotPasswordComponent } from './components/forgot-password/forgot-pas
 // import { NgxGraphModule } from '@swimlane/ngx-graph';
 // import { NgxChartsModule } from '@swimlane/ngx-charts';
 // NgxGraphModule,
-//   NgxChartsModule,
+// NgxChartsModule,
 
 const extraRoutes = [
   {

@@ -52,7 +52,7 @@ export class NgLodgingReservationsReservationsPricingsFieldProvider extends Fiel
                                             queryParameters = queryParameters.set('units', persons);
                                             queryParameters = queryParameters.set('start', checkIn);
                                             queryParameters = queryParameters.set('end', checkOut);
-                                            return this.httpClient.get<any>(`${this.apiDomain.domain}/${lodgingReservationPricingPackage.object.path}/types/prices/prices/${lodgingTypeId}`, { observe: 'response', params: queryParameters })
+                                            return this.httpClient.get<any>(`${this.apiDomain.domain}/${lodgingReservationPricingPackage.object.path}/types/prices/${lodgingTypeId}`, { observe: 'response', params: queryParameters })
                                                 .pipe(
                                                     map(httpResponse => {
                                                         const body: {
