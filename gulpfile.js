@@ -68,7 +68,7 @@ const webLocalization = (done) => {
 };
 
 const defaultTask = (done) => {
-    console.log(`\nRUNNING DEFAULT TASK - NOTE: IT DOES NOTHING\n(Pssst. try 'gulp webLocalization or 'gulp webLocalizationWatch' instead\n`);
+    console.log(`\nRUNNING gulp ALONE CURRENTLY DOES NOTHING!\n(Pssst. try 'gulp webLocalization' or 'gulp webLocalizationWatch' instead\n`);
     done();
 }
 
