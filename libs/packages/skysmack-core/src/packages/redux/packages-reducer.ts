@@ -1,5 +1,5 @@
-import { LocalObject, Package, toLocalObject, HttpErrorResponse, AvailablePackage, StrIndex, LocalObjectExtensions, GlobalProperties, Record, LocalPageTypes } from '@skysmack/framework';
-import { AppState, ReduxAction, GetAvailablePackagesSuccessPayload, sharedReducer, recordReducersBase, RecordState } from '@skysmack/redux';
+import { LocalObject, Package, toLocalObject, HttpErrorResponse, AvailablePackage, StrIndex, LocalObjectExtensions, GlobalProperties, LocalPageTypes, HttpResponse, HttpSuccessResponse } from '@skysmack/framework';
+import { AppState, ReduxAction, GetAvailablePackagesSuccessPayload, sharedReducer, recordReducersBase, RecordState, ReduxOfflineMeta, CommitMeta } from '@skysmack/redux';
 import { PackagesActions } from './packages-actions';
 import { PACKAGES_REDUCER_KEY, PACKAGES_REDUX_KEY } from '../constants';
 
@@ -36,6 +36,28 @@ export function packagesReducer(state = new PackagesState(), action: ReduxAction
             return newState;
         }
 
+        case PackagesActions.EDIT_PACKAGE_PATH: {
+            const castedAction = action as ReduxAction<unknown, ReduxOfflineMeta<LocalObject<Package, string>, HttpResponse, LocalObject<Package, string>>>;
+            const stateKey = castedAction.meta.offline.commit.meta.stateKey;
+            const _package = castedAction.meta.offline.commit.meta.value;
+            newState.localRecords[stateKey][_package.localId].object.path = _package.object.path;
+            return newState;
+        }
+        case PackagesActions.EDIT_PACKAGE_PATH_SUCCESS: {
+            const castedAction = action as ReduxAction<HttpSuccessResponse<string>, CommitMeta<LocalObject<Package, string>>>;
+            const body = castedAction.payload.body;
+            const stateKey = castedAction.meta.stateKey;
+            const _package = castedAction.meta.value;
+            newState.localRecords[stateKey][_package.localId].object.path = body;
+            return newState;
+        }
+        case PackagesActions.EDIT_PACKAGE_PATH_FAILURE: {
+            if (!GlobalProperties.production) {
+                console.log('Edit package path error', action);
+            }
+            return newState;
+        }
+
         default:
             return {
                 ...state,
@@ -43,4 +65,3 @@ export function packagesReducer(state = new PackagesState(), action: ReduxAction
             };
     }
 }
-

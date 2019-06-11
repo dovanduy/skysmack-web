@@ -9,7 +9,9 @@ export class PackagesActions extends RecordActionsBase<PackagesAppState, Store<P
     public static GET_AVAILABLE_PACKAGES_SUCCESS = 'GET_AVAILABLE_PACKAGES_SUCCESS';
     public static GET_AVAILABLE_PACKAGES_FAILURE = 'GET_AVAILABLE_PACKAGES_FAILURE';
 
-    public static EDIT_PACKAGE_PATH
+    public static EDIT_PACKAGE_PATH = 'EDIT_PACKAGE_PATH';
+    public static EDIT_PACKAGE_PATH_SUCCESS = 'EDIT_PACKAGE_PATH_SUCCESS';
+    public static EDIT_PACKAGE_PATH_FAILURE = 'EDIT_PACKAGE_PATH_FAILURE';
 
     protected identifier = 'path';
 
@@ -26,34 +28,34 @@ export class PackagesActions extends RecordActionsBase<PackagesAppState, Store<P
         const queueItems = [new QueueItem({
             message: `PACKAGES.EDITING_PATH`,
             messageParams: { path: _package.object.path } as any,
-            link: `${this.addAdditionalPaths(packagePath)}/edit/path`,
+            link: `${packagePath}/edit/path`,
             packagePath,
             localObject: _package,
             cancelAction: this.cancelAction
         })];
 
-        this.store.dispatch(Object.assign({}, new ReduxAction<any, ReduxOfflineMeta<string, HttpResponse, string>>({
+        this.store.dispatch(Object.assign({}, new ReduxAction<any, ReduxOfflineMeta<LocalObject<Package, string>, HttpResponse, LocalObject<Package, string>>>({
             type: this.prefix + PackagesActions.EDIT_PACKAGE_PATH,
             meta: new ReduxOfflineMeta(
-                new OfflineMeta<string, HttpResponse, string>(
-                    new Effect<string>(new EffectRequest<string>(
-                        this.addAdditionalPaths(packagePath),
+                new OfflineMeta<LocalObject<Package, string>, HttpResponse, LocalObject<Package, string>>(
+                    new Effect<LocalObject<Package, string>>(new EffectRequest<LocalObject<Package, string>>(
+                        `${packagePath}/edit-path`,
                         HttpMethod.PUT,
-                        _package.object.path
+                        _package
                     )),
-                    new ReduxAction<any, CommitMeta<string>>({
-                        type: this.prefix + RecordActionsBase.ADD_SUCCESS,
+                    new ReduxAction<any, CommitMeta<LocalObject<Package, string>>>({
+                        type: PackagesActions.EDIT_PACKAGE_PATH_SUCCESS,
                         meta: {
                             stateKey: packagePath,
-                            value: _package.object.path,
+                            value: _package,
                             queueItems
                         }
                     }),
-                    new ReduxAction<any, RollbackMeta<string>>({
-                        type: this.prefix + RecordActionsBase.ADD_FAILURE,
+                    new ReduxAction<any, RollbackMeta<LocalObject<Package, string>>>({
+                        type: PackagesActions.EDIT_PACKAGE_PATH_FAILURE,
                         meta: {
                             stateKey: packagePath,
-                            value: _package.object.path,
+                            value: _package,
                             queueItems
                         }
                     })
