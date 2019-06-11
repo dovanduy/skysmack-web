@@ -15,11 +15,20 @@ const reinstantiateLocalRecord = (localRecord: LocalObject<any, any>) => {
     );
 }
 
+const loopPackageDictionary = (newState: any, selector: string) => {
+    Object.keys(newState[selector]).map(packagePath => {
+        const localRecords: StrIndex<LocalObject<any, any>> = newState[selector][packagePath];
+        Object.keys(localRecords).forEach(localRecordKey => {
+            localRecords[localRecordKey] = reinstantiateLocalRecord(localRecords[localRecordKey]);
+        });
+    });
+}
+
 export function sharedReducer(state: any, action: any, initialState: any, reduxArea: string, stateKeysContainingLocalObjects: string[] = ['localRecords']): any {
     state = Object.freeze(state);
 
     switch (action.type) {
-        case REHYDRATE: { // Reinstantiate localRecords so their functions gets defined again.
+        case REHYDRATE: { // Reinstantiate localRecords so their functions get defined again.
             const newState = { ...action.payload[reduxArea] };
 
             const localObjectsToReinstantiate = Object.keys(newState).map(key => {
@@ -29,14 +38,11 @@ export function sharedReducer(state: any, action: any, initialState: any, reduxA
             if (newState && localObjectsToReinstantiate.length > 0) {
                 localObjectsToReinstantiate.map(propName => {
                     if (propName === 'localRecords') {
-                        Object.keys(newState.localRecords).map(packagePath => {
-                            const localRecords: StrIndex<LocalObject<any, any>> = newState.localRecords[packagePath];
-                            Object.keys(localRecords).map(localRecordKey => {
-                                localRecords[localRecordKey] = reinstantiateLocalRecord(localRecords[localRecordKey])
-                            });
-                        });
+                        loopPackageDictionary(newState, 'localRecords');
+                    } else if (propName === 'availablePackages') {
+                        loopPackageDictionary(newState, 'availablePackages');
                     } else {
-                        Object.keys(newState[propName]).map(localRecordKey => {
+                        Object.keys(newState[propName]).forEach(localRecordKey => {
                             newState[propName][localRecordKey] = reinstantiateLocalRecord(newState[propName][localRecordKey])
                         });
                     }
@@ -53,4 +59,6 @@ export function sharedReducer(state: any, action: any, initialState: any, reduxA
         default:
             return state;
     }
+
+
 }
