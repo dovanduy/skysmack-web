@@ -2183,6 +2183,7 @@
 		"ADDING": "Tilføjer {{ name }}",
 		"UPDATING": "Opdatere {{ name }}",
 		"DELETING": "Sletter {{ name }}",
+		"EDITING_PATH": "Retter sti",
 		"ERROR": "Der opstod  en fejl ved {{ name }}. Ret og prøv igen.",
 		"FORM": {
 			"LABELS": {
@@ -2195,7 +2196,9 @@
 				"TYPE": "Vælg en pakke type",
 				"NAME": "Indtast et navn",
 				"DESCRIPTION": "Indtast en beskrivelse",
-				"PATH": "Indtast en sti"
+				"PATH": "Indtast en sti",
+				"NEWPATH": "Ny sti",
+				"CURRENTPATH": "Nuværende sti"
 			},
 			"VALIDATION": {
 				"TYPE": {
@@ -2229,7 +2232,8 @@
 			"BUTTON_CREATE": "Opret"
 		},
 		"EDIT": {
-			"EDITING": "Ret {{ object.name }} pakke",
+			"EDIT": "Ret pakke",
+			"PACKAGE_PATH": "Ret pakke sti",
 			"BUTTON_EDIT": "Opdater"
 		}
 	},

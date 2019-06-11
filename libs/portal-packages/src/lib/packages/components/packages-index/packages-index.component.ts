@@ -18,6 +18,7 @@ export class PackagesIndexComponent extends RecordIndexComponent<PackagesAppStat
   public areaKey: string = PACKAGES_AREA_KEY;
   public entityActions: EntityAction[] = [
     new EntityAction().asUrlAction('edit', ENTITY_ACTIONS_EDIT, 'edit'),
+    new EntityAction().asUrlAction('edit/path', 'PACKAGES.EDIT.PACKAGE_PATH', 'link'),
     new EntityAction().asEventAction(ENTITY_ACTIONS_DELETE, this.delete, 'delete', this)
   ];
 
