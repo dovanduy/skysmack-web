@@ -1,8 +1,13 @@
-// DEPENDENCIES
+// ============
+// Dependencies
+// ============
 const gulp = require('gulp');
 const mergeJson = require('gulp-merge-json');
 const plumber = require('gulp-plumber');
 
+// ============================
+// Localization reusable logic
+// ============================
 const throwOnWrongPathsObject = (pathsObject) => {
     if (!pathsObject.project || !pathsObject.lib) {
         throw new Error('The paths object must define a project and lib property.')
@@ -39,22 +44,37 @@ const getLocalizationWatchersArray = (pathsObject) => {
     ];
 }
 
+// ============================
+// Localization for Web project
+// ============================
 const webPaths = {
     project: './apps/web/web-portal',
     lib: './libs'
 };
 const webLocalizationOutputPath = `${webPaths.project}/src/i18n`;
 
-const webLocalization = (done) => gulp.parallel(runLocalization(webPaths, 'en', webLocalizationOutputPath) /*, runLocalization(webPaths, 'fr', webLocalizationOutputPath) */)(done);
-const webLocalizationWatch = (done) => gulp.watch(getLocalizationWatchersArray(webPaths), webLocalization)(done);
-gulp.task('webLocalization', webLocalization);
-gulp.task('webLocalizationWatch', webLocalizationWatch);
 
-// DEFAULT
-function defaultTask(cb) {
+// =================
+// Define gulp tasks
+// =================
+const webLocalizationWatch = (done) => {
+    gulp.watch(getLocalizationWatchersArray(webPaths), webLocalization);
+    done();
+};
+
+const webLocalization = (done) => {
+    gulp.parallel(runLocalization(webPaths, 'en', webLocalizationOutputPath)); // Remember: Multiple runLocalization() functions can be used in parallel
+    done();
+};
+
+const defaultTask = (done) => {
     console.log(`\nRUNNING DEFAULT TASK - NOTE: IT DOES NOTHING\n(Pssst. try 'gulp webLocalization or 'gulp webLocalizationWatch' instead\n`);
-    cb();
+    done();
 }
 
-
+// ===================
+// Register gulp tasks
+// ===================
+gulp.task('webLocalizationWatch', webLocalizationWatch);
+gulp.task('webLocalization', webLocalization);
 gulp.task('default', defaultTask);
