@@ -3,7 +3,7 @@
 
   <!-- ACCESS -->
   <mat-form-field>
-    <mat-select placeholder="Set access" [(value)]="selectedAccessType">
+    <mat-select [placeholder]="'UI.PERMISSION.SET_ACCESS' | translate" [(value)]="selectedAccessType">
       <mat-option *ngFor="let opt of accessTypes" [value]="opt.value">{{opt.displayName}}</mat-option>
     </mat-select>
   </mat-form-field>

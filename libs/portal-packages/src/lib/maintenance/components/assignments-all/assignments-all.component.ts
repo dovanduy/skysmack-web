@@ -24,6 +24,6 @@ export class AssignmentsAllIndexComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.title.setTitle('Assignments All');
+    this.title.setTitle('MAINTENANCE.ASSIGNMENT_ALL.TITLE');
   }
 }

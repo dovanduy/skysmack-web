@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { NgSkysmackStore } from '@skysmack/ng-core';
 import { Observable } from 'rxjs';
-import { QueueItem, LocalObjectStatus } from '@skysmack/framework';
+import { QueueItem, LocalObjectStatus, OfflineState } from '@skysmack/framework';
 import { Router } from '@angular/router';
 import { NgRedux } from '@angular-redux/store';
 import { QueuesAppState, QueueActions } from '@skysmack/redux';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'ss-queue',
@@ -15,6 +15,8 @@ import { map } from 'rxjs/operators';
 export class QueueComponent implements OnInit {
 
   public queue$: Observable<QueueItem[]>;
+  public retrySchedule$: Observable<boolean>;
+  public offline$: Observable<OfflineState>;
 
   constructor(
     public skysmackStore: NgSkysmackStore,
@@ -26,6 +28,7 @@ export class QueueComponent implements OnInit {
     this.queue$ = this.ngRedux.select((state: QueuesAppState) => state.queue).pipe(
       map(queue => queue.items)
     );
+    this.offline$ = this.skysmackStore.getOffline();
   }
 
   public toEditor(queueItem: QueueItem) {

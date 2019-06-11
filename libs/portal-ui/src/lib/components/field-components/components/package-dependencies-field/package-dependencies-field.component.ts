@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FieldBaseComponent } from '../field-base-component';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 import { combineLatest, Observable } from 'rxjs';
 import { NgPackagesStore } from '@skysmack/ng-core';
 import { flatten, notNull, AvailablePackage, LocalObject } from '@skysmack/framework';
 import { Field } from '@skysmack/ng-ui';
+import { Router } from '@angular/router';
 
 class SelectBox {
   index: number;
@@ -33,12 +34,16 @@ export class PackageDependenciesFieldComponent extends FieldBaseComponent<Field>
   public showBoxes = false;
   public nrOfRequiredDependencies: number;
 
+  private packagePath: string;
+
   constructor(
-    public packagesStore: NgPackagesStore
+    public packagesStore: NgPackagesStore,
+    public router: Router
   ) { super(); }
 
   ngOnInit() {
     super.ngOnInit();
+    this.packagePath = this.router.url.split('/')[1];
     this.createSelectBoxes();
   }
 
@@ -56,7 +61,7 @@ export class PackageDependenciesFieldComponent extends FieldBaseComponent<Field>
       notNull(),
     );
 
-    const availablePackages$ = this.packagesStore.getAvailablePackages();
+    const availablePackages$ = this.packagesStore.getAvailablePackages(this.packagePath);
 
     const dependencies$ = combineLatest(
       selectedPackageType$,
@@ -78,17 +83,14 @@ export class PackageDependenciesFieldComponent extends FieldBaseComponent<Field>
 
     this.selectBoxes$ = combineLatest(
       dependencies$,
-      this.packagesStore.get(),
+      this.packagesStore.get(this.packagePath),
       availablePackages$
     ).pipe(
       map(values => {
         const [dependencies, installedPackages, availablePackages] = values;
 
-        // Set select field to invalid if number of selected dependencies doesn't match the required number.
         this.nrOfRequiredDependencies = (dependencies as string[]).length;
-        if (this.nrOfRequiredDependencies !== this.getFieldValue()) {
-          this.setOtherFieldErrors('type', { depsMissing: true });
-        }
+        this.checkDependenciesAreSet();
 
         let index = 0;
         // Only run this when setting NEW dependencies, not when valus are set...
@@ -120,9 +122,18 @@ export class PackageDependenciesFieldComponent extends FieldBaseComponent<Field>
     deps[selectBox.index] = selectedDepType;
 
     this.setOtherFieldValue('dependencies', deps);
+    this.checkDependenciesAreSet();
+  }
 
-    // Remove errors if nr. of selected deps matches the needed amount.
-    if (this.nrOfRequiredDependencies === this.getFieldValue().length) {
+  public checkDependenciesAreSet() {
+    const currentValue = this.getFieldValue();
+    const currentValueAsNumber = Array.isArray(currentValue) ? currentValue.length : 0;
+
+    if (this.nrOfRequiredDependencies !== currentValueAsNumber) {
+      // Not all required deps have been selected. Set error.
+      this.setOtherFieldErrors('type', { depsMissing: true });
+    } else {
+      // The required number of deps have been selected. Remove error.
       this.setOtherFieldErrors('type', null);
     }
   }

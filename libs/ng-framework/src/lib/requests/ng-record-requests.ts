@@ -9,6 +9,7 @@ import { of } from 'rxjs';
 
 export abstract class NgRecordRequests<TRecord extends Record<TKey>, TKey> implements RecordRequests<TRecord, TKey> {
     protected retryTimes = 3;
+    protected identifier = 'id';
 
     constructor(
         protected http: HttpClient,
@@ -21,7 +22,6 @@ export abstract class NgRecordRequests<TRecord extends Record<TKey>, TKey> imple
         let queryParameters = new HttpParams({ encoder: new CustomHttpUrlEncodingCodec() });
         let query = '';
         let sort = '';
-
         if (action.payload.pagedQuery.rsqlFilter) {
             query = action.payload.pagedQuery.rsqlFilter.toList().build();
             if (query && query.length > 0) {
@@ -55,7 +55,7 @@ export abstract class NgRecordRequests<TRecord extends Record<TKey>, TKey> imple
                         payload: {
                             entities: httpResponse.body ? httpResponse.body : [],
                             packagePath: action.payload.packagePath,
-                            page: PageResponseExtensions.getPageResponse<TKey>(httpResponse.headers, httpResponse.body.map(record => record.id), query, sort),
+                            page: PageResponseExtensions.getPageResponse<TKey>(httpResponse.headers, httpResponse.body.map(record => record[this.identifier]), query, sort),
                             pagedQuery: action.payload.pagedQuery
                         }
                     }));

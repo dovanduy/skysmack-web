@@ -1,49 +1,27 @@
 import { Injectable } from '@angular/core';
-import { PackagesAppState, PackagesState } from '@skysmack/packages-skysmack-core';
+import { PACKAGES_REDUCER_KEY, PackagesState } from '@skysmack/packages-skysmack-core';
 import { NgRedux } from '@angular-redux/store';
 import { Observable } from 'rxjs';
-import { LocalObject, Package, safeUndefinedTo, AvailablePackage, dictionaryToArray, hasValue, log, StrIndex, LocalPageTypes } from '@skysmack/framework';
-import { map } from 'rxjs/operators';
-import { EntityStore } from '@skysmack/redux';
+import { LocalObject, Package, safeUndefinedTo, AvailablePackage, dictionaryToArray, log } from '@skysmack/framework';
+import { map, tap } from 'rxjs/operators';
+import { NgRecordStore } from '@skysmack/ng-framework';
+import { NgSkysmackStore } from '../../skysmack/redux/ng-skysmack-store';
 
 @Injectable({ providedIn: 'root' })
-export class NgPackagesStore implements EntityStore<Package, string> {
+export class NgPackagesStore extends NgRecordStore<PackagesState, Package, string> {
+
+    protected identifier = 'path';
 
     constructor(
-        protected store: NgRedux<PackagesAppState>,
-    ) { }
+        protected ngRedux: NgRedux<PackagesState>,
+        protected skysmackStore: NgSkysmackStore
+    ) { super(ngRedux, skysmackStore, PACKAGES_REDUCER_KEY); }
 
-    public get(): Observable<LocalObject<Package, string>[]> {
-        return this.getState().pipe(
-            map(state => state.packages),
-            safeUndefinedTo('object'),
-            dictionaryToArray<LocalObject<Package, string>>()
-        );
-    }
-
-    public getSingle(path: string): Observable<LocalObject<Package, string>> {
-        return this.get().pipe(
-            map(packages => packages.find(_package => _package.object.path === path)),
-            hasValue()
-        );
-    }
-
-    public getPages(): Observable<StrIndex<LocalPageTypes<string>>> {
-        return this.getState().pipe(
-            map(state => state.localPageTypes),
-            hasValue<StrIndex<LocalPageTypes<string>>>()
-        );
-    }
-
-    public getAvailablePackages(): Observable<LocalObject<AvailablePackage, string>[]> {
-        return this.getState().pipe(
-            map(state => state.availablePackages),
+    public getAvailablePackages(packagePath: string): Observable<LocalObject<AvailablePackage, string>[]> {
+        return this.getState<PackagesState>().pipe(
+            map(state => state.availablePackages[packagePath]),
             safeUndefinedTo('object'),
             dictionaryToArray(),
         );
-    }
-
-    protected getState(): Observable<PackagesState> {
-        return this.store.select(state => state.packages);
     }
 }

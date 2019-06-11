@@ -1,6 +1,6 @@
 <mat-form-field>
   <mat-select [(value)]="value" (selectionChange)="selectionChanged($event)" *ngIf="selectType === 'multiple'"
-    placeholder="Select roles" multiple>
+    [placeholder]="'UI.ROLE_SELECT.SELECT_ROLES' | translate" multiple>
     <ng-container *ngFor="let iRoles of identityRoles">
       <mat-optgroup [label]="iRoles.name + ' roles'">
         <mat-option *ngFor="let role of iRoles.roles | async" [value]="role.object.id">
@@ -10,7 +10,7 @@
     </ng-container>
   </mat-select>
   <mat-select [(value)]="value" (selectionChange)="selectionChanged($event)" *ngIf="selectType === 'single'"
-    placeholder="Select role">
+    [placeholder]="'UI.ROLE_SELECT.SELECT_ROLE' | translate">
     <ng-container *ngFor="let iRoles of identityRoles">
       <mat-optgroup [label]="iRoles.name + ' roles'">
         <mat-option *ngFor="let role of iRoles.roles | async" [value]="role.object.id">

@@ -19,47 +19,25 @@ import { environment } from './../../environments/environment';
 import { GlobalProperties } from '@skysmack/framework';
 import { NgFieldEpics, registerRedux, NgSettingsEpics } from '@skysmack/ng-framework';
 import { fieldReducer, settingsReducer } from '@skysmack/redux';
-import { RecoverPasswordComponent } from './components/recover-password/recover-password.component';
-import { VerifyEmailComponent } from './components/verify-email/verify-email.component';
-import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 // import { NgxGraphModule } from '@swimlane/ngx-graph';
 // import { NgxChartsModule } from '@swimlane/ngx-charts';
 // NgxGraphModule,
-//   NgxChartsModule,
-
-const extraRoutes = [
-  {
-    path: 'skysmack/verify-email',
-    component: VerifyEmailComponent
-  },
-  {
-    path: 'skysmack/forgot-password',
-    component: ForgotPasswordComponent
-  },
-  {
-    path: 'skysmack/recover-password',
-    component: RecoverPasswordComponent
-  }
-];
+// NgxChartsModule,
 
 @NgModule({
   declarations: [
     StartComponent,
     FrontPageComponent,
-    FallBackComponent,
-    RecoverPasswordComponent,
-    ForgotPasswordComponent,
-    VerifyEmailComponent,
+    FallBackComponent
   ],
   imports: [
     RouterModule.forRoot([
-      ...extraRoutes,
       {
-        path: 'skysmack/packages',
+        path: 'skysmack/loadPackages/packages',
         loadChildren: () => import('./../packages/modules/packages_wrapper.module').then(m => m.PackagesWrapperModule)
       },
       {
-        path: 'skysmack/access-policies',
+        path: 'skysmack/loadPackages/access-policies',
         loadChildren: () => import('./../packages/modules/access_policies_wrapper.module').then(m => m.AccessPoliciesWrapperModule)
       },
       {

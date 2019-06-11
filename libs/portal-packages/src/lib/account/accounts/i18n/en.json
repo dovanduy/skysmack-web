@@ -25,11 +25,14 @@
             }
         },
         "CHANGE_PASSWORD": {
-            "TITLE": "Change password"
+            "TITLE": "Change password",
+            "BUTTON_EDIT": "Update"
         },
         "INDEX": {
             "ACTIONS": "Actions",
-            "CHANGE_PASSWORD": "Change password"
+            "CHANGE_PASSWORD": "Change password",
+            "FORGOT_PASSWORD": "Forgot password",
+            "CONFIRM_EMAIL": "Confirm email"
         },
         "NOTIFICATIONS": {},
         "QUEUE": {}

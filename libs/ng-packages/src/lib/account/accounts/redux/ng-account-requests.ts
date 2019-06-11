@@ -1,7 +1,7 @@
 import { Injectable, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ApiDomain, API_DOMAIN_INJECTOR_TOKEN, HttpResponse, HttpErrorResponse } from '@skysmack/framework';
-import { AccountRequests, ChangePassword } from '@skysmack/packages-account';
+import { AccountRequests, ChangePassword, ConfirmEmail } from '@skysmack/packages-account';
 import { Observable, of } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 
@@ -16,6 +16,16 @@ export class NgAccountRequests implements AccountRequests {
     public changePassword(packagePath: string, changePassword: ChangePassword): Observable<HttpResponse | HttpErrorResponse> {
         const url = `${this.apiDomain.domain}/${packagePath}/change-password`;
         return this.http.put<any>(url, changePassword, { observe: 'response' }).pipe(
+            map((response) => {
+                return response as any;
+            }),
+            catchError(error => of(error))
+        );
+    }
+
+    public confirmEmail(packagePath: string, confirmEmail: ConfirmEmail): Observable<HttpResponse | HttpErrorResponse> {
+        const url = `${this.apiDomain.domain}/${packagePath}/confirm-email`;
+        return this.http.put<any>(url, confirmEmail, { observe: 'response' }).pipe(
             map((response) => {
                 return response as any;
             }),

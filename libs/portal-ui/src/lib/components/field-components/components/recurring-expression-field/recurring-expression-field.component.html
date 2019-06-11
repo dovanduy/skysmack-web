@@ -1,5 +1,5 @@
 <!-- TOGGLE RECURRING EXPRESSION -->
-<mat-slide-toggle (click)="toggleRepeat()">Toggle repeat</mat-slide-toggle>
+<mat-slide-toggle (click)="toggleRepeat()">{{ 'UI.RECURRING_EXPRESSION.TOGGLE' | translate }}</mat-slide-toggle>
 
 <ng-container [ngSwitch]="showRecurringExpression">
   <ng-container *ngSwitchCase="true">
@@ -7,7 +7,7 @@
     <ng-container [ngSwitch]="showCustom">
 
       <!-- TOGGLE CUSTOM EXPRESSION -->
-      <mat-slide-toggle (click)="toggleCustom()">Advanced</mat-slide-toggle>
+      <mat-slide-toggle (click)="toggleCustom()">{{ 'UI.RECURRING_EXPRESSION.TOGGLE' | translate }}</mat-slide-toggle>
 
       <ng-container *ngSwitchCase="false">
         <!-- TIME -->

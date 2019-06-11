@@ -7,8 +7,8 @@ export abstract class RecordNotifications<TRecord, TKey> {
 
     protected GET_PAGED_ERROR = 'GET.PAGED_ERROR';
     protected GET_SINGLE_FAILURE = 'GET.SINGLE_FAILURE';
-    protected ADD_SUCCESS = 'GETADD_SUCCESS';
-    protected ADD_FAILURE = 'GET.ADD_FAILURE';
+    protected ADD_SUCCESS = 'ADD.SUCCESS';
+    protected ADD_FAILURE = 'ADD.FAILURE';
     protected UPDATE_SUCCESS = 'UPDATE.SUCCESS';
     protected UPDATE_FAILURE = 'UPDATE.FAILURE';
     protected REMOVE_SUCCESS = 'REMOVE.SUCCESS';

@@ -13,7 +13,7 @@
   <!-- Validator(s) "form" -->
   <ng-container *ngIf="currentValidator">
     <mat-form-field>
-      <mat-select placeholder="Please select a validator" [(value)]="selectedValidatorType">
+      <mat-select [placeholder]="'UI.SELECT_VALIDATOR'" [(value)]="selectedValidatorType">
         <mat-option *ngFor="let opt of availableValidators" [value]="opt.name" (click)="removeParameters()">{{opt.name}}
         </mat-option>
       </mat-select>
@@ -31,8 +31,7 @@
 
   <!-- Add validator -->
   <button *ngIf="!currentValidator && availableValidators.length > 0" mat-raised-button color="primary" type="button"
-    (click)="addValidator()">+ Add
-    validator</button>
+    (click)="addValidator()" >{{ 'UI.BUTTONS.BUTTON_VALIDATOR' | translate }}</button>
 
   <!-- Backend errors -->
   <ng-container *ngIf="field && field.errors">

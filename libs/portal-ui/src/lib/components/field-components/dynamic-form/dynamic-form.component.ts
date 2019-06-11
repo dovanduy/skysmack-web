@@ -5,7 +5,7 @@ import { Field, FormRule, FormHelper, Validation } from '@skysmack/ng-ui';
 import { EditorNavService } from './../../common/container/editor-nav.service';
 import { GlobalProperties, SubscriptionHandler, LocalObject, StrIndex } from '@skysmack/framework';
 import { NgSkysmackStore } from '@skysmack/ng-core';
-import { map } from 'rxjs/operators';
+import { map, take, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'ss-dynamic-form',
@@ -89,7 +89,12 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
   }
 
   public onSubmit() {
-    this.submitted.emit(this.fh);
+    this.fields$.pipe(
+      take(1),
+      // Remove all fields not to be included in the request.
+      map(fields => fields.map(field => field.includeInRequest ? field : this.fh.form.removeControl(field.key))),
+      map(() => this.submitted.emit(this.fh))
+    ).subscribe()
   }
 
   /**

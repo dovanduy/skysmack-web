@@ -14,7 +14,7 @@ export class AccessPoliciesDashboardComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.componentPageTitle.setTitle('Access Policies');
+    this.componentPageTitle.setTitle('ACCESS_POLICIES.TITLE');
   }
 
 }

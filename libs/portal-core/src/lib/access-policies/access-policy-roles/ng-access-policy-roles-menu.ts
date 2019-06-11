@@ -42,17 +42,18 @@ export class NgAccessPolicyRolesMenu extends SidebarMenu {
             order: 1,
             icon: 'groupAdd',
         }));
-        this.setBackButton({ customPath: '/skysmack/access-policies' });
+        this.setBackButton({ customPath: '/access-policies' });
     }
 
     public setSpeedDialMenu() {
         this.speedDialMenu = [
-            new MenuItem({url: 'create',
-            displayName: this.translationPrefix + 'CREATE',
-            area: undefined,
-            order: 1,
-            icon: 'add',
-        }),
+            new MenuItem({
+                url: 'create',
+                displayName: this.translationPrefix + 'CREATE',
+                area: undefined,
+                order: 1,
+                icon: 'add',
+            }),
         ];
     }
 }

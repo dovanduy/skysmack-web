@@ -1,5 +1,8 @@
 {
     "LODGING_RESERVATIONS": {
+        "ARRIVALS": "Arrivals",
+        "DEPARTURES": "Departures",
+        "STAYS": "Stays",        
         "FORM": {
             "LABELS": {
                 "LODGINGTYPEID": "Lodging type",
@@ -36,10 +39,12 @@
             }
         },
         "CREATE": {
-            "CREATE": "Create"
+            "CREATE": "Create",
+            "BUTTON_CREATE": "Create"
         },
         "EDIT": {
-            "EDIT": "Edit"
+            "EDIT": "Edit",
+            "BUTTON_EDIT": "Update"
         },
         "INDEX": {
             "CREATE": "Create",

@@ -1,10 +1,12 @@
 {
     "ROLES": {
         "CREATE": {
-            "CREATE_ROLE": "Create new role"
+            "CREATE_ROLE": "Create new role",
+            "BUTTON_CREATE": "Create"
         },
         "EDIT": {
-            "EDITING": "Edit {{ name }}"
+            "EDITING": "Edit {{ name }}",
+            "BUTTON_EDIT": "Update"
         },
         "INDEX": {
             "ACTIONS": "Actions",

@@ -5,40 +5,47 @@
     </button>
     <mat-menu overlapTrigger="false" #queueMenu="matMenu">
       <ng-container *ngIf="queue.length > 0">
-        <ng-container *ngFor="let item of queue$ | async">
-          <div class="queue-item" [attr.data-status]="item.localObject.status" [attr.data-error]="item.localObject.error">
+        <ng-container *ngFor="let item of queue; let index = index">
+          <div class="queue-item" [attr.data-status]="item.localObject.status"
+            [attr.data-error]="item.localObject.error">
             <div class="error-message">
               {{ item.message | translate:item.messageParams }}
             </div>
-            <div class="action-buttons">
-              <!-- PROCESSING -->
-              <ng-container *ngIf="!item.localObject.error">
+            <ng-container *ngIf="offline$ | async as offline">
+              <div class="action-buttons">
+                <!-- PROCESSING -->
+                <ng-container *ngIf="!item.localObject.error && offline.retryScheduled && index === 0">
                   <mat-icon>cloud_upload</mat-icon>
-              </ng-container>
+                </ng-container>
 
-              <!-- ERROR -->
-              <ng-container *ngIf="item.localObject.error && !item.deleteAction">
-                <button mat-icon-button (click)="toEditor(item)">
-                  <mat-icon>sync</mat-icon>
-                </button>
-              </ng-container>
+                <!-- ERROR -->
+                <ng-container
+                  *ngIf="item.localObject.error && !item.deleteAction || !offline.retryScheduled || index !== 0">
+                  <button mat-icon-button (click)="toEditor(item)">
+                    <mat-icon>sync</mat-icon>
+                  </button>
+                </ng-container>
 
-              <!-- DELETE ERROR -->
-              <ng-container *ngIf="item.localObject.error && item.deleteAction">
-                <button mat-icon-button (click)="retryDelete(item)">
-                  <mat-icon>sync</mat-icon>
-                </button>
-              </ng-container>
+                <!-- DELETE ERROR -->
+                <ng-container *ngIf="item.localObject.error && item.deleteAction">
+                  <ng-container *ngIf="!offline.retryScheduled || index !== 0">
+                    <button mat-icon-button (click)="retryDelete(item)">
+                      <mat-icon>sync</mat-icon>
+                    </button>
+                  </ng-container>
+                </ng-container>
 
-              <!-- CANCEL -->
-              <ng-container *ngIf="item.localObject.error">
-                <button mat-icon-button (click)="item.cancelAction(item.localObject, item.packagePath)">
-                  <mat-icon>undo</mat-icon>
-                </button>
-              </ng-container>
-            </div>
+                <!-- CANCEL -->
+                <ng-container *ngIf="item.localObject.error || !offline.retryScheduled || index !== 0">
+                  <button mat-icon-button (click)="item.cancelAction(item.localObject, item.packagePath)">
+                    <mat-icon>undo</mat-icon>
+                  </button>
+                </ng-container>
+              </div>
+            </ng-container>
           </div>
-          <mat-progress-bar [mode]="item.localObject.error ? 'determinate' : 'indeterminate'"></mat-progress-bar>
+          <mat-progress-bar *ngIf="index === 0" [mode]="item.localObject.error ? 'determinate' : 'indeterminate'">
+          </mat-progress-bar>
         </ng-container>
       </ng-container>
     </mat-menu>
