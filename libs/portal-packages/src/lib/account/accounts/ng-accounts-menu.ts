@@ -37,9 +37,9 @@ export class NgAccountsMenu extends SidebarMenu {
             area: 'actions',
             order: 1,
             icon: 'groupAdd',
-            permissions: [ 'changePassword' ]
+            permissions: ['changePassword']
         }));
-        
+
         this.primaryMenuItems.push(new MenuItem({
             url: 'forgot-password',
             displayName: this.translationPrefix + 'FORGOT_PASSWORD',
