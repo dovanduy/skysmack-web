@@ -5,7 +5,6 @@ export class PersonsPackageManifest extends PersonsType implements PackageManife
     public icon = 'face';
     public menuLocation = 'main';
     public modulePath = () => import('@skysmack/portal-packages').then(m => m.PersonsModule);
-    // public modulePath = './../packages/modules/persons_wrapper.module#PersonsWrapperModule';
 }
 
 export function loadPersonPackage(packageLoader: PackageLoader) {
