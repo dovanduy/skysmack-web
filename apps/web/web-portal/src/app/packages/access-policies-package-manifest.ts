@@ -4,7 +4,7 @@ import { PackagesType, AccessPoliciesType } from '@skysmack/ng-core';
 export class AccessPoliciesPackageManifest extends AccessPoliciesType implements PackageManifest {
     public icon = 'security';
     public menuLocation = 'docker';
-    public modulePath = './../packages/modules/access_policies_wrapper.module#AccessPoliciesWrapperModule';
+    public modulePath = () => import('@skysmack/portal-core').then(m => m.AccessPoliciesModule);
 }
 
 export function loadAccessPoliciesPackage(packageLoader: PackageLoader) {

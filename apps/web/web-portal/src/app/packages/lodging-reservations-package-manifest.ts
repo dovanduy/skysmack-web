@@ -4,7 +4,7 @@ import { PackageLoader, PackageManifest } from '@skysmack/ng-framework';
 export class LodgingReservationsPackageManifest extends LodgingReservationsType implements PackageManifest {
     public icon = 'style';
     public menuLocation = '';
-    public modulePath = './../packages/modules/lodging_reservations_wrapper.module#LodgingReservationsWrapperModule';
+    public modulePath = () => import('@skysmack/portal-packages').then(m => m.LodgingReservationsModule);
 }
 
 export function loadLodgingReservationPackage(packageLoader: PackageLoader) {

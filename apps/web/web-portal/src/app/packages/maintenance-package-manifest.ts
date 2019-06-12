@@ -4,7 +4,7 @@ import { PackageLoader, PackageManifest } from '@skysmack/ng-framework';
 export class MaintenancePackageManifest extends MaintenanceType implements PackageManifest {
     public icon = 'build';
     public menuLocation = 'main';
-    public modulePath = './../packages/modules/maintenance_wrapper.module#MaintenanceWrapperModule';
+    public modulePath = () => import('@skysmack/portal-packages').then(m => m.MaintenanceModule);
 }
 
 export function loadMaintenancePackage(packageLoader: PackageLoader) {

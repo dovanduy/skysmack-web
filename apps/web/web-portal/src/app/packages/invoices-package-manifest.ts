@@ -4,7 +4,7 @@ import { PackageLoader, PackageManifest } from '@skysmack/ng-framework';
 export class InvoicesPackageManifest extends InvoicesType implements PackageManifest {
     public icon = 'receipt';
     public menuLocation = 'main';
-    public modulePath = './../packages/modules/invoices_wrapper.module#InvoicesWrapperModule';
+    public modulePath = () => import('@skysmack/portal-packages').then(m => m.InvoicesModule);
 }
 
 export function loadInvoicePackage(packageLoader: PackageLoader) {

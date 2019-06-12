@@ -4,7 +4,7 @@ import { PackageLoader, PackageManifest } from '@skysmack/ng-framework';
 export class IdentitiesPackageManifest extends IdentitiesType implements PackageManifest {
     public icon = 'perm_identity';
     public menuLocation = 'main';
-    public modulePath = './../packages/modules/identities_wrapper.module#IdentitiesWrapperModule';
+    public modulePath = () => import('@skysmack/portal-packages').then(m => m.IdentitiesModule);
 }
 
 export function loadIdentitiesPackage(packageLoader: PackageLoader) {
