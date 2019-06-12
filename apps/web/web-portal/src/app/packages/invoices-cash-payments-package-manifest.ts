@@ -4,7 +4,7 @@ import { InvoicesCashPaymentsType } from '@skysmack/packages-invoices-cash-payme
 export class InvoicesCashPaymentsPackageManifest extends InvoicesCashPaymentsType implements PackageManifest {
     public icon = 'attach_money';
     public menuLocation = '';
-    public modulePath = () => import('@skysmack/portal-packages').then(m => m.InvoicesCashPaymentsModule);
+    public modulePath = './../packages/modules/invoices_cash_payments_wrapper.module#InvoicesCashPaymentsWrapperModule'
 }
 
 export function loadInvoicesCashPaymentsPackage(packageLoader: PackageLoader) {

@@ -4,7 +4,7 @@ import { PackageLoader, PackageManifest } from '@skysmack/ng-framework';
 export class ReservationsPricingsPackageManifest extends ReservationsPricingsType implements PackageManifest {
     public icon = 'timeline';
     public menuLocation = '';
-    public modulePath = () => import('@skysmack/portal-packages').then(m => m.ReservationsPricingsModule);
+    public modulePath = './../packages/modules/reservations_pricings_wrapper.module#ReservationsPricingsWrapperModule';
 }
 
 export function loadReservationsPricingsPackage(packageLoader: PackageLoader) {

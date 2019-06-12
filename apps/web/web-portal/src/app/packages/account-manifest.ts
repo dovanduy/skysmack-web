@@ -4,7 +4,7 @@ import { PackageLoader, PackageManifest } from '@skysmack/ng-framework';
 export class AccountPackageManifest extends AccountType implements PackageManifest {
     public icon = 'account_box';
     public menuLocation = 'main';
-    public modulePath = () => import('@skysmack/portal-packages').then(m => m.AccountModule);
+    public modulePath = './../packages/modules/account_wrapper.module#AccountWrapperModule';
 }
 
 export function loadAccountPackage(packageLoader: PackageLoader) {

@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { AccessPoliciesModule } from '@skysmack/portal-core';
+import { AccessPoliciesModule } from './../../../../../../../libs/portal-core/src/lib/access-policies/access-policies.module';
 
 @NgModule({
   imports: [

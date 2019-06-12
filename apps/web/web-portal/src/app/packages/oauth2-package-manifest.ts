@@ -4,7 +4,7 @@ import { PackageLoader, PackageManifest } from '@skysmack/ng-framework';
 export class Oauth2PackageManifest extends Oauth2Type implements PackageManifest {
     public icon = 'lock';
     public menuLocation = '';
-    public modulePath = () => import('@skysmack/portal-packages').then(m => m.Oauth2Module);
+    public modulePath = './../packages/modules/oauth2_wrapper.module#OAuth2WrapperModule'
 }
 
 export function loadOauth2Package(packageLoader: PackageLoader) {

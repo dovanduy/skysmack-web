@@ -2,7 +2,7 @@ import { NgReduxRouter, NgReduxRouterModule } from '@angular-redux/router';
 import { HttpClientModule } from '@angular/common/http';
 import { NgRedux, NgReduxModule } from '@angular-redux/store';
 
-import { RouterModule, PreloadAllModules } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 
 import { SkysmackModule } from '@skysmack/portal-core';
@@ -35,67 +35,83 @@ import { fieldReducer, settingsReducer } from '@skysmack/redux';
     RouterModule.forRoot([
       {
         path: 'skysmack/loadPackages/packages',
-        loadChildren: () => import('@skysmack/portal-packages').then(m => m.PackagesModule)
+        // loadChildren: () => import('@skysmack/portal-packages').then(m => m.PackagesModule)
+        loadChildren: './../packages/modules/packages_wrapper.module#PackagesWrapperModule'
       },
       {
         path: 'skysmack/loadPackages/access-policies',
-        loadChildren: () => import('@skysmack/portal-core').then(m => m.AccessPoliciesModule)
+        // loadChildren: () => import('@skysmack/portal-core').then(m => m.AccessPoliciesModule)
+        loadChildren: './../packages/modules/access_policies_wrapper.module#AccessPoliciesWrapperModule'
       },
       {
         path: 'skysmack/loadPackages/identities',
-        loadChildren: () => import('@skysmack/portal-packages').then(m => m.IdentitiesModule)
+        // loadChildren: () => import('@skysmack/portal-packages').then(m => m.IdentitiesModule)
+        loadChildren: './../packages/modules/identities_wrapper.module#IdentitiesWrapperModule'
       },
       {
         path: 'skysmack/loadPackages/persons',
-        loadChildren: () => import('@skysmack/portal-packages').then(m => m.PersonsModule)
+        // loadChildren: () => import('@skysmack/portal-packages').then(m => m.PersonsModule)
+        loadChildren: './../packages/modules/persons_wrapper.module#PersonsWrapperModule'
       },
       {
         path: 'skysmack/loadPackages/invoices',
-        loadChildren: () => import('@skysmack/portal-packages').then(m => m.InvoicesModule)
+        // loadChildren: () => import('@skysmack/portal-packages').then(m => m.InvoicesModule)
+        loadChildren: './../packages/modules/invoices_wrapper.module#InvoicesWrapperModule'
       },
       {
         path: 'skysmack/loadPackages/invoices-cash-payments',
-        loadChildren: () => import('@skysmack/portal-packages').then(m => m.InvoicesCashPaymentsModule)
+        // loadChildren: () => import('@skysmack/portal-packages').then(m => m.InvoicesCashPaymentsModule)
+        loadChildren: './../packages/modules/invoices_cash_payments_wrapper.module#InvoicesCashPaymentsWrapperModule'
       },
       {
         path: 'skysmack/loadPackages/products',
-        loadChildren: () => import('@skysmack/portal-packages').then(m => m.ProductsModule)
+        // loadChildren: () => import('@skysmack/portal-packages').then(m => m.ProductsModule)
+        loadChildren: './../packages/modules/products_wrapper.module#ProductsWrapperModule'
       },
       {
         path: 'skysmack/loadPackages/products-pricings',
-        loadChildren: () => import('@skysmack/portal-packages').then(m => m.ProductsPricingsModule)
+        // loadChildren: () => import('@skysmack/portal-packages').then(m => m.ProductsPricingsModule)
+        loadChildren: './../packages/modules/products_pricings_wrapper.module#ProductsPricingsWrapperModule'
       },
       {
         path: 'skysmack/loadPackages/lodgings',
-        loadChildren: () => import('@skysmack/portal-packages').then(m => m.LodgingsModule)
+        // loadChildren: () => import('@skysmack/portal-packages').then(m => m.LodgingsModule)
+        loadChildren: './../packages/modules/lodgings_wrapper.module#LodgingsWrapperModule'
       },
       {
         path: 'skysmack/loadPackages/lodgingReservations',
-        loadChildren: () => import('@skysmack/portal-packages').then(m => m.LodgingReservationsModule)
+        // loadChildren: () => import('@skysmack/portal-packages').then(m => m.LodgingReservationsModule)
+        loadChildren: './../packages/modules/lodging_reservations_wrapper.module#LodgingReservationsWrapperModule'
       },
       {
         path: 'skysmack/loadPackages/reservations-pricings',
-        loadChildren: () => import('@skysmack/portal-packages').then(m => m.ReservationsPricingsModule)
+        // loadChildren: () => import('@skysmack/portal-packages').then(m => m.ReservationsPricingsModule)
+        loadChildren: './../packages/modules/reservations_pricings_wrapper.module#ReservationsPricingsWrapperModule'
       },
       {
         path: 'skysmack/loadPackages/personsLodgingReservations',
-        loadChildren: () => import('@skysmack/portal-packages').then(m => m.PersonsLodgingReservationsModule)
+        // loadChildren: () => import('@skysmack/portal-packages').then(m => m.PersonsLodgingReservationsModule)
+        loadChildren: './../packages/modules/persons_lodging_reservations_wrapper.module#PersonsLodgingReservationsWrapperModule'
       },
       {
         path: 'skysmack/loadPackages/oauth2',
-        loadChildren: () => import('@skysmack/portal-packages').then(m => m.Oauth2Module)
+        // loadChildren: () => import('@skysmack/portal-packages').then(m => m.Oauth2Module)
+        loadChildren: './../packages/modules/oauth2_wrapper.module#OAuth2WrapperModule'
       },
       {
         path: 'skysmack/loadPackages/maintenance',
-        loadChildren: () => import('@skysmack/portal-packages').then(m => m.MaintenanceModule)
+        // loadChildren: () => import('@skysmack/portal-packages').then(m => m.MaintenanceModule)
+        loadChildren: './../packages/modules/maintenance_wrapper.module#MaintenanceWrapperModule'
       },
       {
         path: 'skysmack/loadPackages/terminal-payments',
-        loadChildren: () => import('@skysmack/portal-packages').then(m => m.TerminalPaymentsModule)
+        // loadChildren: () => import('@skysmack/portal-packages').then(m => m.TerminalPaymentsModule)
+        loadChildren: './../packages/modules/terminal_payments_wrapper.module#TerminalPaymentsWrapperModule'
       },
       {
         path: 'skysmack/loadPackages/account',
-        loadChildren: () => import('@skysmack/portal-packages').then(m => m.AccountModule)
+        // loadChildren: () => import('@skysmack/portal-packages').then(m => m.AccountModule)
+        loadChildren: './../packages/modules/account_wrapper.module#AccountWrapperModule'
       },
       {
         path: '',
@@ -108,7 +124,7 @@ import { fieldReducer, settingsReducer } from '@skysmack/redux';
         component: FallBackComponent
       }
     ], {
-        preloadingStrategy: PreloadAllModules
+        // preloadingStrategy: PreloadAllModules
       }),
     BrowserAnimationsModule,
     HttpClientModule,
