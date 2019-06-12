@@ -8,7 +8,8 @@ import { NgModule } from '@angular/core';
 import { SkysmackModule } from '@skysmack/portal-core';
 import { FrontPageComponent } from './components/front-page/front-page.component';
 import { ReduxOfflineConfiguration } from '../redux/redux-offline.configuration';
-import { PortalUiModule, LanguageService } from '@skysmack/portal-ui';
+import { PortalUiModule } from '@skysmack/portal-ui';
+import { LanguageService } from '@skysmack/portal-ui'
 import { FallBackComponent } from './components/fall-back/fall-back.component';
 import { StartComponent } from './components/start/start.component';
 import { configureRedux } from './../redux/redux.configuration';
@@ -46,7 +47,7 @@ import { fieldReducer, settingsReducer } from '@skysmack/redux';
       },
       {
         path: 'skysmack/loadPackages/persons',
-        loadChildren: () => import('./../packages/modules/persons_wrapper.module').then(m => m.PersonsWrapperModule)
+        loadChildren: () => import('@skysmack/portal-packages').then(m => m.PersonsModule)
       },
       {
         path: 'skysmack/loadPackages/invoices',

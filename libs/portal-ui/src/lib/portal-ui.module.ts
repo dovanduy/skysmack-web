@@ -5,7 +5,6 @@ import { RouterModule } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
-import { RecurringExpressionFieldModule } from './components/field-components/components/recurring-expression-field/recurring-expression-field.module';
 import { MaterialModule } from './material.module';
 import { uiReducer } from './redux/ui-reducers';
 import { standardSettingsReducer } from './redux/settings';
@@ -16,10 +15,12 @@ import { NOTIFICATIONS_INJECTOR_TOKEN } from '@skysmack/ng-framework';
 import { portailUiPipes } from './pipes/portal-ui-pipes';
 import { LanguageService } from './language/language.service';
 import { commonComponents } from './components/common/common-components';
-import { fieldComponents, RecurringExpressionFieldComponent } from './components';
+import { fieldComponents } from './components/field-components/field-components';
 import { displayComponents } from './components/display-components/display-components';
-import { directives } from './directives';
+import { directives } from './directives/directives';
 import { ValidatorsFieldComponent } from './components/field-components/components/validators-field/validators-field.component';
+import { RecurringExpressionFieldModule } from './components/field-components/components/recurring-expression-field/recurring-expression-field.module';
+import { RecurringExpressionFieldComponent } from './components/field-components/components/recurring-expression-field/recurring-expression-field.component';
 
 @NgModule({
   imports: [
@@ -58,8 +59,8 @@ import { ValidatorsFieldComponent } from './components/field-components/componen
   entryComponents: [
     ...fieldComponents,
     ...displayComponents,
-    ValidatorsFieldComponent,
-    RecurringExpressionFieldComponent
+    RecurringExpressionFieldComponent,
+    ValidatorsFieldComponent
   ]
 })
 export class PortalUiModule {

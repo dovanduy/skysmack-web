@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ExpressionValues } from '../../models';
+import { ExpressionValues } from '../../models/expression-values';
 import { MatTabChangeEvent } from '@angular/material/tabs';
 
 @Component({

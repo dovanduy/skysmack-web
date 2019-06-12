@@ -4,5 +4,5 @@ export interface PackageManifest extends PackageType {
     id: string;
     icon: string;
     menuLocation: string;
-    modulePath: string;
+    modulePath: Function | string;
 }
