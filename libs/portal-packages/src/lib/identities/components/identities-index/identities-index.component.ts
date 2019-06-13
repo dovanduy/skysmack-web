@@ -4,6 +4,7 @@ import { NgIdentitiesIndexMenu } from '../../ng-identities-index-menu';
 import { IDENTITES_AREA_KEY } from '@skysmack/packages-identities';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgSkysmackStore } from '@skysmack/ng-core';
+import { NgPersonsPermissions } from '@skysmack/ng-packages';
 
 @Component({
   selector: 'ss-portal-package-identities-index',
@@ -16,7 +17,8 @@ export class IdentitiesIndexComponent extends BaseComponent<any, any> implements
     public activatedRoute: ActivatedRoute,
     public skysmackStore: NgSkysmackStore,
     public title: EntityComponentPageTitle,
-    public sidebarMenu: NgIdentitiesIndexMenu
+    public sidebarMenu: NgIdentitiesIndexMenu,
+    public permissions: NgPersonsPermissions
   ) { 
     super(router, activatedRoute, skysmackStore, title);
   }

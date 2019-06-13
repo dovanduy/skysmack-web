@@ -1,49 +1,49 @@
 import { FIND, ADD, UPDATE, REMOVE, FIELDS } from '@skysmack/framework';
 
 export class InvoicesPermissions {
-    private invoices = 'Invoices';
-    private ownInvoices = 'OwnInvoices';
+    private static invoices = 'Invoices';
+    private static ownInvoices = 'OwnInvoices';
 
-    private invoiceFields = 'Invoice' + FIELDS;
+    private static invoiceFields = 'Invoice' + FIELDS;
 
-    private invoicesPayments = 'InvoicesPayments';
-    private invoicesPaymentFields = 'InvoicesPayment' + FIELDS;
+    private static invoicesPayments = 'InvoicesPayments';
+    private static invoicesPaymentFields = 'InvoicesPayment' + FIELDS;
 
-    private invoiceItems = 'InvoiceItems';
-    private invoiceItemFields = 'InvoiceItem' + FIELDS;
+    private static invoiceItems = 'InvoiceItems';
+    private static invoiceItemFields = 'InvoiceItem' + FIELDS;
 
-    public findInvoices = FIND + this.invoices;
-    public addInvoices = ADD + this.invoices;
-    public updateInvoices = UPDATE + this.invoices;
-    public removeInvoices = REMOVE + this.invoices;
+    public static findInvoices = FIND + InvoicesPermissions.invoices;
+    public static addInvoices = ADD + InvoicesPermissions.invoices;
+    public static updateInvoices = UPDATE + InvoicesPermissions.invoices;
+    public static removeInvoices = REMOVE + InvoicesPermissions.invoices;
 
-    public findOwnInvoices = FIND + this.ownInvoices;
-    public addOwnInvoices = ADD + this.ownInvoices;
-    public updateOwnInvoices = UPDATE + this.ownInvoices;
-    public removeOwnInvoices = REMOVE + this.ownInvoices;
+    public static findOwnInvoices = FIND + InvoicesPermissions.ownInvoices;
+    public static addOwnInvoices = ADD + InvoicesPermissions.ownInvoices;
+    public static updateOwnInvoices = UPDATE + InvoicesPermissions.ownInvoices;
+    public static removeOwnInvoices = REMOVE + InvoicesPermissions.ownInvoices;
 
-    public findInvoicesFields = FIND + this.invoiceFields;
-    public addInvoicesFields = ADD + this.invoiceFields;
-    public updateInvoicesFields = UPDATE + this.invoiceFields;
-    public removeInvoicesFields = REMOVE + this.invoiceFields;
+    public static findInvoicesFields = FIND + InvoicesPermissions.invoiceFields;
+    public static addInvoicesFields = ADD + InvoicesPermissions.invoiceFields;
+    public static updateInvoicesFields = UPDATE + InvoicesPermissions.invoiceFields;
+    public static removeInvoicesFields = REMOVE + InvoicesPermissions.invoiceFields;
 
-    public findInvoicePayments = FIND + this.invoicesPayments;
-    public addInvoicePayments = ADD + this.invoicesPayments;
-    public updateInvoicePayments = UPDATE + this.invoicesPayments;
-    public removeInvoicePayments = REMOVE + this.invoicesPayments;
+    public static findInvoicePayments = FIND + InvoicesPermissions.invoicesPayments;
+    public static addInvoicePayments = ADD + InvoicesPermissions.invoicesPayments;
+    public static updateInvoicePayments = UPDATE + InvoicesPermissions.invoicesPayments;
+    public static removeInvoicePayments = REMOVE + InvoicesPermissions.invoicesPayments;
 
-    public findInvoicePaymentFields = FIND + this.invoicesPaymentFields;
-    public addInvoicePaymentFields = ADD + this.invoicesPaymentFields;
-    public updateInvoicePaymentFields = UPDATE + this.invoicesPaymentFields;
-    public removeInvoicePaymentFields = REMOVE + this.invoicesPaymentFields;
+    public static findInvoicePaymentFields = FIND + InvoicesPermissions.invoicesPaymentFields;
+    public static addInvoicePaymentFields = ADD + InvoicesPermissions.invoicesPaymentFields;
+    public static updateInvoicePaymentFields = UPDATE + InvoicesPermissions.invoicesPaymentFields;
+    public static removeInvoicePaymentFields = REMOVE + InvoicesPermissions.invoicesPaymentFields;
 
-    public findInvoiceItems = FIND + this.invoiceItems;
-    public addInvoiceItems = ADD + this.invoiceItems
-    public updateInvoiceItems = UPDATE + this.invoiceItems;
-    public removeInvoiceItems = REMOVE + this.invoiceItems;
+    public static findInvoiceItems = FIND + InvoicesPermissions.invoiceItems;
+    public static addInvoiceItems = ADD + InvoicesPermissions.invoiceItems
+    public static updateInvoiceItems = UPDATE + InvoicesPermissions.invoiceItems;
+    public static removeInvoiceItems = REMOVE + InvoicesPermissions.invoiceItems;
 
-    public findInvoiceItemFields = FIND + this.invoiceItemFields;
-    public addInvoiceItemFields = ADD + this.invoiceItemFields
-    public updateInvoiceItemFields = UPDATE + this.invoiceItemFields;
-    public removeInvoiceItemFields = REMOVE + this.invoiceItemFields;
+    public static findInvoiceItemFields = FIND + InvoicesPermissions.invoiceItemFields;
+    public static addInvoiceItemFields = ADD + InvoicesPermissions.invoiceItemFields
+    public static updateInvoiceItemFields = UPDATE + InvoicesPermissions.invoiceItemFields;
+    public static removeInvoiceItemFields = REMOVE + InvoicesPermissions.invoiceItemFields;
 }
