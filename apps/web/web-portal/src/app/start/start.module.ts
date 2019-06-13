@@ -2,7 +2,7 @@ import { NgReduxRouter, NgReduxRouterModule } from '@angular-redux/router';
 import { HttpClientModule } from '@angular/common/http';
 import { NgRedux, NgReduxModule } from '@angular-redux/store';
 
-import { RouterModule } from '@angular/router';
+import { RouterModule, PreloadAllModules } from '@angular/router';
 import { NgModule } from '@angular/core';
 
 import { SkysmackModule } from '@skysmack/portal-core';
@@ -124,7 +124,7 @@ import { fieldReducer, settingsReducer } from '@skysmack/redux';
         component: FallBackComponent
       }
     ], {
-        // preloadingStrategy: PreloadAllModules
+        preloadingStrategy: PreloadAllModules
       }),
     BrowserAnimationsModule,
     HttpClientModule,
