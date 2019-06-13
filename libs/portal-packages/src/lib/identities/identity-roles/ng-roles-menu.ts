@@ -5,7 +5,7 @@ import { NgSkysmackStore } from '@skysmack/ng-core';
 import { MenuArea } from '@skysmack/framework';
 import { MenuItem } from '@skysmack/framework';
 import { NgMenuItemProviders } from '@skysmack/ng-framework';
-import { ROLES_AREA_KEY } from '@skysmack/packages-identities';
+import { ROLES_AREA_KEY, IdentitiesPermissions } from '@skysmack/packages-identities';
 
 @Injectable({ providedIn: 'root' })
 export class NgRolesMenu extends SidebarMenu {
@@ -41,6 +41,9 @@ export class NgRolesMenu extends SidebarMenu {
             area: 'actions',
             order: 1,
             icon: 'groupAdd',
+            permissions: [
+                IdentitiesPermissions.addRoles
+            ]
         }));
         this.setBackButton();
     }
@@ -53,6 +56,9 @@ export class NgRolesMenu extends SidebarMenu {
                 area: undefined,
                 order: 1,
                 icon: 'add',
+                permissions: [
+                    IdentitiesPermissions.addRoles
+                ]
             }),
         ];
     }

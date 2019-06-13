@@ -42,10 +42,7 @@ export class NgIdentitiesIndexMenu extends SidebarMenu {
             order: 1,
             icon: 'groupAdd',
             permissions: [
-                IdentitiesPermissions.findRoles,
-                IdentitiesPermissions.addRoles,
-                IdentitiesPermissions.updateRoles,
-                IdentitiesPermissions.removeRoles
+                IdentitiesPermissions.findRoles
             ]
         }));
         this.primaryMenuItems.push(new MenuItem({
@@ -55,10 +52,7 @@ export class NgIdentitiesIndexMenu extends SidebarMenu {
             order: 2,
             icon: 'groupAdd',
             permissions: [
-                IdentitiesPermissions.findUsers,
-                IdentitiesPermissions.addUsers,
-                IdentitiesPermissions.updateUsers,
-                IdentitiesPermissions.removeUsers
+                IdentitiesPermissions.findUsers
             ]
         }));
         this.primaryMenuItems.push(new MenuItem({
@@ -68,8 +62,7 @@ export class NgIdentitiesIndexMenu extends SidebarMenu {
             order: 1,
             icon: 'groupAdd',
             permissions: [
-                IdentitiesPermissions.getLockoutSettings,
-                IdentitiesPermissions.setLockoutSettings
+                IdentitiesPermissions.getLockoutSettings
             ]
         }));
         this.primaryMenuItems.push(new MenuItem({
@@ -79,8 +72,7 @@ export class NgIdentitiesIndexMenu extends SidebarMenu {
             order: 2,
             icon: 'groupAdd',
             permissions: [
-                IdentitiesPermissions.getUserSettings,
-                IdentitiesPermissions.setUserSettings
+                IdentitiesPermissions.getUserSettings
             ]
         }));
         this.primaryMenuItems.push(new MenuItem({
@@ -90,8 +82,7 @@ export class NgIdentitiesIndexMenu extends SidebarMenu {
             order: 2,
             icon: 'groupAdd',
             permissions: [
-                IdentitiesPermissions.getPasswordSettings,
-                IdentitiesPermissions.setPasswordSettings
+                IdentitiesPermissions.getPasswordSettings
             ]
         }));
         this.primaryMenuItems.push(new MenuItem({
@@ -101,21 +92,13 @@ export class NgIdentitiesIndexMenu extends SidebarMenu {
             order: 2,
             icon: 'groupAdd',
             permissions: [
-                IdentitiesPermissions.getSignInSettings,
-                IdentitiesPermissions.setSignInSettings
+                IdentitiesPermissions.getSignInSettings
             ]
         }));
     }
 
     public setSpeedDialMenu() {
         this.speedDialMenu = [
-            new MenuItem({
-                url: 'create',
-                displayName: this.translationPrefix + 'CREATE',
-                area: undefined,
-                order: 1,
-                icon: 'add',
-            }),
         ];
     }
 }

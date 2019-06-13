@@ -5,6 +5,7 @@ import { NgSkysmackStore } from '@skysmack/ng-core';
 import { MenuArea } from '@skysmack/framework';
 import { MenuItem } from '@skysmack/framework';
 import { NgMenuItemProviders } from '@skysmack/ng-framework';
+import { AccessPolciesPermissions } from 'libs/ng-core/src/lib/access-policies/permissions/access-policies-permissions';
 
 @Injectable({ providedIn: 'root' })
 export class NgAccessPoliciesDashboardMenu extends SidebarMenu {
@@ -36,6 +37,9 @@ export class NgAccessPoliciesDashboardMenu extends SidebarMenu {
             area: 'manage',
             order: 1,
             icon: 'groupAdd',
+            permissions: [
+                AccessPolciesPermissions.findPermissions
+            ]
         }));
         this.primaryMenuItems.push(new MenuItem({
             url: 'roles',
@@ -43,6 +47,9 @@ export class NgAccessPoliciesDashboardMenu extends SidebarMenu {
             area: 'manage',
             order: 2,
             icon: 'groupAdd',
+            permissions: [
+                AccessPolciesPermissions.findRoles
+            ]
         }));
         this.primaryMenuItems.push(new MenuItem({
             url: 'rules',
@@ -50,6 +57,9 @@ export class NgAccessPoliciesDashboardMenu extends SidebarMenu {
             area: 'manage',
             order: 3,
             icon: 'groupAdd',
+            permissions: [
+                AccessPolciesPermissions.findRules
+            ]
         }));
     }
 

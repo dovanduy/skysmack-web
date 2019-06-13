@@ -5,7 +5,7 @@ import { NgSkysmackStore } from '@skysmack/ng-core';
 import { MenuArea } from '@skysmack/framework';
 import { MenuItem } from '@skysmack/framework';
 import { NgMenuItemProviders } from '@skysmack/ng-framework';
-import { USERS_AREA_KEY } from '@skysmack/packages-identities';
+import { USERS_AREA_KEY, IdentitiesPermissions } from '@skysmack/packages-identities';
 
 
 @Injectable({ providedIn: 'root' })
@@ -42,6 +42,9 @@ export class NgUsersMenu extends SidebarMenu {
             area: 'actions',
             order: 1,
             icon: 'groupAdd',
+            permissions: [
+                IdentitiesPermissions.addUsers
+            ]
         }));
         this.setBackButton();
     }
@@ -54,6 +57,9 @@ export class NgUsersMenu extends SidebarMenu {
                 area: undefined,
                 order: 1,
                 icon: 'add',
+                permissions: [
+                    IdentitiesPermissions.addUsers
+                ]
             }),
         ];
     }

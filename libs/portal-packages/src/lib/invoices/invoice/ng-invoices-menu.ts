@@ -53,10 +53,7 @@ export class NgInvoicesMenu extends SidebarMenu {
             order: 2,
             icon: 'shortText',
             permissions: [
-                InvoicesPermissions.findInvoicesFields,
-                InvoicesPermissions.addInvoicesFields,
-                InvoicesPermissions.updateInvoicesFields,
-                InvoicesPermissions.removeInvoicesFields
+                InvoicesPermissions.findInvoicesFields
             ]
         }));
         this.primaryMenuItems.push(new MenuItem({
@@ -66,10 +63,7 @@ export class NgInvoicesMenu extends SidebarMenu {
             order: 2,
             icon: 'shortText',
             permissions: [
-                InvoicesPermissions.findInvoicePayments,
-                InvoicesPermissions.addInvoicePayments,
-                InvoicesPermissions.updateInvoicePayments,
-                InvoicesPermissions.removeInvoicePayments
+                InvoicesPermissions.findInvoicePayments
             ]
         }));
     }
@@ -82,6 +76,9 @@ export class NgInvoicesMenu extends SidebarMenu {
                 area: undefined,
                 order: 1,
                 icon: 'add',
+                permissions: [
+                    InvoicesPermissions.addInvoices
+                ]
             }),
         ];
     }
