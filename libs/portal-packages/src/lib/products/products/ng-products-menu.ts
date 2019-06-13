@@ -5,7 +5,7 @@ import { NgSkysmackStore } from '@skysmack/ng-core';
 import { MenuArea } from '@skysmack/framework';
 import { MenuItem } from '@skysmack/framework';
 import { NgMenuItemProviders } from '@skysmack/ng-framework';
-import { PRODUCTS_AREA_KEY } from '@skysmack/packages-products';
+import { PRODUCTS_AREA_KEY, ProductsPermissions } from '@skysmack/packages-products';
 
 @Injectable({ providedIn: 'root' })
 export class NgProductsMenu extends SidebarMenu {
@@ -41,6 +41,9 @@ export class NgProductsMenu extends SidebarMenu {
             area: 'actions',
             order: 1,
             icon: 'groupAdd',
+            permissions: [
+                ProductsPermissions.addProducts
+            ]
         }));
         this.primaryMenuItems.push(new MenuItem({
             url: 'types',
@@ -48,6 +51,9 @@ export class NgProductsMenu extends SidebarMenu {
             area: 'manage',
             order: 2,
             icon: 'description',
+            permissions: [
+                ProductsPermissions.findProductTypes
+            ]
         }));
         this.primaryMenuItems.push(new MenuItem({
             url: 'fields',
@@ -55,6 +61,9 @@ export class NgProductsMenu extends SidebarMenu {
             area: 'manage',
             order: 2,
             icon: 'shortText',
+            permissions: [
+                ProductsPermissions.findProductsFields
+            ]
         }));
     }
 
@@ -66,6 +75,9 @@ export class NgProductsMenu extends SidebarMenu {
                 area: undefined,
                 order: 1,
                 icon: 'add',
+                permissions: [
+                    ProductsPermissions.addProducts
+                ]
             }),
         ];
     }

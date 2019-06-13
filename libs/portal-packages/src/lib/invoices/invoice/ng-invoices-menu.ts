@@ -5,7 +5,7 @@ import { NgSkysmackStore } from '@skysmack/ng-core';
 import { NgMenuItemProviders } from '@skysmack/ng-framework';
 import { MenuArea } from '@skysmack/framework';
 import { MenuItem } from '@skysmack/framework';
-import { INVOICES_AREA_KEY } from '@skysmack/packages-invoices';
+import { INVOICES_AREA_KEY, InvoicesPermissions } from '@skysmack/packages-invoices';
 
 
 @Injectable({ providedIn: 'root' })
@@ -42,6 +42,9 @@ export class NgInvoicesMenu extends SidebarMenu {
             area: 'actions',
             order: 1,
             icon: 'groupAdd',
+            permissions: [
+                InvoicesPermissions.addInvoices
+            ]
         }));
         this.primaryMenuItems.push(new MenuItem({
             url: 'fields',
@@ -49,6 +52,9 @@ export class NgInvoicesMenu extends SidebarMenu {
             area: 'manage',
             order: 2,
             icon: 'shortText',
+            permissions: [
+                InvoicesPermissions.findInvoicesFields
+            ]
         }));
         this.primaryMenuItems.push(new MenuItem({
             url: 'payments',
@@ -56,6 +62,9 @@ export class NgInvoicesMenu extends SidebarMenu {
             area: 'manage',
             order: 2,
             icon: 'shortText',
+            permissions: [
+                InvoicesPermissions.findInvoicePayments
+            ]
         }));
     }
 
@@ -67,6 +76,9 @@ export class NgInvoicesMenu extends SidebarMenu {
                 area: undefined,
                 order: 1,
                 icon: 'add',
+                permissions: [
+                    InvoicesPermissions.addInvoices
+                ]
             }),
         ];
     }
