@@ -5,6 +5,7 @@ import { NgSkysmackStore } from '@skysmack/ng-core';
 import { MenuArea } from '@skysmack/framework';
 import { MenuItem } from '@skysmack/framework';
 import { NgMenuItemProviders } from '@skysmack/ng-framework';
+import { MaintenancePermissions } from '@skysmack/packages-maintenance';
 
 @Injectable({ providedIn: 'root' })
 export class NgMaintenanceStatesMenu extends SidebarMenu {
@@ -40,6 +41,9 @@ export class NgMaintenanceStatesMenu extends SidebarMenu {
             area: 'actions',
             order: 1,
             icon: 'groupAdd',
+            permissions: [
+                MaintenancePermissions.addMaintenanceStates
+            ]
         }));
         this.setBackButton({ customPath: `/${this.packagePath}/assignments` });
     }

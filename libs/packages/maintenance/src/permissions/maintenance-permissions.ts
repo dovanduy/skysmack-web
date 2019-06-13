@@ -1,42 +1,42 @@
 import { FIND, ADD, UPDATE, REMOVE, FIELDS } from '@skysmack/framework';
 
 export class MaintenancePermissions {
-    private assignments = 'Assignments';
-    private assignmentFields = 'Assignment' + FIELDS;
+    private static assignments = 'Assignments';
+    private static assignmentFields = 'Assignment' + FIELDS;
 
-    private assignmentTypes = 'Assignment types';
-    private assignmentTypeFields = 'Assignment type' + FIELDS;
+    private static assignmentTypes = 'Assignment types';
+    private static assignmentTypeFields = 'Assignment type' + FIELDS;
 
-    private maintenanceStates = 'Maintenance States';
-    private recurringAssignments = 'Recurring Assignments';
+    private static maintenanceStates = 'Maintenance States';
+    private static recurringAssignments = 'Recurring Assignments';
 
-    public findAssignments = FIND + this.assignments;
-    public addAssignments = ADD + this.assignments;
-    public updateAssignments = UPDATE + this.assignments;
-    public removeAssignments = REMOVE + this.assignments;
+    public static findAssignments = FIND + MaintenancePermissions.assignments;
+    public static addAssignments = ADD + MaintenancePermissions.assignments;
+    public static updateAssignments = UPDATE + MaintenancePermissions.assignments;
+    public static removeAssignments = REMOVE + MaintenancePermissions.assignments;
 
-    public findAssignmentFields = FIND + this.assignmentFields;
-    public addAssignmentFields = ADD + this.assignmentFields;
-    public updateAssignmentFields = UPDATE + this.assignmentFields;
-    public removeAssignmentFields = REMOVE + this.assignmentFields;
+    public static findAssignmentFields = FIND + MaintenancePermissions.assignmentFields;
+    public static addAssignmentFields = ADD + MaintenancePermissions.assignmentFields;
+    public static updateAssignmentFields = UPDATE + MaintenancePermissions.assignmentFields;
+    public static removeAssignmentFields = REMOVE + MaintenancePermissions.assignmentFields;
 
-    public findAssignmentTypes = FIND + this.assignmentTypes;
-    public addAssignmentTypes = ADD + this.assignmentTypes;
-    public updateAssignmentTypes = UPDATE + this.assignmentTypes;
-    public removeAssignmentTypes = REMOVE + this.assignmentTypes;
+    public static findAssignmentTypes = FIND + MaintenancePermissions.assignmentTypes;
+    public static addAssignmentTypes = ADD + MaintenancePermissions.assignmentTypes;
+    public static updateAssignmentTypes = UPDATE + MaintenancePermissions.assignmentTypes;
+    public static removeAssignmentTypes = REMOVE + MaintenancePermissions.assignmentTypes;
 
-    public findAssignmentTypeFields = FIND + this.assignmentTypeFields;
-    public addAssignmentTypeFields = ADD + this.assignmentTypeFields;
-    public updateAssignmentTypeFields = UPDATE + this.assignmentTypeFields;
-    public removeAssignmentTypeFields = REMOVE + this.assignmentTypeFields;
+    public static findAssignmentTypeFields = FIND + MaintenancePermissions.assignmentTypeFields;
+    public static addAssignmentTypeFields = ADD + MaintenancePermissions.assignmentTypeFields;
+    public static updateAssignmentTypeFields = UPDATE + MaintenancePermissions.assignmentTypeFields;
+    public static removeAssignmentTypeFields = REMOVE + MaintenancePermissions.assignmentTypeFields;
 
-    public findMaintenanceStates = FIND + this.maintenanceStates;
-    public addMaintenanceStates = ADD + this.maintenanceStates;
-    public updateMaintenanceStates = UPDATE + this.maintenanceStates;
-    public removeMaintenanceStates = REMOVE + this.maintenanceStates;
+    public static findMaintenanceStates = FIND + MaintenancePermissions.maintenanceStates;
+    public static addMaintenanceStates = ADD + MaintenancePermissions.maintenanceStates;
+    public static updateMaintenanceStates = UPDATE + MaintenancePermissions.maintenanceStates;
+    public static removeMaintenanceStates = REMOVE + MaintenancePermissions.maintenanceStates;
 
-    public findRecurringAssignments = FIND + this.recurringAssignments;
-    public addRecurringAssignments = ADD + this.recurringAssignments;
-    public updateRecurringAssignments = UPDATE + this.recurringAssignments;
-    public removeRecurringAssignments = REMOVE + this.recurringAssignments;
+    public static findRecurringAssignments = FIND + MaintenancePermissions.recurringAssignments;
+    public static addRecurringAssignments = ADD + MaintenancePermissions.recurringAssignments;
+    public static updateRecurringAssignments = UPDATE + MaintenancePermissions.recurringAssignments;
+    public static removeRecurringAssignments = REMOVE + MaintenancePermissions.recurringAssignments;
 }

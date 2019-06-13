@@ -5,7 +5,7 @@ import { NgSkysmackStore } from '@skysmack/ng-core';
 import { MenuArea } from '@skysmack/framework';
 import { MenuItem } from '@skysmack/framework';
 import { NgMenuItemProviders } from '@skysmack/ng-framework';
-import { ASSIGNMENTS_AREA_KEY } from '@skysmack/packages-maintenance';
+import { ASSIGNMENTS_AREA_KEY, MaintenancePermissions } from '@skysmack/packages-maintenance';
 
 @Injectable({ providedIn: 'root' })
 export class NgAssignmentsMenu extends SidebarMenu {
@@ -40,7 +40,13 @@ export class NgAssignmentsMenu extends SidebarMenu {
             displayName: this.translationPrefix + 'CREATE',
             area: 'actions',
             order: 1,
-            icon: 'groupAdd'
+            icon: 'groupAdd',
+            permissions: [
+                MaintenancePermissions.findAssignments,
+                MaintenancePermissions.addAssignments,
+                MaintenancePermissions.updateAssignments,
+                MaintenancePermissions.removeAssignments,
+            ]
             }));
         this.primaryMenuItems.push(new MenuItem({
             url: 'types',
@@ -48,6 +54,12 @@ export class NgAssignmentsMenu extends SidebarMenu {
             area: 'manage',
             order: 2,
             icon: 'description',
+            permissions: [
+                MaintenancePermissions.findAssignmentTypes,
+                MaintenancePermissions.addAssignmentTypes,
+                MaintenancePermissions.updateAssignmentTypes,
+                MaintenancePermissions.removeAssignmentTypes,
+            ]
         }));
         this.primaryMenuItems.push(new MenuItem({
             url: 'maintenance-states',
@@ -55,6 +67,12 @@ export class NgAssignmentsMenu extends SidebarMenu {
             area: 'manage',
             order: 3,
             icon: 'shortText',
+            permissions: [
+                MaintenancePermissions.findMaintenanceStates,
+                MaintenancePermissions.addMaintenanceStates,
+                MaintenancePermissions.updateMaintenanceStates,
+                MaintenancePermissions.removeMaintenanceStates,
+            ]
         }));
         this.setBackButton();
     }
