@@ -1,11 +1,11 @@
 import { FIND, ADD, UPDATE, REMOVE, FIELDS } from '@skysmack/framework';
 
 export class LodgingsPermissions {
-    private lodgings = 'Rooms';
-    private lodgingFields = 'Room' + FIELDS;
+    private lodgings = 'Lodgings';
+    private lodgingFields = 'Lodging' + FIELDS;
 
-    private lodgingTypes = 'Room types';
-    private lodgingTypeFields = 'Room type' + FIELDS;
+    private lodgingTypes = 'Lodging types';
+    private lodgingTypeFields = 'Lodging type' + FIELDS;
 
     public findLodgings = FIND + this.lodgings;
     public addLodgings = ADD + this.lodgings;

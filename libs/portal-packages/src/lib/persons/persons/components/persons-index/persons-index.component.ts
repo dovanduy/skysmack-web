@@ -19,10 +19,10 @@ export class PersonsIndexComponent extends DocumentRecordIndexComponent<PersonsA
   public entityActions: EntityAction[] = [
     new EntityAction().asUrlAction('details', ENTITY_ACTION_DETAILS, 'list'),
     new EntityAction().asUrlAction('edit', ENTITY_ACTIONS_EDIT, 'edit').setPermissions([
-      this.permissions.updatePersons,
+      NgPersonsPermissions.updatePersons,
     ]),
     new EntityAction().asEventAction(ENTITY_ACTIONS_DELETE, this.delete, 'delete', this).setPermissions([
-      this.permissions.removePersons,
+      NgPersonsPermissions.removePersons,
     ])
   ];
 
