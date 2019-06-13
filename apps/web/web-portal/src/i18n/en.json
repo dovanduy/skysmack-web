@@ -1887,7 +1887,7 @@
 			},
 			"PLACEHOLDERS": {
 				"CURRENCYCODE": "Currency code",
-				"RECORDID": "Lodging",
+				"RECORDID": "Lodging type",
 				"CHANGE": "Price change",
 				"ISPERCENTAGE": "Change is in percentage (%)",
 				"VALIDFROM": "Valid from",
@@ -1909,7 +1909,7 @@
 					"REQUIRED": "Currency code is required"
 				},
 				"RECORDID": {
-					"REQUIRED": "Allocated Lodging is required"
+					"REQUIRED": "Lodging type is required"
 				},
 				"CHANGE": {
 					"REQUIRED": "Price change is required"

@@ -40,7 +40,7 @@ export class UsersRolesComponent extends BaseComponent<User, number> implements 
   ngOnInit() {
     super.ngOnInit();
     this.actions.getUsersRoles(this.packagePath, [this.entityId]);
-    this.userRoles$ = this.store.getUserRoles(this.packagePath, this.entityId).pipe(tap((x) => console.log(x)));
+    this.userRoles$ = this.store.getUserRoles(this.packagePath, this.entityId);
     this.getRoles();
     this.editorNav.showEditorNav();
   }

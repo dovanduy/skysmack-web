@@ -1871,7 +1871,7 @@
 				"ISPERCENTAGE": "Ændring er i procent (%)",
 				"VALIDFROM": "Gældende fra",
 				"VALIDTO": "Gældende til",
-				"RECORDID": "Allokeret værelsestype",
+				"RECORDID": "Værelsestype",
 				"START": "Start",
 				"END": "Slut",
 				"EXCLUDEDAYSOFWEEK": "Ekskluder uge dage",
@@ -1886,7 +1886,7 @@
 			},
 			"PLACEHOLDERS": {
 				"CURRENCYCODE": "Valuta kode",
-				"RECORDID": "Allokeret værelse",
+				"RECORDID": "Værelses type",
 				"CHANGE": "Pris ændring",
 				"ISPERCENTAGE": "Ændring er i procent (%)",
 				"VALIDFROM": "Gældende fra",
@@ -1908,7 +1908,7 @@
 					"REQUIRED": "Valuta kode er påkrævet"
 				},
 				"RECORDID": {
-					"REQUIRED": "Allokeret værelse er påkrævet"
+					"REQUIRED": "Værelses type er påkrævet"
 				},
 				"CHANGE": {
 					"REQUIRED": "Pris ændring er påkrævet"
