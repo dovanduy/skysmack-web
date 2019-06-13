@@ -7,6 +7,7 @@ export class PersonsPermissions {
     public static addPersons = ADD + PersonsPermissions.persons;
     public static updatePersons = UPDATE + PersonsPermissions.persons;
     public static removePersons = REMOVE + PersonsPermissions.persons;
+    
     public static findPersonsFields = FIND + PersonsPermissions.personFields;
     public static addPersonsFields = ADD + PersonsPermissions.personFields;
     public static updatePersonsFields = UPDATE + PersonsPermissions.personFields;

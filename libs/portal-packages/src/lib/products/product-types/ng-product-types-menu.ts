@@ -5,6 +5,7 @@ import { MenuItem } from '@skysmack/framework';
 import { NgMenuItemProviders } from '@skysmack/ng-framework';
 import { SidebarMenu } from '@skysmack/portal-ui';
 import { NgSkysmackStore } from '@skysmack/ng-core';
+import { ProductsPermissions } from '@skysmack/packages-products';
 
 @Injectable({ providedIn: 'root' })
 export class NgProductTypesMenu extends SidebarMenu {
@@ -40,6 +41,9 @@ export class NgProductTypesMenu extends SidebarMenu {
             area: 'actions',
             order: 1,
             icon: 'groupAdd',
+            permissions: [
+                ProductsPermissions.addProductTypes
+            ]
         }));
         this.primaryMenuItems.push(new MenuItem({
             url: 'fields',
@@ -47,6 +51,12 @@ export class NgProductTypesMenu extends SidebarMenu {
             area: 'manage',
             order: 2,
             icon: 'shortText',
+            permissions: [
+                ProductsPermissions.findProductTypeFields,
+                ProductsPermissions.addProductTypeFields,
+                ProductsPermissions.updateProductTypeFields,
+                ProductsPermissions.removeProductTypeFields
+            ]
         }));
         this.setBackButton();
     }
