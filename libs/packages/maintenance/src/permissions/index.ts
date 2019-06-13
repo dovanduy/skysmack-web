@@ -1,1 +1,1 @@
-export * from 'maintenance-permissions';
+export * from './maintenance-permissions';

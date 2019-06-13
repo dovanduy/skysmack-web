@@ -1,38 +1,38 @@
 import { FIND, ADD, UPDATE, REMOVE } from '@skysmack/framework';
 
 export class IdentitiesPermissions {
-    private users = 'Users';
-    private roles = 'Roles';
+    private static users = 'Users';
+    private static roles = 'Roles';
 
-    private get = 'Get';
-    private set = 'Set';
+    private static get = 'Get';
+    private static set = 'Set';
 
-    public findUsers = FIND + this.users;
-    public addUsers = ADD + this.users;
-    public updateUsers = UPDATE + this.users;
-    public removeUsers = REMOVE + this.users;
+    public static findUsers = FIND + IdentitiesPermissions.users;
+    public static addUsers = ADD + IdentitiesPermissions.users;
+    public static updateUsers = UPDATE + IdentitiesPermissions.users;
+    public static removeUsers = REMOVE + IdentitiesPermissions.users;
 
-    public setPassword = 'SetPassword';
+    public static setPassword = 'SetPassword';
 
-    public findRoles = FIND + this.roles;
-    public addRoles = ADD + this.roles;
-    public updateRoles = UPDATE + this.roles;
-    public removeRoles = REMOVE + this.roles;
+    public static findRoles = FIND + IdentitiesPermissions.roles;
+    public static addRoles = ADD + IdentitiesPermissions.roles;
+    public static updateRoles = UPDATE + IdentitiesPermissions.roles;
+    public static removeRoles = REMOVE + IdentitiesPermissions.roles;
 
-    public findRoleNames = 'FindRoleNames';
-    public findUserIds = 'FindUserIds';
-    public addRole = 'AddRole';
-    public removeRole = 'RemoveRole';
+    public static findRoleNames = 'FindRoleNames';
+    public static findUserIds = 'FindUserIds';
+    public static addRole = 'AddRole';
+    public static removeRole = 'RemoveRole';
 
-    public getLockoutSettings = this.get + 'LockoutSettings';
-    public setLockoutSettings = this.set + 'LockoutSettings';
+    public static getLockoutSettings = IdentitiesPermissions.get + 'LockoutSettings';
+    public static setLockoutSettings = IdentitiesPermissions.set + 'LockoutSettings';
 
-    public getPasswordSettings = this.get + 'PasswordSettings';
-    public setPasswordSettings = this.set + 'PasswordSettings';
+    public static getPasswordSettings = IdentitiesPermissions.get + 'PasswordSettings';
+    public static setPasswordSettings = IdentitiesPermissions.set + 'PasswordSettings';
 
-    public getSignInSettings = this.get + 'SignInSettings';
-    public setSignInSettings = this.set + 'SignInSettings';
+    public static getSignInSettings = IdentitiesPermissions.get + 'SignInSettings';
+    public static setSignInSettings = IdentitiesPermissions.set + 'SignInSettings';
 
-    public getUserSettings = this.get + 'UserSettings';
-    public setUserSettings = this.set + 'UserSettings';
+    public static getUserSettings = IdentitiesPermissions.get + 'UserSettings';
+    public static setUserSettings = IdentitiesPermissions.set + 'UserSettings';
 }
