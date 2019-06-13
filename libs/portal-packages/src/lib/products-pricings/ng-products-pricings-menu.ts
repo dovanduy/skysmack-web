@@ -5,6 +5,7 @@ import { NgSkysmackStore } from '@skysmack/ng-core';
 import { MenuArea } from '@skysmack/framework';
 import { MenuItem } from '@skysmack/framework';
 import { NgMenuItemProviders } from '@skysmack/ng-framework';
+import { ProductsPricingsPermissions } from '@skysmack/packages-products-pricings'
 
 @Injectable({ providedIn: 'root' })
 export class NgProductsPricingsMenu extends SidebarMenu {
@@ -30,26 +31,17 @@ export class NgProductsPricingsMenu extends SidebarMenu {
         }));
 
         this.primaryMenuItems.push(new MenuItem({
-            url: 'sales-prices',
-            displayName: this.translationPrefix + 'SALES_PRICES',
-            area: 'manage',
-            order: 2,
-            icon: 'groupAdd',
-        }));
-        this.primaryMenuItems.push(new MenuItem({
-            url: 'types/sales-prices',
-            displayName: this.translationPrefix + 'SALES_PRICES_TYPES',
-            area: 'manage',
-            order: 3,
-            icon: 'shortText',
-        }));
-
-        this.primaryMenuItems.push(new MenuItem({
             url: 'price-changes',
             displayName: this.translationPrefix + 'PRICE_CHANGES',
             area: 'manage',
             order: 2,
             icon: 'groupAdd',
+            permissions: [
+                ProductsPricingsPermissions.findProductPriceChanges,
+                ProductsPricingsPermissions.addProductPriceChanges,
+                ProductsPricingsPermissions.updateProductPriceChanges,
+                ProductsPricingsPermissions.removeProductPriceChanges
+            ]
         }));
         this.primaryMenuItems.push(new MenuItem({
             url: 'types/price-changes',
@@ -57,6 +49,39 @@ export class NgProductsPricingsMenu extends SidebarMenu {
             area: 'manage',
             order: 2,
             icon: 'groupAdd',
+            permissions: [
+                ProductsPricingsPermissions.findProductTypePriceChanges,
+                ProductsPricingsPermissions.addProductTypePriceChanges,
+                ProductsPricingsPermissions.updateProductTypePriceChanges,
+                ProductsPricingsPermissions.removeProductTypePriceChanges
+            ]
+        }));
+        
+        this.primaryMenuItems.push(new MenuItem({
+            url: 'sales-prices',
+            displayName: this.translationPrefix + 'SALES_PRICES',
+            area: 'manage',
+            order: 2,
+            icon: 'groupAdd',
+            permissions: [
+                ProductsPricingsPermissions.findProductSalesPrices,
+                ProductsPricingsPermissions.addProductSalesPrices,
+                ProductsPricingsPermissions.updateProductSalesPrices,
+                ProductsPricingsPermissions.removeProductSalesPrices
+            ]
+        }));
+        this.primaryMenuItems.push(new MenuItem({
+            url: 'types/sales-prices',
+            displayName: this.translationPrefix + 'SALES_PRICES_TYPES',
+            area: 'manage',
+            order: 3,
+            icon: 'shortText',
+            permissions: [
+                ProductsPricingsPermissions.findProductTypeSalesPrices,
+                ProductsPricingsPermissions.addProductTypeSalesPrices,
+                ProductsPricingsPermissions.updateProductTypeSalesPrices,
+                ProductsPricingsPermissions.removeProductTypeSalesPrices
+            ]
         }));
 
         this.setBackButton({ connectedPackage: true });

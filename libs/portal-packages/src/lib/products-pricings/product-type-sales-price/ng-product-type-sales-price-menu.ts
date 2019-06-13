@@ -5,7 +5,7 @@ import { NgSkysmackStore } from '@skysmack/ng-core';
 import { MenuArea } from '@skysmack/framework';
 import { MenuItem } from '@skysmack/framework';
 import { NgMenuItemProviders } from '@skysmack/ng-framework';
-import { PRODUCT_TYPE_SALES_PRICE_AREA_KEY } from '@skysmack/packages-products-pricings';
+import { PRODUCT_TYPE_SALES_PRICE_AREA_KEY, ProductsPricingsPermissions } from '@skysmack/packages-products-pricings';
 
 @Injectable({ providedIn: 'root' })
 export class NgProductTypeSalesPriceMenu extends SidebarMenu {
@@ -41,6 +41,9 @@ export class NgProductTypeSalesPriceMenu extends SidebarMenu {
             area: 'actions',
             order: 1,
             icon: 'groupAdd',
+            permissions: [
+                ProductsPricingsPermissions.addProductSalesPrices
+            ]
         }));
         this.setBackButton();
     }
