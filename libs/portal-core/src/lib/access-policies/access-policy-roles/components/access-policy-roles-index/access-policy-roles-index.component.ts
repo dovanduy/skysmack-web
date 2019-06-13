@@ -18,7 +18,6 @@ export class AccessPolicyRolesIndexComponent extends RecordIndexComponent<Access
 
   public areaKey: string = ACCESS_POLICY_ROLES_AREA_KEY;
   public entityActions: EntityAction[] = [
-    new EntityAction().asUrlAction('edit', ENTITY_ACTIONS_EDIT, 'edit'),
     new EntityAction().asEventAction(ENTITY_ACTIONS_DELETE, this.delete, 'delete', this)
   ];
 
