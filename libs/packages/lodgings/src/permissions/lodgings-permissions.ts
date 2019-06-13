@@ -1,29 +1,29 @@
 import { FIND, ADD, UPDATE, REMOVE, FIELDS } from '@skysmack/framework';
 
 export class LodgingsPermissions {
-    private lodgings = 'Lodgings';
-    private lodgingFields = 'Lodging' + FIELDS;
+    private static lodgings = 'Lodgings';
+    private static lodgingFields = 'Lodging' + FIELDS;
 
-    private lodgingTypes = 'Lodging types';
-    private lodgingTypeFields = 'Lodging type' + FIELDS;
+    private static lodgingTypes = 'Lodging types';
+    private static lodgingTypeFields = 'Lodging type' + FIELDS;
 
-    public findLodgings = FIND + this.lodgings;
-    public addLodgings = ADD + this.lodgings;
-    public updateLodgings = UPDATE + this.lodgings;
-    public removeLodgings = REMOVE + this.lodgings;
+    public static findLodgings = FIND + LodgingsPermissions.lodgings;
+    public static addLodgings = ADD + LodgingsPermissions.lodgings;
+    public static updateLodgings = UPDATE + LodgingsPermissions.lodgings;
+    public static removeLodgings = REMOVE + LodgingsPermissions.lodgings;
 
-    public findLodgingFields = FIND + this.lodgingFields;
-    public addLodgingFields = ADD + this.lodgingFields;
-    public updateLodgingFields = UPDATE + this.lodgingFields;
-    public removeLodgingFields = REMOVE + this.lodgingFields;
+    public static findLodgingFields = FIND + LodgingsPermissions.lodgingFields;
+    public static addLodgingFields = ADD + LodgingsPermissions.lodgingFields;
+    public static updateLodgingFields = UPDATE + LodgingsPermissions.lodgingFields;
+    public static removeLodgingFields = REMOVE + LodgingsPermissions.lodgingFields;
 
-    public findLodgingTypes = FIND + this.lodgingTypes;
-    public addLodgingTypes = ADD + this.lodgingTypes;
-    public updateLodgingTypes = UPDATE + this.lodgingTypes;
-    public removeLodgingTypes = REMOVE + this.lodgingTypes;
+    public static findLodgingTypes = FIND + LodgingsPermissions.lodgingTypes;
+    public static addLodgingTypes = ADD + LodgingsPermissions.lodgingTypes;
+    public static updateLodgingTypes = UPDATE + LodgingsPermissions.lodgingTypes;
+    public static removeLodgingTypes = REMOVE + LodgingsPermissions.lodgingTypes;
 
-    public findLodgingTypeFields = FIND + this.lodgingTypeFields;
-    public addLodgingTypeFields = ADD + this.lodgingTypeFields;
-    public updateLodgingTypeFields = UPDATE + this.lodgingTypeFields;
-    public removeLodgingTypeFields = REMOVE + this.lodgingTypeFields;
+    public static findLodgingTypeFields = FIND + LodgingsPermissions.lodgingTypeFields;
+    public static addLodgingTypeFields = ADD + LodgingsPermissions.lodgingTypeFields;
+    public static updateLodgingTypeFields = UPDATE + LodgingsPermissions.lodgingTypeFields;
+    public static removeLodgingTypeFields = REMOVE + LodgingsPermissions.lodgingTypeFields;
 }
