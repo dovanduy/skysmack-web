@@ -75,7 +75,7 @@ export class NgReservationsPricingsMenu extends SidebarMenu {
             ]
         }));
 
-        this.setBackButton({ connectedPackage: true });
+        this.setBackButton({ connectedPackage: true }).addConnectedPackageMenuArea();
     }
 
     public setSpeedDialMenu() {

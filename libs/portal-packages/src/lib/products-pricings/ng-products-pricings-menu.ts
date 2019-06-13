@@ -50,7 +50,7 @@ export class NgProductsPricingsMenu extends SidebarMenu {
                 ProductsPricingsPermissions.findProductTypePriceChanges
             ]
         }));
-        
+
         this.primaryMenuItems.push(new MenuItem({
             url: 'sales-prices',
             displayName: this.translationPrefix + 'SALES_PRICES',
@@ -72,7 +72,7 @@ export class NgProductsPricingsMenu extends SidebarMenu {
             ]
         }));
 
-        this.setBackButton({ connectedPackage: true });
+        this.setBackButton({ connectedPackage: true }).addConnectedPackageMenuArea();
     }
 
     public setSpeedDialMenu() {
