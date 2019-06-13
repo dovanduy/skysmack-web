@@ -1,3 +1,2 @@
 export * from './accounts/index';
-
-export * from './ng-account.module'
+export * from './ng-account.module';

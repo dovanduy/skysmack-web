@@ -5,6 +5,7 @@ import { MenuArea } from '@skysmack/framework';
 import { MenuItem } from '@skysmack/framework';
 import { NgMenuItemProviders } from '@skysmack/ng-framework';
 import { NgSkysmackStore } from '@skysmack/ng-core';
+import { ReservationsPermissions } from '@skysmack/packages-lodging-reservations';
 
 @Injectable({ providedIn: 'root' })
 export class NgLodgingsReservationsMenu extends SidebarMenu {
@@ -32,6 +33,9 @@ export class NgLodgingsReservationsMenu extends SidebarMenu {
             area: 'reservations',
             translationPrefix: this.translationPrefix,
             order: 2,
+            permissions: [
+                ReservationsPermissions.findReservations
+            ]
         }));
         this.primaryMenuAreas.push(new MenuArea({
             area: 'settings',
@@ -45,6 +49,9 @@ export class NgLodgingsReservationsMenu extends SidebarMenu {
             area: 'actions',
             order: 1,
             icon: 'groupAdd',
+            permissions: [
+                ReservationsPermissions.addReservations
+            ]
         }));
 
         this.primaryMenuItems.push(new MenuItem({
@@ -53,6 +60,9 @@ export class NgLodgingsReservationsMenu extends SidebarMenu {
             area: 'reservations',
             order: 1,
             icon: 'groupAdd',
+            permissions: [
+                ReservationsPermissions.findReservations
+            ]
         }));
         this.primaryMenuItems.push(new MenuItem({
             url: '/' + this.packagePath + '/arrivals',
@@ -60,6 +70,9 @@ export class NgLodgingsReservationsMenu extends SidebarMenu {
             area: 'reservations',
             order: 1,
             icon: 'groupAdd',
+            permissions: [
+                ReservationsPermissions.findReservations
+            ]
         }));
         this.primaryMenuItems.push(new MenuItem({
             url: '/' + this.packagePath + '/stays',
@@ -67,6 +80,9 @@ export class NgLodgingsReservationsMenu extends SidebarMenu {
             area: 'reservations',
             order: 2,
             icon: 'groupAdd',
+            permissions: [
+                ReservationsPermissions.findReservations
+            ]
         }));
         this.primaryMenuItems.push(new MenuItem({
             url: '/' + this.packagePath + '/departures',
@@ -74,6 +90,9 @@ export class NgLodgingsReservationsMenu extends SidebarMenu {
             area: 'reservations',
             order: 3,
             icon: 'groupAdd',
+            permissions: [
+                ReservationsPermissions.findReservations
+            ]
         }));
         this.primaryMenuItems.push(new MenuItem({
             url: '/' + this.packagePath + '/settings/checkin',
@@ -81,6 +100,9 @@ export class NgLodgingsReservationsMenu extends SidebarMenu {
             area: 'settings',
             order: 3,
             icon: 'groupAdd',
+            permissions: [
+                ReservationsPermissions.checkIn
+            ]
         }));
 
         this.setBackButton({ connectedPackage: true });
@@ -94,6 +116,9 @@ export class NgLodgingsReservationsMenu extends SidebarMenu {
                 area: undefined,
                 order: 1,
                 icon: 'add',
+                permissions: [
+                    ReservationsPermissions.addReservations
+                ]
             }),
         ];
     }

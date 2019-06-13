@@ -5,6 +5,7 @@ import { NgSkysmackStore } from '@skysmack/ng-core';
 import { MenuArea } from '@skysmack/framework';
 import { MenuItem } from '@skysmack/framework';
 import { NgMenuItemProviders } from '@skysmack/ng-framework';
+import { AccessPolciesPermissions } from 'libs/ng-core/src/lib/access-policies/permissions/access-policies-permissions';
 
 
 @Injectable({ providedIn: 'root' })
@@ -41,6 +42,9 @@ export class NgAccessPolicyRulesMenu extends SidebarMenu {
             area: 'actions',
             order: 1,
             icon: 'groupAdd',
+            permissions: [
+                AccessPolciesPermissions.addRules
+            ]
         }));
         this.setBackButton({ customPath: '/access-policies' });
     }
@@ -53,6 +57,9 @@ export class NgAccessPolicyRulesMenu extends SidebarMenu {
                 area: undefined,
                 order: 1,
                 icon: 'add',
+                permissions: [
+                    AccessPolciesPermissions.addRules
+                ]
             }),
         ];
     }

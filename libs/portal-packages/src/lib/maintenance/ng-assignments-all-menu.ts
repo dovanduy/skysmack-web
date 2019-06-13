@@ -5,6 +5,7 @@ import { NgSkysmackStore } from '@skysmack/ng-core';
 import { MenuArea } from '@skysmack/framework';
 import { MenuItem } from '@skysmack/framework';
 import { NgMenuItemProviders } from '@skysmack/ng-framework';
+import { MaintenancePermissions } from '@skysmack/packages-maintenance';
 
 @Injectable({ providedIn: 'root' })
 export class NgAssignmentAllMenu extends SidebarMenu {
@@ -35,6 +36,9 @@ export class NgAssignmentAllMenu extends SidebarMenu {
             area: 'manage',
             order: 2,
             icon: 'groupAdd',
+            permissions: [
+                MaintenancePermissions.findAssignments
+            ]
         }));
         this.primaryMenuItems.push(new MenuItem({
             url: 'assignments/recurring',
@@ -42,18 +46,14 @@ export class NgAssignmentAllMenu extends SidebarMenu {
             area: 'manage',
             order: 3,
             icon: 'shortText',
+            permissions: [
+                MaintenancePermissions.findRecurringAssignments
+            ]
         }));
     }
 
     public setSpeedDialMenu() {
         this.speedDialMenu = [
-            new MenuItem({
-                url: 'create',
-                displayName: this.translationPrefix + 'CREATE',
-                area: undefined,
-                order: 1,
-                icon: 'add',
-            }),
         ];
     }
 }

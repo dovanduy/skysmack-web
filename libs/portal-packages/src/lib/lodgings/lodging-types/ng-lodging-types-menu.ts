@@ -5,6 +5,7 @@ import { MenuItem } from '@skysmack/framework';
 import { NgSkysmackStore } from '@skysmack/ng-core';
 import { SidebarMenu } from '@skysmack/portal-ui';
 import { NgMenuItemProviders } from '@skysmack/ng-framework';
+import { LodgingsPermissions } from '@skysmack/packages-lodgings';
 
 
 @Injectable({ providedIn: 'root' })
@@ -41,6 +42,9 @@ export class NgLodgingTypesMenu extends SidebarMenu {
             area: 'actions',
             order: 1,
             icon: 'groupAdd',
+            permissions: [
+                LodgingsPermissions.addLodgingTypes
+            ]
         }));
         this.primaryMenuItems.push(new MenuItem({
             url: 'fields',
@@ -48,6 +52,9 @@ export class NgLodgingTypesMenu extends SidebarMenu {
             area: 'manage',
             order: 2,
             icon: 'shortText',
+            permissions: [
+                LodgingsPermissions.addLodgingTypeFields
+            ]
         }));
         this.primaryMenuItems.push(new MenuItem({
             url: '/' + this.packagePath + '/types/availability',
@@ -67,6 +74,9 @@ export class NgLodgingTypesMenu extends SidebarMenu {
                 area: undefined,
                 order: 1,
                 icon: 'add',
+                permissions: [
+                    LodgingsPermissions.addLodgingTypes
+                ]
             }),
         ];
     }
