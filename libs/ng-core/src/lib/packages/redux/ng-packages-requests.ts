@@ -17,13 +17,14 @@ export class NgPackagesRequests extends NgRecordRequests<Package, string> {
         super(http, apiDomain, PACKAGES_REDUX_KEY, PACKAGES_ADDITIONAL_PATHS);
     }
 
-    public getAvailablePackages(): Observable<ReduxAction<GetAvailablePackagesSuccessPayload> | ReduxAction<HttpErrorResponse>> {
-        const url = this.apiDomain.domain + '/skysmack/available-packages';
+    public getAvailablePackages(action: ReduxAction<string>): Observable<ReduxAction<GetAvailablePackagesSuccessPayload> | ReduxAction<HttpErrorResponse>> {
+        const url = `${this.apiDomain.domain}/${action.payload}/available-packages`;
         return this.http.get<Package[]>(url, { observe: 'response' }).pipe(
             map(httpResponse => Object.assign({}, new ReduxAction<GetAvailablePackagesSuccessPayload>({
                 type: PackagesActions.GET_AVAILABLE_PACKAGES_SUCCESS,
                 payload: {
-                    availablePackages: httpResponse.body ? httpResponse.body : []
+                    availablePackages: httpResponse.body ? httpResponse.body : [],
+                    stateKey: action.payload
                 }
             }))),
             catchError((error) => of(Object.assign({}, new ReduxAction({

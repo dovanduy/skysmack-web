@@ -1,9 +1,13 @@
-// DEPENDENCIES
+// ============
+// Dependencies
+// ============
 const gulp = require('gulp');
 const mergeJson = require('gulp-merge-json');
 const plumber = require('gulp-plumber');
 
-//#region LOCALIZATION
+// ============================
+// Localization reusable logic
+// ============================
 const throwOnWrongPathsObject = (pathsObject) => {
     if (!pathsObject.project || !pathsObject.lib) {
         throw new Error('The paths object must define a project and lib property.')
@@ -39,22 +43,38 @@ const getLocalizationWatchersArray = (pathsObject) => {
         `!${pathsObject.project}/src/i18n/**/*.json`
     ];
 }
-//#endregion
 
-//#region WEB PROJECT
+// ============================
+// Localization for Web project
+// ============================
 const webPaths = {
     project: './apps/web/web-portal',
     lib: './libs'
 };
 const webLocalizationOutputPath = `${webPaths.project}/src/i18n`;
 
-// Translate once - keep this task name in sync with pack.json build script (currently 'gulp loc')
-const webLocalization = (done) => gulp.parallel(runLocalization(webPaths, 'en', webLocalizationOutputPath) /*, runLocalization(webPaths, 'fr', webLocalizationOutputPath) */ )(done);
-const webLocalizationWatch = () => gulp.watch(getLocalizationWatchersArray(webPaths), webLocalization);
-gulp.task('webLocalization', webLocalization);
-gulp.task('webLocalizationWatch', webLocalizationWatch);
-//#endregion
 
-// DEFAULT
-const defaultTasks = (done) => gulp.series(() => { })(done);
-gulp.task('default', defaultTasks);
+// =================
+// Define gulp tasks
+// =================
+const webLocalizationWatch = (done) => {
+    gulp.watch(getLocalizationWatchersArray(webPaths), webLocalization);
+    done();
+};
+
+const webLocalization = (done) => {
+    gulp.parallel(runLocalization(webPaths, 'en', webLocalizationOutputPath)); // Remember: Multiple runLocalization() functions can be used in parallel
+    done();
+};
+
+const defaultTask = (done) => {
+    console.log(`\nRUNNING gulp ALONE CURRENTLY DOES NOTHING!\n(Pssst. try 'gulp webLocalization' or 'gulp webLocalizationWatch' instead\n`);
+    done();
+}
+
+// ===================
+// Register gulp tasks
+// ===================
+gulp.task('webLocalizationWatch', webLocalizationWatch);
+gulp.task('webLocalization', webLocalization);
+gulp.task('default', defaultTask);

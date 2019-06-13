@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { ExpressionValues } from '../../models';
+import { Component } from '@angular/core';
+import { ExpressionValues } from '../../models/expression-values';
 
 @Component({
   selector: 'ss-recurring-time',

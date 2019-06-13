@@ -40,7 +40,7 @@ export class PackageRouteConfiguration {
             );
     }
 
-    private addRoute(packageUrl: string, modulePath: string) {
+    private addRoute(packageUrl: string, modulePath: Function | string) {
         let match = false;
         this.router.config.forEach(route => {
             if (route.path === packageUrl) {

@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { PersonsLodgingReservationsModule } from '@skysmack/portal-packages';
+import { PersonsLodgingReservationsModule } from './../../../../../../../libs/portal-packages/src/lib/persons-lodging-reservations/persons-lodging-reservations.module';
 
 @NgModule({
   imports: [

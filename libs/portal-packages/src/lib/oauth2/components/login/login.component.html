@@ -19,11 +19,11 @@
 
       <div style="margin: 0 8px; min-height: 2rem">
         <ng-container *ngFor="let accountPackage of accountPackages$ | async as accountPackages">
-          <a mat-button [routerLink]="['/' + accountPackage.path + '/forgot-password']">            
-            <span [translate]="'OAUTH2.OAUTH2_LOGIN.FORGOT_PASSWORD'">{{ skysmack.name }}</span>
+          <a mat-button [routerLink]="['/' + accountPackage.path + '/forgot-password']">
+            <span [translate]="'OAUTH2.OAUTH2_LOGIN.FORGOT_PASSWORD'"></span>
           </a>
-          <a mat-button [routerLink]="['/' + accountPackage.path + '/confirm-email']">              
-            <span [translate]="'OAUTH2.OAUTH2_LOGIN.CONFIRM_EMAIL'">{{ skysmack.name }}</span>
+          <a mat-button [routerLink]="['/' + accountPackage.path + '/confirm-email']">
+            <span [translate]="'OAUTH2.OAUTH2_LOGIN.CONFIRM_EMAIL'"></span>
           </a>
         </ng-container>
       </div>

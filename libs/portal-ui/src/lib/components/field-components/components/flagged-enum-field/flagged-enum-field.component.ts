@@ -2,14 +2,14 @@ import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { FieldBaseComponent } from '../field-base-component';
 import { Field, DisableUntilValueRule } from '@skysmack/ng-ui';
 import { map } from 'rxjs/operators';
-import { MatSelect } from '@angular/material';
+import { MatSelect } from '@angular/material/select';
 
 @Component({
   selector: 'ss-flagged-enum-field',
   templateUrl: './flagged-enum-field.component.html'
 })
 export class FlaggedEnumFieldComponent extends FieldBaseComponent<Field> implements OnInit, AfterViewInit {
-  @ViewChild('selectInput') public selectInput: MatSelect;
+  @ViewChild('selectInput', { static: false }) public selectInput: MatSelect;
 
   ngOnInit() {
     super.ngOnInit();

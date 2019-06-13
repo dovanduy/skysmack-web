@@ -1,18 +1,18 @@
 import { StrIndex } from '@skysmack/framework';
 import { Validation } from '@skysmack/ng-ui';
 
-export class NgVerifyEmailValidation extends Validation {
+export class PackagePathEditValidation extends Validation {
     public formErrors = {
-        token: ''
+        newPath: '',
     };
 
     public validationMessages: StrIndex<{}> = {
-        token: {
-            required: ''
+        newPath: {
+            required: '',
+            invalidStringLength: ''
         }
     };
-
-    public area = 'UI';
+    public area = 'packages';
 
     public formValidators = [];
 

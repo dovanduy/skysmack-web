@@ -164,7 +164,9 @@
 		},
 		"INDEX": {
 			"ACTIONS": "Actions",
-			"CHANGE_PASSWORD": "Change password"
+			"CHANGE_PASSWORD": "Change password",
+			"FORGOT_PASSWORD": "Forgot password",
+			"CONFIRM_EMAIL": "Confirm email"
 		},
 		"NOTIFICATIONS": {},
 		"QUEUE": {}
@@ -2195,7 +2197,9 @@
 				"TYPE": "Select package type",
 				"NAME": "Enter name",
 				"DESCRIPTION": "Enter description",
-				"PATH": "Enter path"
+				"PATH": "Enter path",
+				"CURRENTPATH": "Current path",
+				"NEWPATH": "New path"
 			},
 			"VALIDATION": {
 				"TYPE": {
@@ -2210,6 +2214,10 @@
 				},
 				"PATH": {
 					"REQUIRED": "A path is required.",
+					"INVALIDSTRINGLENGTH": "The path must be at least 3 characters long."
+				},
+				"NEWPATH": {
+					"REQUIRED": "New path is required.",
 					"INVALIDSTRINGLENGTH": "The path must be at least 3 characters long."
 				}
 			}
@@ -2230,8 +2238,11 @@
 		},
 		"EDIT": {
 			"EDITING": "Editing {{ object.name }} package",
-			"BUTTON_EDIT": "Update"
-		}
+			"BUTTON_EDIT": "Update",
+			"EDIT": "Edit package",
+			"PACKAGE_PATH": "Edit package path"
+		},
+		"EDITING_PATH": "Editing path"
 	},
 	"ADAPTORS": {
 		"FORM": {

@@ -31,6 +31,8 @@ export abstract class RecordActionsBase<TStateType, TStore extends Store<TStateT
     public static DELETE_SUCCESS = 'DELETE_SUCCESS';
     public static DELETE_FAILURE = 'DELETE_FAILURE';
 
+    protected identifier = 'id';
+
     constructor(
         protected store: TStore,
         protected prefix: string,
@@ -125,7 +127,7 @@ export abstract class RecordActionsBase<TStateType, TStore extends Store<TStateT
             return new QueueItem({
                 message: `${withQueue.replace('_QUEUE', '.QUEUE')}.UPDATING`,
                 messageParams: this.getMessageParams(record),
-                link: `${this.addAdditionalPaths(packagePath)}/edit/${record.object.id}`,
+                link: `${this.addAdditionalPaths(packagePath)}/edit/${record.object[this.identifier]}`,
                 packagePath,
                 localObject: record,
                 cancelAction: this.cancelAction
@@ -165,7 +167,7 @@ export abstract class RecordActionsBase<TStateType, TStore extends Store<TStateT
     public delete = <TRecord extends Record<TKey>, TKey>(records: LocalObject<TRecord, TKey>[], packagePath: string) => {
         let path = this.addAdditionalPaths(packagePath);
 
-        path = path + '?ids=' + records.map(x => x.object.id).join(',');
+        path = `${path}?${this.identifier}s=${records.map(x => x.object[this.identifier]).join(',')}`;
 
         records.forEach(record => record.error = false);
 
@@ -218,9 +220,5 @@ export abstract class RecordActionsBase<TStateType, TStore extends Store<TStateT
 
     protected addAdditionalPaths(url: string): string {
         return this.additionalPaths ? [url, ...this.additionalPaths].join('/') : url;
-    }
-
-    protected appendValues<T>(url, values: T[], prefix: string = '?ids=', seperator: string = ','): string {
-        return url + prefix + values.join(seperator);
     }
 }

@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { ProductsModule } from '@skysmack/portal-packages';
+import { ProductsModule } from './../../../../../../../libs/portal-packages/src/lib/products/products.module';
 
 @NgModule({
   imports: [

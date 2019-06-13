@@ -35,7 +35,7 @@ export class NgPackagesEpics extends RecordEpicsBase<Package, string> {
     public getAvailablePackagesEpic = (action$: ActionsObservable<ReduxAction<string>>): Observable<ReduxAction<GetAvailablePackagesSuccessPayload> | ReduxAction<HttpErrorResponse>> => {
         return action$.pipe(
             ofType(NgPackagesActions.GET_AVAILABLE_PACKAGES),
-            mergeMap(() => this.requests.getAvailablePackages())
+            mergeMap((action) => this.requests.getAvailablePackages(action))
         );
     }
 

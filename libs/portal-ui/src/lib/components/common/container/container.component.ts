@@ -1,5 +1,5 @@
 import { Component, Input, ViewChild, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
-import { MatSidenav } from '@angular/material';
+import { MatSidenav } from '@angular/material/sidenav';
 import { Router } from '@angular/router';
 import { SidebarMenu } from './../../../models/sidebar-menu/sidebar-menu';
 import { SubscriptionHandler } from '@skysmack/framework';
@@ -18,8 +18,8 @@ const SMALL_WIDTH_BREAKPOINT = 720;
 })
 export class ContainerComponent implements OnInit, OnDestroy {
   @Input() public sidebarMenu: SidebarMenu;
-  @ViewChild(MatSidenav) public sidenav: MatSidenav;
-  @ViewChild('editornav') public editornav: MatSidenav;
+  @ViewChild(MatSidenav, { static: false }) public sidenav: MatSidenav;
+  @ViewChild('editornav', { static: false }) public editornav: MatSidenav;
 
   public access$: Observable<boolean>;
   public authenticated$: Observable<boolean>;

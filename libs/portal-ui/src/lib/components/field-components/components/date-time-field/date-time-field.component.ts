@@ -1,5 +1,5 @@
 import { Component, ViewChild, ElementRef, AfterViewInit, OnInit } from '@angular/core';
-import { DateAdapter } from '@angular/material';
+import { DateAdapter } from '@angular/material/core';
 import { fromEvent } from 'rxjs';
 import { FieldBaseComponent } from '../field-base-component';
 import { DateTimeAdapter } from './date-time-adapter';
@@ -13,10 +13,10 @@ import { Field } from '@skysmack/ng-ui';
 })
 export class DateTimeFieldComponent extends FieldBaseComponent<Field> implements AfterViewInit, OnInit {
 
-  @ViewChild('timeInput') public timeInput: ElementRef;
+  @ViewChild('timeInput', { static: false }) public timeInput: ElementRef;
   public time: string;
 
-  @ViewChild('dateInput') public dateInput: ElementRef;
+  @ViewChild('dateInput', { static: false }) public dateInput: ElementRef;
   public date: string;
 
   ngOnInit() {

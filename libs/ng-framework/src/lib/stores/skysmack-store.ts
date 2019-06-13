@@ -1,5 +1,5 @@
 import { NgRedux } from '@angular-redux/store';
-import { map, take, tap } from 'rxjs/operators';
+import { map, take } from 'rxjs/operators';
 import { Observable, BehaviorSubject, of } from 'rxjs';
 import { LocalObject, toLocalObject, Package, hasValue, StrIndex, safeUndefinedTo, defined, OfflineState } from '@skysmack/framework';
 import { Skysmack, SkysmackAppState } from '@skysmack/packages-skysmack-core';
@@ -17,7 +17,6 @@ export class SkysmackStore {
     constructor(protected ngRedux: NgRedux<SkysmackAppState>) { }
 
     public setEditorItem(value: LocalObject<any, any>): void {
-        console.log('2:: ', value);
         this.editorItem = new BehaviorSubject(value);
     }
 
