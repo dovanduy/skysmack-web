@@ -53,6 +53,8 @@ export class NgAccessPolicyRolesFieldsConfig extends FieldsConfig<AccessPolicyRo
                 component: SelectFieldComponent,
                 value: entity ? entity.object.id.ruleId : undefined,
                 key: 'ruleId',
+                displayKey: 'id',
+                displaySubKey: 'ruleId',
                 optionsData$: this.accessPolicyRulesStore.get(packagePath),
                 validators: [Validators.required],
                 displayNameSelector: 'object.id',
@@ -65,6 +67,8 @@ export class NgAccessPolicyRolesFieldsConfig extends FieldsConfig<AccessPolicyRo
                 component: RolesSelectFieldComponent,
                 value: entity ? entity.object.id.roleId : undefined,
                 key: 'roleId',
+                displayKey: 'id',
+                displaySubKey: 'roleId',
                 validators: [Validators.required],
                 order: 2,
                 showColumn: true
