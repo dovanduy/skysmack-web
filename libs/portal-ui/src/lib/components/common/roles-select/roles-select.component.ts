@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter, OnDestroy } from '@angular/core';
 import { SubscriptionHandler, PagedQuery, Package } from '@skysmack/framework';
 import { NgSkysmackStore } from '@skysmack/ng-core';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 import { MatSelectChange } from '@angular/material/select';
 import { NgRolesStore, NgRolesActions } from '@skysmack/ng-packages';
 
@@ -43,14 +43,14 @@ export class RolesSelectComponent implements OnInit, OnDestroy {
       map((identityPackages: Package[]) => {
         // GET
         identityPackages.forEach(_package => {
-          // this.rolesActions.getPaged(_package.path, new PagedQuery());
+          this.rolesActions.getPaged(_package.path, new PagedQuery());
         });
 
         // SET
         this.identityRoles = identityPackages.map(_package => {
           return {
             name: _package.name,
-            // roles: this.rolesStore.get(_package.path)
+            roles: this.rolesStore.get(_package.path)
           };
         });
         this.value = this.currentlySelectedIds;

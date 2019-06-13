@@ -10,6 +10,7 @@ import { SelectFieldOption } from '@skysmack/ng-ui';
 import { AccessPolicyRolesValidation, NgAccessPolicyRulesStore } from '@skysmack/ng-core';
 import { FieldProviders } from '@skysmack/portal-ui';
 import { LoadedPackage } from '@skysmack/ng-framework';
+import { Router } from '@angular/router';
 
 @Injectable({ providedIn: 'root' })
 export class NgAccessPolicyRolesFieldsConfig extends FieldsConfig<AccessPolicyRole, AccessPolicyRoleKey> {
@@ -19,10 +20,12 @@ export class NgAccessPolicyRolesFieldsConfig extends FieldsConfig<AccessPolicyRo
 
     constructor(
         public accessPolicyRulesStore: NgAccessPolicyRulesStore,
-        public fieldProviders: FieldProviders
+        public fieldProviders: FieldProviders,
+        public router: Router
     ) { super(fieldProviders); }
 
     protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<AccessPolicyRole, AccessPolicyRoleKey>): Field[] {
+        const packagePath = this.router.url.split('/')[1];
 
         const modifyDisplayName = (options: SelectFieldOption[], optionsData: LocalObject<AccessPolicyRule, number>[]) => {
             const accessPolicyRules = optionsData;
@@ -50,7 +53,7 @@ export class NgAccessPolicyRolesFieldsConfig extends FieldsConfig<AccessPolicyRo
                 component: SelectFieldComponent,
                 value: entity ? entity.object.id.ruleId : undefined,
                 key: 'ruleId',
-                optionsData$: this.accessPolicyRulesStore.get('skysmack'),
+                optionsData$: this.accessPolicyRulesStore.get(packagePath),
                 validators: [Validators.required],
                 displayNameSelector: 'object.id',
                 modifyDisplayName,
