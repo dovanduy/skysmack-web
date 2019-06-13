@@ -5,6 +5,7 @@ import { MenuArea } from '@skysmack/framework';
 import { MenuItem } from '@skysmack/framework';
 import { NgMenuItemProviders } from '@skysmack/ng-framework';
 import { NgSkysmackStore } from '@skysmack/ng-core';
+import { ReservationsPermissions } from '@skysmack/packages-lodging-reservations';
 
 @Injectable({ providedIn: 'root' })
 export class NgLodgingsReservationsMenu extends SidebarMenu {
@@ -32,6 +33,12 @@ export class NgLodgingsReservationsMenu extends SidebarMenu {
             area: 'reservations',
             translationPrefix: this.translationPrefix,
             order: 2,
+            permissions: [
+                ReservationsPermissions.addReservations,
+                ReservationsPermissions.findReservations,
+                ReservationsPermissions.updateReservations,
+                ReservationsPermissions.removeReservations,
+            ]
         }));
         this.primaryMenuAreas.push(new MenuArea({
             area: 'settings',
@@ -81,6 +88,10 @@ export class NgLodgingsReservationsMenu extends SidebarMenu {
             area: 'settings',
             order: 3,
             icon: 'groupAdd',
+            permissions: [
+                ReservationsPermissions.checkIn,
+                ReservationsPermissions.undoCheckIn
+            ]
         }));
 
         this.setBackButton({ connectedPackage: true });

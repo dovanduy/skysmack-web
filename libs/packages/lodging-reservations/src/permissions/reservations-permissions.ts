@@ -1,28 +1,29 @@
 import { FIND, ADD, UPDATE, REMOVE } from '@skysmack/framework';
 
 export class ReservationsPermissions {
-    private reservations = 'Reservations';
-    public findReservations = FIND + this.reservations;
-    public addReservations = ADD + this.reservations;
-    public updateReservations = UPDATE + this.reservations;
-    public removeReservations = REMOVE + this.reservations;
+    private static reservations = 'Reservations';
 
-    public allocateLodging = 'AllocateLodging';
-    public overbooking = 'Overbooking';
-    public skipProcessingStatus = 'SkipProcessingStatus';
+    public static findReservations = FIND + ReservationsPermissions.reservations;
+    public static addReservations = ADD + ReservationsPermissions.reservations;
+    public static updateReservations = UPDATE + ReservationsPermissions.reservations;
+    public static removeReservations = REMOVE + ReservationsPermissions.reservations;
 
-    public checkIn = 'CheckIn';
-    public undoCheckIn = 'UndoCheckIn';
+    public static allocateLodging = 'AllocateLodging';
+    public static overbooking = 'Overbooking';
+    public static skipProcessingStatus = 'SkipProcessingStatus';
 
-    public move = 'Move';
-    public undoMove = 'UndoMove';
+    public static checkIn = 'CheckIn';
+    public static undoCheckIn = 'UndoCheckIn';
 
-    public checkOut = 'CheckOut';
-    public undoCheckOut = 'UndoCheckOut';
+    public static move = 'Move';
+    public static undoMove = 'UndoMove';
 
-    public cancel = 'Cancel';
-    public undoCancel = 'UndoCancel';
+    public static checkOut = 'CheckOut';
+    public static undoCheckOut = 'UndoCheckOut';
 
-    public noShow = 'NoShow';
-    public undoNoShow = 'UndoNoShow';
+    public static cancel = 'Cancel';
+    public static undoCancel = 'UndoCancel';
+
+    public static noShow = 'NoShow';
+    public static undoNoShow = 'UndoNoShow';
 }
