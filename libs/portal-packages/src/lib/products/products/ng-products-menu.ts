@@ -52,10 +52,7 @@ export class NgProductsMenu extends SidebarMenu {
             order: 2,
             icon: 'description',
             permissions: [
-                ProductsPermissions.findProductTypes,
-                ProductsPermissions.addProductTypes,
-                ProductsPermissions.updateProductTypes,
-                ProductsPermissions.removeProductTypes
+                ProductsPermissions.findProductTypes
             ]
         }));
         this.primaryMenuItems.push(new MenuItem({
@@ -65,10 +62,7 @@ export class NgProductsMenu extends SidebarMenu {
             order: 2,
             icon: 'shortText',
             permissions: [
-                ProductsPermissions.findProductsFields,
-                ProductsPermissions.addProductsFields,
-                ProductsPermissions.updateProductsFields,
-                ProductsPermissions.removeProductsFields
+                ProductsPermissions.findProductsFields
             ]
         }));
     }
@@ -81,6 +75,9 @@ export class NgProductsMenu extends SidebarMenu {
                 area: undefined,
                 order: 1,
                 icon: 'add',
+                permissions: [
+                    ProductsPermissions.addProducts
+                ]
             }),
         ];
     }

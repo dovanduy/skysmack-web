@@ -56,6 +56,9 @@ export class NgRecurringAssignmentsMenu extends SidebarMenu {
                 area: undefined,
                 order: 1,
                 icon: 'add',
+                permissions: [
+                    MaintenancePermissions.addRecurringAssignments
+                ]
             }),
         ];
     }

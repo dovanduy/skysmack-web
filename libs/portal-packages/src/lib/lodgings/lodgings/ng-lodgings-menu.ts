@@ -53,10 +53,7 @@ export class NgLodgingsMenu extends SidebarMenu {
             order: 2,
             icon: 'description',
             permissions: [
-                LodgingsPermissions.findLodgingTypes,
-                LodgingsPermissions.addLodgingTypes,
-                LodgingsPermissions.updateLodgingTypes,
-                LodgingsPermissions.removeLodgingTypes
+                LodgingsPermissions.findLodgingTypes
             ]
         }));
         this.primaryMenuItems.push(new MenuItem({
@@ -67,9 +64,6 @@ export class NgLodgingsMenu extends SidebarMenu {
             icon: 'shortText',
             permissions: [
                 LodgingsPermissions.findLodgingFields,
-                LodgingsPermissions.addLodgingFields,
-                LodgingsPermissions.updateLodgingFields,
-                LodgingsPermissions.removeLodgingFields
             ]
         }));
         this.primaryMenuItems.push(new MenuItem({
@@ -89,6 +83,9 @@ export class NgLodgingsMenu extends SidebarMenu {
                 area: undefined,
                 order: 1,
                 icon: 'add',
+                permissions: [
+                    LodgingsPermissions.addLodgings
+                ]
             }),
         ];
     }

@@ -42,7 +42,7 @@ export class NgProductTypeSalesPriceMenu extends SidebarMenu {
             order: 1,
             icon: 'groupAdd',
             permissions: [
-                ProductsPricingsPermissions.addProductSalesPrices
+                ProductsPricingsPermissions.addProductTypeSalesPrices
             ]
         }));
         this.setBackButton();
@@ -56,6 +56,9 @@ export class NgProductTypeSalesPriceMenu extends SidebarMenu {
                 area: undefined,
                 order: 1,
                 icon: 'add',
+                permissions: [
+                    ProductsPricingsPermissions.addProductTypeSalesPrices
+                ]
             }),
         ];
     }

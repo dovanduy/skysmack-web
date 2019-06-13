@@ -56,6 +56,9 @@ export class NgAssignmentTypesMenu extends SidebarMenu {
                 area: undefined,
                 order: 1,
                 icon: 'add',
+                permissions: [
+                    MaintenancePermissions.addAssignmentTypes
+                ]
             }),
         ];
     }

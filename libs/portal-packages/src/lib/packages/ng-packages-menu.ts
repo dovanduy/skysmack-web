@@ -5,7 +5,7 @@ import { MenuItem } from '@skysmack/framework';
 import { NgMenuItemProviders } from '@skysmack/ng-framework';
 
 import { SidebarMenu } from '@skysmack/portal-ui';
-import { NgSkysmackStore } from '@skysmack/ng-core';
+import { NgSkysmackStore, PackagesPermissions } from '@skysmack/ng-core';
 
 @Injectable({ providedIn: 'root' })
 export class NgPackagesMenu extends SidebarMenu {
@@ -41,6 +41,9 @@ export class NgPackagesMenu extends SidebarMenu {
             area: 'actions',
             order: 1,
             icon: 'groupAdd',
+            permissions: [
+                PackagesPermissions.addPackages
+            ]
         }));
 
         // Menu button to navigate to available package charts when that code is uncommented.
@@ -55,6 +58,9 @@ export class NgPackagesMenu extends SidebarMenu {
                 area: undefined,
                 order: 1,
                 icon: 'add',
+                permissions: [
+                    PackagesPermissions.addPackages
+                ]
             }),
         ];
     }

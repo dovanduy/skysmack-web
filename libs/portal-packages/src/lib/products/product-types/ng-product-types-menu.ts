@@ -52,10 +52,7 @@ export class NgProductTypesMenu extends SidebarMenu {
             order: 2,
             icon: 'shortText',
             permissions: [
-                ProductsPermissions.findProductTypeFields,
-                ProductsPermissions.addProductTypeFields,
-                ProductsPermissions.updateProductTypeFields,
-                ProductsPermissions.removeProductTypeFields
+                ProductsPermissions.findProductTypeFields
             ]
         }));
         this.setBackButton();
@@ -69,6 +66,9 @@ export class NgProductTypesMenu extends SidebarMenu {
                 area: undefined,
                 order: 1,
                 icon: 'add',
+                permissions: [
+                    ProductsPermissions.addProductTypes
+                ]
             }),
         ];
     }

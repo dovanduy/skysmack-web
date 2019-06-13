@@ -56,6 +56,9 @@ export class NgProductTypePriceChangesMenu extends SidebarMenu {
                 area: undefined,
                 order: 1,
                 icon: 'add',
+                permissions: [
+                    ProductsPricingsPermissions.addProductTypePriceChanges
+                ]
             }),
         ];
     }

@@ -42,10 +42,7 @@ export class NgAssignmentsMenu extends SidebarMenu {
             order: 1,
             icon: 'groupAdd',
             permissions: [
-                MaintenancePermissions.findAssignments,
-                MaintenancePermissions.addAssignments,
-                MaintenancePermissions.updateAssignments,
-                MaintenancePermissions.removeAssignments,
+                MaintenancePermissions.addAssignments
             ]
             }));
         this.primaryMenuItems.push(new MenuItem({
@@ -55,10 +52,7 @@ export class NgAssignmentsMenu extends SidebarMenu {
             order: 2,
             icon: 'description',
             permissions: [
-                MaintenancePermissions.findAssignmentTypes,
-                MaintenancePermissions.addAssignmentTypes,
-                MaintenancePermissions.updateAssignmentTypes,
-                MaintenancePermissions.removeAssignmentTypes,
+                MaintenancePermissions.findAssignmentTypes
             ]
         }));
         this.primaryMenuItems.push(new MenuItem({
@@ -68,10 +62,7 @@ export class NgAssignmentsMenu extends SidebarMenu {
             order: 3,
             icon: 'shortText',
             permissions: [
-                MaintenancePermissions.findMaintenanceStates,
-                MaintenancePermissions.addMaintenanceStates,
-                MaintenancePermissions.updateMaintenanceStates,
-                MaintenancePermissions.removeMaintenanceStates,
+                MaintenancePermissions.findMaintenanceStates
             ]
         }));
         this.setBackButton();
@@ -85,6 +76,9 @@ export class NgAssignmentsMenu extends SidebarMenu {
                 area: undefined,
                 order: 1,
                 icon: 'add',
+                permissions: [
+                    MaintenancePermissions.addAssignments
+                ]
             }),
         ];
     }

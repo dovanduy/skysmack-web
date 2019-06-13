@@ -56,6 +56,9 @@ export class NgMaintenanceStatesMenu extends SidebarMenu {
                 area: undefined,
                 order: 1,
                 icon: 'add',
+                permissions: [
+                    MaintenancePermissions.addMaintenanceStates
+                ]
             }),
         ];
     }

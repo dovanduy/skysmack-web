@@ -37,10 +37,7 @@ export class NgProductsPricingsMenu extends SidebarMenu {
             order: 2,
             icon: 'groupAdd',
             permissions: [
-                ProductsPricingsPermissions.findProductPriceChanges,
-                ProductsPricingsPermissions.addProductPriceChanges,
-                ProductsPricingsPermissions.updateProductPriceChanges,
-                ProductsPricingsPermissions.removeProductPriceChanges
+                ProductsPricingsPermissions.findProductPriceChanges
             ]
         }));
         this.primaryMenuItems.push(new MenuItem({
@@ -50,10 +47,7 @@ export class NgProductsPricingsMenu extends SidebarMenu {
             order: 2,
             icon: 'groupAdd',
             permissions: [
-                ProductsPricingsPermissions.findProductTypePriceChanges,
-                ProductsPricingsPermissions.addProductTypePriceChanges,
-                ProductsPricingsPermissions.updateProductTypePriceChanges,
-                ProductsPricingsPermissions.removeProductTypePriceChanges
+                ProductsPricingsPermissions.findProductTypePriceChanges
             ]
         }));
         
@@ -64,10 +58,7 @@ export class NgProductsPricingsMenu extends SidebarMenu {
             order: 2,
             icon: 'groupAdd',
             permissions: [
-                ProductsPricingsPermissions.findProductSalesPrices,
-                ProductsPricingsPermissions.addProductSalesPrices,
-                ProductsPricingsPermissions.updateProductSalesPrices,
-                ProductsPricingsPermissions.removeProductSalesPrices
+                ProductsPricingsPermissions.findProductSalesPrices
             ]
         }));
         this.primaryMenuItems.push(new MenuItem({
@@ -77,10 +68,7 @@ export class NgProductsPricingsMenu extends SidebarMenu {
             order: 3,
             icon: 'shortText',
             permissions: [
-                ProductsPricingsPermissions.findProductTypeSalesPrices,
-                ProductsPricingsPermissions.addProductTypeSalesPrices,
-                ProductsPricingsPermissions.updateProductTypeSalesPrices,
-                ProductsPricingsPermissions.removeProductTypeSalesPrices
+                ProductsPricingsPermissions.findProductTypeSalesPrices
             ]
         }));
 
@@ -89,13 +77,6 @@ export class NgProductsPricingsMenu extends SidebarMenu {
 
     public setSpeedDialMenu() {
         this.speedDialMenu = [
-            new MenuItem({
-                url: 'create',
-                displayName: this.translationPrefix + 'CREATE',
-                area: undefined,
-                order: 1,
-                icon: 'add',
-            }),
         ];
     }
 }
