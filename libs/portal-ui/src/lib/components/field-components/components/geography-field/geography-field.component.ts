@@ -10,8 +10,8 @@ interface Point { latitude: number; longtitude: number; }
 })
 export class GeographyFieldComponent extends FieldBaseComponent<Field> implements AfterViewInit, OnDestroy, OnInit {
 
-  @ViewChild('latitude') public latitude: ElementRef;
-  @ViewChild('longtitude') public longtitude: ElementRef;
+  @ViewChild('latitude', { static: false }) public latitude: ElementRef;
+  @ViewChild('longtitude', { static: false }) public longtitude: ElementRef;
 
   constructor(
     private component: ElementRef,

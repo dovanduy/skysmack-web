@@ -7,7 +7,7 @@ import { FieldsConfig, SelectFieldComponent, HiddenFieldComponent, RolesSelectFi
 import { AccessPolicyRole, AccessPolicyRoleKey, AccessPolicyRule, ACCESS_POLICY_ROLES_AREA_KEY } from '@skysmack/packages-skysmack-core';
 import { Validators } from '@angular/forms';
 import { SelectFieldOption } from '@skysmack/ng-ui';
-import { AccessPolicyRolesValidation, NgAccessPolicyRulesStore, NgAccessPolicyRulesActions } from '@skysmack/ng-core';
+import { AccessPolicyRolesValidation, NgAccessPolicyRulesStore, NgAccessPolicyRulesActions, NgAccessPolicyRolesStore, NgAccessPolicyRolesActions } from '@skysmack/ng-core';
 import { FieldProviders } from '@skysmack/portal-ui';
 import { NgRolesStore, NgRolesActions } from '@skysmack/ng-packages';
 import { LoadedPackage } from '@skysmack/ng-framework';
@@ -23,6 +23,8 @@ export class NgAccessPolicyRolesFieldsConfig extends FieldsConfig<AccessPolicyRo
         public accessPolicyRulesActions: NgAccessPolicyRulesActions,
         public rolesStore: NgRolesStore,
         public rolesActions: NgRolesActions,
+        public accessPolicyRolesStore: NgAccessPolicyRolesStore,
+        public accessPolicyRolesActions: NgAccessPolicyRolesActions,
         public fieldProviders: FieldProviders
     ) { super(fieldProviders); }
 
@@ -69,7 +71,12 @@ export class NgAccessPolicyRolesFieldsConfig extends FieldsConfig<AccessPolicyRo
                 component: RolesSelectFieldComponent,
                 value: entity ? entity.object.id.roleId : undefined,
                 key: 'roleId',
+                displayKey: 'role',
+                displaySubKey: 'object.id',
+                optionsData$: this.accessPolicyRolesStore.get('skysmack'),
+                getDependencies: () => { this.accessPolicyRolesActions.getPaged('skysmack', new PagedQuery()); },
                 validators: [Validators.required],
+                displayNameSelector: 'object.id',
                 order: 2,
                 showColumn: true
             })
