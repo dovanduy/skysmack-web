@@ -21,6 +21,7 @@ import { directives } from './directives/directives';
 import { ValidatorsFieldComponent } from './components/field-components/components/validators-field/validators-field.component';
 import { RecurringExpressionFieldModule } from './components/field-components/components/recurring-expression-field/recurring-expression-field.module';
 import { RecurringExpressionFieldComponent } from './components/field-components/components/recurring-expression-field/recurring-expression-field.component';
+import { AngularEditorModule } from '@kolkov/angular-editor';
 
 @NgModule({
   imports: [
@@ -30,7 +31,8 @@ import { RecurringExpressionFieldComponent } from './components/field-components
     TranslateModule.forRoot(),
     RecurringExpressionFieldModule,
     ValidatorsFieldModule,
-    MaterialModule // Must come after BrowserAnimationsModule
+    MaterialModule, // Must come after BrowserAnimationsModule
+    AngularEditorModule
   ],
   providers: [
     {
