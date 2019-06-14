@@ -1,7 +1,7 @@
 import { Injectable, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ApiDomain, API_DOMAIN_INJECTOR_TOKEN, HttpResponse, HttpErrorResponse } from '@skysmack/framework';
-import { AccountRequests, ChangePassword, ConfirmEmail } from '@skysmack/packages-account';
+import { AccountRequests, ChangePassword, ConfirmEmail } from '@skysmack/packages-identities';
 import { Observable, of } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 

@@ -109,11 +109,6 @@ import { fieldReducer, settingsReducer } from '@skysmack/redux';
         loadChildren: './../packages/modules/terminal_payments_wrapper.module#TerminalPaymentsWrapperModule'
       },
       {
-        path: 'skysmack/loadPackages/account',
-        // loadChildren: () => import('@skysmack/portal-packages').then(m => m.AccountModule)
-        loadChildren: './../packages/modules/account_wrapper.module#AccountWrapperModule'
-      },
-      {
         path: 'skysmack/loadPackages/emails',
         // loadChildren: () => import('@skysmack/portal-packages').then(m => m.EmailsModule)
         loadChildren: './../packages/modules/emails_wrapper.module#EmailsWrapperModule'

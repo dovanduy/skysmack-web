@@ -16,7 +16,6 @@ import { loadOauth2Package } from '../packages/oauth2-package-manifest';
 import { loadMaintenancePackage } from '../packages/maintenance-package-manifest';
 import { loadTerminalPaymentsPackage } from '../packages/terminal-payments-manifest';
 import { loadIdentitiesPackage } from '../packages/identities-package-manifest';
-import { loadAccountPackage } from '../packages/account-manifest';
 import { loadReservationsPricingsPackage } from '../packages/reservations-pricings-package-manifest';
 import { loadInvoicesCashPaymentsPackage } from '../packages/invoices-cash-payments-package-manifest';
 import { loadPackagesPackage } from '../packages/packages-package-manifest';
@@ -52,8 +51,7 @@ export const packageLoaders = [
     { provide: APP_INITIALIZER, useFactory: loadOauth2Package, deps: [PackageLoader], multi: true },
     { provide: APP_INITIALIZER, useFactory: loadMaintenancePackage, deps: [PackageLoader], multi: true },
     { provide: APP_INITIALIZER, useFactory: loadTerminalPaymentsPackage, deps: [PackageLoader], multi: true },
-    { provide: APP_INITIALIZER, useFactory: loadAccountPackage, deps: [PackageLoader], multi: true },
-    { provide: APP_INITIALIZER, useFactory: loadEmailsPackage, deps: [PackageLoader], multi: true },
+    { provide: APP_INITIALIZER, useFactory: loadEmailsPackage, deps: [PackageLoader], multi: true }
 ];
 
 export const injectionTokens = [

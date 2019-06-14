@@ -7,7 +7,7 @@ import { Field } from '@skysmack/ng-ui';
 import { FieldsConfig, EmailFieldComponent, StringFieldComponent } from '@skysmack/portal-ui';
 import { FieldProviders } from '@skysmack/portal-ui';
 import { LoadedPackage } from '@skysmack/ng-framework';
-import { ACCOUNTS_AREA_KEY, ConfirmEmail } from '@skysmack/packages-account';
+import { ACCOUNTS_AREA_KEY, ConfirmEmail } from '@skysmack/packages-identities';
 import { NgConfirmEmailValidation } from '@skysmack/ng-packages';
 
 @Injectable({ providedIn: 'root' })

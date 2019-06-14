@@ -3,7 +3,7 @@ import { BaseComponent } from '@skysmack/portal-ui';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgSkysmackStore } from '@skysmack/ng-core';
 import { NgAccountsMenu } from '../../ng-accounts-menu';
-import { AccountState } from '@skysmack/packages-account';
+import { AccountState } from '@skysmack/packages-identities';
 
 @Component({
   selector: 'skysmack-account',

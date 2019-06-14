@@ -3,7 +3,7 @@ import { FormHelper, Field } from '@skysmack/ng-ui';
 import { NgChangePasswordFieldsConfig } from '../../ng-change-password-fields-config';
 import { Observable } from 'rxjs';
 import { BaseComponent, EditorNavService } from '@skysmack/portal-ui';
-import { AccountAppState } from '@skysmack/packages-account';
+import { AccountAppState } from '@skysmack/packages-identities';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgSkysmackStore } from '@skysmack/ng-core';
 import { switchMap, take, tap } from 'rxjs/operators';

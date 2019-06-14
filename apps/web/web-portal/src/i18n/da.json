@@ -173,6 +173,7 @@
 		"INDEX": {
 			"ROLES": "Roller",
 			"USERS": "Brugere",
+			"ACCOUNTS": "Bruger kontier",
 			"USERS_ROLES_TITLE": "Bruger roller",
 			"MANAGE": "Konfigurer",
 			"SETTINGS": "Indstillinger",

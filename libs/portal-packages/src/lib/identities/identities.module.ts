@@ -6,13 +6,14 @@ import { LanguageService } from '@skysmack/portal-ui';
 import { NgIdentitiesModule } from '@skysmack/ng-packages';
 import { PortalUiModule, FieldsModule, SettingsModule } from '@skysmack/portal-ui';
 import { IdentitiesRoutingModule } from './identities-routing.module';
-import { identitiesComponents } from './components/identities-components';
 import { NgLockoutSettingsFieldsConfig } from './ng-lockout-settings-fields-config';
 import { NgUserSettingsFieldsConfig } from './ng-user-settings-fields-config';
 import { NgPasswordSettingsFieldsConfig } from './ng-password-settings-fields-config';
 import { NgSignInSettingsFieldsConfig } from './ng-sign-in-settings-fields-config';
-import { rolesComponents } from './identity-roles/components';
-import { usersComponents } from './identity-users/components';
+import { identitiesComponents } from './components/identities-components';
+import { rolesComponents } from './identity-roles/components/roles-components';
+import { usersComponents } from './identity-users/components/users-components';
+import { accountsComponents } from './accounts/components/accounts-components';
 
 @NgModule({
   imports: [
@@ -27,7 +28,8 @@ import { usersComponents } from './identity-users/components';
   declarations: [
     ...identitiesComponents,
     ...rolesComponents,
-    ...usersComponents
+    ...usersComponents,
+    ...accountsComponents
   ],
   providers: [
     LanguageService,

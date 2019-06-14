@@ -1,5 +1,5 @@
 import { AppState, sharedReducer } from '@skysmack/redux';
-import { ACCOUNTS_REDUCER_KEY } from '../constants';
+import { ACCOUNTS_REDUCER_KEY } from '../../constants';
 
 /**
  * This is to be used when you want to access account via the GLOBAL state. E.g. state.account (where account is the reducer name.)

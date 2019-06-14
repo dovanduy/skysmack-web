@@ -4,7 +4,7 @@ import { FormHelper } from '@skysmack/ng-ui';
 import { Router, ActivatedRoute } from '@angular/router';
 import { toLocalObject } from '@skysmack/framework';
 import { BaseComponent, EditorNavService } from '@skysmack/portal-ui';
-import { AccountAppState } from '@skysmack/packages-account';
+import { AccountAppState } from '@skysmack/packages-identities';
 import { NgSkysmackStore } from '@skysmack/ng-core';
 import { NgAccountRequests } from '@skysmack/ng-packages';
 

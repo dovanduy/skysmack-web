@@ -56,6 +56,16 @@ export class NgIdentitiesIndexMenu extends SidebarMenu {
             ]
         }));
         this.primaryMenuItems.push(new MenuItem({
+            url: 'account',
+            displayName: this.translationPrefix + 'ACCOUNTS',
+            area: 'manage',
+            order: 2,
+            icon: 'groupAdd',
+            permissions: [
+                // ???
+            ]
+        }));
+        this.primaryMenuItems.push(new MenuItem({
             url: 'settings/lockout',
             displayName: this.translationPrefix + 'AVAILABLE_SETTINGS.LOCKOUT',
             area: 'settings',

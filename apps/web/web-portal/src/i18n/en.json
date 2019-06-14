@@ -183,7 +183,8 @@
 				"USER": "User",
 				"PASSWORD": "Password",
 				"SIGNIN": "Sign in"
-			}
+			},
+			"ACCOUNTS": "Accounts"
 		}
 	},
 	"IDENTITIES_SETTINGS": {

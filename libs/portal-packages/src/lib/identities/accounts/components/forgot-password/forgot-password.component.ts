@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { NgForgotPasswordFieldsConfig } from './ng-forgot-password-fields-config';
 import { FormHelper, Field } from '@skysmack/ng-ui';
 import { Observable } from 'rxjs';
-import { AccountAppState } from '@skysmack/packages-account';
+import { AccountAppState } from '@skysmack/packages-identities';
 import { BaseComponent, EditorNavService } from '@skysmack/portal-ui';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgSkysmackStore } from '@skysmack/ng-core';

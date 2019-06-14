@@ -71,9 +71,6 @@
       "@skysmack/packages-terminal-payments": [
         "./dist/@skysmack/packages-terminal-payments"
       ],
-      "@skysmack/packages-account": [
-        "./dist/@skysmack/packages-account"
-      ],
       "@skysmack/packages-reservations-pricings": [
         "./dist/@skysmack/packages-reservations-pricings"
       ],

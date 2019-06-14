@@ -1,6 +1,6 @@
 import { StrIndex } from '@skysmack/framework';
 import { Validation, CustomValidators } from '@skysmack/ng-ui';
-import { ACCOUNTS_AREA_KEY } from '@skysmack/packages-account';
+import { ACCOUNTS_AREA_KEY } from '@skysmack/packages-identities';
 
 export class NgConfirmEmailValidation extends Validation {
     public formErrors = {
