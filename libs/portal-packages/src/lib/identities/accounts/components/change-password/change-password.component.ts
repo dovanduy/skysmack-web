@@ -6,7 +6,7 @@ import { BaseComponent, EditorNavService } from '@skysmack/portal-ui';
 import { AccountAppState } from '@skysmack/packages-identities';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgSkysmackStore } from '@skysmack/ng-core';
-import { switchMap, take, tap } from 'rxjs/operators';
+import { switchMap, take, tap, map } from 'rxjs/operators';
 import { NgAccountRequests } from '@skysmack/ng-packages';
 
 @Component({
@@ -42,8 +42,10 @@ export class ChangePasswordComponent extends BaseComponent<AccountAppState, unkn
 
   public onSubmit(fh: FormHelper) {
     fh.formValid(() => {
-      this.accountRequest.changePassword(this.packagePath, fh.form.value).pipe(take(1)).subscribe();
-      this.router.navigate([this.packagePath]);
+      this.accountRequest.changePassword(this.packagePath, fh.form.value).pipe(
+        map(() => this.router.navigate([this.packagePath])),
+        take(1)
+      ).subscribe();
     });
   }
 }
