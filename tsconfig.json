@@ -97,6 +97,9 @@
       ],
       "@skysmack/packages-account": [
         "libs/packages/account/public_api.ts"
+      ],
+      "@skysmack/packages-emails": [
+        "libs/packages/emails/public_api.ts"
       ]
     }
   },

@@ -88,6 +88,9 @@
     },
     "packages-invoices-cash-payments": {
       "tags": []
+    },
+    "packages-emails": {
+      "tags": []
     }
   }
 }
