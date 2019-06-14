@@ -3,7 +3,7 @@ import { ProductTypesCreateComponent } from './product-types-create/product-type
 import { ProductTypesEditComponent } from './product-types-edit/product-types-edit.component';
 import { FieldsIndexComponent, FieldsCreateComponent, FieldsEditComponent } from '@skysmack/portal-ui';
 import { Routes } from '@angular/router';
-import { PRODUCT_TYPES_AREA_KEY } from 'libs/packages/products/src';
+import { PRODUCT_TYPES_AREA_KEY } from '@skysmack/packages-products';
 
 export const productTypesRoutes: Routes = [
     {
