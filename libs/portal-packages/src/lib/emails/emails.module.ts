@@ -7,6 +7,7 @@ import { NgEmailsModule } from '@skysmack/ng-packages';
 import { PortalUiModule, FieldsModule } from '@skysmack/portal-ui';
 import { LanguageService } from '@skysmack/portal-ui';
 import { emailsComponents } from './emails/components/emails-components';
+import { emailTemplatesComponents } from './email-templates';
 
 @NgModule({
   imports: [
@@ -18,7 +19,8 @@ import { emailsComponents } from './emails/components/emails-components';
     FieldsModule
   ],
   declarations: [
-    ...emailsComponents
+    ...emailsComponents,
+    ...emailTemplatesComponents
   ],
   providers: [
     LanguageService
