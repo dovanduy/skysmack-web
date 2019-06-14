@@ -1,0 +1,32 @@
+{
+    "EMAILS": {
+        "FORM": {
+            "LABELS": {},
+            "PLACEHOLDERS": {},
+            "VALIDATION": {}
+        },
+        "CREATE": {
+            "CREATE": "Create",
+            "BUTTON_CREATE": "Create"
+        },
+        "EDIT": {
+            "EDIT": "Edit",
+            "BUTTON_EDIT": "Update"
+        },
+        "INDEX": {
+            "CREATE": "Create",
+            "EDIT": "Edit",
+            "DELETE": "Delete",
+            "ITEM": "Item",
+            "MANAGE": "Manage",
+            "ACTIONS": "Actions"
+        },
+        "QUEUE": {
+            "ADDING": "Adding {{ currencyCode }}",
+            "UPDATING": "Updating {{ currencyCode }}",
+            "DELETING": "Deleting {{ currencyCode }}",
+            "ERROR": "An error occured with {{ currencyCode }}. Correct and try again."
+        },
+        "ENTITY_ACTION": {}
+    }
+}

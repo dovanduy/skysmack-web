@@ -14,4 +14,4 @@ export * from './terminal-payments/index';
 export * from './products-pricings/index';
 export * from './reservations-pricings/index';
 export * from './account/index';
-
+export * from './emails/index';

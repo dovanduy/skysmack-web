@@ -21,6 +21,7 @@ import { loadReservationsPricingsPackage } from '../packages/reservations-pricin
 import { loadInvoicesCashPaymentsPackage } from '../packages/invoices-cash-payments-package-manifest';
 import { loadPackagesPackage } from '../packages/packages-package-manifest';
 import { loadAccessPoliciesPackage } from '../packages/access-policies-package-manifest';
+import { loadEmailsPackage } from '../packages/emails-package-manifest';
 
 export function configureSkysmack(actions: NgSkysmackActions) {
     return () => actions.getSkysmack();
@@ -52,6 +53,7 @@ export const packageLoaders = [
     { provide: APP_INITIALIZER, useFactory: loadMaintenancePackage, deps: [PackageLoader], multi: true },
     { provide: APP_INITIALIZER, useFactory: loadTerminalPaymentsPackage, deps: [PackageLoader], multi: true },
     { provide: APP_INITIALIZER, useFactory: loadAccountPackage, deps: [PackageLoader], multi: true },
+    { provide: APP_INITIALIZER, useFactory: loadEmailsPackage, deps: [PackageLoader], multi: true },
 ];
 
 export const injectionTokens = [
@@ -64,3 +66,4 @@ export const applicationStartup = [
     ...packageLoaders,
     ...injectionTokens
 ];
+
