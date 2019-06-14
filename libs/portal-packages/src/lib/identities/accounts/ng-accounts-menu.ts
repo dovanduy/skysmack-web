@@ -31,6 +31,13 @@ export class NgAccountsMenu extends SidebarMenu {
             order: 1,
         }));
 
+        this.primaryMenuAreas.push(new MenuArea({
+            area: 'manage',
+            translationPrefix: this.translationPrefix,
+            order: 1,
+        }));
+
+
         this.primaryMenuItems.push(new MenuItem({
             url: 'change-password',
             displayName: this.translationPrefix + 'CHANGE_PASSWORD',
@@ -54,6 +61,8 @@ export class NgAccountsMenu extends SidebarMenu {
             order: 1,
             icon: 'groupAdd'
         }));
+
+        this.setBackButton();
     }
 
     public setSpeedDialMenu() {

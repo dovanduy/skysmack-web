@@ -3,17 +3,17 @@ import { Validators } from '@angular/forms';
 import { FormRule, CustomValidators } from '@skysmack/ng-ui';
 import { LocalObject } from '@skysmack/framework';
 import { Field } from '@skysmack/ng-ui';
-import { OAUTH2_AREA_KEY } from '@skysmack/packages-oauth2';
 
 import { FieldsConfig, EmailFieldComponent } from '@skysmack/portal-ui';
 import { LoadedPackage } from '@skysmack/ng-framework';
 import { FieldProviders } from '@skysmack/portal-ui';
 import { NgForgotPasswordValidation } from './ng-forgot-password-validation';
+import { ACCOUNTS_AREA_KEY } from '@skysmack/packages-identities';
 
 @Injectable({ providedIn: 'root' })
 export class NgForgotPasswordFieldsConfig extends FieldsConfig<string, unknown> {
     public validation = new NgForgotPasswordValidation();
-    public area = OAUTH2_AREA_KEY;
+    public area = ACCOUNTS_AREA_KEY;
     public formRules: FormRule[] = [];
 
     constructor(

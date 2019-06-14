@@ -15,10 +15,10 @@
         </nav>
 
         <div class="sys-docker">
-            <a class="app-link" [routerLink]="['/skysmack/settings']">
+            <!-- <a class="app-link" [routerLink]="['/skysmack/settings']">
                 <i class="material-icons md-light app-icon">settings</i>
                 <h5 class="app-name">{{ 'UI.PACKAGE_DRAWER.SETTINGS' | translate }}</h5>
-            </a>
+            </a> -->
             <ng-container *ngFor="let loadedPackage of loadedPackages">
                 <ng-container *ngIf="loadedPackage.packageManifest">
                     <a class="app-link" *ngIf="loadedPackage.packageManifest.menuLocation === 'docker'"

@@ -7,6 +7,7 @@ import { BaseComponent, EditorNavService } from '@skysmack/portal-ui';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgSkysmackStore } from '@skysmack/ng-core';
 import { NgAccountRequests } from '@skysmack/ng-packages';
+import { map, take } from 'rxjs/operators';
 
 @Component({
   selector: 'ss-forgot-password',
@@ -23,7 +24,7 @@ export class ForgotPasswordComponent extends BaseComponent<AccountAppState, unkn
     public skysmackStore: NgSkysmackStore,
     public fieldsConfig: NgForgotPasswordFieldsConfig,
     public editorNavService: EditorNavService,
-    public accountRequest: NgAccountRequests
+    public accountRequests: NgAccountRequests
   ) {
     super(router, activatedRoute, skysmackStore);
   }
@@ -41,7 +42,10 @@ export class ForgotPasswordComponent extends BaseComponent<AccountAppState, unkn
 
   public onSubmit(fh: FormHelper) {
     fh.formValid(() => {
-      console.log(fh.form.value);
+      this.accountRequests.forgotPassword(this.packagePath, fh.form.value).pipe(
+        map(() => this.router.navigate([this.packagePath])),
+        take(1)
+      ).subscribe();
     });
   }
 }

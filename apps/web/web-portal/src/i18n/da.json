@@ -136,16 +136,27 @@
 	"ACCOUNTS": {
 		"FORM": {
 			"LABELS": {
+				"TOKEN": "Token",
+                "EMAIL": "Email",
 				"CURRENTPASSWORD": "Nuværende kodeord",
 				"NEWPASSWORD": "Nyt kodeord",
 				"CONFIRMNEWPASSWORD": "Bekræft kodeord"
 			},
 			"PLACEHOLDERS": {
+				"TOKEN": "Token",
+                "EMAIL": "Email",
 				"CURRENTPASSWORD": "Nuværende kodeord",
 				"NEWPASSWORD": "Nyt kodeord",
 				"CONFIRMNEWPASSWORD": "Bekræft kodeord"
 			},
 			"VALIDATION": {
+				"TOKEN": {
+                    "REQUIRED": "Token er påkrævet"
+                },
+                "EMAIL": {
+                    "REQUIRED": "Email er påkrævet",
+                    "INVALIDEMAIL": "Indtast venligst en gyldig email"
+                },
 				"CURRENTPASSWORD": {
 					"REQUIRED": "Nuværende kodeord er påkrævet."
 				},
@@ -160,11 +171,22 @@
 		},
 		"CHANGE_PASSWORD": {
 			"TITLE": "Skift kodeord",
-			"BUTTON_EDIT": "Opdater"
+			"BUTTON_EDIT": "Send"
 		},
+		"CONFIRM_EMAIL": {
+            "TITLE": "Bekræft email",
+            "BUTTON_EDIT": "Send"
+        },
+        "FORGOT_PASSWORD": {
+            "TITLE": "Forgot password",
+            "BUTTON_EDIT": "Send"
+        },
 		"INDEX": {
 			"ACTIONS": "Handlinger",
-			"CHANGE_PASSWORD": "Skift kodeord"
+			"MANAGE": "Konfigurer",
+			"CHANGE_PASSWORD": "Skift kodeord",
+			"FORGOT_PASSWORD": "Glemt password",
+            "CONFIRM_EMAIL": "Bekræft email"
 		},
 		"NOTIFICATIONS": {},
 		"QUEUE": {}

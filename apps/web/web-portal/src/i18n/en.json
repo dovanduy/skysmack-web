@@ -138,12 +138,16 @@
 			"LABELS": {
 				"CURRENTPASSWORD": "Current password",
 				"NEWPASSWORD": "New password",
-				"CONFIRMNEWPASSWORD": "Confirm new password"
+				"CONFIRMNEWPASSWORD": "Confirm new password",
+				"EMAIL": "Email",
+				"TOKEN": "Token"
 			},
 			"PLACEHOLDERS": {
 				"CURRENTPASSWORD": "Current password",
 				"NEWPASSWORD": "New password",
-				"CONFIRMNEWPASSWORD": "Confirm new password"
+				"CONFIRMNEWPASSWORD": "Confirm new password",
+				"EMAIL": "Email",
+				"TOKEN": "Token"
 			},
 			"VALIDATION": {
 				"CURRENTPASSWORD": {
@@ -155,6 +159,13 @@
 				"CONFIRMNEWPASSWORD": {
 					"REQUIRED": "Please repeat the new password.",
 					"PASSWORDMISMATCH": "Passwords must match."
+				},
+				"EMAIL": {
+					"REQUIRED": "Email is required.",
+					"INVALIDEMAIL": "Please type a valid email"
+				},
+				"TOKEN": {
+					"REQUIRED": "Token is required"
 				}
 			}
 		},
@@ -166,10 +177,19 @@
 			"ACTIONS": "Actions",
 			"CHANGE_PASSWORD": "Change password",
 			"FORGOT_PASSWORD": "Forgot password",
-			"CONFIRM_EMAIL": "Confirm email"
+			"CONFIRM_EMAIL": "Confirm email",
+			"MANAGE": "Manage"
 		},
 		"NOTIFICATIONS": {},
-		"QUEUE": {}
+		"QUEUE": {},
+		"FORGOT_PASSWORD": {
+			"TITLE": "Forgot password",
+			"BUTTON_EDIT": "Submit"
+		},
+		"CONFIRM_EMAIL": {
+			"TITLE": "Confirm email",
+			"BUTTON_EDIT": "Submit"
+		}
 	},
 	"IDENTITIES": {
 		"INDEX": {
