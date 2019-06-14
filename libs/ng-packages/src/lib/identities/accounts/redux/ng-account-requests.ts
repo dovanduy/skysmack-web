@@ -14,7 +14,7 @@ export class NgAccountRequests implements AccountRequests {
     ) { }
 
     public changePassword(packagePath: string, changePassword: ChangePassword): Observable<HttpResponse | HttpErrorResponse> {
-        const url = `${this.apiDomain.domain}/${packagePath}/change-password`;
+        const url = `${this.apiDomain.domain}/${packagePath}/account/change-password`;
         return this.http.put<any>(url, changePassword, { observe: 'response' }).pipe(
             map((response) => {
                 return response as any;
@@ -24,7 +24,7 @@ export class NgAccountRequests implements AccountRequests {
     }
 
     public confirmEmail(packagePath: string, confirmEmail: ConfirmEmail): Observable<HttpResponse | HttpErrorResponse> {
-        const url = `${this.apiDomain.domain}/${packagePath}/confirm-email`;
+        const url = `${this.apiDomain.domain}/${packagePath}/account/confirm-email`;
         return this.http.put<any>(url, confirmEmail, { observe: 'response' }).pipe(
             map((response) => {
                 return response as any;
