@@ -58,12 +58,12 @@ const webLocalizationOutputPath = `${webPaths.project}/src/i18n`;
 // Define gulp tasks
 // =================
 const webLocalizationWatch = (done) => {
-    gulp.watch(getLocalizationWatchersArray(webPaths), webLocalization);
+    gulp.watch(getLocalizationWatchersArray(webPaths), webLocalization)(done);
     done();
 };
 
 const webLocalization = (done) => {
-    gulp.parallel(runLocalization(webPaths, 'en', webLocalizationOutputPath)); // Remember: Multiple runLocalization() functions can be used in parallel
+    gulp.parallel(runLocalization(webPaths, 'en', webLocalizationOutputPath))(done); // Remember: Multiple runLocalization() functions can be used in parallel
     done();
 };
 

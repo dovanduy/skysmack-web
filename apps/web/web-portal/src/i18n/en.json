@@ -1872,7 +1872,7 @@
 				"ISPERCENTAGE": "Change is in percentage (%)",
 				"VALIDFROM": "Valid from",
 				"VALIDTO": "Valid to",
-				"RECORDID": "Allocated lodging type",
+				"RECORDID": "Lodging type",
 				"START": "Start",
 				"END": "End",
 				"EXCLUDEDAYSOFWEEK": "Exclude week days",
@@ -2426,5 +2426,80 @@
 	"SETTINGS": {
 		"SETTINGS": "Settings",
 		"BUTTON_SUBMIT": "Submit"
+	},
+	"EMAIL_TEMPLATES": {
+		"FORM": {
+			"LABELS": {
+				"FROM": "From",
+				"TO": "To",
+				"CC": "Cc",
+				"BCC": "Bcc",
+				"SUBJECT": "Subject",
+				"BODY": "Body"
+			},
+			"PLACEHOLDERS": {
+				"FROM": "From",
+				"TO": "To",
+				"CC": "Cc",
+				"BCC": "Bcc",
+				"SUBJECT": "Subject",
+				"BODY": "Body"
+			},
+			"VALIDATION": {}
+		},
+		"CREATE": {
+			"CREATE": "Create",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDIT": "Edit",
+			"BUTTON_EDIT": "Update"
+		},
+		"INDEX": {
+			"CREATE": "Create",
+			"EDIT": "Edit",
+			"DELETE": "Delete",
+			"MANAGE": "Manage",
+			"ACTIONS": "Actions"
+		},
+		"QUEUE": {
+			"ADDING": "Adding {{ subject }}",
+			"UPDATING": "Updating {{ subject }}",
+			"DELETING": "Deleting {{ subject }}",
+			"ERROR": "An error occured with {{ subject }}. Correct and try again."
+		},
+		"ENTITY_ACTION": {
+			"ITEMS": "Items"
+		}
+	},
+	"EMAILS": {
+		"FORM": {
+			"LABELS": {},
+			"PLACEHOLDERS": {},
+			"VALIDATION": {}
+		},
+		"CREATE": {
+			"CREATE": "Create",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDIT": "Edit",
+			"BUTTON_EDIT": "Update"
+		},
+		"INDEX": {
+			"CREATE": "Create",
+			"EDIT": "Edit",
+			"DELETE": "Delete",
+			"ITEM": "Item",
+			"MANAGE": "Manage",
+			"ACTIONS": "Actions"
+		},
+		"QUEUE": {
+			"ADDING": "Adding {{ currencyCode }}",
+			"UPDATING": "Updating {{ currencyCode }}",
+			"DELETING": "Deleting {{ currencyCode }}",
+			"ERROR": "An error occured with {{ currencyCode }}. Correct and try again."
+		},
+		"ENTITY_ACTION": {}
 	}
 }
