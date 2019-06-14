@@ -8,7 +8,7 @@ import { NgInvoicesCashPaymentsModule } from '@skysmack/ng-packages';
 import { PortalUiModule, FieldsModule } from '@skysmack/portal-ui';
 import { invoicesCashPaymentsComponents } from './invoices-cash-payments/components/invoices-cash-payments-components';
 import { NgInvoicesCashPaymentsEntityActionProvider } from './ng-invoices-cash-payments-entity-action-provider';
-import { InvoicesType } from 'libs/packages/invoices/src';
+import { InvoicesType } from '@skysmack/packages-invoices';
 
 @NgModule({
   imports: [

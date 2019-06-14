@@ -39,9 +39,6 @@
             "UPDATING": "Updating {{ subject }}",
             "DELETING": "Deleting {{ subject }}",
             "ERROR": "An error occured with {{ subject }}. Correct and try again."
-        },
-        "ENTITY_ACTION": {
-            "ITEMS": "Items"
         }
     }
 }

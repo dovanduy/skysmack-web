@@ -6,7 +6,7 @@ import { EmailTemplatesDetailsComponent } from './email-templates-details/email-
 
 export const emailTemplatesRoutes: Routes = [
   {
-    path: '', component: EmailTemplatesIndexComponent,
+    path: 'templates', component: EmailTemplatesIndexComponent,
     children: [
       { path: 'create', component: EmailTemplatesCreateComponent, pathMatch: 'full' },
       { path: 'edit/:id', component: EmailTemplatesEditComponent, pathMatch: 'full' },

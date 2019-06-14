@@ -5,8 +5,8 @@ import { Observable, combineLatest, of } from 'rxjs';
 import { StrIndex, LocalObject } from '@skysmack/framework';
 import { EntityActionProvider } from '@skysmack/portal-ui';
 import { NgSkysmackStore } from '@skysmack/ng-core';
-import { InvoicesCashPaymentsType, CashPayment } from 'libs/packages/invoices-cash-payments/src';
 import { INVOICES_AREA_KEY } from '@skysmack/packages-invoices';
+import { CashPayment, InvoicesCashPaymentsType } from '@skysmack/packages-invoices-cash-payments';
 
 @Injectable({ providedIn: 'root' })
 export class NgInvoicesCashPaymentsEntityActionProvider extends EntityActionProvider {

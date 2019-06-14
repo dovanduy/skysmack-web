@@ -4,7 +4,7 @@ import { InvoicesCreateComponent } from './invoices-create/invoices-create.compo
 import { InvoicesEditComponent } from './invoices-edit/invoices-edit.component';
 import { FieldsIndexComponent, FieldsCreateComponent, FieldsEditComponent } from '@skysmack/portal-ui';
 import { InvoicesDetailsComponent } from './invoices-details/invoices-details.component';
-import { INVOICES_AREA_KEY } from 'libs/packages/invoices/src';
+import { INVOICES_AREA_KEY } from '@skysmack/packages-invoices';
 
 export const invoicesRoutes: Routes = [
   {

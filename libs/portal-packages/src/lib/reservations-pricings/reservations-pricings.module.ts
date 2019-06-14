@@ -14,7 +14,7 @@ import { lodgingPricesComponents } from './lodging-prices/components/lodging-pri
 import { lodgingTypePricesComponents } from './lodging-type-prices/components/lodging-type-prices-components';
 import { LodgingsType } from '@skysmack/packages-lodgings';
 import { NgLodgingReservationsReservationsPricingsFieldProvider } from './ng-lodging-reservations-reservation-pricings-field-provider';
-import { LodgingReservationsType } from 'libs/packages/lodging-reservations/src';
+import { LodgingReservationsType } from '@skysmack/packages-lodging-reservations';
 
 @NgModule({
   imports: [

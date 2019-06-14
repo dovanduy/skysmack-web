@@ -4,7 +4,7 @@ import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { EmailTemplate, EMAIL_TEMPLATES_AREA_KEY } from '@skysmack/packages-emails';
 import { Field } from '@skysmack/ng-ui';
 
-import { FieldsConfig, StringFieldComponent, HiddenFieldComponent, FieldProviders } from '@skysmack/portal-ui';
+import { FieldsConfig, StringFieldComponent, HiddenFieldComponent, FieldProviders, EmailTemplateFieldComponent } from '@skysmack/portal-ui';
 import { NgEmailTemplatesValidation } from '@skysmack/ng-packages';
 import { LoadedPackage } from '@skysmack/ng-framework';
 
@@ -58,9 +58,8 @@ export class NgEmailTemplatesFieldsConfig extends FieldsConfig<EmailTemplate, nu
       }),
       new Field({
         value: entity ? entity.object.body : undefined,
-        component: StringFieldComponent,
-        key: 'body',
-        showColumn: true
+        component: EmailTemplateFieldComponent,
+        key: 'body'
       }),
     ];
 

@@ -2492,7 +2492,8 @@
 			"DELETE": "Delete",
 			"ITEM": "Item",
 			"MANAGE": "Manage",
-			"ACTIONS": "Actions"
+			"ACTIONS": "Actions",
+			"TEMPLATES": "Templates"
 		},
 		"QUEUE": {
 			"ADDING": "Adding {{ currencyCode }}",

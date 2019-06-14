@@ -7,7 +7,7 @@ import { Oauth2Type } from '@skysmack/packages-oauth2';
 import { IdentitiesType } from '@skysmack/packages-identities';
 import { LoadedPackage } from '../packages/loaded-package';
 import { PackageLoader } from '../packages/package-loader';
-import { AccountType } from 'libs/packages/account/src';
+import { AccountType } from '@skysmack/packages-account';
 
 export class SkysmackStore {
     public stateKey = 'skysmack';

@@ -26,20 +26,15 @@ export class NgEmailsMenu extends SidebarMenu {
 
     public setPrimaryMenu() {
         this.primaryMenuAreas.push(new MenuArea({
-            area: 'actions',
-            translationPrefix: this.translationPrefix,
-            order: 1,
-        }));
-        this.primaryMenuAreas.push(new MenuArea({
             area: 'manage',
             translationPrefix: this.translationPrefix,
             order: 2,
         }));
 
         this.primaryMenuItems.push(new MenuItem({
-            url: 'create',
-            displayName: this.translationPrefix + 'CREATE',
-            area: 'actions',
+            url: 'templates',
+            displayName: this.translationPrefix + 'TEMPLATES',
+            area: 'manage',
             order: 1,
             icon: 'groupAdd',
             permissions: [

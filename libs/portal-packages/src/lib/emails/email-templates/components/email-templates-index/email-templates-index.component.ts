@@ -17,7 +17,6 @@ export class EmailTemplatesIndexComponent extends RecordIndexComponent<EmailTemp
 
   public areaKey: string = EMAIL_TEMPLATES_AREA_KEY;
   public entityActions: EntityAction[] = [
-    new EntityAction().asUrlAction('items', 'EMAIL_TEMPLATES.ENTITY_ACTION.ITEMS', 'reorder'),
     new EntityAction().asUrlAction('details', ENTITY_ACTION_DETAILS, 'list'),
     new EntityAction().asUrlAction('edit', ENTITY_ACTIONS_EDIT, 'edit'),
     new EntityAction().asEventAction(ENTITY_ACTIONS_DELETE, this.delete, 'delete', this)

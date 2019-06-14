@@ -1,11 +1,10 @@
-import { Injectable, Inject } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { SidebarMenu } from '@skysmack/portal-ui';
-import { NgSkysmackStore } from '@skysmack/ng-core';
+import { NgSkysmackStore, AccessPolciesPermissions } from '@skysmack/ng-core';
 import { MenuArea } from '@skysmack/framework';
 import { MenuItem } from '@skysmack/framework';
 import { NgMenuItemProviders } from '@skysmack/ng-framework';
-import { AccessPolciesPermissions } from 'libs/ng-core/src/lib/access-policies/permissions/access-policies-permissions';
 
 
 @Injectable({ providedIn: 'root' })

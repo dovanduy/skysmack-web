@@ -6,7 +6,7 @@ import { NgSignInSettingsValidation } from '@skysmack/ng-packages';
 import { LoadedPackage } from '@skysmack/ng-framework';
 import { FieldsConfig, CheckboxFieldComponent } from '@skysmack/portal-ui';
 import { FieldProviders } from '@skysmack/portal-ui';
-import { OAUTH2_AREA_KEY } from 'libs/packages/oauth2/src';
+import { OAUTH2_AREA_KEY } from '@skysmack/packages-oauth2';
 
 @Injectable({ providedIn: 'root' })
 export class NgSignInSettingsFieldsConfig extends FieldsConfig<SignInSettings, unknown> {
