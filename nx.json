@@ -97,6 +97,9 @@
     },
     "packages-emails": {
       "tags": []
+    },
+    "packages-emails-smtp": {
+      "tags": []
     }
   }
 }
