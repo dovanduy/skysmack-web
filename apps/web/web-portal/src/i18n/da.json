@@ -2494,5 +2494,34 @@
             "DELETING": "Sletter {{ subject }}",
             "ERROR": "Der skete en fejl med {{ subject }}. Ret fejl og prøv igen."
         }
+	},
+	"EMAILS_SMTP": {
+        "INDEX": {
+            "CREATE": "Opret",
+            "EDIT": "Ret",
+            "DELETE": "Slet",
+            "TEMPLATES": "Skabeloner",
+            "MANAGE": "Konfigurer",
+			"ACTIONS": "Handlinger",
+			"SETTINGS": "Indstillinger"
+        }
+    },
+    "EMAILS_SMTP_SETTINGS": {
+        "FORM": {
+            "PLACEHOLDERS": {
+                "HOST": "Vært",
+                "PORT": "Port",
+                "USERNAME": "Brugernavn",
+                "PASSWORD": "Password",
+                "ENABLESSL": "Aktiver ssl"
+			},
+			      "LABELS": {
+                "HOST": "Vært",
+                "PORT": "Port",
+                "USERNAME": "Brugernavn",
+                "PASSWORD": "Password",
+                "ENABLESSL": "Aktiver ssl"
+            }
+        }
     }
 }

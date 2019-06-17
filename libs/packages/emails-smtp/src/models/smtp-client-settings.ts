@@ -4,4 +4,8 @@ export class SmtpClientSettings {
     public username: string;
     public password: string;
     public enableSsl: boolean;
+
+    constructor(values: Partial<SmtpClientSettings>) {
+        Object.assign(this, values);
+    }
 }

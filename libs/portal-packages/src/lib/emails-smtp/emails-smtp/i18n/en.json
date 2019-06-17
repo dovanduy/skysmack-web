@@ -1,0 +1,31 @@
+{
+    "EMAILS_SMTP": {
+        "INDEX": {
+            "CREATE": "Create",
+            "EDIT": "Edit",
+            "DELETE": "Delete",
+            "TEMPLATES": "Templates",
+            "MANAGE": "Manage",
+            "ACTIONS": "Actions",
+            "SETTINGS": "Settings"
+        }
+    },
+    "EMAILS_SMTP_SETTINGS": {
+        "FORM": {
+            "PLACEHOLDERS": {
+                "HOST": "Host",
+                "PORT": "Port",
+                "USERNAME": "Username",
+                "PASSWORD": "Password",
+                "ENABLESSL": "Enable ssl"
+            },
+                 "LABELS": {
+                "HOST": "Host",
+                "PORT": "Port",
+                "USERNAME": "Username",
+                "PASSWORD": "Password",
+                "ENABLESSL": "Enable ssl"
+            }
+        }
+    }
+}

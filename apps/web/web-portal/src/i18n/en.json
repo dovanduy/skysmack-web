@@ -2523,5 +2523,44 @@
 			"ERROR": "An error occured with {{ currencyCode }}. Correct and try again."
 		},
 		"ENTITY_ACTION": {}
+	},
+	"EMAILS_SMTP": {
+		"INDEX": {
+			"CREATE": "Create",
+			"EDIT": "Edit",
+			"DELETE": "Delete",
+			"TEMPLATES": "Templates",
+			"MANAGE": "Manage",
+			"ACTIONS": "Actions",
+			"SETTINGS": "Settings"
+		}
+	},
+	"EMAILS_SMTP_SETTINGS": {
+		"FORM": {
+			"LABELS": {
+				"host": "Host",
+				"port": "Port",
+				"username": "Username",
+				"password": "Password",
+				"enableSsl": "Enable ssl",
+				"HOST": "Host",
+				"PORT": "Port",
+				"USERNAME": "Username",
+				"PASSWORD": "Password",
+				"ENABLESSL": "Enable ssl"
+			},
+			"PLACEHOLDERS": {
+				"host": "Host",
+				"port": "Port",
+				"username": "Username",
+				"password": "Password",
+				"enableSsl": "Enable ssl",
+				"HOST": "Host",
+				"PORT": "Port",
+				"USERNAME": "Username",
+				"PASSWORD": "Password",
+				"ENABLESSL": "Enable ssl"
+			}
+		}
 	}
 }
