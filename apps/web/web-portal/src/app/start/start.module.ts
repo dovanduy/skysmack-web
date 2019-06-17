@@ -114,6 +114,11 @@ import { fieldReducer, settingsReducer } from '@skysmack/redux';
         loadChildren: './../packages/modules/emails_wrapper.module#EmailsWrapperModule'
       },
       {
+        path: 'skysmack/loadPackages/emails-smtp',
+        // loadChildren: () => import('@skysmack/portal-packages').then(m => m.EmailsSmtpModule)
+        loadChildren: './../packages/modules/emails_smtp_wrapper.module#EmailsSmtpWrapperModule'
+      },
+      {
         path: '',
         component: FrontPageComponent,
         redirectTo: '',

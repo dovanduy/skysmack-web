@@ -21,6 +21,8 @@ import { loadInvoicesCashPaymentsPackage } from '../packages/invoices-cash-payme
 import { loadPackagesPackage } from '../packages/packages-package-manifest';
 import { loadAccessPoliciesPackage } from '../packages/access-policies-package-manifest';
 import { loadEmailsPackage } from '../packages/emails-package-manifest';
+import { loadEmailsSmtpPackage } from '../packages/emails-smtp-package-manifest';
+
 
 export function configureSkysmack(actions: NgSkysmackActions) {
     return () => actions.getSkysmack();
@@ -51,7 +53,8 @@ export const packageLoaders = [
     { provide: APP_INITIALIZER, useFactory: loadOauth2Package, deps: [PackageLoader], multi: true },
     { provide: APP_INITIALIZER, useFactory: loadMaintenancePackage, deps: [PackageLoader], multi: true },
     { provide: APP_INITIALIZER, useFactory: loadTerminalPaymentsPackage, deps: [PackageLoader], multi: true },
-    { provide: APP_INITIALIZER, useFactory: loadEmailsPackage, deps: [PackageLoader], multi: true }
+    { provide: APP_INITIALIZER, useFactory: loadEmailsPackage, deps: [PackageLoader], multi: true },
+    { provide: APP_INITIALIZER, useFactory: loadEmailsSmtpPackage, deps: [PackageLoader], multi: true }
 ];
 
 export const injectionTokens = [

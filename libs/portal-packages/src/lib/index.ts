@@ -13,3 +13,4 @@ export * from './products-pricings/products-pricings.module';
 export * from './reservations-pricings/reservations-pricings.module';
 export * from './terminal-payments/terminal-payments.module';
 export * from './emails/emails.module';
+export * from './emails-smtp/emails-smtp.module';
