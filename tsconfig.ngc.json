@@ -29,6 +29,9 @@
       "@skysmack/pricings": [
         "./dist/@skysmack/pricings"
       ],
+      "@skysmack/signal-r": [
+        "./dist/@skysmack/signal-r"
+      ],
       "@skysmack/packages-skysmack-core": [
         "./dist/@skysmack/packages-skysmack-core"
       ],
