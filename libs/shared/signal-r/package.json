@@ -4,6 +4,7 @@
   "description": "Shared base code for signal-r packages in Skysmack",
   "version": "1.0.0",
   "peerDependencies": {
+    "@aspnet/signalr": "^1.1.4",
     "@skysmack/framework": "*"
   }
 }
