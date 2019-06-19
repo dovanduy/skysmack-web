@@ -1,0 +1,9 @@
+{
+  "$schema": "../../../node_modules/ng-packagr/package.schema.json",
+  "name": "@skysmack/signal-r",
+  "description": "Shared base code for signal-r packages in Skysmack",
+  "version": "1.0.0",
+  "peerDependencies": {
+    "@skysmack/framework": "*"
+  }
+}

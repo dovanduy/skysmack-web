@@ -9,62 +9,39 @@
     "importHelpers": true,
     "target": "es5",
     "module": "esnext",
-    "typeRoots": [
-      "node_modules/@types"
-    ],
-    "lib": [
-      "es2017",
-      "dom"
-    ],
+    "typeRoots": ["node_modules/@types"],
+    "lib": ["es2017", "dom"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@skysmack/framework": [
-        "./libs/shared/framework/public_api.ts"
-      ],
-      "@skysmack/redux": [
-        "./libs/shared/redux/public_api.ts"
-      ],
-      "@skysmack/pricings": [
-        "./libs/shared/pricings/public_api.ts"
-      ],
+      "@skysmack/framework": ["./libs/shared/framework/public_api.ts"],
+      "@skysmack/redux": ["./libs/shared/redux/public_api.ts"],
+      "@skysmack/pricings": ["./libs/shared/pricings/public_api.ts"],
       "@skysmack/packages-skysmack-core": [
         "libs/packages/skysmack-core/public_api.ts"
       ],
-      "@skysmack/packages-baskets": [
-        "libs/packages/baskets/public_api.ts"
-      ],
+      "@skysmack/packages-baskets": ["libs/packages/baskets/public_api.ts"],
       "@skysmack/packages-identities": [
         "libs/packages/identities/public_api.ts"
       ],
-      "@skysmack/packages-invoices": [
-        "libs/packages/invoices/public_api.ts"
-      ],
+      "@skysmack/packages-invoices": ["libs/packages/invoices/public_api.ts"],
       "@skysmack/packages-invoices-cash-payments": [
         "libs/packages/invoices-cash-payments/public_api.ts"
       ],
       "@skysmack/packages-lodging-reservations": [
         "libs/packages/lodging-reservations/public_api.ts"
       ],
-      "@skysmack/packages-lodgings": [
-        "libs/packages/lodgings/public_api.ts"
-      ],
+      "@skysmack/packages-lodgings": ["libs/packages/lodgings/public_api.ts"],
       "@skysmack/packages-maintenance": [
         "libs/packages/maintenance/public_api.ts"
       ],
-      "@skysmack/packages-oauth2": [
-        "libs/packages/oauth2/public_api.ts"
-      ],
-      "@skysmack/packages-persons": [
-        "libs/packages/persons/public_api.ts"
-      ],
+      "@skysmack/packages-oauth2": ["libs/packages/oauth2/public_api.ts"],
+      "@skysmack/packages-persons": ["libs/packages/persons/public_api.ts"],
       "@skysmack/packages-persons-lodging-reservations": [
         "libs/packages/persons-lodging-reservations/public_api.ts"
       ],
-      "@skysmack/packages-products": [
-        "libs/packages/products/public_api.ts"
-      ],
+      "@skysmack/packages-products": ["libs/packages/products/public_api.ts"],
       "@skysmack/packages-products-pricings": [
         "libs/packages/products-pricings/public_api.ts"
       ],
@@ -74,39 +51,19 @@
       "@skysmack/packages-reservations-pricings": [
         "libs/packages/reservations-pricings/public_api.ts"
       ],
-      "@skysmack/packages-emails": [
-        "libs/packages/emails/public_api.ts"
-      ],
-      "@skysmack/ng-packages": [
-        "libs/ng-packages/src/public_api.ts"
-      ],
-      "@skysmack/ng-framework": [
-        "libs/ng-framework/src/public_api.ts"
-      ],
-      "@skysmack/ng-ui": [
-        "libs/ng-ui/src/public_api.ts"
-      ],
-      "@skysmack/portal-packages": [
-        "libs/portal-packages/src/public_api.ts"
-      ],
-      "@skysmack/portal-ui": [
-        "libs/portal-ui/src/public_api.ts"
-      ],
-      "@skysmack/ng-core": [
-        "libs/ng-core/src/index.ts"
-      ],
-      "@skysmack/portal-core": [
-        "libs/portal-core/src/index.ts"
-      ],
+      "@skysmack/packages-emails": ["libs/packages/emails/public_api.ts"],
+      "@skysmack/ng-packages": ["libs/ng-packages/src/public_api.ts"],
+      "@skysmack/ng-framework": ["libs/ng-framework/src/public_api.ts"],
+      "@skysmack/ng-ui": ["libs/ng-ui/src/public_api.ts"],
+      "@skysmack/portal-packages": ["libs/portal-packages/src/public_api.ts"],
+      "@skysmack/portal-ui": ["libs/portal-ui/src/public_api.ts"],
+      "@skysmack/ng-core": ["libs/ng-core/src/index.ts"],
+      "@skysmack/portal-core": ["libs/portal-core/src/index.ts"],
       "@skysmack/packages/emails-smtp": [
         "libs/packages/emails-smtp/public_api.ts"
-      ]
+      ],
+      "@skysmack/shared/signal-r": ["libs/shared/signal-r/src/index.ts"]
     }
   },
-  "exclude": [
-    "node_modules",
-    "dist",
-    "tmp",
-    "tools"
-  ]
+  "exclude": ["node_modules", "dist", "tmp", "tools"]
 }
