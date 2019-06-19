@@ -2,6 +2,7 @@ import { HubConnection } from '@aspnet/signalr';
 import { ApiDomain } from '@skysmack/framework';
 import * as signalR from "@aspnet/signalr";
 import { interval } from 'rxjs';
+import { from, interval, BehaviorSubject } from 'rxjs';
 import { tap, map } from 'rxjs/operators';
 import { SignalRProvider } from './models/signal-r-provider';
 
@@ -14,6 +15,8 @@ export class SignalR {
     // Todo: How do we get this???
     public apiDomain: ApiDomain;
     public static API_DOMAIN: ApiDomain;
+
+    public connected = new BehaviorSubject(false);
 
     // Singleton pattern
     private static _instance: SignalR;
@@ -47,15 +50,31 @@ export class SignalR {
             .withUrl(`${this.apiDomain.domain}/skysmack/signalr`)
             .build();
 
-        //this will start the long polling connection
-        this.hubConnection.start()
-            .then(() => { console.log("Connection started"); })
-            .catch(err => { console.error("Connection not started", err); });
-
         //this lines up with the method called by `SendAsync`
         this.hubConnection.on("Message", (packagePath: string, message: any) => {
             console.log("New SignalR message", packagePath, message);
         });
+
+        this.hubConnection.onclose(() => {
+            this.connected.next(false);
+            this.startHubConnection()
+        });
+
+        this.startHubConnection();
+    }
+
+    private startHubConnection() {
+        let successfullyStarted = false;
+        do {
+            //this will start the long polling connection
+            this.hubConnection.start()
+                .then(() => { console.log("Connection started");
+                this.connected.next(true);
+                successfullyStarted = true;
+            })
+            .catch(err => { console.error("Connection not started", err); });
+
+        } while (!successfullyStarted)
     }
 
     public registerProvider(provider: SignalRProvider) {
@@ -70,6 +89,7 @@ export class SignalR {
     }
 
     public join(packagePath: string) {
+        console.log(packagePath);
         this.hubConnection.invoke('Join', packagePath);
     }
 
