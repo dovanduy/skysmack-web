@@ -1,20 +1,19 @@
 import { HubConnection } from '@aspnet/signalr';
 import { ApiDomain } from '@skysmack/framework';
 import * as signalR from "@aspnet/signalr";
-import { interval } from 'rxjs';
-import { from, interval, BehaviorSubject } from 'rxjs';
-import { tap, map } from 'rxjs/operators';
+import { BehaviorSubject } from 'rxjs';
+import { map, filter, take } from 'rxjs/operators';
 import { SignalRProvider } from './models/signal-r-provider';
 
 
 export class SignalR {
+    public static API_DOMAIN: ApiDomain;
+    public apiDomain: ApiDomain;
+
     private hubConnection: HubConnection;
     private providerRegister = {};
     private providers = [];
-
-    // Todo: How do we get this???
-    public apiDomain: ApiDomain;
-    public static API_DOMAIN: ApiDomain;
+    private joinedPackages = {};
 
     public connected = new BehaviorSubject(false);
 
@@ -24,22 +23,7 @@ export class SignalR {
         return this._instance || (this._instance = new this());
     }
     private constructor() {
-        // this.init();
-        this.fakeInit();
-    }
-
-    private fakeInit() {
-        // Fake "message" from backend
-        interval(1000).pipe(
-            map(number => {
-                if (number % 2) {
-                    return { type: 'PersonsCreated', ids: [number + 1, number + 2, number + 3] };
-                } else {
-                    return { type: 'ProductsCreated', ids: [number + 1, number + 2, number + 3] };
-                }
-            }),
-            tap(message => this.providers.forEach(provider => provider.messageProvided(message)))
-        ).subscribe();
+        this.init();
     }
 
     private init() {
@@ -52,7 +36,8 @@ export class SignalR {
 
         //this lines up with the method called by `SendAsync`
         this.hubConnection.on("Message", (packagePath: string, message: any) => {
-            console.log("New SignalR message", packagePath, message);
+            console.log(packagePath, message);
+            this.providers.forEach(provider => provider.messageProvided(message))
         });
 
         this.hubConnection.onclose(() => {
@@ -65,16 +50,15 @@ export class SignalR {
 
     private startHubConnection() {
         let successfullyStarted = false;
-        do {
-            //this will start the long polling connection
-            this.hubConnection.start()
-                .then(() => { console.log("Connection started");
+        //this will start the long polling connection
+        this.hubConnection.start()
+            .then(() => {
+                console.log("Connection started");
                 this.connected.next(true);
                 successfullyStarted = true;
+                Object.keys(this.joinedPackages).forEach(key => this.join(this.joinedPackages[key]));
             })
             .catch(err => { console.error("Connection not started", err); });
-
-        } while (!successfullyStarted)
     }
 
     public registerProvider(provider: SignalRProvider) {
@@ -85,15 +69,32 @@ export class SignalR {
     }
 
     public action(packagePath: string, data: any) {
-        this.hubConnection.invoke('action', packagePath, data);
+        this.connected.pipe(
+            filter(x => x),
+            map(() => this.hubConnection.invoke('action', packagePath, data)),
+            take(1)
+        ).subscribe();
     }
 
     public join(packagePath: string) {
-        console.log(packagePath);
-        this.hubConnection.invoke('Join', packagePath);
+        this.connected.pipe(
+            filter(x => x),
+            map(() => {
+                this.joinedPackages[packagePath] = packagePath;
+                this.hubConnection.invoke('Join', packagePath);
+            }),
+            take(1)
+        ).subscribe();
     }
 
     public leave(packagePath: string) {
-        this.hubConnection.invoke('Leave', packagePath);
+        this.connected.pipe(
+            filter(x => x),
+            map(() => {
+                delete this.joinedPackages[packagePath];
+                this.hubConnection.invoke('Leave', packagePath);
+            }),
+            take(1)
+        ).subscribe();
     }
 }

@@ -9,9 +9,7 @@ import { NgProductsMenu } from '../../ng-products-menu';
 import { EntityAction } from '@skysmack/ng-ui';
 import { NgFieldActions } from '@skysmack/ng-framework';
 import { NgProductsFieldsConfig } from '../../ng-products-fields-config';
-import { SignalR } from '@skysmack/signal-r';
 import { API_DOMAIN_INJECTOR_TOKEN, ApiDomain } from '@skysmack/framework';
-import { SignalRProductsProvider } from '../../signal-r-products-provider';
 
 @Component({
   selector: 'ss-products-index',
@@ -43,9 +41,5 @@ export class ProductsIndexComponent extends DocumentRecordIndexComponent<Product
 
   ngOnInit() {
     super.ngOnInit();
-
-    SignalR.API_DOMAIN = this.apiDomain;
-    const signalr = SignalR.Instance;
-    signalr.registerProvider(new SignalRProductsProvider({ name: 'ProductsProvider' }));
   }
 }
