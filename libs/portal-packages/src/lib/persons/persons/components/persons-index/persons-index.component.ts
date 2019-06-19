@@ -11,6 +11,7 @@ import { SignalR } from '@skysmack/signal-r';
 import { NgFieldActions } from '@skysmack/ng-framework';
 import { NgPersonsFieldsConfig } from '../../../ng-persons-fields-config';
 import { ApiDomain, API_DOMAIN_INJECTOR_TOKEN } from '@skysmack/framework';
+import { SignalRPersonProvider } from '../../../signal-r-persons-provider';
 
 @Component({
   selector: 'ss-persons-index',
@@ -48,7 +49,7 @@ export class PersonsIndexComponent extends DocumentRecordIndexComponent<PersonsA
   ngOnInit() {
     SignalR.API_DOMAIN = this.apiDomain;
     const signalr = SignalR.Instance;
-    // signalr.join(this.packagePath);
+    signalr.registerProvider(new SignalRPersonProvider({ name: 'PersonsProvider' }));
 
     super.ngOnInit();
   }

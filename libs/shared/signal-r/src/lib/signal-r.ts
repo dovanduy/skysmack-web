@@ -1,15 +1,15 @@
 import { HubConnection } from '@aspnet/signalr';
 import { ApiDomain } from '@skysmack/framework';
 import * as signalR from "@aspnet/signalr";
-import { from, interval } from 'rxjs';
+import { interval } from 'rxjs';
 import { tap, map } from 'rxjs/operators';
+import { SignalRProvider } from './models/signal-r-provider';
 
-class SignalRProvider {
-    public logic(message: any) { }
-}
 
 export class SignalR {
     private hubConnection: HubConnection;
+    private providerRegister = {};
+    private providers = [];
 
     // Todo: How do we get this???
     public apiDomain: ApiDomain;
@@ -26,14 +26,16 @@ export class SignalR {
     }
 
     private fakeInit() {
+        // Fake "message" from backend
         interval(1000).pipe(
-            map(() => {
-                return {
-                    type: 'PersonsCreated',
-                    ids: [1, 4, 5]
-                };
+            map(number => {
+                if (number % 2) {
+                    return { type: 'PersonsCreated', ids: [number + 1, number + 2, number + 3] };
+                } else {
+                    return { type: 'ProductsCreated', ids: [number + 1, number + 2, number + 3] };
+                }
             }),
-            tap(x => console.log(x))
+            tap(message => this.providers.forEach(provider => provider.messageProvided(message)))
         ).subscribe();
     }
 
@@ -54,6 +56,13 @@ export class SignalR {
         this.hubConnection.on("Message", (packagePath: string, message: any) => {
             console.log("New SignalR message", packagePath, message);
         });
+    }
+
+    public registerProvider(provider: SignalRProvider) {
+        if (!this.providerRegister[provider.name]) {
+            this.providerRegister[provider.name] = provider;
+            this.providers.push(provider);
+        }
     }
 
     public action(packagePath: string, data: any) {
