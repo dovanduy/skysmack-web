@@ -1,7 +1,7 @@
 import { HubConnection } from '@aspnet/signalr';
 import { ApiDomain } from '@skysmack/framework';
 import * as signalR from "@aspnet/signalr";
-import { from, interval } from 'rxjs';
+import { from, interval, BehaviorSubject } from 'rxjs';
 import { tap, map } from 'rxjs/operators';
 
 class SignalRProvider {
@@ -15,6 +15,8 @@ export class SignalR {
     public apiDomain: ApiDomain;
     public static API_DOMAIN: ApiDomain;
 
+    public connected = new BehaviorSubject(false);
+
     // Singleton pattern
     private static _instance: SignalR;
     public static get Instance() {
@@ -22,19 +24,7 @@ export class SignalR {
     }
     private constructor() {
         // this.init();
-        this.fakeInit();
-    }
-
-    private fakeInit() {
-        interval(1000).pipe(
-            map(() => {
-                return {
-                    type: 'PersonsCreated',
-                    ids: [1, 4, 5]
-                };
-            }),
-            tap(x => console.log(x))
-        ).subscribe();
+        this.init();
     }
 
     private init() {
@@ -45,15 +35,31 @@ export class SignalR {
             .withUrl(`${this.apiDomain.domain}/skysmack/signalr`)
             .build();
 
-        //this will start the long polling connection
-        this.hubConnection.start()
-            .then(() => { console.log("Connection started"); })
-            .catch(err => { console.error("Connection not started", err); });
-
         //this lines up with the method called by `SendAsync`
         this.hubConnection.on("Message", (packagePath: string, message: any) => {
             console.log("New SignalR message", packagePath, message);
         });
+
+        this.hubConnection.onclose(() => {
+            this.connected.next(false);
+            this.startHubConnection()
+        });
+
+        this.startHubConnection();
+    }
+
+    private startHubConnection() {
+        let successfullyStarted = false;
+        do {
+            //this will start the long polling connection
+            this.hubConnection.start()
+                .then(() => { console.log("Connection started");
+                this.connected.next(true);
+                successfullyStarted = true;
+            })
+            .catch(err => { console.error("Connection not started", err); });
+
+        } while (!successfullyStarted)
     }
 
     public action(packagePath: string, data: any) {
@@ -61,6 +67,7 @@ export class SignalR {
     }
 
     public join(packagePath: string) {
+        console.log(packagePath);
         this.hubConnection.invoke('Join', packagePath);
     }
 

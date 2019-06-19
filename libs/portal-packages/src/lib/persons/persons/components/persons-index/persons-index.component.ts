@@ -46,10 +46,13 @@ export class PersonsIndexComponent extends DocumentRecordIndexComponent<PersonsA
   }
 
   ngOnInit() {
+    super.ngOnInit();      
     SignalR.API_DOMAIN = this.apiDomain;
     const signalr = SignalR.Instance;
-    // signalr.join(this.packagePath);
-
-    super.ngOnInit();
+    console.log("packagePath: " + this.packagePath);
+    setTimeout(() => {      
+      console.log('joining package...');
+      signalr.join(this.packagePath);
+    }, 1000);    
   }
 }
