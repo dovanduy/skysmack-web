@@ -4,6 +4,7 @@
   "peerDependencies": {
     "@skysmack/framework": "*",
     "@skysmack/redux": "*",
+    "@skysmack/signal-r": "*",
     "@skysmack/packages-identities": "*",
     "@skysmack/packages-lodgings": "*",
     "@skysmack/packages-lodgings-reservations": "*",

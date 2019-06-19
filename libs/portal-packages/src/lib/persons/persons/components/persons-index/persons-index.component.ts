@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { EntityComponentPageTitle, DocumentRecordIndexComponent, EntityActionProviders, ENTITY_ACTIONS_EDIT, ENTITY_ACTION_DETAILS, ENTITY_ACTIONS_DELETE } from '@skysmack/portal-ui';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgPersonsActions } from '@skysmack/ng-packages';
@@ -7,8 +7,10 @@ import { NgPersonsStore } from '@skysmack/ng-packages';
 import { Person, PersonsAppState, PERSONS_AREA_KEY, PersonsPermissions } from '@skysmack/packages-persons';
 import { NgPersonsMenu } from '../../../ng-persons-menu';
 import { EntityAction } from '@skysmack/ng-ui';
+import { SignalR } from '@skysmack/signal-r';
 import { NgFieldActions } from '@skysmack/ng-framework';
 import { NgPersonsFieldsConfig } from '../../../ng-persons-fields-config';
+import { ApiDomain, API_DOMAIN_INJECTOR_TOKEN } from '@skysmack/framework';
 
 @Component({
   selector: 'ss-persons-index',
@@ -38,11 +40,16 @@ export class PersonsIndexComponent extends DocumentRecordIndexComponent<PersonsA
     public fieldActions: NgFieldActions,
     public title: EntityComponentPageTitle,
     public entityActionProviders: EntityActionProviders,
+    @Inject(API_DOMAIN_INJECTOR_TOKEN) protected apiDomain: ApiDomain
   ) {
     super(router, activatedRoute, actions, skysmackStore, store, fieldsConfig, fieldActions, entityActionProviders, title);
   }
 
   ngOnInit() {
+    SignalR.API_DOMAIN = this.apiDomain;
+    const signalr = SignalR.Instance;
+    // signalr.join(this.packagePath);
+
     super.ngOnInit();
   }
 }

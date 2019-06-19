@@ -29,7 +29,7 @@
       "@skysmack/pricings": [
         "./libs/shared/pricings/public_api.ts"
       ],
-      "@skysmack/shared/signal-r": [
+      "@skysmack/signal-r": [
         "./libs/shared/signal-r/public_api.ts"
       ],
       "@skysmack/packages-skysmack-core": [

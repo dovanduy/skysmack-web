@@ -8,6 +8,7 @@
     "@skysmack/ng-ui": "*",
     "@skysmack/framework": "*",
     "@skysmack/redux": "*",
+    "@skysmack/signal-r": "*",
     "@skysmack/packages-identities": "*",
     "@skysmack/packages-lodging-reservations": "*",
     "@skysmack/packages-lodgings": "*",
