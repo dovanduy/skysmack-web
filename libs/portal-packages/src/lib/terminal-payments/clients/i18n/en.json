@@ -33,8 +33,7 @@
                 },
                 "DESCRIPTION": {
                     "REQUIRED": "Description is required."
-                },
-                "ONLINE": {}
+                }
             }
         },
         "QUEUE": {

@@ -1982,6 +1982,7 @@
 			"BUTTON_EDIT": "Opdater"
 		},
 		"INDEX": {
+			"TITLE_EXTRA": "(Kvitteringer)",
 			"ACTIONS": "Handlinger",
 			"CREATE": "Opret ny type",
 			"DELETE": "Slet",
@@ -2040,31 +2041,13 @@
 			"BUTTON_EDIT": "Opdater"
 		},
 		"INDEX": {
+			"TITLE_EXTRA": "(Terminaler)",
 			"CREATE": "Opret",
 			"EDIT": "Rediger",
 			"DELETE": "Slet",
 			"MANAGE": "Konfigurer",
-			"CLIENTS": "Klienter",
-			"RECEIPTS": "Kvitteringer",
-			"CONNECTIONS": "Forbindelser",
 			"ACTIONS": "Handlinger",
 			"TYPES": "Typer"
-		},
-		"FIELDS": {
-			"CREATE": {
-				"ADD": "Opret nyt felt"
-			},
-			"EDIT": {
-				"EDITING": "Redigere"
-			},
-			"INDEX": {
-				"ACTIONS": "Handlinger",
-				"CREATE": "Opret et nyt type felt",
-				"TYPES": "Typer",
-				"BACK": "Tilbage",
-				"MANAGE": "Konfigurer",
-				"FIELDS": "Felter"
-			}
 		},
 		"QUEUE": {
 			"ADDING": "Tilføjer terminal {{ id }}",
@@ -2539,6 +2522,7 @@
 			"BUTTON_EDIT": "Ret"
 		},
 		"INDEX": {
+			"TITLE_EXTRA": "(Klienter)",
 			"ACTIONS": "Handlinger",
 			"CREATE": "Opret",
 			"DELETE": "Slet",
@@ -2562,8 +2546,7 @@
 				},
 				"DESCRIPTION": {
 					"REQUIRED": "Beskrivelse is required"
-				},
-				"ONLINE": {}
+				}
 			}
 		},
 		"QUEUE": {
@@ -2583,6 +2566,7 @@
             "BUTTON_EDIT": "Update"
         },
         "INDEX": {
+			"TITLE_EXTRA": "(Forbindelser)",
             "ACTIONS": "Actions",
             "CREATE": "Create",
             "DELETE": "Delete",
@@ -2618,5 +2602,13 @@
 			"DELETING": "Sletter forbindelse {{ id }}",
 			"ERROR": "En fejl er opstået med forbindelse {{ id }}. Ret fejlene og prøv igen."
         }
+	},
+	  "TERMINAL_PAYMENTS_INDEX": {
+        "TITLE": "Dankort terminal betalinger",
+        "MANAGE": "Handlinger",
+        "TERMINALS": "Terminaler",
+        "CLIENTS": "Klienter",
+        "RECEIPTS": "Kvitteringer",
+        "CONNECTIONS": "Forbindelser"
     }
 }

@@ -17,9 +17,6 @@
                 },
                 "CONNECTIONSTRING": {
                     "REQUIRED": "Connection string is required."
-                },
-                "DESCRIPTION": {
-                    "REQUIRED": "Description is required."
                 }
             }
         },
