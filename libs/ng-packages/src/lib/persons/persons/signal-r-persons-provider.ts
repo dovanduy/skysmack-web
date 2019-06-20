@@ -15,16 +15,15 @@ export class SignalRPersonProvider implements SignalRProvider {
         if (message.type) {
             switch (message.type) {
                 case 'Added': {
-                    console.log(`Persons with id ${message.ids} was just created!`);
+                    // TODO: What to do?
                     break;
                 }
                 case 'Updated': {
-                    console.log(`Persons with id ${message.ids} was just updated!`);
+                    message.ids.forEach(id => this.actions.getSingle(packagePath, id));
                     break;
                 }
                 case 'Removed': {
                     this.actions.signalRDeleted(packagePath, message.ids);
-                    console.log(`Persons with id ${message.ids} was just deleted!`);
                     break;
                 }
                 default: break;
