@@ -103,6 +103,20 @@ export function recordReducersBase<TState extends RecordState<TRecord, TKey>, TR
             setActionError(action, 'Delete error: ');
             return newState;
         }
+        case prefix + RecordActionsBase.SIGNAL_R_DELETED: {
+            const castedAction = action as { payload: { packagePath: string, ids: TKey[] } };
+            const area = newState.localRecords[castedAction.payload.packagePath];
+            castedAction.payload.ids.forEach(id => {
+                Object.keys(area).forEach(key => {
+                    if (area[key].object.id === id) {
+                        area[key].deleted = true;
+                        console.log(area[key]);
+                    };
+                });
+            });
+            newState.localRecords[castedAction.payload.packagePath] = area;
+            return newState;
+        }
         default:
             return state;
     }

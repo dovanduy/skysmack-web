@@ -1,4 +1,4 @@
 export interface SignalRProvider {
     name: string;
-    messageProvided: (message: any) => void;
+    messageProvided: (packagePath: string, message: any) => void;
 }

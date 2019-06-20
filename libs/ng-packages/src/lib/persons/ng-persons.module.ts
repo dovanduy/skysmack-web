@@ -13,9 +13,10 @@ import { SignalRPersonProvider } from './persons/signal-r-persons-provider';
 export class NgPersonsModule {
   constructor(
     epics: NgPersonsEpics,
-    signalR: NgSignalR
+    signalR: NgSignalR,
+    personsSRProvider: SignalRPersonProvider
   ) {
     registerRedux(PERSONS_REDUCER_KEY, personsReducer, epics);
-    signalR.instance.registerProvider(new SignalRPersonProvider({ name: 'PersonsProvider' }));
+    signalR.instance.registerProvider(personsSRProvider);
   }
 }

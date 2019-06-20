@@ -20,6 +20,7 @@ export class LocalObject<TObject, TKey> {
     public modifyType: string;
     public isNew: boolean = false;
     public error: boolean = false;
+    public deleted: boolean = false;
     public foreignKey: string;
     public object: TObject;
     public oldObject: TObject;

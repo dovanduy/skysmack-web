@@ -109,9 +109,6 @@ export abstract class NgRecordStore<TState, TRecord extends Record<TKey>, TKey> 
         );
     }
 
-    /**
-     * 
-     */
     protected mapRecordsDependencies(records: LocalObject<any, any>[], dependencies: LocalObject<any, any>[], relationIdSelector: string, relationSelector: string): LocalObject<any, any>[] {
         for (let index = 0; index < records.length; index++) {
             const record = records[index];

@@ -87,6 +87,12 @@ table {
   animation: error-background 1.4s 1 ease-in-out forwards;
 }
 
+.row-is-deleted, .row-is-deleted .table-cell {
+  background-color: rgb(250, 250, 250);
+  text-decoration: line-through;
+  color: rgb(190, 190, 190) !important;
+}
+
 .icon-text {
   position: relative;
   left: 5px;

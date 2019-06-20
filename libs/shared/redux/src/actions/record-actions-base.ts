@@ -31,6 +31,8 @@ export abstract class RecordActionsBase<TStateType, TStore extends Store<TStateT
     public static DELETE_SUCCESS = 'DELETE_SUCCESS';
     public static DELETE_FAILURE = 'DELETE_FAILURE';
 
+    public static SIGNAL_R_DELETED = 'SIGNAL_R_DELETED';
+
     protected identifier = 'id';
 
     constructor(
@@ -214,6 +216,13 @@ export abstract class RecordActionsBase<TStateType, TStore extends Store<TStateT
                 )
             )
         })));
+    }
+
+    public signalRDeleted(packagePath: string, ids: number[]) {
+        this.store.dispatch({
+            type: this.prefix + RecordActionsBase.SIGNAL_R_DELETED,
+            payload: { packagePath, ids }
+        })
     }
 
     public abstract getMessageParams(record: LocalObject<any, any>): StrIndex<string>;

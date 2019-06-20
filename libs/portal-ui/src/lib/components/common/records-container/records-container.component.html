@@ -23,7 +23,7 @@
       <tbody *cdkVirtualFor="let entity of entities$ | async as entities; trackBy: trackByLocalId; let i = index;">
         <tr class="entity-row table-row mat-row" [class.row-is-loading]="entity.status !== 'OK' && !entity.error"
           [class.row-is-success]="entity.isNew && entity.status !== 'CREATING'" [class.row-is-error]="entity.error"
-          [attr.data-index]="i">
+          [class.row-is-deleted]="entity.deleted" [attr.data-index]="i">
           <td *ngFor="let column of displayColumns" class="table-cell mat-cell">
             {{ entity.object[column.fieldDisplayKey ? column.fieldDisplayKey : column.fieldKey] | displayValue:column | displayModifier:column:entity }}
           </td>

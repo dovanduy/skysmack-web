@@ -37,7 +37,7 @@ export class SignalR {
         //this lines up with the method called by `SendAsync`
         this.hubConnection.on("Message", (packagePath: string, message: any) => {
             console.log(packagePath, message);
-            this.providers.forEach(provider => provider.messageProvided(message))
+            this.providers.forEach(provider => provider.messageProvided(packagePath, message))
         });
 
         this.hubConnection.onclose(() => {
