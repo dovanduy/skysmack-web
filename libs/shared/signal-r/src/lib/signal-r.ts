@@ -36,29 +36,28 @@ export class SignalR {
 
         //this lines up with the method called by `SendAsync`
         this.hubConnection.on("Message", (packagePath: string, message: any) => {
-            console.log(packagePath, message);
+            // console.log(packagePath, message);
             this.providers.forEach(provider => provider.messageProvided(packagePath, message))
         });
 
         this.hubConnection.onclose(() => {
             this.connected.next(false);
-            this.startHubConnection()
+            setTimeout(() => this.startHubConnection(), 1000);
         });
 
         this.startHubConnection();
     }
 
     private startHubConnection() {
-        let successfullyStarted = false;
         //this will start the long polling connection
         this.hubConnection.start()
             .then(() => {
-                console.log("Connection started");
                 this.connected.next(true);
-                successfullyStarted = true;
                 Object.keys(this.joinedPackages).forEach(key => this.join(this.joinedPackages[key]));
             })
-            .catch(err => { console.error("Connection not started", err); });
+            .catch(err => {
+                setTimeout(() => this.startHubConnection(), 1000);
+            });
     }
 
     public registerProvider(provider: SignalRProvider) {

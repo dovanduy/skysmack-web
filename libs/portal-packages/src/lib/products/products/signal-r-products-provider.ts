@@ -12,7 +12,7 @@ export class SignalRProductsProvider implements SignalRProvider {
         if (message.type) {
             switch (message.type) {
                 case 'Added': {
-                    console.log(`Products with id ${message.ids} was just created!`)
+                    // TODO: What to do?
                 }
                 default: break;
             }
