@@ -35,7 +35,6 @@ export class NgClientsFieldsConfig extends FieldsConfig<Client, number> {
                 component: StringFieldComponent,
                 value: entity ? entity.object.description : undefined,
                 key: 'description',
-                validators: [Validators.required],
                 order: 1,
                 showColumn: true
             }),
