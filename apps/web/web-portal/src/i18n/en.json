@@ -2013,15 +2013,25 @@
 		"FORM": {
 			"LABELS": {
 				"NAME": "Name",
-				"PRODUCTTYPEID": "Product type"
+				"PRODUCTTYPEID": "Product type",
+				"CONNECTIONSTRING": "Connection string",
+				"DESCRIPTION": "Description"
 			},
 			"PLACEHOLDERS": {
 				"NAME": "Enter name",
-				"PRODUCTTYPEID": "Choose product type"
+				"PRODUCTTYPEID": "Choose product type",
+				"CONNECTIONSTRING": "Connection string",
+				"DESCRIPTION": "Description"
 			},
 			"VALIDATION": {
 				"NAME": {
 					"REQUIRED": "Name is required."
+				},
+				"CONNECTIONSTRING": {
+					"REQUIRED": "Connection string is required."
+				},
+				"DESCRIPTION": {
+					"REQUIRED": "Description is required."
 				}
 			}
 		},

@@ -3,17 +3,15 @@ import { Terminal, TerminalsAppState } from '@skysmack/packages-terminal-payment
 import { NgTerminalsActions } from '@skysmack/ng-packages';
 import { NgSkysmackStore } from '@skysmack/ng-core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { EditorNavService } from '@skysmack/portal-ui';
-import { DocumentRecordFormComponent } from '@skysmack/portal-ui';
+import { EditorNavService, RecordFormComponent } from '@skysmack/portal-ui';
 import { NgTerminalsStore } from '@skysmack/ng-packages';
-import { NgFieldActions } from '@skysmack/ng-framework';
 import { NgTerminalsFieldsConfig } from '../../ng-terminals-fields-config';
 
 @Component({
   selector: 'ss-terminals-edit',
   templateUrl: './terminals-edit.component.html'
 })
-export class TerminalsEditComponent extends DocumentRecordFormComponent<TerminalsAppState, Terminal, number> implements OnInit {
+export class TerminalsEditComponent extends RecordFormComponent<TerminalsAppState, Terminal, number> implements OnInit {
   constructor(
     public router: Router,
     public activatedRoute: ActivatedRoute,
@@ -21,10 +19,9 @@ export class TerminalsEditComponent extends DocumentRecordFormComponent<Terminal
     public actions: NgTerminalsActions,
     public redux: NgSkysmackStore,
     public fieldsConfig: NgTerminalsFieldsConfig,
-    public store: NgTerminalsStore,
-    public fieldActions: NgFieldActions
+    public store: NgTerminalsStore
   ) {
-    super(router, activatedRoute, editorNavService, actions, redux, store, fieldsConfig, fieldActions);
+    super(router, activatedRoute, editorNavService, actions, redux, store, fieldsConfig);
   }
 
   ngOnInit() {
