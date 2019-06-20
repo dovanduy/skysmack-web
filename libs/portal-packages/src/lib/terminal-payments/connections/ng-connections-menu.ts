@@ -1,16 +1,15 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { SidebarMenu } from '@skysmack/portal-ui';
-import { NgSkysmackStore } from '@skysmack/ng-core';
 import { MenuArea } from '@skysmack/framework';
 import { MenuItem } from '@skysmack/framework';
 import { NgMenuItemProviders } from '@skysmack/ng-framework';
-
+import { SidebarMenu } from '@skysmack/portal-ui';
+import { NgSkysmackStore } from '@skysmack/ng-core';
 
 @Injectable({ providedIn: 'root' })
-export class NgTerminalsMenu extends SidebarMenu {
-    public menuId = 'Terminals';
-    public translationPrefix = 'TERMINALS.INDEX.';
+export class NgConnectionsMenu extends SidebarMenu {
+    public menuId = 'Connections';
+    public translationPrefix = 'CONNECTIONS.INDEX.';
 
     constructor(
         public redux: NgSkysmackStore,
@@ -42,29 +41,7 @@ export class NgTerminalsMenu extends SidebarMenu {
             order: 1,
             icon: 'groupAdd',
         }));
-        this.primaryMenuItems.push(new MenuItem({
-            url: 'receipts',
-            displayName: this.translationPrefix + 'RECEIPTS',
-            area: 'manage',
-            order: 2,
-            icon: 'description',
-        }));
-
-        this.primaryMenuItems.push(new MenuItem({
-            url: 'clients',
-            displayName: this.translationPrefix + 'CLIENTS',
-            area: 'manage',
-            order: 2,
-            icon: 'description',
-        }));
-
-        this.primaryMenuItems.push(new MenuItem({
-            url: 'connections',
-            displayName: this.translationPrefix + 'CONNECTIONS',
-            area: 'manage',
-            order: 2,
-            icon: 'description',
-        }));
+        this.setBackButton();
     }
 
     public setSpeedDialMenu() {

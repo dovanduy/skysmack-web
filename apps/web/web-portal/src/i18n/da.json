@@ -2043,8 +2043,10 @@
 			"CREATE": "Opret",
 			"EDIT": "Rediger",
 			"DELETE": "Slet",
-			"ITEM": "Enhed",
 			"MANAGE": "Konfigurer",
+			"CLIENTS": "Klienter",
+			"RECEIPTS": "Kvitteringer",
+			"CONNECTIONS": "Forbindelser",
 			"ACTIONS": "Handlinger",
 			"TYPES": "Typer"
 		},

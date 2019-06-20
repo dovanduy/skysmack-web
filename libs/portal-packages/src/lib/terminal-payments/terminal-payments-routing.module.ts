@@ -3,12 +3,14 @@ import { RouterModule } from '@angular/router';
 import { terminalsRoutes } from './terminals/components/terminals-components';
 import { receiptsRoutes } from './receipts/components/receipts-component';
 import { clientsRoutes } from './clients';
+import { connectionsRoutes } from './connections/components/connections-component';
 
 @NgModule({
   imports: [RouterModule.forChild([
     ...terminalsRoutes,
     ...receiptsRoutes,
-    ...clientsRoutes
+    ...clientsRoutes,
+    ...connectionsRoutes
   ]
   )],
   exports: [RouterModule]

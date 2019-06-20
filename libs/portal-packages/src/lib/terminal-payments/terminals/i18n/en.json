@@ -35,10 +35,10 @@
             "CREATE": "Create",
             "EDIT": "Edit",
             "DELETE": "Delete",
-            "ITEM": "Item",
             "MANAGE": "Manage",
             "CLIENTS": "Clients",
             "RECEIPTS": "Receipts",
+            "CONNECTIONS": "Connections",
             "ACTIONS": "Actions",
             "TYPES": "Types"
         },
