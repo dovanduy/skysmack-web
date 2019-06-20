@@ -2018,7 +2018,7 @@
 				"DESCRIPTION": "Description"
 			},
 			"PLACEHOLDERS": {
-				"NAME": "Enter name",
+				"NAME": "Name",
 				"PRODUCTTYPEID": "Choose product type",
 				"CONNECTIONSTRING": "Connection string",
 				"DESCRIPTION": "Description"
@@ -2596,8 +2596,8 @@
 		"FORM": {
 			"LABELS": {
 				"NAME": "Name",
-				"DESCRIPTION": "Name",
-				"ONLINE": "Name"
+				"DESCRIPTION": "Description",
+				"ONLINE": "Online"
 			},
 			"PLACEHOLDERS": {
 				"NAME": "Name",

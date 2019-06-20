@@ -7,7 +7,7 @@
                 "DESCRIPTION": "Description"
             },
             "PLACEHOLDERS": {
-                "NAME": "Enter name",
+                "NAME": "Name",
                 "CONNECTIONSTRING": "Connection string",
                 "DESCRIPTION": "Description"
             },

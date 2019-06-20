@@ -137,26 +137,26 @@
 		"FORM": {
 			"LABELS": {
 				"TOKEN": "Token",
-                "EMAIL": "Email",
+				"EMAIL": "Email",
 				"CURRENTPASSWORD": "Nuværende kodeord",
 				"NEWPASSWORD": "Nyt kodeord",
 				"CONFIRMNEWPASSWORD": "Bekræft kodeord"
 			},
 			"PLACEHOLDERS": {
 				"TOKEN": "Token",
-                "EMAIL": "Email",
+				"EMAIL": "Email",
 				"CURRENTPASSWORD": "Nuværende kodeord",
 				"NEWPASSWORD": "Nyt kodeord",
 				"CONFIRMNEWPASSWORD": "Bekræft kodeord"
 			},
 			"VALIDATION": {
 				"TOKEN": {
-                    "REQUIRED": "Token er påkrævet"
-                },
-                "EMAIL": {
-                    "REQUIRED": "Email er påkrævet",
-                    "INVALIDEMAIL": "Indtast venligst en gyldig email"
-                },
+					"REQUIRED": "Token er påkrævet"
+				},
+				"EMAIL": {
+					"REQUIRED": "Email er påkrævet",
+					"INVALIDEMAIL": "Indtast venligst en gyldig email"
+				},
 				"CURRENTPASSWORD": {
 					"REQUIRED": "Nuværende kodeord er påkrævet."
 				},
@@ -174,19 +174,19 @@
 			"BUTTON_EDIT": "Send"
 		},
 		"CONFIRM_EMAIL": {
-            "TITLE": "Bekræft email",
-            "BUTTON_EDIT": "Send"
-        },
-        "FORGOT_PASSWORD": {
-            "TITLE": "Forgot password",
-            "BUTTON_EDIT": "Send"
-        },
+			"TITLE": "Bekræft email",
+			"BUTTON_EDIT": "Send"
+		},
+		"FORGOT_PASSWORD": {
+			"TITLE": "Forgot password",
+			"BUTTON_EDIT": "Send"
+		},
 		"INDEX": {
 			"ACTIONS": "Handlinger",
 			"MANAGE": "Konfigurer",
 			"CHANGE_PASSWORD": "Skift kodeord",
 			"FORGOT_PASSWORD": "Glemt password",
-            "CONFIRM_EMAIL": "Bekræft email"
+			"CONFIRM_EMAIL": "Bekræft email"
 		},
 		"NOTIFICATIONS": {},
 		"QUEUE": {}
@@ -2014,15 +2014,20 @@
 		"FORM": {
 			"LABELS": {
 				"NAME": "Navn",
-				"PRODUCTTYPEID": "Produkt type"
+				"DESCRIPTION": "Description",
+				"ONLINE": "Online"
 			},
 			"PLACEHOLDERS": {
-				"NAME": "Indtast navn",
-				"PRODUCTTYPEID": "Vælg en produkt type"
+				"NAME": "Navn",
+				"DESCRIPTION": "Description",
+				"ONLINE": "Online"
 			},
 			"VALIDATION": {
 				"NAME": {
 					"REQUIRED": "Navn er påkrævet."
+				},
+				"CONNECTIONSTRING": {
+					"REQUIRED": "Forbindelse er påkrævet."
 				}
 			}
 		},
@@ -2038,8 +2043,6 @@
 			"CREATE": "Opret",
 			"EDIT": "Rediger",
 			"DELETE": "Slet",
-			"FIELDS": "Felter",
-			"FIELDS_TITLE": "(felter)",
 			"ITEM": "Enhed",
 			"MANAGE": "Konfigurer",
 			"ACTIONS": "Handlinger",
@@ -2443,85 +2446,129 @@
 		"SETTINGS": "Indstillinger",
 		"BUTTON_SUBMIT": "Indsend"
 	},
-    "EMAILS": {
-        "INDEX": {
-            "CREATE": "Opret",
-            "EDIT": "Ret",
-            "DELETE": "Slet",
-            "TEMPLATES": "Skabeloner",
-            "MANAGE": "Konfigurer",
-            "ACTIONS": "Handlinger"
-        }
+	"EMAILS": {
+		"INDEX": {
+			"CREATE": "Opret",
+			"EDIT": "Ret",
+			"DELETE": "Slet",
+			"TEMPLATES": "Skabeloner",
+			"MANAGE": "Konfigurer",
+			"ACTIONS": "Handlinger"
+		}
 	},
-	 "EMAIL_TEMPLATES": {
-        "FORM": {
-            "LABELS": {
-                "FROM": "Til",
-                "TO": "Fra",
-                "CC": "Cc",
-                "BCC": "Bcc",
-                "SUBJECT": "Emne",
-                "BODY": "Indhold"
-            },
-            "PLACEHOLDERS": {
-                "FROM": "Til",
-                "TO": "Fra",
-                "CC": "Cc",
-                "BCC": "Bcc",
-                "SUBJECT": "Emne",
-                "BODY": "Indhold"
-            },
-            "VALIDATION": {}
-        },
-        "CREATE": {
-            "CREATE": "Opret",
-            "BUTTON_CREATE": "Opret"
-        },
-        "EDIT": {
-            "EDIT": "Ret",
-            "BUTTON_EDIT": "Ret"
-        },
-        "INDEX": {
-            "CREATE": "Opret",
-            "EDIT": "Ret",
-            "DELETE": "Slet",
-            "MANAGE": "Konfigurer",
-            "ACTIONS": "Handlinger"
-        },
-        "QUEUE": {
-            "ADDING": "Tilføjer {{ subject }}",
-            "UPDATING": "Opdaterer {{ subject }}",
-            "DELETING": "Sletter {{ subject }}",
-            "ERROR": "Der skete en fejl med {{ subject }}. Ret fejl og prøv igen."
-        }
+	"EMAIL_TEMPLATES": {
+		"FORM": {
+			"LABELS": {
+				"FROM": "Til",
+				"TO": "Fra",
+				"CC": "Cc",
+				"BCC": "Bcc",
+				"SUBJECT": "Emne",
+				"BODY": "Indhold"
+			},
+			"PLACEHOLDERS": {
+				"FROM": "Til",
+				"TO": "Fra",
+				"CC": "Cc",
+				"BCC": "Bcc",
+				"SUBJECT": "Emne",
+				"BODY": "Indhold"
+			},
+			"VALIDATION": {}
+		},
+		"CREATE": {
+			"CREATE": "Opret",
+			"BUTTON_CREATE": "Opret"
+		},
+		"EDIT": {
+			"EDIT": "Ret",
+			"BUTTON_EDIT": "Ret"
+		},
+		"INDEX": {
+			"CREATE": "Opret",
+			"EDIT": "Ret",
+			"DELETE": "Slet",
+			"MANAGE": "Konfigurer",
+			"ACTIONS": "Handlinger"
+		},
+		"QUEUE": {
+			"ADDING": "Tilføjer {{ subject }}",
+			"UPDATING": "Opdaterer {{ subject }}",
+			"DELETING": "Sletter {{ subject }}",
+			"ERROR": "Der skete en fejl med {{ subject }}. Ret fejl og prøv igen."
+		}
 	},
 	"EMAILS_SMTP": {
-        "INDEX": {
-            "CREATE": "Opret",
-            "EDIT": "Ret",
-            "DELETE": "Slet",
-            "TEMPLATES": "Skabeloner",
-            "MANAGE": "Konfigurer",
+		"INDEX": {
+			"CREATE": "Opret",
+			"EDIT": "Ret",
+			"DELETE": "Slet",
+			"TEMPLATES": "Skabeloner",
+			"MANAGE": "Konfigurer",
 			"ACTIONS": "Handlinger",
 			"SETTINGS": "Indstillinger"
-        }
-    },
-    "EMAILS_SMTP_SETTINGS": {
-        "FORM": {
-            "PLACEHOLDERS": {
-                "HOST": "Vært",
-                "PORT": "Port",
-                "USERNAME": "Brugernavn",
-                "PASSWORD": "Password",
-                "ENABLESSL": "Aktiver ssl"
+		}
+	},
+	"EMAILS_SMTP_SETTINGS": {
+		"FORM": {
+			"PLACEHOLDERS": {
+				"HOST": "Vært",
+				"PORT": "Port",
+				"USERNAME": "Brugernavn",
+				"PASSWORD": "Password",
+				"ENABLESSL": "Aktiver ssl"
 			},
-			      "LABELS": {
-                "HOST": "Vært",
-                "PORT": "Port",
-                "USERNAME": "Brugernavn",
-                "PASSWORD": "Password",
-                "ENABLESSL": "Aktiver ssl"
-            }
-        }
-    }
+			"LABELS": {
+				"HOST": "Vært",
+				"PORT": "Port",
+				"USERNAME": "Brugernavn",
+				"PASSWORD": "Password",
+				"ENABLESSL": "Aktiver ssl"
+			}
+		}
+	},
+	"CLIENTS": {
+		"CREATE": {
+			"CREATE": "Opret",
+			"BUTTON_CREATE": "Opret"
+		},
+		"EDIT": {
+			"EDIT": "Ret",
+			"BUTTON_EDIT": "Ret"
+		},
+		"INDEX": {
+			"ACTIONS": "Handlinger",
+			"CREATE": "Opret",
+			"DELETE": "Slet",
+			"MANAGE": "Konfigurer",
+			"BACK": "Tilbage"
+		},
+		"FORM": {
+			"LABELS": {
+				"NAME": "Navn",
+				"DESCRIPTION": "Beskrivelse",
+				"ONLINE": "Online"
+			},
+			"PLACEHOLDERS": {
+				"NAME": "Navn",
+				"DESCRIPTION": "Beskrivelse",
+				"ONLINE": "Online"
+			},
+			"VALIDATION": {
+				"NAME": {
+					"REQUIRED": "Navn er påkrævet"
+				},
+				"DESCRIPTION": {
+					"REQUIRED": "Beskrivelse is required"
+				},
+				"ONLINE": {}
+			}
+		},
+		"QUEUE": {
+			"ADDING": "Adding client {{ id }}",
+			"UPDATING": "Updating client {{ id }}",
+			"DELETING": "Deleting client {{ id }}",
+			"ERROR": "An error occured with client {{ id }}. Correct and try again."
+		}
+	}
 }
