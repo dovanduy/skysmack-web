@@ -6,6 +6,8 @@ import { RecordFormComponent, EditorNavService } from '@skysmack/portal-ui';
 import { NgConnectionsActions } from '@skysmack/ng-packages';
 import { NgConnectionsStore } from '@skysmack/ng-packages';
 import { NgConnectionsFieldsConfig } from '../../ng-connections-fields-config';
+import { FormHelper } from '@skysmack/ng-ui';
+import { toLocalObject } from '@skysmack/framework';
 
 @Component({
   selector: 'ss-connections-create',
@@ -28,5 +30,14 @@ export class ConnectionsCreateComponent extends RecordFormComponent<ConnectionsA
   ngOnInit() {
     super.ngOnInit();
     this.setCreateFields();
+  }
+
+  protected create(fh: FormHelper) {
+    fh.formValid(() => {
+      const localObject = toLocalObject(new Connection({ id: fh.form.getRawValue() }));
+      this.editorItem ? localObject.localId = this.editorItem.localId : localObject.localId = localObject.localId;
+      this.actions.add([localObject], this.packagePath);
+      this.editorNavService.hideEditorNav();
+    });
   }
 }

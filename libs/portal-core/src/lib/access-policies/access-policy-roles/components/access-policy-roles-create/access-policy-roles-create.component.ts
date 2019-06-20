@@ -35,7 +35,7 @@ export class AccessPolicyRolesCreateComponent extends RecordFormComponent<Access
 
   protected create(fh: FormHelper) {
     fh.formValid(() => {
-      const localObject = toLocalObject(new AccessPolicyRole({ id: fh.form.getRawValue() })); this.extractFormValues(fh);
+      const localObject = toLocalObject(new AccessPolicyRole({ id: fh.form.getRawValue() }));
       this.editorItem ? localObject.localId = this.editorItem.localId : localObject.localId = localObject.localId;
       this.actions.add([localObject], this.packagePath);
       this.editorNavService.hideEditorNav();

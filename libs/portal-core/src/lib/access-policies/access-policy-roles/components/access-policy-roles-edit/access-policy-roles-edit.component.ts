@@ -5,7 +5,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { EditorNavService, RecordFormComponent } from '@skysmack/portal-ui';
 import { NgAccessPolicyRolesStore } from '@skysmack/ng-core';
 import { AccessPolicyRolesAppState, AccessPolicyRole, AccessPolicyRoleKey } from '@skysmack/packages-skysmack-core';
-import { PagedQuery } from '@skysmack/framework';
 import { NgAccessPolicyRolesFieldsConfig } from '../../ng-access-policy-roles-fields-config';
 
 @Component({
@@ -29,7 +28,6 @@ export class AccessPolicyRolesEditComponent extends RecordFormComponent<AccessPo
 
   ngOnInit() {
     super.ngOnInit();
-    this.accessPolicyRulesActions.getPaged(this.packagePath, new PagedQuery());
     this.setEditFields();
   }
 }

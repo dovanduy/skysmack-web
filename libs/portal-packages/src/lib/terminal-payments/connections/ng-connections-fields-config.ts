@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import { FormRule } from '@skysmack/ng-ui';
-import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
+import { FormRule, SelectField } from '@skysmack/ng-ui';
+import { LocalObject, LocalObjectStatus, PagedQuery } from '@skysmack/framework';
 import { Connection, CONNECTIONS_AREA_KEY, ConnectionKey } from '@skysmack/packages-terminal-payments';
 import { Field } from '@skysmack/ng-ui';
-import { FieldsConfig, StringFieldComponent, HiddenFieldComponent } from '@skysmack/portal-ui';
-import { NgConnectionsValidation } from '@skysmack/ng-packages';
+import { FieldsConfig, HiddenFieldComponent, SelectFieldComponent, StringFieldComponent } from '@skysmack/portal-ui';
+import { NgConnectionsValidation, NgTerminalsStore, NgTerminalsActions, NgClientsStore, NgClientsActions } from '@skysmack/ng-packages';
 import { FieldProviders } from '@skysmack/portal-ui';
 import { LoadedPackage } from '@skysmack/ng-framework';
 
@@ -15,13 +15,17 @@ export class NgConnectionsFieldsConfig extends FieldsConfig<Connection, Connecti
     public formRules: FormRule[] = [];
 
     constructor(
-        public fieldProviders: FieldProviders
+        public fieldProviders: FieldProviders,
+        public terminalsStore: NgTerminalsStore,
+        public terminalsActions: NgTerminalsActions,
+        public clientsStore: NgClientsStore,
+        public clientsActions: NgClientsActions
     ) {
         super(fieldProviders);
     }
 
     protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<Connection, ConnectionKey>): Field[] {
-        const fields = [
+        const fields: Field[] = [
             new Field({
                 component: StringFieldComponent,
                 value: entity ? entity.object.status : undefined,
@@ -29,6 +33,28 @@ export class NgConnectionsFieldsConfig extends FieldsConfig<Connection, Connecti
                 order: 1,
                 showColumn: true,
                 includeInForm: false
+            }),
+            new SelectField({
+                component: SelectFieldComponent,
+                value: entity ? entity.object.id.clientId : undefined,
+                optionsData$: this.clientsStore.get(loadedPackage._package.path),
+                getDependencies: () => { this.clientsActions.getPaged(loadedPackage._package.path, new PagedQuery()); },
+                key: 'clientId',
+                displayKey: 'id',
+                displaySubKey: 'clientId',
+                order: 1,
+                showColumn: true
+            }),
+            new SelectField({
+                component: SelectFieldComponent,
+                value: entity ? entity.object.id.terminalId : undefined,
+                key: 'terminalId',
+                displayKey: 'id',
+                displaySubKey: 'terminalId',
+                optionsData$: this.terminalsStore.get(loadedPackage._package.path),
+                getDependencies: () => { this.clientsActions.getPaged(loadedPackage._package.path, new PagedQuery()); },
+                order: 2,
+                showColumn: true
             })
         ];
 
