@@ -2642,12 +2642,18 @@
 			"LABELS": {
 				"NAME": "Name",
 				"DESCRIPTION": "Description",
-				"ONLINE": "Online"
+				"ONLINE": "Online",
+				"CLIENTID": "Client id",
+				"TERMINALID": "Terminal id",
+				"STATUS": "Status"
 			},
 			"PLACEHOLDERS": {
 				"NAME": "Name",
 				"DESCRIPTION": "Description",
-				"ONLINE": "Online"
+				"ONLINE": "Online",
+				"CLIENTID": "Client id",
+				"TERMINALID": "Terminal id",
+				"STATUS": "Status"
 			},
 			"VALIDATION": {
 				"NAME": {
@@ -2656,7 +2662,16 @@
 				"DESCRIPTION": {
 					"REQUIRED": "Description is required."
 				},
-				"ONLINE": {}
+				"ONLINE": {},
+				"CLIENTID": {
+					"REQUIRED": "Client id is required."
+				},
+				"TERMINALID": {
+					"REQUIRED": "Terminal id is required."
+				},
+				"STATUS": {
+					"REQUIRED": "Status is required."
+				}
 			}
 		},
 		"QUEUE": {

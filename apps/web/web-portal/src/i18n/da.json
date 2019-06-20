@@ -2567,10 +2567,56 @@
 			}
 		},
 		"QUEUE": {
-			"ADDING": "Adding client {{ id }}",
-			"UPDATING": "Updating client {{ id }}",
-			"DELETING": "Deleting client {{ id }}",
-			"ERROR": "An error occured with client {{ id }}. Correct and try again."
+			"ADDING": "Tilføker klient {{ id }}",
+			"UPDATING": "Opdaterer klient {{ id }}",
+			"DELETING": "Sletter klient {{ id }}",
+			"ERROR": "En fejl er opstået med klient {{ id }}. Ret fejlene og prøv igen."
 		}
-	}
+	},
+	 "CONNECTIONS": {
+        "CREATE": {
+            "CREATE": "Create",
+            "BUTTON_CREATE": "Create"
+        },
+        "EDIT": {
+            "EDIT": "Edit",
+            "BUTTON_EDIT": "Update"
+        },
+        "INDEX": {
+            "ACTIONS": "Actions",
+            "CREATE": "Create",
+            "DELETE": "Delete",
+            "MANAGE": "Manage",
+            "BACK": "Back"
+        },
+        "FORM": {
+            "LABELS": {
+                "STATUS": "Status",
+                "CLIENTID": "Klient id",
+                "TERMINALID": "Terminal id"
+            },
+            "PLACEHOLDERS": {
+                "STATUS": "Status",
+                "CLIENTID": "Klient id",
+                "TERMINALID": "Terminal id"
+            },
+            "VALIDATION": {
+                "STATUS": {
+                    "REQUIRED": "Status er påkrævet"
+                },
+                "CLIENTID": {
+                    "REQUIRED": "Klient id er påkrævet"
+                },
+                "TERMINALID": {
+                    "REQUIRED": "Terminal id er påkrævet"
+                }
+            }
+        },
+        "QUEUE": {
+		    "ADDING": "Tilføker forbindelse {{ id }}",
+			"UPDATING": "Opdaterer forbindelse {{ id }}",
+			"DELETING": "Sletter forbindelse {{ id }}",
+			"ERROR": "En fejl er opstået med forbindelse {{ id }}. Ret fejlene og prøv igen."
+        }
+    }
 }

@@ -17,23 +17,25 @@
         },
         "FORM": {
             "LABELS": {
-                "NAME": "Name",
-                "DESCRIPTION": "Description",
-                "ONLINE": "Online"
+                "STATUS": "Status",
+                "CLIENTID": "Client id",
+                "TERMINALID": "Terminal id"
             },
             "PLACEHOLDERS": {
-                "NAME": "Name",
-                "DESCRIPTION": "Description",
-                "ONLINE": "Online"
+                "STATUS": "Status",
+                "CLIENTID": "Client id",
+                "TERMINALID": "Terminal id"
             },
             "VALIDATION": {
-                "NAME": {
-                    "REQUIRED": "Name is required."
+                "STATUS": {
+                    "REQUIRED": "Status is required."
                 },
-                "DESCRIPTION": {
-                    "REQUIRED": "Description is required."
+                "CLIENTID": {
+                    "REQUIRED": "Client id is required."
                 },
-                "ONLINE": {}
+                "TERMINALID": {
+                    "REQUIRED": "Terminal id is required."
+                }
             }
         },
         "QUEUE": {
