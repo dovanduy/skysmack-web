@@ -12,7 +12,7 @@ export class ClientsActions extends RecordActionsBase<ClientsAppState, Store<Cli
 
     public clientOnlineStatusMessage(packagePath: string, clientId: number, online: boolean) {
         this.store.dispatch({
-            type: this.prefix + RecordActionsBase.SIGNAL_R_DELETED,
+            type: this.prefix + ClientsActions.CLIENT_ONLINE_STATUS_MESSAGE,
             payload: { packagePath, clientId, online }
         })
     }

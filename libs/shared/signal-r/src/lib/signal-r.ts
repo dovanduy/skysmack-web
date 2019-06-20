@@ -76,11 +76,13 @@ export class SignalR {
     }
 
     public join(packagePath: string) {
+        console.log('join', packagePath);
         this.connected.pipe(
             filter(x => x),
             map(() => {
                 this.joinedPackages[packagePath] = packagePath;
                 this.hubConnection.invoke('Join', packagePath);
+                console.log('joined', packagePath);
             }),
             take(1)
         ).subscribe();

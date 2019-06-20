@@ -7,6 +7,7 @@ import { EntityAction } from '@skysmack/ng-ui';
 import { NgClientsFieldsConfig } from '../../ng-clients-fields-config';
 import { NgSkysmackStore } from '@skysmack/ng-core';
 import { NgClientsActions, NgClientsStore } from '@skysmack/ng-packages';
+import { NgSignalR } from '@skysmack/ng-framework';
 
 @Component({
   selector: 'ss-clients-index',
@@ -28,7 +29,8 @@ export class ClientsIndexComponent extends RecordIndexComponent<ClientsAppState,
     public sidebarMenu: NgClientsMenu,
     public fieldsConfig: NgClientsFieldsConfig,
     public title: EntityComponentPageTitle,
-    public entityActionProviders: EntityActionProviders
+    public entityActionProviders: EntityActionProviders,
+    public signalR: NgSignalR
   ) {
     super(router, activatedRoute, actions, redux, store, fieldsConfig, entityActionProviders, title);
   }
@@ -36,5 +38,6 @@ export class ClientsIndexComponent extends RecordIndexComponent<ClientsAppState,
 
   ngOnInit() {
     super.ngOnInit();
+    this.signalR.instance.join(this.packagePath);
   }
 }
