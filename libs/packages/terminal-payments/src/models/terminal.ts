@@ -1,6 +1,6 @@
-import { DocumentRecord } from "@skysmack/framework";
+import { Record } from "@skysmack/framework";
 
-export class Terminal extends DocumentRecord<number> {
+export class Terminal extends Record<number> {
     public constructor(init?: Partial<Terminal>) {
         super();
         Object.assign(this, init);
