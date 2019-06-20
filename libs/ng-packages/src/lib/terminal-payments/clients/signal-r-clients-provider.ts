@@ -12,7 +12,6 @@ export class SignalRClientsProvider implements SignalRProvider {
     ) { }
 
     public messageProvided(packagePath: string, message: any): void {
-        console.log("new signalr event", packagePath, message);
         if (message.type) {
             switch (message.type) {
                 case 'ClientOnlineChanged': {
