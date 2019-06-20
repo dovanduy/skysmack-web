@@ -15,6 +15,7 @@ import { NgSkysmackStore } from '@skysmack/ng-core';
 })
 export class ReceiptsIndexComponent extends DocumentRecordIndexComponent<ReceiptsAppState, Receipt, number> implements OnInit {
   public areaKey: string = RECEIPTS_AREA_KEY;
+  public titleExtras = true;
   public entityActions: EntityAction[] = [
     new EntityAction().asUrlAction('edit', ENTITY_ACTIONS_EDIT, 'edit'),
     new EntityAction().asEventAction(ENTITY_ACTIONS_DELETE, this.delete, 'delete', this)

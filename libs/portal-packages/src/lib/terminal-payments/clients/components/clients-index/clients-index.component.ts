@@ -15,6 +15,7 @@ import { NgSignalR } from '@skysmack/ng-framework';
 })
 export class ClientsIndexComponent extends RecordIndexComponent<ClientsAppState, Client, number> implements OnInit {
   public areaKey: string = CLIENTS_AREA_KEY;
+  public titleExtras = true;
   public entityActions: EntityAction[] = [
     new EntityAction().asUrlAction('edit', ENTITY_ACTIONS_EDIT, 'edit'),
     new EntityAction().asEventAction(ENTITY_ACTIONS_DELETE, this.delete, 'delete', this)

@@ -1987,7 +1987,8 @@
 			"MANAGE": "Manage",
 			"FIELDS": "Fields",
 			"FIELDS_TITLE": "(fields)",
-			"BACK": "Back"
+			"BACK": "Back",
+			"TITLE_EXTRA": "(Receipts)"
 		},
 		"FORM": {
 			"LABELS": {
@@ -2055,7 +2056,8 @@
 			"TYPES": "Types",
 			"CLIENTS": "Clients",
 			"RECEIPTS": "Receipts",
-			"CONNECTIONS": "Connections"
+			"CONNECTIONS": "Connections",
+			"TITLE_EXTRA": "(Terminals)"
 		},
 		"FIELDS": {
 			"CREATE": {
@@ -2592,7 +2594,8 @@
 			"MANAGE": "Manage",
 			"FIELDS": "Fields",
 			"FIELDS_TITLE": "(fields)",
-			"BACK": "Back"
+			"BACK": "Back",
+			"TITLE_EXTRA": "(Clients)"
 		},
 		"FORM": {
 			"LABELS": {
@@ -2636,7 +2639,8 @@
 			"CREATE": "Create",
 			"DELETE": "Delete",
 			"MANAGE": "Manage",
-			"BACK": "Back"
+			"BACK": "Back",
+			"TITLE_EXTRA": "(Connections)"
 		},
 		"FORM": {
 			"LABELS": {
