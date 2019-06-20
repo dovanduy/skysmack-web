@@ -3,7 +3,6 @@ import { TerminalsIndexComponent } from './terminals-index/terminals-index.compo
 import { TerminalsCreateComponent } from './terminals-create/terminals-create.component';
 import { TerminalsEditComponent } from './terminals-edit/terminals-edit.component';
 
-
 export const terminalsRoutes: Routes = [
   {
     path: '', component: TerminalsIndexComponent,
