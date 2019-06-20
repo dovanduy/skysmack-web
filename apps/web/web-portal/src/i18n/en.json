@@ -2680,5 +2680,13 @@
 			"DELETING": "Deleting connection {{ id }}",
 			"ERROR": "An error occured with connection {{ id }}. Correct and try again."
 		}
+	},
+	"TERMINAL_PAYMENTS_INDEX": {
+		"TITLE": "Terminal Payments",
+		"MANAGE": "Manage",
+		"TERMINALS": "Terminals",
+		"CLIENTS": "Clients",
+		"RECEIPTS": "Receipts",
+		"CONNECTIONS": "Connections"
 	}
 }

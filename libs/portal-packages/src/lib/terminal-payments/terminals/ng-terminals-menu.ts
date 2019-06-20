@@ -29,11 +29,13 @@ export class NgTerminalsMenu extends SidebarMenu {
             translationPrefix: this.translationPrefix,
             order: 1,
         }));
+
         this.primaryMenuAreas.push(new MenuArea({
             area: 'manage',
             translationPrefix: this.translationPrefix,
-            order: 2,
+            order: 1,
         }));
+
 
         this.primaryMenuItems.push(new MenuItem({
             url: 'create',
@@ -42,29 +44,8 @@ export class NgTerminalsMenu extends SidebarMenu {
             order: 1,
             icon: 'groupAdd',
         }));
-        this.primaryMenuItems.push(new MenuItem({
-            url: 'receipts',
-            displayName: this.translationPrefix + 'RECEIPTS',
-            area: 'manage',
-            order: 2,
-            icon: 'description',
-        }));
 
-        this.primaryMenuItems.push(new MenuItem({
-            url: 'clients',
-            displayName: this.translationPrefix + 'CLIENTS',
-            area: 'manage',
-            order: 2,
-            icon: 'description',
-        }));
-
-        this.primaryMenuItems.push(new MenuItem({
-            url: 'connections',
-            displayName: this.translationPrefix + 'CONNECTIONS',
-            area: 'manage',
-            order: 2,
-            icon: 'description',
-        }));
+        this.setBackButton();
     }
 
     public setSpeedDialMenu() {

@@ -10,6 +10,7 @@ import { receiptsComponents } from './receipts/components/receipts-component';
 import { LanguageService } from '@skysmack/portal-ui';
 import { clientsComponents } from './clients/components/clients-component';
 import { connectionsComponents } from './connections';
+import { terminalPaymentsIndexComponents } from './components/teminal-payments-index-components';
 
 @NgModule({
   imports: [
@@ -22,6 +23,7 @@ import { connectionsComponents } from './connections';
   ],
   exports: [],
   declarations: [
+    ...terminalPaymentsIndexComponents,
     ...terminalsComponents,
     ...receiptsComponents,
     ...clientsComponents,

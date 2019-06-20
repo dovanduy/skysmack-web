@@ -5,7 +5,7 @@ import { TerminalsEditComponent } from './terminals-edit/terminals-edit.componen
 
 export const terminalsRoutes: Routes = [
   {
-    path: '', component: TerminalsIndexComponent,
+    path: 'terminals', component: TerminalsIndexComponent,
     children: [
       { path: 'create', component: TerminalsCreateComponent, pathMatch: 'full' },
       { path: 'edit/:id', component: TerminalsEditComponent, pathMatch: 'full' }
