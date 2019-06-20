@@ -8,6 +8,7 @@ import { PortalUiModule, FieldsModule } from '@skysmack/portal-ui';
 import { terminalsComponents } from './terminals/components/terminals-components';
 import { receiptsComponents } from './receipts/components/receipts-component';
 import { LanguageService } from '@skysmack/portal-ui';
+import { clientsComponents } from './clients/components/clients-component';
 
 @NgModule({
   imports: [
@@ -21,7 +22,8 @@ import { LanguageService } from '@skysmack/portal-ui';
   exports: [],
   declarations: [
     ...terminalsComponents,
-    ...receiptsComponents
+    ...receiptsComponents,
+    ...clientsComponents
   ],
   providers: [
     LanguageService

@@ -31,6 +31,8 @@
             "FIELDS_TITLE": "(fields)",
             "ITEM": "Item",
             "MANAGE": "Manage",
+            "CLIENTS": "Clients",
+            "RECEIPTS": "Receipts",
             "ACTIONS": "Actions",
             "TYPES": "Types"
         },
