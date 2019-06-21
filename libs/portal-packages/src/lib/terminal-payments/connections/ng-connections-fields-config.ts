@@ -56,7 +56,17 @@ export class NgConnectionsFieldsConfig extends FieldsConfig<Connection, Connecti
                 getDependencies: () => { this.clientsActions.getPaged(loadedPackage._package.path, new PagedQuery()); },
                 order: 2,
                 showColumn: true
-            })
+            }),
+            new Field({
+                component: StringFieldComponent,
+                value: entity ? entity.object.id.clientId : undefined,
+                key: 'online',
+                displayKey: 'client',
+                displaySubKey: 'object.online',
+                order: 1,
+                showColumn: true,
+                includeInForm: false
+            }),
         ];
 
         // Id field must only be added for edit forms.

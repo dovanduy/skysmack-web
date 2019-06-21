@@ -20,12 +20,14 @@
             "LABELS": {
                 "STATUS": "Status",
                 "CLIENTID": "Client",
-                "TERMINALID": "Terminal"
+                "TERMINALID": "Terminal",
+                "ONLINE": "Online"
             },
             "PLACEHOLDERS": {
                 "STATUS": "Status",
                 "CLIENTID": "Client",
-                "TERMINALID": "Terminal"
+                "TERMINALID": "Terminal",
+                "ONLINE": "Online"
             },
             "VALIDATION": {
                 "STATUS": {
