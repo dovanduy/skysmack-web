@@ -44,7 +44,6 @@ export class NgProductsFieldsConfig extends DocumentFieldsConfig<Product, number
                 component: SelectFieldComponent,
                 value: entity ? entity.object.productTypeId : undefined,
                 key: 'productTypeId',
-                label: 'Product type',
                 displayKey: 'productType',
                 displaySubKey: 'object.name',
                 optionsData$: this.productTypeStore.get(loadedPackage._package.path),

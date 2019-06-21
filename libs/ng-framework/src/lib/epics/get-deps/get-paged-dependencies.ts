@@ -1,4 +1,4 @@
-import { RSQLFilterBuilder, PagedQuery } from '@skysmack/framework';
+import { RSQLFilterBuilder, PagedQuery, getProperty } from '@skysmack/framework';
 import { map, take } from 'rxjs/operators';
 import { NgRecordStore } from '../../stores/ng-record-store';
 import { RecordActionsBase, ReduxAction, GetPagedEntitiesSuccessPayload } from '@skysmack/redux';
@@ -17,7 +17,7 @@ export interface GetDependenciesOptions {
 
 export function getDependencies(options: GetDependenciesOptions): void {
     const entities = options.action.payload.entities;
-    const depIds: number[] = Array.from(new Set(entities.map(record => record[options.relationIdSelector]).filter(x => x)));
+    const depIds: number[] = Array.from(new Set(entities.map(record => getProperty(record, options.relationIdSelector)).filter(x => x)));
 
     if (depIds && depIds.length > 0) {
         const rsqlFilter = new RSQLFilterBuilder();

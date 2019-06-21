@@ -3,6 +3,7 @@ import { NgRecordStore } from '../../stores/ng-record-store';
 import { RecordActionsBase } from '@skysmack/redux';
 import { SkysmackStore } from '../../stores/skysmack-store';
 import { getPackageDendencyAsStream } from '../../helpers/ng-helpers';
+import { getProperty } from '@skysmack/framework';
 
 export interface GetSingleDependencyOptions {
     entity: any;
@@ -16,7 +17,7 @@ export interface GetSingleDependencyOptions {
 
 export function getSingleDependency(options: GetSingleDependencyOptions): void {
     const entity = options.entity;
-    const entityId = entity[options.relationIdSelector];
+    const entityId = getProperty(entity, options.relationIdSelector);
     const packagePath = options.packagePath;
     options.dependencyIndexes = options.dependencyIndexes ? options.dependencyIndexes : [];
 

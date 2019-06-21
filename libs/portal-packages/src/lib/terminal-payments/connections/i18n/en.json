@@ -19,23 +19,23 @@
         "FORM": {
             "LABELS": {
                 "STATUS": "Status",
-                "CLIENTID": "Client id",
-                "TERMINALID": "Terminal id"
+                "CLIENTID": "Client",
+                "TERMINALID": "Terminal"
             },
             "PLACEHOLDERS": {
                 "STATUS": "Status",
-                "CLIENTID": "Client id",
-                "TERMINALID": "Terminal id"
+                "CLIENTID": "Client",
+                "TERMINALID": "Terminal"
             },
             "VALIDATION": {
                 "STATUS": {
                     "REQUIRED": "Status is required."
                 },
                 "CLIENTID": {
-                    "REQUIRED": "Client id is required."
+                    "REQUIRED": "Client is required."
                 },
                 "TERMINALID": {
-                    "REQUIRED": "Terminal id is required."
+                    "REQUIRED": "Terminal is required."
                 }
             }
         },

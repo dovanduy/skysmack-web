@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { FormRule, SelectField } from '@skysmack/ng-ui';
-import { LocalObject, LocalObjectStatus, PagedQuery } from '@skysmack/framework';
-import { Connection, CONNECTIONS_AREA_KEY, ConnectionKey } from '@skysmack/packages-terminal-payments';
+import { FormRule, SelectField, SelectFieldOption } from '@skysmack/ng-ui';
+import { LocalObject, LocalObjectStatus, PagedQuery, DisplayColumn } from '@skysmack/framework';
+import { Connection, CONNECTIONS_AREA_KEY, ConnectionKey, TerminalStatus } from '@skysmack/packages-terminal-payments';
 import { Field } from '@skysmack/ng-ui';
 import { FieldsConfig, HiddenFieldComponent, SelectFieldComponent, StringFieldComponent } from '@skysmack/portal-ui';
 import { NgConnectionsValidation, NgTerminalsStore, NgTerminalsActions, NgClientsStore, NgClientsActions } from '@skysmack/ng-packages';
@@ -30,6 +30,7 @@ export class NgConnectionsFieldsConfig extends FieldsConfig<Connection, Connecti
                 component: StringFieldComponent,
                 value: entity ? entity.object.status : undefined,
                 key: 'status',
+                displayModifier: (column: DisplayColumn, providedEntity: LocalObject<Connection, ConnectionKey>): string => TerminalStatus[providedEntity.object.status],
                 order: 1,
                 showColumn: true,
                 includeInForm: false
@@ -40,8 +41,8 @@ export class NgConnectionsFieldsConfig extends FieldsConfig<Connection, Connecti
                 optionsData$: this.clientsStore.get(loadedPackage._package.path),
                 getDependencies: () => { this.clientsActions.getPaged(loadedPackage._package.path, new PagedQuery()); },
                 key: 'clientId',
-                displayKey: 'id',
-                displaySubKey: 'clientId',
+                displayKey: 'client',
+                displaySubKey: 'object.name',
                 order: 1,
                 showColumn: true
             }),
@@ -49,8 +50,8 @@ export class NgConnectionsFieldsConfig extends FieldsConfig<Connection, Connecti
                 component: SelectFieldComponent,
                 value: entity ? entity.object.id.terminalId : undefined,
                 key: 'terminalId',
-                displayKey: 'id',
-                displaySubKey: 'terminalId',
+                displayKey: 'terminal',
+                displaySubKey: 'object.name',
                 optionsData$: this.terminalsStore.get(loadedPackage._package.path),
                 getDependencies: () => { this.clientsActions.getPaged(loadedPackage._package.path, new PagedQuery()); },
                 order: 2,

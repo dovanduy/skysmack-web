@@ -2576,23 +2576,23 @@
         "FORM": {
             "LABELS": {
                 "STATUS": "Status",
-                "CLIENTID": "Klient id",
-                "TERMINALID": "Terminal id"
+                "CLIENTID": "Klient",
+                "TERMINALID": "Terminal"
             },
             "PLACEHOLDERS": {
                 "STATUS": "Status",
-                "CLIENTID": "Klient id",
-                "TERMINALID": "Terminal id"
+                "CLIENTID": "Klient",
+                "TERMINALID": "Terminal"
             },
             "VALIDATION": {
                 "STATUS": {
                     "REQUIRED": "Status er påkrævet"
                 },
                 "CLIENTID": {
-                    "REQUIRED": "Klient id er påkrævet"
+                    "REQUIRED": "Klient er påkrævet"
                 },
                 "TERMINALID": {
-                    "REQUIRED": "Terminal id er påkrævet"
+                    "REQUIRED": "Terminal er påkrævet"
                 }
             }
         },
