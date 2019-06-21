@@ -7,6 +7,7 @@ import { EntityAction } from '@skysmack/ng-ui';
 import { NgConnectionsFieldsConfig } from '../../ng-connections-fields-config';
 import { NgSkysmackStore } from '@skysmack/ng-core';
 import { NgConnectionsActions, NgConnectionsStore } from '@skysmack/ng-packages';
+import { NgSignalR } from '@skysmack/ng-framework';
 
 @Component({
   selector: 'ss-connections-index',
@@ -29,13 +30,14 @@ export class ConnectionsIndexComponent extends RecordIndexComponent<ConnectionsA
     public sidebarMenu: NgConnectionsMenu,
     public fieldsConfig: NgConnectionsFieldsConfig,
     public title: EntityComponentPageTitle,
-    public entityActionProviders: EntityActionProviders
+    public entityActionProviders: EntityActionProviders,
+    public signalR: NgSignalR
   ) {
     super(router, activatedRoute, actions, redux, store, fieldsConfig, entityActionProviders, title);
   }
 
-
   ngOnInit() {
     super.ngOnInit();
+    this.signalR.instance.join(this.packagePath);
   }
 }
