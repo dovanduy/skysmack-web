@@ -1,12 +1,12 @@
 import { Component, Input, ViewChild, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
-import { Router } from '@angular/router';
+import { Router, RoutesRecognized } from '@angular/router';
 import { SidebarMenu } from './../../../models/sidebar-menu/sidebar-menu';
 import { SubscriptionHandler } from '@skysmack/framework';
 import { EditorNavService } from './editor-nav.service';
 import { NgSkysmackStore } from '@skysmack/ng-core';
 import { Observable, of } from 'rxjs';
-import { map, filter, switchMap } from 'rxjs/operators';
+import { map, filter, switchMap, pairwise, take } from 'rxjs/operators';
 import { NgAuthenticationStore } from '@skysmack/ng-framework';
 
 const SMALL_WIDTH_BREAKPOINT = 720;
@@ -75,6 +75,9 @@ export class ContainerComponent implements OnInit, OnDestroy {
         } else if (this.path.endsWith('/change-password')) {
           const newPath = this.path.slice(0, this.path.length - '/change-password'.length);
           this.router.navigate([newPath]);
+        } else if (this.path.endsWith('/pay')) {
+          // This needs to be the previous package's path.
+          // consider using getPackageDendencyAsStream(this.skysmackStore, packagePath, dependencyIndexes)
         } else {
           this.router.navigate([this.path]);
         }
