@@ -2054,7 +2054,12 @@
 			"UPDATING": "Opdatere terminal {{ id }}",
 			"DELETING": "Sletter terminal {{ id }}",
 			"ERROR": "Der opstod  en fejl ved terminal {{ id }}. Ret og prøv igen."
-		}
+		},
+		"ENTITY_ACTION_PROVIDER": {
+            "ENTITY_ACTION": {
+                "TERMINAL_PAYMENT": "Kreditkort betaling"
+            }
+        }
 	},
 	"UI": {
 		"ERROR_MESSAGE": {

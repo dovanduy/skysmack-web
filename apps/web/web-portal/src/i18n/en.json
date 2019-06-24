@@ -2080,6 +2080,12 @@
 			"UPDATING": "Updating terminal {{ id }}",
 			"DELETING": "Deleting terminal {{ id }}",
 			"ERROR": "An error occured with terminal {{ id }}. Correct and try again."
+		},
+		"ENTITY_ACTION_PROVIDER": {
+			"TERMINAL_PAYMENT": "Terminal payment",
+			"ENTITY_ACTION": {
+				"TERMINAL_PAYMENT": "Terminal payment"
+			}
 		}
 	},
 	"UI": {
