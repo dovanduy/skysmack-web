@@ -23,10 +23,8 @@ export class FieldHelpers {
             });
             targetEnums = processed;
         }
-        console.log(targetEnums);
 
         // Convert the enum object into a proper options object for the select field.
-
         if (useEnumValue) {
             // The enums actual value will be used.
             // USD: 208 will equal value to be 208

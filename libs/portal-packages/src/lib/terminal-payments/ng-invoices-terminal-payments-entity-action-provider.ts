@@ -28,7 +28,7 @@ export class NgInvoicesTerminalPaymentsEntityActionProvider extends EntityAction
                     if (packages && packages.length > 0) {
                         const entityActionStreams$ = packages.map(_package => {
                             return of([
-                                new EntityAction().asUrlAction(`/${_package.object.path}`, 'TERMINALS.ENTITY_ACTION_PROVIDER.ENTITY_ACTION.TERMINAL_PAYMENT', 'payment', 'pay')
+                                new EntityAction().asUrlAction(`/${_package.object.path}/terminals`, 'TERMINALS.ENTITY_ACTION_PROVIDER.ENTITY_ACTION.TERMINAL_PAYMENT', 'payment', 'pay')
                             ]);
                         });
                         return combineLatest(entityActionStreams$);

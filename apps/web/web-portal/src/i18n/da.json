@@ -2015,13 +2015,23 @@
 		"FORM": {
 			"LABELS": {
 				"NAME": "Navn",
-				"DESCRIPTION": "Description",
-				"ONLINE": "Online"
+                "CONNECTIONSTRING": "Forbindelse",
+                "DESCRIPTION": "Beskrivelse",
+                "CLIENTID": "Klient",
+                "TERMINALID": "Terminal",
+                "AMOUNT": "Mængde",
+                "REFERENCE": "Reference",
+                "CURRENCY": "Valuta"
 			},
 			"PLACEHOLDERS": {
-				"NAME": "Navn",
-				"DESCRIPTION": "Description",
-				"ONLINE": "Online"
+			    "NAME": "Navn",
+                "CONNECTIONSTRING": "Forbindelse",
+                "DESCRIPTION": "Beskrivelse",
+                "CLIENTID": "Klient",
+                "TERMINALID": "Terminal",
+                "AMOUNT": "Mængde",
+                "REFERENCE": "Reference",
+                "CURRENCY": "Valuta"
 			},
 			"VALIDATION": {
 				"NAME": {
@@ -2029,6 +2039,21 @@
 				},
 				"CONNECTIONSTRING": {
 					"REQUIRED": "Forbindelse er påkrævet."
+				},
+				"CLIENTID": {
+					"REQUIRED": "Klient er påkrævet."
+				},
+				"TERMINALID": {
+					"REQUIRED": "Terminal er påkrævet."
+				},
+				"AMOUNT": {
+					"REQUIRED": "Mængde er påkrævet."
+				},
+				"REFERENCE": {
+					"REQUIRED": "Reference er påkrævet."
+				},
+				"CURRENCY": {
+					"REQUIRED": "Valuta er påkrævet."
 				}
 			}
 		},
@@ -2056,10 +2081,10 @@
 			"ERROR": "Der opstod  en fejl ved terminal {{ id }}. Ret og prøv igen."
 		},
 		"ENTITY_ACTION_PROVIDER": {
-            "ENTITY_ACTION": {
-                "TERMINAL_PAYMENT": "Kreditkort betaling"
-            }
-        }
+			"ENTITY_ACTION": {
+				"TERMINAL_PAYMENT": "Kreditkort betaling"
+			}
+		}
 	},
 	"UI": {
 		"ERROR_MESSAGE": {
@@ -2561,61 +2586,61 @@
 			"ERROR": "En fejl er opstået med klient {{ id }}. Ret fejlene og prøv igen."
 		}
 	},
-	 "CONNECTIONS": {
-        "CREATE": {
-            "CREATE": "Create",
-            "BUTTON_CREATE": "Create"
-        },
-        "EDIT": {
-            "EDIT": "Edit",
-            "BUTTON_EDIT": "Update"
-        },
-        "INDEX": {
+	"CONNECTIONS": {
+		"CREATE": {
+			"CREATE": "Create",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDIT": "Edit",
+			"BUTTON_EDIT": "Update"
+		},
+		"INDEX": {
 			"TITLE_EXTRA": "(Forbindelser)",
-            "ACTIONS": "Actions",
-            "CREATE": "Create",
-            "DELETE": "Delete",
-            "MANAGE": "Manage",
-            "BACK": "Back"
-        },
-        "FORM": {
-            "LABELS": {
-                "STATUS": "Status",
-                "CLIENTID": "Klient",
+			"ACTIONS": "Actions",
+			"CREATE": "Create",
+			"DELETE": "Delete",
+			"MANAGE": "Manage",
+			"BACK": "Back"
+		},
+		"FORM": {
+			"LABELS": {
+				"STATUS": "Status",
+				"CLIENTID": "Klient",
 				"TERMINALID": "Terminal",
 				"ONLINE": "Online"
-            },
-            "PLACEHOLDERS": {
-                "STATUS": "Status",
-                "CLIENTID": "Klient",
+			},
+			"PLACEHOLDERS": {
+				"STATUS": "Status",
+				"CLIENTID": "Klient",
 				"TERMINALID": "Terminal",
 				"ONLINE": "Online"
-            },
-            "VALIDATION": {
-                "STATUS": {
-                    "REQUIRED": "Status er påkrævet"
-                },
-                "CLIENTID": {
-                    "REQUIRED": "Klient er påkrævet"
-                },
-                "TERMINALID": {
-                    "REQUIRED": "Terminal er påkrævet"
-                }
-            }
-        },
-        "QUEUE": {
-		    "ADDING": "Tilføker forbindelse {{ id }}",
+			},
+			"VALIDATION": {
+				"STATUS": {
+					"REQUIRED": "Status er påkrævet"
+				},
+				"CLIENTID": {
+					"REQUIRED": "Klient er påkrævet"
+				},
+				"TERMINALID": {
+					"REQUIRED": "Terminal er påkrævet"
+				}
+			}
+		},
+		"QUEUE": {
+			"ADDING": "Tilføker forbindelse {{ id }}",
 			"UPDATING": "Opdaterer forbindelse {{ id }}",
 			"DELETING": "Sletter forbindelse {{ id }}",
 			"ERROR": "En fejl er opstået med forbindelse {{ id }}. Ret fejlene og prøv igen."
-        }
+		}
 	},
-	  "TERMINAL_PAYMENTS_INDEX": {
-        "TITLE": "Dankort terminal betalinger",
-        "MANAGE": "Handlinger",
-        "TERMINALS": "Terminaler",
-        "CLIENTS": "Klienter",
-        "RECEIPTS": "Kvitteringer",
-        "CONNECTIONS": "Forbindelser"
-    }
+	"TERMINAL_PAYMENTS_INDEX": {
+		"TITLE": "Dankort terminal betalinger",
+		"MANAGE": "Handlinger",
+		"TERMINALS": "Terminaler",
+		"CLIENTS": "Klienter",
+		"RECEIPTS": "Kvitteringer",
+		"CONNECTIONS": "Forbindelser"
+	}
 }

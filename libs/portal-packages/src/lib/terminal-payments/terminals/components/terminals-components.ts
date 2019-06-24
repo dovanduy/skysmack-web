@@ -13,7 +13,7 @@ export const terminalsRoutes: Routes = [
     ]
   },
   {
-    path: ':invoiceId', component: TerminalsIndexComponent,
+    path: 'terminals/:invoiceId', component: TerminalsIndexComponent,
     children: [
       { path: 'pay', component: TerminalsPayComponent, pathMatch: 'full' }
     ]

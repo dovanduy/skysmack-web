@@ -12,7 +12,7 @@ export class NgTransactionRequestValidation extends Validation {
     };
 
     public validationMessages: StrIndex<{}> = {
-        name: {
+        clientId: {
             required: '',
         },
         terminalId: {
