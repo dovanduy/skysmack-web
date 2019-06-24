@@ -1,0 +1,4 @@
+<ss-dynamic-form *ngIf="fields$" [fields$]="fields$" [validation]="fieldsConfig.validation"
+  [rules]="fieldsConfig.formRules" [buttonText]="'INVOICES_CASH_PAYMENTS.PAY.BUTTON_PAY' | translate" (submitted)="onCreateSubmit($event)">
+  <h2 [translate]="'INVOICES_CASH_PAYMENTS.CREATE.PAYMENT'"></h2>
+</ss-dynamic-form>

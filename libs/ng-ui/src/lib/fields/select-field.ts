@@ -41,7 +41,15 @@ export class SelectField extends Field {
      */
     public selectType: 'single' | 'multiple' = 'single';
 
+    /**
+     * Modifies the display name for each option.
+     */
     public modifyDisplayName?: Function;
+
+    /**
+     * Whether an index or the actual value of a ts-enum should be used. Default is the index value (false)
+     */
+    public useEnumValue = false;
 
     constructor(values: Partial<SelectField>) {
         super(values);
@@ -63,7 +71,7 @@ export class SelectField extends Field {
             switch (this.optionsDataType) {
                 case 'array': options = FieldHelpers.getFieldOptionsOfArray(optionsData, this.valueSelector, this.displayNameSelector); break;
                 case 'enum': options = FieldHelpers.getFieldOptionsOfEnum(optionsData); break;
-                case 'ts-enum': options = FieldHelpers.getFieldOptionsOfEnum(optionsData, true); break;
+                case 'ts-enum': options = FieldHelpers.getFieldOptionsOfEnum(optionsData, true, this.useEnumValue); break;
                 case 'flag-enum': options = FieldHelpers.getFieldOptionsOfFlagEnum(optionsData); break;
 
                 default: options = []; break;

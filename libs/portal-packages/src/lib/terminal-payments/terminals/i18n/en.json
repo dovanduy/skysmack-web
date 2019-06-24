@@ -4,12 +4,22 @@
             "LABELS": {
                 "NAME": "Name",
                 "CONNECTIONSTRING": "Connection string",
-                "DESCRIPTION": "Description"
+                "DESCRIPTION": "Description",
+                "CLIENTID": "Client",
+                "TERMINALID": "Terminal",
+                "AMOUNT": "Amount",
+                "REFERENCE": "Reference",
+                "CURRENCY": "Currency"
             },
             "PLACEHOLDERS": {
                 "NAME": "Name",
                 "CONNECTIONSTRING": "Connection string",
-                "DESCRIPTION": "Description"
+                "DESCRIPTION": "Description",
+                "CLIENTID": "Client",
+                "TERMINALID": "Terminal",
+                "AMOUNT": "Amount",
+                "REFERENCE": "Reference",
+                "CURRENCY": "Currency"
             },
             "VALIDATION": {
                 "NAME": {
@@ -17,6 +27,21 @@
                 },
                 "CONNECTIONSTRING": {
                     "REQUIRED": "Connection string is required."
+                },
+                "CLIENTID": {
+                    "REQUIRED": "Client is required."
+                },
+                "TERMINALID": {
+                    "REQUIRED": "Terminal is required."
+                },
+                "AMOUNT": {
+                    "REQUIRED": "Amount is required."
+                },
+                "REFERENCE": {
+                    "REQUIRED": "Reference is required."
+                },
+                "CURRENCY": {
+                    "REQUIRED": "Currency is required."
                 }
             }
         },
