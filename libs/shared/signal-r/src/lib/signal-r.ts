@@ -49,11 +49,11 @@ export class SignalR {
     }
 
     private startHubConnection() {
-        //this will start the long polling connection
+        // this will start the long polling connection
         this.hubConnection.start()
             .then(() => {
                 this.connected.next(true);
-                Object.keys(this.joinedPackages).forEach(key => this.join(this.joinedPackages[key]));
+                Object.keys(this.joinedPackages).forEach(key => this.join(this.joinedPackages[key], true));
             })
             .catch(err => {
                 setTimeout(() => this.startHubConnection(), 1000);
@@ -75,12 +75,19 @@ export class SignalR {
         ).subscribe();
     }
 
-    public join(packagePath: string) {
+    public join(packagePath: string, force = false) {
         this.connected.pipe(
             filter(x => x),
             map(() => {
-                this.joinedPackages[packagePath] = packagePath;
-                this.hubConnection.invoke('Join', packagePath);
+                if (!this.joinedPackages[packagePath]) {
+                    this.joinedPackages[packagePath] = packagePath;
+                    this.hubConnection.invoke('Join', packagePath);
+                } else if (force) {
+                    if (!this.joinedPackages[packagePath]) {
+                        this.joinedPackages[packagePath] = packagePath;
+                    }
+                    this.hubConnection.invoke('Join', packagePath);
+                }
             }),
             take(1)
         ).subscribe();
