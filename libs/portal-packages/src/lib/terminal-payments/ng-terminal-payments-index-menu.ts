@@ -60,6 +60,8 @@ export class NgTerminalPaymentsIndexMenu extends SidebarMenu {
             order: 2,
             icon: 'description',
         }));
+
+        this.setBackButton({ connectedPackage: true }).addConnectedPackageMenuArea();
     }
 
     public setSpeedDialMenu() {
