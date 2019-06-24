@@ -44,7 +44,7 @@ export class NgInvoicesCashPaymentsMenu extends SidebarMenu {
             icon: 'groupAdd',
         }));
 
-        this.setBackButton({ connectedPackage: true });
+        this.setBackButton({ connectedPackage: true }).addConnectedPackageMenuArea();
     }
 
     public setSpeedDialMenu() {
