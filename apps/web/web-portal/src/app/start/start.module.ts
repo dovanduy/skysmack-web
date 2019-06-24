@@ -129,7 +129,8 @@ import { fieldReducer, settingsReducer } from '@skysmack/redux';
         component: FallBackComponent
       }
     ], {
-        preloadingStrategy: PreloadAllModules
+        preloadingStrategy: PreloadAllModules,
+        enableTracing: true
       }),
     BrowserAnimationsModule,
     HttpClientModule,

@@ -8,6 +8,7 @@ import { combineLatest } from 'rxjs';
 import { toLocalObject } from '@skysmack/framework';
 import { NgTransactionRequestFieldsConfig } from '../../ng-transaction-request-fields-config';
 import { TransactionRequest, TerminalsAppState } from '@skysmack/packages-terminal-payments';
+import { FormHelper } from '@skysmack/ng-ui';
 
 @Component({
   selector: 'ss-terminals-pay',
@@ -24,7 +25,7 @@ export class TerminalsPayComponent extends RecordFormComponent<TerminalsAppState
     public invoicesStore: NgInvoicesStore,
     public redux: NgSkysmackStore,
     public fieldsConfig: NgTransactionRequestFieldsConfig,
-    public store: NgTerminalsStore,
+    public store: NgTerminalsStore
   ) {
     super(router, activatedRoute, editorNavService, actions, redux, store, fieldsConfig);
   }
@@ -32,6 +33,7 @@ export class TerminalsPayComponent extends RecordFormComponent<TerminalsAppState
   ngOnInit() {
     super.ngOnInit();
     this.setFields();
+    console.log('TerminalsPayComponent: OnInit');
   }
 
   protected setFields() {
@@ -66,5 +68,9 @@ export class TerminalsPayComponent extends RecordFormComponent<TerminalsAppState
         })
       ))
     );
+  }
+
+  public onSubmit(fh: FormHelper) {
+    this.router.navigate([this.router.url.substring(0, this.router.url.length - 3), 'processing']);
   }
 }
