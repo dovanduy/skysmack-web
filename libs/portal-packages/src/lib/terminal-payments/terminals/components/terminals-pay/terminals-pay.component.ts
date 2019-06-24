@@ -33,7 +33,6 @@ export class TerminalsPayComponent extends RecordFormComponent<TerminalsAppState
   ngOnInit() {
     super.ngOnInit();
     this.setFields();
-    console.log('TerminalsPayComponent: OnInit');
   }
 
   protected setFields() {
