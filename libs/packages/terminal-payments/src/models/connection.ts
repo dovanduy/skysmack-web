@@ -9,7 +9,7 @@ export interface ConnectionKey {
 }
 
 export class Connection extends Record<ConnectionKey> {
-    public readonly status: TerminalStatus;
+    public status: TerminalStatus;
     public terminal: LocalObject<Terminal, number>;
     public client: LocalObject<Client, number>;
 }

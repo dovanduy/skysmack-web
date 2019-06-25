@@ -7,6 +7,7 @@ import { ClientsEpics } from './clients/redux/ng-clients-epics';
 import { ConnectionsEpics } from './connections/redux/ng-connections-epics';
 import { SignalRClientsProvider } from './clients/signal-r-clients-provider';
 import { NgInvoicesTerminalPaymentsMenuItemProvider } from './ng-invoices-terminal-payments-menu-item-provider';
+import { SignalRConnectionsProvider } from './connections/signal-r-connections-provider';
 
 @NgModule({
   imports: [],
@@ -22,7 +23,8 @@ export class NgTerminalPaymentsModule {
     signalR: NgSignalR,
     ngMenuItemProviders: NgMenuItemProviders,
     menuItemProvider: NgInvoicesTerminalPaymentsMenuItemProvider,
-    clientsSRProvider: SignalRClientsProvider
+    clientsSRProvider: SignalRClientsProvider,
+    connectionsSRProvider: SignalRConnectionsProvider
   ) {
     // Redux
     registerRedux(TERMINALS_REDUCER_KEY, terminalsReducer, terminalsEpics);
@@ -32,6 +34,7 @@ export class NgTerminalPaymentsModule {
 
     // Signal R
     signalR.instance.registerProvider(clientsSRProvider);
+    signalR.instance.registerProvider(connectionsSRProvider);
 
     // Menu items
     ngMenuItemProviders.add(menuItemProvider);

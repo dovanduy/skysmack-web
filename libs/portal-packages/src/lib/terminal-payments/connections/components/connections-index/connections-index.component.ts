@@ -65,10 +65,7 @@ export class ConnectionsIndexComponent extends RecordIndexComponent<ConnectionsA
       terminalAction: TerminalAction.Connect
     });
 
-    _this.httpClient.post(`${url}/actions/change-connection`, connection, { observe: 'response' }).pipe(
-      tap(x => console.log(x)),
-      take(1)
-    ).subscribe();
+    _this.httpClient.post(`${url}/actions/change-connection`, connection, { observe: 'response' }).pipe(take(1)).subscribe();
   }
 
   protected disconnect(value: LocalObject<Connection, ConnectionKey>, _this: RecordIndexComponent<any, any, any>) {
