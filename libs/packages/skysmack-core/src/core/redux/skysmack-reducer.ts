@@ -1,6 +1,7 @@
 import { AppState, sharedReducer, ReduxAction } from '@skysmack/redux';
 import { SkysmackActions } from './skysmack-actions';
 import { StrIndex, HttpErrorResponse, GlobalProperties } from '@skysmack/framework';
+import { SKYSMACK_REDUCER_KEY } from '../constants';
 
 export class SkysmackAppState extends AppState {
     public skysmack: SkysmackState;
@@ -14,7 +15,7 @@ export class SkysmackState {
 }
 
 export function skysmackReducer(state = new SkysmackState(), action: any): SkysmackState {
-    state = sharedReducer(state, action, new SkysmackState());
+    state = sharedReducer(state, action, new SkysmackState(), SKYSMACK_REDUCER_KEY);
     const newState = Object.assign({}, state);
 
     switch (action.type) {
@@ -25,6 +26,10 @@ export function skysmackReducer(state = new SkysmackState(), action: any): Skysm
         }
         case SkysmackActions.GET_SKYSMACK_FAILURE: {
             newState.tenantLoaded = true;
+            const castedAction = action as ReduxAction<HttpErrorResponse>;
+            if (!GlobalProperties.production) {
+                console.log('Error getting skysmack: ', castedAction);
+            }
             return newState;
         }
 

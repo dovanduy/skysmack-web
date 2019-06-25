@@ -1,0 +1,9 @@
+export const FIND = 'Find';
+export const FIND_OWN = 'FindOwn';
+export const ADD = 'Add';
+export const ADD_OWN = 'AddOwn';
+export const UPDATE = 'Update';
+export const UPDATE_OWN = 'UpdateOwn';
+export const REMOVE = 'Remove';
+export const REMOVE_OWN = 'RemoveOwn';
+export const FIELDS = 'Fields';

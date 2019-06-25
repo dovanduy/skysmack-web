@@ -1,13 +1,12 @@
 import { NgRedux } from '@angular-redux/store';
-import { map, take, tap } from 'rxjs/operators';
+import { map, take } from 'rxjs/operators';
 import { Observable, BehaviorSubject, of } from 'rxjs';
-import { LocalObject, toLocalObject, Package, hasValue, StrIndex, safeUndefinedTo, defined } from '@skysmack/framework';
+import { LocalObject, toLocalObject, Package, hasValue, StrIndex, safeUndefinedTo, defined, OfflineState } from '@skysmack/framework';
 import { Skysmack, SkysmackAppState } from '@skysmack/packages-skysmack-core';
 import { Oauth2Type } from '@skysmack/packages-oauth2';
 import { IdentitiesType } from '@skysmack/packages-identities';
 import { LoadedPackage } from '../packages/loaded-package';
 import { PackageLoader } from '../packages/package-loader';
-import { AccountType } from 'libs/packages/account/src';
 
 export class SkysmackStore {
     public stateKey = 'skysmack';
@@ -26,6 +25,10 @@ export class SkysmackStore {
             this.editorItem = undefined;
         }
         return copy ? copy : of(undefined).pipe(take(1));
+    }
+
+    public getOffline(): Observable<OfflineState> {
+        return this.ngRedux.select((state: SkysmackAppState) => state.offline);
     }
 
     public getHydrated(): Observable<boolean> {
@@ -70,7 +73,7 @@ export class SkysmackStore {
 
     public getAccountPackages(): Observable<Package[]> {
         return this.getSkysmack().pipe(
-            map(skysmack => skysmack.packages.filter(_package => _package.type === AccountType.id))
+            map(skysmack => skysmack.packages.filter(_package => _package.type === IdentitiesType.id))
         );
     }
 

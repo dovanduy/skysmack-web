@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { PersonsModule } from '@skysmack/portal-packages';
+import { PersonsModule } from './../../../../../../../libs/portal-packages/src/lib/persons/persons.module';
 
 
 @NgModule({
@@ -7,4 +7,4 @@ import { PersonsModule } from '@skysmack/portal-packages';
     PersonsModule
   ]
 })
-export class PersonsWrapperModule {}
+export class PersonsWrapperModule { }

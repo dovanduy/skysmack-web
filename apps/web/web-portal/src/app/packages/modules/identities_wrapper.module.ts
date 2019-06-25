@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { IdentitiesModule } from '@skysmack/portal-packages';
+import { IdentitiesModule } from './../../../../../../../libs/portal-packages/src/lib/identities/identities.module';
 
 @NgModule({
   imports: [

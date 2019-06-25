@@ -1,8 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter, OnDestroy } from '@angular/core';
 import { SubscriptionHandler, PagedQuery, Package } from '@skysmack/framework';
 import { NgSkysmackStore } from '@skysmack/ng-core';
-import { map } from 'rxjs/operators';
-import { MatSelectChange } from '@angular/material';
+import { map, tap } from 'rxjs/operators';
+import { MatSelectChange } from '@angular/material/select';
 import { NgRolesStore, NgRolesActions } from '@skysmack/ng-packages';
 
 @Component({

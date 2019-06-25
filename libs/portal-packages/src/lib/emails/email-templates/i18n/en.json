@@ -1,0 +1,44 @@
+{
+    "EMAIL_TEMPLATES": {
+        "FORM": {
+            "LABELS": {
+                "FROM": "From",
+                "TO": "To",
+                "CC": "Cc",
+                "BCC": "Bcc",
+                "SUBJECT": "Subject",
+                "BODY": "Body"
+            },
+            "PLACEHOLDERS": {
+                "FROM": "From",
+                "TO": "To",
+                "CC": "Cc",
+                "BCC": "Bcc",
+                "SUBJECT": "Subject",
+                "BODY": "Body"
+            },
+            "VALIDATION": {}
+        },
+        "CREATE": {
+            "CREATE": "Create",
+            "BUTTON_CREATE": "Create"
+        },
+        "EDIT": {
+            "EDIT": "Edit",
+            "BUTTON_EDIT": "Update"
+        },
+        "INDEX": {
+            "CREATE": "Create",
+            "EDIT": "Edit",
+            "DELETE": "Delete",
+            "MANAGE": "Manage",
+            "ACTIONS": "Actions"
+        },
+        "QUEUE": {
+            "ADDING": "Adding {{ subject }}",
+            "UPDATING": "Updating {{ subject }}",
+            "DELETING": "Deleting {{ subject }}",
+            "ERROR": "An error occured with {{ subject }}. Correct and try again."
+        }
+    }
+}

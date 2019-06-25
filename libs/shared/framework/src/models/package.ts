@@ -1,4 +1,6 @@
-export class Package {
+import { Record } from './record';
+
+export class Package extends Record<string> {
     public type?: string;
     public name?: string;
     public description?: string;
@@ -7,6 +9,7 @@ export class Package {
     public access?: boolean;
 
     public constructor(init?: Partial<Package>) {
+        super(init);
         Object.assign(this, init);
     }
 }

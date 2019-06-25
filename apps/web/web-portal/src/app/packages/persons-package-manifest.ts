@@ -1,5 +1,6 @@
 import { PersonsType } from '@skysmack/packages-persons';
 import { PackageLoader, PackageManifest } from '@skysmack/ng-framework';
+
 export class PersonsPackageManifest extends PersonsType implements PackageManifest {
     public icon = 'face';
     public menuLocation = 'main';

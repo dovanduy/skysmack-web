@@ -13,7 +13,7 @@ export class NgFieldStore implements EntityStore<FieldSchemaViewModel, string> {
 
     public get(stateKey: string): Observable<LocalObject<FieldSchemaViewModel, string>[]> {
         return this.getState().pipe(
-            map(state => state.fields[stateKey]),
+            map(state => state.localRecords[stateKey]),
             safeUndefinedTo('object'),
             dictionaryToArray<LocalObject<FieldSchemaViewModel, string>>(),
         );

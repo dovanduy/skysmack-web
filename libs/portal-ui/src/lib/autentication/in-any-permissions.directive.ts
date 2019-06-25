@@ -28,7 +28,6 @@ export class IsAnyPermissionDirective implements OnInit, OnDestroy {
 
     @Output() public permissionsChecked = new EventEmitter();
 
-
     constructor(
         public templateRef: TemplateRef<any>,
         public viewContainer: ViewContainerRef,
@@ -69,6 +68,7 @@ export class IsAnyPermissionDirective implements OnInit, OnDestroy {
         if (this.subscription) {
             this.subscription.unsubscribe();
         }
+        IsAnyPermissionDirective.register = {};
     }
 
     private show(show: boolean = false) {

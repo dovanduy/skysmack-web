@@ -83,10 +83,16 @@
     "portal-core": {
       "tags": []
     },
-    "packages-account": {
+    "packages-invoices-cash-payments": {
       "tags": []
     },
-    "packages-invoices-cash-payments": {
+    "packages-emails": {
+      "tags": []
+    },
+    "packages-emails-smtp": {
+      "tags": []
+    },
+    "shared-signal-r": {
       "tags": []
     }
   }

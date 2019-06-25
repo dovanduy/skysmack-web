@@ -2,7 +2,7 @@ import { LocalPageTypes, StrIndex, LocalObject } from '@skysmack/framework';
 import { AppState, ReduxAction, RecordState, recordReducersBase } from '@skysmack/redux';
 import { sharedReducer } from '@skysmack/redux';
 import { CashPayment } from '../../models/cash-payment';
-import { INVOICES_CASH_PAYMENTS_REDUX_KEY } from '../../constants/constants';
+import { INVOICES_CASH_PAYMENTS_REDUX_KEY, INVOICES_CASH_PAYMENTS_REDUCER_KEY } from '../../constants/constants';
 
 /**
  * This is to be used when you want to access invoicesCashPayments via the GLOBAL state. E.g. state.invoicesCashPayments (where invoicesCashPayments is the reducer name.)
@@ -17,7 +17,7 @@ export class InvoicesCashPaymentsState implements RecordState<CashPayment, numbe
 }
 
 export function invoicesCashPaymentsReducer(state = new InvoicesCashPaymentsState(), action: ReduxAction, prefix: string = INVOICES_CASH_PAYMENTS_REDUX_KEY): InvoicesCashPaymentsState {
-    state = sharedReducer(state, action, new InvoicesCashPaymentsState());
+    state = sharedReducer(state, action, new InvoicesCashPaymentsState(), INVOICES_CASH_PAYMENTS_REDUCER_KEY);
 
     switch (action.type) {
         default:

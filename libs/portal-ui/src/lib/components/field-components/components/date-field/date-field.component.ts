@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FieldBaseComponent } from '../field-base-component';
 import * as _moment from 'moment';
-import { DateAdapter } from '@angular/material';
+import { DateAdapter } from '@angular/material/core';
 import { DateOnlyAdapter } from './date-only-adapter';
 import { Field } from '@skysmack/ng-ui';
 const moment = _moment;

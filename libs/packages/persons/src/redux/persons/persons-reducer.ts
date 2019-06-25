@@ -2,7 +2,8 @@ import { LocalPageTypes, StrIndex, LocalObject } from '@skysmack/framework';
 import { AppState, ReduxAction, RecordState, recordReducersBase } from '@skysmack/redux';
 import { Person } from '../../models/person';
 import { sharedReducer } from '@skysmack/redux';
-import { PERSONS_REDUX_KEY } from '../../constants/constants';
+import { PERSONS_REDUX_KEY, PERSONS_REDUCER_KEY } from '../../constants/constants';
+import { REHYDRATE } from 'redux-persist/constants';
 
 /**
  * This is to be used when you want to access persons via the GLOBAL state. E.g. state.persons (where persons is the reducer name.)
@@ -17,7 +18,7 @@ export class PersonsState implements RecordState<Person, number> {
 }
 
 export function personsReducer(state = new PersonsState(), action: ReduxAction, prefix: string = PERSONS_REDUX_KEY): PersonsState {
-    state = sharedReducer(state, action, new PersonsState());
+    state = sharedReducer(state, action, new PersonsState(), PERSONS_REDUCER_KEY);
 
     switch (action.type) {
         default:

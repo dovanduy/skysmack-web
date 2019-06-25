@@ -11,6 +11,7 @@ import { AccessPolicyRolesValidation, NgAccessPolicyRulesStore, NgAccessPolicyRu
 import { FieldProviders } from '@skysmack/portal-ui';
 import { NgRolesStore, NgRolesActions } from '@skysmack/ng-packages';
 import { LoadedPackage } from '@skysmack/ng-framework';
+import { Router } from '@angular/router';
 
 @Injectable({ providedIn: 'root' })
 export class NgAccessPolicyRolesFieldsConfig extends FieldsConfig<AccessPolicyRole, AccessPolicyRoleKey> {
@@ -25,10 +26,12 @@ export class NgAccessPolicyRolesFieldsConfig extends FieldsConfig<AccessPolicyRo
         public rolesActions: NgRolesActions,
         public accessPolicyRolesStore: NgAccessPolicyRolesStore,
         public accessPolicyRolesActions: NgAccessPolicyRolesActions,
-        public fieldProviders: FieldProviders
+        public fieldProviders: FieldProviders,
+        public router: Router
     ) { super(fieldProviders); }
 
     protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<AccessPolicyRole, AccessPolicyRoleKey>): Field[] {
+        const packagePath = this.router.url.split('/')[1];
 
         const modifyDisplayName = (options: SelectFieldOption[], optionsData: LocalObject<AccessPolicyRule, number>[]) => {
             const accessPolicyRules = optionsData;
@@ -56,10 +59,16 @@ export class NgAccessPolicyRolesFieldsConfig extends FieldsConfig<AccessPolicyRo
                 component: SelectFieldComponent,
                 value: entity ? entity.object.id.ruleId : undefined,
                 key: 'ruleId',
+<<<<<<< HEAD
                 displayKey: 'rule',
                 displaySubKey: 'object.id',
                 optionsData$: this.accessPolicyRulesStore.get('skysmack'),
                 getDependencies: () => { this.accessPolicyRulesActions.getPaged('skysmack', new PagedQuery()); },
+=======
+                displayKey: 'id',
+                displaySubKey: 'ruleId',
+                optionsData$: this.accessPolicyRulesStore.get(packagePath),
+>>>>>>> dev
                 validators: [Validators.required],
                 displayNameSelector: 'object.id',
                 modifyDisplayName,
@@ -71,10 +80,15 @@ export class NgAccessPolicyRolesFieldsConfig extends FieldsConfig<AccessPolicyRo
                 component: RolesSelectFieldComponent,
                 value: entity ? entity.object.id.roleId : undefined,
                 key: 'roleId',
+<<<<<<< HEAD
                 displayKey: 'role',
                 displaySubKey: 'object.id',
                 optionsData$: this.accessPolicyRolesStore.get('skysmack'),
                 getDependencies: () => { this.accessPolicyRolesActions.getPaged('skysmack', new PagedQuery()); },
+=======
+                displayKey: 'id',
+                displaySubKey: 'roleId',
+>>>>>>> dev
                 validators: [Validators.required],
                 displayNameSelector: 'object.id',
                 order: 2,

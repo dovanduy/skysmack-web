@@ -27,6 +27,7 @@ export class SkysmackApiDomain implements ApiDomain {
         const urlInfo = new Url();
 
         const notLocalTesting = urlInfo.host !== localProdClient;
+
         if (environment.production && notLocalTesting) {
             if (urlInfo.noPortHost.endsWith(prodHostClient) && urlInfo.subdomain.length > 0) {
                 apiDomain = 'https://' + urlInfo.subdomain + '.' + prodHostApi;

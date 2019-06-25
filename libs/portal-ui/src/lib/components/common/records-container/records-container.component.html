@@ -23,7 +23,7 @@
       <tbody *cdkVirtualFor="let entity of entities$ | async as entities; trackBy: trackByLocalId; let i = index;">
         <tr class="entity-row table-row mat-row" [class.row-is-loading]="entity.status !== 'OK' && !entity.error"
           [class.row-is-success]="entity.isNew && entity.status !== 'CREATING'" [class.row-is-error]="entity.error"
-          [attr.data-index]="i">
+          [class.row-is-deleted]="entity.deleted" [attr.data-index]="i">
           <td *ngFor="let column of displayColumns" class="table-cell mat-cell">
             {{ entity.object[column.fieldDisplayKey ? column.fieldDisplayKey : column.fieldKey] | displayValue:column | displayModifier:column:entity }}
           </td>
@@ -38,18 +38,22 @@
                 </button>
                 <mat-menu #menu="matMenu">
                   <ng-container *ngFor="let entityAction of entityActions">
-                    <!-- ACTION EVENT  -->
-                    <a *ngIf="entityAction.isActionEvent && (entityAction | showEntityAction:entity)" mat-menu-item
-                      (click)="entityActionEvent.emit({ action: entityAction.action, value: entity, _this: entityAction._this })">
-                      <i class="material-icons">{{ entityAction.icon }}</i> <span
-                        class="icon-text">{{ entityAction.displayName | translate }}</span>
-                    </a>
-                    <!-- URL EVENT -->
-                    <a *ngIf="!entityAction.isActionEvent" mat-menu-item
-                      [routerLink]="[entityAction.url, entity.objectIdentifier, entityAction.urlPostfix]">
-                      <i class="material-icons">{{ entityAction.icon }}</i>
-                      <span class="icon-text">{{ entityAction.displayName | translate }}</span>
-                    </a>
+                    <ng-template [inAnyPermission]="entityAction.permissions"
+                      (permissionsChecked)="entityAction.display = $event">
+                      <!-- ACTION EVENT  -->
+                      <a *ngIf="entityAction.isActionEvent && (entityAction | showEntityAction:entity) && entityAction.display"
+                        mat-menu-item
+                        (click)="entityActionEvent.emit({ action: entityAction.action, value: entity, _this: entityAction._this })">
+                        <i class="material-icons">{{ entityAction.icon }}</i> <span
+                          class="icon-text">{{ entityAction.displayName | translate }}</span>
+                      </a>
+                      <!-- URL EVENT -->
+                      <a *ngIf="!entityAction.isActionEvent && entityAction.display" mat-menu-item
+                        [routerLink]="[entityAction.url, entity.objectIdentifier, entityAction.urlPostfix]">
+                        <i class="material-icons">{{ entityAction.icon }}</i>
+                        <span class="icon-text">{{ entityAction.displayName | translate }}</span>
+                      </a>
+                    </ng-template>
                   </ng-container>
                 </mat-menu>
               </ng-container>
@@ -75,7 +79,7 @@
   <div class="footer">
     <div class="inner">
       <!-- totalCount$ | async as -->
-      <span>Loaded {{ loadedEntitiesCount }} out of
+      <span>{{'UI.RECORDS_CONTAINER.LOADED' | translate: { value: loadedEntitiesCount } }}
         <span *ngIf="totalCount">{{ totalCount }}</span>
       </span>
     </div>

@@ -24,9 +24,6 @@
                 "DESCRIPTION": {
                     "REQUIRED": "Description is required."
                 },
-                "OCCUPATIONSTATE": {
-                    "REQUIRED": "Occupation state is required"
-                },
                 "STATUS": {
                     "REQUIRED": "Status is required."
                 },
@@ -44,10 +41,12 @@
             }
         },
         "CREATE": {
-            "CREATE": "Create"
+            "CREATE": "Create",
+            "BUTTON_CREATE": "Create"
         },
         "EDIT": {
-            "EDIT": "Edit"
+            "EDIT": "Edit",
+            "BUTTON_EDIT": "Update"
         },
         "INDEX": {
             "TITLE_EXTRA": "(assignments)",

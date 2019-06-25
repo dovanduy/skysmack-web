@@ -2,14 +2,12 @@ import { NgRedux } from '@angular-redux/store';
 import { HttpClient, HttpEvent } from '@angular/common/http';
 import { Injectable, Inject } from '@angular/core';
 import defaultQueue from '@redux-offline/redux-offline/lib/defaults/queue';
-import { Config, OfflineAction, OfflineState, AppState } from '@redux-offline/redux-offline/lib/types';
-import { createTransform } from 'redux-persist';
+import { Config, OfflineAction, OfflineState } from '@redux-offline/redux-offline/lib/types';
 import { Observable } from 'rxjs';
 import { share } from 'rxjs/operators';
 import { TOOGLE_HYDRATED } from './hydrated-reducer';
 import { HttpMethod, ApiDomain, HttpSuccessResponse, HttpErrorResponse } from '@skysmack/framework';
 import { Effect, RecordActionsBase, cancelRecordActionOutboxFilter, cancelFieldActionOutboxFilter, FieldActions } from '@skysmack/redux';
-import { PackagesActions, cancelPackageActionOutboxFilter } from '@skysmack/packages-skysmack-core';
 import * as localForage from 'localforage';
 
 // See https://github.com/redux-offline/redux-offline#configuration
@@ -24,7 +22,6 @@ export class ReduxOfflineConfiguration implements Config {
             if (action.meta.isCancelAction) {
                 switch (action.type) {
                     case action.payload.prefix + RecordActionsBase.CANCEL_RECORD_ACTION: return cancelRecordActionOutboxFilter(outbox, action);
-                    case PackagesActions.CANCEL_PACKAGE_ACTION: return cancelPackageActionOutboxFilter(outbox, action);
                     case FieldActions.CANCEL_FIELD_ACTION: return cancelFieldActionOutboxFilter(outbox, action);
                     default:
                         return [...outbox, action];
@@ -49,34 +46,12 @@ export class ReduxOfflineConfiguration implements Config {
     public persist: (store: any) => any;
     public retry: (action: OfflineAction, retries: number) => number | void;
     public persistAutoRehydrate: (config?: { [key: string]: any; }) => (next: any) => any;
-    public offlineActionTracker: { // Else we want the locally stored data in redux.
+    public offlineActionTracker: {
         registerAction: (number: any) => Promise<any> | (() => void); resolveAction: (number: any, any: any) => void | (() => void); rejectAction: (number: any, Error: any) => void | (() => void);
     };
 
-
     // Overrides =============
-    public persistOptions = {
-        storage: localForage,
-        transforms: [
-            createTransform(
-                (inboundState) => {
-                    return inboundState;
-                },
-                (outboundState) => {
-                    const online = (this.ngRedux.getState() as AppState).offline.online;
-                    if (online) {
-                        // If we are online, we want fresh data from the server.
-                        if (this.hydrated) {
-                            return outboundState;
-                        }
-                    } else {
-                        // Else we want the locally stored data in redux.
-                        return outboundState;
-                    }
-                }, { blacklist: ['offline', 'authentication', 'settings'] }
-            )
-        ]
-    };
+    public persistOptions = { storage: localForage };
 
     public persistCallback = () => {
         this.hydrated = true;
@@ -122,7 +97,7 @@ export class ReduxOfflineConfiguration implements Config {
             return false;
         }
 
-        // Retry 3 times on 5xx errors (takes roughly 25 seconds before giving up)
+        // Retry 3 times on 5xx and 0 errors (takes roughly 25 seconds before giving up)
         if (error.status >= 500) {
             // First retry is 0.
             if (retries <= 2) {
@@ -130,6 +105,11 @@ export class ReduxOfflineConfiguration implements Config {
             } else {
                 return true;
             }
+        }
+
+        // Retry for as long as possible on 0 errors.
+        if (error.status === 0) {
+            return false;
         }
 
         // Don't retry on < 4xx errors

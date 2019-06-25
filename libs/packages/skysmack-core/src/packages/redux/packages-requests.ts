@@ -5,5 +5,5 @@ import { HttpErrorResponse } from '@skysmack/framework';
 
 export interface PackagesRequests {
     getSingle(action: ReduxAction): Observable<ReduxAction<GetPackageSuccessPayload> | ReduxAction<HttpErrorResponse>>
-    getAvailablePackages(): Observable<ReduxAction<GetAvailablePackagesSuccessPayload> | ReduxAction<HttpErrorResponse>>
+    getAvailablePackages(action: ReduxAction<string>): Observable<ReduxAction<GetAvailablePackagesSuccessPayload> | ReduxAction<HttpErrorResponse>>
 }

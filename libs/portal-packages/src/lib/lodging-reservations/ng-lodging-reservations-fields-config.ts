@@ -99,7 +99,7 @@ export class NgLodgingReservationsFieldsConfig extends FieldsConfig<LodgingReser
                 optionsDataType: 'ts-enum',
                 order: 5,
                 permissions: ['SkipProcessingStatus']
-            }),
+            })
         ];
 
         // Id field must only be added for edit forms.

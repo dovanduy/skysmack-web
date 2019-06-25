@@ -5,7 +5,7 @@ import { NgSkysmackStore } from '@skysmack/ng-core';
 import { MenuArea } from '@skysmack/framework';
 import { MenuItem } from '@skysmack/framework';
 import { NgMenuItemProviders } from '@skysmack/ng-framework';
-import { PERSONS_AREA_KEY } from '@skysmack/packages-persons';
+import { PERSONS_AREA_KEY, PersonsPermissions } from '@skysmack/packages-persons';
 
 
 @Injectable({ providedIn: 'root' })
@@ -42,7 +42,9 @@ export class NgPersonsMenu extends SidebarMenu {
             area: 'actions',
             order: 1,
             icon: 'groupAdd',
-            permissions: ['AddPersons']
+            permissions: [
+                PersonsPermissions.addPersons
+            ]
         }));
         this.primaryMenuItems.push(new MenuItem({
             url: 'fields',
@@ -50,7 +52,9 @@ export class NgPersonsMenu extends SidebarMenu {
             area: 'manage',
             order: 2,
             icon: 'shortText',
-            permissions: ['FindPersonFields', 'AddPersonFields', 'UpdatePersonFields', 'RemovePersonFields']
+            permissions: [
+                PersonsPermissions.findPersonsFields
+            ]
         }));
     }
 
@@ -62,6 +66,9 @@ export class NgPersonsMenu extends SidebarMenu {
                 area: undefined,
                 order: 1,
                 icon: 'add',
+                permissions: [
+                    PersonsPermissions.addPersons
+                ]
             }),
         ];
     }

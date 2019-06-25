@@ -1,5 +1,6 @@
 {
     "ACCESS_POLICIES": {
+        "TITLE": "Access policies",
         "DASHBOARD": {
             "ACCESS_POLICIES": "Access policies"
         },
@@ -8,6 +9,12 @@
             "PERMISSIONS": "Permissions",
             "ROLES": "Roles",
             "RULES": "Rules"
+        },
+        "QUEUE": {
+            "ADDING": "Adding access policy rules {{ id }}",
+            "UPDATING": "Updating access policy rules {{ id }}",
+            "DELETING": "Deleting access policy rules {{ id }}",
+            "ERROR": "An error occured with access policy rules {{ id }}. Correct and try again."
         }
     }
 }

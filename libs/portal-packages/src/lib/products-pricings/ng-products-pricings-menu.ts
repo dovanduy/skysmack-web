@@ -5,6 +5,7 @@ import { NgSkysmackStore } from '@skysmack/ng-core';
 import { MenuArea } from '@skysmack/framework';
 import { MenuItem } from '@skysmack/framework';
 import { NgMenuItemProviders } from '@skysmack/ng-framework';
+import { ProductsPricingsPermissions } from '@skysmack/packages-products-pricings'
 
 @Injectable({ providedIn: 'root' })
 export class NgProductsPricingsMenu extends SidebarMenu {
@@ -30,26 +31,14 @@ export class NgProductsPricingsMenu extends SidebarMenu {
         }));
 
         this.primaryMenuItems.push(new MenuItem({
-            url: 'sales-prices',
-            displayName: this.translationPrefix + 'SALES_PRICES',
-            area: 'manage',
-            order: 2,
-            icon: 'groupAdd',
-        }));
-        this.primaryMenuItems.push(new MenuItem({
-            url: 'types/sales-prices',
-            displayName: this.translationPrefix + 'SALES_PRICES_TYPES',
-            area: 'manage',
-            order: 3,
-            icon: 'shortText',
-        }));
-
-        this.primaryMenuItems.push(new MenuItem({
             url: 'price-changes',
             displayName: this.translationPrefix + 'PRICE_CHANGES',
             area: 'manage',
             order: 2,
             icon: 'groupAdd',
+            permissions: [
+                ProductsPricingsPermissions.findProductPriceChanges
+            ]
         }));
         this.primaryMenuItems.push(new MenuItem({
             url: 'types/price-changes',
@@ -57,20 +46,37 @@ export class NgProductsPricingsMenu extends SidebarMenu {
             area: 'manage',
             order: 2,
             icon: 'groupAdd',
+            permissions: [
+                ProductsPricingsPermissions.findProductTypePriceChanges
+            ]
         }));
 
-        this.setBackButton({ connectedPackage: true });
+        this.primaryMenuItems.push(new MenuItem({
+            url: 'sales-prices',
+            displayName: this.translationPrefix + 'SALES_PRICES',
+            area: 'manage',
+            order: 2,
+            icon: 'groupAdd',
+            permissions: [
+                ProductsPricingsPermissions.findProductSalesPrices
+            ]
+        }));
+        this.primaryMenuItems.push(new MenuItem({
+            url: 'types/sales-prices',
+            displayName: this.translationPrefix + 'SALES_PRICES_TYPES',
+            area: 'manage',
+            order: 3,
+            icon: 'shortText',
+            permissions: [
+                ProductsPricingsPermissions.findProductTypeSalesPrices
+            ]
+        }));
+
+        this.setBackButton({ connectedPackage: true }).addConnectedPackageMenuArea();
     }
 
     public setSpeedDialMenu() {
         this.speedDialMenu = [
-            new MenuItem({
-                url: 'create',
-                displayName: this.translationPrefix + 'CREATE',
-                area: undefined,
-                order: 1,
-                icon: 'add',
-            }),
         ];
     }
 }

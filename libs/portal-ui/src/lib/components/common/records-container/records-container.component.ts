@@ -2,7 +2,7 @@ import { Component, OnInit, Input, EventEmitter, Output, ViewChild, OnDestroy } 
 import { LocalObject, LoadingState, DisplayColumn, SubscriptionHandler } from '@skysmack/framework';
 import { Observable, BehaviorSubject, combineLatest } from 'rxjs';
 import { EntityAction, Field, FieldTypes } from '@skysmack/ng-ui';
-import { map, delay } from 'rxjs/operators';
+import { map, delay, debounceTime } from 'rxjs/operators';
 import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
 
 @Component({
@@ -15,7 +15,7 @@ export class RecordsContainerComponent implements OnInit, OnDestroy {
   public loadedEntitiesCount$: BehaviorSubject<number> = new BehaviorSubject(0).pipe(delay(0)) as BehaviorSubject<number>;
   public loadedEntitiesCount: number;
 
-  @ViewChild('entityList', { static: false }) public entityList: CdkVirtualScrollViewport;
+  @ViewChild('entityList', { static: true }) public entityList: CdkVirtualScrollViewport;
 
   @Output() public requestPage = new EventEmitter<boolean>(false);
   @Output() public entityActionEvent = new EventEmitter<any>();
@@ -47,11 +47,11 @@ export class RecordsContainerComponent implements OnInit, OnDestroy {
 
     // Set entities
     this.entities$ = this.entities$.pipe(
+      debounceTime(0),
       map((entities: LocalObject<any, any>[]) => {
         if (entities) {
           this.loadedEntitiesCount$.next(entities.length);
         }
-
         return entities;
       }));
 

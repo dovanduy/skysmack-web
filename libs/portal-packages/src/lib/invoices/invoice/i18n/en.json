@@ -14,7 +14,8 @@
                 "TOTAL": "Total",
                 "TOTALTAX": "Total tax",
                 "BALANCE": "Balance",
-                "PAID": "Paid"
+                "PAID": "Paid",
+                "STATUS": "Status"
             },
             "VALIDATION": {
                 "CURRENCYCODE": {
@@ -39,10 +40,12 @@
             }
         },
         "CREATE": {
-            "CREATE": "Create"
+            "CREATE": "Create",
+            "BUTTON_CREATE": "Create"
         },
         "EDIT": {
-            "EDIT": "Edit"
+            "EDIT": "Edit",
+            "BUTTON_EDIT": "Update"
         },
         "INDEX": {
             "PACKAGES": "Packages",

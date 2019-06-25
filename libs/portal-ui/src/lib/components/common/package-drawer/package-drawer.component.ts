@@ -4,6 +4,7 @@ import { NgSkysmackStore } from '@skysmack/ng-core';
 import { Menu } from '@skysmack/ng-ui';
 import { UIRedux } from './../../../redux/ui-redux';
 import { LoadedPackage } from '@skysmack/ng-framework';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'ss-package-drawer',
@@ -20,7 +21,7 @@ export class PackageDrawerComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.loadedPackages$ = this.skysmackStore.getLoadedPackages();
+    this.loadedPackages$ = this.skysmackStore.getLoadedPackages().pipe(map(loadedPackages => loadedPackages.filter(loadedPackage => loadedPackage._package.access)));
     this.menu$ = this.uiRedux.getMenu();
   }
 }

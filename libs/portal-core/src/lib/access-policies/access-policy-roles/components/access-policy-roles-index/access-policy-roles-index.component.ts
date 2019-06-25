@@ -16,9 +16,8 @@ import { NgAccessPolicyRolesFieldsConfig } from '../../ng-access-policy-roles-fi
 })
 export class AccessPolicyRolesIndexComponent extends RecordIndexComponent<AccessPolicyRolesAppState, AccessPolicyRole, AccessPolicyRoleKey> implements OnInit {
 
-  public area: string = ACCESS_POLICY_ROLES_AREA_KEY;
+  public areaKey: string = ACCESS_POLICY_ROLES_AREA_KEY;
   public entityActions: EntityAction[] = [
-    new EntityAction().asUrlAction('edit', ENTITY_ACTIONS_EDIT, 'edit'),
     new EntityAction().asEventAction(ENTITY_ACTIONS_DELETE, this.delete, 'delete', this)
   ];
 
@@ -33,12 +32,11 @@ export class AccessPolicyRolesIndexComponent extends RecordIndexComponent<Access
     public fieldsConfig: NgAccessPolicyRolesFieldsConfig,
     public entityActionProviders: EntityActionProviders
   ) {
-    super(router, activatedRoute, actions, redux, store, fieldsConfig, entityActionProviders);
+    super(router, activatedRoute, actions, redux, store, fieldsConfig, entityActionProviders, title);
 
   }
 
   ngOnInit() {
     super.ngOnInit();
-    this.title.setTitle(this.packagePath);
   }
 }

@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Epic, ofType } from 'redux-observable';
 import { NgSkysmackRequests } from './ng-skysmack-requests';
-import { switchMap } from 'rxjs/operators';
+import { switchMap, tap } from 'rxjs/operators';
 import { NgSkysmackActions } from './ng-skysmack-actions';
 import { AuthenticationActions } from '@skysmack/redux';
-import { NgPackagesActions } from './../../packages/redux/ng-packages-actions';
+import { PACKAGES_REDUX_KEY } from '@skysmack/packages-skysmack-core';
+import { NgPackagesActions } from '../../packages';
 
 @Injectable({ providedIn: 'root' })
 export class NgSkysmackEpics {
@@ -25,9 +26,9 @@ export class NgSkysmackEpics {
         return action$.pipe(
             ofType(
                 NgSkysmackActions.GET_SKYSMACK,
-                NgPackagesActions.ADD_PACKAGE_SUCCESS,
-                NgPackagesActions.UPDATE_PACKAGE_SUCCESS,
-                NgPackagesActions.DELETE_PACKAGE_SUCCESS,
+                PACKAGES_REDUX_KEY + NgPackagesActions.ADD_SUCCESS,
+                PACKAGES_REDUX_KEY + NgPackagesActions.UPDATE_SUCCESS,
+                PACKAGES_REDUX_KEY + NgPackagesActions.DELETE_SUCCESS,
                 AuthenticationActions.LOG_OUT,
             ),
             switchMap(() => this.requests.get()),

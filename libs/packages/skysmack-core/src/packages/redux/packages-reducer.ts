@@ -1,8 +1,7 @@
-import { LocalObject, Package, toLocalObject, HttpErrorResponse, HttpSuccessResponse, AvailablePackage, StrIndex, LocalObjectExtensions, replaceLocalInnerObject, GlobalProperties, Record, PageResponse, PageExtensions, LoadingState, LocalPageTypes } from '@skysmack/framework';
-import { AppState, ReduxAction, GetAvailablePackagesSuccessPayload, sharedReducer, RollbackMeta, GetPagedEntitiesPayload, GetPagedEntitiesSuccessPayload } from '@skysmack/redux';
+import { LocalObject, Package, toLocalObject, HttpErrorResponse, AvailablePackage, StrIndex, LocalObjectExtensions, GlobalProperties, LocalPageTypes, HttpResponse, HttpSuccessResponse } from '@skysmack/framework';
+import { AppState, ReduxAction, GetAvailablePackagesSuccessPayload, sharedReducer, recordReducersBase, RecordState, ReduxOfflineMeta, CommitMeta } from '@skysmack/redux';
 import { PackagesActions } from './packages-actions';
-import { GetPackageSuccessPayload } from '../payloads';
-import { cancelPackageAction } from './cancel-package-action';
+import { PACKAGES_REDUCER_KEY, PACKAGES_REDUX_KEY } from '../constants';
 
 /**
  * This is to be used when you want to access packages via the GLOBAL state. E.g. state.packages (where packages is the reducer name.)
@@ -11,128 +10,58 @@ export class PackagesAppState extends AppState {
     public packages: PackagesState;
 }
 
-export class PackagesState {
-    public localPageTypes: StrIndex<LocalPageTypes<string>> = {};
-    public packages: StrIndex<LocalObject<Package, string>> = {};
-    public availablePackages: StrIndex<LocalObject<AvailablePackage, string>> = {};
+export class PackagesState implements RecordState<Package, string> {
+    public localPageTypes: StrIndex<StrIndex<LocalPageTypes<string>>> = {};
+    public localRecords: StrIndex<StrIndex<LocalObject<Package, string>>> = {};
+    public availablePackages: StrIndex<StrIndex<LocalObject<AvailablePackage, string>>> = {};
 }
 
-export function packagesReducer(state = new PackagesState(), action: any): PackagesState {
-    state = sharedReducer(state, action, new PackagesState());
+export function packagesReducer(state = new PackagesState(), action: ReduxAction, prefix: string = PACKAGES_REDUX_KEY): PackagesState {
+    state = sharedReducer(state, action, new PackagesState(), PACKAGES_REDUCER_KEY, ['localRecords', 'availablePackages']);
     const newState = Object.assign({}, state);
 
     switch (action.type) {
-        case PackagesActions.CANCEL_PACKAGE_ACTION: {
-            return cancelPackageAction(newState, action);
-        }
-        case PackagesActions.PACKAGES_GET_PAGED: {
-            const castedAction: ReduxAction<GetPagedEntitiesPayload> = action;
-            const page = new PageResponse<string>({
-                pageNumber: castedAction.payload.pagedQuery.pageNumber,
-                pageSize: castedAction.payload.pagedQuery.pageSize,
-                ids: [],
-                links: null,
-                query: castedAction.payload.pagedQuery.rsqlFilter.toList().build(),
-                sort: castedAction.payload.pagedQuery.sort.build()
-            });
-            newState.localPageTypes = PageExtensions.mergeOrAddPage(newState.localPageTypes, page, LoadingState.Loading);
-            return newState;
-        }
-        case PackagesActions.PACKAGES_GET_PAGED_SUCCESS: {
-            const castedAction: ReduxAction<GetPagedEntitiesSuccessPayload<Package, string>> = action;
-            const entities = castedAction.payload.entities.map(x => toLocalObject<Package, string>(x, 'path'));
-            newState.localPageTypes = PageExtensions.mergeOrAddPage(newState.localPageTypes, castedAction.payload.page);
-            newState.packages = LocalObjectExtensions.mergeOrAddLocal<Package, string>(newState.packages, entities);
-            return newState;
-        }
-        case PackagesActions.PACKAGES_GET_PAGED_FAILURE: {
-            const castedAction: ReduxAction<HttpErrorResponse> = action;
-            if (!GlobalProperties.production) {
-                console.log('Error. Error Action:', castedAction);
-            }
-            return newState;
-        }
-        case PackagesActions.GET_SINGLE_PACKAGE_SUCCESS: {
-            const castedAction: ReduxAction<GetPackageSuccessPayload> = action;
-            const _newPackage = [toLocalObject<Package, string>(castedAction.payload._package, 'path')];
-            newState.packages = LocalObjectExtensions.mergeOrAddLocal<Package, string>(newState.packages, _newPackage, undefined, true);
-            return newState;
-        }
-        case PackagesActions.GET_SINGLE_PACKAGE_FAILURE: {
-            const castedAction: ReduxAction<HttpErrorResponse> = action;
-            if (!GlobalProperties.production) {
-                console.log('Error. Error Action:', castedAction);
-            }
-            return newState;
-        }
+
         case PackagesActions.GET_AVAILABLE_PACKAGES_SUCCESS: {
-            const castedAction: ReduxAction<GetAvailablePackagesSuccessPayload> = action;
+            const castedAction = action as ReduxAction<GetAvailablePackagesSuccessPayload>;
             const incomingAvailablePackages = castedAction.payload.availablePackages.map(x => toLocalObject<AvailablePackage, string>(x, 'type'));
-            newState.availablePackages = LocalObjectExtensions.mergeOrAddLocal<AvailablePackage, string>(newState.availablePackages, incomingAvailablePackages);
+            newState.availablePackages[castedAction.payload.stateKey] = LocalObjectExtensions.mergeOrAddLocal<AvailablePackage, string>(newState.availablePackages[castedAction.payload.stateKey], incomingAvailablePackages);
             return newState;
         }
         case PackagesActions.GET_AVAILABLE_PACKAGES_FAILURE: {
-            const castedAction: ReduxAction<HttpErrorResponse> = action;
+            const castedAction = action as ReduxAction<HttpErrorResponse>;
             if (!GlobalProperties.production) {
                 console.log('Error. Error Action:', castedAction);
             }
             return newState;
         }
-        case PackagesActions.ADD_PACKAGE: {
-            const castedAction: ReduxAction<any, any> = action;
-            const packagesToBeCreated = castedAction.meta.offline.commit.meta.value;
-            newState.packages = LocalObjectExtensions.mergeOrAddLocal<Package, string>(newState.packages, packagesToBeCreated);
-            return newState;
-        }
-        case PackagesActions.ADD_PACKAGE_SUCCESS: {
-            const castedAction: ReduxAction<HttpSuccessResponse<Package[] | Package>, any> = action;
-            const body = castedAction.payload.body;
-            const newPackages = (Array.isArray(body) ? body : [body]).map((newObject, index) => replaceLocalInnerObject<Package, string>(castedAction.meta.value[index], newObject));
-            newState.packages = LocalObjectExtensions.mergeOrAddLocal<Package, string>(newState.packages, newPackages);
-            return newState;
-        }
-        case PackagesActions.ADD_PACKAGE_FAILURE: {
-            setActionError(action, 'Add error: ');
-            return newState;
-        }
-        case PackagesActions.UPDATE_PACKAGE: {
-            const castedAction: ReduxAction<any, any> = action;
-            const packagesToBeUpdated = castedAction.meta.offline.commit.meta.value;
-            newState.packages = LocalObjectExtensions.mergeOrAddLocal<Package, string>(newState.packages, packagesToBeUpdated);
-            return newState;
-        }
-        case PackagesActions.UPDATE_PACKAGE_SUCCESS: {
-            const castedAction: ReduxAction<HttpSuccessResponse<Package[] | Package>, any> = action;
-            const body = castedAction.payload.body;
-            const updatedPackages = (Array.isArray(body) ? body : [body]).map((newObject, index) => replaceLocalInnerObject<Package, string>(castedAction.meta.value[index], newObject));
-            newState.packages = LocalObjectExtensions.mergeOrAddLocal<AvailablePackage, string>(newState.packages, updatedPackages);
-            return newState;
-        }
-        case PackagesActions.UPDATE_PACKAGE_FAILURE: {
-            setActionError(action, 'Update error: ');
-            return newState;
-        }
-        case PackagesActions.DELETE_PACKAGE_SUCCESS: {
-            const castedAction: ReduxAction<HttpSuccessResponse<Package[] | Package>, { value: LocalObject<Package, string>[] }> = action;
-            castedAction.meta.value.forEach(_package => {
-                delete newState.packages[_package.localId];
-            });
-            return newState;
-        }
-        case PackagesActions.DELETE_PACKAGE_FAILURE: {
-            setActionError(action, 'Delete error: ');
-            return newState;
-        }
-        default:
-            return state;
-    }
-}
 
-function setActionError<TRecord extends Record<TKey>, TKey>(action: ReduxAction<HttpErrorResponse, RollbackMeta<LocalObject<TRecord, TKey>[]>>, message: string = 'Error: '): void {
-    action.meta.value.forEach(record => {
-        record.error = true;
-    });
-    if (!GlobalProperties.production) {
-        console.log(message, action);
+        case PackagesActions.EDIT_PACKAGE_PATH: {
+            const castedAction = action as ReduxAction<unknown, ReduxOfflineMeta<LocalObject<Package, string>, HttpResponse, LocalObject<Package, string>>>;
+            const stateKey = castedAction.meta.offline.commit.meta.stateKey;
+            const _package = castedAction.meta.offline.commit.meta.value;
+            newState.localRecords[stateKey][_package.localId].object.path = _package.object.path;
+            return newState;
+        }
+        case PackagesActions.EDIT_PACKAGE_PATH_SUCCESS: {
+            const castedAction = action as ReduxAction<HttpSuccessResponse<string>, CommitMeta<LocalObject<Package, string>>>;
+            const body = castedAction.payload.body;
+            const stateKey = castedAction.meta.stateKey;
+            const _package = castedAction.meta.value;
+            newState.localRecords[stateKey][_package.localId].object.path = body;
+            return newState;
+        }
+        case PackagesActions.EDIT_PACKAGE_PATH_FAILURE: {
+            if (!GlobalProperties.production) {
+                console.log('Edit package path error', action);
+            }
+            return newState;
+        }
+
+        default:
+            return {
+                ...state,
+                ...recordReducersBase<PackagesState, Package, string>(state, action, prefix, 'path')
+            };
     }
 }

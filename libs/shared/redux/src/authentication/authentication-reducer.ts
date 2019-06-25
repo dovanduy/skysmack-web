@@ -5,7 +5,7 @@ import { ReduxAction } from './../action-types/redux-action';
 import { sharedReducer } from './../reducers';
 
 export function authenticationReducer(state = new AuthenticationState(), action: ReduxAction): AuthenticationState {
-    state = sharedReducer(state, action, new AuthenticationState());
+    state = sharedReducer(state, action, new AuthenticationState(), 'authentication');
     const newState = Object.assign({}, state);
 
     switch (action.type) {

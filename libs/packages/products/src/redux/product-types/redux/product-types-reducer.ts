@@ -1,6 +1,7 @@
 import { LocalPageTypes, StrIndex, LocalObject } from '@skysmack/framework';
 import { AppState, ReduxAction, sharedReducer, RecordState, recordReducersBase } from '@skysmack/redux';
 import { ProductType } from '../../../models/product-type';
+import { PRODUCT_TYPES_REDUCER_KEY } from '../../../constants';
 
 /**
  * This is to be used when you want to access productsTypes via the GLOBAL state. E.g. state.productsTypes (where productsTypes is the reducer name.)
@@ -15,7 +16,7 @@ export class ProductTypesState implements RecordState<ProductType, number> {
 }
 
 export function productTypesReducer(state = new ProductTypesState(), action: ReduxAction, prefix: string = 'PRODUCT_TYPES_'): ProductTypesState {
-    state = sharedReducer(state, action, new ProductTypesState());
+    state = sharedReducer(state, action, new ProductTypesState(), PRODUCT_TYPES_REDUCER_KEY);
     switch (action.type) {
         default:
             return {

@@ -16,11 +16,11 @@
             "VALIDATION": {}
         },
         "EDIT": {
-            "EDIT": "Ret indstillinger"
+            "EDIT": "Edit settings"
         },
         "QUEUE": {
-            "UPDATING": "Opdaterer",
-            "ERROR": "Der skete en fejl ved opdatering af indstillingerne."
+            "UPDATING": "Updating",
+            "ERROR": "An error occured when trying to change settings."
         }
     }
 }

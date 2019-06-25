@@ -6,6 +6,7 @@ import { MenuArea } from '@skysmack/framework';
 import { MenuItem } from '@skysmack/framework';
 import { NgMenuItemProviders } from '@skysmack/ng-framework';
 import { LODGING_PRICES_AREA_KEY } from '@skysmack/packages-reservations-pricings';
+import { LodgingsPermissions } from '@skysmack/packages-lodgings';
 
 @Injectable({ providedIn: 'root' })
 export class NgLodgingPricesMenu extends SidebarMenu {
@@ -41,6 +42,9 @@ export class NgLodgingPricesMenu extends SidebarMenu {
             area: 'actions',
             order: 1,
             icon: 'groupAdd',
+            permissions: [
+                LodgingsPermissions.addLodgings
+            ]
         }));
         this.setBackButton();
     }
@@ -53,6 +57,9 @@ export class NgLodgingPricesMenu extends SidebarMenu {
                 area: undefined,
                 order: 1,
                 icon: 'add',
+                permissions: [
+                    LodgingsPermissions.addLodgings
+                ]
             }),
         ];
     }

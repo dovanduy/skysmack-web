@@ -10,7 +10,7 @@ export class StandardSettingsState {
 }
 
 export function standardSettingsReducer(state = new StandardSettingsState(), action: any) {
-    state = sharedReducer(state, action, new StandardSettingsState());
+    state = sharedReducer(state, action, new StandardSettingsState(), 'standardSettings');
     const newState = Object.assign({}, state);
 
     switch (action.type) {

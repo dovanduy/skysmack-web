@@ -8,7 +8,7 @@ import { ReduxOfflineMeta } from '../metas/offline-redux/redux-offline-meta';
 import { CommitMeta } from '../metas/offline-redux/commit-meta';
 import { RollbackMeta } from '../metas/offline-redux/rollback-meta';
 
-export function recordReducersBase<TState extends RecordState<TRecord, TKey>, TRecord extends Record<TKey>, TKey>(state: TState, action: any, prefix: string = ''): TState {
+export function recordReducersBase<TState extends RecordState<TRecord, TKey>, TRecord extends Record<TKey>, TKey>(state: TState, action: any, prefix: string = '', idIdentifier = 'id'): TState {
     let newState = Object.assign({}, state);
 
     switch (action.type) {
@@ -26,12 +26,13 @@ export function recordReducersBase<TState extends RecordState<TRecord, TKey>, TR
                 sort: castedAction.payload.pagedQuery.sort.build()
             });
             newState.localPageTypes[castedAction.payload.packagePath] = PageExtensions.mergeOrAddPageStatus(newState.localPageTypes[castedAction.payload.packagePath], page, LoadingState.Loading);
+
             return newState;
         }
         case prefix + RecordActionsBase.GET_PAGED_SUCCESS: {
             const castedAction: ReduxAction<GetPagedEntitiesSuccessPayload<TRecord, TKey>> = action;
             newState.localPageTypes[castedAction.payload.packagePath] = PageExtensions.mergeOrAddPage(newState.localPageTypes[castedAction.payload.packagePath], castedAction.payload.page);
-            newState.localRecords[castedAction.payload.packagePath] = LocalObjectExtensions.mergeOrAddLocal(newState.localRecords[castedAction.payload.packagePath], castedAction.payload.entities.map(x => toLocalObject(x)));
+            newState.localRecords[castedAction.payload.packagePath] = LocalObjectExtensions.mergeOrAddLocal(newState.localRecords[castedAction.payload.packagePath], castedAction.payload.entities.map(x => toLocalObject(x, idIdentifier)));
             return newState;
         }
         case prefix + RecordActionsBase.GET_PAGED_FAILURE: {
@@ -43,7 +44,7 @@ export function recordReducersBase<TState extends RecordState<TRecord, TKey>, TR
         }
         case prefix + RecordActionsBase.GET_SINGLE_SUCCESS: {
             const castedAction: ReduxAction<GetSingleEntitySuccessPayload<TRecord, TKey>> = action;
-            newState.localRecords[castedAction.payload.packagePath] = LocalObjectExtensions.mergeOrAddLocal(newState.localRecords[castedAction.payload.packagePath], [toLocalObject(castedAction.payload.entity)], undefined, true);
+            newState.localRecords[castedAction.payload.packagePath] = LocalObjectExtensions.mergeOrAddLocal(newState.localRecords[castedAction.payload.packagePath], [toLocalObject(castedAction.payload.entity, idIdentifier)], undefined, true);
             return newState;
         }
         case prefix + RecordActionsBase.GET_SINGLE_FAILURE: {
@@ -100,6 +101,20 @@ export function recordReducersBase<TState extends RecordState<TRecord, TKey>, TR
         }
         case prefix + RecordActionsBase.DELETE_FAILURE: {
             setActionError(action, 'Delete error: ');
+            return newState;
+        }
+        case prefix + RecordActionsBase.SIGNAL_R_DELETED: {
+            const castedAction = action as { payload: { packagePath: string, ids: TKey[] } };
+            const area = newState.localRecords[castedAction.payload.packagePath];
+            castedAction.payload.ids.forEach(id => {
+                Object.keys(area).forEach(key => {
+                    if (area[key].object.id === id) {
+                        area[key].deleted = true;
+                        console.log(area[key]);
+                    };
+                });
+            });
+            newState.localRecords[castedAction.payload.packagePath] = area;
             return newState;
         }
         default:

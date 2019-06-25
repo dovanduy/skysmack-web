@@ -1,17 +1,20 @@
 {
     "ACCESS_POLICY_ROLES": {
         "CREATE": {
-            "CREATE": "Create"
+            "CREATE": "Create",
+            "BUTTON_CREATE": "Create"
         },
         "EDIT": {
-            "EDITING": "Rediger"
+            "EDITING": "Edit",
+            "BUTTON_EDIT": "Update"
         },
         "INDEX": {
             "ACTIONS": "Actions",
             "CREATE": "Create",
             "MANAGE": "Manage",
             "BACK": "Back",
-            "ROLES": "Roles"
+            "ROLES": "Roles",
+            "FIELDS_TITLE": "(fields)"
         },
         "FORM": {
             "LABELS": {

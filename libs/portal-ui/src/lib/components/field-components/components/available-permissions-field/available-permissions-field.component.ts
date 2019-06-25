@@ -40,12 +40,15 @@ export class AvailablePermissionsFieldComponent extends FieldBaseComponent<Field
         }
         return this.skysmackStore.getAvailablePermissions(packagePath);
       }),
-      map(permissions => Object.keys(permissions).map(key => {
-        return {
-          value: key,
-          displayName: permissions[key]
-        };
-      }))
+      map(permissions => {
+        const upperCasePermissions = this.upperCaseProperties(permissions);
+        return Object.keys(upperCasePermissions).map(key => {
+          return {
+            value: key,
+            displayName: upperCasePermissions[key]
+          };
+        });
+      })
     );
   }
 
@@ -60,5 +63,13 @@ export class AvailablePermissionsFieldComponent extends FieldBaseComponent<Field
 
   public setPermission(permission: string): void {
     this.setFieldValue(permission);
+  }
+
+  private upperCaseProperties(dictionary: StrIndex<any>): StrIndex<any> {
+    return Object.keys(dictionary).reduce((acc, key) => {
+      const upperCaseKey = key.slice(0, 1).toUpperCase() + key.slice(1);
+      acc[upperCaseKey] = dictionary[key];
+      return acc;
+    }, {});
   }
 }

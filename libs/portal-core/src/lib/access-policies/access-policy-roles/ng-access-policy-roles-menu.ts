@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { SidebarMenu } from '@skysmack/portal-ui';
-import { NgSkysmackStore } from '@skysmack/ng-core';
+import { NgSkysmackStore, AccessPolciesPermissions } from '@skysmack/ng-core';
 import { MenuArea } from '@skysmack/framework';
 import { MenuItem } from '@skysmack/framework';
 import { NgMenuItemProviders } from '@skysmack/ng-framework';
@@ -41,18 +41,25 @@ export class NgAccessPolicyRolesMenu extends SidebarMenu {
             area: 'actions',
             order: 1,
             icon: 'groupAdd',
+            permissions: [
+                AccessPolciesPermissions.addRoles
+            ]
         }));
-        this.setBackButton({ customPath: '/skysmack/access-policies' });
+        this.setBackButton({ customPath: '/access-policies' });
     }
 
     public setSpeedDialMenu() {
         this.speedDialMenu = [
-            new MenuItem({url: 'create',
-            displayName: this.translationPrefix + 'CREATE',
-            area: undefined,
-            order: 1,
-            icon: 'add',
-        }),
+            new MenuItem({
+                url: 'create',
+                displayName: this.translationPrefix + 'CREATE',
+                area: undefined,
+                order: 1,
+                icon: 'add',
+                permissions: [
+                    AccessPolciesPermissions.addRoles
+                ]
+            }),
         ];
     }
 }

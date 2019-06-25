@@ -2,7 +2,7 @@ import { LocalPageTypes, StrIndex, LocalObject, HttpSuccessResponse, replaceLoca
 import { AppState, ReduxAction, recordReducersBase, RecordState, sharedReducer } from '@skysmack/redux';
 import { LodgingReservation } from '../../models/lodging-reservation';
 import { LodgingReservationsActions } from './lodging-reservations-actions';
-import { LODGING_RESERVATIONS_REDUX_KEY } from '../../constants';
+import { LODGING_RESERVATIONS_REDUX_KEY, LODGING_RESERVATIONS_REDUCER_KEY } from '../../constants';
 
 /**
  * This is to be used when you want to access lodging reservations via the GLOBAL state. E.g. state.lodgingReservations (where lodgingReservations is the reducer name.)
@@ -26,7 +26,7 @@ const updateLodgingReservation = (action, newState) => {
 }
 
 export function lodgingReservationsReducer(state = new LodgingReservationsState(), action: ReduxAction, prefix: string = LODGING_RESERVATIONS_REDUX_KEY): LodgingReservationsState {
-    state = sharedReducer(state, action, new LodgingReservationsState());
+    state = sharedReducer(state, action, new LodgingReservationsState(), LODGING_RESERVATIONS_REDUCER_KEY);
     const newState = Object.assign({}, state);
 
     switch (action.type) {

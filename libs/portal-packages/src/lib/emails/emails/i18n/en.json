@@ -1,0 +1,12 @@
+{
+    "EMAILS": {
+        "INDEX": {
+            "CREATE": "Create",
+            "EDIT": "Edit",
+            "DELETE": "Delete",
+            "TEMPLATES": "Templates",
+            "MANAGE": "Manage",
+            "ACTIONS": "Actions"
+        }
+    }
+}

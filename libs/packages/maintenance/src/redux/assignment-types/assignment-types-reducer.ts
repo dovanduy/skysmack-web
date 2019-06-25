@@ -1,7 +1,7 @@
 import { LocalPageTypes, StrIndex, LocalObject } from '@skysmack/framework';
 import { AppState, ReduxAction, RecordState, recordReducersBase, sharedReducer } from '@skysmack/redux';
 import { AssignmentType } from '../../models/assignment-type';
-import { ASSIGNMENT_TYPES_REDUX_KEY } from '../../constants';
+import { ASSIGNMENT_TYPES_REDUX_KEY, ASSIGNMENT_TYPES_REDUCER_KEY } from '../../constants';
 
 
 /**
@@ -17,7 +17,7 @@ export class AssignmentTypesState implements RecordState<AssignmentType, number>
 }
 
 export function assignmentTypesReducer(state = new AssignmentTypesState(), action: ReduxAction, prefix: string = ASSIGNMENT_TYPES_REDUX_KEY): AssignmentTypesState {
-    state = sharedReducer(state, action, new AssignmentTypesState());
+    state = sharedReducer(state, action, new AssignmentTypesState(), ASSIGNMENT_TYPES_REDUCER_KEY);
 
     switch (action.type) {
         default:

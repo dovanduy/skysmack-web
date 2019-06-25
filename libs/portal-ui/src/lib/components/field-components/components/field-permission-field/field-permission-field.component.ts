@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FieldBaseComponent } from '../field-base-component';
 import { FieldAccessPermission, AccessTypes } from '@skysmack/framework';
-import { FieldHelpers } from '@skysmack/ng-ui';
+import { FieldHelpers, SelectFieldOption } from '@skysmack/ng-ui';
 import { Field } from '@skysmack/ng-ui';
 
 @Component({
@@ -10,7 +10,7 @@ import { Field } from '@skysmack/ng-ui';
 })
 export class FieldPermissionFieldComponent extends FieldBaseComponent<Field> implements OnInit {
 
-  public accessTypes: { value: number, displayName: string }[];
+  public accessTypes: SelectFieldOption[];
   public permission: FieldAccessPermission;
 
   public get selectedAccessType(): AccessTypes {

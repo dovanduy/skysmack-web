@@ -34,13 +34,13 @@ export class UsersRolesComponent extends BaseComponent<User, number> implements 
     public store: NgUsersStore
   ) {
     super(router, activatedRoute, redux);
-    this.title.setTitle('User roles');
+    this.title.setTitle('IDENTITIES.USERS_ROLES_TITLE');
   }
 
   ngOnInit() {
     super.ngOnInit();
     this.actions.getUsersRoles(this.packagePath, [this.entityId]);
-    this.userRoles$ = this.store.getUserRoles(this.packagePath, this.entityId).pipe(tap((x) => console.log(x)));
+    this.userRoles$ = this.store.getUserRoles(this.packagePath, this.entityId);
     this.getRoles();
     this.editorNav.showEditorNav();
   }

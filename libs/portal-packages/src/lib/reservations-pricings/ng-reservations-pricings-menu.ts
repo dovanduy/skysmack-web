@@ -5,6 +5,7 @@ import { NgSkysmackStore } from '@skysmack/ng-core';
 import { MenuArea } from '@skysmack/framework';
 import { MenuItem } from '@skysmack/framework';
 import { NgMenuItemProviders } from '@skysmack/ng-framework';
+import { ReservationsPricingsPermissions } from '@skysmack/packages-reservations-pricings';
 
 @Injectable({ providedIn: 'root' })
 export class NgReservationsPricingsMenu extends SidebarMenu {
@@ -35,6 +36,9 @@ export class NgReservationsPricingsMenu extends SidebarMenu {
             area: 'manage',
             order: 2,
             icon: 'groupAdd',
+            permissions: [
+                ReservationsPricingsPermissions.findLodgingPriceChanges
+            ]
         }));
 
         this.primaryMenuItems.push(new MenuItem({
@@ -43,6 +47,9 @@ export class NgReservationsPricingsMenu extends SidebarMenu {
             area: 'manage',
             order: 2,
             icon: 'groupAdd',
+            permissions: [
+                ReservationsPricingsPermissions.findLodgingPriceChanges
+            ]
         }));
 
         this.primaryMenuItems.push(new MenuItem({
@@ -51,6 +58,9 @@ export class NgReservationsPricingsMenu extends SidebarMenu {
             area: 'manage',
             order: 3,
             icon: 'shortText',
+            permissions: [
+                ReservationsPricingsPermissions.findLodgingTypePriceChanges
+            ]
         }));
 
 
@@ -60,20 +70,16 @@ export class NgReservationsPricingsMenu extends SidebarMenu {
             area: 'manage',
             order: 3,
             icon: 'shortText',
+            permissions: [
+                ReservationsPricingsPermissions.findLodgingTypePriceChanges
+            ]
         }));
 
-        this.setBackButton({ connectedPackage: true });
+        this.setBackButton({ connectedPackage: true }).addConnectedPackageMenuArea();
     }
 
     public setSpeedDialMenu() {
         this.speedDialMenu = [
-            // new MenuItem({
-            //     url: 'create',
-            //     displayName: this.translationPrefix + 'CREATE',
-            //     area: undefined,
-            //     order: 1,
-            //     icon: 'add',
-            // }),
         ];
     }
 }

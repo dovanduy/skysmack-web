@@ -5,6 +5,7 @@ import { NgSkysmackStore } from '@skysmack/ng-core';
 import { MenuArea } from '@skysmack/framework';
 import { MenuItem } from '@skysmack/framework';
 import { NgMenuItemProviders } from '@skysmack/ng-framework';
+import { IdentitiesPermissions } from '@skysmack/packages-identities';
 
 @Injectable({ providedIn: 'root' })
 export class NgIdentitiesIndexMenu extends SidebarMenu {
@@ -40,6 +41,9 @@ export class NgIdentitiesIndexMenu extends SidebarMenu {
             area: 'manage',
             order: 1,
             icon: 'groupAdd',
+            permissions: [
+                IdentitiesPermissions.findRoles
+            ]
         }));
         this.primaryMenuItems.push(new MenuItem({
             url: 'users',
@@ -47,6 +51,19 @@ export class NgIdentitiesIndexMenu extends SidebarMenu {
             area: 'manage',
             order: 2,
             icon: 'groupAdd',
+            permissions: [
+                IdentitiesPermissions.findUsers
+            ]
+        }));
+        this.primaryMenuItems.push(new MenuItem({
+            url: 'account',
+            displayName: this.translationPrefix + 'ACCOUNTS',
+            area: 'manage',
+            order: 2,
+            icon: 'groupAdd',
+            permissions: [
+                // ???
+            ]
         }));
         this.primaryMenuItems.push(new MenuItem({
             url: 'settings/lockout',
@@ -54,6 +71,9 @@ export class NgIdentitiesIndexMenu extends SidebarMenu {
             area: 'settings',
             order: 1,
             icon: 'groupAdd',
+            permissions: [
+                IdentitiesPermissions.getLockoutSettings
+            ]
         }));
         this.primaryMenuItems.push(new MenuItem({
             url: 'settings/user',
@@ -61,6 +81,9 @@ export class NgIdentitiesIndexMenu extends SidebarMenu {
             area: 'settings',
             order: 2,
             icon: 'groupAdd',
+            permissions: [
+                IdentitiesPermissions.getUserSettings
+            ]
         }));
         this.primaryMenuItems.push(new MenuItem({
             url: 'settings/password',
@@ -68,6 +91,9 @@ export class NgIdentitiesIndexMenu extends SidebarMenu {
             area: 'settings',
             order: 2,
             icon: 'groupAdd',
+            permissions: [
+                IdentitiesPermissions.getPasswordSettings
+            ]
         }));
         this.primaryMenuItems.push(new MenuItem({
             url: 'settings/sign-in',
@@ -75,18 +101,14 @@ export class NgIdentitiesIndexMenu extends SidebarMenu {
             area: 'settings',
             order: 2,
             icon: 'groupAdd',
+            permissions: [
+                IdentitiesPermissions.getSignInSettings
+            ]
         }));
     }
 
     public setSpeedDialMenu() {
         this.speedDialMenu = [
-            new MenuItem({
-                url: 'create',
-                displayName: this.translationPrefix + 'CREATE',
-                area: undefined,
-                order: 1,
-                icon: 'add',
-            }),
         ];
     }
 }

@@ -3,6 +3,7 @@
         "ADDING": "Adding {{ name }}",
         "UPDATING": "Updating {{ name }}",
         "DELETING": "Deleting {{ name }}",
+        "EDITING_PATH": "Editing path",
         "ERROR": "An error occured with {{ name }}. Correct and try again.",
         "FORM": {
             "LABELS": {
@@ -15,7 +16,9 @@
                 "TYPE": "Select package type",
                 "NAME": "Enter name",
                 "DESCRIPTION": "Enter description",
-                "PATH": "Enter path"
+                "PATH": "Enter path",
+                "NEWPATH": "New path",
+                "CURRENTPATH": "Current path"
             },
             "VALIDATION": {
                 "TYPE": {
@@ -31,6 +34,10 @@
                 "PATH": {
                     "REQUIRED": "A path is required.",
                     "INVALIDSTRINGLENGTH": "The path must be at least 3 characters long."
+                },
+                "NEWPATH": {
+                    "REQUIRED": "New path is required.",
+                    "INVALIDSTRINGLENGTH": "The path must be at least 3 characters long."
                 }
             }
         },
@@ -45,10 +52,13 @@
             "AVAILABLE_PACKAGES": "Available packages"
         },
         "CREATE": {
-            "INSTALL": "Install package"
+            "INSTALL": "Install package",
+            "BUTTON_CREATE": "Create"
         },
         "EDIT": {
-            "EDITING": "Editing {{ object.name }} package"
+            "EDIT": "Edit package",
+            "PACKAGE_PATH": "Edit package path",
+            "BUTTON_EDIT": "Update"
         }
     },
     "ADAPTORS": {

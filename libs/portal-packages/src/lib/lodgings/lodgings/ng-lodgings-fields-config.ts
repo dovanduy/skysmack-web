@@ -2,23 +2,26 @@ import { Lodging, LODGINGS_AREA_KEY } from '@skysmack/packages-lodgings';
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { LocalObject, LocalObjectStatus, PagedQuery } from '@skysmack/framework';
-import { FieldsConfig, FieldProviders, SelectFieldComponent, CheckboxFieldComponent, StringFieldComponent, HiddenFieldComponent } from '@skysmack/portal-ui';
+import { FieldProviders, SelectFieldComponent, CheckboxFieldComponent, StringFieldComponent, HiddenFieldComponent, DocumentFieldsConfig } from '@skysmack/portal-ui';
 import { NgLodgingsValidation, NgLodgingTypesStore, NgLodgingTypesActions } from '@skysmack/ng-packages';
-import { LoadedPackage } from '@skysmack/ng-framework';
+import { LoadedPackage, NgFieldStore } from '@skysmack/ng-framework';
 import { FormRule, Field, SelectField } from '@skysmack/ng-ui';
+import { Router } from '@angular/router';
 
 @Injectable({ providedIn: 'root' })
-export class NgLodgingsFieldsConfig extends FieldsConfig<Lodging, number> {
+export class NgLodgingsFieldsConfig extends DocumentFieldsConfig<Lodging, number> {
     public validation = new NgLodgingsValidation();
     public area = LODGINGS_AREA_KEY;
     public formRules: FormRule[] = [];
 
     constructor(
-        public lodgingTypeStore: NgLodgingTypesStore,
+        public router: Router,
         public fieldProvideres: FieldProviders,
-        public lodgingTypesActions: NgLodgingTypesActions
+        public fieldStore: NgFieldStore,
+        public lodgingTypeStore: NgLodgingTypesStore,
+        public lodgingTypesActions: NgLodgingTypesActions,
     ) {
-        super(fieldProvideres);
+        super(fieldProvideres, fieldStore, router);
     }
 
     protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<Lodging, number>): Field[] {

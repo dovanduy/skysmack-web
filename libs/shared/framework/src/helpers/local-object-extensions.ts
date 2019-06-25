@@ -23,6 +23,7 @@ export class LocalObjectExtensions {
                 return existingRecords[x].objectIdentifier === newRecord.objectIdentifier;
             });
 
+
             if (existingRecordKey) {
                 if (existingRecords[existingRecordKey].status === expectedState) {
                     newRecord.localId = existingRecordKey;

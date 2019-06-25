@@ -51,6 +51,15 @@ export abstract class SidebarMenu implements OnDestroy {
         this.additionalPaths = getAdditionalPaths(this.router, this.packagePath);
     }
 
+    public addConnectedPackageMenuArea() {
+        this.primaryMenuAreas.push(new MenuArea({
+            area: 'connected_packages',
+            translationPrefix: 'UI.MISC.',
+            order: 1000,
+        }));
+    }
+
+
     protected runMenuItemProviders() {
         this.subscriptionHandler.register(this.menuItemProviders.providers$.pipe(
             switchMap(providers => combineLatest(
@@ -60,11 +69,7 @@ export abstract class SidebarMenu implements OnDestroy {
                     map((menuItems: MenuItem[]) => {
                         // Add the Connected Packages area if any menu items is provided, and it doesn't already exist.
                         if (menuItems.length > 0 && !this.primaryMenuAreas.find(area => area.area === 'connected_packages')) {
-                            this.primaryMenuAreas.push(new MenuArea({
-                                area: 'connected_packages',
-                                translationPrefix: 'UI.MISC.',
-                                order: 1000,
-                            }));
+                            this.addConnectedPackageMenuArea();
                         }
 
                         // Add provided menu items
@@ -75,7 +80,7 @@ export abstract class SidebarMenu implements OnDestroy {
         ).subscribe());
     }
 
-    protected setBackButton(options?: BackButtonOptions) {
+    protected setBackButton(options?: BackButtonOptions): SidebarMenu {
         if (!options) {
             this.primaryMenuItems.push(new MenuItem({
                 url: '/' + this.packagePath,
@@ -105,6 +110,7 @@ export abstract class SidebarMenu implements OnDestroy {
                 icon: 'arrowBack',
             }));
         }
+        return this;
     }
 
     private addItem(item: MenuItem): void {

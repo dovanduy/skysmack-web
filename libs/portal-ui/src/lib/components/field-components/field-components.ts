@@ -23,6 +23,8 @@ import { RolesSelectFieldComponent } from './components/roles-select-field/roles
 import { MultiSelectFieldComponent } from './components/multi-select-field/multi-select-field.component';
 import { AddRecordFieldComponent } from './components/add-record-field/add-record-field.component';
 import { FlaggedEnumFieldComponent } from './components/flagged-enum-field/flagged-enum-field.component';
+import { ResultFieldComponent } from './components/result-field/result-field.component';
+import { EmailTemplateFieldComponent } from './components/email-template-field/email-template-field.component';
 
 export const fieldComponents = [
     DynamicFormFieldTemplateComponent,
@@ -49,5 +51,7 @@ export const fieldComponents = [
     SpeedDialFabComponent,
     RolesSelectFieldComponent,
     MultiSelectFieldComponent,
-    AddRecordFieldComponent
+    AddRecordFieldComponent,
+    ResultFieldComponent,
+    EmailTemplateFieldComponent
 ];

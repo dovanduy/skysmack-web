@@ -2,11 +2,14 @@ import { Record, StrIndex, LocalPageTypes, LocalObject, hasValue, dictionaryToAr
 import { RecordStore, RecordState } from '@skysmack/redux';
 import { Observable, combineLatest, from } from 'rxjs';
 import { NgRedux } from '@angular-redux/store';
-import { map, switchMap, mergeMap } from 'rxjs/operators';
+import { map, mergeMap } from 'rxjs/operators';
 import { getPackageDendencyAsStream } from '../helpers/ng-helpers';
 import { NgSkysmackStore } from '@skysmack/ng-core';
 
 export abstract class NgRecordStore<TState, TRecord extends Record<TKey>, TKey> implements RecordStore<TRecord, TKey>  {
+
+    protected identifier = 'id';
+
     constructor(
         protected store: NgRedux<TState>,
         protected skysmackStore: NgSkysmackStore,
@@ -101,14 +104,11 @@ export abstract class NgRecordStore<TState, TRecord extends Record<TKey>, TKey> 
 
     protected getSingleRecord(packagePath: string, id: TKey): Observable<LocalObject<TRecord, TKey>> {
         return this.get(packagePath).pipe(
-            map(records => records.find(record => record.object.id.toString() === id.toString())),
+            map(records => records.find(record => record.object[this.identifier].toString() === id.toString())),
             hasValue()
         );
     }
 
-    /**
-     * 
-     */
     protected mapRecordsDependencies(records: LocalObject<any, any>[], dependencies: LocalObject<any, any>[], relationIdSelector: string, relationSelector: string): LocalObject<any, any>[] {
         for (let index = 0; index < records.length; index++) {
             const record = records[index];

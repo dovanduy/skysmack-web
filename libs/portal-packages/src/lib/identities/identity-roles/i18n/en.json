@@ -1,10 +1,12 @@
 {
     "ROLES": {
         "CREATE": {
-            "CREATE_ROLE": "Create new role"
+            "CREATE_ROLE": "Create new role",
+            "BUTTON_CREATE": "Create"
         },
         "EDIT": {
-            "EDITING": "Rediger {{object.name}}"
+            "EDITING": "Edit {{ name }}",
+            "BUTTON_EDIT": "Update"
         },
         "INDEX": {
             "ACTIONS": "Actions",
@@ -13,7 +15,8 @@
             "SECURITY": "Security",
             "SECURITY_AND_USERS": "Users and security",
             "ROLES": "Roles",
-            "BACK": "Back"
+            "BACK": "Back",
+            "FIELDS_TITLE": "(fields)"
         },
         "FORM": {
             "LABELS": {

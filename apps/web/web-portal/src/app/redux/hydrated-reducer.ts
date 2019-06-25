@@ -12,7 +12,7 @@ export function hydratedReducer(state = new HydratedState(), action: any): Hydra
     // which it normally only becomes in app startup.
     const logoutState = new HydratedState();
     logoutState.hydrated = true;
-    state = sharedReducer(state, action, logoutState);
+    state = sharedReducer(state, action, logoutState, 'hydrated');
     const newState = Object.assign({}, state);
 
     switch (action.type) {

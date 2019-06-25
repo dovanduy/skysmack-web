@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { MaintenanceModule } from '@skysmack/portal-packages';
+import { MaintenanceModule } from './../../../../../../../libs/portal-packages/src/lib/maintenance/maintenance.module';
 
 @NgModule({
   imports: [

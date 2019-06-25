@@ -17,5 +17,5 @@ export const LODGING_TYPE_RESERVATION_PRICE_CHANGES_ADDITIONAL_PATHS = ['types',
 export const LODGING_TYPE_PRICES_REDUCER_KEY = 'lodgingTypePrices';
 export const LODGING_TYPE_PRICES_AREA_KEY = 'lodging_type_prices'; // validation, store, menu
 export const LODGING_TYPE_PRICES_REDUX_KEY = 'LODGING_TYPE_PRICES_'; // reducer prefix, action, epics, Requests
-export const LODGING_TYPE_PRICES_ADDITIONAL_PATHS = ['types', 'prices']; // actions, requests
+export const LODGING_TYPE_PRICES_ADDITIONAL_PATHS = ['types']; // actions, requests
 

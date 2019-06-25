@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { EntityComponentPageTitle, DocumentRecordIndexComponent, EntityActionProviders, ENTITY_ACTIONS_EDIT, ENTITY_ACTIONS_DELETE } from '@skysmack/portal-ui';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgProductsActions } from '@skysmack/ng-packages';
@@ -9,6 +9,7 @@ import { NgProductsMenu } from '../../ng-products-menu';
 import { EntityAction } from '@skysmack/ng-ui';
 import { NgFieldActions } from '@skysmack/ng-framework';
 import { NgProductsFieldsConfig } from '../../ng-products-fields-config';
+import { API_DOMAIN_INJECTOR_TOKEN, ApiDomain } from '@skysmack/framework';
 
 @Component({
   selector: 'ss-products-index',
@@ -32,7 +33,8 @@ export class ProductsIndexComponent extends DocumentRecordIndexComponent<Product
     public fieldsConfig: NgProductsFieldsConfig,
     public fieldActions: NgFieldActions,
     public title: EntityComponentPageTitle,
-    public entityActionProviders: EntityActionProviders
+    public entityActionProviders: EntityActionProviders,
+    @Inject(API_DOMAIN_INJECTOR_TOKEN) protected apiDomain: ApiDomain
   ) {
     super(router, activatedRoute, actions, redux, store, fieldsConfig, fieldActions, entityActionProviders, title);
   }

@@ -13,7 +13,7 @@ export class QueueState {
 }
 
 export function queueReducer(state = new QueueState(), action: ReduxAction): QueueState {
-    state = sharedReducer(state, action, new QueueState());
+    state = sharedReducer(state, action, new QueueState(), 'queue');
     const newState = Object.assign({}, state);
 
     switch (action.type) {

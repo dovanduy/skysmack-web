@@ -15,7 +15,7 @@ export class DynamicFormFieldTemplateComponent implements OnInit {
   @Input() fields: Field[];
   @Input() rules: FormRule[];
 
-  @ViewChild(DynamicFormFieldDirective, {static: true }) dynamicFormField: DynamicFormFieldDirective;
+  @ViewChild(DynamicFormFieldDirective, { static: true }) dynamicFormField: DynamicFormFieldDirective;
 
   constructor(private componentFactoryResolver: ComponentFactoryResolver) { }
 
