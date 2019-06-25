@@ -6,8 +6,8 @@ import { SubscriptionHandler } from '@skysmack/framework';
 import { EditorNavService } from './editor-nav.service';
 import { NgSkysmackStore } from '@skysmack/ng-core';
 import { Observable, of } from 'rxjs';
-import { map, filter, switchMap, pairwise, take } from 'rxjs/operators';
-import { NgAuthenticationStore } from '@skysmack/ng-framework';
+import { map, filter, switchMap, pairwise, take, tap } from 'rxjs/operators';
+import { NgAuthenticationStore, getPackageDendencyAsStream } from '@skysmack/ng-framework';
 
 const SMALL_WIDTH_BREAKPOINT = 720;
 
@@ -75,11 +75,12 @@ export class ContainerComponent implements OnInit, OnDestroy {
         } else if (this.path.endsWith('/change-password')) {
           const newPath = this.path.slice(0, this.path.length - '/change-password'.length);
           this.router.navigate([newPath]);
+        } else if (this.path.endsWith('/pay')) {
+          getPackageDendencyAsStream(this.skysmackStore, packagePath, [0]).pipe(
+            tap(x => this.router.navigate([x.object.path])),
+            take(1)
+          ).subscribe();
         }
-        // else if (this.path.endsWith('/pay')) {
-        // This needs to be the previous package's path.
-        // consider using getPackageDendencyAsStream(this.skysmackStore, packagePath, dependencyIndexes)
-        // }
         else {
           this.router.navigate([this.path]);
         }
