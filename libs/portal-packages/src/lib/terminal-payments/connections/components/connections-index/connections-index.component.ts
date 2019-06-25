@@ -80,11 +80,10 @@ export class ConnectionsIndexComponent extends RecordIndexComponent<ConnectionsA
     });
 
     _this.httpClient.post(`${url}/actions/change-connection`, connection, { observe: 'response' }).pipe(
-      tap(x => console.log(x)),
       take(1)
     ).subscribe();
   }
-  
+
   protected close(value: LocalObject<Connection, ConnectionKey>, _this: ConnectionsIndexComponent) {
     const url = `${_this.apiDomain.domain}/${_this.packagePath}`;
     const connection = new ConnectionRequest({
@@ -95,7 +94,6 @@ export class ConnectionsIndexComponent extends RecordIndexComponent<ConnectionsA
     });
 
     _this.httpClient.post(`${url}/actions/change-connection`, connection, { observe: 'response' }).pipe(
-      tap(x => console.log(x)),
       take(1)
     ).subscribe();
   }
@@ -110,7 +108,6 @@ export class ConnectionsIndexComponent extends RecordIndexComponent<ConnectionsA
     });
 
     _this.httpClient.post(`${url}/actions/change-connection`, connection, { observe: 'response' }).pipe(
-      tap(x => console.log(x)),
       take(1)
     ).subscribe();
   }
