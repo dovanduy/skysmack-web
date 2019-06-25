@@ -1,4 +1,4 @@
-import { LocalPageTypes, StrIndex, LocalObject } from '@skysmack/framework';
+import { LocalPageTypes, StrIndex, LocalObject, reinstantiateLocalRecord } from '@skysmack/framework';
 import { AppState, ReduxAction, sharedReducer, RecordState, recordReducersBase } from '@skysmack/redux';
 import { Client } from '../../models/index';
 import { CLIENTS_REDUX_KEY, CLIENTS_REDUCER_KEY } from '../../constants';
@@ -25,10 +25,12 @@ export function clientsReducer(state = new ClientsState(), action: ReduxAction, 
             const castedAction = action as ReduxAction<{ packagePath: string, clientId: number, online: boolean }>;
             const area = newState.localRecords[castedAction.payload.packagePath];
             const localRecordId = Object.keys(area).find(key => area[key].object.id === castedAction.payload.clientId);
-            const newLocalRecord = Object.assign({}, area[localRecordId]);
+            const newLocalRecord = reinstantiateLocalRecord(area[localRecordId]);
+            newLocalRecord.localId = localRecordId;
             newLocalRecord.object.online = castedAction.payload.online;
             area[localRecordId] = newLocalRecord;
             newState.localRecords[castedAction.payload.packagePath] = area;
+
             return newState;
         }
 

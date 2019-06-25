@@ -1,19 +1,6 @@
 import { AuthenticationActions } from '../authentication/authentication-actions';
 import { REHYDRATE } from 'redux-persist/constants';
-import { LocalObject, toLocalObject, StrIndex } from '@skysmack/framework';
-
-const reinstantiateLocalRecord = (localRecord: LocalObject<any, any>) => {
-    return localRecord.objectIdentifier ? localRecord : toLocalObject(
-        localRecord.object,
-        localRecord._identifier,
-        localRecord.localId,
-        localRecord.status,
-        localRecord.modifyType,
-        localRecord.isNew,
-        localRecord.foreignKey,
-        localRecord.error
-    );
-}
+import { LocalObject, StrIndex, reinstantiateLocalRecord } from '@skysmack/framework';
 
 const loopPackageDictionary = (newState: any, selector: string) => {
     Object.keys(newState[selector]).map(packagePath => {
