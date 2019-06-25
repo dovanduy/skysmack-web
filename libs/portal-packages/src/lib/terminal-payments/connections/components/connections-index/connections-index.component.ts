@@ -20,15 +20,17 @@ export class ConnectionsIndexComponent extends RecordIndexComponent<ConnectionsA
   public areaKey: string = CONNECTIONS_AREA_KEY;
   public titleExtras = true;
   public entityActions: EntityAction[] = [
-    new EntityAction().asEventAction('Connect', this.connect, 'add', this).setShowLogic((entity: LocalObject<Connection, ConnectionKey>) => {
+    new EntityAction().asEventAction('Connect', this.connect, 'control_point', this).setShowLogic((entity: LocalObject<Connection, ConnectionKey>) => {
       return true;
     }),
-    new EntityAction().asEventAction('Disconnect', this.disconnect, 'add', this).setShowLogic((entity: LocalObject<Connection, ConnectionKey>) => {
-      if (entity.object.status === TerminalStatus.Connected) {
-        return true;
-      } else {
-        return false;
-      }
+    new EntityAction().asEventAction('Open', this.open, 'check', this).setShowLogic((entity: LocalObject<Connection, ConnectionKey>) => {
+      return true;
+    }),
+    new EntityAction().asEventAction('Close', this.close, 'close', this).setShowLogic((entity: LocalObject<Connection, ConnectionKey>) => {
+      return true;
+    }),
+    new EntityAction().asEventAction('Disconnect', this.disconnect, 'cancel', this).setShowLogic((entity: LocalObject<Connection, ConnectionKey>) => {
+      return true;
     }),
     new EntityAction().asEventAction(ENTITY_ACTIONS_DELETE, this.delete, 'delete', this)
   ];
@@ -68,7 +70,48 @@ export class ConnectionsIndexComponent extends RecordIndexComponent<ConnectionsA
     _this.httpClient.post(`${url}/actions/change-connection`, connection, { observe: 'response' }).pipe(take(1)).subscribe();
   }
 
-  protected disconnect(value: LocalObject<Connection, ConnectionKey>, _this: RecordIndexComponent<any, any, any>) {
-    console.log('hello', value);
+  protected open(value: LocalObject<Connection, ConnectionKey>, _this: ConnectionsIndexComponent) {
+    const url = `${_this.apiDomain.domain}/${_this.packagePath}`;
+    const connection = new ConnectionRequest({
+      type: 'changeConnection',
+      clientId: value.object.id.clientId,
+      terminalId: value.object.id.terminalId,
+      terminalAction: TerminalAction.Open
+    });
+
+    _this.httpClient.post(`${url}/actions/change-connection`, connection, { observe: 'response' }).pipe(
+      tap(x => console.log(x)),
+      take(1)
+    ).subscribe();
+  }
+  
+  protected close(value: LocalObject<Connection, ConnectionKey>, _this: ConnectionsIndexComponent) {
+    const url = `${_this.apiDomain.domain}/${_this.packagePath}`;
+    const connection = new ConnectionRequest({
+      type: 'changeConnection',
+      clientId: value.object.id.clientId,
+      terminalId: value.object.id.terminalId,
+      terminalAction: TerminalAction.Close
+    });
+
+    _this.httpClient.post(`${url}/actions/change-connection`, connection, { observe: 'response' }).pipe(
+      tap(x => console.log(x)),
+      take(1)
+    ).subscribe();
+  }
+
+  protected disconnect(value: LocalObject<Connection, ConnectionKey>, _this: ConnectionsIndexComponent) {
+    const url = `${_this.apiDomain.domain}/${_this.packagePath}`;
+    const connection = new ConnectionRequest({
+      type: 'changeConnection',
+      clientId: value.object.id.clientId,
+      terminalId: value.object.id.terminalId,
+      terminalAction: TerminalAction.Disconnect
+    });
+
+    _this.httpClient.post(`${url}/actions/change-connection`, connection, { observe: 'response' }).pipe(
+      tap(x => console.log(x)),
+      take(1)
+    ).subscribe();
   }
 }
