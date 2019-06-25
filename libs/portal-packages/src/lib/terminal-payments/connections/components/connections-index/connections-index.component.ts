@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { EntityComponentPageTitle, EntityActionProviders, ENTITY_ACTIONS_DELETE, RecordIndexComponent } from '@skysmack/portal-ui';
 import { Router, ActivatedRoute } from '@angular/router';
-import { ConnectionsAppState, Connection, CONNECTIONS_AREA_KEY, ConnectionKey, Terminal, TerminalStatus } from '@skysmack/packages-terminal-payments';
+import { ConnectionsAppState, Connection, CONNECTIONS_AREA_KEY, ConnectionKey, Terminal, TerminalStatus, ConnectionRequest, TerminalAction } from '@skysmack/packages-terminal-payments';
 import { NgConnectionsMenu } from '../../ng-connections-menu';
 import { EntityAction } from '@skysmack/ng-ui';
 import { NgConnectionsFieldsConfig } from '../../ng-connections-fields-config';
@@ -9,7 +9,8 @@ import { NgSkysmackStore } from '@skysmack/ng-core';
 import { NgConnectionsActions, NgConnectionsStore } from '@skysmack/ng-packages';
 import { NgSignalR } from '@skysmack/ng-framework';
 import { HttpClient } from '@angular/common/http';
-import { LocalObject } from '@skysmack/framework';
+import { LocalObject, API_DOMAIN_INJECTOR_TOKEN, ApiDomain } from '@skysmack/framework';
+import { take, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'ss-connections-index',
@@ -19,12 +20,15 @@ export class ConnectionsIndexComponent extends RecordIndexComponent<ConnectionsA
   public areaKey: string = CONNECTIONS_AREA_KEY;
   public titleExtras = true;
   public entityActions: EntityAction[] = [
-    new EntityAction().asEventAction('Connect', this.connection, 'add', this).setShowLogic((entity: LocalObject<Connection, ConnectionKey>) => {
-      if (entity.object.status === TerminalStatus.Unknown) {
+    new EntityAction().asEventAction('Connect', this.connect, 'add', this).setShowLogic((entity: LocalObject<Connection, ConnectionKey>) => {
+      return true;
+    }),
+    new EntityAction().asEventAction('Disconnect', this.disconnect, 'add', this).setShowLogic((entity: LocalObject<Connection, ConnectionKey>) => {
+      if (entity.object.status === TerminalStatus.Connected) {
         return true;
-      } else if (entity.object.status === TerminalStatus.Unavailable) {
-        return true;
-      } //... etc
+      } else {
+        return false;
+      }
     }),
     new EntityAction().asEventAction(ENTITY_ACTIONS_DELETE, this.delete, 'delete', this)
   ];
@@ -40,7 +44,9 @@ export class ConnectionsIndexComponent extends RecordIndexComponent<ConnectionsA
     public title: EntityComponentPageTitle,
     public entityActionProviders: EntityActionProviders,
     public signalR: NgSignalR,
-    public httpClient: HttpClient
+    public httpClient: HttpClient,
+    @Inject(API_DOMAIN_INJECTOR_TOKEN) protected apiDomain: ApiDomain
+
   ) {
     super(router, activatedRoute, actions, redux, store, fieldsConfig, entityActionProviders, title);
   }
@@ -50,7 +56,22 @@ export class ConnectionsIndexComponent extends RecordIndexComponent<ConnectionsA
     this.signalR.instance.join(this.packagePath);
   }
 
-  protected connection(value: LocalObject<Connection, ConnectionKey>, _this: RecordIndexComponent<any, any, any>) {
+  protected connect(value: LocalObject<Connection, ConnectionKey>, _this: ConnectionsIndexComponent) {
+    const url = `${_this.apiDomain.domain}/${_this.packagePath}`;
+    const connection = new ConnectionRequest({
+      type: 'changeConnection',
+      clientId: value.object.id.clientId,
+      terminalId: value.object.id.terminalId,
+      terminalAction: TerminalAction.Connect
+    });
+
+    _this.httpClient.post(`${url}/actions/change-connection`, connection, { observe: 'response' }).pipe(
+      tap(x => console.log(x)),
+      take(1)
+    ).subscribe();
+  }
+
+  protected disconnect(value: LocalObject<Connection, ConnectionKey>, _this: RecordIndexComponent<any, any, any>) {
     console.log('hello', value);
   }
 }
