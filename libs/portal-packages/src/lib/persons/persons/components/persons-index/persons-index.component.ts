@@ -45,6 +45,6 @@ export class PersonsIndexComponent extends DocumentRecordIndexComponent<PersonsA
 
   ngOnInit() {
     super.ngOnInit();
-    this.signalR.instance.join(this.packagePath);
+    // this.signalR.instance.join(this.packagePath);
   }
 }

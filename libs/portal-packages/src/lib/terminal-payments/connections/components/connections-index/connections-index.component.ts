@@ -7,7 +7,6 @@ import { EntityAction } from '@skysmack/ng-ui';
 import { NgConnectionsFieldsConfig } from '../../ng-connections-fields-config';
 import { NgSkysmackStore } from '@skysmack/ng-core';
 import { NgConnectionsActions, NgConnectionsStore } from '@skysmack/ng-packages';
-import { NgSignalR } from '@skysmack/ng-framework';
 import { HttpClient } from '@angular/common/http';
 import { LocalObject, API_DOMAIN_INJECTOR_TOKEN, ApiDomain } from '@skysmack/framework';
 import { take, tap } from 'rxjs/operators';
@@ -45,7 +44,6 @@ export class ConnectionsIndexComponent extends RecordIndexComponent<ConnectionsA
     public fieldsConfig: NgConnectionsFieldsConfig,
     public title: EntityComponentPageTitle,
     public entityActionProviders: EntityActionProviders,
-    public signalR: NgSignalR,
     public httpClient: HttpClient,
     @Inject(API_DOMAIN_INJECTOR_TOKEN) protected apiDomain: ApiDomain
 
@@ -55,7 +53,6 @@ export class ConnectionsIndexComponent extends RecordIndexComponent<ConnectionsA
 
   ngOnInit() {
     super.ngOnInit();
-    this.signalR.instance.join(this.packagePath);
   }
 
   protected connect(value: LocalObject<Connection, ConnectionKey>, _this: ConnectionsIndexComponent) {
