@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { NgSignalR } from '@skysmack/ng-framework';
 import { Router } from '@angular/router';
+import { NgSkysmackActions } from '@skysmack/ng-core';
 
 @Component({
   selector: 'ss-default',
@@ -8,22 +9,21 @@ import { Router } from '@angular/router';
   styleUrls: ['./default.component.scss']
 })
 export class DefaultComponent implements OnInit, OnDestroy {
-
   public packagePath: string;
 
   constructor(
     public signalR: NgSignalR,
-    public router: Router
+    public router: Router,
+    public skysmackActions: NgSkysmackActions
   ) { }
 
   ngOnInit() {
-    console.log('initted');
     this.packagePath = this.router.url.split('/')[1];
     this.signalR.instance.join(this.packagePath);
+    this.skysmackActions.getPermissions(this.packagePath)
   }
 
   ngOnDestroy() {
-    console.log('Destroyed');
     this.signalR.instance.leave(this.packagePath);
   }
 }

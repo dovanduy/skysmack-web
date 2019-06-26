@@ -8,7 +8,6 @@ import { Router } from '@angular/router';
 // tslint:disable-next-line:directive-selector
 @Directive({ selector: '[inAnyPermission]' })
 export class IsAnyPermissionDirective implements OnInit, OnDestroy {
-    public static register = {};
     public subscription: SubscriptionLike;
     private displaying = false;
 
@@ -42,7 +41,6 @@ export class IsAnyPermissionDirective implements OnInit, OnDestroy {
                 this.show(true);
             }
             const packagePath = this.router.url.split('/')[1];
-            this.getPermissions(packagePath);
 
             this.subscription = this.skysmackStore.getPermissions(packagePath).pipe(
                 map(permissions => {
@@ -68,7 +66,6 @@ export class IsAnyPermissionDirective implements OnInit, OnDestroy {
         if (this.subscription) {
             this.subscription.unsubscribe();
         }
-        IsAnyPermissionDirective.register = {};
     }
 
     private show(show: boolean = false) {
@@ -83,13 +80,6 @@ export class IsAnyPermissionDirective implements OnInit, OnDestroy {
                 this.viewContainer.clear();
             }
             this.displaying = false;
-        }
-    }
-
-    private getPermissions(packagePath: string): void {
-        if (!IsAnyPermissionDirective.register[packagePath]) {
-            IsAnyPermissionDirective.register[packagePath] = true;
-            this.skysmackActions.getPermissions(packagePath)
         }
     }
 }
