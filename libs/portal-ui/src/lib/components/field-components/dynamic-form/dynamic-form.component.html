@@ -17,7 +17,8 @@
     </ng-container>
   </ng-container>
 
-  <button mat-raised-button color="primary" type="submit" (click)="onSubmit()">{{ buttonText }}</button>
+  <button mat-raised-button color="primary" type="submit" (click)="onSubmit()"
+    [disabled]="disableButton">{{ buttonText }}</button>
 
   <ng-container *ngIf="!production">
     <p>Form values</p>

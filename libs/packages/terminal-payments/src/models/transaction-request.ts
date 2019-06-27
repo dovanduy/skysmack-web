@@ -1,11 +1,17 @@
 import { Currency } from './currency';
+import { LocalObject } from '@skysmack/framework';
+import { ConnectionKey, Connection } from './connection';
 
 export class TransactionRequest {
     public clientId: number;
     public terminalId: number;
+    public invoiceId: number;
     public amount: number;
-    public reference: number;
-    public currency: Currency;
+    public currency: Currency; // currencyCode?
+    // public reference: number;
+
+    // Below prop is front end only
+    public connection: LocalObject<Connection, ConnectionKey>;
 
     constructor(values: Partial<TransactionRequest>) {
         Object.assign(this, values);

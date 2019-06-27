@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
-import { FormRule, SelectField } from '@skysmack/ng-ui';
+import { FormRule, SelectField, SelectFieldOption } from '@skysmack/ng-ui';
 import { LocalObject, PagedQuery, toLocalObject } from '@skysmack/framework';
-import { TERMINALS_AREA_KEY, TransactionRequest, Currency, TerminalStatus } from '@skysmack/packages-terminal-payments';
+import { TERMINALS_AREA_KEY, TransactionRequest, Currency, TerminalStatus, ConnectionKey, Connection } from '@skysmack/packages-terminal-payments';
 import { Field } from '@skysmack/ng-ui';
-import { FieldsConfig, IntFieldComponent, SelectFieldComponent } from '@skysmack/portal-ui';
+import { FieldsConfig, IntFieldComponent, SelectFieldComponent, HiddenFieldComponent } from '@skysmack/portal-ui';
 import { FieldProviders } from '@skysmack/portal-ui';
 import { LoadedPackage } from '@skysmack/ng-framework';
 import { Validators } from '@angular/forms';
-import { NgTransactionRequestValidation, NgClientsStore, NgClientsActions, NgConnectionsStore, NgConnectionsActions } from '@skysmack/ng-packages';
+import { NgTransactionRequestValidation, NgClientsStore, NgClientsActions, NgConnectionsStore, NgConnectionsActions, NgTerminalsStore, NgTerminalsActions } from '@skysmack/ng-packages';
 import { of, combineLatest } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 
@@ -23,38 +23,55 @@ export class NgTransactionRequestFieldsConfig extends FieldsConfig<TransactionRe
         public clientsStore: NgClientsStore,
         public clientsActions: NgClientsActions,
         public connectionsStore: NgConnectionsStore,
-        public connectionsActions: NgConnectionsActions
+        public connectionsActions: NgConnectionsActions,
+        public terminalsStore: NgTerminalsStore,
+        public terminalsActions: NgTerminalsActions
     ) {
         super(fieldProviders);
     }
 
     protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<TransactionRequest, unknown>): Field[] {
+        const modifyDisplayName = (options: SelectFieldOption[], optionsData: LocalObject<Connection, ConnectionKey>[]) => {
+            const connections = optionsData;
+            return options.map(option => {
+                if (connections) {
+                    const connection = connections.find(connection => {
+                        if (connection.object.id) {
+                            return (connection.object.id.clientId === option.value.clientId && connection.object.id.terminalId === option.value.terminalId) ? true : false;
+                        } else {
+                            return false;
+                        }
+                    });
+                    if (connection) {
+                        option.displayName = `${connection.object.terminal.object.name} (${connection.object.client.object.name})`;
+                    }
+                }
+                return option;
+            });
+        };
+
         const fields = [
             new SelectField({
                 component: SelectFieldComponent,
-                value: entity ? entity.object.clientId : undefined,
-                key: 'clientId',
-                optionsData$: combineLatest(
-                    this.clientsStore.get(loadedPackage._package.path),
-                    this.connectionsStore.get(loadedPackage._package.path)
-                ).pipe(
-                    map(([clients, connections]) => {
-                        const selectable = clients.filter(client => client.object.online).map(client => {
-                            const relatedConnection = connections.find(connection => connection.object.id.clientId === client.object.id);
-                            // Object is cloned, otherwise the reference is updated when setting the name
-                            const clone = {
-                                ...client,
-                                object: { ...client.object }
-                            };
-                            clone.object.name = `${clone.object.name} (${relatedConnection ? TerminalStatus[relatedConnection.object.status] : 'Unkown'})`;
-                            return clone;
-                        })
+                value: entity ? entity.object.connection : undefined,
+                key: 'connection',
+                displayKey: 'connection',
+                displaySubKey: 'object.status',
+                optionsData$: this.connectionsStore.get(loadedPackage._package.path).pipe(
+                    map(connections => {
+                        const selectable = connections.filter(connection => {
+                            const openedCheck = connection.object.status === TerminalStatus.Open;
+                            const connectedCheck = connection.object.status === TerminalStatus.Connected;
+                            const onlineCheck = connection.object.client.object.online;
+                            return ((openedCheck || connectedCheck) && onlineCheck) ? true : false;
+                        });
 
-                        return selectable.length > 0 ? selectable : [toLocalObject({ name: 'No clients available', id: null })];
+                        return selectable.length > 0 ? selectable : [toLocalObject({ status: 'No connections available', id: null })];
                     })
                 ),
+                displayNameSelector: 'object.status',
+                modifyDisplayName,
                 getDependencies: () => {
-                    this.clientsActions.getPaged(loadedPackage._package.path, new PagedQuery());
                     this.connectionsActions.getPaged(loadedPackage._package.path, new PagedQuery());
                 },
                 validators: [Validators.required],
@@ -70,9 +87,9 @@ export class NgTransactionRequestFieldsConfig extends FieldsConfig<TransactionRe
                 showColumn: true
             }),
             new Field({
-                component: IntFieldComponent,
-                value: entity ? entity.object.reference : undefined,
-                key: 'reference',
+                component: HiddenFieldComponent,
+                value: entity ? entity.object.invoiceId : undefined,
+                key: 'invoiceId',
                 order: 1,
                 showColumn: true
             }),
