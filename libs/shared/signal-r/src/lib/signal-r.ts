@@ -97,8 +97,8 @@ export class SignalR {
         this.connected.pipe(
             filter(x => x),
             map(() => {
-                delete this.joinedPackages[packagePath];
                 this.hubConnection.invoke('Leave', packagePath);
+                delete this.joinedPackages[packagePath];
             }),
             take(1)
         ).subscribe();

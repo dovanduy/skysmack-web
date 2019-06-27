@@ -4,13 +4,18 @@ import { identitiesRoutes } from './components/identities-components';
 import { rolesRoutes } from './identity-roles/components';
 import { usersRoutes } from './identity-users/components';
 import { accountsRoutes } from './accounts';
+import { DefaultComponent } from '@skysmack/portal-ui';
 
 @NgModule({
   imports: [RouterModule.forChild([
-    ...identitiesRoutes,
-    ...rolesRoutes,
-    ...usersRoutes,
-    ...accountsRoutes
+    {
+      path: '', component: DefaultComponent, children: [
+        ...identitiesRoutes,
+        ...rolesRoutes,
+        ...usersRoutes,
+        ...accountsRoutes
+      ]
+    }
   ])],
   exports: [RouterModule]
 })

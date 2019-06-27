@@ -8,7 +8,6 @@ import { Terminal, TerminalsAppState, TERMINALS_AREA_KEY } from '@skysmack/packa
 import { NgTerminalsMenu } from '../../ng-terminals-menu';
 import { EntityAction } from '@skysmack/ng-ui';
 import { NgTerminalsFieldsConfig } from '../../ng-terminals-fields-config';
-import { NgSignalR } from '@skysmack/ng-framework';
 
 @Component({
   selector: 'ss-terminals-index',
@@ -32,14 +31,12 @@ export class TerminalsIndexComponent extends RecordIndexComponent<TerminalsAppSt
     public sidebarMenu: NgTerminalsMenu,
     public fieldsConfig: NgTerminalsFieldsConfig,
     public title: EntityComponentPageTitle,
-    public entityActionProviders: EntityActionProviders,
-    public signalR: NgSignalR
+    public entityActionProviders: EntityActionProviders
   ) {
     super(router, activatedRoute, actions, redux, store, fieldsConfig, entityActionProviders, title);
   }
 
   ngOnInit() {
     super.ngOnInit();
-    this.signalR.instance.join(this.packagePath);
   }
 }

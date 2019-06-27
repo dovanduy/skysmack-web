@@ -5,14 +5,19 @@ import { productTypeSalesPriceRoutes } from './product-type-sales-price/componen
 import { ProductsPricingsIndexComponent } from './components/products-pricings-index/products-pricings-index.component';
 import { productPriceChangesRoutes } from './product-price-changes';
 import { productTypePriceChangesRoutes } from './product-type-price-changes/components/product-type-price-changes-components';
+import { DefaultComponent } from '@skysmack/portal-ui';
 
 @NgModule({
   imports: [RouterModule.forChild([
-    ...[{ path: '', component: ProductsPricingsIndexComponent }],
-    ...productsSalesPriceRoutes,
-    ...productTypeSalesPriceRoutes,
-    ...productPriceChangesRoutes,
-    ...productTypePriceChangesRoutes
+    {
+      path: '', component: DefaultComponent, children: [
+        ...[{ path: '', component: ProductsPricingsIndexComponent }],
+        ...productsSalesPriceRoutes,
+        ...productTypeSalesPriceRoutes,
+        ...productPriceChangesRoutes,
+        ...productTypePriceChangesRoutes
+      ]
+    }
   ]
   )],
   exports: [RouterModule]

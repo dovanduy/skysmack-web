@@ -11,6 +11,7 @@ import { RolesSelectComponent } from './roles-select/roles-select.component';
 import { BackendErrorsComponent } from './backend-errors/backend-errors.component';
 import { ContainerComponent } from './container/container.component';
 import { CardBodyComponent } from './card-body/card-body.component';
+import { DefaultComponent } from './default/default.component';
 
 export const commonComponents = [
     SidebarMenuComponent,
@@ -26,4 +27,5 @@ export const commonComponents = [
     BackendErrorsComponent,
     ContainerComponent,
     CardBodyComponent,
+    DefaultComponent
 ];
