@@ -25,9 +25,9 @@ export function clientsReducer(state = new ClientsState(), action: ReduxAction, 
             const castedAction = action as ReduxAction<{ packagePath: string, clientId: number, online: boolean }>;
             const area = newState.localRecords[castedAction.payload.packagePath];
             const localRecordId = Object.keys(area).find(key => area[key].object.id === castedAction.payload.clientId);
-            const newLocalRecord = reinstantiateLocalRecord(area[localRecordId]);
-            newLocalRecord.localId = localRecordId;
+            const newLocalRecord = reinstantiateLocalRecord({ ...area[localRecordId] });
             newLocalRecord.object.online = castedAction.payload.online;
+            newLocalRecord.localId = area[localRecordId].localId;
             area[localRecordId] = newLocalRecord;
             newState.localRecords[castedAction.payload.packagePath] = area;
 

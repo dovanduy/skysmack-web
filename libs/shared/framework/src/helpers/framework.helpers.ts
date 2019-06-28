@@ -79,7 +79,7 @@ export const replaceLocalInnerObject = <TObject, TKey>(localObject: LocalObject<
     return localObject;
 }
 
-export const reinstantiateLocalRecord = (localRecord: LocalObject<any, any>) => {
+export const reinstantiateLocalRecord = (localRecord: any) => {
     return localRecord.objectIdentifier ? localRecord : toLocalObject(
         localRecord.object,
         localRecord._identifier,

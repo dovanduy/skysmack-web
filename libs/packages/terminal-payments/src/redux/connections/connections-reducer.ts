@@ -31,7 +31,7 @@ export function connectionsReducer(state = new ConnectionsState(), action: Redux
                 const terminalIdMatch = area[key].object.id.terminalId === message.terminalId;
                 return (clientIdMatch && terminalIdMatch) ? true : false;
             });
-            const newLocalRecord = reinstantiateLocalRecord(area[localRecordId]) as LocalObject<Connection, ConnectionKey>;
+            const newLocalRecord = reinstantiateLocalRecord({ ...area[localRecordId] }) as LocalObject<Connection, ConnectionKey>;
 
             newLocalRecord.localId = localRecordId;
             newLocalRecord.object.status = message.terminalStatus;
