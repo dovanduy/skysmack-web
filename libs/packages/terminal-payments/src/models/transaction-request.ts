@@ -7,7 +7,7 @@ export class TransactionRequest {
     public terminalId: number;
     public invoiceId: number;
     public amount: number;
-    public currency: Currency; // currencyCode?
+    public currencyCode: string;
     // public reference: number;
 
     // Below prop is front end only

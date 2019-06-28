@@ -65,7 +65,7 @@ export class TerminalsPayComponent extends RecordFormComponent<TerminalsAppState
             clientId: undefined,
             terminalId: undefined,
             amount: undefined,
-            currency: undefined,
+            currencyCode: undefined,
             connection: undefined
           }));
         })
