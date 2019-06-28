@@ -4,8 +4,8 @@ export class LodgingsPermissions {
     private static lodgings = 'Lodgings';
     private static lodgingFields = 'Lodging' + FIELDS;
 
-    private static lodgingTypes = 'Lodging types';
-    private static lodgingTypeFields = 'Lodging type' + FIELDS;
+    private static lodgingTypes = 'LodgingTypes';
+    private static lodgingTypeFields = 'LodgingType' + FIELDS;
 
     public static findLodgings = FIND + LodgingsPermissions.lodgings;
     public static addLodgings = ADD + LodgingsPermissions.lodgings;
