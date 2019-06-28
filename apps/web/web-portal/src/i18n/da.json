@@ -2015,7 +2015,8 @@
 		"FORM": {
 			"LABELS": {
 				"NAME": "Navn",
-                "CONNECTIONSTRING": "Forbindelse",
+				"CONNECTIONSTRING": "Forbindelsesdata",
+				"CONNECTION": "Forbindelse",
                 "DESCRIPTION": "Beskrivelse",
                 "CLIENTID": "Klient",
                 "TERMINALID": "Terminal",
@@ -2025,7 +2026,8 @@
 			},
 			"PLACEHOLDERS": {
 			    "NAME": "Navn",
-                "CONNECTIONSTRING": "Forbindelse",
+				"CONNECTIONSTRING": "Forbindelsesdata",
+				"CONNECTION": "Forbindelse",
                 "DESCRIPTION": "Beskrivelse",
                 "CLIENTID": "Klient",
                 "TERMINALID": "Terminal",
@@ -2038,6 +2040,9 @@
 					"REQUIRED": "Navn er påkrævet."
 				},
 				"CONNECTIONSTRING": {
+					"REQUIRED": "Forbindelsesdata er påkrævet."
+				},
+				"CONNECTION": {
 					"REQUIRED": "Forbindelse er påkrævet."
 				},
 				"CLIENTID": {
