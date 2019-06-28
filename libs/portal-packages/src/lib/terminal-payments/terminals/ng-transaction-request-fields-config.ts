@@ -95,8 +95,8 @@ export class NgTransactionRequestFieldsConfig extends FieldsConfig<TransactionRe
             }),
             new SelectField({
                 component: SelectFieldComponent,
-                value: entity ? entity.object.currency : undefined,
-                key: 'currency',
+                value: entity ? entity.object.currencyCode : undefined,
+                key: 'currencyCode',
                 optionsData$: of(Currency),
                 optionsDataType: 'ts-enum',
                 useEnumValue: true,
