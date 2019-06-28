@@ -74,7 +74,7 @@ export class TerminalsPayComponent extends RecordFormComponent<TerminalsAppState
   }
 
   public onSubmit(fh: FormHelper) {
-    const transactionRequest = fh.form.value as TransactionRequest;
+    const transactionRequest = { ...fh.form.value } as TransactionRequest;
 
     // Set clientId and terminalId on the correct properties
     transactionRequest.clientId = (transactionRequest.connection as any).clientId;
