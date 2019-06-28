@@ -5,6 +5,7 @@ import { TERMINALS_AREA_KEY } from '@skysmack/packages-terminal-payments';
 export class NgTransactionRequestValidation extends Validation {
     public formErrors = {
         clientId: '',
+        connection: '',
         terminalId: '',
         amount: '',
         reference: '',
@@ -16,6 +17,9 @@ export class NgTransactionRequestValidation extends Validation {
             required: '',
         },
         terminalId: {
+            required: '',
+        },
+        connection: {
             required: '',
         },
         amount: {

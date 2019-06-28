@@ -18,6 +18,7 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
   @Input() public validation: Validation;
   @Input() public buttonText = 'Submit';
   @Input() public noSidebar: boolean;
+  @Input() public disableButton: boolean = false;
   @Output() public submitted: EventEmitter<FormHelper> = new EventEmitter();
 
   // Prevents multiple gets

@@ -2021,7 +2021,8 @@
 				"TERMINALID": "Terminal",
 				"AMOUNT": "Amount",
 				"REFERENCE": "Reference",
-				"CURRENCY": "Currency"
+				"CURRENCY": "Currency",
+				"CONNECTION": "Connection"
 			},
 			"PLACEHOLDERS": {
 				"NAME": "Name",
@@ -2032,7 +2033,8 @@
 				"TERMINALID": "Terminal",
 				"AMOUNT": "Amount",
 				"REFERENCE": "Reference",
-				"CURRENCY": "Currency"
+				"CURRENCY": "Currency",
+				"CONNECTION": "Connection"
 			},
 			"VALIDATION": {
 				"NAME": {
@@ -2058,6 +2060,9 @@
 				},
 				"CURRENCY": {
 					"REQUIRED": "Currency is required."
+				},
+				"CONNECTION": {
+					"REQUIRED": "Connection is required."
 				}
 			}
 		},
