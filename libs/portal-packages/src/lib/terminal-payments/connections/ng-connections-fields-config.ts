@@ -53,7 +53,7 @@ export class NgConnectionsFieldsConfig extends FieldsConfig<Connection, Connecti
                 displayKey: 'terminal',
                 displaySubKey: 'object.name',
                 optionsData$: this.terminalsStore.get(loadedPackage._package.path),
-                getDependencies: () => { this.clientsActions.getPaged(loadedPackage._package.path, new PagedQuery()); },
+                getDependencies: () => { this.terminalsActions.getPaged(loadedPackage._package.path, new PagedQuery()); },
                 order: 2,
                 showColumn: true
             }),

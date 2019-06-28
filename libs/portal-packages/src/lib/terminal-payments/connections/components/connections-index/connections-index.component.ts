@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { EntityComponentPageTitle, EntityActionProviders, ENTITY_ACTIONS_DELETE, RecordIndexComponent } from '@skysmack/portal-ui';
 import { Router, ActivatedRoute } from '@angular/router';
-import { ConnectionsAppState, Connection, CONNECTIONS_AREA_KEY, ConnectionKey, Terminal, TerminalStatus, ConnectionRequest, TerminalAction } from '@skysmack/packages-terminal-payments';
+import { ConnectionsAppState, Connection, CONNECTIONS_AREA_KEY, ConnectionKey, TerminalStatus, ConnectionRequest, TerminalAction } from '@skysmack/packages-terminal-payments';
 import { NgConnectionsMenu } from '../../ng-connections-menu';
 import { EntityAction } from '@skysmack/ng-ui';
 import { NgConnectionsFieldsConfig } from '../../ng-connections-fields-config';
@@ -9,7 +9,7 @@ import { NgSkysmackStore } from '@skysmack/ng-core';
 import { NgConnectionsActions, NgConnectionsStore } from '@skysmack/ng-packages';
 import { HttpClient } from '@angular/common/http';
 import { LocalObject, API_DOMAIN_INJECTOR_TOKEN, ApiDomain } from '@skysmack/framework';
-import { take, tap } from 'rxjs/operators';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'ss-connections-index',

@@ -110,7 +110,6 @@ export function recordReducersBase<TState extends RecordState<TRecord, TKey>, TR
                 Object.keys(area).forEach(key => {
                     if (area[key].object.id === id) {
                         area[key].deleted = true;
-                        console.log(area[key]);
                     };
                 });
             });

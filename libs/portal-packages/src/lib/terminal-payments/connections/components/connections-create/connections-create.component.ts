@@ -7,7 +7,7 @@ import { NgConnectionsActions } from '@skysmack/ng-packages';
 import { NgConnectionsStore } from '@skysmack/ng-packages';
 import { NgConnectionsFieldsConfig } from '../../ng-connections-fields-config';
 import { FormHelper } from '@skysmack/ng-ui';
-import { toLocalObject } from '@skysmack/framework';
+import { toLocalObject, LocalObjectStatus } from '@skysmack/framework';
 
 @Component({
   selector: 'ss-connections-create',
@@ -36,6 +36,8 @@ export class ConnectionsCreateComponent extends RecordFormComponent<ConnectionsA
     fh.formValid(() => {
       const localObject = toLocalObject(new Connection({ id: fh.form.getRawValue() }));
       this.editorItem ? localObject.localId = this.editorItem.localId : localObject.localId = localObject.localId;
+      localObject.status = LocalObjectStatus.CREATING;
+      localObject.isNew = true;
       this.actions.add([localObject], this.packagePath);
       this.editorNavService.hideEditorNav();
     });
