@@ -3,6 +3,7 @@ import { FieldBaseComponent } from '../field-base-component';
 import { FieldAccessPermission, AccessTypes } from '@skysmack/framework';
 import { FieldHelpers, SelectFieldOption } from '@skysmack/ng-ui';
 import { Field } from '@skysmack/ng-ui';
+import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 
 @Component({
   selector: 'ss-field-permission-field',
@@ -37,8 +38,8 @@ export class FieldPermissionFieldComponent extends FieldBaseComponent<Field> imp
     return item && item.roleId;
   }
 
-  public toggleIncludeRoles() {
-    this.permission.includeRoles = !this.permission.includeRoles;
+  public toggleIncludeRoles(event: MatSlideToggleChange) {
+    this.permission.includeRoles = event.checked;
   }
 
   public selectedRoleIds(ids: number[]) {
