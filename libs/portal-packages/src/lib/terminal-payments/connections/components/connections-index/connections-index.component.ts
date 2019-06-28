@@ -20,7 +20,7 @@ export class ConnectionsIndexComponent extends RecordIndexComponent<ConnectionsA
   public titleExtras = true;
   public entityActions: EntityAction[] = [
     new EntityAction().asEventAction('Connect', this.connect, 'control_point', this).setShowLogic((entity: LocalObject<Connection, ConnectionKey>) => {
-      if (entity.object.client.object.online) {
+      if (entity.object.client && entity.object.client.object.online) {
         if (entity.object.status == TerminalStatus.Closed || entity.object.status == TerminalStatus.Disconnected || entity.object.status == TerminalStatus.Unknown) {
           return true;
         }
@@ -28,7 +28,7 @@ export class ConnectionsIndexComponent extends RecordIndexComponent<ConnectionsA
       return false;
     }),
     new EntityAction().asEventAction('Open', this.open, 'check', this).setShowLogic((entity: LocalObject<Connection, ConnectionKey>) => {
-      if (entity.object.client.object.online) {
+      if (entity.object.client && entity.object.client.object.online) {
         if (entity.object.status == TerminalStatus.Closed || entity.object.status == TerminalStatus.Disconnected || entity.object.status == TerminalStatus.Connected || entity.object.status == TerminalStatus.Unknown) {
           return true;
         }
@@ -36,7 +36,7 @@ export class ConnectionsIndexComponent extends RecordIndexComponent<ConnectionsA
       return false;
     }),
     new EntityAction().asEventAction('Close', this.close, 'close', this).setShowLogic((entity: LocalObject<Connection, ConnectionKey>) => {
-      if (entity.object.client.object.online) {
+      if (entity.object.client && entity.object.client.object.online) {
         if (entity.object.status == TerminalStatus.Open || entity.object.status == TerminalStatus.Connected) {
           return true;
         }
@@ -44,7 +44,7 @@ export class ConnectionsIndexComponent extends RecordIndexComponent<ConnectionsA
       return false;
     }),
     new EntityAction().asEventAction('Disconnect', this.disconnect, 'cancel', this).setShowLogic((entity: LocalObject<Connection, ConnectionKey>) => {
-      if (entity.object.client.object.online) {
+      if (entity.object.client && entity.object.client.object.online) {
         if (entity.object.status == TerminalStatus.Open || entity.object.status == TerminalStatus.Connected || entity.object.status == TerminalStatus.Closed) {
           return true;
         }
