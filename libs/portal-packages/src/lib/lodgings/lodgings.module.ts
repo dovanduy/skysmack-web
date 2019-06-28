@@ -2,12 +2,11 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { LodgingsRoutingModule } from './lodgings-routing.module';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { NgLodgingsModule } from '@skysmack/ng-packages';
-import { PortalUiModule, HttpLoaderFactory, FieldsModule, SettingsModule } from '@skysmack/portal-ui';
+import { PortalUiModule, FieldsModule, SettingsModule } from '@skysmack/portal-ui';
 import { lodgingsComponents } from './lodgings/components/lodgings-components';
 import { lodgingTypesComponents } from './lodging-types/components/lodging-types-component';
-import { TranslateLoader } from '@ngx-translate/core';
 import { LanguageService } from '@skysmack/portal-ui';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
