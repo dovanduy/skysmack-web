@@ -10,7 +10,7 @@ import { map, switchMap, distinctUntilChanged, tap } from 'rxjs/operators';
 import { EntityFieldsConfig } from '../../fields/entity-fields-config';
 import { EntityComponentPageTitle } from '../../models/entity-component-page-title';
 import { EntityAction } from '@skysmack/ng-ui';
-import { EntityActionProviders } from '@skysmack/portal-ui';
+import { EntityActionProviders } from '../../entity-actions/entity-action-providers';
 
 export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey> extends BaseComponent<TAppState, TKey> implements OnInit {
     public pages$: BehaviorSubject<LocalPage<TKey>[]> = new BehaviorSubject<LocalPage<TKey>[]>([]);

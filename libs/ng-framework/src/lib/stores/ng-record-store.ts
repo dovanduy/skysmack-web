@@ -4,7 +4,7 @@ import { Observable, combineLatest, from } from 'rxjs';
 import { NgRedux } from '@angular-redux/store';
 import { map, mergeMap } from 'rxjs/operators';
 import { getPackageDendencyAsStream } from '../helpers/ng-helpers';
-import { NgSkysmackStore } from '@skysmack/ng-core';
+import { SkysmackStore } from './skysmack-store';
 
 export abstract class NgRecordStore<TState, TRecord extends Record<TKey>, TKey> implements RecordStore<TRecord, TKey>  {
 
@@ -12,7 +12,7 @@ export abstract class NgRecordStore<TState, TRecord extends Record<TKey>, TKey> 
 
     constructor(
         protected store: NgRedux<TState>,
-        protected skysmackStore: NgSkysmackStore,
+        protected skysmackStore: SkysmackStore,
         protected stateKey: string
     ) { }
 

@@ -7,7 +7,7 @@ import { RecordIndexComponent } from './record-index-component';
 import { NgFieldActions } from '@skysmack/ng-framework';
 import { EntityFieldsConfig } from '../../fields/entity-fields-config';
 import { EntityComponentPageTitle } from '../../models/entity-component-page-title';
-import { EntityActionProviders } from '@skysmack/portal-ui';
+import { EntityActionProviders } from '../../entity-actions/entity-action-providers';
 
 export class DocumentRecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey> extends RecordIndexComponent<TAppState, TRecord, TKey> implements OnInit {
 
