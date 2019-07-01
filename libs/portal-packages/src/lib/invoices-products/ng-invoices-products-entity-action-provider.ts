@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { EntityAction } from '@skysmack/ng-ui';
-import { map, switchMap, tap } from 'rxjs/operators';
+import { map, switchMap } from 'rxjs/operators';
 import { Observable, combineLatest, of } from 'rxjs';
 import { StrIndex, LocalObject } from '@skysmack/framework';
 import { EntityActionProvider } from '@skysmack/portal-ui';
 import { NgSkysmackStore } from '@skysmack/ng-core';
-import { INVOICES_AREA_KEY } from '@skysmack/packages-invoices';
+import { PRODUCTS_AREA_KEY } from '@skysmack/packages-products';
 import { InvoicesProductsType } from '@skysmack/packages-invoices-products';
 
 @Injectable({ providedIn: 'root' })
@@ -20,14 +20,14 @@ export class NgInvoicesProductsEntityActionProvider extends EntityActionProvider
     }
 
     public getEntityActions(packagePath: string, area: string, entity?: LocalObject<any, unknown>): Observable<EntityAction[]> {
-        if (area === INVOICES_AREA_KEY) {
+        if (area === PRODUCTS_AREA_KEY) {
             return this.skysmackStore.getPackages().pipe(
-                map(packages => packages.filter(_package => _package.object.type === InvoicesProductsType.id && _package.object.dependencies[0] === packagePath)),
+                map(packages => packages.filter(_package => _package.object.type === InvoicesProductsType.id && _package.object.dependencies[1] === packagePath)),
                 switchMap(packages => {
                     if (packages && packages.length > 0) {
                         const entityActionStreams$ = packages.map(_package => {
                             return of([
-                                new EntityAction().asUrlAction(`/${_package.object.path}`, 'INVOICES_CASH_PAYMENTS.ENTITY_ACTION_PROVIDER.ENTITY_ACTION.CASH_PAYMENT', 'attach_money', 'pay')
+                                new EntityAction().asUrlAction(`/${_package.object.path}`, `Add to invoice via: ${_package.object.name}`, 'monetization_on', 'add-to-invoice')
                             ]);
                         });
                         return combineLatest(entityActionStreams$);

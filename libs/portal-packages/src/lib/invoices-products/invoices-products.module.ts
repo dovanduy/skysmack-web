@@ -2,10 +2,12 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 
-import { LanguageService } from '@skysmack/portal-ui';
+import { LanguageService, EntityActionProviders } from '@skysmack/portal-ui';
 import { PortalUiModule, FieldsModule } from '@skysmack/portal-ui';
 import { InvoicesProductsRoutingModule } from './invoices-products-routing.module';
 import { NgInvoicesProductsModule } from '@skysmack/ng-packages';
+import { NgInvoicesProductsEntityActionProvider } from './ng-invoices-products-entity-action-provider';
+import { ProductsType } from 'libs/packages/products/src';
 
 @NgModule({
   imports: [
@@ -24,9 +26,9 @@ import { NgInvoicesProductsModule } from '@skysmack/ng-packages';
 })
 export class InvoicesProductsModule {
   constructor(
-    // entityActionProviders: EntityActionProviders,
-    // invoicesproductsEntityProvider: NgInvoicesproductsEntityActionProvider,
+    entityActionProviders: EntityActionProviders,
+    invoicesProductsEntityProvider: NgInvoicesProductsEntityActionProvider,
   ) {
-    // entityActionProviders.add(InvoicesProductsType.id, invoicesproductsEntityProvider);
+    entityActionProviders.add(ProductsType.id, invoicesProductsEntityProvider);
   }
 }
