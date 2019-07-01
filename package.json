@@ -91,10 +91,10 @@
     "zone.js": "0.9.1"
   },
   "devDependencies": {
+    "jest-preset-angular": "7.1.1",
     "@nrwl/jest": "8.2.0",
     "@nrwl/schematics": "8.2.0",
     "@nrwl/builders": "8.0.2",
-    "jest-preset-angular": "7.1.1",
     "jest": "24.8.0",
     "@types/jest": "24.0.15",
     "ts-jest": "24.0.2",
