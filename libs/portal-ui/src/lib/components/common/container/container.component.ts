@@ -75,6 +75,9 @@ export class ContainerComponent implements OnInit, OnDestroy {
         } else if (this.path.endsWith('/change-password')) {
           const newPath = this.path.slice(0, this.path.length - '/change-password'.length);
           this.router.navigate([newPath]);
+        } else if (splittedPath.find(x => x === 'actions')) {
+          const newPath = this.path.split('/terminals/')[0];
+          this.router.navigate([newPath, 'connections']);
         } else if (this.path.endsWith('/pay')) {
           getPackageDendencyAsStream(this.skysmackStore, packagePath, [0]).pipe(
             tap(x => this.router.navigate([x.object.path])),

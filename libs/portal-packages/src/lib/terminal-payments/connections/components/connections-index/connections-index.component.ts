@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { EntityComponentPageTitle, EntityActionProviders, ENTITY_ACTIONS_DELETE, RecordIndexComponent } from '@skysmack/portal-ui';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, Route } from '@angular/router';
 import { ConnectionsAppState, Connection, CONNECTIONS_AREA_KEY, ConnectionKey, TerminalStatus, ConnectionRequest, TerminalAction } from '@skysmack/packages-terminal-payments';
 import { NgConnectionsMenu } from '../../ng-connections-menu';
 import { EntityAction } from '@skysmack/ng-ui';
@@ -19,6 +19,14 @@ export class ConnectionsIndexComponent extends RecordIndexComponent<ConnectionsA
   public areaKey: string = CONNECTIONS_AREA_KEY;
   public titleExtras = true;
   public entityActions: EntityAction[] = [
+    new EntityAction().asEventAction('Actions', this.terminalActions, 'settings', this).setShowLogic((entity: LocalObject<Connection, ConnectionKey>) => {
+      if (entity.object.client && entity.object.client.object.online) {
+        if (entity.object.status == TerminalStatus.Open || entity.object.status == TerminalStatus.Connected) {
+          return true;
+        }
+      }
+      return true;
+    }),
     new EntityAction().asEventAction('Connect', this.connect, 'control_point', this).setShowLogic((entity: LocalObject<Connection, ConnectionKey>) => {
       if (entity.object.client && entity.object.client.object.online) {
         if (entity.object.status == TerminalStatus.Closed || entity.object.status == TerminalStatus.Disconnected || entity.object.status == TerminalStatus.Unknown) {
@@ -73,6 +81,11 @@ export class ConnectionsIndexComponent extends RecordIndexComponent<ConnectionsA
 
   ngOnInit() {
     super.ngOnInit();
+  }
+
+  protected terminalActions(value: LocalObject<Connection, ConnectionKey>, _this: ConnectionsIndexComponent) {
+    const terminalId = value.object.terminal.object.id;
+    _this.router.navigate([_this.packagePath, 'terminals', 'actions', terminalId]);
   }
 
   protected connect(value: LocalObject<Connection, ConnectionKey>, _this: ConnectionsIndexComponent) {

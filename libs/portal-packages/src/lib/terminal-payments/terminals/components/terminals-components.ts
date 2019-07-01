@@ -4,6 +4,7 @@ import { TerminalsCreateComponent } from './terminals-create/terminals-create.co
 import { TerminalsEditComponent } from './terminals-edit/terminals-edit.component';
 import { TerminalsPayComponent } from './terminals-pay/terminals-pay.component';
 import { TerminalsProcessComponent } from './terminals-process/terminals-process.component';
+import { TerminalsActionsComponent } from './terminals-actions/terminals-actions.component';
 
 export const terminalsRoutes: Routes = [
   {
@@ -11,6 +12,7 @@ export const terminalsRoutes: Routes = [
     children: [
       { path: 'create', component: TerminalsCreateComponent, pathMatch: 'full' },
       { path: 'edit/:id', component: TerminalsEditComponent, pathMatch: 'full' },
+      { path: 'actions/:id', component: TerminalsActionsComponent, pathMatch: 'full' }
     ]
   },
   {
@@ -27,5 +29,6 @@ export const terminalsComponents: any[] = [
   TerminalsCreateComponent,
   TerminalsEditComponent,
   TerminalsPayComponent,
-  TerminalsProcessComponent
+  TerminalsProcessComponent,
+  TerminalsActionsComponent
 ];
