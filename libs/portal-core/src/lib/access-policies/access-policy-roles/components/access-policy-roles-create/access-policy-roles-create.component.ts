@@ -5,7 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { EditorNavService, RecordFormComponent } from '@skysmack/portal-ui';
 import { NgAccessPolicyRolesStore } from '@skysmack/ng-core';
 import { AccessPolicyRolesAppState, AccessPolicyRole, AccessPolicyRoleKey } from '@skysmack/packages-skysmack-core';
-import { PagedQuery, toLocalObject } from '@skysmack/framework';
+import { PagedQuery, toLocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { FormHelper } from '@skysmack/ng-ui';
 import { NgAccessPolicyRolesFieldsConfig } from '../../ng-access-policy-roles-fields-config';
 
@@ -36,6 +36,9 @@ export class AccessPolicyRolesCreateComponent extends RecordFormComponent<Access
   protected create(fh: FormHelper) {
     fh.formValid(() => {
       const localObject = toLocalObject(new AccessPolicyRole({ id: fh.form.getRawValue() }));
+      localObject.status = LocalObjectStatus.CREATING;
+      localObject.isNew = true;
+
       this.editorItem ? localObject.localId = this.editorItem.localId : localObject.localId = localObject.localId;
       this.actions.add([localObject], this.packagePath);
       this.editorNavService.hideEditorNav();
