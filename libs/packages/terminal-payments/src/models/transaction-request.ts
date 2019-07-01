@@ -8,7 +8,6 @@ export class TransactionRequest {
     public invoiceId: number;
     public amount: number;
     public currencyCode: string;
-    // public reference: number;
 
     // Below prop is front end only
     public connection: LocalObject<Connection, ConnectionKey>;

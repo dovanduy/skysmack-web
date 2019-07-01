@@ -2057,8 +2057,8 @@
 				"AMOUNT": {
 					"REQUIRED": "Mængde er påkrævet."
 				},
-				"REFERENCE": {
-					"REQUIRED": "Reference er påkrævet."
+				"INVOICEID": {
+					"REQUIRED": "Faktura ID er påkrævet."
 				},
 				"CURRENCY": {
 					"REQUIRED": "Valuta er påkrævet."
