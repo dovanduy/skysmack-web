@@ -9,7 +9,7 @@
                 "CLIENTID": "Client",
                 "TERMINALID": "Terminal",
                 "AMOUNT": "Amount",
-                "REFERENCE": "Reference",
+                "INVOICEID": "Invoice ID",
                 "CURRENCY": "Currency"
             },
             "PLACEHOLDERS": {
@@ -20,7 +20,7 @@
                 "CLIENTID": "Client",
                 "TERMINALID": "Terminal",
                 "AMOUNT": "Amount",
-                "REFERENCE": "Reference",
+                "INVOICEID": "Invoice ID",
                 "CURRENCY": "Currency"
             },
             "VALIDATION": {
@@ -42,8 +42,8 @@
                 "AMOUNT": {
                     "REQUIRED": "Amount is required."
                 },
-                "REFERENCE": {
-                    "REQUIRED": "Reference is required."
+                "INVOICEID": {
+                    "REQUIRED": "Invoice ID is required."
                 },
                 "CURRENCY": {
                     "REQUIRED": "Currency is required."

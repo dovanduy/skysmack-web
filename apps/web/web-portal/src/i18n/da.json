@@ -2021,7 +2021,7 @@
                 "CLIENTID": "Klient",
                 "TERMINALID": "Terminal",
                 "AMOUNT": "Mængde",
-                "REFERENCE": "Reference",
+                "INVOICEID": "Faktura ID",
                 "CURRENCY": "Valuta"
 			},
 			"PLACEHOLDERS": {
@@ -2032,7 +2032,7 @@
                 "CLIENTID": "Klient",
                 "TERMINALID": "Terminal",
                 "AMOUNT": "Mængde",
-                "REFERENCE": "Reference",
+                "INVOICEID": "Faktura ID",
                 "CURRENCY": "Valuta"
 			},
 			"VALIDATION": {
@@ -2054,8 +2054,8 @@
 				"AMOUNT": {
 					"REQUIRED": "Mængde er påkrævet."
 				},
-				"REFERENCE": {
-					"REQUIRED": "Reference er påkrævet."
+				"INVOICEID": {
+					"REQUIRED": "Faktura ID er påkrævet."
 				},
 				"CURRENCY": {
 					"REQUIRED": "Valuta er påkrævet."
