@@ -4,12 +4,32 @@ import { NgSkysmackStore } from '@skysmack/ng-core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EditorNavService, BaseComponent } from '@skysmack/portal-ui';
 import { TerminalsAppState } from '@skysmack/packages-terminal-payments';
+import { SelectFieldOption } from '@skysmack/ng-ui';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'ss-terminals-actions',
-  templateUrl: './terminals-actions.component.html'
+  templateUrl: './terminals-actions.component.html',
+  styleUrls: ['./terminals-actions.component.scss']
 })
 export class TerminalsActionsComponent extends BaseComponent<TerminalsAppState, unknown> implements OnInit {
+  public selectedOption: any;
+  public message: string;
+
+  public options: SelectFieldOption[] = [
+    {
+      value: 1,
+      displayName: 'First option'
+    },
+    {
+      value: 2,
+      displayName: 'Second option'
+    },
+    {
+      value: 3,
+      displayName: 'Third option'
+    }
+  ]
 
   constructor(
     public router: Router,
@@ -18,10 +38,10 @@ export class TerminalsActionsComponent extends BaseComponent<TerminalsAppState, 
     public actions: NgTerminalsActions,
     public skysmackStore: NgSkysmackStore,
     public store: NgTerminalsStore,
+    public httpClient: HttpClient
   ) {
     super(router, activatedRoute, skysmackStore);
   }
-
 
   ngOnInit() {
     this.editorNavService.showEditorNav();
@@ -31,5 +51,23 @@ export class TerminalsActionsComponent extends BaseComponent<TerminalsAppState, 
   ngOnDestroy() {
     super.ngOnDestroy();
     this.editorNavService.hideEditorNav();
+  }
+
+  public submit() {
+    console.log(this.selectedOption);
+    this.message = '';
+    const url = 'url';
+    const body = {};
+    if (this.selectedOption) {
+      // this.httpClient.post<any>(url, body, { observe: 'response' }).pipe(
+      //   tap(x => console.log(XPathExpression)),
+      //   take(1),
+      // ).subscribe();
+    } else {
+      this.message = 'Please choose an action'
+    }
+
+    // Prevents form submit causing a page reload.
+    return false;
   }
 }

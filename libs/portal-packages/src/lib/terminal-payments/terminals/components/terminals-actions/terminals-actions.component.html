@@ -1,3 +1,14 @@
-<h2>
-  Terminal Actions
-</h2>
+<h2 [translate]="'Actions'"></h2>
+
+<p *ngIf="message">{{ message }}</p>
+<mat-form-field>
+  <mat-select [placeholder]="'Please select a terminal action' | translate" [(value)]="selectedOption">
+    <mat-option *ngFor="let opt of options" [value]="opt.value">
+      {{ opt.displayName }}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+<form (submit)="submit()">
+  <button mat-raised-button color="primary" type="submit">Submit</button>
+</form>
