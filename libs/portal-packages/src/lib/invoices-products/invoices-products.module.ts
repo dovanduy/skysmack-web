@@ -7,7 +7,7 @@ import { PortalUiModule, FieldsModule } from '@skysmack/portal-ui';
 import { InvoicesProductsRoutingModule } from './invoices-products-routing.module';
 import { NgInvoicesProductsModule } from '@skysmack/ng-packages';
 import { NgInvoicesProductsEntityActionProvider } from './ng-invoices-products-entity-action-provider';
-import { ProductsType } from 'libs/packages/products/src';
+import { ProductsType } from '@skysmack/packages-products';
 
 @NgModule({
   imports: [

@@ -5,7 +5,7 @@ import { map } from 'rxjs/operators';
 import { Skysmack } from '@skysmack/packages-skysmack-core';
 import { NgSkysmackStore } from '@skysmack/ng-core';
 import { INVOICES_AREA_KEY } from '@skysmack/packages-invoices';
-import { TerminalPaymentsType } from 'libs/packages/terminal-payments/src';
+import { TerminalPaymentsType } from '@skysmack/packages-terminal-payments';
 
 @Injectable({ providedIn: 'root' })
 export class NgInvoicesTerminalPaymentsMenuItemProvider extends MenuItemProvider {

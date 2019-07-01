@@ -1,6 +1,6 @@
 import { SignalRProvider } from '@skysmack/signal-r';
-import { PRODUCTS_AREA_KEY } from 'libs/packages/products/src';
 import { Injectable } from '@angular/core';
+import { PRODUCTS_AREA_KEY } from '@skysmack/packages-products';
 
 @Injectable({ providedIn: 'root' })
 export class SignalRProductsProvider implements SignalRProvider {
