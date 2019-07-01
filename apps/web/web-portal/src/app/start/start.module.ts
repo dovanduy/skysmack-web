@@ -59,6 +59,11 @@ import { fieldReducer, settingsReducer } from '@skysmack/redux';
         loadChildren: './../packages/modules/invoices_wrapper.module#InvoicesWrapperModule'
       },
       {
+        path: 'skysmack/loadPackages/invoices-products',
+        // loadChildren: () => import('@skysmack/portal-packages').then(m => m.InvoicesModule)
+        loadChildren: './../packages/modules/invoices_products_wrapper.module#InvoicesProductsWrapperModule'
+      },
+      {
         path: 'skysmack/loadPackages/invoices-cash-payments',
         // loadChildren: () => import('@skysmack/portal-packages').then(m => m.InvoicesCashPaymentsModule)
         loadChildren: './../packages/modules/invoices_cash_payments_wrapper.module#InvoicesCashPaymentsWrapperModule'

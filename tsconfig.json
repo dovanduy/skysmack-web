@@ -104,7 +104,7 @@
       "@skysmack/packages/emails-smtp": [
         "libs/packages/emails-smtp/public_api.ts"
       ],
-      "@skysmack/packages/invoices-products": [
+      "@skysmack/packages-invoices-products": [
         "libs/packages/invoices-products/public_api.ts"
       ]
     }
