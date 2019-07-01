@@ -83,7 +83,7 @@ export class BaseComponent<TAppState, TKey> implements OnInit, OnDestroy {
         if (this.title) {
             let titleExtra;
             if (this.titleExtras) {
-                titleExtra = `${this.areaKey.toUpperCase()}.INDEX.TITLE_EXTRA`;
+                titleExtra = `${this.areaKey.toUpperCase()}.INDEX.TITLE_EXTRAS`;
             }
 
             const isInstalledPackage$ = getPackageDendencyAsStream(this.skysmackStore, this.packagePath, this.dependencyIndexes).pipe(

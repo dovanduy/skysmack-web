@@ -67,7 +67,7 @@
             "MANAGE": "Manage",
             "BACK": "Back",
             "ACTIONS": "Actions",
-            "TITLE_EXTRA": "(payments)",
+            "TITLE_EXTRAS": "(payments)",
             "FIELDS_TITLE": "(payment fields)"
         },
         "QUEUE": {

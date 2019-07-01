@@ -17,6 +17,8 @@ import { NgAccessPolicyRolesFieldsConfig } from '../../ng-access-policy-roles-fi
 export class AccessPolicyRolesIndexComponent extends RecordIndexComponent<AccessPolicyRolesAppState, AccessPolicyRole, AccessPolicyRoleKey> implements OnInit {
 
   public areaKey: string = ACCESS_POLICY_ROLES_AREA_KEY;
+  public titleExtras = true;
+
   public entityActions: EntityAction[] = [
     new EntityAction().asEventAction(ENTITY_ACTIONS_DELETE, this.delete, 'delete', this)
   ];

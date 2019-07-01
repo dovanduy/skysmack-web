@@ -59,7 +59,7 @@
             "BUTTON_EDIT": "Update"
         },
         "INDEX": {
-            "TITLE_EXTRA": "(Terminals)",
+            "TITLE_EXTRAS": "(Terminals)",
             "CREATE": "Create",
             "EDIT": "Edit",
             "DELETE": "Delete",

@@ -16,6 +16,8 @@ import { NgAccessPolicyPermissionsFieldsConfig } from '../../ng-access-policy-pe
 export class AccessPolicyPermissionsIndexComponent extends RecordIndexComponent<AccessPolicyPermissionsAppState, AccessPolicyPermission, number> implements OnInit {
 
   public areaKey: string = ACCESS_POLICY_PERMISSIONS_AREA_KEY;
+  public titleExtras = true;
+
   public entityActions: EntityAction[] = [
     new EntityAction().asUrlAction('edit', ENTITY_ACTIONS_EDIT, 'edit'),
     new EntityAction().asEventAction(ENTITY_ACTIONS_DELETE, this.delete, 'delete', this)

@@ -9,6 +9,7 @@
 			"BUTTON_EDIT": "Opdater"
 		},
 		"INDEX": {
+			"TITLE_EXTRAS": "(tilladelser)",
 			"ACTIONS": "Handlinger",
 			"CREATE": "Opret",
 			"MANAGE": "Konfigurer",
@@ -50,6 +51,7 @@
 			"BUTTON_EDIT": "Opdater"
 		},
 		"INDEX": {
+			"TITLE_EXTRAS": "(roller)",
 			"ACTIONS": "Handlinger",
 			"CREATE": "Opret",
 			"MANAGE": "Konfigurer",
@@ -89,6 +91,7 @@
 			"BUTTON_EDIT": "Opdater"
 		},
 		"INDEX": {
+			"TITLE_EXTRAS": "(regler)",
 			"ACTIONS": "Handlinger",
 			"CREATE": "Opret",
 			"MANAGE": "Konfigurer",
@@ -613,7 +616,7 @@
 			"MANAGE": "Konfigurer",
 			"BACK": "Tilbage",
 			"ACTIONS": "Handlinger",
-			"TITLE_EXTRA": "(betalinger)",
+			"TITLE_EXTRAS": "(betalinger)",
 			"FIELDS_TITLE": "(betalingsfelter)"
 		},
 		"QUEUE": {
@@ -839,7 +842,7 @@
 			"BUTTON_EDIT": "Opdater"
 		},
 		"INDEX": {
-			"TITLE_EXTRA": "(typer)",
+			"TITLE_EXTRAS": "(typer)",
 			"ACTIONS": "Handlinger",
 			"CREATE": "Opret",
 			"MANAGE": "Konfigurer",
@@ -989,7 +992,7 @@
 			"BUTTON_EDIT": "Opdater"
 		},
 		"INDEX": {
-			"TITLE_EXTRA": "(opgave typer)",
+			"TITLE_EXTRAS": "(opgave typer)",
 			"ACTIONS": "Handlinger",
 			"CREATE": "Opret",
 			"EDIT": "Ret",
@@ -1102,7 +1105,7 @@
 			"BUTTON_EDIT": "Opdater"
 		},
 		"INDEX": {
-			"TITLE_EXTRA": "(opgaver)",
+			"TITLE_EXTRAS": "(opgaver)",
 			"ACTIONS": "Handlinger",
 			"CREATE": "Opret",
 			"EDIT": "Ret",
@@ -1164,7 +1167,7 @@
 			"BUTTON_EDIT": "Opdater"
 		},
 		"INDEX": {
-			"TITLE_EXTRA": "(tilstand)",
+			"TITLE_EXTRAS": "(tilstand)",
 			"ACTIONS": "Handlinger",
 			"CREATE": "Opret",
 			"EDIT": "Ret",
@@ -1221,7 +1224,7 @@
 			"BUTTON_EDIT": "Opdater"
 		},
 		"INDEX": {
-			"TITLE_EXTRA": "(gentagne opgaver)",
+			"TITLE_EXTRAS": "(gentagne opgaver)",
 			"ACTIONS": "Handlinger",
 			"CREATE": "Opret",
 			"EDIT": "Ret",
@@ -1340,7 +1343,7 @@
 			"BUTTON_EDIT": "Opdater"
 		},
 		"INDEX": {
-			"TITLE_EXTRA": "(typer)",
+			"TITLE_EXTRAS": "(typer)",
 			"ACTIONS": "Handlinger",
 			"CREATE": "Opret ny type",
 			"DELETE": "Slet",
@@ -1982,7 +1985,7 @@
 			"BUTTON_EDIT": "Opdater"
 		},
 		"INDEX": {
-			"TITLE_EXTRA": "(Kvitteringer)",
+			"TITLE_EXTRAS": "(Kvitteringer)",
 			"ACTIONS": "Handlinger",
 			"CREATE": "Opret ny type",
 			"DELETE": "Slet",
@@ -2071,7 +2074,7 @@
 			"BUTTON_EDIT": "Opdater"
 		},
 		"INDEX": {
-			"TITLE_EXTRA": "(Terminaler)",
+			"TITLE_EXTRAS": "(Terminaler)",
 			"CREATE": "Opret",
 			"EDIT": "Rediger",
 			"DELETE": "Slet",
@@ -2557,7 +2560,7 @@
 			"BUTTON_EDIT": "Ret"
 		},
 		"INDEX": {
-			"TITLE_EXTRA": "(Klienter)",
+			"TITLE_EXTRAS": "(Klienter)",
 			"ACTIONS": "Handlinger",
 			"CREATE": "Opret",
 			"DELETE": "Slet",
@@ -2601,7 +2604,7 @@
 			"BUTTON_EDIT": "Update"
 		},
 		"INDEX": {
-			"TITLE_EXTRA": "(Forbindelser)",
+			"TITLE_EXTRAS": "(Forbindelser)",
 			"ACTIONS": "Actions",
 			"CREATE": "Create",
 			"DELETE": "Delete",

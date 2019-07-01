@@ -9,7 +9,7 @@
             "BUTTON_EDIT": "Update"
         },
         "INDEX": {
-            "TITLE_EXTRA": "(Connections)",
+            "TITLE_EXTRAS": "(Connections)",
             "ACTIONS": "Actions",
             "CREATE": "Create",
             "DELETE": "Delete",

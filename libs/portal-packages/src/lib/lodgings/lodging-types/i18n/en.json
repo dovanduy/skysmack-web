@@ -24,7 +24,7 @@
             "BUTTON_EDIT": "Update"
         },
         "INDEX": {
-            "TITLE_EXTRA": "(types)",
+            "TITLE_EXTRAS": "(types)",
             "ACTIONS": "Actions",
             "CREATE": "Create",
             "MANAGE": "Manage",

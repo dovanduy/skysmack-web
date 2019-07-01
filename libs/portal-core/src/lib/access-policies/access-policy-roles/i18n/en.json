@@ -9,6 +9,7 @@
             "BUTTON_EDIT": "Update"
         },
         "INDEX": {
+            "TITLE_EXTRAS": "(roles)",
             "ACTIONS": "Actions",
             "CREATE": "Create",
             "MANAGE": "Manage",

@@ -14,7 +14,8 @@
 			"MANAGE": "Manage",
 			"BACK": "Back",
 			"ROLES": "Roles",
-			"FIELDS_TITLE": "(fields)"
+			"FIELDS_TITLE": "(fields)",
+			"TITLE_EXTRAS": "(permissions)"
 		},
 		"FORM": {
 			"LABELS": {
@@ -55,7 +56,8 @@
 			"MANAGE": "Manage",
 			"BACK": "Back",
 			"ROLES": "Roles",
-			"FIELDS_TITLE": "(fields)"
+			"FIELDS_TITLE": "(fields)",
+			"TITLE_EXTRAS": "(roles)"
 		},
 		"FORM": {
 			"LABELS": {
@@ -94,7 +96,8 @@
 			"MANAGE": "Manage",
 			"BACK": "Back",
 			"ROLES": "Roles",
-			"FIELDS_TITLE": "(fields)"
+			"FIELDS_TITLE": "(fields)",
+			"TITLE_EXTRAS": "(rules)"
 		},
 		"FORM": {
 			"LABELS": {
@@ -612,7 +615,7 @@
 			"MANAGE": "Manage",
 			"BACK": "Back",
 			"ACTIONS": "Actions",
-			"TITLE_EXTRA": "(payments)",
+			"TITLE_EXTRAS": "(payments)",
 			"FIELDS_TITLE": "(payment fields)"
 		},
 		"QUEUE": {
@@ -838,7 +841,7 @@
 			"BUTTON_EDIT": "Update"
 		},
 		"INDEX": {
-			"TITLE_EXTRA": "(types)",
+			"TITLE_EXTRAS": "(types)",
 			"ACTIONS": "Actions",
 			"CREATE": "Create",
 			"MANAGE": "Manage",
@@ -988,7 +991,7 @@
 			"BUTTON_EDIT": "Update"
 		},
 		"INDEX": {
-			"TITLE_EXTRA": "(assignment types)",
+			"TITLE_EXTRAS": "(assignment types)",
 			"ACTIONS": "Actions",
 			"CREATE": "Create",
 			"EDIT": "Edit",
@@ -1101,7 +1104,7 @@
 			"BUTTON_EDIT": "Update"
 		},
 		"INDEX": {
-			"TITLE_EXTRA": "(assignments)",
+			"TITLE_EXTRAS": "(assignments)",
 			"ACTIONS": "Actions",
 			"CREATE": "Create",
 			"EDIT": "Edit",
@@ -1163,7 +1166,7 @@
 			"BUTTON_EDIT": "Update"
 		},
 		"INDEX": {
-			"TITLE_EXTRA": "(states)",
+			"TITLE_EXTRAS": "(states)",
 			"ACTIONS": "Actions",
 			"CREATE": "Create",
 			"EDIT": "Edit",
@@ -1220,7 +1223,7 @@
 			"BUTTON_EDIT": "Update"
 		},
 		"INDEX": {
-			"TITLE_EXTRA": "(recurring assignments)",
+			"TITLE_EXTRAS": "(recurring assignments)",
 			"ACTIONS": "Actions",
 			"CREATE": "Create",
 			"EDIT": "Edit",
@@ -1339,7 +1342,7 @@
 			"BUTTON_EDIT": "Update"
 		},
 		"INDEX": {
-			"TITLE_EXTRA": "(types)",
+			"TITLE_EXTRAS": "(types)",
 			"ACTIONS": "Actions",
 			"CREATE": "Create",
 			"DELETE": "Delete",
@@ -1988,7 +1991,7 @@
 			"FIELDS": "Fields",
 			"FIELDS_TITLE": "(fields)",
 			"BACK": "Back",
-			"TITLE_EXTRA": "(Receipts)"
+			"TITLE_EXTRAS": "(Receipts)"
 		},
 		"FORM": {
 			"LABELS": {
@@ -2087,7 +2090,7 @@
 			"CLIENTS": "Clients",
 			"RECEIPTS": "Receipts",
 			"CONNECTIONS": "Connections",
-			"TITLE_EXTRA": "(Terminals)"
+			"TITLE_EXTRAS": "(Terminals)"
 		},
 		"FIELDS": {
 			"CREATE": {
@@ -2631,7 +2634,7 @@
 			"FIELDS": "Fields",
 			"FIELDS_TITLE": "(fields)",
 			"BACK": "Back",
-			"TITLE_EXTRA": "(Clients)"
+			"TITLE_EXTRAS": "(Clients)"
 		},
 		"FORM": {
 			"LABELS": {
@@ -2676,7 +2679,7 @@
 			"DELETE": "Delete",
 			"MANAGE": "Manage",
 			"BACK": "Back",
-			"TITLE_EXTRA": "(Connections)"
+			"TITLE_EXTRAS": "(Connections)"
 		},
 		"FORM": {
 			"LABELS": {

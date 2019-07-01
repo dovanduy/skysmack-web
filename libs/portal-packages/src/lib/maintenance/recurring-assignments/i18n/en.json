@@ -37,7 +37,7 @@
             "BUTTON_EDIT": "Update"
         },
         "INDEX": {
-            "TITLE_EXTRA": "(recurring assignments)",
+            "TITLE_EXTRAS": "(recurring assignments)",
             "ACTIONS": "Actions",
             "CREATE": "Create",
             "EDIT": "Edit",
