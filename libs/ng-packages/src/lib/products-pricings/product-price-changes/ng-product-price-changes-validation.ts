@@ -6,7 +6,7 @@ export class NgProductPriceChangesValidation extends Validation {
     public formErrors = {
         currencyCode: '',
         change: '',
-        isPercentage: '',
+        isPercent: '',
         validFrom: '',
         validTo: '',
         recordId: '',
@@ -23,7 +23,7 @@ export class NgProductPriceChangesValidation extends Validation {
         change: {
             required: ''
         },
-        isPercentage: {
+        isPercent: {
             required: ''
         },
         validFrom: {

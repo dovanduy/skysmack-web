@@ -1451,7 +1451,7 @@
 				"RECORDID": "Produkt",
 				"CHANGE": "Pris ændring",
 				"PERUNIT": "Per enhed",
-				"ISPERCENTAGE": "Ændring er i procent(%)",
+				"ISPERCENT": "Ændring er i procent(%)",
 				"VALIDFROM": "Gældende fra",
 				"VALIDTO": "Gældende til",
 				"MINUNITS": "Minimum antal enheder",
@@ -1463,7 +1463,7 @@
 				"RECORDID": "Produkt",
 				"CHANGE": "Pris ændring",
 				"PERUNIT": "Per enhed",
-				"ISPERCENTAGE": "Ændring er i procent(%)",
+				"ISPERCENT": "Ændring er i procent(%)",
 				"VALIDFROM": "Gældende fra",
 				"VALIDTO": "Gældende til",
 				"MINUNITS": "Minimum antal enheder",
@@ -1480,7 +1480,7 @@
 				"CHANGE": {
 					"REQUIRED": "Pris ændring er påkrævet"
 				},
-				"ISPERCENTAGE": {
+				"ISPERCENT": {
 					"REQUIRED": "Felt er påkrævet"
 				},
 				"VALIDFROM": {
@@ -1526,7 +1526,7 @@
 				"CURRENCYCODE": "Valuta kode",
 				"RECORDID": "Produkt type",
 				"CHANGE": "Ændring",
-				"ISPERCENTAGE": "Ændring er i procent (%)",
+				"ISPERCENT": "Ændring er i procent (%)",
 				"PERUNIT": "Per enhed",
 				"VALIDFROM": "Gældende fra",
 				"VALIDTO": "Gældende til",
@@ -1539,7 +1539,7 @@
 				"RECORDID": "Produkt type",
 				"CHANGE": "Pris ændring",
 				"PERUNIT": "Per enhed",
-				"ISPERCENTAGE": "Ændring er i procent (%)",
+				"ISPERCENT": "Ændring er i procent (%)",
 				"VALIDFROM": "Gældende fra",
 				"VALIDTO": "Gældende til",
 				"MINUNITS": "Minimum antal enheder",
@@ -1556,7 +1556,7 @@
 				"CHANGE": {
 					"REQUIRED": "Pris ændring er påkrævet"
 				},
-				"ISPERCENTAGE": {
+				"ISPERCENT": {
 					"REQUIRED": "Felt er påkrævet"
 				},
 				"VALIDFROM": {
@@ -1741,7 +1741,7 @@
 		"FORM": {
 			"LABELS": {
 				"CHANGE": "Pris ændring",
-				"ISPERCENTAGE": "Ændring er i procent (%)",
+				"ISPERCENT": "Ændring er i procent (%)",
 				"CURRENCYCODE": "Valuta kode",
 				"VALIDFROM": "Gældende fra",
 				"VALIDTO": "Gældende til",
@@ -1762,7 +1762,7 @@
 				"CURRENCYCODE": "Valuta kode",
 				"RECORDID": "Allokeret værelse",
 				"CHANGE": "Pris ændring",
-				"ISPERCENTAGE": "Ændring er i procent (%)",
+				"ISPERCENT": "Ændring er i procent (%)",
 				"VALIDFROM": "Gældende fra",
 				"VALIDTO": "Gældende til",
 				"START": "Start",
@@ -1787,7 +1787,7 @@
 				"CHANGE": {
 					"REQUIRED": "Pris ændring er påkrævet"
 				},
-				"ISPERCENTAGE": {
+				"ISPERCENT": {
 					"REQUIRED": "Felt er påkrævet"
 				},
 				"VALIDFROM": {
@@ -1891,7 +1891,7 @@
 			"LABELS": {
 				"CHANGE": "Pris ændring",
 				"CURRENCYCODE": "Valuta kode",
-				"ISPERCENTAGE": "Ændring er i procent (%)",
+				"ISPERCENT": "Ændring er i procent (%)",
 				"VALIDFROM": "Gældende fra",
 				"VALIDTO": "Gældende til",
 				"RECORDID": "Værelsestype",
@@ -1911,7 +1911,7 @@
 				"CURRENCYCODE": "Valuta kode",
 				"RECORDID": "Værelses type",
 				"CHANGE": "Pris ændring",
-				"ISPERCENTAGE": "Ændring er i procent (%)",
+				"ISPERCENT": "Ændring er i procent (%)",
 				"VALIDFROM": "Gældende fra",
 				"VALIDTO": "Gældende til",
 				"START": "Start",
@@ -1936,7 +1936,7 @@
 				"CHANGE": {
 					"REQUIRED": "Pris ændring er påkrævet"
 				},
-				"ISPERCENTAGE": {
+				"ISPERCENT": {
 					"REQUIRED": "Felt er påkrævet"
 				},
 				"VALIDFROM": {
@@ -2017,23 +2017,23 @@
 				"NAME": "Navn",
 				"CONNECTIONSTRING": "Forbindelsesdata",
 				"CONNECTION": "Forbindelse",
-                "DESCRIPTION": "Beskrivelse",
-                "CLIENTID": "Klient",
-                "TERMINALID": "Terminal",
-                "AMOUNT": "Mængde",
-                "REFERENCE": "Reference",
-                "CURRENCY": "Valuta"
+				"DESCRIPTION": "Beskrivelse",
+				"CLIENTID": "Klient",
+				"TERMINALID": "Terminal",
+				"AMOUNT": "Mængde",
+				"REFERENCE": "Reference",
+				"CURRENCY": "Valuta"
 			},
 			"PLACEHOLDERS": {
-			    "NAME": "Navn",
+				"NAME": "Navn",
 				"CONNECTIONSTRING": "Forbindelsesdata",
 				"CONNECTION": "Forbindelse",
-                "DESCRIPTION": "Beskrivelse",
-                "CLIENTID": "Klient",
-                "TERMINALID": "Terminal",
-                "AMOUNT": "Mængde",
-                "REFERENCE": "Reference",
-                "CURRENCY": "Valuta"
+				"DESCRIPTION": "Beskrivelse",
+				"CLIENTID": "Klient",
+				"TERMINALID": "Terminal",
+				"AMOUNT": "Mængde",
+				"REFERENCE": "Reference",
+				"CURRENCY": "Valuta"
 			},
 			"VALIDATION": {
 				"NAME": {

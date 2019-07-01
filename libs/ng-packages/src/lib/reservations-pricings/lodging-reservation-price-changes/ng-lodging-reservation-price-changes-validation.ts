@@ -6,7 +6,7 @@ export class NgLodgingReservationPriceChangesValidation extends Validation {
     public formErrors = {
         change: '',
         currencyCode: '',
-        isPercentage: '',
+        isPercent: '',
         validFrom: '',
         validTo: '',
         recordId: '',
@@ -29,7 +29,7 @@ export class NgLodgingReservationPriceChangesValidation extends Validation {
         currencyCode: {
             required: '',
         },
-        isPercentage: {
+        isPercent: {
             required: '',
         },
         recordId: {

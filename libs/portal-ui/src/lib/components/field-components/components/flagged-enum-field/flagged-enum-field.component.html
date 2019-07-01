@@ -1,7 +1,8 @@
 <ng-container *ngIf="field" [formGroup]="fh.form">
 
   <mat-form-field>
-    <mat-select [id]="fieldKey" [value]="field.value" [placeholder]="field.placeholder | translate" #selectInput
+    <!-- S -->
+    <mat-select [id]="fieldKey" [value]="selectedValues" [placeholder]="field.placeholder | translate" #selectInput
       multiple>
       <ng-container *ngIf="field.extraOptions">
         <mat-option *ngFor="let opt of field.extraOptions" [value]="opt.value">

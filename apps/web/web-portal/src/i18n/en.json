@@ -1449,7 +1449,7 @@
 				"CURRENCYCODE": "Currency code",
 				"RECORDID": "Product",
 				"CHANGE": "Price change",
-				"ISPERCENTAGE": "Change is in percentage (%)",
+				"ISPERCENT": "Change is in percentage (%)",
 				"PERUNIT": "Per unit",
 				"VALIDFROM": "Valid from",
 				"VALIDTO": "Valid to",
@@ -1461,7 +1461,7 @@
 				"CURRENCYCODE": "Currency code",
 				"RECORDID": "Product",
 				"CHANGE": "Price change",
-				"ISPERCENTAGE": "Change is in percentage (%)",
+				"ISPERCENT": "Change is in percentage (%)",
 				"PERUNIT": "Per unit",
 				"VALIDFROM": "Valid from",
 				"VALIDTO": "Valid to",
@@ -1479,7 +1479,7 @@
 				"CHANGE": {
 					"REQUIRED": "Change is required"
 				},
-				"ISPERCENTAGE": {
+				"ISPERCENT": {
 					"REQUIRED": "Field is required"
 				},
 				"VALIDFROM": {
@@ -1525,7 +1525,7 @@
 				"CURRENCYCODE": "Currency code",
 				"RECORDID": "Product type",
 				"CHANGE": "Change",
-				"ISPERCENTAGE": "Change is in Percent (%)",
+				"ISPERCENT": "Change is in Percent (%)",
 				"PERUNIT": "Per unit",
 				"VALIDFROM": "Valid from",
 				"VALIDTO": "Valid to",
@@ -1537,7 +1537,7 @@
 				"CURRENCYCODE": "Currency code",
 				"RECORDID": "Product type",
 				"CHANGE": "Change",
-				"ISPERCENTAGE": "Change is in Percent (%)",
+				"ISPERCENT": "Change is in Percent (%)",
 				"PERUNIT": "Per unit",
 				"VALIDFROM": "Valid from",
 				"VALIDTO": "Valid to",
@@ -1555,7 +1555,7 @@
 				"CHANGE": {
 					"REQUIRED": "Change is required"
 				},
-				"ISPERCENTAGE": {
+				"ISPERCENT": {
 					"REQUIRED": "Field is required"
 				},
 				"VALIDFROM": {
@@ -1741,7 +1741,7 @@
 			"LABELS": {
 				"CHANGE": "Price change",
 				"CURRENCYCODE": "Currency code",
-				"ISPERCENTAGE": "Change is in percentage (%)",
+				"ISPERCENT": "Change is in percentage (%)",
 				"VALIDFROM": "Valid from",
 				"VALIDTO": "Valid to",
 				"RECORDID": "Allocated lodging",
@@ -1761,7 +1761,7 @@
 				"CURRENCYCODE": "Currency code",
 				"RECORDID": "Lodging",
 				"CHANGE": "Price change",
-				"ISPERCENTAGE": "Change is in percentage (%)",
+				"ISPERCENT": "Change is in percentage (%)",
 				"VALIDFROM": "Valid from",
 				"VALIDTO": "Valid to",
 				"START": "Start",
@@ -1786,7 +1786,7 @@
 				"CHANGE": {
 					"REQUIRED": "Price change is required"
 				},
-				"ISPERCENTAGE": {
+				"ISPERCENT": {
 					"REQUIRED": "Field is required"
 				},
 				"VALIDFROM": {
@@ -1890,7 +1890,7 @@
 			"LABELS": {
 				"CHANGE": "Price change",
 				"CURRENCYCODE": "Currency code",
-				"ISPERCENTAGE": "Change is in percentage (%)",
+				"ISPERCENT": "Change is in percentage (%)",
 				"VALIDFROM": "Valid from",
 				"VALIDTO": "Valid to",
 				"RECORDID": "Lodging type",
@@ -1910,7 +1910,7 @@
 				"CURRENCYCODE": "Currency code",
 				"RECORDID": "Lodging type",
 				"CHANGE": "Price change",
-				"ISPERCENTAGE": "Change is in percentage (%)",
+				"ISPERCENT": "Change is in percentage (%)",
 				"VALIDFROM": "Valid from",
 				"VALIDTO": "Valid to",
 				"START": "Start",
@@ -1935,7 +1935,7 @@
 				"CHANGE": {
 					"REQUIRED": "Price change is required"
 				},
-				"ISPERCENTAGE": {
+				"ISPERCENT": {
 					"REQUIRED": "Price change type is required"
 				},
 				"VALIDFROM": {

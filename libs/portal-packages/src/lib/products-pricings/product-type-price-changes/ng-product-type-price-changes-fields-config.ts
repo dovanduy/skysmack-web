@@ -65,8 +65,8 @@ export class NgProductTypePriceChangesFieldsConfig extends FieldsConfig<ProductT
             }),
             new Field({
                 component: CheckboxFieldComponent,
-                value: entity ? entity.object.isPercentage : false,
-                key: 'isPercentage',
+                value: entity ? entity.object.isPercent : false,
+                key: 'isPercent',
                 validators: [Validators.required],
                 order: 4,
                 showColumn: true
