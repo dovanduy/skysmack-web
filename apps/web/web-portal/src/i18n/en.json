@@ -2025,7 +2025,8 @@
 				"AMOUNT": "Amount",
 				"REFERENCE": "Reference",
 				"CURRENCY": "Currency",
-				"CONNECTION": "Connection"
+				"CONNECTION": "Connection",
+				"INVOICEID": "Invoice ID"
 			},
 			"PLACEHOLDERS": {
 				"NAME": "Name",
@@ -2037,7 +2038,8 @@
 				"AMOUNT": "Amount",
 				"REFERENCE": "Reference",
 				"CURRENCY": "Currency",
-				"CONNECTION": "Connection"
+				"CONNECTION": "Connection",
+				"INVOICEID": "Invoice ID"
 			},
 			"VALIDATION": {
 				"NAME": {
@@ -2066,6 +2068,9 @@
 				},
 				"CONNECTION": {
 					"REQUIRED": "Connection is required."
+				},
+				"INVOICEID": {
+					"REQUIRED": "Invoice ID is required."
 				}
 			}
 		},
@@ -2731,5 +2736,29 @@
 		"CLIENTS": "Clients",
 		"RECEIPTS": "Receipts",
 		"CONNECTIONS": "Connections"
+	},
+	"INVOICES_PRODUCTS": {
+		"FORM": {
+			"LABELS": {
+				"INVOICEID": "Invoice",
+				"AMOUNT": "Currency code"
+			},
+			"PLACEHOLDERS": {
+				"INVOICEID": "Invoice",
+				"AMOUNT": "Amount"
+			},
+			"VALIDATION": {
+				"INVOICEID": {
+					"REQUIRED": "Invoice is required."
+				},
+				"AMOUNT": {
+					"REQUIRED": "Amount is required."
+				}
+			}
+		},
+		"ADD_TO_PRODUCT": {
+			"TITLE": "Add to invoice",
+			"SUBMIT": "Submit"
+		}
 	}
 }

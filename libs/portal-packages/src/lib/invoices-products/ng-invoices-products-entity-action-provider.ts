@@ -5,8 +5,9 @@ import { Observable, combineLatest, of } from 'rxjs';
 import { StrIndex, LocalObject } from '@skysmack/framework';
 import { EntityActionProvider } from '@skysmack/portal-ui';
 import { NgSkysmackStore } from '@skysmack/ng-core';
-import { PRODUCTS_AREA_KEY } from '@skysmack/packages-products';
+import { PRODUCTS_AREA_KEY, Product } from '@skysmack/packages-products';
 import { InvoicesProductsType } from '@skysmack/packages-invoices-products';
+import { Router } from '@angular/router';
 
 @Injectable({ providedIn: 'root' })
 export class NgInvoicesProductsEntityActionProvider extends EntityActionProvider {
@@ -14,7 +15,8 @@ export class NgInvoicesProductsEntityActionProvider extends EntityActionProvider
     public register: StrIndex<boolean> = {};
 
     constructor(
-        public skysmackStore: NgSkysmackStore
+        public skysmackStore: NgSkysmackStore,
+        public router: Router
     ) {
         super();
     }
@@ -27,7 +29,9 @@ export class NgInvoicesProductsEntityActionProvider extends EntityActionProvider
                     if (packages && packages.length > 0) {
                         const entityActionStreams$ = packages.map(_package => {
                             return of([
-                                new EntityAction().asUrlAction(`/${_package.object.path}`, `Add to invoice via: ${_package.object.name}`, 'monetization_on', 'add-to-invoice')
+                                new EntityAction().asEventAction(`Add to invoice via: ${_package.object.name}`, (value: LocalObject<Product, Number>, _this) => {
+                                    _this.router.navigate([_package.object.path, 'add-to-invoice', value.object.id]);
+                                }, 'monetization_on', this)
                             ]);
                         });
                         return combineLatest(entityActionStreams$);

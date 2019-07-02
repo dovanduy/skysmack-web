@@ -8,6 +8,7 @@ import { InvoicesProductsRoutingModule } from './invoices-products-routing.modul
 import { NgInvoicesProductsModule } from '@skysmack/ng-packages';
 import { NgInvoicesProductsEntityActionProvider } from './ng-invoices-products-entity-action-provider';
 import { ProductsType } from '@skysmack/packages-products';
+import { invoicesProductsComponents } from './invoices-products/components/invoices-products-components';
 
 @NgModule({
   imports: [
@@ -19,6 +20,7 @@ import { ProductsType } from '@skysmack/packages-products';
     FieldsModule
   ],
   declarations: [
+    ...invoicesProductsComponents
   ],
   providers: [
     LanguageService

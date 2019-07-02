@@ -1,0 +1,26 @@
+{
+    "INVOICES_PRODUCTS": {
+        "FORM": {
+            "LABELS": {
+                "INVOICEID": "Invoice",
+                "AMOUNT": "Currency code"
+            },
+            "PLACEHOLDERS": {
+                "INVOICEID": "Invoice",
+                "AMOUNT": "Amount"
+            },
+            "VALIDATION": {
+                "INVOICEID": {
+                    "REQUIRED": "Invoice is required."
+                },
+                "AMOUNT": {
+                    "REQUIRED": "Amount is required."
+                }
+            }
+        },
+        "ADD_TO_PRODUCT": {
+            "TITLE": "Add to invoice",
+            "SUBMIT": "Submit"
+        }
+    }
+}

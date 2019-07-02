@@ -83,8 +83,12 @@ export class ContainerComponent implements OnInit, OnDestroy {
             tap(x => this.router.navigate([x.object.path])),
             take(1)
           ).subscribe();
-        }
-        else {
+        } else if (splittedPath.find(x => x === 'add-to-invoice')) {
+          getPackageDendencyAsStream(this.skysmackStore, packagePath, [1]).pipe(
+            tap(x => this.router.navigate([x.object.path])),
+            take(1)
+          ).subscribe();
+        } else {
           this.router.navigate([this.path]);
         }
       })

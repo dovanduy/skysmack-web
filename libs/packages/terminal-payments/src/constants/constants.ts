@@ -1,4 +1,4 @@
-// Ensure area key is the same as the reducer name without the "Reducer" part.
+// Ensure reducer key is the same as the reducer name without the "Reducer" part.
 export const TERMINALS_REDUCER_KEY = 'terminals';
 export const TERMINALS_AREA_KEY = 'terminals'; // validation, store, menu
 export const TERMINALS_REDUX_KEY = 'TERMINALS_'; // reducer prefix, action, epics, Requests

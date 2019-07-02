@@ -71,7 +71,7 @@ export class BaseComponent<TAppState, TKey> implements OnInit, OnDestroy {
         this.loadedPackage$ = this.skysmackStore.getCurrentPackage(this.packagePath);
     }
 
-    private setPackagePath() {
+    protected setPackagePath() {
         this.packagePath = this.router.url.split('/')[1];
     }
 

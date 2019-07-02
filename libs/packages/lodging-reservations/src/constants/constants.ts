@@ -1,4 +1,4 @@
-// Ensure area key is the same as the reducer name without the "Reducer" part.
+// Ensure reducer key is the same as the reducer name without the "Reducer" part.
 export const LODGING_RESERVATIONS_REDUCER_KEY = 'lodgingReservations';
 export const LODGING_RESERVATIONS_AREA_KEY = 'lodging_reservations'; // validation, store, menu
 export const LODGING_RESERVATIONS_REDUX_KEY = 'LODGING_RESERVATIONS_'; // reducer prefix, action, epics, Requests
