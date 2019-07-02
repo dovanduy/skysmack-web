@@ -2,7 +2,7 @@ import { NgReduxRouter, NgReduxRouterModule } from '@angular-redux/router';
 import { HttpClientModule } from '@angular/common/http';
 import { NgRedux, NgReduxModule } from '@angular-redux/store';
 
-import { RouterModule, PreloadAllModules } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 
 import { SkysmackModule } from '@skysmack/portal-core';
@@ -20,6 +20,24 @@ import { environment } from './../../environments/environment';
 import { GlobalProperties } from '@skysmack/framework';
 import { NgFieldEpics, registerRedux, NgSettingsEpics } from '@skysmack/ng-framework';
 import { fieldReducer, settingsReducer } from '@skysmack/redux';
+import { TenantPackageLoadStrategy } from './TenantPackageLoadStrategy';
+import { packagesRoute } from '../packages/packages-package-manifest';
+import { accessPoliciesRoute } from '../packages/access-policies-package-manifest';
+import { identitiesRoute } from '../packages/identities-package-manifest';
+import { personsRoute } from '../packages/persons-package-manifest';
+import { invoicesRoute } from '../packages/invoices-package-manifest';
+import { invoicesCashPaymentsRoute } from '../packages/invoices-cash-payments-package-manifest';
+import { productsRoute } from '../packages/products-package-manifest';
+import { productsPricingsRoute } from '../packages/products-pricings-package-manifest';
+import { lodgingsRoute } from '../packages/lodgings-package-manifest';
+import { lodgingReservationsRoute } from '../packages/lodging-reservations-package-manifest';
+import { reservationsPricingsRoute } from '../packages/reservations-pricings-package-manifest';
+import { personsLodgingReservationsRoute } from '../packages/persons-lodging-reservations-package-manifest';
+import { OAuth2Route } from '../packages/oauth2-package-manifest';
+import { maintenanceRoute } from '../packages/maintenance-package-manifest';
+import { emailsRoute } from '../packages/emails-package-manifest';
+import { emailsSmtpRoute } from '../packages/emails-smtp-package-manifest';
+import { terminalPaymentsRoute } from '../packages/terminal-payments-manifest';
 // import { NgxGraphModule } from '@swimlane/ngx-graph';
 // import { NgxChartsModule } from '@swimlane/ngx-charts';
 // NgxGraphModule,
@@ -33,91 +51,23 @@ import { fieldReducer, settingsReducer } from '@skysmack/redux';
   ],
   imports: [
     RouterModule.forRoot([
-      {
-        path: 'skysmack/loadPackages/packages',
-        // loadChildren: () => import('@skysmack/portal-packages').then(m => m.PackagesModule)
-        loadChildren: './../packages/modules/packages_wrapper.module#PackagesWrapperModule'
-      },
-      {
-        path: 'skysmack/loadPackages/access-policies',
-        // loadChildren: () => import('@skysmack/portal-core').then(m => m.AccessPoliciesModule)
-        loadChildren: './../packages/modules/access_policies_wrapper.module#AccessPoliciesWrapperModule'
-      },
-      {
-        path: 'skysmack/loadPackages/identities',
-        // loadChildren: () => import('@skysmack/portal-packages').then(m => m.IdentitiesModule)
-        loadChildren: './../packages/modules/identities_wrapper.module#IdentitiesWrapperModule'
-      },
-      {
-        path: 'skysmack/loadPackages/persons',
-        // loadChildren: () => import('@skysmack/portal-packages').then(m => m.PersonsModule)
-        loadChildren: './../packages/modules/persons_wrapper.module#PersonsWrapperModule'
-      },
-      {
-        path: 'skysmack/loadPackages/invoices',
-        // loadChildren: () => import('@skysmack/portal-packages').then(m => m.InvoicesModule)
-        loadChildren: './../packages/modules/invoices_wrapper.module#InvoicesWrapperModule'
-      },
-      {
-        path: 'skysmack/loadPackages/invoices-cash-payments',
-        // loadChildren: () => import('@skysmack/portal-packages').then(m => m.InvoicesCashPaymentsModule)
-        loadChildren: './../packages/modules/invoices_cash_payments_wrapper.module#InvoicesCashPaymentsWrapperModule'
-      },
-      {
-        path: 'skysmack/loadPackages/products',
-        // loadChildren: () => import('@skysmack/portal-packages').then(m => m.ProductsModule)
-        loadChildren: './../packages/modules/products_wrapper.module#ProductsWrapperModule'
-      },
-      {
-        path: 'skysmack/loadPackages/products-pricings',
-        // loadChildren: () => import('@skysmack/portal-packages').then(m => m.ProductsPricingsModule)
-        loadChildren: './../packages/modules/products_pricings_wrapper.module#ProductsPricingsWrapperModule'
-      },
-      {
-        path: 'skysmack/loadPackages/lodgings',
-        // loadChildren: () => import('@skysmack/portal-packages').then(m => m.LodgingsModule)
-        loadChildren: './../packages/modules/lodgings_wrapper.module#LodgingsWrapperModule'
-      },
-      {
-        path: 'skysmack/loadPackages/lodgingReservations',
-        // loadChildren: () => import('@skysmack/portal-packages').then(m => m.LodgingReservationsModule)
-        loadChildren: './../packages/modules/lodging_reservations_wrapper.module#LodgingReservationsWrapperModule'
-      },
-      {
-        path: 'skysmack/loadPackages/reservations-pricings',
-        // loadChildren: () => import('@skysmack/portal-packages').then(m => m.ReservationsPricingsModule)
-        loadChildren: './../packages/modules/reservations_pricings_wrapper.module#ReservationsPricingsWrapperModule'
-      },
-      {
-        path: 'skysmack/loadPackages/personsLodgingReservations',
-        // loadChildren: () => import('@skysmack/portal-packages').then(m => m.PersonsLodgingReservationsModule)
-        loadChildren: './../packages/modules/persons_lodging_reservations_wrapper.module#PersonsLodgingReservationsWrapperModule'
-      },
-      {
-        path: 'skysmack/loadPackages/oauth2',
-        // loadChildren: () => import('@skysmack/portal-packages').then(m => m.Oauth2Module)
-        loadChildren: './../packages/modules/oauth2_wrapper.module#OAuth2WrapperModule'
-      },
-      {
-        path: 'skysmack/loadPackages/maintenance',
-        // loadChildren: () => import('@skysmack/portal-packages').then(m => m.MaintenanceModule)
-        loadChildren: './../packages/modules/maintenance_wrapper.module#MaintenanceWrapperModule'
-      },
-      {
-        path: 'skysmack/loadPackages/terminal-payments',
-        // loadChildren: () => import('@skysmack/portal-packages').then(m => m.TerminalPaymentsModule)
-        loadChildren: './../packages/modules/terminal_payments_wrapper.module#TerminalPaymentsWrapperModule'
-      },
-      {
-        path: 'skysmack/loadPackages/emails',
-        // loadChildren: () => import('@skysmack/portal-packages').then(m => m.EmailsModule)
-        loadChildren: './../packages/modules/emails_wrapper.module#EmailsWrapperModule'
-      },
-      {
-        path: 'skysmack/loadPackages/emails-smtp',
-        // loadChildren: () => import('@skysmack/portal-packages').then(m => m.EmailsSmtpModule)
-        loadChildren: './../packages/modules/emails_smtp_wrapper.module#EmailsSmtpWrapperModule'
-      },
+      packagesRoute,
+      accessPoliciesRoute,
+      identitiesRoute,
+      personsRoute,
+      invoicesRoute,      
+      invoicesCashPaymentsRoute,
+      productsRoute,
+      productsPricingsRoute,
+      lodgingsRoute,
+      lodgingReservationsRoute,
+      reservationsPricingsRoute,
+      personsLodgingReservationsRoute,
+      OAuth2Route,
+      maintenanceRoute,
+      terminalPaymentsRoute,
+      emailsRoute,
+      emailsSmtpRoute,
       {
         path: '',
         component: FrontPageComponent,
@@ -129,7 +79,7 @@ import { fieldReducer, settingsReducer } from '@skysmack/redux';
         component: FallBackComponent
       }
     ], {
-        preloadingStrategy: PreloadAllModules
+        preloadingStrategy: TenantPackageLoadStrategy
       }),
     BrowserAnimationsModule,
     HttpClientModule,
