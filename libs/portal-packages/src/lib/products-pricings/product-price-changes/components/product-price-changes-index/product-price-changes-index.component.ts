@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { EntityComponentPageTitle, RecordIndexComponent, EntityActionProviders, ENTITY_ACTIONS_EDIT, ENTITY_ACTIONS_DELETE } from '@skysmack/portal-ui';
+import { EntityComponentPageTitle, RecordIndexComponent, MenuItemActionProviders, MENU_ITEM_ACTIONS_EDIT, MENU_ITEM_ACTIONS_DELETE } from '@skysmack/portal-ui';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgProductPriceChangesActions } from '@skysmack/ng-packages';
 import { NgSkysmackStore } from '@skysmack/ng-core';
 import { NgProductPriceChangesStore } from '@skysmack/ng-packages';
 import { ProductPriceChangesAppState, PRODUCT_PRICE_CHANGES_AREA_KEY, ProductPriceChange } from '@skysmack/packages-products-pricings';
 import { NgProductPriceChangesMenu } from '../../ng-product-price-changes-menu';
-import { EntityAction } from '@skysmack/ng-ui';
+import { MenuItem } from '@skysmack/framework';
 import { NgProductPriceChangesFieldsConfig } from '../../ng-product-price-changes-fields-config';
 
 @Component({
@@ -16,9 +16,9 @@ import { NgProductPriceChangesFieldsConfig } from '../../ng-product-price-change
 export class ProductPriceChangesIndexComponent extends RecordIndexComponent<ProductPriceChangesAppState, ProductPriceChange, number> implements OnInit {
 
   public areaKey: string = PRODUCT_PRICE_CHANGES_AREA_KEY;
-  public entityActions: EntityAction[] = [
-    new EntityAction().asUrlAction('edit', ENTITY_ACTIONS_EDIT, 'edit'),
-    new EntityAction().asEventAction(ENTITY_ACTIONS_DELETE, this.delete, 'delete', this)
+  public entityActions: MenuItem[] = [
+    new MenuItem().asUrlAction('edit', MENU_ITEM_ACTIONS_EDIT, 'edit'),
+    new MenuItem().asEventAction(MENU_ITEM_ACTIONS_DELETE, this.delete, 'delete', this)
   ];
 
   constructor(
@@ -30,9 +30,9 @@ export class ProductPriceChangesIndexComponent extends RecordIndexComponent<Prod
     public sidebarMenu: NgProductPriceChangesMenu,
     public fieldsConfig: NgProductPriceChangesFieldsConfig,
     public title: EntityComponentPageTitle,
-    public entityActionProviders: EntityActionProviders
+    public menuItemActionProviders: MenuItemActionProviders
   ) {
-    super(router, activatedRoute, actions, redux, store, fieldsConfig, entityActionProviders, title);
+    super(router, activatedRoute, actions, redux, store, fieldsConfig, menuItemActionProviders, title);
   }
 
 

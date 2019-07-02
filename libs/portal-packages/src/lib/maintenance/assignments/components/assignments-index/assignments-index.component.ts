@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AssignmentsAppState, ASSIGNMENTS_AREA_KEY } from '@skysmack/packages-maintenance';
 import { Assignment } from '@skysmack/packages-maintenance';
-import { EntityComponentPageTitle, RecordIndexComponent, EntityActionProviders, ENTITY_ACTIONS_EDIT, ENTITY_ACTIONS_DELETE } from '@skysmack/portal-ui';
-import { EntityAction } from '@skysmack/ng-ui';
+import { EntityComponentPageTitle, RecordIndexComponent, MenuItemActionProviders, MENU_ITEM_ACTIONS_EDIT, MENU_ITEM_ACTIONS_DELETE } from '@skysmack/portal-ui';
+import { MenuItem } from '@skysmack/framework';
 import { NgAssignmentsActions, NgAssignmentsStore, NgAssignmentTypesStore, NgAssignmentTypesActions } from '@skysmack/ng-packages';
 import { NgAssignmentsMenu } from '../../ng-assignments-menu';
 import { NgAssignmentsFieldsConfig } from '../../ng-assignments-fields-config';
@@ -17,9 +17,9 @@ export class AssignmentsIndexComponent extends RecordIndexComponent<AssignmentsA
 
   public areaKey: string = ASSIGNMENTS_AREA_KEY;
   public titleExtras = true;
-  public entityActions: EntityAction[] = [
-    new EntityAction().asUrlAction('edit', ENTITY_ACTIONS_EDIT, 'edit'),
-    new EntityAction().asEventAction(ENTITY_ACTIONS_DELETE, this.delete, 'delete', this)
+  public entityActions: MenuItem[] = [
+    new MenuItem().asUrlAction('edit', MENU_ITEM_ACTIONS_EDIT, 'edit'),
+    new MenuItem().asEventAction(MENU_ITEM_ACTIONS_DELETE, this.delete, 'delete', this)
   ];
 
   constructor(
@@ -33,9 +33,9 @@ export class AssignmentsIndexComponent extends RecordIndexComponent<AssignmentsA
     public assignmentTypesStore: NgAssignmentTypesStore,
     public assignmentTypesActions: NgAssignmentTypesActions,
     public title: EntityComponentPageTitle,
-    public entityActionProviders: EntityActionProviders
+    public menuItemActionProviders: MenuItemActionProviders
   ) {
-    super(router, activatedRoute, actions, skysmackStore, store, fieldsConfig, entityActionProviders, title);
+    super(router, activatedRoute, actions, skysmackStore, store, fieldsConfig, menuItemActionProviders, title);
   }
 
   ngOnInit() {

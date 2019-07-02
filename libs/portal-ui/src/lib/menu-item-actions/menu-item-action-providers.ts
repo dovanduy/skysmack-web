@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
 import { StrIndex } from '@skysmack/framework';
 import { BehaviorSubject } from 'rxjs';
-import { EntityActionProvider } from './entity-action-provider';
+import { MenuItemActionProvider } from './menu-item-action-provider';
 
 @Injectable({ providedIn: 'root' })
-export class EntityActionProviders {
-    public providers: StrIndex<EntityActionProvider[]> = {};
-    public providers$: BehaviorSubject<StrIndex<EntityActionProvider[]>> = new BehaviorSubject({});
+export class MenuItemActionProviders {
+    public providers: StrIndex<MenuItemActionProvider[]> = {};
+    public providers$: BehaviorSubject<StrIndex<MenuItemActionProvider[]>> = new BehaviorSubject({});
     private register = {};
 
-    public add(type: string, fp: EntityActionProvider) {
+    public add(type: string, fp: MenuItemActionProvider) {
         const fpName = Object.getPrototypeOf(fp).constructor.name;
         const registered = this.register[fpName];
         if (!registered) {

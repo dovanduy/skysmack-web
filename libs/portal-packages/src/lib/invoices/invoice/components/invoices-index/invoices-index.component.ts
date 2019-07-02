@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { EntityComponentPageTitle, DocumentRecordIndexComponent, EntityActionProviders, ENTITY_ACTION_DETAILS, ENTITY_ACTIONS_EDIT, ENTITY_ACTIONS_DELETE } from '@skysmack/portal-ui';
+import { EntityComponentPageTitle, DocumentRecordIndexComponent, MenuItemActionProviders, MENU_ITEM_ACTION_DETAILS, MENU_ITEM_ACTIONS_EDIT, MENU_ITEM_ACTIONS_DELETE } from '@skysmack/portal-ui';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgInvoicesActions } from '@skysmack/ng-packages';
 import { NgSkysmackStore } from '@skysmack/ng-core';
 import { NgInvoicesStore } from '@skysmack/ng-packages';
 import { Invoice, InvoicesAppState, INVOICES_AREA_KEY } from '@skysmack/packages-invoices';
 import { NgInvoicesMenu } from './../../ng-invoices-menu';
-import { EntityAction } from '@skysmack/ng-ui';
+import { MenuItem } from '@skysmack/framework';
 import { NgFieldActions } from '@skysmack/ng-framework';
 import { NgInvoicesFieldsConfig } from '../../ng-invoices-fields-config';
 
@@ -17,11 +17,11 @@ import { NgInvoicesFieldsConfig } from '../../ng-invoices-fields-config';
 export class InvoicesIndexComponent extends DocumentRecordIndexComponent<InvoicesAppState, Invoice, number> implements OnInit {
 
   public areaKey: string = INVOICES_AREA_KEY;
-  public entityActions: EntityAction[] = [
-    new EntityAction().asUrlAction('items', 'INVOICES.ENTITY_ACTION.ITEMS', 'reorder'),
-    new EntityAction().asUrlAction('details', ENTITY_ACTION_DETAILS, 'list'),
-    new EntityAction().asUrlAction('edit', ENTITY_ACTIONS_EDIT, 'edit'),
-    new EntityAction().asEventAction(ENTITY_ACTIONS_DELETE, this.delete, 'delete', this)
+  public entityActions: MenuItem[] = [
+    new MenuItem().asUrlAction('items', 'INVOICES.ENTITY_ACTION.ITEMS', 'reorder'),
+    new MenuItem().asUrlAction('details', MENU_ITEM_ACTION_DETAILS, 'list'),
+    new MenuItem().asUrlAction('edit', MENU_ITEM_ACTIONS_EDIT, 'edit'),
+    new MenuItem().asEventAction(MENU_ITEM_ACTIONS_DELETE, this.delete, 'delete', this)
   ];
 
   constructor(
@@ -34,9 +34,9 @@ export class InvoicesIndexComponent extends DocumentRecordIndexComponent<Invoice
     public fieldsConfig: NgInvoicesFieldsConfig,
     public fieldActions: NgFieldActions,
     public title: EntityComponentPageTitle,
-    public entityActionProviders: EntityActionProviders
+    public menuItemActionProviders: MenuItemActionProviders
   ) {
-    super(router, activatedRoute, actions, skysmackStore, store, fieldsConfig, fieldActions, entityActionProviders, title);
+    super(router, activatedRoute, actions, skysmackStore, store, fieldsConfig, fieldActions, menuItemActionProviders, title);
   }
 
   ngOnInit() {

@@ -1,1 +1,1 @@
-export * from './entity-action-translation-constants';
+export * from './menu-item-action-translation-constants';

@@ -7,7 +7,7 @@ import { RecordIndexComponent } from './record-index-component';
 import { NgFieldActions } from '@skysmack/ng-framework';
 import { EntityFieldsConfig } from '../../fields/entity-fields-config';
 import { EntityComponentPageTitle } from '../../models/entity-component-page-title';
-import { EntityActionProviders } from '../../entity-actions/entity-action-providers';
+import { MenuItemActionProviders } from '../../menu-item-actions/menu-item-action-providers';
 
 export class DocumentRecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey> extends RecordIndexComponent<TAppState, TRecord, TKey> implements OnInit {
 
@@ -19,10 +19,10 @@ export class DocumentRecordIndexComponent<TAppState, TRecord extends Record<TKey
         public store: EntityStore<any, TKey>,
         public fieldsConfig: EntityFieldsConfig<any, TKey>,
         public fieldActions: NgFieldActions,
-        public entityActionProviders: EntityActionProviders,
+        public menuItemActionProviders: MenuItemActionProviders,
         public title?: EntityComponentPageTitle,
     ) {
-        super(router, activatedRoute, actions, redux, store, fieldsConfig, entityActionProviders, title);
+        super(router, activatedRoute, actions, redux, store, fieldsConfig, menuItemActionProviders, title);
     }
 
     ngOnInit() {

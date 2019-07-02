@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { EntityAction } from '@skysmack/ng-ui';
+import { MenuItem } from '@skysmack/framework';
 import { map, switchMap, take } from 'rxjs/operators';
 import { Observable, combineLatest, of } from 'rxjs';
 import { StrIndex, LocalObject } from '@skysmack/framework';
-import { EntityActionProvider } from '@skysmack/portal-ui';
+import { MenuItemActionProvider } from '@skysmack/portal-ui';
 import { NgSkysmackStore } from '@skysmack/ng-core';
 import { PRODUCTS_AREA_KEY, Product } from '@skysmack/packages-products';
 import { InvoicesProductsType } from '@skysmack/packages-invoices-products';
@@ -12,7 +12,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { InvoicesProductsAddComponent } from './invoices-products';
 
 @Injectable({ providedIn: 'root' })
-export class NgInvoicesProductsEntityActionProvider extends EntityActionProvider {
+export class NgInvoicesProductsMenuItemActionProvider extends MenuItemActionProvider {
 
     public register: StrIndex<boolean> = {};
 
@@ -24,7 +24,7 @@ export class NgInvoicesProductsEntityActionProvider extends EntityActionProvider
         super();
     }
 
-    public getEntityActions(packagePath: string, area: string, entity?: LocalObject<any, unknown>): Observable<EntityAction[]> {
+    public getMenuItemActions(packagePath: string, area: string, entity?: LocalObject<any, unknown>): Observable<MenuItem[]> {
         if (area === PRODUCTS_AREA_KEY) {
             return this.skysmackStore.getPackages().pipe(
                 map(packages => packages.filter(_package => _package.object.type === InvoicesProductsType.id && _package.object.dependencies[1] === packagePath)),
@@ -32,7 +32,7 @@ export class NgInvoicesProductsEntityActionProvider extends EntityActionProvider
                     if (packages && packages.length > 0) {
                         const entityActionStreams$ = packages.map(_package => {
                             return of([
-                                new EntityAction().asEventAction(`Add to invoice via: ${_package.object.name}`, (value: LocalObject<Product, Number>, _this: NgInvoicesProductsEntityActionProvider) => {
+                                new MenuItem().asEventAction(`Add to invoice via: ${_package.object.name}`, (value: LocalObject<Product, Number>, _this: NgInvoicesProductsMenuItemActionProvider) => {
                                     const dialogRef = _this.dialog.open(InvoicesProductsAddComponent, {
                                         width: '500px',
                                         data: { packagePath: _package.object.path, value }
