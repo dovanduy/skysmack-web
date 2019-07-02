@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, ComponentFactoryResolver } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -9,6 +9,8 @@ import { NgInvoicesProductsModule } from '@skysmack/ng-packages';
 import { NgInvoicesProductsEntityActionProvider } from './ng-invoices-products-entity-action-provider';
 import { ProductsType } from '@skysmack/packages-products';
 import { invoicesProductsComponents } from './invoices-products/components/invoices-products-components';
+import { CoalescingComponentFactoryResolver } from '@skysmack/ng-framework';
+import { InvoicesProductsAddComponent } from './invoices-products/components/invoices-products-add/invoices-products-add.component';
 
 @NgModule({
   imports: [
@@ -20,7 +22,11 @@ import { invoicesProductsComponents } from './invoices-products/components/invoi
     FieldsModule
   ],
   declarations: [
-    ...invoicesProductsComponents
+    ...invoicesProductsComponents,
+    InvoicesProductsAddComponent
+  ],
+  entryComponents: [
+    InvoicesProductsAddComponent,
   ],
   providers: [
     LanguageService
@@ -30,7 +36,14 @@ export class InvoicesProductsModule {
   constructor(
     entityActionProviders: EntityActionProviders,
     invoicesProductsEntityProvider: NgInvoicesProductsEntityActionProvider,
+
+    // Make entry components available
+    coalescingResolver: CoalescingComponentFactoryResolver,
+    localResolver: ComponentFactoryResolver
   ) {
     entityActionProviders.add(ProductsType.id, invoicesProductsEntityProvider);
+
+    // Make entry components available
+    coalescingResolver.registerResolver(localResolver);
   }
 }

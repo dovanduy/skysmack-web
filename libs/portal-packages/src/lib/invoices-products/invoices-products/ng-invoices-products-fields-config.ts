@@ -3,7 +3,7 @@ import { FormRule, SelectField } from '@skysmack/ng-ui';
 import { LocalObject, PagedQuery } from '@skysmack/framework';
 import { Field } from '@skysmack/ng-ui';
 
-import { FieldsConfig, FieldProviders, SelectFieldComponent, IntFieldComponent } from '@skysmack/portal-ui';
+import { FieldsConfig, FieldProviders, SelectFieldComponent, IntFieldComponent, HiddenFieldComponent } from '@skysmack/portal-ui';
 import { NgInvoicesProductsValidation, NgInvoicesActions, NgInvoicesStore } from '@skysmack/ng-packages';
 import { LoadedPackage, getPackageDendencyAsStream } from '@skysmack/ng-framework';
 import { INVOICES_PRODUCTS_AREA_KEY } from '@skysmack/packages-invoices-products';
@@ -15,6 +15,9 @@ export class NgInvoicesProductsFieldsConfig extends FieldsConfig<any, unknown> {
   public validation = new NgInvoicesProductsValidation();
   public area = INVOICES_PRODUCTS_AREA_KEY;
   public formRules: FormRule[] = [];
+
+  // Unique prop for this fields config
+  public productId: number;
 
   constructor(
     public fieldProviders: FieldProviders,
@@ -29,7 +32,6 @@ export class NgInvoicesProductsFieldsConfig extends FieldsConfig<any, unknown> {
     const invoicesPackage$ = getPackageDendencyAsStream(this.skysmackStore, loadedPackage._package.path, [0]);
 
     const fields = [
-      // Add invoice select field. Remember to select invoices from the correct package.
       new SelectField({
         component: SelectFieldComponent,
         value: entity ? entity.object.invoiceId : undefined,
@@ -48,12 +50,15 @@ export class NgInvoicesProductsFieldsConfig extends FieldsConfig<any, unknown> {
         displayNameSelector: 'object.currencyCode',
         order: 1
       }),
-
       new Field({
         component: IntFieldComponent,
         value: entity ? entity.object.amount : undefined,
         key: 'amount',
-
+      }),
+      new Field({
+        component: HiddenFieldComponent,
+        value: entity ? entity.object.productId : this.productId,
+        key: 'productId',
       }),
     ];
 

@@ -1,12 +1,14 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, Inject } from '@angular/core';
 import { RecordFormComponent, EditorNavService } from '@skysmack/portal-ui';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgInvoicesActions } from '@skysmack/ng-packages';
 import { NgSkysmackStore } from '@skysmack/ng-core';
 import { NgInvoicesStore } from '@skysmack/ng-packages';
-import { NgFieldActions } from '@skysmack/ng-framework';
 import { NgInvoicesProductsFieldsConfig } from '../../ng-invoices-products-fields-config';
 import { FormHelper } from '@skysmack/ng-ui';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { LocalObject } from '@skysmack/framework';
+import { Product } from 'libs/packages/products/src';
 
 @Component({
   selector: 'ss-invoices-products-add',
@@ -22,28 +24,31 @@ export class InvoicesProductsAddComponent extends RecordFormComponent<any, any, 
     public redux: NgSkysmackStore,
     public fieldsConfig: NgInvoicesProductsFieldsConfig,
     public store: NgInvoicesStore,
-    public fieldActions: NgFieldActions
+    public dialogRef: MatDialogRef<InvoicesProductsAddComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: { packagePath: string, value: LocalObject<Product, Number> }
   ) {
     super(router, activatedRoute, editorNavService, actions, redux, store, fieldsConfig);
   }
 
   ngOnInit() {
+    this.fieldsConfig.productId = this.data.value.object.id;
     super.ngOnInit();
-    this.editorNavService.showEditorNav()
     this.setCreateFields();
   }
 
   ngOnDestroy() {
     super.ngOnDestroy();
-    this.editorNavService.hideEditorNav();
+  }
+
+  protected setPackagePath() {
+    this.packagePath = this.data.packagePath;
   }
 
   public onSubmit(fh: FormHelper) {
     fh.formValid(() => {
       const values = fh.form.value;
       console.log(values);
-      this.editorNavService.hideEditorNav();
+      this.dialogRef.close();
     });
   }
-
 }
