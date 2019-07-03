@@ -83,12 +83,12 @@ export class ConnectionsIndexComponent extends RecordIndexComponent<ConnectionsA
     super.ngOnInit();
   }
 
-  protected terminalActions(value: LocalObject<Connection, ConnectionKey>, _this: ConnectionsIndexComponent) {
+  protected terminalActions(_this: ConnectionsIndexComponent, value: LocalObject<Connection, ConnectionKey>) {
     const terminalId = value.object.terminal.object.id;
     _this.router.navigate([_this.packagePath, 'terminals', 'actions', terminalId]);
   }
 
-  protected connect(value: LocalObject<Connection, ConnectionKey>, _this: ConnectionsIndexComponent) {
+  protected connect(_this: ConnectionsIndexComponent, value: LocalObject<Connection, ConnectionKey>) {
     const url = `${_this.apiDomain.domain}/${_this.packagePath}`;
     const connection = new ConnectionRequest({
       type: 'changeConnection',
@@ -100,7 +100,7 @@ export class ConnectionsIndexComponent extends RecordIndexComponent<ConnectionsA
     _this.httpClient.post(`${url}/actions/change-connection`, connection, { observe: 'response' }).pipe(take(1)).subscribe();
   }
 
-  protected open(value: LocalObject<Connection, ConnectionKey>, _this: ConnectionsIndexComponent) {
+  protected open(_this: ConnectionsIndexComponent, value: LocalObject<Connection, ConnectionKey>) {
     const url = `${_this.apiDomain.domain}/${_this.packagePath}`;
     const connection = new ConnectionRequest({
       type: 'changeConnection',
@@ -114,7 +114,7 @@ export class ConnectionsIndexComponent extends RecordIndexComponent<ConnectionsA
     ).subscribe();
   }
 
-  protected close(value: LocalObject<Connection, ConnectionKey>, _this: ConnectionsIndexComponent) {
+  protected close(_this: ConnectionsIndexComponent, value: LocalObject<Connection, ConnectionKey>) {
     const url = `${_this.apiDomain.domain}/${_this.packagePath}`;
     const connection = new ConnectionRequest({
       type: 'changeConnection',
@@ -128,7 +128,7 @@ export class ConnectionsIndexComponent extends RecordIndexComponent<ConnectionsA
     ).subscribe();
   }
 
-  protected disconnect(value: LocalObject<Connection, ConnectionKey>, _this: ConnectionsIndexComponent) {
+  protected disconnect(_this: ConnectionsIndexComponent, value: LocalObject<Connection, ConnectionKey>) {
     const url = `${_this.apiDomain.domain}/${_this.packagePath}`;
     const connection = new ConnectionRequest({
       type: 'changeConnection',

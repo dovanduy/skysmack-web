@@ -68,12 +68,12 @@ export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey>
         );
     }
 
-    protected delete(value: LocalObject<TRecord, TKey>, _this: RecordIndexComponent<any, any, any>) {
+    protected delete(_this: RecordIndexComponent<any, any, any>, value: LocalObject<TRecord, TKey>) {
         _this.actions.delete([value], _this.packagePath);
     }
 
-    public actionEvent(event: { action: Function, value?: LocalObject<TRecord, TKey>, _this: any }) {
-        event.action(event.value, event._this);
+    public actionEvent(event: { action: Function, _this: any, value?: LocalObject<TRecord, TKey> }) {
+        event.action(event._this, event.value);
     }
 
     public requestPage(force = false) {

@@ -32,7 +32,7 @@ export class NgInvoicesProductsMenuItemActionProvider extends MenuItemActionProv
                     if (packages && packages.length > 0) {
                         const entityActionStreams$ = packages.map(_package => {
                             return of([
-                                new MenuItem().asEventAction(`Add to invoice via: ${_package.object.name}`, (value: LocalObject<Product, Number>, _this: NgInvoicesProductsMenuItemActionProvider) => {
+                                new MenuItem().asEventAction(`Add to invoice via: ${_package.object.name}`, (_this: NgInvoicesProductsMenuItemActionProvider, value: LocalObject<Product, Number>) => {
                                     const dialogRef = _this.dialog.open(InvoicesProductsAddComponent, {
                                         width: '500px',
                                         data: { packagePath: _package.object.path, value }

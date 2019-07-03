@@ -61,7 +61,7 @@ export class FieldsIndexComponent extends RecordIndexComponent<any, any, any> im
     this.actions.getPaged(this.packagePath, this.pagedQuery, this.additionalPaths);
   }
 
-  protected delete(value: LocalObject<FieldSchemaViewModel, string>, _this: FieldsIndexComponent) {
+  protected delete(_this: FieldsIndexComponent, value: LocalObject<FieldSchemaViewModel, string>) {
     _this.actions.delete([value], _this.packagePath, _this.additionalPaths);
   }
 }
