@@ -31,8 +31,6 @@ export class NgInvoicesTerminalPaymentsMenuItemActionProvider extends MenuItemAc
                     if (packages && packages.length > 0) {
                         const entityActionStreams$ = packages.map(_package => {
                             return of([
-                                // new MenuItem().asUrlAction(`/${_package.object.path}/terminals`, 'TERMINALS.ENTITY_ACTION_PROVIDER.ENTITY_ACTION.TERMINAL_PAYMENT', 'payment', 'pay')
-
                                 new MenuItem().asEventAction(`TERMINALS.ENTITY_ACTION_PROVIDER.ENTITY_ACTION.TERMINAL_PAYMENT`, (_this: NgInvoicesTerminalPaymentsMenuItemActionProvider, value: LocalObject<Invoice, number>) => {
                                     const dialogRef = _this.dialog.open(TerminalsPayComponent, {
                                         width: '500px',

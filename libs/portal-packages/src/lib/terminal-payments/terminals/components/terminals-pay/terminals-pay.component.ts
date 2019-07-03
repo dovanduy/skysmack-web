@@ -11,7 +11,7 @@ import { TransactionRequest, TerminalsAppState } from '@skysmack/packages-termin
 import { FormHelper } from '@skysmack/ng-ui';
 import { HttpClient } from '@angular/common/http';
 import { Invoice } from 'libs/packages/invoices/src';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'ss-terminals-pay',
@@ -33,6 +33,7 @@ export class TerminalsPayComponent extends RecordFormComponent<TerminalsAppState
     public store: NgTerminalsStore,
     public httpClient: HttpClient,
     @Inject(API_DOMAIN_INJECTOR_TOKEN) protected apiDomain: ApiDomain,
+    public dialogRef: MatDialogRef<TerminalsPayComponent>,
     @Inject(MAT_DIALOG_DATA) public data: { packagePath: string, value: LocalObject<Invoice, Number> }
 
   ) {
@@ -99,6 +100,7 @@ export class TerminalsPayComponent extends RecordFormComponent<TerminalsAppState
       this.httpClient.post(url, transactionRequest, { observe: 'response' }).pipe(
         tap(x => {
           this.disableButton = false;
+          this.dialogRef.close();
           console.log(x);
           // if(x.status === '200'){
           // this.router.navigate([this.router.url.substring(0, this.router.url.length - 3), 'processing']);
@@ -107,6 +109,7 @@ export class TerminalsPayComponent extends RecordFormComponent<TerminalsAppState
         }),
         catchError(error => {
           this.disableButton = false;
+          this.dialogRef.close();
           console.error(error);
           return of(error);
         }),

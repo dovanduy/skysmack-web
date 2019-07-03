@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
 import { MenuItem } from '@skysmack/framework';
-import { map, switchMap } from 'rxjs/operators';
+import { map, switchMap, take } from 'rxjs/operators';
 import { Observable, combineLatest, of } from 'rxjs';
 import { StrIndex, LocalObject } from '@skysmack/framework';
 import { MenuItemActionProvider } from '@skysmack/portal-ui';
 import { NgSkysmackStore } from '@skysmack/ng-core';
-import { INVOICES_AREA_KEY } from '@skysmack/packages-invoices';
+import { INVOICES_AREA_KEY, Invoice } from '@skysmack/packages-invoices';
 import { CashPayment, InvoicesCashPaymentsType } from '@skysmack/packages-invoices-cash-payments';
+import { InvoicesCashPaymentsPayComponent } from './invoices-cash-payments/components/invoices-cash-payments-pay/invoices-cash-payments-pay.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Injectable({ providedIn: 'root' })
 export class NgInvoicesCashPaymentsMenuItemActionProvider extends MenuItemActionProvider {
@@ -14,7 +16,8 @@ export class NgInvoicesCashPaymentsMenuItemActionProvider extends MenuItemAction
     public register: StrIndex<boolean> = {};
 
     constructor(
-        public skysmackStore: NgSkysmackStore
+        public skysmackStore: NgSkysmackStore,
+        public dialog: MatDialog
     ) {
         super();
     }
@@ -27,7 +30,14 @@ export class NgInvoicesCashPaymentsMenuItemActionProvider extends MenuItemAction
                     if (packages && packages.length > 0) {
                         const entityActionStreams$ = packages.map(_package => {
                             return of([
-                                new MenuItem().asUrlAction(`/${_package.object.path}`, 'INVOICES_CASH_PAYMENTS.ENTITY_ACTION_PROVIDER.ENTITY_ACTION.CASH_PAYMENT', 'attach_money', 'pay')
+                                new MenuItem().asEventAction(`INVOICES_CASH_PAYMENTS.ENTITY_ACTION_PROVIDER.ENTITY_ACTION.CASH_PAYMENT`, (_this: NgInvoicesCashPaymentsMenuItemActionProvider, value: LocalObject<Invoice, number>) => {
+                                    const dialogRef = _this.dialog.open(InvoicesCashPaymentsPayComponent, {
+                                        width: '500px',
+                                        data: { packagePath: _package.object.path, value }
+                                    });
+
+                                    dialogRef.afterClosed().pipe(take(1)).subscribe(() => { });
+                                }, 'attach_money', this)
                             ]);
                         });
                         return combineLatest(entityActionStreams$);
