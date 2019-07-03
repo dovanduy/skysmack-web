@@ -7,7 +7,8 @@
         [sidebarMenu]="sidebarMenu">
       </ss-sidebar-menu>
     </mat-sidenav>
-    <ss-speed-dial-fab *ngIf="sidebarMenu" [sidebarMenu]="sidebarMenu"></ss-speed-dial-fab>
+    <ss-speed-dial-fab *ngIf="sidebarMenu" [sidebarMenu]="sidebarMenu"
+      (menuItemActionEvent)="menuItemActionEvent.emit($event)"></ss-speed-dial-fab>
     <div class="docs-component-sidenav-content">
       <div class="docs-component-sidenav-inner-content">
         <!-- If on large screen, menu resides to left of content -->

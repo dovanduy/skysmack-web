@@ -66,7 +66,7 @@ export class NgAccountsMenu extends SidebarMenu {
     }
 
     public setSpeedDialMenu() {
-        this.speedDialMenu = [
+        this.speedDialMenuItems = [
         ];
     }
 }

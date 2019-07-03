@@ -109,7 +109,7 @@ export class NgLodgingsReservationsMenu extends SidebarMenu {
     }
 
     public setSpeedDialMenu() {
-        this.speedDialMenu = [
+        this.speedDialMenuItems = [
             new MenuItem({
                 url: '/' + this.packagePath + '/create',
                 displayName: this.translationPrefix + 'CREATE',

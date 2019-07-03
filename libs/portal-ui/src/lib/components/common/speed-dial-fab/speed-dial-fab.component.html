@@ -1,4 +1,4 @@
-<ng-container *ngIf="fabButtons.length > 1">
+<ng-container *ngIf="menuItems.length > 1">
   <div id="fab-dismiss" *ngIf="fabTogglerState==='active'" (click)="onToggleFab()">
   </div>
   <div class="fab-container">
@@ -7,18 +7,40 @@
     </button>
     <div [@speedDialStagger]="buttons.length">
       <!-- and here -->
-      <a *ngFor="let btn of buttons" [routerLink]="btn.url" [matTooltip]="btn.name | translate"
-        matTooltipPosition="before" mat-mini-fab class="fab-secondary" color="secondary">
-        <mat-icon>{{btn.icon}}</mat-icon>
-      </a>
+      <ng-container *ngFor="let btn of buttons">
+
+        <!-- ACTION EVENT -->
+        <a *ngIf="btn.isActionEvent && (btn | showMenuItemAction:undefined) && btn.display"
+          (click)="this.menuItemActionEvent.emit({ action: btn.action, value: undefined, _this: btn._this });"
+          [matTooltip]="btn.name | translate" matTooltipPosition="before" mat-mini-fab class="fab-secondary"
+          color="secondary">
+          <mat-icon>{{btn.icon}}</mat-icon>
+        </a>
+
+        <!-- URL EVENT -->
+        <a *ngIf="!btn.isActionEvent && btn.display" [routerLink]="btn.url" [matTooltip]="btn.name | translate"
+          matTooltipPosition="before" mat-mini-fab class="fab-secondary" color="secondary">
+          <mat-icon>{{btn.icon}}</mat-icon>
+        </a>
+      </ng-container>
     </div>
   </div>
 </ng-container>
-<ng-container *ngIf="fabButtons.length == 1">
+<ng-container *ngIf="menuItems.length == 1">
   <div class="fab-container">
-    <a *ngFor="let btn of fabButtons" [routerLink]="btn.url" [matTooltip]="btn.name | translate"
-      matTooltipPosition="before" mat-fab class="fab-secondary" color="secondary">
-      <mat-icon>{{btn.icon}}</mat-icon>
-    </a>
+    <ng-container *ngFor="let btn of menuItems">
+      <!-- ACTION EVENT -->
+      <a *ngIf="btn.isActionEvent && (btn | showMenuItemAction:undefined) && btn.display"
+        (click)="this.menuItemActionEvent.emit({ action: btn.action, value: undefined, _this: btn._this });"
+        [matTooltip]="btn.name | translate" matTooltipPosition="before" mat-fab class="fab-secondary" color="secondary">
+        <mat-icon>{{btn.icon}}</mat-icon>
+      </a>
+
+      <!-- URL EVENT -->
+      <a *ngIf="!btn.isActionEvent && btn.display" [routerLink]="btn.url" [matTooltip]="btn.name | translate"
+        matTooltipPosition="before" mat-fab class="fab-secondary" color="secondary">
+        <mat-icon>{{btn.icon}}</mat-icon>
+      </a>
+    </ng-container>
   </div>
 </ng-container>

@@ -27,7 +27,7 @@ export abstract class SidebarMenu implements OnDestroy {
     public primaryMenuAreas: MenuArea[] = [];
     public primaryMenuItems: MenuItem[] = [];
 
-    public speedDialMenu: MenuItem[] = [];
+    public speedDialMenuItems: MenuItem[] = [];
     public defaultMenuArea = 'manage';
 
     constructor(

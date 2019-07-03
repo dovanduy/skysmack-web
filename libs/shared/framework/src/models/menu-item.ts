@@ -33,12 +33,6 @@ export class MenuItem {
         return this;
     }
 
-    // Temp helper until above two functions have been refactored. Pt. only used in persons menu.
-    public setArea(area: string) {
-        this.area = area;
-        return this;
-    }
-
     public setPermissions(permissions: string[]): MenuItem {
         this.permissions = permissions;
         return this;

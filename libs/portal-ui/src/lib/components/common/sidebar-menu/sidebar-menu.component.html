@@ -15,7 +15,7 @@
               <ng-template [inAnyPermission]="menuItem.permissions"
                 (permissionsChecked)="permissionsChecked($event, menuItem)">
 
-                <!-- ACTION EVENT  -->
+                <!-- ACTION EVENT -->
                 <li *ngIf="menuItem.isActionEvent && (menuItem | showMenuItemAction:undefined) && menuItem.display">
                   <span
                     (click)="this.menuItemActionEvent.emit({ action: menuItem.action, value: undefined, _this: menuItem._this });">{{ menuItem.displayName | translate }}</span>

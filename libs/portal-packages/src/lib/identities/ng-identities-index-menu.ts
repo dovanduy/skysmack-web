@@ -108,7 +108,7 @@ export class NgIdentitiesIndexMenu extends SidebarMenu {
     }
 
     public setSpeedDialMenu() {
-        this.speedDialMenu = [
+        this.speedDialMenuItems = [
         ];
     }
 }

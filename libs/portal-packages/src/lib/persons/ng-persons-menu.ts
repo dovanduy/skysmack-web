@@ -57,21 +57,22 @@ export class NgPersonsMenu extends SidebarMenu {
             ]
         }));
 
-        this.primaryMenuItems.push(new MenuItem().asEventAction('Test', () => console.log('Works!'), '', this).setArea('manage'));
+        this.primaryMenuItems.push(new MenuItem({ area: 'manage' }).asEventAction('Test', () => console.log('Works!'), '', this));
     }
 
     public setSpeedDialMenu() {
-        this.speedDialMenu = [
-            new MenuItem({
-                url: 'create',
-                displayName: this.translationPrefix + 'CREATE',
-                area: undefined,
-                order: 1,
-                icon: 'add',
-                permissions: [
-                    PersonsPermissions.addPersons
-                ]
-            }),
+        this.speedDialMenuItems = [
+            new MenuItem().asEventAction('Test', () => console.log('Works!'), 'edit', this),
+            // new MenuItem({
+            //     url: 'create',
+            //     displayName: this.translationPrefix + 'CREATE',
+            //     area: undefined,
+            //     order: 1,
+            //     icon: 'add',
+            //     permissions: [
+            //         PersonsPermissions.addPersons
+            //     ]
+            // }),
         ];
     }
 }
