@@ -25,6 +25,7 @@ export class NgLodgingsReservationsMenuItemProvider extends MenuItemProvider {
                         area: 'connected_packages',
                         order: 20,
                         icon: this.icon,
+                        provideIn: 'primaryMenu'
                     }))
                 )
             );

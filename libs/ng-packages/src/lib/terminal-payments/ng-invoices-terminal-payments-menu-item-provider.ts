@@ -26,6 +26,7 @@ export class NgInvoicesTerminalPaymentsMenuItemProvider extends MenuItemProvider
                         area: 'connected_packages',
                         order: 20,
                         icon: this.icon,
+                        provideIn: 'primaryMenu'
                     }))
                 )
             );
