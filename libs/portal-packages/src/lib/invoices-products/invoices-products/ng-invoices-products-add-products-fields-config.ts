@@ -9,6 +9,7 @@ import { LoadedPackage, getPackageDendencyAsStream } from '@skysmack/ng-framewor
 import { INVOICES_PRODUCTS_AREA_KEY } from '@skysmack/packages-invoices-products';
 import { NgSkysmackStore } from '@skysmack/ng-core';
 import { map, take, switchMap } from 'rxjs/operators';
+import { Validators } from '@angular/forms';
 
 @Injectable({ providedIn: 'root' })
 export class NgInvoicesProductsAddProductsFieldsConfig extends FieldsConfig<any, unknown> {
@@ -48,13 +49,15 @@ export class NgInvoicesProductsAddProductsFieldsConfig extends FieldsConfig<any,
           ).subscribe();
         },
         displayNameSelector: 'object.name',
-        order: 1
+        order: 1,
+        validators: [Validators.required]
       }),
 
       new Field({
         component: IntFieldComponent,
         value: entity ? entity.object.amount : undefined,
         key: 'amount',
+        validators: [Validators.required]
       }),
       new Field({
         component: HiddenFieldComponent,
