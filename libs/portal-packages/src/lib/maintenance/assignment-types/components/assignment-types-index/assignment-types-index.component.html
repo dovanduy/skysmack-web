@@ -1,4 +1,5 @@
-<ss-container [sidebarMenu]="sidebarMenu" *ngIf="loadedPackage$ | async as loadedPackage">
+<ss-container [sidebarMenu]="sidebarMenu" (menuItemActionEvent)="actionEvent($event)"
+    *ngIf="loadedPackage$ | async as loadedPackage">
     <ss-records-container [area]="areaKey" [cancelAction]="actions.cancelAction"
         [title]="loadedPackage._package.name + ' types'" [entities$]="pagedEntities$"
         [menuItemActions$]="menuItemActions$" [packagePath]="packagePath" (menuItemActionEvent)="actionEvent($event)"

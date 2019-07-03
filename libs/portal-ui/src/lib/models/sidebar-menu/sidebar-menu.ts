@@ -70,7 +70,7 @@ export abstract class SidebarMenu implements OnDestroy {
                         // Add provided menu items
 
                         const addConnectedPackageArea = (menuItem) => {
-                            if (!this.primaryMenuAreas.find(area => area.area === 'connected_packages') && (menuItem.provideIn === 'primaryMenu' || menuItem.provideIn === 'both')) {
+                            if (menuItem.area === 'connected_packages' && !this.primaryMenuAreas.find(area => area.area === 'connected_packages') && (menuItem.provideIn === 'primaryMenu' || menuItem.provideIn === 'both')) {
                                 this.addConnectedPackageMenuArea();
                             }
                         };

@@ -45,7 +45,8 @@ export class InvoiceItemsIndexComponent extends DocumentRecordIndexComponent<Inv
     this.activatedRoute.params.pipe(
       map(params => {
         const filter = new RSQLFilterBuilder();
-        filter.column('inventoryId').in([params.invoiceId]);
+        const invoiceId = params.invoiceId;
+        filter.column('inventoryId').in([invoiceId]);
         this.pagedQuery.rsqlFilter = filter;
       }),
       take(1)

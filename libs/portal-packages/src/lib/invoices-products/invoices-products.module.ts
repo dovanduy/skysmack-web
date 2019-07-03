@@ -9,8 +9,10 @@ import { NgInvoicesProductsModule } from '@skysmack/ng-packages';
 import { NgInvoicesProductsMenuItemActionProvider } from './ng-invoices-products-menu-item-action-provider';
 import { ProductsType } from '@skysmack/packages-products';
 import { invoicesProductsComponents } from './invoices-products/components/invoices-products-components';
-import { CoalescingComponentFactoryResolver } from '@skysmack/ng-framework';
-import { InvoicesProductsAddComponent } from './invoices-products/components/invoices-products-add/invoices-products-add.component';
+import { CoalescingComponentFactoryResolver, NgMenuItemProviders } from '@skysmack/ng-framework';
+import { InvoicesProductsAddToInvoiceComponent } from './invoices-products/components/invoices-products-add-to-invoice/invoices-products-add-to-invoice.component';
+import { InvoicesProductsAddProductsComponent } from './invoices-products/components';
+import { NgInvoicesProductsMenuItemProvider } from './invoices-products/ng-invoices-products-menu-item-provider';
 
 @NgModule({
   imports: [
@@ -23,10 +25,12 @@ import { InvoicesProductsAddComponent } from './invoices-products/components/inv
   ],
   declarations: [
     ...invoicesProductsComponents,
-    InvoicesProductsAddComponent
+    InvoicesProductsAddToInvoiceComponent,
+    InvoicesProductsAddProductsComponent
   ],
   entryComponents: [
-    InvoicesProductsAddComponent,
+    InvoicesProductsAddToInvoiceComponent,
+    InvoicesProductsAddProductsComponent
   ],
   providers: [
     LanguageService
@@ -36,12 +40,15 @@ export class InvoicesProductsModule {
   constructor(
     menuItemActionProviders: MenuItemActionProviders,
     invoicesProductsMenuItemActionProvider: NgInvoicesProductsMenuItemActionProvider,
+    ngMenuItemProviders: NgMenuItemProviders,
+    menuItemProvider: NgInvoicesProductsMenuItemProvider,
 
     // Make entry components available
     coalescingResolver: CoalescingComponentFactoryResolver,
     localResolver: ComponentFactoryResolver
   ) {
     menuItemActionProviders.add(ProductsType.id, invoicesProductsMenuItemActionProvider);
+    ngMenuItemProviders.add(menuItemProvider);
 
     // Make entry components available
     coalescingResolver.registerResolver(localResolver);

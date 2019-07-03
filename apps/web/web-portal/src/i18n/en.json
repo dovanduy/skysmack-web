@@ -2741,11 +2741,13 @@
 		"FORM": {
 			"LABELS": {
 				"INVOICEID": "Invoice",
-				"AMOUNT": "Currency code"
+				"AMOUNT": "Currency code",
+				"PRODUCTID": "Product"
 			},
 			"PLACEHOLDERS": {
 				"INVOICEID": "Invoice",
-				"AMOUNT": "Amount"
+				"AMOUNT": "Amount",
+				"PRODUCTID": "Product"
 			},
 			"VALIDATION": {
 				"INVOICEID": {
@@ -2753,11 +2755,22 @@
 				},
 				"AMOUNT": {
 					"REQUIRED": "Amount is required."
+				},
+				"PRODUCTID": {
+					"REQUIRED": "Product is required."
 				}
 			}
 		},
 		"ADD_TO_PRODUCT": {
 			"TITLE": "Add to invoice",
+			"SUBMIT": "Submit"
+		},
+		"ADD_TO_INVOICE": {
+			"TITLE": "Add to invoice",
+			"SUBMIT": "Submit"
+		},
+		"ADD_PRODUCTS": {
+			"TITLE": "Add products",
 			"SUBMIT": "Submit"
 		}
 	}

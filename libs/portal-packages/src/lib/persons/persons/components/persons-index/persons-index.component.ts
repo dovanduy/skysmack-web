@@ -37,8 +37,7 @@ export class PersonsIndexComponent extends DocumentRecordIndexComponent<PersonsA
     public fieldsConfig: NgPersonsFieldsConfig,
     public fieldActions: NgFieldActions,
     public title: EntityComponentPageTitle,
-    public menuItemActionProviders: MenuItemActionProviders,
-    public signalR: NgSignalR
+    public menuItemActionProviders: MenuItemActionProviders
   ) {
     super(router, activatedRoute, actions, skysmackStore, store, fieldsConfig, fieldActions, menuItemActionProviders, title);
   }

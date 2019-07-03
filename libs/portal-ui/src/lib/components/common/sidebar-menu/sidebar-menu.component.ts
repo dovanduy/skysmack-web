@@ -39,7 +39,6 @@ export class SidebarMenuComponent implements OnInit {
     menuArea.display = this.sidebarMenu.primaryMenuItems.filter(x => x.area === menuItem.area && x.display).length > 0;
   }
 
-
   public removeEmptyMenuAreas() {
     const menuAreas = this.sidebarMenu.primaryMenuAreas;
     const menuItems = this.sidebarMenu.primaryMenuItems;

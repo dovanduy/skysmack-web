@@ -4,17 +4,20 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { NgInvoicesActions } from '@skysmack/ng-packages';
 import { NgSkysmackStore } from '@skysmack/ng-core';
 import { NgInvoicesStore } from '@skysmack/ng-packages';
-import { NgInvoicesProductsFieldsConfig } from '../../ng-invoices-products-fields-config';
 import { FormHelper } from '@skysmack/ng-ui';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { LocalObject } from '@skysmack/framework';
-import { Product } from 'libs/packages/products/src';
+import { NgInvoicesProductsAddProductsFieldsConfig } from '../../ng-invoices-products-add-products-fields-config';
+import { tap, take } from 'rxjs/operators';
+
+/**
+ * This component is used when clicking an invoice item in order to add products to it.
+ */
 
 @Component({
-  selector: 'ss-invoices-products-add',
-  templateUrl: './invoices-products-add.component.html'
+  selector: 'ss-invoices-products-add-products',
+  templateUrl: './invoices-products-add-products.component.html'
 })
-export class InvoicesProductsAddComponent extends RecordFormComponent<any, any, unknown> implements OnInit, OnDestroy {
+export class InvoicesProductsAddProductsComponent extends RecordFormComponent<any, any, unknown> implements OnInit, OnDestroy {
 
   constructor(
     public router: Router,
@@ -22,16 +25,16 @@ export class InvoicesProductsAddComponent extends RecordFormComponent<any, any, 
     public editorNavService: EditorNavService,
     public actions: NgInvoicesActions,
     public redux: NgSkysmackStore,
-    public fieldsConfig: NgInvoicesProductsFieldsConfig,
+    public fieldsConfig: NgInvoicesProductsAddProductsFieldsConfig,
     public store: NgInvoicesStore,
-    public dialogRef: MatDialogRef<InvoicesProductsAddComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: { packagePath: string, value: LocalObject<Product, Number> }
+    public dialogRef: MatDialogRef<InvoicesProductsAddProductsComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: { packagePath: string }
   ) {
     super(router, activatedRoute, editorNavService, actions, redux, store, fieldsConfig);
   }
 
   ngOnInit() {
-    this.fieldsConfig.productId = this.data.value.object.id;
+    this.fieldsConfig.invoiceId = Number(this.router.url.split('/items/')[1]);
     super.ngOnInit();
     this.setCreateFields();
   }

@@ -11,7 +11,7 @@ import { NgSkysmackStore } from '@skysmack/ng-core';
 import { map, take, switchMap } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
-export class NgInvoicesProductsFieldsConfig extends FieldsConfig<any, unknown> {
+export class NgInvoicesProductsAddToInvoiceFieldsConfig extends FieldsConfig<any, unknown> {
   public validation = new NgInvoicesProductsValidation();
   public area = INVOICES_PRODUCTS_AREA_KEY;
   public formRules: FormRule[] = [];

@@ -56,6 +56,7 @@ export class NgInvoiceItemsMenu extends SidebarMenu {
                 InvoicesPermissions.findInvoiceItemFields
             ]
         }));
+
         this.setBackButton();
     }
 

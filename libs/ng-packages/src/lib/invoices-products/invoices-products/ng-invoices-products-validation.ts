@@ -5,11 +5,15 @@ import { INVOICES_PRODUCTS_AREA_KEY } from '@skysmack/packages-invoices-products
 export class NgInvoicesProductsValidation extends Validation {
     public formErrors = {
         invoiceId: '',
+        productId: '',
         amount: ''
     };
 
     public validationMessages: StrIndex<{}> = {
         invoiceId: {
+            required: ''
+        },
+        productId: {
             required: ''
         },
         amount: {

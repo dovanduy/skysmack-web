@@ -33,8 +33,7 @@ export class ProductsIndexComponent extends DocumentRecordIndexComponent<Product
     public fieldsConfig: NgProductsFieldsConfig,
     public fieldActions: NgFieldActions,
     public title: EntityComponentPageTitle,
-    public menuItemActionProviders: MenuItemActionProviders,
-    @Inject(API_DOMAIN_INJECTOR_TOKEN) protected apiDomain: ApiDomain
+    public menuItemActionProviders: MenuItemActionProviders
   ) {
     super(router, activatedRoute, actions, redux, store, fieldsConfig, fieldActions, menuItemActionProviders, title);
   }

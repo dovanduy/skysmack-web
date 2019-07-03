@@ -9,7 +9,7 @@ import { PRODUCTS_AREA_KEY, Product } from '@skysmack/packages-products';
 import { InvoicesProductsType } from '@skysmack/packages-invoices-products';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
-import { InvoicesProductsAddComponent } from './invoices-products';
+import { InvoicesProductsAddToInvoiceComponent } from './invoices-products/components/invoices-products-add-to-invoice/invoices-products-add-to-invoice.component';
 
 @Injectable({ providedIn: 'root' })
 export class NgInvoicesProductsMenuItemActionProvider extends MenuItemActionProvider {
@@ -33,12 +33,12 @@ export class NgInvoicesProductsMenuItemActionProvider extends MenuItemActionProv
                         const entityActionStreams$ = packages.map(_package => {
                             return of([
                                 new MenuItem().asEventAction(`Add to invoice via: ${_package.object.name}`, (_this: NgInvoicesProductsMenuItemActionProvider, value: LocalObject<Product, Number>) => {
-                                    const dialogRef = _this.dialog.open(InvoicesProductsAddComponent, {
+                                    const dialogRef = _this.dialog.open(InvoicesProductsAddToInvoiceComponent, {
                                         width: '500px',
                                         data: { packagePath: _package.object.path, value }
                                     });
 
-                                    dialogRef.afterClosed().pipe(take(1)).subscribe(() => console.log('The dialog was closed'));
+                                    dialogRef.afterClosed().pipe(take(1)).subscribe(() => { });
                                 }, 'monetization_on', this)
                             ]);
                         });

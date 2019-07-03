@@ -16,9 +16,9 @@
                 (permissionsChecked)="permissionsChecked($event, menuItem)">
 
                 <!-- ACTION EVENT -->
-                <li *ngIf="menuItem.isActionEvent && (menuItem | showMenuItemAction:undefined) && menuItem.display">
-                  <span class="link"
-                    (click)="this.menuItemActionEvent.emit({ action: menuItem.action, _this: menuItem._this });">{{ menuItem.displayName | translate }}</span>
+                <li *ngIf="menuItem.isActionEvent && (menuItem | showMenuItemAction:undefined) && menuItem.display"
+                  (click)="menuItemActionEvent.emit({ action: menuItem.action, _this: menuItem._this });">
+                  <span class="link">{{ menuItem.displayName | translate }}</span>
                 </li>
 
                 <!-- URL EVENT -->
