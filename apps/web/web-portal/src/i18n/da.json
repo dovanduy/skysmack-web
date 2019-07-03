@@ -2025,7 +2025,7 @@
 				"TERMINALID": "Terminal",
 				"AMOUNT": "Mængde",
 				"REFERENCE": "Reference",
-				"CURRENCY": "Valuta"
+				"CURRENCYCODE": "Valuta"
 			},
 			"PLACEHOLDERS": {
 				"NAME": "Navn",
@@ -2036,7 +2036,7 @@
 				"TERMINALID": "Terminal",
 				"AMOUNT": "Mængde",
 				"REFERENCE": "Reference",
-				"CURRENCY": "Valuta"
+				"CURRENCYCODE": "Valuta"
 			},
 			"VALIDATION": {
 				"NAME": {
@@ -2060,7 +2060,7 @@
 				"INVOICEID": {
 					"REQUIRED": "Faktura ID er påkrævet."
 				},
-				"CURRENCY": {
+				"CURRENCYCODE": {
 					"REQUIRED": "Valuta er påkrævet."
 				}
 			}
@@ -2082,6 +2082,10 @@
 			"ACTIONS": "Handlinger",
 			"TYPES": "Typer"
 		},
+		"PAY": {
+            "TITLE": "Kreditkort betaling",
+            "BUTTON_PAY": "Betal"
+        },
 		"QUEUE": {
 			"ADDING": "Tilføjer terminal {{ id }}",
 			"UPDATING": "Opdatere terminal {{ id }}",

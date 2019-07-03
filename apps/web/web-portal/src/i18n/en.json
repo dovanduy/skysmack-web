@@ -2026,7 +2026,8 @@
 				"REFERENCE": "Reference",
 				"CURRENCY": "Currency",
 				"CONNECTION": "Connection",
-				"INVOICEID": "Invoice ID"
+				"INVOICEID": "Invoice ID",
+				"CURRENCYCODE": "Currency"
 			},
 			"PLACEHOLDERS": {
 				"NAME": "Name",
@@ -2039,7 +2040,8 @@
 				"REFERENCE": "Reference",
 				"CURRENCY": "Currency",
 				"CONNECTION": "Connection",
-				"INVOICEID": "Invoice ID"
+				"INVOICEID": "Invoice ID",
+				"CURRENCYCODE": "Currency"
 			},
 			"VALIDATION": {
 				"NAME": {
@@ -2071,6 +2073,9 @@
 				},
 				"INVOICEID": {
 					"REQUIRED": "Invoice ID is required."
+				},
+				"CURRENCYCODE": {
+					"REQUIRED": "Currency is required."
 				}
 			}
 		},
@@ -2124,6 +2129,10 @@
 			"ENTITY_ACTION": {
 				"TERMINAL_PAYMENT": "Card payment"
 			}
+		},
+		"PAY": {
+			"TITLE": "Card payment",
+			"BUTTON_PAY": "Pay"
 		}
 	},
 	"UI": {

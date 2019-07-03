@@ -10,7 +10,7 @@
                 "TERMINALID": "Terminal",
                 "AMOUNT": "Amount",
                 "INVOICEID": "Invoice ID",
-                "CURRENCY": "Currency"
+                "CURRENCYCODE": "Currency"
             },
             "PLACEHOLDERS": {
                 "NAME": "Name",
@@ -21,7 +21,7 @@
                 "TERMINALID": "Terminal",
                 "AMOUNT": "Amount",
                 "INVOICEID": "Invoice ID",
-                "CURRENCY": "Currency"
+                "CURRENCYCODE": "Currency"
             },
             "VALIDATION": {
                 "NAME": {
@@ -45,7 +45,7 @@
                 "INVOICEID": {
                     "REQUIRED": "Invoice ID is required."
                 },
-                "CURRENCY": {
+                "CURRENCYCODE": {
                     "REQUIRED": "Currency is required."
                 }
             }
@@ -66,6 +66,10 @@
             "MANAGE": "Manage",
             "ACTIONS": "Actions",
             "TYPES": "Types"
+        },
+        "PAY": {
+            "TITLE": "Card payment",
+            "BUTTON_PAY": "Pay"
         },
         "QUEUE": {
             "ADDING": "Adding terminal {{ id }}",
