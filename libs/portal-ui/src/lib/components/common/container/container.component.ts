@@ -1,4 +1,4 @@
-import { Component, Input, ViewChild, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
+import { Component, Input, ViewChild, OnInit, OnDestroy, ChangeDetectorRef, Output, EventEmitter } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { Router, RoutesRecognized } from '@angular/router';
 import { SidebarMenu } from './../../../models/sidebar-menu/sidebar-menu';
@@ -20,6 +20,8 @@ export class ContainerComponent implements OnInit, OnDestroy {
   @Input() public sidebarMenu: SidebarMenu;
   @ViewChild(MatSidenav, { static: false }) public sidenav: MatSidenav;
   @ViewChild('editornav', { static: false }) public editornav: MatSidenav;
+
+  @Output() public menuItemActionEvent = new EventEmitter<any>();
 
   public access$: Observable<boolean>;
   public authenticated$: Observable<boolean>;

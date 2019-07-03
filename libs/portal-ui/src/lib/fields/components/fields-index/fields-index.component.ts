@@ -18,7 +18,7 @@ import { MENU_ITEM_ACTIONS_EDIT, MENU_ITEM_ACTIONS_DELETE } from '../../../const
   templateUrl: './fields-index.component.html'
 })
 export class FieldsIndexComponent extends RecordIndexComponent<any, any, any> implements OnInit {
-  public entityActions: MenuItem[] = [
+  public menuItemActions: MenuItem[] = [
     new MenuItem().asUrlAction('edit', MENU_ITEM_ACTIONS_EDIT, 'edit'),
     new MenuItem().asEventAction(MENU_ITEM_ACTIONS_DELETE, this.delete, 'delete', this)
   ];

@@ -16,7 +16,7 @@ import { NgProductTypePriceChangesFieldsConfig } from '../../ng-product-type-pri
 export class ProductTypePriceChangesIndexComponent extends RecordIndexComponent<ProductTypePriceChangesAppState, ProductPriceChange, number> implements OnInit {
 
   public areaKey: string = PRODUCT_TYPE_PRICE_CHANGES_AREA_KEY;
-  public entityActions: MenuItem[] = [
+  public menuItemActions: MenuItem[] = [
     new MenuItem().asUrlAction('edit', MENU_ITEM_ACTIONS_EDIT, 'edit'),
     new MenuItem().asEventAction(MENU_ITEM_ACTIONS_DELETE, this.delete, 'delete', this)
   ];

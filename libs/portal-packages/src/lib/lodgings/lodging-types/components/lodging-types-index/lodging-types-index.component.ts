@@ -17,7 +17,7 @@ import { NgLodgingTypesFieldsConfig } from '../../ng-lodging-types-fields-config
 export class LodgingTypesIndexComponent extends DocumentRecordIndexComponent<LodgingTypesAppState, LodgingType, number> implements OnInit {
   public areaKey: string = LODGING_TYPES_AREA_KEY;
   public titleExtras = true;
-  public entityActions: MenuItem[] = [
+  public menuItemActions: MenuItem[] = [
     new MenuItem().asUrlAction('edit', MENU_ITEM_ACTIONS_EDIT, 'edit'),
     new MenuItem().asEventAction(MENU_ITEM_ACTIONS_DELETE, this.delete, 'delete', this)
   ];

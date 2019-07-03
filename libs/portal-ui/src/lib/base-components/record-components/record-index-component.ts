@@ -16,7 +16,7 @@ export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey>
     public pagedEntities$: Observable<LocalObject<TRecord, TKey>[]>;
     public pagedQuery = new PagedQuery();
     public menuItemActions$ = new BehaviorSubject<MenuItem[]>([]);
-    public entityActions: MenuItem[];
+    public menuItemActions: MenuItem[];
 
     public nextPageNumber = 1;
     public nextPageSize = this.pagedQuery.pageSize;
@@ -72,7 +72,7 @@ export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey>
         _this.actions.delete([value], _this.packagePath);
     }
 
-    public actionEvent(event: { action: Function, value: LocalObject<TRecord, TKey>, _this: any }) {
+    public actionEvent(event: { action: Function, value?: LocalObject<TRecord, TKey>, _this: any }) {
         event.action(event.value, event._this);
     }
 
@@ -178,11 +178,11 @@ export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey>
                         ).pipe(
                             distinctUntilChanged(),
                             map((values: [MenuItem[]]) => {
-                                return values.reduce((acc: MenuItem[], cur: MenuItem[]) => acc.concat(cur), []).concat(this.entityActions);
+                                return values.reduce((acc: MenuItem[], cur: MenuItem[]) => acc.concat(cur), []).concat(this.menuItemActions);
                             })
                         );
                     } else {
-                        return of(this.entityActions);
+                        return of(this.menuItemActions);
                     }
                 })
             )),

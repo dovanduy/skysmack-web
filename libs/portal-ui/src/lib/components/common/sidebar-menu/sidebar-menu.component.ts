@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { trigger, state, style, transition, animate } from '@angular/animations';
@@ -19,6 +19,7 @@ import { MenuItem } from '@skysmack/framework';
 })
 export class SidebarMenuComponent implements OnInit {
   @Input() public sidebarMenu: SidebarMenu;
+  @Output() public menuItemActionEvent = new EventEmitter<any>();
   public expansions: any = {};
 
   constructor(

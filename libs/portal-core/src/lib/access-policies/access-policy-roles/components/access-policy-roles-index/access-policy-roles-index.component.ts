@@ -19,7 +19,7 @@ export class AccessPolicyRolesIndexComponent extends RecordIndexComponent<Access
   public areaKey: string = ACCESS_POLICY_ROLES_AREA_KEY;
   public titleExtras = true;
 
-  public entityActions: MenuItem[] = [
+  public menuItemActions: MenuItem[] = [
     new MenuItem().asEventAction(MENU_ITEM_ACTIONS_DELETE, this.delete, 'delete', this)
   ];
 

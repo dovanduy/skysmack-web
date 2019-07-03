@@ -15,7 +15,7 @@ import { NgLodgingPricesFieldsConfig } from '../../ng-lodging-prices-fields-conf
 export class LodgingPricesIndexComponent extends RecordIndexComponent<LodgingPricesAppState, LodgingPrice, number> implements OnInit {
 
   public areaKey: string = LODGING_PRICES_AREA_KEY;
-  public entityActions: MenuItem[] = [
+  public menuItemActions: MenuItem[] = [
     new MenuItem().asUrlAction('edit', MENU_ITEM_ACTIONS_EDIT, 'edit'),
     new MenuItem().asEventAction(MENU_ITEM_ACTIONS_DELETE, this.delete, 'delete', this)
   ];

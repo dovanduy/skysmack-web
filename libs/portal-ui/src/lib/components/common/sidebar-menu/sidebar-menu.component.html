@@ -14,11 +14,21 @@
             <ng-container *ngIf="menuItem.area === menuArea.area">
               <ng-template [inAnyPermission]="menuItem.permissions"
                 (permissionsChecked)="permissionsChecked($event, menuItem)">
-                <li *ngIf="menuItem.display">
+
+                <!-- ACTION EVENT  -->
+                <li *ngIf="menuItem.isActionEvent && (menuItem | showMenuItemAction:undefined) && menuItem.display">
+                  <span
+                    (click)="this.menuItemActionEvent.emit({ action: menuItem.action, value: undefined, _this: menuItem._this });">{{ menuItem.displayName | translate }}</span>
+                </li>
+
+                <!-- URL EVENT -->
+                <li *ngIf="!menuItem.isActionEvent && menuItem.display">
                   <a [routerLink]="[menuItem.url]">
                     {{ menuItem.displayName | translate }}
                   </a>
                 </li>
+
+
               </ng-template>
             </ng-container>
           </ng-container>

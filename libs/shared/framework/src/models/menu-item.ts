@@ -33,6 +33,12 @@ export class MenuItem {
         return this;
     }
 
+    // Temp helper until above two functions have been refactored. Pt. only used in persons menu.
+    public setArea(area: string) {
+        this.area = area;
+        return this;
+    }
+
     public setPermissions(permissions: string[]): MenuItem {
         this.permissions = permissions;
         return this;
@@ -47,18 +53,3 @@ export class MenuItem {
         return this.showLogic ? this.showLogic(entity) : true;
     }
 }
-
-// Old MenuItem. Kept as temp reference. If you think this has no further use, feel free to delete it.
-// export class MenuItem {
-//     public url: string;
-//     public displayName: string;
-//     public area: string;
-//     public order: number;
-//     public icon: string;
-//     public permissions?: string[]
-//     public display = true;
-
-//     public constructor(init?: Partial<MenuItem>) {
-//         Object.assign(this, init);
-//     }
-// }

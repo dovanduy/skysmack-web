@@ -11,7 +11,7 @@ import { NgAssignmentAllMenu } from './../../ng-assignments-all-menu';
 })
 export class AssignmentsAllIndexComponent implements OnInit {
 
-  public entityActions: MenuItem[] = [
+  public menuItemActions: MenuItem[] = [
     new MenuItem().asUrlAction('edit', MENU_ITEM_ACTIONS_EDIT, 'edit'),
   ];
 

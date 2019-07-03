@@ -56,6 +56,8 @@ export class NgPersonsMenu extends SidebarMenu {
                 PersonsPermissions.findPersonsFields
             ]
         }));
+
+        this.primaryMenuItems.push(new MenuItem().asEventAction('Test', () => console.log('Works!'), '', this).setArea('manage'));
     }
 
     public setSpeedDialMenu() {

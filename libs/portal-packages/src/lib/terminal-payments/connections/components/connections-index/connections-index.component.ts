@@ -18,7 +18,7 @@ import { take } from 'rxjs/operators';
 export class ConnectionsIndexComponent extends RecordIndexComponent<ConnectionsAppState, Connection, ConnectionKey> implements OnInit {
   public areaKey: string = CONNECTIONS_AREA_KEY;
   public titleExtras = true;
-  public entityActions: MenuItem[] = [
+  public menuItemActions: MenuItem[] = [
     new MenuItem().asEventAction('Actions', this.terminalActions, 'settings', this).setShowLogic((entity: LocalObject<Connection, ConnectionKey>) => {
       if (entity.object.client && entity.object.client.object.online) {
         if (entity.object.status == TerminalStatus.Open || entity.object.status == TerminalStatus.Connected) {

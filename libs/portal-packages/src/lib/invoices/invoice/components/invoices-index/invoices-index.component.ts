@@ -17,7 +17,7 @@ import { NgInvoicesFieldsConfig } from '../../ng-invoices-fields-config';
 export class InvoicesIndexComponent extends DocumentRecordIndexComponent<InvoicesAppState, Invoice, number> implements OnInit {
 
   public areaKey: string = INVOICES_AREA_KEY;
-  public entityActions: MenuItem[] = [
+  public menuItemActions: MenuItem[] = [
     new MenuItem().asUrlAction('items', 'INVOICES.ENTITY_ACTION.ITEMS', 'reorder'),
     new MenuItem().asUrlAction('details', MENU_ITEM_ACTION_DETAILS, 'list'),
     new MenuItem().asUrlAction('edit', MENU_ITEM_ACTIONS_EDIT, 'edit'),

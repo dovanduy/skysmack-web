@@ -18,7 +18,7 @@ import { NgSkysmackStore } from '@skysmack/ng-core';
 export class LodgingsReservationsIndexComponent extends RecordIndexComponent<LodgingReservationsAppState, LodgingReservation, number> implements OnInit {
   public translationPrefix = 'LODGING_RESERVATIONS.ENTITY_ACTIONS.';
 
-  public entityActions: MenuItem[] = [
+  public menuItemActions: MenuItem[] = [
     // Checkin
     new MenuItem().asEventAction(`${this.translationPrefix}CHECKIN`, this.checkIn, 'label', this).setShowLogic((entity: LocalObject<LodgingReservation, number>) => {
       return EnumHelpers.toIndexEnum(LodgingReservation.statusEnum)[entity.object.status] === LodgingReservation.statusEnum.Reserved;

@@ -17,7 +17,7 @@ export class AssignmentsIndexComponent extends RecordIndexComponent<AssignmentsA
 
   public areaKey: string = ASSIGNMENTS_AREA_KEY;
   public titleExtras = true;
-  public entityActions: MenuItem[] = [
+  public menuItemActions: MenuItem[] = [
     new MenuItem().asUrlAction('edit', MENU_ITEM_ACTIONS_EDIT, 'edit'),
     new MenuItem().asEventAction(MENU_ITEM_ACTIONS_DELETE, this.delete, 'delete', this)
   ];

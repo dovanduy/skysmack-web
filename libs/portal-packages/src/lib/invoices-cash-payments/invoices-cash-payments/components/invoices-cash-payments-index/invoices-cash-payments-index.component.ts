@@ -17,7 +17,7 @@ import { NgInvoicesCashPaymentsFieldsConfig } from '../../ng-invoices-cash-payme
 export class InvoicesCashPaymentsIndexComponent extends RecordIndexComponent<InvoicesCashPaymentsAppState, CashPayment, number> implements OnInit {
 
   public areaKey: string = INVOICES_CASH_PAYMENTS_AREA_KEY;
-  public entityActions: MenuItem[] = [
+  public menuItemActions: MenuItem[] = [
     new MenuItem().asUrlAction('edit', MENU_ITEM_ACTIONS_EDIT, 'edit'),
     new MenuItem().asEventAction(MENU_ITEM_ACTIONS_DELETE, this.delete, 'delete', this)
   ];

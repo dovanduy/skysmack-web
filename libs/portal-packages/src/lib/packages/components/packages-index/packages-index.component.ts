@@ -16,7 +16,7 @@ import { Package } from '@skysmack/framework';
 })
 export class PackagesIndexComponent extends RecordIndexComponent<PackagesAppState, Package, string> implements OnInit {
   public areaKey: string = PACKAGES_AREA_KEY;
-  public entityActions: MenuItem[] = [
+  public menuItemActions: MenuItem[] = [
     new MenuItem().asUrlAction('edit', MENU_ITEM_ACTIONS_EDIT, 'edit'),
     new MenuItem().asUrlAction('edit/path', 'PACKAGES.EDIT.PACKAGE_PATH', 'link'),
     new MenuItem().asEventAction(MENU_ITEM_ACTIONS_DELETE, this.delete, 'delete', this)

@@ -16,7 +16,7 @@ import { NgSkysmackStore } from '@skysmack/ng-core';
 export class UsersIndexComponent extends RecordIndexComponent<UsersAppState, User, number> implements OnInit {
 
   public areaKey: string = USERS_AREA_KEY;
-  public entityActions: MenuItem[] = [
+  public menuItemActions: MenuItem[] = [
     new MenuItem().asUrlAction('edit', MENU_ITEM_ACTIONS_EDIT, 'edit'),
     new MenuItem().asUrlAction('edit/set-password', 'USERS.ENTITY_ACTION.SET_PASSWORD', 'https'),
     new MenuItem().asUrlAction('edit/roles', 'USERS.ENTITY_ACTION.ROLES', 'android'),
