@@ -2650,5 +2650,38 @@
 		"CLIENTS": "Klienter",
 		"RECEIPTS": "Kvitteringer",
 		"CONNECTIONS": "Forbindelser"
+	},
+	"INVOICES_PRODUCTS": {
+		"FORM": {
+			"LABELS": {
+				"INVOICEID": "Faktura",
+				"PRODUCTID": "Produkt",
+				"AMOUNT": "Antal"
+			},
+			"PLACEHOLDERS": {
+				"INVOICEID": "Faktura",
+				"PRODUCTID": "Produkt",
+				"AMOUNT": "Antal"
+			},
+			"VALIDATION": {
+				"INVOICEID": {
+					"REQUIRED": "Faktura is required."
+				},
+				"PRODUCTID": {
+					"REQUIRED": "Produkt is required."
+				},
+				"AMOUNT": {
+					"REQUIRED": "Antal is required."
+				}
+			}
+		},
+		"ADD_TO_INVOICE": {
+			"TITLE": "Tilføj til faktura",
+			"SUBMIT": "Opdater"
+		},
+		"ADD_PRODUCTS": {
+			"TITLE": "Tilføj produkter",
+			"SUBMIT": "Opdater"
+		}
 	}
 }

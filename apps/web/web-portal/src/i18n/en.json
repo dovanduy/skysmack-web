@@ -2741,7 +2741,7 @@
 		"FORM": {
 			"LABELS": {
 				"INVOICEID": "Invoice",
-				"AMOUNT": "Currency code",
+				"AMOUNT": "Amount",
 				"PRODUCTID": "Product"
 			},
 			"PLACEHOLDERS": {

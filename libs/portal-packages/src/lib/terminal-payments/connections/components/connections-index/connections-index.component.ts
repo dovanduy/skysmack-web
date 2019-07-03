@@ -25,7 +25,7 @@ export class ConnectionsIndexComponent extends RecordIndexComponent<ConnectionsA
           return true;
         }
       }
-      return true;
+      return false;
     }),
     new MenuItem().asEventAction('Connect', this.connect, 'control_point', this).setShowLogic((entity: LocalObject<Connection, ConnectionKey>) => {
       if (entity.object.client && entity.object.client.object.online) {

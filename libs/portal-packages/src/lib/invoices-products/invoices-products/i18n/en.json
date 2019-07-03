@@ -4,7 +4,7 @@
             "LABELS": {
                 "INVOICEID": "Invoice",
                 "PRODUCTID": "Product",
-                "AMOUNT": "Currency code"
+                "AMOUNT": "Amount"
             },
             "PLACEHOLDERS": {
                 "INVOICEID": "Invoice",
