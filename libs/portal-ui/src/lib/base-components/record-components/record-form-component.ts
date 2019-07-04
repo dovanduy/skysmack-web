@@ -1,4 +1,4 @@
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, UrlSegment } from '@angular/router';
 import { OnInit, OnDestroy } from '@angular/core';
 import { Record, LocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { EditorNavService } from './../../components/common/container/editor-nav.service';
@@ -6,7 +6,7 @@ import { FormBaseComponent } from './../form-base-component';
 import { NgSkysmackStore } from '@skysmack/ng-core';
 import { EntityActions, EntityStore } from '@skysmack/redux';
 import { FormHelper } from '@skysmack/ng-ui';
-import { switchMap, take, tap } from 'rxjs/operators';
+import { switchMap, take, tap, map } from 'rxjs/operators';
 import { combineLatest } from 'rxjs';
 import { EntityFieldsConfig } from '../../fields/entity-fields-config';
 
@@ -27,12 +27,27 @@ export class RecordFormComponent<TAppState, TRecord extends Record<TKey>, TKey> 
     }
 
     ngOnInit() {
+        this.setSidebarCloseUrl();
         super.ngOnInit();
     }
 
     ngOnDestroy() {
         this.editorNavService.hideEditorNav();
         super.ngOnDestroy();
+    }
+
+    protected setSidebarCloseUrl() {
+        this.activatedRoute.url.pipe(
+            map((pathSegments: UrlSegment[]) => {
+                const nonEmptyPathSegments = pathSegments.filter(x => x.path.length > 0).map(x => x.path);
+                if (nonEmptyPathSegments.length > 0) {
+                    this.editorNavService.redirectPath = this.router.url.substring(0, this.router.url.length - nonEmptyPathSegments.join('/').length - 1);
+                } else {
+                    this.editorNavService.redirectPath = '';
+                }
+            }),
+            take(1)
+        ).subscribe();
     }
 
     protected setCreateFields() {

@@ -53,7 +53,7 @@ export class NgAssignmentAllMenu extends SidebarMenu {
     }
 
     public setSpeedDialMenu() {
-        this.speedDialMenu = [
+        this.speedDialMenuItems = [
         ];
     }
 }

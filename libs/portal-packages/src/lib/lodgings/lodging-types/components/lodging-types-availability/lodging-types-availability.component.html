@@ -1,8 +1,9 @@
-<ss-container [sidebarMenu]="sidebarMenu">
+<ss-container [sidebarMenu]="sidebarMenu" (menuItemActionEvent)="actionEvent($event)">
 
   <!-- Lodgings selection -->
   <mat-form-field>
-    <mat-select [(value)]="selectedLodgingTypeIds" [placeholder]="'LODGING_TYPES.AVAILABILITY.PLACEHOLDER' | translate" multiple>
+    <mat-select [(value)]="selectedLodgingTypeIds" [placeholder]="'LODGING_TYPES.AVAILABILITY.PLACEHOLDER' | translate"
+      multiple>
       <mat-option *ngFor="let opt of lodgingTypeOptions$ | async" [value]="opt.value"
         (click)="getAvailableLodgingTypes()">
         {{opt.displayName}}</mat-option>
@@ -21,7 +22,7 @@
             freeLodgingTypes.count }}</p>
           <p *ngIf="freeLodgingTypes.count === 0" style="color:black;">{{ freeLodgingTypes.name }}: {{
             freeLodgingTypes.count }}</p>
-            <p *ngIf="freeLodgingTypes.count < 0" style="color:red;">{{ freeLodgingTypes.name }}: {{
+          <p *ngIf="freeLodgingTypes.count < 0" style="color:red;">{{ freeLodgingTypes.name }}: {{
               freeLodgingTypes.count }}</p>
         </ng-container>
       </div>

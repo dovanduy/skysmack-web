@@ -2,22 +2,21 @@ import { BaseComponent } from '../base-component';
 import { Router, ActivatedRoute } from '@angular/router';
 import { EntityActions, EntityStore } from '@skysmack/redux';
 import { NgSkysmackStore } from '@skysmack/ng-core';
-import { LocalObject, LocalPage, PagedQuery, LoadingState, linq, DisplayColumn, defined } from '@skysmack/framework';
+import { LocalObject, LocalPage, PagedQuery, LoadingState, linq, DisplayColumn, defined, MenuItem } from '@skysmack/framework';
 import { Observable, BehaviorSubject, combineLatest, of } from 'rxjs';
 import { OnInit } from '@angular/core';
 import { Record } from '@skysmack/framework';
 import { map, switchMap, distinctUntilChanged, tap } from 'rxjs/operators';
 import { EntityFieldsConfig } from '../../fields/entity-fields-config';
 import { EntityComponentPageTitle } from '../../models/entity-component-page-title';
-import { EntityAction } from '@skysmack/ng-ui';
-import { EntityActionProviders } from '../../entity-actions/entity-action-providers';
+import { MenuItemActionProviders } from '../../menu-item-actions/menu-item-action-providers';
 
 export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey> extends BaseComponent<TAppState, TKey> implements OnInit {
     public pages$: BehaviorSubject<LocalPage<TKey>[]> = new BehaviorSubject<LocalPage<TKey>[]>([]);
     public pagedEntities$: Observable<LocalObject<TRecord, TKey>[]>;
     public pagedQuery = new PagedQuery();
-    public entityActions$ = new BehaviorSubject<EntityAction[]>([]);
-    public entityActions: EntityAction[];
+    public menuItemActions$ = new BehaviorSubject<MenuItem[]>([]);
+    public menuItemActions: MenuItem[];
 
     public nextPageNumber = 1;
     public nextPageSize = this.pagedQuery.pageSize;
@@ -36,7 +35,7 @@ export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey>
         public skysmackStore: NgSkysmackStore,
         public store: EntityStore<any, TKey>,
         public fieldsConfig: EntityFieldsConfig<any, TKey>,
-        public entityActionProviders: EntityActionProviders,
+        public menuItemActionProviders: MenuItemActionProviders,
         public title?: EntityComponentPageTitle,
     ) {
         super(router, activatedRoute, skysmackStore, title);
@@ -69,12 +68,12 @@ export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey>
         );
     }
 
-    protected delete(value: LocalObject<TRecord, TKey>, _this: RecordIndexComponent<any, any, any>) {
+    protected delete(_this: RecordIndexComponent<any, any, any>, value: LocalObject<TRecord, TKey>) {
         _this.actions.delete([value], _this.packagePath);
     }
 
-    public actionEvent(event: { action: Function, value: LocalObject<TRecord, TKey>, _this: any }) {
-        event.action(event.value, event._this);
+    public actionEvent(event: { action: Function, _this: any, value?: LocalObject<TRecord, TKey> }) {
+        event.action(event._this, event.value);
     }
 
     public requestPage(force = false) {
@@ -168,26 +167,26 @@ export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey>
 
     public setEntityActions(): void {
         this.subscriptionHandler.register(this.loadedPackage$.pipe(
-            switchMap(loadedPackage => this.entityActionProviders.providers$.pipe(
+            switchMap(loadedPackage => this.menuItemActionProviders.providers$.pipe(
                 switchMap(providers => {
                     const extractedProviders = providers[loadedPackage && loadedPackage.packageManifest && loadedPackage.packageManifest.id];
                     if (extractedProviders && extractedProviders.length > 0) {
                         return combineLatest(
                             extractedProviders.map(provider => {
-                                return provider.getEntityActions(loadedPackage._package.path, this.areaKey);
+                                return provider.getMenuItemActions(loadedPackage._package.path, this.areaKey);
                             })
                         ).pipe(
                             distinctUntilChanged(),
-                            map((values: [EntityAction[]]) => {
-                                return values.reduce((acc: EntityAction[], cur: EntityAction[]) => acc.concat(cur), []).concat(this.entityActions);
+                            map((values: [MenuItem[]]) => {
+                                return values.reduce((acc: MenuItem[], cur: MenuItem[]) => acc.concat(cur), []).concat(this.menuItemActions);
                             })
                         );
                     } else {
-                        return of(this.entityActions);
+                        return of(this.menuItemActions);
                     }
                 })
             )),
-            map(x => this.entityActions$.next(x))
+            map(x => this.menuItemActions$.next(x))
         ).subscribe());
     }
 }

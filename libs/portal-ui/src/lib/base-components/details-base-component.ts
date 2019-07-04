@@ -1,8 +1,8 @@
 import { NgSkysmackStore } from '@skysmack/ng-core';
 import { combineLatest } from 'rxjs';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, UrlSegment } from '@angular/router';
 import { OnInit, OnDestroy } from '@angular/core';
-import { switchMap } from 'rxjs/operators';
+import { switchMap, map, take } from 'rxjs/operators';
 import { BaseComponent } from './base-component';
 import { EntityFieldsConfig } from '../fields';
 import { EntityActions, EntityStore } from '@skysmack/redux';
@@ -23,6 +23,7 @@ export class DetailsBaseComponent<TAppState, TKey> extends BaseComponent<TAppSta
     }
 
     ngOnInit() {
+        this.setSidebarCloseUrl();
         super.ngOnInit();
         this.editorNavService.showEditorNav();
         this.actions.getSingle(this.packagePath, this.entityId);
@@ -31,6 +32,20 @@ export class DetailsBaseComponent<TAppState, TKey> extends BaseComponent<TAppSta
             this.loadedPackage$,
             this.store.getSingle(this.packagePath, this.entityId)
         ).pipe(switchMap(([loadedPackage, record]) => this.fieldsConfig.getFields(loadedPackage, record)));
+    }
+
+    protected setSidebarCloseUrl() {
+        this.activatedRoute.url.pipe(
+            map((pathSegments: UrlSegment[]) => {
+                const nonEmptyPathSegments = pathSegments.filter(x => x.path.length > 0).map(x => x.path);
+                if (nonEmptyPathSegments.length > 0) {
+                    this.editorNavService.redirectPath = this.router.url.substring(0, this.router.url.length - nonEmptyPathSegments.join('/').length - 1);
+                } else {
+                    this.editorNavService.redirectPath = '';
+                }
+            }),
+            take(1)
+        ).subscribe();
     }
 
     ngOnDestroy() {

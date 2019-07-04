@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { EntityComponentPageTitle, RecordIndexComponent, EntityActionProviders, ENTITY_ACTIONS_EDIT, ENTITY_ACTIONS_DELETE } from '@skysmack/portal-ui';
+import { EntityComponentPageTitle, RecordIndexComponent, MenuItemActionProviders, MENU_ITEM_ACTIONS_EDIT, MENU_ITEM_ACTIONS_DELETE } from '@skysmack/portal-ui';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgAccessPolicyRulesActions } from '@skysmack/ng-core';
 import { NgSkysmackStore } from '@skysmack/ng-core';
 import { NgAccessPolicyRulesStore } from '@skysmack/ng-core';
-import { EntityAction } from '@skysmack/ng-ui';
+import { MenuItem } from '@skysmack/framework';
 import { AccessPolicyRulesAppState, AccessPolicyRule, ACCESS_POLICY_RULES_AREA_KEY } from '@skysmack/packages-skysmack-core';
 import { NgAccessPolicyRulesMenu } from '../../ng-access-policy-rules-menu';
 import { NgAccessPolicyRulesFieldsConfig } from '../../ng-access-policy-rules-fields-config';
@@ -18,9 +18,9 @@ export class AccessPolicyRulesIndexComponent extends RecordIndexComponent<Access
   public areaKey: string = ACCESS_POLICY_RULES_AREA_KEY;
   public titleExtras = true;
 
-  public entityActions: EntityAction[] = [
-    new EntityAction().asUrlAction('edit', ENTITY_ACTIONS_EDIT, 'edit'),
-    new EntityAction().asEventAction(ENTITY_ACTIONS_DELETE, this.delete, 'delete', this)
+  public menuItemActions: MenuItem[] = [
+    new MenuItem().asUrlAction('edit', MENU_ITEM_ACTIONS_EDIT, 'edit'),
+    new MenuItem().asEventAction(MENU_ITEM_ACTIONS_DELETE, this.delete, 'delete', this)
   ];
 
   constructor(
@@ -32,9 +32,9 @@ export class AccessPolicyRulesIndexComponent extends RecordIndexComponent<Access
     public store: NgAccessPolicyRulesStore,
     public sidebarMenu: NgAccessPolicyRulesMenu,
     public fieldsConfig: NgAccessPolicyRulesFieldsConfig,
-    public entityActionProviders: EntityActionProviders
+    public menuItemActionProviders: MenuItemActionProviders
   ) {
-    super(router, activatedRoute, actions, redux, store, fieldsConfig, entityActionProviders, title);
+    super(router, activatedRoute, actions, redux, store, fieldsConfig, menuItemActionProviders, title);
 
   }
 

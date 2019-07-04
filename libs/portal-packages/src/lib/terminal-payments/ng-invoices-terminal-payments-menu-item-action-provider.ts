@@ -1,26 +1,29 @@
 import { Injectable } from '@angular/core';
-import { EntityAction } from '@skysmack/ng-ui';
-import { map, switchMap, } from 'rxjs/operators';
+import { MenuItem } from '@skysmack/framework';
+import { map, switchMap, take, } from 'rxjs/operators';
 import { Observable, combineLatest, of } from 'rxjs';
 import { StrIndex, LocalObject } from '@skysmack/framework';
-import { EntityActionProvider } from '@skysmack/portal-ui';
+import { MenuItemActionProvider } from '@skysmack/portal-ui';
 import { NgSkysmackStore } from '@skysmack/ng-core';
-import { INVOICES_AREA_KEY } from '@skysmack/packages-invoices';
+import { INVOICES_AREA_KEY, Invoice } from '@skysmack/packages-invoices';
 import { CashPayment } from '@skysmack/packages-invoices-cash-payments';
 import { TerminalPaymentsType } from '@skysmack/packages-terminal-payments';
+import { MatDialog } from '@angular/material/dialog';
+import { TerminalsPayComponent } from './terminals';
 
 @Injectable({ providedIn: 'root' })
-export class NgInvoicesTerminalPaymentsEntityActionProvider extends EntityActionProvider {
+export class NgInvoicesTerminalPaymentsMenuItemActionProvider extends MenuItemActionProvider {
 
     public register: StrIndex<boolean> = {};
 
     constructor(
-        public skysmackStore: NgSkysmackStore
+        public skysmackStore: NgSkysmackStore,
+        public dialog: MatDialog
     ) {
         super();
     }
 
-    public getEntityActions(packagePath: string, area: string, entity?: LocalObject<CashPayment, number>): Observable<EntityAction[]> {
+    public getMenuItemActions(packagePath: string, area: string, entity?: LocalObject<CashPayment, number>): Observable<MenuItem[]> {
         if (area === INVOICES_AREA_KEY) {
             return this.skysmackStore.getPackages().pipe(
                 map(packages => packages.filter(_package => _package.object.type === TerminalPaymentsType.id && _package.object.dependencies[0] === packagePath)),
@@ -28,7 +31,14 @@ export class NgInvoicesTerminalPaymentsEntityActionProvider extends EntityAction
                     if (packages && packages.length > 0) {
                         const entityActionStreams$ = packages.map(_package => {
                             return of([
-                                new EntityAction().asUrlAction(`/${_package.object.path}/terminals`, 'TERMINALS.ENTITY_ACTION_PROVIDER.ENTITY_ACTION.TERMINAL_PAYMENT', 'payment', 'pay')
+                                new MenuItem().asEventAction(`TERMINALS.ENTITY_ACTION_PROVIDER.ENTITY_ACTION.TERMINAL_PAYMENT`, (_this: NgInvoicesTerminalPaymentsMenuItemActionProvider, value: LocalObject<Invoice, number>) => {
+                                    const dialogRef = _this.dialog.open(TerminalsPayComponent, {
+                                        width: '500px',
+                                        data: { packagePath: _package.object.path, value }
+                                    });
+
+                                    dialogRef.afterClosed().pipe(take(1)).subscribe(() => { });
+                                }, 'payment', this)
                             ]);
                         });
                         return combineLatest(entityActionStreams$);

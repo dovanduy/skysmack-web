@@ -26,6 +26,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { CdkAccordionModule } from '@angular/cdk/accordion';
 import { ScrollDispatchModule } from '@angular/cdk/scrolling';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   imports: [
@@ -55,7 +56,8 @@ import { ScrollDispatchModule } from '@angular/cdk/scrolling';
     MatProgressBarModule,
     MatDividerModule,
     MatSnackBarModule,
-    MatBadgeModule
+    MatBadgeModule,
+    MatDialogModule
 
   ],
   exports: [
@@ -85,7 +87,8 @@ import { ScrollDispatchModule } from '@angular/cdk/scrolling';
     MatProgressBarModule,
     MatDividerModule,
     MatSnackBarModule,
-    MatBadgeModule
+    MatBadgeModule,
+    MatDialogModule
   ],
   providers: [
   ]

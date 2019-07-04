@@ -2025,7 +2025,7 @@
 				"TERMINALID": "Terminal",
 				"AMOUNT": "Mængde",
 				"REFERENCE": "Reference",
-				"CURRENCY": "Valuta"
+				"CURRENCYCODE": "Valuta"
 			},
 			"PLACEHOLDERS": {
 				"NAME": "Navn",
@@ -2036,7 +2036,7 @@
 				"TERMINALID": "Terminal",
 				"AMOUNT": "Mængde",
 				"REFERENCE": "Reference",
-				"CURRENCY": "Valuta"
+				"CURRENCYCODE": "Valuta"
 			},
 			"VALIDATION": {
 				"NAME": {
@@ -2057,10 +2057,10 @@
 				"AMOUNT": {
 					"REQUIRED": "Mængde er påkrævet."
 				},
-				"REFERENCE": {
-					"REQUIRED": "Reference er påkrævet."
+				"INVOICEID": {
+					"REQUIRED": "Faktura ID er påkrævet."
 				},
-				"CURRENCY": {
+				"CURRENCYCODE": {
 					"REQUIRED": "Valuta er påkrævet."
 				}
 			}
@@ -2082,6 +2082,10 @@
 			"ACTIONS": "Handlinger",
 			"TYPES": "Typer"
 		},
+		"PAY": {
+            "TITLE": "Kreditkort betaling",
+            "BUTTON_PAY": "Betal"
+        },
 		"QUEUE": {
 			"ADDING": "Tilføjer terminal {{ id }}",
 			"UPDATING": "Opdatere terminal {{ id }}",
@@ -2650,5 +2654,38 @@
 		"CLIENTS": "Klienter",
 		"RECEIPTS": "Kvitteringer",
 		"CONNECTIONS": "Forbindelser"
+	},
+	"INVOICES_PRODUCTS": {
+		"FORM": {
+			"LABELS": {
+				"INVOICEID": "Faktura",
+				"PRODUCTID": "Produkt",
+				"AMOUNT": "Antal"
+			},
+			"PLACEHOLDERS": {
+				"INVOICEID": "Faktura",
+				"PRODUCTID": "Produkt",
+				"AMOUNT": "Antal"
+			},
+			"VALIDATION": {
+				"INVOICEID": {
+					"REQUIRED": "Faktura is required."
+				},
+				"PRODUCTID": {
+					"REQUIRED": "Produkt is required."
+				},
+				"AMOUNT": {
+					"REQUIRED": "Antal is required."
+				}
+			}
+		},
+		"ADD_TO_INVOICE": {
+			"TITLE": "Tilføj til faktura",
+			"SUBMIT": "Opdater"
+		},
+		"ADD_PRODUCTS": {
+			"TITLE": "Tilføj produkter",
+			"SUBMIT": "Opdater"
+		}
 	}
 }

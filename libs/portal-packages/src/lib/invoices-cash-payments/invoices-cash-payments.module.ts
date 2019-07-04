@@ -1,14 +1,16 @@
-import { NgModule } from '@angular/core';
+import { NgModule, ComponentFactoryResolver } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 
-import { LanguageService, EntityActionProviders } from '@skysmack/portal-ui';
+import { LanguageService, MenuItemActionProviders } from '@skysmack/portal-ui';
 import { InvoicesCashPaymentsRoutingModule } from './invoices-cash-payments-routing.module';
 import { NgInvoicesCashPaymentsModule } from '@skysmack/ng-packages';
 import { PortalUiModule, FieldsModule } from '@skysmack/portal-ui';
 import { invoicesCashPaymentsComponents } from './invoices-cash-payments/components/invoices-cash-payments-components';
-import { NgInvoicesCashPaymentsEntityActionProvider } from './ng-invoices-cash-payments-entity-action-provider';
+import { NgInvoicesCashPaymentsMenuItemActionProvider } from './ng-invoices-cash-payments-menu-item-action-provider';
 import { InvoicesType } from '@skysmack/packages-invoices';
+import { InvoicesCashPaymentsPayComponent } from './invoices-cash-payments/components';
+import { CoalescingComponentFactoryResolver } from '@skysmack/ng-framework';
 
 @NgModule({
   imports: [
@@ -22,15 +24,24 @@ import { InvoicesType } from '@skysmack/packages-invoices';
   declarations: [
     ...invoicesCashPaymentsComponents,
   ],
+  entryComponents: [
+    InvoicesCashPaymentsPayComponent
+  ],
   providers: [
     LanguageService
   ]
 })
 export class InvoicesCashPaymentsModule {
   constructor(
-    entityActionProviders: EntityActionProviders,
-    invoicesCashPaymentsEntityProvider: NgInvoicesCashPaymentsEntityActionProvider,
+    menuItemActionProviders: MenuItemActionProviders,
+    invoicesCashPaymentsMenuItemActionProvider: NgInvoicesCashPaymentsMenuItemActionProvider,
+    // Make entry components available
+    coalescingResolver: CoalescingComponentFactoryResolver,
+    localResolver: ComponentFactoryResolver
   ) {
-    entityActionProviders.add(InvoicesType.id, invoicesCashPaymentsEntityProvider);
+    menuItemActionProviders.add(InvoicesType.id, invoicesCashPaymentsMenuItemActionProvider);
+
+    // Make entry components available
+    coalescingResolver.registerResolver(localResolver);
   }
 }

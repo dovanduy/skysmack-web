@@ -79,7 +79,7 @@ export class NgReservationsPricingsMenu extends SidebarMenu {
     }
 
     public setSpeedDialMenu() {
-        this.speedDialMenu = [
+        this.speedDialMenuItems = [
         ];
     }
 }

@@ -65,6 +65,6 @@ export class NgTerminalPaymentsIndexMenu extends SidebarMenu {
     }
 
     public setSpeedDialMenu() {
-        this.speedDialMenu = [];
+        this.speedDialMenuItems = [];
     }
 }

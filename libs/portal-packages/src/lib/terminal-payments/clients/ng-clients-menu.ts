@@ -45,7 +45,7 @@ export class NgClientsMenu extends SidebarMenu {
     }
 
     public setSpeedDialMenu() {
-        this.speedDialMenu = [
+        this.speedDialMenuItems = [
             new MenuItem({
                 url: 'create',
                 displayName: this.translationPrefix + 'CREATE',

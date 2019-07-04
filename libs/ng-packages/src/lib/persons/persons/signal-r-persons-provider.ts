@@ -1,7 +1,7 @@
 import { SignalRProvider } from '@skysmack/signal-r';
 import { Inject, Injectable } from '@angular/core';
-import { PERSONS_AREA_KEY } from 'libs/packages/persons/src';
 import { NgPersonsActions } from './redux';
+import { PERSONS_AREA_KEY } from '@skysmack/packages-persons';
 
 @Injectable({ providedIn: 'root' })
 export class SignalRPersonProvider implements SignalRProvider {

@@ -18,7 +18,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from './../../environments/environment';
 import { GlobalProperties } from '@skysmack/framework';
-import { NgFieldEpics, registerRedux, NgSettingsEpics } from '@skysmack/ng-framework';
+import { NgFieldEpics, registerRedux, NgSettingsEpics, CoalescingComponentFactoryResolver } from '@skysmack/ng-framework';
 import { fieldReducer, settingsReducer } from '@skysmack/redux';
 import { TenantPackageLoadStrategy } from './tenant-package-load-strategy';
 import { packagesRoute } from '../packages/packages-package-manifest';
@@ -38,6 +38,7 @@ import { maintenanceRoute } from '../packages/maintenance-package-manifest';
 import { emailsRoute } from '../packages/emails-package-manifest';
 import { emailsSmtpRoute } from '../packages/emails-smtp-package-manifest';
 import { terminalPaymentsRoute } from '../packages/terminal-payments-manifest';
+import { invoicesProductsRoute } from '../packages/invoices-products-package-manifest';
 // import { NgxGraphModule } from '@swimlane/ngx-graph';
 // import { NgxChartsModule } from '@swimlane/ngx-charts';
 // NgxGraphModule,
@@ -55,7 +56,8 @@ import { terminalPaymentsRoute } from '../packages/terminal-payments-manifest';
       accessPoliciesRoute,
       identitiesRoute,
       personsRoute,
-      invoicesRoute,      
+      invoicesRoute,
+      invoicesProductsRoute,
       invoicesCashPaymentsRoute,
       productsRoute,
       productsPricingsRoute,
@@ -91,7 +93,8 @@ import { terminalPaymentsRoute } from '../packages/terminal-payments-manifest';
   ],
   providers: [
     applicationStartup,
-    LanguageService
+    LanguageService,
+    CoalescingComponentFactoryResolver,
   ],
   bootstrap: [StartComponent]
 })
@@ -101,11 +104,13 @@ export class StartModule {
     public ngReduxRouter: NgReduxRouter,
     public reduxOfflineConfiguration: ReduxOfflineConfiguration,
     public fieldEpics: NgFieldEpics,
-    public settingsEpics: NgSettingsEpics
+    public settingsEpics: NgSettingsEpics,
+    public coalescingResolver: CoalescingComponentFactoryResolver
   ) {
     configureRedux(ngRedux, ngReduxRouter, reduxOfflineConfiguration);
     registerRedux('fields', fieldReducer, fieldEpics);
     registerRedux('settings', settingsReducer, settingsEpics);
     GlobalProperties.production = environment.production;
+    coalescingResolver.init();
   }
 }

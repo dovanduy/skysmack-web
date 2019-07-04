@@ -14,7 +14,7 @@ import { NgFieldStore, getAdditionalPaths } from '@skysmack/ng-framework';
 import { LoadedPackage } from '@skysmack/ng-framework';
 import { FieldProviders } from './field-providers';
 import { Router } from '@angular/router';
-import { UI_AREA_KEY } from '../constants/entity-action-translation-constants';
+import { UI_AREA_KEY } from '../constants/menu-item-action-translation-constants';
 
 @Injectable({ providedIn: 'root' })
 export class NgFieldsConfig extends FieldsConfig<FieldSchemaViewModel, string> {

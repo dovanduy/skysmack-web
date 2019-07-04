@@ -56,11 +56,12 @@ export class NgInvoiceItemsMenu extends SidebarMenu {
                 InvoicesPermissions.findInvoiceItemFields
             ]
         }));
+
         this.setBackButton();
     }
 
     public setSpeedDialMenu() {
-        this.speedDialMenu = [
+        this.speedDialMenuItems = [
             new MenuItem({
                 url: 'create',
                 displayName: this.translationPrefix + 'CREATE',

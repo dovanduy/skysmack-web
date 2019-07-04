@@ -1,4 +1,4 @@
-// Ensure area key is the same as the reducer name without the "Reducer" part.
+// Ensure reducer key is the same as the reducer name without the "Reducer" part.
 export const ACCESS_POLICY_PERMISSIONS_REDUCER_KEY = 'accessPolicyPermissions';
 export const ACCESS_POLICY_PERMISSIONS_AREA_KEY = 'access_policy_permissions'; // validation, store, menu
 export const ACCESS_POLICY_PERMISSIONS_REDUX_KEY = 'ACCESS_POLICY_PERMISSIONS_'; // reducer prefix, action, epics, Requests

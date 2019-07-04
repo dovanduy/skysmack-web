@@ -9,8 +9,8 @@
                 "CLIENTID": "Client",
                 "TERMINALID": "Terminal",
                 "AMOUNT": "Amount",
-                "REFERENCE": "Reference",
-                "CURRENCY": "Currency"
+                "INVOICEID": "Invoice ID",
+                "CURRENCYCODE": "Currency"
             },
             "PLACEHOLDERS": {
                 "NAME": "Name",
@@ -20,8 +20,8 @@
                 "CLIENTID": "Client",
                 "TERMINALID": "Terminal",
                 "AMOUNT": "Amount",
-                "REFERENCE": "Reference",
-                "CURRENCY": "Currency"
+                "INVOICEID": "Invoice ID",
+                "CURRENCYCODE": "Currency"
             },
             "VALIDATION": {
                 "NAME": {
@@ -42,10 +42,10 @@
                 "AMOUNT": {
                     "REQUIRED": "Amount is required."
                 },
-                "REFERENCE": {
-                    "REQUIRED": "Reference is required."
+                "INVOICEID": {
+                    "REQUIRED": "Invoice ID is required."
                 },
-                "CURRENCY": {
+                "CURRENCYCODE": {
                     "REQUIRED": "Currency is required."
                 }
             }
@@ -66,6 +66,10 @@
             "MANAGE": "Manage",
             "ACTIONS": "Actions",
             "TYPES": "Types"
+        },
+        "PAY": {
+            "TITLE": "Card payment",
+            "BUTTON_PAY": "Pay"
         },
         "QUEUE": {
             "ADDING": "Adding terminal {{ id }}",

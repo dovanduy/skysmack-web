@@ -1,18 +1,20 @@
-import { NgModule } from '@angular/core';
+import { NgModule, ComponentFactoryResolver } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { TerminalPaymentsRoutingModule } from './terminal-payments-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { NgTerminalPaymentsModule } from '@skysmack/ng-packages';
-import { PortalUiModule, FieldsModule, EntityActionProviders } from '@skysmack/portal-ui';
+import { PortalUiModule, FieldsModule, MenuItemActionProviders } from '@skysmack/portal-ui';
 import { terminalsComponents } from './terminals/components/terminals-components';
 import { receiptsComponents } from './receipts/components/receipts-component';
 import { LanguageService } from '@skysmack/portal-ui';
 import { clientsComponents } from './clients/components/clients-component';
 import { connectionsComponents } from './connections';
 import { terminalPaymentsIndexComponents } from './components/teminal-payments-index-components';
-import { NgInvoicesTerminalPaymentsEntityActionProvider } from './ng-invoices-terminal-payments-entity-action-provider';
+import { NgInvoicesTerminalPaymentsMenuItemActionProvider } from './ng-invoices-terminal-payments-menu-item-action-provider';
 import { InvoicesType } from '@skysmack/packages-invoices';
+import { CoalescingComponentFactoryResolver } from '@skysmack/ng-framework';
+import { TerminalsPayComponent } from './terminals/components/terminals-pay/terminals-pay.component';
 
 @NgModule({
   imports: [
@@ -31,15 +33,24 @@ import { InvoicesType } from '@skysmack/packages-invoices';
     ...clientsComponents,
     ...connectionsComponents
   ],
+  entryComponents: [
+    TerminalsPayComponent
+  ],
   providers: [
     LanguageService
   ]
 })
 export class TerminalPaymentsModule {
   constructor(
-    entityActionProviders: EntityActionProviders,
-    invoicesCashPaymentsEntityProvider: NgInvoicesTerminalPaymentsEntityActionProvider,
+    menuItemActionProviders: MenuItemActionProviders,
+    invoicesCashPaymentsMenuItemActionProvider: NgInvoicesTerminalPaymentsMenuItemActionProvider,
+    // Make entry components available
+    coalescingResolver: CoalescingComponentFactoryResolver,
+    localResolver: ComponentFactoryResolver
   ) {
-    entityActionProviders.add(InvoicesType.id, invoicesCashPaymentsEntityProvider);
+    menuItemActionProviders.add(InvoicesType.id, invoicesCashPaymentsMenuItemActionProvider);
+
+    // Make entry components available
+    coalescingResolver.registerResolver(localResolver);
   }
 }

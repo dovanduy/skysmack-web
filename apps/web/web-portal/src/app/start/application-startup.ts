@@ -22,6 +22,7 @@ import { loadPackagesPackage } from '../packages/packages-package-manifest';
 import { loadAccessPoliciesPackage } from '../packages/access-policies-package-manifest';
 import { loadEmailsPackage } from '../packages/emails-package-manifest';
 import { loadEmailsSmtpPackage } from '../packages/emails-smtp-package-manifest';
+import { loadInvoicesProductsPackage } from '../packages/invoices-products-package-manifest';
 
 
 export function configureSkysmack(actions: NgSkysmackActions) {
@@ -42,6 +43,7 @@ export const packageLoaders = [
     { provide: APP_INITIALIZER, useFactory: loadAccessPoliciesPackage, deps: [PackageLoader], multi: true },
     { provide: APP_INITIALIZER, useFactory: loadIdentitiesPackage, deps: [PackageLoader], multi: true },
     { provide: APP_INITIALIZER, useFactory: loadInvoicePackage, deps: [PackageLoader], multi: true },
+    { provide: APP_INITIALIZER, useFactory: loadInvoicesProductsPackage, deps: [PackageLoader], multi: true },
     { provide: APP_INITIALIZER, useFactory: loadInvoicesCashPaymentsPackage, deps: [PackageLoader], multi: true },
     { provide: APP_INITIALIZER, useFactory: loadPersonPackage, deps: [PackageLoader], multi: true },
     { provide: APP_INITIALIZER, useFactory: loadProductPackage, deps: [PackageLoader], multi: true },

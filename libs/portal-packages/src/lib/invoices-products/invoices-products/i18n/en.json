@@ -1,0 +1,35 @@
+{
+    "INVOICES_PRODUCTS": {
+        "FORM": {
+            "LABELS": {
+                "INVOICEID": "Invoice",
+                "PRODUCTID": "Product",
+                "AMOUNT": "Amount"
+            },
+            "PLACEHOLDERS": {
+                "INVOICEID": "Invoice",
+                "PRODUCTID": "Product",
+                "AMOUNT": "Amount"
+            },
+            "VALIDATION": {
+                "INVOICEID": {
+                    "REQUIRED": "Invoice is required."
+                },
+                "PRODUCTID": {
+                    "REQUIRED": "Product is required."
+                },
+                "AMOUNT": {
+                    "REQUIRED": "Amount is required."
+                }
+            }
+        },
+        "ADD_TO_INVOICE": {
+            "TITLE": "Add to invoice",
+            "SUBMIT": "Submit"
+        },
+        "ADD_PRODUCTS": {
+            "TITLE": "Add products",
+            "SUBMIT": "Submit"
+        }
+    }
+}

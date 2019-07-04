@@ -1,5 +1,5 @@
 <ss-dynamic-form *ngIf="fields$" [fields$]="fields$" [validation]="fieldsConfig.validation"
-  [rules]="fieldsConfig.formRules" [buttonText]="'INVOICES_CASH_PAYMENTS.PAY.BUTTON_PAY' | translate"
-  (submitted)="onSubmit($event)" [disableButton]="disableButton">
-  <h2 [translate]="'INVOICES_CASH_PAYMENTS.CREATE.PAYMENT'"></h2>
+  [rules]="fieldsConfig.formRules" [buttonText]="'TERMINALS.PAY.BUTTON_PAY' | translate" (submitted)="onSubmit($event)"
+  [disableButton]="disableButton">
+  <h2 [translate]="'TERMINALS.PAY.TITLE'"></h2>
 </ss-dynamic-form>

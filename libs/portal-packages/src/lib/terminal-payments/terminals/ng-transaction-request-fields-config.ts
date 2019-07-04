@@ -43,7 +43,7 @@ export class NgTransactionRequestFieldsConfig extends FieldsConfig<TransactionRe
                         }
                     });
                     if (connection) {
-                        option.displayName = `${connection.object.terminal.object.name} (${connection.object.client.object.name})`;
+                        option.displayName = `${connection.object.terminal && connection.object.terminal.object.name} (${connection.object.client && connection.object.client.object.name})`;
                     }
                 }
                 return option;
@@ -62,7 +62,7 @@ export class NgTransactionRequestFieldsConfig extends FieldsConfig<TransactionRe
                         const selectable = connections.filter(connection => {
                             const openedCheck = connection.object.status === TerminalStatus.Open;
                             const connectedCheck = connection.object.status === TerminalStatus.Connected;
-                            const onlineCheck = connection.object.client.object.online;
+                            const onlineCheck = connection.object.client && connection.object.client.object.online;
                             return ((openedCheck || connectedCheck) && onlineCheck) ? true : false;
                         });
 

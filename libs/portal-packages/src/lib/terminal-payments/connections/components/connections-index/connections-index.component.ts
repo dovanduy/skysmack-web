@@ -1,9 +1,9 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { EntityComponentPageTitle, EntityActionProviders, ENTITY_ACTIONS_DELETE, RecordIndexComponent } from '@skysmack/portal-ui';
+import { EntityComponentPageTitle, MenuItemActionProviders, MENU_ITEM_ACTIONS_DELETE, RecordIndexComponent } from '@skysmack/portal-ui';
 import { Router, ActivatedRoute, Route } from '@angular/router';
 import { ConnectionsAppState, Connection, CONNECTIONS_AREA_KEY, ConnectionKey, TerminalStatus, ConnectionRequest, TerminalAction } from '@skysmack/packages-terminal-payments';
 import { NgConnectionsMenu } from '../../ng-connections-menu';
-import { EntityAction } from '@skysmack/ng-ui';
+import { MenuItem } from '@skysmack/framework';
 import { NgConnectionsFieldsConfig } from '../../ng-connections-fields-config';
 import { NgSkysmackStore } from '@skysmack/ng-core';
 import { NgConnectionsActions, NgConnectionsStore } from '@skysmack/ng-packages';
@@ -18,16 +18,16 @@ import { take } from 'rxjs/operators';
 export class ConnectionsIndexComponent extends RecordIndexComponent<ConnectionsAppState, Connection, ConnectionKey> implements OnInit {
   public areaKey: string = CONNECTIONS_AREA_KEY;
   public titleExtras = true;
-  public entityActions: EntityAction[] = [
-    new EntityAction().asEventAction('Actions', this.terminalActions, 'settings', this).setShowLogic((entity: LocalObject<Connection, ConnectionKey>) => {
+  public menuItemActions: MenuItem[] = [
+    new MenuItem().asEventAction('Actions', this.terminalActions, 'settings', this).setShowLogic((entity: LocalObject<Connection, ConnectionKey>) => {
       if (entity.object.client && entity.object.client.object.online) {
         if (entity.object.status == TerminalStatus.Open || entity.object.status == TerminalStatus.Connected) {
           return true;
         }
       }
-      return true;
+      return false;
     }),
-    new EntityAction().asEventAction('Connect', this.connect, 'control_point', this).setShowLogic((entity: LocalObject<Connection, ConnectionKey>) => {
+    new MenuItem().asEventAction('Connect', this.connect, 'control_point', this).setShowLogic((entity: LocalObject<Connection, ConnectionKey>) => {
       if (entity.object.client && entity.object.client.object.online) {
         if (entity.object.status == TerminalStatus.Closed || entity.object.status == TerminalStatus.Disconnected || entity.object.status == TerminalStatus.Unknown) {
           return true;
@@ -35,7 +35,7 @@ export class ConnectionsIndexComponent extends RecordIndexComponent<ConnectionsA
       }
       return false;
     }),
-    new EntityAction().asEventAction('Open', this.open, 'check', this).setShowLogic((entity: LocalObject<Connection, ConnectionKey>) => {
+    new MenuItem().asEventAction('Open', this.open, 'check', this).setShowLogic((entity: LocalObject<Connection, ConnectionKey>) => {
       if (entity.object.client && entity.object.client.object.online) {
         if (entity.object.status == TerminalStatus.Closed || entity.object.status == TerminalStatus.Disconnected || entity.object.status == TerminalStatus.Connected || entity.object.status == TerminalStatus.Unknown) {
           return true;
@@ -43,7 +43,7 @@ export class ConnectionsIndexComponent extends RecordIndexComponent<ConnectionsA
       }
       return false;
     }),
-    new EntityAction().asEventAction('Close', this.close, 'close', this).setShowLogic((entity: LocalObject<Connection, ConnectionKey>) => {
+    new MenuItem().asEventAction('Close', this.close, 'close', this).setShowLogic((entity: LocalObject<Connection, ConnectionKey>) => {
       if (entity.object.client && entity.object.client.object.online) {
         if (entity.object.status == TerminalStatus.Open || entity.object.status == TerminalStatus.Connected) {
           return true;
@@ -51,7 +51,7 @@ export class ConnectionsIndexComponent extends RecordIndexComponent<ConnectionsA
       }
       return false;
     }),
-    new EntityAction().asEventAction('Disconnect', this.disconnect, 'cancel', this).setShowLogic((entity: LocalObject<Connection, ConnectionKey>) => {
+    new MenuItem().asEventAction('Disconnect', this.disconnect, 'cancel', this).setShowLogic((entity: LocalObject<Connection, ConnectionKey>) => {
       if (entity.object.client && entity.object.client.object.online) {
         if (entity.object.status == TerminalStatus.Open || entity.object.status == TerminalStatus.Connected || entity.object.status == TerminalStatus.Closed) {
           return true;
@@ -59,7 +59,7 @@ export class ConnectionsIndexComponent extends RecordIndexComponent<ConnectionsA
       }
       return false;
     }),
-    new EntityAction().asEventAction(ENTITY_ACTIONS_DELETE, this.delete, 'delete', this)
+    new MenuItem().asEventAction(MENU_ITEM_ACTIONS_DELETE, this.delete, 'delete', this)
   ];
 
   constructor(
@@ -71,24 +71,24 @@ export class ConnectionsIndexComponent extends RecordIndexComponent<ConnectionsA
     public sidebarMenu: NgConnectionsMenu,
     public fieldsConfig: NgConnectionsFieldsConfig,
     public title: EntityComponentPageTitle,
-    public entityActionProviders: EntityActionProviders,
+    public menuItemActionProviders: MenuItemActionProviders,
     public httpClient: HttpClient,
     @Inject(API_DOMAIN_INJECTOR_TOKEN) protected apiDomain: ApiDomain
 
   ) {
-    super(router, activatedRoute, actions, redux, store, fieldsConfig, entityActionProviders, title);
+    super(router, activatedRoute, actions, redux, store, fieldsConfig, menuItemActionProviders, title);
   }
 
   ngOnInit() {
     super.ngOnInit();
   }
 
-  protected terminalActions(value: LocalObject<Connection, ConnectionKey>, _this: ConnectionsIndexComponent) {
+  protected terminalActions(_this: ConnectionsIndexComponent, value: LocalObject<Connection, ConnectionKey>) {
     const terminalId = value.object.terminal.object.id;
     _this.router.navigate([_this.packagePath, 'terminals', 'actions', terminalId]);
   }
 
-  protected connect(value: LocalObject<Connection, ConnectionKey>, _this: ConnectionsIndexComponent) {
+  protected connect(_this: ConnectionsIndexComponent, value: LocalObject<Connection, ConnectionKey>) {
     const url = `${_this.apiDomain.domain}/${_this.packagePath}`;
     const connection = new ConnectionRequest({
       type: 'changeConnection',
@@ -100,7 +100,7 @@ export class ConnectionsIndexComponent extends RecordIndexComponent<ConnectionsA
     _this.httpClient.post(`${url}/actions/change-connection`, connection, { observe: 'response' }).pipe(take(1)).subscribe();
   }
 
-  protected open(value: LocalObject<Connection, ConnectionKey>, _this: ConnectionsIndexComponent) {
+  protected open(_this: ConnectionsIndexComponent, value: LocalObject<Connection, ConnectionKey>) {
     const url = `${_this.apiDomain.domain}/${_this.packagePath}`;
     const connection = new ConnectionRequest({
       type: 'changeConnection',
@@ -114,7 +114,7 @@ export class ConnectionsIndexComponent extends RecordIndexComponent<ConnectionsA
     ).subscribe();
   }
 
-  protected close(value: LocalObject<Connection, ConnectionKey>, _this: ConnectionsIndexComponent) {
+  protected close(_this: ConnectionsIndexComponent, value: LocalObject<Connection, ConnectionKey>) {
     const url = `${_this.apiDomain.domain}/${_this.packagePath}`;
     const connection = new ConnectionRequest({
       type: 'changeConnection',
@@ -128,7 +128,7 @@ export class ConnectionsIndexComponent extends RecordIndexComponent<ConnectionsA
     ).subscribe();
   }
 
-  protected disconnect(value: LocalObject<Connection, ConnectionKey>, _this: ConnectionsIndexComponent) {
+  protected disconnect(_this: ConnectionsIndexComponent, value: LocalObject<Connection, ConnectionKey>) {
     const url = `${_this.apiDomain.domain}/${_this.packagePath}`;
     const connection = new ConnectionRequest({
       type: 'changeConnection',

@@ -21,7 +21,7 @@ import { LanguageService } from '@skysmack/portal-ui';
   exports: [],
   declarations: [
     ...productsComponents,
-    ...productTypesComponents
+    ...productTypesComponents,
   ],
   providers: [
     LanguageService

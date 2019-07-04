@@ -9,7 +9,7 @@ import { NgSkysmackStore } from '@skysmack/ng-core';
 @Injectable({ providedIn: 'root' })
 export class NgProductsPricingsMenuItemProvider extends MenuItemProvider {
     public menuId = 'products';
-    public icon = 'shortText';
+    public icon = 'link';
 
     constructor(public store: NgSkysmackStore) { super(); }
 
@@ -25,6 +25,7 @@ export class NgProductsPricingsMenuItemProvider extends MenuItemProvider {
                         area: 'connected_packages',
                         order: 20,
                         icon: this.icon,
+                        provideIn: 'primaryMenu'
                     }))
                 )
             );

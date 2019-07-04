@@ -4,7 +4,7 @@ export * from './components/index';
 export * from './constants';
 export * from './directives/index';
 export * from './fields/index';
-export * from './entity-actions/index';
+export * from './menu-item-actions/index';
 export * from './language/index';
 export * from './models/index';
 export * from './redux/index';
