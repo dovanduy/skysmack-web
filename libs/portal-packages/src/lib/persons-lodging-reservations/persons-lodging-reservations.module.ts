@@ -9,12 +9,14 @@ import { PersonsLodgingReservationsRoutingModule } from './persons-lodging-reser
 import { FieldProviders } from '@skysmack/portal-ui';
 import { NgPersonsLodgingReservationsFieldProvider } from './ng-persons-lodgings-reservations-field-provider';
 import { LodgingReservationsType } from '@skysmack/packages-lodging-reservations';
+import { NgDynamicFormsModule } from '@skysmack/ng-dynamic-forms';
 
 @NgModule({
   imports: [
     CommonModule,
     HttpClientModule,
     PortalUiModule,
+    NgDynamicFormsModule,
     PersonsLodgingReservationsRoutingModule,
     NgPersonsLodgingReservationsModule,
     FieldsModule

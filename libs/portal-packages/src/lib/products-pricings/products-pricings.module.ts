@@ -14,6 +14,7 @@ import { productPriceChangesComponents } from './product-price-changes/component
 import { productTypePriceChangesComponents } from './product-type-price-changes/components/product-type-price-changes-components';
 import { NgProductPricingsFieldProvider } from './ng-product-pricings-field-provider';
 import { ProductsType } from '@skysmack/packages-products';
+import { NgDynamicFormsModule } from '@skysmack/ng-dynamic-forms';
 
 @NgModule({
   imports: [
@@ -22,6 +23,7 @@ import { ProductsType } from '@skysmack/packages-products';
     ProductsPricingsRoutingModule,
     NgProductsPricingsModule,
     PortalUiModule,
+    NgDynamicFormsModule,
     FieldsModule
   ],
   exports: [],

@@ -7,12 +7,14 @@ import { NgPersonsModule } from '@skysmack/ng-packages';
 import { PortalUiModule, FieldsModule } from '@skysmack/portal-ui';
 import { personsComponents } from './persons/components/persons-components';
 import { LanguageService } from '@skysmack/portal-ui';
+import { NgDynamicFormsModule } from '@skysmack/ng-dynamic-forms';
 
 @NgModule({
   imports: [
     CommonModule,
     HttpClientModule,
     PortalUiModule,
+    NgDynamicFormsModule,
     PersonsRoutingModule,
     NgPersonsModule,
     FieldsModule

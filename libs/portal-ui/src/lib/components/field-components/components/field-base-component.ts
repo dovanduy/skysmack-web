@@ -2,7 +2,6 @@ import { Input, OnDestroy, ElementRef, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { FormHelper, Field, FormRule } from '@skysmack/ng-ui';
 import { SubscriptionHandler, StrIndex } from '@skysmack/framework';
-import { DynamicField } from '../dynamic-field';
 
 interface AddedEvent {
     component: ElementRef;
@@ -11,7 +10,7 @@ interface AddedEvent {
     callback: Function;
 }
 
-export abstract class FieldBaseComponent<TField extends Field> implements DynamicField, OnInit, OnDestroy {
+export abstract class FieldBaseComponent<TField extends Field> implements OnInit, OnDestroy {
     @Input() public fh: FormHelper;
     @Input() public fieldKey: string;
     @Input() public field: TField;

@@ -18,12 +18,14 @@ import { MatSelectModule } from '@angular/material/select';
 import { RolesSelectFieldComponent } from './identity-roles/components/roles-select-field/roles-select-field.component';
 import { CoalescingComponentFactoryResolver } from '@skysmack/ng-framework';
 import { RolesSelectComponent } from './identity-roles';
+import { NgDynamicFormsModule } from '@skysmack/ng-dynamic-forms';
 
 @NgModule({
   imports: [
     CommonModule,
     HttpClientModule,
     PortalUiModule,
+    NgDynamicFormsModule,
     IdentitiesRoutingModule,
     NgIdentitiesModule,
     FieldsModule,

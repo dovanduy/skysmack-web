@@ -8,12 +8,14 @@ import { PortalUiModule, FieldsModule } from '@skysmack/portal-ui';
 import { LodgingReservationsRoutingModule } from './lodging-reservations-routing.module';
 import { lodgingReservationsComponents } from './lodging-reservations/lodgings-reservations-components';
 import { NgLodgingReservationsSettingsFieldsConfig } from './ng-lodging-reservations-settings-fields-config';
+import { NgDynamicFormsModule } from '@skysmack/ng-dynamic-forms';
 
 @NgModule({
   imports: [
     CommonModule,
     HttpClientModule,
     PortalUiModule,
+    NgDynamicFormsModule,
     LodgingReservationsRoutingModule,
     NgLodgingReservationsModule,
     NgIdentitiesModule,

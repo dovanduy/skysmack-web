@@ -10,7 +10,8 @@
 <form *ngIf="fh" [formGroup]="fh.form">
 
   <ng-container *ngFor="let field of fields$ | async as fields; trackBy: trackByFieldKey">
-    <ng-container *inAnyPermission="field.permissions">
+    <ng-container>
+      <!-- *inAnyPermission="field.permissions" -->
       <ss-dynamic-form-field-template *ngIf="field.component" [field]="field" [fh]="fh" [fieldKey]="field.key"
         [fields]="fields" [rules]="rules">
       </ss-dynamic-form-field-template>

@@ -13,6 +13,6 @@
     "@skysmack/ng-packages",
     "@skysmack/ng-ui",
     "@skysmack/ng-framework",
-    "@skysmack/dynamic-forms"
+    "@skysmack/ng-dynamic-forms"
   ]
 }

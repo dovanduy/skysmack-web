@@ -11,12 +11,14 @@ import { NgInvoicesCashPaymentsMenuItemActionProvider } from './ng-invoices-cash
 import { InvoicesType } from '@skysmack/packages-invoices';
 import { InvoicesCashPaymentsPayComponent } from './invoices-cash-payments/components';
 import { CoalescingComponentFactoryResolver } from '@skysmack/ng-framework';
+import { NgDynamicFormsModule } from '@skysmack/ng-dynamic-forms';
 
 @NgModule({
   imports: [
     CommonModule,
     HttpClientModule,
     PortalUiModule,
+    NgDynamicFormsModule,
     InvoicesCashPaymentsRoutingModule,
     NgInvoicesCashPaymentsModule,
     FieldsModule

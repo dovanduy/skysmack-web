@@ -8,6 +8,7 @@ import { PortalUiModule, FieldsModule } from '@skysmack/portal-ui';
 import { productsComponents } from './products/components/products-components';
 import { productTypesComponents } from './product-types/components/product-types-component';
 import { LanguageService } from '@skysmack/portal-ui';
+import { NgDynamicFormsModule } from '@skysmack/ng-dynamic-forms';
 
 @NgModule({
   imports: [
@@ -16,6 +17,7 @@ import { LanguageService } from '@skysmack/portal-ui';
     ProductsRoutingModule,
     NgProductsModule,
     PortalUiModule,
+    NgDynamicFormsModule,
     FieldsModule
   ],
   exports: [],

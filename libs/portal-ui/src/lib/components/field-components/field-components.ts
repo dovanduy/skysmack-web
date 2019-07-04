@@ -1,5 +1,3 @@
-import { DynamicFormFieldTemplateComponent } from './dynamic-form-field-template/dynamic-form-field-template.component';
-import { DynamicFormComponent } from './dynamic-form/dynamic-form.component';
 import { CheckboxFieldComponent } from './components/checkbox-field/checkbox-field.component';
 import { DateFieldComponent } from './components/date-field/date-field.component';
 import { DateTimeFieldComponent } from './components/date-time-field/date-time-field.component';
@@ -25,8 +23,6 @@ import { ResultFieldComponent } from './components/result-field/result-field.com
 import { EmailTemplateFieldComponent } from './components/email-template-field/email-template-field.component';
 
 export const fieldComponents = [
-    DynamicFormFieldTemplateComponent,
-    DynamicFormComponent,
     CheckboxFieldComponent,
     DateFieldComponent,
     DateTimeFieldComponent,

@@ -9,6 +9,7 @@ import { MaintenanceRoutingModule } from './maintenance-routing.module';
 import { recurringAssignmentsComponents } from './recurring-assignments/components/recurring-assignments-components';
 import { maintenanceStatesComponents } from './maintenance-states/components/maintenance-states-components';
 import { assignmentsAllComponents } from './components/assignments-all-components';
+import { NgDynamicFormsModule } from '@skysmack/ng-dynamic-forms';
 
 @NgModule({
   imports: [
@@ -16,7 +17,8 @@ import { assignmentsAllComponents } from './components/assignments-all-component
     HttpClientModule,
     MaintenanceRoutingModule,
     NgAssignmentsModule,
-    PortalUiModule
+    PortalUiModule,
+    NgDynamicFormsModule
   ],
   declarations: [
     ...assignmentsComponents,

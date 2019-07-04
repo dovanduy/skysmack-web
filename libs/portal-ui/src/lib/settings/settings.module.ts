@@ -5,12 +5,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { PortalUiModule } from './../portal-ui.module';
 import { LanguageService } from './../language/language.service';
 import { settingsComponents } from './components/settings-components';
+import { NgDynamicFormsModule } from '@skysmack/ng-dynamic-forms';
 
 @NgModule({
     imports: [
         CommonModule,
         HttpClientModule,
-        PortalUiModule
+        PortalUiModule,
+        NgDynamicFormsModule
     ],
     declarations: [
         ...settingsComponents

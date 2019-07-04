@@ -2,10 +2,9 @@ import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angu
 import { FormBuilder, Validators, FormGroup, FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { Field, FormRule, FormHelper, Validation } from '@skysmack/ng-ui';
-import { EditorNavService } from './../../common/container/editor-nav.service';
 import { GlobalProperties, SubscriptionHandler, LocalObject, StrIndex } from '@skysmack/framework';
 import { NgSkysmackStore } from '@skysmack/ng-core';
-import { map, take, tap } from 'rxjs/operators';
+import { map, take } from 'rxjs/operators';
 
 @Component({
   selector: 'ss-dynamic-form',
@@ -31,7 +30,7 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
 
   constructor(
     public fb: FormBuilder,
-    public editorNavService: EditorNavService,
+    // public editorNavService: EditorNavService,
     public skysmackStore: NgSkysmackStore
   ) { }
 
@@ -53,7 +52,7 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
     // Show sidebar
     setTimeout(() => {
       if (!this.noSidebar) {
-        this.editorNavService.showEditorNav();
+        // this.editorNavService.showEditorNav();
       }
     }, 0);
   }

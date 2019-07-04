@@ -31,5 +31,6 @@ export class PersonsCreateComponent extends DocumentRecordFormComponent<PersonsA
   ngOnInit() {
     super.ngOnInit();
     this.setCreateFields();
+    this.editorNavService.showEditorNav();
   }
 }

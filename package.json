@@ -9,6 +9,7 @@
     "build:dev": "ng build --stats-json && npm run local-dev-server-insecure",
     "build:prod": "ng build --prod --stats-json && npm run local-dev-server-insecure",
     "build:analyze": " webpack-bundle-analyzer ./dist/apps/web/web-portal/stats.json",
+    "build:prod:analyze": "ng build --prod --stats-json && webpack-bundle-analyzer ./dist/apps/web/web-portal/stats.json",
     "local-dev-server": "cd ./tools/certificates && http-server ./../../dist/apps/web/web-portal -a www.skysmack.test -p 4000 -o -S -C skysmack-test-cert.pem",
     "local-dev-server-insecure": "cd ./tools/certificates && http-server ./../../dist/apps/web/web-portal -a www.skysmack.test -p 4000 -o",
     "test": "ng test",

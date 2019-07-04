@@ -15,6 +15,7 @@ import { NgInvoicesTerminalPaymentsMenuItemActionProvider } from './ng-invoices-
 import { InvoicesType } from '@skysmack/packages-invoices';
 import { CoalescingComponentFactoryResolver } from '@skysmack/ng-framework';
 import { TerminalsPayComponent } from './terminals/components/terminals-pay/terminals-pay.component';
+import { NgDynamicFormsModule } from '@skysmack/ng-dynamic-forms';
 
 @NgModule({
   imports: [
@@ -23,6 +24,7 @@ import { TerminalsPayComponent } from './terminals/components/terminals-pay/term
     TerminalPaymentsRoutingModule,
     NgTerminalPaymentsModule,
     PortalUiModule,
+    NgDynamicFormsModule,
     FieldsModule
   ],
   exports: [],

@@ -7,10 +7,12 @@ import { SkysmackRoutingModule } from './skysmack-routing.module';
 import { NgSkysmackModule } from '@skysmack/ng-core';
 import { NgSkysmackSettingsFieldsConfig } from './ng-skysmack-settings-fields-config';
 import { SettingsModule, PortalUiModule } from '@skysmack/portal-ui';
+import { NgDynamicFormsModule } from '@skysmack/ng-dynamic-forms';
 
 @NgModule({
   imports: [
     PortalUiModule,
+    NgDynamicFormsModule,
     SettingsModule,
     CommonModule,
     HttpClientModule,

@@ -15,6 +15,7 @@ import { lodgingTypePricesComponents } from './lodging-type-prices/components/lo
 import { LodgingsType } from '@skysmack/packages-lodgings';
 import { NgLodgingReservationsReservationsPricingsFieldProvider } from './ng-lodging-reservations-reservation-pricings-field-provider';
 import { LodgingReservationsType } from '@skysmack/packages-lodging-reservations';
+import { NgDynamicFormsModule } from '@skysmack/ng-dynamic-forms';
 
 @NgModule({
   imports: [
@@ -23,6 +24,7 @@ import { LodgingReservationsType } from '@skysmack/packages-lodging-reservations
     ReservationsPricingsRoutingModule,
     NgReservationsPricingsModule,
     PortalUiModule,
+    NgDynamicFormsModule,
     FieldsModule
   ],
   exports: [],

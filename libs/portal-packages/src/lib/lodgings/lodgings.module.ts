@@ -11,6 +11,7 @@ import { LanguageService } from '@skysmack/portal-ui';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { NgLodgingSettingsFieldsConfig } from './ng-lodging-settings-fields-config';
+import { NgDynamicFormsModule } from '@skysmack/ng-dynamic-forms';
 
 @NgModule({
   imports: [
@@ -18,6 +19,7 @@ import { NgLodgingSettingsFieldsConfig } from './ng-lodging-settings-fields-conf
     HttpClientModule,
     NgLodgingsModule,
     PortalUiModule,
+    NgDynamicFormsModule,
     LodgingsRoutingModule,
     FieldsModule,
     SettingsModule,
