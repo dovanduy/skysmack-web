@@ -9,7 +9,6 @@ import { FieldsConfig } from './fields-config';
 import { StringFieldComponent } from '../components/field-components/components/string-field/string-field.component';
 import { SelectFieldComponent } from '../components/field-components/components/select-field/select-field.component';
 import { ValidatorsFieldComponent } from '../components/field-components/components/validators-field/validators-field.component';
-import { FieldPermissionFieldComponent } from '../components/field-components/components/field-permission-field/field-permission-field.component';
 import { NgFieldStore, getAdditionalPaths } from '@skysmack/ng-framework';
 import { LoadedPackage } from '@skysmack/ng-framework';
 import { FieldProviders } from './field-providers';
@@ -84,19 +83,19 @@ export class NgFieldsConfig extends FieldsConfig<FieldSchemaViewModel, string> {
                 order: 4,
             }),
 
-            new Field({
-                component: FieldPermissionFieldComponent,
-                value: field ? field.object.writePermission : undefined,
-                key: 'writePermission',
-                order: 5,
-            }),
+            // new Field({
+            //     component: FieldPermissionFieldComponent,
+            //     value: field ? field.object.writePermission : undefined,
+            //     key: 'writePermission',
+            //     order: 5,
+            // }),
 
-            new Field({
-                component: FieldPermissionFieldComponent,
-                value: field ? field.object.readPermission : undefined,
-                key: 'readPermission',
-                order: 6,
-            }),
+            // new Field({
+            //     component: FieldPermissionFieldComponent,
+            //     value: field ? field.object.readPermission : undefined,
+            //     key: 'readPermission',
+            //     order: 6,
+            // }),
         ];
 
         return fields;

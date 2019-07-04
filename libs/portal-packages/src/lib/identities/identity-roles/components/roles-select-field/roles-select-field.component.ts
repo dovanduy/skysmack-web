@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FieldBaseComponent } from '../field-base-component';
+import { FieldBaseComponent } from '@skysmack/portal-ui';
 import { SelectField } from '@skysmack/ng-ui';
 import { Field } from '@skysmack/ng-ui';
 

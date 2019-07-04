@@ -16,10 +16,8 @@ import { StringFieldComponent } from './components/string-field/string-field.com
 import { TimeFieldComponent } from './components/time-field/time-field.component';
 import { PackageDependenciesFieldComponent } from './components/package-dependencies-field/package-dependencies-field.component';
 import { AvailablePermissionsFieldComponent } from './components/available-permissions-field/available-permissions-field.component';
-import { FieldPermissionFieldComponent } from './components/field-permission-field/field-permission-field.component';
 import { PageHeaderComponent } from '../common/page-header/page-header.component';
 import { SpeedDialFabComponent } from '../common/speed-dial-fab/speed-dial-fab.component';
-import { RolesSelectFieldComponent } from './components/roles-select-field/roles-select-field.component';
 import { MultiSelectFieldComponent } from './components/multi-select-field/multi-select-field.component';
 import { AddRecordFieldComponent } from './components/add-record-field/add-record-field.component';
 import { FlaggedEnumFieldComponent } from './components/flagged-enum-field/flagged-enum-field.component';
@@ -45,11 +43,9 @@ export const fieldComponents = [
     TimeFieldComponent,
     PackageDependenciesFieldComponent,
     AvailablePermissionsFieldComponent,
-    FieldPermissionFieldComponent,
     FlaggedEnumFieldComponent,
     PageHeaderComponent,
     SpeedDialFabComponent,
-    RolesSelectFieldComponent,
     MultiSelectFieldComponent,
     AddRecordFieldComponent,
     ResultFieldComponent,

@@ -7,7 +7,6 @@ import { ProgressComponent } from './progress/progress.component';
 import { NavBarComponent } from './navbar/navbar.component';
 import { QueueComponent } from './queue/queue.component';
 import { RecordsContainerComponent } from './records-container/records-container.component';
-import { RolesSelectComponent } from './roles-select/roles-select.component';
 import { BackendErrorsComponent } from './backend-errors/backend-errors.component';
 import { ContainerComponent } from './container/container.component';
 import { CardBodyComponent } from './card-body/card-body.component';
@@ -23,7 +22,6 @@ export const commonComponents = [
     NavBarComponent,
     QueueComponent,
     RecordsContainerComponent,
-    RolesSelectComponent,
     BackendErrorsComponent,
     ContainerComponent,
     CardBodyComponent,

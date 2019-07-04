@@ -19,8 +19,6 @@ export * from './select-field/select-field.component';
 export * from './string-field/string-field.component';
 export * from './flagged-enum-field/flagged-enum-field.component';
 export * from './time-field/time-field.component';
-export * from './field-permission-field/field-permission-field.component';
-export * from './roles-select-field/roles-select-field.component';
 export * from './multi-select-field/multi-select-field.component';
 export * from './add-record-field/add-record-field.component';
 export * from './result-field/result-field.component';

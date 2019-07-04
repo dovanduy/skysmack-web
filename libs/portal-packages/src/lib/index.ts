@@ -1,4 +1,5 @@
-export * from './identities/identities.module';
+export * from './identities/index';
+
 export * from './lodgings/lodgings.module';
 export * from './lodging-reservations/lodging-reservations.module';
 export * from './maintenance/maintenance.module';

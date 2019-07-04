@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, ComponentFactoryResolver } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -14,6 +14,10 @@ import { identitiesComponents } from './components/identities-components';
 import { rolesComponents } from './identity-roles/components/roles-components';
 import { usersComponents } from './identity-users/components/users-components';
 import { accountsComponents } from './accounts/components/accounts-components';
+import { MatSelectModule } from '@angular/material/select';
+import { RolesSelectFieldComponent } from './identity-roles/components/roles-select-field/roles-select-field.component';
+import { CoalescingComponentFactoryResolver } from '@skysmack/ng-framework';
+import { RolesSelectComponent } from './identity-roles';
 
 @NgModule({
   imports: [
@@ -23,13 +27,21 @@ import { accountsComponents } from './accounts/components/accounts-components';
     IdentitiesRoutingModule,
     NgIdentitiesModule,
     FieldsModule,
-    SettingsModule
+    SettingsModule,
+    MatSelectModule
   ],
   declarations: [
     ...identitiesComponents,
     ...rolesComponents,
     ...usersComponents,
     ...accountsComponents
+  ],
+  exports: [
+    RolesSelectComponent,
+    RolesSelectFieldComponent
+  ],
+  entryComponents: [
+    RolesSelectFieldComponent
   ],
   providers: [
     LanguageService,
@@ -40,5 +52,12 @@ import { accountsComponents } from './accounts/components/accounts-components';
   ]
 })
 export class IdentitiesModule {
-  constructor() { }
+  constructor(
+    // Make entry components available
+    coalescingResolver: CoalescingComponentFactoryResolver,
+    localResolver: ComponentFactoryResolver
+  ) {
+    // Make entry components available
+    coalescingResolver.registerResolver(localResolver);
+  }
 }
