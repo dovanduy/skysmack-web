@@ -1,6 +1,6 @@
 import { PackageLoader, PackageManifest } from '@skysmack/ng-framework';
 import { InvoicesProductsType } from '@skysmack/packages-invoices-products';
-import { TenantPackageLoadStrategy } from '../start/TenantPackageLoadStrategy';
+import { TenantPackageLoadStrategy } from '../start/tenant-package-load-strategy';
 import { Route } from '@angular/router';
 
 export class InvoicesProductsPackageManifest extends InvoicesProductsType implements PackageManifest {
