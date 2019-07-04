@@ -100,6 +100,7 @@ export class TerminalsPayComponent extends RecordFormComponent<TerminalsAppState
       this.httpClient.post(url, transactionRequest, { observe: 'response' }).pipe(
         tap(x => {
           this.disableButton = false;
+          this.editorNavService.hideEditorNav();
           this.dialogRef.close();
           console.log(x);
           // if(x.status === '200'){
@@ -109,6 +110,7 @@ export class TerminalsPayComponent extends RecordFormComponent<TerminalsAppState
         }),
         catchError(error => {
           this.disableButton = false;
+          this.editorNavService.hideEditorNav();
           this.dialogRef.close();
           console.error(error);
           return of(error);

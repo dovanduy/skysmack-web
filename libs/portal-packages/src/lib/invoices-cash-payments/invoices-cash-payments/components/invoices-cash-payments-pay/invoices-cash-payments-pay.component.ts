@@ -11,6 +11,7 @@ import { combineLatest, of } from 'rxjs';
 import { toLocalObject, API_DOMAIN_INJECTOR_TOKEN, ApiDomain, LocalObject } from '@skysmack/framework';
 import { Invoice } from '@skysmack/packages-invoices';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { FormHelper } from '@skysmack/ng-ui';
 
 @Component({
   selector: 'ss-invoices-cash-payments-pay',
@@ -76,5 +77,15 @@ export class InvoicesCashPaymentsPayComponent extends RecordFormComponent<Invoic
         })
       ))
     );
+  }
+
+  protected create(fh: FormHelper) {
+    fh.formValid(() => {
+      const localObject = this.extractFormValues(fh);
+      this.editorItem ? localObject.localId = this.editorItem.localId : localObject.localId = localObject.localId;
+      this.actions.add([localObject], this.packagePath);
+      this.editorNavService.hideEditorNav();
+      this.dialogRef.close();
+    });
   }
 }

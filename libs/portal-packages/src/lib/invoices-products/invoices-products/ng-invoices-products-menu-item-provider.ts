@@ -25,7 +25,7 @@ export class NgInvoicesProductsMenuItemProvider extends MenuItemProvider {
                 map((currentTenant: Skysmack) => currentTenant.packages
                     .filter((_package: Package) => _package.type === InvoicesProductsType.id && _package.dependencies.find(dep => dep === packagePath))
                     .map(_package =>
-                        new MenuItem({ provideIn: 'both', area: 'actions' }).asEventAction(`Add products via: ${_package.name}`, (_this: NgInvoicesProductsMenuItemProvider) => {
+                        new MenuItem({ provideIn: 'both', area: 'actions' }).asEventAction(`${_package.name}`, (_this: NgInvoicesProductsMenuItemProvider) => {
                             const dialogRef = _this.dialog.open(InvoicesProductsAddProductsComponent, {
                                 width: '500px',
                                 data: { packagePath: _package.path }

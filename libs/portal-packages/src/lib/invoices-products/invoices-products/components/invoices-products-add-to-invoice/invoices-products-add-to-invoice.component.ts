@@ -51,7 +51,7 @@ export class InvoicesProductsAddToInvoiceComponent extends RecordFormComponent<a
   public onSubmit(fh: FormHelper) {
     fh.formValid(() => {
       const values = fh.form.value;
-      console.log(values);
+      this.editorNavService.hideEditorNav();
       this.dialogRef.close();
     });
   }

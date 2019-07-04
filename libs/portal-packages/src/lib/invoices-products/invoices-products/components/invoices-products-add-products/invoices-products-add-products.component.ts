@@ -7,7 +7,6 @@ import { NgInvoicesStore } from '@skysmack/ng-packages';
 import { FormHelper } from '@skysmack/ng-ui';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { NgInvoicesProductsAddProductsFieldsConfig } from '../../ng-invoices-products-add-products-fields-config';
-import { tap, take } from 'rxjs/operators';
 
 /**
  * This component is used when clicking an invoice item in order to add products to it.
@@ -51,6 +50,7 @@ export class InvoicesProductsAddProductsComponent extends RecordFormComponent<an
     fh.formValid(() => {
       const values = fh.form.value;
       console.log(values);
+      this.editorNavService.hideEditorNav();
       this.dialogRef.close();
     });
   }
