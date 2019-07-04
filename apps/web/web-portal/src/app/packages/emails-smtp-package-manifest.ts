@@ -1,6 +1,6 @@
 import { PackageLoader, PackageManifest } from '@skysmack/ng-framework';
 import { EmailsSmtpType } from '@skysmack/packages/emails-smtp';
-import { TenantPackageLoadStrategy } from '../start/TenantPackageLoadStrategy';
+import { TenantPackageLoadStrategy } from '../start/tenant-package-load-strategy';
 import { Route } from '@angular/router';
 
 export class EmailsSmtpPackageManifest extends EmailsSmtpType implements PackageManifest {

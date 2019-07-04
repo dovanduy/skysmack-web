@@ -1,6 +1,6 @@
 import { MaintenanceType } from '@skysmack/packages-maintenance';
 import { PackageLoader, PackageManifest } from '@skysmack/ng-framework';
-import { TenantPackageLoadStrategy } from '../start/TenantPackageLoadStrategy';
+import { TenantPackageLoadStrategy } from '../start/tenant-package-load-strategy';
 import { Route } from '@angular/router';
 
 export class MaintenancePackageManifest extends MaintenanceType implements PackageManifest {

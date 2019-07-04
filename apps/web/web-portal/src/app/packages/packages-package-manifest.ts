@@ -1,7 +1,7 @@
 import { PackageLoader, PackageManifest } from '@skysmack/ng-framework';
 import { PackagesType } from '@skysmack/ng-core';
 import { Route } from '@angular/router';
-import { TenantPackageLoadStrategy } from '../start/TenantPackageLoadStrategy';
+import { TenantPackageLoadStrategy } from '../start/tenant-package-load-strategy';
 
 export class PackagesPackageManifest extends PackagesType implements PackageManifest {
     public static modulePath = './../packages/modules/packages_wrapper.module#PackagesWrapperModule';

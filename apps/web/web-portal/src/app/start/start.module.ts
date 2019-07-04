@@ -20,7 +20,7 @@ import { environment } from './../../environments/environment';
 import { GlobalProperties } from '@skysmack/framework';
 import { NgFieldEpics, registerRedux, NgSettingsEpics } from '@skysmack/ng-framework';
 import { fieldReducer, settingsReducer } from '@skysmack/redux';
-import { TenantPackageLoadStrategy } from './TenantPackageLoadStrategy';
+import { TenantPackageLoadStrategy } from './tenant-package-load-strategy';
 import { packagesRoute } from '../packages/packages-package-manifest';
 import { accessPoliciesRoute } from '../packages/access-policies-package-manifest';
 import { identitiesRoute } from '../packages/identities-package-manifest';

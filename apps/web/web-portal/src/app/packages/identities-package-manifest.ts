@@ -1,6 +1,6 @@
 import { IdentitiesType } from '@skysmack/packages-identities';
 import { PackageLoader, PackageManifest } from '@skysmack/ng-framework';
-import { TenantPackageLoadStrategy } from '../start/TenantPackageLoadStrategy';
+import { TenantPackageLoadStrategy } from '../start/tenant-package-load-strategy';
 import { Route } from '@angular/router';
 
 export class IdentitiesPackageManifest extends IdentitiesType implements PackageManifest {

@@ -1,7 +1,7 @@
 import { ReservationsPricingsType } from '@skysmack/packages-reservations-pricings';
 import { PackageLoader, PackageManifest } from '@skysmack/ng-framework';
 import { Route } from '@angular/router';
-import { TenantPackageLoadStrategy } from '../start/TenantPackageLoadStrategy';
+import { TenantPackageLoadStrategy } from '../start/tenant-package-load-strategy';
 
 export class ReservationsPricingsPackageManifest extends ReservationsPricingsType implements PackageManifest {
     public static modulePath = './../packages/modules/reservations_pricings_wrapper.module#ReservationsPricingsWrapperModule';

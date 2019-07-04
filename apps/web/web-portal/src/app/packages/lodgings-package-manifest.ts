@@ -1,7 +1,7 @@
 import { LodgingsType } from '@skysmack/packages-lodgings';
 import { PackageLoader, PackageManifest } from '@skysmack/ng-framework';
 import { Route } from '@angular/router';
-import { TenantPackageLoadStrategy } from '../start/TenantPackageLoadStrategy';
+import { TenantPackageLoadStrategy } from '../start/tenant-package-load-strategy';
 
 
 export class LodgingsPackageManifest extends LodgingsType implements PackageManifest {
