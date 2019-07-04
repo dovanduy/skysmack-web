@@ -42,7 +42,7 @@ export class SignalR {
 
         this.hubConnection.onclose(() => {
             this.connected.next(false);
-            setTimeout(() => this.startHubConnection(), 1000);
+            setTimeout(() => this.startHubConnection(), this.randomIntFromInterval(5000, 15000));
         });
 
         this.startHubConnection();
@@ -56,8 +56,12 @@ export class SignalR {
                 Object.keys(this.joinedPackages).forEach(key => this.join(this.joinedPackages[key], true));
             })
             .catch(err => {
-                setTimeout(() => this.startHubConnection(), 1000);
+                setTimeout(() => this.startHubConnection(), this.randomIntFromInterval(5000, 15000));
             });
+    }
+    private randomIntFromInterval(min: number, max: number) :number // min and max included
+    {
+        return Math.floor(Math.random()*(max-min+1)+min);
     }
 
     public registerProvider(provider: SignalRProvider) {
