@@ -13,6 +13,7 @@ import { accessPoliciesComponents } from './components/access-policies-component
 import { FieldPermissionFieldComponent } from './access-policy-roles/components/field-permission-field/field-permission-field.component';
 import { IdentitiesModule } from '@skysmack/portal-packages';
 import { CoalescingComponentFactoryResolver } from '@skysmack/ng-framework';
+import { DynamicFormsModule } from '@skysmack/dynamic-forms';
 // import { PackagesModule } from '../../packages';
 
 @NgModule({
@@ -23,7 +24,8 @@ import { CoalescingComponentFactoryResolver } from '@skysmack/ng-framework';
     AccessPoliciesRoutingModule,
     NgAccessPoliciesModule,
     FieldsModule,
-    IdentitiesModule
+    IdentitiesModule,
+    DynamicFormsModule
     // PackagesModule
   ],
   declarations: [

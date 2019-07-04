@@ -9,6 +9,7 @@
     "@skysmack/ng-packages": "*",
     "@skysmack/ng-ui": "*",
     "@skysmack/ng-framework": "*",
+    "@skysmack/dynamic-forms": "*",
     "moment": "^2.24.0",
     "calendar-utils": "^0.3.1"
   },

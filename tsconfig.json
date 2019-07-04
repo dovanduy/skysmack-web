@@ -106,6 +106,9 @@
       ],
       "@skysmack/packages-invoices-products": [
         "libs/packages/invoices-products/public_api.ts"
+      ],
+      "@skysmack/dynamic-forms": [
+        "libs/dynamic-forms/src/index.ts"
       ]
     }
   },

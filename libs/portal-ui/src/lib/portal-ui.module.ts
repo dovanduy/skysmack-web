@@ -22,6 +22,7 @@ import { ValidatorsFieldComponent } from './components/field-components/componen
 import { RecurringExpressionFieldModule } from './components/field-components/components/recurring-expression-field/recurring-expression-field.module';
 import { RecurringExpressionFieldComponent } from './components/field-components/components/recurring-expression-field/recurring-expression-field.component';
 import { AngularEditorModule } from '@kolkov/angular-editor';
+import { DynamicFormsModule } from '@skysmack/dynamic-forms';
 
 @NgModule({
   imports: [
@@ -32,7 +33,8 @@ import { AngularEditorModule } from '@kolkov/angular-editor';
     RecurringExpressionFieldModule,
     ValidatorsFieldModule,
     MaterialModule, // Must come after BrowserAnimationsModule
-    AngularEditorModule
+    AngularEditorModule,
+    DynamicFormsModule
   ],
   providers: [
     {

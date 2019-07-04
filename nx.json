@@ -97,6 +97,9 @@
     },
     "packages-invoices-products": {
       "tags": []
+    },
+    "dynamic-forms": {
+      "tags": []
     }
   }
 }
