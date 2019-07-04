@@ -1,4 +1,4 @@
-export * from './autentication/index';
+export * from './authentication/index';
 export * from './base-components/index';
 export * from './components/index';
 export * from './constants';
