@@ -1,12 +1,12 @@
 <nav *ngIf="skysmack$ | async as skysmack" class="docs-navbar-header">
+  <!-- APP DRAWER -->
+  <a mat-icon-button (click)="uiStore.toggleMenuFor('drawer')" title="{{ 'UI.TOP_BAR.PACKAGES'| translate}}">
+      <mat-icon aria-label="Open packages">apps</mat-icon>
+    </a>
+
   <a mat-button class="docs-button" routerLink="/" (click)="uiStore.setPackageDrawerStatus(false)"
     aria-label="Skysmack">
     <span>{{ skysmack.name }}</span>
-  </a>
-
-  <!-- APP DRAWER -->
-  <a mat-icon-button (click)="uiStore.toggleMenuFor('drawer')" title="{{ 'UI.TOP_BAR.PACKAGES'| translate}}">
-    <mat-icon aria-label="Open packages">apps</mat-icon>
   </a>
 
   <div class="flex-spacer"></div>
