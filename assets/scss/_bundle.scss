@@ -7,7 +7,7 @@ $skysmack-font: "'Roboto', 'sans-serif'";
 @import "./global/layout";
 
 // --- MATERIAL2 + MATERIAL2 DOCS START ---
-@import "./material2/themes/indigo-pink";
+@import "./material2/themes/skysmack";
 
 $custom-typography: mat-typography-config(
   $font-family: $skysmack-font,
@@ -71,7 +71,7 @@ router-outlet + * {
 // @import "./duty-roster/manage-bookings.scss";
 
 // @import "./components/editor-sidebar.scss";
-@import "./components/package-drawer.scss";
+// @import "./components/package-drawer.scss";
 // @import "./components/pages.scss";
 // @import "./components/top-bar.scss";
 

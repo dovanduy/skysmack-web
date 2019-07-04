@@ -5,8 +5,8 @@
     font-family: $skysmack-font;
 }
 
-::-moz-selection{ background: transparent; }
-::selection { background: transparent; }
+::-moz-selection{ background-color: rgba(119,146,147,0.1); }
+::selection { background-color: rgba(119,146,147,0.1); }
 
-.selectable::-moz-selection, input::-moz-selection, textarea::-moz-selection{ background: #dee2e6; color: #000 }
-.selectable::selection, input::selection, textarea::selection { background: #dee2e6; color: #000 }
+.selectable::-moz-selection, input::-moz-selection, textarea::-moz-selection{ background-color: #BBC9C9; color: #000 }
+.selectable::selection, input::selection, textarea::selection { background-color: #BBC9C9; color: #000 }

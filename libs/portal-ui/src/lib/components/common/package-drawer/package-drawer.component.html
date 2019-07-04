@@ -1,11 +1,11 @@
-<div id="app-drawer" *ngIf="menu$|async as menu" [ngClass]="{ open: menu.drawer }"
+<div id="app-drawer" class="mat-elevation-z3" *ngIf="menu$|async as menu" [ngClass]="{ open: menu.drawer }"
     (click)="uiRedux.setPackageDrawerStatus(false)">
 
     <ng-container *ngIf="loadedPackages$ | async as loadedPackages">
         <nav class="nav">
             <ng-container *ngFor="let loadedPackage of loadedPackages">
                 <ng-container *ngIf="loadedPackage.packageManifest">
-                    <a *ngIf="loadedPackage.packageManifest.menuLocation === 'main'" class="app-link"
+                    <a *ngIf="loadedPackage.packageManifest.menuLocation === 'main'" mat-button class="app-link"
                         [routerLink]="[loadedPackage._package.path]">
                         <i class="material-icons md-light app-icon">{{ loadedPackage.packageManifest.icon }}</i>
                         <h5 class="app-name">{{ loadedPackage._package.name }}</h5>

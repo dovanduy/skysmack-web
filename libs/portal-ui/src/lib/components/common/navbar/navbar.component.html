@@ -1,10 +1,10 @@
 <nav *ngIf="skysmack$ | async as skysmack" class="docs-navbar-header">
   <!-- APP DRAWER -->
-  <a mat-icon-button (click)="uiStore.toggleMenuFor('drawer')" title="{{ 'UI.TOP_BAR.PACKAGES'| translate}}">
+  <a class="link" mat-icon-button (click)="uiStore.toggleMenuFor('drawer')" title="{{ 'UI.TOP_BAR.PACKAGES'| translate}}">
       <mat-icon aria-label="Open packages">apps</mat-icon>
     </a>
 
-  <a mat-button class="docs-button" routerLink="/" (click)="uiStore.setPackageDrawerStatus(false)"
+  <a mat-button class="link" routerLink="/" (click)="uiStore.setPackageDrawerStatus(false)"
     aria-label="Skysmack">
     <span>{{ skysmack.name }}</span>
   </a>
@@ -19,18 +19,16 @@
   <ss-queue></ss-queue>
 
   <!-- SEARCH -->
-  <button mat-icon-button (click)="uiStore.toggleMenuFor('search')" *isAuthenticated>
+  <button mat-icon-button class="link" (click)="uiStore.toggleMenuFor('search')" *isAuthenticated>
     <mat-icon>search</mat-icon>
   </button>
-  <div id="app-drawer" *ngIf="menu$ | async as menu" [ngClass]="{ 'open' : menu.search }">
-    <fieldset class="field-container">
-      <input type="text" [placeholder]="'UI.TOP_BAR.SEARCH' | translate" class="field" />
-    </fieldset>
+  <div *ngIf="menu$ | async as menu" class="search-bar" [ngClass]="{ 'open' : menu.search }">
+      <input type="text" [placeholder]="'UI.TOP_BAR.SEARCH' | translate" class="search-field" />
   </div>
 
   <!-- CHAT -->
   <ng-container *isAuthenticated>
-    <button mat-icon-button [matMenuTriggerFor]="chatMenu">
+    <button mat-icon-button class="link" [matMenuTriggerFor]="chatMenu">
       <mat-icon aria-label="Open chat">chat</mat-icon>
     </button>
     <mat-menu overlapTrigger="false" #chatMenu="matMenu">
@@ -40,7 +38,7 @@
 
   <!-- NOTIFICATIONS -->
   <ng-container *isAuthenticated>
-    <button mat-icon-button [matMenuTriggerFor]="notificationsMenu">
+    <button class="link"  mat-icon-button [matMenuTriggerFor]="notificationsMenu">
       <mat-icon>notifications</mat-icon>
     </button>
     <mat-menu overlapTrigger="false" #notificationsMenu="matMenu">
@@ -55,7 +53,7 @@
   <ng-container *ngIf="authenticationPackages$ | async as authPackages">
     <!-- Single auth package -->
     <ng-container *ngIf="authPackages.length === 1">
-      <a mat-icon-button title="Account Menu" [routerLink]="[authPackages[0].path]"
+      <a class="link" mat-icon-button title="Account Menu" [routerLink]="[authPackages[0].path]"
         (click)="uiStore.setPackageDrawerStatus(false)" *isAnonymous>
         <mat-icon aria-label="authPackages[0].description">account_circle</mat-icon>
       </a>
@@ -64,7 +62,7 @@
     <!-- Multiple auth package -->
     <ng-container *ngIf="authPackages.length > 1">
       <ng-container *isAnonymous>
-        <button mat-icon-button [matMenuTriggerFor]="loginMenu">
+        <button class="link" mat-icon-button [matMenuTriggerFor]="loginMenu">
           <mat-icon>account_circle</mat-icon>
         </button>
         <mat-menu overlapTrigger="false" #loginMenu="matMenu">
@@ -81,7 +79,7 @@
 
   <!-- ACCOUNT -->
   <ng-container *isAuthenticated>
-    <button mat-icon-button [matMenuTriggerFor]="accountMenu">
+    <button class="link" mat-icon-button [matMenuTriggerFor]="accountMenu">
       <mat-icon>account_circle</mat-icon>
     </button>
     <mat-menu overlapTrigger="false" #accountMenu="matMenu">

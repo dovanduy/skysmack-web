@@ -1,8 +1,11 @@
+@import "../../../../../../../assets/scss/_includes.scss";
+
 .docs-navbar-header {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   padding: 8px 16px;
+  background-color: #fff;
 
   > .mat-button {
     &:last-child {
@@ -15,49 +18,56 @@
   flex-grow: 1;
 }
 
-.docs-angular-logo {
-  height: 26px;
-  margin: 0 4px 3px 0;
-  vertical-align: middle;
-}
+.search-bar {
+  position: fixed;
+  visibility: hidden;
+  opacity: 0;
+  top: 56px;
+  z-index: 1;
+  width: 100%;
+  height: 0;
+  left: 0;
+  transition: height .1s ease;
+  background-color: #A0B3B3;
 
-.docs-github-logo {
-  height: 21px;
-  margin: 0 7px 2px 0;
-  vertical-align: middle;
-}
-
-.docs-navbar-link {
-  text-decoration: inherit;
-  flex: 1;
-}
-
-.docs-navbar {
-  display: none;
-}
-
-.docs-navbar-show-small {
-  display: none;
-}
-
-/**
-  * Rules for when the device is detected to be a small screen.
-  * Moves content two rows instead of one.
-  */
-@media (max-width: 720px) {
-  .docs-navbar-hide-small {
-    display: none;
+  .search-field {
+    height: 0;
+    transition: height .1s ease;
   }
 
-  .docs-navbar-show-small {
-    display: block;
+  ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #fff;
+    opacity: 1; /* Firefox */
+  }
+  
+  :-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: #fff;
+  }
+  
+  ::-ms-input-placeholder { /* Microsoft Edge */
+    color: #fff;
   }
 
-  .docs-navbar {
-    display: flex;
+  &.open {
+    height: 56px;
+    visibility: visible;
+    opacity: 1;    
+    
+    .search-field {
+      width: 100%;
+      height: 56px;
+      border: 0;
+      text-align: center;
+      background-color: #A0B3B3;
+    }
   }
+}
 
-  .docs-navbar--github-logo {
-    margin: 0;
+.link {  
+  color: rgba(0, 0, 0, 0.54);
+  transition: color 0.1s ease;
+
+  &:hover {  
+    color: rgba(0, 0, 0, 0.77);
   }
 }
