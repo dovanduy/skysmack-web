@@ -5,6 +5,7 @@ import { GlobalProperties, SubscriptionHandler, LocalObject, StrIndex } from '@s
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { map, take } from 'rxjs/operators';
 import { Field, FormRule, Validation, FormHelper } from '@skysmack/ng-dynamic-forms';
+import { EditorNavService } from '@skysmack/portal-ui';
 
 @Component({
   selector: 'ss-dynamic-form',
@@ -30,7 +31,7 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
 
   constructor(
     public fb: FormBuilder,
-    // public editorNavService: EditorNavService,
+    public editorNavService: EditorNavService,
     public skysmackStore: NgSkysmackStore
   ) { }
 

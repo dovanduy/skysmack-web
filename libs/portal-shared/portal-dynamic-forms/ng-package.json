@@ -10,6 +10,7 @@
     "@skysmack/framework",
     "@skysmack/packages-skysmack-core",
     "@skysmack/ng-dynamic-forms",
-    "@skysmack/ng-framework"
+    "@skysmack/ng-framework",
+    "@skysmack/portal-ui"
   ]
 }

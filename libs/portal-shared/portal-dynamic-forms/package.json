@@ -6,7 +6,8 @@
     "@skysmack/redux": "*",
     "@skysmack/ng-framework": "*",
     "@skysmack/ng-dynamic-forms": "*",
-    "@skysmack/packages-skysmack-core": "*"
+    "@skysmack/packages-skysmack-core": "*",
+    "@skysmack/portal-ui": "*"
   },
   "main": "./lib/public_api.js",
   "types": "./lib/public_api.d.ts",
