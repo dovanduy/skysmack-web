@@ -1,33 +1,32 @@
-<div class="app-drawer mat-elevation-z3" *ngIf="menu$|async as menu" [ngClass]="{ open: menu.drawer }"
+<div class="app-drawer" *ngIf="menu$|async as menu" [ngClass]="{ open: menu.drawer }"
     (click)="uiRedux.setPackageDrawerStatus(false)">
 
     <ng-container *ngIf="loadedPackages$ | async as loadedPackages">
-        <nav class="nav">
+        <nav class="main">
             <ng-container *ngFor="let loadedPackage of loadedPackages">
                 <ng-container *ngIf="loadedPackage.packageManifest">
-                    <a *ngIf="loadedPackage.packageManifest.menuLocation === 'main'" mat-button class="app-link"
-                        [routerLink]="[loadedPackage._package.path]">
-                        <i class="material-icons md-light app-icon">{{ loadedPackage.packageManifest.icon }}</i>
-                        <span class="app-name">{{ loadedPackage._package.name }}</span>
-                    </a>
+                    <div *ngIf="loadedPackage.packageManifest.menuLocation === 'main'" class="app-link-wrapper">
+                        <a mat-button class="app-link" [routerLink]="[loadedPackage._package.path]">
+                            <i class="material-icons md-light app-icon">{{ loadedPackage.packageManifest.icon }}</i>
+                            <span
+                                class="app-name">{{ (loadedPackage._package.name.length > 16)? (loadedPackage._package.name | slice:0:13) + '...' : (loadedPackage._package.name) }}</span>
+                        </a></div>
                 </ng-container>
             </ng-container>
         </nav>
 
-        <div class="sys-docker">
-            <!-- <a class="app-link" [routerLink]="['/skysmack/settings']">
-                <i class="material-icons md-light app-icon">settings</i>
-                <h5 class="app-name">{{ 'UI.PACKAGE_DRAWER.SETTINGS' | translate }}</h5>
-            </a> -->
+        <nav class="docker">
             <ng-container *ngFor="let loadedPackage of loadedPackages">
                 <ng-container *ngIf="loadedPackage.packageManifest">
-                    <a class="app-link" *ngIf="loadedPackage.packageManifest.menuLocation === 'docker'"
-                        [routerLink]="loadedPackage._package.path">
-                        <i class="material-icons md-light app-icon">{{ loadedPackage.packageManifest.icon }}</i>
-                        <span class="app-name">{{ loadedPackage._package.name }}</span>
-                    </a>
+                    <div *ngIf="loadedPackage.packageManifest.menuLocation === 'docker'" class="app-link-wrapper">
+                        <a mat-button class="app-link" [routerLink]="[loadedPackage._package.path]">
+                            <i class="material-icons md-light app-icon">{{ loadedPackage.packageManifest.icon }}</i>
+                            <span
+                                class="app-name">{{ (loadedPackage._package.name.length > 16)? (loadedPackage._package.name | slice:0:13) + '...' : (loadedPackage._package.name) }}</span>
+                        </a>
+                    </div>
                 </ng-container>
             </ng-container>
-        </div>
+        </nav>
     </ng-container>
 </div>
