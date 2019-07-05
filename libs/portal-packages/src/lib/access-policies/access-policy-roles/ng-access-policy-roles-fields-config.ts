@@ -1,15 +1,13 @@
 import { Injectable } from '@angular/core';
-import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
-
-import { FieldsConfig, SelectFieldComponent, HiddenFieldComponent } from '@skysmack/portal-ui';
-import { AccessPolicyRole, AccessPolicyRoleKey, AccessPolicyRule, ACCESS_POLICY_ROLES_AREA_KEY } from '@skysmack/packages-skysmack-core';
-import { Validators } from '@angular/forms';
+import { FieldsConfig, FieldProviders, SelectFieldComponent, HiddenFieldComponent } from '@skysmack/portal-ui';
+import { AccessPolicyRole, AccessPolicyRoleKey, ACCESS_POLICY_ROLES_AREA_KEY, AccessPolicyRule } from '@skysmack/packages-skysmack-core';
 import { AccessPolicyRolesValidation, NgAccessPolicyRulesStore } from '@skysmack/ng-packages';
-import { FieldProviders } from '@skysmack/portal-ui';
-import { LoadedPackage } from '@skysmack/ng-framework';
-import { Router } from '@angular/router';
-import { RolesSelectFieldComponent } from '@skysmack/portal-packages';
 import { FormRule, Field, SelectFieldOption, SelectField } from '@skysmack/ng-dynamic-forms';
+import { Router } from '@angular/router';
+import { LoadedPackage } from '@skysmack/ng-framework';
+import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
+import { Validators } from '@angular/forms';
+import { RolesSelectFieldComponent } from '../../identities/identity-roles/components/roles-select-field/roles-select-field.component';
 
 @Injectable({ providedIn: 'root' })
 export class NgAccessPolicyRolesFieldsConfig extends FieldsConfig<AccessPolicyRole, AccessPolicyRoleKey> {

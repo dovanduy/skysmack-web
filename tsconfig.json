@@ -92,9 +92,6 @@
       "@skysmack/portal-ui": [
         "libs/portal-ui/src/public_api.ts"
       ],
-      "@skysmack/portal-core": [
-        "libs/portal-core/src/index.ts"
-      ],
       "@skysmack/packages/emails-smtp": [
         "libs/packages/emails-smtp/public_api.ts"
       ],

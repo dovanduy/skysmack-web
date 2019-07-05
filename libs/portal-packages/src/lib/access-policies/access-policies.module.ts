@@ -11,9 +11,9 @@ import { accessPolicyRolesComponents } from './access-policy-roles/components/ac
 import { accessPolicyRulesComponents } from './access-policy-rules/components/access-policy-rules-components';
 import { accessPoliciesComponents } from './components/access-policies-components';
 import { FieldPermissionFieldComponent } from './access-policy-roles/components/field-permission-field/field-permission-field.component';
-import { IdentitiesModule } from '@skysmack/portal-packages';
 import { CoalescingComponentFactoryResolver } from '@skysmack/ng-framework';
 import { DynamicFormsModule } from '@skysmack/portal-dynamic-forms';
+import { IdentitiesModule } from '../identities/identities.module';
 // import { PackagesModule } from '../../packages';
 
 @NgModule({

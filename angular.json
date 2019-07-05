@@ -723,37 +723,6 @@
         }
       }
     },
-    "portal-core": {
-      "root": "libs/portal-core",
-      "sourceRoot": "libs/portal-core/src",
-      "projectType": "library",
-      "prefix": "skysmack",
-      "architect": {
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/portal-core/tsconfig.lib.json",
-              "libs/portal-core/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/builders:jest",
-          "options": {
-            "jestConfig": "libs/portal-core/jest.config.js",
-            "tsConfig": "libs/portal-core/tsconfig.spec.json",
-            "setupFile": "libs/portal-core/src/test-setup.ts"
-          }
-        }
-      },
-      "schematics": {
-        "@nrwl/schematics:component": {
-          "styleext": "scss"
-        }
-      }
-    },
     "shared-pricings": {
       "root": "libs/shared/pricings",
       "sourceRoot": "libs/shared/pricings/src",
