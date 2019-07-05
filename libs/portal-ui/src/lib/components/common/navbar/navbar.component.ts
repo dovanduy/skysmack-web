@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
 import { Skysmack } from '@skysmack/packages-skysmack-core';
-import { Menu } from '@skysmack/ng-ui';
+import { Menu } from '@skysmack/framework';
 import { NgSkysmackStore } from '@skysmack/ng-core';
 import { UIRedux } from './../../../redux/ui-redux';
 import { NgAuthenticationActions } from '@skysmack/ng-framework';

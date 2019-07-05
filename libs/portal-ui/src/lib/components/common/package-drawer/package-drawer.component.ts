@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { NgSkysmackStore } from '@skysmack/ng-core';
-import { Menu } from '@skysmack/ng-ui';
+import { Menu } from '@skysmack/framework';
 import { UIRedux } from './../../../redux/ui-redux';
 import { LoadedPackage } from '@skysmack/ng-framework';
 import { map } from 'rxjs/operators';
