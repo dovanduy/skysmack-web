@@ -1,7 +1,7 @@
 module.exports = {
-  name: 'ng-dynamic-forms',
+  name: 'ng-settings',
   preset: '../../../jest.config.js',
-  coverageDirectory: '../../../coverage/libs/ng-dynamic-forms',
+  coverageDirectory: '../../../coverage/libs/ng-settings',
   snapshotSerializers: [
     'jest-preset-angular/AngularSnapshotSerializer.js',
     'jest-preset-angular/HTMLCommentSerializer.js'

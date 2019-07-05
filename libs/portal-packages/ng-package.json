@@ -28,6 +28,7 @@
     "@skysmack/ng-packages",
     "@skysmack/ng-ui",
     "@skysmack/ng-framework",
-    "@skysmack/portal-ui"
+    "@skysmack/portal-ui",
+    "@skysmack/ng-settings"
   ]
 }

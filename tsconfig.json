@@ -108,7 +108,10 @@
         "libs/packages/invoices-products/public_api.ts"
       ],
       "@skysmack/ng-dynamic-forms": [
-        "libs/ng-shared/ng-dynamic-forms/src/index.ts"
+        "libs/ng-shared/ng-dynamic-forms/src/public_api.ts"
+      ],
+      "@skysmack/ng-settings": [
+        "libs/ng-shared/ng-settings/src/public_api.ts"
       ]
     }
   },

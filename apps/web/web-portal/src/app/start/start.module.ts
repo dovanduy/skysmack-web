@@ -5,7 +5,6 @@ import { NgRedux, NgReduxModule } from '@angular-redux/store';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 
-import { SkysmackModule } from '@skysmack/portal-core';
 import { FrontPageComponent } from './components/front-page/front-page.component';
 import { ReduxOfflineConfiguration } from '../redux/redux-offline.configuration';
 import { PortalUiModule } from '@skysmack/portal-ui';
@@ -88,7 +87,7 @@ import { invoicesProductsRoute } from '../packages/invoices-products-package-man
     PortalUiModule,
     NgReduxModule,
     NgReduxRouterModule.forRoot(),
-    SkysmackModule, // SkysmackModule must come after NgReduxModule
+    // SkysmackModule, // SkysmackModule must come after NgReduxModule
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
   providers: [

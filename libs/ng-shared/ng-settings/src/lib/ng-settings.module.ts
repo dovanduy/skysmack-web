@@ -2,17 +2,16 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 
-import { PortalUiModule } from './../portal-ui.module';
-import { LanguageService } from './../language/language.service';
 import { settingsComponents } from './components/settings-components';
 import { NgDynamicFormsModule } from '@skysmack/ng-dynamic-forms';
+import { PortalUiModule } from '@skysmack/portal-ui';
 
 @NgModule({
     imports: [
         CommonModule,
         HttpClientModule,
-        PortalUiModule,
-        NgDynamicFormsModule
+        NgDynamicFormsModule,
+        PortalUiModule
     ],
     declarations: [
         ...settingsComponents
@@ -20,10 +19,8 @@ import { NgDynamicFormsModule } from '@skysmack/ng-dynamic-forms';
     exports: [
         ...settingsComponents
     ],
-    providers: [
-        LanguageService
-    ]
+    providers: []
 })
-export class SettingsModule {
+export class NgSettingsModule {
     constructor() { }
 }

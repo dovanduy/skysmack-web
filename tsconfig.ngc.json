@@ -32,6 +32,12 @@
       "@skysmack/signal-r": [
         "./dist/@skysmack/signal-r"
       ],
+      "@skysmack/ng-dynamic-forms": [
+        "./dist/@skysmack/ng-dynamic-forms"
+      ],
+      "@skysmack/ng-settings": [
+        "./dist/@skysmack/ng-settings"
+      ],
       "@skysmack/packages-skysmack-core": [
         "./dist/@skysmack/packages-skysmack-core"
       ],
@@ -79,7 +85,7 @@
       ],
       "@skysmack/packages-emails": [
         "./dist/@skysmack/packages-emails"
-      ],
+      ]
     }
   },
   "exclude": [

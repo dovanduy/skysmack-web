@@ -109,6 +109,9 @@
     },
     "ng-dynamic-forms": {
       "tags": []
+    },
+    "ng-settings": {
+      "tags": []
     }
   }
 }

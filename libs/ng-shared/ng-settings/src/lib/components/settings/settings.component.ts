@@ -7,9 +7,7 @@ import { combineLatest, of } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
 import { NgSettingsActions, NgSettingsStore } from '@skysmack/ng-framework';
 import { SettingsAppState } from '@skysmack/redux';
-import { EditorNavService } from '../../../components/common/container/editor-nav.service';
-import { BaseComponent } from '../../../base-components/base-component';
-import { FieldsConfig } from '../../../fields/fields-config';
+import { BaseComponent, FieldsConfig, EditorNavService } from '@skysmack/portal-ui';
 
 @Component({
   selector: 'ss-settings',
@@ -36,6 +34,7 @@ export class SettingsComponent extends BaseComponent<SettingsAppState<any>, unkn
 
   ngOnInit() {
     super.ngOnInit();
+    this.editorNavService.showEditorNav();
     const settingsKey = this.router.url.split('/')[3];
     this.settingsKey = settingsKey ? settingsKey : 'default';
     this.actions.get(this.packagePath, this.settingsKey);

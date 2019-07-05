@@ -19,7 +19,8 @@
     "@skysmack/ng-framework": "*",
     "@skysmack/ng-packages": "*",
     "@skysmack/ng-ui": "*",
-    "@skysmack/portal-ui": "*"
+    "@skysmack/portal-ui": "*",
+    "@skysmack/ng-settings": "*"
   },
   "main": "./lib/public_api.js",
   "types": "./lib/public_api.d.ts",
