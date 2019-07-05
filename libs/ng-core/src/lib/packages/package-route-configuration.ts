@@ -3,7 +3,7 @@ import { Router, Route } from '@angular/router';
 import { hasValue } from '@skysmack/framework';
 import { Skysmack } from '@skysmack/packages-skysmack-core';
 import { map, take } from 'rxjs/operators';
-import { NgSkysmackStore } from '../skysmack/redux/ng-skysmack-store';
+import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { PackageLoader } from '@skysmack/ng-framework';
 import { Observable } from 'rxjs';
 

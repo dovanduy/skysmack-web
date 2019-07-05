@@ -6,11 +6,10 @@ import { Injectable } from '@angular/core';
 import { NgPackagesRequests } from './ng-packages-requests';
 import { HttpErrorResponse, LocalObject, StrIndex, Package } from '@skysmack/framework';
 import { NgPackagesNotifications } from '../ng-packages-notifications';
-import { NgSkysmackActions } from '../../skysmack/redux/ng-skysmack-actions';
-import { NgSkysmackRequests } from '../../skysmack/redux/ng-skysmack-requests';
 import { NgSettingsActions, RecordEpicsBase } from '@skysmack/ng-framework';
 import { PACKAGES_REDUX_KEY } from '@skysmack/packages-skysmack-core';
 import { NgPackagesActions } from './ng-packages-actions';
+import { NgSkysmackRequests, NgSkysmackActions } from '@skysmack/ng-skysmack';
 
 @Injectable({ providedIn: 'root' })
 export class NgPackagesEpics extends RecordEpicsBase<Package, string> {

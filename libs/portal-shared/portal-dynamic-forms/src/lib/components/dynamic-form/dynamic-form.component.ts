@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angu
 import { FormBuilder, Validators, FormGroup, FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { GlobalProperties, SubscriptionHandler, LocalObject, StrIndex } from '@skysmack/framework';
-import { NgSkysmackStore } from '@skysmack/ng-core';
+import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { map, take } from 'rxjs/operators';
 import { Field, FormRule, Validation, FormHelper } from '@skysmack/ng-dynamic-forms';
 

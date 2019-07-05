@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { EntityComponentPageTitle, RecordIndexComponent, MenuItemActionProviders, MENU_ITEM_ACTIONS_EDIT, MENU_ITEM_ACTIONS_DELETE } from '@skysmack/portal-ui';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgAccessPolicyPermissionsActions } from '@skysmack/ng-core';
-import { NgSkysmackStore } from '@skysmack/ng-core';
+import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { NgAccessPolicyPermissionsStore } from '@skysmack/ng-core';
 import { MenuItem } from '@skysmack/framework';
 import { AccessPolicyPermissionsAppState, AccessPolicyPermission, ACCESS_POLICY_PERMISSIONS_AREA_KEY } from '@skysmack/packages-skysmack-core';

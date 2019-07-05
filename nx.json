@@ -118,6 +118,9 @@
     },
     "portal-settings": {
       "tags": []
+    },
+    "ng-skysmack": {
+      "tags": []
     }
   }
 }

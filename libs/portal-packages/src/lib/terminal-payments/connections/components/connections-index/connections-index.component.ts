@@ -5,7 +5,7 @@ import { ConnectionsAppState, Connection, CONNECTIONS_AREA_KEY, ConnectionKey, T
 import { NgConnectionsMenu } from '../../ng-connections-menu';
 import { MenuItem } from '@skysmack/framework';
 import { NgConnectionsFieldsConfig } from '../../ng-connections-fields-config';
-import { NgSkysmackStore } from '@skysmack/ng-core';
+import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { NgConnectionsActions, NgConnectionsStore } from '@skysmack/ng-packages';
 import { HttpClient } from '@angular/common/http';
 import { LocalObject, API_DOMAIN_INJECTOR_TOKEN, ApiDomain } from '@skysmack/framework';

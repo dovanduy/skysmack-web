@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Role, RolesAppState } from '@skysmack/packages-identities';
 import { NgRolesActions } from '@skysmack/ng-packages';
-import { NgSkysmackStore } from '@skysmack/ng-core';
+import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgRolesStore } from '@skysmack/ng-packages';
 import { RecordFormComponent, EditorNavService } from '@skysmack/portal-ui';

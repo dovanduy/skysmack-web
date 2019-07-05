@@ -3,9 +3,9 @@ import { PACKAGES_REDUCER_KEY, PackagesState } from '@skysmack/packages-skysmack
 import { NgRedux } from '@angular-redux/store';
 import { Observable } from 'rxjs';
 import { LocalObject, Package, safeUndefinedTo, AvailablePackage, dictionaryToArray, log } from '@skysmack/framework';
-import { map, tap } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { NgRecordStore } from '@skysmack/ng-framework';
-import { NgSkysmackStore } from '../../skysmack/redux/ng-skysmack-store';
+import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 
 @Injectable({ providedIn: 'root' })
 export class NgPackagesStore extends NgRecordStore<PackagesState, Package, string> {

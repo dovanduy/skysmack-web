@@ -4,7 +4,7 @@ import { map, switchMap, take } from 'rxjs/operators';
 import { Observable, combineLatest, of } from 'rxjs';
 import { StrIndex, LocalObject } from '@skysmack/framework';
 import { MenuItemActionProvider } from '@skysmack/portal-ui';
-import { NgSkysmackStore } from '@skysmack/ng-core';
+import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { PRODUCTS_AREA_KEY, Product } from '@skysmack/packages-products';
 import { InvoicesProductsType } from '@skysmack/packages-invoices-products';
 import { Router } from '@angular/router';

@@ -5,8 +5,7 @@ import { directives } from './directives/directives';
 
 @NgModule({
   imports: [
-    CommonModule,
-    ReactiveFormsModule
+    CommonModule
   ],
   declarations: [
     ...directives,

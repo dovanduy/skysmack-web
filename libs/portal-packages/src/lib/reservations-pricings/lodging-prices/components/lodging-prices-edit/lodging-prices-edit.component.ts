@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgLodgingPricesActions, NgLodgingPricesStore } from '@skysmack/ng-packages';
-import { NgSkysmackStore } from '@skysmack/ng-core';
+import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EditorNavService, RecordFormComponent } from '@skysmack/portal-ui';
 import { LodgingPricesAppState, LodgingPrice } from '@skysmack/packages-reservations-pricings';

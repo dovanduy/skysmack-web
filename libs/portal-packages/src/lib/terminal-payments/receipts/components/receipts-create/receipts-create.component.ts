@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ReceiptsAppState, Receipt } from '@skysmack/packages-terminal-payments';
-import { NgSkysmackStore } from '@skysmack/ng-core';
+import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DocumentRecordFormComponent, EditorNavService } from '@skysmack/portal-ui';
 import { NgReceiptsActions } from '@skysmack/ng-packages';

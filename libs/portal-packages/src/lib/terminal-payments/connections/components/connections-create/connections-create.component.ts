@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ConnectionsAppState, Connection, ConnectionKey } from '@skysmack/packages-terminal-payments';
-import { NgSkysmackStore } from '@skysmack/ng-core';
+import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RecordFormComponent, EditorNavService } from '@skysmack/portal-ui';
 import { NgConnectionsActions } from '@skysmack/ng-packages';

@@ -32,11 +32,14 @@
       "@skysmack/signal-r": [
         "./dist/@skysmack/signal-r"
       ],
+      "@skysmack/ng-skysmack": [
+        "./dist/@skysmack/ng-skysmack"
+      ],
       "@skysmack/ng-dynamic-forms": [
         "./dist/@skysmack/ng-dynamic-forms"
       ],
-      "@skysmack/ng-settings": [
-        "./dist/@skysmack/ng-settings"
+      "@skysmack/portal-settings": [
+        "./dist/@skysmack/portal-settings"
       ],
       "@skysmack/portal-dynamic-forms": [
         "./dist/@skysmack/portal-dynamic-forms"

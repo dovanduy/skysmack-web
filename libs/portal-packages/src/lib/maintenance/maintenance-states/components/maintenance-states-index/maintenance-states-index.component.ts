@@ -6,7 +6,7 @@ import { MenuItem } from '@skysmack/framework';
 import { NgMaintenanceStatesActions, NgMaintenanceStatesStore } from '@skysmack/ng-packages';
 import { NgMaintenanceStatesMenu } from '../../ng-maintenance-states-menu';
 import { NgMaintenanceStatesFieldsConfig } from '../../ng-maintenance-states-fields-config';
-import { NgSkysmackStore } from '@skysmack/ng-core';
+import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 
 
 @Component({

@@ -4,7 +4,7 @@ import { map, switchMap, take, } from 'rxjs/operators';
 import { Observable, combineLatest, of } from 'rxjs';
 import { StrIndex, LocalObject } from '@skysmack/framework';
 import { MenuItemActionProvider } from '@skysmack/portal-ui';
-import { NgSkysmackStore } from '@skysmack/ng-core';
+import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { INVOICES_AREA_KEY, Invoice } from '@skysmack/packages-invoices';
 import { CashPayment } from '@skysmack/packages-invoices-cash-payments';
 import { TerminalPaymentsType } from '@skysmack/packages-terminal-payments';

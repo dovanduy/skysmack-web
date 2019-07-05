@@ -9,7 +9,7 @@ import { NgLodgingsReservationsMenu } from '../../ng-lodgings-reservations-menu'
 import { CheckIn } from '@skysmack/packages-lodging-reservations';
 import { LodgingsArrivalsComponent } from '../../components/lodgings-arrivals/lodgings-arrivals.component';
 import { NgLodgingReservationsFieldsConfig } from '../../ng-lodging-reservations-fields-config';
-import { NgSkysmackStore } from '@skysmack/ng-core';
+import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 
 @Component({
   selector: 'ss-lodgings-reservations-index',

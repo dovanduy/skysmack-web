@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { NgSkysmackStore } from '@skysmack/ng-core';
+import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { Menu } from '@skysmack/framework';
 import { UIRedux } from './../../../redux/ui-redux';
 import { LoadedPackage } from '@skysmack/ng-framework';

@@ -5,7 +5,7 @@ import { FieldsConfig, FieldProviders, SelectFieldComponent, IntFieldComponent, 
 import { NgInvoicesProductsValidation, NgInvoicesActions, NgInvoicesStore } from '@skysmack/ng-packages';
 import { LoadedPackage, getPackageDendencyAsStream } from '@skysmack/ng-framework';
 import { INVOICES_PRODUCTS_AREA_KEY } from '@skysmack/packages-invoices-products';
-import { NgSkysmackStore } from '@skysmack/ng-core';
+import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { map, take, switchMap } from 'rxjs/operators';
 import { Validators } from '@angular/forms';
 import { FormRule, SelectField, Field } from '@skysmack/ng-dynamic-forms';

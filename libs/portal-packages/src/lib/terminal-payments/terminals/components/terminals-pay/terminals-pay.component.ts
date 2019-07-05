@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { NgInvoicesActions, NgInvoicesStore, NgTerminalsActions, NgTerminalsStore } from '@skysmack/ng-packages';
-import { NgSkysmackStore } from '@skysmack/ng-core';
+import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EditorNavService, RecordFormComponent } from '@skysmack/portal-ui';
 import { map, take, switchMap, tap, catchError } from 'rxjs/operators';

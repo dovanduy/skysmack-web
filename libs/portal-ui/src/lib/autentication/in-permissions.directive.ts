@@ -1,6 +1,6 @@
 import { Directive, OnInit, TemplateRef, ViewContainerRef, OnDestroy, Input } from '@angular/core';
 import { SubscriptionLike, combineLatest, of } from 'rxjs';
-import { NgSkysmackStore } from '@skysmack/ng-core';
+import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { map, startWith, switchMap } from 'rxjs/operators';
 import { Router } from '@angular/router';
 

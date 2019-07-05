@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
 import { Skysmack } from '@skysmack/packages-skysmack-core';
 import { Menu } from '@skysmack/framework';
-import { NgSkysmackStore } from '@skysmack/ng-core';
+import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { UIRedux } from './../../../redux/ui-redux';
 import { NgAuthenticationActions } from '@skysmack/ng-framework';
 import { Package } from '@skysmack/framework';

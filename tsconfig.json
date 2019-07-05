@@ -115,6 +115,9 @@
       ],
       "@skysmack/portal-settings": [
         "libs/portal-shared/portal-settings/src/public_api.ts"
+      ],
+      "@skysmack/ng-skysmack": [
+        "libs/ng-shared/ng-skysmack/src/public_api.ts"
       ]
     }
   },

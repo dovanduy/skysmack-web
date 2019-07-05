@@ -5,7 +5,7 @@ import { NgLodgingTypesStore, NgLodgingTypesActions } from '@skysmack/ng-package
 import { EditorNavService, DocumentRecordFormComponent } from '@skysmack/portal-ui';
 import { NgFieldActions } from '@skysmack/ng-framework';
 import { NgLodgingTypesFieldsConfig } from '../../ng-lodging-types-fields-config';
-import { NgSkysmackStore } from '@skysmack/ng-core';
+import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 
 @Component({
   selector: 'ss-lodging-types-create',

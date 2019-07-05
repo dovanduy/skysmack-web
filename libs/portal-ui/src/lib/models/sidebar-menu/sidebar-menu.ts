@@ -4,7 +4,7 @@ import { map, switchMap, filter, take } from 'rxjs/operators';
 import { MenuArea } from '@skysmack/framework';
 import { MenuItem } from '@skysmack/framework';
 
-import { NgSkysmackStore } from '@skysmack/ng-core';
+import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { SubscriptionHandler } from '@skysmack/framework';
 import { NgMenuItemProviders, getAdditionalPaths, getPackageDendencyAsStream } from '@skysmack/ng-framework';
 import { combineLatest } from 'rxjs';

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { EntityComponentPageTitle, MenuItemActionProviders, MENU_ITEM_ACTION_DETAILS, MENU_ITEM_ACTIONS_EDIT, MENU_ITEM_ACTIONS_DELETE, RecordIndexComponent } from '@skysmack/portal-ui';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgEmailTemplatesActions } from '@skysmack/ng-packages';
-import { NgSkysmackStore } from '@skysmack/ng-core';
+import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { NgEmailTemplatesStore } from '@skysmack/ng-packages';
 import { EmailTemplate, EmailTemplatesAppState, EMAIL_TEMPLATES_AREA_KEY } from '@skysmack/packages-emails';
 import { NgEmailTemplatesMenu } from './../../ng-email-templates-menu';

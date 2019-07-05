@@ -1,7 +1,7 @@
 import { PreloadingStrategy, Route } from '@angular/router';
 
 import { Observable, of } from 'rxjs';
-import { NgSkysmackStore } from '@skysmack/ng-core';
+import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { Injectable } from '@angular/core';
 import { map, switchMap } from 'rxjs/operators';
 

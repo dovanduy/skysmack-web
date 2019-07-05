@@ -6,7 +6,7 @@ import { MenuItem } from '@skysmack/framework';
 import { User, UsersAppState, USERS_AREA_KEY } from '@skysmack/packages-identities';
 import { NgUsersMenu } from '../../ng-users-menu';
 import { NgUsersFieldsConfig } from '../../ng-users-fields-config';
-import { NgSkysmackStore } from '@skysmack/ng-core';
+import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 
 
 @Component({

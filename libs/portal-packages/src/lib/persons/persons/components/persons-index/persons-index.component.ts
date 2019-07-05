@@ -2,12 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { EntityComponentPageTitle, DocumentRecordIndexComponent, MenuItemActionProviders, MENU_ITEM_ACTIONS_EDIT, MENU_ITEM_ACTION_DETAILS, MENU_ITEM_ACTIONS_DELETE } from '@skysmack/portal-ui';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgPersonsActions } from '@skysmack/ng-packages';
-import { NgSkysmackStore, NgSkysmackActions } from '@skysmack/ng-core';
+import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { NgPersonsStore } from '@skysmack/ng-packages';
 import { Person, PersonsAppState, PERSONS_AREA_KEY, PersonsPermissions } from '@skysmack/packages-persons';
 import { NgPersonsMenu } from '../../../ng-persons-menu';
 import { MenuItem } from '@skysmack/framework';
-import { NgFieldActions, NgSignalR } from '@skysmack/ng-framework';
+import { NgFieldActions } from '@skysmack/ng-framework';
 import { NgPersonsFieldsConfig } from '../../../ng-persons-fields-config';
 
 @Component({
@@ -31,7 +31,6 @@ export class PersonsIndexComponent extends DocumentRecordIndexComponent<PersonsA
     public activatedRoute: ActivatedRoute,
     public actions: NgPersonsActions,
     public skysmackStore: NgSkysmackStore,
-    public skysmackActions: NgSkysmackActions,
     public store: NgPersonsStore,
     public sidebarMenu: NgPersonsMenu,
     public fieldsConfig: NgPersonsFieldsConfig,

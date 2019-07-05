@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductTypesAppState, ProductType } from '@skysmack/packages-products';
-import { NgSkysmackStore } from '@skysmack/ng-core';
+import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DocumentRecordFormComponent, EditorNavService } from '@skysmack/portal-ui';
 import { NgProductTypesActions } from '@skysmack/ng-packages';

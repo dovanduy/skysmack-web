@@ -5,7 +5,7 @@ import { NgRecordStore } from '@skysmack/ng-framework';
 import { Observable } from 'rxjs';
 import { StrIndex, defined, LocalObject, DependencyOptions } from '@skysmack/framework';
 import { map } from 'rxjs/operators';
-import { NgSkysmackStore } from '@skysmack/ng-core';
+import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 
 @Injectable({ providedIn: 'root' })
 export class NgLodgingsStore extends NgRecordStore<LodgingsAppState, Lodging, number> {

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
 import { StrIndex, LocalObject, DisplayColumn } from '@skysmack/framework';
-import { NgSkysmackStore } from '@skysmack/ng-core';
+import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { StringFieldComponent } from '@skysmack/portal-ui';
 import { FieldProvider } from '@skysmack/portal-ui';
 import { Validators } from '@angular/forms';

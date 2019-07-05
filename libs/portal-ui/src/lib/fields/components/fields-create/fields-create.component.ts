@@ -2,7 +2,7 @@ import { Component, OnInit, Injector } from '@angular/core';
 import { FieldState } from '@skysmack/redux';
 import { Router, ActivatedRoute } from '@angular/router';
 import { EditorNavService } from './../../../components/common/container/editor-nav.service';
-import { NgSkysmackStore } from '@skysmack/ng-core';
+import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { NgFieldsConfig } from './../../ng-fields-config';
 import { RecordFormComponent } from './../../../base-components/record-components/record-form-component';
 import { NgFieldActions, NgFieldStore } from '@skysmack/ng-framework';

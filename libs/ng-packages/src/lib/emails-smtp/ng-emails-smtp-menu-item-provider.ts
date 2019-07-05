@@ -3,7 +3,7 @@ import { of, Observable } from 'rxjs';
 import { safeHasValue, Package, MenuItemProvider, MenuItem } from '@skysmack/framework';
 import { map } from 'rxjs/operators';
 import { Skysmack } from '@skysmack/packages-skysmack-core';
-import { NgSkysmackStore } from '@skysmack/ng-core';
+import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { EmailsSmtpType } from '@skysmack/packages/emails-smtp';
 
 @Injectable({ providedIn: 'root' })

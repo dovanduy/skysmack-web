@@ -3,7 +3,7 @@ import { of, Observable } from 'rxjs';
 import { safeHasValue, Package, MenuItemProvider, MenuItem } from '@skysmack/framework';
 import { map } from 'rxjs/operators';
 import { Skysmack } from '@skysmack/packages-skysmack-core';
-import { NgSkysmackStore } from '@skysmack/ng-core';
+import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { INVOICES_AREA_KEY } from '@skysmack/packages-invoices';
 import { TerminalPaymentsType } from '@skysmack/packages-terminal-payments';
 

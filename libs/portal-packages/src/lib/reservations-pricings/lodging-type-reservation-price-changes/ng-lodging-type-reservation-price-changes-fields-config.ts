@@ -8,7 +8,7 @@ import { FieldProviders } from '@skysmack/portal-ui';
 import { LoadedPackage, getPackageDendencyAsStream } from '@skysmack/ng-framework';
 import { LodgingTypeReservationPriceChange, LODGING_TYPE_RESERVATION_PRICE_CHANGES_AREA_KEY } from '@skysmack/packages-reservations-pricings';
 import { of } from 'rxjs';
-import { NgSkysmackStore } from '@skysmack/ng-core';
+import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { map, take, switchMap } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })

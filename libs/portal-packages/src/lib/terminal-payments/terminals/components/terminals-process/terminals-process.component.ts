@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgTerminalsActions, NgTerminalsStore } from '@skysmack/ng-packages';
-import { NgSkysmackStore } from '@skysmack/ng-core';
+import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EditorNavService, BaseComponent } from '@skysmack/portal-ui';
 import { TerminalsAppState } from '@skysmack/packages-terminal-payments';

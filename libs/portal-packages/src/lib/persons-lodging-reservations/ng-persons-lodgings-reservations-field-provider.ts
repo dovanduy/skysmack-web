@@ -10,7 +10,7 @@ import { MultiSelectFieldComponent, AddField, AddRecordFieldComponent, HiddenFie
 import { NgPersonsFieldsConfig } from '../persons/ng-persons-fields-config';
 import { FieldProvider } from '@skysmack/portal-ui';
 import { Person } from '@skysmack/packages-persons';
-import { NgSkysmackStore } from '@skysmack/ng-core';
+import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { LODGING_RESERVATIONS_AREA_KEY } from '@skysmack/packages-lodging-reservations';
 
 @Injectable({ providedIn: 'root' })

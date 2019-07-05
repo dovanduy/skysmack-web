@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgAccessPolicyRolesActions, NgAccessPolicyRulesActions } from '@skysmack/ng-core';
-import { NgSkysmackStore } from '@skysmack/ng-core';
+import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EditorNavService, RecordFormComponent } from '@skysmack/portal-ui';
 import { NgAccessPolicyRolesStore } from '@skysmack/ng-core';

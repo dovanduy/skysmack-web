@@ -4,7 +4,7 @@ import { RecurringAssignment, RecurringAssignmentsAppState } from '@skysmack/pac
 import { EditorNavService, RecordFormComponent } from '@skysmack/portal-ui';
 import { NgRecurringAssignmentsActions, NgRecurringAssignmentsStore, NgAssignmentTypesActions } from '@skysmack/ng-packages';
 import { NgRecurringAssignmentsFieldsConfig } from '../../ng-recurring-assignments-fields-config';
-import { NgSkysmackStore } from '@skysmack/ng-core';
+import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 
 @Component({
   selector: 'ss-recurring-assignments-create',

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { InvoicePayment, InvoicePaymentsAppState } from '@skysmack/packages-invoices';
 import { NgInvoicePaymentsActions } from '@skysmack/ng-packages';
-import { NgSkysmackStore } from '@skysmack/ng-core';
+import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EditorNavService } from '@skysmack/portal-ui';
 import { DocumentRecordFormComponent } from '@skysmack/portal-ui';

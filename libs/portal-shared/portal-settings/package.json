@@ -5,6 +5,7 @@
     "@angular/common": "^8.0.0",
     "@angular/core": "^8.0.0",
     "@skysmack/ng-framework": "*",
+    "@skysmack/portal-dynamic-forms": "*",
     "@skysmack/ng-dynamic-forms": "*",
     "@skysmack/framework": "*",
     "@skysmack/redux": "*",
@@ -22,6 +23,6 @@
   ],
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1",
-    "build": "ng build ng-settings"
+    "build": "ng build portal-settings"
   }
 }

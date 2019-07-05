@@ -11,6 +11,7 @@
     "@skysmack/packages-skysmack-core",
     "@skysmack/packages-oauth2",
     "@skysmack/ng-packages",
+    "@skysmack/ng-skysmack",
     "@skysmack/ng-dynamic-forms",
     "@skysmack/portal-dynamic-forms",
     "@skysmack/ng-framework"

@@ -4,7 +4,7 @@ import { Assignment, AssignmentsAppState } from '@skysmack/packages-maintenance'
 import { RecordFormComponent, EditorNavService } from '@skysmack/portal-ui';
 import { NgAssignmentsActions, NgAssignmentsStore, NgAssignmentTypesActions } from '@skysmack/ng-packages';
 import { NgAssignmentsFieldsConfig } from '../../ng-assignments-fields-config';
-import { NgSkysmackStore } from '@skysmack/ng-core';
+import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 
 @Component({
   selector: 'ss-assignments-edit',

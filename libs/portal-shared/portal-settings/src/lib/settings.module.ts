@@ -3,14 +3,14 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 
 import { settingsComponents } from './components/settings-components';
-import { NgDynamicFormsModule } from '@skysmack/ng-dynamic-forms';
 import { PortalUiModule } from '@skysmack/portal-ui';
+import { DynamicFormsModule } from '@skysmack/portal-dynamic-forms';
 
 @NgModule({
     imports: [
         CommonModule,
         HttpClientModule,
-        NgDynamicFormsModule,
+        DynamicFormsModule,
         PortalUiModule
     ],
     declarations: [

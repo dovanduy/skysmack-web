@@ -1,6 +1,6 @@
 import { Router, ActivatedRoute } from '@angular/router';
 import { EntityActions, EntityStore } from '@skysmack/redux';
-import { NgSkysmackStore } from '@skysmack/ng-core';
+import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { OnInit } from '@angular/core';
 import { Record, PagedQuery } from '@skysmack/framework';
 import { RecordIndexComponent } from './record-index-component';

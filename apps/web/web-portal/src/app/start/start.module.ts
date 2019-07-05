@@ -38,6 +38,7 @@ import { emailsRoute } from '../packages/emails-package-manifest';
 import { emailsSmtpRoute } from '../packages/emails-smtp-package-manifest';
 import { terminalPaymentsRoute } from '../packages/terminal-payments-manifest';
 import { invoicesProductsRoute } from '../packages/invoices-products-package-manifest';
+import { NgSkysmackModule } from '@skysmack/ng-skysmack';
 // import { NgxGraphModule } from '@swimlane/ngx-graph';
 // import { NgxChartsModule } from '@swimlane/ngx-charts';
 // NgxGraphModule,
@@ -87,7 +88,8 @@ import { invoicesProductsRoute } from '../packages/invoices-products-package-man
     PortalUiModule,
     NgReduxModule,
     NgReduxRouterModule.forRoot(),
-    // SkysmackModule, // SkysmackModule must come after NgReduxModule
+    NgSkysmackModule, // SkysmackModule must come after NgReduxModule
+    // SkysmackModule, 
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
   providers: [

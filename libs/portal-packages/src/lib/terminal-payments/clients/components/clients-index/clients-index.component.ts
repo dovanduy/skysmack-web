@@ -5,7 +5,7 @@ import { ClientsAppState, Client, CLIENTS_AREA_KEY } from '@skysmack/packages-te
 import { NgClientsMenu } from '../../ng-clients-menu';
 import { MenuItem } from '@skysmack/framework';
 import { NgClientsFieldsConfig } from '../../ng-clients-fields-config';
-import { NgSkysmackStore } from '@skysmack/ng-core';
+import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { NgClientsActions, NgClientsStore } from '@skysmack/ng-packages';
 
 @Component({

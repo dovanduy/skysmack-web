@@ -2,7 +2,7 @@ import { Component, OnInit, Injector } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MenuItem } from '@skysmack/framework';
 import { getFieldStateKey, LocalObject, FieldSchemaViewModel } from '@skysmack/framework';
-import { NgSkysmackStore } from '@skysmack/ng-core';
+import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { EntityComponentPageTitle } from './../../../models/entity-component-page-title';
 import { NgFieldsMenu } from '../../ng-fields-menu';
 import { RecordIndexComponent } from '../../../base-components/record-components/record-index-component';

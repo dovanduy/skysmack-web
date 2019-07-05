@@ -25,11 +25,12 @@
     "@skysmack/framework",
     "@skysmack/packages-skysmack-core",
     "@skysmack/packages-oauth2",
+    "@skysmack/ng-skysmack",
     "@skysmack/ng-packages",
     "@skysmack/ng-dynamic-forms",
     "@skysmack/portal-dynamic-forms",
     "@skysmack/ng-framework",
     "@skysmack/portal-ui",
-    "@skysmack/ng-settings"
+    "@skysmack/portal-settings"
   ]
 }

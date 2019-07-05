@@ -6,7 +6,7 @@ import { MenuItem } from '@skysmack/framework';
 import { NgRecurringAssignmentsActions, NgRecurringAssignmentsStore } from '@skysmack/ng-packages';
 import { NgRecurringAssignmentsMenu } from '../../ng-recurring-assignments-menu';
 import { NgRecurringAssignmentsFieldsConfig } from '../../ng-recurring-assignments-fields-config';
-import { NgSkysmackStore } from '@skysmack/ng-core';
+import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 
 @Component({
   selector: 'ss-recurring-assignments-index',

@@ -7,7 +7,7 @@ import { NgProductTypesMenu } from '../../ng-product-types-menu';
 import { MenuItem } from '@skysmack/framework';
 import { NgFieldActions } from '@skysmack/ng-framework';
 import { NgProductTypesFieldsConfig } from '../../ng-product-types-fields-config';
-import { NgSkysmackStore } from '@skysmack/ng-core';
+import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 
 @Component({
   selector: 'ss-product-types-index',

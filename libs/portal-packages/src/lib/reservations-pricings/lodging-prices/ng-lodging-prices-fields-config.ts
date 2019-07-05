@@ -7,7 +7,7 @@ import { FieldsConfig, SelectFieldComponent, HiddenFieldComponent, DecimalFieldC
 import { FieldProviders } from '@skysmack/portal-ui';
 import { LoadedPackage, getPackageDendencyAsStream } from '@skysmack/ng-framework';
 import { LodgingPrice, LODGING_PRICES_AREA_KEY } from '@skysmack/packages-reservations-pricings';
-import { NgSkysmackStore } from '@skysmack/ng-core';
+import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { switchMap, map, take, tap } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })

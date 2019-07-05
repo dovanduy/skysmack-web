@@ -7,7 +7,7 @@ import { NgLodgingsActions } from '../../../lodgings/lodgings/redux/ng-lodgings-
 import { NgLodgingReservationsNotifications } from '../ng-lodging-reservations-notifications';
 import { NgLodgingTypesStore } from '../../../lodgings/lodging-types/redux/ng-lodgings-types-store';
 import { NgLodgingsStore } from '../../../lodgings/lodgings/redux/ng-lodgings-store';
-import { NgSkysmackStore } from '@skysmack/ng-core';
+import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { ActionsObservable, ofType } from 'redux-observable';
 import { ReduxAction } from '@skysmack/redux';
 import { Observable } from 'rxjs';

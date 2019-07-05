@@ -7,7 +7,7 @@ import { MenuItem } from '@skysmack/framework';
 import { NgAssignmentsActions, NgAssignmentsStore, NgAssignmentTypesStore, NgAssignmentTypesActions } from '@skysmack/ng-packages';
 import { NgAssignmentsMenu } from '../../ng-assignments-menu';
 import { NgAssignmentsFieldsConfig } from '../../ng-assignments-fields-config';
-import { NgSkysmackStore } from '@skysmack/ng-core';
+import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 
 @Component({
   selector: 'ss-assignments-index',

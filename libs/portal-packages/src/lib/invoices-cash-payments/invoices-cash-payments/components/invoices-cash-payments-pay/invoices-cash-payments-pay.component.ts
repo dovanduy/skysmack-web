@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { CashPayment, InvoicesCashPaymentsAppState } from '@skysmack/packages-invoices-cash-payments';
 import { NgInvoicesCashPaymentsActions, NgInvoicesActions, NgInvoicesStore } from '@skysmack/ng-packages';
-import { NgSkysmackStore } from '@skysmack/ng-core';
+import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EditorNavService, RecordFormComponent } from '@skysmack/portal-ui';
 import { NgInvoicesCashPaymentsStore } from '@skysmack/ng-packages';

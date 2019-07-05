@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LodgingTypesAppState, LodgingType } from '@skysmack/packages-lodgings';
-import { NgSkysmackStore } from '@skysmack/ng-core';
+import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EditorNavService } from '@skysmack/portal-ui';
 import { DocumentRecordFormComponent } from '@skysmack/portal-ui';

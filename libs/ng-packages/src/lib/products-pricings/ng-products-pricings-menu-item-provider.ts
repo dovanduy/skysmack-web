@@ -4,7 +4,7 @@ import { safeHasValue, Package, MenuItemProvider, MenuItem } from '@skysmack/fra
 import { map } from 'rxjs/operators';
 import { Skysmack } from '@skysmack/packages-skysmack-core';
 import { ProductsPricingsType } from '@skysmack/packages-products-pricings';
-import { NgSkysmackStore } from '@skysmack/ng-core';
+import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 
 @Injectable({ providedIn: 'root' })
 export class NgProductsPricingsMenuItemProvider extends MenuItemProvider {

@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 import { AccountAppState } from '@skysmack/packages-identities';
 import { BaseComponent, EditorNavService } from '@skysmack/portal-ui';
 import { Router, ActivatedRoute } from '@angular/router';
-import { NgSkysmackStore } from '@skysmack/ng-core';
+import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { NgAccountRequests } from '@skysmack/ng-packages';
 import { map, take } from 'rxjs/operators';
 

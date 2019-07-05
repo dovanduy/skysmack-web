@@ -2,7 +2,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { OnInit, OnDestroy } from '@angular/core';
 import { Record, LocalObject } from '@skysmack/framework';
 import { EditorNavService } from './../../components/common/container/editor-nav.service';
-import { NgSkysmackStore } from '@skysmack/ng-core';
+import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { EntityActions, EntityStore } from '@skysmack/redux';
 import { RecordFormComponent } from './record-form-component';
 import { NgFieldActions } from '@skysmack/ng-framework';

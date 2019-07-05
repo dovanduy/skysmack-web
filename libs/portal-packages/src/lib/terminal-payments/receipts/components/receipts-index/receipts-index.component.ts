@@ -7,7 +7,7 @@ import { NgReceiptsMenu } from '../../ng-receipts-menu';
 import { MenuItem } from '@skysmack/framework';
 import { NgFieldActions } from '@skysmack/ng-framework';
 import { NgReceiptsFieldsConfig } from '../../ng-receipts-fields-config';
-import { NgSkysmackStore } from '@skysmack/ng-core';
+import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 
 @Component({
   selector: 'ss-receipts-index',

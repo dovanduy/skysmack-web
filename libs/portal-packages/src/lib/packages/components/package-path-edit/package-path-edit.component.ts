@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgPackagesActions } from '@skysmack/ng-core';
-import { NgSkysmackStore } from '@skysmack/ng-core';
+import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EditorNavService, RecordFormComponent } from '@skysmack/portal-ui';
 import { NgPackagesStore } from '@skysmack/ng-core';
@@ -38,7 +38,6 @@ export class PackagePathEditComponent extends RecordFormComponent<PackagesAppSta
       // newValue.oldObject = oldValue.object;
       // newValue.status = LocalObjectStatus.MODIFYING;
       // this.actions.update([newValue], this.packagePath); // Create proper redux flow?
-      console.log('UPDATING PACKAGE PATH', fh.form.value);
       this.editorNavService.hideEditorNav();
     });
   }

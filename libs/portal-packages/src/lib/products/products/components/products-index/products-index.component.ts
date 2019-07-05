@@ -1,15 +1,14 @@
-import { Component, OnInit, Inject } from '@angular/core';
-import { EntityComponentPageTitle, DocumentRecordIndexComponent, MenuItemActionProviders, MENU_ITEM_ACTIONS_EDIT, MENU_ITEM_ACTIONS_DELETE } from '@skysmack/portal-ui';
+import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { NgProductsActions } from '@skysmack/ng-packages';
-import { NgSkysmackStore } from '@skysmack/ng-core';
-import { NgProductsStore } from '@skysmack/ng-packages';
-import { Product, ProductsAppState, PRODUCTS_AREA_KEY } from '@skysmack/packages-products';
-import { NgProductsMenu } from '../../ng-products-menu';
+import { EntityComponentPageTitle, DocumentRecordIndexComponent, MenuItemActionProviders, MENU_ITEM_ACTIONS_EDIT, MENU_ITEM_ACTIONS_DELETE } from '@skysmack/portal-ui';
 import { MenuItem } from '@skysmack/framework';
 import { NgFieldActions } from '@skysmack/ng-framework';
+import { NgSkysmackStore } from '@skysmack/ng-skysmack';
+import { NgProductsStore } from '@skysmack/ng-packages';
+import { NgProductsActions } from '@skysmack/ng-packages';
+import { Product, ProductsAppState, PRODUCTS_AREA_KEY } from '@skysmack/packages-products';
+import { NgProductsMenu } from '../../ng-products-menu';
 import { NgProductsFieldsConfig } from '../../ng-products-fields-config';
-import { API_DOMAIN_INJECTOR_TOKEN, ApiDomain } from '@skysmack/framework';
 
 @Component({
   selector: 'ss-products-index',
@@ -27,7 +26,7 @@ export class ProductsIndexComponent extends DocumentRecordIndexComponent<Product
     public router: Router,
     public activatedRoute: ActivatedRoute,
     public actions: NgProductsActions,
-    public redux: NgSkysmackStore,
+    public skysmackStore: NgSkysmackStore,
     public store: NgProductsStore,
     public sidebarMenu: NgProductsMenu,
     public fieldsConfig: NgProductsFieldsConfig,
@@ -35,7 +34,7 @@ export class ProductsIndexComponent extends DocumentRecordIndexComponent<Product
     public title: EntityComponentPageTitle,
     public menuItemActionProviders: MenuItemActionProviders
   ) {
-    super(router, activatedRoute, actions, redux, store, fieldsConfig, fieldActions, menuItemActionProviders, title);
+    super(router, activatedRoute, actions, skysmackStore, store, fieldsConfig, fieldActions, menuItemActionProviders, title);
   }
 
   ngOnInit() {

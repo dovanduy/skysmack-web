@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { EntityComponentPageTitle, RecordIndexComponent, MenuItemActionProviders, MENU_ITEM_ACTIONS_EDIT, MENU_ITEM_ACTIONS_DELETE } from '@skysmack/portal-ui';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgProductsSalesPriceActions } from '@skysmack/ng-packages';
-import { NgSkysmackStore } from '@skysmack/ng-core';
+import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { NgProductsSalesPriceStore } from '@skysmack/ng-packages';
 import { ProductsSalesPriceAppState, PRODUCTS_SALES_PRICE_AREA_KEY, ProductsSalesPrice } from '@skysmack/packages-products-pricings';
 import { NgProductsSalesPriceMenu } from '../../ng-products-sales-price-menu';

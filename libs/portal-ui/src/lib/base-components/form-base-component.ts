@@ -1,7 +1,7 @@
 import { Router, ActivatedRoute } from '@angular/router';
 import { BaseComponent } from './base-component';
 import { LocalObject, Record, toLocalObject, LocalObjectStatus, PagedQuery } from '@skysmack/framework';
-import { NgSkysmackStore } from '@skysmack/ng-core';
+import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { FormHelper } from '@skysmack/ng-dynamic-forms';
 import { EntityActions } from '@skysmack/redux';
 import { EditorNavService } from './../components/common/container/editor-nav.service';

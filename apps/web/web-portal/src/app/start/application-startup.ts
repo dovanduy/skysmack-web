@@ -2,7 +2,7 @@ import { APP_INITIALIZER } from '@angular/core';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { API_DOMAIN_INJECTOR_TOKEN } from '@skysmack/framework';
 import { SkysmackApiDomain } from '../../requests/skysmack-api-domain';
-import { NgSkysmackActions } from '@skysmack/ng-core';
+import { NgSkysmackActions } from '@skysmack/ng-skysmack';
 import { AuthorizationInterceptor, configureLanguage, LanguageService } from '@skysmack/portal-ui';
 import { PackageLoader } from '@skysmack/ng-framework';
 import { loadInvoicePackage } from '../packages/invoices-package-manifest';

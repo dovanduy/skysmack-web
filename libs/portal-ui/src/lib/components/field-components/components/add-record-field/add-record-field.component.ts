@@ -3,7 +3,7 @@ import { FieldBaseComponent } from '../field-base-component';
 import { AddField } from '../../../../fields/add-field';
 import { FormHelper, Field } from '@skysmack/ng-dynamic-forms';
 import { Observable } from 'rxjs';
-import { NgSkysmackStore } from '@skysmack/ng-core';
+import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { switchMap } from 'rxjs/operators';
 
 @Component({

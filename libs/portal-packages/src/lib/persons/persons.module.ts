@@ -14,9 +14,9 @@ import { DynamicFormsModule } from '@skysmack/portal-dynamic-forms';
     CommonModule,
     HttpClientModule,
     PortalUiModule,
+    NgPersonsModule,
     DynamicFormsModule,
     PersonsRoutingModule,
-    NgPersonsModule,
     FieldsModule
   ],
   declarations: [

@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { SidebarMenu } from './../../../models/sidebar-menu/sidebar-menu';
 import { SubscriptionHandler } from '@skysmack/framework';
 import { EditorNavService } from './editor-nav.service';
-import { NgSkysmackStore } from '@skysmack/ng-core';
+import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { Observable, of } from 'rxjs';
 import { map, filter, switchMap } from 'rxjs/operators';
 import { NgAuthenticationStore } from '@skysmack/ng-framework';
@@ -40,7 +40,6 @@ export class ContainerComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.path = this.router.url;
-
     const packagePath = this.router.url.split('/')[1];
     if (!packagePath || packagePath === '' || packagePath === 'skysmack') {
       this.access$ = of(true);

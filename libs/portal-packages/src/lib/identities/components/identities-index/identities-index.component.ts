@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { EntityComponentPageTitle, BaseComponent } from '@skysmack/portal-ui';
 import { NgIdentitiesIndexMenu } from '../../ng-identities-index-menu';
 import { ActivatedRoute, Router } from '@angular/router';
-import { NgSkysmackStore } from '@skysmack/ng-core';
+import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 
 @Component({
   selector: 'ss-portal-package-identities-index',

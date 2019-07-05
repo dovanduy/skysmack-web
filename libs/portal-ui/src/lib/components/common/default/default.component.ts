@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { NgSignalR } from '@skysmack/ng-framework';
 import { Router } from '@angular/router';
-import { NgSkysmackActions } from '@skysmack/ng-core';
+import { NgSkysmackActions } from '@skysmack/ng-skysmack';
 
 @Component({
   selector: 'ss-default',

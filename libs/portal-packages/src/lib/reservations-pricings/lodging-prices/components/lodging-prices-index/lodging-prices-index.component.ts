@@ -3,7 +3,7 @@ import { EntityComponentPageTitle, RecordIndexComponent, MenuItemActionProviders
 import { Router, ActivatedRoute } from '@angular/router';
 import { LODGING_PRICES_AREA_KEY, LodgingPricesAppState, LodgingPrice } from '@skysmack/packages-reservations-pricings';
 import { MenuItem } from '@skysmack/framework';
-import { NgSkysmackStore } from '@skysmack/ng-core';
+import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { NgLodgingPricesActions, NgLodgingPricesStore } from '@skysmack/ng-packages';
 import { NgLodgingPricesMenu } from '../../ng-lodging-prices-menu';
 import { NgLodgingPricesFieldsConfig } from '../../ng-lodging-prices-fields-config';

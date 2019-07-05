@@ -9,7 +9,7 @@ import { EditorNavService } from '@skysmack/portal-ui';
 import { NgRolesStore, NgRolesActions } from '@skysmack/ng-packages';
 import { LocalObject, PagedQuery } from '@skysmack/framework';
 import { map, take, tap } from 'rxjs/operators';
-import { NgSkysmackStore } from '@skysmack/ng-core';
+import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 
 @Component({
   selector: 'ss-portal-package-users-roles',

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { BaseComponent } from '@skysmack/portal-ui';
 import { Router, ActivatedRoute } from '@angular/router';
-import { NgSkysmackStore } from '@skysmack/ng-core';
+import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 
 @Component({
   selector: 'ss-invoices-products-index',

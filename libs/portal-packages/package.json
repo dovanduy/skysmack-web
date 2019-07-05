@@ -17,11 +17,12 @@
     "@skysmack/packages-terminal-payments": "*",
     "@skysmack/packages-reservations-pricings": "*",
     "@skysmack/ng-framework": "*",
+    "@skysmack/ng-skysmack": "*",
     "@skysmack/ng-packages": "*",
     "@skysmack/ng-dynamic-forms": "*",
     "@skysmack/portal-dynamic-forms": "*",
     "@skysmack/portal-ui": "*",
-    "@skysmack/ng-settings": "*"
+    "@skysmack/portal-settings": "*"
   },
   "main": "./lib/public_api.js",
   "types": "./lib/public_api.d.ts",

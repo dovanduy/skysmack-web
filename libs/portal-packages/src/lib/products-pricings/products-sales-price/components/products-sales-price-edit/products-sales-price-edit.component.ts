@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductsSalesPriceAppState, ProductsSalesPrice } from '@skysmack/packages-products-pricings';
 import { NgProductsSalesPriceActions, NgProductsActions } from '@skysmack/ng-packages';
-import { NgSkysmackStore } from '@skysmack/ng-core';
+import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EditorNavService, RecordFormComponent } from '@skysmack/portal-ui';
 import { NgProductsSalesPriceStore } from '@skysmack/ng-packages';

@@ -4,7 +4,7 @@ import { NgLodgingReservationsStore, NgLodgingReservationsActions, NgLodgingsAct
 import { LodgingReservation, LodgingReservationsAppState } from '@skysmack/packages-lodging-reservations';
 import { RecordFormComponent, EditorNavService } from '@skysmack/portal-ui';
 import { NgLodgingReservationsFieldsConfig } from '../../ng-lodging-reservations-fields-config';
-import { NgSkysmackStore } from '@skysmack/ng-core';
+import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 
 @Component({
   selector: 'ss-lodgings-reservations-edit',

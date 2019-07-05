@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy, Inject } from '@angular/core';
 import { RecordFormComponent, EditorNavService } from '@skysmack/portal-ui';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgInvoicesActions } from '@skysmack/ng-packages';
-import { NgSkysmackStore } from '@skysmack/ng-core';
+import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { NgInvoicesStore } from '@skysmack/ng-packages';
 import { FormHelper } from '@skysmack/ng-dynamic-forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';

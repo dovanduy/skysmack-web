@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { NgSkysmackStore } from '@skysmack/ng-core';
+import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { EntityComponentPageTitle, BaseComponent } from '@skysmack/portal-ui';
 import { NgReservationsPricingsMenu } from '../../ng-reservations-pricings-menu';
 

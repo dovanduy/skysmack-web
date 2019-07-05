@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FieldBaseComponent } from '../field-base-component';
-import { NgPackagesStore, NgSkysmackStore, NgSkysmackActions } from '@skysmack/ng-core';
+import { NgPackagesStore } from '@skysmack/ng-core';
 import { switchMap, map, startWith } from 'rxjs/operators';
 import { Field, SelectFieldOption } from '@skysmack/ng-dynamic-forms';
 import { StrIndex } from '@skysmack/framework';
 import { Observable } from 'rxjs';
+import { NgSkysmackStore, NgSkysmackActions } from '@skysmack/ng-skysmack';
 
 @Component({
   selector: 'ss-available-permissions-field',

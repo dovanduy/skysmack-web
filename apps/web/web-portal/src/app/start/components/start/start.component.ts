@@ -1,9 +1,10 @@
 import { Component, OnInit, ViewEncapsulation, OnDestroy } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Router, RouteConfigLoadStart, RouteConfigLoadEnd } from '@angular/router';
-import { NgSkysmackStore, PackageRouteConfiguration } from '@skysmack/ng-core';
+import { PackageRouteConfiguration } from '@skysmack/ng-core';
 import { SubscriptionHandler } from '@skysmack/framework';
 import { Skysmack } from '@skysmack/packages-skysmack-core';
+import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 
 @Component({
   // tslint:disable-next-line:component-selector

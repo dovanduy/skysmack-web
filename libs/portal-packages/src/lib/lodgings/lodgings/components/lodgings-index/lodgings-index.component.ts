@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { EntityComponentPageTitle, DocumentRecordIndexComponent, MenuItemActionProviders, MENU_ITEM_ACTIONS_EDIT, MENU_ITEM_ACTIONS_DELETE } from '@skysmack/portal-ui';
 import { Router, ActivatedRoute } from '@angular/router';
-import { NgSkysmackStore } from '@skysmack/ng-core';
+import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { LodgingsAppState, LODGINGS_AREA_KEY } from '@skysmack/packages-lodgings';
 import { Lodging } from '@skysmack/packages-lodgings';
 import { NgLodgingsActions } from '@skysmack/ng-packages';

@@ -14,10 +14,10 @@ import { DynamicFormsModule } from '@skysmack/portal-dynamic-forms';
   imports: [
     CommonModule,
     HttpClientModule,
-    ProductsRoutingModule,
-    NgProductsModule,
     PortalUiModule,
+    NgProductsModule,
     DynamicFormsModule,
+    ProductsRoutingModule,
     FieldsModule
   ],
   exports: [],

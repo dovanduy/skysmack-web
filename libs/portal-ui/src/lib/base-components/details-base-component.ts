@@ -1,4 +1,4 @@
-import { NgSkysmackStore } from '@skysmack/ng-core';
+import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { combineLatest } from 'rxjs';
 import { Router, ActivatedRoute, UrlSegment } from '@angular/router';
 import { OnInit, OnDestroy } from '@angular/core';

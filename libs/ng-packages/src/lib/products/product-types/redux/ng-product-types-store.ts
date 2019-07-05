@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { NgRedux } from '@angular-redux/store';
 import { ProductTypesAppState, ProductType, PRODUCT_TYPES_REDUCER_KEY } from '@skysmack/packages-products';
 import { NgRecordStore } from '@skysmack/ng-framework';
-import { NgSkysmackStore } from '@skysmack/ng-core';
+import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 
 @Injectable({ providedIn: 'root' })
 export class NgProductTypesStore extends NgRecordStore<ProductTypesAppState, ProductType, number> {

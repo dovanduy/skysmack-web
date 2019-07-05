@@ -3,7 +3,7 @@ import { OnInit, OnDestroy } from '@angular/core';
 import { Record, LocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { EditorNavService } from './../../components/common/container/editor-nav.service';
 import { FormBaseComponent } from './../form-base-component';
-import { NgSkysmackStore } from '@skysmack/ng-core';
+import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { EntityActions, EntityStore } from '@skysmack/redux';
 import { FormHelper } from '@skysmack/ng-dynamic-forms';
 import { switchMap, take, tap, map } from 'rxjs/operators';

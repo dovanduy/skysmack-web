@@ -7,7 +7,7 @@ import { FormHelper } from '@skysmack/ng-dynamic-forms';
 import { HttpClient } from '@angular/common/http';
 import { of } from 'rxjs';
 import { NgSetPasswordFieldsConfig } from '../../ng-set-password-fields-config';
-import { NgSkysmackStore } from '@skysmack/ng-core';
+import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 
 @Component({
   selector: 'ss-portal-package-set-password',

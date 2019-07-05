@@ -3,7 +3,7 @@ import { Invoice, INVOICES_REDUX_KEY } from '@skysmack/packages-invoices';
 import { Injectable } from '@angular/core';
 import { RecordEpicsBase, getReadDependencies } from '@skysmack/ng-framework';
 import { NgInvoicesNotifications } from '../ng-invoices-notifications';
-import { NgSkysmackStore } from '@skysmack/ng-core';
+import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { NgInvoiceItemsStore } from '../../invoice-item/redux/ng-invoice-items-store';
 import { NgInvoiceItemsActions } from '../../invoice-item';
 

@@ -6,7 +6,7 @@ import { MenuItem } from '@skysmack/framework';
 import { NgAssignmentTypesActions, NgAssignmentTypesStore } from '@skysmack/ng-packages';
 import { NgAssignmentTypesMenu } from '../../ng-assignment-types-menu';
 import { NgAssignmentTypesFieldsConfig } from '../../ng-assignment-types-fields-config';
-import { NgSkysmackStore } from '@skysmack/ng-core';
+import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 
 @Component({
   selector: 'ss-assignment-types-index',
