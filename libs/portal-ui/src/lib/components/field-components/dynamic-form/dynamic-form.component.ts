@@ -51,11 +51,11 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
     );
 
     // Show sidebar
-    setTimeout(() => {
-      if (!this.noSidebar) {
-        this.editorNavService.showEditorNav();
-      }
-    }, 0);
+    // setTimeout(() => {
+    //   if (!this.noSidebar) {
+    //     this.editorNavService.showEditorNav();
+    //   }
+    // }, 0);
   }
 
   ngOnDestroy() {

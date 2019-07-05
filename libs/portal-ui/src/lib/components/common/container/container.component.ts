@@ -1,6 +1,6 @@
 import { Component, Input, ViewChild, OnInit, OnDestroy, ChangeDetectorRef, Output, EventEmitter } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute, NavigationStart, NavigationEnd } from '@angular/router';
 import { SidebarMenu } from './../../../models/sidebar-menu/sidebar-menu';
 import { SubscriptionHandler } from '@skysmack/framework';
 import { EditorNavService } from './editor-nav.service';
@@ -33,6 +33,7 @@ export class ContainerComponent implements OnInit, OnDestroy {
 
   constructor(
     public router: Router,
+    public activatedRoute: ActivatedRoute,
     public editorNavService: EditorNavService,
     public skysmackStore: NgSkysmackStore,
     public changeDetectorRef: ChangeDetectorRef,
@@ -42,6 +43,27 @@ export class ContainerComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.path = this.router.url;
+
+    this.router.events.pipe(
+      filter(event => event instanceof NavigationEnd),
+      map((event: NavigationEnd) => {
+        if (this.activatedRoute.firstChild) {
+          setTimeout(() => {
+            this.editorNavService.showEditorNav();
+          }, 0);
+        } else {
+          this.editorNavService.hideEditorNav();
+        }
+      })      
+    ).subscribe();
+
+    if (this.activatedRoute.firstChild) {
+      setTimeout(() => {
+        this.editorNavService.showEditorNav();
+      }, 0);
+    } else {
+      this.editorNavService.hideEditorNav();
+    }
 
     const packagePath = this.router.url.split('/')[1];
     if (!packagePath || packagePath === '' || packagePath === 'skysmack') {
@@ -75,6 +97,8 @@ export class ContainerComponent implements OnInit, OnDestroy {
           this.editornav.open();
         } else if (!visible && this.editornav.opened) {
           this.editornav.close();
+        }
+        if (!visible) {
           if (this.dialogRef) {
             this.dialogRef.closeAll();
           }

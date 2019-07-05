@@ -1,5 +1,4 @@
 :host {
-    padding: 15px 30px;
     min-width: 15vw;
     max-width: 100%;
 }
@@ -10,4 +9,11 @@
     button {
         margin-right: .5rem;
     }
+}
+
+.close-button {
+    position: relative;
+    // top: -8px;
+    right: -12px;
+    float: right;
 }

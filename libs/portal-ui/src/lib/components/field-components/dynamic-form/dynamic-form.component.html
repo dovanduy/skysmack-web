@@ -1,4 +1,7 @@
-<ng-content></ng-content>
+
+<button color="default" mat-icon-button aria-label="Close" (click)="onClose()" class="close-button" tabindex="-1">
+  <mat-icon>close</mat-icon>
+</button>
 
 <ng-container *ngIf="editorItem$ | async as editorItem">
   <ng-container *ngIf="editorItem.apiError">
@@ -6,6 +9,8 @@
     <p style="color:red;">{{ editorItem.apiError.detail }}</p>
   </ng-container>
 </ng-container>
+
+<ng-content></ng-content>
 
 <form *ngIf="fh" [formGroup]="fh.form">
 
@@ -40,6 +45,5 @@
   <div class="actions">
     <button mat-flat-button color="primary" type="submit" (click)="onSubmit()"
     [disabled]="disableButton">{{ buttonText }}</button>
-    <button mat-flat-button color="default" type="submit" (click)="onClose()">Close</button>
   </div>
 </form>
