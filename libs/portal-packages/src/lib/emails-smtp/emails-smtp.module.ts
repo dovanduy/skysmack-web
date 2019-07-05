@@ -9,7 +9,7 @@ import { EmailsSmtpRoutingModule } from './emails-smtp-routing.module';
 import { NgEmailsSmptSettingsFieldsConfig } from './ng-emails-smtp-settings-fields-config';
 import { emailsSmtpComponents } from './emails-smtp/components/emails-smtp-components';
 import { DynamicFormsModule } from '@skysmack/portal-dynamic-forms';
-import { NgSettingsModule } from '@skysmack/ng-settings';
+import { SettingsModule } from '@skysmack/portal-settings';
 
 @NgModule({
   imports: [
@@ -20,7 +20,7 @@ import { NgSettingsModule } from '@skysmack/ng-settings';
     EmailsSmtpRoutingModule,
     NgEmailsSmtpModule,
     FieldsModule,
-    NgSettingsModule
+    SettingsModule
   ],
   declarations: [
     ...emailsSmtpComponents

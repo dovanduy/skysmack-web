@@ -107,14 +107,14 @@
       "@skysmack/ng-dynamic-forms": [
         "libs/ng-shared/ng-dynamic-forms/src/public_api.ts"
       ],
-      "@skysmack/ng-settings": [
-        "libs/ng-shared/ng-settings/src/public_api.ts"
-      ],
       "@skysmack/ng-fields": [
         "libs/ng-shared/ng-fields/src/public_api.ts"
       ],
       "@skysmack/portal-dynamic-forms": [
         "libs/portal-shared/portal-dynamic-forms/src/public_api.ts"
+      ],
+      "@skysmack/portal-settings": [
+        "libs/portal-shared/portal-settings/src/public_api.ts"
       ]
     }
   },

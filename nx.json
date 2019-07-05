@@ -110,13 +110,13 @@
     "ng-dynamic-forms": {
       "tags": []
     },
-    "ng-settings": {
-      "tags": []
-    },
     "ng-fields": {
       "tags": []
     },
     "portal-dynamic-forms": {
+      "tags": []
+    },
+    "portal-settings": {
       "tags": []
     }
   }

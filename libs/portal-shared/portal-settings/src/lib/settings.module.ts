@@ -21,6 +21,6 @@ import { PortalUiModule } from '@skysmack/portal-ui';
     ],
     providers: []
 })
-export class NgSettingsModule {
+export class SettingsModule {
     constructor() { }
 }

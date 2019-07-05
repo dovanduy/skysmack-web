@@ -9,7 +9,7 @@ import { LodgingReservationsRoutingModule } from './lodging-reservations-routing
 import { lodgingReservationsComponents } from './lodging-reservations/lodgings-reservations-components';
 import { NgLodgingReservationsSettingsFieldsConfig } from './ng-lodging-reservations-settings-fields-config';
 import { DynamicFormsModule } from '@skysmack/portal-dynamic-forms';
-import { NgSettingsModule } from '@skysmack/ng-settings';
+import { SettingsModule } from '@skysmack/portal-settings';
 
 @NgModule({
   imports: [
@@ -21,7 +21,7 @@ import { NgSettingsModule } from '@skysmack/ng-settings';
     NgLodgingReservationsModule,
     NgIdentitiesModule,
     FieldsModule,
-    NgSettingsModule
+    SettingsModule
   ],
   declarations: [
     ...lodgingReservationsComponents,

@@ -1,5 +1,5 @@
 {
-  "name": "@skysmack/ng-settings",
+  "name": "@skysmack/portal-settings",
   "version": "0.0.1",
   "peerDependencies": {
     "@angular/common": "^8.0.0",
@@ -8,7 +8,8 @@
     "@skysmack/ng-dynamic-forms": "*",
     "@skysmack/framework": "*",
     "@skysmack/redux": "*",
-    "@skysmack/signal-r": "*"
+    "@skysmack/signal-r": "*",
+    "@skysmack/portal-ui": "*"
   },
   "main": "./lib/public_api.js",
   "types": "./lib/public_api.d.ts",

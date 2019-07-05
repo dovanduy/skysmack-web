@@ -1,7 +1,7 @@
 module.exports = {
-  name: 'ng-settings',
+  name: 'portal-settings',
   preset: '../../../jest.config.js',
-  coverageDirectory: '../../../coverage/libs/ng-settings',
+  coverageDirectory: '../../../coverage/libs/portal-settings',
   snapshotSerializers: [
     'jest-preset-angular/AngularSnapshotSerializer.js',
     'jest-preset-angular/HTMLCommentSerializer.js'

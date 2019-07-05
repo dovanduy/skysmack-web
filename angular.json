@@ -1061,40 +1061,6 @@
         }
       }
     },
-    "ng-settings": {
-      "projectType": "library",
-      "root": "libs/ng-shared/ng-settings",
-      "sourceRoot": "libs/ng-shared/ng-settings/src",
-      "prefix": "skysmack",
-      "architect": {
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/ng-shared/ng-settings/tsconfig.lib.json",
-              "libs/ng-shared/ng-settings/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/ng-shared/ng-settings/**"
-            ]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/ng-shared/ng-settings/jest.config.js",
-            "tsConfig": "libs/ng-shared/ng-settings/tsconfig.spec.json",
-            "setupFile": "libs/ng-shared/ng-settings/src/test-setup.ts"
-          }
-        }
-      },
-      "schematics": {
-        "@nrwl/angular:component": {
-          "styleext": "scss"
-        }
-      }
-    },
     "ng-fields": {
       "projectType": "library",
       "root": "libs/ng-shared/ng-fields",
@@ -1154,6 +1120,40 @@
             "jestConfig": "libs/portal-shared/portal-dynamic-forms/jest.config.js",
             "tsConfig": "libs/portal-shared/portal-dynamic-forms/tsconfig.spec.json",
             "setupFile": "libs/portal-shared/portal-dynamic-forms/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "portal-settings": {
+      "projectType": "library",
+      "root": "libs/portal-shared/portal-settings",
+      "sourceRoot": "libs/portal-shared/portal-settings/src",
+      "prefix": "skysmack",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/portal-shared/portal-settings/tsconfig.lib.json",
+              "libs/portal-shared/portal-settings/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/portal-shared/portal-settings/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/portal-shared/portal-settings/jest.config.js",
+            "tsConfig": "libs/portal-shared/portal-settings/tsconfig.spec.json",
+            "setupFile": "libs/portal-shared/portal-settings/src/test-setup.ts"
           }
         }
       },

@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
 import { EmailsSmtpIndexComponent } from './emails-smtp-index/emails-smtp-index.component';
-import { SettingsComponent } from '@skysmack/ng-settings';
+import { SettingsComponent } from '@skysmack/portal-settings';
 import { RouteData } from '@skysmack/framework';
 
 export const emailsSmtpRoutes: Routes = [

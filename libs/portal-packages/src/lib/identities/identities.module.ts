@@ -19,7 +19,7 @@ import { RolesSelectFieldComponent } from './identity-roles/components/roles-sel
 import { CoalescingComponentFactoryResolver } from '@skysmack/ng-framework';
 import { RolesSelectComponent } from './identity-roles';
 import { DynamicFormsModule } from '@skysmack/portal-dynamic-forms';
-import { NgSettingsModule } from '@skysmack/ng-settings';
+import { SettingsModule } from '@skysmack/portal-settings';
 
 @NgModule({
   imports: [
@@ -30,7 +30,7 @@ import { NgSettingsModule } from '@skysmack/ng-settings';
     IdentitiesRoutingModule,
     NgIdentitiesModule,
     FieldsModule,
-    NgSettingsModule,
+    SettingsModule,
     MatSelectModule
   ],
   declarations: [
