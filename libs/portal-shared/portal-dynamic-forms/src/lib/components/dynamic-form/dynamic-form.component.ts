@@ -4,10 +4,7 @@ import { Observable } from 'rxjs';
 import { GlobalProperties, SubscriptionHandler, LocalObject, StrIndex } from '@skysmack/framework';
 import { NgSkysmackStore } from '@skysmack/ng-core';
 import { map, take } from 'rxjs/operators';
-import { Field } from '../../models/field';
-import { FormRule } from '../../rules/form-rule';
-import { Validation } from '../../forms/validation';
-import { FormHelper } from '../../forms/form-helper';
+import { Field, FormRule, Validation, FormHelper } from '@skysmack/ng-dynamic-forms';
 
 @Component({
   selector: 'ss-dynamic-form',

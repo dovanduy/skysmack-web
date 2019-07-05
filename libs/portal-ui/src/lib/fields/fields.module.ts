@@ -5,7 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { PortalUiModule } from './../portal-ui.module';
 import { LanguageService } from './../language/language.service';
 import { fieldsComponents } from './components/fields-components';
-import { NgDynamicFormsModule } from '@skysmack/ng-dynamic-forms';
+import { DynamicFormsModule } from '@skysmack/portal-dynamic-forms';
 
 
 @NgModule({
@@ -13,7 +13,7 @@ import { NgDynamicFormsModule } from '@skysmack/ng-dynamic-forms';
     CommonModule,
     HttpClientModule,
     PortalUiModule,
-    NgDynamicFormsModule
+    DynamicFormsModule
   ],
   declarations: [
     ...fieldsComponents

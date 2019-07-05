@@ -7,7 +7,7 @@ import { PortalUiModule } from '@skysmack/portal-ui';
 import { packagesComponents } from './components/packages-components';
 import { LanguageService } from '@skysmack/portal-ui';
 import { NgPackagesModule } from '@skysmack/ng-core';
-import { NgDynamicFormsModule } from '@skysmack/ng-dynamic-forms';
+import { DynamicFormsModule } from '@skysmack/portal-dynamic-forms';
 
 /**
  * To activate available packages overview, incomment the code in the following places
@@ -26,7 +26,7 @@ import { NgDynamicFormsModule } from '@skysmack/ng-dynamic-forms';
     CommonModule,
     HttpClientModule,
     PortalUiModule,
-    NgDynamicFormsModule,
+    DynamicFormsModule,
     PackagesRoutingModule,
     NgPackagesModule,
     // INCOMMENT TO ACTIVATE PACKAGE OVERVIEW

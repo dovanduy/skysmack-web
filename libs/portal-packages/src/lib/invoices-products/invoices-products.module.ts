@@ -13,14 +13,14 @@ import { CoalescingComponentFactoryResolver, NgMenuItemProviders } from '@skysma
 import { InvoicesProductsAddToInvoiceComponent } from './invoices-products/components/invoices-products-add-to-invoice/invoices-products-add-to-invoice.component';
 import { InvoicesProductsAddProductsComponent } from './invoices-products/components';
 import { NgInvoicesProductsMenuItemProvider } from './invoices-products/ng-invoices-products-menu-item-provider';
-import { NgDynamicFormsModule } from '@skysmack/ng-dynamic-forms';
+import { DynamicFormsModule } from '@skysmack/portal-dynamic-forms';
 
 @NgModule({
   imports: [
     CommonModule,
     HttpClientModule,
     PortalUiModule,
-    NgDynamicFormsModule,
+    DynamicFormsModule,
     InvoicesProductsRoutingModule,
     NgInvoicesProductsModule,
     FieldsModule

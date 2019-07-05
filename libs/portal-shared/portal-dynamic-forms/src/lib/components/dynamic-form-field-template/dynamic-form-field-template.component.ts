@@ -1,9 +1,5 @@
 import { Component, OnInit, ComponentFactoryResolver, Input, ViewChild } from '@angular/core';
-import { DynamicFormFieldDirective } from '../../directives/dynamic-form-field.directive';
-import { DynamicField } from '../../models/dynamic-field';
-import { FormHelper } from '../../forms/form-helper';
-import { Field } from '../../models/field';
-import { FormRule } from '../../rules/form-rule';
+import { FormHelper, Field, FormRule, DynamicFormFieldDirective, DynamicField } from '@skysmack/ng-dynamic-forms';
 
 @Component({
   selector: 'ss-dynamic-form-field-template',

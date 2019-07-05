@@ -19,6 +19,7 @@
     "@skysmack/ng-framework": "*",
     "@skysmack/ng-packages": "*",
     "@skysmack/ng-dynamic-forms": "*",
+    "@skysmack/portal-dynamic-forms": "*",
     "@skysmack/portal-ui": "*",
     "@skysmack/ng-settings": "*"
   },

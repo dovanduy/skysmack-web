@@ -1,6 +1,6 @@
 {
-  "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
-  "dest": "../../dist/portal-ui",
+  "$schema": "../../../node_modules/ng-packagr/ng-package.schema.json",
+  "dest": "../../../dist/portal-dynamic-forms",
   "lib": {
     "entryFile": "src/public_api.ts"
   },
@@ -9,10 +9,7 @@
     "@skysmack/redux",
     "@skysmack/framework",
     "@skysmack/packages-skysmack-core",
-    "@skysmack/packages-oauth2",
-    "@skysmack/ng-packages",
     "@skysmack/ng-dynamic-forms",
-    "@skysmack/portal-dynamic-forms",
     "@skysmack/ng-framework"
   ]
 }

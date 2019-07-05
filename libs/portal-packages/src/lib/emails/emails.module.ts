@@ -8,14 +8,14 @@ import { PortalUiModule, FieldsModule } from '@skysmack/portal-ui';
 import { LanguageService } from '@skysmack/portal-ui';
 import { emailsComponents } from './emails/components/emails-components';
 import { emailTemplatesComponents } from './email-templates';
-import { NgDynamicFormsModule } from '@skysmack/ng-dynamic-forms';
+import { DynamicFormsModule } from '@skysmack/portal-dynamic-forms';
 
 @NgModule({
   imports: [
     CommonModule,
     HttpClientModule,
     PortalUiModule,
-    NgDynamicFormsModule,
+    DynamicFormsModule,
     EmailsRoutingModule,
     NgEmailsModule,
     FieldsModule

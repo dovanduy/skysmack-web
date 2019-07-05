@@ -9,14 +9,14 @@ import { LanguageService } from '@skysmack/portal-ui';
 import { invoicesComponents } from './invoice/components/invoices-components';
 import { invoiceItemsComponents } from './invoice-item/components/invoice-items-components';
 import { invoicePaymentsComponents } from './invoice-payment/components/invoice-payments-components';
-import { NgDynamicFormsModule } from '@skysmack/ng-dynamic-forms';
+import { DynamicFormsModule } from '@skysmack/portal-dynamic-forms';
 
 @NgModule({
   imports: [
     CommonModule,
     HttpClientModule,
     PortalUiModule,
-    NgDynamicFormsModule,
+    DynamicFormsModule,
     InvoicesRoutingModule,
     NgInvoicesModule,
     FieldsModule

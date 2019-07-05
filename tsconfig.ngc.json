@@ -38,6 +38,9 @@
       "@skysmack/ng-settings": [
         "./dist/@skysmack/ng-settings"
       ],
+      "@skysmack/portal-dynamic-forms": [
+        "./dist/@skysmack/portal-dynamic-forms"
+      ],
       "@skysmack/packages-skysmack-core": [
         "./dist/@skysmack/packages-skysmack-core"
       ],

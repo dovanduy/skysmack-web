@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { directives } from './directives/directives';
-import { components } from './components/components';
 
 @NgModule({
   imports: [
@@ -10,11 +9,9 @@ import { components } from './components/components';
     ReactiveFormsModule
   ],
   declarations: [
-    ...components,
     ...directives,
   ],
   exports: [
-    ...components,
     ...directives
   ]
 })

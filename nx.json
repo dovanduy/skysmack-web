@@ -115,6 +115,9 @@
     },
     "ng-fields": {
       "tags": []
+    },
+    "portal-dynamic-forms": {
+      "tags": []
     }
   }
 }

@@ -5,7 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { NgOauth2Module } from '@skysmack/ng-packages';
 import { PortalUiModule, LanguageService } from '@skysmack/portal-ui';
-import { NgDynamicFormsModule } from '@skysmack/ng-dynamic-forms';
+import { DynamicFormsModule } from '@skysmack/portal-dynamic-forms';
 
 @NgModule({
   imports: [
@@ -14,7 +14,7 @@ import { NgDynamicFormsModule } from '@skysmack/ng-dynamic-forms';
     Oauth2RoutingModule,
     NgOauth2Module,
     PortalUiModule,
-    NgDynamicFormsModule
+    DynamicFormsModule
   ],
   declarations: [
     LoginComponent

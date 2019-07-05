@@ -18,7 +18,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { RolesSelectFieldComponent } from './identity-roles/components/roles-select-field/roles-select-field.component';
 import { CoalescingComponentFactoryResolver } from '@skysmack/ng-framework';
 import { RolesSelectComponent } from './identity-roles';
-import { NgDynamicFormsModule } from '@skysmack/ng-dynamic-forms';
+import { DynamicFormsModule } from '@skysmack/portal-dynamic-forms';
 import { NgSettingsModule } from '@skysmack/ng-settings';
 
 @NgModule({
@@ -26,7 +26,7 @@ import { NgSettingsModule } from '@skysmack/ng-settings';
     CommonModule,
     HttpClientModule,
     PortalUiModule,
-    NgDynamicFormsModule,
+    DynamicFormsModule,
     IdentitiesRoutingModule,
     NgIdentitiesModule,
     FieldsModule,

@@ -1,17 +1,12 @@
 {
-  "name": "@skysmack/portal-ui",
+  "name": "@skysmack/portal-dynamic-forms",
   "version": "0.0.1",
   "peerDependencies": {
-    "@skysmack/redux": "*",
     "@skysmack/framework": "*",
-    "@skysmack/packages-skysmack-core": "*",
-    "@skysmack/packages-oauth2": "*",
-    "@skysmack/ng-packages": "*",
-    "@skysmack/ng-dynamic-forms": "*",
-    "@skysmack/portal-dynamic-forms": "*",
+    "@skysmack/redux": "*",
     "@skysmack/ng-framework": "*",
-    "moment": "^2.24.0",
-    "calendar-utils": "^0.3.1"
+    "@skysmack/ng-dynamic-forms": "*",
+    "@skysmack/packages-skysmack-core": "*"
   },
   "main": "./lib/public_api.js",
   "types": "./lib/public_api.d.ts",
@@ -24,6 +19,6 @@
   ],
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1",
-    "build": "ng build portal-ui"
+    "build": "ng build portal-dynamic-forms"
   }
 }
