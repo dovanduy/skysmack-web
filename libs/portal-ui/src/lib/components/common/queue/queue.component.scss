@@ -40,6 +40,15 @@
   animation-duration: .5s;
 }
 
+.link {  
+  color: rgba(0, 0, 0, 0.54);
+  transition: color 0.1s ease;
+
+  &:hover {  
+    color: rgba(0, 0, 0, 0.77);
+  }
+}
+
 @keyframes fadeInOpacity {
   0% {
     opacity: 0;

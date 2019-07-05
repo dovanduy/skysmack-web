@@ -70,12 +70,23 @@ table {
   }
 }
 
-.row-is-loading {
-  border-bottom: none;
+.entity-row {
+  height: 57px;
+
+  &.row-is-loading {
+    height: 52px;
+    border-bottom: none;
+
+    .table-cell {
+      padding: 8px 16px 3px 16px;  
+      border-bottom-color: transparent;
+    }
+  }
 }
 
-.loading-row {
-  height: auto;
+.row-loading-bar {
+  height: 5px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
 }
 
 .row-is-success {

@@ -26,8 +26,10 @@
       font-family: "Roboto","Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,"Lucida Grande","sans-serif";
       font-size: 2rem;
       letter-spacing: 2px;
+    }
+    .loading-text {
       animation: fadeIn 1s infinite alternate;
-    }    
+    }
     @keyframes fadeIn { 
       from { opacity: 0; } 
     }
@@ -43,7 +45,7 @@
 
 <body>
   <skysmack-app>
-    <div id="loading-screen">
+    <div id="loading-screen" class="loading-text">
       LOADING
     </div>
   </skysmack-app>

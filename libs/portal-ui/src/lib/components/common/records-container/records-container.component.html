@@ -67,8 +67,8 @@
             </a>
           </td>
         </tr>
-        <tr>
-          <td [colSpan]="displayColumns.length + 1" style="width: 100px; height: 5px;">
+        <tr class="row-loading-bar">
+          <td [colSpan]="displayColumns.length + 1">
             <mat-progress-bar *ngIf="(entity.status !== 'OK' && !entity.error)" mode="indeterminate">
             </mat-progress-bar>
           </td>
