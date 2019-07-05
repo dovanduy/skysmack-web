@@ -112,6 +112,9 @@
     },
     "ng-settings": {
       "tags": []
+    },
+    "ng-fields": {
+      "tags": []
     }
   }
 }

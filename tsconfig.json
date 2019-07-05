@@ -112,6 +112,9 @@
       ],
       "@skysmack/ng-settings": [
         "libs/ng-shared/ng-settings/src/public_api.ts"
+      ],
+      "@skysmack/ng-shared/ng-fields": [
+        "libs/ng-shared/ng-fields/src/public_api.ts"
       ]
     }
   },
