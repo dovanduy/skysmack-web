@@ -8,6 +8,7 @@ import { NgSkysmackStore } from '@skysmack/ng-core';
 import { Observable, of } from 'rxjs';
 import { map, filter, switchMap } from 'rxjs/operators';
 import { NgAuthenticationStore } from '@skysmack/ng-framework';
+import { MatDialog } from '@angular/material/dialog';
 
 const SMALL_WIDTH_BREAKPOINT = 720;
 
@@ -35,7 +36,8 @@ export class ContainerComponent implements OnInit, OnDestroy {
     public editorNavService: EditorNavService,
     public skysmackStore: NgSkysmackStore,
     public changeDetectorRef: ChangeDetectorRef,
-    public authentication: NgAuthenticationStore
+    public authentication: NgAuthenticationStore,
+    public dialogRef: MatDialog
   ) { }
 
   ngOnInit(): void {
@@ -73,6 +75,9 @@ export class ContainerComponent implements OnInit, OnDestroy {
           this.editornav.open();
         } else if (!visible && this.editornav.opened) {
           this.editornav.close();
+          if (this.dialogRef) {
+            this.dialogRef.closeAll();
+          }
         }
       })
     ).subscribe());

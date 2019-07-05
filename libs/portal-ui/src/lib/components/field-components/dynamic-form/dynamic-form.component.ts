@@ -98,6 +98,10 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
     ).subscribe()
   }
 
+  public onClose() {
+    this.editorNavService.hideEditorNav();
+  }
+
   /**
      * This method is only used for development!
      * Please keep in sync with formatExtendedData() method in form-base-component.ts

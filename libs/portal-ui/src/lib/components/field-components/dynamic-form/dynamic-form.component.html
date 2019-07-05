@@ -17,13 +17,29 @@
     </ng-container>
   </ng-container>
 
-  <button mat-raised-button color="primary" type="submit" (click)="onSubmit()"
-    [disabled]="disableButton">{{ buttonText }}</button>
-
   <ng-container *ngIf="!production">
-    <p>Form values</p>
-    <pre>{{ fh.form.value | json }}</pre>
-    <p>Extented data preview</p>
-    <pre>{{ previewExtendedData() | json }}</pre>
+      <mat-accordion>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                  Preview form
+              </mat-panel-title>
+              <mat-panel-description>
+                json formatted values
+              </mat-panel-description>
+            </mat-expansion-panel-header>            
+
+            <pre>{{ fh.form.value | json }}</pre>
+            <mat-divider></mat-divider>
+            <pre>{{ previewExtendedData() | json }}</pre>
+            <div style="font-size:.5rem;text-align: right; color: #888">Note: developer only feature</div>
+          </mat-expansion-panel>
+        </mat-accordion>
   </ng-container>
+
+  <div class="actions">
+    <button mat-flat-button color="primary" type="submit" (click)="onSubmit()"
+    [disabled]="disableButton">{{ buttonText }}</button>
+    <button mat-flat-button color="default" type="submit" (click)="onClose()">Close</button>
+  </div>
 </form>

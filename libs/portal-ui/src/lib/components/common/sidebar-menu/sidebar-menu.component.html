@@ -2,14 +2,11 @@
   <div class="docs-component-viewer-nav-content">
     <ng-container *ngFor="let menuArea of sidebarMenu.primaryMenuAreas; let last = last;">
       <nav *ngIf="menuArea.display">
-        <button cdkAccordionItem #panel="cdkAccordionItem" (click)="panel.toggle()" expanded="true"
-          class="docs-nav-content-btn" [attr.aria-label]="menuArea.displayName + ', section toggle'"
-          [attr.aria-controls]="'panel-' + menuArea.id" [attr.aria-expanded]="panel.expanded">
-          <mat-icon>{{panel.expanded ? 'keyboard_arrow_up' : 'keyboard_arrow_down'}}</mat-icon>
+        <span class="docs-nav-content-btn" >
           {{ menuArea.displayName | translate }}
-        </button>
+        </span>
 
-        <ul [@bodyExpansion]="panel.expanded ? 'expanded' : 'collapsed'" id="panel-{{ menuArea.id }}">
+        <ul>
           <ng-container *ngFor="let menuItem of sidebarMenu.primaryMenuItems">
             <ng-container *ngIf="menuItem.area === menuArea.area">
               <ng-template [inAnyPermission]="menuItem.permissions"
@@ -26,7 +23,7 @@
                   <a [routerLink]="[menuItem.url]">
                     {{ menuItem.displayName | translate }}
                   </a>
-                </li>
+                </li> 
 
 
               </ng-template>
@@ -34,7 +31,7 @@
           </ng-container>
         </ul>
 
-        <hr *ngIf="!last" />
+        <!-- <hr *ngIf="!last" /> -->
       </nav>
     </ng-container>
   </div>

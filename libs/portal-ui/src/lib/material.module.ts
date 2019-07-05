@@ -24,9 +24,9 @@ import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { CdkAccordionModule } from '@angular/cdk/accordion';
 import { ScrollDispatchModule } from '@angular/cdk/scrolling';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 @NgModule({
   imports: [
@@ -43,7 +43,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatDatepickerModule,
     MatMomentDateModule,
     MatSidenavModule,
-    CdkAccordionModule,
+    MatExpansionModule,
     ScrollDispatchModule,
     MatTooltipModule,
     MatSelectModule,
@@ -74,7 +74,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatDatepickerModule,
     MatMomentDateModule,
     MatSidenavModule,
-    CdkAccordionModule,
+    MatExpansionModule,
     ScrollDispatchModule,
     MatTooltipModule,
     MatSelectModule,
