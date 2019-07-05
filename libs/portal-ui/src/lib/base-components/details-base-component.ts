@@ -25,7 +25,7 @@ export class DetailsBaseComponent<TAppState, TKey> extends BaseComponent<TAppSta
     ngOnInit() {
         this.setSidebarCloseUrl();
         super.ngOnInit();
-        this.editorNavService.showEditorNav();
+        // this.editorNavService.showEditorNav();
         this.actions.getSingle(this.packagePath, this.entityId);
 
         this.fields$ = combineLatest(
@@ -50,7 +50,6 @@ export class DetailsBaseComponent<TAppState, TKey> extends BaseComponent<TAppSta
 
     ngOnDestroy() {
         super.ngOnDestroy();
-        this.editorNavService.hideEditorNav();
     }
 
 }

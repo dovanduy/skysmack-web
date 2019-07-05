@@ -1,7 +1,7 @@
 import { TerminalPaymentsType } from '@skysmack/packages-terminal-payments';
 import { PackageLoader, PackageManifest } from '@skysmack/ng-framework';
 import { Route } from '@angular/router';
-import { TenantPackageLoadStrategy } from '../start/TenantPackageLoadStrategy';
+import { TenantPackageLoadStrategy } from '../start/tenant-package-load-strategy';
 
 export class TerminalPaymentsPackageManifest extends TerminalPaymentsType implements PackageManifest {
     public static modulePath = './../packages/modules/terminal_payments_wrapper.module#TerminalPaymentsWrapperModule';

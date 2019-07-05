@@ -1,9 +1,9 @@
 import { PreloadingStrategy, Route } from '@angular/router';
 
-import { Observable, of } from 'rxjs';
+import { Observable, of, timer } from 'rxjs';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { Injectable } from '@angular/core';
-import { map, switchMap } from 'rxjs/operators';
+import { map, switchMap, flatMap } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
 export class TenantPackageLoadStrategy implements PreloadingStrategy {
@@ -17,7 +17,10 @@ export class TenantPackageLoadStrategy implements PreloadingStrategy {
       switchMap(packages => {
         const packagesMatches = packages.filter(p => p.object.access && route.path.endsWith(p.object.type));
         if (packagesMatches.length > 0) {
-          return load();
+          return timer(100).pipe(
+            flatMap(_ => { 
+              return load();
+            }));
         }
         return route.data && route.data.preload ? load() : of(null);
       })

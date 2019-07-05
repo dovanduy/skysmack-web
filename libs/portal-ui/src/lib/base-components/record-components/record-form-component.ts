@@ -32,7 +32,6 @@ export class RecordFormComponent<TAppState, TRecord extends Record<TKey>, TKey> 
     }
 
     ngOnDestroy() {
-        this.editorNavService.hideEditorNav();
         super.ngOnDestroy();
     }
 

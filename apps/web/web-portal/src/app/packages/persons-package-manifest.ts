@@ -1,6 +1,6 @@
 import { PersonsType } from '@skysmack/packages-persons';
 import { PackageLoader, PackageManifest } from '@skysmack/ng-framework';
-import { TenantPackageLoadStrategy } from '../start/TenantPackageLoadStrategy';
+import { TenantPackageLoadStrategy } from '../start/tenant-package-load-strategy';
 import { Route } from '@angular/router';
 
 export class PersonsPackageManifest extends PersonsType implements PackageManifest {

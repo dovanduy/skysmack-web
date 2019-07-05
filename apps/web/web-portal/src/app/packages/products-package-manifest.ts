@@ -1,7 +1,7 @@
 import { ProductsType } from '@skysmack/packages-products';
 import { PackageLoader, PackageManifest } from '@skysmack/ng-framework';
 import { Route } from '@angular/router';
-import { TenantPackageLoadStrategy } from '../start/TenantPackageLoadStrategy';
+import { TenantPackageLoadStrategy } from '../start/tenant-package-load-strategy';
 
 export class ProductsPackageManifest extends ProductsType implements PackageManifest {
     public static modulePath = './../packages/modules/products_wrapper.module#ProductsWrapperModule';

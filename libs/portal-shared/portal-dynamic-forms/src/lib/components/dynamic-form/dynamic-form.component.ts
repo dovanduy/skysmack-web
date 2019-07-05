@@ -50,11 +50,11 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
     );
 
     // Show sidebar
-    setTimeout(() => {
-      if (!this.noSidebar) {
-        // this.editorNavService.showEditorNav();
-      }
-    }, 0);
+    // setTimeout(() => {
+    //   if (!this.noSidebar) {
+    //     this.editorNavService.showEditorNav();
+    //   }
+    // }, 0);
   }
 
   ngOnDestroy() {
@@ -95,6 +95,10 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
       map(fields => fields.map(field => field.includeInRequest ? field : this.fh.form.removeControl(field.key))),
       map(() => this.submitted.emit(this.fh))
     ).subscribe()
+  }
+
+  public onClose() {
+    this.editorNavService.hideEditorNav();
   }
 
   /**

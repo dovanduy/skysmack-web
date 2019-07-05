@@ -1,6 +1,6 @@
 import { ProductsPricingsType } from '@skysmack/packages-products-pricings';
 import { PackageLoader, PackageManifest } from '@skysmack/ng-framework';
-import { TenantPackageLoadStrategy } from '../start/TenantPackageLoadStrategy';
+import { TenantPackageLoadStrategy } from '../start/tenant-package-load-strategy';
 import { Route } from '@angular/router';
 
 export class ProductsPricingsPackageManifest extends ProductsPricingsType implements PackageManifest {

@@ -10,7 +10,7 @@
   $nav-background-focus-opacity: if($is-dark-theme, 0.25, 0.08);
 
   .docs-component-viewer-nav-content {
-    border-right: 1px solid rgba(mat-color($foreground, secondary-text), .1);
+    // border-right: 1px solid rgba(mat-color($foreground, secondary-text), .1);
     // background: rgba(0, 0, 0, $nav-background-opacity);
 
     &::-webkit-scrollbar-thumb {

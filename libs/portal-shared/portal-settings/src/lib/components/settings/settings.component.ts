@@ -42,7 +42,6 @@ export class SettingsComponent extends BaseComponent<SettingsAppState<any>, unkn
   }
 
   ngOnDestroy() {
-    this.editorNavService.hideEditorNav();
     super.ngOnDestroy();
   }
 

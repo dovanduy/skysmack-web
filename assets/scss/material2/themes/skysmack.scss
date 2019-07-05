@@ -1,0 +1,43 @@
+@import '../app-theme';
+$mat-elevation-opacity: 0.6;
+
+$mat-skysmack: (
+  50: #EFF2F2,
+  100: #D6DEDF,
+  200: #BBC9C9,
+  300: #A0B3B3,
+  400: #8BA2A3,
+  500: #779293,
+  600: #6F8A8B,
+  700: #647F80,
+  800: #5A7576,
+  900: #476364,
+  A100: #becbcb,
+  A200: #859d9e,
+  A400: #779293,
+  A700: #6a8586,
+  contrast: (
+    50: $dark-primary-text,
+    100: $dark-primary-text,
+    200: $dark-primary-text,
+    300: $dark-primary-text,
+    400: $dark-primary-text,
+    500: $light-primary-text,
+    600: $light-primary-text,
+    700: $light-primary-text,
+    800: $light-primary-text,
+    900: $light-primary-text,
+    A100: $dark-primary-text,
+    A200: $dark-primary-text,
+    A400: $dark-primary-text,
+    A700: $light-primary-text,
+  )
+);
+
+// Define the light theme.
+$primary: mat-palette($mat-skysmack);
+$accent:  mat-palette($mat-brown, A400, A700, A200);
+
+$theme: mat-light-theme($primary, $accent);
+@include angular-material-theme($theme);
+@include material-docs-app-theme($theme);

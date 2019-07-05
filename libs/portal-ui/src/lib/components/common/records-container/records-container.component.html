@@ -28,7 +28,8 @@
             {{ entity.object[column.fieldDisplayKey ? column.fieldDisplayKey : column.fieldKey] | displayValue:column | displayModifier:column:entity }}
           </td>
           <td class="table-cell mat-cell action-buttons">
-
+            <mat-icon class="success-icon" color="primary" *ngIf="entity.isNew && entity.status !== 'CREATING'">check_circle</mat-icon>
+            <mat-icon class="error-icon" color="warn" *ngIf="entity.error">error</mat-icon>
             <!-- ENTITY ACTIONS -->
             <ng-container *ngIf="menuItemActions$ | async as menuItemActions">
               <ng-container
@@ -66,8 +67,8 @@
             </a>
           </td>
         </tr>
-        <tr>
-          <td [colSpan]="displayColumns.length + 1" style="width: 100px; height: 5px;">
+        <tr class="row-loading-bar">
+          <td [colSpan]="displayColumns.length + 1">
             <mat-progress-bar *ngIf="(entity.status !== 'OK' && !entity.error)" mode="indeterminate">
             </mat-progress-bar>
           </td>
