@@ -6,7 +6,7 @@ import { AccessPolicyPermission, AccessPolicyRule, ACCESS_POLICY_PERMISSIONS_ARE
 import { AccessPolicyPermissionsValidation, NgAccessPolicyRulesStore, NgSkysmackStore } from '@skysmack/ng-core';
 import { FieldProviders } from '@skysmack/portal-ui';
 import { LoadedPackage } from '@skysmack/ng-framework';
-import { Field, SelectFieldOption, SelectField } from '@skysmack/ng-dynamic-forms';
+import { FormRule, Field, SelectFieldOption, SelectField } from '@skysmack/ng-dynamic-forms';
 
 @Injectable({ providedIn: 'root' })
 export class NgAccessPolicyPermissionsFieldsConfig extends FieldsConfig<AccessPolicyPermission, number> {
