@@ -5,7 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { PortalUiModule, FieldsModule } from '@skysmack/portal-ui';
 import { LanguageService } from '@skysmack/portal-ui';
 import { AccessPoliciesRoutingModule } from './access-policies-routing.module';
-import { NgAccessPoliciesModule } from '@skysmack/ng-core';
+import { NgAccessPoliciesModule } from '@skysmack/ng-packages';
 import { accessPolicyPermissionsComponents } from './access-policy-permissions/components/access-policy-permissions-components';
 import { accessPolicyRolesComponents } from './access-policy-roles/components/access-policy-roles-components';
 import { accessPolicyRulesComponents } from './access-policy-rules/components/access-policy-rules-components';

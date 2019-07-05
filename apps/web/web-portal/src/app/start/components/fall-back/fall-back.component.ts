@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Skysmack } from '@skysmack/packages-skysmack-core';
-import { PackageRouteConfiguration } from '@skysmack/ng-core';
+import { PackageRouteConfiguration } from '@skysmack/ng-packages';
 import { take } from 'rxjs/operators';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 

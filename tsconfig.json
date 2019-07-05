@@ -92,9 +92,6 @@
       "@skysmack/portal-ui": [
         "libs/portal-ui/src/public_api.ts"
       ],
-      "@skysmack/ng-core": [
-        "libs/ng-core/src/index.ts"
-      ],
       "@skysmack/portal-core": [
         "libs/portal-core/src/index.ts"
       ],

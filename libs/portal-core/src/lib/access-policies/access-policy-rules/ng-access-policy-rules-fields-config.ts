@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { FieldsConfig, SelectFieldComponent, HiddenFieldComponent, CheckboxFieldComponent } from '@skysmack/portal-ui';
 import { AccessPolicyRule, ACCESS_POLICY_RULES_AREA_KEY } from '@skysmack/packages-skysmack-core';
-import { AccessPolicyRulesValidation } from '@skysmack/ng-core';
+import { AccessPolicyRulesValidation } from '@skysmack/ng-packages';
 import { FieldProviders } from '@skysmack/portal-ui';
 import { LoadedPackage } from '@skysmack/ng-framework';
 import { FormRule, Field, SelectField } from '@skysmack/ng-dynamic-forms';

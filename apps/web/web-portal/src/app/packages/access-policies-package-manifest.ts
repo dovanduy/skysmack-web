@@ -1,5 +1,5 @@
 import { PackageLoader, PackageManifest } from '@skysmack/ng-framework';
-import { AccessPoliciesType } from '@skysmack/ng-core';
+import { AccessPoliciesType } from '@skysmack/ng-packages';
 import { Route } from '@angular/router';
 import { TenantPackageLoadStrategy } from '../start/TenantPackageLoadStrategy';
 

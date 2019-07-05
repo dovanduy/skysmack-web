@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FieldBaseComponent } from '../field-base-component';
-import { NgPackagesStore } from '@skysmack/ng-core';
+import { NgPackagesStore } from '@skysmack/ng-packages';
 import { switchMap, map, startWith } from 'rxjs/operators';
 import { Field, SelectFieldOption } from '@skysmack/ng-dynamic-forms';
 import { StrIndex } from '@skysmack/framework';

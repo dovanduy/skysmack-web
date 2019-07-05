@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FieldBaseComponent } from '../field-base-component';
 import { map, tap } from 'rxjs/operators';
 import { combineLatest, Observable } from 'rxjs';
-import { NgPackagesStore } from '@skysmack/ng-core';
+import { NgPackagesStore } from '@skysmack/ng-packages';
 import { flatten, notNull, AvailablePackage, LocalObject } from '@skysmack/framework';
 import { Field } from '@skysmack/ng-dynamic-forms';
 import { Router } from '@angular/router';

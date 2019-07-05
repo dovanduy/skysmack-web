@@ -4,7 +4,7 @@ import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { FieldsConfig, SelectFieldComponent, HiddenFieldComponent } from '@skysmack/portal-ui';
 import { AccessPolicyRole, AccessPolicyRoleKey, AccessPolicyRule, ACCESS_POLICY_ROLES_AREA_KEY } from '@skysmack/packages-skysmack-core';
 import { Validators } from '@angular/forms';
-import { AccessPolicyRolesValidation, NgAccessPolicyRulesStore } from '@skysmack/ng-core';
+import { AccessPolicyRolesValidation, NgAccessPolicyRulesStore } from '@skysmack/ng-packages';
 import { FieldProviders } from '@skysmack/portal-ui';
 import { LoadedPackage } from '@skysmack/ng-framework';
 import { Router } from '@angular/router';

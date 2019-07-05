@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { NgPackagesActions } from '@skysmack/ng-core';
+import { NgPackagesActions } from '@skysmack/ng-packages';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EditorNavService, RecordFormComponent } from '@skysmack/portal-ui';
-import { NgPackagesStore } from '@skysmack/ng-core';
+import { NgPackagesStore } from '@skysmack/ng-packages';
 import { PackagesAppState } from '@skysmack/packages-skysmack-core';
 import { Package } from '@skysmack/framework';
 import { NgPackagePathEditFieldsConfig } from '../../ng-package-path-edit-fields-config';

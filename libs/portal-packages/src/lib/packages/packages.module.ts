@@ -6,7 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { PortalUiModule } from '@skysmack/portal-ui';
 import { packagesComponents } from './components/packages-components';
 import { LanguageService } from '@skysmack/portal-ui';
-import { NgPackagesModule } from '@skysmack/ng-core';
+import { NgPackagesModule } from '@skysmack/ng-packages';
 import { DynamicFormsModule } from '@skysmack/portal-dynamic-forms';
 
 /**

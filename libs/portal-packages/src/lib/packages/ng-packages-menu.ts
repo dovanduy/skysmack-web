@@ -5,7 +5,7 @@ import { MenuItem } from '@skysmack/framework';
 import { NgMenuItemProviders } from '@skysmack/ng-framework';
 
 import { SidebarMenu } from '@skysmack/portal-ui';
-import { PackagesPermissions } from '@skysmack/ng-core';
+import { PackagesPermissions } from '@skysmack/ng-packages';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 
 @Injectable({ providedIn: 'root' })
