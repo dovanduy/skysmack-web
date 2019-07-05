@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
-import { FormRule, SelectField } from '@skysmack/ng-ui';
 import { LocalObject, PagedQuery } from '@skysmack/framework';
-import { Field } from '@skysmack/ng-ui';
 
 import { FieldsConfig, FieldProviders, SelectFieldComponent, IntFieldComponent, HiddenFieldComponent } from '@skysmack/portal-ui';
 import { NgInvoicesProductsValidation, NgInvoicesActions, NgInvoicesStore } from '@skysmack/ng-packages';
@@ -10,6 +8,7 @@ import { INVOICES_PRODUCTS_AREA_KEY } from '@skysmack/packages-invoices-products
 import { NgSkysmackStore } from '@skysmack/ng-core';
 import { map, take, switchMap } from 'rxjs/operators';
 import { Validators } from '@angular/forms';
+import { FormRule, SelectField, Field } from '@skysmack/ng-dynamic-forms';
 
 @Injectable({ providedIn: 'root' })
 export class NgInvoicesProductsAddToInvoiceFieldsConfig extends FieldsConfig<any, unknown> {

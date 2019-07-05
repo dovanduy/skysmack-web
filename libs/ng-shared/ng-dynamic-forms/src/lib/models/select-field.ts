@@ -1,8 +1,8 @@
 import { Field } from './field';
 import { SelectFieldOption } from './select-field-option';
-import { FieldHelpers } from './field-helpers';
 import { Observable, pipe, UnaryFunction } from 'rxjs';
 import { map, debounceTime } from 'rxjs/operators';
+import { FieldHelpers } from '../helpers/field-helpers';
 
 type OptionsDataType = 'array' | 'enum' | 'ts-enum' | 'flag-enum';
 const DEFAULT_VALUE_SELECTOR = 'object.id';

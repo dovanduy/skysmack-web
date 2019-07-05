@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Field } from '@skysmack/ng-ui';
+import { Field } from '@skysmack/ng-dynamic-forms';
 
 @Component({
   selector: 'ss-backend-errors',

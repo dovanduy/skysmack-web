@@ -4,7 +4,7 @@ import { map, tap } from 'rxjs/operators';
 import { combineLatest, Observable } from 'rxjs';
 import { NgPackagesStore } from '@skysmack/ng-core';
 import { flatten, notNull, AvailablePackage, LocalObject } from '@skysmack/framework';
-import { Field } from '@skysmack/ng-ui';
+import { Field } from '@skysmack/ng-dynamic-forms';
 import { Router } from '@angular/router';
 
 class SelectBox {

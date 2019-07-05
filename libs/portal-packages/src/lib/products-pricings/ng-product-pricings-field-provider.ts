@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Field } from '@skysmack/ng-ui';
 import { map } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
 import { StrIndex, LocalObject, DisplayColumn } from '@skysmack/framework';
@@ -10,6 +9,7 @@ import { Validators } from '@angular/forms';
 import { Product, PRODUCTS_AREA_KEY } from '@skysmack/packages-products';
 import { ProductsPricingsType } from '@skysmack/packages-products-pricings';
 import { Router } from '@angular/router';
+import { Field } from '@skysmack/ng-dynamic-forms';
 
 @Injectable({ providedIn: 'root' })
 export class NgProductPricingsFieldProvider extends FieldProvider {

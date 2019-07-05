@@ -5,7 +5,7 @@ import { EditorNavService } from './../../components/common/container/editor-nav
 import { FormBaseComponent } from './../form-base-component';
 import { NgSkysmackStore } from '@skysmack/ng-core';
 import { EntityActions, EntityStore } from '@skysmack/redux';
-import { FormHelper } from '@skysmack/ng-ui';
+import { FormHelper } from '@skysmack/ng-dynamic-forms';
 import { switchMap, take, tap, map } from 'rxjs/operators';
 import { combineLatest } from 'rxjs';
 import { EntityFieldsConfig } from '../../fields/entity-fields-config';

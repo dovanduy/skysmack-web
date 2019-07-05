@@ -1,5 +1,5 @@
 import { Injectable, Inject } from '@angular/core';
-import { Field, ResultField } from '@skysmack/ng-ui';
+import { Field, ResultField } from '@skysmack/ng-dynamic-forms';
 import { map, catchError } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
 import { StrIndex, LocalObject, API_DOMAIN_INJECTOR_TOKEN, ApiDomain, GlobalProperties } from '@skysmack/framework';

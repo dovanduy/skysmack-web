@@ -18,7 +18,7 @@
     "@skysmack/packages-reservations-pricings": "*",
     "@skysmack/ng-framework": "*",
     "@skysmack/ng-packages": "*",
-    "@skysmack/ng-ui": "*",
+    "@skysmack/ng-dynamic-forms": "*",
     "@skysmack/portal-ui": "*",
     "@skysmack/ng-settings": "*"
   },

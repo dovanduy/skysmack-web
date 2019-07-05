@@ -2,11 +2,11 @@ import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { Role, ROLES_AREA_KEY } from '@skysmack/packages-identities';
-import { Field, FormRule } from '@skysmack/ng-ui';
 import { NgRolesValidation } from '@skysmack/ng-packages';
 import { LoadedPackage } from '@skysmack/ng-framework';
 import { FieldsConfig, StringFieldComponent, HiddenFieldComponent } from '@skysmack/portal-ui';
 import { FieldProviders } from '@skysmack/portal-ui';
+import { FormRule, Field } from '@skysmack/ng-dynamic-forms';
 
 @Injectable({ providedIn: 'root' })
 export class NgRolesFieldsConfig extends FieldsConfig<Role, number> {

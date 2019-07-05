@@ -6,7 +6,7 @@ import { NgSkysmackStore } from '@skysmack/ng-core';
 import { EditorNavService } from './../../../components/common/container/editor-nav.service';
 import { NgFieldsConfig } from './../../ng-fields-config';
 import { RecordFormComponent } from './../../../base-components/record-components/record-form-component';
-import { FormHelper } from '@skysmack/ng-ui';
+import { FormHelper } from '@skysmack/ng-dynamic-forms';
 import { getFieldStateKey, LocalObjectStatus, LocalObject } from '@skysmack/framework';
 
 @Component({

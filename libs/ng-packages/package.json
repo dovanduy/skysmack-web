@@ -5,7 +5,7 @@
     "@angular/common": "^8.0.0",
     "@angular/core": "^8.0.0",
     "@skysmack/ng-framework": "*",
-    "@skysmack/ng-ui": "*",
+    "@skysmack/ng-dynamic-forms": "*",
     "@skysmack/framework": "*",
     "@skysmack/redux": "*",
     "@skysmack/signal-r": "*",

@@ -1,5 +1,5 @@
 import { StrIndex } from '@skysmack/framework';
-import { Validation } from '@skysmack/ng-ui';
+import { Validation } from '@skysmack/ng-dynamic-forms';
 import { PERSONS_AREA_KEY } from '@skysmack/packages-persons';
 
 export class NgPersonsValidation extends Validation {

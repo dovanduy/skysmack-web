@@ -1,17 +1,15 @@
 import { Injectable } from '@angular/core';
-import { FormRule, SelectField } from '@skysmack/ng-ui';
 import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
-import { Field } from '@skysmack/ng-ui';
 
 import { FieldsConfig, SelectFieldComponent, HiddenFieldComponent } from '@skysmack/portal-ui';
 import { AccessPolicyRole, AccessPolicyRoleKey, AccessPolicyRule, ACCESS_POLICY_ROLES_AREA_KEY } from '@skysmack/packages-skysmack-core';
 import { Validators } from '@angular/forms';
-import { SelectFieldOption } from '@skysmack/ng-ui';
 import { AccessPolicyRolesValidation, NgAccessPolicyRulesStore } from '@skysmack/ng-core';
 import { FieldProviders } from '@skysmack/portal-ui';
 import { LoadedPackage } from '@skysmack/ng-framework';
 import { Router } from '@angular/router';
 import { RolesSelectFieldComponent } from '@skysmack/portal-packages';
+import { FormRule, Field, SelectFieldOption, SelectField } from '@skysmack/ng-dynamic-forms';
 
 @Injectable({ providedIn: 'root' })
 export class NgAccessPolicyRolesFieldsConfig extends FieldsConfig<AccessPolicyRole, AccessPolicyRoleKey> {

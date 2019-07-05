@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { FormRule, Field } from '@skysmack/ng-ui';
+import { FormRule, Field } from '@skysmack/ng-dynamic-forms';
 import { LocalObject } from '@skysmack/framework';
 import { UserSettings, USERS_AREA_KEY } from '@skysmack/packages-identities';
 import { NgUserSettingsValidation } from '@skysmack/ng-packages';

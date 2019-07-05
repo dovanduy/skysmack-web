@@ -4,7 +4,7 @@ import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { LodgingType, LODGING_TYPES_AREA_KEY } from '@skysmack/packages-lodgings';
 import { FieldProviders, DocumentFieldsConfig, StringFieldComponent, HiddenFieldComponent } from '@skysmack/portal-ui';
 import { NgLodgingTypesValidation } from '@skysmack/ng-packages';
-import { FormRule, Field } from '@skysmack/ng-ui';
+import { FormRule, Field } from '@skysmack/ng-dynamic-forms';
 import { NgFieldStore, LoadedPackage } from '@skysmack/ng-framework';
 import { Router } from '@angular/router';
 

@@ -86,9 +86,6 @@
       "@skysmack/ng-framework": [
         "libs/ng-framework/src/public_api.ts"
       ],
-      "@skysmack/ng-ui": [
-        "libs/ng-ui/src/public_api.ts"
-      ],
       "@skysmack/portal-packages": [
         "libs/portal-packages/src/public_api.ts"
       ],

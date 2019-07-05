@@ -6,7 +6,7 @@ import { RecordFormComponent, EditorNavService } from '@skysmack/portal-ui';
 import { NgConnectionsActions } from '@skysmack/ng-packages';
 import { NgConnectionsStore } from '@skysmack/ng-packages';
 import { NgConnectionsFieldsConfig } from '../../ng-connections-fields-config';
-import { FormHelper } from '@skysmack/ng-ui';
+import { FormHelper } from '@skysmack/ng-dynamic-forms';
 import { toLocalObject, LocalObjectStatus } from '@skysmack/framework';
 
 @Component({

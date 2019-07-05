@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FieldBaseComponent } from './../field-base-component';
 import { stringIntToInt } from '@skysmack/framework';
 import { RecurringExpressionEvaluator } from './models/recurring-expression-evaluator';
-import { Field } from '@skysmack/ng-ui';
+import { Field } from '@skysmack/ng-dynamic-forms';
 
 @Component({
   selector: 'ss-recurring-expression-field',

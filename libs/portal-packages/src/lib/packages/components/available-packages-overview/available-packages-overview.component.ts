@@ -4,7 +4,7 @@
 // import { NgPackagesActions } from '@skysmack/ng-packages';
 // import { ActivatedRoute, Router } from '@angular/router';
 // import { NgSkysmackStore } from '@skysmack/ng-core';
-// import { Field } from '@skysmack/ng-ui';
+// import { Field } from '@skysmack/ng-dynamic-forms';
 // import { NgPackagesFieldsConfig, NgPackagesStore } from '@skysmack/ng-packages';
 // import { BaseComponent } from '@skysmack/portal-ui';
 // import { PackagesAppState } from '@skysmack/packages-skysmack-core';

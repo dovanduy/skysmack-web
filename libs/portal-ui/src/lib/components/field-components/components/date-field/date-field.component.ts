@@ -3,7 +3,7 @@ import { FieldBaseComponent } from '../field-base-component';
 import * as _moment from 'moment';
 import { DateAdapter } from '@angular/material/core';
 import { DateOnlyAdapter } from './date-only-adapter';
-import { Field } from '@skysmack/ng-ui';
+import { Field } from '@skysmack/ng-dynamic-forms';
 const moment = _moment;
 
 @Component({

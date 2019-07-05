@@ -3,7 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { EditorNavService, FormBaseComponent } from '@skysmack/portal-ui';
 import { NgUsersActions, NgUsersStore, NgUsersRequests } from '@skysmack/ng-packages';
 import { User, UsersAppState } from '@skysmack/packages-identities';
-import { FormHelper } from '@skysmack/ng-ui';
+import { FormHelper } from '@skysmack/ng-dynamic-forms';
 import { HttpClient } from '@angular/common/http';
 import { of } from 'rxjs';
 import { NgSetPasswordFieldsConfig } from '../../ng-set-password-fields-config';

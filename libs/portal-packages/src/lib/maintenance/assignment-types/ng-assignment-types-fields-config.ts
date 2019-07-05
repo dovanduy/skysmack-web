@@ -1,14 +1,12 @@
 import { AssignmentType, ASSIGNMENT_TYPES_AREA_KEY } from '@skysmack/packages-maintenance';
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
-import { FormRule } from '@skysmack/ng-ui';
 import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
-import { Field } from '@skysmack/ng-ui';
-import { SelectField } from '@skysmack/ng-ui';
 import { NgAssignmentTypesValidation, NgMaintenanceStatesStore } from '@skysmack/ng-packages';
 import { FieldsConfig, StringFieldComponent, SelectFieldComponent, HiddenFieldComponent, RecurringExpressionFieldComponent } from '@skysmack/portal-ui';
 import { FieldProviders } from '@skysmack/portal-ui';
 import { LoadedPackage } from '@skysmack/ng-framework';
+import { FormRule, Field, SelectField } from '@skysmack/ng-dynamic-forms';
 
 @Injectable({ providedIn: 'root' })
 export class NgAssignmentTypesFieldsConfig extends FieldsConfig<AssignmentType, number> {

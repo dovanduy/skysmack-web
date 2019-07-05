@@ -1,14 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
-import { FormRule, CustomValidators } from '@skysmack/ng-ui';
 import { LocalObject } from '@skysmack/framework';
-import { Field } from '@skysmack/ng-ui';
 
 import { FieldsConfig, EmailFieldComponent } from '@skysmack/portal-ui';
 import { LoadedPackage } from '@skysmack/ng-framework';
 import { FieldProviders } from '@skysmack/portal-ui';
 import { NgForgotPasswordValidation } from './ng-forgot-password-validation';
 import { ACCOUNTS_AREA_KEY } from '@skysmack/packages-identities';
+import { FormRule, Field, CustomValidators } from '@skysmack/ng-dynamic-forms';
 
 @Injectable({ providedIn: 'root' })
 export class NgForgotPasswordFieldsConfig extends FieldsConfig<string, unknown> {

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { trigger, transition, style, animate } from '@angular/animations';
 import { FieldBaseComponent } from '../field-base-component';
-import { Field } from '@skysmack/ng-ui';
+import { Field } from '@skysmack/ng-dynamic-forms';
 
 @Component({
   selector: 'ss-email-field',

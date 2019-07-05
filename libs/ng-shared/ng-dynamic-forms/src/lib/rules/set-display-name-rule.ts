@@ -1,4 +1,4 @@
-import { FormRule } from '../form-rule';
+import { FormRule } from './form-rule';
 
 export class SetDisplayNameRule extends FormRule {
     protected rule() {

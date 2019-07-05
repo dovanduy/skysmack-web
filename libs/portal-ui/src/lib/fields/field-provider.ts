@@ -1,5 +1,5 @@
 import { Observable } from 'rxjs';
-import { Field } from '@skysmack/ng-ui';
+import { Field } from '@skysmack/ng-dynamic-forms';
 import { LocalObject } from '@skysmack/framework';
 
 export abstract class FieldProvider {

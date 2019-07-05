@@ -4,7 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { NgInvoicesActions } from '@skysmack/ng-packages';
 import { NgSkysmackStore } from '@skysmack/ng-core';
 import { NgInvoicesStore } from '@skysmack/ng-packages';
-import { FormHelper } from '@skysmack/ng-ui';
+import { FormHelper } from '@skysmack/ng-dynamic-forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { NgInvoicesProductsAddProductsFieldsConfig } from '../../ng-invoices-products-add-products-fields-config';
 

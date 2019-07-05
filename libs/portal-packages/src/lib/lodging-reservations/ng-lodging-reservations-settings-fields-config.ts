@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { FormRule, Field } from '@skysmack/ng-ui';
+import { FormRule, Field } from '@skysmack/ng-dynamic-forms';
 import { LocalObject } from '@skysmack/framework';
 import { LoadedPackage } from '@skysmack/ng-framework';
 import { FieldsConfig, IntFieldComponent } from '@skysmack/portal-ui';

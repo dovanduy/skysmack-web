@@ -1,5 +1,5 @@
 import { LocalObject } from '@skysmack/framework';
-import { Field, FormRule, Validation } from '@skysmack/ng-ui';
+import { Field, FormRule, Validation } from '@skysmack/ng-dynamic-forms';
 import { Observable } from 'rxjs';
 import { LoadedPackage } from '@skysmack/ng-framework';
 

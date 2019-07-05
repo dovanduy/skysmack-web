@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { LocalObject, LocalObjectStatus, PagedQuery } from '@skysmack/framework';
-import { FormRule, SelectField, Field } from '@skysmack/ng-ui';
+import { FormRule, SelectField, Field } from '@skysmack/ng-dynamic-forms';
 import { NgLodgingReservationPriceChangesValidation, NgLodgingsStore, NgLodgingsActions } from '@skysmack/ng-packages';
 import { FieldsConfig, SelectFieldComponent, HiddenFieldComponent, DecimalFieldComponent, DateTimeFieldComponent, FlaggedEnumFieldComponent, DaysOfWeekFlagged, IntFieldComponent, CheckboxFieldComponent, DateFieldComponent } from '@skysmack/portal-ui';
 import { FieldProviders } from '@skysmack/portal-ui';

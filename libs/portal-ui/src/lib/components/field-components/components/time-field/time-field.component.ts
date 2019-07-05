@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FieldBaseComponent } from '../field-base-component';
-import { Field } from '@skysmack/ng-ui';
+import { Field } from '@skysmack/ng-dynamic-forms';
 
 @Component({
   selector: 'ss-time-field',

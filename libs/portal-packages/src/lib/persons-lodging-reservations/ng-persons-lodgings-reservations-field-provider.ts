@@ -1,5 +1,5 @@
 import { Injectable, OnDestroy } from '@angular/core';
-import { Field, SelectField } from '@skysmack/ng-ui';
+import { Field, SelectField } from '@skysmack/ng-dynamic-forms';
 import { map, switchMap } from 'rxjs/operators';
 import { PersonsLodgingReservationsType, PersonsLodgingReservationsSettings } from '@skysmack/packages-persons-lodging-reservations';
 import { Observable, combineLatest, of } from 'rxjs';

@@ -7,7 +7,7 @@ import { NgPackagesStore } from '@skysmack/ng-core';
 import { PackagesAppState } from '@skysmack/packages-skysmack-core';
 import { Package } from '@skysmack/framework';
 import { NgPackagePathEditFieldsConfig } from '../../ng-package-path-edit-fields-config';
-import { FormHelper } from '@skysmack/ng-ui';
+import { FormHelper } from '@skysmack/ng-dynamic-forms';
 
 @Component({
   selector: 'ss-package-path-edit',

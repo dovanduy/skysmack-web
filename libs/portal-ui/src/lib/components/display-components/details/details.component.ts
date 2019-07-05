@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Field } from '@skysmack/ng-ui';
+import { Field } from '@skysmack/ng-dynamic-forms';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 

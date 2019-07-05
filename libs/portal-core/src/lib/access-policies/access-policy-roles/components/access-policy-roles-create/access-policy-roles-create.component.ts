@@ -6,7 +6,7 @@ import { EditorNavService, RecordFormComponent } from '@skysmack/portal-ui';
 import { NgAccessPolicyRolesStore } from '@skysmack/ng-core';
 import { AccessPolicyRolesAppState, AccessPolicyRole, AccessPolicyRoleKey } from '@skysmack/packages-skysmack-core';
 import { PagedQuery, toLocalObject, LocalObjectStatus } from '@skysmack/framework';
-import { FormHelper } from '@skysmack/ng-ui';
+import { FormHelper } from '@skysmack/ng-dynamic-forms';
 import { NgAccessPolicyRolesFieldsConfig } from '../../ng-access-policy-roles-fields-config';
 
 @Component({

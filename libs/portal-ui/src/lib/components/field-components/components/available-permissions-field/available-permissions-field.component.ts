@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FieldBaseComponent } from '../field-base-component';
 import { NgPackagesStore, NgSkysmackStore, NgSkysmackActions } from '@skysmack/ng-core';
 import { switchMap, map, startWith } from 'rxjs/operators';
-import { Field, SelectFieldOption } from '@skysmack/ng-ui';
+import { Field, SelectFieldOption } from '@skysmack/ng-dynamic-forms';
 import { StrIndex } from '@skysmack/framework';
 import { Observable } from 'rxjs';
 

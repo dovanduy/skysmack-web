@@ -1,5 +1,5 @@
 import { StrIndex } from '@skysmack/framework';
-import { Validation } from '@skysmack/ng-ui';
+import { Validation } from '@skysmack/ng-dynamic-forms';
 
 export class PackagePathEditValidation extends Validation {
     public formErrors = {

@@ -1,14 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
-import { FormRule, CustomValidators } from '@skysmack/ng-ui';
 import { LocalObject } from '@skysmack/framework';
-import { Field } from '@skysmack/ng-ui';
 
 import { FieldsConfig, PasswordFieldComponent, StringFieldComponent, } from '@skysmack/portal-ui';
 import { LoadedPackage } from '@skysmack/ng-framework';
 import { FieldProviders } from '@skysmack/portal-ui';
 import { NgRecoverPasswordValidation } from './ng-recover-password-validation';
 import { OAUTH2_AREA_KEY } from '@skysmack/packages-oauth2';
+import { FormRule, Field, CustomValidators } from '@skysmack/ng-dynamic-forms';
 
 @Injectable({ providedIn: 'root' })
 export class NgRecoverPasswordFieldsConfig extends FieldsConfig<string, unknown> {

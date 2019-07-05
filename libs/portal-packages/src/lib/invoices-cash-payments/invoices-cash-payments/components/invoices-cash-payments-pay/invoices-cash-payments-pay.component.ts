@@ -11,7 +11,7 @@ import { combineLatest, of } from 'rxjs';
 import { toLocalObject, API_DOMAIN_INJECTOR_TOKEN, ApiDomain, LocalObject } from '@skysmack/framework';
 import { Invoice } from '@skysmack/packages-invoices';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { FormHelper } from '@skysmack/ng-ui';
+import { FormHelper } from '@skysmack/ng-dynamic-forms';
 
 @Component({
   selector: 'ss-invoices-cash-payments-pay',

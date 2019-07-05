@@ -4,7 +4,7 @@ import { Observable, merge } from 'rxjs';
 import { Router, ActivatedRoute } from '@angular/router';
 import { OnInit, OnDestroy } from '@angular/core';
 import { take, map, filter } from 'rxjs/operators';
-import { Field } from '@skysmack/ng-ui';
+import { Field } from '@skysmack/ng-dynamic-forms';
 import { getAdditionalPaths, getPackageDendencyAsStream } from '@skysmack/ng-framework';
 import { LoadedPackage } from '@skysmack/ng-framework';
 import { EntityComponentPageTitle } from '../models/entity-component-page-title';

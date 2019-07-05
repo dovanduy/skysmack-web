@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { LocalObject, LocalObjectStatus, PagedQuery } from '@skysmack/framework';
 import { ProductTypeSalesPrice, PRODUCT_TYPE_SALES_PRICE_AREA_KEY } from '@skysmack/packages-products-pricings';
-import { FormRule, SelectField, Field } from '@skysmack/ng-ui';
+import { FormRule, SelectField, Field } from '@skysmack/ng-dynamic-forms';
 import { ProductType } from '@skysmack/packages-products';
 import { NgProductTypeSalesPriceValidation, NgProductTypesStore, NgProductTypesActions } from '@skysmack/ng-packages';
 import { FieldsConfig, SelectFieldComponent, HiddenFieldComponent, DecimalFieldComponent } from '@skysmack/portal-ui';

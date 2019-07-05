@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { LocalObject, Package } from '@skysmack/framework';
-import { Field, CustomValidators, FormRule } from '@skysmack/ng-ui';
+import { Field, CustomValidators, FormRule } from '@skysmack/ng-dynamic-forms';
 import { NgPackagesStore, NgPackagesActions, PackagePathEditValidation } from '@skysmack/ng-core';
 import { FieldsConfig, StringFieldComponent } from '@skysmack/portal-ui';
 import { FieldProviders } from '@skysmack/portal-ui';

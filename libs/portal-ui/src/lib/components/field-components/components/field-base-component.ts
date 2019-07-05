@@ -1,6 +1,6 @@
 import { Input, OnDestroy, ElementRef, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { FormHelper, Field, FormRule } from '@skysmack/ng-ui';
+import { FormHelper, Field, FormRule } from '@skysmack/ng-dynamic-forms';
 import { SubscriptionHandler, StrIndex } from '@skysmack/framework';
 
 interface AddedEvent {

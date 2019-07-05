@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SelectField, DisableUntilValueRule, Field } from '@skysmack/ng-ui';
+import { SelectField, DisableUntilValueRule, Field } from '@skysmack/ng-dynamic-forms';
 import { FieldBaseComponent } from '../field-base-component';
 
 @Component({

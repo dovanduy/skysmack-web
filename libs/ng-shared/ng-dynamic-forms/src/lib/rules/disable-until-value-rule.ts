@@ -1,5 +1,5 @@
-import { FormRule } from '../form-rule';
-import { Field } from './../../fields/field';
+import { FormRule } from './form-rule';
+import { Field } from '../models/field';
 
 /**
  * Currently implemented for SelectField (used with adaptors)

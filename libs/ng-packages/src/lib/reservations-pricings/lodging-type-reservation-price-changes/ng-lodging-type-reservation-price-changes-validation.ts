@@ -1,5 +1,5 @@
 import { StrIndex } from '@skysmack/framework';
-import { Validation } from '@skysmack/ng-ui';
+import { Validation } from '@skysmack/ng-dynamic-forms';
 import { LODGING_TYPE_RESERVATION_PRICE_CHANGES_AREA_KEY } from '@skysmack/packages-reservations-pricings';
 
 export class NgLodgingTypeReservationPriceChangesValidation extends Validation {

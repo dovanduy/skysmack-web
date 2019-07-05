@@ -4,8 +4,8 @@ import { NgSkysmackStore } from '@skysmack/ng-core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EditorNavService, BaseComponent } from '@skysmack/portal-ui';
 import { TerminalsAppState } from '@skysmack/packages-terminal-payments';
-import { SelectFieldOption } from '@skysmack/ng-ui';
 import { HttpClient } from '@angular/common/http';
+import { SelectFieldOption } from '@skysmack/ng-dynamic-forms';
 
 @Component({
   selector: 'ss-terminals-actions',
@@ -54,7 +54,6 @@ export class TerminalsActionsComponent extends BaseComponent<TerminalsAppState, 
   }
 
   public submit() {
-    console.log(this.selectedOption);
     this.message = '';
     const url = 'url';
     const body = {};

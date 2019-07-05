@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FieldBaseComponent } from '../field-base-component';
-import { ResultField } from '@skysmack/ng-ui';
+import { ResultField } from '@skysmack/ng-dynamic-forms';
 import { map, switchMap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 

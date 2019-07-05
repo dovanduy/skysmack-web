@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FieldAccessPermission, AccessTypes } from '@skysmack/framework';
-import { FieldHelpers, SelectFieldOption } from '@skysmack/ng-ui';
-import { Field } from '@skysmack/ng-ui';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { FieldBaseComponent } from '@skysmack/portal-ui';
+import { SelectFieldOption, Field, FieldHelpers } from '@skysmack/ng-dynamic-forms';
 
 @Component({
   selector: 'ss-field-permission-field',

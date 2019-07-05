@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { FormHelper, Field } from '@skysmack/ng-ui';
+import { FormHelper, Field } from '@skysmack/ng-dynamic-forms';
 import { Observable } from 'rxjs';
 import { BaseComponent, EditorNavService } from '@skysmack/portal-ui';
 import { AccountAppState } from '@skysmack/packages-identities';

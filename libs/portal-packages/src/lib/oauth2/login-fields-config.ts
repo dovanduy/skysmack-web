@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
-import { FormRule, Field, CustomValidators } from '@skysmack/ng-ui';
+import { FormRule, Field, CustomValidators } from '@skysmack/ng-dynamic-forms';
 import { LoginValidation } from './login-validation';
 import { LocalObject } from '@skysmack/framework';
 import { FieldsConfig, PasswordFieldComponent, EmailFieldComponent } from '@skysmack/portal-ui';

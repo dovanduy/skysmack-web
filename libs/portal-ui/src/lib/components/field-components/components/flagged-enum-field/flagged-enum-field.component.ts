@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { FieldBaseComponent } from '../field-base-component';
-import { Field, DisableUntilValueRule, SelectField, SelectFieldOption } from '@skysmack/ng-ui';
+import { Field, DisableUntilValueRule, SelectField, SelectFieldOption } from '@skysmack/ng-dynamic-forms';
 import { map, tap, take } from 'rxjs/operators';
 import { MatSelect } from '@angular/material/select';
 

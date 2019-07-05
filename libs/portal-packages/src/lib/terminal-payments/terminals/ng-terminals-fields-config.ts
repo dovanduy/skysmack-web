@@ -1,13 +1,12 @@
 import { Injectable } from '@angular/core';
-import { FormRule } from '@skysmack/ng-ui';
 import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { Terminal, TERMINALS_AREA_KEY } from '@skysmack/packages-terminal-payments';
-import { Field } from '@skysmack/ng-ui';
 import { FieldsConfig, HiddenFieldComponent, StringFieldComponent } from '@skysmack/portal-ui';
 import { NgTerminalsValidation } from '@skysmack/ng-packages';
 import { FieldProviders } from '@skysmack/portal-ui';
 import { LoadedPackage } from '@skysmack/ng-framework';
 import { Validators } from '@angular/forms';
+import { FormRule, Field } from '@skysmack/ng-dynamic-forms';
 
 @Injectable({ providedIn: 'root' })
 export class NgTerminalsFieldsConfig extends FieldsConfig<Terminal, number> {

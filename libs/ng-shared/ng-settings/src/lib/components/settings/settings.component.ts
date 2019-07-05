@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy, Injector } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { LocalObject, RouteData, toLocalObject } from '@skysmack/framework';
 import { NgSkysmackStore } from '@skysmack/ng-core';
-import { FormHelper } from '@skysmack/ng-ui';
+import { FormHelper } from '@skysmack/ng-dynamic-forms';
 import { combineLatest, of } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
 import { NgSettingsActions, NgSettingsStore } from '@skysmack/ng-framework';

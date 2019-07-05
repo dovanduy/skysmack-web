@@ -1,5 +1,5 @@
 import { Component, OnInit, ComponentFactoryResolver, Input, ViewChild } from '@angular/core';
-import { FormHelper, Field, FormRule } from '@skysmack/ng-ui';
+import { FormHelper, Field, FormRule } from '@skysmack/ng-dynamic-forms';
 import { DynamicFormFieldDirective } from '../../directives/dynamic-form-field.directive';
 import { DynamicField } from '../../models/dynamic-field';
 

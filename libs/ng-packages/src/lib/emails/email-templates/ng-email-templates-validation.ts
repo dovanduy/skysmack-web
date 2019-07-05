@@ -1,5 +1,5 @@
 import { StrIndex } from '@skysmack/framework';
-import { Validation } from '@skysmack/ng-ui';
+import { Validation } from '@skysmack/ng-dynamic-forms';
 import { EMAIL_TEMPLATES_AREA_KEY } from '@skysmack/packages-emails';
 
 export class NgEmailTemplatesValidation extends Validation {

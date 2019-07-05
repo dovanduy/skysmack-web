@@ -1,5 +1,5 @@
 import { StrIndex } from '@skysmack/framework';
-import { Validation, CustomValidators } from '@skysmack/ng-ui';
+import { Validation, CustomValidators } from '@skysmack/ng-dynamic-forms';
 
 export class NgSetPasswordValidation extends Validation {
     public formErrors = {

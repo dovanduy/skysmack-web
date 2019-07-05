@@ -1,5 +1,5 @@
 import { FormGroup, AbstractControl } from '@angular/forms';
-import { Field } from '../fields/field';
+import { Field } from '../models/field';
 
 export abstract class FormRule {
     public static type: string;

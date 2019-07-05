@@ -1,4 +1,4 @@
-import { Validation } from '@skysmack/ng-ui';
+import { Validation } from '@skysmack/ng-dynamic-forms';
 import { StrIndex } from '@skysmack/framework';
 
 export class NgSkysmackSettingsValidation extends Validation {

@@ -1,5 +1,5 @@
 import { StrIndex } from '@skysmack/framework';
-import { Validation } from '@skysmack/ng-ui';
+import { Validation } from '@skysmack/ng-dynamic-forms';
 import { ACCESS_POLICY_PERMISSIONS_AREA_KEY } from '@skysmack/packages-skysmack-core';
 
 export class AccessPolicyPermissionsValidation extends Validation {

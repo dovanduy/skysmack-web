@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
-import { FormRule, SelectField, SelectFieldOption } from '@skysmack/ng-ui';
 import { LocalObject, PagedQuery, toLocalObject } from '@skysmack/framework';
 import { TERMINALS_AREA_KEY, TransactionRequest, Currency, TerminalStatus, ConnectionKey, Connection } from '@skysmack/packages-terminal-payments';
-import { Field } from '@skysmack/ng-ui';
 import { FieldsConfig, IntFieldComponent, SelectFieldComponent, HiddenFieldComponent } from '@skysmack/portal-ui';
 import { FieldProviders } from '@skysmack/portal-ui';
 import { LoadedPackage } from '@skysmack/ng-framework';
@@ -10,6 +8,7 @@ import { Validators } from '@angular/forms';
 import { NgTransactionRequestValidation, NgClientsStore, NgClientsActions, NgConnectionsStore, NgConnectionsActions, NgTerminalsStore, NgTerminalsActions } from '@skysmack/ng-packages';
 import { of, combineLatest } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
+import { FormRule, Field, SelectFieldOption, SelectField } from '@skysmack/ng-dynamic-forms';
 
 @Injectable({ providedIn: 'root' })
 export class NgTransactionRequestFieldsConfig extends FieldsConfig<TransactionRequest, number> {

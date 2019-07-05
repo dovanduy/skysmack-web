@@ -4,7 +4,7 @@ import { fromEvent } from 'rxjs';
 import { FieldBaseComponent } from '../field-base-component';
 import { DateTimeAdapter } from './date-time-adapter';
 import { map } from 'rxjs/operators';
-import { Field } from '@skysmack/ng-ui';
+import { Field } from '@skysmack/ng-dynamic-forms';
 
 @Component({
   selector: 'ss-date-time-field',

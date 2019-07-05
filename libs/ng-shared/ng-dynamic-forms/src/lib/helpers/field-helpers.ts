@@ -1,5 +1,5 @@
-import { SelectFieldOption } from './select-field-option';
 import { getProperty } from '@skysmack/framework';
+import { SelectFieldOption } from '../models/select-field-option';
 
 export class FieldHelpers {
     public static getFieldOptionsOfArray(entities: any[], keyProp = 'object.id', valueProp = 'object.name'): SelectFieldOption[] {

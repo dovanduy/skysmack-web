@@ -8,7 +8,7 @@ import { combineLatest, of } from 'rxjs';
 import { toLocalObject, LocalObject, API_DOMAIN_INJECTOR_TOKEN, ApiDomain } from '@skysmack/framework';
 import { NgTransactionRequestFieldsConfig } from '../../ng-transaction-request-fields-config';
 import { TransactionRequest, TerminalsAppState } from '@skysmack/packages-terminal-payments';
-import { FormHelper } from '@skysmack/ng-ui';
+import { FormHelper } from '@skysmack/ng-dynamic-forms';
 import { HttpClient } from '@angular/common/http';
 import { Invoice } from 'libs/packages/invoices/src';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';

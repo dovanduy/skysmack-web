@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import { FormRule, Field } from '@skysmack/ng-ui';
 import { LocalObject } from '@skysmack/framework';
 import { LoadedPackage } from '@skysmack/ng-framework';
 import { FieldsConfig, IntFieldComponent, StringFieldComponent, CheckboxFieldComponent } from '@skysmack/portal-ui';
 import { FieldProviders } from '@skysmack/portal-ui';
 import { SmtpClientSettings, EMAILS_SMTP_AREA_KEY } from '@skysmack/packages/emails-smtp';
 import { NgEmailsSmtpSettingsValidation } from '@skysmack/ng-packages';
+import { FormRule, Field } from '@skysmack/ng-dynamic-forms';
 
 @Injectable({ providedIn: 'root' })
 export class NgEmailsSmptSettingsFieldsConfig extends FieldsConfig<SmtpClientSettings, unknown> {

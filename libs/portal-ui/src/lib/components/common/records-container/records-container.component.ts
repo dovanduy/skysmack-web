@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, EventEmitter, Output, ViewChild, OnDestroy } from '@angular/core';
 import { LocalObject, LoadingState, DisplayColumn, SubscriptionHandler, MenuItem } from '@skysmack/framework';
 import { Observable, BehaviorSubject, combineLatest } from 'rxjs';
-import { Field, FieldTypes } from '@skysmack/ng-ui';
+import { Field, FieldTypes } from '@skysmack/ng-dynamic-forms';
 import { map, delay, debounceTime } from 'rxjs/operators';
 import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
 

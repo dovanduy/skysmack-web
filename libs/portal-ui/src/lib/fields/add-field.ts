@@ -1,4 +1,4 @@
-import { Field } from '@skysmack/ng-ui';
+import { Field } from '@skysmack/ng-dynamic-forms';
 import { NgRecordStore } from '@skysmack/ng-framework';
 import { RecordActionsBase } from '@skysmack/redux';
 import { EntityFieldsConfig } from './entity-fields-config';

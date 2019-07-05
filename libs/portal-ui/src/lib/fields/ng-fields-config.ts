@@ -1,10 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
-import { FormRule, SetFieldKeyRule } from '@skysmack/ng-ui';
 import { LocalObject, FieldSchemaViewModel } from '@skysmack/framework';
-import { Field } from '@skysmack/ng-ui';
 import { FieldsValidation } from './ng-fields-validation';
-import { SelectField } from '@skysmack/ng-ui';
 import { FieldsConfig } from './fields-config';
 import { StringFieldComponent } from '../components/field-components/components/string-field/string-field.component';
 import { SelectFieldComponent } from '../components/field-components/components/select-field/select-field.component';
@@ -14,6 +11,7 @@ import { LoadedPackage } from '@skysmack/ng-framework';
 import { FieldProviders } from './field-providers';
 import { Router } from '@angular/router';
 import { UI_AREA_KEY } from '../constants/menu-item-action-translation-constants';
+import { FormRule, SetFieldKeyRule, Field, SelectField } from '@skysmack/ng-dynamic-forms';
 
 @Injectable({ providedIn: 'root' })
 export class NgFieldsConfig extends FieldsConfig<FieldSchemaViewModel, string> {

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
-import { FormRule, CustomValidators, Field } from '@skysmack/ng-ui';
+import { FormRule, CustomValidators, Field } from '@skysmack/ng-dynamic-forms';
 import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { User, USERS_AREA_KEY } from '@skysmack/packages-identities';
 import { NgUsersValidation } from '@skysmack/ng-packages';

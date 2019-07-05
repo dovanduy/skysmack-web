@@ -3,7 +3,7 @@ import { Validators } from '@angular/forms';
 import { LocalObject, LocalObjectStatus, PagedQuery } from '@skysmack/framework';
 import { RecurringAssignment, RECURRING_ASSIGNMENTS_AREA_KEY } from '@skysmack/packages-maintenance';
 import { NgRecurringAssignmentsValidation, NgAssignmentTypesStore, NgAssignmentTypesActions } from '@skysmack/ng-packages';
-import { FormRule, SelectField, Field } from '@skysmack/ng-ui';
+import { FormRule, SelectField, Field } from '@skysmack/ng-dynamic-forms';
 import { FieldsConfig, SelectFieldComponent, HiddenFieldComponent, DateFieldComponent } from '@skysmack/portal-ui';
 import { FieldProviders } from '@skysmack/portal-ui';
 import { LoadedPackage } from '@skysmack/ng-framework';

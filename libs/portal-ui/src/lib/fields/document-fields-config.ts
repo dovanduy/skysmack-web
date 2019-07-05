@@ -1,5 +1,5 @@
 import { LocalObject, FieldSchemaViewModel } from '@skysmack/framework';
-import { Field, FieldTypes } from '@skysmack/ng-ui';
+import { Field, FieldTypes } from '@skysmack/ng-dynamic-forms';
 import { IntFieldComponent } from '../components/field-components/components/int-field/int-field.component';
 import { Type } from '@angular/core';
 import { LimitedStringFieldComponent } from '../components/field-components/components/limited-string-field/limited-string-field.component';

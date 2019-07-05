@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { FormHelper, Field } from '@skysmack/ng-ui';
+import { FormHelper, Field } from '@skysmack/ng-dynamic-forms';
 import { NgChangePasswordFieldsConfig } from '../../ng-change-password-fields-config';
 import { Observable } from 'rxjs';
 import { BaseComponent, EditorNavService } from '@skysmack/portal-ui';
