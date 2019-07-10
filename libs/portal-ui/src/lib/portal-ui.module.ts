@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { ReducerRegistry, authenticationReducer } from '@skysmack/redux';
 import { RouterModule } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { MaterialModule } from './material.module';
 import { uiReducer } from './redux/ui-reducers';
@@ -16,16 +15,13 @@ import { LanguageService } from './language/language.service';
 import { commonComponents } from './components/common/common-components';
 import { displayComponents } from './components/display-components/display-components';
 import { directives } from './directives/directives';
-import { AngularEditorModule } from '@kolkov/angular-editor';
 
 @NgModule({
   imports: [
     CommonModule,
     RouterModule,
-    ReactiveFormsModule,
     TranslateModule.forRoot(),
-    MaterialModule, // Must come after BrowserAnimationsModule
-    AngularEditorModule
+    MaterialModule // Must come after BrowserAnimationsModule
   ],
   providers: [
     {
