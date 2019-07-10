@@ -9,25 +9,16 @@
   },
   "projects": {
     "shared-framework": {
-      "tags": [
-        "shared",
-        "framework"
-      ]
+      "tags": ["shared", "framework"]
     },
     "shared-redux": {
-      "tags": [
-        "shared",
-        "redux"
-      ]
+      "tags": ["shared", "redux"]
     },
     "shared-pricings": {
       "tags": []
     },
     "packages-skysmack-core": {
-      "tags": [
-        "packages",
-        "skysmack-core"
-      ]
+      "tags": ["packages", "skysmack-core"]
     },
     "packages-baskets": {
       "tags": []
@@ -114,6 +105,9 @@
       "tags": []
     },
     "ng-skysmack": {
+      "tags": []
+    },
+    "portal-shared-portal-fields": {
       "tags": []
     }
   }
