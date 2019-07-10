@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { BaseComponent } from '@skysmack/portal-ui';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { NgAccountsMenu } from '../../ng-accounts-menu';
 import { AccountState } from '@skysmack/packages-identities';
+import { BaseComponent } from '@skysmack/portal-fields';
 
 @Component({
   selector: 'skysmack-account',

@@ -4,10 +4,10 @@ import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { MaintenanceState, MaintenanceEntityStatus, MAINTENANCE_STATES_AREA_KEY } from '@skysmack/packages-maintenance';
 import { NgMaintenanceStatesValidation } from '@skysmack/ng-packages';
 import { FormRule, Field, SelectField } from '@skysmack/ng-dynamic-forms';
-import { FieldsConfig, StringFieldComponent, SelectFieldComponent, HiddenFieldComponent } from '@skysmack/portal-ui';
 import { of } from 'rxjs';
-import { FieldProviders } from '@skysmack/portal-ui';
 import { LoadedPackage } from '@skysmack/ng-framework';
+import { FieldsConfig, FieldProviders } from '@skysmack/ng-fields';
+import { StringFieldComponent, SelectFieldComponent, HiddenFieldComponent } from '@skysmack/portal-fields';
 
 @Injectable({ providedIn: 'root' })
 export class NgMaintenanceStatesFieldsConfig extends FieldsConfig<MaintenanceState, number> {

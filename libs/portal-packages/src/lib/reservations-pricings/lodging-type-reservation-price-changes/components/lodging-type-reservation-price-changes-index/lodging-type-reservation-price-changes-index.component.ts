@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { EntityComponentPageTitle, RecordIndexComponent, MenuItemActionProviders, MENU_ITEM_ACTIONS_EDIT, MENU_ITEM_ACTIONS_DELETE } from '@skysmack/portal-ui';
+import { EntityComponentPageTitle, MenuItemActionProviders, MENU_ITEM_ACTIONS_EDIT, MENU_ITEM_ACTIONS_DELETE } from '@skysmack/portal-ui';
 import { Router, ActivatedRoute } from '@angular/router';
 import { LODGING_TYPE_RESERVATION_PRICE_CHANGES_AREA_KEY, LodgingTypeReservationPriceChangesAppState, LodgingTypeReservationPriceChange } from '@skysmack/packages-reservations-pricings';
 import { MenuItem } from '@skysmack/framework';
@@ -7,6 +7,7 @@ import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { NgLodgingTypeReservationPriceChangesActions, NgLodgingTypeReservationPriceChangesStore } from '@skysmack/ng-packages';
 import { NgLodgingTypeReservationPriceChangesMenu } from '../../ng-lodging-type-reservation-price-changes-menu';
 import { NgLodgingTypeReservationPriceChangesFieldsConfig } from '../../ng-lodging-type-reservation-price-changes-fields-config';
+import { RecordIndexComponent } from '@skysmack/portal-fields';
 
 @Component({
   selector: 'ss-lodging-type-reservation-price-changes-index',

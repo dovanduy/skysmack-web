@@ -3,9 +3,10 @@ import { ProductsSalesPriceAppState, ProductsSalesPrice } from '@skysmack/packag
 import { NgProductsSalesPriceActions, NgProductsActions } from '@skysmack/ng-packages';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { ActivatedRoute, Router } from '@angular/router';
-import { EditorNavService, RecordFormComponent } from '@skysmack/portal-ui';
+import { EditorNavService } from '@skysmack/portal-ui';
 import { NgProductsSalesPriceStore } from '@skysmack/ng-packages';
 import { NgProductsSalesPriceFieldsConfig } from '../../ng-products-sales-price-fields-config';
+import { RecordFormComponent } from '@skysmack/portal-fields';
 
 @Component({
   selector: 'ss-products-sales-price-edit',

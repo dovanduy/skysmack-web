@@ -4,7 +4,7 @@ import { NgInvoicesActions } from '@skysmack/ng-packages';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EditorNavService } from '@skysmack/portal-ui';
-import { DocumentRecordFormComponent } from '@skysmack/portal-ui';
+import { DocumentRecordFormComponent } from '@skysmack/portal-fields';
 import { NgInvoicesStore } from '@skysmack/ng-packages';
 import { NgFieldActions } from '@skysmack/ng-framework';
 import { NgInvoicesFieldsConfig } from '../../ng-invoices-fields-config';

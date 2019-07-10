@@ -3,12 +3,12 @@ import { Validators } from '@angular/forms';
 import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { ProductType, PRODUCT_TYPES_AREA_KEY } from '@skysmack/packages-products';
 
-import { DocumentFieldsConfig, StringFieldComponent, HiddenFieldComponent } from '@skysmack/portal-ui';
 import { NgProductTypesValidation } from '@skysmack/ng-packages';
 import { NgFieldStore, LoadedPackage } from '@skysmack/ng-framework';
-import { FieldProviders } from '@skysmack/portal-ui';
 import { Router } from '@angular/router';
 import { FormRule, Field } from '@skysmack/ng-dynamic-forms';
+import { DocumentFieldsConfig, StringFieldComponent, HiddenFieldComponent } from '@skysmack/portal-fields';
+import { FieldProviders } from '@skysmack/ng-fields';
 
 @Injectable({ providedIn: 'root' })
 export class NgProductTypesFieldsConfig extends DocumentFieldsConfig<ProductType, number> {

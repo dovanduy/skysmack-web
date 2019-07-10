@@ -2,10 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { ClientsAppState, Client } from '@skysmack/packages-terminal-payments';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { ActivatedRoute, Router } from '@angular/router';
-import { RecordFormComponent, EditorNavService } from '@skysmack/portal-ui';
+import { EditorNavService } from '@skysmack/portal-ui';
 import { NgClientsActions } from '@skysmack/ng-packages';
 import { NgClientsStore } from '@skysmack/ng-packages';
 import { NgClientsFieldsConfig } from '../../ng-clients-fields-config';
+import { RecordFormComponent } from '@skysmack/portal-fields';
 
 @Component({
   selector: 'ss-clients-create',

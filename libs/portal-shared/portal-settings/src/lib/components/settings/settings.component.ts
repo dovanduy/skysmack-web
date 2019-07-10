@@ -7,7 +7,9 @@ import { combineLatest, of } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
 import { NgSettingsActions, NgSettingsStore } from '@skysmack/ng-framework';
 import { SettingsAppState } from '@skysmack/redux';
-import { BaseComponent, FieldsConfig, EditorNavService } from '@skysmack/portal-ui';
+import { EditorNavService } from '@skysmack/portal-ui';
+import { BaseComponent } from '@skysmack/portal-fields';
+import { FieldsConfig } from '@skysmack/ng-fields';
 
 @Component({
   selector: 'ss-settings',

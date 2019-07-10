@@ -2,7 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { NgInvoicesActions, NgInvoicesStore, NgTerminalsActions, NgTerminalsStore } from '@skysmack/ng-packages';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { ActivatedRoute, Router } from '@angular/router';
-import { EditorNavService, RecordFormComponent } from '@skysmack/portal-ui';
+import { EditorNavService } from '@skysmack/portal-ui';
 import { map, take, switchMap, tap, catchError } from 'rxjs/operators';
 import { combineLatest, of } from 'rxjs';
 import { toLocalObject, LocalObject, API_DOMAIN_INJECTOR_TOKEN, ApiDomain } from '@skysmack/framework';
@@ -12,6 +12,7 @@ import { FormHelper } from '@skysmack/ng-dynamic-forms';
 import { HttpClient } from '@angular/common/http';
 import { Invoice } from 'libs/packages/invoices/src';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { RecordFormComponent } from '@skysmack/portal-fields';
 
 @Component({
   selector: 'ss-terminals-pay',

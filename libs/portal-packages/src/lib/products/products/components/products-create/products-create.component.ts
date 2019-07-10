@@ -4,7 +4,7 @@ import { NgProductsActions } from '@skysmack/ng-packages';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EditorNavService } from '@skysmack/portal-ui';
-import { DocumentRecordFormComponent } from '@skysmack/portal-ui';
+import { DocumentRecordFormComponent } from '@skysmack/portal-fields';
 import { NgProductsStore } from '@skysmack/ng-packages';
 import { PagedQuery } from '@skysmack/framework';
 import { NgProductTypesActions } from '@skysmack/ng-packages';

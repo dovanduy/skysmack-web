@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { EntityComponentPageTitle, MenuItemActionProviders, MENU_ITEM_ACTION_DETAILS, MENU_ITEM_ACTIONS_EDIT, MENU_ITEM_ACTIONS_DELETE, RecordIndexComponent } from '@skysmack/portal-ui';
+import { EntityComponentPageTitle, MenuItemActionProviders, MENU_ITEM_ACTION_DETAILS, MENU_ITEM_ACTIONS_EDIT, MENU_ITEM_ACTIONS_DELETE } from '@skysmack/portal-ui';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgEmailTemplatesActions } from '@skysmack/ng-packages';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
@@ -8,6 +8,7 @@ import { EmailTemplate, EmailTemplatesAppState, EMAIL_TEMPLATES_AREA_KEY } from 
 import { NgEmailTemplatesMenu } from './../../ng-email-templates-menu';
 import { MenuItem } from '@skysmack/framework';
 import { NgEmailTemplatesFieldsConfig } from '../../ng-email-templates-fields-config';
+import { RecordIndexComponent } from '@skysmack/portal-fields';
 
 @Component({
   selector: 'ss-email-templates-index',

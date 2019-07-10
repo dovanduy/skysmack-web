@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { EntityComponentPageTitle, RecordIndexComponent, MenuItemActionProviders, MENU_ITEM_ACTIONS_EDIT, MENU_ITEM_ACTIONS_DELETE } from '@skysmack/portal-ui';
+import { EntityComponentPageTitle, MenuItemActionProviders, MENU_ITEM_ACTIONS_EDIT, MENU_ITEM_ACTIONS_DELETE } from '@skysmack/portal-ui';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgProductPriceChangesActions } from '@skysmack/ng-packages';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
@@ -8,6 +8,7 @@ import { ProductPriceChangesAppState, PRODUCT_PRICE_CHANGES_AREA_KEY, ProductPri
 import { NgProductPriceChangesMenu } from '../../ng-product-price-changes-menu';
 import { MenuItem } from '@skysmack/framework';
 import { NgProductPriceChangesFieldsConfig } from '../../ng-product-price-changes-fields-config';
+import { RecordIndexComponent } from '@skysmack/portal-fields';
 
 @Component({
   selector: 'ss-product-price-changes-index',

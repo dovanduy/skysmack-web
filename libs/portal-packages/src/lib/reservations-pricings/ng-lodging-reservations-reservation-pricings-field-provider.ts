@@ -4,14 +4,14 @@ import { map, catchError } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
 import { StrIndex, LocalObject, API_DOMAIN_INJECTOR_TOKEN, ApiDomain, GlobalProperties } from '@skysmack/framework';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
-import { ResultFieldComponent } from '@skysmack/portal-ui';
-import { FieldProvider } from '@skysmack/portal-ui';
 import { FormGroup } from '@angular/forms';
 import { ReservationsPricingsType } from '@skysmack/packages-reservations-pricings';
 import { Router } from '@angular/router';
 import { LODGING_RESERVATIONS_AREA_KEY } from '@skysmack/packages-lodging-reservations';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { CustomHttpUrlEncodingCodec } from '@skysmack/ng-framework';
+import { FieldProvider } from '@skysmack/ng-fields';
+import { ResultFieldComponent } from '@skysmack/portal-fields';
 
 @Injectable({ providedIn: 'root' })
 export class NgLodgingReservationsReservationsPricingsFieldProvider extends FieldProvider {

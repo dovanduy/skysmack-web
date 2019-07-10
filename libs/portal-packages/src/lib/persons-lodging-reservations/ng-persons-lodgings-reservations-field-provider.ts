@@ -6,12 +6,12 @@ import { Observable, combineLatest, of } from 'rxjs';
 import { StrIndex, PagedQuery, LocalObject } from '@skysmack/framework';
 import { NgSettingsActions, NgSettingsStore, NgFieldActions } from '@skysmack/ng-framework';
 import { NgPersonsStore, NgPersonsActions } from '@skysmack/ng-packages';
-import { MultiSelectFieldComponent, AddField, AddRecordFieldComponent, HiddenFieldComponent } from '@skysmack/portal-ui';
 import { NgPersonsFieldsConfig } from '../persons/ng-persons-fields-config';
-import { FieldProvider } from '@skysmack/portal-ui';
 import { Person } from '@skysmack/packages-persons';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { LODGING_RESERVATIONS_AREA_KEY } from '@skysmack/packages-lodging-reservations';
+import { FieldProvider, AddField } from '@skysmack/ng-fields';
+import { AddRecordFieldComponent, MultiSelectFieldComponent, HiddenFieldComponent } from '@skysmack/portal-fields';
 
 @Injectable({ providedIn: 'root' })
 export class NgPersonsLodgingReservationsFieldProvider extends FieldProvider {

@@ -3,9 +3,10 @@ import { ProductTypePriceChangesAppState, ProductPriceChange } from '@skysmack/p
 import { NgProductTypePriceChangesActions, NgProductTypesActions } from '@skysmack/ng-packages';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { ActivatedRoute, Router } from '@angular/router';
-import { EditorNavService, RecordFormComponent } from '@skysmack/portal-ui';
+import { EditorNavService } from '@skysmack/portal-ui';
 import { NgProductTypePriceChangesStore } from '@skysmack/ng-packages';
 import { NgProductTypePriceChangesFieldsConfig } from '../../ng-product-type-price-changes-fields-config';
+import { RecordFormComponent } from '@skysmack/portal-fields';
 
 @Component({
   selector: 'ss-product-type-price-changes-edit',

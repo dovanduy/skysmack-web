@@ -3,7 +3,7 @@ import { LodgingTypesAppState, LodgingType } from '@skysmack/packages-lodgings';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EditorNavService } from '@skysmack/portal-ui';
-import { DocumentRecordFormComponent } from '@skysmack/portal-ui';
+import { DocumentRecordFormComponent } from '@skysmack/portal-fields';
 import { NgLodgingTypesActions } from '@skysmack/ng-packages';
 import { NgLodgingTypesStore } from '@skysmack/ng-packages';
 import { NgFieldActions } from '@skysmack/ng-framework';

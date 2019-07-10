@@ -3,9 +3,10 @@ import { CashPayment, InvoicesCashPaymentsAppState } from '@skysmack/packages-in
 import { NgInvoicesCashPaymentsActions } from '@skysmack/ng-packages';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { ActivatedRoute, Router } from '@angular/router';
-import { EditorNavService, RecordFormComponent } from '@skysmack/portal-ui';
+import { EditorNavService } from '@skysmack/portal-ui';
 import { NgInvoicesCashPaymentsStore } from '@skysmack/ng-packages';
 import { NgInvoicesCashPaymentsFieldsConfig } from '../../ng-invoices-cash-payments-fields-config';
+import { RecordFormComponent } from '@skysmack/portal-fields';
 
 @Component({
   selector: 'ss-invoices-cash-payments-edit',

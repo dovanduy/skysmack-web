@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { EntityComponentPageTitle, DocumentRecordIndexComponent, MenuItemActionProviders, MENU_ITEM_ACTIONS_EDIT, MENU_ITEM_ACTIONS_DELETE } from '@skysmack/portal-ui';
+import { EntityComponentPageTitle, MenuItemActionProviders, MENU_ITEM_ACTIONS_EDIT, MENU_ITEM_ACTIONS_DELETE } from '@skysmack/portal-ui';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgReceiptsActions, NgReceiptsStore } from '@skysmack/ng-packages';
 import { ReceiptsAppState, Receipt, RECEIPTS_AREA_KEY } from '@skysmack/packages-terminal-payments';
@@ -8,6 +8,7 @@ import { MenuItem } from '@skysmack/framework';
 import { NgFieldActions } from '@skysmack/ng-framework';
 import { NgReceiptsFieldsConfig } from '../../ng-receipts-fields-config';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
+import { DocumentRecordIndexComponent } from '@skysmack/portal-fields';
 
 @Component({
   selector: 'ss-receipts-index',

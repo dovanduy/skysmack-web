@@ -1,7 +1,7 @@
 import { ProductTypesIndexComponent } from './product-types-index/product-types-index.component';
 import { ProductTypesCreateComponent } from './product-types-create/product-types-create.component';
 import { ProductTypesEditComponent } from './product-types-edit/product-types-edit.component';
-import { FieldsIndexComponent, FieldsCreateComponent, FieldsEditComponent } from '@skysmack/portal-ui';
+import { FieldsIndexComponent, FieldsCreateComponent, FieldsEditComponent } from '@skysmack/portal-fields';
 import { Routes } from '@angular/router';
 import { PRODUCT_TYPES_AREA_KEY } from '@skysmack/packages-products';
 

@@ -2,10 +2,10 @@ import { Routes } from '@angular/router';
 import { LodgingsIndexComponent } from './lodgings-index/lodgings-index.component';
 import { LodgingsCreateComponent } from './lodgings-create/lodgings-create.component';
 import { LodgingsEditComponent } from './lodgings-edit/lodgings-edit.component';
-import { FieldsIndexComponent, FieldsCreateComponent } from '@skysmack/portal-ui';
 import { RouteData } from '@skysmack/framework';
 import { LodgingsavailabilityComponent } from './lodgings-availability/lodgings-availability.component';
 import { LODGINGS_AREA_KEY } from '@skysmack/packages-lodgings';
+import { FieldsIndexComponent, FieldsCreateComponent } from '@skysmack/portal-fields';
 
 
 const data = {

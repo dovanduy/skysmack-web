@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { EntityComponentPageTitle, MenuItemActionProviders, MENU_ITEM_ACTIONS_EDIT, MENU_ITEM_ACTIONS_DELETE, RecordIndexComponent } from '@skysmack/portal-ui';
+import { EntityComponentPageTitle, MenuItemActionProviders, MENU_ITEM_ACTIONS_EDIT, MENU_ITEM_ACTIONS_DELETE } from '@skysmack/portal-ui';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgTerminalsActions } from '@skysmack/ng-packages';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
@@ -8,6 +8,7 @@ import { Terminal, TerminalsAppState, TERMINALS_AREA_KEY } from '@skysmack/packa
 import { NgTerminalsMenu } from '../../ng-terminals-menu';
 import { MenuItem } from '@skysmack/framework';
 import { NgTerminalsFieldsConfig } from '../../ng-terminals-fields-config';
+import { RecordIndexComponent } from '@skysmack/portal-fields';
 
 @Component({
   selector: 'ss-terminals-index',

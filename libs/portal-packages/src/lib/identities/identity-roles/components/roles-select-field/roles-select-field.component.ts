@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FieldBaseComponent } from '@skysmack/portal-ui';
 import { Field, SelectField } from '@skysmack/ng-dynamic-forms';
+import { FieldBaseComponent } from '@skysmack/portal-fields';
 
 @Component({
   selector: 'ss-roles-select-field',

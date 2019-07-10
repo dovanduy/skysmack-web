@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy, Inject } from '@angular/core';
-import { RecordFormComponent, EditorNavService } from '@skysmack/portal-ui';
+import { EditorNavService } from '@skysmack/portal-ui';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgInvoicesActions } from '@skysmack/ng-packages';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
@@ -9,6 +9,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { LocalObject } from '@skysmack/framework';
 import { Product } from 'libs/packages/products/src';
 import { NgInvoicesProductsAddToInvoiceFieldsConfig } from '../../ng-invoices-products-add-to-invoice-fields-config';
+import { RecordFormComponent } from '@skysmack/portal-fields';
 
 /**
  * This component is used when clicking a product in order to add it to an invoice.

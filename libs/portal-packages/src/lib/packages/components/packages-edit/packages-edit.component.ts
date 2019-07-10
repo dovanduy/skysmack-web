@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { NgPackagesActions } from '@skysmack/ng-packages';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { ActivatedRoute, Router } from '@angular/router';
-import { EditorNavService, RecordFormComponent } from '@skysmack/portal-ui';
+import { EditorNavService } from '@skysmack/portal-ui';
 import { NgPackagesStore } from '@skysmack/ng-packages';
 import { PackagesAppState } from '@skysmack/packages-skysmack-core';
 import { Package } from '@skysmack/framework';
 import { NgPackagesFieldsConfig } from '../../ng-packages-fields-config';
+import { RecordFormComponent } from '@skysmack/portal-fields';
 
 @Component({
   selector: 'ss-packages-edit',

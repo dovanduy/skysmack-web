@@ -4,7 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { LanguageService } from '@skysmack/portal-ui';
 import { NgIdentitiesModule } from '@skysmack/ng-packages';
-import { PortalUiModule, FieldsModule } from '@skysmack/portal-ui';
+import { PortalUiModule } from '@skysmack/portal-ui';
 import { IdentitiesRoutingModule } from './identities-routing.module';
 import { NgLockoutSettingsFieldsConfig } from './ng-lockout-settings-fields-config';
 import { NgUserSettingsFieldsConfig } from './ng-user-settings-fields-config';
@@ -20,6 +20,7 @@ import { CoalescingComponentFactoryResolver } from '@skysmack/ng-framework';
 import { RolesSelectComponent } from './identity-roles';
 import { DynamicFormsModule } from '@skysmack/portal-dynamic-forms';
 import { SettingsModule } from '@skysmack/portal-settings';
+import { PortalFieldsModule } from '@skysmack/portal-fields';
 
 @NgModule({
   imports: [
@@ -29,7 +30,7 @@ import { SettingsModule } from '@skysmack/portal-settings';
     DynamicFormsModule,
     IdentitiesRoutingModule,
     NgIdentitiesModule,
-    FieldsModule,
+    PortalFieldsModule,
     SettingsModule,
     MatSelectModule
   ],

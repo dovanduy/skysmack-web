@@ -4,7 +4,7 @@ import { safeHasValue, Package, MenuItemProvider, MenuItem } from '@skysmack/fra
 import { map } from 'rxjs/operators';
 import { Skysmack } from '@skysmack/packages-skysmack-core';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
-import { EmailsSmtpType } from '@skysmack/packages/emails-smtp';
+import { EmailsSmtpType } from '@skysmack/packages-emails-smtp';
 
 @Injectable({ providedIn: 'root' })
 export class NgEmailsSmtpMenuItemProvider extends MenuItemProvider {

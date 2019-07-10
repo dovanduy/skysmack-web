@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { TerminalPaymentsRoutingModule } from './terminal-payments-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { NgTerminalPaymentsModule } from '@skysmack/ng-packages';
-import { PortalUiModule, FieldsModule, MenuItemActionProviders } from '@skysmack/portal-ui';
+import { PortalUiModule, MenuItemActionProviders } from '@skysmack/portal-ui';
 import { terminalsComponents } from './terminals/components/terminals-components';
 import { receiptsComponents } from './receipts/components/receipts-component';
 import { LanguageService } from '@skysmack/portal-ui';
@@ -16,6 +16,7 @@ import { InvoicesType } from '@skysmack/packages-invoices';
 import { CoalescingComponentFactoryResolver } from '@skysmack/ng-framework';
 import { TerminalsPayComponent } from './terminals/components/terminals-pay/terminals-pay.component';
 import { DynamicFormsModule } from '@skysmack/portal-dynamic-forms';
+import { PortalFieldsModule } from '@skysmack/portal-fields';
 
 @NgModule({
   imports: [
@@ -25,7 +26,7 @@ import { DynamicFormsModule } from '@skysmack/portal-dynamic-forms';
     NgTerminalPaymentsModule,
     PortalUiModule,
     DynamicFormsModule,
-    FieldsModule
+    PortalFieldsModule
   ],
   exports: [],
   declarations: [

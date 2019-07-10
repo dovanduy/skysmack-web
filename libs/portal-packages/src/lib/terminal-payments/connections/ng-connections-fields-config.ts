@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { LocalObject, LocalObjectStatus, PagedQuery, DisplayColumn } from '@skysmack/framework';
 import { Connection, CONNECTIONS_AREA_KEY, ConnectionKey, TerminalStatus } from '@skysmack/packages-terminal-payments';
-import { FieldsConfig, HiddenFieldComponent, SelectFieldComponent, StringFieldComponent } from '@skysmack/portal-ui';
 import { NgConnectionsValidation, NgTerminalsStore, NgTerminalsActions, NgClientsStore, NgClientsActions } from '@skysmack/ng-packages';
-import { FieldProviders } from '@skysmack/portal-ui';
 import { LoadedPackage } from '@skysmack/ng-framework';
 import { FormRule, Field, SelectField } from '@skysmack/ng-dynamic-forms';
+import { FieldsConfig, FieldProviders } from '@skysmack/ng-fields';
+import { StringFieldComponent, SelectFieldComponent, HiddenFieldComponent } from '@skysmack/portal-fields';
 
 @Injectable({ providedIn: 'root' })
 export class NgConnectionsFieldsConfig extends FieldsConfig<Connection, ConnectionKey> {

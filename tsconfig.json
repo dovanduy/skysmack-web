@@ -57,7 +57,7 @@
       "@skysmack/ng-framework": ["libs/ng-framework/src/public_api.ts"],
       "@skysmack/portal-packages": ["libs/portal-packages/src/public_api.ts"],
       "@skysmack/portal-ui": ["libs/portal-ui/src/public_api.ts"],
-      "@skysmack/packages/emails-smtp": [
+      "@skysmack/packages-emails-smtp": [
         "libs/packages/emails-smtp/public_api.ts"
       ],
       "@skysmack/packages-invoices-products": [
@@ -74,8 +74,8 @@
         "libs/portal-shared/portal-settings/src/public_api.ts"
       ],
       "@skysmack/ng-skysmack": ["libs/ng-shared/ng-skysmack/src/public_api.ts"],
-      "@skysmack/portal-shared/portal-fields": [
-        "libs/portal-shared/portal-fields/src/index.ts"
+      "@skysmack/portal-fields": [
+        "libs/portal-shared/portal-fields/src/public_api.ts"
       ]
     }
   },

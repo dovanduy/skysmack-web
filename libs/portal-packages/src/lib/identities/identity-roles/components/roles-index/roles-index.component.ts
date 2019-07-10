@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { EntityComponentPageTitle, RecordIndexComponent, MenuItemActionProviders, MENU_ITEM_ACTIONS_EDIT, MENU_ITEM_ACTIONS_DELETE, } from '@skysmack/portal-ui';
+import { EntityComponentPageTitle, MenuItemActionProviders, MENU_ITEM_ACTIONS_EDIT, MENU_ITEM_ACTIONS_DELETE, } from '@skysmack/portal-ui';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgRolesActions } from '@skysmack/ng-packages';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
@@ -8,6 +8,7 @@ import { Role, RolesAppState, ROLES_AREA_KEY } from '@skysmack/packages-identiti
 import { NgRolesMenu } from '../../ng-roles-menu';
 import { MenuItem } from '@skysmack/framework';
 import { NgRolesFieldsConfig } from '../../ng-roles-fields-config';
+import { RecordIndexComponent } from '@skysmack/portal-fields';
 
 
 @Component({

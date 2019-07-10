@@ -5,13 +5,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { LanguageService, MenuItemActionProviders } from '@skysmack/portal-ui';
 import { InvoicesCashPaymentsRoutingModule } from './invoices-cash-payments-routing.module';
 import { NgInvoicesCashPaymentsModule } from '@skysmack/ng-packages';
-import { PortalUiModule, FieldsModule } from '@skysmack/portal-ui';
+import { PortalUiModule } from '@skysmack/portal-ui';
 import { invoicesCashPaymentsComponents } from './invoices-cash-payments/components/invoices-cash-payments-components';
 import { NgInvoicesCashPaymentsMenuItemActionProvider } from './ng-invoices-cash-payments-menu-item-action-provider';
 import { InvoicesType } from '@skysmack/packages-invoices';
 import { InvoicesCashPaymentsPayComponent } from './invoices-cash-payments/components';
 import { CoalescingComponentFactoryResolver } from '@skysmack/ng-framework';
 import { DynamicFormsModule } from '@skysmack/portal-dynamic-forms';
+import { PortalFieldsModule } from '@skysmack/portal-fields';
 
 @NgModule({
   imports: [
@@ -21,7 +22,7 @@ import { DynamicFormsModule } from '@skysmack/portal-dynamic-forms';
     DynamicFormsModule,
     InvoicesCashPaymentsRoutingModule,
     NgInvoicesCashPaymentsModule,
-    FieldsModule
+    PortalFieldsModule
   ],
   declarations: [
     ...invoicesCashPaymentsComponents,

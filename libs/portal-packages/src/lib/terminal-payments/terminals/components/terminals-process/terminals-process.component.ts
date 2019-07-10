@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { NgTerminalsActions, NgTerminalsStore } from '@skysmack/ng-packages';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { ActivatedRoute, Router } from '@angular/router';
-import { EditorNavService, BaseComponent } from '@skysmack/portal-ui';
+import { EditorNavService } from '@skysmack/portal-ui';
 import { TerminalsAppState } from '@skysmack/packages-terminal-payments';
+import { BaseComponent } from '@skysmack/portal-fields';
 
 @Component({
   selector: 'ss-terminals-process',

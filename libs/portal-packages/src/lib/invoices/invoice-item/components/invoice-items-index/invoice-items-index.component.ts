@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { EntityComponentPageTitle, DocumentRecordIndexComponent, MenuItemActionProviders, MENU_ITEM_ACTIONS_EDIT, MENU_ITEM_ACTIONS_DELETE } from '@skysmack/portal-ui';
+import { EntityComponentPageTitle, MenuItemActionProviders, MENU_ITEM_ACTIONS_EDIT, MENU_ITEM_ACTIONS_DELETE } from '@skysmack/portal-ui';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgInvoiceItemsActions } from '@skysmack/ng-packages';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
@@ -11,6 +11,7 @@ import { NgFieldActions } from '@skysmack/ng-framework';
 import { NgInvoiceItemsFieldsConfig } from '../../ng-invoice-items-fields-config';
 import { RSQLFilterBuilder } from '@skysmack/framework';
 import { take, map } from 'rxjs/operators';
+import { DocumentRecordIndexComponent } from '@skysmack/portal-fields';
 
 
 @Component({

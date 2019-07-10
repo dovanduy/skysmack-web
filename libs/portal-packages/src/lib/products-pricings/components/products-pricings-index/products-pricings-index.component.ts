@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
-import { EntityComponentPageTitle, BaseComponent } from '@skysmack/portal-ui';
+import { EntityComponentPageTitle } from '@skysmack/portal-ui';
 import { NgProductsPricingsMenu } from '../../ng-products-pricings-menu';
+import { BaseComponent } from '@skysmack/portal-fields';
 
 @Component({
   selector: 'ss-products-pricings-index',

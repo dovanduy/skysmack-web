@@ -1,10 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { NgProductsPricingsModule } from '@skysmack/ng-packages';
-import { PortalUiModule, HttpLoaderFactory, FieldsModule, FieldProviders } from '@skysmack/portal-ui';
-import { TranslateLoader } from '@ngx-translate/core';
+import { PortalUiModule } from '@skysmack/portal-ui';
 import { LanguageService } from '@skysmack/portal-ui';
 import { ProductsPricingsRoutingModule } from './products-pricings-routing.module';
 import { productsSalesPriceComponents } from './products-sales-price/components/products-sales-price-components';
@@ -15,6 +14,8 @@ import { productTypePriceChangesComponents } from './product-type-price-changes/
 import { NgProductPricingsFieldProvider } from './ng-product-pricings-field-provider';
 import { ProductsType } from '@skysmack/packages-products';
 import { DynamicFormsModule } from '@skysmack/portal-dynamic-forms';
+import { PortalFieldsModule } from '@skysmack/portal-fields';
+import { FieldProviders } from '@skysmack/ng-fields';
 
 @NgModule({
   imports: [
@@ -24,7 +25,7 @@ import { DynamicFormsModule } from '@skysmack/portal-dynamic-forms';
     NgProductsPricingsModule,
     PortalUiModule,
     DynamicFormsModule,
-    FieldsModule
+    PortalFieldsModule
   ],
   exports: [],
   declarations: [

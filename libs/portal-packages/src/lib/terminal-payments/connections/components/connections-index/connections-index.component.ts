@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { EntityComponentPageTitle, MenuItemActionProviders, MENU_ITEM_ACTIONS_DELETE, RecordIndexComponent } from '@skysmack/portal-ui';
+import { EntityComponentPageTitle, MenuItemActionProviders, MENU_ITEM_ACTIONS_DELETE } from '@skysmack/portal-ui';
 import { Router, ActivatedRoute, Route } from '@angular/router';
 import { ConnectionsAppState, Connection, CONNECTIONS_AREA_KEY, ConnectionKey, TerminalStatus, ConnectionRequest, TerminalAction } from '@skysmack/packages-terminal-payments';
 import { NgConnectionsMenu } from '../../ng-connections-menu';
@@ -10,6 +10,7 @@ import { NgConnectionsActions, NgConnectionsStore } from '@skysmack/ng-packages'
 import { HttpClient } from '@angular/common/http';
 import { LocalObject, API_DOMAIN_INJECTOR_TOKEN, ApiDomain } from '@skysmack/framework';
 import { take } from 'rxjs/operators';
+import { RecordIndexComponent } from '@skysmack/portal-fields';
 
 @Component({
   selector: 'ss-connections-index',

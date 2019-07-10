@@ -3,12 +3,12 @@ import { Validators } from '@angular/forms';
 import { LocalObject, LocalObjectStatus, PagedQuery } from '@skysmack/framework';
 import { FormRule, SelectField, Field } from '@skysmack/ng-dynamic-forms';
 import { NgLodgingPricesValidation, NgLodgingsStore, NgLodgingsActions } from '@skysmack/ng-packages';
-import { FieldsConfig, SelectFieldComponent, HiddenFieldComponent, DecimalFieldComponent } from '@skysmack/portal-ui';
-import { FieldProviders } from '@skysmack/portal-ui';
 import { LoadedPackage, getPackageDendencyAsStream } from '@skysmack/ng-framework';
 import { LodgingPrice, LODGING_PRICES_AREA_KEY } from '@skysmack/packages-reservations-pricings';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
-import { switchMap, map, take, tap } from 'rxjs/operators';
+import { switchMap, map, take } from 'rxjs/operators';
+import { FieldsConfig, FieldProviders } from '@skysmack/ng-fields';
+import { SelectFieldComponent, DecimalFieldComponent, HiddenFieldComponent } from '@skysmack/portal-fields';
 
 @Injectable({ providedIn: 'root' })
 export class NgLodgingPricesFieldsConfig extends FieldsConfig<LodgingPrice, number> {

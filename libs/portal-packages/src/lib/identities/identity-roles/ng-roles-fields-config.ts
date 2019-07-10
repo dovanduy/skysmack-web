@@ -4,9 +4,9 @@ import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { Role, ROLES_AREA_KEY } from '@skysmack/packages-identities';
 import { NgRolesValidation } from '@skysmack/ng-packages';
 import { LoadedPackage } from '@skysmack/ng-framework';
-import { FieldsConfig, StringFieldComponent, HiddenFieldComponent } from '@skysmack/portal-ui';
-import { FieldProviders } from '@skysmack/portal-ui';
+import { StringFieldComponent, HiddenFieldComponent } from '@skysmack/portal-fields';
 import { FormRule, Field } from '@skysmack/ng-dynamic-forms';
+import { FieldsConfig, FieldProviders } from '@skysmack/ng-fields';
 
 @Injectable({ providedIn: 'root' })
 export class NgRolesFieldsConfig extends FieldsConfig<Role, number> {

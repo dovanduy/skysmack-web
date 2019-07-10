@@ -2,12 +2,12 @@ import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { LocalObject, LocalObjectStatus, PagedQuery } from '@skysmack/framework';
 import { Product, PRODUCTS_AREA_KEY } from '@skysmack/packages-products';
-import { StringFieldComponent, SelectFieldComponent, HiddenFieldComponent, DocumentFieldsConfig } from '@skysmack/portal-ui';
 import { NgProductsValidation, NgProductTypesStore, NgProductTypesActions } from '@skysmack/ng-packages';
-import { FieldProviders } from '@skysmack/portal-ui';
 import { LoadedPackage, NgFieldStore } from '@skysmack/ng-framework';
 import { Router } from '@angular/router';
 import { FormRule, Field, SelectField } from '@skysmack/ng-dynamic-forms';
+import { DocumentFieldsConfig, StringFieldComponent, SelectFieldComponent, HiddenFieldComponent } from '@skysmack/portal-fields';
+import { FieldProviders } from '@skysmack/ng-fields';
 
 @Injectable({ providedIn: 'root' })
 export class NgProductsFieldsConfig extends DocumentFieldsConfig<Product, number> {

@@ -5,9 +5,9 @@ import { ProductTypeSalesPrice, PRODUCT_TYPE_SALES_PRICE_AREA_KEY } from '@skysm
 import { FormRule, SelectField, Field } from '@skysmack/ng-dynamic-forms';
 import { ProductType } from '@skysmack/packages-products';
 import { NgProductTypeSalesPriceValidation, NgProductTypesStore, NgProductTypesActions } from '@skysmack/ng-packages';
-import { FieldsConfig, SelectFieldComponent, HiddenFieldComponent, DecimalFieldComponent } from '@skysmack/portal-ui';
-import { FieldProviders } from '@skysmack/portal-ui';
 import { LoadedPackage } from '@skysmack/ng-framework';
+import { FieldsConfig, FieldProviders } from '@skysmack/ng-fields';
+import { SelectFieldComponent, DecimalFieldComponent, HiddenFieldComponent } from '@skysmack/portal-fields';
 
 export interface NgProductTypeSalesPriceFormDependencies {
     availableProductTypes: LocalObject<ProductType, number>[];

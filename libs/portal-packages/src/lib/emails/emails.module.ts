@@ -4,11 +4,12 @@ import { CommonModule } from '@angular/common';
 import { EmailsRoutingModule } from './emails-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { NgEmailsModule } from '@skysmack/ng-packages';
-import { PortalUiModule, FieldsModule } from '@skysmack/portal-ui';
+import { PortalUiModule } from '@skysmack/portal-ui';
 import { LanguageService } from '@skysmack/portal-ui';
 import { emailsComponents } from './emails/components/emails-components';
 import { emailTemplatesComponents } from './email-templates';
 import { DynamicFormsModule } from '@skysmack/portal-dynamic-forms';
+import { PortalFieldsModule } from '@skysmack/portal-fields';
 
 @NgModule({
   imports: [
@@ -18,7 +19,7 @@ import { DynamicFormsModule } from '@skysmack/portal-dynamic-forms';
     DynamicFormsModule,
     EmailsRoutingModule,
     NgEmailsModule,
-    FieldsModule
+    PortalFieldsModule
   ],
   declarations: [
     ...emailsComponents,

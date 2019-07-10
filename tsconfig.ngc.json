@@ -44,6 +44,12 @@
       "@skysmack/portal-dynamic-forms": [
         "./dist/@skysmack/portal-dynamic-forms"
       ],
+      "@skysmack/ng-fields": [
+        "./dist/@skysmack/ng-fields"
+      ],
+      "@skysmack/portal-fields": [
+        "./dist/@skysmack/portal-fields"
+      ],
       "@skysmack/packages-skysmack-core": [
         "./dist/@skysmack/packages-skysmack-core"
       ],

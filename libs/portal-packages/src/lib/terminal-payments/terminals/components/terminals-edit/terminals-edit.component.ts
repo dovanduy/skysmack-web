@@ -3,9 +3,10 @@ import { Terminal, TerminalsAppState } from '@skysmack/packages-terminal-payment
 import { NgTerminalsActions } from '@skysmack/ng-packages';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { ActivatedRoute, Router } from '@angular/router';
-import { EditorNavService, RecordFormComponent } from '@skysmack/portal-ui';
+import { EditorNavService } from '@skysmack/portal-ui';
 import { NgTerminalsStore } from '@skysmack/ng-packages';
 import { NgTerminalsFieldsConfig } from '../../ng-terminals-fields-config';
+import { RecordFormComponent } from '@skysmack/portal-fields';
 
 @Component({
   selector: 'ss-terminals-edit',

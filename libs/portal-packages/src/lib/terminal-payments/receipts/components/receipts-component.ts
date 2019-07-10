@@ -1,9 +1,9 @@
 import { ReceiptsIndexComponent } from './receipts-index/receipts-index.component';
 import { ReceiptsCreateComponent } from './receipts-create/receipts-create.component';
 import { ReceiptsEditComponent } from './receipts-edit/receipts-edit.component';
-import { FieldsIndexComponent, FieldsCreateComponent } from '@skysmack/portal-ui';
 import { Routes } from '@angular/router';
 import { RECEIPTS_AREA_KEY } from '@skysmack/packages-terminal-payments';
+import { FieldsIndexComponent, FieldsCreateComponent } from '@skysmack/portal-fields';
 
 export const receiptsRoutes: Routes = [
   {

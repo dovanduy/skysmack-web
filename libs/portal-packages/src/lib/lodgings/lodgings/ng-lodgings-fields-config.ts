@@ -2,11 +2,12 @@ import { Lodging, LODGINGS_AREA_KEY } from '@skysmack/packages-lodgings';
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { LocalObject, LocalObjectStatus, PagedQuery } from '@skysmack/framework';
-import { FieldProviders, SelectFieldComponent, CheckboxFieldComponent, StringFieldComponent, HiddenFieldComponent, DocumentFieldsConfig } from '@skysmack/portal-ui';
 import { NgLodgingsValidation, NgLodgingTypesStore, NgLodgingTypesActions } from '@skysmack/ng-packages';
 import { LoadedPackage, NgFieldStore } from '@skysmack/ng-framework';
 import { FormRule, Field, SelectField } from '@skysmack/ng-dynamic-forms';
 import { Router } from '@angular/router';
+import { DocumentFieldsConfig, StringFieldComponent, SelectFieldComponent, CheckboxFieldComponent, HiddenFieldComponent } from '@skysmack/portal-fields';
+import { FieldProviders } from '@skysmack/ng-fields';
 
 @Injectable({ providedIn: 'root' })
 export class NgLodgingsFieldsConfig extends DocumentFieldsConfig<Lodging, number> {

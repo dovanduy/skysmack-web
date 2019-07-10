@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { EntityComponentPageTitle, DocumentRecordIndexComponent, MenuItemActionProviders, MENU_ITEM_ACTIONS_EDIT, MENU_ITEM_ACTIONS_DELETE } from '@skysmack/portal-ui';
+import { EntityComponentPageTitle, MenuItemActionProviders, MENU_ITEM_ACTIONS_EDIT, MENU_ITEM_ACTIONS_DELETE } from '@skysmack/portal-ui';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgProductTypesActions, NgProductTypesStore } from '@skysmack/ng-packages';
 import { ProductTypesAppState, ProductType, PRODUCT_TYPES_AREA_KEY } from '@skysmack/packages-products';
@@ -8,6 +8,7 @@ import { MenuItem } from '@skysmack/framework';
 import { NgFieldActions } from '@skysmack/ng-framework';
 import { NgProductTypesFieldsConfig } from '../../ng-product-types-fields-config';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
+import { DocumentRecordIndexComponent } from '@skysmack/portal-fields';
 
 @Component({
   selector: 'ss-product-types-index',

@@ -3,13 +3,13 @@ import { map } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
 import { StrIndex, LocalObject, DisplayColumn } from '@skysmack/framework';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
-import { StringFieldComponent } from '@skysmack/portal-ui';
-import { FieldProvider } from '@skysmack/portal-ui';
 import { Validators } from '@angular/forms';
 import { Product, PRODUCTS_AREA_KEY } from '@skysmack/packages-products';
 import { ProductsPricingsType } from '@skysmack/packages-products-pricings';
 import { Router } from '@angular/router';
 import { Field } from '@skysmack/ng-dynamic-forms';
+import { FieldProvider } from '@skysmack/ng-fields';
+import { StringFieldComponent } from '@skysmack/portal-fields';
 
 @Injectable({ providedIn: 'root' })
 export class NgProductPricingsFieldProvider extends FieldProvider {

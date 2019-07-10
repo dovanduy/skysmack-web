@@ -3,12 +3,13 @@ import { Validators } from '@angular/forms';
 import { LocalObject, LocalObjectStatus, PagedQuery } from '@skysmack/framework';
 import { CashPayment, INVOICES_CASH_PAYMENTS_AREA_KEY } from '@skysmack/packages-invoices-cash-payments';
 
-import { FieldsConfig, StringFieldComponent, HiddenFieldComponent, FieldProviders, IntFieldComponent, SelectFieldComponent } from '@skysmack/portal-ui';
 import { NgInvoicesCashPaymentsValidation, NgInvoicesStore, NgInvoicesActions } from '@skysmack/ng-packages';
 import { LoadedPackage } from '@skysmack/ng-framework';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { switchMap, take, map } from 'rxjs/operators';
 import { FormRule, Field, SelectField } from '@skysmack/ng-dynamic-forms';
+import { FieldsConfig, FieldProviders } from '@skysmack/ng-fields';
+import { SelectFieldComponent, IntFieldComponent, StringFieldComponent, HiddenFieldComponent } from '@skysmack/portal-fields';
 
 export interface NgInvoiceFormDependencies {
     [key: string]: any;

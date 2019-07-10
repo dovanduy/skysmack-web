@@ -2,7 +2,7 @@ import { NgModule, ComponentFactoryResolver } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { HttpClientModule } from '@angular/common/http';
-import { PortalUiModule, FieldsModule } from '@skysmack/portal-ui';
+import { PortalUiModule } from '@skysmack/portal-ui';
 import { LanguageService } from '@skysmack/portal-ui';
 import { AccessPoliciesRoutingModule } from './access-policies-routing.module';
 import { NgAccessPoliciesModule } from '@skysmack/ng-packages';
@@ -14,6 +14,7 @@ import { FieldPermissionFieldComponent } from './access-policy-roles/components/
 import { CoalescingComponentFactoryResolver } from '@skysmack/ng-framework';
 import { DynamicFormsModule } from '@skysmack/portal-dynamic-forms';
 import { IdentitiesModule } from '../identities/identities.module';
+import { PortalFieldsModule } from '@skysmack/portal-fields';
 // import { PackagesModule } from '../../packages';
 
 @NgModule({
@@ -23,7 +24,7 @@ import { IdentitiesModule } from '../identities/identities.module';
     PortalUiModule,
     AccessPoliciesRoutingModule,
     NgAccessPoliciesModule,
-    FieldsModule,
+    PortalFieldsModule,
     IdentitiesModule,
     DynamicFormsModule
     // PackagesModule

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { EntityComponentPageTitle, DocumentRecordIndexComponent, MenuItemActionProviders, MENU_ITEM_ACTIONS_EDIT, MENU_ITEM_ACTIONS_DELETE } from '@skysmack/portal-ui';
+import { EntityComponentPageTitle, MenuItemActionProviders, MENU_ITEM_ACTIONS_EDIT, MENU_ITEM_ACTIONS_DELETE } from '@skysmack/portal-ui';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { LodgingsAppState, LODGINGS_AREA_KEY } from '@skysmack/packages-lodgings';
@@ -10,6 +10,7 @@ import { NgLodgingsMenu } from '../../ng-lodgings-menu';
 import { MenuItem } from '@skysmack/framework';
 import { NgFieldActions } from '@skysmack/ng-framework';
 import { NgLodgingsFieldsConfig } from '../../ng-lodgings-fields-config';
+import { DocumentRecordIndexComponent } from '@skysmack/portal-fields';
 
 
 @Component({

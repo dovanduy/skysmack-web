@@ -3,7 +3,7 @@ import { CashPayment, InvoicesCashPaymentsAppState } from '@skysmack/packages-in
 import { NgInvoicesCashPaymentsActions, NgInvoicesActions, NgInvoicesStore } from '@skysmack/ng-packages';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { ActivatedRoute, Router } from '@angular/router';
-import { EditorNavService, RecordFormComponent } from '@skysmack/portal-ui';
+import { EditorNavService } from '@skysmack/portal-ui';
 import { NgInvoicesCashPaymentsStore } from '@skysmack/ng-packages';
 import { NgInvoicesCashPaymentsFieldsConfig } from '../../ng-invoices-cash-payments-fields-config';
 import { map, take, switchMap } from 'rxjs/operators';
@@ -12,6 +12,7 @@ import { toLocalObject, API_DOMAIN_INJECTOR_TOKEN, ApiDomain, LocalObject } from
 import { Invoice } from '@skysmack/packages-invoices';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { FormHelper } from '@skysmack/ng-dynamic-forms';
+import { RecordFormComponent } from '@skysmack/portal-fields';
 
 @Component({
   selector: 'ss-invoices-cash-payments-pay',

@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { EntityComponentPageTitle, RecordIndexComponent, MenuItemActionProviders, MENU_ITEM_ACTIONS_EDIT, MENU_ITEM_ACTIONS_DELETE, } from '@skysmack/portal-ui';
+import { EntityComponentPageTitle, MenuItemActionProviders, MENU_ITEM_ACTIONS_EDIT, MENU_ITEM_ACTIONS_DELETE, } from '@skysmack/portal-ui';
 import { NgUsersActions, NgUsersStore } from '@skysmack/ng-packages';
 import { MenuItem } from '@skysmack/framework';
 import { User, UsersAppState, USERS_AREA_KEY } from '@skysmack/packages-identities';
 import { NgUsersMenu } from '../../ng-users-menu';
 import { NgUsersFieldsConfig } from '../../ng-users-fields-config';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
+import { RecordIndexComponent } from '@skysmack/portal-fields';
 
 
 @Component({

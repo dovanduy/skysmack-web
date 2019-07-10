@@ -3,12 +3,12 @@ import { Validators } from '@angular/forms';
 import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { InvoiceItem, INVOICE_ITEMS_AREA_KEY } from '@skysmack/packages-invoices';
 
-import { DocumentFieldsConfig, StringFieldComponent, HiddenFieldComponent, IntFieldComponent } from '@skysmack/portal-ui';
 import { NgInvoiceItemsValidation } from '@skysmack/ng-packages';
 import { NgFieldStore, LoadedPackage } from '@skysmack/ng-framework';
-import { FieldProviders } from '@skysmack/portal-ui';
 import { Router } from '@angular/router';
 import { FormRule, Field } from '@skysmack/ng-dynamic-forms';
+import { DocumentFieldsConfig, StringFieldComponent, IntFieldComponent, HiddenFieldComponent } from '@skysmack/portal-fields';
+import { FieldProviders } from '@skysmack/ng-fields';
 
 @Injectable({ providedIn: 'root' })
 export class NgInvoiceItemsFieldsConfig extends DocumentFieldsConfig<InvoiceItem, number> {

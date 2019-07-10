@@ -3,10 +3,11 @@ import { NgRecoverPasswordFieldsConfig } from './ng-recover-password-fields-conf
 import { FormHelper } from '@skysmack/ng-dynamic-forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { toLocalObject } from '@skysmack/framework';
-import { BaseComponent, EditorNavService } from '@skysmack/portal-ui';
+import { EditorNavService } from '@skysmack/portal-ui';
 import { AccountAppState } from '@skysmack/packages-identities';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { NgAccountRequests } from '@skysmack/ng-packages';
+import { BaseComponent } from '@skysmack/portal-fields';
 
 @Component({
   selector: 'ss-recover-password',

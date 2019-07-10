@@ -2,7 +2,7 @@ import { Routes } from '@angular/router';
 import { PersonsIndexComponent } from './persons-index/persons-index.component';
 import { PersonsCreateComponent } from './persons-create/persons-create.component';
 import { PersonsEditComponent } from './persons-edit/persons-edit.component';
-import { FieldsIndexComponent, FieldsCreateComponent, FieldsEditComponent } from '@skysmack/portal-ui';
+import { FieldsIndexComponent, FieldsCreateComponent, FieldsEditComponent } from '@skysmack/portal-fields';
 import { PersonsDetailsComponent } from './persons-details/persons-details.component';
 import { PERSONS_AREA_KEY } from '@skysmack/packages-persons';
 

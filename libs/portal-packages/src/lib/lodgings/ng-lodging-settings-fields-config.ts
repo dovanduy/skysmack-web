@@ -3,9 +3,9 @@ import { FormRule, Field } from '@skysmack/ng-dynamic-forms';
 import { LocalObject, toLocalObject } from '@skysmack/framework';
 import { LodgingSettings, LODGINGS_AREA_KEY } from '@skysmack/packages-lodgings';
 import { NgLodgingSettingsValidation } from '@skysmack/ng-packages';
-import { FieldsConfig, StringFieldComponent, DateFieldComponent } from '@skysmack/portal-ui';
-import { FieldProviders } from '@skysmack/portal-ui';
 import { LoadedPackage } from '@skysmack/ng-framework';
+import { FieldsConfig, FieldProviders } from '@skysmack/ng-fields';
+import { StringFieldComponent, DateFieldComponent } from '@skysmack/portal-fields';
 
 @Injectable({ providedIn: 'root' })
 export class NgLodgingSettingsFieldsConfig extends FieldsConfig<LodgingSettings, unknown> {

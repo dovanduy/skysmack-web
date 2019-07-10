@@ -2,12 +2,13 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormHelper, Field } from '@skysmack/ng-dynamic-forms';
 import { NgChangePasswordFieldsConfig } from '../../ng-change-password-fields-config';
 import { Observable } from 'rxjs';
-import { BaseComponent, EditorNavService } from '@skysmack/portal-ui';
+import { EditorNavService } from '@skysmack/portal-ui';
 import { AccountAppState } from '@skysmack/packages-identities';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { switchMap, take, tap, map } from 'rxjs/operators';
 import { NgAccountRequests } from '@skysmack/ng-packages';
+import { BaseComponent } from '@skysmack/portal-fields';
 
 @Component({
   selector: 'skysmack-change-password',
