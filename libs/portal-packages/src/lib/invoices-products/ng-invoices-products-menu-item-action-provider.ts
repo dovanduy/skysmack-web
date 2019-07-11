@@ -6,7 +6,7 @@ import { StrIndex, LocalObject } from '@skysmack/framework';
 import { MenuItemActionProvider } from '@skysmack/portal-ui';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { PRODUCTS_AREA_KEY, Product } from '@skysmack/packages-products';
-import { InvoicesProductsType } from '@skysmack/packages-invoices-products';
+import { InvoicesProductsType } from '@skysmack/package-types';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { InvoicesProductsAddToInvoiceComponent } from './invoices-products/components/invoices-products-add-to-invoice/invoices-products-add-to-invoice.component';

@@ -1,4 +1,4 @@
-import { PersonsLodgingReservationsType } from '@skysmack/packages-persons-lodging-reservations';
+import { PersonsLodgingReservationsType } from '@skysmack/package-types';
 import { PackageLoader, PackageManifest } from '@skysmack/ng-framework';
 import { TenantPackageLoadStrategy } from '../start/tenant-package-load-strategy';
 import { Route } from '@angular/router';

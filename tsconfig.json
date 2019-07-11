@@ -16,6 +16,7 @@
     "baseUrl": ".",
     "paths": {
       "@skysmack/framework": ["./libs/shared/framework/public_api.ts"],
+      "@skysmack/package-types": ["./libs/shared/package-types/public_api.ts"],
       "@skysmack/redux": ["./libs/shared/redux/public_api.ts"],
       "@skysmack/pricings": ["./libs/shared/pricings/public_api.ts"],
       "@skysmack/signal-r": ["./libs/shared/signal-r/public_api.ts"],

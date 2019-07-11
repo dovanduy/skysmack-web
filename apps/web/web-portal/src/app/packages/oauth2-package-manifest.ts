@@ -1,4 +1,4 @@
-import { Oauth2Type } from '@skysmack/packages-oauth2';
+import { Oauth2Type } from '@skysmack/package-types';
 import { PackageLoader, PackageManifest } from '@skysmack/ng-framework';
 import { Route } from '@angular/router';
 import { TenantPackageLoadStrategy } from '../start/tenant-package-load-strategy';

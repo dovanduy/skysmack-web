@@ -7,7 +7,7 @@ import { MenuItemActionProvider } from '@skysmack/portal-ui';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { INVOICES_AREA_KEY, Invoice } from '@skysmack/packages-invoices';
 import { CashPayment } from '@skysmack/packages-invoices-cash-payments';
-import { TerminalPaymentsType } from '@skysmack/packages-terminal-payments';
+import { TerminalPaymentsType } from '@skysmack/package-types';
 import { MatDialog } from '@angular/material/dialog';
 import { TerminalsPayComponent } from './terminals';
 

@@ -6,9 +6,10 @@ import { StrIndex, LocalObject } from '@skysmack/framework';
 import { MenuItemActionProvider } from '@skysmack/portal-ui';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { INVOICES_AREA_KEY, Invoice } from '@skysmack/packages-invoices';
-import { CashPayment, InvoicesCashPaymentsType } from '@skysmack/packages-invoices-cash-payments';
+import { CashPayment } from '@skysmack/packages-invoices-cash-payments';
 import { InvoicesCashPaymentsPayComponent } from './invoices-cash-payments/components/invoices-cash-payments-pay/invoices-cash-payments-pay.component';
 import { MatDialog } from '@angular/material/dialog';
+import { InvoicesCashPaymentsType } from '@skysmack/package-types';
 
 @Injectable({ providedIn: 'root' })
 export class NgInvoicesCashPaymentsMenuItemActionProvider extends MenuItemActionProvider {

@@ -1,11 +1,11 @@
 import { DocumentRecord, LocalObject } from "@skysmack/framework";
-import { LodgingsType } from "../lodgings-type";
+import { LodgingType } from "./lodging-type";
 
 export class Lodging extends DocumentRecord<number> {
     public id: number;
     public name: string;
     public lodgingTypeId: number;
-    public lodgingType: LocalObject<LodgingsType, number>;
+    public lodgingType: LocalObject<LodgingType, number>;
     public disabled: boolean;
 
     public constructor(init?: Partial<Lodging>) {

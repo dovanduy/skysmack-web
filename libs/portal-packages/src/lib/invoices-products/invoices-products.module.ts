@@ -7,7 +7,7 @@ import { PortalUiModule } from '@skysmack/portal-ui';
 import { InvoicesProductsRoutingModule } from './invoices-products-routing.module';
 import { NgInvoicesProductsModule } from '@skysmack/ng-packages';
 import { NgInvoicesProductsMenuItemActionProvider } from './ng-invoices-products-menu-item-action-provider';
-import { ProductsType } from '@skysmack/packages-products';
+import { ProductsType } from '@skysmack/package-types';
 import { invoicesProductsComponents } from './invoices-products/components/invoices-products-components';
 import { CoalescingComponentFactoryResolver, NgMenuItemProviders } from '@skysmack/ng-framework';
 import { InvoicesProductsAddToInvoiceComponent } from './invoices-products/components/invoices-products-add-to-invoice/invoices-products-add-to-invoice.component';

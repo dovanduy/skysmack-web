@@ -1,5 +1,5 @@
 import { PackageLoader, PackageManifest } from '@skysmack/ng-framework';
-import { InvoicesProductsType } from '@skysmack/packages-invoices-products';
+import { InvoicesProductsType } from '@skysmack/package-types';
 import { TenantPackageLoadStrategy } from '../start/tenant-package-load-strategy';
 import { Route } from '@angular/router';
 

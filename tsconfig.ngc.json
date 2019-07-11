@@ -23,6 +23,9 @@
       "@skysmack/framework": [
         "./dist/@skysmack/framework"
       ],
+      "@skysmack/package-types": [
+        "./dist/@skysmack/package-types"
+      ],
       "@skysmack/redux": [
         "./dist/@skysmack/redux"
       ],

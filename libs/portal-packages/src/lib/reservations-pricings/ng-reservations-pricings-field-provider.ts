@@ -5,7 +5,7 @@ import { Observable, of } from 'rxjs';
 import { StrIndex, LocalObject, DisplayColumn } from '@skysmack/framework';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { Validators } from '@angular/forms';
-import { ReservationsPricingsType } from '@skysmack/packages-reservations-pricings';
+import { ReservationsPricingsType } from '@skysmack/package-types';
 import { Router } from '@angular/router';
 import { LodgingReservation } from '@skysmack/packages-lodging-reservations';
 import { LODGINGS_AREA_KEY } from '@skysmack/packages-lodgings';

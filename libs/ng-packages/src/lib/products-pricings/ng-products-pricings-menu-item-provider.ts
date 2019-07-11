@@ -3,8 +3,8 @@ import { of, Observable } from 'rxjs';
 import { safeHasValue, Package, MenuItemProvider, MenuItem } from '@skysmack/framework';
 import { map } from 'rxjs/operators';
 import { Skysmack } from '@skysmack/packages-skysmack-core';
-import { ProductsPricingsType } from '@skysmack/packages-products-pricings';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
+import { ProductsPricingsType } from '@skysmack/package-types';
 
 @Injectable({ providedIn: 'root' })
 export class NgProductsPricingsMenuItemProvider extends MenuItemProvider {

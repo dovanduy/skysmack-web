@@ -3,8 +3,8 @@ import { of, Observable } from 'rxjs';
 import { safeHasValue, Package, MenuItemProvider, MenuItem } from '@skysmack/framework';
 import { map } from 'rxjs/operators';
 import { Skysmack } from '@skysmack/packages-skysmack-core';
-import { LodgingReservationsType } from '@skysmack/packages-lodging-reservations';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
+import { LodgingReservationsType } from '@skysmack/package-types';
 
 @Injectable({ providedIn: 'root' })
 export class NgLodgingsReservationsMenuItemProvider extends MenuItemProvider {

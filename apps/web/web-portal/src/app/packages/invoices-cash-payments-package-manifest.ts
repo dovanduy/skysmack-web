@@ -1,5 +1,5 @@
 import { PackageLoader, PackageManifest } from '@skysmack/ng-framework';
-import { InvoicesCashPaymentsType } from '@skysmack/packages-invoices-cash-payments';
+import { InvoicesCashPaymentsType } from '@skysmack/package-types';
 import { TenantPackageLoadStrategy } from '../start/tenant-package-load-strategy';
 import { Route } from '@angular/router';
 

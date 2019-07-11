@@ -1,7 +1,7 @@
 import { PackageLoader, PackageManifest } from '@skysmack/ng-framework';
 import { Route } from '@angular/router';
 import { TenantPackageLoadStrategy } from '../start/tenant-package-load-strategy';
-import { AccessPoliciesType } from '@skysmack/packages-skysmack-core';
+import { AccessPoliciesType } from '@skysmack/package-types';
 
 export class AccessPoliciesPackageManifest extends AccessPoliciesType implements PackageManifest {
     public static modulePath = './../packages/modules/access_policies_wrapper.module#AccessPoliciesWrapperModule';

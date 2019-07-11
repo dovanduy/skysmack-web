@@ -1,7 +1,7 @@
-import { Injectable, OnDestroy } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Field, SelectField } from '@skysmack/ng-dynamic-forms';
 import { map, switchMap } from 'rxjs/operators';
-import { PersonsLodgingReservationsType, PersonsLodgingReservationsSettings } from '@skysmack/packages-persons-lodging-reservations';
+import { PersonsLodgingReservationsSettings } from '@skysmack/packages-persons-lodging-reservations';
 import { Observable, combineLatest, of } from 'rxjs';
 import { StrIndex, PagedQuery, LocalObject } from '@skysmack/framework';
 import { NgSettingsActions, NgSettingsStore, NgFieldActions } from '@skysmack/ng-framework';
@@ -12,6 +12,7 @@ import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { LODGING_RESERVATIONS_AREA_KEY } from '@skysmack/packages-lodging-reservations';
 import { FieldProvider, AddField } from '@skysmack/ng-fields';
 import { AddRecordFieldComponent, MultiSelectFieldComponent, HiddenFieldComponent } from '@skysmack/portal-fields';
+import { PersonsLodgingReservationsType } from '@skysmack/package-types';
 
 @Injectable({ providedIn: 'root' })
 export class NgPersonsLodgingReservationsFieldProvider extends FieldProvider {

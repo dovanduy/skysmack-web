@@ -5,7 +5,7 @@ import { Observable, of } from 'rxjs';
 import { StrIndex, LocalObject, API_DOMAIN_INJECTOR_TOKEN, ApiDomain, GlobalProperties } from '@skysmack/framework';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { FormGroup } from '@angular/forms';
-import { ReservationsPricingsType } from '@skysmack/packages-reservations-pricings';
+import { ReservationsPricingsType } from '@skysmack/package-types';
 import { Router } from '@angular/router';
 import { LODGING_RESERVATIONS_AREA_KEY } from '@skysmack/packages-lodging-reservations';
 import { HttpClient, HttpParams } from '@angular/common/http';

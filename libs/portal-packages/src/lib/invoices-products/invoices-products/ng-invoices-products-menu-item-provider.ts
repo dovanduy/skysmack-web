@@ -4,7 +4,7 @@ import { safeHasValue, Package, MenuItemProvider, MenuItem } from '@skysmack/fra
 import { map, take } from 'rxjs/operators';
 import { Skysmack } from '@skysmack/packages-skysmack-core';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
-import { InvoicesProductsType } from '@skysmack/packages-invoices-products';
+import { InvoicesProductsType } from '@skysmack/package-types';
 import { MatDialog } from '@angular/material/dialog';
 import { InvoicesProductsAddProductsComponent } from './components/invoices-products-add-products/invoices-products-add-products.component';
 

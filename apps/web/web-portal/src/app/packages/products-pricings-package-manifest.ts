@@ -1,4 +1,4 @@
-import { ProductsPricingsType } from '@skysmack/packages-products-pricings';
+import { ProductsPricingsType } from '@skysmack/package-types';
 import { PackageLoader, PackageManifest } from '@skysmack/ng-framework';
 import { TenantPackageLoadStrategy } from '../start/tenant-package-load-strategy';
 import { Route } from '@angular/router';

@@ -1,4 +1,4 @@
-import { ReservationsPricingsType } from '@skysmack/packages-reservations-pricings';
+import { ReservationsPricingsType } from '@skysmack/package-types';
 import { PackageLoader, PackageManifest } from '@skysmack/ng-framework';
 import { Route } from '@angular/router';
 import { TenantPackageLoadStrategy } from '../start/tenant-package-load-strategy';
