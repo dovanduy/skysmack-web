@@ -3,7 +3,7 @@
   "dataGroups": [
     {
       "name": "api",
-      "urls": ["https://*.skysmack.io"],
+      "urls": ["https://*.skysmack.io/*"],
       "cacheConfig": {
         "maxSize": 0,
         "maxAge": "0u",
