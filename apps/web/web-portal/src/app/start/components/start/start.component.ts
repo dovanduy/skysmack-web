@@ -18,7 +18,7 @@ export class StartComponent implements OnInit, OnDestroy {
   public subscriptionHandler = new SubscriptionHandler();
   public skysmack$: Observable<Skysmack>;
   public skysmackLoaded$: Observable<boolean>;
-  public loadingRouteConfig: boolean;
+  public loadingRouteConfig: string[] = [];
 
   constructor(
     public router: Router,
@@ -34,10 +34,14 @@ export class StartComponent implements OnInit, OnDestroy {
     this.router.onSameUrlNavigation = 'ignore';
 
     this.subscriptionHandler.register(this.router.events.subscribe(event => {
+      console.log('routerEvent', event);
       if (event instanceof RouteConfigLoadStart) {
-        this.loadingRouteConfig = true;
+        if (event.route.data && event.route.data.optional) {          
+        } else {
+          this.loadingRouteConfig.push(event.route.path);
+        }
       } else if (event instanceof RouteConfigLoadEnd) {
-        this.loadingRouteConfig = false;
+        this.loadingRouteConfig.pop();
       }
     }));
   }

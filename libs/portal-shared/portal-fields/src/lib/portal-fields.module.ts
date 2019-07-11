@@ -11,8 +11,12 @@ import { ValidatorsFieldComponent } from './field-components/components/validato
 import { RecurringExpressionFieldModule } from './field-components/components/recurring-expression-field/recurring-expression-field.module';
 import { ValidatorsFieldModule } from './field-components/components/validators-field/validators-field.module';
 import { ReactiveFormsModule } from '@angular/forms';
-import { AngularEditorModule } from '@kolkov/angular-editor';
 import { DynamicFormsModule } from '@skysmack/portal-dynamic-forms';
+import { AngularEditorModule } from '@kolkov/angular-editor';
+
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatMomentDateModule } from '@angular/material-moment-adapter';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 @NgModule({
   imports: [
@@ -24,7 +28,10 @@ import { DynamicFormsModule } from '@skysmack/portal-dynamic-forms';
     DynamicFormsModule,
     RecurringExpressionFieldModule,
     ValidatorsFieldModule,
-    AngularEditorModule
+    AngularEditorModule,
+    MatFormFieldModule,    
+    MatDatepickerModule,
+    MatMomentDateModule,
   ],
   declarations: [
     ...dynamicFieldComponents,
@@ -32,7 +39,10 @@ import { DynamicFormsModule } from '@skysmack/portal-dynamic-forms';
   ],
   exports: [
     ...dynamicFieldComponents,
-    ...managementFieldsComponents
+    ...managementFieldsComponents,
+    MatFormFieldModule,
+    MatDatepickerModule,
+    MatMomentDateModule,
   ],
   entryComponents: [
     ...dynamicFieldComponents,

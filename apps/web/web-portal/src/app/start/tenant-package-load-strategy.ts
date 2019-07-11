@@ -17,8 +17,12 @@ export class TenantPackageLoadStrategy implements PreloadingStrategy {
       switchMap(packages => {
         const packagesMatches = packages.filter(p => p.object.access && route.path.endsWith(p.object.type));
         if (packagesMatches.length > 0) {
-          return timer(100).pipe(
+          return timer(50).pipe(
             flatMap(_ => { 
+              if (!route.data) {
+                route.data = {};
+              }
+              route.data.optional = true;
               return load();
             }));
         }
