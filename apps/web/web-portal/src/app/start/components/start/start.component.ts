@@ -34,7 +34,6 @@ export class StartComponent implements OnInit, OnDestroy {
     this.router.onSameUrlNavigation = 'ignore';
 
     this.subscriptionHandler.register(this.router.events.subscribe(event => {
-      console.log('routerEvent', event);
       if (event instanceof RouteConfigLoadStart) {
         if (event.route.data && event.route.data.optional) {          
         } else {
