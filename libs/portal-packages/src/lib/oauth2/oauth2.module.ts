@@ -6,15 +6,17 @@ import { CommonModule } from '@angular/common';
 import { NgOauth2Module } from '@skysmack/ng-packages';
 import { PortalUiModule, LanguageService } from '@skysmack/portal-ui';
 import { DynamicFormsModule } from '@skysmack/portal-dynamic-forms';
+import { PortalFieldsModule } from '@skysmack/portal-fields';
 
 @NgModule({
   imports: [
     CommonModule,
-    HttpClientModule,
-    Oauth2RoutingModule,
-    NgOauth2Module,
+    HttpClientModule,    
     PortalUiModule,
-    DynamicFormsModule
+    DynamicFormsModule,
+    PortalFieldsModule,
+    Oauth2RoutingModule,
+    NgOauth2Module
   ],
   declarations: [
     LoginComponent
