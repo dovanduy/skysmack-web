@@ -4,7 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { LanguageService } from '@skysmack/portal-ui';
 import { PortalUiModule } from '@skysmack/portal-ui';
-import { NgEmailsSmtpModule } from '@skysmack/ng-packages';
+import { NgEmailsSmtpModule } from '../../../../ng-packages/ng-email-smtp/src/lib';
 import { EmailsSmtpRoutingModule } from './emails-smtp-routing.module';
 import { NgEmailsSmptSettingsFieldsConfig } from './ng-emails-smtp-settings-fields-config';
 import { emailsSmtpComponents } from './emails-smtp/components/emails-smtp-components';
