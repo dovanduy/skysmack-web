@@ -13,7 +13,7 @@ import { accessPoliciesComponents } from './components/access-policies-component
 import { FieldPermissionFieldComponent } from './access-policy-roles/components/field-permission-field/field-permission-field.component';
 import { CoalescingComponentFactoryResolver } from '@skysmack/ng-framework';
 import { DynamicFormsModule } from '@skysmack/portal-dynamic-forms';
-import { IdentitiesModule } from '../identities/identities.module';
+import { IdentitiesModule } from '../../../../portal-packages/src/lib/identities/identities.module';
 import { PortalFieldsModule } from '@skysmack/portal-fields';
 // import { PackagesModule } from '../../packages';
 

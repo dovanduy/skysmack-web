@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { AccessPoliciesModule } from './../../../../../../../libs/portal-packages/src/lib/access-policies/access-policies.module';
+import { AccessPoliciesModule } from './../../../../../../../libs/ng-packages/ng-access-policies/src/lib/access-policies.module';
 
 @NgModule({
   imports: [
