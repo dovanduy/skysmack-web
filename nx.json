@@ -115,6 +115,9 @@
     },
     "ng-emails": {
       "tags": []
+    },
+    "ng-email-smtp": {
+      "tags": []
     }
   }
 }
