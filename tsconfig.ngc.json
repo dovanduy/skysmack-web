@@ -109,6 +109,9 @@
       ],
       "@skysmackng-email-smtp": [
         "libs/ng-packages/ng-email-smtp/src/index.ts"
+      ],
+      "@skysmack/ng-identities": [
+        "libs/ng-packages/ng-identities/src/index.ts"
       ]
     }
   },

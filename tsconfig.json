@@ -84,8 +84,11 @@
       "@skysmack/ng-emails": [
         "libs/ng-packages/ng-emails/src/index.ts"
       ],
-      "@skysmackng-email-smtp": [
+      "@skysmackng/ng-email-smtp": [
         "libs/ng-packages/ng-email-smtp/src/index.ts"
+      ],
+      "@skysmack/ng-identities": [
+        "libs/ng-packages/ng-identities/src/index.ts"
       ]
     }
   },

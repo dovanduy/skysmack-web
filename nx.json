@@ -118,6 +118,9 @@
     },
     "ng-email-smtp": {
       "tags": []
+    },
+    "ng-identities": {
+      "tags": []
     }
   }
 }
