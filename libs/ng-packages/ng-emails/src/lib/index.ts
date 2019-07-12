@@ -1,1 +1,3 @@
-export const placeholder = 'Hello world';
+export * from './email-templates/index';
+
+export * from './ng-emails.module';

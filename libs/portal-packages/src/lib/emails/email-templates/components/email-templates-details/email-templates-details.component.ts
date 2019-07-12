@@ -3,7 +3,7 @@ import { EditorNavService } from '@skysmack/portal-ui';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { NgEmailTemplatesFieldsConfig } from '../../ng-email-templates-fields-config';
-import { NgEmailTemplatesActions, NgEmailTemplatesStore } from '@skysmack/ng-packages';
+import { NgEmailTemplatesActions, NgEmailTemplatesStore } from '../../../../../../../ng-packages/ng-emails/src/lib';
 import { EmailTemplatesAppState } from '@skysmack/packages-emails';
 import { DetailsBaseComponent } from '@skysmack/portal-fields';
 

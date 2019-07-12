@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { EmailTemplate, EmailTemplatesAppState } from '@skysmack/packages-emails';
-import { NgEmailTemplatesActions } from '@skysmack/ng-packages';
+import { NgEmailTemplatesActions, NgEmailTemplatesStore } from '../../../../../../../ng-packages/ng-emails/src/lib';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EditorNavService } from '@skysmack/portal-ui';
-import { NgEmailTemplatesStore } from '@skysmack/ng-packages';
 import { NgEmailTemplatesFieldsConfig } from '../../ng-email-templates-fields-config';
 import { RecordFormComponent } from '@skysmack/portal-fields';
 

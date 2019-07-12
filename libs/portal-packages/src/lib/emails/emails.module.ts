@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { EmailsRoutingModule } from './emails-routing.module';
 import { HttpClientModule } from '@angular/common/http';
-import { NgEmailsModule } from '@skysmack/ng-packages';
+import { NgEmailsModule } from '../../../../ng-packages/ng-emails/src/lib';
 import { PortalUiModule } from '@skysmack/portal-ui';
 import { LanguageService } from '@skysmack/portal-ui';
 import { emailsComponents } from './emails/components/emails-components';
