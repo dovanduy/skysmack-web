@@ -77,9 +77,6 @@
       "@skysmack/ng-skysmack": ["libs/ng-shared/ng-skysmack/src/public_api.ts"],
       "@skysmack/portal-fields": [
         "libs/portal-shared/portal-fields/src/public_api.ts"
-      ],
-      "@skysmack/ng-access-policies": [
-        "libs/ng-packages/ng-access-policies/src/public_api.ts"
       ]
     }
   },

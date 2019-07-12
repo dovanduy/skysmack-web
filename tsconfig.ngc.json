@@ -100,9 +100,6 @@
       ],
       "@skysmack/packages-emails": [
         "./dist/@skysmack/packages-emails"
-      ],
-      "@skysmack/ng-access-policies": [
-        "libs/ng-packages/ng-access-policies/src/public_api.ts"
       ]
     }
   },
