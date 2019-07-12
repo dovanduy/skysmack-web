@@ -35,7 +35,7 @@ export class SignalR {
             .build();
 
         //this lines up with the method called by `SendAsync`
-        this.hubConnection.on("Message", (packagePath: string, message: any) => {
+        this.hubConnection.on("Send", (packagePath: string, message: any) => {
             console.log('Signal R message:', packagePath, message);
             this.providers.forEach(provider => provider.messageProvided(packagePath, message))
         });
@@ -83,6 +83,7 @@ export class SignalR {
         this.connected.pipe(
             filter(x => x),
             map(() => {
+                console.log('joining ' + packagePath);
                 if (!this.joinedPackages[packagePath]) {
                     this.joinedPackages[packagePath] = packagePath;
                     this.hubConnection.invoke('Join', packagePath);
@@ -101,6 +102,7 @@ export class SignalR {
         this.connected.pipe(
             filter(x => x),
             map(() => {
+                console.log('leaving ' + packagePath);
                 this.hubConnection.invoke('Leave', packagePath);
                 delete this.joinedPackages[packagePath];
             }),
