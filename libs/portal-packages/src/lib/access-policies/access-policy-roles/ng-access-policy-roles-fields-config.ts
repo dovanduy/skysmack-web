@@ -4,7 +4,7 @@ import { AccessPolicyRolesValidation, NgAccessPolicyRulesStore, NgAccessPolicyRu
 import { FormRule, Field, SelectFieldOption, SelectField } from '@skysmack/ng-dynamic-forms';
 import { Router } from '@angular/router';
 import { LoadedPackage } from '@skysmack/ng-framework';
-import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
+import { LocalObject, LocalObjectStatus, PagedQuery } from '@skysmack/framework';
 import { Validators } from '@angular/forms';
 import { RolesSelectFieldComponent } from '../../identities/identity-roles/components/roles-select-field/roles-select-field.component';
 import { FieldsConfig, FieldProviders } from '@skysmack/ng-fields';
@@ -56,10 +56,10 @@ export class NgAccessPolicyRolesFieldsConfig extends FieldsConfig<AccessPolicyRo
                 component: SelectFieldComponent,
                 value: entity ? entity.object.id.ruleId : undefined,
                 key: 'ruleId',
-                displayKey: 'id',
-                displaySubKey: 'ruleId',
-                optionsData$: this.accessPolicyRulesStore.get(packagePath),
-                validators: [Validators.required],
+                displayKey: 'rule',
+                displaySubKey: 'object.id',
+                optionsData$: this.accessPolicyRulesStore.get('access-policies'),
+                getDependencies: () => { this.accessPolicyRulesActions.getPaged('access-policies', new PagedQuery()); },
                 displayNameSelector: 'object.id',
                 modifyDisplayName,
                 order: 2,

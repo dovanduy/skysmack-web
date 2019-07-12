@@ -1,12 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { NgAccessPolicyRolesActions, NgAccessPolicyRulesActions } from '@skysmack/ng-packages';
-import { NgSkysmackStore } from '@skysmack/ng-skysmack';
+import { NgSkysmackStore, NgSkysmackActions } from '@skysmack/ng-skysmack';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EditorNavService } from '@skysmack/portal-ui';
 import { NgAccessPolicyRolesStore } from '@skysmack/ng-packages';
 import { AccessPolicyRolesAppState, AccessPolicyRole, AccessPolicyRoleKey } from '@skysmack/packages-skysmack-core';
-import { toLocalObject, LocalObjectStatus } from '@skysmack/framework';
-import { FormHelper } from '@skysmack/ng-dynamic-forms';
 import { NgAccessPolicyRolesFieldsConfig } from '../../ng-access-policy-roles-fields-config';
 import { RecordFormComponent } from '@skysmack/portal-fields';
 
@@ -22,6 +20,7 @@ export class AccessPolicyRolesCreateComponent extends RecordFormComponent<Access
     public fieldsConfig: NgAccessPolicyRolesFieldsConfig,
     public actions: NgAccessPolicyRolesActions,
     public store: NgAccessPolicyRolesStore,
+    public skysmackActions: NgSkysmackActions,
     public skysmackStore: NgSkysmackStore,
     public accessPolicyRulesActions: NgAccessPolicyRulesActions
   ) {
@@ -30,18 +29,7 @@ export class AccessPolicyRolesCreateComponent extends RecordFormComponent<Access
 
   ngOnInit() {
     super.ngOnInit();
+    this.skysmackActions.getSkysmack(); 
     this.setCreateFields();
-  }
-
-  protected create(fh: FormHelper) {
-    fh.formValid(() => {
-      const localObject = toLocalObject(new AccessPolicyRole({ id: fh.form.getRawValue() }));
-      localObject.status = LocalObjectStatus.CREATING;
-      localObject.isNew = true;
-
-      this.editorItem ? localObject.localId = this.editorItem.localId : localObject.localId = localObject.localId;
-      this.actions.add([localObject], this.packagePath);
-      this.editorNavService.hideEditorNav();
-    });
   }
 }

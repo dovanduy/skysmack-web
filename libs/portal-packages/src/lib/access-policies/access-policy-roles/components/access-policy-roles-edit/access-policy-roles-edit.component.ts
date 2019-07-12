@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgAccessPolicyRolesActions, NgAccessPolicyRulesActions } from '@skysmack/ng-packages';
-import { NgSkysmackStore } from '@skysmack/ng-skysmack';
+import { NgSkysmackStore, NgSkysmackActions } from '@skysmack/ng-skysmack';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EditorNavService } from '@skysmack/portal-ui';
 import { NgAccessPolicyRolesStore } from '@skysmack/ng-packages';
@@ -21,6 +21,7 @@ export class AccessPolicyRolesEditComponent extends RecordFormComponent<AccessPo
     public fieldsConfig: NgAccessPolicyRolesFieldsConfig,
     public actions: NgAccessPolicyRolesActions,
     public store: NgAccessPolicyRolesStore,
+    public skysmackActions: NgSkysmackActions,
     public skysmackStore: NgSkysmackStore,
     public accessPolicyRulesActions: NgAccessPolicyRulesActions,
   ) {
@@ -29,6 +30,7 @@ export class AccessPolicyRolesEditComponent extends RecordFormComponent<AccessPo
 
   ngOnInit() {
     super.ngOnInit();
+    this.skysmackActions.getSkysmack(); 
     this.setEditFields();
   }
 }
