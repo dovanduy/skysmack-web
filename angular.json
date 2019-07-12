@@ -1102,6 +1102,40 @@
           "styleext": "scss"
         }
       }
+    },
+    "ng-access-policies": {
+      "projectType": "library",
+      "root": "libs/ng-packages/ng-access-policies",
+      "sourceRoot": "libs/ng-packages/ng-access-policies/src",
+      "prefix": "skysmack",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/ng-packages/ng-access-policies/tsconfig.lib.json",
+              "libs/ng-packages/ng-access-policies/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/ng-packages/ng-access-policies/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/ng-packages/ng-access-policies/jest.config.js",
+            "tsConfig": "libs/ng-packages/ng-access-policies/tsconfig.spec.json",
+            "setupFile": "libs/ng-packages/ng-access-policies/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
     }
   },
   "cli": {
