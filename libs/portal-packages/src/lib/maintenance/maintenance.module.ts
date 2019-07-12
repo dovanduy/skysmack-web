@@ -10,6 +10,8 @@ import { recurringAssignmentsComponents } from './recurring-assignments/componen
 import { maintenanceStatesComponents } from './maintenance-states/components/maintenance-states-components';
 import { assignmentsAllComponents } from './components/assignments-all-components';
 import { DynamicFormsModule } from '@skysmack/portal-dynamic-forms';
+import { PortalFieldsModule } from '@skysmack/portal-fields';
+
 
 @NgModule({
   imports: [
@@ -18,7 +20,8 @@ import { DynamicFormsModule } from '@skysmack/portal-dynamic-forms';
     MaintenanceRoutingModule,
     NgAssignmentsModule,
     PortalUiModule,
-    DynamicFormsModule
+    DynamicFormsModule,
+    PortalFieldsModule
   ],
   declarations: [
     ...assignmentsComponents,
