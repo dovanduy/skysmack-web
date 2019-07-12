@@ -14,7 +14,8 @@
 			"MANAGE": "Manage",
 			"BACK": "Back",
 			"ROLES": "Roles",
-			"FIELDS_TITLE": "(fields)"
+			"FIELDS_TITLE": "(fields)",
+			"TITLE_EXTRAS": "(permissions)"
 		},
 		"FORM": {
 			"LABELS": {
@@ -55,7 +56,8 @@
 			"MANAGE": "Manage",
 			"BACK": "Back",
 			"ROLES": "Roles",
-			"FIELDS_TITLE": "(fields)"
+			"FIELDS_TITLE": "(fields)",
+			"TITLE_EXTRAS": "(roles)"
 		},
 		"FORM": {
 			"LABELS": {
@@ -94,7 +96,8 @@
 			"MANAGE": "Manage",
 			"BACK": "Back",
 			"ROLES": "Roles",
-			"FIELDS_TITLE": "(fields)"
+			"FIELDS_TITLE": "(fields)",
+			"TITLE_EXTRAS": "(rules)"
 		},
 		"FORM": {
 			"LABELS": {
@@ -612,7 +615,7 @@
 			"MANAGE": "Manage",
 			"BACK": "Back",
 			"ACTIONS": "Actions",
-			"TITLE_EXTRA": "(payments)",
+			"TITLE_EXTRAS": "(payments)",
 			"FIELDS_TITLE": "(payment fields)"
 		},
 		"QUEUE": {
@@ -838,7 +841,7 @@
 			"BUTTON_EDIT": "Update"
 		},
 		"INDEX": {
-			"TITLE_EXTRA": "(types)",
+			"TITLE_EXTRAS": "(types)",
 			"ACTIONS": "Actions",
 			"CREATE": "Create",
 			"MANAGE": "Manage",
@@ -988,7 +991,7 @@
 			"BUTTON_EDIT": "Update"
 		},
 		"INDEX": {
-			"TITLE_EXTRA": "(assignment types)",
+			"TITLE_EXTRAS": "(assignment types)",
 			"ACTIONS": "Actions",
 			"CREATE": "Create",
 			"EDIT": "Edit",
@@ -1101,7 +1104,7 @@
 			"BUTTON_EDIT": "Update"
 		},
 		"INDEX": {
-			"TITLE_EXTRA": "(assignments)",
+			"TITLE_EXTRAS": "(assignments)",
 			"ACTIONS": "Actions",
 			"CREATE": "Create",
 			"EDIT": "Edit",
@@ -1163,7 +1166,7 @@
 			"BUTTON_EDIT": "Update"
 		},
 		"INDEX": {
-			"TITLE_EXTRA": "(states)",
+			"TITLE_EXTRAS": "(states)",
 			"ACTIONS": "Actions",
 			"CREATE": "Create",
 			"EDIT": "Edit",
@@ -1220,7 +1223,7 @@
 			"BUTTON_EDIT": "Update"
 		},
 		"INDEX": {
-			"TITLE_EXTRA": "(recurring assignments)",
+			"TITLE_EXTRAS": "(recurring assignments)",
 			"ACTIONS": "Actions",
 			"CREATE": "Create",
 			"EDIT": "Edit",
@@ -1339,7 +1342,7 @@
 			"BUTTON_EDIT": "Update"
 		},
 		"INDEX": {
-			"TITLE_EXTRA": "(types)",
+			"TITLE_EXTRAS": "(types)",
 			"ACTIONS": "Actions",
 			"CREATE": "Create",
 			"DELETE": "Delete",
@@ -1449,7 +1452,7 @@
 				"CURRENCYCODE": "Currency code",
 				"RECORDID": "Product",
 				"CHANGE": "Price change",
-				"ISPERCENTAGE": "Change is in percentage (%)",
+				"ISPERCENT": "Change is in percentage (%)",
 				"PERUNIT": "Per unit",
 				"VALIDFROM": "Valid from",
 				"VALIDTO": "Valid to",
@@ -1461,7 +1464,7 @@
 				"CURRENCYCODE": "Currency code",
 				"RECORDID": "Product",
 				"CHANGE": "Price change",
-				"ISPERCENTAGE": "Change is in percentage (%)",
+				"ISPERCENT": "Change is in percentage (%)",
 				"PERUNIT": "Per unit",
 				"VALIDFROM": "Valid from",
 				"VALIDTO": "Valid to",
@@ -1479,7 +1482,7 @@
 				"CHANGE": {
 					"REQUIRED": "Change is required"
 				},
-				"ISPERCENTAGE": {
+				"ISPERCENT": {
 					"REQUIRED": "Field is required"
 				},
 				"VALIDFROM": {
@@ -1525,7 +1528,7 @@
 				"CURRENCYCODE": "Currency code",
 				"RECORDID": "Product type",
 				"CHANGE": "Change",
-				"ISPERCENTAGE": "Change is in Percent (%)",
+				"ISPERCENT": "Change is in Percent (%)",
 				"PERUNIT": "Per unit",
 				"VALIDFROM": "Valid from",
 				"VALIDTO": "Valid to",
@@ -1537,7 +1540,7 @@
 				"CURRENCYCODE": "Currency code",
 				"RECORDID": "Product type",
 				"CHANGE": "Change",
-				"ISPERCENTAGE": "Change is in Percent (%)",
+				"ISPERCENT": "Change is in Percent (%)",
 				"PERUNIT": "Per unit",
 				"VALIDFROM": "Valid from",
 				"VALIDTO": "Valid to",
@@ -1555,7 +1558,7 @@
 				"CHANGE": {
 					"REQUIRED": "Change is required"
 				},
-				"ISPERCENTAGE": {
+				"ISPERCENT": {
 					"REQUIRED": "Field is required"
 				},
 				"VALIDFROM": {
@@ -1741,7 +1744,7 @@
 			"LABELS": {
 				"CHANGE": "Price change",
 				"CURRENCYCODE": "Currency code",
-				"ISPERCENTAGE": "Change is in percentage (%)",
+				"ISPERCENT": "Change is in percentage (%)",
 				"VALIDFROM": "Valid from",
 				"VALIDTO": "Valid to",
 				"RECORDID": "Allocated lodging",
@@ -1761,7 +1764,7 @@
 				"CURRENCYCODE": "Currency code",
 				"RECORDID": "Lodging",
 				"CHANGE": "Price change",
-				"ISPERCENTAGE": "Change is in percentage (%)",
+				"ISPERCENT": "Change is in percentage (%)",
 				"VALIDFROM": "Valid from",
 				"VALIDTO": "Valid to",
 				"START": "Start",
@@ -1786,7 +1789,7 @@
 				"CHANGE": {
 					"REQUIRED": "Price change is required"
 				},
-				"ISPERCENTAGE": {
+				"ISPERCENT": {
 					"REQUIRED": "Field is required"
 				},
 				"VALIDFROM": {
@@ -1890,7 +1893,7 @@
 			"LABELS": {
 				"CHANGE": "Price change",
 				"CURRENCYCODE": "Currency code",
-				"ISPERCENTAGE": "Change is in percentage (%)",
+				"ISPERCENT": "Change is in percentage (%)",
 				"VALIDFROM": "Valid from",
 				"VALIDTO": "Valid to",
 				"RECORDID": "Lodging type",
@@ -1910,7 +1913,7 @@
 				"CURRENCYCODE": "Currency code",
 				"RECORDID": "Lodging type",
 				"CHANGE": "Price change",
-				"ISPERCENTAGE": "Change is in percentage (%)",
+				"ISPERCENT": "Change is in percentage (%)",
 				"VALIDFROM": "Valid from",
 				"VALIDTO": "Valid to",
 				"START": "Start",
@@ -1935,7 +1938,7 @@
 				"CHANGE": {
 					"REQUIRED": "Price change is required"
 				},
-				"ISPERCENTAGE": {
+				"ISPERCENT": {
 					"REQUIRED": "Price change type is required"
 				},
 				"VALIDFROM": {
@@ -1987,7 +1990,8 @@
 			"MANAGE": "Manage",
 			"FIELDS": "Fields",
 			"FIELDS_TITLE": "(fields)",
-			"BACK": "Back"
+			"BACK": "Back",
+			"TITLE_EXTRAS": "(Receipts)"
 		},
 		"FORM": {
 			"LABELS": {
@@ -2013,15 +2017,65 @@
 		"FORM": {
 			"LABELS": {
 				"NAME": "Name",
-				"PRODUCTTYPEID": "Product type"
+				"PRODUCTTYPEID": "Product type",
+				"CONNECTIONSTRING": "Connection string",
+				"DESCRIPTION": "Description",
+				"CLIENTID": "Client",
+				"TERMINALID": "Terminal",
+				"AMOUNT": "Amount",
+				"REFERENCE": "Reference",
+				"CURRENCY": "Currency",
+				"CONNECTION": "Connection",
+				"INVOICEID": "Invoice ID",
+				"CURRENCYCODE": "Currency"
 			},
 			"PLACEHOLDERS": {
-				"NAME": "Enter name",
-				"PRODUCTTYPEID": "Choose product type"
+				"NAME": "Name",
+				"PRODUCTTYPEID": "Choose product type",
+				"CONNECTIONSTRING": "Connection string",
+				"DESCRIPTION": "Description",
+				"CLIENTID": "Client",
+				"TERMINALID": "Terminal",
+				"AMOUNT": "Amount",
+				"REFERENCE": "Reference",
+				"CURRENCY": "Currency",
+				"CONNECTION": "Connection",
+				"INVOICEID": "Invoice ID",
+				"CURRENCYCODE": "Currency"
 			},
 			"VALIDATION": {
 				"NAME": {
 					"REQUIRED": "Name is required."
+				},
+				"CONNECTIONSTRING": {
+					"REQUIRED": "Connection string is required."
+				},
+				"DESCRIPTION": {
+					"REQUIRED": "Description is required."
+				},
+				"CLIENTID": {
+					"REQUIRED": "Client is required."
+				},
+				"TERMINALID": {
+					"REQUIRED": "Terminal is required."
+				},
+				"AMOUNT": {
+					"REQUIRED": "Amount is required."
+				},
+				"REFERENCE": {
+					"REQUIRED": "Reference is required."
+				},
+				"CURRENCY": {
+					"REQUIRED": "Currency is required."
+				},
+				"CONNECTION": {
+					"REQUIRED": "Connection is required."
+				},
+				"INVOICEID": {
+					"REQUIRED": "Invoice ID is required."
+				},
+				"CURRENCYCODE": {
+					"REQUIRED": "Currency is required."
 				}
 			}
 		},
@@ -2042,7 +2096,11 @@
 			"ITEM": "Item",
 			"MANAGE": "Manage",
 			"ACTIONS": "Actions",
-			"TYPES": "Types"
+			"TYPES": "Types",
+			"CLIENTS": "Clients",
+			"RECEIPTS": "Receipts",
+			"CONNECTIONS": "Connections",
+			"TITLE_EXTRAS": "(Terminals)"
 		},
 		"FIELDS": {
 			"CREATE": {
@@ -2065,6 +2123,16 @@
 			"UPDATING": "Updating terminal {{ id }}",
 			"DELETING": "Deleting terminal {{ id }}",
 			"ERROR": "An error occured with terminal {{ id }}. Correct and try again."
+		},
+		"ENTITY_ACTION_PROVIDER": {
+			"TERMINAL_PAYMENT": "Terminal payment",
+			"ENTITY_ACTION": {
+				"TERMINAL_PAYMENT": "Card payment"
+			}
+		},
+		"PAY": {
+			"TITLE": "Card payment",
+			"BUTTON_PAY": "Pay"
 		}
 	},
 	"UI": {
@@ -2561,6 +2629,158 @@
 				"PASSWORD": "Password",
 				"ENABLESSL": "Enable ssl"
 			}
+		}
+	},
+	"CLIENTS": {
+		"CREATE": {
+			"CREATE": "Create",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDIT": "Edit",
+			"BUTTON_EDIT": "Update"
+		},
+		"INDEX": {
+			"ACTIONS": "Actions",
+			"CREATE": "Create",
+			"DELETE": "Delete",
+			"MANAGE": "Manage",
+			"FIELDS": "Fields",
+			"FIELDS_TITLE": "(fields)",
+			"BACK": "Back",
+			"TITLE_EXTRAS": "(Clients)"
+		},
+		"FORM": {
+			"LABELS": {
+				"NAME": "Name",
+				"DESCRIPTION": "Description",
+				"ONLINE": "Online"
+			},
+			"PLACEHOLDERS": {
+				"NAME": "Name",
+				"DESCRIPTION": "Description",
+				"ONLINE": "Online"
+			},
+			"VALIDATION": {
+				"NAME": {
+					"REQUIRED": "Name is required."
+				},
+				"DESCRIPTION": {
+					"REQUIRED": "Description is required."
+				},
+				"ONLINE": {}
+			}
+		},
+		"QUEUE": {
+			"ADDING": "Adding client {{ id }}",
+			"UPDATING": "Updating client {{ id }}",
+			"DELETING": "Deleting client {{ id }}",
+			"ERROR": "An error occured with client {{ id }}. Correct and try again."
+		}
+	},
+	"CONNECTIONS": {
+		"CREATE": {
+			"CREATE": "Create",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDIT": "Edit",
+			"BUTTON_EDIT": "Update"
+		},
+		"INDEX": {
+			"ACTIONS": "Actions",
+			"CREATE": "Create",
+			"DELETE": "Delete",
+			"MANAGE": "Manage",
+			"BACK": "Back",
+			"TITLE_EXTRAS": "(Connections)"
+		},
+		"FORM": {
+			"LABELS": {
+				"NAME": "Name",
+				"DESCRIPTION": "Description",
+				"ONLINE": "Online",
+				"CLIENTID": "Client",
+				"TERMINALID": "Terminal",
+				"STATUS": "Status"
+			},
+			"PLACEHOLDERS": {
+				"NAME": "Name",
+				"DESCRIPTION": "Description",
+				"ONLINE": "Online",
+				"CLIENTID": "Client",
+				"TERMINALID": "Terminal",
+				"STATUS": "Status"
+			},
+			"VALIDATION": {
+				"NAME": {
+					"REQUIRED": "Name is required."
+				},
+				"DESCRIPTION": {
+					"REQUIRED": "Description is required."
+				},
+				"ONLINE": {},
+				"CLIENTID": {
+					"REQUIRED": "Client is required."
+				},
+				"TERMINALID": {
+					"REQUIRED": "Terminal is required."
+				},
+				"STATUS": {
+					"REQUIRED": "Status is required."
+				}
+			}
+		},
+		"QUEUE": {
+			"ADDING": "Adding connection {{ id }}",
+			"UPDATING": "Updating connection {{ id }}",
+			"DELETING": "Deleting connection {{ id }}",
+			"ERROR": "An error occured with connection {{ id }}. Correct and try again."
+		}
+	},
+	"TERMINAL_PAYMENTS_INDEX": {
+		"TITLE": "Terminal Payments",
+		"MANAGE": "Manage",
+		"TERMINALS": "Terminals",
+		"CLIENTS": "Clients",
+		"RECEIPTS": "Receipts",
+		"CONNECTIONS": "Connections"
+	},
+	"INVOICES_PRODUCTS": {
+		"FORM": {
+			"LABELS": {
+				"INVOICEID": "Invoice",
+				"AMOUNT": "Amount",
+				"PRODUCTID": "Product"
+			},
+			"PLACEHOLDERS": {
+				"INVOICEID": "Invoice",
+				"AMOUNT": "Amount",
+				"PRODUCTID": "Product"
+			},
+			"VALIDATION": {
+				"INVOICEID": {
+					"REQUIRED": "Invoice is required."
+				},
+				"AMOUNT": {
+					"REQUIRED": "Amount is required."
+				},
+				"PRODUCTID": {
+					"REQUIRED": "Product is required."
+				}
+			}
+		},
+		"ADD_TO_PRODUCT": {
+			"TITLE": "Add to invoice",
+			"SUBMIT": "Submit"
+		},
+		"ADD_TO_INVOICE": {
+			"TITLE": "Add to invoice",
+			"SUBMIT": "Submit"
+		},
+		"ADD_PRODUCTS": {
+			"TITLE": "Add products",
+			"SUBMIT": "Submit"
 		}
 	}
 }

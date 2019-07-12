@@ -2,14 +2,14 @@ import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { LocalObject, LocalObjectStatus, PagedQuery } from '@skysmack/framework';
 import { ProductTypeSalesPrice, PRODUCT_TYPE_SALES_PRICE_AREA_KEY } from '@skysmack/packages-products-pricings';
-import { FormRule, SelectField, Field } from '@skysmack/ng-ui';
+import { FormRule, SelectField, Field } from '@skysmack/ng-dynamic-forms';
 import { ProductType } from '@skysmack/packages-products';
 import { NgProductTypeSalesPriceValidation, NgProductTypesStore, NgProductTypesActions } from '@skysmack/ng-packages';
-import { FieldsConfig, SelectFieldComponent, HiddenFieldComponent, DecimalFieldComponent } from '@skysmack/portal-ui';
-import { FieldProviders } from '@skysmack/portal-ui';
-import { NgSkysmackStore } from '@skysmack/ng-core';
-import { map, take } from 'rxjs/operators';
 import { LoadedPackage, getPackageDendencyAsStream } from '@skysmack/ng-framework';
+import { FieldsConfig, FieldProviders } from '@skysmack/ng-fields';
+import { SelectFieldComponent, DecimalFieldComponent, HiddenFieldComponent } from '@skysmack/portal-fields';
+import { NgSkysmackStore } from '@skysmack/ng-skysmack';
+import { map, take } from 'rxjs/operators';
 
 export interface NgProductTypeSalesPriceFormDependencies {
     availableProductTypes: LocalObject<ProductType, number>[];

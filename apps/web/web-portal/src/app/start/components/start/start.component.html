@@ -2,8 +2,8 @@
     <ng-container *ngIf="skysmackLoaded; else loading">
         <ng-container *ngIf="skysmack$ | async as skysmack; else tenantNotFound">
             <ng-container *ngIf="skysmack && skysmack.name && skysmack.name.length > 0; else tenantNotFound">
-                <ss-navbar class="mat-elevation-z6"></ss-navbar>
-                <ng-container *ngIf="!loadingRouteConfig; else loading">
+                <ss-navbar class="mat-elevation-z3"></ss-navbar>
+                <ng-container *ngIf="loadingRouteConfig.length === 0; else loading">
                     <router-outlet></router-outlet>
                 </ng-container>
             </ng-container>

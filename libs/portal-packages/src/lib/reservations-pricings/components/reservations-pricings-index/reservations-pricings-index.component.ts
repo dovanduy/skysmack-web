@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { NgSkysmackStore } from '@skysmack/ng-core';
-import { EntityComponentPageTitle, BaseComponent } from '@skysmack/portal-ui';
+import { NgSkysmackStore } from '@skysmack/ng-skysmack';
+import { EntityComponentPageTitle } from '@skysmack/portal-ui';
 import { NgReservationsPricingsMenu } from '../../ng-reservations-pricings-menu';
+import { BaseComponent } from '@skysmack/portal-fields';
 
 @Component({
   selector: 'ss-reservations-pricings-index',

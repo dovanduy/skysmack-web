@@ -1,0 +1,39 @@
+{
+    "ACCESS_POLICY_RULES": {
+        "CREATE": {
+            "CREATE": "Create",
+            "BUTTON_CREATE": "Create"
+        },
+        "EDIT": {
+            "EDITING": "Rediger",
+            "BUTTON_EDIT": "Update"
+        },
+        "INDEX": {
+            "TITLE_EXTRAS": "(rules)",
+            "ACTIONS": "Actions",
+            "CREATE": "Create",
+            "MANAGE": "Manage",
+            "BACK": "Back",
+            "ROLES": "Roles",
+            "FIELDS_TITLE": "(fields)"
+        },
+        "FORM": {
+            "LABELS": {
+                "ACCESS": "Access",
+                "AUTHENTICATED": "Authenticated",
+                "INCLUDEROLES": "Include roles"
+            },
+            "PLACEHOLDERS": {
+                "ACCESS": "Access",
+                "AUTHENTICATED": "Authenticated",
+                "INCLUDEROLES": "Include roles"
+            }
+        },
+        "QUEUE": {
+            "ADDING": "Adding access policy rules {{ id }}",
+            "UPDATING": "Updating access policy rules {{ id }}",
+            "DELETING": "Deleting access policy rules {{ id }}",
+            "ERROR": "An error occured with access policy rules {{ id }}. Correct and try again."
+        }
+    }
+}

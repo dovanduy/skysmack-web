@@ -3,10 +3,10 @@ import { Validators } from '@angular/forms';
 import { LocalObject, LocalObjectStatus, PagedQuery } from '@skysmack/framework';
 import { RecurringAssignment, RECURRING_ASSIGNMENTS_AREA_KEY } from '@skysmack/packages-maintenance';
 import { NgRecurringAssignmentsValidation, NgAssignmentTypesStore, NgAssignmentTypesActions } from '@skysmack/ng-packages';
-import { FormRule, SelectField, Field } from '@skysmack/ng-ui';
-import { FieldsConfig, SelectFieldComponent, HiddenFieldComponent, DateFieldComponent } from '@skysmack/portal-ui';
-import { FieldProviders } from '@skysmack/portal-ui';
+import { FormRule, SelectField, Field } from '@skysmack/ng-dynamic-forms';
 import { LoadedPackage } from '@skysmack/ng-framework';
+import { FieldsConfig, FieldProviders } from '@skysmack/ng-fields';
+import { SelectFieldComponent, DateFieldComponent, HiddenFieldComponent } from '@skysmack/portal-fields';
 
 @Injectable({ providedIn: 'root' })
 export class NgRecurringAssignmentsFieldsConfig extends FieldsConfig<RecurringAssignment, number> {

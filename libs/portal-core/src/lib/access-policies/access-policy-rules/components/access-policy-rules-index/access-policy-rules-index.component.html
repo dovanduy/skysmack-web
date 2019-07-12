@@ -1,7 +1,0 @@
-<ss-container [sidebarMenu]="sidebarMenu" *ngIf="loadedPackage$ | async as loadedPackage">
-    <ss-records-container [area]="areaKey" [cancelAction]="actions.cancelAction" [title]="'Access Policy Rules'"
-        [entities$]="pagedEntities$" [entityActions$]="entityActions$" [packagePath]="packagePath"
-        (entityActionEvent)="actionEvent($event)" [totalCount$]="totalCount$" [loadingState$]="loadingState$"
-        (requestPage)="requestPage()" [fields$]="fields$" (sortChanged)="sortChanged($event)">
-    </ss-records-container>
-</ss-container>

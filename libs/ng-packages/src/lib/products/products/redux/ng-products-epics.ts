@@ -4,7 +4,7 @@ import { NgProductsRequests } from './ng-products-requests';
 import { Injectable } from '@angular/core';
 import { NgProductsNotifications } from '../ng-products-notifications';
 import { getReadDependencies } from '@skysmack/ng-framework';
-import { NgSkysmackStore } from '@skysmack/ng-core';
+import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { NgProductTypesStore } from '../../product-types/redux/ng-product-types-store';
 import { NgProductTypesActions } from '../../product-types/redux/ng-product-types-actions';
 

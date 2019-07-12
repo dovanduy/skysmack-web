@@ -1,6 +1,6 @@
 import { ofType, ActionsObservable, Epic } from 'redux-observable';
 import { map, mergeMap } from 'rxjs/operators';
-import { LocalObject, FieldSchemaViewModel, HttpResponse, HttpErrorResponse, QueueItem } from '@skysmack/framework';
+import { LocalObject, FieldSchemaViewModel, HttpResponse, HttpErrorResponse, QueueItem, ApiError } from '@skysmack/framework';
 import { Observable } from 'rxjs';
 import { PackagePathPayload, ReduxAction, FieldActions, CommitMeta, ReduxOfflineMeta, QueueActions, CancelFieldActionPayload, GetPagedEntitiesPayload, GetPagedEntitiesSuccessPayload, GetSingleEntitySuccessPayload, GetSingleEntityPayload, AdditionalPathsMeta } from '@skysmack/redux';
 import { NgFieldRequests } from '../requests/ng-field-requests';
@@ -176,6 +176,7 @@ export class NgFieldEpics {
                     queueItems.message = `FIELD.QUEUE.ERROR`;
                     queueItems.localObject.error = true;
                     queueItems.error = action.payload;
+                    queueItems.localObject.apiError = new ApiError(action.payload);
                     return queueItems;
                 })
             }))

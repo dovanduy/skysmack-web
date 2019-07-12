@@ -3,8 +3,8 @@ import { of, Observable } from 'rxjs';
 import { safeHasValue, Package, MenuItemProvider, MenuItem } from '@skysmack/framework';
 import { map } from 'rxjs/operators';
 import { Skysmack } from '@skysmack/packages-skysmack-core';
-import { NgSkysmackStore } from '@skysmack/ng-core';
-import { EmailsSmtpType } from '@skysmack/packages/emails-smtp';
+import { NgSkysmackStore } from '@skysmack/ng-skysmack';
+import { EmailsSmtpType } from '@skysmack/package-types';
 
 @Injectable({ providedIn: 'root' })
 export class NgEmailsSmtpMenuItemProvider extends MenuItemProvider {
@@ -25,6 +25,7 @@ export class NgEmailsSmtpMenuItemProvider extends MenuItemProvider {
                         area: 'connected_packages',
                         order: 20,
                         icon: this.icon,
+                        provideIn: 'primaryMenu'
                     }))
                 )
             );

@@ -1,0 +1,44 @@
+{
+    "ACCESS_POLICY_PERMISSIONS": {
+        "CREATE": {
+            "CREATE": "Create",
+            "BUTTON_CREATE": "Create"
+        },
+        "EDIT": {
+            "EDITING": "Edit",
+            "BUTTON_EDIT": "Update"
+        },
+        "INDEX": {
+            "TITLE_EXTRAS": "(permissions)",
+            "ACTIONS": "Actions",
+            "CREATE": "Create",
+            "MANAGE": "Manage",
+            "BACK": "Back",
+            "ROLES": "Roles",
+            "FIELDS_TITLE": "(fields)"
+        },
+        "FORM": {
+            "LABELS": {
+                "PACKAGEPATH": "Package path",
+                "RULEID": "Rule id",
+                "ORDER": "Order",
+                "ISTOPLEVEL": "Is Top Level",
+                "PERMISSION": "Permission"
+            },
+            "PLACEHOLDERS": {
+                "PACKAGEPATH": "Package path",
+                "RULEID": "Rule id",
+                "ORDER": "Order",
+                "ISTOPLEVEL": "Is Top Level",
+                "PERMISSION": "Permission"
+            },
+            "VALIDATION": {}
+        },
+        "QUEUE": {
+            "ADDING": "Adding {{ ruleId }}",
+            "UPDATING": "Updating {{ ruleId }}",
+            "DELETING": "Deleting {{ ruleId }}",
+            "ERROR": "An error occured with {{ ruleId }}. Correct and try again."
+        }
+    }
+}

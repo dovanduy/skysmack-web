@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 import { IdentitiesIndexComponent } from './identities-index/identities-index.component';
 import { RouteData } from '@skysmack/framework';
-import { SettingsComponent } from '@skysmack/portal-ui';
+import { SettingsComponent } from '@skysmack/portal-settings';
 
 export const identitiesRoutes: Routes = [
   {

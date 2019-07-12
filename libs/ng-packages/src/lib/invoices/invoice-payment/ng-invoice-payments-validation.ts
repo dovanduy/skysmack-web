@@ -1,5 +1,5 @@
 import { StrIndex } from '@skysmack/framework';
-import { Validation } from '@skysmack/ng-ui';
+import { Validation } from '@skysmack/ng-dynamic-forms';
 import { INVOICE_PAYMENTS_AREA_KEY } from '@skysmack/packages-invoices';
 
 export class NgInvoicePaymentsValidation extends Validation {

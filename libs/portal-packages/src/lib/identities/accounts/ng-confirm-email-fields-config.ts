@@ -1,14 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
-import { FormRule } from '@skysmack/ng-ui';
 import { LocalObject } from '@skysmack/framework';
-import { Field } from '@skysmack/ng-ui';
 
-import { FieldsConfig, EmailFieldComponent, StringFieldComponent } from '@skysmack/portal-ui';
-import { FieldProviders } from '@skysmack/portal-ui';
 import { LoadedPackage } from '@skysmack/ng-framework';
 import { ACCOUNTS_AREA_KEY, ConfirmEmail } from '@skysmack/packages-identities';
 import { NgConfirmEmailValidation } from '@skysmack/ng-packages';
+import { FormRule, Field } from '@skysmack/ng-dynamic-forms';
+import { FieldsConfig, FieldProviders } from '@skysmack/ng-fields';
+import { EmailFieldComponent, StringFieldComponent } from '@skysmack/portal-fields';
 
 @Injectable({ providedIn: 'root' })
 export class NgConfirmEmailFieldsConfig extends FieldsConfig<ConfirmEmail, number> {

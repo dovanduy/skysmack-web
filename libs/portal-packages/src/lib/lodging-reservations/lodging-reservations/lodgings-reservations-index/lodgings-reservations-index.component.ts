@@ -2,14 +2,15 @@ import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { LocalObject, EnumHelpers } from '@skysmack/framework';
 import { LodgingReservationsAppState, LodgingReservation, LODGING_RESERVATIONS_AREA_KEY } from '@skysmack/packages-lodging-reservations';
-import { EntityAction } from '@skysmack/ng-ui';
+import { MenuItem } from '@skysmack/framework';
 import { NgLodgingReservationsStore, NgLodgingsStore, NgLodgingTypesStore, NgLodgingsActions, NgLodgingTypesActions, NgLodgingReservationsActions } from '@skysmack/ng-packages';
-import { RecordIndexComponent, EntityComponentPageTitle, EntityActionProviders, ENTITY_ACTIONS_EDIT, ENTITY_ACTIONS_DELETE } from '@skysmack/portal-ui';
+import { EntityComponentPageTitle, MenuItemActionProviders, MENU_ITEM_ACTIONS_EDIT, MENU_ITEM_ACTIONS_DELETE } from '@skysmack/portal-ui';
 import { NgLodgingsReservationsMenu } from '../../ng-lodgings-reservations-menu';
 import { CheckIn } from '@skysmack/packages-lodging-reservations';
 import { LodgingsArrivalsComponent } from '../../components/lodgings-arrivals/lodgings-arrivals.component';
 import { NgLodgingReservationsFieldsConfig } from '../../ng-lodging-reservations-fields-config';
-import { NgSkysmackStore } from '@skysmack/ng-core';
+import { NgSkysmackStore } from '@skysmack/ng-skysmack';
+import { RecordIndexComponent } from '@skysmack/portal-fields';
 
 @Component({
   selector: 'ss-lodgings-reservations-index',
@@ -18,51 +19,51 @@ import { NgSkysmackStore } from '@skysmack/ng-core';
 export class LodgingsReservationsIndexComponent extends RecordIndexComponent<LodgingReservationsAppState, LodgingReservation, number> implements OnInit {
   public translationPrefix = 'LODGING_RESERVATIONS.ENTITY_ACTIONS.';
 
-  public entityActions: EntityAction[] = [
+  public menuItemActions: MenuItem[] = [
     // Checkin
-    new EntityAction().asEventAction(`${this.translationPrefix}CHECKIN`, this.checkIn, 'label', this).setShowLogic((entity: LocalObject<LodgingReservation, number>) => {
+    new MenuItem().asEventAction(`${this.translationPrefix}CHECKIN`, this.checkIn, 'label', this).setShowLogic((entity: LocalObject<LodgingReservation, number>) => {
       return EnumHelpers.toIndexEnum(LodgingReservation.statusEnum)[entity.object.status] === LodgingReservation.statusEnum.Reserved;
     }),
-    new EntityAction().asEventAction(`${this.translationPrefix}UNDOCHECKIN`, this.undoCheckin, 'label', this).setShowLogic((entity: LocalObject<LodgingReservation, number>) => {
+    new MenuItem().asEventAction(`${this.translationPrefix}UNDOCHECKIN`, this.undoCheckin, 'label', this).setShowLogic((entity: LocalObject<LodgingReservation, number>) => {
       return EnumHelpers.toIndexEnum(LodgingReservation.statusEnum)[entity.object.status] === LodgingReservation.statusEnum.InStay;
     }),
 
     // Checkout
-    new EntityAction().asEventAction(`${this.translationPrefix}CHECKOUT`, this.checkOut, 'label_off', this).setShowLogic((entity: LocalObject<LodgingReservation, number>) => {
+    new MenuItem().asEventAction(`${this.translationPrefix}CHECKOUT`, this.checkOut, 'label_off', this).setShowLogic((entity: LocalObject<LodgingReservation, number>) => {
       return EnumHelpers.toIndexEnum(LodgingReservation.statusEnum)[entity.object.status] === LodgingReservation.statusEnum.InStay;
     }),
-    new EntityAction().asEventAction(`${this.translationPrefix}UNDOCHECKOUT`, this.undoCheckout, 'label_off', this).setShowLogic((entity: LocalObject<LodgingReservation, number>) => {
+    new MenuItem().asEventAction(`${this.translationPrefix}UNDOCHECKOUT`, this.undoCheckout, 'label_off', this).setShowLogic((entity: LocalObject<LodgingReservation, number>) => {
       return EnumHelpers.toIndexEnum(LodgingReservation.statusEnum)[entity.object.status] === LodgingReservation.statusEnum.CheckedOut;
     }),
 
     // Cancel
-    new EntityAction().asEventAction(`${this.translationPrefix}CANCEL`, this.cancel, 'cancel', this).setShowLogic((entity: LocalObject<LodgingReservation, number>) => {
+    new MenuItem().asEventAction(`${this.translationPrefix}CANCEL`, this.cancel, 'cancel', this).setShowLogic((entity: LocalObject<LodgingReservation, number>) => {
       return EnumHelpers.toIndexEnum(LodgingReservation.statusEnum)[entity.object.status] === LodgingReservation.statusEnum.Reserved;
     }),
-    new EntityAction().asEventAction(`${this.translationPrefix}UNDOCANCEL`, this.undoCancel, 'cancel', this).setShowLogic((entity: LocalObject<LodgingReservation, number>) => {
+    new MenuItem().asEventAction(`${this.translationPrefix}UNDOCANCEL`, this.undoCancel, 'cancel', this).setShowLogic((entity: LocalObject<LodgingReservation, number>) => {
       return EnumHelpers.toIndexEnum(LodgingReservation.statusEnum)[entity.object.status] === LodgingReservation.statusEnum.Cancelled;
     }),
 
     // Move
-    new EntityAction().asEventAction(`${this.translationPrefix}MOVE`, this.move, 'compare_arrows', this).setShowLogic((entity: LocalObject<LodgingReservation, number>) => {
+    new MenuItem().asEventAction(`${this.translationPrefix}MOVE`, this.move, 'compare_arrows', this).setShowLogic((entity: LocalObject<LodgingReservation, number>) => {
       return EnumHelpers.toIndexEnum(LodgingReservation.statusEnum)[entity.object.status] === LodgingReservation.statusEnum.InStay;
     }),
-    new EntityAction().asEventAction(`${this.translationPrefix}UNDOMOVE`, this.undoMove, 'compare_arrows', this).setShowLogic((entity: LocalObject<LodgingReservation, number>) => {
+    new MenuItem().asEventAction(`${this.translationPrefix}UNDOMOVE`, this.undoMove, 'compare_arrows', this).setShowLogic((entity: LocalObject<LodgingReservation, number>) => {
       // TODO: This is likely NOT correct...
       return EnumHelpers.toIndexEnum(LodgingReservation.statusEnum)[entity.object.status] === LodgingReservation.statusEnum.InStay;
     }),
 
     // No show
-    new EntityAction().asEventAction(`${this.translationPrefix}NOSHOW`, this.noShow, 'highlight_off', this).setShowLogic((entity: LocalObject<LodgingReservation, number>) => {
+    new MenuItem().asEventAction(`${this.translationPrefix}NOSHOW`, this.noShow, 'highlight_off', this).setShowLogic((entity: LocalObject<LodgingReservation, number>) => {
       return EnumHelpers.toIndexEnum(LodgingReservation.statusEnum)[entity.object.status] === LodgingReservation.statusEnum.Reserved;
     }),
-    new EntityAction().asEventAction(`${this.translationPrefix}UNDONOSHOW`, this.undoNoShow, 'highlight_off', this).setShowLogic((entity: LocalObject<LodgingReservation, number>) => {
+    new MenuItem().asEventAction(`${this.translationPrefix}UNDONOSHOW`, this.undoNoShow, 'highlight_off', this).setShowLogic((entity: LocalObject<LodgingReservation, number>) => {
       return EnumHelpers.toIndexEnum(LodgingReservation.statusEnum)[entity.object.status] === LodgingReservation.statusEnum.NoShow;
     }),
 
     // Misc
-    new EntityAction().asUrlAction('edit', ENTITY_ACTIONS_EDIT, 'edit'),
-    new EntityAction().asEventAction(ENTITY_ACTIONS_DELETE, this.delete, 'delete', this),
+    new MenuItem().asUrlAction('edit', MENU_ITEM_ACTIONS_EDIT, 'edit'),
+    new MenuItem().asEventAction(MENU_ITEM_ACTIONS_DELETE, this.delete, 'delete', this),
   ];
 
   public areaKey: string = LODGING_RESERVATIONS_AREA_KEY;
@@ -81,16 +82,16 @@ export class LodgingsReservationsIndexComponent extends RecordIndexComponent<Lod
     public sidebarMenu: NgLodgingsReservationsMenu,
     public pageTitle: EntityComponentPageTitle,
     public title: EntityComponentPageTitle,
-    public entityActionProviders: EntityActionProviders,
+    public menuItemActionProviders: MenuItemActionProviders,
   ) {
-    super(router, activatedRoute, actions, skysmackStore, store, fieldsConfig, entityActionProviders, title);
+    super(router, activatedRoute, actions, skysmackStore, store, fieldsConfig, menuItemActionProviders, title);
   }
 
   ngOnInit() {
     super.ngOnInit();
   }
 
-  public checkIn(entity: LocalObject<LodgingReservation, number>, _this: LodgingsArrivalsComponent) {
+  public checkIn(_this: LodgingsArrivalsComponent, entity: LocalObject<LodgingReservation, number>) {
     let checkIn;
     if (entity.object.allocatedLodgingId && entity.object.allocatedLodgingId > 0) {
       checkIn = { reservationId: entity.object.id, lodgingId: entity.object.allocatedLodgingId };
@@ -100,35 +101,35 @@ export class LodgingsReservationsIndexComponent extends RecordIndexComponent<Lod
 
     _this.actions.checkIn(_this.packagePath, entity, [new CheckIn(checkIn)]);
   }
-  public undoCheckin(entity: LocalObject<LodgingReservation, number>, _this: LodgingsArrivalsComponent) {
+  public undoCheckin(_this: LodgingsArrivalsComponent, entity: LocalObject<LodgingReservation, number>) {
     _this.actions.undoCheckIn(_this.packagePath, entity, [entity.object.id]);
   }
 
-  public checkOut(entity: LocalObject<LodgingReservation, number>, _this: LodgingsArrivalsComponent) {
+  public checkOut(_this: LodgingsArrivalsComponent, entity: LocalObject<LodgingReservation, number>) {
     _this.actions.checkOut(_this.packagePath, entity, [entity.object.id]);
   }
-  public undoCheckout(entity: LocalObject<LodgingReservation, number>, _this: LodgingsArrivalsComponent) {
+  public undoCheckout(_this: LodgingsArrivalsComponent, entity: LocalObject<LodgingReservation, number>) {
     _this.actions.undoCheckOut(_this.packagePath, entity, [entity.object.id]);
   }
 
-  public cancel(entity: LocalObject<LodgingReservation, number>, _this: LodgingsArrivalsComponent) {
+  public cancel(_this: LodgingsArrivalsComponent, entity: LocalObject<LodgingReservation, number>) {
     _this.actions.cancel(_this.packagePath, entity, [entity.object.id]);
   }
-  public undoCancel(entity: LocalObject<LodgingReservation, number>, _this: LodgingsArrivalsComponent) {
+  public undoCancel(_this: LodgingsArrivalsComponent, entity: LocalObject<LodgingReservation, number>) {
     _this.actions.undoCancel(_this.packagePath, entity, [entity.object.id]);
   }
 
-  public move(entity: LocalObject<LodgingReservation, number>, _this: LodgingsArrivalsComponent) {
+  public move(_this: LodgingsArrivalsComponent, entity: LocalObject<LodgingReservation, number>) {
     _this.actions.move(_this.packagePath, entity, [new CheckIn({ reservationId: entity.object.id })]);
   }
-  public undoMove(entity: LocalObject<LodgingReservation, number>, _this: LodgingsArrivalsComponent) {
+  public undoMove(_this: LodgingsArrivalsComponent, entity: LocalObject<LodgingReservation, number>) {
     _this.actions.undoMove(_this.packagePath, entity, [entity.object.id]);
   }
 
-  public noShow(entity: LocalObject<LodgingReservation, number>, _this: LodgingsArrivalsComponent) {
+  public noShow(_this: LodgingsArrivalsComponent, entity: LocalObject<LodgingReservation, number>) {
     _this.actions.noShow(_this.packagePath, entity, [entity.object.id]);
   }
-  public undoNoShow(entity: LocalObject<LodgingReservation, number>, _this: LodgingsArrivalsComponent) {
+  public undoNoShow(_this: LodgingsArrivalsComponent, entity: LocalObject<LodgingReservation, number>) {
     _this.actions.undoNoShow(_this.packagePath, entity, [entity.object.id]);
   }
 }

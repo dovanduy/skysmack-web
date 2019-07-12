@@ -3,11 +3,11 @@ import { Validators } from '@angular/forms';
 import { LocalObject, LocalObjectStatus, EnumHelpers, DisplayColumn, PagedQuery } from '@skysmack/framework';
 import { Assignment, ASSIGNMENTS_AREA_KEY } from '@skysmack/packages-maintenance';
 import { NgAssignmentsValidation, NgAssignmentTypesStore, NgAssignmentTypesActions } from '@skysmack/ng-packages';
-import { FormRule, Field, SelectField } from '@skysmack/ng-ui';
-import { FieldsConfig, StringFieldComponent, SelectFieldComponent, HiddenFieldComponent, DateTimeFieldComponent } from '@skysmack/portal-ui';
+import { FormRule, Field, SelectField } from '@skysmack/ng-dynamic-forms';
 import { of } from 'rxjs';
-import { FieldProviders } from '@skysmack/portal-ui';
 import { LoadedPackage } from '@skysmack/ng-framework';
+import { FieldsConfig, FieldProviders } from '@skysmack/ng-fields';
+import { SelectFieldComponent, StringFieldComponent, DateTimeFieldComponent, HiddenFieldComponent } from '@skysmack/portal-fields';
 
 @Injectable({ providedIn: 'root' })
 export class NgAssignmentsFieldsConfig extends FieldsConfig<Assignment, number> {

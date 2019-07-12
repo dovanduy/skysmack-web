@@ -2,8 +2,8 @@ import { Routes } from '@angular/router';
 import { ProductsIndexComponent } from './products-index/products-index.component';
 import { ProductsCreateComponent } from './products-create/products-create.component';
 import { ProductsEditComponent } from './products-edit/products-edit.component';
-import { FieldsIndexComponent, FieldsCreateComponent, FieldsEditComponent } from '@skysmack/portal-ui';
 import { PRODUCTS_AREA_KEY } from '@skysmack/packages-products';
+import { FieldsCreateComponent, FieldsIndexComponent, FieldsEditComponent } from '@skysmack/portal-fields';
 
 export const productsRoutes: Routes = [
   {

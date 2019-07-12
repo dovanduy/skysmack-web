@@ -1,10 +1,10 @@
 import { OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
-import { map, switchMap, filter, take, tap } from 'rxjs/operators';
-import { MenuArea, hasValue } from '@skysmack/framework';
+import { map, switchMap, filter, take } from 'rxjs/operators';
+import { MenuArea } from '@skysmack/framework';
 import { MenuItem } from '@skysmack/framework';
 
-import { NgSkysmackStore } from '@skysmack/ng-core';
+import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { SubscriptionHandler } from '@skysmack/framework';
 import { NgMenuItemProviders, getAdditionalPaths, getPackageDendencyAsStream } from '@skysmack/ng-framework';
 import { combineLatest } from 'rxjs';
@@ -27,7 +27,7 @@ export abstract class SidebarMenu implements OnDestroy {
     public primaryMenuAreas: MenuArea[] = [];
     public primaryMenuItems: MenuItem[] = [];
 
-    public speedDialMenu: MenuItem[] = [];
+    public speedDialMenuItems: MenuItem[] = [];
     public defaultMenuArea = 'manage';
 
     constructor(
@@ -67,13 +67,32 @@ export abstract class SidebarMenu implements OnDestroy {
                     filter(loadedPackage => loadedPackage._package !== null),
                     switchMap((currentPackage: LoadedPackage) => provider.getItems(this.menuId, currentPackage._package.path)),
                     map((menuItems: MenuItem[]) => {
-                        // Add the Connected Packages area if any menu items is provided, and it doesn't already exist.
-                        if (menuItems.length > 0 && !this.primaryMenuAreas.find(area => area.area === 'connected_packages')) {
-                            this.addConnectedPackageMenuArea();
-                        }
-
                         // Add provided menu items
-                        menuItems.forEach(menuItem => this.addItem(menuItem));
+
+                        const addConnectedPackageArea = (menuItem) => {
+                            if (menuItem.area === 'connected_packages' && !this.primaryMenuAreas.find(area => area.area === 'connected_packages') && (menuItem.provideIn === 'primaryMenu' || menuItem.provideIn === 'both')) {
+                                this.addConnectedPackageMenuArea();
+                            }
+                        };
+
+                        menuItems.forEach(menuItem => {
+                            switch (menuItem.provideIn) {
+                                case 'primaryMenu': {
+                                    // Add the Connected Packages area if any menu items is provided, and it doesn't already exist.
+                                    addConnectedPackageArea(menuItem);
+                                    this.addItemToPrimaryMenu(menuItem);
+                                    break;
+                                }
+                                case 'speedDialMenu': { this.addItemToSpeedDialMenu(menuItem); break; }
+                                case 'both': {
+                                    addConnectedPackageArea(menuItem);
+                                    this.addItemToPrimaryMenu(menuItem);
+                                    this.addItemToSpeedDialMenu(menuItem);
+                                    break;
+                                }
+                                default: break;
+                            }
+                        });
                     })
                 ))
             ))
@@ -113,21 +132,24 @@ export abstract class SidebarMenu implements OnDestroy {
         return this;
     }
 
-    private addItem(item: MenuItem): void {
-        const match = this.primaryMenuItems.find(menuItem => {
-            if (menuItem.displayName === item.displayName && menuItem.url === item.url) {
-                return true;
-            } else {
-                return false;
+    private addItemToPrimaryMenu(item: MenuItem): void {
+        if (!this.primaryMenuItems.find(menuItem => menuItem.displayName === item.displayName)) {
+            if (!item.order) {
+                item.order = 1 + this.primaryMenuItems.map(ma => ma.order).reduce((a, b) => Math.max(a, b));
             }
-        });
-        if (!item.order) {
-            item.order = 1 + this.primaryMenuItems.map(ma => ma.order).reduce((a, b) => Math.max(a, b));
-        }
-        if (!match) {
             this.primaryMenuItems.push(item);
+            this.primaryMenuItems.sort((a, b) => a.order - b.order);
         }
-        this.primaryMenuItems.sort((a, b) => a.order - b.order);
+    }
+
+    private addItemToSpeedDialMenu(item: MenuItem): void {
+        if (!this.speedDialMenuItems.find(menuItem => menuItem.displayName === item.displayName)) {
+            if (!item.order) {
+                item.order = 1 + this.primaryMenuItems.map(ma => ma.order).reduce((a, b) => Math.max(a, b));
+            }
+            this.speedDialMenuItems.push(item);
+            this.speedDialMenuItems.sort((a, b) => a.order - b.order);
+        }
     }
 }
 

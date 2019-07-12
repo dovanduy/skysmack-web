@@ -7,9 +7,10 @@ import {
   NgLodgingTypesActions
 } from '@skysmack/ng-packages';
 import { LodgingReservation, LodgingReservationsAppState } from '@skysmack/packages-lodging-reservations';
-import { RecordFormComponent, EditorNavService } from '@skysmack/portal-ui';
+import { EditorNavService } from '@skysmack/portal-ui';
 import { NgLodgingReservationsFieldsConfig } from '../../ng-lodging-reservations-fields-config';
-import { NgSkysmackStore } from '@skysmack/ng-core';
+import { NgSkysmackStore } from '@skysmack/ng-skysmack';
+import { RecordFormComponent } from '@skysmack/portal-fields';
 
 @Component({
   selector: 'ss-lodgings-reservations-create',

@@ -5,9 +5,6 @@ import { HttpErrorResponse, CurrentUser } from '@skysmack/framework';
 import { Injectable } from '@angular/core';
 import { AuthenticationStore, AuthenticationAppState } from '@skysmack/redux';
 
-import * as _moment from 'moment';
-const moment = _moment;
-
 @Injectable({ providedIn: 'root' })
 export class NgAuthenticationStore implements AuthenticationStore {
     constructor(
@@ -19,10 +16,7 @@ export class NgAuthenticationStore implements AuthenticationStore {
             map((currentUser: CurrentUser) => {
                 let tokenExpired = true;
                 if (currentUser) {
-                    const loginTime = currentUser.loginTime;
-                    const tokenExpires = moment(loginTime).add(currentUser.expires_in, 'seconds');
-                    const now = moment().utc();
-                    tokenExpired = now.isAfter(tokenExpires);
+                    
                 }
 
                 return tokenExpired ? false : true;

@@ -4,24 +4,27 @@ import { CommonModule } from '@angular/common';
 import { ProductsRoutingModule } from './products-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { NgProductsModule } from '@skysmack/ng-packages';
-import { PortalUiModule, FieldsModule } from '@skysmack/portal-ui';
+import { PortalUiModule } from '@skysmack/portal-ui';
 import { productsComponents } from './products/components/products-components';
 import { productTypesComponents } from './product-types/components/product-types-component';
 import { LanguageService } from '@skysmack/portal-ui';
+import { DynamicFormsModule } from '@skysmack/portal-dynamic-forms';
+import { PortalFieldsModule } from '@skysmack/portal-fields';
 
 @NgModule({
   imports: [
     CommonModule,
     HttpClientModule,
-    ProductsRoutingModule,
-    NgProductsModule,
     PortalUiModule,
-    FieldsModule
+    NgProductsModule,
+    DynamicFormsModule,
+    ProductsRoutingModule,
+    PortalFieldsModule
   ],
   exports: [],
   declarations: [
     ...productsComponents,
-    ...productTypesComponents
+    ...productTypesComponents,
   ],
   providers: [
     LanguageService

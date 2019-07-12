@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { EntityComponentPageTitle, RecordIndexComponent, EntityActionProviders, ENTITY_ACTIONS_EDIT, ENTITY_ACTIONS_DELETE } from '@skysmack/portal-ui';
+import { EntityComponentPageTitle, MenuItemActionProviders, MENU_ITEM_ACTIONS_EDIT, MENU_ITEM_ACTIONS_DELETE } from '@skysmack/portal-ui';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgInvoicesCashPaymentsActions } from '@skysmack/ng-packages';
-import { NgSkysmackStore } from '@skysmack/ng-core';
+import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { NgInvoicesCashPaymentsStore } from '@skysmack/ng-packages';
 import { InvoicesCashPaymentsAppState, CashPayment, INVOICES_CASH_PAYMENTS_AREA_KEY } from '@skysmack/packages-invoices-cash-payments';
 import { NgInvoicesCashPaymentsMenu } from './../../ng-invoices-cash-payments-menu';
-import { EntityAction } from '@skysmack/ng-ui';
+import { MenuItem } from '@skysmack/framework';
 import { NgInvoicesCashPaymentsFieldsConfig } from '../../ng-invoices-cash-payments-fields-config';
+import { RecordIndexComponent } from '@skysmack/portal-fields';
 
 
 @Component({
@@ -17,9 +18,9 @@ import { NgInvoicesCashPaymentsFieldsConfig } from '../../ng-invoices-cash-payme
 export class InvoicesCashPaymentsIndexComponent extends RecordIndexComponent<InvoicesCashPaymentsAppState, CashPayment, number> implements OnInit {
 
   public areaKey: string = INVOICES_CASH_PAYMENTS_AREA_KEY;
-  public entityActions: EntityAction[] = [
-    new EntityAction().asUrlAction('edit', ENTITY_ACTIONS_EDIT, 'edit'),
-    new EntityAction().asEventAction(ENTITY_ACTIONS_DELETE, this.delete, 'delete', this)
+  public menuItemActions: MenuItem[] = [
+    new MenuItem().asUrlAction('edit', MENU_ITEM_ACTIONS_EDIT, 'edit'),
+    new MenuItem().asEventAction(MENU_ITEM_ACTIONS_DELETE, this.delete, 'delete', this)
   ];
 
   constructor(
@@ -31,9 +32,9 @@ export class InvoicesCashPaymentsIndexComponent extends RecordIndexComponent<Inv
     public sidebarMenu: NgInvoicesCashPaymentsMenu,
     public fieldsConfig: NgInvoicesCashPaymentsFieldsConfig,
     public title: EntityComponentPageTitle,
-    public entityActionProviders: EntityActionProviders
+    public menuItemActionProviders: MenuItemActionProviders
   ) {
-    super(router, activatedRoute, actions, redux, store, fieldsConfig, entityActionProviders, title);
+    super(router, activatedRoute, actions, redux, store, fieldsConfig, menuItemActionProviders, title);
   }
 
   ngOnInit() {

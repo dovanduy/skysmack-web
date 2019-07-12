@@ -1,5 +1,5 @@
 {
-  "$schema": "../../../node_modules/ng-packagr/ng-package.schema.json",
+  "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
   "dest": "../../dist/portal-ui",
   "lib": {
     "entryFile": "src/public_api.ts"
@@ -11,7 +11,9 @@
     "@skysmack/packages-skysmack-core",
     "@skysmack/packages-oauth2",
     "@skysmack/ng-packages",
-    "@skysmack/ng-ui",
+    "@skysmack/ng-skysmack",
+    "@skysmack/ng-dynamic-forms",
+    "@skysmack/portal-dynamic-forms",
     "@skysmack/ng-framework"
   ]
 }

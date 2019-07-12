@@ -1,16 +1,16 @@
 import { Injectable } from '@angular/core';
-import { Field, ResultField } from '@skysmack/ng-ui';
+import { Field } from '@skysmack/ng-dynamic-forms';
 import { map } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
 import { StrIndex, LocalObject, DisplayColumn } from '@skysmack/framework';
-import { NgSkysmackStore } from '@skysmack/ng-core';
-import { StringFieldComponent, ResultFieldComponent } from '@skysmack/portal-ui';
-import { FieldProvider } from '@skysmack/portal-ui';
-import { Validators, FormGroup } from '@angular/forms';
-import { ReservationsPricingsType } from '@skysmack/packages-reservations-pricings';
+import { NgSkysmackStore } from '@skysmack/ng-skysmack';
+import { Validators } from '@angular/forms';
+import { ReservationsPricingsType } from '@skysmack/package-types';
 import { Router } from '@angular/router';
 import { LodgingReservation } from '@skysmack/packages-lodging-reservations';
 import { LODGINGS_AREA_KEY } from '@skysmack/packages-lodgings';
+import { FieldProvider } from '@skysmack/ng-fields';
+import { StringFieldComponent } from '@skysmack/portal-fields';
 
 @Injectable({ providedIn: 'root' })
 export class NgReservationsPricingsFieldProvider extends FieldProvider {

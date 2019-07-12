@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { EditorNavService, FormBaseComponent } from '@skysmack/portal-ui';
+import { EditorNavService } from '@skysmack/portal-ui';
 import { NgUsersActions, NgUsersStore, NgUsersRequests } from '@skysmack/ng-packages';
 import { User, UsersAppState } from '@skysmack/packages-identities';
-import { FormHelper } from '@skysmack/ng-ui';
+import { FormHelper } from '@skysmack/ng-dynamic-forms';
 import { HttpClient } from '@angular/common/http';
 import { of } from 'rxjs';
 import { NgSetPasswordFieldsConfig } from '../../ng-set-password-fields-config';
-import { NgSkysmackStore } from '@skysmack/ng-core';
+import { NgSkysmackStore } from '@skysmack/ng-skysmack';
+import { FormBaseComponent } from '@skysmack/portal-fields';
 
 @Component({
   selector: 'ss-portal-package-set-password',

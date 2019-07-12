@@ -1,12 +1,12 @@
 import { StrIndex } from '@skysmack/framework';
-import { Validation } from '@skysmack/ng-ui';
+import { Validation } from '@skysmack/ng-dynamic-forms';
 import { PRODUCT_PRICE_CHANGES_AREA_KEY } from '@skysmack/packages-products-pricings';
 
 export class NgProductPriceChangesValidation extends Validation {
     public formErrors = {
         currencyCode: '',
         change: '',
-        isPercentage: '',
+        isPercent: '',
         validFrom: '',
         validTo: '',
         recordId: '',
@@ -23,7 +23,7 @@ export class NgProductPriceChangesValidation extends Validation {
         change: {
             required: ''
         },
-        isPercentage: {
+        isPercent: {
             required: ''
         },
         validFrom: {

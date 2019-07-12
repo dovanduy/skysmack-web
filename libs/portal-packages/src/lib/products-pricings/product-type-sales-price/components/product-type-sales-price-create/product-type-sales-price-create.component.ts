@@ -1,14 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductTypeSalesPriceAppState, ProductTypeSalesPrice } from '@skysmack/packages-products-pricings';
 import { NgProductTypeSalesPriceActions, NgProductTypesActions, NgProductTypesStore } from '@skysmack/ng-packages';
-import { NgSkysmackStore } from '@skysmack/ng-core';
+import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { ActivatedRoute, Router } from '@angular/router';
-import { EditorNavService, RecordFormComponent } from '@skysmack/portal-ui';
+import { EditorNavService } from '@skysmack/portal-ui';
 import { NgProductTypeSalesPriceStore } from '@skysmack/ng-packages';
-import { map, take } from 'rxjs/operators';
-import { PagedQuery, defined } from '@skysmack/framework';
 import { NgProductTypeSalesPriceFieldsConfig } from '../../ng-product-type-sales-price-fields-config';
-import { LoadedPackage } from '@skysmack/ng-framework';
+import { RecordFormComponent } from '@skysmack/portal-fields';
 
 @Component({
   selector: 'ss-product-type-sales-price-create',

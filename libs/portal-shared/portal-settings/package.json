@@ -1,0 +1,28 @@
+{
+  "name": "@skysmack/portal-settings",
+  "version": "0.0.1",
+  "peerDependencies": {
+    "@angular/common": "^8.0.0",
+    "@angular/core": "^8.0.0",
+    "@skysmack/ng-framework": "*",
+    "@skysmack/portal-dynamic-forms": "*",
+    "@skysmack/ng-dynamic-forms": "*",
+    "@skysmack/framework": "*",
+    "@skysmack/redux": "*",
+    "@skysmack/signal-r": "*",
+    "@skysmack/portal-ui": "*"
+  },
+  "main": "./lib/public_api.js",
+  "types": "./lib/public_api.d.ts",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1",
+    "build": "ng build portal-settings"
+  }
+}

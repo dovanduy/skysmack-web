@@ -1,12 +1,12 @@
 import { StrIndex } from '@skysmack/framework';
-import { Validation } from '@skysmack/ng-ui';
+import { Validation } from '@skysmack/ng-dynamic-forms';
 import { LODGING_RESERVATION_PRICE_CHANGES_AREA_KEY } from '@skysmack/packages-reservations-pricings';
 
 export class NgLodgingReservationPriceChangesValidation extends Validation {
     public formErrors = {
         change: '',
         currencyCode: '',
-        isPercentage: '',
+        isPercent: '',
         validFrom: '',
         validTo: '',
         recordId: '',
@@ -29,7 +29,7 @@ export class NgLodgingReservationPriceChangesValidation extends Validation {
         currencyCode: {
             required: '',
         },
-        isPercentage: {
+        isPercent: {
             required: '',
         },
         recordId: {

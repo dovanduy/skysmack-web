@@ -3,8 +3,8 @@ import { of, Observable } from 'rxjs';
 import { safeHasValue, Package, MenuItemProvider, MenuItem } from '@skysmack/framework';
 import { map } from 'rxjs/operators';
 import { Skysmack } from '@skysmack/packages-skysmack-core';
-import { ReservationsPricingsType } from '@skysmack/packages-reservations-pricings';
-import { NgSkysmackStore } from '@skysmack/ng-core';
+import { NgSkysmackStore } from '@skysmack/ng-skysmack';
+import { ReservationsPricingsType } from '@skysmack/package-types';
 
 @Injectable({ providedIn: 'root' })
 export class NgReservationsPricingsMenuItemProvider extends MenuItemProvider {
@@ -25,6 +25,7 @@ export class NgReservationsPricingsMenuItemProvider extends MenuItemProvider {
                         area: 'connected_packages',
                         order: 20,
                         icon: this.icon,
+                        provideIn: 'primaryMenu'
                     }))
                 )
             );

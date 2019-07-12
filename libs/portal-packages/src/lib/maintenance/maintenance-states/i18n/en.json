@@ -32,7 +32,7 @@
             "BUTTON_EDIT": "Update"
         },
         "INDEX": {
-            "TITLE_EXTRA": "(states)",
+            "TITLE_EXTRAS": "(states)",
             "ACTIONS": "Actions",
             "CREATE": "Create",
             "EDIT": "Edit",

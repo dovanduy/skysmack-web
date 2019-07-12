@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import { FormRule, Field } from '@skysmack/ng-ui';
+import { FormRule, Field } from '@skysmack/ng-dynamic-forms';
 import { LockoutSettings, IDENTITES_AREA_KEY } from '@skysmack/packages-identities';
 import { LocalObject } from '@skysmack/framework';
 import { NgLockoutSettingsValidation } from '@skysmack/ng-packages';
 import { LoadedPackage } from '@skysmack/ng-framework';
-import { FieldsConfig, CheckboxFieldComponent, IntFieldComponent, TimeFieldComponent } from '@skysmack/portal-ui';
-import { FieldProviders } from '@skysmack/portal-ui';
+import { FieldsConfig, FieldProviders } from '@skysmack/ng-fields';
+import { CheckboxFieldComponent, IntFieldComponent, TimeFieldComponent } from '@skysmack/portal-fields';
 
 @Injectable({ providedIn: 'root' })
 export class NgLockoutSettingsFieldsConfig extends FieldsConfig<LockoutSettings, unknown> {

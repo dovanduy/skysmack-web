@@ -2,14 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgUsersActions, NgUsersStore } from '@skysmack/ng-packages';
 import { EntityComponentPageTitle } from '@skysmack/portal-ui';
-import { BaseComponent } from '@skysmack/portal-ui';
 import { User, Role } from '@skysmack/packages-identities';
 import { combineLatest, Observable } from 'rxjs';
 import { EditorNavService } from '@skysmack/portal-ui';
 import { NgRolesStore, NgRolesActions } from '@skysmack/ng-packages';
 import { LocalObject, PagedQuery } from '@skysmack/framework';
-import { map, take, tap } from 'rxjs/operators';
-import { NgSkysmackStore } from '@skysmack/ng-core';
+import { map } from 'rxjs/operators';
+import { NgSkysmackStore } from '@skysmack/ng-skysmack';
+import { BaseComponent } from '@skysmack/portal-fields';
 
 @Component({
   selector: 'ss-portal-package-users-roles',
@@ -51,7 +51,7 @@ export class UsersRolesComponent extends BaseComponent<User, number> implements 
     this.actions.addUsersRoles(this.packagePath, dic);
   }
 
-  public trackById(index: any, item: any) {
+  public trackById(item: any) {
     return item.id;
   }
 

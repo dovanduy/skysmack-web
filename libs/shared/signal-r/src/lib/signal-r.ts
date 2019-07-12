@@ -36,28 +36,32 @@ export class SignalR {
 
         //this lines up with the method called by `SendAsync`
         this.hubConnection.on("Message", (packagePath: string, message: any) => {
-            // console.log(packagePath, message);
+            console.log('Signal R message:', packagePath, message);
             this.providers.forEach(provider => provider.messageProvided(packagePath, message))
         });
 
         this.hubConnection.onclose(() => {
             this.connected.next(false);
-            setTimeout(() => this.startHubConnection(), 1000);
+            setTimeout(() => this.startHubConnection(), this.randomIntFromInterval(5000, 15000));
         });
 
         this.startHubConnection();
     }
 
     private startHubConnection() {
-        //this will start the long polling connection
+        // this will start the long polling connection
         this.hubConnection.start()
             .then(() => {
                 this.connected.next(true);
-                Object.keys(this.joinedPackages).forEach(key => this.join(this.joinedPackages[key]));
+                Object.keys(this.joinedPackages).forEach(key => this.join(this.joinedPackages[key], true));
             })
             .catch(err => {
-                setTimeout(() => this.startHubConnection(), 1000);
+                setTimeout(() => this.startHubConnection(), this.randomIntFromInterval(5000, 15000));
             });
+    }
+    private randomIntFromInterval(min: number, max: number) :number // min and max included
+    {
+        return Math.floor(Math.random()*(max-min+1)+min);
     }
 
     public registerProvider(provider: SignalRProvider) {
@@ -75,12 +79,19 @@ export class SignalR {
         ).subscribe();
     }
 
-    public join(packagePath: string) {
+    public join(packagePath: string, force = false) {
         this.connected.pipe(
             filter(x => x),
             map(() => {
-                this.joinedPackages[packagePath] = packagePath;
-                this.hubConnection.invoke('Join', packagePath);
+                if (!this.joinedPackages[packagePath]) {
+                    this.joinedPackages[packagePath] = packagePath;
+                    this.hubConnection.invoke('Join', packagePath);
+                } else if (force) {
+                    if (!this.joinedPackages[packagePath]) {
+                        this.joinedPackages[packagePath] = packagePath;
+                    }
+                    this.hubConnection.invoke('Join', packagePath);
+                }
             }),
             take(1)
         ).subscribe();
@@ -90,8 +101,8 @@ export class SignalR {
         this.connected.pipe(
             filter(x => x),
             map(() => {
-                delete this.joinedPackages[packagePath];
                 this.hubConnection.invoke('Leave', packagePath);
+                delete this.joinedPackages[packagePath];
             }),
             take(1)
         ).subscribe();

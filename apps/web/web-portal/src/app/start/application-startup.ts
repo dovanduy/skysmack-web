@@ -2,7 +2,7 @@ import { APP_INITIALIZER } from '@angular/core';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { API_DOMAIN_INJECTOR_TOKEN } from '@skysmack/framework';
 import { SkysmackApiDomain } from '../../requests/skysmack-api-domain';
-import { NgSkysmackActions } from '@skysmack/ng-core';
+import { NgSkysmackActions } from '@skysmack/ng-skysmack';
 import { AuthorizationInterceptor, configureLanguage, LanguageService } from '@skysmack/portal-ui';
 import { PackageLoader } from '@skysmack/ng-framework';
 import { loadInvoicePackage } from '../packages/invoices-package-manifest';
@@ -22,6 +22,7 @@ import { loadPackagesPackage } from '../packages/packages-package-manifest';
 import { loadAccessPoliciesPackage } from '../packages/access-policies-package-manifest';
 import { loadEmailsPackage } from '../packages/emails-package-manifest';
 import { loadEmailsSmtpPackage } from '../packages/emails-smtp-package-manifest';
+import { loadInvoicesProductsPackage } from '../packages/invoices-products-package-manifest';
 
 
 export function configureSkysmack(actions: NgSkysmackActions) {
@@ -42,6 +43,7 @@ export const packageLoaders = [
     { provide: APP_INITIALIZER, useFactory: loadAccessPoliciesPackage, deps: [PackageLoader], multi: true },
     { provide: APP_INITIALIZER, useFactory: loadIdentitiesPackage, deps: [PackageLoader], multi: true },
     { provide: APP_INITIALIZER, useFactory: loadInvoicePackage, deps: [PackageLoader], multi: true },
+    { provide: APP_INITIALIZER, useFactory: loadInvoicesProductsPackage, deps: [PackageLoader], multi: true },
     { provide: APP_INITIALIZER, useFactory: loadInvoicesCashPaymentsPackage, deps: [PackageLoader], multi: true },
     { provide: APP_INITIALIZER, useFactory: loadPersonPackage, deps: [PackageLoader], multi: true },
     { provide: APP_INITIALIZER, useFactory: loadProductPackage, deps: [PackageLoader], multi: true },

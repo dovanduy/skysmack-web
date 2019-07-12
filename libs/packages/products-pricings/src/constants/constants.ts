@@ -1,4 +1,4 @@
-// Ensure area key is the same as the reducer name without the "Reducer" part.
+// Ensure reducer key is the same as the reducer name without the "Reducer" part.
 export const PRODUCTS_SALES_PRICE_REDUCER_KEY = 'productsSalesPrice';
 export const PRODUCTS_SALES_PRICE_AREA_KEY = 'products_sales_price'; // validation, store, menu
 export const PRODUCTS_SALES_PRICE_REDUX_KEY = 'PRODUCTS_SALES_PRICE_'; // reducer prefix, action, epics, Requests

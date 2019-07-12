@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { SidebarMenu } from '@skysmack/portal-ui';
-import { NgSkysmackStore } from '@skysmack/ng-core';
+import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { NgMenuItemProviders } from '@skysmack/ng-framework';
 import { MenuArea } from '@skysmack/framework';
 import { MenuItem } from '@skysmack/framework';
-import { EMAILS_SMTP_AREA_KEY } from '@skysmack/packages/emails-smtp';
+import { EMAILS_SMTP_AREA_KEY } from '@skysmack/packages-emails-smtp';
 
 @Injectable({ providedIn: 'root' })
 export class NgEmailsSmtpMenu extends SidebarMenu {
@@ -43,7 +43,7 @@ export class NgEmailsSmtpMenu extends SidebarMenu {
     }
 
     public setSpeedDialMenu() {
-        this.speedDialMenu = [
+        this.speedDialMenuItems = [
             // new MenuItem({
             //     url: 'create',
             //     displayName: this.translationPrefix + 'CREATE',

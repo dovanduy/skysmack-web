@@ -1,5 +1,5 @@
 import { StrIndex } from '@skysmack/framework';
-import { Validation } from '@skysmack/ng-ui';
+import { Validation } from '@skysmack/ng-dynamic-forms';
 import { TERMINALS_AREA_KEY } from '@skysmack/packages-terminal-payments';
 
 export class NgTerminalsValidation extends Validation {

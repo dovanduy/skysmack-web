@@ -23,6 +23,9 @@
       "@skysmack/framework": [
         "./dist/@skysmack/framework"
       ],
+      "@skysmack/package-types": [
+        "./dist/@skysmack/package-types"
+      ],
       "@skysmack/redux": [
         "./dist/@skysmack/redux"
       ],
@@ -31,6 +34,24 @@
       ],
       "@skysmack/signal-r": [
         "./dist/@skysmack/signal-r"
+      ],
+      "@skysmack/ng-skysmack": [
+        "./dist/@skysmack/ng-skysmack"
+      ],
+      "@skysmack/ng-dynamic-forms": [
+        "./dist/@skysmack/ng-dynamic-forms"
+      ],
+      "@skysmack/portal-settings": [
+        "./dist/@skysmack/portal-settings"
+      ],
+      "@skysmack/portal-dynamic-forms": [
+        "./dist/@skysmack/portal-dynamic-forms"
+      ],
+      "@skysmack/ng-fields": [
+        "./dist/@skysmack/ng-fields"
+      ],
+      "@skysmack/portal-fields": [
+        "./dist/@skysmack/portal-fields"
       ],
       "@skysmack/packages-skysmack-core": [
         "./dist/@skysmack/packages-skysmack-core"
@@ -79,7 +100,7 @@
       ],
       "@skysmack/packages-emails": [
         "./dist/@skysmack/packages-emails"
-      ],
+      ]
     }
   },
   "exclude": [

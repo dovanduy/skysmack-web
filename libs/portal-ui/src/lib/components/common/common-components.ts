@@ -7,12 +7,16 @@ import { ProgressComponent } from './progress/progress.component';
 import { NavBarComponent } from './navbar/navbar.component';
 import { QueueComponent } from './queue/queue.component';
 import { RecordsContainerComponent } from './records-container/records-container.component';
-import { RolesSelectComponent } from './roles-select/roles-select.component';
 import { BackendErrorsComponent } from './backend-errors/backend-errors.component';
 import { ContainerComponent } from './container/container.component';
 import { CardBodyComponent } from './card-body/card-body.component';
+import { DefaultComponent } from './default/default.component';
+import { PageHeaderComponent } from './page-header/page-header.component';
+import { SpeedDialFabComponent } from './speed-dial-fab/speed-dial-fab.component';
 
-export const commonComponents = [
+export const commonComponents = [    
+    PageHeaderComponent,
+    SpeedDialFabComponent,
     SidebarMenuComponent,
     LanguageSelectComponent,
     OnlineStatusComponent,
@@ -22,8 +26,8 @@ export const commonComponents = [
     NavBarComponent,
     QueueComponent,
     RecordsContainerComponent,
-    RolesSelectComponent,
     BackendErrorsComponent,
     ContainerComponent,
     CardBodyComponent,
+    DefaultComponent
 ];

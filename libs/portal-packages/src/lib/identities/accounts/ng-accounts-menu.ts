@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { SidebarMenu } from '@skysmack/portal-ui';
-import { NgSkysmackStore } from '@skysmack/ng-core';
+import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { MenuArea } from '@skysmack/framework';
 import { MenuItem } from '@skysmack/framework';
 import { NgMenuItemProviders } from '@skysmack/ng-framework';
@@ -66,7 +66,7 @@ export class NgAccountsMenu extends SidebarMenu {
     }
 
     public setSpeedDialMenu() {
-        this.speedDialMenu = [
+        this.speedDialMenuItems = [
         ];
     }
 }

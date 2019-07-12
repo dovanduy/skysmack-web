@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { SidebarMenu } from '@skysmack/portal-ui';
-import { NgSkysmackStore } from '@skysmack/ng-core';
+import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { NgMenuItemProviders } from '@skysmack/ng-framework';
 import { MenuArea } from '@skysmack/framework';
 import { MenuItem } from '@skysmack/framework';
@@ -56,11 +56,12 @@ export class NgInvoiceItemsMenu extends SidebarMenu {
                 InvoicesPermissions.findInvoiceItemFields
             ]
         }));
+
         this.setBackButton();
     }
 
     public setSpeedDialMenu() {
-        this.speedDialMenu = [
+        this.speedDialMenuItems = [
             new MenuItem({
                 url: 'create',
                 displayName: this.translationPrefix + 'CREATE',

@@ -1,13 +1,14 @@
-import { Component, Input, ViewChild, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
+import { Component, Input, ViewChild, OnInit, OnDestroy, ChangeDetectorRef, Output, EventEmitter } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute, NavigationStart, NavigationEnd } from '@angular/router';
 import { SidebarMenu } from './../../../models/sidebar-menu/sidebar-menu';
 import { SubscriptionHandler } from '@skysmack/framework';
 import { EditorNavService } from './editor-nav.service';
-import { NgSkysmackStore } from '@skysmack/ng-core';
+import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { Observable, of } from 'rxjs';
 import { map, filter, switchMap } from 'rxjs/operators';
 import { NgAuthenticationStore } from '@skysmack/ng-framework';
+import { MatDialog } from '@angular/material/dialog';
 
 const SMALL_WIDTH_BREAKPOINT = 720;
 
@@ -21,6 +22,8 @@ export class ContainerComponent implements OnInit, OnDestroy {
   @ViewChild(MatSidenav, { static: false }) public sidenav: MatSidenav;
   @ViewChild('editornav', { static: false }) public editornav: MatSidenav;
 
+  @Output() public menuItemActionEvent = new EventEmitter<any>();
+
   public access$: Observable<boolean>;
   public authenticated$: Observable<boolean>;
 
@@ -30,14 +33,37 @@ export class ContainerComponent implements OnInit, OnDestroy {
 
   constructor(
     public router: Router,
+    public activatedRoute: ActivatedRoute,
     public editorNavService: EditorNavService,
     public skysmackStore: NgSkysmackStore,
     public changeDetectorRef: ChangeDetectorRef,
-    public authentication: NgAuthenticationStore
+    public authentication: NgAuthenticationStore,
+    public dialogRef: MatDialog
   ) { }
 
   ngOnInit(): void {
     this.path = this.router.url;
+
+    this.router.events.pipe(
+      filter(event => event instanceof NavigationEnd),
+      map((event: NavigationEnd) => {
+        if (this.activatedRoute.firstChild) {
+          setTimeout(() => {
+            this.editorNavService.showEditorNav();
+          }, 0);
+        } else {
+          this.editorNavService.hideEditorNav();
+        }
+      })      
+    ).subscribe();
+
+    if (this.activatedRoute.firstChild) {
+      setTimeout(() => {
+        this.editorNavService.showEditorNav();
+      }, 0);
+    } else {
+      this.editorNavService.hideEditorNav();
+    }
 
     const packagePath = this.router.url.split('/')[1];
     if (!packagePath || packagePath === '' || packagePath === 'skysmack') {
@@ -49,34 +75,14 @@ export class ContainerComponent implements OnInit, OnDestroy {
       this.authenticated$ = this.authentication.isCurrentUserAuthenticated();
     }
 
-
     this.subscriptionHandler.register(this.access$.pipe(
       filter(access => access),
       map(() => this.changeDetectorRef.detectChanges()),
       switchMap(() => this.editornav.closedStart),
       map(() => {
-        const splittedPath = this.path.split('/');
-
-        if (this.path.endsWith('/create')) {
-          const newPath = this.path.slice(0, this.path.length - '/create'.length);
-          this.router.navigate([newPath]);
-        } else if (splittedPath.find(x => x === 'edit')) {
-          const newPath = this.path.split('/edit/')[0];
-          this.router.navigate([newPath]);
-        } else if (splittedPath.find(x => x === 'details')) {
-          const newPath = this.path.split('/details/')[0];
-          this.router.navigate([newPath]);
-        } else if (this.path.endsWith('skysmack/settings')) {
-          const newPath = this.path.slice(0, this.path.length - 'skysmack/settings'.length);
-          this.router.navigate([newPath]);
-        } else if (this.path.endsWith('/settings')) {
-          const newPath = this.path.slice(0, this.path.length - '/settings'.length);
-          this.router.navigate([newPath]);
-        } else if (this.path.endsWith('/change-password')) {
-          const newPath = this.path.slice(0, this.path.length - '/change-password'.length);
-          this.router.navigate([newPath]);
-        } else {
-          this.router.navigate([this.path]);
+        if (this.editorNavService.redirectPath && this.editorNavService.redirectPath.length > 0) {
+          this.router.navigate([this.editorNavService.redirectPath]);
+          this.editorNavService.redirectPath = '';
         }
       })
     ).subscribe());
@@ -91,6 +97,11 @@ export class ContainerComponent implements OnInit, OnDestroy {
           this.editornav.open();
         } else if (!visible && this.editornav.opened) {
           this.editornav.close();
+        }
+        if (!visible) {
+          if (this.dialogRef) {
+            this.dialogRef.closeAll();
+          }
         }
       })
     ).subscribe());

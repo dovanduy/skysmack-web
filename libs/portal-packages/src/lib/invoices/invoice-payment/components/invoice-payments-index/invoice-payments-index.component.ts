@@ -1,14 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { EntityComponentPageTitle, DocumentRecordIndexComponent, EntityActionProviders, ENTITY_ACTIONS_EDIT, ENTITY_ACTIONS_DELETE } from '@skysmack/portal-ui';
+import { EntityComponentPageTitle, MenuItemActionProviders, MENU_ITEM_ACTIONS_EDIT, MENU_ITEM_ACTIONS_DELETE } from '@skysmack/portal-ui';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgInvoicePaymentsActions } from '@skysmack/ng-packages';
-import { NgSkysmackStore } from '@skysmack/ng-core';
+import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { NgInvoicePaymentsStore } from '@skysmack/ng-packages';
 import { InvoicePayment, InvoicePaymentsAppState, INVOICE_PAYMENTS_AREA_KEY } from '@skysmack/packages-invoices';
 import { NgInvoicePaymentsMenu } from './../../ng-invoice-payments-menu';
-import { EntityAction } from '@skysmack/ng-ui';
+import { MenuItem } from '@skysmack/framework';
 import { NgFieldActions } from '@skysmack/ng-framework';
 import { NgInvoicePaymentsFieldsConfig } from '../../ng-invoice-payments-fields-config';
+import { DocumentRecordIndexComponent } from '@skysmack/portal-fields';
 
 @Component({
   selector: 'ss-invoice-payments-index',
@@ -18,9 +19,9 @@ export class InvoicePaymentsIndexComponent extends DocumentRecordIndexComponent<
 
   public areaKey: string = INVOICE_PAYMENTS_AREA_KEY;
   public titleExtras = true;
-  public entityActions: EntityAction[] = [
-    new EntityAction().asUrlAction('edit', ENTITY_ACTIONS_EDIT, 'edit'),
-    new EntityAction().asEventAction(ENTITY_ACTIONS_DELETE, this.delete, 'delete', this)
+  public menuItemActions: MenuItem[] = [
+    new MenuItem().asUrlAction('edit', MENU_ITEM_ACTIONS_EDIT, 'edit'),
+    new MenuItem().asEventAction(MENU_ITEM_ACTIONS_DELETE, this.delete, 'delete', this)
   ];
 
   constructor(
@@ -33,9 +34,9 @@ export class InvoicePaymentsIndexComponent extends DocumentRecordIndexComponent<
     public sidebarMenu: NgInvoicePaymentsMenu,
     public fieldsConfig: NgInvoicePaymentsFieldsConfig,
     public fieldActions: NgFieldActions,
-    public entityActionProviders: EntityActionProviders
+    public menuItemActionProviders: MenuItemActionProviders
   ) {
-    super(router, activatedRoute, actions, redux, store, fieldsConfig, fieldActions, entityActionProviders, title);
+    super(router, activatedRoute, actions, redux, store, fieldsConfig, fieldActions, menuItemActionProviders, title);
   }
 
 

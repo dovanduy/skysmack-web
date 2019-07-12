@@ -6,7 +6,7 @@ import { NgProductTypePriceChangesNotifications } from '../ng-product-type-price
 import { NgProductTypesStore } from '../../../products/product-types/redux/ng-product-types-store';
 import { NgProductTypesActions } from '../../../products/product-types/redux/ng-product-types-actions';
 import { getReadDependencies } from '@skysmack/ng-framework';
-import { NgSkysmackStore } from '@skysmack/ng-core';
+import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 
 @Injectable({ providedIn: 'root' })
 export class NgProductTypePriceChangesEpics extends RecordEpicsBase<ProductTypePriceChange, number> {

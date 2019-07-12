@@ -3,9 +3,9 @@ import { of, Observable } from 'rxjs';
 import { safeHasValue, Package, MenuItemProvider, MenuItem } from '@skysmack/framework';
 import { map } from 'rxjs/operators';
 import { Skysmack } from '@skysmack/packages-skysmack-core';
-import { NgSkysmackStore } from '@skysmack/ng-core';
-import { InvoicesCashPaymentsType } from '@skysmack/packages-invoices-cash-payments';
+import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { INVOICES_AREA_KEY } from '@skysmack/packages-invoices';
+import { InvoicesCashPaymentsType } from '@skysmack/package-types';
 
 @Injectable({ providedIn: 'root' })
 export class NgInvoicesCashPaymentsMenuItemProvider extends MenuItemProvider {
@@ -26,6 +26,7 @@ export class NgInvoicesCashPaymentsMenuItemProvider extends MenuItemProvider {
                         area: 'connected_packages',
                         order: 20,
                         icon: this.icon,
+                        provideIn: 'primaryMenu'
                     }))
                 )
             );

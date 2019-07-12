@@ -6,7 +6,7 @@ import { NgAssignmentTypesActions } from '../../assignment-types/redux/ng-assign
 import { NgAssignmentTypesStore } from '../../assignment-types/redux/ng-assignment-types-store';
 import { getReadDependencies } from '@skysmack/ng-framework';
 import { NgAssignmentsNotifications } from '../ng-assignments-notifications';
-import { NgSkysmackStore } from '@skysmack/ng-core';
+import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 
 @Injectable({ providedIn: 'root' })
 export class NgAssignmentsEpics extends RecordEpicsBase<Assignment, number> {

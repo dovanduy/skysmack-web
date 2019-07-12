@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { NgLodgingTypePricesActions, NgLodgingTypePricesStore } from '@skysmack/ng-packages';
-import { NgSkysmackStore } from '@skysmack/ng-core';
+import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { ActivatedRoute, Router } from '@angular/router';
-import { EditorNavService, RecordFormComponent } from '@skysmack/portal-ui';
+import { EditorNavService } from '@skysmack/portal-ui';
 import { LodgingTypePricesAppState, LodgingTypePrice } from '@skysmack/packages-reservations-pricings';
 import { NgLodgingTypePricesFieldsConfig } from '../../ng-lodging-type-prices-fields-config';
+import { RecordFormComponent } from '@skysmack/portal-fields';
 
 @Component({
   selector: 'ss-lodging-type-prices-edit',

@@ -4,7 +4,7 @@ import { Invoice, InvoicesAppState, INVOICES_REDUCER_KEY } from '@skysmack/packa
 import { NgRecordStore } from '@skysmack/ng-framework';
 import { LocalObject, DependencyOptions } from '@skysmack/framework';
 import { Observable } from 'rxjs';
-import { NgSkysmackStore } from '@skysmack/ng-core';
+import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 
 @Injectable({ providedIn: 'root' })
 export class NgInvoicesStore extends NgRecordStore<InvoicesAppState, Invoice, number> {

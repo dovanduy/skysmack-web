@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RecurringAssignment, RecurringAssignmentsAppState } from '@skysmack/packages-maintenance';
-import { RecordFormComponent, EditorNavService } from '@skysmack/portal-ui';
+import { EditorNavService } from '@skysmack/portal-ui';
 import { NgRecurringAssignmentsActions, NgRecurringAssignmentsStore, NgAssignmentTypesActions } from '@skysmack/ng-packages';
 import { NgRecurringAssignmentsFieldsConfig } from '../../ng-recurring-assignments-fields-config';
-import { NgSkysmackStore } from '@skysmack/ng-core';
+import { NgSkysmackStore } from '@skysmack/ng-skysmack';
+import { RecordFormComponent } from '@skysmack/portal-fields';
 
 
 @Component({

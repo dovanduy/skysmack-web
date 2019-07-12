@@ -2,7 +2,8 @@
 
   <!-- Lodgings selection -->
   <mat-form-field>
-    <mat-select [(value)]="selectedLodgingIds" [placeholder]="'LODGINGS_AVAILABILITY.SELECT_LODGINGS' | translate" multiple>
+    <mat-select [(value)]="selectedLodgingIds" [placeholder]="'LODGINGS_AVAILABILITY.SELECT_LODGINGS' | translate"
+      multiple>
       <mat-option *ngFor="let opt of lodgingOptions$ | async" [value]="opt.value" (click)="getAvailableLodgings()">
         {{opt.displayName}}</mat-option>
     </mat-select>

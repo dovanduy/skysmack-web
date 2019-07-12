@@ -10,7 +10,7 @@ import { StrIndex, HttpErrorResponse } from '@skysmack/framework';
 import { switchMap } from 'rxjs/operators';
 import { NgLodgingTypesStore } from '../../lodging-types/redux/ng-lodgings-types-store';
 import { NgLodgingTypesActions } from '../../lodging-types/redux/ng-lodging-types-actions';
-import { NgSkysmackStore } from '@skysmack/ng-core';
+import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { getReadDependencies } from '@skysmack/ng-framework';
 
 

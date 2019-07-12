@@ -1,0 +1,50 @@
+
+<button color="default" mat-icon-button aria-label="Close" (click)="onClose()" class="close-button" tabindex="-1">
+  <mat-icon>close</mat-icon>
+</button>
+
+<ng-container *ngIf="editorItem$ | async as editorItem">
+  <ng-container *ngIf="editorItem.apiError">
+    <h5 style="color:red;">{{ editorItem.apiError.title }}</h5>
+    <p style="color:red;">{{ editorItem.apiError.detail }}</p>
+  </ng-container>
+</ng-container>
+
+<ng-content></ng-content>
+
+<form *ngIf="fh" [formGroup]="fh.form">
+
+  <ng-container *ngFor="let field of fields$ | async as fields; trackBy: trackByFieldKey">
+    <ng-container>
+      <!-- *inAnyPermission="field.permissions" -->
+      <ss-dynamic-form-field-template *ngIf="field.component" [field]="field" [fh]="fh" [fieldKey]="field.key"
+        [fields]="fields" [rules]="rules">
+      </ss-dynamic-form-field-template>
+    </ng-container>
+  </ng-container>
+
+  <ng-container *ngIf="!production">
+      <mat-accordion>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                  Preview form
+              </mat-panel-title>
+              <mat-panel-description>
+                json formatted values
+              </mat-panel-description>
+            </mat-expansion-panel-header>            
+
+            <pre>{{ fh.form.value | json }}</pre>
+            <mat-divider></mat-divider>
+            <pre>{{ previewExtendedData() | json }}</pre>
+            <div style="font-size:.5rem;text-align: right; color: #888">Note: developer only feature</div>
+          </mat-expansion-panel>
+        </mat-accordion>
+  </ng-container>
+
+  <div class="actions">
+    <button mat-flat-button color="primary" type="submit" (click)="onSubmit()"
+    [disabled]="disableButton">{{ buttonText }}</button>
+  </div>
+</form>

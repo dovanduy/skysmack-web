@@ -5,7 +5,7 @@ import { LodgingTypesAppState, LodgingType, LODGING_TYPES_REDUCER_KEY } from '@s
 import { Observable } from 'rxjs';
 import { StrIndex, defined, safeUndefinedTo } from '@skysmack/framework';
 import { map, tap } from 'rxjs/operators';
-import { NgSkysmackStore } from '@skysmack/ng-core';
+import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 
 @Injectable({ providedIn: 'root' })
 export class NgLodgingTypesStore extends NgRecordStore<LodgingTypesAppState, LodgingType, number> {

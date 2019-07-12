@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import { FormRule } from '@skysmack/ng-ui';
 import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { Terminal, TERMINALS_AREA_KEY } from '@skysmack/packages-terminal-payments';
-import { Field } from '@skysmack/ng-ui';
-import { FieldsConfig, HiddenFieldComponent } from '@skysmack/portal-ui';
 import { NgTerminalsValidation } from '@skysmack/ng-packages';
-import { FieldProviders } from '@skysmack/portal-ui';
 import { LoadedPackage } from '@skysmack/ng-framework';
+import { Validators } from '@angular/forms';
+import { FormRule, Field } from '@skysmack/ng-dynamic-forms';
+import { FieldsConfig, FieldProviders } from '@skysmack/ng-fields';
+import { StringFieldComponent, HiddenFieldComponent } from '@skysmack/portal-fields';
 
 @Injectable({ providedIn: 'root' })
 export class NgTerminalsFieldsConfig extends FieldsConfig<Terminal, number> {
@@ -23,14 +23,29 @@ export class NgTerminalsFieldsConfig extends FieldsConfig<Terminal, number> {
 
     protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<Terminal, number>): Field[] {
         const fields = [
-            // new Field({
-            //     component: StringFieldComponent,
-            //     value: entity ? entity.object.name : undefined,
-            //     key: 'name',
-            //     validators: [Validators.required],
-            //     order: 1,
-            //     showColumn: true
-            // })
+            new Field({
+                component: StringFieldComponent,
+                value: entity ? entity.object.name : undefined,
+                key: 'name',
+                validators: [Validators.required],
+                order: 1,
+                showColumn: true
+            }),
+            new Field({
+                component: StringFieldComponent,
+                value: entity ? entity.object.connectionString : undefined,
+                key: 'connectionString',
+                validators: [Validators.required],
+                order: 1,
+                showColumn: true
+            }),
+            new Field({
+                component: StringFieldComponent,
+                value: entity ? entity.object.description : undefined,
+                key: 'description',
+                order: 1,
+                showColumn: true
+            })
         ];
 
         // Id field must only be added for edit forms.

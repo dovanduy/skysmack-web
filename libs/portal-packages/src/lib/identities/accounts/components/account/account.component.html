@@ -1,1 +1,2 @@
-<ss-container [sidebarMenu]="sidebarMenu" *ngIf="loadedPackage$ | async as loadedPackage"></ss-container>
+<ss-container [sidebarMenu]="sidebarMenu" (menuItemActionEvent)="actionEvent($event)"
+    *ngIf="loadedPackage$ | async as loadedPackage"></ss-container>

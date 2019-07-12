@@ -20,9 +20,10 @@ export class LocalObjectExtensions {
                 if (existingRecords[x].objectIdentifier === undefined || newRecord.objectIdentifier === undefined) {
                     return false;
                 }
-                return existingRecords[x].objectIdentifier === newRecord.objectIdentifier;
-            });
 
+                // We stringify the objectIdentifier since it might be a composite key, e.g. an object. === always return false even if the objects are "identical".
+                return JSON.stringify(existingRecords[x].objectIdentifier) === JSON.stringify(newRecord.objectIdentifier);
+            });
 
             if (existingRecordKey) {
                 if (existingRecords[existingRecordKey].status === expectedState) {

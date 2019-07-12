@@ -3,10 +3,9 @@ import { map, take } from 'rxjs/operators';
 import { Observable, BehaviorSubject, of } from 'rxjs';
 import { LocalObject, toLocalObject, Package, hasValue, StrIndex, safeUndefinedTo, defined, OfflineState } from '@skysmack/framework';
 import { Skysmack, SkysmackAppState } from '@skysmack/packages-skysmack-core';
-import { Oauth2Type } from '@skysmack/packages-oauth2';
-import { IdentitiesType } from '@skysmack/packages-identities';
 import { LoadedPackage } from '../packages/loaded-package';
 import { PackageLoader } from '../packages/package-loader';
+import { Oauth2Type, IdentitiesType } from '@skysmack/package-types';
 
 export class SkysmackStore {
     public stateKey = 'skysmack';

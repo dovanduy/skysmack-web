@@ -6,7 +6,7 @@ import { NgRecurringAssignmentsNotifications } from '../ng-recurring-assignments
 import { NgAssignmentTypesActions } from '../../assignment-types/redux/ng-assignment-types-actions';
 import { NgAssignmentTypesStore } from '../../assignment-types/redux/ng-assignment-types-store';
 import { getReadDependencies } from '@skysmack/ng-framework';
-import { NgSkysmackStore } from '@skysmack/ng-core';
+import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 
 @Injectable({ providedIn: 'root' })
 export class NgRecurringAssignmentsEpics extends RecordEpicsBase<RecurringAssignment, number> {

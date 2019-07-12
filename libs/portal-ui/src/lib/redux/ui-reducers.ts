@@ -1,4 +1,4 @@
-import { Menu } from '@skysmack/ng-ui';
+import { Menu } from '@skysmack/framework';
 import { UIActions } from './ui-actions';
 import { sharedReducer } from '@skysmack/redux';
 import { UI_REDUCER_KEY } from '../constants';

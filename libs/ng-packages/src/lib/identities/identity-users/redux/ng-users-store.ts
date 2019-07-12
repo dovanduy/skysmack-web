@@ -5,7 +5,7 @@ import { NgRecordStore } from '@skysmack/ng-framework';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { defined } from '@skysmack/framework';
-import { NgSkysmackStore } from '@skysmack/ng-core';
+import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 
 @Injectable({ providedIn: 'root' })
 export class NgUsersStore extends NgRecordStore<UsersAppState, User, number> {

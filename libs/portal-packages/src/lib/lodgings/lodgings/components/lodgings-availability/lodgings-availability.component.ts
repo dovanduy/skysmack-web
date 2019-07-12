@@ -8,10 +8,10 @@ import { CalendarEvent, EventColor, EventAction } from 'calendar-utils';
 
 import * as _moment from 'moment';
 import { PagedQuery, defined } from '@skysmack/framework';
-import { SelectFieldOption } from '@skysmack/ng-ui';
+import { SelectFieldOption } from '@skysmack/ng-dynamic-forms';
 import { NgLodgingsAvailabilityMenu } from '../../ng-lodgings-availability-menu';
 import { CalendarMonthViewDay } from 'angular-calendar';
-import { NgSkysmackStore } from '@skysmack/ng-core';
+import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 const moment = _moment;
 
 @Component({

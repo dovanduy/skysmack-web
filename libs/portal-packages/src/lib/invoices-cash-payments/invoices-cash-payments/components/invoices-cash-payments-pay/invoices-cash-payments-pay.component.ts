@@ -1,14 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { CashPayment, InvoicesCashPaymentsAppState } from '@skysmack/packages-invoices-cash-payments';
 import { NgInvoicesCashPaymentsActions, NgInvoicesActions, NgInvoicesStore } from '@skysmack/ng-packages';
-import { NgSkysmackStore } from '@skysmack/ng-core';
+import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { ActivatedRoute, Router } from '@angular/router';
-import { EditorNavService, RecordFormComponent } from '@skysmack/portal-ui';
+import { EditorNavService } from '@skysmack/portal-ui';
 import { NgInvoicesCashPaymentsStore } from '@skysmack/ng-packages';
 import { NgInvoicesCashPaymentsFieldsConfig } from '../../ng-invoices-cash-payments-fields-config';
-import { map, take, switchMap, tap } from 'rxjs/operators';
-import { combineLatest } from 'rxjs';
-import { LocalObject, toLocalObject, RSQLFilterBuilder } from '@skysmack/framework';
+import { map, take, switchMap } from 'rxjs/operators';
+import { combineLatest, of } from 'rxjs';
+import { toLocalObject, API_DOMAIN_INJECTOR_TOKEN, ApiDomain, LocalObject } from '@skysmack/framework';
+import { Invoice } from '@skysmack/packages-invoices';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { FormHelper } from '@skysmack/ng-dynamic-forms';
+import { RecordFormComponent } from '@skysmack/portal-fields';
 
 @Component({
   selector: 'ss-invoices-cash-payments-pay',
@@ -26,6 +30,9 @@ export class InvoicesCashPaymentsPayComponent extends RecordFormComponent<Invoic
     public redux: NgSkysmackStore,
     public fieldsConfig: NgInvoicesCashPaymentsFieldsConfig,
     public store: NgInvoicesCashPaymentsStore,
+    @Inject(API_DOMAIN_INJECTOR_TOKEN) protected apiDomain: ApiDomain,
+    public dialogRef: MatDialogRef<InvoicesCashPaymentsPayComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: { packagePath: string, value: LocalObject<Invoice, Number> }
   ) {
     super(router, activatedRoute, editorNavService, actions, redux, store, fieldsConfig);
   }
@@ -35,8 +42,12 @@ export class InvoicesCashPaymentsPayComponent extends RecordFormComponent<Invoic
     this.setFields();
   }
 
+  protected setPackagePath() {
+    this.packagePath = this.data.packagePath;
+  }
+
   protected setFields() {
-    const invoiceId$ = this.activatedRoute.parent.params.pipe(map(params => params.invoiceId));
+    const invoiceId$ = of(this.data.value.object.id);
     combineLatest(
       invoiceId$,
       this.loadedPackage$
@@ -67,5 +78,15 @@ export class InvoicesCashPaymentsPayComponent extends RecordFormComponent<Invoic
         })
       ))
     );
+  }
+
+  protected create(fh: FormHelper) {
+    fh.formValid(() => {
+      const localObject = this.extractFormValues(fh);
+      this.editorItem ? localObject.localId = this.editorItem.localId : localObject.localId = localObject.localId;
+      this.actions.add([localObject], this.packagePath);
+      this.editorNavService.hideEditorNav();
+      this.dialogRef.close();
+    });
   }
 }

@@ -9,6 +9,7 @@
 			"BUTTON_EDIT": "Opdater"
 		},
 		"INDEX": {
+			"TITLE_EXTRAS": "(tilladelser)",
 			"ACTIONS": "Handlinger",
 			"CREATE": "Opret",
 			"MANAGE": "Konfigurer",
@@ -50,6 +51,7 @@
 			"BUTTON_EDIT": "Opdater"
 		},
 		"INDEX": {
+			"TITLE_EXTRAS": "(roller)",
 			"ACTIONS": "Handlinger",
 			"CREATE": "Opret",
 			"MANAGE": "Konfigurer",
@@ -89,6 +91,7 @@
 			"BUTTON_EDIT": "Opdater"
 		},
 		"INDEX": {
+			"TITLE_EXTRAS": "(regler)",
 			"ACTIONS": "Handlinger",
 			"CREATE": "Opret",
 			"MANAGE": "Konfigurer",
@@ -137,26 +140,26 @@
 		"FORM": {
 			"LABELS": {
 				"TOKEN": "Token",
-                "EMAIL": "Email",
+				"EMAIL": "Email",
 				"CURRENTPASSWORD": "Nuværende kodeord",
 				"NEWPASSWORD": "Nyt kodeord",
 				"CONFIRMNEWPASSWORD": "Bekræft kodeord"
 			},
 			"PLACEHOLDERS": {
 				"TOKEN": "Token",
-                "EMAIL": "Email",
+				"EMAIL": "Email",
 				"CURRENTPASSWORD": "Nuværende kodeord",
 				"NEWPASSWORD": "Nyt kodeord",
 				"CONFIRMNEWPASSWORD": "Bekræft kodeord"
 			},
 			"VALIDATION": {
 				"TOKEN": {
-                    "REQUIRED": "Token er påkrævet"
-                },
-                "EMAIL": {
-                    "REQUIRED": "Email er påkrævet",
-                    "INVALIDEMAIL": "Indtast venligst en gyldig email"
-                },
+					"REQUIRED": "Token er påkrævet"
+				},
+				"EMAIL": {
+					"REQUIRED": "Email er påkrævet",
+					"INVALIDEMAIL": "Indtast venligst en gyldig email"
+				},
 				"CURRENTPASSWORD": {
 					"REQUIRED": "Nuværende kodeord er påkrævet."
 				},
@@ -174,19 +177,19 @@
 			"BUTTON_EDIT": "Send"
 		},
 		"CONFIRM_EMAIL": {
-            "TITLE": "Bekræft email",
-            "BUTTON_EDIT": "Send"
-        },
-        "FORGOT_PASSWORD": {
-            "TITLE": "Forgot password",
-            "BUTTON_EDIT": "Send"
-        },
+			"TITLE": "Bekræft email",
+			"BUTTON_EDIT": "Send"
+		},
+		"FORGOT_PASSWORD": {
+			"TITLE": "Forgot password",
+			"BUTTON_EDIT": "Send"
+		},
 		"INDEX": {
 			"ACTIONS": "Handlinger",
 			"MANAGE": "Konfigurer",
 			"CHANGE_PASSWORD": "Skift kodeord",
 			"FORGOT_PASSWORD": "Glemt password",
-            "CONFIRM_EMAIL": "Bekræft email"
+			"CONFIRM_EMAIL": "Bekræft email"
 		},
 		"NOTIFICATIONS": {},
 		"QUEUE": {}
@@ -613,7 +616,7 @@
 			"MANAGE": "Konfigurer",
 			"BACK": "Tilbage",
 			"ACTIONS": "Handlinger",
-			"TITLE_EXTRA": "(betalinger)",
+			"TITLE_EXTRAS": "(betalinger)",
 			"FIELDS_TITLE": "(betalingsfelter)"
 		},
 		"QUEUE": {
@@ -839,7 +842,7 @@
 			"BUTTON_EDIT": "Opdater"
 		},
 		"INDEX": {
-			"TITLE_EXTRA": "(typer)",
+			"TITLE_EXTRAS": "(typer)",
 			"ACTIONS": "Handlinger",
 			"CREATE": "Opret",
 			"MANAGE": "Konfigurer",
@@ -989,7 +992,7 @@
 			"BUTTON_EDIT": "Opdater"
 		},
 		"INDEX": {
-			"TITLE_EXTRA": "(opgave typer)",
+			"TITLE_EXTRAS": "(opgave typer)",
 			"ACTIONS": "Handlinger",
 			"CREATE": "Opret",
 			"EDIT": "Ret",
@@ -1102,7 +1105,7 @@
 			"BUTTON_EDIT": "Opdater"
 		},
 		"INDEX": {
-			"TITLE_EXTRA": "(opgaver)",
+			"TITLE_EXTRAS": "(opgaver)",
 			"ACTIONS": "Handlinger",
 			"CREATE": "Opret",
 			"EDIT": "Ret",
@@ -1164,7 +1167,7 @@
 			"BUTTON_EDIT": "Opdater"
 		},
 		"INDEX": {
-			"TITLE_EXTRA": "(tilstand)",
+			"TITLE_EXTRAS": "(tilstand)",
 			"ACTIONS": "Handlinger",
 			"CREATE": "Opret",
 			"EDIT": "Ret",
@@ -1221,7 +1224,7 @@
 			"BUTTON_EDIT": "Opdater"
 		},
 		"INDEX": {
-			"TITLE_EXTRA": "(gentagne opgaver)",
+			"TITLE_EXTRAS": "(gentagne opgaver)",
 			"ACTIONS": "Handlinger",
 			"CREATE": "Opret",
 			"EDIT": "Ret",
@@ -1340,7 +1343,7 @@
 			"BUTTON_EDIT": "Opdater"
 		},
 		"INDEX": {
-			"TITLE_EXTRA": "(typer)",
+			"TITLE_EXTRAS": "(typer)",
 			"ACTIONS": "Handlinger",
 			"CREATE": "Opret ny type",
 			"DELETE": "Slet",
@@ -1451,7 +1454,7 @@
 				"RECORDID": "Produkt",
 				"CHANGE": "Pris ændring",
 				"PERUNIT": "Per enhed",
-				"ISPERCENTAGE": "Ændring er i procent(%)",
+				"ISPERCENT": "Ændring er i procent(%)",
 				"VALIDFROM": "Gældende fra",
 				"VALIDTO": "Gældende til",
 				"MINUNITS": "Minimum antal enheder",
@@ -1463,7 +1466,7 @@
 				"RECORDID": "Produkt",
 				"CHANGE": "Pris ændring",
 				"PERUNIT": "Per enhed",
-				"ISPERCENTAGE": "Ændring er i procent(%)",
+				"ISPERCENT": "Ændring er i procent(%)",
 				"VALIDFROM": "Gældende fra",
 				"VALIDTO": "Gældende til",
 				"MINUNITS": "Minimum antal enheder",
@@ -1480,7 +1483,7 @@
 				"CHANGE": {
 					"REQUIRED": "Pris ændring er påkrævet"
 				},
-				"ISPERCENTAGE": {
+				"ISPERCENT": {
 					"REQUIRED": "Felt er påkrævet"
 				},
 				"VALIDFROM": {
@@ -1526,7 +1529,7 @@
 				"CURRENCYCODE": "Valuta kode",
 				"RECORDID": "Produkt type",
 				"CHANGE": "Ændring",
-				"ISPERCENTAGE": "Ændring er i procent (%)",
+				"ISPERCENT": "Ændring er i procent (%)",
 				"PERUNIT": "Per enhed",
 				"VALIDFROM": "Gældende fra",
 				"VALIDTO": "Gældende til",
@@ -1539,7 +1542,7 @@
 				"RECORDID": "Produkt type",
 				"CHANGE": "Pris ændring",
 				"PERUNIT": "Per enhed",
-				"ISPERCENTAGE": "Ændring er i procent (%)",
+				"ISPERCENT": "Ændring er i procent (%)",
 				"VALIDFROM": "Gældende fra",
 				"VALIDTO": "Gældende til",
 				"MINUNITS": "Minimum antal enheder",
@@ -1556,7 +1559,7 @@
 				"CHANGE": {
 					"REQUIRED": "Pris ændring er påkrævet"
 				},
-				"ISPERCENTAGE": {
+				"ISPERCENT": {
 					"REQUIRED": "Felt er påkrævet"
 				},
 				"VALIDFROM": {
@@ -1741,7 +1744,7 @@
 		"FORM": {
 			"LABELS": {
 				"CHANGE": "Pris ændring",
-				"ISPERCENTAGE": "Ændring er i procent (%)",
+				"ISPERCENT": "Ændring er i procent (%)",
 				"CURRENCYCODE": "Valuta kode",
 				"VALIDFROM": "Gældende fra",
 				"VALIDTO": "Gældende til",
@@ -1762,7 +1765,7 @@
 				"CURRENCYCODE": "Valuta kode",
 				"RECORDID": "Allokeret værelse",
 				"CHANGE": "Pris ændring",
-				"ISPERCENTAGE": "Ændring er i procent (%)",
+				"ISPERCENT": "Ændring er i procent (%)",
 				"VALIDFROM": "Gældende fra",
 				"VALIDTO": "Gældende til",
 				"START": "Start",
@@ -1787,7 +1790,7 @@
 				"CHANGE": {
 					"REQUIRED": "Pris ændring er påkrævet"
 				},
-				"ISPERCENTAGE": {
+				"ISPERCENT": {
 					"REQUIRED": "Felt er påkrævet"
 				},
 				"VALIDFROM": {
@@ -1891,7 +1894,7 @@
 			"LABELS": {
 				"CHANGE": "Pris ændring",
 				"CURRENCYCODE": "Valuta kode",
-				"ISPERCENTAGE": "Ændring er i procent (%)",
+				"ISPERCENT": "Ændring er i procent (%)",
 				"VALIDFROM": "Gældende fra",
 				"VALIDTO": "Gældende til",
 				"RECORDID": "Værelsestype",
@@ -1911,7 +1914,7 @@
 				"CURRENCYCODE": "Valuta kode",
 				"RECORDID": "Værelses type",
 				"CHANGE": "Pris ændring",
-				"ISPERCENTAGE": "Ændring er i procent (%)",
+				"ISPERCENT": "Ændring er i procent (%)",
 				"VALIDFROM": "Gældende fra",
 				"VALIDTO": "Gældende til",
 				"START": "Start",
@@ -1936,7 +1939,7 @@
 				"CHANGE": {
 					"REQUIRED": "Pris ændring er påkrævet"
 				},
-				"ISPERCENTAGE": {
+				"ISPERCENT": {
 					"REQUIRED": "Felt er påkrævet"
 				},
 				"VALIDFROM": {
@@ -1982,6 +1985,7 @@
 			"BUTTON_EDIT": "Opdater"
 		},
 		"INDEX": {
+			"TITLE_EXTRAS": "(Kvitteringer)",
 			"ACTIONS": "Handlinger",
 			"CREATE": "Opret ny type",
 			"DELETE": "Slet",
@@ -2014,15 +2018,50 @@
 		"FORM": {
 			"LABELS": {
 				"NAME": "Navn",
-				"PRODUCTTYPEID": "Produkt type"
+				"CONNECTIONSTRING": "Forbindelsesdata",
+				"CONNECTION": "Forbindelse",
+				"DESCRIPTION": "Beskrivelse",
+				"CLIENTID": "Klient",
+				"TERMINALID": "Terminal",
+				"AMOUNT": "Mængde",
+				"REFERENCE": "Reference",
+				"CURRENCYCODE": "Valuta"
 			},
 			"PLACEHOLDERS": {
-				"NAME": "Indtast navn",
-				"PRODUCTTYPEID": "Vælg en produkt type"
+				"NAME": "Navn",
+				"CONNECTIONSTRING": "Forbindelsesdata",
+				"CONNECTION": "Forbindelse",
+				"DESCRIPTION": "Beskrivelse",
+				"CLIENTID": "Klient",
+				"TERMINALID": "Terminal",
+				"AMOUNT": "Mængde",
+				"REFERENCE": "Reference",
+				"CURRENCYCODE": "Valuta"
 			},
 			"VALIDATION": {
 				"NAME": {
 					"REQUIRED": "Navn er påkrævet."
+				},
+				"CONNECTIONSTRING": {
+					"REQUIRED": "Forbindelsesdata er påkrævet."
+				},
+				"CONNECTION": {
+					"REQUIRED": "Forbindelse er påkrævet."
+				},
+				"CLIENTID": {
+					"REQUIRED": "Klient er påkrævet."
+				},
+				"TERMINALID": {
+					"REQUIRED": "Terminal er påkrævet."
+				},
+				"AMOUNT": {
+					"REQUIRED": "Mængde er påkrævet."
+				},
+				"INVOICEID": {
+					"REQUIRED": "Faktura ID er påkrævet."
+				},
+				"CURRENCYCODE": {
+					"REQUIRED": "Valuta er påkrævet."
 				}
 			}
 		},
@@ -2035,37 +2074,28 @@
 			"BUTTON_EDIT": "Opdater"
 		},
 		"INDEX": {
+			"TITLE_EXTRAS": "(Terminaler)",
 			"CREATE": "Opret",
 			"EDIT": "Rediger",
 			"DELETE": "Slet",
-			"FIELDS": "Felter",
-			"FIELDS_TITLE": "(felter)",
-			"ITEM": "Enhed",
 			"MANAGE": "Konfigurer",
 			"ACTIONS": "Handlinger",
 			"TYPES": "Typer"
 		},
-		"FIELDS": {
-			"CREATE": {
-				"ADD": "Opret nyt felt"
-			},
-			"EDIT": {
-				"EDITING": "Redigere"
-			},
-			"INDEX": {
-				"ACTIONS": "Handlinger",
-				"CREATE": "Opret et nyt type felt",
-				"TYPES": "Typer",
-				"BACK": "Tilbage",
-				"MANAGE": "Konfigurer",
-				"FIELDS": "Felter"
-			}
-		},
+		"PAY": {
+            "TITLE": "Kreditkort betaling",
+            "BUTTON_PAY": "Betal"
+        },
 		"QUEUE": {
 			"ADDING": "Tilføjer terminal {{ id }}",
 			"UPDATING": "Opdatere terminal {{ id }}",
 			"DELETING": "Sletter terminal {{ id }}",
 			"ERROR": "Der opstod  en fejl ved terminal {{ id }}. Ret og prøv igen."
+		},
+		"ENTITY_ACTION_PROVIDER": {
+			"ENTITY_ACTION": {
+				"TERMINAL_PAYMENT": "Kreditkort betaling"
+			}
 		}
 	},
 	"UI": {
@@ -2443,85 +2473,219 @@
 		"SETTINGS": "Indstillinger",
 		"BUTTON_SUBMIT": "Indsend"
 	},
-    "EMAILS": {
-        "INDEX": {
-            "CREATE": "Opret",
-            "EDIT": "Ret",
-            "DELETE": "Slet",
-            "TEMPLATES": "Skabeloner",
-            "MANAGE": "Konfigurer",
-            "ACTIONS": "Handlinger"
-        }
+	"EMAILS": {
+		"INDEX": {
+			"CREATE": "Opret",
+			"EDIT": "Ret",
+			"DELETE": "Slet",
+			"TEMPLATES": "Skabeloner",
+			"MANAGE": "Konfigurer",
+			"ACTIONS": "Handlinger"
+		}
 	},
-	 "EMAIL_TEMPLATES": {
-        "FORM": {
-            "LABELS": {
-                "FROM": "Til",
-                "TO": "Fra",
-                "CC": "Cc",
-                "BCC": "Bcc",
-                "SUBJECT": "Emne",
-                "BODY": "Indhold"
-            },
-            "PLACEHOLDERS": {
-                "FROM": "Til",
-                "TO": "Fra",
-                "CC": "Cc",
-                "BCC": "Bcc",
-                "SUBJECT": "Emne",
-                "BODY": "Indhold"
-            },
-            "VALIDATION": {}
-        },
-        "CREATE": {
-            "CREATE": "Opret",
-            "BUTTON_CREATE": "Opret"
-        },
-        "EDIT": {
-            "EDIT": "Ret",
-            "BUTTON_EDIT": "Ret"
-        },
-        "INDEX": {
-            "CREATE": "Opret",
-            "EDIT": "Ret",
-            "DELETE": "Slet",
-            "MANAGE": "Konfigurer",
-            "ACTIONS": "Handlinger"
-        },
-        "QUEUE": {
-            "ADDING": "Tilføjer {{ subject }}",
-            "UPDATING": "Opdaterer {{ subject }}",
-            "DELETING": "Sletter {{ subject }}",
-            "ERROR": "Der skete en fejl med {{ subject }}. Ret fejl og prøv igen."
-        }
+	"EMAIL_TEMPLATES": {
+		"FORM": {
+			"LABELS": {
+				"FROM": "Til",
+				"TO": "Fra",
+				"CC": "Cc",
+				"BCC": "Bcc",
+				"SUBJECT": "Emne",
+				"BODY": "Indhold"
+			},
+			"PLACEHOLDERS": {
+				"FROM": "Til",
+				"TO": "Fra",
+				"CC": "Cc",
+				"BCC": "Bcc",
+				"SUBJECT": "Emne",
+				"BODY": "Indhold"
+			},
+			"VALIDATION": {}
+		},
+		"CREATE": {
+			"CREATE": "Opret",
+			"BUTTON_CREATE": "Opret"
+		},
+		"EDIT": {
+			"EDIT": "Ret",
+			"BUTTON_EDIT": "Ret"
+		},
+		"INDEX": {
+			"CREATE": "Opret",
+			"EDIT": "Ret",
+			"DELETE": "Slet",
+			"MANAGE": "Konfigurer",
+			"ACTIONS": "Handlinger"
+		},
+		"QUEUE": {
+			"ADDING": "Tilføjer {{ subject }}",
+			"UPDATING": "Opdaterer {{ subject }}",
+			"DELETING": "Sletter {{ subject }}",
+			"ERROR": "Der skete en fejl med {{ subject }}. Ret fejl og prøv igen."
+		}
 	},
 	"EMAILS_SMTP": {
-        "INDEX": {
-            "CREATE": "Opret",
-            "EDIT": "Ret",
-            "DELETE": "Slet",
-            "TEMPLATES": "Skabeloner",
-            "MANAGE": "Konfigurer",
+		"INDEX": {
+			"CREATE": "Opret",
+			"EDIT": "Ret",
+			"DELETE": "Slet",
+			"TEMPLATES": "Skabeloner",
+			"MANAGE": "Konfigurer",
 			"ACTIONS": "Handlinger",
 			"SETTINGS": "Indstillinger"
-        }
-    },
-    "EMAILS_SMTP_SETTINGS": {
-        "FORM": {
-            "PLACEHOLDERS": {
-                "HOST": "Vært",
-                "PORT": "Port",
-                "USERNAME": "Brugernavn",
-                "PASSWORD": "Password",
-                "ENABLESSL": "Aktiver ssl"
+		}
+	},
+	"EMAILS_SMTP_SETTINGS": {
+		"FORM": {
+			"PLACEHOLDERS": {
+				"HOST": "Vært",
+				"PORT": "Port",
+				"USERNAME": "Brugernavn",
+				"PASSWORD": "Password",
+				"ENABLESSL": "Aktiver ssl"
 			},
-			      "LABELS": {
-                "HOST": "Vært",
-                "PORT": "Port",
-                "USERNAME": "Brugernavn",
-                "PASSWORD": "Password",
-                "ENABLESSL": "Aktiver ssl"
-            }
-        }
-    }
+			"LABELS": {
+				"HOST": "Vært",
+				"PORT": "Port",
+				"USERNAME": "Brugernavn",
+				"PASSWORD": "Password",
+				"ENABLESSL": "Aktiver ssl"
+			}
+		}
+	},
+	"CLIENTS": {
+		"CREATE": {
+			"CREATE": "Opret",
+			"BUTTON_CREATE": "Opret"
+		},
+		"EDIT": {
+			"EDIT": "Ret",
+			"BUTTON_EDIT": "Ret"
+		},
+		"INDEX": {
+			"TITLE_EXTRAS": "(Klienter)",
+			"ACTIONS": "Handlinger",
+			"CREATE": "Opret",
+			"DELETE": "Slet",
+			"MANAGE": "Konfigurer",
+			"BACK": "Tilbage"
+		},
+		"FORM": {
+			"LABELS": {
+				"NAME": "Navn",
+				"DESCRIPTION": "Beskrivelse",
+				"ONLINE": "Online"
+			},
+			"PLACEHOLDERS": {
+				"NAME": "Navn",
+				"DESCRIPTION": "Beskrivelse",
+				"ONLINE": "Online"
+			},
+			"VALIDATION": {
+				"NAME": {
+					"REQUIRED": "Navn er påkrævet"
+				},
+				"DESCRIPTION": {
+					"REQUIRED": "Beskrivelse is required"
+				}
+			}
+		},
+		"QUEUE": {
+			"ADDING": "Tilføker klient {{ id }}",
+			"UPDATING": "Opdaterer klient {{ id }}",
+			"DELETING": "Sletter klient {{ id }}",
+			"ERROR": "En fejl er opstået med klient {{ id }}. Ret fejlene og prøv igen."
+		}
+	},
+	"CONNECTIONS": {
+		"CREATE": {
+			"CREATE": "Create",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDIT": "Edit",
+			"BUTTON_EDIT": "Update"
+		},
+		"INDEX": {
+			"TITLE_EXTRAS": "(Forbindelser)",
+			"ACTIONS": "Actions",
+			"CREATE": "Create",
+			"DELETE": "Delete",
+			"MANAGE": "Manage",
+			"BACK": "Back"
+		},
+		"FORM": {
+			"LABELS": {
+				"STATUS": "Status",
+				"CLIENTID": "Klient",
+				"TERMINALID": "Terminal",
+				"ONLINE": "Online"
+			},
+			"PLACEHOLDERS": {
+				"STATUS": "Status",
+				"CLIENTID": "Klient",
+				"TERMINALID": "Terminal",
+				"ONLINE": "Online"
+			},
+			"VALIDATION": {
+				"STATUS": {
+					"REQUIRED": "Status er påkrævet"
+				},
+				"CLIENTID": {
+					"REQUIRED": "Klient er påkrævet"
+				},
+				"TERMINALID": {
+					"REQUIRED": "Terminal er påkrævet"
+				}
+			}
+		},
+		"QUEUE": {
+			"ADDING": "Tilføker forbindelse {{ id }}",
+			"UPDATING": "Opdaterer forbindelse {{ id }}",
+			"DELETING": "Sletter forbindelse {{ id }}",
+			"ERROR": "En fejl er opstået med forbindelse {{ id }}. Ret fejlene og prøv igen."
+		}
+	},
+	"TERMINAL_PAYMENTS_INDEX": {
+		"TITLE": "Dankort terminal betalinger",
+		"MANAGE": "Handlinger",
+		"TERMINALS": "Terminaler",
+		"CLIENTS": "Klienter",
+		"RECEIPTS": "Kvitteringer",
+		"CONNECTIONS": "Forbindelser"
+	},
+	"INVOICES_PRODUCTS": {
+		"FORM": {
+			"LABELS": {
+				"INVOICEID": "Faktura",
+				"PRODUCTID": "Produkt",
+				"AMOUNT": "Antal"
+			},
+			"PLACEHOLDERS": {
+				"INVOICEID": "Faktura",
+				"PRODUCTID": "Produkt",
+				"AMOUNT": "Antal"
+			},
+			"VALIDATION": {
+				"INVOICEID": {
+					"REQUIRED": "Faktura is required."
+				},
+				"PRODUCTID": {
+					"REQUIRED": "Produkt is required."
+				},
+				"AMOUNT": {
+					"REQUIRED": "Antal is required."
+				}
+			}
+		},
+		"ADD_TO_INVOICE": {
+			"TITLE": "Tilføj til faktura",
+			"SUBMIT": "Opdater"
+		},
+		"ADD_PRODUCTS": {
+			"TITLE": "Tilføj produkter",
+			"SUBMIT": "Opdater"
+		}
+	}
 }

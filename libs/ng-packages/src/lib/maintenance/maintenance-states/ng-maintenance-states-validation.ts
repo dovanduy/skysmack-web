@@ -1,5 +1,5 @@
 import { StrIndex } from '@skysmack/framework';
-import { Validation } from '@skysmack/ng-ui';
+import { Validation } from '@skysmack/ng-dynamic-forms';
 import { MAINTENANCE_STATES_AREA_KEY } from '@skysmack/packages-maintenance';
 
 export class NgMaintenanceStatesValidation extends Validation {

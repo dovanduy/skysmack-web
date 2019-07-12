@@ -77,12 +77,6 @@
     "web-portal": {
       "tags": []
     },
-    "ng-core": {
-      "tags": []
-    },
-    "portal-core": {
-      "tags": []
-    },
     "packages-invoices-cash-payments": {
       "tags": []
     },
@@ -93,6 +87,27 @@
       "tags": []
     },
     "shared-signal-r": {
+      "tags": []
+    },
+    "packages-invoices-products": {
+      "tags": []
+    },
+    "ng-dynamic-forms": {
+      "tags": []
+    },
+    "ng-fields": {
+      "tags": []
+    },
+    "portal-dynamic-forms": {
+      "tags": []
+    },
+    "portal-settings": {
+      "tags": []
+    },
+    "ng-skysmack": {
+      "tags": []
+    },
+    "portal-shared-portal-fields": {
       "tags": []
     }
   }

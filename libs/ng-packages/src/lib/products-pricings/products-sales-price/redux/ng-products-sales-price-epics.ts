@@ -6,7 +6,7 @@ import { NgProductsSalesPriceNotifications } from '../ng-products-sales-price-no
 import { NgProductsStore } from '../../../products/products/redux/ng-products-store';
 import { NgProductsActions } from '../../../products/products/redux/ng-products-actions';
 import { getReadDependencies } from '@skysmack/ng-framework';
-import { NgSkysmackStore } from '@skysmack/ng-core';
+import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 
 @Injectable({ providedIn: 'root' })
 export class NgProductsSalesPriceEpics extends RecordEpicsBase<ProductsSalesPrice, number> {

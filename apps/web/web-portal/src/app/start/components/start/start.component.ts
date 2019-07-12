@@ -1,9 +1,10 @@
 import { Component, OnInit, ViewEncapsulation, OnDestroy } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Router, RouteConfigLoadStart, RouteConfigLoadEnd } from '@angular/router';
-import { NgSkysmackStore, PackageRouteConfiguration } from '@skysmack/ng-core';
+import { PackageRouteConfiguration } from '@skysmack/portal-ui';
 import { SubscriptionHandler } from '@skysmack/framework';
 import { Skysmack } from '@skysmack/packages-skysmack-core';
+import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -17,7 +18,7 @@ export class StartComponent implements OnInit, OnDestroy {
   public subscriptionHandler = new SubscriptionHandler();
   public skysmack$: Observable<Skysmack>;
   public skysmackLoaded$: Observable<boolean>;
-  public loadingRouteConfig: boolean;
+  public loadingRouteConfig: string[] = [];
 
   constructor(
     public router: Router,
@@ -34,9 +35,12 @@ export class StartComponent implements OnInit, OnDestroy {
 
     this.subscriptionHandler.register(this.router.events.subscribe(event => {
       if (event instanceof RouteConfigLoadStart) {
-        this.loadingRouteConfig = true;
+        if (event.route.data && event.route.data.optional) {          
+        } else {
+          this.loadingRouteConfig.push(event.route.path);
+        }
       } else if (event instanceof RouteConfigLoadEnd) {
-        this.loadingRouteConfig = false;
+        this.loadingRouteConfig.pop();
       }
     }));
   }

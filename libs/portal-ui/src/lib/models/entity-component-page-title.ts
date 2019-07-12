@@ -1,7 +1,7 @@
 import { Injectable, OnDestroy } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { take, map, switchMap, startWith } from 'rxjs/operators';
-import { NgSkysmackStore } from '@skysmack/ng-core';
+import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { hasValue, SubscriptionHandler } from '@skysmack/framework';
 import { Skysmack } from '@skysmack/packages-skysmack-core';
 import { TranslateService } from '@ngx-translate/core';

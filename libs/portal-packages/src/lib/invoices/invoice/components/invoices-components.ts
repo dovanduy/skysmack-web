@@ -2,9 +2,9 @@ import { Routes } from '@angular/router';
 import { InvoicesIndexComponent } from './invoices-index/invoices-index.component';
 import { InvoicesCreateComponent } from './invoices-create/invoices-create.component';
 import { InvoicesEditComponent } from './invoices-edit/invoices-edit.component';
-import { FieldsIndexComponent, FieldsCreateComponent, FieldsEditComponent } from '@skysmack/portal-ui';
 import { InvoicesDetailsComponent } from './invoices-details/invoices-details.component';
 import { INVOICES_AREA_KEY } from '@skysmack/packages-invoices';
+import { FieldsIndexComponent, FieldsCreateComponent, FieldsEditComponent } from '@skysmack/portal-fields';
 
 export const invoicesRoutes: Routes = [
   {

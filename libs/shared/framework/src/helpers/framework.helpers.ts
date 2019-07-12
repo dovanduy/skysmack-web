@@ -79,6 +79,19 @@ export const replaceLocalInnerObject = <TObject, TKey>(localObject: LocalObject<
     return localObject;
 }
 
+export const reinstantiateLocalRecord = (localRecord: any) => {
+    return localRecord.objectIdentifier ? localRecord : toLocalObject(
+        localRecord.object,
+        localRecord._identifier,
+        localRecord.localId,
+        localRecord.status,
+        localRecord.modifyType,
+        localRecord.isNew,
+        localRecord.foreignKey,
+        localRecord.error
+    );
+}
+
 /**
  * Clones a local object, including methods.
  * Use when you want a complete clone, and severe all references to the old local object.

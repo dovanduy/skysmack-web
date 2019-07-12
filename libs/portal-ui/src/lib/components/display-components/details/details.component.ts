@@ -1,11 +1,12 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Field } from '@skysmack/ng-ui';
+import { Field } from '@skysmack/ng-dynamic-forms';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'ss-details',
-  templateUrl: './details.component.html'
+  templateUrl: './details.component.html',
+  styleUrls: ['./details.component.scss']
 })
 export class DetailsComponent implements OnInit {
   @Input() public fields$: Observable<Field[]>;

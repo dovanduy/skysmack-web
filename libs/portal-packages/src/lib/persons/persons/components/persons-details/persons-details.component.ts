@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { EditorNavService, DetailsBaseComponent } from '@skysmack/portal-ui';
+import { EditorNavService } from '@skysmack/portal-ui';
 import { ActivatedRoute, Router } from '@angular/router';
-import { NgSkysmackStore } from '@skysmack/ng-core';
+import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { NgPersonsActions, NgPersonsStore } from '@skysmack/ng-packages';
 import { PersonsAppState } from '@skysmack/packages-persons';
 import { NgPersonsFieldsConfig } from '../../../ng-persons-fields-config';
+import { DetailsBaseComponent } from '@skysmack/portal-fields';
 
 @Component({
   selector: 'ss-persons-details',

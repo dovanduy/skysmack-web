@@ -1,14 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { EntityComponentPageTitle, DocumentRecordIndexComponent, EntityActionProviders, ENTITY_ACTIONS_EDIT, ENTITY_ACTIONS_DELETE } from '@skysmack/portal-ui';
+import { EntityComponentPageTitle, MenuItemActionProviders, MENU_ITEM_ACTIONS_EDIT, MENU_ITEM_ACTIONS_DELETE } from '@skysmack/portal-ui';
 import { Router, ActivatedRoute } from '@angular/router';
-import { NgSkysmackStore } from '@skysmack/ng-core';
+import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { LodgingTypesAppState, LodgingType, LODGING_TYPES_AREA_KEY } from '@skysmack/packages-lodgings';
 import { NgLodgingTypesStore } from '@skysmack/ng-packages';
 import { NgLodgingTypesActions } from '@skysmack/ng-packages';
-import { EntityAction } from '@skysmack/ng-ui';
+import { MenuItem } from '@skysmack/framework';
 import { NgLodgingTypesMenu } from '../../ng-lodging-types-menu';
 import { NgFieldActions } from '@skysmack/ng-framework';
 import { NgLodgingTypesFieldsConfig } from '../../ng-lodging-types-fields-config';
+import { DocumentRecordIndexComponent } from '@skysmack/portal-fields';
 
 @Component({
   selector: 'ss-lodging-types-index',
@@ -17,9 +18,9 @@ import { NgLodgingTypesFieldsConfig } from '../../ng-lodging-types-fields-config
 export class LodgingTypesIndexComponent extends DocumentRecordIndexComponent<LodgingTypesAppState, LodgingType, number> implements OnInit {
   public areaKey: string = LODGING_TYPES_AREA_KEY;
   public titleExtras = true;
-  public entityActions: EntityAction[] = [
-    new EntityAction().asUrlAction('edit', ENTITY_ACTIONS_EDIT, 'edit'),
-    new EntityAction().asEventAction(ENTITY_ACTIONS_DELETE, this.delete, 'delete', this)
+  public menuItemActions: MenuItem[] = [
+    new MenuItem().asUrlAction('edit', MENU_ITEM_ACTIONS_EDIT, 'edit'),
+    new MenuItem().asEventAction(MENU_ITEM_ACTIONS_DELETE, this.delete, 'delete', this)
   ];
 
   constructor(
@@ -32,9 +33,9 @@ export class LodgingTypesIndexComponent extends DocumentRecordIndexComponent<Lod
     public fieldsConfig: NgLodgingTypesFieldsConfig,
     public fieldActions: NgFieldActions,
     public title: EntityComponentPageTitle,
-    public entityActionProviders: EntityActionProviders
+    public menuItemActionProviders: MenuItemActionProviders
   ) {
-    super(router, activatedRoute, actions, skysmackStore, store, fieldsConfig, fieldActions, entityActionProviders, title);
+    super(router, activatedRoute, actions, skysmackStore, store, fieldsConfig, fieldActions, menuItemActionProviders, title);
   }
 
 

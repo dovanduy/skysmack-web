@@ -7,8 +7,10 @@
     "@skysmack/packages-skysmack-core": "*",
     "@skysmack/packages-oauth2": "*",
     "@skysmack/ng-packages": "*",
-    "@skysmack/ng-ui": "*",
+    "@skysmack/ng-dynamic-forms": "*",
+    "@skysmack/portal-dynamic-forms": "*",
     "@skysmack/ng-framework": "*",
+    "@skysmack/ng-skysmack": "*",
     "moment": "^2.24.0",
     "calendar-utils": "^0.3.1"
   },

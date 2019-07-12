@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import { FormRule, Field } from '@skysmack/ng-ui';
+import { FormRule, Field } from '@skysmack/ng-dynamic-forms';
 import { LocalObject } from '@skysmack/framework';
 import { LoadedPackage } from '@skysmack/ng-framework';
-import { FieldsConfig, IntFieldComponent } from '@skysmack/portal-ui';
-import { FieldProviders } from '@skysmack/portal-ui';
 import { LodgingReservationsSettings, LODGING_RESERVATIONS_AREA_KEY } from '@skysmack/packages-lodging-reservations';
 import { NgLodgingReservationsSettingsValidation } from '@skysmack/ng-packages';
+import { FieldsConfig, FieldProviders } from '@skysmack/ng-fields';
+import { IntFieldComponent } from '@skysmack/portal-fields';
 
 @Injectable({ providedIn: 'root' })
 export class NgLodgingReservationsSettingsFieldsConfig extends FieldsConfig<LodgingReservationsSettings, unknown> {

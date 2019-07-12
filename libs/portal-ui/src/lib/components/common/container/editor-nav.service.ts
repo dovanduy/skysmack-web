@@ -5,6 +5,8 @@ import { BehaviorSubject } from 'rxjs';
 export class EditorNavService {
   public isVisible = new BehaviorSubject<boolean>(false);
 
+  public redirectPath: string;
+
   showEditorNav() {
     this.isVisible.next(true);
   }

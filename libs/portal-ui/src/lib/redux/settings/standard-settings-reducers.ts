@@ -1,5 +1,5 @@
 import { StandardSettingsActions } from './standard-settings-actions';
-import { Settings } from '@skysmack/ng-ui';
+import { Settings } from '@skysmack/framework';
 import { sharedReducer } from '@skysmack/redux';
 
 export class StandardSettingsState {

@@ -1,6 +1,6 @@
 <ng-container *ngIf="queue$ | async as queue">
   <div class="queue" *ngIf="queue.length > 0">
-    <button mat-icon-button [matMenuTriggerFor]="queueMenu">
+    <button class="link" mat-icon-button [matMenuTriggerFor]="queueMenu">
       <mat-icon>all_inbox</mat-icon>
     </button>
     <mat-menu overlapTrigger="false" #queueMenu="matMenu">

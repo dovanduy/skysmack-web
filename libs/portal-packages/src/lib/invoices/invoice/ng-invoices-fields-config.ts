@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
-import { FormRule } from '@skysmack/ng-ui';
 import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { Invoice, INVOICES_AREA_KEY } from '@skysmack/packages-invoices';
-import { Field } from '@skysmack/ng-ui';
 
-import { FieldsConfig, StringFieldComponent, HiddenFieldComponent, FieldProviders } from '@skysmack/portal-ui';
 import { NgInvoicesValidation } from '@skysmack/ng-packages';
 import { LoadedPackage } from '@skysmack/ng-framework';
+import { FormRule, Field } from '@skysmack/ng-dynamic-forms';
+import { FieldsConfig, FieldProviders } from '@skysmack/ng-fields';
+import { StringFieldComponent, HiddenFieldComponent } from '@skysmack/portal-fields';
 
 export interface NgInvoiceFormDependencies {
   [key: string]: any;

@@ -2,11 +2,16 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { emailsRoutes } from './emails/components';
 import { emailTemplatesRoutes } from './email-templates';
+import { DefaultComponent } from '@skysmack/portal-ui';
 
 @NgModule({
   imports: [RouterModule.forChild([
-    ...emailsRoutes,
-    ...emailTemplatesRoutes
+    {
+      path: '', component: DefaultComponent, children: [
+        ...emailsRoutes,
+        ...emailTemplatesRoutes
+      ]
+    }
   ])],
   exports: [RouterModule]
 })

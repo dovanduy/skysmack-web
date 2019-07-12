@@ -28,30 +28,31 @@
             {{ entity.object[column.fieldDisplayKey ? column.fieldDisplayKey : column.fieldKey] | displayValue:column | displayModifier:column:entity }}
           </td>
           <td class="table-cell mat-cell action-buttons">
-
+            <mat-icon class="success-icon" color="primary" *ngIf="entity.isNew && entity.status !== 'CREATING'">check_circle</mat-icon>
+            <mat-icon class="error-icon" color="warn" *ngIf="entity.error">error</mat-icon>
             <!-- ENTITY ACTIONS -->
-            <ng-container *ngIf="entityActions$ | async as entityActions">
+            <ng-container *ngIf="menuItemActions$ | async as menuItemActions">
               <ng-container
-                *ngIf="entityActions.length > 0 && (entity.status === 'OK' || entity.status !== 'CREATING' && entity.error)">
+                *ngIf="menuItemActions.length > 0 && (entity.status === 'OK' || entity.status !== 'CREATING' && entity.error)">
                 <button mat-icon-button [matMenuTriggerFor]="menu">
                   <mat-icon>more_vert</mat-icon>
                 </button>
                 <mat-menu #menu="matMenu">
-                  <ng-container *ngFor="let entityAction of entityActions">
-                    <ng-template [inAnyPermission]="entityAction.permissions"
-                      (permissionsChecked)="entityAction.display = $event">
+                  <ng-container *ngFor="let menuItemAction of menuItemActions">
+                    <ng-template [inAnyPermission]="menuItemAction.permissions"
+                      (permissionsChecked)="menuItemAction.display = $event">
                       <!-- ACTION EVENT  -->
-                      <a *ngIf="entityAction.isActionEvent && (entityAction | showEntityAction:entity) && entityAction.display"
+                      <a *ngIf="menuItemAction.isActionEvent && (menuItemAction | showMenuItemAction:entity) && menuItemAction.display"
                         mat-menu-item
-                        (click)="entityActionEvent.emit({ action: entityAction.action, value: entity, _this: entityAction._this })">
-                        <i class="material-icons">{{ entityAction.icon }}</i> <span
-                          class="icon-text">{{ entityAction.displayName | translate }}</span>
+                        (click)="menuItemActionEvent.emit({ action: menuItemAction.action, value: entity, _this: menuItemAction._this })">
+                        <i class="material-icons">{{ menuItemAction.icon }}</i> <span
+                          class="icon-text">{{ menuItemAction.displayName | translate }}</span>
                       </a>
                       <!-- URL EVENT -->
-                      <a *ngIf="!entityAction.isActionEvent && entityAction.display" mat-menu-item
-                        [routerLink]="[entityAction.url, entity.objectIdentifier, entityAction.urlPostfix]">
-                        <i class="material-icons">{{ entityAction.icon }}</i>
-                        <span class="icon-text">{{ entityAction.displayName | translate }}</span>
+                      <a *ngIf="!menuItemAction.isActionEvent && menuItemAction.display" mat-menu-item
+                        [routerLink]="[menuItemAction.url, entity.objectIdentifier, menuItemAction.urlPostfix]">
+                        <i class="material-icons">{{ menuItemAction.icon }}</i>
+                        <span class="icon-text">{{ menuItemAction.displayName | translate }}</span>
                       </a>
                     </ng-template>
                   </ng-container>
@@ -66,8 +67,8 @@
             </a>
           </td>
         </tr>
-        <tr>
-          <td [colSpan]="displayColumns.length + 1" style="width: 100px; height: 5px;">
+        <tr class="row-loading-bar">
+          <td [colSpan]="displayColumns.length + 1">
             <mat-progress-bar *ngIf="(entity.status !== 'OK' && !entity.error)" mode="indeterminate">
             </mat-progress-bar>
           </td>

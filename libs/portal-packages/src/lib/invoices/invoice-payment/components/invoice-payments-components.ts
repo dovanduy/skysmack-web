@@ -2,8 +2,8 @@ import { Routes } from '@angular/router';
 import { InvoicePaymentsIndexComponent } from './invoice-payments-index/invoice-payments-index.component';
 import { InvoicePaymentsCreateComponent } from './invoice-payments-create/invoice-payments-create.component';
 import { InvoicePaymentsEditComponent } from './invoice-payments-edit/invoice-payments-edit.component';
-import { FieldsIndexComponent, FieldsCreateComponent, FieldsEditComponent } from '@skysmack/portal-ui';
 import { INVOICE_PAYMENTS_AREA_KEY } from '@skysmack/packages-invoices';
+import { FieldsIndexComponent, FieldsCreateComponent, FieldsEditComponent } from '@skysmack/portal-fields';
 
 export const invoicePaymentsRoutes: Routes = [
   {

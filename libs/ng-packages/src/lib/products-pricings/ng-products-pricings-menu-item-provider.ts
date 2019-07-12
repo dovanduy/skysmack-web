@@ -3,13 +3,13 @@ import { of, Observable } from 'rxjs';
 import { safeHasValue, Package, MenuItemProvider, MenuItem } from '@skysmack/framework';
 import { map } from 'rxjs/operators';
 import { Skysmack } from '@skysmack/packages-skysmack-core';
-import { ProductsPricingsType } from '@skysmack/packages-products-pricings';
-import { NgSkysmackStore } from '@skysmack/ng-core';
+import { NgSkysmackStore } from '@skysmack/ng-skysmack';
+import { ProductsPricingsType } from '@skysmack/package-types';
 
 @Injectable({ providedIn: 'root' })
 export class NgProductsPricingsMenuItemProvider extends MenuItemProvider {
     public menuId = 'products';
-    public icon = 'shortText';
+    public icon = 'link';
 
     constructor(public store: NgSkysmackStore) { super(); }
 
@@ -25,6 +25,7 @@ export class NgProductsPricingsMenuItemProvider extends MenuItemProvider {
                         area: 'connected_packages',
                         order: 20,
                         icon: this.icon,
+                        provideIn: 'primaryMenu'
                     }))
                 )
             );

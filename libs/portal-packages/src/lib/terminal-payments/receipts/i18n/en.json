@@ -9,6 +9,7 @@
             "BUTTON_EDIT": "Update"
         },
         "INDEX": {
+            "TITLE_EXTRAS": "(Receipts)",
             "ACTIONS": "Actions",
             "CREATE": "Create",
             "DELETE": "Delete",

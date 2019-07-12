@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MaintenanceState, MaintenanceStatesAppState, MAINTENANCE_STATES_AREA_KEY } from '@skysmack/packages-maintenance';
-import { EntityComponentPageTitle, RecordIndexComponent, EntityActionProviders, ENTITY_ACTIONS_EDIT, ENTITY_ACTIONS_DELETE } from '@skysmack/portal-ui';
-import { EntityAction } from '@skysmack/ng-ui';
+import { EntityComponentPageTitle, MenuItemActionProviders, MENU_ITEM_ACTIONS_EDIT, MENU_ITEM_ACTIONS_DELETE } from '@skysmack/portal-ui';
+import { MenuItem } from '@skysmack/framework';
 import { NgMaintenanceStatesActions, NgMaintenanceStatesStore } from '@skysmack/ng-packages';
 import { NgMaintenanceStatesMenu } from '../../ng-maintenance-states-menu';
 import { NgMaintenanceStatesFieldsConfig } from '../../ng-maintenance-states-fields-config';
-import { NgSkysmackStore } from '@skysmack/ng-core';
+import { NgSkysmackStore } from '@skysmack/ng-skysmack';
+import { RecordIndexComponent } from '@skysmack/portal-fields';
 
 
 @Component({
@@ -17,9 +18,9 @@ export class MaintenanceStatesIndexComponent extends RecordIndexComponent<Mainte
 
   public areaKey: string = MAINTENANCE_STATES_AREA_KEY;
   public titleExtras = true;
-  public entityActions: EntityAction[] = [
-    new EntityAction().asUrlAction('edit', ENTITY_ACTIONS_EDIT, 'edit'),
-    new EntityAction().asEventAction(ENTITY_ACTIONS_DELETE, this.delete, 'delete', this)
+  public menuItemActions: MenuItem[] = [
+    new MenuItem().asUrlAction('edit', MENU_ITEM_ACTIONS_EDIT, 'edit'),
+    new MenuItem().asEventAction(MENU_ITEM_ACTIONS_DELETE, this.delete, 'delete', this)
   ];
 
   constructor(
@@ -31,10 +32,10 @@ export class MaintenanceStatesIndexComponent extends RecordIndexComponent<Mainte
     public sidebarMenu: NgMaintenanceStatesMenu,
     public fieldsConfig: NgMaintenanceStatesFieldsConfig,
     public title: EntityComponentPageTitle,
-    public entityActionProviders: EntityActionProviders
+    public menuItemActionProviders: MenuItemActionProviders
 
   ) {
-    super(router, activatedRoute, actions, redux, store, fieldsConfig, entityActionProviders, title);
+    super(router, activatedRoute, actions, redux, store, fieldsConfig, menuItemActionProviders, title);
 
   }
 

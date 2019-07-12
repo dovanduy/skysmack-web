@@ -1,0 +1,16 @@
+{
+  "$schema": "../../../node_modules/ng-packagr/package.schema.json",
+  "name": "@skysmack/package-types",
+  "description": "Manifests for all package types",
+  "version": "1.0.0",
+  "ngPackage": {
+    "lib": {
+      "entryFile": "public_api.ts"
+    },
+    "dest": "../../../dist/@skysmack/package-types"
+  },
+  "peerDependencies": {
+    "guid-typescript": "1.0.9",
+    "rxjs": "^6.5.2"
+  }
+}

@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { AssignmentTypesAppState, AssignmentType } from '@skysmack/packages-maintenance';
 import { ActivatedRoute, Router } from '@angular/router';
-import { RecordFormComponent, EditorNavService } from '@skysmack/portal-ui';
+import { EditorNavService } from '@skysmack/portal-ui';
 import { NgAssignmentTypesActions, NgAssignmentTypesStore, NgMaintenanceStatesStore, NgMaintenanceStatesActions } from '@skysmack/ng-packages';
 import { NgAssignmentTypesFieldsConfig } from '../../ng-assignment-types-fields-config';
-import { NgSkysmackStore } from '@skysmack/ng-core';
+import { NgSkysmackStore } from '@skysmack/ng-skysmack';
+import { RecordFormComponent } from '@skysmack/portal-fields';
 
 @Component({
   selector: 'ss-assignment-types-edit',

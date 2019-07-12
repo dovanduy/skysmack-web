@@ -5,7 +5,8 @@ import { MenuItem } from '@skysmack/framework';
 import { NgMenuItemProviders } from '@skysmack/ng-framework';
 
 import { SidebarMenu } from '@skysmack/portal-ui';
-import { NgSkysmackStore, PackagesPermissions } from '@skysmack/ng-core';
+import { PackagesPermissions } from '@skysmack/ng-packages';
+import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 
 @Injectable({ providedIn: 'root' })
 export class NgPackagesMenu extends SidebarMenu {
@@ -51,7 +52,7 @@ export class NgPackagesMenu extends SidebarMenu {
     }
 
     public setSpeedDialMenu() {
-        this.speedDialMenu = [
+        this.speedDialMenuItems = [
             new MenuItem({
                 url: 'create',
                 displayName: this.translationPrefix + 'CREATE',

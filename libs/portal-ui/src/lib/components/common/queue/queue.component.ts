@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgSkysmackStore } from '@skysmack/ng-core';
+import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { Observable } from 'rxjs';
 import { QueueItem, LocalObjectStatus, OfflineState } from '@skysmack/framework';
 import { Router } from '@angular/router';

@@ -2,12 +2,12 @@ import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { LocalObject, LocalObjectStatus, PagedQuery } from '@skysmack/framework';
 import { ProductTypePriceChange, PRODUCT_TYPE_PRICE_CHANGES_AREA_KEY } from '@skysmack/packages-products-pricings';
-import { FormRule, SelectField, Field } from '@skysmack/ng-ui';
+import { FormRule, SelectField, Field } from '@skysmack/ng-dynamic-forms';
 import { NgProductTypePriceChangesValidation, NgProductTypesStore, NgProductTypesActions } from '@skysmack/ng-packages';
-import { FieldsConfig, SelectFieldComponent, HiddenFieldComponent, DecimalFieldComponent, DateTimeFieldComponent, IntFieldComponent, CheckboxFieldComponent } from '@skysmack/portal-ui';
-import { FieldProviders } from '@skysmack/portal-ui';
 import { LoadedPackage, getPackageDendencyAsStream } from '@skysmack/ng-framework';
-import { NgSkysmackStore } from '@skysmack/ng-core';
+import { FieldsConfig, FieldProviders } from '@skysmack/ng-fields';
+import { SelectFieldComponent, CheckboxFieldComponent, DecimalFieldComponent, IntFieldComponent, DateTimeFieldComponent, HiddenFieldComponent } from '@skysmack/portal-fields';
+import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { map, take } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
@@ -76,8 +76,8 @@ export class NgProductTypePriceChangesFieldsConfig extends FieldsConfig<ProductT
             }),
             new Field({
                 component: CheckboxFieldComponent,
-                value: entity ? entity.object.isPercentage : false,
-                key: 'isPercentage',
+                value: entity ? entity.object.isPercent : false,
+                key: 'isPercent',
                 validators: [Validators.required],
                 order: 4,
                 showColumn: true

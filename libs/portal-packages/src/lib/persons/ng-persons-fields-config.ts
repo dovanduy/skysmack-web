@@ -1,17 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
-import { FormRule } from '@skysmack/ng-ui';
-import { SetDisplayNameRule } from '@skysmack/ng-ui';
 import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { Person, PERSONS_AREA_KEY } from '@skysmack/packages-persons';
-import { Field } from '@skysmack/ng-ui';
 
-import { StringFieldComponent, HiddenFieldComponent } from '@skysmack/portal-ui';
 import { NgPersonsValidation } from '@skysmack/ng-packages';
-import { DocumentFieldsConfig } from '@skysmack/portal-ui';
-import { FieldProviders } from '@skysmack/portal-ui';
 import { NgFieldStore, LoadedPackage } from '@skysmack/ng-framework';
 import { Router } from '@angular/router';
+import { FormRule, SetDisplayNameRule, Field } from '@skysmack/ng-dynamic-forms';
+import { DocumentFieldsConfig, StringFieldComponent, HiddenFieldComponent } from '@skysmack/portal-fields';
+import { FieldProviders } from '@skysmack/ng-fields';
 
 @Injectable({ providedIn: 'root' })
 export class NgPersonsFieldsConfig extends DocumentFieldsConfig<Person, number> {

@@ -1,0 +1,24 @@
+<ng-container *ngIf="field">
+  <h4>{{ field.placeholder | translate }}</h4>
+
+  <!-- ACCESS -->
+  <mat-form-field>
+    <mat-select [placeholder]="'UI.PERMISSION.SET_ACCESS' | translate" [(value)]="selectedAccessType">
+      <mat-option *ngFor="let opt of accessTypes" [value]="opt.value">{{opt.displayName}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <br />
+
+  <!-- ROLES -->
+  <ng-container *ngIf="selectedAccessType === 2">
+    <mat-slide-toggle (change)="toggleIncludeRoles($event)" [checked]="permission.includeRoles">Include roles
+    </mat-slide-toggle>
+    <br />
+    <h4>Roles</h4>
+    <ss-roles-select [currentlySelectedIds]="permission.roles" (selectedIds)="selectedRoleIds($event)">
+    </ss-roles-select>
+  </ng-container>
+
+  <ss-backend-errors [field]="field"></ss-backend-errors>
+
+</ng-container>

@@ -1,4 +1,4 @@
-// Ensure area key is the same as the reducer name without the "Reducer" part.
+// Ensure reducer key is the same as the reducer name without the "Reducer" part.
 export const IDENTITES_AREA_KEY = 'identities'; // validation, store, menu
 export const IDENTITES_REDUX_KEY = 'IDENTITES_'; // reducer prefix, action, epics, Requests
 export const IDENTITES_ADDITIONAL_PATHS = []; // actions, requests

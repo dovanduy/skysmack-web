@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { EditorNavService, DetailsBaseComponent } from '@skysmack/portal-ui';
+import { EditorNavService } from '@skysmack/portal-ui';
 import { ActivatedRoute, Router } from '@angular/router';
-import { NgSkysmackStore } from '@skysmack/ng-core';
+import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { NgInvoicesFieldsConfig } from '../../ng-invoices-fields-config';
 import { NgInvoicesActions, NgInvoicesStore } from '@skysmack/ng-packages';
 import { InvoicesAppState } from '@skysmack/packages-invoices';
+import { DetailsBaseComponent } from '@skysmack/portal-fields';
 
 @Component({
   selector: 'ss-invoices-details',

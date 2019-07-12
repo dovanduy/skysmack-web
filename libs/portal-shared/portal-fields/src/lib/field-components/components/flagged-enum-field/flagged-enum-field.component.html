@@ -1,0 +1,24 @@
+<ng-container *ngIf="field" [formGroup]="fh.form">
+
+  <mat-form-field>
+    <!-- S -->
+    <mat-select [id]="fieldKey" [value]="selectedValues" [placeholder]="field.placeholder | translate" #selectInput
+      multiple>
+      <ng-container *ngIf="field.extraOptions">
+        <mat-option *ngFor="let opt of field.extraOptions" [value]="opt.value">
+          {{ opt.displayName }}
+        </mat-option>
+      </ng-container>
+      <mat-option *ngFor="let opt of field.optionsData$ | async" [value]="opt.value">
+        {{ opt.displayName }}
+      </mat-option>
+    </mat-select>
+
+    <mat-error *ngIf="fh.formErrors[fieldKey]">
+      {{ fh.formErrors[fieldKey] | translate }}
+    </mat-error>
+  </mat-form-field>
+
+  <ss-backend-errors [field]="field"></ss-backend-errors>
+
+</ng-container>

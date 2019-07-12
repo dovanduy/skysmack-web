@@ -3,15 +3,50 @@
         "FORM": {
             "LABELS": {
                 "NAME": "Name",
-                "PRODUCTTYPEID": "Product type"
+                "CONNECTIONSTRING": "Connection string",
+                "CONNECTION": "Connection",
+                "DESCRIPTION": "Description",
+                "CLIENTID": "Client",
+                "TERMINALID": "Terminal",
+                "AMOUNT": "Amount",
+                "INVOICEID": "Invoice ID",
+                "CURRENCYCODE": "Currency"
             },
             "PLACEHOLDERS": {
-                "NAME": "Enter name",
-                "PRODUCTTYPEID": "Choose product type"
+                "NAME": "Name",
+                "CONNECTIONSTRING": "Connection string",
+                "CONNECTION": "Connection",
+                "DESCRIPTION": "Description",
+                "CLIENTID": "Client",
+                "TERMINALID": "Terminal",
+                "AMOUNT": "Amount",
+                "INVOICEID": "Invoice ID",
+                "CURRENCYCODE": "Currency"
             },
             "VALIDATION": {
                 "NAME": {
                     "REQUIRED": "Name is required."
+                },
+                "CONNECTIONSTRING": {
+                    "REQUIRED": "Connection string is required."
+                },
+                "CONNECTION": {
+                    "REQUIRED": "Connection is required."
+                },
+                "CLIENTID": {
+                    "REQUIRED": "Client is required."
+                },
+                "TERMINALID": {
+                    "REQUIRED": "Terminal is required."
+                },
+                "AMOUNT": {
+                    "REQUIRED": "Amount is required."
+                },
+                "INVOICEID": {
+                    "REQUIRED": "Invoice ID is required."
+                },
+                "CURRENCYCODE": {
+                    "REQUIRED": "Currency is required."
                 }
             }
         },
@@ -24,37 +59,28 @@
             "BUTTON_EDIT": "Update"
         },
         "INDEX": {
+            "TITLE_EXTRAS": "(Terminals)",
             "CREATE": "Create",
             "EDIT": "Edit",
             "DELETE": "Delete",
-            "FIELDS": "Fields",
-            "FIELDS_TITLE": "(fields)",
-            "ITEM": "Item",
             "MANAGE": "Manage",
             "ACTIONS": "Actions",
             "TYPES": "Types"
         },
-        "FIELDS": {
-            "CREATE": {
-                "ADD": "Add new field"
-            },
-            "EDIT": {
-                "EDITING": "Editing"
-            },
-            "INDEX": {
-                "ACTIONS": "Actions",
-                "CREATE": "Create",
-                "MANAGE": "Manage",
-                "TYPES": "Types",
-                "FIELDS": "Fields",
-                "BACK": "Back"
-            }
+        "PAY": {
+            "TITLE": "Card payment",
+            "BUTTON_PAY": "Pay"
         },
         "QUEUE": {
             "ADDING": "Adding terminal {{ id }}",
             "UPDATING": "Updating terminal {{ id }}",
             "DELETING": "Deleting terminal {{ id }}",
             "ERROR": "An error occured with terminal {{ id }}. Correct and try again."
+        },
+        "ENTITY_ACTION_PROVIDER": {
+            "ENTITY_ACTION": {
+                "TERMINAL_PAYMENT": "Card payment"
+            }
         }
     }
 }

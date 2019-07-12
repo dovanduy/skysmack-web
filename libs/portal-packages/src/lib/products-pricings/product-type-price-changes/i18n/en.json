@@ -21,7 +21,7 @@
                 "CURRENCYCODE": "Currency code",
                 "RECORDID": "Product type",
                 "CHANGE": "Change",
-                "ISPERCENTAGE": "Change is in Percent (%)",
+                "ISPERCENT": "Change is in Percent (%)",
                 "PERUNIT": "Per unit",
                 "VALIDFROM": "Valid from",
                 "VALIDTO": "Valid to",
@@ -33,7 +33,7 @@
                 "CURRENCYCODE": "Currency code",
                 "RECORDID": "Product type",
                 "CHANGE": "Change",
-                "ISPERCENTAGE": "Change is in Percent (%)",
+                "ISPERCENT": "Change is in Percent (%)",
                 "PERUNIT": "Per unit",
                 "VALIDFROM": "Valid from",
                 "VALIDTO": "Valid to",
@@ -51,7 +51,7 @@
                 "CHANGE": {
                     "REQUIRED": "Change is required"
                 },
-                "ISPERCENTAGE": {
+                "ISPERCENT": {
                     "REQUIRED": "Field is required"
                 },
                 "VALIDFROM": {

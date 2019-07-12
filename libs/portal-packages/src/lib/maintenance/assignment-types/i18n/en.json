@@ -41,7 +41,7 @@
             "BUTTON_EDIT": "Update"
         },
         "INDEX": {
-            "TITLE_EXTRA": "(assignment types)",
+            "TITLE_EXTRAS": "(assignment types)",
             "ACTIONS": "Actions",
             "CREATE": "Create",
             "EDIT": "Edit",

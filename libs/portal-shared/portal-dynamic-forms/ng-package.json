@@ -1,0 +1,16 @@
+{
+  "$schema": "../../../node_modules/ng-packagr/ng-package.schema.json",
+  "dest": "../../../dist/portal-dynamic-forms",
+  "lib": {
+    "entryFile": "src/public_api.ts"
+  },
+  "whitelistedNonPeerDependencies": [
+    "tslib",
+    "@skysmack/redux",
+    "@skysmack/framework",
+    "@skysmack/packages-skysmack-core",
+    "@skysmack/ng-dynamic-forms",
+    "@skysmack/ng-framework",
+    "@skysmack/portal-ui"
+  ]
+}

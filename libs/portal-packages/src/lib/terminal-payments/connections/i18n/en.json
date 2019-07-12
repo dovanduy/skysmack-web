@@ -1,0 +1,51 @@
+{
+    "CONNECTIONS": {
+        "CREATE": {
+            "CREATE": "Create",
+            "BUTTON_CREATE": "Create"
+        },
+        "EDIT": {
+            "EDIT": "Edit",
+            "BUTTON_EDIT": "Update"
+        },
+        "INDEX": {
+            "TITLE_EXTRAS": "(Connections)",
+            "ACTIONS": "Actions",
+            "CREATE": "Create",
+            "DELETE": "Delete",
+            "MANAGE": "Manage",
+            "BACK": "Back"
+        },
+        "FORM": {
+            "LABELS": {
+                "STATUS": "Status",
+                "CLIENTID": "Client",
+                "TERMINALID": "Terminal",
+                "ONLINE": "Online"
+            },
+            "PLACEHOLDERS": {
+                "STATUS": "Status",
+                "CLIENTID": "Client",
+                "TERMINALID": "Terminal",
+                "ONLINE": "Online"
+            },
+            "VALIDATION": {
+                "STATUS": {
+                    "REQUIRED": "Status is required."
+                },
+                "CLIENTID": {
+                    "REQUIRED": "Client is required."
+                },
+                "TERMINALID": {
+                    "REQUIRED": "Terminal is required."
+                }
+            }
+        },
+        "QUEUE": {
+            "ADDING": "Adding connection {{ id }}",
+            "UPDATING": "Updating connection {{ id }}",
+            "DELETING": "Deleting connection {{ id }}",
+            "ERROR": "An error occured with connection {{ id }}. Correct and try again."
+        }
+    }
+}

@@ -4,7 +4,7 @@ import { AssignmentType, ASSIGNMENT_TYPES_REDUX_KEY } from '@skysmack/packages-m
 import { Injectable } from '@angular/core';
 import { NgAssignmentTypesNotifications } from '../ng-assignment-types-notifications';
 import { NgMaintenanceStatesStore, NgMaintenanceStatesActions } from '../../maintenance-states';
-import { NgSkysmackStore } from '@skysmack/ng-core';
+import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 
 @Injectable({ providedIn: 'root' })
 export class NgAssignmentTypesEpics extends RecordEpicsBase<AssignmentType, number> {

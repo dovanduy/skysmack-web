@@ -1,0 +1,5 @@
+<ss-dynamic-form *ngIf="fields$" [fields$]="fields$" [validation]="fieldsConfig.validation"
+    [rules]="fieldsConfig.formRules" [buttonText]="'INVOICES_PRODUCTS.ADD_PRODUCTS.SUBMIT' | translate"
+    (submitted)="onSubmit($event)">
+    <h2 [translate]="'INVOICES_PRODUCTS.ADD_PRODUCTS.TITLE'"></h2>
+</ss-dynamic-form>

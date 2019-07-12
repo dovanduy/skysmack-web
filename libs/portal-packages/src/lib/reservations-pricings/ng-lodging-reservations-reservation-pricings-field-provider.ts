@@ -1,17 +1,17 @@
 import { Injectable, Inject } from '@angular/core';
-import { Field, ResultField } from '@skysmack/ng-ui';
+import { Field, ResultField } from '@skysmack/ng-dynamic-forms';
 import { map, catchError } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
 import { StrIndex, LocalObject, API_DOMAIN_INJECTOR_TOKEN, ApiDomain, GlobalProperties } from '@skysmack/framework';
-import { NgSkysmackStore } from '@skysmack/ng-core';
-import { ResultFieldComponent } from '@skysmack/portal-ui';
-import { FieldProvider } from '@skysmack/portal-ui';
+import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { FormGroup } from '@angular/forms';
-import { ReservationsPricingsType } from '@skysmack/packages-reservations-pricings';
+import { ReservationsPricingsType } from '@skysmack/package-types';
 import { Router } from '@angular/router';
 import { LODGING_RESERVATIONS_AREA_KEY } from '@skysmack/packages-lodging-reservations';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { CustomHttpUrlEncodingCodec } from '@skysmack/ng-framework';
+import { FieldProvider } from '@skysmack/ng-fields';
+import { ResultFieldComponent } from '@skysmack/portal-fields';
 
 @Injectable({ providedIn: 'root' })
 export class NgLodgingReservationsReservationsPricingsFieldProvider extends FieldProvider {
@@ -69,7 +69,7 @@ export class NgLodgingReservationsReservationsPricingsFieldProvider extends Fiel
 
                                                         const priceInfo = body && body.extendedData && body.extendedData && body.extendedData.rooms && body.extendedData.rooms.prices[0];
 
-                                                        return `Price: ${priceInfo ? priceInfo.price : '???'}  ${priceInfo ? priceInfo.currencyCode : '???'}`;
+                                                        return `Price: ${priceInfo ? priceInfo.price : ''}  ${priceInfo ? priceInfo.currencyCode : ''}`;
                                                     }),
                                                     catchError((error) => {
                                                         if (!GlobalProperties.production) {

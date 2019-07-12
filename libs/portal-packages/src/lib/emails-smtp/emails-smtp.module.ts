@@ -2,21 +2,25 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 
-import { LanguageService, SettingsModule } from '@skysmack/portal-ui';
-import { PortalUiModule, FieldsModule } from '@skysmack/portal-ui';
+import { LanguageService } from '@skysmack/portal-ui';
+import { PortalUiModule } from '@skysmack/portal-ui';
 import { NgEmailsSmtpModule } from '@skysmack/ng-packages';
 import { EmailsSmtpRoutingModule } from './emails-smtp-routing.module';
 import { NgEmailsSmptSettingsFieldsConfig } from './ng-emails-smtp-settings-fields-config';
 import { emailsSmtpComponents } from './emails-smtp/components/emails-smtp-components';
+import { DynamicFormsModule } from '@skysmack/portal-dynamic-forms';
+import { SettingsModule } from '@skysmack/portal-settings';
+import { PortalFieldsModule } from '@skysmack/portal-fields';
 
 @NgModule({
   imports: [
     CommonModule,
     HttpClientModule,
     PortalUiModule,
+    DynamicFormsModule,
     EmailsSmtpRoutingModule,
     NgEmailsSmtpModule,
-    FieldsModule,
+    PortalFieldsModule,
     SettingsModule
   ],
   declarations: [
