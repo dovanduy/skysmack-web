@@ -3,10 +3,10 @@ import { RecordEpicsBase, getReadDependencies } from '@skysmack/ng-framework';
 import { NgAccessPolicyRolesRequests } from './ng-access-policy-roles-requests';
 import { AccessPolicyRole, AccessPolicyRoleKey, ACCESS_POLICY_ROLES_REDUX_KEY } from '@skysmack/packages-skysmack-core';
 import { NgAccessPolicyRolesNotifications } from '../ng-access-policy-roles-notifications';
-import { NgSkysmackStore } from '../../../skysmack/redux/ng-skysmack-store';
 import { NgAccessPolicyRulesStore, NgAccessPolicyRulesActions } from '../../access-policy-rules';
 import { NgAccessPolicyRolesStore } from './ng-access-policy-roles-store';
 import { NgAccessPolicyRolesActions } from './ng-access-policy-roles-actions';
+import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 
 
 @Injectable({ providedIn: 'root' })

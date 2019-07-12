@@ -3,7 +3,7 @@ import { Validators } from '@angular/forms';
 import { LocalObject, LocalObjectStatus, PagedQuery } from '@skysmack/framework';
 import { ProductsSalesPrice, PRODUCTS_SALES_PRICE_AREA_KEY } from '@skysmack/packages-products-pricings';
 import { FormRule, SelectField, Field } from '@skysmack/ng-dynamic-forms';
-import { NgProductsSalesPriceValidation, NgProductsStore, NgProductTypesActions, NgProductsActions } from '@skysmack/ng-packages';
+import { NgProductsSalesPriceValidation, NgProductsStore, NgProductsActions } from '@skysmack/ng-packages';
 import { LoadedPackage, getPackageDendencyAsStream } from '@skysmack/ng-framework';
 import { FieldsConfig, FieldProviders } from '@skysmack/ng-fields';
 import { SelectFieldComponent, DecimalFieldComponent, HiddenFieldComponent } from '@skysmack/portal-fields';
