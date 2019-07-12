@@ -1,1 +1,1 @@
-export * from './oaut2-requests';
+export * from './oauth2-requests';
