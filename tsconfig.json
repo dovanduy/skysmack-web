@@ -80,6 +80,9 @@
       ],
       "@skysmack/ng-access-policies": [
         "libs/ng-packages/ng-access-policies/src/public_api.ts"
+      ],
+      "@skysmack/ng-emails": [
+        "libs/ng-packages/ng-emails/src/index.ts"
       ]
     }
   },

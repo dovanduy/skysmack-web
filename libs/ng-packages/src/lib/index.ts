@@ -1,4 +1,3 @@
-export * from './access-policies/index';
 export * from './lodgings/index';
 export * from './lodging-reservations/index';
 export * from './identities/index';

@@ -1,3 +1,3 @@
-export * from './components/index';
-export * from './ng-access-policy-permissions-fields-config';
-export * from './ng-access-policy-permissions-menu';
+export * from './redux/index';
+export * from './ng-access-policy-permissions-notifications';
+export * from './ng-access-policy-permissions-validation';

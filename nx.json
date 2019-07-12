@@ -112,6 +112,9 @@
     },
     "ng-access-policies": {
       "tags": []
+    },
+    "ng-emails": {
+      "tags": []
     }
   }
 }
