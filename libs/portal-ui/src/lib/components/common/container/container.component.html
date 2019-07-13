@@ -31,9 +31,17 @@
 </ng-container>
 
 <ng-template #forbidden>
-  <h3 *ngIf="authenticated$ | async as authenticated; else unauthorized">Forbidden (403)</h3>
+  <ng-container *ngIf="authenticated$ | async as authenticated; else unauthorized">
+    <div class="error-page">
+      <h1>Forbidden (403)</h1>
+      <mat-icon [inline]="true">block</mat-icon>
+    </div>
+  </ng-container>
 </ng-template>
 
 <ng-template #unauthorized>
-  <h3>Unauthorized (401)</h3>
+  <div class="error-page">
+    <h1>Unauthorized (401)</h1>
+    <mat-icon [inline]="true">lock</mat-icon>
+  </div>
 </ng-template>

@@ -72,7 +72,7 @@ router-outlet + * {
 
 @import "./components/editor-sidebar.scss";
 // @import "./components/package-drawer.scss";
-// @import "./components/pages.scss";
+@import "./components/pages.scss";
 // @import "./components/top-bar.scss";
 
 // @import "./elements/loader.scss";
