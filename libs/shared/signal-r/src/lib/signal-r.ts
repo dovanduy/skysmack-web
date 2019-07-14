@@ -83,7 +83,6 @@ export class SignalR {
         this.connected.pipe(
             filter(x => x),
             map(() => {
-                console.log('joining ' + packagePath);
                 if (!this.joinedPackages[packagePath]) {
                     this.joinedPackages[packagePath] = packagePath;
                     this.hubConnection.invoke('Join', packagePath);
@@ -102,7 +101,6 @@ export class SignalR {
         this.connected.pipe(
             filter(x => x),
             map(() => {
-                console.log('leaving ' + packagePath);
                 this.hubConnection.invoke('Leave', packagePath);
                 delete this.joinedPackages[packagePath];
             }),

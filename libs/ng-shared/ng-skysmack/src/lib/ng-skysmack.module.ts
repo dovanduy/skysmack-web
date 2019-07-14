@@ -12,11 +12,12 @@ import { NgSkysmackEpics } from './redux/ng-skysmack-epics';
     CommonModule,
     HttpClientModule
   ],
-  exports: [],
+  exports: [ ],
   providers: [{ provide: 'SkysmackRequests', useClass: NgSkysmackRequests }]
 })
 export class NgSkysmackModule {
-  constructor(epics: NgSkysmackEpics) {
-    registerRedux(SKYSMACK_REDUCER_KEY, skysmackReducer, epics);
+  constructor(//epics: NgSkysmackEpics
+    ) {
+    // registerRedux(SKYSMACK_REDUCER_KEY, skysmackReducer, epics);
   }
 }

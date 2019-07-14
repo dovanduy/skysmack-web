@@ -44,15 +44,4 @@ export class SidebarMenuComponent implements OnInit {
     const menuItems = this.sidebarMenu.primaryMenuItems;
     this.sidebarMenu.primaryMenuAreas = menuAreas.filter(menuArea => menuItems.find(menuItem => menuItem.area === menuArea.area) ? true : false);
   }
-
-  /** Toggles the expanded state */
-  public toggleExpand(category: string) {
-    this.expansions[category] = !this.expansions[category];
-  }
-
-  /** Gets whether expanded or not */
-  public getExpanded(category: string): boolean {
-    return this.expansions[category] === undefined ? true : this.expansions[category];
-  }
-
 }
