@@ -42,7 +42,7 @@ export class SignalR {
 
         this.hubConnection.onclose(() => {
             this.connected.next(false);
-            setTimeout(() => this.startHubConnection(), this.randomIntFromInterval(5000, 15000));
+            this.startHubConnection(); // Reconnect right away on disconnect. 
         });
 
         this.startHubConnection();
