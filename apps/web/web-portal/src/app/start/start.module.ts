@@ -38,7 +38,8 @@ import { emailsRoute } from '../packages/emails-package-manifest';
 import { emailsSmtpRoute } from '../packages/emails-smtp-package-manifest';
 import { terminalPaymentsRoute } from '../packages/terminal-payments-manifest';
 import { invoicesProductsRoute } from '../packages/invoices-products-package-manifest';
-import { NgSkysmackModule } from '@skysmack/ng-skysmack';
+import { NgSkysmackModule, NgSkysmackEpics } from '@skysmack/ng-skysmack';
+import { SKYSMACK_REDUCER_KEY, skysmackReducer } from '@skysmack/packages-skysmack-core';
 // import { NgxGraphModule } from '@swimlane/ngx-graph';
 // import { NgxChartsModule } from '@swimlane/ngx-charts';
 // NgxGraphModule,
@@ -104,11 +105,13 @@ export class StartModule {
     public ngRedux: NgRedux<any>,
     public ngReduxRouter: NgReduxRouter,
     public reduxOfflineConfiguration: ReduxOfflineConfiguration,
+    public skysmackEpics: NgSkysmackEpics,
     public fieldEpics: NgFieldEpics,
     public settingsEpics: NgSettingsEpics,
     public coalescingResolver: CoalescingComponentFactoryResolver
   ) {
     configureRedux(ngRedux, ngReduxRouter, reduxOfflineConfiguration);
+    registerRedux(SKYSMACK_REDUCER_KEY, skysmackReducer, skysmackEpics);
     registerRedux('fields', fieldReducer, fieldEpics);
     registerRedux('settings', settingsReducer, settingsEpics);
     GlobalProperties.production = environment.production;

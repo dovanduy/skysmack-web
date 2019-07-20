@@ -20,6 +20,7 @@ import { PortalFieldsModule } from '@skysmack/portal-fields';
     PersonsRoutingModule,
     PortalFieldsModule
   ],
+  exports: [],
   declarations: [
     ...personsComponents
   ],

@@ -1,5 +1,9 @@
 @import "../../../../../../../assets/scss/_includes.scss";
 
+:host {
+  min-height: 56px;
+}
+
 .docs-navbar-header {
   display: flex;
   flex-wrap: wrap;

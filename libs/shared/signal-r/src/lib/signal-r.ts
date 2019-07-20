@@ -35,14 +35,14 @@ export class SignalR {
             .build();
 
         //this lines up with the method called by `SendAsync`
-        this.hubConnection.on("Message", (packagePath: string, message: any) => {
+        this.hubConnection.on("Send", (packagePath: string, message: any) => {
             console.log('Signal R message:', packagePath, message);
             this.providers.forEach(provider => provider.messageProvided(packagePath, message))
         });
 
         this.hubConnection.onclose(() => {
             this.connected.next(false);
-            setTimeout(() => this.startHubConnection(), this.randomIntFromInterval(5000, 15000));
+            this.startHubConnection(); // Reconnect right away on disconnect. 
         });
 
         this.startHubConnection();

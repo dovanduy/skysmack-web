@@ -18,11 +18,12 @@ export class NgSkysmackRequests implements SkysmackRequests {
         @Inject(API_DOMAIN_INJECTOR_TOKEN) private apiDomain: ApiDomain
     ) { }
 
-    public get(): Observable<ReduxAction<Skysmack> | ReduxAction<HttpErrorResponse>> {
+    public get(action: ReduxAction): Observable<ReduxAction<Skysmack> | ReduxAction<HttpErrorResponse>> {
         return this.http.get<Skysmack>(this.apiDomain.domain + '/skysmack', { observe: 'response' }).pipe(
             map(response => Object.assign({}, new ReduxAction<Skysmack>({
                 type: SkysmackActions.GET_SKYSMACK_SUCCESS,
-                payload: response.body
+                payload: response.body,
+                meta: action.payload
             }))),
             retry(this.retryTimes),
             catchError((error) => of(Object.assign({}, new ReduxAction<HttpErrorResponse>({
