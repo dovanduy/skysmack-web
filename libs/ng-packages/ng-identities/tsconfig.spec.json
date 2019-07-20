@@ -1,7 +1,7 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "outDir": "../../../dist/libs/ng-identities",
+    "outDir": "../../../dist/out-tsc/libs/ng-identities",
     "module": "commonjs",
     "types": ["jest", "node"]
   },

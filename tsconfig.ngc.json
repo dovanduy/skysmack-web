@@ -102,16 +102,16 @@
         "./dist/@skysmack/packages-emails"
       ],
       "@skysmack/ng-access-policies": [
-        "libs/ng-packages/ng-access-policies/src/public_api.ts"
+        "libs/ng-packages/ng-access-policies"
       ],
       "@skysmack/ng-emails": [
-        "libs/ng-packages/ng-emails/src/index.ts"
+        "libs/ng-packages/ng-emails"
       ],
       "@skysmackng-email-smtp": [
-        "libs/ng-packages/ng-email-smtp/src/index.ts"
+        "libs/ng-packages/ng-email-smtp"
       ],
       "@skysmack/ng-identities": [
-        "libs/ng-packages/ng-identities/src/index.ts"
+        "libs/ng-packages/ng-identities"
       ]
     }
   },
