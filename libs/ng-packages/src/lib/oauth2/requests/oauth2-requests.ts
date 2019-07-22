@@ -14,7 +14,7 @@ export class Oauth2Requests {
     ) { }
 
     login(email: string, password: string, authPath: string): Observable<ReduxAction<CurrentUser> | ReduxAction<HttpErrorResponse>> {
-        const url = `${this.apiDomain.domain}/${authPath}/password`;
+        const url = `${this.apiDomain.domain}/${authPath}/token`;
         const params = new HttpParams()
             .append('grant_type', 'password')
             .append('username', email)
