@@ -44,7 +44,6 @@ export class ProductsPricingsModule {
     fieldProviders: FieldProviders,
     productPricingsFieldProvider: NgProductPricingsFieldProvider
   ) {
-    console.log('ProductsPricingsModule.ctor');
     fieldProviders.add(ProductsType.id, productPricingsFieldProvider);
   }
 }

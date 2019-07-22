@@ -20,7 +20,7 @@ export class NgProductTypesMenu extends SidebarMenu {
         super(redux, router, menuItemProviders);
         this.setPrimaryMenu();
         this.setSpeedDialMenu();
-        this.runMenuItemProviders();
+        
     }
 
     public setPrimaryMenu() {

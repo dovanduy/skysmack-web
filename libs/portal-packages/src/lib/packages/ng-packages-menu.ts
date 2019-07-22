@@ -21,7 +21,7 @@ export class NgPackagesMenu extends SidebarMenu {
         super(redux, router, menuItemProviders);
         this.setPrimaryMenu();
         this.setSpeedDialMenu();
-        this.runMenuItemProviders();
+        
     }
 
     public setPrimaryMenu() {

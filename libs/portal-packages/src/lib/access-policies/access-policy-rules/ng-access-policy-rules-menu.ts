@@ -21,7 +21,7 @@ export class NgAccessPolicyRulesMenu extends SidebarMenu {
         super(store, router, menuItemProviders);
         this.setPrimaryMenu();
         this.setSpeedDialMenu();
-        this.runMenuItemProviders();
+        
     }
 
     public setPrimaryMenu() {
