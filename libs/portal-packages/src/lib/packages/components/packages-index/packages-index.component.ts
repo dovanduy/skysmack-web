@@ -6,7 +6,7 @@ import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { NgPackagesStore } from '@skysmack/ng-packages';
 import { PackagesAppState, PACKAGES_AREA_KEY } from '@skysmack/packages-skysmack-core';
 import { NgPackagesMenu } from './../../ng-packages-menu';
-import { MenuItem } from '@skysmack/framework';
+import { MenuItem, LocalObject } from '@skysmack/framework';
 import { NgPackagesFieldsConfig } from '../../ng-packages-fields-config';
 import { Package } from '@skysmack/framework';
 import { RecordIndexComponent } from '@skysmack/portal-fields';
@@ -18,6 +18,7 @@ import { RecordIndexComponent } from '@skysmack/portal-fields';
 export class PackagesIndexComponent extends RecordIndexComponent<PackagesAppState, Package, string> implements OnInit {
   public areaKey: string = PACKAGES_AREA_KEY;
   public menuItemActions: MenuItem[] = [
+    new MenuItem().asEventAction(`open`, this.openPackage, 'label', this),
     new MenuItem().asUrlAction('edit', MENU_ITEM_ACTIONS_EDIT, 'edit'),
     new MenuItem().asUrlAction('edit/path', 'PACKAGES.EDIT.PACKAGE_PATH', 'link'),
     new MenuItem().asEventAction(MENU_ITEM_ACTIONS_DELETE, this.delete, 'delete', this)
@@ -40,4 +41,9 @@ export class PackagesIndexComponent extends RecordIndexComponent<PackagesAppStat
   ngOnInit() {
     super.ngOnInit();
   }
+
+  public openPackage(_this: PackagesIndexComponent, entity: LocalObject<Package, string>) {
+    _this.router.navigateByUrl(entity.object.path);
+  }
+
 }
