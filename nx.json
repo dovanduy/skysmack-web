@@ -109,6 +109,9 @@
     },
     "portal-shared-portal-fields": {
       "tags": []
+    },
+    "ng-access-policies": {
+      "tags": []
     }
   }
 }
