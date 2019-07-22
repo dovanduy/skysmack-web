@@ -5,9 +5,11 @@ import { LocalObject, StrIndex, reinstantiateLocalRecord } from '@skysmack/frame
 const loopPackageDictionary = (newState: any, selector: string) => {
     Object.keys(newState[selector]).map(packagePath => {
         const localRecords: StrIndex<LocalObject<any, any>> = newState[selector][packagePath];
-        Object.keys(localRecords).forEach(localRecordKey => {
-            localRecords[localRecordKey] = reinstantiateLocalRecord(localRecords[localRecordKey]);
-        });
+        if(localRecords) {
+            Object.keys(localRecords).forEach(localRecordKey => {
+                localRecords[localRecordKey] = reinstantiateLocalRecord(localRecords[localRecordKey]);
+            });
+        }
     });
 }
 
