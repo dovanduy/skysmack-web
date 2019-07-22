@@ -35,7 +35,8 @@ export class NgPersonsFieldsConfig extends DocumentFieldsConfig<Person, number> 
                 key: 'firstName',
                 validators: [Validators.required],
                 order: 1,
-                showColumn: true
+                showColumn: false,
+                sortable: true
             }),
 
             new Field({
@@ -44,7 +45,8 @@ export class NgPersonsFieldsConfig extends DocumentFieldsConfig<Person, number> 
                 key: 'lastName',
                 validators: [Validators.required],
                 order: 2,
-                showColumn: true
+                showColumn: false,
+                sortable: true
             }),
 
             new Field({
@@ -52,7 +54,9 @@ export class NgPersonsFieldsConfig extends DocumentFieldsConfig<Person, number> 
                 value: entity ? entity.object.displayName : undefined,
                 key: 'displayName',
                 validators: [Validators.required],
-                order: 3
+                order: 3,
+                showColumn: true,
+                sortable: true
             })
         ];
 
