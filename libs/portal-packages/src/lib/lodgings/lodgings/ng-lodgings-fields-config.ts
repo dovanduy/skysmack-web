@@ -33,7 +33,8 @@ export class NgLodgingsFieldsConfig extends DocumentFieldsConfig<Lodging, number
                 key: 'name',
                 validators: [Validators.required],
                 order: 1,
-                showColumn: true
+                showColumn: true,
+                sortable: true
             }),
             new SelectField({
                 component: SelectFieldComponent,
@@ -46,7 +47,8 @@ export class NgLodgingsFieldsConfig extends DocumentFieldsConfig<Lodging, number
                 getDependencies: () => { this.lodgingTypesActions.getPaged(loadedPackage._package.path, new PagedQuery()); },
                 disabled: entity && entity.object ? true : false,
                 order: 2,
-                showColumn: true
+                showColumn: true,
+                sortable: true
             }),
             new Field({
                 component: CheckboxFieldComponent,
@@ -55,7 +57,8 @@ export class NgLodgingsFieldsConfig extends DocumentFieldsConfig<Lodging, number
                 key: 'disabled',
                 validators: [Validators.required],
                 order: 3,
-                showColumn: true
+                showColumn: true,
+                sortable: true
             }),
         ];
 
