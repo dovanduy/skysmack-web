@@ -3,7 +3,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgRedux, NgReduxModule } from '@angular-redux/store';
 
 import { RouterModule } from '@angular/router';
-import { NgModule, NgModuleFactoryLoader, SystemJsNgModuleLoader } from '@angular/core';
+import { NgModule, SystemJsNgModuleLoader } from '@angular/core';
 
 import { FrontPageComponent } from './components/front-page/front-page.component';
 import { ReduxOfflineConfiguration } from '../redux/redux-offline.configuration';
@@ -96,7 +96,8 @@ import { SKYSMACK_REDUCER_KEY, skysmackReducer } from '@skysmack/packages-skysma
   providers: [
     applicationStartup,
     LanguageService,
-    CoalescingComponentFactoryResolver
+    CoalescingComponentFactoryResolver,
+    SystemJsNgModuleLoader
   ],
   bootstrap: [StartComponent]
 })

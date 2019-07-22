@@ -54,7 +54,7 @@ export class ContainerComponent implements OnInit, OnDestroy {
         } else {
           this.editorNavService.hideEditorNav();
         }
-      })      
+      })
     ).subscribe();
 
     if (this.activatedRoute.firstChild) {

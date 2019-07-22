@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation, OnDestroy, SystemJsNgModuleLoader, Injector, NgModuleFactory, NgModuleFactoryLoader } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, OnDestroy } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Router, RouteConfigLoadStart, RouteConfigLoadEnd } from '@angular/router';
 import { PackageRouteConfiguration } from '@skysmack/portal-ui';

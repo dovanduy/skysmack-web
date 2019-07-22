@@ -1,4 +1,4 @@
-import { Injectable, Injector } from '@angular/core';
+import { Injectable, Injector, SystemJsNgModuleLoader, NgModuleFactory } from '@angular/core';
 import { Router, Route } from '@angular/router';
 import { hasValue } from '@skysmack/framework';
 import { Skysmack } from '@skysmack/packages-skysmack-core';
@@ -20,6 +20,7 @@ export class PackageRouteConfiguration {
     }
 
     constructor(
+        private loader: SystemJsNgModuleLoader,
         public store: NgSkysmackStore,
         public injector: Injector
     ) { }
@@ -32,6 +33,14 @@ export class PackageRouteConfiguration {
                     skysmack.packages.map(_package => {
                         return PackageLoader.packageManifests.map(routingPath => {
                             if (routingPath.id === _package.type) {
+
+                                // Create an instance of all installed packages, to ensure their provided functionality is available.
+                                if (typeof routingPath.modulePath === 'string') {
+                                    this.loader.load(routingPath.modulePath).then((moduleFactory: NgModuleFactory<any>) => {
+                                        const moduleRef = moduleFactory.create(this.injector);
+                                    });
+                                }
+
                                 this.addRoute(_package.path, routingPath.modulePath);
                             }
                         });

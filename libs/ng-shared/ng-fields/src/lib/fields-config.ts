@@ -20,7 +20,6 @@ export abstract class FieldsConfig<TRecord, TKey> implements EntityFieldsConfig<
     }
 
     protected getRecordFields(loadedPackage: LoadedPackage, entity?: LocalObject<TRecord, TKey>): Observable<Field[]> {
-        console.log('FieldsConfig.getRecordFields');
         const staticFields = this.getStaticFields(loadedPackage, entity);
         return this.getProvidedFields(loadedPackage, entity).pipe(
             distinctUntilChanged(),
@@ -54,7 +53,6 @@ export abstract class FieldsConfig<TRecord, TKey> implements EntityFieldsConfig<
     }
 
     private getProvidedFields(loadedPackage: LoadedPackage, entity?: LocalObject<TRecord, TKey>): Observable<Field[]> {
-        console.log('FieldsConfig.getProvidedFields');
         return this.fieldProviders.providers$.pipe(
             switchMap(providers => {
                 const extractedProviders = providers[loadedPackage && loadedPackage.packageManifest && loadedPackage.packageManifest.id];
