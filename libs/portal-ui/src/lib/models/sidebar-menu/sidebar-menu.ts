@@ -60,7 +60,7 @@ export abstract class SidebarMenu implements OnDestroy {
     }
 
 
-    protected runMenuItemProviders() {
+    public runMenuItemProviders() {
         this.subscriptionHandler.register(this.menuItemProviders.providers$.pipe(
             switchMap(providers => combineLatest(
                 providers.map(provider => this.skysmackStore.getCurrentPackage(this.packagePath).pipe(

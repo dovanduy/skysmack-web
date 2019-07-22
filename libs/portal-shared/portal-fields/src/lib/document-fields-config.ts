@@ -10,7 +10,7 @@ import { DateTimeFieldComponent } from './field-components/components/date-time-
 import { StringFieldComponent } from './field-components/components/string-field/string-field.component';
 import { FieldsConfig } from '@skysmack/ng-fields';
 import { Observable, combineLatest } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { NgFieldStore, LoadedPackage, getAdditionalPaths } from '@skysmack/ng-framework';
 import { FieldProviders } from '@skysmack/ng-fields';
 import { Router } from '@angular/router';

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation, OnDestroy } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, OnDestroy, SystemJsNgModuleLoader, Injector, NgModuleFactory, NgModuleFactoryLoader } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Router, RouteConfigLoadStart, RouteConfigLoadEnd } from '@angular/router';
 import { PackageRouteConfiguration } from '@skysmack/portal-ui';
@@ -23,7 +23,7 @@ export class StartComponent implements OnInit, OnDestroy {
   constructor(
     public router: Router,
     public store: NgSkysmackStore,
-    public packageRouteConfiguration: PackageRouteConfiguration,
+    public packageRouteConfiguration: PackageRouteConfiguration
   ) {
   }
 
@@ -35,7 +35,7 @@ export class StartComponent implements OnInit, OnDestroy {
 
     this.subscriptionHandler.register(this.router.events.subscribe(event => {
       if (event instanceof RouteConfigLoadStart) {
-        if (event.route.data && event.route.data.optional) {          
+        if (event.route.data && event.route.data.optional) {
         } else {
           this.loadingRouteConfig.push(event.route.path);
         }

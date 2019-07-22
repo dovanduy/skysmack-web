@@ -42,8 +42,9 @@ import { FieldProviders } from '@skysmack/ng-fields';
 export class ProductsPricingsModule {
   constructor(
     fieldProviders: FieldProviders,
-    productPricingsFieldProvider: NgProductPricingsFieldProvider,
+    productPricingsFieldProvider: NgProductPricingsFieldProvider
   ) {
+    console.log('ProductsPricingsModule.ctor');
     fieldProviders.add(ProductsType.id, productPricingsFieldProvider);
   }
 }

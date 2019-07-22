@@ -23,10 +23,14 @@ export class NgProductPricingsFieldProvider extends FieldProvider {
     }
 
     public getFields(packagePath: string, area: string, entity?: LocalObject<any, any>): Observable<Field[]> {
+        console.log('getFields');
         if (area == PRODUCTS_AREA_KEY) {
+            console.log('area', area);
+            console.log('PRODUCTS_AREA_KEY', PRODUCTS_AREA_KEY);
             return this.skysmackStore.getPackages().pipe(
                 map(packages => packages.filter(_package => _package.object.type === ProductsPricingsType.id)),
                 map(productPricingPackages => {
+                    console.log('productPricingPackages', productPricingPackages);
                     if (productPricingPackages && productPricingPackages.length > 0) {
                         return productPricingPackages.map(productPricingPackage => {
                             const displayModifier = (column: DisplayColumn, providedEntity: LocalObject<Product, number>): string => {

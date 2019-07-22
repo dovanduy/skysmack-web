@@ -10,6 +10,7 @@ import { Product, ProductsAppState, PRODUCTS_AREA_KEY } from '@skysmack/packages
 import { NgProductsMenu } from '../../ng-products-menu';
 import { NgProductsFieldsConfig } from '../../ng-products-fields-config';
 import { DocumentRecordIndexComponent } from '@skysmack/portal-fields';
+import { switchMap, map } from 'rxjs/operators';
 
 @Component({
   selector: 'ss-products-index',
@@ -39,6 +40,21 @@ export class ProductsIndexComponent extends DocumentRecordIndexComponent<Product
   }
 
   ngOnInit() {
+    this.sidebarMenu.runMenuItemProviders();
+
+    // console.log('ProductsModule, router url', this.router.url.split('/')[1]);
+    // this.skysmackStore.getCurrentPackage(this.router.url.split('/')[1]).pipe(
+    //   switchMap(currentPackage => this.skysmackStore.getPackages().pipe(
+    //     map(packages => {
+    //       packages.forEach(installedPackage => {
+    //         if (installedPackage.object.dependencies.includes(currentPackage._package.path)) {
+    //           console.log(`Package with path ${this.router.url.split('/')[1]} has a relation with package`, installedPackage);
+    //         }
+    //       });
+    //     })
+    //   ))
+    // ).subscribe();
+
     super.ngOnInit();
   }
 }
