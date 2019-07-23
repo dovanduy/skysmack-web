@@ -24,11 +24,6 @@ export abstract class SidebarMenu implements OnDestroy {
     public packagePath: string;
     public additionalPaths: string[];
 
-    // TEMP
-    public primaryMenuAreas = [];
-    public primaryMenuItems = [];
-    public speedDialMenuItems = [];
-
     public primaryMenuAreas$ = new BehaviorSubject<MenuArea[]>([]);
     public primaryMenuItems$ = new BehaviorSubject<MenuItem[]>([]);
 

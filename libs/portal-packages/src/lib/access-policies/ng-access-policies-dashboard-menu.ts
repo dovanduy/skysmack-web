@@ -20,50 +20,52 @@ export class NgAccessPoliciesDashboardMenu extends SidebarMenu {
         super(store, router, menuItemProviders);
         this.setPrimaryMenu();
         this.setSpeedDialMenu();
-        
+        this.runMenuItemProviders();
     }
 
     public setPrimaryMenu() {
-        this.primaryMenuAreas.push(new MenuArea({
-            area: 'manage',
-            translationPrefix: this.translationPrefix,
-            order: 2,
-        }));
+        this.addToPrimaryMenuAreas([
+            new MenuArea({
+                area: 'manage',
+                translationPrefix: this.translationPrefix,
+                order: 2,
+            })
+        ]);
 
-
-        this.primaryMenuItems.push(new MenuItem({
-            url: 'permissions',
-            displayName: this.translationPrefix + 'PERMISSIONS',
-            area: 'manage',
-            order: 1,
-            icon: 'groupAdd',
-            permissions: [
-                AccessPolciesPermissions.findPermissions
-            ]
-        }));
-        this.primaryMenuItems.push(new MenuItem({
-            url: 'roles',
-            displayName: this.translationPrefix + 'ROLES',
-            area: 'manage',
-            order: 2,
-            icon: 'groupAdd',
-            permissions: [
-                AccessPolciesPermissions.findRoles
-            ]
-        }));
-        this.primaryMenuItems.push(new MenuItem({
-            url: 'rules',
-            displayName: this.translationPrefix + 'RULES',
-            area: 'manage',
-            order: 3,
-            icon: 'groupAdd',
-            permissions: [
-                AccessPolciesPermissions.findRules
-            ]
-        }));
+        this.addToPrimaryMenuItems([
+            new MenuItem({
+                url: 'permissions',
+                displayName: this.translationPrefix + 'PERMISSIONS',
+                area: 'manage',
+                order: 1,
+                icon: 'groupAdd',
+                permissions: [
+                    AccessPolciesPermissions.findPermissions
+                ]
+            }),
+            new MenuItem({
+                url: 'roles',
+                displayName: this.translationPrefix + 'ROLES',
+                area: 'manage',
+                order: 2,
+                icon: 'groupAdd',
+                permissions: [
+                    AccessPolciesPermissions.findRoles
+                ]
+            }),
+            new MenuItem({
+                url: 'rules',
+                displayName: this.translationPrefix + 'RULES',
+                area: 'manage',
+                order: 3,
+                icon: 'groupAdd',
+                permissions: [
+                    AccessPolciesPermissions.findRules
+                ]
+            })
+        ]);
     }
 
     public setSpeedDialMenu() {
-        this.speedDialMenuItems = [];
     }
 }
