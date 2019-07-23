@@ -186,10 +186,7 @@
 		},
 		"INDEX": {
 			"ACTIONS": "Handlinger",
-			"MANAGE": "Konfigurer",
-			"CHANGE_PASSWORD": "Skift kodeord",
-			"FORGOT_PASSWORD": "Glemt password",
-			"CONFIRM_EMAIL": "Bekræft email"
+			"MANAGE": "Konfigurer"
 		},
 		"NOTIFICATIONS": {},
 		"QUEUE": {}
@@ -202,6 +199,10 @@
 			"USERS_ROLES_TITLE": "Bruger roller",
 			"MANAGE": "Konfigurer",
 			"SETTINGS": "Indstillinger",
+			"ACCOUNT": "Bruger konto",
+			"CHANGE_PASSWORD": "Skift kodeord",
+            "FORGOT_PASSWORD": "Glemt kodeord",
+            "CONFIRM_EMAIL": "Bekræft email",
 			"AVAILABLE_SETTINGS": {
 				"LOCKOUT": "Lås ude",
 				"USER": "Brugere",

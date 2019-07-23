@@ -34,6 +34,16 @@ export class NgIdentitiesIndexMenu extends SidebarMenu {
                 area: 'manage',
                 translationPrefix: this.translationPrefix,
                 order: 2,
+            }),
+            new MenuArea({
+                area: 'account',
+                translationPrefix: this.translationPrefix,
+                order: 3,
+            }),
+            new MenuArea({
+                area: 'settings',
+                translationPrefix: this.translationPrefix,
+                order: 3,
             })
         ]);
 
@@ -59,14 +69,25 @@ export class NgIdentitiesIndexMenu extends SidebarMenu {
                 ]
             }),
             new MenuItem({
-                url: 'account',
-                displayName: this.translationPrefix + 'ACCOUNTS',
-                area: 'manage',
-                order: 2,
-                icon: 'groupAdd',
-                permissions: [
-                    // ???
-                ]
+                url: 'change-password',
+                displayName: this.translationPrefix + 'CHANGE_PASSWORD',
+                area: 'account',
+                order: 1,
+                icon: 'groupAdd'
+            }),
+            new MenuItem({
+                url: 'forgot-password',
+                displayName: this.translationPrefix + 'FORGOT_PASSWORD',
+                area: 'account',
+                order: 1,
+                icon: 'groupAdd'
+            }),
+            new MenuItem({
+                url: 'confirm-email',
+                displayName: this.translationPrefix + 'CONFIRM_EMAIL',
+                area: 'account',
+                order: 1,
+                icon: 'groupAdd'
             }),
             new MenuItem({
                 url: 'settings/lockout',

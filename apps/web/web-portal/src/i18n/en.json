@@ -207,7 +207,11 @@
 				"PASSWORD": "Password",
 				"SIGNIN": "Sign in"
 			},
-			"ACCOUNTS": "Accounts"
+			"ACCOUNTS": "Accounts",
+			"ACCOUNT": "Account",
+			"CHANGE_PASSWORD": "Change password",
+			"FORGOT_PASSWORD": "Forgot password",
+			"CONFIRM_EMAIL": "Confirm email"
 		}
 	},
 	"IDENTITIES_SETTINGS": {
@@ -362,7 +366,9 @@
 			"BACK": "Back",
 			"ENTITY_ACTION_SET_PASSWWORD": "Set password",
 			"ENTITY_ACTION_ROLES": "Roles",
-			"FIELDS_TITLE": "(fields)"
+			"FIELDS_TITLE": "(fields)",
+			"SETTINGS": "Settings",
+			"ACCOUNT": "Account"
 		},
 		"ROLES": {
 			"CURRENT_ROLES": "{{ object.email }} current roles",
@@ -2172,7 +2178,7 @@
 			"DETAILS": "Details"
 		},
 		"RECORDS_CONTAINER": {
-            "LOADED": "Loaded {{ loadedCount }} out of {{ totalCount }}"
+			"LOADED": "Loaded {{ loadedCount }} out of {{ totalCount }}"
 		},
 		"BUTTONS": {
 			"BUTTON_ADD": "Add",
