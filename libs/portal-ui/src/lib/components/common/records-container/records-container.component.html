@@ -17,7 +17,14 @@
               </ng-container>
             </div>
           </th>
-          <th class="table-cell mat-header-cell"></th>
+          <th class="table-cell mat-header-cell action-buttons">
+            <button mat-icon-button>
+              <mat-icon>refresh</mat-icon>
+            </button>
+            <button mat-icon-button>
+              <mat-icon>filter_list</mat-icon>
+            </button>
+          </th>
         </tr>
       </thead>
       <tbody *cdkVirtualFor="let entity of entities$ | async as entities; trackBy: trackByLocalId; let i = index;">
@@ -28,7 +35,8 @@
             {{ entity.object[column.fieldDisplayKey ? column.fieldDisplayKey : column.fieldKey] | displayValue:column | displayModifier:column:entity }}
           </td>
           <td class="table-cell mat-cell action-buttons">
-            <mat-icon class="success-icon" color="primary" *ngIf="entity.isNew && entity.status !== 'CREATING'">check_circle</mat-icon>
+            <mat-icon class="success-icon" color="primary" *ngIf="entity.isNew && entity.status !== 'CREATING'">
+              check_circle</mat-icon>
             <mat-icon class="error-icon" color="warn" *ngIf="entity.error">error</mat-icon>
             <!-- ENTITY ACTIONS -->
             <ng-container *ngIf="menuItemActions$ | async as menuItemActions">
@@ -42,18 +50,18 @@
                     <ng-template [inAnyPermission]="menuItemAction.permissions"
                       (permissionsChecked)="menuItemAction.display = $event">
                       <!-- ACTION EVENT  -->
-                      <a *ngIf="menuItemAction.isActionEvent && (menuItemAction | showMenuItemAction:entity) && menuItemAction.display"
+                      <button *ngIf="menuItemAction.isActionEvent && (menuItemAction | showMenuItemAction:entity) && menuItemAction.display"
                         mat-menu-item
                         (click)="menuItemActionEvent.emit({ action: menuItemAction.action, value: entity, _this: menuItemAction._this })">
-                        <i class="material-icons">{{ menuItemAction.icon }}</i> <span
-                          class="icon-text">{{ menuItemAction.displayName | translate }}</span>
-                      </a>
+                        <mat-icon>{{ menuItemAction.icon }}</mat-icon> 
+                        <span>{{ menuItemAction.displayName | translate }}</span>
+                      </button>
                       <!-- URL EVENT -->
-                      <a *ngIf="!menuItemAction.isActionEvent && menuItemAction.display" mat-menu-item
+                      <button *ngIf="!menuItemAction.isActionEvent && menuItemAction.display" mat-menu-item
                         [routerLink]="[menuItemAction.url, entity.objectIdentifier]">
-                        <i class="material-icons">{{ menuItemAction.icon }}</i>
-                        <span class="icon-text">{{ menuItemAction.displayName | translate }}</span>
-                      </a>
+                        <mat-icon>{{ menuItemAction.icon }}</mat-icon>
+                        <span>{{ menuItemAction.displayName | translate }}</span>
+                      </button>
                     </ng-template>
                   </ng-container>
                 </mat-menu>
