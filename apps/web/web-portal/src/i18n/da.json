@@ -2135,7 +2135,7 @@
 			"DETAILS": "Detaljer"
 		},
 		"RECORDS_CONTAINER": {
-			"LOADED": "Hentet {{ value }} ud af"
+			"LOADED": "Hentet {{ loadedCount }} ud af {{ totalCount }}"
 		},
 		"BUTTONS": {
 			"BUTTON_ADD": "Tilføj",

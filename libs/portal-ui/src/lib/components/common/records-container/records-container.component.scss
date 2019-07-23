@@ -113,6 +113,10 @@ table {
   padding: 8px 16px;
   color: rgba(82, 82, 82, 0.87);
   font-size: .7rem;
+
+  @media (max-width: $small-breakpoint-width) {
+    text-align: left;
+  }
 }
 
 .success-icon, .error-icon {
