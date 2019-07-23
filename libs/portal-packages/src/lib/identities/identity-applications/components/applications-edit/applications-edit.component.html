@@ -1,0 +1,6 @@
+<ss-dynamic-form *ngIf="fields$" [fields$]="fields$" [validation]="fieldsConfig.validation"
+  [rules]="fieldsConfig.formRules" [buttonText]="'APPLICATIONS.EDIT.BUTTON_EDIT' | translate"
+  (submitted)="onUpdateSubmit($event)">
+  <h2 *ngIf="selectedEntity" [translate]="'APPLICATIONS.EDIT.EDITING'"
+    [translateParams]="{name: selectedEntity.object.name}"></h2>
+</ss-dynamic-form>
