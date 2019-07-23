@@ -2,6 +2,7 @@ import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { speedDialFabAnimations } from './speed-dial-fab.animations';
 import { SidebarMenu } from './../../../models/sidebar-menu/sidebar-menu';
 import { MenuItem } from '@skysmack/framework';
+import { BehaviorSubject } from 'rxjs';
 
 // https://medium.com/@webdev_aaron/fab-speed-dial-with-angular-5-2-angular-material-be696fc14967
 @Component({
@@ -12,8 +13,8 @@ import { MenuItem } from '@skysmack/framework';
 })
 export class SpeedDialFabComponent implements OnInit {
     @Input() public sidebarMenu: SidebarMenu;
-    public menuItems: MenuItem[] = [];
-    public buttons = [];
+    public menuItems$: BehaviorSubject<MenuItem[]>;;
+    public buttons$: BehaviorSubject<MenuItem[]>;
     public fabTogglerState = 'inactive';
 
     @Output() public menuItemActionEvent = new EventEmitter<any>();
@@ -21,20 +22,20 @@ export class SpeedDialFabComponent implements OnInit {
     constructor() { }
 
     ngOnInit(): void {
-        this.menuItems = this.sidebarMenu.speedDialMenuItems;
+        this.menuItems$ = this.sidebarMenu.speedDialMenuItems$;
     }
 
     showItems() {
         this.fabTogglerState = 'active';
-        this.buttons = this.menuItems;
+        this.buttons$.next(this.menuItems$.getValue());
     }
 
     hideItems() {
         this.fabTogglerState = 'inactive';
-        this.buttons = [];
+        this.buttons$.next([]);
     }
 
     onToggleFab() {
-        this.buttons.length ? this.hideItems() : this.showItems();
+        this.buttons$.getValue().length ? this.hideItems() : this.showItems();
     }
 }

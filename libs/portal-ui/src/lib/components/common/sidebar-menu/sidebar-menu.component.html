@@ -1,13 +1,13 @@
 <div *ngIf="sidebarMenu" class="docs-component-viewer-nav">
   <div class="docs-component-viewer-nav-content">
-    <ng-container *ngFor="let menuArea of sidebarMenu.primaryMenuAreas; let last = last;">
+    <ng-container *ngFor="let menuArea of sidebarMenu.primaryMenuAreas$ | async; let last = last;">
       <nav *ngIf="menuArea.display">
-        <span class="docs-nav-content-btn" >
+        <span class="docs-nav-content-btn">
           {{ menuArea.displayName | translate }}
         </span>
 
         <ul>
-          <ng-container *ngFor="let menuItem of sidebarMenu.primaryMenuItems">
+          <ng-container *ngFor="let menuItem of sidebarMenu.primaryMenuItems$ | async">
             <ng-container *ngIf="menuItem.area === menuArea.area">
               <ng-template [inAnyPermission]="menuItem.permissions"
                 (permissionsChecked)="permissionsChecked($event, menuItem)">
@@ -23,7 +23,7 @@
                   <a [routerLink]="[menuItem.url]">
                     {{ menuItem.displayName | translate }}
                   </a>
-                </li> 
+                </li>
 
 
               </ng-template>

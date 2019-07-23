@@ -35,13 +35,15 @@ export class SidebarMenuComponent implements OnInit {
 
   public permissionsChecked(displaying: boolean, menuItem: MenuItem) {
     menuItem.display = displaying;
-    const menuArea = this.sidebarMenu.primaryMenuAreas.find(x => x.area === menuItem.area);
-    menuArea.display = this.sidebarMenu.primaryMenuItems.filter(x => x.area === menuItem.area && x.display).length > 0;
+    const currentValues = this.sidebarMenu.primaryMenuAreas$.getValue();
+    const menuArea = currentValues.find(x => x.area === menuItem.area);
+    menuArea.display = currentValues.filter(x => x.area === menuItem.area && x.display).length > 0;
   }
 
   public removeEmptyMenuAreas() {
-    const menuAreas = this.sidebarMenu.primaryMenuAreas;
-    const menuItems = this.sidebarMenu.primaryMenuItems;
-    this.sidebarMenu.primaryMenuAreas = menuAreas.filter(menuArea => menuItems.find(menuItem => menuItem.area === menuArea.area) ? true : false);
+    const menuAreas = this.sidebarMenu.primaryMenuAreas$.getValue();
+    const menuItems = this.sidebarMenu.primaryMenuItems$.getValue();
+    const currentValues = menuAreas.filter(menuArea => menuItems.find(menuItem => menuItem.area === menuArea.area) ? true : false)
+    this.sidebarMenu.primaryMenuAreas$.next(currentValues);
   }
 }
