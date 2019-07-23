@@ -21,7 +21,6 @@ export class NgProductsMenu extends SidebarMenu {
         this.setPrimaryMenu();
         this.setSpeedDialMenu();
         this.runMenuItemProviders();
-        this.runMenuItemProviders();
     }
 
     public setPrimaryMenu() {

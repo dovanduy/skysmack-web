@@ -10,9 +10,12 @@ import { Router } from '@angular/router';
 import { Field } from '@skysmack/ng-dynamic-forms';
 import { FieldProvider } from '@skysmack/ng-fields';
 import { StringFieldComponent } from '@skysmack/portal-fields';
+import { Guid } from 'guid-typescript';
 
 @Injectable({ providedIn: 'root' })
 export class NgProductPricingsFieldProvider extends FieldProvider {
+
+    public id = Guid.create().toString();
     public requested: StrIndex<boolean> = {};
 
     constructor(

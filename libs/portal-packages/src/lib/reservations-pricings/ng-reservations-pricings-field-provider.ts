@@ -11,9 +11,11 @@ import { LodgingReservation } from '@skysmack/packages-lodging-reservations';
 import { LODGINGS_AREA_KEY } from '@skysmack/packages-lodgings';
 import { FieldProvider } from '@skysmack/ng-fields';
 import { StringFieldComponent } from '@skysmack/portal-fields';
+import { Guid } from 'guid-typescript';
 
 @Injectable({ providedIn: 'root' })
 export class NgReservationsPricingsFieldProvider extends FieldProvider {
+    public id = Guid.create().toString();
     public requested: StrIndex<boolean> = {};
     public area = '';
 

@@ -51,17 +51,6 @@ export abstract class SidebarMenu implements OnDestroy {
         this.additionalPaths = getAdditionalPaths(this.router, this.packagePath);
     }
 
-    public addConnectedPackageMenuArea() {
-        const currentValues = this.primaryMenuAreas$.getValue();
-
-        currentValues.push(new MenuArea({
-            area: 'connected_packages',
-            translationPrefix: 'UI.MISC.',
-            order: 1000,
-        }));
-        this.primaryMenuAreas$.next(currentValues);
-    }
-
     public runMenuItemProviders() {
         this.subscriptionHandler.register(this.menuItemProviders.providers$.pipe(
             switchMap(providers => combineLatest(
@@ -137,6 +126,17 @@ export abstract class SidebarMenu implements OnDestroy {
         }
 
         return this;
+    }
+
+    public addConnectedPackageMenuArea() {
+        const currentValues = this.primaryMenuAreas$.getValue();
+
+        currentValues.push(new MenuArea({
+            area: 'connected_packages',
+            translationPrefix: 'UI.MISC.',
+            order: 1000,
+        }));
+        this.primaryMenuAreas$.next(currentValues);
     }
 
     /**

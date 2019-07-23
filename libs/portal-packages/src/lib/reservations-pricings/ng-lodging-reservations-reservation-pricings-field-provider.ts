@@ -12,9 +12,11 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { CustomHttpUrlEncodingCodec } from '@skysmack/ng-framework';
 import { FieldProvider } from '@skysmack/ng-fields';
 import { ResultFieldComponent } from '@skysmack/portal-fields';
+import { Guid } from 'guid-typescript';
 
 @Injectable({ providedIn: 'root' })
 export class NgLodgingReservationsReservationsPricingsFieldProvider extends FieldProvider {
+    public id = Guid.create().toString();
     public requested: StrIndex<boolean> = {};
     public area = '';
 

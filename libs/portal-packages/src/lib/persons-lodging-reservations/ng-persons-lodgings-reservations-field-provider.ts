@@ -13,10 +13,12 @@ import { LODGING_RESERVATIONS_AREA_KEY } from '@skysmack/packages-lodging-reserv
 import { FieldProvider, AddField } from '@skysmack/ng-fields';
 import { AddRecordFieldComponent, MultiSelectFieldComponent, HiddenFieldComponent } from '@skysmack/portal-fields';
 import { PersonsLodgingReservationsType } from '@skysmack/package-types';
+import { Guid } from 'guid-typescript';
 
 @Injectable({ providedIn: 'root' })
 export class NgPersonsLodgingReservationsFieldProvider extends FieldProvider {
 
+    public id = Guid.create().toString();
     public register: StrIndex<boolean> = {};
 
     constructor(

@@ -10,10 +10,11 @@ import { CashPayment } from '@skysmack/packages-invoices-cash-payments';
 import { InvoicesCashPaymentsPayComponent } from './invoices-cash-payments/components/invoices-cash-payments-pay/invoices-cash-payments-pay.component';
 import { MatDialog } from '@angular/material/dialog';
 import { InvoicesCashPaymentsType } from '@skysmack/package-types';
+import { Guid } from 'guid-typescript';
 
 @Injectable({ providedIn: 'root' })
 export class NgInvoicesCashPaymentsMenuItemActionProvider extends MenuItemActionProvider {
-
+    public id = Guid.create().toString();
     public register: StrIndex<boolean> = {};
 
     constructor(

@@ -7,9 +7,11 @@ import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { InvoicesProductsType } from '@skysmack/package-types';
 import { MatDialog } from '@angular/material/dialog';
 import { InvoicesProductsAddProductsComponent } from './components/invoices-products-add-products/invoices-products-add-products.component';
+import { Guid } from 'guid-typescript';
 
 @Injectable({ providedIn: 'root' })
 export class NgInvoicesProductsMenuItemProvider extends MenuItemProvider {
+    public id = Guid.create().toString();
     public menuId = 'invoice-items';
     public icon = 'add';
 

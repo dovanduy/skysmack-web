@@ -21,7 +21,6 @@ export class NgLodgingsReservationsMenu extends SidebarMenu {
         this.setPrimaryMenu();
         this.setSpeedDialMenu();
         this.runMenuItemProviders();
-
     }
 
     public setPrimaryMenu() {

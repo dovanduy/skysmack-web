@@ -10,10 +10,12 @@ import { CashPayment } from '@skysmack/packages-invoices-cash-payments';
 import { TerminalPaymentsType } from '@skysmack/package-types';
 import { MatDialog } from '@angular/material/dialog';
 import { TerminalsPayComponent } from './terminals';
+import { Guid } from 'guid-typescript';
 
 @Injectable({ providedIn: 'root' })
 export class NgInvoicesTerminalPaymentsMenuItemActionProvider extends MenuItemActionProvider {
 
+    public id = Guid.create().toString();
     public register: StrIndex<boolean> = {};
 
     constructor(

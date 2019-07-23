@@ -6,9 +6,11 @@ import { Skysmack } from '@skysmack/packages-skysmack-core';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { INVOICES_AREA_KEY } from '@skysmack/packages-invoices';
 import { InvoicesCashPaymentsType } from '@skysmack/package-types';
+import { Guid } from 'guid-typescript';
 
 @Injectable({ providedIn: 'root' })
 export class NgInvoicesCashPaymentsMenuItemProvider extends MenuItemProvider {
+    public id = Guid.create().toString();
     public menuId = INVOICES_AREA_KEY;
     public icon = 'shortText';
 

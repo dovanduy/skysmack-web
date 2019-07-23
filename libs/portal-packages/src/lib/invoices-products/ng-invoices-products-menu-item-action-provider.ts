@@ -10,10 +10,11 @@ import { InvoicesProductsType } from '@skysmack/package-types';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { InvoicesProductsAddToInvoiceComponent } from './invoices-products/components/invoices-products-add-to-invoice/invoices-products-add-to-invoice.component';
+import { Guid } from 'guid-typescript';
 
 @Injectable({ providedIn: 'root' })
 export class NgInvoicesProductsMenuItemActionProvider extends MenuItemActionProvider {
-
+    public id = Guid.create().toString();
     public register: StrIndex<boolean> = {};
 
     constructor(

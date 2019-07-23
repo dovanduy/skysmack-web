@@ -5,9 +5,11 @@ import { map } from 'rxjs/operators';
 import { Skysmack } from '@skysmack/packages-skysmack-core';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { LodgingReservationsType } from '@skysmack/package-types';
+import { Guid } from 'guid-typescript';
 
 @Injectable({ providedIn: 'root' })
 export class NgLodgingsReservationsMenuItemProvider extends MenuItemProvider {
+    public id = Guid.create().toString();
     public menuId = 'lodgings';
     public icon = 'shortText';
 
