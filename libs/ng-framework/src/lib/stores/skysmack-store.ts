@@ -2,7 +2,7 @@ import { NgRedux } from '@angular-redux/store';
 import { map, take } from 'rxjs/operators';
 import { Observable, BehaviorSubject, of } from 'rxjs';
 import { LocalObject, toLocalObject, Package, hasValue, StrIndex, safeUndefinedTo, defined, OfflineState } from '@skysmack/framework';
-import { Skysmack, SkysmackAppState } from '@skysmack/packages-skysmack-core';
+import { Skysmack, SkysmackAppState, SkysmackRequestStatus } from '@skysmack/packages-skysmack-core';
 import { LoadedPackage } from '../packages/loaded-package';
 import { PackageLoader } from '../packages/package-loader';
 import { Oauth2Type, IdentitiesType } from '@skysmack/package-types';
@@ -50,8 +50,8 @@ export class SkysmackStore {
         );
     }
 
-    public getSkysmackLoaded(): Observable<boolean> {
-        return this.ngRedux.select((state: SkysmackAppState) => state.skysmack.tenantLoaded);
+    public getSkysmackLoaded(): Observable<SkysmackRequestStatus> {
+        return this.ngRedux.select((state: SkysmackAppState) => state.skysmack.requestStatus);
     }
 
     public getCurrentPackage(packagePath: string): Observable<LoadedPackage> {

@@ -9,7 +9,6 @@ export class MenuItem {
 
     // URL Action Props
     public url: string;
-    public urlPostfix: string;
     public displayName: string;
     public area: string;
     public order: number;
@@ -24,8 +23,8 @@ export class MenuItem {
      * Currently "only works" with edit and delete actions.
      * To be precise, the given url is used and gets the entity id/key appended.
      */
-    public asUrlAction(url: string, displayName: string, icon: string, urlPostfix: string = ''): MenuItem {
-        Object.assign(this, { isActionEvent: false, url, displayName, icon, urlPostfix: urlPostfix });
+    public asUrlAction(url: string, displayName: string, icon: string): MenuItem {
+        Object.assign(this, { isActionEvent: false, url, displayName, icon });
         return this;
     }
 

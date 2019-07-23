@@ -50,7 +50,7 @@
                       </a>
                       <!-- URL EVENT -->
                       <a *ngIf="!menuItemAction.isActionEvent && menuItemAction.display" mat-menu-item
-                        [routerLink]="[menuItemAction.url, entity.objectIdentifier, menuItemAction.urlPostfix]">
+                        [routerLink]="[menuItemAction.url, entity.objectIdentifier]">
                         <i class="material-icons">{{ menuItemAction.icon }}</i>
                         <span class="icon-text">{{ menuItemAction.displayName | translate }}</span>
                       </a>
