@@ -13,7 +13,7 @@
     <ng-template #tenantNotFound>
         <div class="loading-screen">
             {{ skysmackLoaded.error }} ({{ skysmackLoaded.errorCode }})
-            <span *ngIf="skysmackLoaded.errorDescription"><br /> {{ skysmackLoaded.errorDescription }}</span>
+            <span *ngIf="skysmackLoaded.errorDescription" class="description"><br /> {{ skysmackLoaded.errorDescription }}</span>
         </div>
     </ng-template>
 </ng-container>
