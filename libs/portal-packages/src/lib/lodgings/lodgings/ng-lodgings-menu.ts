@@ -21,62 +21,67 @@ export class NgLodgingsMenu extends SidebarMenu {
         super(redux, router, menuItemProviders);
         this.setPrimaryMenu();
         this.setSpeedDialMenu();
-        
+        this.runMenuItemProviders();
+
     }
 
     public setPrimaryMenu() {
-        this.primaryMenuAreas.push(new MenuArea({
-            area: 'actions',
-            translationPrefix: this.translationPrefix,
-            order: 1,
-        }));
-        this.primaryMenuAreas.push(new MenuArea({
-            area: 'manage',
-            translationPrefix: this.translationPrefix,
-            order: 2,
-        }));
+        this.addToPrimaryMenuAreas([
+            new MenuArea({
+                area: 'actions',
+                translationPrefix: this.translationPrefix,
+                order: 1,
+            }),
+            new MenuArea({
+                area: 'manage',
+                translationPrefix: this.translationPrefix,
+                order: 2,
+            })
+        ]);
 
-        this.primaryMenuItems.push(new MenuItem({
-            url: 'create',
-            displayName: this.translationPrefix + 'CREATE',
-            area: 'actions',
-            order: 1,
-            icon: 'groupAdd',
-            permissions: [
-                LodgingsPermissions.addLodgings
-            ]
-        }));
-        this.primaryMenuItems.push(new MenuItem({
-            url: 'types',
-            displayName: this.translationPrefix + 'TYPES',
-            area: 'manage',
-            order: 2,
-            icon: 'description',
-            permissions: [
-                LodgingsPermissions.findLodgingTypes
-            ]
-        }));
-        this.primaryMenuItems.push(new MenuItem({
-            url: 'fields',
-            displayName: this.translationPrefix + 'FIELDS',
-            area: 'manage',
-            order: 2,
-            icon: 'shortText',
-            permissions: [
-                LodgingsPermissions.findLodgingFields,
-            ]
-        }));
-        this.primaryMenuItems.push(new MenuItem({
-            url: '/' + this.packagePath + '/availability',
-            displayName: this.translationPrefix + 'AVAILABILITY',
-            area: 'manage',
-            order: 4,
-            icon: 'groupAdd',
-        }));
+        this.addToPrimaryMenuItems([
+            new MenuItem({
+                url: 'create',
+                displayName: this.translationPrefix + 'CREATE',
+                area: 'actions',
+                order: 1,
+                icon: 'groupAdd',
+                permissions: [
+                    LodgingsPermissions.addLodgings
+                ]
+            }),
+            new MenuItem({
+                url: 'types',
+                displayName: this.translationPrefix + 'TYPES',
+                area: 'manage',
+                order: 2,
+                icon: 'description',
+                permissions: [
+                    LodgingsPermissions.findLodgingTypes
+                ]
+            }),
+            new MenuItem({
+                url: 'fields',
+                displayName: this.translationPrefix + 'FIELDS',
+                area: 'manage',
+                order: 2,
+                icon: 'shortText',
+                permissions: [
+                    LodgingsPermissions.findLodgingFields,
+                ]
+            }),
+            new MenuItem({
+                url: '/' + this.packagePath + '/availability',
+                displayName: this.translationPrefix + 'AVAILABILITY',
+                area: 'manage',
+                order: 4,
+                icon: 'groupAdd',
+            })
+        ]);
     }
 
     public setSpeedDialMenu() {
-        this.speedDialMenuItems = [
+        this.addToSpeedDialMenuItems([
             new MenuItem({
                 url: 'create',
                 displayName: this.translationPrefix + 'CREATE',
@@ -86,7 +91,7 @@ export class NgLodgingsMenu extends SidebarMenu {
                 permissions: [
                     LodgingsPermissions.addLodgings
                 ]
-            }),
-        ];
+            })
+        ]);
     }
 }

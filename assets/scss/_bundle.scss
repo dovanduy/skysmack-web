@@ -11,8 +11,8 @@ $skysmack-font: "'Roboto', 'sans-serif'";
 
 $custom-typography: mat-typography-config(
   $font-family: $skysmack-font,
-  $headline: mat-typography-level(32px, 48px, 700),
-  $body-1: mat-typography-level(16px, 24px, 500)
+  $headline: mat-typography-level(32px, 48px, 500),
+  $body-1: mat-typography-level(14px, 22px, 400)
 );
 
 @include mat-core($custom-typography);

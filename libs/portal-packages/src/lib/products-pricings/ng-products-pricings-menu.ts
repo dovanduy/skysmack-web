@@ -20,63 +20,65 @@ export class NgProductsPricingsMenu extends SidebarMenu {
         super(store, router, menuItemProviders);
         this.setPrimaryMenu();
         this.setSpeedDialMenu();
-        
+        this.runMenuItemProviders();
+
     }
 
     public setPrimaryMenu() {
-        this.primaryMenuAreas.push(new MenuArea({
-            area: 'manage',
-            translationPrefix: this.translationPrefix,
-            order: 1,
-        }));
+        this.addToPrimaryMenuAreas([
+            new MenuArea({
+                area: 'manage',
+                translationPrefix: this.translationPrefix,
+                order: 1,
+            })
+        ]);
+        this.addToPrimaryMenuItems([
+            new MenuItem({
+                url: 'price-changes',
+                displayName: this.translationPrefix + 'PRICE_CHANGES',
+                area: 'manage',
+                order: 2,
+                icon: 'groupAdd',
+                permissions: [
+                    ProductsPricingsPermissions.findProductPriceChanges
+                ]
+            }),
+            new MenuItem({
+                url: 'types/price-changes',
+                displayName: this.translationPrefix + 'PRICE_TYPE_CHANGES',
+                area: 'manage',
+                order: 2,
+                icon: 'groupAdd',
+                permissions: [
+                    ProductsPricingsPermissions.findProductTypePriceChanges
+                ]
+            }),
 
-        this.primaryMenuItems.push(new MenuItem({
-            url: 'price-changes',
-            displayName: this.translationPrefix + 'PRICE_CHANGES',
-            area: 'manage',
-            order: 2,
-            icon: 'groupAdd',
-            permissions: [
-                ProductsPricingsPermissions.findProductPriceChanges
-            ]
-        }));
-        this.primaryMenuItems.push(new MenuItem({
-            url: 'types/price-changes',
-            displayName: this.translationPrefix + 'PRICE_TYPE_CHANGES',
-            area: 'manage',
-            order: 2,
-            icon: 'groupAdd',
-            permissions: [
-                ProductsPricingsPermissions.findProductTypePriceChanges
-            ]
-        }));
-
-        this.primaryMenuItems.push(new MenuItem({
-            url: 'sales-prices',
-            displayName: this.translationPrefix + 'SALES_PRICES',
-            area: 'manage',
-            order: 2,
-            icon: 'groupAdd',
-            permissions: [
-                ProductsPricingsPermissions.findProductSalesPrices
-            ]
-        }));
-        this.primaryMenuItems.push(new MenuItem({
-            url: 'types/sales-prices',
-            displayName: this.translationPrefix + 'SALES_PRICES_TYPES',
-            area: 'manage',
-            order: 3,
-            icon: 'shortText',
-            permissions: [
-                ProductsPricingsPermissions.findProductTypeSalesPrices
-            ]
-        }));
+            new MenuItem({
+                url: 'sales-prices',
+                displayName: this.translationPrefix + 'SALES_PRICES',
+                area: 'manage',
+                order: 2,
+                icon: 'groupAdd',
+                permissions: [
+                    ProductsPricingsPermissions.findProductSalesPrices
+                ]
+            }),
+            new MenuItem({
+                url: 'types/sales-prices',
+                displayName: this.translationPrefix + 'SALES_PRICES_TYPES',
+                area: 'manage',
+                order: 3,
+                icon: 'shortText',
+                permissions: [
+                    ProductsPricingsPermissions.findProductTypeSalesPrices
+                ]
+            })
+        ]);
 
         this.setBackButton({ connectedPackage: true }).addConnectedPackageMenuArea();
     }
 
     public setSpeedDialMenu() {
-        this.speedDialMenuItems = [
-        ];
     }
 }

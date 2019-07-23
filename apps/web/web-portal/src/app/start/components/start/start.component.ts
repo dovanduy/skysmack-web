@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 import { Router, RouteConfigLoadStart, RouteConfigLoadEnd } from '@angular/router';
 import { PackageRouteConfiguration } from '@skysmack/portal-ui';
 import { SubscriptionHandler } from '@skysmack/framework';
-import { Skysmack } from '@skysmack/packages-skysmack-core';
+import { Skysmack, SkysmackRequestStatus } from '@skysmack/packages-skysmack-core';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 
 @Component({
@@ -17,7 +17,7 @@ export class StartComponent implements OnInit, OnDestroy {
 
   public subscriptionHandler = new SubscriptionHandler();
   public skysmack$: Observable<Skysmack>;
-  public skysmackLoaded$: Observable<boolean>;
+  public skysmackLoaded$: Observable<SkysmackRequestStatus>;
   public loadingRouteConfig: string[] = [];
 
   constructor(

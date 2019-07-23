@@ -36,7 +36,7 @@
             "DETAILS": "Details"
         },
         "RECORDS_CONTAINER": {
-            "LOADED": "Loaded {{ value }} out of"
+            "LOADED": "Loaded {{ loadedCount }} out of {{ totalCount }}"
         },
         "BUTTONS": {
             "BUTTON_ADD": "Add",

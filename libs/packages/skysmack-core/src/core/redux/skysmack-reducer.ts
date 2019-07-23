@@ -2,6 +2,7 @@ import { AppState, sharedReducer, ReduxAction } from '@skysmack/redux';
 import { SkysmackActions } from './skysmack-actions';
 import { StrIndex, HttpErrorResponse, GlobalProperties } from '@skysmack/framework';
 import { SKYSMACK_REDUCER_KEY } from '../constants';
+import { SkysmackRequestStatus } from '../models';
 
 export class SkysmackAppState extends AppState {
     public skysmack: SkysmackState;
@@ -9,7 +10,7 @@ export class SkysmackAppState extends AppState {
 
 export class SkysmackState {
     public skysmack = {};
-    public tenantLoaded = false;
+    public requestStatus: SkysmackRequestStatus;
     public permissions: StrIndex<string[]> = {};
     public availablePermissions: StrIndex<StrIndex<string>> = {};
 }
@@ -21,12 +22,17 @@ export function skysmackReducer(state = new SkysmackState(), action: any): Skysm
     switch (action.type) {
         case SkysmackActions.GET_SKYSMACK_SUCCESS: {
             newState.skysmack = action.payload;
-            newState.tenantLoaded = true;
+            newState.requestStatus = new SkysmackRequestStatus({errorCode: action.meta.response.status, error: action.meta.response.statusText});
             return newState;
         }
         case SkysmackActions.GET_SKYSMACK_FAILURE: {
-            newState.tenantLoaded = true;
             const castedAction = action as ReduxAction<HttpErrorResponse>;
+            let errorDescription = action.payload.error.detail;
+            if (!errorDescription) {
+                errorDescription = castedAction.payload.message;
+            }
+
+            newState.requestStatus = new SkysmackRequestStatus({errorCode: action.payload.status, error: action.payload.statusText, errorDescription: errorDescription });
             if (!GlobalProperties.production) {
                 console.log('Error getting skysmack: ', castedAction);
             }

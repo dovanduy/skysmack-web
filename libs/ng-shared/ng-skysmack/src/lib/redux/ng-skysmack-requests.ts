@@ -23,7 +23,10 @@ export class NgSkysmackRequests implements SkysmackRequests {
             map(response => Object.assign({}, new ReduxAction<Skysmack>({
                 type: SkysmackActions.GET_SKYSMACK_SUCCESS,
                 payload: response.body,
-                meta: action.payload
+                meta: { 
+                    payload: action.payload,
+                    response: response
+                }
             }))),
             retry(this.retryTimes),
             catchError((error) => of(Object.assign({}, new ReduxAction<HttpErrorResponse>({

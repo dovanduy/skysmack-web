@@ -21,52 +21,51 @@ export class NgAccountsMenu extends SidebarMenu {
         super(store, router, menuItemProviders);
         this.setPrimaryMenu();
         this.setSpeedDialMenu();
-        
+        this.runMenuItemProviders();
+
     }
 
     public setPrimaryMenu() {
-        this.primaryMenuAreas.push(new MenuArea({
-            area: 'actions',
-            translationPrefix: this.translationPrefix,
-            order: 1,
-        }));
+        this.addToPrimaryMenuAreas([
+            new MenuArea({
+                area: 'actions',
+                translationPrefix: this.translationPrefix,
+                order: 1,
+            }),
+            new MenuArea({
+                area: 'manage',
+                translationPrefix: this.translationPrefix,
+                order: 2,
+            })
+        ]);
 
-        this.primaryMenuAreas.push(new MenuArea({
-            area: 'manage',
-            translationPrefix: this.translationPrefix,
-            order: 1,
-        }));
-
-
-        this.primaryMenuItems.push(new MenuItem({
-            url: 'change-password',
-            displayName: this.translationPrefix + 'CHANGE_PASSWORD',
-            area: 'actions',
-            order: 1,
-            icon: 'groupAdd'
-        }));
-
-        this.primaryMenuItems.push(new MenuItem({
-            url: 'forgot-password',
-            displayName: this.translationPrefix + 'FORGOT_PASSWORD',
-            area: 'actions',
-            order: 1,
-            icon: 'groupAdd'
-        }));
-
-        this.primaryMenuItems.push(new MenuItem({
-            url: 'confirm-email',
-            displayName: this.translationPrefix + 'CONFIRM_EMAIL',
-            area: 'actions',
-            order: 1,
-            icon: 'groupAdd'
-        }));
+        this.addToPrimaryMenuItems([
+            new MenuItem({
+                url: 'change-password',
+                displayName: this.translationPrefix + 'CHANGE_PASSWORD',
+                area: 'actions',
+                order: 1,
+                icon: 'groupAdd'
+            }),
+            new MenuItem({
+                url: 'forgot-password',
+                displayName: this.translationPrefix + 'FORGOT_PASSWORD',
+                area: 'actions',
+                order: 1,
+                icon: 'groupAdd'
+            }),
+            new MenuItem({
+                url: 'confirm-email',
+                displayName: this.translationPrefix + 'CONFIRM_EMAIL',
+                area: 'actions',
+                order: 1,
+                icon: 'groupAdd'
+            })
+        ]);
 
         this.setBackButton();
     }
 
     public setSpeedDialMenu() {
-        this.speedDialMenuItems = [
-        ];
     }
 }

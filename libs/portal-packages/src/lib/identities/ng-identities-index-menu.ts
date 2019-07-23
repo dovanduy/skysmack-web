@@ -20,95 +20,97 @@ export class NgIdentitiesIndexMenu extends SidebarMenu {
         super(redux, router, menuItemProviders);
         this.setPrimaryMenu();
         this.setSpeedDialMenu();
-        
+        this.runMenuItemProviders();
     }
 
     public setPrimaryMenu() {
-        this.primaryMenuAreas.push(new MenuArea({
-            area: 'manage',
-            translationPrefix: this.translationPrefix,
-            order: 1,
-        }));
-        this.primaryMenuAreas.push(new MenuArea({
-            area: 'settings',
-            translationPrefix: this.translationPrefix,
-            order: 2,
-        }));
+        this.addToPrimaryMenuAreas([
+            new MenuArea({
+                area: 'actions',
+                translationPrefix: this.translationPrefix,
+                order: 1,
+            }),
+            new MenuArea({
+                area: 'manage',
+                translationPrefix: this.translationPrefix,
+                order: 2,
+            })
+        ]);
 
-        this.primaryMenuItems.push(new MenuItem({
-            url: 'roles',
-            displayName: this.translationPrefix + 'ROLES',
-            area: 'manage',
-            order: 1,
-            icon: 'groupAdd',
-            permissions: [
-                IdentitiesPermissions.findRoles
-            ]
-        }));
-        this.primaryMenuItems.push(new MenuItem({
-            url: 'users',
-            displayName: this.translationPrefix + 'USERS',
-            area: 'manage',
-            order: 2,
-            icon: 'groupAdd',
-            permissions: [
-                IdentitiesPermissions.findUsers
-            ]
-        }));
-        this.primaryMenuItems.push(new MenuItem({
-            url: 'account',
-            displayName: this.translationPrefix + 'ACCOUNTS',
-            area: 'manage',
-            order: 2,
-            icon: 'groupAdd',
-            permissions: [
-                // ???
-            ]
-        }));
-        this.primaryMenuItems.push(new MenuItem({
-            url: 'settings/lockout',
-            displayName: this.translationPrefix + 'AVAILABLE_SETTINGS.LOCKOUT',
-            area: 'settings',
-            order: 1,
-            icon: 'groupAdd',
-            permissions: [
-                IdentitiesPermissions.getLockoutSettings
-            ]
-        }));
-        this.primaryMenuItems.push(new MenuItem({
-            url: 'settings/user',
-            displayName: this.translationPrefix + 'AVAILABLE_SETTINGS.USER',
-            area: 'settings',
-            order: 2,
-            icon: 'groupAdd',
-            permissions: [
-                IdentitiesPermissions.getUserSettings
-            ]
-        }));
-        this.primaryMenuItems.push(new MenuItem({
-            url: 'settings/password',
-            displayName: this.translationPrefix + 'AVAILABLE_SETTINGS.PASSWORD',
-            area: 'settings',
-            order: 2,
-            icon: 'groupAdd',
-            permissions: [
-                IdentitiesPermissions.getPasswordSettings
-            ]
-        }));
-        this.primaryMenuItems.push(new MenuItem({
-            url: 'settings/sign-in',
-            displayName: this.translationPrefix + 'AVAILABLE_SETTINGS.SIGNIN',
-            area: 'settings',
-            order: 2,
-            icon: 'groupAdd',
-            permissions: [
-                IdentitiesPermissions.getSignInSettings
-            ]
-        }));
+        this.addToPrimaryMenuItems([
+            new MenuItem({
+                url: 'roles',
+                displayName: this.translationPrefix + 'ROLES',
+                area: 'manage',
+                order: 1,
+                icon: 'groupAdd',
+                permissions: [
+                    IdentitiesPermissions.findRoles
+                ]
+            }),
+            new MenuItem({
+                url: 'users',
+                displayName: this.translationPrefix + 'USERS',
+                area: 'manage',
+                order: 2,
+                icon: 'groupAdd',
+                permissions: [
+                    IdentitiesPermissions.findUsers
+                ]
+            }),
+            new MenuItem({
+                url: 'account',
+                displayName: this.translationPrefix + 'ACCOUNTS',
+                area: 'manage',
+                order: 2,
+                icon: 'groupAdd',
+                permissions: [
+                    // ???
+                ]
+            }),
+            new MenuItem({
+                url: 'settings/lockout',
+                displayName: this.translationPrefix + 'AVAILABLE_SETTINGS.LOCKOUT',
+                area: 'settings',
+                order: 1,
+                icon: 'groupAdd',
+                permissions: [
+                    IdentitiesPermissions.getLockoutSettings
+                ]
+            }),
+            new MenuItem({
+                url: 'settings/user',
+                displayName: this.translationPrefix + 'AVAILABLE_SETTINGS.USER',
+                area: 'settings',
+                order: 2,
+                icon: 'groupAdd',
+                permissions: [
+                    IdentitiesPermissions.getUserSettings
+                ]
+            }),
+            new MenuItem({
+                url: 'settings/password',
+                displayName: this.translationPrefix + 'AVAILABLE_SETTINGS.PASSWORD',
+                area: 'settings',
+                order: 2,
+                icon: 'groupAdd',
+                permissions: [
+                    IdentitiesPermissions.getPasswordSettings
+                ]
+            }),
+            new MenuItem({
+                url: 'settings/sign-in',
+                displayName: this.translationPrefix + 'AVAILABLE_SETTINGS.SIGNIN',
+                area: 'settings',
+                order: 2,
+                icon: 'groupAdd',
+                permissions: [
+                    IdentitiesPermissions.getSignInSettings
+                ]
+            })
+        ]);
     }
 
     public setSpeedDialMenu() {
-        this.speedDialMenuItems = [
-        ];
     }
 }
