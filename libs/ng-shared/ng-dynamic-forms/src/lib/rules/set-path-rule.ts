@@ -19,7 +19,7 @@ export class SetPathRule extends FormRule {
         if (path.length <= 0 && name !== '' && name !== '') {
 
             // https://stackoverflow.com/questions/8485027/javascript-url-safe-filename-safe-string
-            pathControl.setValue(latinize(name).replace(/[^a-z0-9\-]/gi, '_').toLowerCase());
+            pathControl.setValue(latinize(name).replace(/[^a-z0-9\-]/gi, '-').toLowerCase());
         }
     }
 }
