@@ -32,7 +32,6 @@ export class NgApplicationsFormFieldsConfig extends FieldsConfig<ApplicationDesc
                 component: StringFieldComponent,
                 value: entity ? entity.object.clientSecret : undefined,
                 key: 'clientSecret',
-                validators: [Validators.required],
                 order: 1,
                 showColumn: true
             }),
