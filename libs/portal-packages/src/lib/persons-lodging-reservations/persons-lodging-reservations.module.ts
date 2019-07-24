@@ -7,7 +7,7 @@ import { PortalUiModule } from '@skysmack/portal-ui';
 import { NgPersonsLodgingReservationsModule } from '@skysmack/ng-packages';
 import { PersonsLodgingReservationsRoutingModule } from './persons-lodging-reservations-routing.module';
 import { NgPersonsLodgingReservationsFieldProvider } from './ng-persons-lodgings-reservations-field-provider';
-import { LodgingReservationsType } from '@skysmack/package-types';
+import { LodgingReservationsTypeId } from '@skysmack/package-types';
 import { DynamicFormsModule } from '@skysmack/portal-dynamic-forms';
 import { PortalFieldsModule } from '@skysmack/portal-fields';
 import { FieldProviders } from '@skysmack/ng-fields';
@@ -33,6 +33,6 @@ export class PersonsLodgingReservationsModule {
     fieldProviders: FieldProviders,
     personsLodgingsReservationsFieldProvider: NgPersonsLodgingReservationsFieldProvider,
   ) {
-    fieldProviders.add(LodgingReservationsType.id, personsLodgingsReservationsFieldProvider);
+    fieldProviders.add(LodgingReservationsTypeId, personsLodgingsReservationsFieldProvider);
   }
 }

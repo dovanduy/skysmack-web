@@ -40,6 +40,7 @@ import { terminalPaymentsRoute } from '../packages/terminal-payments-manifest';
 import { invoicesProductsRoute } from '../packages/invoices-products-package-manifest';
 import { NgSkysmackModule, NgSkysmackEpics } from '@skysmack/ng-skysmack';
 import { SKYSMACK_REDUCER_KEY, skysmackReducer } from '@skysmack/packages-skysmack-core';
+import { openApiRoute } from '../packages/open-api-package-manifest';
 // import { NgxGraphModule } from '@swimlane/ngx-graph';
 // import { NgxChartsModule } from '@swimlane/ngx-charts';
 // NgxGraphModule,
@@ -71,6 +72,7 @@ import { SKYSMACK_REDUCER_KEY, skysmackReducer } from '@skysmack/packages-skysma
       terminalPaymentsRoute,
       emailsRoute,
       emailsSmtpRoute,
+      openApiRoute,
       {
         path: '',
         component: FrontPageComponent,

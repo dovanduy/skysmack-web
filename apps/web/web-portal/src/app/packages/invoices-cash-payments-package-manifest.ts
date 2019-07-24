@@ -1,5 +1,5 @@
 import { PackageLoader, PackageManifest } from '@skysmack/ng-framework';
-import { InvoicesCashPaymentsType } from '@skysmack/package-types';
+import { InvoicesCashPaymentsType, InvoicesCashPaymentsTypeId } from '@skysmack/package-types';
 import { TenantPackageLoadStrategy } from '../start/tenant-package-load-strategy';
 import { Route } from '@angular/router';
 
@@ -14,4 +14,4 @@ export function loadInvoicesCashPaymentsPackage(packageLoader: PackageLoader) {
     return () => packageLoader.add(new InvoicesCashPaymentsPackageManifest());
 }
 
-export const invoicesCashPaymentsRoute = { path: TenantPackageLoadStrategy.URL_PREFIX + InvoicesCashPaymentsPackageManifest.id, loadChildren: InvoicesCashPaymentsPackageManifest.modulePath } as Route;
+export const invoicesCashPaymentsRoute = { path: TenantPackageLoadStrategy.URL_PREFIX + InvoicesCashPaymentsTypeId, loadChildren: InvoicesCashPaymentsPackageManifest.modulePath } as Route;

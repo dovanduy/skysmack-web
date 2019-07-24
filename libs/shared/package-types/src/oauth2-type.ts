@@ -1,8 +1,9 @@
 import { PackageType } from '@skysmack/framework';
+import { IdentitiesTypeId } from './identities-type';
 
-export class Oauth2Type implements PackageType {
-  public static id = 'e9d53bca-2906-4130-959b-c9928d73c66c';
+export const OAuth2TypeId = 'e9d53bca-2906-4130-959b-c9928d73c66c';
 
-  id = Oauth2Type.id;
-  dependencies = [];
+export class OAuth2Type implements PackageType {
+  id = OAuth2TypeId;
+  dependencies = [IdentitiesTypeId];
 }

@@ -7,7 +7,7 @@ import { MenuItemActionProvider } from '@skysmack/portal-ui';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { INVOICES_AREA_KEY, Invoice } from '@skysmack/packages-invoices';
 import { CashPayment } from '@skysmack/packages-invoices-cash-payments';
-import { TerminalPaymentsType } from '@skysmack/package-types';
+import { TerminalPaymentsTypeId } from '@skysmack/package-types';
 import { MatDialog } from '@angular/material/dialog';
 import { TerminalsPayComponent } from './terminals';
 import { Guid } from 'guid-typescript';
@@ -28,7 +28,7 @@ export class NgInvoicesTerminalPaymentsMenuItemActionProvider extends MenuItemAc
     public getMenuItemActions(packagePath: string, area: string, entity?: LocalObject<CashPayment, number>): Observable<MenuItem[]> {
         if (area === INVOICES_AREA_KEY) {
             return this.skysmackStore.getPackages().pipe(
-                map(packages => packages.filter(_package => _package.object.type === TerminalPaymentsType.id && _package.object.dependencies[0] === packagePath)),
+                map(packages => packages.filter(_package => _package.object.type === TerminalPaymentsTypeId && _package.object.dependencies[0] === packagePath)),
                 switchMap(packages => {
                     if (packages && packages.length > 0) {
                         const entityActionStreams$ = packages.map(_package => {

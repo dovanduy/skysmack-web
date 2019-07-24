@@ -12,9 +12,9 @@ import { lodgingReservationPriceChangesComponents } from './lodging-reservation-
 import { lodgingTypeReservationPriceChangesComponents } from './lodging-type-reservation-price-changes/components/lodging-type-reservation-price-changes-components';
 import { lodgingPricesComponents } from './lodging-prices/components/lodging-prices-components';
 import { lodgingTypePricesComponents } from './lodging-type-prices/components/lodging-type-prices-components';
-import { LodgingsType } from '@skysmack/package-types';
+import { LodgingsTypeId } from '@skysmack/package-types';
 import { NgLodgingReservationsReservationsPricingsFieldProvider } from './ng-lodging-reservations-reservation-pricings-field-provider';
-import { LodgingReservationsType } from '@skysmack/package-types';
+import { LodgingReservationsTypeId } from '@skysmack/package-types';
 import { DynamicFormsModule } from '@skysmack/portal-dynamic-forms';
 import { PortalFieldsModule } from '@skysmack/portal-fields';
 import { FieldProviders } from '@skysmack/ng-fields';
@@ -47,7 +47,7 @@ export class ReservationsPricingsModule {
     reservationsPricingsFieldProvider: NgReservationsPricingsFieldProvider,
     lodgingReservationsReservationsPricingsFieldProvider: NgLodgingReservationsReservationsPricingsFieldProvider,
   ) {
-    fieldProviders.add(LodgingsType.id, reservationsPricingsFieldProvider);
-    fieldProviders.add(LodgingReservationsType.id, lodgingReservationsReservationsPricingsFieldProvider);
+    fieldProviders.add(LodgingsTypeId, reservationsPricingsFieldProvider);
+    fieldProviders.add(LodgingReservationsTypeId, lodgingReservationsReservationsPricingsFieldProvider);
   }
 }

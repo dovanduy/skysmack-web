@@ -1,4 +1,4 @@
-import { IdentitiesType } from '@skysmack/package-types';
+import { IdentitiesType, IdentitiesTypeId } from '@skysmack/package-types';
 import { PackageLoader, PackageManifest } from '@skysmack/ng-framework';
 import { TenantPackageLoadStrategy } from '../start/tenant-package-load-strategy';
 import { Route } from '@angular/router';
@@ -14,4 +14,4 @@ export function loadIdentitiesPackage(packageLoader: PackageLoader) {
     return () => packageLoader.add(new IdentitiesPackageManifest());
 }
 
-export const identitiesRoute = { path: TenantPackageLoadStrategy.URL_PREFIX + IdentitiesPackageManifest.id, loadChildren: IdentitiesPackageManifest.modulePath } as Route;
+export const identitiesRoute = { path: TenantPackageLoadStrategy.URL_PREFIX + IdentitiesTypeId, loadChildren: IdentitiesPackageManifest.modulePath } as Route;

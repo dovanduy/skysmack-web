@@ -92,7 +92,8 @@
     "redux": "4.0.1",
     "redux-observable": "1.1.0",
     "rxjs": "6.5.2",
-    "zone.js": "0.9.1"
+    "zone.js": "0.9.1",
+    "swagger-ui": "3.23.1"
   },
   "devDependencies": {
     "jest-preset-angular": "7.1.1",

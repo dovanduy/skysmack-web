@@ -5,7 +5,7 @@ import { StrIndex, LocalObject, DisplayColumn } from '@skysmack/framework';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { Validators } from '@angular/forms';
 import { Product, PRODUCTS_AREA_KEY } from '@skysmack/packages-products';
-import { ProductsPricingsType } from '@skysmack/package-types';
+import { ProductsPricingsTypeId } from '@skysmack/package-types';
 import { Router } from '@angular/router';
 import { Field } from '@skysmack/ng-dynamic-forms';
 import { FieldProvider } from '@skysmack/ng-fields';
@@ -28,7 +28,7 @@ export class NgProductPricingsFieldProvider extends FieldProvider {
     public getFields(packagePath: string, area: string, entity?: LocalObject<any, any>): Observable<Field[]> {
         if (area == PRODUCTS_AREA_KEY) {
             return this.skysmackStore.getPackages().pipe(
-                map(packages => packages.filter(_package => _package.object.type === ProductsPricingsType.id)),
+                map(packages => packages.filter(_package => _package.object.type === ProductsPricingsTypeId)),
                 map(productPricingPackages => {
                     if (productPricingPackages && productPricingPackages.length > 0) {
                         return productPricingPackages.map(productPricingPackage => {

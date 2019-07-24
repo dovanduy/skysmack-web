@@ -5,7 +5,7 @@ import { Observable, of } from 'rxjs';
 import { StrIndex, LocalObject, DisplayColumn } from '@skysmack/framework';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { Validators } from '@angular/forms';
-import { ReservationsPricingsType } from '@skysmack/package-types';
+import { ReservationsPricingsTypeId } from '@skysmack/package-types';
 import { Router } from '@angular/router';
 import { LodgingReservation } from '@skysmack/packages-lodging-reservations';
 import { LODGINGS_AREA_KEY } from '@skysmack/packages-lodgings';
@@ -29,7 +29,7 @@ export class NgReservationsPricingsFieldProvider extends FieldProvider {
     public getFields(packagePath: string, area: string, entity?: LocalObject<any, any>): Observable<Field[]> {
         if (area == LODGINGS_AREA_KEY) {
             return this.skysmackStore.getPackages().pipe(
-                map(packages => packages.filter(_package => _package.object.type === ReservationsPricingsType.id)),
+                map(packages => packages.filter(_package => _package.object.type === ReservationsPricingsTypeId)),
                 map(lodgingReservationPricingPackages => {
                     if (lodgingReservationPricingPackages && lodgingReservationPricingPackages.length > 0) {
                         return lodgingReservationPricingPackages.map(lodgingReservationPricingPackage => {

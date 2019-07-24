@@ -23,6 +23,7 @@ import { loadAccessPoliciesPackage } from '../packages/access-policies-package-m
 import { loadEmailsPackage } from '../packages/emails-package-manifest';
 import { loadEmailsSmtpPackage } from '../packages/emails-smtp-package-manifest';
 import { loadInvoicesProductsPackage } from '../packages/invoices-products-package-manifest';
+import { loadOpenApiPackage } from '../packages/open-api-package-manifest';
 
 
 export function configureSkysmack(actions: NgSkysmackActions) {
@@ -56,7 +57,8 @@ export const packageLoaders = [
     { provide: APP_INITIALIZER, useFactory: loadMaintenancePackage, deps: [PackageLoader], multi: true },
     { provide: APP_INITIALIZER, useFactory: loadTerminalPaymentsPackage, deps: [PackageLoader], multi: true },
     { provide: APP_INITIALIZER, useFactory: loadEmailsPackage, deps: [PackageLoader], multi: true },
-    { provide: APP_INITIALIZER, useFactory: loadEmailsSmtpPackage, deps: [PackageLoader], multi: true }
+    { provide: APP_INITIALIZER, useFactory: loadEmailsSmtpPackage, deps: [PackageLoader], multi: true },
+    { provide: APP_INITIALIZER, useFactory: loadOpenApiPackage, deps: [PackageLoader], multi: true }
 ];
 
 export const injectionTokens = [

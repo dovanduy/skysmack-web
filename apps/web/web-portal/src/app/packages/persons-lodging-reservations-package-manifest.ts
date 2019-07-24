@@ -1,4 +1,4 @@
-import { PersonsLodgingReservationsType } from '@skysmack/package-types';
+import { PersonsLodgingReservationsType, PersonsLodgingReservationsTypeId } from '@skysmack/package-types';
 import { PackageLoader, PackageManifest } from '@skysmack/ng-framework';
 import { TenantPackageLoadStrategy } from '../start/tenant-package-load-strategy';
 import { Route } from '@angular/router';
@@ -14,4 +14,4 @@ export function loadPersonsLodgingReservationsPackage(packageLoader: PackageLoad
     return () => packageLoader.add(new PersonsLodgingReservationsPackageManifest());
 }
 
-export const personsLodgingReservationsRoute = { path: TenantPackageLoadStrategy.URL_PREFIX + PersonsLodgingReservationsPackageManifest.id, loadChildren: PersonsLodgingReservationsPackageManifest.modulePath } as Route;
+export const personsLodgingReservationsRoute = { path: TenantPackageLoadStrategy.URL_PREFIX + PersonsLodgingReservationsTypeId, loadChildren: PersonsLodgingReservationsPackageManifest.modulePath } as Route;

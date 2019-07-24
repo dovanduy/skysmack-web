@@ -8,7 +8,7 @@ import { NgInvoicesCashPaymentsModule } from '@skysmack/ng-packages';
 import { PortalUiModule } from '@skysmack/portal-ui';
 import { invoicesCashPaymentsComponents } from './invoices-cash-payments/components/invoices-cash-payments-components';
 import { NgInvoicesCashPaymentsMenuItemActionProvider } from './ng-invoices-cash-payments-menu-item-action-provider';
-import { InvoicesType } from '@skysmack/package-types';
+import { InvoicesTypeId } from '@skysmack/package-types';
 import { InvoicesCashPaymentsPayComponent } from './invoices-cash-payments/components';
 import { CoalescingComponentFactoryResolver } from '@skysmack/ng-framework';
 import { DynamicFormsModule } from '@skysmack/portal-dynamic-forms';
@@ -42,7 +42,7 @@ export class InvoicesCashPaymentsModule {
     coalescingResolver: CoalescingComponentFactoryResolver,
     localResolver: ComponentFactoryResolver
   ) {
-    menuItemActionProviders.add(InvoicesType.id, invoicesCashPaymentsMenuItemActionProvider);
+    menuItemActionProviders.add(InvoicesTypeId, invoicesCashPaymentsMenuItemActionProvider);
 
     // Make entry components available
     coalescingResolver.registerResolver(localResolver);

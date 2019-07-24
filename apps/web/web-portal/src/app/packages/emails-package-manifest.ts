@@ -1,4 +1,4 @@
-import { EmailsType } from '@skysmack/package-types';
+import { EmailsType, EmailsTypeId } from '@skysmack/package-types';
 import { PackageLoader, PackageManifest } from '@skysmack/ng-framework';
 import { TenantPackageLoadStrategy } from '../start/tenant-package-load-strategy';
 import { Route } from '@angular/router';
@@ -14,4 +14,4 @@ export function loadEmailsPackage(packageLoader: PackageLoader) {
     return () => packageLoader.add(new EmailsPackageManifest());
 }
 
-export const emailsRoute = { path: TenantPackageLoadStrategy.URL_PREFIX + EmailsPackageManifest.id, loadChildren: EmailsPackageManifest.modulePath } as Route;
+export const emailsRoute = { path: TenantPackageLoadStrategy.URL_PREFIX + EmailsTypeId, loadChildren: EmailsPackageManifest.modulePath } as Route;
