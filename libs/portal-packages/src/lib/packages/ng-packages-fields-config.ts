@@ -25,6 +25,9 @@ export class NgPackagesFieldsConfig extends FieldsConfig<Package, string> {
     }
 
     protected getEntityFields(loadedPackage: LoadedPackage, _package?: LocalObject<Package, string>): Field[] {
+        // Needs to be called here or index won't show correct package type before after visiting an create/edit form.
+        this.actions.getAvailablePackages(loadedPackage._package.path);
+
         return [
             new SelectField({
                 component: SelectFieldComponent,
@@ -41,7 +44,7 @@ export class NgPackagesFieldsConfig extends FieldsConfig<Package, string> {
                         return availablePackage.object.name;
                     }
 
-                    return _package.object.type;
+                    return 'Update page to view';
                 },
                 disabled: _package ? true : false,
                 order: 1,

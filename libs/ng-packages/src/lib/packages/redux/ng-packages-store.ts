@@ -27,7 +27,7 @@ export class NgPackagesStore extends NgRecordStore<PackagesState, Package, strin
 
     public getAvailablePackagesAsArray(packagePath: string): LocalObject<AvailablePackage, string>[] {
         const state = (this.ngRedux.getState() as unknown) as PackagesAppState;
-        const availablePackages = state.packages.availablePackages[packagePath];
-        return Object.keys(availablePackages).map(key => availablePackages[key]);
+        const availablePackages = state && state.packages && state.packages.availablePackages && state.packages.availablePackages[packagePath];
+        return availablePackages ? Object.keys(availablePackages).map(key => availablePackages[key]) : [];
     }
 }
