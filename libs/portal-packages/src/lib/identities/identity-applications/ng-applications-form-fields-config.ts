@@ -60,17 +60,6 @@ export class NgApplicationsFormFieldsConfig extends FieldsConfig<ApplicationDesc
             })
         ];
 
-        // Id field must only be added for edit forms.
-        // If added to a create form, it won't be able to bind in the backend.
-        if (entity && entity.object.id && entity.status !== LocalObjectStatus.CREATING) {
-            fields.push(new Field({
-                component: HiddenFieldComponent,
-                value: entity ? entity.object.id : undefined,
-                key: 'id',
-                order: 0,
-            }));
-        }
-
         return fields;
     }
 }
