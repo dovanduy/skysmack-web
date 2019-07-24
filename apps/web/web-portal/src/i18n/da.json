@@ -271,7 +271,8 @@
 			"SECURITY_AND_USERS": "Brugere og sikkerhed",
 			"ROLES": "Roller",
 			"BACK": "Tilbage",
-			"FIELDS_TITLE": "(felter)"
+			"FIELDS_TITLE": "(felter)",
+			"TITLE_EXTRAS": "(roller)"
 		},
 		"FORM": {
 			"LABELS": {
@@ -364,7 +365,8 @@
 			"BACK": "Tilbage",
 			"ENTITY_ACTION_SET_PASSWWORD": "Sæt adgangskode",
 			"ENTITY_ACTION_ROLES": "Roller",
-			"FIELDS_TITLE": "(felter)"
+			"FIELDS_TITLE": "(felter)",
+			"TITLE_EXTRAS": "(brugere)"
 		},
 		"ROLES": {
 			"CURRENT_ROLES": "{{ object.email }} nuværende roller",
