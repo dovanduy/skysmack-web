@@ -19,14 +19,14 @@ export class SwaggerUiComponent implements AfterViewInit {
   }
 
   ngAfterViewInit() {
-    console.log('domain', this.apiDomain);
     const ui = SwaggerUI({
       url: this.apiDomain.domain + '/' + this.router.url.split('/')[1],
       domNode: this.el.nativeElement.querySelector('.swagger-container'),
       deepLinking: true,
+      docExpansion: 'none',
       presets: [
         SwaggerUI.presets.apis
-      ],
+      ]
     });
   }
 }
