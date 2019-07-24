@@ -95,6 +95,9 @@ import { openApiRoute } from '../packages/open-api-package-manifest';
     // SkysmackModule, 
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
+  exports: [
+    HttpClientModule
+  ],
   providers: [
     applicationStartup,
     LanguageService,

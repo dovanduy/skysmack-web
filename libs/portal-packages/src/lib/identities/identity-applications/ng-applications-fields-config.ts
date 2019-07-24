@@ -40,7 +40,6 @@ export class NgApplicationsFieldsConfig extends FieldsConfig<Application, number
                 component: StringFieldComponent,
                 value: entity ? entity.object.consentType : undefined,
                 key: 'consentType',
-                validators: [Validators.required],
                 order: 1,
                 showColumn: true
             }),
@@ -64,7 +63,6 @@ export class NgApplicationsFieldsConfig extends FieldsConfig<Application, number
                 component: StringFieldComponent,
                 value: entity ? entity.object.postLogoutRedirectUris : undefined,
                 key: 'postLogoutRedirectUris',
-                validators: [Validators.required],
                 order: 1,
                 showColumn: true
             }),
@@ -72,7 +70,6 @@ export class NgApplicationsFieldsConfig extends FieldsConfig<Application, number
                 component: StringFieldComponent,
                 value: entity ? entity.object.properties : undefined,
                 key: 'properties',
-                validators: [Validators.required],
                 order: 1,
                 showColumn: true
             }),
@@ -80,7 +77,6 @@ export class NgApplicationsFieldsConfig extends FieldsConfig<Application, number
                 component: StringFieldComponent,
                 value: entity ? entity.object.redirectUris : undefined,
                 key: 'redirectUris',
-                validators: [Validators.required],
                 order: 1,
                 showColumn: true
             }),
