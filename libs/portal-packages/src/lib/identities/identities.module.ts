@@ -21,6 +21,7 @@ import { RolesSelectComponent } from './identity-roles';
 import { DynamicFormsModule } from '@skysmack/portal-dynamic-forms';
 import { SettingsModule } from '@skysmack/portal-settings';
 import { PortalFieldsModule } from '@skysmack/portal-fields';
+import { applicationsComponents } from './identity-applications/components/applications-components';
 
 @NgModule({
   imports: [
@@ -38,7 +39,8 @@ import { PortalFieldsModule } from '@skysmack/portal-fields';
     ...identitiesComponents,
     ...rolesComponents,
     ...usersComponents,
-    ...accountsComponents
+    ...accountsComponents,
+    ...applicationsComponents
   ],
   exports: [
     RolesSelectComponent,

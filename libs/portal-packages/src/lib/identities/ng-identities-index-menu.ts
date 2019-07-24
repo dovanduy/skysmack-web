@@ -28,22 +28,22 @@ export class NgIdentitiesIndexMenu extends SidebarMenu {
             new MenuArea({
                 area: 'actions',
                 translationPrefix: this.translationPrefix,
-                order: 1,
+                order: 1
             }),
             new MenuArea({
                 area: 'manage',
                 translationPrefix: this.translationPrefix,
-                order: 2,
+                order: 2
             }),
             new MenuArea({
                 area: 'account',
                 translationPrefix: this.translationPrefix,
-                order: 3,
+                order: 3
             }),
             new MenuArea({
                 area: 'settings',
                 translationPrefix: this.translationPrefix,
-                order: 3,
+                order: 3
             })
         ]);
 
@@ -66,6 +66,16 @@ export class NgIdentitiesIndexMenu extends SidebarMenu {
                 icon: 'groupAdd',
                 permissions: [
                     IdentitiesPermissions.findUsers
+                ]
+            }),
+            new MenuItem({
+                url: 'applications',
+                displayName: this.translationPrefix + 'APPLICATIONS',
+                area: 'manage',
+                order: 3,
+                icon: 'groupAdd',
+                permissions: [
+                    IdentitiesPermissions.findApplications
                 ]
             }),
             new MenuItem({

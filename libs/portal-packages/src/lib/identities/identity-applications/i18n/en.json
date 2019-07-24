@@ -5,37 +5,75 @@
             "BUTTON_CREATE": "Create"
         },
         "EDIT": {
-            "EDITING": "Edit {{ name }}",
+            "EDITING": "Edit {{ displayName }}",
             "BUTTON_EDIT": "Update"
         },
         "INDEX": {
             "ACTIONS": "Actions",
             "CREATE": "Create",
             "MANAGE": "Manage",
-            "SECURITY": "Security",
-            "SECURITY_AND_USERS": "Users and security",
+            "TITLE_EXTRAS": "(applications)",
             "APPLICATIONS": "Applications",
-            "BACK": "Back",
-            "FIELDS_TITLE": "(fields)"
+            "BACK": "Back"
         },
         "FORM": {
             "LABELS": {
-                "NAME": "Name"
+                "CLIENTID": "Client id",
+                "CONCURRENCYTOKEN": "Concurrency token",
+                "CONSENTTYPE": "Consent type",
+                "DISPLAYNAME": "Display name",
+                "PERMISSIONS": "Permissions",
+                "POSTLOGOUTREDIRECTURIS": "Post logout redirect uris",
+                "PROPERTIES": "Properties",
+                "REDIRECTURIS": "Redirect uris",
+                "TYPE": "Type"
             },
             "PLACEHOLDERS": {
-                "NAME": "Enter name"
+                "CLIENTID": "Client id",
+                "CONCURRENCYTOKEN": "Concurrency token",
+                "CONSENTTYPE": "Consent type",
+                "DISPLAYNAME": "Display name",
+                "PERMISSIONS": "Permissions",
+                "POSTLOGOUTREDIRECTURIS": "Post logout redirect uris",
+                "PROPERTIES": "Properties",
+                "REDIRECTURIS": "Redirect uris",
+                "TYPE": "Type"
             },
             "VALIDATION": {
-                "NAME": {
-                    "REQUIRED": "A name is required."
+                "CLIENTID": {
+                    "REQUIRED": "Client id is required"
+                },
+                "CONCURRENCYTOKEN": {
+                    "REQUIRED": "Concurrency token is required"
+                },
+                "CONSENTTYPE": {
+                    "REQUIRED": "Consent type is required"
+                },
+                "DISPLAYNAME": {
+                    "REQUIRED": "Display name is required"
+                },
+                "PERMISSIONS": {
+                    "REQUIRED": "Permissions is required"
+                },
+                "POSTLOGOUTREDIRECTURIS": {
+                    "REQUIRED": "Post logout redirect uris is required"
+                },
+                "PROPERTIES": {
+                    "REQUIRED": "Properties is required"
+                },
+                "REDIRECTURIS": {
+                    "REQUIRED": "Redirect uris is required"
+                },
+                "TYPE": {
+                    "REQUIRED": "Type is required"
                 }
             }
         },
         "QUEUE": {
-            "ADDING": "Adding {{ name }}",
-            "UPDATING": "Updating {{ name }}",
-            "DELETING": "Deleting {{ name }}",
-            "ERROR": "An error occured with {{ name }}. Correct and try again."
+            "ADDING": "Adding {{ displayName }}",
+            "UPDATING": "Updating {{ displayName }}",
+            "DELETING": "Deleting {{ displayName }}",
+            "ERROR": "An error occured with {{ displayName }}. Correct and try again."
         }
     }
 }
