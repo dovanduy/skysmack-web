@@ -3,21 +3,24 @@ import { Validators } from '@angular/forms';
 import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { Receipt, RECEIPTS_AREA_KEY } from '@skysmack/packages-terminal-payments';
 import { NgReceiptsValidation } from '@skysmack/ng-packages';
-import { LoadedPackage } from '@skysmack/ng-framework';
+import { LoadedPackage, NgFieldStore } from '@skysmack/ng-framework';
 import { FormRule, Field } from '@skysmack/ng-dynamic-forms';
-import { FieldsConfig, FieldProviders } from '@skysmack/ng-fields';
-import { StringFieldComponent, HiddenFieldComponent } from '@skysmack/portal-fields';
+import { FieldProviders } from '@skysmack/ng-fields';
+import { StringFieldComponent, HiddenFieldComponent, DocumentFieldsConfig } from '@skysmack/portal-fields';
+import { Router } from '@angular/router';
 
 @Injectable({ providedIn: 'root' })
-export class NgReceiptsFieldsConfig extends FieldsConfig<Receipt, number> {
+export class NgReceiptsFieldsConfig extends DocumentFieldsConfig<Receipt, number> {
     public validation = new NgReceiptsValidation();
     public area = RECEIPTS_AREA_KEY
     public formRules: FormRule[] = [];
 
     constructor(
-        public fieldProviders: FieldProviders
+        public fieldProviders: FieldProviders,
+        public fieldStore: NgFieldStore,
+        public router: Router
     ) {
-        super(fieldProviders);
+        super(fieldProviders, fieldStore, router);
     }
 
     protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<Receipt, number>): Field[] {
