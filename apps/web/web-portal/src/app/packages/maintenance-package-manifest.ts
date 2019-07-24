@@ -1,4 +1,4 @@
-import { MaintenanceType } from '@skysmack/package-types';
+import { MaintenanceType, MaintenanceTypeId } from '@skysmack/package-types';
 import { PackageLoader, PackageManifest } from '@skysmack/ng-framework';
 import { TenantPackageLoadStrategy } from '../start/tenant-package-load-strategy';
 import { Route } from '@angular/router';
@@ -14,4 +14,4 @@ export function loadMaintenancePackage(packageLoader: PackageLoader) {
     return () => packageLoader.add(new MaintenancePackageManifest());
 }
 
-export const maintenanceRoute = { path: TenantPackageLoadStrategy.URL_PREFIX + MaintenancePackageManifest.id, loadChildren: MaintenancePackageManifest.modulePath } as Route;
+export const maintenanceRoute = { path: TenantPackageLoadStrategy.URL_PREFIX + MaintenanceTypeId, loadChildren: MaintenancePackageManifest.modulePath } as Route;

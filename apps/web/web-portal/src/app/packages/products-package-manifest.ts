@@ -1,4 +1,4 @@
-import { ProductsType } from '@skysmack/package-types';
+import { ProductsType, ProductsTypeId } from '@skysmack/package-types';
 import { PackageLoader, PackageManifest } from '@skysmack/ng-framework';
 import { Route } from '@angular/router';
 import { TenantPackageLoadStrategy } from '../start/tenant-package-load-strategy';
@@ -14,4 +14,4 @@ export function loadProductPackage(packageLoader: PackageLoader) {
     return () => packageLoader.add(new ProductsPackageManifest());
 }
 
-export const productsRoute = { path: TenantPackageLoadStrategy.URL_PREFIX + ProductsPackageManifest.id, loadChildren: ProductsPackageManifest.modulePath } as Route;
+export const productsRoute = { path: TenantPackageLoadStrategy.URL_PREFIX + ProductsTypeId, loadChildren: ProductsPackageManifest.modulePath } as Route;

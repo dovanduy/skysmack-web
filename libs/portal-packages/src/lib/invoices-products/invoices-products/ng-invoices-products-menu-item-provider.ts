@@ -4,7 +4,7 @@ import { safeHasValue, Package, MenuItemProvider, MenuItem } from '@skysmack/fra
 import { map, take } from 'rxjs/operators';
 import { Skysmack } from '@skysmack/packages-skysmack-core';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
-import { InvoicesProductsType } from '@skysmack/package-types';
+import { InvoicesProductsTypeId } from '@skysmack/package-types';
 import { MatDialog } from '@angular/material/dialog';
 import { InvoicesProductsAddProductsComponent } from './components/invoices-products-add-products/invoices-products-add-products.component';
 import { Guid } from 'guid-typescript';
@@ -25,7 +25,7 @@ export class NgInvoicesProductsMenuItemProvider extends MenuItemProvider {
             return this.store.getSkysmack().pipe(
                 safeHasValue(),
                 map((currentTenant: Skysmack) => currentTenant.packages
-                    .filter((_package: Package) => _package.type === InvoicesProductsType.id && _package.dependencies.find(dep => dep === packagePath))
+                    .filter((_package: Package) => _package.type === InvoicesProductsTypeId && _package.dependencies.find(dep => dep === packagePath))
                     .map(_package =>
                         new MenuItem({ provideIn: 'both', area: 'actions' }).asEventAction(`${_package.name}`, (_this: NgInvoicesProductsMenuItemProvider) => {
                             const dialogRef = _this.dialog.open(InvoicesProductsAddProductsComponent, {
