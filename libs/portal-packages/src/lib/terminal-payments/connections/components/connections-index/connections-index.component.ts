@@ -92,7 +92,6 @@ export class ConnectionsIndexComponent extends RecordIndexComponent<ConnectionsA
   protected connect(_this: ConnectionsIndexComponent, value: LocalObject<Connection, ConnectionKey>) {
     const url = `${_this.apiDomain.domain}/${_this.packagePath}`;
     const connection = new ConnectionRequest({
-      type: 'changeConnection',
       clientId: value.object.id.clientId,
       terminalId: value.object.id.terminalId,
       terminalAction: TerminalAction.Connect
@@ -104,7 +103,6 @@ export class ConnectionsIndexComponent extends RecordIndexComponent<ConnectionsA
   protected open(_this: ConnectionsIndexComponent, value: LocalObject<Connection, ConnectionKey>) {
     const url = `${_this.apiDomain.domain}/${_this.packagePath}`;
     const connection = new ConnectionRequest({
-      type: 'changeConnection',
       clientId: value.object.id.clientId,
       terminalId: value.object.id.terminalId,
       terminalAction: TerminalAction.Open
@@ -118,7 +116,6 @@ export class ConnectionsIndexComponent extends RecordIndexComponent<ConnectionsA
   protected close(_this: ConnectionsIndexComponent, value: LocalObject<Connection, ConnectionKey>) {
     const url = `${_this.apiDomain.domain}/${_this.packagePath}`;
     const connection = new ConnectionRequest({
-      type: 'changeConnection',
       clientId: value.object.id.clientId,
       terminalId: value.object.id.terminalId,
       terminalAction: TerminalAction.Close
@@ -132,7 +129,6 @@ export class ConnectionsIndexComponent extends RecordIndexComponent<ConnectionsA
   protected disconnect(_this: ConnectionsIndexComponent, value: LocalObject<Connection, ConnectionKey>) {
     const url = `${_this.apiDomain.domain}/${_this.packagePath}`;
     const connection = new ConnectionRequest({
-      type: 'changeConnection',
       clientId: value.object.id.clientId,
       terminalId: value.object.id.terminalId,
       terminalAction: TerminalAction.Disconnect
