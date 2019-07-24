@@ -37,6 +37,7 @@ export class NgPackagesFieldsConfig extends FieldsConfig<Package, string> {
                 validators: [Validators.required],
                 optionsData$: this.store.getAvailablePackages(loadedPackage._package.path),
                 getDependencies: () => { this.actions.getAvailablePackages(loadedPackage._package.path); },
+                valueSelector: 'object.type',
                 displayModifier: (column: DisplayColumn, _package: LocalObject<Package, number>) => {
                     const availablePackage = this.store.getAvailablePackagesAsArray(loadedPackage._package.path).find(ap => ap.object.type === _package.object.type);
 
