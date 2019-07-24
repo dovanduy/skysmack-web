@@ -85,6 +85,7 @@
     "core-js": "2.6.8",
     "guid-typescript": "1.0.9",
     "gulp": "4.0.2",
+    "latinize": "^0.4.0",
     "localforage": "1.7.3",
     "moment": "2.24.0",
     "node-sass": "4.12.0",
@@ -92,8 +93,8 @@
     "redux": "4.0.1",
     "redux-observable": "1.1.0",
     "rxjs": "6.5.2",
-    "zone.js": "0.9.1",
-    "swagger-ui": "3.23.1"
+    "swagger-ui": "3.23.1",
+    "zone.js": "0.9.1"
   },
   "devDependencies": {
     "jest-preset-angular": "7.1.1",
