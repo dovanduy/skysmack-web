@@ -19,6 +19,7 @@
         "FORM": {
             "LABELS": {
                 "CLIENTID": "Client id",
+                "CLIENTSECRET": "Client secret",
                 "CONCURRENCYTOKEN": "Concurrency token",
                 "CONSENTTYPE": "Consent type",
                 "DISPLAYNAME": "Display name",
@@ -30,6 +31,7 @@
             },
             "PLACEHOLDERS": {
                 "CLIENTID": "Client id",
+                "CLIENTSECRET": "Client secret",
                 "CONCURRENCYTOKEN": "Concurrency token",
                 "CONSENTTYPE": "Consent type",
                 "DISPLAYNAME": "Display name",
@@ -40,6 +42,9 @@
                 "TYPE": "Type"
             },
             "VALIDATION": {
+                "CLIENTSECRET": {
+                    "REQUIRED": "Client secret is required"
+                },
                 "CLIENTID": {
                     "REQUIRED": "Client id is required"
                 },

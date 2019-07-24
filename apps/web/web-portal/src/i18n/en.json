@@ -2822,7 +2822,8 @@
 				"POSTLOGOUTREDIRECTURIS": "Post logout redirect uris",
 				"PROPERTIES": "Properties",
 				"REDIRECTURIS": "Redirect uris",
-				"TYPE": "Type"
+				"TYPE": "Type",
+				"CLIENTSECRET": "Client secret"
 			},
 			"PLACEHOLDERS": {
 				"CLIENTID": "Client id",
@@ -2833,7 +2834,8 @@
 				"POSTLOGOUTREDIRECTURIS": "Post logout redirect uris",
 				"PROPERTIES": "Properties",
 				"REDIRECTURIS": "Redirect uris",
-				"TYPE": "Type"
+				"TYPE": "Type",
+				"CLIENTSECRET": "Client secret"
 			},
 			"VALIDATION": {
 				"CLIENTID": {
@@ -2862,6 +2864,9 @@
 				},
 				"TYPE": {
 					"REQUIRED": "Type is required"
+				},
+				"CLIENTSECRET": {
+					"REQUIRED": "Client secret is required"
 				}
 			}
 		},

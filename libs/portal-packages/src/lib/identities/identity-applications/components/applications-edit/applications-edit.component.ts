@@ -5,7 +5,7 @@ import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EditorNavService } from '@skysmack/portal-ui';
 import { NgApplicationsStore } from '@skysmack/ng-packages';
-import { NgApplicationsFieldsConfig } from '../../ng-applications-fields-config';
+import { NgApplicationsFormFieldsConfig } from '../../ng-applications-form-fields-config';
 import { RecordFormComponent } from '@skysmack/portal-fields';
 
 @Component({
@@ -20,7 +20,7 @@ export class ApplicationsEditComponent extends RecordFormComponent<ApplicationsA
     public editorNavService: EditorNavService,
     public actions: NgApplicationsActions,
     public redux: NgSkysmackStore,
-    public fieldsConfig: NgApplicationsFieldsConfig,
+    public fieldsConfig: NgApplicationsFormFieldsConfig,
     public store: NgApplicationsStore,
   ) {
     super(router, activatedRoute, editorNavService, actions, redux, store, fieldsConfig);
