@@ -22,7 +22,7 @@ export class DashboardComponent implements OnInit {
       switchMap(providers => combineLatest(
         providers.map(provider => provider.getDashboards())
       )),
-      map(x => x.reduce((a, b) => a.concat(b), []))
+      map(dashboards => dashboards.reduce((a, b) => a.concat(b), []))
     );
   }
 }

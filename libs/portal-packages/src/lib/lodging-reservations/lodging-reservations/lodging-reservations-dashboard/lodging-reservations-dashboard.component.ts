@@ -1,9 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { NgLodgingReservationsActions, NgLodgingReservationsStore } from '@skysmack/ng-packages';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
-import { Observable } from 'rxjs';
-import { Package, PagedQuery, RSQLFilterBuilder, SortBuilder } from '@skysmack/framework';
-import { map } from 'rxjs/operators';
+import { Observable, BehaviorSubject } from 'rxjs';
+import { Package, PagedQuery, RSQLFilterBuilder, Visible } from '@skysmack/framework';
+import { map, debounceTime } from 'rxjs/operators';
 import { LodgingReservation } from '@skysmack/packages-lodging-reservations';
 import * as _moment from 'moment';
 const moment = _moment;
@@ -13,7 +13,7 @@ const moment = _moment;
   templateUrl: './lodging-reservations-dashboard.component.html',
   styleUrls: ['./lodging-reservations-dashboard.component.scss']
 })
-export class LodgingReservationsDashboardComponent implements OnInit {
+export class LodgingReservationsDashboardComponent implements OnInit, Visible {
   @Input() packagePath: string;
   public package$: Observable<Package>;
   public arrivalsCount$: Observable<number>;
@@ -45,5 +45,13 @@ export class LodgingReservationsDashboardComponent implements OnInit {
         return arrivalsCount;
       })
     )
+  }
+
+  public show(): BehaviorSubject<boolean> {
+    return new BehaviorSubject(true);
+  }
+
+  public render(): BehaviorSubject<boolean> {
+    return new BehaviorSubject(true);
   }
 }

@@ -29,3 +29,4 @@ export * from './offline-state';
 export * from './menu';
 export * from './settings';
 export * from './dashboard';
+export * from './visible';

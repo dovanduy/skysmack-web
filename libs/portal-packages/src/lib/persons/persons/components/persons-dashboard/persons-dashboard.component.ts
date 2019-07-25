@@ -1,8 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { NgPersonsActions, NgPersonsStore } from '@skysmack/ng-packages';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
-import { Observable } from 'rxjs';
-import { Package, PagedQuery } from '@skysmack/framework';
+import { Observable, of, BehaviorSubject } from 'rxjs';
+import { Package, PagedQuery, Visible, Dashboard } from '@skysmack/framework';
 import { map } from 'rxjs/operators';
 
 @Component({
@@ -10,8 +10,9 @@ import { map } from 'rxjs/operators';
   templateUrl: './persons-dashboard.component.html',
   styleUrls: ['./persons-dashboard.component.scss']
 })
-export class PersonsDashboardComponent implements OnInit {
+export class PersonsDashboardComponent implements OnInit, Visible {
   @Input() packagePath: string;
+  @Input() dashboard: Dashboard;
   public package$: Observable<Package>;
   public totalCount$: Observable<number>;
 
@@ -22,6 +23,7 @@ export class PersonsDashboardComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.packagePath = this.dashboard.packagePath;
     this.package$ = this.skysmackStore.getCurrentPackage(this.packagePath).pipe(map(x => x._package));
     this.actions.getPaged(this.packagePath, new PagedQuery());
     this.totalCount$ = this.store.getPages(this.packagePath).pipe(
@@ -32,7 +34,14 @@ export class PersonsDashboardComponent implements OnInit {
         })
         return totalCount;
       })
-    )
+    );
   }
 
+  public show(): BehaviorSubject<boolean> {
+    return new BehaviorSubject(true);
+  }
+
+  public render(): BehaviorSubject<boolean> {
+    return new BehaviorSubject(true);
+  }
 }

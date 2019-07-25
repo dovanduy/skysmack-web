@@ -22,7 +22,6 @@ export class DashboardLoaderComponent implements OnInit {
     viewContainerRef.clear();
 
     const componentRef = viewContainerRef.createComponent(componentFactory);
-    // (<DynamicField>componentRef.instance).fh = this.fh;
-    (<any>componentRef.instance).packagePath = this.dashboard.packagePath;
+    (<any>componentRef.instance).dashboard = this.dashboard;
   }
 }
