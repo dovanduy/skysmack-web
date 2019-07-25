@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild, ComponentFactoryResolver, Input } from '@angular/core';
 import { DynamicDashboardDirective } from './dynamic-dashboard.directive';
+import { Dashboard } from '@skysmack/framework';
 
 @Component({
   selector: 'ss-dashboard-loader',
@@ -7,7 +8,7 @@ import { DynamicDashboardDirective } from './dynamic-dashboard.directive';
   styleUrls: ['./dashboard-loader.component.scss']
 })
 export class DashboardLoaderComponent implements OnInit {
-  @Input() dashboard: any;
+  @Input() dashboard: Dashboard;
   @ViewChild(DynamicDashboardDirective, { static: true }) dynamicDashboard: DynamicDashboardDirective;
 
   constructor(
@@ -15,11 +16,14 @@ export class DashboardLoaderComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(this.dashboard);
+    console.log(this.dashboard);
+    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(this.dashboard.component);
 
     const viewContainerRef = this.dynamicDashboard.viewContainerRef;
     viewContainerRef.clear();
 
     const componentRef = viewContainerRef.createComponent(componentFactory);
+    // (<DynamicField>componentRef.instance).fh = this.fh;
+    (<any>componentRef.instance).packagePath = this.dashboard.packagePath;
   }
 }

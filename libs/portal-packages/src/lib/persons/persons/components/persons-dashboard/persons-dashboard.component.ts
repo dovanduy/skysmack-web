@@ -1,10 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { NgPersonsActions, NgPersonsStore } from '@skysmack/ng-packages';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
-import { PersonsTypeId } from '@skysmack/package-types';
-import { Package, LocalObject } from '@skysmack/framework';
 
 @Component({
   selector: 'skysmack-persons-dashboard',
@@ -12,7 +8,7 @@ import { Package, LocalObject } from '@skysmack/framework';
   styleUrls: ['./persons-dashboard.component.scss']
 })
 export class PersonsDashboardComponent implements OnInit {
-  public personPackages$: Observable<LocalObject<Package, string>[]>;
+  @Input() packagePath: string;
 
   constructor(
     public actions: NgPersonsActions,
@@ -21,7 +17,6 @@ export class PersonsDashboardComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.personPackages$ = this.skysmackStore.getPackages().pipe(map(packages => packages.filter(_package => _package.object.type === PersonsTypeId)));
   }
 
 }

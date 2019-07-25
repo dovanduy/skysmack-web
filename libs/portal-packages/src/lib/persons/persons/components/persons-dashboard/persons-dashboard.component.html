@@ -1,3 +1,1 @@
-<ng-container *ngFor="let pck of personPackages$ | async">
-    <h3>{{ pck.object.name }} dashboard</h3>
-</ng-container>
+<h3 *ngIf="packagePath">{{ packagePath }} dashboard</h3>

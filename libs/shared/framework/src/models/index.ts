@@ -28,3 +28,4 @@ export * from './validation-error';
 export * from './offline-state';
 export * from './menu';
 export * from './settings';
+export * from './dashboard';

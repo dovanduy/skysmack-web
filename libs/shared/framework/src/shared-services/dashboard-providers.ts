@@ -1,13 +1,12 @@
 import { BehaviorSubject } from 'rxjs';
-import { Injectable } from '@angular/core';
+import { DashboardProvider } from './dashboard-provider';
 
-@Injectable({ providedIn: 'root' })
-export class DashboardsProvider {
-    public providers: any[] = [];
-    public providers$: BehaviorSubject<any[]> = new BehaviorSubject([]);
+export class DashboardProviders {
+    public providers: DashboardProvider[] = [];
+    public providers$: BehaviorSubject<DashboardProvider[]> = new BehaviorSubject([]);
     private register = {};
 
-    public add(provider: any): DashboardsProvider {
+    public add(provider: DashboardProvider): DashboardProviders {
         const registered = this.register[provider.id];
         if (!registered) {
             this.providers.push(provider);

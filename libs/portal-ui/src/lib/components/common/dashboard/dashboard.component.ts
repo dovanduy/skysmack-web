@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { DashboardsProvider } from '@skysmack/ng-framework';
+import { NgDashboardProviders } from '@skysmack/ng-framework';
+import { Dashboard } from '@skysmack/framework';
+import { Observable, combineLatest, of } from 'rxjs';
+import { map, switchMap, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'ss-dashboard',
@@ -8,10 +11,18 @@ import { DashboardsProvider } from '@skysmack/ng-framework';
 })
 export class DashboardComponent implements OnInit {
 
+  public dashboards$: Observable<Dashboard[]>;
+
   constructor(
-    public dashboardsProvider: DashboardsProvider
+    public dashboardProviders: NgDashboardProviders
   ) { }
 
   ngOnInit() {
+    this.dashboards$ = this.dashboardProviders.providers$.pipe(
+      switchMap(providers => combineLatest(
+        providers.map(provider => provider.getDashboards())
+      )),
+      map(x => x.reduce((a, b) => a.concat(b), []))
+    );
   }
 }

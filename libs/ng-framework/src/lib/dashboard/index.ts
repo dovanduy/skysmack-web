@@ -1,1 +1,1 @@
-export * from './dashboards-provider';
+export * from './ng-dashboard-providers';
