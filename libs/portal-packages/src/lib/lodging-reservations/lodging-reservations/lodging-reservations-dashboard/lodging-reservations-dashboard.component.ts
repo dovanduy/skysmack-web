@@ -1,8 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, AfterViewInit } from '@angular/core';
 import { NgLodgingReservationsActions, NgLodgingReservationsStore } from '@skysmack/ng-packages';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { Observable, BehaviorSubject } from 'rxjs';
-import { Package, PagedQuery, RSQLFilterBuilder, Visible } from '@skysmack/framework';
+import { Package, PagedQuery, RSQLFilterBuilder, Visible, Dashboard } from '@skysmack/framework';
 import { map, debounceTime } from 'rxjs/operators';
 import { LodgingReservation } from '@skysmack/packages-lodging-reservations';
 import * as _moment from 'moment';
@@ -14,7 +14,8 @@ const moment = _moment;
   styleUrls: ['./lodging-reservations-dashboard.component.scss']
 })
 export class LodgingReservationsDashboardComponent implements OnInit, Visible {
-  @Input() packagePath: string;
+  @Input() dashboard: Dashboard;
+  public packagePath: string;
   public package$: Observable<Package>;
   public arrivalsCount$: Observable<number>;
 
@@ -25,6 +26,8 @@ export class LodgingReservationsDashboardComponent implements OnInit, Visible {
   ) { }
 
   ngOnInit() {
+    this.show();
+
     this.getArrivalsCount();
     this.package$ = this.skysmackStore.getCurrentPackage(this.packagePath).pipe(map(x => x._package));
   }
@@ -47,11 +50,13 @@ export class LodgingReservationsDashboardComponent implements OnInit, Visible {
     )
   }
 
-  public show(): BehaviorSubject<boolean> {
-    return new BehaviorSubject(true);
+  public show(): void {
+    setTimeout(() => {
+      this.dashboard.show$.next(true);
+    }, 0);
   }
 
-  public render(): BehaviorSubject<boolean> {
-    return new BehaviorSubject(true);
+  public render(): void {
+
   }
 }

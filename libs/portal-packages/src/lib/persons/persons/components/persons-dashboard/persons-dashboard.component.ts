@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, AfterViewInit } from '@angular/core';
 import { NgPersonsActions, NgPersonsStore } from '@skysmack/ng-packages';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { Observable, of, BehaviorSubject } from 'rxjs';
@@ -23,7 +23,7 @@ export class PersonsDashboardComponent implements OnInit, Visible {
   ) { }
 
   ngOnInit() {
-    this.packagePath = this.dashboard.packagePath;
+    this.show();
     this.package$ = this.skysmackStore.getCurrentPackage(this.packagePath).pipe(map(x => x._package));
     this.actions.getPaged(this.packagePath, new PagedQuery());
     this.totalCount$ = this.store.getPages(this.packagePath).pipe(
@@ -37,11 +37,12 @@ export class PersonsDashboardComponent implements OnInit, Visible {
     );
   }
 
-  public show(): BehaviorSubject<boolean> {
-    return new BehaviorSubject(true);
+  public show(): void {
+    setTimeout(() => {
+      this.dashboard.show$.next(true);
+    }, 0);
   }
 
-  public render(): BehaviorSubject<boolean> {
-    return new BehaviorSubject(true);
+  public render(): void {
   }
 }

@@ -1,7 +1,7 @@
 <mat-grid-list cols="3" rowHeight="2:1">
     <ng-container *ngFor="let dashboard of dashboards$ | async">
         <ng-container *ngIf="dashboard.render$ | async as render">
-            <mat-grid-tile [ngClass]="{'hidden': false }">
+            <mat-grid-tile [ngClass]="{'hidden': !(dashboard.show$ | async) }">
                 <ss-dashboard-loader [dashboard]="dashboard"></ss-dashboard-loader>
             </mat-grid-tile>
         </ng-container>
