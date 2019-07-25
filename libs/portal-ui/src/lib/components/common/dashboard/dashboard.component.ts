@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DashboardsProvider } from '@skysmack/ng-framework';
 
 @Component({
   selector: 'ss-dashboard',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    public dashboardsProvider: DashboardsProvider
+  ) { }
 
   ngOnInit() {
   }
-
 }
