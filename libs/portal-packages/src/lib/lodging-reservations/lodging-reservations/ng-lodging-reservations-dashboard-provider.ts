@@ -13,7 +13,7 @@ export class NgLodgingReservationsDashboardProvider extends DashboardProvider {
     constructor(private skysmackStore: NgSkysmackStore) { super(); }
 
     public getDashboards() {
-        return this.skysmackStore.getPackages().pipe(
+        return this.skysmackStore.getAccessiblePackages().pipe(
             map(packages => packages.filter(_package => _package.object.type === LodgingReservationsTypeId)),
             map(packages => packages.map(_package => new Dashboard({
                 packagePath: _package.object.path,

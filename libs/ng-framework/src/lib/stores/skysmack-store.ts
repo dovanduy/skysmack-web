@@ -44,6 +44,12 @@ export class SkysmackStore {
         );
     }
 
+    public getAccessiblePackages(): Observable<LocalObject<Package, string>[]> {
+        return this.getPackages().pipe(
+            map(packages => packages.filter(_package => _package.object.access))
+        );
+    }
+
     public getLoadedPackages(): Observable<LoadedPackage[]> {
         return this.getSkysmack().pipe(
             map(skysmack => skysmack.packages.map(_package => PackageLoader.toLoadedPackage(_package)))

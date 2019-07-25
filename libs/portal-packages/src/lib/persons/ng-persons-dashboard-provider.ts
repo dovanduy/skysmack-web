@@ -5,6 +5,7 @@ import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { map } from 'rxjs/operators';
 import { PersonsTypeId } from '@skysmack/package-types';
 import { PersonsDashboardComponent } from './persons/components/persons-dashboard/persons-dashboard.component';
+import { Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class NgPersonsDashboardProvider extends DashboardProvider {
@@ -12,8 +13,8 @@ export class NgPersonsDashboardProvider extends DashboardProvider {
 
     constructor(private skysmackStore: NgSkysmackStore) { super(); }
 
-    public getDashboards() {
-        return this.skysmackStore.getPackages().pipe(
+    public getDashboards(): Observable<Dashboard[]> {
+        return this.skysmackStore.getAccessiblePackages().pipe(
             map(packages => packages.filter(_package => _package.object.type === PersonsTypeId)),
             map(personPackages => personPackages.map(personPackage => new Dashboard({
                 packagePath: personPackage.object.path,

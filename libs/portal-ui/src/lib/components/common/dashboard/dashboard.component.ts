@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgDashboardProviders } from '@skysmack/ng-framework';
 import { Dashboard } from '@skysmack/framework';
-import { Observable, combineLatest, of } from 'rxjs';
-import { map, switchMap, tap } from 'rxjs/operators';
+import { Observable, combineLatest } from 'rxjs';
+import { map, switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'ss-dashboard',
