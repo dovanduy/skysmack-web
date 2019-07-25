@@ -16,7 +16,6 @@ export class DashboardLoaderComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log(this.dashboard);
     const componentFactory = this.componentFactoryResolver.resolveComponentFactory(this.dashboard.component);
 
     const viewContainerRef = this.dynamicDashboard.viewContainerRef;

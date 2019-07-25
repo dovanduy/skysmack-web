@@ -1,1 +1,2 @@
-<h3 *ngIf="packagePath">{{ packagePath }} dashboard</h3>
+<h3 *ngIf="package$ | async as _package">{{ _package.name }} dashboard</h3>
+<p *ngIf="totalCount$ | async as totalCount">{{ totalCount }} people created.</p>
