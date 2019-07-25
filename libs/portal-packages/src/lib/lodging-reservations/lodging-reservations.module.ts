@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, ComponentFactoryResolver } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -6,11 +6,13 @@ import { LanguageService } from '@skysmack/portal-ui';
 import { NgIdentitiesModule, NgLodgingReservationsModule } from '@skysmack/ng-packages';
 import { PortalUiModule } from '@skysmack/portal-ui';
 import { LodgingReservationsRoutingModule } from './lodging-reservations-routing.module';
-import { lodgingReservationsComponents } from './lodging-reservations/lodgings-reservations-components';
+import { lodgingReservationsComponents, lodgingReservationsEntryComponents } from './lodging-reservations/lodgings-reservations-components';
 import { NgLodgingReservationsSettingsFieldsConfig } from './ng-lodging-reservations-settings-fields-config';
 import { DynamicFormsModule } from '@skysmack/portal-dynamic-forms';
 import { SettingsModule } from '@skysmack/portal-settings';
 import { PortalFieldsModule } from '@skysmack/portal-fields';
+import { NgDashboardProviders, CoalescingComponentFactoryResolver } from '@skysmack/ng-framework';
+import { NgLodgingReservationsDashboardProvider } from './lodging-reservations/ng-lodging-reservations-dashboard-provider';
 
 @NgModule({
   imports: [
@@ -27,11 +29,22 @@ import { PortalFieldsModule } from '@skysmack/portal-fields';
   declarations: [
     ...lodgingReservationsComponents,
   ],
+  entryComponents: [
+    ...lodgingReservationsEntryComponents
+  ],
   providers: [
     LanguageService,
     { provide: 'NgLodgingReservationsSettingsFieldsConfig', useClass: NgLodgingReservationsSettingsFieldsConfig },
   ]
 })
 export class LodgingReservationsModule {
-  constructor() { }
+  constructor(
+    coalescingResolver: CoalescingComponentFactoryResolver,
+    localResolver: ComponentFactoryResolver,
+    dashboardProviders: NgDashboardProviders,
+    lodgingReservationsDashboardProvider: NgLodgingReservationsDashboardProvider
+  ) {
+    coalescingResolver.registerResolver(localResolver);
+    dashboardProviders.add(lodgingReservationsDashboardProvider);
+  }
 }

@@ -1,13 +1,12 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { NgPersonsActions, NgPersonsStore } from '@skysmack/ng-packages';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
-import { LoadedPackage } from '@skysmack/ng-framework';
 import { Observable } from 'rxjs';
 import { Package, PagedQuery } from '@skysmack/framework';
 import { map } from 'rxjs/operators';
 
 @Component({
-  selector: 'skysmack-persons-dashboard',
+  selector: 'ss-persons-dashboard',
   templateUrl: './persons-dashboard.component.html',
   styleUrls: ['./persons-dashboard.component.scss']
 })

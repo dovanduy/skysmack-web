@@ -7,6 +7,7 @@ import { LodgingsReservationsCreateComponent } from './lodgings-reservations-cre
 import { LodgingsReservationsEditComponent } from './lodgings-reservations-edit/lodgings-reservations-edit.component';
 import { SettingsComponent } from '@skysmack/portal-settings';
 import { RouteData } from '@skysmack/framework';
+import { LodgingReservationsDashboardComponent } from './lodging-reservations-dashboard/lodging-reservations-dashboard.component';
 
 export const lodgingReservationsRoutes: Routes = [
     {
@@ -31,5 +32,10 @@ export const lodgingReservationsComponents: any[] = [
     LodgingsReservationsEditComponent,
     LodgingsStaysComponent,
     LodgingsArrivalsComponent,
-    LodgingsDeparturesComponent
+    LodgingsDeparturesComponent,
+    LodgingReservationsDashboardComponent
+];
+
+export const lodgingReservationsEntryComponents: any[] = [
+    LodgingReservationsDashboardComponent
 ];
