@@ -123,21 +123,6 @@
     </nav>
   </ng-container>
 
-  <!-- ACTION EVENT -->
-  <!-- <li *ngIf="menuItem.isActionEvent && (menuItem | showMenuItemAction:undefined) && menuItem.display"
-        (click)="actionEvent({ action: menuItem.action, _this: menuItem._this });">
-        <span class="link">{{ menuItem.displayName | translate }}</span>
-      </li> -->
-
-  <!-- URL EVENT -->
-  <!-- <li *ngIf="!menuItem.isActionEvent && menuItem.display">
-        <a [routerLink]="[menuItem.url]">
-          {{ menuItem.displayName | translate }}
-        </a>
-      </li> -->
-
-
-
   <!-- ACCOUNT -->
   <ng-container *isAuthenticated>
     <button class="link" mat-icon-button [matMenuTriggerFor]="accountMenu">

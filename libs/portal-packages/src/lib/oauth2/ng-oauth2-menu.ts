@@ -31,6 +31,7 @@ export class NgOAuth2Menu extends SidebarMenu {
     }
 
     public setNavbarMenu(): void {
+
         this.addToNavbarMenuAreas([
             new MenuArea({
                 area: 'identities',
@@ -48,6 +49,7 @@ export class NgOAuth2Menu extends SidebarMenu {
                 .map(_package => this.addToNavbarMenuItems(new MenuItem({ area: 'identities' }).asEventAction(_package.name, (_this: NgOAuth2Menu) => {
                     const dialogRef = _this.dialog.open(LoginComponent, {
                         width: '500px',
+                        data: { packagePath: _package.path }
                     });
 
                     dialogRef.afterClosed().pipe(take(1)).subscribe(() => { });
