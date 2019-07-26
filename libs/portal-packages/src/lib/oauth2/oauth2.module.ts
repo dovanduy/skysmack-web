@@ -9,6 +9,7 @@ import { DynamicFormsModule } from '@skysmack/portal-dynamic-forms';
 import { PortalFieldsModule } from '@skysmack/portal-fields';
 import { CoalescingComponentFactoryResolver, NgMenuProviders } from '@skysmack/ng-framework';
 import { NgOAuth2Menu } from './ng-oauth2-menu';
+import { LoginWrapperComponent } from './components/login-wrapper/login-wrapper.component';
 
 @NgModule({
   imports: [
@@ -21,7 +22,8 @@ import { NgOAuth2Menu } from './ng-oauth2-menu';
     NgOauth2Module
   ],
   declarations: [
-    LoginComponent
+    LoginComponent,
+    LoginWrapperComponent
   ],
   entryComponents: [
     LoginComponent
