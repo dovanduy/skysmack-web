@@ -1,2 +1,2 @@
 <h3 *ngIf="package$ | async as _package">{{ _package.name }} </h3>
-<p *ngIf="totalCount$ | async as totalCount">{{ totalCount }} people created.</p>
+<a [routerLink]="[packagePath]" *ngIf="totalCount$ | async as totalCount">{{ totalCount }} people created.</a>
