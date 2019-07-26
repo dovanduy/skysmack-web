@@ -23,12 +23,18 @@ export abstract class SidebarMenu implements OnDestroy {
     public subscriptionHandler = new SubscriptionHandler();
     public packagePath: string;
     public additionalPaths: string[];
+    public defaultMenuArea = 'manage';
 
+    // Navbar menu
+    public navbarMenuAreas$ = new BehaviorSubject<MenuArea[]>([]);
+    public navbarMenuItems$ = new BehaviorSubject<MenuItem[]>([]);
+
+    // Primary menu
     public primaryMenuAreas$ = new BehaviorSubject<MenuArea[]>([]);
     public primaryMenuItems$ = new BehaviorSubject<MenuItem[]>([]);
 
+    // Speeddial menu
     public speedDialMenuItems$ = new BehaviorSubject<MenuItem[]>([]);
-    public defaultMenuArea = 'manage';
 
     constructor(
         public skysmackStore: NgSkysmackStore,
@@ -75,6 +81,7 @@ export abstract class SidebarMenu implements OnDestroy {
                                     break;
                                 }
                                 case 'speedDialMenu': { this.addItemToSpeedDialMenu(menuItem); break; }
+                                case 'navbar': { this.addItemToNavbarMenu(menuItem); break; }
                                 case 'both': {
                                     addConnectedPackageArea(menuItem);
                                     this.addItemToPrimaryMenu(menuItem);
@@ -140,6 +147,32 @@ export abstract class SidebarMenu implements OnDestroy {
     }
 
     /**
+     * Helper to navbar menu areas in child classes
+     */
+    protected addToNavbarMenuAreas(items: MenuArea | MenuArea[]) {
+        let currentValues = this.navbarMenuAreas$.getValue();
+        if (Array.isArray(items)) {
+            currentValues = currentValues.concat(items)
+        } else {
+            currentValues.push(items);
+        }
+        this.navbarMenuAreas$.next(currentValues);
+    }
+
+    /**
+     * Helper to set navbar menu items in child classes
+     */
+    protected addToNavbarMenuItems(items: MenuItem | MenuItem[]) {
+        let currentValues = this.navbarMenuItems$.getValue();
+        if (Array.isArray(items)) {
+            currentValues = currentValues.concat(items)
+        } else {
+            currentValues.push(items);
+        }
+        this.navbarMenuItems$.next(currentValues);
+    }
+
+    /**
      * Helper to primary menu areas in child classes
      */
     protected addToPrimaryMenuAreas(items: MenuArea | MenuArea[]) {
@@ -176,6 +209,18 @@ export abstract class SidebarMenu implements OnDestroy {
             currentValues.push(items);
         }
         this.speedDialMenuItems$.next(currentValues);
+    }
+
+    private addItemToNavbarMenu(item: MenuItem): void {
+        const currentValues = this.navbarMenuItems$.getValue();
+        if (!currentValues.find(menuItem => menuItem.displayName === item.displayName)) {
+            if (!item.order) {
+                item.order = 1 + currentValues.map(ma => ma.order).reduce((a, b) => Math.max(a, b));
+            }
+            currentValues.push(item);
+            currentValues.sort((a, b) => a.order - b.order);
+            this.navbarMenuItems$.next(currentValues);
+        }
     }
 
     private addItemToPrimaryMenu(item: MenuItem): void {

@@ -1,6 +1,6 @@
 export class MenuItem {
     public showLogic: Function;
-    public provideIn: 'primaryMenu' | 'speedDialMenu' | 'both' | 'notProvided' = 'notProvided';
+    public provideIn: 'primaryMenu' | 'speedDialMenu' | 'navbar' | 'both' | 'notProvided' = 'notProvided';
 
     // Event Action Props
     public isActionEvent: boolean;

@@ -1,5 +1,5 @@
-
-<button color="default" mat-icon-button aria-label="Close" (click)="onClose()" class="close-button" tabindex="-1">
+<button *ngIf="!removeCloseButton" color="default" mat-icon-button aria-label="Close" (click)="onClose()"
+  class="close-button" tabindex="-1">
   <mat-icon>close</mat-icon>
 </button>
 
@@ -24,27 +24,27 @@
   </ng-container>
 
   <ng-container *ngIf="!production">
-      <mat-accordion>
-          <mat-expansion-panel>
-            <mat-expansion-panel-header>
-              <mat-panel-title>
-                  Preview form
-              </mat-panel-title>
-              <mat-panel-description>
-                json formatted values
-              </mat-panel-description>
-            </mat-expansion-panel-header>            
+    <mat-accordion>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Preview form
+          </mat-panel-title>
+          <mat-panel-description>
+            json formatted values
+          </mat-panel-description>
+        </mat-expansion-panel-header>
 
-            <pre>{{ fh.form.value | json }}</pre>
-            <mat-divider></mat-divider>
-            <pre>{{ previewExtendedData() | json }}</pre>
-            <div style="font-size:.5rem;text-align: right; color: #888">Note: developer only feature</div>
-          </mat-expansion-panel>
-        </mat-accordion>
+        <pre>{{ fh.form.value | json }}</pre>
+        <mat-divider></mat-divider>
+        <pre>{{ previewExtendedData() | json }}</pre>
+        <div style="font-size:.5rem;text-align: right; color: #888">Note: developer only feature</div>
+      </mat-expansion-panel>
+    </mat-accordion>
   </ng-container>
 
   <div class="actions">
     <button mat-flat-button color="primary" type="submit" (click)="onSubmit()"
-    [disabled]="disableButton">{{ buttonText }}</button>
+      [disabled]="disableButton">{{ buttonText }}</button>
   </div>
 </form>

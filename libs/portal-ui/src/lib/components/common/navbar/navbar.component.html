@@ -77,6 +77,61 @@
   </ng-container>
 
 
+  <!-- PROVIDED MENUS -->
+  <ng-container *ngFor="let menuArea of menuAreas$ | async; let last = last;">
+    <nav *ngIf="menuArea.display">
+
+      <ng-container *ngFor="let menuItem of menuItems$ | async">
+        <ng-container *ngIf="menuItem.area === menuArea.area">
+          <ng-template [inAnyPermission]="menuItem.permissions"
+            (permissionsChecked)="permissionsChecked($event, menuItem)">
+
+            <!-- ADD CHECK TO SEE IF THERE IS ONLY ONE MENU ITEM TO THIS AREA -->
+            <!-- SINGLE MENU ITEM -->
+            <!-- ACTION EVENT -->
+            <ng-container
+              *ngIf="menuItem.isActionEvent && (menuItem | showMenuItemAction:undefined) && menuItem.display">
+              <a class="link" mat-icon-button [title]="menuItem.displayName | translate"
+                (click)="uiStore.setPackageDrawerStatus(false); actionEvent({ action: menuItem.action, _this: menuItem._this })"
+                *isAnonymous>
+                <mat-icon aria-label="menuItem.displayName | translate">{{ menuArea.icon }}</mat-icon>
+              </a>
+            </ng-container>
+
+            <!-- URL EVENT -->
+            <ng-container *ngIf="!menuItem.isActionEvent && menuItem.display">
+              <a class="link" mat-icon-button [title]="menuItem.displayName | translate" [routerLink]="[menuItem.url]"
+                (click)="uiStore.setPackageDrawerStatus(false)" *isAnonymous>
+                <mat-icon aria-label="menuItem.displayName | translate">{{ menuArea.icon }}</mat-icon>
+              </a>
+            </ng-container>
+
+            <!-- ADD CHECK TO SEE IF THERE IS MORE THAN ONE MENU ITEM TO THIS AREA -->
+            <!-- MULTIPLE MENU ITEMS -->
+            <!-- ACTION EVENT -->
+            <!-- URL EVENT -->
+
+          </ng-template>
+        </ng-container>
+      </ng-container>
+    </nav>
+  </ng-container>
+
+  <!-- ACTION EVENT -->
+  <!-- <li *ngIf="menuItem.isActionEvent && (menuItem | showMenuItemAction:undefined) && menuItem.display"
+        (click)="actionEvent({ action: menuItem.action, _this: menuItem._this });">
+        <span class="link">{{ menuItem.displayName | translate }}</span>
+      </li> -->
+
+  <!-- URL EVENT -->
+  <!-- <li *ngIf="!menuItem.isActionEvent && menuItem.display">
+        <a [routerLink]="[menuItem.url]">
+          {{ menuItem.displayName | translate }}
+        </a>
+      </li> -->
+
+
+
   <!-- ACCOUNT -->
   <ng-container *isAuthenticated>
     <button class="link" mat-icon-button [matMenuTriggerFor]="accountMenu">

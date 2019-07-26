@@ -1,35 +1,19 @@
-<ss-container>
-  <mat-card>
-    <mat-card-header>
-      <mat-card-title [translate]="'OAUTH2.OAUTH2_LOGIN.SIGN_IN'"></mat-card-title>
-      <mat-card-subtitle [translate]="'OAUTH2.OAUTH2_LOGIN.ENTER_CRED'"></mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-content>
+<ss-dynamic-form *ngIf="fields$" [noSidebar]="true" [fields$]="fields$" [validation]="fieldsConfig.validation"
+  [rules]="fieldsConfig.formRules" [buttonText]="'OAUTH2.OAUTH2_LOGIN.BUTTON_LOGIN' | translate"
+  (submitted)="onSubmit($event)">
+  <mat-card-title [translate]="'OAUTH2.OAUTH2_LOGIN.SIGN_IN'"></mat-card-title>
+  <mat-card-subtitle [translate]="'OAUTH2.OAUTH2_LOGIN.ENTER_CRED'"></mat-card-subtitle>
+  <div *ngIf="error" [@shrinkOut] [translate]="'OAUTH2.OAUTH2_LOGIN.ERROR_OCCURRED'"></div>
 
-      <div style="margin: 0 8px">
-        <div *ngIf="error" [@shrinkOut] [translate]="'OAUTH2.OAUTH2_LOGIN.ERROR_OCCURRED'"></div>
+  <ng-container *ngFor="let accountPackage of accountPackages$ | async as accountPackages">
+    <h4 *ngIf="accountPackages.length > 1">{{ accountPackage.name }}</h4>
 
-        <ss-dynamic-form *ngIf="fields$" [noSidebar]="true" [fields$]="fields$" [validation]="fieldsConfig.validation"
-          [rules]="fieldsConfig.formRules" [buttonText]="'OAUTH2.OAUTH2_LOGIN.BUTTON_LOGIN' | translate"
-          (submitted)="onSubmit($event)">
-        </ss-dynamic-form>
-
-        <div *ngIf="success" [translate]="'OAUTH2.OAUTH2_LOGIN.LOGGING_IN'"></div>
-      </div>
-
-      <div style="margin: 0 8px; min-height: 2rem">
-        <ng-container *ngFor="let accountPackage of accountPackages$ | async as accountPackages">
-          <h4 *ngIf="accountPackages.length > 1">{{ accountPackage.name }}</h4>
-
-          <a mat-button [routerLink]="['/' + accountPackage.path + '/account/forgot-password']">
-            <span [translate]="'OAUTH2.OAUTH2_LOGIN.FORGOT_PASSWORD'"></span>
-          </a>
-          <a mat-button [routerLink]="['/' + accountPackage.path + '/account/confirm-email']">
-            <span [translate]="'OAUTH2.OAUTH2_LOGIN.CONFIRM_EMAIL'"></span>
-          </a>
-          <br /><br />
-        </ng-container>
-      </div>
-    </mat-card-content>
-  </mat-card>
-</ss-container>
+    <a mat-button [routerLink]="['/' + accountPackage.path + '/account/forgot-password']">
+      <span [translate]="'OAUTH2.OAUTH2_LOGIN.FORGOT_PASSWORD'"></span>
+    </a>
+    <a mat-button [routerLink]="['/' + accountPackage.path + '/account/confirm-email']">
+      <span [translate]="'OAUTH2.OAUTH2_LOGIN.CONFIRM_EMAIL'"></span>
+    </a>
+    <br /><br />
+  </ng-container>
+</ss-dynamic-form>

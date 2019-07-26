@@ -19,6 +19,7 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
   @Input() public buttonText = 'Submit';
   @Input() public noSidebar: boolean;
   @Input() public disableButton: boolean = false;
+  @Input() public removeCloseButton: boolean = false;
   @Output() public submitted: EventEmitter<FormHelper> = new EventEmitter();
 
   // Prevents multiple gets
@@ -49,13 +50,6 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
         return fields.filter(field => field.includeInForm);
       })
     );
-
-    // Show sidebar
-    // setTimeout(() => {
-    //   if (!this.noSidebar) {
-    //     this.editorNavService.showEditorNav();
-    //   }
-    // }, 0);
   }
 
   ngOnDestroy() {
