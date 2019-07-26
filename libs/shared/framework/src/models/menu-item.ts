@@ -15,6 +15,7 @@ export class MenuItem {
     public icon: string;
     public permissions: string[];
     public display = true;
+    public showFor: 'anonymous' | 'authenticated' | 'all';
 
     public constructor(init?: Partial<MenuItem>) {
         Object.assign(this, init);
