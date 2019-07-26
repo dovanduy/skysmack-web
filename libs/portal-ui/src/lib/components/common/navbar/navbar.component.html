@@ -67,7 +67,8 @@
         </button>
         <mat-menu overlapTrigger="false" #loginMenu="matMenu">
           <ng-container *ngFor="let authPackage of authPackages">
-            <button mat-menu-item [routerLink]="['/' + authPackage.path]" title="Account Menu" *isAnonymous>
+            <button mat-menu-item [routerLink]="['/' + authPackage.path]"
+              (click)="uiStore.setPackageDrawerStatus(false)" title="Account Menu" *isAnonymous>
               {{ authPackage.name }}
             </button>
           </ng-container>
@@ -80,40 +81,74 @@
   <!-- PROVIDED MENUS -->
   <ng-container *ngFor="let menuArea of menuAreas$ | async; let last = last;">
     <nav *ngIf="menuArea.display">
+      <!-- SINGLE MENU ITEM -->
+      <ng-container *ngIf="menuItemsPrArea[menuArea.area] === 1">
 
-      <ng-container *ngFor="let menuItem of menuItems$ | async">
-        <ng-container *ngIf="menuItem.area === menuArea.area">
-          <ng-template [inAnyPermission]="menuItem.permissions"
-            (permissionsChecked)="permissionsChecked($event, menuItem)">
+        <ng-container *ngFor="let menuItem of menuItems$ | async">
+          <ng-container *ngIf="menuItem.area === menuArea.area">
+            <ng-template [inAnyPermission]="menuItem.permissions"
+              (permissionsChecked)="permissionsChecked($event, menuItem)">
 
-            <!-- ADD CHECK TO SEE IF THERE IS ONLY ONE MENU ITEM TO THIS AREA -->
-            <!-- SINGLE MENU ITEM -->
-            <!-- ACTION EVENT -->
-            <ng-container
-              *ngIf="menuItem.isActionEvent && (menuItem | showMenuItemAction:undefined) && menuItem.display">
-              <a class="link" mat-icon-button [title]="menuItem.displayName | translate"
-                (click)="uiStore.setPackageDrawerStatus(false); actionEvent({ action: menuItem.action, _this: menuItem._this })"
-                *isAnonymous>
-                <mat-icon aria-label="menuItem.displayName | translate">{{ menuArea.icon }}</mat-icon>
-              </a>
-            </ng-container>
+              <!-- ACTION EVENT -->
+              <ng-container
+                *ngIf="menuItem.isActionEvent && (menuItem | showMenuItemAction:undefined) && menuItem.display">
+                <a class="link" mat-icon-button [title]="menuItem.displayName | translate"
+                  (click)="uiStore.setPackageDrawerStatus(false); actionEvent({ action: menuItem.action, _this: menuItem._this })">
+                  <mat-icon aria-label="menuItem.displayName | translate">{{ menuArea.icon }}</mat-icon>
+                </a>
+              </ng-container>
 
-            <!-- URL EVENT -->
-            <ng-container *ngIf="!menuItem.isActionEvent && menuItem.display">
-              <a class="link" mat-icon-button [title]="menuItem.displayName | translate" [routerLink]="[menuItem.url]"
-                (click)="uiStore.setPackageDrawerStatus(false)" *isAnonymous>
-                <mat-icon aria-label="menuItem.displayName | translate">{{ menuArea.icon }}</mat-icon>
-              </a>
-            </ng-container>
+              <!-- URL EVENT -->
+              <ng-container *ngIf="!menuItem.isActionEvent && menuItem.display">
+                <a class="link" mat-icon-button [title]="menuItem.displayName | translate" [routerLink]="[menuItem.url]"
+                  (click)="uiStore.setPackageDrawerStatus(false)">
+                  <mat-icon aria-label="menuItem.displayName | translate">{{ menuArea.icon }}</mat-icon>
+                </a>
+              </ng-container>
 
-            <!-- ADD CHECK TO SEE IF THERE IS MORE THAN ONE MENU ITEM TO THIS AREA -->
-            <!-- MULTIPLE MENU ITEMS -->
-            <!-- ACTION EVENT -->
-            <!-- URL EVENT -->
-
-          </ng-template>
+            </ng-template>
+          </ng-container>
         </ng-container>
       </ng-container>
+
+      <!-- MULTIPLE MENU ITEMS -->
+      <ng-container *ngIf="menuItemsPrArea[menuArea.area] > 1">
+
+        <!-- SHOW MAT MENU -->
+        <button class="link" mat-icon-button [matMenuTriggerFor]="loginMenu">
+          <mat-icon>{{ menuArea.icon }}</mat-icon>
+        </button>
+
+        <mat-menu overlapTrigger="false" #loginMenu="matMenu">
+          <ng-container *ngFor="let menuItem of menuItems$ | async">
+            <ng-container *ngIf="menuItem.area === menuArea.area">
+              <ng-template [inAnyPermission]="menuItem.permissions"
+                (permissionsChecked)="permissionsChecked($event, menuItem)">
+
+                <!-- ACTION EVENT -->
+                <ng-container
+                  *ngIf="menuItem.isActionEvent && (menuItem | showMenuItemAction:undefined) && menuItem.display">
+                  <button mat-menu-item
+                    (click)="uiStore.setPackageDrawerStatus(false); actionEvent({ action: menuItem.action, _this: menuItem._this })"
+                    [title]="menuItem.displayName | translate">
+                    {{ menuItem.displayName | translate }}
+                  </button>
+                </ng-container>
+
+                <!-- URL EVENT -->
+                <ng-container *ngIf="!menuItem.isActionEvent && menuItem.display">
+                  <button mat-menu-item [routerLink]="[menuItem.url]" (click)="uiStore.setPackageDrawerStatus(false)"
+                    [title]="menuItem.displayName | translate">
+                    {{ menuItem.displayName | translate }}
+                  </button>
+                </ng-container>
+
+              </ng-template>
+            </ng-container>
+          </ng-container>
+        </mat-menu>
+      </ng-container>
+
     </nav>
   </ng-container>
 

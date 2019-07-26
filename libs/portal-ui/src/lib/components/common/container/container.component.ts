@@ -101,7 +101,6 @@ export class ContainerComponent implements OnInit, OnDestroy {
         if (!visible) {
           if (this.dialogRef) {
             setTimeout(() => {
-              console.log('called')
               this.dialogRef.closeAll();
             }, 0);
           }

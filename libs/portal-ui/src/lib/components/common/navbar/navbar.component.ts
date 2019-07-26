@@ -18,6 +18,8 @@ import { SidebarMenu } from '../../../models';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavBarComponent implements OnInit, OnDestroy {
+  public okayToShow = false;
+
 
   public skysmack$: Observable<Skysmack>;
   public menu$: Observable<Menu>;
@@ -28,6 +30,7 @@ export class NavBarComponent implements OnInit, OnDestroy {
   public menuItems$: Observable<MenuItem[]>;
 
   public subscriptionHandler = new SubscriptionHandler();
+  public menuItemsPrArea = {};
 
   constructor(
     public uiStore: UIRedux,
@@ -63,8 +66,23 @@ export class NavBarComponent implements OnInit, OnDestroy {
       switchMap((menus: SidebarMenu[]) => {
         return combineLatest(menus.map(menu => menu.navbarMenuItems$));
       }),
-      map(x => x.reduce((a, b) => a.concat(b), []))
+      map(x => x.reduce((a, b) => a.concat(b), [])),
+      tap(() => this.okayToShow = true)
     );
+
+    // Count how many menu items there are pr. area.
+    // Used to decide whether to show a dropdown or not
+    this.subscriptionHandler.register(this.menuItems$.pipe(
+      tap(menuItems => {
+        menuItems.forEach(menuItem => {
+          if (!this.menuItemsPrArea[menuItem.area]) {
+            this.menuItemsPrArea[menuItem.area] = 0;
+          }
+
+          this.menuItemsPrArea[menuItem.area]++;
+        })
+      })
+    ).subscribe());
   }
 
   /**
