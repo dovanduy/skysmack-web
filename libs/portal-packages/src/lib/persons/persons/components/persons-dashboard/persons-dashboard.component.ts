@@ -1,40 +1,43 @@
-import { Component, OnInit, Input, AfterViewInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NgPersonsActions, NgPersonsStore } from '@skysmack/ng-packages';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
-import { Observable, of, BehaviorSubject } from 'rxjs';
-import { Package, PagedQuery, Visible, Dashboard } from '@skysmack/framework';
+import { Observable, interval } from 'rxjs';
+import { PagedQuery } from '@skysmack/framework';
 import { map } from 'rxjs/operators';
+import { DashboardBase } from '@skysmack/portal-fields';
 
 @Component({
   selector: 'ss-persons-dashboard',
   templateUrl: './persons-dashboard.component.html',
   styleUrls: ['./persons-dashboard.component.scss']
 })
-export class PersonsDashboardComponent implements OnInit, Visible {
-  @Input() packagePath: string;
-  @Input() dashboard: Dashboard;
-  public package$: Observable<Package>;
+export class PersonsDashboardComponent extends DashboardBase implements OnInit {
+
   public totalCount$: Observable<number>;
 
   constructor(
     public actions: NgPersonsActions,
     public store: NgPersonsStore,
     public skysmackStore: NgSkysmackStore
-  ) { }
+  ) { super(skysmackStore); }
 
   ngOnInit() {
+    super.ngOnInit();
+    this.getPersonsCount();
     this.show();
+    this.render();
+  }
+
+  private getPersonsCount() {
     this.package$ = this.skysmackStore.getCurrentPackage(this.packagePath).pipe(map(x => x._package));
     this.actions.getPaged(this.packagePath, new PagedQuery());
-    this.totalCount$ = this.store.getPages(this.packagePath).pipe(
-      map(pages => {
-        let totalCount = 0;
-        Object.keys(pages).forEach(key => {
-          totalCount = pages[key].totalCount;
-        })
-        return totalCount;
-      })
-    );
+    this.totalCount$ = this.store.getPages(this.packagePath).pipe(map(pages => {
+      let totalCount = 0;
+      Object.keys(pages).forEach(key => {
+        totalCount = pages[key].totalCount;
+      });
+      return totalCount;
+    }));
   }
 
   public show(): void {
@@ -44,5 +47,8 @@ export class PersonsDashboardComponent implements OnInit, Visible {
   }
 
   public render(): void {
+    setTimeout(() => {
+      this.dashboard.render$.next(true);
+    }, 0);
   }
 }

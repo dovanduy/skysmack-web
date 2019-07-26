@@ -1,11 +1,12 @@
-import { Component, OnInit, Input, AfterViewInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NgLodgingReservationsActions, NgLodgingReservationsStore } from '@skysmack/ng-packages';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
-import { Observable, BehaviorSubject } from 'rxjs';
-import { Package, PagedQuery, RSQLFilterBuilder, Visible, Dashboard } from '@skysmack/framework';
-import { map, debounceTime } from 'rxjs/operators';
+import { Observable, interval } from 'rxjs';
+import { PagedQuery, RSQLFilterBuilder } from '@skysmack/framework';
+import { map, tap } from 'rxjs/operators';
 import { LodgingReservation } from '@skysmack/packages-lodging-reservations';
 import * as _moment from 'moment';
+import { DashboardBase } from '@skysmack/portal-fields';
 const moment = _moment;
 
 @Component({
@@ -13,25 +14,21 @@ const moment = _moment;
   templateUrl: './lodging-reservations-dashboard.component.html',
   styleUrls: ['./lodging-reservations-dashboard.component.scss']
 })
-export class LodgingReservationsDashboardComponent implements OnInit, Visible {
-  @Input() dashboard: Dashboard;
-  public packagePath: string;
-  public package$: Observable<Package>;
+export class LodgingReservationsDashboardComponent extends DashboardBase implements OnInit {
   public arrivalsCount$: Observable<number>;
 
   constructor(
     public actions: NgLodgingReservationsActions,
     public store: NgLodgingReservationsStore,
     public skysmackStore: NgSkysmackStore
-  ) { }
+  ) { super(skysmackStore); }
 
   ngOnInit() {
-    this.show();
-
+    super.ngOnInit();
     this.getArrivalsCount();
-    this.package$ = this.skysmackStore.getCurrentPackage(this.packagePath).pipe(map(x => x._package));
+    this.show();
+    this.render();
   }
-
 
   private getArrivalsCount() {
     const pagedQuery = new PagedQuery();
@@ -47,16 +44,20 @@ export class LodgingReservationsDashboardComponent implements OnInit, Visible {
         })
         return arrivalsCount;
       })
-    )
+    );
   }
 
   public show(): void {
     setTimeout(() => {
-      this.dashboard.show$.next(true);
+      this.subscriptionHandler.register(this.arrivalsCount$.pipe(
+        map(count => count ? this.dashboard.show$.next(true) : this.dashboard.show$.next(false))
+      ).subscribe());
     }, 0);
   }
 
   public render(): void {
-
+    setTimeout(() => {
+      this.dashboard.render$.next(true);
+    }, 0);
   }
 }
