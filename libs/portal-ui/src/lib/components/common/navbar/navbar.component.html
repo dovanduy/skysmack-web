@@ -1,11 +1,11 @@
 <nav *ngIf="skysmack$ | async as skysmack" class="docs-navbar-header">
   <!-- APP DRAWER -->
-  <a class="link" mat-icon-button (click)="uiStore.toggleMenuFor('drawer')" title="{{ 'UI.TOP_BAR.PACKAGES'| translate}}">
-      <mat-icon aria-label="Open packages">apps</mat-icon>
-    </a>
+  <a class="link" mat-icon-button (click)="uiStore.toggleMenuFor('drawer')"
+    title="{{ 'UI.TOP_BAR.PACKAGES'| translate}}">
+    <mat-icon aria-label="Open packages">apps</mat-icon>
+  </a>
 
-  <a mat-button class="link" routerLink="/" (click)="uiStore.setPackageDrawerStatus(false)"
-    aria-label="Skysmack">
+  <a mat-button class="link" routerLink="/" (click)="uiStore.setPackageDrawerStatus(false)" aria-label="Skysmack">
     <span>{{ skysmack.name }}</span>
   </a>
 
@@ -23,7 +23,7 @@
     <mat-icon>search</mat-icon>
   </button>
   <div *ngIf="menu$ | async as menu" class="search-bar" [ngClass]="{ 'open' : menu.search }">
-      <input type="text" [placeholder]="'UI.TOP_BAR.SEARCH' | translate" class="search-field" />
+    <input type="text" [placeholder]="'UI.TOP_BAR.SEARCH' | translate" class="search-field" />
   </div>
 
   <!-- CHAT -->

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgPersonsActions, NgPersonsStore } from '@skysmack/ng-packages';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
-import { Observable, interval } from 'rxjs';
+import { Observable } from 'rxjs';
 import { PagedQuery } from '@skysmack/framework';
 import { map } from 'rxjs/operators';
 import { DashboardBase } from '@skysmack/portal-fields';
