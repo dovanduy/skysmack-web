@@ -49,35 +49,6 @@
   <!-- LANGUAGE -->
   <ss-language-select></ss-language-select>
 
-  <!-- LOGIN -->
-  <ng-container *ngIf="authenticationPackages$ | async as authPackages">
-    <!-- Single auth package -->
-    <ng-container *ngIf="authPackages.length === 1">
-      <a class="link" mat-icon-button title="Account Menu" [routerLink]="[authPackages[0].path]"
-        (click)="uiStore.setPackageDrawerStatus(false)" *isAnonymous>
-        <mat-icon aria-label="authPackages[0].description">account_circle</mat-icon>
-      </a>
-    </ng-container>
-
-    <!-- Multiple auth package -->
-    <ng-container *ngIf="authPackages.length > 1">
-      <ng-container *isAnonymous>
-        <button class="link" mat-icon-button [matMenuTriggerFor]="loginMenu">
-          <mat-icon>account_circle</mat-icon>
-        </button>
-        <mat-menu overlapTrigger="false" #loginMenu="matMenu">
-          <ng-container *ngFor="let authPackage of authPackages">
-            <button mat-menu-item [routerLink]="['/' + authPackage.path]"
-              (click)="uiStore.setPackageDrawerStatus(false)" title="Account Menu" *isAnonymous>
-              {{ authPackage.name }}
-            </button>
-          </ng-container>
-        </mat-menu>
-      </ng-container>
-    </ng-container>
-  </ng-container>
-
-
   <!-- PROVIDED MENUS -->
   <ng-container *ngFor="let menuArea of menuAreas$ | async; let last = last;">
     <nav *ngIf="menuArea.display">
