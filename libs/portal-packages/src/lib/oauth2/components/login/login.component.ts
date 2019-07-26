@@ -1,5 +1,5 @@
 import { animate, style, transition, trigger } from '@angular/animations';
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { EntityComponentPageTitle } from '@skysmack/portal-ui';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
@@ -38,6 +38,8 @@ import { NgRedux } from '@angular-redux/store';
   ]
 })
 export class LoginComponent implements OnInit, OnDestroy {
+
+  @Input() public removeCloseButton: boolean = false;
   public loggingIn = false;
   public error = false;
   public success = false;
