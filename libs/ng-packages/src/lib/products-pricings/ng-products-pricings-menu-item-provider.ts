@@ -6,11 +6,12 @@ import { Skysmack } from '@skysmack/packages-skysmack-core';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { ProductsPricingsTypeId } from '@skysmack/package-types';
 import { Guid } from 'guid-typescript';
+import { PRODUCTS_AREA_KEY } from '@skysmack/packages-products';
 
 @Injectable({ providedIn: 'root' })
 export class NgProductsPricingsMenuItemProvider extends MenuItemProvider {
     public id = Guid.create().toString();
-    public menuId = 'products';
+    public menuId = PRODUCTS_AREA_KEY;
     public icon = 'link';
 
     constructor(public store: NgSkysmackStore) { super(); }

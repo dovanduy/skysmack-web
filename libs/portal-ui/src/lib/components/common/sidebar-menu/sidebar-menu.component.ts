@@ -25,7 +25,8 @@ export class SidebarMenuComponent implements OnInit {
   constructor(
     public router: Router,
     public activatedRoute: ActivatedRoute,
-    public translate: TranslateService
+    public translate: TranslateService,
+
   ) {
   }
 

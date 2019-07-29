@@ -1,13 +1,13 @@
 import { OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { map, switchMap, filter, take, tap } from 'rxjs/operators';
-import { MenuArea } from '@skysmack/framework';
+import { MenuArea, MenuAreaItems, AllowAccessFor } from '@skysmack/framework';
 import { MenuItem } from '@skysmack/framework';
 
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { SubscriptionHandler } from '@skysmack/framework';
 import { NgMenuItemProviders, getAdditionalPaths, getPackageDendencyAsStream } from '@skysmack/ng-framework';
-import { combineLatest, BehaviorSubject } from 'rxjs';
+import { combineLatest, BehaviorSubject, Observable } from 'rxjs';
 import { LoadedPackage } from '@skysmack/ng-framework';
 
 interface BackButtonOptions {
@@ -24,6 +24,8 @@ export abstract class SidebarMenu implements OnDestroy {
     public packagePath: string;
     public additionalPaths: string[];
     public defaultMenuArea = 'manage';
+
+    public menuAreaItems$: Observable<MenuAreaItems[]>;
 
     // Navbar menu
     public navbarMenuAreas$ = new BehaviorSubject<MenuArea[]>([]);
@@ -60,40 +62,38 @@ export abstract class SidebarMenu implements OnDestroy {
     public runMenuItemProviders() {
         this.subscriptionHandler.register(this.menuItemProviders.providers$.pipe(
             switchMap(providers => combineLatest(
-                providers.map(provider => this.skysmackStore.getCurrentPackage(this.packagePath).pipe(
-                    filter(loadedPackage => loadedPackage._package !== null),
-                    switchMap((currentPackage: LoadedPackage) => provider.getItems(this.menuId, currentPackage._package.path)),
-                    map((menuItems: MenuItem[]) => {
-                        // Add provided menu items
+                providers.map(provider => provider.getItems(this.menuId, this.packagePath))
+            ).pipe(
+                map((menuItems) => menuItems.reduce((a, b) => a.concat(b))),
+                map((menuItems: MenuItem[]) => {
+                    // Add provided menu items
+                    const addConnectedPackageArea = (menuItem) => {
+                        if (menuItem.area === 'connected_packages' && !this.primaryMenuAreas$.getValue().find(area => area.area === 'connected_packages') && (menuItem.provideIn === 'primaryMenu' || menuItem.provideIn === 'both')) {
+                            this.addConnectedPackageMenuArea();
+                        }
+                    };
 
-                        const addConnectedPackageArea = (menuItem) => {
-                            if (menuItem.area === 'connected_packages' && !this.primaryMenuAreas$.getValue().find(area => area.area === 'connected_packages') && (menuItem.provideIn === 'primaryMenu' || menuItem.provideIn === 'both')) {
-                                this.addConnectedPackageMenuArea();
+                    menuItems.forEach(menuItem => {
+                        switch (menuItem.provideIn) {
+                            case 'primaryMenu': {
+                                // Add the Connected Packages area if any menu items is provided, and it doesn't already exist.
+                                addConnectedPackageArea(menuItem);
+                                this.addItemToPrimaryMenu(menuItem);
+                                break;
                             }
-                        };
-
-                        menuItems.forEach(menuItem => {
-                            switch (menuItem.provideIn) {
-                                case 'primaryMenu': {
-                                    // Add the Connected Packages area if any menu items is provided, and it doesn't already exist.
-                                    addConnectedPackageArea(menuItem);
-                                    this.addItemToPrimaryMenu(menuItem);
-                                    break;
-                                }
-                                case 'speedDialMenu': { this.addItemToSpeedDialMenu(menuItem); break; }
-                                case 'navbar': { this.addItemToNavbarMenu(menuItem); break; }
-                                case 'both': {
-                                    addConnectedPackageArea(menuItem);
-                                    this.addItemToPrimaryMenu(menuItem);
-                                    this.addItemToSpeedDialMenu(menuItem);
-                                    break;
-                                }
-                                default: break;
+                            case 'speedDialMenu': { this.addItemToSpeedDialMenu(menuItem); break; }
+                            case 'navbar': { this.addItemToNavbarMenu(menuItem); break; }
+                            case 'both': {
+                                addConnectedPackageArea(menuItem);
+                                this.addItemToPrimaryMenu(menuItem);
+                                this.addItemToSpeedDialMenu(menuItem);
+                                break;
                             }
-                        });
+                            default: break;
+                        }
                     })
-                ))
-            ))
+                }))
+            )
         ).subscribe());
     }
 
