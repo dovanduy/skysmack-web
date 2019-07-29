@@ -10,6 +10,7 @@ import { PortalFieldsModule } from '@skysmack/portal-fields';
 import { CoalescingComponentFactoryResolver } from '@skysmack/ng-framework';
 import { NgOAuth2Menu } from './ng-oauth2-menu';
 import { LoginWrapperComponent } from './components/login-wrapper/login-wrapper.component';
+import { NgOAuth2MenuProvider } from './ng-oauth2-menu-provider';
 
 @NgModule({
   imports: [
@@ -38,7 +39,7 @@ import { LoginWrapperComponent } from './components/login-wrapper/login-wrapper.
 export class Oauth2Module {
   constructor(
     ngMenuProviders: NgMenuProviders,
-    menu: NgOAuth2Menu,
+    menu: NgOAuth2MenuProvider,
     coalescingResolver: CoalescingComponentFactoryResolver,
     localResolver: ComponentFactoryResolver,
   ) {

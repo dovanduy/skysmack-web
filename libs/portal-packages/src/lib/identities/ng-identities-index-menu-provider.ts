@@ -1,127 +1,137 @@
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
-import { SidebarMenu } from '@skysmack/portal-ui';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
-import { MenuArea, safeHasValue, Package, AllowAccessFor } from '@skysmack/framework';
+import { MenuArea, safeHasValue, Package, AllowAccessFor, MenuProvider } from '@skysmack/framework';
 import { MenuItem } from '@skysmack/framework';
-import { NgMenuItemProviders } from '@skysmack/ng-framework';
 import { IdentitiesPermissions } from '@skysmack/packages-identities';
-import { take, map } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { IdentitiesTypeId } from '@skysmack/package-types';
 import { Skysmack } from '@skysmack/packages-skysmack-core';
 import { Guid } from 'guid-typescript';
+import { of, Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
-export class NgIdentitiesIndexMenu extends SidebarMenu {
+export class NgIdentitiesIndexMenuProvider extends MenuProvider {
     public id = Guid.create().toString();
-    public menuId = 'identities';
     public translationPrefix = 'IDENTITIES.INDEX.';
 
     constructor(
         public store: NgSkysmackStore,
-        public router: Router,
-        public menuItemProviders: NgMenuItemProviders
-    ) {
-        super(store, router, menuItemProviders);
-        this.setPrimaryMenu();
-        this.setSpeedDialMenu();
-        this.runMenuItemProviders();
-    }
+    ) { super(); }
 
-    public setPrimaryMenu() {
-        this.addToNavbarMenuAreas([
-            new MenuArea({ // Keep identical to the one in ng-identities-index-menu.ts
+    public getMenuAreas(packagePath: string, componentKey: string): Observable<MenuArea[]> {
+        return of([
+            new MenuArea({
+                area: 'actions',
+                translationPrefix: this.translationPrefix,
+                order: 1
+            }),
+            new MenuArea({
+                area: 'manage',
+                translationPrefix: this.translationPrefix,
+                order: 2
+            }),
+            new MenuArea({
+                area: 'account',
+                translationPrefix: this.translationPrefix,
+                order: 3
+            }),
+            new MenuArea({
+                area: 'settings',
+                translationPrefix: this.translationPrefix,
+                order: 3
+            }),
+            new MenuArea({
                 area: 'identities',
                 icon: 'account_circle',
                 translationPrefix: this.translationPrefix,
                 order: 1,
             })
-        ]);
+        ])
+    };
 
-        const addNavbarMenuItems = () => {
-            this.store.getSkysmack().pipe(safeHasValue(), take(1), map((currentTenant: Skysmack) => currentTenant.packages
-                .filter((_package: Package) => _package.type === IdentitiesTypeId)
-                .map(_package => this.addToNavbarMenuItems(new MenuItem({
-                    area: 'identities', // Area provided from oauth2 menu.
-                    allowAccessFor: AllowAccessFor.authenticated
-                }).asUrlAction(_package.path, _package.name, 'account_circle'))))).subscribe();
-        }
-        addNavbarMenuItems();
+    public getMenuItems(packagePath: string, componentKey: string): Observable<MenuItem[]> {
+        return this.store.getSkysmack().pipe(
+            safeHasValue(),
+            map((currentTenant: Skysmack) => {
+                const identityPackages = currentTenant.packages
+                    .filter((_package: Package) => _package.type === IdentitiesTypeId);
 
-        this.addToPrimaryMenuAreas([
-            new MenuArea({
-                area: 'actions2',
-                translationPrefix: this.translationPrefix,
-                order: 1
-            }),
-            new MenuArea({
-                area: 'manage2',
-                translationPrefix: this.translationPrefix,
-                order: 2
-            }),
-            new MenuArea({
-                area: 'account2',
-                translationPrefix: this.translationPrefix,
-                order: 3
-            }),
-            new MenuArea({
-                area: 'settings2',
-                translationPrefix: this.translationPrefix,
-                order: 3
-            })
-        ]);
+                let menuItems: MenuItem[] = [];
 
-        this.addToPrimaryMenuItems([
+                if (identityPackages.map(p => p.path).includes(packagePath) && componentKey === 'identities-index') {
+                    menuItems = this.identitiesIndexDefaultMenuItems();
+                }
+
+                return menuItems.concat(identityPackages
+                    .map(_package => new MenuItem({
+                        area: 'identities',
+                        allowAccessFor: AllowAccessFor.authenticated,
+                        providedIn: ['top']
+                    }).asUrlAction(_package.path, _package.name, 'account_circle'))
+                );
+            }
+            )
+        );
+    };
+
+    private identitiesIndexDefaultMenuItems(): MenuItem[] {
+        return [
             new MenuItem({
-                url: 'roles2',
+                url: 'roles',
                 displayName: this.translationPrefix + 'ROLES',
                 area: 'manage',
                 order: 1,
                 icon: 'groupAdd',
                 permissions: [
                     IdentitiesPermissions.findRoles
-                ]
+                ],
+                providedIn: ['sidebar']
             }),
             new MenuItem({
-                url: 'users2',
+                url: 'users',
                 displayName: this.translationPrefix + 'USERS',
-                area: 'manage2',
+                area: 'manage',
                 order: 2,
-                icon: 'groupAdd2',
+                icon: 'groupAdd',
                 permissions: [
                     IdentitiesPermissions.findUsers
-                ]
+                ],
+                providedIn: ['sidebar']
             }),
             new MenuItem({
-                url: 'applications2',
+                url: 'applications',
                 displayName: this.translationPrefix + 'APPLICATIONS',
-                area: 'manage2',
+                area: 'manage',
                 order: 3,
-                icon: 'groupAdd2',
+                icon: 'groupAdd',
                 permissions: [
                     IdentitiesPermissions.findApplications
-                ]
+                ],
+                providedIn: ['sidebar']
             }),
             new MenuItem({
-                url: 'change-password2',
+                url: 'change-password',
                 displayName: this.translationPrefix + 'CHANGE_PASSWORD',
-                area: 'account2',
+                area: 'account',
                 order: 1,
-                icon: 'groupAdd2'
+                icon: 'groupAdd',
+                providedIn: ['sidebar']
             }),
             new MenuItem({
                 url: 'forgot-password',
                 displayName: this.translationPrefix + 'FORGOT_PASSWORD',
                 area: 'account',
                 order: 1,
-                icon: 'groupAdd'
+                icon: 'groupAdd',
+                providedIn: ['sidebar']
             }),
             new MenuItem({
                 url: 'confirm-email',
                 displayName: this.translationPrefix + 'CONFIRM_EMAIL',
                 area: 'account',
                 order: 1,
-                icon: 'groupAdd'
+                icon: 'groupAdd',
+                providedIn: ['sidebar']
             }),
             new MenuItem({
                 url: 'settings/lockout',
@@ -131,7 +141,8 @@ export class NgIdentitiesIndexMenu extends SidebarMenu {
                 icon: 'groupAdd',
                 permissions: [
                     IdentitiesPermissions.getLockoutSettings
-                ]
+                ],
+                providedIn: ['sidebar']
             }),
             new MenuItem({
                 url: 'settings/user',
@@ -141,7 +152,8 @@ export class NgIdentitiesIndexMenu extends SidebarMenu {
                 icon: 'groupAdd',
                 permissions: [
                     IdentitiesPermissions.getUserSettings
-                ]
+                ],
+                providedIn: ['sidebar']
             }),
             new MenuItem({
                 url: 'settings/password',
@@ -151,7 +163,8 @@ export class NgIdentitiesIndexMenu extends SidebarMenu {
                 icon: 'groupAdd',
                 permissions: [
                     IdentitiesPermissions.getPasswordSettings
-                ]
+                ],
+                providedIn: ['sidebar']
             }),
             new MenuItem({
                 url: 'settings/sign-in',
@@ -161,11 +174,9 @@ export class NgIdentitiesIndexMenu extends SidebarMenu {
                 icon: 'groupAdd',
                 permissions: [
                     IdentitiesPermissions.getSignInSettings
-                ]
+                ],
+                providedIn: ['sidebar']
             })
-        ]);
-    }
-
-    public setSpeedDialMenu() {
+        ];
     }
 }

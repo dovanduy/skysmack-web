@@ -1,15 +1,12 @@
 import { BehaviorSubject } from 'rxjs';
+import { MenuProvider } from '../models/menu-provider';
 
 export class MenuProviders {
-    private providers: any[] = []; // Type is SidebarMenu from portal-ui.
-    public providers$: BehaviorSubject<any[]> = new BehaviorSubject([]);
+    private providers: MenuProvider[] = [];
+    public providers$: BehaviorSubject<MenuProvider[]> = new BehaviorSubject([]);
     private register = {};
 
-    public add(provider: any): MenuProviders {
-        if (!provider.id) {
-            throw new Error(`\n\nPlease add an id with a unique value for provided menu with translationPrefix ${provider.translationPrefix}.\n`)
-        }
-
+    public add(provider: MenuProvider): MenuProviders {
         const registered = this.register[provider.id];
         if (!registered) {
             this.providers.push(provider);

@@ -19,6 +19,7 @@ const SMALL_WIDTH_BREAKPOINT = 720;
 })
 export class ContainerComponent implements OnInit, OnDestroy {
   @Input() public sidebarMenu: SidebarMenu;
+  @Input() public componentKey: string;
   @ViewChild(MatSidenav, { static: false }) public sidenav: MatSidenav;
   @ViewChild('editornav', { static: false }) public editornav: MatSidenav;
 

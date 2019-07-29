@@ -1,16 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable, combineLatest } from 'rxjs';
+import { Observable } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
 import { Skysmack } from '@skysmack/packages-skysmack-core';
-import { Menu, AllowAccessFor, MenuAreaItems } from '@skysmack/framework';
+import { Menu, MenuAreaItems } from '@skysmack/framework';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { UIRedux } from './../../../redux/ui-redux';
 import { NgAuthenticationActions, NgAuthenticationStore } from '@skysmack/ng-framework';
 import { Package } from '@skysmack/framework';
 import { NgRedux } from '@angular-redux/store';
-import { map, switchMap } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
-import { SidebarMenu } from '../../../models/sidebar-menu/sidebar-menu';
 import { NgMenuProviders } from '../../../navigation/ng-menu-providers';
 
 @Component({

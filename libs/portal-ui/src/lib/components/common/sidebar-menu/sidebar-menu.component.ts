@@ -22,6 +22,7 @@ import { map } from 'rxjs/operators';
 })
 export class SidebarMenuComponent implements OnInit {
   @Input() public sidebarMenu: SidebarMenu;
+  @Input() public componentKey: string;
   @Output() public menuItemActionEvent = new EventEmitter<any>();
   public expansions: any = {};
 
@@ -39,8 +40,7 @@ export class SidebarMenuComponent implements OnInit {
     this.removeEmptyMenuAreas();
 
     const packagePath = this.router.url.split('/')[1];
-    const componentKey = ''; // Where do we get this from?
-    this.menuAreaItems$ = this.ngMenuProviders.getMenuAreaItems(packagePath, componentKey).pipe(
+    this.menuAreaItems$ = this.ngMenuProviders.getMenuAreaItems(packagePath, this.componentKey).pipe(
       map(menuAreaItems => {
         return menuAreaItems.filter(menuAreaItem => menuAreaItem && menuAreaItem.providedIn && menuAreaItem.providedIn.includes('sidebar'));
       })

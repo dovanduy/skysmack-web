@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
-import { MenuProviders, MenuAreaItems, AllowAccessFor } from '@skysmack/framework';
+import { MenuProviders, MenuAreaItems, AllowAccessFor, MenuProvider } from '@skysmack/framework';
 import { Router } from '@angular/router';
 import { Observable, combineLatest } from 'rxjs';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { switchMap, map } from 'rxjs/operators';
 import { NgAuthenticationStore } from '@skysmack/ng-framework';
-import { SidebarMenu } from '../models/sidebar-menu/sidebar-menu';
 
 @Injectable({ providedIn: 'root' })
 export class NgMenuProviders extends MenuProviders {
@@ -17,9 +16,9 @@ export class NgMenuProviders extends MenuProviders {
 
     public getMenuAreaItems(packagePath: string, componentKey: string): Observable<MenuAreaItems[]> {
         return this.providers$.pipe(
-            switchMap((menus: SidebarMenu[]) => {
-                const menuAreas = combineLatest(menus.map(menu => menu.navbarMenuAreas$)).pipe(map(x => x.reduce((a, b) => a.concat(b), [])));
-                const menuItems = combineLatest(menus.map(menu => menu.navbarMenuItems$)).pipe(
+            switchMap((menus: MenuProvider[]) => {
+                const menuAreas = combineLatest(menus.map(menu => menu.getMenuAreas(packagePath, componentKey))).pipe(map(x => x.reduce((a, b) => a.concat(b), [])));
+                const menuItems = combineLatest(menus.map(menu => menu.getMenuItems(packagePath, componentKey))).pipe(
                     map(x => x.reduce((a, b) => a.concat(b), [])),
                     // Filter menu items based on authentication
                     switchMap(menuItems => this.authenticationStore.isCurrentUserAuthenticated().pipe(
