@@ -1,6 +1,4 @@
-import { DocumentRecord } from "./document-record";
-
-export class MenuArea extends DocumentRecord<number>{
+export class MenuArea {
     public displayName: string;
     public area: string;
     public icon: string;
@@ -9,7 +7,6 @@ export class MenuArea extends DocumentRecord<number>{
     public display = true;
 
     public constructor(init?: Partial<MenuArea>) {
-        super();
         Object.assign(this, init);
         this.displayName = `${this.translationPrefix}${this.area.toUpperCase()}`;
     }

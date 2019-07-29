@@ -2,15 +2,15 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Observable, combineLatest } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
 import { Skysmack } from '@skysmack/packages-skysmack-core';
-import { Menu, MenuArea, MenuItem, SubscriptionHandler } from '@skysmack/framework';
+import { Menu, SubscriptionHandler, AllowAccessFor, MenuAreaItems } from '@skysmack/framework';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { UIRedux } from './../../../redux/ui-redux';
-import { NgAuthenticationActions, NgMenuItemProviders, NgMenuProviders } from '@skysmack/ng-framework';
+import { NgAuthenticationActions, NgMenuProviders, NgAuthenticationStore } from '@skysmack/ng-framework';
 import { Package } from '@skysmack/framework';
 import { NgRedux } from '@angular-redux/store';
-import { persistStore } from 'redux-persist';
-import { map, switchMap, tap, take } from 'rxjs/operators';
-import { SidebarMenu } from '../../../models';
+import { map, switchMap } from 'rxjs/operators';
+import { Router } from '@angular/router';
+import { SidebarMenu } from '../../../models/sidebar-menu/sidebar-menu';
 
 @Component({
   selector: 'ss-navbar',
@@ -26,11 +26,9 @@ export class NavBarComponent implements OnInit, OnDestroy {
   public authenticationPackages$: Observable<Package[]>;
   public accountPackages$: Observable<Package[]>;
 
-  public menuAreas$: Observable<MenuArea[]>;
-  public menuItems$: Observable<MenuItem[]>;
+  public menuAreaItems$: Observable<MenuAreaItems[]>;
 
   public subscriptionHandler = new SubscriptionHandler();
-  public menuItemsPrArea = {};
 
   constructor(
     public uiStore: UIRedux,
@@ -38,7 +36,9 @@ export class NavBarComponent implements OnInit, OnDestroy {
     public translate: TranslateService,
     public skysmackStore: NgSkysmackStore,
     public mainStore: NgRedux<any>,
-    public ngMenuProviders: NgMenuProviders
+    public ngMenuProviders: NgMenuProviders,
+    public authenticationStore: NgAuthenticationStore,
+    public router: Router
   ) { }
 
   ngOnInit() {
@@ -55,48 +55,67 @@ export class NavBarComponent implements OnInit, OnDestroy {
   }
 
   private initMenu() {
-    this.menuAreas$ = this.ngMenuProviders.providers$.pipe(
+    const packagePath = this.router.url.split('/')[1];
+    this.menuAreaItems$ = this.ngMenuProviders.providers$.pipe(
       switchMap((menus: SidebarMenu[]) => {
-        return combineLatest(menus.map(menu => menu.navbarMenuAreas$));
-      }),
-      map(x => x.reduce((a, b) => a.concat(b), []))
-    );
 
-    this.menuItems$ = this.ngMenuProviders.providers$.pipe(
-      switchMap((menus: SidebarMenu[]) => {
-        return combineLatest(menus.map(menu => menu.navbarMenuItems$));
-      }),
-      map(x => x.reduce((a, b) => a.concat(b), [])),
-      tap(() => this.okayToShow = true)
-    );
+        const menuAreas = combineLatest(menus.map(menu => menu.navbarMenuAreas$)).pipe(map(x => x.reduce((a, b) => a.concat(b), [])));
+        const menuItems = combineLatest(menus.map(menu => menu.navbarMenuItems$))
+          .pipe(
+            map(x => x.reduce((a, b) => a.concat(b), [])),
+            // Filter menu items based on authentication
+            switchMap(menuItems => this.authenticationStore.isCurrentUserAuthenticated().pipe(
+              map(authenticated => {
+                return menuItems.filter(menuItem => {
+                  if (menuItem.allowAccessFor === AllowAccessFor.anonymous) {
+                    return !authenticated;
+                  } else if (menuItem.allowAccessFor === AllowAccessFor.authenticated) {
+                    return authenticated;
+                  }
+                  return true;
+                })
+              })
+            )),
+            // Filter menu items based on permissions
+            switchMap(menuItems => this.skysmackStore.getPermissions(packagePath).pipe(
+              map(allPermissions => {
+                if (allPermissions && allPermissions.length > 0) {
+                  return menuItems.filter(menuItem => {
+                    if (menuItem.permissions && menuItem.permissions.length > 0) {
+                      for (let index = 0; index < menuItem.permissions.length; index++) {
+                        if (allPermissions.includes(menuItem.permissions[index])) {
+                          return true;
+                        }
+                      }
+                      return false;
+                    }
+                    return true;
+                  })
+                }
+                return menuItems;
+              })
+            ))
+          );
 
-    // Count how many menu items there are pr. area.
-    // Used to decide whether to show a dropdown or not
-    this.subscriptionHandler.register(this.menuItems$.pipe(
-      tap(menuItems => {
-        menuItems.forEach(menuItem => {
-          if (!this.menuItemsPrArea[menuItem.area]) {
-            this.menuItemsPrArea[menuItem.area] = 0;
-          }
-
-          this.menuItemsPrArea[menuItem.area]++;
-        })
+        return combineLatest(
+          menuAreas,
+          menuItems
+        ).pipe(
+          map(([menuAreas, menuItems]) => {
+            return menuAreas.filter((value, index, self) => self.map(x => x.area).indexOf(value.area) === index).map(menuArea => {
+              const menuItemsForArea = menuItems.filter(menuItem => {
+                return menuItem.area === menuArea.area;
+              });
+              if (menuItemsForArea && menuItemsForArea.length > 0) {
+                return new MenuAreaItems({
+                  area: menuArea, items: menuItemsForArea
+                })
+              }
+            })
+          }),
+        );
       })
-    ).subscribe());
-  }
-
-  /**
-   * COPIED FROM sidebar-component.ts (modified a bit)
-   */
-  public permissionsChecked(displaying: boolean, menuItem: MenuItem) {
-    menuItem.display = displaying;
-    this.subscriptionHandler.register(this.menuAreas$.pipe(
-      take(1),
-      map(currentValues => {
-        const menuArea = currentValues.find(x => x.area === menuItem.area);
-        menuArea.display = currentValues.filter(x => x.area === menuItem.area && x.display).length > 0;
-      }),
-    ).subscribe());
+    );
   }
 
   public toggleEditor() {
@@ -105,11 +124,5 @@ export class NavBarComponent implements OnInit, OnDestroy {
 
   public actionEvent(event: { action: Function, _this: any, value?: any }) {
     event.action(event._this, event.value);
-  }
-
-  public logout() {
-    const persistor = persistStore(this.mainStore);
-    persistor.purge();
-    this.authenticationActions.logout();
   }
 }

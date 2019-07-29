@@ -2,28 +2,52 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { SidebarMenu } from '@skysmack/portal-ui';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
-import { MenuArea } from '@skysmack/framework';
+import { MenuArea, safeHasValue, Package, AllowAccessFor } from '@skysmack/framework';
 import { MenuItem } from '@skysmack/framework';
 import { NgMenuItemProviders } from '@skysmack/ng-framework';
 import { IdentitiesPermissions } from '@skysmack/packages-identities';
+import { take, map } from 'rxjs/operators';
+import { IdentitiesTypeId } from '@skysmack/package-types';
+import { Skysmack } from '@skysmack/packages-skysmack-core';
+import { Guid } from 'guid-typescript';
 
 @Injectable({ providedIn: 'root' })
 export class NgIdentitiesIndexMenu extends SidebarMenu {
+    public id = Guid.create().toString();
     public menuId = 'identities';
     public translationPrefix = 'IDENTITIES.INDEX.';
 
     constructor(
-        public redux: NgSkysmackStore,
+        public store: NgSkysmackStore,
         public router: Router,
         public menuItemProviders: NgMenuItemProviders
     ) {
-        super(redux, router, menuItemProviders);
+        super(store, router, menuItemProviders);
         this.setPrimaryMenu();
         this.setSpeedDialMenu();
         this.runMenuItemProviders();
     }
 
     public setPrimaryMenu() {
+        this.addToNavbarMenuAreas([
+            new MenuArea({ // Keep identical to the one in ng-identities-index-menu.ts
+                area: 'identities',
+                icon: 'account_circle',
+                translationPrefix: this.translationPrefix,
+                order: 1,
+            })
+        ]);
+
+        const addNavbarMenuItems = () => {
+            this.store.getSkysmack().pipe(safeHasValue(), take(1), map((currentTenant: Skysmack) => currentTenant.packages
+                .filter((_package: Package) => _package.type === IdentitiesTypeId)
+                .map(_package => this.addToNavbarMenuItems(new MenuItem({
+                    area: 'identities', // Area provided from oauth2 menu.
+                    allowAccessFor: AllowAccessFor.authenticated
+                }).asUrlAction(_package.path, _package.name, 'account_circle'))))).subscribe();
+        }
+        addNavbarMenuItems();
+
         this.addToPrimaryMenuAreas([
             new MenuArea({
                 area: 'actions',
