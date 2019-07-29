@@ -13,7 +13,7 @@ import { Field, FormHelper } from '@skysmack/ng-dynamic-forms';
 import { Observable } from 'rxjs';
 import { NgAuthenticationStore } from '@skysmack/ng-framework';
 import { NgRedux } from '@angular-redux/store';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'ss-login',
@@ -58,6 +58,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     public skysmackActions: NgSkysmackActions,
     public fieldsConfig: LoginFieldsConfig,
     public requests: Oauth2Requests,
+    public dialog: MatDialog,
     @Inject(MAT_DIALOG_DATA) public data: { packagePath: string }
   ) { }
 
@@ -98,6 +99,7 @@ export class LoginComponent implements OnInit, OnDestroy {
       .pipe(filter(loggedIn => loggedIn === true)).subscribe(() => {
         this.success = true;
         this.skysmackActions.getSkysmack();
+        this.dialog.closeAll();
         this.router.navigate(['/']);
       }));
   }

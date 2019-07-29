@@ -1,3 +1,5 @@
+import { AllowAccessFor } from '../permissions/allow-access-for';
+
 export class MenuItem {
     public showLogic: Function;
     public provideIn: 'primaryMenu' | 'speedDialMenu' | 'navbar' | 'both' | 'notProvided' = 'notProvided';
@@ -15,7 +17,7 @@ export class MenuItem {
     public icon: string;
     public permissions: string[];
     public display = true;
-    public showFor: 'anonymous' | 'authenticated' | 'all';
+    public allowAccessFor: AllowAccessFor;
 
     public constructor(init?: Partial<MenuItem>) {
         Object.assign(this, init);
