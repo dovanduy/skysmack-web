@@ -1,5 +1,5 @@
 module.exports = {
-  name: 'web-web-commercial',
+  name: 'web-commercial',
   preset: '../../../jest.config.js',
   coverageDirectory: '../../../coverage/apps/web/web-commercial',
   snapshotSerializers: [

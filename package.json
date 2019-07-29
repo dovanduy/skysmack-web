@@ -5,6 +5,7 @@
   "scripts": {
     "ng": "node --max_old_space_size=8000 ./node_modules/@angular/cli/bin/ng",
     "start": "ng serve web-portal --host client1.skysmack.test --port 4000 --disableHostCheck",
+    "start:commercial": "ng serve web-commercial",
     "start:prod": "ng build --prod --sourceMap=true && http-server ./dist/apps/web/web-portal -a www.skysmack.test -p 4000 -o",
     "build": "gulp webLocalization && ng build --prod --deploy-url //cdn.skysmack.net/",
     "build:dev": "ng build --stats-json && npm run local-dev-server-insecure",

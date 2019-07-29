@@ -113,10 +113,10 @@
     "ng-access-policies": {
       "tags": []
     },
-    "web-web-commercial-e2e": {
+    "web-commercial-e2e": {
       "tags": []
     },
-    "web-web-commercial": {
+    "web-commercial": {
       "tags": []
     }
   }

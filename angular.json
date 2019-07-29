@@ -1137,7 +1137,7 @@
         }
       }
     },
-    "web-web-commercial": {
+    "web-commercial": {
       "projectType": "application",
       "schematics": {
         "@nrwl/workspace:component": {
@@ -1194,18 +1194,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "web-web-commercial:build"
+            "browserTarget": "web-commercial:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "web-web-commercial:build:production"
+              "browserTarget": "web-commercial:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "web-web-commercial:build"
+            "browserTarget": "web-commercial:build"
           }
         },
         "lint": {
@@ -1228,7 +1228,7 @@
         }
       }
     },
-    "web-web-commercial-e2e": {
+    "web-commercial-e2e": {
       "root": "apps/web/web-commercial-e2e",
       "sourceRoot": "apps/web/web-commercial-e2e/src",
       "projectType": "application",
@@ -1238,11 +1238,11 @@
           "options": {
             "cypressConfig": "apps/web/web-commercial-e2e/cypress.json",
             "tsConfig": "apps/web/web-commercial-e2e/tsconfig.e2e.json",
-            "devServerTarget": "web-web-commercial:serve"
+            "devServerTarget": "web-commercial:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "web-web-commercial:serve:production"
+              "devServerTarget": "web-commercial:serve:production"
             }
           }
         },
