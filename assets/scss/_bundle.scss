@@ -1,7 +1,7 @@
 ﻿// NORMALIZE
 @import "~normalize-scss/sass/normalize";
 @include normalize();
-$skysmack-font: "'Roboto', 'sans-serif'";
+$skysmack-font: "'Muli','Helvetica Neue Light','Helvetica Neue',Helvetica,Arial,'Lucida Grande','sans-serif'";
 
 // SKYSMACK DEFAULT LAYOUT
 @import "./global/layout";
@@ -11,7 +11,7 @@ $skysmack-font: "'Roboto', 'sans-serif'";
 
 $custom-typography: mat-typography-config(
   $font-family: $skysmack-font,
-  $headline: mat-typography-level(32px, 48px, 500),
+  $headline: mat-typography-level(32px, 48px, 600),
   $body-1: mat-typography-level(14px, 22px, 400)
 );
 
@@ -41,6 +41,7 @@ router-outlet + * {
 .mat-menu-content {
   min-width:150px;
 }
+
 
 // @import "_bootstrap_variables.scss";
 
@@ -75,6 +76,7 @@ router-outlet + * {
 @import "./components/pages.scss";
 // @import "./components/top-bar.scss";
 
+@import "./elements/mat-card.scss";
 // @import "./elements/loader.scss";
 // @import "./elements/form-label-group.scss";
 
