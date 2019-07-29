@@ -1,14 +1,13 @@
 import { OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
-import { map, switchMap, filter, take, tap } from 'rxjs/operators';
-import { MenuArea, MenuAreaItems, AllowAccessFor } from '@skysmack/framework';
+import { map, switchMap, take, tap } from 'rxjs/operators';
+import { MenuArea, MenuAreaItems } from '@skysmack/framework';
 import { MenuItem } from '@skysmack/framework';
 
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { SubscriptionHandler } from '@skysmack/framework';
 import { NgMenuItemProviders, getAdditionalPaths, getPackageDendencyAsStream } from '@skysmack/ng-framework';
 import { combineLatest, BehaviorSubject, Observable } from 'rxjs';
-import { LoadedPackage } from '@skysmack/ng-framework';
 
 interface BackButtonOptions {
     connectedPackage?: boolean;
