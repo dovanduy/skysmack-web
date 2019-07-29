@@ -3,7 +3,10 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { SidebarMenu } from './../../../models/sidebar-menu/sidebar-menu';
-import { MenuItem } from '@skysmack/framework';
+import { MenuItem, MenuAreaItems } from '@skysmack/framework';
+import { NgMenuProviders } from '../../../navigation/ng-menu-providers';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'ss-sidebar-menu',
@@ -22,16 +25,26 @@ export class SidebarMenuComponent implements OnInit {
   @Output() public menuItemActionEvent = new EventEmitter<any>();
   public expansions: any = {};
 
+  public menuAreaItems$: Observable<MenuAreaItems[]>;
+
   constructor(
     public router: Router,
     public activatedRoute: ActivatedRoute,
     public translate: TranslateService,
-
+    public ngMenuProviders: NgMenuProviders
   ) {
   }
 
   ngOnInit() {
     this.removeEmptyMenuAreas();
+
+    const packagePath = this.router.url.split('/')[1];
+    const componentKey = ''; // Where do we get this from?
+    this.menuAreaItems$ = this.ngMenuProviders.getMenuAreaItems(packagePath, componentKey).pipe(
+      map(menuAreaItems => {
+        return menuAreaItems.filter(menuAreaItem => menuAreaItem && menuAreaItem.providedIn && menuAreaItem.providedIn.includes('sidebar'));
+      })
+    );
   }
 
   public permissionsChecked(displaying: boolean, menuItem: MenuItem) {

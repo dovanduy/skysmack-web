@@ -24,8 +24,6 @@ export abstract class SidebarMenu implements OnDestroy {
     public additionalPaths: string[];
     public defaultMenuArea = 'manage';
 
-    public menuAreaItems$: Observable<MenuAreaItems[]>;
-
     // Navbar menu
     public navbarMenuAreas$ = new BehaviorSubject<MenuArea[]>([]);
     public navbarMenuItems$ = new BehaviorSubject<MenuItem[]>([]);

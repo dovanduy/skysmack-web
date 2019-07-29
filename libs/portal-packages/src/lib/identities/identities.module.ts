@@ -2,7 +2,7 @@ import { NgModule, ComponentFactoryResolver } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 
-import { LanguageService } from '@skysmack/portal-ui';
+import { LanguageService, NgMenuProviders } from '@skysmack/portal-ui';
 import { NgIdentitiesModule } from '@skysmack/ng-packages';
 import { PortalUiModule } from '@skysmack/portal-ui';
 import { IdentitiesRoutingModule } from './identities-routing.module';
@@ -16,7 +16,7 @@ import { usersComponents } from './identity-users/components/users-components';
 import { accountsComponents } from './accounts/components/accounts-components';
 import { MatSelectModule } from '@angular/material/select';
 import { RolesSelectFieldComponent } from './identity-roles/components/roles-select-field/roles-select-field.component';
-import { CoalescingComponentFactoryResolver, NgMenuProviders } from '@skysmack/ng-framework';
+import { CoalescingComponentFactoryResolver } from '@skysmack/ng-framework';
 import { RolesSelectComponent } from './identity-roles';
 import { DynamicFormsModule } from '@skysmack/portal-dynamic-forms';
 import { SettingsModule } from '@skysmack/portal-settings';

@@ -33,10 +33,7 @@ export class NgLodgingsReservationsMenu extends SidebarMenu {
             new MenuArea({
                 area: 'reservations',
                 translationPrefix: this.translationPrefix,
-                order: 2,
-                permissions: [
-                    ReservationsPermissions.findReservations
-                ]
+                order: 2
             }),
             new MenuArea({
                 area: 'settings',

@@ -41,7 +41,7 @@ export class NgOAuth2Menu extends SidebarMenu {
                 area: 'identities',
                 icon: 'account_circle',
                 translationPrefix: this.translationPrefix,
-                order: 1,
+                order: 1
             })
         ]);
 
@@ -53,7 +53,8 @@ export class NgOAuth2Menu extends SidebarMenu {
                 .map(_package => this.addToNavbarMenuItems([
                     new MenuItem({
                         area: 'identities',
-                        allowAccessFor: AllowAccessFor.anonymous
+                        allowAccessFor: AllowAccessFor.anonymous,
+                        providedIn: ['top']
                     }).asEventAction(_package.name, (_this: NgOAuth2Menu) => {
                         _this.dialog.open(LoginComponent, {
                             width: '500px',
@@ -61,9 +62,9 @@ export class NgOAuth2Menu extends SidebarMenu {
                         });
                     }, 'account_circle', this),
                     new MenuItem({
-
                         area: 'identities',
-                        allowAccessFor: AllowAccessFor.authenticated
+                        allowAccessFor: AllowAccessFor.authenticated,
+                        providedIn: ['top']
                     }).asEventAction('Logout', (_this: NgOAuth2Menu) => {
                         _this.logout();
                     },
