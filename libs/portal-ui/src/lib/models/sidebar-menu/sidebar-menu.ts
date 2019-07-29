@@ -64,7 +64,7 @@ export abstract class SidebarMenu implements OnDestroy {
             switchMap(providers => combineLatest(
                 providers.map(provider => provider.getItems(this.menuId, this.packagePath))
             ).pipe(
-                map((menuItems) => menuItems.reduce((a, b) => a.concat(b))),
+                map((menuItems) => menuItems.reduce((a, b) => a.concat(b), [])),
                 map((menuItems: MenuItem[]) => {
                     // Add provided menu items
                     const addConnectedPackageArea = (menuItem) => {
