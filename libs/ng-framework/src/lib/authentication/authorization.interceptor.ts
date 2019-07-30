@@ -3,8 +3,9 @@ import { Injectable } from '@angular/core';
 import { Observable, BehaviorSubject, throwError } from 'rxjs';
 import { mergeMap, take, catchError, switchMap, finalize, filter, tap } from 'rxjs/operators';
 import { CurrentUser } from '@skysmack/framework';
-import { NgAuthenticationStore, NgAuthenticationActions } from '@skysmack/ng-framework';
 import { NgRedux } from '@angular-redux/store';
+import { NgAuthenticationStore } from '../stores/ng-authentication-store';
+import { NgAuthenticationActions } from '../actions/ng-authentication-actions';
 
 
 @Injectable({ providedIn: 'root' })
@@ -22,6 +23,7 @@ export class AuthorizationInterceptor implements HttpInterceptor {
         return this.ngRedux.select(store => store.hydrated).pipe(
             filter(state => state.hydrated === true),
             take(1),
+            tap(() => console.log('request')),
             switchMap(() => this.authenticationStore.getCurrentUser().pipe(
                 take(1),
                 mergeMap((currentUser: CurrentUser) => {
