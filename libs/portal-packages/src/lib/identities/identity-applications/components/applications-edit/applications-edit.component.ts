@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Application, ApplicationsAppState } from '@skysmack/packages-identities';
-import { NgApplicationsActions } from '@skysmack/ng-packages';
+import { NgApplicationsActions, NgApplicationsStore } from '@skysmack/ng-identities';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EditorNavService } from '@skysmack/portal-ui';
-import { NgApplicationsStore } from '@skysmack/ng-packages';
 import { NgApplicationsFormFieldsConfig } from '../../ng-applications-form-fields-config';
 import { RecordFormComponent } from '@skysmack/portal-fields';
 

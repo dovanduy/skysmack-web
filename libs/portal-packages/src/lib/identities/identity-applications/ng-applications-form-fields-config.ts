@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
-import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
+import { LocalObject } from '@skysmack/framework';
 import { APPLICATIONS_AREA_KEY, ApplicationDescriptor } from '@skysmack/packages-identities';
-import { NgApplicationsValidation } from '@skysmack/ng-packages';
+import { NgApplicationsValidation } from '@skysmack/ng-identities';
 import { LoadedPackage } from '@skysmack/ng-framework';
-import { StringFieldComponent, HiddenFieldComponent } from '@skysmack/portal-fields';
+import { StringFieldComponent } from '@skysmack/portal-fields';
 import { FormRule, Field } from '@skysmack/ng-dynamic-forms';
 import { FieldsConfig, FieldProviders } from '@skysmack/ng-fields';
 
