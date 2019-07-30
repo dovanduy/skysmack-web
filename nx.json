@@ -151,6 +151,9 @@
     },
     "ng-persons": {
       "tags": []
+    },
+    "ng-persons-lodging-reservations": {
+      "tags": []
     }
   }
 }

@@ -136,6 +136,9 @@
       ],
       "@skysmack/ng-persons": [
         "libs/ng-packages/ng-persons"
+      ],
+      "@skysmack/ng-persons-lodging-reservations": [
+        "libs/ng-packages/ng-persons-lodging-reservations"
       ]
     }
   },
