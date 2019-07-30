@@ -1,145 +1,172 @@
 @import "../../../../../assets/scss/_includes.scss";
 
 skysmack-app {
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    top: 56px;
-    bottom: 0;
-    left: 0;
-    right: 0;
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  top: 56px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+nav.docs-navbar-header {
+  position: fixed;
+  top: -56px;
+  left: 0;
+  right: 0;
+  min-height: 56px;
+  z-index: 2;
+  animation: navbar-entry .3s ease-out 0s 1 normal forwards;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 8px 1.5rem;
+  background-color: #fff;
+
+  >.mat-button {
+    &:last-child {
+      margin-left: auto;
+    }
   }
-  
-  nav.docs-navbar-header {
-    position: fixed;
-    top: -56px;
-    left: 0;
-    right: 0;
-    min-height: 56px;
-    z-index: 2;
-    animation: navbar-entry .3s ease-out 0s 1 normal forwards;  
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    padding: 8px 1.5rem;
-    background-color: #fff;
-  
-    > .mat-button {
-      &:last-child {
-        margin-left: auto;
+
+  .main-menu,
+  .secondary-menu {
+    padding: 0 1rem;
+
+    a.menu,
+    a.menu-button {
+      font-size: 13px
+    }
+
+    a.menu {
+      color: #000;
+      opacity: .65;
+      padding: 0 1rem;
+      transition: opacity .1s ease, color .1s ease;
+
+      &:hover {
+        color: mat-color($primary);
+        opacity: 1;
       }
     }
-
-    .main-menu, .secondary-menu {
-        padding: 0 1rem; 
-
-        a.menu {
-            font-size: 13px;
-            color: #000;
-            opacity: .65;
-            padding: 0 1rem;
-            transition: opacity .1s ease, color .1s ease;
-
-            &:hover {
-                color: mat-color($primary);
-                opacity: 1;
-            }
-        }
-    }
   }
-  
-  .flex-spacer {
-    flex-grow: 1;
-  }
-  
-  .search-bar {
-    position: fixed;
-    visibility: hidden;
-    opacity: 0;
-    top: 56px;
-    z-index: 1;
-    width: 100%;
+}
+
+.flex-spacer {
+  flex-grow: 1;
+}
+
+.search-bar {
+  position: fixed;
+  visibility: hidden;
+  opacity: 0;
+  top: 56px;
+  z-index: 1;
+  width: 100%;
+  height: 0;
+  left: 0;
+  transition: height .1s ease;
+  background-color: $lighter;
+
+  .search-field {
     height: 0;
-    left: 0;
     transition: height .1s ease;
-    background-color: $lighter;
-  
+  }
+
+  ::placeholder {
+    /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: rgba(0, 0, 0, 0.27);
+    opacity: 1;
+    /* Firefox */
+  }
+
+  :-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    color: rgba(0, 0, 0, 0.27);
+  }
+
+  ::-ms-input-placeholder {
+    /* Microsoft Edge */
+    color: rgba(0, 0, 0, 0.27);
+  }
+
+  &.open {
+    height: 56px;
+    visibility: visible;
+    opacity: 1;
+
     .search-field {
-      height: 0;
-      transition: height .1s ease;
-    }
-  
-    ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-      color: rgba(0, 0, 0, 0.27);
-      opacity: 1; /* Firefox */
-    }
-    
-    :-ms-input-placeholder { /* Internet Explorer 10-11 */
-      color: rgba(0, 0, 0, 0.27);
-    }
-    
-    ::-ms-input-placeholder { /* Microsoft Edge */
-      color: rgba(0, 0, 0, 0.27);
-    }
-  
-    &.open {
+      color: rgba(0, 0, 0, 0.54);
+      background-color: $lighter;
+
+      width: 100%;
       height: 56px;
-      visibility: visible;
-      opacity: 1;    
-      
-      .search-field {
-        color: rgba(0, 0, 0, 0.54);
-        background-color: $lighter;
-  
-        width: 100%;
-        height: 56px;
-        border: 0;
-        text-align: center;
-  
-        &:focus {
-          color: rgba(0, 0, 0, 0.85);
-          outline: none;
-        }
+      border: 0;
+      text-align: center;
+
+      &:focus {
+        color: rgba(0, 0, 0, 0.85);
+        outline: none;
       }
     }
   }
-  
-  .link {  
-    color: rgba(0, 0, 0, 0.54);
-    transition: color 0.1s ease;
-  
-    &:hover {  
-      color: rgba(0, 0, 0, 0.77);
-    }
-  }
+}
 
-  skysmack-app > ss-component-sidenav {
-    flex: 1;
+.link {
+  color: rgba(0, 0, 0, 0.54);
+  transition: color 0.1s ease;
+
+  &:hover {
+    color: rgba(0, 0, 0, 0.77);
   }
-  
-  skysmack-app > ss-homepage,
-  skysmack-app > ss-guides,
-  skysmack-app > guide-viewer {
-    overflow-y: auto;
+}
+
+skysmack-app>ss-component-sidenav {
+  flex: 1;
+}
+
+skysmack-app>ss-homepage,
+skysmack-app>ss-guides,
+skysmack-app>guide-viewer {
+  overflow-y: auto;
+}
+
+nav.footer {
+  background-color: #e6e6e6;
+  color: $light-primary-text;
+  width: 100%;
+  text-align: center;
+  align-self: flex-end;
+  padding: 2.5rem;
+
+  img.skysmack-logo {
+    max-height: 32px;
+    margin-bottom: 1.5rem;
   }
-  
-  @media (max-width: 720px) {
-    // skysmack-app {
-    //   top: 56px;
-    // }
-  
-    skysmack-app > ss-homepage,
-    skysmack-app > ss-guides,
-    skysmack-app > guide-viewer {
-      overflow-y: visible;
-    }
+  span.skysmack-logo {    
+    font-size: 18px;
   }
+}
+
+@media (max-width: 720px) {
+  // skysmack-app {
+  //   top: 56px;
+  // }
+
+  skysmack-app>ss-homepage,
+  skysmack-app>ss-guides,
+  skysmack-app>guide-viewer {
+    overflow-y: visible;
+  }
+}
 
 @keyframes navbar-entry {
-    0% {
-      top: -56px;
-    }
-    100% {
-        top: 0px;
-    }
+  0% {
+    top: -56px;
   }
+
+  100% {
+    top: 0px;
+  }
+}
