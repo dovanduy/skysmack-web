@@ -8,7 +8,7 @@ import { NgSkysmackActions } from '@skysmack/ng-skysmack';
 import { SubscriptionHandler, Package } from '@skysmack/framework';
 import { AuthenticationActions } from '@skysmack/redux';
 import { filter } from 'rxjs/operators';
-import { Oauth2Requests } from '@skysmack/ng-packages';
+import { Oauth2Requests } from '@skysmack/ng-oauth2';
 import { Field, FormHelper } from '@skysmack/ng-dynamic-forms';
 import { Observable } from 'rxjs';
 import { NgAuthenticationStore } from '@skysmack/ng-framework';

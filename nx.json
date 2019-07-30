@@ -145,6 +145,9 @@
     },
     "ng-maintenance": {
       "tags": []
+    },
+    "ng-oauth2": {
+      "tags": []
     }
   }
 }

@@ -130,6 +130,9 @@
       ],
       "@skysmack/ng-maintenance": [
         "libs/ng-packages/ng-maintenance"
+      ],
+      "@skysmack/ng-oauth2": [
+        "libs/ng-packages/ng-oauth2"
       ]
     }
   },
