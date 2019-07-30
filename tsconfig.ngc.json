@@ -117,7 +117,7 @@
         "libs/ng-packages/ng-invoices"
       ],
       "@skysmack/ng-invoices-cash-payments": [
-        "libs/ng-packages/ng-invoices"
+        "libs/ng-packages/ng-invoices-cash-payments"
       ]
     }
   },
