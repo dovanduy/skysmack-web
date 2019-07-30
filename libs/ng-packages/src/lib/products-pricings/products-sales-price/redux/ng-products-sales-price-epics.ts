@@ -3,10 +3,9 @@ import { ProductsSalesPrice, PRODUCTS_SALES_PRICE_REDUX_KEY } from '@skysmack/pa
 import { Injectable } from '@angular/core';
 import { NgProductsSalesPriceRequests } from './ng-products-sales-price-requests';
 import { NgProductsSalesPriceNotifications } from '../ng-products-sales-price-notifications';
-import { NgProductsStore } from '../../../products/products/redux/ng-products-store';
-import { NgProductsActions } from '../../../products/products/redux/ng-products-actions';
 import { getReadDependencies } from '@skysmack/ng-framework';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
+import { NgProductsStore, NgProductsActions } from '@skysmack/ng-products';
 
 @Injectable({ providedIn: 'root' })
 export class NgProductsSalesPriceEpics extends RecordEpicsBase<ProductsSalesPrice, number> {

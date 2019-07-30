@@ -3,12 +3,13 @@ import { Validators } from '@angular/forms';
 import { LocalObject, LocalObjectStatus, PagedQuery } from '@skysmack/framework';
 import { ProductTypePriceChange, PRODUCT_TYPE_PRICE_CHANGES_AREA_KEY } from '@skysmack/packages-products-pricings';
 import { FormRule, SelectField, Field } from '@skysmack/ng-dynamic-forms';
-import { NgProductTypePriceChangesValidation, NgProductTypesStore, NgProductTypesActions } from '@skysmack/ng-packages';
+import { NgProductTypesStore, NgProductTypesActions } from '@skysmack/ng-products';
 import { LoadedPackage, getPackageDendencyAsStream } from '@skysmack/ng-framework';
 import { FieldsConfig, FieldProviders } from '@skysmack/ng-fields';
 import { SelectFieldComponent, CheckboxFieldComponent, DecimalFieldComponent, IntFieldComponent, DateTimeFieldComponent, HiddenFieldComponent } from '@skysmack/portal-fields';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { map, take } from 'rxjs/operators';
+import { NgProductTypePriceChangesValidation } from '@skysmack/ng-packages';
 
 @Injectable({ providedIn: 'root' })
 export class NgProductTypePriceChangesFieldsConfig extends FieldsConfig<ProductTypePriceChange, number> {

@@ -3,10 +3,9 @@ import { ProductTypePriceChange, PRODUCT_TYPE_PRICE_CHANGES_REDUX_KEY } from '@s
 import { Injectable } from '@angular/core';
 import { NgProductTypePriceChangesRequests } from './ng-product-type-price-changes-requests';
 import { NgProductTypePriceChangesNotifications } from '../ng-product-type-price-changes-notifications';
-import { NgProductTypesStore } from '../../../products/product-types/redux/ng-product-types-store';
-import { NgProductTypesActions } from '../../../products/product-types/redux/ng-product-types-actions';
 import { getReadDependencies } from '@skysmack/ng-framework';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
+import { NgProductTypesStore, NgProductTypesActions } from '@skysmack/ng-products';
 
 @Injectable({ providedIn: 'root' })
 export class NgProductTypePriceChangesEpics extends RecordEpicsBase<ProductTypePriceChange, number> {

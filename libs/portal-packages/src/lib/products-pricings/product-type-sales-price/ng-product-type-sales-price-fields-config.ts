@@ -4,12 +4,13 @@ import { LocalObject, LocalObjectStatus, PagedQuery } from '@skysmack/framework'
 import { ProductTypeSalesPrice, PRODUCT_TYPE_SALES_PRICE_AREA_KEY } from '@skysmack/packages-products-pricings';
 import { FormRule, SelectField, Field } from '@skysmack/ng-dynamic-forms';
 import { ProductType } from '@skysmack/packages-products';
-import { NgProductTypeSalesPriceValidation, NgProductTypesStore, NgProductTypesActions } from '@skysmack/ng-packages';
+import { NgProductTypesStore, NgProductTypesActions } from '@skysmack/ng-products';
 import { LoadedPackage, getPackageDendencyAsStream } from '@skysmack/ng-framework';
 import { FieldsConfig, FieldProviders } from '@skysmack/ng-fields';
 import { SelectFieldComponent, DecimalFieldComponent, HiddenFieldComponent } from '@skysmack/portal-fields';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { map, take } from 'rxjs/operators';
+import { NgProductTypeSalesPriceValidation } from '@skysmack/ng-packages';
 
 export interface NgProductTypeSalesPriceFormDependencies {
     availableProductTypes: LocalObject<ProductType, number>[];

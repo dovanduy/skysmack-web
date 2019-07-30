@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { EntityComponentPageTitle, MenuItemActionProviders, MENU_ITEM_ACTIONS_EDIT, MENU_ITEM_ACTIONS_DELETE } from '@skysmack/portal-ui';
 import { Router, ActivatedRoute } from '@angular/router';
-import { NgProductTypesActions, NgProductTypesStore } from '@skysmack/ng-packages';
+import { NgProductTypesActions, NgProductTypesStore } from '@skysmack/ng-products';
 import { ProductTypesAppState, ProductType, PRODUCT_TYPES_AREA_KEY } from '@skysmack/packages-products';
 import { NgProductTypesMenu } from '../../ng-product-types-menu';
 import { MenuItem } from '@skysmack/framework';

@@ -10,7 +10,7 @@ import { Validators } from '@angular/forms';
 import { FormRule, Field, SelectField } from '@skysmack/ng-dynamic-forms';
 import { FieldsConfig, FieldProviders } from '@skysmack/ng-fields';
 import { SelectFieldComponent, IntFieldComponent, HiddenFieldComponent } from '@skysmack/portal-fields';
-import { NgProductsActions, NgProductsStore } from '@skysmack/ng-packages';
+import { NgProductsActions, NgProductsStore } from '@skysmack/ng-products';
 
 @Injectable({ providedIn: 'root' })
 export class NgInvoicesProductsAddProductsFieldsConfig extends FieldsConfig<any, unknown> {
