@@ -121,6 +121,12 @@
       ],
       "@skysmack/ng-invoices-products": [
         "libs/ng-packages/ng-invoices-products"
+      ],
+      "@skysmack/ng-lodging-reservations": [
+        "libs/ng-packages/ng-lodging-reservations"
+      ],
+      "@skysmack/ng-lodgings": [
+        "libs/ng-packages/ng-lodgings"
       ]
     }
   },

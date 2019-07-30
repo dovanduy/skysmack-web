@@ -5,7 +5,7 @@ import { EditorNavService } from '@skysmack/portal-ui';
 import { NgLodgingReservationsFieldsConfig } from '../../ng-lodging-reservations-fields-config';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { RecordFormComponent } from '@skysmack/portal-fields';
-import { NgLodgingReservationsStore, NgLodgingReservationsActions } from '@skysmack/ng-packages';
+import { NgLodgingReservationsStore, NgLodgingReservationsActions } from '@skysmack/ng-lodging-reservations';
 import { NgLodgingsActions, NgLodgingTypesActions } from '@skysmack/ng-lodgings';
 
 @Component({

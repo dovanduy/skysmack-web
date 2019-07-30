@@ -11,7 +11,7 @@ import { NgLodgingReservationsSettingsFieldsConfig } from './ng-lodging-reservat
 import { DynamicFormsModule } from '@skysmack/portal-dynamic-forms';
 import { SettingsModule } from '@skysmack/portal-settings';
 import { PortalFieldsModule } from '@skysmack/portal-fields';
-import { NgLodgingReservationsModule } from '@skysmack/ng-packages';
+import { NgLodgingReservationsModule } from '@skysmack/ng-lodging-reservations';
 import { NgDashboardProviders, CoalescingComponentFactoryResolver } from '@skysmack/ng-framework';
 import { NgLodgingReservationsDashboardProvider } from './lodging-reservations/ng-lodging-reservations-dashboard-provider';
 

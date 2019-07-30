@@ -1,4 +1,3 @@
-export * from './lodging-reservations/index';
 export * from './maintenance/index';
 export * from './oauth2/index';
 export * from './packages/index';

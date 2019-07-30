@@ -9,7 +9,7 @@ import { map } from 'rxjs/operators';
 import { FormRule, Field, SelectField, SelectFieldOption } from '@skysmack/ng-dynamic-forms';
 import { FieldsConfig, FieldProviders } from '@skysmack/ng-fields';
 import { SelectFieldComponent, DateFieldComponent, IntFieldComponent, HiddenFieldComponent } from '@skysmack/portal-fields';
-import { NgLodgingReservationsValidation } from '@skysmack/ng-packages';
+import { NgLodgingReservationsValidation } from '@skysmack/ng-lodging-reservations';
 
 @Injectable({ providedIn: 'root' })
 export class NgLodgingReservationsFieldsConfig extends FieldsConfig<LodgingReservation, number> {

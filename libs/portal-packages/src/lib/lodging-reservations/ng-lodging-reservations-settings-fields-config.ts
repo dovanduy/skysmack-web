@@ -3,7 +3,7 @@ import { FormRule, Field } from '@skysmack/ng-dynamic-forms';
 import { LocalObject } from '@skysmack/framework';
 import { LoadedPackage } from '@skysmack/ng-framework';
 import { LodgingReservationsSettings, LODGING_RESERVATIONS_AREA_KEY } from '@skysmack/packages-lodging-reservations';
-import { NgLodgingReservationsSettingsValidation } from '@skysmack/ng-packages';
+import { NgLodgingReservationsSettingsValidation } from '@skysmack/ng-lodging-reservations';
 import { FieldsConfig, FieldProviders } from '@skysmack/ng-fields';
 import { IntFieldComponent } from '@skysmack/portal-fields';
 

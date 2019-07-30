@@ -6,12 +6,11 @@ import { LodgingsReservationsIndexComponent } from '../../lodging-reservations/l
 import { RSQLFilterBuilder, SortBuilder } from '@skysmack/framework';
 import * as _moment from 'moment';
 const moment = _moment;
-
 import { LodgingReservation } from '@skysmack/packages-lodging-reservations';
 import { NgLodgingsReservationsMenu } from '../../ng-lodgings-reservations-menu';
 import { NgLodgingReservationsFieldsConfig } from '../../ng-lodging-reservations-fields-config';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
-import { NgLodgingReservationsStore, NgLodgingReservationsActions } from '@skysmack/ng-packages';
+import { NgLodgingReservationsStore, NgLodgingReservationsActions } from '@skysmack/ng-lodging-reservations';
 
 @Component({
   selector: 'ss-lodgings-departures',
