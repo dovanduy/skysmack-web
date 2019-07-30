@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { NgInvoicesActions, NgInvoicesStore, NgTerminalsActions, NgTerminalsStore } from '@skysmack/ng-packages';
+import { NgInvoicesActions, NgInvoicesStore } from '@skysmack/ng-invoices';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EditorNavService } from '@skysmack/portal-ui';
@@ -13,6 +13,7 @@ import { HttpClient } from '@angular/common/http';
 import { Invoice } from 'libs/packages/invoices/src';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { RecordFormComponent } from '@skysmack/portal-fields';
+import { NgTerminalsActions, NgTerminalsStore } from '@skysmack/ng-packages';
 
 @Component({
   selector: 'ss-terminals-pay',
