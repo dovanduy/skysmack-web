@@ -23,9 +23,7 @@
               "libs/shared/framework/tsconfig.lib.json",
               "libs/shared/framework/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         },
         "test": {
@@ -62,9 +60,7 @@
               "libs/shared/redux/tsconfig.lib.json",
               "libs/shared/redux/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         },
         "test": {
@@ -94,9 +90,7 @@
               "libs/packages/skysmack-core/tsconfig.lib.json",
               "libs/packages/skysmack-core/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         },
         "test": {
@@ -126,9 +120,7 @@
               "libs/packages/packages-identities/tsconfig.lib.json",
               "libs/packages/packages-identities/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         },
         "test": {
@@ -158,9 +150,7 @@
               "libs/packages/packages-invoices/tsconfig.lib.json",
               "libs/packages/packages-invoices/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         },
         "test": {
@@ -190,9 +180,7 @@
               "libs/packages/packages-lodging-reservations/tsconfig.lib.json",
               "libs/packages/packages-lodging-reservations/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         },
         "test": {
@@ -222,9 +210,7 @@
               "libs/packages/packages-lodgings/tsconfig.lib.json",
               "libs/packages/packages-lodgings/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         },
         "test": {
@@ -254,9 +240,7 @@
               "libs/packages/packages-maintenance/tsconfig.lib.json",
               "libs/packages/packages-maintenance/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         },
         "test": {
@@ -286,9 +270,7 @@
               "libs/packages/packages-oauth2/tsconfig.lib.json",
               "libs/packages/packages-oauth2/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         },
         "test": {
@@ -318,9 +300,7 @@
               "libs/packages/packages-persons/tsconfig.lib.json",
               "libs/packages/packages-persons/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         },
         "test": {
@@ -350,9 +330,7 @@
               "libs/packages/packages-persons-lodging-reservations/tsconfig.lib.json",
               "libs/packages/packages-persons-lodging-reservations/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         },
         "test": {
@@ -382,9 +360,7 @@
               "libs/packages/packages-products/tsconfig.lib.json",
               "libs/packages/packages-products/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         },
         "test": {
@@ -414,9 +390,7 @@
               "libs/packages/packages-products-pricings/tsconfig.lib.json",
               "libs/packages/packages-products-pricings/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         },
         "test": {
@@ -446,9 +420,7 @@
               "libs/packages/packages-terminal-payments/tsconfig.lib.json",
               "libs/packages/packages-terminal-payments/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         },
         "test": {
@@ -478,9 +450,7 @@
               "libs/packages/packages-reservations-pricings/tsconfig.lib.json",
               "libs/packages/packages-reservations-pricings/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         },
         "test": {
@@ -510,9 +480,7 @@
               "libs/ng-packages/tsconfig.lib.json",
               "libs/ng-packages/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         },
         "test": {
@@ -543,9 +511,7 @@
               "libs/ng-framework/tsconfig.lib.json",
               "libs/ng-framework/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         },
         "test": {
@@ -576,9 +542,7 @@
               "libs/ng-ui/tsconfig.lib.json",
               "libs/ng-ui/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         },
         "test": {
@@ -609,9 +573,7 @@
               "libs/portal-packages/tsconfig.lib.json",
               "libs/portal-packages/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         },
         "test": {
@@ -642,9 +604,7 @@
               "libs/portal-ui/tsconfig.lib.json",
               "libs/portal-ui/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         },
         "test": {
@@ -692,9 +652,7 @@
                 "output": "/i18n/"
               }
             ],
-            "styles": [
-              "apps/web/web-portal/src/styles.scss"
-            ],
+            "styles": ["apps/web/web-portal/src/styles.scss"],
             "scripts": [],
             "es5BrowserSupport": true,
             "vendorSourceMap": true
@@ -752,9 +710,7 @@
               "apps/web/web-portal/tsconfig.app.json",
               "apps/web/web-portal/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         },
         "test": {
@@ -780,9 +736,7 @@
               "libs/shared/pricings/tsconfig.lib.json",
               "libs/shared/pricings/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         },
         "test": {
@@ -812,9 +766,7 @@
               "libs/packages/invoices-cash-payments/tsconfig.lib.json",
               "libs/packages/invoices-cash-payments/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         },
         "test": {
@@ -844,9 +796,7 @@
               "libs/packages/emails/tsconfig.lib.json",
               "libs/packages/emails/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         },
         "test": {
@@ -876,9 +826,7 @@
               "libs/packages/emails-smtp/tsconfig.lib.json",
               "libs/packages/emails-smtp/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         },
         "test": {
@@ -909,9 +857,7 @@
               "libs/shared/signal-r/tsconfig.lib.json",
               "libs/shared/signal-r/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         },
         "test": {
@@ -941,9 +887,7 @@
               "libs/packages/invoices-products/tsconfig.lib.json",
               "libs/packages/invoices-products/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         },
         "test": {
@@ -1008,10 +952,7 @@
               "libs/ng-shared/ng-fields/tsconfig.lib.json",
               "libs/ng-shared/ng-fields/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/ng-shared/ng-fields/**"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/ng-shared/ng-fields/**"]
           }
         },
         "test": {
@@ -1110,10 +1051,7 @@
               "libs/ng-shared/ng-skysmack/tsconfig.lib.json",
               "libs/ng-shared/ng-skysmack/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/ng-shared/ng-skysmack/**"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/ng-shared/ng-skysmack/**"]
           }
         },
         "test": {
@@ -1198,6 +1136,124 @@
           "styleext": "scss"
         }
       }
+    },
+    "web-commercial": {
+      "projectType": "application",
+      "schematics": {
+        "@nrwl/workspace:component": {
+          "style": "scss"
+        }
+      },
+      "root": "apps/web/web-commercial",
+      "sourceRoot": "apps/web/web-commercial/src",
+      "prefix": "skysmack",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/web/web-commercial",
+            "index": "apps/web/web-commercial/src/index.html",
+            "main": "apps/web/web-commercial/src/main.ts",
+            "polyfills": "apps/web/web-commercial/src/polyfills.ts",
+            "tsConfig": "apps/web/web-commercial/tsconfig.app.json",
+            "aot": false,
+            "assets": [
+              "apps/web/web-commercial/src/favicon.ico",
+              "apps/web/web-commercial/src/assets"
+            ],
+            "styles": ["apps/web/web-commercial/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/web/web-commercial/src/environments/environment.ts",
+                  "with": "apps/web/web-commercial/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "web-commercial:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "web-commercial:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "web-commercial:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/web/web-commercial/tsconfig.app.json",
+              "apps/web/web-commercial/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/web/web-commercial/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/web/web-commercial/jest.config.js",
+            "tsConfig": "apps/web/web-commercial/tsconfig.spec.json",
+            "setupFile": "apps/web/web-commercial/src/test-setup.ts"
+          }
+        }
+      }
+    },
+    "web-commercial-e2e": {
+      "root": "apps/web/web-commercial-e2e",
+      "sourceRoot": "apps/web/web-commercial-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/web/web-commercial-e2e/cypress.json",
+            "tsConfig": "apps/web/web-commercial-e2e/tsconfig.e2e.json",
+            "devServerTarget": "web-commercial:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "web-commercial:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": "apps/web/web-commercial-e2e/tsconfig.e2e.json",
+            "exclude": ["**/node_modules/**", "!apps/web/web-commercial-e2e/**"]
+          }
+        }
+      }
     }
   },
   "cli": {
@@ -1213,6 +1269,13 @@
     },
     "@nrwl/schematics:library": {
       "style": "scss"
+    },
+    "@nrwl/angular:application": {
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "unitTestRunner": "jest"
     }
   },
   "defaultProject": "web-portal"

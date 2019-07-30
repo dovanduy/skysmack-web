@@ -1,8 +1,4 @@
-// @import "_bootstrap_variables.scss";
-// @import "~bootstrap/scss/_functions";
-// @import "~bootstrap/scss/_variables";
-// @import "~bootstrap/scss/_mixins";
-// @import "~bootstrap/scss/_utilities";
-@import "_variables.scss";
+@import 'material2/themes/skysmack';
 
 $small-breakpoint-width: 720px;
+$lighter: #eff5f7; // lighten(map-get($map: $mat-skysmack, $key: light), 35%);

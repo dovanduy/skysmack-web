@@ -112,6 +112,12 @@
     },
     "ng-access-policies": {
       "tags": []
+    },
+    "web-commercial-e2e": {
+      "tags": []
+    },
+    "web-commercial": {
+      "tags": []
     }
   }
 }
