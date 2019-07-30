@@ -4,7 +4,7 @@ export * from './maintenance/index';
 export * from './oauth2/index';
 export * from './packages/index';
 export * from './persons/index';
-export * from './invoices/index';
+export * from '../../ng-invoices/src/lib/index';
 export * from './invoices-products/index';
 export * from './invoices-cash-payments/index';
 export * from './persons-lodging-reservations/index';

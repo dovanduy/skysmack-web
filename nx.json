@@ -121,6 +121,9 @@
     },
     "ng-identities": {
       "tags": []
+    },
+    "ng-packages-ng-invoices": {
+      "tags": []
     }
   }
 }

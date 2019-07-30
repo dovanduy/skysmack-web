@@ -112,6 +112,9 @@
       ],
       "@skysmack/ng-identities": [
         "libs/ng-packages/ng-identities"
+      ],
+      "@skysmack/ng-invoices": [
+        "libs/ng-packages/ng-invoices"
       ]
     }
   },

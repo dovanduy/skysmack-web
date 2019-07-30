@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { EntityComponentPageTitle, MenuItemActionProviders, MENU_ITEM_ACTIONS_EDIT, MENU_ITEM_ACTIONS_DELETE } from '@skysmack/portal-ui';
 import { Router, ActivatedRoute } from '@angular/router';
-import { NgInvoicePaymentsActions } from '@skysmack/ng-packages';
+import { NgInvoicePaymentsActions, NgInvoicePaymentsStore } from '@skysmack/ng-invoices';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
-import { NgInvoicePaymentsStore } from '@skysmack/ng-packages';
 import { InvoicePayment, InvoicePaymentsAppState, INVOICE_PAYMENTS_AREA_KEY } from '@skysmack/packages-invoices';
 import { NgInvoicePaymentsMenu } from './../../ng-invoice-payments-menu';
 import { MenuItem } from '@skysmack/framework';

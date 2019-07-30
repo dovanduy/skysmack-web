@@ -81,14 +81,15 @@
       "@skysmack/ng-access-policies": [
         "libs/ng-packages/ng-access-policies/src/public_api.ts"
       ],
-      "@skysmack/ng-emails": [
-        "libs/ng-packages/ng-emails/src/public_api.ts"
-      ],
+      "@skysmack/ng-emails": ["libs/ng-packages/ng-emails/src/public_api.ts"],
       "@skysmackng/ng-email-smtp": [
         "libs/ng-packages/ng-email-smtp/src/public_api.ts"
       ],
       "@skysmack/ng-identities": [
         "libs/ng-packages/ng-identities/src/public_api.ts"
+      ],
+      "@skysmack/ng-invoices": [
+        "libs/ng-packages/ng-invoices/src/public_api.ts"
       ]
     }
   },
