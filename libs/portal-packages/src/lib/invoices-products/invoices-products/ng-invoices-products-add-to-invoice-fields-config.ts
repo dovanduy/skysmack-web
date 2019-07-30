@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { LocalObject, PagedQuery } from '@skysmack/framework';
 
-import { NgInvoicesProductsValidation } from '@skysmack/ng-packages';
+import { NgInvoicesProductsValidation } from '@skysmack/ng-invoices-products';
 import { LoadedPackage, getPackageDendencyAsStream } from '@skysmack/ng-framework';
 import { INVOICES_PRODUCTS_AREA_KEY } from '@skysmack/packages-invoices-products';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';

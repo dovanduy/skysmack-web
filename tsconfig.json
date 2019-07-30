@@ -93,6 +93,9 @@
       ],
       "@skysmack/ng-invoices-cash-payments": [
         "libs/ng-packages/ng-invoices-cash-payments/src/public_api.ts"
+      ],
+      "@skysmack/ng-invoices-products": [
+        "libs/ng-packages/ng-invoices-products/src/public_api.ts"
       ]
     }
   },

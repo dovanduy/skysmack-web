@@ -5,7 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { LanguageService, MenuItemActionProviders } from '@skysmack/portal-ui';
 import { PortalUiModule } from '@skysmack/portal-ui';
 import { InvoicesProductsRoutingModule } from './invoices-products-routing.module';
-import { NgInvoicesProductsModule } from '@skysmack/ng-packages';
+import { NgInvoicesProductsModule } from '@skysmack/ng-invoices-products';
 import { NgInvoicesProductsMenuItemActionProvider } from './ng-invoices-products-menu-item-action-provider';
 import { ProductsTypeId } from '@skysmack/package-types';
 import { invoicesProductsComponents } from './invoices-products/components/invoices-products-components';

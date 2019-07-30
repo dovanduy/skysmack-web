@@ -133,6 +133,9 @@
     },
     "ng-invoices-cash-payments": {
       "tags": []
+    },
+    "ng-invoices-products": {
+      "tags": []
     }
   }
 }
