@@ -10,7 +10,7 @@ import { FieldsConfig, FieldProviders } from '@skysmack/ng-fields';
 import { SelectFieldComponent, DecimalFieldComponent, HiddenFieldComponent } from '@skysmack/portal-fields';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { map, take } from 'rxjs/operators';
-import { NgProductTypeSalesPriceValidation } from '@skysmack/ng-packages';
+import { NgProductTypeSalesPriceValidation } from '@skysmack/ng-products-pricings';
 
 export interface NgProductTypeSalesPriceFormDependencies {
     availableProductTypes: LocalObject<ProductType, number>[];

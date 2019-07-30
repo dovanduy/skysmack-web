@@ -142,6 +142,9 @@
       ],
       "@skysmack/ng-products": [
         "libs/ng-packages/ng-products"
+      ],
+      "@skysmack/ng-products-pricings": [
+        "libs/ng-packages/ng-products-pricings"
       ]
     }
   },

@@ -5,7 +5,7 @@ import { ProductPriceChange, PRODUCT_PRICE_CHANGES_AREA_KEY } from '@skysmack/pa
 import { FormRule, SelectField, Field } from '@skysmack/ng-dynamic-forms';
 import { NgProductsStore, NgProductsActions } from '@skysmack/ng-products';
 import { LoadedPackage } from '@skysmack/ng-framework';
-import { NgProductsSalesPriceActions, NgProductPriceChangesValidation, NgProductsSalesPriceStore } from '@skysmack/ng-packages';
+import { NgProductsSalesPriceActions, NgProductPriceChangesValidation, NgProductsSalesPriceStore } from '@skysmack/ng-products-pricings';
 import { FieldsConfig, FieldProviders } from '@skysmack/ng-fields';
 import { SelectFieldComponent, CheckboxFieldComponent, DecimalFieldComponent, IntFieldComponent, DateTimeFieldComponent, HiddenFieldComponent } from '@skysmack/portal-fields';
 

@@ -3,7 +3,7 @@ import { ProductsSalesPriceAppState, ProductsSalesPrice } from '@skysmack/packag
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EditorNavService } from '@skysmack/portal-ui';
-import { NgProductsSalesPriceStore, NgProductsSalesPriceActions } from '@skysmack/ng-packages';
+import { NgProductsSalesPriceStore, NgProductsSalesPriceActions } from '@skysmack/ng-products-pricings';
 import { NgProductsSalesPriceFieldsConfig } from '../../ng-products-sales-price-fields-config';
 import { RecordFormComponent } from '@skysmack/portal-fields';
 import { NgProductsActions } from '@skysmack/ng-products';

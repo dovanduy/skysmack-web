@@ -157,6 +157,9 @@
     },
     "ng-products": {
       "tags": []
+    },
+    "ng-products-pricings": {
+      "tags": []
     }
   }
 }

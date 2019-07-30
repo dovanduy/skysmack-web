@@ -117,6 +117,9 @@
       ],
       "@skysmack/ng-products": [
         "libs/ng-packages/ng-products/src/public_api.ts"
+      ],
+      "@skysmack/ng-products-pricings": [
+        "libs/ng-packages/ng-products-pricings/src/public_api.ts"
       ]
     }
   },

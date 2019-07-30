@@ -4,7 +4,7 @@ import { NgProductTypesActions } from '@skysmack/ng-products';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EditorNavService } from '@skysmack/portal-ui';
-import { NgProductTypePriceChangesStore, NgProductTypePriceChangesActions } from '@skysmack/ng-packages';
+import { NgProductTypePriceChangesStore, NgProductTypePriceChangesActions } from '@skysmack/ng-products-pricings';
 import { NgProductTypePriceChangesFieldsConfig } from '../../ng-product-type-price-changes-fields-config';
 import { RecordFormComponent } from '@skysmack/portal-fields';
 

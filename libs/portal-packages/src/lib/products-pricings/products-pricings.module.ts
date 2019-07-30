@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { HttpClientModule } from '@angular/common/http';
-import { NgProductsPricingsModule } from '@skysmack/ng-packages';
+import { NgProductsPricingsModule } from '@skysmack/ng-products-pricings';
 import { PortalUiModule } from '@skysmack/portal-ui';
 import { LanguageService } from '@skysmack/portal-ui';
 import { ProductsPricingsRoutingModule } from './products-pricings-routing.module';
