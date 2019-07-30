@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { AccessPolicyRule, ACCESS_POLICY_RULES_AREA_KEY } from '@skysmack/packages-skysmack-core';
-import { AccessPolicyRulesValidation } from '../../../../../ng-packages/ng-access-policies/src/lib';
 import { LoadedPackage } from '@skysmack/ng-framework';
 import { FormRule, Field, SelectField } from '@skysmack/ng-dynamic-forms';
 import { FieldProviders, FieldsConfig } from '@skysmack/ng-fields';
 import { CheckboxFieldComponent, SelectFieldComponent, HiddenFieldComponent } from '@skysmack/portal-fields';
+import { AccessPolicyRulesValidation } from '@skysmack/ng-access-policies';
 
 @Injectable({ providedIn: 'root' })
 export class NgAccessPolicyRulesFieldsConfig extends FieldsConfig<AccessPolicyRule, number> {

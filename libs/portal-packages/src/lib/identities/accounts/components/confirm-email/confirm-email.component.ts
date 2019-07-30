@@ -6,9 +6,9 @@ import { AccountAppState } from '@skysmack/packages-identities';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { switchMap, take } from 'rxjs/operators';
-import { NgAccountRequests } from '@skysmack/ng-packages';
-import { NgConfirmEmailFieldsConfig } from '../../ng-confirm-email-fields-config';
 import { BaseComponent } from '@skysmack/portal-fields';
+import { NgConfirmEmailFieldsConfig } from '../../ng-confirm-email-fields-config';
+import { NgAccountRequests } from '@skysmack/ng-identities';
 
 @Component({
   selector: 'skysmack-confirm-email',

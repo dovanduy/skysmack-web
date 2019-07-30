@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { NgAccessPolicyRulesActions, NgAccessPolicyRulesStore } from '../../../../../../../ng-packages/ng-access-policies/src/lib';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EditorNavService } from '@skysmack/portal-ui';
 import { AccessPolicyRulesAppState, AccessPolicyRule } from '@skysmack/packages-skysmack-core';
 import { NgAccessPolicyRulesFieldsConfig } from '../../ng-access-policy-rules-fields-config';
 import { RecordFormComponent } from '@skysmack/portal-fields';
+import { NgAccessPolicyRulesActions, NgAccessPolicyRulesStore } from '@skysmack/ng-access-policies';
 
 @Component({
   selector: 'ss-access-policy-rules-create',

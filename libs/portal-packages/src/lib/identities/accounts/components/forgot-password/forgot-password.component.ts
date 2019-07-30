@@ -6,7 +6,7 @@ import { AccountAppState } from '@skysmack/packages-identities';
 import { EditorNavService } from '@skysmack/portal-ui';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
-import { NgAccountRequests } from '@skysmack/ng-packages';
+import { NgAccountRequests } from '@skysmack/ng-identities';
 import { map, take } from 'rxjs/operators';
 import { BaseComponent } from '@skysmack/portal-fields';
 

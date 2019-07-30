@@ -4,7 +4,7 @@ import { LocalObject } from '@skysmack/framework';
 
 import { LoadedPackage } from '@skysmack/ng-framework';
 import { ACCOUNTS_AREA_KEY, ConfirmEmail } from '@skysmack/packages-identities';
-import { NgConfirmEmailValidation } from '@skysmack/ng-packages';
+import { NgConfirmEmailValidation } from '@skysmack/ng-identities';
 import { FormRule, Field } from '@skysmack/ng-dynamic-forms';
 import { FieldsConfig, FieldProviders } from '@skysmack/ng-fields';
 import { EmailFieldComponent, StringFieldComponent } from '@skysmack/portal-fields';

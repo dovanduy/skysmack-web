@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { FormRule, Field } from '@skysmack/ng-dynamic-forms';
 import { LocalObject } from '@skysmack/framework';
 import { SignInSettings } from '@skysmack/packages-identities';
-import { NgSignInSettingsValidation } from '@skysmack/ng-packages';
+import { NgSignInSettingsValidation } from '@skysmack/ng-identities';
 import { LoadedPackage } from '@skysmack/ng-framework';
 import { OAUTH2_AREA_KEY } from '@skysmack/packages-oauth2';
 import { FieldsConfig, FieldProviders } from '@skysmack/ng-fields';

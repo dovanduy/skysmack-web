@@ -3,7 +3,7 @@ import { SubscriptionHandler, PagedQuery, Package } from '@skysmack/framework';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { map, tap } from 'rxjs/operators';
 import { MatSelectChange } from '@angular/material/select';
-import { NgRolesStore, NgRolesActions } from '@skysmack/ng-packages';
+import { NgRolesStore, NgRolesActions } from '@skysmack/ng-identities';
 
 @Component({
   selector: 'ss-roles-select',

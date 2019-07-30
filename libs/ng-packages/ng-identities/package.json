@@ -23,6 +23,6 @@
   ],
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1",
-    "build": "ng build ng-packages"
+    "build": "ng build ng-identities"
   }
 }
