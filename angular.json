@@ -1294,9 +1294,7 @@
               "apps/web/web-commercial/src/favicon.ico",
               "apps/web/web-commercial/src/assets"
             ],
-            "styles": [
-              "apps/web/web-commercial/src/styles.scss"
-            ],
+            "styles": ["apps/web/web-commercial/src/styles.scss"],
             "scripts": []
           },
           "configurations": {
@@ -1350,10 +1348,7 @@
               "apps/web/web-commercial/tsconfig.app.json",
               "apps/web/web-commercial/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/web/web-commercial/**"
-            ]
+            "exclude": ["**/node_modules/**", "!apps/web/web-commercial/**"]
           }
         },
         "test": {
@@ -1388,10 +1383,7 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": "apps/web/web-commercial-e2e/tsconfig.e2e.json",
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/web/web-commercial-e2e/**"
-            ]
+            "exclude": ["**/node_modules/**", "!apps/web/web-commercial-e2e/**"]
           }
         }
       }
@@ -1421,6 +1413,40 @@
             "jestConfig": "libs/commercial-packages/commercial-account/jest.config.js",
             "tsConfig": "libs/commercial-packages/commercial-account/tsconfig.spec.json",
             "setupFile": "libs/commercial-packages/commercial-account/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "ng-packages-ng-invoices-cash-payments": {
+      "projectType": "library",
+      "root": "libs/ng-packages/ng-invoices-cash-payments",
+      "sourceRoot": "libs/ng-packages/ng-invoices-cash-payments/src",
+      "prefix": "skysmack",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/ng-packages/ng-invoices-cash-payments/tsconfig.lib.json",
+              "libs/ng-packages/ng-invoices-cash-payments/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/ng-packages/ng-invoices-cash-payments/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/ng-packages/ng-invoices-cash-payments/jest.config.js",
+            "tsConfig": "libs/ng-packages/ng-invoices-cash-payments/tsconfig.spec.json",
+            "setupFile": "libs/ng-packages/ng-invoices-cash-payments/src/test-setup.ts"
           }
         }
       },

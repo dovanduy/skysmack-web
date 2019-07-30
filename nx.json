@@ -110,6 +110,12 @@
     "portal-shared-portal-fields": {
       "tags": []
     },
+    "web-commercial-e2e": {
+      "tags": []
+    },
+    "web-commercial": {
+      "tags": []
+    },
     "ng-access-policies": {
       "tags": []
     },
@@ -125,10 +131,7 @@
     "ng-invoices": {
       "tags": []
     },
-    "web-commercial-e2e": {
-      "tags": []
-    },
-    "web-commercial": {
+    "ng-invoices-cash-payments": {
       "tags": []
     }
   }

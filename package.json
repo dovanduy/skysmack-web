@@ -98,8 +98,8 @@
     "swagger-ui": "3.23.2"
   },
   "devDependencies": {
-    "@nrwl/cypress": "8.2.0",
     "jest-preset-angular": "7.1.1",
+    "@nrwl/cypress": "8.2.0",
     "@angular/compiler-cli": "8.1.2",
     "@angular/language-service": "8.1.2",
     "@angular-devkit/build-angular": "0.801.2",
