@@ -103,6 +103,9 @@
       ],
       "@skysmack/ng-access-policies": [
         "libs/ng-packages/ng-access-policies/src/public_api.ts"
+      ],
+      "@skysmack/commercial-account": [
+        "libs/commercial-packages/commercial-account/src/public_api.ts"
       ]
     }
   },
