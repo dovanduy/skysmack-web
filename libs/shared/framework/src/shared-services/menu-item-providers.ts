@@ -7,12 +7,11 @@ export class MenuItemProviders {
     private register = {};
 
     public add(provider: MenuItemProvider): MenuItemProviders {
-        const fpName = Object.getPrototypeOf(provider).constructor.name;
-        const registered = this.register[fpName];
+        const registered = this.register[provider.id];
         if (!registered) {
             this.providers.push(provider);
             this.providers$.next(this.providers);
-            this.register[fpName] = fpName;
+            this.register[provider.id] = provider.id;
         }
 
         return this;

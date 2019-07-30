@@ -1,10 +1,12 @@
 <ng-container *ngIf="packagesLoaded; else loading">
-  <p>404</p>
+  <div class="error-page">
+    <h1>Not found (404)</h1>
+    <mat-icon [inline]="true">help_outline</mat-icon>
+  </div>
 </ng-container>
 
 <ng-template #loading>
-  <div id="loading-screen">
+  <div class="loading-screen">
     <!-- <mat-spinner></mat-spinner>  -->
-    I'm the second stand-in spinner!
   </div>
 </ng-template>

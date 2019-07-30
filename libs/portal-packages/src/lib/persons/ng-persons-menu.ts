@@ -22,45 +22,49 @@ export class NgPersonsMenu extends SidebarMenu {
         this.setPrimaryMenu();
         this.setSpeedDialMenu();
         this.runMenuItemProviders();
+
     }
 
     public setPrimaryMenu() {
-        this.primaryMenuAreas.push(new MenuArea({
-            area: 'actions',
-            translationPrefix: this.translationPrefix,
-            order: 1,
-        }));
-        this.primaryMenuAreas.push(new MenuArea({
-            area: 'manage',
-            translationPrefix: this.translationPrefix,
-            order: 2,
-        }));
+        this.addToPrimaryMenuAreas([
+            new MenuArea({
+                area: 'actions',
+                translationPrefix: this.translationPrefix,
+                order: 1,
+            }),
+            new MenuArea({
+                area: 'manage',
+                translationPrefix: this.translationPrefix,
+                order: 2,
+            })
+        ]);
 
-        this.primaryMenuItems.push(new MenuItem({
-            url: 'create',
-            displayName: this.translationPrefix + 'CREATE',
-            area: 'actions',
-            order: 1,
-            icon: 'groupAdd',
-            permissions: [
-                PersonsPermissions.addPersons
-            ]
-        }));
-        this.primaryMenuItems.push(new MenuItem({
-            url: 'fields',
-            displayName: this.translationPrefix + 'FIELDS',
-            area: 'manage',
-            order: 2,
-            icon: 'shortText',
-            permissions: [
-                PersonsPermissions.findPersonsFields
-            ]
-        }));
-
+        this.addToPrimaryMenuItems([
+            new MenuItem({
+                url: 'create',
+                displayName: this.translationPrefix + 'CREATE',
+                area: 'actions',
+                order: 1,
+                icon: 'groupAdd',
+                permissions: [
+                    PersonsPermissions.addPersons
+                ]
+            }),
+            new MenuItem({
+                url: 'fields',
+                displayName: this.translationPrefix + 'FIELDS',
+                area: 'manage',
+                order: 2,
+                icon: 'shortText',
+                permissions: [
+                    PersonsPermissions.findPersonsFields
+                ]
+            })
+        ]);
     }
 
     public setSpeedDialMenu() {
-        this.speedDialMenuItems = [
+        this.addToSpeedDialMenuItems([
             new MenuItem({
                 url: 'create',
                 displayName: this.translationPrefix + 'CREATE',
@@ -71,6 +75,6 @@ export class NgPersonsMenu extends SidebarMenu {
                     PersonsPermissions.addPersons
                 ]
             })
-        ];
+        ]);
     }
 }

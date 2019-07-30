@@ -53,13 +53,13 @@
                     transition: font-size .16s ease;
                     font-size: .8rem;
                     font-weight: 400;
-                    text-transform: uppercase;
+                    // text-transform: uppercase;
                     letter-spacing: .9px;
                 }
 
                 &:hover {
                     text-decoration: none;
-                    color: #476364;
+                    color: map-get($map: $mat-skysmack, $key: dark);
 
                     .app-icon {
                         margin: .25rem 1.5rem .25rem 1.5rem;
@@ -78,7 +78,7 @@
 
         &.docker {
             align-self: flex-end;
-            background-color: #EFF2F2;
+            background-color: $lighter;
             max-height: 50%;
             padding-bottom: 56px;
         }

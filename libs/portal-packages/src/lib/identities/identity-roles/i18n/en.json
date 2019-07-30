@@ -16,7 +16,8 @@
             "SECURITY_AND_USERS": "Users and security",
             "ROLES": "Roles",
             "BACK": "Back",
-            "FIELDS_TITLE": "(fields)"
+            "FIELDS_TITLE": "(fields)",
+            "TITLE_EXTRAS": "(roles)"
         },
         "FORM": {
             "LABELS": {

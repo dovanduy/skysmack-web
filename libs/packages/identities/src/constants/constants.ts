@@ -17,3 +17,8 @@ export const ACCOUNTS_REDUCER_KEY = 'accounts';
 export const ACCOUNTS_AREA_KEY = 'accounts'; // validation, store, menu
 export const ACCOUNTS_REDUX_KEY = 'ACCOUNTS_'; // reducer prefix, action, epics, Requests
 export const ACCOUNTS_ADDITIONAL_PATHS = []; // actions, requests
+
+export const APPLICATIONS_REDUCER_KEY = 'applications';
+export const APPLICATIONS_AREA_KEY = 'applications'; // validation, store, menu
+export const APPLICATIONS_REDUX_KEY = 'ACCOUNTS_'; // reducer prefix, action, epics, Requests
+export const APPLICATIONS_ADDITIONAL_PATHS = ['applications']; // actions, requests

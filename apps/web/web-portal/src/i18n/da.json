@@ -186,10 +186,7 @@
 		},
 		"INDEX": {
 			"ACTIONS": "Handlinger",
-			"MANAGE": "Konfigurer",
-			"CHANGE_PASSWORD": "Skift kodeord",
-			"FORGOT_PASSWORD": "Glemt password",
-			"CONFIRM_EMAIL": "Bekræft email"
+			"MANAGE": "Konfigurer"
 		},
 		"NOTIFICATIONS": {},
 		"QUEUE": {}
@@ -199,9 +196,14 @@
 			"ROLES": "Roller",
 			"USERS": "Brugere",
 			"ACCOUNTS": "Bruger kontier",
+			"APPLICATIONS": "Applikationer",
 			"USERS_ROLES_TITLE": "Bruger roller",
 			"MANAGE": "Konfigurer",
 			"SETTINGS": "Indstillinger",
+			"ACCOUNT": "Bruger konto",
+			"CHANGE_PASSWORD": "Skift kodeord",
+			"FORGOT_PASSWORD": "Glemt kodeord",
+			"CONFIRM_EMAIL": "Bekræft email",
 			"AVAILABLE_SETTINGS": {
 				"LOCKOUT": "Lås ude",
 				"USER": "Brugere",
@@ -269,7 +271,8 @@
 			"SECURITY_AND_USERS": "Brugere og sikkerhed",
 			"ROLES": "Roller",
 			"BACK": "Tilbage",
-			"FIELDS_TITLE": "(felter)"
+			"FIELDS_TITLE": "(felter)",
+			"TITLE_EXTRAS": "(roller)"
 		},
 		"FORM": {
 			"LABELS": {
@@ -362,7 +365,8 @@
 			"BACK": "Tilbage",
 			"ENTITY_ACTION_SET_PASSWWORD": "Sæt adgangskode",
 			"ENTITY_ACTION_ROLES": "Roller",
-			"FIELDS_TITLE": "(felter)"
+			"FIELDS_TITLE": "(felter)",
+			"TITLE_EXTRAS": "(brugere)"
 		},
 		"ROLES": {
 			"CURRENT_ROLES": "{{ object.email }} nuværende roller",
@@ -2083,9 +2087,9 @@
 			"TYPES": "Typer"
 		},
 		"PAY": {
-            "TITLE": "Kreditkort betaling",
-            "BUTTON_PAY": "Betal"
-        },
+			"TITLE": "Kreditkort betaling",
+			"BUTTON_PAY": "Betal"
+		},
 		"QUEUE": {
 			"ADDING": "Tilføjer terminal {{ id }}",
 			"UPDATING": "Opdatere terminal {{ id }}",
@@ -2135,7 +2139,7 @@
 			"DETAILS": "Detaljer"
 		},
 		"RECORDS_CONTAINER": {
-			"LOADED": "Hentet {{ value }} ud af"
+			"LOADED": "Hentet {{ loadedCount }} ud af {{ totalCount }}"
 		},
 		"BUTTONS": {
 			"BUTTON_ADD": "Tilføj",
@@ -2686,6 +2690,88 @@
 		"ADD_PRODUCTS": {
 			"TITLE": "Tilføj produkter",
 			"SUBMIT": "Opdater"
+		}
+	},
+	"APPLICATIONS": {
+		"CREATE": {
+			"CREATE_APPLICATION": "Opret ny applikation",
+			"BUTTON_CREATE": "Opret"
+		},
+		"EDIT": {
+			"EDITING": "Ret {{ displayName }}",
+			"BUTTON_EDIT": "Opdater"
+		},
+		"INDEX": {
+			"ACTIONS": "Handlinger",
+			"CREATE": "Opret",
+			"MANAGE": "Konfigurer",
+			"TITLE_EXTRAS": "(applikationer)",
+			"APPLICATIONS": "Applikationer",
+			"BACK": "Tilbage"
+		},
+		"FORM": {
+			"LABELS": {
+				"CLIENTID": "Klient id",
+				"CLIENTSECRET": "Klient hemmelighed",
+				"CONCURRENCYTOKEN": "Concurrency token",
+				"CONSENTTYPE": "Samtykke type",
+				"DISPLAYNAME": "Visningsnavn",
+				"PERMISSIONS": "Tilladelser",
+				"POSTLOGOUTREDIRECTURIS": "Vidersendelses uris til efter logout",
+				"PROPERTIES": "Egenskaber",
+				"REDIRECTURIS": "Vidersendelses uris",
+				"TYPE": "Type"
+			},
+			"PLACEHOLDERS": {
+				"CLIENTID": "Klient id",
+				"CLIENTSECRET": "Klient hemmelighed",
+				"CONCURRENCYTOKEN": "Concurrency token",
+				"CONSENTTYPE": "Samtykke type",
+				"DISPLAYNAME": "Visningsnavn",
+				"PERMISSIONS": "Tilladelser",
+				"POSTLOGOUTREDIRECTURIS": "Vidersendelses uris til efter logout",
+				"PROPERTIES": "Egenskaber",
+				"REDIRECTURIS": "Vidersendelses uris",
+				"TYPE": "Type"
+			},
+			"VALIDATION": {
+				"CLIENTID": {
+					"REQUIRED": "Klient id er påkrævet"
+				},
+				"CLIENTSECRET": {
+                    "REQUIRED": "Klient hemmelighed is required"
+                },
+				"CONCURRENCYTOKEN": {
+					"REQUIRED": "Concurrency token er påkrævet"
+				},
+				"CONSENTTYPE": {
+					"REQUIRED": "Samtykke type er påkrævet"
+				},
+				"DISPLAYNAME": {
+					"REQUIRED": "Visningsnavn er påkrævet"
+				},
+				"PERMISSIONS": {
+					"REQUIRED": "Tilladekser er påkrævet"
+				},
+				"POSTLOGOUTREDIRECTURIS": {
+					"REQUIRED": "Vidersendelses uris til efter logout er påkrævet"
+				},
+				"PROPERTIES": {
+					"REQUIRED": "Egenskaber er påkrævet"
+				},
+				"REDIRECTURIS": {
+					"REQUIRED": "Vidersendelses uris er påkrævet"
+				},
+				"TYPE": {
+					"REQUIRED": "Type er påkrævet"
+				}
+			}
+		},
+		"QUEUE": {
+			"ADDING": "Tilføjer {{ displayName }}",
+			"UPDATING": "Opdaterer {{ displayName }}",
+			"DELETING": "Sletter {{ displayName }}",
+			"ERROR": "En fejl er opstået med applikation {{ displayName }}. Ret fejlene og prøv igen."
 		}
 	}
 }

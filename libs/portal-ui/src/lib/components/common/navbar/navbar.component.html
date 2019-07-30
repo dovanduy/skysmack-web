@@ -1,11 +1,11 @@
 <nav *ngIf="skysmack$ | async as skysmack" class="docs-navbar-header">
   <!-- APP DRAWER -->
-  <a class="link" mat-icon-button (click)="uiStore.toggleMenuFor('drawer')" title="{{ 'UI.TOP_BAR.PACKAGES'| translate}}">
-      <mat-icon aria-label="Open packages">apps</mat-icon>
-    </a>
+  <a class="link" mat-icon-button (click)="uiStore.toggleMenuFor('drawer')"
+    title="{{ 'UI.TOP_BAR.PACKAGES'| translate}}">
+    <mat-icon aria-label="Open packages">apps</mat-icon>
+  </a>
 
-  <a mat-button class="link" routerLink="/" (click)="uiStore.setPackageDrawerStatus(false)"
-    aria-label="Skysmack">
+  <a mat-button class="link" routerLink="/" (click)="uiStore.setPackageDrawerStatus(false)" aria-label="Skysmack">
     <span>{{ skysmack.name }}</span>
   </a>
 
@@ -23,7 +23,7 @@
     <mat-icon>search</mat-icon>
   </button>
   <div *ngIf="menu$ | async as menu" class="search-bar" [ngClass]="{ 'open' : menu.search }">
-      <input type="text" [placeholder]="'UI.TOP_BAR.SEARCH' | translate" class="search-field" />
+    <input type="text" [placeholder]="'UI.TOP_BAR.SEARCH' | translate" class="search-field" />
   </div>
 
   <!-- CHAT -->
@@ -49,45 +49,65 @@
   <!-- LANGUAGE -->
   <ss-language-select></ss-language-select>
 
-  <!-- LOGIN -->
-  <ng-container *ngIf="authenticationPackages$ | async as authPackages">
-    <!-- Single auth package -->
-    <ng-container *ngIf="authPackages.length === 1">
-      <a class="link" mat-icon-button title="Account Menu" [routerLink]="[authPackages[0].path]"
-        (click)="uiStore.setPackageDrawerStatus(false)" *isAnonymous>
-        <mat-icon aria-label="authPackages[0].description">account_circle</mat-icon>
-      </a>
-    </ng-container>
+  <!-- PROVIDED MENUS -->
+  <ng-container *ngFor="let menuAreaItem of menuAreaItems$ | async; let last = last;">
+    <nav *ngIf="menuAreaItem.items && menuAreaItem.items.length > 0">
+      <!-- SINGLE MENU ITEM -->
+      <ng-container *ngIf="menuAreaItem.items.length === 1">
+        <!-- ACTION EVENT -->
+        <ng-container *ngIf="menuAreaItem.items[0].isActionEvent && menuAreaItem.items[0]">
+          <a class="link" mat-icon-button [title]="menuAreaItem.items[0].displayName | translate"
+            (click)="uiStore.setPackageDrawerStatus(false); actionEvent({ action: menuAreaItem.items[0].action, _this: menuAreaItem.items[0]._this })">
+            <mat-icon aria-label="menuAreaItem.items[0].displayName | translate">{{ menuAreaItem.items[0].icon }}
+            </mat-icon>
+          </a>
+        </ng-container>
 
-    <!-- Multiple auth package -->
-    <ng-container *ngIf="authPackages.length > 1">
-      <ng-container *isAnonymous>
-        <button class="link" mat-icon-button [matMenuTriggerFor]="loginMenu">
-          <mat-icon>account_circle</mat-icon>
+        <!-- URL EVENT -->
+        <ng-container *ngIf="!menuAreaItem.items[0].isActionEvent">
+          <a class="link" mat-icon-button [title]="menuAreaItem.items[0].displayName | translate"
+            [routerLink]="[menuAreaItem.items[0].url]" (click)="uiStore.setPackageDrawerStatus(false)">
+            <mat-icon aria-label="menuAreaItem.items[0].displayName | translate">{{ menuAreaItem.items[0].icon }}
+            </mat-icon>
+          </a>
+        </ng-container>
+      </ng-container>
+
+      <!-- MULTIPLE MENU ITEMS -->
+      <ng-container *ngIf="menuAreaItem.items.length > 1">
+
+        <!-- SHOW MAT MENU -->
+        <button class="link" mat-icon-button [matMenuTriggerFor]="areaMenu">
+          <mat-icon>{{ menuAreaItem.area.icon }}</mat-icon>
         </button>
-        <mat-menu overlapTrigger="false" #loginMenu="matMenu">
-          <ng-container *ngFor="let authPackage of authPackages">
-            <button mat-menu-item [routerLink]="['/' + authPackage.path]" title="Account Menu" *isAnonymous>
-              {{ authPackage.name }}
-            </button>
+
+        <mat-menu overlapTrigger="false" #areaMenu="matMenu">
+          <ng-container *ngFor="let menuItem of menuAreaItem.items">
+            <ng-container *ngIf="menuItem.area === menuAreaItem.area.area">
+
+              <!-- ACTION EVENT -->
+              <ng-container *ngIf="menuItem.isActionEvent && menuItem">
+                <button mat-menu-item
+                  (click)="uiStore.setPackageDrawerStatus(false); actionEvent({ action: menuItem.action, _this: menuItem._this })"
+                  [title]="menuItem.displayName | translate">
+                  {{ menuItem.displayName | translate }}
+                </button>
+              </ng-container>
+
+              <!-- URL EVENT -->
+              <ng-container *ngIf="!menuItem.isActionEvent && menuItem.display">
+                <button mat-menu-item [routerLink]="[menuItem.url]" (click)="uiStore.setPackageDrawerStatus(false)"
+                  [title]="menuItem.displayName | translate">
+                  {{ menuItem.displayName | translate }}
+                </button>
+              </ng-container>
+
+            </ng-container>
           </ng-container>
         </mat-menu>
       </ng-container>
-    </ng-container>
-  </ng-container>
 
-
-  <!-- ACCOUNT -->
-  <ng-container *isAuthenticated>
-    <button class="link" mat-icon-button [matMenuTriggerFor]="accountMenu">
-      <mat-icon>account_circle</mat-icon>
-    </button>
-    <mat-menu overlapTrigger="false" #accountMenu="matMenu">
-      <button mat-menu-item *ngFor="let accountPackage of accountPackages$ | async"
-        [routerLink]="['/' + accountPackage.path]">{{ accountPackage.name }}</button>
-      <button mat-menu-item class="non-anchor" (click)="logout()" [routerLink]="['/']">{{
-        'UI.TOP_BAR.LOG_OUT'| translate }}</button>
-    </mat-menu>
+    </nav>
   </ng-container>
 </nav>
 

@@ -6,7 +6,7 @@ import { LocalObject, LocalPage, PagedQuery, LoadingState, linq, DisplayColumn, 
 import { Observable, BehaviorSubject, combineLatest, of } from 'rxjs';
 import { OnInit } from '@angular/core';
 import { Record } from '@skysmack/framework';
-import { map, switchMap, distinctUntilChanged, tap } from 'rxjs/operators';
+import { map, switchMap, distinctUntilChanged } from 'rxjs/operators';
 import { EntityFieldsConfig } from '@skysmack/ng-fields';
 import { EntityComponentPageTitle } from '@skysmack/portal-ui';
 import { MenuItemActionProviders } from '@skysmack/portal-ui';

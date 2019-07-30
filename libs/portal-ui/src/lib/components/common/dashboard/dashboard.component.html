@@ -1,0 +1,8 @@
+<div class="grid">
+    <ng-container *ngFor="let dashboard of dashboards$ | async">
+        <div class="grid-item" *ngIf="dashboard.render$ | async as render"
+            [ngClass]="{'hidden': !(dashboard.show$ | async) }">
+            <ss-dashboard-loader [dashboard]="dashboard"></ss-dashboard-loader>
+        </div>
+    </ng-container>
+</div>

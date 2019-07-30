@@ -24,36 +24,38 @@ export class NgAssignmentAllMenu extends SidebarMenu {
     }
 
     public setPrimaryMenu() {
-        this.primaryMenuAreas.push(new MenuArea({
-            area: 'manage',
-            translationPrefix: this.translationPrefix,
-            order: 1,
-        }));
+        this.addToPrimaryMenuAreas([
+            new MenuArea({
+                area: 'manage',
+                translationPrefix: this.translationPrefix,
+                order: 1,
+            })
+        ]);
 
-        this.primaryMenuItems.push(new MenuItem({
-            url: 'assignments',
-            displayName: this.translationPrefix + 'SINGLE_ASSIGNMENTS',
-            area: 'manage',
-            order: 2,
-            icon: 'groupAdd',
-            permissions: [
-                MaintenancePermissions.findAssignments
-            ]
-        }));
-        this.primaryMenuItems.push(new MenuItem({
-            url: 'assignments/recurring',
-            displayName: this.translationPrefix + 'RECURRING_ASSIGNMENTS',
-            area: 'manage',
-            order: 3,
-            icon: 'shortText',
-            permissions: [
-                MaintenancePermissions.findRecurringAssignments
-            ]
-        }));
+        this.addToPrimaryMenuItems([
+            new MenuItem({
+                url: 'assignments',
+                displayName: this.translationPrefix + 'SINGLE_ASSIGNMENTS',
+                area: 'manage',
+                order: 2,
+                icon: 'groupAdd',
+                permissions: [
+                    MaintenancePermissions.findAssignments
+                ]
+            }),
+            new MenuItem({
+                url: 'assignments/recurring',
+                displayName: this.translationPrefix + 'RECURRING_ASSIGNMENTS',
+                area: 'manage',
+                order: 3,
+                icon: 'shortText',
+                permissions: [
+                    MaintenancePermissions.findRecurringAssignments
+                ]
+            })
+        ]);
     }
 
     public setSpeedDialMenu() {
-        this.speedDialMenuItems = [
-        ];
     }
 }

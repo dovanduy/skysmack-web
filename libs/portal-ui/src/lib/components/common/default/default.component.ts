@@ -19,8 +19,8 @@ export class DefaultComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.packagePath = this.router.url.split('/')[1];
+    this.skysmackActions.getPermissions(this.packagePath);
     this.signalR.instance.join(this.packagePath);
-    this.skysmackActions.getPermissions(this.packagePath)
   }
 
   ngOnDestroy() {

@@ -1,4 +1,6 @@
-﻿html, body {
+﻿@import '../includes';
+
+html, body {
     height: 100%;
     padding: 0;
     margin: 0;
@@ -10,3 +12,12 @@
 
 .selectable::-moz-selection, input::-moz-selection, textarea::-moz-selection{ background-color: #BBC9C9; color: #000 }
 .selectable::selection, input::selection, textarea::selection { background-color: #BBC9C9; color: #000 }
+
+a {
+    color: mat-color($accent);
+    text-decoration: none;
+    
+    &:hover, &:active {
+        color: mat-color($accent, darker);
+    }
+}

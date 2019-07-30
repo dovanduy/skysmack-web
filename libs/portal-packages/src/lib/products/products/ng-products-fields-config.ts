@@ -34,7 +34,8 @@ export class NgProductsFieldsConfig extends DocumentFieldsConfig<Product, number
                 key: 'name',
                 validators: [Validators.required],
                 order: 1,
-                showColumn: true
+                showColumn: true,
+                sortable: true
             }),
 
             new SelectField({
@@ -50,7 +51,8 @@ export class NgProductsFieldsConfig extends DocumentFieldsConfig<Product, number
                     displayName: 'None'
                 }],
                 order: 1,
-                showColumn: true
+                showColumn: true,
+                sortable: true
             }),
         ];
 

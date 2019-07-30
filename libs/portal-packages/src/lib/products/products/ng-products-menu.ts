@@ -1,4 +1,4 @@
-import { Injectable, Inject } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { SidebarMenu } from '@skysmack/portal-ui';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
@@ -24,61 +24,63 @@ export class NgProductsMenu extends SidebarMenu {
     }
 
     public setPrimaryMenu() {
-        this.primaryMenuAreas.push(new MenuArea({
-            area: 'actions',
-            translationPrefix: this.translationPrefix,
-            order: 1,
-        }));
-        this.primaryMenuAreas.push(new MenuArea({
-            area: 'manage',
-            translationPrefix: this.translationPrefix,
-            order: 2,
-        }));
+        this.addToPrimaryMenuAreas([
+            new MenuArea({
+                area: 'actions',
+                translationPrefix: this.translationPrefix,
+                order: 1,
+            }),
+            new MenuArea({
+                area: 'manage',
+                translationPrefix: this.translationPrefix,
+                order: 2,
+            })
+        ]);
 
-        this.primaryMenuItems.push(new MenuItem({
-            url: 'create',
-            displayName: this.translationPrefix + 'CREATE',
-            area: 'actions',
-            order: 1,
-            icon: 'groupAdd',
-            permissions: [
-                ProductsPermissions.addProducts
-            ]
-        }));
-        this.primaryMenuItems.push(new MenuItem({
-            url: 'types',
-            displayName: this.translationPrefix + 'TYPES',
-            area: 'manage',
-            order: 2,
-            icon: 'description',
-            permissions: [
-                ProductsPermissions.findProductTypes
-            ]
-        }));
-        this.primaryMenuItems.push(new MenuItem({
-            url: 'fields',
-            displayName: this.translationPrefix + 'FIELDS',
-            area: 'manage',
-            order: 2,
-            icon: 'shortText',
-            permissions: [
-                ProductsPermissions.findProductsFields
-            ]
-        }));
-    }
-
-    public setSpeedDialMenu() {
-        this.speedDialMenuItems = [
+        this.addToPrimaryMenuItems([
             new MenuItem({
                 url: 'create',
                 displayName: this.translationPrefix + 'CREATE',
-                area: undefined,
+                area: 'actions',
                 order: 1,
-                icon: 'add',
+                icon: 'groupAdd',
                 permissions: [
                     ProductsPermissions.addProducts
                 ]
             }),
-        ];
+            new MenuItem({
+                url: 'types',
+                displayName: this.translationPrefix + 'TYPES',
+                area: 'manage',
+                order: 2,
+                icon: 'description',
+                permissions: [
+                    ProductsPermissions.findProductTypes
+                ]
+            }),
+            new MenuItem({
+                url: 'fields',
+                displayName: this.translationPrefix + 'FIELDS',
+                area: 'manage',
+                order: 2,
+                icon: 'shortText',
+                permissions: [
+                    ProductsPermissions.findProductsFields
+                ]
+            })
+        ]);
+    }
+
+    public setSpeedDialMenu() {
+        this.addToSpeedDialMenuItems(new MenuItem({
+            url: 'create',
+            displayName: this.translationPrefix + 'CREATE',
+            area: undefined,
+            order: 1,
+            icon: 'add',
+            permissions: [
+                ProductsPermissions.addProducts
+            ]
+        }));
     }
 }

@@ -13,3 +13,5 @@ export * from './speed-dial-fab/speed-dial-fab.component';
 export * from './queue/queue.component';
 export * from './records-container/records-container.component';
 export * from './default/default.component';
+export * from './dashboard/dashboard.component';
+export * from './dashboard-loader/dashboard-loader.component';

@@ -24,36 +24,27 @@ export class NgEmailsSmtpMenu extends SidebarMenu {
     }
 
     public setPrimaryMenu() {
-        this.primaryMenuAreas.push(new MenuArea({
-            area: 'manage',
-            translationPrefix: this.translationPrefix,
-            order: 2,
-        }));
+        this.addToPrimaryMenuAreas([
+            new MenuArea({
+                area: 'manage',
+                translationPrefix: this.translationPrefix,
+                order: 2,
+            })
+        ]);
 
-        this.primaryMenuItems.push(new MenuItem({
-            url: 'settings/smtp-client',
-            displayName: this.translationPrefix + 'SETTINGS',
-            area: 'manage',
-            order: 1,
-            icon: 'groupAdd',
-            permissions: []
-        }));
+        this.addToPrimaryMenuItems([
+            new MenuItem({
+                url: 'settings/smtp-client',
+                displayName: this.translationPrefix + 'SETTINGS',
+                area: 'manage',
+                order: 1,
+                icon: 'groupAdd',
+                permissions: []
+            })
+        ]);
 
         this.setBackButton({ connectedPackage: true }).addConnectedPackageMenuArea();
     }
 
-    public setSpeedDialMenu() {
-        this.speedDialMenuItems = [
-            // new MenuItem({
-            //     url: 'create',
-            //     displayName: this.translationPrefix + 'CREATE',
-            //     area: undefined,
-            //     order: 1,
-            //     icon: 'add',
-            //     permissions: [
-            //         EmailsPermissions.addEmails
-            //     ]
-            // }),
-        ];
-    }
+    public setSpeedDialMenu() { }
 }

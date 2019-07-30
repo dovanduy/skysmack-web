@@ -21,65 +21,67 @@ export class NgReservationsPricingsMenu extends SidebarMenu {
         this.setPrimaryMenu();
         this.setSpeedDialMenu();
         this.runMenuItemProviders();
+
     }
 
     public setPrimaryMenu() {
-        this.primaryMenuAreas.push(new MenuArea({
-            area: 'manage',
-            translationPrefix: this.translationPrefix,
-            order: 1,
-        }));
+        this.addToPrimaryMenuAreas([
+            new MenuArea({
+                area: 'manage',
+                translationPrefix: this.translationPrefix,
+                order: 1,
+            })
+        ]);
 
-        this.primaryMenuItems.push(new MenuItem({
-            url: 'reservation-price-changes',
-            displayName: this.translationPrefix + 'RESERVATION_PRICE_CHANGES',
-            area: 'manage',
-            order: 2,
-            icon: 'groupAdd',
-            permissions: [
-                ReservationsPricingsPermissions.findLodgingPriceChanges
-            ]
-        }));
+        this.addToPrimaryMenuItems([
+            new MenuItem({
+                url: 'reservation-price-changes',
+                displayName: this.translationPrefix + 'RESERVATION_PRICE_CHANGES',
+                area: 'manage',
+                order: 2,
+                icon: 'groupAdd',
+                permissions: [
+                    ReservationsPricingsPermissions.findLodgingPriceChanges
+                ]
+            }),
 
-        this.primaryMenuItems.push(new MenuItem({
-            url: 'prices',
-            displayName: this.translationPrefix + 'PRICES',
-            area: 'manage',
-            order: 2,
-            icon: 'groupAdd',
-            permissions: [
-                ReservationsPricingsPermissions.findLodgingPriceChanges
-            ]
-        }));
+            new MenuItem({
+                url: 'prices',
+                displayName: this.translationPrefix + 'PRICES',
+                area: 'manage',
+                order: 2,
+                icon: 'groupAdd',
+                permissions: [
+                    ReservationsPricingsPermissions.findLodgingPriceChanges
+                ]
+            }),
 
-        this.primaryMenuItems.push(new MenuItem({
-            url: 'types/reservation-price-changes',
-            displayName: this.translationPrefix + 'RESERVATION_PRICE_CHANGES_TYPES',
-            area: 'manage',
-            order: 3,
-            icon: 'shortText',
-            permissions: [
-                ReservationsPricingsPermissions.findLodgingTypePriceChanges
-            ]
-        }));
+            new MenuItem({
+                url: 'types/reservation-price-changes',
+                displayName: this.translationPrefix + 'RESERVATION_PRICE_CHANGES_TYPES',
+                area: 'manage',
+                order: 3,
+                icon: 'shortText',
+                permissions: [
+                    ReservationsPricingsPermissions.findLodgingTypePriceChanges
+                ]
+            }),
 
-
-        this.primaryMenuItems.push(new MenuItem({
-            url: 'types/prices',
-            displayName: this.translationPrefix + 'PRICES_TYPES',
-            area: 'manage',
-            order: 3,
-            icon: 'shortText',
-            permissions: [
-                ReservationsPricingsPermissions.findLodgingTypePriceChanges
-            ]
-        }));
+            new MenuItem({
+                url: 'types/prices',
+                displayName: this.translationPrefix + 'PRICES_TYPES',
+                area: 'manage',
+                order: 3,
+                icon: 'shortText',
+                permissions: [
+                    ReservationsPricingsPermissions.findLodgingTypePriceChanges
+                ]
+            })
+        ]);
 
         this.setBackButton({ connectedPackage: true }).addConnectedPackageMenuArea();
     }
 
     public setSpeedDialMenu() {
-        this.speedDialMenuItems = [
-        ];
     }
 }

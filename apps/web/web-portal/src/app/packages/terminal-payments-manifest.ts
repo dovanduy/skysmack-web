@@ -1,4 +1,4 @@
-import { TerminalPaymentsType } from '@skysmack/package-types';
+import { TerminalPaymentsType, TerminalPaymentsTypeId } from '@skysmack/package-types';
 import { PackageLoader, PackageManifest } from '@skysmack/ng-framework';
 import { Route } from '@angular/router';
 import { TenantPackageLoadStrategy } from '../start/tenant-package-load-strategy';
@@ -14,4 +14,4 @@ export function loadTerminalPaymentsPackage(packageLoader: PackageLoader) {
     return () => packageLoader.add(new TerminalPaymentsPackageManifest());
 }
 
-export const terminalPaymentsRoute = { path: TenantPackageLoadStrategy.URL_PREFIX + TerminalPaymentsPackageManifest.id, loadChildren: TerminalPaymentsPackageManifest.modulePath } as Route;
+export const terminalPaymentsRoute = { path: TenantPackageLoadStrategy.URL_PREFIX + TerminalPaymentsTypeId, loadChildren: TerminalPaymentsPackageManifest.modulePath } as Route;

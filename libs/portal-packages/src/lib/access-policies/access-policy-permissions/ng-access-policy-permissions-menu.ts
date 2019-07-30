@@ -1,4 +1,4 @@
-import { Injectable, Inject } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { SidebarMenu } from '@skysmack/portal-ui';
 import { MenuArea } from '@skysmack/framework';
@@ -25,42 +25,45 @@ export class NgAccessPolicyPermissionsMenu extends SidebarMenu {
     }
 
     public setPrimaryMenu() {
-        this.primaryMenuAreas.push(new MenuArea({
-            area: 'actions',
-            translationPrefix: this.translationPrefix,
-            order: 1,
-        }));
-        this.primaryMenuAreas.push(new MenuArea({
-            area: 'manage',
-            translationPrefix: this.translationPrefix,
-            order: 2,
-        }));
+        this.addToPrimaryMenuAreas([
+            new MenuArea({
+                area: 'actions',
+                translationPrefix: this.translationPrefix,
+                order: 1,
+            }),
+            new MenuArea({
+                area: 'manage',
+                translationPrefix: this.translationPrefix,
+                order: 2,
+            })
+        ]);
 
-        this.primaryMenuItems.push(new MenuItem({
-            url: 'create',
-            displayName: this.translationPrefix + 'CREATE',
-            area: 'actions',
-            order: 1,
-            icon: 'groupAdd',
-            permissions: [
-                AccessPoliciesPermissions.addPermissions
-            ]
-        }));
+        this.addToPrimaryMenuItems([
+            new MenuItem({
+                url: 'create',
+                displayName: this.translationPrefix + 'CREATE',
+                area: 'actions',
+                order: 1,
+                icon: 'groupAdd',
+                permissions: [
+                    AccessPoliciesPermissions.addPermissions
+                ]
+            })
+        ]);
+
         this.setBackButton({ customPath: '/access-policies' });
     }
 
     public setSpeedDialMenu() {
-        this.speedDialMenuItems = [
-            new MenuItem({
-                url: 'create',
-                displayName: this.translationPrefix + 'CREATE',
-                area: undefined,
-                order: 1,
-                icon: 'add',
-                permissions: [
-                    AccessPoliciesPermissions.addPermissions
-                ]
-            }),
-        ];
+        this.addToSpeedDialMenuItems(new MenuItem({
+            url: 'create',
+            displayName: this.translationPrefix + 'CREATE',
+            area: undefined,
+            order: 1,
+            icon: 'add',
+            permissions: [
+                AccessPoliciesPermissions.addPermissions
+            ]
+        }));
     }
 }

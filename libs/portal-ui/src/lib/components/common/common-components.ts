@@ -13,8 +13,10 @@ import { CardBodyComponent } from './card-body/card-body.component';
 import { DefaultComponent } from './default/default.component';
 import { PageHeaderComponent } from './page-header/page-header.component';
 import { SpeedDialFabComponent } from './speed-dial-fab/speed-dial-fab.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { DashboardLoaderComponent } from './dashboard-loader/dashboard-loader.component';
 
-export const commonComponents = [    
+export const commonComponents = [
     PageHeaderComponent,
     SpeedDialFabComponent,
     SidebarMenuComponent,
@@ -29,5 +31,7 @@ export const commonComponents = [
     BackendErrorsComponent,
     ContainerComponent,
     CardBodyComponent,
-    DefaultComponent
+    DefaultComponent,
+    DashboardComponent,
+    DashboardLoaderComponent
 ];

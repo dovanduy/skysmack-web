@@ -1,6 +1,6 @@
 import { Component, Input, ViewChild, OnInit, OnDestroy, ChangeDetectorRef, Output, EventEmitter } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
-import { Router, ActivatedRoute, NavigationStart, NavigationEnd } from '@angular/router';
+import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { SidebarMenu } from './../../../models/sidebar-menu/sidebar-menu';
 import { SubscriptionHandler } from '@skysmack/framework';
 import { EditorNavService } from './editor-nav.service';
@@ -19,6 +19,7 @@ const SMALL_WIDTH_BREAKPOINT = 720;
 })
 export class ContainerComponent implements OnInit, OnDestroy {
   @Input() public sidebarMenu: SidebarMenu;
+  @Input() public componentKey: string;
   @ViewChild(MatSidenav, { static: false }) public sidenav: MatSidenav;
   @ViewChild('editornav', { static: false }) public editornav: MatSidenav;
 
@@ -54,7 +55,7 @@ export class ContainerComponent implements OnInit, OnDestroy {
         } else {
           this.editorNavService.hideEditorNav();
         }
-      })      
+      })
     ).subscribe();
 
     if (this.activatedRoute.firstChild) {
@@ -100,13 +101,14 @@ export class ContainerComponent implements OnInit, OnDestroy {
         }
         if (!visible) {
           if (this.dialogRef) {
-            this.dialogRef.closeAll();
+            setTimeout(() => {
+              this.dialogRef.closeAll();
+            }, 0);
           }
         }
       })
     ).subscribe());
   }
-
 
   ngOnDestroy(): void {
     this.subscriptionHandler.unsubscribe();

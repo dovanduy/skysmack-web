@@ -1,16 +1,5 @@
 {
   "index": "/index.html",
-  "dataGroups": [
-    {
-      "name": "api",
-      "urls": ["https://*.skysmack.io/*"],
-      "cacheConfig": {
-        "maxSize": 0,
-        "maxAge": "0u",
-        "strategy": "freshness"
-      }
-    }
-  ],
   "assetGroups": [
     {
       "name": "app",
@@ -18,9 +7,7 @@
       "resources": {
         "files": [
           "/favicon.ico",
-          "/index.html",
-          "/*.css",
-          "/*.js"
+          "/index.html"
         ]
       }
     },
@@ -30,9 +17,22 @@
       "updateMode": "prefetch",
       "resources": {
         "files": [
+          "/*.css",
+          "/*.js",
           "/assets/**",
           "/*.(eot|svg|cur|jpg|png|webp|gif|otf|ttf|woff|woff2|ani)"
         ]
+      }
+    }
+  ],
+  "dataGroups": [
+    {
+      "name": "api",
+      "urls": ["https://*.skysmack.io/*"],
+      "cacheConfig": {
+        "maxSize": 0,
+        "maxAge": "0u",
+        "strategy": "freshness"
       }
     }
   ]

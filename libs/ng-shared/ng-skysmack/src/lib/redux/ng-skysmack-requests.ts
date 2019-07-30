@@ -18,11 +18,15 @@ export class NgSkysmackRequests implements SkysmackRequests {
         @Inject(API_DOMAIN_INJECTOR_TOKEN) private apiDomain: ApiDomain
     ) { }
 
-    public get(): Observable<ReduxAction<Skysmack> | ReduxAction<HttpErrorResponse>> {
+    public get(action: ReduxAction): Observable<ReduxAction<Skysmack> | ReduxAction<HttpErrorResponse>> {
         return this.http.get<Skysmack>(this.apiDomain.domain + '/skysmack', { observe: 'response' }).pipe(
             map(response => Object.assign({}, new ReduxAction<Skysmack>({
                 type: SkysmackActions.GET_SKYSMACK_SUCCESS,
-                payload: response.body
+                payload: response.body,
+                meta: {
+                    payload: action.payload,
+                    response: response
+                }
             }))),
             retry(this.retryTimes),
             catchError((error) => of(Object.assign({}, new ReduxAction<HttpErrorResponse>({
@@ -34,7 +38,7 @@ export class NgSkysmackRequests implements SkysmackRequests {
     }
 
     public getPermissions(action: ReduxAction<string>): Observable<ReduxAction<string[], string> | ReduxAction<HttpErrorResponse>> {
-        return this.http.get<string[]>(`${this.apiDomain.domain}/package-permissions/${action.payload}`, { observe: 'response' }).pipe(
+        return this.http.get<string[]>(`${this.apiDomain.domain}/skysmack/package-permissions/${action.payload}`, { observe: 'response' }).pipe(
             map(response => Object.assign({}, new ReduxAction<string[], string>({
                 type: SkysmackActions.GET_PACKAGE_PERMISSIONS_SUCCESS,
                 payload: response.body,
@@ -51,7 +55,7 @@ export class NgSkysmackRequests implements SkysmackRequests {
 
 
     public getAvailablePermissions(action: ReduxAction<string>): Observable<ReduxAction<StrIndex<string>, string> | ReduxAction<HttpErrorResponse>> {
-        return this.http.get<StrIndex<string>>(`${this.apiDomain.domain}/package-permissions/available/${action.payload}`, { observe: 'response' }).pipe(
+        return this.http.get<StrIndex<string>>(`${this.apiDomain.domain}/skysmack/package-permissions/available/${action.payload}`, { observe: 'response' }).pipe(
             map(response => Object.assign({}, new ReduxAction<StrIndex<string>, string>({
                 type: SkysmackActions.GET_AVAILABLE_PACKAGE_PERMISSIONS_SUCCESS,
                 payload: response.body,

@@ -1,13 +1,41 @@
 <div *ngIf="sidebarMenu" class="docs-component-viewer-nav">
   <div class="docs-component-viewer-nav-content">
-    <ng-container *ngFor="let menuArea of sidebarMenu.primaryMenuAreas; let last = last;">
+    <ng-container *ngFor="let menuAreaItem of menuAreaItems$ | async; let last = last;">
+      <nav *ngIf="menuAreaItem.area.display">
+        <span class="docs-nav-content-btn">
+          {{ menuAreaItem.area.displayName | translate }}
+        </span>
+
+        <ul>
+          <ng-container *ngFor="let menuItem of menuAreaItem.items">
+            <!-- ACTION EVENT -->
+            <li *ngIf="menuItem.isActionEvent && (menuItem | showMenuItemAction:undefined)"
+              (click)="menuItemActionEvent.emit({ action: menuItem.action, _this: menuItem._this });">
+              <span class="link">{{ menuItem.displayName | translate }}</span>
+            </li>
+
+            <!-- URL EVENT -->
+            <li *ngIf="!menuItem.isActionEvent">
+              <a [routerLink]="[menuItem.url]">
+                {{ menuItem.displayName | translate }}
+              </a>
+            </li>
+          </ng-container>
+        </ul>
+
+        <!-- <hr *ngIf="!last" /> -->
+      </nav>
+    </ng-container>
+
+
+    <ng-container *ngFor="let menuArea of sidebarMenu.primaryMenuAreas$ | async; let last = last;">
       <nav *ngIf="menuArea.display">
-        <span class="docs-nav-content-btn" >
+        <span class="docs-nav-content-btn">
           {{ menuArea.displayName | translate }}
         </span>
 
         <ul>
-          <ng-container *ngFor="let menuItem of sidebarMenu.primaryMenuItems">
+          <ng-container *ngFor="let menuItem of sidebarMenu.primaryMenuItems$ | async">
             <ng-container *ngIf="menuItem.area === menuArea.area">
               <ng-template [inAnyPermission]="menuItem.permissions"
                 (permissionsChecked)="permissionsChecked($event, menuItem)">
@@ -23,7 +51,7 @@
                   <a [routerLink]="[menuItem.url]">
                     {{ menuItem.displayName | translate }}
                   </a>
-                </li> 
+                </li>
 
 
               </ng-template>

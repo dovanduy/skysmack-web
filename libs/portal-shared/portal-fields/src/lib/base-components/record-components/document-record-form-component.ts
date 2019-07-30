@@ -27,7 +27,7 @@ export class DocumentRecordFormComponent<TAppState, TRecord extends Record<TKey>
 
     ngOnInit() {
         super.ngOnInit();
-        this.fieldActions.getPaged(this.packagePath, this.pagedQuery);
+        this.fieldActions.getPaged(this.packagePath, this.pagedQuery, this.additionalPaths);
     }
 
     protected setCreateFields() {

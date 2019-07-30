@@ -103,7 +103,6 @@ export class TerminalsPayComponent extends RecordFormComponent<TerminalsAppState
           this.disableButton = false;
           this.editorNavService.hideEditorNav();
           this.dialogRef.close();
-          console.log(x);
           // if(x.status === '200'){
           // this.router.navigate([this.router.url.substring(0, this.router.url.length - 3), 'processing']);
           // } else if(x.status === ???) {

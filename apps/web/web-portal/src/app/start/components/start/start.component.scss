@@ -10,11 +10,12 @@ skysmack-app {
   
   ss-navbar {
     position: fixed;
-    top: 0;
+    top: -56px;
     left: 0;
     right: 0;
+    min-height: 56px;
     z-index: 2;
-    animation: navbar-entry .3s 1;
+    animation: navbar-entry .3s ease-out 0s 1 normal forwards;
   }
   
   skysmack-app > ss-component-sidenav {
@@ -28,9 +29,9 @@ skysmack-app {
   }
   
   @media (max-width: 720px) {
-    skysmack-app {
-      top: 56px;
-    }
+    // skysmack-app {
+    //   top: 56px;
+    // }
   
     skysmack-app > ss-homepage,
     skysmack-app > ss-guides,
@@ -44,6 +45,6 @@ skysmack-app {
       top: -56px;
     }
     100% {
-        top: 0;
+        top: 0px;
     }
   }

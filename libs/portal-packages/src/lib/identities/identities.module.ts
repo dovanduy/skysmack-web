@@ -1,8 +1,7 @@
 import { NgModule, ComponentFactoryResolver } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-
-import { LanguageService } from '@skysmack/portal-ui';
+import { LanguageService, NgMenuProviders } from '@skysmack/portal-ui';
 import { NgIdentitiesModule } from '@skysmack/ng-identities';
 import { PortalUiModule } from '@skysmack/portal-ui';
 import { IdentitiesRoutingModule } from './identities-routing.module';
@@ -21,6 +20,8 @@ import { RolesSelectComponent } from './identity-roles';
 import { DynamicFormsModule } from '@skysmack/portal-dynamic-forms';
 import { SettingsModule } from '@skysmack/portal-settings';
 import { PortalFieldsModule } from '@skysmack/portal-fields';
+import { applicationsComponents } from './identity-applications/components/applications-components';
+import { NgIdentitiesIndexMenuProvider } from './ng-identities-index-menu-provider';
 
 @NgModule({
   imports: [
@@ -38,7 +39,8 @@ import { PortalFieldsModule } from '@skysmack/portal-fields';
     ...identitiesComponents,
     ...rolesComponents,
     ...usersComponents,
-    ...accountsComponents
+    ...accountsComponents,
+    ...applicationsComponents
   ],
   exports: [
     RolesSelectComponent,
@@ -57,11 +59,12 @@ import { PortalFieldsModule } from '@skysmack/portal-fields';
 })
 export class IdentitiesModule {
   constructor(
-    // Make entry components available
+    ngMenuProviders: NgMenuProviders,
+    menu: NgIdentitiesIndexMenuProvider,
     coalescingResolver: CoalescingComponentFactoryResolver,
     localResolver: ComponentFactoryResolver
   ) {
-    // Make entry components available
     coalescingResolver.registerResolver(localResolver);
+    ngMenuProviders.add(menu)
   }
 }

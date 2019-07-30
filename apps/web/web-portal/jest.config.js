@@ -1,5 +1,5 @@
 module.exports = {
-  name: 'web-web-portal',
+  name: 'web-portal',
   preset: '../../../jest.config.js',
   coverageDirectory: '../../../coverage/apps/web/web-portal/',
   snapshotSerializers: [

@@ -4,10 +4,12 @@ import { safeHasValue, Package, MenuItemProvider, MenuItem } from '@skysmack/fra
 import { map } from 'rxjs/operators';
 import { Skysmack } from '@skysmack/packages-skysmack-core';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
-import { EmailsSmtpType } from '@skysmack/package-types';
+import { EmailsSmtpTypeId } from '@skysmack/package-types';
+import { Guid } from 'guid-typescript';
 
 @Injectable({ providedIn: 'root' })
 export class NgEmailsSmtpMenuItemProvider extends MenuItemProvider {
+    public id = Guid.create().toString();
     public menuId = 'emails';
     public icon = 'shortText';
 
@@ -18,7 +20,7 @@ export class NgEmailsSmtpMenuItemProvider extends MenuItemProvider {
             return this.store.getSkysmack().pipe(
                 safeHasValue(),
                 map((currentTenant: Skysmack) => currentTenant.packages
-                    .filter((_package: Package) => _package.type === EmailsSmtpType.id && _package.dependencies.find(dep => dep === packagePath))
+                    .filter((_package: Package) => _package.type === EmailsSmtpTypeId && _package.dependencies.find(dep => dep === packagePath))
                     .map(_package => new MenuItem({
                         url: '/' + _package.path,
                         displayName: _package.name,

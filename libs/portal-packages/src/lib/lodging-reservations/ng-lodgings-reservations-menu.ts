@@ -24,92 +24,93 @@ export class NgLodgingsReservationsMenu extends SidebarMenu {
     }
 
     public setPrimaryMenu() {
-        this.primaryMenuAreas.push(new MenuArea({
-            area: 'actions',
-            translationPrefix: this.translationPrefix,
-            order: 1,
-        }));
-        this.primaryMenuAreas.push(new MenuArea({
-            area: 'reservations',
-            translationPrefix: this.translationPrefix,
-            order: 2,
-            permissions: [
-                ReservationsPermissions.findReservations
-            ]
-        }));
-        this.primaryMenuAreas.push(new MenuArea({
-            area: 'settings',
-            translationPrefix: this.translationPrefix,
-            order: 4,
-        }));
+        this.addToPrimaryMenuAreas([
+            new MenuArea({
+                area: 'actions',
+                translationPrefix: this.translationPrefix,
+                order: 1,
+            }),
+            new MenuArea({
+                area: 'reservations',
+                translationPrefix: this.translationPrefix,
+                order: 2
+            }),
+            new MenuArea({
+                area: 'settings',
+                translationPrefix: this.translationPrefix,
+                order: 4,
+            })
+        ]);
 
-        this.primaryMenuItems.push(new MenuItem({
-            url: '/' + this.packagePath + '/create',
-            displayName: this.translationPrefix + 'CREATE',
-            area: 'actions',
-            order: 1,
-            icon: 'groupAdd',
-            permissions: [
-                ReservationsPermissions.addReservations
-            ]
-        }));
+        this.addToPrimaryMenuItems([
+            new MenuItem({
+                url: '/' + this.packagePath + '/create',
+                displayName: this.translationPrefix + 'CREATE',
+                area: 'actions',
+                order: 1,
+                icon: 'groupAdd',
+                permissions: [
+                    ReservationsPermissions.addReservations
+                ]
+            }),
 
-        this.primaryMenuItems.push(new MenuItem({
-            url: '/' + this.packagePath,
-            displayName: this.translationPrefix + 'ALL',
-            area: 'reservations',
-            order: 1,
-            icon: 'groupAdd',
-            permissions: [
-                ReservationsPermissions.findReservations
-            ]
-        }));
-        this.primaryMenuItems.push(new MenuItem({
-            url: '/' + this.packagePath + '/arrivals',
-            displayName: this.translationPrefix + 'ARRIVALS',
-            area: 'reservations',
-            order: 1,
-            icon: 'groupAdd',
-            permissions: [
-                ReservationsPermissions.findReservations
-            ]
-        }));
-        this.primaryMenuItems.push(new MenuItem({
-            url: '/' + this.packagePath + '/stays',
-            displayName: this.translationPrefix + 'STAYS',
-            area: 'reservations',
-            order: 2,
-            icon: 'groupAdd',
-            permissions: [
-                ReservationsPermissions.findReservations
-            ]
-        }));
-        this.primaryMenuItems.push(new MenuItem({
-            url: '/' + this.packagePath + '/departures',
-            displayName: this.translationPrefix + 'DEPARTURES',
-            area: 'reservations',
-            order: 3,
-            icon: 'groupAdd',
-            permissions: [
-                ReservationsPermissions.findReservations
-            ]
-        }));
-        this.primaryMenuItems.push(new MenuItem({
-            url: '/' + this.packagePath + '/settings/checkin',
-            displayName: this.translationPrefix + 'SETTINGS',
-            area: 'settings',
-            order: 3,
-            icon: 'groupAdd',
-            permissions: [
-                ReservationsPermissions.checkIn
-            ]
-        }));
+            new MenuItem({
+                url: '/' + this.packagePath,
+                displayName: this.translationPrefix + 'ALL',
+                area: 'reservations',
+                order: 1,
+                icon: 'groupAdd',
+                permissions: [
+                    ReservationsPermissions.findReservations
+                ]
+            }),
+            new MenuItem({
+                url: '/' + this.packagePath + '/arrivals',
+                displayName: this.translationPrefix + 'ARRIVALS',
+                area: 'reservations',
+                order: 1,
+                icon: 'groupAdd',
+                permissions: [
+                    ReservationsPermissions.findReservations
+                ]
+            }),
+            new MenuItem({
+                url: '/' + this.packagePath + '/stays',
+                displayName: this.translationPrefix + 'STAYS',
+                area: 'reservations',
+                order: 2,
+                icon: 'groupAdd',
+                permissions: [
+                    ReservationsPermissions.findReservations
+                ]
+            }),
+            new MenuItem({
+                url: '/' + this.packagePath + '/departures',
+                displayName: this.translationPrefix + 'DEPARTURES',
+                area: 'reservations',
+                order: 3,
+                icon: 'groupAdd',
+                permissions: [
+                    ReservationsPermissions.findReservations
+                ]
+            }),
+            new MenuItem({
+                url: '/' + this.packagePath + '/settings/checkin',
+                displayName: this.translationPrefix + 'SETTINGS',
+                area: 'settings',
+                order: 3,
+                icon: 'groupAdd',
+                permissions: [
+                    ReservationsPermissions.checkIn
+                ]
+            })
+        ]);
 
         this.setBackButton({ connectedPackage: true });
     }
 
     public setSpeedDialMenu() {
-        this.speedDialMenuItems = [
+        this.addToSpeedDialMenuItems([
             new MenuItem({
                 url: '/' + this.packagePath + '/create',
                 displayName: this.translationPrefix + 'CREATE',
@@ -120,6 +121,6 @@ export class NgLodgingsReservationsMenu extends SidebarMenu {
                     ReservationsPermissions.addReservations
                 ]
             }),
-        ];
+        ]);
     }
 }

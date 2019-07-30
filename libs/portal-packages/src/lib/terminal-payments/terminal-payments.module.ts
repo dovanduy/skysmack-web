@@ -12,7 +12,7 @@ import { clientsComponents } from './clients/components/clients-component';
 import { connectionsComponents } from './connections';
 import { terminalPaymentsIndexComponents } from './components/teminal-payments-index-components';
 import { NgInvoicesTerminalPaymentsMenuItemActionProvider } from './ng-invoices-terminal-payments-menu-item-action-provider';
-import { InvoicesType } from '@skysmack/package-types';
+import { InvoicesTypeId } from '@skysmack/package-types';
 import { CoalescingComponentFactoryResolver } from '@skysmack/ng-framework';
 import { TerminalsPayComponent } from './terminals/components/terminals-pay/terminals-pay.component';
 import { DynamicFormsModule } from '@skysmack/portal-dynamic-forms';
@@ -51,7 +51,7 @@ export class TerminalPaymentsModule {
     coalescingResolver: CoalescingComponentFactoryResolver,
     localResolver: ComponentFactoryResolver
   ) {
-    menuItemActionProviders.add(InvoicesType.id, invoicesCashPaymentsMenuItemActionProvider);
+    menuItemActionProviders.add(InvoicesTypeId, invoicesCashPaymentsMenuItemActionProvider);
 
     // Make entry components available
     coalescingResolver.registerResolver(localResolver);

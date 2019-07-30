@@ -1,6 +1,9 @@
+import { AllowAccessFor } from '../permissions/allow-access-for';
+
 export class MenuItem {
     public showLogic: Function;
-    public provideIn: 'primaryMenu' | 'speedDialMenu' | 'both' | 'notProvided' = 'notProvided';
+    public provideIn: 'primaryMenu' | 'speedDialMenu' | 'navbar' | 'both' | 'notProvided' = 'notProvided';
+    public providedIn: string[] = [];
 
     // Event Action Props
     public isActionEvent: boolean;
@@ -9,13 +12,13 @@ export class MenuItem {
 
     // URL Action Props
     public url: string;
-    public urlPostfix: string;
     public displayName: string;
     public area: string;
     public order: number;
     public icon: string;
     public permissions: string[];
     public display = true;
+    public allowAccessFor: AllowAccessFor;
 
     public constructor(init?: Partial<MenuItem>) {
         Object.assign(this, init);
@@ -24,8 +27,8 @@ export class MenuItem {
      * Currently "only works" with edit and delete actions.
      * To be precise, the given url is used and gets the entity id/key appended.
      */
-    public asUrlAction(url: string, displayName: string, icon: string, urlPostfix: string = ''): MenuItem {
-        Object.assign(this, { isActionEvent: false, url, displayName, icon, urlPostfix: urlPostfix });
+    public asUrlAction(url: string, displayName: string, icon: string): MenuItem {
+        Object.assign(this, { isActionEvent: false, url, displayName, icon });
         return this;
     }
 

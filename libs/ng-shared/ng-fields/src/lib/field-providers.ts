@@ -9,17 +9,16 @@ export class FieldProviders {
     public providers$: BehaviorSubject<StrIndex<FieldProvider[]>> = new BehaviorSubject({});
     private register = {};
 
-    public add(type: string, fp: FieldProvider) {
-        const fpName = Object.getPrototypeOf(fp).constructor.name;
-        const registered = this.register[fpName];
+    public add(type: string, fieldProvider: FieldProvider) {
+        const registered = this.register[fieldProvider.id];
         if (!registered) {
             if (!this.providers[type]) {
                 this.providers[type] = [];
                 this.providers$.next(this.providers);
             }
-            this.providers[type].push(fp);
+            this.providers[type].push(fieldProvider);
             this.providers$.next(this.providers);
-            this.register[fpName] = fpName;
+            this.register[fieldProvider.id] = fieldProvider.id;
         }
     }
 }

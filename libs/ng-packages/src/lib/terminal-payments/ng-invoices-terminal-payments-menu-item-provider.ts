@@ -5,10 +5,12 @@ import { map } from 'rxjs/operators';
 import { Skysmack } from '@skysmack/packages-skysmack-core';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { INVOICES_AREA_KEY } from '@skysmack/packages-invoices';
-import { TerminalPaymentsType } from '@skysmack/package-types';
+import { TerminalPaymentsTypeId } from '@skysmack/package-types';
+import { Guid } from 'guid-typescript';
 
 @Injectable({ providedIn: 'root' })
 export class NgInvoicesTerminalPaymentsMenuItemProvider extends MenuItemProvider {
+    public id = Guid.create().toString();
     public menuId = INVOICES_AREA_KEY;
     public icon = 'shortText';
 
@@ -19,7 +21,7 @@ export class NgInvoicesTerminalPaymentsMenuItemProvider extends MenuItemProvider
             return this.store.getSkysmack().pipe(
                 safeHasValue(),
                 map((currentTenant: Skysmack) => currentTenant.packages
-                    .filter((_package: Package) => _package.type === TerminalPaymentsType.id && _package.dependencies.find(dep => dep === packagePath))
+                    .filter((_package: Package) => _package.type === TerminalPaymentsTypeId && _package.dependencies.find(dep => dep === packagePath))
                     .map(_package => new MenuItem({
                         url: '/' + _package.path,
                         displayName: _package.name,

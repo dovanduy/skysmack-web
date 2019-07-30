@@ -9,11 +9,12 @@ import { INVOICES_AREA_KEY, Invoice } from '@skysmack/packages-invoices';
 import { CashPayment } from '@skysmack/packages-invoices-cash-payments';
 import { InvoicesCashPaymentsPayComponent } from './invoices-cash-payments/components/invoices-cash-payments-pay/invoices-cash-payments-pay.component';
 import { MatDialog } from '@angular/material/dialog';
-import { InvoicesCashPaymentsType } from '@skysmack/package-types';
+import { InvoicesCashPaymentsTypeId } from '@skysmack/package-types';
+import { Guid } from 'guid-typescript';
 
 @Injectable({ providedIn: 'root' })
 export class NgInvoicesCashPaymentsMenuItemActionProvider extends MenuItemActionProvider {
-
+    public id = Guid.create().toString();
     public register: StrIndex<boolean> = {};
 
     constructor(
@@ -26,7 +27,7 @@ export class NgInvoicesCashPaymentsMenuItemActionProvider extends MenuItemAction
     public getMenuItemActions(packagePath: string, area: string, entity?: LocalObject<CashPayment, number>): Observable<MenuItem[]> {
         if (area === INVOICES_AREA_KEY) {
             return this.skysmackStore.getPackages().pipe(
-                map(packages => packages.filter(_package => _package.object.type === InvoicesCashPaymentsType.id && _package.object.dependencies[0] === packagePath)),
+                map(packages => packages.filter(_package => _package.object.type === InvoicesCashPaymentsTypeId && _package.object.dependencies[0] === packagePath)),
                 switchMap(packages => {
                     if (packages && packages.length > 0) {
                         const entityActionStreams$ = packages.map(_package => {

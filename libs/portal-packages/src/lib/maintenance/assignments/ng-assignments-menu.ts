@@ -24,52 +24,57 @@ export class NgAssignmentsMenu extends SidebarMenu {
     }
 
     public setPrimaryMenu() {
-        this.primaryMenuAreas.push(new MenuArea({
-            area: 'actions',
-            translationPrefix: this.translationPrefix,
-            order: 1,
-        }));
-        this.primaryMenuAreas.push(new MenuArea({
-            area: 'manage',
-            translationPrefix: this.translationPrefix,
-            order: 2,
-        }));
+        this.addToPrimaryMenuAreas([
+            new MenuArea({
+                area: 'actions',
+                translationPrefix: this.translationPrefix,
+                order: 1,
+            }),
+            new MenuArea({
+                area: 'manage',
+                translationPrefix: this.translationPrefix,
+                order: 2
+            })
+        ]);
 
-        this.primaryMenuItems.push(new MenuItem({
-            url: 'create',
-            displayName: this.translationPrefix + 'CREATE',
-            area: 'actions',
-            order: 1,
-            icon: 'groupAdd',
-            permissions: [
-                MaintenancePermissions.addAssignments
-            ]
-            }));
-        this.primaryMenuItems.push(new MenuItem({
-            url: 'types',
-            displayName: this.translationPrefix + 'TYPES',
-            area: 'manage',
-            order: 2,
-            icon: 'description',
-            permissions: [
-                MaintenancePermissions.findAssignmentTypes
-            ]
-        }));
-        this.primaryMenuItems.push(new MenuItem({
-            url: 'maintenance-states',
-            displayName: this.translationPrefix + 'STATES',
-            area: 'manage',
-            order: 3,
-            icon: 'shortText',
-            permissions: [
-                MaintenancePermissions.findMaintenanceStates
-            ]
-        }));
+        this.addToPrimaryMenuItems([
+            new MenuItem({
+                url: 'create',
+                displayName: this.translationPrefix + 'CREATE',
+                area: 'actions',
+                order: 1,
+                icon: 'groupAdd',
+                permissions: [
+                    MaintenancePermissions.addAssignments
+                ]
+            }),
+            new MenuItem({
+                url: 'types',
+                displayName: this.translationPrefix + 'TYPES',
+                area: 'manage',
+                order: 2,
+                icon: 'description',
+                permissions: [
+                    MaintenancePermissions.findAssignmentTypes
+                ]
+            }),
+            new MenuItem({
+                url: 'maintenance-states',
+                displayName: this.translationPrefix + 'STATES',
+                area: 'manage',
+                order: 3,
+                icon: 'shortText',
+                permissions: [
+                    MaintenancePermissions.findMaintenanceStates
+                ]
+            })
+        ]);
+
         this.setBackButton();
     }
 
     public setSpeedDialMenu() {
-        this.speedDialMenuItems = [
+        this.addToSpeedDialMenuItems([
             new MenuItem({
                 url: 'create',
                 displayName: this.translationPrefix + 'CREATE',
@@ -79,7 +84,7 @@ export class NgAssignmentsMenu extends SidebarMenu {
                 permissions: [
                     MaintenancePermissions.addAssignments
                 ]
-            }),
-        ];
+            })
+        ]);
     }
 }

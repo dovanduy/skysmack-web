@@ -19,3 +19,4 @@ export * from './invoices-cash-payments-type';
 export * from './identities-type';
 export * from './emails-smtp-type';
 export * from './account-type'
+export * from './open-api-type'

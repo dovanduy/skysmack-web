@@ -1,5 +1,9 @@
 @import "../../../../../../../assets/scss/_includes.scss";
 
+:host {
+  min-height: 56px;
+}
+
 .docs-navbar-header {
   display: flex;
   flex-wrap: wrap;
@@ -28,7 +32,7 @@
   height: 0;
   left: 0;
   transition: height .1s ease;
-  background-color: #EFF2F2;
+  background-color: $lighter;
 
   .search-field {
     height: 0;
@@ -55,7 +59,7 @@
     
     .search-field {
       color: rgba(0, 0, 0, 0.54);
-      background-color: #EFF2F2;
+      background-color: $lighter;
 
       width: 100%;
       height: 56px;

@@ -12,7 +12,7 @@ import { ProductsPricingsIndexComponent } from './components/products-pricings-i
 import { productPriceChangesComponents } from './product-price-changes/components/product-price-changes-components';
 import { productTypePriceChangesComponents } from './product-type-price-changes/components/product-type-price-changes-components';
 import { NgProductPricingsFieldProvider } from './ng-product-pricings-field-provider';
-import { ProductsType } from '@skysmack/package-types';
+import { ProductsTypeId } from '@skysmack/package-types';
 import { DynamicFormsModule } from '@skysmack/portal-dynamic-forms';
 import { PortalFieldsModule } from '@skysmack/portal-fields';
 import { FieldProviders } from '@skysmack/ng-fields';
@@ -42,8 +42,8 @@ import { FieldProviders } from '@skysmack/ng-fields';
 export class ProductsPricingsModule {
   constructor(
     fieldProviders: FieldProviders,
-    productPricingsFieldProvider: NgProductPricingsFieldProvider,
+    productPricingsFieldProvider: NgProductPricingsFieldProvider
   ) {
-    fieldProviders.add(ProductsType.id, productPricingsFieldProvider);
+    fieldProviders.add(ProductsTypeId, productPricingsFieldProvider);
   }
 }

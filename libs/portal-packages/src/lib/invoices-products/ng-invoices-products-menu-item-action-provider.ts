@@ -6,14 +6,15 @@ import { StrIndex, LocalObject } from '@skysmack/framework';
 import { MenuItemActionProvider } from '@skysmack/portal-ui';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { PRODUCTS_AREA_KEY, Product } from '@skysmack/packages-products';
-import { InvoicesProductsType } from '@skysmack/package-types';
+import { InvoicesProductsTypeId } from '@skysmack/package-types';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { InvoicesProductsAddToInvoiceComponent } from './invoices-products/components/invoices-products-add-to-invoice/invoices-products-add-to-invoice.component';
+import { Guid } from 'guid-typescript';
 
 @Injectable({ providedIn: 'root' })
 export class NgInvoicesProductsMenuItemActionProvider extends MenuItemActionProvider {
-
+    public id = Guid.create().toString();
     public register: StrIndex<boolean> = {};
 
     constructor(
@@ -27,7 +28,7 @@ export class NgInvoicesProductsMenuItemActionProvider extends MenuItemActionProv
     public getMenuItemActions(packagePath: string, area: string, entity?: LocalObject<any, unknown>): Observable<MenuItem[]> {
         if (area === PRODUCTS_AREA_KEY) {
             return this.skysmackStore.getPackages().pipe(
-                map(packages => packages.filter(_package => _package.object.type === InvoicesProductsType.id && _package.object.dependencies[1] === packagePath)),
+                map(packages => packages.filter(_package => _package.object.type === InvoicesProductsTypeId && _package.object.dependencies[1] === packagePath)),
                 switchMap(packages => {
                     if (packages && packages.length > 0) {
                         const entityActionStreams$ = packages.map(_package => {

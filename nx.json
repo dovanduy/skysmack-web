@@ -122,7 +122,13 @@
     "ng-identities": {
       "tags": []
     },
-    "ng-packages-ng-invoices": {
+    "ng-invoices": {
+      "tags": []
+    },
+    "web-commercial-e2e": {
+      "tags": []
+    },
+    "web-commercial": {
       "tags": []
     }
   }

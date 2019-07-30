@@ -1,25 +1,27 @@
 <ng-container *ngIf="skysmackLoaded$ | async as skysmackLoaded; else loading">
-    <ng-container *ngIf="skysmackLoaded; else loading">
-        <ng-container *ngIf="skysmack$ | async as skysmack; else tenantNotFound">
-            <ng-container *ngIf="skysmack && skysmack.name && skysmack.name.length > 0; else tenantNotFound">
-                <ss-navbar class="mat-elevation-z3"></ss-navbar>
-                <ng-container *ngIf="loadingRouteConfig.length === 0; else loading">
-                    <router-outlet></router-outlet>
+        <ng-container *ngIf="skysmackLoaded.errorCode > 99 && skysmackLoaded.errorCode < 400; else tenantNotFound">
+            <ng-container *ngIf="skysmack$ | async as skysmack; else tenantNotFound">
+                <ng-container *ngIf="skysmack && skysmack.name && skysmack.name.length > 0; else tenantNotFound">
+                    <ss-navbar class="mat-elevation-z3"></ss-navbar>
+                    <ng-container *ngIf="loadingRouteConfig.length === 0; else loading">
+                        <router-outlet></router-outlet>
+                    </ng-container>
                 </ng-container>
             </ng-container>
-        </ng-container>
     </ng-container>
+
+    <ng-template #tenantNotFound>
+        <div class="loading-screen">
+            {{ skysmackLoaded.error }} ({{ skysmackLoaded.errorCode }})
+            <span *ngIf="skysmackLoaded.errorDescription" class="description"><br /> {{ skysmackLoaded.errorDescription }}</span>
+        </div>
+    </ng-template>
 </ng-container>
 
 
-<ng-template #tenantNotFound>
-    <div id="loading-screen">
-        Domain not found
-    </div>
-</ng-template>
 
 <ng-template #loading>
-    <div id="loading-screen">
+    <div class="loading-screen">
         <mat-spinner diameter="50"></mat-spinner>
     </div>
 </ng-template>

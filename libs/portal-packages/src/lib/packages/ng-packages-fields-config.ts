@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
-import { LocalObject, Package } from '@skysmack/framework';
+import { LocalObject, Package, DisplayColumn } from '@skysmack/framework';
 import { FormRule, Field, CustomValidators, SetPathRule, SelectField } from '@skysmack/ng-dynamic-forms';
 import { PackagesValidation, NgPackagesStore, NgPackagesActions } from '@skysmack/ng-packages';
 import { LoadedPackage } from '@skysmack/ng-framework';
@@ -19,12 +19,15 @@ export class NgPackagesFieldsConfig extends FieldsConfig<Package, string> {
     constructor(
         public store: NgPackagesStore,
         public actions: NgPackagesActions,
-        public fieldProviders: FieldProviders
+        public fieldProviders: FieldProviders,
     ) {
         super(fieldProviders);
     }
 
     protected getEntityFields(loadedPackage: LoadedPackage, _package?: LocalObject<Package, string>): Field[] {
+        // Needs to be called here or index won't show correct package type before after visiting an create/edit form.
+        this.actions.getAvailablePackages(loadedPackage._package.path);
+
         return [
             new SelectField({
                 component: SelectFieldComponent,
@@ -35,8 +38,18 @@ export class NgPackagesFieldsConfig extends FieldsConfig<Package, string> {
                 optionsData$: this.store.getAvailablePackages(loadedPackage._package.path),
                 getDependencies: () => { this.actions.getAvailablePackages(loadedPackage._package.path); },
                 valueSelector: 'object.type',
+                displayModifier: (column: DisplayColumn, _package: LocalObject<Package, number>) => {
+                    const availablePackage = this.store.getAvailablePackagesAsArray(loadedPackage._package.path).find(ap => ap.object.type === _package.object.type);
+
+                    if (availablePackage) {
+                        return availablePackage.object.name;
+                    }
+
+                    return 'Update page to view';
+                },
                 disabled: _package ? true : false,
-                order: 1
+                order: 1,
+                showColumn: true
             }),
 
             new Field({

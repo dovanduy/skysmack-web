@@ -21,35 +21,41 @@ export class NgAssignmentTypesMenu extends SidebarMenu {
         this.setPrimaryMenu();
         this.setSpeedDialMenu();
         this.runMenuItemProviders();
+
     }
 
     public setPrimaryMenu() {
-        this.primaryMenuAreas.push(new MenuArea({
-            area: 'actions',
-            translationPrefix: this.translationPrefix,
-            order: 1,
-        }));
-        this.primaryMenuAreas.push(new MenuArea({
-            area: 'manage',
-            translationPrefix: this.translationPrefix,
-            order: 2,
-        }));
+        this.addToPrimaryMenuAreas([
+            new MenuArea({
+                area: 'actions',
+                translationPrefix: this.translationPrefix,
+                order: 1,
+            }),
+            new MenuArea({
+                area: 'manage',
+                translationPrefix: this.translationPrefix,
+                order: 2,
+            })
+        ]);
 
-        this.primaryMenuItems.push(new MenuItem({
-            url: 'create',
-            displayName: this.translationPrefix + 'CREATE',
-            area: 'actions',
-            order: 1,
-            icon: 'groupAdd',
-            permissions: [
-                MaintenancePermissions.addAssignmentTypes
-            ]
-        }));
+        this.addToPrimaryMenuItems([
+            new MenuItem({
+                url: 'create',
+                displayName: this.translationPrefix + 'CREATE',
+                area: 'actions',
+                order: 1,
+                icon: 'groupAdd',
+                permissions: [
+                    MaintenancePermissions.addAssignmentTypes
+                ]
+            })
+        ]);
+
         this.setBackButton({ customPath: `/${this.packagePath}/assignments` });
     }
 
     public setSpeedDialMenu() {
-        this.speedDialMenuItems = [
+        this.addToSpeedDialMenuItems([
             new MenuItem({
                 url: 'create',
                 displayName: this.translationPrefix + 'CREATE',
@@ -59,7 +65,7 @@ export class NgAssignmentTypesMenu extends SidebarMenu {
                 permissions: [
                     MaintenancePermissions.addAssignmentTypes
                 ]
-            }),
-        ];
+            })
+        ]);
     }
 }

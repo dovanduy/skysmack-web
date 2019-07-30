@@ -1,4 +1,4 @@
-import { PersonsType } from '@skysmack/package-types';
+import { PersonsType, PersonsTypeId } from '@skysmack/package-types';
 import { PackageLoader, PackageManifest } from '@skysmack/ng-framework';
 import { TenantPackageLoadStrategy } from '../start/tenant-package-load-strategy';
 import { Route } from '@angular/router';
@@ -14,4 +14,4 @@ export function loadPersonPackage(packageLoader: PackageLoader) {
     return () => packageLoader.add(new PersonsPackageManifest());
 }
 
-export const personsRoute = { path: TenantPackageLoadStrategy.URL_PREFIX + PersonsPackageManifest.id, loadChildren: PersonsPackageManifest.modulePath } as Route;
+export const personsRoute = { path: TenantPackageLoadStrategy.URL_PREFIX + PersonsTypeId, loadChildren: PersonsPackageManifest.modulePath } as Route;

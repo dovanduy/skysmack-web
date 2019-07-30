@@ -9,7 +9,7 @@ import { NgPackagesNotifications } from '../ng-packages-notifications';
 import { NgSettingsActions, RecordEpicsBase } from '@skysmack/ng-framework';
 import { PACKAGES_REDUX_KEY } from '@skysmack/packages-skysmack-core';
 import { NgPackagesActions } from './ng-packages-actions';
-import { NgSkysmackRequests, NgSkysmackActions } from '@skysmack/ng-skysmack';
+import { NgSkysmackRequests } from '@skysmack/ng-skysmack';
 
 @Injectable({ providedIn: 'root' })
 export class NgPackagesEpics extends RecordEpicsBase<Package, string> {
@@ -23,8 +23,6 @@ export class NgPackagesEpics extends RecordEpicsBase<Package, string> {
         this.epics = this.epics.concat([
             // Additional skysmack epics
             this.getAvailablePackagesEpic,
-            this.getPermissionsEpic,
-            this.getAvailablePermissionsEpic,
             this.getSkysmackOnSettingsUpdateEpic
         ]);
     }
@@ -38,27 +36,13 @@ export class NgPackagesEpics extends RecordEpicsBase<Package, string> {
         );
     }
 
-    public getPermissionsEpic = (action$: ActionsObservable<ReduxAction<string>>): Observable<ReduxAction<string[]> | ReduxAction<HttpErrorResponse>> => {
-        return action$.pipe(
-            ofType(NgSkysmackActions.GET_PACKAGE_PERMISSIONS),
-            mergeMap(action => this.skysmackRequests.getPermissions(action as any))
-        );
-    }
-
-    public getAvailablePermissionsEpic = (action$: ActionsObservable<ReduxAction<string>>): Observable<ReduxAction<StrIndex<string>> | ReduxAction<HttpErrorResponse>> => {
-        return action$.pipe(
-            ofType(NgSkysmackActions.GET_AVAILABLE_PACKAGE_PERMISSIONS),
-            mergeMap(action => this.skysmackRequests.getAvailablePermissions(action as any))
-        );
-    }
-
     public getSkysmackOnSettingsUpdateEpic = (action$: ActionsObservable<ReduxAction<string>>) => {
         return action$.pipe(
             ofType(NgSettingsActions.UPDATE_SETTINGS_SUCCESS),
             mergeMap(action => {
                 const castedAction = action as ReduxAction<any, SettingsCommitMeta<LocalObject<any, unknown>>>;
                 if (castedAction.meta.stateKey === 'skysmack') {
-                    return this.skysmackRequests.get();
+                    return this.skysmackRequests.get(action);
                 } else {
                     return of({ type: 'IGNORE_THIS_ACTION' });
                 }

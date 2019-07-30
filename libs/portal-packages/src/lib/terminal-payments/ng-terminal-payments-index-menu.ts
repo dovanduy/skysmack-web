@@ -20,51 +20,55 @@ export class NgTerminalPaymentsIndexMenu extends SidebarMenu {
         this.setPrimaryMenu();
         this.setSpeedDialMenu();
         this.runMenuItemProviders();
+
     }
 
     public setPrimaryMenu() {
-        this.primaryMenuAreas.push(new MenuArea({
-            area: 'manage',
-            translationPrefix: this.translationPrefix,
-            order: 2,
-        }));
+        this.addToPrimaryMenuAreas([
+            new MenuArea({
+                area: 'manage',
+                translationPrefix: this.translationPrefix,
+                order: 2,
+            })
+        ]);
 
-        this.primaryMenuItems.push(new MenuItem({
-            url: 'terminals',
-            displayName: this.translationPrefix + 'TERMINALS',
-            area: 'manage',
-            order: 2,
-            icon: 'description',
-        }));
+        this.addToPrimaryMenuItems([
+            new MenuItem({
+                url: 'terminals',
+                displayName: this.translationPrefix + 'TERMINALS',
+                area: 'manage',
+                order: 2,
+                icon: 'description',
+            }),
 
-        this.primaryMenuItems.push(new MenuItem({
-            url: 'clients',
-            displayName: this.translationPrefix + 'CLIENTS',
-            area: 'manage',
-            order: 2,
-            icon: 'description',
-        }));
+            new MenuItem({
+                url: 'clients',
+                displayName: this.translationPrefix + 'CLIENTS',
+                area: 'manage',
+                order: 2,
+                icon: 'description',
+            }),
 
-        this.primaryMenuItems.push(new MenuItem({
-            url: 'connections',
-            displayName: this.translationPrefix + 'CONNECTIONS',
-            area: 'manage',
-            order: 2,
-            icon: 'description',
-        }));
+            new MenuItem({
+                url: 'connections',
+                displayName: this.translationPrefix + 'CONNECTIONS',
+                area: 'manage',
+                order: 2,
+                icon: 'description',
+            }),
 
-        this.primaryMenuItems.push(new MenuItem({
-            url: 'receipts',
-            displayName: this.translationPrefix + 'RECEIPTS',
-            area: 'manage',
-            order: 2,
-            icon: 'description',
-        }));
+            new MenuItem({
+                url: 'receipts',
+                displayName: this.translationPrefix + 'RECEIPTS',
+                area: 'manage',
+                order: 2,
+                icon: 'description',
+            })
+        ]);
 
         this.setBackButton({ connectedPackage: true }).addConnectedPackageMenuArea();
     }
 
     public setSpeedDialMenu() {
-        this.speedDialMenuItems = [];
     }
 }

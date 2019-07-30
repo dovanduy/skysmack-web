@@ -25,34 +25,38 @@ export class NgPackagesMenu extends SidebarMenu {
     }
 
     public setPrimaryMenu() {
-        this.primaryMenuAreas.push(new MenuArea({
-            area: 'actions',
-            translationPrefix: this.translationPrefix,
-            order: 1,
-        }));
-        this.primaryMenuAreas.push(new MenuArea({
-            area: 'manage',
-            translationPrefix: this.translationPrefix,
-            order: 2,
-        }));
+        this.addToPrimaryMenuAreas([
+            new MenuArea({
+                area: 'actions',
+                translationPrefix: this.translationPrefix,
+                order: 1,
+            }),
+            new MenuArea({
+                area: 'manage',
+                translationPrefix: this.translationPrefix,
+                order: 2,
+            })
+        ]);
 
-        this.primaryMenuItems.push(new MenuItem({
-            url: 'create',
-            displayName: this.translationPrefix + 'CREATE',
-            area: 'actions',
-            order: 1,
-            icon: 'groupAdd',
-            permissions: [
-                PackagesPermissions.addPackages
-            ]
-        }));
+        this.addToPrimaryMenuItems([
+            new MenuItem({
+                url: 'create',
+                displayName: this.translationPrefix + 'CREATE',
+                area: 'actions',
+                order: 1,
+                icon: 'groupAdd',
+                permissions: [
+                    PackagesPermissions.addPackages
+                ]
+            })
+        ]);
 
         // Menu button to navigate to available package charts when that code is uncommented.
         // this.primaryMenuItems.push(new MenuItem('available_packages', this.translationPrefix + 'AVAILABLE_PACKAGES', 'manage', 2, 'groupAdd'));
     }
 
     public setSpeedDialMenu() {
-        this.speedDialMenuItems = [
+        this.addToSpeedDialMenuItems([
             new MenuItem({
                 url: 'create',
                 displayName: this.translationPrefix + 'CREATE',
@@ -62,7 +66,7 @@ export class NgPackagesMenu extends SidebarMenu {
                 permissions: [
                     PackagesPermissions.addPackages
                 ]
-            }),
-        ];
+            })
+        ]);
     }
 }

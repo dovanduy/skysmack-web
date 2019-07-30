@@ -12,11 +12,13 @@ import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { LODGING_RESERVATIONS_AREA_KEY } from '@skysmack/packages-lodging-reservations';
 import { FieldProvider, AddField } from '@skysmack/ng-fields';
 import { AddRecordFieldComponent, MultiSelectFieldComponent, HiddenFieldComponent } from '@skysmack/portal-fields';
-import { PersonsLodgingReservationsType } from '@skysmack/package-types';
+import { PersonsLodgingReservationsTypeId } from '@skysmack/package-types';
+import { Guid } from 'guid-typescript';
 
 @Injectable({ providedIn: 'root' })
 export class NgPersonsLodgingReservationsFieldProvider extends FieldProvider {
 
+    public id = Guid.create().toString();
     public register: StrIndex<boolean> = {};
 
     constructor(
@@ -35,7 +37,7 @@ export class NgPersonsLodgingReservationsFieldProvider extends FieldProvider {
         this.register = {};
         if (area === LODGING_RESERVATIONS_AREA_KEY) {
             return this.skysmackStore.getPackages().pipe(
-                map(packages => packages.filter(_package => _package.object.type === PersonsLodgingReservationsType.id && _package.object.dependencies[1] === packagePath)),
+                map(packages => packages.filter(_package => _package.object.type === PersonsLodgingReservationsTypeId && _package.object.dependencies[1] === packagePath)),
                 switchMap(packages => {
                     if (packages && packages.length > 0) {
                         const fieldStreams$ = packages.map(_package => {

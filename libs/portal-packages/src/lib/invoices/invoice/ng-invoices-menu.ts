@@ -25,51 +25,55 @@ export class NgInvoicesMenu extends SidebarMenu {
     }
 
     public setPrimaryMenu() {
-        this.primaryMenuAreas.push(new MenuArea({
-            area: 'actions',
-            translationPrefix: this.translationPrefix,
-            order: 1,
-        }));
-        this.primaryMenuAreas.push(new MenuArea({
-            area: 'manage',
-            translationPrefix: this.translationPrefix,
-            order: 2,
-        }));
+        this.addToPrimaryMenuAreas([
+            new MenuArea({
+                area: 'actions',
+                translationPrefix: this.translationPrefix,
+                order: 1,
+            }),
+            new MenuArea({
+                area: 'manage',
+                translationPrefix: this.translationPrefix,
+                order: 2,
+            })
+        ]);
 
-        this.primaryMenuItems.push(new MenuItem({
-            url: 'create',
-            displayName: this.translationPrefix + 'CREATE',
-            area: 'actions',
-            order: 1,
-            icon: 'groupAdd',
-            permissions: [
-                InvoicesPermissions.addInvoices
-            ]
-        }));
-        this.primaryMenuItems.push(new MenuItem({
-            url: 'fields',
-            displayName: this.translationPrefix + 'FIELDS',
-            area: 'manage',
-            order: 2,
-            icon: 'shortText',
-            permissions: [
-                InvoicesPermissions.findInvoicesFields
-            ]
-        }));
-        this.primaryMenuItems.push(new MenuItem({
-            url: 'payments',
-            displayName: this.translationPrefix + 'PAYMENTS',
-            area: 'manage',
-            order: 2,
-            icon: 'shortText',
-            permissions: [
-                InvoicesPermissions.findInvoicePayments
-            ]
-        }));
+        this.addToPrimaryMenuItems([
+            new MenuItem({
+                url: 'create',
+                displayName: this.translationPrefix + 'CREATE',
+                area: 'actions',
+                order: 1,
+                icon: 'groupAdd',
+                permissions: [
+                    InvoicesPermissions.addInvoices
+                ]
+            }),
+            new MenuItem({
+                url: 'fields',
+                displayName: this.translationPrefix + 'FIELDS',
+                area: 'manage',
+                order: 2,
+                icon: 'shortText',
+                permissions: [
+                    InvoicesPermissions.findInvoicesFields
+                ]
+            }),
+            new MenuItem({
+                url: 'payments',
+                displayName: this.translationPrefix + 'PAYMENTS',
+                area: 'manage',
+                order: 2,
+                icon: 'shortText',
+                permissions: [
+                    InvoicesPermissions.findInvoicePayments
+                ]
+            })
+        ]);
     }
 
     public setSpeedDialMenu() {
-        this.speedDialMenuItems = [
+        this.addToSpeedDialMenuItems([
             new MenuItem({
                 url: 'create',
                 displayName: this.translationPrefix + 'CREATE',
@@ -79,7 +83,7 @@ export class NgInvoicesMenu extends SidebarMenu {
                 permissions: [
                     InvoicesPermissions.addInvoices
                 ]
-            }),
-        ];
+            })
+        ]);
     }
 }
