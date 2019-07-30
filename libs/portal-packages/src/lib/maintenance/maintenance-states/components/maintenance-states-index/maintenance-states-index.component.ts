@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { MaintenanceState, MaintenanceStatesAppState, MAINTENANCE_STATES_AREA_KEY } from '@skysmack/packages-maintenance';
 import { EntityComponentPageTitle, MenuItemActionProviders, MENU_ITEM_ACTIONS_EDIT, MENU_ITEM_ACTIONS_DELETE } from '@skysmack/portal-ui';
 import { MenuItem } from '@skysmack/framework';
-import { NgMaintenanceStatesActions, NgMaintenanceStatesStore } from '@skysmack/ng-packages';
+import { NgMaintenanceStatesActions, NgMaintenanceStatesStore } from '@skysmack/ng-maintenance';
 import { NgMaintenanceStatesMenu } from '../../ng-maintenance-states-menu';
 import { NgMaintenanceStatesFieldsConfig } from '../../ng-maintenance-states-fields-config';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';

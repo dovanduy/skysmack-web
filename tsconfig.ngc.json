@@ -127,6 +127,9 @@
       ],
       "@skysmack/ng-lodgings": [
         "libs/ng-packages/ng-lodgings"
+      ],
+      "@skysmack/ng-maintenance": [
+        "libs/ng-packages/ng-maintenance"
       ]
     }
   },

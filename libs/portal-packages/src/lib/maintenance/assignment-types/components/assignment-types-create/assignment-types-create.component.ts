@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AssignmentType, AssignmentTypesAppState } from '@skysmack/packages-maintenance';
 import { EditorNavService } from '@skysmack/portal-ui';
-import { NgAssignmentTypesActions, NgAssignmentTypesStore, NgMaintenanceStatesActions, NgMaintenanceStatesStore } from '@skysmack/ng-packages';
+import { NgAssignmentTypesActions, NgAssignmentTypesStore, NgMaintenanceStatesActions, NgMaintenanceStatesStore } from '@skysmack/ng-maintenance';
 import { NgAssignmentTypesFieldsConfig } from '../../ng-assignment-types-fields-config';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { RecordFormComponent } from '@skysmack/portal-fields';

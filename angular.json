@@ -1557,6 +1557,40 @@
           "styleext": "scss"
         }
       }
+    },
+    "ng-maintenance": {
+      "projectType": "library",
+      "root": "libs/ng-packages/ng-maintenance",
+      "sourceRoot": "libs/ng-packages/ng-maintenance/src",
+      "prefix": "skysmack",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/ng-packages/ng-maintenance/tsconfig.lib.json",
+              "libs/ng-packages/ng-maintenance/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/ng-packages/ng-maintenance/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/ng-packages/ng-maintenance/jest.config.js",
+            "tsConfig": "libs/ng-packages/ng-maintenance/tsconfig.spec.json",
+            "setupFile": "libs/ng-packages/ng-maintenance/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
     }
   },
   "cli": {

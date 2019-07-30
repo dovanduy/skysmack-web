@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MaintenanceState, MaintenanceStatesAppState } from '@skysmack/packages-maintenance';
 import { EditorNavService } from '@skysmack/portal-ui';
-import { NgMaintenanceStatesActions, NgMaintenanceStatesStore } from '@skysmack/ng-packages';
+import { NgMaintenanceStatesActions, NgMaintenanceStatesStore } from '@skysmack/ng-maintenance';
 import { NgMaintenanceStatesFieldsConfig } from '../../ng-maintenance-states-fields-config';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { RecordFormComponent } from '@skysmack/portal-fields';

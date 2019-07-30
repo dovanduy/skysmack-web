@@ -102,6 +102,9 @@
       ],
       "@skysmack/ng-lodgings": [
         "libs/ng-packages/ng-lodgings/src/public_api.ts"
+      ],
+      "@skysmack/ng-maintenance": [
+        "libs/ng-packages/ng-maintenance/src/public_api.ts"
       ]
     }
   },
