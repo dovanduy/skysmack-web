@@ -3,7 +3,7 @@ import { Validators } from '@angular/forms';
 import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { Person, PERSONS_AREA_KEY } from '@skysmack/packages-persons';
 
-import { NgPersonsValidation } from '@skysmack/ng-packages';
+import { NgPersonsValidation } from '@skysmack/ng-persons';
 import { NgFieldStore, LoadedPackage } from '@skysmack/ng-framework';
 import { Router } from '@angular/router';
 import { FormRule, SetDisplayNameRule, Field } from '@skysmack/ng-dynamic-forms';

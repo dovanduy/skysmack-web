@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Person, PersonsAppState } from '@skysmack/packages-persons';
-import { NgPersonsActions } from '@skysmack/ng-packages';
+import { NgPersonsActions, NgPersonsStore } from '@skysmack/ng-persons';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EditorNavService } from '@skysmack/portal-ui';
 import { DocumentRecordFormComponent } from '@skysmack/portal-fields';
-import { NgPersonsStore } from '@skysmack/ng-packages';
 import { NgFieldActions } from '@skysmack/ng-framework';
 import { NgPersonsFieldsConfig } from '../../../ng-persons-fields-config';
 

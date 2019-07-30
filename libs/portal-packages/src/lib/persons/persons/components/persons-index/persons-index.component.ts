@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { EntityComponentPageTitle, MenuItemActionProviders, MENU_ITEM_ACTIONS_EDIT, MENU_ITEM_ACTION_DETAILS, MENU_ITEM_ACTIONS_DELETE } from '@skysmack/portal-ui';
 import { Router, ActivatedRoute } from '@angular/router';
-import { NgPersonsActions } from '@skysmack/ng-packages';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
-import { NgPersonsStore } from '@skysmack/ng-packages';
+import { NgPersonsStore, NgPersonsActions } from '@skysmack/ng-persons';
 import { Person, PersonsAppState, PERSONS_AREA_KEY, PersonsPermissions } from '@skysmack/packages-persons';
 import { NgPersonsMenu } from '../../../ng-persons-menu';
 import { MenuItem } from '@skysmack/framework';

@@ -148,6 +148,9 @@
     },
     "ng-oauth2": {
       "tags": []
+    },
+    "ng-persons": {
+      "tags": []
     }
   }
 }

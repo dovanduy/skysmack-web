@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgPersonsActions, NgPersonsStore } from '@skysmack/ng-packages';
+import { NgPersonsActions, NgPersonsStore } from '@skysmack/ng-persons';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { Observable } from 'rxjs';
 import { PagedQuery } from '@skysmack/framework';

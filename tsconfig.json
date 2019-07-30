@@ -108,6 +108,9 @@
       ],
       "@skysmack/ng-oauth2": [
         "libs/ng-packages/ng-oauth2/src/public_api.ts"
+      ],
+      "@skysmack/ng-persons": [
+        "libs/ng-packages/ng-persons/src/public_api.ts"
       ]
     }
   },
