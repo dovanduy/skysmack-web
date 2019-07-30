@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LodgingTypesAppState, LodgingType } from '@skysmack/packages-lodgings';
-import { NgLodgingTypesStore, NgLodgingTypesActions } from '@skysmack/ng-packages';
+import { NgLodgingTypesStore, NgLodgingTypesActions } from '@skysmack/ng-lodgings';
 import { EditorNavService } from '@skysmack/portal-ui';
 import { NgFieldActions } from '@skysmack/ng-framework';
 import { NgLodgingTypesFieldsConfig } from '../../ng-lodging-types-fields-config';

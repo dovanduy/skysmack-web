@@ -3,10 +3,9 @@ import { LODGING_TYPE_RESERVATION_PRICE_CHANGES_REDUX_KEY, LodgingTypeReservatio
 import { Injectable } from '@angular/core';
 import { getReadDependencies } from '@skysmack/ng-framework';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
-import { NgLodgingsStore } from '../../../lodgings/lodgings/redux/ng-lodgings-store';
-import { NgLodgingsActions } from '../../../lodgings/lodgings/redux/ng-lodgings-actions';
 import { NgLodgingTypeReservationPriceChangesRequests } from './ng-lodging-type-reservation-price-changes-requests';
 import { NgLodgingTypeReservationPriceChangesNotifications } from '../ng-lodging-type-reservation-price-changes-notifications';
+import { NgLodgingsActions, NgLodgingsStore } from '@skysmack/ng-lodgings';
 
 @Injectable({ providedIn: 'root' })
 export class NgLodgingTypeReservationPriceChangesEpics extends RecordEpicsBase<LodgingTypeReservationPriceChange, number> {

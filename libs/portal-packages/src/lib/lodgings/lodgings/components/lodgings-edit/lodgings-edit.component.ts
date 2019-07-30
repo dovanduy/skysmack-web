@@ -4,9 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { EditorNavService } from '@skysmack/portal-ui';
 import { DocumentRecordFormComponent } from '@skysmack/portal-fields';
 import { LodgingsAppState, Lodging } from '@skysmack/packages-lodgings';
-import { NgLodgingsActions } from '@skysmack/ng-packages';
-import { NgLodgingsStore } from '@skysmack/ng-packages';
-import { NgLodgingTypesActions } from '@skysmack/ng-packages';
+import { NgLodgingsActions, NgLodgingTypesActions, NgLodgingsStore } from '@skysmack/ng-lodgings';
 import { NgFieldActions } from '@skysmack/ng-framework';
 import { NgLodgingsFieldsConfig } from '../../ng-lodgings-fields-config';
 

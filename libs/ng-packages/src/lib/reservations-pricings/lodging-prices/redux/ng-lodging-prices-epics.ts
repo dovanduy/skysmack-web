@@ -3,10 +3,9 @@ import { LODGING_PRICES_REDUX_KEY, LodgingPrice } from '@skysmack/packages-reser
 import { Injectable } from '@angular/core';
 import { getReadDependencies } from '@skysmack/ng-framework';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
-import { NgLodgingsStore } from '../../../lodgings/lodgings/redux/ng-lodgings-store';
-import { NgLodgingsActions } from '../../../lodgings/lodgings/redux/ng-lodgings-actions';
 import { NgLodgingPricesRequests } from './ng-lodging-prices-requests';
 import { NgLodgingPricesNotifications } from '../ng-lodging-prices-notifications';
+import { NgLodgingsStore, NgLodgingsActions } from '@skysmack/ng-lodgings';
 
 @Injectable({ providedIn: 'root' })
 export class NgLodgingPricesEpics extends RecordEpicsBase<LodgingPrice, number> {

@@ -5,8 +5,7 @@ import { getReadDependencies } from '@skysmack/ng-framework';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { NgLodgingTypePricesNotifications } from '../ng-lodging-type-prices-notifications';
 import { NgLodgingTypePricesRequests } from './ng-lodging-type-prices-requests';
-import { NgLodgingTypesStore } from '../../../lodgings/lodging-types/redux/ng-lodgings-types-store';
-import { NgLodgingTypesActions } from '../../../lodgings/lodging-types/redux/ng-lodging-types-actions';
+import { NgLodgingTypesStore, NgLodgingTypesActions } from '@skysmack/ng-lodgings';
 
 @Injectable({ providedIn: 'root' })
 export class NgLodgingTypePricesEpics extends RecordEpicsBase<LodgingTypePrice, number> {

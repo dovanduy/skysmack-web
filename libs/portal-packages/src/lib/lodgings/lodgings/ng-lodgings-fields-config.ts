@@ -2,7 +2,7 @@ import { Lodging, LODGINGS_AREA_KEY } from '@skysmack/packages-lodgings';
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { LocalObject, LocalObjectStatus, PagedQuery } from '@skysmack/framework';
-import { NgLodgingsValidation, NgLodgingTypesStore, NgLodgingTypesActions } from '@skysmack/ng-packages';
+import { NgLodgingsValidation, NgLodgingTypesStore, NgLodgingTypesActions } from '@skysmack/ng-lodgings';
 import { LoadedPackage, NgFieldStore } from '@skysmack/ng-framework';
 import { FormRule, Field, SelectField } from '@skysmack/ng-dynamic-forms';
 import { Router } from '@angular/router';

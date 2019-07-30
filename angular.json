@@ -1489,6 +1489,74 @@
           "styleext": "scss"
         }
       }
+    },
+    "ng-lodging-reservations": {
+      "projectType": "library",
+      "root": "libs/ng-packages/ng-lodging-reservations",
+      "sourceRoot": "libs/ng-packages/ng-lodging-reservations/src",
+      "prefix": "skysmack",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/ng-packages/ng-lodging-reservations/tsconfig.lib.json",
+              "libs/ng-packages/ng-lodging-reservations/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/ng-packages/ng-lodging-reservations/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/ng-packages/ng-lodging-reservations/jest.config.js",
+            "tsConfig": "libs/ng-packages/ng-lodging-reservations/tsconfig.spec.json",
+            "setupFile": "libs/ng-packages/ng-lodging-reservations/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "ng-lodgings": {
+      "projectType": "library",
+      "root": "libs/ng-packages/ng-lodgings",
+      "sourceRoot": "libs/ng-packages/ng-lodgings/src",
+      "prefix": "skysmack",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/ng-packages/ng-lodgings/tsconfig.lib.json",
+              "libs/ng-packages/ng-lodgings/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/ng-packages/ng-lodgings/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/ng-packages/ng-lodgings/jest.config.js",
+            "tsConfig": "libs/ng-packages/ng-lodgings/tsconfig.spec.json",
+            "setupFile": "libs/ng-packages/ng-lodgings/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
     }
   },
   "cli": {

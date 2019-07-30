@@ -96,6 +96,12 @@
       ],
       "@skysmack/ng-invoices-products": [
         "libs/ng-packages/ng-invoices-products/src/public_api.ts"
+      ],
+      "@skysmack/ng-lodging-reservations": [
+        "libs/ng-packages/ng-lodging-reservations/src/public_api.ts"
+      ],
+      "@skysmack/ng-lodgings": [
+        "libs/ng-packages/ng-lodgings/src/public_api.ts"
       ]
     }
   },

@@ -2,11 +2,7 @@ import { RecordEpicsBase, getReadDependencies } from '@skysmack/ng-framework';
 import { LodgingReservation, LODGING_RESERVATIONS_REDUX_KEY } from '@skysmack/packages-lodging-reservations';
 import { NgLodgingReservationsRequests } from './ng-lodging-reservations-requests';
 import { Injectable } from '@angular/core';
-import { NgLodgingTypesActions } from '../../../lodgings/lodging-types/redux/ng-lodging-types-actions';
-import { NgLodgingsActions } from '../../../lodgings/lodgings/redux/ng-lodgings-actions';
 import { NgLodgingReservationsNotifications } from '../ng-lodging-reservations-notifications';
-import { NgLodgingTypesStore } from '../../../lodgings/lodging-types/redux/ng-lodgings-types-store';
-import { NgLodgingsStore } from '../../../lodgings/lodgings/redux/ng-lodgings-store';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { ActionsObservable, ofType } from 'redux-observable';
 import { ReduxAction } from '@skysmack/redux';
@@ -14,6 +10,7 @@ import { Observable } from 'rxjs';
 import { NgLodgingReservationsActions } from './ng-lodging-reservations-actions';
 import { HttpErrorResponse } from '@skysmack/framework';
 import { map } from 'rxjs/operators';
+import { NgLodgingTypesStore, NgLodgingTypesActions, NgLodgingsActions, NgLodgingsStore } from '@skysmack/ng-lodgings';
 
 @Injectable({ providedIn: 'root' })
 export class NgLodgingReservationsEpics extends RecordEpicsBase<LodgingReservation, number> {

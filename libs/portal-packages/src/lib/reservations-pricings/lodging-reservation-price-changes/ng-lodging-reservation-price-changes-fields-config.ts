@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { LocalObject, LocalObjectStatus, PagedQuery } from '@skysmack/framework';
 import { FormRule, SelectField, Field } from '@skysmack/ng-dynamic-forms';
-import { NgLodgingReservationPriceChangesValidation, NgLodgingsStore, NgLodgingsActions } from '@skysmack/ng-packages';
+import { NgLodgingsStore, NgLodgingsActions } from '@skysmack/ng-lodgings';
 import { LoadedPackage, getPackageDendencyAsStream } from '@skysmack/ng-framework';
 import { LodgingReservationPriceChange } from '@skysmack/packages-reservations-pricings';
 import { LODGING_RESERVATION_PRICE_CHANGES_AREA_KEY } from '@skysmack/packages-reservations-pricings';
@@ -11,6 +11,7 @@ import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { map, take, switchMap } from 'rxjs/operators';
 import { FieldsConfig, FieldProviders } from '@skysmack/ng-fields';
 import { SelectFieldComponent, CheckboxFieldComponent, DecimalFieldComponent, IntFieldComponent, DateTimeFieldComponent, DateFieldComponent, FlaggedEnumFieldComponent, DaysOfWeekFlagged, HiddenFieldComponent } from '@skysmack/portal-fields';
+import { NgLodgingReservationPriceChangesValidation } from '@skysmack/ng-packages';
 
 @Injectable({ providedIn: 'root' })
 export class NgLodgingReservationPriceChangesFieldsConfig extends FieldsConfig<LodgingReservationPriceChange, number> {

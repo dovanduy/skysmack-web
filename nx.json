@@ -136,6 +136,12 @@
     },
     "ng-invoices-products": {
       "tags": []
+    },
+    "ng-lodging-reservations": {
+      "tags": []
+    },
+    "ng-lodgings": {
+      "tags": []
     }
   }
 }

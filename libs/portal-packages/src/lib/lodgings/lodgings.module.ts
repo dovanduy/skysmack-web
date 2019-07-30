@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { LodgingsRoutingModule } from './lodgings-routing.module';
 import { HttpClientModule } from '@angular/common/http';
-import { NgLodgingsModule } from '@skysmack/ng-packages';
+import { NgLodgingsModule } from '@skysmack/ng-lodgings';
 import { PortalUiModule } from '@skysmack/portal-ui';
 import { lodgingsComponents } from './lodgings/components/lodgings-components';
 import { lodgingTypesComponents } from './lodging-types/components/lodging-types-component';
