@@ -23,7 +23,6 @@ export class AuthorizationInterceptor implements HttpInterceptor {
         return this.ngRedux.select(store => store.hydrated).pipe(
             filter(state => state.hydrated === true),
             take(1),
-            tap(() => console.log('request')),
             switchMap(() => this.authenticationStore.getCurrentUser().pipe(
                 take(1),
                 mergeMap((currentUser: CurrentUser) => {

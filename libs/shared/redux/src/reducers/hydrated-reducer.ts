@@ -1,4 +1,4 @@
-import { sharedReducer } from '@skysmack/redux';
+import { sharedReducer } from './shared-reducer';
 
 export class HydratedState {
     public hydrated = false;

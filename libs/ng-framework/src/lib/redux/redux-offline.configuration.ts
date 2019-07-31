@@ -5,9 +5,8 @@ import defaultQueue from '@redux-offline/redux-offline/lib/defaults/queue';
 import { Config, OfflineAction, OfflineState } from '@redux-offline/redux-offline/lib/types';
 import { Observable } from 'rxjs';
 import { share } from 'rxjs/operators';
-import { TOOGLE_HYDRATED } from './hydrated-reducer';
 import { HttpMethod, ApiDomain, HttpSuccessResponse, HttpErrorResponse } from '@skysmack/framework';
-import { Effect, RecordActionsBase, cancelRecordActionOutboxFilter, cancelFieldActionOutboxFilter, FieldActions } from '@skysmack/redux';
+import { Effect, RecordActionsBase, cancelRecordActionOutboxFilter, cancelFieldActionOutboxFilter, FieldActions, TOOGLE_HYDRATED } from '@skysmack/redux';
 import * as localForage from 'localforage';
 
 // See https://github.com/redux-offline/redux-offline#configuration

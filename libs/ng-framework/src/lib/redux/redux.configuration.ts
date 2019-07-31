@@ -3,12 +3,10 @@ import { NgRedux } from '@angular-redux/store';
 import { createOffline } from '@redux-offline/redux-offline';
 import { applyMiddleware, compose, createStore, DeepPartial, Store, combineReducers, AnyAction, Reducer } from 'redux';
 import { createEpicMiddleware, EpicMiddleware } from 'redux-observable';
-import { ReduxOfflineConfiguration } from './redux-offline.configuration';
-import { ReducerRegistry, queueReducer } from '@skysmack/redux';
-import { portalReducer } from './portal-reducer';
-import { hydratedReducer } from './hydrated-reducer';
+import { ReducerRegistry, queueReducer, hydratedReducer } from '@skysmack/redux';
 import { mergeMap } from 'rxjs/operators';
-import { epic$ } from '@skysmack/ng-framework';
+import { ReduxOfflineConfiguration } from './redux-offline.configuration';
+import { epic$ } from '../epics/ng-root-epic';
 
 export const configureRedux = (ngRedux: NgRedux<any>, ngReduxRouter: NgReduxRouter, reduxOfflineConfiguration: ReduxOfflineConfiguration) => {
     const initialState: DeepPartial<any> = {};
@@ -30,7 +28,6 @@ export const configureRedux = (ngRedux: NgRedux<any>, ngReduxRouter: NgReduxRout
     };
 
     const reducerRegistry = ReducerRegistry.Instance;
-    reducerRegistry.register('portal', portalReducer);
     reducerRegistry.register('hydrated', hydratedReducer);
     reducerRegistry.register('queue', queueReducer);
     const rootReducer = combine(reducerRegistry.getReducers());
