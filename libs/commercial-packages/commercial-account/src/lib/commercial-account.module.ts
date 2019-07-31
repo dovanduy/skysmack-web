@@ -17,10 +17,10 @@ import { MaterialModule } from '@skysmack/portal-ui';
     DynamicFormsModule,
     PortalFieldsModule,
     MaterialModule,
-    CommercialAccountRoutingModule,
+    CommercialAccountRoutingModule
   ],
   declarations: [
-    ...commercialAccountComponents,
+    ...commercialAccountComponents
   ],
   providers: []
 })

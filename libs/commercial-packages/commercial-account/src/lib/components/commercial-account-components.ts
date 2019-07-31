@@ -4,7 +4,7 @@ import { CommercialLoginComponent } from './commercial-login/commercial-login.co
 
 export const commercialAccountRoutes: Routes = [
   {
-    path: '', component: CommercialLoginComponent
+    path: 'login', component: CommercialLoginComponent
   },
   {
     path: 'dashboard', component: CommercialDashboardComponent

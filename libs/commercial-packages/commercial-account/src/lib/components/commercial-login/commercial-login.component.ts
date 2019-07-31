@@ -57,12 +57,15 @@ export class CommercialLoginComponent implements OnInit {
   }
 
   public onSubmit(fh: FormHelper) {
-    fh.formValid(() => {
-      this.login(fh.form.getRawValue());
-    }, false);
+    // TODO: TEMP!!! REMOVE WHEN LOGIN WORKS
+    this.router.navigate(['account', 'dashboard']);
 
-    // Clear error when user starts to type again
-    this.subscriptionHandler.register(fh.form.valueChanges.subscribe(() => this.error = false));
+    // fh.formValid(() => {
+    //   this.login(fh.form.getRawValue());
+    // }, false);
+
+    // // Clear error when user starts to type again
+    // this.subscriptionHandler.register(fh.form.valueChanges.subscribe(() => this.error = false));
   }
 
   private login(credentials: { email: string, password: string }) {
@@ -74,7 +77,7 @@ export class CommercialLoginComponent implements OnInit {
     this.subscriptionHandler.register(this.store.isCurrentUserAuthenticated()
       .pipe(filter(loggedIn => loggedIn === true)).subscribe(() => {
         this.success = true;
-        this.router.navigate(['/dashboard']);
+        this.router.navigate(['account', 'dashboard']);
       }));
   }
 
