@@ -1,5 +1,5 @@
 import { animate, style, transition, trigger } from '@angular/animations';
-import { Component, OnInit, OnDestroy, Input, Inject } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input, Inject, Optional } from '@angular/core';
 import { Router } from '@angular/router';
 import { EntityComponentPageTitle } from '@skysmack/portal-ui';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
@@ -59,7 +59,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     public fieldsConfig: LoginFieldsConfig,
     public requests: Oauth2Requests,
     public dialog: MatDialog,
-    @Inject(MAT_DIALOG_DATA) public data: { packagePath: string }
+    @Optional() @Inject(MAT_DIALOG_DATA) public data: { packagePath: string }
   ) { }
 
   ngOnInit() {
