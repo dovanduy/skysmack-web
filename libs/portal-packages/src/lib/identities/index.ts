@@ -2,7 +2,7 @@ export * from './components/index';
 export * from './identities-routing.module';
 export * from './identities.module';
 export * from './accounts/index';
-
+export * from './ng-identities-index-menu-provider';
 export * from './ng-identities-index-menu';
 export * from './ng-set-password-fields-config';
 export * from './ng-lockout-settings-fields-config';

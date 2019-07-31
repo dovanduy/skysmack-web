@@ -50,22 +50,22 @@ export class NgIdentitiesIndexMenu extends SidebarMenu {
 
         this.addToPrimaryMenuAreas([
             new MenuArea({
-                area: 'actions2',
+                area: 'actions',
                 translationPrefix: this.translationPrefix,
                 order: 1
             }),
             new MenuArea({
-                area: 'manage2',
+                area: 'manage',
                 translationPrefix: this.translationPrefix,
                 order: 2
             }),
             new MenuArea({
-                area: 'account2',
+                area: 'account',
                 translationPrefix: this.translationPrefix,
                 order: 3
             }),
             new MenuArea({
-                area: 'settings2',
+                area: 'settings',
                 translationPrefix: this.translationPrefix,
                 order: 3
             })
@@ -73,7 +73,7 @@ export class NgIdentitiesIndexMenu extends SidebarMenu {
 
         this.addToPrimaryMenuItems([
             new MenuItem({
-                url: 'roles2',
+                url: 'roles',
                 displayName: this.translationPrefix + 'ROLES',
                 area: 'manage',
                 order: 1,
@@ -83,31 +83,31 @@ export class NgIdentitiesIndexMenu extends SidebarMenu {
                 ]
             }),
             new MenuItem({
-                url: 'users2',
+                url: 'users',
                 displayName: this.translationPrefix + 'USERS',
-                area: 'manage2',
+                area: 'manage',
                 order: 2,
-                icon: 'groupAdd2',
+                icon: 'groupAdd',
                 permissions: [
                     IdentitiesPermissions.findUsers
                 ]
             }),
             new MenuItem({
-                url: 'applications2',
+                url: 'applications',
                 displayName: this.translationPrefix + 'APPLICATIONS',
-                area: 'manage2',
+                area: 'manage',
                 order: 3,
-                icon: 'groupAdd2',
+                icon: 'groupAdd',
                 permissions: [
                     IdentitiesPermissions.findApplications
                 ]
             }),
             new MenuItem({
-                url: 'change-password2',
+                url: 'change-password',
                 displayName: this.translationPrefix + 'CHANGE_PASSWORD',
-                area: 'account2',
+                area: 'account',
                 order: 1,
-                icon: 'groupAdd2'
+                icon: 'groupAdd'
             }),
             new MenuItem({
                 url: 'forgot-password',

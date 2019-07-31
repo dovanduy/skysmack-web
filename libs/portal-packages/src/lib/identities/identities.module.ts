@@ -16,12 +16,14 @@ import { accountsComponents } from './accounts/components/accounts-components';
 import { MatSelectModule } from '@angular/material/select';
 import { RolesSelectFieldComponent } from './identity-roles/components/roles-select-field/roles-select-field.component';
 import { CoalescingComponentFactoryResolver } from '@skysmack/ng-framework';
-import { RolesSelectComponent } from './identity-roles';
+import { RolesSelectComponent, NgRolesMenuProvider } from './identity-roles';
 import { DynamicFormsModule } from '@skysmack/portal-dynamic-forms';
 import { SettingsModule } from '@skysmack/portal-settings';
 import { PortalFieldsModule } from '@skysmack/portal-fields';
 import { applicationsComponents } from './identity-applications/components/applications-components';
 import { NgIdentitiesIndexMenuProvider } from './ng-identities-index-menu-provider';
+import { NgUsersMenuProvider } from './identity-users/ng-users-menu-provider';
+import { NgApplicationsMenuProvider } from './identity-applications/ng-applications-menu-provider';
 
 @NgModule({
   imports: [
@@ -60,11 +62,18 @@ import { NgIdentitiesIndexMenuProvider } from './ng-identities-index-menu-provid
 export class IdentitiesModule {
   constructor(
     ngMenuProviders: NgMenuProviders,
-    menu: NgIdentitiesIndexMenuProvider,
+    ngIdentitiesIndexMenuProvider: NgIdentitiesIndexMenuProvider,
+    ngApplicationsMenuProvider: NgApplicationsMenuProvider,
+    ngRolesMenuProvider: NgRolesMenuProvider,
     coalescingResolver: CoalescingComponentFactoryResolver,
-    localResolver: ComponentFactoryResolver
+    localResolver: ComponentFactoryResolver,
+    ngUsersMenuProvider: NgUsersMenuProvider,
   ) {
     coalescingResolver.registerResolver(localResolver);
-    ngMenuProviders.add(menu)
+    ngMenuProviders
+    .add(ngIdentitiesIndexMenuProvider)
+    .add(ngApplicationsMenuProvider)
+    .add(ngRolesMenuProvider)
+    .add(ngUsersMenuProvider)
   }
 }

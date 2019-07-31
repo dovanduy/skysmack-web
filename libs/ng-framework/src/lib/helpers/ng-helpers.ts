@@ -83,7 +83,6 @@ export const setBackButton = (options?: {
                 icon: 'arrowBack',
                 providedIn: ['sidebar']
             }));
-            console.log('hello boi', menuItems)
             return of(menuItems);
         }  
     })
