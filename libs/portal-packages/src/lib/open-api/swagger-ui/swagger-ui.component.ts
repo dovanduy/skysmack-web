@@ -22,7 +22,7 @@ export class SwaggerUiComponent implements AfterViewInit {
     const ui = SwaggerUI({
       url: this.apiDomain.domain + '/' + this.router.url.split('/')[1],
       domNode: this.el.nativeElement.querySelector('.swagger-container'),
-      deepLinking: true,
+      deepLinking: false,
       docExpansion: 'none',
       presets: [
         SwaggerUI.presets.apis

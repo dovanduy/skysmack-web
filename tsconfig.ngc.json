@@ -154,6 +154,9 @@
       ],
       "@skysmack/ng-terminal-payments": [
         "libs/ng-packages/ng-terminal-payments"
+      ],
+      "@skysmack/commercial-account": [
+        "libs/commercial-packages/commercial-account"
       ]
     }
   },
