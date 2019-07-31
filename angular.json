@@ -467,37 +467,6 @@
         }
       }
     },
-    "ng-packages": {
-      "root": "libs/ng-packages",
-      "sourceRoot": "libs/ng-packages/src",
-      "projectType": "library",
-      "prefix": "skysmack",
-      "architect": {
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/ng-packages/tsconfig.lib.json",
-              "libs/ng-packages/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/builders:jest",
-          "options": {
-            "jestConfig": "libs/ng-packages/jest.config.js",
-            "tsConfig": "libs/ng-packages/tsconfig.spec.json",
-            "setupFile": "libs/ng-packages/src/test-setup.ts"
-          }
-        }
-      },
-      "schematics": {
-        "@nrwl/schematics:component": {
-          "styleext": "scss"
-        }
-      }
-    },
     "ng-framework": {
       "root": "libs/ng-framework",
       "sourceRoot": "libs/ng-framework/src",
@@ -1617,6 +1586,40 @@
             "jestConfig": "libs/ng-packages/ng-oauth2/jest.config.js",
             "tsConfig": "libs/ng-packages/ng-oauth2/tsconfig.spec.json",
             "setupFile": "libs/ng-packages/ng-oauth2/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "ng-packages": {
+      "projectType": "library",
+      "root": "libs/ng-packages/ng-packages",
+      "sourceRoot": "libs/ng-packages/ng-packages/src",
+      "prefix": "skysmack",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/ng-packages/ng-packages/tsconfig.lib.json",
+              "libs/ng-packages/ng-packages/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/ng-packages/ng-packages/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/ng-packages/ng-packages/jest.config.js",
+            "tsConfig": "libs/ng-packages/ng-packages/tsconfig.spec.json",
+            "setupFile": "libs/ng-packages/ng-packages/src/test-setup.ts"
           }
         }
       },

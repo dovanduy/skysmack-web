@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { PackagesRoutingModule } from './packages-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { PortalUiModule } from '@skysmack/portal-ui';

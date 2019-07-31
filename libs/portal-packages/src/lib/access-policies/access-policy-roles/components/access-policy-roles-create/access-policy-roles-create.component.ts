@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { NgSkysmackStore, NgSkysmackActions } from '@skysmack/ng-skysmack';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EditorNavService } from '@skysmack/portal-ui';
-import {  } from '@skysmack/ng-packages';
 import { AccessPolicyRolesAppState, AccessPolicyRole, AccessPolicyRoleKey } from '@skysmack/packages-skysmack-core';
 import { NgAccessPolicyRolesFieldsConfig } from '../../ng-access-policy-roles-fields-config';
 import { RecordFormComponent } from '@skysmack/portal-fields';

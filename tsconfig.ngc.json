@@ -134,6 +134,9 @@
       "@skysmack/ng-oauth2": [
         "libs/ng-packages/ng-oauth2"
       ],
+      "@skysmack/ng-packages": [
+        "libs/ng-packages/ng-packages"
+      ],
       "@skysmack/ng-persons": [
         "libs/ng-packages/ng-persons"
       ],

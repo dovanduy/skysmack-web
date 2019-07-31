@@ -1,7 +1,7 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "outDir": "../../dist/out-tsc/libs/ng-packages",
+    "outDir": "../../../dist/out-tsc/libs/ng-packages",
     "module": "commonjs",
     "types": ["jest", "node"]
   },
