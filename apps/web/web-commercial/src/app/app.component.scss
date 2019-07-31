@@ -1,10 +1,12 @@
 @import "../../../../../assets/scss/_includes.scss";
 
+$nav-height: 72px;
+
 skysmack-app {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   position: absolute;
-  top: 56px;
+  top: $nav-height;
   bottom: 0;
   left: 0;
   right: 0;
@@ -12,7 +14,7 @@ skysmack-app {
 
 nav.docs-navbar-header {
   position: fixed;
-  top: -56px;
+  top: -$nav-height;
   left: 0;
   right: 0;
   min-height: 56px;
@@ -61,7 +63,7 @@ nav.docs-navbar-header {
   position: fixed;
   visibility: hidden;
   opacity: 0;
-  top: 56px;
+  top: $nav-height;
   z-index: 1;
   width: 100%;
   height: 0;
@@ -92,7 +94,7 @@ nav.docs-navbar-header {
   }
 
   &.open {
-    height: 56px;
+    height: $nav-height;
     visibility: visible;
     opacity: 1;
 
@@ -163,7 +165,7 @@ nav.footer {
 
 @keyframes navbar-entry {
   0% {
-    top: -56px;
+    top: -$nav-height;
   }
 
   100% {
