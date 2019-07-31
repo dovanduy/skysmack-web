@@ -1,12 +1,17 @@
 import { Routes } from '@angular/router';
-import { CommercialAccountIndexComponent } from './commercial-account-index/commercial-account-index.component';
+import { CommercialDashboardComponent } from './commercial-dashboard/commercial-dashboard.component';
+import { CommercialLoginComponent } from './commercial-login/commercial-login.component';
 
 export const commercialAccountRoutes: Routes = [
   {
-    path: '', component: CommercialAccountIndexComponent
+    path: '', component: CommercialDashboardComponent
+  },
+  {
+    path: 'login', component: CommercialDashboardComponent
   }
 ];
 
 export const commercialAccountComponents: any[] = [
-  CommercialAccountIndexComponent
+  CommercialDashboardComponent,
+  CommercialLoginComponent
 ];

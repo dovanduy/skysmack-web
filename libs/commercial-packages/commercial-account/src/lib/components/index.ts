@@ -1,3 +1,3 @@
-export * from './commercial-account-index/commercial-account-index.component';
+export * from './commercial-dashboard/commercial-dashboard.component';
 export * from './commercial-account-components';
 

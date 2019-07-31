@@ -9,4 +9,4 @@ import { Route } from '@angular/router';
 })
 export class CommercialAccountWrapperModule { }
 
-export const commercialAccountRoute = { path: 'account', loadChildren: './packages/commercial_account_wrapper.module#CommercialAccountWrapperModule' } as Route;
+export const commercialAccountRoute = { path: 'login', loadChildren: './packages/commercial_account_wrapper.module#CommercialAccountWrapperModule' } as Route;
