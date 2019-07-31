@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EditorNavService } from '@skysmack/portal-ui';
-import { NgLodgingTypePricesActions, NgLodgingTypePricesStore } from '@skysmack/ng-packages';
+import { NgLodgingTypePricesActions, NgLodgingTypePricesStore } from '@skysmack/ng-reservations-pricings';
 import { LodgingTypePricesAppState, LodgingTypePrice } from '@skysmack/packages-reservations-pricings';
 import { NgLodgingTypePricesFieldsConfig } from '../../ng-lodging-type-prices-fields-config';
 import { RecordFormComponent } from '@skysmack/portal-fields';

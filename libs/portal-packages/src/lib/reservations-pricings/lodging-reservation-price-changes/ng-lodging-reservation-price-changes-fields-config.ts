@@ -11,7 +11,7 @@ import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { map, take, switchMap } from 'rxjs/operators';
 import { FieldsConfig, FieldProviders } from '@skysmack/ng-fields';
 import { SelectFieldComponent, CheckboxFieldComponent, DecimalFieldComponent, IntFieldComponent, DateTimeFieldComponent, DateFieldComponent, FlaggedEnumFieldComponent, DaysOfWeekFlagged, HiddenFieldComponent } from '@skysmack/portal-fields';
-import { NgLodgingReservationPriceChangesValidation } from '@skysmack/ng-packages';
+import { NgLodgingReservationPriceChangesValidation } from '@skysmack/ng-reservations-pricings';
 
 @Injectable({ providedIn: 'root' })
 export class NgLodgingReservationPriceChangesFieldsConfig extends FieldsConfig<LodgingReservationPriceChange, number> {

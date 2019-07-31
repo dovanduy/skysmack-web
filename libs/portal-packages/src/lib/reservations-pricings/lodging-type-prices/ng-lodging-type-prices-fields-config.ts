@@ -9,7 +9,7 @@ import { switchMap, map, take } from 'rxjs/operators';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { FieldsConfig, FieldProviders } from '@skysmack/ng-fields';
 import { SelectFieldComponent, DecimalFieldComponent, HiddenFieldComponent } from '@skysmack/portal-fields';
-import { NgLodgingTypePricesValidation } from '@skysmack/ng-packages';
+import { NgLodgingTypePricesValidation } from '@skysmack/ng-reservations-pricings';
 
 @Injectable({ providedIn: 'root' })
 export class NgLodgingTypePricesFieldsConfig extends FieldsConfig<LodgingTypePrice, number> {

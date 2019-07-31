@@ -4,7 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { LODGING_RESERVATION_PRICE_CHANGES_AREA_KEY, LodgingReservationPriceChangesAppState, LodgingReservationPriceChange } from '@skysmack/packages-reservations-pricings';
 import { MenuItem } from '@skysmack/framework';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
-import { NgLodgingReservationPriceChangesActions, NgLodgingReservationPriceChangesStore } from '@skysmack/ng-packages';
+import { NgLodgingReservationPriceChangesActions, NgLodgingReservationPriceChangesStore } from '@skysmack/ng-reservations-pricings';
 import { NgLodgingReservationPriceChangesMenu } from '../../ng-lodging-reservation-price-changes-menu';
 import { NgLodgingReservationPriceChangesFieldsConfig } from '../../ng-lodging-reservation-price-changes-fields-config';
 import { RecordIndexComponent } from '@skysmack/portal-fields';

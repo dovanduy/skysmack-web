@@ -4,7 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { LODGING_TYPE_PRICES_AREA_KEY, LodgingTypePricesAppState, LodgingTypePrice } from '@skysmack/packages-reservations-pricings';
 import { MenuItem } from '@skysmack/framework';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
-import { NgLodgingTypePricesActions, NgLodgingTypePricesStore } from '@skysmack/ng-packages';
+import { NgLodgingTypePricesActions, NgLodgingTypePricesStore } from '@skysmack/ng-reservations-pricings';
 import { NgLodgingTypePricesMenu } from '../../ng-lodging-type-prices-menu';
 import { NgLodgingTypePricesFieldsConfig } from '../../ng-lodging-type-prices-fields-config';
 import { RecordIndexComponent } from '@skysmack/portal-fields';

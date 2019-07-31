@@ -160,6 +160,9 @@
     },
     "ng-products-pricings": {
       "tags": []
+    },
+    "ng-reservations-pricings": {
+      "tags": []
     }
   }
 }

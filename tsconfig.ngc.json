@@ -145,6 +145,9 @@
       ],
       "@skysmack/ng-products-pricings": [
         "libs/ng-packages/ng-products-pricings"
+      ],
+      "@skysmack/ng-reservations-pricings": [
+        "libs/ng-packages/ng-reservations-pricings"
       ]
     }
   },
