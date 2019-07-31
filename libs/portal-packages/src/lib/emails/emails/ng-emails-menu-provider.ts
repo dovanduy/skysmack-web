@@ -4,15 +4,11 @@ import { MenuArea, MenuProvider } from '@skysmack/framework';
 import { MenuItem } from '@skysmack/framework';
 import { Guid } from 'guid-typescript';
 import { of, Observable } from 'rxjs';
-import { AccessPoliciesPermissions } from '@skysmack/ng-access-policies';
-import { setBackButton } from '@skysmack/ng-framework';
-
-
 
 @Injectable({ providedIn: 'root' })
-export class NgAccessPolicyRulesMenuProvider extends MenuProvider {
+export class NgEmailsIndexMenuProvider extends MenuProvider {
     public id = Guid.create().toString();
-    public translationPrefix = 'ACCESS_POLICY_RULES.INDEX.';
+    public translationPrefix = 'EMAILS.INDEX.';
 
     constructor(
         public store: NgSkysmackStore
@@ -21,35 +17,30 @@ export class NgAccessPolicyRulesMenuProvider extends MenuProvider {
     public getMenuAreas(packagePath: string, componentKey: string): Observable<MenuArea[]> {
         return of([
             new MenuArea({
-                area: 'actions',
-                translationPrefix: this.translationPrefix,
-                order: 1
-            }),
-            new MenuArea({
                 area: 'manage',
                 translationPrefix: this.translationPrefix,
-                order: 2
+                order: 1
             })
         ])
     };
 
     public getMenuItems(packagePath: string, componentKey: string): Observable<MenuItem[]> {
-        if(componentKey === "access-policy-rules") {
+        if(componentKey === 'emails-index') {
             return of([
                 new MenuItem({
-                    url: 'create',
-                    displayName: this.translationPrefix + 'CREATE',
-                    area: 'actions',
+                    url: 'templates',
+                    displayName: this.translationPrefix + 'TEMPLATES',
+                    area: 'manage',
                     order: 1,
                     icon: 'groupAdd',
                     permissions: [
-                        AccessPoliciesPermissions.addRules
+                        //??
                     ],
                     providedIn: ['sidebar']
                 })
-            ]).pipe(setBackButton({ customPath: '/access-policies' }));
+            ]);
         } else {
-            return of([]);
+           return of([]);
         }
     };
 }

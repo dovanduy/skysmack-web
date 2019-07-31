@@ -1,4 +1,4 @@
-<ss-container [sidebarMenu]="sidebarMenu" (menuItemActionEvent)="actionEvent($event)"
+<ss-container [sidebarMenu]="sidebarMenu" (menuItemActionEvent)="actionEvent($event)" [componentKey]="'emails-templates'"
     *ngIf="loadedPackage$ | async as loadedPackage">
     <ss-records-container [area]="areaKey" [cancelAction]="actions.cancelAction" [title]="loadedPackage._package.name"
         [entities$]="pagedEntities$" [menuItemActions$]="menuItemActions$" [packagePath]="packagePath"

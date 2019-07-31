@@ -4,15 +4,12 @@ import { MenuArea, MenuProvider } from '@skysmack/framework';
 import { MenuItem } from '@skysmack/framework';
 import { Guid } from 'guid-typescript';
 import { of, Observable } from 'rxjs';
-import { AccessPoliciesPermissions } from '@skysmack/ng-access-policies';
 import { setBackButton } from '@skysmack/ng-framework';
 
-
-
 @Injectable({ providedIn: 'root' })
-export class NgAccessPolicyRulesMenuProvider extends MenuProvider {
+export class NgEmailsTemplatesMenuProvider extends MenuProvider {
     public id = Guid.create().toString();
-    public translationPrefix = 'ACCESS_POLICY_RULES.INDEX.';
+    public translationPrefix = 'EMAILS_TEMPLATES.INDEX3.';
 
     constructor(
         public store: NgSkysmackStore
@@ -34,22 +31,22 @@ export class NgAccessPolicyRulesMenuProvider extends MenuProvider {
     };
 
     public getMenuItems(packagePath: string, componentKey: string): Observable<MenuItem[]> {
-        if(componentKey === "access-policy-rules") {
+        if(componentKey === 'emails-templates') {
             return of([
                 new MenuItem({
                     url: 'create',
                     displayName: this.translationPrefix + 'CREATE',
                     area: 'actions',
                     order: 1,
-                    icon: 'groupAdd',
+                    icon: 'add',
                     permissions: [
-                        AccessPoliciesPermissions.addRules
+                        //??
                     ],
                     providedIn: ['sidebar']
                 })
-            ]).pipe(setBackButton({ customPath: '/access-policies' }));
+            ]).pipe(setBackButton({ customPath: '/emails' }));
         } else {
-            return of([]);
+           return of([]);
         }
     };
 }
