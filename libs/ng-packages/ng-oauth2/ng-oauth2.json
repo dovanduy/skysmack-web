@@ -8,7 +8,7 @@
     "tslib",
     "@skysmack/framework",
     "@skysmack/redux",
-    "@skysmack/packages-invoices-cash-payments",
+    "@skysmack/packages-oauth2",
     "@skysmack/packages-skysmack-core"
   ]
 }
