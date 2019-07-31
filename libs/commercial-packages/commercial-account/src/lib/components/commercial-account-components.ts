@@ -4,10 +4,10 @@ import { CommercialLoginComponent } from './commercial-login/commercial-login.co
 
 export const commercialAccountRoutes: Routes = [
   {
-    path: '', component: CommercialDashboardComponent
+    path: '', component: CommercialLoginComponent
   },
   {
-    path: 'login', component: CommercialDashboardComponent
+    path: 'dashboard', component: CommercialDashboardComponent
   }
 ];
 

@@ -39,7 +39,6 @@ import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
   ]
 })
 export class LoginComponent implements OnInit, OnDestroy {
-
   @Input() public removeCloseButton: boolean = false;
   public loggingIn = false;
   public error = false;

@@ -1,0 +1,36 @@
+import { Injectable } from '@angular/core';
+import { Validators } from '@angular/forms';
+import { FormRule, Field, CustomValidators } from '@skysmack/ng-dynamic-forms';
+import { EmailFieldComponent, PasswordFieldComponent } from '@skysmack/portal-fields';
+import { CommercialLoginValidation } from './commercial-login-validation';
+
+@Injectable({ providedIn: 'root' })
+export class CommercialLoginFieldsConfig {
+    public validation = new CommercialLoginValidation();
+    public area = '';
+    public formRules: FormRule[] = [];
+
+    constructor() { }
+
+    public getFields(): Field[] {
+        const fields = [
+            new Field({
+                component: EmailFieldComponent,
+                value: undefined,
+                key: 'email',
+                validators: [Validators.required, CustomValidators.validEmail()],
+                order: 1,
+            }),
+
+            new Field({
+                component: PasswordFieldComponent,
+                value: undefined,
+                key: 'password',
+                validators: [Validators.required],
+                order: 2,
+            })
+        ];
+
+        return fields;
+    }
+}
