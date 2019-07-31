@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { TerminalPaymentsRoutingModule } from './terminal-payments-routing.module';
 import { HttpClientModule } from '@angular/common/http';
-import { NgTerminalPaymentsModule } from '@skysmack/ng-packages';
+import { NgTerminalPaymentsModule } from '@skysmack/ng-terminal-payments';
 import { PortalUiModule, MenuItemActionProviders } from '@skysmack/portal-ui';
 import { terminalsComponents } from './terminals/components/terminals-components';
 import { receiptsComponents } from './receipts/components/receipts-component';

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { Receipt, RECEIPTS_AREA_KEY } from '@skysmack/packages-terminal-payments';
-import { NgReceiptsValidation } from '@skysmack/ng-packages';
+import { NgReceiptsValidation } from '@skysmack/ng-terminal-payments';
 import { LoadedPackage, NgFieldStore } from '@skysmack/ng-framework';
 import { FormRule, Field } from '@skysmack/ng-dynamic-forms';
 import { FieldProviders } from '@skysmack/ng-fields';

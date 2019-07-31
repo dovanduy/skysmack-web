@@ -13,7 +13,7 @@ import { HttpClient } from '@angular/common/http';
 import { Invoice } from 'libs/packages/invoices/src';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { RecordFormComponent } from '@skysmack/portal-fields';
-import { NgTerminalsActions, NgTerminalsStore } from '@skysmack/ng-packages';
+import { NgTerminalsActions, NgTerminalsStore } from '@skysmack/ng-terminal-payments';
 
 @Component({
   selector: 'ss-terminals-pay',

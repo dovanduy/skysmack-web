@@ -3,8 +3,7 @@ import { ConnectionsAppState, Connection, ConnectionKey } from '@skysmack/packag
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EditorNavService } from '@skysmack/portal-ui';
-import { NgConnectionsActions } from '@skysmack/ng-packages';
-import { NgConnectionsStore } from '@skysmack/ng-packages';
+import { NgConnectionsActions, NgConnectionsStore } from '@skysmack/ng-terminal-payments';
 import { NgConnectionsFieldsConfig } from '../../ng-connections-fields-config';
 import { FormHelper } from '@skysmack/ng-dynamic-forms';
 import { toLocalObject, LocalObjectStatus } from '@skysmack/framework';

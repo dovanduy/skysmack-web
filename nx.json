@@ -163,6 +163,9 @@
     },
     "ng-reservations-pricings": {
       "tags": []
+    },
+    "ng-terminal-payments": {
+      "tags": []
     }
   }
 }

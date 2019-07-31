@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgTerminalsActions, NgTerminalsStore } from '@skysmack/ng-packages';
+import { NgTerminalsActions, NgTerminalsStore } from '@skysmack/ng-terminal-payments';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EditorNavService } from '@skysmack/portal-ui';

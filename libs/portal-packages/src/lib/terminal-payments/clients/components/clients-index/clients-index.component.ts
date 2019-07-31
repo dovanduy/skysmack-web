@@ -6,7 +6,7 @@ import { NgClientsMenu } from '../../ng-clients-menu';
 import { MenuItem } from '@skysmack/framework';
 import { NgClientsFieldsConfig } from '../../ng-clients-fields-config';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
-import { NgClientsActions, NgClientsStore } from '@skysmack/ng-packages';
+import { NgClientsActions, NgClientsStore } from '@skysmack/ng-terminal-payments';
 import { RecordIndexComponent } from '@skysmack/portal-fields';
 
 @Component({

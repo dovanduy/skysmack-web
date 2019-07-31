@@ -123,6 +123,9 @@
       ],
       "@skysmack/ng-reservations-pricings": [
         "libs/ng-packages/ng-reservations-pricings/src/public_api.ts"
+      ],
+      "@skysmack/ng-terminal-payments": [
+        "libs/ng-packages/ng-terminal-payments/src/public_api.ts"
       ]
     }
   },
