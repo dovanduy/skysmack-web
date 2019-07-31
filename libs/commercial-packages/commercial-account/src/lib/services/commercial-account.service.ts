@@ -2,7 +2,7 @@ import { Injectable, Inject } from '@angular/core';
 import { map, catchError } from 'rxjs/operators';
 import { AuthenticationActions, ReduxAction } from '@skysmack/redux';
 import { of, Observable } from 'rxjs';
-import { ApiDomain, CurrentUser, HttpErrorResponse, API_DOMAIN_INJECTOR_TOKEN } from '@skysmack/framework';
+import { ApiDomain, CurrentUser, HttpErrorResponse, API_DOMAIN_INJECTOR_TOKEN, HttpResponse } from '@skysmack/framework';
 import { HttpParams, HttpClient } from '@angular/common/http';
 
 @Injectable({ providedIn: 'root' })
@@ -12,7 +12,7 @@ export class CommercialAccountService {
         @Inject(API_DOMAIN_INJECTOR_TOKEN) protected apiDomain: ApiDomain
     ) { }
 
-    login(email: string, password: string): Observable<ReduxAction<CurrentUser> | ReduxAction<HttpErrorResponse>> {
+    public login(email: string, password: string): Observable<ReduxAction<CurrentUser> | ReduxAction<HttpErrorResponse>> {
         const url = `${this.apiDomain.domain}/connect/token`;
         const params = new HttpParams()
             .append('grant_type', 'password')
@@ -38,6 +38,17 @@ export class CommercialAccountService {
                 payload: error,
                 error: true
             }))))
+        );
+    }
+
+    public forgotPassword(email: { email: string }): Observable<any> {
+        // Not implemented
+        return of();
+    }
+
+    public changePassword(password: any): Observable<HttpResponse | HttpErrorResponse> {
+        return this.http.post(`${this.apiDomain}/account/password`, password, { observe: 'response' }).pipe(
+            catchError((error) => of(error))
         );
     }
 }

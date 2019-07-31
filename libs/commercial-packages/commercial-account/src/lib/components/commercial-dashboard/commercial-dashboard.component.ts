@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { NgAuthenticationStore } from '@skysmack/ng-framework';
 import { Observable } from 'rxjs';
 import { CurrentUser } from '@skysmack/framework';
-import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'ss-commercial-dashboard',
@@ -19,7 +18,5 @@ export class CommercialDashboardComponent implements OnInit {
 
   ngOnInit() {
     this.currentUser$ = this.store.getCurrentUser();
-    this.currentUser$.pipe(tap(x => console.log(x))).subscribe();
   }
-
 }
