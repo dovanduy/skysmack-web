@@ -1,7 +1,7 @@
 import { Router } from '@angular/router';
-import { Package, LocalObject, toLocalObject } from '@skysmack/framework';
-import { map } from 'rxjs/operators';
-import { combineLatest } from 'rxjs';
+import { Package, LocalObject, toLocalObject, MenuItem } from '@skysmack/framework';
+import { map, switchMap } from 'rxjs/operators';
+import { combineLatest, pipe, of } from 'rxjs';
 import { SkysmackStore } from '../stores/skysmack-store';
 
 export const getAdditionalPaths = (router: Router, packagePath): string[] => {
@@ -45,3 +45,46 @@ export const getPackageDendencyAsStream = (skysmackStore: SkysmackStore, package
         map(([packages, currentPackage]) => getNParentPackageDependency(packages, currentPackage._package, dependencyIndexes)),
     );
 }
+
+export const setBackButton = (options?: {
+    connectedPackage?: boolean;
+    dependencyIndexes?: number[];
+    customPath?: string;
+}) => pipe(
+    switchMap((menuItems: MenuItem[]) => {
+        if (!options) {
+            menuItems.push(new MenuItem({
+                url: '/' + this.packagePath,
+                displayName: 'UI.MISC.BACK',
+                area: 'manage',
+                order: 2,
+                icon: 'arrowBack',
+                providedIn: ['sidebar']
+            }));
+            return of(menuItems)
+        } else if (options.connectedPackage) {
+            return getPackageDendencyAsStream(this.skysmackStore, this.packagePath, options.dependencyIndexes ? options.dependencyIndexes : [0]).pipe(
+                map(targetPackage => menuItems.concat([new MenuItem({
+                    url: '/' + targetPackage.object.path,
+                    displayName: targetPackage.object.name,
+                    area: 'connected_packages',
+                    order: 2,
+                    icon: 'arrowBack',
+                    providedIn: ['sidebar']
+                })])),
+            );
+        } else {
+            const path = options.customPath ? options.customPath : '/' + this.packagePath;
+            menuItems.push(new MenuItem({
+                url: path,
+                displayName: 'UI.MISC.BACK',
+                area: 'manage',
+                order: 2,
+                icon: 'arrowBack',
+                providedIn: ['sidebar']
+            }));
+            console.log('hello boi', menuItems)
+            return of(menuItems);
+        }  
+    })
+);

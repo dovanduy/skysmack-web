@@ -19,34 +19,38 @@ export class NgIdentitiesIndexMenuProvider extends MenuProvider {
     ) { super(); }
 
     public getMenuAreas(packagePath: string, componentKey: string): Observable<MenuArea[]> {
-        return of([
-            new MenuArea({
-                area: 'actions',
-                translationPrefix: this.translationPrefix,
-                order: 1
-            }),
-            new MenuArea({
-                area: 'manage',
-                translationPrefix: this.translationPrefix,
-                order: 2
-            }),
-            new MenuArea({
-                area: 'account',
-                translationPrefix: this.translationPrefix,
-                order: 3
-            }),
-            new MenuArea({
-                area: 'settings',
-                translationPrefix: this.translationPrefix,
-                order: 3
-            }),
-            new MenuArea({
-                area: 'identities',
-                icon: 'account_circle',
-                translationPrefix: this.translationPrefix,
-                order: 1,
-            })
-        ])
+        if(componentKey === 'identities-index') {
+            return of([
+                new MenuArea({
+                    area: 'actions',
+                    translationPrefix: this.translationPrefix,
+                    order: 1
+                }),
+                new MenuArea({
+                    area: 'manage',
+                    translationPrefix: this.translationPrefix,
+                    order: 2
+                }),
+                new MenuArea({
+                    area: 'account',
+                    translationPrefix: this.translationPrefix,
+                    order: 3
+                }),
+                new MenuArea({
+                    area: 'settings',
+                    translationPrefix: this.translationPrefix,
+                    order: 3
+                }),
+                new MenuArea({
+                    area: 'identities',
+                    icon: 'account_circle',
+                    translationPrefix: this.translationPrefix,
+                    order: 1,
+                })
+            ])
+        } else {
+            return of([]);
+        }
     };
 
     public getMenuItems(packagePath: string, componentKey: string): Observable<MenuItem[]> {
