@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { LocalObject, LocalObjectStatus, PagedQuery } from '@skysmack/framework';
 import { RecurringAssignment, RECURRING_ASSIGNMENTS_AREA_KEY } from '@skysmack/packages-maintenance';
-import { NgRecurringAssignmentsValidation, NgAssignmentTypesStore, NgAssignmentTypesActions } from '@skysmack/ng-packages';
+import { NgRecurringAssignmentsValidation, NgAssignmentTypesStore, NgAssignmentTypesActions } from '@skysmack/ng-maintenance';
 import { FormRule, SelectField, Field } from '@skysmack/ng-dynamic-forms';
 import { LoadedPackage } from '@skysmack/ng-framework';
 import { FieldsConfig, FieldProviders } from '@skysmack/ng-fields';

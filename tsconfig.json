@@ -83,9 +83,6 @@
       "@skysmack/packages-emails": [
         "libs/packages/emails/public_api.ts"
       ],
-      "@skysmack/ng-packages": [
-        "libs/ng-packages/src/public_api.ts"
-      ],
       "@skysmack/ng-framework": [
         "libs/ng-framework/src/public_api.ts"
       ],
@@ -121,6 +118,57 @@
       ],
       "@skysmack/ng-access-policies": [
         "libs/ng-packages/ng-access-policies/src/public_api.ts"
+      ],
+      "@skysmack/ng-emails": [
+        "libs/ng-packages/ng-emails/src/public_api.ts"
+      ],
+      "@skysmackng/ng-email-smtp": [
+        "libs/ng-packages/ng-email-smtp/src/public_api.ts"
+      ],
+      "@skysmack/ng-identities": [
+        "libs/ng-packages/ng-identities/src/public_api.ts"
+      ],
+      "@skysmack/ng-invoices": [
+        "libs/ng-packages/ng-invoices/src/public_api.ts"
+      ],
+      "@skysmack/ng-invoices-cash-payments": [
+        "libs/ng-packages/ng-invoices-cash-payments/src/public_api.ts"
+      ],
+      "@skysmack/ng-invoices-products": [
+        "libs/ng-packages/ng-invoices-products/src/public_api.ts"
+      ],
+      "@skysmack/ng-lodging-reservations": [
+        "libs/ng-packages/ng-lodging-reservations/src/public_api.ts"
+      ],
+      "@skysmack/ng-lodgings": [
+        "libs/ng-packages/ng-lodgings/src/public_api.ts"
+      ],
+      "@skysmack/ng-maintenance": [
+        "libs/ng-packages/ng-maintenance/src/public_api.ts"
+      ],
+      "@skysmack/ng-oauth2": [
+        "libs/ng-packages/ng-oauth2/src/public_api.ts"
+      ],
+      "@skysmack/ng-packages": [
+        "libs/ng-packages/ng-packages/src/public_api.ts"
+      ],
+      "@skysmack/ng-persons": [
+        "libs/ng-packages/ng-persons/src/public_api.ts"
+      ],
+      "@skysmack/ng-persons-lodging-reservations": [
+        "libs/ng-packages/ng-persons-lodging-reservations/src/public_api.ts"
+      ],
+      "@skysmack/ng-products": [
+        "libs/ng-packages/ng-products/src/public_api.ts"
+      ],
+      "@skysmack/ng-products-pricings": [
+        "libs/ng-packages/ng-products-pricings/src/public_api.ts"
+      ],
+      "@skysmack/ng-reservations-pricings": [
+        "libs/ng-packages/ng-reservations-pricings/src/public_api.ts"
+      ],
+      "@skysmack/ng-terminal-payments": [
+        "libs/ng-packages/ng-terminal-payments/src/public_api.ts"
       ],
       "@skysmack/commercial-account": [
         "libs/commercial-account/commercial-account/src/public_api.ts"

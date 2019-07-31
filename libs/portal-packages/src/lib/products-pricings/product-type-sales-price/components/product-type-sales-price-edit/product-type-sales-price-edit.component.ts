@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductTypeSalesPriceAppState, ProductTypeSalesPrice } from '@skysmack/packages-products-pricings';
-import { NgProductTypeSalesPriceActions, NgProductTypesActions } from '@skysmack/ng-packages';
+import { NgProductTypesActions } from '@skysmack/ng-products';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EditorNavService } from '@skysmack/portal-ui';
-import { NgProductTypeSalesPriceStore } from '@skysmack/ng-packages';
+import { NgProductTypeSalesPriceStore, NgProductTypeSalesPriceActions } from '@skysmack/ng-products-pricings';
 import { NgProductTypeSalesPriceFieldsConfig } from '../../ng-product-type-sales-price-fields-config';
 import { RecordFormComponent } from '@skysmack/portal-fields';
 

@@ -5,7 +5,7 @@ import { PersonsLodgingReservationsSettings } from '@skysmack/packages-persons-l
 import { Observable, combineLatest, of } from 'rxjs';
 import { StrIndex, PagedQuery, LocalObject } from '@skysmack/framework';
 import { NgSettingsActions, NgSettingsStore, NgFieldActions } from '@skysmack/ng-framework';
-import { NgPersonsStore, NgPersonsActions } from '@skysmack/ng-packages';
+import { NgPersonsStore, NgPersonsActions } from '@skysmack/ng-persons';
 import { NgPersonsFieldsConfig } from '../persons/ng-persons-fields-config';
 import { Person } from '@skysmack/packages-persons';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';

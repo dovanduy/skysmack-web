@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { NgLodgingReservationsStore, NgLodgingsStore, NgLodgingTypesStore, NgLodgingsActions, NgLodgingTypesActions, NgLodgingReservationsActions } from '@skysmack/ng-packages';
+import { NgLodgingsStore, NgLodgingTypesStore, NgLodgingsActions, NgLodgingTypesActions } from '@skysmack/ng-lodgings';
 import { EntityComponentPageTitle, MenuItemActionProviders } from '@skysmack/portal-ui';
 import { LodgingsReservationsIndexComponent } from '../../lodging-reservations/lodgings-reservations-index/lodgings-reservations-index.component';
 import { RSQLFilterBuilder, SortBuilder } from '@skysmack/framework';
 import * as _moment from 'moment';
 const moment = _moment;
-
 import { LodgingReservation } from '@skysmack/packages-lodging-reservations';
 import { NgLodgingsReservationsMenu } from '../../ng-lodgings-reservations-menu';
 import { NgLodgingReservationsFieldsConfig } from '../../ng-lodging-reservations-fields-config';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
+import { NgLodgingReservationsStore, NgLodgingReservationsActions } from '@skysmack/ng-lodging-reservations';
 
 @Component({
   selector: 'ss-lodgings-departures',

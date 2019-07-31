@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { EntityComponentPageTitle, MenuItemActionProviders, MENU_ITEM_ACTIONS_EDIT, MENU_ITEM_ACTIONS_DELETE, } from '@skysmack/portal-ui';
-import { NgUsersActions, NgUsersStore } from '@skysmack/ng-packages';
+import { NgUsersActions, NgUsersStore } from '@skysmack/ng-identities';
 import { MenuItem } from '@skysmack/framework';
 import { User, UsersAppState, USERS_AREA_KEY } from '@skysmack/packages-identities';
 import { NgUsersMenu } from '../../ng-users-menu';

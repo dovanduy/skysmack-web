@@ -7,7 +7,9 @@
     "@skysmack/ng-framework": "*",
     "@skysmack/ng-fields": "*",
     "@skysmack/packages-skysmack-core": "*",
-    "@skysmack/portal-ui": "*"
+    "@skysmack/portal-ui": "*",
+    "@angular/material-moment-adapter": "8.1.1",
+    "moment": "2.24.0"
   },
   "main": "./lib/public_api.js",
   "types": "./lib/public_api.d.ts",

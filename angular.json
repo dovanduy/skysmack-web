@@ -497,39 +497,6 @@
         }
       }
     },
-    "ng-packages": {
-      "root": "libs/ng-packages",
-      "sourceRoot": "libs/ng-packages/src",
-      "projectType": "library",
-      "prefix": "skysmack",
-      "architect": {
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/ng-packages/tsconfig.lib.json",
-              "libs/ng-packages/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/builders:jest",
-          "options": {
-            "jestConfig": "libs/ng-packages/jest.config.js",
-            "tsConfig": "libs/ng-packages/tsconfig.spec.json",
-            "setupFile": "libs/ng-packages/src/test-setup.ts"
-          }
-        }
-      },
-      "schematics": {
-        "@nrwl/schematics:component": {
-          "styleext": "scss"
-        }
-      }
-    },
     "ng-framework": {
       "root": "libs/ng-framework",
       "sourceRoot": "libs/ng-framework/src",
@@ -1165,40 +1132,6 @@
         }
       }
     },
-    "ng-access-policies": {
-      "projectType": "library",
-      "root": "libs/ng-packages/ng-access-policies",
-      "sourceRoot": "libs/ng-packages/ng-access-policies/src",
-      "prefix": "skysmack",
-      "architect": {
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/ng-packages/ng-access-policies/tsconfig.lib.json",
-              "libs/ng-packages/ng-access-policies/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/ng-packages/ng-access-policies/**"
-            ]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/ng-packages/ng-access-policies/jest.config.js",
-            "tsConfig": "libs/ng-packages/ng-access-policies/tsconfig.spec.json",
-            "setupFile": "libs/ng-packages/ng-access-policies/src/test-setup.ts"
-          }
-        }
-      },
-      "schematics": {
-        "@nrwl/angular:component": {
-          "styleext": "scss"
-        }
-      }
-    },
     "web-commercial": {
       "projectType": "application",
       "schematics": {
@@ -1350,6 +1283,615 @@
             "jestConfig": "libs/commercial-packages/commercial-account/jest.config.js",
             "tsConfig": "libs/commercial-packages/commercial-account/tsconfig.spec.json",
             "setupFile": "libs/commercial-packages/commercial-account/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "ng-access-policies": {
+      "projectType": "library",
+      "root": "libs/ng-packages/ng-access-policies",
+      "sourceRoot": "libs/ng-packages/ng-access-policies/src",
+      "prefix": "skysmack",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/ng-packages/ng-access-policies/tsconfig.lib.json",
+              "libs/ng-packages/ng-access-policies/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/ng-packages/ng-access-policies/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/ng-packages/ng-access-policies/jest.config.js",
+            "tsConfig": "libs/ng-packages/ng-access-policies/tsconfig.spec.json",
+            "setupFile": "libs/ng-packages/ng-access-policies/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "ng-emails": {
+      "projectType": "library",
+      "root": "libs/ng-packages/ng-emails",
+      "sourceRoot": "libs/ng-packages/ng-emails/src",
+      "prefix": "skysmack",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/ng-packages/ng-emails/tsconfig.lib.json",
+              "libs/ng-packages/ng-emails/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/ng-packages/ng-emails/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/ng-packages/ng-emails/jest.config.js",
+            "tsConfig": "libs/ng-packages/ng-emails/tsconfig.spec.json",
+            "setupFile": "libs/ng-packages/ng-emails/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "ng-email-smtp": {
+      "projectType": "library",
+      "root": "libs/ng-packages/ng-email-smtp",
+      "sourceRoot": "libs/ng-packages/ng-email-smtp/src",
+      "prefix": "skysmack",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/ng-packages/ng-email-smtp/tsconfig.lib.json",
+              "libs/ng-packages/ng-email-smtp/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/ng-packages/ng-email-smtp/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/ng-packages/ng-email-smtp/jest.config.js",
+            "tsConfig": "libs/ng-packages/ng-email-smtp/tsconfig.spec.json",
+            "setupFile": "libs/ng-packages/ng-email-smtp/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "ng-identities": {
+      "projectType": "library",
+      "root": "libs/ng-packages/ng-identities",
+      "sourceRoot": "libs/ng-packages/ng-identities/src",
+      "prefix": "skysmack",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/ng-packages/ng-identities/tsconfig.lib.json",
+              "libs/ng-packages/ng-identities/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/ng-packages/ng-identities/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/ng-packages/ng-identities/jest.config.js",
+            "tsConfig": "libs/ng-packages/ng-identities/tsconfig.spec.json",
+            "setupFile": "libs/ng-packages/ng-identities/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "ng-invoices": {
+      "projectType": "library",
+      "root": "libs/ng-packages/ng-invoices",
+      "sourceRoot": "libs/ng-packages/ng-invoices/src",
+      "prefix": "skysmack",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/ng-packages/ng-invoices/tsconfig.lib.json",
+              "libs/ng-packages/ng-invoices/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/ng-packages/ng-invoices/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/ng-packages/ng-invoices/jest.config.js",
+            "tsConfig": "libs/ng-packages/ng-invoices/tsconfig.spec.json",
+            "setupFile": "libs/ng-packages/ng-invoices/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "ng-invoices-cash-payments": {
+      "projectType": "library",
+      "root": "libs/ng-packages/ng-invoices-cash-payments",
+      "sourceRoot": "libs/ng-packages/ng-invoices-cash-payments/src",
+      "prefix": "skysmack",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/ng-packages/ng-invoices-cash-payments/tsconfig.lib.json",
+              "libs/ng-packages/ng-invoices-cash-payments/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/ng-packages/ng-invoices-cash-payments/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/ng-packages/ng-invoices-cash-payments/jest.config.js",
+            "tsConfig": "libs/ng-packages/ng-invoices-cash-payments/tsconfig.spec.json",
+            "setupFile": "libs/ng-packages/ng-invoices-cash-payments/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "ng-invoices-products": {
+      "projectType": "library",
+      "root": "libs/ng-packages/ng-invoices-products",
+      "sourceRoot": "libs/ng-packages/ng-invoices-products/src",
+      "prefix": "skysmack",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/ng-packages/ng-invoices-products/tsconfig.lib.json",
+              "libs/ng-packages/ng-invoices-products/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/ng-packages/ng-invoices-products/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/ng-packages/ng-invoices-products/jest.config.js",
+            "tsConfig": "libs/ng-packages/ng-invoices-products/tsconfig.spec.json",
+            "setupFile": "libs/ng-packages/ng-invoices-products/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "ng-lodging-reservations": {
+      "projectType": "library",
+      "root": "libs/ng-packages/ng-lodging-reservations",
+      "sourceRoot": "libs/ng-packages/ng-lodging-reservations/src",
+      "prefix": "skysmack",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/ng-packages/ng-lodging-reservations/tsconfig.lib.json",
+              "libs/ng-packages/ng-lodging-reservations/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/ng-packages/ng-lodging-reservations/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/ng-packages/ng-lodging-reservations/jest.config.js",
+            "tsConfig": "libs/ng-packages/ng-lodging-reservations/tsconfig.spec.json",
+            "setupFile": "libs/ng-packages/ng-lodging-reservations/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "ng-lodgings": {
+      "projectType": "library",
+      "root": "libs/ng-packages/ng-lodgings",
+      "sourceRoot": "libs/ng-packages/ng-lodgings/src",
+      "prefix": "skysmack",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/ng-packages/ng-lodgings/tsconfig.lib.json",
+              "libs/ng-packages/ng-lodgings/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/ng-packages/ng-lodgings/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/ng-packages/ng-lodgings/jest.config.js",
+            "tsConfig": "libs/ng-packages/ng-lodgings/tsconfig.spec.json",
+            "setupFile": "libs/ng-packages/ng-lodgings/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "ng-maintenance": {
+      "projectType": "library",
+      "root": "libs/ng-packages/ng-maintenance",
+      "sourceRoot": "libs/ng-packages/ng-maintenance/src",
+      "prefix": "skysmack",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/ng-packages/ng-maintenance/tsconfig.lib.json",
+              "libs/ng-packages/ng-maintenance/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/ng-packages/ng-maintenance/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/ng-packages/ng-maintenance/jest.config.js",
+            "tsConfig": "libs/ng-packages/ng-maintenance/tsconfig.spec.json",
+            "setupFile": "libs/ng-packages/ng-maintenance/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "ng-oauth2": {
+      "projectType": "library",
+      "root": "libs/ng-packages/ng-oauth2",
+      "sourceRoot": "libs/ng-packages/ng-oauth2/src",
+      "prefix": "skysmack",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/ng-packages/ng-oauth2/tsconfig.lib.json",
+              "libs/ng-packages/ng-oauth2/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/ng-packages/ng-oauth2/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/ng-packages/ng-oauth2/jest.config.js",
+            "tsConfig": "libs/ng-packages/ng-oauth2/tsconfig.spec.json",
+            "setupFile": "libs/ng-packages/ng-oauth2/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "ng-packages": {
+      "projectType": "library",
+      "root": "libs/ng-packages/ng-packages",
+      "sourceRoot": "libs/ng-packages/ng-packages/src",
+      "prefix": "skysmack",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/ng-packages/ng-packages/tsconfig.lib.json",
+              "libs/ng-packages/ng-packages/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/ng-packages/ng-packages/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/ng-packages/ng-packages/jest.config.js",
+            "tsConfig": "libs/ng-packages/ng-packages/tsconfig.spec.json",
+            "setupFile": "libs/ng-packages/ng-packages/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "ng-persons": {
+      "projectType": "library",
+      "root": "libs/ng-packages/ng-persons",
+      "sourceRoot": "libs/ng-packages/ng-persons/src",
+      "prefix": "skysmack",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/ng-packages/ng-persons/tsconfig.lib.json",
+              "libs/ng-packages/ng-persons/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/ng-packages/ng-persons/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/ng-packages/ng-persons/jest.config.js",
+            "tsConfig": "libs/ng-packages/ng-persons/tsconfig.spec.json",
+            "setupFile": "libs/ng-packages/ng-persons/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "ng-persons-lodging-reservations": {
+      "projectType": "library",
+      "root": "libs/ng-packages/ng-persons-lodging-reservations",
+      "sourceRoot": "libs/ng-packages/ng-persons-lodging-reservations/src",
+      "prefix": "skysmack",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/ng-packages/ng-persons-lodging-reservations/tsconfig.lib.json",
+              "libs/ng-packages/ng-persons-lodging-reservations/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/ng-packages/ng-persons-lodging-reservations/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/ng-packages/ng-persons-lodging-reservations/jest.config.js",
+            "tsConfig": "libs/ng-packages/ng-persons-lodging-reservations/tsconfig.spec.json",
+            "setupFile": "libs/ng-packages/ng-persons-lodging-reservations/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "ng-products": {
+      "projectType": "library",
+      "root": "libs/ng-packages/ng-products",
+      "sourceRoot": "libs/ng-packages/ng-products/src",
+      "prefix": "skysmack",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/ng-packages/ng-products/tsconfig.lib.json",
+              "libs/ng-packages/ng-products/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/ng-packages/ng-products/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/ng-packages/ng-products/jest.config.js",
+            "tsConfig": "libs/ng-packages/ng-products/tsconfig.spec.json",
+            "setupFile": "libs/ng-packages/ng-products/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "ng-products-pricings": {
+      "projectType": "library",
+      "root": "libs/ng-packages/ng-products-pricings",
+      "sourceRoot": "libs/ng-packages/ng-products-pricings/src",
+      "prefix": "skysmack",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/ng-packages/ng-products-pricings/tsconfig.lib.json",
+              "libs/ng-packages/ng-products-pricings/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/ng-packages/ng-products-pricings/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/ng-packages/ng-products-pricings/jest.config.js",
+            "tsConfig": "libs/ng-packages/ng-products-pricings/tsconfig.spec.json",
+            "setupFile": "libs/ng-packages/ng-products-pricings/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "ng-reservations-pricings": {
+      "projectType": "library",
+      "root": "libs/ng-packages/ng-reservations-pricings",
+      "sourceRoot": "libs/ng-packages/ng-reservations-pricings/src",
+      "prefix": "skysmack",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/ng-packages/ng-reservations-pricings/tsconfig.lib.json",
+              "libs/ng-packages/ng-reservations-pricings/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/ng-packages/ng-reservations-pricings/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/ng-packages/ng-reservations-pricings/jest.config.js",
+            "tsConfig": "libs/ng-packages/ng-reservations-pricings/tsconfig.spec.json",
+            "setupFile": "libs/ng-packages/ng-reservations-pricings/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "ng-terminal-payments": {
+      "projectType": "library",
+      "root": "libs/ng-packages/ng-terminal-payments",
+      "sourceRoot": "libs/ng-packages/ng-terminal-payments/src",
+      "prefix": "skysmack",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/ng-packages/ng-terminal-payments/tsconfig.lib.json",
+              "libs/ng-packages/ng-terminal-payments/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/ng-packages/ng-terminal-payments/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/ng-packages/ng-terminal-payments/jest.config.js",
+            "tsConfig": "libs/ng-packages/ng-terminal-payments/tsconfig.spec.json",
+            "setupFile": "libs/ng-packages/ng-terminal-payments/src/test-setup.ts"
           }
         }
       },

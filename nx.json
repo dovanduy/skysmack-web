@@ -68,9 +68,6 @@
     "packages-reservations-pricings": {
       "tags": []
     },
-    "ng-packages": {
-      "tags": []
-    },
     "ng-framework": {
       "tags": []
     },
@@ -119,13 +116,64 @@
     "portal-shared-portal-fields": {
       "tags": []
     },
-    "ng-access-policies": {
-      "tags": []
-    },
     "web-commercial-e2e": {
       "tags": []
     },
     "web-commercial": {
+      "tags": []
+    },
+    "ng-access-policies": {
+      "tags": []
+    },
+    "ng-emails": {
+      "tags": []
+    },
+    "ng-email-smtp": {
+      "tags": []
+    },
+    "ng-identities": {
+      "tags": []
+    },
+    "ng-invoices": {
+      "tags": []
+    },
+    "ng-invoices-cash-payments": {
+      "tags": []
+    },
+    "ng-invoices-products": {
+      "tags": []
+    },
+    "ng-lodging-reservations": {
+      "tags": []
+    },
+    "ng-lodgings": {
+      "tags": []
+    },
+    "ng-maintenance": {
+      "tags": []
+    },
+    "ng-oauth2": {
+      "tags": []
+    },
+    "ng-packages": {
+      "tags": []
+    },
+    "ng-persons": {
+      "tags": []
+    },
+    "ng-persons-lodging-reservations": {
+      "tags": []
+    },
+    "ng-products": {
+      "tags": []
+    },
+    "ng-products-pricings": {
+      "tags": []
+    },
+    "ng-reservations-pricings": {
+      "tags": []
+    },
+    "ng-terminal-payments": {
       "tags": []
     },
     "commercial-account": {

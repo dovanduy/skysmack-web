@@ -4,7 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { LanguageService } from '@skysmack/portal-ui';
 import { PortalUiModule } from '@skysmack/portal-ui';
-import { NgPersonsLodgingReservationsModule } from '@skysmack/ng-packages';
+import { NgPersonsLodgingReservationsModule } from '@skysmack/ng-persons-lodging-reservations';
 import { PersonsLodgingReservationsRoutingModule } from './persons-lodging-reservations-routing.module';
 import { NgPersonsLodgingReservationsFieldProvider } from './ng-persons-lodgings-reservations-field-provider';
 import { LodgingReservationsTypeId } from '@skysmack/package-types';

@@ -3,7 +3,7 @@ import { Validators } from '@angular/forms';
 import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { Invoice, INVOICES_AREA_KEY } from '@skysmack/packages-invoices';
 
-import { NgInvoicesValidation } from '@skysmack/ng-packages';
+import { NgInvoicesValidation } from '@skysmack/ng-invoices';
 import { LoadedPackage } from '@skysmack/ng-framework';
 import { FormRule, Field } from '@skysmack/ng-dynamic-forms';
 import { FieldsConfig, FieldProviders } from '@skysmack/ng-fields';

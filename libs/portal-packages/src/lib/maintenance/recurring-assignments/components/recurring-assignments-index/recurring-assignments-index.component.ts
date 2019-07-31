@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { RecurringAssignment, RecurringAssignmentsAppState, RECURRING_ASSIGNMENTS_AREA_KEY } from '@skysmack/packages-maintenance';
 import { EntityComponentPageTitle, MenuItemActionProviders, MENU_ITEM_ACTIONS_EDIT, MENU_ITEM_ACTIONS_DELETE } from '@skysmack/portal-ui';
 import { MenuItem } from '@skysmack/framework';
-import { NgRecurringAssignmentsActions, NgRecurringAssignmentsStore } from '@skysmack/ng-packages';
+import { NgRecurringAssignmentsActions, NgRecurringAssignmentsStore } from '@skysmack/ng-maintenance';
 import { NgRecurringAssignmentsMenu } from '../../ng-recurring-assignments-menu';
 import { NgRecurringAssignmentsFieldsConfig } from '../../ng-recurring-assignments-fields-config';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';

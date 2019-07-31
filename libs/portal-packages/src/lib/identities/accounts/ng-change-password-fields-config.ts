@@ -4,7 +4,7 @@ import { LocalObject } from '@skysmack/framework';
 
 import { LoadedPackage } from '@skysmack/ng-framework';
 import { ChangePassword, ACCOUNTS_AREA_KEY } from '@skysmack/packages-identities';
-import { NgChangePasswordValidation } from '@skysmack/ng-packages';
+import { NgChangePasswordValidation } from '@skysmack/ng-identities';
 import { FormRule, Field } from '@skysmack/ng-dynamic-forms';
 import { FieldsConfig, FieldProviders } from '@skysmack/ng-fields';
 import { PasswordFieldComponent } from '@skysmack/portal-fields';

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { EditorNavService } from '@skysmack/portal-ui';
-import { NgUsersActions, NgUsersStore, NgUsersRequests } from '@skysmack/ng-packages';
+import { NgUsersActions, NgUsersStore, NgUsersRequests } from '@skysmack/ng-identities';
 import { User, UsersAppState } from '@skysmack/packages-identities';
 import { FormHelper } from '@skysmack/ng-dynamic-forms';
 import { HttpClient } from '@angular/common/http';

@@ -6,7 +6,7 @@ import { NgConnectionsMenu } from '../../ng-connections-menu';
 import { MenuItem } from '@skysmack/framework';
 import { NgConnectionsFieldsConfig } from '../../ng-connections-fields-config';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
-import { NgConnectionsActions, NgConnectionsStore, NgConnectionsRequests } from '@skysmack/ng-packages';
+import { NgConnectionsActions, NgConnectionsStore, NgConnectionsRequests } from '@skysmack/ng-terminal-payments';
 import { LocalObject } from '@skysmack/framework';
 import { take } from 'rxjs/operators';
 import { RecordIndexComponent } from '@skysmack/portal-fields';

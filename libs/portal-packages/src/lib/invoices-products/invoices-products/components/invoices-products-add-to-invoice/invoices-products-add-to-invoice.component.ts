@@ -1,9 +1,8 @@
 import { Component, OnInit, OnDestroy, Inject } from '@angular/core';
 import { EditorNavService } from '@skysmack/portal-ui';
 import { Router, ActivatedRoute } from '@angular/router';
-import { NgInvoicesActions } from '@skysmack/ng-packages';
+import { NgInvoicesActions, NgInvoicesStore } from '@skysmack/ng-invoices';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
-import { NgInvoicesStore } from '@skysmack/ng-packages';
 import { FormHelper } from '@skysmack/ng-dynamic-forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { LocalObject } from '@skysmack/framework';

@@ -3,7 +3,7 @@ import { Validators } from '@angular/forms';
 import { FormRule, CustomValidators, Field } from '@skysmack/ng-dynamic-forms';
 import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { User, USERS_AREA_KEY } from '@skysmack/packages-identities';
-import { NgUsersValidation } from '@skysmack/ng-packages';
+import { NgUsersValidation } from '@skysmack/ng-identities';
 import { LoadedPackage } from '@skysmack/ng-framework';
 import { FieldsConfig, FieldProviders } from '@skysmack/ng-fields';
 import { EmailFieldComponent, PasswordFieldComponent, HiddenFieldComponent } from '@skysmack/portal-fields';

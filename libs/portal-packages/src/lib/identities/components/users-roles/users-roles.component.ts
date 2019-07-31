@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { NgUsersActions, NgUsersStore } from '@skysmack/ng-packages';
+import { NgUsersActions, NgUsersStore, NgRolesStore, NgRolesActions } from '@skysmack/ng-identities';
 import { EntityComponentPageTitle } from '@skysmack/portal-ui';
 import { User, Role } from '@skysmack/packages-identities';
 import { combineLatest, Observable } from 'rxjs';
 import { EditorNavService } from '@skysmack/portal-ui';
-import { NgRolesStore, NgRolesActions } from '@skysmack/ng-packages';
 import { LocalObject, PagedQuery } from '@skysmack/framework';
 import { map } from 'rxjs/operators';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';

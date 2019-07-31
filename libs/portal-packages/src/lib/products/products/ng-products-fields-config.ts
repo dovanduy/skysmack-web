@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { LocalObject, LocalObjectStatus, PagedQuery } from '@skysmack/framework';
 import { Product, PRODUCTS_AREA_KEY } from '@skysmack/packages-products';
-import { NgProductsValidation, NgProductTypesStore, NgProductTypesActions } from '@skysmack/ng-packages';
+import { NgProductsValidation, NgProductTypesStore, NgProductTypesActions } from '@skysmack/ng-products';
 import { LoadedPackage, NgFieldStore } from '@skysmack/ng-framework';
 import { Router } from '@angular/router';
 import { FormRule, Field, SelectField } from '@skysmack/ng-dynamic-forms';

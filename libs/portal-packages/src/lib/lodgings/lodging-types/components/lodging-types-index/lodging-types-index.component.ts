@@ -3,8 +3,7 @@ import { EntityComponentPageTitle, MenuItemActionProviders, MENU_ITEM_ACTIONS_ED
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { LodgingTypesAppState, LodgingType, LODGING_TYPES_AREA_KEY } from '@skysmack/packages-lodgings';
-import { NgLodgingTypesStore } from '@skysmack/ng-packages';
-import { NgLodgingTypesActions } from '@skysmack/ng-packages';
+import { NgLodgingTypesStore, NgLodgingTypesActions } from '@skysmack/ng-lodgings';
 import { MenuItem } from '@skysmack/framework';
 import { NgLodgingTypesMenu } from '../../ng-lodging-types-menu';
 import { NgFieldActions } from '@skysmack/ng-framework';

@@ -1,15 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { EntityComponentPageTitle, MenuItemActionProviders, MENU_ITEM_ACTION_DETAILS, MENU_ITEM_ACTIONS_EDIT, MENU_ITEM_ACTIONS_DELETE } from '@skysmack/portal-ui';
 import { Router, ActivatedRoute } from '@angular/router';
-import { NgInvoicesActions } from '@skysmack/ng-packages';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
-import { NgInvoicesStore } from '@skysmack/ng-packages';
+import { NgInvoicesStore, NgInvoicesActions } from '@skysmack/ng-invoices';
 import { Invoice, InvoicesAppState, INVOICES_AREA_KEY } from '@skysmack/packages-invoices';
-import { NgInvoicesMenu } from './../../ng-invoices-menu';
 import { MenuItem } from '@skysmack/framework';
 import { NgFieldActions } from '@skysmack/ng-framework';
 import { NgInvoicesFieldsConfig } from '../../ng-invoices-fields-config';
 import { DocumentRecordIndexComponent } from '@skysmack/portal-fields';
+import { NgInvoicesMenu } from '../../ng-invoices-menu';
 
 @Component({
   selector: 'ss-invoices-index',

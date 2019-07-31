@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Assignment, AssignmentsAppState } from '@skysmack/packages-maintenance';
-import { NgAssignmentsActions, NgAssignmentsStore, NgAssignmentTypesActions } from '@skysmack/ng-packages';
+import { NgAssignmentsActions, NgAssignmentsStore, NgAssignmentTypesActions } from '@skysmack/ng-maintenance';
 import { EditorNavService } from '@skysmack/portal-ui';
 import { NgAssignmentsFieldsConfig } from '../../ng-assignments-fields-config';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';

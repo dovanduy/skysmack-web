@@ -6,7 +6,9 @@
     "@angular/core": "^8.0.0",
     "@skysmack/ng-framework": "*",
     "@skysmack/framework": "*",
-    "@skysmack/redux": "*"
+    "@skysmack/redux": "*",
+    "@skysmack/signal-r": "*",
+    "latinize": "^0.4.0"
   },
   "main": "./lib/public_api.js",
   "types": "./lib/public_api.d.ts",

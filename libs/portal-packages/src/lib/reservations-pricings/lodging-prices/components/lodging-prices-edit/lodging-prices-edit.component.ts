@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgLodgingPricesActions, NgLodgingPricesStore } from '@skysmack/ng-packages';
+import { NgLodgingPricesActions, NgLodgingPricesStore } from '@skysmack/ng-reservations-pricings';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EditorNavService } from '@skysmack/portal-ui';

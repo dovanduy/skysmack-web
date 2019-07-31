@@ -1,11 +1,10 @@
 // INCOMMENT TO ACTIVATE PACKAGE OVERVIEW
 // import { Component, OnInit } from '@angular/core';
 // import * as shape from 'd3-shape';
-// import { NgPackagesActions } from '@skysmack/ng-packages';
 // import { ActivatedRoute, Router } from '@angular/router';
 // import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 // import { Field } from '@skysmack/ng-dynamic-forms';
-// import { NgPackagesFieldsConfig, NgPackagesStore } from '@skysmack/ng-packages';
+// import { NgPackagesFieldsConfig, NgPackagesStore, NgPackagesActions } from '@skysmack/ng-packages';
 // import { BaseComponent } from '@skysmack/portal-ui';
 // import { PackagesAppState } from '@skysmack/packages-skysmack-core';
 // import { colorSets } from './color-sets';

@@ -1,14 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { EntityComponentPageTitle, MenuItemActionProviders, MENU_ITEM_ACTIONS_DELETE } from '@skysmack/portal-ui';
 import { Router, ActivatedRoute } from '@angular/router';
-import { NgAccessPolicyRolesActions } from '@skysmack/ng-packages';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
-import { NgAccessPolicyRolesStore } from '@skysmack/ng-packages';
 import { MenuItem } from '@skysmack/framework';
 import { AccessPolicyRolesAppState, AccessPolicyRole, AccessPolicyRoleKey, ACCESS_POLICY_ROLES_AREA_KEY } from '@skysmack/packages-skysmack-core';
 import { NgAccessPolicyRolesMenu } from '../../ng-access-policy-roles-menu';
 import { NgAccessPolicyRolesFieldsConfig } from '../../ng-access-policy-roles-fields-config';
 import { RecordIndexComponent } from '@skysmack/portal-fields';
+import { NgAccessPolicyRolesActions, NgAccessPolicyRolesStore } from '@skysmack/ng-access-policies';
 
 
 @Component({

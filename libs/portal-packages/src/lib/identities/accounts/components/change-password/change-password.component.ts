@@ -7,7 +7,7 @@ import { AccountAppState } from '@skysmack/packages-identities';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { switchMap, take, tap, map } from 'rxjs/operators';
-import { NgAccountRequests } from '@skysmack/ng-packages';
+import { NgAccountRequests } from '@skysmack/ng-identities';
 import { BaseComponent } from '@skysmack/portal-fields';
 
 @Component({

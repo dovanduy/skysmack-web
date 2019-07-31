@@ -102,10 +102,61 @@
         "./dist/@skysmack/packages-emails"
       ],
       "@skysmack/ng-access-policies": [
-        "libs/ng-packages/ng-access-policies/src/public_api.ts"
+        "libs/ng-packages/ng-access-policies"
+      ],
+      "@skysmack/ng-emails": [
+        "libs/ng-packages/ng-emails"
+      ],
+      "@skysmackng-email-smtp": [
+        "libs/ng-packages/ng-email-smtp"
+      ],
+      "@skysmack/ng-identities": [
+        "libs/ng-packages/ng-identities"
+      ],
+      "@skysmack/ng-invoices": [
+        "libs/ng-packages/ng-invoices"
+      ],
+      "@skysmack/ng-invoices-cash-payments": [
+        "libs/ng-packages/ng-invoices-cash-payments"
+      ],
+      "@skysmack/ng-invoices-products": [
+        "libs/ng-packages/ng-invoices-products"
+      ],
+      "@skysmack/ng-lodging-reservations": [
+        "libs/ng-packages/ng-lodging-reservations"
+      ],
+      "@skysmack/ng-lodgings": [
+        "libs/ng-packages/ng-lodgings"
+      ],
+      "@skysmack/ng-maintenance": [
+        "libs/ng-packages/ng-maintenance"
+      ],
+      "@skysmack/ng-oauth2": [
+        "libs/ng-packages/ng-oauth2"
+      ],
+      "@skysmack/ng-packages": [
+        "libs/ng-packages/ng-packages"
+      ],
+      "@skysmack/ng-persons": [
+        "libs/ng-packages/ng-persons"
+      ],
+      "@skysmack/ng-persons-lodging-reservations": [
+        "libs/ng-packages/ng-persons-lodging-reservations"
+      ],
+      "@skysmack/ng-products": [
+        "libs/ng-packages/ng-products"
+      ],
+      "@skysmack/ng-products-pricings": [
+        "libs/ng-packages/ng-products-pricings"
+      ],
+      "@skysmack/ng-reservations-pricings": [
+        "libs/ng-packages/ng-reservations-pricings"
+      ],
+      "@skysmack/ng-terminal-payments": [
+        "libs/ng-packages/ng-terminal-payments"
       ],
       "@skysmack/commercial-account": [
-        "libs/commercial-packages/commercial-account/src/public_api.ts"
+        "libs/commercial-packages/commercial-account"
       ]
     }
   },

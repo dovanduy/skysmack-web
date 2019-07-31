@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductsSalesPriceAppState, ProductsSalesPrice } from '@skysmack/packages-products-pricings';
-import { NgProductsSalesPriceActions, NgProductsActions } from '@skysmack/ng-packages';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EditorNavService } from '@skysmack/portal-ui';
-import { NgProductsSalesPriceStore } from '@skysmack/ng-packages';
+import { NgProductsSalesPriceStore, NgProductsSalesPriceActions } from '@skysmack/ng-products-pricings';
 import { NgProductsSalesPriceFieldsConfig } from '../../ng-products-sales-price-fields-config';
 import { RecordFormComponent } from '@skysmack/portal-fields';
+import { NgProductsActions } from '@skysmack/ng-products';
 
 @Component({
   selector: 'ss-products-sales-price-edit',

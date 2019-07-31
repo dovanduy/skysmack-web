@@ -4,7 +4,7 @@ import { AssignmentsAppState, ASSIGNMENTS_AREA_KEY } from '@skysmack/packages-ma
 import { Assignment } from '@skysmack/packages-maintenance';
 import { EntityComponentPageTitle, MenuItemActionProviders, MENU_ITEM_ACTIONS_EDIT, MENU_ITEM_ACTIONS_DELETE } from '@skysmack/portal-ui';
 import { MenuItem } from '@skysmack/framework';
-import { NgAssignmentsActions, NgAssignmentsStore, NgAssignmentTypesStore, NgAssignmentTypesActions } from '@skysmack/ng-packages';
+import { NgAssignmentsActions, NgAssignmentsStore, NgAssignmentTypesStore, NgAssignmentTypesActions } from '@skysmack/ng-maintenance';
 import { NgAssignmentsMenu } from '../../ng-assignments-menu';
 import { NgAssignmentsFieldsConfig } from '../../ng-assignments-fields-config';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';

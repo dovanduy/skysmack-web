@@ -1,9 +1,8 @@
 import { NgModule, ComponentFactoryResolver } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-
 import { LanguageService, NgMenuProviders } from '@skysmack/portal-ui';
-import { NgIdentitiesModule } from '@skysmack/ng-packages';
+import { NgIdentitiesModule } from '@skysmack/ng-identities';
 import { PortalUiModule } from '@skysmack/portal-ui';
 import { IdentitiesRoutingModule } from './identities-routing.module';
 import { NgLockoutSettingsFieldsConfig } from './ng-lockout-settings-fields-config';

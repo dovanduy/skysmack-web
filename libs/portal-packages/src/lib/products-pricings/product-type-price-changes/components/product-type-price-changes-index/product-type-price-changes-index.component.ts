@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { EntityComponentPageTitle, MenuItemActionProviders, MENU_ITEM_ACTIONS_EDIT, MENU_ITEM_ACTIONS_DELETE } from '@skysmack/portal-ui';
 import { Router, ActivatedRoute } from '@angular/router';
-import { NgProductTypePriceChangesActions } from '@skysmack/ng-packages';
+import { NgProductTypePriceChangesActions, NgProductTypePriceChangesStore } from '@skysmack/ng-products-pricings';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
-import { NgProductTypePriceChangesStore } from '@skysmack/ng-packages';
 import { ProductTypePriceChangesAppState, PRODUCT_TYPE_PRICE_CHANGES_AREA_KEY, ProductPriceChange } from '@skysmack/packages-products-pricings';
 import { NgProductTypePriceChangesMenu } from '../../ng-product-type-price-changes-menu';
 import { MenuItem } from '@skysmack/framework';

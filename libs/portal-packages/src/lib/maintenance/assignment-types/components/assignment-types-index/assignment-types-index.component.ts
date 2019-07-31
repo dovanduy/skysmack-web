@@ -3,7 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { AssignmentTypesAppState, AssignmentType, ASSIGNMENT_TYPES_AREA_KEY } from '@skysmack/packages-maintenance';
 import { EntityComponentPageTitle, MenuItemActionProviders, MENU_ITEM_ACTIONS_EDIT, MENU_ITEM_ACTIONS_DELETE } from '@skysmack/portal-ui';
 import { MenuItem } from '@skysmack/framework';
-import { NgAssignmentTypesActions, NgAssignmentTypesStore } from '@skysmack/ng-packages';
+import { NgAssignmentTypesActions, NgAssignmentTypesStore } from '@skysmack/ng-maintenance';
 import { NgAssignmentTypesMenu } from '../../ng-assignment-types-menu';
 import { NgAssignmentTypesFieldsConfig } from '../../ng-assignment-types-fields-config';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';

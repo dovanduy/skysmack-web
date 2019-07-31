@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { SidebarMenu } from '@skysmack/portal-ui';
-import { AccessPolciesPermissions } from '@skysmack/ng-packages';
 import { MenuArea } from '@skysmack/framework';
 import { MenuItem } from '@skysmack/framework';
 import { NgMenuItemProviders } from '@skysmack/ng-framework';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
+import { AccessPoliciesPermissions } from '@skysmack/ng-access-policies';
 
 
 @Injectable({ providedIn: 'root' })
@@ -46,7 +46,7 @@ export class NgAccessPolicyRolesMenu extends SidebarMenu {
                 order: 1,
                 icon: 'groupAdd',
                 permissions: [
-                    AccessPolciesPermissions.addRoles
+                    AccessPoliciesPermissions.addRoles
                 ]
             })
         ]);
@@ -62,7 +62,7 @@ export class NgAccessPolicyRolesMenu extends SidebarMenu {
             order: 1,
             icon: 'add',
             permissions: [
-                AccessPolciesPermissions.addRoles
+                AccessPoliciesPermissions.addRoles
             ]
         }));
     }

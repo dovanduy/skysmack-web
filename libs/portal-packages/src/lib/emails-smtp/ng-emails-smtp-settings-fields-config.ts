@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { LocalObject } from '@skysmack/framework';
 import { LoadedPackage } from '@skysmack/ng-framework';
 import { SmtpClientSettings, EMAILS_SMTP_AREA_KEY } from '@skysmack/packages-emails-smtp';
-import { NgEmailsSmtpSettingsValidation } from '@skysmack/ng-packages';
+import { NgEmailsSmtpSettingsValidation } from '../../../../ng-packages/ng-email-smtp/src/lib';
 import { FormRule, Field } from '@skysmack/ng-dynamic-forms';
 import { FieldsConfig, FieldProviders } from '@skysmack/ng-fields';
 import { StringFieldComponent, IntFieldComponent, CheckboxFieldComponent } from '@skysmack/portal-fields';

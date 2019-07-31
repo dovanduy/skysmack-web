@@ -2,7 +2,7 @@ import { AssignmentType, ASSIGNMENT_TYPES_AREA_KEY } from '@skysmack/packages-ma
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { LocalObject, LocalObjectStatus, PagedQuery } from '@skysmack/framework';
-import { NgAssignmentTypesValidation, NgMaintenanceStatesStore, NgMaintenanceStatesActions } from '@skysmack/ng-packages';
+import { NgAssignmentTypesValidation, NgMaintenanceStatesStore, NgMaintenanceStatesActions } from '@skysmack/ng-maintenance';
 import { LoadedPackage } from '@skysmack/ng-framework';
 import { FormRule, Field, SelectField } from '@skysmack/ng-dynamic-forms';
 import { FieldsConfig, FieldProviders } from '@skysmack/ng-fields';

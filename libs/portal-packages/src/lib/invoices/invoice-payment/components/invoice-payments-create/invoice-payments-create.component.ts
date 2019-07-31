@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { InvoicePayment, InvoicePaymentsAppState } from '@skysmack/packages-invoices';
-import { NgInvoicePaymentsActions } from '@skysmack/ng-packages';
+import { NgInvoicePaymentsActions, NgInvoicePaymentsStore } from '@skysmack/ng-invoices';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EditorNavService } from '@skysmack/portal-ui';
 import { DocumentRecordFormComponent } from '@skysmack/portal-fields';
-import { NgInvoicePaymentsStore } from '@skysmack/ng-packages';
 import { NgFieldActions } from '@skysmack/ng-framework';
 import { NgInvoicePaymentsFieldsConfig } from '../../ng-invoice-payments-fields-config';
 

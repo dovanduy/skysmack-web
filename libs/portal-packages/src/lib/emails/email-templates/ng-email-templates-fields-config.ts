@@ -3,7 +3,7 @@ import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { EmailTemplate, EMAIL_TEMPLATES_AREA_KEY } from '@skysmack/packages-emails';
 
 import { StringFieldComponent, HiddenFieldComponent, EmailTemplateFieldComponent } from '@skysmack/portal-fields';
-import { NgEmailTemplatesValidation } from '@skysmack/ng-packages';
+import { NgEmailTemplatesValidation } from '../../../../../ng-packages/ng-emails/src/lib';
 import { LoadedPackage } from '@skysmack/ng-framework';
 import { FormRule, Field } from '@skysmack/ng-dynamic-forms';
 import { FieldsConfig, FieldProviders } from '@skysmack/ng-fields';

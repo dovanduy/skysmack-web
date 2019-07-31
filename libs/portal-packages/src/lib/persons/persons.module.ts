@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { PersonsRoutingModule } from './persons-routing.module';
 import { HttpClientModule } from '@angular/common/http';
-import { NgPersonsModule } from '@skysmack/ng-packages';
+import { NgPersonsModule } from '@skysmack/ng-persons';
 import { PortalUiModule } from '@skysmack/portal-ui';
 import { personsComponents, personsEntryComponents } from './persons/components/persons-components';
 import { LanguageService } from '@skysmack/portal-ui';

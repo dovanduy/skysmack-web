@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { HttpClientModule } from '@angular/common/http';
-import { NgReservationsPricingsModule } from '@skysmack/ng-packages';
+import { NgReservationsPricingsModule } from '@skysmack/ng-reservations-pricings';
 import { PortalUiModule } from '@skysmack/portal-ui';
 import { LanguageService } from '@skysmack/portal-ui';
 import { ReservationsPricingsIndexComponent } from './components/reservations-pricings-index/reservations-pricings-index.component';

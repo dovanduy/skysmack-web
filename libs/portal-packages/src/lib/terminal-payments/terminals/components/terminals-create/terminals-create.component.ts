@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Terminal, TerminalsAppState } from '@skysmack/packages-terminal-payments';
-import { NgTerminalsActions } from '@skysmack/ng-packages';
+import { NgTerminalsActions, NgTerminalsStore } from '@skysmack/ng-terminal-payments';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EditorNavService } from '@skysmack/portal-ui';
-import { NgTerminalsStore } from '@skysmack/ng-packages';
 import { NgTerminalsFieldsConfig } from '../../ng-terminals-fields-config';
 import { RecordFormComponent } from '@skysmack/portal-fields';
 

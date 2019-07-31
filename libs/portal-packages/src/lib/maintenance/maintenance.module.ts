@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { NgAssignmentsModule } from '@skysmack/ng-packages';
+import { NgAssignmentsModule } from '@skysmack/ng-maintenance';
 import { PortalUiModule, LanguageService } from '@skysmack/portal-ui';
 import { assignmentTypesComponents } from './assignment-types/components/assignment-types-components';
 import { assignmentsComponents } from './assignments/components/assignments-components';

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { FormRule, Field } from '@skysmack/ng-dynamic-forms';
 import { LocalObject, toLocalObject } from '@skysmack/framework';
 import { LodgingSettings, LODGINGS_AREA_KEY } from '@skysmack/packages-lodgings';
-import { NgLodgingSettingsValidation } from '@skysmack/ng-packages';
+import { NgLodgingSettingsValidation } from '@skysmack/ng-lodgings';
 import { LoadedPackage } from '@skysmack/ng-framework';
 import { FieldsConfig, FieldProviders } from '@skysmack/ng-fields';
 import { StringFieldComponent, DateFieldComponent } from '@skysmack/portal-fields';

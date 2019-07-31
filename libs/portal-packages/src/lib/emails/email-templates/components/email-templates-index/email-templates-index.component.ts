@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { EntityComponentPageTitle, MenuItemActionProviders, MENU_ITEM_ACTION_DETAILS, MENU_ITEM_ACTIONS_EDIT, MENU_ITEM_ACTIONS_DELETE } from '@skysmack/portal-ui';
 import { Router, ActivatedRoute } from '@angular/router';
-import { NgEmailTemplatesActions } from '@skysmack/ng-packages';
+import { NgEmailTemplatesActions, NgEmailTemplatesStore } from '../../../../../../../ng-packages/ng-emails/src/lib';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
-import { NgEmailTemplatesStore } from '@skysmack/ng-packages';
 import { EmailTemplate, EmailTemplatesAppState, EMAIL_TEMPLATES_AREA_KEY } from '@skysmack/packages-emails';
 import { NgEmailTemplatesMenu } from './../../ng-email-templates-menu';
 import { MenuItem } from '@skysmack/framework';

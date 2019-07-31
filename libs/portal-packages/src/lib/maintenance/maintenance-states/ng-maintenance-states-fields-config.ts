@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { MaintenanceState, MaintenanceEntityStatus, MAINTENANCE_STATES_AREA_KEY } from '@skysmack/packages-maintenance';
-import { NgMaintenanceStatesValidation } from '@skysmack/ng-packages';
+import { NgMaintenanceStatesValidation } from '@skysmack/ng-maintenance';
 import { FormRule, Field, SelectField } from '@skysmack/ng-dynamic-forms';
 import { of } from 'rxjs';
 import { LoadedPackage } from '@skysmack/ng-framework';

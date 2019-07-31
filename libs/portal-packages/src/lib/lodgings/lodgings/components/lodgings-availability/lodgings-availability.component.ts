@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { EntityComponentPageTitle } from '@skysmack/portal-ui';
-import { NgLodgingsStore, NgLodgingsActions } from '@skysmack/ng-packages';
+import { NgLodgingsStore, NgLodgingsActions } from '@skysmack/ng-lodgings';
 import { Observable, combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { CalendarEvent, EventColor, EventAction } from 'calendar-utils';

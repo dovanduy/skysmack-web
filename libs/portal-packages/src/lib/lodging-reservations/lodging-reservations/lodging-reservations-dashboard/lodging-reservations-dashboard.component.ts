@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgLodgingReservationsActions, NgLodgingReservationsStore } from '@skysmack/ng-packages';
+import { NgLodgingReservationsActions, NgLodgingReservationsStore } from '@skysmack/ng-lodging-reservations';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { Observable } from 'rxjs';
 import { PagedQuery, RSQLFilterBuilder } from '@skysmack/framework';
