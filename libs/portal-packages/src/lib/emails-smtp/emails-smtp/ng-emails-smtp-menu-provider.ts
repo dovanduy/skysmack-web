@@ -4,12 +4,11 @@ import { MenuArea, MenuProvider } from '@skysmack/framework';
 import { MenuItem } from '@skysmack/framework';
 import { Guid } from 'guid-typescript';
 import { of, Observable } from 'rxjs';
-import { setBackButton } from '@skysmack/ng-framework';
 
 @Injectable({ providedIn: 'root' })
-export class NgEmailsIndexMenuProvider extends MenuProvider {
+export class NgEmailsSmtpMenuProvider extends MenuProvider {
     public id = Guid.create().toString();
-    public translationPrefix = 'EMAILS.INDEX.';
+    public translationPrefix = 'EMAILS_SMTP.INDEX.';
 
     constructor(
         public store: NgSkysmackStore
@@ -26,11 +25,11 @@ export class NgEmailsIndexMenuProvider extends MenuProvider {
     };
 
     public getMenuItems(packagePath: string, componentKey: string): Observable<MenuItem[]> {
-        if(componentKey === 'emails-index') {
+        if(componentKey === 'emails-smtp') {
             return of([
                 new MenuItem({
-                    url: 'templates',
-                    displayName: this.translationPrefix + 'TEMPLATES',
+                    url: 'settings/smtp-client',
+                    displayName: this.translationPrefix + 'SETTINGS',
                     area: 'manage',
                     order: 1,
                     icon: 'groupAdd',
