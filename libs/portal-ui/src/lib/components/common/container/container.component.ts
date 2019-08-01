@@ -1,12 +1,12 @@
 import { Component, Input, ViewChild, OnInit, OnDestroy, ChangeDetectorRef, Output, EventEmitter } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
-import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
+import { Router, ActivatedRoute, NavigationEnd, UrlSegment } from '@angular/router';
 import { SidebarMenu } from './../../../models/sidebar-menu/sidebar-menu';
 import { SubscriptionHandler } from '@skysmack/framework';
 import { EditorNavService } from './editor-nav.service';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { Observable, of } from 'rxjs';
-import { map, filter, switchMap } from 'rxjs/operators';
+import { map, filter, switchMap, take } from 'rxjs/operators';
 import { NgAuthenticationStore } from '@skysmack/ng-framework';
 import { MatDialog } from '@angular/material/dialog';
 
@@ -78,21 +78,28 @@ export class ContainerComponent implements OnInit, OnDestroy {
 
     this.subscriptionHandler.register(this.access$.pipe(
       filter(access => access),
-      map(() => this.changeDetectorRef.detectChanges()),
-      switchMap(() => this.editornav.closedStart),
+      map(() => this.changeDetectorRef.detectChanges())
+    ).subscribe());
+
+    this.subscriptionHandler.register(this.editornav.closedStart.pipe(
       map(() => {
         if (this.editorNavService.redirectPath && this.editorNavService.redirectPath.length > 0) {
           this.router.navigate([this.editorNavService.redirectPath]);
-          this.editorNavService.redirectPath = '';
+        } else {
+          this.activatedRoute.parent.parent.url.pipe(
+            map((pathSegments: UrlSegment[]) => {
+              if (pathSegments && pathSegments[pathSegments.length - 1]) {
+                this.router.navigate([pathSegments[pathSegments.length - 1].path]);
+              }
+            }
+          ),
+          take(1)).subscribe();
         }
+        this.editorNavService.redirectPath = '';
       })
     ).subscribe());
 
-
-    this.subscriptionHandler.register(this.access$.pipe(
-      filter(access => access),
-      map(() => this.changeDetectorRef.detectChanges()),
-      switchMap(() => this.editorNavService.isVisible),
+    this.subscriptionHandler.register(this.editorNavService.isVisible.pipe(
       map(visible => {
         if (visible && !this.editornav.opened) {
           this.editornav.open();

@@ -69,6 +69,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.createForm();
     this.listenForErrors();
 
+    // For showing forgot password and confirm account
     this.accountPackages$ = this.skysmackStore.getAccountPackages();
   }
 
@@ -100,6 +101,8 @@ export class LoginComponent implements OnInit, OnDestroy {
         this.success = true;
         this.skysmackActions.getSkysmack();
         this.dialog.closeAll();
+        // Only redirect, if path is the login component
+        // Prevents redirect from other components (i.e. when in dialog etc.)
         if (this.router.url.split('/')[1] === this.packagePath) {
           this.router.navigate(['/']);
         }
@@ -121,6 +124,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.subscriptionHandler.register(this.skysmackStore.getHydrated().pipe(filter(x => x === true)).subscribe(() => this.ngRedux.dispatch({ type: AuthenticationActions.CLEAR_LOGIN_ERROR })));
   }
 
+  // Get package path from either route data (dialog) or from the router
   private setPackagePath() {
     if (this.data && this.data.packagePath) {
       this.packagePath = this.data.packagePath;

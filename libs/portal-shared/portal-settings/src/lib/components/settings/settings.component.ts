@@ -1,10 +1,10 @@
 import { Component, OnInit, OnDestroy, Injector } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, UrlSegment } from '@angular/router';
 import { LocalObject, RouteData, toLocalObject } from '@skysmack/framework';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { FormHelper } from '@skysmack/ng-dynamic-forms';
 import { combineLatest, of } from 'rxjs';
-import { map, switchMap } from 'rxjs/operators';
+import { map, switchMap, take } from 'rxjs/operators';
 import { NgSettingsActions, NgSettingsStore } from '@skysmack/ng-framework';
 import { SettingsAppState } from '@skysmack/redux';
 import { EditorNavService } from '@skysmack/portal-ui';
@@ -15,7 +15,7 @@ import { FieldsConfig } from '@skysmack/ng-fields';
   selector: 'ss-settings',
   templateUrl: './settings.component.html'
 })
-export class SettingsComponent extends BaseComponent<SettingsAppState<any>, unknown> implements OnInit, OnDestroy {
+export class SettingsComponent extends BaseComponent<SettingsAppState<any>, unknown> implements OnInit {
 
   public editorItem: LocalObject<any, unknown>;
   public selectedSettings: LocalObject<any, unknown>;
@@ -41,10 +41,6 @@ export class SettingsComponent extends BaseComponent<SettingsAppState<any>, unkn
     this.settingsKey = settingsKey ? settingsKey : 'default';
     this.actions.get(this.packagePath, this.settingsKey);
     this.setFields();
-  }
-
-  ngOnDestroy() {
-    super.ngOnDestroy();
   }
 
   public onSettingsSubmit(fh: FormHelper) {
