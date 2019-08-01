@@ -29,11 +29,6 @@ export class NgPackagesMenu extends SidebarMenu {
                 area: 'actions',
                 translationPrefix: this.translationPrefix,
                 order: 1,
-            }),
-            new MenuArea({
-                area: 'manage',
-                translationPrefix: this.translationPrefix,
-                order: 2,
             })
         ]);
 
