@@ -47,7 +47,8 @@ export abstract class DocumentFieldsConfig<TRecord, TKey> extends FieldsConfig<T
             placeholder: dynamicField.object.display,
             order: 4,
             showColumn: true,
-            dynamicField: true
+            dynamicField: true,
+            sortable: this.getSortFromDynamicFieldType(dynamicField.object.type)
         }));
     }
 
@@ -61,6 +62,19 @@ export abstract class DocumentFieldsConfig<TRecord, TKey> extends FieldsConfig<T
             case 'geography': return GeographyFieldComponent;
             case 'limitedString': return LimitedStringFieldComponent;
             default: console.log('This field type is not defined. Please create a component for it'); return undefined;
+        }
+    }
+
+    protected getSortFromDynamicFieldType(type: string): boolean {
+        switch (type) {
+            case 'int': return true;
+            case 'string': return false;
+            case 'dateTime': return true;
+            case 'decimal': return true;
+            case 'double': return true;
+            case 'geography': return true;
+            case 'limitedString': return true;
+            default: console.log('This field type is not defined. Please create a component for it'); return false;
         }
     }
 }
