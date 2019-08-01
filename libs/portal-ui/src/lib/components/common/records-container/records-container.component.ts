@@ -25,9 +25,7 @@ export class RecordsContainerComponent implements OnInit, OnDestroy {
   @Input() public menuItemActions$: BehaviorSubject<MenuItem[]>;
   @Input() public fields$: Observable<Field[]>;
   @Input() public totalCount$: BehaviorSubject<number>;
-  public totalCount: number;
   @Input() public loadingState$: BehaviorSubject<LoadingState>;
-  public loadingState: LoadingState;
   @Input() public packagePath: string;
   @Input() public additionalPaths?: string[];
   @Input() public title: string;
@@ -57,15 +55,11 @@ export class RecordsContainerComponent implements OnInit, OnDestroy {
 
     // This is done to avoid ExpressionHasChanged error
     this.subscriptionHandler.register(combineLatest(
-      this.loadingState$,
-      this.totalCount$,
       this.loadedEntitiesCount$
     ).pipe(
       delay(0),
       map(values => {
-        this.loadingState = values[0];
-        this.totalCount = values[1];
-        this.loadedEntitiesCount = values[2];
+        this.loadedEntitiesCount = values[0];
       })).subscribe());
   }
 

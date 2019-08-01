@@ -81,12 +81,12 @@
   </cdk-virtual-scroll-viewport>
 
   <div class="footer">
-    <div *ngIf="totalCount" class="inner">
+    <div *ngIf="totalCount$ | async as totalCount" class="inner">
       <!-- totalCount$ | async as -->
       <span>{{'UI.RECORDS_CONTAINER.LOADED' | translate: { loadedCount: loadedEntitiesCount, totalCount: totalCount } }}</span>
     </div>
     <div style="width:100%;height:5px">
-      <mat-progress-bar *ngIf="loadingState === 2" mode="indeterminate"></mat-progress-bar>
+      <mat-progress-bar *ngIf="(loadingState$ | async ) === 2" mode="indeterminate"></mat-progress-bar>
     </div>
   </div>
 </mat-card>
