@@ -6,8 +6,8 @@ export class InvoicesPermissions {
 
     private static invoiceFields = 'Invoice' + FIELDS;
 
-    private static invoicesPayments = 'InvoicesPayments';
-    private static invoicesPaymentFields = 'InvoicesPayment' + FIELDS;
+    private static invoicePayments = 'InvoicePayments';
+    private static invoicePaymentFields = 'InvoicePayment' + FIELDS;
 
     private static invoiceItems = 'InvoiceItems';
     private static invoiceItemFields = 'InvoiceItem' + FIELDS;
@@ -22,20 +22,20 @@ export class InvoicesPermissions {
     public static updateOwnInvoices = UPDATE + InvoicesPermissions.ownInvoices;
     public static removeOwnInvoices = REMOVE + InvoicesPermissions.ownInvoices;
 
-    public static findInvoicesFields = FIND + InvoicesPermissions.invoiceFields;
-    public static addInvoicesFields = ADD + InvoicesPermissions.invoiceFields;
-    public static updateInvoicesFields = UPDATE + InvoicesPermissions.invoiceFields;
-    public static removeInvoicesFields = REMOVE + InvoicesPermissions.invoiceFields;
+    public static findInvoiceFields = FIND + InvoicesPermissions.invoiceFields;
+    public static addInvoiceFields = ADD + InvoicesPermissions.invoiceFields;
+    public static updateInvoiceFields = UPDATE + InvoicesPermissions.invoiceFields;
+    public static removeInvoiceFields = REMOVE + InvoicesPermissions.invoiceFields;
 
-    public static findInvoicePayments = FIND + InvoicesPermissions.invoicesPayments;
-    public static addInvoicePayments = ADD + InvoicesPermissions.invoicesPayments;
-    public static updateInvoicePayments = UPDATE + InvoicesPermissions.invoicesPayments;
-    public static removeInvoicePayments = REMOVE + InvoicesPermissions.invoicesPayments;
+    public static findInvoicePayments = FIND + InvoicesPermissions.invoicePayments;
+    public static addInvoicePayments = ADD + InvoicesPermissions.invoicePayments;
+    public static updateInvoicePayments = UPDATE + InvoicesPermissions.invoicePayments;
+    public static removeInvoicePayments = REMOVE + InvoicesPermissions.invoicePayments;
 
-    public static findInvoicePaymentFields = FIND + InvoicesPermissions.invoicesPaymentFields;
-    public static addInvoicePaymentFields = ADD + InvoicesPermissions.invoicesPaymentFields;
-    public static updateInvoicePaymentFields = UPDATE + InvoicesPermissions.invoicesPaymentFields;
-    public static removeInvoicePaymentFields = REMOVE + InvoicesPermissions.invoicesPaymentFields;
+    public static findInvoicePaymentFields = FIND + InvoicesPermissions.invoicePaymentFields;
+    public static addInvoicePaymentFields = ADD + InvoicesPermissions.invoicePaymentFields;
+    public static updateInvoicePaymentFields = UPDATE + InvoicesPermissions.invoicePaymentFields;
+    public static removeInvoicePaymentFields = REMOVE + InvoicesPermissions.invoicePaymentFields;
 
     public static findInvoiceItems = FIND + InvoicesPermissions.invoiceItems;
     public static addInvoiceItems = ADD + InvoicesPermissions.invoiceItems
