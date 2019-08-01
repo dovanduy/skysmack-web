@@ -100,7 +100,9 @@ export class LoginComponent implements OnInit, OnDestroy {
         this.success = true;
         this.skysmackActions.getSkysmack();
         this.dialog.closeAll();
-        this.router.navigate(['/']);
+        if (this.router.url.split('/')[1] === this.packagePath) {
+          this.router.navigate(['/']);
+        }
       }));
   }
 
