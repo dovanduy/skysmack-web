@@ -56,7 +56,7 @@ export class NgInvoicesMenu extends SidebarMenu {
                 order: 2,
                 icon: 'shortText',
                 permissions: [
-                    InvoicesPermissions.findInvoicesFields
+                    InvoicesPermissions.findInvoiceFields
                 ]
             }),
             new MenuItem({
