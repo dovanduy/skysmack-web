@@ -86,14 +86,20 @@ export class ContainerComponent implements OnInit, OnDestroy {
         if (this.editorNavService.redirectPath && this.editorNavService.redirectPath.length > 0) {
           this.router.navigate([this.editorNavService.redirectPath]);
         } else {
-          this.activatedRoute.parent.parent.url.pipe(
-            map((pathSegments: UrlSegment[]) => {
-              if (pathSegments && pathSegments[pathSegments.length - 1]) {
-                this.router.navigate([pathSegments[pathSegments.length - 1].path]);
-              }
+          // Loop activated routes from current container to last parent
+          // Last parent should be the first part of url segment
+          var routePaths = [];
+          var route = this.activatedRoute;
+          do {
+            // Push in reverse order, since parents are pushed in reverse order
+            const parentRoutes = route.snapshot.url.map(url => url.path).filter(path => path.length).reverse();
+            if (parentRoutes && parentRoutes.length) {
+              routePaths.push(...parentRoutes); 
             }
-          ),
-          take(1)).subscribe();
+            route = route.parent;
+          } while(route);
+          // This happens reversed, so reverse again and route
+          this.router.navigate(routePaths.reverse());
         }
         this.editorNavService.redirectPath = '';
       })

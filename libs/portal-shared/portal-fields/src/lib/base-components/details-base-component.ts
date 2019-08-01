@@ -23,7 +23,6 @@ export class DetailsBaseComponent<TAppState, TKey> extends BaseComponent<TAppSta
     }
 
     ngOnInit() {
-        this.setSidebarCloseUrl();
         super.ngOnInit();
         // this.editorNavService.showEditorNav();
         this.actions.getSingle(this.packagePath, this.entityId);
@@ -33,21 +32,7 @@ export class DetailsBaseComponent<TAppState, TKey> extends BaseComponent<TAppSta
             this.store.getSingle(this.packagePath, this.entityId)
         ).pipe(switchMap(([loadedPackage, record]) => this.fieldsConfig.getFields(loadedPackage, record)));
     }
-
-    protected setSidebarCloseUrl() {
-        this.activatedRoute.url.pipe(
-            map((pathSegments: UrlSegment[]) => {
-                const nonEmptyPathSegments = pathSegments.filter(x => x.path.length > 0).map(x => x.path);
-                if (nonEmptyPathSegments.length > 0) {
-                    this.editorNavService.redirectPath = this.router.url.substring(0, this.router.url.length - nonEmptyPathSegments.join('/').length - 1);
-                } else {
-                    this.editorNavService.redirectPath = '';
-                }
-            }),
-            take(1)
-        ).subscribe();
-    }
-
+    
     ngOnDestroy() {
         super.ngOnDestroy();
     }

@@ -27,26 +27,11 @@ export class RecordFormComponent<TAppState, TRecord extends Record<TKey>, TKey> 
     }
 
     ngOnInit() {
-        this.setSidebarCloseUrl();
         super.ngOnInit();
     }
 
     ngOnDestroy() {
         super.ngOnDestroy();
-    }
-
-    protected setSidebarCloseUrl() {
-        this.activatedRoute.url.pipe(
-            map((pathSegments: UrlSegment[]) => {
-                const nonEmptyPathSegments = pathSegments.filter(x => x.path.length > 0).map(x => x.path);
-                if (nonEmptyPathSegments.length > 0) {
-                    this.editorNavService.redirectPath = this.router.url.substring(0, this.router.url.length - nonEmptyPathSegments.join('/').length - 1);
-                } else {
-                    this.editorNavService.redirectPath = '';
-                }
-            }),
-            take(1)
-        ).subscribe();
     }
 
     protected setCreateFields() {
