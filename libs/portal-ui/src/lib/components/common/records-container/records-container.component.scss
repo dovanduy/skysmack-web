@@ -20,7 +20,8 @@ mat-card {
   padding: 0;
 }
 
-table {
+table.mat-table {
+  background-color: transparent;
   width: 100%;
 
   thead tr {

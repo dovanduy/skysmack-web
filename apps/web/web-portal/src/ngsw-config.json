@@ -30,8 +30,8 @@
       "name": "api",
       "urls": ["https://*.skysmack.io/*"],
       "cacheConfig": {
-        "maxSize": 0,
-        "maxAge": "0u",
+        "maxAge": "1d",
+        "timeout": "1s",
         "strategy": "freshness"
       }
     }
