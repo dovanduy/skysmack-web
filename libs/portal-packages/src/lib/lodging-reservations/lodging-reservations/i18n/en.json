@@ -1,8 +1,17 @@
 {
     "LODGING_RESERVATIONS": {
-        "ARRIVALS": "Arrivals",
-        "DEPARTURES": "Departures",
-        "STAYS": "Stays",        
+        "ARRIVALS": {
+            "TITLE": "Arrivals",
+            "TITLE_EXTRAS": "(arrivals)"
+        },
+        "DEPARTURES": {
+            "TITLE": "Departures",
+            "TITLE_EXTRAS": "(departures)"
+        },
+        "STAYS": {
+            "TITLE": "Stays",
+            "TITLE_EXTRAS": "(stays)"
+        },      
         "FORM": {
             "LABELS": {
                 "LODGINGTYPEID": "Lodging type",

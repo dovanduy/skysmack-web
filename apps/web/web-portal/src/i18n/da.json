@@ -696,9 +696,18 @@
 		}
 	},
 	"LODGING_RESERVATIONS": {
-		"ARRIVALS": "Ankomster",
-		"DEPARTURES": "Afgange",
-		"STAYS": "Ophold",
+		"ARRIVALS": {
+			"TITLE": "Ankomster",
+			"TITLE_EXTRAS": "(ankomster)"
+		},
+		"DEPARTURES": {
+			"TITLE": "Afgange",
+			"TITLE_EXTRAS": "(afgange)"
+		},
+		"STAYS": {
+			"TITLE": "Ophold",
+			"TITLE_EXTRAS": "(ophold)"
+		},     
 		"FORM": {
 			"LABELS": {
 				"LODGINGTYPEID": "Rum type",

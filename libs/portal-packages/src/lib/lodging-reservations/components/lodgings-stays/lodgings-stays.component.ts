@@ -15,6 +15,8 @@ import { NgLodgingReservationsStore, NgLodgingReservationsActions } from '@skysm
   templateUrl: './lodgings-stays.component.html'
 })
 export class LodgingsStaysComponent extends LodgingsReservationsIndexComponent implements OnInit {
+  public titleExtras = true;
+  public titleExtrasTranslationPostFix = '.STAYS.TITLE_EXTRAS';
   constructor(
     public router: Router,
     public activatedRoute: ActivatedRoute,
@@ -32,12 +34,13 @@ export class LodgingsStaysComponent extends LodgingsReservationsIndexComponent i
     public menuItemActionProviders: MenuItemActionProviders
   ) {
     super(router, activatedRoute, skysmackStore, store, lodgingsStore, lodgingTypesStore, actions, lodgingsActions, lodgingTypesActions, fieldsConfig, sidebarMenu, pageTitle, title, menuItemActionProviders);
+    pageTitle.setTitle('LODGING_RESERVATIONS.STAYS.TITLE');
   }
 
   ngOnInit() {
     this.filter();
     this.sort();
-    this.pageTitle.setTitle('LODGING_RESERVATIONS.STAYS');
+    this.pageTitle.setTitle('LODGING_RESERVATIONS.STAYS.TITLE');
     super.ngOnInit();
   }
 
