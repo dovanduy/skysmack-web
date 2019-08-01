@@ -1,27 +1,27 @@
 import { Routes } from '@angular/router';
-import { CommercialDashboardComponent } from './commercial-dashboard/commercial-dashboard.component';
-import { CommercialLoginComponent } from './commercial-login/commercial-login.component';
-import { CommercialChangePasswordComponent } from './commercial-change-password/commercial-change-password.component';
-import { CommercialForgotPasswordComponent } from './commercial-forgot-password/commercial-forgot-password.component';
+import { CommercialAccountDashboardComponent } from './commercial-account-dashboard/commercial-account-dashboard.component';
+import { CommercialAccountLoginComponent } from './commercial-account-login/commercial-account-login.component';
+import { CommercialAccountChangePasswordComponent } from './commercial-account-change-password/commercial-account-change-password.component';
+import { CommercialAccountForgotPasswordComponent } from './commercial-account-forgot-password/commercial-account-forgot-password.component';
 
 export const commercialAccountRoutes: Routes = [
   {
-    path: 'login', component: CommercialLoginComponent
+    path: 'login', component: CommercialAccountLoginComponent
   },
   {
-    path: 'dashboard', component: CommercialDashboardComponent
+    path: 'dashboard', component: CommercialAccountDashboardComponent
   },
   {
-    path: 'change-password', component: CommercialChangePasswordComponent
+    path: 'change-password', component: CommercialAccountChangePasswordComponent
   },
   {
-    path: 'forgot-password', component: CommercialForgotPasswordComponent
+    path: 'forgot-password', component: CommercialAccountForgotPasswordComponent
   }
 ];
 
 export const commercialAccountComponents: any[] = [
-  CommercialDashboardComponent,
-  CommercialLoginComponent,
-  CommercialChangePasswordComponent,
-  CommercialForgotPasswordComponent
+  CommercialAccountDashboardComponent,
+  CommercialAccountLoginComponent,
+  CommercialAccountChangePasswordComponent,
+  CommercialAccountForgotPasswordComponent
 ];

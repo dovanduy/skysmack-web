@@ -1,6 +1,5 @@
 <ss-dynamic-form *ngIf="fields$" [noSidebar]="true" [fields$]="fields$" [validation]="fieldsConfig.validation"
-    [rules]="fieldsConfig.formRules" [removeCloseButton]="removeCloseButton" [buttonText]="'Login'"
-    (submitted)="onSubmit($event)">
+    [rules]="fieldsConfig.formRules" [removeCloseButton]="true" [buttonText]="'Login'" (submitted)="onSubmit($event)">
 
     <mat-card-title>Sign in</mat-card-title>
     <mat-card-subtitle>Please enter credentials below</mat-card-subtitle>

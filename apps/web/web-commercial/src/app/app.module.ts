@@ -17,6 +17,7 @@ import { commercialAccountRoute } from './packages/commercial_account_wrapper.mo
 import { environment } from '../environments/environment';
 import { HttpClientModule } from '@angular/common/http';
 import { commercialApplicationStartup } from './commercial-application-startup';
+import { commercialTenantsRoute } from './packages/commercial_tenants_wrapper.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -25,6 +26,7 @@ import { commercialApplicationStartup } from './commercial-application-startup';
     HttpClientModule,
     RouterModule.forRoot([
       commercialAccountRoute,
+      commercialTenantsRoute
     ], { initialNavigation: 'enabled' }),
     BrowserAnimationsModule,
     MaterialModule,

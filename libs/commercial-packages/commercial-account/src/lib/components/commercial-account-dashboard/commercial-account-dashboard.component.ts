@@ -4,11 +4,11 @@ import { Observable } from 'rxjs';
 import { CurrentUser } from '@skysmack/framework';
 
 @Component({
-  selector: 'ss-commercial-dashboard',
-  templateUrl: './commercial-dashboard.component.html',
-  styleUrls: ['./commercial-dashboard.component.scss']
+  selector: 'ss-commercial-account-dashboard',
+  templateUrl: './commercial-account-dashboard.component.html',
+  styleUrls: ['./commercial-account-dashboard.component.scss']
 })
-export class CommercialDashboardComponent implements OnInit {
+export class CommercialAccountDashboardComponent implements OnInit {
 
   public currentUser$: Observable<CurrentUser>;
 

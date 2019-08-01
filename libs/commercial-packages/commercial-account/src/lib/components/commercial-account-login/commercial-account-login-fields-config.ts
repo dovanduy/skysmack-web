@@ -2,11 +2,11 @@ import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { FormRule, Field, CustomValidators } from '@skysmack/ng-dynamic-forms';
 import { EmailFieldComponent, PasswordFieldComponent } from '@skysmack/portal-fields';
-import { CommercialLoginValidation } from './commercial-login-validation';
+import { CommercialAccountLoginValidation } from './commercial-account-login-validation';
 
 @Injectable({ providedIn: 'root' })
-export class CommercialLoginFieldsConfig {
-    public validation = new CommercialLoginValidation();
+export class CommercialAccountLoginFieldsConfig {
+    public validation = new CommercialAccountLoginValidation();
     public area = '';
     public formRules: FormRule[] = [];
 

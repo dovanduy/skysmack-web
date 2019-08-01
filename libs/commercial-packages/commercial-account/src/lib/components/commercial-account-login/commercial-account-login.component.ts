@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Field, FormHelper } from '@skysmack/ng-dynamic-forms';
-import { CommercialLoginFieldsConfig } from './commercial-login-fields-config';
+import { CommercialAccountLoginFieldsConfig } from './commercial-account-login-fields-config';
 import { trigger, transition, style, animate } from '@angular/animations';
 import { SubscriptionHandler } from '@skysmack/framework';
 import { AuthenticationActions } from '@skysmack/redux';
@@ -12,9 +12,9 @@ import { Router } from '@angular/router';
 import { filter } from 'rxjs/operators';
 
 @Component({
-  selector: 'ss-commercial-login',
-  templateUrl: './commercial-login.component.html',
-  styleUrls: ['./commercial-login.component.scss'],
+  selector: 'ss-commercial-account-login',
+  templateUrl: './commercial-account-login.component.html',
+  styleUrls: ['./commercial-account-login.component.scss'],
   animations: [
     trigger(
       'shrinkOut',
@@ -34,8 +34,7 @@ import { filter } from 'rxjs/operators';
     )
   ]
 })
-export class CommercialLoginComponent implements OnInit {
-  public removeCloseButton = true;
+export class CommercialAccountLoginComponent implements OnInit {
   public loggingIn = false;
   public error = false;
   public success = false;
@@ -44,7 +43,7 @@ export class CommercialLoginComponent implements OnInit {
 
   constructor(
     public router: Router,
-    public fieldsConfig: CommercialLoginFieldsConfig,
+    public fieldsConfig: CommercialAccountLoginFieldsConfig,
     public ngRedux: NgRedux<any>,
     public requests: CommercialAccountService,
     public store: NgAuthenticationStore

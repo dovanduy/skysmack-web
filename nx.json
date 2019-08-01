@@ -178,6 +178,9 @@
     },
     "commercial-account": {
       "tags": []
+    },
+    "commercial-tenants": {
+      "tags": []
     }
   }
 }
