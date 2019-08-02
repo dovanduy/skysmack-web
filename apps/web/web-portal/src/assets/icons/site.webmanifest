@@ -1,6 +1,9 @@
 {
+    "dir": "ltr",
+    "lang": "en",
     "name": "Skysmack",
     "short_name": "Skysmack",
+    "orientation": "any",
     "icons": [
         {
             "src": "android-chrome-192x192.png?v=Kmnj8bBO5w",
