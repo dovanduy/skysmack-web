@@ -14,13 +14,17 @@
     {
       "name": "assets",
       "installMode": "lazy",
-      "updateMode": "prefetch",
       "resources": {
         "files": [
           "/*.css",
           "/*.js",
           "/assets/**",
           "/*.(eot|svg|cur|jpg|png|webp|gif|otf|ttf|woff|woff2|ani)"
+        ],
+        "urls": [
+          "https://fonts.googleapis.com/css?family=Muli:300,400,600",
+          "https://fonts.googleapis.com/icon?family=Material+Icons",
+          "https://ajax.googleapis.com/ajax/libs/hammerjs/2.0.8/hammer.min.js"
         ]
       }
     }
@@ -31,7 +35,7 @@
       "urls": ["https://*.skysmack.io/*"],
       "cacheConfig": {
         "maxAge": "1d",
-        "timeout": "1s",
+        "timeout": "500u",
         "strategy": "freshness"
       }
     }
