@@ -2,7 +2,7 @@ import { Injectable, Inject } from '@angular/core';
 import { map, catchError } from 'rxjs/operators';
 import { AuthenticationActions, ReduxAction } from '@skysmack/redux';
 import { of, Observable } from 'rxjs';
-import { ApiDomain, CurrentUser, HttpErrorResponse, API_DOMAIN_INJECTOR_TOKEN, HttpResponse } from '@skysmack/framework';
+import { ApiDomain, CurrentUser, HttpErrorResponse, API_DOMAIN_INJECTOR_TOKEN, HttpResponse, HttpSuccessResponse } from '@skysmack/framework';
 import { HttpParams, HttpClient } from '@angular/common/http';
 
 @Injectable({ providedIn: 'root' })
@@ -46,7 +46,7 @@ export class CommercialAccountService {
         return of();
     }
 
-    public changePassword(password: any): Observable<HttpResponse | HttpErrorResponse> {
+    public changePassword(password: any): Observable<HttpSuccessResponse | HttpErrorResponse> {
         return this.http.post(`${this.apiDomain}/account/password`, password, { observe: 'response' }).pipe(
             catchError((error) => of(error))
         );
