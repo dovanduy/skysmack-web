@@ -41,10 +41,11 @@ export class RefreshTokenInterceptor implements HttpInterceptor {
                     return currentUser$.pipe(
                         flatMap(currentUser => {
                             if (currentUser && currentUser.refresh_token && currentUser.refresh_token.length > 0 && !IsAuthenticated(currentUser)) {
-                                // Refresh token before request and hold back other requests
+                                // User should be authenticated but is not. There is a refresh token. 
+                                // Refresh token before request and block other requests. 
                                 this.refreshToken(currentUser);
-                                
-                                // Wait for refreshing token to finish
+
+                                // Wait for refreshing token to finish, and then run the request with updated user information. 
                                 return isRefreshingTokenTrue$.pipe(
                                     flatMap(() => {
                                         return currentUser$.pipe(
@@ -56,91 +57,71 @@ export class RefreshTokenInterceptor implements HttpInterceptor {
                                     })
                                 );
                             } else if (currentUser && currentUser.refresh_token && currentUser.refresh_token.length > 0 && !TokenExpiresSoon(currentUser)) {
-                                // If user token is soon to expire, start a request for a new token in the background...
+                                // If user token is soon to expire, start a request for a new token in the background.
                                 this.refreshToken(currentUser);
                             }
-                            
+
                             // Run normal request
                             request = this.addTokenToRequest(request, currentUser);
-                            return next.handle(request);
+                            return next.handle(request).pipe(
+                                catchError(error => {
+                                    // Catch if refresh token timeout is misaligned with backend
+                                    // Try to refresh token if error is 401, it was attempted with authorization and a refresh token exist for the user
+                                    if (error instanceof HttpErrorResponse && error.status === 401 && request.headers.has('Authorization') && currentUser && currentUser.refresh_token) {
+                                        // Refresh token and block other requests
+                                        this.refreshToken(currentUser);
+
+                                        // Wait for refreshing token to finish
+                                        return isRefreshingTokenTrue$.pipe(
+                                            flatMap(() => {
+                                                return currentUser$.pipe(
+                                                    flatMap((currentUserUpdated) => {
+                                                        // Retry request with updated user. 
+                                                        request = this.addTokenToRequest(request, currentUserUpdated);
+                                                        return next.handle(request);
+                                                    })
+                                                )
+                                            })
+                                        );
+                                    } else {
+                                        return throwError(error);
+                                    }
+                                })
+                            );
                         })
                     )
                 })
             );
         }
-
-        // return this.ngRedux.select(store => store.hydrated).pipe(
-        //     filter(state => state.hydrated === true),
-        //     mergeMap(() => this.isRefreshingToken$),
-        //     filter(x => !x),
-        //     mergeMap(() => currentUser$.pipe(
-        //         mergeMap((currentUser: CurrentUser) => {
-        //             console.log('wtf');
-        //             request = this.addTokenToRequest(request, currentUser);
-        //             return next.handle(request).pipe(
-        //                 catchError(error => {
-        //                     console.log('1', error.status, request.headers, currentUser.refresh_token);
-        //                     // Try to refresh token if error is 401, it was attempted with authorization and a refresh token exist for the user
-        //                     if (error instanceof HttpErrorResponse && error.status === 401 && request.headers.has('Authorization') && currentUser.refresh_token && !request.url.endsWith('/token')) {
-        //                         console.log('2');
-        //                         if (!this.isRefreshingToken$.getValue()) {
-        //                             console.log('3');
-        //                             this.isRefreshingToken$.next(true);
-        //                             return this.oauth2Requests.refreshToken(currentUser).pipe(
-        //                                 mergeMap(refreshTokenReduxAction => {
-        //                                     console.log(' --- 4 -------------------------------------'); 
-        //                                     this.ngRedux.dispatch(Object.assign({}, refreshTokenReduxAction));
-        //                                     this.isRefreshingToken$.next(false);
-        //                                     if (refreshTokenReduxAction.type === AuthenticationActions.REFRESH_TOKEN_SUCCESS && (refreshTokenReduxAction.payload as CurrentUser).access_token) {
-        //                                         console.log('refresh_token done, retrying request', request);
-        //                                         return next.handle(this.addTokenToRequest(request, (refreshTokenReduxAction.payload as CurrentUser)));
-        //                                     } else {                                            
-        //                                         return throwError(error);
-        //                                     }
-        //                                 })
-        //                             );
-        //                         } else {
-        //                             return this.isRefreshingToken$.pipe(
-        //                                 filter(x => !x),
-        //                                 take(1),
-        //                                 mergeMap(() => {
-        //                                     return currentUser$.pipe(distinctUntilChanged())
-        //                                 }),
-        //                                 filter(user => user.access_token !== currentUser.access_token),
-        //                                 take(1),
-        //                                 mergeMap(user => {
-        //                                     console.log('woah, new access token!');
-        //                                     return next.handle(this.addTokenToRequest(request, user));
-        //                                 })
-        //                             );
-        //                         }
-        //                     } else {
-        //                         return throwError(error);
-        //                     }
-        //                 })
-        //             );
-        //         })
-        //     ))
-        // );
     }
 
-    private refreshToken(currentUser: CurrentUser, error: HttpErrorResponse = null) {
+    private refreshToken(currentUser: CurrentUser) {
+        // Try and request new access token, if refreshing is not already in progress.
         if (!this.isRefreshingToken$.getValue()) {
+            // Block other requests
             this.isRefreshingToken$.next(true);
+            // Request the refreshed access token
             this.oauth2Requests.refreshToken(currentUser).pipe(
                 map(refreshTokenReduxAction => {
+                    // Store new user with redux
                     this.ngRedux.dispatch(Object.assign({}, refreshTokenReduxAction));
+                    // Signal that we're done refreshing
                     this.isRefreshingToken$.next(false);
                 }),
+                catchError((error) => {
+                    // Refreshing token went wrong, however we still want to stop blocking. 
+                    this.isRefreshingToken$.next(false);
+                    return throwError(error);
+                }),
+                // Kill stream when we're done
                 first()
             ).subscribe();
-        } 
+        }
     }
 
     private addTokenToRequest(request: HttpRequest<any>, currentUser: CurrentUser): HttpRequest<any> {
         if (currentUser && !request.url.endsWith('/token')) {
             if (currentUser.token_type && currentUser.access_token) {
-                // console.log('adding token to request', request, currentUser);
                 return request.clone({
                     setHeaders: {
                         Authorization: `${currentUser.token_type} ${currentUser.access_token}`
