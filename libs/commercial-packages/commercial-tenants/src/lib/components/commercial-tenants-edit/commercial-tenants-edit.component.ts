@@ -14,7 +14,7 @@ import { Tenant } from '../../models/tenant';
   templateUrl: './commercial-tenants-edit.component.html',
   styleUrls: ['./commercial-tenants-edit.component.scss'],
 })
-export class CommercialTenantsCreateComponent implements OnInit {
+export class CommercialTenantsEditComponent implements OnInit {
   public fields$: Observable<Field[]>;
   public subscriptionHandler = new SubscriptionHandler();
 
@@ -37,7 +37,7 @@ export class CommercialTenantsCreateComponent implements OnInit {
   public onSubmit(fh: FormHelper) {
     fh.formValid(() => {
       const tenant = fh.form.getRawValue();
-      this.service.add(tenant).pipe(
+      this.service.update(tenant).pipe(
         tap(() => this.router.navigate(['/', 'tenants'])),
         take(1)
       ).subscribe();
