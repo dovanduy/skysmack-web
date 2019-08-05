@@ -90,10 +90,10 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.subscriptionHandler.register(fh.form.valueChanges.subscribe(() => this.error = false));
   }
 
-  private login(credentials: { email: string, password: string }) {
+  private login(credentials: { email: string, password: string, staySignedIn: boolean }) {
     this.ngRedux.dispatch({ type: AuthenticationActions.CLEAR_LOGIN_ERROR });
 
-    this.subscriptionHandler.register(this.requests.login(credentials.email, credentials.password, this.packagePath).subscribe(loginResultAction => this.ngRedux.dispatch(loginResultAction)));
+    this.subscriptionHandler.register(this.requests.login(credentials.email, credentials.password, credentials.staySignedIn, this.packagePath).subscribe(loginResultAction => this.ngRedux.dispatch(loginResultAction)));
     this.loggingIn = true;
 
     this.subscriptionHandler.register(this.store.isCurrentUserAuthenticated()

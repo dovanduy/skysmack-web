@@ -15,15 +15,18 @@ export class Oauth2Requests {
         @Inject(API_DOMAIN_INJECTOR_TOKEN) protected apiDomain: ApiDomain
     ) { }
 
-    login(email: string, password: string, authPath: string): Observable<ReduxAction<CurrentUser> | ReduxAction<HttpErrorResponse>> {
+    login(email: string, password: string, staySignedIn: boolean, authPath: string): Observable<ReduxAction<CurrentUser> | ReduxAction<HttpErrorResponse>> {
         const headers = new HttpHeaders().set(InterceptorSkipHeader, '');
-        
+
         const url = `${this.apiDomain.domain}/${authPath}/token`;
-        const params = new HttpParams()
+        let params = new HttpParams()
             .append('grant_type', 'password')
             .append('username', email)
-            .append('password', password)
-            .append('scope', 'offline_access');
+            .append('password', password);
+
+        if (staySignedIn) {
+            params = params.append('scope', 'offline_access');
+        }
 
         return this.http.post<OpenIdConnectResponse>(url, params, { headers: headers, observe: 'response' }).pipe(
             map((response) => {
@@ -35,7 +38,7 @@ export class Oauth2Requests {
                         access_token: response.body.access_token,
                         refresh_token: response.body.refresh_token,
                         expires_in: response.body.expires_in,
-                        loginTime: new Date(),
+                        loginTime: new Date().getTime(),
                         email: email,
                         authPath: authPath
                     })
@@ -77,18 +80,18 @@ export class Oauth2Requests {
                         access_token: response.body.access_token,
                         refresh_token: response.body.refresh_token ? response.body.refresh_token : currentUser.refresh_token,
                         expires_in: response.body.expires_in,
-                        loginTime: new Date(),
+                        loginTime: new Date().getTime(),
                         email: currentUser.email,
                         authPath: currentUser.authPath
                     })
                 }));
             }),
-            catchError((error) => { 
+            catchError((error) => {
                 return of(Object.assign({}, new ReduxAction<HttpErrorResponse>({
-                type: AuthenticationActions.REFRESH_TOKEN_ERROR,
-                payload: error,
-                error: true
-            })));
+                    type: AuthenticationActions.REFRESH_TOKEN_ERROR,
+                    payload: error,
+                    error: true
+                })));
             })
         );
     }

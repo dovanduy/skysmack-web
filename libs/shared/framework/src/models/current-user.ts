@@ -4,7 +4,7 @@ export class CurrentUser {
     public access_token: string;
     public refresh_token: string;
     public expires_in: number;
-    public loginTime: Date;
+    public loginTime: number;
     public email: string;
     public authPath: string;
 
@@ -28,7 +28,7 @@ export function TokenExpiresSoon(currentUser: CurrentUser): boolean {
     
     if (currentUser && currentUser.access_token && currentUser.loginTime) {
         // 20% before expire
-        tokenExpiresSoon = Date.now() >= (currentUser.loginTime.getTime() + currentUser.expires_in * 800);
+        tokenExpiresSoon = Date.now() >= (new Date(currentUser.loginTime).getTime() + currentUser.expires_in * 800);
     }
 
     return tokenExpiresSoon ? false : true;

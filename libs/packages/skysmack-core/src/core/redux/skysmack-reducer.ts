@@ -27,8 +27,10 @@ export function skysmackReducer(state = new SkysmackState(), action: any): Skysm
         }
         case SkysmackActions.GET_SKYSMACK_FAILURE: {
             const castedAction = action as ReduxAction<HttpErrorResponse>;
-            let errorDescription = action.payload.error.detail;
-            if (!errorDescription) {
+            let errorDescription = 'Failed to get skysmack';
+            if (action.payload.error && action.payload.error.detail) {
+                errorDescription = action.payload.error.detail;
+            } else if (castedAction.payload.message) {
                 errorDescription = castedAction.payload.message;
             }
 

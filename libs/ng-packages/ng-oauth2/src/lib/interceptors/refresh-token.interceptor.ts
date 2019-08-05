@@ -6,6 +6,8 @@ import { CurrentUser, IsAuthenticated, TokenExpiresSoon } from '@skysmack/framew
 import { NgAuthenticationStore, NgAuthenticationActions } from '@skysmack/ng-framework';
 import { NgRedux } from '@angular-redux/store';
 import { Oauth2Requests, InterceptorSkipHeader } from '../requests/oauth2-requests';
+import { RESET_STATE } from '@redux-offline/redux-offline/lib/constants';
+import { ReduxAction, AuthenticationActions } from '@skysmack/redux';
 
 @Injectable({ providedIn: 'root' })
 export class RefreshTokenInterceptor implements HttpInterceptor {
@@ -47,8 +49,7 @@ export class RefreshTokenInterceptor implements HttpInterceptor {
                                     flatMap(() => {
                                         return currentUser$.pipe(
                                             flatMap((currentUserUpdated) => {
-                                                request = this.addTokenToRequest(request, currentUserUpdated);
-                                                return next.handle(request);
+                                                return next.handle(this.addTokenToRequest(request, currentUserUpdated));
                                             })
                                         )
                                     })
@@ -59,27 +60,33 @@ export class RefreshTokenInterceptor implements HttpInterceptor {
                             }
 
                             // Run normal request
-                            request = this.addTokenToRequest(request, currentUser);
-                            return next.handle(request).pipe(
+                            return next.handle(this.addTokenToRequest(request, currentUser)).pipe(
                                 catchError(error => {
                                     // Catch if refresh token timeout is misaligned with backend
                                     // Try to refresh token if error is 401, it was attempted with authorization and a refresh token exist for the user
-                                    if (error instanceof HttpErrorResponse && error.status === 401 && request.headers.has('Authorization') && currentUser && currentUser.refresh_token) {
-                                        // Refresh token and block other requests
-                                        this.refreshToken(currentUser);
+                                    if (error instanceof HttpErrorResponse && error.status === 401 && request.headers.has('Authorization') && currentUser) {
+                                        if (currentUser.refresh_token) {
+                                            // Refresh token and block other requests
+                                            this.refreshToken(currentUser);
 
-                                        // Wait for refreshing token to finish
-                                        return isRefreshingTokenTrue$.pipe(
-                                            flatMap(() => {
-                                                return currentUser$.pipe(
-                                                    flatMap((currentUserUpdated) => {
-                                                        // Retry request with updated user. 
-                                                        request = this.addTokenToRequest(request, currentUserUpdated);
-                                                        return next.handle(request);
-                                                    })
-                                                )
-                                            })
-                                        );
+                                            // Wait for refreshing token to finish
+                                            return isRefreshingTokenTrue$.pipe(
+                                                flatMap(() => {
+                                                    return currentUser$.pipe(
+                                                        flatMap((currentUserUpdated) => {
+                                                            // Retry request with updated user.
+                                                            return next.handle(this.addTokenToRequest(request, currentUserUpdated));
+                                                        })
+                                                    )
+                                                })
+                                            );
+                                        } else {
+                                            // Assume current user no longer has a valid access token
+                                            // Clear user
+                                            this.authenticationActions.logout();
+                                            // Return request without access token
+                                            return next.handle(request);
+                                        }
                                     } else {
                                         return throwError(error);
                                     }
@@ -106,8 +113,11 @@ export class RefreshTokenInterceptor implements HttpInterceptor {
                     this.isRefreshingToken$.next(false);
                 }),
                 catchError((error) => {
+                    // We assume the user should be logged out
+                    this.authenticationActions.logout();                    
                     // Refreshing token went wrong, however we still want to stop blocking. 
                     this.isRefreshingToken$.next(false);
+                    // Throw error
                     return throwError(error);
                 }),
                 // Kill stream when we're done
@@ -117,17 +127,15 @@ export class RefreshTokenInterceptor implements HttpInterceptor {
     }
 
     private addTokenToRequest(request: HttpRequest<any>, currentUser: CurrentUser): HttpRequest<any> {
-        if (currentUser && !request.url.endsWith('/token')) {
-            if (currentUser.token_type && currentUser.access_token) {
-                return request.clone({
-                    setHeaders: {
-                        Authorization: `${currentUser.token_type} ${currentUser.access_token}`
-                    },
-                    withCredentials: true
-                });
-            } else {
-                return request;
-            }
+        // If the user is not null, the token type exists and an access token exists, then we add a token to the Authorization header
+        // The token could be expired etc., but that should be handled elsewhere. 
+        if (currentUser && currentUser.token_type && currentUser.access_token) {
+            return request.clone({
+                setHeaders: {
+                    Authorization: `${currentUser.token_type} ${currentUser.access_token}`
+                },
+                withCredentials: true
+            });
         } else {
             return request;
         }
