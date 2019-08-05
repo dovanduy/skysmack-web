@@ -15,7 +15,13 @@ export class CommercialTenantsService {
 
 
     public get(): Observable<HttpResponse | HttpErrorResponse> {
-        return this.http.get<Tenant[]>(`${this.apiDomain}/tenants`, { observe: 'response' }).pipe(
+        return this.http.get<Tenant[]>(`${this.apiDomain.domain}/tenants`, { observe: 'response' }).pipe(
+            catchError((error) => of(error))
+        );
+    }
+
+    public add(record: Tenant): Observable<HttpResponse | HttpErrorResponse> {
+        return this.http.post<Tenant[]>(`${this.apiDomain.domain}/tenants`, record, { observe: 'response' }).pipe(
             catchError((error) => of(error))
         );
     }

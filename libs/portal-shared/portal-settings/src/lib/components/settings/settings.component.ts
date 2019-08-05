@@ -1,10 +1,10 @@
-import { Component, OnInit, OnDestroy, Injector } from '@angular/core';
-import { Router, ActivatedRoute, UrlSegment } from '@angular/router';
+import { Component, OnInit, Injector } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 import { LocalObject, RouteData, toLocalObject } from '@skysmack/framework';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { FormHelper } from '@skysmack/ng-dynamic-forms';
 import { combineLatest, of } from 'rxjs';
-import { map, switchMap, take } from 'rxjs/operators';
+import { map, switchMap } from 'rxjs/operators';
 import { NgSettingsActions, NgSettingsStore } from '@skysmack/ng-framework';
 import { SettingsAppState } from '@skysmack/redux';
 import { EditorNavService } from '@skysmack/portal-ui';
