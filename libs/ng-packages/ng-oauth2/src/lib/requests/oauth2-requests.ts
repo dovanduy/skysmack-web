@@ -5,7 +5,8 @@ import { of, Observable } from 'rxjs';
 import { ApiDomain, CurrentUser, HttpErrorResponse, API_DOMAIN_INJECTOR_TOKEN } from '@skysmack/framework';
 import { HttpParams, HttpClient, HttpHeaders } from '@angular/common/http';
 import { OpenIdConnectResponse } from '@skysmack/packages-oauth2';
-import { InterceptorSkipHeader } from '../interceptors/refresh-token.interceptor';
+
+export const InterceptorSkipHeader = 'X-Skip-Interceptor';
 
 @Injectable({ providedIn: 'root' })
 export class Oauth2Requests {

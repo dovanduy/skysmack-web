@@ -1,14 +1,11 @@
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, BehaviorSubject, throwError, zip } from 'rxjs';
-import { mergeMap, take, catchError, switchMap, finalize, filter, tap, map, distinctUntilChanged, defaultIfEmpty, first, flatMap } from 'rxjs/operators';
+import { Observable, BehaviorSubject, throwError } from 'rxjs';
+import { take, catchError, filter, map, defaultIfEmpty, first, flatMap } from 'rxjs/operators';
 import { CurrentUser, IsAuthenticated, TokenExpiresSoon } from '@skysmack/framework';
 import { NgAuthenticationStore, NgAuthenticationActions } from '@skysmack/ng-framework';
 import { NgRedux } from '@angular-redux/store';
-import { Oauth2Requests } from '../requests';
-import { AuthenticationActions } from '@skysmack/redux';
-
-export const InterceptorSkipHeader = 'X-Skip-Interceptor';
+import { Oauth2Requests, InterceptorSkipHeader } from '../requests/oauth2-requests';
 
 @Injectable({ providedIn: 'root' })
 export class RefreshTokenInterceptor implements HttpInterceptor {
