@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 
 @NgModule({
-    imports: [],
+    imports: [
+    ],
     exports: [],
     providers: [],
 })
-export class NgOauth2Module {
-}
+export class NgOauth2Module { }
