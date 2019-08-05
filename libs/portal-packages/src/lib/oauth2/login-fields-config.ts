@@ -6,7 +6,7 @@ import { LocalObject } from '@skysmack/framework';
 import { LoadedPackage } from '@skysmack/ng-framework';
 import { OAUTH2_AREA_KEY } from '@skysmack/packages-oauth2';
 import { FieldsConfig, FieldProviders } from '@skysmack/ng-fields';
-import { EmailFieldComponent, PasswordFieldComponent } from '@skysmack/portal-fields';
+import { EmailFieldComponent, PasswordFieldComponent, CheckboxFieldComponent } from '@skysmack/portal-fields';
 
 @Injectable({ providedIn: 'root' })
 export class LoginFieldsConfig extends FieldsConfig<any, any> {
@@ -34,6 +34,13 @@ export class LoginFieldsConfig extends FieldsConfig<any, any> {
                 key: 'password',
                 validators: [Validators.required],
                 order: 2,
+            }),
+
+            new Field({
+                component: CheckboxFieldComponent,
+                value: true,
+                key: 'staySignedIn',
+                order: 3
             })
         ];
 

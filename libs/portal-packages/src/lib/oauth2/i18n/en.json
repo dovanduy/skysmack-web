@@ -3,7 +3,8 @@
         "FORM": {
             "LABELS": {
                 "EMAIL": "Email",
-                "PASSWORD": "Password"
+                "PASSWORD": "Password",
+                "STAYSIGNEDIN": "Stay signed in?"
             },
             "PLACEHOLDERS": {
                 "EMAIL": "Enter email",
