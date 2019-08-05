@@ -8,7 +8,7 @@ import { NgSkysmackActions } from '@skysmack/ng-skysmack';
 import { SubscriptionHandler, Package } from '@skysmack/framework';
 import { AuthenticationActions } from '@skysmack/redux';
 import { filter } from 'rxjs/operators';
-import { Oauth2Requests } from '@skysmack/ng-oauth2';
+import { OAuth2Requests } from '@skysmack/ng-oauth2';
 import { Field, FormHelper } from '@skysmack/ng-dynamic-forms';
 import { Observable } from 'rxjs';
 import { NgAuthenticationStore } from '@skysmack/ng-framework';
@@ -57,7 +57,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     public skysmackStore: NgSkysmackStore,
     public skysmackActions: NgSkysmackActions,
     public fieldsConfig: LoginFieldsConfig,
-    public requests: Oauth2Requests,
+    public requests: OAuth2Requests,
     public dialog: MatDialog,
     @Optional() @Inject(MAT_DIALOG_DATA) public data: { packagePath: string }
   ) { }

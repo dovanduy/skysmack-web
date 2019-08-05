@@ -9,7 +9,7 @@ import { OpenIdConnectResponse } from '@skysmack/packages-oauth2';
 export const InterceptorSkipHeader = 'X-Skip-Interceptor';
 
 @Injectable({ providedIn: 'root' })
-export class Oauth2Requests {
+export class OAuth2Requests {
     constructor(
         protected http: HttpClient,
         @Inject(API_DOMAIN_INJECTOR_TOKEN) protected apiDomain: ApiDomain

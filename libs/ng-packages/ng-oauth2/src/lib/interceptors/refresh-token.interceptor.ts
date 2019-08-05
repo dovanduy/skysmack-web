@@ -5,7 +5,7 @@ import { take, catchError, filter, map, defaultIfEmpty, first, flatMap } from 'r
 import { CurrentUser, IsAuthenticated, TokenExpiresSoon } from '@skysmack/framework';
 import { NgAuthenticationStore, NgAuthenticationActions } from '@skysmack/ng-framework';
 import { NgRedux } from '@angular-redux/store';
-import { Oauth2Requests, InterceptorSkipHeader } from '../requests/oauth2-requests';
+import { OAuth2Requests, InterceptorSkipHeader } from '../requests/oauth2-requests';
 import { RESET_STATE } from '@redux-offline/redux-offline/lib/constants';
 import { ReduxAction, AuthenticationActions } from '@skysmack/redux';
 
@@ -16,7 +16,7 @@ export class RefreshTokenInterceptor implements HttpInterceptor {
     constructor(
         public authenticationStore: NgAuthenticationStore,
         public authenticationActions: NgAuthenticationActions,
-        public oauth2Requests: Oauth2Requests,
+        public oauth2Requests: OAuth2Requests,
         public ngRedux: NgRedux<any>
     ) { }
 
