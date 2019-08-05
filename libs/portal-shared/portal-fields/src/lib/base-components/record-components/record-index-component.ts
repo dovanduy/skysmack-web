@@ -6,7 +6,7 @@ import { LocalObject, LocalPage, PagedQuery, LoadingState, linq, DisplayColumn, 
 import { Observable, BehaviorSubject, combineLatest, of } from 'rxjs';
 import { OnInit } from '@angular/core';
 import { Record } from '@skysmack/framework';
-import { map, switchMap, distinctUntilChanged } from 'rxjs/operators';
+import { map, switchMap, distinctUntilChanged, delay } from 'rxjs/operators';
 import { EntityFieldsConfig } from '@skysmack/ng-fields';
 import { EntityComponentPageTitle } from '@skysmack/portal-ui';
 import { MenuItemActionProviders } from '@skysmack/portal-ui';
@@ -100,6 +100,7 @@ export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey>
 
     private loadPages() {
         return this.storeGetPages().pipe(
+            delay(0),
             map((dictionary) => {
                 // Part 1: Get current page
                 const query = this.pagedQuery.rsqlFilter.toList().build();
@@ -113,7 +114,7 @@ export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey>
                     if (lastPage) {
                         // Part 2: Load next page
                         if (queryDictionary && queryDictionary.totalCount && this.totalCount !== queryDictionary.totalCount) {
-                            this.totalCount = queryDictionary.totalCount;
+                            this.totalCount = queryDictionary.totalCount;                            
                             this.totalCount$.next(queryDictionary.totalCount);
                         }
                         const lastPageLinks = lastPage.links;
@@ -156,9 +157,15 @@ export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey>
             map(values => {
                 const [pages, entities] = values;
                 if (pages && entities) {
-                    return entities
-                        .filter(entity => entity.isNew && !pages.includes(entity.objectIdentifier))
-                        .concat(entities.filter(entity => pages.includes(entity.objectIdentifier)));
+                    return [
+                    ...entities.filter(entity => entity.isNew && !pages.includes(entity.objectIdentifier)), 
+                    ...linq(pages)
+                        .defined()
+                        .distinct()
+                        .select(entityId => entities.filter(entity => entity.objectIdentifier === entityId)[0])
+                        .defined()
+                        .ok()
+                    ];
                 }
             }),
             defined()

@@ -1,4 +1,4 @@
 <ng-container *ngFor="let field of fields$ | async as fields; trackBy: trackByFieldKey">
   <h5>{{ field.label | translate }}</h5>
-  <p>{{ field.value }}</p>
+  <span>{{ field.value }}</span>
 </ng-container>

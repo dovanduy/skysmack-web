@@ -35,6 +35,7 @@
             {{ entity.object[column.fieldDisplayKey ? column.fieldDisplayKey : column.fieldKey] | displayValue:column | displayModifier:column:entity }}
           </td>
           <td class="table-cell mat-cell action-buttons">
+              <div *ngIf="(entity.status !== 'OK' && !entity.error)" class="spinner-container"><mat-spinner diameter="24" color="accent"></mat-spinner></div>
             <mat-icon class="success-icon" color="primary" *ngIf="entity.isNew && entity.status !== 'CREATING'">
               check_circle</mat-icon>
             <mat-icon class="error-icon" color="warn" *ngIf="entity.error">error</mat-icon>
@@ -75,23 +76,17 @@
             </a>
           </td>
         </tr>
-        <tr class="row-loading-bar">
-          <td [colSpan]="displayColumns.length + 1">
-            <mat-progress-bar *ngIf="(entity.status !== 'OK' && !entity.error)" mode="indeterminate">
-            </mat-progress-bar>
-          </td>
-        </tr>
       </tbody>
     </table>
   </cdk-virtual-scroll-viewport>
 
   <div class="footer">
-    <div *ngIf="totalCount" class="inner">
+    <div *ngIf="totalCount$ | async as totalCount" class="inner">
       <!-- totalCount$ | async as -->
       <span>{{'UI.RECORDS_CONTAINER.LOADED' | translate: { loadedCount: loadedEntitiesCount, totalCount: totalCount } }}</span>
     </div>
     <div style="width:100%;height:5px">
-      <mat-progress-bar *ngIf="loadingState === 2" mode="indeterminate"></mat-progress-bar>
+      <mat-progress-bar *ngIf="(loadingState$ | async ) === 2" mode="indeterminate"></mat-progress-bar>
     </div>
   </div>
 </mat-card>
