@@ -15,6 +15,8 @@ import { RecordIndexComponent } from '@skysmack/portal-fields';
   templateUrl: './assignments-index.component.html'
 })
 export class AssignmentsIndexComponent extends RecordIndexComponent<AssignmentsAppState, Assignment, number> implements OnInit {
+  public static COMPONENT_KEY = 'assignments-index';
+  public componentKey = AssignmentsIndexComponent.COMPONENT_KEY;
 
   public areaKey: string = ASSIGNMENTS_AREA_KEY;
   public titleExtras = true;

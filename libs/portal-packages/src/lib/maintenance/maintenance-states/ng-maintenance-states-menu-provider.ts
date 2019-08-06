@@ -4,8 +4,10 @@ import { MenuArea, MenuProvider } from '@skysmack/framework';
 import { MenuItem } from '@skysmack/framework';
 import { Guid } from 'guid-typescript';
 import { of, Observable } from 'rxjs';
-import { setBackButton } from '@skysmack/ng-framework';
+import { setBackButton, getMenuEntries, setBackButtonV2 } from '@skysmack/ng-framework';
 import { MaintenancePermissions } from '@skysmack/packages-maintenance';
+import { MaintenanceTypeId } from '@skysmack/package-types';
+import { MaintenanceStatesIndexComponent } from './components/maintenance-states-index/maintenance-states-index.component';
 
 @Injectable({ providedIn: 'root' })
 export class NgMaintenanceStatesMenuProvider extends MenuProvider {
@@ -17,7 +19,15 @@ export class NgMaintenanceStatesMenuProvider extends MenuProvider {
     ) { super(); }
 
     public getMenuAreas(packagePath: string, componentKey: string): Observable<MenuArea[]> {
-        return of([
+        return getMenuEntries<MenuArea>(packagePath, MaintenanceTypeId, componentKey, MaintenanceStatesIndexComponent.COMPONENT_KEY, this.getMaintenanceStatesMenuAreas, this.store);
+    };
+
+    public getMenuItems(packagePath: string, componentKey: string): Observable<MenuItem[]> {
+        return getMenuEntries<MenuItem>(packagePath, MaintenanceTypeId, componentKey, MaintenanceStatesIndexComponent.COMPONENT_KEY, this.getMaintenanceStatesMenuItems, this.store);
+    };
+
+    public getMaintenanceStatesMenuAreas = () => {
+        return [
             new MenuArea({
                 area: 'actions',
                 translationPrefix: this.translationPrefix,
@@ -28,12 +38,11 @@ export class NgMaintenanceStatesMenuProvider extends MenuProvider {
                 translationPrefix: this.translationPrefix,
                 order: 2
             })
-        ])
+        ];
     };
 
-    public getMenuItems(packagePath: string, componentKey: string): Observable<MenuItem[]> {
-        if(componentKey === 'maintenance-states-index') {
-            return of([
+    public getMaintenanceStatesMenuItems = () => {
+            return [
                 new MenuItem({
                     url: 'create',
                     displayName: this.translationPrefix + 'CREATE',
@@ -43,10 +52,8 @@ export class NgMaintenanceStatesMenuProvider extends MenuProvider {
                     permissions: [
                     ],
                     providedIn: ['sidebar', 'speedDial']
-                })
-            ]).pipe(setBackButton({ customPath: `/${packagePath}/assignments` }));
-        } else {
-           return of([]);
-        }
+                }),
+                setBackButtonV2('assignments')
+            ];
     };
 }

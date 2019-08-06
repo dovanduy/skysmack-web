@@ -4,8 +4,10 @@ import { MenuArea, MenuProvider } from '@skysmack/framework';
 import { MenuItem } from '@skysmack/framework';
 import { Guid } from 'guid-typescript';
 import { of, Observable } from 'rxjs';
-import { setBackButton } from '@skysmack/ng-framework';
+import { setBackButton, getMenuEntries, setBackButtonV2 } from '@skysmack/ng-framework';
 import { MaintenancePermissions } from '@skysmack/packages-maintenance';
+import { MaintenanceTypeId } from '@skysmack/package-types';
+import { RecurringAssignmentsIndexComponent } from './components/recurring-assignments-index/recurring-assignments-index.component';
 
 @Injectable({ providedIn: 'root' })
 export class NgRecurringAssignmentsMenuProvider extends MenuProvider {
@@ -17,7 +19,15 @@ export class NgRecurringAssignmentsMenuProvider extends MenuProvider {
     ) { super(); }
 
     public getMenuAreas(packagePath: string, componentKey: string): Observable<MenuArea[]> {
-        return of([
+        return getMenuEntries<MenuArea>(packagePath, MaintenanceTypeId, componentKey, RecurringAssignmentsIndexComponent.COMPONENT_KEY, this.getRecurringAssignmentsMenuAreas, this.store);
+    };
+
+    public getMenuItems(packagePath: string, componentKey: string): Observable<MenuItem[]> {
+        return getMenuEntries<MenuItem>(packagePath, MaintenanceTypeId, componentKey, RecurringAssignmentsIndexComponent.COMPONENT_KEY, this.getRecurringAssignmentsMenuItems, this.store);
+    };
+
+    public getRecurringAssignmentsMenuAreas = () => {
+        return [
             new MenuArea({
                 area: 'actions',
                 translationPrefix: this.translationPrefix,
@@ -28,25 +38,22 @@ export class NgRecurringAssignmentsMenuProvider extends MenuProvider {
                 translationPrefix: this.translationPrefix,
                 order: 2
             })
-        ])
+        ];
     };
 
-    public getMenuItems(packagePath: string, componentKey: string): Observable<MenuItem[]> {
-        if(componentKey === 'recurring-assignments-index') {
-            return of([
-                new MenuItem({
-                    url: 'create',
-                    displayName: this.translationPrefix + 'CREATE',
-                    area: 'actions',
-                    order: 1,
-                    icon: 'add',
-                    permissions: [
-                    ],
-                    providedIn: ['sidebar', 'speedDial']
-                })
-            ]).pipe(setBackButton({ customPath: '/maintenance' }));
-        } else {
-           return of([]);
-        }
+    public getRecurringAssignmentsMenuItems = () => {
+        return [
+            new MenuItem({
+                url: 'create',
+                displayName: this.translationPrefix + 'CREATE',
+                area: 'actions',
+                order: 1,
+                icon: 'add',
+                permissions: [
+                ],
+                providedIn: ['sidebar', 'speedDial']
+            }),
+            setBackButtonV2('maintenance')
+        ];
     };
 }

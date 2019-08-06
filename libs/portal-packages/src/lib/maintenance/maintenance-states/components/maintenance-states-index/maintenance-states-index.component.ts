@@ -15,6 +15,8 @@ import { RecordIndexComponent } from '@skysmack/portal-fields';
   templateUrl: './maintenance-states-index.component.html'
 })
 export class MaintenanceStatesIndexComponent extends RecordIndexComponent<MaintenanceStatesAppState, MaintenanceState, number> implements OnInit {
+  public static COMPONENT_KEY = 'maintenance-states-index';
+  public componentKey = MaintenanceStatesIndexComponent.COMPONENT_KEY;
 
   public areaKey: string = MAINTENANCE_STATES_AREA_KEY;
   public titleExtras = true;

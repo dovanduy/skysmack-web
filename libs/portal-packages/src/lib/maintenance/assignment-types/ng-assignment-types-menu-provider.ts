@@ -3,8 +3,10 @@ import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { MenuArea, MenuProvider } from '@skysmack/framework';
 import { MenuItem } from '@skysmack/framework';
 import { Guid } from 'guid-typescript';
-import { of, Observable } from 'rxjs';
-import { setBackButton } from '@skysmack/ng-framework';
+import { Observable } from 'rxjs';
+import { getMenuEntries, setBackButtonV2 } from '@skysmack/ng-framework';
+import { MaintenanceTypeId } from '@skysmack/package-types';
+import { AssignmentTypesIndexComponent } from './components/assignment-types-index/assignment-types-index.component';
 
 @Injectable({ providedIn: 'root' })
 export class NgAssignmentTypesMenuProvider extends MenuProvider {
@@ -16,7 +18,15 @@ export class NgAssignmentTypesMenuProvider extends MenuProvider {
     ) { super(); }
 
     public getMenuAreas(packagePath: string, componentKey: string): Observable<MenuArea[]> {
-        return of([
+        return getMenuEntries<MenuArea>(packagePath, MaintenanceTypeId, componentKey, AssignmentTypesIndexComponent.COMPONENT_KEY, this.getAssignmentTypesMenuAreas, this.store);
+    };
+
+    public getMenuItems(packagePath: string, componentKey: string): Observable<MenuItem[]> {
+        return getMenuEntries<MenuItem>(packagePath, MaintenanceTypeId, componentKey, AssignmentTypesIndexComponent.COMPONENT_KEY, this.getAssignmentTypesMenuItems, this.store);
+    };
+    
+    public getAssignmentTypesMenuAreas = () => {
+        return [
             new MenuArea({
                 area: 'actions',
                 translationPrefix: this.translationPrefix,
@@ -27,25 +37,22 @@ export class NgAssignmentTypesMenuProvider extends MenuProvider {
                 translationPrefix: this.translationPrefix,
                 order: 2
             })
-        ])
+       ];
     };
 
-    public getMenuItems(packagePath: string, componentKey: string): Observable<MenuItem[]> {
-        if(componentKey === 'assignment-types-index') {
-            return of([
-                new MenuItem({
-                    url: 'create',
-                    displayName: this.translationPrefix + 'CREATE',
-                    area: 'actions',
-                    order: 1,
-                    icon: 'add',
-                    permissions: [
-                    ],
-                    providedIn: ['sidebar', 'speedDial']
-                })
-            ]).pipe(setBackButton({ customPath: `/${packagePath}/assignments` }));
-        } else {
-           return of([]);
-        }
+    public getAssignmentTypesMenuItems = () => {
+        return [
+            new MenuItem({
+                url: 'create',
+                displayName: this.translationPrefix + 'CREATE',
+                area: 'actions',
+                order: 1,
+                icon: 'add',
+                permissions: [
+                ],
+                providedIn: ['sidebar', 'speedDial']
+            }),
+            setBackButtonV2('assignments')
+        ];
     };
 }

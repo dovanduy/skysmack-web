@@ -10,6 +10,8 @@ import { NgAssignmentAllMenu } from './../../ng-assignments-all-menu';
   templateUrl: './assignments-all.component.html'
 })
 export class AssignmentsAllIndexComponent implements OnInit {
+  public static COMPONENT_KEY = 'assignments-all-index';
+  public componentKey = AssignmentsAllIndexComponent.COMPONENT_KEY;
 
   public menuItemActions: MenuItem[] = [
     new MenuItem().asUrlAction('edit', MENU_ITEM_ACTIONS_EDIT, 'edit'),

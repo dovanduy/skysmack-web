@@ -5,7 +5,9 @@ import { MenuItem } from '@skysmack/framework';
 import { Guid } from 'guid-typescript';
 import { of, Observable } from 'rxjs';
 import { MaintenancePermissions } from '@skysmack/packages-maintenance';
-import { setBackButton } from '@skysmack/ng-framework';
+import { setBackButton, getMenuEntries, setBackButtonV2 } from '@skysmack/ng-framework';
+import { MaintenanceTypeId } from '@skysmack/package-types';
+import { AssignmentsIndexComponent } from './components/assignments-index/assignments-index.component';
 
 @Injectable({ providedIn: 'root' })
 export class NgAssignmentsMenuProvider extends MenuProvider {
@@ -17,7 +19,15 @@ export class NgAssignmentsMenuProvider extends MenuProvider {
     ) { super(); }
 
     public getMenuAreas(packagePath: string, componentKey: string): Observable<MenuArea[]> {
-        return of([
+        return getMenuEntries<MenuArea>(packagePath, MaintenanceTypeId, componentKey, AssignmentsIndexComponent.COMPONENT_KEY, this.getAssignmentsMenuAreas, this.store);
+    };
+
+    public getMenuItems(packagePath: string, componentKey: string): Observable<MenuItem[]> {
+        return getMenuEntries<MenuItem>(packagePath, MaintenanceTypeId, componentKey, AssignmentsIndexComponent.COMPONENT_KEY, this.getAssignmentsMenuItems, this.store);
+    };
+    
+    public getAssignmentsMenuAreas = () => {
+        return [
             new MenuArea({
                 area: 'actions',
                 translationPrefix: this.translationPrefix,
@@ -28,46 +38,43 @@ export class NgAssignmentsMenuProvider extends MenuProvider {
                 translationPrefix: this.translationPrefix,
                 order: 2
             })
-        ])
+        ];
     };
 
-    public getMenuItems(packagePath: string, componentKey: string): Observable<MenuItem[]> {
-        if(componentKey === 'assignments-index') {
-            return of([
-                new MenuItem({
-                    url: 'create',
-                    displayName: this.translationPrefix + 'CREATE',
-                    area: 'actions',
-                    order: 1,
-                    icon: 'add',
-                    permissions: [
-                        MaintenancePermissions.addAssignments
-                    ],
-                    providedIn: ['sidebar', 'speedDial']
-                }),
-                new MenuItem({
-                    url: 'types',
-                    displayName: this.translationPrefix + 'TYPES',
-                    area: 'manage',
-                    order: 2,
-                    icon: 'description',
-                    permissions: [
-                    ],
-                    providedIn: ['sidebar']
-                }),
-                new MenuItem({
-                    url: 'maintenance-states',
-                    displayName: this.translationPrefix + 'STATES',
-                    area: 'manage',
-                    order: 1,
-                    icon: 'shortText',
-                    permissions: [
-                    ],
-                    providedIn: ['sidebar']
-                })
-            ]).pipe(setBackButton({ customPath: '/maintenance' }));
-        } else {
-           return of([]);
-        }
+    public getAssignmentsMenuItems = () => {
+        return [
+            new MenuItem({
+                url: 'create',
+                displayName: this.translationPrefix + 'CREATE',
+                area: 'actions',
+                order: 1,
+                icon: 'add',
+                permissions: [
+                    MaintenancePermissions.addAssignments
+                ],
+                providedIn: ['sidebar', 'speedDial']
+            }),
+            new MenuItem({
+                url: 'types',
+                displayName: this.translationPrefix + 'TYPES',
+                area: 'manage',
+                order: 2,
+                icon: 'description',
+                permissions: [
+                ],
+                providedIn: ['sidebar']
+            }),
+            new MenuItem({
+                url: 'maintenance-states',
+                displayName: this.translationPrefix + 'STATES',
+                area: 'manage',
+                order: 1,
+                icon: 'shortText',
+                permissions: [
+                ],
+                providedIn: ['sidebar']
+            }),
+            setBackButtonV2('maintenance')
+        ];
     };
 }

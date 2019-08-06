@@ -14,6 +14,8 @@ import { RecordIndexComponent } from '@skysmack/portal-fields';
   templateUrl: './recurring-assignments-index.component.html'
 })
 export class RecurringAssignmentsIndexComponent extends RecordIndexComponent<RecurringAssignmentsAppState, RecurringAssignment, number> implements OnInit {
+  public static COMPONENT_KEY = 'recurring-assignments-index';
+  public componentKey = RecurringAssignmentsIndexComponent.COMPONENT_KEY;
 
   public areaKey: string = RECURRING_ASSIGNMENTS_AREA_KEY;
   public titleExtras = true;
