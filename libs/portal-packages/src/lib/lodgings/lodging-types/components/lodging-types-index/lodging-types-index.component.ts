@@ -15,6 +15,9 @@ import { DocumentRecordIndexComponent } from '@skysmack/portal-fields';
   templateUrl: './lodging-types-index.component.html'
 })
 export class LodgingTypesIndexComponent extends DocumentRecordIndexComponent<LodgingTypesAppState, LodgingType, number> implements OnInit {
+  public static COMPONENT_KEY = 'lodging-types-index';
+  public componentKey = LodgingTypesIndexComponent.COMPONENT_KEY;
+
   public areaKey: string = LODGING_TYPES_AREA_KEY;
   public titleExtras = true;
   public menuItemActions: MenuItem[] = [

@@ -5,7 +5,9 @@ import { MenuItem } from '@skysmack/framework';
 import { Guid } from 'guid-typescript';
 import { of, Observable } from 'rxjs';
 import { LodgingsPermissions } from '@skysmack/packages-lodgings';
-import { setBackButton } from '@skysmack/ng-framework';
+import { setBackButton, getMenuEntries, setBackButtonV2 } from '@skysmack/ng-framework';
+import { LodgingsTypeId } from '@skysmack/package-types';
+import { LodgingTypesIndexComponent } from './components/lodging-types-index/lodging-types-index.component';
 
 @Injectable({ providedIn: 'root' })
 export class NgLodgingTypesMenuProvider extends MenuProvider {
@@ -17,7 +19,16 @@ export class NgLodgingTypesMenuProvider extends MenuProvider {
     ) { super(); }
 
     public getMenuAreas(packagePath: string, componentKey: string): Observable<MenuArea[]> {
-        return of([
+        return getMenuEntries<MenuArea>(packagePath, LodgingsTypeId, componentKey, LodgingTypesIndexComponent.COMPONENT_KEY, this.getLodgingTypesMenuAreas, this.store);
+    };
+
+    public getMenuItems(packagePath: string, componentKey: string): Observable<MenuItem[]> {
+        return getMenuEntries<MenuItem>(packagePath, LodgingsTypeId, componentKey, LodgingTypesIndexComponent.COMPONENT_KEY, this.getLodgingTypesMenuItems, this.store);
+    };
+
+
+    public getLodgingTypesMenuAreas= () => {
+        return [
             new MenuArea({
                 area: 'actions',
                 translationPrefix: this.translationPrefix,
@@ -28,12 +39,11 @@ export class NgLodgingTypesMenuProvider extends MenuProvider {
                 translationPrefix: this.translationPrefix,
                 order: 2
             })
-        ])
+        ];
     };
 
-    public getMenuItems(packagePath: string, componentKey: string): Observable<MenuItem[]> {
-        if(componentKey === 'lodging-types-index') {
-            return of([
+    public getLodgingTypesMenuItems = (packagePath: string) => {
+            return [
                 new MenuItem({
                     url: 'create',
                     displayName: this.translationPrefix + 'CREATE',
@@ -65,10 +75,8 @@ export class NgLodgingTypesMenuProvider extends MenuProvider {
                     permissions: [
                     ],
                     providedIn: ['sidebar']
-                })
-            ]).pipe(setBackButton({ customPath: '/rooms' }));
-        } else {
-           return of([]);
-        }
+                }),
+                setBackButtonV2('rooms')
+            ];
     };
 }

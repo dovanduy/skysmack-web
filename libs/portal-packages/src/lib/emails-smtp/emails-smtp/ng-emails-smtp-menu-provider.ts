@@ -56,7 +56,7 @@ export class NgEmailsSmtpMenuProvider extends MenuProvider {
         return [
             new MenuItem({
                 url: 'settings/smtp-client',
-                displayName: this.translationPrefix + 'SPLOT',
+                displayName: this.translationPrefix + 'SETTINGS',
                 area: 'manage',
                 order: 1,
                 icon: 'groupAdd',
