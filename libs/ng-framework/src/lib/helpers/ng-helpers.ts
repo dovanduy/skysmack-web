@@ -72,7 +72,7 @@ export const setConnectedPackage = (store: SkysmackStore, packagePath: string, d
 export const setBackButtonV2 = (path: string): MenuItem => {
     return new MenuItem({
         url: '/' + path,
-        displayName: 'SWABBLE', //'UI.MISC.BACK',
+        displayName: 'UI.MISC.BACK',
         area: 'manage',
         order: 2,
         icon: 'arrowBack',

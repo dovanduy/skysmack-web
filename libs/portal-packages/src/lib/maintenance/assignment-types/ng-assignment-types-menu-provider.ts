@@ -40,7 +40,7 @@ export class NgAssignmentTypesMenuProvider extends MenuProvider {
        ];
     };
 
-    public getAssignmentTypesMenuItems = () => {
+    public getAssignmentTypesMenuItems = (packagePath: string) => {
         return [
             new MenuItem({
                 url: 'create',
@@ -52,7 +52,7 @@ export class NgAssignmentTypesMenuProvider extends MenuProvider {
                 ],
                 providedIn: ['sidebar', 'speedDial']
             }),
-            setBackButtonV2('assignments')
+            setBackButtonV2(`${packagePath}/assignments`)
         ];
     };
 }

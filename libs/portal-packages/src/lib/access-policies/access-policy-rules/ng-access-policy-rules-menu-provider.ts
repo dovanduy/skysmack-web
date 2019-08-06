@@ -25,9 +25,7 @@ export class NgAccessPolicyRulesMenuProvider extends MenuProvider {
     };
 
     public getMenuItems(packagePath: string, componentKey: string): Observable<MenuItem[]> {
-        return getMenuEntries<MenuItem>(packagePath, AccessPoliciesTypeId, componentKey, AccessPolicyRulesIndexComponent.COMPONENT_KEY, this.getAccessPolicyRulesMenuItems, this.store).pipe(
-            setBackButton({ customPath: '/access-policies' }),
-        );
+        return getMenuEntries<MenuItem>(packagePath, AccessPoliciesTypeId, componentKey, AccessPolicyRulesIndexComponent.COMPONENT_KEY, this.getAccessPolicyRulesMenuItems, this.store);
     };
 
     public getAccessPolicyRulesMenuAreas = () => {

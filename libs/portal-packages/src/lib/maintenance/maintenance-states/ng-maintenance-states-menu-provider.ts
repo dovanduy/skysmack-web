@@ -41,7 +41,7 @@ export class NgMaintenanceStatesMenuProvider extends MenuProvider {
         ];
     };
 
-    public getMaintenanceStatesMenuItems = () => {
+    public getMaintenanceStatesMenuItems = (packagePath: string) => {
             return [
                 new MenuItem({
                     url: 'create',
@@ -53,7 +53,7 @@ export class NgMaintenanceStatesMenuProvider extends MenuProvider {
                     ],
                     providedIn: ['sidebar', 'speedDial']
                 }),
-                setBackButtonV2('assignments')
+                setBackButtonV2(`${packagePath}/assignments`)
             ];
     };
 }
