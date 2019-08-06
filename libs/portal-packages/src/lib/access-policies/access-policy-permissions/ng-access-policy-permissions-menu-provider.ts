@@ -5,7 +5,7 @@ import { MenuItem } from '@skysmack/framework';
 import { Guid } from 'guid-typescript';
 import { Observable } from 'rxjs';
 import { AccessPoliciesPermissions } from '@skysmack/ng-access-policies';
-import { setBackButton, getMenuEntries } from '@skysmack/ng-framework';
+import { setBackButton, getMenuEntries, setBackButtonV2 } from '@skysmack/ng-framework';
 import { AccessPoliciesTypeId } from '@skysmack/package-types';
 import { AccessPolicyPermissionsIndexComponent } from './components/access-policy-permissions-index/access-policy-permissions-index.component';
 
@@ -53,7 +53,8 @@ export class NgAccessPolicyPermissionsMenuProvider extends MenuProvider {
                     AccessPoliciesPermissions.addPermissions
                 ],
                 providedIn: ['sidebar', 'speedDial']
-            })
+            }),
+            setBackButtonV2('access-policies')
         ];
     };
 }

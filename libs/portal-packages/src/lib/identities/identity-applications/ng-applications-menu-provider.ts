@@ -4,7 +4,7 @@ import { MenuArea, MenuProvider } from '@skysmack/framework';
 import { MenuItem } from '@skysmack/framework';
 import { Guid } from 'guid-typescript';
 import { Observable } from 'rxjs';
-import { getMenuEntries } from '@skysmack/ng-framework';
+import { getMenuEntries, setBackButtonV2 } from '@skysmack/ng-framework';
 import { IdentitiesTypeId } from '@skysmack/package-types';
 import { ApplicationsIndexComponent } from './components/applications-index/applications-index.component';
 
@@ -52,8 +52,8 @@ export class NgApplicationsMenuProvider extends MenuProvider {
                     //??
                 ],
                 providedIn: ['sidebar', 'speedDial']
-            })
+            }),
+            setBackButtonV2('identities')
         ];
-        //.pipe(setBackButton({ customPath: '/identities' }));
     };
 }

@@ -3,8 +3,8 @@ import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { MenuArea, MenuProvider } from '@skysmack/framework';
 import { MenuItem } from '@skysmack/framework';
 import { Guid } from 'guid-typescript';
-import { of, Observable } from 'rxjs';
-import { setBackButton, getMenuEntries } from '@skysmack/ng-framework';
+import { Observable } from 'rxjs';
+import { getMenuEntries, setBackButtonV2 } from '@skysmack/ng-framework';
 import { IdentitiesTypeId } from '@skysmack/package-types';
 import { RolesIndexComponent } from './components/roles-index/roles-index.component';
 
@@ -52,8 +52,8 @@ export class NgRolesMenuProvider extends MenuProvider {
                     //??
                 ],
                 providedIn: ['sidebar', 'speedDial']
-            })
+            }),
+            setBackButtonV2('identities')
         ];
-        //.pipe(setBackButton({ customPath: '/identities' }));
     };
 }
