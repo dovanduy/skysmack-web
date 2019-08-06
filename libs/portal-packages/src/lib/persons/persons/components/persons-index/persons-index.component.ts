@@ -15,6 +15,9 @@ import { DocumentRecordIndexComponent } from '@skysmack/portal-fields';
   templateUrl: './persons-index.component.html'
 })
 export class PersonsIndexComponent extends DocumentRecordIndexComponent<PersonsAppState, Person, number> implements OnInit {
+  public static COMPONENT_KEY = 'persons-index';
+  public componentKey = PersonsIndexComponent.COMPONENT_KEY;
+
   public areaKey: string = PERSONS_AREA_KEY;
   public menuItemActions: MenuItem[] = [
     new MenuItem().asUrlAction('details', MENU_ITEM_ACTION_DETAILS, 'list'),

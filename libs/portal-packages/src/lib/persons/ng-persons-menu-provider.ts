@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 import { PersonsPermissions } from '@skysmack/packages-persons';
 import { PersonsTypeId } from '@skysmack/package-types';
 import { getMenuEntries } from '@skysmack/ng-framework';
+import { PersonsIndexComponent } from './persons/components/persons-index/persons-index.component';
 
 
 
@@ -20,11 +21,11 @@ export class NgPersonsMenuProvider extends MenuProvider {
     ) { super(); }
 
     public getMenuAreas(packagePath: string, componentKey: string): Observable<MenuArea[]> {
-        return getMenuEntries<MenuArea>(packagePath, PersonsTypeId, componentKey, 'persons-index', this.getPersonsMenuAreas, this.store);
+        return getMenuEntries<MenuArea>(packagePath, PersonsTypeId, componentKey, PersonsIndexComponent.COMPONENT_KEY, this.getPersonsMenuAreas, this.store);
     };
 
     public getMenuItems(packagePath: string, componentKey: string): Observable<MenuItem[]> {
-        return getMenuEntries<MenuItem>(packagePath, PersonsTypeId, componentKey, 'persons-index', this.getPersonsMenuItems, this.store);
+        return getMenuEntries<MenuItem>(packagePath, PersonsTypeId, componentKey, PersonsIndexComponent.COMPONENT_KEY, this.getPersonsMenuItems, this.store);
     };
 
     public getPersonsMenuAreas = () => {
