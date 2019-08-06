@@ -25,7 +25,7 @@ export class NgUsersMenuProvider extends MenuProvider {
         return getMenuEntries<MenuItem>(packagePath, IdentitiesTypeId, componentKey, UsersIndexComponent.COMPONENT_KEY, this.getUsersMenuItems(), this.store);
     };
 
-    public getUsersMenuAreas() {
+    public getUsersMenuAreas = () => {
         return [
             new MenuArea({
                 area: 'actions',
@@ -40,7 +40,7 @@ export class NgUsersMenuProvider extends MenuProvider {
         ];
     };
 
-    public getUsersMenuItems() {
+    public getUsersMenuItems = () => {
         return  [
             new MenuItem({
                 url: 'create',

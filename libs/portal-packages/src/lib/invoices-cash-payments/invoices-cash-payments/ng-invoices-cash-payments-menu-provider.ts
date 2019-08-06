@@ -3,8 +3,10 @@ import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { MenuArea, MenuProvider } from '@skysmack/framework';
 import { MenuItem } from '@skysmack/framework';
 import { Guid } from 'guid-typescript';
-import { of, Observable } from 'rxjs';
-import { InvoicesPermissions } from '@skysmack/packages-invoices';
+import { Observable } from 'rxjs';
+import { getMenuEntries } from '@skysmack/ng-framework';
+import { InvoicesCashPaymentsTypeId } from '@skysmack/package-types';
+import { InvoicesCashPaymentsIndexComponent } from './components/invoices-cash-payments-index/invoices-cash-payments-index.component';
 
 @Injectable({ providedIn: 'root' })
 export class NgInvoicesCashPaymentsMenuProvider extends MenuProvider {
@@ -16,7 +18,15 @@ export class NgInvoicesCashPaymentsMenuProvider extends MenuProvider {
     ) { super(); }
 
     public getMenuAreas(packagePath: string, componentKey: string): Observable<MenuArea[]> {
-        return of([
+        return getMenuEntries<MenuArea>(packagePath, InvoicesCashPaymentsTypeId, componentKey, InvoicesCashPaymentsIndexComponent.COMPONENT_KEY, this.getInvoicesCashPaymentsMenuAreas(), this.store);
+    };
+
+    public getMenuItems(packagePath: string, componentKey: string): Observable<MenuItem[]> {
+        return getMenuEntries<MenuItem>(packagePath, InvoicesCashPaymentsTypeId, componentKey, InvoicesCashPaymentsIndexComponent.COMPONENT_KEY, this.getInvoicesCashPaymentsMenuItems(), this.store);
+    };
+
+    public getInvoicesCashPaymentsMenuAreas= () => {
+        return [
             new MenuArea({
                 area: 'actions',
                 translationPrefix: this.translationPrefix,
@@ -27,26 +37,22 @@ export class NgInvoicesCashPaymentsMenuProvider extends MenuProvider {
                 translationPrefix: this.translationPrefix,
                 order: 2
             })
-        ])
+        ];
     };
 
-    public getMenuItems(packagePath: string, componentKey: string): Observable<MenuItem[]> {
-        if(componentKey === 'invoices-cash-payments-index') {
-            return of([
-                new MenuItem({
-                    url: 'create',
-                    displayName: this.translationPrefix + 'CREATE',
-                    area: 'actions',
-                    order: 1,
-                    icon: 'add',
-                    permissions: [
-                        
-                    ],
-                    providedIn: ['sidebar', 'speedDial']
-                })
-            ]);
-        } else {
-           return of([]);
-        }
+    public getInvoicesCashPaymentsMenuItems = () => {
+        return [
+            new MenuItem({
+                url: 'create',
+                displayName: this.translationPrefix + 'CREATE',
+                area: 'actions',
+                order: 1,
+                icon: 'add',
+                permissions: [
+                    
+                ],
+                providedIn: ['sidebar', 'speedDial']
+            })
+        ];
     };
-}
+};
