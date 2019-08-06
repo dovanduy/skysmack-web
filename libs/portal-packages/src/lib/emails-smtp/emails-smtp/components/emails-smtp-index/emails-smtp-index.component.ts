@@ -6,6 +6,9 @@ import { NgEmailsSmtpMenu } from '../../ng-emails-smtp-menu';
   templateUrl: './emails-smtp-index.component.html'
 })
 export class EmailsSmtpIndexComponent implements OnInit {
+  public static COMPONENT_KEY = 'emails-smtp';
+  public componentKey = EmailsSmtpIndexComponent.COMPONENT_KEY;
+
   constructor(
     public sidebarMenu: NgEmailsSmtpMenu
   ) { }
