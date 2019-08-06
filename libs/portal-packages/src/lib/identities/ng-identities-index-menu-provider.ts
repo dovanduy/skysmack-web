@@ -62,10 +62,12 @@ export class NgIdentitiesIndexMenuProvider extends MenuProvider {
 
                 let menuItems: MenuItem[] = [];
 
+                // Only show if in the right place
                 if (identityPackages.map(p => p.path).includes(packagePath) && componentKey === 'identities-index') {
                     menuItems = this.identitiesIndexDefaultMenuItems();
                 }
 
+                // Always
                 return menuItems.concat(identityPackages
                     .map(_package => new MenuItem({
                         area: 'identities',

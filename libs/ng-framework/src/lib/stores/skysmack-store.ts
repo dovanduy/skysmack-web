@@ -1,7 +1,7 @@
 import { NgRedux } from '@angular-redux/store';
 import { map, take } from 'rxjs/operators';
 import { Observable, BehaviorSubject, of } from 'rxjs';
-import { LocalObject, toLocalObject, Package, hasValue, StrIndex, safeUndefinedTo, defined, OfflineState } from '@skysmack/framework';
+import { LocalObject, toLocalObject, Package, hasValue, StrIndex, safeUndefinedTo, defined, OfflineState, safeHasValue } from '@skysmack/framework';
 import { Skysmack, SkysmackAppState, SkysmackRequestStatus } from '@skysmack/packages-skysmack-core';
 import { LoadedPackage } from '../packages/loaded-package';
 import { PackageLoader } from '../packages/package-loader';
@@ -70,18 +70,28 @@ export class SkysmackStore {
         );
     }
 
+    public getPackageByTypeId(typeId: string): Observable<Package[]> {
+        return this.getSkysmack().pipe(
+            map(skysmack => skysmack.packages.filter(_package => _package.type === typeId)),
+            safeHasValue()
+        );
+    }
+
+    // TODO: Replace usage with this.getPackageByTypeId, then delete
     public getAuthenticationPackages(): Observable<Package[]> {
         return this.getSkysmack().pipe(
             map(skysmack => skysmack.packages.filter(_package => _package.type === OAuth2TypeId))
         );
     }
 
+    // TODO: Replace usage with this.getPackageByTypeId, then delete
     public getAccountPackages(): Observable<Package[]> {
         return this.getSkysmack().pipe(
             map(skysmack => skysmack.packages.filter(_package => _package.type === IdentitiesTypeId))
         );
     }
 
+    // TODO: Replace usage with this.getPackageByTypeId, then delete
     public getIdentityPackages(): Observable<Package[]> {
         return this.getSkysmack().pipe(
             map(skysmack => skysmack.packages.filter(_package => _package.type === IdentitiesTypeId))

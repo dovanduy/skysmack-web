@@ -3,8 +3,12 @@ import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { MenuArea, MenuProvider } from '@skysmack/framework';
 import { MenuItem } from '@skysmack/framework';
 import { Guid } from 'guid-typescript';
-import { of, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { PersonsPermissions } from '@skysmack/packages-persons';
+import { PersonsTypeId } from '@skysmack/package-types';
+import { getMenuEntries } from '@skysmack/ng-framework';
+
+
 
 @Injectable({ providedIn: 'root' })
 export class NgPersonsMenuProvider extends MenuProvider {
@@ -16,7 +20,15 @@ export class NgPersonsMenuProvider extends MenuProvider {
     ) { super(); }
 
     public getMenuAreas(packagePath: string, componentKey: string): Observable<MenuArea[]> {
-        return of([
+        return getMenuEntries<MenuArea>(packagePath, PersonsTypeId, componentKey, 'persons-index', this.getPersonsMenuAreas(), this.store);
+    };
+
+    public getMenuItems(packagePath: string, componentKey: string): Observable<MenuItem[]> {
+        return getMenuEntries<MenuItem>(packagePath, PersonsTypeId, componentKey, 'persons-index', this.getPersonsMenuItems(), this.store);
+    };
+
+    public getPersonsMenuAreas() {
+        return [
             new MenuArea({
                 area: 'actions',
                 translationPrefix: this.translationPrefix,
@@ -27,37 +39,33 @@ export class NgPersonsMenuProvider extends MenuProvider {
                 translationPrefix: this.translationPrefix,
                 order: 2
             })
-        ])
-    };
+        ];
+    }
 
-    public getMenuItems(packagePath: string, componentKey: string): Observable<MenuItem[]> {
-        if(componentKey === 'persons-index') {
-            return of([
-                new MenuItem({
-                    url: 'create',
-                    displayName: this.translationPrefix + 'CREATE',
-                    area: 'actions',
-                    order: 1,
-                    icon: 'add',
-                    permissions: [
-                        PersonsPermissions.addPersons
-                    ],
-                    providedIn: ['sidebar']
-                }),
-                new MenuItem({
-                    url: 'fields',
-                    displayName: this.translationPrefix + 'FIELDS',
-                    area: 'manage',
-                    order: 2,
-                    icon: 'shortText',
-                    permissions: [
-                        PersonsPermissions.findPersonsFields
-                    ],
-                    providedIn: ['sidebar']
-                })
-            ]);
-        } else {
-           return of([]);
-        }
-    };
+    public getPersonsMenuItems() {
+        return [
+            new MenuItem({
+                url: 'create',
+                displayName: this.translationPrefix + 'CREATE',
+                area: 'actions',
+                order: 1,
+                icon: 'add',
+                permissions: [
+                    PersonsPermissions.addPersons
+                ],
+                providedIn: ['sidebar']
+            }),
+            new MenuItem({
+                url: 'fields',
+                displayName: this.translationPrefix + 'FIELDS',
+                area: 'manage',
+                order: 2,
+                icon: 'shortText',
+                permissions: [
+                    PersonsPermissions.findPersonsFields
+                ],
+                providedIn: ['sidebar']
+            })
+        ];
+    }
 }

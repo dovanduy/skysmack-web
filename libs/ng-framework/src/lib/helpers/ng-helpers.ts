@@ -1,7 +1,7 @@
 import { Router } from '@angular/router';
 import { Package, LocalObject, toLocalObject, MenuItem } from '@skysmack/framework';
-import { map, switchMap } from 'rxjs/operators';
-import { combineLatest, pipe, of } from 'rxjs';
+import { map, switchMap, filter } from 'rxjs/operators';
+import { combineLatest, pipe, of, Observable } from 'rxjs';
 import { SkysmackStore } from '../stores/skysmack-store';
 
 export const getAdditionalPaths = (router: Router, packagePath): string[] => {
@@ -87,3 +87,17 @@ export const setBackButton = (options?: {
         }  
     })
 );
+
+/**
+ * Helper to get MenuAreas or MenuItems if conditions are met.
+ */
+export const getMenuEntries = <T>(packagePath: string, packageTypeId: string, componentKey: string, specificComponentKey: string, items: T[], store: SkysmackStore): Observable<T[]> => {
+    if(componentKey === specificComponentKey) {
+        return store.getCurrentPackage(packagePath).pipe(
+            filter(_package => _package._package.type === packageTypeId),
+            map(() => items)
+        );
+    } else {
+       return of([]);
+    }
+};

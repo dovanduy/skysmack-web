@@ -7,6 +7,8 @@ import { EntityComponentPageTitle } from '@skysmack/portal-ui';
   templateUrl: './access-policies-dashboard.component.html'
 })
 export class AccessPoliciesDashboardComponent implements OnInit {
+  public static COMPONENT_KEY = 'access-policies-dashboard';
+  public componentKey = AccessPoliciesDashboardComponent.COMPONENT_KEY;
 
   constructor(
     public sidebarMenu: NgAccessPoliciesDashboardMenu,

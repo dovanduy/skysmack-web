@@ -14,6 +14,8 @@ import { NgAccessPolicyPermissionsFieldsConfig } from '../../ng-access-policy-pe
   templateUrl: './access-policy-permissions-index.component.html'
 })
 export class AccessPolicyPermissionsIndexComponent extends RecordIndexComponent<AccessPolicyPermissionsAppState, AccessPolicyPermission, number> implements OnInit {
+  public static COMPONENT_KEY = 'access-policy-permissions';
+  public componentKey = AccessPolicyPermissionsIndexComponent.COMPONENT_KEY;
 
   public areaKey: string = ACCESS_POLICY_PERMISSIONS_AREA_KEY;
   public titleExtras = true;

@@ -3,8 +3,12 @@ import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { MenuArea, MenuProvider } from '@skysmack/framework';
 import { MenuItem } from '@skysmack/framework';
 import { Guid } from 'guid-typescript';
-import { of, Observable } from 'rxjs';
+import { 
+    Observable } from 'rxjs';
 import { AccessPoliciesPermissions } from '@skysmack/ng-access-policies';
+import { AccessPoliciesDashboardComponent } from './components/access-policies-dashboard/access-policies-dashboard.component';
+import { getMenuEntries } from '@skysmack/ng-framework';
+import { AccessPoliciesTypeId } from '@skysmack/package-types';
 
 @Injectable({ providedIn: 'root' })
 export class NgAccessPoliciesDashboardMenuProvider extends MenuProvider {
@@ -16,54 +20,58 @@ export class NgAccessPoliciesDashboardMenuProvider extends MenuProvider {
     ) { super(); }
 
     public getMenuAreas(packagePath: string, componentKey: string): Observable<MenuArea[]> {
-        return of([
+        return getMenuEntries<MenuArea>(packagePath, AccessPoliciesTypeId, componentKey, AccessPoliciesDashboardComponent.COMPONENT_KEY, this.getAccessPoliciesDashboardMenuAreas(), this.store);
+    };
+
+    public getMenuItems(packagePath: string, componentKey: string): Observable<MenuItem[]> {
+        return getMenuEntries<MenuItem>(packagePath, AccessPoliciesTypeId, componentKey, AccessPoliciesDashboardComponent.COMPONENT_KEY, this.getAccessPoliciesDashboardMenuItems(), this.store);
+    };
+
+    public getAccessPoliciesDashboardMenuAreas() {
+        return [
             new MenuArea({
                 area: 'manage',
                 translationPrefix: this.translationPrefix,
                 order: 1
             })
-        ])
+        ]
     };
 
-    public getMenuItems(packagePath: string, componentKey: string): Observable<MenuItem[]> {
-        if(componentKey === 'access-policies-dashboard') {
-            return of([
-                new MenuItem({
-                    url: 'permissions',
-                    displayName: this.translationPrefix + 'PERMISSIONS',
-                    area: 'manage',
-                    order: 1,
-                    icon: 'groupAdd',
-                    permissions: [
-                        AccessPoliciesPermissions.findPermissions
-                    ],
-                    providedIn: ['sidebar']
-                }),
-                new MenuItem({
-                    url: 'roles',
-                    displayName: this.translationPrefix + 'ROLES',
-                    area: 'manage',
-                    order: 2,
-                    icon: 'groupAdd',
-                    permissions: [
-                        AccessPoliciesPermissions.findRoles
-                    ],
-                    providedIn: ['sidebar']
-                }),
-                new MenuItem({
-                    url: 'rules',
-                    displayName: this.translationPrefix + 'RULES',
-                    area: 'manage',
-                    order: 3,
-                    icon: 'groupAdd',
-                    permissions: [
-                        AccessPoliciesPermissions.findRules
-                    ],
-                    providedIn: ['sidebar']
-                })
-            ]);
-        } else {
-           return of([]);
-        }
+    public getAccessPoliciesDashboardMenuItems() {
+        return [
+            new MenuItem({
+                url: 'permissions',
+                displayName: this.translationPrefix + 'PERMISSIONS',
+                area: 'manage',
+                order: 1,
+                icon: 'groupAdd',
+                permissions: [
+                    AccessPoliciesPermissions.findPermissions
+                ],
+                providedIn: ['sidebar']
+            }),
+            new MenuItem({
+                url: 'roles',
+                displayName: this.translationPrefix + 'ROLES',
+                area: 'manage',
+                order: 2,
+                icon: 'groupAdd',
+                permissions: [
+                    AccessPoliciesPermissions.findRoles
+                ],
+                providedIn: ['sidebar']
+            }),
+            new MenuItem({
+                url: 'rules',
+                displayName: this.translationPrefix + 'RULES',
+                area: 'manage',
+                order: 3,
+                icon: 'groupAdd',
+                permissions: [
+                    AccessPoliciesPermissions.findRules
+                ],
+                providedIn: ['sidebar']
+            })
+        ];
     };
 }

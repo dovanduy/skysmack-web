@@ -3,9 +3,11 @@ import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { MenuArea, MenuProvider } from '@skysmack/framework';
 import { MenuItem } from '@skysmack/framework';
 import { Guid } from 'guid-typescript';
-import { of, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { AccessPoliciesPermissions } from '@skysmack/ng-access-policies';
-import { setBackButton } from '@skysmack/ng-framework';
+import { setBackButton, getMenuEntries } from '@skysmack/ng-framework';
+import { AccessPoliciesTypeId } from '@skysmack/package-types';
+import { AccessPolicyPermissionsIndexComponent } from './components/access-policy-permissions-index/access-policy-permissions-index.component';
 
 @Injectable({ providedIn: 'root' })
 export class NgAccessPolicyPermissionsMenuProvider extends MenuProvider {
@@ -17,7 +19,17 @@ export class NgAccessPolicyPermissionsMenuProvider extends MenuProvider {
     ) { super(); }
 
     public getMenuAreas(packagePath: string, componentKey: string): Observable<MenuArea[]> {
-        return of([
+        return getMenuEntries<MenuArea>(packagePath, AccessPoliciesTypeId, componentKey, AccessPolicyPermissionsIndexComponent.COMPONENT_KEY, this.getAccessPolicyPermissionsMenuAreas(), this.store);
+    };
+
+    public getMenuItems(packagePath: string, componentKey: string): Observable<MenuItem[]> {
+        return getMenuEntries<MenuItem>(packagePath, AccessPoliciesTypeId, componentKey, AccessPolicyPermissionsIndexComponent.COMPONENT_KEY, this.getAccessPolicyPermissionsMenuItems(), this.store).pipe(
+            setBackButton({ customPath: '/access-policies' })
+        );
+    };
+
+    public getAccessPolicyPermissionsMenuAreas() {
+        return [
             new MenuArea({
                 area: 'actions',
                 translationPrefix: this.translationPrefix,
@@ -28,26 +40,22 @@ export class NgAccessPolicyPermissionsMenuProvider extends MenuProvider {
                 translationPrefix: this.translationPrefix,
                 order: 2
             })
-        ])
+        ];
     };
 
-    public getMenuItems(packagePath: string, componentKey: string): Observable<MenuItem[]> {
-        if(componentKey === "access-policy-permissions") {
-            return of([
-                new MenuItem({
-                    url: 'create',
-                    displayName: this.translationPrefix + 'CREATE',
-                    area: 'actions',
-                    order: 1,
-                    icon: 'add',
-                    permissions: [
-                        AccessPoliciesPermissions.addPermissions
-                    ],
-                    providedIn: ['sidebar']
-                })
-            ]).pipe(setBackButton({ customPath: '/access-policies' }));
-        } else {
-            return of([]);
-        }
+    public getAccessPolicyPermissionsMenuItems(): MenuItem[] {
+        return [
+            new MenuItem({
+                url: 'create',
+                displayName: this.translationPrefix + 'CREATE',
+                area: 'actions',
+                order: 1,
+                icon: 'add',
+                permissions: [
+                    AccessPoliciesPermissions.addPermissions
+                ],
+                providedIn: ['sidebar', 'speedDial']
+            })
+        ];
     };
 }

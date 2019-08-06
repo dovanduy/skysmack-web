@@ -15,6 +15,8 @@ import { NgAccessPolicyRolesActions, NgAccessPolicyRolesStore } from '@skysmack/
   templateUrl: './access-policy-roles-index.component.html'
 })
 export class AccessPolicyRolesIndexComponent extends RecordIndexComponent<AccessPolicyRolesAppState, AccessPolicyRole, AccessPolicyRoleKey> implements OnInit {
+  public static COMPONENT_KEY = 'access-policy-roles';
+  public componentKey = AccessPolicyRolesIndexComponent.COMPONENT_KEY;
 
   public areaKey: string = ACCESS_POLICY_ROLES_AREA_KEY;
   public titleExtras = true;
