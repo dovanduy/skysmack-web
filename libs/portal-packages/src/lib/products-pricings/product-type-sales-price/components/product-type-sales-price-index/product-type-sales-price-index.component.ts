@@ -14,6 +14,8 @@ import { RecordIndexComponent } from '@skysmack/portal-fields';
   templateUrl: './product-type-sales-price-index.component.html'
 })
 export class ProductTypeSalesPriceIndexComponent extends RecordIndexComponent<ProductTypeSalesPriceAppState, ProductTypeSalesPrice, number> implements OnInit {
+  public static COMPONENT_KEY = 'product-type-sales-price-index';
+  public componentKey = ProductTypeSalesPriceIndexComponent.COMPONENT_KEY;
 
   public areaKey: string = PRODUCT_TYPE_SALES_PRICE_AREA_KEY;
   public menuItemActions: MenuItem[] = [

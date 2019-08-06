@@ -10,7 +10,8 @@ import { BaseComponent } from '@skysmack/portal-fields';
   templateUrl: './products-pricings-index.component.html'
 })
 export class ProductsPricingsIndexComponent extends BaseComponent<any, any> implements OnInit {
-
+  public static COMPONENT_KEY = 'products-pricings-index';
+  public componentKey = ProductsPricingsIndexComponent.COMPONENT_KEY;
 
   constructor(
     public router: Router,
