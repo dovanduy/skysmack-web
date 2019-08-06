@@ -15,6 +15,8 @@ import { RecordIndexComponent } from '@skysmack/portal-fields';
   templateUrl: './roles-index.component.html'
 })
 export class RolesIndexComponent extends RecordIndexComponent<RolesAppState, Role, number> implements OnInit {
+  public static COMPONENT_KEY = 'roles-index';
+  public componentKey = RolesIndexComponent.COMPONENT_KEY;
 
   public areaKey: string = ROLES_AREA_KEY;
   public titleExtras = true;
