@@ -18,6 +18,8 @@ import { DocumentRecordIndexComponent } from '@skysmack/portal-fields';
   templateUrl: './invoice-items-index.component.html'
 })
 export class InvoiceItemsIndexComponent extends DocumentRecordIndexComponent<InvoiceItemsAppState, InvoiceItem, number> implements OnInit {
+  public static COMPONENT_KEY = 'invoice-items-index';
+  public componentKey = InvoiceItemsIndexComponent.COMPONENT_KEY;
 
   public areaKey: string = INVOICE_ITEMS_AREA_KEY;
   public menuItemActions: MenuItem[] = [

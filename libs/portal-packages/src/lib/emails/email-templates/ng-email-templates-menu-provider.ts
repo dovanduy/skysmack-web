@@ -11,7 +11,7 @@ import { EmailTemplatesIndexComponent } from './components/email-templates-index
 @Injectable({ providedIn: 'root' })
 export class NgEmailsTemplatesMenuProvider extends MenuProvider {
     public id = Guid.create().toString();
-    public translationPrefix = 'EMAILS_TEMPLATES.INDEX3.';
+    public translationPrefix = 'EMAILS_TEMPLATES.INDEX.';
 
     constructor(
         public store: NgSkysmackStore

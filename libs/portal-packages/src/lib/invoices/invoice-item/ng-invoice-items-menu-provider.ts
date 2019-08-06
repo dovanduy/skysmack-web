@@ -3,9 +3,11 @@ import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { MenuArea, MenuProvider } from '@skysmack/framework';
 import { MenuItem } from '@skysmack/framework';
 import { Guid } from 'guid-typescript';
-import { of, Observable } from 'rxjs';
-import { setBackButton } from '@skysmack/ng-framework';
+import { Observable } from 'rxjs';
+import { getMenuEntries } from '@skysmack/ng-framework';
 import { InvoicesPermissions } from '@skysmack/packages-invoices';
+import { InvoicesTypeId } from '@skysmack/package-types';
+import { InvoiceItemsIndexComponent } from './components/invoice-items-index/invoice-items-index.component';
 
 @Injectable({ providedIn: 'root' })
 export class NgInvoiceItemsMenuProvider extends MenuProvider {
@@ -17,7 +19,15 @@ export class NgInvoiceItemsMenuProvider extends MenuProvider {
     ) { super(); }
 
     public getMenuAreas(packagePath: string, componentKey: string): Observable<MenuArea[]> {
-        return of([
+        return getMenuEntries<MenuArea>(packagePath, InvoicesTypeId, componentKey, InvoiceItemsIndexComponent.COMPONENT_KEY, this.getInvoiceItemsMenuAreas(), this.store);
+    };
+
+    public getMenuItems(packagePath: string, componentKey: string): Observable<MenuItem[]> {
+        return getMenuEntries<MenuItem>(packagePath, InvoicesTypeId, componentKey, InvoiceItemsIndexComponent.COMPONENT_KEY, this.getInvoiceItemsMenuItems(), this.store);
+    };
+
+    public getInvoiceItemsMenuAreas() {
+        return [
             new MenuArea({
                 area: 'actions',
                 translationPrefix: this.translationPrefix,
@@ -28,37 +38,34 @@ export class NgInvoiceItemsMenuProvider extends MenuProvider {
                 translationPrefix: this.translationPrefix,
                 order: 2
             })
-        ])
-    };
+        ];
+    }
 
-    public getMenuItems(packagePath: string, componentKey: string): Observable<MenuItem[]> {
-        if(componentKey === 'invoice-items-index') {
-            return of([
-                new MenuItem({
-                    url: 'create',
-                    displayName: this.translationPrefix + 'CREATE',
-                    area: 'actions',
-                    order: 1,
-                    icon: 'add',
-                    permissions: [
-                        InvoicesPermissions.addInvoiceItems
-                    ],
-                    providedIn: ['sidebar', 'speedDial']
-                }),
-                new MenuItem({
-                    url: 'fields',
-                    displayName: this.translationPrefix + 'FIELDS',
-                    area: 'manage',
-                    order: 2,
-                    icon: 'shortText',
-                    permissions: [
-                        InvoicesPermissions.findInvoiceItemFields
-                    ],
-                    providedIn: ['sidebar']
-                })
-            ]).pipe(setBackButton({ customPath: '/invoices' }));
-        } else {
-           return of([]);
-        }
-    };
+    public getInvoiceItemsMenuItems() {
+        return [
+            new MenuItem({
+                url: 'create',
+                displayName: this.translationPrefix + 'CREATE',
+                area: 'actions',
+                order: 1,
+                icon: 'add',
+                permissions: [
+                    InvoicesPermissions.addInvoiceItems
+                ],
+                providedIn: ['sidebar', 'speedDial']
+            }),
+            new MenuItem({
+                url: 'fields',
+                displayName: this.translationPrefix + 'FIELDS',
+                area: 'manage',
+                order: 2,
+                icon: 'shortText',
+                permissions: [
+                    InvoicesPermissions.findInvoiceItemFields
+                ],
+                providedIn: ['sidebar']
+            })
+        ];
+        //.pipe(setBackButton({ customPath: '/invoices' }));
+    }
 }

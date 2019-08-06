@@ -15,6 +15,8 @@ import { NgInvoicesMenu } from '../../ng-invoices-menu';
   templateUrl: './invoices-index.component.html'
 })
 export class InvoicesIndexComponent extends DocumentRecordIndexComponent<InvoicesAppState, Invoice, number> implements OnInit {
+  public static COMPONENT_KEY = 'invoices-index';
+  public componentKey = InvoicesIndexComponent.COMPONENT_KEY;
 
   public areaKey: string = INVOICES_AREA_KEY;
   public menuItemActions: MenuItem[] = [

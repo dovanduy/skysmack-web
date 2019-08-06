@@ -15,6 +15,8 @@ import { DocumentRecordIndexComponent } from '@skysmack/portal-fields';
   templateUrl: './invoice-payments-index.component.html'
 })
 export class InvoicePaymentsIndexComponent extends DocumentRecordIndexComponent<InvoicePaymentsAppState, InvoicePayment, number> implements OnInit {
+  public static COMPONENT_KEY = 'invoice-payments-index';
+  public componentKey = InvoicePaymentsIndexComponent.COMPONENT_KEY;
 
   public areaKey: string = INVOICE_PAYMENTS_AREA_KEY;
   public titleExtras = true;
