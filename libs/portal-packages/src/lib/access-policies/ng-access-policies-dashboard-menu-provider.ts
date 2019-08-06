@@ -3,8 +3,9 @@ import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { MenuArea, MenuProvider } from '@skysmack/framework';
 import { MenuItem } from '@skysmack/framework';
 import { Guid } from 'guid-typescript';
-import { 
-    Observable } from 'rxjs';
+import {
+    Observable
+} from 'rxjs';
 import { AccessPoliciesPermissions } from '@skysmack/ng-access-policies';
 import { AccessPoliciesDashboardComponent } from './components/access-policies-dashboard/access-policies-dashboard.component';
 import { getMenuEntries } from '@skysmack/ng-framework';
@@ -20,14 +21,14 @@ export class NgAccessPoliciesDashboardMenuProvider extends MenuProvider {
     ) { super(); }
 
     public getMenuAreas(packagePath: string, componentKey: string): Observable<MenuArea[]> {
-        return getMenuEntries<MenuArea>(packagePath, AccessPoliciesTypeId, componentKey, AccessPoliciesDashboardComponent.COMPONENT_KEY, this.getAccessPoliciesDashboardMenuAreas(), this.store);
+        return getMenuEntries<MenuArea>(packagePath, AccessPoliciesTypeId, componentKey, AccessPoliciesDashboardComponent.COMPONENT_KEY, this.getAccessPoliciesDashboardMenuAreas, this.store);
     };
 
     public getMenuItems(packagePath: string, componentKey: string): Observable<MenuItem[]> {
-        return getMenuEntries<MenuItem>(packagePath, AccessPoliciesTypeId, componentKey, AccessPoliciesDashboardComponent.COMPONENT_KEY, this.getAccessPoliciesDashboardMenuItems(), this.store);
+        return getMenuEntries<MenuItem>(packagePath, AccessPoliciesTypeId, componentKey, AccessPoliciesDashboardComponent.COMPONENT_KEY, this.getAccessPoliciesDashboardMenuItems, this.store);
     };
 
-    public getAccessPoliciesDashboardMenuAreas() {
+    public getAccessPoliciesDashboardMenuAreas = () => {
         return [
             new MenuArea({
                 area: 'manage',
@@ -37,7 +38,7 @@ export class NgAccessPoliciesDashboardMenuProvider extends MenuProvider {
         ]
     };
 
-    public getAccessPoliciesDashboardMenuItems() {
+    public getAccessPoliciesDashboardMenuItems = () => {
         return [
             new MenuItem({
                 url: 'permissions',

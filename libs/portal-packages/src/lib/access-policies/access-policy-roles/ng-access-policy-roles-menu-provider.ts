@@ -5,7 +5,7 @@ import { MenuItem } from '@skysmack/framework';
 import { Guid } from 'guid-typescript';
 import { Observable } from 'rxjs';
 import { AccessPoliciesPermissions } from '@skysmack/ng-access-policies';
-import { setBackButton, getMenuEntries } from '@skysmack/ng-framework';
+import { getMenuEntries, setBackButtonV2 } from '@skysmack/ng-framework';
 import { AccessPoliciesTypeId } from '@skysmack/package-types';
 import { AccessPolicyRolesIndexComponent } from './components/access-policy-roles-index/access-policy-roles-index.component';
 
@@ -19,16 +19,14 @@ export class NgAccessPolicyRolesMenuProvider extends MenuProvider {
     ) { super(); }
 
     public getMenuAreas(packagePath: string, componentKey: string): Observable<MenuArea[]> {
-        return getMenuEntries<MenuArea>(packagePath, AccessPoliciesTypeId, componentKey, AccessPolicyRolesIndexComponent.COMPONENT_KEY, this.getAccessPolicyRolesMenuAreas(), this.store);
+        return getMenuEntries<MenuArea>(packagePath, AccessPoliciesTypeId, componentKey, AccessPolicyRolesIndexComponent.COMPONENT_KEY, this.getAccessPolicyRolesMenuAreas, this.store);
     };
 
     public getMenuItems(packagePath: string, componentKey: string): Observable<MenuItem[]> {
-        return getMenuEntries<MenuItem>(packagePath, AccessPoliciesTypeId, componentKey, AccessPolicyRolesIndexComponent.COMPONENT_KEY, this.getAccessPolicyRolesMenuItems(), this.store).pipe(
-            setBackButton({ customPath: '/access-policies' })
-        );
+        return getMenuEntries<MenuItem>(packagePath, AccessPoliciesTypeId, componentKey, AccessPolicyRolesIndexComponent.COMPONENT_KEY, this.getAccessPolicyRolesMenuItems, this.store);
     };
 
-    public getAccessPolicyRolesMenuAreas() {
+    public getAccessPolicyRolesMenuAreas = () => {
         return [
             new MenuArea({
                 area: 'actions',
@@ -43,7 +41,7 @@ export class NgAccessPolicyRolesMenuProvider extends MenuProvider {
         ]
     };
 
-    public getAccessPolicyRolesMenuItems() {
+    public getAccessPolicyRolesMenuItems = (packagePath: string) => {
         return [
             new MenuItem({
                 url: 'create',
@@ -55,7 +53,8 @@ export class NgAccessPolicyRolesMenuProvider extends MenuProvider {
                     AccessPoliciesPermissions.addRoles
                 ],
                 providedIn: ['sidebar', 'speedDial']
-            })
+            }),
+            setBackButtonV2('access-policies')
         ];
     };
 }

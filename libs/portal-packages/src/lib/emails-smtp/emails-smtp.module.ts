@@ -34,10 +34,10 @@ import { NgEmailsSmtpMenuProvider } from './emails-smtp/ng-emails-smtp-menu-prov
 })
 export class EmailsSmtpModule {
   constructor(
-    ngMenuProviders: NgMenuProviders, 
+    ngMenuProviders: NgMenuProviders,
     ngEmailsSmtpMenuProvider: NgEmailsSmtpMenuProvider,
   ) {
     ngMenuProviders
-    .add(ngEmailsSmtpMenuProvider )
-   }
+      .add(ngEmailsSmtpMenuProvider)
+  }
 }

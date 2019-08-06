@@ -4,7 +4,6 @@ import { MenuArea, MenuProvider } from '@skysmack/framework';
 import { MenuItem } from '@skysmack/framework';
 import { Guid } from 'guid-typescript';
 import { of, Observable } from 'rxjs';
-import { setBackButton } from '@skysmack/ng-framework';
 
 @Injectable({ providedIn: 'root' })
 export class NgEmailsIndexMenuProvider extends MenuProvider {
@@ -26,7 +25,7 @@ export class NgEmailsIndexMenuProvider extends MenuProvider {
     };
 
     public getMenuItems(packagePath: string, componentKey: string): Observable<MenuItem[]> {
-        if(componentKey === 'emails-index') {
+        if (componentKey === 'emails-index') {
             return of([
                 new MenuItem({
                     url: 'templates',
@@ -41,7 +40,7 @@ export class NgEmailsIndexMenuProvider extends MenuProvider {
                 })
             ]);
         } else {
-           return of([]);
+            return of([]);
         }
     };
 }

@@ -12,7 +12,7 @@ export class SkysmackStore {
 
     private editorItem: BehaviorSubject<LocalObject<any, any>>;
 
-    constructor(protected ngRedux: NgRedux<SkysmackAppState>) { }
+    constructor(public ngRedux: NgRedux<SkysmackAppState>) { }
 
     public setEditorItem(value: LocalObject<any, any>): void {
         this.editorItem = new BehaviorSubject(value);
