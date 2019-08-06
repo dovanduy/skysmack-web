@@ -20,7 +20,7 @@ import { NgProductsPricingsMenuProvider } from './ng-products-pricings-menu-prov
 import { NgProductPriceChangesMenuProvider } from './product-price-changes/ng-product-price-changes-menu-provider';
 import { NgProductTypePriceChangesMenuProvider } from './product-type-price-changes/ng-product-type-price-changes-menu-provider';
 import { NgProductTypeSalesPriceMenuProvider } from './product-type-sales-price/ng-product-type-sales-price-menu-provider';
-import { NgProductsSalesPriceMenuProvider } from '.';
+import { NgProductsSalesPriceMenuProvider } from './products-sales-price/ng-products-sales-price-menu-provider';
 
 @NgModule({
   imports: [

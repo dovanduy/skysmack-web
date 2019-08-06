@@ -2888,5 +2888,15 @@
 	},
 	"COMMERCIAL_ACCOUNT": {
 		"INDEX": {}
+	},
+	"TERMINAL_PAYMENTS": {
+		"INDEX": {
+			"TITLE": "Terminal Payments",
+			"MANAGE": "Manage",
+			"TERMINALS": "Terminals",
+			"CLIENTS": "Clients",
+			"RECEIPTS": "Receipts",
+			"CONNECTIONS": "Connections"
+		}
 	}
 }

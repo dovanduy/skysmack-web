@@ -2660,13 +2660,15 @@
 			"ERROR": "En fejl er opstået med forbindelse {{ id }}. Ret fejlene og prøv igen."
 		}
 	},
-	"TERMINAL_PAYMENTS_INDEX": {
-		"TITLE": "Dankort terminal betalinger",
-		"MANAGE": "Handlinger",
-		"TERMINALS": "Terminaler",
-		"CLIENTS": "Klienter",
-		"RECEIPTS": "Kvitteringer",
-		"CONNECTIONS": "Forbindelser"
+	"TERMINAL_PAYMENTS": {
+		"INDEX": {
+			"TITLE": "Dankort terminal betalinger",
+			"MANAGE": "Handlinger",
+			"TERMINALS": "Terminaler",
+			"CLIENTS": "Klienter",
+			"RECEIPTS": "Kvitteringer",
+			"CONNECTIONS": "Forbindelser"
+		}
 	},
 	"INVOICES_PRODUCTS": {
 		"FORM": {

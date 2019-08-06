@@ -9,7 +9,7 @@ import { NgMenuItemProviders } from '@skysmack/ng-framework';
 @Injectable({ providedIn: 'root' })
 export class NgTerminalPaymentsIndexMenu extends SidebarMenu {
     public menuId = 'terminalPaymentsIndex';
-    public translationPrefix = 'TERMINAL_PAYMENTS_INDEX.';
+    public translationPrefix = 'TERMINAL_PAYMENTS.INDEX.';
 
     constructor(
         public store: NgSkysmackStore,

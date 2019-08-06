@@ -1,10 +1,12 @@
 {
-    "TERMINAL_PAYMENTS_INDEX": {
-        "TITLE": "Terminal Payments",
-        "MANAGE": "Manage",
-        "TERMINALS": "Terminals",
-        "CLIENTS": "Clients",
-        "RECEIPTS": "Receipts",
-        "CONNECTIONS": "Connections"
+    "TERMINAL_PAYMENTS": {
+        "INDEX": {
+            "TITLE": "Terminal Payments",
+            "MANAGE": "Manage",
+            "TERMINALS": "Terminals",
+            "CLIENTS": "Clients",
+            "RECEIPTS": "Receipts",
+            "CONNECTIONS": "Connections"
+        }
     }
 }
