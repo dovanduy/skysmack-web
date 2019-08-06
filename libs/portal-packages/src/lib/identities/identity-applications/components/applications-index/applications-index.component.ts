@@ -20,6 +20,7 @@ export class ApplicationsIndexComponent extends RecordIndexComponent<Application
   public titleExtras = true;
   public menuItemActions: MenuItem[] = [
     new MenuItem().asUrlAction('edit', MENU_ITEM_ACTIONS_EDIT, 'edit'),
+    new MenuItem().asUrlAction('edit/application-roles', 'APPLICATIONS.ENTITY_ACTION.ROLES', 'android'),
     new MenuItem().asEventAction(MENU_ITEM_ACTIONS_DELETE, this.delete, 'delete', this)
   ];
 

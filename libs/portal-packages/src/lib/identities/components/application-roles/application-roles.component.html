@@ -1,0 +1,39 @@
+<div class="application-roles-container">
+    <!-- CURRENT APPLICATION ROLES -->
+    <h3>Applications current roles</h3>
+    <ng-container *ngIf="applicationRoles$ | async as applicationRoles">
+        <ng-container *ngIf="applicationRoles.length > 0; else noApplicationRoles">
+            <ng-container *ngFor="let role of applicationRoles">
+                <div>
+                    {{ role }} <button mat-raised-button color="primary" (click)="removeRole(role)">{{
+                            'APPLICATIONS.ROLES.REMOVE' | translate }}</button>
+                </div>
+            </ng-container>
+        </ng-container>
+
+        <!-- NO APPLICATION ROLES -->
+        <ng-template #noApplicationRoles>
+            <p [translate]="'APPLICATIONS.ROLES.NO_ROLES_APPLIED'"></p>
+        </ng-template>
+    </ng-container>
+    <hr />
+
+    <!-- AVAILABLE ROLES -->
+    <h3>Available roles</h3>
+    <p>{{ message }}</p>
+    <ng-container *ngIf="roles$ | async as roles">
+        <ng-container *ngIf="roles.length > 0; else noAvailableRoles">
+            <ng-container *ngFor="let role of roles trackBy: trackById">
+                {{ role.object.name }} <button mat-raised-button color="primary" (click)="addRole(role)">{{
+                        'APPLICATIONS.ROLES.ADD' | translate }}</button><br /><br />
+            </ng-container>
+        </ng-container>
+
+        <!-- NO AVAILABLE ROLES -->
+        <ng-template #noAvailableRoles>
+            <p [translate]="'APPLICATIONS.ROLES.ROLES_APPLIED'"></p>
+        </ng-template>
+    </ng-container>
+
+
+</div>

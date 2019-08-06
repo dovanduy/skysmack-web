@@ -198,6 +198,7 @@
 			"ACCOUNTS": "Bruger kontier",
 			"APPLICATIONS": "Applikationer",
 			"USERS_ROLES_TITLE": "Bruger roller",
+			"APPLICATIONS_ROLES_TITLE": "Applikationsroller",
 			"MANAGE": "Konfigurer",
 			"SETTINGS": "Indstillinger",
 			"ACCOUNT": "Bruger konto",
@@ -2694,6 +2695,9 @@
 		}
 	},
 	"APPLICATIONS": {
+		"ENTITY_ACTION": {
+            "ROLES": "Roller"
+        },
 		"CREATE": {
 			"CREATE_APPLICATION": "Opret ny applikation",
 			"BUTTON_CREATE": "Opret"

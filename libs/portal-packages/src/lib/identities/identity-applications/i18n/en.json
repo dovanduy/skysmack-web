@@ -1,5 +1,8 @@
 {
     "APPLICATIONS": {
+        "ENTITY_ACTION": {
+            "ROLES": "Roles"
+        },
         "CREATE": {
             "CREATE_APPLICATION": "Create new application",
             "BUTTON_CREATE": "Create"
