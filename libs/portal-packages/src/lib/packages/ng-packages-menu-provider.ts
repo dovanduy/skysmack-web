@@ -5,6 +5,9 @@ import { MenuItem } from '@skysmack/framework';
 import { Guid } from 'guid-typescript';
 import { of, Observable } from 'rxjs';
 import { PackagesPermissions } from '@skysmack/ng-packages';
+import { getMenuEntries } from '@skysmack/ng-framework';
+import { PackagesTypeId } from '@skysmack/package-types';
+import { PackagesIndexComponent } from './components/packages-index/packages-index.component';
 
 @Injectable({ providedIn: 'root' })
 export class NgPackagesMenuProvider extends MenuProvider {
@@ -16,32 +19,37 @@ export class NgPackagesMenuProvider extends MenuProvider {
     ) { super(); }
 
     public getMenuAreas(packagePath: string, componentKey: string): Observable<MenuArea[]> {
-        return of([
+        return getMenuEntries<MenuArea>(packagePath, PackagesTypeId, componentKey, PackagesIndexComponent.COMPONENT_KEY, this.getPackagesMenuAreas, this.store);
+    };
+
+    public getMenuItems(packagePath: string, componentKey: string): Observable<MenuItem[]> {
+        return getMenuEntries<MenuItem>(packagePath, PackagesTypeId, componentKey, PackagesIndexComponent.COMPONENT_KEY, this.getPackagesMenuItems, this.store);
+    };
+
+
+    public getPackagesMenuAreas = () => {
+        return [
             new MenuArea({
                 area: 'actions',
                 translationPrefix: this.translationPrefix,
                 order: 1
             })
-        ])
+        ];
     };
 
-    public getMenuItems(packagePath: string, componentKey: string): Observable<MenuItem[]> {
-        if(componentKey === 'packages-index') {
-            return of([
-                new MenuItem({
-                    url: 'create',
-                    displayName: this.translationPrefix + 'CREATE',
-                    area: 'actions',
-                    order: 1,
-                    icon: 'add',
-                    permissions: [
-                        PackagesPermissions.addPackages
-                    ],
-                    providedIn: ['sidebar', 'speedDial']
-                })
-            ]);
-        } else {
-           return of([]);
-        }
+    public getPackagesMenuItems = () => {
+        return [
+            new MenuItem({
+                url: 'create',
+                displayName: this.translationPrefix + 'CREATE',
+                area: 'actions',
+                order: 1,
+                icon: 'add',
+                permissions: [
+                    PackagesPermissions.addPackages
+                ],
+                providedIn: ['sidebar', 'speedDial']
+            })
+        ];
     };
 }

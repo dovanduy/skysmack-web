@@ -15,6 +15,9 @@ import { RecordIndexComponent } from '@skysmack/portal-fields';
   templateUrl: './packages-index.component.html'
 })
 export class PackagesIndexComponent extends RecordIndexComponent<PackagesAppState, Package, string> implements OnInit {
+  public static COMPONENT_KEY = 'packages-index';
+  public componentKey = PackagesIndexComponent.COMPONENT_KEY;
+
   public areaKey: string = PACKAGES_AREA_KEY;
   public menuItemActions: MenuItem[] = [
     new MenuItem().asEventAction(`open`, this.openPackage, 'label', this),
