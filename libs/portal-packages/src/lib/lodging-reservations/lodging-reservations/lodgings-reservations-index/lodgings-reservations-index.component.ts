@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { LocalObject, EnumHelpers } from '@skysmack/framework';
 import { LodgingReservationsAppState, LodgingReservation, LODGING_RESERVATIONS_AREA_KEY, CheckIn } from '@skysmack/packages-lodging-reservations';
@@ -17,6 +17,9 @@ import { NgLodgingReservationsStore, NgLodgingReservationsActions } from '@skysm
   templateUrl: './lodgings-reservations-index.component.html'
 })
 export class LodgingsReservationsIndexComponent extends RecordIndexComponent<LodgingReservationsAppState, LodgingReservation, number> implements OnInit {
+  public static COMPONENT_KEY = 'lodgings-reservations-index';
+  public componentKey = LodgingsReservationsIndexComponent.COMPONENT_KEY;
+
   public translationPrefix = 'LODGING_RESERVATIONS.ENTITY_ACTIONS.';
 
   public menuItemActions: MenuItem[] = [

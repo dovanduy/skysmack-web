@@ -3,8 +3,11 @@ import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { MenuArea, MenuProvider } from '@skysmack/framework';
 import { MenuItem } from '@skysmack/framework';
 import { Guid } from 'guid-typescript';
-import { of, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { ReservationsPermissions } from '@skysmack/packages-lodging-reservations';
+import { getMenuEntries } from '@skysmack/ng-framework';
+import { LodgingReservationsTypeId } from '@skysmack/package-types';
+import { LodgingsReservationsIndexComponent } from './lodging-reservations/lodgings-reservations-index/lodgings-reservations-index.component';
 
 @Injectable({ providedIn: 'root' })
 export class NgLodgingsReservationsMenuProvider extends MenuProvider {
@@ -16,7 +19,15 @@ export class NgLodgingsReservationsMenuProvider extends MenuProvider {
     ) { super(); }
 
     public getMenuAreas(packagePath: string, componentKey: string): Observable<MenuArea[]> {
-        return of([
+        return getMenuEntries<MenuArea>(packagePath, LodgingReservationsTypeId, componentKey, LodgingsReservationsIndexComponent.COMPONENT_KEY, this.getLodgingsReservationsMenuAreas, this.store);
+    };
+
+    public getMenuItems(packagePath: string, componentKey: string): Observable<MenuItem[]> {
+        return getMenuEntries<MenuItem>(packagePath, LodgingReservationsTypeId, componentKey, LodgingsReservationsIndexComponent.COMPONENT_KEY, this.getLodgingsReservationsMenuItems, this.store);
+    };
+
+    public getLodgingsReservationsMenuAreas = () => {
+        return [
             new MenuArea({
                 area: 'actions',
                 translationPrefix: this.translationPrefix,
@@ -32,81 +43,77 @@ export class NgLodgingsReservationsMenuProvider extends MenuProvider {
                 translationPrefix: this.translationPrefix,
                 order: 3
             })
-        ])
+        ];
     };
 
-    public getMenuItems(packagePath: string, componentKey: string): Observable<MenuItem[]> {
-        if(componentKey === 'lodgings-reservations-index') {
-            return of([
-                new MenuItem({
-                    url: '/' + packagePath + '/create',
-                    displayName: this.translationPrefix + 'CREATE',
-                    area: 'actions',
-                    order: 1,
-                    icon: 'add',
-                    permissions: [
-                        ReservationsPermissions.addReservations
-                    ],
-                    providedIn: ['sidebar']
-                }),
-                new MenuItem({
-                    url: '/' + packagePath,
-                    displayName: this.translationPrefix + 'ALL',
-                    area: 'reservations',
-                    order: 1,
-                    icon: 'groupAdd',
-                    permissions: [
-                        ReservationsPermissions.findReservations
-                    ],
-                    providedIn: ['sidebar']
-                }),
-                new MenuItem({
-                    url: '/' + packagePath + '/arrivals',
-                    displayName: this.translationPrefix + 'ARRIVALS',
-                    area: 'reservations',
-                    order: 2,
-                    icon: 'groupAdd',
-                    permissions: [
-                        ReservationsPermissions.findReservations
-                    ],
-                    providedIn: ['sidebar']
-                }),
-                new MenuItem({
-                    url: '/' + packagePath + '/stays',
-                    displayName: this.translationPrefix + 'STAYS',
-                    area: 'reservations',
-                    order: 3,
-                    icon: 'groupAdd',
-                    permissions: [
-                        ReservationsPermissions.findReservations
-                    ],
-                    providedIn: ['sidebar']
-                }),
-                new MenuItem({
-                    url: '/' + packagePath + '/departures',
-                    displayName: this.translationPrefix + 'DEPARTURES',
-                    area: 'reservations',
-                    order: 4,
-                    icon: 'groupAdd',
-                    permissions: [
-                        ReservationsPermissions.findReservations
-                    ],
-                    providedIn: ['sidebar']
-                }),
-                new MenuItem({
-                    url: '/' + packagePath + '/settings/checkin',
-                    displayName: this.translationPrefix + 'SETTINGS',
-                    area: 'settings',
-                    order: 1,
-                    icon: 'groupAdd',
-                    permissions: [
-                        ReservationsPermissions.checkIn
-                    ],
-                    providedIn: ['sidebar']
-                })
-            ]);
-        } else {
-           return of([]);
-        }
+    public getLodgingsReservationsMenuItems = (packagePath: string) => {
+        return [
+            new MenuItem({
+                url: '/' + packagePath + '/create',
+                displayName: this.translationPrefix + 'CREATE',
+                area: 'actions',
+                order: 1,
+                icon: 'add',
+                permissions: [
+                    ReservationsPermissions.addReservations
+                ],
+                providedIn: ['sidebar']
+            }),
+            new MenuItem({
+                url: '/' + packagePath,
+                displayName: this.translationPrefix + 'ALL',
+                area: 'reservations',
+                order: 1,
+                icon: 'groupAdd',
+                permissions: [
+                    ReservationsPermissions.findReservations
+                ],
+                providedIn: ['sidebar']
+            }),
+            new MenuItem({
+                url: '/' + packagePath + '/arrivals',
+                displayName: this.translationPrefix + 'ARRIVALS',
+                area: 'reservations',
+                order: 2,
+                icon: 'groupAdd',
+                permissions: [
+                    ReservationsPermissions.findReservations
+                ],
+                providedIn: ['sidebar']
+            }),
+            new MenuItem({
+                url: '/' + packagePath + '/stays',
+                displayName: this.translationPrefix + 'STAYS',
+                area: 'reservations',
+                order: 3,
+                icon: 'groupAdd',
+                permissions: [
+                    ReservationsPermissions.findReservations
+                ],
+                providedIn: ['sidebar']
+            }),
+            new MenuItem({
+                url: '/' + packagePath + '/departures',
+                displayName: this.translationPrefix + 'DEPARTURES',
+                area: 'reservations',
+                order: 4,
+                icon: 'groupAdd',
+                permissions: [
+                    ReservationsPermissions.findReservations
+                ],
+                providedIn: ['sidebar']
+            }),
+            new MenuItem({
+                url: '/' + packagePath + '/settings/checkin',
+                displayName: this.translationPrefix + 'SETTINGS',
+                area: 'settings',
+                order: 1,
+                icon: 'groupAdd',
+                permissions: [
+                    ReservationsPermissions.checkIn
+                ],
+                providedIn: ['sidebar']
+            })
+        ];
     };
-}
+};
