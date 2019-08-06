@@ -95,7 +95,7 @@ export class TerminalsPayComponent extends RecordFormComponent<TerminalsAppState
       delete transactionRequest.connection;
 
       // Prepare request
-      const url = `${this.apiDomain.domain}/${this.packagePath}/actions/begin-transaction`;
+      const url = `${this.apiDomain.domain}/${this.packagePath}/actions/card-transaction`;
       this.disableButton = true;
 
       // Request
