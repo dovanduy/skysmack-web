@@ -43,7 +43,7 @@ export class NgProductsSalesPriceMenuProvider extends MenuProvider {
                     permissions: [
                         ProductsPricingsPermissions.addProductSalesPrices
                     ],
-                    providedIn: ['sidebar']
+                    providedIn: ['sidebar', 'speedDial']
                 })
             ]).pipe(setBackButton({ customPath: '/product-pricing' }));
         } else {

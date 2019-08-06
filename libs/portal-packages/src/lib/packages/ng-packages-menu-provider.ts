@@ -37,7 +37,7 @@ export class NgPackagesMenuProvider extends MenuProvider {
                     permissions: [
                         PackagesPermissions.addPackages
                     ],
-                    providedIn: ['sidebar']
+                    providedIn: ['sidebar', 'speedDial']
                 })
             ]);
         } else {

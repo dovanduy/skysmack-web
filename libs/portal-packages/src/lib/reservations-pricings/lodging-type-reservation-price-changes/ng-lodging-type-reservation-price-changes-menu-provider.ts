@@ -43,7 +43,7 @@ export class NgLodgingTypeReservationPriceChangesMenuProvider extends MenuProvid
                     permissions: [
                         ReservationsPricingsPermissions.addLodgingTypePriceChanges
                     ],
-                    providedIn: ['sidebar']
+                    providedIn: ['sidebar', 'speedDial']
                 })
             ]).pipe(setBackButton({ customPath: '/reservations-pricings' }));
         } else {

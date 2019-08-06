@@ -42,7 +42,7 @@ export class NgEmailsTemplatesMenuProvider extends MenuProvider {
                     permissions: [
                         //??
                     ],
-                    providedIn: ['sidebar']
+                    providedIn: ['sidebar', 'speedDial']
                 })
             ]).pipe(setBackButton({ customPath: '/emails' }));
         } else {

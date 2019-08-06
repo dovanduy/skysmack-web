@@ -43,7 +43,7 @@ export class NgInvoiceItemsMenuProvider extends MenuProvider {
                     permissions: [
                         InvoicesPermissions.addInvoiceItems
                     ],
-                    providedIn: ['sidebar']
+                    providedIn: ['sidebar', 'speedDial']
                 }),
                 new MenuItem({
                     url: 'fields',

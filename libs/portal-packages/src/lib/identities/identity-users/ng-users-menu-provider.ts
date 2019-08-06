@@ -42,7 +42,7 @@ export class NgUsersMenuProvider extends MenuProvider {
                     permissions: [
                         //??
                     ],
-                    providedIn: ['sidebar']
+                    providedIn: ['sidebar', 'speedDial']
                 })
             ]).pipe(setBackButton({ customPath: '/identities' }));
         } else {

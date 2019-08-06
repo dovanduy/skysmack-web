@@ -53,7 +53,7 @@ export class NgPersonsMenuProvider extends MenuProvider {
                 permissions: [
                     PersonsPermissions.addPersons
                 ],
-                providedIn: ['sidebar']
+                providedIn: ['sidebar', 'speedDial']
             }),
             new MenuItem({
                 url: 'fields',

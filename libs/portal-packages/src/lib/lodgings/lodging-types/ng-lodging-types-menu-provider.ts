@@ -43,7 +43,7 @@ export class NgLodgingTypesMenuProvider extends MenuProvider {
                     permissions: [
                         LodgingsPermissions.addLodgingTypes
                     ],
-                    providedIn: ['sidebar']
+                    providedIn: ['sidebar', 'speedDial']
                 }),
                 new MenuItem({
                     url: 'fields',
