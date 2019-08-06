@@ -9,6 +9,9 @@ export class AuthenticationActions<TStateType, TStore extends Store<TStateType>>
     public static CLEAR_LOGIN_ERROR = 'CLEAR_LOGIN_ERROR';
     public static LOG_OUT = 'LOG_OUT';
 
+    public static REFRESH_TOKEN_SUCCESS = 'REFRESH_TOKEN_SUCCESS';
+    public static REFRESH_TOKEN_ERROR = 'REFRESH_TOKEN_ERROR';
+
     constructor(
         protected store: TStore,
     ) { }

@@ -4,7 +4,7 @@ import { API_DOMAIN_INJECTOR_TOKEN } from '@skysmack/framework';
 import { SkysmackApiDomain } from '../../requests/skysmack-api-domain';
 import { NgSkysmackActions } from '@skysmack/ng-skysmack';
 import { configureLanguage, LanguageService } from '@skysmack/portal-ui';
-import { PackageLoader, AuthorizationInterceptor } from '@skysmack/ng-framework';
+import { PackageLoader } from '@skysmack/ng-framework';
 import { loadInvoicePackage } from '../packages/invoices-package-manifest';
 import { loadPersonPackage } from '../packages/persons-package-manifest';
 import { loadProductPackage } from '../packages/products-package-manifest';
@@ -12,7 +12,7 @@ import { loadProductsPricingsPackage } from '../packages/products-pricings-packa
 import { loadLodgingPackage } from '../packages/lodgings-package-manifest';
 import { loadLodgingReservationPackage } from '../packages/lodging-reservations-package-manifest';
 import { loadPersonsLodgingReservationsPackage } from '../packages/persons-lodging-reservations-package-manifest';
-import { loadOauth2Package } from '../packages/oauth2-package-manifest';
+import { loadOAuth2Package } from '../packages/oauth2-package-manifest';
 import { loadMaintenancePackage } from '../packages/maintenance-package-manifest';
 import { loadTerminalPaymentsPackage } from '../packages/terminal-payments-manifest';
 import { loadIdentitiesPackage } from '../packages/identities-package-manifest';
@@ -24,6 +24,7 @@ import { loadEmailsPackage } from '../packages/emails-package-manifest';
 import { loadEmailsSmtpPackage } from '../packages/emails-smtp-package-manifest';
 import { loadInvoicesProductsPackage } from '../packages/invoices-products-package-manifest';
 import { loadOpenApiPackage } from '../packages/open-api-package-manifest';
+import { RefreshTokenInterceptor } from '@skysmack/ng-oauth2';
 
 
 export function configureSkysmack(actions: NgSkysmackActions) {
@@ -36,7 +37,7 @@ export const configurations = [
 ];
 
 export const httpInterceptors = [
-    { provide: HTTP_INTERCEPTORS, useClass: AuthorizationInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: RefreshTokenInterceptor, multi: true }
 ];
 
 export const packageLoaders = [
@@ -53,7 +54,7 @@ export const packageLoaders = [
     { provide: APP_INITIALIZER, useFactory: loadLodgingReservationPackage, deps: [PackageLoader], multi: true },
     { provide: APP_INITIALIZER, useFactory: loadReservationsPricingsPackage, deps: [PackageLoader], multi: true },
     { provide: APP_INITIALIZER, useFactory: loadPersonsLodgingReservationsPackage, deps: [PackageLoader], multi: true },
-    { provide: APP_INITIALIZER, useFactory: loadOauth2Package, deps: [PackageLoader], multi: true },
+    { provide: APP_INITIALIZER, useFactory: loadOAuth2Package, deps: [PackageLoader], multi: true },
     { provide: APP_INITIALIZER, useFactory: loadMaintenancePackage, deps: [PackageLoader], multi: true },
     { provide: APP_INITIALIZER, useFactory: loadTerminalPaymentsPackage, deps: [PackageLoader], multi: true },
     { provide: APP_INITIALIZER, useFactory: loadEmailsPackage, deps: [PackageLoader], multi: true },
@@ -66,8 +67,8 @@ export const injectionTokens = [
 ];
 
 export const applicationStartup = [
-    ...configurations,
     ...httpInterceptors,
+    ...configurations,
     ...packageLoaders,
     ...injectionTokens
 ];

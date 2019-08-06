@@ -1,3 +1,18 @@
+@import '../../../../../../../assets/scss/_includes.scss';
+
 .mat-card-title, .mat-card-subtitle {
     display: block;
+}
+
+mat-card-subtitle {
+    margin-bottom: 1.5rem;
+}
+
+.btn-wrapper {
+    text-align: right;
+}
+
+.error {    
+    color: #f44336;
+    padding-bottom: 1rem;
 }

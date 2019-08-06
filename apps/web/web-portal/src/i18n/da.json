@@ -2211,7 +2211,8 @@
 		"FORM": {
 			"LABELS": {
 				"EMAIL": "Email",
-				"PASSWORD": "Adgangskode"
+				"PASSWORD": "Adgangskode",
+				"STAYSIGNEDIN": "Forbliv logget ind"
 			},
 			"PLACEHOLDERS": {
 				"EMAIL": "Indstast email",

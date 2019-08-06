@@ -8,7 +8,7 @@ import { NgSkysmackActions } from '@skysmack/ng-skysmack';
 import { SubscriptionHandler, Package } from '@skysmack/framework';
 import { AuthenticationActions } from '@skysmack/redux';
 import { filter } from 'rxjs/operators';
-import { Oauth2Requests } from '@skysmack/ng-oauth2';
+import { OAuth2Requests } from '@skysmack/ng-oauth2';
 import { Field, FormHelper } from '@skysmack/ng-dynamic-forms';
 import { Observable } from 'rxjs';
 import { NgAuthenticationStore } from '@skysmack/ng-framework';
@@ -56,7 +56,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     public skysmackStore: NgSkysmackStore,
     public skysmackActions: NgSkysmackActions,
     public fieldsConfig: LoginFieldsConfig,
-    public requests: Oauth2Requests,
+    public requests: OAuth2Requests,
     public dialog: MatDialog,
     @Optional() @Inject(MAT_DIALOG_DATA) public data: { packagePath: string }
   ) { }
@@ -89,10 +89,10 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.subscriptionHandler.register(fh.form.valueChanges.subscribe(() => this.error = false));
   }
 
-  private login(credentials: { email: string, password: string }) {
+  private login(credentials: { email: string, password: string, staySignedIn: boolean }) {
     this.ngRedux.dispatch({ type: AuthenticationActions.CLEAR_LOGIN_ERROR });
 
-    this.subscriptionHandler.register(this.requests.login(credentials.email, credentials.password, this.packagePath).subscribe(loginResultAction => this.ngRedux.dispatch(loginResultAction)));
+    this.subscriptionHandler.register(this.requests.login(credentials.email, credentials.password, credentials.staySignedIn, this.packagePath).subscribe(loginResultAction => this.ngRedux.dispatch(loginResultAction)));
     this.loggingIn = true;
 
     this.subscriptionHandler.register(this.store.isCurrentUserAuthenticated()
