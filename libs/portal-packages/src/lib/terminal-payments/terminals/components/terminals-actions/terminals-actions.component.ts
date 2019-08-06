@@ -4,7 +4,6 @@ import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EditorNavService } from '@skysmack/portal-ui';
 import { TerminalsAppState } from '@skysmack/packages-terminal-payments';
-import { HttpClient } from '@angular/common/http';
 import { SelectFieldOption } from '@skysmack/ng-dynamic-forms';
 import { BaseComponent } from '@skysmack/portal-fields';
 
@@ -38,8 +37,7 @@ export class TerminalsActionsComponent extends BaseComponent<TerminalsAppState, 
     public editorNavService: EditorNavService,
     public actions: NgTerminalsActions,
     public skysmackStore: NgSkysmackStore,
-    public store: NgTerminalsStore,
-    public httpClient: HttpClient
+    public store: NgTerminalsStore
   ) {
     super(router, activatedRoute, skysmackStore);
   }
@@ -59,10 +57,7 @@ export class TerminalsActionsComponent extends BaseComponent<TerminalsAppState, 
     const url = 'url';
     const body = {};
     if (this.selectedOption) {
-      // this.httpClient.post<any>(url, body, { observe: 'response' }).pipe(
-      //   tap(x => console.log(XPathExpression)),
-      //   take(1),
-      // ).subscribe();
+
     } else {
       this.message = 'Please choose an action'
     }

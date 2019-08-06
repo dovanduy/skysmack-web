@@ -9,7 +9,6 @@ import { toLocalObject, LocalObject, API_DOMAIN_INJECTOR_TOKEN, ApiDomain } from
 import { NgTransactionRequestFieldsConfig } from '../../ng-transaction-request-fields-config';
 import { TransactionRequest, TerminalsAppState } from '@skysmack/packages-terminal-payments';
 import { FormHelper } from '@skysmack/ng-dynamic-forms';
-import { HttpClient } from '@angular/common/http';
 import { Invoice } from 'libs/packages/invoices/src';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { RecordFormComponent } from '@skysmack/portal-fields';
@@ -34,7 +33,6 @@ export class TerminalsPayComponent extends RecordFormComponent<TerminalsAppState
     public fieldsConfig: NgTransactionRequestFieldsConfig,
     public store: NgTerminalsStore,
     public requests: NgTerminalsRequests,
-    public httpClient: HttpClient,
     @Inject(API_DOMAIN_INJECTOR_TOKEN) protected apiDomain: ApiDomain,
     public dialogRef: MatDialogRef<TerminalsPayComponent>,
     @Inject(MAT_DIALOG_DATA) public data: { packagePath: string, value: LocalObject<Invoice, Number> }
