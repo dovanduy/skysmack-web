@@ -15,6 +15,8 @@ import { RecordIndexComponent } from '@skysmack/portal-fields';
   templateUrl: './invoices-cash-payments-index.component.html'
 })
 export class InvoicesCashPaymentsIndexComponent extends RecordIndexComponent<InvoicesCashPaymentsAppState, CashPayment, number> implements OnInit {
+  public static COMPONENT_KEY = 'invoices-cash-payments-index';
+  public componentKey = InvoicesCashPaymentsIndexComponent.COMPONENT_KEY;
 
   public areaKey: string = INVOICES_CASH_PAYMENTS_AREA_KEY;
   public menuItemActions: MenuItem[] = [

@@ -25,7 +25,7 @@ export class NgRolesMenuProvider extends MenuProvider {
         return getMenuEntries<MenuItem>(packagePath, IdentitiesTypeId, componentKey, RolesIndexComponent.COMPONENT_KEY, this.getRolesMenuItems(), this.store);
     };
 
-    public getRolesMenuAreas() {
+    public getRolesMenuAreas = () => {
         return [
             new MenuArea({
                 area: 'actions',
@@ -40,7 +40,7 @@ export class NgRolesMenuProvider extends MenuProvider {
         ];
     };
 
-    public getRolesMenuItems() {
+    public getRolesMenuItems = () => {
         return [
             new MenuItem({
                 url: 'create',

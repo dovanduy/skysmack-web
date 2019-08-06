@@ -25,7 +25,7 @@ export class NgApplicationsMenuProvider extends MenuProvider {
         return getMenuEntries<MenuItem>(packagePath, IdentitiesTypeId, componentKey, ApplicationsIndexComponent.COMPONENT_KEY, this.getApplicationsMenuItems(), this.store);
     };
 
-    public getApplicationsMenuAreas() {
+    public getApplicationsMenuAreas = () => {
         return [
             new MenuArea({
                 area: 'actions',
@@ -40,7 +40,7 @@ export class NgApplicationsMenuProvider extends MenuProvider {
         ];
     };
 
-    public getApplicationsMenuItems() {
+    public getApplicationsMenuItems = () => {
         return [
             new MenuItem({
                 url: 'create',

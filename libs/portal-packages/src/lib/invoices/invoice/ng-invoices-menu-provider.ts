@@ -26,7 +26,7 @@ export class NgInvoicesMenuProvider extends MenuProvider {
         return getMenuEntries<MenuItem>(packagePath, InvoicesTypeId, componentKey, InvoicesIndexComponent.COMPONENT_KEY, this.getInvoicesMenuItems(), this.store);
     };
 
-    public getInvoicesMenuAreas() {
+    public getInvoicesMenuAreas = () => {
         return [
             new MenuArea({
                 area: 'actions',
@@ -41,7 +41,7 @@ export class NgInvoicesMenuProvider extends MenuProvider {
         ];
     };
 
-    public getInvoicesMenuItems() {
+    public getInvoicesMenuItems = () => {
         return [
             new MenuItem({
                 url: 'create',

@@ -25,7 +25,7 @@ export class NgEmailsSmtpMenuProvider extends MenuProvider {
         return getMenuEntries<MenuItem>(packagePath, EmailsSmtpTypeId, componentKey, EmailsSmtpIndexComponent.COMPONENT_KEY, this.getEmailsSmtpMenuItems(), this.store);
     };
 
-    public getEmailsSmtpMenuAreas() {
+    public getEmailsSmtpMenuAreas = () => {
         return [
             new MenuArea({
                 area: 'manage',
@@ -35,7 +35,7 @@ export class NgEmailsSmtpMenuProvider extends MenuProvider {
         ];
     };
 
-    public getEmailsSmtpMenuItems() {
+    public getEmailsSmtpMenuItems = () => {
         return [
             new MenuItem({
                 url: 'settings/smtp-client',

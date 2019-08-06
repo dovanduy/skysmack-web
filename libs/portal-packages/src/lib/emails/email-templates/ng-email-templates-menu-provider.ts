@@ -3,15 +3,15 @@ import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { MenuArea, MenuProvider } from '@skysmack/framework';
 import { MenuItem } from '@skysmack/framework';
 import { Guid } from 'guid-typescript';
-import { of, Observable } from 'rxjs';
-import { setBackButton, getMenuEntries } from '@skysmack/ng-framework';
+import { Observable } from 'rxjs';
+import { getMenuEntries } from '@skysmack/ng-framework';
 import { EmailsTypeId } from '@skysmack/package-types';
 import { EmailTemplatesIndexComponent } from './components/email-templates-index/email-templates-index.component';
 
 @Injectable({ providedIn: 'root' })
 export class NgEmailsTemplatesMenuProvider extends MenuProvider {
     public id = Guid.create().toString();
-    public translationPrefix = 'EMAILS_TEMPLATES.INDEX.';
+    public translationPrefix = 'EMAIL_TEMPLATES.INDEX.';
 
     constructor(
         public store: NgSkysmackStore
