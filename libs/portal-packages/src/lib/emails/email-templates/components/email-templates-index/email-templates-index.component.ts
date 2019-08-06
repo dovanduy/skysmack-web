@@ -14,6 +14,8 @@ import { RecordIndexComponent } from '@skysmack/portal-fields';
   templateUrl: './email-templates-index.component.html'
 })
 export class EmailTemplatesIndexComponent extends RecordIndexComponent<EmailTemplatesAppState, EmailTemplate, number> implements OnInit {
+  public static COMPONENT_KEY = 'email-templates';
+  public componentKey = EmailTemplatesIndexComponent.COMPONENT_KEY;
 
   public areaKey: string = EMAIL_TEMPLATES_AREA_KEY;
   public menuItemActions: MenuItem[] = [
