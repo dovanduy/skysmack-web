@@ -5,7 +5,7 @@ import { SkysmackStore } from '@skysmack/ng-framework';
 
 @Injectable({ providedIn: 'root' })
 export class NgSkysmackStore extends SkysmackStore {
-    constructor(protected ngRedux: NgRedux<SkysmackAppState>) {
+    constructor(public ngRedux: NgRedux<SkysmackAppState>) {
         super(ngRedux);
     }
 }

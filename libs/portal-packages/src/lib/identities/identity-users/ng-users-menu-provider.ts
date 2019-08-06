@@ -18,11 +18,11 @@ export class NgUsersMenuProvider extends MenuProvider {
     ) { super(); }
 
     public getMenuAreas(packagePath: string, componentKey: string): Observable<MenuArea[]> {
-        return getMenuEntries<MenuArea>(packagePath, IdentitiesTypeId, componentKey, UsersIndexComponent.COMPONENT_KEY, this.getUsersMenuAreas(), this.store);
+        return getMenuEntries<MenuArea>(packagePath, IdentitiesTypeId, componentKey, UsersIndexComponent.COMPONENT_KEY, this.getUsersMenuAreas, this.store);
     };
 
     public getMenuItems(packagePath: string, componentKey: string): Observable<MenuItem[]> {
-        return getMenuEntries<MenuItem>(packagePath, IdentitiesTypeId, componentKey, UsersIndexComponent.COMPONENT_KEY, this.getUsersMenuItems(), this.store);
+        return getMenuEntries<MenuItem>(packagePath, IdentitiesTypeId, componentKey, UsersIndexComponent.COMPONENT_KEY, this.getUsersMenuItems, this.store);
     };
 
     public getUsersMenuAreas = () => {
@@ -41,7 +41,7 @@ export class NgUsersMenuProvider extends MenuProvider {
     };
 
     public getUsersMenuItems = () => {
-        return  [
+        return [
             new MenuItem({
                 url: 'create',
                 displayName: this.translationPrefix + 'CREATE',

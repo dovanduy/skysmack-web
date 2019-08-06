@@ -18,14 +18,14 @@ export class NgInvoicesCashPaymentsMenuProvider extends MenuProvider {
     ) { super(); }
 
     public getMenuAreas(packagePath: string, componentKey: string): Observable<MenuArea[]> {
-        return getMenuEntries<MenuArea>(packagePath, InvoicesCashPaymentsTypeId, componentKey, InvoicesCashPaymentsIndexComponent.COMPONENT_KEY, this.getInvoicesCashPaymentsMenuAreas(), this.store);
+        return getMenuEntries<MenuArea>(packagePath, InvoicesCashPaymentsTypeId, componentKey, InvoicesCashPaymentsIndexComponent.COMPONENT_KEY, this.getInvoicesCashPaymentsMenuAreas, this.store);
     };
 
     public getMenuItems(packagePath: string, componentKey: string): Observable<MenuItem[]> {
-        return getMenuEntries<MenuItem>(packagePath, InvoicesCashPaymentsTypeId, componentKey, InvoicesCashPaymentsIndexComponent.COMPONENT_KEY, this.getInvoicesCashPaymentsMenuItems(), this.store);
+        return getMenuEntries<MenuItem>(packagePath, InvoicesCashPaymentsTypeId, componentKey, InvoicesCashPaymentsIndexComponent.COMPONENT_KEY, this.getInvoicesCashPaymentsMenuItems, this.store);
     };
 
-    public getInvoicesCashPaymentsMenuAreas= () => {
+    public getInvoicesCashPaymentsMenuAreas = () => {
         return [
             new MenuArea({
                 area: 'actions',
@@ -49,7 +49,7 @@ export class NgInvoicesCashPaymentsMenuProvider extends MenuProvider {
                 order: 1,
                 icon: 'add',
                 permissions: [
-                    
+
                 ],
                 providedIn: ['sidebar', 'speedDial']
             })

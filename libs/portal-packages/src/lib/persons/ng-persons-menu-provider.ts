@@ -20,14 +20,14 @@ export class NgPersonsMenuProvider extends MenuProvider {
     ) { super(); }
 
     public getMenuAreas(packagePath: string, componentKey: string): Observable<MenuArea[]> {
-        return getMenuEntries<MenuArea>(packagePath, PersonsTypeId, componentKey, 'persons-index', this.getPersonsMenuAreas(), this.store);
+        return getMenuEntries<MenuArea>(packagePath, PersonsTypeId, componentKey, 'persons-index', this.getPersonsMenuAreas, this.store);
     };
 
     public getMenuItems(packagePath: string, componentKey: string): Observable<MenuItem[]> {
-        return getMenuEntries<MenuItem>(packagePath, PersonsTypeId, componentKey, 'persons-index', this.getPersonsMenuItems(), this.store);
+        return getMenuEntries<MenuItem>(packagePath, PersonsTypeId, componentKey, 'persons-index', this.getPersonsMenuItems, this.store);
     };
 
-    public getPersonsMenuAreas() {
+    public getPersonsMenuAreas = () => {
         return [
             new MenuArea({
                 area: 'actions',
@@ -42,7 +42,7 @@ export class NgPersonsMenuProvider extends MenuProvider {
         ];
     }
 
-    public getPersonsMenuItems() {
+    public getPersonsMenuItems = () => {
         return [
             new MenuItem({
                 url: 'create',

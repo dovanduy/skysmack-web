@@ -3,6 +3,7 @@ import { Package, LocalObject, toLocalObject, MenuItem } from '@skysmack/framewo
 import { map, switchMap, filter } from 'rxjs/operators';
 import { combineLatest, pipe, of, Observable } from 'rxjs';
 import { SkysmackStore } from '../stores/skysmack-store';
+import { Skysmack } from '@skysmack/packages-skysmack-core';
 
 export const getAdditionalPaths = (router: Router, packagePath): string[] => {
     const chuncks = router.url.split('/');
@@ -46,6 +47,39 @@ export const getPackageDendencyAsStream = (skysmackStore: SkysmackStore, package
     );
 }
 
+/**
+ * Returns a menu item that will navigate to the target package when clicked.
+ * Note:
+ * - Currently it is always set to the sidebar.
+ * - Requires the MenuArea "connected_packages" to be shown
+ */
+export const setConnectedPackage = (store: SkysmackStore, packagePath: string, dependencyIndexes: number[] = [0]): MenuItem => {
+    const skysmack = (store.ngRedux.getState().skysmack.skysmack as Skysmack);
+    const packages = skysmack.packages.map(_package => toLocalObject<Package, string>(_package, 'path'));
+    const currentPackage = packages.find(pck => pck.object.path === packagePath);
+    const connectedPackage = getNParentPackageDependency(packages, currentPackage.object, dependencyIndexes);
+
+    return new MenuItem({
+        url: '/' + connectedPackage.object.path,
+        displayName: connectedPackage.object.name,
+        area: 'connected_packages',
+        order: 2,
+        icon: 'arrowBack',
+        providedIn: ['sidebar']
+    });
+};
+
+export const setBackButtonV2 = (path: string): MenuItem => {
+    return new MenuItem({
+        url: '/' + path,
+        displayName: 'SWABBLE', //'UI.MISC.BACK',
+        area: 'manage',
+        order: 2,
+        icon: 'arrowBack',
+        providedIn: ['sidebar']
+    });
+}
+
 export const setBackButton = (options?: {
     connectedPackage?: boolean;
     dependencyIndexes?: number[];
@@ -84,20 +118,20 @@ export const setBackButton = (options?: {
                 providedIn: ['sidebar']
             }));
             return of(menuItems);
-        }  
+        }
     })
 );
 
 /**
  * Helper to get MenuAreas or MenuItems if conditions are met.
  */
-export const getMenuEntries = <T>(packagePath: string, packageTypeId: string, componentKey: string, specificComponentKey: string, items: T[], store: SkysmackStore): Observable<T[]> => {
-    if(componentKey === specificComponentKey) {
+export const getMenuEntries = <T>(packagePath: string, packageTypeId: string, componentKey: string, specificComponentKey: string, items: (packagePath: string) => T[], store: SkysmackStore): Observable<T[]> => {
+    if (componentKey === specificComponentKey) {
         return store.getCurrentPackage(packagePath).pipe(
             filter(_package => _package._package.type === packageTypeId),
-            map(() => items)
+            map(() => items(packagePath))
         );
     } else {
-       return of([]);
+        return of([]);
     }
 };

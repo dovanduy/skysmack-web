@@ -18,11 +18,11 @@ export class NgRolesMenuProvider extends MenuProvider {
     ) { super(); }
 
     public getMenuAreas(packagePath: string, componentKey: string): Observable<MenuArea[]> {
-        return getMenuEntries<MenuArea>(packagePath, IdentitiesTypeId, componentKey, RolesIndexComponent.COMPONENT_KEY, this.getRolesMenuAreas(), this.store);
+        return getMenuEntries<MenuArea>(packagePath, IdentitiesTypeId, componentKey, RolesIndexComponent.COMPONENT_KEY, this.getRolesMenuAreas, this.store);
     };
 
     public getMenuItems(packagePath: string, componentKey: string): Observable<MenuItem[]> {
-        return getMenuEntries<MenuItem>(packagePath, IdentitiesTypeId, componentKey, RolesIndexComponent.COMPONENT_KEY, this.getRolesMenuItems(), this.store);
+        return getMenuEntries<MenuItem>(packagePath, IdentitiesTypeId, componentKey, RolesIndexComponent.COMPONENT_KEY, this.getRolesMenuItems, this.store);
     };
 
     public getRolesMenuAreas = () => {

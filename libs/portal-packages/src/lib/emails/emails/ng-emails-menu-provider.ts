@@ -3,7 +3,7 @@ import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { MenuArea, MenuProvider } from '@skysmack/framework';
 import { MenuItem } from '@skysmack/framework';
 import { Guid } from 'guid-typescript';
-import { of, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { getMenuEntries } from '@skysmack/ng-framework';
 import { EmailsTypeId } from '@skysmack/package-types';
 import { EmailsIndexComponent } from './components/emails-index/emails-index.component';
@@ -18,14 +18,14 @@ export class NgEmailsIndexMenuProvider extends MenuProvider {
     ) { super(); }
 
     public getMenuAreas(packagePath: string, componentKey: string): Observable<MenuArea[]> {
-        return getMenuEntries<MenuArea>(packagePath, EmailsTypeId, componentKey, EmailsIndexComponent.COMPONENT_KEY, this.getEmailsMenuAreas(), this.store);
+        return getMenuEntries<MenuArea>(packagePath, EmailsTypeId, componentKey, EmailsIndexComponent.COMPONENT_KEY, this.getEmailsMenuAreas, this.store);
     };
 
     public getMenuItems(packagePath: string, componentKey: string): Observable<MenuItem[]> {
-        return getMenuEntries<MenuItem>(packagePath, EmailsTypeId, componentKey, EmailsIndexComponent.COMPONENT_KEY, this.getEmailsMenuItems(), this.store);
+        return getMenuEntries<MenuItem>(packagePath, EmailsTypeId, componentKey, EmailsIndexComponent.COMPONENT_KEY, this.getEmailsMenuItems, this.store);
     };
 
-    public getEmailsMenuAreas() {
+    public getEmailsMenuAreas = () => {
         return [
             new MenuArea({
                 area: 'manage',
@@ -35,7 +35,7 @@ export class NgEmailsIndexMenuProvider extends MenuProvider {
         ]
     };
 
-    public getEmailsMenuItems() {
+    public getEmailsMenuItems = () => {
         return [
             new MenuItem({
                 url: 'templates',

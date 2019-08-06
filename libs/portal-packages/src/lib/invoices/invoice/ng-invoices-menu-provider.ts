@@ -19,11 +19,11 @@ export class NgInvoicesMenuProvider extends MenuProvider {
     ) { super(); }
 
     public getMenuAreas(packagePath: string, componentKey: string): Observable<MenuArea[]> {
-        return getMenuEntries<MenuArea>(packagePath, InvoicesTypeId, componentKey, InvoicesIndexComponent.COMPONENT_KEY, this.getInvoicesMenuAreas(), this.store);
+        return getMenuEntries<MenuArea>(packagePath, InvoicesTypeId, componentKey, InvoicesIndexComponent.COMPONENT_KEY, this.getInvoicesMenuAreas, this.store);
     };
 
     public getMenuItems(packagePath: string, componentKey: string): Observable<MenuItem[]> {
-        return getMenuEntries<MenuItem>(packagePath, InvoicesTypeId, componentKey, InvoicesIndexComponent.COMPONENT_KEY, this.getInvoicesMenuItems(), this.store);
+        return getMenuEntries<MenuItem>(packagePath, InvoicesTypeId, componentKey, InvoicesIndexComponent.COMPONENT_KEY, this.getInvoicesMenuItems, this.store);
     };
 
     public getInvoicesMenuAreas = () => {

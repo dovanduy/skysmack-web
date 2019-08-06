@@ -18,11 +18,11 @@ export class NgApplicationsMenuProvider extends MenuProvider {
     ) { super(); }
 
     public getMenuAreas(packagePath: string, componentKey: string): Observable<MenuArea[]> {
-        return getMenuEntries<MenuArea>(packagePath, IdentitiesTypeId, componentKey, ApplicationsIndexComponent.COMPONENT_KEY, this.getApplicationsMenuAreas(), this.store);
+        return getMenuEntries<MenuArea>(packagePath, IdentitiesTypeId, componentKey, ApplicationsIndexComponent.COMPONENT_KEY, this.getApplicationsMenuAreas, this.store);
     };
 
     public getMenuItems(packagePath: string, componentKey: string): Observable<MenuItem[]> {
-        return getMenuEntries<MenuItem>(packagePath, IdentitiesTypeId, componentKey, ApplicationsIndexComponent.COMPONENT_KEY, this.getApplicationsMenuItems(), this.store);
+        return getMenuEntries<MenuItem>(packagePath, IdentitiesTypeId, componentKey, ApplicationsIndexComponent.COMPONENT_KEY, this.getApplicationsMenuItems, this.store);
     };
 
     public getApplicationsMenuAreas = () => {

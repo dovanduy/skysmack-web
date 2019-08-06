@@ -21,16 +21,16 @@ export class NgAccessPolicyRulesMenuProvider extends MenuProvider {
     ) { super(); }
 
     public getMenuAreas(packagePath: string, componentKey: string): Observable<MenuArea[]> {
-        return getMenuEntries<MenuArea>(packagePath, AccessPoliciesTypeId, componentKey, AccessPolicyRulesIndexComponent.COMPONENT_KEY, this.getAccessPolicyRulesMenuAreas(), this.store);
+        return getMenuEntries<MenuArea>(packagePath, AccessPoliciesTypeId, componentKey, AccessPolicyRulesIndexComponent.COMPONENT_KEY, this.getAccessPolicyRulesMenuAreas, this.store);
     };
 
     public getMenuItems(packagePath: string, componentKey: string): Observable<MenuItem[]> {
-        return getMenuEntries<MenuItem>(packagePath, AccessPoliciesTypeId, componentKey, AccessPolicyRulesIndexComponent.COMPONENT_KEY, this.getAccessPolicyRulesMenuItems(), this.store).pipe(
+        return getMenuEntries<MenuItem>(packagePath, AccessPoliciesTypeId, componentKey, AccessPolicyRulesIndexComponent.COMPONENT_KEY, this.getAccessPolicyRulesMenuItems, this.store).pipe(
             setBackButton({ customPath: '/access-policies' }),
         );
     };
 
-    public getAccessPolicyRulesMenuAreas() {
+    public getAccessPolicyRulesMenuAreas = () => {
         return [
             new MenuArea({
                 area: 'actions',
@@ -45,7 +45,7 @@ export class NgAccessPolicyRulesMenuProvider extends MenuProvider {
         ]
     };
 
-    public getAccessPolicyRulesMenuItems() {
+    public getAccessPolicyRulesMenuItems = () => {
         return [
             new MenuItem({
                 url: 'create',
