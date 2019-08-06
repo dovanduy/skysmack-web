@@ -15,6 +15,8 @@ import { DocumentRecordIndexComponent } from '@skysmack/portal-fields';
   templateUrl: './product-types-index.component.html'
 })
 export class ProductTypesIndexComponent extends DocumentRecordIndexComponent<ProductTypesAppState, ProductType, number> implements OnInit {
+  public static COMPONENT_KEY = 'product-types-index';
+  public componentKey = ProductTypesIndexComponent.COMPONENT_KEY;
 
   public areaKey = PRODUCT_TYPES_AREA_KEY;
   public titleExtras = true;

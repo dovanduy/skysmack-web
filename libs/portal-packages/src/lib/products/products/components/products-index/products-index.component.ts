@@ -15,6 +15,8 @@ import { NgProductsActions, NgProductsStore } from '@skysmack/ng-products';
   templateUrl: './products-index.component.html'
 })
 export class ProductsIndexComponent extends DocumentRecordIndexComponent<ProductsAppState, Product, number> implements OnInit {
+  public static COMPONENT_KEY = 'products-index';
+  public componentKey = ProductsIndexComponent.COMPONENT_KEY;
 
   public areaKey: string = PRODUCTS_AREA_KEY;
   public menuItemActions: MenuItem[] = [

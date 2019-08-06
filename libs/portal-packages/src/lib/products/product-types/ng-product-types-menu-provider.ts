@@ -5,6 +5,9 @@ import { MenuItem } from '@skysmack/framework';
 import { Guid } from 'guid-typescript';
 import { of, Observable } from 'rxjs';
 import { ProductsPermissions } from '@skysmack/packages-products';
+import { getMenuEntries, setBackButtonV2 } from '@skysmack/ng-framework';
+import { ProductsTypeId } from '@skysmack/package-types';
+import { ProductTypesIndexComponent } from './components/product-types-index/product-types-index.component';
 
 @Injectable({ providedIn: 'root' })
 export class NgProductTypesMenuProvider extends MenuProvider {
@@ -16,7 +19,15 @@ export class NgProductTypesMenuProvider extends MenuProvider {
     ) { super(); }
 
     public getMenuAreas(packagePath: string, componentKey: string): Observable<MenuArea[]> {
-        return of([
+        return getMenuEntries<MenuArea>(packagePath, ProductsTypeId, componentKey, ProductTypesIndexComponent.COMPONENT_KEY, this.getProductTypesMenuAreas, this.store);
+    };
+
+    public getMenuItems(packagePath: string, componentKey: string): Observable<MenuItem[]> {
+        return getMenuEntries<MenuItem>(packagePath, ProductsTypeId, componentKey, ProductTypesIndexComponent.COMPONENT_KEY, this.getProductTypesMenuItems, this.store);
+    };
+
+    public getProductTypesMenuAreas = () => {
+        return [
             new MenuArea({
                 area: 'actions',
                 translationPrefix: this.translationPrefix,
@@ -27,37 +38,34 @@ export class NgProductTypesMenuProvider extends MenuProvider {
                 translationPrefix: this.translationPrefix,
                 order: 2
             })
-        ])
+        ];
     };
 
-    public getMenuItems(packagePath: string, componentKey: string): Observable<MenuItem[]> {
-        if(componentKey === 'product-types-index') {
-            return of([
-                new MenuItem({
-                    url: 'create',
-                    displayName: this.translationPrefix + 'CREATE',
-                    area: 'actions',
-                    order: 1,
-                    icon: 'add',
-                    permissions: [
-                        ProductsPermissions.addProductTypes
-                    ],
-                    providedIn: ['sidebar', 'speedDial']
-                }),
-                new MenuItem({
-                    url: 'fields',
-                    displayName: this.translationPrefix + 'FIELDS',
-                    area: 'manage',
-                    order: 1,
-                    icon: 'shortText',
-                    permissions: [
-                        ProductsPermissions.findProductTypeFields
-                    ],
-                    providedIn: ['sidebar']
-                })
-            ]);
-        } else {
-           return of([]);
-        }
+    public getProductTypesMenuItems = () => {
+        return [
+            new MenuItem({
+                url: 'create',
+                displayName: this.translationPrefix + 'CREATE',
+                area: 'actions',
+                order: 1,
+                icon: 'add',
+                permissions: [
+                    ProductsPermissions.addProductTypes
+                ],
+                providedIn: ['sidebar', 'speedDial']
+            }),
+            new MenuItem({
+                url: 'fields',
+                displayName: this.translationPrefix + 'FIELDS',
+                area: 'manage',
+                order: 1,
+                icon: 'shortText',
+                permissions: [
+                    ProductsPermissions.findProductTypeFields
+                ],
+                providedIn: ['sidebar']
+            }),
+            setBackButtonV2('products')
+        ];
     };
 }
