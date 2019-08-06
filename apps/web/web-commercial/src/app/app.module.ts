@@ -10,6 +10,7 @@ import { NgReduxRouterModule, NgReduxRouter } from '@angular-redux/router';
 import { GlobalProperties } from '@skysmack/framework';
 import { ReducerRegistry, authenticationReducer } from '@skysmack/redux';
 import { ReduxOfflineConfiguration, configureRedux, CoalescingComponentFactoryResolver } from '@skysmack/ng-framework';
+import { NgOAuth2Module } from '@skysmack/ng-oauth2';
 import { MaterialModule } from '@skysmack/portal-ui';
 
 import { AppComponent } from './app.component';
@@ -24,6 +25,7 @@ import { commercialTenantsRoute } from './packages/commercial_tenants_wrapper.mo
   imports: [
     BrowserModule,
     HttpClientModule,
+    NgOAuth2Module,
     RouterModule.forRoot([
       commercialAccountRoute,
       commercialTenantsRoute

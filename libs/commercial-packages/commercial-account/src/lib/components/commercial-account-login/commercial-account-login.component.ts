@@ -10,6 +10,7 @@ import { NgRedux } from '@angular-redux/store';
 import { NgAuthenticationStore } from '@skysmack/ng-framework';
 import { Router } from '@angular/router';
 import { filter } from 'rxjs/operators';
+import { OAuth2Requests } from '@skysmack/ng-oauth2';
 
 @Component({
   selector: 'ss-commercial-account-login',
@@ -45,7 +46,7 @@ export class CommercialAccountLoginComponent implements OnInit {
     public router: Router,
     public fieldsConfig: CommercialAccountLoginFieldsConfig,
     public ngRedux: NgRedux<any>,
-    public requests: CommercialAccountService,
+    public requests: OAuth2Requests,
     public store: NgAuthenticationStore
   ) { }
 
@@ -67,10 +68,12 @@ export class CommercialAccountLoginComponent implements OnInit {
     // this.subscriptionHandler.register(fh.form.valueChanges.subscribe(() => this.error = false));
   }
 
-  private login(credentials: { email: string, password: string }) {
+  private login(credentials: { email: string, password: string, staySignedIn: boolean }) {
     this.ngRedux.dispatch({ type: AuthenticationActions.CLEAR_LOGIN_ERROR });
 
-    this.subscriptionHandler.register(this.requests.login(credentials.email, credentials.password).subscribe(loginResultAction => this.ngRedux.dispatch(loginResultAction)));
+    const packagePath = 'connect';
+
+    this.subscriptionHandler.register(this.requests.login(credentials.email, credentials.password, credentials.staySignedIn, packagePath).subscribe(loginResultAction => this.ngRedux.dispatch(loginResultAction)));
     this.loggingIn = true;
 
     this.subscriptionHandler.register(this.store.isCurrentUserAuthenticated()

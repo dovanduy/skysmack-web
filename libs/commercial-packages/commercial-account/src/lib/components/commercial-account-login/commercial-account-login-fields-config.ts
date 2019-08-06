@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { FormRule, Field, CustomValidators } from '@skysmack/ng-dynamic-forms';
-import { EmailFieldComponent, PasswordFieldComponent } from '@skysmack/portal-fields';
+import { EmailFieldComponent, PasswordFieldComponent, CheckboxFieldComponent } from '@skysmack/portal-fields';
 import { CommercialAccountLoginValidation } from './commercial-account-login-validation';
 
 @Injectable({ providedIn: 'root' })
@@ -28,6 +28,13 @@ export class CommercialAccountLoginFieldsConfig {
                 key: 'password',
                 validators: [Validators.required],
                 order: 2,
+            }),
+
+            new Field({
+                component: CheckboxFieldComponent,
+                value: true,
+                key: 'staySignedIn',
+                order: 3
             })
         ];
 

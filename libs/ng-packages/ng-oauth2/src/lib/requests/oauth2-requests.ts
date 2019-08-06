@@ -15,7 +15,7 @@ export class OAuth2Requests {
         @Inject(API_DOMAIN_INJECTOR_TOKEN) protected apiDomain: ApiDomain
     ) { }
 
-    login(email: string, password: string, staySignedIn: boolean, authPath: string): Observable<ReduxAction<CurrentUser> | ReduxAction<HttpErrorResponse>> {
+    public login(email: string, password: string, staySignedIn: boolean, authPath: string): Observable<ReduxAction<CurrentUser> | ReduxAction<HttpErrorResponse>> {
         const headers = new HttpHeaders().set(InterceptorSkipHeader, '');
 
         const url = `${this.apiDomain.domain}/${authPath}/token`;
@@ -52,7 +52,7 @@ export class OAuth2Requests {
         );
     }
 
-    refreshToken(currentUser: CurrentUser): Observable<ReduxAction<CurrentUser> | ReduxAction<HttpErrorResponse>> {
+    public refreshToken(currentUser: CurrentUser): Observable<ReduxAction<CurrentUser> | ReduxAction<HttpErrorResponse>> {
         const headers = new HttpHeaders().set(InterceptorSkipHeader, '');
 
         if (!currentUser.refresh_token) {
