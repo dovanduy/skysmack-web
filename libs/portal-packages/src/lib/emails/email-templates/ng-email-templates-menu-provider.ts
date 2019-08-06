@@ -18,14 +18,14 @@ export class NgEmailsTemplatesMenuProvider extends MenuProvider {
     ) { super(); }
 
     public getMenuAreas(packagePath: string, componentKey: string): Observable<MenuArea[]> {
-        return getMenuEntries<MenuArea>(packagePath, EmailsTypeId, componentKey, EmailTemplatesIndexComponent.COMPONENT_KEY, this.getEmailTemplatesMenuAreas(), this.store);
+        return getMenuEntries<MenuArea>(packagePath, EmailsTypeId, componentKey, EmailTemplatesIndexComponent.COMPONENT_KEY, this.getEmailTemplatesMenuAreas, this.store);
     };
 
     public getMenuItems(packagePath: string, componentKey: string): Observable<MenuItem[]> {
-        return getMenuEntries<MenuItem>(packagePath, EmailsTypeId, componentKey, EmailTemplatesIndexComponent.COMPONENT_KEY, this.getEmailTemplatesMenuItems(), this.store);
+        return getMenuEntries<MenuItem>(packagePath, EmailsTypeId, componentKey, EmailTemplatesIndexComponent.COMPONENT_KEY, this.getEmailTemplatesMenuItems, this.store);
     };
 
-    public getEmailTemplatesMenuAreas() {
+    public getEmailTemplatesMenuAreas = () => {
         return [
             new MenuArea({
                 area: 'actions',
@@ -40,7 +40,7 @@ export class NgEmailsTemplatesMenuProvider extends MenuProvider {
         ];
     };
 
-    public getEmailTemplatesMenuItems() {
+    public getEmailTemplatesMenuItems = () => {
         return [
             new MenuItem({
                 url: 'create',
