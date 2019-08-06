@@ -43,7 +43,7 @@ export class NgAssignmentsMenuProvider extends MenuProvider {
                     permissions: [
                         MaintenancePermissions.addAssignments
                     ],
-                    providedIn: ['sidebar']
+                    providedIn: ['sidebar', 'speedDial']
                 }),
                 new MenuItem({
                     url: 'types',

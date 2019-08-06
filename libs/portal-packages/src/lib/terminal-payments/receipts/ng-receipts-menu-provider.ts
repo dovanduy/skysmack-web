@@ -40,7 +40,7 @@ export class NgReceiptsMenuProvider extends MenuProvider {
                     icon: 'add',
                     permissions: [
                     ],
-                    providedIn: ['sidebar']
+                    providedIn: ['sidebar', 'speedDial']
                 }),
                 new MenuItem({
                     url: 'fields',

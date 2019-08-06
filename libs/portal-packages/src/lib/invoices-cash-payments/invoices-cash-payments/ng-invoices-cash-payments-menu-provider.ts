@@ -42,7 +42,7 @@ export class NgInvoicesCashPaymentsMenuProvider extends MenuProvider {
                     permissions: [
                         
                     ],
-                    providedIn: ['sidebar']
+                    providedIn: ['sidebar', 'speedDial']
                 })
             ]);
         } else {

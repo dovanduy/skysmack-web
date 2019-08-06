@@ -1,4 +1,4 @@
-<ss-container [sidebarMenu]="sidebarMenu" (menuItemActionEvent)="actionEvent($event)" [componentKey]="'roles-index'"
+<ss-container [sidebarMenu]="sidebarMenu" (menuItemActionEvent)="actionEvent($event)" [componentKey]="componentKey"
     *ngIf="loadedPackage$ | async as loadedPackage">
     <ss-records-container [area]="areaKey" [cancelAction]="actions.cancelAction"
         [title]="loadedPackage._package.name + ' roles'" [entities$]="pagedEntities$"

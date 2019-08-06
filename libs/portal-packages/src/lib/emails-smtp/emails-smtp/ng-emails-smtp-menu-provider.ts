@@ -5,9 +5,8 @@ import { MenuItem } from '@skysmack/framework';
 import { Guid } from 'guid-typescript';
 import { Observable } from 'rxjs';
 import { getMenuEntries, setConnectedPackage } from '@skysmack/ng-framework';
-import { EmailsTypeId, EmailsSmtpTypeId } from '@skysmack/package-types';
+import { EmailsSmtpTypeId } from '@skysmack/package-types';
 import { EmailsSmtpIndexComponent } from './components/emails-smtp-index/emails-smtp-index.component';
-import { tap } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
 export class NgEmailsSmtpMenuProvider extends MenuProvider {
@@ -67,6 +66,4 @@ export class NgEmailsSmtpMenuProvider extends MenuProvider {
             setConnectedPackage(this.store, packagePath)
         ];
     };
-
-
 }

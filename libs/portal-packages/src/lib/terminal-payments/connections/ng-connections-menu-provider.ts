@@ -40,7 +40,7 @@ export class NgConnectionsMenuProvider extends MenuProvider {
                     icon: 'add',
                     permissions: [
                     ],
-                    providedIn: ['sidebar']
+                    providedIn: ['sidebar', 'speedDial']
                 })
             ]);
         } else {

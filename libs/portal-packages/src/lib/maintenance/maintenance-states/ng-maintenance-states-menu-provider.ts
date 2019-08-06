@@ -42,7 +42,7 @@ export class NgMaintenanceStatesMenuProvider extends MenuProvider {
                     icon: 'add',
                     permissions: [
                     ],
-                    providedIn: ['sidebar']
+                    providedIn: ['sidebar', 'speedDial']
                 })
             ]).pipe(setBackButton({ customPath: `/${packagePath}/assignments` }));
         } else {

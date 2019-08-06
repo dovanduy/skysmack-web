@@ -42,7 +42,7 @@ export class NgProductTypesMenuProvider extends MenuProvider {
                     permissions: [
                         ProductsPermissions.addProductTypes
                     ],
-                    providedIn: ['sidebar']
+                    providedIn: ['sidebar', 'speedDial']
                 }),
                 new MenuItem({
                     url: 'fields',

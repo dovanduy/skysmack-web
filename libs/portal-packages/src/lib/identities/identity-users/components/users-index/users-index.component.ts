@@ -15,6 +15,8 @@ import { RecordIndexComponent } from '@skysmack/portal-fields';
   templateUrl: './users-index.component.html'
 })
 export class UsersIndexComponent extends RecordIndexComponent<UsersAppState, User, number> implements OnInit {
+  public static COMPONENT_KEY = 'users-index';
+  public componentKey = UsersIndexComponent.COMPONENT_KEY;
 
   public areaKey: string = USERS_AREA_KEY;
   public titleExtras = true;

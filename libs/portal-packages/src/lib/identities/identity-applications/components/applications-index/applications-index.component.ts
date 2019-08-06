@@ -15,6 +15,8 @@ import { RecordIndexComponent } from '@skysmack/portal-fields';
   templateUrl: './applications-index.component.html'
 })
 export class ApplicationsIndexComponent extends RecordIndexComponent<ApplicationsAppState, Application, number> implements OnInit {
+  public static COMPONENT_KEY = 'applications-index';
+  public componentKey = ApplicationsIndexComponent.COMPONENT_KEY;
 
   public areaKey: string = APPLICATIONS_AREA_KEY;
   public titleExtras = true;
