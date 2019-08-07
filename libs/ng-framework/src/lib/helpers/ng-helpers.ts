@@ -53,7 +53,7 @@ export const getPackageDendencyAsStream = (skysmackStore: SkysmackStore, package
  * - Currently it is always set to the sidebar.
  * - Requires the MenuArea "connected_packages" to be shown
  */
-export const setConnectedPackage = (store: SkysmackStore, packagePath: string, dependencyIndexes: number[] = [0]): MenuItem => {
+export const setConnectedParentPackage = (store: SkysmackStore, packagePath: string, dependencyIndexes: number[] = [0]): MenuItem => {
     const skysmack = (store.ngRedux.getState().skysmack.skysmack as Skysmack);
     const packages = skysmack.packages.map(_package => toLocalObject<Package, string>(_package, 'path'));
     const currentPackage = packages.find(pck => pck.object.path === packagePath);

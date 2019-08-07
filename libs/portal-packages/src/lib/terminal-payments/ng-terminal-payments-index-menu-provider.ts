@@ -5,7 +5,7 @@ import { MenuItem } from '@skysmack/framework';
 import { Guid } from 'guid-typescript';
 import { of, Observable } from 'rxjs';
 import { InvoicesPermissions } from '@skysmack/packages-invoices';
-import { getMenuEntries, setConnectedPackage } from '@skysmack/ng-framework';
+import { getMenuEntries, setConnectedParentPackage } from '@skysmack/ng-framework';
 import { TerminalPaymentsTypeId } from '@skysmack/package-types';
 import { TerminalPaymentsIndexComponent } from './components/terminal-payments-index/terminal-payments-index.component';
 
@@ -78,7 +78,7 @@ export class NgTerminalPaymentsIndexMenuProvider extends MenuProvider {
                 ],
                 providedIn: ['sidebar']
             }),
-            setConnectedPackage(this.store, packagePath)
+            setConnectedParentPackage(this.store, packagePath)
         ];
     };
 }

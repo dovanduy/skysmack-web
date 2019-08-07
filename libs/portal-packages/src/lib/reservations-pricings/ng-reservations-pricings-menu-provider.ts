@@ -5,7 +5,7 @@ import { MenuItem } from '@skysmack/framework';
 import { Guid } from 'guid-typescript';
 import { of, Observable } from 'rxjs';
 import { ReservationsPricingsPermissions } from '@skysmack/packages-reservations-pricings';
-import { getMenuEntries, setConnectedPackage } from '@skysmack/ng-framework';
+import { getMenuEntries, setConnectedParentPackage } from '@skysmack/ng-framework';
 import { ReservationsPricingsTypeId } from '@skysmack/package-types';
 import { ReservationsPricingsIndexComponent } from './components/reservations-pricings-index/reservations-pricings-index.component';
 
@@ -83,7 +83,7 @@ export class NgReservationsPricingsMenuProvider extends MenuProvider {
                 ],
                 providedIn: ['sidebar']
             }),
-            setConnectedPackage(this.store, packagePath)
+            setConnectedParentPackage(this.store, packagePath)
         ];
     };
 }
