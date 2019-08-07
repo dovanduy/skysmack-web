@@ -1,30 +1,32 @@
-<div *ngIf="menuAreaItems$ | async as menuAreaItems" class="docs-component-viewer-nav">
-  <div class="docs-component-viewer-nav-content">
-    <ng-container *ngFor="let menuAreaItem of menuAreaItems; let last = last;">
-      <nav *ngIf="menuAreaItem.items && menuAreaItem.items.length > 0">
-        <span class="docs-nav-content-btn" *ngIf="menuAreaItem.area && menuAreaItem.area.display">
-          {{ menuAreaItem.area.displayName | translate }}
-        </span>
+<ng-container *ngIf="menuAreaItems$ | async as menuAreaItems">
+  <div *ngIf="menuAreaItems.length > 0" class="docs-component-viewer-nav">
+    <div class="docs-component-viewer-nav-content">
+      <ng-container *ngFor="let menuAreaItem of menuAreaItems; let last = last;">
+        <nav *ngIf="menuAreaItem.items && menuAreaItem.items.length > 0">
+          <span class="docs-nav-content-btn" *ngIf="menuAreaItem.area && menuAreaItem.area.display">
+            {{ menuAreaItem.area.displayName | translate }}
+          </span>
 
-        <ul>
-          <ng-container *ngFor="let menuItem of menuAreaItem.items">
-            <!-- ACTION EVENT -->
-            <li *ngIf="menuItem.isActionEvent && (menuItem | showMenuItemAction:undefined)"
-              (click)="menuItemActionEvent.emit({ action: menuItem.action, _this: menuItem._this });">
-              <span class="link">{{ menuItem.displayName | translate }}</span>
-            </li>
+          <ul>
+            <ng-container *ngFor="let menuItem of menuAreaItem.items">
+              <!-- ACTION EVENT -->
+              <li *ngIf="menuItem.isActionEvent && (menuItem | showMenuItemAction:undefined)"
+                (click)="menuItemActionEvent.emit({ action: menuItem.action, _this: menuItem._this });">
+                <span class="link">{{ menuItem.displayName | translate }}</span>
+              </li>
 
-            <!-- URL EVENT -->
-            <li *ngIf="!menuItem.isActionEvent">
-              <a [routerLink]="[menuItem.url]">
-                {{ menuItem.displayName | translate }}
-              </a>
-            </li>
-          </ng-container>
-        </ul>
+              <!-- URL EVENT -->
+              <li *ngIf="!menuItem.isActionEvent">
+                <a [routerLink]="[menuItem.url]">
+                  {{ menuItem.displayName | translate }}
+                </a>
+              </li>
+            </ng-container>
+          </ul>
 
-        <!-- <hr *ngIf="!last" /> -->
-      </nav>
-    </ng-container>
+          <!-- <hr *ngIf="!last" /> -->
+        </nav>
+      </ng-container>
+    </div>
   </div>
-</div>
+</ng-container>

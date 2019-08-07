@@ -5,9 +5,10 @@ import { MenuItem } from '@skysmack/framework';
 import { Guid } from 'guid-typescript';
 import { Observable } from 'rxjs';
 import { ReservationsPermissions } from '@skysmack/packages-lodging-reservations';
-import { getMenuEntries, setConnectedParentPackage } from '@skysmack/ng-framework';
-import { LodgingReservationsTypeId } from '@skysmack/package-types';
+import { getMenuEntries, getConnectedPackageMenuEntries, getCombinedMenuEntries } from '@skysmack/ng-framework';
+import { LodgingReservationsTypeId, LodgingsTypeId } from '@skysmack/package-types';
 import { LodgingsReservationsIndexComponent } from './lodging-reservations/lodgings-reservations-index/lodgings-reservations-index.component';
+import { LodgingsIndexComponent } from '../lodgings';
 
 @Injectable({ providedIn: 'root' })
 export class NgLodgingsReservationsMenuProvider extends MenuProvider {
@@ -23,7 +24,10 @@ export class NgLodgingsReservationsMenuProvider extends MenuProvider {
     };
 
     public getMenuItems(packagePath: string, componentKey: string): Observable<MenuItem[]> {
-        return getMenuEntries<MenuItem>(packagePath, LodgingReservationsTypeId, componentKey, LodgingsReservationsIndexComponent.COMPONENT_KEY, this.getLodgingsReservationsMenuItems, this.store);
+        return getCombinedMenuEntries(
+            getMenuEntries<MenuItem>(packagePath, LodgingReservationsTypeId, componentKey, LodgingsReservationsIndexComponent.COMPONENT_KEY, this.getLodgingsReservationsMenuItems, this.store),
+            getConnectedPackageMenuEntries(packagePath, LodgingReservationsTypeId, LodgingsTypeId, componentKey, LodgingsIndexComponent.COMPONENT_KEY, this.store),
+        );
     };
 
     public getLodgingsReservationsMenuAreas = () => {

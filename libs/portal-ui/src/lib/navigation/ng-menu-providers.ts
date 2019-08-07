@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { MenuProviders, MenuAreaItems, AllowAccessFor, MenuProvider } from '@skysmack/framework';
+import { MenuProviders, MenuAreaItems, AllowAccessFor, MenuProvider, MenuArea } from '@skysmack/framework';
 import { Router } from '@angular/router';
 import { Observable, combineLatest } from 'rxjs';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
@@ -60,6 +60,11 @@ export class NgMenuProviders extends MenuProviders {
                 ).pipe(
                     map(([menuAreas, menuItems]) => {
                         // Filter away duplicate and empty (no menu items) menu areas
+                        menuAreas.push(new MenuArea({
+                            area: 'connected_packages',
+                            translationPrefix: 'UI.MISC.',
+                            order: 1000,
+                        }));
                         return menuAreas.filter((value, index, self) => self.map(x => x.area).indexOf(value.area) === index).map(menuArea => {
                             const menuItemsForArea = menuItems.filter(menuItem => {
                                 return menuItem.area === menuArea.area;
