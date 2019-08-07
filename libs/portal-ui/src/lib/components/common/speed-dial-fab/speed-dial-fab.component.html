@@ -29,7 +29,7 @@
     </ng-container>
     </div>
   </ng-container>
-  <ng-container *ngIf="menuItems.length == 1">
+  <ng-container *ngIf="menuItems.length === 1">
     <div class="fab-container">
         <!-- ACTION EVENT -->
         <a *ngIf="menuItems[0].isActionEvent && (menuItems[0] | showMenuItemAction:undefined) && menuItems[0].display"
