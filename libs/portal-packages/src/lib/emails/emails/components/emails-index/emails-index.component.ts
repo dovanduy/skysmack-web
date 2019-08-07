@@ -10,7 +10,6 @@ export class EmailsIndexComponent implements OnInit {
   public componentKey = EmailsIndexComponent.COMPONENT_KEY;
 
   constructor(
-    public sidebarMenu: NgEmailsMenu,
   ) { }
 
   ngOnInit() {

@@ -4,7 +4,6 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { NgProductTypePriceChangesActions, NgProductTypePriceChangesStore } from '@skysmack/ng-products-pricings';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { ProductTypePriceChangesAppState, PRODUCT_TYPE_PRICE_CHANGES_AREA_KEY, ProductPriceChange } from '@skysmack/packages-products-pricings';
-import { NgProductTypePriceChangesMenu } from '../../ng-product-type-price-changes-menu';
 import { MenuItem } from '@skysmack/framework';
 import { NgProductTypePriceChangesFieldsConfig } from '../../ng-product-type-price-changes-fields-config';
 import { RecordIndexComponent } from '@skysmack/portal-fields';
@@ -29,7 +28,6 @@ export class ProductTypePriceChangesIndexComponent extends RecordIndexComponent<
     public actions: NgProductTypePriceChangesActions,
     public redux: NgSkysmackStore,
     public store: NgProductTypePriceChangesStore,
-    public sidebarMenu: NgProductTypePriceChangesMenu,
     public fieldsConfig: NgProductTypePriceChangesFieldsConfig,
     public title: EntityComponentPageTitle,
     public menuItemActionProviders: MenuItemActionProviders

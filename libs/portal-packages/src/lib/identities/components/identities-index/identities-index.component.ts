@@ -16,7 +16,6 @@ export class IdentitiesIndexComponent extends BaseComponent<any, any> implements
     public activatedRoute: ActivatedRoute,
     public skysmackStore: NgSkysmackStore,
     public title: EntityComponentPageTitle,
-    public sidebarMenu: NgIdentitiesIndexMenu
   ) {
     super(router, activatedRoute, skysmackStore, title);
   }

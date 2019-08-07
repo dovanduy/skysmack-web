@@ -8,7 +8,6 @@ import { MenuItem } from '@skysmack/framework';
 import { NgFieldActions } from '@skysmack/ng-framework';
 import { NgInvoicesFieldsConfig } from '../../ng-invoices-fields-config';
 import { DocumentRecordIndexComponent } from '@skysmack/portal-fields';
-import { NgInvoicesMenu } from '../../ng-invoices-menu';
 
 @Component({
   selector: 'ss-invoices-index',
@@ -32,7 +31,6 @@ export class InvoicesIndexComponent extends DocumentRecordIndexComponent<Invoice
     public actions: NgInvoicesActions,
     public skysmackStore: NgSkysmackStore,
     public store: NgInvoicesStore,
-    public sidebarMenu: NgInvoicesMenu,
     public fieldsConfig: NgInvoicesFieldsConfig,
     public fieldActions: NgFieldActions,
     public title: EntityComponentPageTitle,

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { NgAccessPoliciesDashboardMenu } from '../../ng-access-policies-dashboard-menu';
 import { EntityComponentPageTitle } from '@skysmack/portal-ui';
 
 @Component({
@@ -11,7 +10,6 @@ export class AccessPoliciesDashboardComponent implements OnInit {
   public componentKey = AccessPoliciesDashboardComponent.COMPONENT_KEY;
 
   constructor(
-    public sidebarMenu: NgAccessPoliciesDashboardMenu,
     public componentPageTitle: EntityComponentPageTitle
   ) { }
 

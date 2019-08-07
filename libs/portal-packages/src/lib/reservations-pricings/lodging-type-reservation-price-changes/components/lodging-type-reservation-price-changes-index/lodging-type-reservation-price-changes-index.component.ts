@@ -5,7 +5,6 @@ import { LODGING_TYPE_RESERVATION_PRICE_CHANGES_AREA_KEY, LodgingTypeReservation
 import { MenuItem } from '@skysmack/framework';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { NgLodgingTypeReservationPriceChangesActions, NgLodgingTypeReservationPriceChangesStore } from '@skysmack/ng-reservations-pricings';
-import { NgLodgingTypeReservationPriceChangesMenu } from '../../ng-lodging-type-reservation-price-changes-menu';
 import { NgLodgingTypeReservationPriceChangesFieldsConfig } from '../../ng-lodging-type-reservation-price-changes-fields-config';
 import { RecordIndexComponent } from '@skysmack/portal-fields';
 
@@ -29,7 +28,6 @@ export class LodgingTypeReservationPriceChangesIndexComponent extends RecordInde
     public actions: NgLodgingTypeReservationPriceChangesActions,
     public redux: NgSkysmackStore,
     public store: NgLodgingTypeReservationPriceChangesStore,
-    public sidebarMenu: NgLodgingTypeReservationPriceChangesMenu,
     public fieldsConfig: NgLodgingTypeReservationPriceChangesFieldsConfig,
     public title: EntityComponentPageTitle,
     public menuItemActionProviders: MenuItemActionProviders

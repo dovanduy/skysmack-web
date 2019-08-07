@@ -4,7 +4,6 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { NgPackagesActions, NgPackagesStore } from '@skysmack/ng-packages';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { PackagesAppState, PACKAGES_AREA_KEY } from '@skysmack/packages-skysmack-core';
-import { NgPackagesMenu } from './../../ng-packages-menu';
 import { MenuItem, LocalObject } from '@skysmack/framework';
 import { NgPackagesFieldsConfig } from '../../ng-packages-fields-config';
 import { Package } from '@skysmack/framework';
@@ -32,7 +31,6 @@ export class PackagesIndexComponent extends RecordIndexComponent<PackagesAppStat
     public actions: NgPackagesActions,
     public skysmackStore: NgSkysmackStore,
     public store: NgPackagesStore,
-    public sidebarMenu: NgPackagesMenu,
     public fieldsConfig: NgPackagesFieldsConfig,
     public title: EntityComponentPageTitle,
     public menuItemActionProviders: MenuItemActionProviders
