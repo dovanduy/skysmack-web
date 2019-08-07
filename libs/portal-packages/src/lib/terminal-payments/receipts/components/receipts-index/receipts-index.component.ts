@@ -15,6 +15,8 @@ import { DocumentRecordIndexComponent } from '@skysmack/portal-fields';
   templateUrl: './receipts-index.component.html'
 })
 export class ReceiptsIndexComponent extends DocumentRecordIndexComponent<ReceiptsAppState, Receipt, number> implements OnInit {
+  public static COMPONENT_KEY = 'receipts-index';
+  public componentKey = ReceiptsIndexComponent.COMPONENT_KEY;
   public areaKey: string = RECEIPTS_AREA_KEY;
   public titleExtras = true;
   public menuItemActions: MenuItem[] = [

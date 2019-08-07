@@ -14,6 +14,8 @@ import { RecordIndexComponent } from '@skysmack/portal-fields';
   templateUrl: './clients-index.component.html'
 })
 export class ClientsIndexComponent extends RecordIndexComponent<ClientsAppState, Client, number> implements OnInit {
+  public static COMPONENT_KEY = 'clients-index';
+  public componentKey = ClientsIndexComponent.COMPONENT_KEY;
   public areaKey: string = CLIENTS_AREA_KEY;
   public titleExtras = true;
   public menuItemActions: MenuItem[] = [

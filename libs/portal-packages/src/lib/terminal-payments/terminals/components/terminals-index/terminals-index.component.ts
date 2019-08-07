@@ -14,6 +14,8 @@ import { RecordIndexComponent } from '@skysmack/portal-fields';
   templateUrl: './terminals-index.component.html'
 })
 export class TerminalsIndexComponent extends RecordIndexComponent<TerminalsAppState, Terminal, number> implements OnInit {
+  public static COMPONENT_KEY = 'terminals-index';
+  public componentKey = TerminalsIndexComponent.COMPONENT_KEY;
 
   public areaKey: string = TERMINALS_AREA_KEY;
   public titleExtras = true;

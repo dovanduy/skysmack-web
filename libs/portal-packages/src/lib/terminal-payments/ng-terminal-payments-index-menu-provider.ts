@@ -5,6 +5,9 @@ import { MenuItem } from '@skysmack/framework';
 import { Guid } from 'guid-typescript';
 import { of, Observable } from 'rxjs';
 import { InvoicesPermissions } from '@skysmack/packages-invoices';
+import { getMenuEntries } from '@skysmack/ng-framework';
+import { TerminalPaymentsTypeId } from '@skysmack/package-types';
+import { TerminalPaymentsIndexComponent } from './components/terminal-payments-index/terminal-payments-index.component';
 
 @Injectable({ providedIn: 'root' })
 export class NgTerminalPaymentsIndexMenuProvider extends MenuProvider {
@@ -14,63 +17,66 @@ export class NgTerminalPaymentsIndexMenuProvider extends MenuProvider {
     constructor(
         public store: NgSkysmackStore
     ) { super(); }
-
     public getMenuAreas(packagePath: string, componentKey: string): Observable<MenuArea[]> {
-        return of([
+        return getMenuEntries<MenuArea>(packagePath, TerminalPaymentsTypeId, componentKey, TerminalPaymentsIndexComponent.COMPONENT_KEY, this.getTerminalPaymentsMenuAreas, this.store);
+    };
+
+    public getMenuItems(packagePath: string, componentKey: string): Observable<MenuItem[]> {
+        return getMenuEntries<MenuItem>(packagePath, TerminalPaymentsTypeId, componentKey, TerminalPaymentsIndexComponent.COMPONENT_KEY, this.getTerminalPaymentsMenuItems, this.store);
+    };
+
+    public getTerminalPaymentsMenuAreas = () => {
+        return [
             new MenuArea({
                 area: 'manage',
                 translationPrefix: this.translationPrefix,
                 order: 1
             })
-        ])
+        ];
     };
 
-    public getMenuItems(packagePath: string, componentKey: string): Observable<MenuItem[]> {
-        if(componentKey === 'terminal-payments-index') {
-            return of([
-                new MenuItem({
-                    url: 'terminals',
-                    displayName: this.translationPrefix + 'TERMINALS',
-                    area: 'manage',
-                    order: 1,
-                    icon: 'description',
-                    permissions: [
-                    ],
-                    providedIn: ['sidebar']
-                }),
-                new MenuItem({
-                    url: 'clients',
-                    displayName: this.translationPrefix + 'CLIENTS',
-                    area: 'manage',
-                    order: 2,
-                    icon: 'description',
-                    permissions: [
-                    ],
-                    providedIn: ['sidebar']
-                }),
-                new MenuItem({
-                    url: 'connections',
-                    displayName: this.translationPrefix + 'CONNECTIONS',
-                    area: 'manage',
-                    order: 3,
-                    icon: 'description',
-                    permissions: [
-                    ],
-                    providedIn: ['sidebar']
-                }),
-                new MenuItem({
-                    url: 'receipts',
-                    displayName: this.translationPrefix + 'RECEIPTS',
-                    area: 'manage',
-                    order: 4,
-                    icon: 'description',
-                    permissions: [
-                    ],
-                    providedIn: ['sidebar']
-                })
-            ]);
-        } else {
-           return of([]);
-        }
+    public getTerminalPaymentsMenuItems = () => {
+        return [
+            new MenuItem({
+                url: 'terminals',
+                displayName: this.translationPrefix + 'TERMINALS',
+                area: 'manage',
+                order: 1,
+                icon: 'description',
+                permissions: [
+                ],
+                providedIn: ['sidebar']
+            }),
+            new MenuItem({
+                url: 'clients',
+                displayName: this.translationPrefix + 'CLIENTS',
+                area: 'manage',
+                order: 2,
+                icon: 'description',
+                permissions: [
+                ],
+                providedIn: ['sidebar']
+            }),
+            new MenuItem({
+                url: 'connections',
+                displayName: this.translationPrefix + 'CONNECTIONS',
+                area: 'manage',
+                order: 3,
+                icon: 'description',
+                permissions: [
+                ],
+                providedIn: ['sidebar']
+            }),
+            new MenuItem({
+                url: 'receipts',
+                displayName: this.translationPrefix + 'RECEIPTS',
+                area: 'manage',
+                order: 4,
+                icon: 'description',
+                permissions: [
+                ],
+                providedIn: ['sidebar']
+            })
+        ];
     };
 }
