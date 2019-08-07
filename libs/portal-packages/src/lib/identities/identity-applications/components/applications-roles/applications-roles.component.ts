@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { NgUsersActions, NgUsersStore, NgRolesStore, NgRolesActions } from '@skysmack/ng-identities';
+import { NgApplicationsActions, NgApplicationsStore, NgRolesStore, NgRolesActions } from '@skysmack/ng-identities';
 import { EntityComponentPageTitle } from '@skysmack/portal-ui';
-import { User, Role } from '@skysmack/packages-identities';
+import { Application, Role } from '@skysmack/packages-identities';
 import { combineLatest, Observable } from 'rxjs';
 import { EditorNavService } from '@skysmack/portal-ui';
 import { LocalObject, PagedQuery } from '@skysmack/framework';
@@ -11,35 +11,35 @@ import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { BaseComponent } from '@skysmack/portal-fields';
 
 @Component({
-  selector: 'ss-portal-package-users-roles',
-  templateUrl: './users-roles.component.html',
-  styleUrls: ['./users-roles.component.scss']
+  selector: 'ss-portal-package-applications-roles',
+  templateUrl: './applications-roles.component.html',
+  styleUrls: ['./applications-roles.component.scss']
 })
-export class UsersRolesComponent extends BaseComponent<User, number> implements OnInit {
+export class ApplicationsRolesComponent extends BaseComponent<Application, number> implements OnInit {
 
-  public userRoles$: Observable<string[]>;
+  public applicationRoles$: Observable<string[]>;
   public roles$: Observable<LocalObject<Role, number>[]>;
   public message: string;
 
   constructor(
     public router: Router,
     public activatedRoute: ActivatedRoute,
-    public actions: NgUsersActions,
+    public actions: NgApplicationsActions,
     public rolesStore: NgRolesStore,
     public rolesActions: NgRolesActions,
     public editorNav: EditorNavService,
     public redux: NgSkysmackStore,
     public title: EntityComponentPageTitle,
-    public store: NgUsersStore
+    public store: NgApplicationsStore
   ) {
     super(router, activatedRoute, redux);
-    this.title.setTitle('IDENTITIES.USERS_ROLES_TITLE');
+    this.title.setTitle('IDENTITIES.APPLICATIONS_ROLES_TITLE');
   }
 
   ngOnInit() {
     super.ngOnInit();
-    this.actions.getUsersRoles(this.packagePath, [this.entityId]);
-    this.userRoles$ = this.store.getUserRoles(this.packagePath, this.entityId);
+    this.actions.getApplicationsRoles(this.packagePath, [this.entityId]);
+    this.applicationRoles$ = this.store.getApplicationRoles(this.packagePath, this.entityId);
     this.getRoles();
     this.editorNav.showEditorNav();
   }
@@ -47,26 +47,28 @@ export class UsersRolesComponent extends BaseComponent<User, number> implements 
   public addRole(role: LocalObject<Role, number>): void {
     const dic = {};
     dic[this.entityId] = [role.object.name];
-    this.actions.addUsersRoles(this.packagePath, dic);
+    this.actions.addApplicationsRoles(this.packagePath, dic);
   }
 
   public trackById(item: any) {
     return item.id;
   }
 
-  public removeRole(userRole: string): void {
+  public removeRole(applicationRole: string): void {
     const dic = {};
-    dic[this.entityId] = [userRole];
-    this.actions.removeUsersRoles(this.packagePath, dic);
+    dic[this.entityId] = [applicationRole];
+    this.actions.removeApplicationsRoles(this.packagePath, dic);
   }
 
   private getRoles() {
     this.rolesActions.getPaged(this.packagePath, new PagedQuery());
-    this.roles$ = combineLatest(this.userRoles$, this.rolesStore.get(this.packagePath)).pipe(map(values => {
+    console.log('getRoles')
+    this.roles$ = combineLatest(this.applicationRoles$, this.rolesStore.get(this.packagePath)).pipe(map(values => {
       // Only show roles the user isn't in.
-      const userRoles = values[0];
+      const applicationRoles = values[0];
+      console.log('values', values[0]);
       return values[1].filter(role => {
-        if (!userRoles.find(userRole => userRole === role.object.name)) {
+        if (!applicationRoles.find(applicationRole => applicationRole === role.object.name)) {
           return role;
         }
       });

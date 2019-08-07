@@ -3,8 +3,8 @@ import { UsersIndexComponent } from './users-index/users-index.component';
 import { UsersCreateComponent } from './users-create/users-create.component';
 import { UsersEditComponent } from './users-edit/users-edit.component';
 import { SetPasswordComponent } from '../../components/set-password/set-password.component';
-import { UsersRolesComponent } from '../../components/users-roles/users-roles.component';
 import { USERS_AREA_KEY } from '@skysmack/packages-identities';
+import { UsersRolesComponent } from './users-roles/users-roles.component';
 
 export const usersRoutes: Routes = [
   {

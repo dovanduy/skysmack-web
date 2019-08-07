@@ -212,7 +212,8 @@
 			"CHANGE_PASSWORD": "Change password",
 			"FORGOT_PASSWORD": "Forgot password",
 			"CONFIRM_EMAIL": "Confirm email",
-			"APPLICATIONS": "Applications"
+			"APPLICATIONS": "Applications",
+			"APPLICATIONS_ROLES_TITLE": "Application roles"
 		}
 	},
 	"IDENTITIES_SETTINGS": {
@@ -2253,7 +2254,8 @@
 		"FORM": {
 			"LABELS": {
 				"EMAIL": "Email",
-				"PASSWORD": "Password"
+				"PASSWORD": "Password",
+				"STAYSIGNEDIN": "Stay signed in?"
 			},
 			"PLACEHOLDERS": {
 				"EMAIL": "Enter email",
@@ -2875,6 +2877,26 @@
 			"UPDATING": "Updating {{ displayName }}",
 			"DELETING": "Deleting {{ displayName }}",
 			"ERROR": "An error occured with {{ displayName }}. Correct and try again."
+		},
+		"ENTITY_ACTION": {
+			"ROLES": "Roles"
+		},
+		"ROLES": {
+			"CURRENT_ROLES": "{{ object.displayName }} current roles",
+			"ROLE_PRIORITY": "{{ role.object.name }} with priority {{ role.object.priority }} -",
+			"REMOVE": "Remove",
+			"NO_ROLES": "No roles have been applied.",
+			"ADD_ROLE": "Add a role to {{ object.displayName }}",
+			"OBJECT_PRIOORITY": "{{ role.object.name }} - priority",
+			"ADD": "Add",
+			"ROLES_APPLIED": "All roles have been applied, or no roles exists.",
+			"NO_ROLES_APPLIED": "This application has no roles."
 		}
+	},
+	"COMMERCIAL_ACCOUNT": {
+		"INDEX": {}
+	},
+	"COMMERCIAL_TENANTS": {
+		"INDEX": {}
 	}
 }

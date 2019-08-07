@@ -2697,6 +2697,17 @@
 	"APPLICATIONS": {
 		"ENTITY_ACTION": {
             "ROLES": "Roller"
+		},
+		"ROLES": {
+            "CURRENT_ROLES": "{{ object.displayName }} current roles",
+            "ROLE_PRIORITY": "{{ role.object.name }} with priority {{ role.object.priority }} -",
+            "REMOVE": "Remove",
+            "NO_ROLES": "No roles have been applied.",
+            "ADD_ROLE": "Add a role to {{ object.displayName }}",
+            "OBJECT_PRIOORITY": "{{ role.object.name }} - priority",
+            "ADD": "Add",
+            "ROLES_APPLIED": "All roles have been applied, or no roles exists.",
+            "NO_ROLES_APPLIED": "This application has no roles."
         },
 		"CREATE": {
 			"CREATE_APPLICATION": "Opret ny applikation",

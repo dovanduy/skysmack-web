@@ -11,35 +11,35 @@ import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { BaseComponent } from '@skysmack/portal-fields';
 
 @Component({
-  selector: 'ss-portal-package-application-roles',
-  templateUrl: './application-roles.component.html',
-  styleUrls: ['./application-roles.component.scss']
+  selector: 'ss-portal-package-users-roles',
+  templateUrl: './users-roles.component.html',
+  styleUrls: ['./users-roles.component.scss']
 })
-export class ApplicationRolesComponent extends BaseComponent<User, number> implements OnInit {
+export class UsersRolesComponent extends BaseComponent<User, number> implements OnInit {
 
-  public applicationRoles$: Observable<string[]>;
+  public userRoles$: Observable<string[]>;
   public roles$: Observable<LocalObject<Role, number>[]>;
   public message: string;
 
   constructor(
     public router: Router,
     public activatedRoute: ActivatedRoute,
-    public actions: NgUsersActions, // TODO: Make into application actions
+    public actions: NgUsersActions,
     public rolesStore: NgRolesStore,
     public rolesActions: NgRolesActions,
     public editorNav: EditorNavService,
     public redux: NgSkysmackStore,
     public title: EntityComponentPageTitle,
-    public store: NgUsersStore // TODO: Make into application store
+    public store: NgUsersStore
   ) {
     super(router, activatedRoute, redux);
-    this.title.setTitle('IDENTITIES.APPLICATIONS_ROLES_TITLE');
+    this.title.setTitle('IDENTITIES.USERS_ROLES_TITLE');
   }
 
   ngOnInit() {
     super.ngOnInit();
     this.actions.getUsersRoles(this.packagePath, [this.entityId]);
-    this.applicationRoles$ = this.store.getUserRoles(this.packagePath, this.entityId);
+    this.userRoles$ = this.store.getUserRoles(this.packagePath, this.entityId);
     this.getRoles();
     this.editorNav.showEditorNav();
   }
@@ -54,19 +54,20 @@ export class ApplicationRolesComponent extends BaseComponent<User, number> imple
     return item.id;
   }
 
-  public removeRole(applicationRole: string): void {
+  public removeRole(userRole: string): void {
     const dic = {};
-    dic[this.entityId] = [applicationRole];
+    dic[this.entityId] = [userRole];
     this.actions.removeUsersRoles(this.packagePath, dic);
   }
 
   private getRoles() {
     this.rolesActions.getPaged(this.packagePath, new PagedQuery());
-    this.roles$ = combineLatest(this.applicationRoles$, this.rolesStore.get(this.packagePath)).pipe(map(values => {
+    this.roles$ = combineLatest(this.userRoles$, this.rolesStore.get(this.packagePath)).pipe(map(values => {
       // Only show roles the user isn't in.
-      const applicationRoles = values[0];
+      const userRoles = values[0];
+      console.log('values', values[0]);
       return values[1].filter(role => {
-        if (!applicationRoles.find(applicationRole => applicationRole === role.object.name)) {
+        if (!userRoles.find(userRole => userRole === role.object.name)) {
           return role;
         }
       });
