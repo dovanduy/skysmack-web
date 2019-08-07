@@ -28,8 +28,8 @@ export class SpeedDialFabComponent implements OnInit {
 
         const packagePath = this.router.url.split('/')[1];
         this.menuItems$ = this.ngMenuProviders.getMenuAreaItems(packagePath, this.componentKey).pipe(
-            map(menuAreaItems => {
-                return menuAreaItems.map(area => area.items.filter(item => item.providedIn.includes('speedDial'))).reduce((a,b) => a.concat(b),[]);
+            map(menuAreaItems => {                
+                return menuAreaItems.filter(area => area && area.items && area.items.length > 0).map(area => area.items.filter(item => item.providedIn.includes('speedDial'))).reduce((a,b) => a.concat(b),[]);                
             })
         );
     }
