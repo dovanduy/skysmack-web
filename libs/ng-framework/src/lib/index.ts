@@ -7,4 +7,5 @@ export * from './menus/index';
 export * from './helpers/index';
 export * from './packages/index';
 export * from './signal-r/index';
-export * from './dashboard';
+export * from './dashboard/index';
+export * from './redux/index';

@@ -1,0 +1,27 @@
+{
+  "name": "@skysmack/commercial-tenants",
+  "version": "0.0.1",
+  "peerDependencies": {
+    "@angular/common": "^8.0.0",
+    "@angular/core": "^8.0.0",
+    "@skysmack/ng-framework": "*",
+    "@skysmack/ng-dynamic-forms": "*",
+    "@skysmack/framework": "*",
+    "@skysmack/redux": "*",
+    "@skysmack/signal-r": "*",
+    "@skysmack/packages-skysmack-core": "*"
+  },
+  "main": "./lib/public_api.js",
+  "types": "./lib/public_api.d.ts",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1",
+    "build": "ng build commercial-tenants"
+  }
+}

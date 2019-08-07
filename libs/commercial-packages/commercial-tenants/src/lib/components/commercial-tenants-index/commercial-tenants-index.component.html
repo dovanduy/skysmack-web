@@ -1,0 +1,10 @@
+<h3>Tenants</h3>
+
+<a mat-raised-button color="primary" [routerLink]="['/', 'tenants', 'create']">Create tenant</a>
+
+<ul *ngIf="tenants$ | async as tenants">
+    <li *ngFor="let tenant of tenants">{{ tenant.name }} -
+        <a [routerLink]="['/', 'tenants', 'edit', tenant.id]">Edit</a>
+        |
+        <a [routerLink]="['/', 'tenants', 'details', tenant.id]">Details</a></li>
+</ul>

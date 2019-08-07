@@ -19,6 +19,7 @@ import { AddRecordFieldComponent } from './components/add-record-field/add-recor
 import { FlaggedEnumFieldComponent } from './components/flagged-enum-field/flagged-enum-field.component';
 import { ResultFieldComponent } from './components/result-field/result-field.component';
 import { EmailTemplateFieldComponent } from './components/email-template-field/email-template-field.component';
+import { StringArrayFieldComponent } from './components/string-array-field/string-array-field.component';
 
 export const dynamicFieldComponents = [
     CheckboxFieldComponent,
@@ -41,5 +42,6 @@ export const dynamicFieldComponents = [
     MultiSelectFieldComponent,
     AddRecordFieldComponent,
     ResultFieldComponent,
-    EmailTemplateFieldComponent
+    EmailTemplateFieldComponent,
+    StringArrayFieldComponent
 ];

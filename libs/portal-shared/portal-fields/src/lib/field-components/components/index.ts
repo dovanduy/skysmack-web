@@ -23,3 +23,4 @@ export * from './multi-select-field/multi-select-field.component';
 export * from './add-record-field/add-record-field.component';
 export * from './result-field/result-field.component';
 export * from './email-template-field/email-template-field.component';
+export * from './string-array-field/string-array-field.component';

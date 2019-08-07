@@ -6,18 +6,16 @@ import { RouterModule } from '@angular/router';
 import { NgModule, SystemJsNgModuleLoader } from '@angular/core';
 
 import { FrontPageComponent } from './components/front-page/front-page.component';
-import { ReduxOfflineConfiguration } from '../redux/redux-offline.configuration';
 import { PortalUiModule } from '@skysmack/portal-ui';
 import { LanguageService } from '@skysmack/portal-ui'
 import { FallBackComponent } from './components/fall-back/fall-back.component';
 import { StartComponent } from './components/start/start.component';
-import { configureRedux } from './../redux/redux.configuration';
 import { applicationStartup } from './application-startup';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from './../../environments/environment';
 import { GlobalProperties } from '@skysmack/framework';
-import { NgFieldEpics, registerRedux, NgSettingsEpics, CoalescingComponentFactoryResolver } from '@skysmack/ng-framework';
+import { NgFieldEpics, registerRedux, NgSettingsEpics, CoalescingComponentFactoryResolver, ReduxOfflineConfiguration, configureRedux } from '@skysmack/ng-framework';
 import { fieldReducer, settingsReducer } from '@skysmack/redux';
 import { TenantPackageLoadStrategy } from './tenant-package-load-strategy';
 import { packagesRoute } from '../packages/packages-package-manifest';

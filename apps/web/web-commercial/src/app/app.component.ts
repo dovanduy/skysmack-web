@@ -1,5 +1,4 @@
 import { Component, ViewEncapsulation } from '@angular/core';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'skysmack-app',
@@ -8,9 +7,5 @@ import { Router } from '@angular/router';
   encapsulation: ViewEncapsulation.None
 })
 export class AppComponent {
-  title = 'Skysmack';
-  constructor(
-    public router: Router
-  ) {
-  }
+  constructor() { }
 }
