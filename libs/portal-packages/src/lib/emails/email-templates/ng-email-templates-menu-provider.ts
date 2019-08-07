@@ -40,7 +40,7 @@ export class NgEmailsTemplatesMenuProvider extends MenuProvider {
         ];
     };
 
-    public getEmailTemplatesMenuItems = () => {
+    public getEmailTemplatesMenuItems = (packagePath: string): MenuItem[] => {
         return [
             new MenuItem({
                 url: 'create',
@@ -53,7 +53,7 @@ export class NgEmailsTemplatesMenuProvider extends MenuProvider {
                 ],
                 providedIn: ['sidebar', 'speedDial']
             }),
-            setBackButtonV2('emails')
+            setBackButtonV2(packagePath)
         ];
     };
 }

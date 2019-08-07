@@ -41,7 +41,7 @@ export class NgProductTypesMenuProvider extends MenuProvider {
         ];
     };
 
-    public getProductTypesMenuItems = () => {
+    public getProductTypesMenuItems = (packagePath: string): MenuItem[] => {
         return [
             new MenuItem({
                 url: 'create',
@@ -65,7 +65,7 @@ export class NgProductTypesMenuProvider extends MenuProvider {
                 ],
                 providedIn: ['sidebar']
             }),
-            setBackButtonV2('products')
+            setBackButtonV2(packagePath)
         ];
     };
 }

@@ -41,7 +41,7 @@ export class NgAssignmentsMenuProvider extends MenuProvider {
         ];
     };
 
-    public getAssignmentsMenuItems = () => {
+    public getAssignmentsMenuItems = (packagePath: string): MenuItem[] => {
         return [
             new MenuItem({
                 url: 'create',
@@ -74,7 +74,7 @@ export class NgAssignmentsMenuProvider extends MenuProvider {
                 ],
                 providedIn: ['sidebar']
             }),
-            setBackButtonV2('maintenance')
+            setBackButtonV2(packagePath)
         ];
     };
 }

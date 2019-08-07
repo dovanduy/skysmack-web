@@ -40,7 +40,7 @@ export class NgRolesMenuProvider extends MenuProvider {
         ];
     };
 
-    public getRolesMenuItems = () => {
+    public getRolesMenuItems = (packagePath: string): MenuItem[] => {
         return [
             new MenuItem({
                 url: 'create',
@@ -53,7 +53,7 @@ export class NgRolesMenuProvider extends MenuProvider {
                 ],
                 providedIn: ['sidebar', 'speedDial']
             }),
-            setBackButtonV2('identities')
+            setBackButtonV2(packagePath)
         ];
     };
 }

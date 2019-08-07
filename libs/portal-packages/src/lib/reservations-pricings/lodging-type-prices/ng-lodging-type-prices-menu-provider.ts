@@ -40,7 +40,7 @@ export class NgLodgingTypePricesMenuProvider extends MenuProvider {
         ];
     };
 
-    public getLodgingTypePricesMenuItems  = () => {
+    public getLodgingTypePricesMenuItems  = (packagePath: string): MenuItem[] => {
         return [
             new MenuItem({
                 url: 'create',
@@ -52,7 +52,7 @@ export class NgLodgingTypePricesMenuProvider extends MenuProvider {
                 ],
                 providedIn: ['sidebar', 'speedDial']
             }),
-            setBackButtonV2('reservations-pricings')
+            setBackButtonV2(packagePath)
         ];
     };
 }

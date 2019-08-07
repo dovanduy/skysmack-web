@@ -41,7 +41,7 @@ export class NgInvoiceItemsMenuProvider extends MenuProvider {
         ];
     }
 
-    public getInvoiceItemsMenuItems = () => {
+    public getInvoiceItemsMenuItems = (packagePath: string): MenuItem[] => {
         return [
             new MenuItem({
                 url: 'create',
@@ -65,7 +65,7 @@ export class NgInvoiceItemsMenuProvider extends MenuProvider {
                 ],
                 providedIn: ['sidebar']
             }),
-            setBackButtonV2('invoices')
+            setBackButtonV2(packagePath)
         ];
     };
 };

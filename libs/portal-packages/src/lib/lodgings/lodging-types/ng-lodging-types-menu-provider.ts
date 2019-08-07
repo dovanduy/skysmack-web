@@ -42,7 +42,7 @@ export class NgLodgingTypesMenuProvider extends MenuProvider {
         ];
     };
 
-    public getLodgingTypesMenuItems = (packagePath: string) => {
+    public getLodgingTypesMenuItems = (packagePath: string): MenuItem[] => {
             return [
                 new MenuItem({
                     url: 'create',
@@ -76,7 +76,7 @@ export class NgLodgingTypesMenuProvider extends MenuProvider {
                     ],
                     providedIn: ['sidebar']
                 }),
-                setBackButtonV2('rooms')
+                setBackButtonV2(packagePath)
             ];
     };
 }

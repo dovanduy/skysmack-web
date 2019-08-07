@@ -41,7 +41,7 @@ export class NgAccessPolicyRolesMenuProvider extends MenuProvider {
         ]
     };
 
-    public getAccessPolicyRolesMenuItems = (packagePath: string) => {
+    public getAccessPolicyRolesMenuItems =  (packagePath: string): MenuItem[] => {
         return [
             new MenuItem({
                 url: 'create',
@@ -54,7 +54,7 @@ export class NgAccessPolicyRolesMenuProvider extends MenuProvider {
                 ],
                 providedIn: ['sidebar', 'speedDial']
             }),
-            setBackButtonV2('access-policies')
+            setBackButtonV2(packagePath)
         ];
     };
 }

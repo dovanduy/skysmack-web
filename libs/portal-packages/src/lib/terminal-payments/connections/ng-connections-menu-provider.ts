@@ -4,7 +4,7 @@ import { MenuArea, MenuProvider } from '@skysmack/framework';
 import { MenuItem } from '@skysmack/framework';
 import { Guid } from 'guid-typescript';
 import { of, Observable } from 'rxjs';
-import { getMenuEntries } from '@skysmack/ng-framework';
+import { getMenuEntries, setBackButtonV2 } from '@skysmack/ng-framework';
 import { TerminalPaymentsTypeId } from '@skysmack/package-types';
 import { ConnectionsIndexComponent } from './components/connections-index/connections-index.component';
 
@@ -39,7 +39,7 @@ export class NgConnectionsMenuProvider extends MenuProvider {
         ];
     };
 
-    public getConnectionsMenuItems = () => {
+    public getConnectionsMenuItems = (packagePath: string): MenuItem[] => {
         return [
             new MenuItem({
                 url: 'create',
@@ -50,7 +50,8 @@ export class NgConnectionsMenuProvider extends MenuProvider {
                 permissions: [
                 ],
                 providedIn: ['sidebar', 'speedDial']
-            })
+            }),
+            setBackButtonV2(packagePath)
         ];
     };
 }

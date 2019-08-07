@@ -40,7 +40,7 @@ export class NgUsersMenuProvider extends MenuProvider {
         ];
     };
 
-    public getUsersMenuItems = () => {
+    public getUsersMenuItems = (packagePath: string): MenuItem[] => {
         return [
             new MenuItem({
                 url: 'create',
@@ -53,7 +53,7 @@ export class NgUsersMenuProvider extends MenuProvider {
                 ],
                 providedIn: ['sidebar', 'speedDial']
             }),
-            setBackButtonV2('identities')
+            setBackButtonV2(packagePath)
         ];
     };
 };

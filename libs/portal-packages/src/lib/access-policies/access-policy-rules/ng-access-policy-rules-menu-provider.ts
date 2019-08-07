@@ -43,7 +43,7 @@ export class NgAccessPolicyRulesMenuProvider extends MenuProvider {
         ]
     };
 
-    public getAccessPolicyRulesMenuItems = () => {
+    public getAccessPolicyRulesMenuItems = (packagePath: string): MenuItem[] => {
         return [
             new MenuItem({
                 url: 'create',
@@ -56,7 +56,7 @@ export class NgAccessPolicyRulesMenuProvider extends MenuProvider {
                 ],
                 providedIn: ['sidebar', 'speedDial']
             }),
-            setBackButtonV2('access-policies')
+            setBackButtonV2(packagePath)
         ];
     };
 }

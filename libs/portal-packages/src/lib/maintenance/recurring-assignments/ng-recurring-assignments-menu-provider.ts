@@ -41,7 +41,7 @@ export class NgRecurringAssignmentsMenuProvider extends MenuProvider {
         ];
     };
 
-    public getRecurringAssignmentsMenuItems = () => {
+    public getRecurringAssignmentsMenuItems = (packagePath: string): MenuItem[] => {
         return [
             new MenuItem({
                 url: 'create',
@@ -53,7 +53,7 @@ export class NgRecurringAssignmentsMenuProvider extends MenuProvider {
                 ],
                 providedIn: ['sidebar', 'speedDial']
             }),
-            setBackButtonV2('maintenance')
+            setBackButtonV2(packagePath)
         ];
     };
 }

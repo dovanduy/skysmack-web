@@ -41,7 +41,7 @@ export class NgProductPriceChangesMenuProvider extends MenuProvider {
         ];
     };
 
-    public getProductPriceChangesMenuItems = () => {
+    public getProductPriceChangesMenuItems = (packagePath: string): MenuItem[] => {
         return [
             new MenuItem({
                 url: 'create',
@@ -54,7 +54,7 @@ export class NgProductPriceChangesMenuProvider extends MenuProvider {
                 ],
                 providedIn: ['sidebar', 'speedDial']
             }),
-            setBackButtonV2('product-pricing')
+            setBackButtonV2(packagePath)
         ];
     };
 }

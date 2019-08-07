@@ -34,9 +34,9 @@ export class NgLodgingsAvailabilityMenuProvider extends MenuProvider {
         ];
     };
 
-    public getLodgingsavailabilityMenuItems = () => {
+    public getLodgingsavailabilityMenuItems = (packagePath: string): MenuItem[] => {
         return [
-            setBackButtonV2('rooms')
+            setBackButtonV2(packagePath)
         ]
     };
 }
