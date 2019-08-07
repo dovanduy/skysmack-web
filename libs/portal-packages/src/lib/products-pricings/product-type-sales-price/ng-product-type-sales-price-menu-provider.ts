@@ -4,7 +4,7 @@ import { MenuArea, MenuProvider } from '@skysmack/framework';
 import { MenuItem } from '@skysmack/framework';
 import { Guid } from 'guid-typescript';
 import { of, Observable } from 'rxjs';
-import { setBackButton, getMenuEntries, setBackButtonV2 } from '@skysmack/ng-framework';
+import { getMenuEntries, setBackButton } from '@skysmack/ng-framework';
 import { ProductsPricingsPermissions } from '@skysmack/packages-products-pricings';
 import { ProductsPricingsTypeId } from '@skysmack/package-types';
 import { ProductTypeSalesPriceIndexComponent } from './components/product-type-sales-price-index/product-type-sales-price-index.component';
@@ -54,7 +54,7 @@ export class NgProductTypeSalesPriceMenuProvider extends MenuProvider {
                 ],
                 providedIn: ['sidebar', 'speedDial']
             }),
-            setBackButtonV2(packagePath)
+            setBackButton(packagePath)
         ];
     };
 }

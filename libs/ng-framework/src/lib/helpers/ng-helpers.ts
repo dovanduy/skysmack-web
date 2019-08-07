@@ -69,7 +69,7 @@ export const setConnectedParentPackage = (store: SkysmackStore, packagePath: str
     });
 };
 
-export const setBackButtonV2 = (path: string): MenuItem => {
+export const setBackButton = (path: string): MenuItem => {
     return new MenuItem({
         url: '/' + path,
         displayName: 'UI.MISC.BACK',
@@ -79,48 +79,6 @@ export const setBackButtonV2 = (path: string): MenuItem => {
         providedIn: ['sidebar']
     });
 }
-
-export const setBackButton = (options?: {
-    connectedPackage?: boolean;
-    dependencyIndexes?: number[];
-    customPath?: string;
-}) => pipe(
-    switchMap((menuItems: MenuItem[]) => {
-        if (!options) {
-            menuItems.push(new MenuItem({
-                url: '/' + this.packagePath,
-                displayName: 'UI.MISC.BACK',
-                area: 'manage',
-                order: 2,
-                icon: 'arrowBack',
-                providedIn: ['sidebar']
-            }));
-            return of(menuItems)
-        } else if (options.connectedPackage) {
-            return getPackageDendencyAsStream(this.skysmackStore, this.packagePath, options.dependencyIndexes ? options.dependencyIndexes : [0]).pipe(
-                map(targetPackage => menuItems.concat([new MenuItem({
-                    url: '/' + targetPackage.object.path,
-                    displayName: targetPackage.object.name,
-                    area: 'connected_packages',
-                    order: 2,
-                    icon: 'arrowBack',
-                    providedIn: ['sidebar']
-                })])),
-            );
-        } else {
-            const path = options.customPath ? options.customPath : '/' + this.packagePath;
-            menuItems.push(new MenuItem({
-                url: path,
-                displayName: 'UI.MISC.BACK',
-                area: 'manage',
-                order: 2,
-                icon: 'arrowBack',
-                providedIn: ['sidebar']
-            }));
-            return of(menuItems);
-        }
-    })
-);
 
 /**
  * Helper to get MenuAreas or MenuItems if conditions are met.

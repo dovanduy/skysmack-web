@@ -4,7 +4,7 @@ import { MenuArea, MenuProvider } from '@skysmack/framework';
 import { MenuItem } from '@skysmack/framework';
 import { Guid } from 'guid-typescript';
 import { of, Observable } from 'rxjs';
-import { getMenuEntries, setBackButtonV2 } from '@skysmack/ng-framework';
+import { getMenuEntries, setBackButton } from '@skysmack/ng-framework';
 import { TerminalPaymentsTypeId } from '@skysmack/package-types';
 import { ClientsIndexComponent } from './components/clients-index/clients-index.component';
 
@@ -51,7 +51,7 @@ export class NgClientsMenuProvider extends MenuProvider {
                 ],
                 providedIn: ['sidebar', 'speedDial']
             }),
-            setBackButtonV2(packagePath)
+            setBackButton(packagePath)
         ];
     };
 }

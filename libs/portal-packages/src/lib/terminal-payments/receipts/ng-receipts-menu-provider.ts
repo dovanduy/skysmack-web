@@ -4,7 +4,7 @@ import { MenuArea, MenuProvider } from '@skysmack/framework';
 import { MenuItem } from '@skysmack/framework';
 import { Guid } from 'guid-typescript';
 import { of, Observable } from 'rxjs';
-import { getMenuEntries, setBackButtonV2, setConnectedParentPackage } from '@skysmack/ng-framework';
+import { getMenuEntries, setBackButton, setConnectedParentPackage } from '@skysmack/ng-framework';
 import { TerminalPaymentsTypeId } from '@skysmack/package-types';
 import { ReceiptsIndexComponent } from './components/receipts-index/receipts-index.component';
 
@@ -62,7 +62,7 @@ export class NgReceiptsMenuProvider extends MenuProvider {
                 ],
                 providedIn: ['sidebar']
             }),
-            setBackButtonV2(packagePath),
+            setBackButton(packagePath),
             setConnectedParentPackage(this.store, packagePath)
         ];
     };

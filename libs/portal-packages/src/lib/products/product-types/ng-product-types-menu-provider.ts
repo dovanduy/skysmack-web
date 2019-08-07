@@ -5,7 +5,7 @@ import { MenuItem } from '@skysmack/framework';
 import { Guid } from 'guid-typescript';
 import { of, Observable } from 'rxjs';
 import { ProductsPermissions } from '@skysmack/packages-products';
-import { getMenuEntries, setBackButtonV2 } from '@skysmack/ng-framework';
+import { getMenuEntries, setBackButton } from '@skysmack/ng-framework';
 import { ProductsTypeId } from '@skysmack/package-types';
 import { ProductTypesIndexComponent } from './components/product-types-index/product-types-index.component';
 
@@ -65,7 +65,7 @@ export class NgProductTypesMenuProvider extends MenuProvider {
                 ],
                 providedIn: ['sidebar']
             }),
-            setBackButtonV2(packagePath)
+            setBackButton(packagePath)
         ];
     };
 }
