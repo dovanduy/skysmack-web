@@ -73,7 +73,7 @@
     "@angular/router": "8.2.0",
     "core-js": "2.6.8",
     "rxjs": "6.5.2",
-    "zone.js": "0.9.1",
+    "zone.js": "0.10.1",
     "@angular-redux/router": "10.0.0",
     "@angular-redux/store": "10.0.0",
     "@angular/cdk": "8.1.2",
