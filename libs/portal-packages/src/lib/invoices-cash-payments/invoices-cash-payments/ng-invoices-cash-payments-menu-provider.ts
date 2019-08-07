@@ -4,7 +4,7 @@ import { MenuArea, MenuProvider } from '@skysmack/framework';
 import { MenuItem } from '@skysmack/framework';
 import { Guid } from 'guid-typescript';
 import { Observable } from 'rxjs';
-import { getMenuEntries } from '@skysmack/ng-framework';
+import { getMenuEntries, setConnectedPackage } from '@skysmack/ng-framework';
 import { InvoicesCashPaymentsTypeId } from '@skysmack/package-types';
 import { InvoicesCashPaymentsIndexComponent } from './components/invoices-cash-payments-index/invoices-cash-payments-index.component';
 
@@ -36,11 +36,12 @@ export class NgInvoicesCashPaymentsMenuProvider extends MenuProvider {
                 area: 'manage',
                 translationPrefix: this.translationPrefix,
                 order: 2
-            })
+            }),
+            this.getConnectedPackageMenuArea()
         ];
     };
 
-    public getInvoicesCashPaymentsMenuItems = () => {
+    public getInvoicesCashPaymentsMenuItems = (packagePath: string): MenuItem[] => {
         return [
             new MenuItem({
                 url: 'create',
@@ -52,7 +53,8 @@ export class NgInvoicesCashPaymentsMenuProvider extends MenuProvider {
 
                 ],
                 providedIn: ['sidebar', 'speedDial']
-            })
+            }),
+            setConnectedPackage(this.store, packagePath)
         ];
     };
 };

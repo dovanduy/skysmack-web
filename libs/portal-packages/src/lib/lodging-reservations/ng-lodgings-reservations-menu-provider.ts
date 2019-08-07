@@ -5,7 +5,7 @@ import { MenuItem } from '@skysmack/framework';
 import { Guid } from 'guid-typescript';
 import { Observable } from 'rxjs';
 import { ReservationsPermissions } from '@skysmack/packages-lodging-reservations';
-import { getMenuEntries } from '@skysmack/ng-framework';
+import { getMenuEntries, setConnectedPackage } from '@skysmack/ng-framework';
 import { LodgingReservationsTypeId } from '@skysmack/package-types';
 import { LodgingsReservationsIndexComponent } from './lodging-reservations/lodgings-reservations-index/lodgings-reservations-index.component';
 
@@ -42,7 +42,8 @@ export class NgLodgingsReservationsMenuProvider extends MenuProvider {
                 area: 'settings',
                 translationPrefix: this.translationPrefix,
                 order: 3
-            })
+            }),
+            this.getConnectedPackageMenuArea()
         ];
     };
 
@@ -113,7 +114,8 @@ export class NgLodgingsReservationsMenuProvider extends MenuProvider {
                     ReservationsPermissions.checkIn
                 ],
                 providedIn: ['sidebar']
-            })
+            }),
+            setConnectedPackage(this.store, packagePath)
         ];
     };
 };

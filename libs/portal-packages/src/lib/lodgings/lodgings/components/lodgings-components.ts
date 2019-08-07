@@ -3,7 +3,7 @@ import { LodgingsIndexComponent } from './lodgings-index/lodgings-index.componen
 import { LodgingsCreateComponent } from './lodgings-create/lodgings-create.component';
 import { LodgingsEditComponent } from './lodgings-edit/lodgings-edit.component';
 import { RouteData } from '@skysmack/framework';
-import { LodgingsavailabilityComponent } from './lodgings-availability/lodgings-availability.component';
+import { LodgingsAvailabilityComponent } from './lodgings-availability/lodgings-availability.component';
 import { LODGINGS_AREA_KEY } from '@skysmack/packages-lodgings';
 import { FieldsIndexComponent, FieldsCreateComponent } from '@skysmack/portal-fields';
 
@@ -28,12 +28,12 @@ export const lodgingsRoutes: Routes = [
       areaKey: LODGINGS_AREA_KEY
     }
   },
-  { path: 'availability', component: LodgingsavailabilityComponent }
+  { path: 'availability', component: LodgingsAvailabilityComponent }
 ];
 
 export const lodgingsComponents: any[] = [
   LodgingsIndexComponent,
   LodgingsCreateComponent,
   LodgingsEditComponent,
-  LodgingsavailabilityComponent
+  LodgingsAvailabilityComponent
 ];

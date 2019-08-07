@@ -5,7 +5,7 @@ import { MenuItem } from '@skysmack/framework';
 import { Guid } from 'guid-typescript';
 import { of, Observable } from 'rxjs';
 import { InvoicesPermissions } from '@skysmack/packages-invoices';
-import { getMenuEntries } from '@skysmack/ng-framework';
+import { getMenuEntries, setConnectedPackage } from '@skysmack/ng-framework';
 import { TerminalPaymentsTypeId } from '@skysmack/package-types';
 import { TerminalPaymentsIndexComponent } from './components/terminal-payments-index/terminal-payments-index.component';
 
@@ -31,11 +31,12 @@ export class NgTerminalPaymentsIndexMenuProvider extends MenuProvider {
                 area: 'manage',
                 translationPrefix: this.translationPrefix,
                 order: 1
-            })
+            }),
+            this.getConnectedPackageMenuArea()
         ];
     };
 
-    public getTerminalPaymentsMenuItems = () => {
+    public getTerminalPaymentsMenuItems = (packagePath: string): MenuItem[] => {
         return [
             new MenuItem({
                 url: 'terminals',
@@ -76,7 +77,8 @@ export class NgTerminalPaymentsIndexMenuProvider extends MenuProvider {
                 permissions: [
                 ],
                 providedIn: ['sidebar']
-            })
+            }),
+            setConnectedPackage(this.store, packagePath)
         ];
     };
 }

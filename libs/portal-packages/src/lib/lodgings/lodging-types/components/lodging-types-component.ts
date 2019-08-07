@@ -2,7 +2,7 @@ import { Routes } from '@angular/router';
 import { LodgingTypesIndexComponent } from './lodging-types-index/lodging-types-index.component';
 import { LodgingTypesEditComponent } from './lodging-types-edit/lodging-types-edit.component';
 import { LodgingTypesCreateComponent } from './lodging-types-create/lodging-types-create.component';
-import { LodgingTypesavailabilityComponent } from './lodging-types-availability/lodging-types-availability.component';
+import { LodgingTypesAvailabilityComponent } from './lodging-types-availability/lodging-types-availability.component';
 import { LODGING_TYPES_AREA_KEY } from '@skysmack/packages-lodgings';
 import { FieldsIndexComponent, FieldsCreateComponent, FieldsEditComponent } from '@skysmack/portal-fields';
 
@@ -22,12 +22,12 @@ export const lodgingTypesRoutes: Routes = [
             areaKey: LODGING_TYPES_AREA_KEY
           }
     },
-    { path: 'types/availability', component: LodgingTypesavailabilityComponent }
+    { path: 'types/availability', component: LodgingTypesAvailabilityComponent }
 ];
 
 export const lodgingTypesComponents: any[] = [
     LodgingTypesIndexComponent,
     LodgingTypesEditComponent,
     LodgingTypesCreateComponent,
-    LodgingTypesavailabilityComponent
+    LodgingTypesAvailabilityComponent
 ];

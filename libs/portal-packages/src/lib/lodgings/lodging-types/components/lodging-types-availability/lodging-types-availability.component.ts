@@ -17,7 +17,9 @@ const moment = _moment;
   selector: 'ss-lodging-types-availability',
   templateUrl: './lodging-types-availability.component.html'
 })
-export class LodgingTypesavailabilityComponent implements OnInit {
+export class LodgingTypesAvailabilityComponent implements OnInit {
+  public static COMPONENT_KEY = 'lodging-types-availability-index';
+  public componentKey = LodgingTypesAvailabilityComponent.COMPONENT_KEY;
   public packagePath = this.router.url.split('/')[1];
   public events$: Observable<CalendarEvent[]>;
   public selectedLodgingTypeIds: number[] = [];
