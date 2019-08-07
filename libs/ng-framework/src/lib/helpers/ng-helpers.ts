@@ -135,3 +135,44 @@ export const getMenuEntries = <T>(packagePath: string, packageTypeId: string, co
         return of([]);
     }
 };
+
+/**
+ * Helper to get menu items pr. connected package. E.g. if Lodgings has 3 LodgingReservations installed, 3 menu items will be returned.
+ * Note: Use it in the feature/adaptor providing the items.
+ * @param packagePath The current package path
+ * @param packageTypeId E.g. LodgingReservationsTypeId
+ * @param parentPageTypeId E.g. LodgingsTypeId
+ * @param componentKey The one being provided from the current index component
+ * @param specificParentPackageComponentKey E.g. LodgingReservations must provide the component key from LodgingsIndexComponent
+ * @param store The SkysmackStore
+ */
+export const getConnectedPackageMenuEntries = (packagePath: string, packageTypeId: string, parentPageTypeId: string, componentKey: string, specificParentPackageComponentKey: string, store: SkysmackStore): Observable<MenuItem[]> => {
+    if (componentKey === specificParentPackageComponentKey) {
+        return store.getCurrentPackage(packagePath).pipe(
+            filter(_package => _package._package.type === parentPageTypeId),
+            switchMap(() => store.getPackages().pipe(
+                map(_packages => _packages
+                    .filter(_package => _package.object.type === packageTypeId)
+                    .map(_package => new MenuItem({
+                        url: '/' + _package.object.path,
+                        displayName: _package.object.name,
+                        area: 'connected_packages',
+                        order: 1,
+                        icon: 'add',
+                        permissions: [],
+                        providedIn: ['sidebar']
+                    }))
+                )
+            ))
+        );
+    } else {
+        return of([]);
+    }
+};
+
+export const getCombinedMenuEntries = (menuItems1$: Observable<MenuItem[]>, menuItems2$: Observable<MenuItem[]>): Observable<MenuItem[]> => {
+    return combineLatest(
+        menuItems1$,
+        menuItems2$
+    ).pipe(map(([value1, value2]) => [...value1, ...value2]));
+}

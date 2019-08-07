@@ -26,7 +26,7 @@ export class NgLodgingsMenuProvider extends MenuProvider {
         return getMenuEntries<MenuItem>(packagePath, LodgingsTypeId, componentKey, LodgingsIndexComponent.COMPONENT_KEY, this.getLodgingsMenuItems, this.store);
     };
 
-    public getLodgingsMenuAreas= () => {
+    public getLodgingsMenuAreas = () => {
         return [
             new MenuArea({
                 area: 'actions',
@@ -37,11 +37,11 @@ export class NgLodgingsMenuProvider extends MenuProvider {
                 area: 'manage',
                 translationPrefix: this.translationPrefix,
                 order: 2
-            })
+            }),
         ];
     };
 
-    public getLodgingsMenuItems= (packagePath: string) => {
+    public getLodgingsMenuItems = (packagePath: string) => {
         return [
             new MenuItem({
                 url: 'create',
