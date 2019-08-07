@@ -14,6 +14,8 @@ import { RecordIndexComponent } from '@skysmack/portal-fields';
   templateUrl: './lodging-type-prices-index.component.html'
 })
 export class LodgingTypePricesIndexComponent extends RecordIndexComponent<LodgingTypePricesAppState, LodgingTypePrice, number> implements OnInit {
+  public static COMPONENT_KEY = 'lodging-type-prices-index';
+  public componentKey = LodgingTypePricesIndexComponent.COMPONENT_KEY;
 
   public areaKey: string = LODGING_TYPE_PRICES_AREA_KEY;
   public menuItemActions: MenuItem[] = [

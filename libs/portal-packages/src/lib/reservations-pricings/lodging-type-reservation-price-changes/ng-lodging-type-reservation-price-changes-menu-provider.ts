@@ -5,7 +5,9 @@ import { MenuItem } from '@skysmack/framework';
 import { Guid } from 'guid-typescript';
 import { of, Observable } from 'rxjs';
 import { ReservationsPricingsPermissions } from '@skysmack/packages-reservations-pricings';
-import { setBackButton } from '@skysmack/ng-framework';
+import { setBackButton, getMenuEntries, setBackButtonV2 } from '@skysmack/ng-framework';
+import { ReservationsPricingsTypeId } from '@skysmack/package-types';
+import { LodgingTypeReservationPriceChangesIndexComponent } from './components/lodging-type-reservation-price-changes-index/lodging-type-reservation-price-changes-index.component';
 
 @Injectable({ providedIn: 'root' })
 export class NgLodgingTypeReservationPriceChangesMenuProvider extends MenuProvider {
@@ -15,9 +17,16 @@ export class NgLodgingTypeReservationPriceChangesMenuProvider extends MenuProvid
     constructor(
         public store: NgSkysmackStore
     ) { super(); }
-
     public getMenuAreas(packagePath: string, componentKey: string): Observable<MenuArea[]> {
-        return of([
+        return getMenuEntries<MenuArea>(packagePath, ReservationsPricingsTypeId, componentKey, LodgingTypeReservationPriceChangesIndexComponent.COMPONENT_KEY, this.getLodgingTypeReservationPriceChangesMenuAreas, this.store);
+    };
+
+    public getMenuItems(packagePath: string, componentKey: string): Observable<MenuItem[]> {
+        return getMenuEntries<MenuItem>(packagePath, ReservationsPricingsTypeId, componentKey, LodgingTypeReservationPriceChangesIndexComponent.COMPONENT_KEY, this.getLodgingTypeReservationPriceChangesMenuItems, this.store);
+    };
+
+    public getLodgingTypeReservationPriceChangesMenuAreas = () => {
+        return [
             new MenuArea({
                 area: 'actions',
                 translationPrefix: this.translationPrefix,
@@ -28,26 +37,23 @@ export class NgLodgingTypeReservationPriceChangesMenuProvider extends MenuProvid
                 translationPrefix: this.translationPrefix,
                 order: 2
             })
-        ])
+        ];
     };
 
-    public getMenuItems(packagePath: string, componentKey: string): Observable<MenuItem[]> {
-        if(componentKey === 'lodging-type-reservation-price-changes-index') {
-            return of([
-                new MenuItem({
-                    url: 'create',
-                    displayName: this.translationPrefix + 'CREATE',
-                    area: 'actions',
-                    order: 1,
-                    icon: 'add',
-                    permissions: [
-                        ReservationsPricingsPermissions.addLodgingTypePriceChanges
-                    ],
-                    providedIn: ['sidebar', 'speedDial']
-                })
-            ]).pipe(setBackButton({ customPath: '/reservations-pricings' }));
-        } else {
-           return of([]);
-        }
+    public getLodgingTypeReservationPriceChangesMenuItems = () => {
+        return [
+            new MenuItem({
+                url: 'create',
+                displayName: this.translationPrefix + 'CREATE',
+                area: 'actions',
+                order: 1,
+                icon: 'add',
+                permissions: [
+                    ReservationsPricingsPermissions.addLodgingTypePriceChanges
+                ],
+                providedIn: ['sidebar', 'speedDial']
+            }),
+            setBackButtonV2('reservations-pricings')
+        ];
     };
 }
