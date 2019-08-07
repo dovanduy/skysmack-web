@@ -15,7 +15,6 @@ import { map } from 'rxjs/operators';
     animations: speedDialFabAnimations
 })
 export class SpeedDialFabComponent implements OnInit {
-    @Input() public sidebarMenu: SidebarMenu;
     @Input() public componentKey: string;
     public menuItems$: Observable<MenuItem[]>;;
     public fabTogglerState = 'inactive';

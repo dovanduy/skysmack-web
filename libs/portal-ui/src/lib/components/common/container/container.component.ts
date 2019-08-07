@@ -25,6 +25,8 @@ export class ContainerComponent implements OnInit, OnDestroy {
 
   @Output() public menuItemActionEvent = new EventEmitter<any>();
 
+  public anyMenuItems: EventEmitter<boolean> = new EventEmitter<boolean>(true);
+
   public access$: Observable<boolean>;
   public authenticated$: Observable<boolean>;
 
