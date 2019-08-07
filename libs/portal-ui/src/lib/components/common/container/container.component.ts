@@ -1,7 +1,6 @@
 import { Component, Input, ViewChild, OnInit, OnDestroy, ChangeDetectorRef, Output, EventEmitter } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
-import { SidebarMenu } from './../../../models/sidebar-menu/sidebar-menu';
 import { SubscriptionHandler } from '@skysmack/framework';
 import { EditorNavService } from './editor-nav.service';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
@@ -18,7 +17,6 @@ const SMALL_WIDTH_BREAKPOINT = 720;
   styleUrls: ['./container.component.scss']
 })
 export class ContainerComponent implements OnInit, OnDestroy {
-  @Input() public sidebarMenu: SidebarMenu;
   @Input() public componentKey: string;
   @ViewChild(MatSidenav, { static: false }) public sidenav: MatSidenav;
   @ViewChild('editornav', { static: false }) public editornav: MatSidenav;

@@ -4,7 +4,6 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { MenuItem } from '@skysmack/framework';
 import { AccessPolicyRulesAppState, AccessPolicyRule, ACCESS_POLICY_RULES_AREA_KEY } from '@skysmack/packages-skysmack-core';
-import { NgAccessPolicyRulesMenu } from '../../ng-access-policy-rules-menu';
 import { NgAccessPolicyRulesFieldsConfig } from '../../ng-access-policy-rules-fields-config';
 import { RecordIndexComponent } from '@skysmack/portal-fields';
 import { NgAccessPolicyRulesActions, NgAccessPolicyRulesStore } from '@skysmack/ng-access-policies';
@@ -32,7 +31,6 @@ export class AccessPolicyRulesIndexComponent extends RecordIndexComponent<Access
     public redux: NgSkysmackStore,
     public title: EntityComponentPageTitle,
     public store: NgAccessPolicyRulesStore,
-    public sidebarMenu: NgAccessPolicyRulesMenu,
     public fieldsConfig: NgAccessPolicyRulesFieldsConfig,
     public menuItemActionProviders: MenuItemActionProviders
   ) {

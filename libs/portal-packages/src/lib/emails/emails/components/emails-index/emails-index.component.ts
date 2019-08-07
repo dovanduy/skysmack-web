@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { NgEmailsMenu } from '../../ng-emails-menu';
 
 @Component({
   selector: 'ss-emails-index',
@@ -10,7 +9,6 @@ export class EmailsIndexComponent implements OnInit {
   public componentKey = EmailsIndexComponent.COMPONENT_KEY;
 
   constructor(
-    public sidebarMenu: NgEmailsMenu,
   ) { }
 
   ngOnInit() {

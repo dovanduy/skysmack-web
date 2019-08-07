@@ -5,7 +5,7 @@ import { MenuItem } from '@skysmack/framework';
 import { Guid } from 'guid-typescript';
 import { Observable } from 'rxjs';
 import { AccessPoliciesPermissions } from '@skysmack/ng-access-policies';
-import { setBackButton, getMenuEntries, setBackButtonV2 } from '@skysmack/ng-framework';
+import { getMenuEntries, setBackButton } from '@skysmack/ng-framework';
 import { AccessPoliciesTypeId } from '@skysmack/package-types';
 import { AccessPolicyRulesIndexComponent } from './components/access-policy-rules-index/access-policy-rules-index.component';
 
@@ -43,7 +43,7 @@ export class NgAccessPolicyRulesMenuProvider extends MenuProvider {
         ]
     };
 
-    public getAccessPolicyRulesMenuItems = () => {
+    public getAccessPolicyRulesMenuItems = (packagePath: string): MenuItem[] => {
         return [
             new MenuItem({
                 url: 'create',
@@ -56,7 +56,7 @@ export class NgAccessPolicyRulesMenuProvider extends MenuProvider {
                 ],
                 providedIn: ['sidebar', 'speedDial']
             }),
-            setBackButtonV2('access-policies')
+            setBackButton(packagePath)
         ];
     };
 }

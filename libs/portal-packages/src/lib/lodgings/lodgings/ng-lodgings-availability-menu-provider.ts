@@ -4,7 +4,7 @@ import { MenuArea, MenuProvider } from '@skysmack/framework';
 import { MenuItem } from '@skysmack/framework';
 import { Guid } from 'guid-typescript';
 import { Observable } from 'rxjs';
-import { getMenuEntries, setBackButtonV2 } from '@skysmack/ng-framework';
+import { getMenuEntries, setBackButton } from '@skysmack/ng-framework';
 import { LodgingsTypeId } from '@skysmack/package-types';
 import { LodgingsAvailabilityComponent } from './components/lodgings-availability/lodgings-availability.component';
 
@@ -34,9 +34,9 @@ export class NgLodgingsAvailabilityMenuProvider extends MenuProvider {
         ];
     };
 
-    public getLodgingsavailabilityMenuItems = () => {
+    public getLodgingsavailabilityMenuItems = (packagePath: string): MenuItem[] => {
         return [
-            setBackButtonV2('rooms')
+            setBackButton(packagePath)
         ]
     };
 }

@@ -10,7 +10,6 @@ import { map, take } from 'rxjs/operators';
 import { combineLatest } from 'rxjs';
 import { MenuItemActionProviders } from '@skysmack/portal-ui';
 import { MENU_ITEM_ACTIONS_EDIT, MENU_ITEM_ACTIONS_DELETE } from '@skysmack/portal-ui';
-import { NgFieldsMenu } from '../../ng-fields-menu';
 import { RecordIndexComponent } from '../../base-components/record-components/record-index-component';
 
 @Component({
@@ -32,7 +31,6 @@ export class FieldsIndexComponent extends RecordIndexComponent<any, any, any> im
     public actions: NgFieldActions,
     public store: NgFieldStore,
     public skysmackStore: NgSkysmackStore,
-    public sidebarMenu: NgFieldsMenu,
     public fieldsConfig: NgFieldsConfig,
     public injector: Injector,
     public menuItemActionProviders: MenuItemActionProviders

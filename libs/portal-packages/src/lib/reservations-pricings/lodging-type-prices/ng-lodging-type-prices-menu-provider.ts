@@ -4,7 +4,7 @@ import { MenuArea, MenuProvider } from '@skysmack/framework';
 import { MenuItem } from '@skysmack/framework';
 import { Guid } from 'guid-typescript';
 import { of, Observable } from 'rxjs';
-import { setBackButton, getMenuEntries, setBackButtonV2 } from '@skysmack/ng-framework';
+import { getMenuEntries, setBackButton } from '@skysmack/ng-framework';
 import { LodgingsPermissions } from '@skysmack/packages-lodgings';
 import { ReservationsPricingsTypeId } from '@skysmack/package-types';
 import { LodgingTypePricesIndexComponent } from './components/lodging-type-prices-index/lodging-type-prices-index.component';
@@ -40,7 +40,7 @@ export class NgLodgingTypePricesMenuProvider extends MenuProvider {
         ];
     };
 
-    public getLodgingTypePricesMenuItems  = () => {
+    public getLodgingTypePricesMenuItems  = (packagePath: string): MenuItem[] => {
         return [
             new MenuItem({
                 url: 'create',
@@ -52,7 +52,7 @@ export class NgLodgingTypePricesMenuProvider extends MenuProvider {
                 ],
                 providedIn: ['sidebar', 'speedDial']
             }),
-            setBackButtonV2('reservations-pricings')
+            setBackButton(packagePath)
         ];
     };
 }

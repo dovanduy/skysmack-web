@@ -1,4 +1,4 @@
-<ss-container [sidebarMenu]="sidebarMenu" (menuItemActionEvent)="actionEvent($event)">
+<ss-container (menuItemActionEvent)="actionEvent($event)">
 
   <ngx-graph class="chart-container" [links]="hierarchialGraph.links" [nodes]="hierarchialGraph.nodes" [legend]="true"
     [curve]="curve" [draggingEnabled]="false" [autoZoom]="autoZoom" [panOnZoom]="panOnZoom" [enableZoom]="enableZoom"

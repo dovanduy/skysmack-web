@@ -4,7 +4,7 @@ import { MenuArea, MenuProvider } from '@skysmack/framework';
 import { MenuItem } from '@skysmack/framework';
 import { Guid } from 'guid-typescript';
 import { Observable } from 'rxjs';
-import { getMenuEntries, setBackButtonV2 } from '@skysmack/ng-framework';
+import { getMenuEntries, setBackButton } from '@skysmack/ng-framework';
 import { InvoicesPermissions } from '@skysmack/packages-invoices';
 import { InvoicesTypeId } from '@skysmack/package-types';
 import { InvoiceItemsIndexComponent } from './components/invoice-items-index/invoice-items-index.component';
@@ -41,7 +41,7 @@ export class NgInvoiceItemsMenuProvider extends MenuProvider {
         ];
     }
 
-    public getInvoiceItemsMenuItems = () => {
+    public getInvoiceItemsMenuItems = (packagePath: string): MenuItem[] => {
         return [
             new MenuItem({
                 url: 'create',
@@ -65,7 +65,7 @@ export class NgInvoiceItemsMenuProvider extends MenuProvider {
                 ],
                 providedIn: ['sidebar']
             }),
-            setBackButtonV2('invoices')
+            setBackButton(packagePath)
         ];
     };
 };

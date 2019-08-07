@@ -5,7 +5,7 @@ import { MenuItem } from '@skysmack/framework';
 import { Guid } from 'guid-typescript';
 import { of, Observable } from 'rxjs';
 import { ProductsPricingsPermissions } from '@skysmack/packages-products-pricings';
-import { getMenuEntries } from '@skysmack/ng-framework';
+import { getMenuEntries, setConnectedParentPackage } from '@skysmack/ng-framework';
 import { ProductsPricingsTypeId } from '@skysmack/package-types';
 import { ProductsPricingsIndexComponent } from './components/products-pricings-index/products-pricings-index.component';
 
@@ -32,11 +32,12 @@ export class NgProductsPricingsMenuProvider extends MenuProvider {
                 area: 'manage',
                 translationPrefix: this.translationPrefix,
                 order: 2
-            })
+            }),
+            this.getConnectedPackageMenuArea()
         ];
     };
 
-    public getProductsPricingsMenuItems = () => {
+    public getProductsPricingsMenuItems = (packagePath: string): MenuItem[] => {
         return [
             new MenuItem({
                 url: 'price-changes',
@@ -82,6 +83,7 @@ export class NgProductsPricingsMenuProvider extends MenuProvider {
                 ],
                 providedIn: ['sidebar']
             }),
+            setConnectedParentPackage(this.store, packagePath)
         ];
     };
 }

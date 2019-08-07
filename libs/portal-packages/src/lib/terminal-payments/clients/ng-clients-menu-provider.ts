@@ -4,7 +4,7 @@ import { MenuArea, MenuProvider } from '@skysmack/framework';
 import { MenuItem } from '@skysmack/framework';
 import { Guid } from 'guid-typescript';
 import { of, Observable } from 'rxjs';
-import { getMenuEntries } from '@skysmack/ng-framework';
+import { getMenuEntries, setBackButton } from '@skysmack/ng-framework';
 import { TerminalPaymentsTypeId } from '@skysmack/package-types';
 import { ClientsIndexComponent } from './components/clients-index/clients-index.component';
 
@@ -39,7 +39,7 @@ export class NgClientsMenuProvider extends MenuProvider {
         ];
     };
 
-    public getClientsMenuItems = () => {
+    public getClientsMenuItems = (packagePath: string): MenuItem[] => {
         return [
             new MenuItem({
                 url: 'create',
@@ -50,7 +50,8 @@ export class NgClientsMenuProvider extends MenuProvider {
                 permissions: [
                 ],
                 providedIn: ['sidebar', 'speedDial']
-            })
+            }),
+            setBackButton(packagePath)
         ];
     };
 }

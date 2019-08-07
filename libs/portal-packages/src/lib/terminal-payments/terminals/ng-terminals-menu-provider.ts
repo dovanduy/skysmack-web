@@ -3,9 +3,8 @@ import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { MenuArea, MenuProvider } from '@skysmack/framework';
 import { MenuItem } from '@skysmack/framework';
 import { Guid } from 'guid-typescript';
-import { of, Observable } from 'rxjs';
-import { InvoicesPermissions } from '@skysmack/packages-invoices';
-import { getMenuEntries } from '@skysmack/ng-framework';
+import { Observable } from 'rxjs';
+import { getMenuEntries, setBackButton } from '@skysmack/ng-framework';
 import { TerminalPaymentsTypeId } from '@skysmack/package-types';
 import { TerminalsIndexComponent } from './components/terminals-index/terminals-index.component';
 
@@ -40,7 +39,7 @@ export class NgTerminalsMenuProvider extends MenuProvider {
         ];
     };
 
-    public getTerminalsMenuItems = () => {
+    public getTerminalsMenuItems = (packagePath: string): MenuItem[] => {
         return [
             new MenuItem({
                 url: 'create',
@@ -51,7 +50,8 @@ export class NgTerminalsMenuProvider extends MenuProvider {
                 permissions: [
                 ],
                 providedIn: ['sidebar', 'speedDial']
-            })
+            }),
+            setBackButton(packagePath)
         ];
     };
 }

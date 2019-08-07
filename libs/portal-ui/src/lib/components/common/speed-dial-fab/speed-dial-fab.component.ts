@@ -1,8 +1,7 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { speedDialFabAnimations } from './speed-dial-fab.animations';
-import { SidebarMenu } from './../../../models/sidebar-menu/sidebar-menu';
-import { MenuItem, MenuAreaItems } from '@skysmack/framework';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { MenuItem } from '@skysmack/framework';
+import { Observable } from 'rxjs';
 import { NgMenuProviders } from '../../../navigation/ng-menu-providers';
 import { Router } from '@angular/router';
 import { map } from 'rxjs/operators';
@@ -26,7 +25,6 @@ export class SpeedDialFabComponent implements OnInit {
         public ngMenuProviders: NgMenuProviders) { }
 
     ngOnInit(): void {
-        // this.menuItems$ = this.sidebarMenu.speedDialMenuItems$;
 
         const packagePath = this.router.url.split('/')[1];
         this.menuItems$ = this.ngMenuProviders.getMenuAreaItems(packagePath, this.componentKey).pipe(

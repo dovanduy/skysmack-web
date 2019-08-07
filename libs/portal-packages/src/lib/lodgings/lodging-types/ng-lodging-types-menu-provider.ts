@@ -5,7 +5,7 @@ import { MenuItem } from '@skysmack/framework';
 import { Guid } from 'guid-typescript';
 import { of, Observable } from 'rxjs';
 import { LodgingsPermissions } from '@skysmack/packages-lodgings';
-import { setBackButton, getMenuEntries, setBackButtonV2 } from '@skysmack/ng-framework';
+import { getMenuEntries, setBackButton } from '@skysmack/ng-framework';
 import { LodgingsTypeId } from '@skysmack/package-types';
 import { LodgingTypesIndexComponent } from './components/lodging-types-index/lodging-types-index.component';
 
@@ -42,7 +42,7 @@ export class NgLodgingTypesMenuProvider extends MenuProvider {
         ];
     };
 
-    public getLodgingTypesMenuItems = (packagePath: string) => {
+    public getLodgingTypesMenuItems = (packagePath: string): MenuItem[] => {
             return [
                 new MenuItem({
                     url: 'create',
@@ -76,7 +76,7 @@ export class NgLodgingTypesMenuProvider extends MenuProvider {
                     ],
                     providedIn: ['sidebar']
                 }),
-                setBackButtonV2('rooms')
+                setBackButton(packagePath)
             ];
     };
 }

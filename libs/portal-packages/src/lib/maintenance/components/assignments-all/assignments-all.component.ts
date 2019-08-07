@@ -3,7 +3,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { MenuItem } from '@skysmack/framework';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { EntityComponentPageTitle, MENU_ITEM_ACTIONS_EDIT } from '@skysmack/portal-ui';
-import { NgAssignmentAllMenu } from './../../ng-assignments-all-menu';
 
 @Component({
   selector: 'ss-assignments-all',
@@ -21,8 +20,7 @@ export class AssignmentsAllIndexComponent implements OnInit {
     public router: Router,
     public activatedRoute: ActivatedRoute,
     public redux: NgSkysmackStore,
-    public title: EntityComponentPageTitle,
-    public sidebarMenu: NgAssignmentAllMenu
+    public title: EntityComponentPageTitle
   ) { }
 
   ngOnInit() {

@@ -5,7 +5,7 @@ import { MenuItem } from '@skysmack/framework';
 import { Guid } from 'guid-typescript';
 import { of, Observable } from 'rxjs';
 import { MaintenancePermissions } from '@skysmack/packages-maintenance';
-import { setBackButton, getMenuEntries, setBackButtonV2 } from '@skysmack/ng-framework';
+import { getMenuEntries, setBackButton } from '@skysmack/ng-framework';
 import { MaintenanceTypeId } from '@skysmack/package-types';
 import { AssignmentsIndexComponent } from './components/assignments-index/assignments-index.component';
 
@@ -41,7 +41,7 @@ export class NgAssignmentsMenuProvider extends MenuProvider {
         ];
     };
 
-    public getAssignmentsMenuItems = () => {
+    public getAssignmentsMenuItems = (packagePath: string): MenuItem[] => {
         return [
             new MenuItem({
                 url: 'create',
@@ -74,7 +74,7 @@ export class NgAssignmentsMenuProvider extends MenuProvider {
                 ],
                 providedIn: ['sidebar']
             }),
-            setBackButtonV2('maintenance')
+            setBackButton(packagePath)
         ];
     };
 }

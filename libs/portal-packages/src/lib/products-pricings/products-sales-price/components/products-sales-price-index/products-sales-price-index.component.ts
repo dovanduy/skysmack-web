@@ -4,7 +4,6 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { NgProductsSalesPriceActions, NgProductsSalesPriceStore } from '@skysmack/ng-products-pricings';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { ProductsSalesPriceAppState, PRODUCTS_SALES_PRICE_AREA_KEY, ProductsSalesPrice } from '@skysmack/packages-products-pricings';
-import { NgProductsSalesPriceMenu } from '../../ng-products-sales-price-menu';
 import { MenuItem } from '@skysmack/framework';
 import { NgProductsSalesPriceFieldsConfig } from '../../ng-products-sales-price-fields-config';
 import { RecordIndexComponent } from '@skysmack/portal-fields';
@@ -29,7 +28,6 @@ export class ProductsSalesPriceIndexComponent extends RecordIndexComponent<Produ
     public actions: NgProductsSalesPriceActions,
     public redux: NgSkysmackStore,
     public store: NgProductsSalesPriceStore,
-    public sidebarMenu: NgProductsSalesPriceMenu,
     public fieldsConfig: NgProductsSalesPriceFieldsConfig,
     public title: EntityComponentPageTitle,
     public menuItemActionProviders: MenuItemActionProviders

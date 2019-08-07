@@ -4,7 +4,6 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { NgPersonsStore, NgPersonsActions } from '@skysmack/ng-persons';
 import { Person, PersonsAppState, PERSONS_AREA_KEY, PersonsPermissions } from '@skysmack/packages-persons';
-import { NgPersonsMenu } from '../../../ng-persons-menu';
 import { MenuItem } from '@skysmack/framework';
 import { NgFieldActions } from '@skysmack/ng-framework';
 import { NgPersonsFieldsConfig } from '../../../ng-persons-fields-config';
@@ -35,7 +34,6 @@ export class PersonsIndexComponent extends DocumentRecordIndexComponent<PersonsA
     public actions: NgPersonsActions,
     public skysmackStore: NgSkysmackStore,
     public store: NgPersonsStore,
-    public sidebarMenu: NgPersonsMenu,
     public fieldsConfig: NgPersonsFieldsConfig,
     public fieldActions: NgFieldActions,
     public title: EntityComponentPageTitle,

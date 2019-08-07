@@ -3,8 +3,8 @@ import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { MenuArea, MenuProvider } from '@skysmack/framework';
 import { MenuItem } from '@skysmack/framework';
 import { Guid } from 'guid-typescript';
-import { of, Observable } from 'rxjs';
-import { setBackButton, getMenuEntries, setBackButtonV2 } from '@skysmack/ng-framework';
+import { Observable } from 'rxjs';
+import { getMenuEntries, setBackButton } from '@skysmack/ng-framework';
 import { IdentitiesTypeId } from '@skysmack/package-types';
 import { UsersIndexComponent } from './components/users-index/users-index.component';
 
@@ -40,7 +40,7 @@ export class NgUsersMenuProvider extends MenuProvider {
         ];
     };
 
-    public getUsersMenuItems = () => {
+    public getUsersMenuItems = (packagePath: string): MenuItem[] => {
         return [
             new MenuItem({
                 url: 'create',
@@ -53,7 +53,7 @@ export class NgUsersMenuProvider extends MenuProvider {
                 ],
                 providedIn: ['sidebar', 'speedDial']
             }),
-            setBackButtonV2('identities')
+            setBackButton(packagePath)
         ];
     };
 };

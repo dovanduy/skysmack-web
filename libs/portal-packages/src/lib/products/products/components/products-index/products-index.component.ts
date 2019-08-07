@@ -5,7 +5,6 @@ import { MenuItem } from '@skysmack/framework';
 import { NgFieldActions } from '@skysmack/ng-framework';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { Product, ProductsAppState, PRODUCTS_AREA_KEY } from '@skysmack/packages-products';
-import { NgProductsMenu } from '../../ng-products-menu';
 import { NgProductsFieldsConfig } from '../../ng-products-fields-config';
 import { DocumentRecordIndexComponent } from '@skysmack/portal-fields';
 import { NgProductsActions, NgProductsStore } from '@skysmack/ng-products';
@@ -30,7 +29,6 @@ export class ProductsIndexComponent extends DocumentRecordIndexComponent<Product
     public actions: NgProductsActions,
     public skysmackStore: NgSkysmackStore,
     public store: NgProductsStore,
-    public sidebarMenu: NgProductsMenu,
     public fieldsConfig: NgProductsFieldsConfig,
     public fieldActions: NgFieldActions,
     public title: EntityComponentPageTitle,

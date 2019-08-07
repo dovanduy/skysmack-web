@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { EntityComponentPageTitle, MenuItemActionProviders, MENU_ITEM_ACTIONS_EDIT, MENU_ITEM_ACTIONS_DELETE } from '@skysmack/portal-ui';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ClientsAppState, Client, CLIENTS_AREA_KEY } from '@skysmack/packages-terminal-payments';
-import { NgClientsMenu } from '../../ng-clients-menu';
 import { MenuItem } from '@skysmack/framework';
 import { NgClientsFieldsConfig } from '../../ng-clients-fields-config';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
@@ -29,7 +28,6 @@ export class ClientsIndexComponent extends RecordIndexComponent<ClientsAppState,
     public actions: NgClientsActions,
     public redux: NgSkysmackStore,
     public store: NgClientsStore,
-    public sidebarMenu: NgClientsMenu,
     public fieldsConfig: NgClientsFieldsConfig,
     public title: EntityComponentPageTitle,
     public menuItemActionProviders: MenuItemActionProviders

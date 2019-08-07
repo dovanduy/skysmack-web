@@ -4,7 +4,6 @@ import { AssignmentTypesAppState, AssignmentType, ASSIGNMENT_TYPES_AREA_KEY } fr
 import { EntityComponentPageTitle, MenuItemActionProviders, MENU_ITEM_ACTIONS_EDIT, MENU_ITEM_ACTIONS_DELETE } from '@skysmack/portal-ui';
 import { MenuItem } from '@skysmack/framework';
 import { NgAssignmentTypesActions, NgAssignmentTypesStore } from '@skysmack/ng-maintenance';
-import { NgAssignmentTypesMenu } from '../../ng-assignment-types-menu';
 import { NgAssignmentTypesFieldsConfig } from '../../ng-assignment-types-fields-config';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { RecordIndexComponent } from '@skysmack/portal-fields';
@@ -30,7 +29,6 @@ export class AssignmentTypesIndexComponent extends RecordIndexComponent<Assignme
     public actions: NgAssignmentTypesActions,
     public redux: NgSkysmackStore,
     public store: NgAssignmentTypesStore,
-    public sidebarMenu: NgAssignmentTypesMenu,
     public fieldsConfig: NgAssignmentTypesFieldsConfig,
     public title: EntityComponentPageTitle,
     public menuItemActionProviders: MenuItemActionProviders

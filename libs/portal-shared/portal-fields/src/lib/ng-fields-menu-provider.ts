@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
-import { MenuArea, MenuProvider, FieldsId } from '@skysmack/framework';
+import { MenuArea, MenuProvider } from '@skysmack/framework';
 import { MenuItem } from '@skysmack/framework';
 import { Guid } from 'guid-typescript';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { PersonsPermissions } from '@skysmack/packages-persons';
-import { getMenuEntries, setBackButtonV2 } from '@skysmack/ng-framework';
+import { getMenuEntries, setBackButton, getAdditionalPaths } from '@skysmack/ng-framework';
 import { FieldsIndexComponent } from './management-components/fields-index/fields-index.component';
+import { Router } from '@angular/router';
+import { tap } from 'rxjs/operators';
 
 
 
@@ -16,15 +18,24 @@ export class NgFieldsMenuProvider extends MenuProvider {
     public translationPrefix = 'FIELDS.INDEX.';
 
     constructor(
-        public store: NgSkysmackStore
+        public store: NgSkysmackStore,
+        public router: Router
     ) { super(); }
 
     public getMenuAreas(packagePath: string, componentKey: string): Observable<MenuArea[]> {
-        return getMenuEntries<MenuArea>(packagePath, FieldsId, componentKey, FieldsIndexComponent.COMPONENT_KEY, this.getFieldsMenuAreas, this.store);
+        if(componentKey === FieldsIndexComponent.COMPONENT_KEY) {
+            return of(this.getFieldsMenuAreas());
+        } else {
+            return of([]);
+        }
     };
 
     public getMenuItems(packagePath: string, componentKey: string): Observable<MenuItem[]> {
-        return getMenuEntries<MenuItem>(packagePath, FieldsId, componentKey, FieldsIndexComponent.COMPONENT_KEY, this.getFieldsMenuItems, this.store);
+        if(componentKey === FieldsIndexComponent.COMPONENT_KEY) {
+            return of(this.getFieldsMenuItems(packagePath));
+        } else {
+            return of([]);
+        }
     };
 
     public getFieldsMenuAreas = () => {
@@ -41,8 +52,9 @@ export class NgFieldsMenuProvider extends MenuProvider {
             })
         ];
     }
-// packagePath: string, additionalPaths: string[]
-    public getFieldsMenuItems = () => {
+
+    public getFieldsMenuItems = (packagePath: string) => {
+        const additionalPaths = getAdditionalPaths(this.router, packagePath);
         return [
             new MenuItem({
                 url: 'create',
@@ -51,11 +63,10 @@ export class NgFieldsMenuProvider extends MenuProvider {
                 order: 1,
                 icon: 'add',
                 permissions: [
-                    PersonsPermissions.addPersons
                 ],
                 providedIn: ['sidebar', 'speedDial']
             }),
-            // setBackButtonV2(`/${packagePath}/${additionalPaths.join('/')}`)
+            setBackButton(`/${packagePath}/${additionalPaths.join('/')}`)
         ];
     }
 }

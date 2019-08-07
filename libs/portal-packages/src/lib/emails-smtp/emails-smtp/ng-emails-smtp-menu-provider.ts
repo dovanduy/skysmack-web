@@ -4,7 +4,7 @@ import { MenuArea, MenuProvider } from '@skysmack/framework';
 import { MenuItem } from '@skysmack/framework';
 import { Guid } from 'guid-typescript';
 import { Observable } from 'rxjs';
-import { getMenuEntries, setConnectedPackage } from '@skysmack/ng-framework';
+import { getMenuEntries, setConnectedParentPackage } from '@skysmack/ng-framework';
 import { EmailsSmtpTypeId } from '@skysmack/package-types';
 import { EmailsSmtpIndexComponent } from './components/emails-smtp-index/emails-smtp-index.component';
 
@@ -63,7 +63,7 @@ export class NgEmailsSmtpMenuProvider extends MenuProvider {
                 permissions: [],
                 providedIn: ['sidebar']
             }),
-            setConnectedPackage(this.store, packagePath)
+            setConnectedParentPackage(this.store, packagePath)
         ];
     };
 }

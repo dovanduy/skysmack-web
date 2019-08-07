@@ -5,7 +5,6 @@ import { EntityComponentPageTitle, MenuItemActionProviders } from '@skysmack/por
 import { LodgingsReservationsIndexComponent } from '../../lodging-reservations/lodgings-reservations-index/lodgings-reservations-index.component';
 import { RSQLFilterBuilder, SortBuilder } from '@skysmack/framework';
 import { LodgingReservation } from '@skysmack/packages-lodging-reservations';
-import { NgLodgingsReservationsMenu } from '../../ng-lodgings-reservations-menu';
 import { NgLodgingReservationsFieldsConfig } from '../../ng-lodging-reservations-fields-config';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { NgLodgingReservationsStore, NgLodgingReservationsActions } from '@skysmack/ng-lodging-reservations';
@@ -28,12 +27,11 @@ export class LodgingsStaysComponent extends LodgingsReservationsIndexComponent i
     public lodgingsActions: NgLodgingsActions,
     public lodgingTypesActions: NgLodgingTypesActions,
     public fieldsConfig: NgLodgingReservationsFieldsConfig,
-    public sidebarMenu: NgLodgingsReservationsMenu,
     public pageTitle: EntityComponentPageTitle,
     public title: EntityComponentPageTitle,
     public menuItemActionProviders: MenuItemActionProviders
   ) {
-    super(router, activatedRoute, skysmackStore, store, lodgingsStore, lodgingTypesStore, actions, lodgingsActions, lodgingTypesActions, fieldsConfig, sidebarMenu, pageTitle, title, menuItemActionProviders);
+    super(router, activatedRoute, skysmackStore, store, lodgingsStore, lodgingTypesStore, actions, lodgingsActions, lodgingTypesActions, fieldsConfig, pageTitle, title, menuItemActionProviders);
     pageTitle.setTitle('LODGING_RESERVATIONS.STAYS.TITLE');
   }
 

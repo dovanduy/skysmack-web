@@ -6,7 +6,6 @@ import { MenuItem } from '@skysmack/framework';
 import { AccessPolicyPermissionsAppState, AccessPolicyPermission, ACCESS_POLICY_PERMISSIONS_AREA_KEY } from '@skysmack/packages-skysmack-core';
 import { RecordIndexComponent } from '@skysmack/portal-fields';
 import { NgAccessPolicyPermissionsActions, NgAccessPolicyPermissionsStore } from '@skysmack/ng-access-policies';
-import { NgAccessPolicyPermissionsMenu } from '../../ng-access-policy-permissions-menu';
 import { NgAccessPolicyPermissionsFieldsConfig } from '../../ng-access-policy-permissions-fields-config';
 
 @Component({
@@ -32,7 +31,6 @@ export class AccessPolicyPermissionsIndexComponent extends RecordIndexComponent<
     public redux: NgSkysmackStore,
     public title: EntityComponentPageTitle,
     public store: NgAccessPolicyPermissionsStore,
-    public sidebarMenu: NgAccessPolicyPermissionsMenu,
     public fieldsConfig: NgAccessPolicyPermissionsFieldsConfig,
     public menuItemActionProviders: MenuItemActionProviders
   ) {

@@ -5,7 +5,6 @@ import { LodgingReservationsAppState, LodgingReservation, LODGING_RESERVATIONS_A
 import { MenuItem } from '@skysmack/framework';
 import { NgLodgingsStore, NgLodgingTypesStore, NgLodgingsActions, NgLodgingTypesActions } from '@skysmack/ng-lodgings';
 import { EntityComponentPageTitle, MenuItemActionProviders, MENU_ITEM_ACTIONS_EDIT, MENU_ITEM_ACTIONS_DELETE } from '@skysmack/portal-ui';
-import { NgLodgingsReservationsMenu } from '../../ng-lodgings-reservations-menu';
 import { LodgingsArrivalsComponent } from '../../components/lodgings-arrivals/lodgings-arrivals.component';
 import { NgLodgingReservationsFieldsConfig } from '../../ng-lodging-reservations-fields-config';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
@@ -82,7 +81,6 @@ export class LodgingsReservationsIndexComponent extends RecordIndexComponent<Lod
     public lodgingsActions: NgLodgingsActions,
     public lodgingTypesActions: NgLodgingTypesActions,
     public fieldsConfig: NgLodgingReservationsFieldsConfig,
-    public sidebarMenu: NgLodgingsReservationsMenu,
     public pageTitle: EntityComponentPageTitle,
     public title: EntityComponentPageTitle,
     public menuItemActionProviders: MenuItemActionProviders,

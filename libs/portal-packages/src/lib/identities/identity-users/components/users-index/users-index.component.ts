@@ -4,7 +4,6 @@ import { EntityComponentPageTitle, MenuItemActionProviders, MENU_ITEM_ACTIONS_ED
 import { NgUsersActions, NgUsersStore } from '@skysmack/ng-identities';
 import { MenuItem } from '@skysmack/framework';
 import { User, UsersAppState, USERS_AREA_KEY } from '@skysmack/packages-identities';
-import { NgUsersMenu } from '../../ng-users-menu';
 import { NgUsersFieldsConfig } from '../../ng-users-fields-config';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { RecordIndexComponent } from '@skysmack/portal-fields';
@@ -34,7 +33,6 @@ export class UsersIndexComponent extends RecordIndexComponent<UsersAppState, Use
     public redux: NgSkysmackStore,
     public title: EntityComponentPageTitle,
     public store: NgUsersStore,
-    public sidebarMenu: NgUsersMenu,
     public fieldsConfig: NgUsersFieldsConfig,
     public menuItemActionProviders: MenuItemActionProviders,
 

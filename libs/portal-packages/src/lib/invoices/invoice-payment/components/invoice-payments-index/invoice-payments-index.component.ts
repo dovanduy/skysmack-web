@@ -4,7 +4,6 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { NgInvoicePaymentsActions, NgInvoicePaymentsStore } from '@skysmack/ng-invoices';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { InvoicePayment, InvoicePaymentsAppState, INVOICE_PAYMENTS_AREA_KEY } from '@skysmack/packages-invoices';
-import { NgInvoicePaymentsMenu } from './../../ng-invoice-payments-menu';
 import { MenuItem } from '@skysmack/framework';
 import { NgFieldActions } from '@skysmack/ng-framework';
 import { NgInvoicePaymentsFieldsConfig } from '../../ng-invoice-payments-fields-config';
@@ -32,7 +31,6 @@ export class InvoicePaymentsIndexComponent extends DocumentRecordIndexComponent<
     public redux: NgSkysmackStore,
     public title: EntityComponentPageTitle,
     public store: NgInvoicePaymentsStore,
-    public sidebarMenu: NgInvoicePaymentsMenu,
     public fieldsConfig: NgInvoicePaymentsFieldsConfig,
     public fieldActions: NgFieldActions,
     public menuItemActionProviders: MenuItemActionProviders

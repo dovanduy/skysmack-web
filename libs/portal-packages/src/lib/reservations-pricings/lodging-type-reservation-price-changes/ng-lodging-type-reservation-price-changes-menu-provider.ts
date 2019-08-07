@@ -5,7 +5,7 @@ import { MenuItem } from '@skysmack/framework';
 import { Guid } from 'guid-typescript';
 import { of, Observable } from 'rxjs';
 import { ReservationsPricingsPermissions } from '@skysmack/packages-reservations-pricings';
-import { setBackButton, getMenuEntries, setBackButtonV2 } from '@skysmack/ng-framework';
+import { getMenuEntries, setBackButton } from '@skysmack/ng-framework';
 import { ReservationsPricingsTypeId } from '@skysmack/package-types';
 import { LodgingTypeReservationPriceChangesIndexComponent } from './components/lodging-type-reservation-price-changes-index/lodging-type-reservation-price-changes-index.component';
 
@@ -40,7 +40,7 @@ export class NgLodgingTypeReservationPriceChangesMenuProvider extends MenuProvid
         ];
     };
 
-    public getLodgingTypeReservationPriceChangesMenuItems = () => {
+    public getLodgingTypeReservationPriceChangesMenuItems = (packagePath: string): MenuItem[] => {
         return [
             new MenuItem({
                 url: 'create',
@@ -53,7 +53,7 @@ export class NgLodgingTypeReservationPriceChangesMenuProvider extends MenuProvid
                 ],
                 providedIn: ['sidebar', 'speedDial']
             }),
-            setBackButtonV2('reservations-pricings')
+            setBackButton(packagePath)
         ];
     };
 }

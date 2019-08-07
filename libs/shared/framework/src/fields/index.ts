@@ -3,4 +3,3 @@ export * from './field-value-provider-view-model';
 export * from './field-validatior';
 export * from './field-access-permission';
 export * from './get-field-state-key';
-export * from './fields-id';

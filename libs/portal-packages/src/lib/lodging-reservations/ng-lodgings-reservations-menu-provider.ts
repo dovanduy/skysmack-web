@@ -5,7 +5,7 @@ import { MenuItem } from '@skysmack/framework';
 import { Guid } from 'guid-typescript';
 import { Observable } from 'rxjs';
 import { ReservationsPermissions } from '@skysmack/packages-lodging-reservations';
-import { getMenuEntries, setConnectedPackage } from '@skysmack/ng-framework';
+import { getMenuEntries, setConnectedParentPackage } from '@skysmack/ng-framework';
 import { LodgingReservationsTypeId } from '@skysmack/package-types';
 import { LodgingsReservationsIndexComponent } from './lodging-reservations/lodgings-reservations-index/lodgings-reservations-index.component';
 
@@ -115,7 +115,7 @@ export class NgLodgingsReservationsMenuProvider extends MenuProvider {
                 ],
                 providedIn: ['sidebar']
             }),
-            setConnectedPackage(this.store, packagePath)
+            setConnectedParentPackage(this.store, packagePath)
         ];
     };
 };
