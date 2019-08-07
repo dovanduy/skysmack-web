@@ -21,7 +21,7 @@ $sidenav-width: 240px;
   flex-direction: row;
 
   // The rule will match the element following the router-outlet which will be the routed component.
-  router-outlet + * {
+  router-outlet+* {
     flex-grow: 1;
   }
 }
@@ -90,7 +90,7 @@ $sidenav-width: 240px;
       text-decoration: none;
 
       &:focus {
-        outline:0;
+        outline: 0;
       }
     }
   }
@@ -114,6 +114,7 @@ $sidenav-width: 240px;
 }
 
 @media (max-width: $small-breakpoint-width) {
+
   // Add specific rule to prevent default rule conflict
   .docs-component-viewer-sidenav-container .docs-component-viewer-sidenav {
     // position right above the content
@@ -137,4 +138,9 @@ $sidenav-width: 240px;
   .docs-component-viewer-sidenav-container {
     flex: 1 0 auto;
   }
+}
+
+.old-items {
+  background-color: red !important;
+  color: #fff !important;
 }

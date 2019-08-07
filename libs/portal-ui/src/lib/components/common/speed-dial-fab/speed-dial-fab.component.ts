@@ -17,40 +17,31 @@ import { map } from 'rxjs/operators';
 export class SpeedDialFabComponent implements OnInit {
     @Input() public sidebarMenu: SidebarMenu;
     @Input() public componentKey: string;
-    public menuItems$: BehaviorSubject<MenuItem[]>;;
-    public buttons$: BehaviorSubject<MenuItem[]>;
+    public menuItems$: Observable<MenuItem[]>;;
     public fabTogglerState = 'inactive';
 
     @Output() public menuItemActionEvent = new EventEmitter<any>();
-
-    public menuAreaItems$: Observable<MenuAreaItems[]>;
 
     constructor(
         public router: Router,
         public ngMenuProviders: NgMenuProviders) { }
 
     ngOnInit(): void {
-        this.menuItems$ = this.sidebarMenu.speedDialMenuItems$;
+        // this.menuItems$ = this.sidebarMenu.speedDialMenuItems$;
 
         const packagePath = this.router.url.split('/')[1];
-        this.menuAreaItems$ = this.ngMenuProviders.getMenuAreaItems(packagePath, this.componentKey).pipe(
+        this.menuItems$ = this.ngMenuProviders.getMenuAreaItems(packagePath, this.componentKey).pipe(
             map(menuAreaItems => {
-                return menuAreaItems.filter(menuAreaItem => menuAreaItem && menuAreaItem.providedIn && menuAreaItem.providedIn.includes('speedDial'));
+                return menuAreaItems.filter(menuAreaItem => menuAreaItem && menuAreaItem.providedIn && menuAreaItem.providedIn.includes('speedDial')).map(item => item.items).reduce((a,b) => a.concat(b),[]);
             })
         );
     }
 
-    showItems() {
-        this.fabTogglerState = 'active';
-        this.buttons$.next(this.menuItems$.getValue());
-    }
-
-    hideItems() {
-        this.fabTogglerState = 'inactive';
-        this.buttons$.next([]);
-    }
-
     onToggleFab() {
-        this.buttons$.getValue().length ? this.hideItems() : this.showItems();
+        if (this.fabTogglerState === 'active') {
+            this.fabTogglerState = 'inactive';
+        } else {
+            this.fabTogglerState = 'active';
+        }
     }
 }
