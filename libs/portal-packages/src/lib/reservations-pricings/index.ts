@@ -6,5 +6,4 @@ export * from './reservations-pricings.module';
 export * from './ng-reservations-pricings-field-provider';
 export * from './ng-lodging-reservations-reservation-pricings-field-provider';
 
-export * from './ng-reservations-pricings-menu';
 export * from './ng-reservations-pricings-menu-provider';
