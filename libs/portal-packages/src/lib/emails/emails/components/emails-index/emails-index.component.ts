@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { NgEmailsMenu } from '../../ng-emails-menu';
 
 @Component({
   selector: 'ss-emails-index',

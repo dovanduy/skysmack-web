@@ -4,7 +4,7 @@ import { MenuArea, MenuProvider } from '@skysmack/framework';
 import { MenuItem } from '@skysmack/framework';
 import { Guid } from 'guid-typescript';
 import { of, Observable } from 'rxjs';
-import { setBackButton, getMenuEntries } from '@skysmack/ng-framework';
+import { getMenuEntries } from '@skysmack/ng-framework';
 import { InvoicesPermissions } from '@skysmack/packages-invoices';
 import { ProductsPermissions } from '@skysmack/packages-products';
 import { ProductsTypeId } from '@skysmack/package-types';

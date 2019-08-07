@@ -4,7 +4,7 @@ import { MenuArea, MenuProvider } from '@skysmack/framework';
 import { MenuItem } from '@skysmack/framework';
 import { Guid } from 'guid-typescript';
 import { Observable } from 'rxjs';
-import { getMenuEntries, setConnectedPackage } from '@skysmack/ng-framework';
+import { getMenuEntries, setConnectedParentPackage } from '@skysmack/ng-framework';
 import { InvoicesCashPaymentsTypeId } from '@skysmack/package-types';
 import { InvoicesCashPaymentsIndexComponent } from './components/invoices-cash-payments-index/invoices-cash-payments-index.component';
 
@@ -54,7 +54,7 @@ export class NgInvoicesCashPaymentsMenuProvider extends MenuProvider {
                 ],
                 providedIn: ['sidebar', 'speedDial']
             }),
-            setConnectedPackage(this.store, packagePath)
+            setConnectedParentPackage(this.store, packagePath)
         ];
     };
 };

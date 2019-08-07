@@ -119,7 +119,7 @@ export class NgLodgingsReservationsMenuProvider extends MenuProvider {
                 ],
                 providedIn: ['sidebar']
             }),
-            setConnectedPackage(this.store, packagePath)
+            setConnectedParentPackage(this.store, packagePath)
         ];
     };
 };

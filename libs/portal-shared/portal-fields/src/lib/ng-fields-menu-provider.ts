@@ -5,7 +5,7 @@ import { MenuItem } from '@skysmack/framework';
 import { Guid } from 'guid-typescript';
 import { Observable, of } from 'rxjs';
 import { PersonsPermissions } from '@skysmack/packages-persons';
-import { getMenuEntries, setBackButtonV2, getAdditionalPaths } from '@skysmack/ng-framework';
+import { getMenuEntries, setBackButton, getAdditionalPaths } from '@skysmack/ng-framework';
 import { FieldsIndexComponent } from './management-components/fields-index/fields-index.component';
 import { Router } from '@angular/router';
 import { tap } from 'rxjs/operators';
@@ -66,7 +66,7 @@ export class NgFieldsMenuProvider extends MenuProvider {
                 ],
                 providedIn: ['sidebar', 'speedDial']
             }),
-            setBackButtonV2(`/${packagePath}/${additionalPaths.join('/')}`)
+            setBackButton(`/${packagePath}/${additionalPaths.join('/')}`)
         ];
     }
 }

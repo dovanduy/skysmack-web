@@ -4,7 +4,7 @@ import { MenuArea, MenuProvider } from '@skysmack/framework';
 import { MenuItem } from '@skysmack/framework';
 import { Guid } from 'guid-typescript';
 import { Observable } from 'rxjs';
-import { getMenuEntries, setBackButtonV2 } from '@skysmack/ng-framework';
+import { getMenuEntries, setBackButton } from '@skysmack/ng-framework';
 import { MaintenanceTypeId } from '@skysmack/package-types';
 import { AssignmentTypesIndexComponent } from './components/assignment-types-index/assignment-types-index.component';
 
@@ -52,7 +52,7 @@ export class NgAssignmentTypesMenuProvider extends MenuProvider {
                 ],
                 providedIn: ['sidebar', 'speedDial']
             }),
-            setBackButtonV2(`${packagePath}/assignments`)
+            setBackButton(`${packagePath}/assignments`)
         ];
     };
 }
