@@ -43,7 +43,7 @@ export class NgReceiptsMenu extends SidebarMenu {
                 displayName: this.translationPrefix + 'CREATE',
                 area: 'actions',
                 order: 1,
-                icon: 'groupAdd',
+                icon: 'group_add',
                 permissions: []
             }),
             new MenuItem({
@@ -51,7 +51,7 @@ export class NgReceiptsMenu extends SidebarMenu {
                 displayName: this.translationPrefix + 'FIELDS',
                 area: 'manage',
                 order: 2,
-                icon: 'shortText',
+                icon: 'short_text',
             })
         ]);
 

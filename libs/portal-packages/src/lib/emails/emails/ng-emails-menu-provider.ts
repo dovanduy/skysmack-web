@@ -42,7 +42,7 @@ export class NgEmailsIndexMenuProvider extends MenuProvider {
                 displayName: this.translationPrefix + 'TEMPLATES',
                 area: 'manage',
                 order: 1,
-                icon: 'groupAdd',
+                icon: 'group_add',
                 permissions: [
                     //??
                 ],

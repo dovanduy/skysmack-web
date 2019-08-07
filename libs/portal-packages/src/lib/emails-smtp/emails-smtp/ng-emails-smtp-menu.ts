@@ -38,7 +38,7 @@ export class NgEmailsSmtpMenu extends SidebarMenu {
                 displayName: this.translationPrefix + 'SETTINGS',
                 area: 'manage',
                 order: 1,
-                icon: 'groupAdd',
+                icon: 'group_add',
                 permissions: []
             })
         ]);

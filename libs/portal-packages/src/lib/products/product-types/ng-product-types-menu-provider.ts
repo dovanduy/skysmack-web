@@ -59,7 +59,7 @@ export class NgProductTypesMenuProvider extends MenuProvider {
                 displayName: this.translationPrefix + 'FIELDS',
                 area: 'manage',
                 order: 1,
-                icon: 'shortText',
+                icon: 'short_text',
                 permissions: [
                     ProductsPermissions.findProductTypeFields
                 ],

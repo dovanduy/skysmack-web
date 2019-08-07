@@ -12,7 +12,7 @@ import { Guid } from 'guid-typescript';
 export class NgInvoicesCashPaymentsMenuItemProvider extends MenuItemProvider {
     public id = Guid.create().toString();
     public menuId = INVOICES_AREA_KEY;
-    public icon = 'shortText';
+    public icon = 'short_text';
 
     constructor(public store: NgSkysmackStore) { super(); }
 

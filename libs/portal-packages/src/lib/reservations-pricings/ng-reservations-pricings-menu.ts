@@ -39,7 +39,7 @@ export class NgReservationsPricingsMenu extends SidebarMenu {
                 displayName: this.translationPrefix + 'RESERVATION_PRICE_CHANGES',
                 area: 'manage',
                 order: 2,
-                icon: 'groupAdd',
+                icon: 'group_add',
                 permissions: [
                     ReservationsPricingsPermissions.findLodgingPriceChanges
                 ]
@@ -50,7 +50,7 @@ export class NgReservationsPricingsMenu extends SidebarMenu {
                 displayName: this.translationPrefix + 'PRICES',
                 area: 'manage',
                 order: 2,
-                icon: 'groupAdd',
+                icon: 'group_add',
                 permissions: [
                     ReservationsPricingsPermissions.findLodgingPriceChanges
                 ]
@@ -61,7 +61,7 @@ export class NgReservationsPricingsMenu extends SidebarMenu {
                 displayName: this.translationPrefix + 'RESERVATION_PRICE_CHANGES_TYPES',
                 area: 'manage',
                 order: 3,
-                icon: 'shortText',
+                icon: 'short_text',
                 permissions: [
                     ReservationsPricingsPermissions.findLodgingTypePriceChanges
                 ]
@@ -72,7 +72,7 @@ export class NgReservationsPricingsMenu extends SidebarMenu {
                 displayName: this.translationPrefix + 'PRICES_TYPES',
                 area: 'manage',
                 order: 3,
-                icon: 'shortText',
+                icon: 'short_text',
                 permissions: [
                     ReservationsPricingsPermissions.findLodgingTypePriceChanges
                 ]

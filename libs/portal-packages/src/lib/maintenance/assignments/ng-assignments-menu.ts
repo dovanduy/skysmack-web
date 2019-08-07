@@ -43,7 +43,7 @@ export class NgAssignmentsMenu extends SidebarMenu {
                 displayName: this.translationPrefix + 'CREATE',
                 area: 'actions',
                 order: 1,
-                icon: 'groupAdd',
+                icon: 'group_add',
                 permissions: [
                     MaintenancePermissions.addAssignments
                 ]
@@ -63,7 +63,7 @@ export class NgAssignmentsMenu extends SidebarMenu {
                 displayName: this.translationPrefix + 'STATES',
                 area: 'manage',
                 order: 3,
-                icon: 'shortText',
+                icon: 'short_text',
                 permissions: [
                     MaintenancePermissions.findMaintenanceStates
                 ]

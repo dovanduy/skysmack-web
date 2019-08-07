@@ -69,7 +69,7 @@ export class NgAssignmentsMenuProvider extends MenuProvider {
                 displayName: this.translationPrefix + 'STATES',
                 area: 'manage',
                 order: 1,
-                icon: 'shortText',
+                icon: 'short_text',
                 permissions: [
                 ],
                 providedIn: ['sidebar']

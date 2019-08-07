@@ -59,7 +59,7 @@ export class NgEmailsSmtpMenuProvider extends MenuProvider {
                 displayName: this.translationPrefix + 'SETTINGS',
                 area: 'manage',
                 order: 1,
-                icon: 'groupAdd',
+                icon: 'group_add',
                 permissions: [],
                 providedIn: ['sidebar']
             }),

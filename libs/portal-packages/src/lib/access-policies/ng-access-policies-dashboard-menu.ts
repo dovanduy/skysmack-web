@@ -38,7 +38,7 @@ export class NgAccessPoliciesDashboardMenu extends SidebarMenu {
                 displayName: this.translationPrefix + 'PERMISSIONS',
                 area: 'manage',
                 order: 1,
-                icon: 'groupAdd',
+                icon: 'group_add',
                 permissions: [
                     AccessPoliciesPermissions.findPermissions
                 ]
@@ -48,7 +48,7 @@ export class NgAccessPoliciesDashboardMenu extends SidebarMenu {
                 displayName: this.translationPrefix + 'ROLES',
                 area: 'manage',
                 order: 2,
-                icon: 'groupAdd',
+                icon: 'group_add',
                 permissions: [
                     AccessPoliciesPermissions.findRoles
                 ]
@@ -58,7 +58,7 @@ export class NgAccessPoliciesDashboardMenu extends SidebarMenu {
                 displayName: this.translationPrefix + 'RULES',
                 area: 'manage',
                 order: 3,
-                icon: 'groupAdd',
+                icon: 'group_add',
                 permissions: [
                     AccessPoliciesPermissions.findRules
                 ]

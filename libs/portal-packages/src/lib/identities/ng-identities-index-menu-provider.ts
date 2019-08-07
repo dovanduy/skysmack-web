@@ -87,7 +87,7 @@ export class NgIdentitiesIndexMenuProvider extends MenuProvider {
                 displayName: this.translationPrefix + 'ROLES',
                 area: 'manage',
                 order: 1,
-                icon: 'groupAdd',
+                icon: 'group_add',
                 permissions: [
                     IdentitiesPermissions.findRoles
                 ],
@@ -98,7 +98,7 @@ export class NgIdentitiesIndexMenuProvider extends MenuProvider {
                 displayName: this.translationPrefix + 'USERS',
                 area: 'manage',
                 order: 2,
-                icon: 'groupAdd',
+                icon: 'group_add',
                 permissions: [
                     IdentitiesPermissions.findUsers
                 ],
@@ -109,7 +109,7 @@ export class NgIdentitiesIndexMenuProvider extends MenuProvider {
                 displayName: this.translationPrefix + 'APPLICATIONS',
                 area: 'manage',
                 order: 3,
-                icon: 'groupAdd',
+                icon: 'group_add',
                 permissions: [
                     IdentitiesPermissions.findApplications
                 ],
@@ -120,7 +120,7 @@ export class NgIdentitiesIndexMenuProvider extends MenuProvider {
                 displayName: this.translationPrefix + 'CHANGE_PASSWORD',
                 area: 'account',
                 order: 1,
-                icon: 'groupAdd',
+                icon: 'group_add',
                 providedIn: ['sidebar']
             }),
             new MenuItem({
@@ -128,7 +128,7 @@ export class NgIdentitiesIndexMenuProvider extends MenuProvider {
                 displayName: this.translationPrefix + 'FORGOT_PASSWORD',
                 area: 'account',
                 order: 1,
-                icon: 'groupAdd',
+                icon: 'group_add',
                 providedIn: ['sidebar']
             }),
             new MenuItem({
@@ -136,7 +136,7 @@ export class NgIdentitiesIndexMenuProvider extends MenuProvider {
                 displayName: this.translationPrefix + 'CONFIRM_EMAIL',
                 area: 'account',
                 order: 1,
-                icon: 'groupAdd',
+                icon: 'group_add',
                 providedIn: ['sidebar']
             }),
             new MenuItem({
@@ -144,7 +144,7 @@ export class NgIdentitiesIndexMenuProvider extends MenuProvider {
                 displayName: this.translationPrefix + 'AVAILABLE_SETTINGS.LOCKOUT',
                 area: 'settings',
                 order: 1,
-                icon: 'groupAdd',
+                icon: 'group_add',
                 permissions: [
                     IdentitiesPermissions.getLockoutSettings
                 ],
@@ -155,7 +155,7 @@ export class NgIdentitiesIndexMenuProvider extends MenuProvider {
                 displayName: this.translationPrefix + 'AVAILABLE_SETTINGS.USER',
                 area: 'settings',
                 order: 2,
-                icon: 'groupAdd',
+                icon: 'group_add',
                 permissions: [
                     IdentitiesPermissions.getUserSettings
                 ],
@@ -166,7 +166,7 @@ export class NgIdentitiesIndexMenuProvider extends MenuProvider {
                 displayName: this.translationPrefix + 'AVAILABLE_SETTINGS.PASSWORD',
                 area: 'settings',
                 order: 2,
-                icon: 'groupAdd',
+                icon: 'group_add',
                 permissions: [
                     IdentitiesPermissions.getPasswordSettings
                 ],
@@ -177,7 +177,7 @@ export class NgIdentitiesIndexMenuProvider extends MenuProvider {
                 displayName: this.translationPrefix + 'AVAILABLE_SETTINGS.SIGNIN',
                 area: 'settings',
                 order: 2,
-                icon: 'groupAdd',
+                icon: 'group_add',
                 permissions: [
                     IdentitiesPermissions.getSignInSettings
                 ],

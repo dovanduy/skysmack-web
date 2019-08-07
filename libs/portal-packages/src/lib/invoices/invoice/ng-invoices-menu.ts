@@ -44,7 +44,7 @@ export class NgInvoicesMenu extends SidebarMenu {
                 displayName: this.translationPrefix + 'CREATE',
                 area: 'actions',
                 order: 1,
-                icon: 'groupAdd',
+                icon: 'group_add',
                 permissions: [
                     InvoicesPermissions.addInvoices
                 ]
@@ -54,7 +54,7 @@ export class NgInvoicesMenu extends SidebarMenu {
                 displayName: this.translationPrefix + 'FIELDS',
                 area: 'manage',
                 order: 2,
-                icon: 'shortText',
+                icon: 'short_text',
                 permissions: [
                     InvoicesPermissions.findInvoiceFields
                 ]
@@ -64,7 +64,7 @@ export class NgInvoicesMenu extends SidebarMenu {
                 displayName: this.translationPrefix + 'PAYMENTS',
                 area: 'manage',
                 order: 2,
-                icon: 'shortText',
+                icon: 'short_text',
                 permissions: [
                     InvoicesPermissions.findInvoicePayments
                 ]

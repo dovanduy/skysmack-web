@@ -40,7 +40,7 @@ export class NgEmailsMenu extends SidebarMenu {
                 displayName: this.translationPrefix + 'TEMPLATES',
                 area: 'manage',
                 order: 1,
-                icon: 'groupAdd',
+                icon: 'group_add',
                 permissions: [
                     // ???
                 ]

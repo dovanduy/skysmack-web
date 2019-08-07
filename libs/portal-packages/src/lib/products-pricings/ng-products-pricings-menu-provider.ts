@@ -43,7 +43,7 @@ export class NgProductsPricingsMenuProvider extends MenuProvider {
                 displayName: this.translationPrefix + 'PRICE_CHANGES',
                 area: 'manage',
                 order: 1,
-                icon: 'groupAdd',
+                icon: 'group_add',
                 permissions: [
                     ProductsPricingsPermissions.findProductPriceChanges
                 ],
@@ -54,7 +54,7 @@ export class NgProductsPricingsMenuProvider extends MenuProvider {
                 displayName: this.translationPrefix + 'PRICE_TYPE_CHANGES',
                 area: 'manage',
                 order: 2,
-                icon: 'groupAdd',
+                icon: 'group_add',
                 permissions: [
                     ProductsPricingsPermissions.findProductTypePriceChanges
                 ],
@@ -65,7 +65,7 @@ export class NgProductsPricingsMenuProvider extends MenuProvider {
                 displayName: this.translationPrefix + 'SALES_PRICES',
                 area: 'manage',
                 order: 3,
-                icon: 'groupAdd',
+                icon: 'group_add',
                 permissions: [
                     ProductsPricingsPermissions.findProductSalesPrices
                 ],
@@ -76,7 +76,7 @@ export class NgProductsPricingsMenuProvider extends MenuProvider {
                 displayName: this.translationPrefix + 'SALES_PRICES_TYPES',
                 area: 'manage',
                 order: 4,
-                icon: 'groupAdd',
+                icon: 'group_add',
                 permissions: [
                     ProductsPricingsPermissions.findProductTypeSalesPrices
                 ],

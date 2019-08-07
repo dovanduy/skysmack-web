@@ -44,7 +44,7 @@ export class NgProductTypePriceChangesMenu extends SidebarMenu {
                 displayName: this.translationPrefix + 'CREATE',
                 area: 'actions',
                 order: 1,
-                icon: 'groupAdd',
+                icon: 'group_add',
                 permissions: [
                     ProductsPricingsPermissions.addProductTypePriceChanges
                 ]

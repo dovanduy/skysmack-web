@@ -56,7 +56,7 @@ export class NgReceiptsMenuProvider extends MenuProvider {
                 displayName: this.translationPrefix + 'FIELDS',
                 area: 'manage',
                 order: 1,
-                icon: 'shortText',
+                icon: 'short_text',
                 permissions: [
                 ],
                 providedIn: ['sidebar']

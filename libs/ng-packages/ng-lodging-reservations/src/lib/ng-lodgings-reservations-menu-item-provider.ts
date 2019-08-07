@@ -11,7 +11,7 @@ import { Guid } from 'guid-typescript';
 export class NgLodgingsReservationsMenuItemProvider extends MenuItemProvider {
     public id = Guid.create().toString();
     public menuId = 'lodgings';
-    public icon = 'shortText';
+    public icon = 'short_text';
 
     constructor(public store: NgSkysmackStore) { super(); }
 

@@ -48,7 +48,7 @@ export class NgLodgingsReservationsMenu extends SidebarMenu {
                 displayName: this.translationPrefix + 'CREATE',
                 area: 'actions',
                 order: 1,
-                icon: 'groupAdd',
+                icon: 'group_add',
                 permissions: [
                     ReservationsPermissions.addReservations
                 ]
@@ -59,7 +59,7 @@ export class NgLodgingsReservationsMenu extends SidebarMenu {
                 displayName: this.translationPrefix + 'ALL',
                 area: 'reservations',
                 order: 1,
-                icon: 'groupAdd',
+                icon: 'group_add',
                 permissions: [
                     ReservationsPermissions.findReservations
                 ]
@@ -69,7 +69,7 @@ export class NgLodgingsReservationsMenu extends SidebarMenu {
                 displayName: this.translationPrefix + 'ARRIVALS',
                 area: 'reservations',
                 order: 1,
-                icon: 'groupAdd',
+                icon: 'group_add',
                 permissions: [
                     ReservationsPermissions.findReservations
                 ]
@@ -79,7 +79,7 @@ export class NgLodgingsReservationsMenu extends SidebarMenu {
                 displayName: this.translationPrefix + 'STAYS',
                 area: 'reservations',
                 order: 2,
-                icon: 'groupAdd',
+                icon: 'group_add',
                 permissions: [
                     ReservationsPermissions.findReservations
                 ]
@@ -89,7 +89,7 @@ export class NgLodgingsReservationsMenu extends SidebarMenu {
                 displayName: this.translationPrefix + 'DEPARTURES',
                 area: 'reservations',
                 order: 3,
-                icon: 'groupAdd',
+                icon: 'group_add',
                 permissions: [
                     ReservationsPermissions.findReservations
                 ]
@@ -99,7 +99,7 @@ export class NgLodgingsReservationsMenu extends SidebarMenu {
                 displayName: this.translationPrefix + 'SETTINGS',
                 area: 'settings',
                 order: 3,
-                icon: 'groupAdd',
+                icon: 'group_add',
                 permissions: [
                     ReservationsPermissions.checkIn
                 ]

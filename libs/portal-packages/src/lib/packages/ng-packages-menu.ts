@@ -38,7 +38,7 @@ export class NgPackagesMenu extends SidebarMenu {
                 displayName: this.translationPrefix + 'CREATE',
                 area: 'actions',
                 order: 1,
-                icon: 'groupAdd',
+                icon: 'group_add',
                 permissions: [
                     PackagesPermissions.addPackages
                 ]
@@ -46,7 +46,7 @@ export class NgPackagesMenu extends SidebarMenu {
         ]);
 
         // Menu button to navigate to available package charts when that code is uncommented.
-        // this.primaryMenuItems.push(new MenuItem('available_packages', this.translationPrefix + 'AVAILABLE_PACKAGES', 'manage', 2, 'groupAdd'));
+        // this.primaryMenuItems.push(new MenuItem('available_packages', this.translationPrefix + 'AVAILABLE_PACKAGES', 'manage', 2, 'group_add'));
     }
 
     public setSpeedDialMenu() {

@@ -44,7 +44,7 @@ export class NgLodgingTypesMenu extends SidebarMenu {
                 displayName: this.translationPrefix + 'CREATE',
                 area: 'actions',
                 order: 1,
-                icon: 'groupAdd',
+                icon: 'group_add',
                 permissions: [
                     LodgingsPermissions.addLodgingTypes
                 ]
@@ -54,7 +54,7 @@ export class NgLodgingTypesMenu extends SidebarMenu {
                 displayName: this.translationPrefix + 'FIELDS',
                 area: 'manage',
                 order: 2,
-                icon: 'shortText',
+                icon: 'short_text',
                 permissions: [
                     LodgingsPermissions.addLodgingTypeFields
                 ]
@@ -64,7 +64,7 @@ export class NgLodgingTypesMenu extends SidebarMenu {
                 displayName: this.translationPrefix + 'AVAILABILITY',
                 area: 'manage',
                 order: 4,
-                icon: 'groupAdd',
+                icon: 'group_add',
             })
         ]);
 

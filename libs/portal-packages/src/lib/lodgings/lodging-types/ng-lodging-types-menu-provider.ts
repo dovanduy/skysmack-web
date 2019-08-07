@@ -60,7 +60,7 @@ export class NgLodgingTypesMenuProvider extends MenuProvider {
                     displayName: this.translationPrefix + 'FIELDS',
                     area: 'manage',
                     order: 2,
-                    icon: 'shortText',
+                    icon: 'short_text',
                     permissions: [
                         LodgingsPermissions.addLodgingTypeFields
                     ],
@@ -71,7 +71,7 @@ export class NgLodgingTypesMenuProvider extends MenuProvider {
                     displayName: this.translationPrefix + 'AVAILABILITY',
                     area: 'manage',
                     order: 3,
-                    icon: 'groupAdd',
+                    icon: 'group_add',
                     permissions: [
                     ],
                     providedIn: ['sidebar']

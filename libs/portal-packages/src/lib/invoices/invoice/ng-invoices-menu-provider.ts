@@ -59,7 +59,7 @@ export class NgInvoicesMenuProvider extends MenuProvider {
                 displayName: this.translationPrefix + 'FIELDS',
                 area: 'manage',
                 order: 2,
-                icon: 'shortText',
+                icon: 'short_text',
                 permissions: [
                     InvoicesPermissions.findInvoiceItemFields
                 ],
@@ -70,7 +70,7 @@ export class NgInvoicesMenuProvider extends MenuProvider {
                 displayName: this.translationPrefix + 'PAYMENTS',
                 area: 'manage',
                 order: 3,
-                icon: 'shortText',
+                icon: 'short_text',
                 permissions: [
                     InvoicesPermissions.findInvoiceItemFields
                 ],

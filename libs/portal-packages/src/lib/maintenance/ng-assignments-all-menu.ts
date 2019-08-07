@@ -38,7 +38,7 @@ export class NgAssignmentAllMenu extends SidebarMenu {
                 displayName: this.translationPrefix + 'SINGLE_ASSIGNMENTS',
                 area: 'manage',
                 order: 2,
-                icon: 'groupAdd',
+                icon: 'group_add',
                 permissions: [
                     MaintenancePermissions.findAssignments
                 ]
@@ -48,7 +48,7 @@ export class NgAssignmentAllMenu extends SidebarMenu {
                 displayName: this.translationPrefix + 'RECURRING_ASSIGNMENTS',
                 area: 'manage',
                 order: 3,
-                icon: 'shortText',
+                icon: 'short_text',
                 permissions: [
                     MaintenancePermissions.findRecurringAssignments
                 ]

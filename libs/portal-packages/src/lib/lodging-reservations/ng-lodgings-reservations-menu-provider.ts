@@ -65,7 +65,7 @@ export class NgLodgingsReservationsMenuProvider extends MenuProvider {
                 displayName: this.translationPrefix + 'ALL',
                 area: 'reservations',
                 order: 1,
-                icon: 'groupAdd',
+                icon: 'group_add',
                 permissions: [
                     ReservationsPermissions.findReservations
                 ],
@@ -76,7 +76,7 @@ export class NgLodgingsReservationsMenuProvider extends MenuProvider {
                 displayName: this.translationPrefix + 'ARRIVALS',
                 area: 'reservations',
                 order: 2,
-                icon: 'groupAdd',
+                icon: 'group_add',
                 permissions: [
                     ReservationsPermissions.findReservations
                 ],
@@ -87,7 +87,7 @@ export class NgLodgingsReservationsMenuProvider extends MenuProvider {
                 displayName: this.translationPrefix + 'STAYS',
                 area: 'reservations',
                 order: 3,
-                icon: 'groupAdd',
+                icon: 'group_add',
                 permissions: [
                     ReservationsPermissions.findReservations
                 ],
@@ -98,7 +98,7 @@ export class NgLodgingsReservationsMenuProvider extends MenuProvider {
                 displayName: this.translationPrefix + 'DEPARTURES',
                 area: 'reservations',
                 order: 4,
-                icon: 'groupAdd',
+                icon: 'group_add',
                 permissions: [
                     ReservationsPermissions.findReservations
                 ],
@@ -109,7 +109,7 @@ export class NgLodgingsReservationsMenuProvider extends MenuProvider {
                 displayName: this.translationPrefix + 'SETTINGS',
                 area: 'settings',
                 order: 1,
-                icon: 'groupAdd',
+                icon: 'group_add',
                 permissions: [
                     ReservationsPermissions.checkIn
                 ],

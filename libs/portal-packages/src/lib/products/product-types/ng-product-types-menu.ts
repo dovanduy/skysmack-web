@@ -43,7 +43,7 @@ export class NgProductTypesMenu extends SidebarMenu {
                 displayName: this.translationPrefix + 'CREATE',
                 area: 'actions',
                 order: 1,
-                icon: 'groupAdd',
+                icon: 'group_add',
                 permissions: [
                     ProductsPermissions.addProductTypes
                 ]
@@ -53,7 +53,7 @@ export class NgProductTypesMenu extends SidebarMenu {
                 displayName: this.translationPrefix + 'FIELDS',
                 area: 'manage',
                 order: 2,
-                icon: 'shortText',
+                icon: 'short_text',
                 permissions: [
                     ProductsPermissions.findProductTypeFields
                 ]

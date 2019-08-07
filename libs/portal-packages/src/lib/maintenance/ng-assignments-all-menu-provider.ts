@@ -44,7 +44,7 @@ export class NgAssignmentAllMenuProvider extends MenuProvider {
                 displayName: this.translationPrefix + 'SINGLE_ASSIGNMENTS',
                 area: 'manage',
                 order: 1,
-                icon: 'groupAdd',
+                icon: 'group_add',
                 permissions: [
                     MaintenancePermissions.findAssignments
                 ],
@@ -55,7 +55,7 @@ export class NgAssignmentAllMenuProvider extends MenuProvider {
                 displayName: this.translationPrefix + 'RECURRING_ASSIGNMENTS',
                 area: 'manage',
                 order: 2,
-                icon: 'shortText',
+                icon: 'short_text',
                 permissions: [
                 ],
                 providedIn: ['sidebar']
