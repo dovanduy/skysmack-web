@@ -5,7 +5,7 @@ import { MenuItem } from '@skysmack/framework';
 import { Guid } from 'guid-typescript';
 import { Observable } from 'rxjs';
 import { ReservationsPermissions } from '@skysmack/packages-lodging-reservations';
-import { getMenuEntries, setConnectedPackage, getConnectedPackageMenuEntries, getCombinedMenuEntries } from '@skysmack/ng-framework';
+import { getMenuEntries, getConnectedPackageMenuEntries, getCombinedMenuEntries } from '@skysmack/ng-framework';
 import { LodgingReservationsTypeId, LodgingsTypeId } from '@skysmack/package-types';
 import { LodgingsReservationsIndexComponent } from './lodging-reservations/lodgings-reservations-index/lodgings-reservations-index.component';
 import { LodgingsIndexComponent } from '../lodgings';
