@@ -16,6 +16,8 @@ import { RecordIndexComponent } from '@skysmack/portal-fields';
   templateUrl: './connections-index.component.html'
 })
 export class ConnectionsIndexComponent extends RecordIndexComponent<ConnectionsAppState, Connection, ConnectionKey> implements OnInit {
+  public static COMPONENT_KEY = 'connections-index';
+  public componentKey = ConnectionsIndexComponent.COMPONENT_KEY;
   public areaKey: string = CONNECTIONS_AREA_KEY;
   public titleExtras = true;
   public menuItemActions: MenuItem[] = [

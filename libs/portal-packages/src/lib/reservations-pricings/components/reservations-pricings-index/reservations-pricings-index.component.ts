@@ -10,6 +10,8 @@ import { BaseComponent } from '@skysmack/portal-fields';
   templateUrl: './reservations-pricings-index.component.html'
 })
 export class ReservationsPricingsIndexComponent extends BaseComponent<any, any> implements OnInit {
+  public static COMPONENT_KEY = 'reservations-pricings-index';
+  public componentKey = ReservationsPricingsIndexComponent.COMPONENT_KEY;
 
   constructor(
     public skysmackStore: NgSkysmackStore,

@@ -7,6 +7,8 @@ import { NgTerminalPaymentsIndexMenu } from '../../ng-terminal-payments-index-me
   templateUrl: './terminal-payments-index.component.html'
 })
 export class TerminalPaymentsIndexComponent implements OnInit {
+  public static COMPONENT_KEY = 'terminal-payments-index';
+  public componentKey = TerminalPaymentsIndexComponent.COMPONENT_KEY;
 
   constructor(
     public sidebarMenu: NgTerminalPaymentsIndexMenu,
