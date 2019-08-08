@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
-import { NgMenuItemProviders, registerRedux } from '@skysmack/ng-framework';
-import { NgReservationsPricingsMenuItemProvider } from './ng-reservations-pricings-menu-item-provider';
+import { registerRedux } from '@skysmack/ng-framework';
 import { lodgingPricesReducer, lodgingTypePricesReducer, LODGING_PRICES_REDUCER_KEY, LODGING_TYPE_PRICES_REDUCER_KEY, LODGING_RESERVATION_PRICE_CHANGES_REDUCER_KEY, LODGING_TYPE_RESERVATION_PRICE_CHANGES_REDUCER_KEY, lodgingReservationPriceChangesReducer, lodgingTypeReservationPriceChangesReducer } from '@skysmack/packages-reservations-pricings';
 import { NgLodgingPricesEpics } from './lodging-prices/redux/ng-lodging-prices-epics';
 import { NgLodgingTypePricesEpics } from './lodging-type-prices/redux/ng-lodging-type-prices-epics';
@@ -14,8 +13,6 @@ import { NgLodgingTypeReservationPriceChangesEpics } from './lodging-type-reserv
 })
 export class NgReservationsPricingsModule {
   constructor(
-    ngMenuItemProviders: NgMenuItemProviders,
-    menuItemProvider: NgReservationsPricingsMenuItemProvider,
     lodgingReservationPriceChangesEpics: NgLodgingReservationPriceChangesEpics,
     lodgingTypeReservationPriceChangesEpics: NgLodgingTypeReservationPriceChangesEpics,
     lodgingPricesEpics: NgLodgingPricesEpics,
@@ -25,7 +22,5 @@ export class NgReservationsPricingsModule {
     registerRedux(LODGING_TYPE_RESERVATION_PRICE_CHANGES_REDUCER_KEY, lodgingTypeReservationPriceChangesReducer, lodgingTypeReservationPriceChangesEpics);
     registerRedux(LODGING_PRICES_REDUCER_KEY, lodgingPricesReducer, lodgingPricesEpics);
     registerRedux(LODGING_TYPE_PRICES_REDUCER_KEY, lodgingTypePricesReducer, lodgingTypePricesEpics);
-
-    ngMenuItemProviders.add(menuItemProvider);
   }
 }

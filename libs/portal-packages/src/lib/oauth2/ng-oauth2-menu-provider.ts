@@ -14,7 +14,7 @@ import { Skysmack } from '@skysmack/packages-skysmack-core';
 import { Observable, of } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
-export class NgOAuth2MenuProvider extends MenuProvider {
+export class NgOAuth2MenuProvider implements MenuProvider {
     public id = Guid.create().toString();
     public translationPrefix = 'OAUTH2.INDEX.';
 
@@ -23,7 +23,7 @@ export class NgOAuth2MenuProvider extends MenuProvider {
         public dialog: MatDialog,
         public mainStore: NgRedux<any>,
         public authenticationActions: NgAuthenticationActions
-    ) { super(); }
+    ) { }
 
     public getMenuAreas(packagePath: string, componentKey: string): Observable<MenuArea[]> {
         return of([

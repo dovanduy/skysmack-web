@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 
-import { LanguageService } from '@skysmack/portal-ui';
+import { LanguageService, NgMenuProviders } from '@skysmack/portal-ui';
 import { PortalUiModule } from '@skysmack/portal-ui';
 import { NgEmailsSmtpModule } from '../../../../ng-packages/ng-email-smtp/src/lib';
 import { EmailsSmtpRoutingModule } from './emails-smtp-routing.module';
@@ -11,6 +11,7 @@ import { emailsSmtpComponents } from './emails-smtp/components/emails-smtp-compo
 import { DynamicFormsModule } from '@skysmack/portal-dynamic-forms';
 import { SettingsModule } from '@skysmack/portal-settings';
 import { PortalFieldsModule } from '@skysmack/portal-fields';
+import { NgEmailsSmtpMenuProvider } from './emails-smtp/ng-emails-smtp-menu-provider';
 
 @NgModule({
   imports: [
@@ -32,5 +33,11 @@ import { PortalFieldsModule } from '@skysmack/portal-fields';
   ]
 })
 export class EmailsSmtpModule {
-  constructor() { }
+  constructor(
+    ngMenuProviders: NgMenuProviders,
+    ngEmailsSmtpMenuProvider: NgEmailsSmtpMenuProvider,
+  ) {
+    ngMenuProviders
+      .add(ngEmailsSmtpMenuProvider)
+  }
 }

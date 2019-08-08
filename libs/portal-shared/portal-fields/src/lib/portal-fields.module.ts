@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { HttpClientModule } from '@angular/common/http';
-import { PortalUiModule, MaterialModule } from '@skysmack/portal-ui';
+import { PortalUiModule, MaterialModule, NgMenuProviders } from '@skysmack/portal-ui';
 import { LanguageService } from '@skysmack/portal-ui';
 import { dynamicFieldComponents } from './field-components/dynamic-field-components';
 import { managementFieldsComponents } from './management-components/management-fields-components';
@@ -17,6 +17,7 @@ import { AngularEditorModule } from '@kolkov/angular-editor';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { NgFieldsMenuProvider } from './ng-fields-menu-provider';
 
 @NgModule({
   imports: [
@@ -54,5 +55,11 @@ import { MatFormFieldModule } from '@angular/material/form-field';
   ]
 })
 export class PortalFieldsModule {
-  constructor() { }
+  constructor(
+    ngMenuProviders: NgMenuProviders, 
+    ngFieldsMenuProvider: NgFieldsMenuProvider
+  ) {
+    ngMenuProviders
+    .add(ngFieldsMenuProvider);
+   }
 }

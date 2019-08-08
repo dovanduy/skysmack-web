@@ -5,7 +5,6 @@ import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { LodgingsAppState, LODGINGS_AREA_KEY } from '@skysmack/packages-lodgings';
 import { Lodging } from '@skysmack/packages-lodgings';
 import { NgLodgingsActions, NgLodgingsStore } from '@skysmack/ng-lodgings';
-import { NgLodgingsMenu } from '../../ng-lodgings-menu';
 import { MenuItem } from '@skysmack/framework';
 import { NgFieldActions } from '@skysmack/ng-framework';
 import { NgLodgingsFieldsConfig } from '../../ng-lodgings-fields-config';
@@ -17,6 +16,8 @@ import { DocumentRecordIndexComponent } from '@skysmack/portal-fields';
   templateUrl: './lodgings-index.component.html',
 })
 export class LodgingsIndexComponent extends DocumentRecordIndexComponent<LodgingsAppState, Lodging, number> implements OnInit {
+  public static COMPONENT_KEY = 'lodgings-index';
+  public componentKey = LodgingsIndexComponent.COMPONENT_KEY;
 
   public areaKey: string = LODGINGS_AREA_KEY;
   public menuItemActions: MenuItem[] = [
@@ -30,7 +31,6 @@ export class LodgingsIndexComponent extends DocumentRecordIndexComponent<Lodging
     public actions: NgLodgingsActions,
     public redux: NgSkysmackStore,
     public store: NgLodgingsStore,
-    public sidebarMenu: NgLodgingsMenu,
     public fieldsConfig: NgLodgingsFieldsConfig,
     public fieldActions: NgFieldActions,
     public title: EntityComponentPageTitle,

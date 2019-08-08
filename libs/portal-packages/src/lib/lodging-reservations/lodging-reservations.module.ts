@@ -2,7 +2,7 @@ import { NgModule, ComponentFactoryResolver } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 
-import { LanguageService } from '@skysmack/portal-ui';
+import { LanguageService, NgMenuProviders } from '@skysmack/portal-ui';
 import { NgIdentitiesModule } from '@skysmack/ng-identities';
 import { PortalUiModule } from '@skysmack/portal-ui';
 import { LodgingReservationsRoutingModule } from './lodging-reservations-routing.module';
@@ -14,6 +14,7 @@ import { PortalFieldsModule } from '@skysmack/portal-fields';
 import { NgLodgingReservationsModule } from '@skysmack/ng-lodging-reservations';
 import { NgDashboardProviders, CoalescingComponentFactoryResolver } from '@skysmack/ng-framework';
 import { NgLodgingReservationsDashboardProvider } from './lodging-reservations/ng-lodging-reservations-dashboard-provider';
+import { NgLodgingsReservationsMenuProvider } from './ng-lodgings-reservations-menu-provider';
 
 @NgModule({
   imports: [
@@ -43,9 +44,13 @@ export class LodgingReservationsModule {
     coalescingResolver: CoalescingComponentFactoryResolver,
     localResolver: ComponentFactoryResolver,
     dashboardProviders: NgDashboardProviders,
-    lodgingReservationsDashboardProvider: NgLodgingReservationsDashboardProvider
+    lodgingReservationsDashboardProvider: NgLodgingReservationsDashboardProvider,
+    ngMenuProviders: NgMenuProviders, 
+    ngLodgingsReservationsMenuProvider: NgLodgingsReservationsMenuProvider
   ) {
     coalescingResolver.registerResolver(localResolver);
     dashboardProviders.add(lodgingReservationsDashboardProvider);
+    ngMenuProviders
+    .add(ngLodgingsReservationsMenuProvider);
   }
 }

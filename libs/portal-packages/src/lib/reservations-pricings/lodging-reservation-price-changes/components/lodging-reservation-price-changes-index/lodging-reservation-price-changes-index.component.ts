@@ -5,7 +5,6 @@ import { LODGING_RESERVATION_PRICE_CHANGES_AREA_KEY, LodgingReservationPriceChan
 import { MenuItem } from '@skysmack/framework';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { NgLodgingReservationPriceChangesActions, NgLodgingReservationPriceChangesStore } from '@skysmack/ng-reservations-pricings';
-import { NgLodgingReservationPriceChangesMenu } from '../../ng-lodging-reservation-price-changes-menu';
 import { NgLodgingReservationPriceChangesFieldsConfig } from '../../ng-lodging-reservation-price-changes-fields-config';
 import { RecordIndexComponent } from '@skysmack/portal-fields';
 
@@ -14,6 +13,8 @@ import { RecordIndexComponent } from '@skysmack/portal-fields';
   templateUrl: './lodging-reservation-price-changes-index.component.html'
 })
 export class LodgingReservationPriceChangesIndexComponent extends RecordIndexComponent<LodgingReservationPriceChangesAppState, LodgingReservationPriceChange, number> implements OnInit {
+  public static COMPONENT_KEY = 'lodging-reservation-price-changes-index';
+  public componentKey = LodgingReservationPriceChangesIndexComponent.COMPONENT_KEY;
 
   public areaKey: string = LODGING_RESERVATION_PRICE_CHANGES_AREA_KEY;
   public menuItemActions: MenuItem[] = [
@@ -27,7 +28,6 @@ export class LodgingReservationPriceChangesIndexComponent extends RecordIndexCom
     public actions: NgLodgingReservationPriceChangesActions,
     public redux: NgSkysmackStore,
     public store: NgLodgingReservationPriceChangesStore,
-    public sidebarMenu: NgLodgingReservationPriceChangesMenu,
     public fieldsConfig: NgLodgingReservationPriceChangesFieldsConfig,
     public title: EntityComponentPageTitle,
     public menuItemActionProviders: MenuItemActionProviders

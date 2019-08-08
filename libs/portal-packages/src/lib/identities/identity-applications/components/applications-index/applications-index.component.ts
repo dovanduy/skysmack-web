@@ -4,7 +4,6 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { NgApplicationsActions, NgApplicationsStore } from '@skysmack/ng-identities';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { Application, ApplicationsAppState, APPLICATIONS_AREA_KEY } from '@skysmack/packages-identities';
-import { NgApplicationsMenu } from '../../ng-applications-menu';
 import { MenuItem } from '@skysmack/framework';
 import { NgApplicationsFieldsConfig } from '../../ng-applications-fields-config';
 import { RecordIndexComponent } from '@skysmack/portal-fields';
@@ -15,6 +14,8 @@ import { RecordIndexComponent } from '@skysmack/portal-fields';
   templateUrl: './applications-index.component.html'
 })
 export class ApplicationsIndexComponent extends RecordIndexComponent<ApplicationsAppState, Application, number> implements OnInit {
+  public static COMPONENT_KEY = 'applications-index';
+  public componentKey = ApplicationsIndexComponent.COMPONENT_KEY;
 
   public areaKey: string = APPLICATIONS_AREA_KEY;
   public titleExtras = true;
@@ -31,7 +32,6 @@ export class ApplicationsIndexComponent extends RecordIndexComponent<Application
     public redux: NgSkysmackStore,
     public title: EntityComponentPageTitle,
     public store: NgApplicationsStore,
-    public sidebarMenu: NgApplicationsMenu,
     public fieldsConfig: NgApplicationsFieldsConfig,
     public menuItemActionProviders: MenuItemActionProviders
   ) {

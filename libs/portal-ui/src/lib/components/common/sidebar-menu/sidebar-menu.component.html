@@ -1,66 +1,32 @@
-<div *ngIf="sidebarMenu" class="docs-component-viewer-nav">
-  <div class="docs-component-viewer-nav-content">
-    <ng-container *ngFor="let menuAreaItem of menuAreaItems$ | async; let last = last;">
-      <nav *ngIf="menuAreaItem.area.display">
-        <span class="docs-nav-content-btn">
-          {{ menuAreaItem.area.displayName | translate }}
-        </span>
+<ng-container *ngIf="menuAreaItems$ | async as menuAreaItems">
+  <div *ngIf="menuAreaItems.length > 0" class="docs-component-viewer-nav">
+    <div class="docs-component-viewer-nav-content">
+      <ng-container *ngFor="let menuAreaItem of menuAreaItems; let last = last;">
+        <nav *ngIf="menuAreaItem.items && menuAreaItem.items.length > 0">
+          <span class="docs-nav-content-btn" *ngIf="menuAreaItem.area && menuAreaItem.area.display">
+            {{ menuAreaItem.area.displayName | translate }}
+          </span>
 
-        <ul>
-          <ng-container *ngFor="let menuItem of menuAreaItem.items">
-            <!-- ACTION EVENT -->
-            <li *ngIf="menuItem.isActionEvent && (menuItem | showMenuItemAction:undefined)"
-              (click)="menuItemActionEvent.emit({ action: menuItem.action, _this: menuItem._this });">
-              <span class="link">{{ menuItem.displayName | translate }}</span>
-            </li>
+          <ul>
+            <ng-container *ngFor="let menuItem of menuAreaItem.items">
+              <!-- ACTION EVENT -->
+              <li *ngIf="menuItem.isActionEvent && (menuItem | showMenuItemAction:undefined)"
+                (click)="menuItemActionEvent.emit({ action: menuItem.action, _this: menuItem._this });">
+                <span class="link">{{ menuItem.displayName | translate }}</span>
+              </li>
 
-            <!-- URL EVENT -->
-            <li *ngIf="!menuItem.isActionEvent">
-              <a [routerLink]="[menuItem.url]">
-                {{ menuItem.displayName | translate }}
-              </a>
-            </li>
-          </ng-container>
-        </ul>
-
-        <!-- <hr *ngIf="!last" /> -->
-      </nav>
-    </ng-container>
-
-
-    <ng-container *ngFor="let menuArea of sidebarMenu.primaryMenuAreas$ | async; let last = last;">
-      <nav *ngIf="menuArea.display">
-        <span class="docs-nav-content-btn">
-          {{ menuArea.displayName | translate }}
-        </span>
-
-        <ul>
-          <ng-container *ngFor="let menuItem of sidebarMenu.primaryMenuItems$ | async">
-            <ng-container *ngIf="menuItem.area === menuArea.area">
-              <ng-template [inAnyPermission]="menuItem.permissions"
-                (permissionsChecked)="permissionsChecked($event, menuItem)">
-
-                <!-- ACTION EVENT -->
-                <li *ngIf="menuItem.isActionEvent && (menuItem | showMenuItemAction:undefined) && menuItem.display"
-                  (click)="menuItemActionEvent.emit({ action: menuItem.action, _this: menuItem._this });">
-                  <span class="link">{{ menuItem.displayName | translate }}</span>
-                </li>
-
-                <!-- URL EVENT -->
-                <li *ngIf="!menuItem.isActionEvent && menuItem.display">
-                  <a [routerLink]="[menuItem.url]">
-                    {{ menuItem.displayName | translate }}
-                  </a>
-                </li>
-
-
-              </ng-template>
+              <!-- URL EVENT -->
+              <li *ngIf="!menuItem.isActionEvent">
+                <a [routerLink]="[menuItem.url]">
+                  {{ menuItem.displayName | translate }}
+                </a>
+              </li>
             </ng-container>
-          </ng-container>
-        </ul>
+          </ul>
 
-        <!-- <hr *ngIf="!last" /> -->
-      </nav>
-    </ng-container>
+          <!-- <hr *ngIf="!last" /> -->
+        </nav>
+      </ng-container>
+    </div>
   </div>
-</div>
+</ng-container>

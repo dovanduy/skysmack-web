@@ -4,7 +4,6 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { NgTerminalsActions, NgTerminalsStore } from '@skysmack/ng-terminal-payments';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { Terminal, TerminalsAppState, TERMINALS_AREA_KEY } from '@skysmack/packages-terminal-payments';
-import { NgTerminalsMenu } from '../../ng-terminals-menu';
 import { MenuItem } from '@skysmack/framework';
 import { NgTerminalsFieldsConfig } from '../../ng-terminals-fields-config';
 import { RecordIndexComponent } from '@skysmack/portal-fields';
@@ -14,6 +13,8 @@ import { RecordIndexComponent } from '@skysmack/portal-fields';
   templateUrl: './terminals-index.component.html'
 })
 export class TerminalsIndexComponent extends RecordIndexComponent<TerminalsAppState, Terminal, number> implements OnInit {
+  public static COMPONENT_KEY = 'terminals-index';
+  public componentKey = TerminalsIndexComponent.COMPONENT_KEY;
 
   public areaKey: string = TERMINALS_AREA_KEY;
   public titleExtras = true;
@@ -28,7 +29,6 @@ export class TerminalsIndexComponent extends RecordIndexComponent<TerminalsAppSt
     public actions: NgTerminalsActions,
     public redux: NgSkysmackStore,
     public store: NgTerminalsStore,
-    public sidebarMenu: NgTerminalsMenu,
     public fieldsConfig: NgTerminalsFieldsConfig,
     public title: EntityComponentPageTitle,
     public menuItemActionProviders: MenuItemActionProviders

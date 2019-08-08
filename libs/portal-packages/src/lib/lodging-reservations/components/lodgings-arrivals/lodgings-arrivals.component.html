@@ -1,4 +1,4 @@
-<ss-container [sidebarMenu]="sidebarMenu" (menuItemActionEvent)="actionEvent($event)"
+<ss-container (menuItemActionEvent)="actionEvent($event)" [componentKey]="'lodgings-reservations-index'"
   *ngIf="loadedPackage$ | async as loadedPackage">
   <ss-records-container [area]="areaKey" [cancelAction]="actions.cancelAction" [title]="'Arrivals'"
     [entities$]="pagedEntities$" [menuItemActions$]="menuItemActions$" [packagePath]="packagePath"

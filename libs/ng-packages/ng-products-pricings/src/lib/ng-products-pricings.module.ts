@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
-import { NgMenuItemProviders, registerRedux } from '@skysmack/ng-framework';
-import { NgProductsPricingsMenuItemProvider } from './ng-products-pricings-menu-item-provider';
+import { registerRedux } from '@skysmack/ng-framework';
 import { productsSalesPriceReducer, productTypeSalesPriceReducer, productPriceChangesReducer, productTypePriceChangesReducer, PRODUCT_TYPE_PRICE_CHANGES_REDUCER_KEY, PRODUCT_PRICE_CHANGES_REDUCER_KEY, PRODUCT_TYPE_SALES_PRICE_REDUCER_KEY, PRODUCTS_SALES_PRICE_REDUCER_KEY } from '@skysmack/packages-products-pricings';
 import { NgProductsSalesPriceEpics } from './products-sales-price/redux/ng-products-sales-price-epics';
 import { NgProductTypeSalesPriceEpics } from './product-type-sales-price/redux/ng-product-type-sales-price-epics';
@@ -14,8 +13,6 @@ import { NgProductTypePriceChangesEpics } from './product-type-price-changes/red
 })
 export class NgProductsPricingsModule {
   constructor(
-    ngMenuItemProviders: NgMenuItemProviders,
-    menuItemProvider: NgProductsPricingsMenuItemProvider,
     productsSalesPriceEpics: NgProductsSalesPriceEpics,
     productTypeSalesPriceEpics: NgProductTypeSalesPriceEpics,
     productPriceChangesEpics: NgProductPriceChangesEpics,
@@ -26,7 +23,5 @@ export class NgProductsPricingsModule {
 
     registerRedux(PRODUCT_PRICE_CHANGES_REDUCER_KEY, productPriceChangesReducer, productPriceChangesEpics);
     registerRedux(PRODUCT_TYPE_PRICE_CHANGES_REDUCER_KEY, productTypePriceChangesReducer, productTypePriceChangesEpics);
-
-    ngMenuItemProviders.add(menuItemProvider);
   }
 }

@@ -4,7 +4,6 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { NgInvoiceItemsActions, NgInvoiceItemsStore } from '@skysmack/ng-invoices';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { InvoiceItem, InvoiceItemsAppState, INVOICE_ITEMS_AREA_KEY } from '@skysmack/packages-invoices';
-import { NgInvoiceItemsMenu } from './../../ng-invoice-items-menu';
 import { MenuItem } from '@skysmack/framework';
 import { NgFieldActions } from '@skysmack/ng-framework';
 import { NgInvoiceItemsFieldsConfig } from '../../ng-invoice-items-fields-config';
@@ -18,6 +17,8 @@ import { DocumentRecordIndexComponent } from '@skysmack/portal-fields';
   templateUrl: './invoice-items-index.component.html'
 })
 export class InvoiceItemsIndexComponent extends DocumentRecordIndexComponent<InvoiceItemsAppState, InvoiceItem, number> implements OnInit {
+  public static COMPONENT_KEY = 'invoice-items-index';
+  public componentKey = InvoiceItemsIndexComponent.COMPONENT_KEY;
 
   public areaKey: string = INVOICE_ITEMS_AREA_KEY;
   public menuItemActions: MenuItem[] = [
@@ -31,7 +32,6 @@ export class InvoiceItemsIndexComponent extends DocumentRecordIndexComponent<Inv
     public actions: NgInvoiceItemsActions,
     public redux: NgSkysmackStore,
     public store: NgInvoiceItemsStore,
-    public sidebarMenu: NgInvoiceItemsMenu,
     public fieldsConfig: NgInvoiceItemsFieldsConfig,
     public fieldActions: NgFieldActions,
     public title: EntityComponentPageTitle,

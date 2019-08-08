@@ -4,7 +4,6 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { NgRolesActions, NgRolesStore } from '@skysmack/ng-identities';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { Role, RolesAppState, ROLES_AREA_KEY } from '@skysmack/packages-identities';
-import { NgRolesMenu } from '../../ng-roles-menu';
 import { MenuItem } from '@skysmack/framework';
 import { NgRolesFieldsConfig } from '../../ng-roles-fields-config';
 import { RecordIndexComponent } from '@skysmack/portal-fields';
@@ -15,6 +14,8 @@ import { RecordIndexComponent } from '@skysmack/portal-fields';
   templateUrl: './roles-index.component.html'
 })
 export class RolesIndexComponent extends RecordIndexComponent<RolesAppState, Role, number> implements OnInit {
+  public static COMPONENT_KEY = 'roles-index';
+  public componentKey = RolesIndexComponent.COMPONENT_KEY;
 
   public areaKey: string = ROLES_AREA_KEY;
   public titleExtras = true;
@@ -30,7 +31,6 @@ export class RolesIndexComponent extends RecordIndexComponent<RolesAppState, Rol
     public redux: NgSkysmackStore,
     public title: EntityComponentPageTitle,
     public store: NgRolesStore,
-    public sidebarMenu: NgRolesMenu,
     public fieldsConfig: NgRolesFieldsConfig,
     public menuItemActionProviders: MenuItemActionProviders
   ) {
