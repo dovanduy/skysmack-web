@@ -5,9 +5,10 @@ import { MenuItem } from '@skysmack/framework';
 import { Guid } from 'guid-typescript';
 import { of, Observable } from 'rxjs';
 import { ProductsPricingsPermissions } from '@skysmack/packages-products-pricings';
-import { getMenuEntries, setConnectedParentPackage } from '@skysmack/ng-framework';
-import { ProductsPricingsTypeId } from '@skysmack/package-types';
+import { getMenuEntries, setConnectedParentPackage, getCombinedMenuEntries, getConnectedPackageMenuEntries } from '@skysmack/ng-framework';
+import { ProductsPricingsTypeId, ProductsTypeId } from '@skysmack/package-types';
 import { ProductsPricingsIndexComponent } from './components/products-pricings-index/products-pricings-index.component';
+import { ProductsIndexComponent } from '../products/products/components/products-index/products-index.component';
 
 @Injectable({ providedIn: 'root' })
 export class NgProductsPricingsMenuProvider extends MenuProvider {
@@ -19,11 +20,33 @@ export class NgProductsPricingsMenuProvider extends MenuProvider {
     ) { super(); }
 
     public getMenuAreas(packagePath: string, componentKey: string): Observable<MenuArea[]> {
-        return getMenuEntries<MenuArea>(packagePath, ProductsPricingsTypeId, componentKey, ProductsPricingsIndexComponent.COMPONENT_KEY, this.getProductsPricingsMenuAreas, this.store);
+        return getMenuEntries<MenuArea>(packagePath,
+            ProductsPricingsTypeId,
+            componentKey,
+            ProductsPricingsIndexComponent.COMPONENT_KEY,
+            this.getProductsPricingsMenuAreas,
+            this.store
+        );
     };
 
     public getMenuItems(packagePath: string, componentKey: string): Observable<MenuItem[]> {
-        return getMenuEntries<MenuItem>(packagePath, ProductsPricingsTypeId, componentKey, ProductsPricingsIndexComponent.COMPONENT_KEY, this.getProductsPricingsMenuItems, this.store);
+        return getCombinedMenuEntries(
+            getMenuEntries<MenuItem>(packagePath,
+                ProductsPricingsTypeId,
+                componentKey,
+                ProductsPricingsIndexComponent.COMPONENT_KEY,
+                this.getProductsPricingsMenuItems,
+                this.store
+            ),
+            getConnectedPackageMenuEntries(
+                packagePath,
+                ProductsPricingsTypeId,
+                ProductsTypeId,
+                componentKey,
+                ProductsIndexComponent.COMPONENT_KEY,
+                this.store
+            )
+        );
     };
 
     public getProductsPricingsMenuAreas = () => {
