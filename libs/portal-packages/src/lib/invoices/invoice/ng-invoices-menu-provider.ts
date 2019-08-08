@@ -3,8 +3,8 @@ import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { MenuArea, MenuProvider } from '@skysmack/framework';
 import { MenuItem } from '@skysmack/framework';
 import { Guid } from 'guid-typescript';
-import { of, Observable } from 'rxjs';
-import { getMenuEntries, setConnectedParentPackage } from '@skysmack/ng-framework';
+import { Observable } from 'rxjs';
+import { getMenuEntries, getCombinedMenuEntries } from '@skysmack/ng-framework';
 import { InvoicesPermissions } from '@skysmack/packages-invoices';
 import { InvoicesTypeId } from '@skysmack/package-types';
 import { InvoicesIndexComponent } from './components/invoices-index/invoices-index.component';
@@ -19,11 +19,27 @@ export class NgInvoicesMenuProvider extends MenuProvider {
     ) { super(); }
 
     public getMenuAreas(packagePath: string, componentKey: string): Observable<MenuArea[]> {
-        return getMenuEntries<MenuArea>(packagePath, InvoicesTypeId, componentKey, InvoicesIndexComponent.COMPONENT_KEY, this.getInvoicesMenuAreas, this.store);
+        return getMenuEntries<MenuArea>(
+            packagePath,
+            InvoicesTypeId,
+            componentKey,
+            InvoicesIndexComponent.COMPONENT_KEY,
+            this.getInvoicesMenuAreas,
+            this.store
+        );
     };
 
+
+
     public getMenuItems(packagePath: string, componentKey: string): Observable<MenuItem[]> {
-        return getMenuEntries<MenuItem>(packagePath, InvoicesTypeId, componentKey, InvoicesIndexComponent.COMPONENT_KEY, this.getInvoicesMenuItems, this.store);
+        return getMenuEntries<MenuItem>(
+            packagePath,
+            InvoicesTypeId,
+            componentKey,
+            InvoicesIndexComponent.COMPONENT_KEY,
+            this.getInvoicesMenuItems,
+            this.store
+        )
     };
 
     public getInvoicesMenuAreas = () => {

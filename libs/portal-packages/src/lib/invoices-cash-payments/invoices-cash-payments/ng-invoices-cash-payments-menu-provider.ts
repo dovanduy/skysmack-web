@@ -4,7 +4,7 @@ import { MenuArea, MenuProvider } from '@skysmack/framework';
 import { MenuItem } from '@skysmack/framework';
 import { Guid } from 'guid-typescript';
 import { Observable } from 'rxjs';
-import { getMenuEntries, setConnectedParentPackage, getCombinedMenuEntries, getConnectedPackageMenuEntries } from '@skysmack/ng-framework';
+import { getMenuEntries, setConnectedParentPackage, getCombinedMenuEntries, getConnectedPackageMenuEntries, getConnectedPackageCustomMenuEntries } from '@skysmack/ng-framework';
 import { InvoicesCashPaymentsTypeId, InvoicesTypeId } from '@skysmack/package-types';
 import { InvoicesCashPaymentsIndexComponent } from './components/invoices-cash-payments-index/invoices-cash-payments-index.component';
 import { InvoicesIndexComponent } from '../../invoices/invoice/components/invoices-index/invoices-index.component';

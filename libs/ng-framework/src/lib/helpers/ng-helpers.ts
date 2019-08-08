@@ -1,9 +1,10 @@
 import { Router } from '@angular/router';
 import { Package, LocalObject, toLocalObject, MenuItem } from '@skysmack/framework';
-import { map, switchMap, filter } from 'rxjs/operators';
+import { map, switchMap, filter, tap } from 'rxjs/operators';
 import { combineLatest, pipe, of, Observable } from 'rxjs';
 import { SkysmackStore } from '../stores/skysmack-store';
 import { Skysmack } from '@skysmack/packages-skysmack-core';
+import { LoadedPackage } from '../packages';
 
 export const getAdditionalPaths = (router: Router, packagePath): string[] => {
     const chuncks = router.url.split('/');
@@ -128,9 +129,35 @@ export const getConnectedPackageMenuEntries = (packagePath: string, packageTypeI
     }
 };
 
-export const getCombinedMenuEntries = (menuItems1$: Observable<MenuItem[]>, menuItems2$: Observable<MenuItem[]>): Observable<MenuItem[]> => {
+/**
+ * Helper to get custom menu items pr. connected package. E.g. if Lodgings has 3 LodgingReservations installed, 3 menu items will be returned.
+ * Note: Use it in the feature/adaptor providing the items.
+ * @param packagePath The current package path
+ * @param packageTypeId E.g. LodgingReservationsTypeId
+ * @param parentPageTypeId E.g. LodgingsTypeId
+ * @param componentKey The one being provided from the current index component
+ * @param specificParentPackageComponentKey E.g. LodgingReservations must provide the component key from LodgingsIndexComponent
+ * @param store The SkysmackStore
+ * @param customMenuItem A methed return the menu item
+ */
+export const getConnectedPackageCustomMenuEntries = (packagePath: string, packageTypeId: string, parentPageTypeId: string, componentKey: string, specificParentPackageComponentKey: string, store: SkysmackStore, customMenuItem: (_package: LocalObject<Package, string>) => MenuItem): Observable<MenuItem[]> => {
+    if (componentKey === specificParentPackageComponentKey) {
+        return store.getCurrentPackage(packagePath).pipe(
+            filter(_package => _package._package.type === parentPageTypeId),
+            switchMap(() => store.getPackages().pipe(
+                map(_packages => _packages
+                    .filter(_package => _package.object.type === packageTypeId)
+                    .map(_package => customMenuItem(_package))
+                )
+            ))
+        );
+    } else {
+        return of([]);
+    }
+};
+
+export const getCombinedMenuEntries = (...args: Observable<MenuItem[]>[]): Observable<MenuItem[]> => {
     return combineLatest(
-        menuItems1$,
-        menuItems2$
-    ).pipe(map(([value1, value2]) => [...value1, ...value2]));
-}
+        args
+    ).pipe(map(menuItemsArrays => menuItemsArrays.reduce((a, b) => a.concat(b), [])));
+};
