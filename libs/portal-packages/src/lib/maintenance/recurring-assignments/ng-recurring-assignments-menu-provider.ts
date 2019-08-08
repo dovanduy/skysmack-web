@@ -10,13 +10,13 @@ import { MaintenanceTypeId } from '@skysmack/package-types';
 import { RecurringAssignmentsIndexComponent } from './components/recurring-assignments-index/recurring-assignments-index.component';
 
 @Injectable({ providedIn: 'root' })
-export class NgRecurringAssignmentsMenuProvider extends MenuProvider {
+export class NgRecurringAssignmentsMenuProvider implements MenuProvider {
     public id = Guid.create().toString();
     public translationPrefix = 'RECURRING_ASSIGNMENTS.INDEX.';
 
     constructor(
         public store: NgSkysmackStore
-    ) { super(); }
+    ) { }
 
     public getMenuAreas(packagePath: string, componentKey: string): Observable<MenuArea[]> {
         return getMenuEntries<MenuArea>(packagePath, MaintenanceTypeId, componentKey, RecurringAssignmentsIndexComponent.COMPONENT_KEY, this.getRecurringAssignmentsMenuAreas, this.store);

@@ -10,13 +10,13 @@ import { TerminalPaymentsIndexComponent } from './components/terminal-payments-i
 import { InvoicesIndexComponent } from '../invoices';
 
 @Injectable({ providedIn: 'root' })
-export class NgTerminalPaymentsIndexMenuProvider extends MenuProvider {
+export class NgTerminalPaymentsIndexMenuProvider implements MenuProvider {
     public id = Guid.create().toString();
     public translationPrefix = 'TERMINAL_PAYMENTS.INDEX.';
 
     constructor(
         public store: NgSkysmackStore
-    ) { super(); }
+    ) { }
 
     public getMenuAreas(packagePath: string, componentKey: string): Observable<MenuArea[]> {
         return getMenuEntries<MenuArea>(
@@ -56,8 +56,7 @@ export class NgTerminalPaymentsIndexMenuProvider extends MenuProvider {
                 area: 'manage',
                 translationPrefix: this.translationPrefix,
                 order: 1
-            }),
-            this.getConnectedPackageMenuArea()
+            })
         ];
     };
 

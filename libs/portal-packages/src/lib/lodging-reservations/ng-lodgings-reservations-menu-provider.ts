@@ -12,13 +12,13 @@ import { LodgingsIndexComponent } from '../lodgings';
 import { tap } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
-export class NgLodgingsReservationsMenuProvider extends MenuProvider {
+export class NgLodgingsReservationsMenuProvider implements MenuProvider {
     public id = Guid.create().toString();
     public translationPrefix = 'LODGING_RESERVATIONS.INDEX.';
 
     constructor(
         public store: NgSkysmackStore
-    ) { super(); }
+    ) { }
 
     public getMenuAreas(packagePath: string, componentKey: string): Observable<MenuArea[]> {
         return getMenuEntries<MenuArea>(

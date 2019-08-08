@@ -10,13 +10,13 @@ import { InvoicesTypeId } from '@skysmack/package-types';
 import { InvoicePaymentsIndexComponent } from './components/invoice-payments-index/invoice-payments-index.component';
 
 @Injectable({ providedIn: 'root' })
-export class NgInvoicePaymentsMenuProvider extends MenuProvider {
+export class NgInvoicePaymentsMenuProvider implements MenuProvider {
     public id = Guid.create().toString();
     public translationPrefix = 'INVOICE_PAYMENTS.INDEX.';
 
     constructor(
         public store: NgSkysmackStore
-    ) { super(); }
+    ) { }
 
     public getMenuAreas(packagePath: string, componentKey: string): Observable<MenuArea[]> {
         return getMenuEntries<MenuArea>(packagePath, InvoicesTypeId, componentKey, InvoicePaymentsIndexComponent.COMPONENT_KEY, this.getInvoicePaymentsMenuAreas, this.store);

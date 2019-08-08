@@ -9,13 +9,13 @@ import { IdentitiesTypeId } from '@skysmack/package-types';
 import { ApplicationsIndexComponent } from './components/applications-index/applications-index.component';
 
 @Injectable({ providedIn: 'root' })
-export class NgApplicationsMenuProvider extends MenuProvider {
+export class NgApplicationsMenuProvider implements MenuProvider {
     public id = Guid.create().toString();
     public translationPrefix = 'APPLICATIONS.INDEX.';
 
     constructor(
         public store: NgSkysmackStore
-    ) { super(); }
+    ) { }
 
     public getMenuAreas(packagePath: string, componentKey: string): Observable<MenuArea[]> {
         return getMenuEntries<MenuArea>(packagePath, IdentitiesTypeId, componentKey, ApplicationsIndexComponent.COMPONENT_KEY, this.getApplicationsMenuAreas, this.store);

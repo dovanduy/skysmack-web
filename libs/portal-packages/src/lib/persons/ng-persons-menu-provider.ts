@@ -12,13 +12,13 @@ import { PersonsIndexComponent } from './persons/components/persons-index/person
 
 
 @Injectable({ providedIn: 'root' })
-export class NgPersonsMenuProvider extends MenuProvider {
+export class NgPersonsMenuProvider implements MenuProvider {
     public id = Guid.create().toString();
     public translationPrefix = 'PERSONS.INDEX.';
 
     constructor(
         public store: NgSkysmackStore
-    ) { super(); }
+    ) { }
 
     public getMenuAreas(packagePath: string, componentKey: string): Observable<MenuArea[]> {
         return getMenuEntries<MenuArea>(packagePath, PersonsTypeId, componentKey, PersonsIndexComponent.COMPONENT_KEY, this.getPersonsMenuAreas, this.store);

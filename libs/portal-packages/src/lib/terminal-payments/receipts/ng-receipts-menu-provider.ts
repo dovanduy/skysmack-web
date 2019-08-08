@@ -9,13 +9,13 @@ import { TerminalPaymentsTypeId } from '@skysmack/package-types';
 import { ReceiptsIndexComponent } from './components/receipts-index/receipts-index.component';
 
 @Injectable({ providedIn: 'root' })
-export class NgReceiptsMenuProvider extends MenuProvider {
+export class NgReceiptsMenuProvider implements MenuProvider {
     public id = Guid.create().toString();
     public translationPrefix = 'RECEIPTS.INDEX.';
 
     constructor(
         public store: NgSkysmackStore
-    ) { super(); }
+    ) { }
     public getMenuAreas(packagePath: string, componentKey: string): Observable<MenuArea[]> {
         return getMenuEntries<MenuArea>(packagePath, TerminalPaymentsTypeId, componentKey, ReceiptsIndexComponent.COMPONENT_KEY, this.getReceiptsMenuAreas, this.store);
     };
@@ -35,8 +35,7 @@ export class NgReceiptsMenuProvider extends MenuProvider {
                 area: 'manage',
                 translationPrefix: this.translationPrefix,
                 order: 2
-            }),
-            this.getConnectedPackageMenuArea()
+            })
         ];
     };
 

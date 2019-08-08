@@ -10,16 +10,16 @@ import { Guid } from 'guid-typescript';
 import { of, Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
-export class NgIdentitiesIndexMenuProvider extends MenuProvider {
+export class NgIdentitiesIndexMenuProvider implements MenuProvider {
     public id = Guid.create().toString();
     public translationPrefix = 'IDENTITIES.INDEX.';
 
     constructor(
         public store: NgSkysmackStore,
-    ) { super(); }
+    ) { }
 
     public getMenuAreas(packagePath: string, componentKey: string): Observable<MenuArea[]> {
-        if(componentKey === 'identities-index') {
+        if (componentKey === 'identities-index') {
             return of([
                 new MenuArea({
                     area: 'actions',

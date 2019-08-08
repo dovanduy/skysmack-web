@@ -10,13 +10,13 @@ import { AccessPoliciesTypeId } from '@skysmack/package-types';
 import { AccessPolicyRolesIndexComponent } from './components/access-policy-roles-index/access-policy-roles-index.component';
 
 @Injectable({ providedIn: 'root' })
-export class NgAccessPolicyRolesMenuProvider extends MenuProvider {
+export class NgAccessPolicyRolesMenuProvider implements MenuProvider {
     public id = Guid.create().toString();
     public translationPrefix = 'ACCESS_POLICY_ROLES.INDEX.';
 
     constructor(
         public store: NgSkysmackStore
-    ) { super(); }
+    ) { }
 
     public getMenuAreas(packagePath: string, componentKey: string): Observable<MenuArea[]> {
         return getMenuEntries<MenuArea>(packagePath, AccessPoliciesTypeId, componentKey, AccessPolicyRolesIndexComponent.COMPONENT_KEY, this.getAccessPolicyRolesMenuAreas, this.store);
@@ -41,7 +41,7 @@ export class NgAccessPolicyRolesMenuProvider extends MenuProvider {
         ]
     };
 
-    public getAccessPolicyRolesMenuItems =  (packagePath: string): MenuItem[] => {
+    public getAccessPolicyRolesMenuItems = (packagePath: string): MenuItem[] => {
         return [
             new MenuItem({
                 url: 'create',

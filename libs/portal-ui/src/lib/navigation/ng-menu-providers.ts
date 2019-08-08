@@ -10,7 +10,8 @@ import { NgAuthenticationStore } from '@skysmack/ng-framework';
 export class NgMenuProviders extends MenuProviders {
     constructor(public router: Router,
         public skysmackStore: NgSkysmackStore,
-        public authenticationStore: NgAuthenticationStore) {
+        public authenticationStore: NgAuthenticationStore
+    ) {
         super();
     }
 

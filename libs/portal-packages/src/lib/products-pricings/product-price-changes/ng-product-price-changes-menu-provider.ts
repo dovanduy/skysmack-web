@@ -10,13 +10,13 @@ import { ProductsPricingsTypeId } from '@skysmack/package-types';
 import { ProductPriceChangesIndexComponent } from './components/product-price-changes-index/product-price-changes-index.component';
 
 @Injectable({ providedIn: 'root' })
-export class NgProductPriceChangesMenuProvider extends MenuProvider {
+export class NgProductPriceChangesMenuProvider implements MenuProvider {
     public id = Guid.create().toString();
     public translationPrefix = 'PRODUCT_PRICE_CHANGES.INDEX.';
 
     constructor(
         public store: NgSkysmackStore
-    ) { super(); }
+    ) { }
 
     public getMenuAreas(packagePath: string, componentKey: string): Observable<MenuArea[]> {
         return getMenuEntries<MenuArea>(packagePath, ProductsPricingsTypeId, componentKey, ProductPriceChangesIndexComponent.COMPONENT_KEY, this.getProductPriceChangesMenuAreas, this.store);

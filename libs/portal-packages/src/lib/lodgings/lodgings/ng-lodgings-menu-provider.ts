@@ -10,13 +10,13 @@ import { LodgingsTypeId } from '@skysmack/package-types';
 import { LodgingsIndexComponent } from './components/lodgings-index/lodgings-index.component';
 
 @Injectable({ providedIn: 'root' })
-export class NgLodgingsMenuProvider extends MenuProvider {
+export class NgLodgingsMenuProvider implements MenuProvider {
     public id = Guid.create().toString();
     public translationPrefix = 'LODGINGS.INDEX.';
 
     constructor(
         public store: NgSkysmackStore
-    ) { super(); }
+    ) { }
 
     public getMenuAreas(packagePath: string, componentKey: string): Observable<MenuArea[]> {
         return getMenuEntries<MenuArea>(packagePath, LodgingsTypeId, componentKey, LodgingsIndexComponent.COMPONENT_KEY, this.getLodgingsMenuAreas, this.store);

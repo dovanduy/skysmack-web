@@ -9,13 +9,13 @@ import { IdentitiesTypeId } from '@skysmack/package-types';
 import { RolesIndexComponent } from './components/roles-index/roles-index.component';
 
 @Injectable({ providedIn: 'root' })
-export class NgRolesMenuProvider extends MenuProvider {
+export class NgRolesMenuProvider implements MenuProvider {
     public id = Guid.create().toString();
     public translationPrefix = 'ROLES.INDEX.';
 
     constructor(
         public store: NgSkysmackStore
-    ) { super(); }
+    ) { }
 
     public getMenuAreas(packagePath: string, componentKey: string): Observable<MenuArea[]> {
         return getMenuEntries<MenuArea>(packagePath, IdentitiesTypeId, componentKey, RolesIndexComponent.COMPONENT_KEY, this.getRolesMenuAreas, this.store);

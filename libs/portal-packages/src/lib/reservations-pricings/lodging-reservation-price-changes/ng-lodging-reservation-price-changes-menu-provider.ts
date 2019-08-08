@@ -10,13 +10,13 @@ import { ReservationsPricingsTypeId } from '@skysmack/package-types';
 import { LodgingReservationPriceChangesIndexComponent } from './components/lodging-reservation-price-changes-index/lodging-reservation-price-changes-index.component';
 
 @Injectable({ providedIn: 'root' })
-export class NgLodgingReservationPriceChangesMenuProvider extends MenuProvider {
+export class NgLodgingReservationPriceChangesMenuProvider implements MenuProvider {
     public id = Guid.create().toString();
     public translationPrefix = 'LODGING_RESERVATION_PRICE_CHANGES.INDEX.';
 
     constructor(
         public store: NgSkysmackStore
-    ) { super(); }
+    ) { }
     public getMenuAreas(packagePath: string, componentKey: string): Observable<MenuArea[]> {
         return getMenuEntries<MenuArea>(packagePath, ReservationsPricingsTypeId, componentKey, LodgingReservationPriceChangesIndexComponent.COMPONENT_KEY, this.getLodgingReservationPriceChangesMenuAreas, this.store);
     };

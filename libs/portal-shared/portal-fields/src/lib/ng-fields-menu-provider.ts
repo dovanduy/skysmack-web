@@ -13,17 +13,17 @@ import { tap } from 'rxjs/operators';
 
 
 @Injectable({ providedIn: 'root' })
-export class NgFieldsMenuProvider extends MenuProvider {
+export class NgFieldsMenuProvider implements MenuProvider {
     public id = Guid.create().toString();
     public translationPrefix = 'FIELDS.INDEX.';
 
     constructor(
         public store: NgSkysmackStore,
         public router: Router
-    ) { super(); }
+    ) { }
 
     public getMenuAreas(packagePath: string, componentKey: string): Observable<MenuArea[]> {
-        if(componentKey === FieldsIndexComponent.COMPONENT_KEY) {
+        if (componentKey === FieldsIndexComponent.COMPONENT_KEY) {
             return of(this.getFieldsMenuAreas());
         } else {
             return of([]);
@@ -31,7 +31,7 @@ export class NgFieldsMenuProvider extends MenuProvider {
     };
 
     public getMenuItems(packagePath: string, componentKey: string): Observable<MenuItem[]> {
-        if(componentKey === FieldsIndexComponent.COMPONENT_KEY) {
+        if (componentKey === FieldsIndexComponent.COMPONENT_KEY) {
             return of(this.getFieldsMenuItems(packagePath));
         } else {
             return of([]);

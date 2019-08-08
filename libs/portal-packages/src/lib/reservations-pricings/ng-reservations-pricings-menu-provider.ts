@@ -11,13 +11,13 @@ import { ReservationsPricingsIndexComponent } from './components/reservations-pr
 import { LodgingsReservationsIndexComponent } from '../lodging-reservations/lodging-reservations/lodgings-reservations-index/lodgings-reservations-index.component';
 
 @Injectable({ providedIn: 'root' })
-export class NgReservationsPricingsMenuProvider extends MenuProvider {
+export class NgReservationsPricingsMenuProvider implements MenuProvider {
     public id = Guid.create().toString();
     public translationPrefix = 'RESERVATIONS_PRICINGS.INDEX.';
 
     constructor(
         public store: NgSkysmackStore
-    ) { super(); }
+    ) { }
 
     public getMenuAreas(packagePath: string, componentKey: string): Observable<MenuArea[]> {
         return getMenuEntries<MenuArea>(
@@ -57,8 +57,7 @@ export class NgReservationsPricingsMenuProvider extends MenuProvider {
                 area: 'manage',
                 translationPrefix: this.translationPrefix,
                 order: 1
-            }),
-            this.getConnectedPackageMenuArea()
+            })
         ];
     };
 

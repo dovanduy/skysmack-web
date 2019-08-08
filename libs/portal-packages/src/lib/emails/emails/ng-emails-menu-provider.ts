@@ -9,13 +9,13 @@ import { EmailsTypeId } from '@skysmack/package-types';
 import { EmailsIndexComponent } from './components/emails-index/emails-index.component';
 
 @Injectable({ providedIn: 'root' })
-export class NgEmailsIndexMenuProvider extends MenuProvider {
+export class NgEmailsIndexMenuProvider implements MenuProvider {
     public id = Guid.create().toString();
     public translationPrefix = 'EMAILS.INDEX.';
 
     constructor(
         public store: NgSkysmackStore
-    ) { super(); }
+    ) { }
 
     public getMenuAreas(packagePath: string, componentKey: string): Observable<MenuArea[]> {
         return getMenuEntries<MenuArea>(packagePath, EmailsTypeId, componentKey, EmailsIndexComponent.COMPONENT_KEY, this.getEmailsMenuAreas, this.store);

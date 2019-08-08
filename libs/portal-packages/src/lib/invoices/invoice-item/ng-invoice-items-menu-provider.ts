@@ -12,14 +12,14 @@ import { InvoicesProductsAddProductsComponent } from '../../invoices-products/in
 import { MatDialog } from '@angular/material/dialog';
 
 @Injectable({ providedIn: 'root' })
-export class NgInvoiceItemsMenuProvider extends MenuProvider {
+export class NgInvoiceItemsMenuProvider implements MenuProvider {
     public id = Guid.create().toString();
     public translationPrefix = 'INVOICE_ITEMS.INDEX.';
 
     constructor(
         public store: NgSkysmackStore,
         public dialog: MatDialog
-    ) { super(); }
+    ) { }
 
     public getMenuAreas(packagePath: string, componentKey: string): Observable<MenuArea[]> {
         return getMenuEntries<MenuArea>(packagePath, InvoicesTypeId, componentKey, InvoiceItemsIndexComponent.COMPONENT_KEY, this.getInvoiceItemsMenuAreas, this.store);

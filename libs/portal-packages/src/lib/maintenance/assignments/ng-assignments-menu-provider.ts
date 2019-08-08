@@ -10,13 +10,13 @@ import { MaintenanceTypeId } from '@skysmack/package-types';
 import { AssignmentsIndexComponent } from './components/assignments-index/assignments-index.component';
 
 @Injectable({ providedIn: 'root' })
-export class NgAssignmentsMenuProvider extends MenuProvider {
+export class NgAssignmentsMenuProvider implements MenuProvider {
     public id = Guid.create().toString();
     public translationPrefix = 'ASSIGNMENTS.INDEX.';
 
     constructor(
         public store: NgSkysmackStore
-    ) { super(); }
+    ) { }
 
     public getMenuAreas(packagePath: string, componentKey: string): Observable<MenuArea[]> {
         return getMenuEntries<MenuArea>(packagePath, MaintenanceTypeId, componentKey, AssignmentsIndexComponent.COMPONENT_KEY, this.getAssignmentsMenuAreas, this.store);

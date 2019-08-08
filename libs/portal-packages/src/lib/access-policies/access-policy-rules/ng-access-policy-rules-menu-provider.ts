@@ -12,13 +12,13 @@ import { AccessPolicyRulesIndexComponent } from './components/access-policy-rule
 
 
 @Injectable({ providedIn: 'root' })
-export class NgAccessPolicyRulesMenuProvider extends MenuProvider {
+export class NgAccessPolicyRulesMenuProvider implements MenuProvider {
     public id = Guid.create().toString();
     public translationPrefix = 'ACCESS_POLICY_RULES.INDEX.';
 
     constructor(
         public store: NgSkysmackStore
-    ) { super(); }
+    ) { }
 
     public getMenuAreas(packagePath: string, componentKey: string): Observable<MenuArea[]> {
         return getMenuEntries<MenuArea>(packagePath, AccessPoliciesTypeId, componentKey, AccessPolicyRulesIndexComponent.COMPONENT_KEY, this.getAccessPolicyRulesMenuAreas, this.store);

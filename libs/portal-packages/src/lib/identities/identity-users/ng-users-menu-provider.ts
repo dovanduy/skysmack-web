@@ -9,13 +9,13 @@ import { IdentitiesTypeId } from '@skysmack/package-types';
 import { UsersIndexComponent } from './components/users-index/users-index.component';
 
 @Injectable({ providedIn: 'root' })
-export class NgUsersMenuProvider extends MenuProvider {
+export class NgUsersMenuProvider implements MenuProvider {
     public id = Guid.create().toString();
     public translationPrefix = 'USERS.INDEX.';
 
     constructor(
         public store: NgSkysmackStore
-    ) { super(); }
+    ) { }
 
     public getMenuAreas(packagePath: string, componentKey: string): Observable<MenuArea[]> {
         return getMenuEntries<MenuArea>(packagePath, IdentitiesTypeId, componentKey, UsersIndexComponent.COMPONENT_KEY, this.getUsersMenuAreas, this.store);

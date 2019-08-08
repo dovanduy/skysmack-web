@@ -9,13 +9,13 @@ import { TerminalPaymentsTypeId } from '@skysmack/package-types';
 import { TerminalsIndexComponent } from './components/terminals-index/terminals-index.component';
 
 @Injectable({ providedIn: 'root' })
-export class NgTerminalsMenuProvider extends MenuProvider {
+export class NgTerminalsMenuProvider implements MenuProvider {
     public id = Guid.create().toString();
     public translationPrefix = 'TERMINALS.INDEX.';
 
     constructor(
         public store: NgSkysmackStore
-    ) { super(); }
+    ) { }
     public getMenuAreas(packagePath: string, componentKey: string): Observable<MenuArea[]> {
         return getMenuEntries<MenuArea>(packagePath, TerminalPaymentsTypeId, componentKey, TerminalsIndexComponent.COMPONENT_KEY, this.getTerminalsMenuAreas, this.store);
     };

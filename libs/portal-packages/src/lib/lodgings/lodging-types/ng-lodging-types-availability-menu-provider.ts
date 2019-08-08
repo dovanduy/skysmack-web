@@ -10,13 +10,13 @@ import { LodgingTypesAvailabilityComponent } from './components/lodging-types-av
 import { tap } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
-export class NgLodgingTypesAvailabilityMenuProvider extends MenuProvider {
+export class NgLodgingTypesAvailabilityMenuProvider implements MenuProvider {
     public id = Guid.create().toString();
     public translationPrefix = 'LODGINGS.INDEX.';
 
     constructor(
         public store: NgSkysmackStore
-    ) { super(); }
+    ) { }
     public getMenuAreas(packagePath: string, componentKey: string): Observable<MenuArea[]> {
         return getMenuEntries<MenuArea>(packagePath, LodgingsTypeId, componentKey, LodgingTypesAvailabilityComponent.COMPONENT_KEY, this.getLodgingTypesavailabilityMenuAreas, this.store);
     };

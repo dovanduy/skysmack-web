@@ -12,13 +12,13 @@ import { getMenuEntries } from '@skysmack/ng-framework';
 import { AccessPoliciesTypeId } from '@skysmack/package-types';
 
 @Injectable({ providedIn: 'root' })
-export class NgAccessPoliciesDashboardMenuProvider extends MenuProvider {
+export class NgAccessPoliciesDashboardMenuProvider implements MenuProvider {
     public id = Guid.create().toString();
     public translationPrefix = 'ACCESS_POLICIES.INDEX.';
 
     constructor(
         public store: NgSkysmackStore
-    ) { super(); }
+    ) { }
 
     public getMenuAreas(packagePath: string, componentKey: string): Observable<MenuArea[]> {
         return getMenuEntries<MenuArea>(packagePath, AccessPoliciesTypeId, componentKey, AccessPoliciesDashboardComponent.COMPONENT_KEY, this.getAccessPoliciesDashboardMenuAreas, this.store);
