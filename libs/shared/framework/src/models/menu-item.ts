@@ -2,7 +2,6 @@ import { AllowAccessFor } from '../permissions/allow-access-for';
 
 export class MenuItem {
     public showLogic: Function;
-    public provideIn: 'primaryMenu' | 'speedDialMenu' | 'navbar' | 'both' | 'notProvided' = 'notProvided';
     public providedIn: string[] = [];
 
     // Event Action Props

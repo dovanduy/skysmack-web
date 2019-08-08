@@ -2,11 +2,10 @@ import { NgModule } from '@angular/core';
 import { terminalsReducer, receiptsReducer, TERMINALS_REDUCER_KEY, RECEIPTS_REDUCER_KEY, CLIENTS_REDUCER_KEY, clientsReducer, CONNECTIONS_REDUCER_KEY, connectionsReducer } from '@skysmack/packages-terminal-payments';
 import { TerminalsEpics } from './terminals/redux/ng-terminals-epics';
 import { ReceiptsEpics } from './receipts/redux/ng-receipts-epics';
-import { registerRedux, NgSignalR, NgMenuItemProviders } from '@skysmack/ng-framework';
+import { registerRedux, NgSignalR } from '@skysmack/ng-framework';
 import { ClientsEpics } from './clients/redux/ng-clients-epics';
 import { ConnectionsEpics } from './connections/redux/ng-connections-epics';
 import { SignalRClientsProvider } from './clients/signal-r-clients-provider';
-import { NgInvoicesTerminalPaymentsMenuItemProvider } from './ng-invoices-terminal-payments-menu-item-provider';
 import { SignalRConnectionsProvider } from './connections/signal-r-connections-provider';
 
 @NgModule({
@@ -21,8 +20,6 @@ export class NgTerminalPaymentsModule {
     clientsEpics: ClientsEpics,
     connectionsEpics: ConnectionsEpics,
     signalR: NgSignalR,
-    ngMenuItemProviders: NgMenuItemProviders,
-    menuItemProvider: NgInvoicesTerminalPaymentsMenuItemProvider,
     clientsSRProvider: SignalRClientsProvider,
     connectionsSRProvider: SignalRConnectionsProvider
   ) {
@@ -35,8 +32,5 @@ export class NgTerminalPaymentsModule {
     // Signal R
     signalR.instance.registerProvider(clientsSRProvider);
     signalR.instance.registerProvider(connectionsSRProvider);
-
-    // Menu items
-    ngMenuItemProviders.add(menuItemProvider);
   }
 }

@@ -9,6 +9,7 @@ import { getMenuEntries, getConnectedPackageMenuEntries, getCombinedMenuEntries,
 import { LodgingReservationsTypeId, LodgingsTypeId } from '@skysmack/package-types';
 import { LodgingsReservationsIndexComponent } from './lodging-reservations/lodgings-reservations-index/lodgings-reservations-index.component';
 import { LodgingsIndexComponent } from '../lodgings';
+import { tap } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
 export class NgLodgingsReservationsMenuProvider extends MenuProvider {
@@ -38,7 +39,8 @@ export class NgLodgingsReservationsMenuProvider extends MenuProvider {
                 this.getLodgingsReservationsMenuItems,
                 this.store
             ),
-            getConnectedPackageMenuEntries(packagePath,
+            getConnectedPackageMenuEntries(
+                packagePath,
                 LodgingReservationsTypeId,
                 LodgingsTypeId,
                 componentKey,

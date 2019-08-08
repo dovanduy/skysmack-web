@@ -3,11 +3,11 @@ import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { MenuArea, MenuProvider } from '@skysmack/framework';
 import { MenuItem } from '@skysmack/framework';
 import { Guid } from 'guid-typescript';
-import { of, Observable } from 'rxjs';
-import { InvoicesPermissions } from '@skysmack/packages-invoices';
-import { getMenuEntries, setConnectedParentPackage } from '@skysmack/ng-framework';
-import { TerminalPaymentsTypeId } from '@skysmack/package-types';
+import { Observable } from 'rxjs';
+import { getMenuEntries, setConnectedParentPackage, getCombinedMenuEntries, getConnectedPackageMenuEntries } from '@skysmack/ng-framework';
+import { TerminalPaymentsTypeId, InvoicesTypeId } from '@skysmack/package-types';
 import { TerminalPaymentsIndexComponent } from './components/terminal-payments-index/terminal-payments-index.component';
+import { InvoicesIndexComponent } from '../invoices';
 
 @Injectable({ providedIn: 'root' })
 export class NgTerminalPaymentsIndexMenuProvider extends MenuProvider {
@@ -17,12 +17,37 @@ export class NgTerminalPaymentsIndexMenuProvider extends MenuProvider {
     constructor(
         public store: NgSkysmackStore
     ) { super(); }
+
     public getMenuAreas(packagePath: string, componentKey: string): Observable<MenuArea[]> {
-        return getMenuEntries<MenuArea>(packagePath, TerminalPaymentsTypeId, componentKey, TerminalPaymentsIndexComponent.COMPONENT_KEY, this.getTerminalPaymentsMenuAreas, this.store);
+        return getMenuEntries<MenuArea>(
+            packagePath,
+            TerminalPaymentsTypeId,
+            componentKey,
+            TerminalPaymentsIndexComponent.COMPONENT_KEY,
+            this.getTerminalPaymentsMenuAreas,
+            this.store
+        );
     };
 
     public getMenuItems(packagePath: string, componentKey: string): Observable<MenuItem[]> {
-        return getMenuEntries<MenuItem>(packagePath, TerminalPaymentsTypeId, componentKey, TerminalPaymentsIndexComponent.COMPONENT_KEY, this.getTerminalPaymentsMenuItems, this.store);
+        return getCombinedMenuEntries(
+            getMenuEntries<MenuItem>(
+                packagePath,
+                TerminalPaymentsTypeId,
+                componentKey,
+                TerminalPaymentsIndexComponent.COMPONENT_KEY,
+                this.getTerminalPaymentsMenuItems,
+                this.store
+            ),
+            getConnectedPackageMenuEntries(
+                packagePath,
+                TerminalPaymentsTypeId,
+                InvoicesTypeId,
+                componentKey,
+                InvoicesIndexComponent.COMPONENT_KEY,
+                this.store
+            )
+        );
     };
 
     public getTerminalPaymentsMenuAreas = () => {

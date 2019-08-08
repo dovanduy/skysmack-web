@@ -3,11 +3,12 @@ import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { MenuArea, MenuProvider } from '@skysmack/framework';
 import { MenuItem } from '@skysmack/framework';
 import { Guid } from 'guid-typescript';
-import { of, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { ReservationsPricingsPermissions } from '@skysmack/packages-reservations-pricings';
-import { getMenuEntries, setConnectedParentPackage } from '@skysmack/ng-framework';
-import { ReservationsPricingsTypeId } from '@skysmack/package-types';
+import { getMenuEntries, setConnectedParentPackage, getCombinedMenuEntries, getConnectedPackageMenuEntries } from '@skysmack/ng-framework';
+import { ReservationsPricingsTypeId, LodgingReservationsTypeId } from '@skysmack/package-types';
 import { ReservationsPricingsIndexComponent } from './components/reservations-pricings-index/reservations-pricings-index.component';
+import { LodgingsReservationsIndexComponent } from '../lodging-reservations/lodging-reservations/lodgings-reservations-index/lodgings-reservations-index.component';
 
 @Injectable({ providedIn: 'root' })
 export class NgReservationsPricingsMenuProvider extends MenuProvider {
@@ -19,11 +20,35 @@ export class NgReservationsPricingsMenuProvider extends MenuProvider {
     ) { super(); }
 
     public getMenuAreas(packagePath: string, componentKey: string): Observable<MenuArea[]> {
-        return getMenuEntries<MenuArea>(packagePath, ReservationsPricingsTypeId, componentKey, ReservationsPricingsIndexComponent.COMPONENT_KEY, this.getReservationsPricingsMenuAreas, this.store);
+        return getMenuEntries<MenuArea>(
+            packagePath,
+            ReservationsPricingsTypeId,
+            componentKey,
+            ReservationsPricingsIndexComponent.COMPONENT_KEY,
+            this.getReservationsPricingsMenuAreas,
+            this.store
+        );
     };
 
     public getMenuItems(packagePath: string, componentKey: string): Observable<MenuItem[]> {
-        return getMenuEntries<MenuItem>(packagePath, ReservationsPricingsTypeId, componentKey, ReservationsPricingsIndexComponent.COMPONENT_KEY, this.getReservationsPricingsMenuItems, this.store);
+        return getCombinedMenuEntries(
+            getMenuEntries<MenuItem>(
+                packagePath,
+                ReservationsPricingsTypeId,
+                componentKey,
+                ReservationsPricingsIndexComponent.COMPONENT_KEY,
+                this.getReservationsPricingsMenuItems,
+                this.store
+            ),
+            getConnectedPackageMenuEntries(
+                packagePath,
+                ReservationsPricingsTypeId,
+                LodgingReservationsTypeId,
+                componentKey,
+                LodgingsReservationsIndexComponent.COMPONENT_KEY,
+                this.store
+            )
+        );
     };
 
     public getReservationsPricingsMenuAreas = () => {
