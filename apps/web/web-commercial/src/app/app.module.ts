@@ -19,14 +19,44 @@ import { environment } from '../environments/environment';
 import { HttpClientModule } from '@angular/common/http';
 import { commercialApplicationStartup } from './commercial-application-startup';
 import { commercialTenantsRoute } from './packages/commercial_tenants_wrapper.module';
+import { StartComponent } from './pages/start/start.component';
+import { WhyComponent } from './pages/why/why.component';
+import { SolutionsComponent } from './pages/solutions/solutions.component';
+import { ProductsComponent } from './pages/products/products.component';
+import { PricingsComponent } from './pages/pricings/pricings.component';
+import { GettingStartedComponent } from './pages/getting-started/getting-started.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent,StartComponent,WhyComponent,SolutionsComponent,ProductsComponent,PricingsComponent,GettingStartedComponent],
   imports: [
     BrowserModule,
     HttpClientModule,
     NgOAuth2Module,
     RouterModule.forRoot([
+      {
+        path: '',
+        component: StartComponent
+      },
+      {
+        path: 'why',
+        component: WhyComponent
+      },
+      {
+        path: 'solutions',
+        component: SolutionsComponent
+      },
+      {
+        path: 'products',
+        component: ProductsComponent
+      },
+      {
+        path: 'pricings',
+        component: PricingsComponent
+      },
+      {
+        path: 'getting-started',
+        component: GettingStartedComponent
+      },
       commercialAccountRoute,
       commercialTenantsRoute
     ], { initialNavigation: 'enabled' }),

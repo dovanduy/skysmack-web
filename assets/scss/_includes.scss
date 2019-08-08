@@ -6,10 +6,16 @@ $mat-elevation-opacity: 0.6;
 $dark-primary-text: rgba(0,0,0,.87);
 $light-primary-text: rgba(255,255,255,.87);
 
+$primary-color: #2c89a0;
+
+$primary-color-light: #64b9d1;
+
+$primary-color-dark: #005c71;
+
 $mat-skysmack: (
-  primary: #2c89a0,
-  light: #64b9d1,
-  dark: #005c71,
+  primary: $primary-color,
+  light: $primary-color-light,
+  dark: $primary-color-dark,
   contrast: (
     primary: $dark-primary-text,
     light: $dark-primary-text,
