@@ -3,7 +3,7 @@ import { Observable, of } from 'rxjs';
 import { Field, FormHelper } from '@skysmack/ng-dynamic-forms';
 import { CommercialAccountLoginFieldsConfig } from './commercial-account-login-fields-config';
 import { trigger, transition, style, animate } from '@angular/animations';
-import { SubscriptionHandler } from '@skysmack/framework';
+import { SubscriptionHandler, IsAuthenticated } from '@skysmack/framework';
 import { AuthenticationActions } from '@skysmack/redux';
 import { CommercialAccountService } from '../../services';
 import { NgRedux } from '@angular-redux/store';
@@ -53,6 +53,15 @@ export class CommercialAccountLoginComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.subscriptionHandler.register(this.store.isCurrentUserAuthenticated().pipe(
+      filter(loggedIn => loggedIn === true),
+      map(isAuthenticated => {
+        if (isAuthenticated) {
+          this.success = true;
+          this.router.navigate(['/', 'account', 'dashboard']);
+        }
+      })
+    ).subscribe());
     this.clearLoginErrors();
     this.fields$ = of(this.fieldsConfig.getFields());
     this.listenForErrors();
@@ -84,12 +93,6 @@ export class CommercialAccountLoginComponent implements OnInit {
 
     this.subscriptionHandler.register(this.requests.login(credentials.email, credentials.password, credentials.staySignedIn, packagePath).subscribe(loginResultAction => this.ngRedux.dispatch(loginResultAction)));
     this.loggingIn = true;
-
-    this.subscriptionHandler.register(this.store.isCurrentUserAuthenticated()
-      .pipe(filter(loggedIn => loggedIn === true)).subscribe(() => {
-        this.success = true;
-        this.router.navigate(['/', 'account', 'dashboard']);
-      }));
   }
 
   private listenForErrors() {
