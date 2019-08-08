@@ -5,7 +5,7 @@ import { SubscriptionHandler } from '@skysmack/framework';
 import { EditorNavService } from './editor-nav.service';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { Observable, of } from 'rxjs';
-import { map, filter, switchMap } from 'rxjs/operators';
+import { map, filter } from 'rxjs/operators';
 import { NgAuthenticationStore } from '@skysmack/ng-framework';
 import { MatDialog } from '@angular/material/dialog';
 
@@ -47,7 +47,7 @@ export class ContainerComponent implements OnInit, OnDestroy {
 
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd),
-      map((event: NavigationEnd) => {
+      map(() => {
         if (this.activatedRoute.firstChild) {
           setTimeout(() => {
             this.editorNavService.showEditorNav();
@@ -78,21 +78,34 @@ export class ContainerComponent implements OnInit, OnDestroy {
 
     this.subscriptionHandler.register(this.access$.pipe(
       filter(access => access),
-      map(() => this.changeDetectorRef.detectChanges()),
-      switchMap(() => this.editornav.closedStart),
+      map(() => this.changeDetectorRef.detectChanges())
+    ).subscribe());
+
+    this.subscriptionHandler.register(this.editornav.closedStart.pipe(
       map(() => {
         if (this.editorNavService.redirectPath && this.editorNavService.redirectPath.length > 0) {
           this.router.navigate([this.editorNavService.redirectPath]);
-          this.editorNavService.redirectPath = '';
+        } else {
+          // Loop activated routes from current container to last parent
+          // Last parent should be the first part of url segment
+          var routePaths = [];
+          var route = this.activatedRoute;
+          do {
+            // Push in reverse order, since parents are pushed in reverse order
+            const parentRoutes = route.snapshot.url.map(url => url.path).filter(path => path.length).reverse();
+            if (parentRoutes && parentRoutes.length) {
+              routePaths.push(...parentRoutes);
+            }
+            route = route.parent;
+          } while (route);
+          // This happens reversed, so reverse again and route
+          this.router.navigate(routePaths.reverse());
         }
+        this.editorNavService.redirectPath = '';
       })
     ).subscribe());
 
-
-    this.subscriptionHandler.register(this.access$.pipe(
-      filter(access => access),
-      map(() => this.changeDetectorRef.detectChanges()),
-      switchMap(() => this.editorNavService.isVisible),
+    this.subscriptionHandler.register(this.editorNavService.isVisible.pipe(
       map(visible => {
         if (visible && !this.editornav.opened) {
           this.editornav.open();

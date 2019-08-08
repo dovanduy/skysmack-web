@@ -4,8 +4,6 @@ import { EditorNavService } from '@skysmack/portal-ui';
 import { NgUsersActions, NgUsersStore, NgUsersRequests } from '@skysmack/ng-identities';
 import { User, UsersAppState } from '@skysmack/packages-identities';
 import { FormHelper } from '@skysmack/ng-dynamic-forms';
-import { HttpClient } from '@angular/common/http';
-import { of } from 'rxjs';
 import { NgSetPasswordFieldsConfig } from '../../ng-set-password-fields-config';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { FormBaseComponent } from '@skysmack/portal-fields';
@@ -24,7 +22,6 @@ export class SetPasswordComponent extends FormBaseComponent<UsersAppState, User,
     public redux: NgSkysmackStore,
     public fieldsConfig: NgSetPasswordFieldsConfig,
     public store: NgUsersStore,
-    public http: HttpClient,
     public requests: NgUsersRequests
   ) { super(router, activatedRoute, editorNavService, actions, redux, fieldsConfig); }
 

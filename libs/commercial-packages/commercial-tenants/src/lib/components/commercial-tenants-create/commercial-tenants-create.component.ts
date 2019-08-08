@@ -1,0 +1,40 @@
+import { Component, OnInit } from '@angular/core';
+import { Observable, of } from 'rxjs';
+import { Field, FormHelper } from '@skysmack/ng-dynamic-forms';
+import { SubscriptionHandler } from '@skysmack/framework';
+import { NgRedux } from '@angular-redux/store';
+import { Router } from '@angular/router';
+import { CommercialTenantsService } from '../../services/commercial-tenants.service';
+import { CommercialTenantsFieldsConfig } from '../../commercial-tenants-fields-config';
+import { take, tap } from 'rxjs/operators';
+
+@Component({
+  selector: 'ss-commercial-tenants-create',
+  templateUrl: './commercial-tenants-create.component.html',
+  styleUrls: ['./commercial-tenants-create.component.scss'],
+})
+export class CommercialTenantsCreateComponent implements OnInit {
+  public fields$: Observable<Field[]>;
+  public subscriptionHandler = new SubscriptionHandler();
+
+  constructor(
+    public router: Router,
+    public fieldsConfig: CommercialTenantsFieldsConfig,
+    public ngRedux: NgRedux<any>,
+    public service: CommercialTenantsService
+  ) { }
+
+  ngOnInit() {
+    this.fields$ = of(this.fieldsConfig.getFields());
+  }
+
+  public onSubmit(fh: FormHelper) {
+    fh.formValid(() => {
+      const tenant = fh.form.getRawValue();
+      this.service.add(tenant).pipe(
+        tap(() => this.router.navigate(['/', 'tenants'])),
+        take(1)
+      ).subscribe();
+    }, false);
+  }
+}

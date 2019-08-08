@@ -29,7 +29,7 @@ export class NgUsersFieldsConfig extends FieldsConfig<User, number> {
                 validators: [Validators.required, CustomValidators.validEmail()],
                 order: 1,
                 showColumn: true
-            }),
+            })
         ];
 
         // If we are creating a user, provide the password fields.

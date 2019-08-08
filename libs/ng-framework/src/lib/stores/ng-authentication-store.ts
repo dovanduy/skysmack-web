@@ -1,7 +1,7 @@
 import { NgRedux } from '@angular-redux/store';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { HttpErrorResponse, CurrentUser } from '@skysmack/framework';
+import { HttpErrorResponse, CurrentUser, IsAuthenticated } from '@skysmack/framework';
 import { Injectable } from '@angular/core';
 import { AuthenticationStore, AuthenticationAppState } from '@skysmack/redux';
 
@@ -14,12 +14,13 @@ export class NgAuthenticationStore implements AuthenticationStore {
     public isCurrentUserAuthenticated(): Observable<boolean> {
         return this.getCurrentUser().pipe(
             map((currentUser: CurrentUser) => {
-                let tokenExpired = true;
-                if (currentUser && currentUser.loginTime) {
-                    tokenExpired = Date.now() > (new Date(currentUser.loginTime).getTime() + currentUser.expires_in * 1000); // now.isAfter(tokenExpires);
-                }
+                return IsAuthenticated(currentUser);
+                // let tokenExpired = true;
+                // if (currentUser && currentUser.loginTime) {
+                //     tokenExpired = Date.now() > (new Date(currentUser.loginTime).getTime() + currentUser.expires_in * 1000); // now.isAfter(tokenExpires);
+                // }
 
-                return tokenExpired ? false : true;
+                // return tokenExpired ? false : true;
             })
         );
     }

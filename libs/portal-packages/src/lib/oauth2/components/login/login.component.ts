@@ -1,5 +1,5 @@
 import { animate, style, transition, trigger } from '@angular/animations';
-import { Component, OnInit, OnDestroy, Input, Inject } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input, Inject, Optional } from '@angular/core';
 import { Router } from '@angular/router';
 import { EntityComponentPageTitle } from '@skysmack/portal-ui';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
@@ -8,7 +8,7 @@ import { NgSkysmackActions } from '@skysmack/ng-skysmack';
 import { SubscriptionHandler, Package } from '@skysmack/framework';
 import { AuthenticationActions } from '@skysmack/redux';
 import { filter } from 'rxjs/operators';
-import { Oauth2Requests } from '@skysmack/ng-oauth2';
+import { OAuth2Requests } from '@skysmack/ng-oauth2';
 import { Field, FormHelper } from '@skysmack/ng-dynamic-forms';
 import { Observable } from 'rxjs';
 import { NgAuthenticationStore } from '@skysmack/ng-framework';
@@ -39,7 +39,6 @@ import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
   ]
 })
 export class LoginComponent implements OnInit, OnDestroy {
-
   @Input() public removeCloseButton: boolean = false;
   public loggingIn = false;
   public error = false;
@@ -57,9 +56,9 @@ export class LoginComponent implements OnInit, OnDestroy {
     public skysmackStore: NgSkysmackStore,
     public skysmackActions: NgSkysmackActions,
     public fieldsConfig: LoginFieldsConfig,
-    public requests: Oauth2Requests,
+    public requests: OAuth2Requests,
     public dialog: MatDialog,
-    @Inject(MAT_DIALOG_DATA) public data: { packagePath: string }
+    @Optional() @Inject(MAT_DIALOG_DATA) public data: { packagePath: string }
   ) { }
 
   ngOnInit() {
@@ -69,6 +68,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.createForm();
     this.listenForErrors();
 
+    // For showing forgot password and confirm account
     this.accountPackages$ = this.skysmackStore.getAccountPackages();
   }
 
@@ -89,10 +89,10 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.subscriptionHandler.register(fh.form.valueChanges.subscribe(() => this.error = false));
   }
 
-  private login(credentials: { email: string, password: string }) {
+  private login(credentials: { email: string, password: string, staySignedIn: boolean }) {
     this.ngRedux.dispatch({ type: AuthenticationActions.CLEAR_LOGIN_ERROR });
 
-    this.subscriptionHandler.register(this.requests.login(credentials.email, credentials.password, this.packagePath).subscribe(loginResultAction => this.ngRedux.dispatch(loginResultAction)));
+    this.subscriptionHandler.register(this.requests.login(credentials.email, credentials.password, credentials.staySignedIn, this.packagePath).subscribe(loginResultAction => this.ngRedux.dispatch(loginResultAction)));
     this.loggingIn = true;
 
     this.subscriptionHandler.register(this.store.isCurrentUserAuthenticated()
@@ -100,7 +100,11 @@ export class LoginComponent implements OnInit, OnDestroy {
         this.success = true;
         this.skysmackActions.getSkysmack();
         this.dialog.closeAll();
-        this.router.navigate(['/']);
+        // Only redirect, if path is the login component
+        // Prevents redirect from other components (i.e. when in dialog etc.)
+        if (this.router.url.split('/')[1] === this.packagePath) {
+          this.router.navigate(['/']);
+        }
       }));
   }
 
@@ -119,6 +123,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.subscriptionHandler.register(this.skysmackStore.getHydrated().pipe(filter(x => x === true)).subscribe(() => this.ngRedux.dispatch({ type: AuthenticationActions.CLEAR_LOGIN_ERROR })));
   }
 
+  // Get package path from either route data (dialog) or from the router
   private setPackagePath() {
     if (this.data && this.data.packagePath) {
       this.packagePath = this.data.packagePath;

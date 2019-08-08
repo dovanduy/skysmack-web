@@ -87,7 +87,7 @@ export class NgApplicationsFieldsConfig extends FieldsConfig<Application, number
                 validators: [Validators.required],
                 order: 1,
                 showColumn: true
-            }),
+            })
         ];
 
         // Id field must only be added for edit forms.
