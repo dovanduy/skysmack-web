@@ -34,6 +34,7 @@ export class CommercialAccountLoginFieldsConfig {
                 component: CheckboxFieldComponent,
                 value: true,
                 key: 'staySignedIn',
+                label: 'Stay signed in',
                 order: 3
             })
         ];

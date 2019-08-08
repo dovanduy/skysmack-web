@@ -8,8 +8,8 @@ import { AuthenticationActions } from '@skysmack/redux';
 import { CommercialAccountService } from '../../services';
 import { NgRedux } from '@angular-redux/store';
 import { NgAuthenticationStore } from '@skysmack/ng-framework';
-import { Router } from '@angular/router';
-import { filter } from 'rxjs/operators';
+import { Router, ActivatedRoute } from '@angular/router';
+import { filter, map } from 'rxjs/operators';
 import { OAuth2Requests } from '@skysmack/ng-oauth2';
 
 @Component({
@@ -41,19 +41,30 @@ export class CommercialAccountLoginComponent implements OnInit {
   public success = false;
   public fields$: Observable<Field[]>;
   public subscriptionHandler = new SubscriptionHandler();
+  public removeCloseButton = false;
 
   constructor(
     public router: Router,
     public fieldsConfig: CommercialAccountLoginFieldsConfig,
     public ngRedux: NgRedux<any>,
     public requests: OAuth2Requests,
-    public store: NgAuthenticationStore
+    public store: NgAuthenticationStore,
+    public activatedRoute: ActivatedRoute
   ) { }
 
   ngOnInit() {
     this.clearLoginErrors();
     this.fields$ = of(this.fieldsConfig.getFields());
     this.listenForErrors();
+    this.subscriptionHandler.register(
+      this.activatedRoute.parent.data.pipe(
+        map(data => {
+          if (data) {
+            this.removeCloseButton = data.removeCloseButton;
+          }
+        })
+      ).subscribe()
+    );
   }
 
   public onSubmit(fh: FormHelper) {

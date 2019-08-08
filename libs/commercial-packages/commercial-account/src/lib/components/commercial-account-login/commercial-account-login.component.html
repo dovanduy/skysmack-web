@@ -1,16 +1,19 @@
 <ss-dynamic-form *ngIf="fields$" [noSidebar]="true" [fields$]="fields$" [validation]="fieldsConfig.validation"
-    [rules]="fieldsConfig.formRules" [removeCloseButton]="true" [buttonText]="'Login'" (submitted)="onSubmit($event)">
-
+    [rules]="fieldsConfig.formRules" [removeCloseButton]="removeCloseButton" [buttonText]="'Login'"
+    (submitted)="onSubmit($event)">
     <mat-card-title>Sign in</mat-card-title>
     <mat-card-subtitle>Please enter credentials below</mat-card-subtitle>
     <div *ngIf="error" [@shrinkOut]>The entered password and/or
         username was incorrect. Please try again.</div>
+</ss-dynamic-form>
 
-    <button mat-button [routerLink]="['/forgot-password']" tabindex="-1">
+<div class="btn-wrapper">
+
+    <button mat-button [routerLink]="['/account/forgot-password']" tabindex="-1">
         Forgot password
     </button>
 
-    <button mat-button [routerLink]="['/confirm-email']" tabindex="-1">
+    <button mat-button [routerLink]="['/account/confirm-email']" tabindex="-1">
         Confirm email
     </button>
-</ss-dynamic-form>
+</div>
