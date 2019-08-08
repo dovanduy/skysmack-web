@@ -9,13 +9,13 @@
 			"BUTTON_EDIT": "Update"
 		},
 		"INDEX": {
+			"TITLE_EXTRAS": "(permissions)",
 			"ACTIONS": "Actions",
 			"CREATE": "Create",
 			"MANAGE": "Manage",
 			"BACK": "Back",
 			"ROLES": "Roles",
-			"FIELDS_TITLE": "(fields)",
-			"TITLE_EXTRAS": "(permissions)"
+			"FIELDS_TITLE": "(fields)"
 		},
 		"FORM": {
 			"LABELS": {
@@ -41,6 +41,43 @@
 			"ERROR": "An error occured with {{ ruleId }}. Correct and try again."
 		}
 	},
+	"ACCESS_POLICY_RULES": {
+		"CREATE": {
+			"CREATE": "Create",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDITING": "Rediger",
+			"BUTTON_EDIT": "Update"
+		},
+		"INDEX": {
+			"TITLE_EXTRAS": "(rules)",
+			"ACTIONS": "Actions",
+			"CREATE": "Create",
+			"MANAGE": "Manage",
+			"BACK": "Back",
+			"ROLES": "Roles",
+			"FIELDS_TITLE": "(fields)"
+		},
+		"FORM": {
+			"LABELS": {
+				"ACCESS": "Access",
+				"AUTHENTICATED": "Authenticated",
+				"INCLUDEROLES": "Include roles"
+			},
+			"PLACEHOLDERS": {
+				"ACCESS": "Access",
+				"AUTHENTICATED": "Authenticated",
+				"INCLUDEROLES": "Include roles"
+			}
+		},
+		"QUEUE": {
+			"ADDING": "Adding access policy rules {{ id }}",
+			"UPDATING": "Updating access policy rules {{ id }}",
+			"DELETING": "Deleting access policy rules {{ id }}",
+			"ERROR": "An error occured with access policy rules {{ id }}. Correct and try again."
+		}
+	},
 	"ACCESS_POLICY_ROLES": {
 		"CREATE": {
 			"CREATE": "Create",
@@ -51,13 +88,13 @@
 			"BUTTON_EDIT": "Update"
 		},
 		"INDEX": {
+			"TITLE_EXTRAS": "(roles)",
 			"ACTIONS": "Actions",
 			"CREATE": "Create",
 			"MANAGE": "Manage",
 			"BACK": "Back",
 			"ROLES": "Roles",
-			"FIELDS_TITLE": "(fields)",
-			"TITLE_EXTRAS": "(roles)"
+			"FIELDS_TITLE": "(fields)"
 		},
 		"FORM": {
 			"LABELS": {
@@ -81,43 +118,6 @@
 			"ERROR": "An error occured with {{ roleId }}. Correct and try again."
 		}
 	},
-	"ACCESS_POLICY_RULES": {
-		"CREATE": {
-			"CREATE": "Create",
-			"BUTTON_CREATE": "Create"
-		},
-		"EDIT": {
-			"EDITING": "Rediger",
-			"BUTTON_EDIT": "Update"
-		},
-		"INDEX": {
-			"ACTIONS": "Actions",
-			"CREATE": "Create",
-			"MANAGE": "Manage",
-			"BACK": "Back",
-			"ROLES": "Roles",
-			"FIELDS_TITLE": "(fields)",
-			"TITLE_EXTRAS": "(rules)"
-		},
-		"FORM": {
-			"LABELS": {
-				"ACCESS": "Access",
-				"AUTHENTICATED": "Authenticated",
-				"INCLUDEROLES": "Include roles"
-			},
-			"PLACEHOLDERS": {
-				"ACCESS": "Access",
-				"AUTHENTICATED": "Authenticated",
-				"INCLUDEROLES": "Include roles"
-			}
-		},
-		"QUEUE": {
-			"ADDING": "Adding access policy rules {{ id }}",
-			"UPDATING": "Updating access policy rules {{ id }}",
-			"DELETING": "Deleting access policy rules {{ id }}",
-			"ERROR": "An error occured with access policy rules {{ id }}. Correct and try again."
-		}
-	},
 	"ACCESS_POLICIES": {
 		"TITLE": "Access policies",
 		"DASHBOARD": {
@@ -136,23 +136,111 @@
 			"ERROR": "An error occured with access policy rules {{ id }}. Correct and try again."
 		}
 	},
+	"EMAIL_TEMPLATES": {
+		"FORM": {
+			"LABELS": {
+				"FROM": "From",
+				"TO": "To",
+				"CC": "Cc",
+				"BCC": "Bcc",
+				"SUBJECT": "Subject",
+				"BODY": "Body"
+			},
+			"PLACEHOLDERS": {
+				"FROM": "From",
+				"TO": "To",
+				"CC": "Cc",
+				"BCC": "Bcc",
+				"SUBJECT": "Subject",
+				"BODY": "Body"
+			},
+			"VALIDATION": {}
+		},
+		"CREATE": {
+			"CREATE": "Create",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDIT": "Edit",
+			"BUTTON_EDIT": "Update"
+		},
+		"INDEX": {
+			"CREATE": "Create",
+			"EDIT": "Edit",
+			"DELETE": "Delete",
+			"MANAGE": "Manage",
+			"ACTIONS": "Actions"
+		},
+		"QUEUE": {
+			"ADDING": "Adding {{ subject }}",
+			"UPDATING": "Updating {{ subject }}",
+			"DELETING": "Deleting {{ subject }}",
+			"ERROR": "An error occured with {{ subject }}. Correct and try again."
+		}
+	},
+	"EMAILS": {
+		"INDEX": {
+			"CREATE": "Create",
+			"EDIT": "Edit",
+			"DELETE": "Delete",
+			"TEMPLATES": "Templates",
+			"MANAGE": "Manage",
+			"ACTIONS": "Actions"
+		}
+	},
+	"EMAILS_SMTP": {
+		"INDEX": {
+			"CREATE": "Create",
+			"EDIT": "Edit",
+			"DELETE": "Delete",
+			"TEMPLATES": "Templates",
+			"MANAGE": "Manage",
+			"ACTIONS": "Actions",
+			"SETTINGS": "Settings"
+		}
+	},
+	"EMAILS_SMTP_SETTINGS": {
+		"FORM": {
+			"PLACEHOLDERS": {
+				"HOST": "Host",
+				"PORT": "Port",
+				"USERNAME": "Username",
+				"PASSWORD": "Password",
+				"ENABLESSL": "Enable ssl"
+			},
+			"LABELS": {
+				"HOST": "Host",
+				"PORT": "Port",
+				"USERNAME": "Username",
+				"PASSWORD": "Password",
+				"ENABLESSL": "Enable ssl"
+			}
+		}
+	},
 	"ACCOUNTS": {
 		"FORM": {
 			"LABELS": {
+				"TOKEN": "Token",
+				"EMAIL": "Email",
 				"CURRENTPASSWORD": "Current password",
 				"NEWPASSWORD": "New password",
-				"CONFIRMNEWPASSWORD": "Confirm new password",
-				"EMAIL": "Email",
-				"TOKEN": "Token"
+				"CONFIRMNEWPASSWORD": "Confirm new password"
 			},
 			"PLACEHOLDERS": {
+				"TOKEN": "Token",
+				"EMAIL": "Email",
 				"CURRENTPASSWORD": "Current password",
 				"NEWPASSWORD": "New password",
-				"CONFIRMNEWPASSWORD": "Confirm new password",
-				"EMAIL": "Email",
-				"TOKEN": "Token"
+				"CONFIRMNEWPASSWORD": "Confirm new password"
 			},
 			"VALIDATION": {
+				"TOKEN": {
+					"REQUIRED": "Token is required"
+				},
+				"EMAIL": {
+					"REQUIRED": "Email is required.",
+					"INVALIDEMAIL": "Please type a valid email"
+				},
 				"CURRENTPASSWORD": {
 					"REQUIRED": "Current password is required."
 				},
@@ -162,13 +250,6 @@
 				"CONFIRMNEWPASSWORD": {
 					"REQUIRED": "Please repeat the new password.",
 					"PASSWORDMISMATCH": "Passwords must match."
-				},
-				"EMAIL": {
-					"REQUIRED": "Email is required.",
-					"INVALIDEMAIL": "Please type a valid email"
-				},
-				"TOKEN": {
-					"REQUIRED": "Token is required"
 				}
 			}
 		},
@@ -176,44 +257,44 @@
 			"TITLE": "Change password",
 			"BUTTON_EDIT": "Update"
 		},
-		"INDEX": {
-			"ACTIONS": "Actions",
-			"CHANGE_PASSWORD": "Change password",
-			"FORGOT_PASSWORD": "Forgot password",
-			"CONFIRM_EMAIL": "Confirm email",
-			"MANAGE": "Manage"
+		"CONFIRM_EMAIL": {
+			"TITLE": "Confirm email",
+			"BUTTON_EDIT": "Submit"
 		},
-		"NOTIFICATIONS": {},
-		"QUEUE": {},
 		"FORGOT_PASSWORD": {
 			"TITLE": "Forgot password",
 			"BUTTON_EDIT": "Submit"
 		},
-		"CONFIRM_EMAIL": {
-			"TITLE": "Confirm email",
-			"BUTTON_EDIT": "Submit"
-		}
+		"INDEX": {
+			"ACTIONS": "Actions",
+			"MANAGE": "Manage",
+			"CHANGE_PASSWORD": "Change password",
+			"FORGOT_PASSWORD": "Forgot password",
+			"CONFIRM_EMAIL": "Confirm email"
+		},
+		"NOTIFICATIONS": {},
+		"QUEUE": {}
 	},
 	"IDENTITIES": {
 		"INDEX": {
 			"ROLES": "Roles",
 			"USERS": "Users",
+			"ACCOUNTS": "Accounts",
+			"APPLICATIONS": "Applications",
 			"USERS_ROLES_TITLE": "User roles",
+			"APPLICATIONS_ROLES_TITLE": "Application roles",
 			"MANAGE": "Manage",
 			"SETTINGS": "Settings",
+			"ACCOUNT": "Account",
+			"CHANGE_PASSWORD": "Change password",
+			"FORGOT_PASSWORD": "Forgot password",
+			"CONFIRM_EMAIL": "Confirm email",
 			"AVAILABLE_SETTINGS": {
 				"LOCKOUT": "Lockout",
 				"USER": "User",
 				"PASSWORD": "Password",
 				"SIGNIN": "Sign in"
-			},
-			"ACCOUNTS": "Accounts",
-			"ACCOUNT": "Account",
-			"CHANGE_PASSWORD": "Change password",
-			"FORGOT_PASSWORD": "Forgot password",
-			"CONFIRM_EMAIL": "Confirm email",
-			"APPLICATIONS": "Applications",
-			"APPLICATIONS_ROLES_TITLE": "Application roles"
+			}
 		}
 	},
 	"IDENTITIES_SETTINGS": {
@@ -256,6 +337,102 @@
 		"QUEUE": {
 			"UPDATING": "Updating",
 			"ERROR": "Error occured updating settings."
+		}
+	},
+	"APPLICATIONS": {
+		"ENTITY_ACTION": {
+			"ROLES": "Roles"
+		},
+		"ROLES": {
+			"CURRENT_ROLES": "{{ object.displayName }} current roles",
+			"ROLE_PRIORITY": "{{ role.object.name }} with priority {{ role.object.priority }} -",
+			"REMOVE": "Remove",
+			"NO_ROLES": "No roles have been applied.",
+			"ADD_ROLE": "Add a role to {{ object.displayName }}",
+			"OBJECT_PRIOORITY": "{{ role.object.name }} - priority",
+			"ADD": "Add",
+			"ROLES_APPLIED": "All roles have been applied, or no roles exists.",
+			"NO_ROLES_APPLIED": "This application has no roles."
+		},
+		"CREATE": {
+			"CREATE_APPLICATION": "Create new application",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDITING": "Edit {{ displayName }}",
+			"BUTTON_EDIT": "Update"
+		},
+		"INDEX": {
+			"ACTIONS": "Actions",
+			"CREATE": "Create",
+			"MANAGE": "Manage",
+			"TITLE_EXTRAS": "(applications)",
+			"APPLICATIONS": "Applications",
+			"BACK": "Back"
+		},
+		"FORM": {
+			"LABELS": {
+				"CLIENTID": "Client id",
+				"CLIENTSECRET": "Client secret",
+				"CONCURRENCYTOKEN": "Concurrency token",
+				"CONSENTTYPE": "Consent type",
+				"DISPLAYNAME": "Display name",
+				"PERMISSIONS": "Permissions",
+				"POSTLOGOUTREDIRECTURIS": "Post logout redirect uris",
+				"PROPERTIES": "Properties",
+				"REDIRECTURIS": "Redirect uris",
+				"TYPE": "Type"
+			},
+			"PLACEHOLDERS": {
+				"CLIENTID": "Client id",
+				"CLIENTSECRET": "Client secret",
+				"CONCURRENCYTOKEN": "Concurrency token",
+				"CONSENTTYPE": "Consent type",
+				"DISPLAYNAME": "Display name",
+				"PERMISSIONS": "Permissions",
+				"POSTLOGOUTREDIRECTURIS": "Post logout redirect uris",
+				"PROPERTIES": "Properties",
+				"REDIRECTURIS": "Redirect uris",
+				"TYPE": "Type"
+			},
+			"VALIDATION": {
+				"CLIENTSECRET": {
+					"REQUIRED": "Client secret is required"
+				},
+				"CLIENTID": {
+					"REQUIRED": "Client id is required"
+				},
+				"CONCURRENCYTOKEN": {
+					"REQUIRED": "Concurrency token is required"
+				},
+				"CONSENTTYPE": {
+					"REQUIRED": "Consent type is required"
+				},
+				"DISPLAYNAME": {
+					"REQUIRED": "Display name is required"
+				},
+				"PERMISSIONS": {
+					"REQUIRED": "Permissions is required"
+				},
+				"POSTLOGOUTREDIRECTURIS": {
+					"REQUIRED": "Post logout redirect uris is required"
+				},
+				"PROPERTIES": {
+					"REQUIRED": "Properties is required"
+				},
+				"REDIRECTURIS": {
+					"REQUIRED": "Redirect uris is required"
+				},
+				"TYPE": {
+					"REQUIRED": "Type is required"
+				}
+			}
+		},
+		"QUEUE": {
+			"ADDING": "Adding {{ displayName }}",
+			"UPDATING": "Updating {{ displayName }}",
+			"DELETING": "Deleting {{ displayName }}",
+			"ERROR": "An error occured with {{ displayName }}. Correct and try again."
 		}
 	},
 	"ROLES": {
@@ -370,8 +547,6 @@
 			"ENTITY_ACTION_SET_PASSWWORD": "Set password",
 			"ENTITY_ACTION_ROLES": "Roles",
 			"FIELDS_TITLE": "(fields)",
-			"SETTINGS": "Settings",
-			"ACCOUNT": "Account",
 			"TITLE_EXTRAS": "(users)"
 		},
 		"ROLES": {
@@ -397,6 +572,71 @@
 		"ENTITY_ACTION": {
 			"SET_PASSWORD": "Set password",
 			"ROLES": "Roles"
+		}
+	},
+	"INVOICES_CASH_PAYMENTS": {
+		"FORM": {
+			"LABELS": {
+				"DESCRIPTION": "Description",
+				"CURRENCYCODE": "Currency code",
+				"AMOUNT": "Amount",
+				"INVOICEID": "Invoice"
+			},
+			"PLACEHOLDERS": {
+				"DESCRIPTION": "Description",
+				"CURRENCYCODE": "Currency code",
+				"AMOUNT": "Amount",
+				"INVOICEID": "Invoice"
+			},
+			"VALIDATION": {
+				"DESCRIPTION": {
+					"REQUIRED": "Description is required."
+				},
+				"CURRENCYCODE": {
+					"REQUIRED": "Currency code is required."
+				},
+				"AMOUNT": {
+					"REQUIRED": "Amount is required."
+				},
+				"INVOICEID": {
+					"REQUIRED": "Invoice is required."
+				}
+			}
+		},
+		"CREATE": {
+			"PAYMENT": "Cash payment",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDIT": "Edit",
+			"BUTTON_EDIT": "Update"
+		},
+		"PAY": {
+			"BUTTON_PAY": "Pay"
+		},
+		"INDEX": {
+			"PACKAGES": "Packages",
+			"CREATE": "Create",
+			"EDIT": "Edit",
+			"DELETE": "Delete",
+			"FIELDS": "Fields",
+			"FIELDS_TITLE": "(fields)",
+			"ITEM": "Item",
+			"MANAGE": "Manage",
+			"ACTIONS": "Actions",
+			"ITEMS": "Items",
+			"PAYMENTS": "Payments"
+		},
+		"QUEUE": {
+			"ADDING": "Adding {{ currencyCode }}",
+			"UPDATING": "Updating {{ currencyCode }}",
+			"DELETING": "Deleting {{ currencyCode }}",
+			"ERROR": "An error occured with {{ currencyCode }}. Correct and try again."
+		},
+		"ENTITY_ACTION_PROVIDER": {
+			"ENTITY_ACTION": {
+				"CASH_PAYMENT": "Cash payment"
+			}
 		}
 	},
 	"INVOICES": {
@@ -635,69 +875,37 @@
 			"ERROR": "An error occured with {{ description }}. Correct and try again."
 		}
 	},
-	"INVOICES_CASH_PAYMENTS": {
+	"INVOICES_PRODUCTS": {
 		"FORM": {
 			"LABELS": {
-				"DESCRIPTION": "Description",
-				"CURRENCYCODE": "Currency code",
-				"AMOUNT": "Amount",
-				"INVOICEID": "Invoice"
+				"INVOICEID": "Invoice",
+				"PRODUCTID": "Product",
+				"AMOUNT": "Amount"
 			},
 			"PLACEHOLDERS": {
-				"DESCRIPTION": "Description",
-				"CURRENCYCODE": "Currency code",
-				"AMOUNT": "Amount",
-				"INVOICEID": "Invoice"
+				"INVOICEID": "Invoice",
+				"PRODUCTID": "Product",
+				"AMOUNT": "Amount"
 			},
 			"VALIDATION": {
-				"DESCRIPTION": {
-					"REQUIRED": "Description is required."
+				"INVOICEID": {
+					"REQUIRED": "Invoice is required."
 				},
-				"CURRENCYCODE": {
-					"REQUIRED": "Currency code is required."
+				"PRODUCTID": {
+					"REQUIRED": "Product is required."
 				},
 				"AMOUNT": {
 					"REQUIRED": "Amount is required."
-				},
-				"INVOICEID": {
-					"REQUIRED": "Invoice is required."
 				}
 			}
 		},
-		"CREATE": {
-			"PAYMENT": "Cash payment",
-			"BUTTON_CREATE": "Create"
+		"ADD_TO_INVOICE": {
+			"TITLE": "Add to invoice",
+			"SUBMIT": "Submit"
 		},
-		"EDIT": {
-			"EDIT": "Edit",
-			"BUTTON_EDIT": "Update"
-		},
-		"PAY": {
-			"BUTTON_PAY": "Pay"
-		},
-		"INDEX": {
-			"PACKAGES": "Packages",
-			"CREATE": "Create",
-			"EDIT": "Edit",
-			"DELETE": "Delete",
-			"FIELDS": "Fields",
-			"FIELDS_TITLE": "(fields)",
-			"ITEM": "Item",
-			"MANAGE": "Manage",
-			"ACTIONS": "Actions",
-			"ITEMS": "Items",
-			"PAYMENTS": "Payments"
-		},
-		"QUEUE": {
-			"ADDING": "Adding {{ currencyCode }}",
-			"UPDATING": "Updating {{ currencyCode }}",
-			"DELETING": "Deleting {{ currencyCode }}",
-			"ERROR": "An error occured with {{ currencyCode }}. Correct and try again."
-		},
-		"ENTITY_ACTION_PROVIDER": {
-			"ENTITY_ACTION": {
-				"CASH_PAYMENT": "Cash payment"
-			}
+		"ADD_PRODUCTS": {
+			"TITLE": "Add products",
+			"SUBMIT": "Submit"
 		}
 	},
 	"LODGING_RESERVATIONS": {
@@ -1993,6 +2201,99 @@
 			"ERROR": "An error occured with {{ name }}. Correct and try again."
 		}
 	},
+	"CLIENTS": {
+		"CREATE": {
+			"CREATE": "Create",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDIT": "Edit",
+			"BUTTON_EDIT": "Update"
+		},
+		"INDEX": {
+			"TITLE_EXTRAS": "(Clients)",
+			"ACTIONS": "Actions",
+			"CREATE": "Create",
+			"DELETE": "Delete",
+			"MANAGE": "Manage",
+			"BACK": "Back"
+		},
+		"FORM": {
+			"LABELS": {
+				"NAME": "Name",
+				"DESCRIPTION": "Description",
+				"ONLINE": "Online"
+			},
+			"PLACEHOLDERS": {
+				"NAME": "Name",
+				"DESCRIPTION": "Description",
+				"ONLINE": "Online"
+			},
+			"VALIDATION": {
+				"NAME": {
+					"REQUIRED": "Name is required."
+				},
+				"DESCRIPTION": {
+					"REQUIRED": "Description is required."
+				}
+			}
+		},
+		"QUEUE": {
+			"ADDING": "Adding client {{ id }}",
+			"UPDATING": "Updating client {{ id }}",
+			"DELETING": "Deleting client {{ id }}",
+			"ERROR": "An error occured with client {{ id }}. Correct and try again."
+		}
+	},
+	"CONNECTIONS": {
+		"CREATE": {
+			"CREATE": "Create",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDIT": "Edit",
+			"BUTTON_EDIT": "Update"
+		},
+		"INDEX": {
+			"TITLE_EXTRAS": "(Connections)",
+			"ACTIONS": "Actions",
+			"CREATE": "Create",
+			"DELETE": "Delete",
+			"MANAGE": "Manage",
+			"BACK": "Back"
+		},
+		"FORM": {
+			"LABELS": {
+				"STATUS": "Status",
+				"CLIENTID": "Client",
+				"TERMINALID": "Terminal",
+				"ONLINE": "Online"
+			},
+			"PLACEHOLDERS": {
+				"STATUS": "Status",
+				"CLIENTID": "Client",
+				"TERMINALID": "Terminal",
+				"ONLINE": "Online"
+			},
+			"VALIDATION": {
+				"STATUS": {
+					"REQUIRED": "Status is required."
+				},
+				"CLIENTID": {
+					"REQUIRED": "Client is required."
+				},
+				"TERMINALID": {
+					"REQUIRED": "Terminal is required."
+				}
+			}
+		},
+		"QUEUE": {
+			"ADDING": "Adding connection {{ id }}",
+			"UPDATING": "Updating connection {{ id }}",
+			"DELETING": "Deleting connection {{ id }}",
+			"ERROR": "An error occured with connection {{ id }}. Correct and try again."
+		}
+	},
 	"RECEIPTS": {
 		"CREATE": {
 			"CREATE": "Create",
@@ -2003,14 +2304,14 @@
 			"BUTTON_EDIT": "Update"
 		},
 		"INDEX": {
+			"TITLE_EXTRAS": "(Receipts)",
 			"ACTIONS": "Actions",
 			"CREATE": "Create",
 			"DELETE": "Delete",
 			"MANAGE": "Manage",
 			"FIELDS": "Fields",
 			"FIELDS_TITLE": "(fields)",
-			"BACK": "Back",
-			"TITLE_EXTRAS": "(Receipts)"
+			"BACK": "Back"
 		},
 		"FORM": {
 			"LABELS": {
@@ -2036,29 +2337,23 @@
 		"FORM": {
 			"LABELS": {
 				"NAME": "Name",
-				"PRODUCTTYPEID": "Product type",
 				"CONNECTIONSTRING": "Connection string",
+				"CONNECTION": "Connection",
 				"DESCRIPTION": "Description",
 				"CLIENTID": "Client",
 				"TERMINALID": "Terminal",
 				"AMOUNT": "Amount",
-				"REFERENCE": "Reference",
-				"CURRENCY": "Currency",
-				"CONNECTION": "Connection",
 				"INVOICEID": "Invoice ID",
 				"CURRENCYCODE": "Currency"
 			},
 			"PLACEHOLDERS": {
 				"NAME": "Name",
-				"PRODUCTTYPEID": "Choose product type",
 				"CONNECTIONSTRING": "Connection string",
+				"CONNECTION": "Connection",
 				"DESCRIPTION": "Description",
 				"CLIENTID": "Client",
 				"TERMINALID": "Terminal",
 				"AMOUNT": "Amount",
-				"REFERENCE": "Reference",
-				"CURRENCY": "Currency",
-				"CONNECTION": "Connection",
 				"INVOICEID": "Invoice ID",
 				"CURRENCYCODE": "Currency"
 			},
@@ -2069,8 +2364,8 @@
 				"CONNECTIONSTRING": {
 					"REQUIRED": "Connection string is required."
 				},
-				"DESCRIPTION": {
-					"REQUIRED": "Description is required."
+				"CONNECTION": {
+					"REQUIRED": "Connection is required."
 				},
 				"CLIENTID": {
 					"REQUIRED": "Client is required."
@@ -2080,15 +2375,6 @@
 				},
 				"AMOUNT": {
 					"REQUIRED": "Amount is required."
-				},
-				"REFERENCE": {
-					"REQUIRED": "Reference is required."
-				},
-				"CURRENCY": {
-					"REQUIRED": "Currency is required."
-				},
-				"CONNECTION": {
-					"REQUIRED": "Connection is required."
 				},
 				"INVOICEID": {
 					"REQUIRED": "Invoice ID is required."
@@ -2107,35 +2393,17 @@
 			"BUTTON_EDIT": "Update"
 		},
 		"INDEX": {
+			"TITLE_EXTRAS": "(Terminals)",
 			"CREATE": "Create",
 			"EDIT": "Edit",
 			"DELETE": "Delete",
-			"FIELDS": "Fields",
-			"FIELDS_TITLE": "(fields)",
-			"ITEM": "Item",
 			"MANAGE": "Manage",
 			"ACTIONS": "Actions",
-			"TYPES": "Types",
-			"CLIENTS": "Clients",
-			"RECEIPTS": "Receipts",
-			"CONNECTIONS": "Connections",
-			"TITLE_EXTRAS": "(Terminals)"
+			"TYPES": "Types"
 		},
-		"FIELDS": {
-			"CREATE": {
-				"ADD": "Add new field"
-			},
-			"EDIT": {
-				"EDITING": "Editing"
-			},
-			"INDEX": {
-				"ACTIONS": "Actions",
-				"CREATE": "Create",
-				"MANAGE": "Manage",
-				"TYPES": "Types",
-				"FIELDS": "Fields",
-				"BACK": "Back"
-			}
+		"PAY": {
+			"TITLE": "Card payment",
+			"BUTTON_PAY": "Pay"
 		},
 		"QUEUE": {
 			"ADDING": "Adding terminal {{ id }}",
@@ -2144,14 +2412,9 @@
 			"ERROR": "An error occured with terminal {{ id }}. Correct and try again."
 		},
 		"ENTITY_ACTION_PROVIDER": {
-			"TERMINAL_PAYMENT": "Terminal payment",
 			"ENTITY_ACTION": {
 				"TERMINAL_PAYMENT": "Card payment"
 			}
-		},
-		"PAY": {
-			"TITLE": "Card payment",
-			"BUTTON_PAY": "Pay"
 		}
 	},
 	"UI": {
@@ -2259,6 +2522,12 @@
 			}
 		}
 	},
+	"COMMERCIAL_ACCOUNT": {
+		"INDEX": {}
+	},
+	"COMMERCIAL_TENANTS": {
+		"INDEX": {}
+	},
 	"OAUTH2": {
 		"FORM": {
 			"LABELS": {
@@ -2285,15 +2554,16 @@
 			"ENTER_CRED": "Please enter your credentials below",
 			"ERROR_OCCURRED": "Error occurred, please verify email and/or password",
 			"FORGOT_PASSWORD": "Forgot password",
+			"CONFIRM_EMAIL": "Confirm e-mail",
 			"LOGGING_IN": "Logging in...",
-			"BUTTON_LOGIN": "Login",
-			"CONFIRM_EMAIL": "Confirm e-mail"
+			"BUTTON_LOGIN": "Login"
 		}
 	},
 	"PACKAGES": {
 		"ADDING": "Adding {{ name }}",
 		"UPDATING": "Updating {{ name }}",
 		"DELETING": "Deleting {{ name }}",
+		"EDITING_PATH": "Editing path",
 		"ERROR": "An error occured with {{ name }}. Correct and try again.",
 		"FORM": {
 			"LABELS": {
@@ -2307,8 +2577,8 @@
 				"NAME": "Enter name",
 				"DESCRIPTION": "Enter description",
 				"PATH": "Enter path",
-				"CURRENTPATH": "Current path",
-				"NEWPATH": "New path"
+				"NEWPATH": "New path",
+				"CURRENTPATH": "Current path"
 			},
 			"VALIDATION": {
 				"TYPE": {
@@ -2346,12 +2616,10 @@
 			"BUTTON_CREATE": "Create"
 		},
 		"EDIT": {
-			"EDITING": "Editing {{ object.name }} package",
-			"BUTTON_EDIT": "Update",
 			"EDIT": "Edit package",
-			"PACKAGE_PATH": "Edit package path"
-		},
-		"EDITING_PATH": "Editing path"
+			"PACKAGE_PATH": "Edit package path",
+			"BUTTON_EDIT": "Update"
+		}
 	},
 	"ADAPTORS": {
 		"FORM": {
@@ -2487,6 +2755,16 @@
 			"PRICES_TYPES": "Lodging type prices"
 		}
 	},
+	"TERMINAL_PAYMENTS": {
+		"INDEX": {
+			"TITLE": "Terminal Payments",
+			"MANAGE": "Manage",
+			"TERMINALS": "Terminals",
+			"CLIENTS": "Clients",
+			"RECEIPTS": "Receipts",
+			"CONNECTIONS": "Connections"
+		}
+	},
 	"FIELDS": {
 		"INDEX": {
 			"CREATE": "Create",
@@ -2535,389 +2813,5 @@
 	"SETTINGS": {
 		"SETTINGS": "Settings",
 		"BUTTON_SUBMIT": "Submit"
-	},
-	"EMAIL_TEMPLATES": {
-		"FORM": {
-			"LABELS": {
-				"FROM": "From",
-				"TO": "To",
-				"CC": "Cc",
-				"BCC": "Bcc",
-				"SUBJECT": "Subject",
-				"BODY": "Body"
-			},
-			"PLACEHOLDERS": {
-				"FROM": "From",
-				"TO": "To",
-				"CC": "Cc",
-				"BCC": "Bcc",
-				"SUBJECT": "Subject",
-				"BODY": "Body"
-			},
-			"VALIDATION": {}
-		},
-		"CREATE": {
-			"CREATE": "Create",
-			"BUTTON_CREATE": "Create"
-		},
-		"EDIT": {
-			"EDIT": "Edit",
-			"BUTTON_EDIT": "Update"
-		},
-		"INDEX": {
-			"CREATE": "Create",
-			"EDIT": "Edit",
-			"DELETE": "Delete",
-			"MANAGE": "Manage",
-			"ACTIONS": "Actions"
-		},
-		"QUEUE": {
-			"ADDING": "Adding {{ subject }}",
-			"UPDATING": "Updating {{ subject }}",
-			"DELETING": "Deleting {{ subject }}",
-			"ERROR": "An error occured with {{ subject }}. Correct and try again."
-		},
-		"ENTITY_ACTION": {
-			"ITEMS": "Items"
-		}
-	},
-	"EMAILS": {
-		"FORM": {
-			"LABELS": {},
-			"PLACEHOLDERS": {},
-			"VALIDATION": {}
-		},
-		"CREATE": {
-			"CREATE": "Create",
-			"BUTTON_CREATE": "Create"
-		},
-		"EDIT": {
-			"EDIT": "Edit",
-			"BUTTON_EDIT": "Update"
-		},
-		"INDEX": {
-			"CREATE": "Create",
-			"EDIT": "Edit",
-			"DELETE": "Delete",
-			"ITEM": "Item",
-			"MANAGE": "Manage",
-			"ACTIONS": "Actions",
-			"TEMPLATES": "Templates"
-		},
-		"QUEUE": {
-			"ADDING": "Adding {{ currencyCode }}",
-			"UPDATING": "Updating {{ currencyCode }}",
-			"DELETING": "Deleting {{ currencyCode }}",
-			"ERROR": "An error occured with {{ currencyCode }}. Correct and try again."
-		},
-		"ENTITY_ACTION": {}
-	},
-	"EMAILS_SMTP": {
-		"INDEX": {
-			"CREATE": "Create",
-			"EDIT": "Edit",
-			"DELETE": "Delete",
-			"TEMPLATES": "Templates",
-			"MANAGE": "Manage",
-			"ACTIONS": "Actions",
-			"SETTINGS": "Settings"
-		}
-	},
-	"EMAILS_SMTP_SETTINGS": {
-		"FORM": {
-			"LABELS": {
-				"host": "Host",
-				"port": "Port",
-				"username": "Username",
-				"password": "Password",
-				"enableSsl": "Enable ssl",
-				"HOST": "Host",
-				"PORT": "Port",
-				"USERNAME": "Username",
-				"PASSWORD": "Password",
-				"ENABLESSL": "Enable ssl"
-			},
-			"PLACEHOLDERS": {
-				"host": "Host",
-				"port": "Port",
-				"username": "Username",
-				"password": "Password",
-				"enableSsl": "Enable ssl",
-				"HOST": "Host",
-				"PORT": "Port",
-				"USERNAME": "Username",
-				"PASSWORD": "Password",
-				"ENABLESSL": "Enable ssl"
-			}
-		}
-	},
-	"CLIENTS": {
-		"CREATE": {
-			"CREATE": "Create",
-			"BUTTON_CREATE": "Create"
-		},
-		"EDIT": {
-			"EDIT": "Edit",
-			"BUTTON_EDIT": "Update"
-		},
-		"INDEX": {
-			"ACTIONS": "Actions",
-			"CREATE": "Create",
-			"DELETE": "Delete",
-			"MANAGE": "Manage",
-			"FIELDS": "Fields",
-			"FIELDS_TITLE": "(fields)",
-			"BACK": "Back",
-			"TITLE_EXTRAS": "(Clients)"
-		},
-		"FORM": {
-			"LABELS": {
-				"NAME": "Name",
-				"DESCRIPTION": "Description",
-				"ONLINE": "Online"
-			},
-			"PLACEHOLDERS": {
-				"NAME": "Name",
-				"DESCRIPTION": "Description",
-				"ONLINE": "Online"
-			},
-			"VALIDATION": {
-				"NAME": {
-					"REQUIRED": "Name is required."
-				},
-				"DESCRIPTION": {
-					"REQUIRED": "Description is required."
-				},
-				"ONLINE": {}
-			}
-		},
-		"QUEUE": {
-			"ADDING": "Adding client {{ id }}",
-			"UPDATING": "Updating client {{ id }}",
-			"DELETING": "Deleting client {{ id }}",
-			"ERROR": "An error occured with client {{ id }}. Correct and try again."
-		}
-	},
-	"CONNECTIONS": {
-		"CREATE": {
-			"CREATE": "Create",
-			"BUTTON_CREATE": "Create"
-		},
-		"EDIT": {
-			"EDIT": "Edit",
-			"BUTTON_EDIT": "Update"
-		},
-		"INDEX": {
-			"ACTIONS": "Actions",
-			"CREATE": "Create",
-			"DELETE": "Delete",
-			"MANAGE": "Manage",
-			"BACK": "Back",
-			"TITLE_EXTRAS": "(Connections)"
-		},
-		"FORM": {
-			"LABELS": {
-				"NAME": "Name",
-				"DESCRIPTION": "Description",
-				"ONLINE": "Online",
-				"CLIENTID": "Client",
-				"TERMINALID": "Terminal",
-				"STATUS": "Status"
-			},
-			"PLACEHOLDERS": {
-				"NAME": "Name",
-				"DESCRIPTION": "Description",
-				"ONLINE": "Online",
-				"CLIENTID": "Client",
-				"TERMINALID": "Terminal",
-				"STATUS": "Status"
-			},
-			"VALIDATION": {
-				"NAME": {
-					"REQUIRED": "Name is required."
-				},
-				"DESCRIPTION": {
-					"REQUIRED": "Description is required."
-				},
-				"ONLINE": {},
-				"CLIENTID": {
-					"REQUIRED": "Client is required."
-				},
-				"TERMINALID": {
-					"REQUIRED": "Terminal is required."
-				},
-				"STATUS": {
-					"REQUIRED": "Status is required."
-				}
-			}
-		},
-		"QUEUE": {
-			"ADDING": "Adding connection {{ id }}",
-			"UPDATING": "Updating connection {{ id }}",
-			"DELETING": "Deleting connection {{ id }}",
-			"ERROR": "An error occured with connection {{ id }}. Correct and try again."
-		}
-	},
-	"TERMINAL_PAYMENTS_INDEX": {
-		"TITLE": "Terminal Payments",
-		"MANAGE": "Manage",
-		"TERMINALS": "Terminals",
-		"CLIENTS": "Clients",
-		"RECEIPTS": "Receipts",
-		"CONNECTIONS": "Connections"
-	},
-	"INVOICES_PRODUCTS": {
-		"FORM": {
-			"LABELS": {
-				"INVOICEID": "Invoice",
-				"AMOUNT": "Amount",
-				"PRODUCTID": "Product"
-			},
-			"PLACEHOLDERS": {
-				"INVOICEID": "Invoice",
-				"AMOUNT": "Amount",
-				"PRODUCTID": "Product"
-			},
-			"VALIDATION": {
-				"INVOICEID": {
-					"REQUIRED": "Invoice is required."
-				},
-				"AMOUNT": {
-					"REQUIRED": "Amount is required."
-				},
-				"PRODUCTID": {
-					"REQUIRED": "Product is required."
-				}
-			}
-		},
-		"ADD_TO_PRODUCT": {
-			"TITLE": "Add to invoice",
-			"SUBMIT": "Submit"
-		},
-		"ADD_TO_INVOICE": {
-			"TITLE": "Add to invoice",
-			"SUBMIT": "Submit"
-		},
-		"ADD_PRODUCTS": {
-			"TITLE": "Add products",
-			"SUBMIT": "Submit"
-		}
-	},
-	"APPLICATIONS": {
-		"CREATE": {
-			"CREATE_APPLICATION": "Create new application",
-			"BUTTON_CREATE": "Create"
-		},
-		"EDIT": {
-			"EDITING": "Edit {{ displayName }}",
-			"BUTTON_EDIT": "Update"
-		},
-		"INDEX": {
-			"ACTIONS": "Actions",
-			"CREATE": "Create",
-			"MANAGE": "Manage",
-			"SECURITY": "Security",
-			"SECURITY_AND_USERS": "Users and security",
-			"TITLE_EXTRAS": "(applications)",
-			"APPLICATIONS": "Applications",
-			"BACK": "Back",
-			"FIELDS_TITLE": "(fields)"
-		},
-		"FORM": {
-			"LABELS": {
-				"CLIENTID": "Client id",
-				"CONCURRENCYTOKEN": "Concurrency token",
-				"CONSENTTYPE": "Consent type",
-				"DISPLAYNAME": "Display name",
-				"PERMISSIONS": "Permissions",
-				"POSTLOGOUTREDIRECTURIS": "Post logout redirect uris",
-				"PROPERTIES": "Properties",
-				"REDIRECTURIS": "Redirect uris",
-				"TYPE": "Type",
-				"CLIENTSECRET": "Client secret"
-			},
-			"PLACEHOLDERS": {
-				"CLIENTID": "Client id",
-				"CONCURRENCYTOKEN": "Concurrency token",
-				"CONSENTTYPE": "Consent type",
-				"DISPLAYNAME": "Display name",
-				"PERMISSIONS": "Permissions",
-				"POSTLOGOUTREDIRECTURIS": "Post logout redirect uris",
-				"PROPERTIES": "Properties",
-				"REDIRECTURIS": "Redirect uris",
-				"TYPE": "Type",
-				"CLIENTSECRET": "Client secret"
-			},
-			"VALIDATION": {
-				"CLIENTID": {
-					"REQUIRED": "Client id is required"
-				},
-				"CONCURRENCYTOKEN": {
-					"REQUIRED": "Concurrency token is required"
-				},
-				"CONSENTTYPE": {
-					"REQUIRED": "Consent type is required"
-				},
-				"DISPLAYNAME": {
-					"REQUIRED": "Display name is required"
-				},
-				"PERMISSIONS": {
-					"REQUIRED": "Permissions is required"
-				},
-				"POSTLOGOUTREDIRECTURIS": {
-					"REQUIRED": "Post logout redirect uris is required"
-				},
-				"PROPERTIES": {
-					"REQUIRED": "Properties is required"
-				},
-				"REDIRECTURIS": {
-					"REQUIRED": "Redirect uris is required"
-				},
-				"TYPE": {
-					"REQUIRED": "Type is required"
-				},
-				"CLIENTSECRET": {
-					"REQUIRED": "Client secret is required"
-				}
-			}
-		},
-		"QUEUE": {
-			"ADDING": "Adding {{ displayName }}",
-			"UPDATING": "Updating {{ displayName }}",
-			"DELETING": "Deleting {{ displayName }}",
-			"ERROR": "An error occured with {{ displayName }}. Correct and try again."
-		},
-		"ENTITY_ACTION": {
-			"ROLES": "Roles"
-		},
-		"ROLES": {
-			"CURRENT_ROLES": "{{ object.displayName }} current roles",
-			"ROLE_PRIORITY": "{{ role.object.name }} with priority {{ role.object.priority }} -",
-			"REMOVE": "Remove",
-			"NO_ROLES": "No roles have been applied.",
-			"ADD_ROLE": "Add a role to {{ object.displayName }}",
-			"OBJECT_PRIOORITY": "{{ role.object.name }} - priority",
-			"ADD": "Add",
-			"ROLES_APPLIED": "All roles have been applied, or no roles exists.",
-			"NO_ROLES_APPLIED": "This application has no roles."
-		}
-	},
-	"COMMERCIAL_ACCOUNT": {
-		"INDEX": {}
-	},
-<<<<<<< HEAD
-	"TERMINAL_PAYMENTS": {
-		"INDEX": {
-			"TITLE": "Terminal Payments",
-			"MANAGE": "Manage",
-			"TERMINALS": "Terminals",
-			"CLIENTS": "Clients",
-			"RECEIPTS": "Receipts",
-			"CONNECTIONS": "Connections"
-		}
-=======
-	"COMMERCIAL_TENANTS": {
-		"INDEX": {}
->>>>>>> dev
 	}
 }
