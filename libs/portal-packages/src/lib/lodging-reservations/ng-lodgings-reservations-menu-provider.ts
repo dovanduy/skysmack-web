@@ -20,13 +20,31 @@ export class NgLodgingsReservationsMenuProvider extends MenuProvider {
     ) { super(); }
 
     public getMenuAreas(packagePath: string, componentKey: string): Observable<MenuArea[]> {
-        return getMenuEntries<MenuArea>(packagePath, LodgingReservationsTypeId, componentKey, LodgingsReservationsIndexComponent.COMPONENT_KEY, this.getLodgingsReservationsMenuAreas, this.store);
+        return getMenuEntries<MenuArea>(
+            packagePath,
+            LodgingReservationsTypeId,
+            componentKey,
+            LodgingsReservationsIndexComponent.COMPONENT_KEY,
+            this.getLodgingsReservationsMenuAreas, this.store
+        );
     };
 
     public getMenuItems(packagePath: string, componentKey: string): Observable<MenuItem[]> {
         return getCombinedMenuEntries(
-            getMenuEntries<MenuItem>(packagePath, LodgingReservationsTypeId, componentKey, LodgingsReservationsIndexComponent.COMPONENT_KEY, this.getLodgingsReservationsMenuItems, this.store),
-            getConnectedPackageMenuEntries(packagePath, LodgingReservationsTypeId, LodgingsTypeId, componentKey, LodgingsIndexComponent.COMPONENT_KEY, this.store),
+            getMenuEntries<MenuItem>(packagePath,
+                LodgingReservationsTypeId,
+                componentKey,
+                LodgingsReservationsIndexComponent.COMPONENT_KEY,
+                this.getLodgingsReservationsMenuItems,
+                this.store
+            ),
+            getConnectedPackageMenuEntries(packagePath,
+                LodgingReservationsTypeId,
+                LodgingsTypeId,
+                componentKey,
+                LodgingsIndexComponent.COMPONENT_KEY,
+                this.store
+            )
         );
     };
 

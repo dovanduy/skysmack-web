@@ -4,9 +4,10 @@ import { MenuArea, MenuProvider } from '@skysmack/framework';
 import { MenuItem } from '@skysmack/framework';
 import { Guid } from 'guid-typescript';
 import { Observable } from 'rxjs';
-import { getMenuEntries, setConnectedParentPackage } from '@skysmack/ng-framework';
-import { InvoicesCashPaymentsTypeId } from '@skysmack/package-types';
+import { getMenuEntries, setConnectedParentPackage, getCombinedMenuEntries, getConnectedPackageMenuEntries } from '@skysmack/ng-framework';
+import { InvoicesCashPaymentsTypeId, InvoicesTypeId } from '@skysmack/package-types';
 import { InvoicesCashPaymentsIndexComponent } from './components/invoices-cash-payments-index/invoices-cash-payments-index.component';
+import { InvoicesIndexComponent } from '../../invoices/invoice/components/invoices-index/invoices-index.component';
 
 @Injectable({ providedIn: 'root' })
 export class NgInvoicesCashPaymentsMenuProvider extends MenuProvider {
@@ -18,11 +19,33 @@ export class NgInvoicesCashPaymentsMenuProvider extends MenuProvider {
     ) { super(); }
 
     public getMenuAreas(packagePath: string, componentKey: string): Observable<MenuArea[]> {
-        return getMenuEntries<MenuArea>(packagePath, InvoicesCashPaymentsTypeId, componentKey, InvoicesCashPaymentsIndexComponent.COMPONENT_KEY, this.getInvoicesCashPaymentsMenuAreas, this.store);
+        return getMenuEntries<MenuArea>(packagePath,
+            InvoicesCashPaymentsTypeId,
+            componentKey,
+            InvoicesCashPaymentsIndexComponent.COMPONENT_KEY,
+            this.getInvoicesCashPaymentsMenuAreas,
+            this.store
+        );
     };
 
     public getMenuItems(packagePath: string, componentKey: string): Observable<MenuItem[]> {
-        return getMenuEntries<MenuItem>(packagePath, InvoicesCashPaymentsTypeId, componentKey, InvoicesCashPaymentsIndexComponent.COMPONENT_KEY, this.getInvoicesCashPaymentsMenuItems, this.store);
+        return getCombinedMenuEntries(
+            getMenuEntries<MenuItem>(packagePath,
+                InvoicesCashPaymentsTypeId,
+                componentKey,
+                InvoicesCashPaymentsIndexComponent.COMPONENT_KEY,
+                this.getInvoicesCashPaymentsMenuItems,
+                this.store
+            ),
+            getConnectedPackageMenuEntries(
+                packagePath,
+                InvoicesCashPaymentsTypeId,
+                InvoicesTypeId,
+                componentKey,
+                InvoicesIndexComponent.COMPONENT_KEY,
+                this.store
+            )
+        );
     };
 
     public getInvoicesCashPaymentsMenuAreas = () => {
