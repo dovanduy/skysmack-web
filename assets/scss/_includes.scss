@@ -1,4 +1,18 @@
-@import 'material2/themes/skysmack';
-
 $small-breakpoint-width: 720px;
 $lighter: #eff5f7; // lighten(map-get($map: $mat-skysmack, $key: light), 35%);
+
+$mat-elevation-opacity: 0.6;
+
+$dark-primary-text: rgba(0,0,0,.87);
+$light-primary-text: rgba(255,255,255,.87);
+
+$mat-skysmack: (
+  primary: #2c89a0,
+  light: #64b9d1,
+  dark: #005c71,
+  contrast: (
+    primary: $dark-primary-text,
+    light: $dark-primary-text,
+    dark: $light-primary-text
+  )
+);
