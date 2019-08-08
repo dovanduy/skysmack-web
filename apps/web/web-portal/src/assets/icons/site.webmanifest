@@ -6,12 +6,12 @@
     "orientation": "any",
     "icons": [
         {
-            "src": "android-chrome-192x192.png?v=Kmnj8bBO5w",
+            "src": "//cdn.skysmack.net/android-chrome-192x192.png?v=Kmnj8bBO5w",
             "sizes": "192x192",
             "type": "image/png"
         },
         {
-            "src": "android-chrome-512x512.png?v=Kmnj8bBO5w",
+            "src": "//cdn.skysmack.net/android-chrome-512x512.png?v=Kmnj8bBO5w",
             "sizes": "512x512",
             "type": "image/png"
         }

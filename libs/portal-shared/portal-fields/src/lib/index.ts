@@ -3,3 +3,5 @@ export * from './field-components/index';
 export * from './management-components/index';
 export * from './portal-fields.module';
 export * from './document-fields-config';
+export * from './ng-fields-menu-provider';
+

@@ -9,7 +9,6 @@ import { CalendarEvent, EventColor, EventAction } from 'calendar-utils';
 import * as _moment from 'moment';
 import { PagedQuery, defined } from '@skysmack/framework';
 import { SelectFieldOption } from '@skysmack/ng-dynamic-forms';
-import { NgLodgingsAvailabilityMenu } from '../../ng-lodgings-availability-menu';
 import { CalendarMonthViewDay } from 'angular-calendar';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 const moment = _moment;
@@ -18,7 +17,9 @@ const moment = _moment;
   selector: 'ss-lodgings-availability',
   templateUrl: './lodgings-availability.component.html'
 })
-export class LodgingsavailabilityComponent implements OnInit {
+export class LodgingsAvailabilityComponent implements OnInit {
+  public static COMPONENT_KEY = 'lodgings-availability-index';
+  public componentKey = LodgingsAvailabilityComponent.COMPONENT_KEY;
   public packagePath = this.router.url.split('/')[1];
   public events$: Observable<CalendarEvent[]>;
   public selectedLodgingIds: number[] = [];
@@ -44,7 +45,6 @@ export class LodgingsavailabilityComponent implements OnInit {
     public store: NgLodgingsStore,
     public actions: NgLodgingsActions,
     public pageTitle: EntityComponentPageTitle,
-    public sidebarMenu: NgLodgingsAvailabilityMenu
   ) {
     pageTitle.setTitle('LODGINGS_AVAILABILITY.TITLE');
   }

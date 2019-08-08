@@ -3,7 +3,6 @@ import { EntityComponentPageTitle, MenuItemActionProviders, MENU_ITEM_ACTIONS_ED
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgReceiptsActions, NgReceiptsStore } from '@skysmack/ng-terminal-payments';
 import { ReceiptsAppState, Receipt, RECEIPTS_AREA_KEY } from '@skysmack/packages-terminal-payments';
-import { NgReceiptsMenu } from '../../ng-receipts-menu';
 import { MenuItem } from '@skysmack/framework';
 import { NgFieldActions } from '@skysmack/ng-framework';
 import { NgReceiptsFieldsConfig } from '../../ng-receipts-fields-config';
@@ -15,6 +14,8 @@ import { DocumentRecordIndexComponent } from '@skysmack/portal-fields';
   templateUrl: './receipts-index.component.html'
 })
 export class ReceiptsIndexComponent extends DocumentRecordIndexComponent<ReceiptsAppState, Receipt, number> implements OnInit {
+  public static COMPONENT_KEY = 'receipts-index';
+  public componentKey = ReceiptsIndexComponent.COMPONENT_KEY;
   public areaKey: string = RECEIPTS_AREA_KEY;
   public titleExtras = true;
   public menuItemActions: MenuItem[] = [
@@ -28,7 +29,6 @@ export class ReceiptsIndexComponent extends DocumentRecordIndexComponent<Receipt
     public actions: NgReceiptsActions,
     public redux: NgSkysmackStore,
     public store: NgReceiptsStore,
-    public sidebarMenu: NgReceiptsMenu,
     public fieldsConfig: NgReceiptsFieldsConfig,
     public fieldActions: NgFieldActions,
     public title: EntityComponentPageTitle,

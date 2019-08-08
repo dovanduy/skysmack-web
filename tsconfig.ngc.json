@@ -157,6 +157,9 @@
       ],
       "@skysmack/commercial-account": [
         "libs/commercial-packages/commercial-account"
+      ],
+      "@skysmack/commercial-tenants": [
+        "libs/commercial-packages/commercial-tenants"
       ]
     }
   },

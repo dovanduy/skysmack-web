@@ -4,7 +4,7 @@ import { LocalObject } from '@skysmack/framework';
 import { APPLICATIONS_AREA_KEY, ApplicationDescriptor } from '@skysmack/packages-identities';
 import { NgApplicationsValidation } from '@skysmack/ng-identities';
 import { LoadedPackage } from '@skysmack/ng-framework';
-import { StringFieldComponent } from '@skysmack/portal-fields';
+import { StringFieldComponent, StringArrayFieldComponent } from '@skysmack/portal-fields';
 import { FormRule, Field } from '@skysmack/ng-dynamic-forms';
 import { FieldsConfig, FieldProviders } from '@skysmack/ng-fields';
 
@@ -57,7 +57,16 @@ export class NgApplicationsFormFieldsConfig extends FieldsConfig<ApplicationDesc
                 validators: [Validators.required],
                 order: 1,
                 showColumn: true
-            })
+            }),
+            new Field({
+                component: StringArrayFieldComponent,
+                value: entity ? entity.object.permissions : [[]],
+                key: 'permissions',
+                validators: [Validators.required],
+                order: 3,
+                showColumn: true,
+                sortable: true
+            }),
         ];
 
         return fields;

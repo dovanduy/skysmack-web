@@ -171,7 +171,10 @@
         "libs/ng-packages/ng-terminal-payments/src/public_api.ts"
       ],
       "@skysmack/commercial-account": [
-        "libs/commercial-account/commercial-account/src/public_api.ts"
+        "libs/commercial-packages/commercial-account/src/public_api.ts"
+      ],
+      "@skysmack/commercial-tenants": [
+        "libs/commercial-packages/commercial-tenants/src/public_api.ts"
       ]
     }
   },

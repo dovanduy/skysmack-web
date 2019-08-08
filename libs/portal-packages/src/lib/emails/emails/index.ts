@@ -1,3 +1,2 @@
 export * from './components/index';
-
-export * from './ng-emails-menu';
+export * from './ng-emails-menu-provider';

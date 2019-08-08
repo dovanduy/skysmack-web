@@ -7,7 +7,6 @@ import { RSQLFilterBuilder, SortBuilder } from '@skysmack/framework';
 import * as _moment from 'moment';
 const moment = _moment;
 import { LodgingReservation } from '@skysmack/packages-lodging-reservations';
-import { NgLodgingsReservationsMenu } from '../../ng-lodgings-reservations-menu';
 import { NgLodgingReservationsFieldsConfig } from '../../ng-lodging-reservations-fields-config';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { NgLodgingReservationsStore, NgLodgingReservationsActions } from '@skysmack/ng-lodging-reservations';
@@ -17,6 +16,8 @@ import { NgLodgingReservationsStore, NgLodgingReservationsActions } from '@skysm
   templateUrl: './lodgings-departures.component.html'
 })
 export class LodgingsDeparturesComponent extends LodgingsReservationsIndexComponent implements OnInit {
+  public titleExtras = true;
+  public titleExtrasTranslationPostFix = '.DEPARTURES.TITLE_EXTRAS';
   constructor(
     public router: Router,
     public activatedRoute: ActivatedRoute,
@@ -28,18 +29,18 @@ export class LodgingsDeparturesComponent extends LodgingsReservationsIndexCompon
     public lodgingsActions: NgLodgingsActions,
     public lodgingTypesActions: NgLodgingTypesActions,
     public fieldsConfig: NgLodgingReservationsFieldsConfig,
-    public sidebarMenu: NgLodgingsReservationsMenu,
     public pageTitle: EntityComponentPageTitle,
     public title: EntityComponentPageTitle,
     public menuItemActionProviders: MenuItemActionProviders
   ) {
-    super(router, activatedRoute, skysmackStore, store, lodgingsStore, lodgingTypesStore, actions, lodgingsActions, lodgingTypesActions, fieldsConfig, sidebarMenu, pageTitle, title, menuItemActionProviders);
+    super(router, activatedRoute, skysmackStore, store, lodgingsStore, lodgingTypesStore, actions, lodgingsActions, lodgingTypesActions, fieldsConfig, pageTitle, title, menuItemActionProviders);
+    pageTitle.setTitle('LODGING_RESERVATIONS.DEPARTURES.TITLE');
   }
 
   ngOnInit() {
     this.filter();
     this.sort();
-    this.pageTitle.setTitle('LODGING_RESERVATIONS.DEPARTURES');
+    this.pageTitle.setTitle('LODGING_RESERVATIONS.DEPARTURES.TITLE');
     super.ngOnInit();
   }
 

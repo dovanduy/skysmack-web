@@ -1,5 +1,6 @@
-import { Component, EventEmitter, Output, OnDestroy } from '@angular/core';
+import { Component, EventEmitter, Output, OnDestroy, Input } from '@angular/core';
 import { EntityComponentPageTitle } from './../../../models/entity-component-page-title';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'ss-page-header',
@@ -8,6 +9,7 @@ import { EntityComponentPageTitle } from './../../../models/entity-component-pag
 })
 export class PageHeaderComponent implements OnDestroy {
   @Output() toggleSidenav = new EventEmitter<void>();
+  @Input() displaySidenavToggle = new EventEmitter<boolean>();
 
   constructor(
     public componentPageTitle: EntityComponentPageTitle

@@ -3,22 +3,22 @@
     <!-- If on small screen, menu resides in drawer -->
     <mat-sidenav #sidenav class="docs-component-viewer-sidenav" *ngIf="isScreenSmall()" [opened]="!isScreenSmall()"
       [mode]="isScreenSmall() ? 'over' : 'side'" [fixedInViewport]="isScreenSmall()" fixedTopGap="56">
-      <ss-sidebar-menu *ngIf="sidebarMenu" [componentKey]="componentKey"
-        (menuItemActionEvent)="menuItemActionEvent.emit($event)" [sidebarMenu]="sidebarMenu">
+      <ss-sidebar-menu [componentKey]="componentKey" (anyMenuItems)="anyMenuItems.emit($event)"
+        (menuItemActionEvent)="menuItemActionEvent.emit($event)">
       </ss-sidebar-menu>
     </mat-sidenav>
-    <ss-speed-dial-fab *ngIf="sidebarMenu" [sidebarMenu]="sidebarMenu" [componentKey]="componentKey"
+    <ss-speed-dial-fab [componentKey]="componentKey"
       (menuItemActionEvent)="menuItemActionEvent.emit($event)"></ss-speed-dial-fab>
     <div class="docs-component-sidenav-content">
       <div class="docs-component-sidenav-inner-content">
         <!-- If on large screen, menu resides to left of content -->
-        <ng-container *ngIf="sidebarMenu">
-          <ss-sidebar-menu *ngIf="!isScreenSmall()" (menuItemActionEvent)="menuItemActionEvent.emit($event)"
-            [sidebarMenu]="sidebarMenu" [componentKey]="componentKey">
+        <ng-container *ngIf="!isScreenSmall()">
+          <ss-sidebar-menu (menuItemActionEvent)="menuItemActionEvent.emit($event)" (anyMenuItems)="anyMenuItems.emit($event)"
+            [componentKey]="componentKey">
           </ss-sidebar-menu>
         </ng-container>
         <div class="docs-component-sidenav-body-content">
-          <ss-page-header (toggleSidenav)="sidenav.toggle()"></ss-page-header>
+          <ss-page-header (toggleSidenav)="sidenav.toggle()" [displaySidenavToggle]="anyMenuItems"></ss-page-header>
           <ng-content></ng-content>
         </div>
       </div>

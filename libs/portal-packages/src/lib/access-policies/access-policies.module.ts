@@ -2,7 +2,7 @@ import { NgModule, ComponentFactoryResolver } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { HttpClientModule } from '@angular/common/http';
-import { PortalUiModule } from '@skysmack/portal-ui';
+import { PortalUiModule, NgMenuProviders } from '@skysmack/portal-ui';
 import { LanguageService } from '@skysmack/portal-ui';
 import { AccessPoliciesRoutingModule } from './access-policies-routing.module';
 import { accessPolicyPermissionsComponents } from './access-policy-permissions/components/access-policy-permissions-components';
@@ -15,6 +15,10 @@ import { DynamicFormsModule } from '@skysmack/portal-dynamic-forms';
 import { PortalFieldsModule } from '@skysmack/portal-fields';
 import { NgAccessPoliciesModule } from '@skysmack/ng-access-policies';
 import { IdentitiesModule } from '../identities/identities.module';
+import { NgAccessPoliciesDashboardMenuProvider } from './ng-access-policies-dashboard-menu-provider';
+import { NgAccessPolicyRolesMenuProvider } from './access-policy-roles/ng-access-policy-roles-menu-provider';
+import { NgAccessPolicyRulesMenuProvider } from './access-policy-rules/ng-access-policy-rules-menu-provider';
+import { NgAccessPolicyPermissionsMenuProvider } from './access-policy-permissions/ng-access-policy-permissions-menu-provider';
 // import { PackagesModule } from '../../packages';
 
 @NgModule({
@@ -46,9 +50,19 @@ export class AccessPoliciesModule {
   constructor(
     // Make entry components available
     coalescingResolver: CoalescingComponentFactoryResolver,
-    localResolver: ComponentFactoryResolver
+    localResolver: ComponentFactoryResolver,
+    ngMenuProviders: NgMenuProviders, 
+    ngAccessPoliciesDashboardMenuProvider: NgAccessPoliciesDashboardMenuProvider,
+    ngAccessPolicyPermissionsMenuProvider: NgAccessPolicyPermissionsMenuProvider,
+    ngAccessPolicyRolesMenuProvider: NgAccessPolicyRolesMenuProvider,
+    ngAccessPolicyRulesMenuProvider: NgAccessPolicyRulesMenuProvider
   ) {
     // Make entry components available
     coalescingResolver.registerResolver(localResolver);
+    ngMenuProviders
+      .add(ngAccessPoliciesDashboardMenuProvider)
+      .add(ngAccessPolicyPermissionsMenuProvider)
+      .add(ngAccessPolicyRolesMenuProvider)
+      .add(ngAccessPolicyRulesMenuProvider);
   }
 }

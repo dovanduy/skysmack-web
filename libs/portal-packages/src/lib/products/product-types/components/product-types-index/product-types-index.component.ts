@@ -3,7 +3,6 @@ import { EntityComponentPageTitle, MenuItemActionProviders, MENU_ITEM_ACTIONS_ED
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgProductTypesActions, NgProductTypesStore } from '@skysmack/ng-products';
 import { ProductTypesAppState, ProductType, PRODUCT_TYPES_AREA_KEY } from '@skysmack/packages-products';
-import { NgProductTypesMenu } from '../../ng-product-types-menu';
 import { MenuItem } from '@skysmack/framework';
 import { NgFieldActions } from '@skysmack/ng-framework';
 import { NgProductTypesFieldsConfig } from '../../ng-product-types-fields-config';
@@ -15,6 +14,8 @@ import { DocumentRecordIndexComponent } from '@skysmack/portal-fields';
   templateUrl: './product-types-index.component.html'
 })
 export class ProductTypesIndexComponent extends DocumentRecordIndexComponent<ProductTypesAppState, ProductType, number> implements OnInit {
+  public static COMPONENT_KEY = 'product-types-index';
+  public componentKey = ProductTypesIndexComponent.COMPONENT_KEY;
 
   public areaKey = PRODUCT_TYPES_AREA_KEY;
   public titleExtras = true;
@@ -30,7 +31,6 @@ export class ProductTypesIndexComponent extends DocumentRecordIndexComponent<Pro
     public actions: NgProductTypesActions,
     public redux: NgSkysmackStore,
     public store: NgProductTypesStore,
-    public sidebarMenu: NgProductTypesMenu,
     public fieldsConfig: NgProductTypesFieldsConfig,
     public fieldActions: NgFieldActions,
     public title: EntityComponentPageTitle,

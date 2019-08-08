@@ -10,7 +10,7 @@ export class OAuth2PackageManifest extends OAuth2Type implements PackageManifest
     public modulePath = OAuth2PackageManifest.modulePath;
 }
 
-export function loadOauth2Package(packageLoader: PackageLoader) {
+export function loadOAuth2Package(packageLoader: PackageLoader) {
     return () => packageLoader.add(new OAuth2PackageManifest());
 }
 

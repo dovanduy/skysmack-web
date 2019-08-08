@@ -22,6 +22,7 @@ export class BaseComponent<TAppState, TKey> implements OnInit, OnDestroy {
     public dependencyIndexes = [];
     public titleFallback = 'Skysmack';
     public titleExtras = false;
+    public titleExtrasTranslationPostFix = '.INDEX.TITLE_EXTRAS';
 
 
     constructor(
@@ -83,7 +84,7 @@ export class BaseComponent<TAppState, TKey> implements OnInit, OnDestroy {
         if (this.title) {
             let titleExtra;
             if (this.titleExtras) {
-                titleExtra = `${this.areaKey.toUpperCase()}.INDEX.TITLE_EXTRAS`;
+                titleExtra = `${this.areaKey.toUpperCase()}${this.titleExtrasTranslationPostFix}`;
             }
 
             const isInstalledPackage$ = getPackageDendencyAsStream(this.skysmackStore, this.packagePath, this.dependencyIndexes).pipe(

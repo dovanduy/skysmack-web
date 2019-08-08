@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { EntityComponentPageTitle, MenuItemActionProviders, MENU_ITEM_ACTIONS_DELETE } from '@skysmack/portal-ui';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ConnectionsAppState, Connection, CONNECTIONS_AREA_KEY, ConnectionKey, TerminalStatus } from '@skysmack/packages-terminal-payments';
-import { NgConnectionsMenu } from '../../ng-connections-menu';
 import { MenuItem } from '@skysmack/framework';
 import { NgConnectionsFieldsConfig } from '../../ng-connections-fields-config';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
@@ -16,6 +15,8 @@ import { RecordIndexComponent } from '@skysmack/portal-fields';
   templateUrl: './connections-index.component.html'
 })
 export class ConnectionsIndexComponent extends RecordIndexComponent<ConnectionsAppState, Connection, ConnectionKey> implements OnInit {
+  public static COMPONENT_KEY = 'connections-index';
+  public componentKey = ConnectionsIndexComponent.COMPONENT_KEY;
   public areaKey: string = CONNECTIONS_AREA_KEY;
   public titleExtras = true;
   public menuItemActions: MenuItem[] = [
@@ -68,7 +69,6 @@ export class ConnectionsIndexComponent extends RecordIndexComponent<ConnectionsA
     public actions: NgConnectionsActions,
     public redux: NgSkysmackStore,
     public store: NgConnectionsStore,
-    public sidebarMenu: NgConnectionsMenu,
     public fieldsConfig: NgConnectionsFieldsConfig,
     public title: EntityComponentPageTitle,
     public menuItemActionProviders: MenuItemActionProviders,

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { EntityComponentPageTitle } from '@skysmack/portal-ui';
-import { NgIdentitiesIndexMenu } from '../../ng-identities-index-menu';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { BaseComponent } from '@skysmack/portal-fields';
@@ -16,7 +15,6 @@ export class IdentitiesIndexComponent extends BaseComponent<any, any> implements
     public activatedRoute: ActivatedRoute,
     public skysmackStore: NgSkysmackStore,
     public title: EntityComponentPageTitle,
-    public sidebarMenu: NgIdentitiesIndexMenu
   ) {
     super(router, activatedRoute, skysmackStore, title);
   }

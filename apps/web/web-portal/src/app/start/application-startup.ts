@@ -12,7 +12,7 @@ import { loadProductsPricingsPackage } from '../packages/products-pricings-packa
 import { loadLodgingPackage } from '../packages/lodgings-package-manifest';
 import { loadLodgingReservationPackage } from '../packages/lodging-reservations-package-manifest';
 import { loadPersonsLodgingReservationsPackage } from '../packages/persons-lodging-reservations-package-manifest';
-import { loadOauth2Package } from '../packages/oauth2-package-manifest';
+import { loadOAuth2Package } from '../packages/oauth2-package-manifest';
 import { loadMaintenancePackage } from '../packages/maintenance-package-manifest';
 import { loadTerminalPaymentsPackage } from '../packages/terminal-payments-manifest';
 import { loadIdentitiesPackage } from '../packages/identities-package-manifest';
@@ -54,7 +54,7 @@ export const packageLoaders = [
     { provide: APP_INITIALIZER, useFactory: loadLodgingReservationPackage, deps: [PackageLoader], multi: true },
     { provide: APP_INITIALIZER, useFactory: loadReservationsPricingsPackage, deps: [PackageLoader], multi: true },
     { provide: APP_INITIALIZER, useFactory: loadPersonsLodgingReservationsPackage, deps: [PackageLoader], multi: true },
-    { provide: APP_INITIALIZER, useFactory: loadOauth2Package, deps: [PackageLoader], multi: true },
+    { provide: APP_INITIALIZER, useFactory: loadOAuth2Package, deps: [PackageLoader], multi: true },
     { provide: APP_INITIALIZER, useFactory: loadMaintenancePackage, deps: [PackageLoader], multi: true },
     { provide: APP_INITIALIZER, useFactory: loadTerminalPaymentsPackage, deps: [PackageLoader], multi: true },
     { provide: APP_INITIALIZER, useFactory: loadEmailsPackage, deps: [PackageLoader], multi: true },

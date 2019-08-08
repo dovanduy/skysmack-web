@@ -9,11 +9,10 @@ import { toLocalObject, LocalObject, API_DOMAIN_INJECTOR_TOKEN, ApiDomain } from
 import { NgTransactionRequestFieldsConfig } from '../../ng-transaction-request-fields-config';
 import { TransactionRequest, TerminalsAppState } from '@skysmack/packages-terminal-payments';
 import { FormHelper } from '@skysmack/ng-dynamic-forms';
-import { HttpClient } from '@angular/common/http';
 import { Invoice } from 'libs/packages/invoices/src';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { RecordFormComponent } from '@skysmack/portal-fields';
-import { NgTerminalsActions, NgTerminalsStore } from '@skysmack/ng-terminal-payments';
+import { NgTerminalsActions, NgTerminalsStore, NgTerminalsRequests } from '@skysmack/ng-terminal-payments';
 
 @Component({
   selector: 'ss-terminals-pay',
@@ -33,7 +32,7 @@ export class TerminalsPayComponent extends RecordFormComponent<TerminalsAppState
     public redux: NgSkysmackStore,
     public fieldsConfig: NgTransactionRequestFieldsConfig,
     public store: NgTerminalsStore,
-    public httpClient: HttpClient,
+    public requests: NgTerminalsRequests,
     @Inject(API_DOMAIN_INJECTOR_TOKEN) protected apiDomain: ApiDomain,
     public dialogRef: MatDialogRef<TerminalsPayComponent>,
     @Inject(MAT_DIALOG_DATA) public data: { packagePath: string, value: LocalObject<Invoice, Number> }
@@ -95,19 +94,14 @@ export class TerminalsPayComponent extends RecordFormComponent<TerminalsAppState
       delete transactionRequest.connection;
 
       // Prepare request
-      const url = `${this.apiDomain.domain}/${this.packagePath}/actions/begin-transaction`;
       this.disableButton = true;
 
       // Request
-      this.httpClient.post(url, transactionRequest, { observe: 'response' }).pipe(
-        tap(x => {
+      this.requests.pay(this.packagePath, transactionRequest).pipe(
+        tap(() => {
           this.disableButton = false;
           this.editorNavService.hideEditorNav();
           this.dialogRef.close();
-          // if(x.status === '200'){
-          // this.router.navigate([this.router.url.substring(0, this.router.url.length - 3), 'processing']);
-          // } else if(x.status === ???) {
-          // }
         }),
         catchError(error => {
           this.disableButton = false;

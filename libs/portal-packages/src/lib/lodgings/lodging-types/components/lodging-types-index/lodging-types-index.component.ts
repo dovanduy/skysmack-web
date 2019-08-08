@@ -5,7 +5,6 @@ import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { LodgingTypesAppState, LodgingType, LODGING_TYPES_AREA_KEY } from '@skysmack/packages-lodgings';
 import { NgLodgingTypesStore, NgLodgingTypesActions } from '@skysmack/ng-lodgings';
 import { MenuItem } from '@skysmack/framework';
-import { NgLodgingTypesMenu } from '../../ng-lodging-types-menu';
 import { NgFieldActions } from '@skysmack/ng-framework';
 import { NgLodgingTypesFieldsConfig } from '../../ng-lodging-types-fields-config';
 import { DocumentRecordIndexComponent } from '@skysmack/portal-fields';
@@ -15,6 +14,9 @@ import { DocumentRecordIndexComponent } from '@skysmack/portal-fields';
   templateUrl: './lodging-types-index.component.html'
 })
 export class LodgingTypesIndexComponent extends DocumentRecordIndexComponent<LodgingTypesAppState, LodgingType, number> implements OnInit {
+  public static COMPONENT_KEY = 'lodging-types-index';
+  public componentKey = LodgingTypesIndexComponent.COMPONENT_KEY;
+
   public areaKey: string = LODGING_TYPES_AREA_KEY;
   public titleExtras = true;
   public menuItemActions: MenuItem[] = [
@@ -28,7 +30,6 @@ export class LodgingTypesIndexComponent extends DocumentRecordIndexComponent<Lod
     public actions: NgLodgingTypesActions,
     public skysmackStore: NgSkysmackStore,
     public store: NgLodgingTypesStore,
-    public sidebarMenu: NgLodgingTypesMenu,
     public fieldsConfig: NgLodgingTypesFieldsConfig,
     public fieldActions: NgFieldActions,
     public title: EntityComponentPageTitle,

@@ -58,7 +58,6 @@
 //     public actions: NgPackagesActions,
 //     public fieldsConfig: NgPackagesFieldsConfig,
 //     public store: NgPackagesStore,
-//     public sidebarMenu: NgPackagesMenu,
 //   ) {
 //     super(router, activatedRoute, redux);
 //     Object.assign(this, {

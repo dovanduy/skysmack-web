@@ -9,13 +9,13 @@ import { OpenIdConnectResponse } from '@skysmack/packages-oauth2';
 export const InterceptorSkipHeader = 'X-Skip-Interceptor';
 
 @Injectable({ providedIn: 'root' })
-export class Oauth2Requests {
+export class OAuth2Requests {
     constructor(
         protected http: HttpClient,
         @Inject(API_DOMAIN_INJECTOR_TOKEN) protected apiDomain: ApiDomain
     ) { }
 
-    login(email: string, password: string, staySignedIn: boolean, authPath: string): Observable<ReduxAction<CurrentUser> | ReduxAction<HttpErrorResponse>> {
+    public login(email: string, password: string, staySignedIn: boolean, authPath: string): Observable<ReduxAction<CurrentUser> | ReduxAction<HttpErrorResponse>> {
         const headers = new HttpHeaders().set(InterceptorSkipHeader, '');
 
         const url = `${this.apiDomain.domain}/${authPath}/token`;
@@ -52,7 +52,7 @@ export class Oauth2Requests {
         );
     }
 
-    refreshToken(currentUser: CurrentUser): Observable<ReduxAction<CurrentUser> | ReduxAction<HttpErrorResponse>> {
+    public refreshToken(currentUser: CurrentUser): Observable<ReduxAction<CurrentUser> | ReduxAction<HttpErrorResponse>> {
         const headers = new HttpHeaders().set(InterceptorSkipHeader, '');
 
         if (!currentUser.refresh_token) {

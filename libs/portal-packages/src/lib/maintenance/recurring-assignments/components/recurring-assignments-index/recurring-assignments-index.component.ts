@@ -4,7 +4,6 @@ import { RecurringAssignment, RecurringAssignmentsAppState, RECURRING_ASSIGNMENT
 import { EntityComponentPageTitle, MenuItemActionProviders, MENU_ITEM_ACTIONS_EDIT, MENU_ITEM_ACTIONS_DELETE } from '@skysmack/portal-ui';
 import { MenuItem } from '@skysmack/framework';
 import { NgRecurringAssignmentsActions, NgRecurringAssignmentsStore } from '@skysmack/ng-maintenance';
-import { NgRecurringAssignmentsMenu } from '../../ng-recurring-assignments-menu';
 import { NgRecurringAssignmentsFieldsConfig } from '../../ng-recurring-assignments-fields-config';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { RecordIndexComponent } from '@skysmack/portal-fields';
@@ -14,6 +13,8 @@ import { RecordIndexComponent } from '@skysmack/portal-fields';
   templateUrl: './recurring-assignments-index.component.html'
 })
 export class RecurringAssignmentsIndexComponent extends RecordIndexComponent<RecurringAssignmentsAppState, RecurringAssignment, number> implements OnInit {
+  public static COMPONENT_KEY = 'recurring-assignments-index';
+  public componentKey = RecurringAssignmentsIndexComponent.COMPONENT_KEY;
 
   public areaKey: string = RECURRING_ASSIGNMENTS_AREA_KEY;
   public titleExtras = true;
@@ -28,7 +29,6 @@ export class RecurringAssignmentsIndexComponent extends RecordIndexComponent<Rec
     public actions: NgRecurringAssignmentsActions,
     public redux: NgSkysmackStore,
     public store: NgRecurringAssignmentsStore,
-    public sidebarMenu: NgRecurringAssignmentsMenu,
     public fieldsConfig: NgRecurringAssignmentsFieldsConfig,
     public menuItemActionProviders: MenuItemActionProviders,
     public title: EntityComponentPageTitle

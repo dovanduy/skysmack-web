@@ -1,0 +1,20 @@
+<ng-container *ngIf="field" [formGroup]="fh.form">
+  <mat-form-field>
+    <input matInput type="text" [attr.id]="fieldKey" [name]="field.label" [placeholder]="field.placeholder | translate"
+      #stringInput />
+    <mat-error *ngIf="fh.formErrors[fieldKey]">
+      <!-- Frontend errors -->
+      <ng-container *ngIf="fh.formErrors[fieldKey]">
+        {{ fh.formErrors[fieldKey] | translate }}
+      </ng-container>
+    </mat-error>
+  </mat-form-field>
+
+  <button mat-raised-button (click)="add()">Add</button>
+
+  <p *ngFor="let input of inputs">{{ input }} <mat-icon (click)="remove(input)">delete</mat-icon>
+  </p>
+
+  <ss-backend-errors [field]="field"></ss-backend-errors>
+
+</ng-container>
