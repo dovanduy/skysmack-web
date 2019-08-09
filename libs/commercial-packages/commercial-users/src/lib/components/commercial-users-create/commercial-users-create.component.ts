@@ -25,6 +25,7 @@ export class CommercialUsersCreateComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.fieldsConfig.mode = 'create';
     this.fields$ = of(this.fieldsConfig.getFields());
   }
 
