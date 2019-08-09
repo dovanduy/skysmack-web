@@ -25,13 +25,15 @@ import { SolutionsComponent } from './pages/solutions/solutions.component';
 import { ProductsComponent } from './pages/products/products.component';
 import { PricingsComponent } from './pages/pricings/pricings.component';
 import { GettingStartedComponent } from './pages/getting-started/getting-started.component';
+import { NgTranslationModule, LanguageService } from '@skysmack/ng-translation';
 
 @NgModule({
-  declarations: [AppComponent,StartComponent,WhyComponent,SolutionsComponent,ProductsComponent,PricingsComponent,GettingStartedComponent],
+  declarations: [AppComponent, StartComponent, WhyComponent, SolutionsComponent, ProductsComponent, PricingsComponent, GettingStartedComponent],
   imports: [
     BrowserModule,
     HttpClientModule,
     NgOAuth2Module,
+    NgTranslationModule,
     RouterModule.forRoot([
       {
         path: '',
@@ -68,6 +70,7 @@ import { GettingStartedComponent } from './pages/getting-started/getting-started
   ],
   providers: [
     ...commercialApplicationStartup,
+    LanguageService,
     CoalescingComponentFactoryResolver
   ],
   bootstrap: [AppComponent]
