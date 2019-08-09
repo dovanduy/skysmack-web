@@ -27,6 +27,7 @@ export class CommercialUsersEditComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.fieldsConfig.mode = 'edit';
     this.fields$ = this.activatedRoute.params.pipe(
       map(params => params.id),
       switchMap(id => this.service.getById(id)),

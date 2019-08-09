@@ -15,25 +15,25 @@ export class CommercialUsersService {
 
 
     public get(): Observable<HttpSuccessResponse | HttpErrorResponse> {
-        return this.http.get<PartnerUser[]>(`${this.apiDomain.domain}/users`, { observe: 'response' }).pipe(
+        return this.http.get<PartnerUser[]>(`${this.apiDomain.domain}/identity/users`, { observe: 'response' }).pipe(
             catchError((error) => of(error))
         );
     }
 
     public getById(id: string): Observable<HttpSuccessResponse | HttpErrorResponse> {
-        return this.http.get<PartnerUser[]>(`${this.apiDomain.domain}/users/${id}`, { observe: 'response' }).pipe(
+        return this.http.get<PartnerUser[]>(`${this.apiDomain.domain}/identity/users/${id}`, { observe: 'response' }).pipe(
             catchError((error) => of(error))
         );
     }
 
     public add(record: PartnerUser): Observable<HttpSuccessResponse | HttpErrorResponse> {
-        return this.http.post<PartnerUser[]>(`${this.apiDomain.domain}/users`, [record], { observe: 'response' }).pipe(
+        return this.http.post<PartnerUser[]>(`${this.apiDomain.domain}/identity/users`, [record], { observe: 'response' }).pipe(
             catchError((error) => of(error))
         );
     }
 
     public update(record: PartnerUser): Observable<HttpSuccessResponse | HttpErrorResponse> {
-        return this.http.put<PartnerUser[]>(`${this.apiDomain.domain}/users`, [record], { observe: 'response' }).pipe(
+        return this.http.put<PartnerUser[]>(`${this.apiDomain.domain}/identity/users`, [record], { observe: 'response' }).pipe(
             catchError((error) => of(error))
         );
     }
