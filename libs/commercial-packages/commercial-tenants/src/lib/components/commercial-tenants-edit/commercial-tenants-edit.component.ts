@@ -37,6 +37,7 @@ export class CommercialTenantsEditComponent implements OnInit {
   public onSubmit(fh: FormHelper) {
     fh.formValid(() => {
       const tenant = fh.form.getRawValue();
+      console.log(tenant);
       this.service.update(tenant).pipe(
         tap(() => this.router.navigate(['/', 'tenants'])),
         take(1)

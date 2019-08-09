@@ -27,13 +27,13 @@ export class CommercialTenantsService {
     }
 
     public add(record: Tenant): Observable<HttpSuccessResponse | HttpErrorResponse> {
-        return this.http.post<Tenant[]>(`${this.apiDomain.domain}/tenants`, record, { observe: 'response' }).pipe(
+        return this.http.post<Tenant[]>(`${this.apiDomain.domain}/tenants`, [record], { observe: 'response' }).pipe(
             catchError((error) => of(error))
         );
     }
 
     public update(record: Tenant): Observable<HttpSuccessResponse | HttpErrorResponse> {
-        return this.http.put<Tenant[]>(`${this.apiDomain.domain}/tenants`, record, { observe: 'response' }).pipe(
+        return this.http.put<Tenant[]>(`${this.apiDomain.domain}/tenants`, [record], { observe: 'response' }).pipe(
             catchError((error) => of(error))
         );
     }

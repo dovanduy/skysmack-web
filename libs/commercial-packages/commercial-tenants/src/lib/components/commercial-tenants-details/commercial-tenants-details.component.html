@@ -1,6 +1,6 @@
 <ng-container *ngIf="tenant$ | async as tenant">
     <h3>{{ tenant.name }}</h3>
-    <p>Hostname: <a [href]="tenant.hostname">{{ tenant.hostname }}</a></p>
+    <p>Hostname: <a target="_blank" [href]="'https://' + tenant.hostname">{{ tenant.hostname }}</a></p>
     <p>Safe subdomain: {{ tenant.safeSubdomain }}</p>
     <p>State: {{ tenant.state }}</p>
 </ng-container>
