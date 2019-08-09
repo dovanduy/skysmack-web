@@ -26,6 +26,7 @@ import { ProductsComponent } from './pages/products/products.component';
 import { PricingsComponent } from './pages/pricings/pricings.component';
 import { GettingStartedComponent } from './pages/getting-started/getting-started.component';
 import { NgTranslationModule, LanguageService } from '@skysmack/ng-translation';
+import { commercialUsersRoute } from './packages/commercial_users_wrapper.module';
 
 @NgModule({
   declarations: [AppComponent, StartComponent, WhyComponent, SolutionsComponent, ProductsComponent, PricingsComponent, GettingStartedComponent],
@@ -60,7 +61,8 @@ import { NgTranslationModule, LanguageService } from '@skysmack/ng-translation';
         component: GettingStartedComponent
       },
       commercialAccountRoute,
-      commercialTenantsRoute
+      commercialTenantsRoute,
+      commercialUsersRoute
     ], { initialNavigation: 'enabled' }),
     BrowserAnimationsModule,
     MaterialModule,

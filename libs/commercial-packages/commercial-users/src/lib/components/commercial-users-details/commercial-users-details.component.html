@@ -1,0 +1,6 @@
+<ng-container *ngIf="user$ | async as user">
+    <h3>{{ user.name }}</h3>
+    <p>Hostname: <a target="_blank" [href]="'https://' + user.hostname">{{ user.hostname }}</a></p>
+    <p>Safe subdomain: {{ user.safeSubdomain }}</p>
+    <p>State: {{ user.state }}</p>
+</ng-container>

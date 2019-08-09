@@ -178,6 +178,9 @@
       ],
       "@skysmack/commercial-tenants": [
         "libs/commercial-packages/commercial-tenants/src/public_api.ts"
+      ],
+      "@skysmack/commercial-users": [
+        "libs/commercial-packages/commercial-users/src/public_api.ts"
       ]
     }
   },

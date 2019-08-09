@@ -1,0 +1,12 @@
+<h3>Users</h3>
+
+<a mat-raised-button color="primary"
+        [routerLink]="['/', 'users', 'create']">{{ 'COMMERCIAL_USERS.INDEX.CREATE' | translate }}</a>
+
+<ul *ngIf="users$ | async as users">
+        <li *ngFor="let user of users">{{ user.email }} -
+                <a [routerLink]="['/', 'users', 'edit', user.id]">{{ 'UI.ENTITY_ACTIONS.EDIT' | translate}}</a>
+                |
+                <a [routerLink]="['/', 'users', 'details', user.id]">Details</a>
+        </li>
+</ul>

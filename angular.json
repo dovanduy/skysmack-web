@@ -1328,7 +1328,7 @@
         }
       }
     },
-     "commercial-tenants": {
+    "commercial-tenants": {
       "projectType": "library",
       "root": "libs/commercial-packages/commercial-tenants",
       "sourceRoot": "libs/commercial-packages/commercial-tenants/src",
@@ -1353,6 +1353,40 @@
             "jestConfig": "libs/commercial-packages/commercial-tenants/jest.config.js",
             "tsConfig": "libs/commercial-packages/commercial-tenants/tsconfig.spec.json",
             "setupFile": "libs/commercial-packages/commercial-tenants/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "commercial-users": {
+      "projectType": "library",
+      "root": "libs/commercial-packages/commercial-users",
+      "sourceRoot": "libs/commercial-packages/commercial-users/src",
+      "prefix": "skysmack",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/commercial-packages/commercial-users/tsconfig.lib.json",
+              "libs/commercial-packages/commercial-users/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/commercial-packages/commercial-users/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/commercial-packages/commercial-users/jest.config.js",
+            "tsConfig": "libs/commercial-packages/commercial-users/tsconfig.spec.json",
+            "setupFile": "libs/commercial-packages/commercial-users/src/test-setup.ts"
           }
         }
       },
