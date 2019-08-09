@@ -1030,6 +1030,40 @@
         }
       }
     },
+    "ng-translation": {
+      "projectType": "library",
+      "root": "libs/ng-shared/ng-translation",
+      "sourceRoot": "libs/ng-shared/ng-translation/src",
+      "prefix": "skysmack",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/ng-shared/ng-translation/tsconfig.lib.json",
+              "libs/ng-shared/ng-translation/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/ng-shared/ng-translation/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/ng-shared/ng-translation/jest.config.js",
+            "tsConfig": "libs/ng-shared/ng-translation/tsconfig.spec.json",
+            "setupFile": "libs/ng-shared/ng-translation/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
     "portal-settings": {
       "projectType": "library",
       "root": "libs/portal-shared/portal-settings",
