@@ -2,7 +2,8 @@ import { NgModule, ComponentFactoryResolver } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 
-import { LanguageService, NgMenuProviders } from '@skysmack/portal-ui';
+import { NgMenuProviders } from '@skysmack/portal-ui';
+
 import { NgIdentitiesModule } from '@skysmack/ng-identities';
 import { PortalUiModule } from '@skysmack/portal-ui';
 import { LodgingReservationsRoutingModule } from './lodging-reservations-routing.module';
@@ -35,7 +36,6 @@ import { NgLodgingsReservationsMenuProvider } from './ng-lodgings-reservations-m
     ...lodgingReservationsEntryComponents
   ],
   providers: [
-    LanguageService,
     { provide: 'NgLodgingReservationsSettingsFieldsConfig', useClass: NgLodgingReservationsSettingsFieldsConfig },
   ]
 })
@@ -45,12 +45,12 @@ export class LodgingReservationsModule {
     localResolver: ComponentFactoryResolver,
     dashboardProviders: NgDashboardProviders,
     lodgingReservationsDashboardProvider: NgLodgingReservationsDashboardProvider,
-    ngMenuProviders: NgMenuProviders, 
+    ngMenuProviders: NgMenuProviders,
     ngLodgingsReservationsMenuProvider: NgLodgingsReservationsMenuProvider
   ) {
     coalescingResolver.registerResolver(localResolver);
     dashboardProviders.add(lodgingReservationsDashboardProvider);
     ngMenuProviders
-    .add(ngLodgingsReservationsMenuProvider);
+      .add(ngLodgingsReservationsMenuProvider);
   }
 }

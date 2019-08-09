@@ -1,16 +1,15 @@
 import { NgModule, ComponentFactoryResolver } from '@angular/core';
 import { OAuth2RoutingModule } from './oauth2-routing.module';
 import { LoginComponent } from './components/login/login.component';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { NgOAuth2Module } from '@skysmack/ng-oauth2';
-import { PortalUiModule, LanguageService, NgMenuProviders } from '@skysmack/portal-ui';
+import { PortalUiModule, NgMenuProviders } from '@skysmack/portal-ui';
 import { DynamicFormsModule } from '@skysmack/portal-dynamic-forms';
 import { PortalFieldsModule } from '@skysmack/portal-fields';
 import { CoalescingComponentFactoryResolver } from '@skysmack/ng-framework';
 import { LoginWrapperComponent } from './components/login-wrapper/login-wrapper.component';
 import { NgOAuth2MenuProvider } from './ng-oauth2-menu-provider';
-import { RefreshTokenInterceptor } from '@skysmack/ng-oauth2';
 
 @NgModule({
   imports: [

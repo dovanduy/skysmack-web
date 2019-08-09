@@ -107,6 +107,9 @@
       "@skysmack/portal-dynamic-forms": [
         "libs/portal-shared/portal-dynamic-forms/src/public_api.ts"
       ],
+      "@skysmack/ng-translation": [
+        "libs/ng-shared/ng-translation/src/public_api.ts"
+      ],
       "@skysmack/portal-settings": [
         "libs/portal-shared/portal-settings/src/public_api.ts"
       ],

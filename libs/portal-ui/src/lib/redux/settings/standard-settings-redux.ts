@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { StandardSettingsActions } from './standard-settings-actions';
 import { Settings } from '@skysmack/framework';
-import { map, filter } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
 export class StandardSettingsRedux {
@@ -13,11 +13,6 @@ export class StandardSettingsRedux {
         protected actions: StandardSettingsActions,
     ) { }
 
-    public setLanguage(lang: string): void {
-        this.ngRedux.dispatch(this.actions.setLanguage(lang));
-    }
-
-
     public setTenantUrl(tenantUrl: string) {
         this.ngRedux.dispatch(this.actions.setTenantUrl(tenantUrl));
     }
@@ -26,7 +21,6 @@ export class StandardSettingsRedux {
         return this.ngRedux.select((state: any) => state).pipe(
             map(state => {
                 const temp = {
-                    language: 'en',
                     tenantUrl: ''
                 };
                 return state.standardSettings ? state.standardSettings.settings : temp;

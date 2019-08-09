@@ -53,6 +53,9 @@
       "@skysmack/portal-fields": [
         "./dist/@skysmack/portal-fields"
       ],
+      "@skysmack/ng-translation": [
+        "./dist/@skysmack/ng-translation"
+      ],
       "@skysmack/packages-skysmack-core": [
         "./dist/@skysmack/packages-skysmack-core"
       ],

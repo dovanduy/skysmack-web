@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { HttpClientModule } from '@angular/common/http';
 import { PortalUiModule, NgMenuProviders } from '@skysmack/portal-ui';
-import { LanguageService } from '@skysmack/portal-ui';
+
 import { AccessPoliciesRoutingModule } from './access-policies-routing.module';
 import { accessPolicyPermissionsComponents } from './access-policy-permissions/components/access-policy-permissions-components';
 import { accessPolicyRolesComponents } from './access-policy-roles/components/access-policy-roles-components';
@@ -42,16 +42,14 @@ import { NgAccessPolicyPermissionsMenuProvider } from './access-policy-permissio
   entryComponents: [
     FieldPermissionFieldComponent
   ],
-  providers: [
-    LanguageService
-  ]
+  providers: []
 })
 export class AccessPoliciesModule {
   constructor(
     // Make entry components available
     coalescingResolver: CoalescingComponentFactoryResolver,
     localResolver: ComponentFactoryResolver,
-    ngMenuProviders: NgMenuProviders, 
+    ngMenuProviders: NgMenuProviders,
     ngAccessPoliciesDashboardMenuProvider: NgAccessPoliciesDashboardMenuProvider,
     ngAccessPolicyPermissionsMenuProvider: NgAccessPolicyPermissionsMenuProvider,
     ngAccessPolicyRolesMenuProvider: NgAccessPolicyRolesMenuProvider,

@@ -4,7 +4,6 @@ import { sharedReducer } from '@skysmack/redux';
 
 export class StandardSettingsState {
     public settings: Settings = {
-        language: 'en',
         tenantUrl: ''
     };
 }
@@ -14,14 +13,6 @@ export function standardSettingsReducer(state = new StandardSettingsState(), act
     const newState = Object.assign({}, state);
 
     switch (action.type) {
-        case StandardSettingsActions.SET_LANGUAGE: {
-            newState.settings = {
-                ...state.settings,
-                language: action.payload
-            } as Settings;
-
-            return newState;
-        }
         case StandardSettingsActions.SET_TENANT_URL: {
             newState.settings = {
                 ...state.settings,

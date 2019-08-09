@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 import { from } from 'rxjs';
 import { StrIndex } from '@skysmack/framework';
-import { Observable } from 'rxjs';
 
 declare const System: any;
 
@@ -19,7 +19,7 @@ class SkysmackTranslateHttpLoader {
 
     getTranslation(lang) {
         if (!SkysmackTranslateHttpLoader.i18nFiles[lang]) {
-            SkysmackTranslateHttpLoader.i18nFiles[lang] = from(System.import(`../../../../apps/web/web-portal/src/i18n/${lang}${this.suffix}`));
+            SkysmackTranslateHttpLoader.i18nFiles[lang] = from(System.import(`../../../../../apps/web/web-portal/src/i18n/${lang}${this.suffix}`));
         }
         return SkysmackTranslateHttpLoader.i18nFiles[lang];
     }

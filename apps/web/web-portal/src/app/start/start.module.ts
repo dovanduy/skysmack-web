@@ -7,7 +7,6 @@ import { NgModule, SystemJsNgModuleLoader } from '@angular/core';
 
 import { FrontPageComponent } from './components/front-page/front-page.component';
 import { PortalUiModule } from '@skysmack/portal-ui';
-import { LanguageService } from '@skysmack/portal-ui'
 import { FallBackComponent } from './components/fall-back/fall-back.component';
 import { StartComponent } from './components/start/start.component';
 import { applicationStartup } from './application-startup';
@@ -39,6 +38,7 @@ import { invoicesProductsRoute } from '../packages/invoices-products-package-man
 import { NgSkysmackModule, NgSkysmackEpics } from '@skysmack/ng-skysmack';
 import { SKYSMACK_REDUCER_KEY, skysmackReducer } from '@skysmack/packages-skysmack-core';
 import { openApiRoute } from '../packages/open-api-package-manifest';
+import { LanguageService } from '@skysmack/ng-translation';
 // import { NgxGraphModule } from '@swimlane/ngx-graph';
 // import { NgxChartsModule } from '@swimlane/ngx-charts';
 // NgxGraphModule,
