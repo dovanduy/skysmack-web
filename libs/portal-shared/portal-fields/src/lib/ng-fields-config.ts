@@ -12,6 +12,8 @@ import { FieldProviders } from '@skysmack/ng-fields';
 import { Router } from '@angular/router';
 import { UI_AREA_KEY } from '@skysmack/portal-ui';
 import { FormRule, SetFieldKeyRule, Field, SelectField } from '@skysmack/ng-dynamic-forms';
+import { Observable, combineLatest, of } from 'rxjs';
+import { switchMap, distinctUntilChanged, map } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
 export class NgFieldsConfig extends FieldsConfig<FieldSchemaViewModel, string> {
@@ -83,5 +85,28 @@ export class NgFieldsConfig extends FieldsConfig<FieldSchemaViewModel, string> {
         ];
 
         return fields;
+    }
+
+    protected getProvidedFields(loadedPackage: LoadedPackage, entity?: LocalObject<FieldSchemaViewModel, string>): Observable<Field[]> {
+        return this.fieldProviders.providers$.pipe(
+            switchMap(providers => {
+                const extractedProviders = providers['fields'];
+
+                if (extractedProviders && extractedProviders.length > 0) {
+                    return combineLatest(
+                        extractedProviders.map(provider => {
+                            return provider.getFields(loadedPackage._package.path, this.area, entity);
+                        })
+                    ).pipe(
+                        distinctUntilChanged(),
+                        map((values: [Field[]]) => {
+                            return values.reduce((acc: Field[], cur: Field[]) => acc.concat(cur), []);
+                        })
+                    );
+                } else {
+                    return of([]);
+                }
+            })
+        );
     }
 }

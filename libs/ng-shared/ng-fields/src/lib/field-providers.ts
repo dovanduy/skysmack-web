@@ -5,8 +5,9 @@ import { BehaviorSubject } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class FieldProviders {
-    public providers: StrIndex<FieldProvider[]> = {};
     public providers$: BehaviorSubject<StrIndex<FieldProvider[]>> = new BehaviorSubject({});
+
+    private providers: StrIndex<FieldProvider[]> = {};
     private register = {};
 
     public add(type: string, fieldProvider: FieldProvider) {

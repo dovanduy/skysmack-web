@@ -2,7 +2,7 @@ import { NgModule, ComponentFactoryResolver } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { HttpClientModule } from '@angular/common/http';
-import { PortalUiModule, NgMenuProviders, UI_AREA_KEY } from '@skysmack/portal-ui';
+import { PortalUiModule, NgMenuProviders } from '@skysmack/portal-ui';
 import { LanguageService } from '@skysmack/portal-ui';
 import { AccessPoliciesRoutingModule } from './access-policies-routing.module';
 import { accessPolicyPermissionsComponents } from './access-policy-permissions/components/access-policy-permissions-components';
@@ -21,7 +21,6 @@ import { NgAccessPolicyRulesMenuProvider } from './access-policy-rules/ng-access
 import { NgAccessPolicyPermissionsMenuProvider } from './access-policy-permissions/ng-access-policy-permissions-menu-provider';
 import { FieldProviders } from '@skysmack/ng-fields';
 import { NgFieldsAccessPoliciesFieldProvider } from './ng-fields-access-policies-field-provider';
-import { PersonsTypeId } from '@skysmack/package-types';
 // import { PackagesModule } from '../../packages';
 
 @NgModule({
@@ -64,7 +63,7 @@ export class AccessPoliciesModule {
   ) {
     // Make entry components available
     coalescingResolver.registerResolver(localResolver);
-    fieldProviders.add(PersonsTypeId, fieldsAccessPoliciesFieldProvider);
+    fieldProviders.add('fields', fieldsAccessPoliciesFieldProvider);
     ngMenuProviders
       .add(ngAccessPoliciesDashboardMenuProvider)
       .add(ngAccessPolicyPermissionsMenuProvider)
