@@ -2,7 +2,7 @@ import { NgModule, ComponentFactoryResolver } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { HttpClientModule } from '@angular/common/http';
-import { PortalUiModule, NgMenuProviders } from '@skysmack/portal-ui';
+import { PortalUiModule, NgMenuProviders, UI_AREA_KEY } from '@skysmack/portal-ui';
 import { LanguageService } from '@skysmack/portal-ui';
 import { AccessPoliciesRoutingModule } from './access-policies-routing.module';
 import { accessPolicyPermissionsComponents } from './access-policy-permissions/components/access-policy-permissions-components';
@@ -19,6 +19,9 @@ import { NgAccessPoliciesDashboardMenuProvider } from './ng-access-policies-dash
 import { NgAccessPolicyRolesMenuProvider } from './access-policy-roles/ng-access-policy-roles-menu-provider';
 import { NgAccessPolicyRulesMenuProvider } from './access-policy-rules/ng-access-policy-rules-menu-provider';
 import { NgAccessPolicyPermissionsMenuProvider } from './access-policy-permissions/ng-access-policy-permissions-menu-provider';
+import { FieldProviders } from '@skysmack/ng-fields';
+import { NgFieldsAccessPoliciesFieldProvider } from './ng-fields-access-policies-field-provider';
+import { PersonsTypeId } from '@skysmack/package-types';
 // import { PackagesModule } from '../../packages';
 
 @NgModule({
@@ -51,7 +54,9 @@ export class AccessPoliciesModule {
     // Make entry components available
     coalescingResolver: CoalescingComponentFactoryResolver,
     localResolver: ComponentFactoryResolver,
-    ngMenuProviders: NgMenuProviders, 
+    ngMenuProviders: NgMenuProviders,
+    fieldProviders: FieldProviders,
+    fieldsAccessPoliciesFieldProvider: NgFieldsAccessPoliciesFieldProvider,
     ngAccessPoliciesDashboardMenuProvider: NgAccessPoliciesDashboardMenuProvider,
     ngAccessPolicyPermissionsMenuProvider: NgAccessPolicyPermissionsMenuProvider,
     ngAccessPolicyRolesMenuProvider: NgAccessPolicyRolesMenuProvider,
@@ -59,6 +64,7 @@ export class AccessPoliciesModule {
   ) {
     // Make entry components available
     coalescingResolver.registerResolver(localResolver);
+    fieldProviders.add(PersonsTypeId, fieldsAccessPoliciesFieldProvider);
     ngMenuProviders
       .add(ngAccessPoliciesDashboardMenuProvider)
       .add(ngAccessPolicyPermissionsMenuProvider)

@@ -56,6 +56,7 @@ export abstract class FieldsConfig<TRecord, TKey> implements EntityFieldsConfig<
         return this.fieldProviders.providers$.pipe(
             switchMap(providers => {
                 const extractedProviders = providers[loadedPackage && loadedPackage.packageManifest && loadedPackage.packageManifest.id];
+
                 if (extractedProviders && extractedProviders.length > 0) {
                     return combineLatest(
                         extractedProviders.map(provider => {

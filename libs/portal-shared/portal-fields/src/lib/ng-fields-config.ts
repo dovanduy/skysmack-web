@@ -79,21 +79,7 @@ export class NgFieldsConfig extends FieldsConfig<FieldSchemaViewModel, string> {
                 value: field ? field.object.validators : undefined,
                 key: 'validators',
                 order: 4,
-            }),
-
-            // new Field({
-            //     component: FieldPermissionFieldComponent,
-            //     value: field ? field.object.writePermission : undefined,
-            //     key: 'writePermission',
-            //     order: 5,
-            // }),
-
-            // new Field({
-            //     component: FieldPermissionFieldComponent,
-            //     value: field ? field.object.readPermission : undefined,
-            //     key: 'readPermission',
-            //     order: 6,
-            // }),
+            })
         ];
 
         return fields;
