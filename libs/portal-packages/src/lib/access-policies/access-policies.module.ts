@@ -19,6 +19,8 @@ import { NgAccessPoliciesDashboardMenuProvider } from './ng-access-policies-dash
 import { NgAccessPolicyRolesMenuProvider } from './access-policy-roles/ng-access-policy-roles-menu-provider';
 import { NgAccessPolicyRulesMenuProvider } from './access-policy-rules/ng-access-policy-rules-menu-provider';
 import { NgAccessPolicyPermissionsMenuProvider } from './access-policy-permissions/ng-access-policy-permissions-menu-provider';
+import { FieldProviders } from '@skysmack/ng-fields';
+import { NgFieldsAccessPoliciesFieldProvider } from './ng-fields-access-policies-field-provider';
 // import { PackagesModule } from '../../packages';
 
 @NgModule({
@@ -50,6 +52,8 @@ export class AccessPoliciesModule {
     coalescingResolver: CoalescingComponentFactoryResolver,
     localResolver: ComponentFactoryResolver,
     ngMenuProviders: NgMenuProviders,
+    fieldProviders: FieldProviders,
+    fieldsAccessPoliciesFieldProvider: NgFieldsAccessPoliciesFieldProvider,
     ngAccessPoliciesDashboardMenuProvider: NgAccessPoliciesDashboardMenuProvider,
     ngAccessPolicyPermissionsMenuProvider: NgAccessPolicyPermissionsMenuProvider,
     ngAccessPolicyRolesMenuProvider: NgAccessPolicyRolesMenuProvider,
@@ -57,6 +61,7 @@ export class AccessPoliciesModule {
   ) {
     // Make entry components available
     coalescingResolver.registerResolver(localResolver);
+    fieldProviders.add('fields', fieldsAccessPoliciesFieldProvider);
     ngMenuProviders
       .add(ngAccessPoliciesDashboardMenuProvider)
       .add(ngAccessPolicyPermissionsMenuProvider)
