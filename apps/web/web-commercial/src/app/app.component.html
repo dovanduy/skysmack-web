@@ -21,7 +21,7 @@
     <a routerLink="/pricings" class="menu">
       Pricings
     </a>
-    <a routerLink="/getting-started" class="menu">
+    <a routerLink="/getting-started" mat-flat-button color="primary">
       Getting started
     </a>
   </nav>
@@ -32,7 +32,7 @@
     <a routerLink="/help" class="menu">
       Help
     </a>
-    <a [routerLink]="['account', 'login']" class="menu">
+    <a is-authenticated [routerLink]="['account', 'login']" class="menu">
       Partners
     </a>
   </nav>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Field, FormHelper } from '@skysmack/ng-dynamic-forms';
 import { CommercialAccountLoginFieldsConfig } from './commercial-account-login-fields-config';
@@ -35,7 +35,7 @@ import { OAuth2Requests } from '@skysmack/ng-oauth2';
     )
   ]
 })
-export class CommercialAccountLoginComponent implements OnInit {
+export class CommercialAccountLoginComponent implements OnInit, OnDestroy {
   public loggingIn = false;
   public error = false;
   public success = false;
@@ -74,6 +74,10 @@ export class CommercialAccountLoginComponent implements OnInit {
         })
       ).subscribe()
     );
+  }
+
+  ngOnDestroy() {
+    this.subscriptionHandler.unsubscribe();
   }
 
   public onSubmit(fh: FormHelper) {
