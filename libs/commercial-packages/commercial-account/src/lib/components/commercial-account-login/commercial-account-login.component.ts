@@ -3,9 +3,8 @@ import { Observable, of } from 'rxjs';
 import { Field, FormHelper } from '@skysmack/ng-dynamic-forms';
 import { CommercialAccountLoginFieldsConfig } from './commercial-account-login-fields-config';
 import { trigger, transition, style, animate } from '@angular/animations';
-import { SubscriptionHandler, IsAuthenticated } from '@skysmack/framework';
+import { SubscriptionHandler } from '@skysmack/framework';
 import { AuthenticationActions } from '@skysmack/redux';
-import { CommercialAccountService } from '../../services';
 import { NgRedux } from '@angular-redux/store';
 import { NgAuthenticationStore } from '@skysmack/ng-framework';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -63,7 +62,7 @@ export class CommercialAccountLoginComponent implements OnInit, OnDestroy {
       })
     ).subscribe());
     this.clearLoginErrors();
-    this.fields$ = of(this.fieldsConfig.getFields());
+    this.fields$ = this.fieldsConfig.getFields(null, null);
     this.listenForErrors();
     this.subscriptionHandler.register(
       this.activatedRoute.parent.data.pipe(

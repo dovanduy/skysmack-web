@@ -2523,7 +2523,46 @@
 		}
 	},
 	"COMMERCIAL_ACCOUNT": {
-		"INDEX": {}
+		"INDEX": {},
+		"FORM": {
+			"LABELS": {
+				"EMAIL": "Email",
+				"PASSWORD": "Password",
+				"STAYSIGNEDIN": "Stay signed in?"
+			},
+			"PLACEHOLDERS": {
+				"EMAIL": "Enter email",
+				"PASSWORD": "Enter password"
+			},
+			"VALIDATION": {
+				"EMAIL": {
+					"REQUIRED": "Email is required.",
+					"INVALIDEMAIL": "Please enter a valid email."
+				},
+				"PASSWORD": {
+					"REQUIRED": "Password is required."
+				}
+			}
+		},
+		"VALIDATION": {
+			"TOKEN": {
+				"REQUIRED": "Token is required"
+			},
+			"EMAIL": {
+				"REQUIRED": "Email is required.",
+				"INVALIDEMAIL": "Please type a valid email"
+			},
+			"CURRENTPASSWORD": {
+				"REQUIRED": "Current password is required."
+			},
+			"NEWPASSWORD": {
+				"REQUIRED": "New password is required."
+			},
+			"CONFIRMNEWPASSWORD": {
+				"REQUIRED": "Please repeat the new password.",
+				"PASSWORDMISMATCH": "Passwords must match."
+			}
+		}
 	},
 	"COMMERCIAL_TENANTS": {
 		"INDEX": {
