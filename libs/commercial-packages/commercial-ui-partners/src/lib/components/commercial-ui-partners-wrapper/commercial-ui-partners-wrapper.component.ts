@@ -42,9 +42,8 @@ export class CommercialUiPartnersWrapperComponent implements OnInit, OnDestroy {
     this.subscriptionHandler.unsubscribe();
   }
 
-
-  public logout() {
-    this.actions.logout();
+  public actionEvent(event: { action: Function, _this: any }) {
+    event.action(event._this);
   }
 
   private redirectUnauthenticated() {

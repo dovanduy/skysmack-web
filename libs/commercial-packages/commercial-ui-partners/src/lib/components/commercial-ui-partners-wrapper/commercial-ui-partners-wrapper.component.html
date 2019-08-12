@@ -15,7 +15,7 @@
                 <ng-container *ngFor="let menuItem of menuAreaItem.items">
                     <!-- ACTION EVENT -->
                     <a mat-flat-button *ngIf="menuItem.isActionEvent"
-                        (click)="menuItemActionEvent.emit({ action: menuItem.action, _this: menuItem._this });">{{ menuItem.displayName | translate }}</a>
+                        (click)="actionEvent({ action: menuItem.action, _this: menuItem._this });">{{ menuItem.displayName | translate }}</a>
 
                     <!-- URL EVENT -->
                     <a mat-flat-button *ngIf="!menuItem.isActionEvent"

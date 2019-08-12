@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { MenuProvider, MenuArea, MenuItem } from '@skysmack/framework';
 import { Guid } from 'guid-typescript';
 import { Observable, of } from 'rxjs';
+import { NgAuthenticationActions } from '@skysmack/ng-framework';
 
 @Injectable({ providedIn: 'root' })
 export class NgUiMenuProvider implements MenuProvider {
@@ -9,6 +10,7 @@ export class NgUiMenuProvider implements MenuProvider {
     public translationPrefix = 'COMMERCIAL_UI_PARTNERS.INDEX.';
 
     constructor(
+        public actions: NgAuthenticationActions,
     ) { }
 
     public getMenuAreas(packagePath: string, componentKey: string): Observable<MenuArea[]> {
@@ -38,7 +40,13 @@ export class NgUiMenuProvider implements MenuProvider {
                 order: 1,
                 icon: 'add',
                 providedIn: ['top']
-            })
+            }),
+            new MenuItem({
+                area: 'manage',
+                providedIn: ['top']
+            }).asEventAction(this.translationPrefix + 'LOGOUT', () => {
+                this.actions.logout();
+            }, 'add', this)
         ];
     }
 }
