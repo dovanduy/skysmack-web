@@ -628,10 +628,10 @@
 			"PAYMENTS": "Payments"
 		},
 		"QUEUE": {
-			"ADDING": "Adding {{ currencyCode }}",
-			"UPDATING": "Updating {{ currencyCode }}",
-			"DELETING": "Deleting {{ currencyCode }}",
-			"ERROR": "An error occured with {{ currencyCode }}. Correct and try again."
+			"ADDING": "Adding {{ description }}",
+			"UPDATING": "Updating {{ description }}",
+			"DELETING": "Deleting {{ description }}",
+			"ERROR": "An error occured with {{ description }}. Correct and try again."
 		},
 		"ENTITY_ACTION_PROVIDER": {
 			"ENTITY_ACTION": {
