@@ -28,7 +28,7 @@
                     "REQUIRED": "A password is required."
                 },
                 "CONFIRMPASSWORD": {
-                    "PASSWORDMISMATCH": "A confirm password is required."
+                    "PASSWORDMISMATCH": "The passwords must match."
                 }
             }
         }

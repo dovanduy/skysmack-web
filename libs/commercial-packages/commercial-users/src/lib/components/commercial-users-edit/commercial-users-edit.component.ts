@@ -31,7 +31,7 @@ export class CommercialUsersEditComponent implements OnInit, OnDestroy {
     this.fields$ = this.activatedRoute.params.pipe(
       map(params => params.id),
       switchMap(id => this.service.getById(id)),
-      map((response: HttpSuccessResponse<PartnerUser>) => this.fieldsConfig.getFields(toLocalObject(response.body)))
+      switchMap((response: HttpSuccessResponse<PartnerUser>) => this.fieldsConfig.getFields(null, toLocalObject(response.body)))
     );
   }
 
