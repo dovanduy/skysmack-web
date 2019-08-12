@@ -2523,7 +2523,15 @@
 		}
 	},
 	"COMMERCIAL_ACCOUNT": {
-		"INDEX": {},
+		"INDEX": {
+			"CHANGEPASSWORD": "Change password",
+			"TENANTS": "Tenants",
+			"USERS": "Users",
+			"LOGOUT": "Logout",
+			"ACCOUNT": "Account",
+			"WELCOME": "Welcome to skysmack",
+			"FORGOTPASSWORD": "Forgot password"
+		},
 		"FORM": {
 			"LABELS": {
 				"EMAIL": "Email",
@@ -2562,6 +2570,13 @@
 				"REQUIRED": "Please repeat the new password.",
 				"PASSWORDMISMATCH": "Passwords must match."
 			}
+		},
+		"LOGIN": {
+			"SIGNIN": "Sing in",
+			"CREDENTIALS": "Please enter credentials below",
+			"INCORRECT": "The entered password and/or username was incorrect. Please try again.",
+			"FORGOTPASSWORD": "Forgot password",
+			"CONFIRMEMAIL": "Confirm email"
 		}
 	},
 	"COMMERCIAL_TENANTS": {

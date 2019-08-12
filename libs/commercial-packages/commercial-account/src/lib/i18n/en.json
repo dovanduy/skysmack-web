@@ -1,6 +1,21 @@
 {
     "COMMERCIAL_ACCOUNT": {
-        "INDEX": {},
+        "INDEX": {
+            "CHANGEPASSWORD": "Change password",
+            "FORGOTPASSWORD": "Forgot password",
+            "TENANTS": "Tenants",
+            "USERS": "Users",
+            "LOGOUT": "Logout",
+            "ACCOUNT": "Account",
+            "WELCOME": "Welcome to skysmack"
+        },
+        "LOGIN": {
+            "SIGNIN": "Sing in",
+            "CREDENTIALS": "Please enter credentials below",
+            "INCORRECT": "The entered password and/or username was incorrect. Please try again.",
+            "FORGOTPASSWORD": "Forgot password",
+            "CONFIRMEMAIL": "Confirm email"
+        },
         "FORM": {
             "LABELS": {
                 "EMAIL": "Email",
