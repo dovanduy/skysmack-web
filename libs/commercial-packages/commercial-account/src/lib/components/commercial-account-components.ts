@@ -8,6 +8,16 @@ import { CommercialUiPartnersWrapperComponent } from '@skysmack/commercial-ui-pa
 
 export const commercialAccountRoutes: Routes = [
   {
+    path: '', component: CommercialUiPartnersWrapperComponent, children: [
+      {
+        path: 'dashboard', component: CommercialAccountDashboardComponent
+      },
+      {
+        path: 'change-password', component: CommercialAccountChangePasswordComponent
+      }
+    ]
+  },
+  {
     path: '', component: CommercialAccountLoginWrapperComponent,
     data: { removeCloseButton: true }, children: [
       {
@@ -15,16 +25,6 @@ export const commercialAccountRoutes: Routes = [
       },
       {
         path: 'forgot-password', component: CommercialAccountForgotPasswordComponent
-      }
-    ]
-  },
-  {
-    path: '', component: CommercialUiPartnersWrapperComponent, children: [
-      {
-        path: 'dashboard', component: CommercialAccountDashboardComponent
-      },
-      {
-        path: 'change-password', component: CommercialAccountChangePasswordComponent
       }
     ]
   }
