@@ -2637,7 +2637,8 @@
 			"HOSTNAME": "Værtsnavn",
 			"SAFESUBDOMAIN": "Sikker subdomæne",
 			"STATE": "Tilstand"
-		},
+		}
+	},
 	"OAUTH2": {
 		"FORM": {
 			"LABELS": {
