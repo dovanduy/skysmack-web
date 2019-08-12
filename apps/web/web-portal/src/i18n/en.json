@@ -2954,5 +2954,13 @@
 				}
 			}
 		}
+	},
+	"COMMERCIAL_UI_PARTNERS": {
+		"INDEX": {
+			"CHANGEPASSWORD": "Change password",
+			"TENANTS": "Tenants",
+			"USERS": "Users",
+			"LOGOUT": "Logout"
+		}
 	}
 }

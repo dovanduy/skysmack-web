@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { NgAuthenticationStore, NgAuthenticationActions } from '@skysmack/ng-framework';
 import { SubscriptionHandler } from '@skysmack/framework';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { tap } from 'rxjs/operators';
 
 @Component({
@@ -16,10 +16,12 @@ export class CommercialUiPartnersWrapperComponent implements OnInit, OnDestroy {
   constructor(
     public store: NgAuthenticationStore,
     public actions: NgAuthenticationActions,
-    public router: Router
+    public router: Router,
+    public activatedRoute: ActivatedRoute
   ) { }
 
   ngOnInit() {
+    console.log('router.config', this.router.config.find(x => x.path === 'users'));
     this.subscriptionHandler.register(this.store.isCurrentUserAuthenticated().pipe(
       tap(authenticated => {
         if (!authenticated) {

@@ -4,7 +4,6 @@ import { FormRule, Field, CustomValidators } from '@skysmack/ng-dynamic-forms';
 import { StringFieldComponent, PasswordFieldComponent } from '@skysmack/portal-fields';
 import { CommercialUsersValidation } from './commercial-users-validation';
 import { LocalObject } from '@skysmack/framework';
-import { PartnerUser } from './models/partner-user';
 import { FieldsConfig, FieldProviders } from '@skysmack/ng-fields';
 import { LoadedPackage } from '@skysmack/ng-framework';
 

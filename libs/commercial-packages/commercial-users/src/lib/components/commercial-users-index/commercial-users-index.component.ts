@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { CommercialUsersService } from '../../services/commercial-users.service';
 import { map, take } from 'rxjs/operators';
-import { HttpResponse, HttpSuccessResponse } from '@skysmack/framework';
+import { HttpSuccessResponse } from '@skysmack/framework';
 import { PartnerUser } from '../../models';
 
 @Component({
@@ -19,6 +19,7 @@ export class CommercialUsersIndexComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    console.log('CommercialUsersIndexComponent');
     this.users$ = this.service.get().pipe(
       map((x: HttpSuccessResponse<PartnerUser[]>) => x.body),
       take(1)

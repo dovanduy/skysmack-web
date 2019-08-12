@@ -6,7 +6,7 @@ import { CommercialUsersDetailsComponent } from './commercial-users-details/comm
 
 export const commercialUsersRoutes: Routes = [
   {
-    path: '', component: CommercialUsersIndexComponent,
+    path: '', component: CommercialUsersIndexComponent
   },
   {
     path: 'create', component: CommercialUsersCreateComponent
