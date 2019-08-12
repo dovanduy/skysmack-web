@@ -1185,7 +1185,7 @@
             "main": "apps/web/web-commercial/src/main.ts",
             "polyfills": "apps/web/web-commercial/src/polyfills.ts",
             "tsConfig": "apps/web/web-commercial/tsconfig.app.json",
-            "aot": false,
+            "preserveSymlinks": false,
             "assets": [
               "apps/web/web-commercial/src/favicon.ico",
               "apps/web/web-commercial/src/assets"
@@ -1193,7 +1193,9 @@
             "styles": [
               "apps/web/web-commercial/src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [],
+            "es5BrowserSupport": true,
+            "vendorSourceMap": true
           },
           "configurations": {
             "production": {

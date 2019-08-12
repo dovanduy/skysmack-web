@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, SystemJsNgModuleLoader } from '@angular/core';
 import { NgReduxModule, NgRedux } from '@angular-redux/store';
 import { RouterModule } from '@angular/router';
 import { ServiceWorkerModule } from '@angular/service-worker';
@@ -27,6 +27,7 @@ import { PricingsComponent } from './pages/pricings/pricings.component';
 import { GettingStartedComponent } from './pages/getting-started/getting-started.component';
 import { NgTranslationModule, LanguageService } from '@skysmack/ng-translation';
 import { commercialUsersRoute } from './packages/commercial_users_wrapper.module';
+import { AuthenticatedLoadStrategy } from './authenticated-load-strategy';
 
 const lazyLoadedPacakges = [
   commercialAccountRoute,
@@ -67,7 +68,7 @@ const lazyLoadedPacakges = [
         component: GettingStartedComponent
       },
       ...lazyLoadedPacakges
-    ], { initialNavigation: 'enabled' }),
+    ], { initialNavigation: 'enabled', preloadingStrategy: AuthenticatedLoadStrategy }),
     BrowserAnimationsModule,
     MaterialModule,
     NgReduxModule,
@@ -77,7 +78,8 @@ const lazyLoadedPacakges = [
   providers: [
     ...commercialApplicationStartup,
     LanguageService,
-    CoalescingComponentFactoryResolver
+    CoalescingComponentFactoryResolver,
+    SystemJsNgModuleLoader
   ],
   bootstrap: [AppComponent]
 })
