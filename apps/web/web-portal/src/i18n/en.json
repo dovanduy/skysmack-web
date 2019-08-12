@@ -2567,6 +2567,35 @@
 	"COMMERCIAL_TENANTS": {
 		"INDEX": {
 			"CREATE": " Create tenant"
+		},
+		"FORM": {
+			"LABELS": {
+				"NAME": "Name",
+				"HOSTNAME": "Hostname",
+				"SAFESUBDOMAIN": "Safe subdomain",
+				"STATE": "State"
+			},
+			"PLACEHOLDERS": {
+				"NAME": "Enter a Name",
+				"HOSTNAME": "Enter a hostname",
+				"SAFESUBDOMAIN": "Enter a safe subdomain",
+				"STATE": "Enter a state"
+			},
+			"VALIDATION": {
+				"NAME": {
+					"REQUIRED": "An Name is required."
+				},
+				"HOSTNAME": {
+					"REQUIRED": "An hostname is required."
+				},
+				"SAFESUBDOMAIN": {
+					"REQUIRED": "A subdomain is required."
+				},
+				"STATE": {
+					"PASSWORDMISMATCH": "The state is required.",
+					"REQUIRED": "The state is required."
+				}
+			}
 		}
 	},
 	"OAUTH2": {

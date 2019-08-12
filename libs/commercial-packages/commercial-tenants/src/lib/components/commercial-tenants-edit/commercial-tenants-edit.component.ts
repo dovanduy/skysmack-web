@@ -30,7 +30,7 @@ export class CommercialTenantsEditComponent implements OnInit, OnDestroy {
     this.fields$ = this.activatedRoute.params.pipe(
       map(params => params.id),
       switchMap(id => this.service.getById(id)),
-      map((response: HttpSuccessResponse<Tenant>) => this.fieldsConfig.getFields(toLocalObject(response.body)))
+      switchMap((response: HttpSuccessResponse<Tenant>) => this.fieldsConfig.getFields(null, toLocalObject(response.body)))
     );
   }
 
