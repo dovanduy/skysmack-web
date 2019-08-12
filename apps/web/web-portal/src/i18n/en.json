@@ -2953,6 +2953,16 @@
 					"PASSWORDMISMATCH": "The passwords must match."
 				}
 			}
-		}
+		},
+		"TITLE": "Users",
+		"CREATE": "Create",
+		"CREATEUSER": "Create user",
+		"EDIT": "Edit",
+		"EDITUSER": "Edit user",
+		"DETAILS": "Details",
+		"HOSTNAME": "Hostname",
+		"SAFESUBDOMAIN": "Safe subdomain",
+		"STATE": "State",
+		"EMAIL": "Email: "
 	}
 }

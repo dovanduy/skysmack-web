@@ -3,6 +3,12 @@
         "INDEX": {
             "CREATE": " Create user"
         },
+        "TITLE": "Users",
+        "CREATE": "Create",
+        "CREATEUSER": "Create user",
+        "EDIT": "Edit",
+        "EDITUSER": "Edit user",
+        "EMAIL": "Email: ",
         "FORM": {
             "LABELS": {
                 "EMAIL": "Email",
