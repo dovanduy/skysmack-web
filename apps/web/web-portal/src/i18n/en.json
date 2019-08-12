@@ -2628,7 +2628,16 @@
 			"HOSTNAME": "Hostname",
 			"SAFESUBDOMAIN": "Safe subdomain",
 			"STATE": "State"
-		}
+		},
+		"TITLE": "Tenants",
+		"CREATE": "Create",
+		"CREATETENANT": "Create Tenant",
+		"EDIT": "Edit",
+		"EDITTENANT": "Edit tenant",
+		"DETAILS": "Details",
+		"HOSTNAME": "Hostname",
+		"SAFESUBDOMAIN": "Safe subdomain",
+		"STATE": "State"
 	},
 	"OAUTH2": {
 		"FORM": {
@@ -2953,6 +2962,24 @@
 					"PASSWORDMISMATCH": "The passwords must match."
 				}
 			}
+		},
+		"TITLE": "Users",
+		"CREATE": "Create",
+		"CREATEUSER": "Create user",
+		"EDIT": "Edit",
+		"EDITUSER": "Edit user",
+		"DETAILS": "Details",
+		"HOSTNAME": "Hostname",
+		"SAFESUBDOMAIN": "Safe subdomain",
+		"STATE": "State",
+		"EMAIL": "Email: "
+	},
+	"COMMERCIAL_UI_PARTNERS": {
+		"INDEX": {
+			"CHANGEPASSWORD": "Change password",
+			"TENANTS": "Tenants",
+			"USERS": "Users",
+			"LOGOUT": "Logout"
 		}
 	},
 	"COMMERCIAL_UI_PARTNERS": {

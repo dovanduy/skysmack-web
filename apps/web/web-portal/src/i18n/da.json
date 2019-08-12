@@ -41,6 +41,43 @@
 			"ERROR": "Der skete en fejl med {{ ruleId }}. Ret og prøv igen."
 		}
 	},
+	"ACCESS_POLICY_RULES": {
+		"CREATE": {
+			"CREATE": "Opret",
+			"BUTTON_CREATE": "Opret"
+		},
+		"EDIT": {
+			"EDITING": "Rediger",
+			"BUTTON_EDIT": "Opdater"
+		},
+		"INDEX": {
+			"TITLE_EXTRAS": "(regler)",
+			"ACTIONS": "Handlinger",
+			"CREATE": "Opret",
+			"MANAGE": "Konfigurer",
+			"BACK": "Tilbage",
+			"ROLES": "Roller",
+			"FIELDS_TITLE": "(felter)"
+		},
+		"FORM": {
+			"LABELS": {
+				"ACCESS": "Adgang",
+				"AUTHENTICATED": "Godkendt",
+				"INCLUDEROLES": "Inkluder roller"
+			},
+			"PLACEHOLDERS": {
+				"ACCESS": "Adgang",
+				"AUTHENTICATED": "Godkendt",
+				"INCLUDEROLES": "Inkluder roller"
+			}
+		},
+		"QUEUE": {
+			"ADDING": "Tilføjer adgangspolitiske regler {{ id }}",
+			"UPDATING": "Opdatere adgangspolitiske regler {{ id }}",
+			"DELETING": "Sletter adgangspolitiske regler {{ id }}",
+			"ERROR": "Der opstod  en fejl ved adgangspolitiske regler {{ id }}. Ret og prøv igen."
+		}
+	},
 	"ACCESS_POLICY_ROLES": {
 		"CREATE": {
 			"CREATE": "Opret",
@@ -81,43 +118,6 @@
 			"ERROR": "Der opstod  en fejl ved {{ roleId }}. Ret og prøv igen."
 		}
 	},
-	"ACCESS_POLICY_RULES": {
-		"CREATE": {
-			"CREATE": "Opret",
-			"BUTTON_CREATE": "Opret"
-		},
-		"EDIT": {
-			"EDITING": "Rediger",
-			"BUTTON_EDIT": "Opdater"
-		},
-		"INDEX": {
-			"TITLE_EXTRAS": "(regler)",
-			"ACTIONS": "Handlinger",
-			"CREATE": "Opret",
-			"MANAGE": "Konfigurer",
-			"BACK": "Tilbage",
-			"ROLES": "Roller",
-			"FIELDS_TITLE": "(felter)"
-		},
-		"FORM": {
-			"LABELS": {
-				"ACCESS": "Adgang",
-				"AUTHENTICATED": "Godkendt",
-				"INCLUDEROLES": "Inkluder roller"
-			},
-			"PLACEHOLDERS": {
-				"ACCESS": "Adgang",
-				"AUTHENTICATED": "Godkendt",
-				"INCLUDEROLES": "Inkluder roller"
-			}
-		},
-		"QUEUE": {
-			"ADDING": "Tilføjer adgangspolitiske regler {{ id }}",
-			"UPDATING": "Opdatere adgangspolitiske regler {{ id }}",
-			"DELETING": "Sletter adgangspolitiske regler {{ id }}",
-			"ERROR": "Der opstod  en fejl ved adgangspolitiske regler {{ id }}. Ret og prøv igen."
-		}
-	},
 	"ACCESS_POLICIES": {
 		"TITLE": "Adgangspolitikker",
 		"DASHBOARD": {
@@ -136,23 +136,111 @@
 			"ERROR": "Der opstod  en fejl ved {{ ruleId }}. Ret og prøv igen."
 		}
 	},
+	"EMAIL_TEMPLATES": {
+		"FORM": {
+			"LABELS": {
+				"FROM": "Til",
+				"TO": "Fra",
+				"CC": "Cc",
+				"BCC": "Bcc",
+				"SUBJECT": "Emne",
+				"BODY": "Indhold"
+			},
+			"PLACEHOLDERS": {
+				"FROM": "Til",
+				"TO": "Fra",
+				"CC": "Cc",
+				"BCC": "Bcc",
+				"SUBJECT": "Emne",
+				"BODY": "Indhold"
+			},
+			"VALIDATION": {}
+		},
+		"CREATE": {
+			"CREATE": "Opret",
+			"BUTTON_CREATE": "Opret"
+		},
+		"EDIT": {
+			"EDIT": "Ret",
+			"BUTTON_EDIT": "Ret"
+		},
+		"INDEX": {
+			"CREATE": "Opret",
+			"EDIT": "Ret",
+			"DELETE": "Slet",
+			"MANAGE": "Konfigurer",
+			"ACTIONS": "Handlinger"
+		},
+		"QUEUE": {
+			"ADDING": "Tilføjer {{ subject }}",
+			"UPDATING": "Opdaterer {{ subject }}",
+			"DELETING": "Sletter {{ subject }}",
+			"ERROR": "Der skete en fejl med {{ subject }}. Ret fejl og prøv igen."
+		}
+	},
+	"EMAILS": {
+		"INDEX": {
+			"CREATE": "Opret",
+			"EDIT": "Ret",
+			"DELETE": "Slet",
+			"ITEM": "Vare",
+			"MANAGE": "Konfigurer",
+			"ACTIONS": "Handlinger"
+		}
+	},
+	"EMAILS_SMTP": {
+		"INDEX": {
+			"CREATE": "Opret",
+			"EDIT": "Ret",
+			"DELETE": "Slet",
+			"TEMPLATES": "Skabeloner",
+			"MANAGE": "Konfigurer",
+			"ACTIONS": "Handlinger",
+			"SETTINGS": "Indstillinger"
+		}
+	},
+	"EMAILS_SMTP_SETTINGS": {
+		"FORM": {			
+			"PLACEHOLDERS": {
+				"HOST": "Vært",
+				"PORT": "Port",
+				"USERNAME": "Brugernavn",
+				"PASSWORD": "Adgangskode",
+				"ENABLESSL": "Aktiver ssl"
+			},
+			"LABELS": {
+				"HOST": "Vært",
+				"PORT": "Port",
+				"USERNAME": "Brugernavn",
+				"PASSWORD": "Adgangskode",
+				"ENABLESSL": "Aktiver ssl"
+			}
+		}
+	},
 	"ACCOUNTS": {
 		"FORM": {
 			"LABELS": {
+				"TOKEN": "Token",
+				"EMAIL": "Email",
 				"CURRENTPASSWORD": "Nuværende kodeord",
 				"NEWPASSWORD": "Nyt kodeord",
-				"CONFIRMNEWPASSWORD": "Bekræft kodeord",
-				"EMAIL": "Email",
-				"TOKEN": "Token"
+				"CONFIRMNEWPASSWORD": "Bekræft kodeord"
 			},
 			"PLACEHOLDERS": {
+				"TOKEN": "Token",
+				"EMAIL": "Email",
 				"CURRENTPASSWORD": "Nuværende kodeord",
 				"NEWPASSWORD": "Nyt kodeord",
-				"CONFIRMNEWPASSWORD": "Bekræft kodeord",
-				"EMAIL": "Email",
-				"TOKEN": "Token"
+				"CONFIRMNEWPASSWORD": "Bekræft kodeord"
 			},
-			"VALIDATION": {		
+			"VALIDATION": {
+				"TOKEN": {
+					"REQUIRED": "Token er påkrævet"
+				},
+				"EMAIL": {
+					"REQUIRED": "Email er påkrævet",
+					"INVALIDEMAIL": "Indtast venligst en gyldig email"
+				},		
 				"CURRENTPASSWORD": {
 					"REQUIRED": "Nuværende kodeord er påkrævet."
 				},
@@ -162,13 +250,6 @@
 				"CONFIRMNEWPASSWORD": {
 					"REQUIRED": "Gentag det nye kodeord.",
 					"PASSWORDMISMATCH": "Kodeord skal være ens."
-				},
-				"EMAIL": {
-					"REQUIRED": "Email er påkrævet",
-					"INVALIDEMAIL": "Indtast venligst en gyldig email"
-				},
-				"TOKEN": {
-					"REQUIRED": "Token er påkrævet"
 				}
 			}
 		},
@@ -176,23 +257,23 @@
 			"TITLE": "Skift kodeord",
 			"BUTTON_EDIT": "Send"
 		},
+		"CONFIRM_EMAIL": {
+			"TITLE": "Bekræft email",
+			"BUTTON_EDIT": "Send"
+		},
+		"FORGOT_PASSWORD": {
+			"TITLE": "Glemt adgangskode",
+			"BUTTON_EDIT": "Send"
+		},
 		"INDEX": {
 			"ACTIONS": "Handlinger",
-			"CHANGE_PASSWORD": "Skift password",
-			"FORGOT_PASSWORD": "Glemt password",
+			"CHANGE_PASSWORD": "Skift adgangskode",
+			"FORGOT_PASSWORD": "Glemt adgangskode",
 			"CONFIRM_EMAIL": "Bekræft email",
 			"MANAGE": "Konfigurer"
 		},
 		"NOTIFICATIONS": {},
-		"QUEUE": {},
-		"FORGOT_PASSWORD": {
-			"TITLE": "Forgot password",
-			"BUTTON_EDIT": "Send"
-		},
-		"CONFIRM_EMAIL": {
-			"TITLE": "Bekræft email",
-			"BUTTON_EDIT": "Send"
-		}
+		"QUEUE": {}
 	},
 	"IDENTITIES": {
 		"INDEX": {
@@ -202,18 +283,18 @@
 			"APPLICATIONS_ROLES_TITLE": "Applikationsroller",
 			"MANAGE": "Konfigurer",
 			"SETTINGS": "Indstillinger",
+			"ACCOUNTS": "Bruger kontier",
+			"ACCOUNT": "Bruger konto",
+			"CHANGE_PASSWORD": "Skift adgangskode",
+			"FORGOT_PASSWORD": "Glemt adgangskode",
+			"CONFIRM_EMAIL": "Bekræft email",
+			"APPLICATIONS": "Applikationer",
 			"AVAILABLE_SETTINGS": {
 				"LOCKOUT": "Lås ude",
 				"USER": "Brugere",
 				"PASSWORD": "Kodeord",
 				"SIGNIN": "Log ind"
-			},
-			"ACCOUNTS": "Bruger kontier",
-			"ACCOUNT": "Bruger konto",
-			"CHANGE_PASSWORD": "Skift password",
-			"FORGOT_PASSWORD": "Glemt password",
-			"CONFIRM_EMAIL": "Bekræft email",
-			"APPLICATIONS": "Applikationer"
+			}
 		}
 	},
 	"IDENTITIES_SETTINGS": {
@@ -256,6 +337,102 @@
 		"QUEUE": {
 			"UPDATING": "Opdaterer",
 			"ERROR": "Der skete en fejl ved opdatering af indstillingerne."
+		}
+	},
+	"APPLICATIONS": {
+		"ENTITY_ACTION": {
+            "ROLES": "Roller"
+		},
+		"ROLES": {
+            "CURRENT_ROLES": "{{ object.displayName }} nuværende roller",
+            "ROLE_PRIORITY": "{{ role.object.name }} med prioriteten {{ role.object.priority }} -",
+            "REMOVE": "Fjern",
+            "NO_ROLES": "Ingen roller er blevet tilføjer.",
+            "ADD_ROLE": "Tilføj en rolle til {{ object.displayName }}",
+            "OBJECT_PRIOORITY": "{{ role.object.name }} - prioritet",
+            "ADD": "Tilføj",
+            "ROLES_APPLIED": "Alle roller er blevet tilføjet, ellers findes der ikke nogen.",
+            "NO_ROLES_APPLIED": "Denne application har ingen roller."
+        },
+		"CREATE": {
+			"CREATE_APPLICATION": "Opret ny applikation",
+			"BUTTON_CREATE": "Opret"
+		},
+		"EDIT": {
+			"EDITING": "Ret {{ displayName }}",
+			"BUTTON_EDIT": "Opdater"
+		},
+		"INDEX": {
+			"ACTIONS": "Handlinger",
+			"CREATE": "Opret",
+			"MANAGE": "Konfigurer",
+			"TITLE_EXTRAS": "(applikationer)",
+			"APPLICATIONS": "Applikationer",
+			"BACK": "Tilbage"
+		},
+		"FORM": {
+			"LABELS": {
+				"CLIENTID": "Klient id",
+				"CONCURRENCYTOKEN": "Valuta token",
+				"CONSENTTYPE": "Samtykke type",
+				"DISPLAYNAME": "Visningsnavn",
+				"PERMISSIONS": "Tilladelser",
+				"POSTLOGOUTREDIRECTURIS": "Vidersendelses uris til efter logout",
+				"PROPERTIES": "Egenskaber",
+				"REDIRECTURIS": "Vidersendelses uris",
+				"TYPE": "Type",
+				"CLIENTSECRET": "Klient hemmelighed"
+			},
+			"PLACEHOLDERS": {
+				"CLIENTID": "Klient id",
+				"CLIENTSECRET": "Klient hemmelighed",
+				"CONCURRENCYTOKEN": "Concurrency token",
+				"CONSENTTYPE": "Samtykke type",
+				"DISPLAYNAME": "Visningsnavn",
+				"PERMISSIONS": "Tilladelser",
+				"POSTLOGOUTREDIRECTURIS": "Vidersendelses uris til efter logout",
+				"PROPERTIES": "Egenskaber",
+				"REDIRECTURIS": "Vidersendelses uris",
+				"TYPE": "Type"
+			},
+			"VALIDATION": {
+				"CLIENTSECRET": {
+                    "REQUIRED": "Klient hemmelighed er påkrævet"
+                },
+				"CLIENTID": {
+					"REQUIRED": "Klient id er påkrævet"
+				},
+				"CONCURRENCYTOKEN": {
+					"REQUIRED": "Concurrency token er påkrævet"
+				},
+				"CONSENTTYPE": {
+					"REQUIRED": "Samtykke type er påkrævet"
+				},
+				"DISPLAYNAME": {
+					"REQUIRED": "Visningsnavn er påkrævet"
+				},
+				"PERMISSIONS": {
+					"REQUIRED": "Tilladekser er påkrævet"
+				},
+				"POSTLOGOUTREDIRECTURIS": {
+					"REQUIRED": "Vidersendelses uris til efter logout er påkrævet"
+				},
+				"PROPERTIES": {
+					"REQUIRED": "Egenskaber er påkrævet"
+				},
+				"REDIRECTURIS": {
+					"REQUIRED": "Vidersendelses uris er påkrævet"
+				},
+				"TYPE": {
+					"REQUIRED": "Type er påkrævet"
+				}
+			}
+		},
+		"QUEUE": {
+			"ADDING": "Tilføjer {{ displayName }}",
+			"UPDATING": "Opdaterer {{ displayName }}",
+			"DELETING": "Sletter {{ displayName }}",
+			"ERROR": "En fejl er opstået med applikation {{ displayName }}. Ret fejlene og prøv igen."
 		}
 	},
 	"ROLES": {
@@ -339,7 +516,7 @@
 				},
 				"PASSWORD": {
 					"REQUIRED": "Adgangskode er påkrævet.",
-					"INVALIDPASSWORD": "Lav venligst et sværere password."
+					"INVALIDPASSWORD": "Lav venligst et sværere adgangskode."
 				},
 				"CONFIRMPASSWORD": {
 					"REQUIRED": "Bekræftning adgangskode.",
@@ -370,8 +547,6 @@
 			"ENTITY_ACTION_SET_PASSWWORD": "Sæt adgangskode",
 			"ENTITY_ACTION_ROLES": "Roller",
 			"FIELDS_TITLE": "(felter)",
-			"SETTINGS": "Indstillinger",
-			"ACCOUNT": "Konto",
 			"TITLE_EXTRAS": "(brugere)"
 		},
 		"ROLES": {
@@ -397,6 +572,71 @@
 		"ENTITY_ACTION": {
 			"SET_PASSWORD": "Lav adgangskode",
 			"ROLES": "Roller"
+		}
+	},
+	"INVOICES_CASH_PAYMENTS": {
+		"FORM": {
+			"LABELS": {
+				"DESCRIPTION": "Beskrivelse",
+				"CURRENCYCODE": "Valuta kode",
+				"AMOUNT": "Mængde",
+				"INVOICEID": "Faktura"
+			},
+			"PLACEHOLDERS": {
+				"DESCRIPTION": "Beskrivelse",
+				"CURRENCYCODE": "Vælg valuta kode",
+				"AMOUNT": "Mængde",
+				"INVOICEID": "Faktura"
+			},
+			"VALIDATION": {
+				"DESCRIPTION": {
+					"REQUIRED": "Valuta kode er påkrævet."
+				},
+				"CURRENCYCODE": {
+					"REQUIRED": "Beskrivelse er påkrævet."
+				},
+				"AMOUNT": {
+					"REQUIRED": "Mængde er påkrævet."
+				},
+				"INVOICEID": {
+					"REQUIRED": "Faktura er påkrævet."
+				}
+			}
+		},
+		"CREATE": {
+			"PAYMENT": "Kontant betaling",
+			"BUTTON_CREATE": "Opret"
+		},
+		"EDIT": {
+			"EDIT": "Rediger",
+			"BUTTON_EDIT": "Opdater"
+		},
+		"PAY": {
+			"BUTTON_PAY": "Betal"
+		},
+		"INDEX": {
+			"PACKAGES": "Pakker",
+			"CREATE": "Opret",
+			"EDIT": "Rediger",
+			"DELETE": "Ret",
+			"FIELDS": "Felter",
+			"FIELDS_TITLE": "(Felter)",
+			"ITEM": "Enhed",
+			"MANAGE": "Konfigurer",
+			"ACTIONS": "Handlinger",
+			"ITEMS": "Enheder",
+			"PAYMENTS": "Betalinger"
+		},
+		"QUEUE": {
+			"ADDING": "Tilføjer {{ currencyCode }}",
+			"UPDATING": "Opdatere {{ currencyCode }}",
+			"DELETING": "Sletter {{ currencyCode }}",
+			"ERROR": "Der opstod  en fejl ved {{ currencyCode }}. Ret og prøv igen."
+		},
+		"ENTITY_ACTION_PROVIDER": {
+			"ENTITY_ACTION": {
+				"CASH_PAYMENT": "Kontant betaling"
+			}
 		}
 	},
 	"INVOICES": {
@@ -635,69 +875,37 @@
 			"ERROR": "Der opstod  en fejl ved {{ description }}. Ret og prøv igen."
 		}
 	},
-	"INVOICES_CASH_PAYMENTS": {
+	"INVOICES_PRODUCTS": {
 		"FORM": {
 			"LABELS": {
-				"DESCRIPTION": "Beskrivelse",
-				"CURRENCYCODE": "Valuta kode",
-				"AMOUNT": "Mængde",
-				"INVOICEID": "Faktura"
+				"INVOICEID": "Faktura",
+				"PRODUCTID": "Produkt",
+				"AMOUNT": "Antal"
 			},
 			"PLACEHOLDERS": {
-				"DESCRIPTION": "Beskrivelse",
-				"CURRENCYCODE": "Vælg valuta kode",
-				"AMOUNT": "Mængde",
-				"INVOICEID": "Faktura"
+				"INVOICEID": "Faktura",
+				"PRODUCTID": "Produkt",
+				"AMOUNT": "Antal"
 			},
 			"VALIDATION": {
-				"DESCRIPTION": {
-					"REQUIRED": "Valuta kode er påkrævet."
-				},
-				"CURRENCYCODE": {
-					"REQUIRED": "Beskrivelse er påkrævet."
-				},
-				"AMOUNT": {
-					"REQUIRED": "Mængde er påkrævet."
-				},
 				"INVOICEID": {
 					"REQUIRED": "Faktura er påkrævet."
+				},
+				"PRODUCTID": {
+					"REQUIRED": "Produkt er påkrævet."
+				},
+				"AMOUNT": {
+					"REQUIRED": "Antal er påkrævet."
 				}
 			}
 		},
-		"CREATE": {
-			"PAYMENT": "Kontant betaling",
-			"BUTTON_CREATE": "Opret"
+		"ADD_TO_INVOICE": {
+			"TITLE": "Tilføj til faktura",
+			"SUBMIT": "Opdater"
 		},
-		"EDIT": {
-			"EDIT": "Rediger",
-			"BUTTON_EDIT": "Opdater"
-		},
-		"PAY": {
-			"BUTTON_PAY": "Betal"
-		},
-		"INDEX": {
-			"PACKAGES": "Pakker",
-			"CREATE": "Opret",
-			"EDIT": "Rediger",
-			"DELETE": "Ret",
-			"FIELDS": "Felter",
-			"FIELDS_TITLE": "(Felter)",
-			"ITEM": "Enhed",
-			"MANAGE": "Konfigurer",
-			"ACTIONS": "Handlinger",
-			"ITEMS": "Enheder",
-			"PAYMENTS": "Betalinger"
-		},
-		"QUEUE": {
-			"ADDING": "Tilføjer {{ currencyCode }}",
-			"UPDATING": "Opdatere {{ currencyCode }}",
-			"DELETING": "Sletter {{ currencyCode }}",
-			"ERROR": "Der opstod  en fejl ved {{ currencyCode }}. Ret og prøv igen."
-		},
-		"ENTITY_ACTION_PROVIDER": {
-			"ENTITY_ACTION": {
-				"CASH_PAYMENT": "Kontant betaling"
-			}
+		"ADD_PRODUCTS": {
+			"TITLE": "Tilføj produkter",
+			"SUBMIT": "Opdater"
 		}
 	},
 	"LODGING_RESERVATIONS": {
@@ -1993,6 +2201,99 @@
 			"ERROR": "Der opstod  en fejl ved {{ name }}. Ret og prøv igen."
 		}
 	},
+	"CLIENTS": {
+		"CREATE": {
+			"CREATE": "Opret",
+			"BUTTON_CREATE": "Opret"
+		},
+		"EDIT": {
+			"EDIT": "Rediger",
+			"BUTTON_EDIT": "Opdater"
+		},
+		"INDEX": {
+			"TITLE_EXTRAS": "(Klienter)",
+			"ACTIONS": "Handlinger",
+			"CREATE": "Opret",
+			"DELETE": "Slet",
+			"MANAGE": "Konfigure",
+			"BACK": "Tilbage"
+		},
+		"FORM": {
+			"LABELS": {
+				"NAME": "Navn",
+				"DESCRIPTION": "Beskrivelse",
+				"ONLINE": "Online"
+			},
+			"PLACEHOLDERS": {
+				"NAME": "Navn",
+				"DESCRIPTION": "Beskrivelse",
+				"ONLINE": "Online"
+			},
+			"VALIDATION": {
+				"NAME": {
+					"REQUIRED": "Navn er påkrævet."
+				},
+				"DESCRIPTION": {
+					"REQUIRED": "Beskrivelse er påkrævet."
+				}
+			}
+		},
+		"QUEUE": {
+			"ADDING": "Tilføjer klient {{ id }}",
+			"UPDATING": "Opdaterer klient {{ id }}",
+			"DELETING": "Sletter klient {{ id }}",
+			"ERROR": "Der skete en fejl med klient {{ id }}. Ret og prøv igen."
+		}
+	},
+	"CONNECTIONS": {
+		"CREATE": {
+			"CREATE": "Opret",
+			"BUTTON_CREATE": "Opret"
+		},
+		"EDIT": {
+			"EDIT": "Rediger",
+			"BUTTON_EDIT": "Opdater"
+		},
+		"INDEX": {
+			"ACTIONS": "Handlinger",
+			"CREATE": "Opret",
+			"DELETE": "Slet",
+			"MANAGE": "Konfigure",
+			"BACK": "Tilbage",
+			"TITLE_EXTRAS": "(Forbindelser)"
+		},
+		"FORM": {
+			"LABELS": {
+				"STATUS": "Status",
+				"CLIENTID": "Klient",
+				"TERMINALID": "Terminal",
+				"ONLINE": "Online"
+			},
+			"PLACEHOLDERS": {
+				"STATUS": "Status",
+				"CLIENTID": "Klient",
+				"TERMINALID": "Terminal",
+				"ONLINE": "Online"
+			},
+			"VALIDATION": {
+				"STATUS": {
+					"REQUIRED": "Status er påkrævet"
+				},
+				"CLIENTID": {
+					"REQUIRED": "Klient er påkrævet"
+				},
+				"TERMINALID": {
+					"REQUIRED": "Terminal er påkrævet"
+				}
+			}
+		},
+		"QUEUE": {
+			"ADDING": "Tilføker forbindelse {{ id }}",
+			"UPDATING": "Opdaterer forbindelse {{ id }}",
+			"DELETING": "Sletter forbindelse {{ id }}",
+			"ERROR": "En fejl er opstået med forbindelse {{ id }}. Ret fejlene og prøv igen."
+		}
+	},
 	"RECEIPTS": {
 		"CREATE": {
 			"CREATE": "Opret",
@@ -2036,29 +2337,23 @@
 		"FORM": {
 			"LABELS": {
 				"NAME": "Navn",
-				"PRODUCTTYPEID": "Produkt type",
 				"CONNECTIONSTRING": "Forbindelsesdata",
+				"CONNECTION": "Forbindelser",
 				"DESCRIPTION": "Beskrivelse",
 				"CLIENTID": "Klient",
 				"TERMINALID": "Terminal",
 				"AMOUNT": "Mængde",
-				"REFERENCE": "Reference",
-				"CURRENCY": "Valuta",
-				"CONNECTION": "Forbindelser",
 				"INVOICEID": "Faktura ID",
 				"CURRENCYCODE": "Valuta kode"
 			},
 			"PLACEHOLDERS": {
 				"NAME": "Navn",
 				"CONNECTIONSTRING": "Forbindelsesdata",
-				"PRODUCTTYPEID": "Forbindelses snor",
+				"CONNECTION": "Forbindelse",
 				"DESCRIPTION": "Beskrivelse",
 				"CLIENTID": "Klient",
 				"TERMINALID": "Terminal",
 				"AMOUNT": "Mængde",
-				"REFERENCE": "Reference",
-				"CURRENCY": "Valuta",
-				"CONNECTION": "Forbindelse",
 				"INVOICEID": "Fakturea ID",
 				"CURRENCYCODE": "Valuta kode"
 			},
@@ -2069,7 +2364,7 @@
 				"CONNECTIONSTRING": {
 					"REQUIRED": "Forbindelsesdata er påkrævet."
 				},
-				"DESCRIPTION": {
+				"CONNECTION": {
 					"REQUIRED": "Forbindelse er påkrævet."
 				},
 				"CLIENTID": {
@@ -2080,15 +2375,6 @@
 				},
 				"AMOUNT": {
 					"REQUIRED": "Mængde er påkrævet."
-				},
-				"REFERENCE": {
-					"REQUIRED": "Reference er påkrævet."
-				},
-				"CURRENCY": {
-					"REQUIRED": "Valuta er påkrævet."
-				},
-				"CONNECTION": {
-					"REQUIRED": "Forbindelse er påkrævet."
 				},
 				"INVOICEID": {
 					"REQUIRED": "Faktura ID er påkrævet."
@@ -2107,35 +2393,17 @@
 			"BUTTON_EDIT": "Opdater"
 		},
 		"INDEX": {
+			"TITLE_EXTRAS": "(Terminaler)",
 			"CREATE": "Opret",
 			"EDIT": "Rediger",
 			"DELETE": "Slet",
-			"FIELDS": "Felter",
-			"FIELDS_TITLE": "(Felt title)",
-			"ITEM": "Vare",
 			"MANAGE": "Konfigurer",
 			"ACTIONS": "Handlinger",
-			"TYPES": "Typer",
-			"CLIENTS": "Klienter",
-			"RECEIPTS": "Kvitteringer",
-			"CONNECTIONS": "Forbindelser",
-			"TITLE_EXTRAS": "(Terminaler)"
+			"TYPES": "Typer"
 		},
-		"FIELDS": {
-			"CREATE": {
-				"ADD": "Tilføj nyt felt"
-			},
-			"EDIT": {
-				"EDITING": "Redigere"
-			},
-			"INDEX": {
-				"ACTIONS": "Handlinger",
-				"CREATE": "Opret",
-				"MANAGE": "Konfigurer",
-				"TYPES": "Typesr",
-				"FIELDS": "Felter",
-				"BACK": "Tilbage"
-			}
+		"PAY": {
+			"TITLE": "Kreditkort betaling",
+			"BUTTON_PAY": "Betal"
 		},
 		"QUEUE": {
 			"ADDING": "Tilføjer terminal {{ id }}",
@@ -2144,14 +2412,9 @@
 			"ERROR": "Der opstod  en fejl ved terminal {{ id }}. Ret og prøv igen."
 		},
 		"ENTITY_ACTION_PROVIDER": {
-			"TERMINAL_PAYMENT": "Terminal betaling",
 			"ENTITY_ACTION": {
 				"TERMINAL_PAYMENT": "Kreditkort betaling"
 			}
-		},
-		"PAY": {
-			"TITLE": "Kreditkort betaling",
-			"BUTTON_PAY": "Betal"
 		}
 	},
 	"UI": {
@@ -2259,6 +2522,122 @@
 			}
 		}
 	},
+	"COMMERCIAL_ACCOUNT": {
+		"INDEX": {
+			"CHANGEPASSWORD": "Skift adgangskode",
+			"TENANTS": "beboere",
+			"USERS": "Brugere",
+			"LOGOUT": "Log ud",
+			"ACCOUNT": "Konto",
+			"WELCOME": "Velkommen til skysmack",
+			"FORGOTPASSWORD": "Glemt adgangskode"
+		},
+		"FORM": {
+			"LABELS": {
+				"EMAIL": "Email",
+				"PASSWORD": "Adgangskode",
+				"STAYSIGNEDIN": "Forbliv logged ind?"
+			},
+			"PLACEHOLDERS": {
+				"EMAIL": "Indtast email",
+				"PASSWORD": "Indtast adgangskode"
+			},
+			"VALIDATION": {
+				"EMAIL": {
+					"REQUIRED": "Email er påkrævet.",
+					"INVALIDEMAIL": "Venligst indtast en gyldig email."
+				},
+				"PASSWORD": {
+					"REQUIRED": "Adgangskode er påkrævet."
+				}
+			}
+		},
+		"VALIDATION": {
+			"TOKEN": {
+				"REQUIRED": "Token er påkrævet"
+			},
+			"EMAIL": {
+				"REQUIRED": "Email er påkrævet.",
+				"INVALIDEMAIL": "Venligst indtast en gyldig email"
+			},
+			"CURRENTPASSWORD": {
+				"REQUIRED": "Nuværende adgangskode er påkrævet."
+			},
+			"NEWPASSWORD": {
+				"REQUIRED": "Ny adgangskode er påkrævet."
+			},
+			"CONFIRMNEWPASSWORD": {
+				"REQUIRED": "Venligst indtast den nye adgangskode igen.",
+				"PASSWORDMISMATCH": "Adgangskoderne skal være identiske."
+			}
+		},
+		"LOGIN": {
+			"SIGNIN": "Log ind",
+			"CREDENTIALS": "Venligst indtast dine informationer nedeunder",
+			"INCORRECT": "Den indtastede adgangskode og/eller brugernavnet er ikke korrekt. Venligst prøv igen.",
+			"FORGOTPASSWORD": "Glemt adgangskode",
+			"CONFIRMEMAIL": "Bekræft email"
+		},
+		"TENANTS": {
+			"CREATETENANT": "Opret beboer",
+			"CREATE": "Opret",
+			"EDIT": "Rediger",
+			"EDITTENANT": "Rediger beboer"
+		}
+	},
+	"COMMERCIAL_TENANTS": {
+		"INDEX": {
+			"CREATE": " Opret tenant"
+		},
+		"FORM": {
+			"LABELS": {
+				"NAME": "Navn",
+				"HOSTNAME": "Værtsnavn",
+				"SAFESUBDOMAIN": "Sikker subdomæne",
+				"STATE": "Tilstand"
+			},
+			"PLACEHOLDERS": {
+				"NAME": "Indtast et navn",
+				"HOSTNAME": "Indtast a hostname",
+				"SAFESUBDOMAIN": "Indtast en sikker subdomæne",
+				"STATE": "Indtast en tilstand"
+			},
+			"VALIDATION": {
+				"NAME": {
+					"REQUIRED": "Et navn er påkrævet."
+				},
+				"HOSTNAME": {
+					"REQUIRED": "Et værtsnavn er påkrævet."
+				},
+				"SAFESUBDOMAIN": {
+					"REQUIRED": "En Sikker subdomæne er påkrævet."
+				},
+				"STATE": {
+					"REQUIRED": "Tilstanden er påkrævet."
+				}
+			}
+			,
+			"TENANTS": {
+				"CREATE": "Opret",
+				"CREATETENANT": "Opret beboer",
+				"EDIT": "Rediger",
+				"EDITTENANT": "Rediger beboer",
+				"DETAILS": "Detaljer",
+				"TITLE": "Beboere",
+				"HOSTNAME": "Værtsnavn",
+				"SAFESUBDOMAIN": "Sikker subdomæne",
+				"STATE": "Tilstand"
+			},
+			"TITLE": "Beboere",
+			"CREATE": "Opret",
+			"CREATETENANT": "Opret beboer",
+			"EDIT": "Rediger",
+			"EDITTENANT": "Rediger beboer",
+			"DETAILS": "Detaljer",
+			"HOSTNAME": "Værtsnavn",
+			"SAFESUBDOMAIN": "Sikker subdomæne",
+			"STATE": "Tilstand"
+		},
 	"OAUTH2": {
 		"FORM": {
 			"LABELS": {
@@ -2348,10 +2727,8 @@
 		"EDIT": {
 			"EDITING": "redigerer {{ object.name }} pakken",
 			"EDIT": "Ret pakke",
-			"BUTTON_EDIT": "Opdater",
-			"PACKAGE_PATH": "Ret pakke sti"
-		},
-		"EDITING_PATH": "Editing path"
+			"BUTTON_EDIT": "Opdater"
+		}
 	},
 	"ADAPTORS": {
 		"FORM": {
@@ -2487,6 +2864,16 @@
 			"PRICES_TYPES": "Værelsestype priser"
 		}
 	},
+	"TERMINAL_PAYMENTS": {
+		"INDEX": {
+			"TITLE": "Terminal Betalinger",
+			"MANAGE": "Konfigurer",
+			"TERMINALS": "Terminaler",
+			"CLIENTS": "Klienter",
+			"RECEIPTS": "Kvitteringer",
+			"CONNECTIONS": "Forbindelser"
+		}
+	},		
 	"FIELDS": {
 		"INDEX": {
 			"CREATE": "Opret",
@@ -2536,383 +2923,60 @@
 		"SETTINGS": "Indstillinger",
 		"BUTTON_SUBMIT": "Indsend"
 	},
-	"EMAIL_TEMPLATES": {
-		"FORM": {
-			"LABELS": {
-				"FROM": "Til",
-				"TO": "Fra",
-				"CC": "Cc",
-				"BCC": "Bcc",
-				"SUBJECT": "Emne",
-				"BODY": "Indhold"
-			},
-			"PLACEHOLDERS": {
-				"FROM": "Til",
-				"TO": "Fra",
-				"CC": "Cc",
-				"BCC": "Bcc",
-				"SUBJECT": "Emne",
-				"BODY": "Indhold"
-			},
-			"VALIDATION": {}
-		},
-		"CREATE": {
-			"CREATE": "Opret",
-			"BUTTON_CREATE": "Opret"
-		},
-		"EDIT": {
-			"EDIT": "Ret",
-			"BUTTON_EDIT": "Ret"
-		},
+	"COMMERCIAL_USERS": {
 		"INDEX": {
-			"CREATE": "Opret",
-			"EDIT": "Ret",
-			"DELETE": "Slet",
-			"MANAGE": "Konfigurer",
-			"ACTIONS": "Handlinger"
-		},
-		"QUEUE": {
-			"ADDING": "Tilføjer {{ subject }}",
-			"UPDATING": "Opdaterer {{ subject }}",
-			"DELETING": "Sletter {{ subject }}",
-			"ERROR": "Der skete en fejl med {{ subject }}. Ret fejl og prøv igen."
-		},
-		"ENTITY_ACTION": {
-			"ITEMS": "Varer"
-		}
-	},
-	"EMAILS": {
-		"FORM": {
-			"LABELS": {},
-			"PLACEHOLDERS": {},
-			"VALIDATION": {}
-		},
-		"CREATE": {
-			"CREATE": "Opret",
-			"BUTTON_CREATE": "Opret"
-		},
-		"EDIT": {
-			"EDIT": "Ret",
-			"BUTTON_EDIT": "Opdater"
-		},
-		"INDEX": {
-			"CREATE": "Opret",
-			"EDIT": "Ret",
-			"DELETE": "Slet",
-			"ITEM": "Vare",
-			"MANAGE": "Konfigurer",
-			"ACTIONS": "Handlinger",
-			"TEMPLATES": "Skabeloner"
-		},
-		"QUEUE": {
-			"ADDING": "Tilføjer {{ currencyCode }}",
-			"UPDATING": "Opdaterer {{ currencyCode }}",
-			"DELETING": "Sletter {{ currencyCode }}",
-			"ERROR": "Der skete en fejl med {{ currencyCode }}.  Ret fejl og prøv igen."
-		},
-		"ENTITY_ACTION": {}
-	},
-	"EMAILS_SMTP": {
-		"INDEX": {
-			"CREATE": "Opret",
-			"EDIT": "Ret",
-			"DELETE": "Slet",
-			"TEMPLATES": "Skabeloner",
-			"MANAGE": "Konfigurer",
-			"ACTIONS": "Handlinger",
-			"SETTINGS": "Indstillinger"
-		}
-	},
-	"EMAILS_SMTP_SETTINGS": {
-			"FORM": {			
-				"LABELS": {
-				"host": "Vært",
-				"port": "Port",
-				"username": "Brugernavn",
-				"password": "Adgangskode",
-				"enableSsl": "Aktiver ssl",
-				"HOST": "Vært",
-				"PORT": "Port",
-				"USERNAME": "Brugernavn",
-				"PASSWORD": "Password",
-				"ENABLESSL": "Aktiver ssl"
-		},
-			"PLACEHOLDERS": {
-				"host": "Vært",
-				"port": "Port",
-				"username": "Brugernavn",
-				"password": "Adgangskode",
-				"enableSsl": "Aktiver ssl",
-				"HOST": "Vært",
-				"PORT": "Port",
-				"USERNAME": "Brugernavn",
-				"PASSWORD": "Password",
-				"ENABLESSL": "Aktiver ssl"
-			}
-		}
-	},
-	"CLIENTS": {
-		"CREATE": {
-			"CREATE": "Opret",
-			"BUTTON_CREATE": "Opret"
-		},
-		"EDIT": {
-			"EDIT": "Ret",
-			"BUTTON_EDIT": "Ret"
-		},
-		"INDEX": {
-			"ACTIONS": "Handlinger",
-			"CREATE": "Opret",
-			"DELETE": "Slet",
-			"MANAGE": "Konfigurer",
-			"FIELDS": "Felter",
-			"FIELDS_TITLE": "(felter)",
-			"BACK": "Tilbage",
-			"TITLE_EXTRAS": "(Klienter)"
+			"CREATE": " Opret bruger"
 		},
 		"FORM": {
 			"LABELS": {
-				"NAME": "Navn",
-				"DESCRIPTION": "Beskrivelse",
-				"ONLINE": "Online"
+				"EMAIL": "Email",
+				"USERNAME": "Brugernavn",
+				"PASSWORD": "Adgangskode",
+				"CONFIRMPASSWORD": "Bekræft adgangskode"
 			},
 			"PLACEHOLDERS": {
-				"NAME": "Navn",
-				"DESCRIPTION": "Beskrivelse",
-				"ONLINE": "Online"
+				"EMAIL": "Indtast en email",
+				"USERNAME": "Indtast en brugernavn",
+				"PASSWORD": "Indtast en adgangskode",
+				"CONFIRM_PASSWORD": "Indtast en bekræft adgangskode",
+				"CONFIRMPASSWORD": "Indtast en bekræft adgangskode"
 			},
 			"VALIDATION": {
-				"NAME": {
-					"REQUIRED": "Navn er påkrævet"
+				"EMAIL": {
+					"REQUIRED": "En Email er påkrævet.",
+					"INVALIDEMAIL": "Venligst indtast en gyldig email"
 				},
-				"DESCRIPTION": {
-					"REQUIRED": "Beskrivelse is required"
+				"PASSWORD": {
+					"REQUIRED": "En adgangskode er påkrævet."
 				},
-				"ONLINE": {}
-			}
-		},
-		"QUEUE": {
-			"ADDING": "Tilføker klient {{ id }}",
-			"UPDATING": "Opdaterer klient {{ id }}",
-			"DELETING": "Sletter klient {{ id }}",
-			"ERROR": "En fejl er opstået med klient {{ id }}. Ret fejlene og prøv igen."
-		}
-	},
-	"CONNECTIONS": {
-		"CREATE": {
-			"CREATE": "Create",
-			"BUTTON_CREATE": "Create"
-		},
-		"EDIT": {
-			"EDIT": "Edit",
-			"BUTTON_EDIT": "Update"
-		},
-		"INDEX": {
-			"ACTIONS": "Actions",
-			"CREATE": "Create",
-			"DELETE": "Delete",
-			"MANAGE": "Manage",
-			"BACK": "Back",
-			"TITLE_EXTRAS": "(Forbindelser)"
-		},
-		"FORM": {
-			"LABELS": {
-				"NAME": "Navn",
-				"DESCRIPTION": "Beskrivelse",
-				"ONLINE": "Online",
-				"CLIENTID": "Klient",
-				"TERMINALID": "Terminal",
-				"STATUS": "Status"
-			},
-			"PLACEHOLDERS": {
-				"NAME": "Navn",
-				"DESCRIPTION": "Beskrivelse",
-				"ONLINE": "Online",
-				"CLIENTID": "Klient",
-				"TERMINALID": "Terminal",
-				"STATUS": "Status"
-			},
-			"VALIDATION": {
-				"NAME": {
-					"REQUIRED": "Navn er påkrævet."
+				"USERNAME": {
+					"REQUIRED": "En brugernavn er påkrævet."
 				},
-				"DESCRIPTION": {
-					"REQUIRED": "Beskrivelse er påkrævet."
+				"CONFIRM_PASSWORD": {
+					"REQUIRED": "En bekræft adgangskode er påkrævet."
 				},
-				"ONLINE": {},
-				"CLIENTID": {
-					"REQUIRED": "Klient er påkrævet"
-				},
-				"TERMINALID": {
-					"REQUIRED": "Terminal er påkrævet"
-				},
-				"STATUS": {
-					"REQUIRED": "Status er påkrævet"
+				"CONFIRMPASSWORD": {
+					"PASSWORDMISMATCH": "Adgangskoderne skal være idententiske."
 				}
 			}
 		},
-		"QUEUE": {
-			"ADDING": "Tilføker forbindelse {{ id }}",
-			"UPDATING": "Opdaterer forbindelse {{ id }}",
-			"DELETING": "Sletter forbindelse {{ id }}",
-			"ERROR": "En fejl er opstået med forbindelse {{ id }}. Ret fejlene og prøv igen."
-		}
+		"TITLE": "Brugere",
+		"CREATE": "Opret",
+		"CREATEUSER": "Opret bruger",
+		"EDIT": "Rediger",
+		"EDITUSER": "Rediger bruger",
+		"DETAILS": "Detaljer",
+		"HOSTNAME": "Værtsnavn",
+		"SAFESUBDOMAIN": "Sikker subdomaine",
+		"STATE": "Tilstand",
+		"EMAIL": "Email: "
 	},
-	"TERMINAL_PAYMENTS_INDEX": {
-		"TITLE": "Dankort terminal betalinger",
-		"MANAGE": "Handlinger",
-		"TERMINALS": "Terminaler",
-		"CLIENTS": "Klienter",
-		"RECEIPTS": "Kvitteringer",
-		"CONNECTIONS": "Forbindelser"
-	},
-	"INVOICES_PRODUCTS": {
-		"FORM": {
-			"LABELS": {
-				"INVOICEID": "Faktura",
-				"PRODUCTID": "Produkt",
-				"AMOUNT": "Antal"
-			},
-			"PLACEHOLDERS": {
-				"INVOICEID": "Faktura",
-				"PRODUCTID": "Produkt",
-				"AMOUNT": "Antal"
-			},
-			"VALIDATION": {
-				"INVOICEID": {
-					"REQUIRED": "Faktura is required."
-				},
-				"AMOUNT": {
-					"REQUIRED": "Antal is required."
-				},
-				"PRODUCTID": {
-					"REQUIRED": "Produkt is required."
-				}
-			}
-		},
-		"ADD_TO_PRODUCT": {
-			"TITLE": "Tilføj til faktura",
-			"SUBMIT": "Indsend"
-		},
-		"ADD_TO_INVOICE": {
-			"TITLE": "Tilføj til faktura",
-			"SUBMIT": "Opdater"
-		},
-		"ADD_PRODUCTS": {
-			"TITLE": "Tilføj produkter",
-			"SUBMIT": "Opdater"
-		}
-	},
-	"APPLICATIONS": {
-		"ENTITY_ACTION": {
-            "ROLES": "Roller"
-		},
-		"ROLES": {
-            "CURRENT_ROLES": "{{ object.displayName }} current roles",
-            "ROLE_PRIORITY": "{{ role.object.name }} with priority {{ role.object.priority }} -",
-            "REMOVE": "Remove",
-            "NO_ROLES": "No roles have been applied.",
-            "ADD_ROLE": "Add a role to {{ object.displayName }}",
-            "OBJECT_PRIOORITY": "{{ role.object.name }} - priority",
-            "ADD": "Add",
-            "ROLES_APPLIED": "All roles have been applied, or no roles exists.",
-            "NO_ROLES_APPLIED": "This application has no roles."
-        },
-		"CREATE": {
-			"CREATE_APPLICATION": "Opret ny applikation",
-			"BUTTON_CREATE": "Opret"
-		},
-		"EDIT": {
-			"EDITING": "Ret {{ displayName }}",
-			"BUTTON_EDIT": "Opdater"
-		},
+	"COMMERCIAL_UI_PARTNERS": {
 		"INDEX": {
-			"ACTIONS": "Handlinger",
-			"CREATE": "Opret",
-			"MANAGE": "Konfigurer",
-			"SECURITY": "Sikkerhed",
-			"SECURITY_AND_USERS": "Brugere og sikkerhed",
-			"TITLE_EXTRAS": "(applikationer)",
-			"APPLICATIONS": "Applikationer",
-			"BACK": "Tilbage",
-			"FIELDS_TITLE": "(Felter)"
-		},
-		"FORM": {
-			"LABELS": {
-				"CLIENTID": "Klient id",
-				"CONCURRENCYTOKEN": "Valuta token",
-				"CONSENTTYPE": "Samtykke type",
-				"DISPLAYNAME": "Visningsnavn",
-				"PERMISSIONS": "Tilladelser",
-				"POSTLOGOUTREDIRECTURIS": "Vidersendelses uris til efter logout",
-				"PROPERTIES": "Egenskaber",
-				"REDIRECTURIS": "Vidersendelses uris",
-				"TYPE": "Type",
-				"CLIENTSECRET": "Klient hemmelighed"
-			},
-			"PLACEHOLDERS": {
-				"CLIENTID": "Klient id",
-				"CONCURRENCYTOKEN": "Concurrency token",
-				"CONSENTTYPE": "Samtykke type",
-				"DISPLAYNAME": "Visningsnavn",
-				"PERMISSIONS": "Tilladelser",
-				"POSTLOGOUTREDIRECTURIS": "Vidersendelses uris til efter logout",
-				"PROPERTIES": "Egenskaber",
-				"REDIRECTURIS": "Vidersendelses uris",
-				"TYPE": "Type",
-				"CLIENTSECRET": "Klient hemmelighed"
-			},
-			"VALIDATION": {
-				"CLIENTID": {
-					"REQUIRED": "Klient id er påkrævet"
-				},
-				"CONCURRENCYTOKEN": {
-					"REQUIRED": "Concurrency token er påkrævet"
-				},
-				"CONSENTTYPE": {
-					"REQUIRED": "Samtykke type er påkrævet"
-				},
-				"DISPLAYNAME": {
-					"REQUIRED": "Visningsnavn er påkrævet"
-				},
-				"PERMISSIONS": {
-					"REQUIRED": "Tilladekser er påkrævet"
-				},
-				"POSTLOGOUTREDIRECTURIS": {
-					"REQUIRED": "Vidersendelses uris til efter logout er påkrævet"
-				},
-				"PROPERTIES": {
-					"REQUIRED": "Egenskaber er påkrævet"
-				},
-				"REDIRECTURIS": {
-					"REQUIRED": "Vidersendelses uris er påkrævet"
-				},
-				"TYPE": {
-					"REQUIRED": "Type er påkrævet"
-				},
-				"CLIENTSECRET": {
-                    "REQUIRED": "Klient hemmelighed is required"
-                }
-			}
-		},
-		"QUEUE": {
-			"ADDING": "Tilføjer {{ displayName }}",
-			"UPDATING": "Opdaterer {{ displayName }}",
-			"DELETING": "Sletter {{ displayName }}",
-			"ERROR": "En fejl er opstået med applikation {{ displayName }}. Ret fejlene og prøv igen."
-		}
-	},
-	"COMMERCIAL_ACCOUNT": {
-		"INDEX": {}
-	},
-	"TERMINAL_PAYMENTS": {
-		"INDEX": {
-			"TITLE": "Terminal Betalinger",
-			"MANAGE": "Konfigurer",
-			"TERMINALS": "Terminaler",
-			"CLIENTS": "Klienter",
-			"RECEIPTS": "Kvitteringer",
-			"CONNECTIONS": "Forbindelser"
+			"CHANGEPASSWORD": "Skift adgangskode",
+			"TENANTS": "Beboere",
+			"USERS": "Brugere",
+			"LOGOUT": "Log ud"
 		}
 	}
 }
