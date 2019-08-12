@@ -27,6 +27,14 @@ import { PricingsComponent } from './pages/pricings/pricings.component';
 import { GettingStartedComponent } from './pages/getting-started/getting-started.component';
 import { NgTranslationModule, LanguageService } from '@skysmack/ng-translation';
 import { commercialUsersRoute } from './packages/commercial_users_wrapper.module';
+import { commercialUiPartnersRoute } from './packages/commercial_ui_partners_wrapper.module';
+
+const lazyLoadedPacakges = [
+  commercialAccountRoute,
+  commercialTenantsRoute,
+  commercialUsersRoute,
+  commercialUiPartnersRoute
+];
 
 @NgModule({
   declarations: [AppComponent, StartComponent, WhyComponent, SolutionsComponent, ProductsComponent, PricingsComponent, GettingStartedComponent],
@@ -60,9 +68,7 @@ import { commercialUsersRoute } from './packages/commercial_users_wrapper.module
         path: 'getting-started',
         component: GettingStartedComponent
       },
-      commercialAccountRoute,
-      commercialTenantsRoute,
-      commercialUsersRoute
+      ...lazyLoadedPacakges
     ], { initialNavigation: 'enabled' }),
     BrowserAnimationsModule,
     MaterialModule,

@@ -163,6 +163,9 @@
       ],
       "@skysmack/commercial-tenants": [
         "libs/commercial-packages/commercial-tenants"
+      ],
+      "@skysmack/commercial-ui-partners": [
+        "libs/commercial-packages/commercial-ui-partners"
       ]
     }
   },

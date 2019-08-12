@@ -1,11 +1,7 @@
 {
     "COMMERCIAL_ACCOUNT": {
         "INDEX": {
-            "CHANGEPASSWORD": "Change password",
             "FORGOTPASSWORD": "Forgot password",
-            "TENANTS": "Tenants",
-            "USERS": "Users",
-            "LOGOUT": "Logout",
             "ACCOUNT": "Account",
             "WELCOME": "Welcome to skysmack"
         },
