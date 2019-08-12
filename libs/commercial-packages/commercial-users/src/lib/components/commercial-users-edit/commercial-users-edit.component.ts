@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Field, FormHelper } from '@skysmack/ng-dynamic-forms';
 import { SubscriptionHandler, HttpSuccessResponse, toLocalObject } from '@skysmack/framework';
@@ -14,7 +14,7 @@ import { PartnerUser } from '../../models/partner-user';
   templateUrl: './commercial-users-edit.component.html',
   styleUrls: ['./commercial-users-edit.component.scss'],
 })
-export class CommercialUsersEditComponent implements OnInit {
+export class CommercialUsersEditComponent implements OnInit, OnDestroy {
   public fields$: Observable<Field[]>;
   public subscriptionHandler = new SubscriptionHandler();
 
@@ -33,6 +33,10 @@ export class CommercialUsersEditComponent implements OnInit {
       switchMap(id => this.service.getById(id)),
       map((response: HttpSuccessResponse<PartnerUser>) => this.fieldsConfig.getFields(toLocalObject(response.body)))
     );
+  }
+
+  ngOnDestroy() {
+    this.subscriptionHandler.unsubscribe();
   }
 
   public onSubmit(fh: FormHelper) {

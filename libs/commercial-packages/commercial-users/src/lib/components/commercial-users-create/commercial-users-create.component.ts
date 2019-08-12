@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Field, FormHelper } from '@skysmack/ng-dynamic-forms';
 import { SubscriptionHandler } from '@skysmack/framework';
@@ -13,7 +13,7 @@ import { take, tap } from 'rxjs/operators';
   templateUrl: './commercial-users-create.component.html',
   styleUrls: ['./commercial-users-create.component.scss'],
 })
-export class CommercialUsersCreateComponent implements OnInit {
+export class CommercialUsersCreateComponent implements OnInit, OnDestroy {
   public fields$: Observable<Field[]>;
   public subscriptionHandler = new SubscriptionHandler();
 
@@ -27,6 +27,10 @@ export class CommercialUsersCreateComponent implements OnInit {
   ngOnInit() {
     this.fieldsConfig.mode = 'create';
     this.fields$ = of(this.fieldsConfig.getFields());
+  }
+
+  ngOnDestroy() {
+    this.subscriptionHandler.unsubscribe();
   }
 
   public onSubmit(fh: FormHelper) {
