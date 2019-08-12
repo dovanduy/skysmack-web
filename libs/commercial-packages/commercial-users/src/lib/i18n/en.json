@@ -1,7 +1,8 @@
 {
     "COMMERCIAL_USERS": {
         "INDEX": {
-            "CREATE": " Create user"
+            "CREATE": " Create user",
+            "USERS": "Users"
         },
         "TITLE": "Users",
         "CREATE": "Create",

@@ -9,7 +9,8 @@ import { PortalFieldsModule } from '@skysmack/portal-fields';
 import { NgDynamicFormsModule } from '@skysmack/ng-dynamic-forms';
 import { MaterialModule } from '@skysmack/portal-ui';
 import { NgTranslationModule } from '@skysmack/ng-translation';
-import { CommercialUiPartnersModule } from '@skysmack/commercial-ui-partners';
+import { CommercialUiPartnersModule, NgMenuProviders } from '@skysmack/commercial-ui-partners';
+import { NgCommercialTenantsMenuProvider } from './ng-commercial-tenants-menu-provider';
 
 @NgModule({
   imports: [
@@ -29,5 +30,10 @@ import { CommercialUiPartnersModule } from '@skysmack/commercial-ui-partners';
   providers: []
 })
 export class CommercialTenantsModule {
-  constructor() { }
+  constructor(
+    ngMenuProviders: NgMenuProviders,
+    ngCommercialUsersMenuProvider: NgCommercialTenantsMenuProvider
+  ) {
+    ngMenuProviders.add(ngCommercialUsersMenuProvider);
+  }
 }

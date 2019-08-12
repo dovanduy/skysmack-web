@@ -19,7 +19,6 @@ export class CommercialUsersIndexComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log('CommercialUsersIndexComponent');
     this.users$ = this.service.get().pipe(
       map((x: HttpSuccessResponse<PartnerUser[]>) => x.body),
       take(1)

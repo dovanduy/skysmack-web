@@ -1,7 +1,8 @@
 {
     "COMMERCIAL_TENANTS": {
         "INDEX": {
-            "CREATE": " Create tenant"
+            "CREATE": "Create tenant",
+            "TENANTS": "Tenants"
         },
         "TITLE": "Tenants",
         "CREATE": "Create",

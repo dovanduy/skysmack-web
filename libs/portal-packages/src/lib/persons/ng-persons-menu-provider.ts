@@ -9,8 +9,6 @@ import { PersonsTypeId } from '@skysmack/package-types';
 import { getMenuEntries } from '@skysmack/ng-framework';
 import { PersonsIndexComponent } from './persons/components/persons-index/persons-index.component';
 
-
-
 @Injectable({ providedIn: 'root' })
 export class NgPersonsMenuProvider implements MenuProvider {
     public id = Guid.create().toString();

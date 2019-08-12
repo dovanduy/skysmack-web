@@ -6,6 +6,8 @@ import { commercialUiPartnersComponents } from './components/commercial-ui-partn
 import { MaterialModule } from '@skysmack/portal-ui';
 import { NgTranslationModule } from '@skysmack/ng-translation';
 import { RouterModule } from '@angular/router';
+import { NgMenuProviders } from './navigation/ng-menu-providers';
+import { NgUiMenuProvider } from '../ng-ui-menu-provider';
 
 @NgModule({
   imports: [
@@ -21,5 +23,10 @@ import { RouterModule } from '@angular/router';
   providers: []
 })
 export class CommercialUiPartnersModule {
-  constructor() { }
+  constructor(
+    ngMenuProviders: NgMenuProviders,
+    ngUiMenuProvider: NgUiMenuProvider
+  ) {
+    ngMenuProviders.add(ngUiMenuProvider);
+  }
 }

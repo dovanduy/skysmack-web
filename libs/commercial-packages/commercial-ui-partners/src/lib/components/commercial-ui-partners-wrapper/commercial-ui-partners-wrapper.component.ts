@@ -1,8 +1,12 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { NgAuthenticationStore, NgAuthenticationActions } from '@skysmack/ng-framework';
-import { SubscriptionHandler } from '@skysmack/framework';
-import { Router, ActivatedRoute } from '@angular/router';
-import { tap } from 'rxjs/operators';
+import { SubscriptionHandler, MenuAreaItems } from '@skysmack/framework';
+import { Router } from '@angular/router';
+import { tap, map } from 'rxjs/operators';
+import { NgMenuProviders } from '../../navigation/ng-menu-providers';
+import { Observable } from 'rxjs';
+
+
 
 @Component({
   selector: 'ss-commercial-ui-partners-wrapper',
@@ -11,32 +15,43 @@ import { tap } from 'rxjs/operators';
 })
 export class CommercialUiPartnersWrapperComponent implements OnInit, OnDestroy {
 
+  public static COMPONENT_KEY = 'CommercialUiPartnersWrapper';
+  public componentKey = CommercialUiPartnersWrapperComponent.COMPONENT_KEY
+
   public subscriptionHandler = new SubscriptionHandler();
+  public menuAreaItems$: Observable<MenuAreaItems[]>;
 
   constructor(
     public store: NgAuthenticationStore,
     public actions: NgAuthenticationActions,
     public router: Router,
-    public activatedRoute: ActivatedRoute
+    public ngMenuProviders: NgMenuProviders
   ) { }
 
   ngOnInit() {
-    console.log('router.config', this.router.config.find(x => x.path === 'users'));
-    this.subscriptionHandler.register(this.store.isCurrentUserAuthenticated().pipe(
-      tap(authenticated => {
-        if (!authenticated) {
-          this.router.navigate(['/', 'account', 'login']);
-        }
+    this.redirectUnauthenticated();
+
+    this.menuAreaItems$ = this.ngMenuProviders.getMenuAreaItems(null, this.componentKey).pipe(
+      map(menuAreaItems => {
+        return menuAreaItems.filter(menuAreaItem => menuAreaItem && menuAreaItem.providedIn && menuAreaItem.providedIn.includes('top'));
       })
-    ).subscribe());
+    );
   }
 
   ngOnDestroy() {
     this.subscriptionHandler.unsubscribe();
   }
 
-  logout() {
-    console.log('log out...');
+
+  public logout() {
     this.actions.logout();
+  }
+
+  private redirectUnauthenticated() {
+    this.subscriptionHandler.register(this.store.isCurrentUserAuthenticated().pipe(tap(authenticated => {
+      if (!authenticated) {
+        this.router.navigate(['/', 'account', 'login']);
+      }
+    })).subscribe());
   }
 }
