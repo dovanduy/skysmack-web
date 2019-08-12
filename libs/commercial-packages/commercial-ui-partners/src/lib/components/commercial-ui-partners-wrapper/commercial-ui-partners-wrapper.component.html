@@ -1,0 +1,8 @@
+<nav>
+    <a mat-flat-button [routerLink]="['/', 'tenants']">Tenants</a>
+    <a mat-flat-button [routerLink]="['/', 'users']">Users</a>
+    <a mat-flat-button [routerLink]="['/', 'account', 'change-password']">Change password</a>
+    <a mat-flat-button (click)="logout()">Logout</a>
+</nav>
+
+<router-outlet></router-outlet>

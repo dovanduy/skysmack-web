@@ -181,6 +181,9 @@
       ],
       "@skysmack/commercial-users": [
         "libs/commercial-packages/commercial-users/src/public_api.ts"
+      ],
+      "@skysmack/commercial-ui-partners": [
+        "libs/commercial-packages/commercial-ui-partners/src/public_api.ts"
       ]
     }
   },

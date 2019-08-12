@@ -4,16 +4,14 @@ import { CommercialAccountLoginComponent } from './commercial-account-login/comm
 import { CommercialAccountChangePasswordComponent } from './commercial-account-change-password/commercial-account-change-password.component';
 import { CommercialAccountForgotPasswordComponent } from './commercial-account-forgot-password/commercial-account-forgot-password.component';
 import { CommercialAccountLoginWrapperComponent } from './commercial-account-login-wrapper/commercial-account-login-wrapper.component';
+import { CommercialUiPartnersWrapperComponent } from '@skysmack/commercial-ui-partners';
 
 export const commercialAccountRoutes: Routes = [
   {
-    path: '', component: CommercialAccountLoginWrapperComponent, 
-    data: { removeCloseButton : true }, children: [
+    path: '', component: CommercialAccountLoginWrapperComponent,
+    data: { removeCloseButton: true }, children: [
       {
         path: 'login', component: CommercialAccountLoginComponent
-      },
-      {
-        path: 'change-password', component: CommercialAccountChangePasswordComponent
       },
       {
         path: 'forgot-password', component: CommercialAccountForgotPasswordComponent
@@ -21,7 +19,14 @@ export const commercialAccountRoutes: Routes = [
     ]
   },
   {
-    path: 'dashboard', component: CommercialAccountDashboardComponent
+    path: '', component: CommercialUiPartnersWrapperComponent, children: [
+      {
+        path: 'dashboard', component: CommercialAccountDashboardComponent
+      },
+      {
+        path: 'change-password', component: CommercialAccountChangePasswordComponent
+      }
+    ]
   }
 ];
 

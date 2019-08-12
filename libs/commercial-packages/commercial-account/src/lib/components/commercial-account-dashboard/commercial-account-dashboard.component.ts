@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { NgAuthenticationStore, NgAuthenticationActions } from '@skysmack/ng-framework';
+import { NgAuthenticationStore } from '@skysmack/ng-framework';
 import { Observable } from 'rxjs';
 import { CurrentUser, SubscriptionHandler } from '@skysmack/framework';
 import { Router } from '@angular/router';
@@ -16,28 +16,14 @@ export class CommercialAccountDashboardComponent implements OnInit, OnDestroy {
 
   constructor(
     public store: NgAuthenticationStore,
-    public actions: NgAuthenticationActions,
     public router: Router
   ) { }
 
   ngOnInit() {
     this.currentUser$ = this.store.getCurrentUser();
-    this.subscriptionHandler.register(this.store.isCurrentUserAuthenticated().pipe(
-      filter(loggedIn => !loggedIn),
-      map(isAuthenticated => {
-        if (!isAuthenticated) {
-          this.router.navigate(['/', 'account', 'login']);
-        }
-      })
-    ).subscribe());
   }
 
   ngOnDestroy() {
     this.subscriptionHandler.unsubscribe();
-  }
-
-  logout() {
-    console.log('log out...');
-    this.actions.logout();
   }
 }

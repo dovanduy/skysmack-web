@@ -9,6 +9,7 @@ import { PortalFieldsModule } from '@skysmack/portal-fields';
 import { NgDynamicFormsModule } from '@skysmack/ng-dynamic-forms';
 import { MaterialModule } from '@skysmack/portal-ui';
 import { NgTranslationModule } from '@skysmack/ng-translation';
+import { CommercialUiPartnersModule } from '@skysmack/commercial-ui-partners';
 
 @NgModule({
   imports: [
@@ -18,6 +19,7 @@ import { NgTranslationModule } from '@skysmack/ng-translation';
     DynamicFormsModule,
     PortalFieldsModule,
     MaterialModule,
+    CommercialUiPartnersModule,
     NgTranslationModule,
     CommercialAccountRoutingModule
   ],
