@@ -5,18 +5,22 @@ import { StringFieldComponent, PasswordFieldComponent } from '@skysmack/portal-f
 import { CommercialUsersValidation } from './commercial-users-validation';
 import { LocalObject } from '@skysmack/framework';
 import { PartnerUser } from './models/partner-user';
+import { FieldsConfig, FieldProviders } from '@skysmack/ng-fields';
+import { LoadedPackage } from '@skysmack/ng-framework';
 
 @Injectable({ providedIn: 'root' })
-export class CommercialUsersFieldsConfig {
+export class CommercialUsersFieldsConfig extends FieldsConfig<any, any>{
     public validation = new CommercialUsersValidation();
     public area = '';
     public formRules: FormRule[] = [];
 
     public mode: 'create' | 'edit' = 'create';
 
-    constructor() { }
+    constructor(public fieldProviders: FieldProviders) {
+        super(fieldProviders);
+    }
 
-    public getFields(entity?: LocalObject<PartnerUser, number>): Field[] {
+    protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<any, any>): Field[] {
         const fields = [
             new Field({
                 component: StringFieldComponent,

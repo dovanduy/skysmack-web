@@ -2,6 +2,35 @@
     "COMMERCIAL_USERS": {
         "INDEX": {
             "CREATE": " Create user"
+        },
+        "FORM": {
+            "LABELS": {
+                "EMAIL": "Email",
+                "USERNAME": "Username",
+                "PASSWORD": "Password",
+                "CONFIRMPASSWORD": "Confirm password"
+            },
+            "PLACEHOLDERS": {
+                "EMAIL": "Enter a email",
+                "USERNAME": "Enter a username",
+                "PASSWORD": "Enter a password",
+                "CONFIRMPASSWORD": "Enter a confirm password"
+            },
+            "VALIDATION": {
+                "EMAIL": {
+                    "REQUIRED": "An Email is required.",
+                    "INVALIDEMAIL": "Please enter a valid email."
+                },
+                "USERNAME": {
+                    "REQUIRED": "An username is required."
+                },
+                "PASSWORD": {
+                    "REQUIRED": "A password is required."
+                },
+                "CONFIRMPASSWORD": {
+                    "PASSWORDMISMATCH": "The passwords must match."
+                }
+            }
         }
     }
 }

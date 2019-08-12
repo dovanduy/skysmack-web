@@ -2523,7 +2523,15 @@
 		}
 	},
 	"COMMERCIAL_ACCOUNT": {
-		"INDEX": {},
+		"INDEX": {
+			"CHANGEPASSWORD": "Change password",
+			"TENANTS": "Tenants",
+			"USERS": "Users",
+			"LOGOUT": "Logout",
+			"ACCOUNT": "Account",
+			"WELCOME": "Welcome to skysmack",
+			"FORGOTPASSWORD": "Forgot password"
+		},
 		"FORM": {
 			"LABELS": {
 				"EMAIL": "Email",
@@ -2562,11 +2570,64 @@
 				"REQUIRED": "Please repeat the new password.",
 				"PASSWORDMISMATCH": "Passwords must match."
 			}
+		},
+		"LOGIN": {
+			"SIGNIN": "Sing in",
+			"CREDENTIALS": "Please enter credentials below",
+			"INCORRECT": "The entered password and/or username was incorrect. Please try again.",
+			"FORGOTPASSWORD": "Forgot password",
+			"CONFIRMEMAIL": "Confirm email"
+		},
+		"TENANTS": {
+			"CREATETENANT": "Create Tenants",
+			"CREATE": "Create",
+			"EDIT": "Edit",
+			"EDITTENANT": "Edit tenant"
 		}
 	},
 	"COMMERCIAL_TENANTS": {
 		"INDEX": {
 			"CREATE": " Create tenant"
+		},
+		"FORM": {
+			"LABELS": {
+				"NAME": "Name",
+				"HOSTNAME": "Hostname",
+				"SAFESUBDOMAIN": "Safe subdomain",
+				"STATE": "State"
+			},
+			"PLACEHOLDERS": {
+				"NAME": "Enter a Name",
+				"HOSTNAME": "Enter a hostname",
+				"SAFESUBDOMAIN": "Enter a safe subdomain",
+				"STATE": "Enter a state"
+			},
+			"VALIDATION": {
+				"NAME": {
+					"REQUIRED": "An Name is required."
+				},
+				"HOSTNAME": {
+					"REQUIRED": "An hostname is required."
+				},
+				"SAFESUBDOMAIN": {
+					"REQUIRED": "A subdomain is required."
+				},
+				"STATE": {
+					"PASSWORDMISMATCH": "The state is required.",
+					"REQUIRED": "The state is required."
+				}
+			}
+		},
+		"TENANTS": {
+			"CREATE": "Create",
+			"CREATETENANT": "Create Tenant",
+			"EDIT": "Edit",
+			"EDITTENANT": "Edit tenant",
+			"DETAILS": "Details",
+			"TITLE": "Tenants",
+			"HOSTNAME": "Hostname",
+			"SAFESUBDOMAIN": "Safe subdomain",
+			"STATE": "State"
 		}
 	},
 	"OAUTH2": {
@@ -2858,6 +2919,40 @@
 	"COMMERCIAL_USERS": {
 		"INDEX": {
 			"CREATE": " Create user"
+		},
+		"FORM": {
+			"LABELS": {
+				"EMAIL": "Email",
+				"USERNAME": "Username",
+				"PASSWORD": "Password",
+				"CONFIRM_PASSWORD": "Confirm password",
+				"CONFIRMPASSWORD": "Confirm password"
+			},
+			"PLACEHOLDERS": {
+				"EMAIL": "Enter a email",
+				"USERNAME": "Enter a username",
+				"PASSWORD": "Enter a password",
+				"CONFIRM_PASSWORD": "Enter a confirm password",
+				"CONFIRMPASSWORD": "Enter a confirm password"
+			},
+			"VALIDATION": {
+				"EMAIL": {
+					"REQUIRED": "An Email is required.",
+					"INVALIDEMAIL": "Please enter a valid email."
+				},
+				"PASSWORD": {
+					"REQUIRED": "A password is required."
+				},
+				"USERNAME": {
+					"REQUIRED": "An username is required."
+				},
+				"CONFIRM_PASSWORD": {
+					"REQUIRED": "A confirm password is required."
+				},
+				"CONFIRMPASSWORD": {
+					"PASSWORDMISMATCH": "The passwords must match."
+				}
+			}
 		}
 	}
 }

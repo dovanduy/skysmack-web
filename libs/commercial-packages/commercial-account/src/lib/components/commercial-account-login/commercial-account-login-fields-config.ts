@@ -3,7 +3,6 @@ import { Validators } from '@angular/forms';
 import { FormRule, Field, CustomValidators } from '@skysmack/ng-dynamic-forms';
 import { EmailFieldComponent, PasswordFieldComponent, CheckboxFieldComponent } from '@skysmack/portal-fields';
 import { CommercialAccountLoginValidation } from './commercial-account-login-validation';
-import { OAUTH2_AREA_KEY } from '@skysmack/packages-oauth2';
 import { FieldsConfig, FieldProviders } from '@skysmack/ng-fields';
 import { LoadedPackage } from '@skysmack/ng-framework';
 import { LocalObject } from '@skysmack/framework';

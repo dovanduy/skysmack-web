@@ -26,7 +26,7 @@ export class CommercialUsersCreateComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.fieldsConfig.mode = 'create';
-    this.fields$ = of(this.fieldsConfig.getFields());
+    this.fields$ = this.fieldsConfig.getFields(null, null);
   }
 
   ngOnDestroy() {

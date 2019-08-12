@@ -25,7 +25,7 @@ export class CommercialTenantsCreateComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
-    this.fields$ = of(this.fieldsConfig.getFields());
+    this.fields$ = this.fieldsConfig.getFields(null, null);
   }
 
   public onSubmit(fh: FormHelper) {
