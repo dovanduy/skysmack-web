@@ -28,22 +28,25 @@ export class NgClientsFieldsConfig extends FieldsConfig<Client, number> {
                 key: 'name',
                 validators: [Validators.required],
                 order: 1,
-                showColumn: true
+                showColumn: true,
+                sortable: true
             }),
             new Field({
                 component: StringFieldComponent,
                 value: entity ? entity.object.description : undefined,
                 key: 'description',
-                order: 1,
-                showColumn: true
+                order: 2,
+                showColumn: true,
+                sortable: true
             }),
             new Field({
                 component: StringFieldComponent,
                 value: entity ? entity.object.online : undefined,
                 key: 'online',
-                order: 1,
+                order: 3,
                 showColumn: true,
-                includeInForm: false
+                includeInForm: false,
+                sortable: true
             })
         ];
 

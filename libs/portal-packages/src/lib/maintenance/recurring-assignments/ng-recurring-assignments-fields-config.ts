@@ -46,7 +46,8 @@ export class NgRecurringAssignmentsFieldsConfig extends FieldsConfig<RecurringAs
                 label: 'Start',
                 validators: [Validators.required],
                 order: 3,
-                showColumn: true
+                showColumn: true,
+                sortable: true
             }),
 
             new Field({
@@ -56,7 +57,8 @@ export class NgRecurringAssignmentsFieldsConfig extends FieldsConfig<RecurringAs
                 label: 'End',
                 validators: [Validators.required],
                 order: 5,
-                showColumn: true
+                showColumn: true,
+                sortable: true
             })
         ];
 

@@ -29,7 +29,8 @@ export class NgConfirmEmailFieldsConfig extends FieldsConfig<ConfirmEmail, numbe
                 key: 'email',
                 validators: [Validators.required],
                 order: 1,
-                showColumn: true
+                showColumn: true,
+                sortable: true
             }),
 
             new Field({
@@ -38,7 +39,8 @@ export class NgConfirmEmailFieldsConfig extends FieldsConfig<ConfirmEmail, numbe
                 key: 'token',
                 validators: [Validators.required],
                 order: 2,
-                showColumn: true
+                showColumn: true,
+                sortable: true
             })
         ];
 

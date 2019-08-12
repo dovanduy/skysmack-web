@@ -44,7 +44,8 @@ export class NgAssignmentTypesFieldsConfig extends FieldsConfig<AssignmentType, 
                 key: 'description',
                 validators: [Validators.required],
                 order: 2,
-                showColumn: true
+                showColumn: true,
+                sortable: true
             }),
 
             new Field({
@@ -52,14 +53,16 @@ export class NgAssignmentTypesFieldsConfig extends FieldsConfig<AssignmentType, 
                 value: 'P1DT1H1M1S1s', // entity ? entity.object.duePeriod : undefined,
                 key: 'duePeriod',
                 validators: [Validators.required],
-                order: 3
+                order: 3,
+                sortable: true
             }),
 
             new Field({
                 component: RecurringExpressionFieldComponent,
                 value: entity ? entity.object.expression : undefined,
                 key: 'expression',
-                order: 4
+                order: 4,
+                sortable: true
             }),
         ];
 

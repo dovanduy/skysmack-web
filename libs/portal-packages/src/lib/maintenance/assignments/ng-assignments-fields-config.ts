@@ -43,7 +43,8 @@ export class NgAssignmentsFieldsConfig extends FieldsConfig<Assignment, number> 
                 key: 'description',
                 label: 'Description',
                 order: 2,
-                showColumn: true
+                showColumn: true,
+                sortable: true
             }),
 
             new SelectField({
@@ -59,7 +60,8 @@ export class NgAssignmentsFieldsConfig extends FieldsConfig<Assignment, number> 
                 optionsData$: of(Assignment.StatusEnum),
                 optionsDataType: 'enum',
                 order: 3,
-                showColumn: true
+                showColumn: true,
+                sortable: true
             }),
 
             new Field({
@@ -69,7 +71,8 @@ export class NgAssignmentsFieldsConfig extends FieldsConfig<Assignment, number> 
                 label: 'From',
                 validators: [Validators.required],
                 order: 4,
-                showColumn: true
+                showColumn: true,
+                sortable: true
             }),
 
             new Field({
@@ -79,7 +82,8 @@ export class NgAssignmentsFieldsConfig extends FieldsConfig<Assignment, number> 
                 label: 'Due',
                 validators: [Validators.required],
                 order: 5,
-                showColumn: true
+                showColumn: true,
+                sortable: true
             })
         ];
 

@@ -23,37 +23,43 @@ export class NgPasswordSettingsFieldsConfig extends FieldsConfig<PasswordSetting
                 component: IntFieldComponent,
                 value: settings ? settings.object.requiredLength : undefined,
                 key: 'requiredLength',
-                order: 1
+                order: 1,
+                sortable: true
             }),
             new Field({
                 component: IntFieldComponent,
                 value: settings ? settings.object.requiredUniqueChars : undefined,
                 key: 'requiredUniqueChars',
-                order: 2
+                order: 2,
+                sortable: true
             }),
             new Field({
                 component: CheckboxFieldComponent,
                 value: settings ? settings.object.requireNonAlphanumeric : false,
                 key: 'requireNonAlphanumeric',
-                order: 3
+                order: 3,
+                sortable: true
             }),
             new Field({
                 component: CheckboxFieldComponent,
                 value: settings ? settings.object.requireLowercase : false,
                 key: 'requireLowercase',
-                order: 4
+                order: 4,
+                sortable: true
             }),
             new Field({
                 component: CheckboxFieldComponent,
                 value: settings ? settings.object.requireUppercase : false,
                 key: 'requireUppercase',
-                order: 5
+                order: 5,
+                sortable: true
             }),
             new Field({
                 component: CheckboxFieldComponent,
                 value: settings ? settings.object.requireDigit : false,
                 key: 'requireDigit',
-                order: 6
+                order: 6,
+                sortable: true
             })
         ];
 

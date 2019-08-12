@@ -22,6 +22,7 @@ export class CommercialTenantsFieldsConfig {
                 key: 'name',
                 validators: [Validators.required],
                 order: 1,
+                sortable: true
             }),
 
             new Field({
@@ -30,6 +31,7 @@ export class CommercialTenantsFieldsConfig {
                 key: 'hostname',
                 validators: [Validators.required],
                 order: 1,
+                sortable: true
             }),
 
             new Field({
@@ -38,6 +40,7 @@ export class CommercialTenantsFieldsConfig {
                 key: 'safeSubdomain',
                 validators: [Validators.required],
                 order: 1,
+                sortable: true
             }),
 
             new Field({
@@ -46,6 +49,7 @@ export class CommercialTenantsFieldsConfig {
                 key: 'state',
                 validators: [Validators.required],
                 order: 1,
+                sortable: true
             }),
         ];
 

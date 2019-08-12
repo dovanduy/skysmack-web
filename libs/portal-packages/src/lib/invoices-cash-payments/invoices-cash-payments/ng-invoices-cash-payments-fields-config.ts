@@ -57,7 +57,8 @@ export class NgInvoicesCashPaymentsFieldsConfig extends FieldsConfig<CashPayment
                 key: 'amount',
                 validators: [Validators.required],
                 order: 1,
-                showColumn: true
+                showColumn: true,
+                sortable: true
             }),
             new Field({
                 component: StringFieldComponent,
@@ -65,20 +66,23 @@ export class NgInvoicesCashPaymentsFieldsConfig extends FieldsConfig<CashPayment
                 key: 'currencyCode',
                 validators: [Validators.required],
                 order: 1,
-                showColumn: true
+                showColumn: true,
+                sortable: true
             }),
             new Field({
                 component: StringFieldComponent,
                 value: entity ? entity.object.description : undefined,
                 key: 'description',
                 order: 1,
-                showColumn: true
+                showColumn: true,
+                sortable: true
             }),
             new Field({
                 component: HiddenFieldComponent,
                 value: entity ? entity.object.time : undefined,
                 key: 'time',
                 order: 1,
+                sortable: true
             }),
         ];
 

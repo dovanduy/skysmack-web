@@ -28,6 +28,7 @@ export class NgSetPasswordFieldsConfig extends FieldsConfig<User, number> {
                 validators: [Validators.required, CustomValidators.validPassword()],
                 order: 2,
                 placeholder: 'Password',
+                sortable: true
             }),
 
             new Field({
@@ -38,6 +39,7 @@ export class NgSetPasswordFieldsConfig extends FieldsConfig<User, number> {
                 validators: [Validators.required],
                 order: 3,
                 placeholder: 'Password',
+                sortable: true
             })
         ];
 

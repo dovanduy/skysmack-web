@@ -29,6 +29,7 @@ export class NgForgotPasswordFieldsConfig extends FieldsConfig<string, unknown> 
                 value: entity ? entity.object : undefined,
                 key: 'email',
                 validators: [Validators.required, CustomValidators.validEmail()],
+                sortable: true
             })
         ];
 

@@ -64,7 +64,7 @@ export class RefreshTokenInterceptor implements HttpInterceptor {
                                 catchError(error => {
                                     // Catch if refresh token timeout is misaligned with backend
                                     // Try to refresh token if error is 401, it was attempted with authorization and a refresh token exist for the user
-                                    if (error instanceof HttpErrorResponse && error.status === 401 && request.headers.has('Authorization') && currentUser) {
+                                    if (error instanceof HttpErrorResponse && error.status === 401 && currentUser && currentUser.token_type && currentUser.access_token) {
                                         if (currentUser.refresh_token) {
                                             // Refresh token and block other requests
                                             this.refreshToken(currentUser);

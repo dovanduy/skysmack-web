@@ -57,7 +57,8 @@ export class NgAccessPolicyPermissionsFieldsConfig extends FieldsConfig<AccessPo
                 }] as SelectFieldOption[],
                 valueSelector: 'object.path',
                 order: 2,
-                showColumn: true
+                showColumn: true,
+                sortable: true
             }),
 
             new SelectField({
@@ -79,7 +80,8 @@ export class NgAccessPolicyPermissionsFieldsConfig extends FieldsConfig<AccessPo
                 value: entity ? entity.object.permission : undefined,
                 key: 'permission',
                 order: 3,
-                showColumn: true
+                showColumn: true,
+                sortable: true
             }),
 
             new Field({
@@ -88,7 +90,8 @@ export class NgAccessPolicyPermissionsFieldsConfig extends FieldsConfig<AccessPo
                 key: 'order',
                 validators: [Validators.required],
                 order: 4,
-                showColumn: true
+                showColumn: true,
+                sortable: true
             }),
 
             new Field({
@@ -97,7 +100,8 @@ export class NgAccessPolicyPermissionsFieldsConfig extends FieldsConfig<AccessPo
                 key: 'isTopLevel',
                 validators: [Validators.required],
                 order: 4,
-                showColumn: true
+                showColumn: true,
+                sortable: true
             }),
         ];
 
@@ -106,7 +110,8 @@ export class NgAccessPolicyPermissionsFieldsConfig extends FieldsConfig<AccessPo
                 component: HiddenFieldComponent,
                 value: entity ? entity.object.id : undefined,
                 key: 'id',
-                order: 0
+                order: 0,
+                sortable: true
             }));
         }
 

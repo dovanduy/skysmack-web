@@ -47,8 +47,10 @@ export class NgProductTypePriceChangesFieldsConfig extends FieldsConfig<ProductT
                     }
                 ],
                 order: 1,
-                showColumn: true
-            } as SelectField),
+                showColumn: true,
+                sortable: true
+            } as SelectField
+            ),
             new SelectField({
                 component: SelectFieldComponent,
                 value: entity ? entity.object.recordId : undefined,
@@ -72,8 +74,9 @@ export class NgProductTypePriceChangesFieldsConfig extends FieldsConfig<ProductT
                 value: entity ? entity.object.perUnit : false,
                 key: 'perUnit',
                 validators: [Validators.required],
-                order: 4,
-                showColumn: true
+                order: 3,
+                showColumn: true,
+                sortable: true
             }),
             new Field({
                 component: CheckboxFieldComponent,
@@ -81,54 +84,61 @@ export class NgProductTypePriceChangesFieldsConfig extends FieldsConfig<ProductT
                 key: 'isPercent',
                 validators: [Validators.required],
                 order: 4,
-                showColumn: true
+                showColumn: true,
+                sortable: true
             }),
             new Field({
                 component: DecimalFieldComponent,
                 value: entity ? entity.object.change : undefined,
                 key: 'change',
                 validators: [Validators.required],
-                order: 4,
-                showColumn: true
+                order: 5,
+                showColumn: true,
+                sortable: true
             }),
             new Field({
                 component: IntFieldComponent,
                 value: entity ? entity.object.minUnits : undefined,
                 key: 'minUnits',
                 validators: [Validators.required],
-                order: 4,
-                showColumn: true
+                order: 6,
+                showColumn: true,
+                sortable: true
             }),
             new Field({
                 component: IntFieldComponent,
                 value: entity ? entity.object.maxUnits : undefined,
                 key: 'maxUnits',
                 validators: [Validators.required],
-                order: 4,
-                showColumn: true
+                order: 7,
+                showColumn: true,
+                sortable: true
             }),
             new Field({
                 component: CheckboxFieldComponent,
                 value: entity ? entity.object.onlyValidUnits : false,
                 key: 'onlyValidUnits',
-                order: 4,
-                showColumn: true
+                order: 8,
+                showColumn: true,
+                sortable: true
             }),
             new Field({
                 component: DateTimeFieldComponent,
                 value: entity ? entity.object.validFrom : undefined,
                 key: 'validFrom',
                 validators: [Validators.required],
-                order: 5,
-                showColumn: true
+                order: 9,
+                showColumn: true,
+                sortable: true
             }),
             new Field({
                 component: DateTimeFieldComponent,
                 value: entity ? entity.object.validTo : undefined,
                 key: 'validTo',
                 validators: [Validators.required],
-                order: 6,
-                showColumn: true
+                order: 10,
+                showColumn: true,
+                sortable: true
             })
         ];
 

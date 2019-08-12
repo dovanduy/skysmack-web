@@ -57,12 +57,14 @@ export class NgInvoicesProductsAddToInvoiceFieldsConfig extends FieldsConfig<any
         component: IntFieldComponent,
         value: entity ? entity.object.amount : undefined,
         key: 'amount',
-        validators: [Validators.required]
+        validators: [Validators.required],
+        sortable: true
       }),
       new Field({
         component: HiddenFieldComponent,
         value: entity ? entity.object.productId : this.productId,
         key: 'productId',
+        sortable: true
       }),
     ];
 

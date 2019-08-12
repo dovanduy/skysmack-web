@@ -28,7 +28,8 @@ export class NgUsersFieldsConfig extends FieldsConfig<User, number> {
                 key: 'email',
                 validators: [Validators.required, CustomValidators.validEmail()],
                 order: 1,
-                showColumn: true
+                showColumn: true,
+                sortable: true
             })
         ];
 

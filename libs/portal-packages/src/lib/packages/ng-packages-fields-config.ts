@@ -49,7 +49,8 @@ export class NgPackagesFieldsConfig extends FieldsConfig<Package, string> {
                 },
                 disabled: _package ? true : false,
                 order: 1,
-                showColumn: true
+                showColumn: true,
+                sortable: true
             }),
 
             new Field({
@@ -57,6 +58,7 @@ export class NgPackagesFieldsConfig extends FieldsConfig<Package, string> {
                 value: _package ? _package.object.name : undefined,
                 key: 'dependencies',
                 order: 2,
+                sortable: true
             }),
 
             new Field({
@@ -67,7 +69,8 @@ export class NgPackagesFieldsConfig extends FieldsConfig<Package, string> {
                 validators: [Validators.required],
                 order: 2,
                 placeholder: 'Enter name',
-                showColumn: true
+                showColumn: true,
+                sortable: true
             }),
 
             new Field({
@@ -76,7 +79,8 @@ export class NgPackagesFieldsConfig extends FieldsConfig<Package, string> {
                 key: 'description',
                 label: 'Description',
                 order: 3,
-                placeholder: 'Enter description'
+                placeholder: 'Enter description',
+                sortable: true
             }),
 
             new Field({
@@ -88,7 +92,8 @@ export class NgPackagesFieldsConfig extends FieldsConfig<Package, string> {
                 order: 4,
                 disabled: _package ? true : false,
                 placeholder: 'Enter path',
-                showColumn: true
+                showColumn: true,
+                sortable: true
             }),
 
             new Field({
@@ -97,6 +102,7 @@ export class NgPackagesFieldsConfig extends FieldsConfig<Package, string> {
                 key: 'dependencies',
                 label: 'dependencies',
                 order: 4,
+                sortable: true
             })
         ];
     }

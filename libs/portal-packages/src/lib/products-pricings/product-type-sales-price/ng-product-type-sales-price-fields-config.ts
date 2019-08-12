@@ -51,8 +51,10 @@ export class NgProductTypeSalesPriceFieldsConfig extends FieldsConfig<ProductTyp
                     }
                 ],
                 order: 1,
-                showColumn: true
-            } as SelectField),
+                showColumn: true,
+                sortable: true
+            } as SelectField
+            ),
             new SelectField({
                 component: SelectFieldComponent,
                 value: entity ? entity.object.recordId : undefined,
@@ -77,7 +79,8 @@ export class NgProductTypeSalesPriceFieldsConfig extends FieldsConfig<ProductTyp
                 key: 'price',
                 validators: [Validators.required],
                 order: 3,
-                showColumn: true
+                showColumn: true,
+                sortable: true
             })
         ];
 

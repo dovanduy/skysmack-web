@@ -51,7 +51,8 @@ export class NgFieldsConfig extends FieldsConfig<FieldSchemaViewModel, string> {
                 key: 'display',
                 validators: [Validators.required],
                 order: 1,
-                showColumn: true
+                showColumn: true,
+                sortable: true
             }),
 
             new Field({
@@ -61,7 +62,8 @@ export class NgFieldsConfig extends FieldsConfig<FieldSchemaViewModel, string> {
                 validators: [Validators.required],
                 order: 2,
                 disabled: field ? true : false,
-                showColumn: true
+                showColumn: true,
+                sortable: true
             }),
 
             new SelectField({
@@ -73,7 +75,8 @@ export class NgFieldsConfig extends FieldsConfig<FieldSchemaViewModel, string> {
                 optionsData$: this.store.getAvailableFields(stateKey),
                 valueSelector: 'object.name',
                 disabled: field ? true : false,
-                showColumn: true
+                showColumn: true,
+                sortable: true
             }),
 
             new Field({
@@ -81,6 +84,7 @@ export class NgFieldsConfig extends FieldsConfig<FieldSchemaViewModel, string> {
                 value: field ? field.object.validators : undefined,
                 key: 'validators',
                 order: 4,
+                sortable: true
             })
         ];
 

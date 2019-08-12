@@ -20,6 +20,7 @@ export class CommercialAccountForgotPasswordFieldsConfig {
                 key: 'email',
                 validators: [Validators.required, CustomValidators.validEmail()],
                 order: 1,
+                sortable: true
             })
         ];
 
