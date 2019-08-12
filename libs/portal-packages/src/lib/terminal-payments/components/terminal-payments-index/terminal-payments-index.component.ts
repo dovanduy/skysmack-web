@@ -14,7 +14,7 @@ export class TerminalPaymentsIndexComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.componentPageTitle.setTitle('TERMINAL_PAYMENTS_INDEX.TITLE');
+    this.componentPageTitle.setTitle('TERMINAL_PAYMENTS.INDEX.TITLE');
   }
 
 }
