@@ -2577,6 +2577,12 @@
 			"INCORRECT": "The entered password and/or username was incorrect. Please try again.",
 			"FORGOTPASSWORD": "Forgot password",
 			"CONFIRMEMAIL": "Confirm email"
+		},
+		"TENANTS": {
+			"CREATETENANT": "Create Tenants",
+			"CREATE": "Create",
+			"EDIT": "Edit",
+			"EDITTENANT": "Edit tenant"
 		}
 	},
 	"COMMERCIAL_TENANTS": {
@@ -2611,6 +2617,17 @@
 					"REQUIRED": "The state is required."
 				}
 			}
+		},
+		"TENANTS": {
+			"CREATE": "Create",
+			"CREATETENANT": "Create Tenant",
+			"EDIT": "Edit",
+			"EDITTENANT": "Edit tenant",
+			"DETAILS": "Details",
+			"TITLE": "Tenants",
+			"HOSTNAME": "Hostname",
+			"SAFESUBDOMAIN": "Safe subdomain",
+			"STATE": "State"
 		}
 	},
 	"OAUTH2": {

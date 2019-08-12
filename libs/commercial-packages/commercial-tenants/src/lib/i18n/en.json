@@ -3,6 +3,17 @@
         "INDEX": {
             "CREATE": " Create tenant"
         },
+        "TENANTS": {
+            "TITLE": "Tenants",
+            "CREATE": "Create",
+            "CREATETENANT": "Create Tenant",
+            "EDIT": "Edit",
+            "EDITTENANT": "Edit tenant",
+            "DETAILS": "Details",
+            "HOSTNAME": "Hostname",
+            "SAFESUBDOMAIN": "Safe subdomain",
+            "STATE": "State"
+            },
         "FORM": {
             "LABELS": {
                 "NAME": "Name",
