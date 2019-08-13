@@ -1039,8 +1039,10 @@
 			"EDIT": "Edit settings"
 		},
 		"QUEUE": {
-			"UPDATING": "Updating",
-			"ERROR": "An error occured when trying to change settings."
+			"UPDATING": "Updating {{ displayName }}",
+			"ERROR": "An error occured with {{ displayName }}. Correct and try again.",
+			"ADDING": "Adding {{ displayName }}",
+			"DELETING": "Deleting {{ displayName }}"
 		}
 	},
 	"LODGING_TYPES": {
