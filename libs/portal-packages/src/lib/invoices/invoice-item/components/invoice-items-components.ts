@@ -5,14 +5,7 @@ import { InvoiceItemsEditComponent } from './invoice-items-edit/invoice-items-ed
 import { INVOICE_ITEMS_AREA_KEY } from '@skysmack/packages-invoices';
 import { FieldsIndexComponent, FieldsCreateComponent, FieldsEditComponent } from '@skysmack/portal-fields';
 
-export const invoiceItemsRoutes: Routes = [
-  {
-    path: 'items/:invoiceId', component: InvoiceItemsIndexComponent,
-    children: [
-      { path: 'create', component: InvoiceItemsCreateComponent, pathMatch: 'full' },
-      { path: 'edit/:id', component: InvoiceItemsEditComponent, pathMatch: 'full' }
-    ]
-  },
+export const invoiceItemsRoutes: Routes = [  
   {
     path: 'items/fields', component: FieldsIndexComponent, children: [
       { path: 'create', component: FieldsCreateComponent, pathMatch: 'full' },
@@ -20,6 +13,13 @@ export const invoiceItemsRoutes: Routes = [
     ], data: {
       areaKey: INVOICE_ITEMS_AREA_KEY
     }
+  },
+  {
+    path: 'items/:invoiceId', component: InvoiceItemsIndexComponent,
+    children: [
+      { path: 'create', component: InvoiceItemsCreateComponent, pathMatch: 'full' },
+      { path: 'edit/:id', component: InvoiceItemsEditComponent, pathMatch: 'full' }
+    ]
   }
 ];
 
