@@ -19,10 +19,6 @@ import { DynamicFormsModule } from '@skysmack/portal-dynamic-forms';
 import { PortalFieldsModule } from '@skysmack/portal-fields';
 import { FieldProviders } from '@skysmack/ng-fields';
 import { NgReservationsPricingsMenuProvider } from './ng-reservations-pricings-menu-provider';
-import { NgLodgingPricesMenuProvider } from './lodging-prices/ng-lodging-prices-menu-provider';
-import { NgLodgingReservationPriceChangesMenuProvider } from './lodging-reservation-price-changes/ng-lodging-reservation-price-changes-menu-provider';
-import { NgLodgingTypePricesMenuProvider } from './lodging-type-prices/ng-lodging-type-prices-menu-provider';
-import { NgLodgingTypeReservationPriceChangesMenuProvider } from './lodging-type-reservation-price-changes/ng-lodging-type-reservation-price-changes-menu-provider';
 
 @NgModule({
   imports: [
@@ -53,18 +49,10 @@ export class ReservationsPricingsModule {
     lodgingReservationsReservationsPricingsFieldProvider: NgLodgingReservationsReservationsPricingsFieldProvider,
     ngMenuProviders: NgMenuProviders, 
     ngReservationsPricingsMenuProvider: NgReservationsPricingsMenuProvider,
-    ngLodgingPricesMenuProvider: NgLodgingPricesMenuProvider,
-    ngLodgingReservationPriceChangesMenuProvider: NgLodgingReservationPriceChangesMenuProvider,
-    ngLodgingTypePricesMenuProvider: NgLodgingTypePricesMenuProvider,
-    ngLodgingTypeReservationPriceChangesMenuProvider: NgLodgingTypeReservationPriceChangesMenuProvider
   ) {
     fieldProviders.add(LodgingsTypeId, reservationsPricingsFieldProvider);
     fieldProviders.add(LodgingReservationsTypeId, lodgingReservationsReservationsPricingsFieldProvider);
     ngMenuProviders
     .add(ngReservationsPricingsMenuProvider)
-    .add(ngLodgingPricesMenuProvider)
-    .add(ngLodgingReservationPriceChangesMenuProvider)
-    .add(ngLodgingTypePricesMenuProvider)
-    .add(ngLodgingTypeReservationPriceChangesMenuProvider)
   }
 }
