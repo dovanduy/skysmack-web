@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
-import { MenuArea, MenuProvider, SPEEDDIAL } from '@skysmack/framework';
+import { MenuArea, MenuProvider, SPEEDDIAL, SIDEBAR } from '@skysmack/framework';
 import { MenuItem } from '@skysmack/framework';
 import { Guid } from 'guid-typescript';
 import { Observable } from 'rxjs';
@@ -81,7 +81,7 @@ export class NgLodgingsReservationsMenuProvider implements MenuProvider {
                 permissions: [
                     ReservationsPermissions.addReservations
                 ],
-                providedIn: ['sidebar', SPEEDDIAL]
+                providedIn: [SIDEBAR, SPEEDDIAL]
             }),
             new MenuItem({
                 url: '/' + packagePath,
@@ -92,7 +92,7 @@ export class NgLodgingsReservationsMenuProvider implements MenuProvider {
                 permissions: [
                     ReservationsPermissions.findReservations
                 ],
-                providedIn: ['sidebar']
+                providedIn: [SIDEBAR]
             }),
             new MenuItem({
                 url: '/' + packagePath + '/arrivals',
@@ -103,7 +103,7 @@ export class NgLodgingsReservationsMenuProvider implements MenuProvider {
                 permissions: [
                     ReservationsPermissions.findReservations
                 ],
-                providedIn: ['sidebar']
+                providedIn: [SIDEBAR]
             }),
             new MenuItem({
                 url: '/' + packagePath + '/stays',
@@ -114,7 +114,7 @@ export class NgLodgingsReservationsMenuProvider implements MenuProvider {
                 permissions: [
                     ReservationsPermissions.findReservations
                 ],
-                providedIn: ['sidebar']
+                providedIn: [SIDEBAR]
             }),
             new MenuItem({
                 url: '/' + packagePath + '/departures',
@@ -125,7 +125,7 @@ export class NgLodgingsReservationsMenuProvider implements MenuProvider {
                 permissions: [
                     ReservationsPermissions.findReservations
                 ],
-                providedIn: ['sidebar']
+                providedIn: [SIDEBAR]
             }),
             new MenuItem({
                 url: '/' + packagePath + '/settings/checkin',
@@ -136,7 +136,7 @@ export class NgLodgingsReservationsMenuProvider implements MenuProvider {
                 permissions: [
                     ReservationsPermissions.checkIn
                 ],
-                providedIn: ['sidebar']
+                providedIn: [SIDEBAR]
             }),
             setConnectedParentPackage(this.store, packagePath)
         ];

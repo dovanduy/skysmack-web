@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
-import { MenuArea, MenuProvider } from '@skysmack/framework';
+import { MenuArea, MenuProvider, SIDEBAR } from '@skysmack/framework';
 import { MenuItem } from '@skysmack/framework';
 import { Guid } from 'guid-typescript';
 import { Observable } from 'rxjs';
@@ -48,7 +48,7 @@ export class NgAssignmentAllMenuProvider implements MenuProvider {
                 permissions: [
                     MaintenancePermissions.findAssignments
                 ],
-                providedIn: ['sidebar']
+                providedIn: [SIDEBAR]
             }),
             new MenuItem({
                 url: 'assignments/recurring',
@@ -58,7 +58,7 @@ export class NgAssignmentAllMenuProvider implements MenuProvider {
                 icon: 'short_text',
                 permissions: [
                 ],
-                providedIn: ['sidebar']
+                providedIn: [SIDEBAR]
             })
         ];
     };

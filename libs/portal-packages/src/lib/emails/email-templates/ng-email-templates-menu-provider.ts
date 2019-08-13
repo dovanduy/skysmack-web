@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
-import { MenuArea, MenuProvider, SPEEDDIAL } from '@skysmack/framework';
+import { MenuArea, MenuProvider, SPEEDDIAL, SIDEBAR } from '@skysmack/framework';
 import { MenuItem } from '@skysmack/framework';
 import { Guid } from 'guid-typescript';
 import { Observable } from 'rxjs';
@@ -51,7 +51,7 @@ export class NgEmailsTemplatesMenuProvider implements MenuProvider {
                 permissions: [
                     //??
                 ],
-                providedIn: ['sidebar', SPEEDDIAL]
+                providedIn: [SIDEBAR, SPEEDDIAL]
             }),
             setBackButton(packagePath)
         ];

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
-import { MenuArea, MenuProvider, SPEEDDIAL } from '@skysmack/framework';
+import { MenuArea, MenuProvider, SPEEDDIAL, SIDEBAR } from '@skysmack/framework';
 import { MenuItem } from '@skysmack/framework';
 import { Guid } from 'guid-typescript';
 import { Observable } from 'rxjs';
@@ -68,7 +68,7 @@ export class NgInvoicesMenuProvider implements MenuProvider {
                 permissions: [
                     InvoicesPermissions.addInvoiceItems
                 ],
-                providedIn: ['sidebar', SPEEDDIAL]
+                providedIn: [SIDEBAR, SPEEDDIAL]
             }),
             new MenuItem({
                 url: 'fields',
@@ -79,7 +79,7 @@ export class NgInvoicesMenuProvider implements MenuProvider {
                 permissions: [
                     InvoicesPermissions.findInvoiceItemFields
                 ],
-                providedIn: ['sidebar']
+                providedIn: [SIDEBAR]
             }),
             new MenuItem({
                 url: 'payments',
@@ -90,7 +90,7 @@ export class NgInvoicesMenuProvider implements MenuProvider {
                 permissions: [
                     InvoicesPermissions.findInvoiceItemFields
                 ],
-                providedIn: ['sidebar']
+                providedIn: [SIDEBAR]
             })
         ];
     };

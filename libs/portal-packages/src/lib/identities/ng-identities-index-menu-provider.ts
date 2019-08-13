@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
-import { MenuArea, safeHasValue, Package, AllowAccessFor, MenuProvider, TOPBAR } from '@skysmack/framework';
+import { MenuArea, safeHasValue, Package, AllowAccessFor, MenuProvider, TOPBAR, SIDEBAR } from '@skysmack/framework';
 import { MenuItem } from '@skysmack/framework';
 import { IdentitiesPermissions } from '@skysmack/packages-identities';
 import { map } from 'rxjs/operators';
@@ -91,7 +91,7 @@ export class NgIdentitiesIndexMenuProvider implements MenuProvider {
                 permissions: [
                     IdentitiesPermissions.findRoles
                 ],
-                providedIn: ['sidebar']
+                providedIn: [SIDEBAR]
             }),
             new MenuItem({
                 url: 'users',
@@ -102,7 +102,7 @@ export class NgIdentitiesIndexMenuProvider implements MenuProvider {
                 permissions: [
                     IdentitiesPermissions.findUsers
                 ],
-                providedIn: ['sidebar']
+                providedIn: [SIDEBAR]
             }),
             new MenuItem({
                 url: 'applications',
@@ -113,7 +113,7 @@ export class NgIdentitiesIndexMenuProvider implements MenuProvider {
                 permissions: [
                     IdentitiesPermissions.findApplications
                 ],
-                providedIn: ['sidebar']
+                providedIn: [SIDEBAR]
             }),
             new MenuItem({
                 url: 'change-password',
@@ -121,7 +121,7 @@ export class NgIdentitiesIndexMenuProvider implements MenuProvider {
                 area: 'account',
                 order: 1,
                 icon: 'group_add',
-                providedIn: ['sidebar']
+                providedIn: [SIDEBAR]
             }),
             new MenuItem({
                 url: 'forgot-password',
@@ -129,7 +129,7 @@ export class NgIdentitiesIndexMenuProvider implements MenuProvider {
                 area: 'account',
                 order: 1,
                 icon: 'group_add',
-                providedIn: ['sidebar']
+                providedIn: [SIDEBAR]
             }),
             new MenuItem({
                 url: 'confirm-email',
@@ -137,7 +137,7 @@ export class NgIdentitiesIndexMenuProvider implements MenuProvider {
                 area: 'account',
                 order: 1,
                 icon: 'group_add',
-                providedIn: ['sidebar']
+                providedIn: [SIDEBAR]
             }),
             new MenuItem({
                 url: 'settings/lockout',
@@ -148,7 +148,7 @@ export class NgIdentitiesIndexMenuProvider implements MenuProvider {
                 permissions: [
                     IdentitiesPermissions.getLockoutSettings
                 ],
-                providedIn: ['sidebar']
+                providedIn: [SIDEBAR]
             }),
             new MenuItem({
                 url: 'settings/user',
@@ -159,7 +159,7 @@ export class NgIdentitiesIndexMenuProvider implements MenuProvider {
                 permissions: [
                     IdentitiesPermissions.getUserSettings
                 ],
-                providedIn: ['sidebar']
+                providedIn: [SIDEBAR]
             }),
             new MenuItem({
                 url: 'settings/password',
@@ -170,7 +170,7 @@ export class NgIdentitiesIndexMenuProvider implements MenuProvider {
                 permissions: [
                     IdentitiesPermissions.getPasswordSettings
                 ],
-                providedIn: ['sidebar']
+                providedIn: [SIDEBAR]
             }),
             new MenuItem({
                 url: 'settings/sign-in',
@@ -181,7 +181,7 @@ export class NgIdentitiesIndexMenuProvider implements MenuProvider {
                 permissions: [
                     IdentitiesPermissions.getSignInSettings
                 ],
-                providedIn: ['sidebar']
+                providedIn: [SIDEBAR]
             })
         ];
     }

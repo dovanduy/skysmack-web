@@ -2,7 +2,7 @@ import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { trigger, state, style, transition, animate } from '@angular/animations';
-import { MenuAreaItems } from '@skysmack/framework';
+import { MenuAreaItems, SIDEBAR } from '@skysmack/framework';
 import { NgMenuProviders } from '../../../navigation/ng-menu-providers';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -37,7 +37,7 @@ export class SidebarMenuComponent implements OnInit {
     const packagePath = this.router.url.split('/')[1];
     this.menuAreaItems$ = this.ngMenuProviders.getMenuAreaItems(packagePath, this.componentKey).pipe(
       map(menuAreaItems => {
-        const items = menuAreaItems.filter(menuAreaItem => menuAreaItem && menuAreaItem.providedIn && menuAreaItem.providedIn.includes('sidebar'));
+        const items = menuAreaItems.filter(menuAreaItem => menuAreaItem && menuAreaItem.providedIn && menuAreaItem.providedIn.includes(SIDEBAR));
         this.anyMenuItems.emit(items.length > 0);
         return items;
       })

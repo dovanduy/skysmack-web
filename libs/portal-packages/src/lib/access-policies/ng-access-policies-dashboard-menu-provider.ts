@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
-import { MenuArea, MenuProvider } from '@skysmack/framework';
+import { MenuArea, MenuProvider, SIDEBAR } from '@skysmack/framework';
 import { MenuItem } from '@skysmack/framework';
 import { Guid } from 'guid-typescript';
 import {
@@ -49,7 +49,7 @@ export class NgAccessPoliciesDashboardMenuProvider implements MenuProvider {
                 permissions: [
                     AccessPoliciesPermissions.findPermissions
                 ],
-                providedIn: ['sidebar']
+                providedIn: [SIDEBAR]
             }),
             new MenuItem({
                 url: 'roles',
@@ -60,7 +60,7 @@ export class NgAccessPoliciesDashboardMenuProvider implements MenuProvider {
                 permissions: [
                     AccessPoliciesPermissions.findRoles
                 ],
-                providedIn: ['sidebar']
+                providedIn: [SIDEBAR]
             }),
             new MenuItem({
                 url: 'rules',
@@ -71,7 +71,7 @@ export class NgAccessPoliciesDashboardMenuProvider implements MenuProvider {
                 permissions: [
                     AccessPoliciesPermissions.findRules
                 ],
-                providedIn: ['sidebar']
+                providedIn: [SIDEBAR]
             })
         ];
     };
