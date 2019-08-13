@@ -47,7 +47,7 @@ export class NavBarComponent implements OnInit {
 
   private initMenu() {
     const packagePath = this.router.url.split('/')[1];
-    this.menuAreaItems$ = this.ngMenuProviders.getMenuAreaItems(packagePath, 'navbar').pipe(
+    this.menuAreaItems$ = this.ngMenuProviders.getMenuAreaItems(packagePath, TOPBAR).pipe(
       map(menuAreaItems => {
         return menuAreaItems.filter(menuAreaItem => menuAreaItem && menuAreaItem.providedIn && menuAreaItem.providedIn.includes(TOPBAR));
       })
