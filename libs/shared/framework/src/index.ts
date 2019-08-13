@@ -5,4 +5,5 @@ export * from './models/index';
 export * from './permissions/index';
 export * from './rsql/index';
 export * from './sort/index';
+export * from './constants/index';
 export * from './shared-services/index';

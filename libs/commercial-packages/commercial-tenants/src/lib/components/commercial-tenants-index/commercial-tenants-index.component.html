@@ -1,10 +1,12 @@
-<h3>Tenants</h3>
+<h3>{{ 'COMMERCIAL_TENANTS.TITLE' | translate }}</h3>
 
-<a mat-raised-button color="primary" [routerLink]="['/', 'tenants', 'create']">Create tenant</a>
+<a mat-raised-button color="primary"
+        [routerLink]="['/', 'tenants', 'create']">{{ 'COMMERCIAL_TENANTS.CREATETENANT' | translate }}</a>
 
 <ul *ngIf="tenants$ | async as tenants">
-    <li *ngFor="let tenant of tenants">{{ tenant.name }} -
-        <a [routerLink]="['/', 'tenants', 'edit', tenant.id]">Edit</a>
-        |
-        <a [routerLink]="['/', 'tenants', 'details', tenant.id]">Details</a></li>
+        <li *ngFor="let tenant of tenants">{{ tenant.name }} -
+                <a [routerLink]="['/', 'tenants', 'edit', tenant.id]">{{ 'COMMERCIAL_TENANTS.EDIT' | translate }}</a>
+                |
+                <a [routerLink]="['/', 'tenants', 'details', tenant.id]">{{ 'COMMERCIAL_TENANTS.DETAILS' | translate }}</a>
+        </li>
 </ul>

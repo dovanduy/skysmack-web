@@ -52,10 +52,11 @@ export abstract class FieldsConfig<TRecord, TKey> implements EntityFieldsConfig<
         }
     }
 
-    private getProvidedFields(loadedPackage: LoadedPackage, entity?: LocalObject<TRecord, TKey>): Observable<Field[]> {
+    protected getProvidedFields(loadedPackage: LoadedPackage, entity?: LocalObject<TRecord, TKey>): Observable<Field[]> {
         return this.fieldProviders.providers$.pipe(
             switchMap(providers => {
                 const extractedProviders = providers[loadedPackage && loadedPackage.packageManifest && loadedPackage.packageManifest.id];
+
                 if (extractedProviders && extractedProviders.length > 0) {
                     return combineLatest(
                         extractedProviders.map(provider => {

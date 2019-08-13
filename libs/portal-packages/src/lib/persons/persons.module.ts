@@ -6,7 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgPersonsModule } from '@skysmack/ng-persons';
 import { PortalUiModule, NgMenuProviders } from '@skysmack/portal-ui';
 import { personsComponents, personsEntryComponents } from './persons/components/persons-components';
-import { LanguageService } from '@skysmack/portal-ui';
+
 import { DynamicFormsModule } from '@skysmack/portal-dynamic-forms';
 import { PortalFieldsModule } from '@skysmack/portal-fields';
 import { CoalescingComponentFactoryResolver, NgDashboardProviders } from '@skysmack/ng-framework';
@@ -21,7 +21,7 @@ import { NgPersonsMenuProvider } from './ng-persons-menu-provider';
     NgPersonsModule,
     DynamicFormsModule,
     PersonsRoutingModule,
-    PortalFieldsModule
+    PortalFieldsModule,
   ],
   exports: [],
   declarations: [
@@ -30,9 +30,7 @@ import { NgPersonsMenuProvider } from './ng-persons-menu-provider';
   entryComponents: [
     ...personsEntryComponents
   ],
-  providers: [
-    LanguageService
-  ]
+  providers: []
 })
 export class PersonsModule {
   constructor(
@@ -40,12 +38,12 @@ export class PersonsModule {
     localResolver: ComponentFactoryResolver,
     dashboardProviders: NgDashboardProviders,
     personsDashboardProvider: NgPersonsDashboardProvider,
-    ngMenuProviders: NgMenuProviders, 
+    ngMenuProviders: NgMenuProviders,
     ngPersonsMenuProvider: NgPersonsMenuProvider
   ) {
     coalescingResolver.registerResolver(localResolver);
     dashboardProviders.add(personsDashboardProvider);
     ngMenuProviders
-    .add(ngPersonsMenuProvider);
+      .add(ngPersonsMenuProvider);
   }
 }

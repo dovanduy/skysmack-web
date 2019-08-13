@@ -5,16 +5,19 @@ import { StringFieldComponent } from '@skysmack/portal-fields';
 import { CommercialTenantsValidation } from './commercial-tenants-validation';
 import { LocalObject } from '@skysmack/framework';
 import { Tenant } from './models/tenant';
+import { FieldsConfig, FieldProviders } from '@skysmack/ng-fields';
+import { LoadedPackage } from '@skysmack/ng-framework';
 
 @Injectable({ providedIn: 'root' })
-export class CommercialTenantsFieldsConfig {
+export class CommercialTenantsFieldsConfig extends FieldsConfig<any, any>{
     public validation = new CommercialTenantsValidation();
     public area = '';
     public formRules: FormRule[] = [];
 
-    constructor() { }
-
-    public getFields(entity?: LocalObject<Tenant, number>): Field[] {
+    constructor(public fieldProviders: FieldProviders) {
+        super(fieldProviders);
+    }
+    protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<any, any>): Field[] {
         const fields = [
             new Field({
                 component: StringFieldComponent,
@@ -22,6 +25,7 @@ export class CommercialTenantsFieldsConfig {
                 key: 'name',
                 validators: [Validators.required],
                 order: 1,
+                sortable: true
             }),
 
             new Field({
@@ -30,6 +34,7 @@ export class CommercialTenantsFieldsConfig {
                 key: 'hostname',
                 validators: [Validators.required],
                 order: 1,
+                sortable: true
             }),
 
             new Field({
@@ -38,6 +43,7 @@ export class CommercialTenantsFieldsConfig {
                 key: 'safeSubdomain',
                 validators: [Validators.required],
                 order: 1,
+                sortable: true
             }),
 
             new Field({
@@ -46,6 +52,7 @@ export class CommercialTenantsFieldsConfig {
                 key: 'state',
                 validators: [Validators.required],
                 order: 1,
+                sortable: true
             }),
         ];
 

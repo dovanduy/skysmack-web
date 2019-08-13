@@ -72,10 +72,10 @@
             "BUTTON_PAY": "Pay"
         },
         "QUEUE": {
-            "ADDING": "Adding terminal {{ id }}",
-            "UPDATING": "Updating terminal {{ id }}",
-            "DELETING": "Deleting terminal {{ id }}",
-            "ERROR": "An error occured with terminal {{ id }}. Correct and try again."
+            "ADDING": "Adding terminal {{ name }}",
+            "UPDATING": "Updating terminal {{ name }}",
+            "DELETING": "Deleting terminal {{ name }}",
+            "ERROR": "An error occured with terminal {{ name }}. Correct and try again."
         },
         "ENTITY_ACTION_PROVIDER": {
             "ENTITY_ACTION": {

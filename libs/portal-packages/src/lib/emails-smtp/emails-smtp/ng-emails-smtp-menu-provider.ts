@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
-import { MenuArea, MenuProvider } from '@skysmack/framework';
+import { MenuArea, MenuProvider, SIDEBAR } from '@skysmack/framework';
 import { MenuItem } from '@skysmack/framework';
 import { Guid } from 'guid-typescript';
 import { Observable } from 'rxjs';
@@ -69,7 +69,7 @@ export class NgEmailsSmtpMenuProvider implements MenuProvider {
                 order: 1,
                 icon: 'group_add',
                 permissions: [],
-                providedIn: ['sidebar']
+                providedIn: [SIDEBAR]
             }),
             setConnectedParentPackage(this.store, packagePath)
         ];

@@ -39,7 +39,7 @@ export class NgInvoicesProductsAddToInvoiceFieldsConfig extends FieldsConfig<any
         value: entity ? entity.object.invoiceId : undefined,
         key: 'invoiceId',
         displayKey: 'invoice',
-        displaySubKey: 'object.currencyCode',
+        displaySubKey: 'object.description',
         optionsData$: invoicesPackage$.pipe(switchMap(invoicesPackage => this.invoiceStore.get(invoicesPackage.object.path))),
         getDependencies: () => {
           invoicesPackage$.pipe(
@@ -49,7 +49,7 @@ export class NgInvoicesProductsAddToInvoiceFieldsConfig extends FieldsConfig<any
             take(1)
           ).subscribe();
         },
-        displayNameSelector: 'object.currencyCode',
+        displayNameSelector: 'object.description',
         order: 1,
         validators: [Validators.required]
       }),
@@ -57,12 +57,14 @@ export class NgInvoicesProductsAddToInvoiceFieldsConfig extends FieldsConfig<any
         component: IntFieldComponent,
         value: entity ? entity.object.amount : undefined,
         key: 'amount',
-        validators: [Validators.required]
+        validators: [Validators.required],
+        sortable: true
       }),
       new Field({
         component: HiddenFieldComponent,
         value: entity ? entity.object.productId : this.productId,
         key: 'productId',
+        sortable: true
       }),
     ];
 

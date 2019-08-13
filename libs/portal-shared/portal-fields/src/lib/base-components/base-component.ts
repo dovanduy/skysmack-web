@@ -77,7 +77,9 @@ export class BaseComponent<TAppState, TKey> implements OnInit, OnDestroy {
     }
 
     private setAdditionalPaths() {
-        this.additionalPaths = getAdditionalPaths(this.router, this.packagePath);
+        if (!this.additionalPaths || this.additionalPaths.length === 0) {
+            this.additionalPaths = getAdditionalPaths(this.router, this.packagePath);
+        }
     }
 
     private setTitle() {

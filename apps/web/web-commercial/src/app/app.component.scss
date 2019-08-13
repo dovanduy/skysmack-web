@@ -48,7 +48,7 @@ nav.docs-navbar-header {
       transition: opacity .1s ease, color .1s ease;
 
       &:hover {
-        color: mat-color($primary);
+        color: $primary-color;
         opacity: 1;
       }
     }

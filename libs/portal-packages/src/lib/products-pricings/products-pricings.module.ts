@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { NgProductsPricingsModule } from '@skysmack/ng-products-pricings';
 import { PortalUiModule, NgMenuProviders } from '@skysmack/portal-ui';
-import { LanguageService } from '@skysmack/portal-ui';
+
 import { ProductsPricingsRoutingModule } from './products-pricings-routing.module';
 import { productsSalesPriceComponents } from './products-sales-price/components/products-sales-price-components';
 import { productTypeSalesPriceComponents } from './product-type-sales-price/components/product-type-sales-price-components';
@@ -40,15 +40,13 @@ import { NgProductsSalesPriceMenuProvider } from './products-sales-price/ng-prod
     ...productPriceChangesComponents,
     ...productTypePriceChangesComponents
   ],
-  providers: [
-    LanguageService
-  ]
+  providers: []
 })
 export class ProductsPricingsModule {
   constructor(
     fieldProviders: FieldProviders,
     productPricingsFieldProvider: NgProductPricingsFieldProvider,
-    ngMenuProviders: NgMenuProviders, 
+    ngMenuProviders: NgMenuProviders,
     ngProductsPricingsMenuProvider: NgProductsPricingsMenuProvider,
     ngProductPriceChangesMenuProvider: NgProductPriceChangesMenuProvider,
     ngProductTypePriceChangesMenuProvider: NgProductTypePriceChangesMenuProvider,
@@ -57,10 +55,10 @@ export class ProductsPricingsModule {
   ) {
     fieldProviders.add(ProductsTypeId, productPricingsFieldProvider);
     ngMenuProviders
-    .add(ngProductsPricingsMenuProvider)
-    .add(ngProductPriceChangesMenuProvider)
-    .add(ngProductTypePriceChangesMenuProvider)
-    .add(ngProductTypeSalesPriceMenuProvider)
-    .add(ngProductsSalesPriceMenuProvider)
+      .add(ngProductsPricingsMenuProvider)
+      .add(ngProductPriceChangesMenuProvider)
+      .add(ngProductTypePriceChangesMenuProvider)
+      .add(ngProductTypeSalesPriceMenuProvider)
+      .add(ngProductsSalesPriceMenuProvider)
   }
 }

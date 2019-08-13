@@ -1,9 +1,11 @@
 {
     "dir": "ltr",
     "lang": "en",
-    "name": "Skysmack",
+    "name": "Skysmack Cloud",
     "short_name": "Skysmack",
     "orientation": "any",
+    "start_url": "/?utm_source=webapp",
+    "scope": "/",
     "icons": [
         {
             "src": "//cdn.skysmack.net/android-chrome-192x192.png?v=Kmnj8bBO5w",

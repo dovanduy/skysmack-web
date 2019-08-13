@@ -29,41 +29,55 @@ export class NgInvoicesFieldsConfig extends FieldsConfig<Invoice, number> {
     const fields = [
       new Field({
         component: StringFieldComponent,
+        value: entity ? entity.object.description : undefined,
+        key: 'description',
+        order: 1,
+        showColumn: true,
+        sortable: true
+      }),
+      new Field({
+        component: StringFieldComponent,
         value: entity ? entity.object.currencyCode : undefined,
         key: 'currencyCode',
         validators: [Validators.required],
-        order: 1,
-        showColumn: true
+        order: 2,
+        showColumn: true,
+        sortable: true
       }),
       new Field({
         value: entity ? entity.object.total : undefined,
         key: 'total',
         includeInForm: false,
-        showColumn: true
+        showColumn: true,
+        sortable: true
       }),
       new Field({
         value: entity ? entity.object.totalTax : undefined,
         key: 'totalTax',
         includeInForm: false,
-        showColumn: true
+        showColumn: true,
+        sortable: true
       }),
       new Field({
         value: entity ? entity.object.balance : undefined,
         key: 'balance',
         includeInForm: false,
-        showColumn: true
+        showColumn: true,
+        sortable: true
       }),
       new Field({
         value: entity ? entity.object.paid : undefined,
         key: 'paid',
         includeInForm: false,
-        showColumn: true
+        showColumn: true,
+        sortable: true
       }),
       new Field({
         value: entity ? entity.object.status : undefined,
         key: 'status',
         includeInForm: false,
-        showColumn: true
+        showColumn: true,
+        sortable: true
       })
     ];
 

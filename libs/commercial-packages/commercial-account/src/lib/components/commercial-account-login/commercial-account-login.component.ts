@@ -1,15 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Field, FormHelper } from '@skysmack/ng-dynamic-forms';
 import { CommercialAccountLoginFieldsConfig } from './commercial-account-login-fields-config';
 import { trigger, transition, style, animate } from '@angular/animations';
 import { SubscriptionHandler } from '@skysmack/framework';
 import { AuthenticationActions } from '@skysmack/redux';
-import { CommercialAccountService } from '../../services';
 import { NgRedux } from '@angular-redux/store';
 import { NgAuthenticationStore } from '@skysmack/ng-framework';
-import { Router } from '@angular/router';
-import { filter } from 'rxjs/operators';
+import { Router, ActivatedRoute } from '@angular/router';
+import { filter, map } from 'rxjs/operators';
 import { OAuth2Requests } from '@skysmack/ng-oauth2';
 
 @Component({
@@ -35,37 +34,59 @@ import { OAuth2Requests } from '@skysmack/ng-oauth2';
     )
   ]
 })
-export class CommercialAccountLoginComponent implements OnInit {
+export class CommercialAccountLoginComponent implements OnInit, OnDestroy {
   public loggingIn = false;
   public error = false;
   public success = false;
   public fields$: Observable<Field[]>;
   public subscriptionHandler = new SubscriptionHandler();
+  public removeCloseButton = false;
 
   constructor(
     public router: Router,
     public fieldsConfig: CommercialAccountLoginFieldsConfig,
     public ngRedux: NgRedux<any>,
     public requests: OAuth2Requests,
-    public store: NgAuthenticationStore
+    public store: NgAuthenticationStore,
+    public activatedRoute: ActivatedRoute
   ) { }
 
   ngOnInit() {
+    this.subscriptionHandler.register(this.store.isCurrentUserAuthenticated().pipe(
+      filter(loggedIn => loggedIn === true),
+      map(isAuthenticated => {
+        if (isAuthenticated) {
+          this.success = true;
+          this.router.navigate(['/', 'account', 'dashboard']);
+        }
+      })
+    ).subscribe());
     this.clearLoginErrors();
-    this.fields$ = of(this.fieldsConfig.getFields());
+    this.fields$ = this.fieldsConfig.getFields(null, null);
     this.listenForErrors();
+    this.subscriptionHandler.register(
+      this.activatedRoute.parent.data.pipe(
+        map(data => {
+          if (data) {
+            this.removeCloseButton = data.removeCloseButton;
+          }
+        })
+      ).subscribe()
+    );
+  }
+
+  ngOnDestroy() {
+    this.subscriptionHandler.unsubscribe();
   }
 
   public onSubmit(fh: FormHelper) {
-    // TODO: TEMP!!! REMOVE WHEN LOGIN WORKS
-    this.router.navigate(['account', 'dashboard']);
 
-    // fh.formValid(() => {
-    //   this.login(fh.form.getRawValue());
-    // }, false);
+    fh.formValid(() => {
+      this.login(fh.form.getRawValue());
+    }, false);
 
     // // Clear error when user starts to type again
-    // this.subscriptionHandler.register(fh.form.valueChanges.subscribe(() => this.error = false));
+    this.subscriptionHandler.register(fh.form.valueChanges.subscribe(() => this.error = false));
   }
 
   private login(credentials: { email: string, password: string, staySignedIn: boolean }) {
@@ -75,12 +96,6 @@ export class CommercialAccountLoginComponent implements OnInit {
 
     this.subscriptionHandler.register(this.requests.login(credentials.email, credentials.password, credentials.staySignedIn, packagePath).subscribe(loginResultAction => this.ngRedux.dispatch(loginResultAction)));
     this.loggingIn = true;
-
-    this.subscriptionHandler.register(this.store.isCurrentUserAuthenticated()
-      .pipe(filter(loggedIn => loggedIn === true)).subscribe(() => {
-        this.success = true;
-        this.router.navigate(['account', 'dashboard']);
-      }));
   }
 
   private listenForErrors() {

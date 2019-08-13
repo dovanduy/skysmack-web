@@ -35,10 +35,10 @@
             "VALIDATION": {}
         },
         "QUEUE": {
-            "ADDING": "Adding {{ ruleId }}",
-            "UPDATING": "Updating {{ ruleId }}",
-            "DELETING": "Deleting {{ ruleId }}",
-            "ERROR": "An error occured with {{ ruleId }}. Correct and try again."
+            "ADDING": "Adding {{ permission }} permission",
+            "UPDATING": "Updating {{ permission }} permission",
+            "DELETING": "Deleting {{ permission }} permission",
+            "ERROR": "An error occured with {{ permission }} permission. Correct and try again."
         }
     }
 }

@@ -12,6 +12,8 @@ import { FieldProviders } from '@skysmack/ng-fields';
 import { Router } from '@angular/router';
 import { UI_AREA_KEY } from '@skysmack/portal-ui';
 import { FormRule, SetFieldKeyRule, Field, SelectField } from '@skysmack/ng-dynamic-forms';
+import { Observable, combineLatest, of } from 'rxjs';
+import { switchMap, distinctUntilChanged, map } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
 export class NgFieldsConfig extends FieldsConfig<FieldSchemaViewModel, string> {
@@ -49,7 +51,8 @@ export class NgFieldsConfig extends FieldsConfig<FieldSchemaViewModel, string> {
                 key: 'display',
                 validators: [Validators.required],
                 order: 1,
-                showColumn: true
+                showColumn: true,
+                sortable: true
             }),
 
             new Field({
@@ -59,7 +62,8 @@ export class NgFieldsConfig extends FieldsConfig<FieldSchemaViewModel, string> {
                 validators: [Validators.required],
                 order: 2,
                 disabled: field ? true : false,
-                showColumn: true
+                showColumn: true,
+                sortable: true
             }),
 
             new SelectField({
@@ -71,7 +75,8 @@ export class NgFieldsConfig extends FieldsConfig<FieldSchemaViewModel, string> {
                 optionsData$: this.store.getAvailableFields(stateKey),
                 valueSelector: 'object.name',
                 disabled: field ? true : false,
-                showColumn: true
+                showColumn: true,
+                sortable: true
             }),
 
             new Field({
@@ -79,23 +84,33 @@ export class NgFieldsConfig extends FieldsConfig<FieldSchemaViewModel, string> {
                 value: field ? field.object.validators : undefined,
                 key: 'validators',
                 order: 4,
-            }),
-
-            // new Field({
-            //     component: FieldPermissionFieldComponent,
-            //     value: field ? field.object.writePermission : undefined,
-            //     key: 'writePermission',
-            //     order: 5,
-            // }),
-
-            // new Field({
-            //     component: FieldPermissionFieldComponent,
-            //     value: field ? field.object.readPermission : undefined,
-            //     key: 'readPermission',
-            //     order: 6,
-            // }),
+                sortable: true
+            })
         ];
 
         return fields;
+    }
+
+    protected getProvidedFields(loadedPackage: LoadedPackage, entity?: LocalObject<FieldSchemaViewModel, string>): Observable<Field[]> {
+        return this.fieldProviders.providers$.pipe(
+            switchMap(providers => {
+                const extractedProviders = providers['fields'];
+
+                if (extractedProviders && extractedProviders.length > 0) {
+                    return combineLatest(
+                        extractedProviders.map(provider => {
+                            return provider.getFields(loadedPackage._package.path, this.area, entity);
+                        })
+                    ).pipe(
+                        distinctUntilChanged(),
+                        map((values: [Field[]]) => {
+                            return values.reduce((acc: Field[], cur: Field[]) => acc.concat(cur), []);
+                        })
+                    );
+                } else {
+                    return of([]);
+                }
+            })
+        );
     }
 }

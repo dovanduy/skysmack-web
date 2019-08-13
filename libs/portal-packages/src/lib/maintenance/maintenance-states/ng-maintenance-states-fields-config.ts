@@ -29,7 +29,8 @@ export class NgMaintenanceStatesFieldsConfig extends FieldsConfig<MaintenanceSta
                 label: 'Description',
                 validators: [Validators.required],
                 order: 1,
-                showColumn: true
+                showColumn: true,
+                sortable: true
             }),
 
             new SelectField({
@@ -41,7 +42,8 @@ export class NgMaintenanceStatesFieldsConfig extends FieldsConfig<MaintenanceSta
                 optionsData$: of(MaintenanceEntityStatus),
                 optionsDataType: 'ts-enum',
                 order: 2,
-                showColumn: true
+                showColumn: true,
+                sortable: true
             })
         ];
 

@@ -113,6 +113,9 @@
     "ng-skysmack": {
       "tags": []
     },
+    "ng-translation": {
+      "tags": []
+    },
     "portal-shared-portal-fields": {
       "tags": []
     },
@@ -180,6 +183,12 @@
       "tags": []
     },
     "commercial-tenants": {
+      "tags": []
+    },
+    "commercial-users": {
+      "tags": []
+    },
+    "commercial-ui-partners": {
       "tags": []
     }
   }

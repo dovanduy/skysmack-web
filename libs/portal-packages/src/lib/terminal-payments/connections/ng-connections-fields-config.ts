@@ -32,7 +32,8 @@ export class NgConnectionsFieldsConfig extends FieldsConfig<Connection, Connecti
                 displayModifier: (column: DisplayColumn, providedEntity: LocalObject<Connection, ConnectionKey>): string => TerminalStatus[providedEntity.object.status],
                 order: 1,
                 showColumn: true,
-                includeInForm: false
+                includeInForm: false,
+                sortable: true
             }),
             new SelectField({
                 component: SelectFieldComponent,
@@ -42,7 +43,7 @@ export class NgConnectionsFieldsConfig extends FieldsConfig<Connection, Connecti
                 key: 'clientId',
                 displayKey: 'client',
                 displaySubKey: 'object.name',
-                order: 1,
+                order: 2,
                 showColumn: true
             }),
             new SelectField({
@@ -53,7 +54,7 @@ export class NgConnectionsFieldsConfig extends FieldsConfig<Connection, Connecti
                 displaySubKey: 'object.name',
                 optionsData$: this.terminalsStore.get(loadedPackage._package.path),
                 getDependencies: () => { this.terminalsActions.getPaged(loadedPackage._package.path, new PagedQuery()); },
-                order: 2,
+                order: 3,
                 showColumn: true
             }),
             new Field({
@@ -62,9 +63,10 @@ export class NgConnectionsFieldsConfig extends FieldsConfig<Connection, Connecti
                 key: 'online',
                 displayKey: 'client',
                 displaySubKey: 'object.online',
-                order: 1,
+                order: 4,
                 showColumn: true,
-                includeInForm: false
+                includeInForm: false,
+                sortable: true
             }),
         ];
 

@@ -23,13 +23,15 @@ export class NgUserSettingsFieldsConfig extends FieldsConfig<UserSettings, unkno
                 component: StringFieldComponent,
                 value: settings ? settings.object.allowedUserNameCharacters : undefined,
                 key: 'allowedUserNameCharacters',
-                order: 1
+                order: 1,
+                sortable: true
             }),
             new Field({
                 component: CheckboxFieldComponent,
                 value: settings ? settings.object.requireUniqueEmail : false,
                 key: 'requireUniqueEmail',
-                order: 2
+                order: 2,
+                sortable: true
             })
         ];
 

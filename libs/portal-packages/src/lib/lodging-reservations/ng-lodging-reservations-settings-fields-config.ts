@@ -23,12 +23,14 @@ export class NgLodgingReservationsSettingsFieldsConfig extends FieldsConfig<Lodg
                 component: IntFieldComponent,
                 value: settings ? settings.object.earliestCheckIn : undefined,
                 key: 'earliestCheckIn',
+                sortable: true,
                 order: 1
             }),
             new Field({
                 component: IntFieldComponent,
                 value: settings ? settings.object.latestCheckOut : undefined,
                 key: 'latestCheckOut',
+                sortable: true,
                 order: 2
             })
         ];

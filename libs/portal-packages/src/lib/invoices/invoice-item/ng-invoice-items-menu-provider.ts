@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
-import { MenuArea, MenuProvider, LocalObject, Package } from '@skysmack/framework';
+import { MenuArea, MenuProvider, LocalObject, Package, SPEEDDIAL, SIDEBAR } from '@skysmack/framework';
 import { MenuItem } from '@skysmack/framework';
 import { Guid } from 'guid-typescript';
 import { Observable } from 'rxjs';
@@ -37,7 +37,7 @@ export class NgInvoiceItemsMenuProvider implements MenuProvider {
                 this.store,
                 (_package: LocalObject<Package, string>) => new MenuItem({
                     area: 'actions',
-                    providedIn: ['sidebar', 'speedDial']
+                    providedIn: [SIDEBAR, SPEEDDIAL]
                 }).asEventAction(`${_package.object.name}`, (_this: NgInvoiceItemsMenuProvider) => {
                     const dialogRef = _this.dialog.open(InvoicesProductsAddProductsComponent, {
                         width: '500px',
@@ -74,10 +74,10 @@ export class NgInvoiceItemsMenuProvider implements MenuProvider {
                 permissions: [
                     InvoicesPermissions.addInvoiceItems
                 ],
-                providedIn: ['sidebar', 'speedDial']
+                providedIn: [SIDEBAR, SPEEDDIAL]
             }),
             new MenuItem({
-                url: 'fields',
+                url: '/' + packagePath + '/items/fields',
                 displayName: this.translationPrefix + 'FIELDS',
                 area: 'manage',
                 order: 2,
@@ -85,7 +85,7 @@ export class NgInvoiceItemsMenuProvider implements MenuProvider {
                 permissions: [
                     InvoicesPermissions.findInvoiceItemFields
                 ],
-                providedIn: ['sidebar']
+                providedIn: [SIDEBAR]
             }),
             setBackButton(packagePath)
         ];

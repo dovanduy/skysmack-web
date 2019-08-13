@@ -19,8 +19,10 @@
             "EDIT": "Edit settings"
         },
         "QUEUE": {
-            "UPDATING": "Updating",
-            "ERROR": "An error occured when trying to change settings."
+            "ADDING": "Adding {{ name }}",
+            "UPDATING": "Updating {{ name }}",
+            "DELETING": "Deleting {{ name }}",
+            "ERROR": "An error occured with {{ name }}. Correct and try again."
         }
     }
 }

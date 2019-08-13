@@ -7,11 +7,10 @@ import { NgProductsModule } from '@skysmack/ng-products';
 import { PortalUiModule, NgMenuProviders } from '@skysmack/portal-ui';
 import { productsComponents } from './products/components/products-components';
 import { productTypesComponents } from './product-types/components/product-types-component';
-import { LanguageService } from '@skysmack/portal-ui';
+
 import { DynamicFormsModule } from '@skysmack/portal-dynamic-forms';
 import { PortalFieldsModule } from '@skysmack/portal-fields';
 import { NgProductsMenuProvider } from './products/ng-products-menu-provider';
-import { NgProductTypesMenuProvider } from './product-types/ng-product-types-menu-provider';
 
 @NgModule({
   imports: [
@@ -28,18 +27,14 @@ import { NgProductTypesMenuProvider } from './product-types/ng-product-types-men
     ...productsComponents,
     ...productTypesComponents,
   ],
-  providers: [
-    LanguageService
-  ]
+  providers: []
 })
 export class ProductsModule {
   constructor(
-    ngMenuProviders: NgMenuProviders, 
+    ngMenuProviders: NgMenuProviders,
     ngProductsMenuProvider: NgProductsMenuProvider,
-    ngProductTypesMenuProvider: NgProductTypesMenuProvider
   ) {
     ngMenuProviders
-    .add(ngProductsMenuProvider)
-    .add(ngProductTypesMenuProvider)
+    .add(ngProductsMenuProvider);
    }
 }

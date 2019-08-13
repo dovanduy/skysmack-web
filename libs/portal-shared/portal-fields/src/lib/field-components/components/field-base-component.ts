@@ -1,6 +1,6 @@
 import { Input, OnDestroy, ElementRef, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { FormHelper, Field, FormRule } from '@skysmack/ng-dynamic-forms';
+import { FormHelper, Field, FormRule, DynamicField } from '@skysmack/ng-dynamic-forms';
 import { SubscriptionHandler, StrIndex } from '@skysmack/framework';
 
 interface AddedEvent {
@@ -10,7 +10,7 @@ interface AddedEvent {
     callback: Function;
 }
 
-export abstract class FieldBaseComponent<TField extends Field> implements OnInit, OnDestroy {
+export abstract class FieldBaseComponent<TField extends Field> implements DynamicField, OnInit, OnDestroy {
     @Input() public fh: FormHelper;
     @Input() public fieldKey: string;
     @Input() public field: TField;
@@ -23,6 +23,10 @@ export abstract class FieldBaseComponent<TField extends Field> implements OnInit
     public initted: boolean;
 
     ngOnInit() {
+    }
+
+    ngOnDestroy() {
+        this.subscriptionHandler.unsubscribe();
     }
 
     /**
@@ -130,9 +134,5 @@ export abstract class FieldBaseComponent<TField extends Field> implements OnInit
                 }
             });
         }
-    }
-
-    ngOnDestroy() {
-        this.subscriptionHandler.unsubscribe();
     }
 }

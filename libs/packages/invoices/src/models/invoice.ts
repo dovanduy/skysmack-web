@@ -2,6 +2,7 @@ import { DocumentRecord, LocalObject } from "@skysmack/framework";
 import { InvoiceItem } from './invoice-item';
 
 export class Invoice extends DocumentRecord<number> {
+    public description: string;
     public currencyCode: number;
     public invoiceItems: LocalObject<InvoiceItem, number>;
 

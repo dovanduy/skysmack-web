@@ -6,8 +6,6 @@ import { CurrentUser, IsAuthenticated, TokenExpiresSoon } from '@skysmack/framew
 import { NgAuthenticationStore, NgAuthenticationActions } from '@skysmack/ng-framework';
 import { NgRedux } from '@angular-redux/store';
 import { OAuth2Requests, InterceptorSkipHeader } from '../requests/oauth2-requests';
-import { RESET_STATE } from '@redux-offline/redux-offline/lib/constants';
-import { ReduxAction, AuthenticationActions } from '@skysmack/redux';
 
 @Injectable({ providedIn: 'root' })
 export class RefreshTokenInterceptor implements HttpInterceptor {
@@ -49,12 +47,21 @@ export class RefreshTokenInterceptor implements HttpInterceptor {
                                     flatMap(() => {
                                         return currentUser$.pipe(
                                             flatMap((currentUserUpdated) => {
-                                                return next.handle(this.addTokenToRequest(request, currentUserUpdated));
+                                                if (IsAuthenticated(currentUserUpdated)) {
+                                                    // Use new user info to get request
+                                                    return next.handle(this.addTokenToRequest(request, currentUserUpdated));
+                                                } else {
+                                                    // Something went wrong, assume current user no longer has a valid access token
+                                                    // Clear user
+                                                    this.authenticationActions.logout();
+                                                    // Return request without access token
+                                                    return next.handle(request);
+                                                }
                                             })
                                         )
                                     })
                                 );
-                            } else if (currentUser && currentUser.refresh_token && currentUser.refresh_token.length > 0 && !TokenExpiresSoon(currentUser)) {
+                            } else if (currentUser && currentUser.refresh_token && currentUser.refresh_token.length > 0 && TokenExpiresSoon(currentUser)) {
                                 // If user token is soon to expire, start a request for a new token in the background.
                                 this.refreshToken(currentUser);
                             }
@@ -64,7 +71,7 @@ export class RefreshTokenInterceptor implements HttpInterceptor {
                                 catchError(error => {
                                     // Catch if refresh token timeout is misaligned with backend
                                     // Try to refresh token if error is 401, it was attempted with authorization and a refresh token exist for the user
-                                    if (error instanceof HttpErrorResponse && error.status === 401 && request.headers.has('Authorization') && currentUser) {
+                                    if (error instanceof HttpErrorResponse && error.status === 401 && currentUser && currentUser.token_type && currentUser.access_token) {
                                         if (currentUser.refresh_token) {
                                             // Refresh token and block other requests
                                             this.refreshToken(currentUser);
@@ -114,7 +121,7 @@ export class RefreshTokenInterceptor implements HttpInterceptor {
                 }),
                 catchError((error) => {
                     // We assume the user should be logged out
-                    this.authenticationActions.logout();                    
+                    this.authenticationActions.logout();
                     // Refreshing token went wrong, however we still want to stop blocking. 
                     this.isRefreshingToken$.next(false);
                     // Throw error

@@ -60,12 +60,12 @@
             "STATES": "States",
             "TYPES": "Types",
             "BACK": "Back"
+        },
+        "QUEUE": {
+            "ADDING": "Adding {{ description }}",
+            "UPDATING": "Updating {{ description }}",
+            "DELETING": "Deleting {{ description }}",
+            "ERROR": "An error occured with {{ description }}. Correct and try again."
         }
-    },
-    "QUEUE": {
-        "ADDING": "Adding {{ description }}",
-        "UPDATING": "Updating {{ description }}",
-        "DELETING": "Deleting {{ description }}",
-        "ERROR": "An error occured with {{ description }}. Correct and try again."
     }
 }

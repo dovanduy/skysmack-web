@@ -4,7 +4,7 @@ import { PackagesRoutingModule } from './packages-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { PortalUiModule, NgMenuProviders } from '@skysmack/portal-ui';
 import { packagesComponents } from './components/packages-components';
-import { LanguageService } from '@skysmack/portal-ui';
+
 import { NgPackagesModule } from '@skysmack/ng-packages';
 import { DynamicFormsModule } from '@skysmack/portal-dynamic-forms';
 import { NgPackagesMenuProvider } from './ng-packages-menu-provider';
@@ -37,16 +37,14 @@ import { NgPackagesMenuProvider } from './ng-packages-menu-provider';
   declarations: [
     ...packagesComponents
   ],
-  providers: [
-    LanguageService
-  ]
+  providers: []
 })
 export class PackagesModule {
   constructor(
-    ngMenuProviders: NgMenuProviders, 
+    ngMenuProviders: NgMenuProviders,
     ngPackagesMenuProvider: NgPackagesMenuProvider,
   ) {
     ngMenuProviders
-    .add(ngPackagesMenuProvider)
-   }
+      .add(ngPackagesMenuProvider)
+  }
 }

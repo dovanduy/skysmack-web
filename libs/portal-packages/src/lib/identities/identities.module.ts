@@ -1,7 +1,8 @@
 import { NgModule, ComponentFactoryResolver } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-import { LanguageService, NgMenuProviders } from '@skysmack/portal-ui';
+import { NgMenuProviders } from '@skysmack/portal-ui';
+
 import { NgIdentitiesModule } from '@skysmack/ng-identities';
 import { PortalUiModule } from '@skysmack/portal-ui';
 import { IdentitiesRoutingModule } from './identities-routing.module';
@@ -52,7 +53,6 @@ import { NgApplicationsMenuProvider } from './identity-applications/ng-applicati
     RolesSelectFieldComponent
   ],
   providers: [
-    LanguageService,
     { provide: 'NgLockoutSettingsFieldsConfig', useClass: NgLockoutSettingsFieldsConfig },
     { provide: 'NgUserSettingsFieldsConfig', useClass: NgUserSettingsFieldsConfig },
     { provide: 'NgPasswordSettingsFieldsConfig', useClass: NgPasswordSettingsFieldsConfig },
@@ -71,9 +71,9 @@ export class IdentitiesModule {
   ) {
     coalescingResolver.registerResolver(localResolver);
     ngMenuProviders
-    .add(ngIdentitiesIndexMenuProvider)
-    .add(ngApplicationsMenuProvider)
-    .add(ngRolesMenuProvider)
-    .add(ngUsersMenuProvider)
+      .add(ngIdentitiesIndexMenuProvider)
+      .add(ngApplicationsMenuProvider)
+      .add(ngRolesMenuProvider)
+      .add(ngUsersMenuProvider)
   }
 }

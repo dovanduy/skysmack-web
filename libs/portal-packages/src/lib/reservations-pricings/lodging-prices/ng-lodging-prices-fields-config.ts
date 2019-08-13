@@ -44,8 +44,10 @@ export class NgLodgingPricesFieldsConfig extends FieldsConfig<LodgingPrice, numb
                     }
                 ],
                 order: 1,
-                showColumn: true
-            } as SelectField),
+                showColumn: true,
+                sortable: true
+            } as SelectField
+            ),
             new SelectField({
                 component: SelectFieldComponent,
                 value: entity ? entity.object.recordId : undefined,
@@ -70,7 +72,8 @@ export class NgLodgingPricesFieldsConfig extends FieldsConfig<LodgingPrice, numb
                 key: 'price',
                 validators: [Validators.required],
                 order: 3,
-                showColumn: true
+                showColumn: true,
+                sortable: true
             })
         ];
 

@@ -31,25 +31,29 @@ export class NgLodgingSettingsFieldsConfig extends FieldsConfig<LodgingSettings,
                 component: StringFieldComponent,
                 value: initializedSettings ? initializedSettings.object.name : undefined,
                 key: 'name',
-                order: 1
+                order: 1,
+                sortable: true
             }),
             new Field({
                 component: DateFieldComponent,
                 value: initializedSettings ? initializedSettings.object.DefaultCheckIn : undefined,
                 key: 'DefaultCheckIn',
-                order: 2
+                order: 2,
+                sortable: true
             }),
             new Field({
                 component: DateFieldComponent,
                 value: initializedSettings ? initializedSettings.object.DefaultCheckOut : undefined,
                 key: 'DefaultCheckOut',
-                order: 3
+                order: 3,
+                sortable: true
             }),
             new Field({
                 component: StringFieldComponent,
                 value: initializedSettings ? initializedSettings.object.timeZoneId : undefined,
                 key: 'timeZoneId',
-                order: 3
+                order: 3,
+                sortable: true
             })
         ];
 

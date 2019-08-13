@@ -28,7 +28,9 @@ export class NgRecoverPasswordFieldsConfig extends FieldsConfig<string, unknown>
                 component: StringFieldComponent,
                 value: entity ? entity.object : undefined,
                 key: 'token',
+                order: 1,
                 validators: [Validators.required],
+                sortable: true
             }),
             new Field({
                 component: PasswordFieldComponent,
@@ -38,6 +40,7 @@ export class NgRecoverPasswordFieldsConfig extends FieldsConfig<string, unknown>
                 validators: [Validators.required, CustomValidators.validPassword()],
                 order: 2,
                 placeholder: 'Password',
+                sortable: true
             }),
 
             new Field({
@@ -48,6 +51,7 @@ export class NgRecoverPasswordFieldsConfig extends FieldsConfig<string, unknown>
                 validators: [Validators.required],
                 order: 3,
                 placeholder: 'Password',
+                sortable: true
             })
         ];
 

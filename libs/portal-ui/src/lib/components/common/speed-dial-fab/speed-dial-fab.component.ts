@@ -1,6 +1,6 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { speedDialFabAnimations } from './speed-dial-fab.animations';
-import { MenuItem } from '@skysmack/framework';
+import { MenuItem, SPEEDDIAL } from '@skysmack/framework';
 import { Observable } from 'rxjs';
 import { NgMenuProviders } from '../../../navigation/ng-menu-providers';
 import { Router } from '@angular/router';
@@ -29,7 +29,7 @@ export class SpeedDialFabComponent implements OnInit {
         const packagePath = this.router.url.split('/')[1];
         this.menuItems$ = this.ngMenuProviders.getMenuAreaItems(packagePath, this.componentKey).pipe(
             map(menuAreaItems => {                
-                return menuAreaItems.filter(area => area && area.items && area.items.length > 0).map(area => area.items.filter(item => item.providedIn.includes('speedDial'))).reduce((a,b) => a.concat(b),[]);                
+                return menuAreaItems.filter(area => area && area.items && area.items.length > 0).map(area => area.items.filter(item => item.providedIn.includes(SPEEDDIAL))).reduce((a,b) => a.concat(b),[]);                
             })
         );
     }

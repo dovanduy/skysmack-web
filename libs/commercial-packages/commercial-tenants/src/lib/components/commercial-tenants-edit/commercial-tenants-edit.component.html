@@ -1,4 +1,4 @@
 <ss-dynamic-form *ngIf="fields$" [noSidebar]="true" [fields$]="fields$" [validation]="fieldsConfig.validation"
-    [rules]="fieldsConfig.formRules" [removeCloseButton]="true" [buttonText]="'Create'" (submitted)="onSubmit($event)">
-    <h2>Create tenant</h2>
+    [rules]="fieldsConfig.formRules" [removeCloseButton]="true" [buttonText]="'COMMERCIAL_TENANTS.EDIT' | translate" (submitted)="onSubmit($event)">
+    <h2>{{ 'COMMERCIAL_TENANTS.EDITTENANT' | translate }}</h2>
 </ss-dynamic-form>

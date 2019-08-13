@@ -7,7 +7,7 @@ import { NgTerminalPaymentsModule } from '@skysmack/ng-terminal-payments';
 import { PortalUiModule, MenuItemActionProviders, NgMenuProviders } from '@skysmack/portal-ui';
 import { terminalsComponents } from './terminals/components/terminals-components';
 import { receiptsComponents } from './receipts/components/receipts-component';
-import { LanguageService } from '@skysmack/portal-ui';
+
 import { clientsComponents } from './clients/components/clients-component';
 import { terminalPaymentsIndexComponents } from './components/teminal-payments-index-components';
 import { NgInvoicesTerminalPaymentsMenuItemActionProvider } from './ng-invoices-terminal-payments-menu-item-action-provider';
@@ -44,9 +44,7 @@ import { connectionsComponents } from './connections/components/connections-comp
   entryComponents: [
     TerminalsPayComponent
   ],
-  providers: [
-    LanguageService
-  ]
+  providers: []
 })
 export class TerminalPaymentsModule {
   constructor(
@@ -55,7 +53,7 @@ export class TerminalPaymentsModule {
     // Make entry components available
     coalescingResolver: CoalescingComponentFactoryResolver,
     localResolver: ComponentFactoryResolver,
-    ngMenuProviders: NgMenuProviders, 
+    ngMenuProviders: NgMenuProviders,
     ngTerminalPaymentsIndexMenuProvider: NgTerminalPaymentsIndexMenuProvider,
     ngClientsMenuProvider: NgClientsMenuProvider,
     ngReceiptsMenuProvider: NgReceiptsMenuProvider,
@@ -68,10 +66,10 @@ export class TerminalPaymentsModule {
     coalescingResolver.registerResolver(localResolver);
 
     ngMenuProviders
-    .add(ngTerminalPaymentsIndexMenuProvider)
-    .add(ngClientsMenuProvider)
-    .add(ngReceiptsMenuProvider)
-    .add(ngTerminalsMenuProvider)
-    .add(ngConnectionsMenuProvider)
+      .add(ngTerminalPaymentsIndexMenuProvider)
+      .add(ngClientsMenuProvider)
+      .add(ngReceiptsMenuProvider)
+      .add(ngTerminalsMenuProvider)
+      .add(ngConnectionsMenuProvider)
   }
 }

@@ -2,7 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 
-import { LanguageService, NgMenuProviders } from '@skysmack/portal-ui';
+import { NgMenuProviders } from '@skysmack/portal-ui';
+
 import { PortalUiModule } from '@skysmack/portal-ui';
 import { NgEmailsSmtpModule } from '../../../../ng-packages/ng-email-smtp/src/lib';
 import { EmailsSmtpRoutingModule } from './emails-smtp-routing.module';
@@ -28,7 +29,6 @@ import { NgEmailsSmtpMenuProvider } from './emails-smtp/ng-emails-smtp-menu-prov
     ...emailsSmtpComponents
   ],
   providers: [
-    LanguageService,
     { provide: 'NgEmailsSmptSettingsFieldsConfig', useClass: NgEmailsSmptSettingsFieldsConfig },
   ]
 })

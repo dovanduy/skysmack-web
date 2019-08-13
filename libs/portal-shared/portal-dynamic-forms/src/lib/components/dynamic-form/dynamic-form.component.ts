@@ -28,12 +28,12 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
   public editorItem$: Observable<LocalObject<any, any>>;
   public production = GlobalProperties.production;
   public fh: FormHelper;
-  public subscriptionHander = new SubscriptionHandler();
+  public subscriptionHandler = new SubscriptionHandler();
 
   constructor(
     public fb: FormBuilder,
-    public editorNavService: EditorNavService,
-    public skysmackStore: NgSkysmackStore
+    public skysmackStore: NgSkysmackStore,
+    public editorNavService: EditorNavService
   ) { }
 
   ngOnInit() {
@@ -53,7 +53,7 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.subscriptionHander.unsubscribe();
+    this.subscriptionHandler.unsubscribe();
   }
 
   public trackByFieldKey(field: Field) {
@@ -155,6 +155,6 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
    * Subscribes to any changes in the form. The form is validated when a change occurs or the form is submitted.
    */
   private validateOnChange(formHelper: FormHelper) {
-    this.subscriptionHander.register(formHelper.form.valueChanges.subscribe(() => formHelper.validateForm(formHelper.form)));
+    this.subscriptionHandler.register(formHelper.form.valueChanges.subscribe(() => formHelper.validateForm(formHelper.form)));
   }
 }
