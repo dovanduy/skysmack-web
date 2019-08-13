@@ -42,10 +42,10 @@
             }
         },
         "QUEUE": {
-            "ADDING": "Adding connection {{ id }}",
-            "UPDATING": "Updating connection {{ id }}",
-            "DELETING": "Deleting connection {{ id }}",
-            "ERROR": "An error occured with connection {{ id }}. Correct and try again."
+            "ADDING": "Adding the connection with the client: {{ client }}",
+            "UPDATING": "Updating the connection with the client: {{ client }}",
+            "DELETING": "Deleting the connection with the client: {{ client }}",
+            "ERROR": "An error occured with the connection with the client: {{ client }}. Correct and try again."
         }
     }
 }
