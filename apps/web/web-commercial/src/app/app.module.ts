@@ -26,10 +26,6 @@ import { GettingStartedComponent } from './pages/getting-started/getting-started
 import { NgTranslationModule, LanguageService } from '@skysmack/ng-translation';
 import { AuthenticatedLoadStrategy } from './authenticated-load-strategy';
 
-import { commercialAccountRoute } from './packages/commercial_account_wrapper.module';
-import { commercialUsersRoute } from './packages/commercial_users_wrapper.module';
-import { commercialTenantsRoute } from './packages/commercial_tenants_wrapper.module';
-
 @NgModule({
   declarations: [AppComponent, StartComponent, WhyComponent, SolutionsComponent, ProductsComponent, PricingsComponent, GettingStartedComponent],
   imports: [
@@ -38,9 +34,6 @@ import { commercialTenantsRoute } from './packages/commercial_tenants_wrapper.mo
     NgOAuth2Module,
     NgTranslationModule,
     RouterModule.forRoot([
-      // commercialAccountRoute,
-      // commercialTenantsRoute,
-      // commercialUsersRoute,
       { path: 'account', loadChildren: './packages/commercial_account_wrapper.module#CommercialAccountWrapperModule' },
       { path: 'tenants', loadChildren: './packages/commercial_tenants_wrapper.module#CommercialTenantsWrapperModule' },
       { path: 'users', loadChildren: './packages/commercial_users_wrapper.module#CommercialUsersWrapperModule' },
