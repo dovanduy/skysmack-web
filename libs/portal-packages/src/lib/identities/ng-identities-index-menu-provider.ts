@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
-import { MenuArea, safeHasValue, Package, AllowAccessFor, MenuProvider } from '@skysmack/framework';
+import { MenuArea, safeHasValue, Package, AllowAccessFor, MenuProvider, TOPBAR } from '@skysmack/framework';
 import { MenuItem } from '@skysmack/framework';
 import { IdentitiesPermissions } from '@skysmack/packages-identities';
 import { map } from 'rxjs/operators';
@@ -72,7 +72,7 @@ export class NgIdentitiesIndexMenuProvider implements MenuProvider {
                     .map(_package => new MenuItem({
                         area: 'identities',
                         allowAccessFor: AllowAccessFor.authenticated,
-                        providedIn: ['top']
+                        providedIn: [TOPBAR]
                     }).asUrlAction(_package.path, _package.name, 'account_circle'))
                 );
             }

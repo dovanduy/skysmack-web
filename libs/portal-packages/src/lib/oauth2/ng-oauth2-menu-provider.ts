@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
-import { MenuArea, safeHasValue, Package, AllowAccessFor, MenuProvider } from '@skysmack/framework';
+import { MenuArea, safeHasValue, Package, AllowAccessFor, MenuProvider, TOPBAR } from '@skysmack/framework';
 import { MenuItem } from '@skysmack/framework';
 import { NgAuthenticationActions } from '@skysmack/ng-framework';
 import { map } from 'rxjs/operators';
@@ -45,7 +45,7 @@ export class NgOAuth2MenuProvider implements MenuProvider {
                     new MenuItem({
                         area: 'identities',
                         allowAccessFor: AllowAccessFor.anonymous,
-                        providedIn: ['top']
+                        providedIn: [TOPBAR]
                     }).asEventAction(_package.name, (_this: NgOAuth2MenuProvider) => {
                         _this.dialog.open(LoginComponent, {
                             width: '500px',
@@ -55,7 +55,7 @@ export class NgOAuth2MenuProvider implements MenuProvider {
                     new MenuItem({
                         area: 'identities',
                         allowAccessFor: AllowAccessFor.authenticated,
-                        providedIn: ['top']
+                        providedIn: [TOPBAR]
                     }).asEventAction('Logout', (_this: NgOAuth2MenuProvider) => {
                         _this.logout();
                     },
