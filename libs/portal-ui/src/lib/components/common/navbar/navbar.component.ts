@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
 import { Skysmack } from '@skysmack/packages-skysmack-core';
-import { Menu, MenuAreaItems } from '@skysmack/framework';
+import { Menu, MenuAreaItems, TOPBAR } from '@skysmack/framework';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { UIRedux } from './../../../redux/ui-redux';
 import { NgAuthenticationActions, NgAuthenticationStore } from '@skysmack/ng-framework';
@@ -47,9 +47,9 @@ export class NavBarComponent implements OnInit {
 
   private initMenu() {
     const packagePath = this.router.url.split('/')[1];
-    this.menuAreaItems$ = this.ngMenuProviders.getMenuAreaItems(packagePath, 'navbar').pipe(
+    this.menuAreaItems$ = this.ngMenuProviders.getMenuAreaItems(packagePath, TOPBAR).pipe(
       map(menuAreaItems => {
-        return menuAreaItems.filter(menuAreaItem => menuAreaItem && menuAreaItem.providedIn && menuAreaItem.providedIn.includes('top'));
+        return menuAreaItems.filter(menuAreaItem => menuAreaItem && menuAreaItem.providedIn && menuAreaItem.providedIn.includes(TOPBAR));
       })
     );
   }

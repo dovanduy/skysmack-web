@@ -53,6 +53,11 @@ const webPaths = {
 };
 const webLocalizationOutputPath = `${webPaths.project}/src/i18n`;
 
+const webCommercialPaths = {
+    project: './apps/web/web-commercial',
+    lib: './libs'
+};
+const webCommercialLocalizationOutputPath = `${webCommercialPaths.project}/src/i18n`;
 
 // =================
 // Define gulp tasks
@@ -67,8 +72,14 @@ const webLocalization = (done) => {
     done();
 };
 
+const webCommercialLocalization = (done) => {
+    gulp.parallel(runLocalization(webCommercialPaths, 'en', webCommercialLocalizationOutputPath))(done); // Remember: Multiple runLocalization() functions can be used in parallel
+    done();
+};
+
 const defaultTask = (done) => {
-    webLocalization(done)
+    webLocalization(done);
+    webCommercialLocalization(done);
     done();
 }
 
@@ -76,5 +87,6 @@ const defaultTask = (done) => {
 // Register gulp tasks
 // ===================
 gulp.task('webLocalizationWatch', webLocalizationWatch);
+gulp.task('webCommercialLocalization', webCommercialLocalization);
 gulp.task('webLocalization', webLocalization);
 gulp.task('default', defaultTask);

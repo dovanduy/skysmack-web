@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
-import { MenuArea, MenuProvider } from '@skysmack/framework';
+import { MenuArea, MenuProvider, SIDEBAR } from '@skysmack/framework';
 import { MenuItem } from '@skysmack/framework';
 import { Guid } from 'guid-typescript';
 import { Observable } from 'rxjs';
@@ -70,7 +70,7 @@ export class NgTerminalPaymentsIndexMenuProvider implements MenuProvider {
                 icon: 'description',
                 permissions: [
                 ],
-                providedIn: ['sidebar']
+                providedIn: [SIDEBAR]
             }),
             new MenuItem({
                 url: 'clients',
@@ -80,7 +80,7 @@ export class NgTerminalPaymentsIndexMenuProvider implements MenuProvider {
                 icon: 'description',
                 permissions: [
                 ],
-                providedIn: ['sidebar']
+                providedIn: [SIDEBAR]
             }),
             new MenuItem({
                 url: 'connections',
@@ -90,7 +90,7 @@ export class NgTerminalPaymentsIndexMenuProvider implements MenuProvider {
                 icon: 'description',
                 permissions: [
                 ],
-                providedIn: ['sidebar']
+                providedIn: [SIDEBAR]
             }),
             new MenuItem({
                 url: 'receipts',
@@ -100,7 +100,7 @@ export class NgTerminalPaymentsIndexMenuProvider implements MenuProvider {
                 icon: 'description',
                 permissions: [
                 ],
-                providedIn: ['sidebar']
+                providedIn: [SIDEBAR]
             }),
             setConnectedParentPackage(this.store, packagePath)
         ];

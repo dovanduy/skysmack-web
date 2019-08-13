@@ -577,6 +577,7 @@
 	"INVOICES": {
 		"FORM": {
 			"LABELS": {
+				"DESCRIPTION": "Description",
 				"CURRENCYCODE": "Currency code",
 				"TOTAL": "Total",
 				"TOTALTAX": "Total tax",
@@ -585,6 +586,7 @@
 				"STATUS": "Status"
 			},
 			"PLACEHOLDERS": {
+				"DESCRIPTION": "Description",
 				"CURRENCYCODE": "Currency code",
 				"TOTAL": "Total",
 				"TOTALTAX": "Total tax",

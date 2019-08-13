@@ -1,5 +1,5 @@
 import { Router } from '@angular/router';
-import { Package, LocalObject, toLocalObject, MenuItem } from '@skysmack/framework';
+import { Package, LocalObject, toLocalObject, MenuItem, SIDEBAR } from '@skysmack/framework';
 import { map, switchMap, filter, tap } from 'rxjs/operators';
 import { combineLatest, pipe, of, Observable } from 'rxjs';
 import { SkysmackStore } from '../stores/skysmack-store';
@@ -66,7 +66,7 @@ export const setConnectedParentPackage = (store: SkysmackStore, packagePath: str
         area: 'connected_packages',
         order: 2,
         icon: 'arrowBack',
-        providedIn: ['sidebar']
+        providedIn: [SIDEBAR]
     });
 };
 
@@ -77,7 +77,7 @@ export const setBackButton = (path: string): MenuItem => {
         area: 'manage',
         order: 2,
         icon: 'arrowBack',
-        providedIn: ['sidebar']
+        providedIn: [SIDEBAR]
     });
 }
 
@@ -119,7 +119,7 @@ export const getConnectedPackageMenuEntries = (packagePath: string, packageTypeI
                         order: 1,
                         icon: 'add',
                         permissions: [],
-                        providedIn: ['sidebar']
+                        providedIn: [SIDEBAR]
                     }))
                 )
             ))
@@ -156,8 +156,8 @@ export const getConnectedPackageCustomMenuEntries = (packagePath: string, packag
     }
 };
 
-export const getCombinedMenuEntries = (...args: Observable<MenuItem[]>[]): Observable<MenuItem[]> => {
+export const getCombinedMenuEntries = <T>(...args: Observable<T[]>[]): Observable<T[]> => {
     return combineLatest(
         args
-    ).pipe(map(menuItemsArrays => menuItemsArrays.reduce((a, b) => a.concat(b), [])));
+    ).pipe(map(menuEntriesArrays => menuEntriesArrays.reduce((a, b) => a.concat(b), [])));
 };

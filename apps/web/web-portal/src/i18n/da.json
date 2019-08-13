@@ -642,6 +642,7 @@
 	"INVOICES": {
 		"FORM": {
 			"LABELS": {
+				"DESCRIPTION": "Beskrivelse",
 				"CURRENCYCODE": "Valuta kode",
 				"TOTAL": "Total",
 				"TOTALTAX": "Total skat",
@@ -650,6 +651,7 @@
 				"STATUS": "Status"
 			},
 			"PLACEHOLDERS": {
+				"DESCRIPTION": "Beskrivelse",
 				"CURRENCYCODE": "Vælg valuta kode",
 				"TOTAL": "Total",
 				"TOTALTAX": "Total skat",

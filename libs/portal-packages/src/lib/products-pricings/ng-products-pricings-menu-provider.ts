@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
-import { MenuArea, MenuProvider } from '@skysmack/framework';
+import { MenuArea, MenuProvider, SIDEBAR } from '@skysmack/framework';
 import { MenuItem } from '@skysmack/framework';
 import { Guid } from 'guid-typescript';
 import { of, Observable } from 'rxjs';
@@ -70,7 +70,7 @@ export class NgProductsPricingsMenuProvider implements MenuProvider {
                 permissions: [
                     ProductsPricingsPermissions.findProductPriceChanges
                 ],
-                providedIn: ['sidebar']
+                providedIn: [SIDEBAR]
             }),
             new MenuItem({
                 url: 'types/price-changes',
@@ -81,7 +81,7 @@ export class NgProductsPricingsMenuProvider implements MenuProvider {
                 permissions: [
                     ProductsPricingsPermissions.findProductTypePriceChanges
                 ],
-                providedIn: ['sidebar']
+                providedIn: [SIDEBAR]
             }),
             new MenuItem({
                 url: 'sales-prices',
@@ -92,7 +92,7 @@ export class NgProductsPricingsMenuProvider implements MenuProvider {
                 permissions: [
                     ProductsPricingsPermissions.findProductSalesPrices
                 ],
-                providedIn: ['sidebar']
+                providedIn: [SIDEBAR]
             }),
             new MenuItem({
                 url: 'types/sales-prices',
@@ -103,7 +103,7 @@ export class NgProductsPricingsMenuProvider implements MenuProvider {
                 permissions: [
                     ProductsPricingsPermissions.findProductTypeSalesPrices
                 ],
-                providedIn: ['sidebar']
+                providedIn: [SIDEBAR]
             }),
             setConnectedParentPackage(this.store, packagePath)
         ];

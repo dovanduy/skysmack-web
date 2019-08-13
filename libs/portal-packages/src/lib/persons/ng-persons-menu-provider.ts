@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
-import { MenuArea, MenuProvider } from '@skysmack/framework';
+import { MenuArea, MenuProvider, SPEEDDIAL, SIDEBAR } from '@skysmack/framework';
 import { MenuItem } from '@skysmack/framework';
 import { Guid } from 'guid-typescript';
 import { Observable } from 'rxjs';
@@ -52,7 +52,7 @@ export class NgPersonsMenuProvider implements MenuProvider {
                 permissions: [
                     PersonsPermissions.addPersons
                 ],
-                providedIn: ['sidebar', 'speedDial']
+                providedIn: [SIDEBAR, SPEEDDIAL]
             }),
             new MenuItem({
                 url: 'fields',
@@ -63,7 +63,7 @@ export class NgPersonsMenuProvider implements MenuProvider {
                 permissions: [
                     PersonsPermissions.findPersonsFields
                 ],
-                providedIn: ['sidebar']
+                providedIn: [SIDEBAR]
             })
         ];
     }

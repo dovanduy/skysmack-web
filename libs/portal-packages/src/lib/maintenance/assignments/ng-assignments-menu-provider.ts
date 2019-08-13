@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
-import { MenuArea, MenuProvider } from '@skysmack/framework';
+import { MenuArea, MenuProvider, SPEEDDIAL, SIDEBAR } from '@skysmack/framework';
 import { MenuItem } from '@skysmack/framework';
 import { Guid } from 'guid-typescript';
 import { of, Observable } from 'rxjs';
@@ -52,7 +52,7 @@ export class NgAssignmentsMenuProvider implements MenuProvider {
                 permissions: [
                     MaintenancePermissions.addAssignments
                 ],
-                providedIn: ['sidebar', 'speedDial']
+                providedIn: [SIDEBAR, SPEEDDIAL]
             }),
             new MenuItem({
                 url: 'types',
@@ -62,7 +62,7 @@ export class NgAssignmentsMenuProvider implements MenuProvider {
                 icon: 'description',
                 permissions: [
                 ],
-                providedIn: ['sidebar']
+                providedIn: [SIDEBAR]
             }),
             new MenuItem({
                 url: 'maintenance-states',
@@ -72,7 +72,7 @@ export class NgAssignmentsMenuProvider implements MenuProvider {
                 icon: 'short_text',
                 permissions: [
                 ],
-                providedIn: ['sidebar']
+                providedIn: [SIDEBAR]
             }),
             setBackButton(packagePath)
         ];

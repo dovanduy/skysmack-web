@@ -29,10 +29,18 @@ export class NgInvoicesFieldsConfig extends FieldsConfig<Invoice, number> {
     const fields = [
       new Field({
         component: StringFieldComponent,
+        value: entity ? entity.object.description : undefined,
+        key: 'description',
+        order: 1,
+        showColumn: true,
+        sortable: true
+      }),
+      new Field({
+        component: StringFieldComponent,
         value: entity ? entity.object.currencyCode : undefined,
         key: 'currencyCode',
         validators: [Validators.required],
-        order: 1,
+        order: 2,
         showColumn: true,
         sortable: true
       }),
