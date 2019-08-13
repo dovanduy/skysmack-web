@@ -1039,10 +1039,10 @@
 			"EDIT": "Edit settings"
 		},
 		"QUEUE": {
-			"UPDATING": "Updating {{ displayName }}",
-			"ERROR": "An error occured with {{ displayName }}. Correct and try again.",
-			"ADDING": "Adding {{ displayName }}",
-			"DELETING": "Deleting {{ displayName }}"
+			"UPDATING": "Updating {{ name }}",
+			"ERROR": "An error occured with {{ name }}. Correct and try again.",
+			"ADDING": "Adding {{ name }}",
+			"DELETING": "Deleting {{ name }}"
 		}
 	},
 	"LODGING_TYPES": {
@@ -1344,6 +1344,12 @@
 			"STATES": "States",
 			"TYPES": "Types",
 			"BACK": "Back"
+		},
+		"QUEUE": {
+			"ADDING": "Adding {{ description }}",
+			"UPDATING": "Updating {{ description }}",
+			"DELETING": "Deleting {{ description }}",
+			"ERROR": "An error occured with {{ description }}. Correct and try again."
 		}
 	},
 	"QUEUE": {
