@@ -16,7 +16,7 @@ export class CommercialAccountChangePasswordComponent implements OnInit {
   public fields$: Observable<Field[]>;
 
   constructor(
-    private fieldsConfig: CommercialAccountChangePasswordFieldsConfig,
+    public fieldsConfig: CommercialAccountChangePasswordFieldsConfig,
     private service: CommercialAccountService,
     private router: Router
   ) { }
