@@ -14,9 +14,6 @@ import { DynamicFormsModule } from '@skysmack/portal-dynamic-forms';
 import { SettingsModule } from '@skysmack/portal-settings';
 import { PortalFieldsModule } from '@skysmack/portal-fields';
 import { NgLodgingsMenuProvider } from './lodgings/ng-lodgings-menu-provider';
-import { NgLodgingsAvailabilityMenuProvider } from './lodgings/ng-lodgings-availability-menu-provider';
-import { NgLodgingTypesMenuProvider } from './lodging-types/ng-lodging-types-menu-provider';
-import { NgLodgingTypesAvailabilityMenuProvider } from './lodging-types/ng-lodging-types-availability-menu-provider';
 
 @NgModule({
   imports: [
@@ -49,15 +46,9 @@ export class LodgingsModule {
     public languageService: LanguageService,
     ngMenuProviders: NgMenuProviders, 
     ngLodgingsMenuProvider: NgLodgingsMenuProvider,
-    ngLodgingsAvailabilityMenuProvider: NgLodgingsAvailabilityMenuProvider,
-    ngLodgingTypesMenuProvider: NgLodgingTypesMenuProvider,
-    ngLodgingTypesAvailabilityMenuProvider: NgLodgingTypesAvailabilityMenuProvider
 
   ) {
     ngMenuProviders
     .add(ngLodgingsMenuProvider)
-    .add(ngLodgingsAvailabilityMenuProvider)
-    .add(ngLodgingTypesMenuProvider)
-    .add(ngLodgingTypesAvailabilityMenuProvider)
    }
 }
