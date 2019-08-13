@@ -1,7 +1,7 @@
 import { Record, LocalObject } from '@skysmack/framework';
 import { TerminalStatus } from './terminal-status';
 import { Terminal } from './terminal';
-import { Client } from './client';
+import { Client } from '@skysmack/packages-identities';
 
 export interface ConnectionKey {
     terminalId: number;
