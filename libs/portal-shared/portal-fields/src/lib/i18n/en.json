@@ -42,6 +42,12 @@
                     "REQUIRED": "Display name is required"
                 }
             }
+        },
+        "QUEUE": {
+            "ADDING": "Adding {{ displayName }}",
+            "UPDATING": "Updating {{ displayName }}",
+            "DELETING": "Deleting {{ displayName }}",
+            "ERROR": "An error occured with {{ displayName }}. Correct and try again."
         }
     }
 }

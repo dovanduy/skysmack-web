@@ -40,10 +40,10 @@
             }
         },
         "QUEUE": {
-            "ADDING": "Adding {{ name }}",
-            "UPDATING": "Updating {{ name }}",
-            "DELETING": "Deleting {{ name }}",
-            "ERROR": "An error occured with {{ name }}. Correct and try again."
+            "ADDING": "Adding the lodging price with the price: {{ price }}",
+            "UPDATING": "Updating the lodging price with the price: {{ price }}",
+            "DELETING": "Deleting the lodging price with the price: {{ price }}",
+            "ERROR": "An error occured with the lodging price with the price: {{ price }}. Correct and try again."
         }
     },
     "LODGINGS": {

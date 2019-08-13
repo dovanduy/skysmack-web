@@ -37,10 +37,10 @@
             }
         },
         "QUEUE": {
-            "ADDING": "Adding client {{ id }}",
-            "UPDATING": "Updating client {{ id }}",
-            "DELETING": "Deleting client {{ id }}",
-            "ERROR": "An error occured with client {{ id }}. Correct and try again."
+            "ADDING": "Adding client {{ name }}",
+            "UPDATING": "Updating client {{ name }}",
+            "DELETING": "Deleting client {{ name }}",
+            "ERROR": "An error occured with client {{ name }}. Correct and try again."
         }
     }
 }

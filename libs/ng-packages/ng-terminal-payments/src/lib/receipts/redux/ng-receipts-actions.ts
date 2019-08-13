@@ -8,9 +8,9 @@ import { LocalObject, StrIndex } from '@skysmack/framework';
 export class NgReceiptsActions extends RecordActionsBase<ReceiptsAppState, NgRedux<ReceiptsAppState>> {
     constructor(protected store: NgRedux<ReceiptsAppState>) { super(store, RECEIPTS_REDUX_KEY, RECEIPTS_ADDITIONAL_PATHS); }
 
-    public getMessageParams(record: LocalObject<Receipt, number>): StrIndex<string> {
+    public getMessageParams(record: LocalObject<Receipt, string>): StrIndex<string> {
         return {
-            id: 'Object'
+            name: record.object.name
         };
     }
 }

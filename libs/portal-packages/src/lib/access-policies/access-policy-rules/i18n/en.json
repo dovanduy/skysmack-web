@@ -30,10 +30,10 @@
             }
         },
         "QUEUE": {
-            "ADDING": "Adding access policy rules {{ id }}",
-            "UPDATING": "Updating access policy rules {{ id }}",
-            "DELETING": "Deleting access policy rules {{ id }}",
-            "ERROR": "An error occured with access policy rules {{ id }}. Correct and try again."
+            "ADDING": "Adding the access policy rule",
+            "UPDATING": "Updating the access policy rule",
+            "DELETING": "Deleting the access policy rule",
+            "ERROR": "An error occured with the access policy rule. Correct and try again."
         }
     }
 }
