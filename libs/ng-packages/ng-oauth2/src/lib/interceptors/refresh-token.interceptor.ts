@@ -6,8 +6,6 @@ import { CurrentUser, IsAuthenticated, TokenExpiresSoon } from '@skysmack/framew
 import { NgAuthenticationStore, NgAuthenticationActions } from '@skysmack/ng-framework';
 import { NgRedux } from '@angular-redux/store';
 import { OAuth2Requests, InterceptorSkipHeader } from '../requests/oauth2-requests';
-import { RESET_STATE } from '@redux-offline/redux-offline/lib/constants';
-import { ReduxAction, AuthenticationActions } from '@skysmack/redux';
 
 @Injectable({ providedIn: 'root' })
 export class RefreshTokenInterceptor implements HttpInterceptor {
