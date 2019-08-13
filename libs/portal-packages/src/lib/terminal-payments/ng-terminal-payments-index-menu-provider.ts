@@ -73,16 +73,6 @@ export class NgTerminalPaymentsIndexMenuProvider implements MenuProvider {
                 providedIn: [SIDEBAR]
             }),
             new MenuItem({
-                url: 'clients',
-                displayName: this.translationPrefix + 'CLIENTS',
-                area: 'manage',
-                order: 2,
-                icon: 'description',
-                permissions: [
-                ],
-                providedIn: [SIDEBAR]
-            }),
-            new MenuItem({
                 url: 'connections',
                 displayName: this.translationPrefix + 'CONNECTIONS',
                 area: 'manage',

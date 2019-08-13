@@ -8,6 +8,7 @@ export * from './ng-lockout-settings-fields-config';
 export * from './ng-user-settings-fields-config';
 export * from './ng-password-settings-fields-config';
 export * from './ng-sign-in-settings-fields-config';
+export * from './clients/index';
 
 export * from './identity-roles/index';
 export * from './identity-users/index';

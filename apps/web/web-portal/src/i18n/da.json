@@ -198,6 +198,7 @@
 		"INDEX": {
 			"ROLES": "Roller",
 			"USERS": "Brugere",
+			"CLIENTS": "Klienter",
 			"USERS_ROLES_TITLE": "Bruger roller",
 			"APPLICATIONS_ROLES_TITLE": "Applikationsroller",
 			"MANAGE": "Konfigurer",
