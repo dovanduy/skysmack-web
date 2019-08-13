@@ -2540,7 +2540,10 @@
 			},
 			"PLACEHOLDERS": {
 				"EMAIL": "Enter email",
-				"PASSWORD": "Enter password"
+				"PASSWORD": "Enter password",
+				"CURRENTPASSWORD": "Current password",
+				"NEWPASSWORD": "New password",
+				"CONFIRMNEWPASSWORD": "Confirm new password"
 			},
 			"VALIDATION": {
 				"EMAIL": {
@@ -2549,6 +2552,16 @@
 				},
 				"PASSWORD": {
 					"REQUIRED": "Password is required."
+				},
+				"CURRENTPASSWORD": {
+					"REQUIRED": "Current password is required."
+				},
+				"NEWPASSWORD": {
+					"REQUIRED": "New password is required."
+				},
+				"CONFIRMNEWPASSWORD": {
+					"REQUIRED": "Please repeat the new password.",
+					"PASSWORDMISMATCH": "Passwords must match."
 				}
 			}
 		},
@@ -2583,6 +2596,10 @@
 			"CREATE": "Create",
 			"EDIT": "Edit",
 			"EDITTENANT": "Edit tenant"
+		},
+		"CHANGE_PASSWORD": {
+			"TITLE": "Change password",
+			"BUTTON_EDIT": "Update"
 		}
 	},
 	"COMMERCIAL_TENANTS": {

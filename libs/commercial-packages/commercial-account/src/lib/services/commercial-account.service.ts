@@ -17,7 +17,7 @@ export class CommercialAccountService {
     }
 
     public changePassword(password: any): Observable<HttpSuccessResponse | HttpErrorResponse> {
-        return this.http.post(`${this.apiDomain}/account/password`, password, { observe: 'response' }).pipe(
+        return this.http.post(`${this.apiDomain.domain}/account/password`, password, { observe: 'response' }).pipe(
             catchError((error) => of(error))
         );
     }

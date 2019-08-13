@@ -2540,7 +2540,10 @@
 			},
 			"PLACEHOLDERS": {
 				"EMAIL": "Indtast email",
-				"PASSWORD": "Indtast adgangskode"
+				"PASSWORD": "Indtast adgangskode",
+				"CURRENTPASSWORD": "Nuværende kodeord",
+                "NEWPASSWORD": "Nyt kodeord",
+                "CONFIRMNEWPASSWORD": "Gentag nye kodeord"
 			},
 			"VALIDATION": {
 				"EMAIL": {
@@ -2578,12 +2581,10 @@
 			"FORGOTPASSWORD": "Glemt adgangskode",
 			"CONFIRMEMAIL": "Bekræft email"
 		},
-		"TENANTS": {
-			"CREATETENANT": "Opret beboer",
-			"CREATE": "Opret",
-			"EDIT": "Rediger",
-			"EDITTENANT": "Rediger beboer"
-		}
+		"CHANGE_PASSWORD": {
+            "TITLE": "Skift kodeord",
+            "BUTTON_EDIT": "Opdater"
+        }
 	},
 	"COMMERCIAL_TENANTS": {
 		"INDEX": {
