@@ -35,10 +35,10 @@
 			"VALIDATION": {}
 		},
 		"QUEUE": {
-			"ADDING": "Adding {{ ruleId }}",
-			"UPDATING": "Updating {{ ruleId }}",
-			"DELETING": "Deleting {{ ruleId }}",
-			"ERROR": "An error occured with {{ ruleId }}. Correct and try again."
+			"ADDING": "Adding {{ permission }} permission",
+			"UPDATING": "Updating {{ permission }} permission",
+			"DELETING": "Deleting {{ permission }} permission",
+			"ERROR": "An error occured with {{ permission }} permission. Correct and try again."
 		}
 	},
 	"ACCESS_POLICY_RULES": {
@@ -72,10 +72,10 @@
 			}
 		},
 		"QUEUE": {
-			"ADDING": "Adding access policy rules {{ id }}",
-			"UPDATING": "Updating access policy rules {{ id }}",
-			"DELETING": "Deleting access policy rules {{ id }}",
-			"ERROR": "An error occured with access policy rules {{ id }}. Correct and try again."
+			"ADDING": "Adding the access policy rule",
+			"UPDATING": "Updating the access policy rule",
+			"DELETING": "Deleting the access policy rule",
+			"ERROR": "An error occured with the access policy rule. Correct and try again."
 		}
 	},
 	"ACCESS_POLICY_ROLES": {
@@ -1353,10 +1353,10 @@
 		}
 	},
 	"QUEUE": {
-		"ADDING": "Adding {{ description }}",
-		"UPDATING": "Updating {{ description }}",
-		"DELETING": "Deleting {{ description }}",
-		"ERROR": "An error occured with {{ description }}. Correct and try again."
+		"ADDING": "Adding settings",
+		"UPDATING": "Updating settings",
+		"DELETING": "Deleting settings",
+		"ERROR": "An error occured with settings. Correct and try again."
 	},
 	"MAINTENANCE": {
 		"ASSIGNMENT_ALL": {
@@ -2832,6 +2832,12 @@
 	},
 	"SETTINGS": {
 		"SETTINGS": "Settings",
-		"BUTTON_SUBMIT": "Submit"
+		"BUTTON_SUBMIT": "Submit",
+		"QUEUE": {
+			"ADDING": "Adding settings",
+			"UPDATING": "Updating settings",
+			"DELETING": "Deleting settings",
+			"ERROR": "An error occured with settings. Correct and try again."
+		}
 	}
 }

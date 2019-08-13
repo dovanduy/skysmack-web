@@ -9,7 +9,7 @@ export class NgAccessPolicyRolesActions extends AccessPolicyRolesActions {
 
     public getMessageParams(record: LocalObject<AccessPolicyRole, AccessPolicyRoleKey>): StrIndex<string> {
         return {
-            id: record.object.id.toString()
+            roleId: record.object.id.roleId.toString()
         };
     }
 }

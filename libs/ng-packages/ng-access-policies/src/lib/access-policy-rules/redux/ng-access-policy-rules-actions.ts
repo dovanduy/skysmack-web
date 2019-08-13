@@ -8,8 +8,6 @@ export class NgAccessPolicyRulesActions extends AccessPolicyRulesActions {
     constructor(protected store: NgRedux<AccessPolicyRulesAppState>) { super(store); }
 
     public getMessageParams(record: LocalObject<AccessPolicyRule, number>): StrIndex<string> {
-        return {
-            id: record.object.id.toString()
-        };
+        return {};
     }
 }

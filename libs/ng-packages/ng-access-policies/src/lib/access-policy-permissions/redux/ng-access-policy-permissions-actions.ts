@@ -9,7 +9,7 @@ export class NgAccessPolicyPermissionsActions extends AccessPolicyPermissionsAct
 
     public getMessageParams(record: LocalObject<AccessPolicyPermission, number>): StrIndex<string> {
         return {
-            id: record.object.id.toString()
+            permission: record.object.permission
         };
     }
 }
