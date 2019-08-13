@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
-import { MenuArea, MenuProvider } from '@skysmack/framework';
+import { MenuArea, MenuProvider, SPEEDDIAL } from '@skysmack/framework';
 import { MenuItem } from '@skysmack/framework';
 import { Guid } from 'guid-typescript';
 import { of, Observable } from 'rxjs';
@@ -52,7 +52,7 @@ export class NgProductTypeSalesPriceMenuProvider implements MenuProvider {
                 permissions: [
                     ProductsPricingsPermissions.addProductTypeSalesPrices
                 ],
-                providedIn: ['sidebar', 'speedDial']
+                providedIn: ['sidebar', SPEEDDIAL]
             }),
             setBackButton(packagePath)
         ];

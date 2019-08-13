@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
-import { MenuArea, MenuProvider } from '@skysmack/framework';
+import { MenuArea, MenuProvider, SPEEDDIAL } from '@skysmack/framework';
 import { MenuItem } from '@skysmack/framework';
 import { Guid } from 'guid-typescript';
 import { Observable } from 'rxjs';
@@ -81,7 +81,7 @@ export class NgLodgingsReservationsMenuProvider implements MenuProvider {
                 permissions: [
                     ReservationsPermissions.addReservations
                 ],
-                providedIn: ['sidebar', 'speedDial']
+                providedIn: ['sidebar', SPEEDDIAL]
             }),
             new MenuItem({
                 url: '/' + packagePath,
