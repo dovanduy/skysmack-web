@@ -32,10 +32,10 @@
             }
         },
         "QUEUE": {
-            "ADDING": "Adding receipt {{ id }}",
-            "UPDATING": "Updating receipt {{ id }}",
-            "DELETING": "Deleting receipt {{ id }}",
-            "ERROR": "An error occured with receipt {{ id }}. Correct and try again."
+            "ADDING": "Adding receipt {{ name }}",
+            "UPDATING": "Updating receipt {{ name }}",
+            "DELETING": "Deleting receipt {{ name }}",
+            "ERROR": "An error occured with receipt {{ name }}. Correct and try again."
         }
     }
 }

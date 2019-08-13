@@ -2247,10 +2247,10 @@
 			}
 		},
 		"QUEUE": {
-			"ADDING": "Adding client {{ id }}",
-			"UPDATING": "Updating client {{ id }}",
-			"DELETING": "Deleting client {{ id }}",
-			"ERROR": "An error occured with client {{ id }}. Correct and try again."
+			"ADDING": "Adding client {{ name }}",
+			"UPDATING": "Updating client {{ name }}",
+			"DELETING": "Deleting client {{ name }}",
+			"ERROR": "An error occured with client {{ name }}. Correct and try again."
 		}
 	},
 	"CONNECTIONS": {
@@ -2296,10 +2296,10 @@
 			}
 		},
 		"QUEUE": {
-			"ADDING": "Adding connection {{ id }}",
-			"UPDATING": "Updating connection {{ id }}",
-			"DELETING": "Deleting connection {{ id }}",
-			"ERROR": "An error occured with connection {{ id }}. Correct and try again."
+			"ADDING": "Adding the connection with the client: {{ client }}",
+			"UPDATING": "Updating the connection with the client: {{ client }}",
+			"DELETING": "Deleting the connection with the client: {{ client }}",
+			"ERROR": "An error occured with the connection with the client: {{ client }}. Correct and try again."
 		}
 	},
 	"RECEIPTS": {
@@ -2335,10 +2335,10 @@
 			}
 		},
 		"QUEUE": {
-			"ADDING": "Adding receipt {{ id }}",
-			"UPDATING": "Updating receipt {{ id }}",
-			"DELETING": "Deleting receipt {{ id }}",
-			"ERROR": "An error occured with receipt {{ id }}. Correct and try again."
+			"ADDING": "Adding receipt {{ name }}",
+			"UPDATING": "Updating receipt {{ name }}",
+			"DELETING": "Deleting receipt {{ name }}",
+			"ERROR": "An error occured with receipt {{ name }}. Correct and try again."
 		}
 	},
 	"TERMINALS": {
@@ -2414,10 +2414,10 @@
 			"BUTTON_PAY": "Pay"
 		},
 		"QUEUE": {
-			"ADDING": "Adding terminal {{ id }}",
-			"UPDATING": "Updating terminal {{ id }}",
-			"DELETING": "Deleting terminal {{ id }}",
-			"ERROR": "An error occured with terminal {{ id }}. Correct and try again."
+			"ADDING": "Adding terminal {{ name }}",
+			"UPDATING": "Updating terminal {{ name }}",
+			"DELETING": "Deleting terminal {{ name }}",
+			"ERROR": "An error occured with terminal {{ name }}. Correct and try again."
 		},
 		"ENTITY_ACTION_PROVIDER": {
 			"ENTITY_ACTION": {
