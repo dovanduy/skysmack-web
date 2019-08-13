@@ -75,22 +75,25 @@ export class NgTransactionRequestFieldsConfig extends FieldsConfig<TransactionRe
                 },
                 validators: [Validators.required],
                 order: 1,
-                showColumn: true
+                showColumn: true,
+                sortable: true
             }),
             new Field({
                 component: IntFieldComponent,
                 value: entity ? entity.object.amount : undefined,
                 key: 'amount',
                 validators: [Validators.required],
-                order: 1,
-                showColumn: true
+                order: 2,
+                showColumn: true,
+                sortable: true
             }),
             new Field({
                 component: HiddenFieldComponent,
                 value: entity ? entity.object.invoiceId : undefined,
                 key: 'invoiceId',
-                order: 1,
-                showColumn: true
+                order: 3,
+                showColumn: true,
+                sortable: true
             }),
             new SelectField({
                 component: SelectFieldComponent,
@@ -99,8 +102,9 @@ export class NgTransactionRequestFieldsConfig extends FieldsConfig<TransactionRe
                 optionsData$: of(Currency),
                 optionsDataType: 'ts-enum',
                 useEnumValue: true,
-                order: 1,
-                showColumn: true
+                order: 4,
+                showColumn: true,
+                sortable: true
             }),
         ];
 

@@ -23,31 +23,36 @@ export class NgEmailsSmptSettingsFieldsConfig extends FieldsConfig<SmtpClientSet
                 component: StringFieldComponent,
                 value: settings ? settings.object.host : undefined,
                 key: 'host',
-                order: 1
+                order: 1,
+                sortable: true
             }),
             new Field({
                 component: IntFieldComponent,
                 value: settings ? settings.object.port : undefined,
                 key: 'port',
-                order: 2
+                order: 2,
+                sortable: true
             }),
             new Field({
                 component: StringFieldComponent,
                 value: settings ? settings.object.username : undefined,
                 key: 'username',
-                order: 1
+                order: 3,
+                sortable: true
             }),
             new Field({
                 component: StringFieldComponent,
                 value: settings ? settings.object.password : undefined,
                 key: 'password',
-                order: 1
+                order: 4,
+                sortable: true
             }),
             new Field({
                 component: CheckboxFieldComponent,
                 value: settings ? settings.object.enableSsl : undefined,
                 key: 'enableSsl',
-                order: 1
+                order: 5,
+                sortable: true
             })
         ];
 

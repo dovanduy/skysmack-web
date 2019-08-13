@@ -26,7 +26,8 @@ export class NgRolesFieldsConfig extends FieldsConfig<Role, number> {
                 key: 'name',
                 validators: [Validators.required],
                 order: 1,
-                showColumn: true
+                showColumn: true,
+                sortable: true
             }),
         ];
 

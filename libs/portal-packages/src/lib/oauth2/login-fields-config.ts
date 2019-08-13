@@ -26,6 +26,7 @@ export class LoginFieldsConfig extends FieldsConfig<any, any> {
                 key: 'email',
                 validators: [Validators.required, CustomValidators.validEmail()],
                 order: 1,
+                sortable: true
             }),
 
             new Field({
@@ -34,13 +35,15 @@ export class LoginFieldsConfig extends FieldsConfig<any, any> {
                 key: 'password',
                 validators: [Validators.required],
                 order: 2,
+                sortable: true
             }),
 
             new Field({
                 component: CheckboxFieldComponent,
                 value: true,
                 key: 'staySignedIn',
-                order: 3
+                order: 3,
+                sortable: true
             })
         ];
 

@@ -26,21 +26,24 @@ export class NgApplicationsFormFieldsConfig extends FieldsConfig<ApplicationDesc
                 key: 'clientId',
                 validators: [Validators.required],
                 order: 1,
-                showColumn: true
+                showColumn: true,
+                sortable: true
             }),
             new Field({
                 component: StringFieldComponent,
                 value: entity ? entity.object.clientSecret : undefined,
                 key: 'clientSecret',
                 order: 1,
-                showColumn: true
+                showColumn: true,
+                sortable: true
             }),
             new Field({
                 component: StringFieldComponent,
                 value: entity ? entity.object.consentType : undefined,
                 key: 'consentType',
                 order: 1,
-                showColumn: true
+                showColumn: true,
+                sortable: true
             }),
             new Field({
                 component: StringFieldComponent,
@@ -48,7 +51,8 @@ export class NgApplicationsFormFieldsConfig extends FieldsConfig<ApplicationDesc
                 key: 'displayName',
                 validators: [Validators.required],
                 order: 1,
-                showColumn: true
+                showColumn: true,
+                sortable: true
             }),
             new Field({
                 component: StringFieldComponent,
@@ -56,7 +60,8 @@ export class NgApplicationsFormFieldsConfig extends FieldsConfig<ApplicationDesc
                 key: 'type',
                 validators: [Validators.required],
                 order: 1,
-                showColumn: true
+                showColumn: true,
+                sortable: true
             }),
             new Field({
                 component: StringArrayFieldComponent,

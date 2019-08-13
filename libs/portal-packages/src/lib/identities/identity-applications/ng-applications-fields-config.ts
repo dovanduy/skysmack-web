@@ -26,7 +26,8 @@ export class NgApplicationsFieldsConfig extends FieldsConfig<Application, number
                 key: 'clientId',
                 validators: [Validators.required],
                 order: 1,
-                showColumn: true
+                showColumn: true,
+                sortable: true
             }),
             new Field({
                 component: StringFieldComponent,
@@ -34,14 +35,16 @@ export class NgApplicationsFieldsConfig extends FieldsConfig<Application, number
                 key: 'concurrencyToken',
                 validators: [Validators.required],
                 order: 1,
-                showColumn: true
+                showColumn: true,
+                sortable: true
             }),
             new Field({
                 component: StringFieldComponent,
                 value: entity ? entity.object.consentType : undefined,
                 key: 'consentType',
                 order: 1,
-                showColumn: true
+                showColumn: true,
+                sortable: true
             }),
             new Field({
                 component: StringFieldComponent,
@@ -49,7 +52,8 @@ export class NgApplicationsFieldsConfig extends FieldsConfig<Application, number
                 key: 'displayName',
                 validators: [Validators.required],
                 order: 1,
-                showColumn: true
+                showColumn: true,
+                sortable: true
             }),
             new Field({
                 component: StringFieldComponent,
@@ -57,28 +61,32 @@ export class NgApplicationsFieldsConfig extends FieldsConfig<Application, number
                 key: 'permissions',
                 validators: [Validators.required],
                 order: 1,
-                showColumn: true
+                showColumn: true,
+                sortable: true
             }),
             new Field({
                 component: StringFieldComponent,
                 value: entity ? entity.object.postLogoutRedirectUris : undefined,
                 key: 'postLogoutRedirectUris',
                 order: 1,
-                showColumn: true
+                showColumn: true,
+                sortable: true
             }),
             new Field({
                 component: StringFieldComponent,
                 value: entity ? entity.object.properties : undefined,
                 key: 'properties',
                 order: 1,
-                showColumn: true
+                showColumn: true,
+                sortable: true
             }),
             new Field({
                 component: StringFieldComponent,
                 value: entity ? entity.object.redirectUris : undefined,
                 key: 'redirectUris',
                 order: 1,
-                showColumn: true
+                showColumn: true,
+                sortable: true
             }),
             new Field({
                 component: StringFieldComponent,
@@ -86,7 +94,8 @@ export class NgApplicationsFieldsConfig extends FieldsConfig<Application, number
                 key: 'type',
                 validators: [Validators.required],
                 order: 1,
-                showColumn: true
+                showColumn: true,
+                sortable: true
             })
         ];
 

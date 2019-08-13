@@ -33,7 +33,8 @@ export class NgInvoicePaymentsFieldsConfig extends DocumentFieldsConfig<InvoiceP
                 key: 'description',
                 validators: [Validators.required],
                 order: 1,
-                showColumn: true
+                showColumn: true,
+                sortable: true
             }),
 
             new Field({
@@ -42,7 +43,8 @@ export class NgInvoicePaymentsFieldsConfig extends DocumentFieldsConfig<InvoiceP
                 key: 'source',
                 validators: [Validators.required],
                 order: 2,
-                showColumn: true
+                showColumn: true,
+                sortable: true
             }),
 
             new Field({
@@ -51,7 +53,8 @@ export class NgInvoicePaymentsFieldsConfig extends DocumentFieldsConfig<InvoiceP
                 key: 'amount',
                 validators: [Validators.required],
                 order: 3,
-                showColumn: true
+                showColumn: true,
+                sortable: true
             }),
 
             new Field({
@@ -60,7 +63,8 @@ export class NgInvoicePaymentsFieldsConfig extends DocumentFieldsConfig<InvoiceP
                 key: 'ip',
                 validators: [Validators.required],
                 order: 4,
-                showColumn: true
+                showColumn: true,
+                sortable: true
             }),
 
             new Field({
@@ -69,7 +73,8 @@ export class NgInvoicePaymentsFieldsConfig extends DocumentFieldsConfig<InvoiceP
                 key: 'inventoryId',
                 validators: [Validators.required],
                 order: 5,
-                showColumn: true
+                showColumn: true,
+                sortable: true
             })
         ];
 

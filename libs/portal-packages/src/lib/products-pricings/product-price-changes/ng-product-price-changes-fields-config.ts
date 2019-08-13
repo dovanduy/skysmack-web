@@ -43,8 +43,10 @@ export class NgProductPriceChangesFieldsConfig extends FieldsConfig<ProductPrice
                     },
                 ],
                 order: 1,
-                showColumn: true
-            } as SelectField),
+                showColumn: true,
+                sortable: true
+            } as SelectField
+            ),
             new SelectField({
                 component: SelectFieldComponent,
                 value: entity ? entity.object.recordId : undefined,
@@ -63,14 +65,16 @@ export class NgProductPriceChangesFieldsConfig extends FieldsConfig<ProductPrice
                 value: entity ? entity.object.perUnit : false,
                 key: 'perUnit',
                 order: 4,
-                showColumn: true
+                showColumn: true,
+                sortable: true
             }),
             new Field({
                 component: CheckboxFieldComponent,
                 value: entity ? entity.object.isPercent : false,
                 key: 'isPercent',
                 order: 4,
-                showColumn: true
+                showColumn: true,
+                sortable: true
             }),
             new Field({
                 component: DecimalFieldComponent,
@@ -78,7 +82,8 @@ export class NgProductPriceChangesFieldsConfig extends FieldsConfig<ProductPrice
                 key: 'change',
                 validators: [Validators.required],
                 order: 4,
-                showColumn: true
+                showColumn: true,
+                sortable: true
             }),
             new Field({
                 component: IntFieldComponent,
@@ -86,7 +91,8 @@ export class NgProductPriceChangesFieldsConfig extends FieldsConfig<ProductPrice
                 key: 'minUnits',
                 validators: [Validators.required],
                 order: 4,
-                showColumn: true
+                showColumn: true,
+                sortable: true
             }),
             new Field({
                 component: IntFieldComponent,
@@ -94,14 +100,16 @@ export class NgProductPriceChangesFieldsConfig extends FieldsConfig<ProductPrice
                 key: 'maxUnits',
                 validators: [Validators.required],
                 order: 4,
-                showColumn: true
+                showColumn: true,
+                sortable: true
             }),
             new Field({
                 component: CheckboxFieldComponent,
                 value: entity ? entity.object.onlyValidUnits : false,
                 key: 'onlyValidUnits',
                 order: 4,
-                showColumn: true
+                showColumn: true,
+                sortable: true
             }),
             new Field({
                 component: DateTimeFieldComponent,
@@ -109,7 +117,8 @@ export class NgProductPriceChangesFieldsConfig extends FieldsConfig<ProductPrice
                 key: 'validFrom',
                 validators: [Validators.required],
                 order: 5,
-                showColumn: true
+                showColumn: true,
+                sortable: true
             }),
             new Field({
                 component: DateTimeFieldComponent,
@@ -117,7 +126,8 @@ export class NgProductPriceChangesFieldsConfig extends FieldsConfig<ProductPrice
                 key: 'validTo',
                 validators: [Validators.required],
                 order: 6,
-                showColumn: true
+                showColumn: true,
+                sortable: true
             })
         ];
 

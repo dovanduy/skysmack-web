@@ -52,7 +52,7 @@ export class RefreshTokenInterceptor implements HttpInterceptor {
                                                 if (IsAuthenticated(currentUserUpdated)) {
                                                     // Use new user info to get request
                                                     return next.handle(this.addTokenToRequest(request, currentUserUpdated));
-                                                } else {                                                    
+                                                } else {
                                                     // Something went wrong, assume current user no longer has a valid access token
                                                     // Clear user
                                                     this.authenticationActions.logout();
@@ -73,8 +73,8 @@ export class RefreshTokenInterceptor implements HttpInterceptor {
                                 catchError(error => {
                                     // Catch if refresh token timeout is misaligned with backend
                                     // Try to refresh token if error is 401, it was attempted with authorization and a refresh token exist for the user
-                                    if (error instanceof HttpErrorResponse && error.status === 401 && request.headers.has('Authorization')) {
-                                        if (currentUser && currentUser.refresh_token) {
+                                    if (error instanceof HttpErrorResponse && error.status === 401 && currentUser && currentUser.token_type && currentUser.access_token) {
+                                        if (currentUser.refresh_token) {
                                             // Refresh token and block other requests
                                             this.refreshToken(currentUser);
 
@@ -123,7 +123,7 @@ export class RefreshTokenInterceptor implements HttpInterceptor {
                 }),
                 catchError((error) => {
                     // We assume the user should be logged out
-                    this.authenticationActions.logout();                    
+                    this.authenticationActions.logout();
                     // Refreshing token went wrong, however we still want to stop blocking. 
                     this.isRefreshingToken$.next(false);
                     // Throw error

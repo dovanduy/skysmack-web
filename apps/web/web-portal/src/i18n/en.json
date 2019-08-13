@@ -35,10 +35,10 @@
 			"VALIDATION": {}
 		},
 		"QUEUE": {
-			"ADDING": "Adding {{ ruleId }}",
-			"UPDATING": "Updating {{ ruleId }}",
-			"DELETING": "Deleting {{ ruleId }}",
-			"ERROR": "An error occured with {{ ruleId }}. Correct and try again."
+			"ADDING": "Adding {{ permission }} permission",
+			"UPDATING": "Updating {{ permission }} permission",
+			"DELETING": "Deleting {{ permission }} permission",
+			"ERROR": "An error occured with {{ permission }} permission. Correct and try again."
 		}
 	},
 	"ACCESS_POLICY_RULES": {
@@ -72,10 +72,10 @@
 			}
 		},
 		"QUEUE": {
-			"ADDING": "Adding access policy rules {{ id }}",
-			"UPDATING": "Updating access policy rules {{ id }}",
-			"DELETING": "Deleting access policy rules {{ id }}",
-			"ERROR": "An error occured with access policy rules {{ id }}. Correct and try again."
+			"ADDING": "Adding the access policy rule",
+			"UPDATING": "Updating the access policy rule",
+			"DELETING": "Deleting the access policy rule",
+			"ERROR": "An error occured with the access policy rule. Correct and try again."
 		}
 	},
 	"ACCESS_POLICY_ROLES": {
@@ -628,10 +628,10 @@
 			"PAYMENTS": "Payments"
 		},
 		"QUEUE": {
-			"ADDING": "Adding {{ currencyCode }}",
-			"UPDATING": "Updating {{ currencyCode }}",
-			"DELETING": "Deleting {{ currencyCode }}",
-			"ERROR": "An error occured with {{ currencyCode }}. Correct and try again."
+			"ADDING": "Adding {{ description }}",
+			"UPDATING": "Updating {{ description }}",
+			"DELETING": "Deleting {{ description }}",
+			"ERROR": "An error occured with {{ description }}. Correct and try again."
 		},
 		"ENTITY_ACTION_PROVIDER": {
 			"ENTITY_ACTION": {
@@ -1039,8 +1039,10 @@
 			"EDIT": "Edit settings"
 		},
 		"QUEUE": {
-			"UPDATING": "Updating",
-			"ERROR": "An error occured when trying to change settings."
+			"UPDATING": "Updating {{ name }}",
+			"ERROR": "An error occured with {{ name }}. Correct and try again.",
+			"ADDING": "Adding {{ name }}",
+			"DELETING": "Deleting {{ name }}"
 		}
 	},
 	"LODGING_TYPES": {
@@ -1342,13 +1344,19 @@
 			"STATES": "States",
 			"TYPES": "Types",
 			"BACK": "Back"
+		},
+		"QUEUE": {
+			"ADDING": "Adding {{ description }}",
+			"UPDATING": "Updating {{ description }}",
+			"DELETING": "Deleting {{ description }}",
+			"ERROR": "An error occured with {{ description }}. Correct and try again."
 		}
 	},
 	"QUEUE": {
-		"ADDING": "Adding {{ description }}",
-		"UPDATING": "Updating {{ description }}",
-		"DELETING": "Deleting {{ description }}",
-		"ERROR": "An error occured with {{ description }}. Correct and try again."
+		"ADDING": "Adding settings",
+		"UPDATING": "Updating settings",
+		"DELETING": "Deleting settings",
+		"ERROR": "An error occured with settings. Correct and try again."
 	},
 	"MAINTENANCE": {
 		"ASSIGNMENT_ALL": {
@@ -1727,10 +1735,10 @@
 			}
 		},
 		"QUEUE": {
-			"ADDING": "Adding {{ name }}",
-			"UPDATING": "Updating {{ name }}",
-			"DELETING": "Deleting {{ name }}",
-			"ERROR": "An error occured with {{ name }}. Correct and try again."
+			"ADDING": "Adding the price change valid from/to: {{ dates }}",
+			"UPDATING": "Updating the price change valid from/to: {{ dates }}",
+			"DELETING": "Deleting the price change valid from/to: {{ dates }}",
+			"ERROR": "An error occured with the price change valid from/to: {{ dates }}. Correct and try again."
 		}
 	},
 	"PRODUCT_TYPE_PRICE_CHANGES": {
@@ -1803,10 +1811,10 @@
 			}
 		},
 		"QUEUE": {
-			"ADDING": "Adding {{ name }}",
-			"UPDATING": "Updating {{ name }}",
-			"DELETING": "Deleting {{ name }}",
-			"ERROR": "An error occured with {{ name }}. Correct and try again."
+			"ADDING": "Adding the price change valid from/to: {{ dates }}",
+			"UPDATING": "Updating the price change valid from/to: {{ dates }}",
+			"DELETING": "Deleting the price change valid from/to: {{ dates }}",
+			"ERROR": "An error occured with the price change valid from/to: {{ dates }}. Correct and try again."
 		}
 	},
 	"PRODUCT_TYPE_SALES_PRICE": {
@@ -1850,10 +1858,10 @@
 			}
 		},
 		"QUEUE": {
-			"ADDING": "Adding {{ name }}",
-			"UPDATING": "Updating {{ name }}",
-			"DELETING": "Deleting {{ name }}",
-			"ERROR": "An error occured with {{ name }}. Correct and try again."
+			"ADDING": "Adding the product type sale price with the price: {{ price }}",
+			"UPDATING": "Updating the product type sale price with the price: {{ price }}",
+			"DELETING": "Deleting the product type sale price with the price: {{ price }}",
+			"ERROR": "An error occured with the product type sale price with the price: {{ price }}. Correct and try again."
 		}
 	},
 	"PRODUCTS_SALES_PRICE": {
@@ -1897,10 +1905,10 @@
 			}
 		},
 		"QUEUE": {
-			"ADDING": "Adding {{ name }}",
-			"UPDATING": "Updating {{ name }}",
-			"DELETING": "Deleting {{ name }}",
-			"ERROR": "An error occured with {{ name }}. Correct and try again."
+			"ADDING": "Adding the product sale price with the price: {{ price }}",
+			"UPDATING": "Updating the product sale price with the price: {{ price }}",
+			"DELETING": "Deleting the product sale price with the price: {{ price }}",
+			"ERROR": "An error occured with the product sale price with the price: {{ price }}. Correct and try again."
 		}
 	},
 	"LODGING_PRICES": {
@@ -1944,10 +1952,10 @@
 			}
 		},
 		"QUEUE": {
-			"ADDING": "Adding {{ name }}",
-			"UPDATING": "Updating {{ name }}",
-			"DELETING": "Deleting {{ name }}",
-			"ERROR": "An error occured with {{ name }}. Correct and try again."
+			"ADDING": "Adding the lodging price with the price: {{ price }}",
+			"UPDATING": "Updating the lodging price with the price: {{ price }}",
+			"DELETING": "Deleting the lodging price with the price: {{ price }}",
+			"ERROR": "An error occured with the lodging price with the price: {{ price }}. Correct and try again."
 		}
 	},
 	"LODGING_RESERVATION_PRICE_CHANGES": {
@@ -2046,10 +2054,10 @@
 			}
 		},
 		"QUEUE": {
-			"ADDING": "Adding {{ name }}",
-			"UPDATING": "Updating {{ name }}",
-			"DELETING": "Deleting {{ name }}",
-			"ERROR": "An error occured with {{ name }}. Correct and try again."
+			"ADDING": "Adding the lodging reservation price change valid from/to: {{ dates }}",
+			"UPDATING": "Updating the lodging reservation price change valid from/to: {{ dates }}",
+			"DELETING": "Deleting the lodging reservation price change valid from/to: {{ dates }}",
+			"ERROR": "An error occured with the lodging reservation price change valid from/to: {{ dates }}. Correct and try again."
 		}
 	},
 	"LODGING_TYPE_PRICES": {
@@ -2093,10 +2101,10 @@
 			}
 		},
 		"QUEUE": {
-			"ADDING": "Adding {{ name }}",
-			"UPDATING": "Updating {{ name }}",
-			"DELETING": "Deleting {{ name }}",
-			"ERROR": "An error occured with {{ name }}. Correct and try again."
+			"ADDING": "Adding the lodging type price with the price: {{ price }}",
+			"UPDATING": "Updating the lodging type price with the price: {{ price }}",
+			"DELETING": "Deleting the lodging type price with the price: {{ price }}",
+			"ERROR": "An error occured with the lodging type price with the price: {{ price }}. Correct and try again."
 		}
 	},
 	"LODGING_TYPE_RESERVATION_PRICE_CHANGES": {
@@ -2195,10 +2203,10 @@
 			}
 		},
 		"QUEUE": {
-			"ADDING": "Adding {{ name }}",
-			"UPDATING": "Updating {{ name }}",
-			"DELETING": "Deleting {{ name }}",
-			"ERROR": "An error occured with {{ name }}. Correct and try again."
+			"ADDING": "Adding the lodging type reservation price change valid from/to: {{ dates }}",
+			"UPDATING": "Updating the lodging type reservation price change valid from/to: {{ dates }}",
+			"DELETING": "Deleting the lodging type reservation price change valid from/to: {{ dates }}",
+			"ERROR": "An error occured with the lodging type reservation price change valid from/to: {{ dates }}. Correct and try again."
 		}
 	},
 	"CLIENTS": {
@@ -2239,10 +2247,10 @@
 			}
 		},
 		"QUEUE": {
-			"ADDING": "Adding client {{ id }}",
-			"UPDATING": "Updating client {{ id }}",
-			"DELETING": "Deleting client {{ id }}",
-			"ERROR": "An error occured with client {{ id }}. Correct and try again."
+			"ADDING": "Adding client {{ name }}",
+			"UPDATING": "Updating client {{ name }}",
+			"DELETING": "Deleting client {{ name }}",
+			"ERROR": "An error occured with client {{ name }}. Correct and try again."
 		}
 	},
 	"CONNECTIONS": {
@@ -2288,10 +2296,10 @@
 			}
 		},
 		"QUEUE": {
-			"ADDING": "Adding connection {{ id }}",
-			"UPDATING": "Updating connection {{ id }}",
-			"DELETING": "Deleting connection {{ id }}",
-			"ERROR": "An error occured with connection {{ id }}. Correct and try again."
+			"ADDING": "Adding the connection with the client: {{ client }}",
+			"UPDATING": "Updating the connection with the client: {{ client }}",
+			"DELETING": "Deleting the connection with the client: {{ client }}",
+			"ERROR": "An error occured with the connection with the client: {{ client }}. Correct and try again."
 		}
 	},
 	"RECEIPTS": {
@@ -2327,10 +2335,10 @@
 			}
 		},
 		"QUEUE": {
-			"ADDING": "Adding receipt {{ id }}",
-			"UPDATING": "Updating receipt {{ id }}",
-			"DELETING": "Deleting receipt {{ id }}",
-			"ERROR": "An error occured with receipt {{ id }}. Correct and try again."
+			"ADDING": "Adding receipt {{ name }}",
+			"UPDATING": "Updating receipt {{ name }}",
+			"DELETING": "Deleting receipt {{ name }}",
+			"ERROR": "An error occured with receipt {{ name }}. Correct and try again."
 		}
 	},
 	"TERMINALS": {
@@ -2406,10 +2414,10 @@
 			"BUTTON_PAY": "Pay"
 		},
 		"QUEUE": {
-			"ADDING": "Adding terminal {{ id }}",
-			"UPDATING": "Updating terminal {{ id }}",
-			"DELETING": "Deleting terminal {{ id }}",
-			"ERROR": "An error occured with terminal {{ id }}. Correct and try again."
+			"ADDING": "Adding terminal {{ name }}",
+			"UPDATING": "Updating terminal {{ name }}",
+			"DELETING": "Deleting terminal {{ name }}",
+			"ERROR": "An error occured with terminal {{ name }}. Correct and try again."
 		},
 		"ENTITY_ACTION_PROVIDER": {
 			"ENTITY_ACTION": {
@@ -2748,6 +2756,12 @@
 			"EDIT": "Edit package",
 			"PACKAGE_PATH": "Edit package path",
 			"BUTTON_EDIT": "Update"
+		},
+		"QUEUE": {
+			"ADDING": "Adding {{ displayName }}",
+			"UPDATING": "Updating {{ displayName }}",
+			"DELETING": "Deleting {{ displayName }}",
+			"ERROR": "An error occured with {{ displayName }}. Correct and try again."
 		}
 	},
 	"ADAPTORS": {
@@ -2937,10 +2951,17 @@
 					"REQUIRED": "Display name is required"
 				}
 			}
+		},
+		"QUEUE": {
+			"ADDING": "Adding {{ displayName }}",
+			"UPDATING": "Updating {{ displayName }}",
+			"DELETING": "Deleting {{ displayName }}",
+			"ERROR": "An error occured with {{ displayName }}. Correct and try again."
 		}
 	},
 	"SETTINGS": {
 		"SETTINGS": "Settings",
+<<<<<<< HEAD
 		"BUTTON_SUBMIT": "Submit"
 	},
 	"COMMERCIAL_USERS": {
@@ -3000,6 +3021,14 @@
 			"TENANTS": "Tenants",
 			"USERS": "Users",
 			"LOGOUT": "Logout"
+=======
+		"BUTTON_SUBMIT": "Submit",
+		"QUEUE": {
+			"ADDING": "Adding settings",
+			"UPDATING": "Updating settings",
+			"DELETING": "Deleting settings",
+			"ERROR": "An error occured with settings. Correct and try again."
+>>>>>>> dev
 		}
 	}
 }

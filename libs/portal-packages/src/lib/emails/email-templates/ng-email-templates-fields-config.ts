@@ -30,36 +30,42 @@ export class NgEmailTemplatesFieldsConfig extends FieldsConfig<EmailTemplate, nu
         value: entity ? entity.object.from : undefined,
         component: StringFieldComponent,
         key: 'from',
-        showColumn: true
+        showColumn: true,
+        sortable: true
       }),
       new Field({
         value: entity ? entity.object.to : undefined,
         component: StringFieldComponent,
         key: 'to',
-        showColumn: true
+        showColumn: true,
+        sortable: true
       }),
       new Field({
         value: entity ? entity.object.cc : undefined,
         component: StringFieldComponent,
         key: 'cc',
-        showColumn: true
+        showColumn: true,
+        sortable: true
       }),
       new Field({
         value: entity ? entity.object.bcc : undefined,
         component: StringFieldComponent,
         key: 'bcc',
-        showColumn: true
+        showColumn: true,
+        sortable: true
       }),
       new Field({
         value: entity ? entity.object.subject : undefined,
         component: StringFieldComponent,
         key: 'subject',
-        showColumn: true
+        showColumn: true,
+        sortable: true
       }),
       new Field({
         value: entity ? entity.object.body : undefined,
         component: EmailTemplateFieldComponent,
-        key: 'body'
+        key: 'body',
+        sortable: true
       }),
     ];
 

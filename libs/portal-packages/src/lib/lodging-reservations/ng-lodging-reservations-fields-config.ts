@@ -64,7 +64,8 @@ export class NgLodgingReservationsFieldsConfig extends FieldsConfig<LodgingReser
                 key: 'checkIn',
                 validators: [Validators.required],
                 order: 3,
-                showColumn: true
+                showColumn: true,
+                sortable: true
             }),
             new Field({
                 component: DateFieldComponent,
@@ -72,7 +73,8 @@ export class NgLodgingReservationsFieldsConfig extends FieldsConfig<LodgingReser
                 key: 'checkOut',
                 validators: [Validators.required],
                 order: 4,
-                showColumn: true
+                showColumn: true,
+                sortable: true
             }),
             new Field({
                 component: IntFieldComponent,
@@ -80,7 +82,8 @@ export class NgLodgingReservationsFieldsConfig extends FieldsConfig<LodgingReser
                 key: 'persons',
                 validators: [Validators.required],
                 order: 5,
-                showColumn: true
+                showColumn: true,
+                sortable: true
             }),
             new SelectField({
                 component: SelectFieldComponent,
@@ -99,7 +102,8 @@ export class NgLodgingReservationsFieldsConfig extends FieldsConfig<LodgingReser
                 ),
                 optionsDataType: 'ts-enum',
                 order: 5,
-                permissions: ['SkipProcessingStatus']
+                permissions: ['SkipProcessingStatus'],
+                sortable: true
             })
         ];
 

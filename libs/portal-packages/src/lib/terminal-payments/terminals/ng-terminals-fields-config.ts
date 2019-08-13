@@ -29,22 +29,25 @@ export class NgTerminalsFieldsConfig extends FieldsConfig<Terminal, number> {
                 key: 'name',
                 validators: [Validators.required],
                 order: 1,
-                showColumn: true
+                showColumn: true,
+                sortable: true
             }),
             new Field({
                 component: StringFieldComponent,
                 value: entity ? entity.object.connectionString : undefined,
                 key: 'connectionString',
                 validators: [Validators.required],
-                order: 1,
-                showColumn: true
+                order: 2,
+                showColumn: true,
+                sortable: true
             }),
             new Field({
                 component: StringFieldComponent,
                 value: entity ? entity.object.description : undefined,
                 key: 'description',
-                order: 1,
-                showColumn: true
+                order: 3,
+                showColumn: true,
+                sortable: true
             })
         ];
 

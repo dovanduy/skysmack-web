@@ -29,14 +29,16 @@ export class NgPackagePathEditFieldsConfig extends FieldsConfig<Package, string>
                 value: _package ? _package.object.path : undefined,
                 key: 'currentPath',
                 disabled: true,
-                order: 1
+                order: 1,
+                sortable: true
             }),
             new Field({
                 component: StringFieldComponent,
                 value: _package ? _package.object.path : undefined,
                 key: 'newPath',
                 validators: [Validators.required, CustomValidators.minStringLength(3)],
-                order: 2
+                order: 2,
+                sortable: true
             })
         ];
     }

@@ -23,19 +23,22 @@ export class NgLockoutSettingsFieldsConfig extends FieldsConfig<LockoutSettings,
                 component: CheckboxFieldComponent,
                 value: settings ? settings.object.allowedForNewUsers : false,
                 key: 'allowedForNewUsers',
-                order: 1
+                order: 1,
+                sortable: true
             }),
             new Field({
                 component: IntFieldComponent,
                 value: settings ? settings.object.maxFailedAccessAttempts : undefined,
                 key: 'maxFailedAccessAttempts',
-                order: 2
+                order: 2,
+                sortable: true
             }),
             new Field({
                 component: TimeFieldComponent,
                 value: settings ? settings.object.defaultLockoutTimeSpan : undefined,
                 key: 'defaultLockoutTimeSpan',
-                order: 3
+                order: 3,
+                sortable: true
             })
         ];
 

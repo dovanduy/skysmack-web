@@ -29,7 +29,8 @@ export class NgChangePasswordFieldsConfig extends FieldsConfig<ChangePassword, n
                 key: 'currentPassword',
                 validators: [Validators.required],
                 order: 1,
-                showColumn: true
+                showColumn: true,
+                sortable: true
             }),
 
             new Field({
@@ -38,7 +39,8 @@ export class NgChangePasswordFieldsConfig extends FieldsConfig<ChangePassword, n
                 key: 'newPassword',
                 validators: [Validators.required],
                 order: 2,
-                showColumn: true
+                showColumn: true,
+                sortable: true
             }),
 
             new Field({
@@ -46,7 +48,8 @@ export class NgChangePasswordFieldsConfig extends FieldsConfig<ChangePassword, n
                 value: entity ? entity.object.confirmNewPassword : undefined,
                 key: 'confirmNewPassword',
                 validators: [Validators.required],
-                order: 3
+                order: 3,
+                sortable: true
             })
         ];
 

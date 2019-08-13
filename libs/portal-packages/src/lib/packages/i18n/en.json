@@ -59,6 +59,12 @@
             "EDIT": "Edit package",
             "PACKAGE_PATH": "Edit package path",
             "BUTTON_EDIT": "Update"
+        },
+        "QUEUE": {
+            "ADDING": "Adding {{ displayName }}",
+            "UPDATING": "Updating {{ displayName }}",
+            "DELETING": "Deleting {{ displayName }}",
+            "ERROR": "An error occured with {{ displayName }}. Correct and try again."
         }
     },
     "ADAPTORS": {

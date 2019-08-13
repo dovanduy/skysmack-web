@@ -32,7 +32,8 @@ export class NgLodgingTypesFieldsConfig extends DocumentFieldsConfig<LodgingType
                 key: 'name',
                 validators: [Validators.required],
                 order: 1,
-                showColumn: true
+                showColumn: true,
+                sortable: true
             })
 
         ];

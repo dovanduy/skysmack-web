@@ -38,7 +38,8 @@ export class NgInvoiceItemsFieldsConfig extends DocumentFieldsConfig<InvoiceItem
                 key: 'description',
                 validators: [Validators.required],
                 order: 1,
-                showColumn: true
+                showColumn: true,
+                sortable: true
             }),
 
             new Field({
@@ -47,7 +48,8 @@ export class NgInvoiceItemsFieldsConfig extends DocumentFieldsConfig<InvoiceItem
                 key: 'order',
                 validators: [Validators.required],
                 order: 2,
-                showColumn: true
+                showColumn: true,
+                sortable: true
             }),
 
             new Field({
@@ -56,7 +58,8 @@ export class NgInvoiceItemsFieldsConfig extends DocumentFieldsConfig<InvoiceItem
                 key: 'units',
                 validators: [Validators.required],
                 order: 3,
-                showColumn: true
+                showColumn: true,
+                sortable: true
             }),
 
             new Field({
@@ -65,7 +68,8 @@ export class NgInvoiceItemsFieldsConfig extends DocumentFieldsConfig<InvoiceItem
                 key: 'unitPrice',
                 validators: [Validators.required],
                 order: 4,
-                showColumn: true
+                showColumn: true,
+                sortable: true
             }),
 
             new Field({
@@ -74,7 +78,8 @@ export class NgInvoiceItemsFieldsConfig extends DocumentFieldsConfig<InvoiceItem
                 key: 'unitDiscount',
                 validators: [Validators.required],
                 order: 5,
-                showColumn: true
+                showColumn: true,
+                sortable: true
             }),
 
             new Field({
@@ -83,7 +88,8 @@ export class NgInvoiceItemsFieldsConfig extends DocumentFieldsConfig<InvoiceItem
                 key: 'unitTax',
                 validators: [Validators.required],
                 order: 6,
-                showColumn: true
+                showColumn: true,
+                sortable: true
             }),
 
             new Field({
@@ -91,7 +97,8 @@ export class NgInvoiceItemsFieldsConfig extends DocumentFieldsConfig<InvoiceItem
                 value: inventoryId,
                 key: 'inventoryId',
                 validators: [Validators.required],
-                order: 7
+                order: 7,
+                sortable: true
             })
         ];
 

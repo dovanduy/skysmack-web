@@ -51,8 +51,7 @@ export class NgProductsFieldsConfig extends DocumentFieldsConfig<Product, number
                     displayName: 'None'
                 }],
                 order: 1,
-                showColumn: true,
-                sortable: true
+                showColumn: true
             }),
         ];
 

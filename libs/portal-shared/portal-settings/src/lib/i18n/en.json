@@ -1,6 +1,12 @@
 {
     "SETTINGS": {
         "SETTINGS": "Settings",
-        "BUTTON_SUBMIT": "Submit"
+        "BUTTON_SUBMIT": "Submit",
+        "QUEUE": {
+            "ADDING": "Adding settings",
+            "UPDATING": "Updating settings",
+            "DELETING": "Deleting settings",
+            "ERROR": "An error occured with settings. Correct and try again."
+        }
     }
 }
