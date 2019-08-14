@@ -14,7 +14,12 @@ export const CONNECTIONS_AREA_KEY = 'connections'; // validation, store, menu
 export const CONNECTIONS_REDUX_KEY = 'CONNECTIONS_'; // reducer prefix, action, epics, Requests
 export const CONNECTIONS_ADDITIONAL_PATHS = ['connections']; // actions, requests
 
-export const PAYMENT_RECIEPTS_REDUCER_KEY = 'payment_reciepts';
-export const PAYMENT_RECIEPTS_AREA_KEY = 'payment_reciepts'; // validation, store, menu
-export const PAYMENT_RECIEPTS_REDUX_KEY = 'PAYMENT_RECIEPTS_'; // reducer prefix, action, epics, Requests
-export const PAYMENT_RECIEPTS_ADDITIONAL_PATHS = ['payment-reciepts']; // actions, requests
+export const TERMINAL_PAYMENT_RECEIPTS_REDUCER_KEY = 'terminal_payment_receipts';
+export const TERMINAL_PAYMENT_RECEIPTS_AREA_KEY = 'terminal_payment_receipts'; // validation, store, menu
+export const TERMINAL_PAYMENT_RECEIPTS_REDUX_KEY = 'TERMINAL_PAYMENT_RECEIPTS_'; // reducer prefix, action, epics, Requests
+export const TERMINAL_PAYMENT_RECEIPTS_ADDITIONAL_PATHS = ['terminal-payment-receipts']; // actions, requests
+
+export const TERMINAL_RECEIPTS_REDUCER_KEY = 'terminal_receipts';
+export const TERMINAL_RECEIPTS_AREA_KEY = 'terminal_receipts'; // validation, store, menu
+export const TERMINAL_RECEIPTS_REDUX_KEY = 'TERMINAL_RECEIPTS_'; // reducer prefix, action, epics, Requests
+export const TERMINAL_RECEIPTS_ADDITIONAL_PATHS = ['terminal-receipts']; // actions, requests

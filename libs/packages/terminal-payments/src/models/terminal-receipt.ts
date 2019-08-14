@@ -1,10 +1,10 @@
 import { DocumentRecord } from '@skysmack/framework';
 
-export class TerminalReciept extends DocumentRecord<number> {
+export class TerminalReceipt extends DocumentRecord<number> {
     public type: string; // limited to 255 characters
     public printReceipt: string;
 
-    public constructor(init?: Partial<TerminalReciept>) {
+    public constructor(init?: Partial<TerminalReceipt>) {
         super();
         Object.assign(this, init);
     }
