@@ -6,6 +6,7 @@ export class TerminalPaymentReceipt extends DocumentRecord<number> {
     public printReceipt: string;
     public receiptDocument: string;
     public invoicePaymentId?: number;
+
     public invoicePayment?: LocalObject<InvoicePayment, number>
 
     public constructor(init?: Partial<TerminalPaymentReceipt>) {

@@ -6,11 +6,11 @@ import { Guid } from 'guid-typescript';
 import { Observable } from 'rxjs';
 import { getMenuEntries } from '@skysmack/ng-framework';
 import { TerminalPaymentsTypeId } from '@skysmack/package-types';
-import { TerminalPaymentReceiptsIndexComponent } from './components/terminal-payment-receipts-index/terminal-payment-receipts-index.component';
+import { TerminalReceiptsIndexComponent } from './components/terminal-receipts-index/terminal-receipts-index.component';
 import { TerminalPaymentsPermissions } from 'libs/packages/terminal-payments/src';
 
 @Injectable({ providedIn: 'root' })
-export class NgTerminalReceiptsMenuProvider implements MenuProvider {
+export class NgTerminalPaymentReceiptsMenuProvider implements MenuProvider {
     public id = Guid.create().toString();
     public translationPrefix = 'PERSONS.INDEX.';
 
@@ -19,14 +19,14 @@ export class NgTerminalReceiptsMenuProvider implements MenuProvider {
     ) { }
 
     public getMenuAreas(packagePath: string, componentKey: string): Observable<MenuArea[]> {
-        return getMenuEntries<MenuArea>(packagePath, TerminalPaymentsTypeId, componentKey, TerminalPaymentReceiptsIndexComponent.COMPONENT_KEY, this.getTerminalPaymentReceiptsMenuAreas, this.store);
+        return getMenuEntries<MenuArea>(packagePath, TerminalPaymentsTypeId, componentKey, TerminalReceiptsIndexComponent.COMPONENT_KEY, this.getTerminalReceiptsMenuAreas, this.store);
     };
 
     public getMenuItems(packagePath: string, componentKey: string): Observable<MenuItem[]> {
-        return getMenuEntries<MenuItem>(packagePath, TerminalPaymentsTypeId, componentKey, TerminalPaymentReceiptsIndexComponent.COMPONENT_KEY, this.getTerminalPaymentReceiptsMenuItems, this.store);
+        return getMenuEntries<MenuItem>(packagePath, TerminalPaymentsTypeId, componentKey, TerminalReceiptsIndexComponent.COMPONENT_KEY, this.getTerminalReceiptsMenuItems, this.store);
     };
 
-    public getTerminalPaymentReceiptsMenuAreas = () => {
+    public getTerminalReceiptsMenuAreas = () => {
         return [
             new MenuArea({
                 area: 'actions',
@@ -41,7 +41,7 @@ export class NgTerminalReceiptsMenuProvider implements MenuProvider {
         ];
     }
 
-    public getTerminalPaymentReceiptsMenuItems = () => {
+    public getTerminalReceiptsMenuItems = () => {
         return [
             new MenuItem({
                 url: 'create',
@@ -50,7 +50,7 @@ export class NgTerminalReceiptsMenuProvider implements MenuProvider {
                 order: 1,
                 icon: 'add',
                 permissions: [
-                    TerminalPaymentsPermissions.addTerminalPaymentReceipts
+                    TerminalPaymentsPermissions.addTerminalReceipts
                 ],
                 providedIn: [SIDEBAR, SPEEDDIAL]
             }),
@@ -61,7 +61,7 @@ export class NgTerminalReceiptsMenuProvider implements MenuProvider {
                 order: 2,
                 icon: 'short_text',
                 permissions: [
-                    TerminalPaymentsPermissions.findTerminalPaymentReceiptsFields
+                    TerminalPaymentsPermissions.findTerminalReceiptsFields
                 ],
                 providedIn: [SIDEBAR]
             })

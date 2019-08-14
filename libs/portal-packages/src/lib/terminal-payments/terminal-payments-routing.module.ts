@@ -6,6 +6,7 @@ import { connectionsRoutes } from './connections/components/connections-componen
 import { terminalPaymentsIndexRoutes } from './components/teminal-payments-index-components';
 import { DefaultComponent } from '@skysmack/portal-ui';
 import { terminalPaymentReceiptsRoutes } from './terminal-payment-receipts/components/terminal-payment-receipts-components';
+import { terminalReceiptsRoutes } from './terminal-receipts';
 
 @NgModule({
   imports: [RouterModule.forChild([
@@ -15,7 +16,8 @@ import { terminalPaymentReceiptsRoutes } from './terminal-payment-receipts/compo
         ...terminalsRoutes,
         ...receiptsRoutes,
         ...connectionsRoutes,
-        ...terminalPaymentReceiptsRoutes
+        ...terminalPaymentReceiptsRoutes,
+        ...terminalReceiptsRoutes
       ]
     }
   ]
