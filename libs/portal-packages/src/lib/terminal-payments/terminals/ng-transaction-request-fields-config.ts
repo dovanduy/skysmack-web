@@ -3,12 +3,13 @@ import { LocalObject, PagedQuery, toLocalObject } from '@skysmack/framework';
 import { TERMINALS_AREA_KEY, TransactionRequest, Currency, TerminalStatus, ConnectionKey, Connection } from '@skysmack/packages-terminal-payments';
 import { LoadedPackage } from '@skysmack/ng-framework';
 import { Validators } from '@angular/forms';
-import { NgTransactionRequestValidation, NgClientsStore, NgClientsActions, NgConnectionsStore, NgConnectionsActions, NgTerminalsStore, NgTerminalsActions } from '@skysmack/ng-terminal-payments';
+import { NgTransactionRequestValidation, NgConnectionsStore, NgConnectionsActions, NgTerminalsStore, NgTerminalsActions } from '@skysmack/ng-terminal-payments';
 import { of } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { FormRule, Field, SelectFieldOption, SelectField } from '@skysmack/ng-dynamic-forms';
 import { FieldsConfig, FieldProviders } from '@skysmack/ng-fields';
 import { SelectFieldComponent, IntFieldComponent, HiddenFieldComponent } from '@skysmack/portal-fields';
+import { NgClientsStore, NgClientsActions } from '@skysmack/ng-identities';
 
 @Injectable({ providedIn: 'root' })
 export class NgTransactionRequestFieldsConfig extends FieldsConfig<TransactionRequest, number> {

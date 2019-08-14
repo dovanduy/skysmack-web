@@ -1,7 +1,7 @@
 import { SignalRProvider } from '@skysmack/signal-r';
 import { Injectable } from '@angular/core';
 import { NgClientsActions } from './redux/ng-clients-actions';
-import { ClientOnlineStatusMessage, CLIENTS_AREA_KEY } from '@skysmack/packages-terminal-payments';
+import { ClientOnlineStatusMessage, CLIENTS_AREA_KEY } from '@skysmack/packages-identities';
 
 @Injectable({ providedIn: 'root' })
 export class SignalRClientsProvider implements SignalRProvider {

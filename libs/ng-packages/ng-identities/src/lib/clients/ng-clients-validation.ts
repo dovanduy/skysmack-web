@@ -1,6 +1,6 @@
 import { StrIndex } from '@skysmack/framework';
 import { Validation } from '@skysmack/ng-dynamic-forms';
-import { CLIENTS_AREA_KEY } from '@skysmack/packages-terminal-payments';
+import { CLIENTS_AREA_KEY } from '@skysmack/packages-identities';
 
 
 export class NgClientsValidation extends Validation {

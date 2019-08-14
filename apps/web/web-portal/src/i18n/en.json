@@ -294,7 +294,8 @@
 				"USER": "User",
 				"PASSWORD": "Password",
 				"SIGNIN": "Sign in"
-			}
+			},
+			"CLIENTS": "Clients"
 		}
 	},
 	"IDENTITIES_SETTINGS": {
