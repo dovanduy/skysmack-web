@@ -1,0 +1,43 @@
+{
+  "index": "/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "resources": {
+        "files": [
+          "/index.html",
+          "/assets/icons/**"
+        ]
+      }
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "resources": {
+        "files": [
+          "/*.css",
+          "/*.js",
+          "/assets/**",
+          "/*.(eot|svg|cur|jpg|png|webp|gif|otf|ttf|woff|woff2|ani)"
+        ],
+        "urls": [
+          "https://fonts.googleapis.com/css?family=Muli:300,400,600",
+          "https://fonts.googleapis.com/icon?family=Material+Icons",
+          "https://ajax.googleapis.com/ajax/libs/hammerjs/2.0.8/hammer.min.js"
+        ]
+      }
+    }
+  ],
+  "dataGroups": [
+    {
+      "name": "api",
+      "urls": ["https://api.skysmack.com/*"],
+      "cacheConfig": {
+        "maxAge": "1d",
+        "timeout": "500u",
+        "strategy": "freshness"
+      }
+    }
+  ]
+}

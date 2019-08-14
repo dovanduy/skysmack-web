@@ -14,22 +14,22 @@ export class CurrentUser {
 }
 
 export function IsAuthenticated(currentUser: CurrentUser): boolean {
-    let tokenExpired = true;
+    let tokenValid = false;
     
     if (currentUser && currentUser.access_token && currentUser.loginTime) {
-        tokenExpired = Date.now() >= (new Date(currentUser.loginTime).getTime() + currentUser.expires_in * 1000);
+        tokenValid = Date.now() < (new Date(currentUser.loginTime).getTime() + currentUser.expires_in * 1000);
     }
 
-    return tokenExpired ? false : true;
+    return tokenValid;
 }
 
 export function TokenExpiresSoon(currentUser: CurrentUser): boolean {
-    let tokenExpiresSoon = true;
+    let tokenExpiresSoon = false;
     
     if (currentUser && currentUser.access_token && currentUser.loginTime) {
         // 20% before expire
-        tokenExpiresSoon = Date.now() >= (new Date(currentUser.loginTime).getTime() + currentUser.expires_in * 800);
+        tokenExpiresSoon = Date.now() > (new Date(currentUser.loginTime).getTime() + currentUser.expires_in * 800);
     }
 
-    return tokenExpiresSoon ? false : true;
+    return tokenExpiresSoon;
 }

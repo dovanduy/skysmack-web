@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Field, FormHelper } from '@skysmack/ng-dynamic-forms';
 import { SubscriptionHandler, HttpSuccessResponse, toLocalObject } from '@skysmack/framework';
@@ -14,7 +14,7 @@ import { Tenant } from '../../models/tenant';
   templateUrl: './commercial-tenants-edit.component.html',
   styleUrls: ['./commercial-tenants-edit.component.scss'],
 })
-export class CommercialTenantsEditComponent implements OnInit {
+export class CommercialTenantsEditComponent implements OnInit, OnDestroy {
   public fields$: Observable<Field[]>;
   public subscriptionHandler = new SubscriptionHandler();
 
@@ -30,8 +30,12 @@ export class CommercialTenantsEditComponent implements OnInit {
     this.fields$ = this.activatedRoute.params.pipe(
       map(params => params.id),
       switchMap(id => this.service.getById(id)),
-      map((response: HttpSuccessResponse<Tenant>) => this.fieldsConfig.getFields(toLocalObject(response.body)))
+      switchMap((response: HttpSuccessResponse<Tenant>) => this.fieldsConfig.getFields(null, toLocalObject(response.body)))
     );
+  }
+
+  public ngOnDestroy() {
+    this.subscriptionHandler.unsubscribe();
   }
 
   public onSubmit(fh: FormHelper) {

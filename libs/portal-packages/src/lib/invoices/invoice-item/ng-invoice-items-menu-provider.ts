@@ -77,7 +77,7 @@ export class NgInvoiceItemsMenuProvider implements MenuProvider {
                 providedIn: [SIDEBAR, SPEEDDIAL]
             }),
             new MenuItem({
-                url: 'fields',
+                url: '/' + packagePath + '/items/fields',
                 displayName: this.translationPrefix + 'FIELDS',
                 area: 'manage',
                 order: 2,

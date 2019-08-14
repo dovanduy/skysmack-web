@@ -3,11 +3,11 @@
 @include normalize();
 $skysmack-font: "'Muli','Helvetica Neue Light','Helvetica Neue',Helvetica,Arial,'Lucida Grande','sans-serif'";
 
-// SKYSMACK DEFAULT LAYOUT
-@import "./global/layout";
-
 // --- MATERIAL2 + MATERIAL2 DOCS START ---
 @import "./material2/themes/skysmack";
+
+// SKYSMACK DEFAULT LAYOUT
+@import "./global/layout";
 
 $custom-typography: mat-typography-config(
   $font-family: $skysmack-font,

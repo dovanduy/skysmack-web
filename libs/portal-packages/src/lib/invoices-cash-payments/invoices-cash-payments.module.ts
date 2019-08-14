@@ -2,7 +2,7 @@ import { NgModule, ComponentFactoryResolver } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 
-import { LanguageService, MenuItemActionProviders, NgMenuProviders } from '@skysmack/portal-ui';
+import { MenuItemActionProviders, NgMenuProviders } from '@skysmack/portal-ui';
 import { InvoicesCashPaymentsRoutingModule } from './invoices-cash-payments-routing.module';
 import { NgInvoicesCashPaymentsModule } from '@skysmack/ng-invoices-cash-payments';
 import { PortalUiModule } from '@skysmack/portal-ui';
@@ -31,9 +31,7 @@ import { NgInvoicesCashPaymentsMenuProvider } from './invoices-cash-payments/ng-
   entryComponents: [
     InvoicesCashPaymentsPayComponent
   ],
-  providers: [
-    LanguageService
-  ]
+  providers: []
 })
 export class InvoicesCashPaymentsModule {
   constructor(
@@ -42,7 +40,7 @@ export class InvoicesCashPaymentsModule {
     // Make entry components available
     coalescingResolver: CoalescingComponentFactoryResolver,
     localResolver: ComponentFactoryResolver,
-    ngMenuProviders: NgMenuProviders, 
+    ngMenuProviders: NgMenuProviders,
     ngInvoicesCashpaymentsMenuProvider: NgInvoicesCashPaymentsMenuProvider,
   ) {
     menuItemActionProviders.add(InvoicesTypeId, invoicesCashPaymentsMenuItemActionProvider);
@@ -50,7 +48,7 @@ export class InvoicesCashPaymentsModule {
     // Make entry components available
     coalescingResolver.registerResolver(localResolver);
     ngMenuProviders
-    .add(ngInvoicesCashpaymentsMenuProvider)
+      .add(ngInvoicesCashpaymentsMenuProvider)
 
   }
 }

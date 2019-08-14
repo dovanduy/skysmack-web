@@ -1,5 +1,9 @@
 import { sharedReducer } from './shared-reducer';
 
+export class HydratedAppState {
+    public hydrated: HydratedState;
+}
+
 export class HydratedState {
     public hydrated = false;
 }

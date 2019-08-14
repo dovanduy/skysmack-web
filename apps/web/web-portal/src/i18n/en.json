@@ -41,43 +41,6 @@
 			"ERROR": "An error occured with {{ permission }} permission. Correct and try again."
 		}
 	},
-	"ACCESS_POLICY_RULES": {
-		"CREATE": {
-			"CREATE": "Create",
-			"BUTTON_CREATE": "Create"
-		},
-		"EDIT": {
-			"EDITING": "Rediger",
-			"BUTTON_EDIT": "Update"
-		},
-		"INDEX": {
-			"TITLE_EXTRAS": "(rules)",
-			"ACTIONS": "Actions",
-			"CREATE": "Create",
-			"MANAGE": "Manage",
-			"BACK": "Back",
-			"ROLES": "Roles",
-			"FIELDS_TITLE": "(fields)"
-		},
-		"FORM": {
-			"LABELS": {
-				"ACCESS": "Access",
-				"AUTHENTICATED": "Authenticated",
-				"INCLUDEROLES": "Include roles"
-			},
-			"PLACEHOLDERS": {
-				"ACCESS": "Access",
-				"AUTHENTICATED": "Authenticated",
-				"INCLUDEROLES": "Include roles"
-			}
-		},
-		"QUEUE": {
-			"ADDING": "Adding the access policy rule",
-			"UPDATING": "Updating the access policy rule",
-			"DELETING": "Deleting the access policy rule",
-			"ERROR": "An error occured with the access policy rule. Correct and try again."
-		}
-	},
 	"ACCESS_POLICY_ROLES": {
 		"CREATE": {
 			"CREATE": "Create",
@@ -116,6 +79,43 @@
 			"UPDATING": "Updating {{ roleId }}",
 			"DELETING": "Deleting {{ roleId }}",
 			"ERROR": "An error occured with {{ roleId }}. Correct and try again."
+		}
+	},
+	"ACCESS_POLICY_RULES": {
+		"CREATE": {
+			"CREATE": "Create",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDITING": "Rediger",
+			"BUTTON_EDIT": "Update"
+		},
+		"INDEX": {
+			"TITLE_EXTRAS": "(rules)",
+			"ACTIONS": "Actions",
+			"CREATE": "Create",
+			"MANAGE": "Manage",
+			"BACK": "Back",
+			"ROLES": "Roles",
+			"FIELDS_TITLE": "(fields)"
+		},
+		"FORM": {
+			"LABELS": {
+				"ACCESS": "Access",
+				"AUTHENTICATED": "Authenticated",
+				"INCLUDEROLES": "Include roles"
+			},
+			"PLACEHOLDERS": {
+				"ACCESS": "Access",
+				"AUTHENTICATED": "Authenticated",
+				"INCLUDEROLES": "Include roles"
+			}
+		},
+		"QUEUE": {
+			"ADDING": "Adding the access policy rule",
+			"UPDATING": "Updating the access policy rule",
+			"DELETING": "Deleting the access policy rule",
+			"ERROR": "An error occured with the access policy rule. Correct and try again."
 		}
 	},
 	"ACCESS_POLICIES": {
@@ -575,74 +575,10 @@
 			"ROLES": "Roles"
 		}
 	},
-	"INVOICES_CASH_PAYMENTS": {
-		"FORM": {
-			"LABELS": {
-				"DESCRIPTION": "Description",
-				"CURRENCYCODE": "Currency code",
-				"AMOUNT": "Amount",
-				"INVOICEID": "Invoice"
-			},
-			"PLACEHOLDERS": {
-				"DESCRIPTION": "Description",
-				"CURRENCYCODE": "Currency code",
-				"AMOUNT": "Amount",
-				"INVOICEID": "Invoice"
-			},
-			"VALIDATION": {
-				"DESCRIPTION": {
-					"REQUIRED": "Description is required."
-				},
-				"CURRENCYCODE": {
-					"REQUIRED": "Currency code is required."
-				},
-				"AMOUNT": {
-					"REQUIRED": "Amount is required."
-				},
-				"INVOICEID": {
-					"REQUIRED": "Invoice is required."
-				}
-			}
-		},
-		"CREATE": {
-			"PAYMENT": "Cash payment",
-			"BUTTON_CREATE": "Create"
-		},
-		"EDIT": {
-			"EDIT": "Edit",
-			"BUTTON_EDIT": "Update"
-		},
-		"PAY": {
-			"BUTTON_PAY": "Pay"
-		},
-		"INDEX": {
-			"PACKAGES": "Packages",
-			"CREATE": "Create",
-			"EDIT": "Edit",
-			"DELETE": "Delete",
-			"FIELDS": "Fields",
-			"FIELDS_TITLE": "(fields)",
-			"ITEM": "Item",
-			"MANAGE": "Manage",
-			"ACTIONS": "Actions",
-			"ITEMS": "Items",
-			"PAYMENTS": "Payments"
-		},
-		"QUEUE": {
-			"ADDING": "Adding {{ description }}",
-			"UPDATING": "Updating {{ description }}",
-			"DELETING": "Deleting {{ description }}",
-			"ERROR": "An error occured with {{ description }}. Correct and try again."
-		},
-		"ENTITY_ACTION_PROVIDER": {
-			"ENTITY_ACTION": {
-				"CASH_PAYMENT": "Cash payment"
-			}
-		}
-	},
 	"INVOICES": {
 		"FORM": {
 			"LABELS": {
+				"DESCRIPTION": "Description",
 				"CURRENCYCODE": "Currency code",
 				"TOTAL": "Total",
 				"TOTALTAX": "Total tax",
@@ -651,6 +587,7 @@
 				"STATUS": "Status"
 			},
 			"PLACEHOLDERS": {
+				"DESCRIPTION": "Description",
 				"CURRENCYCODE": "Currency code",
 				"TOTAL": "Total",
 				"TOTALTAX": "Total tax",
@@ -876,37 +813,69 @@
 			"ERROR": "An error occured with {{ description }}. Correct and try again."
 		}
 	},
-	"INVOICES_PRODUCTS": {
+	"INVOICES_CASH_PAYMENTS": {
 		"FORM": {
 			"LABELS": {
-				"INVOICEID": "Invoice",
-				"PRODUCTID": "Product",
-				"AMOUNT": "Amount"
+				"DESCRIPTION": "Description",
+				"CURRENCYCODE": "Currency code",
+				"AMOUNT": "Amount",
+				"INVOICEID": "Invoice"
 			},
 			"PLACEHOLDERS": {
-				"INVOICEID": "Invoice",
-				"PRODUCTID": "Product",
-				"AMOUNT": "Amount"
+				"DESCRIPTION": "Description",
+				"CURRENCYCODE": "Currency code",
+				"AMOUNT": "Amount",
+				"INVOICEID": "Invoice"
 			},
 			"VALIDATION": {
-				"INVOICEID": {
-					"REQUIRED": "Invoice is required."
+				"DESCRIPTION": {
+					"REQUIRED": "Description is required."
 				},
-				"PRODUCTID": {
-					"REQUIRED": "Product is required."
+				"CURRENCYCODE": {
+					"REQUIRED": "Currency code is required."
 				},
 				"AMOUNT": {
 					"REQUIRED": "Amount is required."
+				},
+				"INVOICEID": {
+					"REQUIRED": "Invoice is required."
 				}
 			}
 		},
-		"ADD_TO_INVOICE": {
-			"TITLE": "Add to invoice",
-			"SUBMIT": "Submit"
+		"CREATE": {
+			"PAYMENT": "Cash payment",
+			"BUTTON_CREATE": "Create"
 		},
-		"ADD_PRODUCTS": {
-			"TITLE": "Add products",
-			"SUBMIT": "Submit"
+		"EDIT": {
+			"EDIT": "Edit",
+			"BUTTON_EDIT": "Update"
+		},
+		"PAY": {
+			"BUTTON_PAY": "Pay"
+		},
+		"INDEX": {
+			"PACKAGES": "Packages",
+			"CREATE": "Create",
+			"EDIT": "Edit",
+			"DELETE": "Delete",
+			"FIELDS": "Fields",
+			"FIELDS_TITLE": "(fields)",
+			"ITEM": "Item",
+			"MANAGE": "Manage",
+			"ACTIONS": "Actions",
+			"ITEMS": "Items",
+			"PAYMENTS": "Payments"
+		},
+		"QUEUE": {
+			"ADDING": "Adding {{ description }}",
+			"UPDATING": "Updating {{ description }}",
+			"DELETING": "Deleting {{ description }}",
+			"ERROR": "An error occured with {{ description }}. Correct and try again."
+		},
+		"ENTITY_ACTION_PROVIDER": {
+			"ENTITY_ACTION": {
+				"CASH_PAYMENT": "Cash payment"
+			}
 		}
 	},
 	"LODGING_RESERVATIONS": {
@@ -1020,6 +989,39 @@
 			}
 		}
 	},
+	"INVOICES_PRODUCTS": {
+		"FORM": {
+			"LABELS": {
+				"INVOICEID": "Invoice",
+				"PRODUCTID": "Product",
+				"AMOUNT": "Amount"
+			},
+			"PLACEHOLDERS": {
+				"INVOICEID": "Invoice",
+				"PRODUCTID": "Product",
+				"AMOUNT": "Amount"
+			},
+			"VALIDATION": {
+				"INVOICEID": {
+					"REQUIRED": "Invoice is required."
+				},
+				"PRODUCTID": {
+					"REQUIRED": "Product is required."
+				},
+				"AMOUNT": {
+					"REQUIRED": "Amount is required."
+				}
+			}
+		},
+		"ADD_TO_INVOICE": {
+			"TITLE": "Add to invoice",
+			"SUBMIT": "Submit"
+		},
+		"ADD_PRODUCTS": {
+			"TITLE": "Add products",
+			"SUBMIT": "Submit"
+		}
+	},
 	"LODGING_SETTINGS": {
 		"FORM": {
 			"LABELS": {
@@ -1040,10 +1042,10 @@
 			"EDIT": "Edit settings"
 		},
 		"QUEUE": {
-			"UPDATING": "Updating {{ name }}",
-			"ERROR": "An error occured with {{ name }}. Correct and try again.",
 			"ADDING": "Adding {{ name }}",
-			"DELETING": "Deleting {{ name }}"
+			"UPDATING": "Updating {{ name }}",
+			"DELETING": "Deleting {{ name }}",
+			"ERROR": "An error occured with {{ name }}. Correct and try again."
 		}
 	},
 	"LODGING_TYPES": {
@@ -1352,12 +1354,6 @@
 			"DELETING": "Deleting {{ description }}",
 			"ERROR": "An error occured with {{ description }}. Correct and try again."
 		}
-	},
-	"QUEUE": {
-		"ADDING": "Adding settings",
-		"UPDATING": "Updating settings",
-		"DELETING": "Deleting settings",
-		"ERROR": "An error occured with settings. Correct and try again."
 	},
 	"MAINTENANCE": {
 		"ASSIGNMENT_ALL": {
@@ -2303,45 +2299,6 @@
 			"ERROR": "An error occured with the connection with the client: {{ client }}. Correct and try again."
 		}
 	},
-	"RECEIPTS": {
-		"CREATE": {
-			"CREATE": "Create",
-			"BUTTON_CREATE": "Create"
-		},
-		"EDIT": {
-			"EDIT": "Edit",
-			"BUTTON_EDIT": "Update"
-		},
-		"INDEX": {
-			"TITLE_EXTRAS": "(Receipts)",
-			"ACTIONS": "Actions",
-			"CREATE": "Create",
-			"DELETE": "Delete",
-			"MANAGE": "Manage",
-			"FIELDS": "Fields",
-			"FIELDS_TITLE": "(fields)",
-			"BACK": "Back"
-		},
-		"FORM": {
-			"LABELS": {
-				"NAME": "Name"
-			},
-			"PLACEHOLDERS": {
-				"NAME": "Enter name"
-			},
-			"VALIDATION": {
-				"NAME": {
-					"REQUIRED": "Name is required."
-				}
-			}
-		},
-		"QUEUE": {
-			"ADDING": "Adding receipt {{ name }}",
-			"UPDATING": "Updating receipt {{ name }}",
-			"DELETING": "Deleting receipt {{ name }}",
-			"ERROR": "An error occured with receipt {{ name }}. Correct and try again."
-		}
-	},
 	"TERMINALS": {
 		"FORM": {
 			"LABELS": {
@@ -2424,6 +2381,45 @@
 			"ENTITY_ACTION": {
 				"TERMINAL_PAYMENT": "Card payment"
 			}
+		}
+	},
+	"RECEIPTS": {
+		"CREATE": {
+			"CREATE": "Create",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDIT": "Edit",
+			"BUTTON_EDIT": "Update"
+		},
+		"INDEX": {
+			"TITLE_EXTRAS": "(Receipts)",
+			"ACTIONS": "Actions",
+			"CREATE": "Create",
+			"DELETE": "Delete",
+			"MANAGE": "Manage",
+			"FIELDS": "Fields",
+			"FIELDS_TITLE": "(fields)",
+			"BACK": "Back"
+		},
+		"FORM": {
+			"LABELS": {
+				"NAME": "Name"
+			},
+			"PLACEHOLDERS": {
+				"NAME": "Enter name"
+			},
+			"VALIDATION": {
+				"NAME": {
+					"REQUIRED": "Name is required."
+				}
+			}
+		},
+		"QUEUE": {
+			"ADDING": "Adding receipt {{ name }}",
+			"UPDATING": "Updating receipt {{ name }}",
+			"DELETING": "Deleting receipt {{ name }}",
+			"ERROR": "An error occured with receipt {{ name }}. Correct and try again."
 		}
 	},
 	"UI": {
@@ -2531,11 +2527,167 @@
 			}
 		}
 	},
-	"COMMERCIAL_ACCOUNT": {
-		"INDEX": {}
-	},
 	"COMMERCIAL_TENANTS": {
-		"INDEX": {}
+		"INDEX": {
+			"CREATE": "Create tenant",
+			"TENANTS": "Tenants"
+		},
+		"TITLE": "Tenants",
+		"CREATE": "Create",
+		"CREATETENANT": "Create Tenant",
+		"EDIT": "Edit",
+		"EDITTENANT": "Edit tenant",
+		"DETAILS": "Details",
+		"HOSTNAME": "Hostname",
+		"SAFESUBDOMAIN": "Safe subdomain",
+		"STATE": "State",
+		"FORM": {
+			"LABELS": {
+				"NAME": "Name",
+				"HOSTNAME": "Hostname",
+				"SAFESUBDOMAIN": "Safe subdomain",
+				"STATE": "State"
+			},
+			"PLACEHOLDERS": {
+				"NAME": "Enter a Name",
+				"HOSTNAME": "Enter a hostname",
+				"SAFESUBDOMAIN": "Enter a safe subdomain",
+				"STATE": "Enter a state"
+			},
+			"VALIDATION": {
+				"NAME": {
+					"REQUIRED": "An Name is required."
+				},
+				"HOSTNAME": {
+					"REQUIRED": "An hostname is required."
+				},
+				"SAFESUBDOMAIN": {
+					"REQUIRED": "A subdomain is required."
+				},
+				"STATE": {
+					"REQUIRED": "The state is required."
+				}
+			}
+		}
+	},
+	"COMMERCIAL_ACCOUNT": {
+		"INDEX": {
+			"FORGOTPASSWORD": "Forgot password",
+			"ACCOUNT": "Account",
+			"WELCOME": "Welcome to skysmack"
+		},
+		"LOGIN": {
+			"SIGNIN": "Sing in",
+			"CREDENTIALS": "Please enter credentials below",
+			"INCORRECT": "The entered password and/or username was incorrect. Please try again.",
+			"FORGOTPASSWORD": "Forgot password",
+			"CONFIRMEMAIL": "Confirm email"
+		},
+		"FORM": {
+			"LABELS": {
+				"EMAIL": "Email",
+				"PASSWORD": "Password",
+				"STAYSIGNEDIN": "Stay signed in?"
+			},
+			"PLACEHOLDERS": {
+				"EMAIL": "Enter email",
+				"PASSWORD": "Enter password",
+				"CURRENTPASSWORD": "Current password",
+				"NEWPASSWORD": "New password",
+				"CONFIRMNEWPASSWORD": "Confirm new password"
+			},
+			"VALIDATION": {
+				"EMAIL": {
+					"REQUIRED": "Email is required.",
+					"INVALIDEMAIL": "Please enter a valid email."
+				},
+				"PASSWORD": {
+					"REQUIRED": "Password is required."
+				},
+				"CURRENTPASSWORD": {
+					"REQUIRED": "Current password is required."
+				},
+				"NEWPASSWORD": {
+					"REQUIRED": "New password is required."
+				},
+				"CONFIRMNEWPASSWORD": {
+					"REQUIRED": "Please repeat the new password.",
+					"PASSWORDMISMATCH": "Passwords must match."
+				}
+			}
+		},
+		"VALIDATION": {
+			"TOKEN": {
+				"REQUIRED": "Token is required"
+			},
+			"EMAIL": {
+				"REQUIRED": "Email is required.",
+				"INVALIDEMAIL": "Please type a valid email"
+			},
+			"CURRENTPASSWORD": {
+				"REQUIRED": "Current password is required."
+			},
+			"NEWPASSWORD": {
+				"REQUIRED": "New password is required."
+			},
+			"CONFIRMNEWPASSWORD": {
+				"REQUIRED": "Please repeat the new password.",
+				"PASSWORDMISMATCH": "Passwords must match."
+			}
+		},
+		"CHANGE_PASSWORD": {
+			"TITLE": "Change password",
+			"BUTTON_EDIT": "Update"
+		}
+	},
+	"COMMERCIAL_UI_PARTNERS": {
+		"INDEX": {
+			"CHANGEPASSWORD": "Change password",
+			"TENANTS": "Tenants",
+			"USERS": "Users",
+			"LOGOUT": "Logout"
+		}
+	},
+	"COMMERCIAL_USERS": {
+		"INDEX": {
+			"CREATE": " Create user",
+			"USERS": "Users"
+		},
+		"TITLE": "Users",
+		"CREATE": "Create",
+		"CREATEUSER": "Create user",
+		"EDIT": "Edit",
+		"EDITUSER": "Edit user",
+		"EMAIL": "Email: ",
+		"FORM": {
+			"LABELS": {
+				"EMAIL": "Email",
+				"USERNAME": "Username",
+				"PASSWORD": "Password",
+				"CONFIRMPASSWORD": "Confirm password"
+			},
+			"PLACEHOLDERS": {
+				"EMAIL": "Enter a email",
+				"USERNAME": "Enter a username",
+				"PASSWORD": "Enter a password",
+				"CONFIRMPASSWORD": "Enter a confirm password"
+			},
+			"VALIDATION": {
+				"EMAIL": {
+					"REQUIRED": "An Email is required.",
+					"INVALIDEMAIL": "Please enter a valid email."
+				},
+				"USERNAME": {
+					"REQUIRED": "An username is required."
+				},
+				"PASSWORD": {
+					"REQUIRED": "A password is required."
+				},
+				"CONFIRMPASSWORD": {
+					"PASSWORDMISMATCH": "The passwords must match."
+				}
+			}
+		}
 	},
 	"OAUTH2": {
 		"FORM": {

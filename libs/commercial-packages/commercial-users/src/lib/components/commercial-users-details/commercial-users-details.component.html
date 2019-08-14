@@ -1,0 +1,4 @@
+<ng-container *ngIf="user$ | async as user">
+    <h3>{{ user.userName }}</h3>
+    <p>{{ 'COMMERCIAL_USERS.EMAIL' | translate }} {{ user.email }}</p>
+</ng-container>

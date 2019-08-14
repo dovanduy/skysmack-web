@@ -3,7 +3,6 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { API_DOMAIN_INJECTOR_TOKEN } from '@skysmack/framework';
 import { SkysmackApiDomain } from '../../requests/skysmack-api-domain';
 import { NgSkysmackActions } from '@skysmack/ng-skysmack';
-import { configureLanguage, LanguageService } from '@skysmack/portal-ui';
 import { PackageLoader } from '@skysmack/ng-framework';
 import { loadInvoicePackage } from '../packages/invoices-package-manifest';
 import { loadPersonPackage } from '../packages/persons-package-manifest';
@@ -25,6 +24,7 @@ import { loadEmailsSmtpPackage } from '../packages/emails-smtp-package-manifest'
 import { loadInvoicesProductsPackage } from '../packages/invoices-products-package-manifest';
 import { loadOpenApiPackage } from '../packages/open-api-package-manifest';
 import { RefreshTokenInterceptor } from '@skysmack/ng-oauth2';
+import { LanguageService, configureLanguage } from '@skysmack/ng-translation';
 
 
 export function configureSkysmack(actions: NgSkysmackActions) {

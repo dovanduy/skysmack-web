@@ -1030,6 +1030,40 @@
         }
       }
     },
+    "ng-translation": {
+      "projectType": "library",
+      "root": "libs/ng-shared/ng-translation",
+      "sourceRoot": "libs/ng-shared/ng-translation/src",
+      "prefix": "skysmack",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/ng-shared/ng-translation/tsconfig.lib.json",
+              "libs/ng-shared/ng-translation/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/ng-shared/ng-translation/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/ng-shared/ng-translation/jest.config.js",
+            "tsConfig": "libs/ng-shared/ng-translation/tsconfig.spec.json",
+            "setupFile": "libs/ng-shared/ng-translation/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
     "portal-settings": {
       "projectType": "library",
       "root": "libs/portal-shared/portal-settings",
@@ -1151,7 +1185,7 @@
             "main": "apps/web/web-commercial/src/main.ts",
             "polyfills": "apps/web/web-commercial/src/polyfills.ts",
             "tsConfig": "apps/web/web-commercial/tsconfig.app.json",
-            "aot": false,
+            "preserveSymlinks": false,
             "assets": [
               "apps/web/web-commercial/src/favicon.ico",
               "apps/web/web-commercial/src/assets"
@@ -1159,7 +1193,9 @@
             "styles": [
               "apps/web/web-commercial/src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [],
+            "es5BrowserSupport": true,
+            "vendorSourceMap": true
           },
           "configurations": {
             "production": {
@@ -1184,7 +1220,9 @@
                   "maximumWarning": "2mb",
                   "maximumError": "5mb"
                 }
-              ]
+              ],
+              "serviceWorker": true,
+              "ngswConfigPath": "apps/web/web-commercial/src/ngsw-config.json"
             }
           }
         },
@@ -1292,7 +1330,7 @@
         }
       }
     },
-     "commercial-tenants": {
+    "commercial-tenants": {
       "projectType": "library",
       "root": "libs/commercial-packages/commercial-tenants",
       "sourceRoot": "libs/commercial-packages/commercial-tenants/src",
@@ -1317,6 +1355,74 @@
             "jestConfig": "libs/commercial-packages/commercial-tenants/jest.config.js",
             "tsConfig": "libs/commercial-packages/commercial-tenants/tsconfig.spec.json",
             "setupFile": "libs/commercial-packages/commercial-tenants/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "commercial-users": {
+      "projectType": "library",
+      "root": "libs/commercial-packages/commercial-users",
+      "sourceRoot": "libs/commercial-packages/commercial-users/src",
+      "prefix": "skysmack",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/commercial-packages/commercial-users/tsconfig.lib.json",
+              "libs/commercial-packages/commercial-users/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/commercial-packages/commercial-users/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/commercial-packages/commercial-users/jest.config.js",
+            "tsConfig": "libs/commercial-packages/commercial-users/tsconfig.spec.json",
+            "setupFile": "libs/commercial-packages/commercial-users/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "commercial-ui-partners": {
+      "projectType": "library",
+      "root": "libs/commercial-packages/commercial-ui-partners",
+      "sourceRoot": "libs/commercial-packages/commercial-ui-partners/src",
+      "prefix": "skysmack",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/commercial-packages/commercial-ui-partners/tsconfig.lib.json",
+              "libs/commercial-packages/commercial-ui-partners/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/commercial-packages/commercial-ui-partners/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/commercial-packages/commercial-ui-partners/jest.config.js",
+            "tsConfig": "libs/commercial-packages/commercial-ui-partners/tsconfig.spec.json",
+            "setupFile": "libs/commercial-packages/commercial-ui-partners/src/test-setup.ts"
           }
         }
       },

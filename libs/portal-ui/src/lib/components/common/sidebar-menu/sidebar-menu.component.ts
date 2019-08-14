@@ -4,7 +4,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { MenuAreaItems, SIDEBAR } from '@skysmack/framework';
 import { NgMenuProviders } from '../../../navigation/ng-menu-providers';
-import { Observable, BehaviorSubject } from 'rxjs';
+import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 @Component({
@@ -43,4 +43,5 @@ export class SidebarMenuComponent implements OnInit {
       })
     );
   }
+
 }

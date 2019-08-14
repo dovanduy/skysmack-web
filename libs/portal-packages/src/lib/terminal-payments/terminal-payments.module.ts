@@ -7,7 +7,6 @@ import { NgTerminalPaymentsModule } from '@skysmack/ng-terminal-payments';
 import { PortalUiModule, MenuItemActionProviders, NgMenuProviders } from '@skysmack/portal-ui';
 import { terminalsComponents } from './terminals/components/terminals-components';
 import { receiptsComponents } from './receipts/components/receipts-component';
-import { LanguageService } from '@skysmack/portal-ui';
 import { terminalPaymentsIndexComponents } from './components/teminal-payments-index-components';
 import { NgInvoicesTerminalPaymentsMenuItemActionProvider } from './ng-invoices-terminal-payments-menu-item-action-provider';
 import { InvoicesTypeId } from '@skysmack/package-types';
@@ -41,9 +40,7 @@ import { connectionsComponents } from './connections/components/connections-comp
   entryComponents: [
     TerminalsPayComponent
   ],
-  providers: [
-    LanguageService
-  ]
+  providers: []
 })
 export class TerminalPaymentsModule {
   constructor(
@@ -67,6 +64,6 @@ export class TerminalPaymentsModule {
       .add(ngTerminalPaymentsIndexMenuProvider)
       .add(ngReceiptsMenuProvider)
       .add(ngTerminalsMenuProvider)
-      .add(ngConnectionsMenuProvider)
+      .add(ngConnectionsMenuProvider);
   }
 }

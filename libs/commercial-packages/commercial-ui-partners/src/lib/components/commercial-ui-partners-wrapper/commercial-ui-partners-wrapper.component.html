@@ -1,0 +1,30 @@
+<!-- <a mat-flat-button [routerLink]="['/', 'tenants']">{{ 'COMMERCIAL_UI_PARTNERS.INDEX.TENANTS' | translate }}</a>
+<a mat-flat-button [routerLink]="['/', 'users']">{{ 'COMMERCIAL_UI_PARTNERS.INDEX.USERS' | translate }}</a>
+<a mat-flat-button
+    [routerLink]="['/', 'account', 'change-password']">{{ 'COMMERCIAL_UI_PARTNERS.INDEX.CHANGEPASSWORD' | translate }}</a>
+<a mat-flat-button (click)="logout()">{{ 'COMMERCIAL_UI_PARTNERS.INDEX.LOGOUT' | translate }}</a> -->
+
+<ng-container *ngIf="menuAreaItems$ | async as menuAreaItems">
+    <ng-container *ngIf="menuAreaItems.length > 0">
+        <ng-container *ngFor="let menuAreaItem of menuAreaItems; let last = last;">
+            <nav *ngIf="menuAreaItem.items && menuAreaItem.items.length > 0">
+                <!-- <span class="docs-nav-content-btn" *ngIf="menuAreaItem.area && menuAreaItem.area.display">
+                        {{ menuAreaItem.area.displayName | translate }}
+                    </span> -->
+
+                <ng-container *ngFor="let menuItem of menuAreaItem.items">
+                    <!-- ACTION EVENT -->
+                    <a mat-flat-button *ngIf="menuItem.isActionEvent"
+                        (click)="actionEvent({ action: menuItem.action, _this: menuItem._this });">{{ menuItem.displayName | translate }}</a>
+
+                    <!-- URL EVENT -->
+                    <a mat-flat-button *ngIf="!menuItem.isActionEvent"
+                        [routerLink]="[menuItem.url]">{{ menuItem.displayName | translate }}</a>
+                </ng-container>
+            </nav>
+        </ng-container>
+    </ng-container>
+</ng-container>
+
+
+<router-outlet></router-outlet>

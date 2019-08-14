@@ -4,7 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { NgInvoiceItemsActions, NgInvoiceItemsStore } from '@skysmack/ng-invoices';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { InvoiceItem, InvoiceItemsAppState, INVOICE_ITEMS_AREA_KEY } from '@skysmack/packages-invoices';
-import { MenuItem } from '@skysmack/framework';
+import { MenuItem, PagedQuery } from '@skysmack/framework';
 import { NgFieldActions } from '@skysmack/ng-framework';
 import { NgInvoiceItemsFieldsConfig } from '../../ng-invoice-items-fields-config';
 import { RSQLFilterBuilder } from '@skysmack/framework';
@@ -50,8 +50,9 @@ export class InvoiceItemsIndexComponent extends DocumentRecordIndexComponent<Inv
         this.pagedQuery.rsqlFilter = filter;
       }),
       take(1)
-    ).subscribe();
-
+    ).subscribe();   
+    
+    this.additionalPaths = [ 'items' ];
     super.ngOnInit();
   }
 }

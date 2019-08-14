@@ -9,19 +9,19 @@
   </a>
 
   <nav class="main-menu">
-    <a routerLink="/" class="menu">
+    <a routerLink="/why" class="menu">
       Why skysmack
     </a>
-    <a routerLink="/" class="menu">
+    <a routerLink="/solutions" class="menu">
       Solutions
     </a>
-    <a routerLink="/" class="menu">
+    <a routerLink="/products" class="menu">
       Products
     </a>
-    <a routerLink="/" class="menu">
+    <a routerLink="/pricings" class="menu">
       Pricings
     </a>
-    <a routerLink="/" class="menu">
+    <a routerLink="/getting-started" mat-flat-button color="primary">
       Getting started
     </a>
   </nav>
@@ -29,10 +29,10 @@
   <div class="flex-spacer"></div>
 
   <nav class="secondary-menu">
-    <a routerLink="/" class="menu">
+    <a routerLink="/help" class="menu">
       Help
     </a>
-    <a [routerLink]="['account', 'login']" class="menu">
+    <a is-authenticated [routerLink]="['account', 'login']" class="menu">
       Partners
     </a>
   </nav>

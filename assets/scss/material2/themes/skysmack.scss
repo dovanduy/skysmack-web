@@ -1,17 +1,5 @@
+@import '../../includes';
 @import '../app-theme';
-
-$mat-elevation-opacity: 0.6;
-
-$mat-skysmack: (
-  primary: #2c89a0,
-  light: #64b9d1,
-  dark: #005c71,
-  contrast: (
-    primary: $dark-primary-text,
-    light: $dark-primary-text,
-    dark: $light-primary-text
-  )
-);
 
 // Define the light theme.
 $primary: mat-palette($mat-skysmack, primary, light, dark);

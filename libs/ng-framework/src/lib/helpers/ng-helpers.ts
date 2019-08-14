@@ -156,8 +156,8 @@ export const getConnectedPackageCustomMenuEntries = (packagePath: string, packag
     }
 };
 
-export const getCombinedMenuEntries = (...args: Observable<MenuItem[]>[]): Observable<MenuItem[]> => {
+export const getCombinedMenuEntries = <T>(...args: Observable<T[]>[]): Observable<T[]> => {
     return combineLatest(
         args
-    ).pipe(map(menuItemsArrays => menuItemsArrays.reduce((a, b) => a.concat(b), [])));
+    ).pipe(map(menuEntriesArrays => menuEntriesArrays.reduce((a, b) => a.concat(b), [])));
 };

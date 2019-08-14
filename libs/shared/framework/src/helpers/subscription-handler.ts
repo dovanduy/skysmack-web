@@ -9,6 +9,6 @@ export class SubscriptionHandler {
     }
 
     public unsubscribe() {
-        this.subscriptions.forEach(subscription => subscription.unsubscribe());
+        this.subscriptions.filter(sub => sub).forEach(subscription => subscription.unsubscribe());
     }
 }

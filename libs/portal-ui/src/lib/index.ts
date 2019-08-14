@@ -3,7 +3,6 @@ export * from './components/index';
 export * from './constants';
 export * from './directives/index';
 export * from './menu-item-actions/index';
-export * from './language/index';
 export * from './models/index';
 export * from './navigation/index';
 export * from './redux/index';
@@ -13,4 +12,3 @@ export * from './routing/index';
 
 export * from './portal-ui.module';
 export * from './material.module';
-export * from './http-loader-factory';

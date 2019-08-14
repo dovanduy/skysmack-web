@@ -1,4 +1,24 @@
-@import 'material2/themes/skysmack';
-
 $small-breakpoint-width: 720px;
 $lighter: #eff5f7; // lighten(map-get($map: $mat-skysmack, $key: light), 35%);
+
+$mat-elevation-opacity: 0.6;
+
+$dark-primary-text: rgba(0,0,0,.87);
+$light-primary-text: rgba(255,255,255,.87);
+
+$primary-color: #2c89a0;
+
+$primary-color-light: #64b9d1;
+
+$primary-color-dark: #005c71;
+
+$mat-skysmack: (
+  primary: $primary-color,
+  light: $primary-color-light,
+  dark: $primary-color-dark,
+  contrast: (
+    primary: $dark-primary-text,
+    light: $dark-primary-text,
+    dark: $light-primary-text
+  )
+);
