@@ -51,7 +51,7 @@
       </mat-list-item>
     </mat-list>
   </mat-sidenav>
-
+  
   <nav class="docs-navbar-header mat-elevation-z3">
     <nav class="mobile-only toggle-menu">
       <button mat-icon-button (click)="sidenav.toggle()">
@@ -112,3 +112,7 @@
   </div>
 
 </mat-sidenav-container>
+
+<div *ngIf="loadingRouteConfig" class="loader">
+  <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+</div>
