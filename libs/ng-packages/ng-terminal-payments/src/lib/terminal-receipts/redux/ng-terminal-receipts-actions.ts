@@ -10,7 +10,7 @@ export class NgTerminalReceiptsActions extends RecordActionsBase<TerminalReceipt
 
     public getMessageParams(record: LocalObject<TerminalReceipt, number>): StrIndex<string> {
         return {
-            displayName: record.object.displayName
+            printReceipt: record.object.printReceipt
         };
     }
 }

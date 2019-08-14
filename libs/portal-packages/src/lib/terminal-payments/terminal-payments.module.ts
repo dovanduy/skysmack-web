@@ -19,6 +19,7 @@ import { NgReceiptsMenuProvider } from './receipts/ng-receipts-menu-provider';
 import { NgTerminalsMenuProvider } from './terminals/ng-terminals-menu-provider';
 import { NgConnectionsMenuProvider } from './connections/ng-connections-menu-provider';
 import { connectionsComponents } from './connections/components/connections-component';
+import { terminalPaymentReceiptsComponents } from './terminal-payment-receipts/components/terminal-payment-receipts-components';
 
 @NgModule({
   imports: [
@@ -35,7 +36,8 @@ import { connectionsComponents } from './connections/components/connections-comp
     ...terminalPaymentsIndexComponents,
     ...terminalsComponents,
     ...receiptsComponents,
-    ...connectionsComponents
+    ...connectionsComponents,
+    ...terminalPaymentReceiptsComponents
   ],
   entryComponents: [
     TerminalsPayComponent
@@ -53,7 +55,8 @@ export class TerminalPaymentsModule {
     ngTerminalPaymentsIndexMenuProvider: NgTerminalPaymentsIndexMenuProvider,
     ngReceiptsMenuProvider: NgReceiptsMenuProvider,
     ngTerminalsMenuProvider: NgTerminalsMenuProvider,
-    ngConnectionsMenuProvider: NgConnectionsMenuProvider
+    ngConnectionsMenuProvider: NgConnectionsMenuProvider,
+    ngTerminalPaymentReceiptsMenuProvider: NgTerminalPaymentReceiptsMenuProvider,
   ) {
     menuItemActionProviders.add(InvoicesTypeId, invoicesCashPaymentsMenuItemActionProvider);
 
@@ -64,6 +67,7 @@ export class TerminalPaymentsModule {
       .add(ngTerminalPaymentsIndexMenuProvider)
       .add(ngReceiptsMenuProvider)
       .add(ngTerminalsMenuProvider)
+      .add(ngTerminalPaymentReceiptsMenuProvider)
       .add(ngConnectionsMenuProvider);
   }
 }

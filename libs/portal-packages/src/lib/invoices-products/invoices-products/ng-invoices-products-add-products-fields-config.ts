@@ -41,8 +41,10 @@ export class NgInvoicesProductsAddProductsFieldsConfig extends FieldsConfig<any,
         displayKey: 'product',
         displaySubKey: 'object.name',
         optionsData$: productsPackage$.pipe(switchMap(productsPackage => this.productsStore.get(productsPackage.object.path))),
-        getDependencies: () => { productsPackage$.pipe(map(productsPackage => { this.productsActions.getPaged(productsPackage.object.path, new PagedQuery());
-            }),
+        getDependencies: () => {
+          productsPackage$.pipe(map(productsPackage => {
+            this.productsActions.getPaged(productsPackage.object.path, new PagedQuery());
+          }),
             take(1)
           ).subscribe();
         },
