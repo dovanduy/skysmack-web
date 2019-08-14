@@ -9,7 +9,6 @@ export class NgProductTypeSalesPriceActions extends ProductTypeSalesPriceActions
 
     public getMessageParams(record: LocalObject<ProductTypeSalesPrice, number>): StrIndex<string> {
         return {
-            price: record.object.price.toString()
         };
     }
 }

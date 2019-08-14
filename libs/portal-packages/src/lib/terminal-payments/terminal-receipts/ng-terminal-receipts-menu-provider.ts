@@ -4,7 +4,7 @@ import { MenuArea, MenuProvider, SPEEDDIAL, SIDEBAR } from '@skysmack/framework'
 import { MenuItem } from '@skysmack/framework';
 import { Guid } from 'guid-typescript';
 import { Observable } from 'rxjs';
-import { getMenuEntries } from '@skysmack/ng-framework';
+import { getMenuEntries, setBackButton } from '@skysmack/ng-framework';
 import { TerminalPaymentsTypeId } from '@skysmack/package-types';
 import { TerminalReceiptsIndexComponent } from './components/terminal-receipts-index/terminal-receipts-index.component';
 import { TerminalPaymentsPermissions } from 'libs/packages/terminal-payments/src';
@@ -41,7 +41,7 @@ export class NgTerminalPaymentReceiptsMenuProvider implements MenuProvider {
         ];
     }
 
-    public getTerminalReceiptsMenuItems = () => {
+    public getTerminalReceiptsMenuItems = (packagePath: string) => {
         return [
             new MenuItem({
                 url: 'create',
@@ -64,7 +64,8 @@ export class NgTerminalPaymentReceiptsMenuProvider implements MenuProvider {
                     TerminalPaymentsPermissions.findTerminalReceiptsFields
                 ],
                 providedIn: [SIDEBAR]
-            })
+            }),
+            setBackButton(packagePath)
         ];
     }
 }
