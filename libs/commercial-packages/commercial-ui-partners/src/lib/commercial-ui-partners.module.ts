@@ -8,6 +8,7 @@ import { NgTranslationModule } from '@skysmack/ng-translation';
 import { RouterModule } from '@angular/router';
 import { NgMenuProviders } from './navigation/ng-menu-providers';
 import { NgUiMenuProvider } from '../ng-ui-menu-provider';
+import { RemoveDialog } from './components/remove-dialog/remove-dialog.component';
 
 @NgModule({
   imports: [
@@ -16,6 +17,9 @@ import { NgUiMenuProvider } from '../ng-ui-menu-provider';
     RouterModule,
     MaterialModule,
     NgTranslationModule,
+  ],
+  entryComponents: [
+    RemoveDialog
   ],
   declarations: [
     ...commercialUiPartnersComponents

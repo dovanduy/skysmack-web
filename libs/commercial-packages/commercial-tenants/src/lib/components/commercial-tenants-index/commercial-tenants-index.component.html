@@ -1,12 +1,35 @@
-<h3>{{ 'COMMERCIAL_TENANTS.TITLE' | translate }}</h3>
+<mat-card>
+  <mat-list *ngIf="tenants$ | async as tenants">
+    <a mat-raised-button color="primary" class="call-to-action"
+      [routerLink]="['/', 'tenants', 'create']">{{ 'COMMERCIAL_TENANTS.CREATETENANT' | translate }}</a>
+    <h3 mat-subheader>{{ 'COMMERCIAL_TENANTS.TITLE' | translate }}</h3>
+    <mat-list-item *ngFor="let tenant of tenants">
+      <h4 mat-line>{{ tenant.name }}</h4>
 
-<a mat-raised-button color="primary"
-        [routerLink]="['/', 'tenants', 'create']">{{ 'COMMERCIAL_TENANTS.CREATETENANT' | translate }}</a>
-
-<ul *ngIf="tenants$ | async as tenants">
-        <li *ngFor="let tenant of tenants">{{ tenant.name }} -
-                <a [routerLink]="['/', 'tenants', 'edit', tenant.id]">{{ 'COMMERCIAL_TENANTS.EDIT' | translate }}</a>
-                |
-                <a [routerLink]="['/', 'tenants', 'details', tenant.id]">{{ 'COMMERCIAL_TENANTS.DETAILS' | translate }}</a>
-        </li>
-</ul>
+      <div mat-icon>
+        <a href="https://{{ tenant.safeSubdomain }}.skysmack.net" target="blank" mat-icon-button matTooltip="
+        {{ 'COMMERCIAL_TENANTS.LAUNCH' | translate }}">
+          <mat-icon>launch</mat-icon>
+        </a>
+      </div>
+      <div mat-icon>
+        <a [routerLink]="['/', 'tenants', 'details', tenant.id]" mat-icon-button matTooltip="
+                {{ 'COMMERCIAL_TENANTS.DETAILS' | translate }}">
+          <mat-icon>notes</mat-icon>
+        </a>
+      </div>
+      <div mat-icon>
+        <a [routerLink]="['/', 'tenants', 'edit', tenant.id]" mat-icon-button matTooltip="
+        {{ 'COMMERCIAL_TENANTS.EDIT' | translate }}">
+          <mat-icon>edit</mat-icon>
+        </a>
+      </div>
+      <div mat-icon>
+        <button (click)="remove(tenant)" mat-icon-button matTooltip="
+                {{ 'COMMERCIAL_TENANTS.REMOVE' | translate }}">
+          <mat-icon>delete</mat-icon>
+      </button>
+      </div>
+    </mat-list-item>
+  </mat-list>
+</mat-card>

@@ -36,5 +36,11 @@ export class CommercialTenantsService {
         return this.http.put<Tenant[]>(`${this.apiDomain.domain}/tenants`, [record], { observe: 'response' }).pipe(
             catchError((error) => of(error))
         );
+    }    
+
+    public delete(id: string): Observable<HttpSuccessResponse | HttpErrorResponse> {
+        return this.http.delete<Tenant>(`${this.apiDomain.domain}/tenants/${id}`, { observe: 'response' }).pipe(
+            catchError((error) => of(error))
+        );
     }
 }
