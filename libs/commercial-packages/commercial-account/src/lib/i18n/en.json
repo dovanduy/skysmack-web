@@ -6,7 +6,7 @@
             "WELCOME": "Welcome to skysmack"
         },
         "LOGIN": {
-            "SIGNIN": "Sing in",
+            "SIGNIN": "Sign in",
             "CREDENTIALS": "Please enter credentials below",
             "INCORRECT": "The entered password and/or username was incorrect. Please try again.",
             "FORGOTPASSWORD": "Forgot password",
