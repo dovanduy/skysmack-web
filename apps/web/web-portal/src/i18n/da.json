@@ -2878,7 +2878,7 @@
 			"RECEIPTS": "Kvitteringer",
 			"CONNECTIONS": "Forbindelser",
 			"PAYMENT_RECEIPTS": "Købskvitteringer",
-			"TERMINAL_RECEIPTS": "Terminalkvitteringer",
+			"TERMINAL_RECEIPTS": "Terminalkvitteringer"
 		}
 	},		
 	"FIELDS": {

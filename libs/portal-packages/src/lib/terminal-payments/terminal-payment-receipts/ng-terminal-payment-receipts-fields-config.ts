@@ -30,7 +30,6 @@ export class NgTerminalPaymentReceiptsFieldsConfig extends DocumentFieldsConfig<
         super(fieldProviders, fieldsStore, router);
     }
 
-
     protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<TerminalPaymentReceipt, number>): Field[] {
         const invoicesPackage$ = getPackageDendencyAsStream(this.skysmackStore, loadedPackage._package.path, [1]);
 

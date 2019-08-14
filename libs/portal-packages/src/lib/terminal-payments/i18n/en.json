@@ -6,8 +6,8 @@
             "TERMINALS": "Terminals",
             "RECEIPTS": "Receipts",
             "CONNECTIONS": "Connections",
-            "PAYMENT_RECEIPTS": "Payment receipts",
-            "TERMINAL_RECEIPTS": "Terminal receipts"
+            "TERMINAL_PAYMENT_RECEIPTS": "Payment receipts",
+            "TERMINAL_RECEIPTS": "Receipts"
         }
     }
 }

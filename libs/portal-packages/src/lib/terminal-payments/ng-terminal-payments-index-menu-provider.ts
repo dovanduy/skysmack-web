@@ -83,18 +83,8 @@ export class NgTerminalPaymentsIndexMenuProvider implements MenuProvider {
                 providedIn: [SIDEBAR]
             }),
             new MenuItem({
-                url: 'receipts',
-                displayName: this.translationPrefix + 'RECEIPTS',
-                area: 'manage',
-                order: 4,
-                icon: 'description',
-                permissions: [
-                ],
-                providedIn: [SIDEBAR]
-            }),
-            new MenuItem({
                 url: 'payment-receipts',
-                displayName: this.translationPrefix + 'PAYMENT_RECEIPTS',
+                displayName: this.translationPrefix + 'TERMINAL_PAYMENT_RECEIPTS',
                 area: 'manage',
                 order: 4,
                 icon: 'description',
@@ -103,7 +93,7 @@ export class NgTerminalPaymentsIndexMenuProvider implements MenuProvider {
                 providedIn: [SIDEBAR]
             }),
             new MenuItem({
-                url: 'terminal-receipts',
+                url: 'receipts',
                 displayName: this.translationPrefix + 'TERMINAL_RECEIPTS',
                 area: 'manage',
                 order: 4,

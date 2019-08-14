@@ -6,7 +6,6 @@ export * from './connection-message';
 export * from './connection';
 export * from './currency';
 export * from './log';
-export * from './receipt';
 export * from './terminal-action';
 export * from './terminal-payment-receipt';
 export * from './terminal-receipt';
