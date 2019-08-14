@@ -3056,7 +3056,8 @@
 			"FIELDS_TITLE": "(fields)",
 			"ITEM": "Item",
 			"MANAGE": "Manage",
-			"ACTIONS": "Actions"
+			"ACTIONS": "Actions",
+			"TITLE_EXTRAS": "(payment receipts)"
 		},
 		"NOTIFICATIONS": {
 			"GET": {
@@ -3143,7 +3144,8 @@
 			"FIELDS_TITLE": "(fields)",
 			"ITEM": "Item",
 			"MANAGE": "Manage",
-			"ACTIONS": "Actions"
+			"ACTIONS": "Actions",
+			"TITLE_EXTRAS": "(receipts)"
 		},
 		"NOTIFICATIONS": {
 			"GET": {

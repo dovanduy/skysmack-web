@@ -3043,7 +3043,8 @@
             "EDIT": "Edit",
             "DELETE": "Delete",
             "FIELDS": "Fields",
-            "FIELDS_TITLE": "(fields)",
+			"FIELDS_TITLE": "(fields)",
+			"TITLE_EXTRAS": "(payment receipts)",
             "ITEM": "Item",
             "MANAGE": "Manage",
             "ACTIONS": "Actions"
@@ -3130,7 +3131,8 @@
             "EDIT": "Edit",
             "DELETE": "Delete",
             "FIELDS": "Fields",
-            "FIELDS_TITLE": "(fields)",
+			"FIELDS_TITLE": "(fields)",
+			"TITLE_EXTRAS": "(receipts)",
             "ITEM": "Item",
             "MANAGE": "Manage",
             "ACTIONS": "Actions"

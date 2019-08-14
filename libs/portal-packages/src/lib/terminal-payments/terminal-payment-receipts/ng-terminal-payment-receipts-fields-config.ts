@@ -40,7 +40,7 @@ export class NgTerminalPaymentReceiptsFieldsConfig extends DocumentFieldsConfig<
                 key: 'referenceNumber',
                 validators: [Validators.required],
                 order: 1,
-                showColumn: false,
+                showColumn: true,
                 sortable: true
             }),
 
@@ -50,7 +50,7 @@ export class NgTerminalPaymentReceiptsFieldsConfig extends DocumentFieldsConfig<
                 key: 'printReceipt',
                 validators: [Validators.required],
                 order: 2,
-                showColumn: false,
+                showColumn: true,
                 sortable: true
             }),
 

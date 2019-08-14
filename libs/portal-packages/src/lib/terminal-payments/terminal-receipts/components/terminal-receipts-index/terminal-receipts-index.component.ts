@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { EntityComponentPageTitle, MenuItemActionProviders, MENU_ITEM_ACTIONS_EDIT, MENU_ITEM_ACTION_DETAILS, MENU_ITEM_ACTIONS_DELETE } from '@skysmack/portal-ui';
+import { EntityComponentPageTitle, MenuItemActionProviders, MENU_ITEM_ACTIONS_EDIT, MENU_ITEM_ACTIONS_DELETE } from '@skysmack/portal-ui';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { NgTerminalReceiptsStore, NgTerminalReceiptsActions } from '@skysmack/ng-terminal-payments';
@@ -18,8 +18,9 @@ export class TerminalReceiptsIndexComponent extends DocumentRecordIndexComponent
   public componentKey = TerminalReceiptsIndexComponent.COMPONENT_KEY;
 
   public areaKey: string = TERMINAL_RECEIPTS_AREA_KEY;
+  public titleExtras = true;
+
   public menuItemActions: MenuItem[] = [
-    new MenuItem().asUrlAction('details', MENU_ITEM_ACTION_DETAILS, 'list'),
     new MenuItem().asUrlAction('edit', MENU_ITEM_ACTIONS_EDIT, 'edit').setPermissions([
       TerminalPaymentsPermissions.updateTerminalReceipts,
     ]),

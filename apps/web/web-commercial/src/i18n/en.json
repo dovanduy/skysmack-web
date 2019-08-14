@@ -111,7 +111,7 @@
 			"WELCOME": "Welcome to skysmack"
 		},
 		"LOGIN": {
-			"SIGNIN": "Sing in",
+			"SIGNIN": "Sign in",
 			"CREDENTIALS": "Please enter credentials below",
 			"INCORRECT": "The entered password and/or username was incorrect. Please try again.",
 			"FORGOTPASSWORD": "Forgot password",
@@ -3007,7 +3007,8 @@
 			"FIELDS_TITLE": "(fields)",
 			"ITEM": "Item",
 			"MANAGE": "Manage",
-			"ACTIONS": "Actions"
+			"ACTIONS": "Actions",
+			"TITLE_EXTRAS": "(payment receipts)"
 		},
 		"NOTIFICATIONS": {
 			"GET": {
@@ -3094,7 +3095,8 @@
 			"FIELDS_TITLE": "(fields)",
 			"ITEM": "Item",
 			"MANAGE": "Manage",
-			"ACTIONS": "Actions"
+			"ACTIONS": "Actions",
+			"TITLE_EXTRAS": "(receipts)"
 		},
 		"NOTIFICATIONS": {
 			"GET": {

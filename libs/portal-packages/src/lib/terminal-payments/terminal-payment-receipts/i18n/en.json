@@ -57,6 +57,7 @@
             "DELETE": "Delete",
             "FIELDS": "Fields",
             "FIELDS_TITLE": "(fields)",
+            "TITLE_EXTRAS": "(payment receipts)",
             "ITEM": "Item",
             "MANAGE": "Manage",
             "ACTIONS": "Actions"

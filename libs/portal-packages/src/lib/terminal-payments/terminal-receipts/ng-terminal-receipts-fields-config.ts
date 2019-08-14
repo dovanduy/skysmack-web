@@ -32,7 +32,7 @@ export class NgTerminalReceiptsFieldsConfig extends DocumentFieldsConfig<Termina
                 key: 'type',
                 validators: [Validators.required],
                 order: 1,
-                showColumn: false,
+                showColumn: true,
                 sortable: true
             }),
 
@@ -42,7 +42,7 @@ export class NgTerminalReceiptsFieldsConfig extends DocumentFieldsConfig<Termina
                 key: 'printReceipt',
                 validators: [Validators.required],
                 order: 2,
-                showColumn: false,
+                showColumn: true,
                 sortable: true
             })
         ];
