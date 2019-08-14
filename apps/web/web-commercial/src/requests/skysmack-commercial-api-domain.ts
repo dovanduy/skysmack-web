@@ -8,7 +8,7 @@ export class SkysmackCommercialApiDomain implements ApiDomain {
 
     constructor() {
         if (environment.production) {
-            this.domain = 'https://partners.skysmack.com';
+            this.domain = 'https://api.skysmack.com';
         } else {
             this.domain = 'http://localhost:52678';
         }

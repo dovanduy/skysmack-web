@@ -25,6 +25,8 @@ import { applicationsComponents } from './identity-applications/components/appli
 import { NgIdentitiesIndexMenuProvider } from './ng-identities-index-menu-provider';
 import { NgUsersMenuProvider } from './identity-users/ng-users-menu-provider';
 import { NgApplicationsMenuProvider } from './identity-applications/ng-applications-menu-provider';
+import { clientsComponents } from './clients/components/clients-component';
+import { NgClientsMenuProvider } from './clients/ng-clients-menu-provider';
 
 @NgModule({
   imports: [
@@ -43,7 +45,8 @@ import { NgApplicationsMenuProvider } from './identity-applications/ng-applicati
     ...rolesComponents,
     ...usersComponents,
     ...accountsComponents,
-    ...applicationsComponents
+    ...applicationsComponents,
+    ...clientsComponents,
   ],
   exports: [
     RolesSelectComponent,
@@ -68,12 +71,14 @@ export class IdentitiesModule {
     coalescingResolver: CoalescingComponentFactoryResolver,
     localResolver: ComponentFactoryResolver,
     ngUsersMenuProvider: NgUsersMenuProvider,
+    ngClientsMenuProvider: NgClientsMenuProvider,
   ) {
     coalescingResolver.registerResolver(localResolver);
     ngMenuProviders
       .add(ngIdentitiesIndexMenuProvider)
       .add(ngApplicationsMenuProvider)
+      .add(ngClientsMenuProvider)
       .add(ngRolesMenuProvider)
-      .add(ngUsersMenuProvider)
+      .add(ngUsersMenuProvider);
   }
 }

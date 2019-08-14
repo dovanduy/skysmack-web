@@ -1,50 +1,114 @@
-<nav class="docs-navbar-header mat-elevation-z3">
-  <!-- APP DRAWER -->
+<mat-sidenav-container hasBackdrop="true">
 
-  <a routerLink="/">
-    <img class="skysmack-logo" src="../assets/icons/android-chrome-512x512.png" />
-  </a>
-  <a class="link" routerLink="/" aria-label="Skysmack">
-    <span class="skysmack-logo">sky<span>smack</span></span>
-  </a>
+  <mat-sidenav #sidenav role="navigation" class="sidenav">
+    <mat-list>
+      <h3 mat-subheader>
+        <span class="sidenav-logo">
+          <a routerLink="/" (click)="sidenav.close()">
+            <img class="skysmack-logo" src="../assets/icons/android-chrome-512x512.png" />
+          </a>
+          <a class="link" routerLink="/" aria-label="Skysmack" (click)="sidenav.close()">
+            <span class="skysmack-logo">sky<span>smack</span></span>
+          </a>
+        </span>
+      </h3>
+      <mat-divider class="top-divider"></mat-divider>
+      <mat-list-item>        
+        <a routerLink="/why" class="menu" (click)="sidenav.close()">
+          Why skysmack
+        </a>
+      </mat-list-item>
+      <mat-list-item>
+          <a routerLink="/solutions" class="menu" (click)="sidenav.close()">
+            Solutions
+          </a>
+      </mat-list-item>
+      <mat-list-item> 
+          <a routerLink="/products" class="menu" (click)="sidenav.close()">
+            Products
+          </a>
+      </mat-list-item>
+      <mat-list-item>  
+          <a routerLink="/pricings" class="menu" (click)="sidenav.close()">
+            Pricings
+          </a>
+      </mat-list-item>
+      <mat-list-item> 
+          <a routerLink="/getting-started"  (click)="sidenav.close()">
+            Getting started
+          </a>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item> 
+          <a routerLink="/Help" (click)="sidenav.close()">
+            Help
+          </a>
+      </mat-list-item>
+      <mat-list-item> 
+          <a [routerLink]="['account', 'login']" (click)="sidenav.close()">
+            Partners
+          </a>
+      </mat-list-item>
+    </mat-list>
+  </mat-sidenav>
 
-  <nav class="main-menu">
-    <a routerLink="/why" class="menu">
-      Why skysmack
+  <nav class="docs-navbar-header mat-elevation-z3">
+    <nav class="mobile-only toggle-menu">
+      <button mat-icon-button (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+    </nav>
+
+    <a routerLink="/">
+      <img class="skysmack-logo" src="../assets/icons/android-chrome-512x512.png" />
     </a>
-    <a routerLink="/solutions" class="menu">
-      Solutions
+    <a class="link" routerLink="/" aria-label="Skysmack">
+      <span class="skysmack-logo">sky<span>smack</span></span>
     </a>
-    <a routerLink="/products" class="menu">
-      Products
-    </a>
-    <a routerLink="/pricings" class="menu">
-      Pricings
-    </a>
-    <a routerLink="/getting-started" mat-flat-button color="primary">
-      Getting started
-    </a>
+
+    <nav class="main-menu">
+      <a routerLink="/why" class="menu">
+        Why skysmack
+      </a>
+      <a routerLink="/solutions" class="menu">
+        Solutions
+      </a>
+      <a routerLink="/products" class="menu">
+        Products
+      </a>
+      <a routerLink="/pricings" class="menu">
+        Pricings
+      </a>
+      <a routerLink="/getting-started" mat-flat-button color="primary">
+        Getting started
+      </a>
+    </nav>
+
+    <div class="flex-spacer"></div>
+
+    <nav class="secondary-menu">
+      <a routerLink="/help" class="menu">
+        Help
+      </a>
+      <a [routerLink]="['account', 'login']" class="menu">
+        Partners
+      </a>
+    </nav>
   </nav>
 
-  <div class="flex-spacer"></div>
+  <div class="content-wrapper">
+    <router-outlet></router-outlet>
+    
+    <nav class="footer">
+        <div class="container">
+          <a routerLink="/">
+            <img class="skysmack-logo" src="../assets/icons/android-chrome-512x512.png" />
+          </a>
+          <a class="link" routerLink="/" aria-label="Skysmack">
+            <span class="skysmack-logo">sky<span>smack</span></span>
+          </a>
+        </div>
+      </nav>
+  </div>
 
-  <nav class="secondary-menu">
-    <a routerLink="/help" class="menu">
-      Help
-    </a>
-    <a is-authenticated [routerLink]="['account', 'login']" class="menu">
-      Partners
-    </a>
-  </nav>
-</nav>
-
-<router-outlet></router-outlet>
-
-<nav class="footer">
-  <a routerLink="/">
-    <img class="skysmack-logo" src="../assets/icons/android-chrome-512x512.png" />
-  </a>
-  <a class="link" routerLink="/" aria-label="Skysmack">
-    <span class="skysmack-logo">sky<span>smack</span></span>
-  </a>
-</nav>
+</mat-sidenav-container>

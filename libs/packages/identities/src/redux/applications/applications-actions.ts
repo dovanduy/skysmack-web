@@ -95,7 +95,6 @@ export class ApplicationsActions extends RecordActionsBase<ApplicationsAppState,
 
     public getMessageParams(record: LocalObject<Application, number>): StrIndex<string> {
         return {
-            email: record.object.displayName
         };
     }
 }

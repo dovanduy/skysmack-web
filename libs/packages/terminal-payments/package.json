@@ -5,6 +5,8 @@
   "peerDependencies": {
     "@skysmack/framework": "*",
     "@skysmack/redux": "*",
+    "@skysmack/packages-identities": "*",
+    "@skysmack/invoices": "*",
     "tslib": "^1.9.3"
   }
 }

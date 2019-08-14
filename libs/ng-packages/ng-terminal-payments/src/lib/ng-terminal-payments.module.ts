@@ -1,12 +1,11 @@
 import { NgModule } from '@angular/core';
-import { terminalsReducer, receiptsReducer, TERMINALS_REDUCER_KEY, RECEIPTS_REDUCER_KEY, CLIENTS_REDUCER_KEY, clientsReducer, CONNECTIONS_REDUCER_KEY, connectionsReducer } from '@skysmack/packages-terminal-payments';
+import { terminalsReducer, TERMINALS_REDUCER_KEY, CONNECTIONS_REDUCER_KEY, connectionsReducer, TERMINAL_PAYMENT_RECEIPTS_REDUCER_KEY, terminalPaymentReceiptsReducer, TERMINAL_RECEIPTS_REDUCER_KEY, terminalReceiptsReducer } from '@skysmack/packages-terminal-payments';
 import { TerminalsEpics } from './terminals/redux/ng-terminals-epics';
-import { ReceiptsEpics } from './receipts/redux/ng-receipts-epics';
 import { registerRedux, NgSignalR } from '@skysmack/ng-framework';
-import { ClientsEpics } from './clients/redux/ng-clients-epics';
 import { ConnectionsEpics } from './connections/redux/ng-connections-epics';
-import { SignalRClientsProvider } from './clients/signal-r-clients-provider';
 import { SignalRConnectionsProvider } from './connections/signal-r-connections-provider';
+import { NgTerminalPaymentReceiptsEpics } from './terminal-payment-receipts/redux/ng-terminal-payment-receipts-epics';
+import { NgTerminalReceiptsEpics } from './terminal-receipts/redux/ng-terminal-receipts-epics';
 
 @NgModule({
   imports: [],
@@ -16,21 +15,19 @@ import { SignalRConnectionsProvider } from './connections/signal-r-connections-p
 export class NgTerminalPaymentsModule {
   constructor(
     terminalsEpics: TerminalsEpics,
-    receiptsEpics: ReceiptsEpics,
-    clientsEpics: ClientsEpics,
+    terminalPaymentReceiptsEpics: NgTerminalPaymentReceiptsEpics,
+    terminalReceiptsEpics: NgTerminalReceiptsEpics,
     connectionsEpics: ConnectionsEpics,
     signalR: NgSignalR,
-    clientsSRProvider: SignalRClientsProvider,
     connectionsSRProvider: SignalRConnectionsProvider
   ) {
     // Redux
     registerRedux(TERMINALS_REDUCER_KEY, terminalsReducer, terminalsEpics);
-    registerRedux(RECEIPTS_REDUCER_KEY, receiptsReducer, receiptsEpics);
-    registerRedux(CLIENTS_REDUCER_KEY, clientsReducer, clientsEpics);
+    registerRedux(TERMINAL_PAYMENT_RECEIPTS_REDUCER_KEY, terminalPaymentReceiptsReducer, terminalPaymentReceiptsEpics);
+    registerRedux(TERMINAL_RECEIPTS_REDUCER_KEY, terminalReceiptsReducer, terminalReceiptsEpics);
     registerRedux(CONNECTIONS_REDUCER_KEY, connectionsReducer, connectionsEpics);
 
     // Signal R
-    signalR.instance.registerProvider(clientsSRProvider);
     signalR.instance.registerProvider(connectionsSRProvider);
   }
 }

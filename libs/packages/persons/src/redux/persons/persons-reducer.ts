@@ -3,7 +3,6 @@ import { AppState, ReduxAction, RecordState, recordReducersBase } from '@skysmac
 import { Person } from '../../models/person';
 import { sharedReducer } from '@skysmack/redux';
 import { PERSONS_REDUX_KEY, PERSONS_REDUCER_KEY } from '../../constants/constants';
-import { REHYDRATE } from 'redux-persist/constants';
 
 /**
  * This is to be used when you want to access persons via the GLOBAL state. E.g. state.persons (where persons is the reducer name.)

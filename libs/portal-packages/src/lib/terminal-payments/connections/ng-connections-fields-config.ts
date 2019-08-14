@@ -1,11 +1,14 @@
 import { Injectable } from '@angular/core';
 import { LocalObject, LocalObjectStatus, PagedQuery, DisplayColumn } from '@skysmack/framework';
 import { Connection, CONNECTIONS_AREA_KEY, ConnectionKey, TerminalStatus } from '@skysmack/packages-terminal-payments';
-import { NgConnectionsValidation, NgTerminalsStore, NgTerminalsActions, NgClientsStore, NgClientsActions } from '@skysmack/ng-terminal-payments';
-import { LoadedPackage } from '@skysmack/ng-framework';
+import { NgConnectionsValidation, NgTerminalsStore, NgTerminalsActions } from '@skysmack/ng-terminal-payments';
+import { LoadedPackage, getPackageDendencyAsStream } from '@skysmack/ng-framework';
 import { FormRule, Field, SelectField } from '@skysmack/ng-dynamic-forms';
 import { FieldsConfig, FieldProviders } from '@skysmack/ng-fields';
 import { StringFieldComponent, SelectFieldComponent, HiddenFieldComponent } from '@skysmack/portal-fields';
+import { NgClientsStore, NgClientsActions } from '@skysmack/ng-identities';
+import { NgSkysmackStore } from '@skysmack/ng-skysmack';
+import { switchMap, map, take } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
 export class NgConnectionsFieldsConfig extends FieldsConfig<Connection, ConnectionKey> {
@@ -18,12 +21,16 @@ export class NgConnectionsFieldsConfig extends FieldsConfig<Connection, Connecti
         public terminalsStore: NgTerminalsStore,
         public terminalsActions: NgTerminalsActions,
         public clientsStore: NgClientsStore,
-        public clientsActions: NgClientsActions
+        public clientsActions: NgClientsActions,
+        public skysmackStore: NgSkysmackStore
     ) {
         super(fieldProviders);
     }
 
     protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<Connection, ConnectionKey>): Field[] {
+        const identitiesPackage$ = getPackageDendencyAsStream(this.skysmackStore, loadedPackage._package.path, [0]);
+
+
         const fields: Field[] = [
             new Field({
                 component: StringFieldComponent,
@@ -38,8 +45,14 @@ export class NgConnectionsFieldsConfig extends FieldsConfig<Connection, Connecti
             new SelectField({
                 component: SelectFieldComponent,
                 value: entity ? entity.object.id.clientId : undefined,
-                optionsData$: this.clientsStore.get(loadedPackage._package.path),
-                getDependencies: () => { this.clientsActions.getPaged(loadedPackage._package.path, new PagedQuery()); },
+                optionsData$: identitiesPackage$.pipe(switchMap(identitiesPackage => this.clientsStore.get(identitiesPackage.object.path))),
+                getDependencies: () => {
+                    identitiesPackage$.pipe(map(identitiesPackage => {
+                        this.clientsActions.getPaged(identitiesPackage.object.path, new PagedQuery());
+                    }),
+                        take(1)
+                    ).subscribe();
+                },
                 key: 'clientId',
                 displayKey: 'client',
                 displaySubKey: 'object.name',

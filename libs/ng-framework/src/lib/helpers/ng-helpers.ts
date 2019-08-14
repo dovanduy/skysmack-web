@@ -138,7 +138,7 @@ export const getConnectedPackageMenuEntries = (packagePath: string, packageTypeI
  * @param componentKey The one being provided from the current index component
  * @param specificParentPackageComponentKey E.g. LodgingReservations must provide the component key from LodgingsIndexComponent
  * @param store The SkysmackStore
- * @param customMenuItem A methed return the menu item
+ * @param customMenuItem A method the desired menu item pr. package
  */
 export const getConnectedPackageCustomMenuEntries = (packagePath: string, packageTypeId: string, parentPageTypeId: string, componentKey: string, specificParentPackageComponentKey: string, store: SkysmackStore, customMenuItem: (_package: LocalObject<Package, string>) => MenuItem): Observable<MenuItem[]> => {
     if (componentKey === specificParentPackageComponentKey) {

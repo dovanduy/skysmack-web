@@ -3,11 +3,10 @@ import { Connection, CONNECTIONS_REDUX_KEY, ConnectionKey } from '@skysmack/pack
 import { Injectable } from '@angular/core';
 import { NgConnectionsRequests } from './ng-connections-requests';
 import { NgConnectionsNotifications } from '../ng-connections-notifications';
-import { NgClientsStore } from '../../clients/redux/ng-clients-store';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
-import { NgClientsActions } from '../../clients/redux/ng-clients-actions';
 import { NgTerminalsStore } from '../../terminals/redux/ng-terminals-store';
 import { NgTerminalsActions } from '../../terminals/redux/ng-terminals-actions';
+import { NgClientsStore, NgClientsActions } from '@skysmack/ng-identities';
 
 @Injectable({ providedIn: 'root' })
 export class ConnectionsEpics extends RecordEpicsBase<Connection, ConnectionKey> {

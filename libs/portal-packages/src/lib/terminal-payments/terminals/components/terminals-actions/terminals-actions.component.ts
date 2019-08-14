@@ -29,7 +29,7 @@ export class TerminalsActionsComponent extends BaseComponent<TerminalsAppState, 
       value: 3,
       displayName: 'Third option'
     }
-  ]
+  ];
 
   constructor(
     public router: Router,

@@ -116,6 +116,16 @@ export class NgIdentitiesIndexMenuProvider implements MenuProvider {
                 providedIn: [SIDEBAR]
             }),
             new MenuItem({
+                url: 'clients',
+                displayName: this.translationPrefix + 'CLIENTS',
+                area: 'manage',
+                order: 2,
+                icon: 'description',
+                permissions: [
+                ],
+                providedIn: [SIDEBAR]
+            }),
+            new MenuItem({
                 url: 'change-password',
                 displayName: this.translationPrefix + 'CHANGE_PASSWORD',
                 area: 'account',
