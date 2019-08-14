@@ -8,16 +8,14 @@ img.skysmack-logo {
 span.skysmack-logo {
     font-size: 18px;
     line-height: 18px;
-    // text-shadow: 0px 1px 1px rgba(40, 126, 147, 0.2);
-    color: mat-color($primary);
+    color: rgba(0, 0, 0, 0.8);
 
     font-weight: 300;
     margin: 0 .5rem;
-    // transition: color .1s ease, text-shadow .1s ease;
+    transition: color .1s ease;
 
     &:hover {
-        // text-shadow: 0px 1px 1px rgba(40, 126, 147, 0.5);
-        // color: #000;
+        color: mat-color($primary);
     }
 
     > span {
