@@ -4,16 +4,41 @@ $nav-height: 72px;
 
 skysmack-app {
   display: flex;
-  flex-direction: column;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  height: 100%;
 
-  .content-wrapper {
+  .mat-drawer-content.mat-sidenav-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+  .content-wrapper {    
+    display: flex;
+    flex-flow: column;
+    height: 100%;
     padding-top: $nav-height;
+    
+    nav.footer {
+      background-color: #e6e6e6;
+      color: $light-primary-text;
+      width: 100%;
+      text-align: center;
+      align-self: flex-end;
+
+      .container {
+        padding: 2rem;
+
+        img.skysmack-logo {
+          max-height: 64px;
+          margin-bottom: .25rem;
+        }
+        span.skysmack-logo {  
+          display: block;  
+          font-size: 18px;
+        }        
+      }
+    }
   }
+}
 }
 
 nav.docs-navbar-header {
@@ -169,38 +194,6 @@ nav.docs-navbar-header {
 
   &:hover {
     color: rgba(0, 0, 0, 0.77);
-  }
-}
-
-skysmack-app>ss-component-sidenav {
-  flex: 1;
-}
-
-skysmack-app>ss-homepage,
-skysmack-app>ss-guides,
-skysmack-app>guide-viewer {
-  overflow-y: auto;
-}
-
-nav.footer {
-  background-color: #e6e6e6;
-  color: $light-primary-text;
-  width: 100%;
-  text-align: center;
-  align-self: flex-end;
-
-  .container {
-    padding: 2rem;
-
-    img.skysmack-logo {
-      max-height: 64px;
-      margin-bottom: .25rem;
-    }
-    span.skysmack-logo {  
-      display: block;  
-      font-size: 18px;
-    }
-    
   }
 }
 
