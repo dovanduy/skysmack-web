@@ -13,3 +13,8 @@ export const CONNECTIONS_REDUCER_KEY = 'connections';
 export const CONNECTIONS_AREA_KEY = 'connections'; // validation, store, menu
 export const CONNECTIONS_REDUX_KEY = 'CONNECTIONS_'; // reducer prefix, action, epics, Requests
 export const CONNECTIONS_ADDITIONAL_PATHS = ['connections']; // actions, requests
+
+export const PAYMENT_RECIEPTS_REDUCER_KEY = 'payment_reciepts';
+export const PAYMENT_RECIEPTS_AREA_KEY = 'payment_reciepts'; // validation, store, menu
+export const PAYMENT_RECIEPTS_REDUX_KEY = 'PAYMENT_RECIEPTS_'; // reducer prefix, action, epics, Requests
+export const PAYMENT_RECIEPTS_ADDITIONAL_PATHS = ['payment-reciepts']; // actions, requests
