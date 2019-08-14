@@ -3,10 +3,10 @@ import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { MenuArea, MenuProvider, SPEEDDIAL, SIDEBAR } from '@skysmack/framework';
 import { MenuItem } from '@skysmack/framework';
 import { Guid } from 'guid-typescript';
-import { of, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { getMenuEntries, setBackButton } from '@skysmack/ng-framework';
-import { TerminalPaymentsTypeId } from '@skysmack/package-types';
 import { ClientsIndexComponent } from './components/clients-index/clients-index.component';
+import { IdentitiesTypeId } from '@skysmack/package-types';
 
 @Injectable({ providedIn: 'root' })
 export class NgClientsMenuProvider implements MenuProvider {
@@ -17,11 +17,11 @@ export class NgClientsMenuProvider implements MenuProvider {
         public store: NgSkysmackStore
     ) { }
     public getMenuAreas(packagePath: string, componentKey: string): Observable<MenuArea[]> {
-        return getMenuEntries<MenuArea>(packagePath, TerminalPaymentsTypeId, componentKey, ClientsIndexComponent.COMPONENT_KEY, this.getClientsMenuAreas, this.store);
+        return getMenuEntries<MenuArea>(packagePath, IdentitiesTypeId, componentKey, ClientsIndexComponent.COMPONENT_KEY, this.getClientsMenuAreas, this.store);
     };
 
     public getMenuItems(packagePath: string, componentKey: string): Observable<MenuItem[]> {
-        return getMenuEntries<MenuItem>(packagePath, TerminalPaymentsTypeId, componentKey, ClientsIndexComponent.COMPONENT_KEY, this.getClientsMenuItems, this.store);
+        return getMenuEntries<MenuItem>(packagePath, IdentitiesTypeId, componentKey, ClientsIndexComponent.COMPONENT_KEY, this.getClientsMenuItems, this.store);
     };
 
     public getClientsMenuAreas = () => {

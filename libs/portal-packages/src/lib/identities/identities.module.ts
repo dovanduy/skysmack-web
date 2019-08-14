@@ -79,6 +79,6 @@ export class IdentitiesModule {
       .add(ngApplicationsMenuProvider)
       .add(ngClientsMenuProvider)
       .add(ngRolesMenuProvider)
-      .add(ngUsersMenuProvider)
+      .add(ngUsersMenuProvider);
   }
 }
