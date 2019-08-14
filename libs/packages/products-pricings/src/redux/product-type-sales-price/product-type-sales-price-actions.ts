@@ -11,7 +11,6 @@ export class ProductTypeSalesPriceActions extends RecordActionsBase<ProductTypeS
 
     public getMessageParams(record: LocalObject<ProductTypeSalesPrice, number>): StrIndex<string> {
         return {
-            id: record.object.price.toString()
         };
     }
 }

@@ -8,8 +8,6 @@ export class NgConnectionsActions extends ConnectionsActions {
     constructor(protected store: NgRedux<ConnectionsAppState>) { super(store); }
 
     public getMessageParams(record: LocalObject<Connection, ConnectionKey>): StrIndex<string> {
-        return {
-            client: record.object.client.toString()
-        };
+        return {};
     }
 }

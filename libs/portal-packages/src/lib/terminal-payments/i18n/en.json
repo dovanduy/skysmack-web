@@ -5,7 +5,9 @@
             "MANAGE": "Manage",
             "TERMINALS": "Terminals",
             "RECEIPTS": "Receipts",
-            "CONNECTIONS": "Connections"
+            "CONNECTIONS": "Connections",
+            "TERMINAL_PAYMENT_RECEIPTS": "Payment receipts",
+            "TERMINAL_RECEIPTS": "Receipts"
         }
     }
 }

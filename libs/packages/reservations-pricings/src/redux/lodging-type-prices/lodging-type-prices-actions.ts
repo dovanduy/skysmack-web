@@ -11,7 +11,6 @@ export class LodgingTypePricesActions extends RecordActionsBase<LodgingTypePrice
 
     public getMessageParams(record: LocalObject<LodgingTypePrice, number>): StrIndex<string> {
         return {
-            id: record.object.currencyCode.toString()
         };
     }
 }

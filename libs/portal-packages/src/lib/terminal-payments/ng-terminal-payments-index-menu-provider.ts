@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 import { getMenuEntries, setConnectedParentPackage, getCombinedMenuEntries, getConnectedPackageMenuEntries } from '@skysmack/ng-framework';
 import { TerminalPaymentsTypeId, InvoicesTypeId } from '@skysmack/package-types';
 import { TerminalPaymentsIndexComponent } from './components/terminal-payments-index/terminal-payments-index.component';
-import { InvoicesIndexComponent } from '../invoices';
+import { InvoicesIndexComponent } from '../invoices/invoice/components/invoices-index/invoices-index.component';
 
 @Injectable({ providedIn: 'root' })
 export class NgTerminalPaymentsIndexMenuProvider implements MenuProvider {
@@ -83,8 +83,18 @@ export class NgTerminalPaymentsIndexMenuProvider implements MenuProvider {
                 providedIn: [SIDEBAR]
             }),
             new MenuItem({
+                url: 'payment-receipts',
+                displayName: this.translationPrefix + 'TERMINAL_PAYMENT_RECEIPTS',
+                area: 'manage',
+                order: 4,
+                icon: 'description',
+                permissions: [
+                ],
+                providedIn: [SIDEBAR]
+            }),
+            new MenuItem({
                 url: 'receipts',
-                displayName: this.translationPrefix + 'RECEIPTS',
+                displayName: this.translationPrefix + 'TERMINAL_RECEIPTS',
                 area: 'manage',
                 order: 4,
                 icon: 'description',

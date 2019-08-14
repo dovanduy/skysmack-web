@@ -1,0 +1,98 @@
+{
+    "TERMINAL_PAYMENT_RECEIPTS": {
+        "FORM": {
+            "LABELS": {
+                "REFERENCENUMBER": "Reference number",
+                "PRINTRECEIPT": "Print receipt",
+                "RECEIPTDOCUMENT": "Receipt document",
+                "INVOICEPAYMENTID": "Invoice payment"
+            },
+            "PLACEHOLDERS": {
+                "REFERENCENUMBER": "Reference number",
+                "PRINTRECEIPT": "Print receipt",
+                "RECEIPTDOCUMENT": "Receipt document",
+                "INVOICEPAYMENTID": "Invoice payment"
+            },
+            "VALIDATION": {
+                "REFERENCENUMBER": {
+                    "REQUIRED": "Reference number is required"
+                },
+                "PRINTRECEIPT": {
+                    "REQUIRED": "Print receipt is required"
+                },
+                "RECEIPTDOCUMENT": {
+                    "REQUIRED": "Receipt document is required"
+                },
+                "INVOICEPAYMENTID": {}
+            }
+        },
+        "FIELDS": {
+            "CREATE": {
+                "ADD": "Add new field"
+            },
+            "EDIT": {
+                "EDITING": "Editing"
+            },
+            "INDEX": {
+                "ACTIONS": "Actions",
+                "CREATE": "Create new field",
+                "OTHER": "Other",
+                "BACK": "Back",
+                "FIELDS": "Fields",
+                "EDIT": "Edit"
+            }
+        },
+        "CREATE": {
+            "CREATE": "Create",
+            "BUTTON_CREATE": "Create"
+        },
+        "EDIT": {
+            "EDIT": "Edit",
+            "BUTTON_EDIT": "Update"
+        },
+        "INDEX": {
+            "PACKAGES": "Packages",
+            "CREATE": "Create",
+            "EDIT": "Edit",
+            "DELETE": "Delete",
+            "FIELDS": "Fields",
+            "FIELDS_TITLE": "(fields)",
+            "TITLE_EXTRAS": "(payment receipts)",
+            "ITEM": "Item",
+            "MANAGE": "Manage",
+            "ACTIONS": "Actions"
+        },
+        "NOTIFICATIONS": {
+            "GET": {
+                "PAGED_ERROR": "Failed to get terminalPaymentReceipts ({{ httpErrorCode }}).",
+                "SINGLE_FAILURE": "Failed to get {{ printReceipt }} ({{ httpErrorCode }}).",
+                "FIELDS_FAILURE": "Failed to get fields for terminalPaymentReceipts ({{ httpErrorCode }}).",
+                "SINGLE_FIELD_FAILURE": "Failed to get {{ printReceipt }} field ({{ httpErrorCode }})."
+            },
+            "ADD": {
+                "SUCCESS": "Added {{ printReceipt }} succcessfully.",
+                "FAILURE": "Failed to add {{ printReceipt }} ({{ httpErrorCode }}).",
+                "FIELD_FAILURE": "Failed to add field for {{ printReceipt }} ({{ httpErrorCode }}).",
+                "FIELD_SUCCESS": "Added field for {{ printReceipt }} successfully."
+            },
+            "UPDATE": {
+                "SUCCESS": "Updated {{ printReceipt }} successfully.",
+                "FAILURE": "Failed to update {{ printReceipt }} ({{ httpErrorCode }}).",
+                "FIELD_SUCCESS": "Updated field for {{ printReceipt }} successfully.",
+                "FIELD_FAILURE": "Failed to update field for {{ printReceipt }} ({{ httpErrorCode }})"
+            },
+            "REMOVE": {
+                "SUCCESS": "Removed {{ printReceipt }} successfully.",
+                "FAILURE": "Failed to remove {{ printReceipt }} ({{ httpErrorCode }}).",
+                "FIELD_SUCCESS": "Removed field for {{ printReceipt }} succesfully.",
+                "FIELD_FAILURE": "Failed to remove field for {{ printReceipt }} ({{ httpErrorCode }})."
+            }
+        },
+        "QUEUE": {
+            "ADDING": "Adding {{ printReceipt }}",
+            "UPDATING": "Updating {{ printReceipt }}",
+            "DELETING": "Deleting {{ printReceipt }}",
+            "ERROR": "An error occured with {{ printReceipt }}. Correct and try again."
+        }
+    }
+}

@@ -10,7 +10,7 @@ export class NgEmailTemplatesActions extends RecordActionsBase<EmailTemplatesApp
 
     public getMessageParams(record: LocalObject<EmailTemplate, number>): StrIndex<string> {
         return {
-            subject: record.object.subject.toString()
+            subject: record.object.subject
         };
     }
 }
