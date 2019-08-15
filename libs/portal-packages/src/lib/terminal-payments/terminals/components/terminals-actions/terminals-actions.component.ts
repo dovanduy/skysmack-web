@@ -132,10 +132,6 @@ export class TerminalsActionsComponent extends BaseComponent<TerminalsAppState, 
     this.setOnlineAndConnected$();
   }
 
-  ngOnDestroy() {
-    super.ngOnDestroy();
-  }
-
   public connect(): void {
     this.connection$.pipe(
       switchMap(connection => this.connectionsRequests.connect(this.packagePath, connection)),

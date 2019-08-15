@@ -31,7 +31,6 @@ export class ChangePasswordComponent extends BaseComponent<AccountAppState, unkn
 
   ngOnInit() {
     super.ngOnInit();
-    this.editorNavService.showEditorNav();
     this.fields$ = this.loadedPackage$.pipe(
       switchMap(loadedPackage => this.fieldsConfig.getFields(loadedPackage))
     );
