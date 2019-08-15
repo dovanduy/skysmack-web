@@ -66,9 +66,8 @@ export class NgApplicationsFormFieldsConfig extends FieldsConfig<ApplicationDesc
             }),
             new Field({
                 component: StringArrayFieldComponent,
-                value: entity ? entity.object.permissions : [[]],
+                value: entity ? entity.object.permissions : [],
                 key: 'permissions',
-                validators: [Validators.required],
                 order: 3,
                 showColumn: true,
                 sortable: true

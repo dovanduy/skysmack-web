@@ -27,6 +27,7 @@ export class ApplicationsEditComponent extends RecordFormComponent<ApplicationsA
 
   ngOnInit() {
     super.ngOnInit();
+    this.fieldsConfig.mode = 'edit';
     this.setEditFields();
   }
 }
