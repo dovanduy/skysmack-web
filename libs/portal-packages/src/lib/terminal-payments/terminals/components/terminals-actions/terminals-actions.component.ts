@@ -19,16 +19,14 @@ import { Client } from '@skysmack/packages-identities';
   styleUrls: ['./terminals-actions.component.scss']
 })
 export class TerminalsActionsComponent extends BaseComponent<TerminalsAppState, unknown> implements OnInit {
+  private admin$: Observable<Admin>;
+  private client$: Observable<LocalObject<Client, string>>;
+  private connection$: Observable<LocalObject<Connection, ConnectionKey>>;
+
   public selectedOption: any;
   public message: string;
   public clientOnline$: Observable<boolean>;
   public onlineAndConnected$: Observable<boolean>;
-
-  private admin$: Observable<Admin>;
-  private client$: Observable<LocalObject<Client, string>>;
-  private connection$: Observable<LocalObject<Connection, ConnectionKey>>;
-  // Connect button, show if client is online, doesn't matter what connection status is. 
-
   public options: SelectFieldOption[] = [
     {
       value: 1,
@@ -163,8 +161,9 @@ export class TerminalsActionsComponent extends BaseComponent<TerminalsAppState, 
               console.log(response);
             }
           }
-        })
-      );
+        }),
+        take(1)
+      ).subscribe();
     } else {
       this.message = 'Please choose an action'
     }
