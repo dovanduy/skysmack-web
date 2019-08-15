@@ -9,7 +9,7 @@ import { Client, CLIENTS_AREA_KEY } from '@skysmack/packages-identities';
 import { NgClientsValidation } from '@skysmack/ng-identities';
 
 @Injectable({ providedIn: 'root' })
-export class NgClientsFieldsConfig extends FieldsConfig<Client, number> {
+export class NgClientsFieldsConfig extends FieldsConfig<Client, string> {
     public validation = new NgClientsValidation();
     public area = CLIENTS_AREA_KEY
     public formRules: FormRule[] = [];
@@ -20,7 +20,7 @@ export class NgClientsFieldsConfig extends FieldsConfig<Client, number> {
         super(fieldProviders);
     }
 
-    protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<Client, number>): Field[] {
+    protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<Client, string>): Field[] {
         const fields = [
             new Field({
                 component: StringFieldComponent,

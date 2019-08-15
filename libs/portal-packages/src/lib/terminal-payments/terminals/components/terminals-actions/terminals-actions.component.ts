@@ -1,11 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { NgTerminalsActions, NgTerminalsStore } from '@skysmack/ng-terminal-payments';
+import { NgTerminalsActions, NgTerminalsStore, NgTerminalsRequests, NgConnectionsStore } from '@skysmack/ng-terminal-payments';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EditorNavService } from '@skysmack/portal-ui';
-import { TerminalsAppState } from '@skysmack/packages-terminal-payments';
+import { TerminalsAppState, Admin, TerminalStatus, Connection, ConnectionKey } from '@skysmack/packages-terminal-payments';
 import { SelectFieldOption } from '@skysmack/ng-dynamic-forms';
 import { BaseComponent } from '@skysmack/portal-fields';
+import { tap, map, switchMap } from 'rxjs/operators';
+import { Observable, combineLatest } from 'rxjs';
+import { GlobalProperties, LocalObject } from '@skysmack/framework';
+import { NgClientsStore } from '@skysmack/ng-identities';
+import { getPackageDendencyAsStream } from '@skysmack/ng-framework';
+import { Client } from '@skysmack/packages-identities';
 
 @Component({
   selector: 'ss-terminals-actions',
@@ -15,10 +21,14 @@ import { BaseComponent } from '@skysmack/portal-fields';
 export class TerminalsActionsComponent extends BaseComponent<TerminalsAppState, unknown> implements OnInit {
   public selectedOption: any;
   public message: string;
+  public clientOnline$: Observable<boolean>;
+  public onlineAndConnected$: Observable<boolean>;
 
+  private admin$: Observable<Admin>;
+  private client$: Observable<LocalObject<Client, string>>;
+  private connection$: Observable<LocalObject<Connection, ConnectionKey>>;
   // Connect button, show if client is online, doesn't matter what connection status is. 
 
-  // Only show if client is online and status is connected
   public options: SelectFieldOption[] = [
     {
       value: 1,
@@ -30,7 +40,67 @@ export class TerminalsActionsComponent extends BaseComponent<TerminalsAppState, 
     },
     {
       value: 3,
-      displayName: 'Third option'
+      displayName: '(Report) Terminal report'
+    },
+    {
+      value: 4,
+      displayName: '(Report) Totals'
+    },
+    {
+      value: 5,
+      displayName: '(Report) Log'
+    },
+    {
+      value: 6,
+      displayName: '(Report) Old log'
+    },
+    {
+      value: 7,
+      displayName: 'Last receipt'
+    },
+    {
+      value: 8,
+      displayName: 'Unlock receipt'
+    },
+    {
+      value: 9,
+      displayName: 'Clock sync PBS'
+    },
+    {
+      value: 10,
+      displayName: 'Clock sync point'
+    },
+    {
+      value: 18,
+      displayName: 'Contrast up'
+    },
+    {
+      value: 19,
+      displayName: 'Contrast down'
+    },
+    {
+      value: 20,
+      displayName: 'Restart terminal'
+    },
+    {
+      value: 21,
+      displayName: 'Eject card'
+    },
+    {
+      value: 23,
+      displayName: 'Backlight on'
+    },
+    {
+      value: 24,
+      displayName: 'Backlight off'
+    },
+    {
+      value: 25,
+      displayName: 'Network report'
+    },
+    {
+      value: 44,
+      displayName: 'Get IP settings'
     }
     // Alle til og med 10
     // 18 + 19 (contrast) + 20 (restart) + 21
@@ -42,33 +112,87 @@ export class TerminalsActionsComponent extends BaseComponent<TerminalsAppState, 
     public activatedRoute: ActivatedRoute,
     public editorNavService: EditorNavService,
     public actions: NgTerminalsActions,
+    public requests: NgTerminalsRequests,
+    public clientStore: NgClientsStore,
     public skysmackStore: NgSkysmackStore,
-    public store: NgTerminalsStore
+    public store: NgTerminalsStore,
+    public connectionsStore: NgConnectionsStore
   ) {
     super(router, activatedRoute, skysmackStore);
   }
 
   ngOnInit() {
-    this.editorNavService.showEditorNav();
     super.ngOnInit();
+
+    const params$ = this.activatedRoute.params as Observable<{ terminalId: number, clientId: string }>;
+
+    this.setClient$(params$);
+    this.setConnection$(params$);
+    this.setAdmin$(params$);
+    this.setClientOnline$();
+    this.setOnlineAndConnected$();
   }
 
   ngOnDestroy() {
     super.ngOnDestroy();
-    this.editorNavService.hideEditorNav();
   }
 
   public submit() {
     this.message = '';
-    const url = 'url';
-    const body = {};
     if (this.selectedOption) {
-
+      this.admin$.pipe(
+        switchMap(admin => {
+          admin.adminFunction = this.selectedOption;
+          return this.requests.admin(this.packagePath, admin);
+        }),
+        tap((response) => {
+          if (response.ok) {
+            this.router.navigate([this.packagePath, 'connections'])
+          } else {
+            // Error
+            this.message = 'Something went wrong. Please try again.';
+            if (!GlobalProperties.production) {
+              console.log(response);
+            }
+          }
+        })
+      );
     } else {
       this.message = 'Please choose an action'
     }
 
     // Prevents form submit causing a page reload.
     return false;
+  }
+
+  private setClient$(params$: Observable<{ terminalId: number; clientId: string; }>) {
+    this.client$ = combineLatest(
+      getPackageDendencyAsStream(this.skysmackStore, this.packagePath, [1]),
+      params$).pipe(
+        switchMap(([identitiesPackage, params]) => this.clientStore.getSingle(identitiesPackage.object.path, params.clientId))
+      );
+  }
+
+  private setAdmin$(params$: Observable<{ terminalId: number; clientId: string; }>) {
+    this.admin$ = params$.pipe(
+      map(params => new Admin({
+        terminalId: params.terminalId,
+        clientId: params.clientId
+      }))
+    );
+  }
+
+  private setOnlineAndConnected$() {
+    this.onlineAndConnected$ = combineLatest(this.clientOnline$, this.connection$).pipe(
+      map(([clientOnline, connection]) => (clientOnline && (connection.object.status === TerminalStatus.Connected)))
+    );
+  }
+
+  private setClientOnline$() {
+    this.clientOnline$ = this.client$.pipe(map(client => client.object.online));
+  }
+
+  private setConnection$(params$: Observable<{ terminalId: number; clientId: string; }>) {
+    this.connection$ = params$.pipe(switchMap(params => this.connectionsStore.getSingle(this.packagePath, params)));
   }
 }

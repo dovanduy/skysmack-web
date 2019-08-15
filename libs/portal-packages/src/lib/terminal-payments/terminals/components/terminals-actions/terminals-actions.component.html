@@ -1,13 +1,21 @@
 <h2 [translate]="'Actions'"></h2>
 
-<p *ngIf="message">{{ message }}</p>
-<mat-form-field>
-  <mat-select [placeholder]="'Please select a terminal action' | translate" [(value)]="selectedOption">
-    <mat-option *ngFor="let opt of options" [value]="opt.value">
-      {{ opt.displayName }}
-    </mat-option>
-  </mat-select>
-</mat-form-field>
+<ng-container *ngIf="onlineAndConnected$ | async; else pleaseConnect">
+  <p *ngIf="message">{{ message }}</p>
+  <mat-form-field>
+    <mat-select [placeholder]="'Please select a terminal action' | translate" [(value)]="selectedOption">
+      <mat-option *ngFor="let opt of options" [value]="opt.value">
+        {{ opt.displayName }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</ng-container>
+
+<ng-template #pleaseConnect>
+  <p>Please ensure the client is online and status is connected.</p>
+</ng-template>
+
+<button mat-raised-button color="primary" *ngIf="clientOnline$ | async">Connect</button>
 
 <form (submit)="submit()">
   <button mat-raised-button color="primary" type="submit">Submit</button>

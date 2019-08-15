@@ -5,7 +5,7 @@ import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { ClientsAppState, Client, CLIENTS_REDUCER_KEY } from '@skysmack/packages-identities';
 
 @Injectable({ providedIn: 'root' })
-export class NgClientsStore extends NgRecordStore<ClientsAppState, Client, number> {
+export class NgClientsStore extends NgRecordStore<ClientsAppState, Client, string> {
     constructor(
         protected ngRedux: NgRedux<ClientsAppState>,
         protected skysmackStore: NgSkysmackStore
