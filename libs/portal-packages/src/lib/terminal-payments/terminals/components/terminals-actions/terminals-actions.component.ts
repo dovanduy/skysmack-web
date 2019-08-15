@@ -16,19 +16,25 @@ export class TerminalsActionsComponent extends BaseComponent<TerminalsAppState, 
   public selectedOption: any;
   public message: string;
 
+  // Connect button, show if client is online, doesn't matter what connection status is. 
+
+  // Only show if client is online and status is connected
   public options: SelectFieldOption[] = [
     {
       value: 1,
-      displayName: 'First option'
+      displayName: 'End of day'
     },
     {
       value: 2,
-      displayName: 'Second option'
+      displayName: 'End of day log'
     },
     {
       value: 3,
       displayName: 'Third option'
     }
+    // Alle til og med 10
+    // 18 + 19 (contrast) + 20 (restart) + 21
+    // 23 + 24 + 25 + 44
   ];
 
   constructor(
