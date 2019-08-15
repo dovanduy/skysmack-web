@@ -7,7 +7,7 @@ import { ClientsActions, ClientsAppState, Client } from '@skysmack/packages-iden
 export class NgClientsActions extends ClientsActions {
     constructor(protected store: NgRedux<ClientsAppState>) { super(store); }
 
-    public getMessageParams(record: LocalObject<Client, number>): StrIndex<string> {
+    public getMessageParams(record: LocalObject<Client, string>): StrIndex<string> {
         return {
             name: record.object.name
         };

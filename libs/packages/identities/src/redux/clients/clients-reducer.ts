@@ -11,9 +11,9 @@ export class ClientsAppState extends AppState {
     public clients: ClientsState;
 }
 
-export class ClientsState implements RecordState<Client, number> {
-    public localPageTypes: StrIndex<StrIndex<LocalPageTypes<number>>> = {};
-    public localRecords: StrIndex<StrIndex<LocalObject<Client, number>>> = {};
+export class ClientsState implements RecordState<Client, string> {
+    public localPageTypes: StrIndex<StrIndex<LocalPageTypes<string>>> = {};
+    public localRecords: StrIndex<StrIndex<LocalObject<Client, string>>> = {};
 }
 
 export function clientsReducer(state = new ClientsState(), action: ReduxAction, prefix: string = CLIENTS_REDUX_KEY): ClientsState {
@@ -22,7 +22,7 @@ export function clientsReducer(state = new ClientsState(), action: ReduxAction, 
 
     switch (action.type) {
         case prefix + ClientsActions.CLIENT_ONLINE_STATUS_MESSAGE: {
-            const castedAction = action as ReduxAction<{ packagePath: string, clientId: number, online: boolean }>;
+            const castedAction = action as ReduxAction<{ packagePath: string, clientId: string, online: boolean }>;
             const area = newState.localRecords[castedAction.payload.packagePath];
             const localRecordId = Object.keys(area).find(key => area[key].object.id === castedAction.payload.clientId);
             const newLocalRecord = reinstantiateLocalRecord({ ...area[localRecordId] });
@@ -37,7 +37,7 @@ export function clientsReducer(state = new ClientsState(), action: ReduxAction, 
         default:
             return {
                 ...state,
-                ...recordReducersBase<ClientsState, Client, number>(state, action, prefix)
+                ...recordReducersBase<ClientsState, Client, string>(state, action, prefix)
             };
     }
 }

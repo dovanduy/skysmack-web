@@ -17,7 +17,7 @@ export class ClientsActions extends RecordActionsBase<ClientsAppState, Store<Cli
         })
     }
 
-    public getMessageParams(record: LocalObject<Client, number>): StrIndex<string> {
+    public getMessageParams(record: LocalObject<Client, string>): StrIndex<string> {
         return {
             id: 'Object'
         };

@@ -1,6 +1,6 @@
 import { Record } from "@skysmack/framework";
 
-export class Client extends Record<number> {
+export class Client extends Record<string> {
     public name: string;
     public description: string;
     public online: boolean;

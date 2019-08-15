@@ -5,6 +5,7 @@ import { PackageRouteConfiguration } from '@skysmack/portal-ui';
 import { SubscriptionHandler } from '@skysmack/framework';
 import { Skysmack, SkysmackRequestStatus } from '@skysmack/packages-skysmack-core';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
+import { tap } from 'rxjs/operators';
 
 @Component({
   // tslint:disable-next-line:component-selector

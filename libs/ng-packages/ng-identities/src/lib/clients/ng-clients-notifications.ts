@@ -3,6 +3,6 @@ import { RecordNotifications, Notifications, NOTIFICATIONS_INJECTOR_TOKEN } from
 import { Client } from '@skysmack/packages-identities';
 
 @Injectable({ providedIn: 'root' })
-export class NgClientsNotifications extends RecordNotifications<Client, number> {
+export class NgClientsNotifications extends RecordNotifications<Client, string> {
     constructor(@Inject(NOTIFICATIONS_INJECTOR_TOKEN) public notifications: Notifications) { super(notifications); }
 }

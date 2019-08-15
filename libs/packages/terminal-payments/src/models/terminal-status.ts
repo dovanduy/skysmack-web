@@ -1,10 +1,6 @@
 export enum TerminalStatus {
-    Unknown,
+    Disconnected,
     Connected,
     Open,
-    ProcessingTransaction,
-    Closed,
-    Disconnected,
-    Unavailable,
-    Busy
+    Transaction
 }

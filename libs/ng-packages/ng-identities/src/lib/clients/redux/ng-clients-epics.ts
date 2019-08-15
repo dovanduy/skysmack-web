@@ -5,7 +5,7 @@ import { NgClientsNotifications } from '../ng-clients-notifications';
 import { Client, CLIENTS_REDUX_KEY } from '@skysmack/packages-identities';
 
 @Injectable({ providedIn: 'root' })
-export class ClientsEpics extends RecordEpicsBase<Client, number> {
+export class ClientsEpics extends RecordEpicsBase<Client, string> {
     constructor(protected requests: NgClientsRequests, protected notifications: NgClientsNotifications) {
         super(requests, CLIENTS_REDUX_KEY, notifications);
     }

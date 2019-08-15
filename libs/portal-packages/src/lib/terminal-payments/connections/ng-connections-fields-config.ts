@@ -9,6 +9,7 @@ import { StringFieldComponent, SelectFieldComponent, HiddenFieldComponent } from
 import { NgClientsStore, NgClientsActions } from '@skysmack/ng-identities';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { switchMap, map, take } from 'rxjs/operators';
+import { Validators } from '@angular/forms';
 
 @Injectable({ providedIn: 'root' })
 export class NgConnectionsFieldsConfig extends FieldsConfig<Connection, ConnectionKey> {
@@ -56,6 +57,7 @@ export class NgConnectionsFieldsConfig extends FieldsConfig<Connection, Connecti
                 key: 'clientId',
                 displayKey: 'client',
                 displaySubKey: 'object.name',
+                validators: [Validators.required],
                 order: 2,
                 showColumn: true
             }),
@@ -67,6 +69,7 @@ export class NgConnectionsFieldsConfig extends FieldsConfig<Connection, Connecti
                 displaySubKey: 'object.name',
                 optionsData$: this.terminalsStore.get(loadedPackage._package.path),
                 getDependencies: () => { this.terminalsActions.getPaged(loadedPackage._package.path, new PagedQuery()); },
+                validators: [Validators.required],
                 order: 3,
                 showColumn: true
             }),

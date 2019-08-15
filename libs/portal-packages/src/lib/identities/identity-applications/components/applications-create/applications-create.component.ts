@@ -27,6 +27,7 @@ export class ApplicationsCreateComponent extends RecordFormComponent<Application
 
   ngOnInit() {
     super.ngOnInit();
+    this.fieldsConfig.mode = 'create';
     this.setCreateFields();
   }
 

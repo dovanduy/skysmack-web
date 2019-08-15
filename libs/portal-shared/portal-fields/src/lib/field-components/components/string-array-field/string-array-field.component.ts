@@ -13,6 +13,7 @@ export class StringArrayFieldComponent extends FieldBaseComponent<Field> impleme
 
   ngOnInit() {
     super.ngOnInit();
+    this.inputs = this.field.value ? this.field.value : [];
   }
 
   public add() {

@@ -12,7 +12,7 @@ export const terminalsRoutes: Routes = [
     children: [
       { path: 'create', component: TerminalsCreateComponent, pathMatch: 'full' },
       { path: 'edit/:id', component: TerminalsEditComponent, pathMatch: 'full' },
-      { path: 'actions/:id', component: TerminalsActionsComponent, pathMatch: 'full' }
+      { path: 'actions/:terminalId/:clientId', component: TerminalsActionsComponent, pathMatch: 'full' }
     ]
   },
   {

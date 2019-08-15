@@ -11,7 +11,7 @@ import { NgClientsActions, NgClientsStore } from '@skysmack/ng-identities';
   selector: 'ss-clients-edit',
   templateUrl: './clients-edit.component.html'
 })
-export class ClientsEditComponent extends RecordFormComponent<ClientsAppState, Client, number> implements OnInit {
+export class ClientsEditComponent extends RecordFormComponent<ClientsAppState, Client, string> implements OnInit {
 
   constructor(
     public router: Router,
