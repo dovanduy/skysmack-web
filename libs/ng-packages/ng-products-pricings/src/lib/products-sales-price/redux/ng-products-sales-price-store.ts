@@ -12,20 +12,21 @@ export class NgProductsSalesPriceStore extends NgRecordStore<ProductsSalesPriceA
         new DependencyOptions({
             relationSelector: 'record',
             relationIdSelector: 'recordId',
-            stateSelector: 'products'
+            stateSelector: 'products',
+            dependencyIndexes: [0]
         })
     ];
-    
+
     constructor(
         protected ngRedux: NgRedux<ProductsSalesPriceAppState>,
         protected skysmackStore: NgSkysmackStore
     ) { super(ngRedux, skysmackStore, PRODUCTS_SALES_PRICE_REDUCER_KEY); }
-    
+
     public get(packagePath: string): Observable<LocalObject<ProductsSalesPrice, number>[]> {
-        return this.getWithDependencies(packagePath, this.deps, [0]);
+        return this.getWithDependencies(packagePath, this.deps);
     }
 
     public getSingle(packagePath: string, id: number): Observable<LocalObject<ProductsSalesPrice, number>> {
-        return this.getSingleWithDependency(packagePath, id, this.deps, [0]);
+        return this.getSingleWithDependency(packagePath, id, this.deps);
     }
 }

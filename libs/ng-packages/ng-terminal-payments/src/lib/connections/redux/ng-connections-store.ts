@@ -13,7 +13,8 @@ export class NgConnectionsStore extends NgRecordStore<ConnectionsAppState, Conne
         new DependencyOptions({
             relationSelector: 'client',
             relationIdSelector: 'id.clientId',
-            stateSelector: 'clients'
+            stateSelector: 'clients',
+            dependencyIndexes: [0]
         }),
         new DependencyOptions({
             relationSelector: 'terminal',

@@ -75,8 +75,8 @@ export class ConnectionsIndexComponent extends RecordIndexComponent<ConnectionsA
   }
 
   protected terminalActions(_this: ConnectionsIndexComponent, value: LocalObject<Connection, ConnectionKey>) {
-    const terminalId = value.object.terminal && value.object.terminal.object.id;
-    const clientId = 1;//value.object.client && value.object.client.object.id;
+    const terminalId = value.object.id.terminalId;
+    const clientId = value.object.id.clientId;
     _this.router.navigate([_this.packagePath, 'terminals', 'actions', terminalId, clientId]);
   }
 
