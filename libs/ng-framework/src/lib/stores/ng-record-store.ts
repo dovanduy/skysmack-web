@@ -2,7 +2,7 @@ import { Record, StrIndex, LocalPageTypes, LocalObject, hasValue, dictionaryToAr
 import { RecordStore, RecordState } from '@skysmack/redux';
 import { Observable, combineLatest, from } from 'rxjs';
 import { NgRedux } from '@angular-redux/store';
-import { map, mergeMap, tap } from 'rxjs/operators';
+import { map, mergeMap, filter } from 'rxjs/operators';
 import { getPackageDendencyAsStream } from '../helpers/ng-helpers';
 import { SkysmackStore } from './skysmack-store';
 
@@ -97,6 +97,7 @@ export abstract class NgRecordStore<TState, TRecord extends Record<TKey>, TKey> 
 
     protected getDependencies(packagePath: string, stateSelector: string): Observable<LocalObject<any, number>[]> {
         return this.store.select(state => state[stateSelector]).pipe(
+            filter(x => x),
             map(state => state.localRecords[packagePath]),
             safeUndefinedTo('object'),
             dictionaryToArray<LocalObject<TRecord, TKey>>(),
@@ -123,19 +124,19 @@ export abstract class NgRecordStore<TState, TRecord extends Record<TKey>, TKey> 
             const record = records[index];
             const recordId = getProperty(record.object, relationIdSelector);
             if (recordId && (recordId > 0 || recordId !== '')) {
-                record.object[relationSelector] = dependencies.find(dependency => dependency.object.id.toString() === getProperty(record.object, relationIdSelector).toString());
+                record.object[relationSelector] = dependencies.find(dependency => dependency.object.id === getProperty(record.object, relationIdSelector));
             }
         }
         return records;
     }
 
     protected mapRecordDependency(record: LocalObject<any, any>, dependencies: LocalObject<any, any>[], relationIdSelector: string, relationSelector: string): LocalObject<any, any> {
-        record.object[relationSelector] = dependencies.find(dependency => getProperty(dependency.object, relationIdSelector).toString() === getProperty(record.object, relationIdSelector).toString());
+        record.object[relationSelector] = dependencies.find(dependency => getProperty(dependency.object, relationIdSelector) === getProperty(record.object, relationIdSelector));
         return record;
     }
 
     protected mapRecordDependencies(record: LocalObject<any, any>, dependencies: LocalObject<any, any>[], relationIdSelector: string, relationSelector: string): LocalObject<any, any> {
-        record.object[relationSelector] = dependencies.filter(dependency => getProperty(dependency.object, relationIdSelector).toString() === getProperty(record.object, relationIdSelector).toString());
+        record.object[relationSelector] = dependencies.filter(dependency => getProperty(dependency.object, relationIdSelector) === getProperty(record.object, relationIdSelector));
         return record;
     }
 }
