@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { NgTerminalsActions, NgTerminalsStore, NgTerminalsRequests, NgConnectionsStore } from '@skysmack/ng-terminal-payments';
+import { NgTerminalsActions, NgTerminalsStore, NgTerminalsRequests, NgConnectionsStore, NgConnectionsActions, NgConnectionsRequests } from '@skysmack/ng-terminal-payments';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EditorNavService } from '@skysmack/portal-ui';
 import { TerminalsAppState, Admin, TerminalStatus, Connection, ConnectionKey } from '@skysmack/packages-terminal-payments';
 import { SelectFieldOption } from '@skysmack/ng-dynamic-forms';
 import { BaseComponent } from '@skysmack/portal-fields';
-import { tap, map, switchMap } from 'rxjs/operators';
+import { tap, map, switchMap, take } from 'rxjs/operators';
 import { Observable, combineLatest } from 'rxjs';
 import { GlobalProperties, LocalObject } from '@skysmack/framework';
 import { NgClientsStore } from '@skysmack/ng-identities';
@@ -116,7 +116,8 @@ export class TerminalsActionsComponent extends BaseComponent<TerminalsAppState, 
     public clientStore: NgClientsStore,
     public skysmackStore: NgSkysmackStore,
     public store: NgTerminalsStore,
-    public connectionsStore: NgConnectionsStore
+    public connectionsStore: NgConnectionsStore,
+    public connectionsRequests: NgConnectionsRequests
   ) {
     super(router, activatedRoute, skysmackStore);
   }
@@ -137,7 +138,14 @@ export class TerminalsActionsComponent extends BaseComponent<TerminalsAppState, 
     super.ngOnDestroy();
   }
 
-  public submit() {
+  public connect(): void {
+    this.connection$.pipe(
+      switchMap(connection => this.connectionsRequests.connect(this.packagePath, connection)),
+      take(1)
+    ).subscribe();
+  }
+
+  public submit(): boolean {
     this.message = '';
     if (this.selectedOption) {
       this.admin$.pipe(
@@ -165,7 +173,7 @@ export class TerminalsActionsComponent extends BaseComponent<TerminalsAppState, 
     return false;
   }
 
-  private setClient$(params$: Observable<{ terminalId: number; clientId: string; }>) {
+  private setClient$(params$: Observable<{ terminalId: number; clientId: string; }>): void {
     this.client$ = combineLatest(
       getPackageDendencyAsStream(this.skysmackStore, this.packagePath, [1]),
       params$).pipe(
@@ -173,7 +181,7 @@ export class TerminalsActionsComponent extends BaseComponent<TerminalsAppState, 
       );
   }
 
-  private setAdmin$(params$: Observable<{ terminalId: number; clientId: string; }>) {
+  private setAdmin$(params$: Observable<{ terminalId: number; clientId: string; }>): void {
     this.admin$ = params$.pipe(
       map(params => new Admin({
         terminalId: params.terminalId,
@@ -182,17 +190,17 @@ export class TerminalsActionsComponent extends BaseComponent<TerminalsAppState, 
     );
   }
 
-  private setOnlineAndConnected$() {
+  private setOnlineAndConnected$(): void {
     this.onlineAndConnected$ = combineLatest(this.clientOnline$, this.connection$).pipe(
       map(([clientOnline, connection]) => (clientOnline && (connection.object.status === TerminalStatus.Connected)))
     );
   }
 
-  private setClientOnline$() {
+  private setClientOnline$(): void {
     this.clientOnline$ = this.client$.pipe(map(client => client.object.online));
   }
 
-  private setConnection$(params$: Observable<{ terminalId: number; clientId: string; }>) {
+  private setConnection$(params$: Observable<{ terminalId: number; clientId: string; }>): void {
     this.connection$ = params$.pipe(switchMap(params => this.connectionsStore.getSingle(this.packagePath, params)));
   }
 }

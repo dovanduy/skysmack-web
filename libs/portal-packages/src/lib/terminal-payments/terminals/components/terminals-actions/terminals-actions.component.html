@@ -15,7 +15,7 @@
   <p>Please ensure the client is online and status is connected.</p>
 </ng-template>
 
-<button mat-raised-button color="primary" *ngIf="clientOnline$ | async">Connect</button>
+<button mat-raised-button color="primary" *ngIf="clientOnline$ | async" (click)="connect()">Connect</button>
 
 <form (submit)="submit()">
   <button mat-raised-button color="primary" type="submit">Submit</button>
