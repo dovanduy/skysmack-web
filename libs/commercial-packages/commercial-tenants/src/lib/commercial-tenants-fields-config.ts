@@ -32,7 +32,7 @@ export class CommercialTenantsFieldsConfig extends FieldsConfig<any, any>{
                 component: StringFieldComponent,
                 value: entity ? entity.object.hostname : undefined,
                 key: 'hostname',
-                validators: [Validators.required],
+                // validators: [Validators.required],
                 order: 1,
                 sortable: true
             }),
@@ -50,9 +50,9 @@ export class CommercialTenantsFieldsConfig extends FieldsConfig<any, any>{
                 component: StringFieldComponent,
                 value: entity ? entity.object.state : undefined,
                 key: 'state',
-                validators: [Validators.required],
                 order: 1,
-                sortable: true
+                sortable: true,
+                includeInForm: false
             }),
         ];
 

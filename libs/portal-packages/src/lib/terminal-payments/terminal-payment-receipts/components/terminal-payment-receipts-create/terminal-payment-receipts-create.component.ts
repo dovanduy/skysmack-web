@@ -30,6 +30,5 @@ export class TerminalPaymentReceiptsCreateComponent extends DocumentRecordFormCo
   ngOnInit() {
     super.ngOnInit();
     this.setCreateFields();
-    this.editorNavService.showEditorNav();
   }
 }

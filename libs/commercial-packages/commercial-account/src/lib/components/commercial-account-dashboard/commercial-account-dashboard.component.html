@@ -1,3 +1,6 @@
-<h3>{{ 'COMMERCIAL_ACCOUNT.INDEX.ACCOUNT' | translate }}</h3>
-
-<p>{{ 'COMMERCIAL_ACCOUNT.INDEX.WELCOME' | translate }} {{ (currentUser$ | async)?.email }}</p>
+<div class="wrapper">
+    <mat-card>
+        <h3>{{ 'COMMERCIAL_ACCOUNT.INDEX.ACCOUNT' | translate }}</h3>
+        <p>{{ 'COMMERCIAL_ACCOUNT.INDEX.WELCOME' | translate }} {{ (currentUser$ | async)?.email }}</p>
+    </mat-card>
+</div>

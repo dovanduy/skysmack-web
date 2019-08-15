@@ -41,7 +41,6 @@ export class ApplicationsRolesComponent extends BaseComponent<Application, numbe
     this.actions.getApplicationsRoles(this.packagePath, [this.entityId]);
     this.applicationRoles$ = this.store.getApplicationRoles(this.packagePath, this.entityId);
     this.getRoles();
-    this.editorNav.showEditorNav();
   }
 
   public addRole(role: LocalObject<Role, number>): void {
