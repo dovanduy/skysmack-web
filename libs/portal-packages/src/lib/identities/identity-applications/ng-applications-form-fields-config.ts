@@ -14,6 +14,8 @@ export class NgApplicationsFormFieldsConfig extends FieldsConfig<ApplicationDesc
     public area = APPLICATIONS_AREA_KEY;
     public formRules: FormRule[] = [];
 
+    public mode: 'create' | 'edit' = 'create'
+
     constructor(public fieldProviders: FieldProviders) {
         super(fieldProviders);
     }
@@ -58,7 +60,6 @@ export class NgApplicationsFormFieldsConfig extends FieldsConfig<ApplicationDesc
                 component: StringFieldComponent,
                 value: entity ? entity.object.type : undefined,
                 key: 'type',
-                validators: [Validators.required],
                 order: 1,
                 showColumn: true,
                 sortable: true
@@ -74,6 +75,18 @@ export class NgApplicationsFormFieldsConfig extends FieldsConfig<ApplicationDesc
             }),
         ];
 
+        this.setTypeFieldValidators(fields);
+
         return fields;
+    }
+
+    // Type is only required on update.
+    private setTypeFieldValidators(fields: Field[]) {
+        const typeField = fields.find(x => x.key === 'type');
+        if (typeField) {
+            this.mode === 'create' ? typeField.validators = [] : typeField.validators = [Validators.required];
+        } else {
+            throw new Error('ApplicationDescriptor prop "type" is missing: Please keep setTypeFieldValidators() up to date.')
+        }
     }
 }

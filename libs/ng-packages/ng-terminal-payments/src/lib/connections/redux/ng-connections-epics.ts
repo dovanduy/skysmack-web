@@ -28,7 +28,8 @@ export class ConnectionsEpics extends RecordEpicsBase<Connection, ConnectionKey>
                 rsqlIdSelector: 'id',
                 skysmackStore: this.skysmackStore,
                 store: this.clientsStore,
-                actions: this.clientsActions
+                actions: this.clientsActions,
+                dependencyIndexes: [0]
             }),
             ...getReadDependencies({
                 prefix: CONNECTIONS_REDUX_KEY,

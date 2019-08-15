@@ -30,7 +30,7 @@ export class ConnectionsIndexComponent extends RecordIndexComponent<ConnectionsA
     }),
     new MenuItem().asEventAction('Connect', this.connect, 'control_point', this).setShowLogic((entity: LocalObject<Connection, ConnectionKey>) => {
       if (entity.object.client && entity.object.client.object.online) {
-        if (entity.object.status == TerminalStatus.Closed || entity.object.status == TerminalStatus.Disconnected || entity.object.status == TerminalStatus.Unknown) {
+        if (entity.object.status == TerminalStatus.Disconnected) {
           return true;
         }
       }
@@ -38,7 +38,7 @@ export class ConnectionsIndexComponent extends RecordIndexComponent<ConnectionsA
     }),
     new MenuItem().asEventAction('Open', this.open, 'check', this).setShowLogic((entity: LocalObject<Connection, ConnectionKey>) => {
       if (entity.object.client && entity.object.client.object.online) {
-        if (entity.object.status == TerminalStatus.Closed || entity.object.status == TerminalStatus.Disconnected || entity.object.status == TerminalStatus.Connected || entity.object.status == TerminalStatus.Unknown) {
+        if (entity.object.status == TerminalStatus.Disconnected || entity.object.status == TerminalStatus.Connected) {
           return true;
         }
       }
@@ -54,7 +54,7 @@ export class ConnectionsIndexComponent extends RecordIndexComponent<ConnectionsA
     }),
     new MenuItem().asEventAction('Disconnect', this.disconnect, 'cancel', this).setShowLogic((entity: LocalObject<Connection, ConnectionKey>) => {
       if (entity.object.client && entity.object.client.object.online) {
-        if (entity.object.status == TerminalStatus.Open || entity.object.status == TerminalStatus.Connected || entity.object.status == TerminalStatus.Closed) {
+        if (entity.object.status == TerminalStatus.Open || entity.object.status == TerminalStatus.Connected) {
           return true;
         }
       }

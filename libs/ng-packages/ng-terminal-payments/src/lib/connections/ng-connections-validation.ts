@@ -5,19 +5,15 @@ import { CONNECTIONS_AREA_KEY } from '@skysmack/packages-terminal-payments';
 
 export class NgConnectionsValidation extends Validation {
     public formErrors = {
-        name: '',
-        description: '',
-        online: ''
+        clientId: '',
+        terminalId: '',
     };
 
     public validationMessages: StrIndex<{}> = {
-        name: {
+        clientId: {
             required: '',
         },
-        description: {
-            required: '',
-        },
-        online: {
+        terminalId: {
             required: '',
         }
     };
