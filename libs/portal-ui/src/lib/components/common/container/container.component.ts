@@ -43,9 +43,9 @@ export class ContainerComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
-    this.path = this.router.url;
+    this.path = this.router.url;    
 
-    this.router.events.pipe(
+    this.subscriptionHandler.register(this.router.events.pipe(
       filter(event => event instanceof NavigationEnd),
       map(() => {
         if (this.activatedRoute.firstChild) {
@@ -56,7 +56,7 @@ export class ContainerComponent implements OnInit, OnDestroy {
           this.editorNavService.hideEditorNav();
         }
       })
-    ).subscribe();
+    ).subscribe());
 
     if (this.activatedRoute.firstChild) {
       setTimeout(() => {
