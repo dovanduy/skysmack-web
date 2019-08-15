@@ -37,4 +37,10 @@ export class CommercialUsersService {
             catchError((error) => of(error))
         );
     }
+
+    public delete(id: string): Observable<HttpSuccessResponse | HttpErrorResponse> {
+        return this.http.delete<PartnerUser>(`${this.apiDomain.domain}/identity/users/${id}`, { observe: 'response' }).pipe(
+            catchError((error) => of(error))
+        );
+    }
 }

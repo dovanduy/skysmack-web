@@ -1,4 +1,10 @@
-<ng-container *ngIf="user$ | async as user">
-    <h3>{{ user.userName }}</h3>
-    <p>{{ 'COMMERCIAL_USERS.EMAIL' | translate }} {{ user.email }}</p>
-</ng-container>
+<div class="wrapper">
+    <mat-card>
+
+        <ng-container *ngIf="user$ | async as user">
+            <h3>{{ user.userName }}</h3>
+            <p>{{ 'COMMERCIAL_USERS.EMAIL' | translate }} {{ user.email }}</p>
+        </ng-container>
+
+    </mat-card>
+</div>
