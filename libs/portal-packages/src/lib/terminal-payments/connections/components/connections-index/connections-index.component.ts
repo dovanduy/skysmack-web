@@ -47,6 +47,14 @@ export class ConnectionsIndexComponent extends RecordIndexComponent<ConnectionsA
       }
       return false;
     }),
+    new MenuItem().asEventAction('Abort', this.abort, 'cancel', this).setShowLogic((entity: LocalObject<Connection, ConnectionKey>) => {
+      if (entity.object.client && entity.object.client.object.online) {
+        if (entity.object.status !== TerminalStatus.Disconnected) {
+          return true;
+        }
+      }
+      return false;
+    }),
     new MenuItem().asEventAction('Disconnect', this.disconnect, 'cancel', this).setShowLogic((entity: LocalObject<Connection, ConnectionKey>) => {
       if (entity.object.client && entity.object.client.object.online) {
         if (entity.object.status == TerminalStatus.Open || entity.object.status == TerminalStatus.Connected) {
@@ -91,6 +99,10 @@ export class ConnectionsIndexComponent extends RecordIndexComponent<ConnectionsA
 
   protected close(_this: ConnectionsIndexComponent, value: LocalObject<Connection, ConnectionKey>) {
     _this.requests.close(_this.packagePath, value).pipe(take(1)).subscribe();
+  }
+
+  protected abort(_this: ConnectionsIndexComponent, value: LocalObject<Connection, ConnectionKey>) {
+    _this.requests.abort(_this.packagePath, value).pipe(take(1)).subscribe();
   }
 
   protected disconnect(_this: ConnectionsIndexComponent, value: LocalObject<Connection, ConnectionKey>) {
