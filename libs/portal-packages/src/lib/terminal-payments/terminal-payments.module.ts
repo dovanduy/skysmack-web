@@ -5,7 +5,7 @@ import { TerminalPaymentsRoutingModule } from './terminal-payments-routing.modul
 import { HttpClientModule } from '@angular/common/http';
 import { NgTerminalPaymentsModule } from '@skysmack/ng-terminal-payments';
 import { PortalUiModule, MenuItemActionProviders, NgMenuProviders } from '@skysmack/portal-ui';
-import { terminalsComponents } from './terminals/components/terminals-components';
+import { terminalsComponents, terminalsEntryComponents } from './terminals/components/terminals-components';
 import { terminalPaymentsIndexComponents } from './components/teminal-payments-index-components';
 import { NgInvoicesTerminalPaymentsMenuItemActionProvider } from './ng-invoices-terminal-payments-menu-item-action-provider';
 import { InvoicesTypeId } from '@skysmack/package-types';
@@ -41,7 +41,7 @@ import { NgTerminalReceiptsMenuProvider } from './terminal-payment-receipts/ng-t
     ...terminalReceiptsComponents
   ],
   entryComponents: [
-    TerminalsPayComponent
+    ...terminalsEntryComponents
   ],
   providers: []
 })

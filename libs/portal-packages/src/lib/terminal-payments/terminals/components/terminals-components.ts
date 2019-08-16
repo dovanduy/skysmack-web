@@ -32,3 +32,8 @@ export const terminalsComponents: any[] = [
   TerminalsProcessComponent,
   TerminalsActionsComponent
 ];
+
+export const terminalsEntryComponents = [
+  TerminalsActionsComponent,
+  TerminalsPayComponent
+];

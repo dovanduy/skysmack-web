@@ -9,6 +9,8 @@ import { NgConnectionsActions, NgConnectionsStore, NgConnectionsRequests } from 
 import { LocalObject } from '@skysmack/framework';
 import { take } from 'rxjs/operators';
 import { RecordIndexComponent } from '@skysmack/portal-fields';
+import { MatDialog } from '@angular/material/dialog';
+import { TerminalsActionsComponent } from '../../../terminals';
 
 @Component({
   selector: 'ss-connections-index',
@@ -65,7 +67,8 @@ export class ConnectionsIndexComponent extends RecordIndexComponent<ConnectionsA
     public fieldsConfig: NgConnectionsFieldsConfig,
     public title: EntityComponentPageTitle,
     public menuItemActionProviders: MenuItemActionProviders,
-    public requests: NgConnectionsRequests
+    public requests: NgConnectionsRequests,
+    public dialog: MatDialog
   ) {
     super(router, activatedRoute, actions, redux, store, fieldsConfig, menuItemActionProviders, title);
   }
@@ -75,9 +78,7 @@ export class ConnectionsIndexComponent extends RecordIndexComponent<ConnectionsA
   }
 
   protected terminalActions(_this: ConnectionsIndexComponent, value: LocalObject<Connection, ConnectionKey>) {
-    const terminalId = value.object.id.terminalId;
-    const clientId = value.object.id.clientId;
-    _this.router.navigate([_this.packagePath, 'terminals', 'actions', terminalId, clientId]);
+    _this.dialog.open(TerminalsActionsComponent, { data: value.object.id });
   }
 
   protected connect(_this: ConnectionsIndexComponent, value: LocalObject<Connection, ConnectionKey>) {

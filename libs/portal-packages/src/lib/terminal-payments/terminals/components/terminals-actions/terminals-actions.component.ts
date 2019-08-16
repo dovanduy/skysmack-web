@@ -1,28 +1,30 @@
-import { Component, OnInit } from '@angular/core';
-import { NgTerminalsActions, NgTerminalsStore, NgTerminalsRequests, NgConnectionsStore, NgConnectionsActions, NgConnectionsRequests } from '@skysmack/ng-terminal-payments';
+import { Component, OnInit, Inject, AfterViewInit } from '@angular/core';
+import { NgTerminalsActions, NgTerminalsStore, NgTerminalsRequests, NgConnectionsStore, NgConnectionsRequests } from '@skysmack/ng-terminal-payments';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EditorNavService } from '@skysmack/portal-ui';
 import { TerminalsAppState, Admin, TerminalStatus, Connection, ConnectionKey } from '@skysmack/packages-terminal-payments';
 import { SelectFieldOption } from '@skysmack/ng-dynamic-forms';
 import { BaseComponent } from '@skysmack/portal-fields';
-import { tap, map, switchMap, take } from 'rxjs/operators';
-import { Observable, combineLatest } from 'rxjs';
+import { tap, map, switchMap, take, debounceTime, delay } from 'rxjs/operators';
+import { Observable, combineLatest, of } from 'rxjs';
 import { GlobalProperties, LocalObject } from '@skysmack/framework';
 import { NgClientsStore } from '@skysmack/ng-identities';
 import { getPackageDendencyAsStream } from '@skysmack/ng-framework';
 import { Client } from '@skysmack/packages-identities';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'ss-terminals-actions',
   templateUrl: './terminals-actions.component.html',
   styleUrls: ['./terminals-actions.component.scss']
 })
-export class TerminalsActionsComponent extends BaseComponent<TerminalsAppState, unknown> implements OnInit {
+export class TerminalsActionsComponent extends BaseComponent<TerminalsAppState, unknown> implements OnInit, AfterViewInit {
   private admin$: Observable<Admin>;
   private client$: Observable<LocalObject<Client, string>>;
   private connection$: Observable<LocalObject<Connection, ConnectionKey>>;
 
+  public ready: boolean;
   public selectedOption: any;
   public message: string;
   public clientOnline$: Observable<boolean>;
@@ -115,21 +117,28 @@ export class TerminalsActionsComponent extends BaseComponent<TerminalsAppState, 
     public skysmackStore: NgSkysmackStore,
     public store: NgTerminalsStore,
     public connectionsStore: NgConnectionsStore,
-    public connectionsRequests: NgConnectionsRequests
+    public connectionsRequests: NgConnectionsRequests,
+    public dialogRef: MatDialogRef<TerminalsActionsComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: ConnectionKey
   ) {
     super(router, activatedRoute, skysmackStore);
   }
 
   ngOnInit() {
     super.ngOnInit();
+    const connectionKey$ = of(this.data);
 
-    const params$ = this.activatedRoute.params as Observable<{ terminalId: number, clientId: string }>;
-
-    this.setClient$(params$);
-    this.setConnection$(params$);
-    this.setAdmin$(params$);
+    this.setClient$(connectionKey$);
+    this.setConnection$(connectionKey$);
+    this.setAdmin$(connectionKey$);
     this.setClientOnline$();
     this.setOnlineAndConnected$();
+  }
+
+  ngAfterViewInit() {
+    setTimeout(() => {
+      this.ready = true;
+    }, 0);
   }
 
   public connect(): void {
@@ -149,7 +158,7 @@ export class TerminalsActionsComponent extends BaseComponent<TerminalsAppState, 
         }),
         tap((response) => {
           if (response.ok) {
-            this.router.navigate([this.packagePath, 'connections'])
+            this.dialogRef.close();
           } else {
             // Error
             this.message = 'Something went wrong. Please try again.';
@@ -168,16 +177,23 @@ export class TerminalsActionsComponent extends BaseComponent<TerminalsAppState, 
     return false;
   }
 
-  private setClient$(params$: Observable<{ terminalId: number; clientId: string; }>): void {
-    this.client$ = combineLatest(
-      getPackageDendencyAsStream(this.skysmackStore, this.packagePath, [1]),
-      params$).pipe(
-        switchMap(([identitiesPackage, params]) => this.clientStore.getSingle(identitiesPackage.object.path, params.clientId))
-      );
+  public close() {
+    this.dialogRef.close();
   }
 
-  private setAdmin$(params$: Observable<{ terminalId: number; clientId: string; }>): void {
-    this.admin$ = params$.pipe(
+  private setClient$(connectionKey$: Observable<ConnectionKey>): void {
+    this.client$ = combineLatest(
+      getPackageDendencyAsStream(this.skysmackStore, this.packagePath, [0]),
+      connectionKey$
+    ).pipe(
+      delay(0),
+      switchMap(([identitiesPackage, params]) => this.clientStore.getSingle(identitiesPackage.object.path, params.clientId))
+    );
+  }
+
+  private setAdmin$(connectionKey$: Observable<ConnectionKey>): void {
+    this.admin$ = connectionKey$.pipe(
+      delay(0),
       map(params => new Admin({
         terminalId: params.terminalId,
         clientId: params.clientId
@@ -187,15 +203,22 @@ export class TerminalsActionsComponent extends BaseComponent<TerminalsAppState, 
 
   private setOnlineAndConnected$(): void {
     this.onlineAndConnected$ = combineLatest(this.clientOnline$, this.connection$).pipe(
+      delay(0),
       map(([clientOnline, connection]) => (clientOnline && (connection.object.status === TerminalStatus.Connected)))
     );
   }
 
   private setClientOnline$(): void {
-    this.clientOnline$ = this.client$.pipe(map(client => client.object.online));
+    this.clientOnline$ = this.client$.pipe(
+      delay(0),
+      map(client => client.object.online)
+    );
   }
 
-  private setConnection$(params$: Observable<{ terminalId: number; clientId: string; }>): void {
-    this.connection$ = params$.pipe(switchMap(params => this.connectionsStore.getSingle(this.packagePath, params)));
+  private setConnection$(connectionKey$: Observable<ConnectionKey>): void {
+    this.connection$ = connectionKey$.pipe(
+      delay(0),
+      switchMap(params => this.connectionsStore.getSingle(this.packagePath, params))
+    );
   }
 }
