@@ -20,8 +20,7 @@ export class NgApplicationsStore extends NgRecordStore<ApplicationsAppState, App
             defined(),
             map(applicationsRoles => applicationsRoles[packagePath]),
             defined(),
-            map(applicationRolesDictionary => applicationRolesDictionary[id]),
-            defined()
+            map(applicationRolesDictionary => applicationRolesDictionary[id])
         );
     }
 }

@@ -2,7 +2,7 @@
     <!-- CURRENT APPLICATION ROLES -->
     <h3>Applications current roles</h3>
     <ng-container *ngIf="applicationRoles$ | async as applicationRoles">
-        <ng-container *ngIf="applicationRoles.length > 0; else noApplicationRoles">
+        <ng-container *ngIf="applicationRoles && applicationRoles.length > 0; else noApplicationRoles">
             <ng-container *ngFor="let role of applicationRoles">
                 <div>
                     {{ role }} <button mat-raised-button color="primary" (click)="removeRole(role)">{{
@@ -22,7 +22,7 @@
     <h3>Available roles</h3>
     <p>{{ message }}</p>
     <ng-container *ngIf="roles$ | async as roles">
-        <ng-container *ngIf="roles.length > 0; else noAvailableRoles">
+        <ng-container *ngIf="roles && roles.length > 0; else noAvailableRoles">
             <ng-container *ngFor="let role of roles trackBy: trackById">
                 {{ role.object.name }} <button mat-raised-button color="primary" (click)="addRole(role)">{{
                         'APPLICATIONS.ROLES.ADD' | translate }}</button><br /><br />
