@@ -13,45 +13,45 @@
         </span>
       </h3>
       <mat-divider class="top-divider"></mat-divider>
-      <mat-list-item>        
+      <mat-list-item>
         <a routerLink="/why" class="menu" (click)="sidenav.close()">
           Why skysmack
         </a>
       </mat-list-item>
       <mat-list-item>
-          <a routerLink="/solutions" class="menu" (click)="sidenav.close()">
-            Solutions
-          </a>
+        <a routerLink="/solutions" class="menu" (click)="sidenav.close()">
+          Solutions
+        </a>
       </mat-list-item>
-      <mat-list-item> 
-          <a routerLink="/products" class="menu" (click)="sidenav.close()">
-            Products
-          </a>
+      <mat-list-item>
+        <a routerLink="/products" class="menu" (click)="sidenav.close()">
+          Products
+        </a>
       </mat-list-item>
-      <mat-list-item>  
-          <a routerLink="/pricings" class="menu" (click)="sidenav.close()">
-            Pricings
-          </a>
+      <mat-list-item>
+        <a routerLink="/pricings" class="menu" (click)="sidenav.close()">
+          Pricings
+        </a>
       </mat-list-item>
-      <mat-list-item> 
-          <a routerLink="/getting-started"  (click)="sidenav.close()">
-            Getting started
-          </a>
+      <mat-list-item>
+        <a routerLink="/getting-started" (click)="sidenav.close()">
+          Getting started
+        </a>
       </mat-list-item>
       <mat-divider></mat-divider>
-      <mat-list-item> 
-          <a routerLink="/Help" (click)="sidenav.close()">
-            Help
-          </a>
+      <mat-list-item>
+        <a routerLink="/Help" (click)="sidenav.close()">
+          Help
+        </a>
       </mat-list-item>
-      <mat-list-item> 
-          <a [routerLink]="['account', 'login']" (click)="sidenav.close()">
-            Sign in
-          </a>
+      <mat-list-item>
+        <a [routerLink]="['account', 'login']" (click)="sidenav.close()">
+          Sign in
+        </a>
       </mat-list-item>
     </mat-list>
   </mat-sidenav>
-  
+
   <nav class="docs-navbar-header mat-elevation-z3">
     <nav class="mobile-only toggle-menu">
       <button mat-icon-button (click)="sidenav.toggle()">
@@ -90,25 +90,28 @@
       <a routerLink="/help" class="menu">
         Help
       </a>
-      <a [routerLink]="['account', 'login']" class="menu">
+      <a [routerLink]="['account', 'login']" class="menu" *isAnonymous>
         Sign in
+      </a>
+      <a [routerLink]="['account', 'dashboard']" class="menu" *isAuthenticated>
+        Portal
       </a>
     </nav>
   </nav>
 
   <div class="content-wrapper">
     <router-outlet></router-outlet>
-    
+
     <nav class="footer">
-        <div class="container">
-          <a routerLink="/">
-            <img class="skysmack-logo" src="../assets/icons/android-chrome-512x512.png" />
-          </a>
-          <a class="link" routerLink="/" aria-label="Skysmack">
-            <span class="skysmack-logo">sky<span>smack</span></span>
-          </a>
-        </div>
-      </nav>
+      <div class="container">
+        <a routerLink="/">
+          <img class="skysmack-logo" src="../assets/icons/android-chrome-512x512.png" />
+        </a>
+        <a class="link" routerLink="/" aria-label="Skysmack">
+          <span class="skysmack-logo">sky<span>smack</span></span>
+        </a>
+      </div>
+    </nav>
   </div>
 
 </mat-sidenav-container>

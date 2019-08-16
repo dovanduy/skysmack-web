@@ -25,14 +25,15 @@ import { PricingsComponent } from './pages/pricings/pricings.component';
 import { GettingStartedComponent } from './pages/getting-started/getting-started.component';
 import { NgTranslationModule, LanguageService } from '@skysmack/ng-translation';
 import { AuthenticatedLoadStrategy } from './authenticated-load-strategy';
+import { CommercialUiPartnersModule } from '@skysmack/commercial-ui-partners';
 
 @NgModule({
-  declarations: [AppComponent, StartComponent, WhyComponent, SolutionsComponent, ProductsComponent, PricingsComponent, GettingStartedComponent],
   imports: [
     BrowserModule,
     HttpClientModule,
     NgOAuth2Module,
     NgTranslationModule,
+    CommercialUiPartnersModule,
     RouterModule.forRoot([
       { path: 'account', loadChildren: './packages/commercial_account_wrapper.module#CommercialAccountWrapperModule' },
       { path: 'tenants', loadChildren: './packages/commercial_tenants_wrapper.module#CommercialTenantsWrapperModule' },
@@ -67,6 +68,15 @@ import { AuthenticatedLoadStrategy } from './authenticated-load-strategy';
     NgReduxModule,
     NgReduxRouterModule.forRoot(),
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
+  ],
+  declarations: [
+    AppComponent,
+    StartComponent,
+    WhyComponent,
+    SolutionsComponent,
+    ProductsComponent,
+    PricingsComponent,
+    GettingStartedComponent
   ],
   providers: [
     ...commercialApplicationStartup,

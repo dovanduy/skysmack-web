@@ -34,6 +34,7 @@ import { directives } from './directives/directives';
   exports: [
     NgTranslationModule,
     MaterialModule,
+    ...directives,
     ...commonComponents,
     ...displayComponents
   ],

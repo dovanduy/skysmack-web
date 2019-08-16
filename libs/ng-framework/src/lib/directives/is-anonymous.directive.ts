@@ -1,8 +1,7 @@
 import { Directive, OnInit, TemplateRef, ViewContainerRef, OnDestroy } from '@angular/core';
 import { SubscriptionLike } from 'rxjs';
-import { NgAuthenticationStore } from '@skysmack/ng-framework';
 import { map } from 'rxjs/operators';
-
+import { NgAuthenticationStore } from '../stores/ng-authentication-store';
 
 // tslint:disable-next-line:directive-selector
 @Directive({ selector: '[isAnonymous]' })
