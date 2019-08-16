@@ -20,6 +20,10 @@ export function skysmackReducer(state = new SkysmackState(), action: any): Skysm
     const newState = Object.assign({}, state);
 
     switch (action.type) {
+        case SkysmackActions.GET_SKYSMACK: {
+            newState.requestStatus = undefined;
+            return newState;
+        }
         case SkysmackActions.GET_SKYSMACK_SUCCESS: {
             newState.skysmack = action.payload;
             newState.requestStatus = new SkysmackRequestStatus({ errorCode: action.meta.response.status, error: action.meta.response.statusText });
