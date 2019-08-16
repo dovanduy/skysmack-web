@@ -143,8 +143,8 @@ export class TerminalsActionsComponent extends BaseComponent<TerminalsAppState, 
 
   public connect(): void {
     this.connection$.pipe(
+      take(1),
       switchMap(connection => this.connectionsRequests.connect(this.packagePath, connection)),
-      take(1)
     ).subscribe();
   }
 
