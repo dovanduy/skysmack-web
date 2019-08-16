@@ -1,20 +1,22 @@
 import { Injectable } from '@angular/core';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
-import { MenuArea, safeHasValue, Package, AllowAccessFor, MenuProvider, TOPBAR, SIDEBAR } from '@skysmack/framework';
+import { MenuArea, safeHasValue, Package, AllowAccessFor, MenuProvider, TOPBAR, SIDEBAR, SPEEDDIAL } from '@skysmack/framework';
 import { MenuItem } from '@skysmack/framework';
 import { IdentitiesPermissions } from '@skysmack/packages-identities';
 import { map, switchMap } from 'rxjs/operators';
 import { IdentitiesTypeId } from '@skysmack/package-types';
 import { Skysmack } from '@skysmack/packages-skysmack-core';
 import { Guid } from 'guid-typescript';
-import { of, Observable, pipe, combineLatest } from 'rxjs';
+import { Observable } from 'rxjs';
 import { IdentitiesIndexComponent } from './components/identities-index/identities-index.component';
-import { getCombinedMenuEntries, getMenuEntries } from '@skysmack/ng-framework';
+import { getCombinedMenuEntries, getMenuEntries, setBackButton } from '@skysmack/ng-framework';
+import { UsersIndexComponent } from './identity-users/components/users-index/users-index.component';
 
 @Injectable({ providedIn: 'root' })
 export class NgIdentitiesIndexMenuProvider implements MenuProvider {
     public id = Guid.create().toString();
-    public translationPrefix = 'IDENTITIES.INDEX.';
+    public identitiesTranslationPrefix = 'IDENTITIES.INDEX.';
+    public usersTranslationPrefix = 'USERS.INDEX.';
 
     constructor(
         public store: NgSkysmackStore,
@@ -30,6 +32,14 @@ export class NgIdentitiesIndexMenuProvider implements MenuProvider {
                 this.getIdentitiesIndexMenuAreas,
                 this.store
             ),
+            getMenuEntries<MenuArea>(
+                packagePath,
+                IdentitiesTypeId,
+                componentKey,
+                UsersIndexComponent.COMPONENT_KEY,
+                this.getUsersMenuAreas,
+                this.store
+            )
         );
     };
 
@@ -42,31 +52,40 @@ export class NgIdentitiesIndexMenuProvider implements MenuProvider {
                 IdentitiesIndexComponent.COMPONENT_KEY,
                 this.getIdentitiesIndexMenuItems,
                 this.store
-            ).pipe(switchMap(menuItems => this.setIdentitiesAuthenticatedMenuItems(menuItems)))
+            ).pipe(switchMap(menuItems => this.setIdentitiesAuthenticatedMenuItems(menuItems))),
+            getMenuEntries<MenuItem>(
+                packagePath,
+                IdentitiesTypeId,
+                componentKey,
+                UsersIndexComponent.COMPONENT_KEY,
+                this.getUsersMenuItems,
+                this.store
+            )
         );
     };
 
+    //#region IdentitiesIndex
     private getIdentitiesIndexMenuAreas = (): MenuArea[] => {
         return [
             new MenuArea({
                 area: 'manage',
-                translationPrefix: this.translationPrefix,
+                translationPrefix: this.identitiesTranslationPrefix,
                 order: 2
             }),
             new MenuArea({
                 area: 'account',
-                translationPrefix: this.translationPrefix,
+                translationPrefix: this.identitiesTranslationPrefix,
                 order: 3
             }),
             new MenuArea({
                 area: 'settings',
-                translationPrefix: this.translationPrefix,
+                translationPrefix: this.identitiesTranslationPrefix,
                 order: 3
             }),
             new MenuArea({
                 area: 'identities',
                 icon: 'account_circle',
-                translationPrefix: this.translationPrefix,
+                translationPrefix: this.identitiesTranslationPrefix,
                 order: 1,
             })
         ];
@@ -76,7 +95,7 @@ export class NgIdentitiesIndexMenuProvider implements MenuProvider {
         return [
             new MenuItem({
                 url: 'roles',
-                displayName: this.translationPrefix + 'ROLES',
+                displayName: this.identitiesTranslationPrefix + 'ROLES',
                 area: 'manage',
                 order: 1,
                 icon: 'group_add',
@@ -87,7 +106,7 @@ export class NgIdentitiesIndexMenuProvider implements MenuProvider {
             }),
             new MenuItem({
                 url: 'users',
-                displayName: this.translationPrefix + 'USERS',
+                displayName: this.identitiesTranslationPrefix + 'USERS',
                 area: 'manage',
                 order: 2,
                 icon: 'group_add',
@@ -98,7 +117,7 @@ export class NgIdentitiesIndexMenuProvider implements MenuProvider {
             }),
             new MenuItem({
                 url: 'applications',
-                displayName: this.translationPrefix + 'APPLICATIONS',
+                displayName: this.identitiesTranslationPrefix + 'APPLICATIONS',
                 area: 'manage',
                 order: 3,
                 icon: 'group_add',
@@ -109,7 +128,7 @@ export class NgIdentitiesIndexMenuProvider implements MenuProvider {
             }),
             new MenuItem({
                 url: 'clients',
-                displayName: this.translationPrefix + 'CLIENTS',
+                displayName: this.identitiesTranslationPrefix + 'CLIENTS',
                 area: 'manage',
                 order: 2,
                 icon: 'description',
@@ -119,7 +138,7 @@ export class NgIdentitiesIndexMenuProvider implements MenuProvider {
             }),
             new MenuItem({
                 url: 'change-password',
-                displayName: this.translationPrefix + 'CHANGE_PASSWORD',
+                displayName: this.identitiesTranslationPrefix + 'CHANGE_PASSWORD',
                 area: 'account',
                 order: 1,
                 icon: 'group_add',
@@ -127,7 +146,7 @@ export class NgIdentitiesIndexMenuProvider implements MenuProvider {
             }),
             new MenuItem({
                 url: 'forgot-password',
-                displayName: this.translationPrefix + 'FORGOT_PASSWORD',
+                displayName: this.identitiesTranslationPrefix + 'FORGOT_PASSWORD',
                 area: 'account',
                 order: 1,
                 icon: 'group_add',
@@ -135,7 +154,7 @@ export class NgIdentitiesIndexMenuProvider implements MenuProvider {
             }),
             new MenuItem({
                 url: 'confirm-email',
-                displayName: this.translationPrefix + 'CONFIRM_EMAIL',
+                displayName: this.identitiesTranslationPrefix + 'CONFIRM_EMAIL',
                 area: 'account',
                 order: 1,
                 icon: 'group_add',
@@ -143,7 +162,7 @@ export class NgIdentitiesIndexMenuProvider implements MenuProvider {
             }),
             new MenuItem({
                 url: 'settings/lockout',
-                displayName: this.translationPrefix + 'AVAILABLE_SETTINGS.LOCKOUT',
+                displayName: this.identitiesTranslationPrefix + 'AVAILABLE_SETTINGS.LOCKOUT',
                 area: 'settings',
                 order: 1,
                 icon: 'group_add',
@@ -154,7 +173,7 @@ export class NgIdentitiesIndexMenuProvider implements MenuProvider {
             }),
             new MenuItem({
                 url: 'settings/user',
-                displayName: this.translationPrefix + 'AVAILABLE_SETTINGS.USER',
+                displayName: this.identitiesTranslationPrefix + 'AVAILABLE_SETTINGS.USER',
                 area: 'settings',
                 order: 2,
                 icon: 'group_add',
@@ -165,7 +184,7 @@ export class NgIdentitiesIndexMenuProvider implements MenuProvider {
             }),
             new MenuItem({
                 url: 'settings/password',
-                displayName: this.translationPrefix + 'AVAILABLE_SETTINGS.PASSWORD',
+                displayName: this.identitiesTranslationPrefix + 'AVAILABLE_SETTINGS.PASSWORD',
                 area: 'settings',
                 order: 2,
                 icon: 'group_add',
@@ -176,7 +195,7 @@ export class NgIdentitiesIndexMenuProvider implements MenuProvider {
             }),
             new MenuItem({
                 url: 'settings/sign-in',
-                displayName: this.translationPrefix + 'AVAILABLE_SETTINGS.SIGNIN',
+                displayName: this.identitiesTranslationPrefix + 'AVAILABLE_SETTINGS.SIGNIN',
                 area: 'settings',
                 order: 2,
                 icon: 'group_add',
@@ -205,4 +224,39 @@ export class NgIdentitiesIndexMenuProvider implements MenuProvider {
             })
         );
     }
+    //#endregion
+
+    //#region Users
+    private getUsersMenuAreas = () => {
+        return [
+            new MenuArea({
+                area: 'actions',
+                translationPrefix: this.usersTranslationPrefix,
+                order: 1
+            }),
+            new MenuArea({
+                area: 'manage',
+                translationPrefix: this.usersTranslationPrefix,
+                order: 2
+            })
+        ];
+    };
+
+    private getUsersMenuItems = (packagePath: string): MenuItem[] => {
+        return [
+            new MenuItem({
+                url: 'create',
+                displayName: this.usersTranslationPrefix + 'CREATE',
+                area: 'actions',
+                order: 1,
+                icon: 'add',
+                permissions: [
+                    //??
+                ],
+                providedIn: [SIDEBAR, SPEEDDIAL]
+            }),
+            setBackButton(packagePath)
+        ];
+    };
+    //#endregion
 }
