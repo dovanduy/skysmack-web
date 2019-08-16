@@ -126,7 +126,7 @@ export class NgTerminalPaymentsIndexMenuProvider implements MenuProvider {
     };
 
     //#region TerminalsIndex
-    private getTerminalPaymentsMenuAreas = () => {
+    private getTerminalPaymentsMenuAreas = (): MenuArea[] => {
         return [
             new MenuArea({
                 area: 'manage',

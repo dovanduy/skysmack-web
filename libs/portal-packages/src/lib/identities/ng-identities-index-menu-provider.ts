@@ -3,11 +3,13 @@ import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { MenuArea, safeHasValue, Package, AllowAccessFor, MenuProvider, TOPBAR, SIDEBAR } from '@skysmack/framework';
 import { MenuItem } from '@skysmack/framework';
 import { IdentitiesPermissions } from '@skysmack/packages-identities';
-import { map } from 'rxjs/operators';
+import { map, switchMap } from 'rxjs/operators';
 import { IdentitiesTypeId } from '@skysmack/package-types';
 import { Skysmack } from '@skysmack/packages-skysmack-core';
 import { Guid } from 'guid-typescript';
-import { of, Observable } from 'rxjs';
+import { of, Observable, pipe, combineLatest } from 'rxjs';
+import { IdentitiesIndexComponent } from './components/identities-index/identities-index.component';
+import { getCombinedMenuEntries, getMenuEntries } from '@skysmack/ng-framework';
 
 @Injectable({ providedIn: 'root' })
 export class NgIdentitiesIndexMenuProvider implements MenuProvider {
@@ -19,68 +21,58 @@ export class NgIdentitiesIndexMenuProvider implements MenuProvider {
     ) { }
 
     public getMenuAreas(packagePath: string, componentKey: string): Observable<MenuArea[]> {
-        if (componentKey === 'identities-index') {
-            return of([
-                new MenuArea({
-                    area: 'actions',
-                    translationPrefix: this.translationPrefix,
-                    order: 1
-                }),
-                new MenuArea({
-                    area: 'manage',
-                    translationPrefix: this.translationPrefix,
-                    order: 2
-                }),
-                new MenuArea({
-                    area: 'account',
-                    translationPrefix: this.translationPrefix,
-                    order: 3
-                }),
-                new MenuArea({
-                    area: 'settings',
-                    translationPrefix: this.translationPrefix,
-                    order: 3
-                }),
-                new MenuArea({
-                    area: 'identities',
-                    icon: 'account_circle',
-                    translationPrefix: this.translationPrefix,
-                    order: 1,
-                })
-            ])
-        } else {
-            return of([]);
-        }
-    };
-
-    public getMenuItems(packagePath: string, componentKey: string): Observable<MenuItem[]> {
-        return this.store.getSkysmack().pipe(
-            safeHasValue(),
-            map((currentTenant: Skysmack) => {
-                const identityPackages = currentTenant.packages
-                    .filter((_package: Package) => _package.type === IdentitiesTypeId);
-
-                let menuItems: MenuItem[] = [];
-
-                // Only show if in the right place
-                if (identityPackages.map(p => p.path).includes(packagePath) && componentKey === 'identities-index') {
-                    menuItems = this.identitiesIndexDefaultMenuItems();
-                }
-
-                // Always
-                return menuItems.concat(identityPackages
-                    .map(_package => new MenuItem({
-                        area: 'identities',
-                        allowAccessFor: AllowAccessFor.authenticated,
-                        providedIn: [TOPBAR]
-                    }).asUrlAction(_package.path, _package.name, 'account_circle'))
-                );
-            }
-            )
+        return getCombinedMenuEntries<MenuArea>(
+            getMenuEntries<MenuArea>(
+                packagePath,
+                IdentitiesTypeId,
+                componentKey,
+                IdentitiesIndexComponent.COMPONENT_KEY,
+                this.getIdentitiesIndexMenuAreas,
+                this.store
+            ),
         );
     };
 
-    private identitiesIndexDefaultMenuItems(): MenuItem[] {
+    public getMenuItems(packagePath: string, componentKey: string): Observable<MenuItem[]> {
+        return getCombinedMenuEntries<MenuItem>(
+            getMenuEntries<MenuItem>(
+                packagePath,
+                IdentitiesTypeId,
+                componentKey,
+                IdentitiesIndexComponent.COMPONENT_KEY,
+                this.getIdentitiesIndexMenuItems,
+                this.store
+            ).pipe(switchMap(menuItems => this.setIdentitiesAuthenticatedMenuItems(menuItems)))
+        );
+    };
+
+    private getIdentitiesIndexMenuAreas = (): MenuArea[] => {
+        return [
+            new MenuArea({
+                area: 'manage',
+                translationPrefix: this.translationPrefix,
+                order: 2
+            }),
+            new MenuArea({
+                area: 'account',
+                translationPrefix: this.translationPrefix,
+                order: 3
+            }),
+            new MenuArea({
+                area: 'settings',
+                translationPrefix: this.translationPrefix,
+                order: 3
+            }),
+            new MenuArea({
+                area: 'identities',
+                icon: 'account_circle',
+                translationPrefix: this.translationPrefix,
+                order: 1,
+            })
+        ];
+    }
+
+    private getIdentitiesIndexMenuItems = (): MenuItem[] => {
         return [
             new MenuItem({
                 url: 'roles',
@@ -194,5 +186,23 @@ export class NgIdentitiesIndexMenuProvider implements MenuProvider {
                 providedIn: [SIDEBAR]
             })
         ];
+    }
+
+    private setIdentitiesAuthenticatedMenuItems = (menuItems: MenuItem[]): Observable<MenuItem[]> => {
+        return this.store.getSkysmack().pipe(
+            safeHasValue(),
+            map((currentTenant: Skysmack) => {
+                const identityPackages = currentTenant.packages
+                    .filter((_package: Package) => _package.type === IdentitiesTypeId);
+
+                return menuItems.concat(identityPackages
+                    .map(_package => new MenuItem({
+                        area: 'identities',
+                        allowAccessFor: AllowAccessFor.authenticated,
+                        providedIn: [TOPBAR]
+                    }).asUrlAction(_package.path, _package.name, 'account_circle'))
+                );
+            })
+        );
     }
 }
