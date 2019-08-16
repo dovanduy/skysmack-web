@@ -9,6 +9,8 @@ import { BaseComponent } from '@skysmack/portal-fields';
   templateUrl: './identities-index.component.html'
 })
 export class IdentitiesIndexComponent extends BaseComponent<any, any> implements OnInit {
+  public static COMPONENT_KEY = 'identities-index';
+  public componentKey = IdentitiesIndexComponent.COMPONENT_KEY;
 
   constructor(
     public router: Router,
