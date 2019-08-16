@@ -47,7 +47,7 @@ export class ConnectionsIndexComponent extends RecordIndexComponent<ConnectionsA
       }
       return false;
     }),
-    new MenuItem().asEventAction('Abort', this.abort, 'cancel', this).setShowLogic((entity: LocalObject<Connection, ConnectionKey>) => {
+    new MenuItem().asEventAction('Abort', this.abort, 'report_problem', this).setShowLogic((entity: LocalObject<Connection, ConnectionKey>) => {
       if (entity.object.client && entity.object.client.object.online) {
         if (entity.object.status !== TerminalStatus.Disconnected) {
           return true;
