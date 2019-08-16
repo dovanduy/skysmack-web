@@ -58,7 +58,7 @@ export class TerminalsPayComponent extends RecordFormComponent<TerminalsAppState
       invoiceId$,
       this.loadedPackage$
     ).pipe(
-      map(([invoiceId, loadedPackage]) => this.invoicesActions.getSingle(loadedPackage._package.dependencies[0], invoiceId)),
+      map(([invoiceId, loadedPackage]) => this.invoicesActions.getSingle(loadedPackage._package.dependencies[1], invoiceId)),
       take(1)
     ).subscribe();
 
@@ -67,7 +67,7 @@ export class TerminalsPayComponent extends RecordFormComponent<TerminalsAppState
       invoiceId$,
       this.loadedPackage$
     ).pipe(
-      switchMap(([invoiceId, loadedPackage]) => this.invoicesStore.getSingle(loadedPackage._package.dependencies[0], invoiceId).pipe(
+      switchMap(([invoiceId, loadedPackage]) => this.invoicesStore.getSingle(loadedPackage._package.dependencies[1], invoiceId).pipe(
         switchMap(invoice => {
           return this.fieldsConfig.getFields(loadedPackage, toLocalObject({
             invoiceId: invoice.object.id,

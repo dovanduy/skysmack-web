@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { MenuItem } from '@skysmack/framework';
-import { map, switchMap, take, tap, } from 'rxjs/operators';
+import { map, switchMap } from 'rxjs/operators';
 import { Observable, combineLatest, of } from 'rxjs';
 import { StrIndex, LocalObject } from '@skysmack/framework';
 import { MenuItemActionProvider } from '@skysmack/portal-ui';
