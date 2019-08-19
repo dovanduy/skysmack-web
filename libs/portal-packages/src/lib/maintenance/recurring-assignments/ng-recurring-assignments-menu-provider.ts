@@ -12,10 +12,10 @@ import { RecurringAssignmentsIndexComponent } from './components/recurring-assig
 @Injectable({ providedIn: 'root' })
 export class NgRecurringAssignmentsMenuProvider implements MenuProvider {
     public id = Guid.create().toString();
-    public translationPrefix = 'RECURRING_ASSIGNMENTS.INDEX.';
+    private translationPrefix = 'RECURRING_ASSIGNMENTS.INDEX.';
 
     constructor(
-        public store: NgSkysmackStore
+        private store: NgSkysmackStore
     ) { }
 
     public getMenuAreas(packagePath: string, componentKey: string): Observable<MenuArea[]> {
@@ -26,7 +26,7 @@ export class NgRecurringAssignmentsMenuProvider implements MenuProvider {
         return getMenuEntries<MenuItem>(packagePath, MaintenanceTypeId, componentKey, RecurringAssignmentsIndexComponent.COMPONENT_KEY, this.getRecurringAssignmentsMenuItems, this.store);
     };
 
-    public getRecurringAssignmentsMenuAreas = () => {
+    private getRecurringAssignmentsMenuAreas = () => {
         return [
             new MenuArea({
                 area: 'actions',
@@ -41,7 +41,7 @@ export class NgRecurringAssignmentsMenuProvider implements MenuProvider {
         ];
     };
 
-    public getRecurringAssignmentsMenuItems = (packagePath: string): MenuItem[] => {
+    private getRecurringAssignmentsMenuItems = (packagePath: string): MenuItem[] => {
         return [
             new MenuItem({
                 url: 'create',

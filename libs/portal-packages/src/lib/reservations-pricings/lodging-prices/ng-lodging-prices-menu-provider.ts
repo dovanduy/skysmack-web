@@ -11,11 +11,12 @@ import { LodgingPricesIndexComponent } from './components/lodging-prices-index/l
 @Injectable({ providedIn: 'root' })
 export class NgLodgingPricesMenuProvider implements MenuProvider {
     public id = Guid.create().toString();
-    public translationPrefix = 'LODGING_PRICES.INDEX.';
+    private translationPrefix = 'LODGING_PRICES.INDEX.';
 
     constructor(
-        public store: NgSkysmackStore
+        private store: NgSkysmackStore
     ) { }
+
     public getMenuAreas(packagePath: string, componentKey: string): Observable<MenuArea[]> {
         return getMenuEntries<MenuArea>(packagePath, ReservationsPricingsTypeId, componentKey, LodgingPricesIndexComponent.COMPONENT_KEY, this.getLodgingPricesMenuAreas, this.store);
     };
@@ -24,7 +25,7 @@ export class NgLodgingPricesMenuProvider implements MenuProvider {
         return getMenuEntries<MenuItem>(packagePath, ReservationsPricingsTypeId, componentKey, LodgingPricesIndexComponent.COMPONENT_KEY, this.getLodgingPricesMenuItems, this.store);
     };
 
-    public getLodgingPricesMenuAreas = () => {
+    private getLodgingPricesMenuAreas = () => {
         return [
             new MenuArea({
                 area: 'actions',
@@ -39,7 +40,7 @@ export class NgLodgingPricesMenuProvider implements MenuProvider {
         ];
     };
 
-    public getLodgingPricesMenuItems = (packagePath: string): MenuItem[] => {
+    private getLodgingPricesMenuItems = (packagePath: string): MenuItem[] => {
         return [
             new MenuItem({
                 url: 'create',

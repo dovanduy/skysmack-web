@@ -11,11 +11,12 @@ import { LodgingsAvailabilityComponent } from './components/lodgings-availabilit
 @Injectable({ providedIn: 'root' })
 export class NgLodgingsAvailabilityMenuProvider implements MenuProvider {
     public id = Guid.create().toString();
-    public translationPrefix = 'LODGINGS.INDEX.';
+    private translationPrefix = 'LODGINGS.INDEX.';
 
     constructor(
-        public store: NgSkysmackStore
+        private store: NgSkysmackStore
     ) { }
+
     public getMenuAreas(packagePath: string, componentKey: string): Observable<MenuArea[]> {
         return getMenuEntries<MenuArea>(packagePath, LodgingsTypeId, componentKey, LodgingsAvailabilityComponent.COMPONENT_KEY, this.getLodgingsavailabilityMenuAreas, this.store);
     };
@@ -24,7 +25,7 @@ export class NgLodgingsAvailabilityMenuProvider implements MenuProvider {
         return getMenuEntries<MenuItem>(packagePath, LodgingsTypeId, componentKey, LodgingsAvailabilityComponent.COMPONENT_KEY, this.getLodgingsavailabilityMenuItems, this.store);
     };
 
-    public getLodgingsavailabilityMenuAreas = () => {
+    private getLodgingsavailabilityMenuAreas = () => {
         return [
             new MenuArea({
                 area: 'manage',
@@ -34,7 +35,7 @@ export class NgLodgingsAvailabilityMenuProvider implements MenuProvider {
         ];
     };
 
-    public getLodgingsavailabilityMenuItems = (packagePath: string): MenuItem[] => {
+    private getLodgingsavailabilityMenuItems = (packagePath: string): MenuItem[] => {
         return [
             setBackButton(packagePath)
         ]

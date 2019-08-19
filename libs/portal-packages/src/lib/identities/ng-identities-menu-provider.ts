@@ -25,7 +25,7 @@ export class NgIdentitiesMenuProvider implements MenuProvider {
     private clientsTranslationPrefix = 'CLIENTS.INDEX.';
 
     constructor(
-        public store: NgSkysmackStore,
+        private store: NgSkysmackStore,
     ) { }
 
     public getMenuAreas(packagePath: string, componentKey: string): Observable<MenuArea[]> {

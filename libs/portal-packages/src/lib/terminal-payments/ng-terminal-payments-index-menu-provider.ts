@@ -18,14 +18,14 @@ import { ConnectionsIndexComponent } from './connections/components/connections-
 export class NgTerminalPaymentsIndexMenuProvider implements MenuProvider {
     public id = Guid.create().toString();
 
-    public terminalsIndexTranslationPrefix = 'TERMINAL_PAYMENTS.INDEX.';
-    public terminalsTranslationPrefix = 'TERMINALS.INDEX.';
-    public terminalReceiptsTranslationPrefix = 'TERMINAL_RECEIPTS.INDEX.';
-    public terminalPaymentReceiptsTranslationPrefix = 'TERMINAL_PAYMENT_RECEIPTS.INDEX.';
-    public connectionsTranslationPrefix = 'CONNECTIONS.INDEX.';
+    private terminalsIndexTranslationPrefix = 'TERMINAL_PAYMENTS.INDEX.';
+    private terminalsTranslationPrefix = 'TERMINALS.INDEX.';
+    private terminalReceiptsTranslationPrefix = 'TERMINAL_RECEIPTS.INDEX.';
+    private terminalPaymentReceiptsTranslationPrefix = 'TERMINAL_PAYMENT_RECEIPTS.INDEX.';
+    private connectionsTranslationPrefix = 'CONNECTIONS.INDEX.';
 
     constructor(
-        public store: NgSkysmackStore
+        private store: NgSkysmackStore
     ) { }
 
     public getMenuAreas(packagePath: string, componentKey: string): Observable<MenuArea[]> {

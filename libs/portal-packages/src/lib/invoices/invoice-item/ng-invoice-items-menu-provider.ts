@@ -14,10 +14,10 @@ import { MatDialog } from '@angular/material/dialog';
 @Injectable({ providedIn: 'root' })
 export class NgInvoiceItemsMenuProvider implements MenuProvider {
     public id = Guid.create().toString();
-    public translationPrefix = 'INVOICE_ITEMS.INDEX.';
+    private translationPrefix = 'INVOICE_ITEMS.INDEX.';
 
     constructor(
-        public store: NgSkysmackStore,
+        private store: NgSkysmackStore,
         public dialog: MatDialog
     ) { }
 
@@ -48,7 +48,7 @@ export class NgInvoiceItemsMenuProvider implements MenuProvider {
         );
     };
 
-    public getInvoiceItemsMenuAreas = () => {
+    private getInvoiceItemsMenuAreas = () => {
         return [
             new MenuArea({
                 area: 'actions',
@@ -63,7 +63,7 @@ export class NgInvoiceItemsMenuProvider implements MenuProvider {
         ];
     }
 
-    public getInvoiceItemsMenuItems = (packagePath: string): MenuItem[] => {
+    private getInvoiceItemsMenuItems = (packagePath: string): MenuItem[] => {
         return [
             new MenuItem({
                 url: 'create',

@@ -11,10 +11,10 @@ import { AssignmentTypesIndexComponent } from './components/assignment-types-ind
 @Injectable({ providedIn: 'root' })
 export class NgAssignmentTypesMenuProvider implements MenuProvider {
     public id = Guid.create().toString();
-    public translationPrefix = 'ASSIGNMENT_TYPES.INDEX.';
+    private translationPrefix = 'ASSIGNMENT_TYPES.INDEX.';
 
     constructor(
-        public store: NgSkysmackStore
+        private store: NgSkysmackStore
     ) { }
 
     public getMenuAreas(packagePath: string, componentKey: string): Observable<MenuArea[]> {
@@ -24,8 +24,8 @@ export class NgAssignmentTypesMenuProvider implements MenuProvider {
     public getMenuItems(packagePath: string, componentKey: string): Observable<MenuItem[]> {
         return getMenuEntries<MenuItem>(packagePath, MaintenanceTypeId, componentKey, AssignmentTypesIndexComponent.COMPONENT_KEY, this.getAssignmentTypesMenuItems, this.store);
     };
-    
-    public getAssignmentTypesMenuAreas = () => {
+
+    private getAssignmentTypesMenuAreas = () => {
         return [
             new MenuArea({
                 area: 'actions',
@@ -37,10 +37,10 @@ export class NgAssignmentTypesMenuProvider implements MenuProvider {
                 translationPrefix: this.translationPrefix,
                 order: 2
             })
-       ];
+        ];
     };
 
-    public getAssignmentTypesMenuItems = (packagePath: string) => {
+    private getAssignmentTypesMenuItems = (packagePath: string) => {
         return [
             new MenuItem({
                 url: 'create',

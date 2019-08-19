@@ -12,10 +12,10 @@ import { ProductsSalesPriceIndexComponent } from './components/products-sales-pr
 @Injectable({ providedIn: 'root' })
 export class NgProductsSalesPriceMenuProvider implements MenuProvider {
     public id = Guid.create().toString();
-    public translationPrefix = 'PRODUCTS_SALES_PRICE.INDEX.';
+    private translationPrefix = 'PRODUCTS_SALES_PRICE.INDEX.';
 
     constructor(
-        public store: NgSkysmackStore
+        private store: NgSkysmackStore
     ) { }
 
     public getMenuAreas(packagePath: string, componentKey: string): Observable<MenuArea[]> {
@@ -26,7 +26,7 @@ export class NgProductsSalesPriceMenuProvider implements MenuProvider {
         return getMenuEntries<MenuItem>(packagePath, ProductsPricingsTypeId, componentKey, ProductsSalesPriceIndexComponent.COMPONENT_KEY, this.getProductsSalesPriceMenuItems, this.store);
     };
 
-    public getProductsSalesPriceMenuAreas = () => {
+    private getProductsSalesPriceMenuAreas = () => {
         return [
             new MenuArea({
                 area: 'actions',
@@ -41,7 +41,7 @@ export class NgProductsSalesPriceMenuProvider implements MenuProvider {
         ];
     };
 
-    public getProductsSalesPriceMenuItems = (packagePath: string): MenuItem[] => {
+    private getProductsSalesPriceMenuItems = (packagePath: string): MenuItem[] => {
         return [
             new MenuItem({
                 url: 'create',

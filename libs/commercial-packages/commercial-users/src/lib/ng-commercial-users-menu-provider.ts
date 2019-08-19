@@ -6,7 +6,7 @@ import { Observable, of } from 'rxjs';
 @Injectable({ providedIn: 'root' })
 export class NgCommercialUsersMenuProvider implements MenuProvider {
     public id = Guid.create().toString();
-    public translationPrefix = 'COMMERCIAL_USERS.INDEX.';
+    private translationPrefix = 'COMMERCIAL_USERS.INDEX.';
 
     constructor(
     ) { }
@@ -19,7 +19,7 @@ export class NgCommercialUsersMenuProvider implements MenuProvider {
         return of(this.getUiMenuItems());
     };
 
-    public getUiMenuAreas = (): MenuArea[] => {
+    private getUiMenuAreas = (): MenuArea[] => {
         return [
             new MenuArea({
                 area: 'manage',
@@ -29,7 +29,7 @@ export class NgCommercialUsersMenuProvider implements MenuProvider {
         ];
     }
 
-    public getUiMenuItems = (): MenuItem[] => {
+    private getUiMenuItems = (): MenuItem[] => {
         return [
             new MenuItem({
                 url: '/users',

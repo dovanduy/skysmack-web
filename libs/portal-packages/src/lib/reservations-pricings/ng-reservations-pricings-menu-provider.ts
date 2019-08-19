@@ -13,10 +13,10 @@ import { LodgingsReservationsIndexComponent } from '../lodging-reservations/lodg
 @Injectable({ providedIn: 'root' })
 export class NgReservationsPricingsMenuProvider implements MenuProvider {
     public id = Guid.create().toString();
-    public translationPrefix = 'RESERVATIONS_PRICINGS.INDEX.';
+    private translationPrefix = 'RESERVATIONS_PRICINGS.INDEX.';
 
     constructor(
-        public store: NgSkysmackStore
+        private store: NgSkysmackStore
     ) { }
 
     public getMenuAreas(packagePath: string, componentKey: string): Observable<MenuArea[]> {
@@ -51,7 +51,7 @@ export class NgReservationsPricingsMenuProvider implements MenuProvider {
         );
     };
 
-    public getReservationsPricingsMenuAreas = () => {
+    private getReservationsPricingsMenuAreas = () => {
         return [
             new MenuArea({
                 area: 'manage',
@@ -61,7 +61,7 @@ export class NgReservationsPricingsMenuProvider implements MenuProvider {
         ];
     };
 
-    public getReservationsPricingsMenuItems = (packagePath: string): MenuItem[] => {
+    private getReservationsPricingsMenuItems = (packagePath: string): MenuItem[] => {
         return [
             new MenuItem({
                 url: 'reservation-price-changes',

@@ -11,10 +11,10 @@ import { EmailTemplatesIndexComponent } from './components/email-templates-index
 @Injectable({ providedIn: 'root' })
 export class NgEmailsTemplatesMenuProvider implements MenuProvider {
     public id = Guid.create().toString();
-    public translationPrefix = 'EMAIL_TEMPLATES.INDEX.';
+    private translationPrefix = 'EMAIL_TEMPLATES.INDEX.';
 
     constructor(
-        public store: NgSkysmackStore
+        private store: NgSkysmackStore
     ) { }
 
     public getMenuAreas(packagePath: string, componentKey: string): Observable<MenuArea[]> {
@@ -25,7 +25,7 @@ export class NgEmailsTemplatesMenuProvider implements MenuProvider {
         return getMenuEntries<MenuItem>(packagePath, EmailsTypeId, componentKey, EmailTemplatesIndexComponent.COMPONENT_KEY, this.getEmailTemplatesMenuItems, this.store);
     };
 
-    public getEmailTemplatesMenuAreas = () => {
+    private getEmailTemplatesMenuAreas = () => {
         return [
             new MenuArea({
                 area: 'actions',
@@ -40,7 +40,7 @@ export class NgEmailsTemplatesMenuProvider implements MenuProvider {
         ];
     };
 
-    public getEmailTemplatesMenuItems = (packagePath: string): MenuItem[] => {
+    private getEmailTemplatesMenuItems = (packagePath: string): MenuItem[] => {
         return [
             new MenuItem({
                 url: 'create',

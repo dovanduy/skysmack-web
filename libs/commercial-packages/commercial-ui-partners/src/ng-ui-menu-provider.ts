@@ -7,7 +7,7 @@ import { NgAuthenticationActions } from '@skysmack/ng-framework';
 @Injectable({ providedIn: 'root' })
 export class NgUiMenuProvider implements MenuProvider {
     public id = Guid.create().toString();
-    public translationPrefix = 'COMMERCIAL_UI_PARTNERS.INDEX.';
+    private translationPrefix = 'COMMERCIAL_UI_PARTNERS.INDEX.';
 
     constructor(
         public actions: NgAuthenticationActions,
@@ -21,7 +21,7 @@ export class NgUiMenuProvider implements MenuProvider {
         return of(this.getUiMenuItems());
     };
 
-    public getUiMenuAreas = (): MenuArea[] => {
+    private getUiMenuAreas = (): MenuArea[] => {
         return [
             new MenuArea({
                 area: 'manage',
@@ -31,7 +31,7 @@ export class NgUiMenuProvider implements MenuProvider {
         ];
     }
 
-    public getUiMenuItems = (): MenuItem[] => {
+    private getUiMenuItems = (): MenuItem[] => {
         return [
             new MenuItem({
                 url: '/account/change-password',

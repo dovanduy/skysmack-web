@@ -13,10 +13,10 @@ import { ProductsIndexComponent } from '../products/products/components/products
 @Injectable({ providedIn: 'root' })
 export class NgProductsPricingsMenuProvider implements MenuProvider {
     public id = Guid.create().toString();
-    public translationPrefix = 'PRODUCTS_PRICINGS.INDEX.';
+    private translationPrefix = 'PRODUCTS_PRICINGS.INDEX.';
 
     constructor(
-        public store: NgSkysmackStore
+        private store: NgSkysmackStore
     ) { }
 
     public getMenuAreas(packagePath: string, componentKey: string): Observable<MenuArea[]> {
@@ -49,7 +49,7 @@ export class NgProductsPricingsMenuProvider implements MenuProvider {
         );
     };
 
-    public getProductsPricingsMenuAreas = () => {
+    private getProductsPricingsMenuAreas = () => {
         return [
             new MenuArea({
                 area: 'manage',
@@ -59,7 +59,7 @@ export class NgProductsPricingsMenuProvider implements MenuProvider {
         ];
     };
 
-    public getProductsPricingsMenuItems = (packagePath: string): MenuItem[] => {
+    private getProductsPricingsMenuItems = (packagePath: string): MenuItem[] => {
         return [
             new MenuItem({
                 url: 'price-changes',

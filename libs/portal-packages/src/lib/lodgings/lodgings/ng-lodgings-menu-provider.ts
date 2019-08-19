@@ -12,10 +12,10 @@ import { LodgingsIndexComponent } from './components/lodgings-index/lodgings-ind
 @Injectable({ providedIn: 'root' })
 export class NgLodgingsMenuProvider implements MenuProvider {
     public id = Guid.create().toString();
-    public translationPrefix = 'LODGINGS.INDEX.';
+    private translationPrefix = 'LODGINGS.INDEX.';
 
     constructor(
-        public store: NgSkysmackStore
+        private store: NgSkysmackStore
     ) { }
 
     public getMenuAreas(packagePath: string, componentKey: string): Observable<MenuArea[]> {
@@ -26,7 +26,7 @@ export class NgLodgingsMenuProvider implements MenuProvider {
         return getMenuEntries<MenuItem>(packagePath, LodgingsTypeId, componentKey, LodgingsIndexComponent.COMPONENT_KEY, this.getLodgingsMenuItems, this.store);
     };
 
-    public getLodgingsMenuAreas = () => {
+    private getLodgingsMenuAreas = () => {
         return [
             new MenuArea({
                 area: 'actions',
@@ -41,7 +41,7 @@ export class NgLodgingsMenuProvider implements MenuProvider {
         ];
     };
 
-    public getLodgingsMenuItems = (packagePath: string) => {
+    private getLodgingsMenuItems = (packagePath: string) => {
         return [
             new MenuItem({
                 url: 'create',

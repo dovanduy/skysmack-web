@@ -12,10 +12,10 @@ import { ProductTypePriceChangesIndexComponent } from './components/product-type
 @Injectable({ providedIn: 'root' })
 export class NgProductTypePriceChangesMenuProvider implements MenuProvider {
     public id = Guid.create().toString();
-    public translationPrefix = 'PRODUCT_TYPE_PRICE_CHANGES.INDEX.';
+    private translationPrefix = 'PRODUCT_TYPE_PRICE_CHANGES.INDEX.';
 
     constructor(
-        public store: NgSkysmackStore
+        private store: NgSkysmackStore
     ) { }
 
     public getMenuAreas(packagePath: string, componentKey: string): Observable<MenuArea[]> {
@@ -26,7 +26,7 @@ export class NgProductTypePriceChangesMenuProvider implements MenuProvider {
         return getMenuEntries<MenuItem>(packagePath, ProductsPricingsTypeId, componentKey, ProductTypePriceChangesIndexComponent.COMPONENT_KEY, this.getProductTypePriceChangesMenuItems, this.store);
     };
 
-    public getProductTypePriceChangesMenuAreas = () => {
+    private getProductTypePriceChangesMenuAreas = () => {
         return [
             new MenuArea({
                 area: 'actions',
@@ -41,7 +41,7 @@ export class NgProductTypePriceChangesMenuProvider implements MenuProvider {
         ];
     };
 
-    public getProductTypePriceChangesMenuItems = (packagePath: string): MenuItem[] => {
+    private getProductTypePriceChangesMenuItems = (packagePath: string): MenuItem[] => {
         return [
             new MenuItem({
                 url: 'create',

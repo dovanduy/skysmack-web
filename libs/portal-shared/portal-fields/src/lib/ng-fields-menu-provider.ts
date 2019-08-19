@@ -4,13 +4,9 @@ import { MenuArea, MenuProvider, SPEEDDIAL, SIDEBAR } from '@skysmack/framework'
 import { MenuItem } from '@skysmack/framework';
 import { Guid } from 'guid-typescript';
 import { Observable, of } from 'rxjs';
-import { PersonsPermissions } from '@skysmack/packages-persons';
-import { getMenuEntries, setBackButton, getAdditionalPaths } from '@skysmack/ng-framework';
+import { setBackButton, getAdditionalPaths } from '@skysmack/ng-framework';
 import { FieldsIndexComponent } from './management-components/fields-index/fields-index.component';
 import { Router } from '@angular/router';
-import { tap } from 'rxjs/operators';
-
-
 
 @Injectable({ providedIn: 'root' })
 export class NgFieldsMenuProvider implements MenuProvider {
@@ -18,8 +14,8 @@ export class NgFieldsMenuProvider implements MenuProvider {
     public translationPrefix = 'FIELDS.INDEX.';
 
     constructor(
-        public store: NgSkysmackStore,
-        public router: Router
+        private store: NgSkysmackStore,
+        private router: Router
     ) { }
 
     public getMenuAreas(packagePath: string, componentKey: string): Observable<MenuArea[]> {
@@ -38,7 +34,7 @@ export class NgFieldsMenuProvider implements MenuProvider {
         }
     };
 
-    public getFieldsMenuAreas = () => {
+    private getFieldsMenuAreas = () => {
         return [
             new MenuArea({
                 area: 'actions',
@@ -53,7 +49,7 @@ export class NgFieldsMenuProvider implements MenuProvider {
         ];
     }
 
-    public getFieldsMenuItems = (packagePath: string) => {
+    private getFieldsMenuItems = (packagePath: string) => {
         const additionalPaths = getAdditionalPaths(this.router, packagePath);
         return [
             new MenuItem({

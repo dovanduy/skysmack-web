@@ -12,10 +12,10 @@ import { tap } from 'rxjs/operators';
 @Injectable({ providedIn: 'root' })
 export class NgLodgingTypesAvailabilityMenuProvider implements MenuProvider {
     public id = Guid.create().toString();
-    public translationPrefix = 'LODGINGS.INDEX.';
+    private translationPrefix = 'LODGINGS.INDEX.';
 
     constructor(
-        public store: NgSkysmackStore
+        private store: NgSkysmackStore
     ) { }
     public getMenuAreas(packagePath: string, componentKey: string): Observable<MenuArea[]> {
         return getMenuEntries<MenuArea>(packagePath, LodgingsTypeId, componentKey, LodgingTypesAvailabilityComponent.COMPONENT_KEY, this.getLodgingTypesavailabilityMenuAreas, this.store);
@@ -25,7 +25,7 @@ export class NgLodgingTypesAvailabilityMenuProvider implements MenuProvider {
         return getMenuEntries<MenuItem>(packagePath, LodgingsTypeId, componentKey, LodgingTypesAvailabilityComponent.COMPONENT_KEY, this.getLodgingTypesavailabilityMenuItems, this.store);
     };
 
-    public getLodgingTypesavailabilityMenuAreas = () => {
+    private getLodgingTypesavailabilityMenuAreas = () => {
         return [
             new MenuArea({
                 area: 'manage',
@@ -35,7 +35,7 @@ export class NgLodgingTypesAvailabilityMenuProvider implements MenuProvider {
         ];
     };
 
-    public getLodgingTypesavailabilityMenuItems = (packagePath: string) => {
+    private getLodgingTypesavailabilityMenuItems = (packagePath: string) => {
         return [
             setBackButton('/' + packagePath + '/types')
         ];

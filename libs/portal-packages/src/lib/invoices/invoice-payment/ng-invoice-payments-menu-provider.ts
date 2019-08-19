@@ -12,10 +12,10 @@ import { InvoicePaymentsIndexComponent } from './components/invoice-payments-ind
 @Injectable({ providedIn: 'root' })
 export class NgInvoicePaymentsMenuProvider implements MenuProvider {
     public id = Guid.create().toString();
-    public translationPrefix = 'INVOICE_PAYMENTS.INDEX.';
+    private translationPrefix = 'INVOICE_PAYMENTS.INDEX.';
 
     constructor(
-        public store: NgSkysmackStore
+        private store: NgSkysmackStore
     ) { }
 
     public getMenuAreas(packagePath: string, componentKey: string): Observable<MenuArea[]> {
@@ -26,7 +26,7 @@ export class NgInvoicePaymentsMenuProvider implements MenuProvider {
         return getMenuEntries<MenuItem>(packagePath, InvoicesTypeId, componentKey, InvoicePaymentsIndexComponent.COMPONENT_KEY, this.getInvoicePaymentsMenuItems, this.store);
     };
 
-    public getInvoicePaymentsMenuAreas = () => {
+    private getInvoicePaymentsMenuAreas = () => {
         return [
             new MenuArea({
                 area: 'actions',
@@ -41,7 +41,7 @@ export class NgInvoicePaymentsMenuProvider implements MenuProvider {
         ];
     };
 
-    public getInvoicePaymentsMenuItems = (packagePath: string): MenuItem[] => {
+    private getInvoicePaymentsMenuItems = (packagePath: string): MenuItem[] => {
         return [
             new MenuItem({
                 url: 'create',

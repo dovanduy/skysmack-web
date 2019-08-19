@@ -12,10 +12,10 @@ import { AssignmentsAllIndexComponent } from './components/assignments-all/assig
 @Injectable({ providedIn: 'root' })
 export class NgAssignmentAllMenuProvider implements MenuProvider {
     public id = Guid.create().toString();
-    public translationPrefix = 'MAINTENANCE.ASSIGNMENT_ALL.INDEX.';
+    private translationPrefix = 'MAINTENANCE.ASSIGNMENT_ALL.INDEX.';
 
     constructor(
-        public store: NgSkysmackStore
+        private store: NgSkysmackStore
     ) { }
 
     public getMenuAreas(packagePath: string, componentKey: string): Observable<MenuArea[]> {
@@ -27,7 +27,7 @@ export class NgAssignmentAllMenuProvider implements MenuProvider {
     };
 
 
-    public getAssignmentsAllMenuAreas = () => {
+    private getAssignmentsAllMenuAreas = () => {
         return [
             new MenuArea({
                 area: 'manage',
@@ -37,7 +37,7 @@ export class NgAssignmentAllMenuProvider implements MenuProvider {
         ];
     };
 
-    public getAssignmentsAllMenuItems = () => {
+    private getAssignmentsAllMenuItems = () => {
         return [
             new MenuItem({
                 url: 'assignments',

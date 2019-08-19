@@ -12,11 +12,12 @@ import { LodgingReservationPriceChangesIndexComponent } from './components/lodgi
 @Injectable({ providedIn: 'root' })
 export class NgLodgingReservationPriceChangesMenuProvider implements MenuProvider {
     public id = Guid.create().toString();
-    public translationPrefix = 'LODGING_RESERVATION_PRICE_CHANGES.INDEX.';
+    private translationPrefix = 'LODGING_RESERVATION_PRICE_CHANGES.INDEX.';
 
     constructor(
-        public store: NgSkysmackStore
+        private store: NgSkysmackStore
     ) { }
+
     public getMenuAreas(packagePath: string, componentKey: string): Observable<MenuArea[]> {
         return getMenuEntries<MenuArea>(packagePath, ReservationsPricingsTypeId, componentKey, LodgingReservationPriceChangesIndexComponent.COMPONENT_KEY, this.getLodgingReservationPriceChangesMenuAreas, this.store);
     };
@@ -25,7 +26,7 @@ export class NgLodgingReservationPriceChangesMenuProvider implements MenuProvide
         return getMenuEntries<MenuItem>(packagePath, ReservationsPricingsTypeId, componentKey, LodgingReservationPriceChangesIndexComponent.COMPONENT_KEY, this.getLodgingReservationPriceChangesMenuItems, this.store);
     };
 
-    public getLodgingReservationPriceChangesMenuAreas = () => {
+    private getLodgingReservationPriceChangesMenuAreas = () => {
         return [
             new MenuArea({
                 area: 'actions',
@@ -40,7 +41,7 @@ export class NgLodgingReservationPriceChangesMenuProvider implements MenuProvide
         ];
     };
 
-    public getLodgingReservationPriceChangesMenuItems = (packagePath: string): MenuItem[] => {
+    private getLodgingReservationPriceChangesMenuItems = (packagePath: string): MenuItem[] => {
         return [
             new MenuItem({
                 url: 'create',

@@ -12,10 +12,10 @@ import { LodgingTypesIndexComponent } from './components/lodging-types-index/lod
 @Injectable({ providedIn: 'root' })
 export class NgLodgingTypesMenuProvider implements MenuProvider {
     public id = Guid.create().toString();
-    public translationPrefix = 'LODGING_TYPES.INDEX.';
+    private translationPrefix = 'LODGING_TYPES.INDEX.';
 
     constructor(
-        public store: NgSkysmackStore
+        private store: NgSkysmackStore
     ) { }
 
     public getMenuAreas(packagePath: string, componentKey: string): Observable<MenuArea[]> {
@@ -27,7 +27,7 @@ export class NgLodgingTypesMenuProvider implements MenuProvider {
     };
 
 
-    public getLodgingTypesMenuAreas= () => {
+    private getLodgingTypesMenuAreas = () => {
         return [
             new MenuArea({
                 area: 'actions',
@@ -42,41 +42,41 @@ export class NgLodgingTypesMenuProvider implements MenuProvider {
         ];
     };
 
-    public getLodgingTypesMenuItems = (packagePath: string): MenuItem[] => {
-            return [
-                new MenuItem({
-                    url: 'create',
-                    displayName: this.translationPrefix + 'CREATE',
-                    area: 'actions',
-                    order: 1,
-                    icon: 'add',
-                    permissions: [
-                        LodgingsPermissions.addLodgingTypes
-                    ],
-                    providedIn: [SIDEBAR, SPEEDDIAL]
-                }),
-                new MenuItem({
-                    url: 'fields',
-                    displayName: this.translationPrefix + 'FIELDS',
-                    area: 'manage',
-                    order: 2,
-                    icon: 'short_text',
-                    permissions: [
-                        LodgingsPermissions.addLodgingTypeFields
-                    ],
-                    providedIn: [SIDEBAR]
-                }),
-                new MenuItem({
-                    url: '/' + packagePath + '/types/availability',
-                    displayName: this.translationPrefix + 'AVAILABILITY',
-                    area: 'manage',
-                    order: 3,
-                    icon: 'group_add',
-                    permissions: [
-                    ],
-                    providedIn: [SIDEBAR]
-                }),
-                setBackButton(packagePath)
-            ];
+    private getLodgingTypesMenuItems = (packagePath: string): MenuItem[] => {
+        return [
+            new MenuItem({
+                url: 'create',
+                displayName: this.translationPrefix + 'CREATE',
+                area: 'actions',
+                order: 1,
+                icon: 'add',
+                permissions: [
+                    LodgingsPermissions.addLodgingTypes
+                ],
+                providedIn: [SIDEBAR, SPEEDDIAL]
+            }),
+            new MenuItem({
+                url: 'fields',
+                displayName: this.translationPrefix + 'FIELDS',
+                area: 'manage',
+                order: 2,
+                icon: 'short_text',
+                permissions: [
+                    LodgingsPermissions.addLodgingTypeFields
+                ],
+                providedIn: [SIDEBAR]
+            }),
+            new MenuItem({
+                url: '/' + packagePath + '/types/availability',
+                displayName: this.translationPrefix + 'AVAILABILITY',
+                area: 'manage',
+                order: 3,
+                icon: 'group_add',
+                permissions: [
+                ],
+                providedIn: [SIDEBAR]
+            }),
+            setBackButton(packagePath)
+        ];
     };
 }

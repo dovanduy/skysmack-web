@@ -4,7 +4,7 @@ import { MenuArea, MenuProvider, SPEEDDIAL, SIDEBAR } from '@skysmack/framework'
 import { MenuItem } from '@skysmack/framework';
 import { Guid } from 'guid-typescript';
 import { Observable } from 'rxjs';
-import { getMenuEntries, getCombinedMenuEntries } from '@skysmack/ng-framework';
+import { getMenuEntries } from '@skysmack/ng-framework';
 import { InvoicesPermissions } from '@skysmack/packages-invoices';
 import { InvoicesTypeId } from '@skysmack/package-types';
 import { InvoicesIndexComponent } from './components/invoices-index/invoices-index.component';
@@ -12,10 +12,10 @@ import { InvoicesIndexComponent } from './components/invoices-index/invoices-ind
 @Injectable({ providedIn: 'root' })
 export class NgInvoicesMenuProvider implements MenuProvider {
     public id = Guid.create().toString();
-    public translationPrefix = 'INVOICES.INDEX.';
+    private translationPrefix = 'INVOICES.INDEX.';
 
     constructor(
-        public store: NgSkysmackStore
+        private store: NgSkysmackStore
     ) { }
 
     public getMenuAreas(packagePath: string, componentKey: string): Observable<MenuArea[]> {
@@ -42,7 +42,7 @@ export class NgInvoicesMenuProvider implements MenuProvider {
         )
     };
 
-    public getInvoicesMenuAreas = () => {
+    private getInvoicesMenuAreas = () => {
         return [
             new MenuArea({
                 area: 'actions',
@@ -57,7 +57,7 @@ export class NgInvoicesMenuProvider implements MenuProvider {
         ];
     };
 
-    public getInvoicesMenuItems = () => {
+    private getInvoicesMenuItems = () => {
         return [
             new MenuItem({
                 url: 'create',

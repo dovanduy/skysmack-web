@@ -4,17 +4,17 @@ import { MenuArea, MenuProvider, SIDEBAR } from '@skysmack/framework';
 import { MenuItem } from '@skysmack/framework';
 import { Guid } from 'guid-typescript';
 import { Observable } from 'rxjs';
-import { getMenuEntries, setConnectedParentPackage } from '@skysmack/ng-framework';
+import { getMenuEntries } from '@skysmack/ng-framework';
 import { EmailsTypeId } from '@skysmack/package-types';
 import { EmailsIndexComponent } from './components/emails-index/emails-index.component';
 
 @Injectable({ providedIn: 'root' })
 export class NgEmailsIndexMenuProvider implements MenuProvider {
     public id = Guid.create().toString();
-    public translationPrefix = 'EMAILS.INDEX.';
+    private translationPrefix = 'EMAILS.INDEX.';
 
     constructor(
-        public store: NgSkysmackStore
+        private store: NgSkysmackStore
     ) { }
 
     public getMenuAreas(packagePath: string, componentKey: string): Observable<MenuArea[]> {
@@ -25,7 +25,7 @@ export class NgEmailsIndexMenuProvider implements MenuProvider {
         return getMenuEntries<MenuItem>(packagePath, EmailsTypeId, componentKey, EmailsIndexComponent.COMPONENT_KEY, this.getEmailsMenuItems, this.store);
     };
 
-    public getEmailsMenuAreas = () => {
+    private getEmailsMenuAreas = () => {
         return [
             new MenuArea({
                 area: 'manage',
@@ -35,7 +35,7 @@ export class NgEmailsIndexMenuProvider implements MenuProvider {
         ]
     };
 
-    public getEmailsMenuItems = () => {
+    private getEmailsMenuItems = () => {
         return [
             new MenuItem({
                 url: 'templates',
