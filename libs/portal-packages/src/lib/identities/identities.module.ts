@@ -22,7 +22,7 @@ import { DynamicFormsModule } from '@skysmack/portal-dynamic-forms';
 import { SettingsModule } from '@skysmack/portal-settings';
 import { PortalFieldsModule } from '@skysmack/portal-fields';
 import { applicationsComponents } from './identity-applications/components/applications-components';
-import { NgIdentitiesIndexMenuProvider } from './ng-identities-index-menu-provider';
+import { NgIdentitiesMenuProvider } from './ng-identities-menu-provider';
 import { clientsComponents } from './clients/components/clients-component';
 
 @NgModule({
@@ -62,11 +62,11 @@ import { clientsComponents } from './clients/components/clients-component';
 export class IdentitiesModule {
   constructor(
     ngMenuProviders: NgMenuProviders,
-    ngIdentitiesIndexMenuProvider: NgIdentitiesIndexMenuProvider,
+    ngIdentitiesMenuProvider: NgIdentitiesMenuProvider,
     coalescingResolver: CoalescingComponentFactoryResolver,
     localResolver: ComponentFactoryResolver
   ) {
     coalescingResolver.registerResolver(localResolver);
-    ngMenuProviders.add(ngIdentitiesIndexMenuProvider);
+    ngMenuProviders.add(ngIdentitiesMenuProvider);
   }
 }

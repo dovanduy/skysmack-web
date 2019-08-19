@@ -11,12 +11,18 @@ import { Observable } from 'rxjs';
 import { IdentitiesIndexComponent } from './components/identities-index/identities-index.component';
 import { getCombinedMenuEntries, getMenuEntries, setBackButton } from '@skysmack/ng-framework';
 import { UsersIndexComponent } from './identity-users/components/users-index/users-index.component';
+import { RolesIndexComponent } from './identity-roles/components/roles-index/roles-index.component';
+import { ApplicationsIndexComponent } from './identity-applications/components/applications-index/applications-index.component';
+import { ClientsIndexComponent } from './clients/components/clients-index/clients-index.component';
 
 @Injectable({ providedIn: 'root' })
-export class NgIdentitiesIndexMenuProvider implements MenuProvider {
+export class NgIdentitiesMenuProvider implements MenuProvider {
     public id = Guid.create().toString();
-    public identitiesTranslationPrefix = 'IDENTITIES.INDEX.';
-    public usersTranslationPrefix = 'USERS.INDEX.';
+    private identitiesTranslationPrefix = 'IDENTITIES.INDEX.';
+    private usersTranslationPrefix = 'USERS.INDEX.';
+    private rolesTranslationPrefix = 'ROLES.INDEX.';
+    private applicationTranslationPrefix = 'APPLICATIONS.INDEX.';
+    private clientsTranslationPrefix = 'CLIENTS.INDEX.';
 
     constructor(
         public store: NgSkysmackStore,
@@ -39,6 +45,30 @@ export class NgIdentitiesIndexMenuProvider implements MenuProvider {
                 UsersIndexComponent.COMPONENT_KEY,
                 this.getUsersMenuAreas,
                 this.store
+            ),
+            getMenuEntries<MenuArea>(
+                packagePath,
+                IdentitiesTypeId,
+                componentKey,
+                RolesIndexComponent.COMPONENT_KEY,
+                this.getRolesMenuAreas,
+                this.store
+            ),
+            getMenuEntries<MenuArea>(
+                packagePath,
+                IdentitiesTypeId,
+                componentKey,
+                ApplicationsIndexComponent.COMPONENT_KEY,
+                this.getApplicationsMenuAreas,
+                this.store
+            ),
+            getMenuEntries<MenuArea>(
+                packagePath,
+                IdentitiesTypeId,
+                componentKey,
+                ClientsIndexComponent.COMPONENT_KEY,
+                this.getClientsMenuAreas,
+                this.store
             )
         );
     };
@@ -59,6 +89,30 @@ export class NgIdentitiesIndexMenuProvider implements MenuProvider {
                 componentKey,
                 UsersIndexComponent.COMPONENT_KEY,
                 this.getUsersMenuItems,
+                this.store
+            ),
+            getMenuEntries<MenuItem>(
+                packagePath,
+                IdentitiesTypeId,
+                componentKey,
+                RolesIndexComponent.COMPONENT_KEY,
+                this.getRolesMenuItems,
+                this.store
+            ),
+            getMenuEntries<MenuItem>(
+                packagePath,
+                IdentitiesTypeId,
+                componentKey,
+                ApplicationsIndexComponent.COMPONENT_KEY,
+                this.getApplicationsMenuItems,
+                this.store
+            ),
+            getMenuEntries<MenuItem>(
+                packagePath,
+                IdentitiesTypeId,
+                componentKey,
+                ClientsIndexComponent.COMPONENT_KEY,
+                this.getClientsMenuItems,
                 this.store
             )
         );
@@ -252,6 +306,107 @@ export class NgIdentitiesIndexMenuProvider implements MenuProvider {
                 icon: 'add',
                 permissions: [
                     //??
+                ],
+                providedIn: [SIDEBAR, SPEEDDIAL]
+            }),
+            setBackButton(packagePath)
+        ];
+    };
+    //#endregion
+
+    //#region Roles
+    private getRolesMenuAreas = () => {
+        return [
+            new MenuArea({
+                area: 'actions',
+                translationPrefix: this.rolesTranslationPrefix,
+                order: 1
+            }),
+            new MenuArea({
+                area: 'manage',
+                translationPrefix: this.rolesTranslationPrefix,
+                order: 2
+            })
+        ];
+    };
+
+    private getRolesMenuItems = (packagePath: string): MenuItem[] => {
+        return [
+            new MenuItem({
+                url: 'create',
+                displayName: this.rolesTranslationPrefix + 'CREATE',
+                area: 'actions',
+                order: 1,
+                icon: 'add',
+                permissions: [
+                    //??
+                ],
+                providedIn: [SIDEBAR, SPEEDDIAL]
+            }),
+            setBackButton(packagePath)
+        ];
+    };
+    //#endregion
+
+    //#region Applications
+    private getApplicationsMenuAreas = () => {
+        return [
+            new MenuArea({
+                area: 'actions',
+                translationPrefix: this.applicationTranslationPrefix,
+                order: 1
+            }),
+            new MenuArea({
+                area: 'manage',
+                translationPrefix: this.applicationTranslationPrefix,
+                order: 2
+            })
+        ];
+    };
+
+    private getApplicationsMenuItems = (packagePath: string): MenuItem[] => {
+        return [
+            new MenuItem({
+                url: 'create',
+                displayName: this.applicationTranslationPrefix + 'CREATE',
+                area: 'actions',
+                order: 1,
+                icon: 'add',
+                permissions: [
+                    //??
+                ],
+                providedIn: [SIDEBAR, SPEEDDIAL]
+            }),
+            setBackButton(packagePath)
+        ];
+    };
+    //#endregion
+
+    //#region Clients
+    private getClientsMenuAreas = () => {
+        return [
+            new MenuArea({
+                area: 'actions',
+                translationPrefix: this.clientsTranslationPrefix,
+                order: 1
+            }),
+            new MenuArea({
+                area: 'manage',
+                translationPrefix: this.clientsTranslationPrefix,
+                order: 2
+            })
+        ];
+    };
+
+    private getClientsMenuItems = (packagePath: string): MenuItem[] => {
+        return [
+            new MenuItem({
+                url: 'create',
+                displayName: this.clientsTranslationPrefix + 'CREATE',
+                area: 'actions',
+                order: 1,
+                icon: 'add',
+                permissions: [
                 ],
                 providedIn: [SIDEBAR, SPEEDDIAL]
             }),
