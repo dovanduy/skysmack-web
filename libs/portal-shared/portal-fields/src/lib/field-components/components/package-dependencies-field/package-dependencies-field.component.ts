@@ -94,7 +94,7 @@ export class PackageDependenciesFieldComponent extends FieldBaseComponent<Field>
 
         let index = 0;
         // Only run this when setting NEW dependencies, not when valus are set...
-        return (dependencies as string[]).map(dependency => {
+        const selectBoxes = (dependencies as string[]).map(dependency => {
           const possibleValues = installedPackages
             .filter(installedPackage => installedPackage.object.type === dependency)
             .map(installedPackage => ({
@@ -111,6 +111,18 @@ export class PackageDependenciesFieldComponent extends FieldBaseComponent<Field>
             values: possibleValues
           });
         });
+
+        // Set default selected dependecy foreach selectbox, if any values are available
+        selectBoxes.forEach(selectBox => {
+          if (selectBox.values && selectBox.values[0]) {
+            const firstValue = selectBox.values[0].value;
+            selectBox.selectedValue = firstValue;
+            this.setDependencies(selectBox, firstValue);
+          }
+        });
+
+
+        return selectBoxes;
       }),
     );
   }
