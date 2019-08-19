@@ -38,6 +38,7 @@ import { CommercialUiPartnersModule } from '@skysmack/commercial-ui-partners';
       { path: 'account', loadChildren: './packages/commercial_account_wrapper.module#CommercialAccountWrapperModule' },
       { path: 'tenants', loadChildren: './packages/commercial_tenants_wrapper.module#CommercialTenantsWrapperModule' },
       { path: 'users', loadChildren: './packages/commercial_users_wrapper.module#CommercialUsersWrapperModule' },
+      { path: 'open-api', loadChildren: './packages/commercial_open_api_wrapper.module#CommercialOpenApiWrapperModule' },
       {
         path: '',
         component: StartComponent

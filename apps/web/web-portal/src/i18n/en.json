@@ -3179,5 +3179,10 @@
 			"DELETING": "Deleting {{ printReceipt }}",
 			"ERROR": "An error occured with {{ printReceipt }}. Correct and try again."
 		}
+	},
+	"COMMERCIAL_OPEN_API": {
+		"INDEX": {
+			"OPEN_API": "Open API"
+		}
 	}
 }

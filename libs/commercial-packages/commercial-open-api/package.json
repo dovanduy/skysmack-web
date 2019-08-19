@@ -1,0 +1,24 @@
+{
+  "name": "@skysmack/commercial-open-api",
+  "version": "0.0.1",
+  "peerDependencies": {
+    "@angular/common": "^8.0.0",
+    "@angular/core": "^8.0.0",
+    "@skysmack/ng-framework": "*",
+    "@skysmack/framework": "*",
+    "swagger-ui": "3.23.1"
+  },
+  "main": "./lib/public_api.js",
+  "types": "./lib/public_api.d.ts",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1",
+    "build": "ng build commercial-open-api"
+  }
+}

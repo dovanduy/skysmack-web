@@ -3179,5 +3179,10 @@
 				}
 			}
 		}
+	},
+	"COMMERCIAL_OPEN_API": {
+		"INDEX": {
+			"OPEN_API": "Open API"
+		}
 	}
 }
