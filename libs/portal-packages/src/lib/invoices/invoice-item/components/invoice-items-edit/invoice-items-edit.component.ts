@@ -28,6 +28,7 @@ export class InvoiceItemsEditComponent extends DocumentRecordFormComponent<Invoi
   }
 
   ngOnInit() {
+    this.additionalPaths = ['items'];
     super.ngOnInit();
     this.setEditFields();
   }

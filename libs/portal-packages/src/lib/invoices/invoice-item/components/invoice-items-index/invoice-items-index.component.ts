@@ -50,9 +50,9 @@ export class InvoiceItemsIndexComponent extends DocumentRecordIndexComponent<Inv
         this.pagedQuery.rsqlFilter = filter;
       }),
       take(1)
-    ).subscribe();   
-    
-    this.additionalPaths = [ 'items' ];
+    ).subscribe();
+
+    this.additionalPaths = ['items'];
     super.ngOnInit();
   }
 }

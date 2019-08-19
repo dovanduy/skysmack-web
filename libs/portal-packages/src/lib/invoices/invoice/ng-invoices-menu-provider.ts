@@ -29,8 +29,6 @@ export class NgInvoicesMenuProvider implements MenuProvider {
         );
     };
 
-
-
     public getMenuItems(packagePath: string, componentKey: string): Observable<MenuItem[]> {
         return getMenuEntries<MenuItem>(
             packagePath,

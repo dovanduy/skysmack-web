@@ -5,7 +5,7 @@ import { InvoiceItemsEditComponent } from './invoice-items-edit/invoice-items-ed
 import { INVOICE_ITEMS_AREA_KEY } from '@skysmack/packages-invoices';
 import { FieldsIndexComponent, FieldsCreateComponent, FieldsEditComponent } from '@skysmack/portal-fields';
 
-export const invoiceItemsRoutes: Routes = [  
+export const invoiceItemsRoutes: Routes = [
   {
     path: 'items/fields', component: FieldsIndexComponent, children: [
       { path: 'create', component: FieldsCreateComponent, pathMatch: 'full' },

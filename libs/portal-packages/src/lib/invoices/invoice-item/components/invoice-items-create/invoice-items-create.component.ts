@@ -36,6 +36,8 @@ export class InvoiceItemsCreateComponent extends DocumentRecordFormComponent<Inv
       take(1)
     ).subscribe();
 
+    this.additionalPaths = ['items'];
+
     super.ngOnInit();
     this.setCreateFields();
   }

@@ -1,22 +1,24 @@
 import { Injectable } from '@angular/core';
-import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { MenuArea, MenuProvider, SPEEDDIAL, SIDEBAR } from '@skysmack/framework';
 import { MenuItem } from '@skysmack/framework';
 import { Guid } from 'guid-typescript';
 import { Observable, of } from 'rxjs';
-import { setBackButton, getAdditionalPaths } from '@skysmack/ng-framework';
 import { FieldsIndexComponent } from './management-components/fields-index/fields-index.component';
 import { Router } from '@angular/router';
+import { map, tap } from 'rxjs/operators';
+import { setBackButton, getPreviousUrl$ } from '@skysmack/ng-framework';
 
 @Injectable({ providedIn: 'root' })
 export class NgFieldsMenuProvider implements MenuProvider {
     public id = Guid.create().toString();
     public translationPrefix = 'FIELDS.INDEX.';
+    public previousUrl: string;
 
     constructor(
-        private store: NgSkysmackStore,
-        private router: Router
-    ) { }
+        router: Router,
+    ) {
+        this.setPreviousUrl(router);
+    }
 
     public getMenuAreas(packagePath: string, componentKey: string): Observable<MenuArea[]> {
         if (componentKey === FieldsIndexComponent.COMPONENT_KEY) {
@@ -26,9 +28,11 @@ export class NgFieldsMenuProvider implements MenuProvider {
         }
     };
 
-    public getMenuItems(packagePath: string, componentKey: string): Observable<MenuItem[]> {
+    public getMenuItems = (packagePath: string, componentKey: string): Observable<MenuItem[]> => {
         if (componentKey === FieldsIndexComponent.COMPONENT_KEY) {
-            return of(this.getFieldsMenuItems(packagePath));
+            return of(this.getFieldsMenuItems()).pipe(
+                map(menuItems => this.setConditionalBackButton(packagePath, menuItems, this.previousUrl))
+            );
         } else {
             return of([]);
         }
@@ -49,8 +53,7 @@ export class NgFieldsMenuProvider implements MenuProvider {
         ];
     }
 
-    private getFieldsMenuItems = (packagePath: string) => {
-        const additionalPaths = getAdditionalPaths(this.router, packagePath);
+    private getFieldsMenuItems = () => {
         return [
             new MenuItem({
                 url: 'create',
@@ -61,8 +64,18 @@ export class NgFieldsMenuProvider implements MenuProvider {
                 permissions: [
                 ],
                 providedIn: [SIDEBAR, SPEEDDIAL]
-            }),
-            setBackButton(`/${packagePath}/${additionalPaths.join('/')}`)
+            })
         ];
+    }
+
+    private setPreviousUrl(router: Router) {
+        getPreviousUrl$(router).pipe(tap(x => this.previousUrl = x)).subscribe();
+    }
+
+    private setConditionalBackButton = (packagePath: string, menuItems: MenuItem[], previousUrl: string): MenuItem[] => {
+        if (previousUrl) {
+            return menuItems.concat(setBackButton(previousUrl))
+        }
+        return menuItems.concat(setBackButton(packagePath));
     }
 }

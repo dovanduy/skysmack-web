@@ -27,7 +27,14 @@ export class NgInvoiceItemsMenuProvider implements MenuProvider {
 
     public getMenuItems = (packagePath: string, componentKey: string): Observable<MenuItem[]> => {
         return getCombinedMenuEntries(
-            getMenuEntries<MenuItem>(packagePath, InvoicesTypeId, componentKey, InvoiceItemsIndexComponent.COMPONENT_KEY, this.getInvoiceItemsMenuItems, this.store),
+            getMenuEntries<MenuItem>(
+                packagePath,
+                InvoicesTypeId,
+                componentKey,
+                InvoiceItemsIndexComponent.COMPONENT_KEY,
+                this.getInvoiceItemsMenuItems,
+                this.store
+            ),
             getConnectedPackageCustomMenuEntries(
                 packagePath,
                 InvoicesProductsTypeId,
