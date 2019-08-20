@@ -26,7 +26,7 @@ export class NgUiMenuProvider implements MenuProvider {
             new MenuArea({
                 area: 'manage',
                 translationPrefix: this.translationPrefix,
-                order: 2
+                order: 9999
             })
         ];
     }
@@ -37,13 +37,14 @@ export class NgUiMenuProvider implements MenuProvider {
                 url: '/account/change-password',
                 displayName: this.translationPrefix + 'CHANGEPASSWORD',
                 area: 'manage',
-                order: 1,
+                order: 8888,
                 icon: 'add',
                 providedIn: ['top']
             }),
             new MenuItem({
                 area: 'manage',
-                providedIn: ['top']
+                providedIn: ['top'],
+                order: 9999,
             }).asEventAction(this.translationPrefix + 'LOGOUT', () => {
                 this.actions.logout();
             }, 'add', this)

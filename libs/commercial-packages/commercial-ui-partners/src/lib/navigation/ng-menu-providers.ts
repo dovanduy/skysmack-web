@@ -1,16 +1,13 @@
 import { Injectable } from '@angular/core';
 import { MenuProviders, MenuAreaItems, AllowAccessFor, MenuProvider, MenuArea } from '@skysmack/framework';
-import { Router } from '@angular/router';
 import { Observable, combineLatest } from 'rxjs';
-import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { switchMap, map } from 'rxjs/operators';
 import { NgAuthenticationStore } from '@skysmack/ng-framework';
 
 @Injectable({ providedIn: 'root' })
 export class NgMenuProviders extends MenuProviders {
-    constructor(public router: Router,
-        public skysmackStore: NgSkysmackStore,
-        public authenticationStore: NgAuthenticationStore
+    constructor(
+        private authenticationStore: NgAuthenticationStore
     ) {
         super();
     }
@@ -55,11 +52,25 @@ export class NgMenuProviders extends MenuProviders {
                             });
                             if (menuItemsForArea && menuItemsForArea.length > 0) {
                                 return new MenuAreaItems({
-                                    area: menuArea, items: menuItemsForArea, providedIn: menuItemsForArea.map(x => x.providedIn).reduce((a, b) => a.concat(b), []).filter((value, index, self) => value && self.indexOf(value) === index)
+                                    area: menuArea,
+                                    items: menuItemsForArea,
+                                    providedIn: menuItemsForArea
+                                        .map(x => x.providedIn)
+                                        .reduce((a, b) => a.concat(b), [])
+                                        .filter((value, index, self) => value && self.indexOf(value) === index)
                                 });
                             }
                         })
                     }),
+                    map(menuAreasItems => {
+                        return menuAreasItems.map(menuAreaItem => {
+                            if (menuAreaItem && menuAreaItem.items && menuAreaItem.items.length > 1) {
+                                menuAreaItem.items = menuAreaItem.items.map(x => x).sort((a, b) => a.order - b.order);
+                            }
+
+                            return menuAreaItem
+                        }).sort((a, b) => a.area.order - b.area.order)
+                    })
                 );
             })
         );
