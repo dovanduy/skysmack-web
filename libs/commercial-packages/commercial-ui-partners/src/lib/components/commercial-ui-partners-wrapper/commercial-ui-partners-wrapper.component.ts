@@ -6,8 +6,6 @@ import { tap, map } from 'rxjs/operators';
 import { NgMenuProviders } from '../../navigation/ng-menu-providers';
 import { Observable } from 'rxjs';
 
-
-
 @Component({
   selector: 'ss-commercial-ui-partners-wrapper',
   templateUrl: './commercial-ui-partners-wrapper.component.html',
