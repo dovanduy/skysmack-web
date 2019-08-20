@@ -13,21 +13,20 @@ import { Observable, combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { NgFieldStore, LoadedPackage } from '@skysmack/ng-framework';
 import { FieldProviders } from '@skysmack/ng-fields';
-import { Router } from '@angular/router';
 
 export abstract class DocumentFieldsConfig<TRecord, TKey> extends FieldsConfig<TRecord, TKey> {
     constructor(
         public fieldProviders: FieldProviders,
         public fieldsStore: NgFieldStore,
-        public router: Router
+        protected additionalPaths: string[]
     ) {
-        super(fieldProviders);
+        super(fieldProviders, additionalPaths);
     }
 
-    public getFields(loadedPackage: LoadedPackage, additionalPaths: string[], entity?: LocalObject<TRecord, TKey>): Observable<Field[]> {
-        const stateKey = additionalPaths.length > 0 ? `${loadedPackage._package.path}-${additionalPaths.join('-')}` : loadedPackage._package.path;
+    public getFields(loadedPackage: LoadedPackage, entity?: LocalObject<TRecord, TKey>): Observable<Field[]> {
+        const stateKey = this.additionalPaths.length > 0 ? `${loadedPackage._package.path}-${this.additionalPaths.join('-')}` : loadedPackage._package.path;
         return combineLatest(
-            this.getRecordFields(loadedPackage, additionalPaths, entity),
+            this.getRecordFields(loadedPackage, entity),
             this.fieldsStore.get(stateKey)
         ).pipe(
             map(values => values[0].concat(this.toFields(entity, values[1]))),

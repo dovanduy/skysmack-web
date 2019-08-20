@@ -67,7 +67,7 @@ export class InvoicesCashPaymentsPayComponent extends RecordFormComponent<Invoic
             invoiceId: invoice.object.id
           });
 
-          return this.fieldsConfig.getFields(loadedPackage, this.additionalPaths, toLocalObject(entity));
+          return this.fieldsConfig.getFields(loadedPackage, toLocalObject(entity));
         }),
         map(fields => {
           const invoiceIdField = fields.find(field => field.key === 'invoiceId');

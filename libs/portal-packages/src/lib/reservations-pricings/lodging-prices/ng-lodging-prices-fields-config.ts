@@ -4,7 +4,7 @@ import { LocalObject, LocalObjectStatus, PagedQuery } from '@skysmack/framework'
 import { FormRule, SelectField, Field } from '@skysmack/ng-dynamic-forms';
 import { NgLodgingsStore, NgLodgingsActions } from '@skysmack/ng-lodgings';
 import { LoadedPackage, getPackageDendencyAsStream } from '@skysmack/ng-framework';
-import { LodgingPrice, LODGING_PRICES_AREA_KEY } from '@skysmack/packages-reservations-pricings';
+import { LodgingPrice, LODGING_PRICES_AREA_KEY, LODGING_PRICES_ADDITIONAL_PATHS } from '@skysmack/packages-reservations-pricings';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { switchMap, map, take } from 'rxjs/operators';
 import { FieldsConfig, FieldProviders } from '@skysmack/ng-fields';
@@ -22,9 +22,9 @@ export class NgLodgingPricesFieldsConfig extends FieldsConfig<LodgingPrice, numb
         public lodgingsActions: NgLodgingsActions,
         public fieldProviders: FieldProviders,
         public skysmackStore: NgSkysmackStore
-    ) { super(fieldProviders); }
+    ) { super(fieldProviders, LODGING_PRICES_ADDITIONAL_PATHS); }
 
-    protected getEntityFields(loadedPackage: LoadedPackage, additionalPaths: string[], entity?: LocalObject<LodgingPrice, number>): Field[] {
+    protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<LodgingPrice, number>): Field[] {
         const lodgingPackage$ = getPackageDendencyAsStream(this.skysmackStore, loadedPackage._package.path, [0, 0]);
 
         const fields = [

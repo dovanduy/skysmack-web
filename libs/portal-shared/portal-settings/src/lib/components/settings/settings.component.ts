@@ -63,7 +63,7 @@ export class SettingsComponent extends BaseComponent<SettingsAppState<any>, unkn
         const settings = values[0];
         this.editorItem = values[1] as LocalObject<any, unknown>;
         this.editorItem ? this.selectedSettings = this.editorItem : this.selectedSettings = settings;
-        return this.fieldsConfig ? this.fieldsConfig.getFields(undefined, this.additionalPaths, this.selectedSettings) : of([]);
+        return this.fieldsConfig ? this.fieldsConfig.getFields(undefined, this.selectedSettings) : of([]);
       })
     );
   }

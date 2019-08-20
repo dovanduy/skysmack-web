@@ -14,10 +14,10 @@ export class CommercialAccountLoginFieldsConfig extends FieldsConfig<any, any>{
     public formRules: FormRule[] = [];
 
     constructor(public fieldProviders: FieldProviders) {
-        super(fieldProviders);
+        super(fieldProviders, []);
     }
 
-    protected getEntityFields(loadedPackage: LoadedPackage, additionalPaths: string[], entity?: LocalObject<any, any>): Field[] {
+    protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<any, any>): Field[] {
         const fields = [
             new Field({
                 component: EmailFieldComponent,

@@ -30,7 +30,7 @@ export class DetailsBaseComponent<TAppState, TKey> extends BaseComponent<TAppSta
         this.fields$ = combineLatest(
             this.loadedPackage$,
             this.store.getSingle(this.packagePath, this.entityId)
-        ).pipe(switchMap(([loadedPackage, record]) => this.fieldsConfig.getFields(loadedPackage, this.additionalPaths, record)));
+        ).pipe(switchMap(([loadedPackage, record]) => this.fieldsConfig.getFields(loadedPackage, record)));
     }
 
     ngOnDestroy() {

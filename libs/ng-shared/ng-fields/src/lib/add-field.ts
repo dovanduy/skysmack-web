@@ -10,7 +10,6 @@ export class AddField extends Field {
     public packagePath: string;
     public displaySelector: string;
     public addTitle: string;
-    public additionalPaths: string[];
 
     constructor(values: Partial<AddField>) {
         super(values);

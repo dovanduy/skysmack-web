@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { LocalObject, LocalObjectStatus, PagedQuery, DisplayColumn } from '@skysmack/framework';
-import { Connection, CONNECTIONS_AREA_KEY, ConnectionKey, TerminalStatus } from '@skysmack/packages-terminal-payments';
+import { Connection, CONNECTIONS_AREA_KEY, ConnectionKey, TerminalStatus, CONNECTIONS_ADDITIONAL_PATHS } from '@skysmack/packages-terminal-payments';
 import { NgConnectionsValidation, NgTerminalsStore, NgTerminalsActions } from '@skysmack/ng-terminal-payments';
 import { LoadedPackage, getPackageDendencyAsStream } from '@skysmack/ng-framework';
 import { FormRule, Field, SelectField } from '@skysmack/ng-dynamic-forms';
@@ -25,10 +25,10 @@ export class NgConnectionsFieldsConfig extends FieldsConfig<Connection, Connecti
         public clientsActions: NgClientsActions,
         public skysmackStore: NgSkysmackStore
     ) {
-        super(fieldProviders);
+        super(fieldProviders, CONNECTIONS_ADDITIONAL_PATHS);
     }
 
-    protected getEntityFields(loadedPackage: LoadedPackage, additionalPaths: string[], entity?: LocalObject<Connection, ConnectionKey>): Field[] {
+    protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<Connection, ConnectionKey>): Field[] {
         const identitiesPackage$ = getPackageDendencyAsStream(this.skysmackStore, loadedPackage._package.path, [0]);
 
 

@@ -11,17 +11,20 @@ export abstract class FieldsConfig<TRecord, TKey> implements EntityFieldsConfig<
     public abstract validation: Validation;
     public abstract area: string;
 
-    constructor(public fieldProviders: FieldProviders) { }
+    constructor(
+        public fieldProviders: FieldProviders,
+        protected additionalPaths: string[]
+    ) { }
 
-    public getFields(loadedPackage: LoadedPackage, additionalPaths: string[], entity?: LocalObject<TRecord, TKey>): Observable<Field[]> {
-        return this.getRecordFields(loadedPackage, additionalPaths, entity).pipe(
+    public getFields(loadedPackage: LoadedPackage, entity?: LocalObject<TRecord, TKey>): Observable<Field[]> {
+        return this.getRecordFields(loadedPackage, entity).pipe(
             map(fields => this.addValidationErrors(fields, entity))
         );
     }
 
-    protected getRecordFields(loadedPackage: LoadedPackage, additionalPaths: string[], entity?: LocalObject<TRecord, TKey>): Observable<Field[]> {
-        const staticFields = this.getStaticFields(loadedPackage, additionalPaths, entity);
-        return this.getProvidedFields(loadedPackage, additionalPaths, entity).pipe(
+    protected getRecordFields(loadedPackage: LoadedPackage, entity?: LocalObject<TRecord, TKey>): Observable<Field[]> {
+        const staticFields = this.getStaticFields(loadedPackage, entity);
+        return this.getProvidedFields(loadedPackage, entity).pipe(
             distinctUntilChanged(),
             map(values => {
                 return staticFields.concat(values);
@@ -29,11 +32,11 @@ export abstract class FieldsConfig<TRecord, TKey> implements EntityFieldsConfig<
         );
     }
 
-    protected abstract getEntityFields(loadedPackage: LoadedPackage, additionalPaths: string[], entity?: LocalObject<TRecord, TKey>): Field[];
+    protected abstract getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<TRecord, TKey>): Field[];
 
-    protected getStaticFields(loadedPackage: LoadedPackage, additionalPaths: string[], entity?: LocalObject<TRecord, TKey>): Field[] {
+    protected getStaticFields(loadedPackage: LoadedPackage, entity?: LocalObject<TRecord, TKey>): Field[] {
         const fieldArea = this.validation.area.toUpperCase() + '.FORM.';
-        return this.getEntityFields(loadedPackage, additionalPaths, entity).map(field => {
+        return this.getEntityFields(loadedPackage, entity).map(field => {
             field.label = fieldArea + 'LABELS.' + field.key.toUpperCase();
             field.placeholder = fieldArea + 'PLACEHOLDERS.' + field.key.toUpperCase();
             return field;
@@ -52,7 +55,7 @@ export abstract class FieldsConfig<TRecord, TKey> implements EntityFieldsConfig<
         }
     }
 
-    protected getProvidedFields(loadedPackage: LoadedPackage, additionalPaths: string[], entity?: LocalObject<TRecord, TKey>): Observable<Field[]> {
+    protected getProvidedFields(loadedPackage: LoadedPackage, entity?: LocalObject<TRecord, TKey>): Observable<Field[]> {
         return this.fieldProviders.providers$.pipe(
             switchMap(providers => {
                 const extractedProviders = providers[loadedPackage && loadedPackage.packageManifest && loadedPackage.packageManifest.id];
@@ -60,7 +63,7 @@ export abstract class FieldsConfig<TRecord, TKey> implements EntityFieldsConfig<
                 if (extractedProviders && extractedProviders.length > 0) {
                     return combineLatest(
                         extractedProviders.map(provider => {
-                            return provider.getFields(loadedPackage._package.path, additionalPaths, this.area, entity);
+                            return provider.getFields(loadedPackage._package.path, this.area, entity);
                         })
                     ).pipe(
                         distinctUntilChanged(),

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { LocalObject, LocalObjectStatus, EnumHelpers, DisplayColumn, PagedQuery } from '@skysmack/framework';
-import { Assignment, ASSIGNMENTS_AREA_KEY } from '@skysmack/packages-maintenance';
+import { Assignment, ASSIGNMENTS_AREA_KEY, ASSIGNMENTS_ADDITIONAL_PATHS } from '@skysmack/packages-maintenance';
 import { NgAssignmentsValidation, NgAssignmentTypesStore, NgAssignmentTypesActions } from '@skysmack/ng-maintenance';
 import { FormRule, Field, SelectField } from '@skysmack/ng-dynamic-forms';
 import { of } from 'rxjs';
@@ -19,9 +19,9 @@ export class NgAssignmentsFieldsConfig extends FieldsConfig<Assignment, number> 
         public assignmentTypesStore: NgAssignmentTypesStore,
         public assignmentTypesActions: NgAssignmentTypesActions,
         public fieldProviders: FieldProviders
-    ) { super(fieldProviders); }
+    ) { super(fieldProviders, ASSIGNMENTS_ADDITIONAL_PATHS); }
 
-    protected getEntityFields(loadedPackage: LoadedPackage, additionalPaths: string[], entity?: LocalObject<Assignment, number>): Field[] {
+    protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<Assignment, number>): Field[] {
         const fields = [
             new SelectField({
                 component: SelectFieldComponent,

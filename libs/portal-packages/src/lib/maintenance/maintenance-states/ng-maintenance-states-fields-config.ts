@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
-import { MaintenanceState, MaintenanceEntityStatus, MAINTENANCE_STATES_AREA_KEY } from '@skysmack/packages-maintenance';
+import { MaintenanceState, MaintenanceEntityStatus, MAINTENANCE_STATES_AREA_KEY, MAINTENANCE_STATES_ADDITIONAL_PATHS } from '@skysmack/packages-maintenance';
 import { NgMaintenanceStatesValidation } from '@skysmack/ng-maintenance';
 import { FormRule, Field, SelectField } from '@skysmack/ng-dynamic-forms';
 import { of } from 'rxjs';
@@ -17,10 +17,10 @@ export class NgMaintenanceStatesFieldsConfig extends FieldsConfig<MaintenanceSta
     ];
 
     constructor(public fieldProviders: FieldProviders) {
-        super(fieldProviders);
+        super(fieldProviders, MAINTENANCE_STATES_ADDITIONAL_PATHS);
     }
 
-    protected getEntityFields(loadedPackage: LoadedPackage, additionalPaths: string[], entity?: LocalObject<MaintenanceState, number>): Field[] {
+    protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<MaintenanceState, number>): Field[] {
         const fields = [
             new Field({
                 component: StringFieldComponent,

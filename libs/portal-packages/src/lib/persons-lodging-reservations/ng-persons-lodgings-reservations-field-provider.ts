@@ -33,7 +33,7 @@ export class NgPersonsLodgingReservationsFieldProvider extends FieldProvider {
         super();
     }
 
-    public getFields(packagePath: string, additionalPaths: string[], area: string, entity?: LocalObject<Person, number>): Observable<Field[]> {
+    public getFields(packagePath: string, area: string, entity?: LocalObject<Person, number>): Observable<Field[]> {
         this.register = {};
         if (area === LODGING_RESERVATIONS_AREA_KEY) {
             return this.skysmackStore.getPackages().pipe(
@@ -65,7 +65,6 @@ export class NgPersonsLodgingReservationsFieldProvider extends FieldProvider {
                                         actions: this.personsActions,
                                         store: this.personsStore,
                                         fieldsConfig: this.personsFieldsConfig,
-                                        additionalPaths: additionalPaths,
                                         packagePath: personsPackagePath,
                                         value: undefined,
                                         key: 'extendedData.' + personsPackagePath + '.add',

@@ -28,7 +28,7 @@ export class NgFieldsConfig extends FieldsConfig<FieldSchemaViewModel, string> {
         public fieldProviders: FieldProviders,
         public router: Router
     ) {
-        super(fieldProviders);
+        super(fieldProviders, []);
     }
 
     /**
@@ -36,11 +36,11 @@ export class NgFieldsConfig extends FieldsConfig<FieldSchemaViewModel, string> {
      * @param availableFields Possible dynamic fields to create. Recieved from the backend.
      * @param field Optional field can be providedto set default values. Used to edit an existing field.
      */
-    protected getEntityFields(loadedPackage: LoadedPackage, additionalPaths: string[], field?: LocalObject<FieldSchemaViewModel, string>): Field[] {
+    protected getEntityFields(loadedPackage: LoadedPackage, field?: LocalObject<FieldSchemaViewModel, string>): Field[] {
         let stateKey = loadedPackage._package.path;
 
-        if (additionalPaths && additionalPaths.length > 0) {
-            stateKey = stateKey + '-' + additionalPaths;
+        if (this.additionalPaths && this.additionalPaths.length > 0) {
+            stateKey = stateKey + '-' + this.additionalPaths;
         }
 
         const fields = [
@@ -90,7 +90,7 @@ export class NgFieldsConfig extends FieldsConfig<FieldSchemaViewModel, string> {
         return fields;
     }
 
-    protected getProvidedFields(loadedPackage: LoadedPackage, additionalPaths: string[], entity?: LocalObject<FieldSchemaViewModel, string>): Observable<Field[]> {
+    protected getProvidedFields(loadedPackage: LoadedPackage, entity?: LocalObject<FieldSchemaViewModel, string>): Observable<Field[]> {
         return this.fieldProviders.providers$.pipe(
             switchMap(providers => {
                 const extractedProviders = providers['fields'];
@@ -98,7 +98,7 @@ export class NgFieldsConfig extends FieldsConfig<FieldSchemaViewModel, string> {
                 if (extractedProviders && extractedProviders.length > 0) {
                     return combineLatest(
                         extractedProviders.map(provider => {
-                            return provider.getFields(loadedPackage._package.path, additionalPaths, this.area, entity);
+                            return provider.getFields(loadedPackage._package.path, this.area, entity);
                         })
                     ).pipe(
                         distinctUntilChanged(),

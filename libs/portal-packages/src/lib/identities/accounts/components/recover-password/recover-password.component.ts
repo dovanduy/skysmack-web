@@ -35,9 +35,9 @@ export class RecoverPasswordComponent extends BaseComponent<AccountAppState, unk
     const token = this.router.url.split('=')[1];
     if (token) {
       const tokenObject = toLocalObject(token);
-      this.fields$ = this.fieldsConfig.getFields(undefined, this.additionalPaths, tokenObject);
+      this.fields$ = this.fieldsConfig.getFields(undefined, tokenObject);
     } else {
-      this.fields$ = this.fieldsConfig.getFields(undefined, this.additionalPaths);
+      this.fields$ = this.fieldsConfig.getFields(undefined);
     }
   }
 

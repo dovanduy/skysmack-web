@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { LocalObject, LocalObjectStatus, PagedQuery } from '@skysmack/framework';
-import { ProductsSalesPrice, PRODUCTS_SALES_PRICE_AREA_KEY } from '@skysmack/packages-products-pricings';
+import { ProductsSalesPrice, PRODUCTS_SALES_PRICE_AREA_KEY, PRODUCTS_SALES_PRICE_ADDITIONAL_PATHS } from '@skysmack/packages-products-pricings';
 import { FormRule, SelectField, Field } from '@skysmack/ng-dynamic-forms';
 import { NgProductsStore, NgProductsActions } from '@skysmack/ng-products';
 import { LoadedPackage, getPackageDendencyAsStream } from '@skysmack/ng-framework';
@@ -22,9 +22,9 @@ export class NgProductsSalesPriceFieldsConfig extends FieldsConfig<ProductsSales
         public fieldProviders: FieldProviders,
         public productsActions: NgProductsActions,
         public skysmackStore: NgSkysmackStore
-    ) { super(fieldProviders); }
+    ) { super(fieldProviders, PRODUCTS_SALES_PRICE_ADDITIONAL_PATHS); }
 
-    protected getEntityFields(loadedPackage: LoadedPackage, additionalPaths: string[], entity?: LocalObject<ProductsSalesPrice, number>): Field[] {
+    protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<ProductsSalesPrice, number>): Field[] {
         const productPackage$ = getPackageDendencyAsStream(this.skysmackStore, loadedPackage._package.path, [0])
 
         const fields = [
@@ -61,7 +61,7 @@ export class NgProductsSalesPriceFieldsConfig extends FieldsConfig<ProductsSales
                         map(productPackage => this.productsActions.getPaged(productPackage.object.path, new PagedQuery())),
                         take(1)
                     ).subscribe();
-                },                
+                },
                 displayNameSelector: 'object.name',
                 order: 2,
                 showColumn: true

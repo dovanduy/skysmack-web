@@ -75,7 +75,7 @@ export class LoginComponent extends BaseComponent<any, any> implements OnInit {
   }
 
   public createForm() {
-    this.fields$ = this.fieldsConfig.getFields(undefined, this.additionalPaths);
+    this.fields$ = this.fieldsConfig.getFields(undefined);
   }
 
   public onSubmit(fh: FormHelper) {

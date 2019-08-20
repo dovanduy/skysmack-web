@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
-import { ProductType, PRODUCT_TYPES_AREA_KEY } from '@skysmack/packages-products';
+import { ProductType, PRODUCT_TYPES_AREA_KEY, PRODUCT_TYPES_ADDITIONAL_PATHS } from '@skysmack/packages-products';
 
 import { NgProductTypesValidation } from '@skysmack/ng-products';
 import { NgFieldStore, LoadedPackage } from '@skysmack/ng-framework';
-import { Router } from '@angular/router';
 import { FormRule, Field } from '@skysmack/ng-dynamic-forms';
 import { DocumentFieldsConfig, StringFieldComponent, HiddenFieldComponent } from '@skysmack/portal-fields';
 import { FieldProviders } from '@skysmack/ng-fields';
@@ -18,14 +17,13 @@ export class NgProductTypesFieldsConfig extends DocumentFieldsConfig<ProductType
 
     constructor(
         public fieldProviders: FieldProviders,
-        public fieldsStore: NgFieldStore,
-        public router: Router
+        public fieldsStore: NgFieldStore
     ) {
-        super(fieldProviders, fieldsStore, router);
+        super(fieldProviders, fieldsStore, PRODUCT_TYPES_ADDITIONAL_PATHS);
     }
 
 
-    protected getEntityFields(loadedPackage: LoadedPackage, additionalPaths: string[], entity?: LocalObject<ProductType, number>): Field[] {
+    protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<ProductType, number>): Field[] {
         const fields = [
             new Field({
                 component: StringFieldComponent,

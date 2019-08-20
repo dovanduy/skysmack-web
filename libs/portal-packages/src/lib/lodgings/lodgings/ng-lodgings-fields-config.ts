@@ -1,11 +1,10 @@
-import { Lodging, LODGINGS_AREA_KEY } from '@skysmack/packages-lodgings';
+import { Lodging, LODGINGS_AREA_KEY, LODGINGS_ADDITIONAL_PATHS } from '@skysmack/packages-lodgings';
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { LocalObject, LocalObjectStatus, PagedQuery } from '@skysmack/framework';
 import { NgLodgingsValidation, NgLodgingTypesStore, NgLodgingTypesActions } from '@skysmack/ng-lodgings';
 import { LoadedPackage, NgFieldStore } from '@skysmack/ng-framework';
 import { FormRule, Field, SelectField } from '@skysmack/ng-dynamic-forms';
-import { Router } from '@angular/router';
 import { DocumentFieldsConfig, StringFieldComponent, SelectFieldComponent, CheckboxFieldComponent, HiddenFieldComponent } from '@skysmack/portal-fields';
 import { FieldProviders } from '@skysmack/ng-fields';
 
@@ -16,16 +15,15 @@ export class NgLodgingsFieldsConfig extends DocumentFieldsConfig<Lodging, number
     public formRules: FormRule[] = [];
 
     constructor(
-        public router: Router,
         public fieldProvideres: FieldProviders,
         public fieldStore: NgFieldStore,
         public lodgingTypeStore: NgLodgingTypesStore,
         public lodgingTypesActions: NgLodgingTypesActions,
     ) {
-        super(fieldProvideres, fieldStore, router);
+        super(fieldProvideres, fieldStore, LODGINGS_ADDITIONAL_PATHS);
     }
 
-    protected getEntityFields(loadedPackage: LoadedPackage, additionalPaths: string[], entity?: LocalObject<Lodging, number>): Field[] {
+    protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<Lodging, number>): Field[] {
         const fields = [
             new Field({
                 component: StringFieldComponent,

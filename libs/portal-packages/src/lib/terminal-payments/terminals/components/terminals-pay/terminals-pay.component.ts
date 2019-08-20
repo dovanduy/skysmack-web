@@ -69,7 +69,7 @@ export class TerminalsPayComponent extends RecordFormComponent<TerminalsAppState
     ).pipe(
       switchMap(([invoiceId, loadedPackage]) => this.invoicesStore.getSingle(loadedPackage._package.dependencies[1], invoiceId).pipe(
         switchMap(invoice => {
-          return this.fieldsConfig.getFields(loadedPackage, this.additionalPaths, toLocalObject({
+          return this.fieldsConfig.getFields(loadedPackage, toLocalObject({
             invoiceId: invoice.object.id,
             clientId: undefined,
             terminalId: undefined,

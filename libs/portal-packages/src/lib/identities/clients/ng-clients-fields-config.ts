@@ -5,7 +5,7 @@ import { LoadedPackage } from '@skysmack/ng-framework';
 import { FormRule, Field } from '@skysmack/ng-dynamic-forms';
 import { FieldsConfig, FieldProviders } from '@skysmack/ng-fields';
 import { StringFieldComponent, HiddenFieldComponent } from '@skysmack/portal-fields';
-import { Client, CLIENTS_AREA_KEY } from '@skysmack/packages-identities';
+import { Client, CLIENTS_AREA_KEY, CLIENTS_ADDITIONAL_PATHS } from '@skysmack/packages-identities';
 import { NgClientsValidation } from '@skysmack/ng-identities';
 
 @Injectable({ providedIn: 'root' })
@@ -17,10 +17,10 @@ export class NgClientsFieldsConfig extends FieldsConfig<Client, string> {
     constructor(
         public fieldProviders: FieldProviders
     ) {
-        super(fieldProviders);
+        super(fieldProviders, CLIENTS_ADDITIONAL_PATHS);
     }
 
-    protected getEntityFields(loadedPackage: LoadedPackage, additionalPaths: string[], entity?: LocalObject<Client, string>): Field[] {
+    protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<Client, string>): Field[] {
         const fields = [
             new Field({
                 component: StringFieldComponent,

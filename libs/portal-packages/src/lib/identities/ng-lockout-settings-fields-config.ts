@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { FormRule, Field } from '@skysmack/ng-dynamic-forms';
-import { LockoutSettings, IDENTITES_AREA_KEY } from '@skysmack/packages-identities';
+import { LockoutSettings, IDENTITES_AREA_KEY, IDENTITES_ADDITIONAL_PATHS } from '@skysmack/packages-identities';
 import { LocalObject } from '@skysmack/framework';
 import { NgLockoutSettingsValidation } from '@skysmack/ng-identities';
 import { LoadedPackage } from '@skysmack/ng-framework';
@@ -14,10 +14,10 @@ export class NgLockoutSettingsFieldsConfig extends FieldsConfig<LockoutSettings,
     public formRules: FormRule[] = [];
 
     constructor(public fieldProviders: FieldProviders) {
-        super(fieldProviders);
+        super(fieldProviders, IDENTITES_ADDITIONAL_PATHS);
     }
 
-    protected getEntityFields(loadedPackage: LoadedPackage, additionalPaths: string[], settings?: LocalObject<LockoutSettings, unknown>): Field[] {
+    protected getEntityFields(loadedPackage: LoadedPackage, settings?: LocalObject<LockoutSettings, unknown>): Field[] {
         const fields = [
             new Field({
                 component: CheckboxFieldComponent,

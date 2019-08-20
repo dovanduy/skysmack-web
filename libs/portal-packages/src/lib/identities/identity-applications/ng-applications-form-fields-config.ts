@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { LocalObject } from '@skysmack/framework';
-import { APPLICATIONS_AREA_KEY, ApplicationDescriptor } from '@skysmack/packages-identities';
+import { APPLICATIONS_AREA_KEY, ApplicationDescriptor, APPLICATIONS_ADDITIONAL_PATHS } from '@skysmack/packages-identities';
 import { NgApplicationsValidation } from '@skysmack/ng-identities';
 import { LoadedPackage } from '@skysmack/ng-framework';
 import { StringFieldComponent, StringArrayFieldComponent } from '@skysmack/portal-fields';
@@ -17,10 +17,10 @@ export class NgApplicationsFormFieldsConfig extends FieldsConfig<ApplicationDesc
     public mode: 'create' | 'edit' = 'create'
 
     constructor(public fieldProviders: FieldProviders) {
-        super(fieldProviders);
+        super(fieldProviders, APPLICATIONS_ADDITIONAL_PATHS);
     }
 
-    protected getEntityFields(loadedPackage: LoadedPackage, additionalPaths: string[], entity?: LocalObject<ApplicationDescriptor, number>): Field[] {
+    protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<ApplicationDescriptor, number>): Field[] {
         const fields = [
             new Field({
                 component: StringFieldComponent,

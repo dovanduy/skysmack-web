@@ -3,7 +3,7 @@ import { LocalObject, PagedQuery } from '@skysmack/framework';
 
 import { NgInvoicesProductsValidation } from '@skysmack/ng-invoices-products';
 import { LoadedPackage, getPackageDendencyAsStream } from '@skysmack/ng-framework';
-import { INVOICES_PRODUCTS_AREA_KEY } from '@skysmack/packages-invoices-products';
+import { INVOICES_PRODUCTS_AREA_KEY, INVOICES_PRODUCTS_ADDITIONAL_PATHS } from '@skysmack/packages-invoices-products';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { map, take, switchMap } from 'rxjs/operators';
 import { Validators } from '@angular/forms';
@@ -27,10 +27,10 @@ export class NgInvoicesProductsAddProductsFieldsConfig extends FieldsConfig<any,
     public productsStore: NgProductsStore,
     public skysmackStore: NgSkysmackStore
   ) {
-    super(fieldProviders);
+    super(fieldProviders, INVOICES_PRODUCTS_ADDITIONAL_PATHS);
   }
 
-  protected getEntityFields(loadedPackage: LoadedPackage, additionalPaths: string[], entity?: LocalObject<any, unknown>): Field[] {
+  protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<any, unknown>): Field[] {
     const productsPackage$ = getPackageDendencyAsStream(this.skysmackStore, loadedPackage._package.path, [1]);
 
     const fields = [

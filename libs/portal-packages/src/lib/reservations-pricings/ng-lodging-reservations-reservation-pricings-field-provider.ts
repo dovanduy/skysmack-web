@@ -29,7 +29,7 @@ export class NgLodgingReservationsReservationsPricingsFieldProvider extends Fiel
         super();
     }
 
-    public getFields(packagePath: string, additionalPaths: string[], area: string, entity?: LocalObject<any, any>): Observable<Field[]> {
+    public getFields(packagePath: string, area: string, entity?: LocalObject<any, any>): Observable<Field[]> {
         if (area == LODGING_RESERVATIONS_AREA_KEY) {
             return this.skysmackStore.getPackages().pipe(
                 map(packages => packages.filter(_package => _package.object.type === ReservationsPricingsTypeId)),

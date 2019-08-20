@@ -15,7 +15,7 @@ export class NgFieldsAccessPoliciesFieldProvider extends FieldProvider {
 
     constructor() { super(); }
 
-    public getFields(packagePath: string, additionalPaths: string[], area: string, entity?: LocalObject<FieldSchemaViewModel, string>): Observable<Field[]> {
+    public getFields(packagePath: string, area: string, entity?: LocalObject<FieldSchemaViewModel, string>): Observable<Field[]> {
         if (area == UI_AREA_KEY) {
             return of([
                 new Field({

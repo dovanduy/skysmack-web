@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
-import { InvoicePayment, INVOICE_PAYMENTS_AREA_KEY } from '@skysmack/packages-invoices';
+import { InvoicePayment, INVOICE_PAYMENTS_AREA_KEY, INVOICE_PAYMENTS_ADDITIONAL_PATHS } from '@skysmack/packages-invoices';
 
 import { NgInvoicePaymentsValidation } from '@skysmack/ng-invoices';
 import { NgFieldStore, LoadedPackage } from '@skysmack/ng-framework';
-import { Router } from '@angular/router';
 import { FormRule, Field } from '@skysmack/ng-dynamic-forms';
 import { DocumentFieldsConfig, StringFieldComponent, IntFieldComponent, HiddenFieldComponent } from '@skysmack/portal-fields';
 import { FieldProviders } from '@skysmack/ng-fields';
@@ -18,14 +17,13 @@ export class NgInvoicePaymentsFieldsConfig extends DocumentFieldsConfig<InvoiceP
 
     constructor(
         public fieldProviders: FieldProviders,
-        public fieldsStore: NgFieldStore,
-        public router: Router
+        public fieldsStore: NgFieldStore
     ) {
-        super(fieldProviders, fieldsStore, router);
+        super(fieldProviders, fieldsStore, INVOICE_PAYMENTS_ADDITIONAL_PATHS);
     }
 
 
-    protected getEntityFields(loadedPackage: LoadedPackage, additionalPaths: string[], entity?: LocalObject<InvoicePayment, number>): Field[] {
+    protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<InvoicePayment, number>): Field[] {
         const fields = [
             new Field({
                 component: StringFieldComponent,

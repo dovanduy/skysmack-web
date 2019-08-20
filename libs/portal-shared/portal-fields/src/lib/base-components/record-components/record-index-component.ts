@@ -64,7 +64,7 @@ export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey>
 
     protected setFields() {
         this.fields$ = this.loadedPackage$.pipe(
-            switchMap(loadedPackage => this.fieldsConfig.getFields(loadedPackage, this.additionalPaths)),
+            switchMap(loadedPackage => this.fieldsConfig.getFields(loadedPackage)),
         );
     }
 

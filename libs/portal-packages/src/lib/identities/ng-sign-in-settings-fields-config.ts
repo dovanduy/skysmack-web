@@ -15,10 +15,10 @@ export class NgSignInSettingsFieldsConfig extends FieldsConfig<SignInSettings, u
     public formRules: FormRule[] = [];
 
     constructor(public fieldProviders: FieldProviders) {
-        super(fieldProviders);
+        super(fieldProviders, []);
     }
 
-    protected getEntityFields(loadedPackage: LoadedPackage, additionalPaths: string[], settings?: LocalObject<SignInSettings, unknown>): Field[] {
+    protected getEntityFields(loadedPackage: LoadedPackage, settings?: LocalObject<SignInSettings, unknown>): Field[] {
         const fields = [
             new Field({
                 component: CheckboxFieldComponent,

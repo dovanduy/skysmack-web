@@ -3,11 +3,10 @@ import { Validators } from '@angular/forms';
 import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
 
 import { NgFieldStore, LoadedPackage } from '@skysmack/ng-framework';
-import { Router } from '@angular/router';
 import { FormRule, Field } from '@skysmack/ng-dynamic-forms';
 import { DocumentFieldsConfig, StringFieldComponent, HiddenFieldComponent, LimitedStringFieldComponent } from '@skysmack/portal-fields';
 import { FieldProviders } from '@skysmack/ng-fields';
-import { TERMINAL_RECEIPTS_AREA_KEY, TerminalReceipt } from '@skysmack/packages-terminal-payments';
+import { TERMINAL_RECEIPTS_AREA_KEY, TerminalReceipt, TERMINAL_RECEIPTS_ADDITIONAL_PATHS } from '@skysmack/packages-terminal-payments';
 import { NgTerminalReceiptsValidation } from '@skysmack/ng-terminal-payments';
 
 @Injectable({ providedIn: 'root' })
@@ -18,13 +17,12 @@ export class NgTerminalReceiptsFieldsConfig extends DocumentFieldsConfig<Termina
 
     constructor(
         public fieldProviders: FieldProviders,
-        public fieldsStore: NgFieldStore,
-        public router: Router
+        public fieldsStore: NgFieldStore
     ) {
-        super(fieldProviders, fieldsStore, router);
+        super(fieldProviders, fieldsStore, TERMINAL_RECEIPTS_ADDITIONAL_PATHS);
     }
 
-    protected getEntityFields(loadedPackage: LoadedPackage, additionalPaths: string[], entity?: LocalObject<TerminalReceipt, number>): Field[] {
+    protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<TerminalReceipt, number>): Field[] {
         const fields = [
             new Field({
                 component: LimitedStringFieldComponent,

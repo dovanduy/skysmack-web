@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
-import { Invoice, INVOICES_AREA_KEY } from '@skysmack/packages-invoices';
+import { Invoice, INVOICES_AREA_KEY, INVOICES_ADDITIONAL_PATHS } from '@skysmack/packages-invoices';
 
 import { NgInvoicesValidation } from '@skysmack/ng-invoices';
 import { LoadedPackage } from '@skysmack/ng-framework';
@@ -22,10 +22,10 @@ export class NgInvoicesFieldsConfig extends FieldsConfig<Invoice, number> {
   constructor(
     public fieldProviders: FieldProviders
   ) {
-    super(fieldProviders);
+    super(fieldProviders, INVOICES_ADDITIONAL_PATHS);
   }
 
-  protected getEntityFields(loadedPackage: LoadedPackage, additionalPaths: string[], entity?: LocalObject<Invoice, number>): Field[] {
+  protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<Invoice, number>): Field[] {
     const fields = [
       new Field({
         component: StringFieldComponent,

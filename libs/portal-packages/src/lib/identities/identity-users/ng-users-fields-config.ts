@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { FormRule, CustomValidators, Field } from '@skysmack/ng-dynamic-forms';
 import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
-import { User, USERS_AREA_KEY } from '@skysmack/packages-identities';
+import { User, USERS_AREA_KEY, USERS_ADDITIONAL_PATHS } from '@skysmack/packages-identities';
 import { NgUsersValidation } from '@skysmack/ng-identities';
 import { LoadedPackage } from '@skysmack/ng-framework';
 import { FieldsConfig, FieldProviders } from '@skysmack/ng-fields';
@@ -17,10 +17,10 @@ export class NgUsersFieldsConfig extends FieldsConfig<User, number> {
     public mode: 'create' | 'edit' = 'create';
 
     constructor(public fieldProviders: FieldProviders) {
-        super(fieldProviders);
+        super(fieldProviders, USERS_ADDITIONAL_PATHS);
     }
 
-    protected getEntityFields(loadedPackage: LoadedPackage, additionalPaths: string[], entity?: LocalObject<User, number>): Field[] {
+    protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<User, number>): Field[] {
         const fields = [
             new Field({
                 component: EmailFieldComponent,

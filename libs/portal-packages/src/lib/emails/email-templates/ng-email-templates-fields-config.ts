@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
-import { EmailTemplate, EMAIL_TEMPLATES_AREA_KEY } from '@skysmack/packages-emails';
+import { EmailTemplate, EMAIL_TEMPLATES_AREA_KEY, EMAIL_TEMPLATES_ADDITIONAL_PATHS } from '@skysmack/packages-emails';
 
 import { StringFieldComponent, HiddenFieldComponent, EmailTemplateFieldComponent } from '@skysmack/portal-fields';
 import { NgEmailTemplatesValidation } from '../../../../../ng-packages/ng-emails/src/lib';
@@ -21,10 +21,10 @@ export class NgEmailTemplatesFieldsConfig extends FieldsConfig<EmailTemplate, nu
   constructor(
     public fieldProviders: FieldProviders
   ) {
-    super(fieldProviders);
+    super(fieldProviders, EMAIL_TEMPLATES_ADDITIONAL_PATHS);
   }
 
-  protected getEntityFields(loadedPackage: LoadedPackage, additionalPaths: string[], entity?: LocalObject<EmailTemplate, number>): Field[] {
+  protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<EmailTemplate, number>): Field[] {
     const fields = [
       new Field({
         value: entity ? entity.object.from : undefined,

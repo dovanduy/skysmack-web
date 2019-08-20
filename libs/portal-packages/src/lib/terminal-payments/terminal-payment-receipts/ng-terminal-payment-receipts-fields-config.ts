@@ -3,11 +3,10 @@ import { Validators } from '@angular/forms';
 import { LocalObject, LocalObjectStatus, PagedQuery } from '@skysmack/framework';
 
 import { NgFieldStore, LoadedPackage, getPackageDendencyAsStream } from '@skysmack/ng-framework';
-import { Router } from '@angular/router';
 import { FormRule, Field, SelectField } from '@skysmack/ng-dynamic-forms';
 import { DocumentFieldsConfig, StringFieldComponent, HiddenFieldComponent, IntFieldComponent, SelectFieldComponent } from '@skysmack/portal-fields';
 import { FieldProviders } from '@skysmack/ng-fields';
-import { TERMINAL_PAYMENT_RECEIPTS_AREA_KEY, TerminalPaymentReceipt } from '@skysmack/packages-terminal-payments';
+import { TERMINAL_PAYMENT_RECEIPTS_AREA_KEY, TerminalPaymentReceipt, TERMINAL_PAYMENT_RECEIPTS_ADDITIONAL_PATHS } from '@skysmack/packages-terminal-payments';
 import { NgTerminalPaymentReceiptsValidation } from '@skysmack/ng-terminal-payments';
 import { NgInvoicePaymentsStore, NgInvoicePaymentsActions } from '@skysmack/ng-invoices';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
@@ -24,13 +23,12 @@ export class NgTerminalPaymentReceiptsFieldsConfig extends DocumentFieldsConfig<
         public fieldsStore: NgFieldStore,
         public invoicePaymentsStore: NgInvoicePaymentsStore,
         public invoicePaymentsActions: NgInvoicePaymentsActions,
-        public skysmackStore: NgSkysmackStore,
-        public router: Router
+        public skysmackStore: NgSkysmackStore
     ) {
-        super(fieldProviders, fieldsStore, router);
+        super(fieldProviders, fieldsStore, TERMINAL_PAYMENT_RECEIPTS_ADDITIONAL_PATHS);
     }
 
-    protected getEntityFields(loadedPackage: LoadedPackage, additionalPaths: string[], entity?: LocalObject<TerminalPaymentReceipt, number>): Field[] {
+    protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<TerminalPaymentReceipt, number>): Field[] {
         const invoicesPackage$ = getPackageDendencyAsStream(this.skysmackStore, loadedPackage._package.path, [1]);
 
         const fields = [

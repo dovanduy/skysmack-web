@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { FormRule, Field } from '@skysmack/ng-dynamic-forms';
 import { LocalObject, toLocalObject } from '@skysmack/framework';
-import { LodgingSettings, LODGINGS_AREA_KEY } from '@skysmack/packages-lodgings';
+import { LodgingSettings, LODGINGS_AREA_KEY, LODGINGS_ADDITIONAL_PATHS } from '@skysmack/packages-lodgings';
 import { NgLodgingSettingsValidation } from '@skysmack/ng-lodgings';
 import { LoadedPackage } from '@skysmack/ng-framework';
 import { FieldsConfig, FieldProviders } from '@skysmack/ng-fields';
@@ -14,10 +14,10 @@ export class NgLodgingSettingsFieldsConfig extends FieldsConfig<LodgingSettings,
     public formRules: FormRule[] = [];
 
     constructor(public fieldProviders: FieldProviders) {
-        super(fieldProviders);
+        super(fieldProviders, LODGINGS_ADDITIONAL_PATHS);
     }
 
-    protected getEntityFields(loadedPackage: LoadedPackage, additionalPaths: string[], settings?: LocalObject<LodgingSettings, unknown>): Field[] {
+    protected getEntityFields(loadedPackage: LoadedPackage, settings?: LocalObject<LodgingSettings, unknown>): Field[] {
         let initializedSettings: LocalObject<LodgingSettings, unknown>;
         if (Object.keys(settings).length > 0) {
             Object.assign(settings.object, new LodgingSettings({}));

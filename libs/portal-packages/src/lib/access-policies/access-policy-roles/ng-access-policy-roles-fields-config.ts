@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-import { AccessPolicyRole, AccessPolicyRoleKey, ACCESS_POLICY_ROLES_AREA_KEY, AccessPolicyRule } from '@skysmack/packages-skysmack-core';
+import { AccessPolicyRole, AccessPolicyRoleKey, ACCESS_POLICY_ROLES_AREA_KEY, AccessPolicyRule, ACCESS_POLICY_ROLES_ADDITIONAL_PATHS } from '@skysmack/packages-skysmack-core';
 import { FormRule, Field, SelectFieldOption, SelectField } from '@skysmack/ng-dynamic-forms';
-import { Router } from '@angular/router';
 import { LoadedPackage } from '@skysmack/ng-framework';
 import { LocalObject, LocalObjectStatus, PagedQuery } from '@skysmack/framework';
 import { Validators } from '@angular/forms';
@@ -24,13 +23,10 @@ export class NgAccessPolicyRolesFieldsConfig extends FieldsConfig<AccessPolicyRo
         public rolesActions: NgRolesActions,
         public accessPolicyRolesStore: NgAccessPolicyRolesStore,
         public accessPolicyRolesActions: NgAccessPolicyRolesActions,
-        public fieldProviders: FieldProviders,
-        public router: Router
-    ) { super(fieldProviders); }
+        public fieldProviders: FieldProviders
+    ) { super(fieldProviders, ACCESS_POLICY_ROLES_ADDITIONAL_PATHS); }
 
-    protected getEntityFields(loadedPackage: LoadedPackage, additionalPaths: string[], entity?: LocalObject<AccessPolicyRole, AccessPolicyRoleKey>): Field[] {
-        const packagePath = this.router.url.split('/')[1];
-
+    protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<AccessPolicyRole, AccessPolicyRoleKey>): Field[] {
         const modifyDisplayName = (options: SelectFieldOption[], optionsData: LocalObject<AccessPolicyRule, number>[]) => {
             const accessPolicyRules = optionsData;
             return options.map(option => {

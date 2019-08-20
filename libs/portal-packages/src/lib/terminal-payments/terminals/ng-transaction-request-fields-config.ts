@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { LocalObject, PagedQuery, toLocalObject } from '@skysmack/framework';
-import { TERMINALS_AREA_KEY, TransactionRequest, Currency, TerminalStatus, ConnectionKey, Connection } from '@skysmack/packages-terminal-payments';
+import { TERMINALS_AREA_KEY, TransactionRequest, Currency, TerminalStatus, ConnectionKey, Connection, TERMINALS_ADDITIONAL_PATHS } from '@skysmack/packages-terminal-payments';
 import { LoadedPackage } from '@skysmack/ng-framework';
 import { Validators } from '@angular/forms';
 import { NgTransactionRequestValidation, NgConnectionsStore, NgConnectionsActions, NgTerminalsStore, NgTerminalsActions } from '@skysmack/ng-terminal-payments';
@@ -27,10 +27,10 @@ export class NgTransactionRequestFieldsConfig extends FieldsConfig<TransactionRe
         public terminalsStore: NgTerminalsStore,
         public terminalsActions: NgTerminalsActions
     ) {
-        super(fieldProviders);
+        super(fieldProviders, TERMINALS_ADDITIONAL_PATHS);
     }
 
-    protected getEntityFields(loadedPackage: LoadedPackage, additionalPaths: string[], entity?: LocalObject<TransactionRequest, unknown>): Field[] {
+    protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<TransactionRequest, unknown>): Field[] {
         const modifyDisplayName = (options: SelectFieldOption[], optionsData: LocalObject<Connection, ConnectionKey>[]) => {
             const connections = optionsData;
             return options.map(option => {

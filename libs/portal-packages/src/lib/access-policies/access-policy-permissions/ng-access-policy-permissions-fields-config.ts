@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { LocalObject, LocalObjectStatus, PagedQuery } from '@skysmack/framework';
-import { AccessPolicyPermission, AccessPolicyRule, ACCESS_POLICY_PERMISSIONS_AREA_KEY } from '@skysmack/packages-skysmack-core';
+import { AccessPolicyPermission, AccessPolicyRule, ACCESS_POLICY_PERMISSIONS_AREA_KEY, ACCESS_POLICY_PERMISSIONS_ADDITIONAL_PATHS } from '@skysmack/packages-skysmack-core';
 import { LoadedPackage } from '@skysmack/ng-framework';
 import { FormRule, SelectFieldOption, SelectField, Field } from '@skysmack/ng-dynamic-forms';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
@@ -20,9 +20,9 @@ export class NgAccessPolicyPermissionsFieldsConfig extends FieldsConfig<AccessPo
         public accessPolicyRulesActions: NgAccessPolicyRulesActions,
         public skysmackStore: NgSkysmackStore,
         public fieldProviders: FieldProviders
-    ) { super(fieldProviders); }
+    ) { super(fieldProviders, ACCESS_POLICY_PERMISSIONS_ADDITIONAL_PATHS); }
 
-    protected getEntityFields(loadedPackage: LoadedPackage, additionalPaths: string[], entity?: LocalObject<AccessPolicyPermission, number>): Field[] {
+    protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<AccessPolicyPermission, number>): Field[] {
 
         const modifyDisplayName = (options: SelectFieldOption[], optionsData: LocalObject<AccessPolicyRule, number>[]) => {
             const accessPolicyRules = optionsData;
