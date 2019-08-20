@@ -64,7 +64,7 @@ export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey>
 
     protected setFields() {
         this.fields$ = this.loadedPackage$.pipe(
-            switchMap(loadedPackage => this.fieldsConfig.getFields(loadedPackage)),
+            switchMap(loadedPackage => this.fieldsConfig.getFields(loadedPackage, this.additionalPaths)),
         );
     }
 
@@ -114,7 +114,7 @@ export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey>
                     if (lastPage) {
                         // Part 2: Load next page
                         if (queryDictionary && queryDictionary.totalCount && this.totalCount !== queryDictionary.totalCount) {
-                            this.totalCount = queryDictionary.totalCount;                            
+                            this.totalCount = queryDictionary.totalCount;
                             this.totalCount$.next(queryDictionary.totalCount);
                         }
                         const lastPageLinks = lastPage.links;
@@ -158,13 +158,13 @@ export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey>
                 const [pages, entities] = values;
                 if (pages && entities) {
                     return [
-                    ...entities.filter(entity => entity.isNew && !pages.includes(entity.objectIdentifier)), 
-                    ...linq(pages)
-                        .defined()
-                        .distinct()
-                        .select(entityId => entities.filter(entity => entity.objectIdentifier === entityId)[0])
-                        .defined()
-                        .ok()
+                        ...entities.filter(entity => entity.isNew && !pages.includes(entity.objectIdentifier)),
+                        ...linq(pages)
+                            .defined()
+                            .distinct()
+                            .select(entityId => entities.filter(entity => entity.objectIdentifier === entityId)[0])
+                            .defined()
+                            .ok()
                     ];
                 }
             }),

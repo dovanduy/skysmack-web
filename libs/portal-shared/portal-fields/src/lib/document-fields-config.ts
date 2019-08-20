@@ -11,7 +11,7 @@ import { StringFieldComponent } from './field-components/components/string-field
 import { FieldsConfig } from '@skysmack/ng-fields';
 import { Observable, combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { NgFieldStore, LoadedPackage, getAdditionalPaths } from '@skysmack/ng-framework';
+import { NgFieldStore, LoadedPackage } from '@skysmack/ng-framework';
 import { FieldProviders } from '@skysmack/ng-fields';
 import { Router } from '@angular/router';
 
@@ -24,12 +24,10 @@ export abstract class DocumentFieldsConfig<TRecord, TKey> extends FieldsConfig<T
         super(fieldProviders);
     }
 
-    public getFields(loadedPackage: LoadedPackage, entity?: LocalObject<TRecord, TKey>): Observable<Field[]> {
-        const packagePath = this.router.url.split('/')[1];
-        const additionalPaths = getAdditionalPaths(this.router, packagePath);
+    public getFields(loadedPackage: LoadedPackage, additionalPaths: string[], entity?: LocalObject<TRecord, TKey>): Observable<Field[]> {
         const stateKey = additionalPaths.length > 0 ? `${loadedPackage._package.path}-${additionalPaths.join('-')}` : loadedPackage._package.path;
         return combineLatest(
-            this.getRecordFields(loadedPackage, entity),
+            this.getRecordFields(loadedPackage, additionalPaths, entity),
             this.fieldsStore.get(stateKey)
         ).pipe(
             map(values => values[0].concat(this.toFields(entity, values[1]))),

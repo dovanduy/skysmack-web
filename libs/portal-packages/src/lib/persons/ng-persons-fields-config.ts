@@ -26,8 +26,7 @@ export class NgPersonsFieldsConfig extends DocumentFieldsConfig<Person, number> 
         super(fieldProviders, fieldsStore, router);
     }
 
-
-    protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<Person, number>): Field[] {
+    protected getEntityFields(loadedPackage: LoadedPackage, additionalPaths: string[], entity?: LocalObject<Person, number>): Field[] {
         const fields = [
             new Field({
                 component: StringFieldComponent,

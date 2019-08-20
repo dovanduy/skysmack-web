@@ -17,7 +17,7 @@ export class NgLockoutSettingsFieldsConfig extends FieldsConfig<LockoutSettings,
         super(fieldProviders);
     }
 
-    protected getEntityFields(loadedPackage: LoadedPackage, settings?: LocalObject<LockoutSettings, unknown>): Field[] {
+    protected getEntityFields(loadedPackage: LoadedPackage, additionalPaths: string[], settings?: LocalObject<LockoutSettings, unknown>): Field[] {
         const fields = [
             new Field({
                 component: CheckboxFieldComponent,

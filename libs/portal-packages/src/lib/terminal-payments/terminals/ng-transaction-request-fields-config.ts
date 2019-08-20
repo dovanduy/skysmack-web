@@ -30,7 +30,7 @@ export class NgTransactionRequestFieldsConfig extends FieldsConfig<TransactionRe
         super(fieldProviders);
     }
 
-    protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<TransactionRequest, unknown>): Field[] {
+    protected getEntityFields(loadedPackage: LoadedPackage, additionalPaths: string[], entity?: LocalObject<TransactionRequest, unknown>): Field[] {
         const modifyDisplayName = (options: SelectFieldOption[], optionsData: LocalObject<Connection, ConnectionKey>[]) => {
             const connections = optionsData;
             return options.map(option => {

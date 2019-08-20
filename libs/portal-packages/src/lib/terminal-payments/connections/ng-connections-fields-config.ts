@@ -28,7 +28,7 @@ export class NgConnectionsFieldsConfig extends FieldsConfig<Connection, Connecti
         super(fieldProviders);
     }
 
-    protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<Connection, ConnectionKey>): Field[] {
+    protected getEntityFields(loadedPackage: LoadedPackage, additionalPaths: string[], entity?: LocalObject<Connection, ConnectionKey>): Field[] {
         const identitiesPackage$ = getPackageDendencyAsStream(this.skysmackStore, loadedPackage._package.path, [0]);
 
 

@@ -18,7 +18,7 @@ export class NgApplicationsFieldsConfig extends FieldsConfig<Application, number
         super(fieldProviders);
     }
 
-    protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<Application, number>): Field[] {
+    protected getEntityFields(loadedPackage: LoadedPackage, additionalPaths: string[], entity?: LocalObject<Application, number>): Field[] {
         const fields = [
             new Field({
                 component: StringFieldComponent,

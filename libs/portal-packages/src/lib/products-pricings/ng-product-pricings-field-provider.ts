@@ -25,7 +25,7 @@ export class NgProductPricingsFieldProvider extends FieldProvider {
         super();
     }
 
-    public getFields(packagePath: string, area: string, entity?: LocalObject<any, any>): Observable<Field[]> {
+    public getFields(packagePath: string, additionalPaths: string[], area: string, entity?: LocalObject<any, any>): Observable<Field[]> {
         if (area == PRODUCTS_AREA_KEY) {
             return this.skysmackStore.getPackages().pipe(
                 map(packages => packages.filter(_package => _package.object.type === ProductsPricingsTypeId)),

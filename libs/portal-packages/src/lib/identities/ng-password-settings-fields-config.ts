@@ -17,7 +17,7 @@ export class NgPasswordSettingsFieldsConfig extends FieldsConfig<PasswordSetting
         super(fieldProviders);
     }
 
-    protected getEntityFields(loadedPackage: LoadedPackage, settings?: LocalObject<PasswordSettings, unknown>): Field[] {
+    protected getEntityFields(loadedPackage: LoadedPackage, additionalPaths: string[], settings?: LocalObject<PasswordSettings, unknown>): Field[] {
         const fields = [
             new Field({
                 component: IntFieldComponent,

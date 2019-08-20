@@ -20,7 +20,7 @@ export class NgUsersFieldsConfig extends FieldsConfig<User, number> {
         super(fieldProviders);
     }
 
-    protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<User, number>): Field[] {
+    protected getEntityFields(loadedPackage: LoadedPackage, additionalPaths: string[], entity?: LocalObject<User, number>): Field[] {
         const fields = [
             new Field({
                 component: EmailFieldComponent,

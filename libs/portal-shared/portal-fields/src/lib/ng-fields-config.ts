@@ -6,7 +6,7 @@ import { FieldsConfig } from '@skysmack/ng-fields';
 import { StringFieldComponent } from './field-components/components/string-field/string-field.component';
 import { SelectFieldComponent } from './field-components/components/select-field/select-field.component';
 import { ValidatorsFieldComponent } from './field-components/components/validators-field/validators-field.component';
-import { NgFieldStore, getAdditionalPaths } from '@skysmack/ng-framework';
+import { NgFieldStore } from '@skysmack/ng-framework';
 import { LoadedPackage } from '@skysmack/ng-framework';
 import { FieldProviders } from '@skysmack/ng-fields';
 import { Router } from '@angular/router';
@@ -36,9 +36,8 @@ export class NgFieldsConfig extends FieldsConfig<FieldSchemaViewModel, string> {
      * @param availableFields Possible dynamic fields to create. Recieved from the backend.
      * @param field Optional field can be providedto set default values. Used to edit an existing field.
      */
-    protected getEntityFields(loadedPackage: LoadedPackage, field?: LocalObject<FieldSchemaViewModel, string>): Field[] {
+    protected getEntityFields(loadedPackage: LoadedPackage, additionalPaths: string[], field?: LocalObject<FieldSchemaViewModel, string>): Field[] {
         let stateKey = loadedPackage._package.path;
-        const additionalPaths = getAdditionalPaths(this.router, loadedPackage._package.path);
 
         if (additionalPaths && additionalPaths.length > 0) {
             stateKey = stateKey + '-' + additionalPaths;
@@ -91,7 +90,7 @@ export class NgFieldsConfig extends FieldsConfig<FieldSchemaViewModel, string> {
         return fields;
     }
 
-    protected getProvidedFields(loadedPackage: LoadedPackage, entity?: LocalObject<FieldSchemaViewModel, string>): Observable<Field[]> {
+    protected getProvidedFields(loadedPackage: LoadedPackage, additionalPaths: string[], entity?: LocalObject<FieldSchemaViewModel, string>): Observable<Field[]> {
         return this.fieldProviders.providers$.pipe(
             switchMap(providers => {
                 const extractedProviders = providers['fields'];
@@ -99,7 +98,7 @@ export class NgFieldsConfig extends FieldsConfig<FieldSchemaViewModel, string> {
                 if (extractedProviders && extractedProviders.length > 0) {
                     return combineLatest(
                         extractedProviders.map(provider => {
-                            return provider.getFields(loadedPackage._package.path, this.area, entity);
+                            return provider.getFields(loadedPackage._package.path, additionalPaths, this.area, entity);
                         })
                     ).pipe(
                         distinctUntilChanged(),

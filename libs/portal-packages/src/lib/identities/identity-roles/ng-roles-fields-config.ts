@@ -18,7 +18,7 @@ export class NgRolesFieldsConfig extends FieldsConfig<Role, number> {
         super(fieldProviders);
     }
 
-    protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<Role, number>): Field[] {
+    protected getEntityFields(loadedPackage: LoadedPackage, additionalPaths: string[], entity?: LocalObject<Role, number>): Field[] {
         const fields = [
             new Field({
                 component: StringFieldComponent,

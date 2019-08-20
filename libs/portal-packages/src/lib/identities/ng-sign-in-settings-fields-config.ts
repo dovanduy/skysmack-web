@@ -18,7 +18,7 @@ export class NgSignInSettingsFieldsConfig extends FieldsConfig<SignInSettings, u
         super(fieldProviders);
     }
 
-    protected getEntityFields(loadedPackage: LoadedPackage, settings?: LocalObject<SignInSettings, unknown>): Field[] {
+    protected getEntityFields(loadedPackage: LoadedPackage, additionalPaths: string[], settings?: LocalObject<SignInSettings, unknown>): Field[] {
         const fields = [
             new Field({
                 component: CheckboxFieldComponent,

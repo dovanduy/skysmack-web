@@ -27,7 +27,7 @@ export class NgLodgingReservationsFieldsConfig extends FieldsConfig<LodgingReser
         super(fieldProviders);
     }
 
-    protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<LodgingReservation, number>): Field[] {
+    protected getEntityFields(loadedPackage: LoadedPackage, additionalPaths: string[], entity?: LocalObject<LodgingReservation, number>): Field[] {
         const depPackagePath = loadedPackage._package.dependencies[0];
 
         const fields = [

@@ -30,7 +30,7 @@ export class NgInvoicesCashPaymentsFieldsConfig extends FieldsConfig<CashPayment
         super(fieldProviders);
     }
 
-    protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<CashPayment, number>): Field[] {
+    protected getEntityFields(loadedPackage: LoadedPackage, additionalPaths: string[], entity?: LocalObject<CashPayment, number>): Field[] {
         const invoicePackage$ = this.skysmackStore.getPackages().pipe(
             map(packages => packages.find(_package => _package.object.path === loadedPackage._package.dependencies[0]))
         );
@@ -44,7 +44,8 @@ export class NgInvoicesCashPaymentsFieldsConfig extends FieldsConfig<CashPayment
                 displaySubKey: 'object.currencyCode',
                 optionsData$: invoicePackage$.pipe(switchMap(invoicePackage => this.invoicesStore.get(invoicePackage.object.path))),
                 displayNameSelector: 'object.currencyCode',
-                getDependencies: () => { invoicePackage$.pipe(map(invoicePackage => this.invoicesActions.getPaged(invoicePackage.object.path, new PagedQuery())),
+                getDependencies: () => {
+                    invoicePackage$.pipe(map(invoicePackage => this.invoicesActions.getPaged(invoicePackage.object.path, new PagedQuery())),
                         take(1)
                     ).subscribe();
                 },

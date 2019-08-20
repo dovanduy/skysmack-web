@@ -21,7 +21,7 @@ export class NgTerminalsFieldsConfig extends FieldsConfig<Terminal, number> {
         super(fieldProviders);
     }
 
-    protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<Terminal, number>): Field[] {
+    protected getEntityFields(loadedPackage: LoadedPackage, additionalPaths: string[], entity?: LocalObject<Terminal, number>): Field[] {
         const fields = [
             new Field({
                 component: StringFieldComponent,

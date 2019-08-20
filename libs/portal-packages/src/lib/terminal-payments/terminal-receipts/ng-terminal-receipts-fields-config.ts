@@ -24,7 +24,7 @@ export class NgTerminalReceiptsFieldsConfig extends DocumentFieldsConfig<Termina
         super(fieldProviders, fieldsStore, router);
     }
 
-    protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<TerminalReceipt, number>): Field[] {
+    protected getEntityFields(loadedPackage: LoadedPackage, additionalPaths: string[], entity?: LocalObject<TerminalReceipt, number>): Field[] {
         const fields = [
             new Field({
                 component: LimitedStringFieldComponent,

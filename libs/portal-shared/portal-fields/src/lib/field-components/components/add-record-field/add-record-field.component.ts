@@ -24,7 +24,7 @@ export class AddRecordFieldComponent extends FieldBaseComponent<AddField> implem
     super.ngOnInit();
     const addField = this.field as AddField;
     this.addFields$ = this.skysmackStore.getCurrentPackage(addField.packagePath).pipe(
-      switchMap(loadedPackage => addField.fieldsConfig.getFields(loadedPackage))
+      switchMap(loadedPackage => addField.fieldsConfig.getFields(loadedPackage, addField.additionalPaths))
     );
   }
 

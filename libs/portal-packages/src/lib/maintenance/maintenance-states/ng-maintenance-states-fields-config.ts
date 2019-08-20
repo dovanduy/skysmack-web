@@ -20,7 +20,7 @@ export class NgMaintenanceStatesFieldsConfig extends FieldsConfig<MaintenanceSta
         super(fieldProviders);
     }
 
-    protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<MaintenanceState, number>): Field[] {
+    protected getEntityFields(loadedPackage: LoadedPackage, additionalPaths: string[], entity?: LocalObject<MaintenanceState, number>): Field[] {
         const fields = [
             new Field({
                 component: StringFieldComponent,

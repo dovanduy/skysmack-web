@@ -17,7 +17,7 @@ export class NgEmailsSmptSettingsFieldsConfig extends FieldsConfig<SmtpClientSet
         super(fieldProviders);
     }
 
-    protected getEntityFields(loadedPackage: LoadedPackage, settings?: LocalObject<SmtpClientSettings, unknown>): Field[] {
+    protected getEntityFields(loadedPackage: LoadedPackage, additionalPaths: string[], settings?: LocalObject<SmtpClientSettings, unknown>): Field[] {
         const fields = [
             new Field({
                 component: StringFieldComponent,

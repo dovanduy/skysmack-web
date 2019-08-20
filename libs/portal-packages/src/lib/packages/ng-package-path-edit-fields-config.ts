@@ -22,7 +22,7 @@ export class NgPackagePathEditFieldsConfig extends FieldsConfig<Package, string>
         super(fieldProviders);
     }
 
-    protected getEntityFields(loadedPackage: LoadedPackage, _package?: LocalObject<Package, string>): Field[] {
+    protected getEntityFields(loadedPackage: LoadedPackage, additionalPaths: string[], _package?: LocalObject<Package, string>): Field[] {
         return [
             new Field({
                 component: StringFieldComponent,

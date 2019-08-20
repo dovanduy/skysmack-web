@@ -24,7 +24,7 @@ export class NgLodgingTypesFieldsConfig extends DocumentFieldsConfig<LodgingType
         super(fieldProviders, fieldsStore, router);
     }
 
-    protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<LodgingType, number>): Field[] {
+    protected getEntityFields(loadedPackage: LoadedPackage, additionalPaths: string[], entity?: LocalObject<LodgingType, number>): Field[] {
         const fields = [
             new Field({
                 component: StringFieldComponent,

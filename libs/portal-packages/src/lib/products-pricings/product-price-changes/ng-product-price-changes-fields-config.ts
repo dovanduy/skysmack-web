@@ -25,7 +25,7 @@ export class NgProductPriceChangesFieldsConfig extends FieldsConfig<ProductPrice
         super(fieldProviders);
     }
 
-    protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<ProductPriceChange, number>): Field[] {
+    protected getEntityFields(loadedPackage: LoadedPackage, additionalPaths: string[], entity?: LocalObject<ProductPriceChange, number>): Field[] {
         const fields = [
             new SelectField({
                 component: SelectFieldComponent,

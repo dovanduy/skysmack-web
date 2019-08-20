@@ -24,7 +24,7 @@ export class NgEmailTemplatesFieldsConfig extends FieldsConfig<EmailTemplate, nu
     super(fieldProviders);
   }
 
-  protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<EmailTemplate, number>): Field[] {
+  protected getEntityFields(loadedPackage: LoadedPackage, additionalPaths: string[], entity?: LocalObject<EmailTemplate, number>): Field[] {
     const fields = [
       new Field({
         value: entity ? entity.object.from : undefined,

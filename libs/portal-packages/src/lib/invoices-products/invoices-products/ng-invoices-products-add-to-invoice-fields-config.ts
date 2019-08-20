@@ -30,7 +30,7 @@ export class NgInvoicesProductsAddToInvoiceFieldsConfig extends FieldsConfig<any
     super(fieldProviders);
   }
 
-  protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<any, unknown>): Field[] {
+  protected getEntityFields(loadedPackage: LoadedPackage, additionalPaths: string[], entity?: LocalObject<any, unknown>): Field[] {
     const invoicesPackage$ = getPackageDendencyAsStream(this.skysmackStore, loadedPackage._package.path, [0]);
 
     const fields = [

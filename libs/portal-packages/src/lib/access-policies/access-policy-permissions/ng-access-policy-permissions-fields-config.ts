@@ -22,7 +22,7 @@ export class NgAccessPolicyPermissionsFieldsConfig extends FieldsConfig<AccessPo
         public fieldProviders: FieldProviders
     ) { super(fieldProviders); }
 
-    protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<AccessPolicyPermission, number>): Field[] {
+    protected getEntityFields(loadedPackage: LoadedPackage, additionalPaths: string[], entity?: LocalObject<AccessPolicyPermission, number>): Field[] {
 
         const modifyDisplayName = (options: SelectFieldOption[], optionsData: LocalObject<AccessPolicyRule, number>[]) => {
             const accessPolicyRules = optionsData;

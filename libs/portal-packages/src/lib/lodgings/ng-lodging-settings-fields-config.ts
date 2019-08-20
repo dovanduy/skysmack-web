@@ -17,7 +17,7 @@ export class NgLodgingSettingsFieldsConfig extends FieldsConfig<LodgingSettings,
         super(fieldProviders);
     }
 
-    protected getEntityFields(loadedPackage: LoadedPackage, settings?: LocalObject<LodgingSettings, unknown>): Field[] {
+    protected getEntityFields(loadedPackage: LoadedPackage, additionalPaths: string[], settings?: LocalObject<LodgingSettings, unknown>): Field[] {
         let initializedSettings: LocalObject<LodgingSettings, unknown>;
         if (Object.keys(settings).length > 0) {
             Object.assign(settings.object, new LodgingSettings({}));

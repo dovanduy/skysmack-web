@@ -27,7 +27,7 @@ export class SetPasswordComponent extends FormBaseComponent<UsersAppState, User,
 
   ngOnInit() {
     super.ngOnInit();
-    this.fields$ = this.fieldsConfig.getFields(undefined);
+    this.fields$ = this.fieldsConfig.getFields(undefined, this.additionalPaths);
   }
 
   public onSetPasswordSubmit(fh: FormHelper) {

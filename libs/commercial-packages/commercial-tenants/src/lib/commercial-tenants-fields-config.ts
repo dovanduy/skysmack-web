@@ -17,7 +17,7 @@ export class CommercialTenantsFieldsConfig extends FieldsConfig<any, any>{
     constructor(public fieldProviders: FieldProviders) {
         super(fieldProviders);
     }
-    protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<any, any>): Field[] {
+    protected getEntityFields(loadedPackage: LoadedPackage, additionalPaths: string[], entity?: LocalObject<any, any>): Field[] {
         const fields = [
             new Field({
                 component: StringFieldComponent,

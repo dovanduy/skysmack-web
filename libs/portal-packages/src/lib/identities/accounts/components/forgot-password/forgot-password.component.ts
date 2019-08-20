@@ -32,7 +32,7 @@ export class ForgotPasswordComponent extends BaseComponent<AccountAppState, unkn
 
   ngOnInit() {
     super.ngOnInit();
-    this.fields$ = this.fieldsConfig.getFields(undefined);
+    this.fields$ = this.fieldsConfig.getFields(undefined, this.additionalPaths);
   }
 
   ngOnDestroy() {

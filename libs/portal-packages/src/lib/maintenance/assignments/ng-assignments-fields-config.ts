@@ -21,7 +21,7 @@ export class NgAssignmentsFieldsConfig extends FieldsConfig<Assignment, number> 
         public fieldProviders: FieldProviders
     ) { super(fieldProviders); }
 
-    protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<Assignment, number>): Field[] {
+    protected getEntityFields(loadedPackage: LoadedPackage, additionalPaths: string[], entity?: LocalObject<Assignment, number>): Field[] {
         const fields = [
             new SelectField({
                 component: SelectFieldComponent,

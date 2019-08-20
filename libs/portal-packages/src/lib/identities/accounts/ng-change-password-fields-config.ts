@@ -21,7 +21,7 @@ export class NgChangePasswordFieldsConfig extends FieldsConfig<ChangePassword, n
         super(fieldProviders);
     }
 
-    protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<ChangePassword, number>): Field[] {
+    protected getEntityFields(loadedPackage: LoadedPackage, additionalPaths: string[], entity?: LocalObject<ChangePassword, number>): Field[] {
         const fields = [
             new Field({
                 component: PasswordFieldComponent,

@@ -20,7 +20,7 @@ export class NgApplicationsFormFieldsConfig extends FieldsConfig<ApplicationDesc
         super(fieldProviders);
     }
 
-    protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<ApplicationDescriptor, number>): Field[] {
+    protected getEntityFields(loadedPackage: LoadedPackage, additionalPaths: string[], entity?: LocalObject<ApplicationDescriptor, number>): Field[] {
         const fields = [
             new Field({
                 component: StringFieldComponent,

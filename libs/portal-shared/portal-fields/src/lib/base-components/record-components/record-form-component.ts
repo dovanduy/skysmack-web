@@ -1,4 +1,4 @@
-import { Router, ActivatedRoute, UrlSegment } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { OnInit, OnDestroy } from '@angular/core';
 import { Record, LocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { EditorNavService } from '@skysmack/portal-ui';
@@ -6,7 +6,7 @@ import { FormBaseComponent } from './../form-base-component';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { EntityActions, EntityStore } from '@skysmack/redux';
 import { FormHelper } from '@skysmack/ng-dynamic-forms';
-import { switchMap, take, tap, map } from 'rxjs/operators';
+import { switchMap, take } from 'rxjs/operators';
 import { combineLatest } from 'rxjs';
 import { EntityFieldsConfig } from '@skysmack/ng-fields';
 
@@ -43,7 +43,7 @@ export class RecordFormComponent<TAppState, TRecord extends Record<TKey>, TKey> 
                 this.editorItem = values[0] as LocalObject<TRecord, TKey>;
                 const loadedPackage = values[1];
 
-                return this.fieldsConfig.getFields(loadedPackage, this.editorItem);
+                return this.fieldsConfig.getFields(loadedPackage, this.additionalPaths, this.editorItem);
             })
         );
     }
@@ -61,7 +61,7 @@ export class RecordFormComponent<TAppState, TRecord extends Record<TKey>, TKey> 
                     this.editorItem = values[1] as LocalObject<TRecord, TKey>;
                     const loadedPackage = values[2];
                     this.editorItem ? this.selectedEntity = this.editorItem : this.selectedEntity = entity;
-                    return this.fieldsConfig.getFields(loadedPackage, this.selectedEntity);
+                    return this.fieldsConfig.getFields(loadedPackage, this.additionalPaths, this.selectedEntity);
                 }),
             );
     }

@@ -21,7 +21,7 @@ export class NgConfirmEmailFieldsConfig extends FieldsConfig<ConfirmEmail, numbe
         super(fieldProviders);
     }
 
-    protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<ConfirmEmail, number>): Field[] {
+    protected getEntityFields(loadedPackage: LoadedPackage, additionalPaths: string[], entity?: LocalObject<ConfirmEmail, number>): Field[] {
         const fields = [
             new Field({
                 component: EmailFieldComponent,

@@ -26,7 +26,7 @@ export class NgLodgingReservationPriceChangesFieldsConfig extends FieldsConfig<L
         public skysmackStore: NgSkysmackStore
     ) { super(fieldProviders); }
 
-    protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<LodgingReservationPriceChange, number>): Field[] {
+    protected getEntityFields(loadedPackage: LoadedPackage, additionalPaths: string[], entity?: LocalObject<LodgingReservationPriceChange, number>): Field[] {
         const lodgingPackage$ = getPackageDendencyAsStream(this.skysmackStore, loadedPackage._package.path, [0, 0])
 
         const fields = [

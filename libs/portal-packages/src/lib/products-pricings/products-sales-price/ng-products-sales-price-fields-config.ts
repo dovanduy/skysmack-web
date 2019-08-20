@@ -24,7 +24,7 @@ export class NgProductsSalesPriceFieldsConfig extends FieldsConfig<ProductsSales
         public skysmackStore: NgSkysmackStore
     ) { super(fieldProviders); }
 
-    protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<ProductsSalesPrice, number>): Field[] {
+    protected getEntityFields(loadedPackage: LoadedPackage, additionalPaths: string[], entity?: LocalObject<ProductsSalesPrice, number>): Field[] {
         const productPackage$ = getPackageDendencyAsStream(this.skysmackStore, loadedPackage._package.path, [0])
 
         const fields = [

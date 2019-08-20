@@ -25,7 +25,7 @@ export class NgInvoicePaymentsFieldsConfig extends DocumentFieldsConfig<InvoiceP
     }
 
 
-    protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<InvoicePayment, number>): Field[] {
+    protected getEntityFields(loadedPackage: LoadedPackage, additionalPaths: string[], entity?: LocalObject<InvoicePayment, number>): Field[] {
         const fields = [
             new Field({
                 component: StringFieldComponent,

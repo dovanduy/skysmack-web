@@ -22,7 +22,7 @@ export class NgRecurringAssignmentsFieldsConfig extends FieldsConfig<RecurringAs
         super(fieldProviders);
     }
 
-    protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<RecurringAssignment, number>): Field[] {
+    protected getEntityFields(loadedPackage: LoadedPackage, additionalPaths: string[], entity?: LocalObject<RecurringAssignment, number>): Field[] {
         const fields = [
             new SelectField({
                 component: SelectFieldComponent,

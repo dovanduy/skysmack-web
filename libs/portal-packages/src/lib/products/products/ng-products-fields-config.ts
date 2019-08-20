@@ -26,7 +26,7 @@ export class NgProductsFieldsConfig extends DocumentFieldsConfig<Product, number
         super(fieldProviders, fieldStore, router);
     }
 
-    protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<Product, number>): Field[] {
+    protected getEntityFields(loadedPackage: LoadedPackage, additionalPaths: string[], entity?: LocalObject<Product, number>): Field[] {
         const fields = [
             new Field({
                 component: StringFieldComponent,

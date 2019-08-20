@@ -26,7 +26,7 @@ export class NgInvoiceItemsFieldsConfig extends DocumentFieldsConfig<InvoiceItem
         super(fieldProviders, fieldsStore, router);
     }
 
-    protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<InvoiceItem, number>): Field[] {
+    protected getEntityFields(loadedPackage: LoadedPackage, additionalPaths: string[], entity?: LocalObject<InvoiceItem, number>): Field[] {
 
         let inventoryId = entity ? entity.object.inventoryId : undefined
         inventoryId = inventoryId ? inventoryId : this.inventoryId;

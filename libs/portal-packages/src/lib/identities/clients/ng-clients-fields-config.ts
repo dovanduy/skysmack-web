@@ -20,7 +20,7 @@ export class NgClientsFieldsConfig extends FieldsConfig<Client, string> {
         super(fieldProviders);
     }
 
-    protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<Client, string>): Field[] {
+    protected getEntityFields(loadedPackage: LoadedPackage, additionalPaths: string[], entity?: LocalObject<Client, string>): Field[] {
         const fields = [
             new Field({
                 component: StringFieldComponent,

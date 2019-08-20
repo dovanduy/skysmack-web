@@ -32,7 +32,7 @@ export class ConfirmEmailComponent extends BaseComponent<AccountAppState, unknow
   ngOnInit() {
     super.ngOnInit();
     this.fields$ = this.loadedPackage$.pipe(
-      switchMap(loadedPackage => this.fieldsConfig.getFields(loadedPackage))
+      switchMap(loadedPackage => this.fieldsConfig.getFields(loadedPackage, this.additionalPaths))
     );
   }
   ngOnDestroy() {

@@ -24,7 +24,7 @@ export class NgPackagesFieldsConfig extends FieldsConfig<Package, string> {
         super(fieldProviders);
     }
 
-    protected getEntityFields(loadedPackage: LoadedPackage, _package?: LocalObject<Package, string>): Field[] {
+    protected getEntityFields(loadedPackage: LoadedPackage, additionalPaths: string[], _package?: LocalObject<Package, string>): Field[] {
         // Needs to be called here or index won't show correct package type before after visiting an create/edit form.
         this.actions.getAvailablePackages(loadedPackage._package.path);
 

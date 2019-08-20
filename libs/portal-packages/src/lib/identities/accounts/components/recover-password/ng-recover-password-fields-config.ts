@@ -22,7 +22,7 @@ export class NgRecoverPasswordFieldsConfig extends FieldsConfig<string, unknown>
     }
 
 
-    protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<string, unknown>): Field[] {
+    protected getEntityFields(loadedPackage: LoadedPackage, additionalPaths: string[], entity?: LocalObject<string, unknown>): Field[] {
         const fields = [
             new Field({
                 component: StringFieldComponent,

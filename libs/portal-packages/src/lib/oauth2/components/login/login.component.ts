@@ -1,19 +1,20 @@
 import { animate, style, transition, trigger } from '@angular/animations';
-import { Component, OnInit, OnDestroy, Input, Inject, Optional } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit, Input, Inject, Optional } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 import { EntityComponentPageTitle } from '@skysmack/portal-ui';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { LoginFieldsConfig } from './../../login-fields-config';
 import { NgSkysmackActions } from '@skysmack/ng-skysmack';
-import { SubscriptionHandler, Package } from '@skysmack/framework';
+import { Package } from '@skysmack/framework';
 import { AuthenticationActions } from '@skysmack/redux';
 import { filter } from 'rxjs/operators';
 import { OAuth2Requests } from '@skysmack/ng-oauth2';
-import { Field, FormHelper } from '@skysmack/ng-dynamic-forms';
+import { FormHelper } from '@skysmack/ng-dynamic-forms';
 import { Observable } from 'rxjs';
 import { NgAuthenticationStore } from '@skysmack/ng-framework';
 import { NgRedux } from '@angular-redux/store';
 import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
+import { BaseComponent } from '@skysmack/portal-fields';
 
 @Component({
   selector: 'ss-login',
@@ -38,17 +39,15 @@ import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
     )
   ]
 })
-export class LoginComponent implements OnInit, OnDestroy {
+export class LoginComponent extends BaseComponent<any, any> implements OnInit {
   @Input() public removeCloseButton: boolean = false;
   public loggingIn = false;
   public error = false;
   public success = false;
-  public fields$: Observable<Field[]>;
-  public subscriptionHandler = new SubscriptionHandler();
   public accountPackages$: Observable<Package[]>;
-  public packagePath: string;
 
   constructor(
+    activatedRoute: ActivatedRoute,
     public componentPageTitle: EntityComponentPageTitle,
     public router: Router,
     public store: NgAuthenticationStore,
@@ -59,9 +58,12 @@ export class LoginComponent implements OnInit, OnDestroy {
     public requests: OAuth2Requests,
     public dialog: MatDialog,
     @Optional() @Inject(MAT_DIALOG_DATA) public data: { packagePath: string }
-  ) { }
+  ) {
+    super(router, activatedRoute, skysmackStore);
+  }
 
   ngOnInit() {
+    super.ngOnInit();
     // this.componentPageTitle.setTitle('OAUTH2.OAUTH2_LOGIN.SIGN_IN', undefined, false);
     this.setPackagePath();
     this.clearLoginErrors();
@@ -72,12 +74,8 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.accountPackages$ = this.skysmackStore.getAccountPackages();
   }
 
-  ngOnDestroy() {
-    this.subscriptionHandler.unsubscribe();
-  }
-
   public createForm() {
-    this.fields$ = this.fieldsConfig.getFields(undefined);
+    this.fields$ = this.fieldsConfig.getFields(undefined, this.additionalPaths);
   }
 
   public onSubmit(fh: FormHelper) {
@@ -124,7 +122,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   // Get package path from either route data (dialog) or from the router
-  private setPackagePath() {
+  protected setPackagePath() {
     if (this.data && this.data.packagePath) {
       this.packagePath = this.data.packagePath;
     } else {

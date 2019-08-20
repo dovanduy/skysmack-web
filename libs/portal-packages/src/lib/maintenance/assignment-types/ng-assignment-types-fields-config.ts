@@ -22,7 +22,7 @@ export class NgAssignmentTypesFieldsConfig extends FieldsConfig<AssignmentType, 
         super(fieldProviders);
     }
 
-    protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<AssignmentType, number>): Field[] {
+    protected getEntityFields(loadedPackage: LoadedPackage, additionalPaths: string[], entity?: LocalObject<AssignmentType, number>): Field[] {
         const fields = [
             new SelectField({
                 component: SelectFieldComponent,

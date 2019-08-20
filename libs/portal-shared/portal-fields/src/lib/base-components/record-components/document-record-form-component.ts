@@ -38,7 +38,7 @@ export class DocumentRecordFormComponent<TAppState, TRecord extends Record<TKey>
             switchMap(values => {
                 this.editorItem = values[0] as LocalObject<TRecord, TKey>;
                 const loadedPackage = values[1];
-                return this.fieldsConfig.getFields(loadedPackage, this.editorItem);
+                return this.fieldsConfig.getFields(loadedPackage, this.additionalPaths, this.editorItem);
             })
         );
     }
@@ -53,7 +53,7 @@ export class DocumentRecordFormComponent<TAppState, TRecord extends Record<TKey>
                 const loadedPackage = values[0][1];
                 this.editorItem = values[1] as LocalObject<TRecord, TKey>;
                 this.editorItem ? this.selectedEntity = this.editorItem : this.selectedEntity = entity;
-                return this.fieldsConfig.getFields(loadedPackage, this.selectedEntity);
+                return this.fieldsConfig.getFields(loadedPackage, this.additionalPaths, this.selectedEntity);
             })
         );
     }
