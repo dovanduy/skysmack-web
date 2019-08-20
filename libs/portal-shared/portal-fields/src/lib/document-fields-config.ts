@@ -18,7 +18,7 @@ export abstract class DocumentFieldsConfig<TRecord, TKey> extends FieldsConfig<T
     constructor(
         public fieldProviders: FieldProviders,
         public fieldsStore: NgFieldStore,
-        protected additionalPaths: string[]
+        public additionalPaths: string[]
     ) {
         super(fieldProviders, additionalPaths);
     }

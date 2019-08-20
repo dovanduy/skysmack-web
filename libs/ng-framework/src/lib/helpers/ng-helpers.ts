@@ -5,27 +5,6 @@ import { combineLatest, of, Observable, merge } from 'rxjs';
 import { SkysmackStore } from '../stores/skysmack-store';
 import { Skysmack } from '@skysmack/packages-skysmack-core';
 
-export const getAdditionalPaths = (router: Router, packagePath): string[] => {
-    const chuncks = router.url.split('/');
-    const additionalPaths: string[] = [];
-
-    for (let chunck of chuncks) {
-        if (chunck === 'edit' || chunck === 'create' || chunck === 'details') {
-            break;
-        }
-
-        if (
-            chunck !== ''
-            && chunck !== 'fields'
-            && chunck !== 'settings'
-            && chunck !== packagePath
-        ) {
-            additionalPaths.push(chunck);
-        }
-    }
-    return additionalPaths;
-};
-
 /**
  * Recursively travels up the packages dependencies until no more dependency indexes are available, then returns the package.
  * If the dependency index array is empty, the same current package is returned.

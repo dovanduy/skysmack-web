@@ -7,6 +7,8 @@ import { NgFieldsConfig } from './../../ng-fields-config';
 import { NgFieldActions, NgFieldStore } from '@skysmack/ng-framework';
 import { FormHelper } from '@skysmack/ng-dynamic-forms';
 import { RecordFormComponent } from '../../base-components/record-components/record-form-component';
+import { Observable } from 'rxjs';
+import { map, tap, take } from 'rxjs/operators';
 
 @Component({
   selector: 'ss-fields-create',
@@ -14,6 +16,7 @@ import { RecordFormComponent } from '../../base-components/record-components/rec
 })
 export class FieldsCreateComponent extends RecordFormComponent<FieldState, any, string> implements OnInit {
   public objectIdentifier = 'key';
+  private additionalPaths$: Observable<string[]>
 
   constructor(
     public router: Router,
@@ -29,8 +32,13 @@ export class FieldsCreateComponent extends RecordFormComponent<FieldState, any, 
   }
 
   ngOnInit() {
+    this.additionalPaths$ = this.activatedRoute.parent.data.pipe(map(data => data.additionalPaths));
     super.ngOnInit();
-    this.actions.getAvailableFields(this.packagePath, this.additionalPaths);
+    this.additionalPaths$.pipe(
+      tap(additionalPaths => this.actions.getAvailableFields(this.packagePath, additionalPaths)),
+      take(1)
+    ).subscribe();
+
     this.setCreateFields();
   }
 
@@ -38,8 +46,14 @@ export class FieldsCreateComponent extends RecordFormComponent<FieldState, any, 
     fh.formValid(() => {
       const localObject = this.extractFormValues(fh);
       this.editorItem ? localObject.localId = this.editorItem.localId : localObject.localId = localObject.localId;
-      this.actions.add([localObject], this.packagePath, this.additionalPaths);
-      this.editorNavService.hideEditorNav();
+
+      return this.additionalPaths$.pipe(
+        map(additionalPaths => {
+          this.actions.add([localObject], this.packagePath, additionalPaths);
+          this.editorNavService.hideEditorNav();
+        }),
+        take(1)
+      ).subscribe();
     });
   }
 }

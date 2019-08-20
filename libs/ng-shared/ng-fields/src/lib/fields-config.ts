@@ -13,7 +13,7 @@ export abstract class FieldsConfig<TRecord, TKey> implements EntityFieldsConfig<
 
     constructor(
         public fieldProviders: FieldProviders,
-        protected additionalPaths: string[]
+        public additionalPaths: string[]
     ) { }
 
     public getFields(loadedPackage: LoadedPackage, entity?: LocalObject<TRecord, TKey>): Observable<Field[]> {

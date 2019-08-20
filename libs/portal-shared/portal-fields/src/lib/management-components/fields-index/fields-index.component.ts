@@ -6,8 +6,8 @@ import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { EntityComponentPageTitle } from '@skysmack/portal-ui';
 import { NgFieldActions, NgFieldStore } from '@skysmack/ng-framework';
 import { NgFieldsConfig } from '../../ng-fields-config';
-import { map, take } from 'rxjs/operators';
-import { combineLatest } from 'rxjs';
+import { map, take, switchMap, tap } from 'rxjs/operators';
+import { combineLatest, Observable } from 'rxjs';
 import { MenuItemActionProviders } from '@skysmack/portal-ui';
 import { MENU_ITEM_ACTIONS_EDIT, MENU_ITEM_ACTIONS_DELETE } from '@skysmack/portal-ui';
 import { RecordIndexComponent } from '../../base-components/record-components/record-index-component';
@@ -24,6 +24,8 @@ export class FieldsIndexComponent extends RecordIndexComponent<any, any, any> im
     new MenuItem().asEventAction(MENU_ITEM_ACTIONS_DELETE, this.delete, 'delete', this)
   ];
 
+  private additionalPaths$: Observable<string[]>
+
   constructor(
     public router: Router,
     public activatedRoute: ActivatedRoute,
@@ -39,6 +41,7 @@ export class FieldsIndexComponent extends RecordIndexComponent<any, any, any> im
   }
 
   ngOnInit() {
+    this.additionalPaths$ = this.activatedRoute.data.pipe(map(data => data.additionalPaths));
     super.ngOnInit();
     combineLatest(
       this.loadedPackage$,
@@ -50,18 +53,28 @@ export class FieldsIndexComponent extends RecordIndexComponent<any, any, any> im
   }
 
   protected storeGet() {
-    return this.store.get(getFieldStateKey(this.packagePath, this.additionalPaths));
+    return this.additionalPaths$.pipe(
+      switchMap(additionalPaths => this.store.get(getFieldStateKey(this.packagePath, additionalPaths)))
+    );
   }
 
   protected storeGetPages() {
-    return this.store.getPages(getFieldStateKey(this.packagePath, this.additionalPaths));
+    return this.additionalPaths$.pipe(
+      switchMap(additionalPaths => this.store.getPages(getFieldStateKey(this.packagePath, additionalPaths)))
+    );
   }
 
   protected actionsGetPaged() {
-    this.actions.getPaged(this.packagePath, this.pagedQuery, this.additionalPaths);
+    this.additionalPaths$.pipe(
+      tap(additionalPaths => this.actions.getPaged(this.packagePath, this.pagedQuery, additionalPaths)),
+      take(1)
+    ).subscribe();
   }
 
   protected delete(_this: FieldsIndexComponent, value: LocalObject<FieldSchemaViewModel, string>) {
-    _this.actions.delete([value], _this.packagePath, _this.additionalPaths);
+    _this.additionalPaths$.pipe(
+      tap(additionalPaths => _this.actions.delete([value], _this.packagePath, additionalPaths)),
+      take(1)
+    ).subscribe();
   }
 }

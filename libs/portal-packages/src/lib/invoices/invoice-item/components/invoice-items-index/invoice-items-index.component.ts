@@ -52,7 +52,6 @@ export class InvoiceItemsIndexComponent extends DocumentRecordIndexComponent<Inv
       take(1)
     ).subscribe();
 
-    this.additionalPaths = ['items'];
     super.ngOnInit();
   }
 }

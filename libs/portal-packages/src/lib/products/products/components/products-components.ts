@@ -2,8 +2,8 @@ import { Routes } from '@angular/router';
 import { ProductsIndexComponent } from './products-index/products-index.component';
 import { ProductsCreateComponent } from './products-create/products-create.component';
 import { ProductsEditComponent } from './products-edit/products-edit.component';
-import { PRODUCTS_AREA_KEY } from '@skysmack/packages-products';
-import { FieldsCreateComponent, FieldsIndexComponent, FieldsEditComponent } from '@skysmack/portal-fields';
+import { PRODUCTS_AREA_KEY, PRODUCTS_ADDITIONAL_PATHS } from '@skysmack/packages-products';
+import { getFieldsRoutes } from '@skysmack/portal-fields';
 
 export const productsRoutes: Routes = [
   {
@@ -13,14 +13,7 @@ export const productsRoutes: Routes = [
       { path: 'edit/:id', component: ProductsEditComponent, pathMatch: 'full' }
     ]
   },
-  {
-    path: 'fields', component: FieldsIndexComponent, children: [
-      { path: 'create', component: FieldsCreateComponent, pathMatch: 'full' },
-      { path: 'edit/:id', component: FieldsEditComponent, pathMatch: 'full' }
-    ], data: {
-      areaKey: PRODUCTS_AREA_KEY
-    }
-  }
+  getFieldsRoutes(PRODUCTS_AREA_KEY, PRODUCTS_ADDITIONAL_PATHS)
 ];
 
 export const productsComponents: any[] = [

@@ -2,8 +2,8 @@ import { Routes } from '@angular/router';
 import { InvoicePaymentsIndexComponent } from './invoice-payments-index/invoice-payments-index.component';
 import { InvoicePaymentsCreateComponent } from './invoice-payments-create/invoice-payments-create.component';
 import { InvoicePaymentsEditComponent } from './invoice-payments-edit/invoice-payments-edit.component';
-import { INVOICE_PAYMENTS_AREA_KEY } from '@skysmack/packages-invoices';
-import { FieldsIndexComponent, FieldsCreateComponent, FieldsEditComponent } from '@skysmack/portal-fields';
+import { INVOICE_PAYMENTS_AREA_KEY, INVOICE_PAYMENTS_ADDITIONAL_PATHS } from '@skysmack/packages-invoices';
+import { getFieldsRoutes } from '@skysmack/portal-fields';
 
 export const invoicePaymentsRoutes: Routes = [
   {
@@ -13,14 +13,7 @@ export const invoicePaymentsRoutes: Routes = [
       { path: 'edit/:id', component: InvoicePaymentsEditComponent, pathMatch: 'full' }
     ]
   },
-  {
-    path: 'payments/fields', component: FieldsIndexComponent, children: [
-      { path: 'create', component: FieldsCreateComponent, pathMatch: 'full' },
-      { path: 'edit/:id', component: FieldsEditComponent, pathMatch: 'full' }
-    ], data: {
-      areaKey: INVOICE_PAYMENTS_AREA_KEY
-    }
-  }
+  getFieldsRoutes(INVOICE_PAYMENTS_AREA_KEY, INVOICE_PAYMENTS_ADDITIONAL_PATHS, ['payments'])
 ];
 
 export const invoicePaymentsComponents: any[] = [

@@ -3,8 +3,8 @@ import { InvoicesIndexComponent } from './invoices-index/invoices-index.componen
 import { InvoicesCreateComponent } from './invoices-create/invoices-create.component';
 import { InvoicesEditComponent } from './invoices-edit/invoices-edit.component';
 import { InvoicesDetailsComponent } from './invoices-details/invoices-details.component';
-import { INVOICES_AREA_KEY } from '@skysmack/packages-invoices';
-import { FieldsIndexComponent, FieldsCreateComponent, FieldsEditComponent } from '@skysmack/portal-fields';
+import { INVOICES_AREA_KEY, INVOICES_ADDITIONAL_PATHS } from '@skysmack/packages-invoices';
+import { getFieldsRoutes } from '@skysmack/portal-fields';
 
 export const invoicesRoutes: Routes = [
   {
@@ -15,14 +15,7 @@ export const invoicesRoutes: Routes = [
       { path: 'details/:id', component: InvoicesDetailsComponent, pathMatch: 'full' },
     ]
   },
-  {
-    path: 'fields', component: FieldsIndexComponent, children: [
-      { path: 'create', component: FieldsCreateComponent, pathMatch: 'full' },
-      { path: 'edit/:id', component: FieldsEditComponent, pathMatch: 'full' }
-    ], data: {
-      areaKey: INVOICES_AREA_KEY
-    }
-  }
+  getFieldsRoutes(INVOICES_AREA_KEY, INVOICES_ADDITIONAL_PATHS)
 ];
 
 export const invoicesComponents: any[] = [
