@@ -93,7 +93,6 @@ export class PackageDependenciesFieldComponent extends FieldBaseComponent<Field>
         this.checkDependenciesAreSet();
 
         let index = 0;
-        console.log('settings deps', dependencies);
 
         // Only run this when setting NEW dependencies, not when values are set...
         const selectBoxes = (dependencies as string[]).map(dependency => {
