@@ -9,7 +9,7 @@ import { RouterModule } from '@angular/router';
 import { NgMenuProviders } from './navigation/ng-menu-providers';
 import { NgUiMenuProvider } from '../ng-ui-menu-provider';
 import { RemoveDialog } from './components/remove-dialog/remove-dialog.component';
-import { directives } from '@skysmack/ng-framework';
+import { NgFrameworkModule } from '@skysmack/ng-framework';
 
 @NgModule({
   imports: [
@@ -17,17 +17,14 @@ import { directives } from '@skysmack/ng-framework';
     HttpClientModule,
     RouterModule,
     MaterialModule,
+    NgFrameworkModule,
     NgTranslationModule,
   ],
   entryComponents: [
     RemoveDialog
   ],
   declarations: [
-    ...directives,
     ...commercialUiPartnersComponents
-  ],
-  exports: [
-    ...directives
   ],
   providers: [
     LanguageService
