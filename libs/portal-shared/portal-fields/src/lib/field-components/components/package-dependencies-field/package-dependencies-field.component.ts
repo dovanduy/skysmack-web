@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FieldBaseComponent } from '../field-base-component';
-import { map } from 'rxjs/operators';
+import { map, take } from 'rxjs/operators';
 import { combineLatest, Observable } from 'rxjs';
 import { NgPackagesStore } from '@skysmack/ng-packages';
 import { flatten, notNull, AvailablePackage, LocalObject } from '@skysmack/framework';
@@ -77,8 +77,7 @@ export class PackageDependenciesFieldComponent extends FieldBaseComponent<Field>
         // Hide select boxes if there are no dependencies
         depTypes ? this.showBoxes = true : this.showBoxes = false;
         return depTypes;
-      }),
-      notNull()
+      })
     );
 
     this.selectBoxes$ = combineLatest(
@@ -87,13 +86,16 @@ export class PackageDependenciesFieldComponent extends FieldBaseComponent<Field>
       availablePackages$
     ).pipe(
       map(values => {
-        const [dependencies, installedPackages, availablePackages] = values;
+        let [dependencies, installedPackages, availablePackages] = values;
+        dependencies = dependencies ? dependencies : [];
 
         this.nrOfRequiredDependencies = (dependencies as string[]).length;
         this.checkDependenciesAreSet();
 
         let index = 0;
-        // Only run this when setting NEW dependencies, not when valus are set...
+        console.log('settings deps', dependencies);
+
+        // Only run this when setting NEW dependencies, not when values are set...
         const selectBoxes = (dependencies as string[]).map(dependency => {
           const possibleValues = installedPackages
             .filter(installedPackage => installedPackage.object.type === dependency)
@@ -123,7 +125,7 @@ export class PackageDependenciesFieldComponent extends FieldBaseComponent<Field>
 
 
         return selectBoxes;
-      }),
+      })
     );
   }
 
