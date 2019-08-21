@@ -1,7 +1,3 @@
-import { IsAnonymousDirective } from './is-anonymous.directive';
-import { IsAuthenticatedDirective } from './is-authenticated.directive';
-
-export const directives = [
-    IsAnonymousDirective,
-    IsAuthenticatedDirective
-];
+export * from './directives';
+export * from './is-anonymous.directive';
+export * from './is-authenticated.directive';

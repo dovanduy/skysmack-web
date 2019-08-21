@@ -9,3 +9,5 @@ export * from './signal-r/index';
 export * from './dashboard/index';
 export * from './redux/index';
 export * from './directives/index';
+
+export * from './ng-framework.module';

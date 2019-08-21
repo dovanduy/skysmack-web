@@ -9,7 +9,7 @@ import { NgReduxRouterModule, NgReduxRouter } from '@angular-redux/router';
 
 import { GlobalProperties } from '@skysmack/framework';
 import { ReducerRegistry, authenticationReducer } from '@skysmack/redux';
-import { ReduxOfflineConfiguration, configureRedux, CoalescingComponentFactoryResolver } from '@skysmack/ng-framework';
+import { ReduxOfflineConfiguration, configureRedux, CoalescingComponentFactoryResolver, NgFrameworkModule } from '@skysmack/ng-framework';
 import { NgOAuth2Module } from '@skysmack/ng-oauth2';
 import { MaterialModule } from '@skysmack/portal-ui';
 
@@ -67,6 +67,7 @@ import { CommercialUiPartnersModule } from '@skysmack/commercial-ui-partners';
     BrowserAnimationsModule,
     MaterialModule,
     NgReduxModule,
+    NgFrameworkModule,
     NgReduxRouterModule.forRoot(),
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
