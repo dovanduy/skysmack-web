@@ -6,15 +6,22 @@ import { INVOICE_ITEMS_AREA_KEY, INVOICE_ITEMS_ADDITIONAL_PATHS } from '@skysmac
 import { getFieldsRoutes } from '@skysmack/portal-fields';
 
 export const invoiceItemsRoutes: Routes = [
-  getFieldsRoutes(INVOICE_ITEMS_AREA_KEY, INVOICE_ITEMS_ADDITIONAL_PATHS, ['items']),
   {
-    path: 'items/:invoiceId', component: InvoiceItemsIndexComponent,
-    children: [
-      { path: 'create', component: InvoiceItemsCreateComponent, pathMatch: 'full' },
-      { path: 'edit/:id', component: InvoiceItemsEditComponent, pathMatch: 'full' }
+    path: 'items', children: [getFieldsRoutes(INVOICE_ITEMS_AREA_KEY, INVOICE_ITEMS_ADDITIONAL_PATHS)]
+  },
+  {
+    path: 'items/:invoiceId', children: [
+      {
+        path: '', component: InvoiceItemsIndexComponent, children: [
+          { path: 'create', component: InvoiceItemsCreateComponent, pathMatch: 'full' },
+          { path: 'edit/:id', component: InvoiceItemsEditComponent, pathMatch: 'full' },
+        ]
+      }
     ]
   }
 ];
+
+
 
 export const invoiceItemsComponents: any[] = [
   InvoiceItemsIndexComponent,

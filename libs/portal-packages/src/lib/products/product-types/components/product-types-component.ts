@@ -7,12 +7,16 @@ import { PRODUCT_TYPES_AREA_KEY, PRODUCT_TYPES_ADDITIONAL_PATHS } from '@skysmac
 
 export const productTypesRoutes: Routes = [
     {
-        path: 'types', component: ProductTypesIndexComponent, children: [
-            { path: 'edit/:id', component: ProductTypesEditComponent, pathMatch: 'full' },
-            { path: 'create', component: ProductTypesCreateComponent, pathMatch: 'full' },
+        path: 'types', children: [
+            {
+                path: '', component: ProductTypesIndexComponent, children: [
+                    { path: 'edit/:id', component: ProductTypesEditComponent, pathMatch: 'full' },
+                    { path: 'create', component: ProductTypesCreateComponent, pathMatch: 'full' },
+                ]
+            },
+            getFieldsRoutes(PRODUCT_TYPES_AREA_KEY, PRODUCT_TYPES_ADDITIONAL_PATHS)
         ]
-    },
-    getFieldsRoutes(PRODUCT_TYPES_AREA_KEY, PRODUCT_TYPES_ADDITIONAL_PATHS, ['types']),
+    }
 ];
 
 export const productTypesComponents: any[] = [

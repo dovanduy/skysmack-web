@@ -9,14 +9,17 @@ import { getFieldsRoutes } from '@skysmack/portal-fields';
 
 export const personsRoutes: Routes = [
   {
-    path: '', component: PersonsIndexComponent,
-    children: [
-      { path: 'create', component: PersonsCreateComponent, pathMatch: 'full' },
-      { path: 'edit/:id', component: PersonsEditComponent, pathMatch: 'full' },
-      { path: 'details/:id', component: PersonsDetailsComponent, pathMatch: 'full' }
+    path: '', children: [
+      {
+        path: '', component: PersonsIndexComponent, children: [
+          { path: 'create', component: PersonsCreateComponent, pathMatch: 'full' },
+          { path: 'edit/:id', component: PersonsEditComponent, pathMatch: 'full' },
+          { path: 'details/:id', component: PersonsDetailsComponent, pathMatch: 'full' },
+        ]
+      },
+      getFieldsRoutes(PERSONS_AREA_KEY, PERSONS_ADDITIONAL_PATHS)
     ]
-  },
-  getFieldsRoutes(PERSONS_AREA_KEY, PERSONS_ADDITIONAL_PATHS)
+  }
 ];
 
 export const personsComponents: any[] = [

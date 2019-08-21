@@ -8,14 +8,17 @@ import { getFieldsRoutes } from '@skysmack/portal-fields';
 
 export const lodgingTypesRoutes: Routes = [
     {
-        path: 'types', component: LodgingTypesIndexComponent,
-        children: [
-            { path: 'edit/:id', component: LodgingTypesEditComponent, pathMatch: 'full' },
-            { path: 'create', component: LodgingTypesCreateComponent, pathMatch: 'full' },
+        path: 'types', children: [
+            {
+                path: '', component: LodgingTypesIndexComponent, children: [
+                    { path: 'edit/:id', component: LodgingTypesEditComponent, pathMatch: 'full' },
+                    { path: 'create', component: LodgingTypesCreateComponent, pathMatch: 'full' },
+                ]
+            },
+            { path: 'availability', component: LodgingTypesAvailabilityComponent },
+            getFieldsRoutes(LODGING_TYPES_AREA_KEY, LODGING_TYPES_ADDITIONAL_PATHS)
         ]
-    },
-    getFieldsRoutes(LODGING_TYPES_AREA_KEY, LODGING_TYPES_ADDITIONAL_PATHS, ['types']),
-    { path: 'types/availability', component: LodgingTypesAvailabilityComponent }
+    }
 ];
 
 export const lodgingTypesComponents: any[] = [

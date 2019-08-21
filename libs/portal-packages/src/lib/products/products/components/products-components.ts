@@ -7,13 +7,16 @@ import { getFieldsRoutes } from '@skysmack/portal-fields';
 
 export const productsRoutes: Routes = [
   {
-    path: '', component: ProductsIndexComponent,
-    children: [
-      { path: 'create', component: ProductsCreateComponent, pathMatch: 'full' },
-      { path: 'edit/:id', component: ProductsEditComponent, pathMatch: 'full' }
+    path: '', children: [
+      {
+        path: '', component: ProductsIndexComponent, children: [
+          { path: 'create', component: ProductsCreateComponent, pathMatch: 'full' },
+          { path: 'edit/:id', component: ProductsEditComponent, pathMatch: 'full' }
+        ]
+      },
+      getFieldsRoutes(PRODUCTS_AREA_KEY, PRODUCTS_ADDITIONAL_PATHS)
     ]
-  },
-  getFieldsRoutes(PRODUCTS_AREA_KEY, PRODUCTS_ADDITIONAL_PATHS)
+  }
 ];
 
 export const productsComponents: any[] = [

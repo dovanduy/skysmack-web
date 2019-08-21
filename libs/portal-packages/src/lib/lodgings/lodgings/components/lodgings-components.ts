@@ -12,17 +12,20 @@ const data = {
   fieldsConfigToken: 'NgLodgingSettingsFieldsConfig'
 } as RouteData;
 
-
 export const lodgingsRoutes: Routes = [
   {
-    path: '', component: LodgingsIndexComponent,
-    children: [
-      { path: 'create', component: LodgingsCreateComponent, pathMatch: 'full' },
-      { path: 'edit/:id', component: LodgingsEditComponent, pathMatch: 'full' },
+    path: '', children: [
+      {
+        path: '', component: LodgingsIndexComponent, children: [
+          { path: 'create', component: LodgingsCreateComponent, pathMatch: 'full' },
+          { path: 'edit/:id', component: LodgingsEditComponent, pathMatch: 'full' },
+
+        ]
+      },
+      { path: 'availability', component: LodgingsAvailabilityComponent },
+      getFieldsRoutes(LODGINGS_AREA_KEY, LODGINGS_ADDITIONAL_PATHS)
     ]
   },
-  { path: 'availability', component: LodgingsAvailabilityComponent },
-  getFieldsRoutes(LODGINGS_AREA_KEY, LODGINGS_ADDITIONAL_PATHS)
 ];
 
 export const lodgingsComponents: any[] = [

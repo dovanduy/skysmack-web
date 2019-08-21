@@ -8,14 +8,18 @@ import { getFieldsRoutes } from '@skysmack/portal-fields';
 
 export const invoicesRoutes: Routes = [
   {
-    path: '', component: InvoicesIndexComponent,
-    children: [
-      { path: 'create', component: InvoicesCreateComponent, pathMatch: 'full' },
-      { path: 'edit/:id', component: InvoicesEditComponent, pathMatch: 'full' },
-      { path: 'details/:id', component: InvoicesDetailsComponent, pathMatch: 'full' },
+    path: '', children: [
+      {
+        path: '', component: InvoicesIndexComponent, children: [
+          { path: 'create', component: InvoicesCreateComponent, pathMatch: 'full' },
+          { path: 'edit/:id', component: InvoicesEditComponent, pathMatch: 'full' },
+          { path: 'details/:id', component: InvoicesDetailsComponent, pathMatch: 'full' },
+
+        ]
+      },
+      getFieldsRoutes(INVOICES_AREA_KEY, INVOICES_ADDITIONAL_PATHS)
     ]
   },
-  getFieldsRoutes(INVOICES_AREA_KEY, INVOICES_ADDITIONAL_PATHS)
 ];
 
 export const invoicesComponents: any[] = [

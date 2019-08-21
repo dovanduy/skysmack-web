@@ -7,13 +7,16 @@ import { TerminalReceiptsEditComponent } from './terminal-receipts-edit/terminal
 
 export const terminalReceiptsRoutes: Routes = [
   {
-    path: 'receipts', component: TerminalReceiptsIndexComponent,
-    children: [
-      { path: 'create', component: TerminalReceiptsCreateComponent, pathMatch: 'full' },
-      { path: 'edit/:id', component: TerminalReceiptsEditComponent, pathMatch: 'full' },
+    path: 'receipts', children: [
+      {
+        path: '', component: TerminalReceiptsIndexComponent, children: [
+          { path: 'create', component: TerminalReceiptsCreateComponent, pathMatch: 'full' },
+          { path: 'edit/:id', component: TerminalReceiptsEditComponent, pathMatch: 'full' },
+        ]
+      },
+      getFieldsRoutes(TERMINAL_RECEIPTS_AREA_KEY, TERMINAL_RECEIPTS_ADDITIONAL_PATHS)
     ]
   },
-  getFieldsRoutes(TERMINAL_RECEIPTS_AREA_KEY, TERMINAL_RECEIPTS_ADDITIONAL_PATHS, ['receipts']),
 ];
 
 export const terminalReceiptsComponents: any[] = [
@@ -24,3 +27,5 @@ export const terminalReceiptsComponents: any[] = [
 
 export const terminalReceiptsEntryComponents: any[] = [
 ]
+
+// receipts
