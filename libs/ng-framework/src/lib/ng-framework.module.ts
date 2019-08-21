@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { directives } from '@skysmack/ng-framework';
+import { directives } from './directives/directives';
 
 @NgModule({
     imports: [],
