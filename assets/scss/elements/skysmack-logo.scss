@@ -1,11 +1,15 @@
 @import "../_includes.scss";
 
-img.skysmack-logo {
-    max-height: 18px;
-    vertical-align: middle;
+.skysmack-logo-img {
+    line-height: 1;
+
+    >img {
+        max-height: 18px;
+        vertical-align: middle;
+    }
 }
 
-span.skysmack-logo {
+.skysmack-logo-txt > span {
     font-size: 18px;
     line-height: 18px;
     color: rgba(0, 0, 0, 0.8);
@@ -18,7 +22,7 @@ span.skysmack-logo {
         color: mat-color($primary);
     }
 
-    > span {
+    >span {
         font-weight: 400;
     }
 }
