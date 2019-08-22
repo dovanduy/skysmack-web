@@ -6,6 +6,9 @@ import { directives } from './directives/directives';
     declarations: [
         ...directives
     ],
+    exports: [
+        ...directives
+    ],
     providers: []
 })
 export class NgFrameworkModule {
