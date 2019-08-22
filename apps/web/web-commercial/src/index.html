@@ -7,11 +7,12 @@
   <base href="/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  
+
   <style>
     body {
       background-color: #fafafa;
     }
+
     .loading-screen {
       color: #2c89a0;
       position: absolute;
@@ -24,21 +25,26 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      font-family: "Muli","Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,"Lucida Grande","sans-serif";
+      font-family: "Muli", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", "sans-serif";
       font-size: 2rem;
       letter-spacing: 2px;
       text-align: center;
       margin: 0 .5rem;
     }
-    .loading-screen > .description {
+
+    .loading-screen>.description {
       font-size: 1rem;
       opacity: .75;
     }
+
     .loading-text {
       animation: fadeIn 1s infinite alternate;
     }
-    @keyframes fadeIn { 
-      from { opacity: 0; } 
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
     }
   </style>
   <link href="https://fonts.googleapis.com/css?family=Muli:300,400,600" rel="stylesheet">
@@ -59,7 +65,12 @@
 </head>
 
 <body>
-  <skysmack-app>    
+  <!-- Google Tag Manager (noscript) -->
+  <!-- <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M8NH5DN" height="0" width="0"
+      style="display:none;visibility:hidden"></iframe></noscript> -->
+  <!-- End Google Tag Manager (noscript) -->
+
+  <skysmack-app>
     <div class="loading-text loading-screen">
       LOADING
     </div>
