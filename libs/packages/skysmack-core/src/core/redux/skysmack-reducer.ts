@@ -21,7 +21,10 @@ export function skysmackReducer(state = new SkysmackState(), action: any): Skysm
 
     switch (action.type) {
         case SkysmackActions.GET_SKYSMACK: {
-            newState.requestStatus = undefined;
+            if (newState.requestStatus && newState.requestStatus.errorCode && (newState.requestStatus.errorCode == 0 || newState.requestStatus.errorCode >= 400)) {
+                newState.requestStatus = undefined;
+            }
+
             return newState;
         }
         case SkysmackActions.GET_SKYSMACK_SUCCESS: {

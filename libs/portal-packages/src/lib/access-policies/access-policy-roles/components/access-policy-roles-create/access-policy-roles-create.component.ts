@@ -30,7 +30,6 @@ export class AccessPolicyRolesCreateComponent extends RecordFormComponent<Access
 
   ngOnInit() {
     super.ngOnInit();
-    this.skysmackActions.getSkysmack();
     this.setCreateFields();
   }
 
