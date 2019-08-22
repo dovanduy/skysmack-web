@@ -56,7 +56,7 @@
     "libs:shared:framework:build": "ng-packagr -p libs/shared/framework/package.json",
     "libs:shared:package-types:build": "ng-packagr -p libs/shared/package-types/package.json",
     "gulp:localization": "gulp webLocalization",
-    "update": "ng update @nrwl/schematics",
+    "update": "ng update @nrwl/workspace",
     "update:check": "ng update",
     "workspace-schematic": "./node_modules/.bin/nx workspace-schematic",
     "dep-graph": "./node_modules/.bin/nx dep-graph",
@@ -98,7 +98,8 @@
     "parse-link-header": "1.0.1",
     "redux": "4.0.1",
     "redux-observable": "1.1.0",
-    "swagger-ui": "3.23.5"
+    "swagger-ui": "3.23.5",
+    "@nrwl/angular": "8.0.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "0.802.2",
@@ -106,8 +107,6 @@
     "@angular/cli": "8.2.2",
     "@angular/compiler-cli": "8.2.2",
     "@angular/language-service": "8.2.2",
-    "@nrwl/builders": "7.8.1",
-    "@nrwl/schematics": "7.8.1",
     "@types/node": "12.7.2",
     "codelyzer": "5.1.0",
     "dotenv": "8.1.0",
@@ -122,6 +121,9 @@
     "tslib": "1.10.0",
     "tslint": "5.18.0",
     "typescript": "3.4.5",
-    "webpack-bundle-analyzer": "3.4.1"
+    "webpack-bundle-analyzer": "3.4.1",
+    "@nrwl/workspace": "8.0.0",
+    "@nrwl/jest": "8.0.0",
+    "@nrwl/cypress": "8.0.0"
   }
 }

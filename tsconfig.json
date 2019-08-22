@@ -185,7 +185,8 @@
       "@skysmack/commercial-ui-partners": [
         "libs/commercial-packages/commercial-ui-partners/src/public_api.ts"
       ]
-    }
+    },
+    "rootDir": "."
   },
   "exclude": [
     "node_modules",
