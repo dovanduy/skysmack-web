@@ -21,6 +21,7 @@
     "d3-transition",
     "d3-interpolate",
     "d3-time-format",
+    "date-fns",
     "@skysmack/redux",
     "@skysmack/framework",
     "@skysmack/packages-skysmack-core",

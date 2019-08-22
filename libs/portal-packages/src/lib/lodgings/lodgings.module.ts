@@ -8,7 +8,7 @@ import { lodgingsComponents } from './lodgings/components/lodgings-components';
 import { lodgingTypesComponents } from './lodging-types/components/lodging-types-component';
 
 import { CalendarModule, DateAdapter } from 'angular-calendar';
-import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { adapterFactory } from './date-fns-v2-adaptor';
 import { NgLodgingSettingsFieldsConfig } from './ng-lodging-settings-fields-config';
 import { DynamicFormsModule } from '@skysmack/portal-dynamic-forms';
 import { SettingsModule } from '@skysmack/portal-settings';
