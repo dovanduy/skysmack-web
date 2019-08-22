@@ -27,12 +27,12 @@ skysmack-app {
         .container {
           padding: 2rem;
 
-          img.skysmack-logo {
+          .skysmack-logo-img > img {
             max-height: 64px;
             margin-bottom: .25rem;
           }
 
-          span.skysmack-logo {
+          .skysmack-logo-txt > span {
             display: block;
             font-size: 18px;
           }
