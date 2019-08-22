@@ -1,7 +1,6 @@
 import { Component, ViewEncapsulation, Output, EventEmitter, ViewChild, OnInit } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { Router, RouteConfigLoadStart, RouteConfigLoadEnd } from '@angular/router';
-import { AnalyticsService } from '@skysmack/ng-framework';
 
 @Component({
   selector: 'skysmack-app',
@@ -14,12 +13,10 @@ export class AppComponent implements OnInit {
   loadingRouteConfig: boolean;
 
   constructor(
-    private router: Router,
-    private analyticsService: AnalyticsService
+    private router: Router
   ) { }
 
   ngOnInit() {
-    this.analyticsService.init();
     this.router.events.subscribe(event => {
       if (event instanceof RouteConfigLoadStart) {
         this.loadingRouteConfig = true;
