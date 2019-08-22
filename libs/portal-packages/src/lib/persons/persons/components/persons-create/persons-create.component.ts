@@ -29,6 +29,9 @@ export class PersonsCreateComponent extends DocumentRecordFormComponent<PersonsA
 
   ngOnInit() {
     super.ngOnInit();
+    if (true) {
+      const dasf = 'test';
+    }
     this.setCreateFields();
   }
 }
