@@ -7,6 +7,7 @@ RUN apk update && apk add --no-cache make git
 WORKDIR /ss-app
 RUN npm i -g "@angular/cli@>=8.2.2 <=8.2.2"
 RUN npm i -g "gulp-cli@>=2.2.0 <=2.2.0"
+RUN npm i -g "nps@>=5.9.5 <=5.9.5"
 COPY package*.json ./
 RUN npm i
 COPY . .

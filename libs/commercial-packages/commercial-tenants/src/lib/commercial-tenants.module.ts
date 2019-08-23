@@ -7,7 +7,6 @@ import { commercialTenantsComponents } from './components/commercial-tenants-com
 import { DynamicFormsModule } from '@skysmack/portal-dynamic-forms';
 import { PortalFieldsModule } from '@skysmack/portal-fields';
 import { NgDynamicFormsModule } from '@skysmack/ng-dynamic-forms';
-import { MaterialModule } from '@skysmack/portal-ui';
 import { NgTranslationModule } from '@skysmack/ng-translation';
 import { CommercialUiPartnersModule, NgMenuProviders } from '@skysmack/commercial-ui-partners';
 import { NgCommercialTenantsMenuProvider } from './ng-commercial-tenants-menu-provider';
@@ -19,7 +18,6 @@ import { NgCommercialTenantsMenuProvider } from './ng-commercial-tenants-menu-pr
     NgDynamicFormsModule,
     DynamicFormsModule,
     PortalFieldsModule,
-    MaterialModule,
     NgTranslationModule,
     CommercialUiPartnersModule,
     CommercialTenantsRoutingModule

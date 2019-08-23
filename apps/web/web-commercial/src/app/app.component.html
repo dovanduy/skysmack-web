@@ -90,10 +90,10 @@
       <a routerLink="/help" class="menu">
         Help
       </a>
-      <a [routerLink]="['account', 'login']" class="menu" *isAnonymous>
+      <a [routerLink]="['account', 'login']" class="menu" *allowAccessFor="allowAccessForEnum.anonymous">
         Sign in
       </a>
-      <a [routerLink]="['account', 'dashboard']" class="menu" *isAuthenticated>
+      <a [routerLink]="['account', 'dashboard']" class="menu" *allowAccessFor="allowAccessForEnum.authenticated">
         Portal
       </a>
     </nav>
@@ -114,6 +114,7 @@
     </nav>
   </div>
 
+  <ss-cookie-consent></ss-cookie-consent>
 </mat-sidenav-container>
 
 <div *ngIf="loadingRouteConfig" class="loader">

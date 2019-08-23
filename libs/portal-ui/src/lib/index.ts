@@ -11,4 +11,3 @@ export * from './pipes/index';
 export * from './routing/index';
 
 export * from './portal-ui.module';
-export * from './material.module';

@@ -12,10 +12,6 @@ import { assignmentsAllComponents } from './components/assignments-all-component
 import { DynamicFormsModule } from '@skysmack/portal-dynamic-forms';
 import { PortalFieldsModule } from '@skysmack/portal-fields';
 import { NgAssignmentAllMenuProvider } from './ng-assignments-all-menu-provider';
-import { NgAssignmentsMenuProvider } from './assignments/ng-assignments-menu-provider';
-import { NgAssignmentTypesMenuProvider } from './assignment-types/ng-assignment-types-menu-provider';
-import { NgMaintenanceStatesMenuProvider } from './maintenance-states/ng-maintenance-states-menu-provider';
-import { NgRecurringAssignmentsMenuProvider } from './recurring-assignments/ng-recurring-assignments-menu-provider';
 
 
 @NgModule({
@@ -39,18 +35,10 @@ import { NgRecurringAssignmentsMenuProvider } from './recurring-assignments/ng-r
 })
 export class MaintenanceModule {
   constructor(
-    ngMenuProviders: NgMenuProviders,
-    ngAssignmentAllMenuProvider: NgAssignmentAllMenuProvider,
-    ngAssignmentsMenuProvider: NgAssignmentsMenuProvider,
-    ngAssignmentTypesMenuProvider: NgAssignmentTypesMenuProvider,
-    ngMaintenanceStatesMenuProvider: NgMaintenanceStatesMenuProvider,
-    ngRecurringAssignmentsMenuProvider: NgRecurringAssignmentsMenuProvider
-  ) {
-    ngMenuProviders
+    ngMenuProviders: NgMenuProviders, 
+    ngAssignmentAllMenuProvider: NgAssignmentAllMenuProvider
+    ) {
+      ngMenuProviders
       .add(ngAssignmentAllMenuProvider)
-      .add(ngAssignmentsMenuProvider)
-      .add(ngAssignmentTypesMenuProvider)
-      .add(ngMaintenanceStatesMenuProvider)
-      .add(ngRecurringAssignmentsMenuProvider)
-  }
+     }
 }

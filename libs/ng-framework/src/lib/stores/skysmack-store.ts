@@ -5,7 +5,6 @@ import { LocalObject, toLocalObject, Package, hasValue, StrIndex, safeUndefinedT
 import { Skysmack, SkysmackAppState, SkysmackRequestStatus } from '@skysmack/packages-skysmack-core';
 import { LoadedPackage } from '../packages/loaded-package';
 import { PackageLoader } from '../packages/package-loader';
-import { OAuth2TypeId, IdentitiesTypeId } from '@skysmack/package-types';
 
 export class SkysmackStore {
     public stateKey = 'skysmack';
@@ -74,27 +73,6 @@ export class SkysmackStore {
         return this.getSkysmack().pipe(
             map(skysmack => skysmack.packages.filter(_package => _package.type === typeId)),
             safeHasValue()
-        );
-    }
-
-    // TODO: Replace usage with this.getPackageByTypeId, then delete
-    public getAuthenticationPackages(): Observable<Package[]> {
-        return this.getSkysmack().pipe(
-            map(skysmack => skysmack.packages.filter(_package => _package.type === OAuth2TypeId))
-        );
-    }
-
-    // TODO: Replace usage with this.getPackageByTypeId, then delete
-    public getAccountPackages(): Observable<Package[]> {
-        return this.getSkysmack().pipe(
-            map(skysmack => skysmack.packages.filter(_package => _package.type === IdentitiesTypeId))
-        );
-    }
-
-    // TODO: Replace usage with this.getPackageByTypeId, then delete
-    public getIdentityPackages(): Observable<Package[]> {
-        return this.getSkysmack().pipe(
-            map(skysmack => skysmack.packages.filter(_package => _package.type === IdentitiesTypeId))
         );
     }
 

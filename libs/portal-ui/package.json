@@ -12,6 +12,7 @@
     "@skysmack/ng-framework": "*",
     "@skysmack/ng-translation": "*",
     "@skysmack/ng-skysmack": "*",
+    "@skysmack/ng-ui": "*",
     "moment": "^2.24.0",
     "calendar-utils": "^0.3.1"
   },
