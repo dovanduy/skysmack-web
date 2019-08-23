@@ -11,7 +11,7 @@ RUN npm i -g "nps@>=5.9.5 <=5.9.5"
 COPY package*.json ./
 RUN npm i
 COPY . .
-RUN npm run build
+RUN nps portal.build
 
 FROM nginx:alpine
 RUN rm -rf /usr/share/nginx/html/*

@@ -3,9 +3,6 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "build": "nps build",
-    "build:commercial": "nps build.commercial",
-    "test": "nps test",
     "update": "ng update @nrwl/workspace"
   },
   "private": true,
