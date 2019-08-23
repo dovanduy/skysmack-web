@@ -4,7 +4,6 @@ import { NgSkysmackStore, NgSkysmackActions } from '@skysmack/ng-skysmack';
 import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
 
-
 // tslint:disable-next-line:directive-selector
 @Directive({ selector: '[inAnyPermission]' })
 export class InAnyPermissionDirective implements OnInit, OnDestroy {
