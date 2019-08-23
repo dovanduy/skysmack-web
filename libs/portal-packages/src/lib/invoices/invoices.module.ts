@@ -11,8 +11,6 @@ import { invoiceItemsComponents } from './invoice-item/components/invoice-items-
 import { invoicePaymentsComponents } from './invoice-payment/components/invoice-payments-components';
 import { DynamicFormsModule } from '@skysmack/portal-dynamic-forms';
 import { PortalFieldsModule } from '@skysmack/portal-fields';
-import { NgInvoicePaymentsMenuProvider } from './invoice-payment/ng-invoice-payments-menu-provider';
-import { NgInvoiceItemsMenuProvider } from './invoice-item/ng-invoice-items-menu-provider';
 import { NgInvoicesMenuProvider } from './invoice/ng-invoices-menu-provider';
 
 @NgModule({
@@ -36,12 +34,8 @@ export class InvoicesModule {
   constructor(
     ngMenuProviders: NgMenuProviders,
     ngInvoicesMenuProvider: NgInvoicesMenuProvider,
-    ngInvoiceItemsMenuProvider: NgInvoiceItemsMenuProvider,
-    ngInvoicePaymentsMenuProvider: NgInvoicePaymentsMenuProvider
   ) {
     ngMenuProviders
-      .add(ngInvoicesMenuProvider)
-      .add(ngInvoiceItemsMenuProvider)
-      .add(ngInvoicePaymentsMenuProvider)
-  }
+    .add(ngInvoicesMenuProvider)
+   }
 }
