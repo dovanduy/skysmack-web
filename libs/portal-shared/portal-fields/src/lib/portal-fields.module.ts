@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { HttpClientModule } from '@angular/common/http';
-import { PortalUiModule, MaterialModule, NgMenuProviders } from '@skysmack/portal-ui';
+import { PortalUiModule, NgMenuProviders } from '@skysmack/portal-ui';
 
 import { dynamicFieldComponents } from './field-components/dynamic-field-components';
 import { managementFieldsComponents } from './management-components/management-fields-components';
@@ -24,7 +24,6 @@ import { NgFieldsMenuProvider } from './ng-fields-menu-provider';
     CommonModule,
     ReactiveFormsModule,
     HttpClientModule,
-    MaterialModule,
     PortalUiModule,
     DynamicFormsModule,
     RecurringExpressionFieldModule,

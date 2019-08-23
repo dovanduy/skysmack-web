@@ -11,7 +11,6 @@ import { GlobalProperties } from '@skysmack/framework';
 import { ReducerRegistry, authenticationReducer } from '@skysmack/redux';
 import { ReduxOfflineConfiguration, configureRedux, CoalescingComponentFactoryResolver, NgFrameworkModule } from '@skysmack/ng-framework';
 import { NgOAuth2Module } from '@skysmack/ng-oauth2';
-import { MaterialModule } from '@skysmack/portal-ui';
 
 import { AppComponent } from './app.component';
 import { environment } from '../environments/environment';
@@ -33,7 +32,6 @@ import { CommercialUiPartnersModule } from '@skysmack/commercial-ui-partners';
     HttpClientModule,
     NgOAuth2Module,
     NgTranslationModule,
-    CommercialUiPartnersModule,
     RouterModule.forRoot([
       { path: 'account', loadChildren: './packages/commercial_account_wrapper.module#CommercialAccountWrapperModule' },
       { path: 'tenants', loadChildren: './packages/commercial_tenants_wrapper.module#CommercialTenantsWrapperModule' },
@@ -65,7 +63,7 @@ import { CommercialUiPartnersModule } from '@skysmack/commercial-ui-partners';
       },
     ], { initialNavigation: 'enabled', preloadingStrategy: AuthenticatedLoadStrategy }),
     BrowserAnimationsModule,
-    MaterialModule,
+    CommercialUiPartnersModule,
     NgReduxModule,
     NgFrameworkModule,
     NgReduxRouterModule.forRoot(),

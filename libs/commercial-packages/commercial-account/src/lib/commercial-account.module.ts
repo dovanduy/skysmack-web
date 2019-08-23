@@ -7,7 +7,6 @@ import { commercialAccountComponents } from './components/commercial-account-com
 import { DynamicFormsModule } from '@skysmack/portal-dynamic-forms';
 import { PortalFieldsModule } from '@skysmack/portal-fields';
 import { NgDynamicFormsModule } from '@skysmack/ng-dynamic-forms';
-import { MaterialModule } from '@skysmack/portal-ui';
 import { NgTranslationModule } from '@skysmack/ng-translation';
 import { CommercialUiPartnersModule } from '@skysmack/commercial-ui-partners';
 
@@ -18,7 +17,6 @@ import { CommercialUiPartnersModule } from '@skysmack/commercial-ui-partners';
     NgDynamicFormsModule,
     DynamicFormsModule,
     PortalFieldsModule,
-    MaterialModule,
     CommercialUiPartnersModule,
     NgTranslationModule,
     CommercialAccountRoutingModule
