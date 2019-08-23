@@ -1,6 +1,7 @@
-import { Component, ViewEncapsulation, Output, EventEmitter, ViewChild, OnInit } from '@angular/core';
+import { Component, ViewEncapsulation, ViewChild, OnInit } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { Router, RouteConfigLoadStart, RouteConfigLoadEnd } from '@angular/router';
+import { AllowAccessFor } from '@skysmack/framework';
 
 @Component({
   selector: 'skysmack-app',
@@ -10,7 +11,8 @@ import { Router, RouteConfigLoadStart, RouteConfigLoadEnd } from '@angular/route
 })
 export class AppComponent implements OnInit {
   @ViewChild(MatSidenav, { static: false }) public sidenav: MatSidenav;
-  loadingRouteConfig: boolean;
+  public loadingRouteConfig: boolean;
+  public allowAccessForEnum = AllowAccessFor;
 
   constructor(
     private router: Router

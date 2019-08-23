@@ -1,7 +1,7 @@
-import { Directive, OnInit, TemplateRef, ViewContainerRef, OnDestroy, Input, AfterViewInit } from '@angular/core';
-import { NgAuthenticationStore } from '@skysmack/ng-framework';
-import { map } from 'rxjs/operators';
+import { Directive, OnInit, TemplateRef, ViewContainerRef, OnDestroy, Input } from '@angular/core';
+import { map, tap } from 'rxjs/operators';
 import { SubscriptionHandler, AllowAccessFor } from '@skysmack/framework';
+import { NgAuthenticationStore } from '../stores/ng-authentication-store';
 
 // tslint:disable-next-line:directive-selector
 @Directive({ selector: '[allowAccessFor]' })
@@ -35,7 +35,7 @@ export class AllowAccessForDirective implements OnInit, OnDestroy {
             case AllowAccessFor.anonymous: { this.showForAnonymous(); break; }
             case AllowAccessFor.authenticated: { this.showForAuthenticated(); break; }
             case AllowAccessFor.both: { this.showForBoth(); break; }
-            default: { throw new Error(`\n\nPlease define who to give access: anonymous, authenticated, or both. E.g. [allowAccessFor]="allowAccessForEnum.authenticated"\n`); }
+            default: { throw new Error(`\n\nPlease define who to give access: anonymous, authenticated, or both. E.g. *allowAccessFor="allowAccessForEnum.anonymous"\n`); }
         }
     }
 
@@ -46,9 +46,9 @@ export class AllowAccessForDirective implements OnInit, OnDestroy {
     }
 
     private showForAuthenticated() {
-        this.subscriptionHandler.register(this.store.isCurrentUserAuthenticated().pipe(map(authenticated => {
+        this.subscriptionHandler.register(this.store.isCurrentUserAuthenticated().pipe(
             map(authenticated => authenticated ? this.show(true) : this.show(false))
-        })).subscribe());
+        ).subscribe());
     }
 
     private showForBoth() {

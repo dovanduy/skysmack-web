@@ -1,7 +1,5 @@
-import { IsAnonymousDirective } from './is-anonymous.directive';
-import { IsAuthenticatedDirective } from './is-authenticated.directive';
+import { AllowAccessForDirective } from './allow-access-for.directive';
 
 export const directives = [
-    IsAnonymousDirective,
-    IsAuthenticatedDirective
+    AllowAccessForDirective
 ];

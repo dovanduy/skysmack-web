@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 
 // tslint:disable-next-line:directive-selector
 @Directive({ selector: '[inAnyPermission]' })
-export class IsAnyPermissionDirective implements OnInit, OnDestroy {
+export class InAnyPermissionDirective implements OnInit, OnDestroy {
     public subscription: SubscriptionLike;
     private displaying = false;
 
