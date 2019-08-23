@@ -19,7 +19,6 @@ import { NgCommercialUsersMenuProvider } from './ng-commercial-users-menu-provid
     NgDynamicFormsModule,
     DynamicFormsModule,
     PortalFieldsModule,
-    MaterialModule,
     NgTranslationModule,
     CommercialUiPartnersModule,
     CommercialUsersRoutingModule

@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { HttpClientModule } from '@angular/common/http';
 import { commercialUiPartnersComponents } from './components/commercial-ui-partners-components';
-import { MaterialModule } from '@skysmack/portal-ui';
+import { MaterialModule } from '@skysmack/ng-ui';
 import { NgTranslationModule, LanguageService } from '@skysmack/ng-translation';
 import { RouterModule } from '@angular/router';
 import { NgMenuProviders } from './navigation/ng-menu-providers';

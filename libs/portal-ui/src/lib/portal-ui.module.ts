@@ -2,7 +2,6 @@ import { NgModule, ComponentFactoryResolver } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReducerRegistry, authenticationReducer } from '@skysmack/redux';
 import { RouterModule } from '@angular/router';
-import { MaterialModule } from './material.module';
 import { uiReducer } from './redux/ui-reducers';
 import { standardSettingsReducer } from './redux/settings';
 import { NgNotifications } from './notifications/ng-notifications';
@@ -19,8 +18,7 @@ import { directives } from './directives/directives';
     CommonModule,
     RouterModule,
     NgTranslationModule,
-    NgUIModule,
-    MaterialModule // Must come after BrowserAnimationsModule
+    NgUIModule
   ],
   providers: [
     LanguageService,
@@ -35,7 +33,6 @@ import { directives } from './directives/directives';
   exports: [
     NgTranslationModule,
     NgUIModule,
-    MaterialModule,
     ...directives,
     ...commonComponents,
     ...displayComponents

@@ -4,7 +4,7 @@ import { RecurringTimeComponent } from './components/recurring-time/recurring-ti
 import { YearlyFrequencyComponent } from './components/recurring-yearly/yearly-frequency/yearly-frequency.component';
 import { SpecificTimeComponent } from './components/recurring-time/specific-time/specific-time.component';
 import { TimeUnitComponent } from './components/recurring-time/time-unit/time-unit.component';
-import { MaterialModule } from '@skysmack/portal-ui';
+import { MaterialModule } from '@skysmack/ng-ui';
 import { CommonModule } from '@angular/common';
 import { RecurringExpressionFieldComponent } from './recurring-expression-field.component';
 import { RecurringCustomExpressionComponent } from './components/recurring-custom-expression/recurring-custom-expression.component';
