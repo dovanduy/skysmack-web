@@ -9,9 +9,9 @@ import { InvoicesPermissions } from '@skysmack/packages-invoices';
 import { InvoicesTypeId, InvoicesProductsTypeId } from '@skysmack/package-types';
 import { InvoicesIndexComponent } from './components/invoices-index/invoices-index.component';
 import { InvoiceItemsIndexComponent } from '../invoice-item/components/invoice-items-index/invoice-items-index.component';
-import { NgInvoiceItemsMenuProvider } from '../invoice-item/ng-invoice-items-menu-provider';
 import { InvoicesProductsAddProductsComponent } from '../../invoices-products/invoices-products/components/invoices-products-add-products/invoices-products-add-products.component';
 import { InvoicePaymentsIndexComponent } from '../invoice-payment/components/invoice-payments-index/invoice-payments-index.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Injectable({ providedIn: 'root' })
 export class NgInvoicesMenuProvider implements MenuProvider {
@@ -21,7 +21,8 @@ export class NgInvoicesMenuProvider implements MenuProvider {
     public InvoicePaymentsTranslationPrefix = 'INVOICE_PAYMENTS.INDEX.';
 
     constructor(
-        private store: NgSkysmackStore
+        private store: NgSkysmackStore,
+        private dialog: MatDialog
     ) { }
 
     public getMenuAreas(packagePath: string, componentKey: string): Observable<MenuArea[]> {
@@ -46,7 +47,7 @@ export class NgInvoicesMenuProvider implements MenuProvider {
                 (_package: LocalObject<Package, string>) => new MenuItem({
                     area: 'actions',
                     providedIn: [SIDEBAR, SPEEDDIAL]
-                }).asEventAction(`${_package.object.name}`, (_this: NgInvoiceItemsMenuProvider) => {
+                }).asEventAction(`${_package.object.name}`, (_this: NgInvoicesMenuProvider) => {
                     const dialogRef = _this.dialog.open(InvoicesProductsAddProductsComponent, {
                         width: '500px',
                         data: { packagePath: _package.object.path }
