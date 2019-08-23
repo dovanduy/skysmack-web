@@ -8,11 +8,11 @@
 
 <div class="btn-wrapper">
 
-    <button mat-button [routerLink]="['account', 'forgot-password']" tabindex="-1">
+    <a mat-button routerLink="/account/forgot-password" tabindex="-1">
         {{ 'COMMERCIAL_ACCOUNT.LOGIN.FORGOTPASSWORD' | translate }}
-    </button>
+    </a>
 
-    <button mat-button [routerLink]="['account', 'confirm-email']" tabindex="-1">
+    <a mat-button routerLink="/account/confirm-email" tabindex="-1">
         {{ 'COMMERCIAL_ACCOUNT.LOGIN.CONFIRMEMAIL' | translate }}
-    </button>
+    </a>
 </div>
