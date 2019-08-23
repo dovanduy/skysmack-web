@@ -4,7 +4,10 @@
                         [routerLink]="['/', 'users', 'create']">{{ 'COMMERCIAL_USERS.INDEX.CREATE' | translate }}</a>
         </div>
 
-        <mat-card>
+        <mat-card> 
+                        <div style="width:100%;height:5px">
+                            <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
+                        </div>   
                 <mat-list *ngIf="users$ | async as users">
                         <h3 mat-subheader>{{ 'COMMERCIAL_USERS.TITLE' | translate }}</h3>
                         <mat-list-item *ngFor="let user of users">
