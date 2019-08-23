@@ -3,7 +3,11 @@
     <a mat-raised-button color="primary" class="call-to-action"
       [routerLink]="['/', 'tenants', 'create']">{{ 'COMMERCIAL_TENANTS.CREATETENANT' | translate }}</a>
   </div>
-  <mat-card>
+  <mat-card>    
+    <div style="width:100%;height:5px">
+        <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
+    </div>   
+
     <mat-list *ngIf="tenants$ | async as tenants">
       <h3 mat-subheader>{{ 'COMMERCIAL_TENANTS.TITLE' | translate }}</h3>
       <mat-list-item *ngFor="let tenant of tenants">
