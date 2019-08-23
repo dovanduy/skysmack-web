@@ -15,6 +15,7 @@
     "@skysmack/ng-dynamic-forms",
     "@skysmack/portal-dynamic-forms",
     "@skysmack/ng-framework",
-    "@skysmack/ng-translation"
+    "@skysmack/ng-translation",
+    "@skysmack/ng-ui"
   ]
 }

@@ -10,7 +10,7 @@ import { NgMenuProviders } from './navigation/ng-menu-providers';
 import { NgUiMenuProvider } from '../ng-ui-menu-provider';
 import { RemoveDialog } from './components/remove-dialog/remove-dialog.component';
 import { NgFrameworkModule } from '@skysmack/ng-framework';
-import { CookieConsentComponent } from './components';
+import { NgUIModule } from '@skysmack/ng-ui';
 
 @NgModule({
   imports: [
@@ -19,6 +19,7 @@ import { CookieConsentComponent } from './components';
     RouterModule,
     MaterialModule,
     NgFrameworkModule,
+    NgUIModule,
     NgTranslationModule,
   ],
   entryComponents: [
@@ -28,7 +29,7 @@ import { CookieConsentComponent } from './components';
     ...commercialUiPartnersComponents
   ],
   exports: [
-    CookieConsentComponent
+    NgUIModule
   ],
   providers: [
     LanguageService

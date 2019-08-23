@@ -50,6 +50,9 @@
       "@skysmack/ng-fields": [
         "./dist/@skysmack/ng-fields"
       ],
+      "@skysmack/ng-ui": [
+        "./dist/@skysmack/ng-ui"
+      ],
       "@skysmack/portal-fields": [
         "./dist/@skysmack/portal-fields"
       ],

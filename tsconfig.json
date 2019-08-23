@@ -104,6 +104,9 @@
       "@skysmack/ng-fields": [
         "libs/ng-shared/ng-fields/src/public_api.ts"
       ],
+      "@skysmack/ng-ui": [
+        "libs/ng-shared/ng-ui/src/public_api.ts"
+      ],
       "@skysmack/portal-dynamic-forms": [
         "libs/portal-shared/portal-dynamic-forms/src/public_api.ts"
       ],
