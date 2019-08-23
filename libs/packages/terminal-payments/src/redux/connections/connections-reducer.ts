@@ -2,8 +2,8 @@ import { LocalPageTypes, StrIndex, LocalObject, reinstantiateLocalRecord } from 
 import { AppState, ReduxAction, sharedReducer, RecordState, recordReducersBase } from '@skysmack/redux';
 import { Connection, ConnectionKey } from '../../models/index';
 import { CONNECTIONS_REDUX_KEY, CONNECTIONS_REDUCER_KEY } from '../../constants';
-import { ConnectionsActions } from '../clients/connections-actions';
 import { TerminalStatusChangedMessage } from '../../signal-r/terminal-status-changed-message';
+import { ConnectionsActions } from './connections-actions';
 
 /**
  * This is to be used when you want to access connections via the GLOBAL state. E.g. state.connections (where connections is the reducer name.)

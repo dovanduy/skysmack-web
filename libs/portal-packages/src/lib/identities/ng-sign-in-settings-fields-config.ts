@@ -15,7 +15,7 @@ export class NgSignInSettingsFieldsConfig extends FieldsConfig<SignInSettings, u
     public formRules: FormRule[] = [];
 
     constructor(public fieldProviders: FieldProviders) {
-        super(fieldProviders);
+        super(fieldProviders, []);
     }
 
     protected getEntityFields(loadedPackage: LoadedPackage, settings?: LocalObject<SignInSettings, unknown>): Field[] {

@@ -4,12 +4,42 @@ $nav-height: 72px;
 
 skysmack-app {
   display: flex;
-  flex-direction: column;
-  position: absolute;
-  top: $nav-height;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  height: 100%;
+
+  .mat-drawer-content.mat-sidenav-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    .content-wrapper {
+      display: flex;
+      flex-flow: column;
+      height: 100%;
+      padding-top: $nav-height;
+
+      nav.footer {
+        background-color: #e6e6e6;
+        color: $light-primary-text;
+        width: 100%;
+        text-align: center;
+        align-self: flex-end;
+
+        .container {
+          padding: 2rem;
+
+          .skysmack-logo-img > img {
+            max-height: 64px;
+            margin-bottom: .25rem;
+          }
+
+          .skysmack-logo-txt > span {
+            display: block;
+            font-size: 18px;
+          }
+        }
+      }
+    }
+  }
 }
 
 nav.docs-navbar-header {
@@ -23,7 +53,7 @@ nav.docs-navbar-header {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  padding: 8px 1.5rem;
+  padding: 8px 1rem;
   background-color: #fff;
 
   >.mat-button {
@@ -32,9 +62,13 @@ nav.docs-navbar-header {
     }
   }
 
+  .secondary-menu {
+    margin-right: -.25rem;
+  }
+
   .main-menu,
   .secondary-menu {
-    padding: 0 1rem;
+    // padding: 0 1rem;
 
     a.menu,
     a.menu-button {
@@ -48,8 +82,49 @@ nav.docs-navbar-header {
       transition: opacity .1s ease, color .1s ease;
 
       &:hover {
-        color: mat-color($primary);
+        color: $primary-color;
         opacity: 1;
+      }
+    }
+  }
+}
+
+.sidenav {
+  min-width: 60vw;
+  max-width: 85vw;
+
+  .mat-drawer-inner-container {
+    overflow-x: hidden;
+
+    .mat-subheader {
+      height: 72px;
+
+      .sidenav-logo {
+        display: flex;
+        margin-left: 2vw;
+      }
+    }
+
+    .mat-divider.mat-divider-horizontal {
+      margin: 1.5rem 0;
+
+      &.top-divider {
+        margin-top: 0;
+      }
+    }
+
+    .mat-list-item {
+      padding-left: 2vw;
+
+      a {
+        color: #000;
+        opacity: .65;
+        transition: opacity .1s ease, color .1s ease;
+        font-size: 13px;
+
+        &:hover {
+          color: $primary-color;
+        }
       }
     }
   }
@@ -124,34 +199,25 @@ nav.docs-navbar-header {
   }
 }
 
-skysmack-app>ss-component-sidenav {
-  flex: 1;
-}
+.mobile-only {
+  display: none;
 
-skysmack-app>ss-homepage,
-skysmack-app>ss-guides,
-skysmack-app>guide-viewer {
-  overflow-y: auto;
-}
-
-nav.footer {
-  background-color: #e6e6e6;
-  color: $light-primary-text;
-  width: 100%;
-  text-align: center;
-  align-self: flex-end;
-  padding: 2.5rem;
-
-  img.skysmack-logo {
-    max-height: 32px;
-    margin-bottom: 1.5rem;
-  }
-  span.skysmack-logo {    
-    font-size: 18px;
+  &.toggle-menu {
+    margin-right: .75rem;
   }
 }
 
-@media (max-width: 720px) {
+.loader {
+  position: absolute;
+  top: -4px;
+  right: 0;
+  left: 0;
+  z-index: 1100;
+  opacity: 0;
+  animation: loader-entry .5s ease-out 0s 1 normal forwards;
+}
+
+@media (max-width: 900px) {
   // skysmack-app {
   //   top: 56px;
   // }
@@ -160,6 +226,28 @@ nav.footer {
   skysmack-app>ss-guides,
   skysmack-app>guide-viewer {
     overflow-y: visible;
+  }
+
+  .main-menu,
+  .secondary-menu {
+    display: none;
+  }
+
+  .mobile-only {
+    display: block;
+  }
+}
+
+
+@keyframes loader-entry {
+  0% {
+    top: -4px;
+    opacity: 0;
+  }
+
+  100% {
+    top: 0px;
+    opacity: 1;
   }
 }
 

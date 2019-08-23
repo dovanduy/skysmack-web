@@ -16,7 +16,7 @@ export class NgEmailsIndexMenuProvider implements MenuProvider {
     public EmailTemplatesTranslationPrefix = 'EMAIL_TEMPLATES.INDEX.';
 
     constructor(
-        public store: NgSkysmackStore
+        private store: NgSkysmackStore
     ) { }
 
     public getMenuAreas(packagePath: string, componentKey: string): Observable<MenuArea[]> {
@@ -33,7 +33,7 @@ export class NgEmailsIndexMenuProvider implements MenuProvider {
         );
     };
 
-    public getEmailsMenuAreas = () => {
+    private getEmailsMenuAreas = () => {
         return [
             new MenuArea({
                 area: 'manage',
@@ -42,7 +42,7 @@ export class NgEmailsIndexMenuProvider implements MenuProvider {
             })
         ]
     };
-
+    
     public getEmailTemplatesMenuAreas = () => {
         return [
             new MenuArea({

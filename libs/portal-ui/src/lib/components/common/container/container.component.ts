@@ -45,7 +45,7 @@ export class ContainerComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.path = this.router.url;
 
-    this.router.events.pipe(
+    this.subscriptionHandler.register(this.router.events.pipe(
       filter(event => event instanceof NavigationEnd),
       map(() => {
         if (this.activatedRoute.firstChild) {
@@ -56,7 +56,7 @@ export class ContainerComponent implements OnInit, OnDestroy {
           this.editorNavService.hideEditorNav();
         }
       })
-    ).subscribe();
+    ).subscribe());
 
     if (this.activatedRoute.firstChild) {
       setTimeout(() => {
@@ -88,8 +88,8 @@ export class ContainerComponent implements OnInit, OnDestroy {
         } else {
           // Loop activated routes from current container to last parent
           // Last parent should be the first part of url segment
-          var routePaths = [];
-          var route = this.activatedRoute;
+          const routePaths = [];
+          let route = this.activatedRoute;
           do {
             // Push in reverse order, since parents are pushed in reverse order
             const parentRoutes = route.snapshot.url.map(url => url.path).filter(path => path.length).reverse();

@@ -11,7 +11,6 @@ export class LodgingReservationPriceChangesActions extends RecordActionsBase<Lod
 
     public getMessageParams(record: LocalObject<LodgingReservationPriceChange, number>): StrIndex<string> {
         return {
-            id: record.object.change.toString()
         };
     }
 }

@@ -1,6 +1,7 @@
 export * from './identity-users/index';
 export * from './identity-roles/index';
 export * from './identity-applications/index';
+export * from './clients/index';
 export * from './ng-identities.module';
 export * from './accounts';
 

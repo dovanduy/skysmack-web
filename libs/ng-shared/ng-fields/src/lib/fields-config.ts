@@ -11,7 +11,10 @@ export abstract class FieldsConfig<TRecord, TKey> implements EntityFieldsConfig<
     public abstract validation: Validation;
     public abstract area: string;
 
-    constructor(public fieldProviders: FieldProviders) { }
+    constructor(
+        public fieldProviders: FieldProviders,
+        public additionalPaths: string[]
+    ) { }
 
     public getFields(loadedPackage: LoadedPackage, entity?: LocalObject<TRecord, TKey>): Observable<Field[]> {
         return this.getRecordFields(loadedPackage, entity).pipe(

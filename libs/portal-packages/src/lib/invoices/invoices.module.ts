@@ -5,7 +5,7 @@ import { InvoicesRoutingModule } from './invoices-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { NgInvoicesModule } from '@skysmack/ng-invoices';
 import { PortalUiModule, NgMenuProviders } from '@skysmack/portal-ui';
-import { LanguageService } from '@skysmack/portal-ui';
+
 import { invoicesComponents } from './invoice/components/invoices-components';
 import { invoiceItemsComponents } from './invoice-item/components/invoice-items-components';
 import { invoicePaymentsComponents } from './invoice-payment/components/invoice-payments-components';
@@ -28,13 +28,11 @@ import { NgInvoicesMenuProvider } from './invoice/ng-invoices-menu-provider';
     ...invoiceItemsComponents,
     ...invoicePaymentsComponents
   ],
-  providers: [
-    LanguageService
-  ]
+  providers: []
 })
 export class InvoicesModule {
   constructor(
-    ngMenuProviders: NgMenuProviders, 
+    ngMenuProviders: NgMenuProviders,
     ngInvoicesMenuProvider: NgInvoicesMenuProvider,
   ) {
     ngMenuProviders

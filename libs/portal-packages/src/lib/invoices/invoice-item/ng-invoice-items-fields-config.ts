@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
-import { InvoiceItem, INVOICE_ITEMS_AREA_KEY } from '@skysmack/packages-invoices';
+import { InvoiceItem, INVOICE_ITEMS_AREA_KEY, INVOICE_ITEMS_ADDITIONAL_PATHS } from '@skysmack/packages-invoices';
 
 import { NgInvoiceItemsValidation } from '@skysmack/ng-invoices';
 import { NgFieldStore, LoadedPackage } from '@skysmack/ng-framework';
-import { Router } from '@angular/router';
 import { FormRule, Field } from '@skysmack/ng-dynamic-forms';
 import { DocumentFieldsConfig, StringFieldComponent, IntFieldComponent, HiddenFieldComponent } from '@skysmack/portal-fields';
 import { FieldProviders } from '@skysmack/ng-fields';
@@ -20,10 +19,9 @@ export class NgInvoiceItemsFieldsConfig extends DocumentFieldsConfig<InvoiceItem
 
     constructor(
         public fieldProviders: FieldProviders,
-        public fieldsStore: NgFieldStore,
-        public router: Router
+        public fieldsStore: NgFieldStore
     ) {
-        super(fieldProviders, fieldsStore, router);
+        super(fieldProviders, fieldsStore, INVOICE_ITEMS_ADDITIONAL_PATHS);
     }
 
     protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<InvoiceItem, number>): Field[] {

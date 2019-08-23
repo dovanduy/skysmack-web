@@ -6,7 +6,7 @@ import { FieldsConfig } from '@skysmack/ng-fields';
 import { StringFieldComponent } from './field-components/components/string-field/string-field.component';
 import { SelectFieldComponent } from './field-components/components/select-field/select-field.component';
 import { ValidatorsFieldComponent } from './field-components/components/validators-field/validators-field.component';
-import { NgFieldStore, getAdditionalPaths } from '@skysmack/ng-framework';
+import { NgFieldStore } from '@skysmack/ng-framework';
 import { LoadedPackage } from '@skysmack/ng-framework';
 import { FieldProviders } from '@skysmack/ng-fields';
 import { Router } from '@angular/router';
@@ -28,7 +28,7 @@ export class NgFieldsConfig extends FieldsConfig<FieldSchemaViewModel, string> {
         public fieldProviders: FieldProviders,
         public router: Router
     ) {
-        super(fieldProviders);
+        super(fieldProviders, []);
     }
 
     /**
@@ -38,10 +38,9 @@ export class NgFieldsConfig extends FieldsConfig<FieldSchemaViewModel, string> {
      */
     protected getEntityFields(loadedPackage: LoadedPackage, field?: LocalObject<FieldSchemaViewModel, string>): Field[] {
         let stateKey = loadedPackage._package.path;
-        const additionalPaths = getAdditionalPaths(this.router, loadedPackage._package.path);
 
-        if (additionalPaths && additionalPaths.length > 0) {
-            stateKey = stateKey + '-' + additionalPaths;
+        if (this.additionalPaths && this.additionalPaths.length > 0) {
+            stateKey = stateKey + '-' + this.additionalPaths;
         }
 
         const fields = [

@@ -29,7 +29,6 @@ export class AccessPolicyRolesEditComponent extends RecordFormComponent<AccessPo
 
   ngOnInit() {
     super.ngOnInit();
-    this.skysmackActions.getSkysmack(); 
     this.setEditFields();
   }
 }

@@ -4,7 +4,7 @@ import { LocalObject, Package } from '@skysmack/framework';
 import { Field, CustomValidators, FormRule } from '@skysmack/ng-dynamic-forms';
 import { NgPackagesStore, NgPackagesActions, PackagePathEditValidation } from '@skysmack/ng-packages';
 import { LoadedPackage } from '@skysmack/ng-framework';
-import { PACKAGES_AREA_KEY } from '@skysmack/packages-skysmack-core';
+import { PACKAGES_AREA_KEY, PACKAGES_ADDITIONAL_PATHS } from '@skysmack/packages-skysmack-core';
 import { FieldsConfig, FieldProviders } from '@skysmack/ng-fields';
 import { StringFieldComponent } from '@skysmack/portal-fields';
 
@@ -19,7 +19,7 @@ export class NgPackagePathEditFieldsConfig extends FieldsConfig<Package, string>
         public actions: NgPackagesActions,
         public fieldProviders: FieldProviders
     ) {
-        super(fieldProviders);
+        super(fieldProviders, PACKAGES_ADDITIONAL_PATHS);
     }
 
     protected getEntityFields(loadedPackage: LoadedPackage, _package?: LocalObject<Package, string>): Field[] {

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { LocalObject, LocalObjectStatus, PagedQuery } from '@skysmack/framework';
-import { CashPayment, INVOICES_CASH_PAYMENTS_AREA_KEY } from '@skysmack/packages-invoices-cash-payments';
+import { CashPayment, INVOICES_CASH_PAYMENTS_AREA_KEY, INVOICES_CASH_PAYMENTS_ADDITIONAL_PATHS } from '@skysmack/packages-invoices-cash-payments';
 import { NgInvoicesCashPaymentsValidation } from '@skysmack/ng-invoices-cash-payments';
 import { LoadedPackage } from '@skysmack/ng-framework';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
@@ -27,7 +27,7 @@ export class NgInvoicesCashPaymentsFieldsConfig extends FieldsConfig<CashPayment
         public invoicesActions: NgInvoicesActions,
         public skysmackStore: NgSkysmackStore
     ) {
-        super(fieldProviders);
+        super(fieldProviders, INVOICES_CASH_PAYMENTS_ADDITIONAL_PATHS);
     }
 
     protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<CashPayment, number>): Field[] {
@@ -44,7 +44,8 @@ export class NgInvoicesCashPaymentsFieldsConfig extends FieldsConfig<CashPayment
                 displaySubKey: 'object.currencyCode',
                 optionsData$: invoicePackage$.pipe(switchMap(invoicePackage => this.invoicesStore.get(invoicePackage.object.path))),
                 displayNameSelector: 'object.currencyCode',
-                getDependencies: () => { invoicePackage$.pipe(map(invoicePackage => this.invoicesActions.getPaged(invoicePackage.object.path, new PagedQuery())),
+                getDependencies: () => {
+                    invoicePackage$.pipe(map(invoicePackage => this.invoicesActions.getPaged(invoicePackage.object.path, new PagedQuery())),
                         take(1)
                     ).subscribe();
                 },

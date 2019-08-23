@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
-import { LodgingType, LODGING_TYPES_AREA_KEY } from '@skysmack/packages-lodgings';
+import { LodgingType, LODGING_TYPES_AREA_KEY, LODGING_TYPES_ADDITIONAL_PATHS } from '@skysmack/packages-lodgings';
 import { NgLodgingTypesValidation } from '@skysmack/ng-lodgings';
 import { FormRule, Field } from '@skysmack/ng-dynamic-forms';
 import { NgFieldStore, LoadedPackage } from '@skysmack/ng-framework';
-import { Router } from '@angular/router';
 import { DocumentFieldsConfig, StringFieldComponent, HiddenFieldComponent } from '@skysmack/portal-fields';
 import { FieldProviders } from '@skysmack/ng-fields';
 
@@ -18,10 +17,9 @@ export class NgLodgingTypesFieldsConfig extends DocumentFieldsConfig<LodgingType
 
     constructor(
         public fieldProviders: FieldProviders,
-        public fieldsStore: NgFieldStore,
-        public router: Router
+        public fieldsStore: NgFieldStore
     ) {
-        super(fieldProviders, fieldsStore, router);
+        super(fieldProviders, fieldsStore, LODGING_TYPES_ADDITIONAL_PATHS);
     }
 
     protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<LodgingType, number>): Field[] {

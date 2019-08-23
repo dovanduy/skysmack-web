@@ -3,16 +3,21 @@ import { Validators } from '@angular/forms';
 import { FormRule, Field, CustomValidators } from '@skysmack/ng-dynamic-forms';
 import { EmailFieldComponent, PasswordFieldComponent, CheckboxFieldComponent } from '@skysmack/portal-fields';
 import { CommercialAccountLoginValidation } from './commercial-account-login-validation';
+import { FieldsConfig, FieldProviders } from '@skysmack/ng-fields';
+import { LoadedPackage } from '@skysmack/ng-framework';
+import { LocalObject } from '@skysmack/framework';
 
 @Injectable({ providedIn: 'root' })
-export class CommercialAccountLoginFieldsConfig {
+export class CommercialAccountLoginFieldsConfig extends FieldsConfig<any, any>{
     public validation = new CommercialAccountLoginValidation();
     public area = '';
     public formRules: FormRule[] = [];
 
-    constructor() { }
+    constructor(public fieldProviders: FieldProviders) {
+        super(fieldProviders, []);
+    }
 
-    public getFields(): Field[] {
+    protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<any, any>): Field[] {
         const fields = [
             new Field({
                 component: EmailFieldComponent,

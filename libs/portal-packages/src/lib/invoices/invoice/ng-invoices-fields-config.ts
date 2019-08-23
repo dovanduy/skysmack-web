@@ -1,38 +1,47 @@
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
-import { Invoice, INVOICES_AREA_KEY } from '@skysmack/packages-invoices';
+import { Invoice, INVOICES_AREA_KEY, INVOICES_ADDITIONAL_PATHS } from '@skysmack/packages-invoices';
 
 import { NgInvoicesValidation } from '@skysmack/ng-invoices';
-import { LoadedPackage } from '@skysmack/ng-framework';
+import { LoadedPackage, NgFieldStore } from '@skysmack/ng-framework';
 import { FormRule, Field } from '@skysmack/ng-dynamic-forms';
 import { FieldsConfig, FieldProviders } from '@skysmack/ng-fields';
-import { StringFieldComponent, HiddenFieldComponent } from '@skysmack/portal-fields';
+import { StringFieldComponent, HiddenFieldComponent, DocumentFieldsConfig } from '@skysmack/portal-fields';
 
 export interface NgInvoiceFormDependencies {
   [key: string]: any;
 }
 
 @Injectable({ providedIn: 'root' })
-export class NgInvoicesFieldsConfig extends FieldsConfig<Invoice, number> {
+export class NgInvoicesFieldsConfig extends DocumentFieldsConfig<Invoice, number> {
   public validation = new NgInvoicesValidation();
   public area = INVOICES_AREA_KEY;
   public formRules: FormRule[] = [];
 
   constructor(
-    public fieldProviders: FieldProviders
+    public fieldProviders: FieldProviders,
+    public fieldsStore: NgFieldStore
   ) {
-    super(fieldProviders);
+    super(fieldProviders, fieldsStore, INVOICES_ADDITIONAL_PATHS);
   }
 
   protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<Invoice, number>): Field[] {
     const fields = [
       new Field({
         component: StringFieldComponent,
+        value: entity ? entity.object.description : undefined,
+        key: 'description',
+        order: 1,
+        showColumn: true,
+        sortable: true
+      }),
+      new Field({
+        component: StringFieldComponent,
         value: entity ? entity.object.currencyCode : undefined,
         key: 'currencyCode',
         validators: [Validators.required],
-        order: 1,
+        order: 2,
         showColumn: true,
         sortable: true
       }),

@@ -9,6 +9,8 @@ import { NgConnectionsActions, NgConnectionsStore, NgConnectionsRequests } from 
 import { LocalObject } from '@skysmack/framework';
 import { take } from 'rxjs/operators';
 import { RecordIndexComponent } from '@skysmack/portal-fields';
+import { MatDialog } from '@angular/material/dialog';
+import { TerminalsActionsComponent } from '../../../terminals';
 
 @Component({
   selector: 'ss-connections-index',
@@ -20,17 +22,10 @@ export class ConnectionsIndexComponent extends RecordIndexComponent<ConnectionsA
   public areaKey: string = CONNECTIONS_AREA_KEY;
   public titleExtras = true;
   public menuItemActions: MenuItem[] = [
-    new MenuItem().asEventAction('Actions', this.terminalActions, 'settings', this).setShowLogic((entity: LocalObject<Connection, ConnectionKey>) => {
-      if (entity.object.client && entity.object.client.object.online) {
-        if (entity.object.status == TerminalStatus.Open || entity.object.status == TerminalStatus.Connected) {
-          return true;
-        }
-      }
-      return false;
-    }),
+    new MenuItem().asEventAction('Actions', this.terminalActions, 'settings', this).setShowLogic((entity: LocalObject<Connection, ConnectionKey>) => true),
     new MenuItem().asEventAction('Connect', this.connect, 'control_point', this).setShowLogic((entity: LocalObject<Connection, ConnectionKey>) => {
       if (entity.object.client && entity.object.client.object.online) {
-        if (entity.object.status == TerminalStatus.Closed || entity.object.status == TerminalStatus.Disconnected || entity.object.status == TerminalStatus.Unknown) {
+        if (entity.object.status == TerminalStatus.Disconnected) {
           return true;
         }
       }
@@ -38,7 +33,7 @@ export class ConnectionsIndexComponent extends RecordIndexComponent<ConnectionsA
     }),
     new MenuItem().asEventAction('Open', this.open, 'check', this).setShowLogic((entity: LocalObject<Connection, ConnectionKey>) => {
       if (entity.object.client && entity.object.client.object.online) {
-        if (entity.object.status == TerminalStatus.Closed || entity.object.status == TerminalStatus.Disconnected || entity.object.status == TerminalStatus.Connected || entity.object.status == TerminalStatus.Unknown) {
+        if (entity.object.status == TerminalStatus.Connected) {
           return true;
         }
       }
@@ -46,7 +41,15 @@ export class ConnectionsIndexComponent extends RecordIndexComponent<ConnectionsA
     }),
     new MenuItem().asEventAction('Close', this.close, 'close', this).setShowLogic((entity: LocalObject<Connection, ConnectionKey>) => {
       if (entity.object.client && entity.object.client.object.online) {
-        if (entity.object.status == TerminalStatus.Open || entity.object.status == TerminalStatus.Connected) {
+        if (entity.object.status == TerminalStatus.Open) {
+          return true;
+        }
+      }
+      return false;
+    }),
+    new MenuItem().asEventAction('Abort', this.abort, 'report_problem', this).setShowLogic((entity: LocalObject<Connection, ConnectionKey>) => {
+      if (entity.object.client && entity.object.client.object.online) {
+        if (entity.object.status !== TerminalStatus.Disconnected) {
           return true;
         }
       }
@@ -54,7 +57,7 @@ export class ConnectionsIndexComponent extends RecordIndexComponent<ConnectionsA
     }),
     new MenuItem().asEventAction('Disconnect', this.disconnect, 'cancel', this).setShowLogic((entity: LocalObject<Connection, ConnectionKey>) => {
       if (entity.object.client && entity.object.client.object.online) {
-        if (entity.object.status == TerminalStatus.Open || entity.object.status == TerminalStatus.Connected || entity.object.status == TerminalStatus.Closed) {
+        if (entity.object.status == TerminalStatus.Open || entity.object.status == TerminalStatus.Connected) {
           return true;
         }
       }
@@ -72,7 +75,8 @@ export class ConnectionsIndexComponent extends RecordIndexComponent<ConnectionsA
     public fieldsConfig: NgConnectionsFieldsConfig,
     public title: EntityComponentPageTitle,
     public menuItemActionProviders: MenuItemActionProviders,
-    public requests: NgConnectionsRequests
+    public requests: NgConnectionsRequests,
+    public dialog: MatDialog
   ) {
     super(router, activatedRoute, actions, redux, store, fieldsConfig, menuItemActionProviders, title);
   }
@@ -82,8 +86,7 @@ export class ConnectionsIndexComponent extends RecordIndexComponent<ConnectionsA
   }
 
   protected terminalActions(_this: ConnectionsIndexComponent, value: LocalObject<Connection, ConnectionKey>) {
-    const terminalId = value.object.terminal.object.id;
-    _this.router.navigate([_this.packagePath, 'terminals', 'actions', terminalId]);
+    _this.dialog.open(TerminalsActionsComponent, { data: value.object.id });
   }
 
   protected connect(_this: ConnectionsIndexComponent, value: LocalObject<Connection, ConnectionKey>) {
@@ -96,6 +99,10 @@ export class ConnectionsIndexComponent extends RecordIndexComponent<ConnectionsA
 
   protected close(_this: ConnectionsIndexComponent, value: LocalObject<Connection, ConnectionKey>) {
     _this.requests.close(_this.packagePath, value).pipe(take(1)).subscribe();
+  }
+
+  protected abort(_this: ConnectionsIndexComponent, value: LocalObject<Connection, ConnectionKey>) {
+    _this.requests.abort(_this.packagePath, value).pipe(take(1)).subscribe();
   }
 
   protected disconnect(_this: ConnectionsIndexComponent, value: LocalObject<Connection, ConnectionKey>) {

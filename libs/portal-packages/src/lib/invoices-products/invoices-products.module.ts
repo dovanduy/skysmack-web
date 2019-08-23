@@ -2,7 +2,7 @@ import { NgModule, ComponentFactoryResolver } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 
-import { LanguageService, MenuItemActionProviders } from '@skysmack/portal-ui';
+import { MenuItemActionProviders } from '@skysmack/portal-ui';
 import { PortalUiModule } from '@skysmack/portal-ui';
 import { InvoicesProductsRoutingModule } from './invoices-products-routing.module';
 import { NgInvoicesProductsModule } from '@skysmack/ng-invoices-products';
@@ -34,9 +34,7 @@ import { PortalFieldsModule } from '@skysmack/portal-fields';
     InvoicesProductsAddToInvoiceComponent,
     InvoicesProductsAddProductsComponent
   ],
-  providers: [
-    LanguageService
-  ]
+  providers: []
 })
 export class InvoicesProductsModule {
   constructor(

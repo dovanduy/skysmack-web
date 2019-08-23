@@ -5,7 +5,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { OnInit, OnDestroy } from '@angular/core';
 import { take, map, filter } from 'rxjs/operators';
 import { Field } from '@skysmack/ng-dynamic-forms';
-import { getAdditionalPaths, getPackageDendencyAsStream } from '@skysmack/ng-framework';
+import { getPackageDendencyAsStream } from '@skysmack/ng-framework';
 import { LoadedPackage } from '@skysmack/ng-framework';
 import { EntityComponentPageTitle } from '@skysmack/portal-ui';
 
@@ -14,7 +14,6 @@ export class BaseComponent<TAppState, TKey> implements OnInit, OnDestroy {
     public fields$: Observable<Field[]>;
     public entityId: TKey;
     public packagePath: string;
-    public additionalPaths: string[] = [];
     public loadedPackage$: Observable<LoadedPackage>;
 
     public areaKey = '';
@@ -36,7 +35,6 @@ export class BaseComponent<TAppState, TKey> implements OnInit, OnDestroy {
         // Used together with dynamic routing in fallback component.
         this.router.onSameUrlNavigation = 'ignore';
         this.setPackagePath();
-        this.setAdditionalPaths();
         this.getParams();
         this.getCurrentPackage();
         this.setTitle();
@@ -74,10 +72,6 @@ export class BaseComponent<TAppState, TKey> implements OnInit, OnDestroy {
 
     protected setPackagePath() {
         this.packagePath = this.router.url.split('/')[1];
-    }
-
-    private setAdditionalPaths() {
-        this.additionalPaths = getAdditionalPaths(this.router, this.packagePath);
     }
 
     private setTitle() {

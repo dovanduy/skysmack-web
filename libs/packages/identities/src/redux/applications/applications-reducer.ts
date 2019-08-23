@@ -47,7 +47,11 @@ export function applicationsReducer(state = new ApplicationsState(), action: Red
             const commitMeta = castedAction.meta.offline.commit.meta;
             Object.keys(commitMeta.value).forEach(roleId => {
                 const currentApplicationRoles: string[] = newState.applicationsRoles[commitMeta.stateKey][roleId];
-                newState.applicationsRoles[commitMeta.stateKey][roleId] = linq(currentApplicationRoles.concat(commitMeta.value[roleId])).distinct().ok();
+                if (currentApplicationRoles) {
+                    newState.applicationsRoles[commitMeta.stateKey][roleId] = linq(currentApplicationRoles.concat(commitMeta.value[roleId])).distinct().ok();
+                } else {
+                    newState.applicationsRoles[commitMeta.stateKey][roleId] = linq(commitMeta.value[roleId]).distinct().ok();
+                }
             });
 
             return newState;

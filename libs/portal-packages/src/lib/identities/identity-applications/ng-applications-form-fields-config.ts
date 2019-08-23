@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { LocalObject } from '@skysmack/framework';
-import { APPLICATIONS_AREA_KEY, ApplicationDescriptor } from '@skysmack/packages-identities';
+import { APPLICATIONS_AREA_KEY, ApplicationDescriptor, APPLICATIONS_ADDITIONAL_PATHS } from '@skysmack/packages-identities';
 import { NgApplicationsValidation } from '@skysmack/ng-identities';
 import { LoadedPackage } from '@skysmack/ng-framework';
 import { StringFieldComponent, StringArrayFieldComponent } from '@skysmack/portal-fields';
@@ -14,8 +14,10 @@ export class NgApplicationsFormFieldsConfig extends FieldsConfig<ApplicationDesc
     public area = APPLICATIONS_AREA_KEY;
     public formRules: FormRule[] = [];
 
+    public mode: 'create' | 'edit' = 'create'
+
     constructor(public fieldProviders: FieldProviders) {
-        super(fieldProviders);
+        super(fieldProviders, APPLICATIONS_ADDITIONAL_PATHS);
     }
 
     protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<ApplicationDescriptor, number>): Field[] {
@@ -58,22 +60,32 @@ export class NgApplicationsFormFieldsConfig extends FieldsConfig<ApplicationDesc
                 component: StringFieldComponent,
                 value: entity ? entity.object.type : undefined,
                 key: 'type',
-                validators: [Validators.required],
                 order: 1,
                 showColumn: true,
                 sortable: true
             }),
             new Field({
                 component: StringArrayFieldComponent,
-                value: entity ? entity.object.permissions : [[]],
+                value: entity ? entity.object.permissions : [],
                 key: 'permissions',
-                validators: [Validators.required],
                 order: 3,
                 showColumn: true,
                 sortable: true
             }),
         ];
 
+        this.setTypeFieldValidators(fields);
+
         return fields;
+    }
+
+    // Type is only required on update.
+    private setTypeFieldValidators(fields: Field[]) {
+        const typeField = fields.find(x => x.key === 'type');
+        if (typeField) {
+            this.mode === 'create' ? typeField.validators = [] : typeField.validators = [Validators.required];
+        } else {
+            throw new Error('ApplicationDescriptor prop "type" is missing: Please keep setTypeFieldValidators() up to date.')
+        }
     }
 }

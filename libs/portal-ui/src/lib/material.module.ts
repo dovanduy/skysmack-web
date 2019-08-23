@@ -24,6 +24,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSelectModule } from '@angular/material/select';
+import {MatListModule} from '@angular/material/list';
 
 @NgModule({
   imports: [
@@ -51,7 +52,8 @@ import { MatSelectModule } from '@angular/material/select';
     MatSlideToggleModule,
     MatInputModule,
     MatCheckboxModule,
-    MatSelectModule
+    MatSelectModule,
+    MatListModule
   ],
   exports: [
     MatGridListModule,
@@ -78,7 +80,8 @@ import { MatSelectModule } from '@angular/material/select';
     MatDialogModule,
     MatInputModule,
     MatCheckboxModule,
-    MatSelectModule
+    MatSelectModule,
+    MatListModule
   ],
   providers: [
   ]

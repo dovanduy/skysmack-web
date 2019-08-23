@@ -2,7 +2,7 @@ import { Record, StrIndex, LocalPageTypes, LocalObject, hasValue, dictionaryToAr
 import { RecordStore, RecordState } from '@skysmack/redux';
 import { Observable, combineLatest, from } from 'rxjs';
 import { NgRedux } from '@angular-redux/store';
-import { map, mergeMap } from 'rxjs/operators';
+import { map, mergeMap, filter } from 'rxjs/operators';
 import { getPackageDendencyAsStream } from '../helpers/ng-helpers';
 import { SkysmackStore } from './skysmack-store';
 
@@ -31,13 +31,16 @@ export abstract class NgRecordStore<TState, TRecord extends Record<TKey>, TKey> 
         );
     }
 
-    protected getWithDependencies = (packagePath: string, options: DependencyOptions[], dependencyIndexes: number[] = []): Observable<LocalObject<TRecord, TKey>[]> => {
-        const options$ = from(options);
-        const targetPackage$ = getPackageDendencyAsStream(this.skysmackStore, packagePath, dependencyIndexes);
+    protected getWithDependencies = (packagePath: string, options: DependencyOptions[]): Observable<LocalObject<TRecord, TKey>[]> => {
+        const updatedOptions = options.map(option => {
+            option.targetPackage$ = getPackageDendencyAsStream(this.skysmackStore, packagePath, option.dependencyIndexes);
+            return option;
+        });
+        const options$ = from(updatedOptions);
         const records$ = this.getRecords(packagePath);
 
         return options$.pipe(
-            mergeMap(option => targetPackage$.pipe(
+            mergeMap(option => option.targetPackage$.pipe(
                 mergeMap(targetPackage => combineLatest(
                     records$,
                     this.getDependencies(targetPackage.object.path, option.stateSelector)
@@ -48,13 +51,16 @@ export abstract class NgRecordStore<TState, TRecord extends Record<TKey>, TKey> 
         );
     }
 
-    protected getSingleWithDependency = (packagePath: string, id: TKey, options: DependencyOptions[], dependencyIndexes: number[] = []): Observable<LocalObject<TRecord, TKey>> => {
-        const options$ = from(options);
-        const targetPackage$ = getPackageDendencyAsStream(this.skysmackStore, packagePath, dependencyIndexes);
+    protected getSingleWithDependency = (packagePath: string, id: TKey, options: DependencyOptions[]): Observable<LocalObject<TRecord, TKey>> => {
+        const updatedOptions = options.map(option => {
+            option.targetPackage$ = getPackageDendencyAsStream(this.skysmackStore, packagePath, option.dependencyIndexes);
+            return option;
+        });
+        const options$ = from(updatedOptions);
         const record$ = this.getSingleRecord(packagePath, id);
 
         return options$.pipe(
-            mergeMap(option => targetPackage$.pipe(
+            mergeMap(option => option.targetPackage$.pipe(
                 mergeMap(targetPackage => combineLatest(
                     record$,
                     this.getDependencies(targetPackage.object.path, option.stateSelector)
@@ -65,13 +71,16 @@ export abstract class NgRecordStore<TState, TRecord extends Record<TKey>, TKey> 
         );
     }
 
-    protected getSingleWithDependencies = (packagePath: string, id: TKey, options: DependencyOptions[], dependencyIndexes: number[] = []): Observable<LocalObject<TRecord, TKey>> => {
-        const options$ = from(options);
-        const targetPackage$ = getPackageDendencyAsStream(this.skysmackStore, packagePath, dependencyIndexes);
+    protected getSingleWithDependencies = (packagePath: string, id: TKey, options: DependencyOptions[]): Observable<LocalObject<TRecord, TKey>> => {
+        const updatedOptions = options.map(option => {
+            option.targetPackage$ = getPackageDendencyAsStream(this.skysmackStore, packagePath, option.dependencyIndexes);
+            return option;
+        });
+        const options$ = from(updatedOptions);
         const record$ = this.getSingleRecord(packagePath, id);
 
         return options$.pipe(
-            mergeMap(option => targetPackage$.pipe(
+            mergeMap(option => option.targetPackage$.pipe(
                 mergeMap(targetPackage => combineLatest(
                     record$,
                     this.getDependencies(targetPackage.object.path, option.stateSelector)
@@ -88,6 +97,7 @@ export abstract class NgRecordStore<TState, TRecord extends Record<TKey>, TKey> 
 
     protected getDependencies(packagePath: string, stateSelector: string): Observable<LocalObject<any, number>[]> {
         return this.store.select(state => state[stateSelector]).pipe(
+            filter(x => x),
             map(state => state.localRecords[packagePath]),
             safeUndefinedTo('object'),
             dictionaryToArray<LocalObject<TRecord, TKey>>(),
@@ -113,7 +123,7 @@ export abstract class NgRecordStore<TState, TRecord extends Record<TKey>, TKey> 
         for (let index = 0; index < records.length; index++) {
             const record = records[index];
             const recordId = getProperty(record.object, relationIdSelector);
-            if (recordId && recordId > 0) {
+            if (recordId && (recordId > 0 || recordId !== '')) {
                 record.object[relationSelector] = dependencies.find(dependency => dependency.object.id === getProperty(record.object, relationIdSelector));
             }
         }

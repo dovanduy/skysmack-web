@@ -27,7 +27,6 @@ export class SetPasswordComponent extends FormBaseComponent<UsersAppState, User,
 
   ngOnInit() {
     super.ngOnInit();
-    this.editorNavService.showEditorNav();
     this.fields$ = this.fieldsConfig.getFields(undefined);
   }
 

@@ -31,7 +31,6 @@ export class ConfirmEmailComponent extends BaseComponent<AccountAppState, unknow
 
   ngOnInit() {
     super.ngOnInit();
-    this.editorNavService.showEditorNav();
     this.fields$ = this.loadedPackage$.pipe(
       switchMap(loadedPackage => this.fieldsConfig.getFields(loadedPackage))
     );

@@ -17,14 +17,13 @@ import { AccessPolicyRulesIndexComponent } from './access-policy-rules/component
 @Injectable({ providedIn: 'root' })
 export class NgAccessPoliciesDashboardMenuProvider implements MenuProvider {
     public id = Guid.create().toString();
-    public indexTranslationPrefix = 'ACCESS_POLICIES.INDEX.';
-    public permissionsTranslationPrefix = 'ACCESS_POLICY_PERMISSIONS.INDEX.';
-    public RolesTranslationPrefix = 'ACCESS_POLICY_ROLES.INDEX.';
-    public RulesTranslationPrefix = 'ACCESS_POLICY_RULES.INDEX.';
-
+    private indexTranslationPrefix = 'ACCESS_POLICIES.INDEX.';
+    private permissionsTranslationPrefix = 'ACCESS_POLICY_PERMISSIONS.INDEX.';
+    private RolesTranslationPrefix = 'ACCESS_POLICY_ROLES.INDEX.';
+    private RulesTranslationPrefix = 'ACCESS_POLICY_RULES.INDEX.';
 
     constructor(
-        public store: NgSkysmackStore
+        private store: NgSkysmackStore
     ) { }
 
     public getMenuAreas(packagePath: string, componentKey: string): Observable<MenuArea[]> {
@@ -41,7 +40,7 @@ export class NgAccessPoliciesDashboardMenuProvider implements MenuProvider {
             getMenuEntries<MenuItem>(packagePath, AccessPoliciesTypeId, componentKey, AccessPoliciesDashboardComponent.COMPONENT_KEY, this.getAccessPoliciesDashboardMenuItems, this.store),
             getMenuEntries<MenuItem>(packagePath, AccessPoliciesTypeId, componentKey, AccessPolicyPermissionsIndexComponent.COMPONENT_KEY, this.getAccessPolicyPermissionsMenuItems, this.store),
             getMenuEntries<MenuItem>(packagePath, AccessPoliciesTypeId, componentKey, AccessPolicyRolesIndexComponent.COMPONENT_KEY, this.getAccessPolicyRolesMenuItems, this.store),
-            getMenuEntries<MenuItem>(packagePath, AccessPoliciesTypeId, componentKey, AccessPolicyRulesIndexComponent.COMPONENT_KEY, this.getAccessPolicyRulesMenuItems, this.store)            
+            getMenuEntries<MenuItem>(packagePath, AccessPoliciesTypeId, componentKey, AccessPolicyRulesIndexComponent.COMPONENT_KEY, this.getAccessPolicyRulesMenuItems, this.store)
         );
     };
 

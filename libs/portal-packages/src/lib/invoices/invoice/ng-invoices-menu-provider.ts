@@ -21,7 +21,7 @@ export class NgInvoicesMenuProvider implements MenuProvider {
     public InvoicePaymentsTranslationPrefix = 'INVOICE_PAYMENTS.INDEX.';
 
     constructor(
-        public store: NgSkysmackStore
+        private store: NgSkysmackStore
     ) { }
 
     public getMenuAreas(packagePath: string, componentKey: string): Observable<MenuArea[]> {
@@ -31,8 +31,6 @@ export class NgInvoicesMenuProvider implements MenuProvider {
             getMenuEntries<MenuArea>(packagePath, InvoicesTypeId, componentKey, InvoicePaymentsIndexComponent.COMPONENT_KEY, this.getInvoicePaymentsMenuAreas, this.store)
         );
     };
-
-
 
     public getMenuItems(packagePath: string, componentKey: string): Observable<MenuItem[]> {
         return getCombinedMenuEntries<MenuItem>(

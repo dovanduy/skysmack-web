@@ -1,7 +1,8 @@
 import { NgModule, ComponentFactoryResolver } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-import { LanguageService, NgMenuProviders } from '@skysmack/portal-ui';
+import { NgMenuProviders } from '@skysmack/portal-ui';
+
 import { NgIdentitiesModule } from '@skysmack/ng-identities';
 import { PortalUiModule } from '@skysmack/portal-ui';
 import { IdentitiesRoutingModule } from './identities-routing.module';
@@ -16,14 +17,13 @@ import { accountsComponents } from './accounts/components/accounts-components';
 import { MatSelectModule } from '@angular/material/select';
 import { RolesSelectFieldComponent } from './identity-roles/components/roles-select-field/roles-select-field.component';
 import { CoalescingComponentFactoryResolver } from '@skysmack/ng-framework';
-import { RolesSelectComponent, NgRolesMenuProvider } from './identity-roles';
+import { RolesSelectComponent } from './identity-roles';
 import { DynamicFormsModule } from '@skysmack/portal-dynamic-forms';
 import { SettingsModule } from '@skysmack/portal-settings';
 import { PortalFieldsModule } from '@skysmack/portal-fields';
 import { applicationsComponents } from './identity-applications/components/applications-components';
-import { NgIdentitiesIndexMenuProvider } from './ng-identities-index-menu-provider';
-import { NgUsersMenuProvider } from './identity-users/ng-users-menu-provider';
-import { NgApplicationsMenuProvider } from './identity-applications/ng-applications-menu-provider';
+import { NgIdentitiesMenuProvider } from './ng-identities-menu-provider';
+import { clientsComponents } from './clients/components/clients-component';
 
 @NgModule({
   imports: [
@@ -42,7 +42,8 @@ import { NgApplicationsMenuProvider } from './identity-applications/ng-applicati
     ...rolesComponents,
     ...usersComponents,
     ...accountsComponents,
-    ...applicationsComponents
+    ...applicationsComponents,
+    ...clientsComponents,
   ],
   exports: [
     RolesSelectComponent,
@@ -52,7 +53,6 @@ import { NgApplicationsMenuProvider } from './identity-applications/ng-applicati
     RolesSelectFieldComponent
   ],
   providers: [
-    LanguageService,
     { provide: 'NgLockoutSettingsFieldsConfig', useClass: NgLockoutSettingsFieldsConfig },
     { provide: 'NgUserSettingsFieldsConfig', useClass: NgUserSettingsFieldsConfig },
     { provide: 'NgPasswordSettingsFieldsConfig', useClass: NgPasswordSettingsFieldsConfig },
@@ -62,18 +62,11 @@ import { NgApplicationsMenuProvider } from './identity-applications/ng-applicati
 export class IdentitiesModule {
   constructor(
     ngMenuProviders: NgMenuProviders,
-    ngIdentitiesIndexMenuProvider: NgIdentitiesIndexMenuProvider,
-    ngApplicationsMenuProvider: NgApplicationsMenuProvider,
-    ngRolesMenuProvider: NgRolesMenuProvider,
+    ngIdentitiesMenuProvider: NgIdentitiesMenuProvider,
     coalescingResolver: CoalescingComponentFactoryResolver,
-    localResolver: ComponentFactoryResolver,
-    ngUsersMenuProvider: NgUsersMenuProvider,
+    localResolver: ComponentFactoryResolver
   ) {
     coalescingResolver.registerResolver(localResolver);
-    ngMenuProviders
-    .add(ngIdentitiesIndexMenuProvider)
-    .add(ngApplicationsMenuProvider)
-    .add(ngRolesMenuProvider)
-    .add(ngUsersMenuProvider)
+    ngMenuProviders.add(ngIdentitiesMenuProvider);
   }
 }

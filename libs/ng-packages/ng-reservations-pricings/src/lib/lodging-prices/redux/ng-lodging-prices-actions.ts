@@ -9,7 +9,6 @@ export class NgLodgingPricesActions extends LodgingPricesActions {
 
     public getMessageParams(record: LocalObject<LodgingPrice, number>): StrIndex<string> {
         return {
-            price: record.object.price.toString()
         };
     }
 }

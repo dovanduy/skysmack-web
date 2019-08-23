@@ -25,7 +25,6 @@ export class TerminalsProcessComponent extends BaseComponent<TerminalsAppState, 
 
 
   ngOnInit() {
-    this.editorNavService.showEditorNav();
     super.ngOnInit();
   }
 

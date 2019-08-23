@@ -12,12 +12,14 @@ export class NgLodgingReservationsStore extends NgRecordStore<LodgingReservation
         new DependencyOptions({
             relationSelector: 'allocatedLodging',
             relationIdSelector: 'allocatedLodgingId',
-            stateSelector: 'lodgings'
+            stateSelector: 'lodgings',
+            dependencyIndexes: [0]
         }),
         new DependencyOptions({
             relationSelector: 'lodgingType',
             relationIdSelector: 'lodgingTypeId',
-            stateSelector: 'lodgingTypes'
+            stateSelector: 'lodgingTypes',
+            dependencyIndexes: [0]
         })
     ];
 
@@ -27,10 +29,10 @@ export class NgLodgingReservationsStore extends NgRecordStore<LodgingReservation
     ) { super(ngRedux, skysmackStore, LODGING_RESERVATIONS_REDUCER_KEY); }
 
     public get(packagePath: string): Observable<LocalObject<LodgingReservation, number>[]> {
-        return this.getWithDependencies(packagePath, this.deps, [0]);
+        return this.getWithDependencies(packagePath, this.deps);
     }
 
     public getSingle(packagePath: string, id: number): Observable<LocalObject<LodgingReservation, number>> {
-        return this.getSingleWithDependency(packagePath, id, this.deps, [0]);
+        return this.getSingleWithDependency(packagePath, id, this.deps);
     }
 }

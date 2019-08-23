@@ -12,7 +12,8 @@ export class NgInvoicesCashPaymentsStore extends NgRecordStore<InvoicesCashPayme
         new DependencyOptions({
             relationSelector: 'invoice',
             relationIdSelector: 'invoiceId',
-            stateSelector: 'invoices'
+            stateSelector: 'invoices',
+            dependencyIndexes: [0]
         })
     ];
 
@@ -23,10 +24,10 @@ export class NgInvoicesCashPaymentsStore extends NgRecordStore<InvoicesCashPayme
 
 
     public get(packagePath: string): Observable<LocalObject<CashPayment, number>[]> {
-        return this.getWithDependencies(packagePath, this.deps, [0]);
+        return this.getWithDependencies(packagePath, this.deps);
     }
 
     public getSingle(packagePath: string, id: number): Observable<LocalObject<CashPayment, number>> {
-        return this.getSingleWithDependency(packagePath, id, this.deps, [0]);
+        return this.getSingleWithDependency(packagePath, id, this.deps);
     }
 }

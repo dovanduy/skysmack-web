@@ -41,7 +41,6 @@ export class UsersRolesComponent extends BaseComponent<User, number> implements 
     this.actions.getUsersRoles(this.packagePath, [this.entityId]);
     this.userRoles$ = this.store.getUserRoles(this.packagePath, this.entityId);
     this.getRoles();
-    this.editorNav.showEditorNav();
   }
 
   public addRole(role: LocalObject<Role, number>): void {

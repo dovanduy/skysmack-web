@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
-import { Application, APPLICATIONS_AREA_KEY } from '@skysmack/packages-identities';
+import { Application, APPLICATIONS_AREA_KEY, APPLICATIONS_ADDITIONAL_PATHS } from '@skysmack/packages-identities';
 import { NgApplicationsValidation } from '@skysmack/ng-identities';
 import { LoadedPackage } from '@skysmack/ng-framework';
 import { StringFieldComponent, HiddenFieldComponent } from '@skysmack/portal-fields';
@@ -15,7 +15,7 @@ export class NgApplicationsFieldsConfig extends FieldsConfig<Application, number
     public formRules: FormRule[] = [];
 
     constructor(public fieldProviders: FieldProviders) {
-        super(fieldProviders);
+        super(fieldProviders, APPLICATIONS_ADDITIONAL_PATHS);
     }
 
     protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<Application, number>): Field[] {

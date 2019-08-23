@@ -1,0 +1,36 @@
+<div class="wrapper">
+        <div class="actions">
+                <a mat-raised-button color="primary" class="call-to-action"
+                        [routerLink]="['/', 'users', 'create']">{{ 'COMMERCIAL_USERS.INDEX.CREATE' | translate }}</a>
+        </div>
+
+        <mat-card>
+                <mat-list *ngIf="users$ | async as users">
+                        <h3 mat-subheader>{{ 'COMMERCIAL_USERS.TITLE' | translate }}</h3>
+                        <mat-list-item *ngFor="let user of users">
+                                <h4 mat-line>{{ user.userName }}</h4>
+
+                                <div mat-icon>
+                                        <a [routerLink]="['/', 'users', 'details', user.id]" mat-icon-button
+                                                matTooltip="
+                            {{ 'COMMERCIAL_TENANTS.DETAILS' | translate }}">
+                                                <mat-icon>notes</mat-icon>
+                                        </a>
+                                </div>
+                                <div mat-icon>
+                                        <a [routerLink]="['/', 'users', 'edit', user.id]" mat-icon-button matTooltip="
+                    {{ 'COMMERCIAL_TENANTS.EDIT' | translate }}">
+                                                <mat-icon>edit</mat-icon>
+                                        </a>
+                                </div>
+                                <div mat-icon>
+                                        <button (click)="remove(user)" mat-icon-button matTooltip="
+                            {{ 'COMMERCIAL_TENANTS.REMOVE' | translate }}">
+                                                <mat-icon>delete</mat-icon>
+                                        </button>
+                                </div>
+                        </mat-list-item>
+                </mat-list>
+        </mat-card>
+
+</div>

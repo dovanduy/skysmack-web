@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 
-import { LanguageService } from '@skysmack/portal-ui';
 import { PortalUiModule } from '@skysmack/portal-ui';
 import { NgPersonsLodgingReservationsModule } from '@skysmack/ng-persons-lodging-reservations';
 import { PersonsLodgingReservationsRoutingModule } from './persons-lodging-reservations-routing.module';
@@ -24,9 +23,7 @@ import { FieldProviders } from '@skysmack/ng-fields';
   ],
   declarations: [
   ],
-  providers: [
-    LanguageService
-  ]
+  providers: []
 })
 export class PersonsLodgingReservationsModule {
   constructor(

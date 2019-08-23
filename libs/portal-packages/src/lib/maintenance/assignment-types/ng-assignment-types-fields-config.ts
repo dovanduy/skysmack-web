@@ -1,4 +1,4 @@
-import { AssignmentType, ASSIGNMENT_TYPES_AREA_KEY } from '@skysmack/packages-maintenance';
+import { AssignmentType, ASSIGNMENT_TYPES_AREA_KEY, ASSIGNMENT_TYPES_ADDITIONAL_PATHS } from '@skysmack/packages-maintenance';
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { LocalObject, LocalObjectStatus, PagedQuery } from '@skysmack/framework';
@@ -19,7 +19,7 @@ export class NgAssignmentTypesFieldsConfig extends FieldsConfig<AssignmentType, 
         public maintenanceStateAction: NgMaintenanceStatesActions,
         public fieldProviders: FieldProviders
     ) {
-        super(fieldProviders);
+        super(fieldProviders, ASSIGNMENT_TYPES_ADDITIONAL_PATHS);
     }
 
     protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<AssignmentType, number>): Field[] {

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { MenuItem } from '@skysmack/framework';
-import { map, switchMap, take, } from 'rxjs/operators';
+import { map, switchMap } from 'rxjs/operators';
 import { Observable, combineLatest, of } from 'rxjs';
 import { StrIndex, LocalObject } from '@skysmack/framework';
 import { MenuItemActionProvider } from '@skysmack/portal-ui';
@@ -28,18 +28,16 @@ export class NgInvoicesTerminalPaymentsMenuItemActionProvider extends MenuItemAc
     public getMenuItemActions(packagePath: string, area: string, entity?: LocalObject<CashPayment, number>): Observable<MenuItem[]> {
         if (area === INVOICES_AREA_KEY) {
             return this.skysmackStore.getPackages().pipe(
-                map(packages => packages.filter(_package => _package.object.type === TerminalPaymentsTypeId && _package.object.dependencies[0] === packagePath)),
+                map(packages => packages.filter(_package => _package.object.type === TerminalPaymentsTypeId && _package.object.dependencies[1] === packagePath)),
                 switchMap(packages => {
                     if (packages && packages.length > 0) {
                         const entityActionStreams$ = packages.map(_package => {
                             return of([
                                 new MenuItem().asEventAction(`TERMINALS.ENTITY_ACTION_PROVIDER.ENTITY_ACTION.TERMINAL_PAYMENT`, (_this: NgInvoicesTerminalPaymentsMenuItemActionProvider, value: LocalObject<Invoice, number>) => {
-                                    const dialogRef = _this.dialog.open(TerminalsPayComponent, {
+                                    _this.dialog.open(TerminalsPayComponent, {
                                         width: '500px',
                                         data: { packagePath: _package.object.path, value }
                                     });
-
-                                    dialogRef.afterClosed().pipe(take(1)).subscribe(() => { });
                                 }, 'payment', this)
                             ]);
                         });

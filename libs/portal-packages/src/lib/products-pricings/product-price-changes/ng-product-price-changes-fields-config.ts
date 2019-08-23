@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { LocalObject, LocalObjectStatus, PagedQuery } from '@skysmack/framework';
-import { ProductPriceChange, PRODUCT_PRICE_CHANGES_AREA_KEY } from '@skysmack/packages-products-pricings';
+import { ProductPriceChange, PRODUCT_PRICE_CHANGES_AREA_KEY, PRODUCT_PRICE_CHANGES_ADDITIONAL_PATHS } from '@skysmack/packages-products-pricings';
 import { FormRule, SelectField, Field } from '@skysmack/ng-dynamic-forms';
 import { NgProductsStore, NgProductsActions } from '@skysmack/ng-products';
 import { LoadedPackage } from '@skysmack/ng-framework';
@@ -22,7 +22,7 @@ export class NgProductPriceChangesFieldsConfig extends FieldsConfig<ProductPrice
         public productsStore: NgProductsStore,
         public productsActions: NgProductsActions,
     ) {
-        super(fieldProviders);
+        super(fieldProviders, PRODUCT_PRICE_CHANGES_ADDITIONAL_PATHS);
     }
 
     protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<ProductPriceChange, number>): Field[] {

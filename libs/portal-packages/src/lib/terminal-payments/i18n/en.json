@@ -4,9 +4,10 @@
             "TITLE": "Terminal Payments",
             "MANAGE": "Manage",
             "TERMINALS": "Terminals",
-            "CLIENTS": "Clients",
             "RECEIPTS": "Receipts",
-            "CONNECTIONS": "Connections"
+            "CONNECTIONS": "Connections",
+            "TERMINAL_PAYMENT_RECEIPTS": "Payment receipts",
+            "TERMINAL_RECEIPTS": "Receipts"
         }
     }
 }

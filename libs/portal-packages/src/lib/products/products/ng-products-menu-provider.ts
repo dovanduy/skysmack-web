@@ -13,11 +13,11 @@ import { ProductTypesIndexComponent } from '../product-types/components/product-
 @Injectable({ providedIn: 'root' })
 export class NgProductsMenuProvider implements MenuProvider {
     public id = Guid.create().toString();
-    public productsTranslationPrefix = 'PRODUCTS.INDEX.';
-    public productTypeTranslationPrefix = 'PRODUCT_TYPES.INDEX.';
+    private productsTranslationPrefix = 'PRODUCTS.INDEX.';
+    private productTypeTranslationPrefix = 'PRODUCT_TYPES.INDEX.';
 
     constructor(
-        public store: NgSkysmackStore
+        private store: NgSkysmackStore
     ) { }
 
     public getMenuAreas(packagePath: string, componentKey: string): Observable<MenuArea[]> {

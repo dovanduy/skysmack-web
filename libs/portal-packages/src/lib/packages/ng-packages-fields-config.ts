@@ -4,7 +4,7 @@ import { LocalObject, Package, DisplayColumn } from '@skysmack/framework';
 import { FormRule, Field, CustomValidators, SetPathRule, SelectField } from '@skysmack/ng-dynamic-forms';
 import { PackagesValidation, NgPackagesStore, NgPackagesActions } from '@skysmack/ng-packages';
 import { LoadedPackage } from '@skysmack/ng-framework';
-import { PACKAGES_AREA_KEY } from '@skysmack/packages-skysmack-core';
+import { PACKAGES_AREA_KEY, PACKAGES_ADDITIONAL_PATHS } from '@skysmack/packages-skysmack-core';
 import { FieldsConfig, FieldProviders } from '@skysmack/ng-fields';
 import { SelectFieldComponent, PackageDependenciesFieldComponent, StringFieldComponent, HiddenFieldComponent } from '@skysmack/portal-fields';
 
@@ -21,7 +21,7 @@ export class NgPackagesFieldsConfig extends FieldsConfig<Package, string> {
         public actions: NgPackagesActions,
         public fieldProviders: FieldProviders,
     ) {
-        super(fieldProviders);
+        super(fieldProviders, PACKAGES_ADDITIONAL_PATHS);
     }
 
     protected getEntityFields(loadedPackage: LoadedPackage, _package?: LocalObject<Package, string>): Field[] {

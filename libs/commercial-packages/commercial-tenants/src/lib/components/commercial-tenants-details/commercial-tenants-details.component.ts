@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { CommercialTenantsService } from '../../services/commercial-tenants.service';
 import { Tenant } from '../../models/tenant';
-import { map, take, switchMap } from 'rxjs/operators';
-import { HttpResponse, HttpSuccessResponse } from '@skysmack/framework';
+import { map, switchMap } from 'rxjs/operators';
+import { HttpSuccessResponse } from '@skysmack/framework';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({

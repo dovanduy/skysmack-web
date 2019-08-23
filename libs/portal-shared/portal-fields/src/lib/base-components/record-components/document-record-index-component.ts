@@ -28,6 +28,6 @@ export class DocumentRecordIndexComponent<TAppState, TRecord extends Record<TKey
     ngOnInit() {
         super.ngOnInit();
         const fieldPagedQuery = new PagedQuery({});
-        this.fieldActions.getPaged(this.packagePath, fieldPagedQuery, this.additionalPaths);
+        this.fieldActions.getPaged(this.packagePath, fieldPagedQuery, this.fieldsConfig.additionalPaths);
     }
 }

@@ -1,4 +1,3 @@
-import { Currency } from './currency';
 import { LocalObject } from '@skysmack/framework';
 import { ConnectionKey, Connection } from './connection';
 

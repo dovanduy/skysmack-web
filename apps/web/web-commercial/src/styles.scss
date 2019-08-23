@@ -1,2 +1,80 @@
 /* You can add global styles to this file, and also import other style files */
 @import "./../../../../assets/scss/bundle";
+
+.mat-icon-button {
+    font-family: Sans-serif;
+    font-size: 10px;
+}
+
+.page {
+.block {
+  min-height: 75vh;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  h1, h2, p {    
+    padding: 0 .5rem;
+  }
+}
+
+.rotate-background, .rotate-2nd-background {
+  position: relative;
+  width: 100%;
+
+  &:before, &:after {
+    position: absolute;
+    content: '';
+    height: 50%;
+    max-width: 100%;
+    width: 100%;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    background-color: #64b9d1;
+    transform: skewY(.75deg);
+    transform-origin: left top;
+    backface-visibility: hidden;
+    z-index: -1;
+    animation: bg-hue 50s infinite alternate;
+  }
+  &:after {
+    top: 50%;
+    transform: skewY(-.75deg);
+  }
+}
+
+.rotate-2nd-background {
+  &:before, &:after {    
+    transform-origin: right top;
+  }
+  &:before {
+    transform: skewY(-.75deg);
+  }
+  &:after {  
+    transform: skewY(.75deg);
+  }
+}
+}
+
+@keyframes bg-hue {
+  15% {
+      background-color: $primary-color-light;
+  }
+  40% {
+      background-color: lighten($primary-color-light, 15%);
+  }
+  60% {
+      background-color: lighten($primary-color-light, 5%);
+  }
+  80% {
+      background-color: lighten($primary-color-light, 20%);
+  }
+  100% {
+      background-color: lighten($primary-color-light, 10%);
+  }
+}

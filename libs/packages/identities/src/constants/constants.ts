@@ -22,3 +22,8 @@ export const APPLICATIONS_REDUCER_KEY = 'applications';
 export const APPLICATIONS_AREA_KEY = 'applications'; // validation, store, menu
 export const APPLICATIONS_REDUX_KEY = 'APPLICATIONS_'; // reducer prefix, action, epics, Requests
 export const APPLICATIONS_ADDITIONAL_PATHS = ['applications']; // actions, requests
+
+export const CLIENTS_REDUCER_KEY = 'clients';
+export const CLIENTS_AREA_KEY = 'clients'; // validation, store, menu
+export const CLIENTS_REDUX_KEY = 'CLIENTS_'; // reducer prefix, action, epics, Requests
+export const CLIENTS_ADDITIONAL_PATHS = ['clients']; // actions, requests

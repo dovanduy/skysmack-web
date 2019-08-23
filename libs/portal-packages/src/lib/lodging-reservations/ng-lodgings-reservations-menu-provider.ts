@@ -14,10 +14,10 @@ import { tap } from 'rxjs/operators';
 @Injectable({ providedIn: 'root' })
 export class NgLodgingsReservationsMenuProvider implements MenuProvider {
     public id = Guid.create().toString();
-    public translationPrefix = 'LODGING_RESERVATIONS.INDEX.';
+    private translationPrefix = 'LODGING_RESERVATIONS.INDEX.';
 
     constructor(
-        public store: NgSkysmackStore
+        private store: NgSkysmackStore
     ) { }
 
     public getMenuAreas(packagePath: string, componentKey: string): Observable<MenuArea[]> {
@@ -50,7 +50,7 @@ export class NgLodgingsReservationsMenuProvider implements MenuProvider {
         );
     };
 
-    public getLodgingsReservationsMenuAreas = () => {
+    private getLodgingsReservationsMenuAreas = () => {
         return [
             new MenuArea({
                 area: 'actions',
@@ -70,7 +70,7 @@ export class NgLodgingsReservationsMenuProvider implements MenuProvider {
         ];
     };
 
-    public getLodgingsReservationsMenuItems = (packagePath: string) => {
+    private getLodgingsReservationsMenuItems = (packagePath: string) => {
         return [
             new MenuItem({
                 url: '/' + packagePath + '/create',

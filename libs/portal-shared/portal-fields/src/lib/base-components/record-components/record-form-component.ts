@@ -1,4 +1,4 @@
-import { Router, ActivatedRoute, UrlSegment } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { OnInit, OnDestroy } from '@angular/core';
 import { Record, LocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { EditorNavService } from '@skysmack/portal-ui';
@@ -6,7 +6,7 @@ import { FormBaseComponent } from './../form-base-component';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { EntityActions, EntityStore } from '@skysmack/redux';
 import { FormHelper } from '@skysmack/ng-dynamic-forms';
-import { switchMap, take, tap, map } from 'rxjs/operators';
+import { switchMap, take } from 'rxjs/operators';
 import { combineLatest } from 'rxjs';
 import { EntityFieldsConfig } from '@skysmack/ng-fields';
 

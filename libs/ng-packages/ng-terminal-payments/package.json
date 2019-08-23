@@ -6,6 +6,7 @@
     "@angular/core": "^8.0.0",
     "@skysmack/ng-framework": "*",
     "@skysmack/ng-dynamic-forms": "*",
+    "@skysmack/ng-identities": "*",
     "@skysmack/framework": "*",
     "@skysmack/redux": "*",
     "@skysmack/signal-r": "*",

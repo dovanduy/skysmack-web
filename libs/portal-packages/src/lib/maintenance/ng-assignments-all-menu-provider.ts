@@ -23,7 +23,7 @@ export class NgAssignmentAllMenuProvider implements MenuProvider {
     public RecurringAssignmentsTranslationPrefix = 'RECURRING_ASSIGNMENTS.INDEX.';
 
     constructor(
-        public store: NgSkysmackStore
+        private store: NgSkysmackStore
     ) { }
 
     public getMenuAreas(packagePath: string, componentKey: string): Observable<MenuArea[]> {

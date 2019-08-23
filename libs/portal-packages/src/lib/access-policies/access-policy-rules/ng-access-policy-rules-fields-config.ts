@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
-import { AccessPolicyRule, ACCESS_POLICY_RULES_AREA_KEY } from '@skysmack/packages-skysmack-core';
+import { AccessPolicyRule, ACCESS_POLICY_RULES_AREA_KEY, ACCESS_POLICY_RULES_ADDITIONAL_PATHS } from '@skysmack/packages-skysmack-core';
 import { LoadedPackage } from '@skysmack/ng-framework';
 import { FormRule, Field, SelectField } from '@skysmack/ng-dynamic-forms';
 import { FieldProviders, FieldsConfig } from '@skysmack/ng-fields';
@@ -16,7 +16,7 @@ export class NgAccessPolicyRulesFieldsConfig extends FieldsConfig<AccessPolicyRu
     constructor(
         public fieldProviders: FieldProviders
     ) {
-        super(fieldProviders);
+        super(fieldProviders, ACCESS_POLICY_RULES_ADDITIONAL_PATHS);
     }
 
     protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<AccessPolicyRule, number>): Field[] {

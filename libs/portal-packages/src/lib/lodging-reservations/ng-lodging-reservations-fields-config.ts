@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { LocalObject, LocalObjectStatus, PagedQuery } from '@skysmack/framework';
-import { LodgingReservation, LODGING_RESERVATIONS_AREA_KEY } from '@skysmack/packages-lodging-reservations';
+import { LodgingReservation, LODGING_RESERVATIONS_AREA_KEY, LODGING_RESERVATIONS_ADDITIONAL_PATHS } from '@skysmack/packages-lodging-reservations';
 import { NgLodgingTypesStore, NgLodgingsStore, NgLodgingsActions, NgLodgingTypesActions } from '@skysmack/ng-lodgings';
 import { LoadedPackage } from '@skysmack/ng-framework';
 import { of } from 'rxjs';
@@ -24,7 +24,7 @@ export class NgLodgingReservationsFieldsConfig extends FieldsConfig<LodgingReser
         public lodgingTypeActions: NgLodgingTypesActions,
         public fieldProviders: FieldProviders
     ) {
-        super(fieldProviders);
+        super(fieldProviders, LODGING_RESERVATIONS_ADDITIONAL_PATHS);
     }
 
     protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<LodgingReservation, number>): Field[] {

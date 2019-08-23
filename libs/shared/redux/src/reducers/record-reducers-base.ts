@@ -33,6 +33,7 @@ export function recordReducersBase<TState extends RecordState<TRecord, TKey>, TR
             const castedAction: ReduxAction<GetPagedEntitiesSuccessPayload<TRecord, TKey>> = action;
             newState.localPageTypes[castedAction.payload.packagePath] = PageExtensions.mergeOrAddPage(newState.localPageTypes[castedAction.payload.packagePath], castedAction.payload.page);
             newState.localRecords[castedAction.payload.packagePath] = LocalObjectExtensions.mergeOrAddLocal(newState.localRecords[castedAction.payload.packagePath], castedAction.payload.entities.map(x => toLocalObject(x, idIdentifier)));
+
             return newState;
         }
         case prefix + RecordActionsBase.GET_PAGED_FAILURE: {

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
-import { Terminal, TERMINALS_AREA_KEY } from '@skysmack/packages-terminal-payments';
+import { Terminal, TERMINALS_AREA_KEY, TERMINALS_ADDITIONAL_PATHS } from '@skysmack/packages-terminal-payments';
 import { NgTerminalsValidation } from '@skysmack/ng-terminal-payments';
 import { LoadedPackage } from '@skysmack/ng-framework';
 import { Validators } from '@angular/forms';
@@ -18,7 +18,7 @@ export class NgTerminalsFieldsConfig extends FieldsConfig<Terminal, number> {
     constructor(
         public fieldProviders: FieldProviders
     ) {
-        super(fieldProviders);
+        super(fieldProviders, TERMINALS_ADDITIONAL_PATHS);
     }
 
     protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<Terminal, number>): Field[] {

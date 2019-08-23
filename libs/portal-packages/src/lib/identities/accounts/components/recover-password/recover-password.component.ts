@@ -31,7 +31,6 @@ export class RecoverPasswordComponent extends BaseComponent<AccountAppState, unk
 
   ngOnInit() {
     super.ngOnInit();
-    this.editorNavService.showEditorNav();
 
     const token = this.router.url.split('=')[1];
     if (token) {

@@ -12,10 +12,10 @@ import { EmailsIndexComponent } from '../../emails/emails';
 @Injectable({ providedIn: 'root' })
 export class NgEmailsSmtpMenuProvider implements MenuProvider {
     public id = Guid.create().toString();
-    public translationPrefix = 'EMAILS_SMTP.INDEX.';
+    private translationPrefix = 'EMAILS_SMTP.INDEX.';
 
     constructor(
-        public store: NgSkysmackStore
+        private store: NgSkysmackStore
     ) { }
 
     public getMenuAreas(packagePath: string, componentKey: string): Observable<MenuArea[]> {
@@ -50,7 +50,7 @@ export class NgEmailsSmtpMenuProvider implements MenuProvider {
         );
     };
 
-    public getEmailsSmtpMenuAreas = (): MenuArea[] => {
+    private getEmailsSmtpMenuAreas = (): MenuArea[] => {
         return [
             new MenuArea({
                 area: 'manage',
@@ -60,7 +60,7 @@ export class NgEmailsSmtpMenuProvider implements MenuProvider {
         ];
     };
 
-    public getEmailsSmtpMenuItems = (packagePath: string): MenuItem[] => {
+    private getEmailsSmtpMenuItems = (packagePath: string): MenuItem[] => {
         return [
             new MenuItem({
                 url: 'settings/smtp-client',

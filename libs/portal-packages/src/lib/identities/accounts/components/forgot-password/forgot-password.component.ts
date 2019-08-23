@@ -32,7 +32,6 @@ export class ForgotPasswordComponent extends BaseComponent<AccountAppState, unkn
 
   ngOnInit() {
     super.ngOnInit();
-    this.editorNavService.showEditorNav();
     this.fields$ = this.fieldsConfig.getFields(undefined);
   }
 

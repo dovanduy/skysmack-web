@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { NgReservationsPricingsModule } from '@skysmack/ng-reservations-pricings';
 import { PortalUiModule, NgMenuProviders } from '@skysmack/portal-ui';
-import { LanguageService } from '@skysmack/portal-ui';
+
 import { ReservationsPricingsIndexComponent } from './components/reservations-pricings-index/reservations-pricings-index.component';
 import { ReservationsPricingsRoutingModule } from './reservations-pricings-routing.module';
 import { NgReservationsPricingsFieldProvider } from './ng-reservations-pricings-field-provider';
@@ -38,16 +38,14 @@ import { NgReservationsPricingsMenuProvider } from './ng-reservations-pricings-m
     ...lodgingTypeReservationPriceChangesComponents,
     ...lodgingTypePricesComponents,
   ],
-  providers: [
-    LanguageService
-  ]
+  providers: []
 })
 export class ReservationsPricingsModule {
   constructor(
     fieldProviders: FieldProviders,
     reservationsPricingsFieldProvider: NgReservationsPricingsFieldProvider,
     lodgingReservationsReservationsPricingsFieldProvider: NgLodgingReservationsReservationsPricingsFieldProvider,
-    ngMenuProviders: NgMenuProviders, 
+    ngMenuProviders: NgMenuProviders,
     ngReservationsPricingsMenuProvider: NgReservationsPricingsMenuProvider,
   ) {
     fieldProviders.add(LodgingsTypeId, reservationsPricingsFieldProvider);

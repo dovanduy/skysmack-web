@@ -23,12 +23,8 @@ export class NgReservationsPricingsMenuProvider implements MenuProvider {
     public LodgingTypePricesTranslationPrefix = 'LODGING_TYPE_PRICES.INDEX.';
     public LodgingTypeReservationPriceChangesranslationPrefix = 'LODGING_TYPE_RESERVATION_PRICE_CHANGES.INDEX.';
 
-
-
-
-
     constructor(
-        public store: NgSkysmackStore
+        private store: NgSkysmackStore
     ) { }
 
     public getMenuAreas(packagePath: string, componentKey: string): Observable<MenuArea[]> {

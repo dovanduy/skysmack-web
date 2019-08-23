@@ -3,7 +3,7 @@ import { LocalObject, PagedQuery } from '@skysmack/framework';
 
 import { NgInvoicesProductsValidation } from '@skysmack/ng-invoices-products';
 import { LoadedPackage, getPackageDendencyAsStream } from '@skysmack/ng-framework';
-import { INVOICES_PRODUCTS_AREA_KEY } from '@skysmack/packages-invoices-products';
+import { INVOICES_PRODUCTS_AREA_KEY, INVOICES_PRODUCTS_ADDITIONAL_PATHS } from '@skysmack/packages-invoices-products';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { map, take, switchMap } from 'rxjs/operators';
 import { Validators } from '@angular/forms';
@@ -27,7 +27,7 @@ export class NgInvoicesProductsAddToInvoiceFieldsConfig extends FieldsConfig<any
     public invoiceStore: NgInvoicesStore,
     public skysmackStore: NgSkysmackStore
   ) {
-    super(fieldProviders);
+    super(fieldProviders, INVOICES_PRODUCTS_ADDITIONAL_PATHS);
   }
 
   protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<any, unknown>): Field[] {
@@ -39,7 +39,7 @@ export class NgInvoicesProductsAddToInvoiceFieldsConfig extends FieldsConfig<any
         value: entity ? entity.object.invoiceId : undefined,
         key: 'invoiceId',
         displayKey: 'invoice',
-        displaySubKey: 'object.currencyCode',
+        displaySubKey: 'object.description',
         optionsData$: invoicesPackage$.pipe(switchMap(invoicesPackage => this.invoiceStore.get(invoicesPackage.object.path))),
         getDependencies: () => {
           invoicesPackage$.pipe(
@@ -49,7 +49,7 @@ export class NgInvoicesProductsAddToInvoiceFieldsConfig extends FieldsConfig<any
             take(1)
           ).subscribe();
         },
-        displayNameSelector: 'object.currencyCode',
+        displayNameSelector: 'object.description',
         order: 1,
         validators: [Validators.required]
       }),

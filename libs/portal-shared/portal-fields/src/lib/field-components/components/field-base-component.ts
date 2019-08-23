@@ -25,6 +25,10 @@ export abstract class FieldBaseComponent<TField extends Field> implements Dynami
     ngOnInit() {
     }
 
+    ngOnDestroy() {
+        this.subscriptionHandler.unsubscribe();
+    }
+
     /**
      * Sets the value of a form field if the new value is not the same as the old.
      * @param newValue The new value to update the input with. Must have a [fieldControlName] binding.
@@ -130,9 +134,5 @@ export abstract class FieldBaseComponent<TField extends Field> implements Dynami
                 }
             });
         }
-    }
-
-    ngOnDestroy() {
-        this.subscriptionHandler.unsubscribe();
     }
 }

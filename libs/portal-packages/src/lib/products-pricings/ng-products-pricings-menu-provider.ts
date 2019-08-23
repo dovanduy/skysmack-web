@@ -24,7 +24,7 @@ export class NgProductsPricingsMenuProvider implements MenuProvider {
     public ProductTypeSalesPriceTranslationPrefix = 'PRODUCT_TYPE_SALES_PRICE.INDEX.';
 
     constructor(
-        public store: NgSkysmackStore
+        private store: NgSkysmackStore
     ) { }
 
     public getMenuAreas(packagePath: string, componentKey: string): Observable<MenuArea[]> {
@@ -49,7 +49,7 @@ export class NgProductsPricingsMenuProvider implements MenuProvider {
         );
     };
 
-    public getProductsPricingsMenuAreas = () => {
+    private getProductsPricingsMenuAreas = () => {
         return [
             new MenuArea({
                 area: 'manage',
@@ -119,7 +119,7 @@ export class NgProductsPricingsMenuProvider implements MenuProvider {
         ];
     };
 
-    public getProductsPricingsMenuItems = (packagePath: string): MenuItem[] => {
+    private getProductsPricingsMenuItems = (packagePath: string): MenuItem[] => {
         return [
             new MenuItem({
                 url: 'price-changes',

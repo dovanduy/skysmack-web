@@ -1,5 +1,72 @@
 {
     "COMMERCIAL_ACCOUNT": {
-        "INDEX": {}
+        "INDEX": {
+            "FORGOTPASSWORD": "Forgot password",
+            "ACCOUNT": "Account",
+            "WELCOME": "Welcome to skysmack"
+        },
+        "LOGIN": {
+            "SIGNIN": "Sign in",
+            "CREDENTIALS": "Please enter credentials below",
+            "INCORRECT": "The entered password and/or username was incorrect. Please try again.",
+            "FORGOTPASSWORD": "Forgot password",
+            "CONFIRMEMAIL": "Confirm email"
+        },
+        "FORM": {
+            "LABELS": {
+                "EMAIL": "Email",
+                "PASSWORD": "Password",
+                "STAYSIGNEDIN": "Stay signed in?"
+            },
+            "PLACEHOLDERS": {
+                "EMAIL": "Enter email",
+                "PASSWORD": "Enter password",
+                "CURRENTPASSWORD": "Current password",
+                "NEWPASSWORD": "New password",
+                "CONFIRMNEWPASSWORD": "Confirm new password"
+            },
+            "VALIDATION": {
+                "EMAIL": {
+                    "REQUIRED": "Email is required.",
+                    "INVALIDEMAIL": "Please enter a valid email."
+                },
+                "PASSWORD": {
+                    "REQUIRED": "Password is required."
+                },
+                "CURRENTPASSWORD": {
+                    "REQUIRED": "Current password is required."
+                },
+                "NEWPASSWORD": {
+                    "REQUIRED": "New password is required."
+                },
+                "CONFIRMNEWPASSWORD": {
+                    "REQUIRED": "Please repeat the new password.",
+                    "PASSWORDMISMATCH": "Passwords must match."
+                }
+            }
+        },
+        "VALIDATION": {
+            "TOKEN": {
+                "REQUIRED": "Token is required"
+            },
+            "EMAIL": {
+                "REQUIRED": "Email is required.",
+                "INVALIDEMAIL": "Please type a valid email"
+            },
+            "CURRENTPASSWORD": {
+                "REQUIRED": "Current password is required."
+            },
+            "NEWPASSWORD": {
+                "REQUIRED": "New password is required."
+            },
+            "CONFIRMNEWPASSWORD": {
+                "REQUIRED": "Please repeat the new password.",
+                "PASSWORDMISMATCH": "Passwords must match."
+            }
+        },
+        "CHANGE_PASSWORD": {
+            "TITLE": "Change password",
+            "BUTTON_EDIT": "Update"
+        }
     }
 }

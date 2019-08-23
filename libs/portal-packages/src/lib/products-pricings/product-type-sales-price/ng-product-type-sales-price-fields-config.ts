@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { LocalObject, LocalObjectStatus, PagedQuery } from '@skysmack/framework';
-import { ProductTypeSalesPrice, PRODUCT_TYPE_SALES_PRICE_AREA_KEY } from '@skysmack/packages-products-pricings';
+import { ProductTypeSalesPrice, PRODUCT_TYPE_SALES_PRICE_AREA_KEY, PRODUCT_TYPE_SALES_PRICE_ADDITIONAL_PATHS } from '@skysmack/packages-products-pricings';
 import { FormRule, SelectField, Field } from '@skysmack/ng-dynamic-forms';
 import { ProductType } from '@skysmack/packages-products';
 import { NgProductTypesStore, NgProductTypesActions } from '@skysmack/ng-products';
@@ -28,7 +28,7 @@ export class NgProductTypeSalesPriceFieldsConfig extends FieldsConfig<ProductTyp
         public fieldProviders: FieldProviders,
         public skysmackStore: NgSkysmackStore
     ) {
-        super(fieldProviders);
+        super(fieldProviders, PRODUCT_TYPE_SALES_PRICE_ADDITIONAL_PATHS);
     }
 
     protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<ProductTypeSalesPrice, number>): Field[] {

@@ -20,21 +20,41 @@ export function skysmackReducer(state = new SkysmackState(), action: any): Skysm
     const newState = Object.assign({}, state);
 
     switch (action.type) {
+        case SkysmackActions.GET_SKYSMACK: {
+            if (newState.requestStatus && newState.requestStatus.errorCode && (newState.requestStatus.errorCode == 0 || newState.requestStatus.errorCode >= 400)) {
+                newState.requestStatus = undefined;
+            }
+
+            return newState;
+        }
         case SkysmackActions.GET_SKYSMACK_SUCCESS: {
             newState.skysmack = action.payload;
-            newState.requestStatus = new SkysmackRequestStatus({errorCode: action.meta.response.status, error: action.meta.response.statusText});
+            newState.requestStatus = new SkysmackRequestStatus({ errorCode: action.meta.response.status, error: action.meta.response.statusText });
             return newState;
         }
         case SkysmackActions.GET_SKYSMACK_FAILURE: {
             const castedAction = action as ReduxAction<HttpErrorResponse>;
+            const errorCode = castedAction.payload.status;
             let errorDescription = 'Failed to get skysmack';
-            if (action.payload.error && action.payload.error.detail) {
-                errorDescription = action.payload.error.detail;
+            let error = '';
+
+            // Set errorDescription
+            if (castedAction.payload.error && castedAction.payload.error.detail) {
+                errorDescription = castedAction.payload.error.detail;
             } else if (castedAction.payload.message) {
                 errorDescription = castedAction.payload.message;
             }
 
-            newState.requestStatus = new SkysmackRequestStatus({errorCode: action.payload.status, error: action.payload.statusText, errorDescription: errorDescription });
+            // Set error
+            if (errorCode === 0) {
+                error = 'Connection Error'
+            } else if (action.payload.error) {
+                error = action.payload.error.title
+            } else {
+                error = errorCode === 0 ? 'Connection Error' : castedAction.payload.statusText
+            }
+
+            newState.requestStatus = new SkysmackRequestStatus({ errorCode, error, errorDescription });
             if (!GlobalProperties.production) {
                 console.log('Error getting skysmack: ', castedAction);
             }

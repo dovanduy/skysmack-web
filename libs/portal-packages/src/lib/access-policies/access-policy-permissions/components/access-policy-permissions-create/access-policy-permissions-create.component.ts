@@ -28,8 +28,6 @@ export class AccessPolicyPermissionsCreateComponent extends RecordFormComponent<
 
   ngOnInit() {
     super.ngOnInit();
-    // TODO: Is it necesssary?
-    this.skysmackActions.getSkysmack(); 
     this.setCreateFields();
   }
 }

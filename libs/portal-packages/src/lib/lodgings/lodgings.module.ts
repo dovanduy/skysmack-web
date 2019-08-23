@@ -6,9 +6,9 @@ import { NgLodgingsModule } from '@skysmack/ng-lodgings';
 import { PortalUiModule, NgMenuProviders } from '@skysmack/portal-ui';
 import { lodgingsComponents } from './lodgings/components/lodgings-components';
 import { lodgingTypesComponents } from './lodging-types/components/lodging-types-component';
-import { LanguageService } from '@skysmack/portal-ui';
+
 import { CalendarModule, DateAdapter } from 'angular-calendar';
-import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { adapterFactory } from './date-fns-v2-adaptor';
 import { NgLodgingSettingsFieldsConfig } from './ng-lodging-settings-fields-config';
 import { DynamicFormsModule } from '@skysmack/portal-dynamic-forms';
 import { SettingsModule } from '@skysmack/portal-settings';
@@ -37,18 +37,24 @@ import { NgLodgingsMenuProvider } from './lodgings/ng-lodgings-menu-provider';
     ...lodgingTypesComponents
   ],
   providers: [
-    LanguageService,
     { provide: 'NgLodgingSettingsFieldsConfig', useClass: NgLodgingSettingsFieldsConfig }
   ]
 })
 export class LodgingsModule {
   constructor(
-    public languageService: LanguageService,
-    ngMenuProviders: NgMenuProviders, 
+    ngMenuProviders: NgMenuProviders,
     ngLodgingsMenuProvider: NgLodgingsMenuProvider,
 
   ) {
     ngMenuProviders
+<<<<<<< HEAD
     .add(ngLodgingsMenuProvider)
    }
+=======
+      .add(ngLodgingsMenuProvider)
+      .add(ngLodgingsAvailabilityMenuProvider)
+      .add(ngLodgingTypesMenuProvider)
+      .add(ngLodgingTypesAvailabilityMenuProvider)
+  }
+>>>>>>> dev
 }

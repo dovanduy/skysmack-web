@@ -41,7 +41,6 @@ export class ApplicationsRolesComponent extends BaseComponent<Application, numbe
     this.actions.getApplicationsRoles(this.packagePath, [this.entityId]);
     this.applicationRoles$ = this.store.getApplicationRoles(this.packagePath, this.entityId);
     this.getRoles();
-    this.editorNav.showEditorNav();
   }
 
   public addRole(role: LocalObject<Role, number>): void {
@@ -68,7 +67,7 @@ export class ApplicationsRolesComponent extends BaseComponent<Application, numbe
       const applicationRoles = values[0];
       console.log('values', values[0]);
       return values[1].filter(role => {
-        if (!applicationRoles.find(applicationRole => applicationRole === role.object.name)) {
+        if (!applicationRoles || !applicationRoles.find(applicationRole => applicationRole === role.object.name)) {
           return role;
         }
       });

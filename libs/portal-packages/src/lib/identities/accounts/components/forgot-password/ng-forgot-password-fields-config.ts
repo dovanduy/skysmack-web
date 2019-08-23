@@ -4,7 +4,7 @@ import { LocalObject } from '@skysmack/framework';
 
 import { LoadedPackage } from '@skysmack/ng-framework';
 import { NgForgotPasswordValidation } from './ng-forgot-password-validation';
-import { ACCOUNTS_AREA_KEY } from '@skysmack/packages-identities';
+import { ACCOUNTS_AREA_KEY, ACCOUNTS_ADDITIONAL_PATHS } from '@skysmack/packages-identities';
 import { FormRule, Field, CustomValidators } from '@skysmack/ng-dynamic-forms';
 import { FieldsConfig, FieldProviders } from '@skysmack/ng-fields';
 import { EmailFieldComponent } from '@skysmack/portal-fields';
@@ -18,7 +18,7 @@ export class NgForgotPasswordFieldsConfig extends FieldsConfig<string, unknown> 
     constructor(
         public fieldProviders: FieldProviders
     ) {
-        super(fieldProviders);
+        super(fieldProviders, ACCOUNTS_ADDITIONAL_PATHS);
     }
 
 

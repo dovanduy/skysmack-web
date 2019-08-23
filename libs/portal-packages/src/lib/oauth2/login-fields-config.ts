@@ -15,7 +15,7 @@ export class LoginFieldsConfig extends FieldsConfig<any, any> {
     public formRules: FormRule[] = [];
 
     constructor(public fieldProviders: FieldProviders) {
-        super(fieldProviders);
+        super(fieldProviders, []);
     }
 
     protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<any, any>): Field[] {

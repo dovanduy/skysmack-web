@@ -1,25 +1,9 @@
-import { Router } from '@angular/router';
+import { Router, RoutesRecognized } from '@angular/router';
 import { Package, LocalObject, toLocalObject, MenuItem, SIDEBAR } from '@skysmack/framework';
-import { map, switchMap, filter, tap } from 'rxjs/operators';
-import { combineLatest, pipe, of, Observable } from 'rxjs';
+import { map, switchMap, filter, take, pairwise } from 'rxjs/operators';
+import { combineLatest, of, Observable, merge } from 'rxjs';
 import { SkysmackStore } from '../stores/skysmack-store';
 import { Skysmack } from '@skysmack/packages-skysmack-core';
-import { LoadedPackage } from '../packages';
-
-export const getAdditionalPaths = (router: Router, packagePath): string[] => {
-    const chuncks = router.url.split('/');
-    const additionalPaths: string[] = [];
-    for (let chunck of chuncks) {
-        if (chunck === 'edit' || chunck === 'create' || chunck === 'details') {
-            break;
-        }
-
-        if (chunck !== '' && chunck !== 'fields' && chunck !== 'settings' && chunck !== packagePath) {
-            additionalPaths.push(chunck);
-        }
-    }
-    return additionalPaths;
-};
 
 /**
  * Recursively travels up the packages dependencies until no more dependency indexes are available, then returns the package.
@@ -138,7 +122,7 @@ export const getConnectedPackageMenuEntries = (packagePath: string, packageTypeI
  * @param componentKey The one being provided from the current index component
  * @param specificParentPackageComponentKey E.g. LodgingReservations must provide the component key from LodgingsIndexComponent
  * @param store The SkysmackStore
- * @param customMenuItem A methed return the menu item
+ * @param customMenuItem A method the desired menu item pr. package
  */
 export const getConnectedPackageCustomMenuEntries = (packagePath: string, packageTypeId: string, parentPageTypeId: string, componentKey: string, specificParentPackageComponentKey: string, store: SkysmackStore, customMenuItem: (_package: LocalObject<Package, string>) => MenuItem): Observable<MenuItem[]> => {
     if (componentKey === specificParentPackageComponentKey) {
@@ -161,3 +145,24 @@ export const getCombinedMenuEntries = <T>(...args: Observable<T[]>[]): Observabl
         args
     ).pipe(map(menuEntriesArrays => menuEntriesArrays.reduce((a, b) => a.concat(b), [])));
 };
+
+/**
+ * Returns the previous route. Alway returns null as the first value.
+ */
+export const getPreviousUrl$ = (router: Router): Observable<string> => {
+    const null$ = of(null).pipe(take(1));
+
+    const redirects$ = router.events.pipe(
+        filter(e => e instanceof RoutesRecognized),
+        pairwise(),
+        map(event => {
+            if (event && event[0] && (event[0] as RoutesRecognized).urlAfterRedirects) {
+                return (event[0] as RoutesRecognized).urlAfterRedirects;
+            } else {
+                return null;
+            }
+        }),
+    );
+
+    return merge(null$, redirects$);
+}

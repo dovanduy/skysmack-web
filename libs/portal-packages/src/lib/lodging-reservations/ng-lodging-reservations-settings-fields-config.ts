@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { FormRule, Field } from '@skysmack/ng-dynamic-forms';
 import { LocalObject } from '@skysmack/framework';
 import { LoadedPackage } from '@skysmack/ng-framework';
-import { LodgingReservationsSettings, LODGING_RESERVATIONS_AREA_KEY } from '@skysmack/packages-lodging-reservations';
+import { LodgingReservationsSettings, LODGING_RESERVATIONS_AREA_KEY, LODGING_RESERVATIONS_ADDITIONAL_PATHS } from '@skysmack/packages-lodging-reservations';
 import { NgLodgingReservationsSettingsValidation } from '@skysmack/ng-lodging-reservations';
 import { FieldsConfig, FieldProviders } from '@skysmack/ng-fields';
 import { IntFieldComponent } from '@skysmack/portal-fields';
@@ -14,7 +14,7 @@ export class NgLodgingReservationsSettingsFieldsConfig extends FieldsConfig<Lodg
     public formRules: FormRule[] = [];
 
     constructor(public fieldProviders: FieldProviders) {
-        super(fieldProviders);
+        super(fieldProviders, LODGING_RESERVATIONS_ADDITIONAL_PATHS);
     }
 
     protected getEntityFields(loadedPackage: LoadedPackage, settings?: LocalObject<LodgingReservationsSettings, unknown>): Field[] {

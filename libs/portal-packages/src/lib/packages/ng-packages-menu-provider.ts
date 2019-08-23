@@ -15,7 +15,7 @@ export class NgPackagesMenuProvider implements MenuProvider {
     public translationPrefix = 'PACKAGES.INDEX.';
 
     constructor(
-        public store: NgSkysmackStore
+        private store: NgSkysmackStore
     ) { }
 
     public getMenuAreas(packagePath: string, componentKey: string): Observable<MenuArea[]> {
@@ -27,7 +27,7 @@ export class NgPackagesMenuProvider implements MenuProvider {
     };
 
 
-    public getPackagesMenuAreas = () => {
+    private getPackagesMenuAreas = () => {
         return [
             new MenuArea({
                 area: 'actions',
@@ -37,7 +37,7 @@ export class NgPackagesMenuProvider implements MenuProvider {
         ];
     };
 
-    public getPackagesMenuItems = () => {
+    private getPackagesMenuItems = () => {
         return [
             new MenuItem({
                 url: 'create',

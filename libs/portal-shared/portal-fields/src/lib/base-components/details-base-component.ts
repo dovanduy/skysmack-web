@@ -1,8 +1,8 @@
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { combineLatest } from 'rxjs';
-import { Router, ActivatedRoute, UrlSegment } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { OnInit, OnDestroy } from '@angular/core';
-import { switchMap, map, take } from 'rxjs/operators';
+import { switchMap } from 'rxjs/operators';
 import { BaseComponent } from './base-component';
 import { EntityFieldsConfig } from '@skysmack/ng-fields';;
 import { EntityActions, EntityStore } from '@skysmack/redux';
@@ -32,7 +32,7 @@ export class DetailsBaseComponent<TAppState, TKey> extends BaseComponent<TAppSta
             this.store.getSingle(this.packagePath, this.entityId)
         ).pipe(switchMap(([loadedPackage, record]) => this.fieldsConfig.getFields(loadedPackage, record)));
     }
-    
+
     ngOnDestroy() {
         super.ngOnDestroy();
     }

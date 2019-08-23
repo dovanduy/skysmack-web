@@ -7,5 +7,6 @@ import { LoadedPackage } from '@skysmack/ng-framework';
 export interface EntityFieldsConfig<TObject, TKey> {
     formRules: FormRule[];
     validation: Validation;
+    additionalPaths: string[];
     getFields(loadedPackage: LoadedPackage, entity?: LocalObject<TObject, TKey>): Observable<Field[]>;
 }

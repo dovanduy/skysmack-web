@@ -18,7 +18,7 @@ export class NgRecoverPasswordFieldsConfig extends FieldsConfig<string, unknown>
     constructor(
         public fieldProviders: FieldProviders
     ) {
-        super(fieldProviders);
+        super(fieldProviders, []);
     }
 
 

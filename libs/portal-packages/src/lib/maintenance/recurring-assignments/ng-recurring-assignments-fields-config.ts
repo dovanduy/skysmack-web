@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { LocalObject, LocalObjectStatus, PagedQuery } from '@skysmack/framework';
-import { RecurringAssignment, RECURRING_ASSIGNMENTS_AREA_KEY } from '@skysmack/packages-maintenance';
+import { RecurringAssignment, RECURRING_ASSIGNMENTS_AREA_KEY, RECURRING_ASSIGNMENTS_ADDITIONAL_PATHS } from '@skysmack/packages-maintenance';
 import { NgRecurringAssignmentsValidation, NgAssignmentTypesStore, NgAssignmentTypesActions } from '@skysmack/ng-maintenance';
 import { FormRule, SelectField, Field } from '@skysmack/ng-dynamic-forms';
 import { LoadedPackage } from '@skysmack/ng-framework';
@@ -19,7 +19,7 @@ export class NgRecurringAssignmentsFieldsConfig extends FieldsConfig<RecurringAs
         public fieldProviders: FieldProviders,
         public assignmentTypesActions: NgAssignmentTypesActions
     ) {
-        super(fieldProviders);
+        super(fieldProviders, RECURRING_ASSIGNMENTS_ADDITIONAL_PATHS);
     }
 
     protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<RecurringAssignment, number>): Field[] {

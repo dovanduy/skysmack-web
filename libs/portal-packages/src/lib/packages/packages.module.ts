@@ -4,10 +4,11 @@ import { PackagesRoutingModule } from './packages-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { PortalUiModule, NgMenuProviders } from '@skysmack/portal-ui';
 import { packagesComponents } from './components/packages-components';
-import { LanguageService } from '@skysmack/portal-ui';
+
 import { NgPackagesModule } from '@skysmack/ng-packages';
 import { DynamicFormsModule } from '@skysmack/portal-dynamic-forms';
 import { NgPackagesMenuProvider } from './ng-packages-menu-provider';
+import { PortalFieldsModule } from '@skysmack/portal-fields';
 
 /**
  * To activate available packages overview, incomment the code in the following places
@@ -27,6 +28,7 @@ import { NgPackagesMenuProvider } from './ng-packages-menu-provider';
     HttpClientModule,
     PortalUiModule,
     DynamicFormsModule,
+    PortalFieldsModule,
     PackagesRoutingModule,
     NgPackagesModule,
     // INCOMMENT TO ACTIVATE PACKAGE OVERVIEW
@@ -37,16 +39,14 @@ import { NgPackagesMenuProvider } from './ng-packages-menu-provider';
   declarations: [
     ...packagesComponents
   ],
-  providers: [
-    LanguageService
-  ]
+  providers: []
 })
 export class PackagesModule {
   constructor(
-    ngMenuProviders: NgMenuProviders, 
+    ngMenuProviders: NgMenuProviders,
     ngPackagesMenuProvider: NgPackagesMenuProvider,
   ) {
     ngMenuProviders
-    .add(ngPackagesMenuProvider)
-   }
+      .add(ngPackagesMenuProvider)
+  }
 }
