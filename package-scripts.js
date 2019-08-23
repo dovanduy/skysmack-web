@@ -1,7 +1,8 @@
 /**
+ * Docs: https://www.npmjs.com/package/nps
  * Please install nps globally to run below scripts: npm install -g nps
  * Executing a script : nps portal
- * Note: Default is the script run if no specific property is defined. Eg. nps portal runs nps portal.default
+ * Note: Default is the script getting run if no other specific property is defined. E.g. "nps portal" runs "nps portal.default"
  */
 
 module.exports = {
