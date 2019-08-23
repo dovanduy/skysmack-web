@@ -47,14 +47,6 @@ export class LodgingsModule {
 
   ) {
     ngMenuProviders
-<<<<<<< HEAD
     .add(ngLodgingsMenuProvider)
    }
-=======
-      .add(ngLodgingsMenuProvider)
-      .add(ngLodgingsAvailabilityMenuProvider)
-      .add(ngLodgingTypesMenuProvider)
-      .add(ngLodgingTypesAvailabilityMenuProvider)
-  }
->>>>>>> dev
 }
