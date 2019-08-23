@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Epic, ofType, ActionsObservable } from 'redux-observable';
 import { NgSkysmackRequests } from './ng-skysmack-requests';
-import { switchMap, mergeMap, map } from 'rxjs/operators';
+import { mergeMap } from 'rxjs/operators';
 import { NgSkysmackActions } from './ng-skysmack-actions';
 import { AuthenticationActions, ReduxAction } from '@skysmack/redux';
 import { PACKAGES_REDUX_KEY, PackagesActions, Skysmack } from '@skysmack/packages-skysmack-core';
@@ -39,7 +39,7 @@ export class NgSkysmackEpics {
             })
         );
     }
-    
+
     public getPermissionsEpic = (action$: ActionsObservable<ReduxAction<string>>): Observable<ReduxAction<string[]> | ReduxAction<HttpErrorResponse>> => {
         return action$.pipe(
             ofType(NgSkysmackActions.GET_PACKAGE_PERMISSIONS),
