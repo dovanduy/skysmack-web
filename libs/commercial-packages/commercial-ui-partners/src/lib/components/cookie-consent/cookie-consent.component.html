@@ -1,4 +1,4 @@
-<ng-container *ngIf="showCookieBanner">
-    <p>By clicking accept you accept our use of cookies.</p>
-    <button (click)="acceptCookies()">Accept</button>
-</ng-container>
+<div *ngIf="showCookieBanner" class="cookie-consent mat-elevation-z3">
+    <div>By clicking accept you accept our use of cookies.</div>
+    <button mat-raised-button color="primary" (click)="acceptCookies()">Accept</button>
+</div>

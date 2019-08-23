@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { AnalyticsService } from '@skysmack/ng-framework';
+
+declare const dataLayer: any;
 
 @Component({
   selector: 'ss-cookie-consent',
@@ -7,21 +8,24 @@ import { AnalyticsService } from '@skysmack/ng-framework';
   styleUrls: ['./cookie-consent.component.scss']
 })
 export class CookieConsentComponent implements OnInit, OnDestroy {
-
-  public showCookieBanner: boolean = true;
+  public showCookieBanner: boolean = false;
 
   constructor(
-    private analyticsService: AnalyticsService
   ) { }
 
   ngOnInit() {
+    if (document.cookie.indexOf('_ga') == -1) {
+      this.showCookieBanner = true;
+    } else {
+      this.acceptCookies();
+    }
   }
 
   ngOnDestroy() {
   }
 
-  public acceptCookies() {
+  public acceptCookies(): void {
     this.showCookieBanner = false;
-    this.analyticsService.acceptCookies();
+    dataLayer.push({ 'event': 'cookie_consent_given' });
   }
 }
