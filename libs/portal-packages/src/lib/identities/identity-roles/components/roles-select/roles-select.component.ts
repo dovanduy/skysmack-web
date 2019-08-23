@@ -1,9 +1,10 @@
 import { Component, OnInit, Input, Output, EventEmitter, OnDestroy } from '@angular/core';
 import { SubscriptionHandler, PagedQuery, Package } from '@skysmack/framework';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
-import { map, tap } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { MatSelectChange } from '@angular/material/select';
 import { NgRolesStore, NgRolesActions } from '@skysmack/ng-identities';
+import { IdentitiesTypeId } from '@skysmack/package-types';
 
 @Component({
   selector: 'ss-roles-select',
@@ -18,7 +19,6 @@ export class RolesSelectComponent implements OnInit, OnDestroy {
   @Input() public currentlySelectedIds: number[] = [];
   @Input() public selectType: 'single' | 'multiple' = 'multiple';
   @Output() public selectedIds = new EventEmitter<number | number[]>();
-
 
   constructor(
     public rolesStore: NgRolesStore,
@@ -39,7 +39,7 @@ export class RolesSelectComponent implements OnInit, OnDestroy {
   }
 
   private getRoles() {
-    this.subscriptionHander.register(this.skysmackStore.getIdentityPackages().pipe(
+    this.subscriptionHander.register(this.skysmackStore.getPackageByTypeId(IdentitiesTypeId).pipe(
       map((identityPackages: Package[]) => {
         // GET
         identityPackages.forEach(_package => {

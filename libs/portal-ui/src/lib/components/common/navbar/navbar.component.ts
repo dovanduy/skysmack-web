@@ -11,6 +11,7 @@ import { NgRedux } from '@angular-redux/store';
 import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { NgMenuProviders } from '../../../navigation/ng-menu-providers';
+import { OAuth2TypeId, IdentitiesTypeId } from '@skysmack/package-types';
 
 @Component({
   selector: 'ss-navbar',
@@ -39,8 +40,8 @@ export class NavBarComponent implements OnInit {
   ngOnInit() {
     this.skysmack$ = this.skysmackStore.getSkysmack();
     this.menu$ = this.uiStore.getMenu();
-    this.authenticationPackages$ = this.skysmackStore.getAuthenticationPackages();
-    this.accountPackages$ = this.skysmackStore.getAccountPackages();
+    this.authenticationPackages$ = this.skysmackStore.getPackageByTypeId(OAuth2TypeId);
+    this.accountPackages$ = this.skysmackStore.getPackageByTypeId(IdentitiesTypeId);
 
     this.initMenu();
   }

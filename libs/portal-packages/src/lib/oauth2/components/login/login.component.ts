@@ -15,6 +15,7 @@ import { NgAuthenticationStore } from '@skysmack/ng-framework';
 import { NgRedux } from '@angular-redux/store';
 import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { BaseComponent } from '@skysmack/portal-fields';
+import { IdentitiesTypeId } from '@skysmack/package-types';
 
 @Component({
   selector: 'ss-login',
@@ -71,7 +72,7 @@ export class LoginComponent extends BaseComponent<any, any> implements OnInit {
     this.listenForErrors();
 
     // For showing forgot password and confirm account
-    this.accountPackages$ = this.skysmackStore.getAccountPackages();
+    this.accountPackages$ = this.skysmackStore.getPackageByTypeId(IdentitiesTypeId);
   }
 
   public createForm() {
