@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { FormRule, Field } from '@skysmack/ng-dynamic-forms';
-import { StringFieldComponent } from '@skysmack/portal-fields';
+import { StringFieldComponent, HiddenFieldComponent } from '@skysmack/portal-fields';
 import { CommercialTenantsValidation } from './commercial-tenants-validation';
-import { LocalObject } from '@skysmack/framework';
+import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { Tenant } from './models/tenant';
 import { FieldsConfig, FieldProviders } from '@skysmack/ng-fields';
 import { LoadedPackage } from '@skysmack/ng-framework';
@@ -55,6 +55,17 @@ export class CommercialTenantsFieldsConfig extends FieldsConfig<any, any>{
                 includeInForm: false
             }),
         ];
+
+        // Id field must only be added for edit forms.
+        // If added to a create form, it won't be able to bind in the backend.
+        if (entity && entity.object.id && entity.status !== LocalObjectStatus.CREATING) {
+            fields.push(new Field({
+                component: HiddenFieldComponent,
+                value: entity ? entity.object.id : undefined,
+                key: 'id',
+                order: 0,
+            }));
+        }
 
         return fields;
     }
