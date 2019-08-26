@@ -14,13 +14,25 @@ const throwOnWrongPathsObject = (pathsObject) => {
     }
 }
 
-const runLocalization = (pathsObject, lang, outputPath) => {
+const runLocalization = (pathsObject, lang, jsonPrefixes, outputPath) => {
     throwOnWrongPathsObject(pathsObject);
+
+    // Add 
+    const src = [];
+    for (let index = 0; index < jsonPrefixes.length; index++) {
+        const prefix = jsonPrefixes[index];
+        const projectJsons = `${pathsObject.project}/**/${prefix}.json`;
+        const libJsons = `${pathsObject.lib}/**/${prefix}.json`;
+
+        src.push(projectJsons);
+        src.push(libJsons)
+    }
+
     return () => {
-        return gulp.src([
+        return gulp.src(src.concat([
             `${pathsObject.project}/**/${lang}.json`,
             `${pathsObject.lib}/**/${lang}.json`
-        ])
+        ]))
             .pipe(plumber())
             .pipe(mergeJson({ fileName: `${lang}.json` }))
             .pipe(gulp.dest(outputPath))
@@ -68,12 +80,16 @@ const webLocalizationWatch = (done) => {
 };
 
 const webLocalization = (done) => {
-    gulp.parallel(runLocalization(webPaths, 'en', webLocalizationOutputPath))(done); // Remember: Multiple runLocalization() functions can be used in parallel
+    gulp.parallel(
+        runLocalization(webPaths, 'en', ['portal.en'], webLocalizationOutputPath),
+    )(done); // Remember: Multiple runLocalization() functions can be used in parallel
     done();
 };
 
 const webCommercialLocalization = (done) => {
-    gulp.parallel(runLocalization(webCommercialPaths, 'en', webCommercialLocalizationOutputPath))(done); // Remember: Multiple runLocalization() functions can be used in parallel
+    gulp.parallel(
+        runLocalization(webCommercialPaths, 'en', ['commercial.en'], webCommercialLocalizationOutputPath),
+    )(done); // Remember: Multiple runLocalization() functions can be used in parallel
     done();
 };
 
