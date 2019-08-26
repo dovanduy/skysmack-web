@@ -10,7 +10,7 @@ export class NgUiMenuProvider implements MenuProvider {
     private translationPrefix = 'COMMERCIAL_UI_PARTNERS.INDEX.';
 
     constructor(
-        public actions: NgAuthenticationActions,
+        public actions: NgAuthenticationActions
     ) { }
 
     public getMenuAreas(packagePath: string, componentKey: string): Observable<MenuArea[]> {

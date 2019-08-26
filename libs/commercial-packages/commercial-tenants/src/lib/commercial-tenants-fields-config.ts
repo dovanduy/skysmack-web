@@ -7,6 +7,7 @@ import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { Tenant } from './models/tenant';
 import { FieldsConfig, FieldProviders } from '@skysmack/ng-fields';
 import { LoadedPackage } from '@skysmack/ng-framework';
+import { TenantStates } from './models';
 
 @Injectable({ providedIn: 'root' })
 export class CommercialTenantsFieldsConfig extends FieldsConfig<any, any>{
@@ -32,7 +33,6 @@ export class CommercialTenantsFieldsConfig extends FieldsConfig<any, any>{
                 component: StringFieldComponent,
                 value: entity ? entity.object.hostname : undefined,
                 key: 'hostname',
-                // validators: [Validators.required],
                 order: 1,
                 sortable: true
             }),
@@ -53,7 +53,7 @@ export class CommercialTenantsFieldsConfig extends FieldsConfig<any, any>{
                 order: 1,
                 sortable: true,
                 includeInForm: false
-            }),
+            })
         ];
 
         // Id field must only be added for edit forms.

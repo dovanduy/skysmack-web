@@ -6,6 +6,7 @@
   },
   "whitelistedNonPeerDependencies": [
     "tslib",
-    "@skysmack/ng-ui"
+    "@skysmack/ng-ui",
+    "@skysmack/framework"
   ]
 }

@@ -5,7 +5,7 @@
             <p>{{ 'COMMERCIAL_TENANTS.HOSTNAME' | translate }}: <a target="_blank"
                     [href]="'https://' + tenant.hostname">{{ tenant.hostname }}</a></p>
             <p>{{ 'COMMERCIAL_TENANTS.SAFESUBDOMAIN' | translate }}: {{ tenant.safeSubdomain }}</p>
-            <p>{{ 'COMMERCIAL_TENANTS.STATE' | translate }}: {{ tenant.state }}</p>
+            <p>{{ 'COMMERCIAL_TENANTS.STATE' | translate }}: {{ this.displayModifier(tenant) }}</p>
         </ng-container>
     </mat-card>
 </div>

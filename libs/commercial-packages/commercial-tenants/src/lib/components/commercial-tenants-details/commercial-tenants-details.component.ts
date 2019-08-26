@@ -5,6 +5,7 @@ import { Tenant } from '../../models/tenant';
 import { map, switchMap } from 'rxjs/operators';
 import { HttpSuccessResponse } from '@skysmack/framework';
 import { ActivatedRoute } from '@angular/router';
+import { TenantStates } from '../../models/tenant-states';
 
 @Component({
   selector: 'ss-commercial-tenants-details',
@@ -26,5 +27,9 @@ export class CommercialTenantsDetailsComponent implements OnInit {
       switchMap(id => this.service.getById(id)),
       map((response: HttpSuccessResponse<Tenant>) => response.body)
     );
+  }
+
+  public displayModifier = (entity: Tenant): string => {
+    return TenantStates[entity.state];
   }
 }

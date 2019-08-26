@@ -3199,11 +3199,15 @@
 		"FORM": {
 			"LABELS": {
 				"NAME": "Database name",
-				"HOSTNAME": "Hostname"
+				"HOSTNAME": "Hostname",
+				"DATABASENAME": "Database name",
+				"CANDELETEDATABASE": "Can delete database"
 			},
 			"PLACEHOLDERS": {
 				"NAME": "Enter a database name",
-				"HOSTNAME": "Enter a hostname"
+				"HOSTNAME": "Enter a hostname",
+				"DATABASENAME": "Enter a database name",
+				"CANDELETEDATABASE": "Can delete database"
 			},
 			"VALIDATION": {}
 		}

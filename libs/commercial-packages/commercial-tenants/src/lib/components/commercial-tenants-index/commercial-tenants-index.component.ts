@@ -1,11 +1,12 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { CommercialTenantsService } from '../../services/commercial-tenants.service';
 import { Tenant } from '../../models/tenant';
 import { map, take, tap } from 'rxjs/operators';
-import { HttpResponse, HttpSuccessResponse } from '@skysmack/framework';
-import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { HttpSuccessResponse } from '@skysmack/framework';
+import { MatDialog } from '@angular/material/dialog';
 import { RemoveDialog, RemoveDialogData } from '@skysmack/commercial-ui-partners';
+import { TenantStates } from '../../models/tenant-states';
 
 @Component({
   selector: 'ss-commercial-tenants-index',
@@ -27,7 +28,7 @@ export class CommercialTenantsIndexComponent implements OnInit {
 
   private refreshTenants() {
     this.tenants$ = this.service.get().pipe(
-      map((x: HttpSuccessResponse<Tenant[]>) => { 
+      map((x: HttpSuccessResponse<Tenant[]>) => {
         this.loading = false;
         return x.body;
       }),
@@ -36,17 +37,23 @@ export class CommercialTenantsIndexComponent implements OnInit {
   }
 
   public remove(tenant: Tenant): void {
-      this.dialog.open(RemoveDialog, {
-        width: '350px',
-        data: new RemoveDialogData({ name: tenant.name, removeMethod: () => { 
+    this.dialog.open(RemoveDialog, {
+      width: '350px',
+      data: new RemoveDialogData({
+        name: tenant.name, removeMethod: () => {
           this.loading = true;
           this.service.delete(tenant.id).pipe(
-              tap(() => {
-                this.refreshTenants();
-              }),
-              take(1)
-            ).subscribe();
-        }})
-      });
+            tap(() => {
+              this.refreshTenants();
+            }),
+            take(1)
+          ).subscribe();
+        }
+      })
+    });
+  }
+
+  public displayModifier = (entity: Tenant): string => {
+    return TenantStates[entity.state];
   }
 }
