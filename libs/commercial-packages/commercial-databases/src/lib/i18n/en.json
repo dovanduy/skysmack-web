@@ -6,18 +6,17 @@
         },
         "TITLE": "Databases",
         "CREATE": "Create",
-        "CREATEDATABASE": "Create Database",
         "EDIT": "Edit",
         "EDITDATABASE": "Edit database",
         "REMOVE": "Remove",
         "FORM": {
             "LABELS": {
-                "NAME": "Database name",
-                "HOSTNAME": "Hostname"
+                "DATABASENAME": "Database name",
+                "CANDELETEDATABASE": "Can delete database"
             },
             "PLACEHOLDERS": {
-                "NAME": "Enter a database name",
-                "HOSTNAME": "Enter a hostname"
+                "DATABASENAME": "Enter a database name",
+                "CANDELETEDATABASE": "Can delete database"
             },
             "VALIDATION": {}
         }

@@ -3183,5 +3183,27 @@
 		"INDEX": {
 			"OPEN_API": "Åben API"
 		}
-	}
+	},
+	"COMMERCIAL_DATABASES": {
+        "INDEX": {
+            "CREATE": "Opret database",
+            "DATABASES": "Databaser"
+        },
+        "TITLE": "Databaser",
+        "CREATE": "Opret",
+        "EDIT": "Ret",
+        "EDITDATABASE": "Ret database",
+        "REMOVE": "Fjern",
+        "FORM": {
+            "LABELS": {
+                "DATABASENAME": "Database navn",
+                "CANDELETEDATABASE": "Kan databasen slettes"
+            },
+            "PLACEHOLDERS": {
+                "DATABASENAME": "Indtast et database navn",
+                "CANDELETEDATABASE": "Kan databasen slettes"
+            },
+            "VALIDATION": {}
+        }
+    }
 }
