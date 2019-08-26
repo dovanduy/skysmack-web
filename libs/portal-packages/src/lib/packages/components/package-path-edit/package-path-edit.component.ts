@@ -8,6 +8,7 @@ import { Package } from '@skysmack/framework';
 import { NgPackagePathEditFieldsConfig } from '../../ng-package-path-edit-fields-config';
 import { FormHelper } from '@skysmack/ng-dynamic-forms';
 import { RecordFormComponent } from '@skysmack/portal-fields';
+import { ChangePackagePath } from 'libs/packages/skysmack-core/src/packages/models/change-package-path';
 
 @Component({
   selector: 'ss-package-path-edit',
@@ -33,12 +34,8 @@ export class PackagePathEditComponent extends RecordFormComponent<PackagesAppSta
 
   protected update(fh: FormHelper) {
     fh.formValid(() => {
-      // const oldValue = { ...this.selectedEntity };
-      // const newValue = this.extractFormValues(fh, this.selectedEntity);
-      // newValue.oldObject = oldValue.object;
-      // newValue.status = LocalObjectStatus.MODIFYING;
-      // this.actions.update([newValue], this.packagePath); // Create proper redux flow?
-      this.editorNavService.hideEditorNav();
+      const changePackagePath = new ChangePackagePath(fh.form.getRawValue());
+      this.actions.changePath([changePackagePath], this.packagePath);
     });
   }
 }

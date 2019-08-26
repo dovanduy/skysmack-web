@@ -2,6 +2,7 @@ import { LocalObject, Package, toLocalObject, HttpErrorResponse, AvailablePackag
 import { AppState, ReduxAction, GetAvailablePackagesSuccessPayload, sharedReducer, recordReducersBase, RecordState, ReduxOfflineMeta, CommitMeta } from '@skysmack/redux';
 import { PackagesActions } from './packages-actions';
 import { PACKAGES_REDUCER_KEY, PACKAGES_REDUX_KEY } from '../constants';
+import { ChangePackagePath } from '../models/change-package-path';
 
 /**
  * This is to be used when you want to access packages via the GLOBAL state. E.g. state.packages (where packages is the reducer name.)
@@ -21,7 +22,6 @@ export function packagesReducer(state = new PackagesState(), action: ReduxAction
     const newState = Object.assign({}, state);
 
     switch (action.type) {
-
         case PackagesActions.GET_AVAILABLE_PACKAGES_SUCCESS: {
             const castedAction = action as ReduxAction<GetAvailablePackagesSuccessPayload>;
             const incomingAvailablePackages = castedAction.payload.availablePackages.map(x => toLocalObject<AvailablePackage, string>(x, 'type'));
@@ -35,20 +35,21 @@ export function packagesReducer(state = new PackagesState(), action: ReduxAction
             }
             return newState;
         }
-
         case PackagesActions.EDIT_PACKAGE_PATH: {
-            const castedAction = action as ReduxAction<unknown, ReduxOfflineMeta<LocalObject<Package, string>, HttpResponse, LocalObject<Package, string>>>;
-            const stateKey = castedAction.meta.offline.commit.meta.stateKey;
-            const _package = castedAction.meta.offline.commit.meta.value;
-            newState.localRecords[stateKey][_package.localId].object.path = _package.object.path;
+            console.log('posting', action);
+            // const castedAction = action as ReduxAction<unknown, ReduxOfflineMeta<CommitMeta<ChangePackagePath[]>, HttpResponse, CommitMeta<ChangePackagePath[]>>>;
+            // const stateKey = castedAction.meta.offline.commit.meta.stateKey;
+            // const _package = castedAction.meta.offline.commit.meta.value;
+            // newState.localRecords[stateKey][_package.localId].object.path = _package.object.path;
             return newState;
         }
         case PackagesActions.EDIT_PACKAGE_PATH_SUCCESS: {
-            const castedAction = action as ReduxAction<HttpSuccessResponse<string>, CommitMeta<LocalObject<Package, string>>>;
-            const body = castedAction.payload.body;
-            const stateKey = castedAction.meta.stateKey;
-            const _package = castedAction.meta.value;
-            newState.localRecords[stateKey][_package.localId].object.path = body;
+            console.log('success', action);
+            // const castedAction = action as ReduxAction<HttpSuccessResponse<string>, CommitMeta<LocalObject<Package, string>>>;
+            // const body = castedAction.payload.body;
+            // const stateKey = castedAction.meta.stateKey;
+            // const _package = castedAction.meta.value;
+            // newState.localRecords[stateKey][_package.localId].object.path = body;
             return newState;
         }
         case PackagesActions.EDIT_PACKAGE_PATH_FAILURE: {

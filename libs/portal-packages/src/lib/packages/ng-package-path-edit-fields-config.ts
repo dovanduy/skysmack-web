@@ -27,7 +27,7 @@ export class NgPackagePathEditFieldsConfig extends FieldsConfig<Package, string>
             new Field({
                 component: StringFieldComponent,
                 value: _package ? _package.object.path : undefined,
-                key: 'currentPath',
+                key: 'previousPath',
                 disabled: true,
                 order: 1,
                 sortable: true
