@@ -33,6 +33,9 @@ module.exports = {
       // Builds a deployable version.
       build: 'gulp webCommercialLocalization && ng build web-commercial --prod --deploy-url //skysmack.com/'
     },
+    nrwl: {
+      update: 'ng update @nrwl/workspace'
+    },
     libs: {
       default: 'yarn build:libs:shared && yarn build:libs:packages',
       shared: 'yarn libs:shared:framework:build && yarn libs:shared:framework:build && yarn libs:shared:redux:build && yarn libs:shared:signal-r:build && yarn libs:shared:pricings:build',

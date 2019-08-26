@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "update": "ng update @nrwl/workspace"
+    "start:portal": "nps portal",
+    "start:commercial": "nps commercial"
   },
   "private": true,
   "dependencies": {
