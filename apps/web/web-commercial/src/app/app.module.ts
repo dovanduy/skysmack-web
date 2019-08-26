@@ -35,6 +35,7 @@ import { CommercialUiPartnersModule } from '@skysmack/commercial-ui-partners';
     RouterModule.forRoot([
       { path: 'account', loadChildren: './packages/commercial_account_wrapper.module#CommercialAccountWrapperModule' },
       { path: 'tenants', loadChildren: './packages/commercial_tenants_wrapper.module#CommercialTenantsWrapperModule' },
+      { path: 'databases', loadChildren: './packages/commercial_databases_wrapper.module#CommercialDatabasesWrapperModule' },
       { path: 'users', loadChildren: './packages/commercial_users_wrapper.module#CommercialUsersWrapperModule' },
       { path: 'open-api', loadChildren: './packages/commercial_open_api_wrapper.module#CommercialOpenApiWrapperModule' },
       {

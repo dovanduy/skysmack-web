@@ -1,0 +1,25 @@
+{
+    "COMMERCIAL_DATABASES": {
+        "INDEX": {
+            "CREATE": "Create database",
+            "DATABASES": "Databases"
+        },
+        "TITLE": "Databases",
+        "CREATE": "Create",
+        "CREATEDATABASE": "Create Database",
+        "EDIT": "Edit",
+        "EDITDATABASE": "Edit database",
+        "REMOVE": "Remove",
+        "FORM": {
+            "LABELS": {
+                "NAME": "Database name",
+                "HOSTNAME": "Hostname"
+            },
+            "PLACEHOLDERS": {
+                "NAME": "Enter a database name",
+                "HOSTNAME": "Enter a hostname"
+            },
+            "VALIDATION": {}
+        }
+    }
+}

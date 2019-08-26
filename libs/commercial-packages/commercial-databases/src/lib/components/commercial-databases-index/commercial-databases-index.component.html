@@ -1,0 +1,21 @@
+<div class="wrapper">
+  <mat-card>
+    <div style="width:100%;height:5px">
+      <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
+    </div>
+
+    <mat-list *ngIf="databases$ | async as databases">
+      <h3 mat-subheader>{{ 'COMMERCIAL_DATABASES.TITLE' | translate }}</h3>
+      <mat-list-item *ngFor="let database of databases">
+        <h4 mat-line>{{ database.databaseName }}</h4>
+
+        <div mat-icon>
+          <button (click)="remove(database)" mat-icon-button [disabled]="!database.canDeleteDatabase" matTooltip="
+                {{ 'COMMERCIAL_DATABASES.REMOVE' | translate }}">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+      </mat-list-item>
+    </mat-list>
+  </mat-card>
+</div>
