@@ -3,6 +3,7 @@ import { ReduxAction, RecordActionsBase, ReduxOfflineMeta, OfflineMeta, Effect, 
 import { Package, LocalObject, StrIndex, QueueItem, HttpResponse, HttpMethod } from '@skysmack/framework';
 import { PackagesAppState } from './packages-reducer';
 import { PACKAGES_REDUX_KEY, PACKAGES_ADDITIONAL_PATHS } from '../constants/constants';
+import { ChangePackagePath } from '../models/change-package-path';
 
 export class PackagesActions extends RecordActionsBase<PackagesAppState, Store<PackagesAppState>> {
     public static GET_AVAILABLE_PACKAGES = 'GET_AVAILABLE_PACKAGES';
@@ -24,38 +25,39 @@ export class PackagesActions extends RecordActionsBase<PackagesAppState, Store<P
         })));
     }
 
-    public editPackagePath = (_package: LocalObject<Package, string>, packagePath: string) => {
-        const queueItems = [new QueueItem({
-            message: `PACKAGES.EDITING_PATH`,
-            messageParams: { path: _package.object.path } as any,
-            link: `${packagePath}/edit/path`,
-            packagePath,
-            localObject: _package,
-            cancelAction: this.cancelAction
-        })];
+    public changePath = (_changePackagePaths: ChangePackagePath[], packagePath: string) => {
+        const queueItems = _changePackagePaths.map(record => {
+            return new QueueItem({
+                message: `PACKAGES.EDITING_PATH`,
+                messageParams: { path: record.previousPath } as any,
+                link: `${this.addAdditionalPaths(packagePath)}/edit/path/${record.previousPath}`,
+                packagePath,
+                cancelAction: this.cancelAction
+            });
+        });
 
-        this.store.dispatch(Object.assign({}, new ReduxAction<any, ReduxOfflineMeta<LocalObject<Package, string>, HttpResponse, LocalObject<Package, string>>>({
+        this.store.dispatch(Object.assign({}, new ReduxAction<any, ReduxOfflineMeta<ChangePackagePath[], HttpResponse, ChangePackagePath[]>>({
             type: this.prefix + PackagesActions.EDIT_PACKAGE_PATH,
             meta: new ReduxOfflineMeta(
-                new OfflineMeta<LocalObject<Package, string>, HttpResponse, LocalObject<Package, string>>(
-                    new Effect<LocalObject<Package, string>>(new EffectRequest<LocalObject<Package, string>>(
-                        `${packagePath}/edit-path`,
+                new OfflineMeta<ChangePackagePath[], HttpResponse, ChangePackagePath[]>(
+                    new Effect<ChangePackagePath[]>(new EffectRequest<ChangePackagePath[]>(
+                        `${packagePath}/change-path`,
                         HttpMethod.PUT,
-                        _package
+                        _changePackagePaths
                     )),
-                    new ReduxAction<any, CommitMeta<LocalObject<Package, string>>>({
+                    new ReduxAction<any, CommitMeta<ChangePackagePath[]>>({
                         type: PackagesActions.EDIT_PACKAGE_PATH_SUCCESS,
                         meta: {
                             stateKey: packagePath,
-                            value: _package,
+                            value: _changePackagePaths,
                             queueItems
                         }
                     }),
-                    new ReduxAction<any, RollbackMeta<LocalObject<Package, string>>>({
+                    new ReduxAction<any, RollbackMeta<ChangePackagePath[]>>({
                         type: PackagesActions.EDIT_PACKAGE_PATH_FAILURE,
                         meta: {
                             stateKey: packagePath,
-                            value: _package,
+                            value: _changePackagePaths,
                             queueItems
                         }
                     })
