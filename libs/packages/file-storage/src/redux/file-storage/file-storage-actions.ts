@@ -8,12 +8,23 @@ export class FileStorageActions {
     public static GET_SETTINGS_SUCCESS = 'GET_SETTINGS_SUCCESS';
     public static GET_SETTINGS_FAILURE = 'GET_SETTINGS_FAILURE';
 
+    public static UPDATE_SETTINGS = 'UPDATE_SETTINGS';
+    public static UPDATE_SETTINGS_SUCCESS = 'UPDATE_SETTINGS_SUCCESS';
+    public static UPDATE_SETTINGS_FAILURE = 'UPDATE_SETTINGS_FAILURE';
+
     constructor(protected store: NgRedux<FileStorageAppState>) { }
 
     public getSettings = (packagePath: string) => {
         this.store.dispatch(Object.assign({}, new ReduxAction<any>({
             type: FILE_STORAGE_REDUX_KEY + FileStorageActions.GET_SETTINGS,
             payload: { packagePath }
+        })));
+    }
+
+    public updateSettings = (packagePath: string, settings: any) => {
+        this.store.dispatch(Object.assign({}, new ReduxAction<any>({
+            type: FILE_STORAGE_REDUX_KEY + FileStorageActions.UPDATE_SETTINGS,
+            payload: { packagePath, settings }
         })));
     }
 }

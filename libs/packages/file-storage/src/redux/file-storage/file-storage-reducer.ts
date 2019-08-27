@@ -20,12 +20,23 @@ export function fileStorageReducer(state = new FileStorageState(), action: Redux
     const newState = Object.assign({}, state);
 
     switch (action.type) {
-        case FileStorageActions.GET_SETTINGS_SUCCESS: {
+        case prefix + FileStorageActions.GET_SETTINGS_SUCCESS: {
             const castedAction = action as { payload: { settings: any, packagePath: string } };
             newState.settings[castedAction.payload.packagePath] = castedAction.payload.settings;
             return newState;
         }
-        case FileStorageActions.GET_SETTINGS_FAILURE: {
+        case prefix + FileStorageActions.GET_SETTINGS_FAILURE: {
+            if (!GlobalProperties.production) {
+                console.log('Error. Error Action:', action);
+            }
+            return newState;
+        }
+        case prefix + FileStorageActions.UPDATE_SETTINGS_SUCCESS: {
+            const castedAction = action as { payload: { settings: any, packagePath: string } };
+            newState.settings[castedAction.payload.packagePath] = castedAction.payload.settings;
+            return newState;
+        }
+        case prefix + FileStorageActions.UPDATE_SETTINGS_FAILURE: {
             if (!GlobalProperties.production) {
                 console.log('Error. Error Action:', action);
             }

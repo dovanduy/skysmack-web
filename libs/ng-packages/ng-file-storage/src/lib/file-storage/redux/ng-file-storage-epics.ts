@@ -16,7 +16,8 @@ export class NgFileStorageEpics {
 
     constructor(protected requests: NgFileStorageRequests, protected notifications: NgFileStorageNotifications) {
         this.epics = [
-            this.getSettingsEpic
+            this.getSettingsEpic,
+            this.updateSettingsEpic
         ];
     }
 
@@ -24,6 +25,13 @@ export class NgFileStorageEpics {
         return action$.pipe(
             ofType(FILE_STORAGE_REDUX_KEY + NgFileStorageActions.GET_SETTINGS),
             mergeMap(action => this.requests.getSettings(action))
+        );
+    }
+
+    public updateSettingsEpic = (action$: ActionsObservable<ReduxAction<any>>): Observable<ReduxAction<any> | ReduxAction<HttpErrorResponse>> => {
+        return action$.pipe(
+            ofType(FILE_STORAGE_REDUX_KEY + NgFileStorageActions.UPDATE_SETTINGS),
+            mergeMap(action => this.requests.updateSettings(action))
         );
     }
 }

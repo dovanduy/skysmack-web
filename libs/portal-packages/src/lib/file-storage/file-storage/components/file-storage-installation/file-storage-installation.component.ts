@@ -37,7 +37,7 @@ export class FileStorageInstallationComponent extends BaseComponent<FileStorageA
 
   public onCreateSubmit(fh: FormHelper) {
     fh.formValid(() => {
-      console.log(fh);
+      this.actions.updateSettings(this.packagePath, fh.form.value);
     });
   }
 }
