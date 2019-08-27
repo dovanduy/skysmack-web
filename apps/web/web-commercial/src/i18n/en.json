@@ -3217,12 +3217,14 @@
 			"LABELS": {
 				"FIRSTNAME": "First name",
 				"LASTNAME": "Last name",
-				"DISPLAYNAME": "Display name"
+				"DISPLAYNAME": "Display name",
+				"NAME": "Name"
 			},
 			"PLACEHOLDERS": {
 				"FIRSTNAME": "Enter first name",
 				"LASTNAME": "Enter last name",
-				"DISPLAYNAME": "Enter display name"
+				"DISPLAYNAME": "Enter display name",
+				"NAME": "Enter name"
 			},
 			"VALIDATION": {
 				"FIRSTNAME": {
@@ -3233,6 +3235,9 @@
 				},
 				"DISPLAYNAME": {
 					"REQUIRED": "A Display name is required."
+				},
+				"NAME": {
+					"REQUIRED": "Name is required."
 				}
 			}
 		},
@@ -3253,7 +3258,7 @@
 			}
 		},
 		"CREATE": {
-			"CREATE": "Create",
+			"CREATE": "Create new bucket",
 			"BUTTON_CREATE": "Create"
 		},
 		"EDIT": {

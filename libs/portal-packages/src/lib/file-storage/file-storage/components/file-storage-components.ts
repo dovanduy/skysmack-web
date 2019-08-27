@@ -3,6 +3,7 @@ import { FileStorageIndexComponent } from './file-storage-index/file-storage-ind
 import { FileStorageCreateComponent } from './file-storage-create/file-storage-create.component';
 import { FileStorageEditComponent } from './file-storage-edit/file-storage-edit.component';
 import { FileStorageDashboardComponent } from './file-storage-dashboard/file-storage-dashboard.component';
+import { FileStorageInstallationComponent } from './file-storage-installation/file-storage-installation.component';
 
 export const fileStorageRoutes: Routes = [
   {
@@ -12,7 +13,7 @@ export const fileStorageRoutes: Routes = [
           { path: 'create', component: FileStorageCreateComponent, pathMatch: 'full' },
           { path: 'edit/:id', component: FileStorageEditComponent, pathMatch: 'full' },
         ]
-      },
+      }
     ]
   }
 ];
@@ -21,6 +22,7 @@ export const fileStorageComponents: any[] = [
   FileStorageIndexComponent,
   FileStorageCreateComponent,
   FileStorageEditComponent,
+  FileStorageInstallationComponent,
   FileStorageDashboardComponent
 ];
 

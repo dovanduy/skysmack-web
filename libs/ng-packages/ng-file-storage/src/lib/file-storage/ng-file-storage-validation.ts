@@ -4,10 +4,13 @@ import { FILE_STORAGE_AREA_KEY } from '@skysmack/packages-file-storage';
 
 export class NgFileStorageValidation extends Validation {
     public formErrors = {
-
+        name: ''
     };
 
     public validationMessages: StrIndex<{}> = {
+        name: {
+            required: ''
+        }
     };
 
     public area = FILE_STORAGE_AREA_KEY;

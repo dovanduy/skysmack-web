@@ -6,7 +6,7 @@ import { NgFileStorageStore, NgFileStorageActions } from '@skysmack/ng-file-stor
 import { FileStorageAppState, FILE_STORAGE_AREA_KEY } from '@skysmack/packages-file-storage';
 import { MenuItem } from '@skysmack/framework';
 import { BaseComponent } from '@skysmack/portal-fields';
-import { map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'ss-file-storage-index',
@@ -18,6 +18,9 @@ export class FileStorageIndexComponent extends BaseComponent<FileStorageAppState
 
   public areaKey: string = FILE_STORAGE_AREA_KEY;
   public menuItemActions: MenuItem[] = [];
+
+
+  public settings$: Observable<any>;
 
   constructor(
     public router: Router,
@@ -32,9 +35,7 @@ export class FileStorageIndexComponent extends BaseComponent<FileStorageAppState
 
   ngOnInit() {
     super.ngOnInit();
-    this.actions.getSettings(this.packagePath);
-    this.store.getSettings(this.packagePath).pipe(
-      map(x => x)
-    ).subscribe();
+    // this.actions.getSettings(this.packagePath);
+    this.settings$ = this.store.getSettings(this.packagePath);
   }
 }
