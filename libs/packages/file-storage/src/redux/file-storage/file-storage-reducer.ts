@@ -1,5 +1,4 @@
-import { LocalPageTypes, StrIndex, LocalObject } from '@skysmack/framework';
-import { AppState, ReduxAction, RecordState, recordReducersBase } from '@skysmack/redux';
+import { AppState, ReduxAction } from '@skysmack/redux';
 import { sharedReducer } from '@skysmack/redux';
 import { FILE_STORAGE_REDUX_KEY, FILE_STORAGE_REDUCER_KEY } from '../../constants/constants';
 
@@ -10,9 +9,8 @@ export class FileStorageAppState extends AppState {
     public fileStorage: FileStorageState;
 }
 
-export class FileStorageState implements RecordState<any, number> {
-    public localPageTypes: StrIndex<StrIndex<LocalPageTypes<number>>> = {};
-    public localRecords: StrIndex<StrIndex<LocalObject<any, number>>> = {};
+export class FileStorageState {
+    public settings: any = {};
 }
 
 export function fileStorageReducer(state = new FileStorageState(), action: ReduxAction, prefix: string = FILE_STORAGE_REDUX_KEY): FileStorageState {
@@ -20,9 +18,6 @@ export function fileStorageReducer(state = new FileStorageState(), action: Redux
 
     switch (action.type) {
         default:
-            return {
-                ...state,
-                ...recordReducersBase<FileStorageState, any, number>(state, action, prefix)
-            };
+            return state;
     }
 }

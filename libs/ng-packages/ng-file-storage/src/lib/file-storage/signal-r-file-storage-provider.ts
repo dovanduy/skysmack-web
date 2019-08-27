@@ -14,18 +14,6 @@ export class SignalRPersonProvider implements SignalRProvider {
     public messageProvided(packagePath: string, message: any): void {
         if (message.type) {
             switch (message.type) {
-                case 'Added': {
-                    // TODO: What to do?
-                    break;
-                }
-                case 'Updated': {
-                    message.ids.forEach(id => this.actions.getSingle(packagePath, id));
-                    break;
-                }
-                case 'Removed': {
-                    this.actions.signalRDeleted(packagePath, message.ids);
-                    break;
-                }
                 default: break;
             }
         }

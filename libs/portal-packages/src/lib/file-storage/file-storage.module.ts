@@ -21,7 +21,7 @@ import { NgFileStorageMenuProvider } from './ng-file-storage-menu-provider';
     NgFileStorageModule,
     DynamicFormsModule,
     FileStorageRoutingModule,
-    PortalFieldsModule,
+    PortalFieldsModule
   ],
   exports: [],
   declarations: [

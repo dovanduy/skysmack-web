@@ -65,6 +65,9 @@
       "@skysmack/packages-persons": [
         "libs/packages/persons/public_api.ts"
       ],
+      "@skysmack/packages-file-storage": [
+        "libs/packages/file-storage/public_api.ts"
+      ],
       "@skysmack/packages-persons-lodging-reservations": [
         "libs/packages/persons-lodging-reservations/public_api.ts"
       ],

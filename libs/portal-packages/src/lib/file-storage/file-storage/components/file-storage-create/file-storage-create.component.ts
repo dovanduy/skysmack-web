@@ -4,15 +4,14 @@ import { NgFileStorageActions, NgFileStorageStore } from '@skysmack/ng-file-stor
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EditorNavService } from '@skysmack/portal-ui';
-import { DocumentRecordFormComponent } from '@skysmack/portal-fields';
-import { NgFieldActions } from '@skysmack/ng-framework';
+import { BaseComponent } from '@skysmack/portal-fields';
 import { NgFileStorageFieldsConfig } from '../../../ng-file-storage-fields-config';
 
 @Component({
   selector: 'ss-file-storage-create',
   templateUrl: './file-storage-create.component.html'
 })
-export class FileStorageCreateComponent extends DocumentRecordFormComponent<FileStorageAppState, any, number> implements OnInit {
+export class FileStorageCreateComponent extends BaseComponent<FileStorageAppState, number> implements OnInit {
 
   constructor(
     public router: Router,
@@ -22,16 +21,11 @@ export class FileStorageCreateComponent extends DocumentRecordFormComponent<File
     public skysmackStore: NgSkysmackStore,
     public fieldsConfig: NgFileStorageFieldsConfig,
     public store: NgFileStorageStore,
-    public fieldActions: NgFieldActions
   ) {
-    super(router, activatedRoute, editorNavService, actions, skysmackStore, store, fieldsConfig, fieldActions);
+    super(router, activatedRoute, skysmackStore);
   }
 
   ngOnInit() {
     super.ngOnInit();
-    if (true) {
-      const dasf = 'test';
-    }
-    this.setCreateFields();
   }
 }

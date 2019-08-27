@@ -50,7 +50,7 @@ export class NgFileStorageMenuProvider implements MenuProvider {
                 order: 1,
                 icon: 'add',
                 permissions: [
-                    FileStoragePermissions.addFileStorage
+                    // FileStoragePermissions.addFileStorage
                 ],
                 providedIn: [SIDEBAR, SPEEDDIAL]
             }),
@@ -61,7 +61,7 @@ export class NgFileStorageMenuProvider implements MenuProvider {
                 order: 2,
                 icon: 'short_text',
                 permissions: [
-                    FileStoragePermissions.findFileStorageFields
+                    // FileStoragePermissions.findFileStorageFields
                 ],
                 providedIn: [SIDEBAR]
             })
