@@ -31,11 +31,6 @@ export class NgFileStorageMenuProvider implements MenuProvider {
                 area: 'actions',
                 translationPrefix: this.translationPrefix,
                 order: 1
-            }),
-            new MenuArea({
-                area: 'manage',
-                translationPrefix: this.translationPrefix,
-                order: 2
             })
         ];
     }
@@ -43,26 +38,14 @@ export class NgFileStorageMenuProvider implements MenuProvider {
     private getFileStorageMenuItems = () => {
         return [
             new MenuItem({
-                url: 'create',
-                displayName: this.translationPrefix + 'CREATE',
+                url: 'upload',
+                displayName: this.translationPrefix + 'UPLOAD',
                 area: 'actions',
                 order: 1,
                 icon: 'add',
                 permissions: [
-                    // FileStoragePermissions.addFileStorage
                 ],
                 providedIn: [SIDEBAR, SPEEDDIAL]
-            }),
-            new MenuItem({
-                url: 'fields',
-                displayName: this.translationPrefix + 'FIELDS',
-                area: 'manage',
-                order: 2,
-                icon: 'short_text',
-                permissions: [
-                    // FileStoragePermissions.findFileStorageFields
-                ],
-                providedIn: [SIDEBAR]
             })
         ];
     }

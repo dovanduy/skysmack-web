@@ -1,0 +1,12 @@
+<ng-container *ngIf="field" [formGroup]="fh.form">
+
+  <input (change)="inputChanged($event)" type="file" [name]="field.label" [placeholder]="field.placeholder | translate">
+
+  <!-- Frontend errors -->
+  <ng-container *ngIf="fh.formErrors[fieldKey]">
+    {{ fh.formErrors[fieldKey] | translate }}
+  </ng-container>
+
+  <ss-backend-errors [field]="field"></ss-backend-errors>
+
+</ng-container>

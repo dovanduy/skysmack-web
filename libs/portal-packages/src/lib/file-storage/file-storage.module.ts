@@ -12,10 +12,14 @@ import { PortalFieldsModule } from '@skysmack/portal-fields';
 import { CoalescingComponentFactoryResolver, NgDashboardProviders } from '@skysmack/ng-framework';
 import { NgFileStorageDashboardProvider } from './ng-file-storage-dashboard-provider';
 import { NgFileStorageMenuProvider } from './ng-file-storage-menu-provider';
+import { fieldcomponents } from './file-storage/fields/field-components';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
     CommonModule,
+    ReactiveFormsModule,
+    // MaterialModule,
     HttpClientModule,
     PortalUiModule,
     NgFileStorageModule,
@@ -25,10 +29,12 @@ import { NgFileStorageMenuProvider } from './ng-file-storage-menu-provider';
   ],
   exports: [],
   declarations: [
-    ...fileStorageComponents
+    ...fileStorageComponents,
+    ...fieldcomponents
   ],
   entryComponents: [
-    ...fileStorageEntryComponents
+    ...fileStorageEntryComponents,
+    ...fieldcomponents
   ],
   providers: []
 })
