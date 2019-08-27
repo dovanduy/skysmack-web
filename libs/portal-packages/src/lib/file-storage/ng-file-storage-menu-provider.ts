@@ -4,7 +4,6 @@ import { MenuArea, MenuProvider, SPEEDDIAL, SIDEBAR } from '@skysmack/framework'
 import { MenuItem } from '@skysmack/framework';
 import { Guid } from 'guid-typescript';
 import { Observable } from 'rxjs';
-import { FileStoragePermissions } from '@skysmack/packages-file-storage';
 import { FileStorageTypeId } from '@skysmack/package-types';
 import { getMenuEntries } from '@skysmack/ng-framework';
 import { FileStorageIndexComponent } from './file-storage/components/file-storage-index/file-storage-index.component';
