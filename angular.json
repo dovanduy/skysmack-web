@@ -337,6 +337,38 @@
         }
       }
     },
+    "packages-file-storage": {
+      "root": "libs/packages/packages-file-storage",
+      "sourceRoot": "libs/packages/packages-file-storage/src",
+      "projectType": "library",
+      "prefix": "skysmack",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/packages/packages-file-storage/tsconfig.lib.json",
+              "libs/packages/packages-file-storage/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/packages/packages-file-storage/jest.config.js",
+            "tsConfig": "libs/packages/packages-file-storage/tsconfig.spec.json"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/schematics:component": {
+          "styleext": "scss"
+        }
+      }
+    },
     "packages-persons-lodging-reservations": {
       "root": "libs/packages/packages-persons-lodging-reservations",
       "sourceRoot": "libs/packages/packages-persons-lodging-reservations/src",

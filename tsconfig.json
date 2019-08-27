@@ -161,6 +161,9 @@
       "@skysmack/ng-persons": [
         "libs/ng-packages/ng-persons/src/public_api.ts"
       ],
+      "@skysmack/ng-file-storage": [
+        "libs/ng-packages/ng-file-storage/src/public_api.ts"
+      ],
       "@skysmack/ng-persons-lodging-reservations": [
         "libs/ng-packages/ng-persons-lodging-reservations/src/public_api.ts"
       ],
