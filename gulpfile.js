@@ -110,28 +110,44 @@ const updateNgswPortal = (done) => {
 
 const brotliPortal = (done) => {
     gulp.src(['./dist/apps/web/web-portal/**', '!./**/*.br', '!./**/*.gz'])
-        .pipe(brotli.compress())
+        .pipe(brotli.compress({
+            skipLarger: true,
+            mode: 0,
+            quality: 11,
+            lgblock: 0
+        }))
         .pipe(gulp.dest('./dist/apps/web/web-portal/'));
     done();
 };
 
 const zipPortal = (done) => {
     gulp.src(['./dist/apps/web/web-portal/**', '!./**/*.br', '!./**/*.gz'])
-        .pipe(gzip())
+        .pipe(gzip({ 
+            skipGrowingFiles : true,
+            level: 9
+        }))
         .pipe(gulp.dest('./dist/apps/web/web-portal/'));
     done();
 };
 
 const brotliCommercial = (done) => {
     gulp.src(['./dist/apps/web/web-commercial/**', '!./**/*.br', '!./**/*.gz'])
-        .pipe(brotli.compress())
+        .pipe(brotli.compress({
+            skipLarger: true,
+            mode: 0,
+            quality: 11,
+            lgblock: 0
+        }))
         .pipe(gulp.dest('./dist/apps/web/web-commercial/'));
     done();
 };
 
 const zipCommercial = (done) => {
     gulp.src(['./dist/apps/web/web-commercial/**', '!./**/*.br', '!./**/*.gz'])
-        .pipe(gzip())
+        .pipe(gzip({ 
+            skipGrowingFiles : true ,
+            level: 9
+        }))
         .pipe(gulp.dest('./dist/apps/web/web-commercial/'));
     done();
 };

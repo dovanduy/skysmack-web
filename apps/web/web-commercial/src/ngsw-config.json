@@ -7,9 +7,9 @@
       "resources": {
         "files": [
           "/assets/icons/site.webmanifest",
-          "/assets/icons/browserconfig.xml",          
+          "/assets/icons/browserconfig.xml", 
           "/ngsw-worker.js",
-          "/index.html",          
+          "/index.html",
           "/*.css",
           "/*.js",
           "/assets/**",
@@ -17,16 +17,17 @@
         ],
         "urls": [
           "https://fonts.googleapis.com/**",
-          "https://ajax.googleapis.com/ajax/libs/hammerjs/**",
-          "https://cdn.skysmack.com/**"
+          "https://fonts.gstatic.com/**",
+          "https://ajax.googleapis.com/ajax/libs/hammerjs/**",          
+          "https://skysmack.com/**"
         ]
       }
     }
   ],
   "dataGroups": [
     {
-      "name": "cdn",
-      "urls": ["https://cdn.skysmack.com/*"],
+      "name": "app",
+      "urls": ["https://skysmack.com/*"],
       "cacheConfig": {
         "maxSize": "100",
         "maxAge": "90d",
