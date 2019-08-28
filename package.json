@@ -4,9 +4,7 @@
   "license": "MIT",
   "scripts": {
     "start:portal": "nps portal",
-    "start:commercial": "nps commercial",
-    "ngsw-config": "ngsw-config dist/apps/web/web-portal apps/web/web-portal/src/ngsw-config.json https://cdn.skysmack.net && gulp update-ngsw-portal",
-    "webcompress-portal": "gulp brotli-portal && gulp zip-portal"
+    "start:commercial": "nps commercial"
   },
   "private": true,
   "dependencies": {

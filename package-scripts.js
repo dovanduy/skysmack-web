@@ -18,7 +18,12 @@ module.exports = {
       analyze: 'ng build --prod --stats-json && webpack-bundle-analyzer ./dist/apps/web/web-portal/stats.json',
 
       // Builds a deployable version.
-      build: 'gulp webLocalization && ng build --prod --deploy-url //cdn.skysmack.net/'
+      build: 'gulp webLocalization && ng build --prod --deploy-url //cdn.skysmack.net/ && nps portal.support.ngswConfig && nps portal.support.webcompressPortal',
+
+      support: {
+        ngswConfig: "ngsw-config dist/apps/web/web-portal apps/web/web-portal/src/ngsw-config.json https://cdn.skysmack.net && gulp update-ngsw-portal",
+        webcompressPortal: "gulp brotli-portal && gulp zip-portal"
+      }
     },
     commercial: {
       // Run local dev server
