@@ -14,9 +14,8 @@ export class NgFileStorageRequests {
         @Inject(API_DOMAIN_INJECTOR_TOKEN) protected apiDomain: ApiDomain
     ) { }
 
-    public getBuckets(action: ReduxAction<any>): Observable<ReduxAction<any>> {
+    public getBuckets(action: ReduxAction<any>): Observable<ReduxAction<{ packagePath: string, bucket: Bucket } | HttpErrorResponse>> {
         const url = `${this.apiDomain.domain}/${action.payload.packagePath}/settings/storage`;
-
 
         return this.http.get<any>(url, { observe: 'response' })
             .pipe(
@@ -38,8 +37,17 @@ export class NgFileStorageRequests {
             );
     }
 
-    public updateBuckets(action: ReduxAction<{ packagePath: string, bucket: Bucket }>): Observable<ReduxAction<any>> {
+    public updateBuckets(action: ReduxAction<{ packagePath: string, bucket: Bucket }>): Observable<ReduxAction<{ packagePath: string, bucket: Bucket } | HttpErrorResponse>> {
         const url = `${this.apiDomain.domain}/${action.payload.packagePath}/settings/storage`;
+
+
+        return of({
+            type: FILE_STORAGE_REDUX_KEY + NgFileStorageActions.GET_BUCKET_SUCCESS,
+            payload: {
+                packagePath: action.payload.packagePath,
+                bucket: { bucket: 'test' }
+            }
+        });
 
         return this.http.put<any>(url, action.payload.bucket, { observe: 'response' })
             .pipe(
