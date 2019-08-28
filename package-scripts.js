@@ -36,7 +36,11 @@ module.exports = {
       analyze: 'ng build --prod web-commercial --stats-json && webpack-bundle-analyzer ./dist/apps/web/web-commercial/stats.json',
 
       // Builds a deployable version.
-      build: 'gulp webCommercialLocalization && ng build web-commercial --prod --deploy-url //skysmack.com/'
+      build: 'gulp webCommercialLocalization && ng build web-commercial --prod --deploy-url //skysmack.com/ && nps commercial.support.webcompressCommercial',
+      
+      support: {
+        webcompressCommercial: "gulp brotli-commercial && gulp zip-commercial"
+      }
     },
     nrwl: {
       update: 'ng update @nrwl/workspace'

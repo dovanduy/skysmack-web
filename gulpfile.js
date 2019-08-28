@@ -122,6 +122,20 @@ const zipPortal = (done) => {
     done();
 };
 
+const brotliCommercial = (done) => {
+    gulp.src(['./dist/apps/web/web-commercial/**', '!./**/*.br', '!./**/*.gz'])
+        .pipe(brotli.compress())
+        .pipe(gulp.dest('./dist/apps/web/web-commercial/'));
+    done();
+};
+
+const zipCommercial = (done) => {
+    gulp.src(['./dist/apps/web/web-commercial/**', '!./**/*.br', '!./**/*.gz'])
+        .pipe(gzip())
+        .pipe(gulp.dest('./dist/apps/web/web-commercial/'));
+    done();
+};
+
 // =================
 // Defaukt task
 // =================
@@ -142,5 +156,7 @@ gulp.task('update-ngsw-portal', updateNgswPortal);
 gulp.task('brotli-portal', brotliPortal);
 gulp.task('zip-portal', zipPortal);
 
+gulp.task('brotli-commercial', brotliCommercial);
+gulp.task('zip-commercial', zipCommercial);
 
 gulp.task('default', defaultTask);
