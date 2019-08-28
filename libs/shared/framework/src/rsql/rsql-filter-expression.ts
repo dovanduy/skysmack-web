@@ -89,52 +89,52 @@ export class RSQLFilterExpression {
         filterString = `${filterString}=in=${shouldQuote ? this.quote(valueString) : valueString}`;
         break;
       case Operators.NotEqual:
-        filterString += '!=' + shouldQuote ? this.quote(valueString) : valueString;
+        filterString = `${filterString}!=${shouldQuote ? this.quote(valueString) : valueString}`;
         break;
       case Operators.Like:
-        filterString += '==' + this.quote(valueString);
+        filterString = `${filterString}==${this.quote(valueString)}`;
         break;
       case Operators.GreaterThan:
-        filterString += '>' + valueString;
+        filterString = `${filterString}>${valueString}`;
         break;
       case Operators.GreaterThanEqualTo:
-        filterString += '>=' + valueString;
+        filterString = `${filterString}>=${valueString}`
         break;
       case Operators.LessThan:
-        filterString += '<' + valueString;
+        filterString = `${filterString}<${valueString}`
         break;
       case Operators.LessThanEqualTo:
-        filterString += '<=' + valueString;
+        filterString = `${filterString}<=${valueString}`
         break;
       case Operators.StartsWith:
-        filterString += '==' + this.quote(`${valueString}*`);
+        filterString = `${filterString}==${this.quote(`${valueString}*`)}`
         break;
       case Operators.EndsWith:
-        filterString += '==' + this.quote(`*${valueString}`);
+        filterString = `${filterString}==${this.quote(`*${valueString}`)}`
         break;
       case Operators.Contains:
-        filterString += '==' + this.quote(`*${valueString}*`);
+        filterString = `${filterString}==${this.quote(`*${valueString}*`)}`
         break;
       case Operators.DoesNotContain:
-        filterString += '!=' + this.quote(`*${valueString}*`);
+        filterString = `${filterString}!=${this.quote(`*${valueString}*`)}`
         break;
       case Operators.In:
-        filterString += '=in=(' + valueString + ')';
+        filterString = `${filterString}=in=(${valueString})`
         break;
       case Operators.NotIn:
-        filterString += '=out=(' + valueString + ')';
+        filterString = `${filterString}=out=(${valueString})`
         break;
       case Operators.IsEmpty:
-        filterString += '==' + '""';
+        filterString = `${filterString}==""`
         break;
       case Operators.IsNotEmpty:
-        filterString += '!=' + '""';
+        filterString = `${filterString}!=""`
         break;
       case Operators.IsNull:
-        filterString += '==null';
+        filterString = `${filterString}==null`
         break;
       case Operators.IsNotNull:
-        filterString += '!=null';
+        filterString = `${filterString}!=null`
         break;
     }
 
