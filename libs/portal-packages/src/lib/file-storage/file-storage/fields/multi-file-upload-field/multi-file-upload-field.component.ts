@@ -24,7 +24,7 @@ export class MultiFileUploadFieldComponent extends FieldBaseComponent<Field> imp
 
   ngOnInit() {
     super.ngOnInit();
-    const packagePath = this.router.url.split('/')[0];
+    const packagePath = this.router.url.split('/')[1];
     this.uploader = new FileUploader({ url: `${this.apiDomain.domain}/${packagePath}` });
   }
 
