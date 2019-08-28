@@ -4,6 +4,17 @@
 const gulp = require('gulp');
 const mergeJson = require('gulp-merge-json');
 const plumber = require('gulp-plumber');
+var replace = require('gulp-string-replace');
+
+gulp.task('update-ngsw-portal', function() {
+    gulp.src(["./dist/apps/web/web-portal/ngsw.json"])
+      .pipe(replace('https://cdn.skysmack.net/index.html', '/index.html'))
+      .pipe(replace('https://cdn.skysmack.net/ngsw-worker.js', '/ngsw-worker.js'))
+      .pipe(replace('https://cdn.skysmack.net/assets/icons/site.webmanifest', '/assets/icons/site.webmanifest'))
+      .pipe(replace('https://cdn.skysmack.net/assets/icons/browserconfig.xml', '/assets/icons/browserconfig.xml'))
+      .pipe(gulp.dest('./dist/apps/web/web-portal/'))
+  });
+
 
 // ============================
 // Localization reusable logic
@@ -13,7 +24,6 @@ const throwOnWrongPathsObject = (pathsObject) => {
         throw new Error('The paths object must define a project and lib property.')
     }
 }
-
 const runLocalization = (pathsObject, lang, jsonPrefixes, outputPath) => {
     throwOnWrongPathsObject(pathsObject);
 

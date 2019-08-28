@@ -9,7 +9,11 @@
           "/assets/icons/site.webmanifest",
           "/assets/icons/browserconfig.xml",          
           "/ngsw-worker.js",
-          "/index.html"
+          "/index.html",          
+          "/*.css",
+          "/*.js",
+          "/assets/**",
+          "/*.(eot|svg|cur|jpg|png|webp|gif|otf|ttf|woff|woff2|ani)"
         ],
         "urls": [
           "https://fonts.googleapis.com/**",
@@ -22,7 +26,7 @@
   "dataGroups": [
     {
       "name": "cdn",
-      "urls": ["https://cdn.skysmack.com/*"],
+      "urls": ["https://cdn.skysmack.net/*"],
       "cacheConfig": {
         "maxSize": "100",
         "maxAge": "90d",
