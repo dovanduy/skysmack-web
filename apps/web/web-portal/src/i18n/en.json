@@ -2468,7 +2468,9 @@
 			"BUTTON_VALIDATOR": "+ Add validator"
 		},
 		"PERMISSION": {
-			"SET_ACCESS": "Set access"
+			"SET_ACCESS": "Set access",
+			"WRITEPERMISSION": "Write permissions",
+			"READPERMISSION": "Read permissions"
 		},
 		"RECURRING_EXPRESSION": {
 			"TOGGLE": "Toggle repeat",

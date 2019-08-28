@@ -2468,7 +2468,8 @@
 			"BUTTON_VALIDATOR": "+ Tilføj validator"
 		},
 		"PERMISSION": {
-			"SET_ACCESS": "Sæt adgang"
+			"WRITEPERMISSION": "Skrive tilladelser",
+			"READPERMISSION": "Læse tilladelser"
 		},
 		"RECURRING_EXPRESSION": {
 			"TOGGLE": "Aktiver gentagelse",
