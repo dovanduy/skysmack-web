@@ -13,7 +13,7 @@ RUN npm i
 COPY . .
 RUN nps portal.build
 
-FROM nginx:alpine
+FROM fholzer/nginx-brotli AS base
 RUN rm -rf /usr/share/nginx/html/*
 COPY --from=builder /ss-app/dist/apps/web/web-portal /usr/share/nginx/html
 COPY /nginx.default.conf /etc/nginx/conf.d/default.conf

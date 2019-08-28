@@ -5,6 +5,8 @@ const gulp = require('gulp');
 const mergeJson = require('gulp-merge-json');
 const plumber = require('gulp-plumber');
 var replace = require('gulp-string-replace');
+var brotli = require('gulp-brotli');
+var gzip = require('gulp-gzip');
 
 gulp.task('update-ngsw-portal', function() {
     gulp.src(["./dist/apps/web/web-portal/ngsw.json"])
@@ -15,6 +17,18 @@ gulp.task('update-ngsw-portal', function() {
       .pipe(gulp.dest('./dist/apps/web/web-portal/'))
   });
 
+
+gulp.task('brotli-portal', function() {
+    return gulp.src(['./dist/apps/web/web-portal/**', '!./**/*.br', '!./**/*.gz'])
+    .pipe(brotli.compress())
+    .pipe(gulp.dest('./dist/apps/web/web-portal/'));
+});
+  
+gulp.task('zip-portal', function() {
+    return gulp.src(['./dist/apps/web/web-portal/**', '!./**/*.br', '!./**/*.gz'])
+    .pipe(gzip())
+    .pipe(gulp.dest('./dist/apps/web/web-portal/'));
+});
 
 // ============================
 // Localization reusable logic
