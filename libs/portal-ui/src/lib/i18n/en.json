@@ -45,12 +45,13 @@
             "BUTTON_VALIDATOR": "+ Add validator"
         },
         "PERMISSION": {
-            "SET_ACCESS": "Set access"
+            "WRITEPERMISSION": "Write permissions",
+            "READPERMISSION": "Read permissions"
         },
         "RECURRING_EXPRESSION": {
             "TOGGLE": "Toggle repeat",
             "EXPRESSION": "Expression"
-        }, 
+        },
         "ROLE_SELECT": {
             "SELECT_ROLES": "Select roles",
             "SELECT_ROLE": "Select role"
@@ -58,14 +59,14 @@
         "GEOGRAPHY": {
             "LONGTITUDE": "Longtitude",
             "LANGTITUDE": "Langtitude"
-        }, 
+        },
         "TIME": {
             "FREQUENCY": "Frequency",
             "ENTER_NUMBER": "Enter number",
             "HOURS": "Hours",
             "MINUTES": "Minutes",
             "SECONDS": "Seconds"
-        },         
+        },
         "ADVANCED": "Advanced",
         "SELECT_VALIDATOR": "Please select a validator"
     },

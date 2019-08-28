@@ -22,6 +22,7 @@ export class NgFieldsAccessPoliciesFieldProvider extends FieldProvider {
                     component: FieldPermissionFieldComponent,
                     value: entity ? entity.object.writePermission : undefined,
                     key: 'writePermission',
+                    placeholder: 'UI.PERMISSION.WRITEPERMISSION',
                     order: 5,
                 }),
 
@@ -29,6 +30,7 @@ export class NgFieldsAccessPoliciesFieldProvider extends FieldProvider {
                     component: FieldPermissionFieldComponent,
                     value: entity ? entity.object.readPermission : undefined,
                     key: 'readPermission',
+                    placeholder: 'UI.PERMISSION.READPERMISSION',
                     order: 6,
                 }),
             ]);
