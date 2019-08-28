@@ -8,28 +8,6 @@ var replace = require('gulp-string-replace');
 var brotli = require('gulp-brotli');
 var gzip = require('gulp-gzip');
 
-gulp.task('update-ngsw-portal', function() {
-    gulp.src(["./dist/apps/web/web-portal/ngsw.json"])
-      .pipe(replace('https://cdn.skysmack.net/index.html', '/index.html'))
-      .pipe(replace('https://cdn.skysmack.net/ngsw-worker.js', '/ngsw-worker.js'))
-      .pipe(replace('https://cdn.skysmack.net/assets/icons/site.webmanifest', '/assets/icons/site.webmanifest'))
-      .pipe(replace('https://cdn.skysmack.net/assets/icons/browserconfig.xml', '/assets/icons/browserconfig.xml'))
-      .pipe(gulp.dest('./dist/apps/web/web-portal/'))
-  });
-
-
-gulp.task('brotli-portal', function() {
-    return gulp.src(['./dist/apps/web/web-portal/**', '!./**/*.br', '!./**/*.gz'])
-    .pipe(brotli.compress())
-    .pipe(gulp.dest('./dist/apps/web/web-portal/'));
-});
-  
-gulp.task('zip-portal', function() {
-    return gulp.src(['./dist/apps/web/web-portal/**', '!./**/*.br', '!./**/*.gz'])
-    .pipe(gzip())
-    .pipe(gulp.dest('./dist/apps/web/web-portal/'));
-});
-
 // ============================
 // Localization reusable logic
 // ============================
@@ -96,7 +74,7 @@ const webCommercialPaths = {
 const webCommercialLocalizationOutputPath = `${webCommercialPaths.project}/src/i18n`;
 
 // =================
-// Define gulp tasks
+// Localization tasks
 // =================
 const webLocalizationWatch = (done) => {
     gulp.watch(getLocalizationWatchersArray(webPaths), webLocalization)(done);
@@ -117,6 +95,36 @@ const webCommercialLocalization = (done) => {
     done();
 };
 
+// =================
+// Build tasks
+// =================
+const updateNgswPortal = (done) => {
+    gulp.src(["./dist/apps/web/web-portal/ngsw.json"])
+        .pipe(replace('https://cdn.skysmack.net/index.html', '/index.html'))
+        .pipe(replace('https://cdn.skysmack.net/ngsw-worker.js', '/ngsw-worker.js'))
+        .pipe(replace('https://cdn.skysmack.net/assets/icons/site.webmanifest', '/assets/icons/site.webmanifest'))
+        .pipe(replace('https://cdn.skysmack.net/assets/icons/browserconfig.xml', '/assets/icons/browserconfig.xml'))
+        .pipe(gulp.dest('./dist/apps/web/web-portal/'));
+    done();
+};
+
+const brotliPortal = (done) => {
+    gulp.src(['./dist/apps/web/web-portal/**', '!./**/*.br', '!./**/*.gz'])
+        .pipe(brotli.compress())
+        .pipe(gulp.dest('./dist/apps/web/web-portal/'));
+    done();
+};
+
+const zipPortal = (done) => {
+    gulp.src(['./dist/apps/web/web-portal/**', '!./**/*.br', '!./**/*.gz'])
+        .pipe(gzip())
+        .pipe(gulp.dest('./dist/apps/web/web-portal/'));
+    done();
+};
+
+// =================
+// Defaukt task
+// =================
 const defaultTask = (done) => {
     webLocalization(done);
     webCommercialLocalization(done);
@@ -129,4 +137,10 @@ const defaultTask = (done) => {
 gulp.task('webLocalizationWatch', webLocalizationWatch);
 gulp.task('webCommercialLocalization', webCommercialLocalization);
 gulp.task('webLocalization', webLocalization);
+
+gulp.task('update-ngsw-portal', updateNgswPortal);
+gulp.task('brotli-portal', brotliPortal);
+gulp.task('zip-portal', zipPortal);
+
+
 gulp.task('default', defaultTask);
