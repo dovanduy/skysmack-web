@@ -14,12 +14,14 @@ import { NgFileStorageDashboardProvider } from './ng-file-storage-dashboard-prov
 import { NgFileStorageMenuProvider } from './ng-file-storage-menu-provider';
 import { fieldcomponents } from './file-storage/fields/field-components';
 import { ReactiveFormsModule } from '@angular/forms';
+import { FileUploadModule } from 'ng2-file-upload';
 
 @NgModule({
   imports: [
     CommonModule,
     ReactiveFormsModule,
     HttpClientModule,
+    FileUploadModule,
     PortalUiModule,
     NgFileStorageModule,
     DynamicFormsModule,

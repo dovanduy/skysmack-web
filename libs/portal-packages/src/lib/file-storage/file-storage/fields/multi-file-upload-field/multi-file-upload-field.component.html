@@ -1,6 +1,73 @@
 <ng-container *ngIf="field" [formGroup]="fh.form">
 
-  <input (change)="inputChanged($event)" type="file" [name]="field.label" [placeholder]="field.placeholder | translate">
+  <!-- demo:begin - taken from https://valor-software.com/ng2-file-upload/ note: they use bootstrap for design, but bootstrap related stuff is removed here -->
+  <div class="container">
+    <h3>Select files</h3>
+
+    <div ng2FileDrop [ngClass]="{'nv-file-over': hasBaseDropZoneOver}" (fileOver)="fileOverBase($event)"
+      [uploader]="uploader" class="well my-drop-zone">
+      Base drop zone
+    </div>
+
+    Multiple
+    <input type="file" ng2FileSelect [uploader]="uploader" multiple /><br />
+
+    <h3>Upload queue</h3>
+    <p>Queue length: {{ uploader?.queue?.length }}</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th width="50%">Name</th>
+          <th>Size</th>
+          <th>Progress</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of uploader.queue">
+          <td><strong>{{ item?.file?.name }}</strong></td>
+          <td *ngIf="uploader.isHTML5" nowrap>{{ item?.file?.size/1024/1024 | number:'.2' }} MB</td>
+          <td *ngIf="uploader.isHTML5">
+            <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': item.progress + '%' }"></div>
+          </td>
+          <td>
+            <span *ngIf="item.isSuccess"><i></i></span>
+            <span *ngIf="item.isCancel"><i></i></span>
+            <span *ngIf="item.isError"><i></i></span>
+          </td>
+          <td nowrap>
+            <button type="button" (click)="item.upload()"
+              [disabled]="item.isReady || item.isUploading || item.isSuccess">
+              Upload
+            </button>
+            <button type="button" (click)="item.cancel()" [disabled]="!item.isUploading">
+              Cancel
+            </button>
+            <button type="button" (click)="item.remove()">
+              Remove
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    Queue progress:
+    <div class="progress">
+      <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': uploader.progress + '%' }"></div>
+    </div>
+    <button type="button" (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length">
+      Upload all
+    </button>
+    <button type="button" (click)="uploader.cancelAll()" [disabled]="!uploader.isUploading">
+      Cancel all
+    </button>
+    <button type="button" (click)="uploader.clearQueue()" [disabled]="!uploader.queue.length">
+      Remove all
+    </button>
+  </div>
+  <!-- demo: end -->
 
   <!-- Frontend errors -->
   <ng-container *ngIf="fh.formErrors[fieldKey]">
