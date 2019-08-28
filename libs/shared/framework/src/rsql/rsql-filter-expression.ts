@@ -76,9 +76,11 @@ export class RSQLFilterExpression {
         dateString = `0${dateString}`;
       }
 
-      valueString = [yearString, monthString, dateString].join('-');
+      // TODO: Remove T:00 etc. part when the backend can recieve pure dates (e.g. dates without the time part).
+      valueString = [yearString, monthString, dateString].join('-') + 'T00:00:00';
       shouldQuote = true;
     }
+
     if (this.value === null) {
       valueString = 'null';
     }
