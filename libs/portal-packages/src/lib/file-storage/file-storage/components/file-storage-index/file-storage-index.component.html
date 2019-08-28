@@ -1,9 +1,9 @@
 <ss-container (menuItemActionEvent)="actionEvent($event)" [componentKey]="componentKey"
     *ngIf="loadedPackage$ | async as loadedPackage">
-    <ss-file-storage-installation *ngIf="!(settings$ | async)"></ss-file-storage-installation>
+    <ss-file-storage-installation *ngIf="!(bucket$ | async)"></ss-file-storage-installation>
 
     <!-- Settings has been set. Show files -->
-    <ng-container *ngIf="(settings$ | async)">
+    <ng-container *ngIf="(bucket$ | async)">
         <mat-list>
             <h3 mat-subheader>Folders</h3>
             <mat-list-item *ngFor="let folder of folders">

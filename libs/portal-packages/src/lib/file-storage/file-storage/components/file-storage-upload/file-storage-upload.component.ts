@@ -6,7 +6,7 @@ import { FileStorageAppState } from '@skysmack/packages-file-storage';
 import { BaseComponent } from '@skysmack/portal-fields';
 import { FormHelper, Field } from '@skysmack/ng-dynamic-forms';
 import { Observable } from 'rxjs';
-import { map, switchMap } from 'rxjs/operators';
+import { switchMap } from 'rxjs/operators';
 import { NgFileStorageUploadFieldsConfig } from '../../../ng-file-storage-upload-fields-config';
 
 @Component({
@@ -37,7 +37,7 @@ export class FileStorageUploadComponent extends BaseComponent<FileStorageAppStat
 
   public onCreateSubmit(fh: FormHelper) {
     fh.formValid(() => {
-      this.actions.updateSettings(this.packagePath, fh.form.value);
+      this.actions.updateBucket(this.packagePath, fh.form.value);
     });
   }
 }

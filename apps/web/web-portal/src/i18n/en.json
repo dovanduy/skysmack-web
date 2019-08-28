@@ -3275,7 +3275,8 @@
 			"ITEM": "Item",
 			"MANAGE": "Manage",
 			"ACTIONS": "Actions",
-			"UPDLOAD": "Upload"
+			"UPDLOAD": "Upload",
+			"UPLOAD": "Upload"
 		},
 		"NOTIFICATIONS": {
 			"GET": {

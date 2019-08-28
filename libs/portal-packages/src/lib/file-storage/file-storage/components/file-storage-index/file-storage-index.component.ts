@@ -3,7 +3,7 @@ import { MenuItemActionProviders } from '@skysmack/portal-ui';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { NgFileStorageStore, NgFileStorageActions } from '@skysmack/ng-file-storage';
-import { FileStorageAppState, FILE_STORAGE_AREA_KEY } from '@skysmack/packages-file-storage';
+import { FileStorageAppState, FILE_STORAGE_AREA_KEY, Bucket } from '@skysmack/packages-file-storage';
 import { MenuItem } from '@skysmack/framework';
 import { BaseComponent } from '@skysmack/portal-fields';
 import { Observable } from 'rxjs';
@@ -20,7 +20,7 @@ export class FileStorageIndexComponent extends BaseComponent<FileStorageAppState
   public menuItemActions: MenuItem[] = [];
 
 
-  public settings$: Observable<any>;
+  public bucket$: Observable<string>;
 
   // Temp mock data
   public folders: any[] = [
@@ -61,7 +61,7 @@ export class FileStorageIndexComponent extends BaseComponent<FileStorageAppState
 
   ngOnInit() {
     super.ngOnInit();
-    // this.actions.getSettings(this.packagePath);
-    this.settings$ = this.store.getSettings(this.packagePath);
+    this.actions.getBucket(this.packagePath);
+    this.bucket$ = this.store.getBucket(this.packagePath);
   }
 }

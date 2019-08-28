@@ -5,9 +5,9 @@ import { Epic, ActionsObservable, ofType } from 'redux-observable';
 import { ReduxAction } from '@skysmack/redux';
 import { Observable } from 'rxjs';
 import { HttpErrorResponse } from '@skysmack/framework';
-import { FILE_STORAGE_REDUX_KEY } from 'libs/packages/file-storage/src';
 import { NgFileStorageActions } from './ng-file-storage-actions';
 import { mergeMap } from 'rxjs/operators';
+import { FILE_STORAGE_REDUX_KEY } from '@skysmack/packages-file-storage';
 
 
 @Injectable({ providedIn: 'root' })
@@ -16,22 +16,22 @@ export class NgFileStorageEpics {
 
     constructor(protected requests: NgFileStorageRequests, protected notifications: NgFileStorageNotifications) {
         this.epics = [
-            this.getSettingsEpic,
-            this.updateSettingsEpic
+            this.getBucketsEpic,
+            this.updateBucketsEpic
         ];
     }
 
-    public getSettingsEpic = (action$: ActionsObservable<ReduxAction<any>>): Observable<ReduxAction<any> | ReduxAction<HttpErrorResponse>> => {
+    public getBucketsEpic = (action$: ActionsObservable<ReduxAction<any>>): Observable<ReduxAction<any> | ReduxAction<HttpErrorResponse>> => {
         return action$.pipe(
-            ofType(FILE_STORAGE_REDUX_KEY + NgFileStorageActions.GET_SETTINGS),
-            mergeMap(action => this.requests.getSettings(action))
+            ofType(FILE_STORAGE_REDUX_KEY + NgFileStorageActions.GET_BUCKET),
+            mergeMap(action => this.requests.getBuckets(action))
         );
     }
 
-    public updateSettingsEpic = (action$: ActionsObservable<ReduxAction<any>>): Observable<ReduxAction<any> | ReduxAction<HttpErrorResponse>> => {
+    public updateBucketsEpic = (action$: ActionsObservable<ReduxAction<any>>): Observable<ReduxAction<any> | ReduxAction<HttpErrorResponse>> => {
         return action$.pipe(
-            ofType(FILE_STORAGE_REDUX_KEY + NgFileStorageActions.UPDATE_SETTINGS),
-            mergeMap(action => this.requests.updateSettings(action))
+            ofType(FILE_STORAGE_REDUX_KEY + NgFileStorageActions.UPDATE_BUCKET),
+            mergeMap(action => this.requests.updateBuckets(action))
         );
     }
 }

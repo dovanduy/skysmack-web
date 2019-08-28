@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { NgFileStorageStore, NgFileStorageActions } from '@skysmack/ng-file-storage';
-import { FileStorageAppState } from '@skysmack/packages-file-storage';
+import { FileStorageAppState, Bucket } from '@skysmack/packages-file-storage';
 import { BaseComponent } from '@skysmack/portal-fields';
 import { FormHelper, Field } from '@skysmack/ng-dynamic-forms';
 import { NgFileStorageFieldsConfig } from '../../../ng-file-storage-fields-config';
@@ -37,7 +37,7 @@ export class FileStorageInstallationComponent extends BaseComponent<FileStorageA
 
   public onCreateSubmit(fh: FormHelper) {
     fh.formValid(() => {
-      this.actions.updateSettings(this.packagePath, fh.form.value);
+      this.actions.updateBucket(this.packagePath, new Bucket(fh.form.value));
     });
   }
 }

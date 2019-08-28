@@ -4,26 +4,26 @@ import { FileStorageAppState } from './file-storage-reducer';
 import { FILE_STORAGE_REDUX_KEY } from '../../constants/constants';
 
 export class FileStorageActions {
-    public static GET_SETTINGS = 'GET_SETTINGS';
-    public static GET_SETTINGS_SUCCESS = 'GET_SETTINGS_SUCCESS';
-    public static GET_SETTINGS_FAILURE = 'GET_SETTINGS_FAILURE';
+    public static GET_BUCKET = 'GET_BUCKET';
+    public static GET_BUCKET_SUCCESS = 'GET_BUCKET_SUCCESS';
+    public static GET_BUCKET_FAILURE = 'GET_BUCKET_FAILURE';
 
-    public static UPDATE_SETTINGS = 'UPDATE_SETTINGS';
-    public static UPDATE_SETTINGS_SUCCESS = 'UPDATE_SETTINGS_SUCCESS';
-    public static UPDATE_SETTINGS_FAILURE = 'UPDATE_SETTINGS_FAILURE';
+    public static UPDATE_BUCKET = 'UPDATE_BUCKET';
+    public static UPDATE_BUCKET_SUCCESS = 'UPDATE_BUCKET_SUCCESS';
+    public static UPDATE_BUCKET_FAILURE = 'UPDATE_BUCKET_FAILURE';
 
     constructor(protected store: NgRedux<FileStorageAppState>) { }
 
-    public getSettings = (packagePath: string) => {
+    public getBucket = (packagePath: string) => {
         this.store.dispatch(Object.assign({}, new ReduxAction<any>({
-            type: FILE_STORAGE_REDUX_KEY + FileStorageActions.GET_SETTINGS,
+            type: FILE_STORAGE_REDUX_KEY + FileStorageActions.GET_BUCKET,
             payload: { packagePath }
         })));
     }
 
-    public updateSettings = (packagePath: string, settings: any) => {
+    public updateBucket = (packagePath: string, settings: any) => {
         this.store.dispatch(Object.assign({}, new ReduxAction<any>({
-            type: FILE_STORAGE_REDUX_KEY + FileStorageActions.UPDATE_SETTINGS,
+            type: FILE_STORAGE_REDUX_KEY + FileStorageActions.UPDATE_BUCKET,
             payload: { packagePath, settings }
         })));
     }

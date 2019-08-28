@@ -12,9 +12,9 @@ export class NgFileStorageStore {
         protected skysmackStore: NgSkysmackStore
     ) { }
 
-    public getSettings(packagePath: string): Observable<any> {
+    public getBucket(packagePath: string): Observable<string> {
         return this.getState().pipe(
-            map(state => state.settings[packagePath]),
+            map(state => state.buckets[packagePath].bucket)
         );
     }
 
