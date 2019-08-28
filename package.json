@@ -4,7 +4,8 @@
   "license": "MIT",
   "scripts": {
     "start:portal": "nps portal",
-    "start:commercial": "nps commercial"
+    "start:commercial": "nps commercial",
+    "ngsw-config": "ngsw-config dist/apps/web/web-portal apps/web/web-portal/src/ngsw-config.json https://cdn.skysmack.net && gulp update-ngsw-portal"
   },
   "private": true,
   "dependencies": {
@@ -58,6 +59,7 @@
     "gulp-cli": "2.2.0",
     "gulp-merge-json": "1.3.1",
     "gulp-plumber": "1.2.1",
+    "gulp-string-replace": "1.1.2",
     "ng-packagr": "5.5.0",
     "normalize-scss": "7.0.1",
     "prettier": "1.18.2",
