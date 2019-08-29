@@ -6,6 +6,7 @@ import { CommercialAccountForgotPasswordComponent } from './commercial-account-f
 import { CommercialAccountLoginWrapperComponent } from './commercial-account-login-wrapper/commercial-account-login-wrapper.component';
 import { CommercialUiPartnersWrapperComponent } from '@skysmack/commercial-ui-partners';
 import { CommercialAccountConfirmEmailComponent } from './commercial-account-confirm-email/commercial-account-confirm-email.component';
+import { CommercialAccountResetPasswordComponent } from './commercial-account-reset-password/commercial-account-reset-password.component';
 
 export const commercialAccountRoutes: Routes = [
   {
@@ -29,6 +30,9 @@ export const commercialAccountRoutes: Routes = [
       },
       {
         path: 'confirm-email', component: CommercialAccountConfirmEmailComponent
+      },
+      {
+        path: 'reset-password', component: CommercialAccountResetPasswordComponent
       }
     ]
   }
@@ -40,5 +44,6 @@ export const commercialAccountComponents: any[] = [
   CommercialAccountLoginComponent,
   CommercialAccountChangePasswordComponent,
   CommercialAccountForgotPasswordComponent,
-  CommercialAccountConfirmEmailComponent
+  CommercialAccountConfirmEmailComponent,
+  CommercialAccountResetPasswordComponent
 ];
