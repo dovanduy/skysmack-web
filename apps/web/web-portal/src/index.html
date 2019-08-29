@@ -5,13 +5,12 @@
   <meta charset="utf-8">
   <title>Skysmack loading</title>
   <base href="/">
-
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  
   <style>
     body {
       background-color: #fafafa;
     }
+
     .loading-screen {
       color: #2c89a0;
       position: absolute;
@@ -24,26 +23,28 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      font-family: "Muli","Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,"Lucida Grande","sans-serif";
+      font-family: "Muli", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", "sans-serif";
       font-size: 2rem;
       letter-spacing: 2px;
       text-align: center;
       margin: 0 .5rem;
     }
-    .loading-screen > .description {
+
+    .loading-screen>.description {
       font-size: 1rem;
       opacity: .75;
     }
+
     .loading-text {
       animation: fadeIn 1s infinite alternate;
     }
-    @keyframes fadeIn { 
-      from { opacity: 0; } 
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
     }
   </style>
-  <link href="https://fonts.googleapis.com/css?family=Muli:300,400,600" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <script src="https://ajax.googleapis.com/ajax/libs/hammerjs/2.0.8/hammer.min.js"></script>
   <link rel="apple-touch-icon" sizes="180x180" href="//cdn.skysmack.net/assets/icons/apple-touch-icon.png?v=Kmnj8bBO5w">
   <link rel="icon" type="image/png" sizes="32x32" href="//cdn.skysmack.net/assets/icons/favicon-32x32.png?v=Kmnj8bBO5w">
   <link rel="icon" type="image/png" sizes="16x16" href="//cdn.skysmack.net/assets/icons/favicon-16x16.png?v=Kmnj8bBO5w">
@@ -65,6 +66,15 @@
     </div>
   </skysmack-app>
   <noscript>Please enable JavaScript to continue using this application.</noscript>
+  <script src="https://ajax.googleapis.com/ajax/libs/hammerjs/2.0.8/hammer.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+  <script>
+    WebFont.load({
+      google: {
+        families: ['Material Icons', 'Muli:300,400,600']
+      }
+    });
+  </script>
 </body>
 
 </html>
