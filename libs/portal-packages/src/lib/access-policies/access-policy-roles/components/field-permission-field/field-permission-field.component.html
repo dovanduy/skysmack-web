@@ -1,9 +1,9 @@
 <ng-container *ngIf="field">
-  <h4>{{ field.placeholder | translate }}</h4>
+  <h3>{{ field.placeholder | translate }}</h3>
 
   <!-- ACCESS -->
   <mat-form-field>
-    <mat-select [placeholder]="'UI.PERMISSION.SET_ACCESS' | translate" [(value)]="selectedAccessType">
+    <mat-select [placeholder]="field.placeholder | translate" [(value)]="selectedAccessType">
       <mat-option *ngFor="let opt of accessTypes" [value]="opt.value">{{opt.displayName}}</mat-option>
     </mat-select>
   </mat-form-field>

@@ -16,8 +16,8 @@ import { NgLodgingReservationsStore, NgLodgingReservationsActions } from '@skysm
   templateUrl: './lodgings-arrivals.component.html'
 })
 export class LodgingsArrivalsComponent extends LodgingsReservationsIndexComponent implements OnInit {
-public titleExtras = true;
-public titleExtrasTranslationPostFix = '.ARRIVALS.TITLE_EXTRAS';
+  public titleExtras = true;
+  public titleExtrasTranslationPostFix = '.ARRIVALS.TITLE_EXTRAS';
 
   constructor(
     public router: Router,

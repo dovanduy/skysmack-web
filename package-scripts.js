@@ -18,7 +18,12 @@ module.exports = {
       analyze: 'ng build --prod --stats-json && webpack-bundle-analyzer ./dist/apps/web/web-portal/stats.json',
 
       // Builds a deployable version.
-      build: 'gulp webLocalization && ng build --prod --deploy-url //cdn.skysmack.net/'
+      build: 'gulp webLocalization && ng build --prod --deploy-url //cdn.skysmack.net/ && nps portal.support.ngswConfig && nps portal.support.webcompressPortal',
+
+      support: {
+        ngswConfig: "ngsw-config dist/apps/web/web-portal apps/web/web-portal/src/ngsw-config.json https://cdn.skysmack.net && gulp update-ngsw-portal",
+        webcompressPortal: "gulp brotli-portal && gulp zip-portal"
+      }
     },
     commercial: {
       // Run local dev server
@@ -31,9 +36,15 @@ module.exports = {
       analyze: 'ng build --prod web-commercial --stats-json && webpack-bundle-analyzer ./dist/apps/web/web-commercial/stats.json',
 
       // Builds a deployable version.
-      build: 'gulp webCommercialLocalization && ng build web-commercial --prod --deploy-url //skysmack.com/'
+      build: 'gulp webCommercialLocalization && ng build web-commercial --prod --deploy-url //skysmack.com/ && nps commercial.support.webcompressCommercial',
+
+      support: {
+        webcompressCommercial: "gulp brotli-commercial && gulp zip-commercial"
+      }
     },
     nrwl: {
+      // Default runs update for easier command line. May need to be changed if more commands are added.
+      default: 'nps nrwl.update',
       update: 'ng update @nrwl/workspace'
     },
     libs: {

@@ -24,7 +24,8 @@
               "libs/shared/framework/tsconfig.spec.json"
             ],
             "exclude": [
-              "**/node_modules/**"
+              "**/node_modules/**",
+              "!libs/shared/framework/**"
             ]
           }
         },
@@ -63,7 +64,8 @@
               "libs/shared/redux/tsconfig.spec.json"
             ],
             "exclude": [
-              "**/node_modules/**"
+              "**/node_modules/**",
+              "!libs/shared/redux/**"
             ]
           }
         },
@@ -95,7 +97,8 @@
               "libs/packages/skysmack-core/tsconfig.spec.json"
             ],
             "exclude": [
-              "**/node_modules/**"
+              "**/node_modules/**",
+              "!libs/packages/skysmack-core/**"
             ]
           }
         },
@@ -127,7 +130,8 @@
               "libs/packages/packages-identities/tsconfig.spec.json"
             ],
             "exclude": [
-              "**/node_modules/**"
+              "**/node_modules/**",
+              "!libs/packages/packages-identities/**"
             ]
           }
         },
@@ -159,7 +163,8 @@
               "libs/packages/packages-invoices/tsconfig.spec.json"
             ],
             "exclude": [
-              "**/node_modules/**"
+              "**/node_modules/**",
+              "!libs/packages/packages-invoices/**"
             ]
           }
         },
@@ -191,7 +196,8 @@
               "libs/packages/packages-lodging-reservations/tsconfig.spec.json"
             ],
             "exclude": [
-              "**/node_modules/**"
+              "**/node_modules/**",
+              "!libs/packages/packages-lodging-reservations/**"
             ]
           }
         },
@@ -223,7 +229,8 @@
               "libs/packages/packages-lodgings/tsconfig.spec.json"
             ],
             "exclude": [
-              "**/node_modules/**"
+              "**/node_modules/**",
+              "!libs/packages/packages-lodgings/**"
             ]
           }
         },
@@ -255,7 +262,8 @@
               "libs/packages/packages-maintenance/tsconfig.spec.json"
             ],
             "exclude": [
-              "**/node_modules/**"
+              "**/node_modules/**",
+              "!libs/packages/packages-maintenance/**"
             ]
           }
         },
@@ -287,7 +295,8 @@
               "libs/packages/packages-oauth2/tsconfig.spec.json"
             ],
             "exclude": [
-              "**/node_modules/**"
+              "**/node_modules/**",
+              "!libs/packages/packages-oauth2/**"
             ]
           }
         },
@@ -319,7 +328,8 @@
               "libs/packages/packages-persons/tsconfig.spec.json"
             ],
             "exclude": [
-              "**/node_modules/**"
+              "**/node_modules/**",
+              "!libs/packages/packages-persons/**"
             ]
           }
         },
@@ -383,7 +393,8 @@
               "libs/packages/packages-persons-lodging-reservations/tsconfig.spec.json"
             ],
             "exclude": [
-              "**/node_modules/**"
+              "**/node_modules/**",
+              "!libs/packages/packages-persons-lodging-reservations/**"
             ]
           }
         },
@@ -415,7 +426,8 @@
               "libs/packages/packages-products/tsconfig.spec.json"
             ],
             "exclude": [
-              "**/node_modules/**"
+              "**/node_modules/**",
+              "!libs/packages/packages-products/**"
             ]
           }
         },
@@ -447,7 +459,8 @@
               "libs/packages/packages-products-pricings/tsconfig.spec.json"
             ],
             "exclude": [
-              "**/node_modules/**"
+              "**/node_modules/**",
+              "!libs/packages/packages-products-pricings/**"
             ]
           }
         },
@@ -479,7 +492,8 @@
               "libs/packages/packages-terminal-payments/tsconfig.spec.json"
             ],
             "exclude": [
-              "**/node_modules/**"
+              "**/node_modules/**",
+              "!libs/packages/packages-terminal-payments/**"
             ]
           }
         },
@@ -511,7 +525,8 @@
               "libs/packages/packages-reservations-pricings/tsconfig.spec.json"
             ],
             "exclude": [
-              "**/node_modules/**"
+              "**/node_modules/**",
+              "!libs/packages/packages-reservations-pricings/**"
             ]
           }
         },
@@ -543,7 +558,8 @@
               "libs/ng-framework/tsconfig.spec.json"
             ],
             "exclude": [
-              "**/node_modules/**"
+              "**/node_modules/**",
+              "!libs/ng-framework/**"
             ]
           }
         },
@@ -576,7 +592,8 @@
               "libs/portal-packages/tsconfig.spec.json"
             ],
             "exclude": [
-              "**/node_modules/**"
+              "**/node_modules/**",
+              "!libs/portal-packages/**"
             ]
           }
         },
@@ -609,7 +626,8 @@
               "libs/portal-ui/tsconfig.spec.json"
             ],
             "exclude": [
-              "**/node_modules/**"
+              "**/node_modules/**",
+              "!libs/portal-ui/**"
             ]
           }
         },
@@ -719,7 +737,8 @@
               "apps/web/web-portal/tsconfig.spec.json"
             ],
             "exclude": [
-              "**/node_modules/**"
+              "**/node_modules/**",
+              "!apps/web/web-portal/**"
             ]
           }
         },
@@ -747,7 +766,8 @@
               "libs/shared/pricings/tsconfig.spec.json"
             ],
             "exclude": [
-              "**/node_modules/**"
+              "**/node_modules/**",
+              "!libs/shared/pricings/**"
             ]
           }
         },
@@ -779,7 +799,8 @@
               "libs/packages/invoices-cash-payments/tsconfig.spec.json"
             ],
             "exclude": [
-              "**/node_modules/**"
+              "**/node_modules/**",
+              "!libs/packages/invoices-cash-payments/**"
             ]
           }
         },
@@ -811,7 +832,8 @@
               "libs/packages/emails/tsconfig.spec.json"
             ],
             "exclude": [
-              "**/node_modules/**"
+              "**/node_modules/**",
+              "!libs/packages/emails/**"
             ]
           }
         },
@@ -843,7 +865,8 @@
               "libs/packages/emails-smtp/tsconfig.spec.json"
             ],
             "exclude": [
-              "**/node_modules/**"
+              "**/node_modules/**",
+              "!libs/packages/emails-smtp/**"
             ]
           }
         },
@@ -876,7 +899,8 @@
               "libs/shared/signal-r/tsconfig.spec.json"
             ],
             "exclude": [
-              "**/node_modules/**"
+              "**/node_modules/**",
+              "!libs/shared/signal-r/**"
             ]
           }
         },
@@ -908,7 +932,8 @@
               "libs/packages/invoices-products/tsconfig.spec.json"
             ],
             "exclude": [
-              "**/node_modules/**"
+              "**/node_modules/**",
+              "!libs/packages/invoices-products/**"
             ]
           }
         },
