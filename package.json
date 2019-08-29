@@ -27,7 +27,7 @@
     "@angular/pwa": "0.803.1",
     "@angular/service-worker": "8.2.4",
     "@aspnet/signalr": "1.1.4",
-    "@kolkov/angular-editor": "0.18.4",
+    "@kolkov/angular-editor": "1.0.0-beta.1",
     "@ngx-translate/core": "11.0.1",
     "@redux-offline/redux-offline": "2.5.2",
     "angular-calendar": "0.27.18",
