@@ -31,7 +31,7 @@
       "cacheConfig": {
         "maxSize": "100",
         "maxAge": "90d",
-        "timeout": "50u",
+        "timeout": "10s",
         "strategy": "performance"
       }
     },
@@ -40,7 +40,7 @@
       "urls": ["https://api.skysmack.com/*"],
       "cacheConfig": {
         "maxAge": "1d",
-        "timeout": "500u",
+        "timeout": "10s",
         "strategy": "freshness"
       }
     }
