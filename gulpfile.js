@@ -59,7 +59,7 @@ const getLocalizationWatchersArray = (pathsObject) => {
 }
 
 // ============================
-// Localization for Web project
+// Localization for web projects
 // ============================
 const webPaths = {
     project: './apps/web/web-portal',
@@ -122,8 +122,8 @@ const brotliPortal = (done) => {
 
 const zipPortal = (done) => {
     gulp.src(['./dist/apps/web/web-portal/**', '!./**/*.br', '!./**/*.gz'])
-        .pipe(gzip({ 
-            skipGrowingFiles : true,
+        .pipe(gzip({
+            skipGrowingFiles: true,
             level: 9
         }))
         .pipe(gulp.dest('./dist/apps/web/web-portal/'));
@@ -144,8 +144,8 @@ const brotliCommercial = (done) => {
 
 const zipCommercial = (done) => {
     gulp.src(['./dist/apps/web/web-commercial/**', '!./**/*.br', '!./**/*.gz'])
-        .pipe(gzip({ 
-            skipGrowingFiles : true ,
+        .pipe(gzip({
+            skipGrowingFiles: true,
             level: 9
         }))
         .pipe(gulp.dest('./dist/apps/web/web-commercial/'));
@@ -153,7 +153,7 @@ const zipCommercial = (done) => {
 };
 
 // =================
-// Defaukt task
+// Default task
 // =================
 const defaultTask = (done) => {
     webLocalization(done);
