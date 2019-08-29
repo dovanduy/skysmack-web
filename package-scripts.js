@@ -37,7 +37,7 @@ module.exports = {
 
       // Builds a deployable version.
       build: 'gulp webCommercialLocalization && ng build web-commercial --prod --deploy-url //skysmack.com/ && nps commercial.support.webcompressCommercial',
-      
+
       support: {
         webcompressCommercial: "gulp brotli-commercial && gulp zip-commercial"
       }
