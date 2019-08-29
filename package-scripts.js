@@ -43,6 +43,8 @@ module.exports = {
       }
     },
     nrwl: {
+      // Default runs update for easier command line. May need to be changed if more commands are added.
+      default: 'nps nrwl.update',
       update: 'ng update @nrwl/workspace'
     },
     libs: {
