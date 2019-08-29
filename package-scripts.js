@@ -15,7 +15,7 @@ module.exports = {
       prod: 'ng build --prod --sourceMap=true && http-server ./dist/apps/web/web-portal -a www.skysmack.test -p 4000 -o',
 
       // Shows a visual analysis of compiled production code.
-      analyze: 'ng build --prod --stats-json && webpack-bundle-analyzer ./dist/apps/web/web-portal/stats.json',
+      analyze: 'ng build --prod --stats-json && webpack-bundle-analyzer --port 4201 ./dist/apps/web/web-portal/stats.json',
 
       // Builds a deployable version.
       build: 'gulp webLocalization && ng build --prod --deploy-url //cdn.skysmack.net/ && nps portal.support.ngswConfig && nps portal.support.webcompressPortal',
@@ -33,7 +33,7 @@ module.exports = {
       prod: 'ng build web-commercial  --prod --sourceMap=true && http-server ./dist/apps/web/web-commercial -a www.skysmack.com -p 4000 -o',
 
       // Shows a visual analysis of compiled production code.
-      analyze: 'ng build --prod web-commercial --stats-json && webpack-bundle-analyzer ./dist/apps/web/web-commercial/stats.json',
+      analyze: 'ng build --prod web-commercial --stats-json && webpack-bundle-analyzer --port 4202 ./dist/apps/web/web-commercial/stats.json',
 
       // Builds a deployable version.
       build: 'gulp webCommercialLocalization && ng build web-commercial --prod --deploy-url //skysmack.com/ && nps commercial.support.webcompressCommercial',
