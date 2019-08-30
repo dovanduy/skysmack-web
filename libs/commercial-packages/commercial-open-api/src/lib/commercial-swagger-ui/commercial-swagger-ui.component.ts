@@ -23,7 +23,7 @@ export class CommercialSwaggerUiComponent implements AfterViewInit {
     this.authenticationStore.getCurrentUser().pipe(
       map(currentUser => {
         const ui = SwaggerUI({
-          url: this.apiDomain.domain + '/swagger/v1/swagger.json',
+          url: this.apiDomain.domain + '/openapi/v1',
           domNode: this.el.nativeElement.querySelector('.swagger-container'),
           deepLinking: false,
           docExpansion: 'none',
