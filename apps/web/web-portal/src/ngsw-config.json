@@ -45,15 +45,6 @@
         "maxAge": "90d",
         "strategy": "performance"
       }
-    },
-    {
-      "name": "api",
-      "urls": ["https://*.skysmack.io/*"],
-      "cacheConfig": {
-        "maxSize": "1000",
-        "maxAge": "1d",
-        "strategy": "freshness"
-      }
     }
   ]
 }

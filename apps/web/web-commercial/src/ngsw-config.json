@@ -50,7 +50,7 @@
       "name": "api",
       "urls": ["https://api.skysmack.com/*"],
       "cacheConfig": {
-        "maxAge": "1h",
+        "maxAge": "10s",
         "strategy": "freshness"
       }
     }
