@@ -15,6 +15,11 @@ import { NgFileStorageMenuProvider } from './ng-file-storage-menu-provider';
 import { fieldcomponents } from './file-storage/fields/field-components';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FileUploadModule } from 'ng2-file-upload';
+import { MatListModule } from '@angular/material/list';
+
+const material = [
+  MatListModule
+];
 
 @NgModule({
   imports: [
@@ -26,7 +31,8 @@ import { FileUploadModule } from 'ng2-file-upload';
     NgFileStorageModule,
     DynamicFormsModule,
     FileStorageRoutingModule,
-    PortalFieldsModule
+    PortalFieldsModule,
+    ...material
   ],
   exports: [],
   declarations: [

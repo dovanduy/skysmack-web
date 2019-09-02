@@ -1,6 +1,6 @@
 import { Injectable, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { ApiDomain, API_DOMAIN_INJECTOR_TOKEN, HttpErrorResponse } from '@skysmack/framework';
+import { ApiDomain, API_DOMAIN_INJECTOR_TOKEN, HttpErrorResponse, GlobalProperties } from '@skysmack/framework';
 import { ReduxAction } from '@skysmack/redux';
 import { Observable, of } from 'rxjs';
 import { map, retry, catchError } from 'rxjs/operators';
@@ -40,18 +40,10 @@ export class NgFileStorageRequests {
     public updateBuckets(action: ReduxAction<{ packagePath: string, bucket: Bucket }>): Observable<ReduxAction<{ packagePath: string, bucket: Bucket } | HttpErrorResponse>> {
         const url = `${this.apiDomain.domain}/${action.payload.packagePath}/settings/storage`;
 
+        const body = { ...action.payload.bucket, projectId: '' };
+        GlobalProperties.production ? body.projectId = 'Skysmack' : body.projectId = 'gifted-cooler-232815'
 
-        // return of({
-        //     type: FILE_STORAGE_REDUX_KEY + NgFileStorageActions.GET_BUCKET_SUCCESS,
-        //     payload: {
-        //         packagePath: action.payload.packagePath,
-        //         bucket: { bucket: 'test' }
-        //     }
-        // });
-
-        console.log(action.payload.bucket);
-
-        return this.http.put<any>(url, action.payload.bucket, { observe: 'response' })
+        return this.http.put<any>(url, body, { observe: 'response' })
             .pipe(
                 map(httpResponse => {
                     return Object.assign({}, new ReduxAction<any, any>({
