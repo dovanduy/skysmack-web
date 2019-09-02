@@ -1,0 +1,19 @@
+<ss-dynamic-form *ngIf="fields$ && !submitted" [noSidebar]="true" [fields$]="fields$"
+    [validation]="fieldsConfig.validation" [rules]="fieldsConfig.formRules" [removeCloseButton]="removeCloseButton"
+    [buttonText]="'Register'" (submitted)="onSubmit($event)">
+    <mat-card-title>{{ 'COMMERCIAL_ACCOUNT.REGISTER.TITLE' | translate }}</mat-card-title>
+</ss-dynamic-form>
+
+<p *ngIf="submitted">Thank you for making a Skymsack account. Please check your email for a verification email.</p>
+<p *ngIf="submitted">Remember to check your spam filter as well.</p>
+
+<!-- <div class="btn-wrapper">
+
+    <a mat-button routerLink="/account/forgot-password" tabindex="-1">
+        {{ 'COMMERCIAL_ACCOUNT.LOGIN.FORGOTPASSWORD' | translate }}
+    </a>
+
+    <a mat-button routerLink="/account/confirm-email" tabindex="-1">
+        {{ 'COMMERCIAL_ACCOUNT.LOGIN.CONFIRMEMAIL' | translate }}
+    </a>
+</div> -->

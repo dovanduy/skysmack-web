@@ -11,6 +11,12 @@ export class CommercialAccountService {
         @Inject(API_DOMAIN_INJECTOR_TOKEN) protected apiDomain: ApiDomain
     ) { }
 
+    public register(credentials: { email: string, password: string }) {
+        return this.http.post(`${this.apiDomain.domain}/account/register`, credentials, { observe: 'response' }).pipe(
+            catchError((error) => of(error))
+        );
+    }
+
     public forgotPassword(): Observable<any> {
         // Not implemented
         return of();

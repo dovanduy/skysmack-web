@@ -2584,20 +2584,25 @@
 			"CREDENTIALS": "Please enter credentials below",
 			"INCORRECT": "The entered password and/or username was incorrect. Please try again.",
 			"FORGOTPASSWORD": "Forgot password",
-			"CONFIRMEMAIL": "Confirm email"
+			"CONFIRMEMAIL": "Confirm email",
+			"REGISTER": "Register"
 		},
 		"FORM": {
 			"LABELS": {
 				"EMAIL": "Email",
 				"PASSWORD": "Password",
-				"STAYSIGNEDIN": "Stay signed in?"
+				"STAYSIGNEDIN": "Stay signed in?",
+				"USERNAME": "User name",
+				"CONFIRMPASSWORD": "Confirm Password"
 			},
 			"PLACEHOLDERS": {
 				"EMAIL": "Enter email",
 				"PASSWORD": "Enter password",
 				"CURRENTPASSWORD": "Current password",
 				"NEWPASSWORD": "New password",
-				"CONFIRMNEWPASSWORD": "Confirm new password"
+				"CONFIRMNEWPASSWORD": "Confirm new password",
+				"USERNAME": "Enter user name",
+				"CONFIRMPASSWORD": "Confirm Password"
 			},
 			"VALIDATION": {
 				"EMAIL": {
@@ -2616,6 +2621,9 @@
 				"CONFIRMNEWPASSWORD": {
 					"REQUIRED": "Please repeat the new password.",
 					"PASSWORDMISMATCH": "Passwords must match."
+				},
+				"USERNAME": {
+					"REQUIRED": "User name is required"
 				}
 			}
 		},
@@ -2641,6 +2649,9 @@
 		"CHANGE_PASSWORD": {
 			"TITLE": "Change password",
 			"BUTTON_EDIT": "Update"
+		},
+		"REGISTER": {
+			"TITLE": "Register"
 		}
 	},
 	"COMMERCIAL_UI_PARTNERS": {

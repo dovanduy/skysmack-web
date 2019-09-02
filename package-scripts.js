@@ -47,6 +47,13 @@ module.exports = {
       default: 'nps nrwl.update',
       update: 'ng update @nrwl/workspace'
     },
+    gulp: {
+      // Runs webLocalization
+      portal: "gulp webLocalization",
+
+      // Runs webCommercialLocalization
+      commercial: "gulp webCommercialLocalization"
+    },
     libs: {
       default: 'yarn build:libs:shared && yarn build:libs:packages',
       shared: 'yarn libs:shared:framework:build && yarn libs:shared:framework:build && yarn libs:shared:redux:build && yarn libs:shared:signal-r:build && yarn libs:shared:pricings:build',
