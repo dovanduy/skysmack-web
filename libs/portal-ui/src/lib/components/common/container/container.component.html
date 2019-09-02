@@ -7,14 +7,14 @@
         (menuItemActionEvent)="menuItemActionEvent.emit($event)">
       </ss-sidebar-menu>
     </mat-sidenav>
-    <ss-speed-dial-fab [componentKey]="componentKey"
-      (menuItemActionEvent)="menuItemActionEvent.emit($event)"></ss-speed-dial-fab>
+    <ss-speed-dial-fab [componentKey]="componentKey" (menuItemActionEvent)="menuItemActionEvent.emit($event)">
+    </ss-speed-dial-fab>
     <div class="docs-component-sidenav-content">
       <div class="docs-component-sidenav-inner-content">
         <!-- If on large screen, menu resides to left of content -->
         <ng-container *ngIf="!isScreenSmall()">
-          <ss-sidebar-menu (menuItemActionEvent)="menuItemActionEvent.emit($event)" (anyMenuItems)="anyMenuItems.emit($event)"
-            [componentKey]="componentKey">
+          <ss-sidebar-menu (menuItemActionEvent)="menuItemActionEvent.emit($event)"
+            (anyMenuItems)="anyMenuItems.emit($event)" [componentKey]="componentKey">
           </ss-sidebar-menu>
         </ng-container>
         <div class="docs-component-sidenav-body-content">

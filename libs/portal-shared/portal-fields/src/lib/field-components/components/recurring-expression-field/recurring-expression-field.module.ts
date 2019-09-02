@@ -4,7 +4,6 @@ import { RecurringTimeComponent } from './components/recurring-time/recurring-ti
 import { YearlyFrequencyComponent } from './components/recurring-yearly/yearly-frequency/yearly-frequency.component';
 import { SpecificTimeComponent } from './components/recurring-time/specific-time/specific-time.component';
 import { TimeUnitComponent } from './components/recurring-time/time-unit/time-unit.component';
-import { MaterialModule } from '@skysmack/ng-ui';
 import { CommonModule } from '@angular/common';
 import { RecurringExpressionFieldComponent } from './recurring-expression-field.component';
 import { RecurringCustomExpressionComponent } from './components/recurring-custom-expression/recurring-custom-expression.component';
@@ -19,13 +18,28 @@ import { DayOfWeekComponent } from './components/recurring-daily/day-of-week/day
 import { DatesComponent } from './components/recurring-daily/dates/dates.component';
 import { MonthsComponent } from './components/recurring-monthly/months/months.component';
 import { TranslateModule } from '@ngx-translate/core';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatInputModule } from '@angular/material/input';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatSelectModule } from '@angular/material/select';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+
+const material = [
+    MatSlideToggleModule,
+    MatButtonToggleModule,
+    MatInputModule,
+    MatTabsModule,
+    MatSelectModule,
+    MatCheckboxModule
+];
 
 @NgModule({
     imports: [
         CommonModule,
         FormsModule,
-        MaterialModule,
-        TranslateModule
+        TranslateModule,
+        ...material
     ],
     declarations: [
         RecurringExpressionFieldComponent,
