@@ -25,8 +25,8 @@ export class NgFileStorageFieldsConfig extends FieldsConfig<any, number> {
         const fields = [
             new Field({
                 component: StringFieldComponent,
-                value: entity ? entity.object.name : undefined,
-                key: 'name',
+                value: entity ? entity.object.bucket : undefined,
+                key: 'bucket',
                 validators: [Validators.required],
                 order: 1,
                 showColumn: false,

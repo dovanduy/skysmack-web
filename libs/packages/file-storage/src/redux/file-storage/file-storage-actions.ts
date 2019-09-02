@@ -21,10 +21,10 @@ export class FileStorageActions {
         })));
     }
 
-    public updateBucket = (packagePath: string, settings: any) => {
+    public updateBucket = (packagePath: string, bucket: any) => {
         this.store.dispatch(Object.assign({}, new ReduxAction<any>({
             type: FILE_STORAGE_REDUX_KEY + FileStorageActions.UPDATE_BUCKET,
-            payload: { packagePath, settings }
+            payload: { packagePath, bucket }
         })));
     }
 }

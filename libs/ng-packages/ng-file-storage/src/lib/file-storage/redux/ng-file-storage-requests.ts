@@ -41,13 +41,15 @@ export class NgFileStorageRequests {
         const url = `${this.apiDomain.domain}/${action.payload.packagePath}/settings/storage`;
 
 
-        return of({
-            type: FILE_STORAGE_REDUX_KEY + NgFileStorageActions.GET_BUCKET_SUCCESS,
-            payload: {
-                packagePath: action.payload.packagePath,
-                bucket: { bucket: 'test' }
-            }
-        });
+        // return of({
+        //     type: FILE_STORAGE_REDUX_KEY + NgFileStorageActions.GET_BUCKET_SUCCESS,
+        //     payload: {
+        //         packagePath: action.payload.packagePath,
+        //         bucket: { bucket: 'test' }
+        //     }
+        // });
+
+        console.log(action.payload.bucket);
 
         return this.http.put<any>(url, action.payload.bucket, { observe: 'response' })
             .pipe(

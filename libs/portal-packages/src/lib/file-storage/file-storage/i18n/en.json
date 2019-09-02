@@ -2,14 +2,14 @@
     "FILE_STORAGE": {
         "FORM": {
             "LABELS": {
-                "NAME": "Name"
+                "BUCKET": "Bucket"
             },
             "PLACEHOLDERS": {
-                "NAME": "Enter name"
+                "BUCKET": "Enter bucket name"
             },
             "VALIDATION": {
-                "NAME": {
-                    "REQUIRED": "Name is required."
+                "BUCKET": {
+                    "REQUIRED": "Bucket name is required."
                 }
             }
         },

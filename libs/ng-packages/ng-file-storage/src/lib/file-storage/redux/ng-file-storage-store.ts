@@ -4,6 +4,7 @@ import { FileStorageAppState, FileStorageState } from '@skysmack/packages-file-s
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { safeUndefinedTo } from '@skysmack/framework';
 
 @Injectable({ providedIn: 'root' })
 export class NgFileStorageStore {
@@ -14,7 +15,9 @@ export class NgFileStorageStore {
 
     public getBucket(packagePath: string): Observable<string> {
         return this.getState().pipe(
-            map(state => state.buckets[packagePath].bucket)
+            map(state => state.buckets[packagePath]),
+            safeUndefinedTo('object'),
+            map(x => (x as any).bucket)
         );
     }
 
