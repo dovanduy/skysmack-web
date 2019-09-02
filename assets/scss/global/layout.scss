@@ -1,11 +1,18 @@
 ﻿@import '../includes';
 
 html, body {
-    height: 100%;
+    min-height: 100%;
     padding: 0;
     margin: 0;
     font-family: $skysmack-font;
     line-height: 1.5;
+}
+
+html {
+    display: flex;
+}
+body {
+    flex: 1;
 }
 
 ::-moz-selection{ background-color: rgba(119,146,147,0.1); }

@@ -25,6 +25,18 @@ import { GettingStartedComponent } from './pages/getting-started/getting-started
 import { NgTranslationModule, LanguageService } from '@skysmack/ng-translation';
 import { AuthenticatedLoadStrategy } from './authenticated-load-strategy';
 import { CommercialUiPartnersModule } from '@skysmack/commercial-ui-partners';
+import { MatListModule } from '@angular/material/list';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatIconModule } from '@angular/material/icon';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+
+
+const material = [
+  MatListModule,
+  MatSidenavModule,
+  MatIconModule,
+  MatProgressBarModule
+];
 
 @NgModule({
   imports: [
@@ -62,13 +74,18 @@ import { CommercialUiPartnersModule } from '@skysmack/commercial-ui-partners';
         path: 'getting-started',
         component: GettingStartedComponent
       },
-    ], { initialNavigation: 'enabled', preloadingStrategy: AuthenticatedLoadStrategy }),
+    ], {
+        initialNavigation: 'enabled',
+        preloadingStrategy: AuthenticatedLoadStrategy,
+        scrollPositionRestoration: 'enabled'
+      }),
     BrowserAnimationsModule,
     CommercialUiPartnersModule,
     NgReduxModule,
     NgFrameworkModule,
     NgReduxRouterModule.forRoot(),
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
+    ...material
   ],
   declarations: [
     AppComponent,

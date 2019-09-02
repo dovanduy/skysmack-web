@@ -9,6 +9,11 @@ import { PortalFieldsModule } from '@skysmack/portal-fields';
 import { NgDynamicFormsModule } from '@skysmack/ng-dynamic-forms';
 import { NgTranslationModule } from '@skysmack/ng-translation';
 import { CommercialUiPartnersModule } from '@skysmack/commercial-ui-partners';
+import { MatCardModule } from '@angular/material/card';
+
+const material = [
+  MatCardModule
+];
 
 @NgModule({
   imports: [
@@ -19,7 +24,8 @@ import { CommercialUiPartnersModule } from '@skysmack/commercial-ui-partners';
     PortalFieldsModule,
     CommercialUiPartnersModule,
     NgTranslationModule,
-    CommercialAccountRoutingModule
+    CommercialAccountRoutingModule,
+    ...material
   ],
   declarations: [
     ...commercialAccountComponents
