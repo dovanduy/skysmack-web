@@ -10,6 +10,19 @@ import { NgDynamicFormsModule } from '@skysmack/ng-dynamic-forms';
 import { NgTranslationModule } from '@skysmack/ng-translation';
 import { CommercialUiPartnersModule, NgMenuProviders } from '@skysmack/commercial-ui-partners';
 import { NgCommercialDatabasesMenuProvider } from './ng-commercial-databases-menu-provider';
+import { MatListModule } from '@angular/material/list';
+import { MatCardModule } from '@angular/material/card';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatIconModule } from '@angular/material/icon';
+
+const material = [
+  MatCardModule,
+  MatListModule,
+  MatProgressBarModule,
+  MatTooltipModule,
+  MatIconModule
+];
 
 @NgModule({
   imports: [
@@ -20,7 +33,8 @@ import { NgCommercialDatabasesMenuProvider } from './ng-commercial-databases-men
     PortalFieldsModule,
     NgTranslationModule,
     CommercialUiPartnersModule,
-    CommercialDatabasesRoutingModule
+    CommercialDatabasesRoutingModule,
+    ...material
   ],
   declarations: [
     ...commercialDatabasesComponents
