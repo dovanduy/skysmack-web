@@ -7,19 +7,31 @@
       "resources": {
         "files": [
           "/assets/icons/site.webmanifest",
-          "/assets/icons/browserconfig.xml",          
+          "/assets/icons/browserconfig.xml", 
           "/ngsw-worker.js",
-          "/index.html",          
-          "/*.css",
-          "/*.js",
-          "/assets/**",
-          "/*.(eot|svg|cur|jpg|png|webp|gif|otf|ttf|woff|woff2|ani)"
+          "/index.html",
+          "/styles.*.css",
+          "/main.*.js",
+          "/runtime.*.js",
+          "/polyfills.*.js"
         ],
         "urls": [
           "https://fonts.googleapis.com/**",
           "https://fonts.gstatic.com/**",
           "https://ajax.googleapis.com/ajax/libs/**",
           "https://cdn.skysmack.net/**"
+        ]
+      }
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "resources": {
+        "files": [
+          "/*.css",
+          "/*.js",
+          "/assets/**",
+          "/*.(eot|svg|cur|jpg|png|webp|gif|otf|ttf|woff|woff2|ani)"
         ]
       }
     }
@@ -31,18 +43,7 @@
       "cacheConfig": {
         "maxSize": "100",
         "maxAge": "90d",
-        "timeout": "10s",
         "strategy": "performance"
-      }
-    },
-    {
-      "name": "api",
-      "urls": ["https://*.skysmack.io/*"],
-      "cacheConfig": {
-        "maxSize": "1000",
-        "maxAge": "1d",
-        "timeout": "10s",
-        "strategy": "freshness"
       }
     }
   ]

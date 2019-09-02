@@ -109,7 +109,8 @@
 		"INDEX": {
 			"FORGOTPASSWORD": "Forgot password",
 			"ACCOUNT": "Account",
-			"WELCOME": "Welcome to skysmack"
+			"WELCOME": "Welcome to skysmack",
+			"CONFIRMEMAIL": "Confirm e-mail"
 		},
 		"LOGIN": {
 			"SIGNIN": "Sign in",

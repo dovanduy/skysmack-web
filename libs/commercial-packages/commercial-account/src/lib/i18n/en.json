@@ -2,6 +2,7 @@
     "COMMERCIAL_ACCOUNT": {
         "INDEX": {
             "FORGOTPASSWORD": "Forgot password",
+            "CONFIRMEMAIL": "Confirm e-mail",
             "ACCOUNT": "Account",
             "WELCOME": "Welcome to skysmack"
         },
