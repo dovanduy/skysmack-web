@@ -27,6 +27,8 @@ const material = [
     ...components
   ],
   exports: [
+    ReactiveFormsModule,
+    NgDynamicFormsModule,
     ...material,
     ...components
   ],

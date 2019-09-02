@@ -18,7 +18,12 @@ import { FieldProviders } from '@skysmack/ng-fields';
 import { accessPolicyPermissionsComponents } from './access-policy-permissions/components/access-policy-permissions-components';
 import { accessPolicyRolesComponents } from './access-policy-roles/components/access-policy-roles-components';
 import { accessPolicyRulesComponents } from './access-policy-rules/components/access-policy-rules-components';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 // import { PackagesModule } from '../../packages';
+
+const material = [
+  MatSlideToggleModule
+];
 
 @NgModule({
   imports: [
@@ -29,7 +34,8 @@ import { accessPolicyRulesComponents } from './access-policy-rules/components/ac
     NgAccessPoliciesModule,
     PortalFieldsModule,
     IdentitiesModule,
-    DynamicFormsModule
+    DynamicFormsModule,
+    ...material
     // PackagesModule
   ],
   declarations: [

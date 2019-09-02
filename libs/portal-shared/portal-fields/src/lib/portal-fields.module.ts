@@ -46,6 +46,7 @@ const material = [
     ...managementFieldsComponents
   ],
   exports: [
+    ...material,
     ...dynamicFieldComponents,
     ...managementFieldsComponents,
     MatFormFieldModule,
