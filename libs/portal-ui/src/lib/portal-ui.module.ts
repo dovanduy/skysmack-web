@@ -12,13 +12,35 @@ import { portailUiPipes } from './pipes/portal-ui-pipes';
 import { commonComponents } from './components/common/common-components';
 import { displayComponents } from './components/display-components/display-components';
 import { directives } from './directives/directives';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatIconModule } from '@angular/material/icon';
+import { ScrollDispatchModule } from '@angular/cdk/scrolling';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatCardModule } from '@angular/material/card';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+
+const material = [
+  MatSidenavModule,
+  MatMenuModule,
+  MatIconModule,
+  ScrollDispatchModule,
+  MatProgressSpinnerModule,
+  MatCardModule,
+  MatTooltipModule,
+  MatPaginatorModule,
+  MatProgressBarModule
+];
 
 @NgModule({
   imports: [
     CommonModule,
     RouterModule,
     NgTranslationModule,
-    NgUIModule
+    NgUIModule,
+    ...material
   ],
   providers: [
     LanguageService,
@@ -33,6 +55,7 @@ import { directives } from './directives/directives';
   exports: [
     NgTranslationModule,
     NgUIModule,
+    ...material,
     ...directives,
     ...commonComponents,
     ...displayComponents

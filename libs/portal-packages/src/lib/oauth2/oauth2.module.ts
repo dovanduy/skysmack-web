@@ -10,6 +10,11 @@ import { PortalFieldsModule } from '@skysmack/portal-fields';
 import { CoalescingComponentFactoryResolver } from '@skysmack/ng-framework';
 import { LoginWrapperComponent } from './components/login-wrapper/login-wrapper.component';
 import { NgOAuth2MenuProvider } from './ng-oauth2-menu-provider';
+import { MatCardModule } from '@angular/material/card';
+
+const material = [
+  MatCardModule
+];
 
 @NgModule({
   imports: [
@@ -19,7 +24,8 @@ import { NgOAuth2MenuProvider } from './ng-oauth2-menu-provider';
     DynamicFormsModule,
     PortalFieldsModule,
     NgOAuth2Module,
-    OAuth2RoutingModule
+    OAuth2RoutingModule,
+    ...material
   ],
   declarations: [
     LoginComponent,

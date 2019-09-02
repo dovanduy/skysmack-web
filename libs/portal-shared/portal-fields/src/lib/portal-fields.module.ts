@@ -18,6 +18,16 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { NgFieldsMenuProvider } from './ng-fields-menu-provider';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatSelectModule } from '@angular/material/select';
+
+const material = [
+  MatCheckboxModule,
+  MatFormFieldModule,
+  MatDatepickerModule,
+  MatMomentDateModule,
+  MatSelectModule
+];
 
 @NgModule({
   imports: [
@@ -29,9 +39,7 @@ import { NgFieldsMenuProvider } from './ng-fields-menu-provider';
     RecurringExpressionFieldModule,
     ValidatorsFieldModule,
     AngularEditorModule,
-    MatFormFieldModule,
-    MatDatepickerModule,
-    MatMomentDateModule,
+    ...material
   ],
   declarations: [
     ...dynamicFieldComponents,

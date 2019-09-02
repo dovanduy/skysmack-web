@@ -1,19 +1,27 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ngUiComponents } from './components/ng-ui-components';
-import { MaterialModule } from './material.module';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatDialogModule } from '@angular/material/dialog';
+
+const material = [
+    MatSnackBarModule,
+    MatButtonModule,
+    MatDialogModule,
+];
 
 @NgModule({
     imports: [
         CommonModule,
-        MaterialModule,
+        ...material
     ],
     declarations: [
         ...ngUiComponents
     ],
     exports: [
-        MaterialModule,
-        ...ngUiComponents
+        ...ngUiComponents,
+        ...material
     ],
     providers: []
 })
