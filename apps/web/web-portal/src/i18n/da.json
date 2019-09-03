@@ -2575,27 +2575,33 @@
 		"INDEX": {
 			"ACCOUNT": "Konto",
 			"WELCOME": "Velkommen til skysmack",
-			"FORGOTPASSWORD": "Glemt adgangskode"
+			"FORGOTPASSWORD": "Glemt adgangskode",
+			"CONFIRMEMAIL": "Bekræft e-mail"
 		},
 		"LOGIN": {
 			"SIGNIN": "Log ind",
 			"CREDENTIALS": "Venligst indtast dine informationer nedeunder",
 			"INCORRECT": "Den indtastede adgangskode og/eller brugernavnet er ikke korrekt. Venligst prøv igen.",
 			"FORGOTPASSWORD": "Glemt adgangskode",
-			"CONFIRMEMAIL": "Bekræft email"
+			"CONFIRMEMAIL": "Bekræft email",
+			"REGISTER": "Registrer"
 		},
 		"FORM": {
 			"LABELS": {
 				"EMAIL": "Email",
 				"PASSWORD": "Adgangskode",
-				"STAYSIGNEDIN": "Forbliv logged ind?"
+				"STAYSIGNEDIN": "Forbliv logged ind?",
+				"USERNAME": "Brugernavn",
+				"CONFIRMPASSWORD": "Bekræft adgangskode"
 			},
 			"PLACEHOLDERS": {
 				"EMAIL": "Indtast email",
 				"PASSWORD": "Indtast adgangskode",
 				"CURRENTPASSWORD": "Nuværende kodeord",
                 "NEWPASSWORD": "Nyt kodeord",
-                "CONFIRMNEWPASSWORD": "Gentag nye kodeord"
+				"CONFIRMNEWPASSWORD": "Gentag nye kodeord",
+				"USERNAME": "Indtast brugernavn",
+				"CONFIRMPASSWORD": "Bekærft adgangskode"
 			},
 			"VALIDATION": {
 				"EMAIL": {
@@ -2614,6 +2620,9 @@
 				"CONFIRMNEWPASSWORD": {
 					"REQUIRED": "Venligst indtast den nye adgangskode igen.",
 					"PASSWORDMISMATCH": "Adgangskoderne skal være identiske."
+				},
+				"USERNAME": {
+					"REQUIRED": "Et brugernavn er påkrævet"
 				}
 			}
 		},
@@ -2639,7 +2648,10 @@
 		"CHANGE_PASSWORD": {
             "TITLE": "Skift kodeord",
             "BUTTON_EDIT": "Opdater"
-        }
+        },
+		"REGISTER": {
+			"TITLE": "Titel"
+		}
 	},
 	"COMMERCIAL_UI_PARTNERS": {
 		"INDEX": {
@@ -2725,6 +2737,7 @@
 		"ADDING": "Tilføjer {{ name }}",
 		"UPDATING": "Opdatere {{ name }}",
 		"DELETING": "Sletter {{ name }}",
+		"EDITING_PATH": "Rediger sti",
 		"ERROR": "Der opstod  en fejl ved {{ name }}. Ret og prøv igen.",
 		"FORM": {
 			"LABELS": {
@@ -3190,17 +3203,22 @@
             "CREATE": "Opret database",
             "DATABASES": "Databaser"
         },
-        "TITLE": "Databaser",
-        "CREATE": "Opret",
+		"TITLE": "Databaser",
+		"CREATE": "Opret",
+		"CREATEDATABASE": "Opret Database",		
         "EDIT": "Ret",
         "EDITDATABASE": "Ret database",
         "REMOVE": "Fjern",
         "FORM": {
             "LABELS": {
+				"NAME": "Database navn",
+				"HOSTNAME": "Værtsnavn",
                 "DATABASENAME": "Database navn",
                 "CANDELETEDATABASE": "Kan databasen slettes"
             },
             "PLACEHOLDERS": {
+				"NAME": "Indtast et database navn",
+				"HOSTNAME": "Indtast et værtsnavn",
                 "DATABASENAME": "Indtast et database navn",
                 "CANDELETEDATABASE": "Kan databasen slettes"
             },
