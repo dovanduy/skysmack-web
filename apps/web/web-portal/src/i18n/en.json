@@ -2570,7 +2570,8 @@
 					"REQUIRED": "The state is required."
 				}
 			}
-		}
+		},
+		"REMOVE": "Remove"
 	},
 	"COMMERCIAL_ACCOUNT": {
 		"INDEX": {
@@ -2709,7 +2710,7 @@
 			}
 		},
 		"DETAILS": "Details",
-		"REMOVE": "Remove"
+		"REMOVE": "TTTRemove"
 	},
 	"OAUTH2": {
 		"FORM": {
