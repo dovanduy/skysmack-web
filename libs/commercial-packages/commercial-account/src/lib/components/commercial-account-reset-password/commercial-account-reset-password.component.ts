@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Field, FormHelper } from '@skysmack/ng-dynamic-forms';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { CommercialAccountResetPasswordFieldsConfig } from './commercial-account-reset-password-fields-config';
 import { Router, ActivatedRoute } from '@angular/router';
-import { map } from 'rxjs/operators';
+import { map, take } from 'rxjs/operators';
+import { CommercialAccountService } from '../../services';
 
 @Component({
   selector: 'ss-commercial-account-reset-password',
@@ -13,11 +14,13 @@ import { map } from 'rxjs/operators';
 export class CommercialAccountResetPasswordComponent implements OnInit {
 
   public fields$: Observable<Field[]>;
+  public message: string;
 
   constructor(
     public fieldsConfig: CommercialAccountResetPasswordFieldsConfig,
     public router: Router,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private service: CommercialAccountService
   ) { }
 
   ngOnInit() {
@@ -30,8 +33,17 @@ export class CommercialAccountResetPasswordComponent implements OnInit {
 
   public onSubmit(fh: FormHelper) {
     fh.formValid(() => {
-      console.log(fh.form);
-      this.router.navigate(['account', 'dashboard']);
+      this.service.resetPassword(fh.form.getRawValue()).pipe(
+        map(response => {
+          if (response.status >= 200 && response.status <= 299) {
+            this.router.navigate(['/', 'account', 'reset-password'])
+          } else {
+            this.message = 'An error occurred. Please try again.'
+          }
+        }),
+        take(1)
+      ).subscribe();
+      this.router.navigate(['/', 'account', 'login']);
     }, false);
   }
 }

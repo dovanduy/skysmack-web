@@ -23,6 +23,8 @@
                 "EMAIL": "Email",
                 "PASSWORD": "Password",
                 "CONFIRMPASSWORD": "Confirm Password",
+                "NEWPASSWORD": "New password",
+                "CONFIRMNEWPASSWORD": "Confirm new password",
                 "STAYSIGNEDIN": "Stay signed in?"
             },
             "PLACEHOLDERS": {
@@ -50,6 +52,10 @@
                 },
                 "NEWPASSWORD": {
                     "REQUIRED": "New password is required."
+                },
+                "CONFIRMPASSWORD": {
+                    "REQUIRED": "Please repeat the new password.",
+                    "PASSWORDMISMATCH": "Passwords must match."
                 },
                 "CONFIRMNEWPASSWORD": {
                     "REQUIRED": "Please repeat the new password.",

@@ -2593,7 +2593,9 @@
 				"PASSWORD": "Password",
 				"STAYSIGNEDIN": "Stay signed in?",
 				"USERNAME": "User name",
-				"CONFIRMPASSWORD": "Confirm Password"
+				"CONFIRMPASSWORD": "Confirm Password",
+				"NEWPASSWORD": "New password",
+				"CONFIRMNEWPASSWORD": "Confirm new password"
 			},
 			"PLACEHOLDERS": {
 				"EMAIL": "Enter email",
@@ -2624,6 +2626,10 @@
 				},
 				"USERNAME": {
 					"REQUIRED": "User name is required"
+				},
+				"CONFIRMPASSWORD": {
+					"REQUIRED": "Please repeat the new password.",
+					"PASSWORDMISMATCH": "Passwords must match."
 				}
 			}
 		},

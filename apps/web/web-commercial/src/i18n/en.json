@@ -108,31 +108,44 @@
 	"COMMERCIAL_ACCOUNT": {
 		"INDEX": {
 			"FORGOTPASSWORD": "Forgot password",
+			"CONFIRMEMAIL": "Confirm e-mail",
 			"ACCOUNT": "Account",
-			"WELCOME": "Welcome to skysmack",
-			"CONFIRMEMAIL": "Confirm e-mail"
+			"WELCOME": "Welcome to skysmack"
 		},
 		"LOGIN": {
 			"SIGNIN": "Sign in",
 			"CREDENTIALS": "Please enter credentials below",
 			"INCORRECT": "The entered password and/or username was incorrect. Please try again.",
 			"FORGOTPASSWORD": "Forgot password",
-			"CONFIRMEMAIL": "Confirm email"
+			"CONFIRMEMAIL": "Confirm email",
+			"REGISTER": "Register"
+		},
+		"REGISTER": {
+			"TITLE": "Register"
 		},
 		"FORM": {
 			"LABELS": {
+				"USERNAME": "User name",
 				"EMAIL": "Email",
 				"PASSWORD": "Password",
+				"CONFIRMPASSWORD": "Confirm Password",
+				"NEWPASSWORD": "New password",
+				"CONFIRMNEWPASSWORD": "Confirm new password",
 				"STAYSIGNEDIN": "Stay signed in?"
 			},
 			"PLACEHOLDERS": {
+				"USERNAME": "Enter user name",
 				"EMAIL": "Enter email",
 				"PASSWORD": "Enter password",
+				"CONFIRMPASSWORD": "Confirm Password",
 				"CURRENTPASSWORD": "Current password",
 				"NEWPASSWORD": "New password",
 				"CONFIRMNEWPASSWORD": "Confirm new password"
 			},
 			"VALIDATION": {
+				"USERNAME": {
+					"REQUIRED": "User name is required"
+				},
 				"EMAIL": {
 					"REQUIRED": "Email is required.",
 					"INVALIDEMAIL": "Please enter a valid email."
@@ -145,6 +158,10 @@
 				},
 				"NEWPASSWORD": {
 					"REQUIRED": "New password is required."
+				},
+				"CONFIRMPASSWORD": {
+					"REQUIRED": "Please repeat the new password.",
+					"PASSWORDMISMATCH": "Passwords must match."
 				},
 				"CONFIRMNEWPASSWORD": {
 					"REQUIRED": "Please repeat the new password.",
@@ -174,6 +191,33 @@
 		"CHANGE_PASSWORD": {
 			"TITLE": "Change password",
 			"BUTTON_EDIT": "Update"
+		}
+	},
+	"COMMERCIAL_DATABASES": {
+		"INDEX": {
+			"CREATE": "Create database",
+			"DATABASES": "Databases"
+		},
+		"TITLE": "Databases",
+		"CREATE": "Create",
+		"EDIT": "Edit",
+		"EDITDATABASE": "Edit database",
+		"REMOVE": "Remove",
+		"FORM": {
+			"LABELS": {
+				"DATABASENAME": "Database name",
+				"CANDELETEDATABASE": "Can delete database"
+			},
+			"PLACEHOLDERS": {
+				"DATABASENAME": "Enter a database name",
+				"CANDELETEDATABASE": "Can delete database"
+			},
+			"VALIDATION": {}
+		}
+	},
+	"COMMERCIAL_OPEN_API": {
+		"INDEX": {
+			"OPEN_API": "Open API"
 		}
 	},
 	"COMMERCIAL_TENANTS": {
@@ -215,6 +259,55 @@
 				},
 				"STATE": {
 					"REQUIRED": "The state is required."
+				}
+			}
+		}
+	},
+	"COMMERCIAL_UI_PARTNERS": {
+		"INDEX": {
+			"CHANGEPASSWORD": "Change password",
+			"TENANTS": "Tenants",
+			"USERS": "Users",
+			"LOGOUT": "Logout"
+		}
+	},
+	"COMMERCIAL_USERS": {
+		"INDEX": {
+			"CREATE": " Create user",
+			"USERS": "Users"
+		},
+		"TITLE": "Users",
+		"CREATE": "Create",
+		"CREATEUSER": "Create user",
+		"EDIT": "Edit",
+		"EDITUSER": "Edit user",
+		"EMAIL": "Email: ",
+		"FORM": {
+			"LABELS": {
+				"EMAIL": "Email",
+				"USERNAME": "Username",
+				"PASSWORD": "Password",
+				"CONFIRMPASSWORD": "Confirm password"
+			},
+			"PLACEHOLDERS": {
+				"EMAIL": "Enter a email",
+				"USERNAME": "Enter a username",
+				"PASSWORD": "Enter a password",
+				"CONFIRMPASSWORD": "Enter a confirm password"
+			},
+			"VALIDATION": {
+				"EMAIL": {
+					"REQUIRED": "An Email is required.",
+					"INVALIDEMAIL": "Please enter a valid email."
+				},
+				"USERNAME": {
+					"REQUIRED": "An username is required."
+				},
+				"PASSWORD": {
+					"REQUIRED": "A password is required."
+				},
+				"CONFIRMPASSWORD": {
+					"PASSWORDMISMATCH": "The passwords must match."
 				}
 			}
 		}
@@ -457,12 +550,10 @@
 			"TITLE": "Terminal Payments",
 			"MANAGE": "Manage",
 			"TERMINALS": "Terminals",
-			"CLIENTS": "Clients",
 			"RECEIPTS": "Receipts",
 			"CONNECTIONS": "Connections",
-			"PAYMENT_RECEIPTS": "Payment receipts",
-			"TERMINAL_RECEIPTS": "Receipts",
-			"TERMINAL_PAYMENT_RECEIPTS": "Payment receipts"
+			"TERMINAL_PAYMENT_RECEIPTS": "Payment receipts",
+			"TERMINAL_RECEIPTS": "Receipts"
 		}
 	},
 	"FIELDS": {
@@ -802,11 +893,56 @@
 		"NOTIFICATIONS": {},
 		"QUEUE": {}
 	},
+	"CLIENTS": {
+		"CREATE": {
+			"CREATE": "Create",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDIT": "Edit",
+			"BUTTON_EDIT": "Update"
+		},
+		"INDEX": {
+			"TITLE_EXTRAS": "(Clients)",
+			"ACTIONS": "Actions",
+			"CREATE": "Create",
+			"DELETE": "Delete",
+			"MANAGE": "Manage",
+			"BACK": "Back"
+		},
+		"FORM": {
+			"LABELS": {
+				"NAME": "Name",
+				"DESCRIPTION": "Description",
+				"ONLINE": "Online"
+			},
+			"PLACEHOLDERS": {
+				"NAME": "Name",
+				"DESCRIPTION": "Description",
+				"ONLINE": "Online"
+			},
+			"VALIDATION": {
+				"NAME": {
+					"REQUIRED": "Name is required."
+				},
+				"DESCRIPTION": {
+					"REQUIRED": "Description is required."
+				}
+			}
+		},
+		"QUEUE": {
+			"ADDING": "Adding client {{ name }}",
+			"UPDATING": "Updating client {{ name }}",
+			"DELETING": "Deleting client {{ name }}",
+			"ERROR": "An error occured with client {{ name }}. Correct and try again."
+		}
+	},
 	"IDENTITIES": {
 		"INDEX": {
 			"ROLES": "Roles",
 			"USERS": "Users",
 			"ACCOUNTS": "Accounts",
+			"CLIENTS": "Clients",
 			"APPLICATIONS": "Applications",
 			"USERS_ROLES_TITLE": "User roles",
 			"APPLICATIONS_ROLES_TITLE": "Application roles",
@@ -821,8 +957,7 @@
 				"USER": "User",
 				"PASSWORD": "Password",
 				"SIGNIN": "Sign in"
-			},
-			"CLIENTS": "Clients"
+			}
 		}
 	},
 	"IDENTITIES_SETTINGS": {
@@ -1708,6 +1843,75 @@
 		"SELECT_LODGINGS": "Select lodgings",
 		"TITLE": "Lodgings Availability"
 	},
+	"ASSIGNMENTS": {
+		"FORM": {
+			"LABELS": {
+				"ASSIGNMENTTYPEID": "Assignment type",
+				"DESCRIPTION": "Description",
+				"OCCUPATIONSTATE": "Occupation state",
+				"STATUS": "Status",
+				"DUE": "Due date",
+				"FROM": "Can be started from"
+			},
+			"PLACEHOLDERS": {
+				"ASSIGNMENTTYPEID": "Assignment type",
+				"DESCRIPTION": "Enter description",
+				"OCCUPATIONSTATE": "Choose occupation state",
+				"STATUS": "Choose status",
+				"DUE": "Choose due date",
+				"FROM": "Choose can be started from date"
+			},
+			"VALIDATION": {
+				"ASSIGNMENTTYPEID": {
+					"REQUIRED": "Assignment type is required."
+				},
+				"DESCRIPTION": {
+					"REQUIRED": "Description is required."
+				},
+				"STATUS": {
+					"REQUIRED": "Status is required."
+				},
+				"DUE": {
+					"REQUIRED": "Due date is required.",
+					"NOTBEFORE": "The due date may not be earlier than the start date."
+				},
+				"FROM": {
+					"REQUIRED": "A date from when the assignment can begin is required."
+				}
+			},
+			"BUTTONS": {
+				"CREATE": "Create",
+				"EDIT": "Edit"
+			}
+		},
+		"CREATE": {
+			"CREATE": "Create",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDIT": "Edit",
+			"BUTTON_EDIT": "Update"
+		},
+		"INDEX": {
+			"TITLE_EXTRAS": "(assignments)",
+			"ACTIONS": "Actions",
+			"CREATE": "Create",
+			"EDIT": "Edit",
+			"DELETE": "Delete",
+			"MANAGE": "Manage",
+			"FIELDS": "Fields",
+			"FIELDS_TITLE": "(fields)",
+			"STATES": "States",
+			"TYPES": "Types",
+			"BACK": "Back"
+		},
+		"QUEUE": {
+			"ADDING": "Adding {{ description }}",
+			"UPDATING": "Updating {{ description }}",
+			"DELETING": "Deleting {{ description }}",
+			"ERROR": "An error occured with {{ description }}. Correct and try again."
+		}
+	},
 	"ASSIGNMENT_TYPES": {
 		"FORM": {
 			"LABELS": {
@@ -1805,75 +2009,6 @@
 			"CREATE": {
 				"ADD": "Add field"
 			}
-		},
-		"QUEUE": {
-			"ADDING": "Adding {{ description }}",
-			"UPDATING": "Updating {{ description }}",
-			"DELETING": "Deleting {{ description }}",
-			"ERROR": "An error occured with {{ description }}. Correct and try again."
-		}
-	},
-	"ASSIGNMENTS": {
-		"FORM": {
-			"LABELS": {
-				"ASSIGNMENTTYPEID": "Assignment type",
-				"DESCRIPTION": "Description",
-				"OCCUPATIONSTATE": "Occupation state",
-				"STATUS": "Status",
-				"DUE": "Due date",
-				"FROM": "Can be started from"
-			},
-			"PLACEHOLDERS": {
-				"ASSIGNMENTTYPEID": "Assignment type",
-				"DESCRIPTION": "Enter description",
-				"OCCUPATIONSTATE": "Choose occupation state",
-				"STATUS": "Choose status",
-				"DUE": "Choose due date",
-				"FROM": "Choose can be started from date"
-			},
-			"VALIDATION": {
-				"ASSIGNMENTTYPEID": {
-					"REQUIRED": "Assignment type is required."
-				},
-				"DESCRIPTION": {
-					"REQUIRED": "Description is required."
-				},
-				"STATUS": {
-					"REQUIRED": "Status is required."
-				},
-				"DUE": {
-					"REQUIRED": "Due date is required.",
-					"NOTBEFORE": "The due date may not be earlier than the start date."
-				},
-				"FROM": {
-					"REQUIRED": "A date from when the assignment can begin is required."
-				}
-			},
-			"BUTTONS": {
-				"CREATE": "Create",
-				"EDIT": "Edit"
-			}
-		},
-		"CREATE": {
-			"CREATE": "Create",
-			"BUTTON_CREATE": "Create"
-		},
-		"EDIT": {
-			"EDIT": "Edit",
-			"BUTTON_EDIT": "Update"
-		},
-		"INDEX": {
-			"TITLE_EXTRAS": "(assignments)",
-			"ACTIONS": "Actions",
-			"CREATE": "Create",
-			"EDIT": "Edit",
-			"DELETE": "Delete",
-			"MANAGE": "Manage",
-			"FIELDS": "Fields",
-			"FIELDS_TITLE": "(fields)",
-			"STATES": "States",
-			"TYPES": "Types",
-			"BACK": "Back"
 		},
 		"QUEUE": {
 			"ADDING": "Adding {{ description }}",
@@ -2733,50 +2868,6 @@
 			"ERROR": "An error occured with the lodging type reservation price change valid from/to: {{ dates }}. Correct and try again."
 		}
 	},
-	"CLIENTS": {
-		"CREATE": {
-			"CREATE": "Create",
-			"BUTTON_CREATE": "Create"
-		},
-		"EDIT": {
-			"EDIT": "Edit",
-			"BUTTON_EDIT": "Update"
-		},
-		"INDEX": {
-			"TITLE_EXTRAS": "(Clients)",
-			"ACTIONS": "Actions",
-			"CREATE": "Create",
-			"DELETE": "Delete",
-			"MANAGE": "Manage",
-			"BACK": "Back"
-		},
-		"FORM": {
-			"LABELS": {
-				"NAME": "Name",
-				"DESCRIPTION": "Description",
-				"ONLINE": "Online"
-			},
-			"PLACEHOLDERS": {
-				"NAME": "Name",
-				"DESCRIPTION": "Description",
-				"ONLINE": "Online"
-			},
-			"VALIDATION": {
-				"NAME": {
-					"REQUIRED": "Name is required."
-				},
-				"DESCRIPTION": {
-					"REQUIRED": "Description is required."
-				}
-			}
-		},
-		"QUEUE": {
-			"ADDING": "Adding client {{ name }}",
-			"UPDATING": "Updating client {{ name }}",
-			"DELETING": "Deleting client {{ name }}",
-			"ERROR": "An error occured with client {{ name }}. Correct and try again."
-		}
-	},
 	"CONNECTIONS": {
 		"CREATE": {
 			"CREATE": "Create",
@@ -2824,129 +2915,6 @@
 			"UPDATING": "Updating the connection with the client: {{ client }}",
 			"DELETING": "Deleting the connection with the client: {{ client }}",
 			"ERROR": "An error occured with the connection with the client: {{ client }}. Correct and try again."
-		}
-	},
-	"RECEIPTS": {
-		"CREATE": {
-			"CREATE": "Create",
-			"BUTTON_CREATE": "Create"
-		},
-		"EDIT": {
-			"EDIT": "Edit",
-			"BUTTON_EDIT": "Update"
-		},
-		"INDEX": {
-			"TITLE_EXTRAS": "(Receipts)",
-			"ACTIONS": "Actions",
-			"CREATE": "Create",
-			"DELETE": "Delete",
-			"MANAGE": "Manage",
-			"FIELDS": "Fields",
-			"FIELDS_TITLE": "(fields)",
-			"BACK": "Back"
-		},
-		"FORM": {
-			"LABELS": {
-				"NAME": "Name"
-			},
-			"PLACEHOLDERS": {
-				"NAME": "Enter name"
-			},
-			"VALIDATION": {
-				"NAME": {
-					"REQUIRED": "Name is required."
-				}
-			}
-		},
-		"QUEUE": {
-			"ADDING": "Adding receipt {{ name }}",
-			"UPDATING": "Updating receipt {{ name }}",
-			"DELETING": "Deleting receipt {{ name }}",
-			"ERROR": "An error occured with receipt {{ name }}. Correct and try again."
-		}
-	},
-	"TERMINALS": {
-		"FORM": {
-			"LABELS": {
-				"NAME": "Name",
-				"CONNECTIONSTRING": "Connection string",
-				"CONNECTION": "Connection",
-				"DESCRIPTION": "Description",
-				"CLIENTID": "Client",
-				"TERMINALID": "Terminal",
-				"AMOUNT": "Amount",
-				"INVOICEID": "Invoice ID",
-				"CURRENCYCODE": "Currency"
-			},
-			"PLACEHOLDERS": {
-				"NAME": "Name",
-				"CONNECTIONSTRING": "Connection string",
-				"CONNECTION": "Connection",
-				"DESCRIPTION": "Description",
-				"CLIENTID": "Client",
-				"TERMINALID": "Terminal",
-				"AMOUNT": "Amount",
-				"INVOICEID": "Invoice ID",
-				"CURRENCYCODE": "Currency"
-			},
-			"VALIDATION": {
-				"NAME": {
-					"REQUIRED": "Name is required."
-				},
-				"CONNECTIONSTRING": {
-					"REQUIRED": "Connection string is required."
-				},
-				"CONNECTION": {
-					"REQUIRED": "Connection is required."
-				},
-				"CLIENTID": {
-					"REQUIRED": "Client is required."
-				},
-				"TERMINALID": {
-					"REQUIRED": "Terminal is required."
-				},
-				"AMOUNT": {
-					"REQUIRED": "Amount is required."
-				},
-				"INVOICEID": {
-					"REQUIRED": "Invoice ID is required."
-				},
-				"CURRENCYCODE": {
-					"REQUIRED": "Currency is required."
-				}
-			}
-		},
-		"CREATE": {
-			"CREATE": "Create",
-			"BUTTON_CREATE": "Create"
-		},
-		"EDIT": {
-			"EDIT": "Edit",
-			"BUTTON_EDIT": "Update"
-		},
-		"INDEX": {
-			"TITLE_EXTRAS": "(Terminals)",
-			"CREATE": "Create",
-			"EDIT": "Edit",
-			"DELETE": "Delete",
-			"MANAGE": "Manage",
-			"ACTIONS": "Actions",
-			"TYPES": "Types"
-		},
-		"PAY": {
-			"TITLE": "Card payment",
-			"BUTTON_PAY": "Pay"
-		},
-		"QUEUE": {
-			"ADDING": "Adding terminal {{ name }}",
-			"UPDATING": "Updating terminal {{ name }}",
-			"DELETING": "Deleting terminal {{ name }}",
-			"ERROR": "An error occured with terminal {{ name }}. Correct and try again."
-		},
-		"ENTITY_ACTION_PROVIDER": {
-			"ENTITY_ACTION": {
-				"TERMINAL_PAYMENT": "Card payment"
-			}
 		}
 	},
 	"TERMINAL_PAYMENT_RECEIPTS": {
@@ -3007,10 +2975,10 @@
 			"DELETE": "Delete",
 			"FIELDS": "Fields",
 			"FIELDS_TITLE": "(fields)",
+			"TITLE_EXTRAS": "(payment receipts)",
 			"ITEM": "Item",
 			"MANAGE": "Manage",
-			"ACTIONS": "Actions",
-			"TITLE_EXTRAS": "(payment receipts)"
+			"ACTIONS": "Actions"
 		},
 		"NOTIFICATIONS": {
 			"GET": {
@@ -3095,10 +3063,10 @@
 			"DELETE": "Delete",
 			"FIELDS": "Fields",
 			"FIELDS_TITLE": "(fields)",
+			"TITLE_EXTRAS": "(receipts)",
 			"ITEM": "Item",
 			"MANAGE": "Manage",
-			"ACTIONS": "Actions",
-			"TITLE_EXTRAS": "(receipts)"
+			"ACTIONS": "Actions"
 		},
 		"NOTIFICATIONS": {
 			"GET": {
@@ -3133,85 +3101,88 @@
 			"ERROR": "An error occured with {{ printReceipt }}. Correct and try again."
 		}
 	},
-	"COMMERCIAL_UI_PARTNERS": {
-		"INDEX": {
-			"CHANGEPASSWORD": "Change password",
-			"TENANTS": "Tenants",
-			"USERS": "Users",
-			"LOGOUT": "Logout"
-		}
-	},
-	"COMMERCIAL_USERS": {
-		"INDEX": {
-			"CREATE": " Create user",
-			"USERS": "Users"
-		},
-		"TITLE": "Users",
-		"CREATE": "Create",
-		"CREATEUSER": "Create user",
-		"EDIT": "Edit",
-		"EDITUSER": "Edit user",
-		"EMAIL": "Email: ",
+	"TERMINALS": {
 		"FORM": {
 			"LABELS": {
-				"EMAIL": "Email",
-				"USERNAME": "Username",
-				"PASSWORD": "Password",
-				"CONFIRMPASSWORD": "Confirm password"
+				"NAME": "Name",
+				"CONNECTIONSTRING": "Connection string",
+				"CONNECTION": "Connection",
+				"DESCRIPTION": "Description",
+				"CLIENTID": "Client",
+				"TERMINALID": "Terminal",
+				"AMOUNT": "Amount",
+				"INVOICEID": "Invoice ID",
+				"CURRENCYCODE": "Currency"
 			},
 			"PLACEHOLDERS": {
-				"EMAIL": "Enter a email",
-				"USERNAME": "Enter a username",
-				"PASSWORD": "Enter a password",
-				"CONFIRMPASSWORD": "Enter a confirm password"
+				"NAME": "Name",
+				"CONNECTIONSTRING": "Connection string",
+				"CONNECTION": "Connection",
+				"DESCRIPTION": "Description",
+				"CLIENTID": "Client",
+				"TERMINALID": "Terminal",
+				"AMOUNT": "Amount",
+				"INVOICEID": "Invoice ID",
+				"CURRENCYCODE": "Currency"
 			},
 			"VALIDATION": {
-				"EMAIL": {
-					"REQUIRED": "An Email is required.",
-					"INVALIDEMAIL": "Please enter a valid email."
+				"NAME": {
+					"REQUIRED": "Name is required."
 				},
-				"USERNAME": {
-					"REQUIRED": "An username is required."
+				"CONNECTIONSTRING": {
+					"REQUIRED": "Connection string is required."
 				},
-				"PASSWORD": {
-					"REQUIRED": "A password is required."
+				"CONNECTION": {
+					"REQUIRED": "Connection is required."
 				},
-				"CONFIRMPASSWORD": {
-					"PASSWORDMISMATCH": "The passwords must match."
+				"CLIENTID": {
+					"REQUIRED": "Client is required."
+				},
+				"TERMINALID": {
+					"REQUIRED": "Terminal is required."
+				},
+				"AMOUNT": {
+					"REQUIRED": "Amount is required."
+				},
+				"INVOICEID": {
+					"REQUIRED": "Invoice ID is required."
+				},
+				"CURRENCYCODE": {
+					"REQUIRED": "Currency is required."
 				}
 			}
-		}
-	},
-	"COMMERCIAL_OPEN_API": {
-		"INDEX": {
-			"OPEN_API": "Open API"
-		}
-	},
-	"COMMERCIAL_DATABASES": {
-		"INDEX": {
-			"CREATE": "Create database",
-			"DATABASES": "Databases"
 		},
-		"TITLE": "Databases",
-		"CREATE": "Create",
-		"CREATEDATABASE": "Create Database",
-		"EDIT": "Edit",
-		"EDITDATABASE": "Edit database",
-		"REMOVE": "Remove",
-		"FORM": {
-			"LABELS": {
-				"NAME": "Database name",
-				"HOSTNAME": "Hostname",
-				"DATABASENAME": "Database name",
-				"CANDELETEDATABASE": "Can delete database"
-			},
-			"PLACEHOLDERS": {
-				"NAME": "Enter a database name",
-				"HOSTNAME": "Enter a hostname",
-				"DATABASENAME": "Enter a database name",
-				"CANDELETEDATABASE": "Can delete database"
-			},
-			"VALIDATION": {}
+		"CREATE": {
+			"CREATE": "Create",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDIT": "Edit",
+			"BUTTON_EDIT": "Update"
+		},
+		"INDEX": {
+			"TITLE_EXTRAS": "(Terminals)",
+			"CREATE": "Create",
+			"EDIT": "Edit",
+			"DELETE": "Delete",
+			"MANAGE": "Manage",
+			"ACTIONS": "Actions",
+			"TYPES": "Types"
+		},
+		"PAY": {
+			"TITLE": "Card payment",
+			"BUTTON_PAY": "Pay"
+		},
+		"QUEUE": {
+			"ADDING": "Adding terminal {{ name }}",
+			"UPDATING": "Updating terminal {{ name }}",
+			"DELETING": "Deleting terminal {{ name }}",
+			"ERROR": "An error occured with terminal {{ name }}. Correct and try again."
+		},
+		"ENTITY_ACTION_PROVIDER": {
+			"ENTITY_ACTION": {
+				"TERMINAL_PAYMENT": "Card payment"
+			}
 		}
 	}
 }

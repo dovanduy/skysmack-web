@@ -14,7 +14,7 @@ export class CommercialAccountForgotPasswordValidation extends Validation {
         }
     };
 
-    public area = 'OAUTH2';
+    public area = 'COMMERCIAL_ACCOUNT';
 
     public formValidators = [];
 
