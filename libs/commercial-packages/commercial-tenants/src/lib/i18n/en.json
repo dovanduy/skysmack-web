@@ -10,6 +10,7 @@
         "EDIT": "Edit",
         "EDITTENANT": "Edit tenant",
         "DETAILS": "Details",
+        "REMOVE": "Remove",
         "HOSTNAME": "Hostname",
         "SAFESUBDOMAIN": "Safe subdomain",
         "STATE": "State",

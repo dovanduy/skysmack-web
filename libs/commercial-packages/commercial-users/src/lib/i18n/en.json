@@ -6,6 +6,8 @@
         },
         "TITLE": "Users",
         "CREATE": "Create",
+        "DETAILS": "Details",
+        "REMOVE": "TTTRemove",
         "CREATEUSER": "Create user",
         "EDIT": "Edit",
         "EDITUSER": "Edit user",
