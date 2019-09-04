@@ -1,123 +1,4 @@
 {
-	"ACCESS_POLICY_PERMISSIONS": {
-		"CREATE": {
-			"CREATE": "Create",
-			"BUTTON_CREATE": "Create"
-		},
-		"EDIT": {
-			"EDITING": "Edit",
-			"BUTTON_EDIT": "Update"
-		},
-		"INDEX": {
-			"TITLE_EXTRAS": "(permissions)",
-			"ACTIONS": "Actions",
-			"CREATE": "Create",
-			"MANAGE": "Manage",
-			"BACK": "Back",
-			"ROLES": "Roles",
-			"FIELDS_TITLE": "(fields)"
-		},
-		"FORM": {
-			"LABELS": {
-				"PACKAGEPATH": "Package path",
-				"RULEID": "Rule id",
-				"ORDER": "Order",
-				"ISTOPLEVEL": "Is Top Level",
-				"PERMISSION": "Permission"
-			},
-			"PLACEHOLDERS": {
-				"PACKAGEPATH": "Package path",
-				"RULEID": "Rule id",
-				"ORDER": "Order",
-				"ISTOPLEVEL": "Is Top Level",
-				"PERMISSION": "Permission"
-			},
-			"VALIDATION": {}
-		},
-		"QUEUE": {
-			"ADDING": "Adding {{ permission }} permission",
-			"UPDATING": "Updating {{ permission }} permission",
-			"DELETING": "Deleting {{ permission }} permission",
-			"ERROR": "An error occured with {{ permission }} permission. Correct and try again."
-		}
-	},
-	"ACCESS_POLICY_ROLES": {
-		"CREATE": {
-			"CREATE": "Create",
-			"BUTTON_CREATE": "Create"
-		},
-		"EDIT": {
-			"EDITING": "Edit",
-			"BUTTON_EDIT": "Update"
-		},
-		"INDEX": {
-			"TITLE_EXTRAS": "(roles)",
-			"ACTIONS": "Actions",
-			"CREATE": "Create",
-			"MANAGE": "Manage",
-			"BACK": "Back",
-			"ROLES": "Roles",
-			"FIELDS_TITLE": "(fields)"
-		},
-		"FORM": {
-			"LABELS": {
-				"RULEID": "Rule",
-				"ROLEID": "Role"
-			},
-			"PLACEHOLDERS": {
-				"RULEID": "Rule",
-				"ROLEID": "Role"
-			},
-			"VALIDATION": {
-				"NAME": {
-					"REQUIRED": "A name is required."
-				}
-			}
-		},
-		"QUEUE": {
-			"ADDING": "Adding {{ roleId }}",
-			"UPDATING": "Updating {{ roleId }}",
-			"DELETING": "Deleting {{ roleId }}",
-			"ERROR": "An error occured with {{ roleId }}. Correct and try again."
-		}
-	},
-	"ACCESS_POLICY_RULES": {
-		"CREATE": {
-			"CREATE": "Create",
-			"BUTTON_CREATE": "Create"
-		},
-		"EDIT": {
-			"EDITING": "Rediger",
-			"BUTTON_EDIT": "Update"
-		},
-		"INDEX": {
-			"TITLE_EXTRAS": "(rules)",
-			"ACTIONS": "Actions",
-			"CREATE": "Create",
-			"MANAGE": "Manage",
-			"BACK": "Back",
-			"ROLES": "Roles",
-			"FIELDS_TITLE": "(fields)"
-		},
-		"FORM": {
-			"LABELS": {
-				"ACCESS": "Access",
-				"AUTHENTICATED": "Authenticated",
-				"INCLUDEROLES": "Include roles"
-			},
-			"PLACEHOLDERS": {
-				"ACCESS": "Access",
-				"AUTHENTICATED": "Authenticated",
-				"INCLUDEROLES": "Include roles"
-			}
-		},
-		"QUEUE": {
-			"ADDING": "Adding the access policy rule",
-			"UPDATING": "Updating the access policy rule",
-			"DELETING": "Deleting the access policy rule",
-			"ERROR": "An error occured with the access policy rule. Correct and try again."
-		}
-	},
 	"ACCESS_POLICIES": {
 		"TITLE": "Access policies",
 		"DASHBOARD": {
@@ -275,69 +156,48 @@
 		"NOTIFICATIONS": {},
 		"QUEUE": {}
 	},
-	"IDENTITIES": {
+	"CLIENTS": {
+		"CREATE": {
+			"CREATE": "Create",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDIT": "Edit",
+			"BUTTON_EDIT": "Update"
+		},
 		"INDEX": {
-			"ROLES": "Roles",
-			"USERS": "Users",
-			"ACCOUNTS": "Accounts",
-			"APPLICATIONS": "Applications",
-			"USERS_ROLES_TITLE": "User roles",
-			"APPLICATIONS_ROLES_TITLE": "Application roles",
+			"TITLE_EXTRAS": "(Clients)",
+			"ACTIONS": "Actions",
+			"CREATE": "Create",
+			"DELETE": "Delete",
 			"MANAGE": "Manage",
-			"SETTINGS": "Settings",
-			"ACCOUNT": "Account",
-			"CHANGE_PASSWORD": "Change password",
-			"FORGOT_PASSWORD": "Forgot password",
-			"CONFIRM_EMAIL": "Confirm email",
-			"AVAILABLE_SETTINGS": {
-				"LOCKOUT": "Lockout",
-				"USER": "User",
-				"PASSWORD": "Password",
-				"SIGNIN": "Sign in"
-			},
-			"CLIENTS": "Clients"
-		}
-	},
-	"IDENTITIES_SETTINGS": {
+			"BACK": "Back"
+		},
 		"FORM": {
 			"LABELS": {
-				"ALLOWEDUSERNAMECHARACTERS": "Allowed user name characters",
-				"REQUIREUNIQUEEMAIL": "Require unique email",
-				"REQUIREDLENGTH": "Required length",
-				"REQUIREDUNIQUECHARS": "Required unique characters",
-				"REQUIRENONALPHANUMERIC": "Require non alphanumeric",
-				"REQUIRELOWERCASE": "Require lowercase",
-				"REQUIREUPPERCASE": "Require uppercase",
-				"REQUIREDIGIT": "Require digit",
-				"ALLOWEDFORNEWUSERS": "Allowed for new users",
-				"MAXFAILEDACCESSATTEMPTS": "Max failed access attempts",
-				"DEFAULTLOCKOUTTIMESPAN": "Default lockout time span",
-				"REQUIRECONFIRMEDEMAIL": "Require confirmed email",
-				"REQUIRECONFIRMEDPHONENUMBER": "Require confirmed phone number"
+				"NAME": "Name",
+				"DESCRIPTION": "Description",
+				"ONLINE": "Online"
 			},
 			"PLACEHOLDERS": {
-				"ALLOWEDUSERNAMECHARACTERS": "Allowed user name characters",
-				"REQUIREUNIQUEEMAIL": "Require unique email",
-				"REQUIREDLENGTH": "Required length",
-				"REQUIREDUNIQUECHARS": "Required unique characters",
-				"REQUIRENONALPHANUMERIC": "Require non alphanumeric",
-				"REQUIRELOWERCASE": "Require lowercase",
-				"REQUIREUPPERCASE": "Require uppercase",
-				"REQUIREDIGIT": "Require digit",
-				"ALLOWEDFORNEWUSERS": "Allowed for new users",
-				"MAXFAILEDACCESSATTEMPTS": "Max failed access attempts",
-				"DEFAULTLOCKOUTTIMESPAN": "Default lockout time span",
-				"REQUIRECONFIRMEDEMAIL": "Require confirmed email",
-				"REQUIRECONFIRMEDPHONENUMBER": "Require confirmed phone number"
+				"NAME": "Name",
+				"DESCRIPTION": "Description",
+				"ONLINE": "Online"
 			},
-			"VALIDATION": {}
-		},
-		"CREATE": {
-			"CREATE": "Edit settings"
+			"VALIDATION": {
+				"NAME": {
+					"REQUIRED": "Name is required."
+				},
+				"DESCRIPTION": {
+					"REQUIRED": "Description is required."
+				}
+			}
 		},
 		"QUEUE": {
-			"UPDATING": "Updating",
-			"ERROR": "Error occured updating settings."
+			"ADDING": "Adding client {{ name }}",
+			"UPDATING": "Updating client {{ name }}",
+			"DELETING": "Deleting client {{ name }}",
+			"ERROR": "An error occured with client {{ name }}. Correct and try again."
 		}
 	},
 	"APPLICATIONS": {
@@ -878,6 +738,39 @@
 			}
 		}
 	},
+	"INVOICES_PRODUCTS": {
+		"FORM": {
+			"LABELS": {
+				"INVOICEID": "Invoice",
+				"PRODUCTID": "Product",
+				"AMOUNT": "Amount"
+			},
+			"PLACEHOLDERS": {
+				"INVOICEID": "Invoice",
+				"PRODUCTID": "Product",
+				"AMOUNT": "Amount"
+			},
+			"VALIDATION": {
+				"INVOICEID": {
+					"REQUIRED": "Invoice is required."
+				},
+				"PRODUCTID": {
+					"REQUIRED": "Product is required."
+				},
+				"AMOUNT": {
+					"REQUIRED": "Amount is required."
+				}
+			}
+		},
+		"ADD_TO_INVOICE": {
+			"TITLE": "Add to invoice",
+			"SUBMIT": "Submit"
+		},
+		"ADD_PRODUCTS": {
+			"TITLE": "Add products",
+			"SUBMIT": "Submit"
+		}
+	},
 	"LODGING_RESERVATIONS": {
 		"ARRIVALS": {
 			"TITLE": "Arrivals",
@@ -987,39 +880,6 @@
 					"REQUIRED": "Latest check out is required"
 				}
 			}
-		}
-	},
-	"INVOICES_PRODUCTS": {
-		"FORM": {
-			"LABELS": {
-				"INVOICEID": "Invoice",
-				"PRODUCTID": "Product",
-				"AMOUNT": "Amount"
-			},
-			"PLACEHOLDERS": {
-				"INVOICEID": "Invoice",
-				"PRODUCTID": "Product",
-				"AMOUNT": "Amount"
-			},
-			"VALIDATION": {
-				"INVOICEID": {
-					"REQUIRED": "Invoice is required."
-				},
-				"PRODUCTID": {
-					"REQUIRED": "Product is required."
-				},
-				"AMOUNT": {
-					"REQUIRED": "Amount is required."
-				}
-			}
-		},
-		"ADD_TO_INVOICE": {
-			"TITLE": "Add to invoice",
-			"SUBMIT": "Submit"
-		},
-		"ADD_PRODUCTS": {
-			"TITLE": "Add products",
-			"SUBMIT": "Submit"
 		}
 	},
 	"LODGING_SETTINGS": {
@@ -2206,7 +2066,49 @@
 			"ERROR": "An error occured with the lodging type reservation price change valid from/to: {{ dates }}. Correct and try again."
 		}
 	},
-	"CLIENTS": {
+	"TERMINAL_PAYMENT_RECEIPTS": {
+		"FORM": {
+			"LABELS": {
+				"REFERENCENUMBER": "Reference number",
+				"PRINTRECEIPT": "Print receipt",
+				"RECEIPTDOCUMENT": "Receipt document",
+				"INVOICEPAYMENTID": "Invoice payment"
+			},
+			"PLACEHOLDERS": {
+				"REFERENCENUMBER": "Reference number",
+				"PRINTRECEIPT": "Print receipt",
+				"RECEIPTDOCUMENT": "Receipt document",
+				"INVOICEPAYMENTID": "Invoice payment"
+			},
+			"VALIDATION": {
+				"REFERENCENUMBER": {
+					"REQUIRED": "Reference number is required"
+				},
+				"PRINTRECEIPT": {
+					"REQUIRED": "Print receipt is required"
+				},
+				"RECEIPTDOCUMENT": {
+					"REQUIRED": "Receipt document is required"
+				},
+				"INVOICEPAYMENTID": {}
+			}
+		},
+		"FIELDS": {
+			"CREATE": {
+				"ADD": "Add new field"
+			},
+			"EDIT": {
+				"EDITING": "Editing"
+			},
+			"INDEX": {
+				"ACTIONS": "Actions",
+				"CREATE": "Create new field",
+				"OTHER": "Other",
+				"BACK": "Back",
+				"FIELDS": "Fields",
+				"EDIT": "Edit"
+			}
+		},
 		"CREATE": {
 			"CREATE": "Create",
 			"BUTTON_CREATE": "Create"
@@ -2216,41 +2118,85 @@
 			"BUTTON_EDIT": "Update"
 		},
 		"INDEX": {
-			"TITLE_EXTRAS": "(Clients)",
-			"ACTIONS": "Actions",
+			"PACKAGES": "Packages",
 			"CREATE": "Create",
+			"EDIT": "Edit",
 			"DELETE": "Delete",
+			"FIELDS": "Fields",
+			"FIELDS_TITLE": "(fields)",
+			"TITLE_EXTRAS": "(payment receipts)",
+			"ITEM": "Item",
 			"MANAGE": "Manage",
-			"BACK": "Back"
+			"ACTIONS": "Actions"
 		},
-		"FORM": {
-			"LABELS": {
-				"NAME": "Name",
-				"DESCRIPTION": "Description",
-				"ONLINE": "Online"
+		"NOTIFICATIONS": {
+			"GET": {
+				"PAGED_ERROR": "Failed to get terminalPaymentReceipts ({{ httpErrorCode }}).",
+				"SINGLE_FAILURE": "Failed to get {{ printReceipt }} ({{ httpErrorCode }}).",
+				"FIELDS_FAILURE": "Failed to get fields for terminalPaymentReceipts ({{ httpErrorCode }}).",
+				"SINGLE_FIELD_FAILURE": "Failed to get {{ printReceipt }} field ({{ httpErrorCode }})."
 			},
-			"PLACEHOLDERS": {
-				"NAME": "Name",
-				"DESCRIPTION": "Description",
-				"ONLINE": "Online"
+			"ADD": {
+				"SUCCESS": "Added {{ printReceipt }} succcessfully.",
+				"FAILURE": "Failed to add {{ printReceipt }} ({{ httpErrorCode }}).",
+				"FIELD_FAILURE": "Failed to add field for {{ printReceipt }} ({{ httpErrorCode }}).",
+				"FIELD_SUCCESS": "Added field for {{ printReceipt }} successfully."
 			},
-			"VALIDATION": {
-				"NAME": {
-					"REQUIRED": "Name is required."
-				},
-				"DESCRIPTION": {
-					"REQUIRED": "Description is required."
-				}
+			"UPDATE": {
+				"SUCCESS": "Updated {{ printReceipt }} successfully.",
+				"FAILURE": "Failed to update {{ printReceipt }} ({{ httpErrorCode }}).",
+				"FIELD_SUCCESS": "Updated field for {{ printReceipt }} successfully.",
+				"FIELD_FAILURE": "Failed to update field for {{ printReceipt }} ({{ httpErrorCode }})"
+			},
+			"REMOVE": {
+				"SUCCESS": "Removed {{ printReceipt }} successfully.",
+				"FAILURE": "Failed to remove {{ printReceipt }} ({{ httpErrorCode }}).",
+				"FIELD_SUCCESS": "Removed field for {{ printReceipt }} succesfully.",
+				"FIELD_FAILURE": "Failed to remove field for {{ printReceipt }} ({{ httpErrorCode }})."
 			}
 		},
 		"QUEUE": {
-			"ADDING": "Adding client {{ name }}",
-			"UPDATING": "Updating client {{ name }}",
-			"DELETING": "Deleting client {{ name }}",
-			"ERROR": "An error occured with client {{ name }}. Correct and try again."
+			"ADDING": "Adding {{ printReceipt }}",
+			"UPDATING": "Updating {{ printReceipt }}",
+			"DELETING": "Deleting {{ printReceipt }}",
+			"ERROR": "An error occured with {{ printReceipt }}. Correct and try again."
 		}
 	},
-	"CONNECTIONS": {
+	"TERMINAL_RECEIPTS": {
+		"FORM": {
+			"LABELS": {
+				"TYPE": "Type",
+				"PRINTRECEIPT": "Print receipt"
+			},
+			"PLACEHOLDERS": {
+				"TYPE": "Type",
+				"PRINTRECEIPT": "Print receipt"
+			},
+			"VALIDATION": {
+				"TYPE": {
+					"REQUIRED": "Type is required"
+				},
+				"PRINTRECEIPT": {
+					"REQUIRED": "Print receipt is required"
+				}
+			}
+		},
+		"FIELDS": {
+			"CREATE": {
+				"ADD": "Add new field"
+			},
+			"EDIT": {
+				"EDITING": "Editing"
+			},
+			"INDEX": {
+				"ACTIONS": "Actions",
+				"CREATE": "Create new field",
+				"OTHER": "Other",
+				"BACK": "Back",
+				"FIELDS": "Fields",
+				"EDIT": "Edit"
+			}
+		},
 		"CREATE": {
 			"CREATE": "Create",
 			"BUTTON_CREATE": "Create"
@@ -2260,43 +2206,48 @@
 			"BUTTON_EDIT": "Update"
 		},
 		"INDEX": {
-			"TITLE_EXTRAS": "(Connections)",
-			"ACTIONS": "Actions",
+			"PACKAGES": "Packages",
 			"CREATE": "Create",
+			"EDIT": "Edit",
 			"DELETE": "Delete",
+			"FIELDS": "Fields",
+			"FIELDS_TITLE": "(fields)",
+			"TITLE_EXTRAS": "(receipts)",
+			"ITEM": "Item",
 			"MANAGE": "Manage",
-			"BACK": "Back"
+			"ACTIONS": "Actions"
 		},
-		"FORM": {
-			"LABELS": {
-				"STATUS": "Status",
-				"CLIENTID": "Client",
-				"TERMINALID": "Terminal",
-				"ONLINE": "Online"
+		"NOTIFICATIONS": {
+			"GET": {
+				"PAGED_ERROR": "Failed to get terminalReceipts ({{ httpErrorCode }}).",
+				"SINGLE_FAILURE": "Failed to get {{ printReceipt }} ({{ httpErrorCode }}).",
+				"FIELDS_FAILURE": "Failed to get fields for terminalReceipts ({{ httpErrorCode }}).",
+				"SINGLE_FIELD_FAILURE": "Failed to get {{ printReceipt }} field ({{ httpErrorCode }})."
 			},
-			"PLACEHOLDERS": {
-				"STATUS": "Status",
-				"CLIENTID": "Client",
-				"TERMINALID": "Terminal",
-				"ONLINE": "Online"
+			"ADD": {
+				"SUCCESS": "Added {{ printReceipt }} succcessfully.",
+				"FAILURE": "Failed to add {{ printReceipt }} ({{ httpErrorCode }}).",
+				"FIELD_FAILURE": "Failed to add field for {{ printReceipt }} ({{ httpErrorCode }}).",
+				"FIELD_SUCCESS": "Added field for {{ printReceipt }} successfully."
 			},
-			"VALIDATION": {
-				"STATUS": {
-					"REQUIRED": "Status is required."
-				},
-				"CLIENTID": {
-					"REQUIRED": "Client is required."
-				},
-				"TERMINALID": {
-					"REQUIRED": "Terminal is required."
-				}
+			"UPDATE": {
+				"SUCCESS": "Updated {{ printReceipt }} successfully.",
+				"FAILURE": "Failed to update {{ printReceipt }} ({{ httpErrorCode }}).",
+				"FIELD_SUCCESS": "Updated field for {{ printReceipt }} successfully.",
+				"FIELD_FAILURE": "Failed to update field for {{ printReceipt }} ({{ httpErrorCode }})"
+			},
+			"REMOVE": {
+				"SUCCESS": "Removed {{ printReceipt }} successfully.",
+				"FAILURE": "Failed to remove {{ printReceipt }} ({{ httpErrorCode }}).",
+				"FIELD_SUCCESS": "Removed field for {{ printReceipt }} succesfully.",
+				"FIELD_FAILURE": "Failed to remove field for {{ printReceipt }} ({{ httpErrorCode }})."
 			}
 		},
 		"QUEUE": {
-			"ADDING": "Adding the connection with the client: {{ client }}",
-			"UPDATING": "Updating the connection with the client: {{ client }}",
-			"DELETING": "Deleting the connection with the client: {{ client }}",
-			"ERROR": "An error occured with the connection with the client: {{ client }}. Correct and try again."
+			"ADDING": "Adding {{ printReceipt }}",
+			"UPDATING": "Updating {{ printReceipt }}",
+			"DELETING": "Deleting {{ printReceipt }}",
+			"ERROR": "An error occured with {{ printReceipt }}. Correct and try again."
 		}
 	},
 	"TERMINALS": {
@@ -2383,45 +2334,6 @@
 			}
 		}
 	},
-	"RECEIPTS": {
-		"CREATE": {
-			"CREATE": "Create",
-			"BUTTON_CREATE": "Create"
-		},
-		"EDIT": {
-			"EDIT": "Edit",
-			"BUTTON_EDIT": "Update"
-		},
-		"INDEX": {
-			"TITLE_EXTRAS": "(Receipts)",
-			"ACTIONS": "Actions",
-			"CREATE": "Create",
-			"DELETE": "Delete",
-			"MANAGE": "Manage",
-			"FIELDS": "Fields",
-			"FIELDS_TITLE": "(fields)",
-			"BACK": "Back"
-		},
-		"FORM": {
-			"LABELS": {
-				"NAME": "Name"
-			},
-			"PLACEHOLDERS": {
-				"NAME": "Enter name"
-			},
-			"VALIDATION": {
-				"NAME": {
-					"REQUIRED": "Name is required."
-				}
-			}
-		},
-		"QUEUE": {
-			"ADDING": "Adding receipt {{ name }}",
-			"UPDATING": "Updating receipt {{ name }}",
-			"DELETING": "Deleting receipt {{ name }}",
-			"ERROR": "An error occured with receipt {{ name }}. Correct and try again."
-		}
-	},
 	"UI": {
 		"ERROR_MESSAGE": {
 			"ERROR_OCCURRED": "ERROR OCCURRED!",
@@ -2468,7 +2380,6 @@
 			"BUTTON_VALIDATOR": "+ Add validator"
 		},
 		"PERMISSION": {
-			"SET_ACCESS": "Set access",
 			"WRITEPERMISSION": "Write permissions",
 			"READPERMISSION": "Read permissions"
 		},
@@ -2528,182 +2439,6 @@
 				"DEFAULTTAX": "Default tax"
 			}
 		}
-	},
-	"COMMERCIAL_TENANTS": {
-		"INDEX": {
-			"CREATE": "Create tenant",
-			"TENANTS": "Tenants"
-		},
-		"TITLE": "Tenants",
-		"CREATE": "Create",
-		"CREATETENANT": "Create Tenant",
-		"EDIT": "Edit",
-		"EDITTENANT": "Edit tenant",
-		"DETAILS": "Details",
-		"HOSTNAME": "Hostname",
-		"SAFESUBDOMAIN": "Safe subdomain",
-		"STATE": "State",
-		"FORM": {
-			"LABELS": {
-				"NAME": "Name",
-				"HOSTNAME": "Hostname",
-				"SAFESUBDOMAIN": "Safe subdomain",
-				"STATE": "State"
-			},
-			"PLACEHOLDERS": {
-				"NAME": "Enter a Name",
-				"HOSTNAME": "Enter a hostname",
-				"SAFESUBDOMAIN": "Enter a safe subdomain",
-				"STATE": "Enter a state"
-			},
-			"VALIDATION": {
-				"NAME": {
-					"REQUIRED": "An Name is required."
-				},
-				"HOSTNAME": {
-					"REQUIRED": "An hostname is required."
-				},
-				"SAFESUBDOMAIN": {
-					"REQUIRED": "A subdomain is required."
-				},
-				"STATE": {
-					"REQUIRED": "The state is required."
-				}
-			}
-		}
-	},
-	"COMMERCIAL_ACCOUNT": {
-		"INDEX": {
-			"FORGOTPASSWORD": "Forgot password",
-			"ACCOUNT": "Account",
-			"WELCOME": "Welcome to skysmack",
-			"CONFIRMEMAIL": "Confirm e-mail"
-		},
-		"LOGIN": {
-			"SIGNIN": "Sign in",
-			"CREDENTIALS": "Please enter credentials below",
-			"INCORRECT": "The entered password and/or username was incorrect. Please try again.",
-			"FORGOTPASSWORD": "Forgot password",
-			"CONFIRMEMAIL": "Confirm email",
-			"REGISTER": "Register"
-		},
-		"FORM": {
-			"LABELS": {
-				"EMAIL": "Email",
-				"PASSWORD": "Password",
-				"STAYSIGNEDIN": "Stay signed in?",
-				"USERNAME": "User name",
-				"CONFIRMPASSWORD": "Confirm Password"
-			},
-			"PLACEHOLDERS": {
-				"EMAIL": "Enter email",
-				"PASSWORD": "Enter password",
-				"CURRENTPASSWORD": "Current password",
-				"NEWPASSWORD": "New password",
-				"CONFIRMNEWPASSWORD": "Confirm new password",
-				"USERNAME": "Enter user name",
-				"CONFIRMPASSWORD": "Confirm Password"
-			},
-			"VALIDATION": {
-				"EMAIL": {
-					"REQUIRED": "Email is required.",
-					"INVALIDEMAIL": "Please enter a valid email."
-				},
-				"PASSWORD": {
-					"REQUIRED": "Password is required."
-				},
-				"CURRENTPASSWORD": {
-					"REQUIRED": "Current password is required."
-				},
-				"NEWPASSWORD": {
-					"REQUIRED": "New password is required."
-				},
-				"CONFIRMNEWPASSWORD": {
-					"REQUIRED": "Please repeat the new password.",
-					"PASSWORDMISMATCH": "Passwords must match."
-				},
-				"USERNAME": {
-					"REQUIRED": "User name is required"
-				}
-			}
-		},
-		"VALIDATION": {
-			"TOKEN": {
-				"REQUIRED": "Token is required"
-			},
-			"EMAIL": {
-				"REQUIRED": "Email is required.",
-				"INVALIDEMAIL": "Please type a valid email"
-			},
-			"CURRENTPASSWORD": {
-				"REQUIRED": "Current password is required."
-			},
-			"NEWPASSWORD": {
-				"REQUIRED": "New password is required."
-			},
-			"CONFIRMNEWPASSWORD": {
-				"REQUIRED": "Please repeat the new password.",
-				"PASSWORDMISMATCH": "Passwords must match."
-			}
-		},
-		"CHANGE_PASSWORD": {
-			"TITLE": "Change password",
-			"BUTTON_EDIT": "Update"
-		},
-		"REGISTER": {
-			"TITLE": "Register"
-		}
-	},
-	"COMMERCIAL_UI_PARTNERS": {
-		"INDEX": {
-			"CHANGEPASSWORD": "Change password",
-			"TENANTS": "Tenants",
-			"USERS": "Users",
-			"LOGOUT": "Logout"
-		}
-	},
-	"COMMERCIAL_USERS": {
-		"INDEX": {
-			"CREATE": " Create user",
-			"USERS": "Users"
-		},
-		"TITLE": "Users",
-		"CREATE": "Create",
-		"CREATEUSER": "Create user",
-		"EDIT": "Edit",
-		"EDITUSER": "Edit user",
-		"EMAIL": "Email: ",
-		"FORM": {
-			"LABELS": {
-				"EMAIL": "Email",
-				"USERNAME": "Username",
-				"PASSWORD": "Password",
-				"CONFIRMPASSWORD": "Confirm password"
-			},
-			"PLACEHOLDERS": {
-				"EMAIL": "Enter a email",
-				"USERNAME": "Enter a username",
-				"PASSWORD": "Enter a password",
-				"CONFIRMPASSWORD": "Enter a confirm password"
-			},
-			"VALIDATION": {
-				"EMAIL": {
-					"REQUIRED": "An Email is required.",
-					"INVALIDEMAIL": "Please enter a valid email."
-				},
-				"USERNAME": {
-					"REQUIRED": "An username is required."
-				},
-				"PASSWORD": {
-					"REQUIRED": "A password is required."
-				},
-				"CONFIRMPASSWORD": {
-					"PASSWORDMISMATCH": "The passwords must match."
-				}
-			}
-		},
-		"DETAILS": "Details",
-		"REMOVE": "Remove"
 	},
 	"OAUTH2": {
 		"FORM": {
@@ -2943,12 +2678,10 @@
 			"TITLE": "Terminal Payments",
 			"MANAGE": "Manage",
 			"TERMINALS": "Terminals",
-			"CLIENTS": "Clients",
 			"RECEIPTS": "Receipts",
 			"CONNECTIONS": "Connections",
-			"PAYMENT_RECEIPTS": "Payment receipts",
-			"TERMINAL_RECEIPTS": "Receipts",
-			"TERMINAL_PAYMENT_RECEIPTS": "Payment receipts"
+			"TERMINAL_PAYMENT_RECEIPTS": "Payment receipts",
+			"TERMINAL_RECEIPTS": "Receipts"
 		}
 	},
 	"FIELDS": {
@@ -3012,137 +2745,191 @@
 			"ERROR": "An error occured with settings. Correct and try again."
 		}
 	},
-	"TERMINAL_PAYMENT_RECEIPTS": {
-		"FORM": {
-			"LABELS": {
-				"REFERENCENUMBER": "Reference number",
-				"PRINTRECEIPT": "Print receipt",
-				"RECEIPTDOCUMENT": "Receipt document",
-				"INVOICEPAYMENTID": "Invoice payment"
-			},
-			"PLACEHOLDERS": {
-				"REFERENCENUMBER": "Reference number",
-				"PRINTRECEIPT": "Print receipt",
-				"RECEIPTDOCUMENT": "Receipt document",
-				"INVOICEPAYMENTID": "Invoice payment"
-			},
-			"VALIDATION": {
-				"REFERENCENUMBER": {
-					"REQUIRED": "Reference number is required"
-				},
-				"PRINTRECEIPT": {
-					"REQUIRED": "Print receipt is required"
-				},
-				"RECEIPTDOCUMENT": {
-					"REQUIRED": "Receipt document is required"
-				},
-				"INVOICEPAYMENTID": {}
-			}
-		},
-		"FIELDS": {
-			"CREATE": {
-				"ADD": "Add new field"
-			},
-			"EDIT": {
-				"EDITING": "Editing"
-			},
-			"INDEX": {
-				"ACTIONS": "Actions",
-				"CREATE": "Create new field",
-				"OTHER": "Other",
-				"BACK": "Back",
-				"FIELDS": "Fields",
-				"EDIT": "Edit"
-			}
-		},
+	"ACCESS_POLICY_PERMISSIONS": {
 		"CREATE": {
 			"CREATE": "Create",
 			"BUTTON_CREATE": "Create"
 		},
 		"EDIT": {
-			"EDIT": "Edit",
+			"EDITING": "Edit",
 			"BUTTON_EDIT": "Update"
 		},
 		"INDEX": {
-			"PACKAGES": "Packages",
-			"CREATE": "Create",
-			"EDIT": "Edit",
-			"DELETE": "Delete",
-			"FIELDS": "Fields",
-			"FIELDS_TITLE": "(fields)",
-			"ITEM": "Item",
-			"MANAGE": "Manage",
+			"TITLE_EXTRAS": "(permissions)",
 			"ACTIONS": "Actions",
-			"TITLE_EXTRAS": "(payment receipts)"
+			"CREATE": "Create",
+			"MANAGE": "Manage",
+			"BACK": "Back",
+			"ROLES": "Roles",
+			"FIELDS_TITLE": "(fields)"
 		},
-		"NOTIFICATIONS": {
-			"GET": {
-				"PAGED_ERROR": "Failed to get terminalPaymentReceipts ({{ httpErrorCode }}).",
-				"SINGLE_FAILURE": "Failed to get {{ printReceipt }} ({{ httpErrorCode }}).",
-				"FIELDS_FAILURE": "Failed to get fields for terminalPaymentReceipts ({{ httpErrorCode }}).",
-				"SINGLE_FIELD_FAILURE": "Failed to get {{ printReceipt }} field ({{ httpErrorCode }})."
-			},
-			"ADD": {
-				"SUCCESS": "Added {{ printReceipt }} succcessfully.",
-				"FAILURE": "Failed to add {{ printReceipt }} ({{ httpErrorCode }}).",
-				"FIELD_FAILURE": "Failed to add field for {{ printReceipt }} ({{ httpErrorCode }}).",
-				"FIELD_SUCCESS": "Added field for {{ printReceipt }} successfully."
-			},
-			"UPDATE": {
-				"SUCCESS": "Updated {{ printReceipt }} successfully.",
-				"FAILURE": "Failed to update {{ printReceipt }} ({{ httpErrorCode }}).",
-				"FIELD_SUCCESS": "Updated field for {{ printReceipt }} successfully.",
-				"FIELD_FAILURE": "Failed to update field for {{ printReceipt }} ({{ httpErrorCode }})"
-			},
-			"REMOVE": {
-				"SUCCESS": "Removed {{ printReceipt }} successfully.",
-				"FAILURE": "Failed to remove {{ printReceipt }} ({{ httpErrorCode }}).",
-				"FIELD_SUCCESS": "Removed field for {{ printReceipt }} succesfully.",
-				"FIELD_FAILURE": "Failed to remove field for {{ printReceipt }} ({{ httpErrorCode }})."
-			}
-		},
-		"QUEUE": {
-			"ADDING": "Adding {{ printReceipt }}",
-			"UPDATING": "Updating {{ printReceipt }}",
-			"DELETING": "Deleting {{ printReceipt }}",
-			"ERROR": "An error occured with {{ printReceipt }}. Correct and try again."
-		}
-	},
-	"TERMINAL_RECEIPTS": {
 		"FORM": {
 			"LABELS": {
-				"TYPE": "Type",
-				"PRINTRECEIPT": "Print receipt"
+				"PACKAGEPATH": "Package path",
+				"RULEID": "Rule id",
+				"ORDER": "Order",
+				"ISTOPLEVEL": "Is Top Level",
+				"PERMISSION": "Permission"
 			},
 			"PLACEHOLDERS": {
-				"TYPE": "Type",
-				"PRINTRECEIPT": "Print receipt"
+				"PACKAGEPATH": "Package path",
+				"RULEID": "Rule id",
+				"ORDER": "Order",
+				"ISTOPLEVEL": "Is Top Level",
+				"PERMISSION": "Permission"
+			},
+			"VALIDATION": {}
+		},
+		"QUEUE": {
+			"ADDING": "Adding {{ permission }} permission",
+			"UPDATING": "Updating {{ permission }} permission",
+			"DELETING": "Deleting {{ permission }} permission",
+			"ERROR": "An error occured with {{ permission }} permission. Correct and try again."
+		}
+	},
+	"ACCESS_POLICY_ROLES": {
+		"CREATE": {
+			"CREATE": "Create",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDITING": "Edit",
+			"BUTTON_EDIT": "Update"
+		},
+		"INDEX": {
+			"TITLE_EXTRAS": "(roles)",
+			"ACTIONS": "Actions",
+			"CREATE": "Create",
+			"MANAGE": "Manage",
+			"BACK": "Back",
+			"ROLES": "Roles",
+			"FIELDS_TITLE": "(fields)"
+		},
+		"FORM": {
+			"LABELS": {
+				"RULEID": "Rule",
+				"ROLEID": "Role"
+			},
+			"PLACEHOLDERS": {
+				"RULEID": "Rule",
+				"ROLEID": "Role"
 			},
 			"VALIDATION": {
-				"TYPE": {
-					"REQUIRED": "Type is required"
-				},
-				"PRINTRECEIPT": {
-					"REQUIRED": "Print receipt is required"
+				"NAME": {
+					"REQUIRED": "A name is required."
 				}
 			}
 		},
-		"FIELDS": {
-			"CREATE": {
-				"ADD": "Add new field"
+		"QUEUE": {
+			"ADDING": "Adding {{ roleId }}",
+			"UPDATING": "Updating {{ roleId }}",
+			"DELETING": "Deleting {{ roleId }}",
+			"ERROR": "An error occured with {{ roleId }}. Correct and try again."
+		}
+	},
+	"ACCESS_POLICY_RULES": {
+		"CREATE": {
+			"CREATE": "Create",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDITING": "Rediger",
+			"BUTTON_EDIT": "Update"
+		},
+		"INDEX": {
+			"TITLE_EXTRAS": "(rules)",
+			"ACTIONS": "Actions",
+			"CREATE": "Create",
+			"MANAGE": "Manage",
+			"BACK": "Back",
+			"ROLES": "Roles",
+			"FIELDS_TITLE": "(fields)"
+		},
+		"FORM": {
+			"LABELS": {
+				"ACCESS": "Access",
+				"AUTHENTICATED": "Authenticated",
+				"INCLUDEROLES": "Include roles"
 			},
-			"EDIT": {
-				"EDITING": "Editing"
-			},
-			"INDEX": {
-				"ACTIONS": "Actions",
-				"CREATE": "Create new field",
-				"OTHER": "Other",
-				"BACK": "Back",
-				"FIELDS": "Fields",
-				"EDIT": "Edit"
+			"PLACEHOLDERS": {
+				"ACCESS": "Access",
+				"AUTHENTICATED": "Authenticated",
+				"INCLUDEROLES": "Include roles"
 			}
 		},
+		"QUEUE": {
+			"ADDING": "Adding the access policy rule",
+			"UPDATING": "Updating the access policy rule",
+			"DELETING": "Deleting the access policy rule",
+			"ERROR": "An error occured with the access policy rule. Correct and try again."
+		}
+	},
+	"IDENTITIES": {
+		"INDEX": {
+			"ROLES": "Roles",
+			"USERS": "Users",
+			"ACCOUNTS": "Accounts",
+			"CLIENTS": "Clients",
+			"APPLICATIONS": "Applications",
+			"USERS_ROLES_TITLE": "User roles",
+			"APPLICATIONS_ROLES_TITLE": "Application roles",
+			"MANAGE": "Manage",
+			"SETTINGS": "Settings",
+			"ACCOUNT": "Account",
+			"CHANGE_PASSWORD": "Change password",
+			"FORGOT_PASSWORD": "Forgot password",
+			"CONFIRM_EMAIL": "Confirm email",
+			"AVAILABLE_SETTINGS": {
+				"LOCKOUT": "Lockout",
+				"USER": "User",
+				"PASSWORD": "Password",
+				"SIGNIN": "Sign in"
+			}
+		}
+	},
+	"IDENTITIES_SETTINGS": {
+		"FORM": {
+			"LABELS": {
+				"ALLOWEDUSERNAMECHARACTERS": "Allowed user name characters",
+				"REQUIREUNIQUEEMAIL": "Require unique email",
+				"REQUIREDLENGTH": "Required length",
+				"REQUIREDUNIQUECHARS": "Required unique characters",
+				"REQUIRENONALPHANUMERIC": "Require non alphanumeric",
+				"REQUIRELOWERCASE": "Require lowercase",
+				"REQUIREUPPERCASE": "Require uppercase",
+				"REQUIREDIGIT": "Require digit",
+				"ALLOWEDFORNEWUSERS": "Allowed for new users",
+				"MAXFAILEDACCESSATTEMPTS": "Max failed access attempts",
+				"DEFAULTLOCKOUTTIMESPAN": "Default lockout time span",
+				"REQUIRECONFIRMEDEMAIL": "Require confirmed email",
+				"REQUIRECONFIRMEDPHONENUMBER": "Require confirmed phone number"
+			},
+			"PLACEHOLDERS": {
+				"ALLOWEDUSERNAMECHARACTERS": "Allowed user name characters",
+				"REQUIREUNIQUEEMAIL": "Require unique email",
+				"REQUIREDLENGTH": "Required length",
+				"REQUIREDUNIQUECHARS": "Required unique characters",
+				"REQUIRENONALPHANUMERIC": "Require non alphanumeric",
+				"REQUIRELOWERCASE": "Require lowercase",
+				"REQUIREUPPERCASE": "Require uppercase",
+				"REQUIREDIGIT": "Require digit",
+				"ALLOWEDFORNEWUSERS": "Allowed for new users",
+				"MAXFAILEDACCESSATTEMPTS": "Max failed access attempts",
+				"DEFAULTLOCKOUTTIMESPAN": "Default lockout time span",
+				"REQUIRECONFIRMEDEMAIL": "Require confirmed email",
+				"REQUIRECONFIRMEDPHONENUMBER": "Require confirmed phone number"
+			},
+			"VALIDATION": {}
+		},
+		"CREATE": {
+			"CREATE": "Edit settings"
+		},
+		"QUEUE": {
+			"UPDATING": "Updating",
+			"ERROR": "Error occured updating settings."
+		}
+	},
+	"CONNECTIONS": {
 		"CREATE": {
 			"CREATE": "Create",
 			"BUTTON_CREATE": "Create"
@@ -3152,80 +2939,43 @@
 			"BUTTON_EDIT": "Update"
 		},
 		"INDEX": {
-			"PACKAGES": "Packages",
-			"CREATE": "Create",
-			"EDIT": "Edit",
-			"DELETE": "Delete",
-			"FIELDS": "Fields",
-			"FIELDS_TITLE": "(fields)",
-			"ITEM": "Item",
-			"MANAGE": "Manage",
+			"TITLE_EXTRAS": "(Connections)",
 			"ACTIONS": "Actions",
-			"TITLE_EXTRAS": "(receipts)"
+			"CREATE": "Create",
+			"DELETE": "Delete",
+			"MANAGE": "Manage",
+			"BACK": "Back"
 		},
-		"NOTIFICATIONS": {
-			"GET": {
-				"PAGED_ERROR": "Failed to get terminalReceipts ({{ httpErrorCode }}).",
-				"SINGLE_FAILURE": "Failed to get {{ printReceipt }} ({{ httpErrorCode }}).",
-				"FIELDS_FAILURE": "Failed to get fields for terminalReceipts ({{ httpErrorCode }}).",
-				"SINGLE_FIELD_FAILURE": "Failed to get {{ printReceipt }} field ({{ httpErrorCode }})."
+		"FORM": {
+			"LABELS": {
+				"STATUS": "Status",
+				"CLIENTID": "Client",
+				"TERMINALID": "Terminal",
+				"ONLINE": "Online"
 			},
-			"ADD": {
-				"SUCCESS": "Added {{ printReceipt }} succcessfully.",
-				"FAILURE": "Failed to add {{ printReceipt }} ({{ httpErrorCode }}).",
-				"FIELD_FAILURE": "Failed to add field for {{ printReceipt }} ({{ httpErrorCode }}).",
-				"FIELD_SUCCESS": "Added field for {{ printReceipt }} successfully."
+			"PLACEHOLDERS": {
+				"STATUS": "Status",
+				"CLIENTID": "Client",
+				"TERMINALID": "Terminal",
+				"ONLINE": "Online"
 			},
-			"UPDATE": {
-				"SUCCESS": "Updated {{ printReceipt }} successfully.",
-				"FAILURE": "Failed to update {{ printReceipt }} ({{ httpErrorCode }}).",
-				"FIELD_SUCCESS": "Updated field for {{ printReceipt }} successfully.",
-				"FIELD_FAILURE": "Failed to update field for {{ printReceipt }} ({{ httpErrorCode }})"
-			},
-			"REMOVE": {
-				"SUCCESS": "Removed {{ printReceipt }} successfully.",
-				"FAILURE": "Failed to remove {{ printReceipt }} ({{ httpErrorCode }}).",
-				"FIELD_SUCCESS": "Removed field for {{ printReceipt }} succesfully.",
-				"FIELD_FAILURE": "Failed to remove field for {{ printReceipt }} ({{ httpErrorCode }})."
+			"VALIDATION": {
+				"STATUS": {
+					"REQUIRED": "Status is required."
+				},
+				"CLIENTID": {
+					"REQUIRED": "Client is required."
+				},
+				"TERMINALID": {
+					"REQUIRED": "Terminal is required."
+				}
 			}
 		},
 		"QUEUE": {
-			"ADDING": "Adding {{ printReceipt }}",
-			"UPDATING": "Updating {{ printReceipt }}",
-			"DELETING": "Deleting {{ printReceipt }}",
-			"ERROR": "An error occured with {{ printReceipt }}. Correct and try again."
-		}
-	},
-	"COMMERCIAL_OPEN_API": {
-		"INDEX": {
-			"OPEN_API": "Open API"
-		}
-	},
-	"COMMERCIAL_DATABASES": {
-		"INDEX": {
-			"CREATE": "Create database",
-			"DATABASES": "Databases"
-		},
-		"TITLE": "Databases",
-		"CREATE": "Create",
-		"CREATEDATABASE": "Create Database",
-		"EDIT": "Edit",
-		"EDITDATABASE": "Edit database",
-		"REMOVE": "Remove",
-		"FORM": {
-			"LABELS": {
-				"NAME": "Database name",
-				"HOSTNAME": "Hostname",
-				"DATABASENAME": "Database name",
-				"CANDELETEDATABASE": "Can delete database"
-			},
-			"PLACEHOLDERS": {
-				"NAME": "Enter a database name",
-				"HOSTNAME": "Enter a hostname",
-				"DATABASENAME": "Enter a database name",
-				"CANDELETEDATABASE": "Can delete database"
-			},
-			"VALIDATION": {}
+			"ADDING": "Adding the connection with the client: {{ client }}",
+			"UPDATING": "Updating the connection with the client: {{ client }}",
+			"DELETING": "Deleting the connection with the client: {{ client }}",
+			"ERROR": "An error occured with the connection with the client: {{ client }}. Correct and try again."
 		}
 	}
 }
