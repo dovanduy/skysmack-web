@@ -83,7 +83,7 @@ export class NgTerminalPaymentReceiptsFieldsConfig extends DocumentFieldsConfig<
                 }],
                 order: 1,
                 showColumn: true
-            }),
+            })
         ];
 
         // Id field must only be added for edit forms.
