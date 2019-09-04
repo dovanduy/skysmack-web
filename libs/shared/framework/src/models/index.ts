@@ -6,6 +6,8 @@ export * from './record';
 export * from './local-object-status';
 export * from './local-object';
 export * from './paged-query';
+export * from './route-query';
+export * from './limit-query';
 export * from './package-type';
 export * from './page-response';
 export * from './local-page';

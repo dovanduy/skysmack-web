@@ -1,13 +1,11 @@
-import { SortBuilder } from '../sort/sort-builder';
-import { RSQLFilterBuilder } from '../rsql/rsql-filter-builder';
+import { RouteQuery } from './route-query';
 
-export class PagedQuery {
+export class PagedQuery extends RouteQuery {
   pageNumber = 1;
   pageSize = 50;
-  rsqlFilter: RSQLFilterBuilder = new RSQLFilterBuilder();
-  sort: SortBuilder = new SortBuilder();
 
   public constructor(init?: Partial<PagedQuery>) {
+    super(init);
     Object.assign(this, init);
   }
 }
