@@ -1,4 +1,26 @@
 {
+	"COMMERCIAL_DATABASES": {
+		"INDEX": {
+			"CREATE": "Create database",
+			"DATABASES": "Databases"
+		},
+		"TITLE": "Databases",
+		"CREATE": "Create",
+		"EDIT": "Edit",
+		"EDITDATABASE": "Edit database",
+		"REMOVE": "Remove",
+		"FORM": {
+			"LABELS": {
+				"DATABASENAME": "Database name",
+				"CANDELETEDATABASE": "Can delete database"
+			},
+			"PLACEHOLDERS": {
+				"DATABASENAME": "Enter a database name",
+				"CANDELETEDATABASE": "Can delete database"
+			},
+			"VALIDATION": {}
+		}
+	},
 	"COMMERCIAL_ACCOUNT": {
 		"INDEX": {
 			"FORGOTPASSWORD": "Forgot password",
@@ -79,28 +101,6 @@
 		"CHANGE_PASSWORD": {
 			"TITLE": "Change password",
 			"BUTTON_EDIT": "Update"
-		}
-	},
-	"COMMERCIAL_DATABASES": {
-		"INDEX": {
-			"CREATE": "Create database",
-			"DATABASES": "Databases"
-		},
-		"TITLE": "Databases",
-		"CREATE": "Create",
-		"EDIT": "Edit",
-		"EDITDATABASE": "Edit database",
-		"REMOVE": "Remove",
-		"FORM": {
-			"LABELS": {
-				"DATABASENAME": "Database name",
-				"CANDELETEDATABASE": "Can delete database"
-			},
-			"PLACEHOLDERS": {
-				"DATABASENAME": "Enter a database name",
-				"CANDELETEDATABASE": "Can delete database"
-			},
-			"VALIDATION": {}
 		}
 	},
 	"COMMERCIAL_OPEN_API": {
@@ -203,237 +203,55 @@
 			}
 		}
 	},
-	"ACCESS_POLICY_PERMISSIONS": {
-		"CREATE": {
-			"CREATE": "Create",
-			"BUTTON_CREATE": "Create"
-		},
-		"EDIT": {
-			"EDITING": "Edit",
-			"BUTTON_EDIT": "Update"
-		},
+	"FIELDS": {
 		"INDEX": {
-			"TITLE_EXTRAS": "(permissions)",
+			"CREATE": "Create",
 			"ACTIONS": "Actions",
-			"CREATE": "Create",
-			"MANAGE": "Manage",
-			"BACK": "Back",
-			"ROLES": "Roles",
-			"FIELDS_TITLE": "(fields)"
-		},
-		"FORM": {
-			"LABELS": {
-				"PACKAGEPATH": "Package path",
-				"RULEID": "Rule id",
-				"ORDER": "Order",
-				"ISTOPLEVEL": "Is Top Level",
-				"PERMISSION": "Permission"
-			},
-			"PLACEHOLDERS": {
-				"PACKAGEPATH": "Package path",
-				"RULEID": "Rule id",
-				"ORDER": "Order",
-				"ISTOPLEVEL": "Is Top Level",
-				"PERMISSION": "Permission"
-			},
-			"VALIDATION": {}
-		},
-		"QUEUE": {
-			"ADDING": "Adding {{ permission }} permission",
-			"UPDATING": "Updating {{ permission }} permission",
-			"DELETING": "Deleting {{ permission }} permission",
-			"ERROR": "An error occured with {{ permission }} permission. Correct and try again."
-		}
-	},
-	"ACCESS_POLICY_RULES": {
-		"CREATE": {
-			"CREATE": "Create",
-			"BUTTON_CREATE": "Create"
-		},
-		"EDIT": {
-			"EDITING": "Rediger",
-			"BUTTON_EDIT": "Update"
-		},
-		"INDEX": {
-			"TITLE_EXTRAS": "(rules)",
-			"ACTIONS": "Actions",
-			"CREATE": "Create",
-			"MANAGE": "Manage",
-			"BACK": "Back",
-			"ROLES": "Roles",
-			"FIELDS_TITLE": "(fields)"
-		},
-		"FORM": {
-			"LABELS": {
-				"ACCESS": "Access",
-				"AUTHENTICATED": "Authenticated",
-				"INCLUDEROLES": "Include roles"
-			},
-			"PLACEHOLDERS": {
-				"ACCESS": "Access",
-				"AUTHENTICATED": "Authenticated",
-				"INCLUDEROLES": "Include roles"
-			}
-		},
-		"QUEUE": {
-			"ADDING": "Adding the access policy rule",
-			"UPDATING": "Updating the access policy rule",
-			"DELETING": "Deleting the access policy rule",
-			"ERROR": "An error occured with the access policy rule. Correct and try again."
-		}
-	},
-	"ACCESS_POLICY_ROLES": {
-		"CREATE": {
-			"CREATE": "Create",
-			"BUTTON_CREATE": "Create"
-		},
-		"EDIT": {
-			"EDITING": "Edit",
-			"BUTTON_EDIT": "Update"
-		},
-		"INDEX": {
-			"TITLE_EXTRAS": "(roles)",
-			"ACTIONS": "Actions",
-			"CREATE": "Create",
-			"MANAGE": "Manage",
-			"BACK": "Back",
-			"ROLES": "Roles",
-			"FIELDS_TITLE": "(fields)"
-		},
-		"FORM": {
-			"LABELS": {
-				"RULEID": "Rule",
-				"ROLEID": "Role"
-			},
-			"PLACEHOLDERS": {
-				"RULEID": "Rule",
-				"ROLEID": "Role"
-			},
-			"VALIDATION": {
-				"NAME": {
-					"REQUIRED": "A name is required."
-				}
-			}
-		},
-		"QUEUE": {
-			"ADDING": "Adding {{ roleId }}",
-			"UPDATING": "Updating {{ roleId }}",
-			"DELETING": "Deleting {{ roleId }}",
-			"ERROR": "An error occured with {{ roleId }}. Correct and try again."
-		}
-	},
-	"IDENTITIES": {
-		"INDEX": {
-			"ROLES": "Roles",
-			"USERS": "Users",
-			"ACCOUNTS": "Accounts",
-			"CLIENTS": "Clients",
-			"APPLICATIONS": "Applications",
-			"USERS_ROLES_TITLE": "User roles",
-			"APPLICATIONS_ROLES_TITLE": "Application roles",
-			"MANAGE": "Manage",
-			"SETTINGS": "Settings",
-			"ACCOUNT": "Account",
-			"CHANGE_PASSWORD": "Change password",
-			"FORGOT_PASSWORD": "Forgot password",
-			"CONFIRM_EMAIL": "Confirm email",
-			"AVAILABLE_SETTINGS": {
-				"LOCKOUT": "Lockout",
-				"USER": "User",
-				"PASSWORD": "Password",
-				"SIGNIN": "Sign in"
-			}
-		}
-	},
-	"IDENTITIES_SETTINGS": {
-		"FORM": {
-			"LABELS": {
-				"ALLOWEDUSERNAMECHARACTERS": "Allowed user name characters",
-				"REQUIREUNIQUEEMAIL": "Require unique email",
-				"REQUIREDLENGTH": "Required length",
-				"REQUIREDUNIQUECHARS": "Required unique characters",
-				"REQUIRENONALPHANUMERIC": "Require non alphanumeric",
-				"REQUIRELOWERCASE": "Require lowercase",
-				"REQUIREUPPERCASE": "Require uppercase",
-				"REQUIREDIGIT": "Require digit",
-				"ALLOWEDFORNEWUSERS": "Allowed for new users",
-				"MAXFAILEDACCESSATTEMPTS": "Max failed access attempts",
-				"DEFAULTLOCKOUTTIMESPAN": "Default lockout time span",
-				"REQUIRECONFIRMEDEMAIL": "Require confirmed email",
-				"REQUIRECONFIRMEDPHONENUMBER": "Require confirmed phone number"
-			},
-			"PLACEHOLDERS": {
-				"ALLOWEDUSERNAMECHARACTERS": "Allowed user name characters",
-				"REQUIREUNIQUEEMAIL": "Require unique email",
-				"REQUIREDLENGTH": "Required length",
-				"REQUIREDUNIQUECHARS": "Required unique characters",
-				"REQUIRENONALPHANUMERIC": "Require non alphanumeric",
-				"REQUIRELOWERCASE": "Require lowercase",
-				"REQUIREUPPERCASE": "Require uppercase",
-				"REQUIREDIGIT": "Require digit",
-				"ALLOWEDFORNEWUSERS": "Allowed for new users",
-				"MAXFAILEDACCESSATTEMPTS": "Max failed access attempts",
-				"DEFAULTLOCKOUTTIMESPAN": "Default lockout time span",
-				"REQUIRECONFIRMEDEMAIL": "Require confirmed email",
-				"REQUIRECONFIRMEDPHONENUMBER": "Require confirmed phone number"
-			},
-			"VALIDATION": {}
-		},
-		"CREATE": {
-			"CREATE": "Edit settings"
-		},
-		"QUEUE": {
-			"UPDATING": "Updating",
-			"ERROR": "Error occured updating settings."
-		}
-	},
-	"CONNECTIONS": {
-		"CREATE": {
-			"CREATE": "Create",
-			"BUTTON_CREATE": "Create"
-		},
-		"EDIT": {
-			"EDIT": "Edit",
-			"BUTTON_EDIT": "Update"
-		},
-		"INDEX": {
-			"TITLE_EXTRAS": "(Connections)",
-			"ACTIONS": "Actions",
-			"CREATE": "Create",
-			"DELETE": "Delete",
 			"MANAGE": "Manage",
 			"BACK": "Back"
 		},
+		"CREATE": {
+			"CREATE": "Create",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDITING": "Editing",
+			"BUTTON_EDIT": "Update"
+		},
 		"FORM": {
 			"LABELS": {
-				"STATUS": "Status",
-				"CLIENTID": "Client",
-				"TERMINALID": "Terminal",
-				"ONLINE": "Online"
+				"KEY": "Key",
+				"TYPE": "Type",
+				"DISPLAY": "Display name",
+				"VALIDATORS": "Validators",
+				"READPERMISSION": "Read permission",
+				"WRITEPERMISSION": "Write permission"
 			},
 			"PLACEHOLDERS": {
-				"STATUS": "Status",
-				"CLIENTID": "Client",
-				"TERMINALID": "Terminal",
-				"ONLINE": "Online"
+				"KEY": "Key",
+				"TYPE": "Type",
+				"DISPLAY": "Display name",
+				"VALIDATORS": "Validators",
+				"READPERMISSION": "Read permission",
+				"WRITEPERMISSION": "Write permission"
 			},
 			"VALIDATION": {
-				"STATUS": {
-					"REQUIRED": "Status is required."
+				"KEY": {
+					"REQUIRED": "Key is required"
 				},
-				"CLIENTID": {
-					"REQUIRED": "Client is required."
+				"TYPE": {
+					"REQUIRED": "Key is required"
 				},
-				"TERMINALID": {
-					"REQUIRED": "Terminal is required."
+				"DISPLAY": {
+					"REQUIRED": "Display name is required"
 				}
 			}
 		},
 		"QUEUE": {
-			"ADDING": "Adding the connection with the client: {{ client }}",
-			"UPDATING": "Updating the connection with the client: {{ client }}",
-			"DELETING": "Deleting the connection with the client: {{ client }}",
-			"ERROR": "An error occured with the connection with the client: {{ client }}. Correct and try again."
+			"ADDING": "Adding {{ displayName }}",
+			"UPDATING": "Updating {{ displayName }}",
+			"DELETING": "Deleting {{ displayName }}",
+			"ERROR": "An error occured with {{ displayName }}. Correct and try again."
 		}
 	}
 }
