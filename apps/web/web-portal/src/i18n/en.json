@@ -2707,7 +2707,9 @@
 					"PASSWORDMISMATCH": "The passwords must match."
 				}
 			}
-		}
+		},
+		"DETAILS": "Details",
+		"REMOVE": "Remove"
 	},
 	"OAUTH2": {
 		"FORM": {
