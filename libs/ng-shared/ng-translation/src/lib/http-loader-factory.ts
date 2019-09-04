@@ -7,25 +7,28 @@ declare const System: any;
 
 class SkysmackTranslateHttpLoader {
     public static i18nFiles: StrIndex<Observable<any>> = {};
-    public http: any;
-    public prefix: any;
-    public suffix: any;
 
-    constructor(http, prefix = '/assets/i18n/', suffix = '.json') {
-        this.http = http;
-        this.prefix = prefix;
-        this.suffix = suffix;
-    }
+    constructor(
+        private http,
+        private i18nFolderPath: string,
+        private prefix = '/assets/i18n/',
+        private suffix = '.json'
+    ) { }
 
-    getTranslation(lang) {
+    getTranslation(lang: string) {
         if (!SkysmackTranslateHttpLoader.i18nFiles[lang]) {
-            SkysmackTranslateHttpLoader.i18nFiles[lang] = from(System.import(`../../../../../apps/web/web-portal/src/i18n/${lang}${this.suffix}`));
+            SkysmackTranslateHttpLoader.i18nFiles[lang] = from(System.import(`../../../../../apps/${this.i18nFolderPath}/${lang}${this.suffix}`));
         }
         return SkysmackTranslateHttpLoader.i18nFiles[lang];
     }
 }
 
 // AoT requires an exported function for factories
-export function HttpLoaderFactory(http: HttpClient) {
-    return new SkysmackTranslateHttpLoader(http, 'i18n/');
+export function PortalHttpLoaderFactory(http: HttpClient, i18nFolderPath: string) {
+    return new SkysmackTranslateHttpLoader(http, 'web/web-portal/src/i18n', 'i18n/');
 }
+
+export function CommercialHttpLoaderFactory(http: HttpClient, i18nFolderPath: string) {
+    return new SkysmackTranslateHttpLoader(http, i18nFolderPath, 'i18n/');
+}
+
