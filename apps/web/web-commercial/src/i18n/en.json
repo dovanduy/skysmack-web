@@ -1,4 +1,213 @@
 {
+	"COMMERCIAL_ACCOUNT": {
+		"EXIST?": "hallalalalalal",
+		"INDEX": {
+			"FORGOTPASSWORD": "Forgot password",
+			"CONFIRMEMAIL": "Confirm e-mail",
+			"ACCOUNT": "Account",
+			"WELCOME": "Welcome to skysmack"
+		},
+		"LOGIN": {
+			"SIGNIN": "Sign in",
+			"CREDENTIALS": "Please enter credentials below",
+			"INCORRECT": "The entered password and/or username was incorrect. Please try again.",
+			"FORGOTPASSWORD": "Forgot password",
+			"CONFIRMEMAIL": "Confirm email",
+			"REGISTER": "Register"
+		},
+		"REGISTER": {
+			"TITLE": "Register"
+		},
+		"FORM": {
+			"LABELS": {
+				"USERNAME": "User name",
+				"EMAIL": "Email",
+				"PASSWORD": "Password",
+				"CONFIRMPASSWORD": "Confirm Password",
+				"STAYSIGNEDIN": "Stay signed in?"
+			},
+			"PLACEHOLDERS": {
+				"USERNAME": "Enter user name",
+				"EMAIL": "Enter email",
+				"PASSWORD": "Enter password",
+				"CONFIRMPASSWORD": "Confirm Password",
+				"CURRENTPASSWORD": "Current password",
+				"NEWPASSWORD": "New password",
+				"CONFIRMNEWPASSWORD": "Confirm new password"
+			},
+			"VALIDATION": {
+				"USERNAME": {
+					"REQUIRED": "User name is required"
+				},
+				"EMAIL": {
+					"REQUIRED": "Email is required.",
+					"INVALIDEMAIL": "Please enter a valid email."
+				},
+				"PASSWORD": {
+					"REQUIRED": "Password is required."
+				},
+				"CURRENTPASSWORD": {
+					"REQUIRED": "Current password is required."
+				},
+				"NEWPASSWORD": {
+					"REQUIRED": "New password is required."
+				},
+				"CONFIRMNEWPASSWORD": {
+					"REQUIRED": "Please repeat the new password.",
+					"PASSWORDMISMATCH": "Passwords must match."
+				}
+			}
+		},
+		"VALIDATION": {
+			"TOKEN": {
+				"REQUIRED": "Token is required"
+			},
+			"EMAIL": {
+				"REQUIRED": "Email is required.",
+				"INVALIDEMAIL": "Please type a valid email"
+			},
+			"CURRENTPASSWORD": {
+				"REQUIRED": "Current password is required."
+			},
+			"NEWPASSWORD": {
+				"REQUIRED": "New password is required."
+			},
+			"CONFIRMNEWPASSWORD": {
+				"REQUIRED": "Please repeat the new password.",
+				"PASSWORDMISMATCH": "Passwords must match."
+			}
+		},
+		"CHANGE_PASSWORD": {
+			"TITLE": "Change password",
+			"BUTTON_EDIT": "Update"
+		}
+	},
+	"COMMERCIAL_DATABASES": {
+		"EXIST?": "hallalalalalal",
+		"INDEX": {
+			"CREATE": "Create database",
+			"DATABASES": "Databases"
+		},
+		"TITLE": "Databases",
+		"CREATE": "Create",
+		"EDIT": "Edit",
+		"EDITDATABASE": "Edit database",
+		"REMOVE": "Remove",
+		"FORM": {
+			"LABELS": {
+				"DATABASENAME": "Database name",
+				"CANDELETEDATABASE": "Can delete database"
+			},
+			"PLACEHOLDERS": {
+				"DATABASENAME": "Enter a database name",
+				"CANDELETEDATABASE": "Can delete database"
+			},
+			"VALIDATION": {}
+		}
+	},
+	"COMMERCIAL_OPEN_API": {
+		"EXIST?": "hallalalalalal",
+		"INDEX": {
+			"OPEN_API": "Open API"
+		}
+	},
+	"COMMERCIAL_TENANTS": {
+		"INDEX": {
+			"CREATE": "Create tenant",
+			"TENANTS": "Tenants"
+		},
+		"TITLE": "Tenants",
+		"CREATE": "Create",
+		"CREATETENANT": "Create Tenant",
+		"EDIT": "Edit",
+		"EDITTENANT": "Edit tenant",
+		"DETAILS": "Details",
+		"REMOVE": "Remove",
+		"HOSTNAME": "Hostname",
+		"SAFESUBDOMAIN": "Safe subdomain",
+		"STATE": "State",
+		"FORM": {
+			"LABELS": {
+				"NAME": "Name",
+				"HOSTNAME": "Hostname",
+				"SAFESUBDOMAIN": "Safe subdomain",
+				"STATE": "State"
+			},
+			"PLACEHOLDERS": {
+				"NAME": "Enter a Name",
+				"HOSTNAME": "Enter a hostname",
+				"SAFESUBDOMAIN": "Enter a safe subdomain",
+				"STATE": "Enter a state"
+			},
+			"VALIDATION": {
+				"NAME": {
+					"REQUIRED": "An Name is required."
+				},
+				"HOSTNAME": {
+					"REQUIRED": "An hostname is required."
+				},
+				"SAFESUBDOMAIN": {
+					"REQUIRED": "A subdomain is required."
+				},
+				"STATE": {
+					"REQUIRED": "The state is required."
+				}
+			}
+		}
+	},
+	"COMMERCIAL_UI_PARTNERS": {
+		"EXIST?": "hallalalalalal",
+		"INDEX": {
+			"CHANGEPASSWORD": "Change password",
+			"TENANTS": "Tenants",
+			"USERS": "Users",
+			"LOGOUT": "Logout"
+		}
+	},
+	"COMMERCIAL_USERS": {
+		"EXIST?": "hallalalalalal",
+		"INDEX": {
+			"CREATE": " Create user",
+			"USERS": "Users"
+		},
+		"TITLE": "Users",
+		"CREATE": "Create",
+		"DETAILS": "Details",
+		"REMOVE": "TTTRemove",
+		"CREATEUSER": "Create user",
+		"EDIT": "Edit",
+		"EDITUSER": "Edit user",
+		"EMAIL": "Email: ",
+		"FORM": {
+			"LABELS": {
+				"EMAIL": "Email",
+				"USERNAME": "Username",
+				"PASSWORD": "Password",
+				"CONFIRMPASSWORD": "Confirm password"
+			},
+			"PLACEHOLDERS": {
+				"EMAIL": "Enter a email",
+				"USERNAME": "Enter a username",
+				"PASSWORD": "Enter a password",
+				"CONFIRMPASSWORD": "Enter a confirm password"
+			},
+			"VALIDATION": {
+				"EMAIL": {
+					"REQUIRED": "An Email is required.",
+					"INVALIDEMAIL": "Please enter a valid email."
+				},
+				"USERNAME": {
+					"REQUIRED": "An username is required."
+				},
+				"PASSWORD": {
+					"REQUIRED": "A password is required."
+				},
+				"CONFIRMPASSWORD": {
+					"PASSWORDMISMATCH": "The passwords must match."
+				}
+			}
+		}
+	},
 	"UI": {
 		"ERROR_MESSAGE": {
 			"ERROR_OCCURRED": "ERROR OCCURRED!",
@@ -102,210 +311,6 @@
 			"PLACEHOLDERS": {
 				"NAME": "Name",
 				"DEFAULTTAX": "Default tax"
-			}
-		}
-	},
-	"COMMERCIAL_ACCOUNT": {
-		"INDEX": {
-			"FORGOTPASSWORD": "Forgot password",
-			"CONFIRMEMAIL": "Confirm e-mail",
-			"ACCOUNT": "Account",
-			"WELCOME": "Welcome to skysmack"
-		},
-		"LOGIN": {
-			"SIGNIN": "Sign in",
-			"CREDENTIALS": "Please enter credentials below",
-			"INCORRECT": "The entered password and/or username was incorrect. Please try again.",
-			"FORGOTPASSWORD": "Forgot password",
-			"CONFIRMEMAIL": "Confirm email",
-			"REGISTER": "Register"
-		},
-		"REGISTER": {
-			"TITLE": "Register"
-		},
-		"FORM": {
-			"LABELS": {
-				"USERNAME": "User name",
-				"EMAIL": "Email",
-				"PASSWORD": "Password",
-				"CONFIRMPASSWORD": "Confirm Password",
-				"STAYSIGNEDIN": "Stay signed in?"
-			},
-			"PLACEHOLDERS": {
-				"USERNAME": "Enter user name",
-				"EMAIL": "Enter email",
-				"PASSWORD": "Enter password",
-				"CONFIRMPASSWORD": "Confirm Password",
-				"CURRENTPASSWORD": "Current password",
-				"NEWPASSWORD": "New password",
-				"CONFIRMNEWPASSWORD": "Confirm new password"
-			},
-			"VALIDATION": {
-				"USERNAME": {
-					"REQUIRED": "User name is required"
-				},
-				"EMAIL": {
-					"REQUIRED": "Email is required.",
-					"INVALIDEMAIL": "Please enter a valid email."
-				},
-				"PASSWORD": {
-					"REQUIRED": "Password is required."
-				},
-				"CURRENTPASSWORD": {
-					"REQUIRED": "Current password is required."
-				},
-				"NEWPASSWORD": {
-					"REQUIRED": "New password is required."
-				},
-				"CONFIRMNEWPASSWORD": {
-					"REQUIRED": "Please repeat the new password.",
-					"PASSWORDMISMATCH": "Passwords must match."
-				}
-			}
-		},
-		"VALIDATION": {
-			"TOKEN": {
-				"REQUIRED": "Token is required"
-			},
-			"EMAIL": {
-				"REQUIRED": "Email is required.",
-				"INVALIDEMAIL": "Please type a valid email"
-			},
-			"CURRENTPASSWORD": {
-				"REQUIRED": "Current password is required."
-			},
-			"NEWPASSWORD": {
-				"REQUIRED": "New password is required."
-			},
-			"CONFIRMNEWPASSWORD": {
-				"REQUIRED": "Please repeat the new password.",
-				"PASSWORDMISMATCH": "Passwords must match."
-			}
-		},
-		"CHANGE_PASSWORD": {
-			"TITLE": "Change password",
-			"BUTTON_EDIT": "Update"
-		}
-	},
-	"COMMERCIAL_DATABASES": {
-		"INDEX": {
-			"CREATE": "Create database",
-			"DATABASES": "Databases"
-		},
-		"TITLE": "Databases",
-		"CREATE": "Create",
-		"EDIT": "Edit",
-		"EDITDATABASE": "Edit database",
-		"REMOVE": "Remove",
-		"FORM": {
-			"LABELS": {
-				"DATABASENAME": "Database name",
-				"CANDELETEDATABASE": "Can delete database"
-			},
-			"PLACEHOLDERS": {
-				"DATABASENAME": "Enter a database name",
-				"CANDELETEDATABASE": "Can delete database"
-			},
-			"VALIDATION": {}
-		}
-	},
-	"COMMERCIAL_OPEN_API": {
-		"INDEX": {
-			"OPEN_API": "Open API"
-		}
-	},
-	"COMMERCIAL_TENANTS": {
-		"INDEX": {
-			"CREATE": "Create tenant",
-			"TENANTS": "Tenants"
-		},
-		"TITLE": "Tenants",
-		"CREATE": "Create",
-		"CREATETENANT": "Create Tenant",
-		"EDIT": "Edit",
-		"EDITTENANT": "Edit tenant",
-		"DETAILS": "Details",
-		"HOSTNAME": "Hostname",
-		"SAFESUBDOMAIN": "Safe subdomain",
-		"STATE": "State",
-		"FORM": {
-			"LABELS": {
-				"NAME": "Name",
-				"HOSTNAME": "Hostname",
-				"SAFESUBDOMAIN": "Safe subdomain",
-				"STATE": "State"
-			},
-			"PLACEHOLDERS": {
-				"NAME": "Enter a Name",
-				"HOSTNAME": "Enter a hostname",
-				"SAFESUBDOMAIN": "Enter a safe subdomain",
-				"STATE": "Enter a state"
-			},
-			"VALIDATION": {
-				"NAME": {
-					"REQUIRED": "An Name is required."
-				},
-				"HOSTNAME": {
-					"REQUIRED": "An hostname is required."
-				},
-				"SAFESUBDOMAIN": {
-					"REQUIRED": "A subdomain is required."
-				},
-				"STATE": {
-					"REQUIRED": "The state is required."
-				}
-			}
-		},
-		"REMOVE": "Remove"
-	},
-	"COMMERCIAL_UI_PARTNERS": {
-		"INDEX": {
-			"CHANGEPASSWORD": "Change password",
-			"TENANTS": "Tenants",
-			"USERS": "Users",
-			"LOGOUT": "Logout"
-		}
-	},
-	"COMMERCIAL_USERS": {
-		"INDEX": {
-			"CREATE": " Create user",
-			"USERS": "Users"
-		},
-		"TITLE": "Users",
-		"CREATE": "Create",
-		"DETAILS": "Details",
-		"REMOVE": "TTTRemove",
-		"CREATEUSER": "Create user",
-		"EDIT": "Edit",
-		"EDITUSER": "Edit user",
-		"EMAIL": "Email: ",
-		"FORM": {
-			"LABELS": {
-				"EMAIL": "Email",
-				"USERNAME": "Username",
-				"PASSWORD": "Password",
-				"CONFIRMPASSWORD": "Confirm password"
-			},
-			"PLACEHOLDERS": {
-				"EMAIL": "Enter a email",
-				"USERNAME": "Enter a username",
-				"PASSWORD": "Enter a password",
-				"CONFIRMPASSWORD": "Enter a confirm password"
-			},
-			"VALIDATION": {
-				"EMAIL": {
-					"REQUIRED": "An Email is required.",
-					"INVALIDEMAIL": "Please enter a valid email."
-				},
-				"USERNAME": {
-					"REQUIRED": "An username is required."
-				},
-				"PASSWORD": {
-					"REQUIRED": "A password is required."
-				},
-				"CONFIRMPASSWORD": {
-					"PASSWORDMISMATCH": "The passwords must match."
-				}
 			}
 		}
 	},
@@ -533,6 +538,15 @@
 			"PRICE_TYPE_CHANGES": "Product type price changes"
 		}
 	},
+	"RESERVATIONS_PRICINGS": {
+		"INDEX": {
+			"MANAGE": "Manage",
+			"RESERVATION_PRICE_CHANGES": "Lodging reservation price changes",
+			"PRICES": "Lodging prices",
+			"RESERVATION_PRICE_CHANGES_TYPES": "Lodging type reservation price changes",
+			"PRICES_TYPES": "Lodging type prices"
+		}
+	},
 	"TERMINAL_PAYMENTS": {
 		"INDEX": {
 			"TITLE": "Terminal Payments",
@@ -542,15 +556,6 @@
 			"CONNECTIONS": "Connections",
 			"TERMINAL_PAYMENT_RECEIPTS": "Payment receipts",
 			"TERMINAL_RECEIPTS": "Receipts"
-		}
-	},
-	"RESERVATIONS_PRICINGS": {
-		"INDEX": {
-			"MANAGE": "Manage",
-			"RESERVATION_PRICE_CHANGES": "Lodging reservation price changes",
-			"PRICES": "Lodging prices",
-			"RESERVATION_PRICE_CHANGES_TYPES": "Lodging type reservation price changes",
-			"PRICES_TYPES": "Lodging type prices"
 		}
 	},
 	"FIELDS": {
@@ -2567,6 +2572,304 @@
 			"ERROR": "An error occured with the product sale price with the price: {{ price }}. Correct and try again."
 		}
 	},
+	"LODGING_PRICES": {
+		"CREATE": {
+			"CREATE": "Create",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDIT": "Edit",
+			"BUTTON_EDIT": "Update"
+		},
+		"INDEX": {
+			"ACTIONS": "Actions",
+			"CREATE": "Create",
+			"DELETE": "Delete",
+			"MANAGE": "Manage",
+			"FIELDS": "Fields",
+			"BACK": "Back"
+		},
+		"FORM": {
+			"LABELS": {
+				"CURRENCYCODE": "Currency code",
+				"RECORDID": "Lodging",
+				"PRICE": "Price"
+			},
+			"PLACEHOLDERS": {
+				"CURRENCYCODE": "Currency code",
+				"RECORDID": "Lodging",
+				"PRICE": "Price"
+			},
+			"VALIDATION": {
+				"CURRENCYCODE": {
+					"REQUIRED": "Currency code is required"
+				},
+				"RECORDID": {
+					"REQUIRED": "Lodging is required"
+				},
+				"PRICE": {
+					"REQUIRED": "Price is required"
+				}
+			}
+		},
+		"QUEUE": {
+			"ADDING": "Adding the lodging price with the price: {{ price }}",
+			"UPDATING": "Updating the lodging price with the price: {{ price }}",
+			"DELETING": "Deleting the lodging price with the price: {{ price }}",
+			"ERROR": "An error occured with the lodging price with the price: {{ price }}. Correct and try again."
+		}
+	},
+	"LODGING_RESERVATION_PRICE_CHANGES": {
+		"CREATE": {
+			"CREATE": "Create",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDIT": "Edit",
+			"BUTTON_EDIT": "Update"
+		},
+		"INDEX": {
+			"ACTIONS": "Actions",
+			"CREATE": "Create",
+			"DELETE": "Delete",
+			"MANAGE": "Manage",
+			"FIELDS": "Fields",
+			"BACK": "Back"
+		},
+		"FORM": {
+			"LABELS": {
+				"CHANGE": "Price change",
+				"CURRENCYCODE": "Currency code",
+				"ISPERCENT": "Change is in percentage (%)",
+				"VALIDFROM": "Valid from",
+				"VALIDTO": "Valid to",
+				"RECORDID": "Allocated lodging",
+				"START": "Start",
+				"END": "End",
+				"EXCLUDEDAYSOFWEEK": "Exclude week days",
+				"MINUNITS": "Minimum units",
+				"MAXUNITS": "Maximum units",
+				"PERUNIT": "Per unit",
+				"ONLYVALIDUNITS": "Change only counts for units within min and max",
+				"MINUNITSOFTIME": "Minimum units of time",
+				"MAXUNITSOFTIME": "Maximum units of time",
+				"ONLYVALIDUNITSOFTIME": "Change only counts for units within the min and max time period",
+				"PERUNITOFTIME": "Per unit of time"
+			},
+			"PLACEHOLDERS": {
+				"CURRENCYCODE": "Currency code",
+				"RECORDID": "Lodging",
+				"CHANGE": "Price change",
+				"ISPERCENT": "Change is in percentage (%)",
+				"VALIDFROM": "Valid from",
+				"VALIDTO": "Valid to",
+				"START": "Start",
+				"END": "End",
+				"EXCLUDEDAYSOFWEEK": "Exclude week days",
+				"MINUNITS": "Minimum units",
+				"MAXUNITS": "Maximum units",
+				"PERUNIT": "Per unit",
+				"ONLYVALIDUNITS": "Change only counts for units within min and max",
+				"MINUNITSOFTIME": "Minimum units of time",
+				"MAXUNITSOFTIME": "Maximum units of time",
+				"ONLYVALIDUNITSOFTIME": "Change only counts for units within the min and max time period",
+				"PERUNITOFTIME": "Per unit of time"
+			},
+			"VALIDATION": {
+				"CURRENCYCODE": {
+					"REQUIRED": "Currency code is required"
+				},
+				"RECORDID": {
+					"REQUIRED": "Allocated Lodging is required"
+				},
+				"CHANGE": {
+					"REQUIRED": "Price change is required"
+				},
+				"ISPERCENT": {
+					"REQUIRED": "Field is required"
+				},
+				"VALIDFROM": {
+					"REQUIRED": "Valid from is required"
+				},
+				"VALIDTO": {
+					"REQUIRED": "Valid to is required"
+				},
+				"START": {
+					"REQUIRED": "Start is required"
+				},
+				"END": {
+					"REQUIRED": "End is required"
+				},
+				"MINUNITS": {
+					"REQUIRED": "Minimum units is required"
+				},
+				"MAXUNITS": {
+					"REQUIRED": "Maximum units is required"
+				},
+				"MINUNITSOFTIME": {
+					"REQUIRED": "Minimum units time is required"
+				},
+				"MAXUNITSOFTIME": {
+					"REQUIRED": "Maximum units of time is required"
+				}
+			}
+		},
+		"QUEUE": {
+			"ADDING": "Adding the lodging reservation price change valid from/to: {{ dates }}",
+			"UPDATING": "Updating the lodging reservation price change valid from/to: {{ dates }}",
+			"DELETING": "Deleting the lodging reservation price change valid from/to: {{ dates }}",
+			"ERROR": "An error occured with the lodging reservation price change valid from/to: {{ dates }}. Correct and try again."
+		}
+	},
+	"LODGING_TYPE_PRICES": {
+		"CREATE": {
+			"CREATE": "Create",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDIT": "Edit",
+			"BUTTON_EDIT": "Update"
+		},
+		"INDEX": {
+			"ACTIONS": "Actions",
+			"CREATE": "Create",
+			"DELETE": "Delete",
+			"MANAGE": "Manage",
+			"FIELDS": "Fields",
+			"BACK": "Back"
+		},
+		"FORM": {
+			"LABELS": {
+				"CURRENCYCODE": "Currency code",
+				"RECORDID": "Lodging type",
+				"PRICE": "Price"
+			},
+			"PLACEHOLDERS": {
+				"CURRENCYCODE": "Currency code",
+				"RECORDID": "Lodging type",
+				"PRICE": "Price"
+			},
+			"VALIDATION": {
+				"CURRENCYCODE": {
+					"REQUIRED": "Currency code is required"
+				},
+				"RECORDID": {
+					"REQUIRED": "Lodging type is required"
+				},
+				"PRICE": {
+					"REQUIRED": "Price is required"
+				}
+			}
+		},
+		"QUEUE": {
+			"ADDING": "Adding the lodging type price with the price: {{ price }}",
+			"UPDATING": "Updating the lodging type price with the price: {{ price }}",
+			"DELETING": "Deleting the lodging type price with the price: {{ price }}",
+			"ERROR": "An error occured with the lodging type price with the price: {{ price }}. Correct and try again."
+		}
+	},
+	"LODGING_TYPE_RESERVATION_PRICE_CHANGES": {
+		"CREATE": {
+			"CREATE": "Create",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDIT": "Edit",
+			"BUTTON_EDIT": "Update"
+		},
+		"INDEX": {
+			"ACTIONS": "Actions",
+			"CREATE": "Create",
+			"DELETE": "Delete",
+			"MANAGE": "Manage",
+			"FIELDS": "Fields",
+			"BACK": "Back"
+		},
+		"FORM": {
+			"LABELS": {
+				"CHANGE": "Price change",
+				"CURRENCYCODE": "Currency code",
+				"ISPERCENT": "Change is in percentage (%)",
+				"VALIDFROM": "Valid from",
+				"VALIDTO": "Valid to",
+				"RECORDID": "Lodging type",
+				"START": "Start",
+				"END": "End",
+				"EXCLUDEDAYSOFWEEK": "Exclude week days",
+				"MINUNITS": "Minimum units",
+				"MAXUNITS": "Maximum units",
+				"PERUNIT": "Per unit",
+				"ONLYVALIDUNITS": "Change only counts for units within min and max",
+				"MINUNITSOFTIME": "Minimum units of time",
+				"MAXUNITSOFTIME": "Maximum units of time",
+				"ONLYVALIDUNITSOFTIME": "Change only counts for units within the min and max time period",
+				"PERUNITOFTIME": "Per unit of time"
+			},
+			"PLACEHOLDERS": {
+				"CURRENCYCODE": "Currency code",
+				"RECORDID": "Lodging type",
+				"CHANGE": "Price change",
+				"ISPERCENT": "Change is in percentage (%)",
+				"VALIDFROM": "Valid from",
+				"VALIDTO": "Valid to",
+				"START": "Start",
+				"END": "End",
+				"EXCLUDEDAYSOFWEEK": "Exclude week days",
+				"MINUNITS": "Minimum units",
+				"MAXUNITS": "Maximum units",
+				"PERUNIT": "Per unit",
+				"ONLYVALIDUNITS": "Change only counts for units within min and max",
+				"MINUNITSOFTIME": "Minimum units of time",
+				"MAXUNITSOFTIME": "Maximum units of time",
+				"ONLYVALIDUNITSOFTIME": "Change only counts for units within the min and max time period",
+				"PERUNITOFTIME": "Per unit of time"
+			},
+			"VALIDATION": {
+				"CURRENCYCODE": {
+					"REQUIRED": "Currency code is required"
+				},
+				"RECORDID": {
+					"REQUIRED": "Lodging type is required"
+				},
+				"CHANGE": {
+					"REQUIRED": "Price change is required"
+				},
+				"ISPERCENT": {
+					"REQUIRED": "Price change type is required"
+				},
+				"VALIDFROM": {
+					"REQUIRED": "Valid from is required"
+				},
+				"VALIDTO": {
+					"REQUIRED": "Valid to is required"
+				},
+				"START": {
+					"REQUIRED": "Start is required"
+				},
+				"END": {
+					"REQUIRED": "End is required"
+				},
+				"MINUNITS": {
+					"REQUIRED": "Minimum units is required"
+				},
+				"MAXUNITS": {
+					"REQUIRED": "Maximum units is required"
+				},
+				"MINUNITSOFTIME": {
+					"REQUIRED": "Minimum units time is required"
+				},
+				"MAXUNITSOFTIME": {
+					"REQUIRED": "Maximum units of time is required"
+				}
+			}
+		},
+		"QUEUE": {
+			"ADDING": "Adding the lodging type reservation price change valid from/to: {{ dates }}",
+			"UPDATING": "Updating the lodging type reservation price change valid from/to: {{ dates }}",
+			"DELETING": "Deleting the lodging type reservation price change valid from/to: {{ dates }}",
+			"ERROR": "An error occured with the lodging type reservation price change valid from/to: {{ dates }}. Correct and try again."
+		}
+	},
 	"CONNECTIONS": {
 		"CREATE": {
 			"CREATE": "Create",
@@ -2882,304 +3185,6 @@
 			"ENTITY_ACTION": {
 				"TERMINAL_PAYMENT": "Card payment"
 			}
-		}
-	},
-	"LODGING_PRICES": {
-		"CREATE": {
-			"CREATE": "Create",
-			"BUTTON_CREATE": "Create"
-		},
-		"EDIT": {
-			"EDIT": "Edit",
-			"BUTTON_EDIT": "Update"
-		},
-		"INDEX": {
-			"ACTIONS": "Actions",
-			"CREATE": "Create",
-			"DELETE": "Delete",
-			"MANAGE": "Manage",
-			"FIELDS": "Fields",
-			"BACK": "Back"
-		},
-		"FORM": {
-			"LABELS": {
-				"CURRENCYCODE": "Currency code",
-				"RECORDID": "Lodging",
-				"PRICE": "Price"
-			},
-			"PLACEHOLDERS": {
-				"CURRENCYCODE": "Currency code",
-				"RECORDID": "Lodging",
-				"PRICE": "Price"
-			},
-			"VALIDATION": {
-				"CURRENCYCODE": {
-					"REQUIRED": "Currency code is required"
-				},
-				"RECORDID": {
-					"REQUIRED": "Lodging is required"
-				},
-				"PRICE": {
-					"REQUIRED": "Price is required"
-				}
-			}
-		},
-		"QUEUE": {
-			"ADDING": "Adding the lodging price with the price: {{ price }}",
-			"UPDATING": "Updating the lodging price with the price: {{ price }}",
-			"DELETING": "Deleting the lodging price with the price: {{ price }}",
-			"ERROR": "An error occured with the lodging price with the price: {{ price }}. Correct and try again."
-		}
-	},
-	"LODGING_RESERVATION_PRICE_CHANGES": {
-		"CREATE": {
-			"CREATE": "Create",
-			"BUTTON_CREATE": "Create"
-		},
-		"EDIT": {
-			"EDIT": "Edit",
-			"BUTTON_EDIT": "Update"
-		},
-		"INDEX": {
-			"ACTIONS": "Actions",
-			"CREATE": "Create",
-			"DELETE": "Delete",
-			"MANAGE": "Manage",
-			"FIELDS": "Fields",
-			"BACK": "Back"
-		},
-		"FORM": {
-			"LABELS": {
-				"CHANGE": "Price change",
-				"CURRENCYCODE": "Currency code",
-				"ISPERCENT": "Change is in percentage (%)",
-				"VALIDFROM": "Valid from",
-				"VALIDTO": "Valid to",
-				"RECORDID": "Allocated lodging",
-				"START": "Start",
-				"END": "End",
-				"EXCLUDEDAYSOFWEEK": "Exclude week days",
-				"MINUNITS": "Minimum units",
-				"MAXUNITS": "Maximum units",
-				"PERUNIT": "Per unit",
-				"ONLYVALIDUNITS": "Change only counts for units within min and max",
-				"MINUNITSOFTIME": "Minimum units of time",
-				"MAXUNITSOFTIME": "Maximum units of time",
-				"ONLYVALIDUNITSOFTIME": "Change only counts for units within the min and max time period",
-				"PERUNITOFTIME": "Per unit of time"
-			},
-			"PLACEHOLDERS": {
-				"CURRENCYCODE": "Currency code",
-				"RECORDID": "Lodging",
-				"CHANGE": "Price change",
-				"ISPERCENT": "Change is in percentage (%)",
-				"VALIDFROM": "Valid from",
-				"VALIDTO": "Valid to",
-				"START": "Start",
-				"END": "End",
-				"EXCLUDEDAYSOFWEEK": "Exclude week days",
-				"MINUNITS": "Minimum units",
-				"MAXUNITS": "Maximum units",
-				"PERUNIT": "Per unit",
-				"ONLYVALIDUNITS": "Change only counts for units within min and max",
-				"MINUNITSOFTIME": "Minimum units of time",
-				"MAXUNITSOFTIME": "Maximum units of time",
-				"ONLYVALIDUNITSOFTIME": "Change only counts for units within the min and max time period",
-				"PERUNITOFTIME": "Per unit of time"
-			},
-			"VALIDATION": {
-				"CURRENCYCODE": {
-					"REQUIRED": "Currency code is required"
-				},
-				"RECORDID": {
-					"REQUIRED": "Allocated Lodging is required"
-				},
-				"CHANGE": {
-					"REQUIRED": "Price change is required"
-				},
-				"ISPERCENT": {
-					"REQUIRED": "Field is required"
-				},
-				"VALIDFROM": {
-					"REQUIRED": "Valid from is required"
-				},
-				"VALIDTO": {
-					"REQUIRED": "Valid to is required"
-				},
-				"START": {
-					"REQUIRED": "Start is required"
-				},
-				"END": {
-					"REQUIRED": "End is required"
-				},
-				"MINUNITS": {
-					"REQUIRED": "Minimum units is required"
-				},
-				"MAXUNITS": {
-					"REQUIRED": "Maximum units is required"
-				},
-				"MINUNITSOFTIME": {
-					"REQUIRED": "Minimum units time is required"
-				},
-				"MAXUNITSOFTIME": {
-					"REQUIRED": "Maximum units of time is required"
-				}
-			}
-		},
-		"QUEUE": {
-			"ADDING": "Adding the lodging reservation price change valid from/to: {{ dates }}",
-			"UPDATING": "Updating the lodging reservation price change valid from/to: {{ dates }}",
-			"DELETING": "Deleting the lodging reservation price change valid from/to: {{ dates }}",
-			"ERROR": "An error occured with the lodging reservation price change valid from/to: {{ dates }}. Correct and try again."
-		}
-	},
-	"LODGING_TYPE_PRICES": {
-		"CREATE": {
-			"CREATE": "Create",
-			"BUTTON_CREATE": "Create"
-		},
-		"EDIT": {
-			"EDIT": "Edit",
-			"BUTTON_EDIT": "Update"
-		},
-		"INDEX": {
-			"ACTIONS": "Actions",
-			"CREATE": "Create",
-			"DELETE": "Delete",
-			"MANAGE": "Manage",
-			"FIELDS": "Fields",
-			"BACK": "Back"
-		},
-		"FORM": {
-			"LABELS": {
-				"CURRENCYCODE": "Currency code",
-				"RECORDID": "Lodging type",
-				"PRICE": "Price"
-			},
-			"PLACEHOLDERS": {
-				"CURRENCYCODE": "Currency code",
-				"RECORDID": "Lodging type",
-				"PRICE": "Price"
-			},
-			"VALIDATION": {
-				"CURRENCYCODE": {
-					"REQUIRED": "Currency code is required"
-				},
-				"RECORDID": {
-					"REQUIRED": "Lodging type is required"
-				},
-				"PRICE": {
-					"REQUIRED": "Price is required"
-				}
-			}
-		},
-		"QUEUE": {
-			"ADDING": "Adding the lodging type price with the price: {{ price }}",
-			"UPDATING": "Updating the lodging type price with the price: {{ price }}",
-			"DELETING": "Deleting the lodging type price with the price: {{ price }}",
-			"ERROR": "An error occured with the lodging type price with the price: {{ price }}. Correct and try again."
-		}
-	},
-	"LODGING_TYPE_RESERVATION_PRICE_CHANGES": {
-		"CREATE": {
-			"CREATE": "Create",
-			"BUTTON_CREATE": "Create"
-		},
-		"EDIT": {
-			"EDIT": "Edit",
-			"BUTTON_EDIT": "Update"
-		},
-		"INDEX": {
-			"ACTIONS": "Actions",
-			"CREATE": "Create",
-			"DELETE": "Delete",
-			"MANAGE": "Manage",
-			"FIELDS": "Fields",
-			"BACK": "Back"
-		},
-		"FORM": {
-			"LABELS": {
-				"CHANGE": "Price change",
-				"CURRENCYCODE": "Currency code",
-				"ISPERCENT": "Change is in percentage (%)",
-				"VALIDFROM": "Valid from",
-				"VALIDTO": "Valid to",
-				"RECORDID": "Lodging type",
-				"START": "Start",
-				"END": "End",
-				"EXCLUDEDAYSOFWEEK": "Exclude week days",
-				"MINUNITS": "Minimum units",
-				"MAXUNITS": "Maximum units",
-				"PERUNIT": "Per unit",
-				"ONLYVALIDUNITS": "Change only counts for units within min and max",
-				"MINUNITSOFTIME": "Minimum units of time",
-				"MAXUNITSOFTIME": "Maximum units of time",
-				"ONLYVALIDUNITSOFTIME": "Change only counts for units within the min and max time period",
-				"PERUNITOFTIME": "Per unit of time"
-			},
-			"PLACEHOLDERS": {
-				"CURRENCYCODE": "Currency code",
-				"RECORDID": "Lodging type",
-				"CHANGE": "Price change",
-				"ISPERCENT": "Change is in percentage (%)",
-				"VALIDFROM": "Valid from",
-				"VALIDTO": "Valid to",
-				"START": "Start",
-				"END": "End",
-				"EXCLUDEDAYSOFWEEK": "Exclude week days",
-				"MINUNITS": "Minimum units",
-				"MAXUNITS": "Maximum units",
-				"PERUNIT": "Per unit",
-				"ONLYVALIDUNITS": "Change only counts for units within min and max",
-				"MINUNITSOFTIME": "Minimum units of time",
-				"MAXUNITSOFTIME": "Maximum units of time",
-				"ONLYVALIDUNITSOFTIME": "Change only counts for units within the min and max time period",
-				"PERUNITOFTIME": "Per unit of time"
-			},
-			"VALIDATION": {
-				"CURRENCYCODE": {
-					"REQUIRED": "Currency code is required"
-				},
-				"RECORDID": {
-					"REQUIRED": "Lodging type is required"
-				},
-				"CHANGE": {
-					"REQUIRED": "Price change is required"
-				},
-				"ISPERCENT": {
-					"REQUIRED": "Price change type is required"
-				},
-				"VALIDFROM": {
-					"REQUIRED": "Valid from is required"
-				},
-				"VALIDTO": {
-					"REQUIRED": "Valid to is required"
-				},
-				"START": {
-					"REQUIRED": "Start is required"
-				},
-				"END": {
-					"REQUIRED": "End is required"
-				},
-				"MINUNITS": {
-					"REQUIRED": "Minimum units is required"
-				},
-				"MAXUNITS": {
-					"REQUIRED": "Maximum units is required"
-				},
-				"MINUNITSOFTIME": {
-					"REQUIRED": "Minimum units time is required"
-				},
-				"MAXUNITSOFTIME": {
-					"REQUIRED": "Maximum units of time is required"
-				}
-			}
-		},
-		"QUEUE": {
-			"ADDING": "Adding the lodging type reservation price change valid from/to: {{ dates }}",
-			"UPDATING": "Updating the lodging type reservation price change valid from/to: {{ dates }}",
-			"DELETING": "Deleting the lodging type reservation price change valid from/to: {{ dates }}",
-			"ERROR": "An error occured with the lodging type reservation price change valid from/to: {{ dates }}. Correct and try again."
 		}
 	}
 }
