@@ -1,22 +1,36 @@
-import { Validation } from '@skysmack/ng-dynamic-forms';
+import { Validation, CustomValidators } from '@skysmack/ng-dynamic-forms';
 import { StrIndex } from '@skysmack/framework';
 
 export class CommercialAccountResetPasswordValidation extends Validation {
 
     public formErrors = {
-        email: ''
+        email: '',
+        token: '',
+        newPassword: '',
+        confirmNewPassword: ''
     };
 
     public validationMessages: StrIndex<{}> = {
         email: {
             required: '',
             invalidEmail: ''
+        },
+        token: {
+            required: '',
+        },
+        newPassword: {
+            required: '',
+            invalidPassword: ''
+        },
+        confirmNewPassword: {
+            required: '',
+            passwordMismatch: ''
         }
     };
 
-    public area = 'OAUTH2';
+    public area = 'COMMERCIAL_ACCOUNT';
 
-    public formValidators = [];
+    public formValidators = [CustomValidators.comparePassword('newPassword', 'confirmNewPassword')];
 
     constructor() {
         super();

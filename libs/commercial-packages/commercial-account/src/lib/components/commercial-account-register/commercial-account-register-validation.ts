@@ -22,7 +22,8 @@ export class CommercialAccountRegisterValidation extends Validation {
             required: ''
         },
         confirmPassword: {
-            required: ''
+            required: '',
+            passwordMismatch: ''
         }
     };
 
