@@ -9,7 +9,8 @@ import { CommercialTenantsService } from '../../services/commercial-tenants.serv
 export class CommercialTenantsIndexComponent implements OnInit {
 
   constructor(
-    public service: CommercialTenantsService,
+    private tenantsService: CommercialTenantsService,
+    // private usersService: CommercialUsersService // IMPORT THIS
   ) { }
 
   ngOnInit() {
