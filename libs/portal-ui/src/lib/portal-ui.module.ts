@@ -7,7 +7,7 @@ import { standardSettingsReducer } from './redux/settings';
 import { NgNotifications } from './notifications/ng-notifications';
 import { NOTIFICATIONS_INJECTOR_TOKEN, CoalescingComponentFactoryResolver } from '@skysmack/ng-framework';
 import { NgUIModule } from '@skysmack/ng-ui';
-import { NgTranslationModule, LanguageService } from '@skysmack/ng-translation';
+import { NgTranslationModule, LanguageService, PortalHttpLoaderFactory } from '@skysmack/ng-translation';
 import { portailUiPipes } from './pipes/portal-ui-pipes';
 import { commonComponents } from './components/common/common-components';
 import { displayComponents } from './components/display-components/display-components';
@@ -38,7 +38,7 @@ const material = [
   imports: [
     CommonModule,
     RouterModule,
-    NgTranslationModule,
+    NgTranslationModule.forRoot(PortalHttpLoaderFactory),
     NgUIModule,
     ...material
   ],

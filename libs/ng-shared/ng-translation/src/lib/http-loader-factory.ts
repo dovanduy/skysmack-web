@@ -5,7 +5,7 @@ import { StrIndex } from '@skysmack/framework';
 
 declare const System: any;
 
-class SkysmackTranslateHttpLoader {
+export class SkysmackTranslateHttpLoader {
     public static i18nFiles: StrIndex<Observable<any>> = {};
     public http: any;
     public prefix: any;
@@ -16,16 +16,34 @@ class SkysmackTranslateHttpLoader {
         this.prefix = prefix;
         this.suffix = suffix;
     }
+}
 
-    getTranslation(lang) {
-        if (!SkysmackTranslateHttpLoader.i18nFiles[lang]) {
-            SkysmackTranslateHttpLoader.i18nFiles[lang] = from(System.import(`../../../../../apps/web/web-portal/src/i18n/${lang}${this.suffix}`));
+class SkysmackPortalTranslateHttpLoader extends SkysmackTranslateHttpLoader {
+    getTranslation(lang: string) {
+        if (!SkysmackPortalTranslateHttpLoader.i18nFiles[lang]) {
+            SkysmackPortalTranslateHttpLoader.i18nFiles[lang] = from(System.import(`../../../../../apps/web/web-portal/src/i18n/${lang}${this.suffix}`));
         }
-        return SkysmackTranslateHttpLoader.i18nFiles[lang];
+        return SkysmackPortalTranslateHttpLoader.i18nFiles[lang];
     }
 }
 
-// AoT requires an exported function for factories
-export function HttpLoaderFactory(http: HttpClient) {
-    return new SkysmackTranslateHttpLoader(http, 'i18n/');
+class SkysmackCommercialTranslateHttpLoader extends SkysmackTranslateHttpLoader {
+    getTranslation(lang: string) {
+        if (!SkysmackCommercialTranslateHttpLoader.i18nFiles[lang]) {
+            SkysmackCommercialTranslateHttpLoader.i18nFiles[lang] = from(System.import(`../../../../../apps/web/web-commercial/src/i18n/${lang}${this.suffix}`));
+        }
+        return SkysmackCommercialTranslateHttpLoader.i18nFiles[lang];
+    }
 }
+
+
+
+// AoT requires an exported function for factories
+export function PortalHttpLoaderFactory(http: HttpClient) {
+    return new SkysmackPortalTranslateHttpLoader(http, 'i18n/')
+}
+
+export function CommercialHttpLoaderFactory(http: HttpClient) {
+    return new SkysmackCommercialTranslateHttpLoader(http, 'i18n/')
+}
+
