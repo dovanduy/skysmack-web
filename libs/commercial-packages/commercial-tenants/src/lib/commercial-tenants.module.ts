@@ -7,7 +7,7 @@ import { commercialTenantsComponents } from './components/commercial-tenants-com
 import { DynamicFormsModule } from '@skysmack/portal-dynamic-forms';
 import { PortalFieldsModule } from '@skysmack/portal-fields';
 import { NgDynamicFormsModule } from '@skysmack/ng-dynamic-forms';
-import { NgTranslationModule } from '@skysmack/ng-translation';
+import { NgTranslationModule, CommercialHttpLoaderFactory } from '@skysmack/ng-translation';
 import { CommercialUiPartnersModule, NgMenuProviders } from '@skysmack/commercial-ui-partners';
 import { NgCommercialTenantsMenuProvider } from './ng-commercial-tenants-menu-provider';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
@@ -32,7 +32,7 @@ const material = [
     NgDynamicFormsModule,
     DynamicFormsModule,
     PortalFieldsModule,
-    NgTranslationModule,
+    NgTranslationModule.forRoot(CommercialHttpLoaderFactory),
     CommercialUiPartnersModule,
     CommercialTenantsRoutingModule,
     ...material
