@@ -2548,13 +2548,19 @@
 				"NAME": "Name",
 				"HOSTNAME": "Hostname",
 				"SAFESUBDOMAIN": "Safe subdomain",
-				"STATE": "State"
+				"STATE": "State",
+				"USERID": "User",
+				"TENANTID": "Tenant",
+				"STATUS": "Status"
 			},
 			"PLACEHOLDERS": {
 				"NAME": "Enter a Name",
 				"HOSTNAME": "Enter a hostname",
 				"SAFESUBDOMAIN": "Enter a safe subdomain",
-				"STATE": "Enter a state"
+				"STATE": "Enter a state",
+				"USERID": "User",
+				"TENANTID": "Tenant",
+				"STATUS": "Status"
 			},
 			"VALIDATION": {
 				"NAME": {
@@ -2568,9 +2574,21 @@
 				},
 				"STATE": {
 					"REQUIRED": "The state is required."
+				},
+				"USERID": {
+					"REQUIRED": "User is required."
+				},
+				"TENANTID": {
+					"REQUIRED": "Tenant is required."
+				},
+				"STATUS": {
+					"REQUIRED": "Status is required."
 				}
 			}
-		}
+		},
+		"REMOVE": "Remove",
+		"SUBMIT": "Submit",
+		"TENANTUSERRELATION": "Tenant-User relation"
 	},
 	"COMMERCIAL_ACCOUNT": {
 		"INDEX": {
@@ -2584,20 +2602,27 @@
 			"CREDENTIALS": "Please enter credentials below",
 			"INCORRECT": "The entered password and/or username was incorrect. Please try again.",
 			"FORGOTPASSWORD": "Forgot password",
-			"CONFIRMEMAIL": "Confirm email"
+			"CONFIRMEMAIL": "Confirm email",
+			"REGISTER": "Register"
 		},
 		"FORM": {
 			"LABELS": {
 				"EMAIL": "Email",
 				"PASSWORD": "Password",
-				"STAYSIGNEDIN": "Stay signed in?"
+				"STAYSIGNEDIN": "Stay signed in?",
+				"USERNAME": "User name",
+				"CONFIRMPASSWORD": "Confirm Password",
+				"NEWPASSWORD": "New password",
+				"CONFIRMNEWPASSWORD": "Confirm new password"
 			},
 			"PLACEHOLDERS": {
 				"EMAIL": "Enter email",
 				"PASSWORD": "Enter password",
 				"CURRENTPASSWORD": "Current password",
 				"NEWPASSWORD": "New password",
-				"CONFIRMNEWPASSWORD": "Confirm new password"
+				"CONFIRMNEWPASSWORD": "Confirm new password",
+				"USERNAME": "Enter user name",
+				"CONFIRMPASSWORD": "Confirm Password"
 			},
 			"VALIDATION": {
 				"EMAIL": {
@@ -2614,6 +2639,13 @@
 					"REQUIRED": "New password is required."
 				},
 				"CONFIRMNEWPASSWORD": {
+					"REQUIRED": "Please repeat the new password.",
+					"PASSWORDMISMATCH": "Passwords must match."
+				},
+				"USERNAME": {
+					"REQUIRED": "User name is required"
+				},
+				"CONFIRMPASSWORD": {
 					"REQUIRED": "Please repeat the new password.",
 					"PASSWORDMISMATCH": "Passwords must match."
 				}
@@ -2641,6 +2673,9 @@
 		"CHANGE_PASSWORD": {
 			"TITLE": "Change password",
 			"BUTTON_EDIT": "Update"
+		},
+		"REGISTER": {
+			"TITLE": "Register"
 		}
 	},
 	"COMMERCIAL_UI_PARTNERS": {
@@ -2690,7 +2725,9 @@
 					"PASSWORDMISMATCH": "The passwords must match."
 				}
 			}
-		}
+		},
+		"DETAILS": "Details",
+		"REMOVE": "TTTRemove"
 	},
 	"OAUTH2": {
 		"FORM": {

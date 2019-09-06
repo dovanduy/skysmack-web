@@ -7,7 +7,7 @@ import { commercialAccountComponents } from './components/commercial-account-com
 import { DynamicFormsModule } from '@skysmack/portal-dynamic-forms';
 import { PortalFieldsModule } from '@skysmack/portal-fields';
 import { NgDynamicFormsModule } from '@skysmack/ng-dynamic-forms';
-import { NgTranslationModule } from '@skysmack/ng-translation';
+import { NgTranslationModule, CommercialHttpLoaderFactory } from '@skysmack/ng-translation';
 import { CommercialUiPartnersModule } from '@skysmack/commercial-ui-partners';
 import { MatCardModule } from '@angular/material/card';
 
@@ -23,7 +23,7 @@ const material = [
     DynamicFormsModule,
     PortalFieldsModule,
     CommercialUiPartnersModule,
-    NgTranslationModule,
+    NgTranslationModule.forRoot(CommercialHttpLoaderFactory),
     CommercialAccountRoutingModule,
     ...material
   ],

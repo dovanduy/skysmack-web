@@ -3,6 +3,8 @@ import { Validators } from '@angular/forms';
 import { FormRule, Field, CustomValidators } from '@skysmack/ng-dynamic-forms';
 import { EmailFieldComponent } from '@skysmack/portal-fields';
 import { CommercialAccountForgotPasswordValidation } from './commercial-account-forgot-password-validation';
+import { LoadedPackage } from '@skysmack/ng-framework';
+import { LocalObject } from '@skysmack/framework';
 
 @Injectable({ providedIn: 'root' })
 export class CommercialAccountForgotPasswordFieldsConfig {
@@ -12,7 +14,7 @@ export class CommercialAccountForgotPasswordFieldsConfig {
 
     constructor() { }
 
-    public getFields(): Field[] {
+    public getFields(loadedPackage: LoadedPackage, entity?: LocalObject<any, any>): Field[] {
         const fields = [
             new Field({
                 component: EmailFieldComponent,

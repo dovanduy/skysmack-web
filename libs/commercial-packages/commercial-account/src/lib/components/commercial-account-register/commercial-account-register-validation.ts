@@ -1,28 +1,27 @@
 import { Validation, CustomValidators } from '@skysmack/ng-dynamic-forms';
 import { StrIndex } from '@skysmack/framework';
 
-export class CommercialAccountResetPasswordValidation extends Validation {
+export class CommercialAccountRegisterValidation extends Validation {
 
     public formErrors = {
+        userName: '',
         email: '',
-        token: '',
-        newPassword: '',
-        confirmNewPassword: ''
+        password: '',
+        confirmPassword: ''
     };
 
     public validationMessages: StrIndex<{}> = {
+        userName: {
+            required: ''
+        },
         email: {
             required: '',
             invalidEmail: ''
         },
-        token: {
-            required: '',
+        password: {
+            required: ''
         },
-        newPassword: {
-            required: '',
-            invalidPassword: ''
-        },
-        confirmNewPassword: {
+        confirmPassword: {
             required: '',
             passwordMismatch: ''
         }
@@ -30,7 +29,7 @@ export class CommercialAccountResetPasswordValidation extends Validation {
 
     public area = 'COMMERCIAL_ACCOUNT';
 
-    public formValidators = [CustomValidators.comparePassword('newPassword', 'confirmNewPassword')];
+    public formValidators = [CustomValidators.comparePassword()];
 
     constructor() {
         super();

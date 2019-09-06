@@ -1,6 +1,6 @@
 
 import { Store, AnyAction } from 'redux';
-import { PagedQuery, Record, LocalObject, HttpMethod, LocalObjectStatus, HttpResponse, QueueItem, StrIndex } from '@skysmack/framework';
+import { PagedQuery, Record, LocalObject, HttpMethod, LocalObjectStatus, HttpResponse, QueueItem, StrIndex, RSQLFilterBuilder, LimitQuery } from '@skysmack/framework';
 import { ReduxAction } from '../action-types/redux-action';
 import { GetPagedEntitiesPayload, GetSingleEntityPayload, CancelActionPayload, } from '../payloads';
 import { CommitMeta, RollbackMeta, ReduxOfflineMeta, CancelActionMeta, OfflineMeta } from '../metas';
@@ -32,8 +32,6 @@ export abstract class RecordActionsBase<TStateType, TStore extends Store<TStateT
     public static DELETE_FAILURE = 'DELETE_FAILURE';
 
     public static SIGNAL_R_DELETED = 'SIGNAL_R_DELETED';
-
-    protected identifier = 'id';
 
     constructor(
         protected store: TStore,
@@ -129,7 +127,7 @@ export abstract class RecordActionsBase<TStateType, TStore extends Store<TStateT
             return new QueueItem({
                 message: `${withQueue.replace('_QUEUE', '.QUEUE')}.UPDATING`,
                 messageParams: this.getMessageParams(record),
-                link: `${this.addAdditionalPaths(packagePath)}/edit/${record.object[this.identifier]}`,
+                link: `${this.addAdditionalPaths(packagePath)}/edit/${record.objectIdentifier}`,
                 packagePath,
                 localObject: record,
                 cancelAction: this.cancelAction
@@ -168,8 +166,30 @@ export abstract class RecordActionsBase<TStateType, TStore extends Store<TStateT
 
     public delete = <TRecord extends Record<TKey>, TKey>(records: LocalObject<TRecord, TKey>[], packagePath: string) => {
         let path = this.addAdditionalPaths(packagePath);
+        const limit = records.length;
 
-        path = `${path}?${this.identifier}s=${records.map(x => x.object[this.identifier]).join(',')}`;
+        let rsql: RSQLFilterBuilder = new RSQLFilterBuilder();
+
+        for (const item of records) {
+            const itemFilter = new RSQLFilterBuilder();
+            if (typeof(item.objectIdentifier) === 'object') {
+                const keys = Object.keys(item.objectIdentifier);
+                for (const key of keys) {
+                    itemFilter.column(item.identifier + '.' + key).equalTo(item.objectIdentifier[key]);
+                }
+            } else {
+                itemFilter.column(item.identifier).equalTo(item.objectIdentifier.toString());
+            }
+             
+            rsql.or().group(itemFilter);
+        }
+
+        var query = new LimitQuery({
+            rsqlFilter: rsql,
+            limit: limit
+        });
+
+        path = `${path}?query=${query.rsqlFilter.toList().build()}&limit=${query.limit}`;
 
         records.forEach(record => record.error = false);
 

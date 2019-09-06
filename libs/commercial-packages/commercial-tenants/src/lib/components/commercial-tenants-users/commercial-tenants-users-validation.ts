@@ -1,20 +1,27 @@
 import { Validation } from '@skysmack/ng-dynamic-forms';
 import { StrIndex } from '@skysmack/framework';
 
-export class CommercialAccountForgotPasswordValidation extends Validation {
+export class CommercialTenantsUsersValidation extends Validation {
 
     public formErrors = {
-        email: ''
+        userId: '',
+        tenantId: '',
+        status: ''
     };
 
     public validationMessages: StrIndex<{}> = {
-        email: {
+        userId: {
             required: '',
-            invalidEmail: ''
+        },
+        tenantId: {
+            required: ''
+        },
+        status: {
+            required: ''
         }
     };
 
-    public area = 'COMMERCIAL_ACCOUNT';
+    public area = 'COMMERCIAL_TENANTS';
 
     public formValidators = [];
 

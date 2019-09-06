@@ -44,7 +44,7 @@ export class SelectField extends Field {
     /**
      * Modifies the display name for each option.
      */
-    public modifyDisplayName?: Function;
+    public modifyDisplayName?: (options: SelectFieldOption[], optionsData: any[]) => SelectFieldOption[];
 
     /**
      * Whether an index or the actual value of a ts-enum should be used. Default is the index value (false)

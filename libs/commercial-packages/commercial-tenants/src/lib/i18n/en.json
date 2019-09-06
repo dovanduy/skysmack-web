@@ -2,7 +2,8 @@
     "COMMERCIAL_TENANTS": {
         "INDEX": {
             "CREATE": "Create tenant",
-            "TENANTS": "Tenants"
+            "TENANTS": "Tenants",
+            "TENANTUSERRELATION": "Tenant-User relation"
         },
         "TITLE": "Tenants",
         "CREATE": "Create",
@@ -10,21 +11,29 @@
         "EDIT": "Edit",
         "EDITTENANT": "Edit tenant",
         "DETAILS": "Details",
+        "REMOVE": "Remove",
         "HOSTNAME": "Hostname",
         "SAFESUBDOMAIN": "Safe subdomain",
         "STATE": "State",
+        "SUBMIT": "Submit",
         "FORM": {
             "LABELS": {
                 "NAME": "Name",
                 "HOSTNAME": "Hostname",
                 "SAFESUBDOMAIN": "Safe subdomain",
-                "STATE": "State"
+                "STATE": "State",
+                "USERID": "User",
+                "TENANTID": "Tenant",
+                "STATUS": "Status"
             },
             "PLACEHOLDERS": {
                 "NAME": "Enter a Name",
                 "HOSTNAME": "Enter a hostname",
                 "SAFESUBDOMAIN": "Enter a safe subdomain",
-                "STATE": "Enter a state"
+                "STATE": "Enter a state",
+                "USERID": "User",
+                "TENANTID": "Tenant",
+                "STATUS": "Status"
             },
             "VALIDATION": {
                 "NAME": {
@@ -38,6 +47,15 @@
                 },
                 "STATE": {
                     "REQUIRED": "The state is required."
+                },
+                "USERID": {
+                    "REQUIRED": "User is required."
+                },
+                "TENANTID": {
+                    "REQUIRED": "Tenant is required."
+                },
+                "STATUS": {
+                    "REQUIRED": "Status is required."
                 }
             }
         }

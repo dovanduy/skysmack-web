@@ -646,112 +646,6 @@
         }
       }
     },
-    "web-portal": {
-      "root": "apps/web/web-portal/",
-      "sourceRoot": "apps/web/web-portal/src",
-      "projectType": "application",
-      "prefix": "skysmack",
-      "schematics": {
-        "@nrwl/schematics:component": {
-          "style": "scss"
-        }
-      },
-      "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-angular:browser",
-          "options": {
-            "outputPath": "dist/apps/web/web-portal",
-            "index": "apps/web/web-portal/src/index.html",
-            "main": "apps/web/web-portal/src/main.ts",
-            "polyfills": "apps/web/web-portal/src/polyfills.ts",
-            "tsConfig": "apps/web/web-portal/tsconfig.app.json",
-            "preserveSymlinks": false,
-            "assets": [
-              "apps/web/web-portal/src/assets/favicon.ico",
-              "apps/web/web-portal/src/assets",
-              "apps/web/web-portal/src/manifest.json",
-              {
-                "glob": "**/*",
-                "input": "apps/web/web-portal/src/i18n/",
-                "output": "/i18n/"
-              }
-            ],
-            "styles": [
-              "apps/web/web-portal/src/styles.scss"
-            ],
-            "scripts": [],
-            "es5BrowserSupport": true,
-            "vendorSourceMap": true
-          },
-          "configurations": {
-            "production": {
-              "fileReplacements": [
-                {
-                  "replace": "apps/web/web-portal/src/environments/environment.ts",
-                  "with": "apps/web/web-portal/src/environments/environment.prod.ts"
-                }
-              ],
-              "optimization": true,
-              "outputHashing": "all",
-              "sourceMap": false,
-              "extractCss": true,
-              "namedChunks": false,
-              "aot": true,
-              "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true,
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "2mb",
-                  "maximumError": "5mb"
-                }
-              ],
-              "serviceWorker": true,
-              "ngswConfigPath": "apps/web/web-portal/src/ngsw-config.json"
-            }
-          }
-        },
-        "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
-          "options": {
-            "browserTarget": "web-portal:build"
-          },
-          "configurations": {
-            "production": {
-              "browserTarget": "web-portal:build:production"
-            }
-          }
-        },
-        "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n",
-          "options": {
-            "browserTarget": "web-portal:build"
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "apps/web/web-portal/tsconfig.app.json",
-              "apps/web/web-portal/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/web/web-portal/**"
-            ]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "apps/web/web-portal/jest.config.js",
-            "tsConfig": "apps/web/web-portal/tsconfig.spec.json",
-            "setupFile": "apps/web/web-portal/src/test-setup.ts"
-          }
-        }
-      }
-    },
     "shared-pricings": {
       "root": "libs/shared/pricings",
       "sourceRoot": "libs/shared/pricings/src",
@@ -1224,6 +1118,112 @@
         }
       }
     },
+    "web-portal": {
+      "root": "apps/web/web-portal/",
+      "sourceRoot": "apps/web/web-portal/src",
+      "projectType": "application",
+      "prefix": "skysmack",
+      "schematics": {
+        "@nrwl/schematics:component": {
+          "style": "scss"
+        }
+      },
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/web/web-portal",
+            "index": "apps/web/web-portal/src/index.html",
+            "main": "apps/web/web-portal/src/main.ts",
+            "polyfills": "apps/web/web-portal/src/polyfills.ts",
+            "tsConfig": "apps/web/web-portal/tsconfig.app.json",
+            "preserveSymlinks": false,
+            "assets": [
+              "apps/web/web-portal/src/assets/favicon.ico",
+              "apps/web/web-portal/src/assets",
+              "apps/web/web-portal/src/manifest.json",
+              {
+                "glob": "**/*",
+                "input": "apps/web/web-portal/src/i18n/",
+                "output": "/i18n/"
+              }
+            ],
+            "styles": [
+              "apps/web/web-portal/src/styles.scss"
+            ],
+            "scripts": [],
+            "es5BrowserSupport": true,
+            "vendorSourceMap": true
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/web/web-portal/src/environments/environment.ts",
+                  "with": "apps/web/web-portal/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ],
+              "serviceWorker": true,
+              "ngswConfigPath": "apps/web/web-portal/src/ngsw-config.json"
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "web-portal:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "web-portal:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "web-portal:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/web/web-portal/tsconfig.app.json",
+              "apps/web/web-portal/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/web/web-portal/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/web/web-portal/jest.config.js",
+            "tsConfig": "apps/web/web-portal/tsconfig.spec.json",
+            "setupFile": "apps/web/web-portal/src/test-setup.ts"
+          }
+        }
+      }
+    },
     "web-commercial": {
       "projectType": "application",
       "schematics": {
@@ -1246,7 +1246,12 @@
             "preserveSymlinks": false,
             "assets": [
               "apps/web/web-commercial/src/favicon.ico",
-              "apps/web/web-commercial/src/assets"
+              "apps/web/web-commercial/src/assets",
+              {
+                "glob": "**/*",
+                "input": "apps/web/web-commercial/src/i18n/",
+                "output": "/i18n/"
+              }
             ],
             "styles": [
               "apps/web/web-commercial/src/styles.scss"
@@ -1320,36 +1325,6 @@
             "jestConfig": "apps/web/web-commercial/jest.config.js",
             "tsConfig": "apps/web/web-commercial/tsconfig.spec.json",
             "setupFile": "apps/web/web-commercial/src/test-setup.ts"
-          }
-        }
-      }
-    },
-    "web-commercial-e2e": {
-      "root": "apps/web/web-commercial-e2e",
-      "sourceRoot": "apps/web/web-commercial-e2e/src",
-      "projectType": "application",
-      "architect": {
-        "e2e": {
-          "builder": "@nrwl/cypress:cypress",
-          "options": {
-            "cypressConfig": "apps/web/web-commercial-e2e/cypress.json",
-            "tsConfig": "apps/web/web-commercial-e2e/tsconfig.e2e.json",
-            "devServerTarget": "web-commercial:serve"
-          },
-          "configurations": {
-            "production": {
-              "devServerTarget": "web-commercial:serve:production"
-            }
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": "apps/web/web-commercial-e2e/tsconfig.e2e.json",
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/web/web-commercial-e2e/**"
-            ]
           }
         }
       }

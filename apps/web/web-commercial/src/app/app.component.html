@@ -1,5 +1,6 @@
 <mat-sidenav-container hasBackdrop="true">
 
+  <!-- Mobile menu -->
   <mat-sidenav #sidenav role="navigation" class="sidenav">
     <mat-list>
       <h3 mat-subheader>
@@ -45,13 +46,18 @@
         </a>
       </mat-list-item>
       <mat-list-item>
-        <a [routerLink]="['account', 'login']" (click)="sidenav.close()">
+        <a [routerLink]="['account', 'login']" (click)="sidenav.close()" *allowAccessFor="allowAccessForEnum.anonymous">
           Sign in
+        </a>
+        <a [routerLink]="['account', 'dashboard']" (click)="sidenav.close()"
+          *allowAccessFor="allowAccessForEnum.authenticated">
+          Portal
         </a>
       </mat-list-item>
     </mat-list>
   </mat-sidenav>
 
+  <!-- Desktop menu -->
   <nav class="docs-navbar-header mat-elevation-z3">
     <nav class="mobile-only toggle-menu">
       <button mat-icon-button (click)="sidenav.toggle()">

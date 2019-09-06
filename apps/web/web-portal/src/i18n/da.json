@@ -2531,29 +2531,37 @@
 	"COMMERCIAL_TENANTS": {
 		"INDEX": {
 			"CREATE": " Opret tenant",
-			"TENANTS": "Beboere"
+			"TENANTS": "Tenant",
+			"TENANTUSERRELATION": "Tenant-Bruger relation"
 		},
-		"TITLE": "Beboere",
+		"TITLE": "Tenant",
 		"CREATE": "Opret",
-		"CREATETENANT": "Opret beboer",
+		"CREATETENANT": "Opret Tenant",
 		"EDIT": "Rediger",
-		"EDITTENANT": "Rediger beboer",
+		"EDITTENANT": "Rediger Tenant",
 		"DETAILS": "Detaljer",
 		"HOSTNAME": "Værtsnavn",
 		"SAFESUBDOMAIN": "Sikker subdomæne",
 		"STATE": "Tilstand",
+		"SUBMIT": "Send",
 		"FORM": {
 			"LABELS": {
 				"NAME": "Navn",
 				"HOSTNAME": "Værtsnavn",
 				"SAFESUBDOMAIN": "Sikker subdomæne",
-				"STATE": "Tilstand"
+				"STATE": "Tilstand",
+                "USERID": "Bruger",
+                "TENANTID": "Tenant",
+                "STATUS": "Status"
 			},
 			"PLACEHOLDERS": {
 				"NAME": "Indtast et navn",
 				"HOSTNAME": "Indtast a hostname",
 				"SAFESUBDOMAIN": "Indtast en sikker subdomæne",
-				"STATE": "Indtast en tilstand"
+				"STATE": "Indtast en tilstand",
+				"USERID": "User",
+                "TENANTID": "Tenant",
+                "STATUS": "Status"
 			},
 			"VALIDATION": {
 				"NAME": {
@@ -2563,11 +2571,20 @@
 					"REQUIRED": "Et værtsnavn er påkrævet."
 				},
 				"SAFESUBDOMAIN": {
-					"REQUIRED": "En Sikker subdomæne er påkrævet."
+					"REQUIRED": "Et sikkert subdomæne er påkrævet."
 				},
 				"STATE": {
 					"REQUIRED": "Tilstanden er påkrævet."
-				}
+				},
+                "USERID": {
+                    "REQUIRED": "Bruger er påkrævet."
+                },
+                "TENANTID": {
+                    "REQUIRED": "Tenant er påkrævet."
+                },
+                "STATUS": {
+                    "REQUIRED": "Status er påkrævet."
+                }
 			}
 		}
 	},
@@ -2575,27 +2592,33 @@
 		"INDEX": {
 			"ACCOUNT": "Konto",
 			"WELCOME": "Velkommen til skysmack",
-			"FORGOTPASSWORD": "Glemt adgangskode"
+			"FORGOTPASSWORD": "Glemt adgangskode",
+			"CONFIRMEMAIL": "Bekræft e-mail"
 		},
 		"LOGIN": {
 			"SIGNIN": "Log ind",
 			"CREDENTIALS": "Venligst indtast dine informationer nedeunder",
 			"INCORRECT": "Den indtastede adgangskode og/eller brugernavnet er ikke korrekt. Venligst prøv igen.",
 			"FORGOTPASSWORD": "Glemt adgangskode",
-			"CONFIRMEMAIL": "Bekræft email"
+			"CONFIRMEMAIL": "Bekræft email",
+			"REGISTER": "Registrer"
 		},
 		"FORM": {
 			"LABELS": {
 				"EMAIL": "Email",
 				"PASSWORD": "Adgangskode",
-				"STAYSIGNEDIN": "Forbliv logged ind?"
+				"STAYSIGNEDIN": "Forbliv logged ind?",
+				"USERNAME": "Brugernavn",
+				"CONFIRMPASSWORD": "Bekræft adgangskode"
 			},
 			"PLACEHOLDERS": {
 				"EMAIL": "Indtast email",
 				"PASSWORD": "Indtast adgangskode",
 				"CURRENTPASSWORD": "Nuværende kodeord",
                 "NEWPASSWORD": "Nyt kodeord",
-                "CONFIRMNEWPASSWORD": "Gentag nye kodeord"
+				"CONFIRMNEWPASSWORD": "Gentag nye kodeord",
+				"USERNAME": "Indtast brugernavn",
+				"CONFIRMPASSWORD": "Bekærft adgangskode"
 			},
 			"VALIDATION": {
 				"EMAIL": {
@@ -2614,6 +2637,9 @@
 				"CONFIRMNEWPASSWORD": {
 					"REQUIRED": "Venligst indtast den nye adgangskode igen.",
 					"PASSWORDMISMATCH": "Adgangskoderne skal være identiske."
+				},
+				"USERNAME": {
+					"REQUIRED": "Et brugernavn er påkrævet"
 				}
 			}
 		},
@@ -2639,7 +2665,10 @@
 		"CHANGE_PASSWORD": {
             "TITLE": "Skift kodeord",
             "BUTTON_EDIT": "Opdater"
-        }
+        },
+		"REGISTER": {
+			"TITLE": "Titel"
+		}
 	},
 	"COMMERCIAL_UI_PARTNERS": {
 		"INDEX": {
@@ -2725,6 +2754,7 @@
 		"ADDING": "Tilføjer {{ name }}",
 		"UPDATING": "Opdatere {{ name }}",
 		"DELETING": "Sletter {{ name }}",
+		"EDITING_PATH": "Rediger sti",
 		"ERROR": "Der opstod  en fejl ved {{ name }}. Ret og prøv igen.",
 		"FORM": {
 			"LABELS": {
@@ -3190,17 +3220,22 @@
             "CREATE": "Opret database",
             "DATABASES": "Databaser"
         },
-        "TITLE": "Databaser",
-        "CREATE": "Opret",
+		"TITLE": "Databaser",
+		"CREATE": "Opret",
+		"CREATEDATABASE": "Opret Database",		
         "EDIT": "Ret",
         "EDITDATABASE": "Ret database",
         "REMOVE": "Fjern",
         "FORM": {
             "LABELS": {
+				"NAME": "Database navn",
+				"HOSTNAME": "Værtsnavn",
                 "DATABASENAME": "Database navn",
                 "CANDELETEDATABASE": "Kan databasen slettes"
             },
             "PLACEHOLDERS": {
+				"NAME": "Indtast et database navn",
+				"HOSTNAME": "Indtast et værtsnavn",
                 "DATABASENAME": "Indtast et database navn",
                 "CANDELETEDATABASE": "Kan databasen slettes"
             },

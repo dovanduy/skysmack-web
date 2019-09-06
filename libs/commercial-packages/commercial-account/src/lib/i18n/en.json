@@ -11,22 +11,35 @@
             "CREDENTIALS": "Please enter credentials below",
             "INCORRECT": "The entered password and/or username was incorrect. Please try again.",
             "FORGOTPASSWORD": "Forgot password",
-            "CONFIRMEMAIL": "Confirm email"
+            "CONFIRMEMAIL": "Confirm email",
+            "REGISTER": "Register"
+        },
+        "REGISTER": {
+            "TITLE": "Register"
         },
         "FORM": {
             "LABELS": {
+                "USERNAME": "User name",
                 "EMAIL": "Email",
                 "PASSWORD": "Password",
+                "CONFIRMPASSWORD": "Confirm Password",
+                "NEWPASSWORD": "New password",
+                "CONFIRMNEWPASSWORD": "Confirm new password",
                 "STAYSIGNEDIN": "Stay signed in?"
             },
             "PLACEHOLDERS": {
+                "USERNAME": "Enter user name",
                 "EMAIL": "Enter email",
                 "PASSWORD": "Enter password",
+                "CONFIRMPASSWORD": "Confirm Password",
                 "CURRENTPASSWORD": "Current password",
                 "NEWPASSWORD": "New password",
                 "CONFIRMNEWPASSWORD": "Confirm new password"
             },
             "VALIDATION": {
+                "USERNAME": {
+                    "REQUIRED": "User name is required"
+                },
                 "EMAIL": {
                     "REQUIRED": "Email is required.",
                     "INVALIDEMAIL": "Please enter a valid email."
@@ -39,6 +52,10 @@
                 },
                 "NEWPASSWORD": {
                     "REQUIRED": "New password is required."
+                },
+                "CONFIRMPASSWORD": {
+                    "REQUIRED": "Please repeat the new password.",
+                    "PASSWORDMISMATCH": "Passwords must match."
                 },
                 "CONFIRMNEWPASSWORD": {
                     "REQUIRED": "Please repeat the new password.",

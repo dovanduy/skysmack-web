@@ -22,7 +22,7 @@ import { SolutionsComponent } from './pages/solutions/solutions.component';
 import { ProductsComponent } from './pages/products/products.component';
 import { PricingsComponent } from './pages/pricings/pricings.component';
 import { GettingStartedComponent } from './pages/getting-started/getting-started.component';
-import { NgTranslationModule, LanguageService } from '@skysmack/ng-translation';
+import { NgTranslationModule, LanguageService, CommercialHttpLoaderFactory } from '@skysmack/ng-translation';
 import { AuthenticatedLoadStrategy } from './authenticated-load-strategy';
 import { CommercialUiPartnersModule } from '@skysmack/commercial-ui-partners';
 import { MatListModule } from '@angular/material/list';
@@ -43,7 +43,7 @@ const material = [
     BrowserModule,
     HttpClientModule,
     NgOAuth2Module,
-    NgTranslationModule,
+    NgTranslationModule.forRoot(CommercialHttpLoaderFactory),
     RouterModule.forRoot([
       { path: 'account', loadChildren: './packages/commercial_account_wrapper.module#CommercialAccountWrapperModule' },
       { path: 'tenants', loadChildren: './packages/commercial_tenants_wrapper.module#CommercialTenantsWrapperModule' },
@@ -75,10 +75,10 @@ const material = [
         component: GettingStartedComponent
       },
     ], {
-        initialNavigation: 'enabled',
-        preloadingStrategy: AuthenticatedLoadStrategy,
-        scrollPositionRestoration: 'enabled'
-      }),
+      initialNavigation: 'enabled',
+      preloadingStrategy: AuthenticatedLoadStrategy,
+      scrollPositionRestoration: 'enabled'
+    }),
     BrowserAnimationsModule,
     CommercialUiPartnersModule,
     NgReduxModule,

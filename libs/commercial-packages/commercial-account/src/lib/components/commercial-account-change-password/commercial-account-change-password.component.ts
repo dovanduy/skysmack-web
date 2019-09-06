@@ -14,6 +14,7 @@ import { map, take } from 'rxjs/operators';
 export class CommercialAccountChangePasswordComponent implements OnInit {
 
   public fields$: Observable<Field[]>;
+  public message: string;
 
   constructor(
     public fieldsConfig: CommercialAccountChangePasswordFieldsConfig,
@@ -27,8 +28,15 @@ export class CommercialAccountChangePasswordComponent implements OnInit {
 
   public onSubmit(fh: FormHelper) {
     fh.formValid(() => {
+      this.message = null;
       this.service.changePassword(fh.form.value).pipe(
-        map(() => this.router.navigate(['/', 'account', 'dashboard'])),
+        map(response => {
+          if (response.status >= 200 && response.status <= 299) {
+            this.router.navigate(['/', 'account', 'dashboard'])
+          } else {
+            this.message = 'An error occurred. Please try again.'
+          }
+        }),
         take(1)
       ).subscribe();
     });
