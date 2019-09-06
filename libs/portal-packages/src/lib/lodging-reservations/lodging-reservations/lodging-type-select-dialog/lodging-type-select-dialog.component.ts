@@ -28,7 +28,8 @@ export class LogdingTypeSelectDialogComponent implements OnInit {
 
   ngOnInit() {
     const packagePath = this.router.url.split('/')[1];
-    const allLodgingTypes$ = getPackageDendencyAsStream(this.skysmackStore, packagePath, [0]).pipe(
+    const lodgingTypePackage$ = getPackageDendencyAsStream(this.skysmackStore, packagePath, [0]);
+    const allLodgingTypes$ = lodgingTypePackage$.pipe(
       switchMap(lodgingPackage => {
         this.lodgingTypesActions.getPaged(lodgingPackage.object.path, new PagedQuery());
         return this.lodgingTypesStore.get(lodgingPackage.object.path);
@@ -41,6 +42,11 @@ export class LogdingTypeSelectDialogComponent implements OnInit {
     ).pipe(
       map(([searchInput, lodgingTypes]) => searchInput ? this.filterLodgingTypes(searchInput, lodgingTypes) : lodgingTypes.slice())
     );
+
+    // Get available lodging types count
+    // START HERE: Get selected checkin and out date. Get their fields via putting form helper in dialog data object.
+    // this.lodgingTypesActions.getAvailableLodgingTypesCount(packagePath, this.startOfMonth, this.endOfMonth, this.selectedLodgingTypeIds);
+    this.lodgingTypesStore.getAvailableLodgingTypesCount(packagePath);
   }
 
   public selectLodgingType(lodgingType: LocalObject<LodgingType, number>): void {
