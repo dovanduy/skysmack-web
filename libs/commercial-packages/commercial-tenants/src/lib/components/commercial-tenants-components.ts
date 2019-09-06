@@ -3,6 +3,7 @@ import { CommercialTenantsIndexComponent } from './commercial-tenants-index/comm
 import { CommercialTenantsCreateComponent } from './commercial-tenants-create/commercial-tenants-create.component';
 import { CommercialTenantsEditComponent } from './commercial-tenants-edit/commercial-tenants-edit.component';
 import { CommercialTenantsDetailsComponent } from './commercial-tenants-details/commercial-tenants-details.component';
+import { CommercialTenantsUsersComponent } from './commercial-tenants-users/commercial-tenants-users.component';
 
 export const commercialTenantsRoutes: Routes = [
   {
@@ -16,6 +17,9 @@ export const commercialTenantsRoutes: Routes = [
   },
   {
     path: 'details/:id', component: CommercialTenantsDetailsComponent
+  },
+  {
+    path: 'tenant-users', component: CommercialTenantsUsersComponent
   }
 ];
 
@@ -23,5 +27,6 @@ export const commercialTenantsComponents: any[] = [
   CommercialTenantsIndexComponent,
   CommercialTenantsCreateComponent,
   CommercialTenantsEditComponent,
-  CommercialTenantsDetailsComponent
+  CommercialTenantsDetailsComponent,
+  CommercialTenantsUsersComponent
 ];

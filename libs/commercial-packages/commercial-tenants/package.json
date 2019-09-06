@@ -9,7 +9,8 @@
     "@skysmack/framework": "*",
     "@skysmack/redux": "*",
     "@skysmack/signal-r": "*",
-    "@skysmack/packages-skysmack-core": "*"
+    "@skysmack/packages-skysmack-core": "*",
+    "@skysmack/commercial-users": "*"
   },
   "main": "./lib/public_api.js",
   "types": "./lib/public_api.d.ts",
