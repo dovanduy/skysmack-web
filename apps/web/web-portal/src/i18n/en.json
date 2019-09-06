@@ -2532,7 +2532,8 @@
 	"COMMERCIAL_TENANTS": {
 		"INDEX": {
 			"CREATE": "Create tenant",
-			"TENANTS": "Tenants"
+			"TENANTS": "Tenants",
+			"TENANTUSERRELATION": "Tenant-User relation"
 		},
 		"TITLE": "Tenants",
 		"CREATE": "Create",
@@ -2548,13 +2549,19 @@
 				"NAME": "Name",
 				"HOSTNAME": "Hostname",
 				"SAFESUBDOMAIN": "Safe subdomain",
-				"STATE": "State"
+				"STATE": "State",
+				"USERID": "User",
+				"TENANTID": "Tenant",
+				"STATUS": "Status"
 			},
 			"PLACEHOLDERS": {
 				"NAME": "Enter a Name",
 				"HOSTNAME": "Enter a hostname",
 				"SAFESUBDOMAIN": "Enter a safe subdomain",
-				"STATE": "Enter a state"
+				"STATE": "Enter a state",
+				"USERID": "User",
+				"TENANTID": "Tenant",
+				"STATUS": "Status"
 			},
 			"VALIDATION": {
 				"NAME": {
@@ -2568,10 +2575,21 @@
 				},
 				"STATE": {
 					"REQUIRED": "The state is required."
+				},
+				"USERID": {
+					"REQUIRED": "User is required."
+				},
+				"TENANTID": {
+					"REQUIRED": "Tenant is required."
+				},
+				"STATUS": {
+					"REQUIRED": "Status is required."
 				}
 			}
 		},
-		"REMOVE": "Remove"
+		"REMOVE": "Remove",
+		"SUBMIT": "Submit",
+		"TENANTUSERRELATION": "Tenant-User relation"
 	},
 	"COMMERCIAL_ACCOUNT": {
 		"INDEX": {

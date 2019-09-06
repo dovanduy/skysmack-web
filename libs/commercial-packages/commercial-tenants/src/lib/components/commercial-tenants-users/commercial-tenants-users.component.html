@@ -1,0 +1,9 @@
+<div class="wrapper">
+    <mat-card>
+        <ss-dynamic-form *ngIf="fields$" [noSidebar]="true" [fields$]="fields$" [validation]="fieldsConfig.validation"
+            [rules]="fieldsConfig.formRules" [removeCloseButton]="true"
+            [buttonText]="'COMMERCIAL_TENANTS.SUBMIT' | translate" (submitted)="onSubmit($event)">
+            <h2>{{ 'COMMERCIAL_TENANTS.INDEX.TENANTUSERRELATION' | translate }}</h2>
+        </ss-dynamic-form>
+    </mat-card>
+</div>

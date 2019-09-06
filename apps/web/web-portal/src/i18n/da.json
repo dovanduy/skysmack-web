@@ -2531,29 +2531,37 @@
 	"COMMERCIAL_TENANTS": {
 		"INDEX": {
 			"CREATE": " Opret tenant",
-			"TENANTS": "Beboere"
+			"TENANTS": "Tenant",
+			"TENANTUSERRELATION": "Tenant-Bruger relation"
 		},
-		"TITLE": "Beboere",
+		"TITLE": "Tenant",
 		"CREATE": "Opret",
-		"CREATETENANT": "Opret beboer",
+		"CREATETENANT": "Opret Tenant",
 		"EDIT": "Rediger",
-		"EDITTENANT": "Rediger beboer",
+		"EDITTENANT": "Rediger Tenant",
 		"DETAILS": "Detaljer",
 		"HOSTNAME": "Værtsnavn",
 		"SAFESUBDOMAIN": "Sikker subdomæne",
 		"STATE": "Tilstand",
+		"SUBMIT": "Send",
 		"FORM": {
 			"LABELS": {
 				"NAME": "Navn",
 				"HOSTNAME": "Værtsnavn",
 				"SAFESUBDOMAIN": "Sikker subdomæne",
-				"STATE": "Tilstand"
+				"STATE": "Tilstand",
+                "USERID": "Bruger",
+                "TENANTID": "Tenant",
+                "STATUS": "Status"
 			},
 			"PLACEHOLDERS": {
 				"NAME": "Indtast et navn",
 				"HOSTNAME": "Indtast a hostname",
 				"SAFESUBDOMAIN": "Indtast en sikker subdomæne",
-				"STATE": "Indtast en tilstand"
+				"STATE": "Indtast en tilstand",
+				"USERID": "User",
+                "TENANTID": "Tenant",
+                "STATUS": "Status"
 			},
 			"VALIDATION": {
 				"NAME": {
@@ -2563,11 +2571,20 @@
 					"REQUIRED": "Et værtsnavn er påkrævet."
 				},
 				"SAFESUBDOMAIN": {
-					"REQUIRED": "En Sikker subdomæne er påkrævet."
+					"REQUIRED": "Et sikkert subdomæne er påkrævet."
 				},
 				"STATE": {
 					"REQUIRED": "Tilstanden er påkrævet."
-				}
+				},
+                "USERID": {
+                    "REQUIRED": "Bruger er påkrævet."
+                },
+                "TENANTID": {
+                    "REQUIRED": "Tenant er påkrævet."
+                },
+                "STATUS": {
+                    "REQUIRED": "Status er påkrævet."
+                }
 			}
 		}
 	},
