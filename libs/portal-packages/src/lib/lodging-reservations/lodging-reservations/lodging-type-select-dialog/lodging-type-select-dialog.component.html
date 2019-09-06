@@ -1,0 +1,13 @@
+<h2>Please select a lodging type here</h2>
+
+<input matInput placeholder="Choose a lodging type" aria-label="Lodging Type" [matAutocomplete]="auto"
+    [formControl]="autoCompleteControl">
+<mat-autocomplete #auto="matAutocomplete">
+    <mat-option *ngFor="let lodgingType of filteredLodgingTypes$ | async" (click)="selectLodgingType(lodgingType)"
+        [value]="lodgingType.object.name">
+        <span>{{lodgingType.object.name}}</span> |
+        <span>2 available</span> |
+        <span>Price A: 2.000 DKK</span> |
+        <span>Price B: 1.600 DKK</span> |
+    </mat-option>
+</mat-autocomplete>

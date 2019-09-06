@@ -1,0 +1,7 @@
+<ng-container *ngIf="field" [formGroup]="fh.form">
+
+  <button mat-raised-button (click)="selectLodgingType()">Select lodging type</button>
+  <p *ngIf="selectedLodgingType">{{ selectedLodgingType.object.name }}</p>
+  <p *ngIf="!selectedLodgingType">No lodging type selected</p>
+
+</ng-container>
