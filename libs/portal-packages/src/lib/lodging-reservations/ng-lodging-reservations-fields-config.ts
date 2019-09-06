@@ -32,18 +32,6 @@ export class NgLodgingReservationsFieldsConfig extends FieldsConfig<LodgingReser
         const depPackagePath = loadedPackage._package.dependencies[0];
 
         const fields = [
-            // new SelectField({
-            //     component: SelectFieldComponent,
-            //     value: entity ? entity.object.lodgingTypeId : undefined,
-            //     key: 'lodgingTypeId',
-            //     displayKey: 'lodgingType',
-            //     displaySubKey: 'object.name',
-            //     validators: [Validators.required],
-            //     optionsData$: this.lodgingTypeStore.get(depPackagePath),
-            //     getDependencies: () => { this.lodgingTypeActions.getPaged(depPackagePath, new PagedQuery()); },
-            //     order: 1,
-            //     showColumn: true
-            // }),
             new Field({
                 component: DateFieldComponent,
                 value: entity ? entity.object.checkIn : undefined,
