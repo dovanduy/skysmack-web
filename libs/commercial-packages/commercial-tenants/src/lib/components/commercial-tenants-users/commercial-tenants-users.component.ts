@@ -29,11 +29,10 @@ export class CommercialTenantsUsersComponent implements OnInit {
   public onSubmit(fh: FormHelper) {
     fh.formValid(() => {
       const partnerTenant = fh.form.getRawValue();
-      console.log(partnerTenant);
-      // this.service.add(tenant).pipe(
-      //   tap(() => this.router.navigate(['/', 'tenants'])),
-      //   take(1)
-      // ).subscribe();
+      this.service.relateTenantAndUser(partnerTenant).pipe(
+        tap(() => this.router.navigate(['/', 'account', 'dashboard'])),
+        take(1)
+      ).subscribe();
     }, false);
   }
 

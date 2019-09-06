@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { Tenant } from '../models/tenant';
+import { PartnerTenant } from '../models/partner-tenant';
 
 @Injectable({ providedIn: 'root' })
 export class CommercialTenantsService {
@@ -32,11 +33,18 @@ export class CommercialTenantsService {
         );
     }
 
+    public relateTenantAndUser(record: PartnerTenant): Observable<HttpSuccessResponse | HttpErrorResponse> {
+        return this.http.post<PartnerTenant[]>(`${this.apiDomain.domain}/identity/users/tenants`, [record], { observe: 'response' }).pipe(
+            catchError((error) => of(error))
+        );
+    }
+
+
     public update(record: Tenant): Observable<HttpSuccessResponse | HttpErrorResponse> {
         return this.http.put<Tenant[]>(`${this.apiDomain.domain}/tenants`, [record], { observe: 'response' }).pipe(
             catchError((error) => of(error))
         );
-    }    
+    }
 
     public delete(id: string): Observable<HttpSuccessResponse | HttpErrorResponse> {
         return this.http.delete<Tenant>(`${this.apiDomain.domain}/tenants/${id}`, { observe: 'response' }).pipe(
