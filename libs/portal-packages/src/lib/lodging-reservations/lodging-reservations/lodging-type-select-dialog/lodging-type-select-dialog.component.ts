@@ -15,8 +15,7 @@ import { ReservationsPricingsTypeId } from '@skysmack/package-types';
   selector: 'ss-lodging-type-select-dialog',
   templateUrl: './lodging-type-select-dialog.component.html'
 })
-export class LogdingTypeSelectDialogComponent implements OnInit {
-  @Input() public fh: FormGroup;
+export class LodgingTypeSelectDialogComponent implements OnInit {
   public autoCompleteControl = new FormControl();
   public detailedLodgingTypes$: Observable<DetailedLodgingType[]>;
 
@@ -25,18 +24,18 @@ export class LogdingTypeSelectDialogComponent implements OnInit {
     private skysmackStore: NgSkysmackStore,
     private lodgingTypesActions: NgLodgingTypesActions,
     private lodgingTypesStore: NgLodgingTypesStore,
-    private dialogRef: MatDialogRef<LogdingTypeSelectDialogComponent>,
+    private dialogRef: MatDialogRef<LodgingTypeSelectDialogComponent>,
     @Inject(MAT_DIALOG_DATA) private data: { form: FormGroup }
   ) { }
 
   ngOnInit() {
     const packagePath = this.router.url.split('/')[1];
-    const lodgingTypePackage$ = getPackageDendencyAsStream(this.skysmackStore, packagePath, [0]);
+    const lodgingPackage$ = getPackageDendencyAsStream(this.skysmackStore, packagePath, [0]);
 
     //#region availability
     // Get all lodging types
     let once1 = false; // Prevent multiple requests
-    const allLodgingTypes$ = lodgingTypePackage$.pipe(
+    const allLodgingTypes$ = lodgingPackage$.pipe(
       switchMap(lodgingPackage => {
         if (!once1) {
           this.lodgingTypesActions.getPaged(lodgingPackage.object.path, new PagedQuery());
@@ -62,13 +61,13 @@ export class LogdingTypeSelectDialogComponent implements OnInit {
     // Get availability for all filtered lodging types
     let once2 = false; // Prevent multiple requests
     const availableCount$ = combineLatest(
-      lodgingTypePackage$,
+      lodgingPackage$,
       lodgingTypeIds$
     ).pipe(
-      switchMap(([lodgingTypePackage, lodgingTypeIds]) => {
+      switchMap(([lodgingPackage, lodgingTypeIds]) => {
         const checkIn = this.data.form.get('checkIn').value;
         const checkOut = this.data.form.get('checkOut').value;
-        const packagePath = lodgingTypePackage.object.path;
+        const packagePath = lodgingPackage.object.path;
         if (!once2) {
           this.lodgingTypesActions.getAvailableLodgingTypesCount(packagePath, checkIn, checkOut, lodgingTypeIds);
           once2 = true;

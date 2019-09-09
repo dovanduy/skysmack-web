@@ -10,7 +10,8 @@ import { FormRule, Field, SelectField, SelectFieldOption } from '@skysmack/ng-dy
 import { FieldsConfig, FieldProviders } from '@skysmack/ng-fields';
 import { SelectFieldComponent, DateFieldComponent, IntFieldComponent, HiddenFieldComponent } from '@skysmack/portal-fields';
 import { NgLodgingReservationsValidation } from '@skysmack/ng-lodging-reservations';
-import { LogdingTypeSelectFieldComponent } from './lodging-reservations/lodging-type-select-field/lodging-type-select-field.component';
+import { LodgingTypeSelectFieldComponent } from './lodging-reservations/lodging-type-select-field/lodging-type-select-field.component';
+import { LodgingSelectFieldComponent } from './lodging-reservations/lodging-select-field/lodging-select-field.component';
 
 @Injectable({ providedIn: 'root' })
 export class NgLodgingReservationsFieldsConfig extends FieldsConfig<LodgingReservation, number> {
@@ -51,7 +52,7 @@ export class NgLodgingReservationsFieldsConfig extends FieldsConfig<LodgingReser
                 sortable: true
             }),
             new Field({
-                component: LogdingTypeSelectFieldComponent,
+                component: LodgingTypeSelectFieldComponent,
                 value: entity ? entity.object.lodgingTypeId : undefined,
                 key: 'lodgingTypeId',
                 validators: [Validators.required],
@@ -59,20 +60,14 @@ export class NgLodgingReservationsFieldsConfig extends FieldsConfig<LodgingReser
                 showColumn: true,
                 sortable: true
             }),
-            new SelectField({
-                component: SelectFieldComponent,
+            new Field({
+                component: LodgingSelectFieldComponent,
                 value: entity ? entity.object.allocatedLodgingId : undefined,
                 key: 'allocatedLodgingId',
-                displayKey: 'allocatedLodging',
-                displaySubKey: 'object.name',
-                optionsData$: this.lodgingsStore.get(depPackagePath),
-                extraOptions: [{
-                    value: null,
-                    displayName: 'None'
-                }] as SelectFieldOption[],
-                getDependencies: () => { this.lodgingsActions.getPaged(depPackagePath, new PagedQuery()); },
-                order: 2,
-                showColumn: true
+                validators: [Validators.required],
+                order: 4,
+                showColumn: true,
+                sortable: true
             }),
             new Field({
                 component: IntFieldComponent,

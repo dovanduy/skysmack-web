@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Field } from '@skysmack/ng-dynamic-forms';
 import { FieldBaseComponent } from '@skysmack/portal-fields';
 import { MatDialog } from '@angular/material/dialog';
-import { LogdingTypeSelectDialogComponent } from '../lodging-type-select-dialog/lodging-type-select-dialog.component';
+import { LodgingTypeSelectDialogComponent } from '../lodging-type-select-dialog/lodging-type-select-dialog.component';
 import { take, tap, map } from 'rxjs/operators';
 import { LocalObject } from '@skysmack/framework';
 import { LodgingType, DetailedLodgingType } from '@skysmack/packages-lodgings';
@@ -12,7 +12,7 @@ import { Observable, combineLatest } from 'rxjs';
   selector: 'ss-lodging-type-select-field',
   templateUrl: './lodging-type-select-field.component.html'
 })
-export class LogdingTypeSelectFieldComponent extends FieldBaseComponent<Field> implements OnInit {
+export class LodgingTypeSelectFieldComponent extends FieldBaseComponent<Field> implements OnInit {
 
   public selectedLodgingType: LocalObject<LodgingType, number>;
   public datesSelected$: Observable<boolean>;
@@ -29,7 +29,7 @@ export class LogdingTypeSelectFieldComponent extends FieldBaseComponent<Field> i
   }
 
   public selectLodgingType(): void {
-    this.dialog.open(LogdingTypeSelectDialogComponent, { data: { form: this.fh.form } }).afterClosed().pipe(
+    this.dialog.open(LodgingTypeSelectDialogComponent, { data: { form: this.fh.form } }).afterClosed().pipe(
       tap((detailedLodgingType: DetailedLodgingType) => {
         const selectedLodgingType = detailedLodgingType.lodgingType;
         if (selectedLodgingType && selectedLodgingType.object && selectedLodgingType.object.id) {

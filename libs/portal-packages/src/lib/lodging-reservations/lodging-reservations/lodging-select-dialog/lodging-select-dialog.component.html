@@ -1,14 +1,24 @@
-<h2>Please select a lodging type here</h2>
+<h2>Please select a lodging</h2>
 
-<input matInput placeholder="Choose a lodging type" aria-label="Lodging Type" [matAutocomplete]="auto"
-    [formControl]="autoCompleteControl">
-<mat-autocomplete #auto="matAutocomplete">
-    <mat-option *ngFor="let detailedlodgingType of detailedLodgingTypes$ | async"
-        (click)="selectLodgingType(detailedlodgingType)" [value]="detailedlodgingType.lodgingType.object.name">
-        <span>{{ detailedlodgingType.lodgingType.object.name}}</span> |
-        <span>{{ detailedlodgingType.availableCount }} available</span>
-        <span *ngFor="let priceDetail of detailedlodgingType.priceDetails">Price via {{ priceDetail.packageName }}:
-            {{ priceDetail.price }}
-            {{ priceDetail.currency }}</span>
+<!-- Lodging type select -->
+<p>Lodgings will be filtered by selected lodging type.</p>
+<input matInput placeholder="Choose a lodging type" aria-label="Lodging Type"
+    [matAutocomplete]="lodgingTypesAutoControl" [formControl]="lodgingTypesAutoCompleteControl">
+<mat-autocomplete #lodgingTypesAutoControl="matAutocomplete">
+    <mat-option *ngFor="let lodgingType of filteredLodgingTypes$ | async" (click)="selectLodgingType(lodgingType)"
+        [value]="lodgingType.object.name">
+        <span>{{ lodgingType.object.name}}</span>
+    </mat-option>
+</mat-autocomplete>
+
+<!-- Lodging select -->
+<input matInput placeholder="Choose a lodging" aria-label="Lodging" [matAutocomplete]="lodgingsAutoControl"
+    [formControl]="lodgingsAutoCompleteControl">
+<mat-autocomplete #lodgingsAutoControl="matAutocomplete">
+    <mat-option *ngFor="let detailedlodging of detailedLodgings$ | async" (click)="selectLodging(detailedlodging)"
+        [value]="detailedlodging.lodging.object.name">
+        <span>{{ detailedlodging.lodging.object.name}}</span> |
+        <span *ngIf="detailedlodging.available" style="color: green;">Available</span>
+        <span *ngIf="!detailedlodging.available" style="color: red;">Unavailable</span>
     </mat-option>
 </mat-autocomplete>
