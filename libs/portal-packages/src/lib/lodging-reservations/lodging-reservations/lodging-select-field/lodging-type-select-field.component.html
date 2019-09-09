@@ -1,0 +1,21 @@
+<ng-container *ngIf="field" [formGroup]="fh.form">
+
+  <ng-container *ngIf="(datesSelected$ | async)">
+    <button mat-raised-button (click)="selectLodgingType()">Select lodging type</button>
+    <p *ngIf="selectedLodgingType">{{ selectedLodgingType.object.name }}</p>
+    <p *ngIf="!selectedLodgingType">No lodging type selected</p>
+  </ng-container>
+
+  <p *ngIf="!(datesSelected$ | async)" style="color:#ADADAD;max-width:350px;word-wrap: break-word;">
+    Please select a check in and check out date before selecting the lodging type.
+  </p>
+
+  <!-- Errors -->
+  <mat-error *ngIf="fh.formErrors[fieldKey]">
+    <ng-container *ngIf="fh.formErrors[fieldKey]">
+      {{ fh.formErrors[fieldKey] | translate }}
+    </ng-container>
+  </mat-error>
+  <ss-backend-errors [field]="field"></ss-backend-errors>
+
+</ng-container>

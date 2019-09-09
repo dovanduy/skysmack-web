@@ -10,6 +10,8 @@ import { RouteData } from '@skysmack/framework';
 import { LodgingReservationsDashboardComponent } from './lodging-reservations-dashboard/lodging-reservations-dashboard.component';
 import { LogdingTypeSelectFieldComponent } from './lodging-type-select-field/lodging-type-select-field.component';
 import { LogdingTypeSelectDialogComponent } from './lodging-type-select-dialog/lodging-type-select-dialog.component';
+import { LogdingSelectFieldComponent } from './lodging-select-field/lodging-type-select-field.component';
+import { LogdingSelectDialogComponent } from './lodging-select-dialog/lodging-select-dialog.component';
 
 export const lodgingReservationsRoutes: Routes = [
     {
@@ -37,11 +39,15 @@ export const lodgingReservationsComponents: any[] = [
     LodgingsDeparturesComponent,
     LodgingReservationsDashboardComponent,
     LogdingTypeSelectFieldComponent,
-    LogdingTypeSelectDialogComponent
+    LogdingTypeSelectDialogComponent,
+    LogdingSelectFieldComponent,
+    LogdingSelectDialogComponent
 ];
 
 export const lodgingReservationsEntryComponents: any[] = [
     LodgingReservationsDashboardComponent,
     LogdingTypeSelectFieldComponent,
-    LogdingTypeSelectDialogComponent
+    LogdingTypeSelectDialogComponent,
+    LogdingSelectFieldComponent,
+    LogdingSelectDialogComponent
 ];
