@@ -61,7 +61,7 @@ export class LodgingTypesAvailabilityComponent implements OnInit {
   }
 
   public getAvailableLodgingTypes() {
-    this.actions.getAvailableLodgingTypesCount(this.packagePath, this.startOfMonth, this.endOfMonth, this.selectedLodgingTypeIds);
+    this.actions.getAvailableLodgingTypesDailyCount(this.packagePath, this.startOfMonth, this.endOfMonth, this.selectedLodgingTypeIds);
   }
 
   public beforeMonthViewRender({ body }: { body: CalendarMonthViewDay[] }): void {
@@ -97,7 +97,7 @@ export class LodgingTypesAvailabilityComponent implements OnInit {
 
     this.events$ = combineLatest(
       this.store.get(this.packagePath),
-      this.store.getAvailableLodgingTypesCount(this.packagePath)
+      this.store.getAvailableLodgingTypesDailyCount(this.packagePath)
     ).pipe(
       map(values => {
         const lodgings = values[0];

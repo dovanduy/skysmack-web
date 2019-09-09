@@ -19,7 +19,8 @@ export class NgLodgingTypesEpics extends RecordEpicsBase<LodgingType, number> {
         super(requests, LODGING_TYPES_REDUX_KEY, notifications);
         this.epics = this.epics.concat([
             this.getAvailableLodgingTypesEpic,
-            this.getAvailableLodgingTypesCountEpic
+            this.getAvailableLodgingTypesCount,
+            this.getAvailableLodgingTypesDailyCount
         ]);
     }
 
@@ -29,8 +30,13 @@ export class NgLodgingTypesEpics extends RecordEpicsBase<LodgingType, number> {
         switchMap((action: ReduxAction<GetIntervalPayload, SelectedIdsMeta<number>>) => this.requests.getAvailableLodgingTypes(action))
     )
 
-    public getAvailableLodgingTypesCountEpic = (action$: ActionsObservable<any>): Observable<ReduxAction<StrIndex<StrIndex<number>>> | ReduxAction<HttpErrorResponse>> => action$.pipe(
+    public getAvailableLodgingTypesCount = (action$: ActionsObservable<any>): Observable<ReduxAction<StrIndex<StrIndex<number[]>>> | ReduxAction<HttpErrorResponse>> => action$.pipe(
         ofType(LodgingTypesActions.GET_AVAILABLE_LODGING_TYPES_COUNT),
         switchMap((action: ReduxAction<GetIntervalPayload, SelectedIdsMeta<number>>) => this.requests.getAvailableLodgingTypesCount(action))
+    )
+
+    public getAvailableLodgingTypesDailyCount = (action$: ActionsObservable<any>): Observable<ReduxAction<StrIndex<StrIndex<number>>> | ReduxAction<HttpErrorResponse>> => action$.pipe(
+        ofType(LodgingTypesActions.GET_AVAILABLE_LODGING_TYPES_DAILY_COUNT),
+        switchMap((action: ReduxAction<GetIntervalPayload, SelectedIdsMeta<number>>) => this.requests.getAvailableLodgingTypesDailyCount(action))
     )
 }

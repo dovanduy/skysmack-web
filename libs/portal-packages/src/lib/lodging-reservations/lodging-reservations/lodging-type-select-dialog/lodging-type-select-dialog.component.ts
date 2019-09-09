@@ -1,56 +1,98 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Inject } from '@angular/core';
 import { NgLodgingTypesActions, NgLodgingTypesStore } from '@skysmack/ng-lodgings';
 import { Router } from '@angular/router';
 import { PagedQuery, LocalObject } from '@skysmack/framework';
-import { LodgingType } from '@skysmack/packages-lodgings';
+import { LodgingType, DetailedLodgingType } from '@skysmack/packages-lodgings';
 import { Observable, combineLatest } from 'rxjs';
 import { getPackageDendencyAsStream } from '@skysmack/ng-framework';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
-import { map, switchMap, startWith } from 'rxjs/operators';
-import { MatDialogRef } from '@angular/material/dialog';
-import { FormControl } from '@angular/forms';
+import { map, switchMap, startWith, tap } from 'rxjs/operators';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'ss-lodging-type-select-dialog',
   templateUrl: './lodging-type-select-dialog.component.html'
 })
 export class LogdingTypeSelectDialogComponent implements OnInit {
+  @Input() public fh: FormGroup;
   public autoCompleteControl = new FormControl();
-  public filteredLodgingTypes$: Observable<LocalObject<LodgingType, number>[]>;
+  public detailedLodgingTypes$: Observable<DetailedLodgingType[]>;
 
   constructor(
     private router: Router,
     private skysmackStore: NgSkysmackStore,
     private lodgingTypesActions: NgLodgingTypesActions,
     private lodgingTypesStore: NgLodgingTypesStore,
-    public dialogRef: MatDialogRef<LogdingTypeSelectDialogComponent>
+    private dialogRef: MatDialogRef<LogdingTypeSelectDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) private data: { form: FormGroup }
   ) { }
 
   ngOnInit() {
     const packagePath = this.router.url.split('/')[1];
     const lodgingTypePackage$ = getPackageDendencyAsStream(this.skysmackStore, packagePath, [0]);
+
+    // Get all lodging types
+    let once1 = false; // Prevent multiple requests
     const allLodgingTypes$ = lodgingTypePackage$.pipe(
       switchMap(lodgingPackage => {
-        this.lodgingTypesActions.getPaged(lodgingPackage.object.path, new PagedQuery());
+        if (!once1) {
+          this.lodgingTypesActions.getPaged(lodgingPackage.object.path, new PagedQuery());
+          once1 = true;
+        }
         return this.lodgingTypesStore.get(lodgingPackage.object.path);
       })
     );
 
-    this.filteredLodgingTypes$ = combineLatest(
+    // Filter lodging types based on search input
+    const filteredLodgingTypes$ = combineLatest(
       this.autoCompleteControl.valueChanges.pipe(startWith('')),
       allLodgingTypes$
     ).pipe(
       map(([searchInput, lodgingTypes]) => searchInput ? this.filterLodgingTypes(searchInput, lodgingTypes) : lodgingTypes.slice())
     );
 
-    // Get available lodging types count
-    // START HERE: Get selected checkin and out date. Get their fields via putting form helper in dialog data object.
-    // this.lodgingTypesActions.getAvailableLodgingTypesCount(packagePath, this.startOfMonth, this.endOfMonth, this.selectedLodgingTypeIds);
-    this.lodgingTypesStore.getAvailableLodgingTypesCount(packagePath);
+    // Get ids for all filtered lodging types
+    const lodgingTypeIds$ = filteredLodgingTypes$.pipe(
+      map(lodgingTypes => lodgingTypes.map(lodgingType => lodgingType.object.id))
+    );
+
+    // Get availability for all filtered lodging types
+    let once2 = false; // Prevent multiple requests
+    const availableCount$ = combineLatest(
+      lodgingTypePackage$,
+      lodgingTypeIds$
+    ).pipe(
+      switchMap(([lodgingTypePackage, lodgingTypeIds]) => {
+        const checkIn = this.data.form.get('checkIn').value;
+        const checkOut = this.data.form.get('checkOut').value;
+        const packagePath = lodgingTypePackage.object.path;
+        if (!once2) {
+          this.lodgingTypesActions.getAvailableLodgingTypesCount(packagePath, checkIn, checkOut, lodgingTypeIds);
+          once2 = true;
+        }
+        return this.lodgingTypesStore.getAvailableLodgingTypesCount(packagePath);
+      }),
+    );
+
+    // Create the detailed lodging types used for selection and display
+    this.detailedLodgingTypes$ = combineLatest(
+      filteredLodgingTypes$,
+      availableCount$
+    ).pipe(
+      map(([lodgingTypes, availableCount]) => {
+        return lodgingTypes.map(lodgingType => {
+          return new DetailedLodgingType({
+            lodgingType,
+            availableCount: availableCount[lodgingType.object.id] ? availableCount[lodgingType.object.id].length : 0
+          })
+        })
+      })
+    );
   }
 
-  public selectLodgingType(lodgingType: LocalObject<LodgingType, number>): void {
-    this.dialogRef.close(lodgingType);
+  public selectLodgingType(detailedLodgingType: DetailedLodgingType): void {
+    this.dialogRef.close(detailedLodgingType);
   }
 
   private filterLodgingTypes(searchInput: string, lodgingTypes: LocalObject<LodgingType, number>[]): LocalObject<LodgingType, number>[] {

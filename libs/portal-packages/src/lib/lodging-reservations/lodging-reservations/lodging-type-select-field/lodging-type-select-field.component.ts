@@ -5,7 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { LogdingTypeSelectDialogComponent } from '../lodging-type-select-dialog/lodging-type-select-dialog.component';
 import { take, tap, map } from 'rxjs/operators';
 import { LocalObject } from '@skysmack/framework';
-import { LodgingType } from '@skysmack/packages-lodgings';
+import { LodgingType, DetailedLodgingType } from '@skysmack/packages-lodgings';
 import { Observable, combineLatest } from 'rxjs';
 
 @Component({
@@ -28,11 +28,10 @@ export class LogdingTypeSelectFieldComponent extends FieldBaseComponent<Field> i
     this.setDatesSelected$();
   }
 
-
-
   public selectLodgingType(): void {
-    this.dialog.open(LogdingTypeSelectDialogComponent).afterClosed().pipe(
-      tap((selectedLodgingType: LocalObject<LodgingType, number>) => {
+    this.dialog.open(LogdingTypeSelectDialogComponent, { data: { form: this.fh.form } }).afterClosed().pipe(
+      tap((detailedLodgingType: DetailedLodgingType) => {
+        const selectedLodgingType = detailedLodgingType.lodgingType;
         if (selectedLodgingType && selectedLodgingType.object && selectedLodgingType.object.id) {
           this.setFieldValue(selectedLodgingType.object.id);
           this.selectedLodgingType = selectedLodgingType;

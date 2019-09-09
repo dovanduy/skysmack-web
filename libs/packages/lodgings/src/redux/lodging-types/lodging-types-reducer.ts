@@ -15,7 +15,8 @@ export class LodgingTypesState implements RecordState<LodgingType, number> {
     public localPageTypes: StrIndex<StrIndex<LocalPageTypes<number>>> = {};
     public localRecords: StrIndex<StrIndex<LocalObject<LodgingType, number>>> = {};
     public availableLodgingTypes: StrIndex<StrIndex<StrIndex<number[]>>> = {};
-    public availableLodgingTypesCount: StrIndex<StrIndex<StrIndex<number>>> = {};
+    public availableLodgingTypesCount: StrIndex<StrIndex<number[]>> = {};
+    public availableLodgingTypesDailyCount: StrIndex<StrIndex<StrIndex<number>>> = {};
 }
 
 export function lodgingTypesReducer(state = new LodgingTypesState(), action: ReduxAction, prefix: string = LODGING_TYPES_REDUX_KEY): LodgingTypesState {
@@ -40,11 +41,29 @@ export function lodgingTypesReducer(state = new LodgingTypesState(), action: Red
         }
 
         case prefix + LodgingTypesActions.GET_AVAILABLE_LODGING_TYPES_COUNT_SUCCESS: {
+            const castedAction = action as ReduxAction<StrIndex<number[]>, StateKeyMeta>;
+
+            // Merge data
+            const incoming = castedAction.payload;
+            const countEntry = newState.availableLodgingTypesCount[castedAction.meta.stateKey];
+            const current = countEntry ? countEntry : {};
+            Object.keys(incoming).forEach((key) => current[key] = incoming[key]);
+
+            newState.availableLodgingTypesCount[castedAction.meta.stateKey] = current;
+
+            return newState;
+        }
+        case prefix + LodgingTypesActions.GET_AVAILABLE_LODGING_TYPES_COUNT_FAILURE: {
+            console.log('error:', action);
+            return newState;
+        }
+
+        case prefix + LodgingTypesActions.GET_AVAILABLE_LODGING_TYPES_DAILY_COUNT_SUCCESS: {
             const castedAction = action as ReduxAction<StrIndex<StrIndex<number>>, StateKeyMeta>;
 
             // Merge data
             const incoming = castedAction.payload;
-            const current = newState.availableLodgingTypesCount[castedAction.meta.stateKey] ? newState.availableLodgingTypesCount[castedAction.meta.stateKey] : {};
+            const current = newState.availableLodgingTypesDailyCount[castedAction.meta.stateKey] ? newState.availableLodgingTypesDailyCount[castedAction.meta.stateKey] : {};
 
             Object.keys(incoming).forEach(someId => {
                 Object.keys(incoming[someId]).forEach(date => {
@@ -53,11 +72,11 @@ export function lodgingTypesReducer(state = new LodgingTypesState(), action: Red
                 });
             });
 
-            newState.availableLodgingTypesCount[castedAction.meta.stateKey] = current;
+            newState.availableLodgingTypesDailyCount[castedAction.meta.stateKey] = current;
 
             return newState;
         }
-        case prefix + LodgingTypesActions.GET_AVAILABLE_LODGING_TYPES_COUNT_FAILURE: {
+        case prefix + LodgingTypesActions.GET_AVAILABLE_LODGING_TYPES_DAILY_COUNT_FAILURE: {
             console.log('error:', action);
             return newState;
         }
