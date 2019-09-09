@@ -6,8 +6,9 @@
     <mat-option *ngFor="let detailedlodgingType of detailedLodgingTypes$ | async"
         (click)="selectLodgingType(detailedlodgingType)" [value]="detailedlodgingType.lodgingType.object.name">
         <span>{{ detailedlodgingType.lodgingType.object.name}}</span> |
-        <span>{{ detailedlodgingType.availableCount }} available</span> |
-        <span>Price A: 2.000 DKK</span> |
-        <span>Price B: 1.600 DKK</span> |
+        <span>{{ detailedlodgingType.availableCount }} available</span>
+        <span *ngFor="let priceDetail of detailedlodgingType.priceDetails">Price via {{ priceDetail.packageName }}:
+            {{ priceDetail.price }}
+            {{ priceDetail.currency }}</span>
     </mat-option>
 </mat-autocomplete>

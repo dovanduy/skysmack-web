@@ -6,9 +6,10 @@ import { LodgingType, DetailedLodgingType } from '@skysmack/packages-lodgings';
 import { Observable, combineLatest } from 'rxjs';
 import { getPackageDendencyAsStream } from '@skysmack/ng-framework';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
-import { map, switchMap, startWith, tap } from 'rxjs/operators';
+import { map, switchMap, startWith } from 'rxjs/operators';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormControl, FormGroup } from '@angular/forms';
+import { ReservationsPricingsTypeId } from '@skysmack/package-types';
 
 @Component({
   selector: 'ss-lodging-type-select-dialog',
@@ -32,6 +33,7 @@ export class LogdingTypeSelectDialogComponent implements OnInit {
     const packagePath = this.router.url.split('/')[1];
     const lodgingTypePackage$ = getPackageDendencyAsStream(this.skysmackStore, packagePath, [0]);
 
+    //#region availability
     // Get all lodging types
     let once1 = false; // Prevent multiple requests
     const allLodgingTypes$ = lodgingTypePackage$.pipe(
@@ -74,6 +76,7 @@ export class LogdingTypeSelectDialogComponent implements OnInit {
         return this.lodgingTypesStore.getAvailableLodgingTypesCount(packagePath);
       }),
     );
+    //#endregion
 
     // Create the detailed lodging types used for selection and display
     this.detailedLodgingTypes$ = combineLatest(
