@@ -22,11 +22,12 @@ export class NgLodgingsRequests extends NgRecordRequests<Lodging, number> {
         url = `${url}?${action.meta.ids.map(id => `lodgingIds=${id}`).join('&')}`;
 
         return this.http.get<any>(url, { observe: 'response' }).pipe(
-            map(httpResponse => Object.assign({}, new ReduxAction<StrIndex<StrIndex<boolean>>, StateKeyMeta>({
+            map(httpResponse => Object.assign({}, new ReduxAction<StrIndex<StrIndex<boolean>>, { stateKey: string, dateKey: string }>({
                 type: this.prefix + NgLodgingsActions.GET_AVAILABLE_LODGINGS_SUCCESS,
                 payload: httpResponse.body,
                 meta: {
-                    stateKey: action.payload.packagePath
+                    stateKey: action.payload.packagePath,
+                    dateKey: `${action.payload.start}:${action.payload.end}`
                 }
             }))),
             retry(this.retryTimes),

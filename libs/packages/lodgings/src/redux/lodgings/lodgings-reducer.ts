@@ -14,7 +14,7 @@ export class LodgingsAppState extends AppState {
 export class LodgingsState implements RecordState<Lodging, number> {
     public localPageTypes: StrIndex<StrIndex<LocalPageTypes<number>>> = {};
     public localRecords: StrIndex<StrIndex<LocalObject<Lodging, number>>> = {};
-    public availableLodgings: StrIndex<StrIndex<boolean>> = {};
+    public availableLodgings: StrIndex<StrIndex<StrIndex<boolean>>> = {};
     public availableLodgingsDaily: StrIndex<StrIndex<number[]>> = {};
 }
 
@@ -24,14 +24,19 @@ export function lodgingsReducer(state = new LodgingsState(), action: ReduxAction
 
     switch (action.type) {
         case prefix + LodgingsActions.GET_AVAILABLE_LODGINGS_SUCCESS: {
-            const castedAction = action as ReduxAction<StrIndex<boolean>, StateKeyMeta>;
+            const castedAction = action as ReduxAction<StrIndex<boolean>, { stateKey: string, dateKey: string }>;
 
             // Merge data
             const incoming = castedAction.payload;
-            const current = newState.availableLodgings[castedAction.meta.stateKey] ? newState.availableLodgings[castedAction.meta.stateKey] : {};
-            Object.keys(incoming).forEach((incomingKey) => current[incomingKey] = incoming[incomingKey]);
+            const currentState = newState.availableLodgings[castedAction.meta.stateKey] ? newState.availableLodgings[castedAction.meta.stateKey] : {};
+            const currentSubState = currentState[castedAction.meta.dateKey] ? currentState[castedAction.meta.dateKey] : {};
+            const currentSubStateCloned = JSON.parse(JSON.stringify(currentSubState));
 
-            newState.availableLodgings[castedAction.meta.stateKey] = current;
+            Object.keys(incoming).forEach((incomingKey) => currentSubStateCloned[incomingKey] = incoming[incomingKey]);
+
+            newState.availableLodgings[castedAction.meta.stateKey] = currentState;
+            newState.availableLodgings[castedAction.meta.stateKey][castedAction.meta.dateKey] = currentSubStateCloned;
+
             return newState;
         }
         case prefix + LodgingsActions.GET_AVAILABLE_LODGINGS_FAILURE: {

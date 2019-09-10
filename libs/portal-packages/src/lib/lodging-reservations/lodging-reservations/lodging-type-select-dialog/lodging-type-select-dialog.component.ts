@@ -3,10 +3,10 @@ import { NgLodgingTypesActions, NgLodgingTypesStore } from '@skysmack/ng-lodging
 import { Router } from '@angular/router';
 import { PagedQuery, LocalObject } from '@skysmack/framework';
 import { LodgingType, DetailedLodgingType } from '@skysmack/packages-lodgings';
-import { Observable, combineLatest } from 'rxjs';
+import { Observable, combineLatest, of } from 'rxjs';
 import { getPackageDendencyAsStream } from '@skysmack/ng-framework';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
-import { map, switchMap, startWith } from 'rxjs/operators';
+import { map, switchMap, startWith, tap, take } from 'rxjs/operators';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormControl, FormGroup } from '@angular/forms';
 
@@ -44,6 +44,14 @@ export class LodgingTypeSelectDialogComponent implements OnInit {
         return this.lodgingTypesStore.get(lodgingPackage.object.path);
       })
     );
+
+    // Set autocomplete default value
+    allLodgingTypes$.pipe(
+      map(lodgingTypes => lodgingTypes.find(lodgingType => lodgingType.object.id === this.data.form.get('lodgingTypeId').value)),
+      map(lodgingType => lodgingType ? lodgingType.object.name : ''),
+      tap(name => this.autoCompleteControl.setValue(name)),
+      take(1)
+    ).subscribe();
 
     // Filter lodging types based on search input
     const filteredLodgingTypes$ = combineLatest(
