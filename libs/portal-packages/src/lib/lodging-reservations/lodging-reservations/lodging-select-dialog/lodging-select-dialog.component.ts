@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Inject } from '@angular/core';
 import { NgLodgingTypesActions, NgLodgingTypesStore, NgLodgingsActions, NgLodgingsStore } from '@skysmack/ng-lodgings';
 import { Router } from '@angular/router';
-import { PagedQuery, LocalObject } from '@skysmack/framework';
+import { PagedQuery, LocalObject, RSQLFilterBuilder } from '@skysmack/framework';
 import { LodgingType, DetailedLodgingType, DetailedLodging, Lodging } from '@skysmack/packages-lodgings';
 import { Observable, combineLatest, BehaviorSubject } from 'rxjs';
 import { getPackageDendencyAsStream } from '@skysmack/ng-framework';
@@ -19,7 +19,10 @@ export class LodgingSelectDialogComponent implements OnInit {
   public filteredLodgingTypes$: Observable<LocalObject<LodgingType, number>[]>;
   private selectedLodgingType$ = new BehaviorSubject<LocalObject<LodgingType, number>>(null);
 
+
   public lodgingsAutoCompleteControl = new FormControl();
+  private selectedLodging: DetailedLodging;
+  private isItOkayToGetLodgings = true;
   public detailedLodgings$: Observable<DetailedLodging[]>;
 
   constructor(
@@ -36,9 +39,6 @@ export class LodgingSelectDialogComponent implements OnInit {
   ngOnInit() {
     const packagePath = this.router.url.split('/')[1];
     const lodgingPackage$ = getPackageDendencyAsStream(this.skysmackStore, packagePath, [0]);
-    const selectedLodgingTypeId = this.data.form.get('lodgingTypeId').value;
-    // 1. List all lodging types in autocomplete field; set default to selected lodging type. MUST NOT MODIFY SELECTED LODGING TYPE -> USE FOR FILTER PURPOSES ONLY
-    // 2. Use selected value above to filter available lodgings. Remember to check if they are available
 
     //#region Lodging type defaults and selection
     // Get all lodging types
@@ -55,8 +55,12 @@ export class LodgingSelectDialogComponent implements OnInit {
 
     // Set default lodging type
     let getOnce = false; // Prevent multiple requests
-    lodgingPackage$.pipe(
-      switchMap(lodgingPackage => {
+    combineLatest(
+      lodgingPackage$,
+      this.selectedLodgingType$
+    ).pipe(
+      switchMap(([lodgingPackage, selectedLodgingType]) => {
+        const selectedLodgingTypeId = selectedLodgingType ? selectedLodgingType.object.id : this.data.form.get('lodgingTypeId').value;
         if (!getOnce) {
           this.lodgingTypesActions.getSingle(lodgingPackage.object.path, selectedLodgingTypeId);
           getOnce = true;
@@ -78,12 +82,17 @@ export class LodgingSelectDialogComponent implements OnInit {
     //#endregion
 
     //#region Lodging selection
-    let getLodgingsOnce = false; // Prevent multiple requests
-    const allLodgings$ = lodgingPackage$.pipe(
-      switchMap(lodgingPackage => {
-        if (!getLodgingsOnce) {
-          this.lodgingActions.getPaged(lodgingPackage.object.path, new PagedQuery()); // PAGED QUERY MUS BE BASED ON LODGING TYPE
-          getLodgingsOnce = true;
+    const allLodgings$ = combineLatest(
+      lodgingPackage$,
+      this.selectedLodgingType$
+    ).pipe(
+      switchMap(([lodgingPackage, selectedLodgingType]) => {
+        if (this.isItOkayToGetLodgings) {
+          const builder = new RSQLFilterBuilder();
+          builder.column('lodgingTypeId').equalTo(selectedLodgingType.object.id);
+
+          this.lodgingActions.getPaged(lodgingPackage.object.path, new PagedQuery({ rsqlFilter: builder }));
+          this.isItOkayToGetLodgings = false;
         }
         return this.lodgingStore.get(lodgingPackage.object.path);
       })
@@ -135,21 +144,27 @@ export class LodgingSelectDialogComponent implements OnInit {
       available$
     ).pipe(
       map(([lodgings, available]) => {
-        console.log(available)
         return lodgings.map(lodging => {
           return new DetailedLodging({
             lodging,
-            available: !!available // TODO: Ensure this is the correct value. Might  need to use another redux flow / endpoint from backend.
+            available: available[lodging.object.id] ? available[lodging.object.id] : false
           })
-        }).sort((a, b) => (a.available === b.available) ? 0 : b.available ? -1 : 1)
+        }).sort((a, b) => (a.available === b.available) ? 0 : a.available ? -1 : 1)
       })
     );
-
     //#endregion
   }
 
   public selectLodging(detailedLodging: DetailedLodging): void {
-    this.dialogRef.close(detailedLodging);
+    this.selectedLodging = detailedLodging;
+  }
+
+  public done(): void {
+    this.dialogRef.close(this.selectedLodging);
+  }
+
+  public cancel(): void {
+    this.dialogRef.close();
   }
 
   private filterLodgingTypes(searchInput: string, lodgingTypes: LocalObject<LodgingType, number>[]): LocalObject<LodgingType, number>[] {
@@ -165,6 +180,7 @@ export class LodgingSelectDialogComponent implements OnInit {
   }
 
   private updateSelectedLodgingType(lodgingType: LocalObject<LodgingType, number>): void {
+    this.isItOkayToGetLodgings = true;
     this.lodgingTypesAutoCompleteControl.setValue(lodgingType.object.name);
     this.selectedLodgingType$.next(lodgingType);
   }

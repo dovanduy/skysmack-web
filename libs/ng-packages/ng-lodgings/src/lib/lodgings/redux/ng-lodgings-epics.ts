@@ -24,9 +24,12 @@ export class NgLodgingsEpics extends RecordEpicsBase<Lodging, number> {
         protected skysmackStore: NgSkysmackStore
     ) {
         super(requests, LODGINGS_REDUX_KEY, notifications);
+
         this.epics = this.epics.concat([
             this.getAvailableLodgingsEpic,
+            this.getAvailableLodgingsDailyEpic
         ]);
+
         this.epics = this.epics.concat([
             ...getReadDependencies({
                 prefix: LODGINGS_REDUX_KEY,
@@ -39,8 +42,13 @@ export class NgLodgingsEpics extends RecordEpicsBase<Lodging, number> {
         ]);
     }
 
-    public getAvailableLodgingsEpic = (action$: ActionsObservable<any>): Observable<ReduxAction<StrIndex<StrIndex<number[]>>> | ReduxAction<HttpErrorResponse>> => action$.pipe(
+    public getAvailableLodgingsEpic = (action$: ActionsObservable<any>): Observable<ReduxAction<StrIndex<StrIndex<boolean>>> | ReduxAction<HttpErrorResponse>> => action$.pipe(
         ofType(LodgingsActions.GET_AVAILABLE_LODGINGS),
         switchMap((action: ReduxAction<GetIntervalPayload, SelectedIdsMeta<number>>) => this.requests.getAvailableLodgings(action))
+    )
+
+    public getAvailableLodgingsDailyEpic = (action$: ActionsObservable<any>): Observable<ReduxAction<StrIndex<StrIndex<number[]>>> | ReduxAction<HttpErrorResponse>> => action$.pipe(
+        ofType(LodgingsActions.GET_AVAILABLE_LODGINGS_DAILY),
+        switchMap((action: ReduxAction<GetIntervalPayload, SelectedIdsMeta<number>>) => this.requests.getAvailableLodgingsDaily(action))
     )
 }

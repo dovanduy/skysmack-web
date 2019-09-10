@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Inject } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { NgLodgingTypesActions, NgLodgingTypesStore } from '@skysmack/ng-lodgings';
 import { Router } from '@angular/router';
 import { PagedQuery, LocalObject } from '@skysmack/framework';
@@ -9,7 +9,6 @@ import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { map, switchMap, startWith } from 'rxjs/operators';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormControl, FormGroup } from '@angular/forms';
-import { ReservationsPricingsTypeId } from '@skysmack/package-types';
 
 @Component({
   selector: 'ss-lodging-type-select-dialog',
@@ -18,6 +17,7 @@ import { ReservationsPricingsTypeId } from '@skysmack/package-types';
 export class LodgingTypeSelectDialogComponent implements OnInit {
   public autoCompleteControl = new FormControl();
   public detailedLodgingTypes$: Observable<DetailedLodgingType[]>;
+  private selectedLodgingType: DetailedLodgingType;
 
   constructor(
     private router: Router,
@@ -94,7 +94,15 @@ export class LodgingTypeSelectDialogComponent implements OnInit {
   }
 
   public selectLodgingType(detailedLodgingType: DetailedLodgingType): void {
-    this.dialogRef.close(detailedLodgingType);
+    this.selectedLodgingType = detailedLodgingType;
+  }
+
+  public done(): void {
+    this.dialogRef.close(this.selectedLodgingType);
+  }
+
+  public cancel(): void {
+    this.dialogRef.close();
   }
 
   private filterLodgingTypes(searchInput: string, lodgingTypes: LocalObject<LodgingType, number>[]): LocalObject<LodgingType, number>[] {

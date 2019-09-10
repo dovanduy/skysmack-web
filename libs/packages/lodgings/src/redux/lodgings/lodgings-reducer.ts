@@ -14,7 +14,8 @@ export class LodgingsAppState extends AppState {
 export class LodgingsState implements RecordState<Lodging, number> {
     public localPageTypes: StrIndex<StrIndex<LocalPageTypes<number>>> = {};
     public localRecords: StrIndex<StrIndex<LocalObject<Lodging, number>>> = {};
-    public availableLodgings: StrIndex<StrIndex<number[]>> = {};
+    public availableLodgings: StrIndex<StrIndex<boolean>> = {};
+    public availableLodgingsDaily: StrIndex<StrIndex<number[]>> = {};
 }
 
 export function lodgingsReducer(state = new LodgingsState(), action: ReduxAction, prefix: string = LODGINGS_REDUX_KEY): LodgingsState {
@@ -23,7 +24,7 @@ export function lodgingsReducer(state = new LodgingsState(), action: ReduxAction
 
     switch (action.type) {
         case prefix + LodgingsActions.GET_AVAILABLE_LODGINGS_SUCCESS: {
-            const castedAction = action as ReduxAction<StrIndex<number[]>, StateKeyMeta>;
+            const castedAction = action as ReduxAction<StrIndex<boolean>, StateKeyMeta>;
 
             // Merge data
             const incoming = castedAction.payload;
@@ -34,6 +35,22 @@ export function lodgingsReducer(state = new LodgingsState(), action: ReduxAction
             return newState;
         }
         case prefix + LodgingsActions.GET_AVAILABLE_LODGINGS_FAILURE: {
+            console.log('error:', action);
+            return newState;
+        }
+
+        case prefix + LodgingsActions.GET_AVAILABLE_LODGINGS_DAILY_SUCCESS: {
+            const castedAction = action as ReduxAction<StrIndex<number[]>, StateKeyMeta>;
+
+            // Merge data
+            const incoming = castedAction.payload;
+            const current = newState.availableLodgingsDaily[castedAction.meta.stateKey] ? newState.availableLodgingsDaily[castedAction.meta.stateKey] : {};
+            Object.keys(incoming).forEach((incomingKey) => current[incomingKey] = incoming[incomingKey]);
+
+            newState.availableLodgingsDaily[castedAction.meta.stateKey] = current;
+            return newState;
+        }
+        case prefix + LodgingsActions.GET_AVAILABLE_LODGINGS_DAILY_FAILURE: {
             console.log('error:', action);
             return newState;
         }

@@ -1,14 +1,20 @@
-<h2>Please select a lodging type here</h2>
+<h2 mat-dialog-title>Select a lodging type</h2>
 
-<input matInput placeholder="Choose a lodging type" aria-label="Lodging Type" [matAutocomplete]="auto"
-    [formControl]="autoCompleteControl">
-<mat-autocomplete #auto="matAutocomplete">
-    <mat-option *ngFor="let detailedlodgingType of detailedLodgingTypes$ | async"
-        (click)="selectLodgingType(detailedlodgingType)" [value]="detailedlodgingType.lodgingType.object.name">
-        <span>{{ detailedlodgingType.lodgingType.object.name}}</span> |
-        <span>{{ detailedlodgingType.availableCount }} available</span>
-        <span *ngFor="let priceDetail of detailedlodgingType.priceDetails">Price via {{ priceDetail.packageName }}:
-            {{ priceDetail.price }}
-            {{ priceDetail.currency }}</span>
-    </mat-option>
-</mat-autocomplete>
+<div mat-dialog-content>
+    <input matInput placeholder="Choose a lodging type" aria-label="Lodging Type" [matAutocomplete]="auto"
+        [formControl]="autoCompleteControl">
+    <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let detailedlodgingType of detailedLodgingTypes$ | async"
+            (click)="selectLodgingType(detailedlodgingType)" [value]="detailedlodgingType.lodgingType.object.name">
+            <span>{{ detailedlodgingType.lodgingType.object.name}}</span> |
+            <span>{{ detailedlodgingType.availableCount }} available</span>
+            <span *ngFor="let priceDetail of detailedlodgingType.priceDetails">Price via {{ priceDetail.packageName }}:
+                {{ priceDetail.price }}
+                {{ priceDetail.currency }}</span>
+        </mat-option>
+    </mat-autocomplete>
+</div>
+<div mat-dialog-actions>
+    <button mat-raised-button (click)="cancel()">Cancel</button>
+    <button mat-raised-button color="primary" (click)="done()">Done</button>
+</div>

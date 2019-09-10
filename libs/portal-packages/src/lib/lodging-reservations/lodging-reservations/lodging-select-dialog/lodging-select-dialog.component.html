@@ -1,24 +1,31 @@
-<h2>Please select a lodging</h2>
+<h2 mat-dialog-title>Select a lodging</h2>
+<div mat-dialog-content>
+    <!-- Lodging type select -->
+    <input matInput placeholder="Choose a lodging type" aria-label="Lodging Type"
+        [matAutocomplete]="lodgingTypesAutoControl" [formControl]="lodgingTypesAutoCompleteControl">
+    <mat-autocomplete #lodgingTypesAutoControl="matAutocomplete">
+        <mat-option *ngFor="let lodgingType of filteredLodgingTypes$ | async"
+            (click)="updateSelectedLodgingType(lodgingType)" [value]="lodgingType.object.name">
+            <span>{{ lodgingType.object.name}}</span>
+        </mat-option>
+    </mat-autocomplete>
 
-<!-- Lodging type select -->
-<p>Lodgings will be filtered by selected lodging type.</p>
-<input matInput placeholder="Choose a lodging type" aria-label="Lodging Type"
-    [matAutocomplete]="lodgingTypesAutoControl" [formControl]="lodgingTypesAutoCompleteControl">
-<mat-autocomplete #lodgingTypesAutoControl="matAutocomplete">
-    <mat-option *ngFor="let lodgingType of filteredLodgingTypes$ | async" (click)="selectLodgingType(lodgingType)"
-        [value]="lodgingType.object.name">
-        <span>{{ lodgingType.object.name}}</span>
-    </mat-option>
-</mat-autocomplete>
+    <br />
+    <br />
 
-<!-- Lodging select -->
-<input matInput placeholder="Choose a lodging" aria-label="Lodging" [matAutocomplete]="lodgingsAutoControl"
-    [formControl]="lodgingsAutoCompleteControl">
-<mat-autocomplete #lodgingsAutoControl="matAutocomplete">
-    <mat-option *ngFor="let detailedlodging of detailedLodgings$ | async" (click)="selectLodging(detailedlodging)"
-        [value]="detailedlodging.lodging.object.name">
-        <span>{{ detailedlodging.lodging.object.name}}</span> |
-        <span *ngIf="detailedlodging.available" style="color: green;">Available</span>
-        <span *ngIf="!detailedlodging.available" style="color: red;">Unavailable</span>
-    </mat-option>
-</mat-autocomplete>
+    <!-- Lodging select -->
+    <input matInput placeholder="Choose a lodging" aria-label="Lodging" [matAutocomplete]="lodgingsAutoControl"
+        [formControl]="lodgingsAutoCompleteControl">
+    <mat-autocomplete #lodgingsAutoControl="matAutocomplete">
+        <mat-option *ngFor="let detailedlodging of detailedLodgings$ | async" (click)="selectLodging(detailedlodging)"
+            [value]="detailedlodging.lodging.object.name">
+            <span>{{ detailedlodging.lodging.object.name}}</span> |
+            <span *ngIf="detailedlodging.available" style="color: green;">Available</span>
+            <span *ngIf="!detailedlodging.available" style="color: red;">Unavailable</span>
+        </mat-option>
+    </mat-autocomplete>
+</div>
+<div mat-dialog-actions>
+    <button mat-raised-button (click)="cancel()">Cancel</button>
+    <button mat-raised-button color="primary" (click)="done()">Done</button>
+</div>

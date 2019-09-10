@@ -31,10 +31,18 @@ export class NgLodgingsStore extends NgRecordStore<LodgingsAppState, Lodging, nu
         return this.getSingleWithDependency(packagePath, id, this.deps);
     }
 
-    public getAvailableLodgings(packagePath: string): Observable<StrIndex<number[]>> {
+    public getAvailableLodgings(packagePath: string): Observable<StrIndex<boolean>> {
         return this.ngRedux.select(state => state).pipe(
             map(state => state.lodgings),
             map(state => state.availableLodgings[packagePath]),
+            defined()
+        );
+    }
+
+    public getAvailableLodgingsDaily(packagePath: string): Observable<StrIndex<number[]>> {
+        return this.ngRedux.select(state => state).pipe(
+            map(state => state.lodgings),
+            map(state => state.availableLodgingsDaily[packagePath]),
             defined()
         );
     }
