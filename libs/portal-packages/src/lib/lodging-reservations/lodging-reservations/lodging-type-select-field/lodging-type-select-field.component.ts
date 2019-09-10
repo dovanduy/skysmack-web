@@ -10,7 +10,8 @@ import { Observable, combineLatest } from 'rxjs';
 
 @Component({
   selector: 'ss-lodging-type-select-field',
-  templateUrl: './lodging-type-select-field.component.html'
+  templateUrl: './lodging-type-select-field.component.html',
+  styleUrls: ['./lodging-type-select-field.component.scss']
 })
 export class LodgingTypeSelectFieldComponent extends FieldBaseComponent<Field> implements OnInit {
 
@@ -31,7 +32,7 @@ export class LodgingTypeSelectFieldComponent extends FieldBaseComponent<Field> i
   public selectLodgingType(): void {
     this.dialog.open(LodgingTypeSelectDialogComponent, { data: { form: this.fh.form } }).afterClosed().pipe(
       tap((detailedLodgingType: DetailedLodgingType) => {
-        const selectedLodgingType = detailedLodgingType.lodgingType;
+        const selectedLodgingType = detailedLodgingType && detailedLodgingType.lodgingType;
         if (selectedLodgingType && selectedLodgingType.object && selectedLodgingType.object.id) {
           this.setFieldValue(selectedLodgingType.object.id);
           this.selectedLodgingType = selectedLodgingType;

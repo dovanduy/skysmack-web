@@ -1,9 +1,10 @@
 <ng-container *ngIf="field" [formGroup]="fh.form">
 
   <ng-container *ngIf="(datesSelected$ | async)">
-    <button mat-raised-button (click)="selectLodging()">Select lodging</button>
-    <p *ngIf="selectedLodging">{{ selectedLodging.object.name }}</p>
-    <p *ngIf="!selectedLodging">No lodging type selected</p>
+    <button *ngIf="!selectedLodging" class="select-button" mat-raised-button color="primary"
+      (click)="selectLodging()">Select lodging</button>
+    <button *ngIf="selectedLodging" class="select-button" mat-raised-button
+      (click)="selectLodging()">{{ selectedLodging.object.name }}</button>
   </ng-container>
 
   <p *ngIf="!(datesSelected$ | async)" style="color:#ADADAD;max-width:350px;word-wrap: break-word;">

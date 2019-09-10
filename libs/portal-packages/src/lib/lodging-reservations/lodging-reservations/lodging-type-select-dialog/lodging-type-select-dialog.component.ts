@@ -88,7 +88,7 @@ export class LodgingTypeSelectDialogComponent implements OnInit {
             lodgingType,
             availableCount: availableCount[lodgingType.object.id] ? availableCount[lodgingType.object.id].length : 0
           })
-        })
+        }).sort((a, b) => b.availableCount - a.availableCount)
       })
     );
   }

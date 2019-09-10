@@ -6,7 +6,7 @@ import { LodgingType, DetailedLodgingType, DetailedLodging, Lodging } from '@sky
 import { Observable, combineLatest, BehaviorSubject } from 'rxjs';
 import { getPackageDendencyAsStream } from '@skysmack/ng-framework';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
-import { map, switchMap, take, filter, startWith } from 'rxjs/operators';
+import { map, switchMap, take, filter, startWith, tap } from 'rxjs/operators';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormControl, FormGroup } from '@angular/forms';
 
@@ -82,7 +82,7 @@ export class LodgingSelectDialogComponent implements OnInit {
     const allLodgings$ = lodgingPackage$.pipe(
       switchMap(lodgingPackage => {
         if (!getLodgingsOnce) {
-          this.lodgingActions.getPaged(lodgingPackage.object.path, new PagedQuery());
+          this.lodgingActions.getPaged(lodgingPackage.object.path, new PagedQuery()); // PAGED QUERY MUS BE BASED ON LODGING TYPE
           getLodgingsOnce = true;
         }
         return this.lodgingStore.get(lodgingPackage.object.path);
@@ -115,7 +115,7 @@ export class LodgingSelectDialogComponent implements OnInit {
     let getAvailabilityOnce = false; // Prevent multiple requests
     const available$ = combineLatest(
       lodgingPackage$,
-      lodgingIds$
+      lodgingIds$.pipe(take(1)) // Take prevents loop
     ).pipe(
       switchMap(([lodgingPackage, lodgingIds]) => {
         const checkIn = this.data.form.get('checkIn').value;
@@ -130,19 +130,20 @@ export class LodgingSelectDialogComponent implements OnInit {
     );
 
     // Create the detailed lodging used for selection and display
-    // this.detailedLodgings$ = combineLatest(
-    //   filteredLodgings$,
-    //   available$
-    // ).pipe(
-    //   map(([lodgings, available]) => {
-    //     return lodgings.map(lodging => {
-    //       return new DetailedLodging({
-    //         lodging,
-    //         available: !!available // TODO: Ensure this is the correct value. Might  need to use another redux flow / endpoint from backend.
-    //       })
-    //     })
-    //   })
-    // );
+    this.detailedLodgings$ = combineLatest(
+      filteredLodgings$,
+      available$
+    ).pipe(
+      map(([lodgings, available]) => {
+        console.log(available)
+        return lodgings.map(lodging => {
+          return new DetailedLodging({
+            lodging,
+            available: !!available // TODO: Ensure this is the correct value. Might  need to use another redux flow / endpoint from backend.
+          })
+        }).sort((a, b) => (a.available === b.available) ? 0 : b.available ? -1 : 1)
+      })
+    );
 
     //#endregion
   }

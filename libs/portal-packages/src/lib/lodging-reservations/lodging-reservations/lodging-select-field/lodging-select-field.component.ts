@@ -10,7 +10,8 @@ import { LodgingSelectDialogComponent } from '../lodging-select-dialog/lodging-s
 
 @Component({
   selector: 'ss-lodging-select-field',
-  templateUrl: './lodging-select-field.component.html'
+  templateUrl: './lodging-select-field.component.html',
+  styleUrls: ['./lodging-select-field.component.scss']
 })
 export class LodgingSelectFieldComponent extends FieldBaseComponent<Field> implements OnInit {
 
@@ -31,7 +32,7 @@ export class LodgingSelectFieldComponent extends FieldBaseComponent<Field> imple
   public selectLodging(): void {
     this.dialog.open(LodgingSelectDialogComponent, { data: { form: this.fh.form } }).afterClosed().pipe(
       tap((detailedLodging: DetailedLodging) => {
-        const selectedLodging = detailedLodging.lodging;
+        const selectedLodging = detailedLodging && detailedLodging.lodging;
         if (selectedLodging && selectedLodging.object && selectedLodging.object.id) {
           this.setFieldValue(selectedLodging.object.id);
           this.selectedLodging = selectedLodging;
