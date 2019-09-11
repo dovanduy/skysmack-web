@@ -1,7 +1,6 @@
 import { LocalPageTypes, StrIndex, LocalObject } from '@skysmack/framework';
-import { AppState, ReduxAction, sharedReducer, RecordState, recordReducersBase, StateKeyMeta } from '@skysmack/redux';
+import { AppState, ReduxAction, sharedReducer, RecordState, recordReducersBase } from '@skysmack/redux';
 import { Lodging } from '../../models/lodging';
-import { LodgingsActions } from './lodging-actions';
 import { LODGINGS_REDUX_KEY, LODGINGS_REDUCER_KEY } from '../../constants';
 
 /**
@@ -23,42 +22,6 @@ export function lodgingsReducer(state = new LodgingsState(), action: ReduxAction
     const newState = Object.assign({}, state);
 
     switch (action.type) {
-        case prefix + LodgingsActions.GET_AVAILABLE_LODGINGS_SUCCESS: {
-            const castedAction = action as ReduxAction<StrIndex<boolean>, { stateKey: string, dateKey: string }>;
-
-            // Merge data
-            const incoming = castedAction.payload;
-            const currentState = newState.availableLodgings[castedAction.meta.stateKey] ? newState.availableLodgings[castedAction.meta.stateKey] : {};
-            const currentSubState = currentState[castedAction.meta.dateKey] ? currentState[castedAction.meta.dateKey] : {};
-
-            Object.keys(incoming).forEach((incomingKey) => currentSubState[incomingKey] = incoming[incomingKey]);
-
-            newState.availableLodgings[castedAction.meta.stateKey] = currentState;
-            newState.availableLodgings[castedAction.meta.stateKey][castedAction.meta.dateKey] = currentSubState;
-
-            return newState;
-        }
-        case prefix + LodgingsActions.GET_AVAILABLE_LODGINGS_FAILURE: {
-            console.log('error:', action);
-            return newState;
-        }
-
-        case prefix + LodgingsActions.GET_AVAILABLE_LODGINGS_DAILY_SUCCESS: {
-            const castedAction = action as ReduxAction<StrIndex<number[]>, StateKeyMeta>;
-
-            // Merge data
-            const incoming = castedAction.payload;
-            const current = newState.availableLodgingsDaily[castedAction.meta.stateKey] ? newState.availableLodgingsDaily[castedAction.meta.stateKey] : {};
-            Object.keys(incoming).forEach((incomingKey) => current[incomingKey] = incoming[incomingKey]);
-
-            newState.availableLodgingsDaily[castedAction.meta.stateKey] = current;
-            return newState;
-        }
-        case prefix + LodgingsActions.GET_AVAILABLE_LODGINGS_DAILY_FAILURE: {
-            console.log('error:', action);
-            return newState;
-        }
-
         default:
             return {
                 ...state,

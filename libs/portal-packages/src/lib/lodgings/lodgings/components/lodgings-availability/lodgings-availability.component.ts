@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { EntityComponentPageTitle } from '@skysmack/portal-ui';
-import { NgLodgingsStore, NgLodgingsActions } from '@skysmack/ng-lodgings';
+import { NgLodgingsStore, NgLodgingsActions, NgLodgingsAvailabilityActions, NgLodgingsAvailabilityStore } from '@skysmack/ng-lodgings';
 import { Observable, combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { CalendarEvent, EventColor, EventAction } from 'calendar-utils';
@@ -44,6 +44,8 @@ export class LodgingsAvailabilityComponent implements OnInit {
     public skysmackStore: NgSkysmackStore,
     public store: NgLodgingsStore,
     public actions: NgLodgingsActions,
+    public availabilityActions: NgLodgingsAvailabilityActions,
+    public availabilityStore: NgLodgingsAvailabilityStore,
     public pageTitle: EntityComponentPageTitle,
   ) {
     pageTitle.setTitle('LODGINGS_AVAILABILITY.TITLE');
@@ -62,7 +64,7 @@ export class LodgingsAvailabilityComponent implements OnInit {
   }
 
   public getAvailableLodgingsDaily() {
-    this.actions.getAvailableLodgingsDaily(this.packagePath, this.startOfMonth, this.endOfMonth, this.selectedLodgingIds);
+    this.availabilityActions.getAvailableLodgingsDaily(this.packagePath, this.startOfMonth, this.endOfMonth, this.selectedLodgingIds);
   }
 
   public beforeMonthViewRender({ body }: { body: CalendarMonthViewDay[] }): void {
@@ -98,7 +100,7 @@ export class LodgingsAvailabilityComponent implements OnInit {
 
     this.events$ = combineLatest(
       this.store.get(this.packagePath),
-      this.store.getAvailableLodgingsDaily(this.packagePath)
+      this.availabilityStore.getAvailableLodgingsDaily(this.packagePath)
     ).pipe(
       map(values => {
         const lodgings = values[0];

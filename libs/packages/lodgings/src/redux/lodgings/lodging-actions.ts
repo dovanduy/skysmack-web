@@ -1,4 +1,4 @@
-import { RecordActionsBase, ReduxAction, GetIntervalPayload, SelectedIdsMeta } from '@skysmack/redux';
+import { RecordActionsBase } from '@skysmack/redux';
 import { Store } from 'redux';
 import { LodgingsAppState } from './lodgings-reducer';
 import { LocalObject, StrIndex } from '@skysmack/framework';
@@ -7,43 +7,7 @@ import { LODGINGS_REDUX_KEY, LODGINGS_ADDITIONAL_PATHS } from '../../constants';
 
 
 export class LodgingsActions extends RecordActionsBase<LodgingsAppState, Store<LodgingsAppState>> {
-    public static GET_AVAILABLE_LODGINGS = 'GET_AVAILABLE_LODGINGS';
-    public static GET_AVAILABLE_LODGINGS_SUCCESS = 'GET_AVAILABLE_LODGINGS_SUCCESS';
-    public static GET_AVAILABLE_LODGINGS_FAILURE = 'GET_AVAILABLE_LODGINGS_FAILURE';
-
-    public static GET_AVAILABLE_LODGINGS_DAILY = 'GET_AVAILABLE_LODGINGS_DAILY';
-    public static GET_AVAILABLE_LODGINGS_DAILY_SUCCESS = 'GET_AVAILABLE_LODGINGS_DAILY_SUCCESS';
-    public static GET_AVAILABLE_LODGINGS_DAILY_FAILURE = 'GET_AVAILABLE_LODGINGS_DAILY_FAILURE';
-
     constructor(protected store: Store<LodgingsAppState>) { super(store, LODGINGS_REDUX_KEY, LODGINGS_ADDITIONAL_PATHS); }
-
-    public getAvailableLodgings(packagePath: string, start: string, end: string, selectedLodgingIds: number[]) {
-        this.store.dispatch(Object.assign({}, new ReduxAction<GetIntervalPayload, SelectedIdsMeta<number>>({
-            type: LodgingsActions.GET_AVAILABLE_LODGINGS,
-            payload: {
-                packagePath,
-                start,
-                end
-            },
-            meta: {
-                ids: selectedLodgingIds
-            }
-        })))
-    }
-
-    public getAvailableLodgingsDaily(packagePath: string, start: string, end: string, selectedLodgingIds: number[]) {
-        this.store.dispatch(Object.assign({}, new ReduxAction<GetIntervalPayload, SelectedIdsMeta<number>>({
-            type: LodgingsActions.GET_AVAILABLE_LODGINGS_DAILY,
-            payload: {
-                packagePath,
-                start,
-                end
-            },
-            meta: {
-                ids: selectedLodgingIds
-            }
-        })))
-    }
 
     public getMessageParams(record: LocalObject<Lodging, number>): StrIndex<string> {
         return {

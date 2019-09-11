@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject, OnDestroy } from '@angular/core';
-import { NgLodgingTypesActions, NgLodgingTypesStore, NgLodgingsActions, NgLodgingsStore } from '@skysmack/ng-lodgings';
+import { NgLodgingTypesActions, NgLodgingTypesStore, NgLodgingsActions, NgLodgingsStore, NgLodgingsAvailabilityActions, NgLodgingsAvailabilityStore } from '@skysmack/ng-lodgings';
 import { Router } from '@angular/router';
 import { PagedQuery, LocalObject, RSQLFilterBuilder, SubscriptionHandler } from '@skysmack/framework';
 import { LodgingType, DetailedLodging, Lodging } from '@skysmack/packages-lodgings';
@@ -28,6 +28,8 @@ export class LodgingSelectDialogComponent implements OnInit, OnDestroy {
     private skysmackStore: NgSkysmackStore,
     private lodgingActions: NgLodgingsActions,
     private lodgingStore: NgLodgingsStore,
+    private lodgingsAvailabilityActions: NgLodgingsAvailabilityActions,
+    private lodgingsAvailabilityStore: NgLodgingsAvailabilityStore,
     private lodgingTypesActions: NgLodgingTypesActions,
     private lodgingTypesStore: NgLodgingTypesStore,
     private dialogRef: MatDialogRef<LodgingSelectDialogComponent>,
@@ -44,9 +46,6 @@ export class LodgingSelectDialogComponent implements OnInit, OnDestroy {
     const lodgingPackage$ = getPackageDendencyAsStream(this.skysmackStore, packagePath, [0]).pipe(
       filter(x => !!x),
       take(1)
-    );
-    const lodgings$ = lodgingPackage$.pipe(
-      switchMap(lodgingPackage => this.lodgingStore.get(lodgingPackage.object.path))
     );
 
     // ########
@@ -115,17 +114,21 @@ export class LodgingSelectDialogComponent implements OnInit, OnDestroy {
       lodgingPackage$
     ).pipe(
       filter(([selectedLodgingType, lodgingPackage]) => !!selectedLodgingType && selectedLodgingType.object && !!lodgingPackage),
+      tap(x => console.log('pre switchMap')),
       switchMap(([selectedLodgingType, lodgingPackage]) => {
         // Request lodgings
         const builder = new RSQLFilterBuilder();
         builder.column('lodgingTypeId').equalTo(selectedLodgingType.object.id);
+        console.log('requesting lodgings');
         this.lodgingActions.getPaged(lodgingPackage.object.path, new PagedQuery({ rsqlFilter: builder }));
 
         // Get lodgings
         return this.lodgingStore.get(lodgingPackage.object.path).pipe(
           filter(x => !!x && Array.isArray(x)),
           map(lodgings => lodgings.filter(lodging => lodging.object.lodgingTypeId === selectedLodgingType.object.id)),
-          filter(x => x.length > 0));
+          filter(x => x.length > 0),
+          tap(x => console.log('lodgings'))
+        );
       })
     );
 
@@ -135,20 +138,24 @@ export class LodgingSelectDialogComponent implements OnInit, OnDestroy {
       this.lodgingsAutoCompleteControl.valueChanges.pipe(startWith('')),
       allLodgingsOfType$
     ).pipe(
+      tap(x => console.log('wtf 1')),
       map(([searchInput, lodgings]) => searchInput ? this.filterLodgings(searchInput, lodgings) : lodgings.slice())
     );
 
     // Get availability for all filtered lodgings
     const available$ = combineLatest(
       lodgingPackage$,
-      allLodgingsOfType$ // Take prevents loop
+      allLodgingsOfType$
     ).pipe(
+      tap(x => console.log('wtf 2')),
       switchMap(([lodgingPackage, lodgingsOfType]) => {
         const checkIn = this.data.form.get('checkIn').value;
         const checkOut = this.data.form.get('checkOut').value;
         const packagePath = lodgingPackage.object.path;
-        this.lodgingActions.getAvailableLodgings(packagePath, checkIn, checkOut, lodgingsOfType.map(lodging => lodging.objectIdentifier));
-        return this.lodgingStore.getAvailableLodgings(packagePath, checkIn, checkOut);
+        // this.lodgingsAvailabilityActions.getAvailableLodgings(packagePath, checkIn, checkOut, lodgingsOfType.map(lodging => lodging.objectIdentifier));
+        return this.lodgingsAvailabilityStore.getAvailableLodgings(packagePath, checkIn, checkOut).pipe(
+          tap(x => console.log('available lodgings'))
+        );
       })
     );
 
@@ -157,6 +164,7 @@ export class LodgingSelectDialogComponent implements OnInit, OnDestroy {
       filteredLodgings$,
       available$
     ).pipe(
+      tap(x => console.log('wtf 3')),
       map(([lodgings, available]) => {
         return lodgings.map(lodging => {
           return new DetailedLodging({
