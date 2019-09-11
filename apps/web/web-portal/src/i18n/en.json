@@ -1,4 +1,56 @@
 {
+	"EMAIL_TEMPLATES": {
+		"FORM": {
+			"LABELS": {
+				"FROM": "From",
+				"TO": "To",
+				"CC": "Cc",
+				"BCC": "Bcc",
+				"SUBJECT": "Subject",
+				"BODY": "Body"
+			},
+			"PLACEHOLDERS": {
+				"FROM": "From",
+				"TO": "To",
+				"CC": "Cc",
+				"BCC": "Bcc",
+				"SUBJECT": "Subject",
+				"BODY": "Body"
+			},
+			"VALIDATION": {}
+		},
+		"CREATE": {
+			"CREATE": "Create",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDIT": "Edit",
+			"BUTTON_EDIT": "Update"
+		},
+		"INDEX": {
+			"CREATE": "Create",
+			"EDIT": "Edit",
+			"DELETE": "Delete",
+			"MANAGE": "Manage",
+			"ACTIONS": "Actions"
+		},
+		"QUEUE": {
+			"ADDING": "Adding {{ subject }}",
+			"UPDATING": "Updating {{ subject }}",
+			"DELETING": "Deleting {{ subject }}",
+			"ERROR": "An error occured with {{ subject }}. Correct and try again."
+		}
+	},
+	"EMAILS": {
+		"INDEX": {
+			"CREATE": "Create",
+			"EDIT": "Edit",
+			"DELETE": "Delete",
+			"TEMPLATES": "Templates",
+			"MANAGE": "Manage",
+			"ACTIONS": "Actions"
+		}
+	},
 	"ACCESS_POLICY_PERMISSIONS": {
 		"CREATE": {
 			"CREATE": "Create",
@@ -134,58 +186,6 @@
 			"UPDATING": "Updating access policy rules {{ id }}",
 			"DELETING": "Deleting access policy rules {{ id }}",
 			"ERROR": "An error occured with access policy rules {{ id }}. Correct and try again."
-		}
-	},
-	"EMAIL_TEMPLATES": {
-		"FORM": {
-			"LABELS": {
-				"FROM": "From",
-				"TO": "To",
-				"CC": "Cc",
-				"BCC": "Bcc",
-				"SUBJECT": "Subject",
-				"BODY": "Body"
-			},
-			"PLACEHOLDERS": {
-				"FROM": "From",
-				"TO": "To",
-				"CC": "Cc",
-				"BCC": "Bcc",
-				"SUBJECT": "Subject",
-				"BODY": "Body"
-			},
-			"VALIDATION": {}
-		},
-		"CREATE": {
-			"CREATE": "Create",
-			"BUTTON_CREATE": "Create"
-		},
-		"EDIT": {
-			"EDIT": "Edit",
-			"BUTTON_EDIT": "Update"
-		},
-		"INDEX": {
-			"CREATE": "Create",
-			"EDIT": "Edit",
-			"DELETE": "Delete",
-			"MANAGE": "Manage",
-			"ACTIONS": "Actions"
-		},
-		"QUEUE": {
-			"ADDING": "Adding {{ subject }}",
-			"UPDATING": "Updating {{ subject }}",
-			"DELETING": "Deleting {{ subject }}",
-			"ERROR": "An error occured with {{ subject }}. Correct and try again."
-		}
-	},
-	"EMAILS": {
-		"INDEX": {
-			"CREATE": "Create",
-			"EDIT": "Edit",
-			"DELETE": "Delete",
-			"TEMPLATES": "Templates",
-			"MANAGE": "Manage",
-			"ACTIONS": "Actions"
 		}
 	},
 	"EMAILS_SMTP": {
@@ -384,6 +384,46 @@
 			"ERROR": "Error occured updating settings."
 		}
 	},
+	"ROLES": {
+		"CREATE": {
+			"CREATE_ROLE": "Create new role",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDITING": "Edit {{ name }}",
+			"BUTTON_EDIT": "Update"
+		},
+		"INDEX": {
+			"ACTIONS": "Actions",
+			"CREATE": "Create",
+			"MANAGE": "Manage",
+			"SECURITY": "Security",
+			"SECURITY_AND_USERS": "Users and security",
+			"ROLES": "Roles",
+			"BACK": "Back",
+			"FIELDS_TITLE": "(fields)",
+			"TITLE_EXTRAS": "(roles)"
+		},
+		"FORM": {
+			"LABELS": {
+				"NAME": "Name"
+			},
+			"PLACEHOLDERS": {
+				"NAME": "Enter name"
+			},
+			"VALIDATION": {
+				"NAME": {
+					"REQUIRED": "A name is required."
+				}
+			}
+		},
+		"QUEUE": {
+			"ADDING": "Adding {{ name }}",
+			"UPDATING": "Updating {{ name }}",
+			"DELETING": "Deleting {{ name }}",
+			"ERROR": "An error occured with {{ name }}. Correct and try again."
+		}
+	},
 	"APPLICATIONS": {
 		"ENTITY_ACTION": {
 			"ROLES": "Roles"
@@ -478,46 +518,6 @@
 			"UPDATING": "Updating {{ displayName }}",
 			"DELETING": "Deleting {{ displayName }}",
 			"ERROR": "An error occured with {{ displayName }}. Correct and try again."
-		}
-	},
-	"ROLES": {
-		"CREATE": {
-			"CREATE_ROLE": "Create new role",
-			"BUTTON_CREATE": "Create"
-		},
-		"EDIT": {
-			"EDITING": "Edit {{ name }}",
-			"BUTTON_EDIT": "Update"
-		},
-		"INDEX": {
-			"ACTIONS": "Actions",
-			"CREATE": "Create",
-			"MANAGE": "Manage",
-			"SECURITY": "Security",
-			"SECURITY_AND_USERS": "Users and security",
-			"ROLES": "Roles",
-			"BACK": "Back",
-			"FIELDS_TITLE": "(fields)",
-			"TITLE_EXTRAS": "(roles)"
-		},
-		"FORM": {
-			"LABELS": {
-				"NAME": "Name"
-			},
-			"PLACEHOLDERS": {
-				"NAME": "Enter name"
-			},
-			"VALIDATION": {
-				"NAME": {
-					"REQUIRED": "A name is required."
-				}
-			}
-		},
-		"QUEUE": {
-			"ADDING": "Adding {{ name }}",
-			"UPDATING": "Updating {{ name }}",
-			"DELETING": "Deleting {{ name }}",
-			"ERROR": "An error occured with {{ name }}. Correct and try again."
 		}
 	},
 	"USERS": {
@@ -2101,53 +2101,6 @@
 			"ERROR": "An error occured with the lodging reservation price change valid from/to: {{ dates }}. Correct and try again."
 		}
 	},
-	"LODGING_TYPE_PRICES": {
-		"CREATE": {
-			"CREATE": "Create",
-			"BUTTON_CREATE": "Create"
-		},
-		"EDIT": {
-			"EDIT": "Edit",
-			"BUTTON_EDIT": "Update"
-		},
-		"INDEX": {
-			"ACTIONS": "Actions",
-			"CREATE": "Create",
-			"DELETE": "Delete",
-			"MANAGE": "Manage",
-			"FIELDS": "Fields",
-			"BACK": "Back"
-		},
-		"FORM": {
-			"LABELS": {
-				"CURRENCYCODE": "Currency code",
-				"RECORDID": "Lodging type",
-				"PRICE": "Price"
-			},
-			"PLACEHOLDERS": {
-				"CURRENCYCODE": "Currency code",
-				"RECORDID": "Lodging type",
-				"PRICE": "Price"
-			},
-			"VALIDATION": {
-				"CURRENCYCODE": {
-					"REQUIRED": "Currency code is required"
-				},
-				"RECORDID": {
-					"REQUIRED": "Lodging type is required"
-				},
-				"PRICE": {
-					"REQUIRED": "Price is required"
-				}
-			}
-		},
-		"QUEUE": {
-			"ADDING": "Adding the lodging type price with the price: {{ price }}",
-			"UPDATING": "Updating the lodging type price with the price: {{ price }}",
-			"DELETING": "Deleting the lodging type price with the price: {{ price }}",
-			"ERROR": "An error occured with the lodging type price with the price: {{ price }}. Correct and try again."
-		}
-	},
 	"LODGING_TYPE_RESERVATION_PRICE_CHANGES": {
 		"CREATE": {
 			"CREATE": "Create",
@@ -2248,6 +2201,53 @@
 			"UPDATING": "Updating the lodging type reservation price change valid from/to: {{ dates }}",
 			"DELETING": "Deleting the lodging type reservation price change valid from/to: {{ dates }}",
 			"ERROR": "An error occured with the lodging type reservation price change valid from/to: {{ dates }}. Correct and try again."
+		}
+	},
+	"LODGING_TYPE_PRICES": {
+		"CREATE": {
+			"CREATE": "Create",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDIT": "Edit",
+			"BUTTON_EDIT": "Update"
+		},
+		"INDEX": {
+			"ACTIONS": "Actions",
+			"CREATE": "Create",
+			"DELETE": "Delete",
+			"MANAGE": "Manage",
+			"FIELDS": "Fields",
+			"BACK": "Back"
+		},
+		"FORM": {
+			"LABELS": {
+				"CURRENCYCODE": "Currency code",
+				"RECORDID": "Lodging type",
+				"PRICE": "Price"
+			},
+			"PLACEHOLDERS": {
+				"CURRENCYCODE": "Currency code",
+				"RECORDID": "Lodging type",
+				"PRICE": "Price"
+			},
+			"VALIDATION": {
+				"CURRENCYCODE": {
+					"REQUIRED": "Currency code is required"
+				},
+				"RECORDID": {
+					"REQUIRED": "Lodging type is required"
+				},
+				"PRICE": {
+					"REQUIRED": "Price is required"
+				}
+			}
+		},
+		"QUEUE": {
+			"ADDING": "Adding the lodging type price with the price: {{ price }}",
+			"UPDATING": "Updating the lodging type price with the price: {{ price }}",
+			"DELETING": "Deleting the lodging type price with the price: {{ price }}",
+			"ERROR": "An error occured with the lodging type price with the price: {{ price }}. Correct and try again."
 		}
 	},
 	"CONNECTIONS": {
@@ -2673,207 +2673,6 @@
 			}
 		}
 	},
-	"COMMERCIAL_TENANTS": {
-		"INDEX": {
-			"CREATE": "Create tenant",
-			"TENANTS": "Tenants",
-			"TENANTUSERRELATION": "Tenant-User relation"
-		},
-		"TITLE": "Tenants",
-		"CREATE": "Create",
-		"CREATETENANT": "Create Tenant",
-		"EDIT": "Edit",
-		"EDITTENANT": "Edit tenant",
-		"DETAILS": "Details",
-		"HOSTNAME": "Hostname",
-		"SAFESUBDOMAIN": "Safe subdomain",
-		"STATE": "State",
-		"FORM": {
-			"LABELS": {
-				"NAME": "Name",
-				"HOSTNAME": "Hostname",
-				"SAFESUBDOMAIN": "Safe subdomain",
-				"STATE": "State",
-				"USERID": "User",
-				"TENANTID": "Tenant",
-				"STATUS": "Status"
-			},
-			"PLACEHOLDERS": {
-				"NAME": "Enter a Name",
-				"HOSTNAME": "Enter a hostname",
-				"SAFESUBDOMAIN": "Enter a safe subdomain",
-				"STATE": "Enter a state",
-				"USERID": "User",
-				"TENANTID": "Tenant",
-				"STATUS": "Status"
-			},
-			"VALIDATION": {
-				"NAME": {
-					"REQUIRED": "An Name is required."
-				},
-				"HOSTNAME": {
-					"REQUIRED": "An hostname is required."
-				},
-				"SAFESUBDOMAIN": {
-					"REQUIRED": "A subdomain is required."
-				},
-				"STATE": {
-					"REQUIRED": "The state is required."
-				},
-				"USERID": {
-					"REQUIRED": "User is required."
-				},
-				"TENANTID": {
-					"REQUIRED": "Tenant is required."
-				},
-				"STATUS": {
-					"REQUIRED": "Status is required."
-				}
-			}
-		},
-		"REMOVE": "Remove",
-		"SUBMIT": "Submit",
-		"TENANTUSERRELATION": "Tenant-User relation"
-	},
-	"COMMERCIAL_ACCOUNT": {
-		"INDEX": {
-			"FORGOTPASSWORD": "Forgot password",
-			"ACCOUNT": "Account",
-			"WELCOME": "Welcome to skysmack",
-			"CONFIRMEMAIL": "Confirm e-mail"
-		},
-		"LOGIN": {
-			"SIGNIN": "Sign in",
-			"CREDENTIALS": "Please enter credentials below",
-			"INCORRECT": "The entered password and/or username was incorrect. Please try again.",
-			"FORGOTPASSWORD": "Forgot password",
-			"CONFIRMEMAIL": "Confirm email",
-			"REGISTER": "Register"
-		},
-		"FORM": {
-			"LABELS": {
-				"EMAIL": "Email",
-				"PASSWORD": "Password",
-				"STAYSIGNEDIN": "Stay signed in?",
-				"USERNAME": "User name",
-				"CONFIRMPASSWORD": "Confirm Password",
-				"NEWPASSWORD": "New password",
-				"CONFIRMNEWPASSWORD": "Confirm new password"
-			},
-			"PLACEHOLDERS": {
-				"EMAIL": "Enter email",
-				"PASSWORD": "Enter password",
-				"CURRENTPASSWORD": "Current password",
-				"NEWPASSWORD": "New password",
-				"CONFIRMNEWPASSWORD": "Confirm new password",
-				"USERNAME": "Enter user name",
-				"CONFIRMPASSWORD": "Confirm Password"
-			},
-			"VALIDATION": {
-				"EMAIL": {
-					"REQUIRED": "Email is required.",
-					"INVALIDEMAIL": "Please enter a valid email."
-				},
-				"PASSWORD": {
-					"REQUIRED": "Password is required."
-				},
-				"CURRENTPASSWORD": {
-					"REQUIRED": "Current password is required."
-				},
-				"NEWPASSWORD": {
-					"REQUIRED": "New password is required."
-				},
-				"CONFIRMNEWPASSWORD": {
-					"REQUIRED": "Please repeat the new password.",
-					"PASSWORDMISMATCH": "Passwords must match."
-				},
-				"USERNAME": {
-					"REQUIRED": "User name is required"
-				},
-				"CONFIRMPASSWORD": {
-					"REQUIRED": "Please repeat the new password.",
-					"PASSWORDMISMATCH": "Passwords must match."
-				}
-			}
-		},
-		"VALIDATION": {
-			"TOKEN": {
-				"REQUIRED": "Token is required"
-			},
-			"EMAIL": {
-				"REQUIRED": "Email is required.",
-				"INVALIDEMAIL": "Please type a valid email"
-			},
-			"CURRENTPASSWORD": {
-				"REQUIRED": "Current password is required."
-			},
-			"NEWPASSWORD": {
-				"REQUIRED": "New password is required."
-			},
-			"CONFIRMNEWPASSWORD": {
-				"REQUIRED": "Please repeat the new password.",
-				"PASSWORDMISMATCH": "Passwords must match."
-			}
-		},
-		"CHANGE_PASSWORD": {
-			"TITLE": "Change password",
-			"BUTTON_EDIT": "Update"
-		},
-		"REGISTER": {
-			"TITLE": "Register"
-		}
-	},
-	"COMMERCIAL_UI_PARTNERS": {
-		"INDEX": {
-			"CHANGEPASSWORD": "Change password",
-			"TENANTS": "Tenants",
-			"USERS": "Users",
-			"LOGOUT": "Logout"
-		}
-	},
-	"COMMERCIAL_USERS": {
-		"INDEX": {
-			"CREATE": " Create user",
-			"USERS": "Users"
-		},
-		"TITLE": "Users",
-		"CREATE": "Create",
-		"CREATEUSER": "Create user",
-		"EDIT": "Edit",
-		"EDITUSER": "Edit user",
-		"EMAIL": "Email: ",
-		"FORM": {
-			"LABELS": {
-				"EMAIL": "Email",
-				"USERNAME": "Username",
-				"PASSWORD": "Password",
-				"CONFIRMPASSWORD": "Confirm password"
-			},
-			"PLACEHOLDERS": {
-				"EMAIL": "Enter a email",
-				"USERNAME": "Enter a username",
-				"PASSWORD": "Enter a password",
-				"CONFIRMPASSWORD": "Enter a confirm password"
-			},
-			"VALIDATION": {
-				"EMAIL": {
-					"REQUIRED": "An Email is required.",
-					"INVALIDEMAIL": "Please enter a valid email."
-				},
-				"USERNAME": {
-					"REQUIRED": "An username is required."
-				},
-				"PASSWORD": {
-					"REQUIRED": "A password is required."
-				},
-				"CONFIRMPASSWORD": {
-					"PASSWORDMISMATCH": "The passwords must match."
-				}
-			}
-		},
-		"DETAILS": "Details",
-		"REMOVE": "TTTRemove"
-	},
 	"OAUTH2": {
 		"FORM": {
 			"LABELS": {
@@ -3118,16 +2917,6 @@
 			"TERMINAL_RECEIPTS": "Receipts"
 		}
 	},
-	"SETTINGS": {
-		"SETTINGS": "Settings",
-		"BUTTON_SUBMIT": "Submit",
-		"QUEUE": {
-			"ADDING": "Adding settings",
-			"UPDATING": "Updating settings",
-			"DELETING": "Deleting settings",
-			"ERROR": "An error occured with settings. Correct and try again."
-		}
-	},
 	"FIELDS": {
 		"INDEX": {
 			"CREATE": "Create",
@@ -3178,5 +2967,216 @@
 			"DELETING": "Deleting {{ displayName }}",
 			"ERROR": "An error occured with {{ displayName }}. Correct and try again."
 		}
+	},
+	"SETTINGS": {
+		"SETTINGS": "Settings",
+		"BUTTON_SUBMIT": "Submit",
+		"QUEUE": {
+			"ADDING": "Adding settings",
+			"UPDATING": "Updating settings",
+			"DELETING": "Deleting settings",
+			"ERROR": "An error occured with settings. Correct and try again."
+		}
+	},
+	"COMMERCIAL_TENANTS": {
+		"INDEX": {
+			"CREATE": "Create tenant",
+			"TENANTS": "Tenants",
+			"TENANTUSERRELATION": "Tenant-User relation"
+		},
+		"TITLE": "Tenants",
+		"CREATE": "Create",
+		"CREATETENANT": "Create Tenant",
+		"EDIT": "Edit",
+		"EDITTENANT": "Edit tenant",
+		"DETAILS": "Details",
+		"HOSTNAME": "Hostname",
+		"SAFESUBDOMAIN": "Safe subdomain",
+		"STATE": "State",
+		"FORM": {
+			"LABELS": {
+				"NAME": "Name",
+				"HOSTNAME": "Hostname",
+				"SAFESUBDOMAIN": "Safe subdomain",
+				"STATE": "State",
+				"USERID": "User",
+				"TENANTID": "Tenant",
+				"STATUS": "Status"
+			},
+			"PLACEHOLDERS": {
+				"NAME": "Enter a Name",
+				"HOSTNAME": "Enter a hostname",
+				"SAFESUBDOMAIN": "Enter a safe subdomain",
+				"STATE": "Enter a state",
+				"USERID": "User",
+				"TENANTID": "Tenant",
+				"STATUS": "Status"
+			},
+			"VALIDATION": {
+				"NAME": {
+					"REQUIRED": "An Name is required."
+				},
+				"HOSTNAME": {
+					"REQUIRED": "An hostname is required."
+				},
+				"SAFESUBDOMAIN": {
+					"REQUIRED": "A subdomain is required."
+				},
+				"STATE": {
+					"REQUIRED": "The state is required."
+				},
+				"USERID": {
+					"REQUIRED": "User is required."
+				},
+				"TENANTID": {
+					"REQUIRED": "Tenant is required."
+				},
+				"STATUS": {
+					"REQUIRED": "Status is required."
+				}
+			}
+		},
+		"REMOVE": "Remove",
+		"SUBMIT": "Submit",
+		"TENANTUSERRELATION": "Tenant-User relation"
+	},
+	"COMMERCIAL_ACCOUNT": {
+		"INDEX": {
+			"FORGOTPASSWORD": "Forgot password",
+			"ACCOUNT": "Account",
+			"WELCOME": "Welcome to skysmack",
+			"CONFIRMEMAIL": "Confirm e-mail"
+		},
+		"LOGIN": {
+			"SIGNIN": "Sign in",
+			"CREDENTIALS": "Please enter credentials below",
+			"INCORRECT": "The entered password and/or username was incorrect. Please try again.",
+			"FORGOTPASSWORD": "Forgot password",
+			"CONFIRMEMAIL": "Confirm email",
+			"REGISTER": "Register"
+		},
+		"FORM": {
+			"LABELS": {
+				"EMAIL": "Email",
+				"PASSWORD": "Password",
+				"STAYSIGNEDIN": "Stay signed in?",
+				"USERNAME": "User name",
+				"CONFIRMPASSWORD": "Confirm Password",
+				"NEWPASSWORD": "New password",
+				"CONFIRMNEWPASSWORD": "Confirm new password"
+			},
+			"PLACEHOLDERS": {
+				"EMAIL": "Enter email",
+				"PASSWORD": "Enter password",
+				"CURRENTPASSWORD": "Current password",
+				"NEWPASSWORD": "New password",
+				"CONFIRMNEWPASSWORD": "Confirm new password",
+				"USERNAME": "Enter user name",
+				"CONFIRMPASSWORD": "Confirm Password"
+			},
+			"VALIDATION": {
+				"EMAIL": {
+					"REQUIRED": "Email is required.",
+					"INVALIDEMAIL": "Please enter a valid email."
+				},
+				"PASSWORD": {
+					"REQUIRED": "Password is required."
+				},
+				"CURRENTPASSWORD": {
+					"REQUIRED": "Current password is required."
+				},
+				"NEWPASSWORD": {
+					"REQUIRED": "New password is required."
+				},
+				"CONFIRMNEWPASSWORD": {
+					"REQUIRED": "Please repeat the new password.",
+					"PASSWORDMISMATCH": "Passwords must match."
+				},
+				"USERNAME": {
+					"REQUIRED": "User name is required"
+				},
+				"CONFIRMPASSWORD": {
+					"REQUIRED": "Please repeat the new password.",
+					"PASSWORDMISMATCH": "Passwords must match."
+				}
+			}
+		},
+		"VALIDATION": {
+			"TOKEN": {
+				"REQUIRED": "Token is required"
+			},
+			"EMAIL": {
+				"REQUIRED": "Email is required.",
+				"INVALIDEMAIL": "Please type a valid email"
+			},
+			"CURRENTPASSWORD": {
+				"REQUIRED": "Current password is required."
+			},
+			"NEWPASSWORD": {
+				"REQUIRED": "New password is required."
+			},
+			"CONFIRMNEWPASSWORD": {
+				"REQUIRED": "Please repeat the new password.",
+				"PASSWORDMISMATCH": "Passwords must match."
+			}
+		},
+		"CHANGE_PASSWORD": {
+			"TITLE": "Change password",
+			"BUTTON_EDIT": "Update"
+		},
+		"REGISTER": {
+			"TITLE": "Register"
+		}
+	},
+	"COMMERCIAL_UI_PARTNERS": {
+		"INDEX": {
+			"CHANGEPASSWORD": "Change password",
+			"TENANTS": "Tenants",
+			"USERS": "Users",
+			"LOGOUT": "Logout"
+		}
+	},
+	"COMMERCIAL_USERS": {
+		"INDEX": {
+			"CREATE": " Create user",
+			"USERS": "Users"
+		},
+		"TITLE": "Users",
+		"CREATE": "Create",
+		"CREATEUSER": "Create user",
+		"EDIT": "Edit",
+		"EDITUSER": "Edit user",
+		"EMAIL": "Email: ",
+		"FORM": {
+			"LABELS": {
+				"EMAIL": "Email",
+				"USERNAME": "Username",
+				"PASSWORD": "Password",
+				"CONFIRMPASSWORD": "Confirm password"
+			},
+			"PLACEHOLDERS": {
+				"EMAIL": "Enter a email",
+				"USERNAME": "Enter a username",
+				"PASSWORD": "Enter a password",
+				"CONFIRMPASSWORD": "Enter a confirm password"
+			},
+			"VALIDATION": {
+				"EMAIL": {
+					"REQUIRED": "An Email is required.",
+					"INVALIDEMAIL": "Please enter a valid email."
+				},
+				"USERNAME": {
+					"REQUIRED": "An username is required."
+				},
+				"PASSWORD": {
+					"REQUIRED": "A password is required."
+				},
+				"CONFIRMPASSWORD": {
+					"PASSWORDMISMATCH": "The passwords must match."
+				}
+			}
+		},
+		"DETAILS": "Details",
+		"REMOVE": "TTTRemove"
 	}
 }

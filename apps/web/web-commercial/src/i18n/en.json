@@ -130,6 +130,7 @@
 		"HOSTNAME": "Hostname",
 		"SAFESUBDOMAIN": "Safe subdomain",
 		"STATE": "State",
+		"SUBMIT": "Submit",
 		"FORM": {
 			"LABELS": {
 				"NAME": "Name",
@@ -173,7 +174,6 @@
 				}
 			}
 		},
-		"SUBMIT": "Submit",
 		"TENANTUSERRELATION": "Tenant-User relation"
 	},
 	"COMMERCIAL_UI_PARTNERS": {
