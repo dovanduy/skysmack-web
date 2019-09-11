@@ -16,6 +16,7 @@
         "SAFESUBDOMAIN": "Safe subdomain",
         "STATE": "State",
         "SUBMIT": "Submit",
+        "LAUNCH": "Launch",
         "FORM": {
             "LABELS": {
                 "NAME": "Name",
