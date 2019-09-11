@@ -30,12 +30,10 @@ export class NgLodgingReservationsFieldsConfig extends FieldsConfig<LodgingReser
     }
 
     protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<LodgingReservation, number>): Field[] {
-        const depPackagePath = loadedPackage._package.dependencies[0];
-
         const fields = [
             new Field({
                 component: DateFieldComponent,
-                value: entity ? entity.object.checkIn : undefined,
+                value: entity ? entity.object.checkIn : new Date(),
                 key: 'checkIn',
                 validators: [Validators.required],
                 order: 3,
@@ -44,7 +42,11 @@ export class NgLodgingReservationsFieldsConfig extends FieldsConfig<LodgingReser
             }),
             new Field({
                 component: DateFieldComponent,
-                value: entity ? entity.object.checkOut : undefined,
+                value: entity ? entity.object.checkOut : (() => {
+                    const date = new Date();
+                    date.setDate(date.getDate() + 1);
+                    return date;
+                })(),
                 key: 'checkOut',
                 validators: [Validators.required],
                 order: 4,

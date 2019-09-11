@@ -3,7 +3,7 @@ import { Field } from '@skysmack/ng-dynamic-forms';
 import { FieldBaseComponent } from '@skysmack/portal-fields';
 import { MatDialog } from '@angular/material/dialog';
 import { LodgingTypeSelectDialogComponent } from '../lodging-type-select-dialog/lodging-type-select-dialog.component';
-import { take, tap, map } from 'rxjs/operators';
+import { take, tap, map, startWith } from 'rxjs/operators';
 import { LocalObject } from '@skysmack/framework';
 import { LodgingType, DetailedLodgingType } from '@skysmack/packages-lodgings';
 import { Observable, combineLatest } from 'rxjs';
@@ -41,11 +41,15 @@ export class LodgingTypeSelectFieldComponent extends FieldBaseComponent<Field> i
       take(1)
     ).subscribe();
   }
+
   private setDatesSelected$() {
+    const checkInControl = this.fh.form.get('checkIn');
+    const checkOutControl = this.fh.form.get('checkOut');
     this.datesSelected$ = combineLatest(
-      this.fh.form.get('checkIn').valueChanges,
-      this.fh.form.get('checkOut').valueChanges).pipe(
-        map(([checkIn, checkOut]) => checkIn && checkOut ? true : false)
-      );
+      checkInControl.valueChanges.pipe(startWith(checkInControl.value)),
+      checkOutControl.valueChanges.pipe(startWith(checkOutControl.value))
+    ).pipe(
+      map(([checkIn, checkOut]) => checkIn && checkOut ? true : false)
+    );
   }
 }
