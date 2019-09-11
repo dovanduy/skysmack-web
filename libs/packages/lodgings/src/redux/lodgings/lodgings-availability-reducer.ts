@@ -1,6 +1,6 @@
 import { StrIndex } from '@skysmack/framework';
 import { AppState, ReduxAction, sharedReducer, StateKeyMeta } from '@skysmack/redux';
-import { LODGINGS_REDUX_KEY, LODGINGS_REDUCER_KEY } from '../../constants';
+import { LODGINGS_AVAILABILITY_REDUX_KEY, LODGINGS_AVAILABILITY_REDUCER_KEY } from '../../constants';
 import { LodgingsAvailabilityActions } from './lodging-availability-actions';
 
 /**
@@ -15,8 +15,8 @@ export class LodgingsAvailabilityState {
     public availableLodgingsDaily: StrIndex<StrIndex<number[]>> = {};
 }
 
-export function lodgingsAvailabilityReducer(state = new LodgingsAvailabilityState(), action: ReduxAction, prefix: string = LODGINGS_REDUX_KEY): LodgingsAvailabilityState {
-    state = sharedReducer(state, action, new LodgingsAvailabilityState(), LODGINGS_REDUCER_KEY);
+export function lodgingsAvailabilityReducer(state = new LodgingsAvailabilityState(), action: ReduxAction, prefix: string = LODGINGS_AVAILABILITY_REDUX_KEY): LodgingsAvailabilityState {
+    state = sharedReducer(state, action, new LodgingsAvailabilityState(), LODGINGS_AVAILABILITY_REDUCER_KEY);
     const newState = Object.assign({}, state);
 
     switch (action.type) {
