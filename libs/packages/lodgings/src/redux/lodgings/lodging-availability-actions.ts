@@ -1,6 +1,6 @@
 import { ReduxAction, GetIntervalPayload, SelectedIdsMeta } from '@skysmack/redux';
 import { Store } from 'redux';
-import { LodgingsAppState } from './lodgings-reducer';
+import { LodgingsAvailabilityAppState } from './lodgings-availability-reducer';
 
 export class LodgingsAvailabilityActions {
     public static GET_AVAILABLE_LODGINGS = 'GET_AVAILABLE_LODGINGS';
@@ -11,7 +11,7 @@ export class LodgingsAvailabilityActions {
     public static GET_AVAILABLE_LODGINGS_DAILY_SUCCESS = 'GET_AVAILABLE_LODGINGS_DAILY_SUCCESS';
     public static GET_AVAILABLE_LODGINGS_DAILY_FAILURE = 'GET_AVAILABLE_LODGINGS_DAILY_FAILURE';
 
-    constructor(protected store: Store<LodgingsAppState>) { }
+    constructor(protected store: Store<LodgingsAvailabilityAppState>) { }
 
     public getAvailableLodgings(packagePath: string, start: string, end: string, selectedLodgingIds: number[]) {
         this.store.dispatch(Object.assign({}, new ReduxAction<GetIntervalPayload, SelectedIdsMeta<number>>({

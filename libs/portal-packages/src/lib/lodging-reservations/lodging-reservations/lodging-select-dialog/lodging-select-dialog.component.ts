@@ -47,9 +47,6 @@ export class LodgingSelectDialogComponent implements OnInit, OnDestroy {
       filter(x => !!x),
       take(1)
     );
-    const lodgings$ = lodgingPackage$.pipe(
-      switchMap(lodgingPackage => this.lodgingStore.get(lodgingPackage.object.path))
-    );
 
     // ########
     // Step 2: Preparing the lodging types auto complete
@@ -117,17 +114,21 @@ export class LodgingSelectDialogComponent implements OnInit, OnDestroy {
       lodgingPackage$
     ).pipe(
       filter(([selectedLodgingType, lodgingPackage]) => !!selectedLodgingType && selectedLodgingType.object && !!lodgingPackage),
+      tap(x => console.log('pre switchMap')),
       switchMap(([selectedLodgingType, lodgingPackage]) => {
         // Request lodgings
         const builder = new RSQLFilterBuilder();
         builder.column('lodgingTypeId').equalTo(selectedLodgingType.object.id);
+        console.log('requesting lodgings');
         this.lodgingActions.getPaged(lodgingPackage.object.path, new PagedQuery({ rsqlFilter: builder }));
 
         // Get lodgings
         return this.lodgingStore.get(lodgingPackage.object.path).pipe(
           filter(x => !!x && Array.isArray(x)),
           map(lodgings => lodgings.filter(lodging => lodging.object.lodgingTypeId === selectedLodgingType.object.id)),
-          filter(x => x.length > 0));
+          filter(x => x.length > 0),
+          tap(x => console.log('lodgings'))
+        );
       })
     );
 
@@ -137,6 +138,7 @@ export class LodgingSelectDialogComponent implements OnInit, OnDestroy {
       this.lodgingsAutoCompleteControl.valueChanges.pipe(startWith('')),
       allLodgingsOfType$
     ).pipe(
+      tap(x => console.log('wtf 1')),
       map(([searchInput, lodgings]) => searchInput ? this.filterLodgings(searchInput, lodgings) : lodgings.slice())
     );
 
@@ -145,12 +147,15 @@ export class LodgingSelectDialogComponent implements OnInit, OnDestroy {
       lodgingPackage$,
       allLodgingsOfType$
     ).pipe(
+      tap(x => console.log('wtf 2')),
       switchMap(([lodgingPackage, lodgingsOfType]) => {
         const checkIn = this.data.form.get('checkIn').value;
         const checkOut = this.data.form.get('checkOut').value;
         const packagePath = lodgingPackage.object.path;
-        this.lodgingsAvailabilityActions.getAvailableLodgings(packagePath, checkIn, checkOut, lodgingsOfType.map(lodging => lodging.objectIdentifier));
-        return this.lodgingsAvailabilityStore.getAvailableLodgings(packagePath, checkIn, checkOut);
+        // this.lodgingsAvailabilityActions.getAvailableLodgings(packagePath, checkIn, checkOut, lodgingsOfType.map(lodging => lodging.objectIdentifier));
+        return this.lodgingsAvailabilityStore.getAvailableLodgings(packagePath, checkIn, checkOut).pipe(
+          tap(x => console.log('available lodgings'))
+        );
       })
     );
 
@@ -159,6 +164,7 @@ export class LodgingSelectDialogComponent implements OnInit, OnDestroy {
       filteredLodgings$,
       available$
     ).pipe(
+      tap(x => console.log('wtf 3')),
       map(([lodgings, available]) => {
         return lodgings.map(lodging => {
           return new DetailedLodging({

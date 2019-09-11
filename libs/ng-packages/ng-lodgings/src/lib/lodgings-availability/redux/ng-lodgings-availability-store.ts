@@ -14,8 +14,7 @@ export class NgLodgingsAvailabilityStore {
     ) { }
 
     public getAvailableLodgings(packagePath: string, startDate: string, endDate: string): Observable<StrIndex<boolean>> {
-        return this.ngRedux.select(state => state).pipe(
-            map(state => state.lodgingsAvailability),
+        return this.ngRedux.select(state => state.lodgingsAvailability).pipe(
             map(state => state.availableLodgings[packagePath]),
             defined(),
             map(state => state[`${startDate}:${endDate}`]),
@@ -24,8 +23,7 @@ export class NgLodgingsAvailabilityStore {
     }
 
     public getAvailableLodgingsDaily(packagePath: string): Observable<StrIndex<number[]>> {
-        return this.ngRedux.select(state => state).pipe(
-            map(state => state.lodgingsAvailability),
+        return this.ngRedux.select(state => state.lodgingsAvailability).pipe(
             map(state => state.availableLodgingsDaily[packagePath]),
             defined()
         );
