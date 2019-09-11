@@ -2673,207 +2673,6 @@
 			}
 		}
 	},
-	"COMMERCIAL_TENANTS": {
-		"INDEX": {
-			"CREATE": " Opret tenant",
-			"TENANTS": "Tenant",
-			"TENANTUSERRELATION": "Tenant-Bruger relation"
-		},
-		"TITLE": "Tenant",
-		"CREATE": "Opret",
-		"CREATETENANT": "Opret Tenant",
-		"EDIT": "Rediger",
-		"EDITTENANT": "Rediger Tenant",
-		"DETAILS": "Detaljer",
-		"HOSTNAME": "Værtsnavn",
-		"SAFESUBDOMAIN": "Sikker subdomæne",
-		"STATE": "Tilstand",
-		"FORM": {
-			"LABELS": {
-				"NAME": "Navn",
-				"HOSTNAME": "Værtsnavn",
-				"SAFESUBDOMAIN": "Sikker subdomæne",
-				"STATE": "Tilstand",
-                "USERID": "Bruger",
-                "TENANTID": "Tenant",
-                "STATUS": "Status"
-			},
-			"PLACEHOLDERS": {
-				"NAME": "Indtast et navn",
-				"HOSTNAME": "Indtast a hostname",
-				"SAFESUBDOMAIN": "Indtast en sikker subdomæne",
-				"STATE": "Indtast en tilstand",
-				"USERID": "User",
-                "TENANTID": "Tenant",
-                "STATUS": "Status"
-			},
-			"VALIDATION": {
-				"NAME": {
-					"REQUIRED": "Et navn er påkrævet."
-				},
-				"HOSTNAME": {
-					"REQUIRED": "Et værtsnavn er påkrævet."
-				},
-				"SAFESUBDOMAIN": {
-					"REQUIRED": "Et sikkert subdomæne er påkrævet."
-				},
-				"STATE": {
-					"REQUIRED": "Tilstanden er påkrævet."
-				},
-                "USERID": {
-                    "REQUIRED": "Bruger er påkrævet."
-                },
-                "TENANTID": {
-                    "REQUIRED": "Tenant er påkrævet."
-                },
-                "STATUS": {
-                    "REQUIRED": "Status er påkrævet."
-                }
-			}
-		},
-		"SUBMIT": "Send",
-		"REMOVE": "Fjern",
-		"TENANTUSERRELATION": "Udlejer-bruger relation",
-	},
-	"COMMERCIAL_ACCOUNT": {
-		"INDEX": {
-			"ACCOUNT": "Konto",
-			"WELCOME": "Velkommen til skysmack",
-			"FORGOTPASSWORD": "Glemt adgangskode",
-			"CONFIRMEMAIL": "Bekræft e-mail"
-		},
-		"LOGIN": {
-			"SIGNIN": "Log ind",
-			"CREDENTIALS": "Venligst indtast dine informationer nedeunder",
-			"INCORRECT": "Den indtastede adgangskode og/eller brugernavnet er ikke korrekt. Venligst prøv igen.",
-			"FORGOTPASSWORD": "Glemt adgangskode",
-			"CONFIRMEMAIL": "Bekræft email",
-			"REGISTER": "Registrer"
-		},
-		"FORM": {
-			"LABELS": {
-				"EMAIL": "Email",
-				"PASSWORD": "Adgangskode",
-				"STAYSIGNEDIN": "Forbliv logged ind?",
-				"USERNAME": "Brugernavn",
-				"CONFIRMPASSWORD": "Bekræft adgangskode",
-				"NEWPASSWORD": "Nye adgangskode",
-				"CONFIRMNEWPASSWORD": "Bekræft den nye adgangskode"
-			},
-			"PLACEHOLDERS": {
-				"EMAIL": "Indtast email",
-				"PASSWORD": "Indtast adgangskode",
-				"CURRENTPASSWORD": "Nuværende kodeord",
-                "NEWPASSWORD": "Nyt kodeord",
-				"CONFIRMNEWPASSWORD": "Gentag nye kodeord",
-				"USERNAME": "Indtast brugernavn",
-				"CONFIRMPASSWORD": "Bekærft adgangskode"
-			},
-			"VALIDATION": {
-				"EMAIL": {
-					"REQUIRED": "Email er påkrævet.",
-					"INVALIDEMAIL": "Venligst indtast en gyldig email."
-				},
-				"PASSWORD": {
-					"REQUIRED": "Adgangskode er påkrævet."
-				},
-				"CURRENTPASSWORD": {
-					"REQUIRED": "Nuværende adgangskode er påkrævet."
-				},
-				"NEWPASSWORD": {
-					"REQUIRED": "Ny adgangskode er påkrævet."
-				},
-				"CONFIRMNEWPASSWORD": {
-					"REQUIRED": "Venligst indtast den nye adgangskode igen.",
-					"PASSWORDMISMATCH": "Adgangskoderne skal være identiske."
-				},
-				"USERNAME": {
-					"REQUIRED": "Et brugernavn er påkrævet"
-				},
-				"CONFIRMPASSWORD": {
-					"REQUIRED": "Venligst indtast den nye adgangskode igen.",
-					"PASSWORDMISMATCH": "Adgangskoderne skal være identiske."
-				}
-			}
-		},
-		"VALIDATION": {
-			"TOKEN": {
-				"REQUIRED": "Token er påkrævet"
-			},
-			"EMAIL": {
-				"REQUIRED": "Email er påkrævet.",
-				"INVALIDEMAIL": "Venligst indtast en gyldig email"
-			},
-			"CURRENTPASSWORD": {
-				"REQUIRED": "Nuværende adgangskode er påkrævet."
-			},
-			"NEWPASSWORD": {
-				"REQUIRED": "Ny adgangskode er påkrævet."
-			},
-			"CONFIRMNEWPASSWORD": {
-				"REQUIRED": "Venligst indtast den nye adgangskode igen.",
-				"PASSWORDMISMATCH": "Adgangskoderne skal være identiske."
-			}
-		},
-		"CHANGE_PASSWORD": {
-            "TITLE": "Skift kodeord",
-            "BUTTON_EDIT": "Opdater"
-        },
-		"REGISTER": {
-			"TITLE": "Titel"
-		}
-	},
-	"COMMERCIAL_UI_PARTNERS": {
-		"INDEX": {
-			"CHANGEPASSWORD": "Skift adgangskode",
-			"TENANTS": "Beboere",
-			"USERS": "Brugere",
-			"LOGOUT": "Log ud"
-		}
-	},
-	"COMMERCIAL_USERS": {
-		"INDEX": {
-			"CREATE": " Opret bruger",
-			"USERS": "Brugere"
-		},
-		"TITLE": "Brugere",
-		"CREATE": "Opret",
-		"CREATEUSER": "Opret bruger",
-		"EDIT": "Rediger",
-		"EDITUSER": "Rediger bruger",
-		"EMAIL": "Email: ",
-		"FORM": {
-			"LABELS": {
-				"EMAIL": "Email",
-				"USERNAME": "Brugernavn",
-				"PASSWORD": "Adgangskode",
-				"CONFIRMPASSWORD": "Bekræft adgangskode"
-			},
-			"PLACEHOLDERS": {
-				"EMAIL": "Indtast en email",
-				"USERNAME": "Indtast en brugernavn",
-				"PASSWORD": "Indtast en adgangskode",
-				"CONFIRMPASSWORD": "Indtast en bekræft adgangskode"
-			},
-			"VALIDATION": {
-				"EMAIL": {
-					"REQUIRED": "En Email er påkrævet.",
-					"INVALIDEMAIL": "Venligst indtast en gyldig email"
-				},
-				"USERNAME": {
-					"REQUIRED": "En brugernavn er påkrævet."
-				},
-				"CONFIRM_PASSWORD": {
-					"REQUIRED": "En bekræft adgangskode er påkrævet."
-				},
-				"CONFIRMPASSWORD": {
-					"PASSWORDMISMATCH": "Adgangskoderne skal være idententiske."
-				}
-			}
-		},
-		"DETAILS": "Detaljer",
-		"REMOVE": "Fjern"
-	},
 	"OAUTH2": {
 		"FORM": {
 			"LABELS": {
@@ -3117,16 +2916,6 @@
 			"TERMINAL_RECEIPTS": "Terminalkvitteringer",
 			"TERMINAL_PAYMENT_RECEIPTS": "Betalingkvitteringer"
 		}
-	},
-	"SETTINGS": {
-		"SETTINGS": "Indstillinger",
-		"BUTTON_SUBMIT": "Indsend",
-		"QUEUE": {
-			"ADDING": "Tilføjer settings",
-			"UPDATING": "Opdatere settings",
-			"DELETING": "Sletter settings",
-			"ERROR": "Der skete en fejl med indstillinger. Ret og prøv igen"
-		}
 	},		
 	"FIELDS": {
 		"INDEX": {
@@ -3178,5 +2967,216 @@
 			"DELETING": "Sletter {{ displayName }}",
 			"ERROR": "Der skete en fejl med {{ displayName }}. Ret og prøv igen"
 		}
+	},
+	"SETTINGS": {
+		"SETTINGS": "Indstillinger",
+		"BUTTON_SUBMIT": "Indsend",
+		"QUEUE": {
+			"ADDING": "Tilføjer settings",
+			"UPDATING": "Opdatere settings",
+			"DELETING": "Sletter settings",
+			"ERROR": "Der skete en fejl med indstillinger. Ret og prøv igen"
+		}
+	},
+	"COMMERCIAL_TENANTS": {
+		"INDEX": {
+			"CREATE": " Opret tenant",
+			"TENANTS": "Tenant",
+			"TENANTUSERRELATION": "Tenant-Bruger relation"
+		},
+		"TITLE": "Tenant",
+		"CREATE": "Opret",
+		"CREATETENANT": "Opret Tenant",
+		"EDIT": "Rediger",
+		"EDITTENANT": "Rediger Tenant",
+		"DETAILS": "Detaljer",
+		"HOSTNAME": "Værtsnavn",
+		"SAFESUBDOMAIN": "Sikker subdomæne",
+		"STATE": "Tilstand",
+		"FORM": {
+			"LABELS": {
+				"NAME": "Navn",
+				"HOSTNAME": "Værtsnavn",
+				"SAFESUBDOMAIN": "Sikker subdomæne",
+				"STATE": "Tilstand",
+				"USERID": "Bruger",
+				"TENANTID": "Tenant",
+				"STATUS": "Status"
+			},
+			"PLACEHOLDERS": {
+				"NAME": "Indtast et navn",
+				"HOSTNAME": "Indtast a hostname",
+				"SAFESUBDOMAIN": "Indtast en sikker subdomæne",
+				"STATE": "Indtast en tilstand",
+				"USERID": "User",
+				"TENANTID": "Tenant",
+				"STATUS": "Status"
+			},
+			"VALIDATION": {
+				"NAME": {
+					"REQUIRED": "Et navn er påkrævet."
+				},
+				"HOSTNAME": {
+					"REQUIRED": "Et værtsnavn er påkrævet."
+				},
+				"SAFESUBDOMAIN": {
+					"REQUIRED": "Et sikkert subdomæne er påkrævet."
+				},
+				"STATE": {
+					"REQUIRED": "Tilstanden er påkrævet."
+				},
+				"USERID": {
+					"REQUIRED": "Bruger er påkrævet."
+				},
+				"TENANTID": {
+					"REQUIRED": "Tenant er påkrævet."
+				},
+				"STATUS": {
+					"REQUIRED": "Status er påkrævet."
+				}
+			}
+		},
+		"SUBMIT": "Send",
+		"REMOVE": "Fjern",
+		"TENANTUSERRELATION": "Udlejer-bruger relation"
+	},
+	"COMMERCIAL_ACCOUNT": {
+		"INDEX": {
+			"ACCOUNT": "Konto",
+			"WELCOME": "Velkommen til skysmack",
+			"FORGOTPASSWORD": "Glemt adgangskode",
+			"CONFIRMEMAIL": "Bekræft e-mail"
+		},
+		"LOGIN": {
+			"SIGNIN": "Log ind",
+			"CREDENTIALS": "Venligst indtast dine informationer nedeunder",
+			"INCORRECT": "Den indtastede adgangskode og/eller brugernavnet er ikke korrekt. Venligst prøv igen.",
+			"FORGOTPASSWORD": "Glemt adgangskode",
+			"CONFIRMEMAIL": "Bekræft email",
+			"REGISTER": "Registrer"
+		},
+		"FORM": {
+			"LABELS": {
+				"EMAIL": "Email",
+				"PASSWORD": "Adgangskode",
+				"STAYSIGNEDIN": "Forbliv logged ind?",
+				"USERNAME": "Brugernavn",
+				"CONFIRMPASSWORD": "Bekræft adgangskode",
+				"NEWPASSWORD": "Nye adgangskode",
+				"CONFIRMNEWPASSWORD": "Bekræft den nye adgangskode"
+			},
+			"PLACEHOLDERS": {
+				"EMAIL": "Indtast email",
+				"PASSWORD": "Indtast adgangskode",
+				"CURRENTPASSWORD": "Nuværende kodeord",
+				"NEWPASSWORD": "Nyt kodeord",
+				"CONFIRMNEWPASSWORD": "Gentag nye kodeord",
+				"USERNAME": "Indtast brugernavn",
+				"CONFIRMPASSWORD": "Bekærft adgangskode"
+			},
+			"VALIDATION": {
+				"EMAIL": {
+					"REQUIRED": "Email er påkrævet.",
+					"INVALIDEMAIL": "Venligst indtast en gyldig email."
+				},
+				"PASSWORD": {
+					"REQUIRED": "Adgangskode er påkrævet."
+				},
+				"CURRENTPASSWORD": {
+					"REQUIRED": "Nuværende adgangskode er påkrævet."
+				},
+				"NEWPASSWORD": {
+					"REQUIRED": "Ny adgangskode er påkrævet."
+				},
+				"CONFIRMNEWPASSWORD": {
+					"REQUIRED": "Venligst indtast den nye adgangskode igen.",
+					"PASSWORDMISMATCH": "Adgangskoderne skal være identiske."
+				},
+				"USERNAME": {
+					"REQUIRED": "Et brugernavn er påkrævet"
+				},
+				"CONFIRMPASSWORD": {
+					"REQUIRED": "Venligst indtast den nye adgangskode igen.",
+					"PASSWORDMISMATCH": "Adgangskoderne skal være identiske."
+				}
+			}
+		},
+		"VALIDATION": {
+			"TOKEN": {
+				"REQUIRED": "Token er påkrævet"
+			},
+			"EMAIL": {
+				"REQUIRED": "Email er påkrævet.",
+				"INVALIDEMAIL": "Venligst indtast en gyldig email"
+			},
+			"CURRENTPASSWORD": {
+				"REQUIRED": "Nuværende adgangskode er påkrævet."
+			},
+			"NEWPASSWORD": {
+				"REQUIRED": "Ny adgangskode er påkrævet."
+			},
+			"CONFIRMNEWPASSWORD": {
+				"REQUIRED": "Venligst indtast den nye adgangskode igen.",
+				"PASSWORDMISMATCH": "Adgangskoderne skal være identiske."
+			}
+		},
+		"CHANGE_PASSWORD": {
+			"TITLE": "Skift kodeord",
+			"BUTTON_EDIT": "Opdater"
+		},
+		"REGISTER": {
+			"TITLE": "Titel"
+		}
+	},
+	"COMMERCIAL_UI_PARTNERS": {
+		"INDEX": {
+			"CHANGEPASSWORD": "Skift adgangskode",
+			"TENANTS": "Beboere",
+			"USERS": "Brugere",
+			"LOGOUT": "Log ud"
+		}
+	},
+	"COMMERCIAL_USERS": {
+		"INDEX": {
+			"CREATE": " Opret bruger",
+			"USERS": "Brugere"
+		},
+		"TITLE": "Brugere",
+		"CREATE": "Opret",
+		"CREATEUSER": "Opret bruger",
+		"EDIT": "Rediger",
+		"EDITUSER": "Rediger bruger",
+		"EMAIL": "Email: ",
+		"FORM": {
+			"LABELS": {
+				"EMAIL": "Email",
+				"USERNAME": "Brugernavn",
+				"PASSWORD": "Adgangskode",
+				"CONFIRMPASSWORD": "Bekræft adgangskode"
+			},
+			"PLACEHOLDERS": {
+				"EMAIL": "Indtast en email",
+				"USERNAME": "Indtast en brugernavn",
+				"PASSWORD": "Indtast en adgangskode",
+				"CONFIRMPASSWORD": "Indtast en bekræft adgangskode"
+			},
+			"VALIDATION": {
+				"EMAIL": {
+					"REQUIRED": "En Email er påkrævet.",
+					"INVALIDEMAIL": "Venligst indtast en gyldig email"
+				},
+				"USERNAME": {
+					"REQUIRED": "En brugernavn er påkrævet."
+				},
+				"CONFIRM_PASSWORD": {
+					"REQUIRED": "En bekræft adgangskode er påkrævet."
+				},
+				"CONFIRMPASSWORD": {
+					"PASSWORDMISMATCH": "Adgangskoderne skal være idententiske."
+				}
+			}
+		},
+		"DETAILS": "Detaljer",
+		"REMOVE": "Fjern"
 	}
 }
