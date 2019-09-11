@@ -31,21 +31,12 @@
           "/*.css",
           "/*.js",
           "/assets/**",
-          "/*.(eot|svg|cur|jpg|png|webp|gif|otf|ttf|woff|woff2|ani)"
+          "/*.(eot|svg|cur|jpg|png|webp|gif|otf|ttf|woff|woff2|ani|ico)"
         ]
       }
     }
   ],
   "dataGroups": [
-    {
-      "name": "app",
-      "urls": ["https://skysmack.com/*"],
-      "cacheConfig": {
-        "maxSize": "100",
-        "maxAge": "90d",
-        "strategy": "performance"
-      }
-    },
     {
       "name": "api",
       "urls": ["https://api.skysmack.com/*"],

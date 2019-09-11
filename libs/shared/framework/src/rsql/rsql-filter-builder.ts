@@ -19,7 +19,7 @@ import { RSQLConnectors } from './rsql-connectors';
  * rsql.filters.and(builder.column('blah').equalTo('123')
  *                     .or().column('test').equalTo('456').toList());
  * rsql.build();
- * // returns $where=(blah=="123" or test=="456")
+ * // returns (blah=="123" or test=="456")
  */
 export class RSQLFilterBuilder implements RSQLFilter, RSQLColumn, RSQLCompleteExpression {
   private filters: RSQLFilterList = new RSQLFilterList();
