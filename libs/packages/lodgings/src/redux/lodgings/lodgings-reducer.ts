@@ -30,12 +30,11 @@ export function lodgingsReducer(state = new LodgingsState(), action: ReduxAction
             const incoming = castedAction.payload;
             const currentState = newState.availableLodgings[castedAction.meta.stateKey] ? newState.availableLodgings[castedAction.meta.stateKey] : {};
             const currentSubState = currentState[castedAction.meta.dateKey] ? currentState[castedAction.meta.dateKey] : {};
-            const currentSubStateCloned = JSON.parse(JSON.stringify(currentSubState));
 
-            Object.keys(incoming).forEach((incomingKey) => currentSubStateCloned[incomingKey] = incoming[incomingKey]);
+            Object.keys(incoming).forEach((incomingKey) => currentSubState[incomingKey] = incoming[incomingKey]);
 
             newState.availableLodgings[castedAction.meta.stateKey] = currentState;
-            newState.availableLodgings[castedAction.meta.stateKey][castedAction.meta.dateKey] = currentSubStateCloned;
+            newState.availableLodgings[castedAction.meta.stateKey][castedAction.meta.dateKey] = currentSubState;
 
             return newState;
         }

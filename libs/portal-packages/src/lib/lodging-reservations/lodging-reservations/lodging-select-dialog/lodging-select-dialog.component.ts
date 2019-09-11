@@ -1,12 +1,12 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, OnDestroy } from '@angular/core';
 import { NgLodgingTypesActions, NgLodgingTypesStore, NgLodgingsActions, NgLodgingsStore } from '@skysmack/ng-lodgings';
 import { Router } from '@angular/router';
-import { PagedQuery, LocalObject, RSQLFilterBuilder } from '@skysmack/framework';
+import { PagedQuery, LocalObject, RSQLFilterBuilder, SubscriptionHandler } from '@skysmack/framework';
 import { LodgingType, DetailedLodging, Lodging } from '@skysmack/packages-lodgings';
-import { Observable, combineLatest } from 'rxjs';
+import { Observable, combineLatest, of } from 'rxjs';
 import { getPackageDendencyAsStream } from '@skysmack/ng-framework';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
-import { map, switchMap, take, filter, startWith } from 'rxjs/operators';
+import { map, switchMap, take, filter, startWith, tap } from 'rxjs/operators';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormControl, FormGroup } from '@angular/forms';
 
@@ -14,13 +14,14 @@ import { FormControl, FormGroup } from '@angular/forms';
   selector: 'ss-lodging-select-dialog',
   templateUrl: './lodging-select-dialog.component.html'
 })
-export class LodgingSelectDialogComponent implements OnInit {
+export class LodgingSelectDialogComponent implements OnInit, OnDestroy {
   public lodgingTypesAutoCompleteControl = new FormControl();
   public filteredLodgingTypes$: Observable<LocalObject<LodgingType, number>[]>;
 
   public lodgingsAutoCompleteControl = new FormControl();
   private selectedLodging: DetailedLodging;
   public detailedLodgings$: Observable<DetailedLodging[]>;
+  public subscriptionHandler = new SubscriptionHandler();
 
   constructor(
     private router: Router,
@@ -34,12 +35,23 @@ export class LodgingSelectDialogComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    // ########
+    // Step 1: Setting defaults
+    // ########
+
     // Prepare related lodging package
     const packagePath = this.router.url.split('/')[1];
     const lodgingPackage$ = getPackageDendencyAsStream(this.skysmackStore, packagePath, [0]).pipe(
       filter(x => !!x),
       take(1)
     );
+    const lodgings$ = lodgingPackage$.pipe(
+      switchMap(lodgingPackage => this.lodgingStore.get(lodgingPackage.object.path))
+    );
+
+    // ########
+    // Step 2: Preparing the lodging types auto complete
+    // ########
 
     // Set selected lodging type
     const preselectedLodgingTypeId = this.data.form.get('lodgingTypeId');
@@ -58,6 +70,26 @@ export class LodgingSelectDialogComponent implements OnInit {
         take(1)
       ).subscribe();
     }
+
+    // Get all lodging types
+    const allLodgingTypes$ = lodgingPackage$.pipe(
+      switchMap(lodgingPackage => {
+        this.lodgingTypesActions.getPaged(lodgingPackage.object.path, new PagedQuery());
+        return this.lodgingTypesStore.get(lodgingPackage.object.path);
+      })
+    );
+
+    // Filter lodging types based on search input
+    this.filteredLodgingTypes$ = combineLatest(
+      this.lodgingTypesAutoCompleteControl.valueChanges,
+      allLodgingTypes$
+    ).pipe(
+      map(([searchInput, lodgingTypes]) => searchInput ? this.filterLodgingTypes(searchInput, lodgingTypes) : lodgingTypes.slice())
+    );
+
+    // ########
+    // Step 3: Preparing the lodgings auto complete
+    // ########
 
     // Set selected lodging (if any)
     const preselectedLodgingId = this.data.form.get('lodgingId');
@@ -93,25 +125,10 @@ export class LodgingSelectDialogComponent implements OnInit {
         return this.lodgingStore.get(lodgingPackage.object.path).pipe(
           filter(x => !!x && Array.isArray(x)),
           map(lodgings => lodgings.filter(lodging => lodging.object.lodgingTypeId === selectedLodgingType.object.id)),
-          filter(x => x.length > 0), take(1));
+          filter(x => x.length > 0));
       })
     );
 
-    // Get all lodging types
-    const allLodgingTypes$ = lodgingPackage$.pipe(
-      switchMap(lodgingPackage => {
-        this.lodgingTypesActions.getPaged(lodgingPackage.object.path, new PagedQuery());
-        return this.lodgingTypesStore.get(lodgingPackage.object.path).pipe(filter(x => !!x), take(1));
-      })
-    );
-
-    // Filter lodging types based on search input
-    this.filteredLodgingTypes$ = combineLatest(
-      this.lodgingTypesAutoCompleteControl.valueChanges,
-      allLodgingTypes$
-    ).pipe(
-      map(([searchInput, lodgingTypes]) => searchInput ? this.filterLodgingTypes(searchInput, lodgingTypes) : lodgingTypes.slice())
-    );
 
     // Filter lodgings based on search input
     const filteredLodgings$ = combineLatest(
@@ -151,8 +168,8 @@ export class LodgingSelectDialogComponent implements OnInit {
     );
   }
 
-  public selectLodging(detailedLodging: DetailedLodging): void {
-    this.selectedLodging = detailedLodging;
+  ngOnDestroy() {
+    this.subscriptionHandler.unsubscribe();
   }
 
   public done(): void {
@@ -161,6 +178,14 @@ export class LodgingSelectDialogComponent implements OnInit {
 
   public cancel(): void {
     this.dialogRef.close();
+  }
+
+  public lodgingTypeDisplayFn(lodgingType: LocalObject<LodgingType, number>): string {
+    return lodgingType ? lodgingType.object.name : '';
+  }
+
+  public lodgingDisplayFn(detailedLoging: DetailedLodging): string {
+    return detailedLoging ? detailedLoging.lodging.object.name : '';
   }
 
   private filterLodgingTypes(searchInput: string, lodgingTypes: LocalObject<LodgingType, number>[]): LocalObject<LodgingType, number>[] {
@@ -172,12 +197,10 @@ export class LodgingSelectDialogComponent implements OnInit {
   }
 
   private filterLodgings(searchInput: string, lodgings: LocalObject<Lodging, number>[]): LocalObject<Lodging, number>[] {
-    const filterValue = searchInput.toLowerCase();
-
-    return lodgings.filter(lodging => lodging.object.name.toLowerCase().indexOf(filterValue) === 0);
-  }
-
-  public displayFn(lodgingType: LocalObject<LodgingType, number>): string {
-    return lodgingType.object.name;
+    if (typeof (searchInput) === 'string') {
+      const filterValue = searchInput.toLowerCase();
+      return lodgings.filter(lodging => lodging.object.name.toLowerCase().indexOf(filterValue) === 0);
+    }
+    return lodgings;
   }
 }
