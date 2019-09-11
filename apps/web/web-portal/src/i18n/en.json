@@ -1,56 +1,4 @@
 {
-	"EMAIL_TEMPLATES": {
-		"FORM": {
-			"LABELS": {
-				"FROM": "From",
-				"TO": "To",
-				"CC": "Cc",
-				"BCC": "Bcc",
-				"SUBJECT": "Subject",
-				"BODY": "Body"
-			},
-			"PLACEHOLDERS": {
-				"FROM": "From",
-				"TO": "To",
-				"CC": "Cc",
-				"BCC": "Bcc",
-				"SUBJECT": "Subject",
-				"BODY": "Body"
-			},
-			"VALIDATION": {}
-		},
-		"CREATE": {
-			"CREATE": "Create",
-			"BUTTON_CREATE": "Create"
-		},
-		"EDIT": {
-			"EDIT": "Edit",
-			"BUTTON_EDIT": "Update"
-		},
-		"INDEX": {
-			"CREATE": "Create",
-			"EDIT": "Edit",
-			"DELETE": "Delete",
-			"MANAGE": "Manage",
-			"ACTIONS": "Actions"
-		},
-		"QUEUE": {
-			"ADDING": "Adding {{ subject }}",
-			"UPDATING": "Updating {{ subject }}",
-			"DELETING": "Deleting {{ subject }}",
-			"ERROR": "An error occured with {{ subject }}. Correct and try again."
-		}
-	},
-	"EMAILS": {
-		"INDEX": {
-			"CREATE": "Create",
-			"EDIT": "Edit",
-			"DELETE": "Delete",
-			"TEMPLATES": "Templates",
-			"MANAGE": "Manage",
-			"ACTIONS": "Actions"
-		}
-	},
 	"ACCESS_POLICY_PERMISSIONS": {
 		"CREATE": {
 			"CREATE": "Create",
@@ -186,6 +134,58 @@
 			"UPDATING": "Updating access policy rules {{ id }}",
 			"DELETING": "Deleting access policy rules {{ id }}",
 			"ERROR": "An error occured with access policy rules {{ id }}. Correct and try again."
+		}
+	},
+	"EMAIL_TEMPLATES": {
+		"FORM": {
+			"LABELS": {
+				"FROM": "From",
+				"TO": "To",
+				"CC": "Cc",
+				"BCC": "Bcc",
+				"SUBJECT": "Subject",
+				"BODY": "Body"
+			},
+			"PLACEHOLDERS": {
+				"FROM": "From",
+				"TO": "To",
+				"CC": "Cc",
+				"BCC": "Bcc",
+				"SUBJECT": "Subject",
+				"BODY": "Body"
+			},
+			"VALIDATION": {}
+		},
+		"CREATE": {
+			"CREATE": "Create",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDIT": "Edit",
+			"BUTTON_EDIT": "Update"
+		},
+		"INDEX": {
+			"CREATE": "Create",
+			"EDIT": "Edit",
+			"DELETE": "Delete",
+			"MANAGE": "Manage",
+			"ACTIONS": "Actions"
+		},
+		"QUEUE": {
+			"ADDING": "Adding {{ subject }}",
+			"UPDATING": "Updating {{ subject }}",
+			"DELETING": "Deleting {{ subject }}",
+			"ERROR": "An error occured with {{ subject }}. Correct and try again."
+		}
+	},
+	"EMAILS": {
+		"INDEX": {
+			"CREATE": "Create",
+			"EDIT": "Edit",
+			"DELETE": "Delete",
+			"TEMPLATES": "Templates",
+			"MANAGE": "Manage",
+			"ACTIONS": "Actions"
 		}
 	},
 	"EMAILS_SMTP": {
@@ -384,46 +384,6 @@
 			"ERROR": "Error occured updating settings."
 		}
 	},
-	"ROLES": {
-		"CREATE": {
-			"CREATE_ROLE": "Create new role",
-			"BUTTON_CREATE": "Create"
-		},
-		"EDIT": {
-			"EDITING": "Edit {{ name }}",
-			"BUTTON_EDIT": "Update"
-		},
-		"INDEX": {
-			"ACTIONS": "Actions",
-			"CREATE": "Create",
-			"MANAGE": "Manage",
-			"SECURITY": "Security",
-			"SECURITY_AND_USERS": "Users and security",
-			"ROLES": "Roles",
-			"BACK": "Back",
-			"FIELDS_TITLE": "(fields)",
-			"TITLE_EXTRAS": "(roles)"
-		},
-		"FORM": {
-			"LABELS": {
-				"NAME": "Name"
-			},
-			"PLACEHOLDERS": {
-				"NAME": "Enter name"
-			},
-			"VALIDATION": {
-				"NAME": {
-					"REQUIRED": "A name is required."
-				}
-			}
-		},
-		"QUEUE": {
-			"ADDING": "Adding {{ name }}",
-			"UPDATING": "Updating {{ name }}",
-			"DELETING": "Deleting {{ name }}",
-			"ERROR": "An error occured with {{ name }}. Correct and try again."
-		}
-	},
 	"APPLICATIONS": {
 		"ENTITY_ACTION": {
 			"ROLES": "Roles"
@@ -518,6 +478,46 @@
 			"UPDATING": "Updating {{ displayName }}",
 			"DELETING": "Deleting {{ displayName }}",
 			"ERROR": "An error occured with {{ displayName }}. Correct and try again."
+		}
+	},
+	"ROLES": {
+		"CREATE": {
+			"CREATE_ROLE": "Create new role",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDITING": "Edit {{ name }}",
+			"BUTTON_EDIT": "Update"
+		},
+		"INDEX": {
+			"ACTIONS": "Actions",
+			"CREATE": "Create",
+			"MANAGE": "Manage",
+			"SECURITY": "Security",
+			"SECURITY_AND_USERS": "Users and security",
+			"ROLES": "Roles",
+			"BACK": "Back",
+			"FIELDS_TITLE": "(fields)",
+			"TITLE_EXTRAS": "(roles)"
+		},
+		"FORM": {
+			"LABELS": {
+				"NAME": "Name"
+			},
+			"PLACEHOLDERS": {
+				"NAME": "Enter name"
+			},
+			"VALIDATION": {
+				"NAME": {
+					"REQUIRED": "A name is required."
+				}
+			}
+		},
+		"QUEUE": {
+			"ADDING": "Adding {{ name }}",
+			"UPDATING": "Updating {{ name }}",
+			"DELETING": "Deleting {{ name }}",
+			"ERROR": "An error occured with {{ name }}. Correct and try again."
 		}
 	},
 	"USERS": {
@@ -2101,6 +2101,53 @@
 			"ERROR": "An error occured with the lodging reservation price change valid from/to: {{ dates }}. Correct and try again."
 		}
 	},
+	"LODGING_TYPE_PRICES": {
+		"CREATE": {
+			"CREATE": "Create",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDIT": "Edit",
+			"BUTTON_EDIT": "Update"
+		},
+		"INDEX": {
+			"ACTIONS": "Actions",
+			"CREATE": "Create",
+			"DELETE": "Delete",
+			"MANAGE": "Manage",
+			"FIELDS": "Fields",
+			"BACK": "Back"
+		},
+		"FORM": {
+			"LABELS": {
+				"CURRENCYCODE": "Currency code",
+				"RECORDID": "Lodging type",
+				"PRICE": "Price"
+			},
+			"PLACEHOLDERS": {
+				"CURRENCYCODE": "Currency code",
+				"RECORDID": "Lodging type",
+				"PRICE": "Price"
+			},
+			"VALIDATION": {
+				"CURRENCYCODE": {
+					"REQUIRED": "Currency code is required"
+				},
+				"RECORDID": {
+					"REQUIRED": "Lodging type is required"
+				},
+				"PRICE": {
+					"REQUIRED": "Price is required"
+				}
+			}
+		},
+		"QUEUE": {
+			"ADDING": "Adding the lodging type price with the price: {{ price }}",
+			"UPDATING": "Updating the lodging type price with the price: {{ price }}",
+			"DELETING": "Deleting the lodging type price with the price: {{ price }}",
+			"ERROR": "An error occured with the lodging type price with the price: {{ price }}. Correct and try again."
+		}
+	},
 	"LODGING_TYPE_RESERVATION_PRICE_CHANGES": {
 		"CREATE": {
 			"CREATE": "Create",
@@ -2201,53 +2248,6 @@
 			"UPDATING": "Updating the lodging type reservation price change valid from/to: {{ dates }}",
 			"DELETING": "Deleting the lodging type reservation price change valid from/to: {{ dates }}",
 			"ERROR": "An error occured with the lodging type reservation price change valid from/to: {{ dates }}. Correct and try again."
-		}
-	},
-	"LODGING_TYPE_PRICES": {
-		"CREATE": {
-			"CREATE": "Create",
-			"BUTTON_CREATE": "Create"
-		},
-		"EDIT": {
-			"EDIT": "Edit",
-			"BUTTON_EDIT": "Update"
-		},
-		"INDEX": {
-			"ACTIONS": "Actions",
-			"CREATE": "Create",
-			"DELETE": "Delete",
-			"MANAGE": "Manage",
-			"FIELDS": "Fields",
-			"BACK": "Back"
-		},
-		"FORM": {
-			"LABELS": {
-				"CURRENCYCODE": "Currency code",
-				"RECORDID": "Lodging type",
-				"PRICE": "Price"
-			},
-			"PLACEHOLDERS": {
-				"CURRENCYCODE": "Currency code",
-				"RECORDID": "Lodging type",
-				"PRICE": "Price"
-			},
-			"VALIDATION": {
-				"CURRENCYCODE": {
-					"REQUIRED": "Currency code is required"
-				},
-				"RECORDID": {
-					"REQUIRED": "Lodging type is required"
-				},
-				"PRICE": {
-					"REQUIRED": "Price is required"
-				}
-			}
-		},
-		"QUEUE": {
-			"ADDING": "Adding the lodging type price with the price: {{ price }}",
-			"UPDATING": "Updating the lodging type price with the price: {{ price }}",
-			"DELETING": "Deleting the lodging type price with the price: {{ price }}",
-			"ERROR": "An error occured with the lodging type price with the price: {{ price }}. Correct and try again."
 		}
 	},
 	"CONNECTIONS": {
