@@ -1066,6 +1066,99 @@
 			}
 		}
 	},
+	"LODGING_SELECT_FIELD": {
+		"SELECT_LODGING": "Vælg et rum"
+	},
+	"LODGING_TYPE_SELECT_FIELD": {
+		"SELECT_LODGING_TYPE": "Vælg en rum type"
+	},
+	"LODGING_SELECT_DIALOG": {
+		"AVAILABLE": "Tilgængeligt",
+		"UNAVAILABLE": "Utilgængelig",
+		"CANCEL": "Afbryd",
+		"DONE": "Færdig",
+		"CHOOSE_LODGING_TYPE": "Vælg en rum type",
+		"CHOOSE_LODGING": "Vælg et run"
+	},
+	"LODGING_TYPE_SELECT_DIALOG": {
+		"SELECT_LODGING_TYPE": "Vælg en rum type",
+		"AVAILABLE": " tilgængeligt",
+		"PRICE_VIA": "pricer via ",
+		"CANCEL": "Afbryd",
+		"DONE": "Færdig",
+		"CHOOSE_LODGING_TYPE": "Vælg en rum type"
+	},
+	"LODGINGS": {
+		"FORM": {
+			"LABELS": {
+				"LODGINGTYPEID": "Type",
+				"NAME": "Navn",
+				"DISABLED": "Utilgængelig",
+				"LODGINGRESERVATIONSPRICING": "Pris"
+			},
+			"PLACEHOLDERS": {
+				"LODGINGTYPEID": "Type",
+				"NAME": "Navn",
+				"DISABLED": "Utilgængelig"
+			},
+			"VALIDATION": {
+				"LODGINGTYPEID": {
+					"REQUIRED": "Type er påkrævet."
+				},
+				"NAME": {
+					"REQUIRED": "Navn er påkrævet."
+				},
+				"DISABLED": {
+					"REQUIRED": "Utilgængeligheds status er påkrævet."
+				}
+			}
+		},
+		"FIELDS": {
+			"CREATE": {
+				"ADD": "Opret nyt felt"
+			},
+			"EDIT": {
+				"EDITING": "Redigere"
+			},
+			"INDEX": {
+				"ACTIONS": "Handlinger",
+				"CREATE": "Opret nyt felt",
+				"MANAGE": "Konfigurer",
+				"OTHER": "Andre",
+				"FIELDS": "Felter",
+				"BACK": "Tilbage"
+			}
+		},
+		"CREATE": {
+			"CREATE": "Opret",
+			"BUTTON_CREATE": "Opret"
+		},
+		"EDIT": {
+			"EDIT": "Rediger",
+			"BUTTON_EDIT": "Opdater"
+		},
+		"INDEX": {
+			"ACTIONS": "Handlinger",
+			"CREATE": "Opret",
+			"SETTINGS": "Indstillinger",
+			"AVAILABILITY": "Tilgængelighed",
+			"MANAGE": "Konfigurer",
+			"FIELDS": "Felter",
+			"FIELDS_TITLE": "(Felter)",
+			"TYPES": "Typer",
+			"BACK": "Tilbage"
+		},
+		"QUEUE": {
+			"ADDING": "Tilføjer {{ name }}",
+			"UPDATING": "Opdatere {{ name }}",
+			"DELETING": "Sletter {{ name }}",
+			"ERROR": "Der opstod  en fejl ved {{ name }}. Ret og prøv igen."
+		}
+	},
+	"LODGINGS_AVAILABILITY": {
+		"SELECT_LODGINGS": "Vælg rum",
+		"TITLE": "Rum tilgængelighed"
+	},
 	"LODGING_SETTINGS": {
 		"FORM": {
 			"LABELS": {
@@ -1153,77 +1246,6 @@
 			"NEXT": "Næste",
 			"TITLE": "Rum typer tilgængelighed"
 		}
-	},
-	"LODGINGS": {
-		"FORM": {
-			"LABELS": {
-				"LODGINGTYPEID": "Type",
-				"NAME": "Navn",
-				"DISABLED": "Utilgængelig",
-				"LODGINGRESERVATIONSPRICING": "Pris"
-			},
-			"PLACEHOLDERS": {
-				"LODGINGTYPEID": "Type",
-				"NAME": "Navn",
-				"DISABLED": "Utilgængelig"
-			},
-			"VALIDATION": {
-				"LODGINGTYPEID": {
-					"REQUIRED": "Type er påkrævet."
-				},
-				"NAME": {
-					"REQUIRED": "Navn er påkrævet."
-				},
-				"DISABLED": {
-					"REQUIRED": "Utilgængeligheds status er påkrævet."
-				}
-			}
-		},
-		"FIELDS": {
-			"CREATE": {
-				"ADD": "Opret nyt felt"
-			},
-			"EDIT": {
-				"EDITING": "Redigere"
-			},
-			"INDEX": {
-				"ACTIONS": "Handlinger",
-				"CREATE": "Opret nyt felt",
-				"MANAGE": "Konfigurer",
-				"OTHER": "Andre",
-				"FIELDS": "Felter",
-				"BACK": "Tilbage"
-			}
-		},
-		"CREATE": {
-			"CREATE": "Opret",
-			"BUTTON_CREATE": "Opret"
-		},
-		"EDIT": {
-			"EDIT": "Rediger",
-			"BUTTON_EDIT": "Opdater"
-		},
-		"INDEX": {
-			"ACTIONS": "Handlinger",
-			"CREATE": "Opret",
-			"SETTINGS": "Indstillinger",
-			"AVAILABILITY": "Tilgængelighed",
-			"MANAGE": "Konfigurer",
-			"FIELDS": "Felter",
-			"FIELDS_TITLE": "(Felter)",
-			"TYPES": "Typer",
-			"BACK": "Tilbage"
-		},
-		"QUEUE": {
-			"ADDING": "Tilføjer {{ name }}",
-			"UPDATING": "Opdatere {{ name }}",
-			"DELETING": "Sletter {{ name }}",
-			"ERROR": "Der opstod  en fejl ved {{ name }}. Ret og prøv igen."
-		}
-	},
-	"LODGINGS_AVAILABILITY": {
-		"SELECT_LODGINGS": "Vælg rum",
-		"TITLE": "Rum tilgængelighed"
 	},
 	"ASSIGNMENT_TYPES": {
 		"FORM": {
@@ -1608,45 +1630,6 @@
 			"ERROR": "Der opstod en fejl ved {{ displayName }}. Ret og prøv igen."
 		}
 	},
-	"PRODUCT_TYPES": {
-		"CREATE": {
-			"CREATE": "Opret",
-			"BUTTON_CREATE": "Opret"
-		},
-		"EDIT": {
-			"EDIT": "Rediger",
-			"BUTTON_EDIT": "Opdater"
-		},
-		"INDEX": {
-			"TITLE_EXTRAS": "(typer)",
-			"ACTIONS": "Handlinger",
-			"CREATE": "Opret ny type",
-			"DELETE": "Slet",
-			"MANAGE": "Konfigurer",
-			"FIELDS": "Felter",
-			"FIELDS_TITLE": "(type felter)",
-			"BACK": "Tilbage"
-		},
-		"FORM": {
-			"LABELS": {
-				"NAME": "Navn"
-			},
-			"PLACEHOLDERS": {
-				"NAME": "Indtast navn"
-			},
-			"VALIDATION": {
-				"NAME": {
-					"REQUIRED": "Et navn er påkrævet."
-				}
-			}
-		},
-		"QUEUE": {
-			"ADDING": "Tilføjer {{ name }}",
-			"UPDATING": "Opdatere {{ name }}",
-			"DELETING": "Sletter {{ name }}",
-			"ERROR": "Der opstod  en fejl ved {{ name }}. Ret og prøv igen."
-		}
-	},
 	"PRODUCTS": {
 		"FORM": {
 			"LABELS": {
@@ -1697,6 +1680,45 @@
 				"BACK": "Tilbage",
 				"MANAGE": "Konfigurer",
 				"FIELDS": "Felter"
+			}
+		},
+		"QUEUE": {
+			"ADDING": "Tilføjer {{ name }}",
+			"UPDATING": "Opdatere {{ name }}",
+			"DELETING": "Sletter {{ name }}",
+			"ERROR": "Der opstod  en fejl ved {{ name }}. Ret og prøv igen."
+		}
+	},
+	"PRODUCT_TYPES": {
+		"CREATE": {
+			"CREATE": "Opret",
+			"BUTTON_CREATE": "Opret"
+		},
+		"EDIT": {
+			"EDIT": "Rediger",
+			"BUTTON_EDIT": "Opdater"
+		},
+		"INDEX": {
+			"TITLE_EXTRAS": "(typer)",
+			"ACTIONS": "Handlinger",
+			"CREATE": "Opret ny type",
+			"DELETE": "Slet",
+			"MANAGE": "Konfigurer",
+			"FIELDS": "Felter",
+			"FIELDS_TITLE": "(type felter)",
+			"BACK": "Tilbage"
+		},
+		"FORM": {
+			"LABELS": {
+				"NAME": "Navn"
+			},
+			"PLACEHOLDERS": {
+				"NAME": "Indtast navn"
+			},
+			"VALIDATION": {
+				"NAME": {
+					"REQUIRED": "Et navn er påkrævet."
+				}
 			}
 		},
 		"QUEUE": {

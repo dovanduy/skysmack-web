@@ -1,7 +1,7 @@
 <ng-container *ngIf="field" [formGroup]="fh.form">
 
   <button *ngIf="!selectedLodging" class="select-button" mat-raised-button color="primary" (click)="selectLodging()"
-    [disabled]="!(datesSelected$ | async)">Select lodging</button>
+    [disabled]="!(datesSelected$ | async)">{{ 'LODGING_SELECT_FIELD.SELECT_LODGING' | translate }}</button>
 
   <ng-container *ngIf="(datesSelected$ | async)">
     <button *ngIf="selectedLodging" class="select-button" mat-raised-button

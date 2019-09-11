@@ -109,5 +109,27 @@
                 }
             }
         }
+    },
+    "LODGING_SELECT_FIELD": {
+        "SELECT_LODGING": "Select lodging"
+    },
+    "LODGING_TYPE_SELECT_FIELD": {
+        "SELECT_LODGING_TYPE": "Select a lodging type"
+    },
+    "LODGING_SELECT_DIALOG": {
+        "AVAILABLE": "Available",
+        "UNAVAILABLE": "Unavailable",
+        "CANCEL": "Cancel",
+        "DONE": "Done",
+        "CHOOSE_LODGING_TYPE": "Choose a lodging type",
+        "CHOOSE_LODGING": "Choose a lodging"
+    },
+    "LODGING_TYPE_SELECT_DIALOG": {
+        "SELECT_LODGING_TYPE": "Select a lodging type",
+        "AVAILABLE": " available",
+        "PRICE_VIA": "Price via ",
+        "CANCEL": "Cancel",
+        "DONE": "Done",
+        "CHOOSE_LODGING_TYPE": "Choose a lodging type"
     }
 }
