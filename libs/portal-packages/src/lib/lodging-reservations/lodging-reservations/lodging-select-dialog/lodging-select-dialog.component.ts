@@ -1,12 +1,12 @@
-import { Component, OnInit, Input, Inject } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { NgLodgingTypesActions, NgLodgingTypesStore, NgLodgingsActions, NgLodgingsStore } from '@skysmack/ng-lodgings';
 import { Router } from '@angular/router';
 import { PagedQuery, LocalObject, RSQLFilterBuilder } from '@skysmack/framework';
-import { LodgingType, DetailedLodgingType, DetailedLodging, Lodging } from '@skysmack/packages-lodgings';
-import { Observable, combineLatest, BehaviorSubject } from 'rxjs';
+import { LodgingType, DetailedLodging, Lodging } from '@skysmack/packages-lodgings';
+import { Observable, combineLatest } from 'rxjs';
 import { getPackageDendencyAsStream } from '@skysmack/ng-framework';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
-import { map, switchMap, take, filter, startWith, tap, distinctUntilChanged } from 'rxjs/operators';
+import { map, switchMap, take, filter, startWith } from 'rxjs/operators';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormControl, FormGroup } from '@angular/forms';
 
@@ -34,13 +34,14 @@ export class LodgingSelectDialogComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    // Prepare related lodging package
     const packagePath = this.router.url.split('/')[1];
     const lodgingPackage$ = getPackageDendencyAsStream(this.skysmackStore, packagePath, [0]).pipe(
       filter(x => !!x),
       take(1)
     );
 
-    // On init, set selected lodging type
+    // Set selected lodging type
     const preselectedLodgingTypeId = this.data.form.get('lodgingTypeId');
     if (preselectedLodgingTypeId && preselectedLodgingTypeId.value) {
       lodgingPackage$.pipe(
@@ -58,7 +59,7 @@ export class LodgingSelectDialogComponent implements OnInit {
       ).subscribe();
     }
 
-    // On init, set selected lodging (if any)
+    // Set selected lodging (if any)
     const preselectedLodgingId = this.data.form.get('lodgingId');
     if (preselectedLodgingId && preselectedLodgingId.value) {
       lodgingPackage$.pipe(
@@ -76,8 +77,6 @@ export class LodgingSelectDialogComponent implements OnInit {
       ).subscribe();
     }
 
-
-    // TODO: Unsubscribe on destroy
     // If lodging type value changes, change the options in the select list
     const allLodgingsOfType$ = combineLatest(
       this.lodgingTypesAutoCompleteControl.valueChanges,
@@ -85,41 +84,26 @@ export class LodgingSelectDialogComponent implements OnInit {
     ).pipe(
       filter(([selectedLodgingType, lodgingPackage]) => !!selectedLodgingType && selectedLodgingType.object && !!lodgingPackage),
       switchMap(([selectedLodgingType, lodgingPackage]) => {
+        // Request lodgings
         const builder = new RSQLFilterBuilder();
         builder.column('lodgingTypeId').equalTo(selectedLodgingType.object.id);
         this.lodgingActions.getPaged(lodgingPackage.object.path, new PagedQuery({ rsqlFilter: builder }));
-        return this.lodgingStore.get(lodgingPackage.object.path).pipe(filter(x => !!x && Array.isArray(x)), map(lodgings => lodgings.filter(lodging => lodging.object.lodgingTypeId === selectedLodgingType.object.id)), filter(x => x.length > 0), take(1));
+
+        // Get lodgings
+        return this.lodgingStore.get(lodgingPackage.object.path).pipe(
+          filter(x => !!x && Array.isArray(x)),
+          map(lodgings => lodgings.filter(lodging => lodging.object.lodgingTypeId === selectedLodgingType.object.id)),
+          filter(x => x.length > 0), take(1));
       })
     );
 
-    //#region Lodging type defaults and selection
     // Get all lodging types
-    // let getLodgingTypesOnce = false; // Prevent multiple requests
     const allLodgingTypes$ = lodgingPackage$.pipe(
       switchMap(lodgingPackage => {
         this.lodgingTypesActions.getPaged(lodgingPackage.object.path, new PagedQuery());
         return this.lodgingTypesStore.get(lodgingPackage.object.path).pipe(filter(x => !!x), take(1));
       })
     );
-
-    // Set default lodging type
-    // let getOnce = false; // Prevent multiple requests
-    // combineLatest(
-    //   lodgingPackage$,
-    //   this.selectedLodgingType$
-    // ).pipe(
-    //   switchMap(([lodgingPackage, selectedLodgingType]) => {
-    //     const selectedLodgingTypeId = selectedLodgingType ? selectedLodgingType.object.id : this.data.form.get('lodgingTypeId').value;
-    //     if (!getOnce) {
-    //       this.lodgingTypesActions.getSingle(lodgingPackage.object.path, selectedLodgingTypeId);
-    //       getOnce = true;
-    //     }
-    //     return this.lodgingTypesStore.getSingle(lodgingPackage.object.path, selectedLodgingTypeId);
-    //   }),
-    //   filter(x => !!x),
-    //   take(1),
-    //   // map(selectedLodgingType => this.updateSelectedLodgingType(selectedLodgingType))
-    // ).subscribe();
 
     // Filter lodging types based on search input
     this.filteredLodgingTypes$ = combineLatest(
@@ -128,34 +112,6 @@ export class LodgingSelectDialogComponent implements OnInit {
     ).pipe(
       map(([searchInput, lodgingTypes]) => searchInput ? this.filterLodgingTypes(searchInput, lodgingTypes) : lodgingTypes.slice())
     );
-    // //#endregion
-
-    // //#region Lodging selection
-    // const allLodgings$ = combineLatest(
-    //   lodgingPackage$,
-    //   this.selectedLodgingType$
-    // ).pipe(
-    //   switchMap(([lodgingPackage, selectedLodgingType]) => {
-    //     if (this.isItOkayToGetLodgings) {
-    //       const builder = new RSQLFilterBuilder();
-    //       builder.column('lodgingTypeId').equalTo(selectedLodgingType.object.id);
-
-    //       this.lodgingActions.getPaged(lodgingPackage.object.path, new PagedQuery({ rsqlFilter: builder }));
-    //       this.isItOkayToGetLodgings = false;
-    //     }
-    //     return this.lodgingStore.get(lodgingPackage.object.path);
-    //   })
-    // );
-
-    // // Filter lodgings by the selected lodging type
-    // const lodgingsFilteredByType$ = combineLatest(
-    //   allLodgings$,
-    //   this.selectedLodgingType$.pipe(filter(x => !!x))
-    // ).pipe(
-    //   map(([lodgings, selectedLodgingType]) => {
-    //     return lodgings.filter(lodging => lodging.object.lodgingTypeId === selectedLodgingType.object.id)
-    //   })
-    // );
 
     // Filter lodgings based on search input
     const filteredLodgings$ = combineLatest(
@@ -165,15 +121,10 @@ export class LodgingSelectDialogComponent implements OnInit {
       map(([searchInput, lodgings]) => searchInput ? this.filterLodgings(searchInput, lodgings) : lodgings.slice())
     );
 
-    // // Get ids for all filtered lodgings
-    // const lodgingIds$ = filteredLodgings$.pipe(
-    //   map(lodgings => lodgings.map(lodging => lodging.object.id))
-    // );
-
-    // // Get availability for all filtered lodgings
+    // Get availability for all filtered lodgings
     const available$ = combineLatest(
       lodgingPackage$,
-      allLodgingsOfType$ //lodgingIds$.pipe(take(1)), // Take prevents loop
+      allLodgingsOfType$ // Take prevents loop
     ).pipe(
       switchMap(([lodgingPackage, lodgingsOfType]) => {
         const checkIn = this.data.form.get('checkIn').value;
@@ -184,7 +135,7 @@ export class LodgingSelectDialogComponent implements OnInit {
       })
     );
 
-    // // Create the detailed lodging used for selection and display
+    // Create the detailed lodging used for selection and display
     this.detailedLodgings$ = combineLatest(
       filteredLodgings$,
       available$
@@ -198,7 +149,6 @@ export class LodgingSelectDialogComponent implements OnInit {
         }).sort((a, b) => (a.available === b.available) ? 0 : a.available ? -1 : 1)
       })
     );
-    //#endregion
   }
 
   public selectLodging(detailedLodging: DetailedLodging): void {
