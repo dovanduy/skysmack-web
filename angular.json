@@ -1114,6 +1114,11 @@
                 "glob": "**/*",
                 "input": "apps/web/web-portal/src/i18n/",
                 "output": "/i18n/"
+              },
+              { 
+                "glob": "robots.txt",
+                "input": "apps/web/web-portal/src",
+                "output": "/"
               }
             ],
             "styles": [
@@ -1215,10 +1220,15 @@
             "assets": [
               "apps/web/web-commercial/src/favicon.ico",
               "apps/web/web-commercial/src/assets",
-                {
+              {
                 "glob": "**/*",
                 "input": "apps/web/web-commercial/src/i18n/",
                 "output": "/i18n/"
+              },
+              {
+                "glob": "robots.txt",
+                "input": "apps/web/web-commercial/src",
+                "output": "/"
               }
             ],
             "styles": [
@@ -1293,36 +1303,6 @@
             "jestConfig": "apps/web/web-commercial/jest.config.js",
             "tsConfig": "apps/web/web-commercial/tsconfig.spec.json",
             "setupFile": "apps/web/web-commercial/src/test-setup.ts"
-          }
-        }
-      }
-    },
-    "web-commercial-e2e": {
-      "root": "apps/web/web-commercial-e2e",
-      "sourceRoot": "apps/web/web-commercial-e2e/src",
-      "projectType": "application",
-      "architect": {
-        "e2e": {
-          "builder": "@nrwl/cypress:cypress",
-          "options": {
-            "cypressConfig": "apps/web/web-commercial-e2e/cypress.json",
-            "tsConfig": "apps/web/web-commercial-e2e/tsconfig.e2e.json",
-            "devServerTarget": "web-commercial:serve"
-          },
-          "configurations": {
-            "production": {
-              "devServerTarget": "web-commercial:serve:production"
-            }
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": "apps/web/web-commercial-e2e/tsconfig.e2e.json",
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/web/web-commercial-e2e/**"
-            ]
           }
         }
       }

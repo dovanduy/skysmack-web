@@ -2,7 +2,7 @@ import { Record, StrIndex, LocalPageTypes, LocalObject, hasValue, dictionaryToAr
 import { RecordStore, RecordState } from '@skysmack/redux';
 import { Observable, combineLatest, from } from 'rxjs';
 import { NgRedux } from '@angular-redux/store';
-import { map, mergeMap, filter } from 'rxjs/operators';
+import { map, mergeMap, filter, tap } from 'rxjs/operators';
 import { getPackageDendencyAsStream } from '../helpers/ng-helpers';
 import { SkysmackStore } from './skysmack-store';
 
@@ -112,6 +112,7 @@ export abstract class NgRecordStore<TState, TRecord extends Record<TKey>, TKey> 
         );
     }
 
+    // TODO: Make this work with composite keys
     protected getSingleRecord(packagePath: string, id: TKey): Observable<LocalObject<TRecord, TKey>> {
         return this.get(packagePath).pipe(
             map(records => records.find(record => record.object[this.identifier].toString() === id.toString())),
@@ -119,6 +120,7 @@ export abstract class NgRecordStore<TState, TRecord extends Record<TKey>, TKey> 
         );
     }
 
+    // TODO: Make this work with composite keys
     protected mapRecordsDependencies(records: LocalObject<any, any>[], dependencies: LocalObject<any, any>[], relationIdSelector: string, relationSelector: string): LocalObject<any, any>[] {
         for (let index = 0; index < records.length; index++) {
             const record = records[index];

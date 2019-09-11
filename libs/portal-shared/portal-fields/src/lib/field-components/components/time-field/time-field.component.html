@@ -1,7 +1,7 @@
 <ng-container *ngIf="field" [formGroup]="fh.form">
   <mat-form-field>
     <input matInput #timeInput type="time" [formControlName]="fieldKey" [placeholder]="field.placeholder | translate"
-      [name]="field.label">
+      [name]="field.label" [(value)]="time" (input)="onTimeChanged($event)">
     <mat-error *ngIf="fh.formErrors[fieldKey]">
       {{ fh.formErrors[fieldKey] | translate }}
     </mat-error>

@@ -7,7 +7,7 @@ import { commercialDatabasesComponents } from './components/commercial-databases
 import { DynamicFormsModule } from '@skysmack/portal-dynamic-forms';
 import { PortalFieldsModule } from '@skysmack/portal-fields';
 import { NgDynamicFormsModule } from '@skysmack/ng-dynamic-forms';
-import { NgTranslationModule } from '@skysmack/ng-translation';
+import { NgTranslationModule, CommercialHttpLoaderFactory } from '@skysmack/ng-translation';
 import { CommercialUiPartnersModule, NgMenuProviders } from '@skysmack/commercial-ui-partners';
 import { NgCommercialDatabasesMenuProvider } from './ng-commercial-databases-menu-provider';
 import { MatListModule } from '@angular/material/list';
@@ -31,7 +31,7 @@ const material = [
     NgDynamicFormsModule,
     DynamicFormsModule,
     PortalFieldsModule,
-    NgTranslationModule,
+    NgTranslationModule.forRoot(CommercialHttpLoaderFactory),
     CommercialUiPartnersModule,
     CommercialDatabasesRoutingModule,
     ...material

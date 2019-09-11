@@ -14,8 +14,6 @@ export class PackagesActions extends RecordActionsBase<PackagesAppState, Store<P
     public static EDIT_PACKAGE_PATH_SUCCESS = 'EDIT_PACKAGE_PATH_SUCCESS';
     public static EDIT_PACKAGE_PATH_FAILURE = 'EDIT_PACKAGE_PATH_FAILURE';
 
-    protected identifier = 'path';
-
     constructor(protected store: Store<PackagesAppState>) { super(store, PACKAGES_REDUX_KEY, PACKAGES_ADDITIONAL_PATHS); }
 
     public getAvailablePackages(packagePath: string) {

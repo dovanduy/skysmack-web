@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { HttpClientModule } from '@angular/common/http';
 import { commercialUiPartnersComponents } from './components/commercial-ui-partners-components';
-import { NgTranslationModule, LanguageService } from '@skysmack/ng-translation';
+import { NgTranslationModule, LanguageService, CommercialHttpLoaderFactory } from '@skysmack/ng-translation';
 import { RouterModule } from '@angular/router';
 import { NgMenuProviders } from './navigation/ng-menu-providers';
 import { NgUiMenuProvider } from './ng-ui-menu-provider';
@@ -19,7 +19,7 @@ import { directives } from './directives/directives';
     RouterModule,
     NgFrameworkModule,
     NgUIModule,
-    NgTranslationModule,
+    NgTranslationModule.forRoot(CommercialHttpLoaderFactory),
   ],
   entryComponents: [
     RemoveDialog

@@ -12,15 +12,15 @@ export class NgAccessPolicyRolesStore extends NgRecordStore<AccessPolicyRolesApp
         new DependencyOptions({
             relationSelector: 'rule',
             relationIdSelector: 'ruleId',
-            stateSelector: ''
+            stateSelector: ACCESS_POLICY_ROLES_REDUCER_KEY
         }),
         new DependencyOptions({
             relationSelector: 'role',
             relationIdSelector: 'roleId',
-            stateSelector: ''
+            stateSelector: ACCESS_POLICY_ROLES_REDUCER_KEY
         })
     ];
-    
+
     constructor(
         protected ngRedux: NgRedux<AccessPolicyRolesAppState>,
         protected skysmackStore: NgSkysmackStore

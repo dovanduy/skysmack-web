@@ -7,13 +7,13 @@ import { CommercialOpenApiRoutingModule } from './commercial-open-api-routing.mo
 import { CommercialUiPartnersModule, NgMenuProviders } from '@skysmack/commercial-ui-partners';
 import { CommercialSwaggerUiComponent } from './commercial-swagger-ui/commercial-swagger-ui.component';
 import { NgCommercialOpenApiMenuProvider } from './ng-commercial-open-api-menu-provider';
-import { NgTranslationModule, LanguageService } from '@skysmack/ng-translation';
+import { NgTranslationModule, LanguageService, CommercialHttpLoaderFactory } from '@skysmack/ng-translation';
 
 @NgModule({
   imports: [
     CommonModule,
     HttpClientModule,
-    NgTranslationModule,
+    NgTranslationModule.forRoot(CommercialHttpLoaderFactory),
     CommercialUiPartnersModule,
     CommercialOpenApiRoutingModule
   ],
