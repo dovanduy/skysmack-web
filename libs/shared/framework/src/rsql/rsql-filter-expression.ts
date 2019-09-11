@@ -1,18 +1,22 @@
 import { Operators } from './rsql-filter-operators';
+import { RSQLFilterExpressionOptions } from './rsql-filter-expression-options'; 
 
 export class RSQLFilterExpression {
   public field: string;
   public operator: Operators;
   public value: string | Array<string | number | boolean> | Date | number | boolean | undefined;
+  public options: RSQLFilterExpressionOptions;
 
   constructor(
     field: string,
     operator: Operators,
-    value: string | Array<string | number | boolean> | Date | number | boolean | undefined
+    value: string | Array<string | number | boolean> | Date | number | boolean | undefined,
+    options: RSQLFilterExpressionOptions = { includeTimestamp: false }
   ) {
     this.field = field;
     this.operator = operator;
     this.value = value;
+    this.options = options;
   }
 
   /**
@@ -22,7 +26,7 @@ export class RSQLFilterExpression {
     let filterString = '';
     let shouldQuote = false;
     // convert the value into an appropriate string.
-    let valueString: any = '';
+    let valueString: string = '';
     if (typeof this.value === 'string') {
       valueString = this.value;
       valueString = valueString.replace(/\\/g, '\\\\').replace(/"/g, '\\"');
@@ -40,44 +44,20 @@ export class RSQLFilterExpression {
           return i;
         } else if (typeof i === 'string') {
           const val = (i as string).replace(/\\/g, '\\\\').replace(/"/g, '\\"');
-          return this.quote(val);
+          return quote(val);
         } else {
-          return this.quote(i as any) as any;
+          return quote(i);
         }
       });
       valueString = quotedValues.join(',');
     }
     if (this.value instanceof Date) {
-      const year = this.value.getFullYear();
-      const month = this.value.getMonth() + 1;
-      const date = this.value.getDate();
-
-      // Ensure that all year values have four digits, and that month and
-      // date values have two digits, by adding leading zeros as necessary
-      let yearString = String(year);
-      let monthString = String(month);
-      let dateString = String(date);
-
-      if (year === 0) {
-        yearString = '0000';
-      } else if (year < 10) {
-        yearString = `000${yearString}`;
-      } else if (year < 100) {
-        yearString = `00${yearString}`;
-      } else if (year < 1000) {
-        yearString = `0${yearString}`;
+      if (this.options.includeTimestamp) {
+        valueString = this.buildDateString(this.value, true) + this.buildTimestamp(this.value);
+      } else {
+        valueString = this.buildDateString(this.value, false);
       }
 
-      if (month < 10) {
-        monthString = `0${monthString}`;
-      }
-
-      if (date < 10) {
-        dateString = `0${dateString}`;
-      }
-
-      // TODO: Remove T:00 etc. part when the backend can recieve pure dates (e.g. dates without the time part).
-      valueString = [yearString, monthString, dateString].join('-') + 'T00:00:00';
       shouldQuote = true;
     }
 
@@ -88,13 +68,13 @@ export class RSQLFilterExpression {
     filterString += this.field;
     switch (this.operator) {
       case Operators.Equal:
-        filterString = `${filterString}=in=${shouldQuote ? this.quote(valueString) : valueString}`;
+        filterString = `${filterString}=in=${shouldQuote ? quote(valueString) : valueString}`;
         break;
       case Operators.NotEqual:
-        filterString = `${filterString}!=${shouldQuote ? this.quote(valueString) : valueString}`;
+        filterString = `${filterString}!=${shouldQuote ? quote(valueString) : valueString}`;
         break;
       case Operators.Like:
-        filterString = `${filterString}==${this.quote(valueString)}`;
+        filterString = `${filterString}==${quote(valueString)}`;
         break;
       case Operators.GreaterThan:
         filterString = `${filterString}>${valueString}`;
@@ -109,16 +89,16 @@ export class RSQLFilterExpression {
         filterString = `${filterString}<=${valueString}`
         break;
       case Operators.StartsWith:
-        filterString = `${filterString}==${this.quote(`${valueString}*`)}`
+        filterString = `${filterString}==${quote(`${valueString}*`)}`
         break;
       case Operators.EndsWith:
-        filterString = `${filterString}==${this.quote(`*${valueString}`)}`
+        filterString = `${filterString}==${quote(`*${valueString}`)}`
         break;
       case Operators.Contains:
-        filterString = `${filterString}==${this.quote(`*${valueString}*`)}`
+        filterString = `${filterString}==${quote(`*${valueString}*`)}`
         break;
       case Operators.DoesNotContain:
-        filterString = `${filterString}!=${this.quote(`*${valueString}*`)}`
+        filterString = `${filterString}!=${quote(`*${valueString}*`)}`
         break;
       case Operators.In:
         filterString = `${filterString}=in=(${valueString})`
@@ -142,8 +122,62 @@ export class RSQLFilterExpression {
 
     return filterString;
   }
+  
+  private buildDateString(dateObject: Date, useUTC: boolean): string {
+    let year: number;
+    let month: number;
+    let date: number;
 
-  private quote(value: string | boolean): string {
-    return `${value}`;
+    if (useUTC) {
+      year = dateObject.getUTCFullYear();
+      month = dateObject.getUTCMonth() + 1;
+      date = dateObject.getUTCDate();
+    } else {
+      year = dateObject.getFullYear();
+      month = dateObject.getMonth() + 1;
+      date = dateObject.getDate();
+    }
+
+    const yearString = this.numberToString(year, 4);
+    const monthString = this.numberToString(month, 2);
+    const dateString = this.numberToString(date, 2);
+
+    return [yearString, monthString, dateString].join('-');
   }
+
+  /**
+   * Returns a timestamp in the ISO 8601 format for the given Date object, using UTC values (i.e. 'T'HH:mm:ss.SSS'Z').
+   */
+  private buildTimestamp(dateObject: Date): string {
+    const hours = dateObject.getUTCHours();
+    const minutes = dateObject.getUTCMinutes();
+    const seconds = dateObject.getUTCSeconds();
+    const millis = dateObject.getUTCMilliseconds();
+
+    const hoursString = this.numberToString(hours, 2);
+    const minutesString = this.numberToString(minutes, 2);
+    const secondsString = this.numberToString(seconds, 2);
+    const millisString = this.numberToString(millis, 3);
+
+    return 'T' + [hoursString, minutesString, secondsString].join(':') + '.' + millisString + 'Z';
+  }
+
+  /**
+   * Returns a string of the given number, ensuring the total number of digits
+   * is as specified by left-padding with zeros if necessary.
+   * e.g. numberToString(8, 3) === '008'
+   */
+  private numberToString(num: number, digitCount: number): string {
+    let s = String(num);
+
+    while (s.length < digitCount) {
+      s = '0' + s;
+    }
+
+    return s;
+  }
+}
+
+export function quote(value: string | boolean): string {
+  return `${value}`;
 }

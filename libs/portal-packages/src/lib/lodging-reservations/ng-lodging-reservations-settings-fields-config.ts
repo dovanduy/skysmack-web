@@ -5,7 +5,7 @@ import { LoadedPackage } from '@skysmack/ng-framework';
 import { LodgingReservationsSettings, LODGING_RESERVATIONS_AREA_KEY, LODGING_RESERVATIONS_ADDITIONAL_PATHS } from '@skysmack/packages-lodging-reservations';
 import { NgLodgingReservationsSettingsValidation } from '@skysmack/ng-lodging-reservations';
 import { FieldsConfig, FieldProviders } from '@skysmack/ng-fields';
-import { IntFieldComponent } from '@skysmack/portal-fields';
+import { IntFieldComponent, TimeFieldComponent } from '@skysmack/portal-fields';
 
 @Injectable({ providedIn: 'root' })
 export class NgLodgingReservationsSettingsFieldsConfig extends FieldsConfig<LodgingReservationsSettings, unknown> {
@@ -18,20 +18,34 @@ export class NgLodgingReservationsSettingsFieldsConfig extends FieldsConfig<Lodg
     }
 
     protected getEntityFields(loadedPackage: LoadedPackage, settings?: LocalObject<LodgingReservationsSettings, unknown>): Field[] {
-        const fields = [
+        const fields = [            
+            new Field({
+                component: TimeFieldComponent,
+                value: settings ? settings.object.checkIn : undefined,
+                key: 'checkIn',
+                sortable: true,
+                order: 1
+            }),            
+            new Field({
+                component: TimeFieldComponent,
+                value: settings ? settings.object.checkOut : undefined,
+                key: 'checkOut',
+                sortable: true,
+                order: 2
+            }),
             new Field({
                 component: IntFieldComponent,
                 value: settings ? settings.object.earliestCheckIn : undefined,
                 key: 'earliestCheckIn',
                 sortable: true,
-                order: 1
+                order: 3
             }),
             new Field({
                 component: IntFieldComponent,
                 value: settings ? settings.object.latestCheckOut : undefined,
                 key: 'latestCheckOut',
                 sortable: true,
-                order: 2
+                order: 4
             })
         ];
 
