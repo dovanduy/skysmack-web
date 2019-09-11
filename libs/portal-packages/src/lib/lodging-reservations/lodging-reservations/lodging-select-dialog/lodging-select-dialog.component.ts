@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject, OnDestroy } from '@angular/core';
-import { NgLodgingTypesActions, NgLodgingTypesStore, NgLodgingsActions, NgLodgingsStore } from '@skysmack/ng-lodgings';
+import { NgLodgingTypesActions, NgLodgingTypesStore, NgLodgingsActions, NgLodgingsStore, NgLodgingsAvailabilityActions, NgLodgingsAvailabilityStore } from '@skysmack/ng-lodgings';
 import { Router } from '@angular/router';
 import { PagedQuery, LocalObject, RSQLFilterBuilder, SubscriptionHandler } from '@skysmack/framework';
 import { LodgingType, DetailedLodging, Lodging } from '@skysmack/packages-lodgings';
@@ -28,6 +28,8 @@ export class LodgingSelectDialogComponent implements OnInit, OnDestroy {
     private skysmackStore: NgSkysmackStore,
     private lodgingActions: NgLodgingsActions,
     private lodgingStore: NgLodgingsStore,
+    private lodgingsAvailabilityActions: NgLodgingsAvailabilityActions,
+    private lodgingsAvailabilityStore: NgLodgingsAvailabilityStore,
     private lodgingTypesActions: NgLodgingTypesActions,
     private lodgingTypesStore: NgLodgingTypesStore,
     private dialogRef: MatDialogRef<LodgingSelectDialogComponent>,
@@ -141,14 +143,14 @@ export class LodgingSelectDialogComponent implements OnInit, OnDestroy {
     // Get availability for all filtered lodgings
     const available$ = combineLatest(
       lodgingPackage$,
-      allLodgingsOfType$ // Take prevents loop
+      allLodgingsOfType$
     ).pipe(
       switchMap(([lodgingPackage, lodgingsOfType]) => {
         const checkIn = this.data.form.get('checkIn').value;
         const checkOut = this.data.form.get('checkOut').value;
         const packagePath = lodgingPackage.object.path;
-        this.lodgingActions.getAvailableLodgings(packagePath, checkIn, checkOut, lodgingsOfType.map(lodging => lodging.objectIdentifier));
-        return this.lodgingStore.getAvailableLodgings(packagePath, checkIn, checkOut);
+        this.lodgingsAvailabilityActions.getAvailableLodgings(packagePath, checkIn, checkOut, lodgingsOfType.map(lodging => lodging.objectIdentifier));
+        return this.lodgingsAvailabilityStore.getAvailableLodgings(packagePath, checkIn, checkOut);
       })
     );
 
