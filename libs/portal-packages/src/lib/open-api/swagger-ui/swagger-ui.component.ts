@@ -5,6 +5,8 @@ import { API_DOMAIN_INJECTOR_TOKEN, ApiDomain } from '@skysmack/framework';
 import { Router } from '@angular/router';
 import { NgAuthenticationStore } from '@skysmack/ng-framework';
 import { map, take } from 'rxjs/operators';
+import { MatDialog } from '@angular/material/dialog';
+import { SettingsComponent } from '@skysmack/portal-settings';
 
 @Component({
   selector: 'ss-swagger-ui',
@@ -18,6 +20,7 @@ export class SwaggerUiComponent implements AfterViewInit {
   constructor(private el: ElementRef,
     private router: Router,
     private authenticationStore: NgAuthenticationStore,
+    private dialog: MatDialog,
     @Inject(API_DOMAIN_INJECTOR_TOKEN) private apiDomain: ApiDomain) {
   }
 
@@ -42,5 +45,9 @@ export class SwaggerUiComponent implements AfterViewInit {
       }),
       take(1)
     ).subscribe();
+  }
+
+  settings() {
+    this.dialog.open(SettingsComponent);
   }
 }

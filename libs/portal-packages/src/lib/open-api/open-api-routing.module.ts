@@ -9,14 +9,17 @@ import { RouteData } from '@skysmack/framework';
   imports: [RouterModule.forChild([
     {
       path: '', component: DefaultComponent, children: [
-        { path: '', component: SwaggerUiComponent }
-      ]
-    },
-    {
-      path: 'settings/document', component: SettingsComponent, pathMatch: 'full', data: {
-        fieldsConfigToken: 'NgOpenApiDocumentSettingsFieldsConfig'
-      } as RouteData
-    },
+        {
+          path: '', component: SwaggerUiComponent, children: [
+            {
+              path: 'settings/document', component: SettingsComponent, pathMatch: 'full', data: {
+                fieldsConfigToken: 'NgOpenApiDocumentSettingsFieldsConfig'
+              } as RouteData
+            }
+          ]
+        },
+      ],
+    }
   ])],
   exports: [RouterModule]
 })
