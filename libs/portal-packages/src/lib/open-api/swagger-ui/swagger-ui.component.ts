@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, ElementRef, ViewEncapsulation, Inject} from '@angular/core';
+import { AfterViewInit, Component, ElementRef, ViewEncapsulation, Inject } from '@angular/core';
 
 import SwaggerUI from 'swagger-ui';
 import { API_DOMAIN_INJECTOR_TOKEN, ApiDomain } from '@skysmack/framework';
@@ -9,8 +9,8 @@ import { map, take } from 'rxjs/operators';
 @Component({
   selector: 'ss-swagger-ui',
   templateUrl: './swagger-ui.component.html',
-   styleUrls: [ 
-    'swagger-ui.component.scss' ],
+  styleUrls: [
+    'swagger-ui.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
 export class SwaggerUiComponent implements AfterViewInit {
@@ -33,7 +33,7 @@ export class SwaggerUiComponent implements AfterViewInit {
             SwaggerUI.presets.apis
           ],
           requestInterceptor: (req) => {
-            if(req.loadSpec && currentUser && currentUser.access_token.length) {
+            if (req.loadSpec && currentUser && currentUser.access_token.length) {
               req.headers.Authorization = "Bearer " + currentUser.access_token
             }
             return req
