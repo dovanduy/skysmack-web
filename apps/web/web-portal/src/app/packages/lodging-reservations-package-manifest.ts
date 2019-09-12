@@ -6,7 +6,7 @@ import { Route } from '@angular/router';
 export class LodgingReservationsPackageManifest extends LodgingReservationsType implements PackageManifest {
     public static modulePath = './../packages/modules/lodging_reservations_wrapper.module#LodgingReservationsWrapperModule'
     public icon = 'style';
-    public menuLocation = '';
+    public menuLocation = 'main';
     public modulePath = LodgingReservationsPackageManifest.modulePath;
 }
 

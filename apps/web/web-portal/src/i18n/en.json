@@ -2532,7 +2532,8 @@
 	"COMMERCIAL_TENANTS": {
 		"INDEX": {
 			"CREATE": "Create tenant",
-			"TENANTS": "Tenants"
+			"TENANTS": "Tenants",
+			"TENANTUSERRELATION": "Tenant-User relation"
 		},
 		"TITLE": "Tenants",
 		"CREATE": "Create",
