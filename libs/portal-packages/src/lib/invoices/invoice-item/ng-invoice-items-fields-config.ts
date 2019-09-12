@@ -72,9 +72,9 @@ export class NgInvoiceItemsFieldsConfig extends DocumentFieldsConfig<InvoiceItem
 
             new Field({
                 component: IntFieldComponent,
-                value: entity ? entity.object.unitDiscount : undefined,
-                key: 'unitDiscount',
-                validators: [Validators.required],
+                value: entity ? entity.object.unitChange : undefined,
+                key: 'unitChange',
+                validators: [],
                 order: 5,
                 showColumn: true,
                 sortable: true
@@ -82,9 +82,9 @@ export class NgInvoiceItemsFieldsConfig extends DocumentFieldsConfig<InvoiceItem
 
             new Field({
                 component: IntFieldComponent,
-                value: entity ? entity.object.unitTax : undefined,
-                key: 'unitTax',
-                validators: [Validators.required],
+                value: entity ? entity.object.taxPercent : undefined,
+                key: 'taxPercent',
+                validators: [],
                 order: 6,
                 showColumn: true,
                 sortable: true

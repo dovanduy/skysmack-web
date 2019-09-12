@@ -6,8 +6,8 @@
                 "ORDER": "Order",
                 "UNITS": "Units",
                 "UNITPRICE": "Unit price",
-                "UNITDISCOUNT": "Unit discount",
-                "UNITTAX": "Unit tax",
+                "UNITCHANGE": "Unit changeFi",
+                "TAXPERCENT": "Tax percentage",
                 "INVENTORYID": "Inventory ID"
             },
             "PLACEHOLDERS": {
@@ -15,8 +15,8 @@
                 "ORDER": "Order",
                 "UNITS": "Units",
                 "UNITPRICE": "Unit price",
-                "UNITDISCOUNT": "Unit discount",
-                "UNITTAX": "Unit tax",
+                "UNITCHANGE": "Unit changeFi",
+                "TAXPERCENT": "Tax percentage",
                 "INVENTORYID": "Inventory ID"
             },
             "VALIDATION": {
@@ -32,11 +32,11 @@
                 "UNITPRICE": {
                     "REQUIRED": "Unit price is required"
                 },
-                "UNITDISCOUNT": {
-                    "REQUIRED": "Unit discount is required"
+                "UNITCHANGE": {
+                    "REQUIRED": "Unit changeFi is required"
                 },
-                "UNITTAX": {
-                    "REQUIRED": "Unit tax is required"
+                "TAXPERCENT": {
+                    "REQUIRED": "Tax percentage is required"
                 },
                 "INVENTORYID": {
                     "REQUIRED": "Inventory ID is required"
