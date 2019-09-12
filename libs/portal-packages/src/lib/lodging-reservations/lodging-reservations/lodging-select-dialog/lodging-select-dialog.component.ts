@@ -6,7 +6,7 @@ import { LodgingType, DetailedLodging, Lodging } from '@skysmack/packages-lodgin
 import { Observable, combineLatest, of } from 'rxjs';
 import { getPackageDendencyAsStream } from '@skysmack/ng-framework';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
-import { map, switchMap, take, filter, startWith, tap } from 'rxjs/operators';
+import { map, switchMap, take, filter, startWith, tap, distinctUntilChanged } from 'rxjs/operators';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormControl, FormGroup } from '@angular/forms';
 
@@ -55,25 +55,32 @@ export class LodgingSelectDialogComponent implements OnInit, OnDestroy {
     // Set selected lodging type
     const preselectedLodgingTypeId = this.data.form.get('lodgingTypeId');
     if (preselectedLodgingTypeId && preselectedLodgingTypeId.value) {
-      lodgingPackage$.pipe(
-        switchMap(lodgingPackage => {
-          return this.lodgingTypesStore.getSingle(lodgingPackage.object.path, preselectedLodgingTypeId.value);
-        }
-        ),
-        filter(x => !!x),
-        map(
-          lodgingType => {
-            this.lodgingTypesAutoCompleteControl.setValue(lodgingType);
-          }
-        ),
+      this.subscriptionHandler.register(lodgingPackage$.pipe(
+        map(lodgingPackage => {
+          this.subscriptionHandler.register(this.lodgingTypesStore.getSingle(lodgingPackage.object.path, preselectedLodgingTypeId.value).pipe(
+            filter(x => !!x),
+            map(
+              lodgingType => {
+                this.lodgingTypesAutoCompleteControl.setValue(lodgingType);
+              }
+            ),
+            take(1)
+          ).subscribe());
+        }),        
         take(1)
-      ).subscribe();
+      ).subscribe());
     }
+    
+    // Get all lodging types
+    this.subscriptionHandler.register(lodgingPackage$.pipe(
+      map(lodgingPackage => {
+        this.lodgingTypesActions.getPaged(lodgingPackage.object.path, new PagedQuery());
+      })
+    ).subscribe());
 
     // Get all lodging types
     const allLodgingTypes$ = lodgingPackage$.pipe(
       switchMap(lodgingPackage => {
-        this.lodgingTypesActions.getPaged(lodgingPackage.object.path, new PagedQuery());
         return this.lodgingTypesStore.get(lodgingPackage.object.path);
       })
     );
@@ -83,7 +90,7 @@ export class LodgingSelectDialogComponent implements OnInit, OnDestroy {
       this.lodgingTypesAutoCompleteControl.valueChanges,
       allLodgingTypes$
     ).pipe(
-      map(([searchInput, lodgingTypes]) => searchInput ? this.filterLodgingTypes(searchInput, lodgingTypes) : lodgingTypes.slice())
+      map(([searchInput, lodgingTypes]) => searchInput ? this.filterLodgingTypes(searchInput, lodgingTypes) : lodgingTypes)
     );
 
     // ########
@@ -93,35 +100,45 @@ export class LodgingSelectDialogComponent implements OnInit, OnDestroy {
     // Set selected lodging (if any)
     const preselectedLodgingId = this.data.form.get('lodgingId');
     if (preselectedLodgingId && preselectedLodgingId.value) {
-      lodgingPackage$.pipe(
-        switchMap(lodgingPackage => {
-          return this.lodgingStore.getSingle(lodgingPackage.object.path, preselectedLodgingId.value);
+      this.subscriptionHandler.register(lodgingPackage$.pipe(
+        map(lodgingPackage => {
+          this.subscriptionHandler.register(this.lodgingStore.getSingle(lodgingPackage.object.path, preselectedLodgingId.value).pipe(
+            filter(x => !!x),
+            map(lodgingType => {
+              console.log('set lodging type');
+              this.lodgingsAutoCompleteControl.setValue(lodgingType)
+            }),
+            take(1)
+          ).subscribe())
         }
-        ),
-        filter(x => !!x),
-        map(
-          lodgingType => {
-            this.lodgingsAutoCompleteControl.setValue(lodgingType);
-          }
-        ),
-        take(1)
-      ).subscribe();
+        )
+      ).subscribe());
     }
+
+    // If lodging type value changes, change the options in the select list
+    this.subscriptionHandler.register(combineLatest(
+      this.lodgingTypesAutoCompleteControl.valueChanges,
+      lodgingPackage$
+    ).pipe(
+      filter(([selectedLodgingType, lodgingPackage]) => !!selectedLodgingType && selectedLodgingType.object),
+      tap(x => console.log('pre switchMap')),
+      map(([selectedLodgingType, lodgingPackage]) => {
+        // Request lodgings
+        const builder = new RSQLFilterBuilder();
+        builder.column('lodgingTypeId').equalTo(selectedLodgingType.object.id);
+        console.log('requesting lodgings');
+        this.lodgingActions.getPaged(lodgingPackage.object.path, new PagedQuery({ rsqlFilter: builder }));
+      })
+    ).subscribe());
 
     // If lodging type value changes, change the options in the select list
     const allLodgingsOfType$ = combineLatest(
       this.lodgingTypesAutoCompleteControl.valueChanges,
       lodgingPackage$
     ).pipe(
-      filter(([selectedLodgingType, lodgingPackage]) => !!selectedLodgingType && selectedLodgingType.object && !!lodgingPackage),
+      filter(([selectedLodgingType, lodgingPackage]) => !!selectedLodgingType && selectedLodgingType.object),
       tap(x => console.log('pre switchMap')),
       switchMap(([selectedLodgingType, lodgingPackage]) => {
-        // Request lodgings
-        const builder = new RSQLFilterBuilder();
-        builder.column('lodgingTypeId').equalTo(selectedLodgingType.object.id);
-        console.log('requesting lodgings');
-        this.lodgingActions.getPaged(lodgingPackage.object.path, new PagedQuery({ rsqlFilter: builder }));
-
         // Get lodgings
         return this.lodgingStore.get(lodgingPackage.object.path).pipe(
           filter(x => !!x && Array.isArray(x)),
@@ -132,27 +149,34 @@ export class LodgingSelectDialogComponent implements OnInit, OnDestroy {
       })
     );
 
-
     // Filter lodgings based on search input
     const filteredLodgings$ = combineLatest(
-      this.lodgingsAutoCompleteControl.valueChanges.pipe(startWith('')),
+      this.lodgingsAutoCompleteControl.valueChanges,
       allLodgingsOfType$
     ).pipe(
       tap(x => console.log('wtf 1')),
-      map(([searchInput, lodgings]) => searchInput ? this.filterLodgings(searchInput, lodgings) : lodgings.slice())
+      map(([searchInput, lodgings]) => searchInput ? this.filterLodgings(searchInput, lodgings) : lodgings)
     );
 
-    // Get availability for all filtered lodgings
-    const available$ = combineLatest(
+    this.subscriptionHandler.register(combineLatest(
       lodgingPackage$,
       allLodgingsOfType$
     ).pipe(
       tap(x => console.log('wtf 2')),
-      switchMap(([lodgingPackage, lodgingsOfType]) => {
+      map(([lodgingPackage, lodgingsOfType]) => {
         const checkIn = this.data.form.get('checkIn').value;
         const checkOut = this.data.form.get('checkOut').value;
         const packagePath = lodgingPackage.object.path;
-        // this.lodgingsAvailabilityActions.getAvailableLodgings(packagePath, checkIn, checkOut, lodgingsOfType.map(lodging => lodging.objectIdentifier));
+        this.lodgingsAvailabilityActions.getAvailableLodgings(packagePath, checkIn, checkOut, lodgingsOfType.map(lodging => lodging.objectIdentifier));
+      })
+    ).subscribe());
+
+    // Get availability for all filtered lodgings
+    const available$ = lodgingPackage$.pipe(
+      switchMap((lodgingPackage) => {
+        const checkIn = this.data.form.get('checkIn').value;
+        const checkOut = this.data.form.get('checkOut').value;
+        const packagePath = lodgingPackage.object.path;
         return this.lodgingsAvailabilityStore.getAvailableLodgings(packagePath, checkIn, checkOut).pipe(
           tap(x => console.log('available lodgings'))
         );
@@ -198,16 +222,14 @@ export class LodgingSelectDialogComponent implements OnInit, OnDestroy {
 
   private filterLodgingTypes(searchInput: string, lodgingTypes: LocalObject<LodgingType, number>[]): LocalObject<LodgingType, number>[] {
     if (typeof (searchInput) === 'string') {
-      const filterValue = searchInput.toLowerCase();
-      return lodgingTypes.filter(lodgingType => lodgingType.object.name.toLowerCase().indexOf(filterValue) === 0);
+      return lodgingTypes.filter(lodgingType => lodgingType.object.name.toLowerCase().indexOf(searchInput.toLowerCase()) === 0);
     }
     return lodgingTypes;
   }
 
   private filterLodgings(searchInput: string, lodgings: LocalObject<Lodging, number>[]): LocalObject<Lodging, number>[] {
     if (typeof (searchInput) === 'string') {
-      const filterValue = searchInput.toLowerCase();
-      return lodgings.filter(lodging => lodging.object.name.toLowerCase().indexOf(filterValue) === 0);
+      return lodgings.filter(lodging => lodging.object.name.toLowerCase().indexOf(searchInput.toLowerCase()) === 0);
     }
     return lodgings;
   }
