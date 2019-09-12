@@ -2,8 +2,7 @@
 
 
   <button *ngIf="!selectedLodgingType" mat-raised-button class="select-button" color="primary"
-    (click)="selectLodgingType()" [disabled]="!(datesSelected$ | async)">Select lodging
-    type</button>
+    (click)="selectLodgingType()" [disabled]="!(datesSelected$ | async)">{{ 'LODGING_TYPE_SELECT_FIELD.SELECT_LODGING_TYPE' | translate }}</button>
   <ng-container *ngIf=" (datesSelected$ | async)">
     <button *ngIf="selectedLodgingType" mat-raised-button class="select-button"
       (click)="selectLodgingType()">{{ selectedLodgingType.object.name }}</button>
