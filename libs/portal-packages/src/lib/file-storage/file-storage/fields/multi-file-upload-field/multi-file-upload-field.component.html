@@ -10,7 +10,7 @@
     </div>
 
     Multiple
-    <input type="file" ng2FileSelect [uploader]="uploader" multiple /><br />
+    <input type="file" ng2FileSelect [uploader]="uploader" multiple #fileSelect /><br />
 
     <h3>Upload queue</h3>
     <p>Queue length: {{ uploader?.queue?.length }}</p>
@@ -38,7 +38,8 @@
             <span *ngIf="item.isError"><i></i></span>
           </td>
           <td nowrap>
-            <button type="button" (click)="item.upload()"
+            <!-- item.upload() -->
+            <button type="button" (click)="upload(item)"
               [disabled]="item.isReady || item.isUploading || item.isSuccess">
               Upload
             </button>
