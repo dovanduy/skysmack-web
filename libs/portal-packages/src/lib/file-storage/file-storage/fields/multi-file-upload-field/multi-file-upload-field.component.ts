@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject, ViewChild } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { Field } from '@skysmack/ng-dynamic-forms';
 import { FieldBaseComponent } from '@skysmack/portal-fields';
 import { FileUploader, FileItem } from 'ng2-file-upload';
@@ -32,9 +32,7 @@ export class MultiFileUploadFieldComponent extends FieldBaseComponent<Field> imp
 
   public upload(fileItem: FileItem) {
     fileItem.alias = 'files';
-    console.log(fileItem)
     fileItem.upload();
-    // console.log(this.uploader.queue);
   }
 
   private onBuildItemForm(fileItem: FileItem, form: FormData): any {
