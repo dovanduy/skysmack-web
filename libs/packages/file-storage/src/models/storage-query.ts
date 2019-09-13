@@ -4,6 +4,8 @@ export class StorageQuery {
     public includeTrailingDelimiter: boolean;
     public pageNumber: number;
     public pageSize: number;
+
+    // Used with local pagination
     public query: string;
 
     constructor(values?: Partial<StorageQuery>) {

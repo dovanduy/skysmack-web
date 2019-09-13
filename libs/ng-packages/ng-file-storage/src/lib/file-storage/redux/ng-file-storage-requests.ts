@@ -1,11 +1,12 @@
 import { Injectable, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { ApiDomain, API_DOMAIN_INJECTOR_TOKEN, HttpErrorResponse, GlobalProperties, HttpSuccessResponse } from '@skysmack/framework';
+import { ApiDomain, API_DOMAIN_INJECTOR_TOKEN, HttpErrorResponse, GlobalProperties } from '@skysmack/framework';
 import { ReduxAction } from '@skysmack/redux';
 import { Observable, of } from 'rxjs';
 import { map, retry, catchError, share } from 'rxjs/operators';
 import { NgFileStorageActions } from './ng-file-storage-actions';
-import { FILE_STORAGE_REDUX_KEY, Bucket } from '@skysmack/packages-file-storage';
+import { FILE_STORAGE_REDUX_KEY, Bucket, FileStorageItem, GetStorageItemsSuccessPayload, GetStorageItemsPayload } from '@skysmack/packages-file-storage';
+import { PageResponseExtensions } from '@skysmack/ng-framework';
 
 @Injectable({ providedIn: 'root' })
 export class NgFileStorageRequests {
@@ -14,14 +15,32 @@ export class NgFileStorageRequests {
         @Inject(API_DOMAIN_INJECTOR_TOKEN) protected apiDomain: ApiDomain
     ) { }
 
-    public getFolderWithFiles(request: { prefix, delimiter, includeTrailingDelimiter, pageSize, pageNumber }): Observable<HttpSuccessResponse | HttpErrorResponse> {
-        const url = `${this.apiDomain.domain}/storage?pageSize=${request.pageSize}&pageNumber=${request.pageNumber}&prefix=${request.prefix}&delimiter=${request.delimiter}&includeTrailingDelimiter=${request.includeTrailingDelimiter}`;
+    public getStorageItems(action: ReduxAction<GetStorageItemsPayload>): Observable<ReduxAction<GetStorageItemsSuccessPayload> | ReduxAction<HttpErrorResponse>> {
+        const storageQuery = action.payload.storageQuery;
+        const url = `${this.apiDomain.domain}/${action.payload.packagePath}?pageSize=${storageQuery.pageSize}&pageNumber=${storageQuery.pageNumber}&prefix=${storageQuery.prefix}&delimiter=${storageQuery.delimiter}&includeTrailingDelimiter=${storageQuery.includeTrailingDelimiter}`;
 
-        return this.http.get<any>(url, { observe: 'response' })
+        return this.http.get<FileStorageItem[]>(url, { observe: 'response' })
             .pipe(
-                map(httpResponse => httpResponse),
+                map(httpResponse => {
+                    const sort = '';
+                    const query = `${storageQuery.pageSize}:${storageQuery.pageNumber}:${storageQuery.prefix}:${storageQuery.delimiter}:${storageQuery.includeTrailingDelimiter}`
+                    storageQuery.query = query;
+                    return Object.assign({}, new ReduxAction<GetStorageItemsSuccessPayload>({
+                        type: FILE_STORAGE_REDUX_KEY + NgFileStorageActions.GET_STORAGE_ITEMS_SUCCESS,
+                        payload: {
+                            entities: httpResponse.body ? httpResponse.body : [],
+                            packagePath: action.payload.packagePath,
+                            page: PageResponseExtensions.getPageResponse<string>(httpResponse.headers, httpResponse.body.map(record => record.selfLink), query, sort),
+                            storageQuery,
+                        }
+                    }));
+                }),
                 share(),
-                catchError((error) => of(error))
+                catchError((error) => of(Object.assign({}, new ReduxAction<HttpErrorResponse>({
+                    type: FILE_STORAGE_REDUX_KEY + NgFileStorageActions.GET_STORAGE_ITEMS_FAILURE,
+                    payload: error,
+                    error: true
+                }))))
             );
     }
 

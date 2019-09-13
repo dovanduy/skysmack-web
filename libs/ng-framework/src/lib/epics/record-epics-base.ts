@@ -1,6 +1,6 @@
 import { ofType, ActionsObservable, Epic } from 'redux-observable';
-import { map, mergeMap, tap } from 'rxjs/operators';
-import { Record, LocalObject, HttpErrorResponse, QueueItem, HttpResponse, log, ApiError } from '@skysmack/framework';
+import { map, mergeMap } from 'rxjs/operators';
+import { Record, LocalObject, HttpErrorResponse, QueueItem, HttpResponse, ApiError } from '@skysmack/framework';
 import { Observable } from 'rxjs';
 import { RecordRequests, ReduxAction, GetPagedEntitiesPayload, GetPagedEntitiesSuccessPayload, RecordActionsBase, GetSingleEntityPayload, GetSingleEntitySuccessPayload, CommitMeta, QueueActions, CancelActionPayload, ReduxOfflineMeta } from '@skysmack/redux';
 import { RecordNotifications } from './../notifications/record-notifications';

@@ -36,8 +36,7 @@ export class FileStorageIndexComponent extends BaseComponent<FileStorageAppState
     public skysmackStore: NgSkysmackStore,
     public actions: NgFileStorageActions,
     public store: NgFileStorageStore,
-    public menuItemActionProviders: MenuItemActionProviders,
-    private requests: NgFileStorageRequests
+    public menuItemActionProviders: MenuItemActionProviders
   ) {
     super(router, activatedRoute, skysmackStore);
   }
@@ -74,28 +73,30 @@ export class FileStorageIndexComponent extends BaseComponent<FileStorageAppState
       pageSize: 10
     });
 
-    this.filesAndFolders$ = this.requests.getFolderWithFiles(this.currentRequest).pipe(
-      map((x: HttpSuccessResponse<FileStorageItem[]>) => x.body),
-    );
+    this.actions.getStorageItems(this.packagePath, this.currentRequest);
 
-    this.folders$ = this.filesAndFolders$.pipe(
-      map(items => items.filter(item => !item.contentType))
-    )
+    // this.filesAndFolders$ = this.requests.getFolderWithFiles(this.currentRequest).pipe(
+    //   map((x: HttpSuccessResponse<FileStorageItem[]>) => x.body),
+    // );
 
-    this.items$ = this.filesAndFolders$.pipe(
-      map(items => items.filter(item => item.contentType))
-    )
+    // this.folders$ = this.filesAndFolders$.pipe(
+    //   map(items => items.filter(item => !item.contentType))
+    // )
 
-    this.empty$ = combineLatest(
-      this.folders$,
-      this.items$
-    ).pipe(
-      map(([folders, items]) => {
-        if (folders.length === 0 && items.length === 0) {
-          return true
-        }
-        return false;
-      })
-    );
+    // this.items$ = this.filesAndFolders$.pipe(
+    //   map(items => items.filter(item => item.contentType))
+    // )
+
+    // this.empty$ = combineLatest(
+    //   this.folders$,
+    //   this.items$
+    // ).pipe(
+    //   map(([folders, items]) => {
+    //     if (folders.length === 0 && items.length === 0) {
+    //       return true
+    //     }
+    //     return false;
+    //   })
+    // );
   }
 }

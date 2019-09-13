@@ -1,5 +1,5 @@
 
-import { Store, AnyAction } from 'redux';
+import { Store } from 'redux';
 import { PagedQuery, Record, LocalObject, HttpMethod, LocalObjectStatus, HttpResponse, QueueItem, StrIndex, RSQLFilterBuilder, LimitQuery } from '@skysmack/framework';
 import { ReduxAction } from '../action-types/redux-action';
 import { GetPagedEntitiesPayload, GetSingleEntityPayload, CancelActionPayload, } from '../payloads';
@@ -172,7 +172,7 @@ export abstract class RecordActionsBase<TStateType, TStore extends Store<TStateT
 
         for (const item of records) {
             const itemFilter = new RSQLFilterBuilder();
-            if (typeof(item.objectIdentifier) === 'object') {
+            if (typeof (item.objectIdentifier) === 'object') {
                 const keys = Object.keys(item.objectIdentifier);
                 for (const key of keys) {
                     itemFilter.column(item.identifier + '.' + key).equalTo(item.objectIdentifier[key]);
@@ -180,7 +180,7 @@ export abstract class RecordActionsBase<TStateType, TStore extends Store<TStateT
             } else {
                 itemFilter.column(item.identifier).equalTo(item.objectIdentifier.toString());
             }
-             
+
             rsql.or().group(itemFilter);
         }
 

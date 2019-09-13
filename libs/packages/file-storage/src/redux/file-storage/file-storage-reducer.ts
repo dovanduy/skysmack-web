@@ -2,8 +2,9 @@ import { AppState, ReduxAction } from '@skysmack/redux';
 import { sharedReducer } from '@skysmack/redux';
 import { FILE_STORAGE_REDUX_KEY, FILE_STORAGE_REDUCER_KEY } from '../../constants/constants';
 import { FileStorageActions } from './file-storage-actions';
-import { GlobalProperties, StrIndex } from '@skysmack/framework';
+import { GlobalProperties, StrIndex, HttpErrorResponse, PageResponse, LocalPageTypes, LocalObject, PageExtensions, LocalObjectExtensions, LoadingState, toLocalObject } from '@skysmack/framework';
 import { Bucket } from '../../models/bucket';
+import { GetStorageItemsSuccessPayload, FileStorageItem, StorageQuery, GetStorageItemsPayload } from '../../models';
 
 /**
  * This is to be used when you want to access file-storage via the GLOBAL state. E.g. state.file-storage (where file-storage is the reducer name.)
@@ -14,6 +15,8 @@ export class FileStorageAppState extends AppState {
 
 export class FileStorageState {
     public buckets: StrIndex<Bucket> = {};
+    public localPageTypes: StrIndex<StrIndex<LocalPageTypes<string>>> = {};
+    public localRecords: StrIndex<StrIndex<LocalObject<FileStorageItem, string>>> = {};
 }
 
 export function fileStorageReducer(state = new FileStorageState(), action: ReduxAction, prefix: string = FILE_STORAGE_REDUX_KEY): FileStorageState {
@@ -45,7 +48,35 @@ export function fileStorageReducer(state = new FileStorageState(), action: Redux
             return newState;
         }
 
-        // FILES
+        // STORAGE ITEMS
+        case prefix + FileStorageActions.GET_STORAGE_ITEMS: {
+            const castedAction = action as ReduxAction<GetStorageItemsPayload>;
+            const page = new PageResponse<string>({
+                pageNumber: castedAction.payload.storageQuery.pageNumber,
+                pageSize: castedAction.payload.storageQuery.pageSize,
+                ids: [],
+                links: null,
+                query: castedAction.payload.storageQuery.query,
+                sort: ''
+            });
+            newState.localPageTypes[castedAction.payload.packagePath] = PageExtensions.mergeOrAddPageStatus<string>(newState.localPageTypes[castedAction.payload.packagePath], page, LoadingState.Loading);
+
+            return newState;
+        }
+        case prefix + FileStorageActions.GET_STORAGE_ITEMS_SUCCESS: {
+            const castedAction = action as ReduxAction<GetStorageItemsSuccessPayload>;
+            newState.localPageTypes[castedAction.payload.packagePath] = PageExtensions.mergeOrAddPage(newState.localPageTypes[castedAction.payload.packagePath], castedAction.payload.page);
+            newState.localRecords[castedAction.payload.packagePath] = LocalObjectExtensions.mergeOrAddLocal(newState.localRecords[castedAction.payload.packagePath], castedAction.payload.entities.map(x => toLocalObject(x, 'selfLink')));
+
+            return newState;
+        }
+        case prefix + FileStorageActions.GET_STORAGE_ITEMS_FAILURE: {
+            const castedAction = action as ReduxAction<HttpErrorResponse>;
+            if (!GlobalProperties.production) {
+                console.log('Error. Error Action:', castedAction);
+            }
+            return newState;
+        }
 
         default:
             return state;
