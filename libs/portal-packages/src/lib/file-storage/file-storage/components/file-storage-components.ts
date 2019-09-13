@@ -8,16 +8,7 @@ import { FileStorageUploadComponent } from './file-storage-upload/file-storage-u
 
 export const fileStorageRoutes: Routes = [
   {
-    path: '**', component: FileStorageIndexComponent, children: [
-      // {
-      //   path: '',
-      //   // , children: [
-      //   //   { path: '**' }
-      //   //   { path: 'upload', component: FileStorageUploadComponent, pathMatch: 'full' },
-      //   //   { path: 'edit/:id', component: FileStorageEditComponent, pathMatch: 'full' },
-      //   // ]
-      // }
-    ]
+    path: '**', component: FileStorageIndexComponent
   }
 ];
 

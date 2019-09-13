@@ -15,8 +15,6 @@ export class NgFileStorageRequests {
     ) { }
 
     public getFolderWithFiles(request: { prefix, delimiter, includeTrailingDelimiter, pageSize, pageNumber }): Observable<HttpSuccessResponse | HttpErrorResponse> {
-        // ${ }
-        // http://client1.skysmack-io.test:2000/storage?pageSize=10&pageNumber=1&delimiter=%2F&includeTrailingDelimiter=true
         const url = `${this.apiDomain.domain}/storage?pageSize=${request.pageSize}&pageNumber=${request.pageNumber}&prefix=${request.prefix}&delimiter=${request.delimiter}&includeTrailingDelimiter=${request.includeTrailingDelimiter}`;
 
         return this.http.get<any>(url, { observe: 'response' })

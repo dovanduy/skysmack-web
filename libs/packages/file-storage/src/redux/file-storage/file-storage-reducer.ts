@@ -21,6 +21,7 @@ export function fileStorageReducer(state = new FileStorageState(), action: Redux
     const newState = Object.assign({}, state);
 
     switch (action.type) {
+        // BUCKET
         case prefix + FileStorageActions.GET_BUCKET_SUCCESS: {
             const castedAction = action as { payload: { bucket: Bucket, packagePath: string } };
             newState.buckets[castedAction.payload.packagePath] = castedAction.payload.bucket;
@@ -43,6 +44,9 @@ export function fileStorageReducer(state = new FileStorageState(), action: Redux
             }
             return newState;
         }
+
+        // FILES
+
         default:
             return state;
     }

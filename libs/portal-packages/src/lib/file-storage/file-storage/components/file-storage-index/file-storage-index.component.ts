@@ -3,34 +3,11 @@ import { MenuItemActionProviders } from '@skysmack/portal-ui';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { NgFileStorageStore, NgFileStorageActions, NgFileStorageRequests } from '@skysmack/ng-file-storage';
-import { FileStorageAppState, FILE_STORAGE_AREA_KEY, Bucket } from '@skysmack/packages-file-storage';
+import { FileStorageAppState, FILE_STORAGE_AREA_KEY, StorageQuery, FileStorageItem } from '@skysmack/packages-file-storage';
 import { MenuItem, HttpSuccessResponse } from '@skysmack/framework';
 import { BaseComponent } from '@skysmack/portal-fields';
-import { Observable, combineLatest, BehaviorSubject } from 'rxjs';
-import { tap, map, filter } from 'rxjs/operators';
-
-class FileStorageItem {
-  public contentType?: string;
-  public mediaLink: string;
-  public name: string;
-  public selfLink: string;
-
-  constructor(values?: Partial<FileStorageItem>) {
-    Object.assign(this, values);
-  }
-}
-
-class FileStorageRequest {
-  public prefix: string;
-  public delimiter: string;
-  public includeTrailingDelimiter: boolean;
-  public pageNumber: number;
-  public pageSize: number;
-
-  constructor(values?: Partial<FileStorageRequest>) {
-    Object.assign(this, values);
-  }
-}
+import { Observable, combineLatest } from 'rxjs';
+import { map, filter } from 'rxjs/operators';
 
 @Component({
   selector: 'ss-file-storage-index',
@@ -43,7 +20,7 @@ export class FileStorageIndexComponent extends BaseComponent<FileStorageAppState
   public areaKey: string = FILE_STORAGE_AREA_KEY;
   public menuItemActions: MenuItem[] = [];
 
-  public currentRequest: FileStorageRequest;
+  public currentRequest: StorageQuery;
   public currentLocation: string;
 
   public bucket$: Observable<string>;
@@ -89,7 +66,7 @@ export class FileStorageIndexComponent extends BaseComponent<FileStorageAppState
     const paths = splitted.slice(2, splitted.length);
     const newPath = paths.length === 1 ? paths[0] + '/' : paths.join('/') + '/';
 
-    this.currentRequest = new FileStorageRequest({
+    this.currentRequest = new StorageQuery({
       prefix: newPath === '/' ? '' : newPath,
       delimiter: '/',
       includeTrailingDelimiter: true,
