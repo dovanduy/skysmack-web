@@ -1,9 +1,9 @@
 import { Injectable, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { ApiDomain, API_DOMAIN_INJECTOR_TOKEN, HttpErrorResponse, GlobalProperties } from '@skysmack/framework';
+import { ApiDomain, API_DOMAIN_INJECTOR_TOKEN, HttpErrorResponse, GlobalProperties, HttpSuccessResponse } from '@skysmack/framework';
 import { ReduxAction } from '@skysmack/redux';
 import { Observable, of } from 'rxjs';
-import { map, retry, catchError } from 'rxjs/operators';
+import { map, retry, catchError, share } from 'rxjs/operators';
 import { NgFileStorageActions } from './ng-file-storage-actions';
 import { FILE_STORAGE_REDUX_KEY, Bucket } from '@skysmack/packages-file-storage';
 
@@ -13,6 +13,19 @@ export class NgFileStorageRequests {
         protected http: HttpClient,
         @Inject(API_DOMAIN_INJECTOR_TOKEN) protected apiDomain: ApiDomain
     ) { }
+
+    public getFolderWithFiles(request: { prefix, delimiter, includeTrailingDelimiter, pageSize, pageNumber }): Observable<HttpSuccessResponse | HttpErrorResponse> {
+        // ${ }
+        // http://client1.skysmack-io.test:2000/storage?pageSize=10&pageNumber=1&delimiter=%2F&includeTrailingDelimiter=true
+        const url = `${this.apiDomain.domain}/storage?pageSize=${request.pageSize}&pageNumber=${request.pageNumber}&prefix=${request.prefix}&delimiter=${request.delimiter}&includeTrailingDelimiter=${request.includeTrailingDelimiter}`;
+
+        return this.http.get<any>(url, { observe: 'response' })
+            .pipe(
+                map(httpResponse => httpResponse),
+                share(),
+                catchError((error) => of(error))
+            );
+    }
 
     public getBuckets(action: ReduxAction<any>): Observable<ReduxAction<{ packagePath: string, bucket: Bucket } | HttpErrorResponse>> {
         const url = `${this.apiDomain.domain}/${action.payload.packagePath}/settings/storage`;
