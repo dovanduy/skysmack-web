@@ -22,5 +22,6 @@ export const fileStorageComponents: any[] = [
 ];
 
 export const fileStorageEntryComponents: any[] = [
-  FileStorageDashboardComponent
+  FileStorageDashboardComponent,
+  FileStorageUploadComponent
 ]

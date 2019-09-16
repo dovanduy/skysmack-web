@@ -44,7 +44,7 @@
   </ng-container>
 
   <div class="actions">
-    <button mat-flat-button color="primary" type="submit" (click)="onSubmit()"
+    <button *ngIf="!removeSubmitButton" mat-flat-button color="primary" type="submit" (click)="onSubmit()"
       [disabled]="disableButton">{{ buttonText }}</button>
   </div>
 </form>

@@ -61,16 +61,10 @@ export class FileStorageIndexComponent extends BaseComponent<FileStorageAppState
   ngOnInit() {
     super.ngOnInit();
     this.initBucket();
-    this.currentLocation = '/' + this.router.url.split('/').slice(1).join('/');
-    this.navigateToFolder(this.currentLocation);
+    this.initFolderNavigation();
     this.loadPages();
     this.getPagedEntities();
     this.initFileStreams();
-
-    this.subscriptionHandler.register(this.router.events.pipe(
-      filter(x => x instanceof NavigationEnd),
-      map((event: NavigationEnd) => this.navigateToFolder(event.url))
-    ).subscribe());
   }
 
   public navigateToFolder(folderPath?: string) {
@@ -97,13 +91,26 @@ export class FileStorageIndexComponent extends BaseComponent<FileStorageAppState
     this.actions.getStorageItems(this.packagePath, this.currentRequest);
   }
 
+  public actionEvent(event: { action: Function, _this: any }) {
+    event.action(event._this);
+  }
+
+  public deleteFile(file: LocalObject<FileStorageItem, string>): void {
+    this.actions.delete([file], this.packagePath);
+  }
+
   private initBucket(): void {
     this.actions.getBucket(this.packagePath);
     this.bucket$ = this.store.getBucket(this.packagePath);
   }
 
-  private deleteFile(file: LocalObject<FileStorageItem, string>): void {
-    this.actions.delete([file], this.packagePath);
+  private initFolderNavigation() {
+    this.currentLocation = '/' + this.router.url.split('/').slice(1).join('/');
+    this.navigateToFolder(this.currentLocation);
+    this.subscriptionHandler.register(this.router.events.pipe(
+      filter(x => x instanceof NavigationEnd),
+      map((event: NavigationEnd) => this.navigateToFolder(event.url))
+    ).subscribe());
   }
 
   private loadPages() {

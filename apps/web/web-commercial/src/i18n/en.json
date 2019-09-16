@@ -3212,13 +3212,15 @@
 				"FIRSTNAME": "First name",
 				"LASTNAME": "Last name",
 				"DISPLAYNAME": "Display name",
-				"NAME": "Name"
+				"NAME": "Name",
+				"BUCKET": "Bucket"
 			},
 			"PLACEHOLDERS": {
 				"FIRSTNAME": "Enter first name",
 				"LASTNAME": "Enter last name",
 				"DISPLAYNAME": "Enter display name",
-				"NAME": "Enter name"
+				"NAME": "Enter name",
+				"BUCKET": "Enter bucket name"
 			},
 			"VALIDATION": {
 				"FIRSTNAME": {
@@ -3232,6 +3234,9 @@
 				},
 				"NAME": {
 					"REQUIRED": "Name is required."
+				},
+				"BUCKET": {
+					"REQUIRED": "Bucket name is required."
 				}
 			}
 		},
@@ -3270,7 +3275,8 @@
 			"MANAGE": "Manage",
 			"ACTIONS": "Actions",
 			"UPDLOAD": "Upload",
-			"UPLOAD": "Upload"
+			"UPLOAD": "Upload file",
+			"CREATE_FOLDER": "Create folder"
 		},
 		"NOTIFICATIONS": {
 			"GET": {

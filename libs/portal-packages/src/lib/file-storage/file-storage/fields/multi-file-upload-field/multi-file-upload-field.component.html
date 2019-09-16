@@ -6,10 +6,9 @@
 
     <div ng2FileDrop [ngClass]="{'nv-file-over': hasBaseDropZoneOver}" (fileOver)="fileOverBase($event)"
       [uploader]="uploader" class="well my-drop-zone">
-      Base drop zone
+      Drag files
     </div>
-
-    Multiple
+    <p>or</p>
     <input type="file" ng2FileSelect [uploader]="uploader" multiple #fileSelect /><br />
 
     <h3>Upload queue</h3>
@@ -38,7 +37,6 @@
             <span *ngIf="item.isError"><i></i></span>
           </td>
           <td nowrap>
-            <!-- item.upload() -->
             <button type="button" (click)="upload(item)"
               [disabled]="item.isReady || item.isUploading || item.isSuccess">
               Upload

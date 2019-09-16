@@ -22,7 +22,8 @@
             "BUTTON_EDIT": "Update"
         },
         "INDEX": {
-            "UPLOAD": "Upload",
+            "UPLOAD": "Upload file",
+            "CREATE_FOLDER": "Create folder",
             "PACKAGES": "Packages",
             "CREATE": "Create",
             "EDIT": "Edit",
