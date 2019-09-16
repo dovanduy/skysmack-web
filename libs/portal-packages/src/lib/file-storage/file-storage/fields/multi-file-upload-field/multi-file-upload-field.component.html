@@ -56,9 +56,9 @@
     <div class="progress">
       <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': uploader.progress + '%' }"></div>
     </div>
-    <button type="button" (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length">
+    <!-- <button type="button" (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length">
       Upload all
-    </button>
+    </button> -->
     <button type="button" (click)="uploader.cancelAll()" [disabled]="!uploader.isUploading">
       Cancel all
     </button>

@@ -9,6 +9,8 @@ import { getMenuEntries } from '@skysmack/ng-framework';
 import { FileStorageIndexComponent } from './file-storage/components/file-storage-index/file-storage-index.component';
 import { MatDialog } from '@angular/material/dialog';
 import { FileStorageUploadComponent } from './file-storage/components/file-storage-upload/file-storage-upload.component';
+import { Router } from '@angular/router';
+import { take } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
 export class NgFileStorageMenuProvider implements MenuProvider {
@@ -17,7 +19,8 @@ export class NgFileStorageMenuProvider implements MenuProvider {
 
     constructor(
         private store: NgSkysmackStore,
-        private dialog: MatDialog
+        private dialog: MatDialog,
+        private router: Router
     ) { }
 
     public getMenuAreas(packagePath: string, componentKey: string): Observable<MenuArea[]> {
@@ -46,7 +49,7 @@ export class NgFileStorageMenuProvider implements MenuProvider {
                 permissions: [],
                 providedIn: [SPEEDDIAL]
             }).asEventAction(this.translationPrefix + 'UPLOAD', (_this: NgFileStorageMenuProvider) => {
-                _this.dialog.open(FileStorageUploadComponent);
+                const dialogRef = _this.dialog.open(FileStorageUploadComponent);
             }, 'add', this),
             new MenuItem({
                 area: 'actions',

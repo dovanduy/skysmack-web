@@ -32,11 +32,18 @@ export class MultiFileUploadFieldComponent extends FieldBaseComponent<Field> imp
 
   public upload(fileItem: FileItem) {
     fileItem.alias = 'files';
+
     fileItem.upload();
   }
 
   private onBuildItemForm(fileItem: FileItem, form: FormData): any {
-    form.append('0.name', 'test/apple-01.png');
+    const prefix = this.router.url.split('/').slice(2).join('/');
+    const indexInQueue = this.uploader.queue.findIndex(item => item.file.name === fileItem.file.name);
+
+    const formDataName = `${indexInQueue}.name`;
+    const fileNamePrefixed = prefix.length !== 0 ? `${prefix}/${fileItem.file.name}` : `${fileItem.file.name}`;
+
+    form.append(formDataName, fileNamePrefixed);
     return { fileItem, form };
   }
 
