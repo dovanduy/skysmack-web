@@ -73,7 +73,6 @@ export class FileStorageIndexComponent extends BaseComponent<FileStorageAppState
     ).subscribe());
   }
 
-
   public navigateToFolder(folderPath?: string) {
     if (folderPath && this.currentLocation !== folderPath) {
       this.currentLocation = folderPath;
@@ -174,7 +173,15 @@ export class FileStorageIndexComponent extends BaseComponent<FileStorageAppState
           ];
         }
       }),
-      defined()
+      defined(),
+      map((entities: LocalObject<FileStorageItem, string>[]) =>
+        entities
+          .map(entity => {
+            entity.object.name = entity.object.name.replace(this.currentRequest.prefix, '');
+            return entity;
+          })
+          .filter(entity => entity.object.name.length !== 0)
+      )
     );
   }
 
