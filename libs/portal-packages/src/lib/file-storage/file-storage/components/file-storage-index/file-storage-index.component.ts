@@ -103,6 +103,10 @@ export class FileStorageIndexComponent extends BaseComponent<FileStorageAppState
     this.bucket$ = this.store.getBucket(this.packagePath);
   }
 
+  private deleteFile(file: LocalObject<FileStorageItem, string>): void {
+    this.actions.delete([file], this.packagePath);
+  }
+
   private loadPages() {
     return this.store.getPages(this.packagePath).pipe(
       map((dictionary) => {

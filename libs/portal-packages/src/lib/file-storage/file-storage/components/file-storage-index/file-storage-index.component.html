@@ -21,15 +21,36 @@
                 <mat-icon mat-list-icon>folder</mat-icon>
                 <h4 mat-line [routerLink]="[currentLocation, folder.object.name.split('/')[0]]"
                     style="cursor: pointer;">
-                    {{ folder.object.name.split('/')[0] }}</h4>
-                <a [href]="folder.object.mediaLink">Link</a>
+                    {{ folder.object.name.split('/')[0] }}
+                </h4>
+
+                <!-- Menu -->
+                <button mat-icon-button [matMenuTriggerFor]="menu">
+                    <mat-icon>more_vert</mat-icon>
+                </button>
+                <mat-menu #menu="matMenu">
+                    <button mat-menu-item (click)="deleteFile(folder)">
+                        <mat-icon>delete</mat-icon>
+                        <span>Delete</span>
+                    </button>
+                </mat-menu>
             </mat-list-item>
 
             <!-- Items -->
-            <mat-list-item *ngFor="let item of  items$ | async">
+            <mat-list-item *ngFor="let item of items$ | async">
                 <mat-icon mat-list-icon>insert_drive_file</mat-icon>
-                <h4 mat-line>{{item.object.name}}</h4>
-                <a [href]="item.object.mediaLink">Link</a>
+                <a mat-line [href]="item.object.mediaLink" target="_blank">{{ item.object.name }}</a>
+
+                <!-- Menu -->
+                <button mat-icon-button [matMenuTriggerFor]="menu">
+                    <mat-icon>more_vert</mat-icon>
+                </button>
+                <mat-menu #menu="matMenu" (click)="deleteFile(item)">
+                    <button mat-menu-item>
+                        <mat-icon>delete</mat-icon>
+                        <span>Delete</span>
+                    </button>
+                </mat-menu>
             </mat-list-item>
 
             <!-- Empty folder -->

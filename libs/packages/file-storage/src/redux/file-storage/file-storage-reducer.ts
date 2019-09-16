@@ -2,7 +2,7 @@ import { AppState, ReduxAction } from '@skysmack/redux';
 import { sharedReducer } from '@skysmack/redux';
 import { FILE_STORAGE_REDUX_KEY, FILE_STORAGE_REDUCER_KEY } from '../../constants/constants';
 import { FileStorageActions } from './file-storage-actions';
-import { GlobalProperties, StrIndex, HttpErrorResponse, PageResponse, LocalPageTypes, LocalObject, PageExtensions, LocalObjectExtensions, LoadingState, toLocalObject } from '@skysmack/framework';
+import { GlobalProperties, StrIndex, HttpErrorResponse, PageResponse, LocalPageTypes, LocalObject, PageExtensions, LocalObjectExtensions, LoadingState, toLocalObject, HttpSuccessResponse } from '@skysmack/framework';
 import { Bucket } from '../../models/bucket';
 import { GetStorageItemsSuccessPayload, FileStorageItem, StorageQuery, GetStorageItemsPayload } from '../../models';
 
@@ -74,6 +74,20 @@ export function fileStorageReducer(state = new FileStorageState(), action: Redux
             const castedAction = action as ReduxAction<HttpErrorResponse>;
             if (!GlobalProperties.production) {
                 console.log('Error. Error Action:', castedAction);
+            }
+            return newState;
+        }
+
+        case prefix + FileStorageActions.DELETE_SUCCESS: {
+            const castedAction = action as ReduxAction<HttpSuccessResponse<FileStorageItem[] | FileStorageItem>, { value: LocalObject<FileStorageItem, string>[], stateKey: string }>;
+            castedAction.meta.value.forEach(record => {
+                delete newState.localRecords[castedAction.meta.stateKey][record.localId];
+            });
+            return newState;
+        }
+        case prefix + FileStorageActions.DELETE_FAILURE: {
+            if (!GlobalProperties.production) {
+                console.log('Delete error: ', action);
             }
             return newState;
         }
