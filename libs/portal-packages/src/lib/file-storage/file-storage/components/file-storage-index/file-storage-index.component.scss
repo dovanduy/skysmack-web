@@ -1,0 +1,14 @@
+.breadcrumb {
+  margin-left: 5px;
+  cursor: pointer;
+  color: #7d7d7d;
+
+  &.last {
+    cursor: default;
+    color: #000;
+  }
+
+  &.separator {
+    cursor: default;
+  }
+}

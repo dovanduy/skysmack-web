@@ -23,14 +23,12 @@ export class NgFileStorageRequests {
             .pipe(
                 map(httpResponse => {
                     const sort = '';
-                    const query = `${storageQuery.pageSize}:${storageQuery.pageNumber}:${storageQuery.prefix}:${storageQuery.delimiter}:${storageQuery.includeTrailingDelimiter}`
-                    storageQuery.query = query;
                     return Object.assign({}, new ReduxAction<GetStorageItemsSuccessPayload>({
                         type: FILE_STORAGE_REDUX_KEY + NgFileStorageActions.GET_STORAGE_ITEMS_SUCCESS,
                         payload: {
                             entities: httpResponse.body ? httpResponse.body : [],
                             packagePath: action.payload.packagePath,
-                            page: PageResponseExtensions.getPageResponse<string>(httpResponse.headers, httpResponse.body.map(record => record.selfLink), query, sort),
+                            page: PageResponseExtensions.getPageResponse<string>(httpResponse.headers, httpResponse.body.map(record => record.selfLink), storageQuery.query, sort),
                             storageQuery,
                         }
                     }));

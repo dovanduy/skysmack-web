@@ -1,14 +1,14 @@
-export class StorageQuery {
+import { PagedQuery } from '@skysmack/framework';
+
+export class StorageQuery extends PagedQuery {
     public prefix: string;
     public delimiter: string;
     public includeTrailingDelimiter: boolean;
-    public pageNumber: number;
-    public pageSize: number;
 
     // Used with local pagination
     public query: string;
 
     constructor(values?: Partial<StorageQuery>) {
-        Object.assign(this, values);
+        super(values);
     }
 }

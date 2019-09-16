@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { NgRedux } from '@angular-redux/store';
-import { FileStorageAppState, FileStorageState } from '@skysmack/packages-file-storage';
+import { FileStorageAppState, FileStorageState, FileStorageItem } from '@skysmack/packages-file-storage';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { safeUndefinedTo } from '@skysmack/framework';
+import { safeUndefinedTo, StrIndex, LocalPageTypes, hasValue, LocalObject, dictionaryToArray } from '@skysmack/framework';
 
 @Injectable({ providedIn: 'root' })
 export class NgFileStorageStore {
@@ -18,6 +18,21 @@ export class NgFileStorageStore {
             map(state => state.buckets[packagePath]),
             safeUndefinedTo('object'),
             map(x => (x as any).bucket)
+        );
+    }
+
+    public get(packagePath: string): Observable<LocalObject<FileStorageItem, string>[]> {
+        return this.ngRedux.select(state => state.fileStorage).pipe(
+            map(state => state.localRecords[packagePath]),
+            safeUndefinedTo('object'),
+            dictionaryToArray<LocalObject<FileStorageItem, string>>()
+        );
+    }
+
+    public getPages(packagePath: string): Observable<StrIndex<LocalPageTypes<string>>> {
+        return this.ngRedux.select(state => state.fileStorage).pipe(
+            map(state => state.localPageTypes[packagePath]),
+            hasValue()
         );
     }
 
