@@ -5,6 +5,7 @@ import { FileStorageEditComponent } from './file-storage-edit/file-storage-edit.
 import { FileStorageDashboardComponent } from './file-storage-dashboard/file-storage-dashboard.component';
 import { FileStorageInstallationComponent } from './file-storage-installation/file-storage-installation.component';
 import { FileStorageUploadComponent } from './file-storage-upload/file-storage-upload.component';
+import { FileStorageFolderCreateComponent } from './file-storage-folder-create/file-storage-folder-create.component';
 
 export const fileStorageRoutes: Routes = [
   {
@@ -18,10 +19,12 @@ export const fileStorageComponents: any[] = [
   FileStorageEditComponent,
   FileStorageInstallationComponent,
   FileStorageUploadComponent,
-  FileStorageDashboardComponent
+  FileStorageDashboardComponent,
+  FileStorageFolderCreateComponent
 ];
 
 export const fileStorageEntryComponents: any[] = [
   FileStorageDashboardComponent,
-  FileStorageUploadComponent
+  FileStorageUploadComponent,
+  FileStorageFolderCreateComponent
 ]

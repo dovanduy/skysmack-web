@@ -1,0 +1,5 @@
+<ss-dynamic-form [fields$]="fields$" [validation]="fieldsConfig.validation" [removeSubmitButton]="true"
+    [rules]="fieldsConfig.formRules" [buttonText]="'FILE_STORAGE.INDEX.CREATE' | translate"
+    (submitted)="onCreateSubmit($event)">
+    <h2 [translate]="'FILE_STORAGE.INDEX.CREATE_FOLDER'"></h2>
+</ss-dynamic-form>

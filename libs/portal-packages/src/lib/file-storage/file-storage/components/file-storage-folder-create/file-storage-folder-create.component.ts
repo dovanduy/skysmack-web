@@ -7,13 +7,13 @@ import { BaseComponent } from '@skysmack/portal-fields';
 import { FormHelper, Field } from '@skysmack/ng-dynamic-forms';
 import { Observable } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
-import { NgFileStorageUploadFieldsConfig } from '../../../ng-file-storage-upload-fields-config';
+import { NgFolderCreateFieldsConfig } from '../../../ng-folder-create-fields-config';
 
 @Component({
-  selector: 'ss-file-storage-upload',
-  templateUrl: './file-storage-upload.component.html'
+  selector: 'ss-file-storage-folder-create',
+  templateUrl: './file-storage-folder-create.component.html'
 })
-export class FileStorageUploadComponent extends BaseComponent<FileStorageAppState, number> implements OnInit {
+export class FileStorageFolderCreateComponent extends BaseComponent<FileStorageAppState, number> implements OnInit {
 
   public fields$: Observable<Field[]>;
 
@@ -23,7 +23,7 @@ export class FileStorageUploadComponent extends BaseComponent<FileStorageAppStat
     public skysmackStore: NgSkysmackStore,
     public actions: NgFileStorageActions,
     public store: NgFileStorageStore,
-    public fieldsConfig: NgFileStorageUploadFieldsConfig
+    public fieldsConfig: NgFolderCreateFieldsConfig
   ) {
     super(router, activatedRoute, skysmackStore);
   }

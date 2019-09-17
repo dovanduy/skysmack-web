@@ -10,7 +10,7 @@ import { FileStorageIndexComponent } from './file-storage/components/file-storag
 import { MatDialog } from '@angular/material/dialog';
 import { FileStorageUploadComponent } from './file-storage/components/file-storage-upload/file-storage-upload.component';
 import { Router } from '@angular/router';
-import { take } from 'rxjs/operators';
+import { FileStorageFolderCreateComponent } from './file-storage/components/file-storage-folder-create/file-storage-folder-create.component';
 
 @Injectable({ providedIn: 'root' })
 export class NgFileStorageMenuProvider implements MenuProvider {
@@ -49,7 +49,7 @@ export class NgFileStorageMenuProvider implements MenuProvider {
                 permissions: [],
                 providedIn: [SPEEDDIAL]
             }).asEventAction(this.translationPrefix + 'UPLOAD', (_this: NgFileStorageMenuProvider) => {
-                const dialogRef = _this.dialog.open(FileStorageUploadComponent);
+                _this.dialog.open(FileStorageUploadComponent);
             }, 'add', this),
             new MenuItem({
                 area: 'actions',
@@ -57,7 +57,7 @@ export class NgFileStorageMenuProvider implements MenuProvider {
                 permissions: [],
                 providedIn: [SPEEDDIAL]
             }).asEventAction(this.translationPrefix + 'CREATE_FOLDER', (_this: NgFileStorageMenuProvider) => {
-                _this.dialog.open(FileStorageUploadComponent);
+                _this.dialog.open(FileStorageFolderCreateComponent);
             }, 'create_new_folder', this),
         ];
     }
