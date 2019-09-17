@@ -4,6 +4,6 @@
         [title]="loadedPackage._package.name + ' items'" [entities$]="pagedEntities$"
         [menuItemActions$]="menuItemActions$" [packagePath]="packagePath" (menuItemActionEvent)="actionEvent($event)"
         [totalCount$]="totalCount$" [loadingState$]="loadingState$" (requestPage)="requestPage()" [fields$]="fields$"
-        (sortChanged)="sortChanged($event)">
+        (sortChanged)="sortChanged($event)" (refresh)="refresh($event)">
     </ss-records-container>
 </ss-container>

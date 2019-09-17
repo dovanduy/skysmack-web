@@ -3,6 +3,6 @@
   <ss-records-container [area]="areaKey" [cancelAction]="actions.cancelAction" [title]="'Stays'"
     [entities$]="pagedEntities$" [menuItemActions$]="menuItemActions$" [packagePath]="packagePath"
     (menuItemActionEvent)="actionEvent($event)" [totalCount$]="totalCount$" [loadingState$]="loadingState$"
-    (requestPage)="requestPage()" [fields$]="fields$" (sortChanged)="sortChanged($event)">
+    (requestPage)="requestPage()" [fields$]="fields$" (sortChanged)="sortChanged($event)" (refresh)="refresh($event)">
   </ss-records-container>
 </ss-container>
