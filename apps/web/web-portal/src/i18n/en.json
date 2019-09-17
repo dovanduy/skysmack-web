@@ -1,44 +1,4 @@
 {
-	"ACCESS_POLICY_ROLES": {
-		"CREATE": {
-			"CREATE": "Create",
-			"BUTTON_CREATE": "Create"
-		},
-		"EDIT": {
-			"EDITING": "Edit",
-			"BUTTON_EDIT": "Update"
-		},
-		"INDEX": {
-			"TITLE_EXTRAS": "(roles)",
-			"ACTIONS": "Actions",
-			"CREATE": "Create",
-			"MANAGE": "Manage",
-			"BACK": "Back",
-			"ROLES": "Roles",
-			"FIELDS_TITLE": "(fields)"
-		},
-		"FORM": {
-			"LABELS": {
-				"RULEID": "Rule",
-				"ROLEID": "Role"
-			},
-			"PLACEHOLDERS": {
-				"RULEID": "Rule",
-				"ROLEID": "Role"
-			},
-			"VALIDATION": {
-				"NAME": {
-					"REQUIRED": "A name is required."
-				}
-			}
-		},
-		"QUEUE": {
-			"ADDING": "Adding {{ roleId }}",
-			"UPDATING": "Updating {{ roleId }}",
-			"DELETING": "Deleting {{ roleId }}",
-			"ERROR": "An error occured with {{ roleId }}. Correct and try again."
-		}
-	},
 	"ACCESS_POLICY_PERMISSIONS": {
 		"CREATE": {
 			"CREATE": "Create",
@@ -79,6 +39,46 @@
 			"UPDATING": "Updating {{ permission }} permission",
 			"DELETING": "Deleting {{ permission }} permission",
 			"ERROR": "An error occured with {{ permission }} permission. Correct and try again."
+		}
+	},
+	"ACCESS_POLICY_ROLES": {
+		"CREATE": {
+			"CREATE": "Create",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDITING": "Edit",
+			"BUTTON_EDIT": "Update"
+		},
+		"INDEX": {
+			"TITLE_EXTRAS": "(roles)",
+			"ACTIONS": "Actions",
+			"CREATE": "Create",
+			"MANAGE": "Manage",
+			"BACK": "Back",
+			"ROLES": "Roles",
+			"FIELDS_TITLE": "(fields)"
+		},
+		"FORM": {
+			"LABELS": {
+				"RULEID": "Rule",
+				"ROLEID": "Role"
+			},
+			"PLACEHOLDERS": {
+				"RULEID": "Rule",
+				"ROLEID": "Role"
+			},
+			"VALIDATION": {
+				"NAME": {
+					"REQUIRED": "A name is required."
+				}
+			}
+		},
+		"QUEUE": {
+			"ADDING": "Adding {{ roleId }}",
+			"UPDATING": "Updating {{ roleId }}",
+			"DELETING": "Deleting {{ roleId }}",
+			"ERROR": "An error occured with {{ roleId }}. Correct and try again."
 		}
 	},
 	"ACCESS_POLICY_RULES": {
@@ -619,79 +619,6 @@
 			"ROLES": "Roles"
 		}
 	},
-	"INVOICES": {
-		"FORM": {
-			"LABELS": {
-				"DESCRIPTION": "Description",
-				"CURRENCYCODE": "Currency code",
-				"TOTAL": "Total",
-				"TOTALTAX": "Total tax",
-				"BALANCE": "Balance",
-				"PAID": "Paid",
-				"STATUS": "Status"
-			},
-			"PLACEHOLDERS": {
-				"DESCRIPTION": "Description",
-				"CURRENCYCODE": "Currency code",
-				"TOTAL": "Total",
-				"TOTALTAX": "Total tax",
-				"BALANCE": "Balance",
-				"PAID": "Paid",
-				"STATUS": "Status"
-			},
-			"VALIDATION": {
-				"CURRENCYCODE": {
-					"REQUIRED": "Currency code is required."
-				}
-			}
-		},
-		"FIELDS": {
-			"CREATE": {
-				"ADD": "Add new field"
-			},
-			"EDIT": {
-				"EDITING": "Editing"
-			},
-			"INDEX": {
-				"ACTIONS": "Actions",
-				"CREATE": "Create new field",
-				"OTHER": "Other",
-				"BACK": "Back",
-				"FIELDS": "Fields",
-				"EDIT": "Edit"
-			}
-		},
-		"CREATE": {
-			"CREATE": "Create",
-			"BUTTON_CREATE": "Create"
-		},
-		"EDIT": {
-			"EDIT": "Edit",
-			"BUTTON_EDIT": "Update"
-		},
-		"INDEX": {
-			"PACKAGES": "Packages",
-			"CREATE": "Create",
-			"EDIT": "Edit",
-			"DELETE": "Delete",
-			"FIELDS": "Fields",
-			"FIELDS_TITLE": "(fields)",
-			"ITEM": "Item",
-			"MANAGE": "Manage",
-			"ACTIONS": "Actions",
-			"ITEMS": "Items",
-			"PAYMENTS": "Payments"
-		},
-		"QUEUE": {
-			"ADDING": "Adding {{ currencyCode }}",
-			"UPDATING": "Updating {{ currencyCode }}",
-			"DELETING": "Deleting {{ currencyCode }}",
-			"ERROR": "An error occured with {{ currencyCode }}. Correct and try again."
-		},
-		"ENTITY_ACTION": {
-			"ITEMS": "Items"
-		}
-	},
 	"INVOICE_ITEMS": {
 		"FORM": {
 			"LABELS": {
@@ -777,6 +704,79 @@
 			"UPDATING": "Updating {{ description }}",
 			"DELETING": "Deleting {{ description }}",
 			"ERROR": "An error occured with {{ description }}. Correct and try again."
+		}
+	},
+	"INVOICES": {
+		"FORM": {
+			"LABELS": {
+				"DESCRIPTION": "Description",
+				"CURRENCYCODE": "Currency code",
+				"TOTAL": "Total",
+				"TOTALTAX": "Total tax",
+				"BALANCE": "Balance",
+				"PAID": "Paid",
+				"STATUS": "Status"
+			},
+			"PLACEHOLDERS": {
+				"DESCRIPTION": "Description",
+				"CURRENCYCODE": "Currency code",
+				"TOTAL": "Total",
+				"TOTALTAX": "Total tax",
+				"BALANCE": "Balance",
+				"PAID": "Paid",
+				"STATUS": "Status"
+			},
+			"VALIDATION": {
+				"CURRENCYCODE": {
+					"REQUIRED": "Currency code is required."
+				}
+			}
+		},
+		"FIELDS": {
+			"CREATE": {
+				"ADD": "Add new field"
+			},
+			"EDIT": {
+				"EDITING": "Editing"
+			},
+			"INDEX": {
+				"ACTIONS": "Actions",
+				"CREATE": "Create new field",
+				"OTHER": "Other",
+				"BACK": "Back",
+				"FIELDS": "Fields",
+				"EDIT": "Edit"
+			}
+		},
+		"CREATE": {
+			"CREATE": "Create",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDIT": "Edit",
+			"BUTTON_EDIT": "Update"
+		},
+		"INDEX": {
+			"PACKAGES": "Packages",
+			"CREATE": "Create",
+			"EDIT": "Edit",
+			"DELETE": "Delete",
+			"FIELDS": "Fields",
+			"FIELDS_TITLE": "(fields)",
+			"ITEM": "Item",
+			"MANAGE": "Manage",
+			"ACTIONS": "Actions",
+			"ITEMS": "Items",
+			"PAYMENTS": "Payments"
+		},
+		"QUEUE": {
+			"ADDING": "Adding {{ currencyCode }}",
+			"UPDATING": "Updating {{ currencyCode }}",
+			"DELETING": "Deleting {{ currencyCode }}",
+			"ERROR": "An error occured with {{ currencyCode }}. Correct and try again."
+		},
+		"ENTITY_ACTION": {
+			"ITEMS": "Items"
 		}
 	},
 	"INVOICE_PAYMENTS": {

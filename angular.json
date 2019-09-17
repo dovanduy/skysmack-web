@@ -1147,7 +1147,12 @@
                 "input": "apps/web/web-portal/src/i18n/",
                 "output": "/i18n/"
               },
-              { 
+              {
+                "glob": "*.png",
+                "input": "apps/web/web-portal/src/",
+                "output": "/"
+              },
+              {
                 "glob": "robots.txt",
                 "input": "apps/web/web-portal/src",
                 "output": "/"
@@ -1256,6 +1261,11 @@
                 "glob": "**/*",
                 "input": "apps/web/web-commercial/src/i18n/",
                 "output": "/i18n/"
+              },
+              {
+                "glob": "*.png",
+                "input": "apps/web/web-commercial/src/",
+                "output": "/"
               },
               {
                 "glob": "robots.txt",
