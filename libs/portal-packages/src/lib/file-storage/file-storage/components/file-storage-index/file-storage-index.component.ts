@@ -7,7 +7,7 @@ import { FileStorageAppState, FILE_STORAGE_AREA_KEY, StorageQuery, FileStorageIt
 import { MenuItem, LocalPage, LoadingState, linq, LocalObject, defined } from '@skysmack/framework';
 import { BaseComponent } from '@skysmack/portal-fields';
 import { Observable, BehaviorSubject, combineLatest } from 'rxjs';
-import { map, filter } from 'rxjs/operators';
+import { map, filter, take } from 'rxjs/operators';
 
 @Component({
   selector: 'ss-file-storage-index',
@@ -96,6 +96,7 @@ export class FileStorageIndexComponent extends BaseComponent<FileStorageAppState
   }
 
   public deleteFile(file: LocalObject<FileStorageItem, string>): void {
+    file.object.name = `${this.currentRequest.prefix}${file.object.name}`;
     this.actions.delete([file], this.packagePath);
   }
 
