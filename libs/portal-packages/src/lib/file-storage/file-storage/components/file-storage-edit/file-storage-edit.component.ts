@@ -28,4 +28,8 @@ export class FileStorageEditComponent extends BaseComponent<FileStorageAppState,
   ngOnInit() {
     super.ngOnInit();
   }
+
+  public onUpdateSubmit(event: any) {
+
+  }
 }

@@ -1,4 +1,44 @@
 {
+	"ACCESS_POLICY_ROLES": {
+		"CREATE": {
+			"CREATE": "Create",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDITING": "Edit",
+			"BUTTON_EDIT": "Update"
+		},
+		"INDEX": {
+			"TITLE_EXTRAS": "(roles)",
+			"ACTIONS": "Actions",
+			"CREATE": "Create",
+			"MANAGE": "Manage",
+			"BACK": "Back",
+			"ROLES": "Roles",
+			"FIELDS_TITLE": "(fields)"
+		},
+		"FORM": {
+			"LABELS": {
+				"RULEID": "Rule",
+				"ROLEID": "Role"
+			},
+			"PLACEHOLDERS": {
+				"RULEID": "Rule",
+				"ROLEID": "Role"
+			},
+			"VALIDATION": {
+				"NAME": {
+					"REQUIRED": "A name is required."
+				}
+			}
+		},
+		"QUEUE": {
+			"ADDING": "Adding {{ roleId }}",
+			"UPDATING": "Updating {{ roleId }}",
+			"DELETING": "Deleting {{ roleId }}",
+			"ERROR": "An error occured with {{ roleId }}. Correct and try again."
+		}
+	},
 	"ACCESS_POLICY_PERMISSIONS": {
 		"CREATE": {
 			"CREATE": "Create",
@@ -39,46 +79,6 @@
 			"UPDATING": "Updating {{ permission }} permission",
 			"DELETING": "Deleting {{ permission }} permission",
 			"ERROR": "An error occured with {{ permission }} permission. Correct and try again."
-		}
-	},
-	"ACCESS_POLICY_ROLES": {
-		"CREATE": {
-			"CREATE": "Create",
-			"BUTTON_CREATE": "Create"
-		},
-		"EDIT": {
-			"EDITING": "Edit",
-			"BUTTON_EDIT": "Update"
-		},
-		"INDEX": {
-			"TITLE_EXTRAS": "(roles)",
-			"ACTIONS": "Actions",
-			"CREATE": "Create",
-			"MANAGE": "Manage",
-			"BACK": "Back",
-			"ROLES": "Roles",
-			"FIELDS_TITLE": "(fields)"
-		},
-		"FORM": {
-			"LABELS": {
-				"RULEID": "Rule",
-				"ROLEID": "Role"
-			},
-			"PLACEHOLDERS": {
-				"RULEID": "Rule",
-				"ROLEID": "Role"
-			},
-			"VALIDATION": {
-				"NAME": {
-					"REQUIRED": "A name is required."
-				}
-			}
-		},
-		"QUEUE": {
-			"ADDING": "Adding {{ roleId }}",
-			"UPDATING": "Updating {{ roleId }}",
-			"DELETING": "Deleting {{ roleId }}",
-			"ERROR": "An error occured with {{ roleId }}. Correct and try again."
 		}
 	},
 	"ACCESS_POLICY_RULES": {
@@ -136,35 +136,6 @@
 			"ERROR": "An error occured with access policy rules {{ id }}. Correct and try again."
 		}
 	},
-	"EMAILS_SMTP": {
-		"INDEX": {
-			"CREATE": "Create",
-			"EDIT": "Edit",
-			"DELETE": "Delete",
-			"TEMPLATES": "Templates",
-			"MANAGE": "Manage",
-			"ACTIONS": "Actions",
-			"SETTINGS": "Settings"
-		}
-	},
-	"EMAILS_SMTP_SETTINGS": {
-		"FORM": {
-			"PLACEHOLDERS": {
-				"HOST": "Host",
-				"PORT": "Port",
-				"USERNAME": "Username",
-				"PASSWORD": "Password",
-				"ENABLESSL": "Enable ssl"
-			},
-			"LABELS": {
-				"HOST": "Host",
-				"PORT": "Port",
-				"USERNAME": "Username",
-				"PASSWORD": "Password",
-				"ENABLESSL": "Enable ssl"
-			}
-		}
-	},
 	"EMAIL_TEMPLATES": {
 		"FORM": {
 			"LABELS": {
@@ -215,6 +186,35 @@
 			"TEMPLATES": "Templates",
 			"MANAGE": "Manage",
 			"ACTIONS": "Actions"
+		}
+	},
+	"EMAILS_SMTP": {
+		"INDEX": {
+			"CREATE": "Create",
+			"EDIT": "Edit",
+			"DELETE": "Delete",
+			"TEMPLATES": "Templates",
+			"MANAGE": "Manage",
+			"ACTIONS": "Actions",
+			"SETTINGS": "Settings"
+		}
+	},
+	"EMAILS_SMTP_SETTINGS": {
+		"FORM": {
+			"PLACEHOLDERS": {
+				"HOST": "Host",
+				"PORT": "Port",
+				"USERNAME": "Username",
+				"PASSWORD": "Password",
+				"ENABLESSL": "Enable ssl"
+			},
+			"LABELS": {
+				"HOST": "Host",
+				"PORT": "Port",
+				"USERNAME": "Username",
+				"PASSWORD": "Password",
+				"ENABLESSL": "Enable ssl"
+			}
 		}
 	},
 	"ACCOUNTS": {
@@ -1225,75 +1225,6 @@
 		"SELECT_LODGINGS": "Select lodgings",
 		"TITLE": "Lodgings Availability"
 	},
-	"ASSIGNMENTS": {
-		"FORM": {
-			"LABELS": {
-				"ASSIGNMENTTYPEID": "Assignment type",
-				"DESCRIPTION": "Description",
-				"OCCUPATIONSTATE": "Occupation state",
-				"STATUS": "Status",
-				"DUE": "Due date",
-				"FROM": "Can be started from"
-			},
-			"PLACEHOLDERS": {
-				"ASSIGNMENTTYPEID": "Assignment type",
-				"DESCRIPTION": "Enter description",
-				"OCCUPATIONSTATE": "Choose occupation state",
-				"STATUS": "Choose status",
-				"DUE": "Choose due date",
-				"FROM": "Choose can be started from date"
-			},
-			"VALIDATION": {
-				"ASSIGNMENTTYPEID": {
-					"REQUIRED": "Assignment type is required."
-				},
-				"DESCRIPTION": {
-					"REQUIRED": "Description is required."
-				},
-				"STATUS": {
-					"REQUIRED": "Status is required."
-				},
-				"DUE": {
-					"REQUIRED": "Due date is required.",
-					"NOTBEFORE": "The due date may not be earlier than the start date."
-				},
-				"FROM": {
-					"REQUIRED": "A date from when the assignment can begin is required."
-				}
-			},
-			"BUTTONS": {
-				"CREATE": "Create",
-				"EDIT": "Edit"
-			}
-		},
-		"CREATE": {
-			"CREATE": "Create",
-			"BUTTON_CREATE": "Create"
-		},
-		"EDIT": {
-			"EDIT": "Edit",
-			"BUTTON_EDIT": "Update"
-		},
-		"INDEX": {
-			"TITLE_EXTRAS": "(assignments)",
-			"ACTIONS": "Actions",
-			"CREATE": "Create",
-			"EDIT": "Edit",
-			"DELETE": "Delete",
-			"MANAGE": "Manage",
-			"FIELDS": "Fields",
-			"FIELDS_TITLE": "(fields)",
-			"STATES": "States",
-			"TYPES": "Types",
-			"BACK": "Back"
-		},
-		"QUEUE": {
-			"ADDING": "Adding {{ description }}",
-			"UPDATING": "Updating {{ description }}",
-			"DELETING": "Deleting {{ description }}",
-			"ERROR": "An error occured with {{ description }}. Correct and try again."
-		}
-	},
 	"ASSIGNMENT_TYPES": {
 		"FORM": {
 			"LABELS": {
@@ -1391,6 +1322,75 @@
 			"CREATE": {
 				"ADD": "Add field"
 			}
+		},
+		"QUEUE": {
+			"ADDING": "Adding {{ description }}",
+			"UPDATING": "Updating {{ description }}",
+			"DELETING": "Deleting {{ description }}",
+			"ERROR": "An error occured with {{ description }}. Correct and try again."
+		}
+	},
+	"ASSIGNMENTS": {
+		"FORM": {
+			"LABELS": {
+				"ASSIGNMENTTYPEID": "Assignment type",
+				"DESCRIPTION": "Description",
+				"OCCUPATIONSTATE": "Occupation state",
+				"STATUS": "Status",
+				"DUE": "Due date",
+				"FROM": "Can be started from"
+			},
+			"PLACEHOLDERS": {
+				"ASSIGNMENTTYPEID": "Assignment type",
+				"DESCRIPTION": "Enter description",
+				"OCCUPATIONSTATE": "Choose occupation state",
+				"STATUS": "Choose status",
+				"DUE": "Choose due date",
+				"FROM": "Choose can be started from date"
+			},
+			"VALIDATION": {
+				"ASSIGNMENTTYPEID": {
+					"REQUIRED": "Assignment type is required."
+				},
+				"DESCRIPTION": {
+					"REQUIRED": "Description is required."
+				},
+				"STATUS": {
+					"REQUIRED": "Status is required."
+				},
+				"DUE": {
+					"REQUIRED": "Due date is required.",
+					"NOTBEFORE": "The due date may not be earlier than the start date."
+				},
+				"FROM": {
+					"REQUIRED": "A date from when the assignment can begin is required."
+				}
+			},
+			"BUTTONS": {
+				"CREATE": "Create",
+				"EDIT": "Edit"
+			}
+		},
+		"CREATE": {
+			"CREATE": "Create",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDIT": "Edit",
+			"BUTTON_EDIT": "Update"
+		},
+		"INDEX": {
+			"TITLE_EXTRAS": "(assignments)",
+			"ACTIONS": "Actions",
+			"CREATE": "Create",
+			"EDIT": "Edit",
+			"DELETE": "Delete",
+			"MANAGE": "Manage",
+			"FIELDS": "Fields",
+			"FIELDS_TITLE": "(fields)",
+			"STATES": "States",
+			"TYPES": "Types",
+			"BACK": "Back"
 		},
 		"QUEUE": {
 			"ADDING": "Adding {{ description }}",

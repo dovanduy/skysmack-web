@@ -28,4 +28,8 @@ export class FileStorageCreateComponent extends BaseComponent<FileStorageAppStat
   ngOnInit() {
     super.ngOnInit();
   }
+
+  public onCreateSubmit(event: any) {
+
+  }
 }
