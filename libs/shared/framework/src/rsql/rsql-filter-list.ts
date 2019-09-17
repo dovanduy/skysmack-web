@@ -22,6 +22,10 @@ export class RSQLFilterList {
     }
   }
 
+  public getFilters(): Array<RSQLFilterExpression | RSQLFilterList> {
+    return [...this.andList, ...this.orList];
+  }
+
   /**
    * Builds the filter string for this list of filters.
    * If there is more than one filter expression, it puts

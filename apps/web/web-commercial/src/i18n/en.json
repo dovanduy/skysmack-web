@@ -1,110 +1,4 @@
 {
-	"UI": {
-		"ERROR_MESSAGE": {
-			"ERROR_OCCURRED": "ERROR OCCURRED!",
-			"DEV_ERROR": "Show dev error",
-			"SORRY_ERROR": "Sorry, error occurred. Try again."
-		},
-		"ONLINE_STATUS": {
-			"OFFLINE": "No network! Offline mode activated."
-		},
-		"MISC": {
-			"BACK": "Back",
-			"CONNECTED_PACKAGES": "Connected packages"
-		},
-		"PACKAGE_DRAWER": {
-			"SETTINGS": "Settings",
-			"SECURITY": "Security",
-			"TENANTS": "Tenants",
-			"PACKAGES": "Packages",
-			"ROLES": "Roles",
-			"HELP": "Help",
-			"PAYMENTS": "Payments"
-		},
-		"TOP_BAR": {
-			"SEARCH": "Search...",
-			"PACKAGES": "Packages",
-			"NO_CONVER": "No conversations",
-			"NO_NOTI": "No notifications",
-			"ACC_SET": "Account settings",
-			"ACCOUNT": "Account",
-			"LOG_OUT": "Log out"
-		},
-		"ENTITY_ACTIONS": {
-			"EDIT": "Edit",
-			"DELETE": "Delete",
-			"DETAILS": "Details"
-		},
-		"RECORDS_CONTAINER": {
-			"LOADED": "Loaded {{ loadedCount }} out of {{ totalCount }}"
-		},
-		"BUTTONS": {
-			"BUTTON_ADD": "Add",
-			"BUTTON_EDIT": "Update",
-			"BUTTON_VERIFY": "Verify",
-			"BUTTON_VALIDATOR": "+ Add validator"
-		},
-		"PERMISSION": {
-			"WRITEPERMISSION": "Write permissions",
-			"READPERMISSION": "Read permissions"
-		},
-		"RECURRING_EXPRESSION": {
-			"TOGGLE": "Toggle repeat",
-			"EXPRESSION": "Expression"
-		},
-		"ROLE_SELECT": {
-			"SELECT_ROLES": "Select roles",
-			"SELECT_ROLE": "Select role"
-		},
-		"GEOGRAPHY": {
-			"LONGTITUDE": "Longtitude",
-			"LANGTITUDE": "Langtitude"
-		},
-		"TIME": {
-			"FREQUENCY": "Frequency",
-			"ENTER_NUMBER": "Enter number",
-			"HOURS": "Hours",
-			"MINUTES": "Minutes",
-			"SECONDS": "Seconds"
-		},
-		"ADVANCED": "Advanced",
-		"SELECT_VALIDATOR": "Please select a validator"
-	},
-	"NOTIFICATIONS": {
-		"GET": {
-			"PAGED_ERROR": "{{ errorMessage }} ({{ httpErrorCode }}).",
-			"SINGLE_FAILURE": "{{ errorMessage }} ({{ httpErrorCode }}).",
-			"FIELDS_FAILURE": "{{ errorMessage }} ({{ httpErrorCode }}).",
-			"SINGLE_FIELD_FAILURE": "{{ errorMessage }} ({{ httpErrorCode }})."
-		},
-		"ADD": {
-			"SUCCESS": "Added successfully.",
-			"FAILURE": "{{ errorMessage }} ({{ httpErrorCode }}).",
-			"FIELD_FAILURE": "{{ errorMessage }} ({{ httpErrorCode }}).",
-			"FIELD_SUCCESS": "Added successfully."
-		},
-		"UPDATE": {
-			"SUCCESS": "Updated successfully.",
-			"FAILURE": "{{ errorMessage }} ({{ httpErrorCode }}).",
-			"FIELD_SUCCESS": "Updated successfully.",
-			"FIELD_FAILURE": "{{ errorMessage }} ({{ httpErrorCode }})"
-		},
-		"REMOVE": {
-			"SUCCESS": "Removed successfully.",
-			"FAILURE": "{{ errorMessage }} ({{ httpErrorCode }}).",
-			"FIELD_SUCCESS": "Removed succesfully.",
-			"FIELD_FAILURE": "{{ errorMessage }} ({{ httpErrorCode }})."
-		},
-		"CONNECTION_ERROR": "Could not connect to the server."
-	},
-	"SKYSMACK": {
-		"FORM": {
-			"PLACEHOLDERS": {
-				"NAME": "Name",
-				"DEFAULTTAX": "Default tax"
-			}
-		}
-	},
 	"COMMERCIAL_ACCOUNT": {
 		"INDEX": {
 			"FORGOTPASSWORD": "Forgot password",
@@ -236,6 +130,8 @@
 		"HOSTNAME": "Hostname",
 		"SAFESUBDOMAIN": "Safe subdomain",
 		"STATE": "State",
+		"SUBMIT": "Submit",
+		"LAUNCH": "Launch",
 		"FORM": {
 			"LABELS": {
 				"NAME": "Name",
@@ -279,7 +175,6 @@
 				}
 			}
 		},
-		"SUBMIT": "Submit",
 		"TENANTUSERRELATION": "Tenant-User relation"
 	},
 	"COMMERCIAL_UI_PARTNERS": {
@@ -333,250 +228,6 @@
 			}
 		}
 	},
-	"OAUTH2": {
-		"FORM": {
-			"LABELS": {
-				"EMAIL": "Email",
-				"PASSWORD": "Password",
-				"STAYSIGNEDIN": "Stay signed in?"
-			},
-			"PLACEHOLDERS": {
-				"EMAIL": "Enter email",
-				"PASSWORD": "Enter password"
-			},
-			"VALIDATION": {
-				"EMAIL": {
-					"REQUIRED": "Email is required.",
-					"INVALIDEMAIL": "Please enter a valid email."
-				},
-				"PASSWORD": {
-					"REQUIRED": "Password is required."
-				}
-			}
-		},
-		"OAUTH2_LOGIN": {
-			"SIGN_IN": "Sign in",
-			"ENTER_CRED": "Please enter your credentials below",
-			"ERROR_OCCURRED": "Error occurred, please verify email and/or password",
-			"FORGOT_PASSWORD": "Forgot password",
-			"CONFIRM_EMAIL": "Confirm e-mail",
-			"LOGGING_IN": "Logging in...",
-			"BUTTON_LOGIN": "Login"
-		}
-	},
-	"PACKAGES": {
-		"ADDING": "Adding {{ name }}",
-		"UPDATING": "Updating {{ name }}",
-		"DELETING": "Deleting {{ name }}",
-		"EDITING_PATH": "Editing path",
-		"ERROR": "An error occured with {{ name }}. Correct and try again.",
-		"FORM": {
-			"LABELS": {
-				"TYPE": "Package type",
-				"NAME": "Name",
-				"DESCRIPTION": "Description",
-				"PATH": "Path"
-			},
-			"PLACEHOLDERS": {
-				"TYPE": "Select package type",
-				"NAME": "Enter name",
-				"DESCRIPTION": "Enter description",
-				"PATH": "Enter path",
-				"NEWPATH": "New path",
-				"CURRENTPATH": "Current path"
-			},
-			"VALIDATION": {
-				"TYPE": {
-					"REQUIRED": "Please choose a package.",
-					"DEPSMISSING": "Not all dependencies have been chosen."
-				},
-				"NAME": {
-					"REQUIRED": "Name is required."
-				},
-				"DESCRIPTION": {
-					"REQUIRED": "A description is required."
-				},
-				"PATH": {
-					"REQUIRED": "A path is required.",
-					"INVALIDSTRINGLENGTH": "The path must be at least 3 characters long."
-				},
-				"NEWPATH": {
-					"REQUIRED": "New path is required.",
-					"INVALIDSTRINGLENGTH": "The path must be at least 3 characters long."
-				}
-			}
-		},
-		"INDEX": {
-			"ACTIONS": "Actions",
-			"CREATE": "Create",
-			"MANAGE": "Manage",
-			"ADAPTORS": "Adaptors",
-			"FEATURES": "Features",
-			"INSTALL": "Install package",
-			"TITLE": "Packages",
-			"AVAILABLE_PACKAGES": "Available packages"
-		},
-		"CREATE": {
-			"INSTALL": "Install package",
-			"BUTTON_CREATE": "Create"
-		},
-		"EDIT": {
-			"EDIT": "Edit package",
-			"PACKAGE_PATH": "Edit package path",
-			"BUTTON_EDIT": "Update"
-		},
-		"QUEUE": {
-			"ADDING": "Adding {{ displayName }}",
-			"UPDATING": "Updating {{ displayName }}",
-			"DELETING": "Deleting {{ displayName }}",
-			"ERROR": "An error occured with {{ displayName }}. Correct and try again."
-		}
-	},
-	"ADAPTORS": {
-		"FORM": {
-			"LABELS": {
-				"PACKAGETYPE": "Package type",
-				"LEFTDEPENDENCYID": "Left package",
-				"RIGHTDEPENDENCYID": "Right package",
-				"NAME": "Name",
-				"DESCRIPTION": "Description",
-				"URL": "URL",
-				"TYPE": "Type"
-			},
-			"PLACEHOLDERS": {
-				"PACKAGETYPE": "Enter package type",
-				"LEFTDEPENDENCYID": "Choose left package",
-				"RIGHTDEPENDENCYID": "Choose right package",
-				"NAME": "Enter name",
-				"DESCRIPTION": "Enter description",
-				"URL": "Enter URL",
-				"TYPE": "Enter type"
-			},
-			"VALIDATION": {
-				"PACKAGETYPE": {
-					"REQUIRED": "Please choose a package."
-				},
-				"LEFTDEPENDENCYID": {
-					"REQUIRED": "Please choose dependency."
-				},
-				"RIGHTDEPENDENCYID": {
-					"REQUIRED": "Please choose dependency."
-				},
-				"NAME": {
-					"REQUIRED": "Name is required."
-				},
-				"DESCRIPTION": {
-					"REQUIRED": "A description is required."
-				},
-				"URL": {
-					"REQUIRED": "An url to access the package is required."
-				},
-				"TYPE": {
-					"REQUIRED": "An type is required"
-				}
-			}
-		},
-		"INDEX": {
-			"ACTIONS": "Actions",
-			"CREATE": "Create",
-			"MANAGE": "Manage",
-			"INSTALL": "Install adaptor",
-			"TITEL": "Adaptors",
-			"BACK": "Back",
-			"OTHER": "Other"
-		},
-		"EDIT": {
-			"EDITING": "Editing {{ object.name }} adaptor"
-		},
-		"CREATE": {
-			"INSTALL": "Install adaptor"
-		}
-	},
-	"FEATURES": {
-		"FORM": {
-			"LABELS": {
-				"PACKAGETYPE": "Package type",
-				"DEPENDENCYID": "Package",
-				"NAME": "Name",
-				"DESCRIPTION": "Description",
-				"URL": "URL",
-				"TYPE": "Type"
-			},
-			"PLACEHOLDERS": {
-				"PACKAGETYPE": "Enter package type",
-				"DEPENDENCYID": "Choose package",
-				"NAME": "Enter name",
-				"DESCRIPTION": "Enter description",
-				"URL": "Enter URL",
-				"TYPE": "Enter type"
-			},
-			"VALIDATION": {
-				"PACKAGETYPE": {
-					"REQUIRED": "Please choose a package."
-				},
-				"DEPENDENCYID": {
-					"REQUIRED": "Please choose dependency."
-				},
-				"NAME": {
-					"REQUIRED": "Name is required."
-				},
-				"DESCRIPTION": {
-					"REQUIRED": "A description is required."
-				},
-				"URL": {
-					"REQUIRED": "An url to access the package is required."
-				},
-				"TYPE": {
-					"REQUIRED": "An type is required"
-				}
-			}
-		},
-		"INDEX": {
-			"ACTIONS": "Actions",
-			"CREATE": "Create",
-			"MANAGE": "Manage",
-			"FEATURES": "Features",
-			"INSTALL": "Install feature",
-			"TITEL": "Features",
-			"BACK": "Back",
-			"OTHER": "Other"
-		},
-		"EDIT": {
-			"EDITING": "Editing {{ object.name }} feature"
-		},
-		"CREATE": {
-			"INSTALL": "Install feature"
-		}
-	},
-	"PRODUCTS_PRICINGS": {
-		"INDEX": {
-			"MANAGE": "Manage",
-			"SALES_PRICES": "Products sale prices",
-			"SALES_PRICES_TYPES": "Product types sale prices",
-			"PRICE_CHANGES": "Product price changes",
-			"PRICE_TYPE_CHANGES": "Product type price changes"
-		}
-	},
-	"RESERVATIONS_PRICINGS": {
-		"INDEX": {
-			"MANAGE": "Manage",
-			"RESERVATION_PRICE_CHANGES": "Lodging reservation price changes",
-			"PRICES": "Lodging prices",
-			"RESERVATION_PRICE_CHANGES_TYPES": "Lodging type reservation price changes",
-			"PRICES_TYPES": "Lodging type prices"
-		}
-	},
-	"TERMINAL_PAYMENTS": {
-		"INDEX": {
-			"TITLE": "Terminal Payments",
-			"MANAGE": "Manage",
-			"TERMINALS": "Terminals",
-			"RECEIPTS": "Receipts",
-			"CONNECTIONS": "Connections",
-			"TERMINAL_PAYMENT_RECEIPTS": "Payment receipts",
-			"TERMINAL_RECEIPTS": "Receipts"
-		}
-	},
 	"FIELDS": {
 		"INDEX": {
 			"CREATE": "Create",
@@ -627,6 +278,7 @@
 			"DELETING": "Deleting {{ displayName }}",
 			"ERROR": "An error occured with {{ displayName }}. Correct and try again."
 		}
+<<<<<<< HEAD
 	},
 	"SETTINGS": {
 		"SETTINGS": "Settings",
@@ -3310,5 +2962,7 @@
 			"DELETING": "Deleting {{ displayName }}",
 			"ERROR": "An error occured with {{ displayName }}. Correct and try again."
 		}
+=======
+>>>>>>> a1dfbec61681d5c2809330ca75644808391268a9
 	}
 }
