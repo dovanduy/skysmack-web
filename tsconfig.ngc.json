@@ -152,6 +152,9 @@
       "@skysmack/ng-persons": [
         "libs/ng-packages/ng-persons"
       ],
+      "@skysmack/ng-file-storage": [
+        "libs/ng-packages/ng-file-storage"
+      ],
       "@skysmack/ng-persons-lodging-reservations": [
         "libs/ng-packages/ng-persons-lodging-reservations"
       ],

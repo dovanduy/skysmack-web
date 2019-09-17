@@ -71,6 +71,9 @@
       "@skysmack/packages-persons": [
         "libs/packages/persons/public_api.ts"
       ],
+      "@skysmack/packages-file-storage": [
+        "libs/packages/file-storage/public_api.ts"
+      ],
       "@skysmack/packages-persons-lodging-reservations": [
         "libs/packages/persons-lodging-reservations/public_api.ts"
       ],
@@ -166,6 +169,9 @@
       ],
       "@skysmack/ng-persons": [
         "libs/ng-packages/ng-persons/src/public_api.ts"
+      ],
+      "@skysmack/ng-file-storage": [
+        "libs/ng-packages/ng-file-storage/src/public_api.ts"
       ],
       "@skysmack/ng-persons-lodging-reservations": [
         "libs/ng-packages/ng-persons-lodging-reservations/src/public_api.ts"

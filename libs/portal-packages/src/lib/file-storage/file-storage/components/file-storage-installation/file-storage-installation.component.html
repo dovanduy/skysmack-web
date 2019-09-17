@@ -1,0 +1,5 @@
+<ss-dynamic-form [fields$]="fields$" [validation]="fieldsConfig.validation" [rules]="fieldsConfig.formRules"
+    [buttonText]="'FILE_STORAGE.CREATE.BUTTON_CREATE' | translate" (submitted)="onCreateSubmit($event)"
+    [removeCloseButton]="true">
+    <h2 [translate]="'FILE_STORAGE.CREATE.CREATE'"></h2>
+</ss-dynamic-form>

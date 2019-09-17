@@ -17,3 +17,4 @@ export * from './terminal-payments/terminal-payments.module';
 export * from './emails/emails.module';
 export * from './emails-smtp/emails-smtp.module';
 export * from './open-api/open-api.module';
+export * from './file-storage/file-storage.module';

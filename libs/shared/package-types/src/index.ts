@@ -18,5 +18,6 @@ export * from './invoices-products-type';
 export * from './invoices-cash-payments-type';
 export * from './identities-type';
 export * from './emails-smtp-type';
-export * from './account-type'
-export * from './open-api-type'
+export * from './account-type';
+export * from './open-api-type';
+export * from './file-storage-type';

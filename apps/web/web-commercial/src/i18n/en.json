@@ -131,6 +131,7 @@
 		"SAFESUBDOMAIN": "Safe subdomain",
 		"STATE": "State",
 		"SUBMIT": "Submit",
+		"LAUNCH": "Launch",
 		"FORM": {
 			"LABELS": {
 				"NAME": "Name",
@@ -173,8 +174,7 @@
 					"REQUIRED": "Status is required."
 				}
 			}
-		},
-		"TENANTUSERRELATION": "Tenant-User relation"
+		}
 	},
 	"COMMERCIAL_UI_PARTNERS": {
 		"INDEX": {
@@ -192,7 +192,7 @@
 		"TITLE": "Users",
 		"CREATE": "Create",
 		"DETAILS": "Details",
-		"REMOVE": "TTTRemove",
+		"REMOVE": "Remove",
 		"CREATEUSER": "Create user",
 		"EDIT": "Edit",
 		"EDITUSER": "Edit user",
@@ -227,55 +227,45 @@
 			}
 		}
 	},
-	"FIELDS": {
-		"INDEX": {
-			"CREATE": "Create",
-			"ACTIONS": "Actions",
-			"MANAGE": "Manage",
-			"BACK": "Back"
-		},
-		"CREATE": {
-			"CREATE": "Create",
-			"BUTTON_CREATE": "Create"
-		},
-		"EDIT": {
-			"EDITING": "Editing",
-			"BUTTON_EDIT": "Update"
-		},
+	"FILE_STORAGE": {
 		"FORM": {
 			"LABELS": {
-				"KEY": "Key",
-				"TYPE": "Type",
-				"DISPLAY": "Display name",
-				"VALIDATORS": "Validators",
-				"READPERMISSION": "Read permission",
-				"WRITEPERMISSION": "Write permission"
+				"BUCKET": "Bucket",
+				"FOLDERNAME": "Folder name"
 			},
 			"PLACEHOLDERS": {
-				"KEY": "Key",
-				"TYPE": "Type",
-				"DISPLAY": "Display name",
-				"VALIDATORS": "Validators",
-				"READPERMISSION": "Read permission",
-				"WRITEPERMISSION": "Write permission"
+				"BUCKET": "Enter bucket name",
+				"FOLDERNAME": "Folder name"
 			},
 			"VALIDATION": {
-				"KEY": {
-					"REQUIRED": "Key is required"
+				"BUCKET": {
+					"REQUIRED": "Bucket name is required."
 				},
-				"TYPE": {
-					"REQUIRED": "Key is required"
-				},
-				"DISPLAY": {
-					"REQUIRED": "Display name is required"
+				"FOLDERNAME": {
+					"REQUIRED": "Folder name is required."
 				}
 			}
 		},
-		"QUEUE": {
-			"ADDING": "Adding {{ displayName }}",
-			"UPDATING": "Updating {{ displayName }}",
-			"DELETING": "Deleting {{ displayName }}",
-			"ERROR": "An error occured with {{ displayName }}. Correct and try again."
+		"CREATE": {
+			"CREATE": "Create new bucket",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDIT": "Edit",
+			"BUTTON_EDIT": "Update"
+		},
+		"INDEX": {
+			"UPLOAD": "Upload file",
+			"CREATE_FOLDER": "Create folder",
+			"PACKAGES": "Packages",
+			"CREATE": "Create",
+			"EDIT": "Edit",
+			"DELETE": "Delete",
+			"FIELDS": "Fields",
+			"FIELDS_TITLE": "(fields)",
+			"ITEM": "Item",
+			"MANAGE": "Manage",
+			"ACTIONS": "Actions"
 		}
 	}
 }

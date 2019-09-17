@@ -1,0 +1,61 @@
+<ss-container (menuItemActionEvent)="actionEvent($event)" [componentKey]="componentKey"
+    *ngIf="loadedPackage$ | async as loadedPackage">
+    <ss-file-storage-installation *ngIf="!(bucket$ | async)"></ss-file-storage-installation>
+
+    <!-- Settings has been set. Show files -->
+    <ng-container *ngIf="(bucket$ | async)">
+        <mat-list>
+            <!-- Breadcrumbs -->
+            <ng-container *ngIf="breadCrumbs$ | async as breadCrumbs">
+                <span class="breadcrumb" *ngIf="breadCrumbs.length === 0">Home</span>
+                <a class="breadcrumb" *ngIf="breadCrumbs.length !== 0" [routerLink]="['/', packagePath]">Home</a>
+                <span *ngFor="let path of breadCrumbs; let first = first; let last = last">
+                    <span class="breadcrumb separator"> / </span><a class="breadcrumb" *ngIf="!last"
+                        [routerLink]="['/', packagePath, path]">{{ path }}</a>
+                    <span class="breadcrumb last" *ngIf="last">{{ path }}</span>
+                </span>
+            </ng-container>
+
+            <!-- Folders -->
+            <mat-list-item *ngFor="let folder of  folders$ | async">
+                <mat-icon mat-list-icon>folder</mat-icon>
+                <h4 mat-line [routerLink]="[currentLocation, folder.object.name.split('/')[0]]"
+                    style="cursor: pointer;">
+                    {{ folder.object.name.split('/')[0] }}
+                </h4>
+
+                <!-- Menu -->
+                <button mat-icon-button [matMenuTriggerFor]="menu">
+                    <mat-icon>more_vert</mat-icon>
+                </button>
+                <mat-menu #menu="matMenu">
+                    <button mat-menu-item (click)="deleteFile(folder)">
+                        <mat-icon>delete</mat-icon>
+                        <span>Delete</span>
+                    </button>
+                </mat-menu>
+            </mat-list-item>
+
+            <!-- Items -->
+            <mat-list-item *ngFor="let item of items$ | async">
+                <mat-icon mat-list-icon>insert_drive_file</mat-icon>
+                <a mat-line [href]="item.object.mediaLink" target="_blank">{{ item.object.name }}</a>
+
+                <!-- Menu -->
+                <button mat-icon-button [matMenuTriggerFor]="menu">
+                    <mat-icon>more_vert</mat-icon>
+                </button>
+                <mat-menu #menu="matMenu">
+                    <button mat-menu-item (click)="deleteFile(item)">
+                        <mat-icon>delete</mat-icon>
+                        <span>Delete</span>
+                    </button>
+                </mat-menu>
+            </mat-list-item>
+
+            <!-- Empty folder -->
+            <p *ngIf="empty$ | async" style="color: #7A7A7A; font-size: 12px;">Folder is empty</p>
+
+        </mat-list>
+    </ng-container>
+</ss-container>

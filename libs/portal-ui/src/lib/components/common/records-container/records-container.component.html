@@ -18,10 +18,10 @@
             </div>
           </th>
           <th class="table-cell mat-header-cell action-buttons">
-            <!-- <button mat-icon-button matTooltip="Refresh">
+            <button mat-icon-button matTooltip="Refresh" (click)="refreshClicked()">
               <mat-icon>refresh</mat-icon>
             </button>
-            <button mat-icon-button matTooltip="Filter">
+            <!-- <button mat-icon-button matTooltip="Filter">
               <mat-icon>filter_list</mat-icon>
             </button> -->
           </th>
@@ -35,7 +35,9 @@
             {{ entity.object[column.fieldDisplayKey ? column.fieldDisplayKey : column.fieldKey] | displayValue:column | displayModifier:column:entity }}
           </td>
           <td class="table-cell mat-cell action-buttons">
-              <div *ngIf="(entity.status !== 'OK' && !entity.error)" class="spinner-container"><mat-spinner diameter="24" color="accent"></mat-spinner></div>
+            <div *ngIf="(entity.status !== 'OK' && !entity.error)" class="spinner-container">
+              <mat-spinner diameter="24" color="accent"></mat-spinner>
+            </div>
             <mat-icon class="success-icon" color="primary" *ngIf="entity.isNew && entity.status !== 'CREATING'">
               check_circle</mat-icon>
             <mat-icon class="error-icon" color="warn" *ngIf="entity.error">error</mat-icon>
@@ -51,10 +53,11 @@
                     <ng-template [inAnyPermission]="menuItemAction.permissions"
                       (permissionsChecked)="menuItemAction.display = $event">
                       <!-- ACTION EVENT  -->
-                      <button *ngIf="menuItemAction.isActionEvent && (menuItemAction | showMenuItemAction:entity) && menuItemAction.display"
+                      <button
+                        *ngIf="menuItemAction.isActionEvent && (menuItemAction | showMenuItemAction:entity) && menuItemAction.display"
                         mat-menu-item
                         (click)="menuItemActionEvent.emit({ action: menuItemAction.action, value: entity, _this: menuItemAction._this })">
-                        <mat-icon>{{ menuItemAction.icon }}</mat-icon> 
+                        <mat-icon>{{ menuItemAction.icon }}</mat-icon>
                         <span>{{ menuItemAction.displayName | translate }}</span>
                       </button>
                       <!-- URL EVENT -->

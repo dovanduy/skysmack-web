@@ -53,6 +53,9 @@
     "packages-persons": {
       "tags": []
     },
+        "packages-file-storage": {
+      "tags": []
+    },
     "packages-persons-lodging-reservations": {
       "tags": []
     },
