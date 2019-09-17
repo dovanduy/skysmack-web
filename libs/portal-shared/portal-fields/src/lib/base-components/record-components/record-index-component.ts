@@ -196,4 +196,8 @@ export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey>
             map(x => this.menuItemActions$.next(x))
         ).subscribe());
     }
+
+    public refresh(): void {
+        console.log('clicked');
+    }
 }

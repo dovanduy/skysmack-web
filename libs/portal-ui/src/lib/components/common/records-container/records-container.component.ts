@@ -20,6 +20,7 @@ export class RecordsContainerComponent implements OnInit, OnDestroy {
   @Output() public requestPage = new EventEmitter<boolean>(false);
   @Output() public menuItemActionEvent = new EventEmitter<any>();
   @Output() public sortChanged = new EventEmitter<DisplayColumn>();
+  @Output() public refresh = new EventEmitter<void>();
 
   @Input() public entities$: Observable<LocalObject<any, any>[]>;
   @Input() public menuItemActions$: BehaviorSubject<MenuItem[]>;
@@ -120,5 +121,9 @@ export class RecordsContainerComponent implements OnInit, OnDestroy {
       }
       this.sortChanged.emit(displayColumn);
     }
+  }
+
+  public refreshClicked() {
+    this.refresh.emit();
   }
 }
