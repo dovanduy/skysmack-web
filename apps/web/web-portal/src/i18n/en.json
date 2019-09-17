@@ -136,6 +136,35 @@
 			"ERROR": "An error occured with access policy rules {{ id }}. Correct and try again."
 		}
 	},
+	"EMAILS_SMTP": {
+		"INDEX": {
+			"CREATE": "Create",
+			"EDIT": "Edit",
+			"DELETE": "Delete",
+			"TEMPLATES": "Templates",
+			"MANAGE": "Manage",
+			"ACTIONS": "Actions",
+			"SETTINGS": "Settings"
+		}
+	},
+	"EMAILS_SMTP_SETTINGS": {
+		"FORM": {
+			"PLACEHOLDERS": {
+				"HOST": "Host",
+				"PORT": "Port",
+				"USERNAME": "Username",
+				"PASSWORD": "Password",
+				"ENABLESSL": "Enable ssl"
+			},
+			"LABELS": {
+				"HOST": "Host",
+				"PORT": "Port",
+				"USERNAME": "Username",
+				"PASSWORD": "Password",
+				"ENABLESSL": "Enable ssl"
+			}
+		}
+	},
 	"EMAIL_TEMPLATES": {
 		"FORM": {
 			"LABELS": {
@@ -186,35 +215,6 @@
 			"TEMPLATES": "Templates",
 			"MANAGE": "Manage",
 			"ACTIONS": "Actions"
-		}
-	},
-	"EMAILS_SMTP": {
-		"INDEX": {
-			"CREATE": "Create",
-			"EDIT": "Edit",
-			"DELETE": "Delete",
-			"TEMPLATES": "Templates",
-			"MANAGE": "Manage",
-			"ACTIONS": "Actions",
-			"SETTINGS": "Settings"
-		}
-	},
-	"EMAILS_SMTP_SETTINGS": {
-		"FORM": {
-			"PLACEHOLDERS": {
-				"HOST": "Host",
-				"PORT": "Port",
-				"USERNAME": "Username",
-				"PASSWORD": "Password",
-				"ENABLESSL": "Enable ssl"
-			},
-			"LABELS": {
-				"HOST": "Host",
-				"PORT": "Port",
-				"USERNAME": "Username",
-				"PASSWORD": "Password",
-				"ENABLESSL": "Enable ssl"
-			}
 		}
 	},
 	"ACCOUNTS": {
@@ -319,6 +319,29 @@
 			"ERROR": "An error occured with client {{ name }}. Correct and try again."
 		}
 	},
+	"IDENTITIES": {
+		"INDEX": {
+			"ROLES": "Roles",
+			"USERS": "Users",
+			"ACCOUNTS": "Accounts",
+			"CLIENTS": "Clients",
+			"APPLICATIONS": "Applications",
+			"USERS_ROLES_TITLE": "User roles",
+			"APPLICATIONS_ROLES_TITLE": "Application roles",
+			"MANAGE": "Manage",
+			"SETTINGS": "Settings",
+			"ACCOUNT": "Account",
+			"CHANGE_PASSWORD": "Change password",
+			"FORGOT_PASSWORD": "Forgot password",
+			"CONFIRM_EMAIL": "Confirm email",
+			"AVAILABLE_SETTINGS": {
+				"LOCKOUT": "Lockout",
+				"USER": "User",
+				"PASSWORD": "Password",
+				"SIGNIN": "Sign in"
+			}
+		}
+	},
 	"IDENTITIES_SETTINGS": {
 		"FORM": {
 			"LABELS": {
@@ -359,29 +382,6 @@
 		"QUEUE": {
 			"UPDATING": "Updating",
 			"ERROR": "Error occured updating settings."
-		}
-	},
-	"IDENTITIES": {
-		"INDEX": {
-			"ROLES": "Roles",
-			"USERS": "Users",
-			"ACCOUNTS": "Accounts",
-			"CLIENTS": "Clients",
-			"APPLICATIONS": "Applications",
-			"USERS_ROLES_TITLE": "User roles",
-			"APPLICATIONS_ROLES_TITLE": "Application roles",
-			"MANAGE": "Manage",
-			"SETTINGS": "Settings",
-			"ACCOUNT": "Account",
-			"CHANGE_PASSWORD": "Change password",
-			"FORGOT_PASSWORD": "Forgot password",
-			"CONFIRM_EMAIL": "Confirm email",
-			"AVAILABLE_SETTINGS": {
-				"LOCKOUT": "Lockout",
-				"USER": "User",
-				"PASSWORD": "Password",
-				"SIGNIN": "Sign in"
-			}
 		}
 	},
 	"APPLICATIONS": {
@@ -1225,6 +1225,75 @@
 		"SELECT_LODGINGS": "Select lodgings",
 		"TITLE": "Lodgings Availability"
 	},
+	"ASSIGNMENTS": {
+		"FORM": {
+			"LABELS": {
+				"ASSIGNMENTTYPEID": "Assignment type",
+				"DESCRIPTION": "Description",
+				"OCCUPATIONSTATE": "Occupation state",
+				"STATUS": "Status",
+				"DUE": "Due date",
+				"FROM": "Can be started from"
+			},
+			"PLACEHOLDERS": {
+				"ASSIGNMENTTYPEID": "Assignment type",
+				"DESCRIPTION": "Enter description",
+				"OCCUPATIONSTATE": "Choose occupation state",
+				"STATUS": "Choose status",
+				"DUE": "Choose due date",
+				"FROM": "Choose can be started from date"
+			},
+			"VALIDATION": {
+				"ASSIGNMENTTYPEID": {
+					"REQUIRED": "Assignment type is required."
+				},
+				"DESCRIPTION": {
+					"REQUIRED": "Description is required."
+				},
+				"STATUS": {
+					"REQUIRED": "Status is required."
+				},
+				"DUE": {
+					"REQUIRED": "Due date is required.",
+					"NOTBEFORE": "The due date may not be earlier than the start date."
+				},
+				"FROM": {
+					"REQUIRED": "A date from when the assignment can begin is required."
+				}
+			},
+			"BUTTONS": {
+				"CREATE": "Create",
+				"EDIT": "Edit"
+			}
+		},
+		"CREATE": {
+			"CREATE": "Create",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDIT": "Edit",
+			"BUTTON_EDIT": "Update"
+		},
+		"INDEX": {
+			"TITLE_EXTRAS": "(assignments)",
+			"ACTIONS": "Actions",
+			"CREATE": "Create",
+			"EDIT": "Edit",
+			"DELETE": "Delete",
+			"MANAGE": "Manage",
+			"FIELDS": "Fields",
+			"FIELDS_TITLE": "(fields)",
+			"STATES": "States",
+			"TYPES": "Types",
+			"BACK": "Back"
+		},
+		"QUEUE": {
+			"ADDING": "Adding {{ description }}",
+			"UPDATING": "Updating {{ description }}",
+			"DELETING": "Deleting {{ description }}",
+			"ERROR": "An error occured with {{ description }}. Correct and try again."
+		}
+	},
 	"ASSIGNMENT_TYPES": {
 		"FORM": {
 			"LABELS": {
@@ -1322,75 +1391,6 @@
 			"CREATE": {
 				"ADD": "Add field"
 			}
-		},
-		"QUEUE": {
-			"ADDING": "Adding {{ description }}",
-			"UPDATING": "Updating {{ description }}",
-			"DELETING": "Deleting {{ description }}",
-			"ERROR": "An error occured with {{ description }}. Correct and try again."
-		}
-	},
-	"ASSIGNMENTS": {
-		"FORM": {
-			"LABELS": {
-				"ASSIGNMENTTYPEID": "Assignment type",
-				"DESCRIPTION": "Description",
-				"OCCUPATIONSTATE": "Occupation state",
-				"STATUS": "Status",
-				"DUE": "Due date",
-				"FROM": "Can be started from"
-			},
-			"PLACEHOLDERS": {
-				"ASSIGNMENTTYPEID": "Assignment type",
-				"DESCRIPTION": "Enter description",
-				"OCCUPATIONSTATE": "Choose occupation state",
-				"STATUS": "Choose status",
-				"DUE": "Choose due date",
-				"FROM": "Choose can be started from date"
-			},
-			"VALIDATION": {
-				"ASSIGNMENTTYPEID": {
-					"REQUIRED": "Assignment type is required."
-				},
-				"DESCRIPTION": {
-					"REQUIRED": "Description is required."
-				},
-				"STATUS": {
-					"REQUIRED": "Status is required."
-				},
-				"DUE": {
-					"REQUIRED": "Due date is required.",
-					"NOTBEFORE": "The due date may not be earlier than the start date."
-				},
-				"FROM": {
-					"REQUIRED": "A date from when the assignment can begin is required."
-				}
-			},
-			"BUTTONS": {
-				"CREATE": "Create",
-				"EDIT": "Edit"
-			}
-		},
-		"CREATE": {
-			"CREATE": "Create",
-			"BUTTON_CREATE": "Create"
-		},
-		"EDIT": {
-			"EDIT": "Edit",
-			"BUTTON_EDIT": "Update"
-		},
-		"INDEX": {
-			"TITLE_EXTRAS": "(assignments)",
-			"ACTIONS": "Actions",
-			"CREATE": "Create",
-			"EDIT": "Edit",
-			"DELETE": "Delete",
-			"MANAGE": "Manage",
-			"FIELDS": "Fields",
-			"FIELDS_TITLE": "(fields)",
-			"STATES": "States",
-			"TYPES": "Types",
-			"BACK": "Back"
 		},
 		"QUEUE": {
 			"ADDING": "Adding {{ description }}",
@@ -2978,245 +2978,23 @@
 			"ERROR": "An error occured with settings. Correct and try again."
 		}
 	},
-	"COMMERCIAL_TENANTS": {
-		"INDEX": {
-			"CREATE": "Create tenant",
-			"TENANTS": "Tenants",
-			"TENANTUSERRELATION": "Tenant-User relation"
-		},
-		"TITLE": "Tenants",
-		"CREATE": "Create",
-		"CREATETENANT": "Create Tenant",
-		"EDIT": "Edit",
-		"EDITTENANT": "Edit tenant",
-		"DETAILS": "Details",
-		"HOSTNAME": "Hostname",
-		"SAFESUBDOMAIN": "Safe subdomain",
-		"STATE": "State",
-		"FORM": {
-			"LABELS": {
-				"NAME": "Name",
-				"HOSTNAME": "Hostname",
-				"SAFESUBDOMAIN": "Safe subdomain",
-				"STATE": "State",
-				"USERID": "User",
-				"TENANTID": "Tenant",
-				"STATUS": "Status"
-			},
-			"PLACEHOLDERS": {
-				"NAME": "Enter a Name",
-				"HOSTNAME": "Enter a hostname",
-				"SAFESUBDOMAIN": "Enter a safe subdomain",
-				"STATE": "Enter a state",
-				"USERID": "User",
-				"TENANTID": "Tenant",
-				"STATUS": "Status"
-			},
-			"VALIDATION": {
-				"NAME": {
-					"REQUIRED": "An Name is required."
-				},
-				"HOSTNAME": {
-					"REQUIRED": "An hostname is required."
-				},
-				"SAFESUBDOMAIN": {
-					"REQUIRED": "A subdomain is required."
-				},
-				"STATE": {
-					"REQUIRED": "The state is required."
-				},
-				"USERID": {
-					"REQUIRED": "User is required."
-				},
-				"TENANTID": {
-					"REQUIRED": "Tenant is required."
-				},
-				"STATUS": {
-					"REQUIRED": "Status is required."
-				}
-			}
-		},
-		"REMOVE": "Remove",
-		"SUBMIT": "Submit",
-		"TENANTUSERRELATION": "Tenant-User relation"
-	},
-	"COMMERCIAL_ACCOUNT": {
-		"INDEX": {
-			"FORGOTPASSWORD": "Forgot password",
-			"ACCOUNT": "Account",
-			"WELCOME": "Welcome to skysmack",
-			"CONFIRMEMAIL": "Confirm e-mail"
-		},
-		"LOGIN": {
-			"SIGNIN": "Sign in",
-			"CREDENTIALS": "Please enter credentials below",
-			"INCORRECT": "The entered password and/or username was incorrect. Please try again.",
-			"FORGOTPASSWORD": "Forgot password",
-			"CONFIRMEMAIL": "Confirm email",
-			"REGISTER": "Register"
-		},
-		"FORM": {
-			"LABELS": {
-				"EMAIL": "Email",
-				"PASSWORD": "Password",
-				"STAYSIGNEDIN": "Stay signed in?",
-				"USERNAME": "User name",
-				"CONFIRMPASSWORD": "Confirm Password",
-				"NEWPASSWORD": "New password",
-				"CONFIRMNEWPASSWORD": "Confirm new password"
-			},
-			"PLACEHOLDERS": {
-				"EMAIL": "Enter email",
-				"PASSWORD": "Enter password",
-				"CURRENTPASSWORD": "Current password",
-				"NEWPASSWORD": "New password",
-				"CONFIRMNEWPASSWORD": "Confirm new password",
-				"USERNAME": "Enter user name",
-				"CONFIRMPASSWORD": "Confirm Password"
-			},
-			"VALIDATION": {
-				"EMAIL": {
-					"REQUIRED": "Email is required.",
-					"INVALIDEMAIL": "Please enter a valid email."
-				},
-				"PASSWORD": {
-					"REQUIRED": "Password is required."
-				},
-				"CURRENTPASSWORD": {
-					"REQUIRED": "Current password is required."
-				},
-				"NEWPASSWORD": {
-					"REQUIRED": "New password is required."
-				},
-				"CONFIRMNEWPASSWORD": {
-					"REQUIRED": "Please repeat the new password.",
-					"PASSWORDMISMATCH": "Passwords must match."
-				},
-				"USERNAME": {
-					"REQUIRED": "User name is required"
-				},
-				"CONFIRMPASSWORD": {
-					"REQUIRED": "Please repeat the new password.",
-					"PASSWORDMISMATCH": "Passwords must match."
-				}
-			}
-		},
-		"VALIDATION": {
-			"TOKEN": {
-				"REQUIRED": "Token is required"
-			},
-			"EMAIL": {
-				"REQUIRED": "Email is required.",
-				"INVALIDEMAIL": "Please type a valid email"
-			},
-			"CURRENTPASSWORD": {
-				"REQUIRED": "Current password is required."
-			},
-			"NEWPASSWORD": {
-				"REQUIRED": "New password is required."
-			},
-			"CONFIRMNEWPASSWORD": {
-				"REQUIRED": "Please repeat the new password.",
-				"PASSWORDMISMATCH": "Passwords must match."
-			}
-		},
-		"CHANGE_PASSWORD": {
-			"TITLE": "Change password",
-			"BUTTON_EDIT": "Update"
-		},
-		"REGISTER": {
-			"TITLE": "Register"
-		}
-	},
-	"COMMERCIAL_UI_PARTNERS": {
-		"INDEX": {
-			"CHANGEPASSWORD": "Change password",
-			"TENANTS": "Tenants",
-			"USERS": "Users",
-			"LOGOUT": "Logout"
-		}
-	},
-	"COMMERCIAL_USERS": {
-		"INDEX": {
-			"CREATE": " Create user",
-			"USERS": "Users"
-		},
-		"TITLE": "Users",
-		"CREATE": "Create",
-		"CREATEUSER": "Create user",
-		"EDIT": "Edit",
-		"EDITUSER": "Edit user",
-		"EMAIL": "Email: ",
-		"FORM": {
-			"LABELS": {
-				"EMAIL": "Email",
-				"USERNAME": "Username",
-				"PASSWORD": "Password",
-				"CONFIRMPASSWORD": "Confirm password"
-			},
-			"PLACEHOLDERS": {
-				"EMAIL": "Enter a email",
-				"USERNAME": "Enter a username",
-				"PASSWORD": "Enter a password",
-				"CONFIRMPASSWORD": "Enter a confirm password"
-			},
-<<<<<<< HEAD
-			"VALIDATION": {}
-		}
-	},
 	"FILE_STORAGE": {
 		"FORM": {
 			"LABELS": {
-				"FIRSTNAME": "First name",
-				"LASTNAME": "Last name",
-				"DISPLAYNAME": "Display name",
-				"NAME": "Name",
 				"BUCKET": "Bucket",
 				"FOLDERNAME": "Folder name"
 			},
 			"PLACEHOLDERS": {
-				"FIRSTNAME": "Enter first name",
-				"LASTNAME": "Enter last name",
-				"DISPLAYNAME": "Enter display name",
-				"NAME": "Enter name",
 				"BUCKET": "Enter bucket name",
 				"FOLDERNAME": "Folder name"
 			},
 			"VALIDATION": {
-				"FIRSTNAME": {
-					"REQUIRED": "A first name is required."
-				},
-				"LASTNAME": {
-					"REQUIRED": "A last name is required."
-				},
-				"DISPLAYNAME": {
-					"REQUIRED": "A Display name is required."
-				},
-				"NAME": {
-					"REQUIRED": "Name is required."
-				},
 				"BUCKET": {
 					"REQUIRED": "Bucket name is required."
 				},
 				"FOLDERNAME": {
 					"REQUIRED": "Folder name is required."
 				}
-			}
-		},
-		"FIELDS": {
-			"CREATE": {
-				"ADD": "Add new field"
-			},
-			"EDIT": {
-				"EDITING": "Editing"
-			},
-			"INDEX": {
-				"ACTIONS": "Actions",
-				"CREATE": "Create new field",
-				"OTHER": "Other",
-				"BACK": "Back",
-				"FIELDS": "Fields",
-				"EDIT": "Edit"
 			}
 		},
 		"CREATE": {
@@ -3228,6 +3006,8 @@
 			"BUTTON_EDIT": "Update"
 		},
 		"INDEX": {
+			"UPLOAD": "Upload file",
+			"CREATE_FOLDER": "Create folder",
 			"PACKAGES": "Packages",
 			"CREATE": "Create",
 			"EDIT": "Edit",
@@ -3236,62 +3016,7 @@
 			"FIELDS_TITLE": "(fields)",
 			"ITEM": "Item",
 			"MANAGE": "Manage",
-			"ACTIONS": "Actions",
-			"UPDLOAD": "Upload",
-			"UPLOAD": "Upload file",
-			"CREATE_FOLDER": "Create folder"
-		},
-		"NOTIFICATIONS": {
-			"GET": {
-				"PAGED_ERROR": "Failed to get fileStorage ({{ httpErrorCode }}).",
-				"SINGLE_FAILURE": "Failed to get {{ displayName }} ({{ httpErrorCode }}).",
-				"FIELDS_FAILURE": "Failed to get fields for fileStorage ({{ httpErrorCode }}).",
-				"SINGLE_FIELD_FAILURE": "Failed to get {{ displayName }} field ({{ httpErrorCode }})."
-			},
-			"ADD": {
-				"SUCCESS": "Added {{ displayName }} succcessfully.",
-				"FAILURE": "Failed to add {{ displayName }} ({{ httpErrorCode }}).",
-				"FIELD_FAILURE": "Failed to add field for {{ displayName }} ({{ httpErrorCode }}).",
-				"FIELD_SUCCESS": "Added field for {{ displayName }} successfully."
-			},
-			"UPDATE": {
-				"SUCCESS": "Updated {{ displayName }} successfully.",
-				"FAILURE": "Failed to update {{ displayName }} ({{ httpErrorCode }}).",
-				"FIELD_SUCCESS": "Updated field for {{ displayName }} successfully.",
-				"FIELD_FAILURE": "Failed to update field for {{ displayName }} ({{ httpErrorCode }})"
-			},
-			"REMOVE": {
-				"SUCCESS": "Removed {{ displayName }} successfully.",
-				"FAILURE": "Failed to remove {{ displayName }} ({{ httpErrorCode }}).",
-				"FIELD_SUCCESS": "Removed field for {{ displayName }} succesfully.",
-				"FIELD_FAILURE": "Failed to remove field for {{ displayName }} ({{ httpErrorCode }})."
-			}
-		},
-		"QUEUE": {
-			"ADDING": "Adding {{ displayName }}",
-			"UPDATING": "Updating {{ displayName }}",
-			"DELETING": "Deleting {{ displayName }}",
-			"ERROR": "An error occured with {{ displayName }}. Correct and try again."
+			"ACTIONS": "Actions"
 		}
-=======
-			"VALIDATION": {
-				"EMAIL": {
-					"REQUIRED": "An Email is required.",
-					"INVALIDEMAIL": "Please enter a valid email."
-				},
-				"USERNAME": {
-					"REQUIRED": "An username is required."
-				},
-				"PASSWORD": {
-					"REQUIRED": "A password is required."
-				},
-				"CONFIRMPASSWORD": {
-					"PASSWORDMISMATCH": "The passwords must match."
-				}
-			}
-		},
-		"DETAILS": "Details",
-		"REMOVE": "TTTRemove"
->>>>>>> a1dfbec61681d5c2809330ca75644808391268a9
 	}
 }
