@@ -12,7 +12,8 @@ import { NgAccountRequests } from '@skysmack/ng-identities';
 
 @Component({
   selector: 'skysmack-confirm-email',
-  templateUrl: './confirm-email.component.html'
+  templateUrl: './confirm-email.component.html',
+  styleUrls: ['./confirm-email.component.scss']
 })
 export class ConfirmEmailComponent extends BaseComponent<AccountAppState, unknown> implements OnInit, OnDestroy {
 
