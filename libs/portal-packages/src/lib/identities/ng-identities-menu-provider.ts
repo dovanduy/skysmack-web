@@ -199,22 +199,6 @@ export class NgIdentitiesMenuProvider implements MenuProvider {
                 providedIn: [SIDEBAR]
             }),
             new MenuItem({
-                url: 'forgot-password',
-                displayName: this.identitiesTranslationPrefix + 'FORGOT_PASSWORD',
-                area: 'account',
-                order: 1,
-                icon: 'group_add',
-                providedIn: [SIDEBAR]
-            }),
-            new MenuItem({
-                url: 'confirm-email',
-                displayName: this.identitiesTranslationPrefix + 'CONFIRM_EMAIL',
-                area: 'account',
-                order: 1,
-                icon: 'group_add',
-                providedIn: [SIDEBAR]
-            }),
-            new MenuItem({
                 url: 'settings/lockout',
                 displayName: this.identitiesTranslationPrefix + 'AVAILABLE_SETTINGS.LOCKOUT',
                 area: 'settings',

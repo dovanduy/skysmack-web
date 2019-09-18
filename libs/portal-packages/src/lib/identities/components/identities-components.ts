@@ -9,8 +9,7 @@ import { RecoverPasswordComponent } from '../accounts/components/recover-passwor
 
 export const identitiesRoutes: Routes = [
   {
-    path: '', component: IdentitiesIndexComponent,
-    children: [
+    path: '', component: IdentitiesIndexComponent, children: [
       {
         path: 'settings/lockout', component: SettingsComponent, pathMatch: 'full', data: {
           fieldsConfigToken: 'NgLockoutSettingsFieldsConfig'
@@ -34,6 +33,10 @@ export const identitiesRoutes: Routes = [
       {
         path: 'change-password', component: ChangePasswordComponent
       },
+    ],
+  },
+  {
+    path: '', children: [
       {
         path: 'confirm-email', component: ConfirmEmailComponent
       },
