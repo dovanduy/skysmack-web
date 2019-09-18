@@ -8,10 +8,10 @@
 
 <ng-container *ngFor="let accountPackage of accountPackages$ | async as accountPackages">
   <div class="btn-wrapper">
-    <button mat-button [routerLink]="['/' + accountPackage.path + '/forgot-password']" tabindex="-1">
+    <button mat-button (click)="navigateTo('/' + accountPackage.path + '/forgot-password')" tabindex="-1">
       <span [translate]="'OAUTH2.OAUTH2_LOGIN.FORGOT_PASSWORD'"></span>
     </button>
-    <button mat-button [routerLink]="['/' + accountPackage.path + '/confirm-email']" tabindex="-1">
+    <button mat-button (click)="navigateTo('/' + accountPackage.path + '/confirm-email')" tabindex="-1">
       <span [translate]="'OAUTH2.OAUTH2_LOGIN.CONFIRM_EMAIL'"></span>
     </button>
   </div>

@@ -27,15 +27,15 @@ import { IdentitiesTypeId } from '@skysmack/package-types';
       [
         transition(
           ':enter', [
-            style({ height: 0, opacity: 0.5 }),
-            animate('.1s', style({ height: '*', 'opacity': 1 }))
-          ]
+          style({ height: 0, opacity: 0.5 }),
+          animate('.1s', style({ height: '*', 'opacity': 1 }))
+        ]
         ),
         transition(
           ':leave', [
-            style({ height: '*', 'opacity': 1 }),
-            animate('.1s', style({ height: 0, 'opacity': 0 }))
-          ]
+          style({ height: '*', 'opacity': 1 }),
+          animate('.1s', style({ height: 0, 'opacity': 0 }))
+        ]
         )]
     )
   ]
@@ -86,6 +86,11 @@ export class LoginComponent extends BaseComponent<any, any> implements OnInit {
 
     // Clear error when user starts to type again
     this.subscriptionHandler.register(fh.form.valueChanges.subscribe(() => this.error = false));
+  }
+
+  public navigateTo(path: string): void {
+    this.router.navigate([path]);
+    this.dialog.closeAll();
   }
 
   private login(credentials: { email: string, password: string, staySignedIn: boolean }) {
