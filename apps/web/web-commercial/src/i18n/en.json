@@ -1,10 +1,38 @@
 {
+	"COMMERCIAL_DATABASES": {
+		"INDEX": {
+			"CREATE": "Create database",
+			"DATABASES": "Databases"
+		},
+		"TITLE": "Databases",
+		"CREATE": "Create",
+		"EDIT": "Edit",
+		"EDITDATABASE": "Edit database",
+		"REMOVE": "Remove",
+		"FORM": {
+			"LABELS": {
+				"DATABASENAME": "Database name",
+				"CANDELETEDATABASE": "Can delete database"
+			},
+			"PLACEHOLDERS": {
+				"DATABASENAME": "Enter a database name",
+				"CANDELETEDATABASE": "Can delete database"
+			},
+			"VALIDATION": {}
+		}
+	},
 	"COMMERCIAL_ACCOUNT": {
 		"INDEX": {
 			"FORGOTPASSWORD": "Forgot password",
 			"CONFIRMEMAIL": "Confirm e-mail",
 			"ACCOUNT": "Account",
 			"WELCOME": "Welcome to skysmack"
+		},
+		"FORGOT_PASSWORD": {
+			"TITLE": "Forgot password",
+			"BUTTON_EDIT": "Submit",
+			"CHECK_EMAIL_TITLE": "Check your email",
+			"CHECK_EMAIL": "You will find instructions on how to reset your password. Remember to check your spam folder."
 		},
 		"LOGIN": {
 			"SIGNIN": "Sign in",
@@ -85,28 +113,6 @@
 		"CHANGE_PASSWORD": {
 			"TITLE": "Change password",
 			"BUTTON_EDIT": "Update"
-		}
-	},
-	"COMMERCIAL_DATABASES": {
-		"INDEX": {
-			"CREATE": "Create database",
-			"DATABASES": "Databases"
-		},
-		"TITLE": "Databases",
-		"CREATE": "Create",
-		"EDIT": "Edit",
-		"EDITDATABASE": "Edit database",
-		"REMOVE": "Remove",
-		"FORM": {
-			"LABELS": {
-				"DATABASENAME": "Database name",
-				"CANDELETEDATABASE": "Can delete database"
-			},
-			"PLACEHOLDERS": {
-				"DATABASENAME": "Enter a database name",
-				"CANDELETEDATABASE": "Can delete database"
-			},
-			"VALIDATION": {}
 		}
 	},
 	"COMMERCIAL_OPEN_API": {

@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { NgForgotPasswordFieldsConfig } from './ng-forgot-password-fields-config';
 import { FormHelper, Field } from '@skysmack/ng-dynamic-forms';
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 import { AccountAppState } from '@skysmack/packages-identities';
 import { EditorNavService } from '@skysmack/portal-ui';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -19,6 +19,7 @@ export class ForgotPasswordComponent extends BaseComponent<AccountAppState, unkn
 
   public fields$: Observable<Field[]>;
   public message: string;
+  public checkEmail$ = new BehaviorSubject(false);
 
   constructor(
     public router: Router,
@@ -41,9 +42,9 @@ export class ForgotPasswordComponent extends BaseComponent<AccountAppState, unkn
       this.accountRequests.forgotPassword(this.packagePath, fh.form.value).pipe(
         map(response => {
           if (response.status >= 200 && response.status <= 299) {
-            this.router.navigate([this.packagePath])
+            this.checkEmail$.next(true);
           } else {
-            this.message = 'An error occurred. Please try again.'
+            this.message = 'An error occurred. Please try again.';
           }
         }),
         take(1)

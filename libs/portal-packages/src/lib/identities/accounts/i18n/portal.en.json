@@ -49,7 +49,9 @@
         },
         "FORGOT_PASSWORD": {
             "TITLE": "Forgot password",
-            "BUTTON_EDIT": "Submit"
+            "BUTTON_EDIT": "Submit",
+            "CHECK_EMAIL_TITLE": "Check your email",
+            "CHECK_EMAIL": "You will find instructions on how to reset your password. Remember to check your spam folder."
         },
         "INDEX": {
             "ACTIONS": "Actions",
