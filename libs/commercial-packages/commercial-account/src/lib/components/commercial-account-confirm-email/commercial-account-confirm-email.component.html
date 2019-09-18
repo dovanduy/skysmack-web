@@ -1,4 +1,6 @@
 <h3>{{ 'COMMERCIAL_ACCOUNT.INDEX.CONFIRMEMAIL' | translate }}</h3>
+<p *ngIf="message"></p>
 <ss-dynamic-form *ngIf="fields$" [noSidebar]="true" [fields$]="fields$" [validation]="fieldsConfig.validation"
-    [rules]="fieldsConfig.formRules" [removeCloseButton]="true" [buttonText]="'Confirm email'" (submitted)="onSubmit($event)">
+    [rules]="fieldsConfig.formRules" [removeCloseButton]="true" [buttonText]="'Confirm email'"
+    (submitted)="onSubmit($event)">
 </ss-dynamic-form>
