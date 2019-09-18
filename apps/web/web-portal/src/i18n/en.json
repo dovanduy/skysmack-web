@@ -1,4 +1,44 @@
 {
+	"ACCESS_POLICY_ROLES": {
+		"CREATE": {
+			"CREATE": "Create",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDITING": "Edit",
+			"BUTTON_EDIT": "Update"
+		},
+		"INDEX": {
+			"TITLE_EXTRAS": "(roles)",
+			"ACTIONS": "Actions",
+			"CREATE": "Create",
+			"MANAGE": "Manage",
+			"BACK": "Back",
+			"ROLES": "Roles",
+			"FIELDS_TITLE": "(fields)"
+		},
+		"FORM": {
+			"LABELS": {
+				"RULEID": "Rule",
+				"ROLEID": "Role"
+			},
+			"PLACEHOLDERS": {
+				"RULEID": "Rule",
+				"ROLEID": "Role"
+			},
+			"VALIDATION": {
+				"NAME": {
+					"REQUIRED": "A name is required."
+				}
+			}
+		},
+		"QUEUE": {
+			"ADDING": "Adding {{ roleId }}",
+			"UPDATING": "Updating {{ roleId }}",
+			"DELETING": "Deleting {{ roleId }}",
+			"ERROR": "An error occured with {{ roleId }}. Correct and try again."
+		}
+	},
 	"ACCESS_POLICY_PERMISSIONS": {
 		"CREATE": {
 			"CREATE": "Create",
@@ -39,46 +79,6 @@
 			"UPDATING": "Updating {{ permission }} permission",
 			"DELETING": "Deleting {{ permission }} permission",
 			"ERROR": "An error occured with {{ permission }} permission. Correct and try again."
-		}
-	},
-	"ACCESS_POLICY_ROLES": {
-		"CREATE": {
-			"CREATE": "Create",
-			"BUTTON_CREATE": "Create"
-		},
-		"EDIT": {
-			"EDITING": "Edit",
-			"BUTTON_EDIT": "Update"
-		},
-		"INDEX": {
-			"TITLE_EXTRAS": "(roles)",
-			"ACTIONS": "Actions",
-			"CREATE": "Create",
-			"MANAGE": "Manage",
-			"BACK": "Back",
-			"ROLES": "Roles",
-			"FIELDS_TITLE": "(fields)"
-		},
-		"FORM": {
-			"LABELS": {
-				"RULEID": "Rule",
-				"ROLEID": "Role"
-			},
-			"PLACEHOLDERS": {
-				"RULEID": "Rule",
-				"ROLEID": "Role"
-			},
-			"VALIDATION": {
-				"NAME": {
-					"REQUIRED": "A name is required."
-				}
-			}
-		},
-		"QUEUE": {
-			"ADDING": "Adding {{ roleId }}",
-			"UPDATING": "Updating {{ roleId }}",
-			"DELETING": "Deleting {{ roleId }}",
-			"ERROR": "An error occured with {{ roleId }}. Correct and try again."
 		}
 	},
 	"ACCESS_POLICY_RULES": {
@@ -217,50 +217,6 @@
 			}
 		}
 	},
-	"CLIENTS": {
-		"CREATE": {
-			"CREATE": "Create",
-			"BUTTON_CREATE": "Create"
-		},
-		"EDIT": {
-			"EDIT": "Edit",
-			"BUTTON_EDIT": "Update"
-		},
-		"INDEX": {
-			"TITLE_EXTRAS": "(Clients)",
-			"ACTIONS": "Actions",
-			"CREATE": "Create",
-			"DELETE": "Delete",
-			"MANAGE": "Manage",
-			"BACK": "Back"
-		},
-		"FORM": {
-			"LABELS": {
-				"NAME": "Name",
-				"DESCRIPTION": "Description",
-				"ONLINE": "Online"
-			},
-			"PLACEHOLDERS": {
-				"NAME": "Name",
-				"DESCRIPTION": "Description",
-				"ONLINE": "Online"
-			},
-			"VALIDATION": {
-				"NAME": {
-					"REQUIRED": "Name is required."
-				},
-				"DESCRIPTION": {
-					"REQUIRED": "Description is required."
-				}
-			}
-		},
-		"QUEUE": {
-			"ADDING": "Adding client {{ name }}",
-			"UPDATING": "Updating client {{ name }}",
-			"DELETING": "Deleting client {{ name }}",
-			"ERROR": "An error occured with client {{ name }}. Correct and try again."
-		}
-	},
 	"ACCOUNT": {
 		"FORM": {
 			"LABELS": {
@@ -305,6 +261,10 @@
 			"TITLE": "Confirm email",
 			"BUTTON_EDIT": "Submit"
 		},
+		"RESET_PASSWORD": {
+			"TITLE": "Reset password",
+			"BUTTON_EDIT": "Submit"
+		},
 		"FORGOT_PASSWORD": {
 			"TITLE": "Forgot password",
 			"BUTTON_EDIT": "Submit"
@@ -314,10 +274,55 @@
 			"MANAGE": "Manage",
 			"CHANGE_PASSWORD": "Change password",
 			"FORGOT_PASSWORD": "Forgot password",
+			"RESET_PASSWORD": "Reset password",
 			"CONFIRM_EMAIL": "Confirm email"
 		},
 		"NOTIFICATIONS": {},
 		"QUEUE": {}
+	},
+	"CLIENTS": {
+		"CREATE": {
+			"CREATE": "Create",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDIT": "Edit",
+			"BUTTON_EDIT": "Update"
+		},
+		"INDEX": {
+			"TITLE_EXTRAS": "(Clients)",
+			"ACTIONS": "Actions",
+			"CREATE": "Create",
+			"DELETE": "Delete",
+			"MANAGE": "Manage",
+			"BACK": "Back"
+		},
+		"FORM": {
+			"LABELS": {
+				"NAME": "Name",
+				"DESCRIPTION": "Description",
+				"ONLINE": "Online"
+			},
+			"PLACEHOLDERS": {
+				"NAME": "Name",
+				"DESCRIPTION": "Description",
+				"ONLINE": "Online"
+			},
+			"VALIDATION": {
+				"NAME": {
+					"REQUIRED": "Name is required."
+				},
+				"DESCRIPTION": {
+					"REQUIRED": "Description is required."
+				}
+			}
+		},
+		"QUEUE": {
+			"ADDING": "Adding client {{ name }}",
+			"UPDATING": "Updating client {{ name }}",
+			"DELETING": "Deleting client {{ name }}",
+			"ERROR": "An error occured with client {{ name }}. Correct and try again."
+		}
 	},
 	"IDENTITIES": {
 		"INDEX": {
@@ -619,6 +624,79 @@
 			"ROLES": "Roles"
 		}
 	},
+	"INVOICES": {
+		"FORM": {
+			"LABELS": {
+				"DESCRIPTION": "Description",
+				"CURRENCYCODE": "Currency code",
+				"TOTAL": "Total",
+				"TOTALTAX": "Total tax",
+				"BALANCE": "Balance",
+				"PAID": "Paid",
+				"STATUS": "Status"
+			},
+			"PLACEHOLDERS": {
+				"DESCRIPTION": "Description",
+				"CURRENCYCODE": "Currency code",
+				"TOTAL": "Total",
+				"TOTALTAX": "Total tax",
+				"BALANCE": "Balance",
+				"PAID": "Paid",
+				"STATUS": "Status"
+			},
+			"VALIDATION": {
+				"CURRENCYCODE": {
+					"REQUIRED": "Currency code is required."
+				}
+			}
+		},
+		"FIELDS": {
+			"CREATE": {
+				"ADD": "Add new field"
+			},
+			"EDIT": {
+				"EDITING": "Editing"
+			},
+			"INDEX": {
+				"ACTIONS": "Actions",
+				"CREATE": "Create new field",
+				"OTHER": "Other",
+				"BACK": "Back",
+				"FIELDS": "Fields",
+				"EDIT": "Edit"
+			}
+		},
+		"CREATE": {
+			"CREATE": "Create",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDIT": "Edit",
+			"BUTTON_EDIT": "Update"
+		},
+		"INDEX": {
+			"PACKAGES": "Packages",
+			"CREATE": "Create",
+			"EDIT": "Edit",
+			"DELETE": "Delete",
+			"FIELDS": "Fields",
+			"FIELDS_TITLE": "(fields)",
+			"ITEM": "Item",
+			"MANAGE": "Manage",
+			"ACTIONS": "Actions",
+			"ITEMS": "Items",
+			"PAYMENTS": "Payments"
+		},
+		"QUEUE": {
+			"ADDING": "Adding {{ currencyCode }}",
+			"UPDATING": "Updating {{ currencyCode }}",
+			"DELETING": "Deleting {{ currencyCode }}",
+			"ERROR": "An error occured with {{ currencyCode }}. Correct and try again."
+		},
+		"ENTITY_ACTION": {
+			"ITEMS": "Items"
+		}
+	},
 	"INVOICE_ITEMS": {
 		"FORM": {
 			"LABELS": {
@@ -704,79 +782,6 @@
 			"UPDATING": "Updating {{ description }}",
 			"DELETING": "Deleting {{ description }}",
 			"ERROR": "An error occured with {{ description }}. Correct and try again."
-		}
-	},
-	"INVOICES": {
-		"FORM": {
-			"LABELS": {
-				"DESCRIPTION": "Description",
-				"CURRENCYCODE": "Currency code",
-				"TOTAL": "Total",
-				"TOTALTAX": "Total tax",
-				"BALANCE": "Balance",
-				"PAID": "Paid",
-				"STATUS": "Status"
-			},
-			"PLACEHOLDERS": {
-				"DESCRIPTION": "Description",
-				"CURRENCYCODE": "Currency code",
-				"TOTAL": "Total",
-				"TOTALTAX": "Total tax",
-				"BALANCE": "Balance",
-				"PAID": "Paid",
-				"STATUS": "Status"
-			},
-			"VALIDATION": {
-				"CURRENCYCODE": {
-					"REQUIRED": "Currency code is required."
-				}
-			}
-		},
-		"FIELDS": {
-			"CREATE": {
-				"ADD": "Add new field"
-			},
-			"EDIT": {
-				"EDITING": "Editing"
-			},
-			"INDEX": {
-				"ACTIONS": "Actions",
-				"CREATE": "Create new field",
-				"OTHER": "Other",
-				"BACK": "Back",
-				"FIELDS": "Fields",
-				"EDIT": "Edit"
-			}
-		},
-		"CREATE": {
-			"CREATE": "Create",
-			"BUTTON_CREATE": "Create"
-		},
-		"EDIT": {
-			"EDIT": "Edit",
-			"BUTTON_EDIT": "Update"
-		},
-		"INDEX": {
-			"PACKAGES": "Packages",
-			"CREATE": "Create",
-			"EDIT": "Edit",
-			"DELETE": "Delete",
-			"FIELDS": "Fields",
-			"FIELDS_TITLE": "(fields)",
-			"ITEM": "Item",
-			"MANAGE": "Manage",
-			"ACTIONS": "Actions",
-			"ITEMS": "Items",
-			"PAYMENTS": "Payments"
-		},
-		"QUEUE": {
-			"ADDING": "Adding {{ currencyCode }}",
-			"UPDATING": "Updating {{ currencyCode }}",
-			"DELETING": "Deleting {{ currencyCode }}",
-			"ERROR": "An error occured with {{ currencyCode }}. Correct and try again."
-		},
-		"ENTITY_ACTION": {
-			"ITEMS": "Items"
 		}
 	},
 	"INVOICE_PAYMENTS": {
@@ -1225,6 +1230,75 @@
 		"SELECT_LODGINGS": "Select lodgings",
 		"TITLE": "Lodgings Availability"
 	},
+	"ASSIGNMENTS": {
+		"FORM": {
+			"LABELS": {
+				"ASSIGNMENTTYPEID": "Assignment type",
+				"DESCRIPTION": "Description",
+				"OCCUPATIONSTATE": "Occupation state",
+				"STATUS": "Status",
+				"DUE": "Due date",
+				"FROM": "Can be started from"
+			},
+			"PLACEHOLDERS": {
+				"ASSIGNMENTTYPEID": "Assignment type",
+				"DESCRIPTION": "Enter description",
+				"OCCUPATIONSTATE": "Choose occupation state",
+				"STATUS": "Choose status",
+				"DUE": "Choose due date",
+				"FROM": "Choose can be started from date"
+			},
+			"VALIDATION": {
+				"ASSIGNMENTTYPEID": {
+					"REQUIRED": "Assignment type is required."
+				},
+				"DESCRIPTION": {
+					"REQUIRED": "Description is required."
+				},
+				"STATUS": {
+					"REQUIRED": "Status is required."
+				},
+				"DUE": {
+					"REQUIRED": "Due date is required.",
+					"NOTBEFORE": "The due date may not be earlier than the start date."
+				},
+				"FROM": {
+					"REQUIRED": "A date from when the assignment can begin is required."
+				}
+			},
+			"BUTTONS": {
+				"CREATE": "Create",
+				"EDIT": "Edit"
+			}
+		},
+		"CREATE": {
+			"CREATE": "Create",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDIT": "Edit",
+			"BUTTON_EDIT": "Update"
+		},
+		"INDEX": {
+			"TITLE_EXTRAS": "(assignments)",
+			"ACTIONS": "Actions",
+			"CREATE": "Create",
+			"EDIT": "Edit",
+			"DELETE": "Delete",
+			"MANAGE": "Manage",
+			"FIELDS": "Fields",
+			"FIELDS_TITLE": "(fields)",
+			"STATES": "States",
+			"TYPES": "Types",
+			"BACK": "Back"
+		},
+		"QUEUE": {
+			"ADDING": "Adding {{ description }}",
+			"UPDATING": "Updating {{ description }}",
+			"DELETING": "Deleting {{ description }}",
+			"ERROR": "An error occured with {{ description }}. Correct and try again."
+		}
+	},
 	"ASSIGNMENT_TYPES": {
 		"FORM": {
 			"LABELS": {
@@ -1338,75 +1412,6 @@
 				"RECURRING_ASSIGNMENTS": "Recurring assignments",
 				"MANAGE": "Manage"
 			}
-		}
-	},
-	"ASSIGNMENTS": {
-		"FORM": {
-			"LABELS": {
-				"ASSIGNMENTTYPEID": "Assignment type",
-				"DESCRIPTION": "Description",
-				"OCCUPATIONSTATE": "Occupation state",
-				"STATUS": "Status",
-				"DUE": "Due date",
-				"FROM": "Can be started from"
-			},
-			"PLACEHOLDERS": {
-				"ASSIGNMENTTYPEID": "Assignment type",
-				"DESCRIPTION": "Enter description",
-				"OCCUPATIONSTATE": "Choose occupation state",
-				"STATUS": "Choose status",
-				"DUE": "Choose due date",
-				"FROM": "Choose can be started from date"
-			},
-			"VALIDATION": {
-				"ASSIGNMENTTYPEID": {
-					"REQUIRED": "Assignment type is required."
-				},
-				"DESCRIPTION": {
-					"REQUIRED": "Description is required."
-				},
-				"STATUS": {
-					"REQUIRED": "Status is required."
-				},
-				"DUE": {
-					"REQUIRED": "Due date is required.",
-					"NOTBEFORE": "The due date may not be earlier than the start date."
-				},
-				"FROM": {
-					"REQUIRED": "A date from when the assignment can begin is required."
-				}
-			},
-			"BUTTONS": {
-				"CREATE": "Create",
-				"EDIT": "Edit"
-			}
-		},
-		"CREATE": {
-			"CREATE": "Create",
-			"BUTTON_CREATE": "Create"
-		},
-		"EDIT": {
-			"EDIT": "Edit",
-			"BUTTON_EDIT": "Update"
-		},
-		"INDEX": {
-			"TITLE_EXTRAS": "(assignments)",
-			"ACTIONS": "Actions",
-			"CREATE": "Create",
-			"EDIT": "Edit",
-			"DELETE": "Delete",
-			"MANAGE": "Manage",
-			"FIELDS": "Fields",
-			"FIELDS_TITLE": "(fields)",
-			"STATES": "States",
-			"TYPES": "Types",
-			"BACK": "Back"
-		},
-		"QUEUE": {
-			"ADDING": "Adding {{ description }}",
-			"UPDATING": "Updating {{ description }}",
-			"DELETING": "Deleting {{ description }}",
-			"ERROR": "An error occured with {{ description }}. Correct and try again."
 		}
 	},
 	"MAINTENANCE_STATES": {
@@ -1608,6 +1613,45 @@
 			"ERROR": "An error occured with {{ displayName }}. Correct and try again."
 		}
 	},
+	"PRODUCT_TYPES": {
+		"CREATE": {
+			"CREATE": "Create",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDIT": "Edit",
+			"BUTTON_EDIT": "Update"
+		},
+		"INDEX": {
+			"TITLE_EXTRAS": "(types)",
+			"ACTIONS": "Actions",
+			"CREATE": "Create",
+			"DELETE": "Delete",
+			"MANAGE": "Manage",
+			"FIELDS": "Fields",
+			"FIELDS_TITLE": "(type fields)",
+			"BACK": "Back"
+		},
+		"FORM": {
+			"LABELS": {
+				"NAME": "Name"
+			},
+			"PLACEHOLDERS": {
+				"NAME": "Enter name"
+			},
+			"VALIDATION": {
+				"NAME": {
+					"REQUIRED": "Name is required."
+				}
+			}
+		},
+		"QUEUE": {
+			"ADDING": "Adding {{ name }}",
+			"UPDATING": "Updating {{ name }}",
+			"DELETING": "Deleting {{ name }}",
+			"ERROR": "An error occured with {{ name }}. Correct and try again."
+		}
+	},
 	"PRODUCTS": {
 		"FORM": {
 			"LABELS": {
@@ -1658,45 +1702,6 @@
 				"TYPES": "Types",
 				"FIELDS": "Fields",
 				"BACK": "Back"
-			}
-		},
-		"QUEUE": {
-			"ADDING": "Adding {{ name }}",
-			"UPDATING": "Updating {{ name }}",
-			"DELETING": "Deleting {{ name }}",
-			"ERROR": "An error occured with {{ name }}. Correct and try again."
-		}
-	},
-	"PRODUCT_TYPES": {
-		"CREATE": {
-			"CREATE": "Create",
-			"BUTTON_CREATE": "Create"
-		},
-		"EDIT": {
-			"EDIT": "Edit",
-			"BUTTON_EDIT": "Update"
-		},
-		"INDEX": {
-			"TITLE_EXTRAS": "(types)",
-			"ACTIONS": "Actions",
-			"CREATE": "Create",
-			"DELETE": "Delete",
-			"MANAGE": "Manage",
-			"FIELDS": "Fields",
-			"FIELDS_TITLE": "(type fields)",
-			"BACK": "Back"
-		},
-		"FORM": {
-			"LABELS": {
-				"NAME": "Name"
-			},
-			"PLACEHOLDERS": {
-				"NAME": "Enter name"
-			},
-			"VALIDATION": {
-				"NAME": {
-					"REQUIRED": "Name is required."
-				}
 			}
 		},
 		"QUEUE": {
@@ -2395,6 +2400,90 @@
 			"ERROR": "An error occured with {{ printReceipt }}. Correct and try again."
 		}
 	},
+	"TERMINALS": {
+		"FORM": {
+			"LABELS": {
+				"NAME": "Name",
+				"CONNECTIONSTRING": "Connection string",
+				"CONNECTION": "Connection",
+				"DESCRIPTION": "Description",
+				"CLIENTID": "Client",
+				"TERMINALID": "Terminal",
+				"AMOUNT": "Amount",
+				"INVOICEID": "Invoice ID",
+				"CURRENCYCODE": "Currency"
+			},
+			"PLACEHOLDERS": {
+				"NAME": "Name",
+				"CONNECTIONSTRING": "Connection string",
+				"CONNECTION": "Connection",
+				"DESCRIPTION": "Description",
+				"CLIENTID": "Client",
+				"TERMINALID": "Terminal",
+				"AMOUNT": "Amount",
+				"INVOICEID": "Invoice ID",
+				"CURRENCYCODE": "Currency"
+			},
+			"VALIDATION": {
+				"NAME": {
+					"REQUIRED": "Name is required."
+				},
+				"CONNECTIONSTRING": {
+					"REQUIRED": "Connection string is required."
+				},
+				"CONNECTION": {
+					"REQUIRED": "Connection is required."
+				},
+				"CLIENTID": {
+					"REQUIRED": "Client is required."
+				},
+				"TERMINALID": {
+					"REQUIRED": "Terminal is required."
+				},
+				"AMOUNT": {
+					"REQUIRED": "Amount is required."
+				},
+				"INVOICEID": {
+					"REQUIRED": "Invoice ID is required."
+				},
+				"CURRENCYCODE": {
+					"REQUIRED": "Currency is required."
+				}
+			}
+		},
+		"CREATE": {
+			"CREATE": "Create",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDIT": "Edit",
+			"BUTTON_EDIT": "Update"
+		},
+		"INDEX": {
+			"TITLE_EXTRAS": "(Terminals)",
+			"CREATE": "Create",
+			"EDIT": "Edit",
+			"DELETE": "Delete",
+			"MANAGE": "Manage",
+			"ACTIONS": "Actions",
+			"TYPES": "Types"
+		},
+		"PAY": {
+			"TITLE": "Card payment",
+			"BUTTON_PAY": "Pay"
+		},
+		"QUEUE": {
+			"ADDING": "Adding terminal {{ name }}",
+			"UPDATING": "Updating terminal {{ name }}",
+			"DELETING": "Deleting terminal {{ name }}",
+			"ERROR": "An error occured with terminal {{ name }}. Correct and try again."
+		},
+		"ENTITY_ACTION_PROVIDER": {
+			"ENTITY_ACTION": {
+				"TERMINAL_PAYMENT": "Card payment"
+			}
+		}
+	},
 	"TERMINAL_RECEIPTS": {
 		"FORM": {
 			"LABELS": {
@@ -2481,90 +2570,6 @@
 			"UPDATING": "Updating {{ printReceipt }}",
 			"DELETING": "Deleting {{ printReceipt }}",
 			"ERROR": "An error occured with {{ printReceipt }}. Correct and try again."
-		}
-	},
-	"TERMINALS": {
-		"FORM": {
-			"LABELS": {
-				"NAME": "Name",
-				"CONNECTIONSTRING": "Connection string",
-				"CONNECTION": "Connection",
-				"DESCRIPTION": "Description",
-				"CLIENTID": "Client",
-				"TERMINALID": "Terminal",
-				"AMOUNT": "Amount",
-				"INVOICEID": "Invoice ID",
-				"CURRENCYCODE": "Currency"
-			},
-			"PLACEHOLDERS": {
-				"NAME": "Name",
-				"CONNECTIONSTRING": "Connection string",
-				"CONNECTION": "Connection",
-				"DESCRIPTION": "Description",
-				"CLIENTID": "Client",
-				"TERMINALID": "Terminal",
-				"AMOUNT": "Amount",
-				"INVOICEID": "Invoice ID",
-				"CURRENCYCODE": "Currency"
-			},
-			"VALIDATION": {
-				"NAME": {
-					"REQUIRED": "Name is required."
-				},
-				"CONNECTIONSTRING": {
-					"REQUIRED": "Connection string is required."
-				},
-				"CONNECTION": {
-					"REQUIRED": "Connection is required."
-				},
-				"CLIENTID": {
-					"REQUIRED": "Client is required."
-				},
-				"TERMINALID": {
-					"REQUIRED": "Terminal is required."
-				},
-				"AMOUNT": {
-					"REQUIRED": "Amount is required."
-				},
-				"INVOICEID": {
-					"REQUIRED": "Invoice ID is required."
-				},
-				"CURRENCYCODE": {
-					"REQUIRED": "Currency is required."
-				}
-			}
-		},
-		"CREATE": {
-			"CREATE": "Create",
-			"BUTTON_CREATE": "Create"
-		},
-		"EDIT": {
-			"EDIT": "Edit",
-			"BUTTON_EDIT": "Update"
-		},
-		"INDEX": {
-			"TITLE_EXTRAS": "(Terminals)",
-			"CREATE": "Create",
-			"EDIT": "Edit",
-			"DELETE": "Delete",
-			"MANAGE": "Manage",
-			"ACTIONS": "Actions",
-			"TYPES": "Types"
-		},
-		"PAY": {
-			"TITLE": "Card payment",
-			"BUTTON_PAY": "Pay"
-		},
-		"QUEUE": {
-			"ADDING": "Adding terminal {{ name }}",
-			"UPDATING": "Updating terminal {{ name }}",
-			"DELETING": "Deleting terminal {{ name }}",
-			"ERROR": "An error occured with terminal {{ name }}. Correct and try again."
-		},
-		"ENTITY_ACTION_PROVIDER": {
-			"ENTITY_ACTION": {
-				"TERMINAL_PAYMENT": "Card payment"
-			}
 		}
 	},
 	"UI": {

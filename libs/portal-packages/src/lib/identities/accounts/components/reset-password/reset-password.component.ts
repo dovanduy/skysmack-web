@@ -1,20 +1,20 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { NgRecoverPasswordFieldsConfig } from './ng-recover-password-fields-config';
 import { FormHelper } from '@skysmack/ng-dynamic-forms';
 import { Router, ActivatedRoute } from '@angular/router';
-import { toLocalObject } from '@skysmack/framework';
 import { EditorNavService } from '@skysmack/portal-ui';
 import { AccountAppState } from '@skysmack/packages-identities';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { NgAccountRequests } from '@skysmack/ng-identities';
 import { BaseComponent } from '@skysmack/portal-fields';
+import { NgResetPasswordFieldsConfig } from './ng-reset-password-fields-config';
+import { map } from 'rxjs/operators';
 
 @Component({
-  selector: 'ss-recover-password',
-  templateUrl: './recover-password.component.html',
-  styleUrls: ['./recover-password.component.scss']
+  selector: 'ss-reset-password',
+  templateUrl: './reset-password.component.html',
+  styleUrls: ['./reset-password.component.scss']
 })
-export class RecoverPasswordComponent extends BaseComponent<AccountAppState, unknown> implements OnInit, OnDestroy {
+export class ResetPasswordComponent extends BaseComponent<AccountAppState, unknown> implements OnInit, OnDestroy {
 
   public fields$;
 
@@ -22,7 +22,7 @@ export class RecoverPasswordComponent extends BaseComponent<AccountAppState, unk
     public router: Router,
     public activatedRoute: ActivatedRoute,
     public skysmackStore: NgSkysmackStore,
-    public fieldsConfig: NgRecoverPasswordFieldsConfig,
+    public fieldsConfig: NgResetPasswordFieldsConfig,
     public editorNavService: EditorNavService,
     public accountRequest: NgAccountRequests
   ) {
@@ -32,18 +32,11 @@ export class RecoverPasswordComponent extends BaseComponent<AccountAppState, unk
   ngOnInit() {
     super.ngOnInit();
 
-    const token = this.router.url.split('=')[1];
-    if (token) {
-      const tokenObject = toLocalObject(token);
-      this.fields$ = this.fieldsConfig.getFields(undefined, tokenObject);
-    } else {
-      this.fields$ = this.fieldsConfig.getFields(undefined);
-    }
-  }
-
-  ngOnDestroy() {
-    super.ngOnDestroy();
-    this.editorNavService.hideEditorNav();
+    this.fields$ = this.activatedRoute.queryParams.pipe(
+      map(queryParam => {
+        return this.fieldsConfig.getFields(queryParam['email'], queryParam['token']);
+      })
+    );
   }
 
   public onSubmit(fh: FormHelper) {

@@ -18,6 +18,7 @@ import { BaseComponent } from '@skysmack/portal-fields';
 export class ForgotPasswordComponent extends BaseComponent<AccountAppState, unknown> implements OnInit, OnDestroy {
 
   public fields$: Observable<Field[]>;
+  public message: string;
 
   constructor(
     public router: Router,
@@ -35,15 +36,16 @@ export class ForgotPasswordComponent extends BaseComponent<AccountAppState, unkn
     this.fields$ = this.fieldsConfig.getFields(undefined);
   }
 
-  ngOnDestroy() {
-    super.ngOnDestroy();
-    this.editorNavService.hideEditorNav();
-  }
-
   public onSubmit(fh: FormHelper) {
     fh.formValid(() => {
       this.accountRequests.forgotPassword(this.packagePath, fh.form.value).pipe(
-        map(() => this.router.navigate([this.packagePath])),
+        map(response => {
+          if (response.status >= 200 && response.status <= 299) {
+            this.router.navigate([this.packagePath])
+          } else {
+            this.message = 'An error occurred. Please try again.'
+          }
+        }),
         take(1)
       ).subscribe();
     });

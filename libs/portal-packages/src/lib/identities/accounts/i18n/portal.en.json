@@ -43,6 +43,10 @@
             "TITLE": "Confirm email",
             "BUTTON_EDIT": "Submit"
         },
+        "RESET_PASSWORD": {
+            "TITLE": "Reset password",
+            "BUTTON_EDIT": "Submit"
+        },
         "FORGOT_PASSWORD": {
             "TITLE": "Forgot password",
             "BUTTON_EDIT": "Submit"
@@ -52,6 +56,7 @@
             "MANAGE": "Manage",
             "CHANGE_PASSWORD": "Change password",
             "FORGOT_PASSWORD": "Forgot password",
+            "RESET_PASSWORD": "Reset password",
             "CONFIRM_EMAIL": "Confirm email"
         },
         "NOTIFICATIONS": {},
