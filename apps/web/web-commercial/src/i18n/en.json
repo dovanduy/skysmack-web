@@ -1,26 +1,4 @@
 {
-	"COMMERCIAL_DATABASES": {
-		"INDEX": {
-			"CREATE": "Create database",
-			"DATABASES": "Databases"
-		},
-		"TITLE": "Databases",
-		"CREATE": "Create",
-		"EDIT": "Edit",
-		"EDITDATABASE": "Edit database",
-		"REMOVE": "Remove",
-		"FORM": {
-			"LABELS": {
-				"DATABASENAME": "Database name",
-				"CANDELETEDATABASE": "Can delete database"
-			},
-			"PLACEHOLDERS": {
-				"DATABASENAME": "Enter a database name",
-				"CANDELETEDATABASE": "Can delete database"
-			},
-			"VALIDATION": {}
-		}
-	},
 	"COMMERCIAL_ACCOUNT": {
 		"INDEX": {
 			"FORGOTPASSWORD": "Forgot password",
@@ -115,6 +93,28 @@
 			"BUTTON_EDIT": "Update"
 		}
 	},
+	"COMMERCIAL_DATABASES": {
+		"INDEX": {
+			"CREATE": "Create database",
+			"DATABASES": "Databases"
+		},
+		"TITLE": "Databases",
+		"CREATE": "Create",
+		"EDIT": "Edit",
+		"EDITDATABASE": "Edit database",
+		"REMOVE": "Remove",
+		"FORM": {
+			"LABELS": {
+				"DATABASENAME": "Database name",
+				"CANDELETEDATABASE": "Can delete database"
+			},
+			"PLACEHOLDERS": {
+				"DATABASENAME": "Enter a database name",
+				"CANDELETEDATABASE": "Can delete database"
+			},
+			"VALIDATION": {}
+		}
+	},
 	"COMMERCIAL_OPEN_API": {
 		"INDEX": {
 			"OPEN_API": "Open API"
@@ -124,7 +124,7 @@
 		"INDEX": {
 			"CREATE": "Create tenant",
 			"TENANTS": "Tenants",
-			"TENANTUSERRELATION": "Tenant-User relation"
+			"TENANTUSERRELATION": "Connect user to tenant"
 		},
 		"TITLE": "Tenants",
 		"CREATE": "Create",
@@ -201,6 +201,7 @@
 		"REMOVE": "Remove",
 		"CREATEUSER": "Create user",
 		"EDIT": "Edit",
+		"CONNECT_TO_TENANT": "Connect to tenant",
 		"EDITUSER": "Edit user",
 		"EMAIL": "Email: ",
 		"FORM": {

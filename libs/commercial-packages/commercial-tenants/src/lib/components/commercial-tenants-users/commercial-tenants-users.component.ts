@@ -2,10 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { CommercialTenantsService } from '../../services/commercial-tenants.service';
 import { Observable } from 'rxjs';
 import { Field, FormHelper } from '@skysmack/ng-dynamic-forms';
-import { SubscriptionHandler } from '@skysmack/framework';
+import { SubscriptionHandler, toLocalObject } from '@skysmack/framework';
 import { CommercialTenantsUsersFieldsConfig } from './commercial-tenants-users-fields-config';
-import { tap, take } from 'rxjs/operators';
-import { Router } from '@angular/router';
+import { tap, take, switchMap } from 'rxjs/operators';
+import { Router, ActivatedRoute } from '@angular/router';
+import { PartnerTenant, PartnerTenantStatus } from '../../models';
 
 @Component({
   selector: 'ss-commercial-tenants-users',
@@ -19,11 +20,18 @@ export class CommercialTenantsUsersComponent implements OnInit {
   constructor(
     private service: CommercialTenantsService,
     private fieldsConfig: CommercialTenantsUsersFieldsConfig,
-    public router: Router
+    public router: Router,
+    private activatedRoute: ActivatedRoute
   ) { }
 
   ngOnInit() {
-    this.fields$ = this.fieldsConfig.getFields(null, null);
+    this.fields$ = this.activatedRoute.params.pipe(
+      switchMap(params => this.fieldsConfig.getFields(null, toLocalObject(new PartnerTenant({
+        userId: params.userId,
+        tenantId: undefined,
+        status: PartnerTenantStatus.partner
+      }))))
+    );
   }
 
   public onSubmit(fh: FormHelper) {

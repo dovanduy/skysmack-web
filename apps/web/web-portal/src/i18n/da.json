@@ -2677,7 +2677,7 @@
 		"INDEX": {
 			"CREATE": " Opret tenant",
 			"TENANTS": "Tenant",
-			"TENANTUSERRELATION": "Tenant-Bruger relation"
+			"TENANTUSERRELATION": "Forbind bruger med en tenant"
 		},
 		"TITLE": "Tenant",
 		"CREATE": "Opret",
@@ -2733,7 +2733,7 @@
 		},
 		"SUBMIT": "Send",
 		"REMOVE": "Fjern",
-		"TENANTUSERRELATION": "Udlejer-bruger relation"
+		"TENANTUSERRELATION": "Forbind bruger med en tenant"
 	},
 	"COMMERCIAL_ACCOUNT": {
 		"INDEX": {

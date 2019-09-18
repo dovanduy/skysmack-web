@@ -19,7 +19,7 @@ export const commercialTenantsRoutes: Routes = [
     path: 'details/:id', component: CommercialTenantsDetailsComponent
   },
   {
-    path: 'tenant-users', component: CommercialTenantsUsersComponent
+    path: 'tenant-users/:userId', component: CommercialTenantsUsersComponent
   }
 ];
 

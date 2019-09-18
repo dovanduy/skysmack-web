@@ -38,14 +38,6 @@ export class NgCommercialTenantsMenuProvider implements MenuProvider {
                 order: 1,
                 icon: 'add',
                 providedIn: ['top']
-            }),
-            new MenuItem({
-                url: '/tenants/tenant-users',
-                displayName: this.translationPrefix + 'TENANTUSERRELATION',
-                area: 'manage',
-                order: 1,
-                icon: 'add',
-                providedIn: ['top']
             })
         ];
     }
