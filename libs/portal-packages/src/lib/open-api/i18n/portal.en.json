@@ -1,0 +1,17 @@
+{
+    "OPEN_API": {
+        "SETTINGS": "Settings",
+        "FORM": {
+            "PLACEHOLDERS": {
+                "TITLE": "Title",
+                "DESCRIPTION": "Description",
+                "TERMSOFSERVICE": "Terms of service",
+                "CONTACTNAME": "Contact name",
+                "CONTACTURL": "Contact URL",
+                "CONTACTEMAIL": "Contact email",
+                "LICENSENAME": "License name",
+                "LICENSEURL": "License URL"
+            }
+        }
+    }
+}

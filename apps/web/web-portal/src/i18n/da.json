@@ -2726,6 +2726,21 @@
 			"CONFIRM_EMAIL": "Bekræft e-mail"
 		}
 	},
+	"OPEN_API": {
+		"SETTINGS": "Indstillinger",
+		"FORM": {
+			"PLACEHOLDERS": {
+				"TITLE": "Titel",
+				"DESCRIPTION": "Beskrivelse",
+				"TERMSOFSERVICE": "Servicevilkår",
+				"CONTACTNAME": "Kontakt navn",
+				"CONTACTURL": "Kontakt URL",
+				"CONTACTEMAIL": "Kontakt email",
+				"LICENSENAME": "Licens name",
+				"LICENSEURL": "Licens URL"
+			}
+		}
+	},
 	"PACKAGES": {
 		"ADDING": "Tilføjer {{ name }}",
 		"UPDATING": "Opdatere {{ name }}",
