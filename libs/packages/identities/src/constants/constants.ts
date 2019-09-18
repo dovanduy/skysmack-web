@@ -13,9 +13,9 @@ export const USERS_AREA_KEY = 'users'; // validation, store, menu
 export const USERS_REDUX_KEY = 'USERS_'; // reducer prefix, action, epics, Requests
 export const USERS_ADDITIONAL_PATHS = ['users']; // actions, requests
 
-export const ACCOUNTS_REDUCER_KEY = 'commercial_account';
-export const ACCOUNTS_AREA_KEY = 'commercial_account'; // validation, store, menu
-export const ACCOUNTS_REDUX_KEY = 'COMMERCIAL_ACCOUNT_'; // reducer prefix, action, epics, Requests
+export const ACCOUNTS_REDUCER_KEY = 'account';
+export const ACCOUNTS_AREA_KEY = 'account'; // validation, store, menu
+export const ACCOUNTS_REDUX_KEY = 'ACCOUNT_'; // reducer prefix, action, epics, Requests
 export const ACCOUNTS_ADDITIONAL_PATHS = []; // actions, requests
 
 export const APPLICATIONS_REDUCER_KEY = 'applications';

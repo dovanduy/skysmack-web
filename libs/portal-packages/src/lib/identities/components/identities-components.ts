@@ -41,12 +41,10 @@ export const identitiesRoutes: Routes = [
         path: 'confirm-email', component: ConfirmEmailComponent
       },
       {
-        path: 'forgot-password',
-        component: ForgotPasswordComponent
+        path: 'forgot-password', component: ForgotPasswordComponent
       },
       {
-        path: 'recover-password',
-        component: RecoverPasswordComponent
+        path: 'recover-password', component: RecoverPasswordComponent
       }
     ]
   }
