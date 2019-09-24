@@ -13,13 +13,15 @@
     <br />
 
     <!-- Lodging select -->
-    <input matInput [placeholder]="'LODGING_SELECT_DIALOG.CHOOSE_LODGING' | translate" aria-label="Lodging" [matAutocomplete]="lodgingsAutoControl"
-        [formControl]="lodgingsAutoCompleteControl">
+    <input matInput [placeholder]="'LODGING_SELECT_DIALOG.CHOOSE_LODGING' | translate" aria-label="Lodging"
+        [matAutocomplete]="lodgingsAutoControl" [formControl]="lodgingsAutoCompleteControl">
     <mat-autocomplete #lodgingsAutoControl="matAutocomplete" [displayWith]="lodgingDisplayFn">
         <mat-option *ngFor="let detailedlodging of detailedLodgings$ | async" [value]="detailedlodging">
             <span>{{ detailedlodging.lodging.object.name}}</span> |
-            <span *ngIf="detailedlodging.available" style="color: green;">{{ 'LODGING_SELECT_DIALOG.AVAILABLE' | translate }}</span>
-            <span *ngIf="!detailedlodging.available" style="color: red;">{{ 'LODGING_SELECT_DIALOG.UNAVAILABLE' | translate }}</span>
+            <span *ngIf="detailedlodging.available"
+                style="color: green;">{{ 'LODGING_SELECT_DIALOG.AVAILABLE' | translate }}</span>
+            <span *ngIf="!detailedlodging.available"
+                style="color: red;">{{ 'LODGING_SELECT_DIALOG.UNAVAILABLE' | translate }}</span>
         </mat-option>
     </mat-autocomplete>
 </div>

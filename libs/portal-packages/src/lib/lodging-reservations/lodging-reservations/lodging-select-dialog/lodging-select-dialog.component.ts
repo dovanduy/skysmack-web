@@ -3,10 +3,10 @@ import { NgLodgingTypesActions, NgLodgingTypesStore, NgLodgingsActions, NgLodgin
 import { Router } from '@angular/router';
 import { PagedQuery, LocalObject, RSQLFilterBuilder, SubscriptionHandler } from '@skysmack/framework';
 import { LodgingType, DetailedLodging, Lodging } from '@skysmack/packages-lodgings';
-import { Observable, combineLatest, of } from 'rxjs';
+import { Observable, combineLatest, BehaviorSubject, concat } from 'rxjs';
 import { getPackageDendencyAsStream } from '@skysmack/ng-framework';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
-import { map, switchMap, take, filter, startWith, tap, distinctUntilChanged } from 'rxjs/operators';
+import { map, switchMap, take, filter, tap, debounceTime, share, distinctUntilChanged, startWith } from 'rxjs/operators';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormControl, FormGroup } from '@angular/forms';
 
@@ -52,143 +52,151 @@ export class LodgingSelectDialogComponent implements OnInit, OnDestroy {
     // Step 2: Preparing the lodging types auto complete
     // ########
 
-    // Set selected lodging type
-    const preselectedLodgingTypeId = this.data.form.get('lodgingTypeId');
-    if (preselectedLodgingTypeId && preselectedLodgingTypeId.value) {
-      this.subscriptionHandler.register(lodgingPackage$.pipe(
-        map(lodgingPackage => {
-          this.subscriptionHandler.register(this.lodgingTypesStore.getSingle(lodgingPackage.object.path, preselectedLodgingTypeId.value).pipe(
-            filter(x => !!x),
-            map(
-              lodgingType => {
-                this.lodgingTypesAutoCompleteControl.setValue(lodgingType);
-              }
-            ),
-            take(1)
-          ).subscribe());
-        }),        
-        take(1)
-      ).subscribe());
-    }
-    
-    // Get all lodging types
-    this.subscriptionHandler.register(lodgingPackage$.pipe(
-      map(lodgingPackage => {
-        this.lodgingTypesActions.getPaged(lodgingPackage.object.path, new PagedQuery());
-      })
-    ).subscribe());
+    // Prepare lodging type search and selection streams
+    const lodgingTypesSearch$ = this.lodgingTypesAutoCompleteControl.valueChanges;
 
-    // Get all lodging types
-    const allLodgingTypes$ = lodgingPackage$.pipe(
-      switchMap(lodgingPackage => {
-        return this.lodgingTypesStore.get(lodgingPackage.object.path);
-      })
+    const lodgingTypeSearchInput$ = lodgingTypesSearch$.pipe(
+      filter(searchInput => searchInput && !searchInput.object),
     );
 
-    // Filter lodging types based on search input
-    this.filteredLodgingTypes$ = combineLatest(
-      this.lodgingTypesAutoCompleteControl.valueChanges,
-      allLodgingTypes$
+    const initialSelectedLodgingType$ = new BehaviorSubject<LocalObject<LodgingType, number>>(null);
+
+    const lodgingTypeSelected$ = concat(
+      initialSelectedLodgingType$.pipe(filter(x => !!x), take(1)),
+      lodgingTypesSearch$
     ).pipe(
-      map(([searchInput, lodgingTypes]) => searchInput ? this.filterLodgingTypes(searchInput, lodgingTypes) : lodgingTypes)
+      filter(selectedLodgingType => !!selectedLodgingType && selectedLodgingType.object),
+    );
+
+    // Set selected lodging type ON startup
+    const preselectedLodgingTypeId = this.data.form.get('lodgingTypeId');
+    if (preselectedLodgingTypeId && preselectedLodgingTypeId.value) {
+      lodgingPackage$.pipe(
+        switchMap(lodgingPackage => this.lodgingTypesStore.getSingle(lodgingPackage.object.path, preselectedLodgingTypeId.value).pipe(
+          filter(x => !!x),
+          take(1),
+          tap(lodgingType => {
+            this.lodgingTypesAutoCompleteControl.setValue(lodgingType)
+            initialSelectedLodgingType$.next(lodgingType)
+          })
+        ))
+      ).subscribe();
+    }
+
+    // Request all lodging types ON startup
+    // TODO: Pagination
+    lodgingPackage$.pipe(
+      take(1),
+      map(lodgingPackage => this.lodgingTypesActions.getPaged(lodgingPackage.object.path, new PagedQuery())),
+    ).subscribe();
+
+    // TEST
+    lodgingTypeSearchInput$.pipe(
+      debounceTime(150),
+      switchMap(searchInput => lodgingPackage$.pipe(
+        map(lodgingPackage => {
+          const rsql = new RSQLFilterBuilder();
+          rsql.column('name').contains(searchInput);
+          const pageQuery = new PagedQuery();
+          pageQuery.rsqlFilter = rsql;
+
+          return this.lodgingTypesActions.getPaged(lodgingPackage.object.path, pageQuery);
+        })
+      ))
+    ).subscribe();
+
+    // Get all lodging types
+    // TODO: Pagination
+    const allLodgingTypes$ = lodgingPackage$.pipe(
+      switchMap(lodgingPackage => this.lodgingTypesStore.get(lodgingPackage.object.path)),
+    );
+
+    // Filter lodging types based ON search input
+    this.filteredLodgingTypes$ = lodgingTypeSearchInput$.pipe(
+      switchMap(searchInput => allLodgingTypes$.pipe(
+        map(lodgingTypes => searchInput ? this.filterLodgingTypes(searchInput, lodgingTypes) : lodgingTypes),
+      ))
     );
 
     // ########
     // Step 3: Preparing the lodgings auto complete
     // ########
 
-    // Set selected lodging (if any)
+    const lodgingsSearchInput$ = this.lodgingsAutoCompleteControl.valueChanges.pipe(
+      startWith('')
+    );
+
+    // Set selected lodging (if any) ON startup
     const preselectedLodgingId = this.data.form.get('lodgingId');
     if (preselectedLodgingId && preselectedLodgingId.value) {
       this.subscriptionHandler.register(lodgingPackage$.pipe(
-        map(lodgingPackage => {
-          this.subscriptionHandler.register(this.lodgingStore.getSingle(lodgingPackage.object.path, preselectedLodgingId.value).pipe(
-            filter(x => !!x),
-            map(lodgingType => {
-              console.log('set lodging type');
-              this.lodgingsAutoCompleteControl.setValue(lodgingType)
-            }),
-            take(1)
-          ).subscribe())
-        }
-        )
+        switchMap(lodgingPackage => this.lodgingStore.getSingle(lodgingPackage.object.path, preselectedLodgingId.value).pipe(
+          filter(x => !!x),
+          map(lodgingType => this.lodgingsAutoCompleteControl.setValue(lodgingType)),
+          take(1)
+        ))
       ).subscribe());
     }
 
-    // If lodging type value changes, change the options in the select list
-    this.subscriptionHandler.register(combineLatest(
-      this.lodgingTypesAutoCompleteControl.valueChanges,
-      lodgingPackage$
-    ).pipe(
-      filter(([selectedLodgingType, lodgingPackage]) => !!selectedLodgingType && selectedLodgingType.object),
-      tap(x => console.log('pre switchMap')),
-      map(([selectedLodgingType, lodgingPackage]) => {
-        // Request lodgings
-        const builder = new RSQLFilterBuilder();
-        builder.column('lodgingTypeId').equalTo(selectedLodgingType.object.id);
-        console.log('requesting lodgings');
-        this.lodgingActions.getPaged(lodgingPackage.object.path, new PagedQuery({ rsqlFilter: builder }));
-      })
+    // Request lodgings ON selecting lodging type
+    this.subscriptionHandler.register(lodgingTypeSelected$.pipe(
+      switchMap(selectedLodgingType => lodgingPackage$.pipe(
+        map(lodgingPackage => {
+          const builder = new RSQLFilterBuilder();
+          builder.column('lodgingTypeId').equalTo(selectedLodgingType.object.id);
+          this.lodgingActions.getPaged(lodgingPackage.object.path, new PagedQuery({ rsqlFilter: builder }));
+        })
+      ))
     ).subscribe());
 
-    // If lodging type value changes, change the options in the select list
-    const allLodgingsOfType$ = combineLatest(
-      this.lodgingTypesAutoCompleteControl.valueChanges,
-      lodgingPackage$
-    ).pipe(
-      filter(([selectedLodgingType, lodgingPackage]) => !!selectedLodgingType && selectedLodgingType.object),
-      tap(x => console.log('pre switchMap')),
-      switchMap(([selectedLodgingType, lodgingPackage]) => {
-        // Get lodgings
-        return this.lodgingStore.get(lodgingPackage.object.path).pipe(
-          filter(x => !!x && Array.isArray(x)),
+    // Get lodgings ON selecting lodging type
+    const allLodgingsOfType$ = lodgingTypeSelected$.pipe(
+      switchMap(selectedLodgingType => lodgingPackage$.pipe(
+        switchMap(lodgingPackage => this.lodgingStore.get(lodgingPackage.object.path).pipe(
+          distinctUntilChanged((prev, curr) => JSON.stringify(prev) === JSON.stringify(curr)),
           map(lodgings => lodgings.filter(lodging => lodging.object.lodgingTypeId === selectedLodgingType.object.id)),
-          filter(x => x.length > 0),
-          tap(x => console.log('lodgings'))
-        );
-      })
+        ))
+      ))
     );
 
-    // Filter lodgings based on search input
+    // Filter lodgings based ON lodging type select OR lodgings search input
     const filteredLodgings$ = combineLatest(
-      this.lodgingsAutoCompleteControl.valueChanges,
+      lodgingsSearchInput$,
       allLodgingsOfType$
     ).pipe(
-      tap(x => console.log('wtf 1')),
-      map(([searchInput, lodgings]) => searchInput ? this.filterLodgings(searchInput, lodgings) : lodgings)
+      map(([searchInput, lodgings]) => searchInput ? this.filterLodgings(searchInput, lodgings) : lodgings),
     );
 
-    this.subscriptionHandler.register(combineLatest(
-      lodgingPackage$,
-      allLodgingsOfType$
-    ).pipe(
-      tap(x => console.log('wtf 2')),
-      map(([lodgingPackage, lodgingsOfType]) => {
-        const checkIn = this.data.form.get('checkIn').value;
-        const checkOut = this.data.form.get('checkOut').value;
-        const packagePath = lodgingPackage.object.path;
-        this.lodgingsAvailabilityActions.getAvailableLodgings(packagePath, checkIn, checkOut, lodgingsOfType.map(lodging => lodging.objectIdentifier));
-      })
-    ).subscribe());
+    // Request lodging availability ON lodging type select
+    this.subscriptionHandler.register(
+      allLodgingsOfType$.pipe(
+        switchMap(lodgingsOfType => lodgingPackage$.pipe(
+          map(lodgingPackage => {
+            const checkIn = this.data.form.get('checkIn').value;
+            const checkOut = this.data.form.get('checkOut').value;
+            const packagePath = lodgingPackage.object.path;
+            this.lodgingsAvailabilityActions.getAvailableLodgings(packagePath, checkIn, checkOut, lodgingsOfType.map(lodging => lodging.objectIdentifier));
+          })
+        ))
+      ).subscribe());
 
-    // Get availability for all filtered lodgings
-    const available$ = lodgingPackage$.pipe(
-      switchMap((lodgingPackage) => {
-        const checkIn = this.data.form.get('checkIn').value;
-        const checkOut = this.data.form.get('checkOut').value;
-        const packagePath = lodgingPackage.object.path;
-        return this.lodgingsAvailabilityStore.getAvailableLodgings(packagePath, checkIn, checkOut).pipe(
-          tap(x => console.log('available lodgings'))
-        );
-      })
+    // Get lodging availability ON lodgings search
+    const available$ = lodgingsSearchInput$.pipe(
+      switchMap(() => lodgingPackage$.pipe(
+        switchMap((lodgingPackage) => {
+          const checkIn = this.data.form.get('checkIn').value;
+          const checkOut = this.data.form.get('checkOut').value;
+          const packagePath = lodgingPackage.object.path;
+          return this.lodgingsAvailabilityStore.getAvailableLodgings(packagePath, checkIn, checkOut);
+        })
+      ))
     );
 
-    // Create the detailed lodging used for selection and display
+    // Create detailed lodgings (used for selection and display) when lodgings OR availability is updated
     this.detailedLodgings$ = combineLatest(
       filteredLodgings$,
       available$
     ).pipe(
-      tap(x => console.log('wtf 3')),
       map(([lodgings, available]) => {
         return lodgings.map(lodging => {
           return new DetailedLodging({
