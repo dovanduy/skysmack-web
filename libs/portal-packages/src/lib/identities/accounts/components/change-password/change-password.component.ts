@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormHelper, Field } from '@skysmack/ng-dynamic-forms';
-import { NgChangePasswordFieldsConfig } from '../../ng-change-password-fields-config';
+import { NgChangePasswordFieldsConfig } from './ng-change-password-fields-config';
 import { Observable } from 'rxjs';
 import { EditorNavService } from '@skysmack/portal-ui';
 import { AccountAppState } from '@skysmack/packages-identities';

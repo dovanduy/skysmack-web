@@ -7,7 +7,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { switchMap, take } from 'rxjs/operators';
 import { BaseComponent } from '@skysmack/portal-fields';
-import { NgConfirmEmailFieldsConfig } from '../../ng-confirm-email-fields-config';
+import { NgConfirmEmailFieldsConfig } from './ng-confirm-email-fields-config';
 import { NgAccountRequests } from '@skysmack/ng-identities';
 
 @Component({
