@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
-
 import { FormRule, Field, CustomValidators } from '@skysmack/ng-dynamic-forms';
 import { StringFieldComponent, PasswordFieldComponent, EmailFieldComponent } from '@skysmack/portal-fields';
 import { NgResetPasswordValidation } from './ng-reset-password-validation';

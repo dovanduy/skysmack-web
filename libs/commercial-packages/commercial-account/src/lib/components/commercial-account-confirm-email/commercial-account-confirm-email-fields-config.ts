@@ -19,6 +19,7 @@ export class CommercialAccountConfirmEmailFieldsConfig {
                 component: EmailFieldComponent,
                 value: email,
                 key: 'email',
+                placeholder: 'COMMERCIAL_ACCOUNT.FORM.PLACEHOLDERS.EMAIL',
                 validators: [Validators.required, CustomValidators.validEmail()],
                 order: 1,
                 sortable: true
@@ -27,6 +28,7 @@ export class CommercialAccountConfirmEmailFieldsConfig {
                 component: StringFieldComponent,
                 value: token,
                 key: 'token',
+                placeholder: 'COMMERCIAL_ACCOUNT.FORM.PLACEHOLDERS.TOKEN',
                 validators: [Validators.required],
                 order: 1,
                 sortable: true

@@ -14,7 +14,7 @@ export class CommercialAccountConfirmEmailValidation extends Validation {
         }
     };
 
-    public area = 'OAUTH2';
+    public area = 'COMMERCIAL_ACCOUNT';
 
     public formValidators = [];
 

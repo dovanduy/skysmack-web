@@ -19,6 +19,7 @@ export class CommercialAccountResetPasswordFieldsConfig {
                 component: EmailFieldComponent,
                 value: email,
                 key: 'email',
+                placeholder: 'COMMERCIAL_ACCOUNT.FORM.PLACEHOLDERS.EMAIL',
                 validators: [Validators.required, CustomValidators.validEmail()],
                 order: 1,
                 sortable: true
@@ -27,6 +28,7 @@ export class CommercialAccountResetPasswordFieldsConfig {
                 component: StringFieldComponent,
                 value: token,
                 key: 'token',
+                placeholder: 'COMMERCIAL_ACCOUNT.FORM.PLACEHOLDERS.TOKEN',
                 validators: [Validators.required],
                 order: 2,
                 sortable: true
@@ -35,6 +37,7 @@ export class CommercialAccountResetPasswordFieldsConfig {
                 component: PasswordFieldComponent,
                 value: undefined,
                 key: 'newPassword',
+                placeholder: 'COMMERCIAL_ACCOUNT.FORM.PLACEHOLDERS.NEWPASSWORD',
                 validators: [Validators.required],
                 order: 3,
                 sortable: true
@@ -43,6 +46,7 @@ export class CommercialAccountResetPasswordFieldsConfig {
                 component: PasswordFieldComponent,
                 value: undefined,
                 key: 'confirmNewPassword',
+                placeholder: 'COMMERCIAL_ACCOUNT.FORM.PLACEHOLDERS.CONFIRMNEWPASSWORD',
                 validators: [Validators.required],
                 order: 4,
                 sortable: true

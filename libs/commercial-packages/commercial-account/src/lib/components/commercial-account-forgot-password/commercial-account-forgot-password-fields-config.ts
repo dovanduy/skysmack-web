@@ -20,6 +20,7 @@ export class CommercialAccountForgotPasswordFieldsConfig {
                 component: EmailFieldComponent,
                 value: undefined,
                 key: 'email',
+                placeholder: 'COMMERCIAL_ACCOUNT.FORM.PLACEHOLDERS.EMAIL',
                 validators: [Validators.required, CustomValidators.validEmail()],
                 order: 1,
                 sortable: true

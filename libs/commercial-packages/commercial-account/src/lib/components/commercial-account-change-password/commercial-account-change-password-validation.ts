@@ -1,6 +1,5 @@
 import { StrIndex } from '@skysmack/framework';
 import { Validation, CustomValidators } from '@skysmack/ng-dynamic-forms';
-import { ACCOUNTS_AREA_KEY } from '@skysmack/packages-identities';
 
 export class CommercialAccountChangePasswordValidation extends Validation {
     public formErrors = {
@@ -22,7 +21,7 @@ export class CommercialAccountChangePasswordValidation extends Validation {
         }
     };
 
-    public area = ACCOUNTS_AREA_KEY;
+    public area = 'COMMERCIAL_ACCOUNT';
 
     public formValidators = [CustomValidators.comparePassword('newPassword', 'confirmNewPassword')];
 

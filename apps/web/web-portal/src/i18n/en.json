@@ -1,56 +1,4 @@
 {
-	"EMAIL_TEMPLATES": {
-		"FORM": {
-			"LABELS": {
-				"FROM": "From",
-				"TO": "To",
-				"CC": "Cc",
-				"BCC": "Bcc",
-				"SUBJECT": "Subject",
-				"BODY": "Body"
-			},
-			"PLACEHOLDERS": {
-				"FROM": "From",
-				"TO": "To",
-				"CC": "Cc",
-				"BCC": "Bcc",
-				"SUBJECT": "Subject",
-				"BODY": "Body"
-			},
-			"VALIDATION": {}
-		},
-		"CREATE": {
-			"CREATE": "Create",
-			"BUTTON_CREATE": "Create"
-		},
-		"EDIT": {
-			"EDIT": "Edit",
-			"BUTTON_EDIT": "Update"
-		},
-		"INDEX": {
-			"CREATE": "Create",
-			"EDIT": "Edit",
-			"DELETE": "Delete",
-			"MANAGE": "Manage",
-			"ACTIONS": "Actions"
-		},
-		"QUEUE": {
-			"ADDING": "Adding {{ subject }}",
-			"UPDATING": "Updating {{ subject }}",
-			"DELETING": "Deleting {{ subject }}",
-			"ERROR": "An error occured with {{ subject }}. Correct and try again."
-		}
-	},
-	"EMAILS": {
-		"INDEX": {
-			"CREATE": "Create",
-			"EDIT": "Edit",
-			"DELETE": "Delete",
-			"TEMPLATES": "Templates",
-			"MANAGE": "Manage",
-			"ACTIONS": "Actions"
-		}
-	},
 	"ACCESS_POLICY_PERMISSIONS": {
 		"CREATE": {
 			"CREATE": "Create",
@@ -186,6 +134,58 @@
 			"UPDATING": "Updating access policy rules {{ id }}",
 			"DELETING": "Deleting access policy rules {{ id }}",
 			"ERROR": "An error occured with access policy rules {{ id }}. Correct and try again."
+		}
+	},
+	"EMAIL_TEMPLATES": {
+		"FORM": {
+			"LABELS": {
+				"FROM": "From",
+				"TO": "To",
+				"CC": "Cc",
+				"BCC": "Bcc",
+				"SUBJECT": "Subject",
+				"BODY": "Body"
+			},
+			"PLACEHOLDERS": {
+				"FROM": "From",
+				"TO": "To",
+				"CC": "Cc",
+				"BCC": "Bcc",
+				"SUBJECT": "Subject",
+				"BODY": "Body"
+			},
+			"VALIDATION": {}
+		},
+		"CREATE": {
+			"CREATE": "Create",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDIT": "Edit",
+			"BUTTON_EDIT": "Update"
+		},
+		"INDEX": {
+			"CREATE": "Create",
+			"EDIT": "Edit",
+			"DELETE": "Delete",
+			"MANAGE": "Manage",
+			"ACTIONS": "Actions"
+		},
+		"QUEUE": {
+			"ADDING": "Adding {{ subject }}",
+			"UPDATING": "Updating {{ subject }}",
+			"DELETING": "Deleting {{ subject }}",
+			"ERROR": "An error occured with {{ subject }}. Correct and try again."
+		}
+	},
+	"EMAILS": {
+		"INDEX": {
+			"CREATE": "Create",
+			"EDIT": "Edit",
+			"DELETE": "Delete",
+			"TEMPLATES": "Templates",
+			"MANAGE": "Manage",
+			"ACTIONS": "Actions"
 		}
 	},
 	"EMAILS_SMTP": {
@@ -1099,6 +1099,68 @@
 			"ERROR": "An error occured with {{ name }}. Correct and try again."
 		}
 	},
+	"LODGING_TYPES": {
+		"FIELDS": {
+			"CREATE": {
+				"ADD": "Add new field"
+			},
+			"EDIT": {
+				"EDITING": "Editing"
+			},
+			"INDEX": {
+				"ACTIONS": "Actions",
+				"CREATE": "Create",
+				"OTHER": "Other",
+				"FIELDS": "Fields",
+				"BACK": "Back"
+			}
+		},
+		"CREATE": {
+			"CREATE": "Create",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDIT": "Edit",
+			"BUTTON_EDIT": "Update"
+		},
+		"INDEX": {
+			"TITLE_EXTRAS": "(types)",
+			"ACTIONS": "Actions",
+			"CREATE": "Create",
+			"MANAGE": "Manage",
+			"AVAILABILITY": "Availability",
+			"FIELDS": "Fields",
+			"FIELDS_TITLE": "(type fields)",
+			"TYPES": "types",
+			"BACK": "Back"
+		},
+		"FORM": {
+			"LABELS": {
+				"NAME": "Name"
+			},
+			"PLACEHOLDERS": {
+				"NAME": "Enter name"
+			},
+			"VALIDATION": {
+				"NAME": {
+					"REQUIRED": "Name is required."
+				}
+			}
+		},
+		"QUEUE": {
+			"ADDING": "Adding {{ name }}",
+			"UPDATING": "Updating {{ name }}",
+			"DELETING": "Deleting {{ name }}",
+			"ERROR": "An error occured with {{ name }}. Correct and try again."
+		},
+		"AVAILABILITY": {
+			"PLACEHOLDER": "Select lodging types",
+			"PREVIOUS": "Previous",
+			"TODAY": "Today",
+			"NEXT": "Next",
+			"TITLE": "Lodging types availability"
+		}
+	},
 	"LODGINGS": {
 		"FORM": {
 			"LABELS": {
@@ -1169,68 +1231,6 @@
 	"LODGINGS_AVAILABILITY": {
 		"SELECT_LODGINGS": "Select lodgings",
 		"TITLE": "Lodgings Availability"
-	},
-	"LODGING_TYPES": {
-		"FIELDS": {
-			"CREATE": {
-				"ADD": "Add new field"
-			},
-			"EDIT": {
-				"EDITING": "Editing"
-			},
-			"INDEX": {
-				"ACTIONS": "Actions",
-				"CREATE": "Create",
-				"OTHER": "Other",
-				"FIELDS": "Fields",
-				"BACK": "Back"
-			}
-		},
-		"CREATE": {
-			"CREATE": "Create",
-			"BUTTON_CREATE": "Create"
-		},
-		"EDIT": {
-			"EDIT": "Edit",
-			"BUTTON_EDIT": "Update"
-		},
-		"INDEX": {
-			"TITLE_EXTRAS": "(types)",
-			"ACTIONS": "Actions",
-			"CREATE": "Create",
-			"MANAGE": "Manage",
-			"AVAILABILITY": "Availability",
-			"FIELDS": "Fields",
-			"FIELDS_TITLE": "(type fields)",
-			"TYPES": "types",
-			"BACK": "Back"
-		},
-		"FORM": {
-			"LABELS": {
-				"NAME": "Name"
-			},
-			"PLACEHOLDERS": {
-				"NAME": "Enter name"
-			},
-			"VALIDATION": {
-				"NAME": {
-					"REQUIRED": "Name is required."
-				}
-			}
-		},
-		"QUEUE": {
-			"ADDING": "Adding {{ name }}",
-			"UPDATING": "Updating {{ name }}",
-			"DELETING": "Deleting {{ name }}",
-			"ERROR": "An error occured with {{ name }}. Correct and try again."
-		},
-		"AVAILABILITY": {
-			"PLACEHOLDER": "Select lodging types",
-			"PREVIOUS": "Previous",
-			"TODAY": "Today",
-			"NEXT": "Next",
-			"TITLE": "Lodging types availability"
-		}
 	},
 	"ASSIGNMENT_TYPES": {
 		"FORM": {

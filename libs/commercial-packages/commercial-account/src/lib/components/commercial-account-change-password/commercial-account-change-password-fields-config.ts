@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { LocalObject } from '@skysmack/framework';
-
 import { LoadedPackage } from '@skysmack/ng-framework';
 import { ChangePassword } from '@skysmack/packages-identities';
 import { FormRule, Field } from '@skysmack/ng-dynamic-forms';
@@ -12,7 +11,7 @@ import { CommercialAccountChangePasswordValidation } from './commercial-account-
 @Injectable({ providedIn: 'root' })
 export class CommercialAccountChangePasswordFieldsConfig extends FieldsConfig<ChangePassword, number> {
     public validation = new CommercialAccountChangePasswordValidation();
-    public area = 'COMMERCIAL_ACCOUNT';
+    public area = '';
     public formRules: FormRule[] = [];
 
     constructor(
@@ -25,8 +24,9 @@ export class CommercialAccountChangePasswordFieldsConfig extends FieldsConfig<Ch
         const fields = [
             new Field({
                 component: PasswordFieldComponent,
-                value: entity ? entity.object.currentPassword : undefined,
+                value: undefined,
                 key: 'currentPassword',
+                placeholder: 'COMMERCIAL_ACCOUNT.FORM.PLACEHOLDERS.CURRENTPASSWORD',
                 validators: [Validators.required],
                 order: 1,
                 showColumn: true
@@ -34,8 +34,9 @@ export class CommercialAccountChangePasswordFieldsConfig extends FieldsConfig<Ch
 
             new Field({
                 component: PasswordFieldComponent,
-                value: entity ? entity.object.newPassword : undefined,
+                value: undefined,
                 key: 'newPassword',
+                placeholder: 'COMMERCIAL_ACCOUNT.FORM.PLACEHOLDERS.NEWPASSWORD',
                 validators: [Validators.required],
                 order: 2,
                 showColumn: true
@@ -43,8 +44,9 @@ export class CommercialAccountChangePasswordFieldsConfig extends FieldsConfig<Ch
 
             new Field({
                 component: PasswordFieldComponent,
-                value: entity ? entity.object.confirmNewPassword : undefined,
+                value: undefined,
                 key: 'confirmNewPassword',
+                placeholder: 'COMMERCIAL_ACCOUNT.FORM.PLACEHOLDERS.CONFIRMNEWPASSWORD',
                 validators: [Validators.required],
                 order: 3
             })
