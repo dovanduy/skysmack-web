@@ -9,6 +9,7 @@ import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { map, switchMap, take, filter, tap, debounceTime, distinctUntilChanged, startWith } from 'rxjs/operators';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormControl, FormGroup } from '@angular/forms';
+import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 
 @Component({
   selector: 'ss-lodging-select-dialog',
@@ -210,12 +211,19 @@ export class LodgingSelectDialogComponent implements OnInit, OnDestroy {
     this.dialogRef.close();
   }
 
+  public selectLodging(event: MatAutocompleteSelectedEvent): void {
+    this.selectedLodging = event.option.value;
+  }
+
   public lodgingTypeDisplayFn(lodgingType: LocalObject<LodgingType, number>): string {
-    return lodgingType ? lodgingType.object.name : '';
+    return lodgingType ? lodgingType.object && lodgingType.object.name : '';
   }
 
   public lodgingDisplayFn(detailedLoging: DetailedLodging): string {
-    return detailedLoging ? detailedLoging.lodging.object.name : '';
+    return detailedLoging ?
+      detailedLoging.lodging
+      && detailedLoging.lodging.object
+      && detailedLoging.lodging.object.name : '';
   }
 
   private filterLodgingTypes(searchInput: string, lodgingTypes: LocalObject<LodgingType, number>[]): LocalObject<LodgingType, number>[] {

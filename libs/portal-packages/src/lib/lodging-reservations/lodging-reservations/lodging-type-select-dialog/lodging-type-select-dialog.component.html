@@ -1,14 +1,17 @@
 <h2 mat-dialog-title>{{ 'LODGING_TYPE_SELECT_DIALOG.SELECT_LODGING_TYPE' | translate }}</h2>
 
 <div mat-dialog-content>
-    <input matInput [placeholder]="'LODGING_SELECT_DIALOG.CHOOSE_LODGING_TYPE' | translate" aria-label="Lodging Type" [matAutocomplete]="auto"
-        [formControl]="autoCompleteControl">
-    <mat-autocomplete #auto="matAutocomplete">
-        <mat-option *ngFor="let detailedlodgingType of detailedLodgingTypes$ | async"
-            (click)="selectLodgingType(detailedlodgingType)" [value]="detailedlodgingType.lodgingType.object.name">
+    <input matInput [placeholder]="'LODGING_SELECT_DIALOG.CHOOSE_LODGING_TYPE' | translate" aria-label="Lodging Type"
+        [matAutocomplete]="auto" [formControl]="autoCompleteControl">
+    <mat-autocomplete (optionSelected)="selectLodgingType($event)" #auto="matAutocomplete"
+        [displayWith]="lodgingTypeDisplayFn">
+        <mat-option *ngFor="let detailedlodgingType of detailedLodgingTypes$ | async" [value]="detailedlodgingType">
             <span>{{ detailedlodgingType.lodgingType.object.name}}</span> |
-            <span>{{ detailedlodgingType.availableCount }} {{ 'LODGING_TYPE_SELECT_DIALOG.AVAILABLE' | translate }}</span>
-            <span *ngFor="let priceDetail of detailedlodgingType.priceDetails">{{ 'LODGING_TYPE_SELECT_DIALOG.PRICE_VIA' | translate }} {{ priceDetail.packageName }}:
+            <span>{{ detailedlodgingType.availableCount }}
+                {{ 'LODGING_TYPE_SELECT_DIALOG.AVAILABLE' | translate }}</span>
+            <span
+                *ngFor="let priceDetail of detailedlodgingType.priceDetails">{{ 'LODGING_TYPE_SELECT_DIALOG.PRICE_VIA' | translate }}
+                {{ priceDetail.packageName }}:
                 {{ priceDetail.price }}
                 {{ priceDetail.currency }}</span>
         </mat-option>
@@ -16,5 +19,6 @@
 </div>
 <div mat-dialog-actions>
     <button mat-raised-button (click)="cancel()">{{ 'LODGING_TYPE_SELECT_DIALOG.CANCEL' | translate }}</button>
-    <button mat-raised-button color="primary" (click)="done()">{{ 'LODGING_TYPE_SELECT_DIALOG.DONE' | translate }}</button>
+    <button mat-raised-button color="primary"
+        (click)="done()">{{ 'LODGING_TYPE_SELECT_DIALOG.DONE' | translate }}</button>
 </div>

@@ -41,6 +41,9 @@ export class LodgingSelectFieldComponent extends FieldBaseComponent<Field> imple
       take(1)
     ).subscribe();
   }
+
+
+
   private setDatesSelected$() {
     this.datesSelected$ = this.fh.form.get('lodgingTypeId').valueChanges.pipe(map(x => x));
   }

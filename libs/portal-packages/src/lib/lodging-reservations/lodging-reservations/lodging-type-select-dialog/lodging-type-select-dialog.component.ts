@@ -9,6 +9,7 @@ import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { map, switchMap, startWith, tap, take } from 'rxjs/operators';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormControl, FormGroup } from '@angular/forms';
+import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete'
 
 @Component({
   selector: 'ss-lodging-type-select-dialog',
@@ -101,8 +102,15 @@ export class LodgingTypeSelectDialogComponent implements OnInit {
     );
   }
 
-  public selectLodgingType(detailedLodgingType: DetailedLodgingType): void {
-    this.selectedLodgingType = detailedLodgingType;
+  public selectLodgingType(event: MatAutocompleteSelectedEvent): void {
+    this.selectedLodgingType = event.option.value;
+  }
+
+  public lodgingTypeDisplayFn(detailedLogingType: DetailedLodgingType): string {
+    return detailedLogingType ?
+      detailedLogingType.lodgingType
+      && detailedLogingType.lodgingType.object
+      && detailedLogingType.lodgingType.object.name : '';
   }
 
   public done(): void {
@@ -114,8 +122,9 @@ export class LodgingTypeSelectDialogComponent implements OnInit {
   }
 
   private filterLodgingTypes(searchInput: string, lodgingTypes: LocalObject<LodgingType, number>[]): LocalObject<LodgingType, number>[] {
-    const filterValue = searchInput.toLowerCase();
-
-    return lodgingTypes.filter(lodgingType => lodgingType.object.name.toLowerCase().indexOf(filterValue) === 0);
+    if (typeof (searchInput) === 'string') {
+      return lodgingTypes.filter(lodgingType => lodgingType.object.name.toLowerCase().indexOf(searchInput.toLowerCase()) === 0);
+    }
+    return lodgingTypes;
   }
 }

@@ -15,7 +15,8 @@
     <!-- Lodging select -->
     <input matInput [placeholder]="'LODGING_SELECT_DIALOG.CHOOSE_LODGING' | translate" aria-label="Lodging"
         [matAutocomplete]="lodgingsAutoControl" [formControl]="lodgingsAutoCompleteControl">
-    <mat-autocomplete #lodgingsAutoControl="matAutocomplete" [displayWith]="lodgingDisplayFn">
+    <mat-autocomplete #lodgingsAutoControl="matAutocomplete" (optionSelected)="selectLodging($event)"
+        [displayWith]="lodgingDisplayFn">
         <mat-option *ngFor="let detailedlodging of detailedLodgings$ | async" [value]="detailedlodging">
             <span>{{ detailedlodging.lodging.object.name}}</span> |
             <span *ngIf="detailedlodging.available"
