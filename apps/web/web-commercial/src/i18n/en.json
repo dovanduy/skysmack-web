@@ -4,7 +4,9 @@
 			"FORGOTPASSWORD": "Forgot password",
 			"CONFIRMEMAIL": "Confirm e-mail",
 			"ACCOUNT": "Account",
-			"WELCOME": "Welcome to skysmack"
+			"WELCOME": "Welcome to skysmack",
+			"SIGN_IN": "log ind",
+			"HELP": "Hjælp"
 		},
 		"FORGOT_PASSWORD": {
 			"TITLE": "Forgot password",

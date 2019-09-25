@@ -1,10 +1,12 @@
 {
-    "COMMERCIAL_ACCOUNT": {
+   "COMMERCIAL_ACCOUNT": {
         "INDEX": {
             "FORGOTPASSWORD": "Glemt adgangskode",
             "CONFIRMEMAIL": "Bekræft emailen",
             "ACCOUNT": "Konto",
-            "WELCOME": "Velkommen til skysmack"
+            "WELCOME": "Velkommen til skysmack",
+            "SIGN_IN": "log ind",
+            "HELP": "Hjælp"
         },
         "FORGOT_PASSWORD": {
             "TITLE": "Glemt adgangskode",
