@@ -1,0 +1,119 @@
+{
+    "COMMERCIAL_ACCOUNT": {
+        "INDEX": {
+            "FORGOTPASSWORD": "Glemt adgangskode",
+            "CONFIRMEMAIL": "Bekræft emailen",
+            "ACCOUNT": "Konto",
+            "WELCOME": "Velkommen til skysmack"
+        },
+        "FORGOT_PASSWORD": {
+            "TITLE": "Glemt adgangskode",
+            "BUTTON_EDIT": "Indsend",
+            "CHECK_EMAIL_TITLE": "Tjek din email",
+            "CHECK_EMAIL": "Du kan nu finde instrukserne til at nulstille dit adgangskode. Husk at tjekke din spam mappe.",
+            "FORM": {
+                "LABELS": {
+                    "EMAIL": "Email"
+                },
+                "PLACEHOLDERS": {
+                    "EMAIL": "Indtast email"
+                },
+                "VALIDATION": {
+                    "EMAIL": {
+                        "REQUIRED": "Email er påkrævet.",
+                        "INVALIDEMAIL": "Venligst indtast en valid email."
+                    }
+                }
+            }
+        },
+        "LOGIN": {
+            "SIGNIN": "Log ind",
+            "CREDENTIALS": "Venligst indtast dine informationer nedenfor",
+            "INCORRECT": "Det indtastede brugernavn og/eller adgandskode er ikke korrekt. Venligst prøv igen",
+            "FORGOTPASSWORD": "Glemt adgangskode",
+            "CONFIRMEMAIL": "Bekræft email",
+            "REGISTER": "Registrer"
+        },
+        "REGISTER": {
+            "TITLE": "Registrer"
+        },
+        "FORM": {
+            "LABELS": {
+                "USERNAME": "Brugernavn",
+                "EMAIL": "Email",
+                "PASSWORD": "Adganskode",
+                "CONFIRMPASSWORD": "Bekræft Adganskode",
+                "NEWPASSWORD": "Ny adgangskode",
+                "CONFIRMNEWPASSWORD": "Bekræft ny adgangskode",
+                "STAYSIGNEDIN": "Forbliv logget ind?",
+                "TOKEN": "Token"
+            },
+            "PLACEHOLDERS": {
+                "USERNAME": "Indtast Brugernavn",
+                "EMAIL": "Indtast email",
+                "PASSWORD": "Indtast adgangskode",
+                "CONFIRMPASSWORD": "Bekræft Adganskode",
+                "CURRENTPASSWORD": "Nuværende adgangskode",
+                "NEWPASSWORD": "Ny adgangskode",
+                "CONFIRMNEWPASSWORD": "Bekræft new adgangskode",
+                "TOKEN": "Indtast den givet sikkerheds-token"
+            },
+            "VALIDATION": {
+                "USERNAME": {
+                    "REQUIRED": "Brugernavn er påkrævet"
+                },
+                "EMAIL": {
+                    "REQUIRED": "Email er påkrævet.",
+                    "INVALIDEMAIL": "Venligst indtast en valid email."
+                },
+                "PASSWORD": {
+                    "REQUIRED": "Adganskode er påkrævet."
+                },
+                "CURRENTPASSWORD": {
+                    "REQUIRED": "Nuværende adgangskode er påkrævet."
+                },
+                "NEWPASSWORD": {
+                    "REQUIRED": "Ny adgangskode er påkrævet."
+                },
+                "CONFIRMPASSWORD": {
+                    "REQUIRED": "Venligst gentage den nye adgangskode.",
+                    "PASSWORDMISMATCH": "Adganskoderne skal være ens."
+                },
+                "CONFIRMNEWPASSWORD": {
+                    "REQUIRED": "Venligst gentage den nye adgangskode.",
+                    "PASSWORDMISMATCH": "Adganskoderne skal være ens."
+                },
+                "TOKEN": {
+                    "REQUIRED": "Sikkeheds-token er påkrævet."
+                }
+            }
+        },
+        "VALIDATION": {
+            "TOKEN": {
+                "REQUIRED": "Sikkedheds-token er påkrævet"
+            },
+            "EMAIL": {
+                "REQUIRED": "Email er påkrævet.",
+                "INVALIDEMAIL": "Venligst indtast en valid email"
+            },
+            "CURRENTPASSWORD": {
+                "REQUIRED": "Nuværende adgangskode er påkrævet."
+            },
+            "NEWPASSWORD": {
+                "REQUIRED": "Ny adgangskode er påkrævet."
+            },
+            "CONFIRMNEWPASSWORD": {
+                "REQUIRED": "Venligst gentage den nye adgangskode.",
+                "PASSWORDMISMATCH": "Adganskoderne skal være ens."
+            }
+        },
+        "CHANGE_PASSWORD": {
+            "TITLE": "Skift adgangskode",
+            "BUTTON_UPDATE": "Opdater"
+        },
+        "RESET_PASSWORD": {
+            "TITLE": "Nulstil adgangskode",
+            "BUTTON_RESET": "Nulstil"
+        }
+    }
+}
