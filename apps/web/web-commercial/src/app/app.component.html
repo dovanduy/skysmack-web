@@ -74,19 +74,19 @@
 
     <nav class="main-menu">
       <a routerLink="/why" class="menu">
-        Why skysmack
+        {{ 'COMMERCIAL_ACCOUNT.INDEX.WHYSKYSMACK' | translate }}
       </a>
       <a routerLink="/solutions" class="menu">
-        Solutions
+        {{ 'COMMERCIAL_ACCOUNT.INDEX.SOLUTIONS' | translate }}
       </a>
       <a routerLink="/products" class="menu">
-        Products
+        {{ 'COMMERCIAL_ACCOUNT.INDEX.PRODUCTS' | translate }}
       </a>
       <a routerLink="/pricings" class="menu">
-        Pricings
+        {{ 'COMMERCIAL_ACCOUNT.INDEX.PRICINGS' | translate }}
       </a>
       <a routerLink="/getting-started" mat-flat-button color="primary">
-        Getting started
+        {{ 'COMMERCIAL_ACCOUNT.INDEX.GETTINGSTARTED' | translate }}
       </a>
     </nav>
 
@@ -97,10 +97,11 @@
         {{ 'COMMERCIAL_ACCOUNT.INDEX.HELP' | translate }}
       </a>
       <a [routerLink]="['account', 'login']" class="menu" *allowAccessFor="allowAccessForEnum.anonymous">
-        {{ 'COMMERCIAL_ACCOUNT.INDEX.SIGN_IN' | translate }}
+        {{ 'COMMERCIAL_ACCOUNT.INDEX.SIGNIN' | translate }}
       </a>
       <a [routerLink]="['account', 'dashboard']" class="menu" *allowAccessFor="allowAccessForEnum.authenticated">
-        Portal
+        {{ 'COMMERCIAL_ACCOUNT.INDEX.PORTAL' | translate }}
+
       </a>
     </nav>
   </nav>

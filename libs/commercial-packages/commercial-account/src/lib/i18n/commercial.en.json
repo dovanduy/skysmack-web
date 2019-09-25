@@ -5,12 +5,19 @@
             "CONFIRMEMAIL": "Confirm e-mail",
             "ACCOUNT": "Account",
             "WELCOME": "Welcome to skysmack",
-            "SIGN_IN": "Sign in",
-            "HELP": "Help"
+            "SIGNIN": "Sign in",
+            "HELP": "Help",
+            "WHYSKYSMACK": "Why skysmack",
+            "SOLUTIONS": "Solutions",
+            "PRICINGS": "Pricings",
+            "PRODUCTS": "Products",
+            "GETTINGSTARTED": "Getting started",
+            "PORTAL": "Portal"
         },
         "FORGOT_PASSWORD": {
             "TITLE": "Forgot password",
             "BUTTON_EDIT": "Submit",
+            "BUTTONRESET": "Reset password",
             "CHECK_EMAIL_TITLE": "Check your email",
             "CHECK_EMAIL": "You will find instructions on how to reset your password. Remember to check your spam folder.",
             "FORM": {
@@ -34,10 +41,8 @@
             "INCORRECT": "The entered password and/or username was incorrect. Please try again.",
             "FORGOTPASSWORD": "Forgot password",
             "CONFIRMEMAIL": "Confirm email",
-            "REGISTER": "Register"
-        },
-        "REGISTER": {
-            "TITLE": "Register"
+            "REGISTER": "Register",
+            "BUTTONLOGIN": "Login"
         },
         "FORM": {
             "LABELS": {
@@ -116,6 +121,15 @@
         "RESET_PASSWORD": {
             "TITLE": "Reset password",
             "BUTTON_RESET": "Reset button"
+        },
+        "CONFIRM_EMAIL": {
+            "BUTTONCONFIRM": "Confirm email"
+        },
+        "REGISTER": {
+            "BUTTONREGISTER": "Register",
+            "TITLE": "Register",
+            "THANKS": "Thank you for making a Skymsack account. Please check your email for a verification email.",
+            "SPAM": "Remember to check your spam filter as well."
         }
     }
 }

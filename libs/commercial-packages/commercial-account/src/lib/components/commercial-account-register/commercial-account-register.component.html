@@ -1,11 +1,11 @@
 <ss-dynamic-form *ngIf="fields$ && !submitted" [noSidebar]="true" [fields$]="fields$"
-    [validation]="fieldsConfig.validation" [rules]="fieldsConfig.formRules" [removeCloseButton]="removeCloseButton"
-    [buttonText]="'Register'" (submitted)="onSubmit($event)">
+    [validation]="fieldsConfig.validation" [rules]="fieldsConfig.formRules" [removeCloseButton]="true"
+    [buttonText]="'COMMERCIAL_ACCOUNT.REGISTER.BUTTONREGISTER' | translate" (submitted)="onSubmit($event)">
     <mat-card-title>{{ 'COMMERCIAL_ACCOUNT.REGISTER.TITLE' | translate }}</mat-card-title>
 </ss-dynamic-form>
 
-<p *ngIf="submitted">Thank you for making a Skymsack account. Please check your email for a verification email.</p>
-<p *ngIf="submitted">Remember to check your spam filter as well.</p>
+<p *ngIf="submitted">{{ 'COMMERCIAL_ACCOUNT.REGISTER.THANKS' | translate }}</p>
+<p *ngIf="submitted">{{ 'COMMERCIAL_ACCOUNT.REGISTER.SPAM' | translate }}</p>
 
 <!-- <div class="btn-wrapper">
 

@@ -5,12 +5,19 @@
             "CONFIRMEMAIL": "Bekræft emailen",
             "ACCOUNT": "Konto",
             "WELCOME": "Velkommen til skysmack",
-            "SIGN_IN": "log ind",
-            "HELP": "Hjælp"
+            "SIGNIN": "log ind",
+            "HELP": "Hjælp",
+            "WHYSKYSMACK": "Hvorfor skysmack",
+            "SOLUTIONS": "Løsninger",
+            "PRICINGS": "Priser",
+            "PRODUCTS": "Produkter",
+            "GETTINGSTARTED": "Kom i gang",
+            "PORTAL": "Portal"
         },
         "FORGOT_PASSWORD": {
             "TITLE": "Glemt adgangskode",
             "BUTTON_EDIT": "Indsend",
+            "BUTTONRESET": "Nulstil adgangskode",
             "CHECK_EMAIL_TITLE": "Tjek din email",
             "CHECK_EMAIL": "Du kan nu finde instrukserne til at nulstille dit adgangskode. Husk at tjekke din spam mappe.",
             "FORM": {
@@ -34,10 +41,8 @@
             "INCORRECT": "Det indtastede brugernavn og/eller adgandskode er ikke korrekt. Venligst prøv igen",
             "FORGOTPASSWORD": "Glemt adgangskode",
             "CONFIRMEMAIL": "Bekræft email",
-            "REGISTER": "Registrer"
-        },
-        "REGISTER": {
-            "TITLE": "Registrer"
+            "REGISTER": "Registrer",
+            "BUTTONLOGIN": "Log ind"
         },
         "FORM": {
             "LABELS": {
@@ -116,6 +121,15 @@
         "RESET_PASSWORD": {
             "TITLE": "Nulstil adgangskode",
             "BUTTON_RESET": "Nulstil"
+        },
+        "CONFIRM_EMAIL": {
+            "BUTTONCONFIRM": "Bekræft email"
+        },
+        "REGISTER": {
+            "BUTTONREGISTER": "Registrer",
+            "TITLE": "Registrer",
+            "THANKS": "Tak for at lave en skysmack konto. Venligst tjek din email for at verificere din konto.",
+            "SPAM": "Husk også at tjekke din spam mappe på din email."
         }
     }
 }
