@@ -12,7 +12,9 @@
             "PRICINGS": "Priser",
             "PRODUCTS": "Produkter",
             "GETTINGSTARTED": "Kom i gang",
-            "PORTAL": "Portal"
+            "PORTAL": "Portal",
+            "SKY": "Sky",
+            "MACK": "mack"
         },
         "FORGOT_PASSWORD": {
             "TITLE": "Glemt adgangskode",
