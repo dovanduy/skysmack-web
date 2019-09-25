@@ -71,7 +71,7 @@ export class LodgingSelectDialogComponent implements OnInit, OnDestroy {
     // Set selected lodging type ON startup
     const preselectedLodgingTypeId = this.data.form.get('lodgingTypeId');
     if (preselectedLodgingTypeId && preselectedLodgingTypeId.value) {
-      lodgingPackage$.pipe(
+      this.subscriptionHandler.register(lodgingPackage$.pipe(
         switchMap(lodgingPackage => this.lodgingTypesStore.getSingle(lodgingPackage.object.path, preselectedLodgingTypeId.value).pipe(
           filter(x => !!x),
           take(1),
@@ -80,18 +80,11 @@ export class LodgingSelectDialogComponent implements OnInit, OnDestroy {
             initialSelectedLodgingType$.next(lodgingType)
           })
         ))
-      ).subscribe();
+      ).subscribe());
     }
 
     // Request all lodging types ON startup
-    // TODO: Pagination
-    lodgingPackage$.pipe(
-      take(1),
-      map(lodgingPackage => this.lodgingTypesActions.getPaged(lodgingPackage.object.path, new PagedQuery())),
-    ).subscribe();
-
-    // TEST
-    lodgingTypeSearchInput$.pipe(
+    this.subscriptionHandler.register(lodgingTypeSearchInput$.pipe(
       debounceTime(150),
       switchMap(searchInput => lodgingPackage$.pipe(
         map(lodgingPackage => {
@@ -103,7 +96,7 @@ export class LodgingSelectDialogComponent implements OnInit, OnDestroy {
           return this.lodgingTypesActions.getPaged(lodgingPackage.object.path, pageQuery);
         })
       ))
-    ).subscribe();
+    ).subscribe());
 
     // Get all lodging types
     // TODO: Pagination
@@ -168,17 +161,16 @@ export class LodgingSelectDialogComponent implements OnInit, OnDestroy {
     );
 
     // Request lodging availability ON lodging type select
-    this.subscriptionHandler.register(
-      allLodgingsOfType$.pipe(
-        switchMap(lodgingsOfType => lodgingPackage$.pipe(
-          map(lodgingPackage => {
-            const checkIn = this.data.form.get('checkIn').value;
-            const checkOut = this.data.form.get('checkOut').value;
-            const packagePath = lodgingPackage.object.path;
-            this.lodgingsAvailabilityActions.getAvailableLodgings(packagePath, checkIn, checkOut, lodgingsOfType.map(lodging => lodging.objectIdentifier));
-          })
-        ))
-      ).subscribe());
+    this.subscriptionHandler.register(allLodgingsOfType$.pipe(
+      switchMap(lodgingsOfType => lodgingPackage$.pipe(
+        map(lodgingPackage => {
+          const checkIn = this.data.form.get('checkIn').value;
+          const checkOut = this.data.form.get('checkOut').value;
+          const packagePath = lodgingPackage.object.path;
+          this.lodgingsAvailabilityActions.getAvailableLodgings(packagePath, checkIn, checkOut, lodgingsOfType.map(lodging => lodging.objectIdentifier));
+        })
+      ))
+    ).subscribe());
 
     // Get lodging availability ON lodgings search
     const available$ = lodgingsSearchInput$.pipe(
