@@ -706,8 +706,8 @@
 				"ORDER": "Order",
 				"UNITS": "Units",
 				"UNITPRICE": "Unit price",
-				"UNITDISCOUNT": "Unit discount",
-				"UNITTAX": "Unit tax",
+				"UNITCHANGE": "Unit changeFi",
+				"TAXPERCENT": "Tax percentage",
 				"INVENTORYID": "Inventory ID"
 			},
 			"PLACEHOLDERS": {
@@ -715,8 +715,8 @@
 				"ORDER": "Order",
 				"UNITS": "Units",
 				"UNITPRICE": "Unit price",
-				"UNITDISCOUNT": "Unit discount",
-				"UNITTAX": "Unit tax",
+				"UNITCHANGE": "Unit change",
+				"TAXPERCENT": "Tax percentage",
 				"INVENTORYID": "Inventory ID"
 			},
 			"VALIDATION": {
@@ -732,11 +732,11 @@
 				"UNITPRICE": {
 					"REQUIRED": "Unit price is required"
 				},
-				"UNITDISCOUNT": {
-					"REQUIRED": "Unit discount is required"
+				"UNITCHANGE": {
+					"REQUIRED": "Unit changeFi is required"
 				},
-				"UNITTAX": {
-					"REQUIRED": "Unit tax is required"
+				"TAXPERCENT": {
+					"REQUIRED": "Tax percentage is required"
 				},
 				"INVENTORYID": {
 					"REQUIRED": "Inventory ID is required"
@@ -1072,6 +1072,28 @@
 				}
 			}
 		}
+	},
+	"LODGING_SELECT_FIELD": {
+		"SELECT_LODGING": "Select lodging"
+	},
+	"LODGING_TYPE_SELECT_FIELD": {
+		"SELECT_LODGING_TYPE": "Select a lodging type"
+	},
+	"LODGING_SELECT_DIALOG": {
+		"AVAILABLE": "Available",
+		"UNAVAILABLE": "Unavailable",
+		"CANCEL": "Cancel",
+		"DONE": "Done",
+		"CHOOSE_LODGING_TYPE": "Choose a lodging type",
+		"CHOOSE_LODGING": "Choose a lodging"
+	},
+	"LODGING_TYPE_SELECT_DIALOG": {
+		"SELECT_LODGING_TYPE": "Select a lodging type",
+		"AVAILABLE": " available",
+		"PRICE_VIA": "Price via ",
+		"CANCEL": "Cancel",
+		"DONE": "Done",
+		"CHOOSE_LODGING_TYPE": "Choose a lodging type"
 	},
 	"LODGING_SETTINGS": {
 		"FORM": {
@@ -2709,6 +2731,21 @@
 			"CONFIRM_EMAIL": "Confirm e-mail",
 			"LOGGING_IN": "Logging in...",
 			"BUTTON_LOGIN": "Login"
+		}
+	},
+	"OPEN_API": {
+		"SETTINGS": "Settings",
+		"FORM": {
+			"PLACEHOLDERS": {
+				"TITLE": "Title",
+				"DESCRIPTION": "Description",
+				"TERMSOFSERVICE": "Terms of service",
+				"CONTACTNAME": "Contact name",
+				"CONTACTURL": "Contact URL",
+				"CONTACTEMAIL": "Contact email",
+				"LICENSENAME": "License name",
+				"LICENSEURL": "License URL"
+			}
 		}
 	},
 	"PACKAGES": {

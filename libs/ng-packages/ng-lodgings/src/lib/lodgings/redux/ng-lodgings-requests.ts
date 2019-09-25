@@ -1,11 +1,11 @@
 import { Lodging, LODGINGS_REDUX_KEY, LODGINGS_ADDITIONAL_PATHS } from '@skysmack/packages-lodgings';
 import { Injectable, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { ApiDomain, StrIndex, HttpErrorResponse, API_DOMAIN_INJECTOR_TOKEN } from '@skysmack/framework';
+import { ApiDomain, API_DOMAIN_INJECTOR_TOKEN, StrIndex, HttpErrorResponse } from '@skysmack/framework';
 import { NgRecordRequests } from '@skysmack/ng-framework';
+import { ReduxAction, GetIntervalPayload, SelectedIdsMeta, StateKeyMeta } from '@skysmack/redux';
 import { Observable, of } from 'rxjs';
-import { retry, catchError, map } from 'rxjs/operators';
-import { ReduxAction, StateKeyMeta, GetIntervalPayload, SelectedIdsMeta } from '@skysmack/redux';
+import { map, retry, catchError } from 'rxjs/operators';
 import { NgLodgingsActions } from './ng-lodgings-actions';
 
 @Injectable({ providedIn: 'root' })
@@ -17,21 +17,43 @@ export class NgLodgingsRequests extends NgRecordRequests<Lodging, number> {
         super(http, apiDomain, LODGINGS_REDUX_KEY, LODGINGS_ADDITIONAL_PATHS);
     }
 
-    public getAvailableLodgings(action: ReduxAction<GetIntervalPayload, SelectedIdsMeta<number>>): Observable<ReduxAction<StrIndex<StrIndex<number[]>>> | ReduxAction<HttpErrorResponse>> {
+    public getAvailableLodgings(action: ReduxAction<GetIntervalPayload, SelectedIdsMeta<number>>): Observable<ReduxAction<StrIndex<StrIndex<boolean>>> | ReduxAction<HttpErrorResponse>> {
+        let url = `${this.apiDomain.domain}/${action.payload.packagePath}/available/${action.payload.start}/${action.payload.end}`;
+        url = `${url}?${action.meta.ids.map(id => `lodgingIds=${id}`).join('&')}`;
+
+        return this.http.get<any>(url, { observe: 'response' }).pipe(
+            map(httpResponse => Object.assign({}, new ReduxAction<StrIndex<StrIndex<boolean>>, { stateKey: string, dateKey: string }>({
+                type: LODGINGS_REDUX_KEY + NgLodgingsActions.GET_AVAILABLE_LODGINGS_SUCCESS,
+                payload: httpResponse.body,
+                meta: {
+                    stateKey: action.payload.packagePath,
+                    dateKey: `${action.payload.start}:${action.payload.end}`
+                }
+            }))),
+            retry(3),
+            catchError((error) => of(Object.assign({}, new ReduxAction<HttpErrorResponse>({
+                type: LODGINGS_REDUX_KEY + NgLodgingsActions.GET_AVAILABLE_LODGINGS_FAILURE,
+                payload: error,
+                error: true
+            }))))
+        );
+    }
+
+    public getAvailableLodgingsDaily(action: ReduxAction<GetIntervalPayload, SelectedIdsMeta<number>>): Observable<ReduxAction<StrIndex<StrIndex<number[]>>> | ReduxAction<HttpErrorResponse>> {
         let url = `${this.apiDomain.domain}/${action.payload.packagePath}/available/daily/${action.payload.start}/${action.payload.end}`;
         url = `${url}?${action.meta.ids.map(id => `lodgingIds=${id}`).join('&')}`;
 
         return this.http.get<any>(url, { observe: 'response' }).pipe(
             map(httpResponse => Object.assign({}, new ReduxAction<StrIndex<StrIndex<number[]>>, StateKeyMeta>({
-                type: this.prefix + NgLodgingsActions.GET_AVAILABLE_LODGINGS_SUCCESS,
+                type: LODGINGS_REDUX_KEY + NgLodgingsActions.GET_AVAILABLE_LODGINGS_DAILY_SUCCESS,
                 payload: httpResponse.body,
                 meta: {
                     stateKey: action.payload.packagePath
                 }
             }))),
-            retry(this.retryTimes),
+            retry(3),
             catchError((error) => of(Object.assign({}, new ReduxAction<HttpErrorResponse>({
-                type: this.prefix + NgLodgingsActions.GET_AVAILABLE_LODGINGS_FAILURE,
+                type: LODGINGS_REDUX_KEY + NgLodgingsActions.GET_AVAILABLE_LODGINGS_DAILY_FAILURE,
                 payload: error,
                 error: true
             }))))

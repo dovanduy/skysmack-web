@@ -10,6 +10,8 @@ import { FormRule, Field, SelectField, SelectFieldOption } from '@skysmack/ng-dy
 import { FieldsConfig, FieldProviders } from '@skysmack/ng-fields';
 import { SelectFieldComponent, DateFieldComponent, IntFieldComponent, HiddenFieldComponent } from '@skysmack/portal-fields';
 import { NgLodgingReservationsValidation } from '@skysmack/ng-lodging-reservations';
+import { LodgingTypeSelectFieldComponent } from './lodging-reservations/lodging-type-select-field/lodging-type-select-field.component';
+import { LodgingSelectFieldComponent } from './lodging-reservations/lodging-select-field/lodging-select-field.component';
 
 @Injectable({ providedIn: 'root' })
 export class NgLodgingReservationsFieldsConfig extends FieldsConfig<LodgingReservation, number> {
@@ -28,39 +30,10 @@ export class NgLodgingReservationsFieldsConfig extends FieldsConfig<LodgingReser
     }
 
     protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<LodgingReservation, number>): Field[] {
-        const depPackagePath = loadedPackage._package.dependencies[0];
-
         const fields = [
-            new SelectField({
-                component: SelectFieldComponent,
-                value: entity ? entity.object.lodgingTypeId : undefined,
-                key: 'lodgingTypeId',
-                displayKey: 'lodgingType',
-                displaySubKey: 'object.name',
-                validators: [Validators.required],
-                optionsData$: this.lodgingTypeStore.get(depPackagePath),
-                getDependencies: () => { this.lodgingTypeActions.getPaged(depPackagePath, new PagedQuery()); },
-                order: 1,
-                showColumn: true
-            }),
-            new SelectField({
-                component: SelectFieldComponent,
-                value: entity ? entity.object.allocatedLodgingId : undefined,
-                key: 'allocatedLodgingId',
-                displayKey: 'allocatedLodging',
-                displaySubKey: 'object.name',
-                optionsData$: this.lodgingsStore.get(depPackagePath),
-                extraOptions: [{
-                    value: null,
-                    displayName: 'None'
-                }] as SelectFieldOption[],
-                getDependencies: () => { this.lodgingsActions.getPaged(depPackagePath, new PagedQuery()); },
-                order: 2,
-                showColumn: true
-            }),
             new Field({
                 component: DateFieldComponent,
-                value: entity ? entity.object.checkIn : undefined,
+                value: entity ? entity.object.checkIn : new Date(),
                 key: 'checkIn',
                 validators: [Validators.required],
                 order: 3,
@@ -69,8 +42,30 @@ export class NgLodgingReservationsFieldsConfig extends FieldsConfig<LodgingReser
             }),
             new Field({
                 component: DateFieldComponent,
-                value: entity ? entity.object.checkOut : undefined,
+                value: entity ? entity.object.checkOut : (() => {
+                    const date = new Date();
+                    date.setDate(date.getDate() + 1);
+                    return date;
+                })(),
                 key: 'checkOut',
+                validators: [Validators.required],
+                order: 4,
+                showColumn: true,
+                sortable: true
+            }),
+            new Field({
+                component: LodgingTypeSelectFieldComponent,
+                value: entity ? entity.object.lodgingTypeId : undefined,
+                key: 'lodgingTypeId',
+                validators: [Validators.required],
+                order: 4,
+                showColumn: true,
+                sortable: true
+            }),
+            new Field({
+                component: LodgingSelectFieldComponent,
+                value: entity ? entity.object.allocatedLodgingId : undefined,
+                key: 'allocatedLodgingId',
                 validators: [Validators.required],
                 order: 4,
                 showColumn: true,

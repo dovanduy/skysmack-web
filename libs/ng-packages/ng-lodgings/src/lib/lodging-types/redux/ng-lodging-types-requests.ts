@@ -38,12 +38,12 @@ export class NgLodgingTypesRequests extends NgRecordRequests<Lodging, number> {
         );
     }
 
-    public getAvailableLodgingTypesCount(action: ReduxAction<GetIntervalPayload, SelectedIdsMeta<number>>): Observable<ReduxAction<StrIndex<StrIndex<number>>> | ReduxAction<HttpErrorResponse>> {
-        let url = `${this.apiDomain.domain}/${action.payload.packagePath}/types/available-lodgings/daily-count/${action.payload.start}/${action.payload.end}`;
+    public getAvailableLodgingTypesCount(action: ReduxAction<GetIntervalPayload, SelectedIdsMeta<number>>): Observable<ReduxAction<StrIndex<StrIndex<number[]>>> | ReduxAction<HttpErrorResponse>> {
+        let url = `${this.apiDomain.domain}/${action.payload.packagePath}/types/available-lodgings/${action.payload.start}/${action.payload.end}`;
         url = `${url}?${action.meta.ids.map(id => `lodgingTypeIds=${id}`).join('&')}`;
 
         return this.http.get<any>(url, { observe: 'response' }).pipe(
-            map(httpResponse => Object.assign({}, new ReduxAction<StrIndex<StrIndex<number>>, StateKeyMeta>({
+            map(httpResponse => Object.assign({}, new ReduxAction<StrIndex<StrIndex<number[]>>, StateKeyMeta>({
                 type: this.prefix + NgLodgingTypesActions.GET_AVAILABLE_LODGING_TYPES_COUNT_SUCCESS,
                 payload: httpResponse.body,
                 meta: {
@@ -52,7 +52,28 @@ export class NgLodgingTypesRequests extends NgRecordRequests<Lodging, number> {
             }))),
             retry(this.retryTimes),
             catchError((error) => of(Object.assign({}, new ReduxAction<HttpErrorResponse>({
-                type: this.prefix + NgLodgingTypesActions.GET_AVAILABLE_LODGING_TYPES_COUNT_FAILURE,
+                type: this.prefix + NgLodgingTypesActions.GET_AVAILABLE_LODGING_TYPES_DAILY_COUNT_FAILURE,
+                payload: error,
+                error: true
+            }))))
+        );
+    }
+
+    public getAvailableLodgingTypesDailyCount(action: ReduxAction<GetIntervalPayload, SelectedIdsMeta<number>>): Observable<ReduxAction<StrIndex<StrIndex<number>>> | ReduxAction<HttpErrorResponse>> {
+        let url = `${this.apiDomain.domain}/${action.payload.packagePath}/types/available-lodgings/daily-count/${action.payload.start}/${action.payload.end}`;
+        url = `${url}?${action.meta.ids.map(id => `lodgingTypeIds=${id}`).join('&')}`;
+
+        return this.http.get<any>(url, { observe: 'response' }).pipe(
+            map(httpResponse => Object.assign({}, new ReduxAction<StrIndex<StrIndex<number>>, StateKeyMeta>({
+                type: this.prefix + NgLodgingTypesActions.GET_AVAILABLE_LODGING_TYPES_DAILY_COUNT_SUCCESS,
+                payload: httpResponse.body,
+                meta: {
+                    stateKey: action.payload.packagePath
+                }
+            }))),
+            retry(this.retryTimes),
+            catchError((error) => of(Object.assign({}, new ReduxAction<HttpErrorResponse>({
+                type: this.prefix + NgLodgingTypesActions.GET_AVAILABLE_LODGING_TYPES_DAILY_COUNT_FAILURE,
                 payload: error,
                 error: true
             }))))

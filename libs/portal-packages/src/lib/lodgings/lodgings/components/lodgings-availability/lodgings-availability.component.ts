@@ -58,11 +58,11 @@ export class LodgingsAvailabilityComponent implements OnInit {
 
   public requestPeriod(date: Date) {
     this.setCurrentDate(date);
-    this.getAvailableLodgings();
+    this.getAvailableLodgingsDaily();
   }
 
-  public getAvailableLodgings() {
-    this.actions.getAvailableLodgings(this.packagePath, this.startOfMonth, this.endOfMonth, this.selectedLodgingIds);
+  public getAvailableLodgingsDaily() {
+    this.actions.getAvailableLodgingsDaily(this.packagePath, this.startOfMonth, this.endOfMonth, this.selectedLodgingIds);
   }
 
   public beforeMonthViewRender({ body }: { body: CalendarMonthViewDay[] }): void {
@@ -98,7 +98,7 @@ export class LodgingsAvailabilityComponent implements OnInit {
 
     this.events$ = combineLatest(
       this.store.get(this.packagePath),
-      this.store.getAvailableLodgings(this.packagePath)
+      this.store.getAvailableLodgingsDaily(this.packagePath)
     ).pipe(
       map(values => {
         const lodgings = values[0];

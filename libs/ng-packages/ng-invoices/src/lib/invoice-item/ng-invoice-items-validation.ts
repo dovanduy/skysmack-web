@@ -8,8 +8,8 @@ export class NgInvoiceItemsValidation extends Validation {
         order: '',
         units: '',
         unitPrice: '',
-        unitDiscount: '',
-        unitTax: '',
+        unitChange: '',
+        taxPercent: '',
         inventoryId: ''
     };
 
@@ -26,10 +26,10 @@ export class NgInvoiceItemsValidation extends Validation {
         unitPrice: {
             required: ''
         },
-        unitDiscount: {
+        unitChange: {
             required: ''
         },
-        unitTax: {
+        taxPercent: {
             required: ''
         },
         inventoryId: {

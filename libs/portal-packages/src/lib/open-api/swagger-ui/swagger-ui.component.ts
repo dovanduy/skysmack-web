@@ -1,16 +1,18 @@
-import {AfterViewInit, Component, ElementRef, ViewEncapsulation, Inject} from '@angular/core';
+import { AfterViewInit, Component, ElementRef, ViewEncapsulation, Inject } from '@angular/core';
 
 import SwaggerUI from 'swagger-ui';
 import { API_DOMAIN_INJECTOR_TOKEN, ApiDomain } from '@skysmack/framework';
 import { Router } from '@angular/router';
 import { NgAuthenticationStore } from '@skysmack/ng-framework';
 import { map, take } from 'rxjs/operators';
+import { MatDialog } from '@angular/material/dialog';
+import { SettingsComponent } from '@skysmack/portal-settings';
 
 @Component({
   selector: 'ss-swagger-ui',
   templateUrl: './swagger-ui.component.html',
-   styleUrls: [ 
-    'swagger-ui.component.scss' ],
+  styleUrls: [
+    'swagger-ui.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
 export class SwaggerUiComponent implements AfterViewInit {
@@ -18,6 +20,7 @@ export class SwaggerUiComponent implements AfterViewInit {
   constructor(private el: ElementRef,
     private router: Router,
     private authenticationStore: NgAuthenticationStore,
+    private dialog: MatDialog,
     @Inject(API_DOMAIN_INJECTOR_TOKEN) private apiDomain: ApiDomain) {
   }
 
@@ -33,7 +36,7 @@ export class SwaggerUiComponent implements AfterViewInit {
             SwaggerUI.presets.apis
           ],
           requestInterceptor: (req) => {
-            if(req.loadSpec && currentUser && currentUser.access_token.length) {
+            if (req.loadSpec && currentUser && currentUser.access_token.length) {
               req.headers.Authorization = "Bearer " + currentUser.access_token
             }
             return req
@@ -42,5 +45,9 @@ export class SwaggerUiComponent implements AfterViewInit {
       }),
       take(1)
     ).subscribe();
+  }
+
+  settings() {
+    this.dialog.open(SettingsComponent);
   }
 }

@@ -200,7 +200,7 @@
 		}
 	},
 	"EMAILS_SMTP_SETTINGS": {
-		"FORM": {			
+		"FORM": {
 			"PLACEHOLDERS": {
 				"HOST": "Vært",
 				"PORT": "Port",
@@ -240,7 +240,7 @@
 				"EMAIL": {
 					"REQUIRED": "Email er påkrævet",
 					"INVALIDEMAIL": "Indtast venligst en gyldig email"
-				},		
+				},
 				"CURRENTPASSWORD": {
 					"REQUIRED": "Nuværende kodeord er påkrævet."
 				},
@@ -386,19 +386,19 @@
 	},
 	"APPLICATIONS": {
 		"ENTITY_ACTION": {
-            "ROLES": "Roller"
+			"ROLES": "Roller"
 		},
 		"ROLES": {
-            "CURRENT_ROLES": "{{ object.displayName }} nuværende roller",
-            "ROLE_PRIORITY": "{{ role.object.name }} med prioriteten {{ role.object.priority }} -",
-            "REMOVE": "Fjern",
-            "NO_ROLES": "Ingen roller er blevet tilføjer.",
-            "ADD_ROLE": "Tilføj en rolle til {{ object.displayName }}",
-            "OBJECT_PRIOORITY": "{{ role.object.name }} - prioritet",
-            "ADD": "Tilføj",
-            "ROLES_APPLIED": "Alle roller er blevet tilføjet, ellers findes der ikke nogen.",
-            "NO_ROLES_APPLIED": "Denne application har ingen roller."
-        },
+			"CURRENT_ROLES": "{{ object.displayName }} nuværende roller",
+			"ROLE_PRIORITY": "{{ role.object.name }} med prioriteten {{ role.object.priority }} -",
+			"REMOVE": "Fjern",
+			"NO_ROLES": "Ingen roller er blevet tilføjer.",
+			"ADD_ROLE": "Tilføj en rolle til {{ object.displayName }}",
+			"OBJECT_PRIOORITY": "{{ role.object.name }} - prioritet",
+			"ADD": "Tilføj",
+			"ROLES_APPLIED": "Alle roller er blevet tilføjet, ellers findes der ikke nogen.",
+			"NO_ROLES_APPLIED": "Denne application har ingen roller."
+		},
 		"CREATE": {
 			"CREATE_APPLICATION": "Opret ny applikation",
 			"BUTTON_CREATE": "Opret"
@@ -442,8 +442,8 @@
 			},
 			"VALIDATION": {
 				"CLIENTSECRET": {
-                    "REQUIRED": "Klient hemmelighed er påkrævet"
-                },
+					"REQUIRED": "Klient hemmelighed er påkrævet"
+				},
 				"CLIENTID": {
 					"REQUIRED": "Klient id er påkrævet"
 				},
@@ -699,8 +699,8 @@
 				"ORDER": "Rækkefølge",
 				"UNITS": "Enheder",
 				"UNITPRICE": "Enhedspris",
-				"UNITDISCOUNT": "Enhedsrabat",
-				"UNITTAX": "Enhedsskat",
+				"UNITCHANGE": "Enhedsændring",
+				"TAXPERCENT": "Skatteprocent",
 				"INVENTORYID": "Lager ID"
 			},
 			"PLACEHOLDERS": {
@@ -708,8 +708,8 @@
 				"ORDER": "Indtast rækkefølge",
 				"UNITS": "Indtast enheder",
 				"UNITPRICE": "Indtast pris",
-				"UNITDISCOUNT": "Indtast rabat",
-				"UNITTAX": "Indtast skat",
+				"UNITCHANGE": "Indtast ændring",
+				"TAXPERCENT": "Indtast skat",
 				"INVENTORYID": "Indtast lager ID"
 			},
 			"VALIDATION": {
@@ -725,11 +725,11 @@
 				"UNITPRICE": {
 					"REQUIRED": "Enhedspris er påkrævet"
 				},
-				"UNITDISCOUNT": {
-					"REQUIRED": "Enhedsrabat er påkrævet"
+				"UNITCHANGE": {
+					"REQUIRED": "Enhedsændring er påkrævet"
 				},
-				"UNITTAX": {
-					"REQUIRED": "Enhedsskat er påkrævet"
+				"TAXPERCENT": {
+					"REQUIRED": "Skatteprocent er påkrævet"
 				},
 				"INVENTORYID": {
 					"REQUIRED": "Lager ID er påkrævet"
@@ -967,7 +967,7 @@
 		"STAYS": {
 			"TITLE": "Ophold",
 			"TITLE_EXTRAS": "(ophold)"
-		},     
+		},
 		"FORM": {
 			"LABELS": {
 				"LODGINGTYPEID": "Rum type",
@@ -1066,6 +1066,99 @@
 			}
 		}
 	},
+	"LODGING_SELECT_FIELD": {
+		"SELECT_LODGING": "Vælg et rum"
+	},
+	"LODGING_TYPE_SELECT_FIELD": {
+		"SELECT_LODGING_TYPE": "Vælg en rum type"
+	},
+	"LODGING_SELECT_DIALOG": {
+		"AVAILABLE": "Tilgængeligt",
+		"UNAVAILABLE": "Utilgængelig",
+		"CANCEL": "Afbryd",
+		"DONE": "Færdig",
+		"CHOOSE_LODGING_TYPE": "Vælg en rum type",
+		"CHOOSE_LODGING": "Vælg et run"
+	},
+	"LODGING_TYPE_SELECT_DIALOG": {
+		"SELECT_LODGING_TYPE": "Vælg en rum type",
+		"AVAILABLE": " tilgængeligt",
+		"PRICE_VIA": "pricer via ",
+		"CANCEL": "Afbryd",
+		"DONE": "Færdig",
+		"CHOOSE_LODGING_TYPE": "Vælg en rum type"
+	},
+	"LODGINGS": {
+		"FORM": {
+			"LABELS": {
+				"LODGINGTYPEID": "Type",
+				"NAME": "Navn",
+				"DISABLED": "Utilgængelig",
+				"LODGINGRESERVATIONSPRICING": "Pris"
+			},
+			"PLACEHOLDERS": {
+				"LODGINGTYPEID": "Type",
+				"NAME": "Navn",
+				"DISABLED": "Utilgængelig"
+			},
+			"VALIDATION": {
+				"LODGINGTYPEID": {
+					"REQUIRED": "Type er påkrævet."
+				},
+				"NAME": {
+					"REQUIRED": "Navn er påkrævet."
+				},
+				"DISABLED": {
+					"REQUIRED": "Utilgængeligheds status er påkrævet."
+				}
+			}
+		},
+		"FIELDS": {
+			"CREATE": {
+				"ADD": "Opret nyt felt"
+			},
+			"EDIT": {
+				"EDITING": "Redigere"
+			},
+			"INDEX": {
+				"ACTIONS": "Handlinger",
+				"CREATE": "Opret nyt felt",
+				"MANAGE": "Konfigurer",
+				"OTHER": "Andre",
+				"FIELDS": "Felter",
+				"BACK": "Tilbage"
+			}
+		},
+		"CREATE": {
+			"CREATE": "Opret",
+			"BUTTON_CREATE": "Opret"
+		},
+		"EDIT": {
+			"EDIT": "Rediger",
+			"BUTTON_EDIT": "Opdater"
+		},
+		"INDEX": {
+			"ACTIONS": "Handlinger",
+			"CREATE": "Opret",
+			"SETTINGS": "Indstillinger",
+			"AVAILABILITY": "Tilgængelighed",
+			"MANAGE": "Konfigurer",
+			"FIELDS": "Felter",
+			"FIELDS_TITLE": "(Felter)",
+			"TYPES": "Typer",
+			"BACK": "Tilbage"
+		},
+		"QUEUE": {
+			"ADDING": "Tilføjer {{ name }}",
+			"UPDATING": "Opdatere {{ name }}",
+			"DELETING": "Sletter {{ name }}",
+			"ERROR": "Der opstod  en fejl ved {{ name }}. Ret og prøv igen."
+		}
+	},
+	"LODGINGS_AVAILABILITY": {
+		"SELECT_LODGINGS": "Vælg rum",
+		"TITLE": "Rum tilgængelighed"
+	},
 	"LODGING_SETTINGS": {
 		"FORM": {
 			"LABELS": {
@@ -1153,77 +1246,6 @@
 			"NEXT": "Næste",
 			"TITLE": "Rum typer tilgængelighed"
 		}
-	},
-	"LODGINGS": {
-		"FORM": {
-			"LABELS": {
-				"LODGINGTYPEID": "Type",
-				"NAME": "Navn",
-				"DISABLED": "Utilgængelig",
-				"LODGINGRESERVATIONSPRICING": "Pris"
-			},
-			"PLACEHOLDERS": {
-				"LODGINGTYPEID": "Type",
-				"NAME": "Navn",
-				"DISABLED": "Utilgængelig"
-			},
-			"VALIDATION": {
-				"LODGINGTYPEID": {
-					"REQUIRED": "Type er påkrævet."
-				},
-				"NAME": {
-					"REQUIRED": "Navn er påkrævet."
-				},
-				"DISABLED": {
-					"REQUIRED": "Utilgængeligheds status er påkrævet."
-				}
-			}
-		},
-		"FIELDS": {
-			"CREATE": {
-				"ADD": "Opret nyt felt"
-			},
-			"EDIT": {
-				"EDITING": "Redigere"
-			},
-			"INDEX": {
-				"ACTIONS": "Handlinger",
-				"CREATE": "Opret nyt felt",
-				"MANAGE": "Konfigurer",
-				"OTHER": "Andre",
-				"FIELDS": "Felter",
-				"BACK": "Tilbage"
-			}
-		},
-		"CREATE": {
-			"CREATE": "Opret",
-			"BUTTON_CREATE": "Opret"
-		},
-		"EDIT": {
-			"EDIT": "Rediger",
-			"BUTTON_EDIT": "Opdater"
-		},
-		"INDEX": {
-			"ACTIONS": "Handlinger",
-			"CREATE": "Opret",
-			"SETTINGS": "Indstillinger",
-			"AVAILABILITY": "Tilgængelighed",
-			"MANAGE": "Konfigurer",
-			"FIELDS": "Felter",
-			"FIELDS_TITLE": "(Felter)",
-			"TYPES": "Typer",
-			"BACK": "Tilbage"
-		},
-		"QUEUE": {
-			"ADDING": "Tilføjer {{ name }}",
-			"UPDATING": "Opdatere {{ name }}",
-			"DELETING": "Sletter {{ name }}",
-			"ERROR": "Der opstod  en fejl ved {{ name }}. Ret og prøv igen."
-		}
-	},
-	"LODGINGS_AVAILABILITY": {
-		"SELECT_LODGINGS": "Vælg rum",
-		"TITLE": "Rum tilgængelighed"
 	},
 	"ASSIGNMENT_TYPES": {
 		"FORM": {
@@ -1608,45 +1630,6 @@
 			"ERROR": "Der opstod en fejl ved {{ displayName }}. Ret og prøv igen."
 		}
 	},
-	"PRODUCT_TYPES": {
-		"CREATE": {
-			"CREATE": "Opret",
-			"BUTTON_CREATE": "Opret"
-		},
-		"EDIT": {
-			"EDIT": "Rediger",
-			"BUTTON_EDIT": "Opdater"
-		},
-		"INDEX": {
-			"TITLE_EXTRAS": "(typer)",
-			"ACTIONS": "Handlinger",
-			"CREATE": "Opret ny type",
-			"DELETE": "Slet",
-			"MANAGE": "Konfigurer",
-			"FIELDS": "Felter",
-			"FIELDS_TITLE": "(type felter)",
-			"BACK": "Tilbage"
-		},
-		"FORM": {
-			"LABELS": {
-				"NAME": "Navn"
-			},
-			"PLACEHOLDERS": {
-				"NAME": "Indtast navn"
-			},
-			"VALIDATION": {
-				"NAME": {
-					"REQUIRED": "Et navn er påkrævet."
-				}
-			}
-		},
-		"QUEUE": {
-			"ADDING": "Tilføjer {{ name }}",
-			"UPDATING": "Opdatere {{ name }}",
-			"DELETING": "Sletter {{ name }}",
-			"ERROR": "Der opstod  en fejl ved {{ name }}. Ret og prøv igen."
-		}
-	},
 	"PRODUCTS": {
 		"FORM": {
 			"LABELS": {
@@ -1697,6 +1680,45 @@
 				"BACK": "Tilbage",
 				"MANAGE": "Konfigurer",
 				"FIELDS": "Felter"
+			}
+		},
+		"QUEUE": {
+			"ADDING": "Tilføjer {{ name }}",
+			"UPDATING": "Opdatere {{ name }}",
+			"DELETING": "Sletter {{ name }}",
+			"ERROR": "Der opstod  en fejl ved {{ name }}. Ret og prøv igen."
+		}
+	},
+	"PRODUCT_TYPES": {
+		"CREATE": {
+			"CREATE": "Opret",
+			"BUTTON_CREATE": "Opret"
+		},
+		"EDIT": {
+			"EDIT": "Rediger",
+			"BUTTON_EDIT": "Opdater"
+		},
+		"INDEX": {
+			"TITLE_EXTRAS": "(typer)",
+			"ACTIONS": "Handlinger",
+			"CREATE": "Opret ny type",
+			"DELETE": "Slet",
+			"MANAGE": "Konfigurer",
+			"FIELDS": "Felter",
+			"FIELDS_TITLE": "(type felter)",
+			"BACK": "Tilbage"
+		},
+		"FORM": {
+			"LABELS": {
+				"NAME": "Navn"
+			},
+			"PLACEHOLDERS": {
+				"NAME": "Indtast navn"
+			},
+			"VALIDATION": {
+				"NAME": {
+					"REQUIRED": "Et navn er påkrævet."
+				}
 			}
 		},
 		"QUEUE": {
@@ -2300,188 +2322,188 @@
 		}
 	},
 	"TERMINAL_PAYMENT_RECEIPTS": {
-        "FORM": {
-            "LABELS": {
-                "REFERENCENUMBER": "Reference nummer",
-                "PRINTRECEIPT": "Udskriv kvittering",
-                "RECEIPTDOCUMENT": "Kvitterings dokument",
-                "INVOICEPAYMENTID": "Betalings faktura"
-            },
-            "PLACEHOLDERS": {
-                "REFERENCENUMBER": "Reference nummer",
-                "PRINTRECEIPT": "Udskriv kvittering",
-                "RECEIPTDOCUMENT": "Kvitterings dokument",
-                "INVOICEPAYMENTID": "Betalings faktura"
-            },
-            "VALIDATION": {
-                "REFERENCENUMBER": {
-                    "REQUIRED": "Reference nummer er påkrævet."
-                },
-                "PRINTRECEIPT": {
-                    "REQUIRED": "Udskriv kvittering er påkrævet."
-                },
-                "RECEIPTDOCUMENT": {
-                    "REQUIRED": "Kvitterings dokument er påkrævet."
-                },
-                "INVOICEPAYMENTID": {}
-            }
-        },
-        "FIELDS": {
-            "CREATE": {
-                "ADD": "Tilføj nyt felt"
-            },
-            "EDIT": {
-                "EDITING": "Redigere"
-            },
-            "INDEX": {
-                "ACTIONS": "Handlinger",
-                "CREATE": "Opret nyt felt",
-                "OTHER": "Andre",
-                "BACK": "Tilbage",
-                "FIELDS": "Felter",
-                "EDIT": "Rediger"
-            }
-        },
-        "CREATE": {
-            "CREATE": "Opret",
-            "BUTTON_CREATE": "Opret"
-        },
-        "EDIT": {
-            "EDIT": "Rediger",
-            "BUTTON_EDIT": "Opdater"
-        },
-        "INDEX": {
-            "PACKAGES": "Pakker",
-            "CREATE": "Opret",
-            "EDIT": "Rediger",
-            "DELETE": "Slet",
-            "FIELDS": "Felter",
+		"FORM": {
+			"LABELS": {
+				"REFERENCENUMBER": "Reference nummer",
+				"PRINTRECEIPT": "Udskriv kvittering",
+				"RECEIPTDOCUMENT": "Kvitterings dokument",
+				"INVOICEPAYMENTID": "Betalings faktura"
+			},
+			"PLACEHOLDERS": {
+				"REFERENCENUMBER": "Reference nummer",
+				"PRINTRECEIPT": "Udskriv kvittering",
+				"RECEIPTDOCUMENT": "Kvitterings dokument",
+				"INVOICEPAYMENTID": "Betalings faktura"
+			},
+			"VALIDATION": {
+				"REFERENCENUMBER": {
+					"REQUIRED": "Reference nummer er påkrævet."
+				},
+				"PRINTRECEIPT": {
+					"REQUIRED": "Udskriv kvittering er påkrævet."
+				},
+				"RECEIPTDOCUMENT": {
+					"REQUIRED": "Kvitterings dokument er påkrævet."
+				},
+				"INVOICEPAYMENTID": {}
+			}
+		},
+		"FIELDS": {
+			"CREATE": {
+				"ADD": "Tilføj nyt felt"
+			},
+			"EDIT": {
+				"EDITING": "Redigere"
+			},
+			"INDEX": {
+				"ACTIONS": "Handlinger",
+				"CREATE": "Opret nyt felt",
+				"OTHER": "Andre",
+				"BACK": "Tilbage",
+				"FIELDS": "Felter",
+				"EDIT": "Rediger"
+			}
+		},
+		"CREATE": {
+			"CREATE": "Opret",
+			"BUTTON_CREATE": "Opret"
+		},
+		"EDIT": {
+			"EDIT": "Rediger",
+			"BUTTON_EDIT": "Opdater"
+		},
+		"INDEX": {
+			"PACKAGES": "Pakker",
+			"CREATE": "Opret",
+			"EDIT": "Rediger",
+			"DELETE": "Slet",
+			"FIELDS": "Felter",
 			"FIELDS_TITLE": "(felter)",
 			"TITLE_EXTRAS": "(Betalings kvitteringer)",
-            "ITEM": "Vare",
-            "MANAGE": "Konfigure",
-            "ACTIONS": "Handlinger"
-        },
-        "NOTIFICATIONS": {
-            "GET": {
-                "PAGED_ERROR": "Fejlede med at hente terminalPaymentReceipts ({{ httpErrorCode }}).",
-                "SINGLE_FAILURE": "Fejlede med at hente {{ printReceipt }} ({{ httpErrorCode }}).",
-                "FIELDS_FAILURE": "Fejlede med at hente felter for terminalPaymentReceipts ({{ httpErrorCode }}).",
-                "SINGLE_FIELD_FAILURE": "Fejlede med at hente {{ printReceipt }} felter ({{ httpErrorCode }})."
-            },
-            "ADD": {
-                "SUCCESS": "Tilføjer {{ printReceipt }} successfuldt.",
-                "FAILURE": "Fejlede med at tilføje {{ printReceipt }} ({{ httpErrorCode }}).",
-                "FIELD_FAILURE": "Fejlede med at tilføje felter for {{ printReceipt }} ({{ httpErrorCode }}).",
-                "FIELD_SUCCESS": "Tilføjer felter for {{ printReceipt }} successfuldt."
-            },
-            "UPDATE": {
-                "SUCCESS": "Opdatere {{ printReceipt }} successfuldt.",
-                "FAILURE": "Fejlede med at opdatere {{ printReceipt }} ({{ httpErrorCode }}).",
-                "FIELD_SUCCESS": "Opdatere felter for {{ printReceipt }} successfuldt.",
-                "FIELD_FAILURE": "Fejlede med at opdatere felter for {{ printReceipt }} ({{ httpErrorCode }})"
-            },
-            "REMOVE": {
-                "SUCCESS": "Removed {{ printReceipt }} successfuldt.",
-                "FAILURE": "Fejlede med at fjerne {{ printReceipt }} ({{ httpErrorCode }}).",
-                "FIELD_SUCCESS": "Removed felter for {{ printReceipt }} succesfully.",
-                "FIELD_FAILURE": "Fejlede med at fjerne felter for {{ printReceipt }} ({{ httpErrorCode }})."
-            }
-        },
-        "QUEUE": {
-            "ADDING": "Tilføjer {{ printReceipt }}",
-            "UPDATING": "Opdatere {{ printReceipt }}",
-            "DELETING": "Sletter {{ printReceipt }}",
-            "ERROR": "Der skete en fejl med {{ printReceipt }}. Ret og prøv igen."
-        }
+			"ITEM": "Vare",
+			"MANAGE": "Konfigure",
+			"ACTIONS": "Handlinger"
+		},
+		"NOTIFICATIONS": {
+			"GET": {
+				"PAGED_ERROR": "Fejlede med at hente terminalPaymentReceipts ({{ httpErrorCode }}).",
+				"SINGLE_FAILURE": "Fejlede med at hente {{ printReceipt }} ({{ httpErrorCode }}).",
+				"FIELDS_FAILURE": "Fejlede med at hente felter for terminalPaymentReceipts ({{ httpErrorCode }}).",
+				"SINGLE_FIELD_FAILURE": "Fejlede med at hente {{ printReceipt }} felter ({{ httpErrorCode }})."
+			},
+			"ADD": {
+				"SUCCESS": "Tilføjer {{ printReceipt }} successfuldt.",
+				"FAILURE": "Fejlede med at tilføje {{ printReceipt }} ({{ httpErrorCode }}).",
+				"FIELD_FAILURE": "Fejlede med at tilføje felter for {{ printReceipt }} ({{ httpErrorCode }}).",
+				"FIELD_SUCCESS": "Tilføjer felter for {{ printReceipt }} successfuldt."
+			},
+			"UPDATE": {
+				"SUCCESS": "Opdatere {{ printReceipt }} successfuldt.",
+				"FAILURE": "Fejlede med at opdatere {{ printReceipt }} ({{ httpErrorCode }}).",
+				"FIELD_SUCCESS": "Opdatere felter for {{ printReceipt }} successfuldt.",
+				"FIELD_FAILURE": "Fejlede med at opdatere felter for {{ printReceipt }} ({{ httpErrorCode }})"
+			},
+			"REMOVE": {
+				"SUCCESS": "Removed {{ printReceipt }} successfuldt.",
+				"FAILURE": "Fejlede med at fjerne {{ printReceipt }} ({{ httpErrorCode }}).",
+				"FIELD_SUCCESS": "Removed felter for {{ printReceipt }} succesfully.",
+				"FIELD_FAILURE": "Fejlede med at fjerne felter for {{ printReceipt }} ({{ httpErrorCode }})."
+			}
+		},
+		"QUEUE": {
+			"ADDING": "Tilføjer {{ printReceipt }}",
+			"UPDATING": "Opdatere {{ printReceipt }}",
+			"DELETING": "Sletter {{ printReceipt }}",
+			"ERROR": "Der skete en fejl med {{ printReceipt }}. Ret og prøv igen."
+		}
 	},
 	"TERMINAL_RECEIPTS": {
-        "FORM": {
-            "LABELS": {
-                "TYPE": "Type",
-                "PRINTRECEIPT": "Udskriv kvittering"
-            },
-            "PLACEHOLDERS": {
-                "TYPE": "Type",
-                "PRINTRECEIPT": "Udskriv kvittering"
-            },
-            "VALIDATION": {
-                "TYPE": {
-                    "REQUIRED": "Type er påkrævet."
-                },
-                "PRINTRECEIPT": {
-                    "REQUIRED": "Udskriv kvittering er påkrævet."
-                }
-            }
-        },
-        "FIELDS": {
-            "CREATE": {
-                "ADD": "Tilføj nyt felt"
-            },
-            "EDIT": {
-                "EDITING": "Redigere"
-            },
-            "INDEX": {
-                "ACTIONS": "Handlinger",
-                "CREATE": "Opret nyt felt",
-                "OTHER": "Andre",
-                "BACK": "Tilbage",
-                "FIELDS": "Felter",
-                "EDIT": "Rediger"
-            }
-        },
-        "CREATE": {
-            "CREATE": "Opret",
-            "BUTTON_CREATE": "Opret"
-        },
-        "EDIT": {
-            "EDIT": "Rediger",
-            "BUTTON_EDIT": "Opdater"
-        },
-        "INDEX": {
-            "PACKAGES": "Pakker",
-            "CREATE": "Opret",
-            "EDIT": "Rediger",
-            "DELETE": "Slet",
-            "FIELDS": "Felter",
+		"FORM": {
+			"LABELS": {
+				"TYPE": "Type",
+				"PRINTRECEIPT": "Udskriv kvittering"
+			},
+			"PLACEHOLDERS": {
+				"TYPE": "Type",
+				"PRINTRECEIPT": "Udskriv kvittering"
+			},
+			"VALIDATION": {
+				"TYPE": {
+					"REQUIRED": "Type er påkrævet."
+				},
+				"PRINTRECEIPT": {
+					"REQUIRED": "Udskriv kvittering er påkrævet."
+				}
+			}
+		},
+		"FIELDS": {
+			"CREATE": {
+				"ADD": "Tilføj nyt felt"
+			},
+			"EDIT": {
+				"EDITING": "Redigere"
+			},
+			"INDEX": {
+				"ACTIONS": "Handlinger",
+				"CREATE": "Opret nyt felt",
+				"OTHER": "Andre",
+				"BACK": "Tilbage",
+				"FIELDS": "Felter",
+				"EDIT": "Rediger"
+			}
+		},
+		"CREATE": {
+			"CREATE": "Opret",
+			"BUTTON_CREATE": "Opret"
+		},
+		"EDIT": {
+			"EDIT": "Rediger",
+			"BUTTON_EDIT": "Opdater"
+		},
+		"INDEX": {
+			"PACKAGES": "Pakker",
+			"CREATE": "Opret",
+			"EDIT": "Rediger",
+			"DELETE": "Slet",
+			"FIELDS": "Felter",
 			"FIELDS_TITLE": "(felter)",
 			"TITLE_EXTRAS": "(receipts)",
-            "ITEM": "Vare",
-            "MANAGE": "Konfigure",
-            "ACTIONS": "Handlinger"
-        },
-        "NOTIFICATIONS": {
-            "GET": {
-                "PAGED_ERROR": "Fejlede med at hente terminalReceipts ({{ httpErrorCode }}).",
-                "SINGLE_FAILURE": "Fejlede med at hente {{ printReceipt }} ({{ httpErrorCode }}).",
-                "FIELDS_FAILURE": "Fejlede med at hente felter for terminalReceipts ({{ httpErrorCode }}).",
-                "SINGLE_FIELD_FAILURE": "Fejlede med at hente {{ printReceipt }} felter ({{ httpErrorCode }})."
-            },
-            "ADD": {
-                "SUCCESS": "Tilføjer {{ printReceipt }} successfuldt.",
-                "FAILURE": "Fejlede med at tilføje {{ printReceipt }} ({{ httpErrorCode }}).",
-                "FIELD_FAILURE": "Fejlede med at tilføje felter for {{ printReceipt }} ({{ httpErrorCode }}).",
-                "FIELD_SUCCESS": "Tilføjer felter for {{ printReceipt }} successfuldt."
-            },
-            "UPDATE": {
-                "SUCCESS": "Opdatere {{ printReceipt }} successfuldt.",
-                "FAILURE": "Fejlede med at opdatere {{ printReceipt }} ({{ httpErrorCode }}).",
-                "FIELD_SUCCESS": "Opdatere felter for {{ printReceipt }} successfuldt.",
-                "FIELD_FAILURE": "Fejlede med at opdatere felter for {{ printReceipt }} ({{ httpErrorCode }})"
-            },
-            "REMOVE": {
-                "SUCCESS": "Removed {{ printReceipt }} successfuldt.",
-                "FAILURE": "Fejlede med at fjerne {{ printReceipt }} ({{ httpErrorCode }}).",
-                "FIELD_SUCCESS": "Removed felter for {{ printReceipt }} succesfully.",
-                "FIELD_FAILURE": "Fejlede med at fjerne felter for {{ printReceipt }} ({{ httpErrorCode }})."
-            }
-        },
-        "QUEUE": {
-            "ADDING": "Tilføjer {{ printReceipt }}",
-            "UPDATING": "Opdatere {{ printReceipt }}",
-            "DELETING": "Sletter {{ printReceipt }}",
-            "ERROR": "Der skete en fejl med {{ printReceipt }}. Ret og prøv igen."
-        }
+			"ITEM": "Vare",
+			"MANAGE": "Konfigure",
+			"ACTIONS": "Handlinger"
+		},
+		"NOTIFICATIONS": {
+			"GET": {
+				"PAGED_ERROR": "Fejlede med at hente terminalReceipts ({{ httpErrorCode }}).",
+				"SINGLE_FAILURE": "Fejlede med at hente {{ printReceipt }} ({{ httpErrorCode }}).",
+				"FIELDS_FAILURE": "Fejlede med at hente felter for terminalReceipts ({{ httpErrorCode }}).",
+				"SINGLE_FIELD_FAILURE": "Fejlede med at hente {{ printReceipt }} felter ({{ httpErrorCode }})."
+			},
+			"ADD": {
+				"SUCCESS": "Tilføjer {{ printReceipt }} successfuldt.",
+				"FAILURE": "Fejlede med at tilføje {{ printReceipt }} ({{ httpErrorCode }}).",
+				"FIELD_FAILURE": "Fejlede med at tilføje felter for {{ printReceipt }} ({{ httpErrorCode }}).",
+				"FIELD_SUCCESS": "Tilføjer felter for {{ printReceipt }} successfuldt."
+			},
+			"UPDATE": {
+				"SUCCESS": "Opdatere {{ printReceipt }} successfuldt.",
+				"FAILURE": "Fejlede med at opdatere {{ printReceipt }} ({{ httpErrorCode }}).",
+				"FIELD_SUCCESS": "Opdatere felter for {{ printReceipt }} successfuldt.",
+				"FIELD_FAILURE": "Fejlede med at opdatere felter for {{ printReceipt }} ({{ httpErrorCode }})"
+			},
+			"REMOVE": {
+				"SUCCESS": "Removed {{ printReceipt }} successfuldt.",
+				"FAILURE": "Fejlede med at fjerne {{ printReceipt }} ({{ httpErrorCode }}).",
+				"FIELD_SUCCESS": "Removed felter for {{ printReceipt }} succesfully.",
+				"FIELD_FAILURE": "Fejlede med at fjerne felter for {{ printReceipt }} ({{ httpErrorCode }})."
+			}
+		},
+		"QUEUE": {
+			"ADDING": "Tilføjer {{ printReceipt }}",
+			"UPDATING": "Opdatere {{ printReceipt }}",
+			"DELETING": "Sletter {{ printReceipt }}",
+			"ERROR": "Der skete en fejl med {{ printReceipt }}. Ret og prøv igen."
+		}
 	},
 	"TERMINALS": {
 		"FORM": {
@@ -2673,207 +2695,6 @@
 			}
 		}
 	},
-	"COMMERCIAL_TENANTS": {
-		"INDEX": {
-			"CREATE": " Opret tenant",
-			"TENANTS": "Tenant",
-			"TENANTUSERRELATION": "Forbind bruger med en tenant"
-		},
-		"TITLE": "Tenant",
-		"CREATE": "Opret",
-		"CREATETENANT": "Opret Tenant",
-		"EDIT": "Rediger",
-		"EDITTENANT": "Rediger Tenant",
-		"DETAILS": "Detaljer",
-		"HOSTNAME": "Værtsnavn",
-		"SAFESUBDOMAIN": "Sikker subdomæne",
-		"STATE": "Tilstand",
-		"FORM": {
-			"LABELS": {
-				"NAME": "Navn",
-				"HOSTNAME": "Værtsnavn",
-				"SAFESUBDOMAIN": "Sikker subdomæne",
-				"STATE": "Tilstand",
-                "USERID": "Bruger",
-                "TENANTID": "Tenant",
-                "STATUS": "Status"
-			},
-			"PLACEHOLDERS": {
-				"NAME": "Indtast et navn",
-				"HOSTNAME": "Indtast a hostname",
-				"SAFESUBDOMAIN": "Indtast en sikker subdomæne",
-				"STATE": "Indtast en tilstand",
-				"USERID": "User",
-                "TENANTID": "Tenant",
-                "STATUS": "Status"
-			},
-			"VALIDATION": {
-				"NAME": {
-					"REQUIRED": "Et navn er påkrævet."
-				},
-				"HOSTNAME": {
-					"REQUIRED": "Et værtsnavn er påkrævet."
-				},
-				"SAFESUBDOMAIN": {
-					"REQUIRED": "Et sikkert subdomæne er påkrævet."
-				},
-				"STATE": {
-					"REQUIRED": "Tilstanden er påkrævet."
-				},
-                "USERID": {
-                    "REQUIRED": "Bruger er påkrævet."
-                },
-                "TENANTID": {
-                    "REQUIRED": "Tenant er påkrævet."
-                },
-                "STATUS": {
-                    "REQUIRED": "Status er påkrævet."
-                }
-			}
-		},
-		"SUBMIT": "Send",
-		"REMOVE": "Fjern",
-		"TENANTUSERRELATION": "Forbind bruger med en tenant"
-	},
-	"COMMERCIAL_ACCOUNT": {
-		"INDEX": {
-			"ACCOUNT": "Konto",
-			"WELCOME": "Velkommen til skysmack",
-			"FORGOTPASSWORD": "Glemt adgangskode",
-			"CONFIRMEMAIL": "Bekræft e-mail"
-		},
-		"LOGIN": {
-			"SIGNIN": "Log ind",
-			"CREDENTIALS": "Venligst indtast dine informationer nedeunder",
-			"INCORRECT": "Den indtastede adgangskode og/eller brugernavnet er ikke korrekt. Venligst prøv igen.",
-			"FORGOTPASSWORD": "Glemt adgangskode",
-			"CONFIRMEMAIL": "Bekræft email",
-			"REGISTER": "Registrer"
-		},
-		"FORM": {
-			"LABELS": {
-				"EMAIL": "Email",
-				"PASSWORD": "Adgangskode",
-				"STAYSIGNEDIN": "Forbliv logged ind?",
-				"USERNAME": "Brugernavn",
-				"CONFIRMPASSWORD": "Bekræft adgangskode",
-				"NEWPASSWORD": "Nye adgangskode",
-				"CONFIRMNEWPASSWORD": "Bekræft den nye adgangskode"
-			},
-			"PLACEHOLDERS": {
-				"EMAIL": "Indtast email",
-				"PASSWORD": "Indtast adgangskode",
-				"CURRENTPASSWORD": "Nuværende kodeord",
-                "NEWPASSWORD": "Nyt kodeord",
-				"CONFIRMNEWPASSWORD": "Gentag nye kodeord",
-				"USERNAME": "Indtast brugernavn",
-				"CONFIRMPASSWORD": "Bekærft adgangskode"
-			},
-			"VALIDATION": {
-				"EMAIL": {
-					"REQUIRED": "Email er påkrævet.",
-					"INVALIDEMAIL": "Venligst indtast en gyldig email."
-				},
-				"PASSWORD": {
-					"REQUIRED": "Adgangskode er påkrævet."
-				},
-				"CURRENTPASSWORD": {
-					"REQUIRED": "Nuværende adgangskode er påkrævet."
-				},
-				"NEWPASSWORD": {
-					"REQUIRED": "Ny adgangskode er påkrævet."
-				},
-				"CONFIRMNEWPASSWORD": {
-					"REQUIRED": "Venligst indtast den nye adgangskode igen.",
-					"PASSWORDMISMATCH": "Adgangskoderne skal være identiske."
-				},
-				"USERNAME": {
-					"REQUIRED": "Et brugernavn er påkrævet"
-				},
-				"CONFIRMPASSWORD": {
-					"REQUIRED": "Venligst indtast den nye adgangskode igen.",
-					"PASSWORDMISMATCH": "Adgangskoderne skal være identiske."
-				}
-			}
-		},
-		"VALIDATION": {
-			"TOKEN": {
-				"REQUIRED": "Token er påkrævet"
-			},
-			"EMAIL": {
-				"REQUIRED": "Email er påkrævet.",
-				"INVALIDEMAIL": "Venligst indtast en gyldig email"
-			},
-			"CURRENTPASSWORD": {
-				"REQUIRED": "Nuværende adgangskode er påkrævet."
-			},
-			"NEWPASSWORD": {
-				"REQUIRED": "Ny adgangskode er påkrævet."
-			},
-			"CONFIRMNEWPASSWORD": {
-				"REQUIRED": "Venligst indtast den nye adgangskode igen.",
-				"PASSWORDMISMATCH": "Adgangskoderne skal være identiske."
-			}
-		},
-		"CHANGE_PASSWORD": {
-            "TITLE": "Skift kodeord",
-            "BUTTON_EDIT": "Opdater"
-        },
-		"REGISTER": {
-			"TITLE": "Titel"
-		}
-	},
-	"COMMERCIAL_UI_PARTNERS": {
-		"INDEX": {
-			"CHANGEPASSWORD": "Skift adgangskode",
-			"TENANTS": "Beboere",
-			"USERS": "Brugere",
-			"LOGOUT": "Log ud"
-		}
-	},
-	"COMMERCIAL_USERS": {
-		"INDEX": {
-			"CREATE": " Opret bruger",
-			"USERS": "Brugere"
-		},
-		"TITLE": "Brugere",
-		"CREATE": "Opret",
-		"CREATEUSER": "Opret bruger",
-		"EDIT": "Rediger",
-		"EDITUSER": "Rediger bruger",
-		"EMAIL": "Email: ",
-		"FORM": {
-			"LABELS": {
-				"EMAIL": "Email",
-				"USERNAME": "Brugernavn",
-				"PASSWORD": "Adgangskode",
-				"CONFIRMPASSWORD": "Bekræft adgangskode"
-			},
-			"PLACEHOLDERS": {
-				"EMAIL": "Indtast en email",
-				"USERNAME": "Indtast en brugernavn",
-				"PASSWORD": "Indtast en adgangskode",
-				"CONFIRMPASSWORD": "Indtast en bekræft adgangskode"
-			},
-			"VALIDATION": {
-				"EMAIL": {
-					"REQUIRED": "En Email er påkrævet.",
-					"INVALIDEMAIL": "Venligst indtast en gyldig email"
-				},
-				"USERNAME": {
-					"REQUIRED": "En brugernavn er påkrævet."
-				},
-				"CONFIRM_PASSWORD": {
-					"REQUIRED": "En bekræft adgangskode er påkrævet."
-				},
-				"CONFIRMPASSWORD": {
-					"PASSWORDMISMATCH": "Adgangskoderne skal være idententiske."
-				}
-			}
-		},
-		"DETAILS": "Detaljer",
-		"REMOVE": "Fjern"
-	},
 	"OAUTH2": {
 		"FORM": {
 			"LABELS": {
@@ -2903,6 +2724,21 @@
 			"LOGGING_IN": "Logger ind...",
 			"BUTTON_LOGIN": "Log ind",
 			"CONFIRM_EMAIL": "Bekræft e-mail"
+		}
+	},
+	"OPEN_API": {
+		"SETTINGS": "Indstillinger",
+		"FORM": {
+			"PLACEHOLDERS": {
+				"TITLE": "Titel",
+				"DESCRIPTION": "Beskrivelse",
+				"TERMSOFSERVICE": "Servicevilkår",
+				"CONTACTNAME": "Kontakt navn",
+				"CONTACTURL": "Kontakt URL",
+				"CONTACTEMAIL": "Kontakt email",
+				"LICENSENAME": "Licens name",
+				"LICENSEURL": "Licens URL"
+			}
 		}
 	},
 	"PACKAGES": {
@@ -3118,16 +2954,6 @@
 			"TERMINAL_PAYMENT_RECEIPTS": "Betalingkvitteringer"
 		}
 	},
-	"SETTINGS": {
-		"SETTINGS": "Indstillinger",
-		"BUTTON_SUBMIT": "Indsend",
-		"QUEUE": {
-			"ADDING": "Tilføjer settings",
-			"UPDATING": "Opdatere settings",
-			"DELETING": "Sletter settings",
-			"ERROR": "Der skete en fejl med indstillinger. Ret og prøv igen"
-		}
-	},		
 	"FIELDS": {
 		"INDEX": {
 			"CREATE": "Opret",
@@ -3178,5 +3004,216 @@
 			"DELETING": "Sletter {{ displayName }}",
 			"ERROR": "Der skete en fejl med {{ displayName }}. Ret og prøv igen"
 		}
+	},
+	"SETTINGS": {
+		"SETTINGS": "Indstillinger",
+		"BUTTON_SUBMIT": "Indsend",
+		"QUEUE": {
+			"ADDING": "Tilføjer settings",
+			"UPDATING": "Opdatere settings",
+			"DELETING": "Sletter settings",
+			"ERROR": "Der skete en fejl med indstillinger. Ret og prøv igen"
+		}
+	},
+	"COMMERCIAL_TENANTS": {
+		"INDEX": {
+			"CREATE": " Opret tenant",
+			"TENANTS": "Tenant",
+			"TENANTUSERRELATION": "Tenant-Bruger relation"
+		},
+		"TITLE": "Tenant",
+		"CREATE": "Opret",
+		"CREATETENANT": "Opret Tenant",
+		"EDIT": "Rediger",
+		"EDITTENANT": "Rediger Tenant",
+		"DETAILS": "Detaljer",
+		"HOSTNAME": "Værtsnavn",
+		"SAFESUBDOMAIN": "Sikker subdomæne",
+		"STATE": "Tilstand",
+		"FORM": {
+			"LABELS": {
+				"NAME": "Navn",
+				"HOSTNAME": "Værtsnavn",
+				"SAFESUBDOMAIN": "Sikker subdomæne",
+				"STATE": "Tilstand",
+				"USERID": "Bruger",
+				"TENANTID": "Tenant",
+				"STATUS": "Status"
+			},
+			"PLACEHOLDERS": {
+				"NAME": "Indtast et navn",
+				"HOSTNAME": "Indtast a hostname",
+				"SAFESUBDOMAIN": "Indtast en sikker subdomæne",
+				"STATE": "Indtast en tilstand",
+				"USERID": "User",
+				"TENANTID": "Tenant",
+				"STATUS": "Status"
+			},
+			"VALIDATION": {
+				"NAME": {
+					"REQUIRED": "Et navn er påkrævet."
+				},
+				"HOSTNAME": {
+					"REQUIRED": "Et værtsnavn er påkrævet."
+				},
+				"SAFESUBDOMAIN": {
+					"REQUIRED": "Et sikkert subdomæne er påkrævet."
+				},
+				"STATE": {
+					"REQUIRED": "Tilstanden er påkrævet."
+				},
+				"USERID": {
+					"REQUIRED": "Bruger er påkrævet."
+				},
+				"TENANTID": {
+					"REQUIRED": "Tenant er påkrævet."
+				},
+				"STATUS": {
+					"REQUIRED": "Status er påkrævet."
+				}
+			}
+		},
+		"SUBMIT": "Send",
+		"REMOVE": "Fjern",
+		"TENANTUSERRELATION": "Udlejer-bruger relation"
+	},
+	"COMMERCIAL_ACCOUNT": {
+		"INDEX": {
+			"ACCOUNT": "Konto",
+			"WELCOME": "Velkommen til skysmack",
+			"FORGOTPASSWORD": "Glemt adgangskode",
+			"CONFIRMEMAIL": "Bekræft e-mail"
+		},
+		"LOGIN": {
+			"SIGNIN": "Log ind",
+			"CREDENTIALS": "Venligst indtast dine informationer nedeunder",
+			"INCORRECT": "Den indtastede adgangskode og/eller brugernavnet er ikke korrekt. Venligst prøv igen.",
+			"FORGOTPASSWORD": "Glemt adgangskode",
+			"CONFIRMEMAIL": "Bekræft email",
+			"REGISTER": "Registrer"
+		},
+		"FORM": {
+			"LABELS": {
+				"EMAIL": "Email",
+				"PASSWORD": "Adgangskode",
+				"STAYSIGNEDIN": "Forbliv logged ind?",
+				"USERNAME": "Brugernavn",
+				"CONFIRMPASSWORD": "Bekræft adgangskode",
+				"NEWPASSWORD": "Nye adgangskode",
+				"CONFIRMNEWPASSWORD": "Bekræft den nye adgangskode"
+			},
+			"PLACEHOLDERS": {
+				"EMAIL": "Indtast email",
+				"PASSWORD": "Indtast adgangskode",
+				"CURRENTPASSWORD": "Nuværende kodeord",
+				"NEWPASSWORD": "Nyt kodeord",
+				"CONFIRMNEWPASSWORD": "Gentag nye kodeord",
+				"USERNAME": "Indtast brugernavn",
+				"CONFIRMPASSWORD": "Bekærft adgangskode"
+			},
+			"VALIDATION": {
+				"EMAIL": {
+					"REQUIRED": "Email er påkrævet.",
+					"INVALIDEMAIL": "Venligst indtast en gyldig email."
+				},
+				"PASSWORD": {
+					"REQUIRED": "Adgangskode er påkrævet."
+				},
+				"CURRENTPASSWORD": {
+					"REQUIRED": "Nuværende adgangskode er påkrævet."
+				},
+				"NEWPASSWORD": {
+					"REQUIRED": "Ny adgangskode er påkrævet."
+				},
+				"CONFIRMNEWPASSWORD": {
+					"REQUIRED": "Venligst indtast den nye adgangskode igen.",
+					"PASSWORDMISMATCH": "Adgangskoderne skal være identiske."
+				},
+				"USERNAME": {
+					"REQUIRED": "Et brugernavn er påkrævet"
+				},
+				"CONFIRMPASSWORD": {
+					"REQUIRED": "Venligst indtast den nye adgangskode igen.",
+					"PASSWORDMISMATCH": "Adgangskoderne skal være identiske."
+				}
+			}
+		},
+		"VALIDATION": {
+			"TOKEN": {
+				"REQUIRED": "Token er påkrævet"
+			},
+			"EMAIL": {
+				"REQUIRED": "Email er påkrævet.",
+				"INVALIDEMAIL": "Venligst indtast en gyldig email"
+			},
+			"CURRENTPASSWORD": {
+				"REQUIRED": "Nuværende adgangskode er påkrævet."
+			},
+			"NEWPASSWORD": {
+				"REQUIRED": "Ny adgangskode er påkrævet."
+			},
+			"CONFIRMNEWPASSWORD": {
+				"REQUIRED": "Venligst indtast den nye adgangskode igen.",
+				"PASSWORDMISMATCH": "Adgangskoderne skal være identiske."
+			}
+		},
+		"CHANGE_PASSWORD": {
+			"TITLE": "Skift kodeord",
+			"BUTTON_EDIT": "Opdater"
+		},
+		"REGISTER": {
+			"TITLE": "Titel"
+		}
+	},
+	"COMMERCIAL_UI_PARTNERS": {
+		"INDEX": {
+			"CHANGEPASSWORD": "Skift adgangskode",
+			"TENANTS": "Beboere",
+			"USERS": "Brugere",
+			"LOGOUT": "Log ud"
+		}
+	},
+	"COMMERCIAL_USERS": {
+		"INDEX": {
+			"CREATE": " Opret bruger",
+			"USERS": "Brugere"
+		},
+		"TITLE": "Brugere",
+		"CREATE": "Opret",
+		"CREATEUSER": "Opret bruger",
+		"EDIT": "Rediger",
+		"EDITUSER": "Rediger bruger",
+		"EMAIL": "Email: ",
+		"FORM": {
+			"LABELS": {
+				"EMAIL": "Email",
+				"USERNAME": "Brugernavn",
+				"PASSWORD": "Adgangskode",
+				"CONFIRMPASSWORD": "Bekræft adgangskode"
+			},
+			"PLACEHOLDERS": {
+				"EMAIL": "Indtast en email",
+				"USERNAME": "Indtast en brugernavn",
+				"PASSWORD": "Indtast en adgangskode",
+				"CONFIRMPASSWORD": "Indtast en bekræft adgangskode"
+			},
+			"VALIDATION": {
+				"EMAIL": {
+					"REQUIRED": "En Email er påkrævet.",
+					"INVALIDEMAIL": "Venligst indtast en gyldig email"
+				},
+				"USERNAME": {
+					"REQUIRED": "En brugernavn er påkrævet."
+				},
+				"CONFIRM_PASSWORD": {
+					"REQUIRED": "En bekræft adgangskode er påkrævet."
+				},
+				"CONFIRMPASSWORD": {
+					"PASSWORDMISMATCH": "Adgangskoderne skal være idententiske."
+				}
+			}
+		},
+		"DETAILS": "Detaljer",
+		"REMOVE": "Fjern"
 	}
 }

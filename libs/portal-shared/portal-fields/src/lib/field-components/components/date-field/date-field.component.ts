@@ -14,9 +14,15 @@ const moment = _moment;
 export class DateFieldComponent extends FieldBaseComponent<Field> implements OnInit {
   ngOnInit() {
     super.ngOnInit();
+    const fieldValue = this.getFieldValue();
+    const dateFormat = 'YYYY-MM-DD';
+    if (fieldValue) {
+      this.setFieldValue(moment(fieldValue).format(dateFormat));
+    }
+
     this.getFormField().valueChanges.subscribe((value: Date) => {
       if (value && typeof value.toISOString === 'function') {
-        this.setFieldValue(moment(value).format('YYYY-MM-DD'));
+        this.setFieldValue(moment(value).format(dateFormat));
       }
     });
   }

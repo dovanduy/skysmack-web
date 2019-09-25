@@ -12,7 +12,7 @@ import { NgLodgingTypesEpics } from './lodging-types/redux/ng-lodging-types-epic
 export class NgLodgingsModule {
   constructor(
     lodgingsEpics: NgLodgingsEpics,
-    lodgingTypesEpics: NgLodgingTypesEpics
+    lodgingTypesEpics: NgLodgingTypesEpics,
   ) {
     registerRedux(LODGINGS_REDUCER_KEY, lodgingsReducer, lodgingsEpics);
     registerRedux(LODGING_TYPES_REDUCER_KEY, lodgingTypesReducer, lodgingTypesEpics);

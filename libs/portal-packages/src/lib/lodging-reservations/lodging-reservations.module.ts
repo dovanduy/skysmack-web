@@ -16,6 +16,11 @@ import { NgLodgingReservationsModule } from '@skysmack/ng-lodging-reservations';
 import { NgDashboardProviders, CoalescingComponentFactoryResolver } from '@skysmack/ng-framework';
 import { NgLodgingReservationsDashboardProvider } from './lodging-reservations/ng-lodging-reservations-dashboard-provider';
 import { NgLodgingsReservationsMenuProvider } from './ng-lodgings-reservations-menu-provider';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+
+const material = [
+  MatAutocompleteModule
+];
 
 @NgModule({
   imports: [
@@ -27,16 +32,17 @@ import { NgLodgingsReservationsMenuProvider } from './ng-lodgings-reservations-m
     NgLodgingReservationsModule,
     NgIdentitiesModule,
     PortalFieldsModule,
-    SettingsModule
+    SettingsModule,
+    ...material
   ],
   declarations: [
-    ...lodgingReservationsComponents,
+    ...lodgingReservationsComponents
   ],
   entryComponents: [
     ...lodgingReservationsEntryComponents
   ],
   providers: [
-    { provide: 'NgLodgingReservationsSettingsFieldsConfig', useClass: NgLodgingReservationsSettingsFieldsConfig },
+    { provide: 'NgLodgingReservationsSettingsFieldsConfig', useClass: NgLodgingReservationsSettingsFieldsConfig }
   ]
 })
 export class LodgingReservationsModule {

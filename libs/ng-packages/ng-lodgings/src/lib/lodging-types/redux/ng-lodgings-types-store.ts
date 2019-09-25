@@ -22,10 +22,18 @@ export class NgLodgingTypesStore extends NgRecordStore<LodgingTypesAppState, Lod
         );
     }
 
-    public getAvailableLodgingTypesCount(packagePath: string): Observable<StrIndex<StrIndex<number>>> {
+    public getAvailableLodgingTypesCount(packagePath: string): Observable<StrIndex<number[]>> {
         return this.ngRedux.select(state => state).pipe(
             map(state => state.lodgingTypes),
-            map(lodgingTypesState => lodgingTypesState.availableLodgingTypesCount),
+            map(state => state.availableLodgingTypesCount[packagePath]),
+            defined()
+        );
+    }
+
+    public getAvailableLodgingTypesDailyCount(packagePath: string): Observable<StrIndex<StrIndex<number>>> {
+        return this.ngRedux.select(state => state).pipe(
+            map(state => state.lodgingTypes),
+            map(lodgingTypesState => lodgingTypesState.availableLodgingTypesDailyCount),
             map(availableLodgingTypesCount => availableLodgingTypesCount[packagePath]),
             safeUndefinedTo('object')
         );
