@@ -1,12 +1,12 @@
 import { Component, OnInit, Inject, OnDestroy } from '@angular/core';
-import { NgLodgingTypesActions, NgLodgingTypesStore, NgLodgingsActions, NgLodgingsStore, NgLodgingsAvailabilityActions, NgLodgingsAvailabilityStore } from '@skysmack/ng-lodgings';
+import { NgLodgingTypesActions, NgLodgingTypesStore, NgLodgingsActions, NgLodgingsStore } from '@skysmack/ng-lodgings';
 import { Router } from '@angular/router';
 import { PagedQuery, LocalObject, RSQLFilterBuilder, SubscriptionHandler } from '@skysmack/framework';
 import { LodgingType, DetailedLodging, Lodging } from '@skysmack/packages-lodgings';
 import { Observable, combineLatest, BehaviorSubject, concat } from 'rxjs';
 import { getPackageDendencyAsStream } from '@skysmack/ng-framework';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
-import { map, switchMap, take, filter, tap, debounceTime, share, distinctUntilChanged, startWith } from 'rxjs/operators';
+import { map, switchMap, take, filter, tap, debounceTime, distinctUntilChanged, startWith } from 'rxjs/operators';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormControl, FormGroup } from '@angular/forms';
 
@@ -28,8 +28,6 @@ export class LodgingSelectDialogComponent implements OnInit, OnDestroy {
     private skysmackStore: NgSkysmackStore,
     private lodgingActions: NgLodgingsActions,
     private lodgingStore: NgLodgingsStore,
-    private lodgingsAvailabilityActions: NgLodgingsAvailabilityActions,
-    private lodgingsAvailabilityStore: NgLodgingsAvailabilityStore,
     private lodgingTypesActions: NgLodgingTypesActions,
     private lodgingTypesStore: NgLodgingTypesStore,
     private dialogRef: MatDialogRef<LodgingSelectDialogComponent>,
@@ -167,7 +165,7 @@ export class LodgingSelectDialogComponent implements OnInit, OnDestroy {
           const checkIn = this.data.form.get('checkIn').value;
           const checkOut = this.data.form.get('checkOut').value;
           const packagePath = lodgingPackage.object.path;
-          this.lodgingsAvailabilityActions.getAvailableLodgings(packagePath, checkIn, checkOut, lodgingsOfType.map(lodging => lodging.objectIdentifier));
+          this.lodgingActions.getAvailableLodgings(packagePath, checkIn, checkOut, lodgingsOfType.map(lodging => lodging.objectIdentifier));
         })
       ))
     ).subscribe());
@@ -179,7 +177,7 @@ export class LodgingSelectDialogComponent implements OnInit, OnDestroy {
           const checkIn = this.data.form.get('checkIn').value;
           const checkOut = this.data.form.get('checkOut').value;
           const packagePath = lodgingPackage.object.path;
-          return this.lodgingsAvailabilityStore.getAvailableLodgings(packagePath, checkIn, checkOut);
+          return this.lodgingStore.getAvailableLodgings(packagePath, checkIn, checkOut);
         })
       ))
     );
