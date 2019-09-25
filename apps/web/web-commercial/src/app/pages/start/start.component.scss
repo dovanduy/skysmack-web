@@ -1,1 +1,13 @@
 @import '../../../../../../../assets/scss/_includes.scss';
+
+
+.contact-form {
+    min-width: 100px;
+    max-width: 500px;
+    margin: 0 auto;
+    padding-top: 10rem;
+  }
+  
+  .contact-full-width {
+    width: 100%;
+  }
