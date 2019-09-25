@@ -94,10 +94,10 @@
 
     <nav class="secondary-menu">
       <a routerLink="/help" class="menu">
-        {{ 'COMMERCIAL_ACCOUNT.INDEX.HELP' | translate }}
+        Help
       </a>
       <a [routerLink]="['account', 'login']" class="menu" *allowAccessFor="allowAccessForEnum.anonymous">
-        {{ 'COMMERCIAL_ACCOUNT.INDEX.SIGN_IN' | translate }}
+        Sign in
       </a>
       <a [routerLink]="['account', 'dashboard']" class="menu" *allowAccessFor="allowAccessForEnum.authenticated">
         Portal
@@ -116,9 +116,6 @@
         <a class="link skysmack-logo-txt" routerLink="/" aria-label="Skysmack">
           <span>sky<span>smack</span></span>
         </a>
-
-        <span class="language-select-item" *ngFor="let lang of translate.getLangs()"
-          (click)="setLanguage(lang)">{{ toLangString(lang) }}</span>
       </div>
     </nav>
   </div>
