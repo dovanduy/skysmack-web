@@ -123,15 +123,6 @@
         "RESET_PASSWORD": {
             "TITLE": "Reset password",
             "BUTTON_RESET": "Reset button"
-        },
-        "CONFIRM_EMAIL": {
-            "BUTTONCONFIRM": "Confirm email"
-        },
-        "REGISTER": {
-            "BUTTONREGISTER": "Register",
-            "TITLE": "Register",
-            "THANKS": "Thank you for making a Skymsack account. Please check your email for a verification email.",
-            "SPAM": "Remember to check your spam filter as well."
         }
     }
 }

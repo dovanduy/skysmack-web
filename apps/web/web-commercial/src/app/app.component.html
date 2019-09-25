@@ -1,7 +1,7 @@
 <mat-sidenav-container hasBackdrop="true">
 
   <!-- Mobile menu -->
-  <mat-sidenav #sidenav role="navigation" class="sidenav">
+  <mat-sidenav #sidenav role="navigation" class="sidenav" fixedInViewport="true">
     <mat-list>
       <h3 mat-subheader>
         <span class="sidenav-logo">
@@ -14,7 +14,7 @@
         </span>
       </h3>
       <mat-divider class="top-divider"></mat-divider>
-      <mat-list-item>
+      <!-- <mat-list-item>
         <a routerLink="/why" class="menu" (click)="sidenav.close()">
           {{ 'COMMERCIAL_ACCOUNT.INDEX.WHYSKYSMACK' | translate }}
         </a>
@@ -39,12 +39,12 @@
           {{ 'COMMERCIAL_ACCOUNT.INDEX.GETTINGSTARTED' | translate }}
         </a>
       </mat-list-item>
-      <mat-divider></mat-divider>
-      <mat-list-item>
+      <mat-divider></mat-divider> -->
+      <!-- <mat-list-item>
         <a routerLink="/Help" (click)="sidenav.close()">
           {{ 'COMMERCIAL_ACCOUNT.INDEX.HELP' | translate }}
         </a>
-      </mat-list-item>
+      </mat-list-item> -->
       <mat-list-item>
         <a [routerLink]="['account', 'login']" (click)="sidenav.close()" *allowAccessFor="allowAccessForEnum.anonymous">
           {{ 'COMMERCIAL_ACCOUNT.INDEX.SIGNIN' | translate }}
@@ -72,7 +72,7 @@
       <span>{{ 'COMMERCIAL_ACCOUNT.INDEX.SKY' | translate }}<span>{{ 'COMMERCIAL_ACCOUNT.INDEX.MACK' | translate }}</span></span>
     </a>
 
-    <nav class="main-menu">
+    <!-- <nav class="main-menu">
       <a routerLink="/why" class="menu">
         {{ 'COMMERCIAL_ACCOUNT.INDEX.WHYSKYSMACK' | translate }}
       </a>
@@ -88,14 +88,13 @@
       <a routerLink="/getting-started" mat-flat-button color="primary">
         {{ 'COMMERCIAL_ACCOUNT.INDEX.GETTINGSTARTED' | translate }}
       </a>
-    </nav>
-
+    </nav> -->
     <div class="flex-spacer"></div>
 
     <nav class="secondary-menu">
-      <a routerLink="/help" class="menu">
+      <!-- <a routerLink="/help" class="menu">
         {{ 'COMMERCIAL_ACCOUNT.INDEX.HELP' | translate }}
-      </a>
+      </a> -->
       <a [routerLink]="['account', 'login']" class="menu" *allowAccessFor="allowAccessForEnum.anonymous">
         {{ 'COMMERCIAL_ACCOUNT.INDEX.SIGNIN' | translate }}
       </a>
