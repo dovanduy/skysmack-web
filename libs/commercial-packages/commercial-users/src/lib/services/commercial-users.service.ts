@@ -5,6 +5,7 @@ import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { PartnerUser } from '../models/partner-user';
 import { PartnerRole } from '../models/partner-role';
+import { PartnerUserRole } from '../models/partner-user-role';
 
 @Injectable({ providedIn: 'root' })
 export class CommercialUsersService {
@@ -52,18 +53,18 @@ export class CommercialUsersService {
         );
     }
 
-    public addRoleToUser(userId: string, roleId: string): Observable<HttpSuccessResponse | HttpErrorResponse> {
+    public addRoleToUser(partnerUserRole: PartnerUserRole): Observable<HttpSuccessResponse | HttpErrorResponse> {
         const dictionary = {};
-        dictionary[userId] = [roleId];
-        return this.http.post<any>(`${this.apiDomain.domain}/identity/users`, dictionary, { observe: 'response' }).pipe(
+        dictionary[partnerUserRole.userId] = [partnerUserRole.roleId];
+        return this.http.post<any>(`${this.apiDomain.domain}/identity/users/roles`, dictionary, { observe: 'response' }).pipe(
             catchError((error) => of(error))
         );
     }
 
-    public removeRoleFromUser(userId: string, roleId: string): Observable<HttpSuccessResponse | HttpErrorResponse> {
+    public removeRoleFromUser(partnerUserRole: PartnerUserRole): Observable<HttpSuccessResponse | HttpErrorResponse> {
         const dictionary = {};
-        dictionary[userId] = [roleId];
-        return this.http.request<any>('delete', `${this.apiDomain.domain}/identity/users`, { observe: 'response', body: dictionary }).pipe(
+        dictionary[partnerUserRole.userId] = [partnerUserRole.roleId];
+        return this.http.request<any>('delete', `${this.apiDomain.domain}/identity/users/roles`, { observe: 'response', body: dictionary }).pipe(
             catchError((error) => of(error))
         );
     }

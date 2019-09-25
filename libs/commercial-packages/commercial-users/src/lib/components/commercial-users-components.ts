@@ -3,6 +3,7 @@ import { CommercialUsersIndexComponent } from './commercial-users-index/commerci
 import { CommercialUsersCreateComponent } from './commercial-users-create/commercial-users-create.component';
 import { CommercialUsersEditComponent } from './commercial-users-edit/commercial-users-edit.component';
 import { CommercialUsersDetailsComponent } from './commercial-users-details/commercial-users-details.component';
+import { CommercialUsersRolesComponent } from './commercial-users-roles/commercial-users-roles.component';
 
 export const commercialUsersRoutes: Routes = [
   {
@@ -16,6 +17,9 @@ export const commercialUsersRoutes: Routes = [
   },
   {
     path: 'details/:id', component: CommercialUsersDetailsComponent
+  },
+  {
+    path: 'roles/:userId', component: CommercialUsersRolesComponent
   }
 ];
 
@@ -23,5 +27,6 @@ export const commercialUsersComponents: any[] = [
   CommercialUsersIndexComponent,
   CommercialUsersCreateComponent,
   CommercialUsersEditComponent,
-  CommercialUsersDetailsComponent
+  CommercialUsersDetailsComponent,
+  CommercialUsersRolesComponent
 ];

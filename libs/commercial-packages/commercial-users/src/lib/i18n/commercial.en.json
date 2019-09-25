@@ -2,7 +2,8 @@
     "COMMERCIAL_USERS": {
         "INDEX": {
             "CREATE": " Create user",
-            "USERS": "Users"
+            "USERS": "Users",
+            "USERSROLES": "Add role to user"
         },
         "TITLE": "Users",
         "CREATE": "Create",
@@ -10,6 +11,7 @@
         "REMOVE": "Remove",
         "CREATEUSER": "Create user",
         "EDIT": "Edit",
+        "SUBMIT": "Submit",
         "CONNECT_TO_TENANT": "Connect to tenant",
         "EDITUSER": "Edit user",
         "EMAIL": "Email: ",
@@ -18,13 +20,17 @@
                 "EMAIL": "Email",
                 "USERNAME": "Username",
                 "PASSWORD": "Password",
-                "CONFIRMPASSWORD": "Confirm password"
+                "CONFIRMPASSWORD": "Confirm password",
+                "USERID": "User",
+                "ROLEID": "Role"
             },
             "PLACEHOLDERS": {
                 "EMAIL": "Enter a email",
                 "USERNAME": "Enter a username",
                 "PASSWORD": "Enter a password",
-                "CONFIRMPASSWORD": "Enter a confirm password"
+                "CONFIRMPASSWORD": "Enter a confirm password",
+                "USERID": "User",
+                "ROLEID": "Role"
             },
             "VALIDATION": {
                 "EMAIL": {
@@ -39,6 +45,12 @@
                 },
                 "CONFIRMPASSWORD": {
                     "PASSWORDMISMATCH": "The passwords must match."
+                },
+                "USERID": {
+                    "REQUIRED": "User is required."
+                },
+                "ROLEID": {
+                    "REQUIRED": "Role is required."
                 }
             }
         }
