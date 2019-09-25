@@ -4,10 +4,8 @@ import { FormRule, Field } from '@skysmack/ng-dynamic-forms';
 import { StringFieldComponent, HiddenFieldComponent } from '@skysmack/portal-fields';
 import { CommercialTenantsValidation } from './commercial-tenants-validation';
 import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
-import { Tenant } from './models/tenant';
 import { FieldsConfig, FieldProviders } from '@skysmack/ng-fields';
 import { LoadedPackage } from '@skysmack/ng-framework';
-import { TenantStates } from './models';
 
 @Injectable({ providedIn: 'root' })
 export class CommercialTenantsFieldsConfig extends FieldsConfig<any, any>{
@@ -33,6 +31,7 @@ export class CommercialTenantsFieldsConfig extends FieldsConfig<any, any>{
                 component: StringFieldComponent,
                 value: entity ? entity.object.hostname : undefined,
                 key: 'hostname',
+                validators: [Validators.required],
                 order: 1,
                 sortable: true
             }),

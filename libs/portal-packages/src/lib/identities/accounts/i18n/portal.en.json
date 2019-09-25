@@ -1,5 +1,5 @@
 {
-    "ACCOUNTS": {
+    "ACCOUNT": {
         "FORM": {
             "LABELS": {
                 "TOKEN": "Token",
@@ -43,15 +43,22 @@
             "TITLE": "Confirm email",
             "BUTTON_EDIT": "Submit"
         },
+        "RESET_PASSWORD": {
+            "TITLE": "Reset password",
+            "BUTTON_EDIT": "Submit"
+        },
         "FORGOT_PASSWORD": {
             "TITLE": "Forgot password",
-            "BUTTON_EDIT": "Submit"
+            "BUTTON_EDIT": "Submit",
+            "CHECK_EMAIL_TITLE": "Check your email",
+            "CHECK_EMAIL": "You will find instructions on how to reset your password. Remember to check your spam folder."
         },
         "INDEX": {
             "ACTIONS": "Actions",
             "MANAGE": "Manage",
             "CHANGE_PASSWORD": "Change password",
             "FORGOT_PASSWORD": "Forgot password",
+            "RESET_PASSWORD": "Reset password",
             "CONFIRM_EMAIL": "Confirm email"
         },
         "NOTIFICATIONS": {},

@@ -6,6 +6,26 @@
             "ACCOUNT": "Account",
             "WELCOME": "Welcome to skysmack"
         },
+        "FORGOT_PASSWORD": {
+            "TITLE": "Forgot password",
+            "BUTTON_EDIT": "Submit",
+            "CHECK_EMAIL_TITLE": "Check your email",
+            "CHECK_EMAIL": "You will find instructions on how to reset your password. Remember to check your spam folder.",
+            "FORM": {
+                "LABELS": {
+                    "EMAIL": "Email"
+                },
+                "PLACEHOLDERS": {
+                    "EMAIL": "Enter email"
+                },
+                "VALIDATION": {
+                    "EMAIL": {
+                        "REQUIRED": "Email is required.",
+                        "INVALIDEMAIL": "Please enter a valid email."
+                    }
+                }
+            }
+        },
         "LOGIN": {
             "SIGNIN": "Sign in",
             "CREDENTIALS": "Please enter credentials below",
@@ -25,7 +45,8 @@
                 "CONFIRMPASSWORD": "Confirm Password",
                 "NEWPASSWORD": "New password",
                 "CONFIRMNEWPASSWORD": "Confirm new password",
-                "STAYSIGNEDIN": "Stay signed in?"
+                "STAYSIGNEDIN": "Stay signed in?",
+                "TOKEN": "Token"
             },
             "PLACEHOLDERS": {
                 "USERNAME": "Enter user name",
@@ -34,7 +55,8 @@
                 "CONFIRMPASSWORD": "Confirm Password",
                 "CURRENTPASSWORD": "Current password",
                 "NEWPASSWORD": "New password",
-                "CONFIRMNEWPASSWORD": "Confirm new password"
+                "CONFIRMNEWPASSWORD": "Confirm new password",
+                "TOKEN": "Enter the security token"
             },
             "VALIDATION": {
                 "USERNAME": {
@@ -60,6 +82,9 @@
                 "CONFIRMNEWPASSWORD": {
                     "REQUIRED": "Please repeat the new password.",
                     "PASSWORDMISMATCH": "Passwords must match."
+                },
+                "TOKEN": {
+                    "REQUIRED": "Security token is required."
                 }
             }
         },
@@ -84,7 +109,11 @@
         },
         "CHANGE_PASSWORD": {
             "TITLE": "Change password",
-            "BUTTON_EDIT": "Update"
+            "BUTTON_UPDATE": "Update"
+        },
+        "RESET_PASSWORD": {
+            "TITLE": "Reset password",
+            "BUTTON_RESET": "Reset button"
         }
     }
 }

@@ -34,11 +34,8 @@ export class NgAccountRequests implements AccountRequests {
     }
 
     public forgotPassword(packagePath: string, forgotPassword: ForgotPassword): Observable<HttpResponse | HttpErrorResponse> {
-        const url = `${this.apiDomain.domain}/${packagePath}/account/forgot-password`;
-        return this.http.put<any>(url, forgotPassword, { observe: 'response' }).pipe(
-            map((response) => {
-                return response as any;
-            }),
+        const url = `${this.apiDomain.domain}/${packagePath}/account/forgot-password?email=${forgotPassword.email}`;
+        return this.http.put<any>(url, undefined, { observe: 'response' }).pipe(
             catchError(error => of(error))
         );
     }

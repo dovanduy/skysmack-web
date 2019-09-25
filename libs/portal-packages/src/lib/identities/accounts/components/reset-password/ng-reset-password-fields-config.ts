@@ -1,17 +1,17 @@
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { FormRule, Field, CustomValidators } from '@skysmack/ng-dynamic-forms';
-import { EmailFieldComponent, StringFieldComponent, PasswordFieldComponent } from '@skysmack/portal-fields';
-import { CommercialAccountResetPasswordValidation } from './commercial-account-reset-password-validation';
-import { ActivatedRoute } from '@angular/router';
+import { StringFieldComponent, PasswordFieldComponent, EmailFieldComponent } from '@skysmack/portal-fields';
+import { NgResetPasswordValidation } from './ng-reset-password-validation';
+import { ACCOUNTS_AREA_KEY } from '@skysmack/packages-identities';
 
 @Injectable({ providedIn: 'root' })
-export class CommercialAccountResetPasswordFieldsConfig {
-    public validation = new CommercialAccountResetPasswordValidation();
-    public area = '';
+export class NgResetPasswordFieldsConfig {
+    public validation = new NgResetPasswordValidation();
+    public area = ACCOUNTS_AREA_KEY;
     public formRules: FormRule[] = [];
 
-    constructor(private route: ActivatedRoute) { }
+    constructor() { }
 
     public getFields(email = undefined, token = undefined): Field[] {
         const fields = [
@@ -19,7 +19,7 @@ export class CommercialAccountResetPasswordFieldsConfig {
                 component: EmailFieldComponent,
                 value: email,
                 key: 'email',
-                placeholder: 'COMMERCIAL_ACCOUNT.FORM.PLACEHOLDERS.EMAIL',
+                placeholder: 'ACCOUNT.FORM.PLACEHOLDERS.EMAIL',
                 validators: [Validators.required, CustomValidators.validEmail()],
                 order: 1,
                 sortable: true
@@ -28,27 +28,28 @@ export class CommercialAccountResetPasswordFieldsConfig {
                 component: StringFieldComponent,
                 value: token,
                 key: 'token',
-                placeholder: 'COMMERCIAL_ACCOUNT.FORM.PLACEHOLDERS.TOKEN',
+                placeholder: 'ACCOUNT.FORM.PLACEHOLDERS.TOKEN',
+                order: 1,
                 validators: [Validators.required],
-                order: 2,
                 sortable: true
             }),
             new Field({
                 component: PasswordFieldComponent,
                 value: undefined,
                 key: 'newPassword',
-                placeholder: 'COMMERCIAL_ACCOUNT.FORM.PLACEHOLDERS.NEWPASSWORD',
-                validators: [Validators.required],
-                order: 3,
+                placeholder: 'ACCOUNT.FORM.PLACEHOLDERS.NEWPASSWORD',
+                validators: [Validators.required, CustomValidators.validPassword()],
+                order: 2,
                 sortable: true
             }),
+
             new Field({
                 component: PasswordFieldComponent,
                 value: undefined,
                 key: 'confirmNewPassword',
-                placeholder: 'COMMERCIAL_ACCOUNT.FORM.PLACEHOLDERS.CONFIRMNEWPASSWORD',
+                placeholder: 'ACCOUNT.FORM.PLACEHOLDERS.CONFIRMNEWPASSWORD',
                 validators: [Validators.required],
-                order: 4,
+                order: 3,
                 sortable: true
             })
         ];

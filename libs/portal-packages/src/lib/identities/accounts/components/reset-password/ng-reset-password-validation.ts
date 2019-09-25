@@ -1,19 +1,26 @@
 import { StrIndex } from '@skysmack/framework';
 import { Validation, CustomValidators } from '@skysmack/ng-dynamic-forms';
+import { ACCOUNTS_AREA_KEY } from '@skysmack/packages-identities'
 
-export class CommercialAccountChangePasswordValidation extends Validation {
+export class NgResetPasswordValidation extends Validation {
     public formErrors = {
-        currentPassword: '',
-        newPassword: '',
-        confirmNewPassword: ''
+        email: '',
+        token: '',
+        password: '',
+        confirmPassword: ''
     };
 
     public validationMessages: StrIndex<{}> = {
-        currentPassword: {
+        email: {
             required: '',
+            invalidEmail: ''
+        },
+        token: {
+            required: ''
         },
         newPassword: {
             required: '',
+            invalidPassword: ``
         },
         confirmNewPassword: {
             required: '',
@@ -21,7 +28,7 @@ export class CommercialAccountChangePasswordValidation extends Validation {
         }
     };
 
-    public area = 'COMMERCIAL_ACCOUNT';
+    public area = ACCOUNTS_AREA_KEY;
 
     public formValidators = [CustomValidators.comparePassword('newPassword', 'confirmNewPassword')];
 

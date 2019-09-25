@@ -3,7 +3,7 @@
         "INDEX": {
             "CREATE": "Create tenant",
             "TENANTS": "Tenants",
-            "TENANTUSERRELATION": "Tenant-User relation"
+            "TENANTUSERRELATION": "Connect user to tenant"
         },
         "TITLE": "Tenants",
         "CREATE": "Create",

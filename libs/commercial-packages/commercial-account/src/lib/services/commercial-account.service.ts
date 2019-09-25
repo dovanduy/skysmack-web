@@ -4,6 +4,7 @@ import { of, Observable } from 'rxjs';
 import { ApiDomain, HttpErrorResponse, API_DOMAIN_INJECTOR_TOKEN, HttpSuccessResponse } from '@skysmack/framework';
 import { HttpClient } from '@angular/common/http';
 import { ChangePassword } from '../models/change-password';
+import { ConfirmEmail } from '../models/confirm-email';
 
 @Injectable({ providedIn: 'root' })
 export class CommercialAccountService {
@@ -32,6 +33,12 @@ export class CommercialAccountService {
 
     public changePassword(password: ChangePassword): Observable<HttpSuccessResponse | HttpErrorResponse> {
         return this.http.post(`${this.apiDomain.domain}/account/change-password`, password, { observe: 'response' }).pipe(
+            catchError((error) => of(error))
+        );
+    }
+
+    public confirmEmail(password: ConfirmEmail): Observable<HttpSuccessResponse | HttpErrorResponse> {
+        return this.http.post(`${this.apiDomain.domain}/account/confirm-email`, password, { observe: 'response' }).pipe(
             catchError((error) => of(error))
         );
     }

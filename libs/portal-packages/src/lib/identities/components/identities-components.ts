@@ -5,12 +5,11 @@ import { SettingsComponent } from '@skysmack/portal-settings';
 import { ChangePasswordComponent } from '../accounts/components/change-password/change-password.component';
 import { ConfirmEmailComponent } from '../accounts/components/confirm-email/confirm-email.component';
 import { ForgotPasswordComponent } from '../accounts/components/forgot-password/forgot-password.component';
-import { RecoverPasswordComponent } from '../accounts/components/recover-password/recover-password.component';
+import { ResetPasswordComponent } from '../accounts/components/reset-password/reset-password.component';
 
 export const identitiesRoutes: Routes = [
   {
-    path: '', component: IdentitiesIndexComponent,
-    children: [
+    path: '', component: IdentitiesIndexComponent, children: [
       {
         path: 'settings/lockout', component: SettingsComponent, pathMatch: 'full', data: {
           fieldsConfigToken: 'NgLockoutSettingsFieldsConfig'
@@ -34,16 +33,18 @@ export const identitiesRoutes: Routes = [
       {
         path: 'change-password', component: ChangePasswordComponent
       },
+    ],
+  },
+  {
+    path: '', children: [
       {
         path: 'confirm-email', component: ConfirmEmailComponent
       },
       {
-        path: 'forgot-password',
-        component: ForgotPasswordComponent
+        path: 'forgot-password', component: ForgotPasswordComponent
       },
       {
-        path: 'recover-password',
-        component: RecoverPasswordComponent
+        path: 'reset-password', component: ResetPasswordComponent
       }
     ]
   }
