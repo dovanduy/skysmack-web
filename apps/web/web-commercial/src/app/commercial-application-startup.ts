@@ -6,7 +6,7 @@ import { APP_INITIALIZER } from '@angular/core';
 import { configureLanguage, LanguageService } from '@skysmack/ng-translation';
 
 export const configurations = [
-    { provide: APP_INITIALIZER, useFactory: configureLanguage, deps: [LanguageService], multi: true }
+    { provide: APP_INITIALIZER, useFactory: configureLanguage('da'), deps: [LanguageService], multi: true }
 ];
 
 export const httpInterceptors = [
