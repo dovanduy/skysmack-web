@@ -34,7 +34,7 @@ export function configureSkysmack(actions: NgSkysmackActions) {
 
 export const configurations = [
     { provide: APP_INITIALIZER, useFactory: configureSkysmack, deps: [NgSkysmackActions], multi: true },
-    { provide: APP_INITIALIZER, useFactory: configureLanguage, deps: [LanguageService], multi: true }
+    { provide: APP_INITIALIZER, useFactory: configureLanguage('en'), deps: [LanguageService], multi: true }
 ];
 
 export const httpInterceptors = [

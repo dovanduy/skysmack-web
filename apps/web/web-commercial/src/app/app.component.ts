@@ -2,6 +2,8 @@ import { Component, ViewEncapsulation, ViewChild, OnInit } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { Router, RouteConfigLoadStart, RouteConfigLoadEnd } from '@angular/router';
 import { AllowAccessFor } from '@skysmack/framework';
+import { TranslateService } from '@ngx-translate/core';
+import { TranslationRedux } from '@skysmack/ng-translation';
 
 @Component({
   selector: 'skysmack-app',
@@ -15,7 +17,9 @@ export class AppComponent implements OnInit {
   public allowAccessForEnum = AllowAccessFor;
 
   constructor(
-    private router: Router
+    private router: Router,
+    public translate: TranslateService,
+    public translationRedux: TranslationRedux,
   ) { }
 
   ngOnInit() {
@@ -34,5 +38,22 @@ export class AppComponent implements OnInit {
 
   public onSidenavClose = () => {
     this.sidenav.close();
+  }
+
+  public setLanguage(selectedLanguage: string) {
+    if (selectedLanguage.length > 0) {
+      this.translationRedux.setLanguage(selectedLanguage);
+    }
+  }
+
+  public toLangString(lang: string) {
+    switch (lang) {
+      case 'da':
+        return 'Dansk';
+      case 'en':
+        return 'English';
+      default:
+        return lang;
+    }
   }
 }

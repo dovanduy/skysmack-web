@@ -36,6 +36,13 @@ skysmack-app {
             display: block;
             font-size: 18px;
           }
+
+          .language-select-item {
+            cursor: pointer;
+            color: #85C8DB;
+            margin-left: 15px;
+            float: right;
+          }
         }
       }
     }

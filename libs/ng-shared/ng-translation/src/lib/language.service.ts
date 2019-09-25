@@ -11,15 +11,13 @@ export class LanguageService {
     constructor(
         public translateService: TranslateService,
         public translationRedux: TranslationRedux
-    ) {
-        this.configure();
-    }
+    ) { }
 
-    public configure() {
+    public configure(defaultLang: string) {
         if (!this.configured) {
             this.configured = true;
             this.translateService.addLangs(this.languages);
-            this.translateService.setDefaultLang('en');
+            this.translateService.setDefaultLang(defaultLang);
             return this.translationRedux.getLanguage().pipe(
                 debounceTime(100), // Prevents excessive emission
                 map(language => {
