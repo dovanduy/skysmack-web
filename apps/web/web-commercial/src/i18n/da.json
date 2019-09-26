@@ -1,5 +1,5 @@
 {
-   "COMMERCIAL_ACCOUNT": {
+    "COMMERCIAL_ACCOUNT": {
         "INDEX": {
             "FORGOTPASSWORD": "Glemt adgangskode",
             "CONFIRMEMAIL": "Bekræft emailen",
@@ -12,9 +12,7 @@
             "PRICINGS": "Priser",
             "PRODUCTS": "Produkter",
             "GETTINGSTARTED": "Kom i gang",
-            "PORTAL": "Portal",
-            "SKY": "Sky",
-            "MACK": "mack"
+            "PORTAL": "Portal"
         },
         "FORGOT_PASSWORD": {
             "TITLE": "Glemt adgangskode",

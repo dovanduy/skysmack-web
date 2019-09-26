@@ -1,5 +1,5 @@
 import { Injectable, Inject } from '@angular/core';
-import { ApiDomain, API_DOMAIN_INJECTOR_TOKEN, HttpErrorResponse, HttpSuccessResponse } from '@skysmack/framework';
+import { ApiDomain, API_DOMAIN_INJECTOR_TOKEN, HttpErrorResponse, HttpSuccessResponse, StrIndex } from '@skysmack/framework';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
@@ -49,6 +49,13 @@ export class CommercialUsersService {
     //#region Roles
     public getRoles(): Observable<HttpSuccessResponse<PartnerRole[]> | HttpErrorResponse> {
         return this.http.get<PartnerUser[]>(`${this.apiDomain.domain}/identity/roles`, { observe: 'response' }).pipe(
+            catchError((error) => of(error))
+        );
+    }
+
+    public getUserRoles(userIds: string[]): Observable<HttpSuccessResponse<StrIndex<string[]>> | HttpErrorResponse> {
+        const ids = userIds.map(id => `userIds=${id}`).join('&');
+        return this.http.get<PartnerUser[]>(`${this.apiDomain.domain}/identity/users/roles?${ids}`, { observe: 'response' }).pipe(
             catchError((error) => of(error))
         );
     }

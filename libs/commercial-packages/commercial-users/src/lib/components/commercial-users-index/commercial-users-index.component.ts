@@ -1,11 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, combineLatest } from 'rxjs';
 import { CommercialUsersService } from '../../services/commercial-users.service';
-import { map, take, tap } from 'rxjs/operators';
-import { HttpSuccessResponse } from '@skysmack/framework';
-import { PartnerUser } from '../../models';
+import { map, take, tap, switchMap, share } from 'rxjs/operators';
+import { HttpSuccessResponse, StrIndex } from '@skysmack/framework';
 import { MatDialog } from '@angular/material/dialog';
 import { RemoveDialog, RemoveDialogData } from '@skysmack/commercial-ui-partners';
+import { PartnerUser } from '../../models/partner-user';
+
+class UserWithRoles extends PartnerUser {
+  roles: string[];
+}
 
 @Component({
   selector: 'ss-commercial-users-index',
@@ -14,7 +18,7 @@ import { RemoveDialog, RemoveDialogData } from '@skysmack/commercial-ui-partners
 })
 export class CommercialUsersIndexComponent implements OnInit {
   public loading = true;
-  public users$: Observable<PartnerUser[]>
+  public users$: Observable<UserWithRoles[]>
 
   constructor(
     public service: CommercialUsersService,
@@ -26,12 +30,31 @@ export class CommercialUsersIndexComponent implements OnInit {
   }
   private refreshUsers() {
 
-    this.users$ = this.service.get().pipe(
-      map((x: HttpSuccessResponse<PartnerUser[]>) => {
-        this.loading = false;
-        return x.body;
-      }),
+    const users$ = this.service.get().pipe(
+      share(),
+      map((x: HttpSuccessResponse<PartnerUser[]>) => x.body),
       take(1)
+    );
+
+    const roles$ = users$.pipe(
+      switchMap(users => this.service.getUserRoles(users.map(user => user.id)).pipe(share())),
+      map((x: HttpSuccessResponse<StrIndex<string[]>>) => x.body),
+      take(1),
+    );
+
+    this.users$ = combineLatest([
+      users$,
+      roles$
+    ]).pipe(
+      map(([users, roles]) => {
+        return users.map(user => {
+          return {
+            ...user,
+            roles: roles[user.id]
+          } as UserWithRoles
+        })
+      }),
+      tap(() => this.loading = false)
     );
   }
 

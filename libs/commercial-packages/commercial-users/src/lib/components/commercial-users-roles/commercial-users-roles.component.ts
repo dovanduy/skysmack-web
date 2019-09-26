@@ -28,7 +28,7 @@ export class CommercialUsersRolesComponent implements OnInit {
     this.fields$ = this.activatedRoute.params.pipe(
       switchMap(params => this.fieldsConfig.getFields(null, toLocalObject(new PartnerUserRole({
         userId: params.userId,
-        roleId: undefined,
+        roleName: undefined,
       }))))
     );
   }
