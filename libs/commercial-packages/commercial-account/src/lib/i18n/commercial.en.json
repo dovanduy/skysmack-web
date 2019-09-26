@@ -12,9 +12,7 @@
             "PRICINGS": "Pricings",
             "PRODUCTS": "Products",
             "GETTINGSTARTED": "Getting started",
-            "PORTAL": "Portal",
-            "SKY": "Sky",
-            "MACK": "mack"
+            "PORTAL": "Portal"
         },
         "FORGOT_PASSWORD": {
             "TITLE": "Forgot password",
