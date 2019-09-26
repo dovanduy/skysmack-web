@@ -64,7 +64,6 @@ export class UsersRolesComponent extends BaseComponent<User, number> implements 
     this.roles$ = combineLatest(this.userRoles$, this.rolesStore.get(this.packagePath)).pipe(map(values => {
       // Only show roles the user isn't in.
       const userRoles = values[0];
-      console.log('values', values[0]);
       return values[1].filter(role => {
         if (!userRoles.find(userRole => userRole === role.object.name)) {
           return role;

@@ -245,7 +245,7 @@
 				"PASSWORD": "Password",
 				"CONFIRMPASSWORD": "Confirm password",
 				"USERID": "User",
-				"ROLEID": "Role"
+				"ROLENAME": "Role"
 			},
 			"PLACEHOLDERS": {
 				"EMAIL": "Enter a email",
@@ -253,7 +253,7 @@
 				"PASSWORD": "Enter a password",
 				"CONFIRMPASSWORD": "Enter a confirm password",
 				"USERID": "User",
-				"ROLEID": "Role"
+				"ROLENAME": "Role"
 			},
 			"VALIDATION": {
 				"EMAIL": {
@@ -272,7 +272,7 @@
 				"USERID": {
 					"REQUIRED": "User is required."
 				},
-				"ROLEID": {
+				"ROLENAME": {
 					"REQUIRED": "Role is required."
 				}
 			}

@@ -37,10 +37,10 @@ export class CommercialUsersRolesFieldsConfig extends FieldsConfig<any, any>{
 
             new SelectField({
                 component: SelectFieldComponent,
-                value: entity ? entity.object.roleId : undefined,
-                key: 'roleId',
+                value: entity ? entity.object.roleName : undefined,
+                key: 'roleName',
                 optionsData$: this.commercialUsersService.getRoles().pipe(map(x => (x as HttpSuccessResponse<any[]>).body)),
-                valueSelector: 'id',
+                valueSelector: 'name',
                 displayNameSelector: 'name',
                 order: 2,
                 showColumn: true

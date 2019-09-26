@@ -5,14 +5,14 @@ export class CommercialUsersRolesValidation extends Validation {
 
     public formErrors = {
         userId: '',
-        roleId: '',
+        roleName: '',
     };
 
     public validationMessages: StrIndex<{}> = {
         userId: {
             required: '',
         },
-        roleId: {
+        roleName: {
             required: ''
         }
     };

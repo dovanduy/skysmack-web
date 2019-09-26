@@ -1,6 +1,6 @@
 export class PartnerUserRole {
     public userId: string;
-    public roleId: string;
+    public roleName: string;
 
     constructor(values?: Partial<PartnerUserRole>) {
         Object.assign(this, values);

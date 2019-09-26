@@ -55,7 +55,7 @@ export class CommercialUsersService {
 
     public addRoleToUser(partnerUserRole: PartnerUserRole): Observable<HttpSuccessResponse | HttpErrorResponse> {
         const dictionary = {};
-        dictionary[partnerUserRole.userId] = [partnerUserRole.roleId];
+        dictionary[partnerUserRole.userId] = [partnerUserRole.roleName];
         return this.http.post<any>(`${this.apiDomain.domain}/identity/users/roles/add`, dictionary, { observe: 'response' }).pipe(
             catchError((error) => of(error))
         );
@@ -63,7 +63,7 @@ export class CommercialUsersService {
 
     public removeRoleFromUser(partnerUserRole: PartnerUserRole): Observable<HttpSuccessResponse | HttpErrorResponse> {
         const dictionary = {};
-        dictionary[partnerUserRole.userId] = [partnerUserRole.roleId];
+        dictionary[partnerUserRole.userId] = [partnerUserRole.roleName];
         return this.http.post<any>(`${this.apiDomain.domain}/identity/users/roles/remove`, dictionary, { observe: 'response' }).pipe(
             catchError((error) => of(error))
         );
