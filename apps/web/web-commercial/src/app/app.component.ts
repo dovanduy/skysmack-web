@@ -2,6 +2,7 @@ import { Component, ViewEncapsulation, ViewChild, OnInit } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { Router, RouteConfigLoadStart, RouteConfigLoadEnd } from '@angular/router';
 import { AllowAccessFor } from '@skysmack/framework';
+import { TranslationRedux } from '@skysmack/ng-translation';
 
 @Component({
   selector: 'skysmack-app',
@@ -15,10 +16,12 @@ export class AppComponent implements OnInit {
   public allowAccessForEnum = AllowAccessFor;
 
   constructor(
-    private router: Router
+    private router: Router,
+    public translationRedux: TranslationRedux,
   ) { }
 
   ngOnInit() {
+    this.translationRedux.setLanguage('da');
     this.router.events.subscribe(event => {
       if (event instanceof RouteConfigLoadStart) {
         this.loadingRouteConfig = true;

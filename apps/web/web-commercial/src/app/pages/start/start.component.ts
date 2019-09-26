@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 
+
 @Component({
   selector: 'ss-commercial-start',
   templateUrl: './start.component.html',

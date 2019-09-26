@@ -1,5 +1,5 @@
 <ss-dynamic-form *ngIf="fields$" [noSidebar]="true" [fields$]="fields$" [validation]="fieldsConfig.validation"
-    [rules]="fieldsConfig.formRules" [removeCloseButton]="removeCloseButton" [buttonText]="'Login'"
+    [rules]="fieldsConfig.formRules" [removeCloseButton]="removeCloseButton" [buttonText]="'COMMERCIAL_ACCOUNT.LOGIN.BUTTONLOGIN' | translate"
     (submitted)="onSubmit($event)">
     <mat-card-title>{{ 'COMMERCIAL_ACCOUNT.LOGIN.SIGNIN' | translate }}</mat-card-title>
     <mat-card-subtitle>{{ 'COMMERCIAL_ACCOUNT.LOGIN.CREDENTIALS' | translate }}</mat-card-subtitle>

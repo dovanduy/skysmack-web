@@ -1,7 +1,7 @@
 <mat-sidenav-container hasBackdrop="true">
 
   <!-- Mobile menu -->
-  <mat-sidenav #sidenav role="navigation" class="sidenav">
+  <mat-sidenav #sidenav role="navigation" class="sidenav" fixedInViewport="true">
     <mat-list>
       <h3 mat-subheader>
         <span class="sidenav-logo">
@@ -9,49 +9,49 @@
             <img src="../assets/icons/android-chrome-512x512.png" />
           </a>
           <a class="link skysmack-logo-txt" routerLink="/" aria-label="Skysmack" (click)="sidenav.close()">
-            <span>sky<span>smack</span></span>
+            <span>{{ 'COMMERCIAL_ACCOUNT.INDEX.SKY' | translate }}<span>{{ 'COMMERCIAL_ACCOUNT.INDEX.MACK' | translate }}</span></span>
           </a>
         </span>
       </h3>
       <mat-divider class="top-divider"></mat-divider>
-      <mat-list-item>
+      <!-- <mat-list-item>
         <a routerLink="/why" class="menu" (click)="sidenav.close()">
-          Why skysmack
+          {{ 'COMMERCIAL_ACCOUNT.INDEX.WHYSKYSMACK' | translate }}
         </a>
       </mat-list-item>
       <mat-list-item>
         <a routerLink="/solutions" class="menu" (click)="sidenav.close()">
-          Solutions
+          {{ 'COMMERCIAL_ACCOUNT.INDEX.SOLUTIONS' | translate }}
         </a>
       </mat-list-item>
       <mat-list-item>
         <a routerLink="/products" class="menu" (click)="sidenav.close()">
-          Products
+          {{ 'COMMERCIAL_ACCOUNT.INDEX.PRODUCTS' | translate }}
         </a>
       </mat-list-item>
       <mat-list-item>
         <a routerLink="/pricings" class="menu" (click)="sidenav.close()">
-          Pricings
+          {{ 'COMMERCIAL_ACCOUNT.INDEX.PRICINGS' | translate }}
         </a>
       </mat-list-item>
       <mat-list-item>
         <a routerLink="/getting-started" (click)="sidenav.close()">
-          Getting started
+          {{ 'COMMERCIAL_ACCOUNT.INDEX.GETTINGSTARTED' | translate }}
         </a>
       </mat-list-item>
-      <mat-divider></mat-divider>
-      <mat-list-item>
+      <mat-divider></mat-divider> -->
+      <!-- <mat-list-item>
         <a routerLink="/Help" (click)="sidenav.close()">
-          Help
+          {{ 'COMMERCIAL_ACCOUNT.INDEX.HELP' | translate }}
         </a>
-      </mat-list-item>
+      </mat-list-item> -->
       <mat-list-item>
         <a [routerLink]="['account', 'login']" (click)="sidenav.close()" *allowAccessFor="allowAccessForEnum.anonymous">
-          Sign in
+          {{ 'COMMERCIAL_ACCOUNT.INDEX.SIGNIN' | translate }}
         </a>
         <a [routerLink]="['account', 'dashboard']" (click)="sidenav.close()"
           *allowAccessFor="allowAccessForEnum.authenticated">
-          Portal
+          {{ 'COMMERCIAL_ACCOUNT.INDEX.PORTAL' | translate }}
         </a>
       </mat-list-item>
     </mat-list>
@@ -69,38 +69,38 @@
       <img src="../assets/icons/android-chrome-512x512.png" />
     </a>
     <a class="link skysmack-logo-txt" routerLink="/" aria-label="Skysmack">
-      <span>sky<span>smack</span></span>
+      <span>{{ 'COMMERCIAL_ACCOUNT.INDEX.SKY' | translate }}<span>{{ 'COMMERCIAL_ACCOUNT.INDEX.MACK' | translate }}</span></span>
     </a>
 
-    <nav class="main-menu">
+    <!-- <nav class="main-menu">
       <a routerLink="/why" class="menu">
-        Why skysmack
+        {{ 'COMMERCIAL_ACCOUNT.INDEX.WHYSKYSMACK' | translate }}
       </a>
       <a routerLink="/solutions" class="menu">
-        Solutions
+        {{ 'COMMERCIAL_ACCOUNT.INDEX.SOLUTIONS' | translate }}
       </a>
       <a routerLink="/products" class="menu">
-        Products
+        {{ 'COMMERCIAL_ACCOUNT.INDEX.PRODUCTS' | translate }}
       </a>
       <a routerLink="/pricings" class="menu">
-        Pricings
+        {{ 'COMMERCIAL_ACCOUNT.INDEX.PRICINGS' | translate }}
       </a>
       <a routerLink="/getting-started" mat-flat-button color="primary">
-        Getting started
+        {{ 'COMMERCIAL_ACCOUNT.INDEX.GETTINGSTARTED' | translate }}
       </a>
-    </nav>
-
+    </nav> -->
     <div class="flex-spacer"></div>
 
     <nav class="secondary-menu">
-      <a routerLink="/help" class="menu">
-        Help
-      </a>
+      <!-- <a routerLink="/help" class="menu">
+        {{ 'COMMERCIAL_ACCOUNT.INDEX.HELP' | translate }}
+      </a> -->
       <a [routerLink]="['account', 'login']" class="menu" *allowAccessFor="allowAccessForEnum.anonymous">
-        Sign in
+        {{ 'COMMERCIAL_ACCOUNT.INDEX.SIGNIN' | translate }}
       </a>
       <a [routerLink]="['account', 'dashboard']" class="menu" *allowAccessFor="allowAccessForEnum.authenticated">
-        Portal
+        {{ 'COMMERCIAL_ACCOUNT.INDEX.PORTAL' | translate }}
+
       </a>
     </nav>
   </nav>
@@ -114,7 +114,7 @@
           <img src="../assets/icons/android-chrome-512x512.png" />
         </a>
         <a class="link skysmack-logo-txt" routerLink="/" aria-label="Skysmack">
-          <span>sky<span>smack</span></span>
+          <span>{{ 'COMMERCIAL_ACCOUNT.INDEX.SKY' | translate }}<span>{{ 'COMMERCIAL_ACCOUNT.INDEX.MACK' | translate }}</span></span>
         </a>
       </div>
     </nav>
