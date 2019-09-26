@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { NewsLetterComponent } from '../newsletter/newsletter.component';
 
 
 @Component({
@@ -7,6 +9,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./start.component.scss'],
 })
 export class StartComponent {
-  constructor(    
+  constructor(
+    public dialog: MatDialog
   ) { }
+
+  public showNewsletterForm(): void {
+    this.dialog.open(NewsLetterComponent);
+  }
 }

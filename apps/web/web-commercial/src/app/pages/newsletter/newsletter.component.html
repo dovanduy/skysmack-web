@@ -1,0 +1,33 @@
+<ng-container *ngIf="!submitted">
+    <h2 mat-dialog-title>Tilmelding til nyt om lanceringen</h2>
+    <div mat-dialog-content>
+        <p>Udfyld og indsend formularen forneden - så bliver du en af de første!</p>
+        <form>
+            <mat-form-field>
+                <input matInput placeholder="Navn">
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput placeholder="Email">
+            </mat-form-field>
+        </form>
+    </div>
+</ng-container>
+
+
+
+<ng-container *ngIf="submitted">
+    <h2 mat-dialog-title>Tillykke! Du er med på innovationsbølgen.</h2>
+    <br />
+    <div mat-dialog-content>
+        Du hører mere fra os start 2020.
+    </div>
+</ng-container>
+
+<br />
+
+<div mat-dialog-actions>
+    <button mat-raised-button (click)="close()" [ngClass]="submitted ? 'submit-button' : 'default'"
+        [color]="submitted ? 'primary' : 'default'">Luk</button>
+    <button *ngIf="!submitted" class="submit-button" mat-raised-button color="primary" (click)="submit()"
+        cdkFocusInitial>Ok</button>
+</div>

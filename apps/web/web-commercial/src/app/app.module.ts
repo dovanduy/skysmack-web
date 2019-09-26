@@ -30,6 +30,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatInputModule } from '@angular/material/input';
+import { NewsLetterComponent } from './pages/newsletter/newsletter.component';
 
 
 const material = [
@@ -96,7 +97,11 @@ const material = [
     SolutionsComponent,
     ProductsComponent,
     PricingsComponent,
-    GettingStartedComponent
+    GettingStartedComponent,
+    NewsLetterComponent
+  ],
+  entryComponents: [
+    NewsLetterComponent
   ],
   providers: [
     ...commercialApplicationStartup,
