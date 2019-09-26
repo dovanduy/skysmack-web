@@ -38,7 +38,7 @@ export class CommercialTenantsUsersComponent implements OnInit {
     fh.formValid(() => {
       const partnerTenant = fh.form.getRawValue();
       this.service.relateTenantAndUser(partnerTenant).pipe(
-        tap(() => this.router.navigate(['/', 'account', 'dashboard'])),
+        tap(() => this.router.navigate(['/', 'users'])),
         take(1)
       ).subscribe();
     }, false);

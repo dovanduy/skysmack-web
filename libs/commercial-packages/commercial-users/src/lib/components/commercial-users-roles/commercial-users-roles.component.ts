@@ -37,7 +37,7 @@ export class CommercialUsersRolesComponent implements OnInit {
     fh.formValid(() => {
       const partnerUserRole = fh.form.getRawValue();
       this.service.addRoleToUser(partnerUserRole).pipe(
-        tap(() => this.router.navigate(['/', 'account', 'dashboard'])),
+        tap(() => this.router.navigate(['/', 'users'])),
         take(1)
       ).subscribe();
     }, false);
