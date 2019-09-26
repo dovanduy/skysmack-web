@@ -2,12 +2,21 @@
     <h2 mat-dialog-title>Tilmelding til nyt om lanceringen</h2>
     <div mat-dialog-content>
         <p>Udfyld og indsend formularen forneden - så bliver du en af de første!</p>
-        <form>
+        <form [formGroup]="newsLetterForm">
             <mat-form-field>
-                <input matInput placeholder="Navn">
+                <input matInput formControlName="name" placeholder="Navn">
+                <mat-error *ngIf="newsLetterForm.controls.name.errors?.required">
+                    Navn skal indtastes.
+                </mat-error>
             </mat-form-field>
             <mat-form-field>
-                <input matInput placeholder="Email">
+                <input matInput formControlName="email" placeholder="Email">
+                <mat-error *ngIf="newsLetterForm.controls.email.errors?.required">
+                    Email skal indtastes.
+                </mat-error>
+                <mat-error *ngIf="newsLetterForm.controls.email.errors?.invalidEmail">
+                    Indtast en korrekt email.
+                </mat-error>
             </mat-form-field>
         </form>
     </div>

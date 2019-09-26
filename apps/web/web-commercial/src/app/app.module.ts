@@ -31,6 +31,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatInputModule } from '@angular/material/input';
 import { NewsLetterComponent } from './pages/newsletter/newsletter.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 const material = [
@@ -45,6 +46,7 @@ const material = [
   imports: [
     BrowserModule,
     HttpClientModule,
+    ReactiveFormsModule,
     NgOAuth2Module,
     NgTranslationModule.forRoot(CommercialHttpLoaderFactory),
     RouterModule.forRoot([
