@@ -962,6 +962,45 @@
 			"SUBMIT": "Submit"
 		}
 	},
+	"GROUP_RESERVATIONS": {
+		"CREATE": {
+			"CREATE": "Create",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDIT": "Edit",
+			"BUTTON_EDIT": "Update"
+		},
+		"INDEX": {
+			"TITLE_EXTRAS": "(groups)",
+			"ACTIONS": "Actions",
+			"CREATE": "Create",
+			"DELETE": "Delete",
+			"MANAGE": "Manage",
+			"FIELDS": "Fields",
+			"FIELDS_TITLE": "(group fields)",
+			"BACK": "Back"
+		},
+		"FORM": {
+			"LABELS": {
+				"NAME": "Name"
+			},
+			"PLACEHOLDERS": {
+				"NAME": "Enter name"
+			},
+			"VALIDATION": {
+				"NAME": {
+					"REQUIRED": "Name is required."
+				}
+			}
+		},
+		"QUEUE": {
+			"ADDING": "Adding {{ name }}",
+			"UPDATING": "Updating {{ name }}",
+			"DELETING": "Deleting {{ name }}",
+			"ERROR": "An error occured with {{ name }}. Correct and try again."
+		}
+	},
 	"LODGING_RESERVATIONS": {
 		"ARRIVALS": {
 			"TITLE": "Arrivals",
@@ -1032,7 +1071,8 @@
 			"ARRIVALS": "Arrivals",
 			"SETTINGS": "Settings",
 			"DEPARTURES": "Departures",
-			"ALL": "All"
+			"ALL": "All",
+			"GROUP_RESERVATIONS": "Group reservations"
 		},
 		"QUEUE": {
 			"ADDING": "Adding lodging reservation {{ id }}",

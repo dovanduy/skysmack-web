@@ -1,5 +1,5 @@
 import { RecordEpicsBase } from '@skysmack/ng-framework';
-import { Lodging, LodgingsActions, LODGINGS_REDUX_KEY } from '@skysmack/packages-lodgings';
+import { Lodging, LODGINGS_REDUX_KEY } from '@skysmack/packages-lodgings';
 import { Injectable } from '@angular/core';
 import { NgLodgingsRequests } from './ng-lodgings-requests';
 import { NgLodgingsNotifications } from '../ng-lodgings-notifications';

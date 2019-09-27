@@ -1,8 +1,9 @@
-import { FIND, ADD, UPDATE, REMOVE } from '@skysmack/framework';
+import { FIND, ADD, UPDATE, REMOVE, FIELDS } from '@skysmack/framework';
 
 export class ReservationsPermissions {
     private static reservations = 'Reservations';
     private static groupReservations = 'GroupReservations';
+    private static groupReservationsFields = 'GroupReservations' + FIELDS;
 
     public static findReservations = FIND + ReservationsPermissions.reservations;
     public static addReservations = ADD + ReservationsPermissions.reservations;
@@ -33,5 +34,10 @@ export class ReservationsPermissions {
     public static addGroupReservations = ADD + ReservationsPermissions.groupReservations;
     public static updateGroupReservations = UPDATE + ReservationsPermissions.groupReservations;
     public static removeGroupReservations = REMOVE + ReservationsPermissions.groupReservations;
+
+    public static findGroupReservationsFields = FIND + ReservationsPermissions.groupReservationsFields;
+    public static addGroupReservationsFields = ADD + ReservationsPermissions.groupReservationsFields;
+    public static updateGroupReservationsFields = UPDATE + ReservationsPermissions.groupReservationsFields;
+    public static removeGroupReservationsFields = REMOVE + ReservationsPermissions.groupReservationsFields;
     //#endregion
 }
