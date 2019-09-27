@@ -29,15 +29,6 @@ export class CommercialTenantsFieldsConfig extends FieldsConfig<any, any>{
 
             new Field({
                 component: StringFieldComponent,
-                value: entity ? entity.object.hostname : undefined,
-                key: 'hostname',
-                validators: [Validators.required],
-                order: 1,
-                sortable: true
-            }),
-
-            new Field({
-                component: StringFieldComponent,
                 value: entity ? entity.object.safeSubdomain : undefined,
                 key: 'safeSubdomain',
                 validators: [Validators.required],
