@@ -10,7 +10,7 @@ export class GroupReservationsActions extends RecordActionsBase<GroupReservation
 
     public getMessageParams(record: LocalObject<GroupReservation, number>): StrIndex<string> {
         return {
-            id: 'Object'
+            name: record.object.name
         };
     }
 }
