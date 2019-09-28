@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Router, ActivatedRoute } from '@angular/router';
-import { Skysmack } from '@skysmack/packages-skysmack-core';
 import { PackageRouteConfiguration } from '@skysmack/portal-ui';
-import { take } from 'rxjs/operators';
+import { take, filter, map } from 'rxjs/operators';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 
 @Component({
@@ -11,8 +10,7 @@ import { NgSkysmackStore } from '@skysmack/ng-skysmack';
   templateUrl: './fall-back.component.html'
 })
 export class FallBackComponent implements OnInit {
-  public skysmack$: Observable<Skysmack>;
-  public packagesLoaded = false;
+  public packageNotFound$: Observable<boolean>;
 
   constructor(
     public router: Router,
@@ -23,21 +21,20 @@ export class FallBackComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.skysmack$ = this.store.getSkysmack();
-    this.checkForTenantLoaded();
-  }
-
-  private checkForTenantLoaded() {
-    this.skysmack$.pipe(take(1)).subscribe((tenant) => {
-      if (tenant != null && tenant.name.length > 0) {
-        if (this.router.onSameUrlNavigation !== 'reload') {
-          this.router.onSameUrlNavigation = 'reload';
-          this.router.navigate([this.router.url]);
-        } else {
-          this.router.onSameUrlNavigation = 'ignore';
+    this.packageNotFound$ = this.store.getSkysmack().pipe(
+      filter(tenant => tenant && tenant.packages && tenant.packages.length > 0),
+      take(1),
+      map((tenant) => {         
+        const packagePath = this.router.url.split('/')[1].toLowerCase();
+        if (tenant.packages.map(p => p.path.toLowerCase()).indexOf(packagePath) === -1) {
+          // Package not found
+          return true;
         }
-        this.packagesLoaded = true;
-      }
-    });
+        // Package was found, we shouldn't be here so let's do some magic redirect.
+        this.router.onSameUrlNavigation = 'reload';
+        this.router.navigateByUrl(this.router.url, { skipLocationChange: true });
+        this.router.onSameUrlNavigation = 'ignore';
+        return false;
+      }));
   }
 }
