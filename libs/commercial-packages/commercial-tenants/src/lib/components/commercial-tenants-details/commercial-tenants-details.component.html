@@ -2,9 +2,11 @@
     <mat-card>
         <ng-container *ngIf="tenant$ | async as tenant">
             <h3>{{ tenant.name }}</h3>
-            <p>{{ 'COMMERCIAL_TENANTS.HOSTNAME' | translate }}: <a target="_blank"
-                    [href]="'https://' + tenant.hostname">{{ tenant.hostname }}</a></p>
-            <p>{{ 'COMMERCIAL_TENANTS.SAFESUBDOMAIN' | translate }}: {{ tenant.safeSubdomain }}</p>
+            <p>
+                <a target="_blank"
+                [href]="'https://' + tenant.safeSubdomain + '.skysmack.net'">{{ 'COMMERCIAL_TENANTS.SAFESUBDOMAIN' | translate }}: {{ tenant.safeSubdomain }}
+            </a>
+            </p>
             <p>{{ 'COMMERCIAL_TENANTS.STATE' | translate }}: {{ this.displayModifier(tenant) }}</p>
         </ng-container>
     </mat-card>
