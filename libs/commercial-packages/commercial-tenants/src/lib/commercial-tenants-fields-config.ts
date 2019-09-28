@@ -1,17 +1,20 @@
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
-import { FormRule, Field } from '@skysmack/ng-dynamic-forms';
+import { FormRule, Field, CustomValidators, SetPathRule } from '@skysmack/ng-dynamic-forms';
 import { StringFieldComponent, HiddenFieldComponent } from '@skysmack/portal-fields';
 import { CommercialTenantsValidation } from './commercial-tenants-validation';
 import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { FieldsConfig, FieldProviders } from '@skysmack/ng-fields';
 import { LoadedPackage } from '@skysmack/ng-framework';
+import { SubDomainFieldComponent } from './components/sub-domain-field/sub-domain-field.component';
 
 @Injectable({ providedIn: 'root' })
 export class CommercialTenantsFieldsConfig extends FieldsConfig<any, any>{
     public validation = new CommercialTenantsValidation();
     public area = '';
-    public formRules: FormRule[] = [];
+    public formRules: FormRule[] = [
+        new SetPathRule('name', 'safeSubdomain')
+    ];
 
     constructor(public fieldProviders: FieldProviders) {
         super(fieldProviders, []);
@@ -28,10 +31,10 @@ export class CommercialTenantsFieldsConfig extends FieldsConfig<any, any>{
             }),
 
             new Field({
-                component: StringFieldComponent,
+                component: SubDomainFieldComponent,
                 value: entity ? entity.object.safeSubdomain : undefined,
                 key: 'safeSubdomain',
-                validators: [Validators.required],
+                validators: [Validators.required, CustomValidators.minStringLength(4)],
                 order: 1,
                 sortable: true
             }),

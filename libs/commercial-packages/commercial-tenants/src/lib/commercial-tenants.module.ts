@@ -15,6 +15,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatCardModule } from '@angular/material/card';
+import { SubDomainFieldComponent } from './components/sub-domain-field/sub-domain-field.component';
 
 const material = [
   MatCardModule,
@@ -38,9 +39,16 @@ const material = [
     ...material
   ],
   declarations: [
-    ...commercialTenantsComponents
+    ...commercialTenantsComponents,
+    SubDomainFieldComponent
   ],
-  providers: []
+  exports: [    
+    SubDomainFieldComponent
+  ],
+  providers: [],
+  entryComponents: [
+    SubDomainFieldComponent
+  ]
 })
 export class CommercialTenantsModule {
   constructor(

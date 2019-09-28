@@ -28,9 +28,9 @@
                 "STATUS": "Status"
             },
             "PLACEHOLDERS": {
-                "NAME": "Enter a Name",
+                "NAME": "Enter name",
                 "HOSTNAME": "Enter a hostname",
-                "SAFESUBDOMAIN": "Enter a safe subdomain",
+                "SAFESUBDOMAIN": "Enter subdomain",
                 "STATE": "Enter a state",
                 "USERID": "User",
                 "TENANTID": "Tenant",

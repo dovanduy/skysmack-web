@@ -1,9 +1,14 @@
 <div class="wrapper">
     <mat-card>
-        <ss-dynamic-form *ngIf="fields$" [noSidebar]="true" [fields$]="fields$" [validation]="fieldsConfig.validation"
-            [rules]="fieldsConfig.formRules" [removeCloseButton]="true"
-            [buttonText]="'COMMERCIAL_TENANTS.CREATE' | translate" (submitted)="onSubmit($event)">
-            <h2>{{ 'COMMERCIAL_TENANTS.CREATETENANT' | translate }}</h2>
-        </ss-dynamic-form>
+        <div style="width:100%;height:5px">
+            <mat-progress-bar *ngIf="creating" mode="indeterminate"></mat-progress-bar>
+        </div>
+        <div class="content">
+            <ss-dynamic-form *ngIf="fields$" [noSidebar]="true" [fields$]="fields$" [removeSubmitButton]="creating"
+                [validation]="fieldsConfig.validation" [rules]="fieldsConfig.formRules" [removeCloseButton]="true"
+                [buttonText]="'COMMERCIAL_TENANTS.CREATE' | translate" (submitted)="onSubmit($event)">
+                <h2>{{ 'COMMERCIAL_TENANTS.CREATETENANT' | translate }}</h2>
+            </ss-dynamic-form>
+        </div>
     </mat-card>
 </div>

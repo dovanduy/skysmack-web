@@ -1,0 +1,22 @@
+<ng-container *ngIf="field" [formGroup]="fh.form">
+  <mat-form-field>
+    <span matPrefix style="color:rgba(0,0,0,0.54)">https:// &nbsp;</span>
+    <input matInput type="text" [attr.id]="fieldKey" [name]="field.label" [formControlName]="fieldKey"
+      [placeholder]="field.placeholder | translate" (blur)="focusLost()">      
+    <span matSuffix style="color:rgba(0,0,0,0.54)">.skysmack.net</span>
+    <mat-error *ngIf="fh.formErrors[fieldKey]">
+      <!-- Frontend errors -->
+      <ng-container *ngIf="fh.formErrors[fieldKey]">
+        {{ fh.formErrors[fieldKey] | translate }}
+      </ng-container>
+    </mat-error>
+  </mat-form-field>
+
+  <ng-container *ngIf="field && field.errors">
+      <ng-container *ngFor="let error of field.errors">
+        <p style="color: red; font-size: 10px;">{{ error }}</p>
+      </ng-container>
+      <br />
+    </ng-container>
+
+</ng-container>
