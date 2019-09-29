@@ -63,7 +63,7 @@ export class CommercialUsersIndexComponent implements OnInit {
     this.dialog.open(RemoveDialog, {
       width: '350px',
       data: new RemoveDialogData({
-        name: user.userName, removeMethod: () => {
+        name: user.firstName + ' ' + user.lastName, removeMethod: () => {
           this.loading = true;
           this.service.delete(user.id).pipe(
             tap(() => {

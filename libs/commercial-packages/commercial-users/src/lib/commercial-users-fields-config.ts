@@ -23,23 +23,31 @@ export class CommercialUsersFieldsConfig extends FieldsConfig<any, any>{
         const fields = [
             new Field({
                 component: StringFieldComponent,
-                value: entity ? entity.object.email : undefined,
-                key: 'email',
+                value: entity ? entity.object.firstName : undefined,
+                key: 'firstName',
                 validators: [Validators.required],
                 order: 1,
             }),
 
             new Field({
                 component: StringFieldComponent,
-                value: entity ? entity.object.userName : undefined,
-                key: 'userName',
+                value: entity ? entity.object.lastName : undefined,
+                key: 'lastName',
                 validators: [Validators.required],
-                order: 1,
-            }),
+                order: 2,
+            })
         ];
 
         if (this.mode === 'create') {
-            const passwordFields = [
+            fields.push(
+            new Field({
+                component: StringFieldComponent,
+                value: entity ? entity.object.email : undefined,
+                key: 'email',
+                validators: [Validators.required],
+                order: 3,
+            }));
+            fields.push(
                 new Field({
                     component: PasswordFieldComponent,
                     value: undefined,
@@ -48,8 +56,8 @@ export class CommercialUsersFieldsConfig extends FieldsConfig<any, any>{
                     validators: [Validators.required, CustomValidators.validPassword()],
                     order: 2,
                     placeholder: 'Password',
-                }),
-
+                }));
+fields.push(
                 new Field({
                     component: PasswordFieldComponent,
                     value: undefined,
@@ -59,8 +67,7 @@ export class CommercialUsersFieldsConfig extends FieldsConfig<any, any>{
                     order: 3,
                     placeholder: 'Password',
                 })
-            ];
-            passwordFields.forEach(pwf => fields.push(pwf));
+            );
         }
 
         // Id field must only be added for edit forms.
