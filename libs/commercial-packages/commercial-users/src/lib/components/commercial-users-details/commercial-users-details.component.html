@@ -3,7 +3,7 @@
 
         <ng-container *ngIf="user$ | async as user">
             <h3>{{ user.firstName }} {{ user.lastName }}</h3>
-            <p>{{ 'COMMERCIAL_USERS.EMAIL' | translate }} {{ user.email }}</p>
+            <p>{{ user.email }}</p>
         </ng-container>
 
     </mat-card>

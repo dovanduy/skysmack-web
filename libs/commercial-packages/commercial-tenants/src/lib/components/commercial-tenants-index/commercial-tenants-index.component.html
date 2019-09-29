@@ -32,7 +32,7 @@
           </a>
         </div>
         <div mat-icon>
-          <button (click)="remove(tenant)" mat-icon-button matTooltip="
+          <button (click)="remove(tenant)" [disabled]="tenant.state !== 3" mat-icon-button matTooltip="
                 {{ 'COMMERCIAL_TENANTS.REMOVE' | translate }}">
             <mat-icon>delete</mat-icon>
           </button>
