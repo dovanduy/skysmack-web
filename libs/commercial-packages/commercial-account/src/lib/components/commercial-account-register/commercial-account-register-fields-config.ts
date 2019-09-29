@@ -20,14 +20,6 @@ export class CommercialAccountRegisterFieldsConfig extends FieldsConfig<any, any
     protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<any, any>): Field[] {
         const fields = [
             new Field({
-                component: StringFieldComponent,
-                value: undefined,
-                key: 'userName',
-                validators: [Validators.required],
-                order: 1,
-                sortable: true
-            }),
-            new Field({
                 component: EmailFieldComponent,
                 value: undefined,
                 key: 'email',

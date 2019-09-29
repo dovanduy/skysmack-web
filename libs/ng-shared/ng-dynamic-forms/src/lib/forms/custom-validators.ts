@@ -69,7 +69,8 @@ export class CustomValidators {
             // at least one special character
             // at least six characters
             const passwordCriteriaExpression = new RegExp('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{6,})');
-            if (!passwordCriteriaExpression.test(passwordControl.value)) {
+            // Only validate, if any data, otherwise required will validate
+            if (passwordControl && passwordControl.value && passwordControl.value.length > 0 && !passwordCriteriaExpression.test(passwordControl.value)) {
                 return { invalidPassword: true };
             } else {
                 return null;

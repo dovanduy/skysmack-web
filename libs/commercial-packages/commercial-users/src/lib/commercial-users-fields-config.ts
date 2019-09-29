@@ -40,30 +40,30 @@ export class CommercialUsersFieldsConfig extends FieldsConfig<any, any>{
 
         if (this.mode === 'create') {
             fields.push(
-            new Field({
-                component: StringFieldComponent,
-                value: entity ? entity.object.email : undefined,
-                key: 'email',
-                validators: [Validators.required],
-                order: 3,
-            }));
+                new Field({
+                    component: StringFieldComponent,
+                    value: entity ? entity.object.email : undefined,
+                    key: 'email',
+                    validators: [Validators.required],
+                    order: 3,
+                }));
             fields.push(
                 new Field({
                     component: PasswordFieldComponent,
                     value: undefined,
                     key: 'password',
                     label: 'Password',
-                    validators: [Validators.required, CustomValidators.validPassword()],
+                    validators: [CustomValidators.validPassword()],
                     order: 2,
                     placeholder: 'Password',
                 }));
-fields.push(
+            fields.push(
                 new Field({
                     component: PasswordFieldComponent,
                     value: undefined,
                     key: 'confirmPassword',
                     label: 'Confirm password',
-                    validators: [Validators.required],
+                    validators: [],
                     order: 3,
                     placeholder: 'Password',
                 })

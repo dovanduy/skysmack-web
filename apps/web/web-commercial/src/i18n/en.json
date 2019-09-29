@@ -246,10 +246,12 @@
 				"ROLENAME": "Role"
 			},
 			"PLACEHOLDERS": {
-				"EMAIL": "Enter a email",
-				"USERNAME": "Enter a username",
-				"PASSWORD": "Enter a password",
-				"CONFIRMPASSWORD": "Enter a confirm password",
+				"FIRSTNAME": "First name",
+				"LASTNAME": "Last name",
+				"EMAIL": "Enter email",
+				"USERNAME": "Enter username",
+				"PASSWORD": "Enter password",
+				"CONFIRMPASSWORD": "Enter confirm password",
 				"USERID": "User",
 				"ROLENAME": "Role"
 			},
