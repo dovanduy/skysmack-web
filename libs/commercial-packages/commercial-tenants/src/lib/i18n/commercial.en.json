@@ -7,7 +7,7 @@
         },
         "TITLE": "Tenants",
         "CREATE": "Create",
-        "CREATETENANT": "Create Tenant",
+        "CREATETENANT": "Create tenant",
         "EDIT": "Edit",
         "EDITTENANT": "Edit tenant",
         "DETAILS": "Details",
@@ -38,10 +38,10 @@
             },
             "VALIDATION": {
                 "NAME": {
-                    "REQUIRED": "An Name is required."
+                    "REQUIRED": "An name is required."
                 },
                 "HOSTNAME": {
-                    "REQUIRED": "An hostname is required."
+                    "REQUIRED": "A hostname is required."
                 },
                 "SAFESUBDOMAIN": {
                     "REQUIRED": "A subdomain is required."
