@@ -11,28 +11,28 @@
     <mat-list *ngIf="tenants$ | async as tenants">
       <h3 mat-subheader>{{ 'COMMERCIAL_TENANTS.TITLE' | translate }}</h3>
       <mat-list-item *ngFor="let tenant of tenants">
-        <h4 mat-line>{{ tenant.name }} <span class="tenant-state">{{ this.displayModifier(tenant) }}</span></h4>
+        <h4 mat-line>{{ tenant.name }} <span *ngIf="tenant.state !== 1" class="tenant-state">{{ this.displayModifier(tenant) }}</span></h4>
 
         <div mat-icon>
-          <a href="https://{{ tenant.safeSubdomain }}.skysmack.net" target="blank" mat-icon-button matTooltip="
+          <a href="https://{{ tenant.safeSubdomain }}.skysmack.net" [disabled]="tenant.state !== 1" target="blank" mat-icon-button matTooltip="
         {{ 'COMMERCIAL_TENANTS.LAUNCH' | translate }}">
             <mat-icon>launch</mat-icon>
           </a>
         </div>
-        <div mat-icon>
+        <!-- <div mat-icon>
           <a [routerLink]="['/', 'tenants', 'details', tenant.id]" mat-icon-button matTooltip="
                 {{ 'COMMERCIAL_TENANTS.DETAILS' | translate }}">
             <mat-icon>notes</mat-icon>
           </a>
-        </div>
+        </div> -->
         <div mat-icon>
-          <a [routerLink]="['/', 'tenants', 'edit', tenant.id]" mat-icon-button matTooltip="
+          <a [routerLink]="['/', 'tenants', 'edit', tenant.id]" [disabled]="tenant.state === 0" mat-icon-button matTooltip="
         {{ 'COMMERCIAL_TENANTS.EDIT' | translate }}">
             <mat-icon>edit</mat-icon>
           </a>
         </div>
         <div mat-icon>
-          <button (click)="remove(tenant)" mat-icon-button matTooltip="
+          <button (click)="remove(tenant)" [disabled]="tenant.state !== 3" mat-icon-button matTooltip="
                 {{ 'COMMERCIAL_TENANTS.REMOVE' | translate }}">
             <mat-icon>delete</mat-icon>
           </button>

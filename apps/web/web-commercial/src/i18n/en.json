@@ -158,7 +158,7 @@
 		},
 		"TITLE": "Tenants",
 		"CREATE": "Create",
-		"CREATETENANT": "Create Tenant",
+		"CREATETENANT": "Create tenant",
 		"EDIT": "Edit",
 		"EDITTENANT": "Edit tenant",
 		"DETAILS": "Details",
@@ -179,9 +179,9 @@
 				"STATUS": "Status"
 			},
 			"PLACEHOLDERS": {
-				"NAME": "Enter a Name",
+				"NAME": "Enter name",
 				"HOSTNAME": "Enter a hostname",
-				"SAFESUBDOMAIN": "Enter a safe subdomain",
+				"SAFESUBDOMAIN": "Enter subdomain",
 				"STATE": "Enter a state",
 				"USERID": "User",
 				"TENANTID": "Tenant",
@@ -189,7 +189,7 @@
 			},
 			"VALIDATION": {
 				"NAME": {
-					"REQUIRED": "An Name is required."
+					"REQUIRED": "A name is required."
 				},
 				"HOSTNAME": {
 					"REQUIRED": "An hostname is required."
@@ -246,10 +246,12 @@
 				"ROLENAME": "Role"
 			},
 			"PLACEHOLDERS": {
-				"EMAIL": "Enter a email",
-				"USERNAME": "Enter a username",
-				"PASSWORD": "Enter a password",
-				"CONFIRMPASSWORD": "Enter a confirm password",
+				"FIRSTNAME": "First name",
+				"LASTNAME": "Last name",
+				"EMAIL": "Enter email",
+				"USERNAME": "Enter username",
+				"PASSWORD": "Enter password",
+				"CONFIRMPASSWORD": "Confirm password",
 				"USERID": "User",
 				"ROLENAME": "Role"
 			},

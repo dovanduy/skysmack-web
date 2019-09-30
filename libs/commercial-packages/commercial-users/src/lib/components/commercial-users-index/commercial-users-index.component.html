@@ -12,7 +12,7 @@
         <mat-list *ngIf="users$ | async as users">
             <h3 mat-subheader>{{ 'COMMERCIAL_USERS.TITLE' | translate }}</h3>
             <mat-list-item *ngFor="let user of users">
-                <h4 mat-line>{{ user.userName }}
+                <h4 mat-line matTooltip="{{ user.email }}">{{ user.firstName }} {{ user.lastName }}
                     <span style="font-size: 12px;font-style: italic;" *ngFor="let role of user.roles; let last = last">
                         {{ role }}
                         <span *ngIf="!last">, </span>

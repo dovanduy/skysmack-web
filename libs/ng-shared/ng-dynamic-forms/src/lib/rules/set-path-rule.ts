@@ -9,10 +9,13 @@ latinize.characters['Å'] = 'AA';
 latinize.characters['å'] = 'aa';
 
 export class SetPathRule extends FormRule {
+    constructor(private name = 'name', private path = 'path') {
+        super([name, path]);
+    }
     protected rule() {
         const controls = this.getDefaultGroupControls();
-        const nameControl = controls['name'];
-        const pathControl = controls['path'];
+        const nameControl = controls[this.keys[0]];
+        const pathControl = controls[this.keys[1]];
 
         const name = nameControl.value ? nameControl.value.trim() : '';
         const path = pathControl.value ? pathControl.value.trim() : '';
