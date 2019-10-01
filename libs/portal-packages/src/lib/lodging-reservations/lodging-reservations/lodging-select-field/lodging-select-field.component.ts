@@ -5,7 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { take, tap, map, switchMap, startWith, debounceTime } from 'rxjs/operators';
 import { LocalObject } from '@skysmack/framework';
 import { DetailedLodging, Lodging } from '@skysmack/packages-lodgings';
-import { Observable } from 'rxjs';
+import { Observable, combineLatest, of } from 'rxjs';
 import { LodgingSelectDialogComponent } from '../lodging-select-dialog/lodging-select-dialog.component';
 import { NgLodgingsStore } from '@skysmack/ng-lodgings';
 import { Router } from '@angular/router';
@@ -51,7 +51,15 @@ export class LodgingSelectFieldComponent extends FieldBaseComponent<Field> imple
   }
 
   private setlodgingTypeSelected$() {
-    this.lodgingTypeSelected$ = this.fh.form.get('lodgingTypeId').valueChanges.pipe(map(x => x));
+    const lodgingTypeControl = this.fh.form.get('lodgingTypeId');
+    this.lodgingTypeSelected$ = combineLatest([
+      lodgingTypeControl.valueChanges.pipe(startWith(null)),
+      of(lodgingTypeControl.value).pipe(startWith(null))
+    ]).pipe(
+      map(([valueChanged, startValue]) => {
+        return startValue ? !!startValue : !!valueChanged;
+      })
+    );
   }
 
   private setSelectedLodging(): void {
