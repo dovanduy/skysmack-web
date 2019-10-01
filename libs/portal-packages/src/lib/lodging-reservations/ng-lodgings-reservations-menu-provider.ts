@@ -109,6 +109,17 @@ export class NgLodgingsReservationsMenuProvider implements MenuProvider {
                 providedIn: [SIDEBAR, SPEEDDIAL]
             }),
             new MenuItem({
+                url: 'fields',
+                displayName: this.lodgingReservationsTranslationPrefix + 'FIELDS',
+                area: 'manage',
+                order: 2,
+                icon: 'short_text',
+                permissions: [
+                    ReservationsPermissions.findReservationsFields
+                ],
+                providedIn: [SIDEBAR]
+            }),
+            new MenuItem({
                 url: '/' + packagePath,
                 displayName: this.lodgingReservationsTranslationPrefix + 'ALL',
                 area: 'reservations',

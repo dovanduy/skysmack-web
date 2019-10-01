@@ -4,11 +4,17 @@ export class ReservationsPermissions {
     private static reservations = 'Reservations';
     private static groupReservations = 'GroupReservations';
     private static groupReservationsFields = 'GroupReservations' + FIELDS;
+    private static reservationsFields = 'Reservation' + FIELDS;
 
     public static findReservations = FIND + ReservationsPermissions.reservations;
     public static addReservations = ADD + ReservationsPermissions.reservations;
     public static updateReservations = UPDATE + ReservationsPermissions.reservations;
     public static removeReservations = REMOVE + ReservationsPermissions.reservations;
+
+    public static findReservationsFields = FIND + ReservationsPermissions.reservationsFields;
+    public static addReservationsFields = ADD + ReservationsPermissions.reservationsFields;
+    public static updateReservationsFields = UPDATE + ReservationsPermissions.reservationsFields;
+    public static removeReservationsFields = REMOVE + ReservationsPermissions.reservationsFields;
 
     public static allocateLodging = 'AllocateLodging';
     public static overbooking = 'Overbooking';

@@ -4,15 +4,16 @@ import { LodgingReservation, LodgingReservationsAppState } from '@skysmack/packa
 import { EditorNavService } from '@skysmack/portal-ui';
 import { NgLodgingReservationsFieldsConfig } from '../../ng-lodging-reservations-fields-config';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
-import { RecordFormComponent } from '@skysmack/portal-fields';
+import { DocumentRecordFormComponent } from '@skysmack/portal-fields';
 import { NgLodgingReservationsStore, NgLodgingReservationsActions } from '@skysmack/ng-lodging-reservations';
 import { NgLodgingsActions, NgLodgingTypesActions } from '@skysmack/ng-lodgings';
+import { NgFieldActions } from '@skysmack/ng-framework';
 
 @Component({
   selector: 'ss-lodgings-reservations-create',
   templateUrl: './lodgings-reservations-create.component.html'
 })
-export class LodgingsReservationsCreateComponent extends RecordFormComponent<LodgingReservationsAppState, LodgingReservation, number> implements OnInit {
+export class LodgingsReservationsCreateComponent extends DocumentRecordFormComponent<LodgingReservationsAppState, LodgingReservation, number> implements OnInit {
   constructor(
     public router: Router,
     public activatedRoute: ActivatedRoute,
@@ -22,9 +23,10 @@ export class LodgingsReservationsCreateComponent extends RecordFormComponent<Lod
     public actions: NgLodgingReservationsActions,
     public lodgingsActions: NgLodgingsActions,
     public lodgingTypesActions: NgLodgingTypesActions,
-    public fieldsConfig: NgLodgingReservationsFieldsConfig
+    public fieldsConfig: NgLodgingReservationsFieldsConfig,
+    public fieldActions: NgFieldActions
   ) {
-    super(router, activatedRoute, editorNavService, actions, skysmackStore, store, fieldsConfig);
+    super(router, activatedRoute, editorNavService, actions, skysmackStore, store, fieldsConfig, fieldActions);
   }
 
   ngOnInit() {
