@@ -2,11 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { Field } from '@skysmack/ng-dynamic-forms';
 import { FieldBaseComponent } from '@skysmack/portal-fields';
 import { MatDialog } from '@angular/material/dialog';
-import { take, tap, map } from 'rxjs/operators';
+import { take, tap, map, switchMap } from 'rxjs/operators';
 import { LocalObject } from '@skysmack/framework';
 import { DetailedLodging, Lodging } from '@skysmack/packages-lodgings';
 import { Observable } from 'rxjs';
 import { LodgingSelectDialogComponent } from '../lodging-select-dialog/lodging-select-dialog.component';
+import { NgLodgingsStore } from '@skysmack/ng-lodgings';
+import { Router } from '@angular/router';
+import { NgSkysmackStore } from '@skysmack/ng-skysmack';
+import { getPackageDendencyAsStream } from '@skysmack/ng-framework';
 
 @Component({
   selector: 'ss-lodging-select-field',
@@ -16,17 +20,21 @@ import { LodgingSelectDialogComponent } from '../lodging-select-dialog/lodging-s
 export class LodgingSelectFieldComponent extends FieldBaseComponent<Field> implements OnInit {
 
   public selectedLodging: LocalObject<Lodging, number>;
-  public datesSelected$: Observable<boolean>;
+  public lodgingTypeSelected$: Observable<boolean>;
 
   constructor(
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private lodgingStore: NgLodgingsStore,
+    private router: Router,
+    private skysmackStore: NgSkysmackStore
   ) {
     super();
   }
 
   ngOnInit() {
     super.ngOnInit();
-    this.setDatesSelected$();
+    this.setlodgingTypeSelected$();
+    this.setSelectedLodging();
   }
 
   public selectLodging(): void {
@@ -42,9 +50,27 @@ export class LodgingSelectFieldComponent extends FieldBaseComponent<Field> imple
     ).subscribe();
   }
 
+  private setlodgingTypeSelected$() {
+    this.lodgingTypeSelected$ = this.fh.form.get('lodgingTypeId').valueChanges.pipe(
+      tap(() => {
+        if (this.selectedLodging) {
+          this.selectedLodging = null;
+          this.setFieldValue(null);
+        }
+      })
+    );
+  }
 
-
-  private setDatesSelected$() {
-    this.datesSelected$ = this.fh.form.get('lodgingTypeId').valueChanges.pipe(map(x => x));
+  private setSelectedLodging(): void {
+    const selectedLodgingId = this.getFieldValue();
+    if (selectedLodgingId) {
+      const packagePath = this.router.url.split('/')[1];
+      this.subscriptionHandler.register(getPackageDendencyAsStream(this.skysmackStore, packagePath, [0]).pipe(
+        switchMap(_package => this.lodgingStore.getSingle(_package.object.path, selectedLodgingId))
+      ).pipe(
+        tap(selectedLodging => this.selectedLodging = selectedLodging),
+        take(1)
+      ).subscribe());
+    }
   }
 }
