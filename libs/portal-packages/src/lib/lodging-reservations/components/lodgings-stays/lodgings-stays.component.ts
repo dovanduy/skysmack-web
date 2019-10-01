@@ -53,6 +53,7 @@ export class LodgingsStaysComponent extends LodgingsReservationsIndexComponent i
   }
 
   ngOnInit() {
+    this.refresh();
     this.filter();
     this.sort();
     this.pageTitle.setTitle('LODGING_RESERVATIONS.STAYS.TITLE');

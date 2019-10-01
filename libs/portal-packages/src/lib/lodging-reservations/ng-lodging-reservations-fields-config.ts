@@ -67,7 +67,6 @@ export class NgLodgingReservationsFieldsConfig extends DocumentFieldsConfig<Lodg
                 component: LodgingSelectFieldComponent,
                 value: entity ? entity.object.allocatedLodgingId : undefined,
                 key: 'allocatedLodgingId',
-                validators: [Validators.required],
                 order: 4,
                 showColumn: true,
                 sortable: true
