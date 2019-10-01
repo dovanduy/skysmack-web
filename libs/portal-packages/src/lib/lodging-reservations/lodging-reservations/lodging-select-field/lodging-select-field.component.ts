@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Field } from '@skysmack/ng-dynamic-forms';
 import { FieldBaseComponent } from '@skysmack/portal-fields';
 import { MatDialog } from '@angular/material/dialog';
-import { take, tap, map, switchMap } from 'rxjs/operators';
+import { take, tap, map, switchMap, startWith, debounceTime } from 'rxjs/operators';
 import { LocalObject } from '@skysmack/framework';
 import { DetailedLodging, Lodging } from '@skysmack/packages-lodgings';
 import { Observable } from 'rxjs';
@@ -51,14 +51,7 @@ export class LodgingSelectFieldComponent extends FieldBaseComponent<Field> imple
   }
 
   private setlodgingTypeSelected$() {
-    this.lodgingTypeSelected$ = this.fh.form.get('lodgingTypeId').valueChanges.pipe(
-      tap(() => {
-        if (this.selectedLodging) {
-          this.selectedLodging = null;
-          this.setFieldValue(null);
-        }
-      })
-    );
+    this.lodgingTypeSelected$ = this.fh.form.get('lodgingTypeId').valueChanges.pipe(map(x => x));
   }
 
   private setSelectedLodging(): void {
