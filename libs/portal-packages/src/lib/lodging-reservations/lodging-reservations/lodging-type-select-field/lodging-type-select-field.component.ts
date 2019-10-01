@@ -3,10 +3,14 @@ import { Field } from '@skysmack/ng-dynamic-forms';
 import { FieldBaseComponent } from '@skysmack/portal-fields';
 import { MatDialog } from '@angular/material/dialog';
 import { LodgingTypeSelectDialogComponent } from '../lodging-type-select-dialog/lodging-type-select-dialog.component';
-import { take, tap, map, startWith } from 'rxjs/operators';
+import { take, tap, map, startWith, switchMap } from 'rxjs/operators';
 import { LocalObject } from '@skysmack/framework';
 import { LodgingType, DetailedLodgingType } from '@skysmack/packages-lodgings';
 import { Observable, combineLatest } from 'rxjs';
+import { NgLodgingTypesStore } from '@skysmack/ng-lodgings';
+import { Router } from '@angular/router';
+import { getPackageDendencyAsStream } from '@skysmack/ng-framework';
+import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 
 @Component({
   selector: 'ss-lodging-type-select-field',
@@ -19,7 +23,10 @@ export class LodgingTypeSelectFieldComponent extends FieldBaseComponent<Field> i
   public datesSelected$: Observable<boolean>;
 
   constructor(
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private lodgingTypeStore: NgLodgingTypesStore,
+    private skysmackStore: NgSkysmackStore,
+    private router: Router
   ) {
     super();
   }
@@ -27,6 +34,7 @@ export class LodgingTypeSelectFieldComponent extends FieldBaseComponent<Field> i
   ngOnInit() {
     super.ngOnInit();
     this.setDatesSelected$();
+    this.setSelectedLodgingType();
   }
 
   public selectLodgingType(): void {
@@ -40,6 +48,19 @@ export class LodgingTypeSelectFieldComponent extends FieldBaseComponent<Field> i
       }),
       take(1)
     ).subscribe();
+  }
+
+  private setSelectedLodgingType(): void {
+    const selectedLodgingTypeId = this.getFieldValue();
+    if (selectedLodgingTypeId) {
+      const packagePath = this.router.url.split('/')[1];
+      this.subscriptionHandler.register(getPackageDendencyAsStream(this.skysmackStore, packagePath, [0]).pipe(
+        switchMap(_package => this.lodgingTypeStore.getSingle(_package.object.path, selectedLodgingTypeId))
+      ).pipe(
+        tap(selectedLodgingType => this.selectedLodgingType = selectedLodgingType),
+        take(1)
+      ).subscribe());
+    }
   }
 
   private setDatesSelected$() {
