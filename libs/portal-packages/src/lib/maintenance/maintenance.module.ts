@@ -4,7 +4,6 @@ import { NgModule } from '@angular/core';
 import { NgMaintenanceModule } from '@skysmack/ng-maintenance';
 import { PortalUiModule, NgMenuProviders } from '@skysmack/portal-ui';
 import { assignmentTypesComponents } from './assignment-types/components/assignment-types-components';
-import { assignmentsComponents } from './assignments/components/assignments-components';
 import { MaintenanceRoutingModule } from './maintenance-routing.module';
 import { recurringAssignmentsComponents } from './recurring-assignments/components/recurring-assignments-components';
 import { maintenanceStatesComponents } from './maintenance-states/components/maintenance-states-components';
@@ -12,6 +11,7 @@ import { assignmentsAllComponents } from './components/assignments-all-component
 import { DynamicFormsModule } from '@skysmack/portal-dynamic-forms';
 import { PortalFieldsModule } from '@skysmack/portal-fields';
 import { NgAssignmentAllMenuProvider } from './ng-assignments-all-menu-provider';
+import { singleAssignmentsComponents } from './single-assignments/components/single-assignments-components';
 
 
 @NgModule({
@@ -25,7 +25,7 @@ import { NgAssignmentAllMenuProvider } from './ng-assignments-all-menu-provider'
     PortalFieldsModule
   ],
   declarations: [
-    ...assignmentsComponents,
+    ...singleAssignmentsComponents,
     ...assignmentsAllComponents,
     ...recurringAssignmentsComponents,
     ...assignmentTypesComponents,

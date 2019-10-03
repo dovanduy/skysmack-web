@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
-import { LocalObject, LocalObjectStatus, EnumHelpers, DisplayColumn, PagedQuery } from '@skysmack/framework';
-import { Assignment, SINGLE_ASSIGNMENTS_AREA_KEY, SINGLE_ASSIGNMENTS_ADDITIONAL_PATHS } from '@skysmack/packages-maintenance';
-import { NgAssignmentsValidation, NgAssignmentTypesStore, NgAssignmentTypesActions } from '@skysmack/ng-maintenance';
+import { LocalObject, LocalObjectStatus, DisplayColumn, PagedQuery } from '@skysmack/framework';
+import { SingleAssignment, SINGLE_ASSIGNMENTS_AREA_KEY, SINGLE_ASSIGNMENTS_ADDITIONAL_PATHS, AssignmentStatus } from '@skysmack/packages-maintenance';
+import { NgSingleAssignmentsValidation, NgAssignmentTypesStore, NgAssignmentTypesActions } from '@skysmack/ng-maintenance';
 import { FormRule, Field, SelectField } from '@skysmack/ng-dynamic-forms';
 import { of } from 'rxjs';
 import { LoadedPackage } from '@skysmack/ng-framework';
@@ -10,8 +10,8 @@ import { FieldsConfig, FieldProviders } from '@skysmack/ng-fields';
 import { SelectFieldComponent, StringFieldComponent, DateTimeFieldComponent, HiddenFieldComponent } from '@skysmack/portal-fields';
 
 @Injectable({ providedIn: 'root' })
-export class NgAssignmentsFieldsConfig extends FieldsConfig<Assignment, number> {
-    public validation = new NgAssignmentsValidation();
+export class NgSingleAssignmentsFieldsConfig extends FieldsConfig<SingleAssignment, number> {
+    public validation = new NgSingleAssignmentsValidation();
     public area = SINGLE_ASSIGNMENTS_AREA_KEY;
     public formRules: FormRule[] = [];
 
@@ -21,7 +21,7 @@ export class NgAssignmentsFieldsConfig extends FieldsConfig<Assignment, number> 
         public fieldProviders: FieldProviders
     ) { super(fieldProviders, SINGLE_ASSIGNMENTS_ADDITIONAL_PATHS); }
 
-    protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<Assignment, number>): Field[] {
+    protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<SingleAssignment, number>): Field[] {
         const fields = [
             new SelectField({
                 component: SelectFieldComponent,
@@ -52,13 +52,13 @@ export class NgAssignmentsFieldsConfig extends FieldsConfig<Assignment, number> 
                 value: entity && entity.object ? entity.object.status : undefined,
                 label: 'Occupation state',
                 key: 'status',
-                displayModifier: (column: DisplayColumn, providedEntity: LocalObject<Assignment, number>) => {
-                    const lowercaseStatus = EnumHelpers.toIndexEnum(Assignment.StatusEnum)[providedEntity.object.status];
+                displayModifier: (column: DisplayColumn, providedEntity: LocalObject<SingleAssignment, number>) => {
+                    const lowercaseStatus = AssignmentStatus[providedEntity.object.status];
                     return lowercaseStatus ? lowercaseStatus.charAt(0).toUpperCase() + lowercaseStatus.slice(1) : lowercaseStatus;
                 },
                 validators: [Validators.required],
-                optionsData$: of(Assignment.StatusEnum),
-                optionsDataType: 'enum',
+                optionsData$: of(AssignmentStatus),
+                optionsDataType: 'ts-enum',
                 order: 3,
                 showColumn: true,
                 sortable: true
