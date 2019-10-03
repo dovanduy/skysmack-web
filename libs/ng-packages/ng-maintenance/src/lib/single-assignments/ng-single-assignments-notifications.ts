@@ -1,8 +1,8 @@
 import { Injectable, Inject } from '@angular/core';
 import { RecordNotifications, Notifications, NOTIFICATIONS_INJECTOR_TOKEN } from '@skysmack/ng-framework';
-import { Assignment } from '@skysmack/packages-maintenance';
+import { SingleAssignment } from '@skysmack/packages-maintenance';
 
 @Injectable({ providedIn: 'root' })
-export class NgAssignmentsNotifications extends RecordNotifications<Assignment, number> {
+export class NgSingleAssignmentsNotifications extends RecordNotifications<SingleAssignment, number> {
     constructor(@Inject(NOTIFICATIONS_INJECTOR_TOKEN) public notifications: Notifications) { super(notifications); }
 }

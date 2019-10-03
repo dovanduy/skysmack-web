@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { LocalObject, LocalObjectStatus, EnumHelpers, DisplayColumn, PagedQuery } from '@skysmack/framework';
-import { Assignment, ASSIGNMENTS_AREA_KEY, ASSIGNMENTS_ADDITIONAL_PATHS } from '@skysmack/packages-maintenance';
+import { Assignment, SINGLE_ASSIGNMENTS_AREA_KEY, SINGLE_ASSIGNMENTS_ADDITIONAL_PATHS } from '@skysmack/packages-maintenance';
 import { NgAssignmentsValidation, NgAssignmentTypesStore, NgAssignmentTypesActions } from '@skysmack/ng-maintenance';
 import { FormRule, Field, SelectField } from '@skysmack/ng-dynamic-forms';
 import { of } from 'rxjs';
@@ -12,14 +12,14 @@ import { SelectFieldComponent, StringFieldComponent, DateTimeFieldComponent, Hid
 @Injectable({ providedIn: 'root' })
 export class NgAssignmentsFieldsConfig extends FieldsConfig<Assignment, number> {
     public validation = new NgAssignmentsValidation();
-    public area = ASSIGNMENTS_AREA_KEY;
+    public area = SINGLE_ASSIGNMENTS_AREA_KEY;
     public formRules: FormRule[] = [];
 
     constructor(
         public assignmentTypesStore: NgAssignmentTypesStore,
         public assignmentTypesActions: NgAssignmentTypesActions,
         public fieldProviders: FieldProviders
-    ) { super(fieldProviders, ASSIGNMENTS_ADDITIONAL_PATHS); }
+    ) { super(fieldProviders, SINGLE_ASSIGNMENTS_ADDITIONAL_PATHS); }
 
     protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<Assignment, number>): Field[] {
         const fields = [

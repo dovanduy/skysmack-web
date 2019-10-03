@@ -1,8 +1,8 @@
 import { StrIndex } from '@skysmack/framework';
 import { Validation } from '@skysmack/ng-dynamic-forms';
-import { ASSIGNMENTS_AREA_KEY } from '@skysmack/packages-maintenance';
+import { SINGLE_ASSIGNMENTS_AREA_KEY } from '@skysmack/packages-maintenance';
 
-export class NgAssignmentsValidation extends Validation {
+export class NgSingleAssignmentsValidation extends Validation {
     public formErrors = {
         assignmentTypeId: '',
         description: '',
@@ -30,7 +30,7 @@ export class NgAssignmentsValidation extends Validation {
         }
     };
 
-    public area = ASSIGNMENTS_AREA_KEY;
+    public area = SINGLE_ASSIGNMENTS_AREA_KEY;
 
     public formValidators = [];
 

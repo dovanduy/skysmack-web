@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { AssignmentsAppState, ASSIGNMENTS_AREA_KEY } from '@skysmack/packages-maintenance';
+import { AssignmentsAppState, SINGLE_ASSIGNMENTS_AREA_KEY } from '@skysmack/packages-maintenance';
 import { Assignment } from '@skysmack/packages-maintenance';
 import { EntityComponentPageTitle, MenuItemActionProviders, MENU_ITEM_ACTIONS_EDIT, MENU_ITEM_ACTIONS_DELETE } from '@skysmack/portal-ui';
 import { MenuItem } from '@skysmack/framework';
@@ -17,7 +17,7 @@ export class AssignmentsIndexComponent extends RecordIndexComponent<AssignmentsA
   public static COMPONENT_KEY = 'assignments-index';
   public componentKey = AssignmentsIndexComponent.COMPONENT_KEY;
 
-  public areaKey: string = ASSIGNMENTS_AREA_KEY;
+  public areaKey: string = SINGLE_ASSIGNMENTS_AREA_KEY;
   public titleExtras = true;
   public menuItemActions: MenuItem[] = [
     new MenuItem().asUrlAction('edit', MENU_ITEM_ACTIONS_EDIT, 'edit'),

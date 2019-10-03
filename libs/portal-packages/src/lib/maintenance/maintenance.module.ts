@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { NgAssignmentsModule } from '@skysmack/ng-maintenance';
+import { NgMaintenanceModule } from '@skysmack/ng-maintenance';
 import { PortalUiModule, NgMenuProviders } from '@skysmack/portal-ui';
 import { assignmentTypesComponents } from './assignment-types/components/assignment-types-components';
 import { assignmentsComponents } from './assignments/components/assignments-components';
@@ -19,7 +19,7 @@ import { NgAssignmentAllMenuProvider } from './ng-assignments-all-menu-provider'
     CommonModule,
     HttpClientModule,
     MaintenanceRoutingModule,
-    NgAssignmentsModule,
+    NgMaintenanceModule,
     PortalUiModule,
     DynamicFormsModule,
     PortalFieldsModule
@@ -35,10 +35,10 @@ import { NgAssignmentAllMenuProvider } from './ng-assignments-all-menu-provider'
 })
 export class MaintenanceModule {
   constructor(
-    ngMenuProviders: NgMenuProviders, 
+    ngMenuProviders: NgMenuProviders,
     ngAssignmentAllMenuProvider: NgAssignmentAllMenuProvider
-    ) {
-      ngMenuProviders
+  ) {
+    ngMenuProviders
       .add(ngAssignmentAllMenuProvider)
-     }
+  }
 }
