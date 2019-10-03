@@ -41,7 +41,7 @@ export class NgAccountRequests implements AccountRequests {
     }
 
     public resetPassword(packagePath: string, body: any): Observable<HttpSuccessResponse | HttpErrorResponse> {
-        return this.http.post(`${this.apiDomain.domain}/${packagePath}/reset-password`, body, { observe: 'response' }).pipe(
+        return this.http.post(`${this.apiDomain.domain}/${packagePath}/account/reset-password`, body, { observe: 'response' }).pipe(
             catchError((error) => of(error))
         );
     }
