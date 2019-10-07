@@ -1,6 +1,6 @@
 import { NgRedux } from '@angular-redux/store';
 import { Injectable } from '@angular/core';
-import { RecurringAssignment, RecurringAssignmentsAppState, RECURRING_ASSIGNMENTS_REDUCER_KEY, } from '@skysmack/packages-maintenance';
+import { RecurringAssignment, RecurringAssignmentsAppState, ASSIGNMENTS_SCHEDULES_REDUCER_KEY, } from '@skysmack/packages-maintenance';
 import { NgRecordStore } from '@skysmack/ng-framework';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { DependencyOptions, LocalObject } from '@skysmack/framework';
@@ -19,7 +19,7 @@ export class NgRecurringAssignmentsStore extends NgRecordStore<RecurringAssignme
     constructor(
         protected ngRedux: NgRedux<RecurringAssignmentsAppState>,
         protected skysmackStore: NgSkysmackStore
-    ) { super(ngRedux, skysmackStore, RECURRING_ASSIGNMENTS_REDUCER_KEY); }
+    ) { super(ngRedux, skysmackStore, ASSIGNMENTS_SCHEDULES_REDUCER_KEY); }
 
     public get(packagePath: string): Observable<LocalObject<RecurringAssignment, number>[]> {
         return this.getWithDependencies(packagePath, this.deps);

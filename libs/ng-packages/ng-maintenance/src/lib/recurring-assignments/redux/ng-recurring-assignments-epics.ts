@@ -1,5 +1,5 @@
 import { RecordEpicsBase } from '@skysmack/ng-framework';
-import { RecurringAssignment, RECURRING_ASSIGNMENTS_REDUX_KEY } from '@skysmack/packages-maintenance';
+import { RecurringAssignment, ASSIGNMENTS_SCHEDULES_REDUX_KEY } from '@skysmack/packages-maintenance';
 import { NgRecurringAssignmentsRequests } from './ng-recurring-assignments-requests';
 import { Injectable } from '@angular/core';
 import { NgRecurringAssignmentsNotifications } from '../ng-recurring-assignments-notifications';
@@ -17,10 +17,10 @@ export class NgRecurringAssignmentsEpics extends RecordEpicsBase<RecurringAssign
         protected assignmentTypesActions: NgAssignmentTypesActions,
         protected skysmackStore: NgSkysmackStore
     ) {
-        super(requests, RECURRING_ASSIGNMENTS_REDUX_KEY, notifications);
+        super(requests, ASSIGNMENTS_SCHEDULES_REDUX_KEY, notifications);
         this.epics = this.epics.concat([
             ...getReadDependencies({
-                prefix: RECURRING_ASSIGNMENTS_REDUX_KEY,
+                prefix: ASSIGNMENTS_SCHEDULES_REDUX_KEY,
                 relationIdSelector: 'assignmentTypeId',
                 rsqlIdSelector: 'id',
                 skysmackStore: this.skysmackStore,

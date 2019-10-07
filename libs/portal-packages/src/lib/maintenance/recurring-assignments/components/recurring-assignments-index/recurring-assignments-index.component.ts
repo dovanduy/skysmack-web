@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { RecurringAssignment, RecurringAssignmentsAppState, RECURRING_ASSIGNMENTS_AREA_KEY } from '@skysmack/packages-maintenance';
+import { RecurringAssignment, RecurringAssignmentsAppState, ASSIGNMENTS_SCHEDULES_AREA_KEY } from '@skysmack/packages-maintenance';
 import { EntityComponentPageTitle, MenuItemActionProviders, MENU_ITEM_ACTIONS_EDIT, MENU_ITEM_ACTIONS_DELETE } from '@skysmack/portal-ui';
 import { MenuItem } from '@skysmack/framework';
 import { NgRecurringAssignmentsActions, NgRecurringAssignmentsStore } from '@skysmack/ng-maintenance';
@@ -16,7 +16,7 @@ export class RecurringAssignmentsIndexComponent extends RecordIndexComponent<Rec
   public static COMPONENT_KEY = 'recurring-assignments-index';
   public componentKey = RecurringAssignmentsIndexComponent.COMPONENT_KEY;
 
-  public areaKey: string = RECURRING_ASSIGNMENTS_AREA_KEY;
+  public areaKey: string = ASSIGNMENTS_SCHEDULES_AREA_KEY;
   public titleExtras = true;
   public menuItemActions: MenuItem[] = [
     new MenuItem().asUrlAction('edit', MENU_ITEM_ACTIONS_EDIT, 'edit'),

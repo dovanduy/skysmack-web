@@ -1,16 +1,17 @@
 import { DocumentRecord, LocalObject } from "@skysmack/framework";
 import { AssignmentType } from "./assignment-type";
 
-export class RecurringAssignment extends DocumentRecord<number> {
-    public id: number;
-    public description: string;
-    public status: number;
-    [key: string]: any;
-
+export class AssignmentsSchedule extends DocumentRecord<number> {
     public assignmentTypeId: number;
     public assignmentType: LocalObject<AssignmentType, number>;
 
-    public constructor(init?: Partial<RecurringAssignment>) {
+    public start?: Date;
+    public end?: Date;
+
+    public expression: string;
+
+
+    public constructor(init?: Partial<AssignmentsSchedule>) {
         super();
         Object.assign(this, init);
     }
