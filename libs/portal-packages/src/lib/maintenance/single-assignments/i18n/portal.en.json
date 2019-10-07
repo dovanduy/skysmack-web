@@ -49,7 +49,7 @@
             "BUTTON_EDIT": "Update"
         },
         "INDEX": {
-            "TITLE_EXTRAS": "(assignments)",
+            "TITLE_EXTRAS": "(single assignments)",
             "ACTIONS": "Actions",
             "CREATE": "Create",
             "EDIT": "Edit",

@@ -3,8 +3,8 @@
         "ASSIGNMENT_ALL": {
             "TITLE": "All assignments",
             "INDEX": {
-                "SINGLE_ASSIGNMENTS": "Assignments",
-                "RECURRING_ASSIGNMENTS": "Recurring assignments",
+                "SINGLE_ASSIGNMENTS": "Single assignments",
+                "RECURRING_ASSIGNMENTS": "Scheduled assignments",
                 "MANAGE": "Manage"
             }
         }
