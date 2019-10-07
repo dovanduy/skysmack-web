@@ -1,20 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { RecurringAssignment, RecurringAssignmentsAppState, ASSIGNMENTS_SCHEDULES_AREA_KEY } from '@skysmack/packages-maintenance';
+import { AssignmentsSchedule, AssignmentsSchedulesAppState, ASSIGNMENTS_SCHEDULES_AREA_KEY } from '@skysmack/packages-maintenance';
 import { EntityComponentPageTitle, MenuItemActionProviders, MENU_ITEM_ACTIONS_EDIT, MENU_ITEM_ACTIONS_DELETE } from '@skysmack/portal-ui';
 import { MenuItem } from '@skysmack/framework';
-import { NgRecurringAssignmentsActions, NgRecurringAssignmentsStore } from '@skysmack/ng-maintenance';
-import { NgRecurringAssignmentsFieldsConfig } from '../../ng-recurring-assignments-fields-config';
+import { NgAssignmentsSchedulesActions, NgAssignmentsSchedulesStore } from '@skysmack/ng-maintenance';
+import { NgAssignmentsSchedulesFieldsConfig } from '../../ng-assignments-schedules-fields-config';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { RecordIndexComponent } from '@skysmack/portal-fields';
 
 @Component({
-  selector: 'ss-recurring-assignments-index',
-  templateUrl: './recurring-assignments-index.component.html'
+  selector: 'ss-assignments-schedules-index',
+  templateUrl: './assignments-schedules-index.component.html'
 })
-export class RecurringAssignmentsIndexComponent extends RecordIndexComponent<RecurringAssignmentsAppState, RecurringAssignment, number> implements OnInit {
-  public static COMPONENT_KEY = 'recurring-assignments-index';
-  public componentKey = RecurringAssignmentsIndexComponent.COMPONENT_KEY;
+export class AssignmentsSchedulesIndexComponent extends RecordIndexComponent<AssignmentsSchedulesAppState, AssignmentsSchedule, number> implements OnInit {
+  public static COMPONENT_KEY = 'assignments-schedules-index';
+  public componentKey = AssignmentsSchedulesIndexComponent.COMPONENT_KEY;
 
   public areaKey: string = ASSIGNMENTS_SCHEDULES_AREA_KEY;
   public titleExtras = true;
@@ -26,10 +26,10 @@ export class RecurringAssignmentsIndexComponent extends RecordIndexComponent<Rec
   constructor(
     public router: Router,
     public activatedRoute: ActivatedRoute,
-    public actions: NgRecurringAssignmentsActions,
+    public actions: NgAssignmentsSchedulesActions,
     public redux: NgSkysmackStore,
-    public store: NgRecurringAssignmentsStore,
-    public fieldsConfig: NgRecurringAssignmentsFieldsConfig,
+    public store: NgAssignmentsSchedulesStore,
+    public fieldsConfig: NgAssignmentsSchedulesFieldsConfig,
     public menuItemActionProviders: MenuItemActionProviders,
     public title: EntityComponentPageTitle
 

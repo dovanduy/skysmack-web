@@ -864,6 +864,39 @@
 			"ERROR": "An error occured with {{ description }}. Correct and try again."
 		}
 	},
+	"INVOICES_PRODUCTS": {
+		"FORM": {
+			"LABELS": {
+				"INVOICEID": "Invoice",
+				"PRODUCTID": "Product",
+				"AMOUNT": "Amount"
+			},
+			"PLACEHOLDERS": {
+				"INVOICEID": "Invoice",
+				"PRODUCTID": "Product",
+				"AMOUNT": "Amount"
+			},
+			"VALIDATION": {
+				"INVOICEID": {
+					"REQUIRED": "Invoice is required."
+				},
+				"PRODUCTID": {
+					"REQUIRED": "Product is required."
+				},
+				"AMOUNT": {
+					"REQUIRED": "Amount is required."
+				}
+			}
+		},
+		"ADD_TO_INVOICE": {
+			"TITLE": "Add to invoice",
+			"SUBMIT": "Submit"
+		},
+		"ADD_PRODUCTS": {
+			"TITLE": "Add products",
+			"SUBMIT": "Submit"
+		}
+	},
 	"INVOICES_CASH_PAYMENTS": {
 		"FORM": {
 			"LABELS": {
@@ -927,212 +960,6 @@
 			"ENTITY_ACTION": {
 				"CASH_PAYMENT": "Cash payment"
 			}
-		}
-	},
-	"INVOICES_PRODUCTS": {
-		"FORM": {
-			"LABELS": {
-				"INVOICEID": "Invoice",
-				"PRODUCTID": "Product",
-				"AMOUNT": "Amount"
-			},
-			"PLACEHOLDERS": {
-				"INVOICEID": "Invoice",
-				"PRODUCTID": "Product",
-				"AMOUNT": "Amount"
-			},
-			"VALIDATION": {
-				"INVOICEID": {
-					"REQUIRED": "Invoice is required."
-				},
-				"PRODUCTID": {
-					"REQUIRED": "Product is required."
-				},
-				"AMOUNT": {
-					"REQUIRED": "Amount is required."
-				}
-			}
-		},
-		"ADD_TO_INVOICE": {
-			"TITLE": "Add to invoice",
-			"SUBMIT": "Submit"
-		},
-		"ADD_PRODUCTS": {
-			"TITLE": "Add products",
-			"SUBMIT": "Submit"
-		}
-	},
-	"LODGING_RESERVATIONS": {
-		"ARRIVALS": {
-			"TITLE": "Arrivals",
-			"TITLE_EXTRAS": "(arrivals)"
-		},
-		"DEPARTURES": {
-			"TITLE": "Departures",
-			"TITLE_EXTRAS": "(departures)"
-		},
-		"STAYS": {
-			"TITLE": "Stays",
-			"TITLE_EXTRAS": "(stays)"
-		},
-		"FORM": {
-			"LABELS": {
-				"LODGINGTYPEID": "Lodging type",
-				"ALLOCATEDLODGINGID": "Allocated lodging",
-				"CHECKIN": "Check in",
-				"CHECKOUT": "Check out",
-				"PERSONS": "Persons",
-				"STATUS": "Status"
-			},
-			"PLACEHOLDERS": {
-				"LODGINGTYPEID": "Choose lodging type",
-				"ALLOCATEDLODGINGID": "Choose allocated lodging",
-				"CHECKIN": "Choose check in date",
-				"CHECKOUT": "Choose check out date",
-				"PERSONS": "Choose number of persons",
-				"STATUS": "Status"
-			},
-			"VALIDATION": {
-				"LODGINGTYPEID": {
-					"REQUIRED": "Lodging type is required."
-				},
-				"ALLOCATEDLODGINGID": {
-					"REQUIRED": "Allocated room is required."
-				},
-				"CHECKIN": {
-					"REQUIRED": "Check in is required."
-				},
-				"CHECKOUT": {
-					"REQUIRED": "Check out is required."
-				},
-				"PERSONS": {
-					"REQUIRED": "Persons is required."
-				}
-			}
-		},
-		"CREATE": {
-			"CREATE": "Create",
-			"BUTTON_CREATE": "Create"
-		},
-		"EDIT": {
-			"EDIT": "Edit",
-			"BUTTON_EDIT": "Update"
-		},
-		"INDEX": {
-			"CREATE": "Create",
-			"EDIT": "Edit",
-			"DELETE": "Delete",
-			"FIELDS": "Fields",
-			"FIELDS_TITLE": "(fields)",
-			"ITEM": "Item",
-			"MANAGE": "Manage",
-			"ACTIONS": "Actions",
-			"STAYS": "Stays",
-			"RESERVATIONS": "Reservations",
-			"ARRIVALS": "Arrivals",
-			"SETTINGS": "Settings",
-			"DEPARTURES": "Departures",
-			"ALL": "All",
-			"GROUP_RESERVATIONS": "Group reservations"
-		},
-		"QUEUE": {
-			"ADDING": "Adding lodging reservation {{ id }}",
-			"UPDATING": "Updating lodging reservation {{ id }}",
-			"DELETING": "Deleting lodging reservation {{ id }}",
-			"ERROR": "An error occured with lodging reservation {{ id }}. Correct and try again."
-		},
-		"ENTITY_ACTIONS": {
-			"CHECKIN": "Checkin",
-			"UNDOCHECKIN": "Undo checkin",
-			"CHECKOUT": "Checkout",
-			"UNDOCHECKOUT": "Undo checkout",
-			"CANCEL": "Cancel",
-			"UNDOCANCEL": "Undo Cancel",
-			"MOVE": "Move",
-			"UNDOMOVE": "Undo move",
-			"NOSHOW": "No show",
-			"UNDONOSHOW": "Undo no show"
-		}
-	},
-	"LODGING_RESERVATIONS_SETTINGS": {
-		"FORM": {
-			"LABELS": {
-				"EARLIESTCHECKIN": "Earliest check in",
-				"LATESTCHECKOUT": "Latest check out"
-			},
-			"PLACEHOLDERS": {
-				"EARLIESTCHECKIN": "Earliest check in",
-				"LATESTCHECKOUT": "Latest check out"
-			},
-			"VALIDATION": {
-				"EARLIESTCHECKIN": {
-					"REQUIRED": "Earliest check in is required"
-				},
-				"LATESTCHECKOUT": {
-					"REQUIRED": "Latest check out is required"
-				}
-			}
-		}
-	},
-	"LODGING_SELECT_FIELD": {
-		"SELECT_LODGING": "Select lodging"
-	},
-	"LODGING_TYPE_SELECT_FIELD": {
-		"SELECT_LODGING_TYPE": "Select a lodging type"
-	},
-	"LODGING_SELECT_DIALOG": {
-		"AVAILABLE": "Available",
-		"UNAVAILABLE": "Unavailable",
-		"CANCEL": "Cancel",
-		"DONE": "Done",
-		"CHOOSE_LODGING_TYPE": "Choose a lodging type",
-		"CHOOSE_LODGING": "Choose a lodging"
-	},
-	"LODGING_TYPE_SELECT_DIALOG": {
-		"SELECT_LODGING_TYPE": "Select a lodging type",
-		"AVAILABLE": " available",
-		"PRICE_VIA": "Price via ",
-		"CANCEL": "Cancel",
-		"DONE": "Done",
-		"CHOOSE_LODGING_TYPE": "Choose a lodging type"
-	},
-	"GROUP_RESERVATIONS": {
-		"CREATE": {
-			"CREATE": "Create",
-			"BUTTON_CREATE": "Create"
-		},
-		"EDIT": {
-			"EDIT": "Edit",
-			"BUTTON_EDIT": "Update"
-		},
-		"INDEX": {
-			"TITLE_EXTRAS": "(groups)",
-			"ACTIONS": "Actions",
-			"CREATE": "Create",
-			"DELETE": "Delete",
-			"MANAGE": "Manage",
-			"FIELDS": "Fields",
-			"FIELDS_TITLE": "(group fields)",
-			"BACK": "Back"
-		},
-		"FORM": {
-			"LABELS": {
-				"NAME": "Name"
-			},
-			"PLACEHOLDERS": {
-				"NAME": "Enter name"
-			},
-			"VALIDATION": {
-				"NAME": {
-					"REQUIRED": "Name is required."
-				}
-			}
-		},
-		"QUEUE": {
-			"ADDING": "Adding {{ name }}",
-			"UPDATING": "Updating {{ name }}",
-			"DELETING": "Deleting {{ name }}",
-			"ERROR": "An error occured with {{ name }}. Correct and try again."
 		}
 	},
 	"LODGING_SETTINGS": {
@@ -1294,19 +1121,192 @@
 		"SELECT_LODGINGS": "Select lodgings",
 		"TITLE": "Lodgings Availability"
 	},
+	"GROUP_RESERVATIONS": {
+		"CREATE": {
+			"CREATE": "Create",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDIT": "Edit",
+			"BUTTON_EDIT": "Update"
+		},
+		"INDEX": {
+			"TITLE_EXTRAS": "(groups)",
+			"ACTIONS": "Actions",
+			"CREATE": "Create",
+			"DELETE": "Delete",
+			"MANAGE": "Manage",
+			"FIELDS": "Fields",
+			"FIELDS_TITLE": "(group fields)",
+			"BACK": "Back"
+		},
+		"FORM": {
+			"LABELS": {
+				"NAME": "Name"
+			},
+			"PLACEHOLDERS": {
+				"NAME": "Enter name"
+			},
+			"VALIDATION": {
+				"NAME": {
+					"REQUIRED": "Name is required."
+				}
+			}
+		},
+		"QUEUE": {
+			"ADDING": "Adding {{ name }}",
+			"UPDATING": "Updating {{ name }}",
+			"DELETING": "Deleting {{ name }}",
+			"ERROR": "An error occured with {{ name }}. Correct and try again."
+		}
+	},
+	"LODGING_RESERVATIONS": {
+		"ARRIVALS": {
+			"TITLE": "Arrivals",
+			"TITLE_EXTRAS": "(arrivals)"
+		},
+		"DEPARTURES": {
+			"TITLE": "Departures",
+			"TITLE_EXTRAS": "(departures)"
+		},
+		"STAYS": {
+			"TITLE": "Stays",
+			"TITLE_EXTRAS": "(stays)"
+		},
+		"FORM": {
+			"LABELS": {
+				"LODGINGTYPEID": "Lodging type",
+				"ALLOCATEDLODGINGID": "Allocated lodging",
+				"CHECKIN": "Check in",
+				"CHECKOUT": "Check out",
+				"PERSONS": "Persons",
+				"STATUS": "Status"
+			},
+			"PLACEHOLDERS": {
+				"LODGINGTYPEID": "Choose lodging type",
+				"ALLOCATEDLODGINGID": "Choose allocated lodging",
+				"CHECKIN": "Choose check in date",
+				"CHECKOUT": "Choose check out date",
+				"PERSONS": "Choose number of persons",
+				"STATUS": "Status"
+			},
+			"VALIDATION": {
+				"LODGINGTYPEID": {
+					"REQUIRED": "Lodging type is required."
+				},
+				"ALLOCATEDLODGINGID": {
+					"REQUIRED": "Allocated room is required."
+				},
+				"CHECKIN": {
+					"REQUIRED": "Check in is required."
+				},
+				"CHECKOUT": {
+					"REQUIRED": "Check out is required."
+				},
+				"PERSONS": {
+					"REQUIRED": "Persons is required."
+				}
+			}
+		},
+		"CREATE": {
+			"CREATE": "Create",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDIT": "Edit",
+			"BUTTON_EDIT": "Update"
+		},
+		"INDEX": {
+			"CREATE": "Create",
+			"EDIT": "Edit",
+			"DELETE": "Delete",
+			"FIELDS": "Fields",
+			"FIELDS_TITLE": "(fields)",
+			"ITEM": "Item",
+			"MANAGE": "Manage",
+			"ACTIONS": "Actions",
+			"STAYS": "Stays",
+			"RESERVATIONS": "Reservations",
+			"ARRIVALS": "Arrivals",
+			"SETTINGS": "Settings",
+			"DEPARTURES": "Departures",
+			"ALL": "All",
+			"GROUP_RESERVATIONS": "Group reservations"
+		},
+		"QUEUE": {
+			"ADDING": "Adding lodging reservation {{ id }}",
+			"UPDATING": "Updating lodging reservation {{ id }}",
+			"DELETING": "Deleting lodging reservation {{ id }}",
+			"ERROR": "An error occured with lodging reservation {{ id }}. Correct and try again."
+		},
+		"ENTITY_ACTIONS": {
+			"CHECKIN": "Checkin",
+			"UNDOCHECKIN": "Undo checkin",
+			"CHECKOUT": "Checkout",
+			"UNDOCHECKOUT": "Undo checkout",
+			"CANCEL": "Cancel",
+			"UNDOCANCEL": "Undo Cancel",
+			"MOVE": "Move",
+			"UNDOMOVE": "Undo move",
+			"NOSHOW": "No show",
+			"UNDONOSHOW": "Undo no show"
+		}
+	},
+	"LODGING_RESERVATIONS_SETTINGS": {
+		"FORM": {
+			"LABELS": {
+				"EARLIESTCHECKIN": "Earliest check in",
+				"LATESTCHECKOUT": "Latest check out"
+			},
+			"PLACEHOLDERS": {
+				"EARLIESTCHECKIN": "Earliest check in",
+				"LATESTCHECKOUT": "Latest check out"
+			},
+			"VALIDATION": {
+				"EARLIESTCHECKIN": {
+					"REQUIRED": "Earliest check in is required"
+				},
+				"LATESTCHECKOUT": {
+					"REQUIRED": "Latest check out is required"
+				}
+			}
+		}
+	},
+	"LODGING_SELECT_FIELD": {
+		"SELECT_LODGING": "Select lodging"
+	},
+	"LODGING_TYPE_SELECT_FIELD": {
+		"SELECT_LODGING_TYPE": "Select a lodging type"
+	},
+	"LODGING_SELECT_DIALOG": {
+		"AVAILABLE": "Available",
+		"UNAVAILABLE": "Unavailable",
+		"CANCEL": "Cancel",
+		"DONE": "Done",
+		"CHOOSE_LODGING_TYPE": "Choose a lodging type",
+		"CHOOSE_LODGING": "Choose a lodging"
+	},
+	"LODGING_TYPE_SELECT_DIALOG": {
+		"SELECT_LODGING_TYPE": "Select a lodging type",
+		"AVAILABLE": " available",
+		"PRICE_VIA": "Price via ",
+		"CANCEL": "Cancel",
+		"DONE": "Done",
+		"CHOOSE_LODGING_TYPE": "Choose a lodging type"
+	},
 	"ASSIGNMENT_TYPES": {
 		"FORM": {
 			"LABELS": {
-				"STATEID": "State",
 				"DESCRIPTION": "Description",
-				"EXPRESSION": "Expression",
-				"DUEPERIOD": "Due date"
+				"STATEID": "State",
+				"DUEPERIOD": "Due date",
+				"EXPRESSION": "Expression"
 			},
 			"PLACEHOLDERS": {
 				"STATEID": "Choose state",
 				"DESCRIPTION": "Enter description",
-				"EXPRESSION": "Enter expression",
-				"DUEPERIOD": "Choose due date"
+				"DUEPERIOD": "Choose due date",
+				"EXPRESSION": "Enter expression"
 			},
 			"VALIDATION": {
 				"STATEID": {
@@ -1315,11 +1315,11 @@
 				"DESCRIPTION": {
 					"REQUIRED": "Description is required."
 				},
-				"EXPRESSION": {
-					"REQUIRED": "Expression is required."
-				},
 				"DUEPERIOD": {
 					"REQUIRED": "Due date is required."
+				},
+				"EXPRESSION": {
+					"REQUIRED": "Expression is required."
 				}
 			},
 			"BUTTONS": {
@@ -1348,6 +1348,17 @@
 			"ENTITIES": "Entities"
 		},
 		"FIELDS": {
+			"INDEX": {
+				"ACTIONS": "Actions",
+				"CREATE": "Create",
+				"ASSIGNMENT_TYPES": "AssignmentTypes",
+				"FIELDS": "AssignmentType fields",
+				"OTHER": "Other",
+				"BACK": "Back"
+			},
+			"CREATE": {
+				"ADD": "Add field"
+			},
 			"FORM": {
 				"LABELS": {
 					"STATEID": "State",
@@ -1379,18 +1390,62 @@
 					"CREATE": "Create",
 					"EDIT": "Edit"
 				}
-			},
-			"INDEX": {
-				"ACTIONS": "Actions",
-				"CREATE": "Create",
-				"ASSIGNMENT_TYPES": "AssignmentTypes",
-				"FIELDS": "AssignmentType fields",
-				"OTHER": "Other",
-				"BACK": "Back"
-			},
-			"CREATE": {
-				"ADD": "Add field"
 			}
+		},
+		"QUEUE": {
+			"ADDING": "Adding {{ description }}",
+			"UPDATING": "Updating {{ description }}",
+			"DELETING": "Deleting {{ description }}",
+			"ERROR": "An error occured with {{ description }}. Correct and try again."
+		}
+	},
+	"ASSIGNMENTS_SCHEDULES": {
+		"FORM": {
+			"LABELS": {
+				"ASSIGNMENTTYPEID": "Assignment type",
+				"START": "Start date",
+				"END": "End date",
+				"EXPRESSION": "Expression"
+			},
+			"PLACEHOLDERS": {
+				"ASSIGNMENTTYPEID": "Assignment type",
+				"START": "Start date",
+				"END": "End date",
+				"EXPRESSION": "Expression"
+			},
+			"VALIDATION": {
+				"ASSIGNMENTTYPEID": {
+					"REQUIRED": "Assignment type is required."
+				},
+				"START": {
+					"REQUIRED": "Start date is required."
+				},
+				"END": {
+					"REQUIRED": "End date is required."
+				},
+				"EXPRESSION": {
+					"REQUIRED": "Expression is required."
+				}
+			}
+		},
+		"CREATE": {
+			"CREATE": "Create",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDIT": "Edit",
+			"BUTTON_EDIT": "Update"
+		},
+		"INDEX": {
+			"TITLE_EXTRAS": "(recurring assignments)",
+			"ACTIONS": "Actions",
+			"CREATE": "Create",
+			"EDIT": "Edit",
+			"DELETE": "Delete",
+			"MANAGE": "Manage",
+			"FIELDS": "Fields",
+			"STATES": "States",
+			"BACK": "Back"
 		},
 		"QUEUE": {
 			"ADDING": "Adding {{ description }}",
@@ -1452,61 +1507,6 @@
 			"BACK": "Back"
 		},
 		"MANAGE": {
-			"BACK": "Back"
-		},
-		"QUEUE": {
-			"ADDING": "Adding {{ description }}",
-			"UPDATING": "Updating {{ description }}",
-			"DELETING": "Deleting {{ description }}",
-			"ERROR": "An error occured with {{ description }}. Correct and try again."
-		}
-	},
-	"RECURRING_ASSIGNMENTS": {
-		"FORM": {
-			"LABELS": {
-				"ASSIGNMENTTYPEID": "Assignment type",
-				"ENTITYID": "Entity",
-				"START": "Start date",
-				"END": "End date"
-			},
-			"PLACEHOLDERS": {
-				"ASSIGNMENTTYPEID": "Assignment type",
-				"ENTITYID": "Entity",
-				"START": "Start date",
-				"END": "End date"
-			},
-			"VALIDATION": {
-				"ASSIGNMENTTYPEID": {
-					"REQUIRED": "Assignment type is required."
-				},
-				"ENTITYID": {
-					"REQUIRED": "Entity is required."
-				},
-				"START": {
-					"REQUIRED": "Start date is required."
-				},
-				"END": {
-					"REQUIRED": "End date is required."
-				}
-			}
-		},
-		"CREATE": {
-			"CREATE": "Create",
-			"BUTTON_CREATE": "Create"
-		},
-		"EDIT": {
-			"EDIT": "Edit",
-			"BUTTON_EDIT": "Update"
-		},
-		"INDEX": {
-			"TITLE_EXTRAS": "(recurring assignments)",
-			"ACTIONS": "Actions",
-			"CREATE": "Create",
-			"EDIT": "Edit",
-			"DELETE": "Delete",
-			"MANAGE": "Manage",
-			"FIELDS": "Fields",
-			"STATES": "States",
 			"BACK": "Back"
 		},
 		"QUEUE": {
@@ -3060,6 +3060,61 @@
 			"UPDATING": "Updating settings",
 			"DELETING": "Deleting settings",
 			"ERROR": "An error occured with settings. Correct and try again."
+		}
+	},
+	"RECURRING_ASSIGNMENTS": {
+		"FORM": {
+			"LABELS": {
+				"ASSIGNMENTTYPEID": "Assignment type",
+				"ENTITYID": "Entity",
+				"START": "Start date",
+				"END": "End date"
+			},
+			"PLACEHOLDERS": {
+				"ASSIGNMENTTYPEID": "Assignment type",
+				"ENTITYID": "Entity",
+				"START": "Start date",
+				"END": "End date"
+			},
+			"VALIDATION": {
+				"ASSIGNMENTTYPEID": {
+					"REQUIRED": "Assignment type is required."
+				},
+				"ENTITYID": {
+					"REQUIRED": "Entity is required."
+				},
+				"START": {
+					"REQUIRED": "Start date is required."
+				},
+				"END": {
+					"REQUIRED": "End date is required."
+				}
+			}
+		},
+		"CREATE": {
+			"CREATE": "Create",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDIT": "Edit",
+			"BUTTON_EDIT": "Update"
+		},
+		"INDEX": {
+			"TITLE_EXTRAS": "(recurring assignments)",
+			"ACTIONS": "Actions",
+			"CREATE": "Create",
+			"EDIT": "Edit",
+			"DELETE": "Delete",
+			"MANAGE": "Manage",
+			"FIELDS": "Fields",
+			"STATES": "States",
+			"BACK": "Back"
+		},
+		"QUEUE": {
+			"ADDING": "Adding {{ description }}",
+			"UPDATING": "Updating {{ description }}",
+			"DELETING": "Deleting {{ description }}",
+			"ERROR": "An error occured with {{ description }}. Correct and try again."
 		}
 	},
 	"FILE_STORAGE": {

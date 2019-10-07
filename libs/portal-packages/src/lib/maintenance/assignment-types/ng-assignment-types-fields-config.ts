@@ -55,17 +55,8 @@ export class NgAssignmentTypesFieldsConfig extends FieldsConfig<AssignmentType, 
                 validators: [Validators.required],
                 order: 3,
                 sortable: true
-            }),
-
-            new Field({
-                component: RecurringExpressionFieldComponent,
-                value: entity ? entity.object.expression : undefined,
-                key: 'expression',
-                order: 4,
-                sortable: true
-            }),
+            })
         ];
-
 
 
         // Id field must only be added for edit forms.

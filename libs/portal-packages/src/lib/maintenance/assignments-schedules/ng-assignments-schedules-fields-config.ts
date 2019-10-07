@@ -1,16 +1,16 @@
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { LocalObject, LocalObjectStatus, PagedQuery } from '@skysmack/framework';
-import { RecurringAssignment, ASSIGNMENTS_SCHEDULES_AREA_KEY, ASSIGNMENTS_SCHEDULES_ADDITIONAL_PATHS } from '@skysmack/packages-maintenance';
-import { NgRecurringAssignmentsValidation, NgAssignmentTypesStore, NgAssignmentTypesActions } from '@skysmack/ng-maintenance';
+import { AssignmentsSchedule, ASSIGNMENTS_SCHEDULES_AREA_KEY, ASSIGNMENTS_SCHEDULES_ADDITIONAL_PATHS } from '@skysmack/packages-maintenance';
+import { NgAssignmentsSchedulesValidation, NgAssignmentTypesStore, NgAssignmentTypesActions } from '@skysmack/ng-maintenance';
 import { FormRule, SelectField, Field } from '@skysmack/ng-dynamic-forms';
 import { LoadedPackage } from '@skysmack/ng-framework';
 import { FieldsConfig, FieldProviders } from '@skysmack/ng-fields';
-import { SelectFieldComponent, DateFieldComponent, HiddenFieldComponent } from '@skysmack/portal-fields';
+import { SelectFieldComponent, DateFieldComponent, HiddenFieldComponent, RecurringExpressionFieldComponent } from '@skysmack/portal-fields';
 
 @Injectable({ providedIn: 'root' })
-export class NgRecurringAssignmentsFieldsConfig extends FieldsConfig<RecurringAssignment, number> {
-    public validation = new NgRecurringAssignmentsValidation();
+export class NgAssignmentsSchedulesFieldsConfig extends FieldsConfig<AssignmentsSchedule, number> {
+    public validation = new NgAssignmentsSchedulesValidation();
     public area = ASSIGNMENTS_SCHEDULES_AREA_KEY;
     public formRules: FormRule[] = [];
 
@@ -22,7 +22,7 @@ export class NgRecurringAssignmentsFieldsConfig extends FieldsConfig<RecurringAs
         super(fieldProviders, ASSIGNMENTS_SCHEDULES_ADDITIONAL_PATHS);
     }
 
-    protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<RecurringAssignment, number>): Field[] {
+    protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<AssignmentsSchedule, number>): Field[] {
         const fields = [
             new SelectField({
                 component: SelectFieldComponent,
@@ -44,7 +44,7 @@ export class NgRecurringAssignmentsFieldsConfig extends FieldsConfig<RecurringAs
                 value: entity ? entity.object.start : undefined,
                 key: 'start',
                 label: 'Start',
-                validators: [Validators.required],
+                validators: [],
                 order: 3,
                 showColumn: true,
                 sortable: true
@@ -55,9 +55,17 @@ export class NgRecurringAssignmentsFieldsConfig extends FieldsConfig<RecurringAs
                 value: entity ? entity.object.end : undefined,
                 key: 'end',
                 label: 'End',
-                validators: [Validators.required],
+                validators: [],
                 order: 5,
                 showColumn: true,
+                sortable: true
+            }),
+
+            new Field({
+                component: RecurringExpressionFieldComponent,
+                value: entity ? entity.object.expression : undefined,
+                key: 'expression',
+                order: 4,
                 sortable: true
             })
         ];
