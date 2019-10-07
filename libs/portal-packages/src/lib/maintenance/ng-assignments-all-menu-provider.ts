@@ -138,6 +138,26 @@ export class NgAssignmentAllMenuProvider implements MenuProvider {
                 permissions: [
                 ],
                 providedIn: [SIDEBAR]
+            }),
+            new MenuItem({
+                url: 'assignments/types',
+                displayName: this.AssignmentsAllTranslationPrefix + 'TYPES',
+                area: 'manage',
+                order: 2,
+                icon: 'description',
+                permissions: [
+                ],
+                providedIn: [SIDEBAR]
+            }),
+            new MenuItem({
+                url: 'states',
+                displayName: this.AssignmentsAllTranslationPrefix + 'STATES',
+                area: 'manage',
+                order: 1,
+                icon: 'short_text',
+                permissions: [
+                ],
+                providedIn: [SIDEBAR]
             })
         ];
     };
@@ -155,26 +175,6 @@ export class NgAssignmentAllMenuProvider implements MenuProvider {
                 ],
                 providedIn: [SIDEBAR, SPEEDDIAL]
             }),
-            new MenuItem({
-                url: 'types',
-                displayName: this.SingleAssignmentsTranslationPrefix + 'TYPES',
-                area: 'manage',
-                order: 2,
-                icon: 'description',
-                permissions: [
-                ],
-                providedIn: [SIDEBAR]
-            }),
-            new MenuItem({
-                url: 'maintenance-states',
-                displayName: this.SingleAssignmentsTranslationPrefix + 'STATES',
-                area: 'manage',
-                order: 1,
-                icon: 'short_text',
-                permissions: [
-                ],
-                providedIn: [SIDEBAR]
-            }),
             setBackButton(packagePath)
         ];
     };
@@ -191,7 +191,7 @@ export class NgAssignmentAllMenuProvider implements MenuProvider {
                 ],
                 providedIn: [SIDEBAR, SPEEDDIAL]
             }),
-            setBackButton(`${packagePath}/assignments`)
+            setBackButton(`${packagePath}`)
         ];
     };
 
@@ -207,7 +207,7 @@ export class NgAssignmentAllMenuProvider implements MenuProvider {
                 ],
                 providedIn: [SIDEBAR, SPEEDDIAL]
             }),
-            setBackButton(`${packagePath}/assignments`)
+            setBackButton(`${packagePath}`)
         ];
     };
 

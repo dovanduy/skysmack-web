@@ -44,7 +44,6 @@
             "DELETE": "Delete",
             "MANAGE": "Manage",
             "FIELDS": "Fields",
-            "STATES": "States",
             "BACK": "Back"
         },
         "QUEUE": {

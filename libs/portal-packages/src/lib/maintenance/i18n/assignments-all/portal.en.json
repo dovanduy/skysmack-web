@@ -5,7 +5,8 @@
             "INDEX": {
                 "SINGLE_ASSIGNMENTS": "Single assignments",
                 "RECURRING_ASSIGNMENTS": "Scheduled assignments",
-                "MANAGE": "Manage"
+                "TYPES": "Assignment types",
+                "STATES": "Maintenance states"
             }
         }
     }
