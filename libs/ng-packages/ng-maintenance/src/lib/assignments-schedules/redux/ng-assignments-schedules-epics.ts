@@ -1,18 +1,18 @@
 import { RecordEpicsBase } from '@skysmack/ng-framework';
-import { RecurringAssignment, ASSIGNMENTS_SCHEDULES_REDUX_KEY } from '@skysmack/packages-maintenance';
-import { NgRecurringAssignmentsRequests } from './ng-recurring-assignments-requests';
+import { AssignmentsSchedule, ASSIGNMENTS_SCHEDULES_REDUX_KEY } from '@skysmack/packages-maintenance';
+import { NgAssignmentsSchedulesRequests } from './ng-assignments-schedules-requests';
 import { Injectable } from '@angular/core';
-import { NgRecurringAssignmentsNotifications } from '../ng-recurring-assignments-notifications';
+import { NgAssignmentsSchedulesNotifications } from '../ng-assignments-schedules-notifications';
 import { NgAssignmentTypesActions } from '../../assignment-types/redux/ng-assignment-types-actions';
 import { NgAssignmentTypesStore } from '../../assignment-types/redux/ng-assignment-types-store';
 import { getReadDependencies } from '@skysmack/ng-framework';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 
 @Injectable({ providedIn: 'root' })
-export class NgRecurringAssignmentsEpics extends RecordEpicsBase<RecurringAssignment, number> {
+export class NgAssignmentsSchedulesEpics extends RecordEpicsBase<AssignmentsSchedule, number> {
     constructor(
-        protected requests: NgRecurringAssignmentsRequests,
-        protected notifications: NgRecurringAssignmentsNotifications,
+        protected requests: NgAssignmentsSchedulesRequests,
+        protected notifications: NgAssignmentsSchedulesNotifications,
         protected assignmentTypesStore: NgAssignmentTypesStore,
         protected assignmentTypesActions: NgAssignmentTypesActions,
         protected skysmackStore: NgSkysmackStore

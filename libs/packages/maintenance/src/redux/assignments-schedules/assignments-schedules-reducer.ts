@@ -15,7 +15,7 @@ export class AssignmentsScheduleState implements RecordState<AssignmentsSchedule
     public localRecords: StrIndex<StrIndex<LocalObject<AssignmentsSchedule, number>>> = {};
 }
 
-export function assignmentsSchedules(state = new AssignmentsScheduleState(), action: ReduxAction, prefix: string = ASSIGNMENTS_SCHEDULES_REDUX_KEY): AssignmentsScheduleState {
+export function assignmentsSchedulesReducer(state = new AssignmentsScheduleState(), action: ReduxAction, prefix: string = ASSIGNMENTS_SCHEDULES_REDUX_KEY): AssignmentsScheduleState {
     state = sharedReducer(state, action, new AssignmentsScheduleState(), ASSIGNMENTS_SCHEDULES_REDUCER_KEY);
     switch (action.type) {
         default:

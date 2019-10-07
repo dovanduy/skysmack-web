@@ -2,20 +2,16 @@ import { StrIndex } from '@skysmack/framework';
 import { Validation } from '@skysmack/ng-dynamic-forms';
 import { ASSIGNMENTS_SCHEDULES_AREA_KEY } from '@skysmack/packages-maintenance';
 
-export class NgRecurringAssignmentsValidation extends Validation {
+export class NgAssignmentsSchedulesValidation extends Validation {
     public formErrors = {
         assignmentTypeId: '',
-        description: '',
-        status: '',
-        due: '',
-        from: '',
+        start: '',
+        end: '',
+        expression: ''
     };
 
     public validationMessages: StrIndex<{}> = {
         assignmentTypeId: {
-            required: '',
-        },
-        entityId: {
             required: '',
         },
         start: {
@@ -24,7 +20,7 @@ export class NgRecurringAssignmentsValidation extends Validation {
         end: {
             required: '',
         },
-        id: {
+        expression: {
             required: '',
         }
     };
