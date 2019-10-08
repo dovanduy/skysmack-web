@@ -23,8 +23,15 @@ export function assignmentsReducer(state = new AssignmentsState(), action: Redux
     switch (action.type) {
         case AssignmentsActions.ASSIGNMENTS_GET_SUCCESS: {
             // TODO: Replace any
-            const castedAction = action as ReduxAction<any>;
-            newState.localRecords[castedAction.payload.packagePath] = LocalObjectExtensions.mergeOrAddLocal(newState.localRecords[castedAction.payload.packagePath], castedAction.payload.entities.map(x => toLocalObject(x, undefined)));
+            try {
+                const castedAction = action as ReduxAction<any>;
+                console.log('3: ', castedAction);
+                newState.localRecords[castedAction.payload.packagePath] = LocalObjectExtensions.mergeOrAddLocal(newState.localRecords[castedAction.payload.packagePath], castedAction.payload.entities.map(x => toLocalObject(x, undefined)));
+            } catch (error) {
+                console.error('error: ', error)
+            }
+
+            return newState;
         }
         case AssignmentsActions.ASSIGNMENTS_GET_FAILURE: {
             const castedAction = action as ReduxAction<HttpErrorResponse>;

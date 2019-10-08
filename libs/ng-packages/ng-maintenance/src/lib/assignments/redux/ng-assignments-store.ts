@@ -13,7 +13,7 @@ export class NgAssignmentsStore {
         protected skysmackStore: NgSkysmackStore
     ) { }
 
-    protected getRecords(packagePath: string): Observable<LocalObject<Assignment, unknown>[]> {
+    public get(packagePath: string): Observable<LocalObject<Assignment, unknown>[]> {
         return this.getState().pipe(
             map(state => state.localRecords[packagePath]),
             safeUndefinedTo('object'),

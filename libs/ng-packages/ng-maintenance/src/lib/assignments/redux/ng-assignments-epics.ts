@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { HttpErrorResponse } from '@skysmack/framework';
 import { mergeMap } from 'rxjs/operators';
 import { NgAssignmentsRequests } from './ng-assignments-requests';
+import { AssignmentsActions } from 'libs/packages/maintenance/src';
 
 @Injectable({ providedIn: 'root' })
 export class NgAssignmentsEpics {
@@ -19,9 +20,8 @@ export class NgAssignmentsEpics {
 
     public getEpic = (action$: ActionsObservable<ReduxAction<{ packagePath: string, from: Date, to: Date }>>): Observable<ReduxAction<any> | ReduxAction<HttpErrorResponse>> => {
         return action$.pipe(
-            ofType(),
+            ofType(AssignmentsActions.ASSIGNMENTS_GET),
             mergeMap(action => this.requests.get(action)),
         );
     }
-
 }
