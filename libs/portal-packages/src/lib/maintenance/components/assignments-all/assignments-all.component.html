@@ -1,2 +1,26 @@
 <ss-container [componentKey]="componentKey">
+    <!-- <ss-dynamic-form [fields$]="fields$" [validation]="fieldsConfig.validation" [rules]="fieldsConfig.formRules"
+        [removeSubmitButton]="true" [removeCloseButton]="true">
+    </ss-dynamic-form> -->
+
+    <div class="from-to">
+        <!-- From -->
+        <mat-form-field>
+            <input matInput [value]="" (dateInput)="setFromDate($event.value)" [matDatepicker]="fromPicker"
+                placeholder="From date">
+            <mat-datepicker-toggle matSuffix [for]="fromPicker"></mat-datepicker-toggle>
+            <mat-datepicker touchUi #fromPicker></mat-datepicker>
+        </mat-form-field>
+
+        <!-- To -->
+        <mat-form-field>
+            <input matInput [value]="" (dateInput)="setToDate($event.value)" [matDatepicker]="toPicker"
+                placeholder="To date">
+            <mat-datepicker-toggle matSuffix [for]="toPicker"></mat-datepicker-toggle>
+            <mat-datepicker touchUi #toPicker></mat-datepicker>
+        </mat-form-field>
+    </div>
+
+    <!-- Get -->
+    <button mat-raised-button (click)="getAssignments()">Get assignments</button>
 </ss-container>
