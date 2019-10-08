@@ -5,7 +5,7 @@ import { AssignmentType } from './assignment-type';
 export class Assignment {
     public description: string;
     public status: AssignmentStatus;
-    public from: Date
+    public from: Date;
     public due: Date;
 
     public assignmentTypeId: number;

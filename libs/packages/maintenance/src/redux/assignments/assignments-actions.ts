@@ -10,10 +10,10 @@ export class AssignmentsActions {
         protected store: Store,
     ) { }
 
-    public get = (from: Date, to: Date) => {
-        this.store.dispatch(Object.assign({}, new ReduxAction<{ from: Date, to: Date }>({
+    public get = (packagePath: string, from: Date, to: Date) => {
+        this.store.dispatch(Object.assign({}, new ReduxAction<{ packagePath: string, from: Date, to: Date }>({
             type: AssignmentsActions.ASSIGNMENTS_GET,
-            payload: { from, to }
+            payload: { packagePath, from, to }
         })));
     }
 }

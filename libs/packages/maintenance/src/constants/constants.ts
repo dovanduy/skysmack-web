@@ -1,4 +1,6 @@
 // Ensure reducer key is the same as the reducer name without the "Reducer" part.
+export const ASSIGNMENTS_KEY = 'assignments';
+
 export const SINGLE_ASSIGNMENTS_REDUCER_KEY = 'singleAssignments';
 export const SINGLE_ASSIGNMENTS_AREA_KEY = 'single_assignments'; // validation, store, menu
 export const SINGLE_ASSIGNMENTS_REDUX_KEY = 'SINGLE_ASSIGNMENTS_'; // reducer prefix, action, epics, Requests
