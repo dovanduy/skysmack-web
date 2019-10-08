@@ -6,7 +6,7 @@ import { NgAssignmentTypesValidation, NgMaintenanceStatesStore, NgMaintenanceSta
 import { LoadedPackage } from '@skysmack/ng-framework';
 import { FormRule, Field, SelectField } from '@skysmack/ng-dynamic-forms';
 import { FieldsConfig, FieldProviders } from '@skysmack/ng-fields';
-import { SelectFieldComponent, StringFieldComponent, RecurringExpressionFieldComponent, HiddenFieldComponent } from '@skysmack/portal-fields';
+import { SelectFieldComponent, StringFieldComponent, HiddenFieldComponent } from '@skysmack/portal-fields';
 
 @Injectable({ providedIn: 'root' })
 export class NgAssignmentTypesFieldsConfig extends FieldsConfig<AssignmentType, number> {
