@@ -22,8 +22,7 @@ export class NgAssignmentsRequests {
                     return Object.assign({}, new ReduxAction<any>({
                         type: AssignmentsActions.ASSIGNMENTS_GET_SUCCESS,
                         payload: {
-                            ententitiesity: httpResponse.body,
-                            packagePath: action.payload.packagePath,
+                            entities: httpResponse.body,
                             ...action.payload
                         }
                     }));

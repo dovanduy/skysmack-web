@@ -1,5 +1,5 @@
 import { StrIndex, LocalObject, LocalObjectExtensions, toLocalObject, HttpErrorResponse, GlobalProperties } from '@skysmack/framework';
-import { AppState, ReduxAction, sharedReducer } from '@skysmack/redux';
+import { AppState, ReduxAction, sharedReducer, AuthenticationActions } from '@skysmack/redux';
 import { ASSIGNMENT_TYPES_REDUX_KEY, ASSIGNMENT_TYPES_REDUCER_KEY } from '../../constants';
 import { Assignment } from '../../models/assignment';
 import { AssignmentsActions } from './assignments-actions';
@@ -13,23 +13,20 @@ export class AssignmentsAppState extends AppState {
 }
 
 export class AssignmentsState {
-    public localRecords: StrIndex<StrIndex<LocalObject<Assignment, number>>> = {};
+    public localRecords: StrIndex<StrIndex<LocalObject<Assignment, number>[]>> = {};
 }
 
 export function assignmentsReducer(state = new AssignmentsState(), action: ReduxAction, prefix: string = ASSIGNMENT_TYPES_REDUX_KEY): AssignmentsState {
-    state = sharedReducer(state, action, new AssignmentsState(), ASSIGNMENT_TYPES_REDUCER_KEY);
     const newState = Object.assign({}, state);
 
     switch (action.type) {
         case AssignmentsActions.ASSIGNMENTS_GET_SUCCESS: {
-            // TODO: Replace any
-            try {
-                const castedAction = action as ReduxAction<any>;
-                console.log('3: ', castedAction);
-                newState.localRecords[castedAction.payload.packagePath] = LocalObjectExtensions.mergeOrAddLocal(newState.localRecords[castedAction.payload.packagePath], castedAction.payload.entities.map(x => toLocalObject(x, undefined)));
-            } catch (error) {
-                console.error('error: ', error)
+            const castedAction = action as ReduxAction<{ entities: Assignment[], packagePath: string, from: Date, to: Date }>;
+            const key = `${castedAction.payload.from}:${castedAction.payload.to}`
+            if (!newState.localRecords[castedAction.payload.packagePath]) {
+                newState.localRecords[castedAction.payload.packagePath] = {};
             }
+            newState.localRecords[castedAction.payload.packagePath][key] = castedAction.payload.entities.map(x => toLocalObject(x, undefined));
 
             return newState;
         }
@@ -39,6 +36,9 @@ export function assignmentsReducer(state = new AssignmentsState(), action: Redux
                 console.log('Error. Error Action:', castedAction);
             }
             return newState;
+        }
+        case AuthenticationActions.LOG_OUT: {
+            return new AssignmentsState();
         }
         default:
             return state;

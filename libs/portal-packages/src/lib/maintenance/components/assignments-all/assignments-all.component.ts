@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { MenuItem } from '@skysmack/framework';
+import { MenuItem, safeUndefinedTo } from '@skysmack/framework';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { EntityComponentPageTitle, MENU_ITEM_ACTIONS_EDIT } from '@skysmack/portal-ui';
 import { NgAssignmentsStore, NgAssignmentsActions } from '@skysmack/ng-maintenance';
-import { NgFromToFieldsConfig } from './ng-from-to-fields-config';
 import { Field } from '@skysmack/ng-dynamic-forms';
 import { Observable } from 'rxjs';
 import { DateOnlyAdapter2 } from './date-only-adapter2';
 import { DateAdapter } from '@angular/material/core';
+import { take, tap, map } from 'rxjs/operators';
 
 @Component({
   selector: 'ss-assignments-all',
@@ -35,18 +35,17 @@ export class AssignmentsAllIndexComponent implements OnInit {
     private assignmentsStore: NgAssignmentsStore,
     private assignmentsActions: NgAssignmentsActions,
     private title: EntityComponentPageTitle,
-    private fieldsConfig: NgFromToFieldsConfig
   ) { }
 
   ngOnInit() {
     this.title.setTitle('MAINTENANCE.ASSIGNMENT_ALL.TITLE');
     this.packagePath = this.router.url.split('/')[1];
 
-    // this.fields$ = this.fieldsConfig.getFields(undefined, undefined);
-    // TODO: Implement correctly when backend works
-    // this.assignmentsStore.get(packagePath).pipe(
-    //   tap((x) => console.log(x)),
-    // ).subscribe();
+    this.assignmentsStore.get(this.packagePath).pipe(
+      map(x => x[`${this.from}:${this.to}`]),
+      safeUndefinedTo('array'),
+      tap(x => console.log(x))
+    ).subscribe();
   }
 
   public setFromDate(currentValue: string): void {
@@ -58,7 +57,6 @@ export class AssignmentsAllIndexComponent implements OnInit {
   }
 
   public getAssignments(): void {
-    console.log(this.from, this.to);
     this.assignmentsActions.get(this.packagePath, this.from, this.to);
   }
 }
