@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { MenuItem, safeUndefinedTo } from '@skysmack/framework';
+import { MenuItem, safeUndefinedTo, LocalObject } from '@skysmack/framework';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { EntityComponentPageTitle, MENU_ITEM_ACTIONS_EDIT } from '@skysmack/portal-ui';
 import { NgAssignmentsStore, NgAssignmentsActions } from '@skysmack/ng-maintenance';
@@ -9,6 +9,7 @@ import { Observable } from 'rxjs';
 import { DateOnlyAdapter2 } from './date-only-adapter2';
 import { DateAdapter } from '@angular/material/core';
 import { take, tap, map } from 'rxjs/operators';
+import { Assignment } from 'libs/packages/maintenance/src';
 
 @Component({
   selector: 'ss-assignments-all',
@@ -19,9 +20,9 @@ import { take, tap, map } from 'rxjs/operators';
 export class AssignmentsAllIndexComponent implements OnInit {
   public static COMPONENT_KEY = 'assignments-all-index';
   public componentKey = AssignmentsAllIndexComponent.COMPONENT_KEY;
-  public fields$: Observable<Field[]>
+  public entities$: Observable<LocalObject<Assignment, unknown>[]>;
   private from: Date;
-  private to: Date;
+  private due: Date;
   private packagePath: string;
 
   public menuItemActions: MenuItem[] = [
@@ -41,22 +42,25 @@ export class AssignmentsAllIndexComponent implements OnInit {
     this.title.setTitle('MAINTENANCE.ASSIGNMENT_ALL.TITLE');
     this.packagePath = this.router.url.split('/')[1];
 
-    this.assignmentsStore.get(this.packagePath).pipe(
-      map(x => x[`${this.from}:${this.to}`]),
+    this.entities$ = this.assignmentsStore.get(this.packagePath).pipe(
+      map(x => x[`${this.from}:${this.due}`]),
       safeUndefinedTo('array'),
-      tap(x => console.log(x))
-    ).subscribe();
+    );
   }
 
   public setFromDate(currentValue: string): void {
     this.from = new Date(currentValue);
   }
 
-  public setToDate(currentValue: string): void {
-    this.to = new Date(currentValue);
+  public setDueDate(currentValue: string): void {
+    this.due = new Date(currentValue);
   }
 
   public getAssignments(): void {
-    this.assignmentsActions.get(this.packagePath, this.from, this.to);
+    this.assignmentsActions.get(this.packagePath, this.from, this.due);
+  }
+
+  public trackByLocalId(index: any, item: LocalObject<any, any>) {
+    return item ? item.localId : undefined;
   }
 }

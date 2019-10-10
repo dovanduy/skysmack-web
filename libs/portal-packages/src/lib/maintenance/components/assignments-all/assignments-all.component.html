@@ -1,8 +1,4 @@
 <ss-container [componentKey]="componentKey">
-    <!-- <ss-dynamic-form [fields$]="fields$" [validation]="fieldsConfig.validation" [rules]="fieldsConfig.formRules"
-        [removeSubmitButton]="true" [removeCloseButton]="true">
-    </ss-dynamic-form> -->
-
     <div class="from-to">
         <!-- From -->
         <mat-form-field>
@@ -12,15 +8,67 @@
             <mat-datepicker touchUi #fromPicker></mat-datepicker>
         </mat-form-field>
 
-        <!-- To -->
+        <!-- Due -->
         <mat-form-field>
-            <input matInput [value]="" (dateInput)="setToDate($event.value)" [matDatepicker]="toPicker"
-                placeholder="To date">
-            <mat-datepicker-toggle matSuffix [for]="toPicker"></mat-datepicker-toggle>
-            <mat-datepicker touchUi #toPicker></mat-datepicker>
+            <input matInput [value]="" (dateInput)="setDueDate($event.value)" [matDatepicker]="duePicker"
+                placeholder="Due date">
+            <mat-datepicker-toggle matSuffix [for]="duePicker"></mat-datepicker-toggle>
+            <mat-datepicker touchUi #duePicker></mat-datepicker>
         </mat-form-field>
     </div>
 
     <!-- Get -->
     <button mat-raised-button (click)="getAssignments()">Get assignments</button>
+    <br />
+
+    <!-- List -->
+    <mat-card>
+
+        <cdk-virtual-scroll-viewport #entityList id="entity-list" itemSize="60">
+            <table cellspacing="0" cellpadding="0" class="mat-table">
+                <thead class="mat-header-row">
+                    <tr>
+                        <th class="table-cell mat-header-cell">
+                            <div class="th-flex">
+                                From
+                            </div>
+                        </th>
+                        <th class="table-cell mat-header-cell">
+                            <div class="th-flex">
+                                Due
+                            </div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody
+                    *cdkVirtualFor="let entity of entities$ | async as entities; trackBy: trackByLocalId; let i = index;">
+                    <tr class="entity-row table-row mat-row"
+                        [class.row-is-loading]="entity.status !== 'OK' && !entity.error"
+                        [class.row-is-success]="entity.isNew && entity.status !== 'CREATING'"
+                        [class.row-is-error]="entity.error" [class.row-is-deleted]="entity.deleted"
+                        [attr.data-index]="i">
+                        <td class="table-cell mat-cell">
+                            {{ entity.object['from'] }}
+                        </td>
+                        <td class="table-cell mat-cell">
+                            {{ entity.object['due'] }}
+                        </td>
+                        <td class="table-cell mat-cell action-buttons">
+                            <button mat-icon-button [matMenuTriggerFor]="menu">
+                                <mat-icon>more_vert</mat-icon>
+                            </button>
+                            <mat-menu #menu="matMenu">
+                                <button mat-menu-item (click)="test()">
+                                    <mat-icon>add</mat-icon>
+                                    <span>Test</span>
+                                </button>
+                                <!-- URL EVENT -->
+                            </mat-menu>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </cdk-virtual-scroll-viewport>
+    </mat-card>
+
 </ss-container>

@@ -21,8 +21,8 @@ export function assignmentsReducer(state = new AssignmentsState(), action: Redux
 
     switch (action.type) {
         case AssignmentsActions.ASSIGNMENTS_GET_SUCCESS: {
-            const castedAction = action as ReduxAction<{ entities: Assignment[], packagePath: string, from: Date, to: Date }>;
-            const key = `${castedAction.payload.from}:${castedAction.payload.to}`
+            const castedAction = action as ReduxAction<{ entities: Assignment[], packagePath: string, from: Date, due: Date }>;
+            const key = `${castedAction.payload.from}:${castedAction.payload.due}`
             if (!newState.localRecords[castedAction.payload.packagePath]) {
                 newState.localRecords[castedAction.payload.packagePath] = {};
             }

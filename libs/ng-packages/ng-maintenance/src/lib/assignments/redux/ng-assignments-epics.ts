@@ -18,7 +18,7 @@ export class NgAssignmentsEpics {
         ];
     }
 
-    public getEpic = (action$: ActionsObservable<ReduxAction<{ packagePath: string, from: Date, to: Date }>>): Observable<ReduxAction<any> | ReduxAction<HttpErrorResponse>> => {
+    public getEpic = (action$: ActionsObservable<ReduxAction<{ packagePath: string, from: Date, due: Date }>>): Observable<ReduxAction<any> | ReduxAction<HttpErrorResponse>> => {
         return action$.pipe(
             ofType(AssignmentsActions.ASSIGNMENTS_GET),
             mergeMap(action => this.requests.get(action)),
