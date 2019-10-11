@@ -1,5 +1,16 @@
 .from-to {
-    max-width: 300px;
+    max-width: 200px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+
+    mat-form-field {
+      margin-right: 10px;
+    }
+}
+
+.get-assignments-button {
+    margin-bottom: 20px;
 }
 
 /* LIST */
