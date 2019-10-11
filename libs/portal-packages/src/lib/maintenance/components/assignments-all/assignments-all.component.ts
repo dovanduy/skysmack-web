@@ -41,7 +41,8 @@ export class AssignmentsAllIndexComponent implements OnInit {
   ngOnInit() {
     this.title.setTitle('MAINTENANCE.ASSIGNMENT_ALL.TITLE');
     this.packagePath = this.router.url.split('/')[1];
-
+    this.initDates();
+    this.getAssignments();
     this.entities$ = this.assignmentsStore.get(this.packagePath).pipe(
       map(x => x[`${this.from}:${this.due}`]),
       safeUndefinedTo('array'),
@@ -62,5 +63,11 @@ export class AssignmentsAllIndexComponent implements OnInit {
 
   public trackByLocalId(index: any, item: LocalObject<any, any>) {
     return item ? item.localId : undefined;
+  }
+
+  private initDates(): void {
+    this.from = new Date();
+    this.due = new Date();
+    this.due.setDate(this.from.getDate() + 1);
   }
 }

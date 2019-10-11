@@ -2,7 +2,7 @@
     <div class="from-to">
         <!-- From -->
         <mat-form-field>
-            <input matInput [value]="" (dateInput)="setFromDate($event.value)" [matDatepicker]="fromPicker"
+            <input matInput [value]="from" (dateInput)="setFromDate($event.value)" [matDatepicker]="fromPicker"
                 placeholder="From date">
             <mat-datepicker-toggle matSuffix [for]="fromPicker"></mat-datepicker-toggle>
             <mat-datepicker touchUi #fromPicker></mat-datepicker>
@@ -10,7 +10,7 @@
 
         <!-- Due -->
         <mat-form-field>
-            <input matInput [value]="" (dateInput)="setDueDate($event.value)" [matDatepicker]="duePicker"
+            <input matInput [value]="due" (dateInput)="setDueDate($event.value)" [matDatepicker]="duePicker"
                 placeholder="Due date">
             <mat-datepicker-toggle matSuffix [for]="duePicker"></mat-datepicker-toggle>
             <mat-datepicker touchUi #duePicker></mat-datepicker>
@@ -43,6 +43,27 @@
                         </th>
                         <th class="table-cell mat-header-cell">
                             <div class="th-flex">
+                                Status
+                            </div>
+                        </th>
+                        <th class="table-cell mat-header-cell">
+                            <div class="th-flex">
+                                Description
+                            </div>
+                        </th>
+                        <th class="table-cell mat-header-cell">
+                            <div class="th-flex">
+                                Type description
+                            </div>
+                        </th>
+                        <th class="table-cell mat-header-cell">
+                            <div class="th-flex">
+                                State
+                            </div>
+                        </th>
+                        <th class="table-cell mat-header-cell">
+                            <div class="th-flex">
+                                <!-- Action button + possibly refresh? -->
                             </div>
                         </th>
                     </tr>
@@ -54,12 +75,38 @@
                         [class.row-is-success]="entity.isNew && entity.status !== 'CREATING'"
                         [class.row-is-error]="entity.error" [class.row-is-deleted]="entity.deleted"
                         [attr.data-index]="i">
+
+                        <!-- From -->
                         <td class="table-cell mat-cell">
                             {{ entity.object['from'] }}
                         </td>
+
+                        <!-- Due -->
                         <td class="table-cell mat-cell">
                             {{ entity.object['due'] }}
                         </td>
+
+                        <!-- Status -->
+                        <td class="table-cell mat-cell">
+                            {{ entity.object['status'] }}
+                        </td>
+
+                        <!-- Description -->
+                        <td class="table-cell mat-cell">
+                            {{ entity.object['description'] }}
+                        </td>
+
+                        <!-- Type description -->
+                        <td class="table-cell mat-cell">
+                            {{ entity.object.assignmentType ? entity.object.assignmentType['description'] : '' }}
+                        </td>
+
+                        <!-- State -->
+                        <td class="table-cell mat-cell">
+                            {{ entity.object.assignmentType ? entity.object.assignmentType['state'] : '' }}
+                        </td>
+
+                        <!-- Actions -->
                         <td class="table-cell mat-cell action-buttons">
                             <button mat-icon-button [matMenuTriggerFor]="menu">
                                 <mat-icon>more_vert</mat-icon>
