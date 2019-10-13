@@ -5,7 +5,7 @@ import { Epic } from 'redux-observable';
 
 @Injectable({ providedIn: 'root' })
 export class NgSiteMinderEpics {
-    public epics: Epic[];
+    public epics: Epic[] = [];
     constructor(protected requests: NgSiteMinderRequests) {
     }
 }

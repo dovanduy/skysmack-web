@@ -18,4 +18,5 @@ export const siteminderComponents: any[] = [
 ];
 
 export const siteminderEntryComponents: any[] = [
-]
+];
+

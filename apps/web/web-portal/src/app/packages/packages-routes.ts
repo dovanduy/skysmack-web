@@ -18,12 +18,14 @@ import { terminalPaymentsRoute } from './terminal-payments-manifest';
 import { emailsRoute } from './emails-package-manifest';
 import { emailsSmtpRoute } from './emails-smtp-package-manifest';
 import { openApiRoute } from './open-api-package-manifest';
+import { siteminderRoute } from './siteminder-package-manifest';
 
 export const packagesRoutes = [
     packagesRoute,
     accessPoliciesRoute,
     identitiesRoute,
     personsRoute,
+    siteminderRoute,
     fileStorageRoute,
     invoicesRoute,
     invoicesProductsRoute,

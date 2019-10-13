@@ -21,7 +21,7 @@ export class SiteMinderIndexComponent extends BaseComponent<SiteMinderAppState, 
     public skysmackStore: NgSkysmackStore,
     public store: NgSiteMinderStore,
   ) {
-    super(router, activatedRoute, actions);
+    super(router, activatedRoute, skysmackStore);
   }
 
   ngOnInit() {

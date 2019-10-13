@@ -9,7 +9,6 @@
     "@skysmack/framework": "*",
     "@skysmack/redux": "*",
     "@skysmack/signal-r": "*",
-    "@skysmack/packages-invoices-cash-payments": "*",
     "@skysmack/packages-skysmack-core": "*"
   },
   "main": "./lib/public_api.js",

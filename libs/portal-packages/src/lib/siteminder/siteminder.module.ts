@@ -35,7 +35,6 @@ export class SiteMinderModule {
   constructor(
     coalescingResolver: CoalescingComponentFactoryResolver,
     localResolver: ComponentFactoryResolver,
-    siteminderDashboardProvider: NgSiteMinderDashboardProvider,
     ngMenuProviders: NgMenuProviders,
     ngSiteMinderMenuProvider: NgSiteMinderMenuProvider
   ) {
