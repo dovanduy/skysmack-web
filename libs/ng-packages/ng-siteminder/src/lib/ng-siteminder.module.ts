@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { siteminderReducer, SITE_MINDER_REDUCER_KEY } from '@skysmack/packages-siteminder';
+import { siteMinderReducer, SITE_MINDER_REDUCER_KEY } from '@skysmack/packages-siteminder';
 import { NgSiteMinderEpics } from './siteminder/redux/ng-siteminder-epics';
 import { registerRedux } from '@skysmack/ng-framework';
 
@@ -10,8 +10,8 @@ import { registerRedux } from '@skysmack/ng-framework';
 })
 export class NgSiteMinderModule {
   constructor(
-    epics: NgSiteMinderEpics,
+    epics: NgSiteMinderEpics
   ) {
-    registerRedux(SITE_MINDER_REDUCER_KEY, siteminderReducer, epics);
+    registerRedux(SITE_MINDER_REDUCER_KEY, siteMinderReducer, epics);
   }
 }
