@@ -1,5 +1,6 @@
-import { Record } from '@skysmack/framework';
+import { Record, LocalObject } from '@skysmack/framework';
 import { AvailabilityRestriction } from './availability-restriction';
+import { LodgingType } from '@skysmack/packages-lodgings';
 
 export class LodgingTypeRateKey {
     public date: Date;
@@ -15,6 +16,7 @@ export class LodgingTypeRate extends Record<LodgingTypeRateKey> {
     public maximumLengthOfStay: number;
     public rate: number;
     public lodgingTypeId: number;
+    public lodgingType: LocalObject<LodgingType, number>;
     public ratePlanId: number;
     public channelId: number;
 }

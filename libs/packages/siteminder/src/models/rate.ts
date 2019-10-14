@@ -1,9 +1,14 @@
+import { LocalObject } from '@skysmack/framework';
+import { RatePlan } from './rate-plan';
+import { LodgingType } from '@skysmack/packages-lodgings';
 
 export class Rate {
     public start: Date;
     public end: Date
     public lodgingTypeId: number;
-    public ratePlanId: number;
+    public lodgingType: LocalObject<LodgingType, number>;
+    public ratePlanId?: number;
+    public ratePlan?: LocalObject<RatePlan, number>;
     public channels: number[];
     public rate: number;
 

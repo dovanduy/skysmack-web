@@ -1,4 +1,5 @@
-import { Record } from '@skysmack/framework';
+import { Record, LocalObject } from '@skysmack/framework';
+import { LodgingType } from '@skysmack/packages-lodgings';
 
 export class LodgingTypeAvailabilityKey {
     public date: Date;
@@ -12,4 +13,5 @@ export class LodgingTypeAvailability extends Record<LodgingTypeAvailabilityKey> 
     public available: number;
     public availableModifier: number;
     public lodgingTypeId: number;
+    public lodgingType: LocalObject<LodgingType, number>;
 }
