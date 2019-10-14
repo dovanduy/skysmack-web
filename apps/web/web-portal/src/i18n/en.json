@@ -217,7 +217,7 @@
 			}
 		}
 	},
-	"ACCOUNT": {
+	"ACCOUNTS": {
 		"FORM": {
 			"LABELS": {
 				"TOKEN": "Token",
@@ -269,7 +269,7 @@
 			"TITLE": "Forgot password",
 			"BUTTON_EDIT": "Submit",
 			"CHECK_EMAIL_TITLE": "Check your email",
-			"CHECK_EMAIL": "You will find instructions on how to reset your password. Remember to check your spam folder"
+			"CHECK_EMAIL": "You will find instructions on how to reset your password. Remember to check your spam folder."
 		},
 		"INDEX": {
 			"ACTIONS": "Actions",
@@ -715,7 +715,7 @@
 				"ORDER": "Order",
 				"UNITS": "Units",
 				"UNITPRICE": "Unit price",
-				"UNITCHANGE": "Unit change",
+				"UNITCHANGE": "Unit changeFi",
 				"TAXPERCENT": "Tax percentage",
 				"INVENTORYID": "Inventory ID"
 			},
@@ -3021,64 +3021,6 @@
 			"DELETING": "Deleting settings",
 			"ERROR": "An error occured with settings. Correct and try again."
 		}
-	},
-	"ACCOUNTS": {
-		"FORM": {
-			"LABELS": {
-				"TOKEN": "Token",
-				"EMAIL": "Email",
-				"CURRENTPASSWORD": "Current password",
-				"NEWPASSWORD": "New password",
-				"CONFIRMNEWPASSWORD": "Confirm new password"
-			},
-			"PLACEHOLDERS": {
-				"TOKEN": "Token",
-				"EMAIL": "Email",
-				"CURRENTPASSWORD": "Current password",
-				"NEWPASSWORD": "New password",
-				"CONFIRMNEWPASSWORD": "Confirm new password"
-			},
-			"VALIDATION": {
-				"TOKEN": {
-					"REQUIRED": "Token is required"
-				},
-				"EMAIL": {
-					"REQUIRED": "Email is required.",
-					"INVALIDEMAIL": "Please type a valid email"
-				},
-				"CURRENTPASSWORD": {
-					"REQUIRED": "Current password is required."
-				},
-				"NEWPASSWORD": {
-					"REQUIRED": "New password is required."
-				},
-				"CONFIRMNEWPASSWORD": {
-					"REQUIRED": "Please repeat the new password.",
-					"PASSWORDMISMATCH": "Passwords must match."
-				}
-			}
-		},
-		"CHANGE_PASSWORD": {
-			"TITLE": "Change password",
-			"BUTTON_EDIT": "Update"
-		},
-		"CONFIRM_EMAIL": {
-			"TITLE": "Confirm email",
-			"BUTTON_EDIT": "Submit"
-		},
-		"FORGOT_PASSWORD": {
-			"TITLE": "Forgot password",
-			"BUTTON_EDIT": "Submit"
-		},
-		"INDEX": {
-			"ACTIONS": "Actions",
-			"MANAGE": "Manage",
-			"CHANGE_PASSWORD": "Change password",
-			"FORGOT_PASSWORD": "Forgot password",
-			"CONFIRM_EMAIL": "Confirm email"
-		},
-		"NOTIFICATIONS": {},
-		"QUEUE": {}
 	},
 	"FILE_STORAGE": {
 		"FORM": {

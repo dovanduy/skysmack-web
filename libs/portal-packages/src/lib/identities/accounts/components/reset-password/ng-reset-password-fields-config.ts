@@ -19,7 +19,7 @@ export class NgResetPasswordFieldsConfig {
                 component: EmailFieldComponent,
                 value: email,
                 key: 'email',
-                placeholder: 'ACCOUNT.FORM.PLACEHOLDERS.EMAIL',
+                placeholder: 'ACCOUNTS.FORM.PLACEHOLDERS.EMAIL',
                 validators: [Validators.required, CustomValidators.validEmail()],
                 order: 1,
                 sortable: true
@@ -28,7 +28,7 @@ export class NgResetPasswordFieldsConfig {
                 component: StringFieldComponent,
                 value: token,
                 key: 'token',
-                placeholder: 'ACCOUNT.FORM.PLACEHOLDERS.TOKEN',
+                placeholder: 'ACCOUNTS.FORM.PLACEHOLDERS.TOKEN',
                 order: 1,
                 validators: [Validators.required],
                 sortable: true
@@ -37,7 +37,7 @@ export class NgResetPasswordFieldsConfig {
                 component: PasswordFieldComponent,
                 value: undefined,
                 key: 'newPassword',
-                placeholder: 'ACCOUNT.FORM.PLACEHOLDERS.NEWPASSWORD',
+                placeholder: 'ACCOUNTS.FORM.PLACEHOLDERS.NEWPASSWORD',
                 validators: [Validators.required, CustomValidators.validPassword()],
                 order: 2,
                 sortable: true
@@ -47,7 +47,7 @@ export class NgResetPasswordFieldsConfig {
                 component: PasswordFieldComponent,
                 value: undefined,
                 key: 'confirmNewPassword',
-                placeholder: 'ACCOUNT.FORM.PLACEHOLDERS.CONFIRMNEWPASSWORD',
+                placeholder: 'ACCOUNTS.FORM.PLACEHOLDERS.CONFIRMNEWPASSWORD',
                 validators: [Validators.required],
                 order: 3,
                 sortable: true

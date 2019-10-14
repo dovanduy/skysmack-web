@@ -27,6 +27,7 @@ export class NgChangePasswordFieldsConfig extends FieldsConfig<ChangePassword, n
                 component: PasswordFieldComponent,
                 value: entity ? entity.object.currentPassword : undefined,
                 key: 'currentPassword',
+                placeholder: 'ACCOUNTS.FORM.PLACEHOLDERS.CURRENTPASSWORD',
                 validators: [Validators.required],
                 order: 1,
                 showColumn: true,
@@ -37,6 +38,7 @@ export class NgChangePasswordFieldsConfig extends FieldsConfig<ChangePassword, n
                 component: PasswordFieldComponent,
                 value: entity ? entity.object.newPassword : undefined,
                 key: 'newPassword',
+                placeholder: 'ACCOUNTS.FORM.PLACEHOLDERS.NEWPASSWORD',
                 validators: [Validators.required],
                 order: 2,
                 showColumn: true,
@@ -47,6 +49,7 @@ export class NgChangePasswordFieldsConfig extends FieldsConfig<ChangePassword, n
                 component: PasswordFieldComponent,
                 value: entity ? entity.object.confirmNewPassword : undefined,
                 key: 'confirmNewPassword',
+                placeholder: 'ACCOUNTS.FORM.PLACEHOLDERS.CONFIRMPASSWORD',
                 validators: [Validators.required],
                 order: 3,
                 sortable: true
