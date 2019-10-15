@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { SiteMinderService } from '../../../../services/siteminder.service';
 import { Observable } from 'rxjs';
+import { SiteMinderService } from '../../../../services/siteminder.service';
 import { SiteMinderColumn } from '../../../../models/siteminder-column';
 
 @Component({

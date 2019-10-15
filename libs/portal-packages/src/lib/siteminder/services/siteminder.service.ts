@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { toLocalObject } from '@skysmack/framework';
 import { LodgingType } from '@skysmack/packages-lodgings';
-import { RatePlan, Channel } from '@skysmack/packages-siteminder';
+import { RatePlan, Channel, Rate } from '@skysmack/packages-siteminder';
 import { SiteMinderFiltersService } from './siteminder-filters.service';
 import { SiteMinderColumn } from '../models/siteminder-column';
 
@@ -61,7 +61,7 @@ export class SiteMinderService {
         const columns = lodgingTypes.map(lodgingType => {
             return new SiteMinderColumn({
                 lodgingType,
-                ratePlansContainer: ratePlans.map(ratePlan => {
+                ratePlanContainers: ratePlans.map(ratePlan => {
                     return {
                         ratePlan,
                         channels
