@@ -1,17 +1,4 @@
-cdk-virtual-scroll-viewport {
-  height: calc(100vh - 250px);
-  width: 100%;
-}
-
-mat-card {
-  padding: 0;
-}
-
-table.mat-table {
-  background-color: transparent;
-  min-width: 100%;
-
-  thead tr {
+thead tr {
     height: 56px;
 
     th.table-cell {
@@ -59,8 +46,3 @@ table.mat-table {
       }
     }
   }
-}
-
-.entity-row {
-  height: 57px;
-}

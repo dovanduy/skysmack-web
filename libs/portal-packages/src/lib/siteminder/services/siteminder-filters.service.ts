@@ -1,12 +1,9 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { Channel } from '@skysmack/packages-siteminder';
-import { LocalObject } from '@skysmack/framework';
-import { TopColumnType } from './siteminder-mock-data';
+import { TopColumnType } from '../models/top-column-type';
 
 @Injectable({ providedIn: 'root' })
-export class SiteMinderService {
-    //#region Filters
+export class SiteMinderFiltersService {
     /**
      * What data should be shown in the top colum
      * (and reversedly in the expandable column)
@@ -39,11 +36,9 @@ export class SiteMinderService {
     private channelIdsSelected$ = new BehaviorSubject<number[]>([]);
     //#endregion
 
-    constructor(
-    ) {
-    }
 
-    //#region Getters and Setters
+    constructor() { }
+
     // TopColumnType
     public getTopColumnType(): Observable<TopColumnType> {
         return this.topColumnType$;
@@ -99,5 +94,4 @@ export class SiteMinderService {
     public setChannelIdsSelected(value: number[]): void {
         this.channelIdsSelected$.next(value);
     }
-    //#endregion
 }
