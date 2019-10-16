@@ -4,7 +4,7 @@ import { LodgingType } from '@skysmack/packages-lodgings';
 
 export class SiteMinderColumn {
     public lodgingType: LocalObject<LodgingType, number>;
-    public ratePlanContainers: {
+    public ratePlanColumns: {
         ratePlan: LocalObject<RatePlan, number>,
         channels: LocalObject<Channel, number>[]
     }[];

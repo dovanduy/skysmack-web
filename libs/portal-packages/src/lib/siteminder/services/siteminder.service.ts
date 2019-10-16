@@ -26,10 +26,10 @@ export class SiteMinderService {
                 id: 1,
                 name: 'Single room'
             })),
-            toLocalObject<LodgingType, number>(new LodgingType({
-                id: 2,
-                name: 'Double room'
-            })),
+            // toLocalObject<LodgingType, number>(new LodgingType({
+            //     id: 2,
+            //     name: 'Double room'
+            // })),
             // toLocalObject<LodgingType, number>(new LodgingType({
             //     id: 3,
             //     name: 'Presidents Suite'
@@ -61,14 +61,16 @@ export class SiteMinderService {
         const columns = lodgingTypes.map(lodgingType => {
             return new SiteMinderColumn({
                 lodgingType,
-                ratePlanContainers: ratePlans.map(ratePlan => {
+                ratePlanColumns: ratePlans.map(ratePlan => {
                     return {
                         ratePlan,
                         channels
                     };
                 })
             })
-        })
+        });
+        console.clear();
+        console.log(columns);
 
         this.columns$.next(columns);
     }
