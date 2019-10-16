@@ -63,10 +63,20 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let dateCell of (dateColumn$ | async)?.cells">
+            <tr *ngFor="let dateCell of (dateColumn$ | async)?.cells; let index = index">
+                <!-- Date -->
                 <td class="table-cell mat-cell">
                     {{ dateCell | date: 'dd-mm-yyyy' }}
                 </td>
+                <!-- Available -->
+                <ng-container *ngFor="let ltc of logingTypeColumns$ | async">
+                    <ng-container *ngIf="lodgingTypeAvailability$ | async as lta">
+                        <td *ngFor="let availabilityCell of lta[ltc.id]?.cells" rowspan="2"
+                            class="table-cell mat-header-cell">
+                            {{ availabilityCell.available }}
+                        </td>
+                    </ng-container>
+                </ng-container>
             </tr>
         </tbody>
     </table>

@@ -127,9 +127,6 @@ export class SiteMinderService {
             });
         });
 
-        console.clear();
-        console.log(ratePlanChannels);
-
         // Pushing columns and column dictionaries
         this.dateColumn$.next(new SiteMinderColumn({
             title: 'Date', cells: [new Date(), new Date(), new Date()]
