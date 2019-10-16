@@ -26,10 +26,10 @@ export class SiteMinderService {
                 id: 1,
                 name: 'Single room'
             })),
-            // toLocalObject<LodgingType, number>(new LodgingType({
-            //     id: 2,
-            //     name: 'Double room'
-            // })),
+            toLocalObject<LodgingType, number>(new LodgingType({
+                id: 2,
+                name: 'Double room'
+            })),
             // toLocalObject<LodgingType, number>(new LodgingType({
             //     id: 3,
             //     name: 'Presidents Suite'

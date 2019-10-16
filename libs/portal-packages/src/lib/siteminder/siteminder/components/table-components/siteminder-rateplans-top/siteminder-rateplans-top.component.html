@@ -23,7 +23,7 @@
                     <!-- Rateplan -->
                     <ng-container *ngFor="let column of column.ratePlanColumns">
                         <th [attr.colspan]="column.channels.length + 1" class="table-cell mat-header-cell">
-                            {{ container.ratePlan.object.name }}
+                            {{ column.ratePlan.object.name }}
                         </th>
                     </ng-container>
                 </ng-container>
@@ -78,6 +78,8 @@
                         1099
                     </td>
                 </ng-container>
+
+
             </tr>
         </tbody>
     </table>
