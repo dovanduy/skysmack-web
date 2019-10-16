@@ -30,10 +30,10 @@ export class SiteMinderService {
                 id: 2,
                 name: 'Double room'
             })),
-            toLocalObject<LodgingType, number>(new LodgingType({
-                id: 3,
-                name: 'Presidents Suite'
-            }))
+            // toLocalObject<LodgingType, number>(new LodgingType({
+            //     id: 3,
+            //     name: 'Presidents Suite'
+            // }))
         ];
 
         const ratePlans = [

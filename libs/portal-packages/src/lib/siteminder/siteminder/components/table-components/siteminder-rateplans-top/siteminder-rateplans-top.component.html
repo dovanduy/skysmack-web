@@ -3,31 +3,35 @@
         <thead class="mat-header-row">
             <!-- 1st header row -->
             <tr>
-                <th rowspan="2" class="table-cell mat-header-cell">
+                <th rowspan="3" class="table-cell mat-header-cell">
                     Date
                 </th>
                 <ng-container *ngFor="let column of columns$ | async">
                     <!-- Lodging Type -->
-                    <th class="table-cell mat-header-cell">
+                    <th colspan="7" class="table-cell mat-header-cell">
                         {{ column.lodgingType.object.name }}
-                    </th>
-
-                    <!-- Rateplan -->
-                    <th *ngFor="let container of column.ratePlanContainers"
-                        [attr.colspan]="container.channels.length + 1" class="table-cell mat-header-cell">
-                        {{ container.ratePlan.object.name }}
                     </th>
                 </ng-container>
             </tr>
 
-            <!-- 2nd header row -->
             <tr>
                 <ng-container *ngFor="let column of columns$ | async">
                     <!-- Available -->
-                    <th class="table-cell mat-header-cell">
+                    <th rowspan="2" class="table-cell mat-header-cell">
                         Available
                     </th>
+                    <!-- Rateplan -->
+                    <ng-container *ngFor="let container of column.ratePlanContainers">
+                        <th [attr.colspan]="container.channels.length + 1" class="table-cell mat-header-cell">
+                            {{ container.ratePlan.object.name }}
+                        </th>
+                    </ng-container>
+                </ng-container>
+            </tr>
 
+            <!-- 3rd header row -->
+            <tr>
+                <ng-container *ngFor="let column of columns$ | async">
                     <ng-container *ngFor="let container of column.ratePlanContainers">
                         <!-- Rates summary -->
                         <th class="table-cell mat-header-cell">
