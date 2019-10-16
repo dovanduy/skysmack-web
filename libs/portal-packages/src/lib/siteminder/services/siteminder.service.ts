@@ -10,9 +10,9 @@ import { SiteMinderColumn } from '../models/siteminder-column';
 export class SiteMinderService {
     public dateColumn$ = new BehaviorSubject<SiteMinderColumn<Date[]>>(null);
     public logingTypeColumns$ = new BehaviorSubject<SiteMinderColumn<null>[]>(null);
-    public lodgingTypeAvailability$ = new BehaviorSubject<StrIndex<SiteMinderColumn<LodgingTypeAvailability[]>[]>>(null);
+    public lodgingTypeAvailability$ = new BehaviorSubject<StrIndex<SiteMinderColumn<LodgingTypeAvailability[]>>>(null);
     public lodgingTypeRatePlans$ = new BehaviorSubject<StrIndex<SiteMinderColumn<null>[]>>(null);
-    public ratePlanRateSummary$ = new BehaviorSubject<StrIndex<SiteMinderColumn<string[]>[]>>(null); // Better to pass channels
+    public ratePlanRateSummary$ = new BehaviorSubject<StrIndex<SiteMinderColumn<string[]>>>(null); // Better to pass channels
     public ratePlanChannels$ = new BehaviorSubject<StrIndex<SiteMinderColumn<Rate[]>[]>>(null);
 
     constructor(
@@ -29,10 +29,10 @@ export class SiteMinderService {
                 id: 1,
                 name: 'Single room'
             })),
-            // toLocalObject<LodgingType, number>(new LodgingType({
-            //     id: 2,
-            //     name: 'Double room'
-            // })),
+            toLocalObject<LodgingType, number>(new LodgingType({
+                id: 2,
+                name: 'Double room'
+            })),
             // toLocalObject<LodgingType, number>(new LodgingType({
             //     id: 3,
             //     name: 'Presidents Suite'
@@ -84,17 +84,17 @@ export class SiteMinderService {
             title: lodgingType.object.name
         }));
 
-        const lodgingTypeAvailability: StrIndex<SiteMinderColumn<LodgingTypeAvailability[]>[]> = {};
+        const lodgingTypeAvailability: StrIndex<SiteMinderColumn<LodgingTypeAvailability[]>> = {};
         const lodgingTypeRatePlans: StrIndex<SiteMinderColumn<null>[]> = {};
-        const ratePlanRateSummary: StrIndex<SiteMinderColumn<string[]>[]> = {};
+        const ratePlanRateSummary: StrIndex<SiteMinderColumn<string[]>> = {};
         const ratePlanChannels: StrIndex<SiteMinderColumn<Rate[]>[]> = {};
 
         lodgingTypeColumns.forEach(ltc => {
             // Availability
-            lodgingTypeAvailability[ltc.id] = availability.map(avail => new SiteMinderColumn<LodgingTypeAvailability[]>({
+            lodgingTypeAvailability[ltc.id] = new SiteMinderColumn<LodgingTypeAvailability[]>({
                 title: 'Available',
                 cells: availability.map(x => x.object)
-            }));
+            });
 
             // Rate Plans
             const ratePlanColumns = ratePlans.map(ratePlan => new SiteMinderColumn<null>({
@@ -104,7 +104,7 @@ export class SiteMinderService {
 
             ratePlanColumns.forEach(rpc => {
                 // Rate plan summary (lowest to highest)
-                ratePlanRateSummary[rpc.id] = ratePlans.map(ratePlan => new SiteMinderColumn<string[]>({
+                ratePlanRateSummary[rpc.id] = new SiteMinderColumn<string[]>({
                     title: 'Rates (all)',
                     cells: [
                         // Base these on lowest/highest found in Channels array.
@@ -113,7 +113,7 @@ export class SiteMinderService {
                         '799 - 1099',
                         '799 - 1099'
                     ]
-                }));
+                });
 
                 // Rate Plan Channels
                 ratePlanChannels[rpc.id] = channels.map(channel => new SiteMinderColumn<Rate[]>({
@@ -127,7 +127,10 @@ export class SiteMinderService {
             });
         });
 
-        // Pushing cells
+        console.clear();
+        console.log(ratePlanChannels);
+
+        // Pushing columns and column dictionaries
         this.dateColumn$.next(new SiteMinderColumn({
             title: 'Date', cells: [new Date(), new Date(), new Date()]
         }));

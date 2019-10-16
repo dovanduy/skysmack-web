@@ -3,23 +3,71 @@
         <thead class="mat-header-row">
             <!-- 1st header row -->
             <tr>
+                <!-- Date -->
                 <th *ngIf="dateColumn$ | async as dateColumn" rowspan="3" class="table-cell mat-header-cell">
                     {{  dateColumn.title }}
                 </th>
-                <ng-container *ngFor="let lodgingTypeColumn of logingTypeColumns$ | async">
+                <ng-container *ngFor="let ltc of logingTypeColumns$ | async">
                     <!-- Lodging Type -->
                     <th colspan="7" class="table-cell mat-header-cell">
-                        {{ lodgingTypeColumn.title }}
+                        {{ ltc.title }}
                     </th>
                 </ng-container>
             </tr>
 
+            <!-- 2nd header row -->
+            <tr>
+                <ng-container *ngFor="let ltc of logingTypeColumns$ | async">
+                    <!-- Available -->
+                    <ng-container *ngIf="lodgingTypeAvailability$ | async as lta">
+                        <th rowspan="2" class="table-cell mat-header-cell">
+                            {{ lta[ltc.id]?.title }}
+                        </th>
+                    </ng-container>
+                    <!-- Rateplan -->
+                    <ng-container *ngIf="lodgingTypeRatePlans$ | async as ltrp">
+                        <ng-container *ngFor="let ratePlanColumn of ltrp[ltc.id]">
+                            <th colspan="3" class="table-cell mat-header-cell">
+                                {{ ratePlanColumn.title }}
+                            </th>
+                        </ng-container>
+                    </ng-container>
+                </ng-container>
+            </tr>
+
+            <!-- 3rd header row -->
+            <tr>
+                <ng-container *ngFor="let ltc of logingTypeColumns$ | async">
+                    <!-- Rateplan -->
+                    <ng-container *ngIf="lodgingTypeRatePlans$ | async as ltrp">
+                        <ng-container *ngFor="let ratePlanColumn of ltrp[ltc.id]">
+                            <!-- Rates Summary -->
+                            <ng-container *ngIf="ratePlanRateSummary$ | async as rprs">
+                                <th class="table-cell mat-header-cell">
+                                    {{ rprs[ratePlanColumn.id]?.title }}
+                                </th>
+                            </ng-container>
+
+                            <!-- Channels (show if expanded) -->
+                            <ng-container *ngIf="ratePlanChannels$ | async as rpc">
+                                <ng-container *ngFor="let channelColumn of rpc[ratePlanColumn.id]">
+                                    <th class="table-cell mat-header-cell">
+                                        {{ channelColumn.title }}
+                                    </th>
+                                </ng-container>
+                            </ng-container>
+                        </ng-container>
+                    </ng-container>
+                </ng-container>
+
+            </tr>
         </thead>
         <tbody>
-            <td *ngFor="let dateCell of (dateColumn$ | async)?.cells" class="table-cell mat-cell">
-                {{ dateCell | date: 'dd-mm-yyyy' }}
-            </td>
-
+            <tr *ngFor="let dateCell of (dateColumn$ | async)?.cells">
+                <td class="table-cell mat-cell">
+                    {{ dateCell | date: 'dd-mm-yyyy' }}
+                </td>
+            </tr>
         </tbody>
     </table>
 </mat-card>

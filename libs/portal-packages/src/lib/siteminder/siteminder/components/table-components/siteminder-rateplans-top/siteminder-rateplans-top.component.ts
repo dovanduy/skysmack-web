@@ -13,9 +13,9 @@ import { LodgingTypeAvailability, Rate } from '@skysmack/packages-siteminder';
 export class SiteMinderRateplansTopComponent implements OnInit {
   public dateColumn$: Observable<SiteMinderColumn<Date[]>>;
   public logingTypeColumns$: Observable<SiteMinderColumn<null>[]>;
-  public lodgingTypeAvailability$: Observable<StrIndex<SiteMinderColumn<LodgingTypeAvailability[]>[]>>;
+  public lodgingTypeAvailability$: Observable<StrIndex<SiteMinderColumn<LodgingTypeAvailability[]>>>;
   public lodgingTypeRatePlans$: Observable<StrIndex<SiteMinderColumn<null>[]>>;
-  public ratePlanRateSummary$: Observable<StrIndex<SiteMinderColumn<string[]>[]>>; // Better to pass channels
+  public ratePlanRateSummary$: Observable<StrIndex<SiteMinderColumn<string[]>>>; // Better to pass channels
   public ratePlanChannels$: Observable<StrIndex<SiteMinderColumn<Rate[]>[]>>;
 
   constructor(
