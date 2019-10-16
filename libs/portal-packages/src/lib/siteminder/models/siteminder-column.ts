@@ -1,15 +1,12 @@
-import { LocalObject } from '@skysmack/framework';
-import { RatePlan, Channel, Rate } from '@skysmack/packages-siteminder';
-import { LodgingType } from '@skysmack/packages-lodgings';
+import { Guid } from 'guid-typescript';
 
-export class SiteMinderColumn {
-    public lodgingType: LocalObject<LodgingType, number>;
-    public ratePlanColumns: {
-        ratePlan: LocalObject<RatePlan, number>,
-        channels: LocalObject<Channel, number>[]
-    }[];
+export class SiteMinderColumn<T> {
+    public id: string;
+    public title: string;
+    public cells?: T;
 
-    constructor(init?: Partial<SiteMinderColumn>) {
+    constructor(init?: Partial<SiteMinderColumn<T>>) {
         Object.assign(this, init);
+        this.id = Guid.create().toString();
     }
 }

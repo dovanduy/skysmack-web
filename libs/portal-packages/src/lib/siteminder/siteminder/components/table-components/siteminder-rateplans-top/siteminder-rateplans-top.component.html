@@ -3,82 +3,23 @@
         <thead class="mat-header-row">
             <!-- 1st header row -->
             <tr>
-                <th rowspan="3" class="table-cell mat-header-cell">
-                    Date
+                <th *ngIf="dateColumn$ | async as dateColumn" rowspan="3" class="table-cell mat-header-cell">
+                    {{  dateColumn.title }}
                 </th>
-                <ng-container *ngFor="let column of columns$ | async">
+                <ng-container *ngFor="let lodgingTypeColumn of logingTypeColumns$ | async">
                     <!-- Lodging Type -->
                     <th colspan="7" class="table-cell mat-header-cell">
-                        {{ column.lodgingType.object.name }}
+                        {{ lodgingTypeColumn.title }}
                     </th>
                 </ng-container>
             </tr>
 
-            <tr>
-                <ng-container *ngFor="let column of columns$ | async">
-                    <!-- Available -->
-                    <th rowspan="2" class="table-cell mat-header-cell">
-                        Available
-                    </th>
-                    <!-- Rateplan -->
-                    <ng-container *ngFor="let column of column.ratePlanColumns">
-                        <th [attr.colspan]="column.channels.length + 1" class="table-cell mat-header-cell">
-                            {{ container.ratePlan.object.name }}
-                        </th>
-                    </ng-container>
-                </ng-container>
-            </tr>
-
-            <!-- 3rd header row -->
-            <tr>
-                <ng-container *ngFor="let column of columns$ | async">
-                    <ng-container *ngFor="let column of column.ratePlanColumns">
-                        <!-- Rates summary -->
-                        <th class="table-cell mat-header-cell">
-                            Rates (all)
-                        </th>
-                        <!-- Rates individual (show if expanded) -->
-                        <th *ngFor="let channel of column.channels" class="table-cell mat-header-cell">
-                            {{ channel.object.name }}
-                        </th>
-                    </ng-container>
-                </ng-container>
-            </tr>
         </thead>
         <tbody>
-            <tr class="entity-row table-row mat-row">
-                <td class="table-cell mat-cell">
-                    12-02-2019
-                </td>
-                <ng-container *ngFor="let column of columns$ | async">
-                    <td class="table-cell mat-cell">
-                        6 (7 / -1)
-                    </td>
-                    <!-- 1st rateplan -->
-                    <td class="table-cell mat-cell">
-                        899-1299
-                    </td>
-                    <!-- If expanded, add td foreach channel -->
-                    <td class="table-cell mat-cell">
-                        899
-                    </td>
-                    <td class="table-cell mat-cell">
-                        1299
-                    </td>
+            <td *ngFor="let dateCell of (dateColumn$ | async)?.cells" class="table-cell mat-cell">
+                {{ dateCell | date: 'dd-mm-yyyy' }}
+            </td>
 
-                    <!-- 2nd rateplan -->
-                    <td class="table-cell mat-cell">
-                        799-1099
-                    </td>
-                    <!-- If expanded, add td foreach channel -->
-                    <td class="table-cell mat-cell">
-                        799
-                    </td>
-                    <td class="table-cell mat-cell">
-                        1099
-                    </td>
-                </ng-container>
-            </tr>
         </tbody>
     </table>
 </mat-card>
