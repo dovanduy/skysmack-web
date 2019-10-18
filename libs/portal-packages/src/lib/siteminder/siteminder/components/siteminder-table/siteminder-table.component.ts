@@ -12,7 +12,7 @@ import { SiteMinderService } from '../../../services/siteminder.service';
 export class SiteMinderTableComponent implements OnInit {
   // Columns
   public dateColumn$: Observable<SiteMinderColumn>;
-  public logingTypeColumns$: Observable<SiteMinderColumn[]>;
+  public lodgingTypeColumns$: Observable<SiteMinderColumn[]>;
   public availabilityColumns$: Observable<StrIndex<SiteMinderColumn>>;
   public ratePlanColumns$: Observable<StrIndex<SiteMinderColumn[]>>;
   public rateSummaryColumns$: Observable<StrIndex<SiteMinderColumn>>;
@@ -22,10 +22,9 @@ export class SiteMinderTableComponent implements OnInit {
   public dateRows$: Observable<Date[]>;
 
   // Cells
-  public dateCells$: Observable<StrIndex<Date>>;
-  public availabilityCells$: Observable<StrIndex<string>>;
-  public rateSummaryCells$: Observable<StrIndex<string>>;
-  public channelsCells$: Observable<StrIndex<string[]>>;
+  public availabilityCells$: Observable<StrIndex<StrIndex<string>>>;
+  public rateSummaryCells$: Observable<StrIndex<StrIndex<string>>>;
+  public channelsCells$: Observable<StrIndex<StrIndex<string[]>>>;
 
   constructor(
     private service: SiteMinderService,
@@ -33,13 +32,12 @@ export class SiteMinderTableComponent implements OnInit {
 
   ngOnInit() {
     this.dateColumn$ = this.service.dateColumn$;
-    this.logingTypeColumns$ = this.service.logingTypeColumns$;
+    this.lodgingTypeColumns$ = this.service.lodgingTypeColumns$;
     this.availabilityColumns$ = this.service.availabilityColumns$;
     this.ratePlanColumns$ = this.service.ratePlanColumns$;
     this.rateSummaryColumns$ = this.service.rateSummaryColumns$;
     this.channelsColumns$ = this.service.channelsColumns$;
     this.dateRows$ = this.service.dateRows$;
-    this.dateCells$ = this.service.dateCells$;
     this.availabilityCells$ = this.service.availabilityCells$;
     this.rateSummaryCells$ = this.service.rateSummaryCells$;
     this.channelsCells$ = this.service.channelsCells$;

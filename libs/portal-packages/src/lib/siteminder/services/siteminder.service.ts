@@ -9,7 +9,7 @@ import { SiteMinderColumn } from '../models/siteminder-column';
 export class SiteMinderService {
     // Columns
     public dateColumn$ = new BehaviorSubject<SiteMinderColumn>(null);
-    public logingTypeColumns$ = new BehaviorSubject<SiteMinderColumn[]>(null);
+    public lodgingTypeColumns$ = new BehaviorSubject<SiteMinderColumn[]>(null);
     public availabilityColumns$ = new BehaviorSubject<StrIndex<SiteMinderColumn>>(null);
     public ratePlanColumns$ = new BehaviorSubject<StrIndex<SiteMinderColumn[]>>(null);
     public rateSummaryColumns$ = new BehaviorSubject<StrIndex<SiteMinderColumn>>(null);
@@ -19,10 +19,9 @@ export class SiteMinderService {
     public dateRows$ = new BehaviorSubject<Date[]>(null);
 
     // Cells
-    public dateCells$ = new BehaviorSubject<StrIndex<Date>>(null);
-    public availabilityCells$ = new BehaviorSubject<StrIndex<string>>(null);
-    public rateSummaryCells$ = new BehaviorSubject<StrIndex<string>>(null);
-    public channelsCells$ = new BehaviorSubject<StrIndex<string[]>>(null);
+    public availabilityCells$ = new BehaviorSubject<StrIndex<StrIndex<string>>>(null);
+    public rateSummaryCells$ = new BehaviorSubject<StrIndex<StrIndex<string>>>(null);
+    public channelsCells$ = new BehaviorSubject<StrIndex<StrIndex<string[]>>>(null);
 
     constructor(
     ) {
@@ -38,10 +37,10 @@ export class SiteMinderService {
                 id: 1,
                 name: 'Single room'
             })),
-            // toLocalObject<LodgingType, number>(new LodgingType({
-            //     id: 2,
-            //     name: 'Double room'
-            // })),
+            toLocalObject<LodgingType, number>(new LodgingType({
+                id: 2,
+                name: 'Double room'
+            })),
             // toLocalObject<LodgingType, number>(new LodgingType({
             //     id: 3,
             //     name: 'Presidents Suite'
@@ -99,7 +98,7 @@ export class SiteMinderService {
 
         // Update streams
         this.dateColumn$.next(dateColumn);
-        this.logingTypeColumns$.next(lodgingTypeColumns);
+        this.lodgingTypeColumns$.next(lodgingTypeColumns);
         this.availabilityColumns$.next(availabilityColumns);
         this.ratePlanColumns$.next(ratePlanColumns);
         this.rateSummaryColumns$.next(rateSummaryColumns);
@@ -111,25 +110,37 @@ export class SiteMinderService {
         const dateRows = [new Date(), new Date(), new Date()];
 
         // Cells
-        const dateCells: StrIndex<Date> = {};
-        const availabilityCells: StrIndex<string> = {};
-        const rateSummaryCells: StrIndex<string> = {};
-        const channelsCells: StrIndex<string[]> = {};
+        const availabilityCells: StrIndex<StrIndex<string>> = {};
+        const rateSummaryCells: StrIndex<StrIndex<string>> = {};
+        const channelsCells: StrIndex<StrIndex<string[]>> = {};
 
-        dateRows.forEach(date => {
+        const lodgingTypeColumns = this.lodgingTypeColumns$.getValue();
+        const ratePlanColumns = this.ratePlanColumns$.getValue();
+
+        dateRows.forEach(date => lodgingTypeColumns.forEach(ltc => {
             const dateIndex = date.toString();
-            dateCells[dateIndex] = date;
-            availabilityCells[dateIndex] = '6 (7/-1)';
-            rateSummaryCells[dateIndex] = '499-899'
-            channelsCells[dateIndex] = [
-                '499',
-                '899'
-            ]
-        });
+            availabilityCells[dateIndex] ? availabilityCells[dateIndex] : availabilityCells[dateIndex] = {};
+            availabilityCells[dateIndex][ltc.id] = '6 (7/-1)';
+
+        }));
+
+        dateRows.forEach(date =>
+            Object.keys(ratePlanColumns).forEach(key => ratePlanColumns[key].forEach(rpc => {
+                const dateIndex = date.toString();
+
+                rateSummaryCells[dateIndex] ? rateSummaryCells[dateIndex] : rateSummaryCells[dateIndex] = {};
+                rateSummaryCells[dateIndex][rpc.id] = '499-899'
+
+                channelsCells[dateIndex] ? channelsCells[dateIndex] : channelsCells[dateIndex] = {};
+                channelsCells[dateIndex][rpc.id] = [
+                    '499',
+                    '899'
+                ];
+            }))
+        );
 
         // Update streams
         this.dateRows$.next(dateRows);
-        this.dateCells$.next(dateCells);
         this.availabilityCells$.next(availabilityCells);
         this.rateSummaryCells$.next(rateSummaryCells);
         this.channelsCells$.next(channelsCells);
