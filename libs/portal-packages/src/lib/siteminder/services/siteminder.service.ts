@@ -28,8 +28,6 @@ export class SiteMinderService {
         this.seedColumns();
         this.seedCells();
     }
-
-
     private seedColumns(): void {
         // Data
         const lodgingTypes = [

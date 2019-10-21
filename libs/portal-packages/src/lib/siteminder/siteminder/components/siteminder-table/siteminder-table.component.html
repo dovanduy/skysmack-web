@@ -63,9 +63,11 @@
         </thead>
         <tbody>
             <tr *ngFor="let date of dateRows$ | async">
+                <!-- Date -->
                 <td class="table-cell mat-cell">
                     {{ date | date: 'dd-mm-yyyy' }}
                 </td>
+
                 <ng-container *ngFor="let ltc of lodgingTypeColumns$ | async">
                     <!-- Available -->
                     <ng-container *ngIf="availabilityCells$ | async as availabilityCells">
