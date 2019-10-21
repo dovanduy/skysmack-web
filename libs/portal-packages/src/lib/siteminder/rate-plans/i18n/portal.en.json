@@ -56,7 +56,8 @@
             "FIELDS_TITLE": "(fields)",
             "ITEM": "Item",
             "MANAGE": "Manage",
-            "ACTIONS": "Actions"
+            "ACTIONS": "Actions",
+            "TITLE_EXTRAS": "(rate plans)"
         }
     }
 }

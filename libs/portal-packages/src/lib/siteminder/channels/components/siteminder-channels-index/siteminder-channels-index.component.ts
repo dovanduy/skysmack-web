@@ -17,6 +17,8 @@ export class SiteMinderChannelsIndexComponent extends RecordIndexComponent<SiteM
   public componentKey = SiteMinderChannelsIndexComponent.COMPONENT_KEY;
 
   public areaKey: string = SITE_MINDER_CHANNELS_AREA_KEY;
+  public titleExtras = true;
+
   public menuItemActions: MenuItem[] = [
     new MenuItem().asUrlAction('details', MENU_ITEM_ACTION_DETAILS, 'list'),
     new MenuItem().asUrlAction('edit', MENU_ITEM_ACTIONS_EDIT, 'edit').setPermissions([

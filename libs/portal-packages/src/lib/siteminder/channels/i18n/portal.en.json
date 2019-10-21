@@ -38,6 +38,7 @@
             "BUTTON_EDIT": "Update"
         },
         "INDEX": {
+            "TITLE_EXTRAS": "(channels)",
             "PACKAGES": "Packages",
             "CREATE": "Create",
             "EDIT": "Edit",

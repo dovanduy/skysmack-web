@@ -17,6 +17,8 @@ export class SiteMinderRatePlansIndexComponent extends RecordIndexComponent<Site
   public componentKey = SiteMinderRatePlansIndexComponent.COMPONENT_KEY;
 
   public areaKey: string = SITE_MINDER_RATE_PLANS_AREA_KEY;
+  public titleExtras = true;
+
   public menuItemActions: MenuItem[] = [
     new MenuItem().asUrlAction('details', MENU_ITEM_ACTION_DETAILS, 'list'),
     new MenuItem().asUrlAction('edit', MENU_ITEM_ACTIONS_EDIT, 'edit').setPermissions([
