@@ -1,1 +1,2 @@
-export * from './siteminder/index';
+export * from './siteminder-reducer';
+export * from './siteminder-channels-reducer';
