@@ -8,3 +8,8 @@ export const SITE_MINDER_CHANNELS_REDUCER_KEY = 'siteMinderChannels';
 export const SITE_MINDER_CHANNELS_AREA_KEY = 'site_minder_channels'; // validation, store, menu
 export const SITE_MINDER_CHANNELS_REDUX_KEY = 'SITE_MINDER_CHANNELS_'; // reducer prefix, action, epics, Requests
 export const SITE_MINDER_CHANNELS_ADDITIONAL_PATHS = ['channels']; // actions, requests
+
+export const SITE_MINDER_RATE_PLANS_REDUCER_KEY = 'siteMinderRatePlans';
+export const SITE_MINDER_RATE_PLANS_AREA_KEY = 'site_minder_rate_plans'; // validation, store, menu
+export const SITE_MINDER_RATE_PLANS_REDUX_KEY = 'SITE_MINDER_RATE_PLANS_'; // reducer prefix, action, epics, Requests
+export const SITE_MINDER_RATE_PLANS_ADDITIONAL_PATHS = ['rate-plans']; // actions, requests
