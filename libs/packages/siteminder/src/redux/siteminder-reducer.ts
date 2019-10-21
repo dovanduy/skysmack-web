@@ -18,7 +18,7 @@ export function siteMinderReducer(state = new SiteMinderState(), action: ReduxAc
     switch (action.type) {
         default:
             return {
-                ...state,
+                ...state
             };
     }
 }

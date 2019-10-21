@@ -16,7 +16,7 @@ export class SiteMinderChannelsState implements RecordState<Channel, number> {
     public localRecords: StrIndex<StrIndex<LocalObject<Channel, number>>> = {};
 }
 
-export function personsReducer(state = new SiteMinderChannelsState(), action: ReduxAction, prefix: string = SITE_MINDER_CHANNELS_REDUX_KEY): SiteMinderChannelsState {
+export function siteMinderChannelsReducer(state = new SiteMinderChannelsState(), action: ReduxAction, prefix: string = SITE_MINDER_CHANNELS_REDUX_KEY): SiteMinderChannelsState {
     state = sharedReducer(state, action, new SiteMinderChannelsState(), SITE_MINDER_CHANNELS_REDUCER_KEY);
 
     switch (action.type) {
