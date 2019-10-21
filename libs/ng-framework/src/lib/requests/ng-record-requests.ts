@@ -47,8 +47,6 @@ export abstract class NgRecordRequests<TRecord extends Record<TKey>, TKey> imple
         let url = `${this.apiDomain.domain}/${action.payload.packagePath}`;
         url = this.addAdditionalPaths(url);
 
-        console.log('getting');
-
         return this.http.get<TRecord[]>(url, { observe: 'response', params: queryParameters })
             .pipe(
                 map(httpResponse => {

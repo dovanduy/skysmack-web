@@ -10,7 +10,8 @@
             "ITEM": "Item",
             "MANAGE": "Manage",
             "ACTIONS": "Actions",
-            "CHANNELS": "Channels"
+            "CHANNELS": "Channels",
+            "RATE_PLANS": "Rate plans"
         }
     }
 }

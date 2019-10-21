@@ -12,6 +12,7 @@ import { PortalFieldsModule } from '@skysmack/portal-fields';
 import { CoalescingComponentFactoryResolver } from '@skysmack/ng-framework';
 import { NgSiteMinderMenuProvider } from './ng-siteminder-menu-provider';
 import { siteminderChannelsComponents, siteminderChannelsEntryComponents } from './channels/components/siteminder-channels-components';
+import { siteminderRatePlansComponents, siteminderRatePlansEntryComponents } from './rate-plans/components/siteminder-rate-plans-components';
 
 @NgModule({
   imports: [
@@ -26,11 +27,13 @@ import { siteminderChannelsComponents, siteminderChannelsEntryComponents } from 
   exports: [],
   declarations: [
     ...siteminderComponents,
-    ...siteminderChannelsComponents
+    ...siteminderChannelsComponents,
+    ...siteminderRatePlansComponents
   ],
   entryComponents: [
     ...siteminderEntryComponents,
-    ...siteminderChannelsEntryComponents
+    ...siteminderChannelsEntryComponents,
+    ...siteminderRatePlansEntryComponents
   ],
   providers: []
 })
