@@ -65,28 +65,27 @@
             <tr *ngFor="let date of dateRows$ | async">
                 <!-- Date -->
                 <td class="table-cell mat-cell">
-                    {{ date | date: 'dd-mm-yyyy' }}
+                    {{ date | date: 'dd-MM-yyyy' }}
                 </td>
 
                 <ng-container *ngFor="let ltc of lodgingTypeColumns$ | async">
                     <!-- Available -->
-                    <ng-container *ngIf="availabilityCells$ | async as availabilityCells">
-                        <td class="table-cell mat-cell">
+                    <td class="table-cell mat-cell">
+                        <ng-container *ngIf="availabilityCells$ | async as availabilityCells">
                             {{ availabilityCells[date][ltc.id] }}
-                        </td>
-                    </ng-container>
-
+                        </ng-container>
+                    </td>
 
                     <!-- Rateplan -->
                     <ng-container *ngIf="ratePlanColumns$ | async as rpc">
                         <ng-container *ngFor="let ratePlanColumn of rpc[ltc.id]">
-
                             <!-- Rates Summary -->
-                            <ng-container *ngIf="rateSummaryCells$ | async as rsc">
-                                <td class="table-cell mat-cell">
+                            <td class="table-cell mat-cell">
+                                <ng-container *ngIf="rateSummaryCells$ | async as rsc">
                                     {{ rsc[date][ratePlanColumn.id] }}
-                                </td>
-                            </ng-container>
+                                </ng-container>
+                            </td>
+
                             <!-- Channels (show if expanded) -->
                             <ng-container *ngIf="channelsCells$ | async as channelCells">
                                 <ng-container *ngFor="let rate of channelCells[date][ratePlanColumn.id]">
