@@ -1,6 +1,6 @@
 import { AppState, ReduxAction } from '@skysmack/redux';
 import { sharedReducer } from '@skysmack/redux';
-import { SITE_MINDER_REDUCER_KEY } from '../../constants/constants';
+import { SITE_MINDER_REDUCER_KEY } from '../constants/constants';
 
 /**
  * This is to be used when you want to access siteminder via the GLOBAL state. E.g. state.siteminder (where siteminder is the reducer name.)

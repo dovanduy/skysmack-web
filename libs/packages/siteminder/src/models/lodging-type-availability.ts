@@ -14,4 +14,8 @@ export class LodgingTypeAvailability extends Record<LodgingTypeAvailabilityKey> 
     public availableModifier: number;
     public lodgingTypeId: number;
     public lodgingType: LocalObject<LodgingType, number>;
+
+    constructor(init?: Partial<LodgingTypeAvailability>) {
+        super(init);
+    }
 }

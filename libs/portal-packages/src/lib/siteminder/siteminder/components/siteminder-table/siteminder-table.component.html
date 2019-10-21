@@ -1,0 +1,104 @@
+<mat-card>
+    <table cellspacing="0" cellpadding="0" class="mat-table">
+        <thead class="mat-header-row">
+            <!-- 1st header row -->
+            <tr>
+                <!-- Date -->
+                <th *ngIf="dateColumn$ | async as dateColumn" rowspan="3" class="table-cell mat-header-cell">
+                    {{  dateColumn.title }}
+                </th>
+                <ng-container *ngFor="let ltc of lodgingTypeColumns$ | async">
+                    <!-- Lodging Type -->
+                    <th colspan="7" class="table-cell mat-header-cell">
+                        {{ ltc.title }}
+                    </th>
+                </ng-container>
+            </tr>
+
+            <!-- 2nd header row -->
+            <tr>
+                <ng-container *ngFor="let ltc of lodgingTypeColumns$ | async">
+                    <!-- Available -->
+                    <ng-container *ngIf="availabilityColumns$ | async as availabilityColumns">
+                        <th rowspan="2" class="table-cell mat-header-cell">
+                            {{ availabilityColumns[ltc.id]?.title }}
+                        </th>
+                    </ng-container>
+                    <!-- Rateplan -->
+                    <ng-container *ngIf="ratePlanColumns$ | async as rpc">
+                        <ng-container *ngFor="let ratePlanColumn of rpc[ltc.id]">
+                            <th colspan="3" class="table-cell mat-header-cell">
+                                {{ ratePlanColumn.title }}
+                            </th>
+                        </ng-container>
+                    </ng-container>
+                </ng-container>
+            </tr>
+
+            <!-- 3rd header row -->
+            <tr>
+                <ng-container *ngFor="let ltc of lodgingTypeColumns$ | async">
+                    <!-- Rateplan -->
+                    <ng-container *ngIf="ratePlanColumns$ | async as rpc">
+                        <ng-container *ngFor="let ratePlanColumn of rpc[ltc.id]">
+                            <!-- Rates Summary -->
+                            <ng-container *ngIf="rateSummaryColumns$ | async as rsc">
+                                <th class="table-cell mat-header-cell">
+                                    {{ rsc[ratePlanColumn.id]?.title }}
+                                </th>
+                            </ng-container>
+
+                            <!-- Channels (show if expanded) -->
+                            <ng-container *ngIf="channelsColumns$ | async as cc">
+                                <ng-container *ngFor="let channelColumn of cc[ratePlanColumn.id]">
+                                    <th class="table-cell mat-header-cell">
+                                        {{ channelColumn.title }}
+                                    </th>
+                                </ng-container>
+                            </ng-container>
+                        </ng-container>
+                    </ng-container>
+                </ng-container>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let date of dateRows$ | async">
+                <!-- Date -->
+                <td class="table-cell mat-cell">
+                    {{ date | date: 'dd-mm-yyyy' }}
+                </td>
+
+                <ng-container *ngFor="let ltc of lodgingTypeColumns$ | async">
+                    <!-- Available -->
+                    <ng-container *ngIf="availabilityCells$ | async as availabilityCells">
+                        <td class="table-cell mat-cell">
+                            {{ availabilityCells[date][ltc.id] }}
+                        </td>
+                    </ng-container>
+
+
+                    <!-- Rateplan -->
+                    <ng-container *ngIf="ratePlanColumns$ | async as rpc">
+                        <ng-container *ngFor="let ratePlanColumn of rpc[ltc.id]">
+
+                            <!-- Rates Summary -->
+                            <ng-container *ngIf="rateSummaryCells$ | async as rsc">
+                                <td class="table-cell mat-cell">
+                                    {{ rsc[date][ratePlanColumn.id] }}
+                                </td>
+                            </ng-container>
+                            <!-- Channels (show if expanded) -->
+                            <ng-container *ngIf="channelsCells$ | async as channelCells">
+                                <ng-container *ngFor="let rate of channelCells[date][ratePlanColumn.id]">
+                                    <td class="table-cell mat-cell">
+                                        {{ rate }}
+                                    </td>
+                                </ng-container>
+                            </ng-container>
+                        </ng-container>
+                    </ng-container>
+                </ng-container>
+            </tr>
+        </tbody>
+    </table>
+</mat-card>
