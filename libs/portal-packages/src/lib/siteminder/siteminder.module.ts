@@ -11,6 +11,7 @@ import { DynamicFormsModule } from '@skysmack/portal-dynamic-forms';
 import { PortalFieldsModule } from '@skysmack/portal-fields';
 import { CoalescingComponentFactoryResolver } from '@skysmack/ng-framework';
 import { NgSiteMinderMenuProvider } from './ng-siteminder-menu-provider';
+import { siteminderChannelsComponents, siteminderChannelsEntryComponents } from './channels/components/siteminder-channels-components';
 
 @NgModule({
   imports: [
@@ -20,14 +21,16 @@ import { NgSiteMinderMenuProvider } from './ng-siteminder-menu-provider';
     NgSiteMinderModule,
     DynamicFormsModule,
     SiteMinderRoutingModule,
-    PortalFieldsModule,
+    PortalFieldsModule
   ],
   exports: [],
   declarations: [
-    ...siteminderComponents
+    ...siteminderComponents,
+    ...siteminderChannelsComponents
   ],
   entryComponents: [
-    ...siteminderEntryComponents
+    ...siteminderEntryComponents,
+    ...siteminderChannelsEntryComponents
   ],
   providers: []
 })

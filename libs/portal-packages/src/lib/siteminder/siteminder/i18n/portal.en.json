@@ -9,7 +9,8 @@
             "FIELDS_TITLE": "(fields)",
             "ITEM": "Item",
             "MANAGE": "Manage",
-            "ACTIONS": "Actions"
+            "ACTIONS": "Actions",
+            "CHANNELS": "Channels"
         }
     }
 }

@@ -1,0 +1,52 @@
+{
+    "SITE_MINDER_CHANNELS": {
+        "FORM": {
+            "LABELS": {
+                "NAME": "Name"
+            },
+            "PLACEHOLDERS": {
+                "NAME": "Enter name"
+            },
+            "VALIDATION": {
+                "NAME": {
+                    "REQUIRED": "A name is required."
+                }
+            }
+        },
+        "FIELDS": {
+            "CREATE": {
+                "ADD": "Add new field"
+            },
+            "EDIT": {
+                "EDITING": "Editing"
+            },
+            "INDEX": {
+                "ACTIONS": "Actions",
+                "CREATE": "Create new field",
+                "OTHER": "Other",
+                "BACK": "Back",
+                "FIELDS": "Fields",
+                "EDIT": "Edit"
+            }
+        },
+        "CREATE": {
+            "CREATE": "Create",
+            "BUTTON_CREATE": "Create"
+        },
+        "EDIT": {
+            "EDIT": "Edit",
+            "BUTTON_EDIT": "Update"
+        },
+        "INDEX": {
+            "PACKAGES": "Packages",
+            "CREATE": "Create",
+            "EDIT": "Edit",
+            "DELETE": "Delete",
+            "FIELDS": "Fields",
+            "FIELDS_TITLE": "(fields)",
+            "ITEM": "Item",
+            "MANAGE": "Manage",
+            "ACTIONS": "Actions"
+        }
+    }
+}

@@ -962,45 +962,6 @@
 			"SUBMIT": "Submit"
 		}
 	},
-	"GROUP_RESERVATIONS": {
-		"CREATE": {
-			"CREATE": "Create",
-			"BUTTON_CREATE": "Create"
-		},
-		"EDIT": {
-			"EDIT": "Edit",
-			"BUTTON_EDIT": "Update"
-		},
-		"INDEX": {
-			"TITLE_EXTRAS": "(groups)",
-			"ACTIONS": "Actions",
-			"CREATE": "Create",
-			"DELETE": "Delete",
-			"MANAGE": "Manage",
-			"FIELDS": "Fields",
-			"FIELDS_TITLE": "(group fields)",
-			"BACK": "Back"
-		},
-		"FORM": {
-			"LABELS": {
-				"NAME": "Name"
-			},
-			"PLACEHOLDERS": {
-				"NAME": "Enter name"
-			},
-			"VALIDATION": {
-				"NAME": {
-					"REQUIRED": "Name is required."
-				}
-			}
-		},
-		"QUEUE": {
-			"ADDING": "Adding {{ name }}",
-			"UPDATING": "Updating {{ name }}",
-			"DELETING": "Deleting {{ name }}",
-			"ERROR": "An error occured with {{ name }}. Correct and try again."
-		}
-	},
 	"LODGING_RESERVATIONS": {
 		"ARRIVALS": {
 			"TITLE": "Arrivals",
@@ -1134,6 +1095,45 @@
 		"CANCEL": "Cancel",
 		"DONE": "Done",
 		"CHOOSE_LODGING_TYPE": "Choose a lodging type"
+	},
+	"GROUP_RESERVATIONS": {
+		"CREATE": {
+			"CREATE": "Create",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDIT": "Edit",
+			"BUTTON_EDIT": "Update"
+		},
+		"INDEX": {
+			"TITLE_EXTRAS": "(groups)",
+			"ACTIONS": "Actions",
+			"CREATE": "Create",
+			"DELETE": "Delete",
+			"MANAGE": "Manage",
+			"FIELDS": "Fields",
+			"FIELDS_TITLE": "(group fields)",
+			"BACK": "Back"
+		},
+		"FORM": {
+			"LABELS": {
+				"NAME": "Name"
+			},
+			"PLACEHOLDERS": {
+				"NAME": "Enter name"
+			},
+			"VALIDATION": {
+				"NAME": {
+					"REQUIRED": "Name is required."
+				}
+			}
+		},
+		"QUEUE": {
+			"ADDING": "Adding {{ name }}",
+			"UPDATING": "Updating {{ name }}",
+			"DELETING": "Deleting {{ name }}",
+			"ERROR": "An error occured with {{ name }}. Correct and try again."
+		}
 	},
 	"LODGING_SETTINGS": {
 		"FORM": {
@@ -1677,45 +1677,6 @@
 			"ERROR": "An error occured with {{ displayName }}. Correct and try again."
 		}
 	},
-	"PRODUCT_TYPES": {
-		"CREATE": {
-			"CREATE": "Create",
-			"BUTTON_CREATE": "Create"
-		},
-		"EDIT": {
-			"EDIT": "Edit",
-			"BUTTON_EDIT": "Update"
-		},
-		"INDEX": {
-			"TITLE_EXTRAS": "(types)",
-			"ACTIONS": "Actions",
-			"CREATE": "Create",
-			"DELETE": "Delete",
-			"MANAGE": "Manage",
-			"FIELDS": "Fields",
-			"FIELDS_TITLE": "(type fields)",
-			"BACK": "Back"
-		},
-		"FORM": {
-			"LABELS": {
-				"NAME": "Name"
-			},
-			"PLACEHOLDERS": {
-				"NAME": "Enter name"
-			},
-			"VALIDATION": {
-				"NAME": {
-					"REQUIRED": "Name is required."
-				}
-			}
-		},
-		"QUEUE": {
-			"ADDING": "Adding {{ name }}",
-			"UPDATING": "Updating {{ name }}",
-			"DELETING": "Deleting {{ name }}",
-			"ERROR": "An error occured with {{ name }}. Correct and try again."
-		}
-	},
 	"PRODUCTS": {
 		"FORM": {
 			"LABELS": {
@@ -1766,6 +1727,45 @@
 				"TYPES": "Types",
 				"FIELDS": "Fields",
 				"BACK": "Back"
+			}
+		},
+		"QUEUE": {
+			"ADDING": "Adding {{ name }}",
+			"UPDATING": "Updating {{ name }}",
+			"DELETING": "Deleting {{ name }}",
+			"ERROR": "An error occured with {{ name }}. Correct and try again."
+		}
+	},
+	"PRODUCT_TYPES": {
+		"CREATE": {
+			"CREATE": "Create",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDIT": "Edit",
+			"BUTTON_EDIT": "Update"
+		},
+		"INDEX": {
+			"TITLE_EXTRAS": "(types)",
+			"ACTIONS": "Actions",
+			"CREATE": "Create",
+			"DELETE": "Delete",
+			"MANAGE": "Manage",
+			"FIELDS": "Fields",
+			"FIELDS_TITLE": "(type fields)",
+			"BACK": "Back"
+		},
+		"FORM": {
+			"LABELS": {
+				"NAME": "Name"
+			},
+			"PLACEHOLDERS": {
+				"NAME": "Enter name"
+			},
+			"VALIDATION": {
+				"NAME": {
+					"REQUIRED": "Name is required."
+				}
 			}
 		},
 		"QUEUE": {
@@ -2317,6 +2317,70 @@
 			"UPDATING": "Updating the lodging type reservation price change valid from/to: {{ dates }}",
 			"DELETING": "Deleting the lodging type reservation price change valid from/to: {{ dates }}",
 			"ERROR": "An error occured with the lodging type reservation price change valid from/to: {{ dates }}. Correct and try again."
+		}
+	},
+	"SITE_MINDER_CHANNELS": {
+		"FORM": {
+			"LABELS": {
+				"NAME": "Name"
+			},
+			"PLACEHOLDERS": {
+				"NAME": "Enter name"
+			},
+			"VALIDATION": {
+				"NAME": {
+					"REQUIRED": "A name is required."
+				}
+			}
+		},
+		"FIELDS": {
+			"CREATE": {
+				"ADD": "Add new field"
+			},
+			"EDIT": {
+				"EDITING": "Editing"
+			},
+			"INDEX": {
+				"ACTIONS": "Actions",
+				"CREATE": "Create new field",
+				"OTHER": "Other",
+				"BACK": "Back",
+				"FIELDS": "Fields",
+				"EDIT": "Edit"
+			}
+		},
+		"CREATE": {
+			"CREATE": "Create",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDIT": "Edit",
+			"BUTTON_EDIT": "Update"
+		},
+		"INDEX": {
+			"PACKAGES": "Packages",
+			"CREATE": "Create",
+			"EDIT": "Edit",
+			"DELETE": "Delete",
+			"FIELDS": "Fields",
+			"FIELDS_TITLE": "(fields)",
+			"ITEM": "Item",
+			"MANAGE": "Manage",
+			"ACTIONS": "Actions"
+		}
+	},
+	"SITE_MINDER": {
+		"INDEX": {
+			"PACKAGES": "Packages",
+			"CREATE": "Create",
+			"EDIT": "Edit",
+			"DELETE": "Delete",
+			"FIELDS": "Fields",
+			"FIELDS_TITLE": "(fields)",
+			"ITEM": "Item",
+			"MANAGE": "Manage",
+			"ACTIONS": "Actions",
+			"CHANNELS": "Channels"
 		}
 	},
 	"CONNECTIONS": {
