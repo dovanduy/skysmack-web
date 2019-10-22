@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { LodgingTypeRate } from '@skysmack/packages-siteminder';
+import { RateSummary } from '../../../models/rate-summary';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { SiteMinderRateSummaryDialogComponent } from '../siteminder-rate-summary-dialog/siteminder-rate-summary-dialog.component';
 
 @Component({
   selector: 'ss-siteminder-rate-summary',
@@ -8,14 +10,16 @@ import { LodgingTypeRate } from '@skysmack/packages-siteminder';
 })
 export class SiteMinderRateSummaryComponent implements OnInit {
 
-  @Input() public data: LodgingTypeRate[];
+  @Input() public data: RateSummary;
   public summary: string;
 
-  constructor() { }
+  constructor(
+    private dialog: MatDialog
+  ) { }
 
   ngOnInit() {
     if (this.data) {
-      const { min, max } = this.findMinMax(this.data.map(x => x.rate));
+      const { min, max } = this.findMinMax(this.data.rates.map(x => x.rate));
       this.summary = `${min} - ${max}`;
     }
   }
@@ -30,5 +34,11 @@ export class SiteMinderRateSummaryComponent implements OnInit {
     }
 
     return { min, max };
+  }
+
+  public openDialog(): void {
+    this.dialog.open(SiteMinderRateSummaryDialogComponent, {
+      data: this.data
+    } as MatDialogConfig)
   }
 }

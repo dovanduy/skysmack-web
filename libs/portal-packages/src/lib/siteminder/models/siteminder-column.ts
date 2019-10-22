@@ -1,5 +1,3 @@
-import { Guid } from 'guid-typescript';
-
 export class SiteMinderColumn {
     public id?: any;
     public title: string;

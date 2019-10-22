@@ -5,6 +5,7 @@ import { SiteMinderColumn } from '../../../models/siteminder-column';
 import { SiteMinderService } from '../../../services/siteminder.service';
 import { Availability, LodgingTypeRate } from '@skysmack/packages-siteminder';
 import { tap } from 'rxjs/operators';
+import { RateSummary } from '../../../models/rate-summary';
 
 @Component({
   selector: 'ss-siteminder-table',
@@ -25,7 +26,7 @@ export class SiteMinderTableComponent implements OnInit {
 
   // Cells
   public availabilityCells$: BehaviorSubject<StrIndex<StrIndex<Availability>>>;
-  public rateSummaryCells$: BehaviorSubject<StrIndex<StrIndex<LodgingTypeRate[]>>>;
+  public rateSummaryCells$: BehaviorSubject<StrIndex<StrIndex<RateSummary>>>;
   public channelsCells$: BehaviorSubject<StrIndex<StrIndex<StrIndex<LodgingTypeRate>>>>;
 
   constructor(

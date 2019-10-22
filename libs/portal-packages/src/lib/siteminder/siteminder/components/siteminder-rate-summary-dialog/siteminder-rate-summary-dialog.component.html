@@ -1,0 +1,14 @@
+<h3>Rate summary</h3>
+
+<form *ngIf="form" [formGroup]="form">
+    <mat-form-field *ngFor="let channel of channels">
+        <input matInput type="number" step="1" [formControlName]="channel.name" [placeholder]="channel.name">
+    </mat-form-field>
+</form>
+
+
+
+<button mat-raised-button (click)="cancel()">Cancel</button>
+<button mat-raised-button color="primary" (click)="ok()">
+    Ok
+</button>

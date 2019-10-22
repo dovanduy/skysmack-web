@@ -5,6 +5,7 @@ import { SiteMinderAvailabilityComponent } from './siteminder-availability/sitem
 import { SiteMinderRateSummaryComponent } from './siteminder-rate-summary/siteminder-rate-summary.component';
 import { SiteMinderRateComponent } from './siteminder-rate/siteminder-rate.component';
 import { SiteMinderAvailabilityDialogComponent } from './siteminder-availability-dialog/siteminder-availability-dialog.component';
+import { SiteMinderRateSummaryDialogComponent } from './siteminder-rate-summary-dialog/siteminder-rate-summary-dialog.component';
 
 export const siteminderRoutes: Routes = [
   {
@@ -24,10 +25,12 @@ export const siteminderComponents: any[] = [
   SiteMinderAvailabilityComponent,
   SiteMinderAvailabilityDialogComponent,
   SiteMinderRateSummaryComponent,
+  SiteMinderRateSummaryDialogComponent,
   SiteMinderRateComponent
 ];
 
 export const siteminderEntryComponents: any[] = [
-  SiteMinderAvailabilityDialogComponent
+  SiteMinderAvailabilityDialogComponent,
+  SiteMinderRateSummaryDialogComponent
 ];
 

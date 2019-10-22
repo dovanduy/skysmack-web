@@ -4,6 +4,7 @@ import { toLocalObject, StrIndex } from '@skysmack/framework';
 import { LodgingType } from '@skysmack/packages-lodgings';
 import { RatePlan, Channel, Availability, Rate, LodgingTypeRate } from '@skysmack/packages-siteminder';
 import { SiteMinderColumn } from '../models/siteminder-column';
+import { RateSummary } from '../models/rate-summary';
 
 @Injectable({ providedIn: 'root' })
 export class SiteMinderService {
@@ -20,7 +21,7 @@ export class SiteMinderService {
 
     // Cells
     public availabilityCells$ = new BehaviorSubject<StrIndex<StrIndex<Availability>>>(null);
-    public rateSummaryCells$ = new BehaviorSubject<StrIndex<StrIndex<LodgingTypeRate[]>>>(null);
+    public rateSummaryCells$ = new BehaviorSubject<StrIndex<StrIndex<RateSummary>>>(null);
     public channelsCells$ = new BehaviorSubject<StrIndex<StrIndex<StrIndex<LodgingTypeRate>>>>(null);
 
     // Data
@@ -122,7 +123,7 @@ export class SiteMinderService {
 
         // Cells
         const availabilityCells: StrIndex<StrIndex<Availability>> = {};
-        const rateSummaryCells: StrIndex<StrIndex<LodgingTypeRate[]>> = {};
+        const rateSummaryCells: StrIndex<StrIndex<RateSummary>> = {};
         const channelsCells: StrIndex<StrIndex<StrIndex<LodgingTypeRate>>> = {};
 
         const lodgingTypeColumns = this.lodgingTypeColumns$.getValue();
@@ -148,7 +149,11 @@ export class SiteMinderService {
 
                 // RateSummary cells
                 rateSummaryCells[dateIndex] ? rateSummaryCells[dateIndex] : rateSummaryCells[dateIndex] = {};
-                rateSummaryCells[dateIndex][rpc.id] = todayRates;
+                rateSummaryCells[dateIndex][rpc.id] = new RateSummary({
+                    date: date,
+                    rates: todayRates,
+                    channels: channels.map(x => x.object)
+                });
 
                 // Channel cells
                 channelsCells[dateIndex] ? channelsCells[dateIndex] : channelsCells[dateIndex] = {};
