@@ -1,9 +1,10 @@
 import { Routes } from '@angular/router';
 import { SiteMinderIndexComponent } from './siteminder-index/siteminder-index.component';
 import { SiteMinderTableComponent } from './siteminder-table/siteminder-table.component';
-import { SiteminderAvailabilityComponent } from './siteminder-availability/siteminder-availability.component';
+import { SiteMinderAvailabilityComponent } from './siteminder-availability/siteminder-availability.component';
 import { SiteMinderRateSummaryComponent } from './siteminder-rate-summary/siteminder-rate-summary.component';
-import { SiteminderRateComponent } from './siteminder-rate/siteminder-rate.component';
+import { SiteMinderRateComponent } from './siteminder-rate/siteminder-rate.component';
+import { SiteMinderAvailabilityDialogComponent } from './siteminder-availability-dialog/siteminder-availability-dialog.component';
 
 export const siteminderRoutes: Routes = [
   {
@@ -20,14 +21,13 @@ export const siteminderRoutes: Routes = [
 export const siteminderComponents: any[] = [
   SiteMinderIndexComponent,
   SiteMinderTableComponent,
-  SiteminderAvailabilityComponent,
+  SiteMinderAvailabilityComponent,
+  SiteMinderAvailabilityDialogComponent,
   SiteMinderRateSummaryComponent,
-  SiteminderRateComponent
+  SiteMinderRateComponent
 ];
 
 export const siteminderEntryComponents: any[] = [
-  SiteminderAvailabilityComponent,
-  SiteMinderRateSummaryComponent,
-  SiteminderRateComponent
+  SiteMinderAvailabilityDialogComponent
 ];
 

@@ -45,7 +45,7 @@ export class SiteMinderTableComponent implements OnInit {
     this.channelsCells$ = this.service.channelsCells$;
   }
 
-  public calculateLodgingTypeColumn(lodgingTypeColumn: SiteMinderColumn): number {
+  public calculateLodgingTypeColspan(): number {
     const ratePlanColumns = this.ratePlanColumns$.getValue();
     const channelsColumns = this.channelsColumns$.getValue();
     return Object.keys(ratePlanColumns).map(key => {
@@ -53,5 +53,13 @@ export class SiteMinderTableComponent implements OnInit {
       // + 1 for availability + 1 for rate summary
       return channelsColumns[key].length + 2;
     }).reduce((a, b) => a + b, 0);
+  }
+
+
+  public calculateRatePlanColspan(ratePlanColumnId: number): number {
+    const channelsColumns = this.channelsColumns$.getValue();
+    // Rate plan colspan is equal to the count of its own channel columns
+    // + 1 for rate summary
+    return channelsColumns[ratePlanColumnId].length + 1;
   }
 }

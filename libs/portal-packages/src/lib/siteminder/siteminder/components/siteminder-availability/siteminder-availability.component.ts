@@ -1,19 +1,23 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Availability } from '@skysmack/packages-siteminder';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { SiteMinderAvailabilityDialogComponent } from '../siteminder-availability-dialog/siteminder-availability-dialog.component';
 
 @Component({
   selector: 'ss-siteminder-availability',
   templateUrl: './siteminder-availability.component.html',
   styleUrls: ['./siteminder-availability.component.scss']
 })
-export class SiteminderAvailabilityComponent implements OnInit {
+export class SiteMinderAvailabilityComponent implements OnInit {
 
   @Input() public data: Availability;
   public available: number;
   public availableModifier: number;
   public availableAfterModification: number;
 
-  constructor() { }
+  constructor(
+    private dialog: MatDialog
+  ) { }
 
   ngOnInit() {
     if (this.data) {
@@ -23,4 +27,9 @@ export class SiteminderAvailabilityComponent implements OnInit {
     }
   }
 
+  public openDialog(): void {
+    this.dialog.open(SiteMinderAvailabilityDialogComponent, {
+      data: this.data
+    } as MatDialogConfig)
+  }
 }

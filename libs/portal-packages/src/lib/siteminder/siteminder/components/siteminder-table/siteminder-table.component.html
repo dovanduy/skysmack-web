@@ -9,7 +9,7 @@
                 </th>
                 <ng-container *ngFor="let ltc of lodgingTypeColumns$ | async">
                     <!-- Lodging Type -->
-                    <th [attr.colspan]="calculateLodgingTypeColumn(ltc)" class="table-cell mat-header-cell">
+                    <th [attr.colspan]="calculateLodgingTypeColspan()" class="table-cell mat-header-cell">
                         {{ ltc.title }}
                     </th>
                 </ng-container>
@@ -27,7 +27,8 @@
                     <!-- Rateplan -->
                     <ng-container *ngIf="ratePlanColumns$ | async as rpc">
                         <ng-container *ngFor="let ratePlanColumn of rpc[ltc.id]">
-                            <th colspan="4" class="table-cell mat-header-cell">
+                            <th [attr.colspan]="calculateRatePlanColspan(ratePlanColumn.id)"
+                                class="table-cell mat-header-cell">
                                 {{ ratePlanColumn.title }}
                             </th>
                         </ng-container>

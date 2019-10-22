@@ -6,7 +6,7 @@ import { Rate } from '@skysmack/packages-siteminder';
   templateUrl: './siteminder-rate.component.html',
   styleUrls: ['./siteminder-rate.component.scss']
 })
-export class SiteminderRateComponent implements OnInit {
+export class SiteMinderRateComponent implements OnInit {
 
   @Input() public data: Rate;
   public rate: number;
