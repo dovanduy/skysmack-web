@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { toLocalObject, StrIndex } from '@skysmack/framework';
 import { LodgingType } from '@skysmack/packages-lodgings';
-import { RatePlan, Channel } from '@skysmack/packages-siteminder';
+import { RatePlan, Channel, Availability } from '@skysmack/packages-siteminder';
 import { SiteMinderColumn } from '../models/siteminder-column';
 
 @Injectable({ providedIn: 'root' })
@@ -19,7 +19,7 @@ export class SiteMinderService {
     public dateRows$ = new BehaviorSubject<Date[]>(null);
 
     // Cells
-    public availabilityCells$ = new BehaviorSubject<StrIndex<StrIndex<string>>>(null);
+    public availabilityCells$ = new BehaviorSubject<StrIndex<StrIndex<Availability>>>(null);
     public rateSummaryCells$ = new BehaviorSubject<StrIndex<StrIndex<string>>>(null);
     public channelsCells$ = new BehaviorSubject<StrIndex<StrIndex<string[]>>>(null);
 
@@ -28,6 +28,7 @@ export class SiteMinderService {
         this.seedColumns();
         this.seedCells();
     }
+
     private seedColumns(): void {
         // Data
         const lodgingTypes = [
@@ -105,10 +106,10 @@ export class SiteMinderService {
 
     private seedCells(): void {
         // Data
-        const dateRows = [new Date(), new Date(), new Date()];
+        const dateRows = [new Date(), this.addDays(new Date(), 1), this.addDays(new Date(), 2)];
 
         // Cells
-        const availabilityCells: StrIndex<StrIndex<string>> = {};
+        const availabilityCells: StrIndex<StrIndex<Availability>> = {};
         const rateSummaryCells: StrIndex<StrIndex<string>> = {};
         const channelsCells: StrIndex<StrIndex<string[]>> = {};
 
@@ -118,7 +119,11 @@ export class SiteMinderService {
         dateRows.forEach(date => lodgingTypeColumns.forEach(ltc => {
             const dateIndex = date.toString();
             availabilityCells[dateIndex] ? availabilityCells[dateIndex] : availabilityCells[dateIndex] = {};
-            availabilityCells[dateIndex][ltc.id] = '6 (7/-1)';
+            availabilityCells[dateIndex][ltc.id] = new Availability({
+                available: 7,
+                availableModifier: -1,
+                lodgingTypeId: 1
+            });
 
         }));
 
@@ -142,5 +147,12 @@ export class SiteMinderService {
         this.availabilityCells$.next(availabilityCells);
         this.rateSummaryCells$.next(rateSummaryCells);
         this.channelsCells$.next(channelsCells);
+    }
+
+    // TEMP: Used w. mock data
+    private addDays(date, days) {
+        var result = new Date(date);
+        result.setDate(result.getDate() + days);
+        return result;
     }
 }

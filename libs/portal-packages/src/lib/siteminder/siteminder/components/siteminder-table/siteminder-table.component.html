@@ -72,7 +72,8 @@
                     <!-- Available -->
                     <td class="table-cell mat-cell">
                         <ng-container *ngIf="availabilityCells$ | async as availabilityCells">
-                            {{ availabilityCells[date][ltc.id] }}
+                            <ss-siteminder-availability [data]="availabilityCells[date][ltc.id]">
+                            </ss-siteminder-availability>
                         </ng-container>
                     </td>
 
