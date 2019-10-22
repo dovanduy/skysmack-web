@@ -1,4 +1,5 @@
-<h3>Rate summary</h3>
+<h3>Update rates for {{ date | date: 'dd-MM-yyyy' }}</h3>
+<p style="font-size: 12px;">{{ ratePlanTitle }}</p>
 
 <form *ngIf="form" [formGroup]="form">
     <mat-form-field *ngFor="let channel of channels">

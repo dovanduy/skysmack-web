@@ -151,6 +151,7 @@ export class SiteMinderService {
                 rateSummaryCells[dateIndex] ? rateSummaryCells[dateIndex] : rateSummaryCells[dateIndex] = {};
                 rateSummaryCells[dateIndex][rpc.id] = new RateSummary({
                     date: date,
+                    ratePlanTitle: rpc.title,
                     rates: todayRates,
                     channels: channels.map(x => x.object)
                 });

@@ -11,6 +11,7 @@ import { Channel } from '@skysmack/packages-siteminder';
 })
 export class SiteMinderRateSummaryDialogComponent implements OnInit {
   public date: Date;
+  public ratePlanTitle: string;
   public form: FormGroup;
   public channels: Channel[];
 
@@ -20,9 +21,10 @@ export class SiteMinderRateSummaryDialogComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    const { date, channels, rates } = this.data;
+    const { date, channels, rates, ratePlanTitle } = this.data;
     this.date = date;
     this.channels = channels;
+    this.ratePlanTitle = ratePlanTitle;
 
     this.form = new FormGroup({});
     channels.forEach(channel => {
