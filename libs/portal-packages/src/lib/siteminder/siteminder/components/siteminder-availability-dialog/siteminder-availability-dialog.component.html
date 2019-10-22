@@ -1,1 +1,17 @@
-<p>test</p>
+<h3>Modify availability</h3>
+
+<mat-form-field>
+    <input matInput type="number" step="1" name="available" [formControl]="availableControl" placeholder="Available">
+</mat-form-field>
+
+<mat-form-field>
+    <input matInput type="number" step="1" name="available" [formControl]="availableModifierControl"
+        placeholder="Modifier">
+</mat-form-field>
+
+<h4>Result: {{ (availableAfterModification$ | async) }}</h4>
+
+<button mat-raised-button (click)="cancel()">Cancel</button>
+<button mat-raised-button color="primary" (click)="ok()">
+    Ok
+</button>
