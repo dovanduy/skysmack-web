@@ -1,8 +1,9 @@
-import { Component, OnInit, Input, Inject } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { FormControl, FormGroup } from '@angular/forms';
 import { RateSummary } from '../../../models/rate-summary';
 import { Channel } from '@skysmack/packages-siteminder';
+import { LodgingType } from '@skysmack/packages-lodgings';
 
 @Component({
   selector: 'ss-siteminder-rate-summary-dialog',
@@ -14,6 +15,7 @@ export class SiteMinderRateSummaryDialogComponent implements OnInit {
   public ratePlanTitle: string;
   public form: FormGroup;
   public channels: Channel[];
+  public lodgingType: LodgingType;
 
   constructor(
     public dialogRef: MatDialogRef<SiteMinderRateSummaryDialogComponent>,
@@ -21,10 +23,11 @@ export class SiteMinderRateSummaryDialogComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    const { date, channels, rates, ratePlanTitle } = this.data;
+    const { date, channels, rates, ratePlanTitle, lodgingType } = this.data;
     this.date = date;
     this.channels = channels;
     this.ratePlanTitle = ratePlanTitle;
+    this.lodgingType = lodgingType;
 
     this.form = new FormGroup({});
     channels.forEach(channel => {

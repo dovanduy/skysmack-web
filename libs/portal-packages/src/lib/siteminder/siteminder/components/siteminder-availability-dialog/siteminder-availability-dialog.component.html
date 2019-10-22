@@ -1,11 +1,9 @@
-<h3>Modify availability</h3>
+<h3>Modify availability for {{ lodgingType.name }}</h3>
+
+<p>Available: {{ available }}</p>
 
 <mat-form-field>
-    <input matInput type="number" step="1" name="available" [formControl]="availableControl" placeholder="Available">
-</mat-form-field>
-
-<mat-form-field>
-    <input matInput type="number" step="1" name="available" [formControl]="availableModifierControl"
+    <input matInput type="number" step="1" name="Available modifier" [formControl]="availableModifierControl"
         placeholder="Modifier">
 </mat-form-field>
 

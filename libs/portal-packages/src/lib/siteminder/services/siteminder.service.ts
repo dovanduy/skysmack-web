@@ -2,9 +2,10 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { toLocalObject, StrIndex } from '@skysmack/framework';
 import { LodgingType } from '@skysmack/packages-lodgings';
-import { RatePlan, Channel, Availability, Rate, LodgingTypeRate } from '@skysmack/packages-siteminder';
+import { RatePlan, Channel, Availability, LodgingTypeRate } from '@skysmack/packages-siteminder';
 import { SiteMinderColumn } from '../models/siteminder-column';
 import { RateSummary } from '../models/rate-summary';
+import { RateInfo } from '../models/rate-info';
 
 @Injectable({ providedIn: 'root' })
 export class SiteMinderService {
@@ -22,7 +23,7 @@ export class SiteMinderService {
     // Cells
     public availabilityCells$ = new BehaviorSubject<StrIndex<StrIndex<Availability>>>(null);
     public rateSummaryCells$ = new BehaviorSubject<StrIndex<StrIndex<RateSummary>>>(null);
-    public channelsCells$ = new BehaviorSubject<StrIndex<StrIndex<StrIndex<LodgingTypeRate>>>>(null);
+    public channelsCells$ = new BehaviorSubject<StrIndex<StrIndex<StrIndex<RateInfo>>>>(null);
 
     // Data
     private data = {
@@ -119,12 +120,12 @@ export class SiteMinderService {
         // Data
         const dateRows = [new Date(), this.addDays(new Date(), 1), this.addDays(new Date(), 2)];
         const rates = this.getRates(dateRows);
-        const { channels } = this.data;
+        const { channels, lodgingTypes } = this.data;
 
         // Cells
         const availabilityCells: StrIndex<StrIndex<Availability>> = {};
         const rateSummaryCells: StrIndex<StrIndex<RateSummary>> = {};
-        const channelsCells: StrIndex<StrIndex<StrIndex<LodgingTypeRate>>> = {};
+        const channelsCells: StrIndex<StrIndex<StrIndex<RateInfo>>> = {};
 
         const lodgingTypeColumns = this.lodgingTypeColumns$.getValue();
         const ratePlanColumns = this.ratePlanColumns$.getValue();
@@ -132,11 +133,13 @@ export class SiteMinderService {
 
         dateRows.forEach(date => lodgingTypeColumns.forEach(ltc => {
             const dateIndex = date.toString();
+            const lodgingType = lodgingTypes.find(lodgingType => lodgingType.object.id === ltc.id)
             availabilityCells[dateIndex] ? availabilityCells[dateIndex] : availabilityCells[dateIndex] = {};
             availabilityCells[dateIndex][ltc.id] = new Availability({
                 available: 7,
                 availableModifier: -1,
-                lodgingTypeId: 1
+                lodgingTypeId: ltc.id,
+                lodgingType: lodgingType ? lodgingType.object : null
             });
         }));
 
@@ -144,8 +147,9 @@ export class SiteMinderService {
             const todayRates = rates.filter(rate => rate.date === date);
             const dateIndex = date.toString();
 
-            Object.keys(ratePlanColumns).forEach(key => ratePlanColumns[key].forEach(rpc => {
+            Object.keys(ratePlanColumns).forEach(lodgingTypeId => ratePlanColumns[lodgingTypeId].forEach(rpc => {
                 const currentRatePlanChannelColumns = channelColumns[rpc.id];
+                const lodgingType = lodgingTypes.find(lodgingType => lodgingType.object.id === Number(lodgingTypeId));
 
                 // RateSummary cells
                 rateSummaryCells[dateIndex] ? rateSummaryCells[dateIndex] : rateSummaryCells[dateIndex] = {};
@@ -153,7 +157,8 @@ export class SiteMinderService {
                     date: date,
                     ratePlanTitle: rpc.title,
                     rates: todayRates,
-                    channels: channels.map(x => x.object)
+                    channels: channels.map(x => x.object),
+                    lodgingType: lodgingType ? lodgingType.object : null
                 });
 
                 // Channel cells
@@ -161,7 +166,14 @@ export class SiteMinderService {
                 channelsCells[dateIndex][rpc.id] ? channelsCells[dateIndex][rpc.id] : channelsCells[dateIndex][rpc.id] = {};
                 const channelRatesDictionary = channelsCells[dateIndex][rpc.id];
                 currentRatePlanChannelColumns.forEach(cc => {
-                    channelRatesDictionary[cc.id] = todayRates.find(rate => rate.channelId === cc.id);
+                    const channel = channels.find(channel => channel.object.id === cc.id);
+                    channelRatesDictionary[cc.id] = new RateInfo({
+                        date: date,
+                        rate: todayRates.find(rate => rate.channelId === cc.id),
+                        ratePlanTitle: rpc.title,
+                        channel: channel ? channel.object : null,
+                        lodgingType: lodgingType ? lodgingType.object : null
+                    });
                 });
             }))
         });

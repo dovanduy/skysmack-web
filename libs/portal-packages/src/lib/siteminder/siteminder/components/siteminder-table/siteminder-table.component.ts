@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable, BehaviorSubject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { StrIndex } from '@skysmack/framework';
 import { SiteMinderColumn } from '../../../models/siteminder-column';
 import { SiteMinderService } from '../../../services/siteminder.service';
-import { Availability, LodgingTypeRate } from '@skysmack/packages-siteminder';
-import { tap } from 'rxjs/operators';
+import { Availability } from '@skysmack/packages-siteminder';
 import { RateSummary } from '../../../models/rate-summary';
+import { RateInfo } from '../../../models/rate-info';
 
 @Component({
   selector: 'ss-siteminder-table',
@@ -27,7 +27,7 @@ export class SiteMinderTableComponent implements OnInit {
   // Cells
   public availabilityCells$: BehaviorSubject<StrIndex<StrIndex<Availability>>>;
   public rateSummaryCells$: BehaviorSubject<StrIndex<StrIndex<RateSummary>>>;
-  public channelsCells$: BehaviorSubject<StrIndex<StrIndex<StrIndex<LodgingTypeRate>>>>;
+  public channelsCells$: BehaviorSubject<StrIndex<StrIndex<StrIndex<RateInfo>>>>;
 
   constructor(
     private service: SiteMinderService,

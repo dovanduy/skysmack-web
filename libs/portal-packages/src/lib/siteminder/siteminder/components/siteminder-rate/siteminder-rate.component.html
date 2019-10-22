@@ -1,5 +1,5 @@
 <ng-container *ngIf="data">
-    {{ rate }}
+    <div style="cursor:pointer;" (click)="openDialog()">{{ rate }}</div>
 </ng-container>
 
 <ng-container *ngIf="!data">

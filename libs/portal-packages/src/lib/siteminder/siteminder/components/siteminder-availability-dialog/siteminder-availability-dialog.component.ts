@@ -1,9 +1,10 @@
 import { Component, OnInit, Input, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { Availability } from 'libs/packages/siteminder/src';
 import { FormControl } from '@angular/forms';
 import { Observable, combineLatest } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
+import { Availability } from '@skysmack/packages-siteminder';
+import { LodgingType } from '@skysmack/packages-lodgings';
 
 @Component({
   selector: 'ss-siteminder-availability-dialog',
@@ -12,8 +13,9 @@ import { map, startWith } from 'rxjs/operators';
 })
 export class SiteMinderAvailabilityDialogComponent implements OnInit {
 
-  public availableControl = new FormControl();
   public availableModifierControl = new FormControl();
+  public available: number;
+  public lodgingType: LodgingType;
   public availableAfterModification$: Observable<number>;
 
   constructor(
@@ -22,17 +24,15 @@ export class SiteMinderAvailabilityDialogComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    const available = this.data.available;
+    this.available = this.data.available;
+    this.lodgingType = this.data.lodgingType;
     const availableModifier = this.data.availableModifier
 
-    this.availableControl.setValue(available);
     this.availableModifierControl.setValue(availableModifier);
 
-    this.availableAfterModification$ = combineLatest([
-      this.availableControl.valueChanges.pipe(startWith(available)),
-      this.availableModifierControl.valueChanges.pipe(startWith(availableModifier))
-    ]).pipe(
-      map(([available, availableModifier]) => available + availableModifier)
+    this.availableAfterModification$ = this.availableModifierControl.valueChanges.pipe(
+      startWith(availableModifier),
+      map(availableModifier => this.available + availableModifier)
     );
   }
 
