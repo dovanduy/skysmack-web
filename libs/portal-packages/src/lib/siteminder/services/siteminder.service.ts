@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { toLocalObject, StrIndex } from '@skysmack/framework';
 import { LodgingType } from '@skysmack/packages-lodgings';
-import { RatePlan, Channel, Availability } from '@skysmack/packages-siteminder';
+import { RatePlan, Channel, Availability, Rate, LodgingTypeRate } from '@skysmack/packages-siteminder';
 import { SiteMinderColumn } from '../models/siteminder-column';
 
 @Injectable({ providedIn: 'root' })
@@ -20,18 +20,12 @@ export class SiteMinderService {
 
     // Cells
     public availabilityCells$ = new BehaviorSubject<StrIndex<StrIndex<Availability>>>(null);
-    public rateSummaryCells$ = new BehaviorSubject<StrIndex<StrIndex<string>>>(null);
-    public channelsCells$ = new BehaviorSubject<StrIndex<StrIndex<string[]>>>(null);
+    public rateSummaryCells$ = new BehaviorSubject<StrIndex<StrIndex<LodgingTypeRate[]>>>(null);
+    public channelsCells$ = new BehaviorSubject<StrIndex<StrIndex<StrIndex<LodgingTypeRate>>>>(null);
 
-    constructor(
-    ) {
-        this.seedColumns();
-        this.seedCells();
-    }
-
-    private seedColumns(): void {
-        // Data
-        const lodgingTypes = [
+    // Data
+    private data = {
+        lodgingTypes: [
             toLocalObject<LodgingType, number>(new LodgingType({
                 id: 1,
                 name: 'Single room'
@@ -44,9 +38,8 @@ export class SiteMinderService {
             //     id: 3,
             //     name: 'Presidents Suite'
             // }))
-        ];
-
-        const ratePlans = [
+        ],
+        ratePlans: [
             toLocalObject<RatePlan, number>(new RatePlan({
                 id: 1,
                 name: 'RatePlan A (With breakfeast)'
@@ -55,9 +48,8 @@ export class SiteMinderService {
                 id: 2,
                 name: 'RatePlan B (No Breakfeast)'
             }))
-        ];
-
-        const channels = [
+        ],
+        channels: [
             toLocalObject<Channel, number>(new Channel({
                 id: 1,
                 name: 'Expedia'
@@ -65,12 +57,28 @@ export class SiteMinderService {
             toLocalObject<Channel, number>(new Channel({
                 id: 2,
                 name: 'BookingManager'
+            })),
+            toLocalObject<Channel, number>(new Channel({
+                id: 3,
+                name: 'Let\'s Stay'
             }))
-        ];
+        ]
+    };
+
+    constructor(
+    ) {
+        this.seedColumns();
+        this.seedCells();
+    }
+
+    private seedColumns(): void {
+        // Data
+        const { lodgingTypes, ratePlans, channels } = this.data;
 
         // Columns
         const dateColumn = new SiteMinderColumn({ title: 'Date' });
         const lodgingTypeColumns: SiteMinderColumn[] = lodgingTypes.map(lodgingType => new SiteMinderColumn({
+            id: lodgingType.object.id,
             title: lodgingType.object.name
         }));
         const availabilityColumns: StrIndex<SiteMinderColumn> = {};
@@ -81,18 +89,20 @@ export class SiteMinderService {
         lodgingTypeColumns.forEach(ltc => {
             // Availability
             availabilityColumns[ltc.id] = new SiteMinderColumn({
+                id: ltc.id,
                 title: 'Available'
             });
 
             // Rate Plans
             ratePlanColumns[ltc.id] = ratePlans.map(ratePlan => new SiteMinderColumn({
+                id: ratePlan.object.id,
                 title: ratePlan.object.name
             }));
         });
 
         Object.keys(ratePlanColumns).forEach(key => ratePlanColumns[key].forEach(rpc => {
-            rateSummaryColumns[rpc.id] = new SiteMinderColumn({ title: 'Rates (all)' })
-            channelsColumns[rpc.id] = channels.map(channel => new SiteMinderColumn({ title: channel.object.name }))
+            rateSummaryColumns[rpc.id] = new SiteMinderColumn({ id: rpc.id, title: 'Rates (all)' })
+            channelsColumns[rpc.id] = channels.map(channel => new SiteMinderColumn({ id: channel.object.id, title: channel.object.name }))
         }));
 
         // Update streams
@@ -107,14 +117,17 @@ export class SiteMinderService {
     private seedCells(): void {
         // Data
         const dateRows = [new Date(), this.addDays(new Date(), 1), this.addDays(new Date(), 2)];
+        const rates = this.getRates(dateRows);
+        const { channels } = this.data;
 
         // Cells
         const availabilityCells: StrIndex<StrIndex<Availability>> = {};
-        const rateSummaryCells: StrIndex<StrIndex<string>> = {};
-        const channelsCells: StrIndex<StrIndex<string[]>> = {};
+        const rateSummaryCells: StrIndex<StrIndex<LodgingTypeRate[]>> = {};
+        const channelsCells: StrIndex<StrIndex<StrIndex<LodgingTypeRate>>> = {};
 
         const lodgingTypeColumns = this.lodgingTypeColumns$.getValue();
         const ratePlanColumns = this.ratePlanColumns$.getValue();
+        const channelColumns = this.channelsColumns$.getValue();
 
         dateRows.forEach(date => lodgingTypeColumns.forEach(ltc => {
             const dateIndex = date.toString();
@@ -124,23 +137,28 @@ export class SiteMinderService {
                 availableModifier: -1,
                 lodgingTypeId: 1
             });
-
         }));
 
-        dateRows.forEach(date =>
+        dateRows.forEach(date => {
+            const todayRates = rates.filter(rate => rate.date === date);
+            const dateIndex = date.toString();
+
             Object.keys(ratePlanColumns).forEach(key => ratePlanColumns[key].forEach(rpc => {
-                const dateIndex = date.toString();
+                const currentRatePlanChannelColumns = channelColumns[rpc.id];
 
+                // RateSummary cells
                 rateSummaryCells[dateIndex] ? rateSummaryCells[dateIndex] : rateSummaryCells[dateIndex] = {};
-                rateSummaryCells[dateIndex][rpc.id] = '499-899'
+                rateSummaryCells[dateIndex][rpc.id] = todayRates;
 
+                // Channel cells
                 channelsCells[dateIndex] ? channelsCells[dateIndex] : channelsCells[dateIndex] = {};
-                channelsCells[dateIndex][rpc.id] = [
-                    '499',
-                    '899'
-                ];
+                channelsCells[dateIndex][rpc.id] ? channelsCells[dateIndex][rpc.id] : channelsCells[dateIndex][rpc.id] = {};
+                const channelRatesDictionary = channelsCells[dateIndex][rpc.id];
+                currentRatePlanChannelColumns.forEach(cc => {
+                    channelRatesDictionary[cc.id] = todayRates.find(rate => rate.channelId === cc.id);
+                });
             }))
-        );
+        });
 
         // Update streams
         this.dateRows$.next(dateRows);
@@ -154,5 +172,34 @@ export class SiteMinderService {
         var result = new Date(date);
         result.setDate(result.getDate() + days);
         return result;
+    }
+    // TEMP: Used w. mock data
+    private getRates(dateRows): LodgingTypeRate[] {
+        return dateRows.map((date, index) => {
+            if (index === 0) {
+                return [
+                    new LodgingTypeRate({ rate: 599, channelId: 1, date }),
+                    new LodgingTypeRate({ rate: 299, channelId: 2, date }),
+                    new LodgingTypeRate({ rate: 500, channelId: 3, date }),
+                ];
+            }
+
+            if (index === 1) {
+                return [
+                    new LodgingTypeRate({ rate: 399, channelId: 1, date }),
+                    new LodgingTypeRate({ rate: 999, channelId: 2, date }),
+                    new LodgingTypeRate({ rate: 600, channelId: 3, date }),
+                ];
+            }
+
+            if (index === 2) {
+                return [
+                    new LodgingTypeRate({ rate: 799, channelId: 1, date }),
+                    new LodgingTypeRate({ rate: 399, channelId: 2, date }),
+                    new LodgingTypeRate({ rate: 700, channelId: 3, date })
+                ];
+            }
+
+        }).reduce((a, b) => a.concat(b), []);
     }
 }

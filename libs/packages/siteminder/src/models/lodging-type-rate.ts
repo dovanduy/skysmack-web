@@ -19,4 +19,9 @@ export class LodgingTypeRate extends Record<LodgingTypeRateKey> {
     public lodgingType: LocalObject<LodgingType, number>;
     public ratePlanId: number;
     public channelId: number;
+
+    constructor(init?: Partial<LodgingTypeRate>) {
+        super(init);
+        Object.assign(this, init);
+    }
 }

@@ -3,7 +3,8 @@ import { Observable } from 'rxjs';
 import { StrIndex } from '@skysmack/framework';
 import { SiteMinderColumn } from '../../../models/siteminder-column';
 import { SiteMinderService } from '../../../services/siteminder.service';
-import { Availability } from '@skysmack/packages-siteminder';
+import { Availability, LodgingTypeRate } from '@skysmack/packages-siteminder';
+import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'ss-siteminder-table',
@@ -24,8 +25,8 @@ export class SiteMinderTableComponent implements OnInit {
 
   // Cells
   public availabilityCells$: Observable<StrIndex<StrIndex<Availability>>>;
-  public rateSummaryCells$: Observable<StrIndex<StrIndex<string>>>;
-  public channelsCells$: Observable<StrIndex<StrIndex<string[]>>>;
+  public rateSummaryCells$: Observable<StrIndex<StrIndex<LodgingTypeRate[]>>>;
+  public channelsCells$: Observable<StrIndex<StrIndex<StrIndex<LodgingTypeRate>>>>;
 
   constructor(
     private service: SiteMinderService,
