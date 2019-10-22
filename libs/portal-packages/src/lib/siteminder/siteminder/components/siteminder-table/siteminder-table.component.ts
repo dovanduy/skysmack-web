@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 import { StrIndex } from '@skysmack/framework';
 import { SiteMinderColumn } from '../../../models/siteminder-column';
 import { SiteMinderService } from '../../../services/siteminder.service';
@@ -13,20 +13,20 @@ import { tap } from 'rxjs/operators';
 })
 export class SiteMinderTableComponent implements OnInit {
   // Columns
-  public dateColumn$: Observable<SiteMinderColumn>;
-  public lodgingTypeColumns$: Observable<SiteMinderColumn[]>;
-  public availabilityColumns$: Observable<StrIndex<SiteMinderColumn>>;
-  public ratePlanColumns$: Observable<StrIndex<SiteMinderColumn[]>>;
-  public rateSummaryColumns$: Observable<StrIndex<SiteMinderColumn>>;
-  public channelsColumns$: Observable<StrIndex<SiteMinderColumn[]>>;
+  public dateColumn$: BehaviorSubject<SiteMinderColumn>;
+  public lodgingTypeColumns$: BehaviorSubject<SiteMinderColumn[]>;
+  public availabilityColumns$: BehaviorSubject<StrIndex<SiteMinderColumn>>;
+  public ratePlanColumns$: BehaviorSubject<StrIndex<SiteMinderColumn[]>>;
+  public rateSummaryColumns$: BehaviorSubject<StrIndex<SiteMinderColumn>>;
+  public channelsColumns$: BehaviorSubject<StrIndex<SiteMinderColumn[]>>;
 
   // Rows
-  public dateRows$: Observable<Date[]>;
+  public dateRows$: BehaviorSubject<Date[]>;
 
   // Cells
-  public availabilityCells$: Observable<StrIndex<StrIndex<Availability>>>;
-  public rateSummaryCells$: Observable<StrIndex<StrIndex<LodgingTypeRate[]>>>;
-  public channelsCells$: Observable<StrIndex<StrIndex<StrIndex<LodgingTypeRate>>>>;
+  public availabilityCells$: BehaviorSubject<StrIndex<StrIndex<Availability>>>;
+  public rateSummaryCells$: BehaviorSubject<StrIndex<StrIndex<LodgingTypeRate[]>>>;
+  public channelsCells$: BehaviorSubject<StrIndex<StrIndex<StrIndex<LodgingTypeRate>>>>;
 
   constructor(
     private service: SiteMinderService,
@@ -43,5 +43,15 @@ export class SiteMinderTableComponent implements OnInit {
     this.availabilityCells$ = this.service.availabilityCells$;
     this.rateSummaryCells$ = this.service.rateSummaryCells$;
     this.channelsCells$ = this.service.channelsCells$;
+  }
+
+  public calculateLodgingTypeColumn(lodgingTypeColumn: SiteMinderColumn): number {
+    const ratePlanColumns = this.ratePlanColumns$.getValue();
+    const channelsColumns = this.channelsColumns$.getValue();
+    return Object.keys(ratePlanColumns).map(key => {
+      // Lodging type colspan is equal to the count of channel columns
+      // + 1 for availability + 1 for rate summary
+      return channelsColumns[key].length + 2;
+    }).reduce((a, b) => a + b, 0);
   }
 }

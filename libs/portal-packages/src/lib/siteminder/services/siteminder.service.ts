@@ -173,6 +173,7 @@ export class SiteMinderService {
         result.setDate(result.getDate() + days);
         return result;
     }
+
     // TEMP: Used w. mock data
     private getRates(dateRows): LodgingTypeRate[] {
         return dateRows.map((date, index) => {

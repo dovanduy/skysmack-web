@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Rate } from '@skysmack/packages-siteminder';
+import { LodgingTypeRate } from '@skysmack/packages-siteminder';
 
 @Component({
   selector: 'ss-siteminder-rate-summary',
@@ -8,7 +8,7 @@ import { Rate } from '@skysmack/packages-siteminder';
 })
 export class SiteMinderRateSummaryComponent implements OnInit {
 
-  @Input() public data: Rate[];
+  @Input() public data: LodgingTypeRate[];
   public summary: string;
 
   constructor() { }
