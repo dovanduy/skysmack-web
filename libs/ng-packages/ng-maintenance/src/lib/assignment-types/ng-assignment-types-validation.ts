@@ -4,29 +4,21 @@ import { ASSIGNMENT_TYPES_AREA_KEY } from '@skysmack/packages-maintenance';
 
 export class NgAssignmentTypesValidation extends Validation {
     public formErrors = {
-        assignmentTypeId: '',
         stateId: '',
         description: '',
-        expression: '',
-        duePeriod: '',
+        duePeriod: ''
     };
 
     public validationMessages: StrIndex<{}> = {
-        assignmentTypeId: {
+        stateId: {
             required: ''
         },
         description: {
-            required: '',
-        },
-        stateId: {
-            required: '',
-        },
-        expression: {
-            required: '',
+            required: ''
         },
         duePeriod: {
-            required: '',
-        },
+            required: ''
+        }
     };
 
     public area = ASSIGNMENT_TYPES_AREA_KEY;

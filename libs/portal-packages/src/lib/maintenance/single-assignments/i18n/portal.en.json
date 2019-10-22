@@ -1,0 +1,71 @@
+{
+    "SINGLE_ASSIGNMENTS": {
+        "FORM": {
+            "LABELS": {
+                "ASSIGNMENTTYPEID": "Assignment type",
+                "DESCRIPTION": "Description",
+                "OCCUPATIONSTATE": "Occupation state",
+                "STATUS": "Status",
+                "DUE": "Due date",
+                "FROM": "Can be started from"
+            },
+            "PLACEHOLDERS": {
+                "ASSIGNMENTTYPEID": "Assignment type",
+                "DESCRIPTION": "Enter description",
+                "OCCUPATIONSTATE": "Choose occupation state",
+                "STATUS": "Choose status",
+                "DUE": "Choose due date",
+                "FROM": "Choose can be started from date"
+            },
+            "VALIDATION": {
+                "ASSIGNMENTTYPEID": {
+                    "REQUIRED": "Assignment type is required."
+                },
+                "DESCRIPTION": {
+                    "REQUIRED": "Description is required."
+                },
+                "STATUS": {
+                    "REQUIRED": "Status is required."
+                },
+                "DUE": {
+                    "REQUIRED": "Due date is required.",
+                    "NOTBEFORE": "The due date may not be earlier than the start date."
+                },
+                "FROM": {
+                    "REQUIRED": "A date from when the assignment can begin is required."
+                }
+            },
+            "BUTTONS": {
+                "CREATE": "Create",
+                "EDIT": "Edit"
+            }
+        },
+        "CREATE": {
+            "CREATE": "Create",
+            "BUTTON_CREATE": "Create"
+        },
+        "EDIT": {
+            "EDIT": "Edit",
+            "BUTTON_EDIT": "Update"
+        },
+        "INDEX": {
+            "TITLE_EXTRAS": "(single assignments)",
+            "ACTIONS": "Actions",
+            "CREATE": "Create",
+            "EDIT": "Edit",
+            "DELETE": "Delete",
+            "MANAGE": "Manage",
+            "FIELDS": "Fields",
+            "FIELDS_TITLE": "(fields)",
+            "STATES": "States",
+            "TYPES": "Types",
+            "BACK": "Back"
+        },
+        "QUEUE": {
+            "ADDING": "Adding {{ description }}",
+            "UPDATING": "Updating {{ description }}",
+            "DELETING": "Deleting {{ description }}",
+            "ERROR": "An error occured with {{ description }}. Correct and try again."
+        }
+    }
+}

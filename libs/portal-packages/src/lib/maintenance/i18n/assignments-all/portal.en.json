@@ -3,9 +3,10 @@
         "ASSIGNMENT_ALL": {
             "TITLE": "All assignments",
             "INDEX": {
-                "SINGLE_ASSIGNMENTS": "Assignments",
-                "RECURRING_ASSIGNMENTS": "Recurring assignments",
-                "MANAGE": "Manage"
+                "SINGLE_ASSIGNMENTS": "Single assignments",
+                "RECURRING_ASSIGNMENTS": "Scheduled assignments",
+                "TYPES": "Assignment types",
+                "STATES": "Maintenance states"
             }
         }
     }

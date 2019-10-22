@@ -1,0 +1,56 @@
+{
+    "ASSIGNMENTS_SCHEDULES": {
+        "FORM": {
+            "LABELS": {
+                "ASSIGNMENTTYPEID": "Assignment type",
+                "START": "Start date",
+                "END": "End date",
+                "EXPRESSION": "Expression"
+            },
+            "PLACEHOLDERS": {
+                "ASSIGNMENTTYPEID": "Assignment type",
+                "START": "Start date",
+                "END": "End date",
+                "EXPRESSION": "Expression"
+            },
+            "VALIDATION": {
+                "ASSIGNMENTTYPEID": {
+                    "REQUIRED": "Assignment type is required."
+                },
+                "START": {
+                    "REQUIRED": "Start date is required."
+                },
+                "END": {
+                    "REQUIRED": "End date is required."
+                },
+                "EXPRESSION": {
+                    "REQUIRED": "Expression is required."
+                }
+            }
+        },
+        "CREATE": {
+            "CREATE": "Create",
+            "BUTTON_CREATE": "Create"
+        },
+        "EDIT": {
+            "EDIT": "Edit",
+            "BUTTON_EDIT": "Update"
+        },
+        "INDEX": {
+            "TITLE_EXTRAS": "(scheduled assignments)",
+            "ACTIONS": "Actions",
+            "CREATE": "Create",
+            "EDIT": "Edit",
+            "DELETE": "Delete",
+            "MANAGE": "Manage",
+            "FIELDS": "Fields",
+            "BACK": "Back"
+        },
+        "QUEUE": {
+            "ADDING": "Adding {{ description }}",
+            "UPDATING": "Updating {{ description }}",
+            "DELETING": "Deleting {{ description }}",
+            "ERROR": "An error occured with {{ description }}. Correct and try again."
+        }
+    }
+}

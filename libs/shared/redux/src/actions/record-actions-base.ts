@@ -85,7 +85,7 @@ export abstract class RecordActionsBase<TStateType, TStore extends Store<TStateT
                 localObject: record,
                 cancelAction: this.cancelAction
             });
-        })
+        });
 
         this.store.dispatch(Object.assign({}, new ReduxAction<any, ReduxOfflineMeta<TRecord[], HttpResponse, LocalObject<TRecord, TKey>[]>>({
             type: this.prefix + RecordActionsBase.ADD,
@@ -94,7 +94,7 @@ export abstract class RecordActionsBase<TStateType, TStore extends Store<TStateT
                     new Effect<TRecord[]>(new EffectRequest<TRecord[]>(
                         this.addAdditionalPaths(packagePath),
                         HttpMethod.POST,
-                        records.map(x => x.object)
+                        records.map(x => JSON.parse(JSON.stringify(x.object)))
                     )),
                     new ReduxAction<any, CommitMeta<LocalObject<TRecord, TKey>[]>>({
                         type: this.prefix + RecordActionsBase.ADD_SUCCESS,
@@ -213,8 +213,8 @@ export abstract class RecordActionsBase<TStateType, TStore extends Store<TStateT
                         path,
                         HttpMethod.DELETE,
                         records.map(x => {
-                            x.status = LocalObjectStatus.DELETING
-                            return x.object
+                            x.status = LocalObjectStatus.DELETING;
+                            return JSON.parse(JSON.stringify(x.object));
                         }),
                     )),
                     new ReduxAction<any, CommitMeta<LocalObject<TRecord, TKey>[]>>({

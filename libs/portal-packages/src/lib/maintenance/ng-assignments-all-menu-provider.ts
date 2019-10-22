@@ -8,19 +8,19 @@ import { MaintenancePermissions } from '@skysmack/packages-maintenance';
 import { getMenuEntries, getCombinedMenuEntries, setBackButton } from '@skysmack/ng-framework';
 import { MaintenanceTypeId } from '@skysmack/package-types';
 import { AssignmentsAllIndexComponent } from './components/assignments-all/assignments-all.component';
-import { AssignmentsIndexComponent } from './assignments/components/assignments-index/assignments-index.component';
 import { MaintenanceStatesIndexComponent } from './maintenance-states/components/maintenance-states-index/maintenance-states-index.component';
 import { AssignmentTypesIndexComponent } from './assignment-types/components/assignment-types-index/assignment-types-index.component';
-import { RecurringAssignmentsIndexComponent } from './recurring-assignments/components/recurring-assignments-index/recurring-assignments-index.component';
+import { SingleAssignmentsIndexComponent } from './single-assignments/components/single-assignments-index/single-assignments-index.component';
+import { AssignmentsSchedulesIndexComponent } from './assignments-schedules/components/assignments-schedules-index/assignments-schedules-index.component';
 
 @Injectable({ providedIn: 'root' })
 export class NgAssignmentAllMenuProvider implements MenuProvider {
     public id = Guid.create().toString();
     public AssignmentsAllTranslationPrefix = 'MAINTENANCE.ASSIGNMENT_ALL.INDEX.';
-    public AssignmentsTranslationPrefix = 'ASSIGNMENTS.INDEX.';
+    public SingleAssignmentsTranslationPrefix = 'SINGLE_ASSIGNMENTS.INDEX.';
     public AssignmentTypesTranslationPrefix = 'ASSIGNMENT_TYPES.INDEX.';
     public MaintenanceStatesTranslationPrefix = 'MAINTENANCE_STATES.INDEX.';
-    public RecurringAssignmentsTranslationPrefix = 'RECURRING_ASSIGNMENTS.INDEX.';
+    public AssignmentsSchedulesTranslationPrefix = 'ASSIGNMENTS_SCHEDULES.INDEX.';
 
     constructor(
         private store: NgSkysmackStore
@@ -29,20 +29,20 @@ export class NgAssignmentAllMenuProvider implements MenuProvider {
     public getMenuAreas(packagePath: string, componentKey: string): Observable<MenuArea[]> {
         return getCombinedMenuEntries<MenuArea>(
             getMenuEntries<MenuArea>(packagePath, MaintenanceTypeId, componentKey, AssignmentsAllIndexComponent.COMPONENT_KEY, this.getAssignmentsAllMenuAreas, this.store),
-            getMenuEntries<MenuArea>(packagePath, MaintenanceTypeId, componentKey, AssignmentsIndexComponent.COMPONENT_KEY, this.getAssignmentsMenuAreas, this.store),
+            getMenuEntries<MenuArea>(packagePath, MaintenanceTypeId, componentKey, SingleAssignmentsIndexComponent.COMPONENT_KEY, this.getAssignmentsMenuAreas, this.store),
             getMenuEntries<MenuArea>(packagePath, MaintenanceTypeId, componentKey, AssignmentTypesIndexComponent.COMPONENT_KEY, this.getAssignmentTypesMenuAreas, this.store),
             getMenuEntries<MenuArea>(packagePath, MaintenanceTypeId, componentKey, MaintenanceStatesIndexComponent.COMPONENT_KEY, this.getMaintenanceStatesMenuAreas, this.store),
-            getMenuEntries<MenuArea>(packagePath, MaintenanceTypeId, componentKey, RecurringAssignmentsIndexComponent.COMPONENT_KEY, this.getRecurringAssignmentsMenuAreas, this.store)
+            getMenuEntries<MenuArea>(packagePath, MaintenanceTypeId, componentKey, AssignmentsSchedulesIndexComponent.COMPONENT_KEY, this.getAssignmentsSchedulesMenuAreas, this.store)
         );
     };
 
     public getMenuItems(packagePath: string, componentKey: string): Observable<MenuItem[]> {
         return getCombinedMenuEntries<MenuItem>(
             getMenuEntries<MenuItem>(packagePath, MaintenanceTypeId, componentKey, AssignmentsAllIndexComponent.COMPONENT_KEY, this.getAssignmentsAllMenuItems, this.store),
-            getMenuEntries<MenuItem>(packagePath, MaintenanceTypeId, componentKey, AssignmentsIndexComponent.COMPONENT_KEY, this.getAssignmentsMenuItems, this.store),
+            getMenuEntries<MenuItem>(packagePath, MaintenanceTypeId, componentKey, SingleAssignmentsIndexComponent.COMPONENT_KEY, this.getAssignmentsMenuItems, this.store),
             getMenuEntries<MenuItem>(packagePath, MaintenanceTypeId, componentKey, AssignmentTypesIndexComponent.COMPONENT_KEY, this.getAssignmentTypesMenuItems, this.store),
             getMenuEntries<MenuItem>(packagePath, MaintenanceTypeId, componentKey, MaintenanceStatesIndexComponent.COMPONENT_KEY, this.getMaintenanceStatesMenuItems, this.store),
-            getMenuEntries<MenuItem>(packagePath, MaintenanceTypeId, componentKey, RecurringAssignmentsIndexComponent.COMPONENT_KEY, this.getRecurringAssignmentsMenuItems, this.store)
+            getMenuEntries<MenuItem>(packagePath, MaintenanceTypeId, componentKey, AssignmentsSchedulesIndexComponent.COMPONENT_KEY, this.getAssignmentsSchedulesMenuItems, this.store)
         );
     };
 
@@ -61,12 +61,12 @@ export class NgAssignmentAllMenuProvider implements MenuProvider {
         return [
             new MenuArea({
                 area: 'actions',
-                translationPrefix: this.AssignmentsTranslationPrefix,
+                translationPrefix: this.SingleAssignmentsTranslationPrefix,
                 order: 1,
             }),
             new MenuArea({
                 area: 'manage',
-                translationPrefix: this.AssignmentsTranslationPrefix,
+                translationPrefix: this.SingleAssignmentsTranslationPrefix,
                 order: 2
             })
         ];
@@ -83,7 +83,7 @@ export class NgAssignmentAllMenuProvider implements MenuProvider {
                 translationPrefix: this.AssignmentTypesTranslationPrefix,
                 order: 2
             })
-       ];
+        ];
     };
 
     private getMaintenanceStatesMenuAreas = () => {
@@ -101,16 +101,16 @@ export class NgAssignmentAllMenuProvider implements MenuProvider {
         ];
     };
 
-    private getRecurringAssignmentsMenuAreas = () => {
+    private getAssignmentsSchedulesMenuAreas = () => {
         return [
             new MenuArea({
                 area: 'actions',
-                translationPrefix: this.RecurringAssignmentsTranslationPrefix,
+                translationPrefix: this.AssignmentsSchedulesTranslationPrefix,
                 order: 1
             }),
             new MenuArea({
                 area: 'manage',
-                translationPrefix: this.RecurringAssignmentsTranslationPrefix,
+                translationPrefix: this.AssignmentsSchedulesTranslationPrefix,
                 order: 2
             })
         ];
@@ -130,10 +130,30 @@ export class NgAssignmentAllMenuProvider implements MenuProvider {
                 providedIn: [SIDEBAR]
             }),
             new MenuItem({
-                url: 'assignments/recurring',
+                url: 'assignments/schedules',
                 displayName: this.AssignmentsAllTranslationPrefix + 'RECURRING_ASSIGNMENTS',
                 area: 'manage',
                 order: 2,
+                icon: 'short_text',
+                permissions: [
+                ],
+                providedIn: [SIDEBAR]
+            }),
+            new MenuItem({
+                url: 'assignments/types',
+                displayName: this.AssignmentsAllTranslationPrefix + 'TYPES',
+                area: 'manage',
+                order: 2,
+                icon: 'description',
+                permissions: [
+                ],
+                providedIn: [SIDEBAR]
+            }),
+            new MenuItem({
+                url: 'states',
+                displayName: this.AssignmentsAllTranslationPrefix + 'STATES',
+                area: 'manage',
+                order: 1,
                 icon: 'short_text',
                 permissions: [
                 ],
@@ -146,7 +166,7 @@ export class NgAssignmentAllMenuProvider implements MenuProvider {
         return [
             new MenuItem({
                 url: 'create',
-                displayName: this.AssignmentsTranslationPrefix + 'CREATE',
+                displayName: this.SingleAssignmentsTranslationPrefix + 'CREATE',
                 area: 'actions',
                 order: 1,
                 icon: 'add',
@@ -154,26 +174,6 @@ export class NgAssignmentAllMenuProvider implements MenuProvider {
                     MaintenancePermissions.addAssignments
                 ],
                 providedIn: [SIDEBAR, SPEEDDIAL]
-            }),
-            new MenuItem({
-                url: 'types',
-                displayName: this.AssignmentsTranslationPrefix + 'TYPES',
-                area: 'manage',
-                order: 2,
-                icon: 'description',
-                permissions: [
-                ],
-                providedIn: [SIDEBAR]
-            }),
-            new MenuItem({
-                url: 'maintenance-states',
-                displayName: this.AssignmentsTranslationPrefix + 'STATES',
-                area: 'manage',
-                order: 1,
-                icon: 'short_text',
-                permissions: [
-                ],
-                providedIn: [SIDEBAR]
             }),
             setBackButton(packagePath)
         ];
@@ -191,7 +191,7 @@ export class NgAssignmentAllMenuProvider implements MenuProvider {
                 ],
                 providedIn: [SIDEBAR, SPEEDDIAL]
             }),
-            setBackButton(`${packagePath}/assignments`)
+            setBackButton(`${packagePath}`)
         ];
     };
 
@@ -207,15 +207,15 @@ export class NgAssignmentAllMenuProvider implements MenuProvider {
                 ],
                 providedIn: [SIDEBAR, SPEEDDIAL]
             }),
-            setBackButton(`${packagePath}/assignments`)
+            setBackButton(`${packagePath}`)
         ];
     };
 
-    private getRecurringAssignmentsMenuItems = (packagePath: string): MenuItem[] => {
+    private getAssignmentsSchedulesMenuItems = (packagePath: string): MenuItem[] => {
         return [
             new MenuItem({
                 url: 'create',
-                displayName: this.RecurringAssignmentsTranslationPrefix + 'CREATE',
+                displayName: this.AssignmentsSchedulesTranslationPrefix + 'CREATE',
                 area: 'actions',
                 order: 1,
                 icon: 'add',
