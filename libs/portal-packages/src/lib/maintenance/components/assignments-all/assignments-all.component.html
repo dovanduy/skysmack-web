@@ -1,2 +1,128 @@
 <ss-container [componentKey]="componentKey">
+    <div class="from-to">
+        <!-- From -->
+        <mat-form-field>
+            <input matInput [value]="from" (dateInput)="setFromDate($event.value)" [matDatepicker]="fromPicker"
+                placeholder="From date">
+            <mat-datepicker-toggle matSuffix [for]="fromPicker"></mat-datepicker-toggle>
+            <mat-datepicker touchUi #fromPicker></mat-datepicker>
+        </mat-form-field>
+
+        <!-- Due -->
+        <mat-form-field>
+            <input matInput [value]="due" (dateInput)="setDueDate($event.value)" [matDatepicker]="duePicker"
+                placeholder="Due date">
+            <mat-datepicker-toggle matSuffix [for]="duePicker"></mat-datepicker-toggle>
+            <mat-datepicker touchUi #duePicker></mat-datepicker>
+        </mat-form-field>
+
+        <!-- Get -->
+        <div>
+            <!-- div appeases the flex-box  -->
+            <button class="get-assignments-button" mat-raised-button (click)="getAssignments()">Get assignments</button>
+        </div>
+    </div>
+
+
+    <!-- List -->
+    <mat-card>
+
+        <cdk-virtual-scroll-viewport #entityList id="entity-list" itemSize="60">
+            <table cellspacing="0" cellpadding="0" class="mat-table">
+                <thead class="mat-header-row">
+                    <tr>
+                        <th class="table-cell mat-header-cell">
+                            <div class="th-flex">
+                                From
+                            </div>
+                        </th>
+                        <th class="table-cell mat-header-cell">
+                            <div class="th-flex">
+                                Due
+                            </div>
+                        </th>
+                        <th class="table-cell mat-header-cell">
+                            <div class="th-flex">
+                                Status
+                            </div>
+                        </th>
+                        <th class="table-cell mat-header-cell">
+                            <div class="th-flex">
+                                Description
+                            </div>
+                        </th>
+                        <th class="table-cell mat-header-cell">
+                            <div class="th-flex">
+                                Type description
+                            </div>
+                        </th>
+                        <th class="table-cell mat-header-cell">
+                            <div class="th-flex">
+                                State
+                            </div>
+                        </th>
+                        <th class="table-cell mat-header-cell">
+                            <div class="th-flex">
+                                <!-- Action button + possibly refresh? -->
+                            </div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody
+                    *cdkVirtualFor="let entity of entities$ | async as entities; trackBy: trackByLocalId; let i = index;">
+                    <tr class="entity-row table-row mat-row"
+                        [class.row-is-loading]="entity.status !== 'OK' && !entity.error"
+                        [class.row-is-success]="entity.isNew && entity.status !== 'CREATING'"
+                        [class.row-is-error]="entity.error" [class.row-is-deleted]="entity.deleted"
+                        [attr.data-index]="i">
+
+                        <!-- From -->
+                        <td class="table-cell mat-cell">
+                            {{ entity.object['from'] }}
+                        </td>
+
+                        <!-- Due -->
+                        <td class="table-cell mat-cell">
+                            {{ entity.object['due'] }}
+                        </td>
+
+                        <!-- Status -->
+                        <td class="table-cell mat-cell">
+                            {{ entity.object['status'] }}
+                        </td>
+
+                        <!-- Description -->
+                        <td class="table-cell mat-cell">
+                            {{ entity.object['description'] }}
+                        </td>
+
+                        <!-- Type description -->
+                        <td class="table-cell mat-cell">
+                            {{ entity.object.assignmentType ? entity.object.assignmentType['description'] : '' }}
+                        </td>
+
+                        <!-- State -->
+                        <td class="table-cell mat-cell">
+                            {{ entity.object.assignmentType ? entity.object.assignmentType['state'] : '' }}
+                        </td>
+
+                        <!-- Actions -->
+                        <td class="table-cell mat-cell action-buttons">
+                            <button mat-icon-button [matMenuTriggerFor]="menu">
+                                <mat-icon>more_vert</mat-icon>
+                            </button>
+                            <mat-menu #menu="matMenu">
+                                <button mat-menu-item (click)="test()">
+                                    <mat-icon>add</mat-icon>
+                                    <span>Test</span>
+                                </button>
+                                <!-- URL EVENT -->
+                            </mat-menu>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </cdk-virtual-scroll-viewport>
+    </mat-card>
+
 </ss-container>

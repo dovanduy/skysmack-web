@@ -1139,7 +1139,7 @@
             "tsConfig": "apps/web/web-portal/tsconfig.app.json",
             "preserveSymlinks": false,
             "assets": [
-              "apps/web/web-portal/src/assets/favicon.ico",
+              "apps/web/web-portal/src/favicon.ico",
               "apps/web/web-portal/src/assets",
               "apps/web/web-portal/src/manifest.json",
               {
@@ -1257,6 +1257,7 @@
             "assets": [
               "apps/web/web-commercial/src/favicon.ico",
               "apps/web/web-commercial/src/assets",
+              "apps/web/web-commercial/src/manifest.json",
               {
                 "glob": "**/*",
                 "input": "apps/web/web-commercial/src/i18n/",

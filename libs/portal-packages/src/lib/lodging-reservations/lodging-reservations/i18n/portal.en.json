@@ -11,7 +11,7 @@
         "STAYS": {
             "TITLE": "Stays",
             "TITLE_EXTRAS": "(stays)"
-        },      
+        },
         "FORM": {
             "LABELS": {
                 "LODGINGTYPEID": "Lodging type",
@@ -69,7 +69,8 @@
             "ARRIVALS": "Arrivals",
             "SETTINGS": "Settings",
             "DEPARTURES": "Departures",
-            "ALL": "All"
+            "ALL": "All",
+            "GROUP_RESERVATIONS": "Group reservations"
         },
         "QUEUE": {
             "ADDING": "Adding lodging reservation {{ id }}",

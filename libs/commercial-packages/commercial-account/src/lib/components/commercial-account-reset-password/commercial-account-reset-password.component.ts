@@ -36,14 +36,13 @@ export class CommercialAccountResetPasswordComponent implements OnInit {
       this.service.resetPassword(fh.form.getRawValue()).pipe(
         map(response => {
           if (response.status >= 200 && response.status <= 299) {
-            this.router.navigate(['/', 'account', 'reset-password'])
+            this.router.navigate(['/', 'account', 'login']);
           } else {
             this.message = 'An error occurred. Please try again.'
           }
         }),
         take(1)
       ).subscribe();
-      this.router.navigate(['/', 'account', 'login']);
     }, false);
   }
 }

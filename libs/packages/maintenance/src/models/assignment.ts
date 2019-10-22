@@ -1,27 +1,17 @@
-import { DocumentRecord, LocalObject } from "@skysmack/framework";
+import { AssignmentStatus } from './assignment-status';
+import { LocalObject } from '@skysmack/framework';
 import { AssignmentType } from './assignment-type';
 
-type Status = 'created' | 'pending' | 'ongoing' | 'done' | 'canceled' | 'faulted';
-
-export class Assignment extends DocumentRecord<number> {
-    public id: number;
+export class Assignment {
     public description: string;
+    public status: AssignmentStatus;
+    public from: Date;
+    public due: Date;
 
     public assignmentTypeId: number;
     public assignmentType: LocalObject<AssignmentType, number>;
 
-    public status: Status;
-    public static StatusEnum = {
-        Created: 'created',
-        Pending: 'pending',
-        Ongoing: 'ongoing',
-        Done: 'done',
-        Canceled: 'canceled',
-        Faulted: 'faulted'
-    }
-
     public constructor(init?: Partial<Assignment>) {
-        super();
         Object.assign(this, init);
     }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, Inject } from '@angular/core';
 import { FormHelper } from '@skysmack/ng-dynamic-forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { EditorNavService } from '@skysmack/portal-ui';
@@ -7,7 +7,10 @@ import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { NgAccountRequests } from '@skysmack/ng-identities';
 import { BaseComponent } from '@skysmack/portal-fields';
 import { NgResetPasswordFieldsConfig } from './ng-reset-password-fields-config';
-import { map } from 'rxjs/operators';
+import { map, catchError, take } from 'rxjs/operators';
+import { API_DOMAIN_INJECTOR_TOKEN, ApiDomain } from '@skysmack/framework';
+import { HttpClient } from '@angular/common/http';
+import { of } from 'rxjs';
 
 @Component({
   selector: 'ss-reset-password',
@@ -24,7 +27,7 @@ export class ResetPasswordComponent extends BaseComponent<AccountAppState, unkno
     public skysmackStore: NgSkysmackStore,
     public fieldsConfig: NgResetPasswordFieldsConfig,
     public editorNavService: EditorNavService,
-    public accountRequest: NgAccountRequests
+    public accountRequest: NgAccountRequests,
   ) {
     super(router, activatedRoute, skysmackStore);
   }
@@ -41,7 +44,17 @@ export class ResetPasswordComponent extends BaseComponent<AccountAppState, unkno
 
   public onSubmit(fh: FormHelper) {
     fh.formValid(() => {
-      console.log(fh.form.value);
+      this.accountRequest.resetPassword(this.packagePath, fh.form.getRawValue()).pipe(
+        map(response => {
+          if (response.status >= 200 && response.status <= 299) {
+            this.router.navigate(['/', 'account', 'login']);
+          } else {
+            // TODO: Implement error message
+            // this.message = 'An error occurred. Please try again.' 
+          }
+        }),
+        take(1),
+      ).subscribe();
     });
   }
 }

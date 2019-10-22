@@ -200,7 +200,7 @@ export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey>
     public refresh(): void {
         for (let index = 1; index <= this.currentPageNumber; index++) {
             this.pagedQuery.pageNumber = index;
-            this.actions.getPaged(this.packagePath, this.pagedQuery);
+            this.actions.getPaged(this.router.url.split('/')[1], this.pagedQuery);
         }
     }
 }

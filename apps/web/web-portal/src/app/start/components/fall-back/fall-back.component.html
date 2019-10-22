@@ -1,4 +1,4 @@
-<ng-container *ngIf="packagesLoaded; else loading">
+<ng-container *ngIf="packageNotFound$ | async as packageNotFound; else loading">
   <div class="error-page">
     <h1>Not found (404)</h1>
     <mat-icon [inline]="true">help_outline</mat-icon>
@@ -7,6 +7,6 @@
 
 <ng-template #loading>
   <div class="loading-screen">
-    <!-- <mat-spinner></mat-spinner>  -->
+    <mat-spinner></mat-spinner> 
   </div>
 </ng-template>

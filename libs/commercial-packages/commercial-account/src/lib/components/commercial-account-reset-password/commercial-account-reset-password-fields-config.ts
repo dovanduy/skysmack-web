@@ -38,7 +38,7 @@ export class CommercialAccountResetPasswordFieldsConfig {
                 value: undefined,
                 key: 'newPassword',
                 placeholder: 'COMMERCIAL_ACCOUNT.FORM.PLACEHOLDERS.NEWPASSWORD',
-                validators: [Validators.required],
+                validators: [Validators.required, CustomValidators.validPassword()],
                 order: 3,
                 sortable: true
             }),

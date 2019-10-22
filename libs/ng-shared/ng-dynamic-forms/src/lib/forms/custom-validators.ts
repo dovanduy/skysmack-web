@@ -20,16 +20,18 @@ export class CustomValidators {
             const passwordControl = controls[passwordFieldName];
             const confirmPasswordControl = controls[comparePasswordFieldName];
 
-            if (passwordControl && confirmPasswordControl) {
-                if (passwordControl.value !== confirmPasswordControl.value) {
+            if (passwordControl && confirmPasswordControl && ((passwordControl.value && passwordControl.value.length > 0) || (confirmPasswordControl.value && confirmPasswordControl.value.length > 0))) {
+                if (!passwordControl.value || !confirmPasswordControl.value || passwordControl.value !== confirmPasswordControl.value) {
                     const error = { passwordMismatch: true };
                     confirmPasswordControl.setErrors(error);
                     return error;
-                } else {
-                    confirmPasswordControl.setErrors(null);
-                    return null;
                 }
             }
+            
+            if (confirmPasswordControl) {
+                confirmPasswordControl.setErrors(null);
+            }
+            return null;
         };
     }
 
@@ -69,7 +71,8 @@ export class CustomValidators {
             // at least one special character
             // at least six characters
             const passwordCriteriaExpression = new RegExp('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{6,})');
-            if (!passwordCriteriaExpression.test(passwordControl.value)) {
+            // Only validate, if any data, otherwise required will validate
+            if (passwordControl && passwordControl.value && passwordControl.value.length > 0 && !passwordCriteriaExpression.test(passwordControl.value)) {
                 return { invalidPassword: true };
             } else {
                 return null;

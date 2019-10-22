@@ -10,6 +10,7 @@ import { LodgingReservation } from '@skysmack/packages-lodging-reservations';
 import { NgLodgingReservationsFieldsConfig } from '../../ng-lodging-reservations-fields-config';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { NgLodgingReservationsStore, NgLodgingReservationsActions } from '@skysmack/ng-lodging-reservations';
+import { NgFieldActions } from '@skysmack/ng-framework';
 
 @Component({
   selector: 'ss-lodgings-departures',
@@ -29,15 +30,31 @@ export class LodgingsDeparturesComponent extends LodgingsReservationsIndexCompon
     public lodgingsActions: NgLodgingsActions,
     public lodgingTypesActions: NgLodgingTypesActions,
     public fieldsConfig: NgLodgingReservationsFieldsConfig,
+    public fieldActions: NgFieldActions,
     public pageTitle: EntityComponentPageTitle,
     public title: EntityComponentPageTitle,
     public menuItemActionProviders: MenuItemActionProviders
   ) {
-    super(router, activatedRoute, skysmackStore, store, lodgingsStore, lodgingTypesStore, actions, lodgingsActions, lodgingTypesActions, fieldsConfig, pageTitle, title, menuItemActionProviders);
+    super(router,
+      activatedRoute,
+      skysmackStore,
+      store,
+      lodgingsStore,
+      lodgingTypesStore,
+      actions,
+      lodgingsActions,
+      lodgingTypesActions,
+      fieldsConfig,
+      fieldActions,
+      pageTitle,
+      title,
+      menuItemActionProviders
+    );
     pageTitle.setTitle('LODGING_RESERVATIONS.DEPARTURES.TITLE');
   }
 
   ngOnInit() {
+    this.refresh();
     this.filter();
     this.sort();
     this.pageTitle.setTitle('LODGING_RESERVATIONS.DEPARTURES.TITLE');

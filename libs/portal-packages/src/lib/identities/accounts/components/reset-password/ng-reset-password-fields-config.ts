@@ -42,7 +42,6 @@ export class NgResetPasswordFieldsConfig {
                 order: 2,
                 sortable: true
             }),
-
             new Field({
                 component: PasswordFieldComponent,
                 value: undefined,

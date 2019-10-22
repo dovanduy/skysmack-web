@@ -17,6 +17,7 @@ import { NgDashboardProviders, CoalescingComponentFactoryResolver } from '@skysm
 import { NgLodgingReservationsDashboardProvider } from './lodging-reservations/ng-lodging-reservations-dashboard-provider';
 import { NgLodgingsReservationsMenuProvider } from './ng-lodgings-reservations-menu-provider';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { groupReservationsComponents, groupReservationsEntryComponents } from './group-reservations/components/group-reservations-component';
 
 const material = [
   MatAutocompleteModule
@@ -36,10 +37,12 @@ const material = [
     ...material
   ],
   declarations: [
-    ...lodgingReservationsComponents
+    ...lodgingReservationsComponents,
+    ...groupReservationsComponents
   ],
   entryComponents: [
-    ...lodgingReservationsEntryComponents
+    ...lodgingReservationsEntryComponents,
+    ...groupReservationsEntryComponents
   ],
   providers: [
     { provide: 'NgLodgingReservationsSettingsFieldsConfig', useClass: NgLodgingReservationsSettingsFieldsConfig }

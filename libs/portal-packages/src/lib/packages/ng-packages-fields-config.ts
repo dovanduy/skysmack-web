@@ -13,7 +13,7 @@ export class NgPackagesFieldsConfig extends FieldsConfig<Package, string> {
     public validation = new PackagesValidation();
     public area = PACKAGES_AREA_KEY;
     public formRules: FormRule[] = [
-        new SetPathRule(['name'])
+        new SetPathRule()
     ];
 
     constructor(

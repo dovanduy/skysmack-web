@@ -1,8 +1,8 @@
-import { Record, LocalObject } from "@skysmack/framework";
+import { LocalObject, DocumentRecord } from "@skysmack/framework";
 import { Stay } from './stay';
 import { LodgingType, Lodging } from '@skysmack/packages-lodgings';
 
-export class LodgingReservation extends Record<number> {
+export class LodgingReservation extends DocumentRecord<number> {
     public lodgingTypeId: number;
     public lodgingType: LocalObject<LodgingType, number>;
 

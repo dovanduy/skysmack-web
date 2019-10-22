@@ -1,20 +1,20 @@
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
-import { LocalObject, LocalObjectStatus, PagedQuery } from '@skysmack/framework';
+import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { LodgingReservation, LODGING_RESERVATIONS_AREA_KEY, LODGING_RESERVATIONS_ADDITIONAL_PATHS } from '@skysmack/packages-lodging-reservations';
 import { NgLodgingTypesStore, NgLodgingsStore, NgLodgingsActions, NgLodgingTypesActions } from '@skysmack/ng-lodgings';
-import { LoadedPackage } from '@skysmack/ng-framework';
+import { LoadedPackage, NgFieldStore } from '@skysmack/ng-framework';
 import { of } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { FormRule, Field, SelectField, SelectFieldOption } from '@skysmack/ng-dynamic-forms';
-import { FieldsConfig, FieldProviders } from '@skysmack/ng-fields';
-import { SelectFieldComponent, DateFieldComponent, IntFieldComponent, HiddenFieldComponent } from '@skysmack/portal-fields';
+import { FormRule, Field, SelectField } from '@skysmack/ng-dynamic-forms';
+import { FieldProviders } from '@skysmack/ng-fields';
+import { SelectFieldComponent, DateFieldComponent, IntFieldComponent, HiddenFieldComponent, DocumentFieldsConfig } from '@skysmack/portal-fields';
 import { NgLodgingReservationsValidation } from '@skysmack/ng-lodging-reservations';
 import { LodgingTypeSelectFieldComponent } from './lodging-reservations/lodging-type-select-field/lodging-type-select-field.component';
 import { LodgingSelectFieldComponent } from './lodging-reservations/lodging-select-field/lodging-select-field.component';
 
 @Injectable({ providedIn: 'root' })
-export class NgLodgingReservationsFieldsConfig extends FieldsConfig<LodgingReservation, number> {
+export class NgLodgingReservationsFieldsConfig extends DocumentFieldsConfig<LodgingReservation, number> {
     public area = LODGING_RESERVATIONS_AREA_KEY;
     public validation = new NgLodgingReservationsValidation();
     public formRules: FormRule[] = [];
@@ -24,9 +24,10 @@ export class NgLodgingReservationsFieldsConfig extends FieldsConfig<LodgingReser
         public lodgingsActions: NgLodgingsActions,
         public lodgingTypeStore: NgLodgingTypesStore,
         public lodgingTypeActions: NgLodgingTypesActions,
-        public fieldProviders: FieldProviders
+        public fieldProviders: FieldProviders,
+        public fieldsStore: NgFieldStore
     ) {
-        super(fieldProviders, LODGING_RESERVATIONS_ADDITIONAL_PATHS);
+        super(fieldProviders, fieldsStore, LODGING_RESERVATIONS_ADDITIONAL_PATHS);
     }
 
     protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<LodgingReservation, number>): Field[] {
@@ -66,7 +67,6 @@ export class NgLodgingReservationsFieldsConfig extends FieldsConfig<LodgingReser
                 component: LodgingSelectFieldComponent,
                 value: entity ? entity.object.allocatedLodgingId : undefined,
                 key: 'allocatedLodgingId',
-                validators: [Validators.required],
                 order: 4,
                 showColumn: true,
                 sortable: true

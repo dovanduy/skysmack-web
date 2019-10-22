@@ -962,6 +962,45 @@
 			"SUBMIT": "Submit"
 		}
 	},
+	"GROUP_RESERVATIONS": {
+		"CREATE": {
+			"CREATE": "Create",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDIT": "Edit",
+			"BUTTON_EDIT": "Update"
+		},
+		"INDEX": {
+			"TITLE_EXTRAS": "(groups)",
+			"ACTIONS": "Actions",
+			"CREATE": "Create",
+			"DELETE": "Delete",
+			"MANAGE": "Manage",
+			"FIELDS": "Fields",
+			"FIELDS_TITLE": "(group fields)",
+			"BACK": "Back"
+		},
+		"FORM": {
+			"LABELS": {
+				"NAME": "Name"
+			},
+			"PLACEHOLDERS": {
+				"NAME": "Enter name"
+			},
+			"VALIDATION": {
+				"NAME": {
+					"REQUIRED": "Name is required."
+				}
+			}
+		},
+		"QUEUE": {
+			"ADDING": "Adding {{ name }}",
+			"UPDATING": "Updating {{ name }}",
+			"DELETING": "Deleting {{ name }}",
+			"ERROR": "An error occured with {{ name }}. Correct and try again."
+		}
+	},
 	"LODGING_RESERVATIONS": {
 		"ARRIVALS": {
 			"TITLE": "Arrivals",
@@ -1032,7 +1071,8 @@
 			"ARRIVALS": "Arrivals",
 			"SETTINGS": "Settings",
 			"DEPARTURES": "Departures",
-			"ALL": "All"
+			"ALL": "All",
+			"GROUP_RESERVATIONS": "Group reservations"
 		},
 		"QUEUE": {
 			"ADDING": "Adding lodging reservation {{ id }}",
@@ -1257,16 +1297,16 @@
 	"ASSIGNMENT_TYPES": {
 		"FORM": {
 			"LABELS": {
-				"STATEID": "State",
 				"DESCRIPTION": "Description",
-				"EXPRESSION": "Expression",
-				"DUEPERIOD": "Due date"
+				"STATEID": "State",
+				"DUEPERIOD": "Due date",
+				"EXPRESSION": "Expression"
 			},
 			"PLACEHOLDERS": {
 				"STATEID": "Choose state",
 				"DESCRIPTION": "Enter description",
-				"EXPRESSION": "Enter expression",
-				"DUEPERIOD": "Choose due date"
+				"DUEPERIOD": "Choose due date",
+				"EXPRESSION": "Enter expression"
 			},
 			"VALIDATION": {
 				"STATEID": {
@@ -1275,11 +1315,11 @@
 				"DESCRIPTION": {
 					"REQUIRED": "Description is required."
 				},
-				"EXPRESSION": {
-					"REQUIRED": "Expression is required."
-				},
 				"DUEPERIOD": {
 					"REQUIRED": "Due date is required."
+				},
+				"EXPRESSION": {
+					"REQUIRED": "Expression is required."
 				}
 			},
 			"BUTTONS": {
@@ -1308,6 +1348,17 @@
 			"ENTITIES": "Entities"
 		},
 		"FIELDS": {
+			"INDEX": {
+				"ACTIONS": "Actions",
+				"CREATE": "Create",
+				"ASSIGNMENT_TYPES": "AssignmentTypes",
+				"FIELDS": "AssignmentType fields",
+				"OTHER": "Other",
+				"BACK": "Back"
+			},
+			"CREATE": {
+				"ADD": "Add field"
+			},
 			"FORM": {
 				"LABELS": {
 					"STATEID": "State",
@@ -1339,17 +1390,6 @@
 					"CREATE": "Create",
 					"EDIT": "Edit"
 				}
-			},
-			"INDEX": {
-				"ACTIONS": "Actions",
-				"CREATE": "Create",
-				"ASSIGNMENT_TYPES": "AssignmentTypes",
-				"FIELDS": "AssignmentType fields",
-				"OTHER": "Other",
-				"BACK": "Back"
-			},
-			"CREATE": {
-				"ADD": "Add field"
 			}
 		},
 		"QUEUE": {
@@ -1359,45 +1399,33 @@
 			"ERROR": "An error occured with {{ description }}. Correct and try again."
 		}
 	},
-	"ASSIGNMENTS": {
+	"ASSIGNMENTS_SCHEDULES": {
 		"FORM": {
 			"LABELS": {
 				"ASSIGNMENTTYPEID": "Assignment type",
-				"DESCRIPTION": "Description",
-				"OCCUPATIONSTATE": "Occupation state",
-				"STATUS": "Status",
-				"DUE": "Due date",
-				"FROM": "Can be started from"
+				"START": "Start date",
+				"END": "End date",
+				"EXPRESSION": "Expression"
 			},
 			"PLACEHOLDERS": {
 				"ASSIGNMENTTYPEID": "Assignment type",
-				"DESCRIPTION": "Enter description",
-				"OCCUPATIONSTATE": "Choose occupation state",
-				"STATUS": "Choose status",
-				"DUE": "Choose due date",
-				"FROM": "Choose can be started from date"
+				"START": "Start date",
+				"END": "End date",
+				"EXPRESSION": "Expression"
 			},
 			"VALIDATION": {
 				"ASSIGNMENTTYPEID": {
 					"REQUIRED": "Assignment type is required."
 				},
-				"DESCRIPTION": {
-					"REQUIRED": "Description is required."
+				"START": {
+					"REQUIRED": "Start date is required."
 				},
-				"STATUS": {
-					"REQUIRED": "Status is required."
+				"END": {
+					"REQUIRED": "End date is required."
 				},
-				"DUE": {
-					"REQUIRED": "Due date is required.",
-					"NOTBEFORE": "The due date may not be earlier than the start date."
-				},
-				"FROM": {
-					"REQUIRED": "A date from when the assignment can begin is required."
+				"EXPRESSION": {
+					"REQUIRED": "Expression is required."
 				}
-			},
-			"BUTTONS": {
-				"CREATE": "Create",
-				"EDIT": "Edit"
 			}
 		},
 		"CREATE": {
@@ -1409,33 +1437,21 @@
 			"BUTTON_EDIT": "Update"
 		},
 		"INDEX": {
-			"TITLE_EXTRAS": "(assignments)",
+			"TITLE_EXTRAS": "(recurring assignments)",
 			"ACTIONS": "Actions",
 			"CREATE": "Create",
 			"EDIT": "Edit",
 			"DELETE": "Delete",
 			"MANAGE": "Manage",
 			"FIELDS": "Fields",
-			"FIELDS_TITLE": "(fields)",
-			"STATES": "States",
-			"TYPES": "Types",
-			"BACK": "Back"
+			"BACK": "Back",
+			"STATES": "States"
 		},
 		"QUEUE": {
 			"ADDING": "Adding {{ description }}",
 			"UPDATING": "Updating {{ description }}",
 			"DELETING": "Deleting {{ description }}",
 			"ERROR": "An error occured with {{ description }}. Correct and try again."
-		}
-	},
-	"MAINTENANCE": {
-		"ASSIGNMENT_ALL": {
-			"TITLE": "All assignments",
-			"INDEX": {
-				"SINGLE_ASSIGNMENTS": "Assignments",
-				"RECURRING_ASSIGNMENTS": "Recurring assignments",
-				"MANAGE": "Manage"
-			}
 		}
 	},
 	"MAINTENANCE_STATES": {
@@ -1490,33 +1506,57 @@
 			"ERROR": "An error occured with {{ description }}. Correct and try again."
 		}
 	},
-	"RECURRING_ASSIGNMENTS": {
+	"MAINTENANCE": {
+		"ASSIGNMENT_ALL": {
+			"TITLE": "All assignments",
+			"INDEX": {
+				"SINGLE_ASSIGNMENTS": "Single assignments",
+				"RECURRING_ASSIGNMENTS": "Scheduled assignments",
+				"TYPES": "Assignment types",
+				"STATES": "Maintenance states",
+				"MANAGE": "Manage"
+			}
+		}
+	},
+	"SINGLE_ASSIGNMENTS": {
 		"FORM": {
 			"LABELS": {
 				"ASSIGNMENTTYPEID": "Assignment type",
-				"ENTITYID": "Entity",
-				"START": "Start date",
-				"END": "End date"
+				"DESCRIPTION": "Description",
+				"OCCUPATIONSTATE": "Occupation state",
+				"STATUS": "Status",
+				"DUE": "Due date",
+				"FROM": "Can be started from"
 			},
 			"PLACEHOLDERS": {
 				"ASSIGNMENTTYPEID": "Assignment type",
-				"ENTITYID": "Entity",
-				"START": "Start date",
-				"END": "End date"
+				"DESCRIPTION": "Enter description",
+				"OCCUPATIONSTATE": "Choose occupation state",
+				"STATUS": "Choose status",
+				"DUE": "Choose due date",
+				"FROM": "Choose can be started from date"
 			},
 			"VALIDATION": {
 				"ASSIGNMENTTYPEID": {
 					"REQUIRED": "Assignment type is required."
 				},
-				"ENTITYID": {
-					"REQUIRED": "Entity is required."
+				"DESCRIPTION": {
+					"REQUIRED": "Description is required."
 				},
-				"START": {
-					"REQUIRED": "Start date is required."
+				"STATUS": {
+					"REQUIRED": "Status is required."
 				},
-				"END": {
-					"REQUIRED": "End date is required."
+				"DUE": {
+					"REQUIRED": "Due date is required.",
+					"NOTBEFORE": "The due date may not be earlier than the start date."
+				},
+				"FROM": {
+					"REQUIRED": "A date from when the assignment can begin is required."
 				}
+			},
+			"BUTTONS": {
+				"CREATE": "Create",
+				"EDIT": "Edit"
 			}
 		},
 		"CREATE": {
@@ -1528,14 +1568,16 @@
 			"BUTTON_EDIT": "Update"
 		},
 		"INDEX": {
-			"TITLE_EXTRAS": "(recurring assignments)",
+			"TITLE_EXTRAS": "(single assignments)",
 			"ACTIONS": "Actions",
 			"CREATE": "Create",
 			"EDIT": "Edit",
 			"DELETE": "Delete",
 			"MANAGE": "Manage",
 			"FIELDS": "Fields",
+			"FIELDS_TITLE": "(fields)",
 			"STATES": "States",
+			"TYPES": "Types",
 			"BACK": "Back"
 		},
 		"QUEUE": {
@@ -1733,550 +1775,6 @@
 			"UPDATING": "Updating {{ name }}",
 			"DELETING": "Deleting {{ name }}",
 			"ERROR": "An error occured with {{ name }}. Correct and try again."
-		}
-	},
-	"PRODUCT_PRICE_CHANGES": {
-		"CREATE": {
-			"CREATE": "Create",
-			"BUTTON_CREATE": "Create"
-		},
-		"EDIT": {
-			"EDIT": "Edit",
-			"BUTTON_EDIT": "Update"
-		},
-		"INDEX": {
-			"ACTIONS": "Actions",
-			"CREATE": "Create",
-			"DELETE": "Delete",
-			"MANAGE": "Manage",
-			"FIELDS": "Fields",
-			"BACK": "Back"
-		},
-		"FORM": {
-			"LABELS": {
-				"CURRENCYCODE": "Currency code",
-				"RECORDID": "Product",
-				"CHANGE": "Price change",
-				"ISPERCENT": "Change is in percentage (%)",
-				"PERUNIT": "Per unit",
-				"VALIDFROM": "Valid from",
-				"VALIDTO": "Valid to",
-				"MINUNITS": "Minimum units",
-				"MAXUNITS": "Maximum units",
-				"ONLYVALIDUNITS": "Change only counts for units within min and max"
-			},
-			"PLACEHOLDERS": {
-				"CURRENCYCODE": "Currency code",
-				"RECORDID": "Product",
-				"CHANGE": "Price change",
-				"ISPERCENT": "Change is in percentage (%)",
-				"PERUNIT": "Per unit",
-				"VALIDFROM": "Valid from",
-				"VALIDTO": "Valid to",
-				"MINUNITS": "Minimum units",
-				"MAXUNITS": "Maximum units",
-				"ONLYVALIDUNITS": "Change only counts for units within min and max"
-			},
-			"VALIDATION": {
-				"CURRENCYCODE": {
-					"REQUIRED": "Currency code is required"
-				},
-				"RECORDID": {
-					"REQUIRED": "Product is required"
-				},
-				"CHANGE": {
-					"REQUIRED": "Change is required"
-				},
-				"ISPERCENT": {
-					"REQUIRED": "Field is required"
-				},
-				"VALIDFROM": {
-					"REQUIRED": "Valid from is required"
-				},
-				"VALIDTO": {
-					"REQUIRED": "Valid to is required"
-				},
-				"MINUNITS": {
-					"REQUIRED": "Minimum units is required"
-				},
-				"MAXUNITS": {
-					"REQUIRED": "Maximum units is required"
-				}
-			}
-		},
-		"QUEUE": {
-			"ADDING": "Adding the price change valid from/to: {{ dates }}",
-			"UPDATING": "Updating the price change valid from/to: {{ dates }}",
-			"DELETING": "Deleting the price change valid from/to: {{ dates }}",
-			"ERROR": "An error occured with the price change valid from/to: {{ dates }}. Correct and try again."
-		}
-	},
-	"PRODUCT_TYPE_PRICE_CHANGES": {
-		"CREATE": {
-			"CREATE": "Create",
-			"BUTTON_CREATE": "Create"
-		},
-		"EDIT": {
-			"EDIT": "Edit",
-			"BUTTON_EDIT": "Update"
-		},
-		"INDEX": {
-			"ACTIONS": "Actions",
-			"CREATE": "Create",
-			"DELETE": "Delete",
-			"MANAGE": "Manage",
-			"FIELDS": "Fields",
-			"BACK": "Back"
-		},
-		"FORM": {
-			"LABELS": {
-				"CURRENCYCODE": "Currency code",
-				"RECORDID": "Product type",
-				"CHANGE": "Change",
-				"ISPERCENT": "Change is in Percent (%)",
-				"PERUNIT": "Per unit",
-				"VALIDFROM": "Valid from",
-				"VALIDTO": "Valid to",
-				"MINUNITS": "Minimum units",
-				"MAXUNITS": "Maximum units",
-				"ONLYVALIDUNITS": "Change only counts for units within min and max"
-			},
-			"PLACEHOLDERS": {
-				"CURRENCYCODE": "Currency code",
-				"RECORDID": "Product type",
-				"CHANGE": "Change",
-				"ISPERCENT": "Change is in Percent (%)",
-				"PERUNIT": "Per unit",
-				"VALIDFROM": "Valid from",
-				"VALIDTO": "Valid to",
-				"MINUNITS": "Minimum units",
-				"MAXUNITS": "Maximum units",
-				"ONLYVALIDUNITS": "Change only counts for units within min and max"
-			},
-			"VALIDATION": {
-				"CURRENCYCODE": {
-					"REQUIRED": "Currency code is required"
-				},
-				"RECORDID": {
-					"REQUIRED": "Product is required"
-				},
-				"CHANGE": {
-					"REQUIRED": "Change is required"
-				},
-				"ISPERCENT": {
-					"REQUIRED": "Field is required"
-				},
-				"VALIDFROM": {
-					"REQUIRED": "Valid from is required"
-				},
-				"VALIDTO": {
-					"REQUIRED": "Valid to is required"
-				},
-				"MINUNITS": {
-					"REQUIRED": "Minimum units is required"
-				},
-				"MAXUNITS": {
-					"REQUIRED": "Maximum units is required"
-				}
-			}
-		},
-		"QUEUE": {
-			"ADDING": "Adding the price change valid from/to: {{ dates }}",
-			"UPDATING": "Updating the price change valid from/to: {{ dates }}",
-			"DELETING": "Deleting the price change valid from/to: {{ dates }}",
-			"ERROR": "An error occured with the price change valid from/to: {{ dates }}. Correct and try again."
-		}
-	},
-	"PRODUCT_TYPE_SALES_PRICE": {
-		"CREATE": {
-			"CREATE": "Create",
-			"BUTTON_CREATE": "Create"
-		},
-		"EDIT": {
-			"EDIT": "Edit",
-			"BUTTON_EDIT": "Update"
-		},
-		"INDEX": {
-			"ACTIONS": "Actions",
-			"CREATE": "Create",
-			"DELETE": "Delete",
-			"MANAGE": "Manage",
-			"FIELDS": "Fields",
-			"BACK": "Back"
-		},
-		"FORM": {
-			"LABELS": {
-				"CURRENCYCODE": "Currency code",
-				"RECORDID": "Product type",
-				"PRICE": "Price"
-			},
-			"PLACEHOLDERS": {
-				"CURRENCYCODE": "Currency code",
-				"RECORDID": "Product type",
-				"PRICE": "Price"
-			},
-			"VALIDATION": {
-				"CURRENCYCODE": {
-					"REQUIRED": "Currency code is required"
-				},
-				"RECORDID": {
-					"REQUIRED": "Product is required"
-				},
-				"PRICE": {
-					"REQUIRED": "Price is required"
-				}
-			}
-		},
-		"QUEUE": {
-			"ADDING": "Adding the product type sale price with the price: {{ price }}",
-			"UPDATING": "Updating the product type sale price with the price: {{ price }}",
-			"DELETING": "Deleting the product type sale price with the price: {{ price }}",
-			"ERROR": "An error occured with the product type sale price with the price: {{ price }}. Correct and try again."
-		}
-	},
-	"PRODUCTS_SALES_PRICE": {
-		"CREATE": {
-			"CREATE": "Create",
-			"BUTTON_CREATE": "Create"
-		},
-		"EDIT": {
-			"EDIT": "Edit",
-			"BUTTON_EDIT": "Update"
-		},
-		"INDEX": {
-			"ACTIONS": "Actions",
-			"CREATE": "Create",
-			"DELETE": "Delete",
-			"MANAGE": "Manage",
-			"FIELDS": "Fields",
-			"BACK": "Back"
-		},
-		"FORM": {
-			"LABELS": {
-				"CURRENCYCODE": "Currency code",
-				"RECORDID": "Product",
-				"PRICE": "Price"
-			},
-			"PLACEHOLDERS": {
-				"CURRENCYCODE": "Currency code",
-				"RECORDID": "Product",
-				"PRICE": "Price"
-			},
-			"VALIDATION": {
-				"CURRENCYCODE": {
-					"REQUIRED": "Currency code is required"
-				},
-				"RECORDID": {
-					"REQUIRED": "Product is required"
-				},
-				"PRICE": {
-					"REQUIRED": "Price is required"
-				}
-			}
-		},
-		"QUEUE": {
-			"ADDING": "Adding the product sale price with the price: {{ price }}",
-			"UPDATING": "Updating the product sale price with the price: {{ price }}",
-			"DELETING": "Deleting the product sale price with the price: {{ price }}",
-			"ERROR": "An error occured with the product sale price with the price: {{ price }}. Correct and try again."
-		}
-	},
-	"LODGING_PRICES": {
-		"CREATE": {
-			"CREATE": "Create",
-			"BUTTON_CREATE": "Create"
-		},
-		"EDIT": {
-			"EDIT": "Edit",
-			"BUTTON_EDIT": "Update"
-		},
-		"INDEX": {
-			"ACTIONS": "Actions",
-			"CREATE": "Create",
-			"DELETE": "Delete",
-			"MANAGE": "Manage",
-			"FIELDS": "Fields",
-			"BACK": "Back"
-		},
-		"FORM": {
-			"LABELS": {
-				"CURRENCYCODE": "Currency code",
-				"RECORDID": "Lodging",
-				"PRICE": "Price"
-			},
-			"PLACEHOLDERS": {
-				"CURRENCYCODE": "Currency code",
-				"RECORDID": "Lodging",
-				"PRICE": "Price"
-			},
-			"VALIDATION": {
-				"CURRENCYCODE": {
-					"REQUIRED": "Currency code is required"
-				},
-				"RECORDID": {
-					"REQUIRED": "Lodging is required"
-				},
-				"PRICE": {
-					"REQUIRED": "Price is required"
-				}
-			}
-		},
-		"QUEUE": {
-			"ADDING": "Adding the lodging price with the price: {{ price }}",
-			"UPDATING": "Updating the lodging price with the price: {{ price }}",
-			"DELETING": "Deleting the lodging price with the price: {{ price }}",
-			"ERROR": "An error occured with the lodging price with the price: {{ price }}. Correct and try again."
-		}
-	},
-	"LODGING_RESERVATION_PRICE_CHANGES": {
-		"CREATE": {
-			"CREATE": "Create",
-			"BUTTON_CREATE": "Create"
-		},
-		"EDIT": {
-			"EDIT": "Edit",
-			"BUTTON_EDIT": "Update"
-		},
-		"INDEX": {
-			"ACTIONS": "Actions",
-			"CREATE": "Create",
-			"DELETE": "Delete",
-			"MANAGE": "Manage",
-			"FIELDS": "Fields",
-			"BACK": "Back"
-		},
-		"FORM": {
-			"LABELS": {
-				"CHANGE": "Price change",
-				"CURRENCYCODE": "Currency code",
-				"ISPERCENT": "Change is in percentage (%)",
-				"VALIDFROM": "Valid from",
-				"VALIDTO": "Valid to",
-				"RECORDID": "Allocated lodging",
-				"START": "Start",
-				"END": "End",
-				"EXCLUDEDAYSOFWEEK": "Exclude week days",
-				"MINUNITS": "Minimum units",
-				"MAXUNITS": "Maximum units",
-				"PERUNIT": "Per unit",
-				"ONLYVALIDUNITS": "Change only counts for units within min and max",
-				"MINUNITSOFTIME": "Minimum units of time",
-				"MAXUNITSOFTIME": "Maximum units of time",
-				"ONLYVALIDUNITSOFTIME": "Change only counts for units within the min and max time period",
-				"PERUNITOFTIME": "Per unit of time"
-			},
-			"PLACEHOLDERS": {
-				"CURRENCYCODE": "Currency code",
-				"RECORDID": "Lodging",
-				"CHANGE": "Price change",
-				"ISPERCENT": "Change is in percentage (%)",
-				"VALIDFROM": "Valid from",
-				"VALIDTO": "Valid to",
-				"START": "Start",
-				"END": "End",
-				"EXCLUDEDAYSOFWEEK": "Exclude week days",
-				"MINUNITS": "Minimum units",
-				"MAXUNITS": "Maximum units",
-				"PERUNIT": "Per unit",
-				"ONLYVALIDUNITS": "Change only counts for units within min and max",
-				"MINUNITSOFTIME": "Minimum units of time",
-				"MAXUNITSOFTIME": "Maximum units of time",
-				"ONLYVALIDUNITSOFTIME": "Change only counts for units within the min and max time period",
-				"PERUNITOFTIME": "Per unit of time"
-			},
-			"VALIDATION": {
-				"CURRENCYCODE": {
-					"REQUIRED": "Currency code is required"
-				},
-				"RECORDID": {
-					"REQUIRED": "Allocated Lodging is required"
-				},
-				"CHANGE": {
-					"REQUIRED": "Price change is required"
-				},
-				"ISPERCENT": {
-					"REQUIRED": "Field is required"
-				},
-				"VALIDFROM": {
-					"REQUIRED": "Valid from is required"
-				},
-				"VALIDTO": {
-					"REQUIRED": "Valid to is required"
-				},
-				"START": {
-					"REQUIRED": "Start is required"
-				},
-				"END": {
-					"REQUIRED": "End is required"
-				},
-				"MINUNITS": {
-					"REQUIRED": "Minimum units is required"
-				},
-				"MAXUNITS": {
-					"REQUIRED": "Maximum units is required"
-				},
-				"MINUNITSOFTIME": {
-					"REQUIRED": "Minimum units time is required"
-				},
-				"MAXUNITSOFTIME": {
-					"REQUIRED": "Maximum units of time is required"
-				}
-			}
-		},
-		"QUEUE": {
-			"ADDING": "Adding the lodging reservation price change valid from/to: {{ dates }}",
-			"UPDATING": "Updating the lodging reservation price change valid from/to: {{ dates }}",
-			"DELETING": "Deleting the lodging reservation price change valid from/to: {{ dates }}",
-			"ERROR": "An error occured with the lodging reservation price change valid from/to: {{ dates }}. Correct and try again."
-		}
-	},
-	"LODGING_TYPE_PRICES": {
-		"CREATE": {
-			"CREATE": "Create",
-			"BUTTON_CREATE": "Create"
-		},
-		"EDIT": {
-			"EDIT": "Edit",
-			"BUTTON_EDIT": "Update"
-		},
-		"INDEX": {
-			"ACTIONS": "Actions",
-			"CREATE": "Create",
-			"DELETE": "Delete",
-			"MANAGE": "Manage",
-			"FIELDS": "Fields",
-			"BACK": "Back"
-		},
-		"FORM": {
-			"LABELS": {
-				"CURRENCYCODE": "Currency code",
-				"RECORDID": "Lodging type",
-				"PRICE": "Price"
-			},
-			"PLACEHOLDERS": {
-				"CURRENCYCODE": "Currency code",
-				"RECORDID": "Lodging type",
-				"PRICE": "Price"
-			},
-			"VALIDATION": {
-				"CURRENCYCODE": {
-					"REQUIRED": "Currency code is required"
-				},
-				"RECORDID": {
-					"REQUIRED": "Lodging type is required"
-				},
-				"PRICE": {
-					"REQUIRED": "Price is required"
-				}
-			}
-		},
-		"QUEUE": {
-			"ADDING": "Adding the lodging type price with the price: {{ price }}",
-			"UPDATING": "Updating the lodging type price with the price: {{ price }}",
-			"DELETING": "Deleting the lodging type price with the price: {{ price }}",
-			"ERROR": "An error occured with the lodging type price with the price: {{ price }}. Correct and try again."
-		}
-	},
-	"LODGING_TYPE_RESERVATION_PRICE_CHANGES": {
-		"CREATE": {
-			"CREATE": "Create",
-			"BUTTON_CREATE": "Create"
-		},
-		"EDIT": {
-			"EDIT": "Edit",
-			"BUTTON_EDIT": "Update"
-		},
-		"INDEX": {
-			"ACTIONS": "Actions",
-			"CREATE": "Create",
-			"DELETE": "Delete",
-			"MANAGE": "Manage",
-			"FIELDS": "Fields",
-			"BACK": "Back"
-		},
-		"FORM": {
-			"LABELS": {
-				"CHANGE": "Price change",
-				"CURRENCYCODE": "Currency code",
-				"ISPERCENT": "Change is in percentage (%)",
-				"VALIDFROM": "Valid from",
-				"VALIDTO": "Valid to",
-				"RECORDID": "Lodging type",
-				"START": "Start",
-				"END": "End",
-				"EXCLUDEDAYSOFWEEK": "Exclude week days",
-				"MINUNITS": "Minimum units",
-				"MAXUNITS": "Maximum units",
-				"PERUNIT": "Per unit",
-				"ONLYVALIDUNITS": "Change only counts for units within min and max",
-				"MINUNITSOFTIME": "Minimum units of time",
-				"MAXUNITSOFTIME": "Maximum units of time",
-				"ONLYVALIDUNITSOFTIME": "Change only counts for units within the min and max time period",
-				"PERUNITOFTIME": "Per unit of time"
-			},
-			"PLACEHOLDERS": {
-				"CURRENCYCODE": "Currency code",
-				"RECORDID": "Lodging type",
-				"CHANGE": "Price change",
-				"ISPERCENT": "Change is in percentage (%)",
-				"VALIDFROM": "Valid from",
-				"VALIDTO": "Valid to",
-				"START": "Start",
-				"END": "End",
-				"EXCLUDEDAYSOFWEEK": "Exclude week days",
-				"MINUNITS": "Minimum units",
-				"MAXUNITS": "Maximum units",
-				"PERUNIT": "Per unit",
-				"ONLYVALIDUNITS": "Change only counts for units within min and max",
-				"MINUNITSOFTIME": "Minimum units of time",
-				"MAXUNITSOFTIME": "Maximum units of time",
-				"ONLYVALIDUNITSOFTIME": "Change only counts for units within the min and max time period",
-				"PERUNITOFTIME": "Per unit of time"
-			},
-			"VALIDATION": {
-				"CURRENCYCODE": {
-					"REQUIRED": "Currency code is required"
-				},
-				"RECORDID": {
-					"REQUIRED": "Lodging type is required"
-				},
-				"CHANGE": {
-					"REQUIRED": "Price change is required"
-				},
-				"ISPERCENT": {
-					"REQUIRED": "Price change type is required"
-				},
-				"VALIDFROM": {
-					"REQUIRED": "Valid from is required"
-				},
-				"VALIDTO": {
-					"REQUIRED": "Valid to is required"
-				},
-				"START": {
-					"REQUIRED": "Start is required"
-				},
-				"END": {
-					"REQUIRED": "End is required"
-				},
-				"MINUNITS": {
-					"REQUIRED": "Minimum units is required"
-				},
-				"MAXUNITS": {
-					"REQUIRED": "Maximum units is required"
-				},
-				"MINUNITSOFTIME": {
-					"REQUIRED": "Minimum units time is required"
-				},
-				"MAXUNITSOFTIME": {
-					"REQUIRED": "Maximum units of time is required"
-				}
-			}
-		},
-		"QUEUE": {
-			"ADDING": "Adding the lodging type reservation price change valid from/to: {{ dates }}",
-			"UPDATING": "Updating the lodging type reservation price change valid from/to: {{ dates }}",
-			"DELETING": "Deleting the lodging type reservation price change valid from/to: {{ dates }}",
-			"ERROR": "An error occured with the lodging type reservation price change valid from/to: {{ dates }}. Correct and try again."
 		}
 	},
 	"CONNECTIONS": {
@@ -2594,6 +2092,550 @@
 			"ENTITY_ACTION": {
 				"TERMINAL_PAYMENT": "Card payment"
 			}
+		}
+	},
+	"PRODUCT_PRICE_CHANGES": {
+		"CREATE": {
+			"CREATE": "Create",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDIT": "Edit",
+			"BUTTON_EDIT": "Update"
+		},
+		"INDEX": {
+			"ACTIONS": "Actions",
+			"CREATE": "Create",
+			"DELETE": "Delete",
+			"MANAGE": "Manage",
+			"FIELDS": "Fields",
+			"BACK": "Back"
+		},
+		"FORM": {
+			"LABELS": {
+				"CURRENCYCODE": "Currency code",
+				"RECORDID": "Product",
+				"CHANGE": "Price change",
+				"ISPERCENT": "Change is in percentage (%)",
+				"PERUNIT": "Per unit",
+				"VALIDFROM": "Valid from",
+				"VALIDTO": "Valid to",
+				"MINUNITS": "Minimum units",
+				"MAXUNITS": "Maximum units",
+				"ONLYVALIDUNITS": "Change only counts for units within min and max"
+			},
+			"PLACEHOLDERS": {
+				"CURRENCYCODE": "Currency code",
+				"RECORDID": "Product",
+				"CHANGE": "Price change",
+				"ISPERCENT": "Change is in percentage (%)",
+				"PERUNIT": "Per unit",
+				"VALIDFROM": "Valid from",
+				"VALIDTO": "Valid to",
+				"MINUNITS": "Minimum units",
+				"MAXUNITS": "Maximum units",
+				"ONLYVALIDUNITS": "Change only counts for units within min and max"
+			},
+			"VALIDATION": {
+				"CURRENCYCODE": {
+					"REQUIRED": "Currency code is required"
+				},
+				"RECORDID": {
+					"REQUIRED": "Product is required"
+				},
+				"CHANGE": {
+					"REQUIRED": "Change is required"
+				},
+				"ISPERCENT": {
+					"REQUIRED": "Field is required"
+				},
+				"VALIDFROM": {
+					"REQUIRED": "Valid from is required"
+				},
+				"VALIDTO": {
+					"REQUIRED": "Valid to is required"
+				},
+				"MINUNITS": {
+					"REQUIRED": "Minimum units is required"
+				},
+				"MAXUNITS": {
+					"REQUIRED": "Maximum units is required"
+				}
+			}
+		},
+		"QUEUE": {
+			"ADDING": "Adding the price change valid from/to: {{ dates }}",
+			"UPDATING": "Updating the price change valid from/to: {{ dates }}",
+			"DELETING": "Deleting the price change valid from/to: {{ dates }}",
+			"ERROR": "An error occured with the price change valid from/to: {{ dates }}. Correct and try again."
+		}
+	},
+	"PRODUCT_TYPE_PRICE_CHANGES": {
+		"CREATE": {
+			"CREATE": "Create",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDIT": "Edit",
+			"BUTTON_EDIT": "Update"
+		},
+		"INDEX": {
+			"ACTIONS": "Actions",
+			"CREATE": "Create",
+			"DELETE": "Delete",
+			"MANAGE": "Manage",
+			"FIELDS": "Fields",
+			"BACK": "Back"
+		},
+		"FORM": {
+			"LABELS": {
+				"CURRENCYCODE": "Currency code",
+				"RECORDID": "Product type",
+				"CHANGE": "Change",
+				"ISPERCENT": "Change is in Percent (%)",
+				"PERUNIT": "Per unit",
+				"VALIDFROM": "Valid from",
+				"VALIDTO": "Valid to",
+				"MINUNITS": "Minimum units",
+				"MAXUNITS": "Maximum units",
+				"ONLYVALIDUNITS": "Change only counts for units within min and max"
+			},
+			"PLACEHOLDERS": {
+				"CURRENCYCODE": "Currency code",
+				"RECORDID": "Product type",
+				"CHANGE": "Change",
+				"ISPERCENT": "Change is in Percent (%)",
+				"PERUNIT": "Per unit",
+				"VALIDFROM": "Valid from",
+				"VALIDTO": "Valid to",
+				"MINUNITS": "Minimum units",
+				"MAXUNITS": "Maximum units",
+				"ONLYVALIDUNITS": "Change only counts for units within min and max"
+			},
+			"VALIDATION": {
+				"CURRENCYCODE": {
+					"REQUIRED": "Currency code is required"
+				},
+				"RECORDID": {
+					"REQUIRED": "Product is required"
+				},
+				"CHANGE": {
+					"REQUIRED": "Change is required"
+				},
+				"ISPERCENT": {
+					"REQUIRED": "Field is required"
+				},
+				"VALIDFROM": {
+					"REQUIRED": "Valid from is required"
+				},
+				"VALIDTO": {
+					"REQUIRED": "Valid to is required"
+				},
+				"MINUNITS": {
+					"REQUIRED": "Minimum units is required"
+				},
+				"MAXUNITS": {
+					"REQUIRED": "Maximum units is required"
+				}
+			}
+		},
+		"QUEUE": {
+			"ADDING": "Adding the price change valid from/to: {{ dates }}",
+			"UPDATING": "Updating the price change valid from/to: {{ dates }}",
+			"DELETING": "Deleting the price change valid from/to: {{ dates }}",
+			"ERROR": "An error occured with the price change valid from/to: {{ dates }}. Correct and try again."
+		}
+	},
+	"PRODUCT_TYPE_SALES_PRICE": {
+		"CREATE": {
+			"CREATE": "Create",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDIT": "Edit",
+			"BUTTON_EDIT": "Update"
+		},
+		"INDEX": {
+			"ACTIONS": "Actions",
+			"CREATE": "Create",
+			"DELETE": "Delete",
+			"MANAGE": "Manage",
+			"FIELDS": "Fields",
+			"BACK": "Back"
+		},
+		"FORM": {
+			"LABELS": {
+				"CURRENCYCODE": "Currency code",
+				"RECORDID": "Product type",
+				"PRICE": "Price"
+			},
+			"PLACEHOLDERS": {
+				"CURRENCYCODE": "Currency code",
+				"RECORDID": "Product type",
+				"PRICE": "Price"
+			},
+			"VALIDATION": {
+				"CURRENCYCODE": {
+					"REQUIRED": "Currency code is required"
+				},
+				"RECORDID": {
+					"REQUIRED": "Product is required"
+				},
+				"PRICE": {
+					"REQUIRED": "Price is required"
+				}
+			}
+		},
+		"QUEUE": {
+			"ADDING": "Adding the product type sale price with the price: {{ price }}",
+			"UPDATING": "Updating the product type sale price with the price: {{ price }}",
+			"DELETING": "Deleting the product type sale price with the price: {{ price }}",
+			"ERROR": "An error occured with the product type sale price with the price: {{ price }}. Correct and try again."
+		}
+	},
+	"PRODUCTS_SALES_PRICE": {
+		"CREATE": {
+			"CREATE": "Create",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDIT": "Edit",
+			"BUTTON_EDIT": "Update"
+		},
+		"INDEX": {
+			"ACTIONS": "Actions",
+			"CREATE": "Create",
+			"DELETE": "Delete",
+			"MANAGE": "Manage",
+			"FIELDS": "Fields",
+			"BACK": "Back"
+		},
+		"FORM": {
+			"LABELS": {
+				"CURRENCYCODE": "Currency code",
+				"RECORDID": "Product",
+				"PRICE": "Price"
+			},
+			"PLACEHOLDERS": {
+				"CURRENCYCODE": "Currency code",
+				"RECORDID": "Product",
+				"PRICE": "Price"
+			},
+			"VALIDATION": {
+				"CURRENCYCODE": {
+					"REQUIRED": "Currency code is required"
+				},
+				"RECORDID": {
+					"REQUIRED": "Product is required"
+				},
+				"PRICE": {
+					"REQUIRED": "Price is required"
+				}
+			}
+		},
+		"QUEUE": {
+			"ADDING": "Adding the product sale price with the price: {{ price }}",
+			"UPDATING": "Updating the product sale price with the price: {{ price }}",
+			"DELETING": "Deleting the product sale price with the price: {{ price }}",
+			"ERROR": "An error occured with the product sale price with the price: {{ price }}. Correct and try again."
+		}
+	},
+	"LODGING_PRICES": {
+		"CREATE": {
+			"CREATE": "Create",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDIT": "Edit",
+			"BUTTON_EDIT": "Update"
+		},
+		"INDEX": {
+			"ACTIONS": "Actions",
+			"CREATE": "Create",
+			"DELETE": "Delete",
+			"MANAGE": "Manage",
+			"FIELDS": "Fields",
+			"BACK": "Back"
+		},
+		"FORM": {
+			"LABELS": {
+				"CURRENCYCODE": "Currency code",
+				"RECORDID": "Lodging",
+				"PRICE": "Price"
+			},
+			"PLACEHOLDERS": {
+				"CURRENCYCODE": "Currency code",
+				"RECORDID": "Lodging",
+				"PRICE": "Price"
+			},
+			"VALIDATION": {
+				"CURRENCYCODE": {
+					"REQUIRED": "Currency code is required"
+				},
+				"RECORDID": {
+					"REQUIRED": "Lodging is required"
+				},
+				"PRICE": {
+					"REQUIRED": "Price is required"
+				}
+			}
+		},
+		"QUEUE": {
+			"ADDING": "Adding the lodging price with the price: {{ price }}",
+			"UPDATING": "Updating the lodging price with the price: {{ price }}",
+			"DELETING": "Deleting the lodging price with the price: {{ price }}",
+			"ERROR": "An error occured with the lodging price with the price: {{ price }}. Correct and try again."
+		}
+	},
+	"LODGING_TYPE_RESERVATION_PRICE_CHANGES": {
+		"CREATE": {
+			"CREATE": "Create",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDIT": "Edit",
+			"BUTTON_EDIT": "Update"
+		},
+		"INDEX": {
+			"ACTIONS": "Actions",
+			"CREATE": "Create",
+			"DELETE": "Delete",
+			"MANAGE": "Manage",
+			"FIELDS": "Fields",
+			"BACK": "Back"
+		},
+		"FORM": {
+			"LABELS": {
+				"CHANGE": "Price change",
+				"CURRENCYCODE": "Currency code",
+				"ISPERCENT": "Change is in percentage (%)",
+				"VALIDFROM": "Valid from",
+				"VALIDTO": "Valid to",
+				"RECORDID": "Lodging type",
+				"START": "Start",
+				"END": "End",
+				"EXCLUDEDAYSOFWEEK": "Exclude week days",
+				"MINUNITS": "Minimum units",
+				"MAXUNITS": "Maximum units",
+				"PERUNIT": "Per unit",
+				"ONLYVALIDUNITS": "Change only counts for units within min and max",
+				"MINUNITSOFTIME": "Minimum units of time",
+				"MAXUNITSOFTIME": "Maximum units of time",
+				"ONLYVALIDUNITSOFTIME": "Change only counts for units within the min and max time period",
+				"PERUNITOFTIME": "Per unit of time"
+			},
+			"PLACEHOLDERS": {
+				"CURRENCYCODE": "Currency code",
+				"RECORDID": "Lodging type",
+				"CHANGE": "Price change",
+				"ISPERCENT": "Change is in percentage (%)",
+				"VALIDFROM": "Valid from",
+				"VALIDTO": "Valid to",
+				"START": "Start",
+				"END": "End",
+				"EXCLUDEDAYSOFWEEK": "Exclude week days",
+				"MINUNITS": "Minimum units",
+				"MAXUNITS": "Maximum units",
+				"PERUNIT": "Per unit",
+				"ONLYVALIDUNITS": "Change only counts for units within min and max",
+				"MINUNITSOFTIME": "Minimum units of time",
+				"MAXUNITSOFTIME": "Maximum units of time",
+				"ONLYVALIDUNITSOFTIME": "Change only counts for units within the min and max time period",
+				"PERUNITOFTIME": "Per unit of time"
+			},
+			"VALIDATION": {
+				"CURRENCYCODE": {
+					"REQUIRED": "Currency code is required"
+				},
+				"RECORDID": {
+					"REQUIRED": "Lodging type is required"
+				},
+				"CHANGE": {
+					"REQUIRED": "Price change is required"
+				},
+				"ISPERCENT": {
+					"REQUIRED": "Price change type is required"
+				},
+				"VALIDFROM": {
+					"REQUIRED": "Valid from is required"
+				},
+				"VALIDTO": {
+					"REQUIRED": "Valid to is required"
+				},
+				"START": {
+					"REQUIRED": "Start is required"
+				},
+				"END": {
+					"REQUIRED": "End is required"
+				},
+				"MINUNITS": {
+					"REQUIRED": "Minimum units is required"
+				},
+				"MAXUNITS": {
+					"REQUIRED": "Maximum units is required"
+				},
+				"MINUNITSOFTIME": {
+					"REQUIRED": "Minimum units time is required"
+				},
+				"MAXUNITSOFTIME": {
+					"REQUIRED": "Maximum units of time is required"
+				}
+			}
+		},
+		"QUEUE": {
+			"ADDING": "Adding the lodging type reservation price change valid from/to: {{ dates }}",
+			"UPDATING": "Updating the lodging type reservation price change valid from/to: {{ dates }}",
+			"DELETING": "Deleting the lodging type reservation price change valid from/to: {{ dates }}",
+			"ERROR": "An error occured with the lodging type reservation price change valid from/to: {{ dates }}. Correct and try again."
+		}
+	},
+	"LODGING_RESERVATION_PRICE_CHANGES": {
+		"CREATE": {
+			"CREATE": "Create",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDIT": "Edit",
+			"BUTTON_EDIT": "Update"
+		},
+		"INDEX": {
+			"ACTIONS": "Actions",
+			"CREATE": "Create",
+			"DELETE": "Delete",
+			"MANAGE": "Manage",
+			"FIELDS": "Fields",
+			"BACK": "Back"
+		},
+		"FORM": {
+			"LABELS": {
+				"CHANGE": "Price change",
+				"CURRENCYCODE": "Currency code",
+				"ISPERCENT": "Change is in percentage (%)",
+				"VALIDFROM": "Valid from",
+				"VALIDTO": "Valid to",
+				"RECORDID": "Allocated lodging",
+				"START": "Start",
+				"END": "End",
+				"EXCLUDEDAYSOFWEEK": "Exclude week days",
+				"MINUNITS": "Minimum units",
+				"MAXUNITS": "Maximum units",
+				"PERUNIT": "Per unit",
+				"ONLYVALIDUNITS": "Change only counts for units within min and max",
+				"MINUNITSOFTIME": "Minimum units of time",
+				"MAXUNITSOFTIME": "Maximum units of time",
+				"ONLYVALIDUNITSOFTIME": "Change only counts for units within the min and max time period",
+				"PERUNITOFTIME": "Per unit of time"
+			},
+			"PLACEHOLDERS": {
+				"CURRENCYCODE": "Currency code",
+				"RECORDID": "Lodging",
+				"CHANGE": "Price change",
+				"ISPERCENT": "Change is in percentage (%)",
+				"VALIDFROM": "Valid from",
+				"VALIDTO": "Valid to",
+				"START": "Start",
+				"END": "End",
+				"EXCLUDEDAYSOFWEEK": "Exclude week days",
+				"MINUNITS": "Minimum units",
+				"MAXUNITS": "Maximum units",
+				"PERUNIT": "Per unit",
+				"ONLYVALIDUNITS": "Change only counts for units within min and max",
+				"MINUNITSOFTIME": "Minimum units of time",
+				"MAXUNITSOFTIME": "Maximum units of time",
+				"ONLYVALIDUNITSOFTIME": "Change only counts for units within the min and max time period",
+				"PERUNITOFTIME": "Per unit of time"
+			},
+			"VALIDATION": {
+				"CURRENCYCODE": {
+					"REQUIRED": "Currency code is required"
+				},
+				"RECORDID": {
+					"REQUIRED": "Allocated Lodging is required"
+				},
+				"CHANGE": {
+					"REQUIRED": "Price change is required"
+				},
+				"ISPERCENT": {
+					"REQUIRED": "Field is required"
+				},
+				"VALIDFROM": {
+					"REQUIRED": "Valid from is required"
+				},
+				"VALIDTO": {
+					"REQUIRED": "Valid to is required"
+				},
+				"START": {
+					"REQUIRED": "Start is required"
+				},
+				"END": {
+					"REQUIRED": "End is required"
+				},
+				"MINUNITS": {
+					"REQUIRED": "Minimum units is required"
+				},
+				"MAXUNITS": {
+					"REQUIRED": "Maximum units is required"
+				},
+				"MINUNITSOFTIME": {
+					"REQUIRED": "Minimum units time is required"
+				},
+				"MAXUNITSOFTIME": {
+					"REQUIRED": "Maximum units of time is required"
+				}
+			}
+		},
+		"QUEUE": {
+			"ADDING": "Adding the lodging reservation price change valid from/to: {{ dates }}",
+			"UPDATING": "Updating the lodging reservation price change valid from/to: {{ dates }}",
+			"DELETING": "Deleting the lodging reservation price change valid from/to: {{ dates }}",
+			"ERROR": "An error occured with the lodging reservation price change valid from/to: {{ dates }}. Correct and try again."
+		}
+	},
+	"LODGING_TYPE_PRICES": {
+		"CREATE": {
+			"CREATE": "Create",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDIT": "Edit",
+			"BUTTON_EDIT": "Update"
+		},
+		"INDEX": {
+			"ACTIONS": "Actions",
+			"CREATE": "Create",
+			"DELETE": "Delete",
+			"MANAGE": "Manage",
+			"FIELDS": "Fields",
+			"BACK": "Back"
+		},
+		"FORM": {
+			"LABELS": {
+				"CURRENCYCODE": "Currency code",
+				"RECORDID": "Lodging type",
+				"PRICE": "Price"
+			},
+			"PLACEHOLDERS": {
+				"CURRENCYCODE": "Currency code",
+				"RECORDID": "Lodging type",
+				"PRICE": "Price"
+			},
+			"VALIDATION": {
+				"CURRENCYCODE": {
+					"REQUIRED": "Currency code is required"
+				},
+				"RECORDID": {
+					"REQUIRED": "Lodging type is required"
+				},
+				"PRICE": {
+					"REQUIRED": "Price is required"
+				}
+			}
+		},
+		"QUEUE": {
+			"ADDING": "Adding the lodging type price with the price: {{ price }}",
+			"UPDATING": "Updating the lodging type price with the price: {{ price }}",
+			"DELETING": "Deleting the lodging type price with the price: {{ price }}",
+			"ERROR": "An error occured with the lodging type price with the price: {{ price }}. Correct and try again."
 		}
 	},
 	"UI": {
@@ -2932,6 +2974,17 @@
 			"INSTALL": "Install feature"
 		}
 	},
+	"TERMINAL_PAYMENTS": {
+		"INDEX": {
+			"TITLE": "Terminal Payments",
+			"MANAGE": "Manage",
+			"TERMINALS": "Terminals",
+			"RECEIPTS": "Receipts",
+			"CONNECTIONS": "Connections",
+			"TERMINAL_PAYMENT_RECEIPTS": "Payment receipts",
+			"TERMINAL_RECEIPTS": "Receipts"
+		}
+	},
 	"PRODUCTS_PRICINGS": {
 		"INDEX": {
 			"MANAGE": "Manage",
@@ -2948,17 +3001,6 @@
 			"PRICES": "Lodging prices",
 			"RESERVATION_PRICE_CHANGES_TYPES": "Lodging type reservation price changes",
 			"PRICES_TYPES": "Lodging type prices"
-		}
-	},
-	"TERMINAL_PAYMENTS": {
-		"INDEX": {
-			"TITLE": "Terminal Payments",
-			"MANAGE": "Manage",
-			"TERMINALS": "Terminals",
-			"RECEIPTS": "Receipts",
-			"CONNECTIONS": "Connections",
-			"TERMINAL_PAYMENT_RECEIPTS": "Payment receipts",
-			"TERMINAL_RECEIPTS": "Receipts"
 		}
 	},
 	"FIELDS": {
@@ -3020,6 +3062,61 @@
 			"UPDATING": "Updating settings",
 			"DELETING": "Deleting settings",
 			"ERROR": "An error occured with settings. Correct and try again."
+		}
+	},
+	"RECURRING_ASSIGNMENTS": {
+		"FORM": {
+			"LABELS": {
+				"ASSIGNMENTTYPEID": "Assignment type",
+				"ENTITYID": "Entity",
+				"START": "Start date",
+				"END": "End date"
+			},
+			"PLACEHOLDERS": {
+				"ASSIGNMENTTYPEID": "Assignment type",
+				"ENTITYID": "Entity",
+				"START": "Start date",
+				"END": "End date"
+			},
+			"VALIDATION": {
+				"ASSIGNMENTTYPEID": {
+					"REQUIRED": "Assignment type is required."
+				},
+				"ENTITYID": {
+					"REQUIRED": "Entity is required."
+				},
+				"START": {
+					"REQUIRED": "Start date is required."
+				},
+				"END": {
+					"REQUIRED": "End date is required."
+				}
+			}
+		},
+		"CREATE": {
+			"CREATE": "Create",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDIT": "Edit",
+			"BUTTON_EDIT": "Update"
+		},
+		"INDEX": {
+			"TITLE_EXTRAS": "(recurring assignments)",
+			"ACTIONS": "Actions",
+			"CREATE": "Create",
+			"EDIT": "Edit",
+			"DELETE": "Delete",
+			"MANAGE": "Manage",
+			"FIELDS": "Fields",
+			"STATES": "States",
+			"BACK": "Back"
+		},
+		"QUEUE": {
+			"ADDING": "Adding {{ description }}",
+			"UPDATING": "Updating {{ description }}",
+			"DELETING": "Deleting {{ description }}",
+			"ERROR": "An error occured with {{ description }}. Correct and try again."
 		}
 	},
 	"FILE_STORAGE": {

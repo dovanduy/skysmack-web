@@ -15,7 +15,7 @@
                 "CANDELETEDATABASE": "Can delete database"
             },
             "PLACEHOLDERS": {
-                "DATABASENAME": "Enter a database name",
+                "DATABASENAME": "Enter database name",
                 "CANDELETEDATABASE": "Can delete database"
             },
             "VALIDATION": {}

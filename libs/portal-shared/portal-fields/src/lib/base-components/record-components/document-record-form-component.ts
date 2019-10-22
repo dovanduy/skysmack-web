@@ -6,7 +6,7 @@ import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { EntityActions, EntityStore } from '@skysmack/redux';
 import { RecordFormComponent } from './record-form-component';
 import { NgFieldActions } from '@skysmack/ng-framework';
-import { map, switchMap } from 'rxjs/operators';
+import { map, switchMap, tap, distinctUntilChanged } from 'rxjs/operators';
 import { combineLatest, Observable } from 'rxjs';
 import { EntityFieldsConfig } from '@skysmack/ng-fields';
 import { LoadedPackage } from '@skysmack/ng-framework';
@@ -62,7 +62,9 @@ export class DocumentRecordFormComponent<TAppState, TRecord extends Record<TKey>
         this.actions.getSingle(this.packagePath, this.entityId);
 
         return combineLatest(
-            this.store.getSingle(this.packagePath, this.entityId),
+            this.store.getSingle(this.packagePath, this.entityId).pipe(
+                distinctUntilChanged((prev, curr) => JSON.stringify(prev) === JSON.stringify(curr))
+            ),
             this.loadedPackage$
         ).pipe(map(values => {
             this.selectedEntity = values[0];

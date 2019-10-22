@@ -12,17 +12,24 @@ import { LodgingTypeSelectFieldComponent } from './lodging-type-select-field/lod
 import { LodgingTypeSelectDialogComponent } from './lodging-type-select-dialog/lodging-type-select-dialog.component';
 import { LodgingSelectFieldComponent } from './lodging-select-field/lodging-select-field.component';
 import { LodgingSelectDialogComponent } from './lodging-select-dialog/lodging-select-dialog.component';
+import { getFieldsRoutes } from '@skysmack/portal-fields';
+import { LODGING_RESERVATIONS_AREA_KEY, LODGING_RESERVATIONS_ADDITIONAL_PATHS } from '@skysmack/packages-lodging-reservations';
 
 export const lodgingReservationsRoutes: Routes = [
     {
-        path: '', component: LodgingsReservationsIndexComponent, children: [
-            { path: 'create', component: LodgingsReservationsCreateComponent, pathMatch: 'full' },
-            { path: 'edit/:id', component: LodgingsReservationsEditComponent, pathMatch: 'full' },
+        path: '', children: [
             {
-                path: 'settings/checkin', component: SettingsComponent, pathMatch: 'full', data: {
-                    fieldsConfigToken: 'NgLodgingReservationsSettingsFieldsConfig'
-                } as RouteData
-            }
+                path: '', component: LodgingsReservationsIndexComponent, children: [
+                    { path: 'create', component: LodgingsReservationsCreateComponent, pathMatch: 'full' },
+                    { path: 'edit/:id', component: LodgingsReservationsEditComponent, pathMatch: 'full' },
+                    {
+                        path: 'settings/checkin', component: SettingsComponent, pathMatch: 'full', data: {
+                            fieldsConfigToken: 'NgLodgingReservationsSettingsFieldsConfig'
+                        } as RouteData
+                    },
+                ]
+            },
+            getFieldsRoutes(LODGING_RESERVATIONS_AREA_KEY, LODGING_RESERVATIONS_ADDITIONAL_PATHS)
         ]
     },
     { path: 'stays', component: LodgingsStaysComponent },

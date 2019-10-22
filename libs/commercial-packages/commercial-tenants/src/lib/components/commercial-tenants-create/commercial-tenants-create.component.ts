@@ -16,6 +16,7 @@ import { take, tap } from 'rxjs/operators';
 export class CommercialTenantsCreateComponent implements OnInit, OnDestroy {
   public fields$: Observable<Field[]>;
   public subscriptionHandler = new SubscriptionHandler();
+  public creating = false;
 
   constructor(
     public router: Router,
@@ -30,11 +31,13 @@ export class CommercialTenantsCreateComponent implements OnInit, OnDestroy {
 
   public onSubmit(fh: FormHelper) {
     fh.formValid(() => {
+      this.creating = true;
+
       const tenant = fh.form.getRawValue();
-      this.service.add(tenant).pipe(
+      this.subscriptionHandler.register(this.service.add(tenant).pipe(
         tap(() => this.router.navigate(['/', 'tenants'])),
         take(1)
-      ).subscribe();
+      ).subscribe());
     }, false);
   }
 

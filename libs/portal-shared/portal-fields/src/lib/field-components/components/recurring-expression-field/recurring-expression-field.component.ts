@@ -6,7 +6,8 @@ import { Field } from '@skysmack/ng-dynamic-forms';
 
 @Component({
   selector: 'ss-recurring-expression-field',
-  templateUrl: './recurring-expression-field.component.html'
+  templateUrl: './recurring-expression-field.component.html',
+  styleUrls: ['./recurring-expression-field.component.scss']
 })
 export class RecurringExpressionFieldComponent extends FieldBaseComponent<Field> implements OnInit {
 

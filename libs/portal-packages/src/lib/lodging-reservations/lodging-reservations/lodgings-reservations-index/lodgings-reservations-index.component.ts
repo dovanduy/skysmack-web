@@ -8,14 +8,15 @@ import { EntityComponentPageTitle, MenuItemActionProviders, MENU_ITEM_ACTIONS_ED
 import { LodgingsArrivalsComponent } from '../../components/lodgings-arrivals/lodgings-arrivals.component';
 import { NgLodgingReservationsFieldsConfig } from '../../ng-lodging-reservations-fields-config';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
-import { RecordIndexComponent } from '@skysmack/portal-fields';
+import { DocumentRecordIndexComponent } from '@skysmack/portal-fields';
 import { NgLodgingReservationsStore, NgLodgingReservationsActions } from '@skysmack/ng-lodging-reservations';
+import { NgFieldActions } from '@skysmack/ng-framework';
 
 @Component({
   selector: 'ss-lodgings-reservations-index',
   templateUrl: './lodgings-reservations-index.component.html'
 })
-export class LodgingsReservationsIndexComponent extends RecordIndexComponent<LodgingReservationsAppState, LodgingReservation, number> implements OnInit {
+export class LodgingsReservationsIndexComponent extends DocumentRecordIndexComponent<LodgingReservationsAppState, LodgingReservation, number> implements OnInit {
   public static COMPONENT_KEY = 'lodgings-reservations-index';
   public componentKey = LodgingsReservationsIndexComponent.COMPONENT_KEY;
 
@@ -81,11 +82,12 @@ export class LodgingsReservationsIndexComponent extends RecordIndexComponent<Lod
     public lodgingsActions: NgLodgingsActions,
     public lodgingTypesActions: NgLodgingTypesActions,
     public fieldsConfig: NgLodgingReservationsFieldsConfig,
+    public fieldActions: NgFieldActions,
     public pageTitle: EntityComponentPageTitle,
     public title: EntityComponentPageTitle,
     public menuItemActionProviders: MenuItemActionProviders,
   ) {
-    super(router, activatedRoute, actions, skysmackStore, store, fieldsConfig, menuItemActionProviders, title);
+    super(router, activatedRoute, actions, skysmackStore, store, fieldsConfig, fieldActions, menuItemActionProviders, title);
   }
 
   ngOnInit() {
