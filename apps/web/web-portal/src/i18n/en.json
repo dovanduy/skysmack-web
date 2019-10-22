@@ -2840,7 +2840,8 @@
 			"FEATURES": "Features",
 			"INSTALL": "Install package",
 			"TITLE": "Packages",
-			"AVAILABLE_PACKAGES": "Available packages"
+			"AVAILABLE_PACKAGES": "Available packages",
+			"OPEN": "Open"
 		},
 		"CREATE": {
 			"INSTALL": "Install package",
