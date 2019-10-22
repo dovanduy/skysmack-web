@@ -3,7 +3,7 @@ import { Validators } from '@angular/forms';
 import { LocalObject } from '@skysmack/framework';
 
 import { LoadedPackage } from '@skysmack/ng-framework';
-import { ACCOUNTS_AREA_KEY, ConfirmEmail, ACCOUNTS_ADDITIONAL_PATHS } from '@skysmack/packages-identities';
+import { ACCOUNT_AREA_KEY, ConfirmEmail, ACCOUNT_ADDITIONAL_PATHS } from '@skysmack/packages-identities';
 import { NgConfirmEmailValidation } from '@skysmack/ng-identities';
 import { FormRule, Field } from '@skysmack/ng-dynamic-forms';
 import { FieldsConfig, FieldProviders } from '@skysmack/ng-fields';
@@ -12,13 +12,13 @@ import { EmailFieldComponent, StringFieldComponent } from '@skysmack/portal-fiel
 @Injectable({ providedIn: 'root' })
 export class NgConfirmEmailFieldsConfig extends FieldsConfig<ConfirmEmail, number> {
     public validation = new NgConfirmEmailValidation();
-    public area = ACCOUNTS_AREA_KEY;
+    public area = ACCOUNT_AREA_KEY;
     public formRules: FormRule[] = [];
 
     constructor(
         public fieldProviders: FieldProviders,
     ) {
-        super(fieldProviders, ACCOUNTS_ADDITIONAL_PATHS);
+        super(fieldProviders, ACCOUNT_ADDITIONAL_PATHS);
     }
 
     protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<ConfirmEmail, number>): Field[] {

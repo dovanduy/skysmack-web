@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { registerRedux, NgSignalR } from '@skysmack/ng-framework';
-import { rolesReducer, usersReducer, USERS_REDUCER_KEY, ROLES_REDUCER_KEY, ACCOUNTS_REDUCER_KEY, accountReducer, APPLICATIONS_REDUCER_KEY, applicationsReducer, CLIENTS_REDUCER_KEY, clientsReducer } from '@skysmack/packages-identities';
+import { rolesReducer, usersReducer, USERS_REDUCER_KEY, ROLES_REDUCER_KEY, ACCOUNT_REDUCER_KEY, accountReducer, APPLICATIONS_REDUCER_KEY, applicationsReducer, CLIENTS_REDUCER_KEY, clientsReducer } from '@skysmack/packages-identities';
 import { NgRolesEpics } from './identity-roles/redux/ng-roles-epics';
 import { NgUsersEpics } from './identity-users/redux/ng-users-epics';
 import { NgAccountEpics } from './accounts/redux/ng-account-epics';
@@ -25,7 +25,7 @@ export class NgIdentitiesModule {
   ) {
     registerRedux(ROLES_REDUCER_KEY, rolesReducer, rolesEpics);
     registerRedux(USERS_REDUCER_KEY, usersReducer, usersEpics);
-    registerRedux(ACCOUNTS_REDUCER_KEY, accountReducer, accountEpics);
+    registerRedux(ACCOUNT_REDUCER_KEY, accountReducer, accountEpics);
     registerRedux(CLIENTS_REDUCER_KEY, clientsReducer, clientsEpics);
     registerRedux(APPLICATIONS_REDUCER_KEY, applicationsReducer, applicationsEpics);
 

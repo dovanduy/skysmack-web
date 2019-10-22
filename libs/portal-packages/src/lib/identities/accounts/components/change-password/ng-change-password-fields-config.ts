@@ -3,7 +3,7 @@ import { Validators } from '@angular/forms';
 import { LocalObject } from '@skysmack/framework';
 
 import { LoadedPackage } from '@skysmack/ng-framework';
-import { ChangePassword, ACCOUNTS_AREA_KEY, ACCOUNTS_ADDITIONAL_PATHS } from '@skysmack/packages-identities';
+import { ChangePassword, ACCOUNT_AREA_KEY, ACCOUNT_ADDITIONAL_PATHS } from '@skysmack/packages-identities';
 import { NgChangePasswordValidation } from '@skysmack/ng-identities';
 import { FormRule, Field } from '@skysmack/ng-dynamic-forms';
 import { FieldsConfig, FieldProviders } from '@skysmack/ng-fields';
@@ -12,13 +12,13 @@ import { PasswordFieldComponent } from '@skysmack/portal-fields';
 @Injectable({ providedIn: 'root' })
 export class NgChangePasswordFieldsConfig extends FieldsConfig<ChangePassword, number> {
     public validation = new NgChangePasswordValidation();
-    public area = ACCOUNTS_AREA_KEY;
+    public area = ACCOUNT_AREA_KEY;
     public formRules: FormRule[] = [];
 
     constructor(
         public fieldProviders: FieldProviders,
     ) {
-        super(fieldProviders, ACCOUNTS_ADDITIONAL_PATHS);
+        super(fieldProviders, ACCOUNT_ADDITIONAL_PATHS);
     }
 
     protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<ChangePassword, number>): Field[] {
