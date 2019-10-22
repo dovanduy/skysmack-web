@@ -19,7 +19,7 @@ export class PackagesIndexComponent extends RecordIndexComponent<PackagesAppStat
 
   public areaKey: string = PACKAGES_AREA_KEY;
   public menuItemActions: MenuItem[] = [
-    new MenuItem().asEventAction(`open`, this.openPackage, 'label', this),
+    new MenuItem().asEventAction('PACKAGES.INDEX.OPEN', this.openPackage, 'open_in_browser', this),
     new MenuItem().asUrlAction('edit', MENU_ITEM_ACTIONS_EDIT, 'edit'),
     new MenuItem().asUrlAction('edit/path', 'PACKAGES.EDIT.PACKAGE_PATH', 'link'),
     new MenuItem().asEventAction(MENU_ITEM_ACTIONS_DELETE, this.delete, 'delete', this)
