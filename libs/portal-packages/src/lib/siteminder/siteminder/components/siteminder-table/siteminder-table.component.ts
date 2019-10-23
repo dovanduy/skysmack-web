@@ -55,16 +55,19 @@ export class SiteMinderTableComponent implements OnInit {
     this.service.seedColumns(this.packagePath).subscribe();
   }
 
-  public calculateLodgingTypeColspan(): number {
+  public calculateLodgingTypeColspan(ltcId: number): number {
+    const availabilityColumns = this.availabilityColumns$.getValue();
     const ratePlanColumns = this.ratePlanColumns$.getValue();
     const channelsColumns = this.channelsColumns$.getValue();
     if (channelsColumns) {
-      return Object.keys(ratePlanColumns).map(key => {
-        // Lodging type colspan is equal to the count of channel columns
-        // + 1 for availability + 1 for rate summary
-        return channelsColumns[key].length + 2;
+      const result = Object.keys(ratePlanColumns).map(key => {
+        // Add one extra for rate summary column (one pr. rateplan)
+        return channelsColumns[key] ? channelsColumns[key].length + 1 : 0;
       }).reduce((a, b) => a + b, 0);
+      // Add one extra for available column
+      return result !== 0 ? result + 1 : 1;
     } else {
+      //
       return 1;
     }
   }
@@ -74,8 +77,9 @@ export class SiteMinderTableComponent implements OnInit {
     const channelsColumns = this.channelsColumns$.getValue();
     if (channelsColumns) {
       // Rate plan colspan is equal to the count of its own channel columns
-      // + 1 for rate summary
-      return channelsColumns[ratePlanColumnId].length + 1;
+      // Add one extra for rate summary column
+      const result = channelsColumns[ratePlanColumnId] ? channelsColumns[ratePlanColumnId].length + 1 : 0;
+      return result !== 0 ? result : 1;
     } else {
       return 1;
     }

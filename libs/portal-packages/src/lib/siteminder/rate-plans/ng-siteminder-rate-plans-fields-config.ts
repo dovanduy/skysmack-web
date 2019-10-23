@@ -45,7 +45,7 @@ export class NgSiteMinderRatePlansFieldsConfig extends FieldsConfig<RatePlan, nu
 
             new Field({
                 component: CheckboxFieldComponent,
-                value: entity ? entity.object.beforeTax : undefined,
+                value: entity ? entity.object.beforeTax : false,
                 key: 'beforeTax',
                 validators: [Validators.required],
                 order: 1,

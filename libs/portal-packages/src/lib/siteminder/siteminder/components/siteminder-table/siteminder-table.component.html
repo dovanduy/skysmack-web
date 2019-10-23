@@ -9,7 +9,7 @@
                 </th>
                 <ng-container *ngFor="let ltc of lodgingTypeColumns$ | async">
                     <!-- Lodging Type -->
-                    <th [attr.colspan]="calculateLodgingTypeColspan()" class="table-cell mat-header-cell">
+                    <th [attr.colspan]="calculateLodgingTypeColspan(ltc.id)" class="table-cell mat-header-cell">
                         {{ ltc.title }}
                     </th>
                 </ng-container>
