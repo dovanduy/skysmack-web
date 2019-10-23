@@ -69,34 +69,34 @@ export class FormBaseComponent<TAppState, TRecord extends Record<TKey>, TKey> ex
 
     private formatExtendedData(key: string, formValues: any): void {
         // Format extended data
-        const extendedDataKeyParts = key.split('.');
-        const packagePath = extendedDataKeyParts[1];
-        const keyProp = extendedDataKeyParts[2];
-        const extendedData = formValues[key];
+        const extendedDataKey = 'extendedData';
+        const extendedDataKeyParts = key.split('__');
+        if (extendedDataKeyParts[0] === extendedDataKey) {
+            const packagePathAndKey = extendedDataKeyParts[1];
+            const extendedData = formValues[key];
 
-        // If packagePath is defined, we have some extended data.
-        if (packagePath) {
+            // If packagePath is defined, we have some extended data.
+            if (packagePathAndKey) {
 
-            // Set the extendedData prop if it hasn't been created yet.
-            if (!formValues['extendedData']) {
-                formValues['extendedData'] = {};
-            }
+                // Set the extendedData prop if it hasn't been created yet.
+                if (!formValues[extendedDataKey]) {
+                    formValues[extendedDataKey] = {};
+                }
 
-            const formExtendedData = formValues['extendedData'];
+                const formExtendedData = formValues[extendedDataKey];
 
-            if (!formExtendedData[packagePath]) {
-                // We havent set any data yet for this package. Create its dictionary.
-                formExtendedData[packagePath] = {};
+                if (!formExtendedData[packagePathAndKey]) {
+                    // We havent set any data yet for this package. Create its dictionary.
+                    formExtendedData[packagePathAndKey] = {};
+                } 
+
                 // Set data for the current field
-                formExtendedData[packagePath][keyProp] = extendedData;
-            } else {
-                // Extented data for package already exists. Set data for the current field
-                formExtendedData[packagePath][keyProp] = extendedData;
-            }
+                formExtendedData[packagePathAndKey] = extendedData;
 
-            // Delete the individual, dot notated extended data, as it is no longer needed,
-            // and shouldn't be posted to the backend
-            delete formValues[key];
+                // Delete the individual, dot notated extended data, as it is no longer needed,
+                // and shouldn't be posted to the backend
+                delete formValues[key];
+            }
         }
     }
 }

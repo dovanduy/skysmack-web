@@ -67,7 +67,7 @@ export class NgPersonsLodgingReservationsFieldProvider extends FieldProvider {
                                         fieldsConfig: this.personsFieldsConfig,
                                         packagePath: personsPackagePath,
                                         value: undefined,
-                                        key: 'extendedData.' + personsPackagePath + '.add',
+                                        key: 'extendedData__' + personsPackagePath + '.add',
                                         label: personsPackagePath,
                                         placeholder: personsPackagePath,
                                     });
@@ -75,7 +75,7 @@ export class NgPersonsLodgingReservationsFieldProvider extends FieldProvider {
                                     const selectField = new SelectField({
                                         component: MultiSelectFieldComponent,
                                         value: undefined,
-                                        key: 'extendedData.' + personsPackagePath + '.attach',
+                                        key: 'extendedData__' + personsPackagePath + '.attach',
                                         optionsData$: this.personsStore.get(personsPackagePath),
                                         displayNameSelector: 'object.displayName',
                                         label: personsPackagePath,
@@ -87,7 +87,7 @@ export class NgPersonsLodgingReservationsFieldProvider extends FieldProvider {
                                     const currentlySelectedIdsField = new Field({
                                         component: HiddenFieldComponent,
                                         value: extendedData ? extendedData[depPackagePath] && extendedData[depPackagePath]['ids'] : undefined,
-                                        key: 'extendedData.' + personsPackagePath + '.ids',
+                                        key: 'extendedData__' + personsPackagePath + '.ids',
                                     });
 
                                     switch (settings.object.shouldBeExistingPersons) {

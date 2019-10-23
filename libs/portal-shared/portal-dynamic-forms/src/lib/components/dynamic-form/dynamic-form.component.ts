@@ -106,11 +106,11 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
       const formValuesClone = { ...this.fh.form.getRawValue() };
 
       Object.keys(formValuesClone).forEach(key => {
-        if (!key.split('.')[1]) {
+        if (!key.split('__')[1]) {
           delete formValuesClone[key];
         }
         // Format extended data
-        const extendedDataKeyParts = key.split('.');
+        const extendedDataKeyParts = key.split('__');
         const packagePath = extendedDataKeyParts[1];
         const keyProp = extendedDataKeyParts[2];
         const extendedData = formValuesClone[key];

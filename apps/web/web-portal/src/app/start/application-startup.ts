@@ -26,6 +26,7 @@ import { loadOpenApiPackage } from '../packages/open-api-package-manifest';
 import { RefreshTokenInterceptor } from '@skysmack/ng-oauth2';
 import { LanguageService, configureLanguage } from '@skysmack/ng-translation';
 import { loadFileStoragePackage } from '../packages/file-storage-package-manifest';
+import { loadLodgingReservationsSignaturesPackage } from '../packages/lodging-reservations-signatures-package-manifest';
 
 
 export function configureSkysmack(actions: NgSkysmackActions) {
@@ -54,6 +55,7 @@ export const packageLoaders = [
     { provide: APP_INITIALIZER, useFactory: loadProductsPricingsPackage, deps: [PackageLoader], multi: true },
     { provide: APP_INITIALIZER, useFactory: loadLodgingPackage, deps: [PackageLoader], multi: true },
     { provide: APP_INITIALIZER, useFactory: loadLodgingReservationPackage, deps: [PackageLoader], multi: true },
+    { provide: APP_INITIALIZER, useFactory: loadLodgingReservationsSignaturesPackage, deps: [PackageLoader], multi: true },
     { provide: APP_INITIALIZER, useFactory: loadReservationsPricingsPackage, deps: [PackageLoader], multi: true },
     { provide: APP_INITIALIZER, useFactory: loadPersonsLodgingReservationsPackage, deps: [PackageLoader], multi: true },
     { provide: APP_INITIALIZER, useFactory: loadOAuth2Package, deps: [PackageLoader], multi: true },

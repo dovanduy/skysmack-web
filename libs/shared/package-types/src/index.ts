@@ -14,6 +14,7 @@ export * from './oauth2-type';
 export * from './maintenance-type';
 export * from './lodgings-type';
 export * from './lodging-reservations-type';
+export * from './lodging-reservations-signatures-type';
 export * from './invoices-products-type';
 export * from './invoices-cash-payments-type';
 export * from './identities-type';
