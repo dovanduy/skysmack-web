@@ -269,7 +269,7 @@
 			"TITLE": "Forgot password",
 			"BUTTON_EDIT": "Submit",
 			"CHECK_EMAIL_TITLE": "Check your email",
-			"CHECK_EMAIL": "You will find instructions on how to reset your password. Remember to check your spam folder"
+			"CHECK_EMAIL": "You will find instructions on how to reset your password. Remember to check your spam folder."
 		},
 		"INDEX": {
 			"ACTIONS": "Actions",
@@ -715,7 +715,7 @@
 				"ORDER": "Order",
 				"UNITS": "Units",
 				"UNITPRICE": "Unit price",
-				"UNITCHANGE": "Unit change",
+				"UNITCHANGE": "Unit changeFi",
 				"TAXPERCENT": "Tax percentage",
 				"INVENTORYID": "Inventory ID"
 			},
@@ -1297,16 +1297,16 @@
 	"ASSIGNMENT_TYPES": {
 		"FORM": {
 			"LABELS": {
-				"STATEID": "State",
 				"DESCRIPTION": "Description",
-				"EXPRESSION": "Expression",
-				"DUEPERIOD": "Due date"
+				"STATEID": "State",
+				"DUEPERIOD": "Due date",
+				"EXPRESSION": "Expression"
 			},
 			"PLACEHOLDERS": {
 				"STATEID": "Choose state",
 				"DESCRIPTION": "Enter description",
-				"EXPRESSION": "Enter expression",
-				"DUEPERIOD": "Choose due date"
+				"DUEPERIOD": "Choose due date",
+				"EXPRESSION": "Enter expression"
 			},
 			"VALIDATION": {
 				"STATEID": {
@@ -1315,11 +1315,11 @@
 				"DESCRIPTION": {
 					"REQUIRED": "Description is required."
 				},
-				"EXPRESSION": {
-					"REQUIRED": "Expression is required."
-				},
 				"DUEPERIOD": {
 					"REQUIRED": "Due date is required."
+				},
+				"EXPRESSION": {
+					"REQUIRED": "Expression is required."
 				}
 			},
 			"BUTTONS": {
@@ -1348,6 +1348,17 @@
 			"ENTITIES": "Entities"
 		},
 		"FIELDS": {
+			"INDEX": {
+				"ACTIONS": "Actions",
+				"CREATE": "Create",
+				"ASSIGNMENT_TYPES": "AssignmentTypes",
+				"FIELDS": "AssignmentType fields",
+				"OTHER": "Other",
+				"BACK": "Back"
+			},
+			"CREATE": {
+				"ADD": "Add field"
+			},
 			"FORM": {
 				"LABELS": {
 					"STATEID": "State",
@@ -1379,17 +1390,6 @@
 					"CREATE": "Create",
 					"EDIT": "Edit"
 				}
-			},
-			"INDEX": {
-				"ACTIONS": "Actions",
-				"CREATE": "Create",
-				"ASSIGNMENT_TYPES": "AssignmentTypes",
-				"FIELDS": "AssignmentType fields",
-				"OTHER": "Other",
-				"BACK": "Back"
-			},
-			"CREATE": {
-				"ADD": "Add field"
 			}
 		},
 		"QUEUE": {
@@ -1399,45 +1399,33 @@
 			"ERROR": "An error occured with {{ description }}. Correct and try again."
 		}
 	},
-	"ASSIGNMENTS": {
+	"ASSIGNMENTS_SCHEDULES": {
 		"FORM": {
 			"LABELS": {
 				"ASSIGNMENTTYPEID": "Assignment type",
-				"DESCRIPTION": "Description",
-				"OCCUPATIONSTATE": "Occupation state",
-				"STATUS": "Status",
-				"DUE": "Due date",
-				"FROM": "Can be started from"
+				"START": "Start date",
+				"END": "End date",
+				"EXPRESSION": "Expression"
 			},
 			"PLACEHOLDERS": {
 				"ASSIGNMENTTYPEID": "Assignment type",
-				"DESCRIPTION": "Enter description",
-				"OCCUPATIONSTATE": "Choose occupation state",
-				"STATUS": "Choose status",
-				"DUE": "Choose due date",
-				"FROM": "Choose can be started from date"
+				"START": "Start date",
+				"END": "End date",
+				"EXPRESSION": "Expression"
 			},
 			"VALIDATION": {
 				"ASSIGNMENTTYPEID": {
 					"REQUIRED": "Assignment type is required."
 				},
-				"DESCRIPTION": {
-					"REQUIRED": "Description is required."
+				"START": {
+					"REQUIRED": "Start date is required."
 				},
-				"STATUS": {
-					"REQUIRED": "Status is required."
+				"END": {
+					"REQUIRED": "End date is required."
 				},
-				"DUE": {
-					"REQUIRED": "Due date is required.",
-					"NOTBEFORE": "The due date may not be earlier than the start date."
-				},
-				"FROM": {
-					"REQUIRED": "A date from when the assignment can begin is required."
+				"EXPRESSION": {
+					"REQUIRED": "Expression is required."
 				}
-			},
-			"BUTTONS": {
-				"CREATE": "Create",
-				"EDIT": "Edit"
 			}
 		},
 		"CREATE": {
@@ -1449,17 +1437,15 @@
 			"BUTTON_EDIT": "Update"
 		},
 		"INDEX": {
-			"TITLE_EXTRAS": "(assignments)",
+			"TITLE_EXTRAS": "(recurring assignments)",
 			"ACTIONS": "Actions",
 			"CREATE": "Create",
 			"EDIT": "Edit",
 			"DELETE": "Delete",
 			"MANAGE": "Manage",
 			"FIELDS": "Fields",
-			"FIELDS_TITLE": "(fields)",
-			"STATES": "States",
-			"TYPES": "Types",
-			"BACK": "Back"
+			"BACK": "Back",
+			"STATES": "States"
 		},
 		"QUEUE": {
 			"ADDING": "Adding {{ description }}",
@@ -1472,8 +1458,10 @@
 		"ASSIGNMENT_ALL": {
 			"TITLE": "All assignments",
 			"INDEX": {
-				"SINGLE_ASSIGNMENTS": "Assignments",
-				"RECURRING_ASSIGNMENTS": "Recurring assignments",
+				"SINGLE_ASSIGNMENTS": "Single assignments",
+				"RECURRING_ASSIGNMENTS": "Scheduled assignments",
+				"TYPES": "Assignment types",
+				"STATES": "Maintenance states",
 				"MANAGE": "Manage"
 			}
 		}
@@ -1530,33 +1518,45 @@
 			"ERROR": "An error occured with {{ description }}. Correct and try again."
 		}
 	},
-	"RECURRING_ASSIGNMENTS": {
+	"SINGLE_ASSIGNMENTS": {
 		"FORM": {
 			"LABELS": {
 				"ASSIGNMENTTYPEID": "Assignment type",
-				"ENTITYID": "Entity",
-				"START": "Start date",
-				"END": "End date"
+				"DESCRIPTION": "Description",
+				"OCCUPATIONSTATE": "Occupation state",
+				"STATUS": "Status",
+				"DUE": "Due date",
+				"FROM": "Can be started from"
 			},
 			"PLACEHOLDERS": {
 				"ASSIGNMENTTYPEID": "Assignment type",
-				"ENTITYID": "Entity",
-				"START": "Start date",
-				"END": "End date"
+				"DESCRIPTION": "Enter description",
+				"OCCUPATIONSTATE": "Choose occupation state",
+				"STATUS": "Choose status",
+				"DUE": "Choose due date",
+				"FROM": "Choose can be started from date"
 			},
 			"VALIDATION": {
 				"ASSIGNMENTTYPEID": {
 					"REQUIRED": "Assignment type is required."
 				},
-				"ENTITYID": {
-					"REQUIRED": "Entity is required."
+				"DESCRIPTION": {
+					"REQUIRED": "Description is required."
 				},
-				"START": {
-					"REQUIRED": "Start date is required."
+				"STATUS": {
+					"REQUIRED": "Status is required."
 				},
-				"END": {
-					"REQUIRED": "End date is required."
+				"DUE": {
+					"REQUIRED": "Due date is required.",
+					"NOTBEFORE": "The due date may not be earlier than the start date."
+				},
+				"FROM": {
+					"REQUIRED": "A date from when the assignment can begin is required."
 				}
+			},
+			"BUTTONS": {
+				"CREATE": "Create",
+				"EDIT": "Edit"
 			}
 		},
 		"CREATE": {
@@ -1568,14 +1568,16 @@
 			"BUTTON_EDIT": "Update"
 		},
 		"INDEX": {
-			"TITLE_EXTRAS": "(recurring assignments)",
+			"TITLE_EXTRAS": "(single assignments)",
 			"ACTIONS": "Actions",
 			"CREATE": "Create",
 			"EDIT": "Edit",
 			"DELETE": "Delete",
 			"MANAGE": "Manage",
 			"FIELDS": "Fields",
+			"FIELDS_TITLE": "(fields)",
 			"STATES": "States",
+			"TYPES": "Types",
 			"BACK": "Back"
 		},
 		"QUEUE": {
@@ -2965,7 +2967,8 @@
 			"FEATURES": "Features",
 			"INSTALL": "Install package",
 			"TITLE": "Packages",
-			"AVAILABLE_PACKAGES": "Available packages"
+			"AVAILABLE_PACKAGES": "Available packages",
+			"OPEN": "Open"
 		},
 		"CREATE": {
 			"INSTALL": "Install package",
@@ -3233,19 +3236,81 @@
 			"TITLE": "Confirm email",
 			"BUTTON_EDIT": "Submit"
 		},
+		"RESET_PASSWORD": {
+			"TITLE": "Reset password",
+			"BUTTON_EDIT": "Submit"
+		},
 		"FORGOT_PASSWORD": {
 			"TITLE": "Forgot password",
-			"BUTTON_EDIT": "Submit"
+			"BUTTON_EDIT": "Submit",
+			"CHECK_EMAIL_TITLE": "Check your email",
+			"CHECK_EMAIL": "You will find instructions on how to reset your password. Remember to check your spam folder."
 		},
 		"INDEX": {
 			"ACTIONS": "Actions",
 			"MANAGE": "Manage",
 			"CHANGE_PASSWORD": "Change password",
 			"FORGOT_PASSWORD": "Forgot password",
+			"RESET_PASSWORD": "Reset password",
 			"CONFIRM_EMAIL": "Confirm email"
 		},
 		"NOTIFICATIONS": {},
 		"QUEUE": {}
+	},
+	"RECURRING_ASSIGNMENTS": {
+		"FORM": {
+			"LABELS": {
+				"ASSIGNMENTTYPEID": "Assignment type",
+				"ENTITYID": "Entity",
+				"START": "Start date",
+				"END": "End date"
+			},
+			"PLACEHOLDERS": {
+				"ASSIGNMENTTYPEID": "Assignment type",
+				"ENTITYID": "Entity",
+				"START": "Start date",
+				"END": "End date"
+			},
+			"VALIDATION": {
+				"ASSIGNMENTTYPEID": {
+					"REQUIRED": "Assignment type is required."
+				},
+				"ENTITYID": {
+					"REQUIRED": "Entity is required."
+				},
+				"START": {
+					"REQUIRED": "Start date is required."
+				},
+				"END": {
+					"REQUIRED": "End date is required."
+				}
+			}
+		},
+		"CREATE": {
+			"CREATE": "Create",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDIT": "Edit",
+			"BUTTON_EDIT": "Update"
+		},
+		"INDEX": {
+			"TITLE_EXTRAS": "(recurring assignments)",
+			"ACTIONS": "Actions",
+			"CREATE": "Create",
+			"EDIT": "Edit",
+			"DELETE": "Delete",
+			"MANAGE": "Manage",
+			"FIELDS": "Fields",
+			"STATES": "States",
+			"BACK": "Back"
+		},
+		"QUEUE": {
+			"ADDING": "Adding {{ description }}",
+			"UPDATING": "Updating {{ description }}",
+			"DELETING": "Deleting {{ description }}",
+			"ERROR": "An error occured with {{ description }}. Correct and try again."
+		}
 	},
 	"FILE_STORAGE": {
 		"FORM": {

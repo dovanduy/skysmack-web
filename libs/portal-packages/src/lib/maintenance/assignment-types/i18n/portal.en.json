@@ -2,15 +2,13 @@
     "ASSIGNMENT_TYPES": {
         "FORM": {
             "LABELS": {
-                "STATEID": "State",
                 "DESCRIPTION": "Description",
-                "EXPRESSION": "Expression",
+                "STATEID": "State",
                 "DUEPERIOD": "Due date"
             },
             "PLACEHOLDERS": {
                 "STATEID": "Choose state",
                 "DESCRIPTION": "Enter description",
-                "EXPRESSION": "Enter expression",
                 "DUEPERIOD": "Choose due date"
             },
             "VALIDATION": {
@@ -19,9 +17,6 @@
                 },
                 "DESCRIPTION": {
                     "REQUIRED": "Description is required."
-                },
-                "EXPRESSION": {
-                    "REQUIRED": "Expression is required."
                 },
                 "DUEPERIOD": {
                     "REQUIRED": "Due date is required."
@@ -53,38 +48,6 @@
             "ENTITIES": "Entities"
         },
         "FIELDS": {
-            "FORM": {
-                "LABELS": {
-                    "STATEID": "State",
-                    "DESCRIPTION": "Description",
-                    "EXPRESSION": "Expression",
-                    "DUEPERIOD": "Due date"
-                },
-                "PLACEHOLDERS": {
-                    "STATEID": "Choose state",
-                    "DESCRIPTION": "Enter description",
-                    "EXPRESSION": "Enter expression",
-                    "DUEPERIOD": "Choose due date"
-                },
-                "VALIDATION": {
-                    "STATEID": {
-                        "REQUIRED": "State is required."
-                    },
-                    "DESCRIPTION": {
-                        "REQUIRED": "Description is required."
-                    },
-                    "EXPRESSION": {
-                        "REQUIRED": "Expression is required."
-                    },
-                    "DUEPERIOD": {
-                        "REQUIRED": "Due date is required."
-                    }
-                },
-                "BUTTONS": {
-                    "CREATE": "Create",
-                    "EDIT": "Edit"
-                }
-            },
             "INDEX": {
                 "ACTIONS": "Actions",
                 "CREATE": "Create",

@@ -1,0 +1,5 @@
+<ss-dynamic-form *ngIf="fields$" [fields$]="fields$" [validation]="fieldsConfig.validation"
+  [rules]="fieldsConfig.formRules" [buttonText]="'SINGLE_ASSIGNMENTS.CREATE.BUTTON_CREATE' | translate"
+  (submitted)="onCreateSubmit($event)">
+  <h2 [translate]="'SINGLE_ASSIGNMENTS.CREATE.CREATE'"></h2>
+</ss-dynamic-form>

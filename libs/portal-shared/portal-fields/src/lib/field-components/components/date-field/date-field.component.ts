@@ -20,10 +20,10 @@ export class DateFieldComponent extends FieldBaseComponent<Field> implements OnI
       this.setFieldValue(moment(fieldValue).format(dateFormat));
     }
 
-    this.getFormField().valueChanges.subscribe((value: Date) => {
+    this.subscriptionHandler.register(this.getFormField().valueChanges.subscribe((value: Date) => {
       if (value && typeof value.toISOString === 'function') {
         this.setFieldValue(moment(value).format(dateFormat));
       }
-    });
+    }));
   }
 }

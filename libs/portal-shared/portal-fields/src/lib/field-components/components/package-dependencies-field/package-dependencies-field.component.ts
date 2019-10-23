@@ -113,16 +113,17 @@ export class PackageDependenciesFieldComponent extends FieldBaseComponent<Field>
           });
         });
 
-        // Set default selected dependecy foreach selectbox, if any values are available
-        selectBoxes.forEach(selectBox => {
-          if (selectBox.values && selectBox.values[0]) {
-            const firstValue = selectBox.values[0].value;
-            selectBox.selectedValue = firstValue;
-            this.setDependencies(selectBox, firstValue);
-          }
-        });
-
-
+        // Set default selected dependecy foreach selectbox, if any values are available and correct number of dependencies aren't already set
+        if (!this.getOtherFieldValue('dependencies') || this.getOtherFieldValue('dependencies').length !== selectBoxes.length) {
+          selectBoxes.forEach(selectBox => {
+            if (selectBox.values && selectBox.values[0]) {
+              const firstValue = selectBox.values[0].value;
+              selectBox.selectedValue = firstValue;
+              this.setDependencies(selectBox, firstValue);
+            }
+          });
+        }
+        
         return selectBoxes;
       })
     );
@@ -133,7 +134,6 @@ export class PackageDependenciesFieldComponent extends FieldBaseComponent<Field>
 
     deps = deps ? deps : [];
     deps[selectBox.index] = selectedDepType;
-
     this.setOtherFieldValue('dependencies', deps);
     this.checkDependenciesAreSet();
   }

@@ -1,7 +1,7 @@
 import { Record, ApiDomain, HttpErrorResponse } from '@skysmack/framework';
 import { RecordRequests, RecordActionsBase, ReduxAction, GetPagedEntitiesPayload, GetPagedEntitiesSuccessPayload, GetSingleEntityPayload, GetSingleEntitySuccessPayload } from '@skysmack/redux';
 import { Observable } from 'rxjs';
-import { map, retry, catchError, retryWhen, concatMap, delay } from 'rxjs/operators';
+import { map, retry, catchError } from 'rxjs/operators';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { CustomHttpUrlEncodingCodec } from './custom-http-url-encoding-codec';
 import { PageResponseExtensions } from './page-response-extensions';

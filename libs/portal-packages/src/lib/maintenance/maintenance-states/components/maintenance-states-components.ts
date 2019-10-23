@@ -6,7 +6,7 @@ import { MaintenanceStatesIndexComponent } from './maintenance-states-index/main
 
 export const maintenanceStatesRoutes: Routes = [
   {
-    path: 'assignments/maintenance-states', component: MaintenanceStatesIndexComponent,
+    path: 'states', component: MaintenanceStatesIndexComponent,
     children: [
       { path: 'create', component: MaintenanceStatesCreateComponent, pathMatch: 'full' },
       { path: 'edit/:id', component: MaintenanceStatesEditComponent, pathMatch: 'full' }

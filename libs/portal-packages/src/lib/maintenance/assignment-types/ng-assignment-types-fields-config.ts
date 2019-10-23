@@ -6,7 +6,7 @@ import { NgAssignmentTypesValidation, NgMaintenanceStatesStore, NgMaintenanceSta
 import { LoadedPackage } from '@skysmack/ng-framework';
 import { FormRule, Field, SelectField } from '@skysmack/ng-dynamic-forms';
 import { FieldsConfig, FieldProviders } from '@skysmack/ng-fields';
-import { SelectFieldComponent, StringFieldComponent, RecurringExpressionFieldComponent, HiddenFieldComponent } from '@skysmack/portal-fields';
+import { SelectFieldComponent, StringFieldComponent, HiddenFieldComponent } from '@skysmack/portal-fields';
 
 @Injectable({ providedIn: 'root' })
 export class NgAssignmentTypesFieldsConfig extends FieldsConfig<AssignmentType, number> {
@@ -55,17 +55,8 @@ export class NgAssignmentTypesFieldsConfig extends FieldsConfig<AssignmentType, 
                 validators: [Validators.required],
                 order: 3,
                 sortable: true
-            }),
-
-            new Field({
-                component: RecurringExpressionFieldComponent,
-                value: entity ? entity.object.expression : undefined,
-                key: 'expression',
-                order: 4,
-                sortable: true
-            }),
+            })
         ];
-
 
 
         // Id field must only be added for edit forms.

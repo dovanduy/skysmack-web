@@ -13,10 +13,10 @@ export const USERS_AREA_KEY = 'users'; // validation, store, menu
 export const USERS_REDUX_KEY = 'USERS_'; // reducer prefix, action, epics, Requests
 export const USERS_ADDITIONAL_PATHS = ['users']; // actions, requests
 
-export const ACCOUNTS_REDUCER_KEY = 'account';
-export const ACCOUNTS_AREA_KEY = 'account'; // validation, store, menu
-export const ACCOUNTS_REDUX_KEY = 'ACCOUNT_'; // reducer prefix, action, epics, Requests
-export const ACCOUNTS_ADDITIONAL_PATHS = []; // actions, requests
+export const ACCOUNT_REDUCER_KEY = 'account';
+export const ACCOUNT_AREA_KEY = 'account'; // validation, store, menu
+export const ACCOUNT_REDUX_KEY = 'ACCOUNT_'; // reducer prefix, action, epics, Requests
+export const ACCOUNT_ADDITIONAL_PATHS = []; // actions, requests
 
 export const APPLICATIONS_REDUCER_KEY = 'applications';
 export const APPLICATIONS_AREA_KEY = 'applications'; // validation, store, menu

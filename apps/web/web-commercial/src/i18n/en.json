@@ -49,17 +49,17 @@
 				"USERNAME": "User name",
 				"EMAIL": "Email",
 				"PASSWORD": "Password",
-				"CONFIRMPASSWORD": "Confirm Password",
+				"CONFIRMPASSWORD": "Confirm password",
 				"NEWPASSWORD": "New password",
 				"CONFIRMNEWPASSWORD": "Confirm new password",
 				"STAYSIGNEDIN": "Stay signed in?",
 				"TOKEN": "Token"
 			},
 			"PLACEHOLDERS": {
-				"USERNAME": "Enter user name",
+				"USERNAME": "Enter username",
 				"EMAIL": "Enter email",
 				"PASSWORD": "Enter password",
-				"CONFIRMPASSWORD": "Confirm Password",
+				"CONFIRMPASSWORD": "Confirm password",
 				"CURRENTPASSWORD": "Current password",
 				"NEWPASSWORD": "New password",
 				"CONFIRMNEWPASSWORD": "Confirm new password",
@@ -123,6 +123,11 @@
 			"BUTTON_RESET": "Reset button"
 		}
 	},
+	"COMMERCIAL_OPEN_API": {
+		"INDEX": {
+			"OPEN_API": "Open API"
+		}
+	},
 	"COMMERCIAL_DATABASES": {
 		"INDEX": {
 			"CREATE": "Create database",
@@ -139,15 +144,10 @@
 				"CANDELETEDATABASE": "Can delete database"
 			},
 			"PLACEHOLDERS": {
-				"DATABASENAME": "Enter a database name",
+				"DATABASENAME": "Enter database name",
 				"CANDELETEDATABASE": "Can delete database"
 			},
 			"VALIDATION": {}
-		}
-	},
-	"COMMERCIAL_OPEN_API": {
-		"INDEX": {
-			"OPEN_API": "Open API"
 		}
 	},
 	"COMMERCIAL_TENANTS": {
@@ -189,10 +189,10 @@
 			},
 			"VALIDATION": {
 				"NAME": {
-					"REQUIRED": "A name is required."
+					"REQUIRED": "An name is required."
 				},
 				"HOSTNAME": {
-					"REQUIRED": "An hostname is required."
+					"REQUIRED": "A hostname is required."
 				},
 				"SAFESUBDOMAIN": {
 					"REQUIRED": "A subdomain is required."
@@ -257,7 +257,7 @@
 			},
 			"VALIDATION": {
 				"EMAIL": {
-					"REQUIRED": "An Email is required.",
+					"REQUIRED": "An e-mail is required.",
 					"INVALIDEMAIL": "Please enter a valid email."
 				},
 				"USERNAME": {
