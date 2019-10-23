@@ -13,12 +13,14 @@ import { CoalescingComponentFactoryResolver } from '@skysmack/ng-framework';
 import { NgSiteMinderMenuProvider } from './ng-siteminder-menu-provider';
 import { siteminderChannelsComponents, siteminderChannelsEntryComponents } from './channels/components/siteminder-channels-components';
 import { siteminderRatePlansComponents, siteminderRatePlansEntryComponents } from './rate-plans/components/siteminder-rate-plans-components';
+import { NgLodgingsModule } from '@skysmack/ng-lodgings';
 
 @NgModule({
   imports: [
     CommonModule,
     HttpClientModule,
     PortalUiModule,
+    NgLodgingsModule,
     NgSiteMinderModule,
     DynamicFormsModule,
     SiteMinderRoutingModule,

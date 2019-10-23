@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { StrIndex } from '@skysmack/framework';
+import { StrIndex, SubscriptionHandler } from '@skysmack/framework';
 import { SiteMinderColumn } from '../../../models/siteminder-column';
 import { SiteMinderService } from '../../../services/siteminder.service';
 import { Availability } from '@skysmack/packages-siteminder';
 import { RateSummary } from '../../../models/rate-summary';
 import { RateInfo } from '../../../models/rate-info';
+import { Router } from '@angular/router';
 import { tap } from 'rxjs/operators';
 
 @Component({
@@ -14,6 +15,9 @@ import { tap } from 'rxjs/operators';
   styleUrls: ['./siteminder-table.component.scss']
 })
 export class SiteMinderTableComponent implements OnInit {
+  private packagePath: string;
+  private subscriptionHandler = new SubscriptionHandler();
+
   // Columns
   public dateColumn$: BehaviorSubject<SiteMinderColumn>;
   public lodgingTypeColumns$: BehaviorSubject<SiteMinderColumn[]>;
@@ -31,10 +35,12 @@ export class SiteMinderTableComponent implements OnInit {
   public channelsCells$: BehaviorSubject<StrIndex<StrIndex<StrIndex<StrIndex<RateInfo>>>>>;
 
   constructor(
+    private router: Router,
     private service: SiteMinderService,
   ) { }
 
   ngOnInit() {
+    this.packagePath = this.router.url.split('/')[1];
     this.dateColumn$ = this.service.dateColumn$;
     this.lodgingTypeColumns$ = this.service.lodgingTypeColumns$;
     this.availabilityColumns$ = this.service.availabilityColumns$;
@@ -45,23 +51,33 @@ export class SiteMinderTableComponent implements OnInit {
     this.availabilityCells$ = this.service.availabilityCells$;
     this.rateSummaryCells$ = this.service.rateSummaryCells$;
     this.channelsCells$ = this.service.channelsCells$;
+
+    this.service.seedColumns(this.packagePath).subscribe();
   }
 
   public calculateLodgingTypeColspan(): number {
     const ratePlanColumns = this.ratePlanColumns$.getValue();
     const channelsColumns = this.channelsColumns$.getValue();
-    return Object.keys(ratePlanColumns).map(key => {
-      // Lodging type colspan is equal to the count of channel columns
-      // + 1 for availability + 1 for rate summary
-      return channelsColumns[key].length + 2;
-    }).reduce((a, b) => a + b, 0);
+    if (channelsColumns) {
+      return Object.keys(ratePlanColumns).map(key => {
+        // Lodging type colspan is equal to the count of channel columns
+        // + 1 for availability + 1 for rate summary
+        return channelsColumns[key].length + 2;
+      }).reduce((a, b) => a + b, 0);
+    } else {
+      return 1;
+    }
   }
 
 
   public calculateRatePlanColspan(ratePlanColumnId: number): number {
     const channelsColumns = this.channelsColumns$.getValue();
-    // Rate plan colspan is equal to the count of its own channel columns
-    // + 1 for rate summary
-    return channelsColumns[ratePlanColumnId].length + 1;
+    if (channelsColumns) {
+      // Rate plan colspan is equal to the count of its own channel columns
+      // + 1 for rate summary
+      return channelsColumns[ratePlanColumnId].length + 1;
+    } else {
+      return 1;
+    }
   }
 }

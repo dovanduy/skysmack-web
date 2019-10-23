@@ -1,11 +1,17 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
-import { toLocalObject, StrIndex } from '@skysmack/framework';
+import { BehaviorSubject, merge, Observable, combineLatest } from 'rxjs';
+import { toLocalObject, StrIndex, SubscriptionHandler, PagedQuery } from '@skysmack/framework';
 import { LodgingType } from '@skysmack/packages-lodgings';
 import { RatePlan, Channel, Availability, LodgingTypeRate } from '@skysmack/packages-siteminder';
 import { SiteMinderColumn } from '../models/siteminder-column';
 import { RateSummary } from '../models/rate-summary';
 import { RateInfo } from '../models/rate-info';
+import { NgLodgingTypesStore, NgLodgingTypesActions } from '@skysmack/ng-lodgings';
+import { NgSiteMinderRatePlansStore, NgSiteMinderRatePlansActions, NgSiteMinderChannelsStore, NgSiteMinderChannelsActions } from '@skysmack/ng-siteminder';
+import { getPackageDendencyAsStream } from '@skysmack/ng-framework';
+import { NgSkysmackStore } from '@skysmack/ng-skysmack';
+import { Router } from '@angular/router';
+import { tap, map, distinctUntilChanged, switchMap } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
 export class SiteMinderService {
@@ -68,12 +74,113 @@ export class SiteMinderService {
     };
 
     constructor(
+        private skysmackStore: NgSkysmackStore,
+        private lodgingTypesStore: NgLodgingTypesStore,
+        private lodgingTypesActions: NgLodgingTypesActions,
+        private ratePlansStore: NgSiteMinderRatePlansStore,
+        private ratePlansActions: NgSiteMinderRatePlansActions,
+        private channelsStore: NgSiteMinderChannelsStore,
+        private channelsActions: NgSiteMinderChannelsActions
     ) {
-        this.seedColumns();
-        this.seedCells();
+        // this.seedMockedColumns();
+        // this.seedMockedCells();
     }
 
-    private seedColumns(): void {
+    public seedColumns(packagePath: string): Observable<any> {
+        // ########
+        // Data
+        // ########
+        // Lodging Types
+        const lodgingPackage$ = getPackageDendencyAsStream(this.skysmackStore, packagePath, [0, 1, 0]);
+        const lodgingPath$ = lodgingPackage$.pipe(
+            map(_package => _package.object.path),
+            distinctUntilChanged()
+        );
+
+        const lodgingTypes$ = lodgingPath$.pipe(
+            switchMap(path => {
+                this.lodgingTypesActions.getPaged(path, new PagedQuery());
+                return this.lodgingTypesStore.get(path).pipe(
+                    distinctUntilChanged((prev, curr) => JSON.stringify(prev) === JSON.stringify(curr))
+                );
+            })
+        );
+
+        // RatePlans
+        this.ratePlansActions.getPaged(packagePath, new PagedQuery());
+        const ratePlans$ = this.ratePlansStore.get(packagePath).pipe(
+            distinctUntilChanged((prev, curr) => JSON.stringify(prev) === JSON.stringify(curr))
+        );
+
+        // RatePlans
+        this.channelsActions.getPaged(packagePath, new PagedQuery());
+        const channels$ = this.channelsStore.get(packagePath).pipe(
+            distinctUntilChanged((prev, curr) => JSON.stringify(prev) === JSON.stringify(curr))
+        );
+
+        // ########
+        // Column processing
+        // ########
+
+        // Columns
+        const columns$ = [];
+        const availabilityColumns: StrIndex<SiteMinderColumn> = {};
+        const ratePlanColumns: StrIndex<SiteMinderColumn[]> = {};
+        const rateSummaryColumns: StrIndex<SiteMinderColumn> = {};
+        const channelsColumns: StrIndex<SiteMinderColumn[]> = {};
+
+        // Date column
+        this.dateColumn$.next(new SiteMinderColumn({ title: 'Date' }));
+
+        // LodgingType columns
+        columns$.push(lodgingTypes$.pipe(
+            map(lodgingTypes => lodgingTypes.map(lodgingType => new SiteMinderColumn({
+                id: lodgingType.object.id,
+                title: lodgingType.object.name
+            }))),
+            tap(columns => this.lodgingTypeColumns$.next(columns))
+        ));
+
+        columns$.push(combineLatest(
+            this.lodgingTypeColumns$,
+            ratePlans$
+        ).pipe(
+            map(([lodgingTypeColumns, ratePlans]) => lodgingTypeColumns.forEach(ltc => {
+                // Availability columns
+                availabilityColumns[ltc.id] = new SiteMinderColumn({
+                    id: ltc.id,
+                    title: 'Available'
+                });
+                this.availabilityColumns$.next(availabilityColumns)
+
+                // RatePlan columns
+                ratePlanColumns[ltc.id] = ratePlans.map(ratePlan => new SiteMinderColumn({
+                    id: ratePlan.object.id,
+                    title: ratePlan.object.name
+                }));
+                this.ratePlanColumns$.next(ratePlanColumns);
+            }))
+        ));
+
+        columns$.push(combineLatest(
+            this.ratePlanColumns$,
+            channels$
+        ).pipe(
+            map(([ratePlanColumns, channels]) => Object.keys(ratePlanColumns).forEach(key => ratePlanColumns[key].forEach(rpc => {
+                // RateSummary columns
+                rateSummaryColumns[rpc.id] = new SiteMinderColumn({ id: rpc.id, title: 'Rates (all)' });
+                this.rateSummaryColumns$.next(rateSummaryColumns);
+
+                // Channel columns
+                channelsColumns[rpc.id] = channels.map(channel => new SiteMinderColumn({ id: channel.object.id, title: channel.object.name }));
+                this.channelsColumns$.next(channelsColumns);
+            })))
+        ));
+
+        return combineLatest(columns$);
+    }
+
+    private seedMockedColumns(): void {
         // Data
         const { lodgingTypes, ratePlans, channels } = this.data;
 
@@ -121,7 +228,7 @@ export class SiteMinderService {
         this.channelsColumns$.next(channelsColumns);
     }
 
-    private seedCells(): void {
+    private seedMockedCells(): void {
         // Data
         const dateRows = [new Date(), this.addDays(new Date(), 1), this.addDays(new Date(), 2)];
         const rates = this.getRates(dateRows);
