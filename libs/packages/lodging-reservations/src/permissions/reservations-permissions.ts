@@ -11,14 +11,17 @@ export class ReservationsPermissions {
     public static updateReservations = UPDATE + ReservationsPermissions.reservations;
     public static removeReservations = REMOVE + ReservationsPermissions.reservations;
 
+    public static allocateLodging = 'AllocateLodging';
+    public static overbooking = 'Overbooking';
+    public static skipProcessingStatus = 'SkipProcessingStatus';
+    public static changeCheckInOut = 'ChangeCheckInOut';
+    
+
     public static findReservationsFields = FIND + ReservationsPermissions.reservationsFields;
     public static addReservationsFields = ADD + ReservationsPermissions.reservationsFields;
     public static updateReservationsFields = UPDATE + ReservationsPermissions.reservationsFields;
     public static removeReservationsFields = REMOVE + ReservationsPermissions.reservationsFields;
 
-    public static allocateLodging = 'AllocateLodging';
-    public static overbooking = 'Overbooking';
-    public static skipProcessingStatus = 'SkipProcessingStatus';
 
     public static checkIn = 'CheckIn';
     public static undoCheckIn = 'UndoCheckIn';
