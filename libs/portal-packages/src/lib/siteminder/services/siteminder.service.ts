@@ -183,6 +183,11 @@ export class SiteMinderService {
         const dateRows = [new Date(), this.addDays(new Date(), 1), this.addDays(new Date(), 2)];
         this.dateRows$.next(dateRows);
 
+        // Cells
+        const availabilityCells: StrIndex<StrIndex<Availability>> = {};
+        const rateSummaryCells: StrIndex<StrIndex<StrIndex<RateSummary>>> = {};
+        const channelsCells: StrIndex<StrIndex<StrIndex<StrIndex<RateInfo>>>> = {};
+
         return combineLatest();
     }
 
