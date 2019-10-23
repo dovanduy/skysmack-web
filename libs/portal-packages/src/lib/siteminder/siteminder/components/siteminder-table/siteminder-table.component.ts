@@ -6,6 +6,7 @@ import { SiteMinderService } from '../../../services/siteminder.service';
 import { Availability } from '@skysmack/packages-siteminder';
 import { RateSummary } from '../../../models/rate-summary';
 import { RateInfo } from '../../../models/rate-info';
+import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'ss-siteminder-table',
@@ -26,8 +27,8 @@ export class SiteMinderTableComponent implements OnInit {
 
   // Cells
   public availabilityCells$: BehaviorSubject<StrIndex<StrIndex<Availability>>>;
-  public rateSummaryCells$: BehaviorSubject<StrIndex<StrIndex<RateSummary>>>;
-  public channelsCells$: BehaviorSubject<StrIndex<StrIndex<StrIndex<RateInfo>>>>;
+  public rateSummaryCells$: BehaviorSubject<StrIndex<StrIndex<StrIndex<RateSummary>>>>;
+  public channelsCells$: BehaviorSubject<StrIndex<StrIndex<StrIndex<StrIndex<RateInfo>>>>>;
 
   constructor(
     private service: SiteMinderService,

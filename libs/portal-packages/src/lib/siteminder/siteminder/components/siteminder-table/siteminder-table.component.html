@@ -84,7 +84,7 @@
                             <!-- Rates Summary -->
                             <td class="table-cell mat-cell">
                                 <ng-container *ngIf="rateSummaryCells$ | async as rsc">
-                                    <ss-siteminder-rate-summary [data]="rsc[date][ratePlanColumn.id]">
+                                    <ss-siteminder-rate-summary [data]="rsc[date][ratePlanColumn.id][ltc.id]">
                                     </ss-siteminder-rate-summary>
                                 </ng-container>
                             </td>
@@ -96,7 +96,7 @@
                                     <ng-container *ngFor="let channelColumn of cc[ratePlanColumn.id]">
                                         <td class="table-cell mat-cell">
                                             <ss-siteminder-rate
-                                                [data]="channelCells[date][ratePlanColumn.id][channelColumn.id]">
+                                                [data]="channelCells[date][ratePlanColumn.id][ltc.id][channelColumn.id]">
                                             </ss-siteminder-rate>
                                         </td>
                                     </ng-container>
