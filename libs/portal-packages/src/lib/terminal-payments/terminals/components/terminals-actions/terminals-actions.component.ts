@@ -182,10 +182,10 @@ export class TerminalsActionsComponent extends BaseComponent<TerminalsAppState, 
   }
 
   private setClient$(connectionKey$: Observable<ConnectionKey>): void {
-    this.client$ = combineLatest(
+    this.client$ = combineLatest([
       getPackageDendencyAsStream(this.skysmackStore, this.packagePath, [0]),
       connectionKey$
-    ).pipe(
+    ]).pipe(
       delay(0),
       switchMap(([identitiesPackage, params]) => this.clientStore.getSingle(identitiesPackage.object.path, params.clientId))
     );
@@ -202,7 +202,10 @@ export class TerminalsActionsComponent extends BaseComponent<TerminalsAppState, 
   }
 
   private setOnlineAndConnected$(): void {
-    this.onlineAndConnected$ = combineLatest(this.clientOnline$, this.connection$).pipe(
+    this.onlineAndConnected$ = combineLatest([
+      this.clientOnline$, 
+      this.connection$
+    ]).pipe(
       delay(0),
       map(([clientOnline, connection]) => (clientOnline && (connection.object.status === TerminalStatus.Connected)))
     );

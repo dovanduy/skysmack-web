@@ -66,10 +66,10 @@ export class LodgingTypeSelectFieldComponent extends FieldBaseComponent<Field> i
   private setDatesSelected$() {
     const checkInControl = this.fh.form.get('checkIn');
     const checkOutControl = this.fh.form.get('checkOut');
-    this.datesSelected$ = combineLatest(
+    this.datesSelected$ = combineLatest([
       checkInControl.valueChanges.pipe(startWith(checkInControl.value)),
       checkOutControl.valueChanges.pipe(startWith(checkOutControl.value))
-    ).pipe(
+    ]).pipe(
       map(([checkIn, checkOut]) => checkIn && checkOut ? true : false)
     );
   }

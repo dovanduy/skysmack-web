@@ -55,10 +55,10 @@ export class NgMenuProviders extends MenuProviders {
                     ))
                 );
 
-                return combineLatest(
+                return combineLatest([
                     menuAreas,
                     menuItems
-                ).pipe(
+                ]).pipe(
                     map(([menuAreas, menuItems]) => {
                         // Filter away duplicate and empty (no menu items) menu areas
                         menuAreas.push(new MenuArea({

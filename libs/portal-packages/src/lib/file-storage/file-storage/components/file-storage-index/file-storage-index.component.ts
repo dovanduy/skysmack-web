@@ -163,10 +163,10 @@ export class FileStorageIndexComponent extends BaseComponent<FileStorageAppState
   }
 
   private getPagedEntities() {
-    this.pagedEntities$ = combineLatest(
+    this.pagedEntities$ = combineLatest([
       this.loadPages(),
       this.store.get(this.packagePath)
-    ).pipe(
+    ]).pipe(
       map(values => {
         const [pages, entities] = values;
         if (pages && entities) {
@@ -202,10 +202,10 @@ export class FileStorageIndexComponent extends BaseComponent<FileStorageAppState
       map(items => items.filter(item => item.object.contentType))
     )
 
-    this.empty$ = combineLatest(
+    this.empty$ = combineLatest([
       this.folders$,
       this.items$
-    ).pipe(
+    ]).pipe(
       map(([folders, items]) => {
         if (folders.length === 0 && items.length === 0) {
           return true

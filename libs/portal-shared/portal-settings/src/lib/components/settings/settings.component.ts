@@ -55,10 +55,10 @@ export class SettingsComponent extends BaseComponent<SettingsAppState<any>, unkn
       })
     ).subscribe());
 
-    this.fields$ = combineLatest(
+    this.fields$ = combineLatest([
       this.store.get(this.packagePath, this.settingsKey),
       this.skysmackStore.getEditorItem(),
-    ).pipe(
+    ]).pipe(
       switchMap(values => {
         const settings = values[0];
         this.editorItem = values[1] as LocalObject<any, unknown>;

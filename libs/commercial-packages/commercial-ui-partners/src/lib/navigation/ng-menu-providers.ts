@@ -15,8 +15,8 @@ export class NgMenuProviders extends MenuProviders {
     public getMenuAreaItems(packagePath: string, componentKey: string): Observable<MenuAreaItems[]> {
         return this.providers$.pipe(
             switchMap((menus: MenuProvider[]) => {
-                const menuAreas = combineLatest(menus.map(menu => menu.getMenuAreas(packagePath, componentKey))).pipe(map(x => x.reduce((a, b) => a.concat(b), [])));
-                const menuItems = combineLatest(menus.map(menu => menu.getMenuItems(packagePath, componentKey))).pipe(
+                const menuAreas = combineLatest([menus.map(menu => menu.getMenuAreas(packagePath, componentKey))]).pipe(map(x => x.reduce((a, b) => a.concat(b), [])));
+                const menuItems = combineLatest([menus.map(menu => menu.getMenuItems(packagePath, componentKey))]).pipe(
                     map(x => x.reduce((a, b) => a.concat(b), [])),
                     // Filter menu items based on authentication
                     switchMap(menuItems => this.authenticationStore.isCurrentUserAuthenticated().pipe(
@@ -35,10 +35,10 @@ export class NgMenuProviders extends MenuProviders {
                     // TODO: Add logic when backend is ready 
                 );
 
-                return combineLatest(
+                return combineLatest([
                     menuAreas,
                     menuItems
-                ).pipe(
+                ]).pipe(
                     map(([menuAreas, menuItems]) => {
                         // Filter away duplicate and empty (no menu items) menu areas
                         menuAreas.push(new MenuArea({

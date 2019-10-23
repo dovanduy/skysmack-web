@@ -42,7 +42,9 @@ export class NgInvoicesCashPaymentsMenuItemActionProvider extends MenuItemAction
                                 }, 'attach_money', this)
                             ]);
                         });
-                        return combineLatest(entityActionStreams$);
+                        return combineLatest([
+                            entityActionStreams$
+                        ]);
                     } else {
                         return of([]);
                     }

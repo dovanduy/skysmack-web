@@ -55,9 +55,9 @@ export class RecordsContainerComponent implements OnInit, OnDestroy {
       }));
 
     // This is done to avoid ExpressionHasChanged error
-    this.subscriptionHandler.register(combineLatest(
+    this.subscriptionHandler.register(combineLatest([
       this.loadedEntitiesCount$
-    ).pipe(
+    ]).pipe(
       delay(0),
       map(values => {
         this.loadedEntitiesCount = values[0];

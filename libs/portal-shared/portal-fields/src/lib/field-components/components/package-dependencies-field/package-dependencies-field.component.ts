@@ -63,10 +63,10 @@ export class PackageDependenciesFieldComponent extends FieldBaseComponent<Field>
 
     const availablePackages$ = this.packagesStore.getAvailablePackages(this.packagePath);
 
-    const dependencies$ = combineLatest(
+    const dependencies$ = combineLatest([
       selectedPackageType$,
       availablePackages$
-    ).pipe(
+    ]).pipe(
       map(values => {
         const [selectedPackageType, availablePackages] = values;
         return availablePackages.filter(availablePackage => availablePackage.object.type === selectedPackageType);
@@ -80,11 +80,11 @@ export class PackageDependenciesFieldComponent extends FieldBaseComponent<Field>
       })
     );
 
-    this.selectBoxes$ = combineLatest(
+    this.selectBoxes$ = combineLatest([
       dependencies$,
       this.packagesStore.get(this.packagePath),
       availablePackages$
-    ).pipe(
+    ]).pipe(
       map(values => {
         let [dependencies, installedPackages, availablePackages] = values;
         dependencies = dependencies ? dependencies : [];

@@ -35,10 +35,10 @@ export class RecordFormComponent<TAppState, TRecord extends Record<TKey>, TKey> 
     }
 
     protected setCreateFields() {
-        this.fields$ = combineLatest(
+        this.fields$ = combineLatest([
             this.skysmackStore.getEditorItem(),
             this.loadedPackage$
-        ).pipe(
+        ]).pipe(
             switchMap(values => {
                 this.editorItem = values[0] as LocalObject<TRecord, TKey>;
                 const loadedPackage = values[1];
@@ -50,11 +50,11 @@ export class RecordFormComponent<TAppState, TRecord extends Record<TKey>, TKey> 
 
     protected setEditFields() {
         this.fields$ =
-            combineLatest(
+            combineLatest([
                 this.initEditRecord(),
                 this.skysmackStore.getEditorItem(),
                 this.loadedPackage$
-            ).pipe(
+            ]).pipe(
                 switchMap(values => {
                     const entity = values[0];
                     this.selectedEntity = entity;

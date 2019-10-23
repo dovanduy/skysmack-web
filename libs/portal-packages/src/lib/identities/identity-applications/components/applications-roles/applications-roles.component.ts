@@ -62,7 +62,10 @@ export class ApplicationsRolesComponent extends BaseComponent<Application, numbe
   private getRoles() {
     this.rolesActions.getPaged(this.packagePath, new PagedQuery());
     console.log('getRoles')
-    this.roles$ = combineLatest(this.applicationRoles$, this.rolesStore.get(this.packagePath)).pipe(map(values => {
+    this.roles$ = combineLatest([
+      this.applicationRoles$, 
+      this.rolesStore.get(this.packagePath)
+    ]).pipe(map(values => {
       // Only show roles the user isn't in.
       const applicationRoles = values[0];
       console.log('values', values[0]);

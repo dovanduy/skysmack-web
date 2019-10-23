@@ -43,10 +43,10 @@ export class FieldsIndexComponent extends RecordIndexComponent<any, any, any> im
   ngOnInit() {
     this.additionalPaths$ = this.activatedRoute.data.pipe(map(data => data.additionalPaths));
     super.ngOnInit();
-    combineLatest(
+    combineLatest([
       this.loadedPackage$,
       this.activatedRoute.data
-    ).pipe(
+    ]).pipe(
       map(([loadedPackage, data]) => this.title.setTitle(loadedPackage._package.name, data.areaKey ? `${data.areaKey.toUpperCase()}.INDEX.FIELDS_TITLE` : undefined)),
       take(1)
     ).subscribe()

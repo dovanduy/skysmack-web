@@ -55,10 +55,10 @@ export class LodgingTypeSelectDialogComponent implements OnInit {
     ).subscribe();
 
     // Filter lodging types based on search input
-    const filteredLodgingTypes$ = combineLatest(
+    const filteredLodgingTypes$ = combineLatest([
       this.autoCompleteControl.valueChanges.pipe(startWith('')),
       allLodgingTypes$
-    ).pipe(
+    ]).pipe(
       map(([searchInput, lodgingTypes]) => searchInput ? this.filterLodgingTypes(searchInput, lodgingTypes) : lodgingTypes.slice())
     );
 
@@ -69,10 +69,10 @@ export class LodgingTypeSelectDialogComponent implements OnInit {
 
     // Get availability for all filtered lodging types
     let once2 = false; // Prevent multiple requests
-    const availableCount$ = combineLatest(
+    const availableCount$ = combineLatest([
       lodgingPackage$,
       lodgingTypeIds$
-    ).pipe(
+    ]).pipe(
       switchMap(([lodgingPackage, lodgingTypeIds]) => {
         const checkIn = this.data.form.get('checkIn').value;
         const checkOut = this.data.form.get('checkOut').value;
@@ -87,10 +87,10 @@ export class LodgingTypeSelectDialogComponent implements OnInit {
     //#endregion
 
     // Create the detailed lodging types used for selection and display
-    this.detailedLodgingTypes$ = combineLatest(
+    this.detailedLodgingTypes$ = combineLatest([
       filteredLodgingTypes$,
       availableCount$
-    ).pipe(
+    ]).pipe(
       map(([lodgingTypes, availableCount]) => {
         return lodgingTypes.map(lodgingType => {
           return new DetailedLodgingType({

@@ -48,18 +48,18 @@ export class InvoicesCashPaymentsPayComponent extends RecordFormComponent<Invoic
 
   protected setFields() {
     const invoiceId$ = of(this.data.value.object.id);
-    combineLatest(
+    combineLatest([
       invoiceId$,
       this.loadedPackage$
-    ).pipe(
+    ]).pipe(
       map(([invoiceId, loadedPackage]) => this.invoicesActions.getSingle(loadedPackage._package.dependencies[0], invoiceId)),
       take(1)
     ).subscribe();
 
-    this.fields$ = combineLatest(
+    this.fields$ = combineLatest([
       invoiceId$,
       this.loadedPackage$
-    ).pipe(
+    ]).pipe(
       switchMap(([invoiceId, loadedPackage]) => this.invoicesStore.getSingle(loadedPackage._package.dependencies[0], invoiceId).pipe(
         switchMap(invoice => {
           const entity = new CashPayment({

@@ -63,10 +63,10 @@ export class TerminalsPayComponent extends RecordFormComponent<TerminalsAppState
     ).subscribe();
 
     // Get invoice from state + make fields
-    this.fields$ = combineLatest(
+    this.fields$ = combineLatest([
       invoiceId$,
       this.loadedPackage$
-    ).pipe(
+    ]).pipe(
       switchMap(([invoiceId, loadedPackage]) => this.invoicesStore.getSingle(loadedPackage._package.dependencies[1], invoiceId).pipe(
         switchMap(invoice => {
           return this.fieldsConfig.getFields(loadedPackage, toLocalObject({

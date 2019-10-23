@@ -152,10 +152,10 @@ export class LodgingSelectDialogComponent implements OnInit, OnDestroy {
     );
 
     // Filter lodgings based ON lodging type select OR lodgings search input
-    const filteredLodgings$ = combineLatest(
+    const filteredLodgings$ = combineLatest([
       lodgingsSearchInput$,
       allLodgingsOfType$
-    ).pipe(
+    ]).pipe(
       map(([searchInput, lodgings]) => searchInput ? this.filterLodgings(searchInput, lodgings) : lodgings),
     );
 
@@ -184,10 +184,10 @@ export class LodgingSelectDialogComponent implements OnInit, OnDestroy {
     );
 
     // Create detailed lodgings (used for selection and display) when lodgings OR availability is updated
-    this.detailedLodgings$ = combineLatest(
+    this.detailedLodgings$ = combineLatest([
       filteredLodgings$,
       available$
-    ).pipe(
+    ]).pipe(
       map(([lodgings, available]) => {
         return lodgings.map(lodging => {
           return new DetailedLodging({
