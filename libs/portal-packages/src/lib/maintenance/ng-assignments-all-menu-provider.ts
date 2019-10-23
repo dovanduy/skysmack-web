@@ -171,7 +171,7 @@ export class NgAssignmentAllMenuProvider implements MenuProvider {
                 order: 1,
                 icon: 'add',
                 permissions: [
-                    MaintenancePermissions.addAssignments
+                    MaintenancePermissions.addSingleAssignments
                 ],
                 providedIn: [SIDEBAR, SPEEDDIAL]
             }),
