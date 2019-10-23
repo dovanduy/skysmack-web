@@ -76,6 +76,7 @@
                             <ss-siteminder-availability [data]="availabilityCells[date][ltc.id]">
                             </ss-siteminder-availability>
                         </ng-container>
+                        <span *ngIf="!(availabilityCells$ | async)">N/A</span>
                     </td>
 
                     <!-- Rateplan -->

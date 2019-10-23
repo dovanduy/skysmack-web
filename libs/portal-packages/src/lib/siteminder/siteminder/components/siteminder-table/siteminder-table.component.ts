@@ -1,20 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { StrIndex, SubscriptionHandler } from '@skysmack/framework';
+import { Availability } from '@skysmack/packages-siteminder';
+import { Router } from '@angular/router';
 import { SiteMinderColumn } from '../../../models/siteminder-column';
 import { SiteMinderService } from '../../../services/siteminder.service';
-import { Availability } from '@skysmack/packages-siteminder';
 import { RateSummary } from '../../../models/rate-summary';
 import { RateInfo } from '../../../models/rate-info';
-import { Router } from '@angular/router';
-import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'ss-siteminder-table',
   templateUrl: './siteminder-table.component.html',
   styleUrls: ['./siteminder-table.component.scss']
 })
-export class SiteMinderTableComponent implements OnInit {
+export class SiteMinderTableComponent implements OnInit, OnDestroy {
   private packagePath: string;
   private subscriptionHandler = new SubscriptionHandler();
 
@@ -52,11 +51,15 @@ export class SiteMinderTableComponent implements OnInit {
     this.rateSummaryCells$ = this.service.rateSummaryCells$;
     this.channelsCells$ = this.service.channelsCells$;
 
-    this.service.seedColumns(this.packagePath).subscribe();
+    this.subscriptionHandler.register(this.service.generateColumns(this.packagePath).subscribe());
+    this.subscriptionHandler.register(this.service.generateCells(this.packagePath).subscribe());
+  }
+
+  ngOnDestroy() {
+    this.subscriptionHandler.unsubscribe();
   }
 
   public calculateLodgingTypeColspan(ltcId: number): number {
-    const availabilityColumns = this.availabilityColumns$.getValue();
     const ratePlanColumns = this.ratePlanColumns$.getValue();
     const channelsColumns = this.channelsColumns$.getValue();
     if (channelsColumns) {
@@ -67,7 +70,6 @@ export class SiteMinderTableComponent implements OnInit {
       // Add one extra for available column
       return result !== 0 ? result + 1 : 1;
     } else {
-      //
       return 1;
     }
   }

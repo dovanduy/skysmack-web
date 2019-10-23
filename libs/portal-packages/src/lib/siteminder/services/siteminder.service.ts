@@ -82,11 +82,10 @@ export class SiteMinderService {
         private channelsStore: NgSiteMinderChannelsStore,
         private channelsActions: NgSiteMinderChannelsActions
     ) {
-        // this.seedMockedColumns();
         // this.seedMockedCells();
     }
 
-    public seedColumns(packagePath: string): Observable<any> {
+    public generateColumns(packagePath: string): Observable<unknown> {
         // ########
         // Data
         // ########
@@ -178,6 +177,13 @@ export class SiteMinderService {
         ));
 
         return combineLatest(columns$);
+    }
+
+    public generateCells(packagePath: string): Observable<unknown> {
+        const dateRows = [new Date(), this.addDays(new Date(), 1), this.addDays(new Date(), 2)];
+        this.dateRows$.next(dateRows);
+
+        return combineLatest();
     }
 
     private seedMockedColumns(): void {
