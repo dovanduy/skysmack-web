@@ -17,13 +17,13 @@ export class NgSiteMinderChannelManagerRequests {
     ) { }
 
     public getAvailability(action: ReduxAction<GetAvailabilityPayload>): Observable<ReduxAction<GetAvailabilitySuccessPayload> | ReduxAction<HttpErrorResponse>> {
-        let url = `${this.apiDomain.domain}/${action.payload.packagePath}`;
+        let url = `${this.apiDomain.domain}/${action.payload.packagePath}/availability`;
 
         return this.http.get<LodgingTypeAvailability[]>(url, { observe: 'response' })
             .pipe(
                 map(httpResponse => {
                     return Object.assign({}, new ReduxAction<GetAvailabilitySuccessPayload>({
-                        type: SITE_MINDER_CHANNEL_MANAGER_REDUX_KEY + NgSiteMinderChannelManagerActions.GET_AVAILABILITY_FAILURE,
+                        type: SITE_MINDER_CHANNEL_MANAGER_REDUX_KEY + NgSiteMinderChannelManagerActions.GET_AVAILABILITY_SUCCESS,
                         payload: {
                             entities: httpResponse.body,
                             ...action.payload
@@ -40,13 +40,13 @@ export class NgSiteMinderChannelManagerRequests {
     }
 
     public getRates(action: ReduxAction<GetRatesPayload>): Observable<ReduxAction<GetRatesSuccessPayload> | ReduxAction<HttpErrorResponse>> {
-        let url = `${this.apiDomain.domain}/${action.payload.packagePath}`;
+        let url = `${this.apiDomain.domain}/${action.payload.packagePath}/rates`;
 
         return this.http.get<LodgingTypeRate[]>(url, { observe: 'response' })
             .pipe(
                 map(httpResponse => {
                     return Object.assign({}, new ReduxAction<GetRatesSuccessPayload>({
-                        type: SITE_MINDER_CHANNEL_MANAGER_REDUX_KEY + NgSiteMinderChannelManagerActions.GET_RATES_FAILURE,
+                        type: SITE_MINDER_CHANNEL_MANAGER_REDUX_KEY + NgSiteMinderChannelManagerActions.GET_RATES_SUCCESS,
                         payload: {
                             entities: httpResponse.body,
                             ...action.payload

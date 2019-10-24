@@ -15,7 +15,8 @@ export class NgSiteMinderChannelManagerEpics {
 
     constructor(protected requests: NgSiteMinderChannelManagerRequests) {
         this.epics = [
-            this.getAvailabilityEpic
+            this.getAvailabilityEpic,
+            this.getRatesEpic
         ];
     }
 

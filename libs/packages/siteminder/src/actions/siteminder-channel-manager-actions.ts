@@ -64,7 +64,7 @@ export class SiteMinderChannelManagerActions {
             meta: {
                 offline: {
                     effect: new Effect<Availability>(new EffectRequest<Availability>(
-                        packagePath,
+                        `${packagePath}/availability`,
                         HttpMethod.PUT,
                         record.object
                     )),
@@ -96,7 +96,7 @@ export class SiteMinderChannelManagerActions {
             meta: {
                 offline: {
                     effect: new Effect<Rate>(new EffectRequest<Rate>(
-                        packagePath,
+                        `${packagePath}/rates`,
                         HttpMethod.PUT,
                         record.object
                     )),
@@ -128,7 +128,7 @@ export class SiteMinderChannelManagerActions {
             meta: {
                 offline: {
                     effect: new Effect<Restriction>(new EffectRequest<Restriction>(
-                        packagePath,
+                        `${packagePath}/restrictions`,
                         HttpMethod.PUT,
                         record.object
                     )),

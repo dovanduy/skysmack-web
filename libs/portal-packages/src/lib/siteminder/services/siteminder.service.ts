@@ -2,12 +2,12 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, merge, Observable, combineLatest } from 'rxjs';
 import { toLocalObject, StrIndex, SubscriptionHandler, PagedQuery } from '@skysmack/framework';
 import { LodgingType } from '@skysmack/packages-lodgings';
-import { RatePlan, Channel, Availability, LodgingTypeRate } from '@skysmack/packages-siteminder';
+import { RatePlan, Channel, Availability, LodgingTypeRate, LodgingTypeAvailability } from '@skysmack/packages-siteminder';
 import { SiteMinderColumn } from '../models/siteminder-column';
 import { RateSummary } from '../models/rate-summary';
 import { RateInfo } from '../models/rate-info';
 import { NgLodgingTypesStore, NgLodgingTypesActions } from '@skysmack/ng-lodgings';
-import { NgSiteMinderRatePlansStore, NgSiteMinderRatePlansActions, NgSiteMinderChannelsStore, NgSiteMinderChannelsActions } from '@skysmack/ng-siteminder';
+import { NgSiteMinderRatePlansStore, NgSiteMinderRatePlansActions, NgSiteMinderChannelsStore, NgSiteMinderChannelsActions, NgSiteMinderChannelManagerStore, NgSiteMinderChannelManagerActions } from '@skysmack/ng-siteminder';
 import { getPackageDendencyAsStream } from '@skysmack/ng-framework';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { tap, map, distinctUntilChanged, switchMap } from 'rxjs/operators';
@@ -79,14 +79,16 @@ export class SiteMinderService {
         private ratePlansStore: NgSiteMinderRatePlansStore,
         private ratePlansActions: NgSiteMinderRatePlansActions,
         private channelsStore: NgSiteMinderChannelsStore,
-        private channelsActions: NgSiteMinderChannelsActions
+        private channelsActions: NgSiteMinderChannelsActions,
+        private channelManagerStore: NgSiteMinderChannelManagerStore,
+        private channelManagerActions: NgSiteMinderChannelManagerActions
     ) {
         // this.seedMockedCells();
     }
 
     public generateColumns(packagePath: string): Observable<unknown> {
         // ########
-        // Data
+        // Data prep
         // ########
         // Lodging Types
         const lodgingPackage$ = getPackageDendencyAsStream(this.skysmackStore, packagePath, [0, 1, 0]);
@@ -119,7 +121,6 @@ export class SiteMinderService {
         // ########
         // Column processing
         // ########
-
         // Columns
         const columns$ = [];
         const availabilityColumns: StrIndex<SiteMinderColumn> = {};
@@ -178,18 +179,57 @@ export class SiteMinderService {
         return combineLatest(columns$);
     }
 
-    public generateCells(packagePath: string): Observable<unknown> {
-        const dateRows = [new Date(), this.addDays(new Date(), 1), this.addDays(new Date(), 2)];
-        this.dateRows$.next(dateRows);
+    public generateCells(packagePath: string, start: Date, end: Date): Observable<unknown> {
+        // ########
+        // Data prep
+        // ########
+        // Date rows
+        end = this.addDays(start, 2); // Temp!
+        const dateRows = this.getDateRows(start, end);
 
-        // START HERE: IMPLEMENT REDUX FLOW FOR RATES AND AVAILABILITY IN CHANNEL MANAGER
+        // Availability
+        this.channelManagerActions.getAvailability(packagePath, start, end);
+        const availability$ = this.channelManagerStore.getAvailability(packagePath, start, end).pipe(
+            distinctUntilChanged((prev, curr) => JSON.stringify(prev) === JSON.stringify(curr)),
+            // TEMP! REMOVE WHEN GET AVAILABILITY RETURNS ACTUAL DATA
+            map(() => dateRows.map(date => [
+                new LodgingTypeAvailability({
+                    date,
+                    available: 6,
+                    availableModifier: -1
+                }),
+                new LodgingTypeAvailability({
+                    date,
+                    available: 5,
+                    availableModifier: 2
+                }),
+                new LodgingTypeAvailability({
+                    date,
+                    available: 3,
+                    availableModifier: 0
+                }),
+                new LodgingTypeAvailability({
+                    date,
+                    available: 9,
+                    availableModifier: 4
+                }),
+            ]).reduce((a, b) => a.concat(b), [])),
+            // TEMP! END
+            tap(x => console.log(x))
+        );
 
+        // ########
+        // Cells processing
+        // ########
         // Cells
         const availabilityCells: StrIndex<StrIndex<Availability>> = {};
         const rateSummaryCells: StrIndex<StrIndex<StrIndex<RateSummary>>> = {};
         const channelsCells: StrIndex<StrIndex<StrIndex<StrIndex<RateInfo>>>> = {};
 
-        return combineLatest();
+        // Date rows
+        this.dateRows$.next(dateRows);
+
+        return combineLatest(availability$);
     }
 
     private seedMockedColumns(): void {
@@ -314,6 +354,15 @@ export class SiteMinderService {
         this.rateSummaryCells$.next(rateSummaryCells);
         this.channelsCells$.next(channelsCells);
     }
+
+    private getDateRows(start: Date, end: Date): Date[] {
+        const arr = []
+        const date = start;
+        for (; start <= end; date.setDate(date.getDate() + 1)) {
+            arr.push(new Date(date));
+        }
+        return arr;
+    };
 
     // TEMP: Used w. mock data
     private addDays(date, days) {

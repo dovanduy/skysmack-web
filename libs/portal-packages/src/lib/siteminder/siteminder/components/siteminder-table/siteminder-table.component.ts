@@ -52,7 +52,7 @@ export class SiteMinderTableComponent implements OnInit, OnDestroy {
     this.channelsCells$ = this.service.channelsCells$;
 
     this.subscriptionHandler.register(this.service.generateColumns(this.packagePath).subscribe());
-    this.subscriptionHandler.register(this.service.generateCells(this.packagePath).subscribe());
+    this.subscriptionHandler.register(this.service.generateCells(this.packagePath, new Date(), new Date()).subscribe());
   }
 
   ngOnDestroy() {
