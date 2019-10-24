@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { MenuItem, safeUndefinedTo, LocalObject } from '@skysmack/framework';
-import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { EntityComponentPageTitle, MENU_ITEM_ACTIONS_EDIT } from '@skysmack/portal-ui';
 import { NgAssignmentsStore, NgAssignmentsActions } from '@skysmack/ng-maintenance';
 import { Observable } from 'rxjs';
@@ -20,8 +19,8 @@ export class AssignmentsAllIndexComponent implements OnInit {
   public static COMPONENT_KEY = 'assignments-all-index';
   public componentKey = AssignmentsAllIndexComponent.COMPONENT_KEY;
   public entities$: Observable<LocalObject<Assignment, unknown>[]>;
-  private from: Date;
-  private due: Date;
+  public from: Date;
+  public due: Date;
   private packagePath: string;
 
   public menuItemActions: MenuItem[] = [
@@ -30,8 +29,6 @@ export class AssignmentsAllIndexComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private activatedRoute: ActivatedRoute,
-    private redux: NgSkysmackStore,
     private assignmentsStore: NgAssignmentsStore,
     private assignmentsActions: NgAssignmentsActions,
     private title: EntityComponentPageTitle,
