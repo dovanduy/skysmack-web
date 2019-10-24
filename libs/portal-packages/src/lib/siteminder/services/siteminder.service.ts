@@ -10,7 +10,6 @@ import { NgLodgingTypesStore, NgLodgingTypesActions } from '@skysmack/ng-lodging
 import { NgSiteMinderRatePlansStore, NgSiteMinderRatePlansActions, NgSiteMinderChannelsStore, NgSiteMinderChannelsActions } from '@skysmack/ng-siteminder';
 import { getPackageDendencyAsStream } from '@skysmack/ng-framework';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
-import { Router } from '@angular/router';
 import { tap, map, distinctUntilChanged, switchMap } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
@@ -182,6 +181,8 @@ export class SiteMinderService {
     public generateCells(packagePath: string): Observable<unknown> {
         const dateRows = [new Date(), this.addDays(new Date(), 1), this.addDays(new Date(), 2)];
         this.dateRows$.next(dateRows);
+
+        // START HERE: IMPLEMENT REDUX FLOW FOR RATES AND AVAILABILITY IN CHANNEL MANAGER
 
         // Cells
         const availabilityCells: StrIndex<StrIndex<Availability>> = {};
