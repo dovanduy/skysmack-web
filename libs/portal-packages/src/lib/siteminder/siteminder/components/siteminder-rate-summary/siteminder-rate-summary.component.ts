@@ -19,8 +19,8 @@ export class SiteMinderRateSummaryComponent implements OnInit {
 
   ngOnInit() {
     if (this.data) {
-      const { min, max } = this.findMinMax(this.data.rates.map(x => x.rate));
-      this.summary = `${min} - ${max}`;
+      const { min, max } = this.findMinMax(this.data.rates.map(x => x.object.rate));
+      this.summary = `${min ? min : '0'} - ${max ? max : '0'}`;
     }
   }
 

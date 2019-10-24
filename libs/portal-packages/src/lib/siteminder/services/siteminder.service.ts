@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, combineLatest } from 'rxjs';
 import { toLocalObject, StrIndex, PagedQuery, LocalObject } from '@skysmack/framework';
 import { LodgingType } from '@skysmack/packages-lodgings';
-import { RatePlan, Channel, Availability, LodgingTypeRate, LodgingTypeAvailability } from '@skysmack/packages-siteminder';
+import { RatePlan, Channel, LodgingTypeRate, LodgingTypeAvailability, LodgingTypeRateKey } from '@skysmack/packages-siteminder';
 import { SiteMinderColumn } from '../models/siteminder-column';
 import { RateSummary } from '../models/rate-summary';
 import { RateInfo } from '../models/rate-info';
@@ -99,7 +99,7 @@ export class SiteMinderService {
             distinctUntilChanged((prev, curr) => JSON.stringify(prev) === JSON.stringify(curr))
         );
 
-        // RatePlans
+        // Channels
         this.channelsActions.getPaged(packagePath, new PagedQuery());
         const channels$ = this.channelsStore.get(packagePath).pipe(
             distinctUntilChanged((prev, curr) => JSON.stringify(prev) === JSON.stringify(curr))
@@ -181,7 +181,7 @@ export class SiteMinderService {
         this.channelManagerActions.getAvailability(packagePath, start, end);
         const availability$ = this.channelManagerStore.getAvailability(packagePath, start, end).pipe(
             distinctUntilChanged((prev, curr) => JSON.stringify(prev) === JSON.stringify(curr)),
-            // TEMP! REMOVE WHEN GET AVAILABILITY RETURNS ACTUAL DATA
+            // TEMP! REMOVE WHEN GET_AVAILABILITY RETURNS ACTUAL DATA
             map(() => dateRows.map(date => [
                 new LodgingTypeAvailability({
                     lodgingTypeId: 1,
@@ -211,6 +211,200 @@ export class SiteMinderService {
             // TEMP! END
         );
 
+        // Channels
+        const channels$ = this.channelsStore.get(packagePath).pipe(
+            distinctUntilChanged((prev, curr) => JSON.stringify(prev) === JSON.stringify(curr))
+        );
+
+        // Rates
+        this.channelManagerActions.getRates(packagePath, start, end);
+        const rates$ = this.channelManagerStore.getRates(packagePath, start, end).pipe(
+            distinctUntilChanged((prev, curr) => JSON.stringify(prev) === JSON.stringify(curr)),
+            // TEMP! REMOVE WHEN GET_RATES RETURNS ACTUAL DATA
+            map(() => dateRows.map(date => [
+                // LT1 - RP1
+                new LodgingTypeRate({
+                    lodgingTypeId: 1,
+                    ratePlanId: 1,
+                    date,
+                    rate: 599,
+                    channelId: 1
+                }),
+                new LodgingTypeRate({
+                    lodgingTypeId: 1,
+                    ratePlanId: 1,
+                    date,
+                    rate: 399,
+                    channelId: 2
+                }),
+                new LodgingTypeRate({
+                    lodgingTypeId: 1,
+                    ratePlanId: 1,
+                    date,
+                    rate: 449,
+                    channelId: 3
+                }),
+                // LT1 - RP2
+                new LodgingTypeRate({
+                    lodgingTypeId: 1,
+                    ratePlanId: 2,
+                    date,
+                    rate: 299,
+                    channelId: 1
+                }),
+                new LodgingTypeRate({
+                    lodgingTypeId: 1,
+                    ratePlanId: 2,
+                    date,
+                    rate: 199,
+                    channelId: 2
+                }),
+                new LodgingTypeRate({
+                    lodgingTypeId: 1,
+                    ratePlanId: 2,
+                    date,
+                    rate: 349,
+                    channelId: 3
+                }),
+                // LT2 - RP1
+                new LodgingTypeRate({
+                    lodgingTypeId: 2,
+                    ratePlanId: 1,
+                    date,
+                    rate: 549,
+                    channelId: 1
+                }),
+                new LodgingTypeRate({
+                    lodgingTypeId: 2,
+                    ratePlanId: 1,
+                    date,
+                    rate: 3399,
+                    channelId: 2
+                }),
+                new LodgingTypeRate({
+                    lodgingTypeId: 2,
+                    ratePlanId: 1,
+                    date,
+                    rate: 1449,
+                    channelId: 3
+                }),
+
+
+
+                // LT2 - RP2
+                new LodgingTypeRate({
+                    lodgingTypeId: 2,
+                    ratePlanId: 2,
+                    date,
+                    rate: 99,
+                    channelId: 1
+                }),
+                new LodgingTypeRate({
+                    lodgingTypeId: 2,
+                    ratePlanId: 2,
+                    date,
+                    rate: 99,
+                    channelId: 2
+                }),
+                new LodgingTypeRate({
+                    lodgingTypeId: 2,
+                    ratePlanId: 2,
+                    date,
+                    rate: 49,
+                    channelId: 3
+                }),
+                // LT3 - RP1
+                new LodgingTypeRate({
+                    lodgingTypeId: 3,
+                    ratePlanId: 1,
+                    date,
+                    rate: 599,
+                    channelId: 1
+                }),
+                new LodgingTypeRate({
+                    lodgingTypeId: 3,
+                    ratePlanId: 1,
+                    date,
+                    rate: 399,
+                    channelId: 2
+                }),
+                new LodgingTypeRate({
+                    lodgingTypeId: 3,
+                    ratePlanId: 1,
+                    date,
+                    rate: 449,
+                    channelId: 3
+                }),
+                // LT3 - RP2
+                new LodgingTypeRate({
+                    lodgingTypeId: 3,
+                    ratePlanId: 2,
+                    date,
+                    rate: 599,
+                    channelId: 1
+                }),
+                new LodgingTypeRate({
+                    lodgingTypeId: 3,
+                    ratePlanId: 2,
+                    date,
+                    rate: 399,
+                    channelId: 2
+                }),
+                new LodgingTypeRate({
+                    lodgingTypeId: 3,
+                    ratePlanId: 2,
+                    date,
+                    rate: 449,
+                    channelId: 3
+                }),
+                // LT4 - RP1
+                new LodgingTypeRate({
+                    lodgingTypeId: 4,
+                    ratePlanId: 1,
+                    date,
+                    rate: 59,
+                    channelId: 1
+                }),
+                new LodgingTypeRate({
+                    lodgingTypeId: 4,
+                    ratePlanId: 1,
+                    date,
+                    rate: 39,
+                    channelId: 2
+                }),
+                new LodgingTypeRate({
+                    lodgingTypeId: 4,
+                    ratePlanId: 1,
+                    date,
+                    rate: 44,
+                    channelId: 3
+                }),
+                // LT4 - RP2
+                new LodgingTypeRate({
+                    lodgingTypeId: 4,
+                    ratePlanId: 2,
+                    date,
+                    rate: 359,
+                    channelId: 1
+                }),
+                new LodgingTypeRate({
+                    lodgingTypeId: 4,
+                    ratePlanId: 2,
+                    date,
+                    rate: 339,
+                    channelId: 2
+                }),
+                new LodgingTypeRate({
+                    lodgingTypeId: 4,
+                    ratePlanId: 2,
+                    date,
+                    rate: 344,
+                    channelId: 3
+                }),
+            ]).reduce((a, b) => a.concat(b), []).map(x => toLocalObject<LodgingTypeRate, LodgingTypeRateKey>(x))),
+            // TEMP! END,
+        );
+
         // ########
         // Cells processing
         // ########
@@ -225,15 +419,26 @@ export class SiteMinderService {
 
         // Availability cells
         cells$.push(combineLatest([
-            this.dateRows$,
-            this.lodgingTypeColumns$,
-            availability$,
-            lodgingTypes$,
+            // Note: The weird combineLatest setup is used because types gets weird,
+            // when more than 6 streams are used in one combineLatest (at the time of writing).
+            combineLatest([
+                this.dateRows$,
+                this.lodgingTypeColumns$,
+                this.ratePlanColumns$,
+                this.channelsColumns$,
+            ]),
+            combineLatest([
+                availability$,
+                channels$,
+                rates$,
+                lodgingTypes$,
+            ])
         ]).pipe(
-            map(([dateRows, lodgingTypeColumns, availability, lodgingTypes]) => {
+            map(([[dateRows, lodgingTypeColumns, ratePlanColumns, channelColumns], [availability, channels, rates, lodgingTypes]]) => {
+                // Foreach date row
                 dateRows.forEach(date => {
                     const dateIndex = date.toString();
-                    // const todayRates = rates.filter(rate => rate.date === date);
+                    const currentDateRates = rates.filter(rate => rate.object.date === date);
 
                     lodgingTypeColumns.forEach(ltc => {
                         // Availability Cells
@@ -242,6 +447,47 @@ export class SiteMinderService {
                         avail.lodgingType = lodgingTypes.find(lodgingType => avail.lodgingTypeId === lodgingType.object.id);
                         availabilityCells[dateIndex][ltc.id] = avail;
                         this.availabilityCells$.next(availabilityCells);
+                    });
+
+                    Object.keys(ratePlanColumns).forEach(lodgingTypeId => {
+                        const lodgingTypeRates = currentDateRates.filter(rate => Number(rate.object.lodgingTypeId) === Number(lodgingTypeId));
+
+                        ratePlanColumns[lodgingTypeId].forEach(rpc => {
+                            const currentRatePlanChannelColumns = channelColumns[rpc.id];
+                            const lodgingType = lodgingTypes.find(lodgingType => Number(lodgingType.object.id) === Number(lodgingTypeId));
+                            const ratePlanRates = lodgingTypeRates.filter(rate => Number(rate.object.ratePlanId) === Number(rpc.id));
+
+                            // RateSummary cells
+                            rateSummaryCells[dateIndex] ? rateSummaryCells[dateIndex] : rateSummaryCells[dateIndex] = {};
+                            rateSummaryCells[dateIndex][rpc.id] ? rateSummaryCells[dateIndex][rpc.id] : rateSummaryCells[dateIndex][rpc.id] = {};
+
+                            rateSummaryCells[dateIndex][rpc.id][lodgingTypeId] = new RateSummary({
+                                date: date,
+                                ratePlanTitle: rpc.title,
+                                rates: ratePlanRates,
+                                channels: channels.map(x => x.object),
+                                lodgingType: lodgingType ? lodgingType : null
+                            });
+                            this.rateSummaryCells$.next(rateSummaryCells);
+
+                            // Channel cells
+                            channelsCells[dateIndex] ? channelsCells[dateIndex] : channelsCells[dateIndex] = {};
+                            channelsCells[dateIndex][rpc.id] ? channelsCells[dateIndex][rpc.id] : channelsCells[dateIndex][rpc.id] = {};
+                            channelsCells[dateIndex][rpc.id][lodgingTypeId] ? channelsCells[dateIndex][rpc.id][lodgingTypeId] : channelsCells[dateIndex][rpc.id][lodgingTypeId] = {};
+
+                            const channelRatesDictionary = channelsCells[dateIndex][rpc.id][lodgingTypeId];
+                            currentRatePlanChannelColumns.forEach(cc => {
+                                const channel = channels.find(channel => channel.object.id === cc.id);
+                                channelRatesDictionary[cc.id] = new RateInfo({
+                                    date: date,
+                                    rate: ratePlanRates.find(rate => Number(rate.object.channelId) === Number(cc.id)),
+                                    ratePlanTitle: rpc.title,
+                                    channel: channel ? channel : null,
+                                    lodgingType: lodgingType ? lodgingType : null
+                                });
+                            });
+                            this.channelsCells$.next(channelsCells);
+                        });
                     });
                 });
             })
@@ -316,54 +562,54 @@ export class SiteMinderService {
 
         // Processing
         dateRows.forEach(date => {
-            const dateIndex = date.toString();
-            const todayRates = rates.filter(rate => rate.date === date);
+            // const dateIndex = date.toString();
+            // const todayRates = rates.filter(rate => rate.date === date);
 
-            lodgingTypeColumns.forEach(ltc => {
-                // Availability Cells
-                const lodgingType = lodgingTypes.find(lodgingType => lodgingType.object.id === ltc.id)
-                availabilityCells[dateIndex] ? availabilityCells[dateIndex] : availabilityCells[dateIndex] = {};
-                availabilityCells[dateIndex][ltc.id] = new LodgingTypeAvailability({
-                    available: 7,
-                    availableModifier: -1,
-                    lodgingTypeId: ltc.id,
-                    lodgingType: lodgingType ? lodgingType : null
-                })
-            });
+            // lodgingTypeColumns.forEach(ltc => {
+            //     // Availability Cells
+            //     const lodgingType = lodgingTypes.find(lodgingType => lodgingType.object.id === ltc.id)
+            //     availabilityCells[dateIndex] ? availabilityCells[dateIndex] : availabilityCells[dateIndex] = {};
+            //     availabilityCells[dateIndex][ltc.id] = new LodgingTypeAvailability({
+            //         available: 7,
+            //         availableModifier: -1,
+            //         lodgingTypeId: ltc.id,
+            //         lodgingType: lodgingType ? lodgingType : null
+            //     })
+            // });
 
-            Object.keys(ratePlanColumns).forEach(lodgingTypeId => ratePlanColumns[lodgingTypeId].forEach(rpc => {
-                const currentRatePlanChannelColumns = channelColumns[rpc.id];
-                const lodgingType = lodgingTypes.find(lodgingType => lodgingType.object.id === Number(lodgingTypeId));
+            // Object.keys(ratePlanColumns).forEach(lodgingTypeId => ratePlanColumns[lodgingTypeId].forEach(rpc => {
+            //     const currentRatePlanChannelColumns = channelColumns[rpc.id];
+            //     const lodgingType = lodgingTypes.find(lodgingType => lodgingType.object.id === Number(lodgingTypeId));
 
-                // RateSummary cells
-                rateSummaryCells[dateIndex] ? rateSummaryCells[dateIndex] : rateSummaryCells[dateIndex] = {};
-                rateSummaryCells[dateIndex][rpc.id] ? rateSummaryCells[dateIndex][rpc.id] : rateSummaryCells[dateIndex][rpc.id] = {};
+            //     // RateSummary cells
+            //     rateSummaryCells[dateIndex] ? rateSummaryCells[dateIndex] : rateSummaryCells[dateIndex] = {};
+            //     rateSummaryCells[dateIndex][rpc.id] ? rateSummaryCells[dateIndex][rpc.id] : rateSummaryCells[dateIndex][rpc.id] = {};
 
-                rateSummaryCells[dateIndex][rpc.id][lodgingTypeId] = new RateSummary({
-                    date: date,
-                    ratePlanTitle: rpc.title,
-                    rates: todayRates,
-                    channels: channels.map(x => x.object),
-                    lodgingType: lodgingType ? lodgingType.object : null
-                });
+            //     rateSummaryCells[dateIndex][rpc.id][lodgingTypeId] = new RateSummary({
+            //         date: date,
+            //         ratePlanTitle: rpc.title,
+            //         rates: todayRates,
+            //         channels: channels.map(x => x.object),
+            //         lodgingType: lodgingType ? lodgingType.object : null
+            //     });
 
-                // Channel cells
-                channelsCells[dateIndex] ? channelsCells[dateIndex] : channelsCells[dateIndex] = {};
-                channelsCells[dateIndex][rpc.id] ? channelsCells[dateIndex][rpc.id] : channelsCells[dateIndex][rpc.id] = {};
-                channelsCells[dateIndex][rpc.id][lodgingTypeId] ? channelsCells[dateIndex][rpc.id][lodgingTypeId] : channelsCells[dateIndex][rpc.id][lodgingTypeId] = {};
+            //     // Channel cells
+            //     channelsCells[dateIndex] ? channelsCells[dateIndex] : channelsCells[dateIndex] = {};
+            //     channelsCells[dateIndex][rpc.id] ? channelsCells[dateIndex][rpc.id] : channelsCells[dateIndex][rpc.id] = {};
+            //     channelsCells[dateIndex][rpc.id][lodgingTypeId] ? channelsCells[dateIndex][rpc.id][lodgingTypeId] : channelsCells[dateIndex][rpc.id][lodgingTypeId] = {};
 
-                const channelRatesDictionary = channelsCells[dateIndex][rpc.id][lodgingTypeId];
-                currentRatePlanChannelColumns.forEach(cc => {
-                    const channel = channels.find(channel => channel.object.id === cc.id);
-                    channelRatesDictionary[cc.id] = new RateInfo({
-                        date: date,
-                        rate: todayRates.find(rate => rate.channelId === cc.id),
-                        ratePlanTitle: rpc.title,
-                        channel: channel ? channel.object : null,
-                        lodgingType: lodgingType ? lodgingType.object : null
-                    });
-                });
-            }))
+            //     const channelRatesDictionary = channelsCells[dateIndex][rpc.id][lodgingTypeId];
+            //     currentRatePlanChannelColumns.forEach(cc => {
+            //         const channel = channels.find(channel => channel.object.id === cc.id);
+            //         channelRatesDictionary[cc.id] = new RateInfo({
+            //             date: date,
+            //             rate: todayRates.find(rate => rate.channelId === cc.id),
+            //             ratePlanTitle: rpc.title,
+            //             channel: channel ? channel.object : null,
+            //             lodgingType: lodgingType ? lodgingType.object : null
+            //         });
+            //     });
+            // }));
         });
 
         // Update streams

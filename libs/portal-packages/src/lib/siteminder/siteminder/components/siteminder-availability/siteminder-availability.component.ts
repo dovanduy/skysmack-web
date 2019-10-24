@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Availability } from '@skysmack/packages-siteminder';
+import { Availability, LodgingTypeAvailability } from '@skysmack/packages-siteminder';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { SiteMinderAvailabilityDialogComponent } from '../siteminder-availability-dialog/siteminder-availability-dialog.component';
 
@@ -10,7 +10,7 @@ import { SiteMinderAvailabilityDialogComponent } from '../siteminder-availabilit
 })
 export class SiteMinderAvailabilityComponent implements OnInit {
 
-  @Input() public data: Availability;
+  @Input() public data: LodgingTypeAvailability;
   public available: number;
   public availableModifier: number;
   public availableAfterModification: number;

@@ -4,6 +4,7 @@ import { FormControl } from '@angular/forms';
 import { RateInfo } from '../../../models/rate-info';
 import { Channel } from '@skysmack/packages-siteminder';
 import { LodgingType } from '@skysmack/packages-lodgings';
+import { LocalObject } from '@skysmack/framework';
 
 @Component({
   selector: 'ss-siteminder-rate-dialog',
@@ -16,7 +17,7 @@ export class SiteMinderRateDialogComponent implements OnInit {
   public date: Date;
   public channel: Channel;
   public ratePlanTitle: string;
-  public lodgingType: LodgingType;
+  public lodgingType: LocalObject<LodgingType, number>;
 
   constructor(
     public dialogRef: MatDialogRef<SiteMinderRateDialogComponent>,
@@ -29,7 +30,12 @@ export class SiteMinderRateDialogComponent implements OnInit {
     this.channel = channel;
     this.ratePlanTitle = ratePlanTitle;
     this.lodgingType = lodgingType;
-    this.rateControl.setValue(rate.rate);
+    if (rate) {
+      this.rateControl.setValue(rate.object.rate);
+    } else {
+      this.rateControl.setValue(0);
+    }
+
   }
 
   public ok() {

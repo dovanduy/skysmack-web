@@ -19,7 +19,12 @@ export class SiteMinderRateComponent implements OnInit {
 
   ngOnInit() {
     if (this.data) {
-      this.rate = this.data.rate.rate;
+      const rate = this.data.rate;
+      if (rate) {
+        this.rate = rate.object.rate;
+      } else {
+        this.rate = 0;
+      }
     }
   }
 

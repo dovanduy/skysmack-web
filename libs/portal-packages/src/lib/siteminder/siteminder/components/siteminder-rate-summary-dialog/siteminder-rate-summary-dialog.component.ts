@@ -27,12 +27,12 @@ export class SiteMinderRateSummaryDialogComponent implements OnInit {
     this.date = date;
     this.channels = channels;
     this.ratePlanTitle = ratePlanTitle;
-    this.lodgingType = lodgingType;
+    this.lodgingType = lodgingType.object;
 
     this.form = new FormGroup({});
     channels.forEach(channel => {
-      const rate = rates.find(rate => rate.channelId === channel.id);
-      const formControl = new FormControl(rate ? rate.rate : 0);
+      const rate = rates.find(rate => rate.object.channelId === channel.id);
+      const formControl = new FormControl(rate ? rate.object.rate : 0);
       this.form.addControl(channel.name, formControl);
     });
   }
