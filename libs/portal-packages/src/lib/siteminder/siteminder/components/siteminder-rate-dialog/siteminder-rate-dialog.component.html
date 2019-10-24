@@ -2,7 +2,8 @@
 <p style="font-size: 12px;">{{ ratePlanTitle }}</p>
 
 <mat-form-field>
-    <input matInput type="number" step="1" name="Rate" [formControl]="rateControl" [placeholder]="channel.name">
+    <input matInput type="number" step="1" name="Rate" [formControl]="rateControl"
+        [placeholder]="channel?.object?.name">
 </mat-form-field>
 
 <button mat-raised-button (click)="cancel()">Cancel</button>

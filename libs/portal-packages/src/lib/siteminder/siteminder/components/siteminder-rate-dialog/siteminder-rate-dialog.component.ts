@@ -15,7 +15,7 @@ export class SiteMinderRateDialogComponent implements OnInit {
 
   public rateControl = new FormControl();
   public date: Date;
-  public channel: Channel;
+  public channel: LocalObject<Channel, number>;
   public ratePlanTitle: string;
   public lodgingType: LocalObject<LodgingType, number>;
 
