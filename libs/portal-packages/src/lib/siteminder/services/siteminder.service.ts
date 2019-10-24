@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, merge, Observable, combineLatest } from 'rxjs';
-import { toLocalObject, StrIndex, SubscriptionHandler, PagedQuery } from '@skysmack/framework';
+import { BehaviorSubject, Observable, combineLatest } from 'rxjs';
+import { toLocalObject, StrIndex, PagedQuery, LocalObject } from '@skysmack/framework';
 import { LodgingType } from '@skysmack/packages-lodgings';
 import { RatePlan, Channel, Availability, LodgingTypeRate, LodgingTypeAvailability } from '@skysmack/packages-siteminder';
 import { SiteMinderColumn } from '../models/siteminder-column';
@@ -26,7 +26,7 @@ export class SiteMinderService {
     public dateRows$ = new BehaviorSubject<Date[]>(null);
 
     // Cells
-    public availabilityCells$ = new BehaviorSubject<StrIndex<StrIndex<Availability>>>(null);
+    public availabilityCells$ = new BehaviorSubject<StrIndex<StrIndex<LodgingTypeAvailability>>>(null);
     public rateSummaryCells$ = new BehaviorSubject<StrIndex<StrIndex<StrIndex<RateSummary>>>>(null);
     public channelsCells$ = new BehaviorSubject<StrIndex<StrIndex<StrIndex<StrIndex<RateInfo>>>>>(null);
 
@@ -91,20 +91,7 @@ export class SiteMinderService {
         // Data prep
         // ########
         // Lodging Types
-        const lodgingPackage$ = getPackageDendencyAsStream(this.skysmackStore, packagePath, [0, 1, 0]);
-        const lodgingPath$ = lodgingPackage$.pipe(
-            map(_package => _package.object.path),
-            distinctUntilChanged()
-        );
-
-        const lodgingTypes$ = lodgingPath$.pipe(
-            switchMap(path => {
-                this.lodgingTypesActions.getPaged(path, new PagedQuery());
-                return this.lodgingTypesStore.get(path).pipe(
-                    distinctUntilChanged((prev, curr) => JSON.stringify(prev) === JSON.stringify(curr))
-                );
-            })
-        );
+        const lodgingTypes$ = this.getLodgingTypesStream(packagePath);
 
         // RatePlans
         this.ratePlansActions.getPaged(packagePath, new PagedQuery());
@@ -187,6 +174,9 @@ export class SiteMinderService {
         end = this.addDays(start, 2); // Temp!
         const dateRows = this.getDateRows(start, end);
 
+        // LodgingTypes
+        const lodgingTypes$ = this.getLodgingTypesStream(packagePath);
+
         // Availability
         this.channelManagerActions.getAvailability(packagePath, start, end);
         const availability$ = this.channelManagerStore.getAvailability(packagePath, start, end).pipe(
@@ -194,42 +184,70 @@ export class SiteMinderService {
             // TEMP! REMOVE WHEN GET AVAILABILITY RETURNS ACTUAL DATA
             map(() => dateRows.map(date => [
                 new LodgingTypeAvailability({
+                    lodgingTypeId: 1,
                     date,
                     available: 6,
                     availableModifier: -1
                 }),
                 new LodgingTypeAvailability({
+                    lodgingTypeId: 2,
                     date,
                     available: 5,
                     availableModifier: 2
                 }),
                 new LodgingTypeAvailability({
+                    lodgingTypeId: 3,
                     date,
                     available: 3,
                     availableModifier: 0
                 }),
                 new LodgingTypeAvailability({
+                    lodgingTypeId: 4,
                     date,
                     available: 9,
                     availableModifier: 4
                 }),
-            ]).reduce((a, b) => a.concat(b), [])),
+            ]).reduce((a, b) => a.concat(b), []))
             // TEMP! END
-            tap(x => console.log(x))
         );
 
         // ########
         // Cells processing
         // ########
         // Cells
-        const availabilityCells: StrIndex<StrIndex<Availability>> = {};
+        const cells$ = [];
+        const availabilityCells: StrIndex<StrIndex<LodgingTypeAvailability>> = {};
         const rateSummaryCells: StrIndex<StrIndex<StrIndex<RateSummary>>> = {};
         const channelsCells: StrIndex<StrIndex<StrIndex<StrIndex<RateInfo>>>> = {};
 
         // Date rows
         this.dateRows$.next(dateRows);
 
-        return combineLatest(availability$);
+        // Availability cells
+        cells$.push(combineLatest([
+            this.dateRows$,
+            this.lodgingTypeColumns$,
+            availability$,
+            lodgingTypes$,
+        ]).pipe(
+            map(([dateRows, lodgingTypeColumns, availability, lodgingTypes]) => {
+                dateRows.forEach(date => {
+                    const dateIndex = date.toString();
+                    // const todayRates = rates.filter(rate => rate.date === date);
+
+                    lodgingTypeColumns.forEach(ltc => {
+                        // Availability Cells
+                        availabilityCells[dateIndex] ? availabilityCells[dateIndex] : availabilityCells[dateIndex] = {};
+                        const avail = availability.find(avail => avail.lodgingTypeId === ltc.id);
+                        avail.lodgingType = lodgingTypes.find(lodgingType => avail.lodgingTypeId === lodgingType.object.id);
+                        availabilityCells[dateIndex][ltc.id] = avail;
+                        this.availabilityCells$.next(availabilityCells);
+                    });
+                });
+            })
+        ));
+
+        return combineLatest(cells$);
     }
 
     private seedMockedColumns(): void {
@@ -287,7 +305,7 @@ export class SiteMinderService {
         const { channels, lodgingTypes } = this.data;
 
         // Cells
-        const availabilityCells: StrIndex<StrIndex<Availability>> = {};
+        const availabilityCells: StrIndex<StrIndex<LodgingTypeAvailability>> = {};
         const rateSummaryCells: StrIndex<StrIndex<StrIndex<RateSummary>>> = {};
         const channelsCells: StrIndex<StrIndex<StrIndex<StrIndex<RateInfo>>>> = {};
 
@@ -305,12 +323,12 @@ export class SiteMinderService {
                 // Availability Cells
                 const lodgingType = lodgingTypes.find(lodgingType => lodgingType.object.id === ltc.id)
                 availabilityCells[dateIndex] ? availabilityCells[dateIndex] : availabilityCells[dateIndex] = {};
-                availabilityCells[dateIndex][ltc.id] = new Availability({
+                availabilityCells[dateIndex][ltc.id] = new LodgingTypeAvailability({
                     available: 7,
                     availableModifier: -1,
                     lodgingTypeId: ltc.id,
-                    lodgingType: lodgingType ? lodgingType.object : null
-                });
+                    lodgingType: lodgingType ? lodgingType : null
+                })
             });
 
             Object.keys(ratePlanColumns).forEach(lodgingTypeId => ratePlanColumns[lodgingTypeId].forEach(rpc => {
@@ -353,6 +371,23 @@ export class SiteMinderService {
         this.availabilityCells$.next(availabilityCells);
         this.rateSummaryCells$.next(rateSummaryCells);
         this.channelsCells$.next(channelsCells);
+    }
+
+    private getLodgingTypesStream(packagePath: string): Observable<LocalObject<LodgingType, number>[]> {
+        const lodgingPackage$ = getPackageDendencyAsStream(this.skysmackStore, packagePath, [0, 1, 0]);
+        const lodgingPath$ = lodgingPackage$.pipe(
+            map(_package => _package.object.path),
+            distinctUntilChanged()
+        );
+
+        return lodgingPath$.pipe(
+            switchMap(path => {
+                this.lodgingTypesActions.getPaged(path, new PagedQuery());
+                return this.lodgingTypesStore.get(path).pipe(
+                    distinctUntilChanged((prev, curr) => JSON.stringify(prev) === JSON.stringify(curr))
+                );
+            })
+        );
     }
 
     private getDateRows(start: Date, end: Date): Date[] {

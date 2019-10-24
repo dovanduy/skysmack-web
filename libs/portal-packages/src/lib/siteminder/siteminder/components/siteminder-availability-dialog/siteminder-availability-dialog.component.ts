@@ -1,9 +1,9 @@
-import { Component, OnInit, Input, Inject } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { FormControl } from '@angular/forms';
-import { Observable, combineLatest } from 'rxjs';
+import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
-import { Availability } from '@skysmack/packages-siteminder';
+import { LodgingTypeAvailability } from '@skysmack/packages-siteminder';
 import { LodgingType } from '@skysmack/packages-lodgings';
 
 @Component({
@@ -20,12 +20,12 @@ export class SiteMinderAvailabilityDialogComponent implements OnInit {
 
   constructor(
     public dialogRef: MatDialogRef<SiteMinderAvailabilityDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: Availability
+    @Inject(MAT_DIALOG_DATA) public data: LodgingTypeAvailability
   ) { }
 
   ngOnInit() {
     this.available = this.data.available;
-    this.lodgingType = this.data.lodgingType;
+    this.lodgingType = this.data.lodgingType.object;
     const availableModifier = this.data.availableModifier
 
     this.availableModifierControl.setValue(availableModifier);
@@ -37,8 +37,6 @@ export class SiteMinderAvailabilityDialogComponent implements OnInit {
   }
 
   public ok() {
-    // Update availability
-    console.log('Updating availability')
     this.dialogRef.close();
   }
 

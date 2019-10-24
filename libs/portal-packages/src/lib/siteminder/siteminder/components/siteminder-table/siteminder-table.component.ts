@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { StrIndex, SubscriptionHandler } from '@skysmack/framework';
-import { Availability } from '@skysmack/packages-siteminder';
+import { LodgingTypeAvailability } from '@skysmack/packages-siteminder';
 import { Router } from '@angular/router';
 import { SiteMinderColumn } from '../../../models/siteminder-column';
 import { SiteMinderService } from '../../../services/siteminder.service';
@@ -29,7 +29,7 @@ export class SiteMinderTableComponent implements OnInit, OnDestroy {
   public dateRows$: BehaviorSubject<Date[]>;
 
   // Cells
-  public availabilityCells$: BehaviorSubject<StrIndex<StrIndex<Availability>>>;
+  public availabilityCells$: BehaviorSubject<StrIndex<StrIndex<LodgingTypeAvailability>>>;
   public rateSummaryCells$: BehaviorSubject<StrIndex<StrIndex<StrIndex<RateSummary>>>>;
   public channelsCells$: BehaviorSubject<StrIndex<StrIndex<StrIndex<StrIndex<RateInfo>>>>>;
 
