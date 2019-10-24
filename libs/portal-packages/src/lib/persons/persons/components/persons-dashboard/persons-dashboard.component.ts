@@ -12,7 +12,7 @@ import { DashboardBase } from '@skysmack/portal-fields';
   styleUrls: ['./persons-dashboard.component.scss']
 })
 export class PersonsDashboardComponent extends DashboardBase implements OnInit {
-
+  public elevation = 0;
   public totalCount$: Observable<number>;
 
   constructor(
@@ -50,5 +50,9 @@ export class PersonsDashboardComponent extends DashboardBase implements OnInit {
     setTimeout(() => {
       this.dashboard.render$.next(true);
     }, 0);
+  }
+
+  public changeStyle($event) {
+    this.elevation = $event.type == 'mouseover' ? 4 : 0;
   }
 }

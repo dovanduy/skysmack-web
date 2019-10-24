@@ -1,2 +1,11 @@
-<h3 *ngIf="package$ | async as _package">{{ _package.name }} </h3>
-<a [routerLink]="[packagePath]" *ngIf="totalCount$ | async as totalCount">{{ totalCount }} people created.</a>
+<mat-card *ngIf="package$ | async as _package" mat-raised-button matTooltip="Go to people in {{ _package.name }}"
+tabindex="0" [routerLink]="[packagePath]" [ngClass]="'mat-elevation-z' + elevation" (mouseover)="changeStyle($event)" (mouseout)="changeStyle($event)">
+    <mat-card-content>
+        <mat-card-subtitle>{{ _package.name }}</mat-card-subtitle>
+        <mat-card-title *ngIf="totalCount$ | async as totalCount; else noPeople">{{ totalCount }}</mat-card-title>
+        <ng-template #noPeople>
+            <mat-card-title>0</mat-card-title>
+        </ng-template>
+        <mat-card-subtitle>people</mat-card-subtitle>
+    </mat-card-content>
+</mat-card>

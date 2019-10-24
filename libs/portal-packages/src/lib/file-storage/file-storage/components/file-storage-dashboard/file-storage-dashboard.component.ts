@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgFileStorageActions, NgFileStorageStore } from '@skysmack/ng-file-storage';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { DashboardBase } from '@skysmack/portal-fields';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'ss-file-storage-dashboard',
@@ -9,7 +10,8 @@ import { DashboardBase } from '@skysmack/portal-fields';
   styleUrls: ['./file-storage-dashboard.component.scss']
 })
 export class FileStorageDashboardComponent extends DashboardBase implements OnInit {
-
+  public elevation = 0;
+  public totalCount$: Observable<number>;
 
   constructor(
     public actions: NgFileStorageActions,
@@ -33,5 +35,9 @@ export class FileStorageDashboardComponent extends DashboardBase implements OnIn
     setTimeout(() => {
       this.dashboard.render$.next(true);
     }, 0);
+  }
+
+  public changeStyle($event) {
+    this.elevation = $event.type == 'mouseover' ? 4 : 0;
   }
 }

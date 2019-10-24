@@ -1,5 +1,0 @@
-<h3 *ngIf="package$ | async as _package">{{ _package.name }} </h3>
-<p *ngIf="arrivalsCount$ | async as arrivalsCount; else noArrivals">{{ arrivalsCount }} arrivals today.</p>
-<ng-template #noArrivals>
-    <p>0 arrivals today.</p>
-</ng-template>

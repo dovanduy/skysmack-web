@@ -7,13 +7,15 @@ import { LodgingsReservationsCreateComponent } from './lodgings-reservations-cre
 import { LodgingsReservationsEditComponent } from './lodgings-reservations-edit/lodgings-reservations-edit.component';
 import { SettingsComponent } from '@skysmack/portal-settings';
 import { RouteData } from '@skysmack/framework';
-import { LodgingReservationsDashboardComponent } from './lodging-reservations-dashboard/lodging-reservations-dashboard.component';
+import { ArrivalsDashboardComponent } from './arrivals-dashboard/arrivals-dashboard.component';
 import { LodgingTypeSelectFieldComponent } from './lodging-type-select-field/lodging-type-select-field.component';
 import { LodgingTypeSelectDialogComponent } from './lodging-type-select-dialog/lodging-type-select-dialog.component';
 import { LodgingSelectFieldComponent } from './lodging-select-field/lodging-select-field.component';
 import { LodgingSelectDialogComponent } from './lodging-select-dialog/lodging-select-dialog.component';
 import { getFieldsRoutes } from '@skysmack/portal-fields';
 import { LODGING_RESERVATIONS_AREA_KEY, LODGING_RESERVATIONS_ADDITIONAL_PATHS } from '@skysmack/packages-lodging-reservations';
+import { DeparturesDashboardComponent } from './departures-dashboard/departures-dashboard.component';
+import { InStayDashboardComponent } from './in-stay-dashboard/in-stay-dashboard.component';
 
 export const lodgingReservationsRoutes: Routes = [
     {
@@ -44,7 +46,9 @@ export const lodgingReservationsComponents: any[] = [
     LodgingsStaysComponent,
     LodgingsArrivalsComponent,
     LodgingsDeparturesComponent,
-    LodgingReservationsDashboardComponent,
+    ArrivalsDashboardComponent,
+    InStayDashboardComponent,
+    DeparturesDashboardComponent,
     LodgingTypeSelectFieldComponent,
     LodgingTypeSelectDialogComponent,
     LodgingSelectFieldComponent,
@@ -52,7 +56,9 @@ export const lodgingReservationsComponents: any[] = [
 ];
 
 export const lodgingReservationsEntryComponents: any[] = [
-    LodgingReservationsDashboardComponent,
+    ArrivalsDashboardComponent,
+    InStayDashboardComponent,
+    DeparturesDashboardComponent,
     LodgingTypeSelectFieldComponent,
     LodgingTypeSelectDialogComponent,
     LodgingSelectFieldComponent,

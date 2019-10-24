@@ -1,0 +1,13 @@
+<mat-card *ngIf="package$ | async as _package" mat-raised-button matTooltip="Go to arrivals in {{ _package.name }}"
+    tabindex="0" [routerLink]="[packagePath] + '/arrivals'" [ngClass]="'mat-elevation-z' + elevation"
+    (mouseover)="changeStyle($event)" (mouseout)="changeStyle($event)">
+    <mat-card-content>
+        <mat-card-subtitle>{{ _package.name }}</mat-card-subtitle>
+        <mat-card-title *ngIf="arrivalsCount$ | async as arrivalsCount; else noArrivals">{{ arrivalsCount }}
+        </mat-card-title>
+        <ng-template #noArrivals>
+            <mat-card-title>0</mat-card-title>
+        </ng-template>
+        <mat-card-subtitle>arrivals today</mat-card-subtitle>
+    </mat-card-content>
+</mat-card>

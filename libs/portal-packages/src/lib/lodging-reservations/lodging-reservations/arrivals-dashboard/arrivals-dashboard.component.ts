@@ -10,11 +10,12 @@ import { DashboardBase } from '@skysmack/portal-fields';
 const moment = _moment;
 
 @Component({
-  selector: 'ss-lodging-reservations-dashboard',
-  templateUrl: './lodging-reservations-dashboard.component.html',
-  styleUrls: ['./lodging-reservations-dashboard.component.scss']
+  selector: 'ss-arrivals-dashboard',
+  templateUrl: './arrivals-dashboard.component.html',
+  styleUrls: ['./arrivals-dashboard.component.scss']
 })
-export class LodgingReservationsDashboardComponent extends DashboardBase implements OnInit {
+export class ArrivalsDashboardComponent extends DashboardBase implements OnInit {
+  public elevation = 0;
   public arrivalsCount$: Observable<number>;
 
   constructor(
@@ -33,16 +34,12 @@ export class LodgingReservationsDashboardComponent extends DashboardBase impleme
   private getArrivalsCount() {
     const pagedQuery = new PagedQuery();
     pagedQuery.rsqlFilter = new RSQLFilterBuilder();
-    pagedQuery.rsqlFilter.column('status').like(LodgingReservation.statusEnum.Reserved).and().column('checkIn').lessThanOrEqualTo(moment().toDate());
+    pagedQuery.rsqlFilter.column('status').like(LodgingReservation.statusEnum.Reserved).and().column('checkIn').lessThanOrEqualTo(moment({h:0, m:0, s:0, ms:0}).add(1,'days').toDate());
     this.actions.getPaged(this.packagePath, pagedQuery);
 
     this.arrivalsCount$ = this.store.getPages(this.packagePath).pipe(
       map(pages => {
-        let arrivalsCount = 0;
-        Object.keys(pages).forEach(key => {
-          arrivalsCount = pages[key].totalCount;
-        })
-        return arrivalsCount;
+        return pages[pagedQuery.rsqlFilter.toList().build()].totalCount;
       })
     );
   }
@@ -59,5 +56,9 @@ export class LodgingReservationsDashboardComponent extends DashboardBase impleme
     setTimeout(() => {
       this.dashboard.render$.next(true);
     }, 0);
+  }
+
+  public changeStyle($event) {
+    this.elevation = $event.type == 'mouseover' ? 4 : 0;
   }
 }
