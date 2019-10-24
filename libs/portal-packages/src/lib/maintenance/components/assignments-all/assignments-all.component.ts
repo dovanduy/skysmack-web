@@ -4,12 +4,11 @@ import { MenuItem, safeUndefinedTo, LocalObject } from '@skysmack/framework';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { EntityComponentPageTitle, MENU_ITEM_ACTIONS_EDIT } from '@skysmack/portal-ui';
 import { NgAssignmentsStore, NgAssignmentsActions } from '@skysmack/ng-maintenance';
-import { Field } from '@skysmack/ng-dynamic-forms';
 import { Observable } from 'rxjs';
 import { DateOnlyAdapter2 } from './date-only-adapter2';
 import { DateAdapter } from '@angular/material/core';
-import { take, tap, map } from 'rxjs/operators';
-import { Assignment } from 'libs/packages/maintenance/src';
+import { map } from 'rxjs/operators';
+import { Assignment } from '@skysmack/packages-maintenance';
 
 @Component({
   selector: 'ss-assignments-all',

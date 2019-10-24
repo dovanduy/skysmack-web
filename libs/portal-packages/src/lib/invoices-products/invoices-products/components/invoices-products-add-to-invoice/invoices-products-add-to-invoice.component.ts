@@ -6,9 +6,9 @@ import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { FormHelper } from '@skysmack/ng-dynamic-forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { LocalObject } from '@skysmack/framework';
-import { Product } from 'libs/packages/products/src';
 import { NgInvoicesProductsAddToInvoiceFieldsConfig } from '../../ng-invoices-products-add-to-invoice-fields-config';
 import { RecordFormComponent } from '@skysmack/portal-fields';
+import { Product } from '@skysmack/packages-products';
 
 /**
  * This component is used when clicking a product in order to add it to an invoice.

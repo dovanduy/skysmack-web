@@ -9,10 +9,10 @@ import { toLocalObject, LocalObject, API_DOMAIN_INJECTOR_TOKEN, ApiDomain } from
 import { NgTransactionRequestFieldsConfig } from '../../ng-transaction-request-fields-config';
 import { TransactionRequest, TerminalsAppState } from '@skysmack/packages-terminal-payments';
 import { FormHelper } from '@skysmack/ng-dynamic-forms';
-import { Invoice } from 'libs/packages/invoices/src';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { RecordFormComponent } from '@skysmack/portal-fields';
 import { NgTerminalsActions, NgTerminalsStore, NgTerminalsRequests } from '@skysmack/ng-terminal-payments';
+import { Invoice } from '@skysmack/packages-invoices';
 
 @Component({
   selector: 'ss-terminals-pay',
