@@ -9,4 +9,6 @@ export class NgSiteMinderChannelManagerStore {
         protected ngRedux: NgRedux<SiteMinderChannelManagerAppState>,
         protected skysmackStore: NgSkysmackStore
     ) { }
+
+
 }
