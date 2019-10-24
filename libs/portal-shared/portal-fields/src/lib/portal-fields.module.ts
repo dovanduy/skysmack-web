@@ -20,13 +20,15 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { NgFieldsMenuProvider } from './ng-fields-menu-provider';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSelectModule } from '@angular/material/select';
+import {MatListModule} from '@angular/material/list';
 
 const material = [
   MatCheckboxModule,
   MatFormFieldModule,
   MatDatepickerModule,
   MatMomentDateModule,
-  MatSelectModule
+  MatSelectModule,
+  MatListModule
 ];
 
 @NgModule({
