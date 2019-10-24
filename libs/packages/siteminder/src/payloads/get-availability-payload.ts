@@ -3,6 +3,7 @@ export class GetAvailabilityPayload {
     public start: Date;
     public end: Date;
 
-    public constructor(init?: Partial<GetAvailabilityPayload>) {
+    constructor(init?: Partial<GetAvailabilityPayload>) {
+        Object.assign(this, init);
     }
 }

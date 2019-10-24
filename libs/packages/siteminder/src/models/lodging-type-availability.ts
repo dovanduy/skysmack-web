@@ -17,5 +17,6 @@ export class LodgingTypeAvailability extends Record<LodgingTypeAvailabilityKey> 
 
     constructor(init?: Partial<LodgingTypeAvailability>) {
         super(init);
+        Object.assign(this, init);
     }
 }

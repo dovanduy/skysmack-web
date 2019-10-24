@@ -6,6 +6,7 @@ import { NgSiteMinderChannelManagerRequests } from './ng-siteminder-channel-mana
 @Injectable({ providedIn: 'root' })
 export class NgSiteMinderChannelManagerEpics {
     public epics: Epic[] = [];
+
     constructor(protected requests: NgSiteMinderChannelManagerRequests) {
     }
 }

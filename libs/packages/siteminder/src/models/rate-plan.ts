@@ -7,5 +7,6 @@ export class RatePlan extends Record<number> {
 
     public constructor(init?: Partial<RatePlan>) {
         super(init);
+        Object.assign(this, init);
     }
 }

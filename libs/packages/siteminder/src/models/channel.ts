@@ -5,5 +5,6 @@ export class Channel extends Record<number> {
 
     public constructor(init?: Partial<Channel>) {
         super(init);
+        Object.assign(this, init);
     }
 }

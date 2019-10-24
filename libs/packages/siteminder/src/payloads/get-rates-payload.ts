@@ -4,5 +4,6 @@ export class GetRatesPayload {
     public end: Date;
 
     public constructor(init?: Partial<GetRatesPayload>) {
+        Object.assign(this, init);
     }
 }
