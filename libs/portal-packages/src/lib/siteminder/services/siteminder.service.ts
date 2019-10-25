@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, combineLatest } from 'rxjs';
 import { toLocalObject, StrIndex, PagedQuery, LocalObject } from '@skysmack/framework';
 import { LodgingType } from '@skysmack/packages-lodgings';
-import { RatePlan, Channel, LodgingTypeRate, LodgingTypeAvailability, LodgingTypeRateKey } from '@skysmack/packages-siteminder';
+import { LodgingTypeRate, LodgingTypeAvailability, LodgingTypeRateKey, LodgingTypeAvailabilityKey } from '@skysmack/packages-siteminder';
 import { SiteMinderColumn } from '../models/siteminder-column';
 import { RateSummary } from '../models/rate-summary';
 import { RateInfo } from '../models/rate-info';
@@ -23,10 +23,10 @@ export class SiteMinderService {
     public channelsColumns$ = new BehaviorSubject<StrIndex<SiteMinderColumn[]>>(null);
 
     // Rows
-    public dateRows$ = new BehaviorSubject<Date[]>(null);
+    public dateRows$ = new BehaviorSubject<string[]>(null);
 
     // Cells
-    public availabilityCells$ = new BehaviorSubject<StrIndex<StrIndex<LodgingTypeAvailability>>>(null);
+    public availabilityCells$ = new BehaviorSubject<StrIndex<StrIndex<LocalObject<LodgingTypeAvailability, LodgingTypeAvailabilityKey>>>>(null);
     public rateSummaryCells$ = new BehaviorSubject<StrIndex<StrIndex<StrIndex<RateSummary>>>>(null);
     public channelsCells$ = new BehaviorSubject<StrIndex<StrIndex<StrIndex<StrIndex<RateInfo>>>>>(null);
 
@@ -139,32 +139,32 @@ export class SiteMinderService {
         const availability$ = this.channelManagerStore.getAvailability(packagePath, start, end).pipe(
             distinctUntilChanged((prev, curr) => JSON.stringify(prev) === JSON.stringify(curr)),
             // TEMP! REMOVE WHEN GET_AVAILABILITY RETURNS ACTUAL DATA
-            map(() => dateRows.map(date => [
-                new LodgingTypeAvailability({
-                    lodgingTypeId: 1,
-                    date,
-                    available: 6,
-                    availableModifier: -1
-                }),
-                new LodgingTypeAvailability({
-                    lodgingTypeId: 2,
-                    date,
-                    available: 5,
-                    availableModifier: 2
-                }),
-                new LodgingTypeAvailability({
-                    lodgingTypeId: 3,
-                    date,
-                    available: 3,
-                    availableModifier: 0
-                }),
-                new LodgingTypeAvailability({
-                    lodgingTypeId: 4,
-                    date,
-                    available: 9,
-                    availableModifier: 4
-                }),
-            ]).reduce((a, b) => a.concat(b), []))
+            // map(() => dateRows.map(date => [
+            //     new LodgingTypeAvailability({
+            //         lodgingTypeId: 1,
+            //         date,
+            //         available: 6,
+            //         availableModifier: -1
+            //     }),
+            //     new LodgingTypeAvailability({
+            //         lodgingTypeId: 2,
+            //         date,
+            //         available: 5,
+            //         availableModifier: 2
+            //     }),
+            //     new LodgingTypeAvailability({
+            //         lodgingTypeId: 3,
+            //         date,
+            //         available: 3,
+            //         availableModifier: 0
+            //     }),
+            //     new LodgingTypeAvailability({
+            //         lodgingTypeId: 4,
+            //         date,
+            //         available: 9,
+            //         availableModifier: 4
+            //     }),
+            // ]).reduce((a, b) => a.concat(b), []))
             // TEMP! END
         );
 
@@ -367,7 +367,7 @@ export class SiteMinderService {
         // ########
         // Cells
         const cells$ = [];
-        const availabilityCells: StrIndex<StrIndex<LodgingTypeAvailability>> = {};
+        const availabilityCells: StrIndex<StrIndex<LocalObject<LodgingTypeAvailability, LodgingTypeAvailabilityKey>>> = {};
         const rateSummaryCells: StrIndex<StrIndex<StrIndex<RateSummary>>> = {};
         const channelsCells: StrIndex<StrIndex<StrIndex<StrIndex<RateInfo>>>> = {};
 
@@ -394,15 +394,16 @@ export class SiteMinderService {
             map(([[dateRows, lodgingTypeColumns, ratePlanColumns, channelColumns], [availability, channels, rates, lodgingTypes]]) => {
                 // Foreach date row
                 dateRows.forEach(date => {
-                    const dateIndex = date.toString();
                     const currentDateRates = rates.filter(rate => rate.object.date === date);
 
                     lodgingTypeColumns.forEach(ltc => {
                         // Availability Cells
-                        availabilityCells[dateIndex] ? availabilityCells[dateIndex] : availabilityCells[dateIndex] = {};
-                        const avail = availability.find(avail => avail.lodgingTypeId === ltc.id);
-                        avail.lodgingType = lodgingTypes.find(lodgingType => avail.lodgingTypeId === lodgingType.object.id);
-                        availabilityCells[dateIndex][ltc.id] = avail;
+                        availabilityCells[date] ? availabilityCells[date] : availabilityCells[date] = {};
+                        const avail = availability.find(avail => avail.object.lodgingTypeId === ltc.id);
+                        if (avail) {
+                            avail.object.lodgingType = lodgingTypes.find(lodgingType => avail.object.lodgingTypeId === lodgingType.object.id);
+                        }
+                        availabilityCells[date][ltc.id] = avail;
                         this.availabilityCells$.next(availabilityCells);
                     });
 
@@ -415,10 +416,10 @@ export class SiteMinderService {
                             const ratePlanRates = lodgingTypeRates.filter(rate => Number(rate.object.ratePlanId) === Number(rpc.id));
 
                             // RateSummary cells
-                            rateSummaryCells[dateIndex] ? rateSummaryCells[dateIndex] : rateSummaryCells[dateIndex] = {};
-                            rateSummaryCells[dateIndex][rpc.id] ? rateSummaryCells[dateIndex][rpc.id] : rateSummaryCells[dateIndex][rpc.id] = {};
+                            rateSummaryCells[date] ? rateSummaryCells[date] : rateSummaryCells[date] = {};
+                            rateSummaryCells[date][rpc.id] ? rateSummaryCells[date][rpc.id] : rateSummaryCells[date][rpc.id] = {};
 
-                            rateSummaryCells[dateIndex][rpc.id][lodgingTypeId] = new RateSummary({
+                            rateSummaryCells[date][rpc.id][lodgingTypeId] = new RateSummary({
                                 date: date,
                                 ratePlanTitle: rpc.title,
                                 rates: ratePlanRates,
@@ -428,15 +429,15 @@ export class SiteMinderService {
                             this.rateSummaryCells$.next(rateSummaryCells);
 
                             // Channel cells
-                            channelsCells[dateIndex] ? channelsCells[dateIndex] : channelsCells[dateIndex] = {};
-                            channelsCells[dateIndex][rpc.id] ? channelsCells[dateIndex][rpc.id] : channelsCells[dateIndex][rpc.id] = {};
-                            channelsCells[dateIndex][rpc.id][lodgingTypeId] ? channelsCells[dateIndex][rpc.id][lodgingTypeId] : channelsCells[dateIndex][rpc.id][lodgingTypeId] = {};
+                            channelsCells[date] ? channelsCells[date] : channelsCells[date] = {};
+                            channelsCells[date][rpc.id] ? channelsCells[date][rpc.id] : channelsCells[date][rpc.id] = {};
+                            channelsCells[date][rpc.id][lodgingTypeId] ? channelsCells[date][rpc.id][lodgingTypeId] : channelsCells[date][rpc.id][lodgingTypeId] = {};
 
-                            const channelRatesDictionary = channelsCells[dateIndex][rpc.id][lodgingTypeId];
+                            const channelRatesDictionary = channelsCells[date][rpc.id][lodgingTypeId];
                             currentRatePlanChannelColumns.forEach(cc => {
                                 const channel = channels.find(channel => channel.object.id === cc.id);
                                 channelRatesDictionary[cc.id] = new RateInfo({
-                                    date: date,
+                                    date,
                                     rate: ratePlanRates.find(rate => Number(rate.object.channelId) === Number(cc.id)),
                                     ratePlanTitle: rpc.title,
                                     channel: channel ? channel : null,
@@ -470,13 +471,14 @@ export class SiteMinderService {
         );
     }
 
-    private getDateRows(start: Date, end: Date): Date[] {
-        const arr = []
-        const date = start;
-        for (; start <= end; date.setDate(date.getDate() + 1)) {
+    private getDateRows(start: Date, end: Date): string[] {
+        const newStart = new Date(start);
+        const arr: Date[] = []
+        const date = newStart;
+        for (; newStart <= end; date.setDate(date.getDate() + 1)) {
             arr.push(new Date(date));
         }
-        return arr;
+        return arr.map(x => `${x.getFullYear()}-${x.getMonth()}-${x.getDate()}`);
     };
 
     // TEMP: Used w. mock data

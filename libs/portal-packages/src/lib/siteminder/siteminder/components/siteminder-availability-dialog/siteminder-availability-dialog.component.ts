@@ -3,8 +3,9 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
-import { LodgingTypeAvailability } from '@skysmack/packages-siteminder';
+import { LodgingTypeAvailability, LodgingTypeAvailabilityKey } from '@skysmack/packages-siteminder';
 import { LodgingType } from '@skysmack/packages-lodgings';
+import { LocalObject } from '@skysmack/framework';
 
 @Component({
   selector: 'ss-siteminder-availability-dialog',
@@ -20,13 +21,13 @@ export class SiteMinderAvailabilityDialogComponent implements OnInit {
 
   constructor(
     public dialogRef: MatDialogRef<SiteMinderAvailabilityDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: LodgingTypeAvailability
+    @Inject(MAT_DIALOG_DATA) public data: LocalObject<LodgingTypeAvailability, LodgingTypeAvailabilityKey>
   ) { }
 
   ngOnInit() {
-    this.available = this.data.available;
-    this.lodgingType = this.data.lodgingType.object;
-    const availableModifier = this.data.availableModifier
+    this.available = this.data.object.available;
+    this.lodgingType = this.data.object.lodgingType.object;
+    const availableModifier = this.data.object.availableModifier
 
     this.availableModifierControl.setValue(availableModifier);
 

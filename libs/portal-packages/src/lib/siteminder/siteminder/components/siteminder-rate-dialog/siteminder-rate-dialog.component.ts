@@ -14,7 +14,7 @@ import { LocalObject } from '@skysmack/framework';
 export class SiteMinderRateDialogComponent implements OnInit {
 
   public rateControl = new FormControl();
-  public date: Date;
+  public date: string;
   public channel: LocalObject<Channel, number>;
   public ratePlanTitle: string;
   public lodgingType: LocalObject<LodgingType, number>;

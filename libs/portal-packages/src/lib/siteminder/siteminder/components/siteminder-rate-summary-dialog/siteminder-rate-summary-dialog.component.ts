@@ -11,7 +11,7 @@ import { LodgingType } from '@skysmack/packages-lodgings';
   styleUrls: ['./siteminder-rate-summary-dialog.component.scss']
 })
 export class SiteMinderRateSummaryDialogComponent implements OnInit {
-  public date: Date;
+  public date: string;
   public ratePlanTitle: string;
   public form: FormGroup;
   public channels: Channel[];

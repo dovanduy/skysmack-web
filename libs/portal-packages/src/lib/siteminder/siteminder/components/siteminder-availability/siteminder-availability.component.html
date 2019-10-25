@@ -1,6 +1,8 @@
 <ng-container *ngIf="data">
-    <div style="cursor:pointer;" (click)="openDialog()">{{ availableAfterModification }} ({{ available }} /
-        {{ availableModifier }})</div>
+    <div style="cursor:pointer;" (click)="openDialog()">{{ data.object.available + data.object.availableModifier }}
+        ({{ data.object.available }}
+        /
+        {{ data.object.availableModifier }})</div>
 </ng-container>
 
 <ng-container *ngIf="!data">

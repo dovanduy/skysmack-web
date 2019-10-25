@@ -57,7 +57,7 @@
                                     *ngFor="let channelColumn of cc[ratePlanColumn.id]; let first = first; let last = last">
                                     <th [ngClass]="{ 'border-right-light': !last }"
                                         class="table-cell mat-header-cell border-right">
-                                        {{ channelColumn.title }} - {{ index }}
+                                        {{ channelColumn.title }}
                                     </th>
                                 </ng-container>
                             </ng-container>
@@ -67,10 +67,10 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let date of dateRows$ | async">
+            <tr *ngFor="let date of dateRows$ | async; let firstRow = first">
                 <!-- Date -->
                 <td class="table-cell mat-cell border-right">
-                    {{ date | date: 'dd-MM-yyyy' }}
+                    {{ date }}
                 </td>
 
                 <ng-container *ngFor="let ltc of lodgingTypeColumns$ | async">

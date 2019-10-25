@@ -6,8 +6,8 @@ import { LodgingType } from '@skysmack/packages-lodgings';
  * Only used for updating data.
  */
 export class Rate {
-    public start: Date;
-    public end: Date
+    public start: string;
+    public end: string;
     public lodgingTypeId: number;
     public lodgingType: LocalObject<LodgingType, number>;
     public ratePlanId?: number;

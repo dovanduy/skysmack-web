@@ -1,8 +1,8 @@
 import { AvailabilityRestriction } from './availability-restriction';
 
 export class Restriction {
-    public start: Date;
-    public end: Date;
+    public start: string;
+    public end: string;
     public lodgingTypeId: number;
     public ratePlanId?: number;
     public channels: number[];

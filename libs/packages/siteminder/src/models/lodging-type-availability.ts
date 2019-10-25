@@ -9,7 +9,7 @@ export class LodgingTypeAvailabilityKey {
 }
 
 export class LodgingTypeAvailability extends Record<LodgingTypeAvailabilityKey> {
-    public date: Date;
+    public date: string;
     public available: number;
     public availableModifier: number;
     public lodgingTypeId: number;
