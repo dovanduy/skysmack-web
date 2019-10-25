@@ -1,5 +1,5 @@
 <mat-card *ngIf="package$ | async as _package" mat-raised-button matTooltip="Go to departures in {{ _package.name }}"
-    tabindex="0" [routerLink]="[packagePath] + '/arrivals'" [ngClass]="'mat-elevation-z' + elevation"
+    tabindex="0" [routerLink]="[packagePath] + '/departures'" [ngClass]="'mat-elevation-z' + elevation"
     (mouseover)="changeStyle($event)" (mouseout)="changeStyle($event)">
     <mat-card-content>
         <mat-card-subtitle>{{ _package.name }}</mat-card-subtitle>

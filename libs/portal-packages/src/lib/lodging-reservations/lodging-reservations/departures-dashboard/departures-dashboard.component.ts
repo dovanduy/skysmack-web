@@ -34,7 +34,7 @@ export class DeparturesDashboardComponent extends DashboardBase implements OnIni
   private getDeparturesCount() {
     const pagedQuery = new PagedQuery();
     pagedQuery.rsqlFilter = new RSQLFilterBuilder();
-    pagedQuery.rsqlFilter.column('status').like(LodgingReservation.statusEnum.InStay).and().column('checkout').greaterThanOrEqualTo(moment({h:0, m:0, s:0, ms:0}).add(1,'days').toDate());
+    pagedQuery.rsqlFilter.column('status').like(LodgingReservation.statusEnum.InStay).and().column('checkOut').lessThan(moment({h:0, m:0, s:0, ms:0}).add(1,'days').toDate());
     this.actions.getPaged(this.packagePath, pagedQuery);
 
     this.departuresCount$ = this.store.getPages(this.packagePath).pipe(

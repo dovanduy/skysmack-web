@@ -65,7 +65,7 @@ export class LodgingsDeparturesComponent extends LodgingsReservationsIndexCompon
     this.pagedQuery.rsqlFilter = new RSQLFilterBuilder();
     this.pagedQuery.rsqlFilter
       .column('status').like(LodgingReservation.statusEnum.InStay).and()
-      .column('checkOut').lessThanOrEqualTo(moment().toDate());
+      .column('checkOut').lessThan(moment({h:0, m:0, s:0, ms:0}).add(1,'days').toDate());
   }
 
   private sort() {
