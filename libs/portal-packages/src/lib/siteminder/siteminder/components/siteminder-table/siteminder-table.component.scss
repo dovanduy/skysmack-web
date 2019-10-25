@@ -20,7 +20,15 @@ mat-card {
 
 .border-right-light {
     border-right: 1px solid rgba(0,0,0,0.03);
-  }
+}
+
+.row-weekday-1 .table-cell {
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.row-weekday-0 .table-cell, .row-weekday-6 .table-cell {
+  background-color: rgba(0,0,0,.02);
+}
 
 table.mat-table {
   background-color: transparent;
