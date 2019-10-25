@@ -7,6 +7,7 @@ import { SiteMinderColumn } from '../../../models/siteminder-column';
 import { SiteMinderService } from '../../../services/siteminder.service';
 import { RateSummary } from '../../../models/rate-summary';
 import { RateInfo } from '../../../models/rate-info';
+import { map, filter } from 'rxjs/operators';
 
 @Component({
   selector: 'ss-siteminder-table',
@@ -16,6 +17,8 @@ import { RateInfo } from '../../../models/rate-info';
 export class SiteMinderTableComponent implements OnInit, OnDestroy {
   private packagePath: string;
   private subscriptionHandler = new SubscriptionHandler();
+  private start = new Date();
+  private end = new Date();
 
   // Columns
   public dateColumn$: BehaviorSubject<SiteMinderColumn>;
@@ -40,6 +43,7 @@ export class SiteMinderTableComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.packagePath = this.router.url.split('/')[1];
+
     this.dateColumn$ = this.service.dateColumn$;
     this.lodgingTypeColumns$ = this.service.lodgingTypeColumns$;
     this.availabilityColumns$ = this.service.availabilityColumns$;
@@ -52,7 +56,7 @@ export class SiteMinderTableComponent implements OnInit, OnDestroy {
     this.channelsCells$ = this.service.channelsCells$;
 
     this.subscriptionHandler.register(this.service.generateColumns(this.packagePath).subscribe());
-    this.subscriptionHandler.register(this.service.generateCells(this.packagePath, new Date(), new Date()).subscribe());
+    this.subscriptionHandler.register(this.service.generateCells(this.packagePath, this.start, this.end).subscribe());
   }
 
   ngOnDestroy() {

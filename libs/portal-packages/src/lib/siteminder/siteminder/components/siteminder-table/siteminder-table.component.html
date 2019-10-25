@@ -4,12 +4,14 @@
             <!-- 1st header row -->
             <tr>
                 <!-- Date -->
-                <th *ngIf="dateColumn$ | async as dateColumn" rowspan="3" class="table-cell mat-header-cell">
+                <th *ngIf="dateColumn$ | async as dateColumn" rowspan="3"
+                    class="table-cell mat-header-cell border-right">
                     {{  dateColumn.title }}
                 </th>
-                <ng-container *ngFor="let ltc of lodgingTypeColumns$ | async">
+                <ng-container *ngFor="let ltc of lodgingTypeColumns$ | async; let first = first; let last = last">
                     <!-- Lodging Type -->
-                    <th [attr.colspan]="calculateLodgingTypeColspan(ltc.id)" class="table-cell mat-header-cell">
+                    <th [attr.colspan]="calculateLodgingTypeColspan(ltc.id)"
+                        class="table-cell mat-header-cell lodging-type-column-divider border-left border-right">
                         {{ ltc.title }}
                     </th>
                 </ng-container>
@@ -20,15 +22,15 @@
                 <ng-container *ngFor="let ltc of lodgingTypeColumns$ | async">
                     <!-- Available -->
                     <ng-container *ngIf="availabilityColumns$ | async as availabilityColumns">
-                        <th rowspan="2" class="table-cell mat-header-cell">
+                        <th rowspan="2" class="table-cell mat-header-cell border-left border-right">
                             {{ availabilityColumns[ltc.id]?.title }}
                         </th>
                     </ng-container>
                     <!-- Rateplan -->
                     <ng-container *ngIf="ratePlanColumns$ | async as rpc">
-                        <ng-container *ngFor="let ratePlanColumn of rpc[ltc.id]">
+                        <ng-container *ngFor="let ratePlanColumn of rpc[ltc.id]; let first = first; let last = last">
                             <th [attr.colspan]="calculateRatePlanColspan(ratePlanColumn.id)"
-                                class="table-cell mat-header-cell">
+                                class="table-cell mat-header-cell border-right">
                                 {{ ratePlanColumn.title }}
                             </th>
                         </ng-container>
@@ -44,16 +46,18 @@
                         <ng-container *ngFor="let ratePlanColumn of rpc[ltc.id]">
                             <!-- Rates Summary -->
                             <ng-container *ngIf="rateSummaryColumns$ | async as rsc">
-                                <th class="table-cell mat-header-cell">
+                                <th class="table-cell mat-header-cell border-right-light">
                                     {{ rsc[ratePlanColumn.id]?.title }}
                                 </th>
                             </ng-container>
 
                             <!-- Channels (show if expanded) -->
                             <ng-container *ngIf="channelsColumns$ | async as cc">
-                                <ng-container *ngFor="let channelColumn of cc[ratePlanColumn.id]">
-                                    <th class="table-cell mat-header-cell">
-                                        {{ channelColumn.title }}
+                                <ng-container
+                                    *ngFor="let channelColumn of cc[ratePlanColumn.id]; let first = first; let last = last">
+                                    <th [ngClass]="{ 'border-right-light': !last }"
+                                        class="table-cell mat-header-cell border-right">
+                                        {{ channelColumn.title }} - {{ index }}
                                     </th>
                                 </ng-container>
                             </ng-container>
@@ -65,13 +69,13 @@
         <tbody>
             <tr *ngFor="let date of dateRows$ | async">
                 <!-- Date -->
-                <td class="table-cell mat-cell">
+                <td class="table-cell mat-cell border-right">
                     {{ date | date: 'dd-MM-yyyy' }}
                 </td>
 
                 <ng-container *ngFor="let ltc of lodgingTypeColumns$ | async">
                     <!-- Available -->
-                    <td class="table-cell mat-cell">
+                    <td class="table-cell mat-cell border-left border-right">
                         <ng-container *ngIf="availabilityCells$ | async as availabilityCells">
                             <ss-siteminder-availability [data]="availabilityCells[date][ltc.id]">
                             </ss-siteminder-availability>
@@ -84,9 +88,9 @@
 
                     <!-- Rateplan -->
                     <ng-container *ngIf="ratePlanColumns$ | async as rpc">
-                        <ng-container *ngFor="let ratePlanColumn of rpc[ltc.id]">
+                        <ng-container *ngFor="let ratePlanColumn of rpc[ltc.id]; let last = last">
                             <!-- Rates Summary -->
-                            <td class="table-cell mat-cell">
+                            <td class="table-cell mat-cell border-right-light">
                                 <ng-container *ngIf="rateSummaryCells$ | async as rsc">
                                     <ss-siteminder-rate-summary [data]="rsc[date][ratePlanColumn.id][ltc.id]">
                                     </ss-siteminder-rate-summary>
@@ -97,8 +101,9 @@
                             <ng-container *ngIf="channelsColumns$ | async as cc">
                                 <ng-container *ngIf="channelsCells$ | async as channelCells">
 
-                                    <ng-container *ngFor="let channelColumn of cc[ratePlanColumn.id]">
-                                        <td class="table-cell mat-cell">
+                                    <ng-container *ngFor="let channelColumn of cc[ratePlanColumn.id]; let last = last">
+                                        <td [ngClass]="{ 'border-right-light': !last }"
+                                            class="table-cell mat-cell border-right">
                                             <ss-siteminder-rate
                                                 [data]="channelCells[date][ratePlanColumn.id][ltc.id][channelColumn.id]">
                                             </ss-siteminder-rate>

@@ -7,6 +7,21 @@ mat-card {
   padding: 0;
 }
 
+.border-left {
+  border-left: 1px solid rgba(0, 0, 0, 0.12);
+}
+.border-left-light {
+    border-left: 1px solid rgba(0,0,0,0.03);
+  }
+
+.border-right {
+  border-right: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.border-right-light {
+    border-right: 1px solid rgba(0,0,0,0.03);
+  }
+
 table.mat-table {
   background-color: transparent;
   min-width: 100%;
@@ -31,10 +46,15 @@ table.mat-table {
     }
   }
 
+  tbody tr:first-child .table-cell {
+    border-top: 1px solid rgba(0,0,0, 0.12);
+  }
+
   .table-cell {
     padding: 8px 16px;
     border-bottom-width: 1px;
     border-bottom-style: solid;
+    white-space: nowrap;
 
     &.sortable {
       transition: color 50ms ease;

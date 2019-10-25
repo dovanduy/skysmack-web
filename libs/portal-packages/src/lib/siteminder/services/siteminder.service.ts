@@ -41,7 +41,6 @@ export class SiteMinderService {
         private channelManagerStore: NgSiteMinderChannelManagerStore,
         private channelManagerActions: NgSiteMinderChannelManagerActions
     ) {
-        // this.seedMockedCells();
     }
 
     public generateColumns(packagePath: string): Observable<unknown> {
