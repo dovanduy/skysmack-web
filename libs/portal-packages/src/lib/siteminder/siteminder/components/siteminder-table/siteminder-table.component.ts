@@ -7,7 +7,6 @@ import { SiteMinderColumn } from '../../../models/siteminder-column';
 import { SiteMinderService } from '../../../services/siteminder.service';
 import { RateSummary } from '../../../models/rate-summary';
 import { RateInfo } from '../../../models/rate-info';
-import { map, filter } from 'rxjs/operators';
 
 @Component({
   selector: 'ss-siteminder-table',
@@ -29,7 +28,7 @@ export class SiteMinderTableComponent implements OnInit, OnDestroy {
   public channelsColumns$: BehaviorSubject<StrIndex<SiteMinderColumn[]>>;
 
   // Rows
-  public dateRows$: BehaviorSubject<string[]>;
+  public dateRows$: BehaviorSubject<Date[]>;
 
   // Cells
   public availabilityCells$: BehaviorSubject<StrIndex<StrIndex<LocalObject<LodgingTypeAvailability, LodgingTypeAvailabilityKey>>>>;

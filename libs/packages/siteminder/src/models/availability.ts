@@ -4,8 +4,8 @@ import { LodgingType } from '@skysmack/packages-lodgings';
  * Only used for updating data.
  */
 export class Availability {
-    public start: string;
-    public end: string;
+    public start: Date;
+    public end: Date;
     public lodgingTypeId: number;
     public lodgingType: LodgingType;
     public available?: number;

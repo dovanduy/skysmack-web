@@ -1,7 +1,12 @@
-<ng-container *ngIf="data">
+<ng-container *ngIf="data && rate">
     <div style="cursor:pointer;" (click)="openDialog()">{{ rate }}</div>
 </ng-container>
 
+<ng-container *ngIf="data && !rate">
+    <div style="cursor:pointer;" (click)="openDialog()" style="color:rgba(0,0,0,.56);font-size:.5rem;cursor:pointer;">
+        Set rate</div>
+</ng-container>
+
 <ng-container *ngIf="!data">
-    N/A
+    <span style="color:rgba(0,0,0,.56);font-size:.5rem">Loading</span>
 </ng-container>

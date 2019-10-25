@@ -3,7 +3,7 @@ import { LodgingType } from '@skysmack/packages-lodgings';
 import { LocalObject } from '@skysmack/framework';
 
 export class RateInfo {
-    public date: string;
+    public date: Date;
     public ratePlanTitle: string;
     public channel: LocalObject<Channel, number>;
     public rate: LocalObject<LodgingTypeRate, LodgingTypeRateKey>;

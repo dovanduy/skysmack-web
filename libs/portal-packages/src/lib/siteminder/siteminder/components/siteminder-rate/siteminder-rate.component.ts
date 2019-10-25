@@ -22,8 +22,6 @@ export class SiteMinderRateComponent implements OnInit {
       const rate = this.data.rate;
       if (rate) {
         this.rate = rate.object.rate;
-      } else {
-        this.rate = 0;
       }
     }
   }

@@ -10,7 +10,7 @@ export class LodgingTypeRateKey {
 }
 
 export class LodgingTypeRate extends Record<LodgingTypeRateKey> {
-    public date: string;
+    public date: Date;
     public restriction: AvailabilityRestriction;
     public minimumLengthOfStay: number;
     public maximumLengthOfStay: number;

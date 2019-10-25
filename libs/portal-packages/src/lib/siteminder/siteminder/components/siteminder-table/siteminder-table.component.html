@@ -70,7 +70,7 @@
             <tr *ngFor="let date of dateRows$ | async; let firstRow = first">
                 <!-- Date -->
                 <td class="table-cell mat-cell border-right">
-                    {{ date }}
+                    {{ date | date: 'yyyy-MM-dd' }}
                 </td>
 
                 <ng-container *ngFor="let ltc of lodgingTypeColumns$ | async">
