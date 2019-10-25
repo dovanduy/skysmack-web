@@ -17,26 +17,28 @@ import { LODGING_RESERVATIONS_AREA_KEY, LODGING_RESERVATIONS_ADDITIONAL_PATHS } 
 import { DeparturesDashboardComponent } from './departures-dashboard/departures-dashboard.component';
 import { InStayDashboardComponent } from './in-stay-dashboard/in-stay-dashboard.component';
 
+const lodgingReservationChildrenRoutes = [
+    { path: 'create', component: LodgingsReservationsCreateComponent, pathMatch: 'full' },
+    { path: 'edit/:id', component: LodgingsReservationsEditComponent, pathMatch: 'full' },
+    {
+        path: 'settings/checkin', component: SettingsComponent, pathMatch: 'full', data: {
+            fieldsConfigToken: 'NgLodgingReservationsSettingsFieldsConfig'
+        } as RouteData
+    },
+];
+
 export const lodgingReservationsRoutes: Routes = [
     {
         path: '', children: [
             {
-                path: '', component: LodgingsReservationsIndexComponent, children: [
-                    { path: 'create', component: LodgingsReservationsCreateComponent, pathMatch: 'full' },
-                    { path: 'edit/:id', component: LodgingsReservationsEditComponent, pathMatch: 'full' },
-                    {
-                        path: 'settings/checkin', component: SettingsComponent, pathMatch: 'full', data: {
-                            fieldsConfigToken: 'NgLodgingReservationsSettingsFieldsConfig'
-                        } as RouteData
-                    },
-                ]
+                path: '', component: LodgingsReservationsIndexComponent, children: lodgingReservationChildrenRoutes
             },
             getFieldsRoutes(LODGING_RESERVATIONS_AREA_KEY, LODGING_RESERVATIONS_ADDITIONAL_PATHS)
         ]
     },
-    { path: 'stays', component: LodgingsStaysComponent },
-    { path: 'arrivals', component: LodgingsArrivalsComponent },
-    { path: 'departures', component: LodgingsDeparturesComponent }
+    { path: 'stays', component: LodgingsStaysComponent, children: lodgingReservationChildrenRoutes },
+    { path: 'arrivals', component: LodgingsArrivalsComponent, children: lodgingReservationChildrenRoutes },
+    { path: 'departures', component: LodgingsDeparturesComponent, children: lodgingReservationChildrenRoutes }
 ];
 
 export const lodgingReservationsComponents: any[] = [
