@@ -1,7 +1,7 @@
-<ng-container>
+<ng-container *ngIf="data | async">
     <div style="cursor:pointer;" (click)="openDialog()">{{ summary }}</div>
 </ng-container>
 
-<ng-container *ngIf="!data">
+<ng-container *ngIf="!(data | async)">
     <span style="color:rgba(0,0,0,.56);font-size:.5rem">Loading</span>
 </ng-container>

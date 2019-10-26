@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, combineLatest } from 'rxjs';
-import { toLocalObject, StrIndex, PagedQuery, LocalObject, getLocalDate } from '@skysmack/framework';
+import { StrIndex, PagedQuery, LocalObject, getLocalDate } from '@skysmack/framework';
 import { LodgingType } from '@skysmack/packages-lodgings';
-import { LodgingTypeRate, LodgingTypeAvailability, LodgingTypeRateKey, LodgingTypeAvailabilityKey } from '@skysmack/packages-siteminder';
+import { LodgingTypeAvailability, LodgingTypeAvailabilityKey } from '@skysmack/packages-siteminder';
 import { SiteMinderColumn } from '../models/siteminder-column';
 import { RateSummary } from '../models/rate-summary';
 import { RateInfo } from '../models/rate-info';
@@ -26,8 +26,8 @@ export class SiteMinderService {
     public dateRows$ = new BehaviorSubject<Date[]>(null);
 
     // Cells
-    public availabilityCells$ = new BehaviorSubject<StrIndex<StrIndex<LocalObject<LodgingTypeAvailability, LodgingTypeAvailabilityKey>>>>(null);
-    public rateSummaryCells$ = new BehaviorSubject<StrIndex<StrIndex<StrIndex<RateSummary>>>>(null);
+    public availabilityCells$ = new BehaviorSubject<StrIndex<StrIndex<BehaviorSubject<LocalObject<LodgingTypeAvailability, LodgingTypeAvailabilityKey>>>>>(null);
+    public rateSummaryCells$ = new BehaviorSubject<StrIndex<StrIndex<StrIndex<BehaviorSubject<RateSummary>>>>>(null);
     public channelsCells$ = new BehaviorSubject<StrIndex<StrIndex<StrIndex<StrIndex<BehaviorSubject<RateInfo>>>>>>(null);
 
     constructor(
@@ -162,8 +162,8 @@ export class SiteMinderService {
         // ########
         // Cells
         const cells$ = [];
-        const availabilityCells: StrIndex<StrIndex<LocalObject<LodgingTypeAvailability, LodgingTypeAvailabilityKey>>> = {};
-        const rateSummaryCells: StrIndex<StrIndex<StrIndex<RateSummary>>> = {};
+        const availabilityCells: StrIndex<StrIndex<BehaviorSubject<LocalObject<LodgingTypeAvailability, LodgingTypeAvailabilityKey>>>> = {};
+        const rateSummaryCells: StrIndex<StrIndex<StrIndex<BehaviorSubject<RateSummary>>>> = {};
         const channelsCells: StrIndex<StrIndex<StrIndex<StrIndex<BehaviorSubject<RateInfo>>>>> = {};
 
         // Date rows
@@ -201,7 +201,7 @@ export class SiteMinderService {
                         if (avail) {
                             avail.object.lodgingType = lodgingTypes.find(lodgingType => avail.object.lodgingTypeId === lodgingType.object.id);
                         }
-                        availabilityCells[dateIndex][ltc.id] = avail;
+                        availabilityCells[dateIndex][ltc.id] ? availabilityCells[dateIndex][ltc.id].next(avail) : new BehaviorSubject(avail);
                         this.availabilityCells$.next(availabilityCells);
                     });
 
@@ -218,13 +218,15 @@ export class SiteMinderService {
                             rateSummaryCells[dateIndex] ? rateSummaryCells[dateIndex] : rateSummaryCells[dateIndex] = {};
                             rateSummaryCells[dateIndex][rpc.id] ? rateSummaryCells[dateIndex][rpc.id] : rateSummaryCells[dateIndex][rpc.id] = {};
 
-                            rateSummaryCells[dateIndex][rpc.id][lodgingTypeId] = new RateSummary({
+                            const rateSummary = new RateSummary({
                                 date: date,
                                 ratePlan: ratePlans.find(ratePlan => ratePlan.object.id === rpc.id),
                                 rates: ratePlanRates,
                                 channels: channels.map(x => x.object),
                                 lodgingType: lodgingType ? lodgingType : null
                             });
+
+                            rateSummaryCells[dateIndex][rpc.id][lodgingTypeId] ? rateSummaryCells[dateIndex][rpc.id][lodgingTypeId].next(rateSummary) : rateSummaryCells[dateIndex][rpc.id][lodgingTypeId] = new BehaviorSubject(rateSummary);
                             this.rateSummaryCells$.next(rateSummaryCells);
 
                             // Channel cells

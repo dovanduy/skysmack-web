@@ -2,6 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { RateSummary } from '../../../models/rate-summary';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { SiteMinderRateSummaryDialogComponent } from '../siteminder-rate-summary-dialog/siteminder-rate-summary-dialog.component';
+import { BehaviorSubject } from 'rxjs';
+import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'ss-siteminder-rate-summary',
@@ -10,7 +12,7 @@ import { SiteMinderRateSummaryDialogComponent } from '../siteminder-rate-summary
 })
 export class SiteMinderRateSummaryComponent implements OnInit {
 
-  @Input() public data: RateSummary;
+  @Input() public data: BehaviorSubject<RateSummary>;
   public summary: string;
 
   constructor(
@@ -18,16 +20,20 @@ export class SiteMinderRateSummaryComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    if (this.data && this.data.rates && this.data.rates.length > 0) {
-      const { min, max } = this.findMinMax(this.data.rates.map(x => x.object.rate));
-      if (min === max) {
-        this.summary = min.toString();
-      } else {
-        this.summary = `${min} - ${max}`;
-      }
-    } else if (this.data) {
-      this.summary = '-';
-    }
+    this.data.pipe(
+      tap(data => {
+        if (data && data.rates && data.rates.length > 0) {
+          const { min, max } = this.findMinMax(data.rates.map(x => x.object.rate));
+          if (min === max) {
+            this.summary = min.toString();
+          } else {
+            this.summary = `${min} - ${max}`;
+          }
+        } else if (this.data) {
+          this.summary = '-';
+        }
+      })
+    ).subscribe();
   }
 
   private findMinMax(arr: number[]): { min: number, max: number } {

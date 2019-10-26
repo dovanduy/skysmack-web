@@ -31,8 +31,8 @@ export class SiteMinderTableComponent implements OnInit, OnDestroy {
   public dateRows$: BehaviorSubject<Date[]>;
 
   // Cells
-  public availabilityCells$: BehaviorSubject<StrIndex<StrIndex<LocalObject<LodgingTypeAvailability, LodgingTypeAvailabilityKey>>>>;
-  public rateSummaryCells$: BehaviorSubject<StrIndex<StrIndex<StrIndex<RateSummary>>>>;
+  public availabilityCells$: BehaviorSubject<StrIndex<StrIndex<BehaviorSubject<LocalObject<LodgingTypeAvailability, LodgingTypeAvailabilityKey>>>>>;
+  public rateSummaryCells$: BehaviorSubject<StrIndex<StrIndex<StrIndex<BehaviorSubject<RateSummary>>>>>;
   public channelsCells$: BehaviorSubject<StrIndex<StrIndex<StrIndex<StrIndex<BehaviorSubject<RateInfo>>>>>>;
 
   constructor(
