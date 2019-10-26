@@ -94,12 +94,18 @@
     "LODGING_RESERVATIONS_SETTINGS": {
         "FORM": {
             "LABELS": {
-                "EARLIESTCHECKIN": "Earliest check in",
-                "LATESTCHECKOUT": "Latest check out"
+                "CHECKIN": "Check in time",
+                "CHECKOUT": "Check out time",
+                "EARLIESTCHECKIN": "Earliest check in minutes before",
+                "LATESTCHECKOUT": "Latest check out in minutes after",
+                "TIMEZONE": "Time zone"
             },
-            "PLACEHOLDERS": {
+            "PLACEHOLDERS": {                
+                "CHECKIN": "Check in time",
+                "CHECKOUT": "Check out time",
                 "EARLIESTCHECKIN": "Earliest check in",
-                "LATESTCHECKOUT": "Latest check out"
+                "LATESTCHECKOUT": "Latest check out",
+                "TIMEZONE": "Time zone"
             },
             "VALIDATION": {
                 "EARLIESTCHECKIN": {

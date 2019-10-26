@@ -5,7 +5,7 @@ import { LoadedPackage } from '@skysmack/ng-framework';
 import { LodgingReservationsSettings, LODGING_RESERVATIONS_AREA_KEY, LODGING_RESERVATIONS_ADDITIONAL_PATHS } from '@skysmack/packages-lodging-reservations';
 import { NgLodgingReservationsSettingsValidation } from '@skysmack/ng-lodging-reservations';
 import { FieldsConfig, FieldProviders } from '@skysmack/ng-fields';
-import { IntFieldComponent, TimeFieldComponent } from '@skysmack/portal-fields';
+import { IntFieldComponent, TimeFieldComponent, StringFieldComponent } from '@skysmack/portal-fields';
 
 @Injectable({ providedIn: 'root' })
 export class NgLodgingReservationsSettingsFieldsConfig extends FieldsConfig<LodgingReservationsSettings, unknown> {
@@ -46,6 +46,13 @@ export class NgLodgingReservationsSettingsFieldsConfig extends FieldsConfig<Lodg
                 key: 'latestCheckOut',
                 sortable: true,
                 order: 4
+            }),
+            new Field({
+                component: StringFieldComponent,
+                value: settings ? settings.object.timeZone : undefined,
+                key: 'timeZone',
+                order: 5,
+                sortable: true
             })
         ];
 
