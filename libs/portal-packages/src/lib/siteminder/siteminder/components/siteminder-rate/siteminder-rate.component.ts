@@ -2,6 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { MatDialogConfig, MatDialog } from '@angular/material/dialog';
 import { RateInfo } from '../../../models/rate-info';
 import { SiteMinderRateDialogComponent } from '../siteminder-rate-dialog/siteminder-rate-dialog.component';
+import { BehaviorSubject } from 'rxjs';
+import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'ss-siteminder-rate',
@@ -10,20 +12,13 @@ import { SiteMinderRateDialogComponent } from '../siteminder-rate-dialog/sitemin
 })
 export class SiteMinderRateComponent implements OnInit {
 
-  @Input() public data: RateInfo;
-  public rate: number;
+  @Input() public data: BehaviorSubject<RateInfo>;
 
   constructor(
     private dialog: MatDialog
   ) { }
 
   ngOnInit() {
-    if (this.data) {
-      const rate = this.data.rate;
-      if (rate) {
-        this.rate = rate.object.rate;
-      }
-    }
   }
 
   public openDialog(): void {

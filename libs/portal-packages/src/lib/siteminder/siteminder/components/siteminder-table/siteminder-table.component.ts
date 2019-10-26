@@ -7,6 +7,7 @@ import { SiteMinderColumn } from '../../../models/siteminder-column';
 import { SiteMinderService } from '../../../services/siteminder.service';
 import { RateSummary } from '../../../models/rate-summary';
 import { RateInfo } from '../../../models/rate-info';
+import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'ss-siteminder-table',
@@ -55,7 +56,7 @@ export class SiteMinderTableComponent implements OnInit, OnDestroy {
     this.channelsCells$ = this.service.channelsCells$;
 
     this.subscriptionHandler.register(this.service.generateColumns(this.packagePath).subscribe());
-    this.subscriptionHandler.register(this.service.generateCells(this.packagePath, this.start, this.end).subscribe());
+    this.subscriptionHandler.register(this.service.generateCells(this.packagePath, this.start, this.addDays(this.end, 29)).subscribe());
   }
 
   ngOnDestroy() {
@@ -88,5 +89,11 @@ export class SiteMinderTableComponent implements OnInit, OnDestroy {
     } else {
       return 1;
     }
+  }
+
+  private addDays(date, days) {
+    var result = new Date(date);
+    result.setDate(result.getDate() + days);
+    return result;
   }
 }
