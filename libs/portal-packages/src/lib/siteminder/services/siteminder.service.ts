@@ -141,6 +141,11 @@ export class SiteMinderService {
             distinctUntilChanged((prev, curr) => JSON.stringify(prev) === JSON.stringify(curr)),
         );
 
+        // RatePlans
+        const ratePlans$ = this.ratePlansStore.get(packagePath).pipe(
+            distinctUntilChanged((prev, curr) => JSON.stringify(prev) === JSON.stringify(curr))
+        );
+
         // Channels
         const channels$ = this.channelsStore.get(packagePath).pipe(
             distinctUntilChanged((prev, curr) => JSON.stringify(prev) === JSON.stringify(curr))
@@ -176,18 +181,18 @@ export class SiteMinderService {
             ]),
             combineLatest([
                 availability$,
+                ratePlans$,
                 channels$,
                 rates$,
                 lodgingTypes$,
             ])
         ]).pipe(
-            map(([[dateRows, lodgingTypeColumns, ratePlanColumns, channelColumns], [availability, channels, rates, lodgingTypes]]) => {
+            map(([[dateRows, lodgingTypeColumns, ratePlanColumns, channelColumns], [availability, ratePlans, channels, rates, lodgingTypes]]) => {
                 // Foreach date row
                 dateRows.forEach(date => {
                     const dateIndex = date.toString();
                     const localDate = getLocalDate(date);
                     const currentDateRates = rates.filter(rate => rate.object.date === localDate as any);
-
 
                     lodgingTypeColumns.forEach(ltc => {
                         // Availability Cells
@@ -203,7 +208,6 @@ export class SiteMinderService {
                     Object.keys(ratePlanColumns ? ratePlanColumns : []).forEach(lodgingTypeId => {
                         const lodgingTypeRates = currentDateRates.filter(rate => Number(rate.object.lodgingTypeId) === Number(lodgingTypeId));
 
-
                         ratePlanColumns[lodgingTypeId].forEach(rpc => {
                             const currentRatePlanChannelColumns = channelColumns[rpc.id];
                             const lodgingType = lodgingTypes.find(lodgingType => Number(lodgingType.object.id) === Number(lodgingTypeId));
@@ -216,7 +220,7 @@ export class SiteMinderService {
 
                             rateSummaryCells[dateIndex][rpc.id][lodgingTypeId] = new RateSummary({
                                 date: date,
-                                ratePlanTitle: rpc.title,
+                                ratePlan: ratePlans.find(ratePlan => ratePlan.object.id === rpc.id),
                                 rates: ratePlanRates,
                                 channels: channels.map(x => x.object),
                                 lodgingType: lodgingType ? lodgingType : null
@@ -240,13 +244,7 @@ export class SiteMinderService {
                                     channel: channel ? channel : null,
                                     lodgingType: lodgingType ? lodgingType : null
                                 });
-
-                                if (!channelRatesDictionary[key]) {
-                                    channelRatesDictionary[key] = new BehaviorSubject(newChannelRate);
-                                } else {
-                                    channelRatesDictionary[key].next(newChannelRate);
-                                }
-
+                                channelRatesDictionary[key] ? channelRatesDictionary[key].next(newChannelRate) : channelRatesDictionary[key] = new BehaviorSubject(newChannelRate);
                             });
                             this.channelsCells$.next(channelsCells);
                         });

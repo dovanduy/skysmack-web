@@ -37,10 +37,10 @@ export class SiteMinderRateSummaryDialogComponent implements OnInit, OnDestroy {
     this.packagePath = this.router.url.split('/')[1];
 
     // Prepare data
-    const { date, channels, rates, ratePlanTitle, lodgingType } = this.data;
+    const { date, channels, rates, ratePlan, lodgingType } = this.data;
     this.date = date;
     this.channels = channels;
-    this.ratePlanTitle = ratePlanTitle;
+    this.ratePlanTitle = ratePlan ? ratePlan.object.name : '';
     this.lodgingType = lodgingType.object;
 
     // Process data

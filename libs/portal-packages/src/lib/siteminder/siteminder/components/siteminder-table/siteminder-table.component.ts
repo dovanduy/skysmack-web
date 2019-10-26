@@ -7,7 +7,6 @@ import { SiteMinderColumn } from '../../../models/siteminder-column';
 import { SiteMinderService } from '../../../services/siteminder.service';
 import { RateSummary } from '../../../models/rate-summary';
 import { RateInfo } from '../../../models/rate-info';
-import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'ss-siteminder-table',
@@ -34,7 +33,7 @@ export class SiteMinderTableComponent implements OnInit, OnDestroy {
   // Cells
   public availabilityCells$: BehaviorSubject<StrIndex<StrIndex<LocalObject<LodgingTypeAvailability, LodgingTypeAvailabilityKey>>>>;
   public rateSummaryCells$: BehaviorSubject<StrIndex<StrIndex<StrIndex<RateSummary>>>>;
-  public channelsCells$: BehaviorSubject<StrIndex<StrIndex<StrIndex<StrIndex<RateInfo>>>>>;
+  public channelsCells$: BehaviorSubject<StrIndex<StrIndex<StrIndex<StrIndex<BehaviorSubject<RateInfo>>>>>>;
 
   constructor(
     private router: Router,
