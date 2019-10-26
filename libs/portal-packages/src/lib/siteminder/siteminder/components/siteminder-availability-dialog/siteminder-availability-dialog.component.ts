@@ -1,40 +1,51 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, OnDestroy } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { FormControl } from '@angular/forms';
-import { Observable } from 'rxjs';
-import { map, startWith } from 'rxjs/operators';
+import { FormGroup, FormControl } from '@angular/forms';
+import { Observable, BehaviorSubject } from 'rxjs';
+import { map, startWith, tap } from 'rxjs/operators';
 import { LodgingTypeAvailability, LodgingTypeAvailabilityKey } from '@skysmack/packages-siteminder';
 import { LodgingType } from '@skysmack/packages-lodgings';
-import { LocalObject } from '@skysmack/framework';
+import { LocalObject, SubscriptionHandler } from '@skysmack/framework';
 
 @Component({
   selector: 'ss-siteminder-availability-dialog',
   templateUrl: './siteminder-availability-dialog.component.html',
   styleUrls: ['./siteminder-availability-dialog.component.scss']
 })
-export class SiteMinderAvailabilityDialogComponent implements OnInit {
+export class SiteMinderAvailabilityDialogComponent implements OnInit, OnDestroy {
 
-  public availableModifierControl = new FormControl();
+  public form: FormGroup;
   public available: number;
   public lodgingType: LodgingType;
   public availableAfterModification$: Observable<number>;
+  private subscriptionHandler = new SubscriptionHandler();
 
   constructor(
     public dialogRef: MatDialogRef<SiteMinderAvailabilityDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: LocalObject<LodgingTypeAvailability, LodgingTypeAvailabilityKey>
+    @Inject(MAT_DIALOG_DATA) public data: BehaviorSubject<LocalObject<LodgingTypeAvailability, LodgingTypeAvailabilityKey>>
   ) { }
 
   ngOnInit() {
-    this.available = this.data.object.available;
-    this.lodgingType = this.data.object.lodgingType.object;
-    const availableModifier = this.data.object.availableModifier
+    this.subscriptionHandler.register(this.data.pipe(
+      tap(data => {
+        this.available = data.object.available;
+        this.lodgingType = data.object.lodgingType.object;
+        const availableModifier = data.object.availableModifier
 
-    this.availableModifierControl.setValue(availableModifier);
+        this.form = new FormGroup({});
+        const formControl = new FormControl(availableModifier);
+        this.form.addControl('availableModifier', formControl);
 
-    this.availableAfterModification$ = this.availableModifierControl.valueChanges.pipe(
-      startWith(availableModifier),
-      map(availableModifier => this.available + availableModifier)
-    );
+        this.availableAfterModification$ = this.form.valueChanges.pipe(
+          startWith({ availableModifier: availableModifier }),
+          map(changes => this.available + changes.availableModifier)
+        );
+      })
+    ).subscribe());
+  }
+
+  ngOnDestroy() {
+    this.subscriptionHandler.unsubscribe();
   }
 
   public ok() {

@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject, OnDestroy } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { FormControl } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 import { RateInfo } from '../../../models/rate-info';
 import { Channel } from '@skysmack/packages-siteminder';
 import { LodgingType } from '@skysmack/packages-lodgings';
@@ -15,7 +15,8 @@ import { tap } from 'rxjs/operators';
 })
 export class SiteMinderRateDialogComponent implements OnInit, OnDestroy {
 
-  public rateControl = new FormControl();
+  public form: FormGroup;
+  public formReady: boolean;
   public date: Date;
   public channel: LocalObject<Channel, number>;
   public ratePlanTitle: string;
@@ -35,11 +36,11 @@ export class SiteMinderRateDialogComponent implements OnInit, OnDestroy {
         this.channel = channel;
         this.ratePlanTitle = ratePlanTitle;
         this.lodgingType = lodgingType;
-        if (rate) {
-          this.rateControl.setValue(rate.object.rate);
-        } else {
-          this.rateControl.setValue(0);
-        }
+
+        this.form = new FormGroup({});
+        const formControl = rate ? new FormControl(rate.object.rate) : new FormControl(0)
+        this.form.addControl(channel.object.id.toString(), formControl);
+        this.formReady = true;
       })
     ).subscribe());
   }
