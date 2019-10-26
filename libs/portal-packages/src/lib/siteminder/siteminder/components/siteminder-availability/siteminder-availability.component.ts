@@ -1,8 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Availability, LodgingTypeAvailability, LodgingTypeAvailabilityKey } from '@skysmack/packages-siteminder';
+import { LodgingTypeAvailability, LodgingTypeAvailabilityKey } from '@skysmack/packages-siteminder';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { SiteMinderAvailabilityDialogComponent } from '../siteminder-availability-dialog/siteminder-availability-dialog.component';
 import { LocalObject } from '@skysmack/framework';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'ss-siteminder-availability',
@@ -10,7 +11,7 @@ import { LocalObject } from '@skysmack/framework';
   styleUrls: ['./siteminder-availability.component.scss']
 })
 export class SiteMinderAvailabilityComponent implements OnInit {
-  @Input() public data: LocalObject<LodgingTypeAvailability, LodgingTypeAvailabilityKey>;
+  @Input() public data: BehaviorSubject<LocalObject<LodgingTypeAvailability, LodgingTypeAvailabilityKey>>;
 
   constructor(
     private dialog: MatDialog

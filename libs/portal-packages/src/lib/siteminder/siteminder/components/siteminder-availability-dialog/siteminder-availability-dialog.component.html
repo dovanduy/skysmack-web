@@ -1,15 +1,13 @@
 <h3>Modify availability for {{ lodgingType.name }}</h3>
 
-<p>Available: {{ available }}</p>
-
-<mat-form-field>
-    <input matInput type="number" step="1" name="Available modifier" [formControl]="availableModifierControl"
-        placeholder="Modifier">
-</mat-form-field>
-
+<h4>Available: {{ available }}</h4>
 <h4>Result: {{ (availableAfterModification$ | async) }}</h4>
 
-<button mat-raised-button (click)="cancel()">Cancel</button>
-<button mat-raised-button color="primary" (click)="ok()">
-    Ok
-</button>
+<mat-form-field (ngSubmit)="ok()">
+    <input matInput type="number" step="1" name="Available modifier" [formControl]="availableModifierControl"
+        placeholder="Modifier">
+    <button mat-raised-button (click)="cancel()">Cancel</button>
+    <button type="submit" mat-raised-button color="primary">
+        Ok
+    </button>
+</mat-form-field>

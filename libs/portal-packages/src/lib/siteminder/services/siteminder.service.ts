@@ -201,7 +201,7 @@ export class SiteMinderService {
                         if (avail) {
                             avail.object.lodgingType = lodgingTypes.find(lodgingType => avail.object.lodgingTypeId === lodgingType.object.id);
                         }
-                        availabilityCells[dateIndex][ltc.id] ? availabilityCells[dateIndex][ltc.id].next(avail) : new BehaviorSubject(avail);
+                        availabilityCells[dateIndex][ltc.id] ? availabilityCells[dateIndex][ltc.id].next(avail) : availabilityCells[dateIndex][ltc.id] = new BehaviorSubject(avail);
                         this.availabilityCells$.next(availabilityCells);
                     });
 
