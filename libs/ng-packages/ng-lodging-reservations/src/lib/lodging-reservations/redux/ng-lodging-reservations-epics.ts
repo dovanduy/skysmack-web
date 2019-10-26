@@ -73,18 +73,18 @@ export class NgLodgingReservationsEpics extends RecordEpicsBase<LodgingReservati
     )
 
     public snackBarCheckOutFailureEpic = (action$: ActionsObservable<ReduxAction<HttpErrorResponse, any>>): Observable<ReduxAction> => action$.pipe(
-        ofType(this.prefix + NgLodgingReservationsActions.CHECK_IN_FAILURE),
+        ofType(this.prefix + NgLodgingReservationsActions.CHECK_OUT_FAILURE),
         map((action) => {
             this.notifications.getBackendError(action);
-            return { type: NgLodgingReservationsActions.CHECK_IN_FAILURE + this.NOTIFICATION };
+            return { type: NgLodgingReservationsActions.CHECK_OUT_FAILURE + this.NOTIFICATION };
         })
     )
 
     public snackBarUndoCheckOutFailureEpic = (action$: ActionsObservable<ReduxAction<HttpErrorResponse, any>>): Observable<ReduxAction> => action$.pipe(
-        ofType(this.prefix + NgLodgingReservationsActions.UNDO_CHECK_IN_FAILURE),
+        ofType(this.prefix + NgLodgingReservationsActions.UNDO_CHECK_OUT_FAILURE),
         map((action) => {
             this.notifications.getBackendError(action);
-            return { type: NgLodgingReservationsActions.UNDO_CHECK_IN_FAILURE + this.NOTIFICATION };
+            return { type: NgLodgingReservationsActions.UNDO_CHECK_OUT_FAILURE + this.NOTIFICATION };
         })
     )
 
