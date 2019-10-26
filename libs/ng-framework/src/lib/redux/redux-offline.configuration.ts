@@ -50,7 +50,7 @@ export class ReduxOfflineConfiguration implements Config {
     };
 
     // Overrides =============
-    public persistOptions = { storage: localForage };
+    public persistOptions = { storage: localForage, keyPrefix: '' };
 
     public persistCallback = () => {
         this.hydrated = true;
