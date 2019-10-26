@@ -217,10 +217,11 @@ export class SiteMinderService {
                             // RateSummary cells
                             rateSummaryCells[dateIndex] ? rateSummaryCells[dateIndex] : rateSummaryCells[dateIndex] = {};
                             rateSummaryCells[dateIndex][rpc.id] ? rateSummaryCells[dateIndex][rpc.id] : rateSummaryCells[dateIndex][rpc.id] = {};
+                            const ratePlan = ratePlans.find(ratePlan => ratePlan.object.id === rpc.id);
 
                             const rateSummary = new RateSummary({
                                 date: date,
-                                ratePlan: ratePlans.find(ratePlan => ratePlan.object.id === rpc.id),
+                                ratePlan: ratePlan,
                                 rates: ratePlanRates,
                                 channels: channels.map(x => x.object),
                                 lodgingType: lodgingType ? lodgingType : null
@@ -242,7 +243,7 @@ export class SiteMinderService {
                                 const newChannelRate = new RateInfo({
                                     date: date,
                                     rate: channelRate,
-                                    ratePlanTitle: rpc.title,
+                                    ratePlan: ratePlan,
                                     channel: channel ? channel : null,
                                     lodgingType: lodgingType ? lodgingType : null
                                 });
