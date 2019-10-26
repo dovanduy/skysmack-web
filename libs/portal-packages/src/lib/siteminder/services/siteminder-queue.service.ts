@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { NgSiteMinderChannelManagerActions } from '@skysmack/ng-siteminder';
-import { Rate } from '@skysmack/packages-siteminder';
+import { Rate, Availability } from '@skysmack/packages-siteminder';
 import { toLocalObject } from '@skysmack/framework';
 
 @Injectable({ providedIn: 'root' })
@@ -9,8 +9,8 @@ export class SiteMinderQueueService {
         private actions: NgSiteMinderChannelManagerActions
     ) { }
 
-    public updateAvailability(): void {
-        throw new Error('Not implemented');
+    public updateAvailability(packagePath: string, availability: Availability): void {
+        this.actions.updateAvailability(packagePath, toLocalObject(availability));
     }
 
     public updateRates(packagePath: string, rates: Rate[]): void {

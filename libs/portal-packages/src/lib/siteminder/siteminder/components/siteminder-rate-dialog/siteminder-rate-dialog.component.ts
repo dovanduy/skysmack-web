@@ -4,7 +4,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { RateInfo } from '../../../models/rate-info';
 import { Channel, Rate, LodgingTypeRate } from '@skysmack/packages-siteminder';
 import { LodgingType } from '@skysmack/packages-lodgings';
-import { LocalObject, SubscriptionHandler, deepFreeze, getLocalDate, toLocalObject } from '@skysmack/framework';
+import { LocalObject, SubscriptionHandler, deepFreeze, getLocalDate } from '@skysmack/framework';
 import { BehaviorSubject } from 'rxjs';
 import { tap, switchMap } from 'rxjs/operators';
 import { SiteMinderQueueService } from '../../../services/siteminder-queue.service';
