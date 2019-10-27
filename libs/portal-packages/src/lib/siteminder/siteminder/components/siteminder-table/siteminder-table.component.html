@@ -1,3 +1,24 @@
+<!-- Filters -->
+<ul>
+    <li>Show rates: {{ (ratesUi$ | async) }} - <span style="cursor:pointer;" (click)="testUpdate('rates')">toggle</span>
+    </li>
+    <li>Show restrictions: {{ (store.getRestrictionsUi(packagePath) | async) }} - <span style="cursor:pointer;"
+            (click)="testUpdate('restrictions')">toggle</span></li>
+    <li>Show all section: {{ (store.getAllUi(packagePath) | async) }} - <span style="cursor:pointer;"
+            (click)="testUpdate('all')">toggle</span></li>
+    <li>Show availability: {{ (store.getAvailabilityUi(packagePath) | async) }} - <span style="cursor:pointer;"
+            (click)="testUpdate('availability')">toggle</span></li>
+    <li>Hide following channels: <span
+            *ngFor="let channelId of store.getChannelsUi(packagePath) | async"></span>{{ channelId }}
+    </li>
+    <li>Hide following ratePlans: <span
+            *ngFor="let ratePlanId of store.getRatePlansUi(packagePath) | async"></span>{{ ratePlanId }}</li>
+    <li>Hide following lodging types: <span
+            *ngFor="let lodgingTypeId of store.getLodgingTypesUi(packagePath) | async"></span>{{ lodgingTypeId }}</li>
+</ul>
+
+
+<!-- Table -->
 <mat-card>
     <table cellspacing="0" cellpadding="0" class="mat-table">
         <thead class="mat-header-row">

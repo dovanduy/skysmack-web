@@ -1,12 +1,14 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { StrIndex, SubscriptionHandler, LocalObject } from '@skysmack/framework';
-import { LodgingTypeAvailability, LodgingTypeAvailabilityKey } from '@skysmack/packages-siteminder';
+import { LodgingTypeAvailability, LodgingTypeAvailabilityKey, SiteMinderUi } from '@skysmack/packages-siteminder';
 import { Router } from '@angular/router';
 import { SiteMinderColumn } from '../../../models/siteminder-column';
 import { SiteMinderService } from '../../../services/siteminder.service';
 import { RateSummary } from '../../../models/rate-summary';
 import { RateInfo } from '../../../models/rate-info';
+import { NgSiteMinderStore, NgSiteMinderActions } from '@skysmack/ng-siteminder';
+import { map, take, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'ss-siteminder-table',
@@ -14,6 +16,7 @@ import { RateInfo } from '../../../models/rate-info';
   styleUrls: ['./siteminder-table.component.scss']
 })
 export class SiteMinderTableComponent implements OnInit, OnDestroy {
+  // General
   private packagePath: string;
   private subscriptionHandler = new SubscriptionHandler();
   private start = new Date();
@@ -38,6 +41,8 @@ export class SiteMinderTableComponent implements OnInit, OnDestroy {
   constructor(
     private router: Router,
     private service: SiteMinderService,
+    public store: NgSiteMinderStore,
+    public actions: NgSiteMinderActions,
   ) { }
 
   ngOnInit() {
@@ -60,6 +65,54 @@ export class SiteMinderTableComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.subscriptionHandler.unsubscribe();
+  }
+
+  public testUpdate(target: string) {
+    switch (target) {
+      case 'rates': {
+        this.store.getRatesUi(this.packagePath).pipe(
+          take(1),
+          map(value => {
+            const newValue = !value;
+            this.actions.updateRatesUi(this.packagePath, newValue)
+          })
+        ).subscribe();
+        break;
+      }
+      case 'restrictions': {
+        this.store.getRestrictionsUi(this.packagePath).pipe(
+          take(1),
+          map(value => {
+            const newValue = !value;
+            this.actions.updateRestrictionsUi(this.packagePath, newValue)
+          })
+        ).subscribe();
+        break;
+      }
+      case 'all': {
+        this.store.getAllUi(this.packagePath).pipe(
+          take(1),
+          map(value => {
+            const newValue = !value;
+            this.actions.updateAllUi(this.packagePath, newValue)
+          })
+        ).subscribe();
+        break;
+      }
+      case 'availability': {
+        this.store.getAvailabilityUi(this.packagePath).pipe(
+          take(1),
+          map(value => {
+            const newValue = !value;
+            this.actions.updateAvailabilityUi(this.packagePath, newValue)
+          })
+        ).subscribe();
+        break;
+      }
+      default: {
+        break;
+      }
+    }
   }
 
   public calculateLodgingTypeColspan(ltcId: number): number {
