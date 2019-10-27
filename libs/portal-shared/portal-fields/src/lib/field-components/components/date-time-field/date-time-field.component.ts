@@ -5,6 +5,8 @@ import { FieldBaseComponent } from '../field-base-component';
 import { DateTimeAdapter } from './date-time-adapter';
 import { map } from 'rxjs/operators';
 import { Field } from '@skysmack/ng-dynamic-forms';
+import * as _moment from 'moment';
+const moment = _moment;
 
 @Component({
   selector: 'ss-date-time-field',
@@ -19,52 +21,101 @@ export class DateTimeFieldComponent extends FieldBaseComponent<Field> implements
   @ViewChild('dateInput', { static: false }) public dateInput: ElementRef;
   public date: string;
 
+  public dateTime: Date;
+
+  private dateFormats = [
+    "DD-MM-YYYY",
+    "L",
+    "l",
+    "YYYY-MM-DD"
+  ];
+
+  private dateTimeFormats = [
+    moment.ISO_8601,
+    "YYYY-MM-DD'T'HH:mm:ss"
+  ];
+
   ngOnInit() {
     super.ngOnInit();
-    this.setDate(this.getFieldValue());
-    this.setTime(this.getFieldValue());
+    this.updatePickerFields();
+  }
+
+  private updatePickerFields() {
+    let myValue = this.getFieldValue();
+
+    if (typeof myValue === 'string') {
+      if (/\/Date\((\d*)\)\//.exec(myValue)) {
+        myValue = new Date(myValue);
+      } else if (moment(myValue, this.dateTimeFormats, true).isValid()) {
+        myValue = moment(myValue, this.dateTimeFormats).toDate();
+      }
+    }
+
+    if (myValue instanceof Date) {
+      this.dateTime = myValue;
+      const momentValue = moment(myValue);
+      this.date = momentValue.format('YYYY-MM-DD');
+      this.time = momentValue.format('HH:mm');
+      
+      this.setFieldValue(this.dateTime);
+    }
   }
 
   ngAfterViewInit() {
     this.subscriptionHandler.register(fromEvent(this.timeInput.nativeElement, 'input').pipe(
-      map(() => this.updateFieldValue())
+      map(() => this.timeChanged())
+    ).subscribe());
+    this.subscriptionHandler.register(fromEvent(this.dateInput.nativeElement, 'input').pipe(
+      map(() => this.dateChanged())
     ).subscribe());
   }
 
-  public onTimeChanged(event: Event) {
-    this.time = (event.target as any).value;
-  }
-
-  public updateFieldValue() {
-    const date: Date = this.date ? new Date(this.date) : new Date();
-    let time = this.time;
-    if (date && typeof date.toISOString === 'function') {
-      time = time ? time : '00:00';
-      const hours = time.split(':')[0];
-      const minutes = time.split(':')[1];
-
-      date.setMinutes(Number(minutes));
-      date.setHours(Number(hours));
-
-      this.setFieldValue(date);
-    }
-  }
-
-  public setDate(currentValue: string) {
-    this.date = currentValue;
-  }
-
-  public setTime(currentValue: string) {
-    // currentValue might be a date object, if the value is coming from a queue item. Checking for that too.
-    if (currentValue && currentValue.length > 0 || currentValue && (typeof (currentValue as any).getMonth === 'function')) {
-      const date = new Date(currentValue);
-      if (date) {
-        this.time = this.getTimeWithLeadingZeros(date.getHours()) + ':' + this.getTimeWithLeadingZeros(date.getMinutes());
+  private timeChanged(input: string = '') {
+    if (!input || input.length === 0) {
+      if (this.timeInput && this.timeInput.nativeElement && this.timeInput.nativeElement.value && this.timeInput.nativeElement.value.length > 0) {
+        input = this.timeInput.nativeElement.value;
+      } else {
+        input = '00:00';
       }
     }
+
+    const hours = input.split(':')[0];
+    const minutes = input.split(':')[1];
+
+    if (hours || minutes) {
+      if (hours) {
+        this.dateTime.setMinutes(Number(minutes));
+      }
+
+      if (minutes) {
+        this.dateTime.setHours(Number(hours));
+      }
+
+      this.setFieldValue(this.dateTime);
+    }
   }
 
-  private getTimeWithLeadingZeros(time: Number): string {
-    return (time < 10 ? '0' : '') + time;
+  private dateChanged() {
+    const input = this.dateInput.nativeElement.value;
+    let dateInput: Date;
+
+    if (/\/Date\((\d*)\)\//.exec(input)) {
+      dateInput = new Date(input);
+    } else if (moment(input, this.dateFormats, true).isValid()) {
+      dateInput = moment(input, this.dateFormats).toDate();
+    }
+
+    if (dateInput) {
+      this.dateTime.setFullYear(dateInput.getFullYear(), dateInput.getMonth(), dateInput.getDate());
+      this.setFieldValue(this.dateTime);
+    }
+  }
+
+  public onTimeChanged(event: Event) {
+    this.timeChanged((event.target as any).value);
+  }
+
+  public onDateChanged(event: Event) {
+    this.dateChanged();
   }
 }
