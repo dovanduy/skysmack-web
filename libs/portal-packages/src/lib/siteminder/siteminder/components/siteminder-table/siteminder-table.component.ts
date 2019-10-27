@@ -55,10 +55,6 @@ export class SiteMinderTableComponent implements OnInit, OnDestroy {
     this.rateSummaryCells$ = this.service.rateSummaryCells$;
     this.channelsCells$ = this.service.channelsCells$;
 
-    this.availabilityCells$.pipe(
-      tap(x => console.log(x))
-    ).subscribe();
-
     this.subscriptionHandler.register(this.service.generateColumns(this.packagePath).subscribe());
     this.subscriptionHandler.register(this.service.generateCells(this.packagePath, this.start, this.addDays(this.end, 29)).subscribe());
   }
