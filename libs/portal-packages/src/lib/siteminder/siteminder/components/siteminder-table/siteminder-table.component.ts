@@ -7,6 +7,7 @@ import { SiteMinderColumn } from '../../../models/siteminder-column';
 import { SiteMinderService } from '../../../services/siteminder.service';
 import { RateSummary } from '../../../models/rate-summary';
 import { RateInfo } from '../../../models/rate-info';
+import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'ss-siteminder-table',
@@ -53,6 +54,10 @@ export class SiteMinderTableComponent implements OnInit, OnDestroy {
     this.availabilityCells$ = this.service.availabilityCells$;
     this.rateSummaryCells$ = this.service.rateSummaryCells$;
     this.channelsCells$ = this.service.channelsCells$;
+
+    this.availabilityCells$.pipe(
+      tap(x => console.log(x))
+    ).subscribe();
 
     this.subscriptionHandler.register(this.service.generateColumns(this.packagePath).subscribe());
     this.subscriptionHandler.register(this.service.generateCells(this.packagePath, this.start, this.addDays(this.end, 29)).subscribe());

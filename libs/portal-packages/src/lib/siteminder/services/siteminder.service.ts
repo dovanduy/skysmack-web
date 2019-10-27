@@ -197,11 +197,12 @@ export class SiteMinderService {
                     lodgingTypeColumns.forEach(ltc => {
                         // Availability Cells
                         availabilityCells[dateIndex] ? availabilityCells[dateIndex] : availabilityCells[dateIndex] = {};
-                        const avail = availability.find(avail => avail.object.lodgingTypeId === ltc.id);
+                        const avail = availability.find(avail => avail.object.lodgingTypeId === ltc.id && ((avail.object.date as unknown) as string) === localDate);
                         if (avail) {
                             avail.object.lodgingType = lodgingTypes.find(lodgingType => avail.object.lodgingTypeId === lodgingType.object.id);
+                            availabilityCells[dateIndex][ltc.id] ? availabilityCells[dateIndex][ltc.id].next(avail) : availabilityCells[dateIndex][ltc.id] = new BehaviorSubject(avail);
                         }
-                        availabilityCells[dateIndex][ltc.id] ? availabilityCells[dateIndex][ltc.id].next(avail) : availabilityCells[dateIndex][ltc.id] = new BehaviorSubject(avail);
+
                         this.availabilityCells$.next(availabilityCells);
                     });
 
@@ -212,7 +213,6 @@ export class SiteMinderService {
                             const currentRatePlanChannelColumns = channelColumns[rpc.id];
                             const lodgingType = lodgingTypes.find(lodgingType => Number(lodgingType.object.id) === Number(lodgingTypeId));
                             const ratePlanRates = lodgingTypeRates.filter(rate => Number(rate.object.ratePlanId) === Number(rpc.id));
-
 
                             // RateSummary cells
                             rateSummaryCells[dateIndex] ? rateSummaryCells[dateIndex] : rateSummaryCells[dateIndex] = {};
