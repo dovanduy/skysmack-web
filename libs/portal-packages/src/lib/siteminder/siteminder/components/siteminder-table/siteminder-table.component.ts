@@ -7,7 +7,6 @@ import { SiteMinderColumn } from '../../../models/siteminder-column';
 import { SiteMinderService } from '../../../services/siteminder.service';
 import { RateSummary } from '../../../models/rate-summary';
 import { RateInfo } from '../../../models/rate-info';
-import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'ss-siteminder-table',
