@@ -1,0 +1,7 @@
+<ng-container *ngIf="data | async as myData">
+    <div style="cursor:pointer;" (click)="openDialog()">Restriction</div>
+</ng-container>
+
+<ng-container *ngIf="!(data | async)">
+    <span style="color:rgba(0,0,0,.56);font-size:.5rem">Restriction</span>
+</ng-container>

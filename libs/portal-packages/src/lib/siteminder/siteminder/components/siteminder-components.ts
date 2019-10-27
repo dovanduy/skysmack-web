@@ -7,6 +7,10 @@ import { SiteMinderRateComponent } from './siteminder-rate/siteminder-rate.compo
 import { SiteMinderAvailabilityDialogComponent } from './siteminder-availability-dialog/siteminder-availability-dialog.component';
 import { SiteMinderRateSummaryDialogComponent } from './siteminder-rate-summary-dialog/siteminder-rate-summary-dialog.component';
 import { SiteMinderRateDialogComponent } from './siteminder-rate-dialog/siteminder-rate-dialog.component';
+import { SiteMinderRestrictionsComponent } from './siteminder-restrictions/siteminder-restrictions.component';
+import { SiteMinderRestrictionsDialogComponent } from './siteminder-restrictions-dialog/siteminder-restrictions-dialog.component';
+import { SiteMinderRestrictionsSummaryComponent } from './siteminder-restrictions-summary/siteminder-restrictions-summary.component';
+import { SiteMinderRestrictionsSummaryDialogComponent } from './siteminder-restrictions-summary-dialog/siteminder-restrictions-summary-dialog.component';
 
 export const siteminderRoutes: Routes = [
   {
@@ -28,12 +32,18 @@ export const siteminderComponents: any[] = [
   SiteMinderRateSummaryComponent,
   SiteMinderRateSummaryDialogComponent,
   SiteMinderRateComponent,
-  SiteMinderRateDialogComponent
+  SiteMinderRateDialogComponent,
+  SiteMinderRestrictionsSummaryComponent,
+  SiteMinderRestrictionsSummaryDialogComponent,
+  SiteMinderRestrictionsComponent,
+  SiteMinderRestrictionsDialogComponent
 ];
 
 export const siteminderEntryComponents: any[] = [
   SiteMinderAvailabilityDialogComponent,
   SiteMinderRateSummaryDialogComponent,
-  SiteMinderRateDialogComponent
+  SiteMinderRateDialogComponent,
+  SiteMinderRestrictionsSummaryDialogComponent,
+  SiteMinderRestrictionsDialogComponent
 ];
 

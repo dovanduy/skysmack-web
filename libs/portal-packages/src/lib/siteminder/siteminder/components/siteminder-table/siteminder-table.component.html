@@ -122,16 +122,12 @@
                             <ss-siteminder-availability [data]="availabilityCells[date][ltc.id]">
                             </ss-siteminder-availability>
                         </ng-container>
-                        <ng-container *ngIf="!(availabilityCells$ | async)">
-                            <ss-siteminder-availability [data]="">
-                            </ss-siteminder-availability>
-                        </ng-container>
                     </td>
 
                     <!-- Rateplan -->
                     <ng-container *ngIf="ratePlanColumns$ | async as rpc">
                         <ng-container *ngFor="let ratePlanColumn of rpc[ltc.id]; let last = last">
-                            <!-- Rates Summary -->
+                            <!-- Rates Summary: Rates -->
                             <td class="table-cell mat-cell border-right-light"
                                 [ngClass]="{ 'monday-row': (date | weekday) === 1 }">
                                 <ng-container *ngIf="rateSummaryCells$ | async as rsc">
@@ -140,16 +136,33 @@
                                 </ng-container>
                             </td>
 
+                            <!-- Rates Summary: Restrictions -->
+                            <td class="table-cell mat-cell border-right-light"
+                                [ngClass]="{ 'monday-row': (date | weekday) === 1 }">
+                                <ng-container *ngIf="rateSummaryCells$ | async as rsc">
+                                    <ss-siteminder-restrictions-summary [data]="">
+                                    </ss-siteminder-restrictions-summary>
+                                </ng-container>
+                            </td>
+
                             <!-- Channels (show if expanded) -->
                             <ng-container *ngIf="channelsColumns$ | async as cc">
                                 <ng-container *ngIf="channelsCells$ | async as channelCells">
 
                                     <ng-container *ngFor="let channelColumn of cc[ratePlanColumn.id]; let last = last">
+                                        <!-- Channel: Rates -->
                                         <td [ngClass]="{ 'border-right-light': !last, 'monday-row': (date | weekday) === 1 }"
                                             class="table-cell mat-cell border-right">
                                             <ss-siteminder-rate
                                                 [data]="channelCells[date][ratePlanColumn.id][ltc.id][ltc.id + ':' + ratePlanColumn.id + ':' + channelColumn.id]">
                                             </ss-siteminder-rate>
+                                        </td>
+                                        <!-- Channel: Restrictions -->
+                                        <td [ngClass]="{ 'border-right-light': !last, 'monday-row': (date | weekday) === 1 }"
+                                            class="table-cell mat-cell border-right">
+                                            <!-- Restrictions -->
+                                            <ss-siteminder-restrictions [data]="">
+                                            </ss-siteminder-restrictions>
                                         </td>
                                     </ng-container>
 

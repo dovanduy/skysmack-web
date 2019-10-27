@@ -200,8 +200,8 @@ export class SiteMinderService {
                         const avail = availability.find(avail => avail.object.lodgingTypeId === ltc.id && ((avail.object.date as unknown) as string) === localDate);
                         if (avail) {
                             avail.object.lodgingType = lodgingTypes.find(lodgingType => avail.object.lodgingTypeId === lodgingType.object.id);
-                            availabilityCells[dateIndex][ltc.id] ? availabilityCells[dateIndex][ltc.id].next(avail) : availabilityCells[dateIndex][ltc.id] = new BehaviorSubject(avail);
                         }
+                        availabilityCells[dateIndex][ltc.id] ? availabilityCells[dateIndex][ltc.id].next(avail) : availabilityCells[dateIndex][ltc.id] = new BehaviorSubject(avail);
 
                         this.availabilityCells$.next(availabilityCells);
                     });
