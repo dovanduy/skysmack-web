@@ -27,7 +27,7 @@ export class LodgingsReservationsIndexComponent extends DocumentRecordIndexCompo
     new MenuItem().asEventAction(`${this.translationPrefix}CHECKIN`, this.checkIn, 'label', this).setShowLogic((entity: LocalObject<LodgingReservation, number>) => {
       return EnumHelpers.toIndexEnum(LodgingReservation.statusEnum)[entity.object.status] === LodgingReservation.statusEnum.Reserved;
     }),
-    new MenuItem().asEventAction(`${this.translationPrefix}UNDOCHECKIN`, this.undoCheckin, 'label', this).setShowLogic((entity: LocalObject<LodgingReservation, number>) => {
+    new MenuItem().asEventAction(`${this.translationPrefix}UNDOCHECKIN`, this.undoCheckin, 'undo', this).setShowLogic((entity: LocalObject<LodgingReservation, number>) => {
       return EnumHelpers.toIndexEnum(LodgingReservation.statusEnum)[entity.object.status] === LodgingReservation.statusEnum.InStay;
     }),
 
@@ -35,7 +35,7 @@ export class LodgingsReservationsIndexComponent extends DocumentRecordIndexCompo
     new MenuItem().asEventAction(`${this.translationPrefix}CHECKOUT`, this.checkOut, 'label_off', this).setShowLogic((entity: LocalObject<LodgingReservation, number>) => {
       return EnumHelpers.toIndexEnum(LodgingReservation.statusEnum)[entity.object.status] === LodgingReservation.statusEnum.InStay;
     }),
-    new MenuItem().asEventAction(`${this.translationPrefix}UNDOCHECKOUT`, this.undoCheckout, 'label_off', this).setShowLogic((entity: LocalObject<LodgingReservation, number>) => {
+    new MenuItem().asEventAction(`${this.translationPrefix}UNDOCHECKOUT`, this.undoCheckout, 'undo', this).setShowLogic((entity: LocalObject<LodgingReservation, number>) => {
       return EnumHelpers.toIndexEnum(LodgingReservation.statusEnum)[entity.object.status] === LodgingReservation.statusEnum.CheckedOut;
     }),
 
@@ -43,7 +43,7 @@ export class LodgingsReservationsIndexComponent extends DocumentRecordIndexCompo
     new MenuItem().asEventAction(`${this.translationPrefix}CANCEL`, this.cancel, 'cancel', this).setShowLogic((entity: LocalObject<LodgingReservation, number>) => {
       return EnumHelpers.toIndexEnum(LodgingReservation.statusEnum)[entity.object.status] === LodgingReservation.statusEnum.Reserved;
     }),
-    new MenuItem().asEventAction(`${this.translationPrefix}UNDOCANCEL`, this.undoCancel, 'cancel', this).setShowLogic((entity: LocalObject<LodgingReservation, number>) => {
+    new MenuItem().asEventAction(`${this.translationPrefix}UNDOCANCEL`, this.undoCancel, 'undo', this).setShowLogic((entity: LocalObject<LodgingReservation, number>) => {
       return EnumHelpers.toIndexEnum(LodgingReservation.statusEnum)[entity.object.status] === LodgingReservation.statusEnum.Cancelled;
     }),
 
@@ -51,7 +51,7 @@ export class LodgingsReservationsIndexComponent extends DocumentRecordIndexCompo
     new MenuItem().asEventAction(`${this.translationPrefix}MOVE`, this.move, 'compare_arrows', this).setShowLogic((entity: LocalObject<LodgingReservation, number>) => {
       return EnumHelpers.toIndexEnum(LodgingReservation.statusEnum)[entity.object.status] === LodgingReservation.statusEnum.InStay;
     }),
-    new MenuItem().asEventAction(`${this.translationPrefix}UNDOMOVE`, this.undoMove, 'compare_arrows', this).setShowLogic((entity: LocalObject<LodgingReservation, number>) => {
+    new MenuItem().asEventAction(`${this.translationPrefix}UNDOMOVE`, this.undoMove, 'undo', this).setShowLogic((entity: LocalObject<LodgingReservation, number>) => {
       // TODO: This is likely NOT correct...
       return EnumHelpers.toIndexEnum(LodgingReservation.statusEnum)[entity.object.status] === LodgingReservation.statusEnum.InStay;
     }),
@@ -60,8 +60,16 @@ export class LodgingsReservationsIndexComponent extends DocumentRecordIndexCompo
     new MenuItem().asEventAction(`${this.translationPrefix}NOSHOW`, this.noShow, 'highlight_off', this).setShowLogic((entity: LocalObject<LodgingReservation, number>) => {
       return EnumHelpers.toIndexEnum(LodgingReservation.statusEnum)[entity.object.status] === LodgingReservation.statusEnum.Reserved;
     }),
-    new MenuItem().asEventAction(`${this.translationPrefix}UNDONOSHOW`, this.undoNoShow, 'highlight_off', this).setShowLogic((entity: LocalObject<LodgingReservation, number>) => {
+    new MenuItem().asEventAction(`${this.translationPrefix}UNDONOSHOW`, this.undoNoShow, 'undo', this).setShowLogic((entity: LocalObject<LodgingReservation, number>) => {
       return EnumHelpers.toIndexEnum(LodgingReservation.statusEnum)[entity.object.status] === LodgingReservation.statusEnum.NoShow;
+    }),
+    
+    // Confirm
+    new MenuItem().asEventAction(`${this.translationPrefix}CONFIRM`, this.confirm, 'check', this).setShowLogic((entity: LocalObject<LodgingReservation, number>) => {
+      return EnumHelpers.toIndexEnum(LodgingReservation.statusEnum)[entity.object.status] === LodgingReservation.statusEnum.Processing;
+    }),
+    new MenuItem().asEventAction(`${this.translationPrefix}NOTCONFIRMED`, this.undoConfirm, 'close', this).setShowLogic((entity: LocalObject<LodgingReservation, number>) => {
+      return EnumHelpers.toIndexEnum(LodgingReservation.statusEnum)[entity.object.status] === LodgingReservation.statusEnum.Reserved;
     }),
 
     // Misc
@@ -92,6 +100,20 @@ export class LodgingsReservationsIndexComponent extends DocumentRecordIndexCompo
 
   ngOnInit() {
     super.ngOnInit();
+  }
+
+  public confirm(_this: LodgingsArrivalsComponent, entity: LocalObject<LodgingReservation, number>) {
+    // let checkIn;
+    // if (entity.object.allocatedLodgingId && entity.object.allocatedLodgingId > 0) {
+    //   checkIn = { reservationId: entity.object.id, lodgingId: entity.object.allocatedLodgingId };
+    // } else {
+    //   checkIn = { reservationId: entity.object.id };
+    // }
+
+    // _this.actions.confirm(_this.packagePath, entity, [new CheckIn(checkIn)]);
+  }
+  public undoConfirm(_this: LodgingsArrivalsComponent, entity: LocalObject<LodgingReservation, number>) {
+    // _this.actions.undoConfirm(_this.packagePath, entity, [entity.object.id]);
   }
 
   public checkIn(_this: LodgingsArrivalsComponent, entity: LocalObject<LodgingReservation, number>) {

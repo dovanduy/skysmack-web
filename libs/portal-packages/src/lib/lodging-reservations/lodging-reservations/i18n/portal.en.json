@@ -79,12 +79,14 @@
             "ERROR": "An error occured with lodging reservation {{ id }}. Correct and try again."
         },
         "ENTITY_ACTIONS": {
+            "CONFIRM": "Confirm reservation",
+            "NOTCONFIRMED": "Set to not confirmed",
             "CHECKIN": "Checkin",
             "UNDOCHECKIN": "Undo checkin",
             "CHECKOUT": "Checkout",
             "UNDOCHECKOUT": "Undo checkout",
             "CANCEL": "Cancel",
-            "UNDOCANCEL": "Undo Cancel",
+            "UNDOCANCEL": "Undo cancel",
             "MOVE": "Move",
             "UNDOMOVE": "Undo move",
             "NOSHOW": "No show",

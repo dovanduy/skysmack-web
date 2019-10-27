@@ -1081,6 +1081,8 @@
 			"ERROR": "An error occured with lodging reservation {{ id }}. Correct and try again."
 		},
 		"ENTITY_ACTIONS": {
+			"CONFIRM": "Confirm reservation",
+			"NOTCONFIRMED": "Set to not confirmed",
 			"CHECKIN": "Checkin",
 			"UNDOCHECKIN": "Undo checkin",
 			"CHECKOUT": "Checkout",
@@ -1096,12 +1098,18 @@
 	"LODGING_RESERVATIONS_SETTINGS": {
 		"FORM": {
 			"LABELS": {
+				"CHECKIN": "Check in time",
+				"CHECKOUT": "Check out time",
 				"EARLIESTCHECKIN": "Earliest check in",
-				"LATESTCHECKOUT": "Latest check out"
+				"LATESTCHECKOUT": "Latest check out",
+				"TIMEZONE": "Time zone"
 			},
 			"PLACEHOLDERS": {
+				"CHECKIN": "Check in time",
+				"CHECKOUT": "Check out time",
 				"EARLIESTCHECKIN": "Earliest check in",
-				"LATESTCHECKOUT": "Latest check out"
+				"LATESTCHECKOUT": "Latest check out",
+				"TIMEZONE": "Time zone"
 			},
 			"VALIDATION": {
 				"EARLIESTCHECKIN": {
@@ -1134,6 +1142,98 @@
 		"CANCEL": "Cancel",
 		"DONE": "Done",
 		"CHOOSE_LODGING_TYPE": "Choose a lodging type"
+	},
+	"PERSONS": {
+		"FORM": {
+			"LABELS": {
+				"FIRSTNAME": "First name",
+				"LASTNAME": "Last name",
+				"DISPLAYNAME": "Display name"
+			},
+			"PLACEHOLDERS": {
+				"FIRSTNAME": "Enter first name",
+				"LASTNAME": "Enter last name",
+				"DISPLAYNAME": "Enter display name"
+			},
+			"VALIDATION": {
+				"FIRSTNAME": {
+					"REQUIRED": "A first name is required."
+				},
+				"LASTNAME": {
+					"REQUIRED": "A last name is required."
+				},
+				"DISPLAYNAME": {
+					"REQUIRED": "A Display name is required."
+				}
+			}
+		},
+		"FIELDS": {
+			"CREATE": {
+				"ADD": "Add new field"
+			},
+			"EDIT": {
+				"EDITING": "Editing"
+			},
+			"INDEX": {
+				"ACTIONS": "Actions",
+				"CREATE": "Create new field",
+				"OTHER": "Other",
+				"BACK": "Back",
+				"FIELDS": "Fields",
+				"EDIT": "Edit"
+			}
+		},
+		"CREATE": {
+			"CREATE": "Create",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDIT": "Edit",
+			"BUTTON_EDIT": "Update"
+		},
+		"INDEX": {
+			"PACKAGES": "Packages",
+			"CREATE": "Create",
+			"EDIT": "Edit",
+			"DELETE": "Delete",
+			"FIELDS": "Fields",
+			"FIELDS_TITLE": "(fields)",
+			"ITEM": "Item",
+			"MANAGE": "Manage",
+			"ACTIONS": "Actions"
+		},
+		"NOTIFICATIONS": {
+			"GET": {
+				"PAGED_ERROR": "Failed to get persons ({{ httpErrorCode }}).",
+				"SINGLE_FAILURE": "Failed to get {{ displayName }} ({{ httpErrorCode }}).",
+				"FIELDS_FAILURE": "Failed to get fields for persons ({{ httpErrorCode }}).",
+				"SINGLE_FIELD_FAILURE": "Failed to get {{ displayName }} field ({{ httpErrorCode }})."
+			},
+			"ADD": {
+				"SUCCESS": "Added {{ displayName }} succcessfully.",
+				"FAILURE": "Failed to add {{ displayName }} ({{ httpErrorCode }}).",
+				"FIELD_FAILURE": "Failed to add field for {{ displayName }} ({{ httpErrorCode }}).",
+				"FIELD_SUCCESS": "Added field for {{ displayName }} successfully."
+			},
+			"UPDATE": {
+				"SUCCESS": "Updated {{ displayName }} successfully.",
+				"FAILURE": "Failed to update {{ displayName }} ({{ httpErrorCode }}).",
+				"FIELD_SUCCESS": "Updated field for {{ displayName }} successfully.",
+				"FIELD_FAILURE": "Failed to update field for {{ displayName }} ({{ httpErrorCode }})"
+			},
+			"REMOVE": {
+				"SUCCESS": "Removed {{ displayName }} successfully.",
+				"FAILURE": "Failed to remove {{ displayName }} ({{ httpErrorCode }}).",
+				"FIELD_SUCCESS": "Removed field for {{ displayName }} succesfully.",
+				"FIELD_FAILURE": "Failed to remove field for {{ displayName }} ({{ httpErrorCode }})."
+			}
+		},
+		"QUEUE": {
+			"ADDING": "Adding {{ displayName }}",
+			"UPDATING": "Updating {{ displayName }}",
+			"DELETING": "Deleting {{ displayName }}",
+			"ERROR": "An error occured with {{ displayName }}. Correct and try again."
+		}
 	},
 	"LODGING_SETTINGS": {
 		"FORM": {
@@ -1585,98 +1685,6 @@
 			"UPDATING": "Updating {{ description }}",
 			"DELETING": "Deleting {{ description }}",
 			"ERROR": "An error occured with {{ description }}. Correct and try again."
-		}
-	},
-	"PERSONS": {
-		"FORM": {
-			"LABELS": {
-				"FIRSTNAME": "First name",
-				"LASTNAME": "Last name",
-				"DISPLAYNAME": "Display name"
-			},
-			"PLACEHOLDERS": {
-				"FIRSTNAME": "Enter first name",
-				"LASTNAME": "Enter last name",
-				"DISPLAYNAME": "Enter display name"
-			},
-			"VALIDATION": {
-				"FIRSTNAME": {
-					"REQUIRED": "A first name is required."
-				},
-				"LASTNAME": {
-					"REQUIRED": "A last name is required."
-				},
-				"DISPLAYNAME": {
-					"REQUIRED": "A Display name is required."
-				}
-			}
-		},
-		"FIELDS": {
-			"CREATE": {
-				"ADD": "Add new field"
-			},
-			"EDIT": {
-				"EDITING": "Editing"
-			},
-			"INDEX": {
-				"ACTIONS": "Actions",
-				"CREATE": "Create new field",
-				"OTHER": "Other",
-				"BACK": "Back",
-				"FIELDS": "Fields",
-				"EDIT": "Edit"
-			}
-		},
-		"CREATE": {
-			"CREATE": "Create",
-			"BUTTON_CREATE": "Create"
-		},
-		"EDIT": {
-			"EDIT": "Edit",
-			"BUTTON_EDIT": "Update"
-		},
-		"INDEX": {
-			"PACKAGES": "Packages",
-			"CREATE": "Create",
-			"EDIT": "Edit",
-			"DELETE": "Delete",
-			"FIELDS": "Fields",
-			"FIELDS_TITLE": "(fields)",
-			"ITEM": "Item",
-			"MANAGE": "Manage",
-			"ACTIONS": "Actions"
-		},
-		"NOTIFICATIONS": {
-			"GET": {
-				"PAGED_ERROR": "Failed to get persons ({{ httpErrorCode }}).",
-				"SINGLE_FAILURE": "Failed to get {{ displayName }} ({{ httpErrorCode }}).",
-				"FIELDS_FAILURE": "Failed to get fields for persons ({{ httpErrorCode }}).",
-				"SINGLE_FIELD_FAILURE": "Failed to get {{ displayName }} field ({{ httpErrorCode }})."
-			},
-			"ADD": {
-				"SUCCESS": "Added {{ displayName }} succcessfully.",
-				"FAILURE": "Failed to add {{ displayName }} ({{ httpErrorCode }}).",
-				"FIELD_FAILURE": "Failed to add field for {{ displayName }} ({{ httpErrorCode }}).",
-				"FIELD_SUCCESS": "Added field for {{ displayName }} successfully."
-			},
-			"UPDATE": {
-				"SUCCESS": "Updated {{ displayName }} successfully.",
-				"FAILURE": "Failed to update {{ displayName }} ({{ httpErrorCode }}).",
-				"FIELD_SUCCESS": "Updated field for {{ displayName }} successfully.",
-				"FIELD_FAILURE": "Failed to update field for {{ displayName }} ({{ httpErrorCode }})"
-			},
-			"REMOVE": {
-				"SUCCESS": "Removed {{ displayName }} successfully.",
-				"FAILURE": "Failed to remove {{ displayName }} ({{ httpErrorCode }}).",
-				"FIELD_SUCCESS": "Removed field for {{ displayName }} succesfully.",
-				"FIELD_FAILURE": "Failed to remove field for {{ displayName }} ({{ httpErrorCode }})."
-			}
-		},
-		"QUEUE": {
-			"ADDING": "Adding {{ displayName }}",
-			"UPDATING": "Updating {{ displayName }}",
-			"DELETING": "Deleting {{ displayName }}",
-			"ERROR": "An error occured with {{ displayName }}. Correct and try again."
 		}
 	},
 	"PRODUCT_TYPES": {

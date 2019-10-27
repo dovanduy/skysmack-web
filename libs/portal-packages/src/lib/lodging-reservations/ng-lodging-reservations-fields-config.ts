@@ -33,7 +33,7 @@ export class NgLodgingReservationsFieldsConfig extends DocumentFieldsConfig<Lodg
     protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<LodgingReservation, number>): Field[] {
         const fields: Field[] = [];
 
-        if (entity) {
+        if (entity && entity.status !== LocalObjectStatus.CREATING) {
             fields.push(...[new Field({
                 component: DateTimeFieldComponent,
                 value: entity.object.checkIn,
@@ -106,7 +106,7 @@ export class NgLodgingReservationsFieldsConfig extends DocumentFieldsConfig<Lodg
             })
         ]);
 
-        if (!entity) {
+        if (!entity || entity.status === LocalObjectStatus.CREATING) {
             fields.push(new SelectField({
                 component: SelectFieldComponent,
                 value: entity ? entity.object.status : 0, // 0 equals "processing"
@@ -128,6 +128,7 @@ export class NgLodgingReservationsFieldsConfig extends DocumentFieldsConfig<Lodg
                 sortable: true
             }));
         }
+
         fields.push(new Field({
             component: StringFieldComponent,
             value: entity ? entity.object.status : 0, 
