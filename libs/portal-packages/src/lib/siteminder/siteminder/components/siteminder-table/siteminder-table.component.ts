@@ -67,8 +67,7 @@ export class SiteMinderTableComponent implements OnInit, OnDestroy {
     const channelsColumns = this.channelsColumns$.getValue();
     if (channelsColumns) {
       const result = Object.keys(ratePlanColumns).map(key => {
-        // Add one extra for rate summary column (one pr. rateplan)
-        return channelsColumns[key] ? channelsColumns[key].length + 1 : 0;
+        return channelsColumns[key] ? (channelsColumns[key].length * 2) + 2 : 0;
       }).reduce((a, b) => a + b, 0);
       // Add one extra for available column
       return result !== 0 ? result + 1 : 1;
@@ -81,9 +80,8 @@ export class SiteMinderTableComponent implements OnInit, OnDestroy {
   public calculateRatePlanColspan(ratePlanColumnId: number): number {
     const channelsColumns = this.channelsColumns$.getValue();
     if (channelsColumns) {
-      // Rate plan colspan is equal to the count of its own channel columns
+      const result = channelsColumns[ratePlanColumnId] ? (channelsColumns[ratePlanColumnId].length * 2) + 2 : 0;
       // Add one extra for rate summary column
-      const result = channelsColumns[ratePlanColumnId] ? channelsColumns[ratePlanColumnId].length + 1 : 0;
       return result !== 0 ? result : 1;
     } else {
       return 1;

@@ -15,7 +15,7 @@ export class SiteMinderQueueService {
 
     public updateRates(packagePath: string, rates: Rate[]): void {
         rates.forEach(rate => {
-            this.actions.updateRate(packagePath, toLocalObject(rate)); // TODO: Make flow accept Rates instead of rates wrapped in local objects.
+            this.actions.updateRate(packagePath, toLocalObject(rate));
         })
     }
 }

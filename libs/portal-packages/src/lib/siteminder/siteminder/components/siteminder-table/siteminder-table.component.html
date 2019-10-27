@@ -4,7 +4,7 @@
             <!-- 1st header row -->
             <tr>
                 <!-- Date -->
-                <th *ngIf="dateColumn$ | async as dateColumn" rowspan="3"
+                <th *ngIf="dateColumn$ | async as dateColumn" rowspan="4"
                     class="table-cell mat-header-cell border-right">
                     {{  dateColumn.title }}
                 </th>
@@ -22,7 +22,7 @@
                 <ng-container *ngFor="let ltc of lodgingTypeColumns$ | async">
                     <!-- Available -->
                     <ng-container *ngIf="availabilityColumns$ | async as availabilityColumns">
-                        <th rowspan="2" class="table-cell mat-header-cell border-left border-right">
+                        <th rowspan="3" class="table-cell mat-header-cell border-left border-right">
                             {{ availabilityColumns[ltc.id]?.title }}
                         </th>
                     </ng-container>
@@ -46,7 +46,7 @@
                         <ng-container *ngFor="let ratePlanColumn of rpc[ltc.id]">
                             <!-- Rates Summary -->
                             <ng-container *ngIf="rateSummaryColumns$ | async as rsc">
-                                <th class="table-cell mat-header-cell border-right-light">
+                                <th colspan="2" class="table-cell mat-header-cell border-right-light">
                                     {{ rsc[ratePlanColumn.id]?.title }}
                                 </th>
                             </ng-container>
@@ -55,7 +55,7 @@
                             <ng-container *ngIf="channelsColumns$ | async as cc">
                                 <ng-container
                                     *ngFor="let channelColumn of cc[ratePlanColumn.id]; let first = first; let last = last">
-                                    <th [ngClass]="{ 'border-right-light': !last }"
+                                    <th colspan="2" [ngClass]="{ 'border-right-light': !last }"
                                         class="table-cell mat-header-cell border-right">
                                         {{ channelColumn.title }}
                                     </th>
@@ -65,6 +65,45 @@
                     </ng-container>
                 </ng-container>
             </tr>
+
+            <!-- 4th header row -->
+            <tr>
+                <ng-container *ngFor="let ltc of lodgingTypeColumns$ | async">
+                    <!-- Rateplan -->
+                    <ng-container *ngIf="ratePlanColumns$ | async as rpc">
+                        <ng-container *ngFor="let ratePlanColumn of rpc[ltc.id]">
+                            <!-- Rates Summary -->
+                            <ng-container *ngIf="rateSummaryColumns$ | async as rsc">
+                                <!-- Rates -->
+                                <th class="table-cell mat-header-cell border-right-light">
+                                    Rates
+                                </th>
+                                <!-- Restrictions -->
+                                <th class="table-cell mat-header-cell border-right-light">
+                                    Restrictions
+                                </th>
+                            </ng-container>
+                            <!-- Channels (show if expanded) -->
+                            <ng-container *ngIf="channelsColumns$ | async as cc">
+                                <ng-container
+                                    *ngFor="let channelColumn of cc[ratePlanColumn.id]; let first = first; let last = last">
+                                    <!-- Rates -->
+                                    <th [ngClass]="{ 'border-right-light': !last }"
+                                        class="table-cell mat-header-cell border-right">
+                                        Rate
+                                    </th>
+                                    <!-- Restrictions -->
+                                    <th [ngClass]="{ 'border-right-light': !last }"
+                                        class="table-cell mat-header-cell border-right">
+                                        Restrictions
+                                    </th>
+                                </ng-container>
+                            </ng-container>
+                        </ng-container>
+                    </ng-container>
+                </ng-container>
+            </tr>
+
         </thead>
         <tbody>
             <tr *ngFor="let date of dateRows$ | async; let firstRow = first"
