@@ -1,12 +1,13 @@
 <!-- Filters -->
 <ul>
-    <li>Show rates: {{ (ratesUi$ | async) }} - <span style="cursor:pointer;" (click)="testUpdate('rates')">toggle</span>
+    <li>Hide rates: {{ (store.getRatesUi(packagePath) | async) }} - <span style="cursor:pointer;"
+            (click)="testUpdate('rates')">toggle</span>
     </li>
-    <li>Show restrictions: {{ (store.getRestrictionsUi(packagePath) | async) }} - <span style="cursor:pointer;"
+    <li>Hide restrictions: {{ (store.getRestrictionsUi(packagePath) | async) }} - <span style="cursor:pointer;"
             (click)="testUpdate('restrictions')">toggle</span></li>
-    <li>Show all section: {{ (store.getAllUi(packagePath) | async) }} - <span style="cursor:pointer;"
+    <li>Hide all section: {{ (store.getAllUi(packagePath) | async) }} - <span style="cursor:pointer;"
             (click)="testUpdate('all')">toggle</span></li>
-    <li>Show availability: {{ (store.getAvailabilityUi(packagePath) | async) }} - <span style="cursor:pointer;"
+    <li>Hide availability: {{ (hideAvailability$ | async) }} - <span style="cursor:pointer;"
             (click)="testUpdate('availability')">toggle</span></li>
     <li>Hide following channels: <span
             *ngFor="let channelId of store.getChannelsUi(packagePath) | async"></span>{{ channelId }}
@@ -42,10 +43,12 @@
             <tr>
                 <ng-container *ngFor="let ltc of lodgingTypeColumns$ | async">
                     <!-- Available -->
-                    <ng-container *ngIf="availabilityColumns$ | async as availabilityColumns">
-                        <th rowspan="3" class="table-cell mat-header-cell border-left border-right">
-                            {{ availabilityColumns[ltc.id]?.title }}
-                        </th>
+                    <ng-container *ngIf="!(hideAvailability$ | async)">
+                        <ng-container *ngIf="availabilityColumns$ | async as availabilityColumns">
+                            <th rowspan="3" class="table-cell mat-header-cell border-left border-right">
+                                {{ availabilityColumns[ltc.id]?.title }}
+                            </th>
+                        </ng-container>
                     </ng-container>
                     <!-- Rateplan -->
                     <ng-container *ngIf="ratePlanColumns$ | async as rpc">
@@ -137,7 +140,7 @@
 
                 <ng-container *ngFor="let ltc of lodgingTypeColumns$ | async">
                     <!-- Available -->
-                    <td class="table-cell mat-cell border-left border-right">
+                    <td *ngIf="!(hideAvailability$ | async)" class="table-cell mat-cell border-left border-right">
                         <ng-container *ngIf="availabilityCells$ | async as availabilityCells">
                             <ss-siteminder-availability [data]="availabilityCells[date][ltc.id]">
                             </ss-siteminder-availability>

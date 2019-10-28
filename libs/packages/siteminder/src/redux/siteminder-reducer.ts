@@ -12,10 +12,10 @@ export class SiteMinderAppState extends AppState {
 }
 
 export class SiteMinderUi {
-    public rates: boolean;
-    public restrictions: boolean;
-    public all: boolean;
-    public availability: boolean;
+    public hideRates: boolean;
+    public hideRestrictions: boolean;
+    public hideAll: boolean;
+    public hideAvailability: boolean;
     public channels: number[];
     public ratePlans: number[];
     public lodgingTypes: number[];
@@ -38,7 +38,7 @@ export function siteMinderReducer(state = new SiteMinderState(), action: any): S
             const castedAction: ReduxAction<{ packagePath: string, value: boolean }> = action;
             const { packagePath, value } = castedAction.payload;
             newState.ui[packagePath] = newState.ui[packagePath] ? new SiteMinderUi(newState.ui[packagePath]) : new SiteMinderUi({});
-            newState.ui[packagePath].rates = value;
+            newState.ui[packagePath].hideRates = value;
 
             return newState;
         }
@@ -46,7 +46,7 @@ export function siteMinderReducer(state = new SiteMinderState(), action: any): S
             const castedAction: ReduxAction<{ packagePath: string, value: boolean }> = action;
             const { packagePath, value } = castedAction.payload;
             newState.ui[packagePath] = newState.ui[packagePath] ? newState.ui[packagePath] : new SiteMinderUi({});
-            newState.ui[packagePath].restrictions = value;
+            newState.ui[packagePath].hideRestrictions = value;
 
             return newState;
         }
@@ -54,7 +54,7 @@ export function siteMinderReducer(state = new SiteMinderState(), action: any): S
             const castedAction: ReduxAction<{ packagePath: string, value: boolean }> = action;
             const { packagePath, value } = castedAction.payload;
             newState.ui[packagePath] = newState.ui[packagePath] ? newState.ui[packagePath] : new SiteMinderUi({});
-            newState.ui[packagePath].all = value;
+            newState.ui[packagePath].hideAll = value;
 
             return newState;
         }
@@ -62,10 +62,35 @@ export function siteMinderReducer(state = new SiteMinderState(), action: any): S
             const castedAction: ReduxAction<{ packagePath: string, value: boolean }> = action;
             const { packagePath, value } = castedAction.payload;
             newState.ui[packagePath] = newState.ui[packagePath] ? newState.ui[packagePath] : new SiteMinderUi({});
-            newState.ui[packagePath].availability = value;
+            newState.ui[packagePath].hideAvailability = value;
 
             return newState;
         }
+        case SITE_MINDER_REDUX_KEY + SiteMinderActions.UPDATE_CHANNELS_UI: {
+            const castedAction: ReduxAction<{ packagePath: string, value: number[] }> = action;
+            const { packagePath, value } = castedAction.payload;
+            newState.ui[packagePath] = newState.ui[packagePath] ? newState.ui[packagePath] : new SiteMinderUi({});
+            newState.ui[packagePath].channels = value;
+
+            return newState;
+        }
+        case SITE_MINDER_REDUX_KEY + SiteMinderActions.UPDATE_RATE_PLANS_UI: {
+            const castedAction: ReduxAction<{ packagePath: string, value: number[] }> = action;
+            const { packagePath, value } = castedAction.payload;
+            newState.ui[packagePath] = newState.ui[packagePath] ? newState.ui[packagePath] : new SiteMinderUi({});
+            newState.ui[packagePath].ratePlans = value;
+
+            return newState;
+        }
+        case SITE_MINDER_REDUX_KEY + SiteMinderActions.UPDATE_LODGING_TYPES_UI: {
+            const castedAction: ReduxAction<{ packagePath: string, value: number[] }> = action;
+            const { packagePath, value } = castedAction.payload;
+            newState.ui[packagePath] = newState.ui[packagePath] ? newState.ui[packagePath] : new SiteMinderUi({});
+            newState.ui[packagePath].lodgingTypes = value;
+
+            return newState;
+        }
+
         default:
             return {
                 ...state

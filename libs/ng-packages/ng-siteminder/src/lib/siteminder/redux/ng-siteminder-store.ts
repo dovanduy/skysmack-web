@@ -15,25 +15,25 @@ export class NgSiteMinderStore {
 
     public getRatesUi(packagePath: string): Observable<boolean> {
         return this.getUiState(packagePath).pipe(
-            map(uiState => uiState.rates ? uiState.rates : false),
+            map(uiState => uiState.hideRates ? uiState.hideRates : false),
         );
     }
 
     public getRestrictionsUi(packagePath: string): Observable<boolean> {
         return this.getUiState(packagePath).pipe(
-            map(uiState => uiState.restrictions ? uiState.restrictions : false),
+            map(uiState => uiState.hideRestrictions ? uiState.hideRestrictions : false),
         );
     }
 
     public getAllUi(packagePath: string): Observable<boolean> {
         return this.getUiState(packagePath).pipe(
-            map(uiState => uiState.all ? uiState.all : false),
+            map(uiState => uiState.hideAll ? uiState.hideAll : false),
         );
     }
 
     public getAvailabilityUi(packagePath: string): Observable<boolean> {
         return this.getUiState(packagePath).pipe(
-            map(uiState => uiState.availability ? uiState.availability : false),
+            map(uiState => uiState.hideAvailability ? uiState.hideAvailability : false),
         );
     }
 

@@ -9,6 +9,7 @@ import { RateSummary } from '../../../models/rate-summary';
 import { RateInfo } from '../../../models/rate-info';
 import { NgSiteMinderStore, NgSiteMinderActions } from '@skysmack/ng-siteminder';
 import { map, take, tap } from 'rxjs/operators';
+import { convertObservableToBehaviorSubject } from '@skysmack/ng-framework';
 
 @Component({
   selector: 'ss-siteminder-table',
@@ -21,6 +22,15 @@ export class SiteMinderTableComponent implements OnInit, OnDestroy {
   private subscriptionHandler = new SubscriptionHandler();
   private start = new Date();
   private end = new Date();
+
+  // Filters
+  public hideRates$: BehaviorSubject<boolean>;
+  public hideAvailability$: BehaviorSubject<boolean>;
+  public hideAll$: BehaviorSubject<boolean>;
+  public hideRestrictions$: BehaviorSubject<boolean>;
+  public hideChannels$: BehaviorSubject<number[]>;
+  public hideRatePlans$: BehaviorSubject<number[]>;
+  public hideLodgingTypes$: BehaviorSubject<number[]>;
 
   // Columns
   public dateColumn$: BehaviorSubject<SiteMinderColumn>;
@@ -46,19 +56,35 @@ export class SiteMinderTableComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
+    // General
     this.packagePath = this.router.url.split('/')[1];
 
+    // Filters
+    this.hideRates$ = convertObservableToBehaviorSubject(this.store.getRatesUi(this.packagePath), false);
+    this.hideAvailability$ = convertObservableToBehaviorSubject(this.store.getAvailabilityUi(this.packagePath), false);
+    this.hideAll$ = convertObservableToBehaviorSubject(this.store.getAllUi(this.packagePath), false);
+    this.hideRestrictions$ = convertObservableToBehaviorSubject(this.store.getRestrictionsUi(this.packagePath), false);
+    this.hideChannels$ = convertObservableToBehaviorSubject(this.store.getChannelsUi(this.packagePath), []);
+    this.hideRatePlans$ = convertObservableToBehaviorSubject(this.store.getRatePlansUi(this.packagePath), []);
+    this.hideLodgingTypes$ = convertObservableToBehaviorSubject(this.store.getLodgingTypesUi(this.packagePath), []);
+
+    // Columns
     this.dateColumn$ = this.service.dateColumn$;
     this.lodgingTypeColumns$ = this.service.lodgingTypeColumns$;
     this.availabilityColumns$ = this.service.availabilityColumns$;
     this.ratePlanColumns$ = this.service.ratePlanColumns$;
     this.rateSummaryColumns$ = this.service.rateSummaryColumns$;
     this.channelsColumns$ = this.service.channelsColumns$;
+
+    // Rows
     this.dateRows$ = this.service.dateRows$;
+
+    // Cells
     this.availabilityCells$ = this.service.availabilityCells$;
     this.rateSummaryCells$ = this.service.rateSummaryCells$;
     this.channelsCells$ = this.service.channelsCells$;
 
+    // Generate
     this.subscriptionHandler.register(this.service.generateColumns(this.packagePath).subscribe());
     this.subscriptionHandler.register(this.service.generateCells(this.packagePath, this.start, this.addDays(this.end, 29)).subscribe());
   }
@@ -118,14 +144,16 @@ export class SiteMinderTableComponent implements OnInit, OnDestroy {
   public calculateLodgingTypeColspan(ltcId: number): number {
     const ratePlanColumns = this.ratePlanColumns$.getValue();
     const channelsColumns = this.channelsColumns$.getValue();
+    const availabilityColumn = !this.hideAvailability$.getValue() ? 1 : 0;
+
     if (channelsColumns) {
       const result = Object.keys(ratePlanColumns).map(key => {
         return channelsColumns[key] ? (channelsColumns[key].length * 2) + 2 : 0;
       }).reduce((a, b) => a + b, 0);
       // Add one extra for available column
-      return result !== 0 ? result + 1 : 1;
+      return result !== 0 ? result + availabilityColumn : availabilityColumn;
     } else {
-      return 1;
+      return availabilityColumn;
     }
   }
 

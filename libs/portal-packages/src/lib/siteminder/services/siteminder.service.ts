@@ -112,7 +112,7 @@ export class SiteMinderService {
             map(([ratePlanColumns, channels]) => {
                 return Object.keys(ratePlanColumns ? ratePlanColumns : []).forEach(key => ratePlanColumns[key].forEach(rpc => {
                     // RateSummary columns
-                    rateSummaryColumns[rpc.id] = new SiteMinderColumn({ id: rpc.id, title: 'Rates (all)' });
+                    rateSummaryColumns[rpc.id] = new SiteMinderColumn({ id: rpc.id, title: 'All' });
                     this.rateSummaryColumns$.next(rateSummaryColumns);
 
                     // Channel columns
