@@ -153,34 +153,6 @@ export class SiteMinderTableComponent implements OnInit, OnDestroy {
     }
   }
 
-  // public setLodgingTypeColspan(): void {
-  //   this.lodgingTypeColspan$ = combineLatest([
-  //     this.ratePlanColumns$,
-  //     this.channelsColumns$,
-  //     this.hideRestrictions$,
-  //     this.hideRates$,
-  //     this.hideAvailability$
-  //   ]).pipe(
-  //     map(([ratePlanColumns, channelsColumns, hideRestrictions, hideRates, hideAvailability]) => {
-  //       const rateColumns = !hideRates ? 1 : 0;
-  //       const restrictionsColumns = !hideRestrictions ? 1 : 0;
-  //       const availabilityColumn = !hideAvailability ? 1 : 0;
-
-  //       const channelMultiplier = rateColumns + restrictionsColumns;
-  //       const rateSummaryColumn = 1;
-  //       const restrictionSummaryColumn = 1;
-  //       const summaries = rateSummaryColumn + restrictionSummaryColumn;
-
-  //       const result = Object.keys(ratePlanColumns).map(key => {
-  //         return channelsColumns[key] ? (channelsColumns[key].length * channelMultiplier) + summaries : 0;
-  //       }).reduce((a, b) => a + b, 0);
-
-  //       const nextValue = result !== 0 ? result + availabilityColumn : availabilityColumn;
-  //       return nextValue;
-  //     })
-  //   );
-  // }
-
   public setChannelColspan(): void {
     this.channelsColspan$ = combineLatest(
       this.hideRestrictions$.pipe(distinctUntilChanged()),
@@ -221,7 +193,6 @@ export class SiteMinderTableComponent implements OnInit, OnDestroy {
   public setLodgingTypeColspan(): void {
     this.lodgingTypeColspan$ = combineLatest([
       this.hideAvailability$.pipe(distinctUntilChanged()),
-      // this.allColspan$.pipe(distinctUntilChanged()),
       this.ratePlanColspan$.pipe(distinctUntilChanged()),
       this.ratePlanColumns$.pipe(distinctUntilChanged((prev, curr) => JSON.stringify(prev) === JSON.stringify(curr))),
     ]).pipe(
