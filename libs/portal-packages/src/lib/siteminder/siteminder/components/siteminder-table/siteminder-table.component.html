@@ -52,11 +52,14 @@
                     </ng-container>
                     <!-- Rateplan -->
                     <ng-container *ngIf="ratePlanColumns$ | async as rpc">
-                        <ng-container *ngFor="let ratePlanColumn of rpc[ltc.id]; let first = first; let last = last">
-                            <th [attr.colspan]="(setRatePlanColspan | calculateColspan:ratePlanColumn.id) | async"
-                                class="table-cell mat-header-cell border-right">
-                                {{ ratePlanColumn.title }}
-                            </th>
+                        <ng-container *ngIf="(ratePlanColspan$ | async) !== 0">
+                            <ng-container
+                                *ngFor="let ratePlanColumn of rpc[ltc.id]; let first = first; let last = last">
+                                <th [attr.colspan]="(ratePlanColspan$ | async)"
+                                    class="table-cell mat-header-cell border-right">
+                                    {{ ratePlanColumn.title }}
+                                </th>
+                            </ng-container>
                         </ng-container>
                     </ng-container>
                 </ng-container>
@@ -69,9 +72,10 @@
                     <ng-container *ngIf="ratePlanColumns$ | async as rpc">
                         <ng-container *ngFor="let ratePlanColumn of rpc[ltc.id]">
                             <!-- All section -->
-                            <ng-container *ngIf="!(hideRates$ | async) || !(hideRestrictions$ | async)">
+                            <ng-container *ngIf="(allColspan$ | async) !== 0">
                                 <ng-container *ngIf="rateSummaryColumns$ | async as rsc">
-                                    <th colspan="2" class="table-cell mat-header-cell border-right-light">
+                                    <th [attr.colspan]="(allColspan$ | async)"
+                                        class="table-cell mat-header-cell border-right-light">
                                         {{ rsc[ratePlanColumn.id]?.title }}
                                     </th>
                                 </ng-container>
@@ -79,12 +83,15 @@
 
                             <!-- Channels (show if expanded) -->
                             <ng-container *ngIf="channelsColumns$ | async as cc">
-                                <ng-container
-                                    *ngFor="let channelColumn of cc[ratePlanColumn.id]; let first = first; let last = last">
-                                    <th colspan="2" [ngClass]="{ 'border-right-light': !last }"
-                                        class="table-cell mat-header-cell border-right">
-                                        {{ channelColumn.title }}
-                                    </th>
+                                <ng-container *ngIf="(channelsColspan$ | async) !== 0">
+                                    <ng-container
+                                        *ngFor="let channelColumn of cc[ratePlanColumn.id]; let first = first; let last = last">
+                                        <th [attr.colspan]="(channelsColspan$ | async)"
+                                            [ngClass]="{ 'border-right-light': !last }"
+                                            class="table-cell mat-header-cell border-right">
+                                            {{ channelColumn.title }}
+                                        </th>
+                                    </ng-container>
                                 </ng-container>
                             </ng-container>
                         </ng-container>
@@ -98,19 +105,25 @@
                     <!-- Rateplan -->
                     <ng-container *ngIf="ratePlanColumns$ | async as rpc">
                         <ng-container *ngFor="let ratePlanColumn of rpc[ltc.id]">
+
                             <!-- All section -->
                             <ng-container *ngIf="rateSummaryColumns$ | async as rsc">
-                                <!-- Rates -->
-                                <ng-container *ngIf="!(hideRates$ | async)">
-                                    <th class="table-cell mat-header-cell border-right-light">
-                                        Rates
-                                    </th>
+                                <ng-container *ngIf="!(hideAll$ | async)">
+                                    <!-- Rates -->
+                                    <ng-container *ngIf="!(hideRates$ | async)">
+                                        <th class="table-cell mat-header-cell border-right-light">
+                                            Rates
+                                        </th>
+                                    </ng-container>
+                                    <!-- Restrictions -->
+                                    <ng-container *ngIf="!(hideRestrictions$ | async)">
+                                        <th class="table-cell mat-header-cell border-right-light">
+                                            Restrictions
+                                        </th>
+                                    </ng-container>
                                 </ng-container>
-                                <!-- Restrictions -->
-                                <th class="table-cell mat-header-cell border-right-light">
-                                    Restrictions
-                                </th>
                             </ng-container>
+
                             <!-- Channels (show if expanded) -->
                             <ng-container *ngIf="channelsColumns$ | async as cc">
                                 <ng-container
@@ -123,12 +136,15 @@
                                         </th>
                                     </ng-container>
                                     <!-- Restrictions -->
-                                    <th [ngClass]="{ 'border-right-light': !last }"
-                                        class="table-cell mat-header-cell border-right">
-                                        Restrictions
-                                    </th>
+                                    <ng-container *ngIf="!(hideRestrictions$ | async)">
+                                        <th [ngClass]="{ 'border-right-light': !last }"
+                                            class="table-cell mat-header-cell border-right">
+                                            Restrictions
+                                        </th>
+                                    </ng-container>
                                 </ng-container>
                             </ng-container>
+
                         </ng-container>
                     </ng-container>
                 </ng-container>
@@ -156,7 +172,7 @@
                     <!-- Rateplan -->
                     <ng-container *ngIf="ratePlanColumns$ | async as rpc">
                         <ng-container *ngFor="let ratePlanColumn of rpc[ltc.id]; let last = last">
-                            <!-- Rates Summary: Rates -->
+                            <!-- All section: Rates summary -->
                             <td class="table-cell mat-cell border-right-light">
                                 <ng-container *ngIf="rateSummaryCells$ | async as rsc">
                                     <ss-siteminder-rate-summary [data]="rsc[date][ratePlanColumn.id][ltc.id]">
@@ -164,7 +180,7 @@
                                 </ng-container>
                             </td>
 
-                            <!-- Rates Summary: Restrictions -->
+                            <!-- All section: Restrictions summary -->
                             <td class="table-cell mat-cell border-right-light">
                                 <ng-container *ngIf="rateSummaryCells$ | async as rsc">
                                     <ss-siteminder-restrictions-summary [data]="">

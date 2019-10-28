@@ -1,15 +1,14 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { BehaviorSubject, Observable, combineLatest } from 'rxjs';
 import { StrIndex, SubscriptionHandler, LocalObject } from '@skysmack/framework';
-import { LodgingTypeAvailability, LodgingTypeAvailabilityKey, SiteMinderUi } from '@skysmack/packages-siteminder';
+import { LodgingTypeAvailability, LodgingTypeAvailabilityKey } from '@skysmack/packages-siteminder';
 import { Router } from '@angular/router';
 import { SiteMinderColumn } from '../../../models/siteminder-column';
 import { SiteMinderService } from '../../../services/siteminder.service';
 import { RateSummary } from '../../../models/rate-summary';
 import { RateInfo } from '../../../models/rate-info';
 import { NgSiteMinderStore, NgSiteMinderActions } from '@skysmack/ng-siteminder';
-import { map, take, tap } from 'rxjs/operators';
-import { convertObservableToBehaviorSubject } from '@skysmack/ng-framework';
+import { map, take, tap, distinctUntilChanged } from 'rxjs/operators';
 
 @Component({
   selector: 'ss-siteminder-table',
@@ -25,6 +24,9 @@ export class SiteMinderTableComponent implements OnInit, OnDestroy {
 
   // Colspan
   public lodgingTypeColspan$: Observable<number>;
+  public ratePlanColspan$: Observable<number>;
+  public allColspan$: Observable<number>;
+  public channelsColspan$: Observable<number>;
 
   // Filters
   public hideRates$: Observable<boolean>;
@@ -87,11 +89,16 @@ export class SiteMinderTableComponent implements OnInit, OnDestroy {
     this.rateSummaryCells$ = this.service.rateSummaryCells$;
     this.channelsCells$ = this.service.channelsCells$;
 
-    // Generate
+
+    // Colspans
+    this.setChannelColspan();
+    this.setAllColspan();
+    this.setRatePlanColspan();
     this.setLodgingTypeColspan();
-    this.setHideAll();
+
+    // Generate
     this.subscriptionHandler.register(this.service.generateColumns(this.packagePath).subscribe());
-    this.subscriptionHandler.register(this.service.generateCells(this.packagePath, this.start, this.addDays(this.end, 29)).subscribe());
+    // this.subscriptionHandler.register(this.service.generateCells(this.packagePath, this.start, this.addDays(this.end, 29)).subscribe());
   }
 
   ngOnDestroy() {
@@ -146,58 +153,86 @@ export class SiteMinderTableComponent implements OnInit, OnDestroy {
     }
   }
 
+  // public setLodgingTypeColspan(): void {
+  //   this.lodgingTypeColspan$ = combineLatest([
+  //     this.ratePlanColumns$,
+  //     this.channelsColumns$,
+  //     this.hideRestrictions$,
+  //     this.hideRates$,
+  //     this.hideAvailability$
+  //   ]).pipe(
+  //     map(([ratePlanColumns, channelsColumns, hideRestrictions, hideRates, hideAvailability]) => {
+  //       const rateColumns = !hideRates ? 1 : 0;
+  //       const restrictionsColumns = !hideRestrictions ? 1 : 0;
+  //       const availabilityColumn = !hideAvailability ? 1 : 0;
+
+  //       const channelMultiplier = rateColumns + restrictionsColumns;
+  //       const rateSummaryColumn = 1;
+  //       const restrictionSummaryColumn = 1;
+  //       const summaries = rateSummaryColumn + restrictionSummaryColumn;
+
+  //       const result = Object.keys(ratePlanColumns).map(key => {
+  //         return channelsColumns[key] ? (channelsColumns[key].length * channelMultiplier) + summaries : 0;
+  //       }).reduce((a, b) => a + b, 0);
+
+  //       const nextValue = result !== 0 ? result + availabilityColumn : availabilityColumn;
+  //       return nextValue;
+  //     })
+  //   );
+  // }
+
+  public setChannelColspan(): void {
+    this.channelsColspan$ = combineLatest(
+      this.hideRestrictions$.pipe(distinctUntilChanged()),
+      this.hideRates$.pipe(distinctUntilChanged())
+    ).pipe(
+      map(([hideRestrictions, hideRates]) => {
+        const restrictionsColspan = !hideRestrictions ? 1 : 0;
+        const rateColspan = !hideRates ? 1 : 0;
+        return restrictionsColspan + rateColspan;
+      })
+    )
+  }
+
+  public setAllColspan(): void {
+    this.allColspan$ = combineLatest(
+      this.channelsColspan$.pipe(distinctUntilChanged()),
+      this.hideAll$.pipe(distinctUntilChanged())
+    ).pipe(
+      map(([channelsColspan, hideAll]) => hideAll ? 0 : channelsColspan)
+    )
+  }
+
+  public setRatePlanColspan(): void {
+    this.ratePlanColspan$ = combineLatest([
+      this.channelsColumns$.pipe(distinctUntilChanged((prev, curr) => JSON.stringify(prev) === JSON.stringify(curr))),
+      this.channelsColspan$.pipe(distinctUntilChanged()),
+      this.allColspan$.pipe(distinctUntilChanged()),
+    ]).pipe(
+      map(([channelsColumns, channelsColspan, allColspan]) => {
+        const keys = Object.keys(channelsColumns)
+        const channelColumnsCount = keys[0] ? channelsColumns[keys[0]].length : 0;
+        const colspan = (channelColumnsCount * channelsColspan) + allColspan;
+        return colspan;
+      })
+    );
+  }
+
   public setLodgingTypeColspan(): void {
     this.lodgingTypeColspan$ = combineLatest([
-      this.ratePlanColumns$,
-      this.channelsColumns$,
-      this.hideRestrictions$,
-      this.hideRates$,
-      this.hideAvailability$
+      this.hideAvailability$.pipe(distinctUntilChanged()),
+      // this.allColspan$.pipe(distinctUntilChanged()),
+      this.ratePlanColspan$.pipe(distinctUntilChanged()),
+      this.ratePlanColumns$.pipe(distinctUntilChanged((prev, curr) => JSON.stringify(prev) === JSON.stringify(curr))),
     ]).pipe(
-      map(([ratePlanColumns, channelsColumns, hideRestrictions, hideRates, hideAvailability]) => {
-        const rateColumns = !hideRates ? 1 : 0;
-        const restrictionsColumns = !hideRestrictions ? 1 : 0;
-        const availabilityColumn = !hideAvailability ? 1 : 0;
-
-        const channelMultiplier = rateColumns + restrictionsColumns;
-        const rateSummaryColumn = 1;
-        const restrictionSummaryColumn = 1;
-        const summaries = rateSummaryColumn + restrictionSummaryColumn;
-
-        const result = Object.keys(ratePlanColumns).map(key => {
-          return channelsColumns[key] ? (channelsColumns[key].length * channelMultiplier) + summaries : 0;
-        }).reduce((a, b) => a + b, 0);
-
-        const nextValue = result !== 0 ? result + availabilityColumn : availabilityColumn;
-        return nextValue;
+      map(([hideAvailability, ratePlanColspan, ratePlanColumns]) => {
+        const availabilityColspan = !hideAvailability ? 1 : 0;
+        const keys = Object.keys(ratePlanColumns)
+        const ratePlanColumnsCount = keys[0] ? ratePlanColumns[keys[0]].length : 0;
+        const colspan = (ratePlanColumnsCount * ratePlanColspan) + availabilityColspan;
+        return colspan;
       })
     );
-  }
-
-  public setRatePlanColspan = (ratePlanColumnId: number): Observable<number> => {
-    return combineLatest([
-      this.channelsColumns$,
-      this.hideRestrictions$,
-      this.hideRates$,
-    ]).pipe(
-      map(([channelsColumns, hideRestrictions, hideRates]) => {
-        const restrictionsColumns = !hideRestrictions ? 1 : 0;
-        const restrictionSummaryColumn = !hideRestrictions ? 1 : 0;
-        const rateColumns = !hideRates ? 1 : 0;
-        const rateSummaryColumn = !hideRates ? 1 : 0;
-
-        const channelMultiplier = rateColumns + restrictionsColumns;
-        const summaries = rateSummaryColumn + restrictionSummaryColumn;
-
-        const result = channelsColumns[ratePlanColumnId] ? (channelsColumns[ratePlanColumnId].length * channelMultiplier) + summaries : 0;
-        const nextValue = result !== 0 ? result : summaries;
-        return nextValue;
-      })
-    );
-  }
-
-  public setHideAll(): void {
-
   }
 
   private addDays(date: Date, days: number) {
