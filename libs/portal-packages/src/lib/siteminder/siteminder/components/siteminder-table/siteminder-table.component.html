@@ -172,21 +172,29 @@
                     <!-- Rateplan -->
                     <ng-container *ngIf="ratePlanColumns$ | async as rpc">
                         <ng-container *ngFor="let ratePlanColumn of rpc[ltc.id]; let last = last">
-                            <!-- All section: Rates summary -->
-                            <td class="table-cell mat-cell border-right-light">
-                                <ng-container *ngIf="rateSummaryCells$ | async as rsc">
-                                    <ss-siteminder-rate-summary [data]="rsc[date][ratePlanColumn.id][ltc.id]">
-                                    </ss-siteminder-rate-summary>
+                            <!-- All section -->
+                            <ng-container *ngIf="!(hideAll$ | async)">
+                                <!-- Rates summary -->
+                                <ng-container *ngIf="!(hideRates$ | async)">
+                                    <td class="table-cell mat-cell border-right-light">
+                                        <ng-container *ngIf="rateSummaryCells$ | async as rsc">
+                                            <ss-siteminder-rate-summary [data]="rsc[date][ratePlanColumn.id][ltc.id]">
+                                            </ss-siteminder-rate-summary>
+                                        </ng-container>
+                                    </td>
                                 </ng-container>
-                            </td>
 
-                            <!-- All section: Restrictions summary -->
-                            <td class="table-cell mat-cell border-right-light">
-                                <ng-container *ngIf="rateSummaryCells$ | async as rsc">
-                                    <ss-siteminder-restrictions-summary [data]="">
-                                    </ss-siteminder-restrictions-summary>
+                                <!-- Restrictions summary -->
+                                <ng-container *ngIf="!(hideRestrictions$ | async)">
+                                    <td class="table-cell mat-cell border-right-light">
+                                        <ng-container *ngIf="rateSummaryCells$ | async as rsc">
+                                            <ss-siteminder-restrictions-summary [data]="">
+                                            </ss-siteminder-restrictions-summary>
+                                        </ng-container>
+                                    </td>
                                 </ng-container>
-                            </td>
+                            </ng-container>
+
 
                             <!-- Channels (show if expanded) -->
                             <ng-container *ngIf="channelsColumns$ | async as cc">
@@ -202,12 +210,14 @@
                                             </td>
                                         </ng-container>
                                         <!-- Channel: Restrictions -->
-                                        <td class="table-cell mat-cell border-right"
-                                            [ngClass]="{ 'border-right-light': !last }">
-                                            <!-- Restrictions -->
-                                            <ss-siteminder-restrictions [data]="">
-                                            </ss-siteminder-restrictions>
-                                        </td>
+                                        <ng-container *ngIf="!(hideRestrictions$ | async)">
+                                            <td class="table-cell mat-cell border-right"
+                                                [ngClass]="{ 'border-right-light': !last }">
+                                                <!-- Restrictions -->
+                                                <ss-siteminder-restrictions [data]="">
+                                                </ss-siteminder-restrictions>
+                                            </td>
+                                        </ng-container>
                                     </ng-container>
 
                                 </ng-container>

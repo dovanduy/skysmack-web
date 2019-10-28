@@ -89,7 +89,6 @@ export class SiteMinderTableComponent implements OnInit, OnDestroy {
     this.rateSummaryCells$ = this.service.rateSummaryCells$;
     this.channelsCells$ = this.service.channelsCells$;
 
-
     // Colspans
     this.setChannelColspan();
     this.setAllColspan();
@@ -98,7 +97,7 @@ export class SiteMinderTableComponent implements OnInit, OnDestroy {
 
     // Generate
     this.subscriptionHandler.register(this.service.generateColumns(this.packagePath).subscribe());
-    // this.subscriptionHandler.register(this.service.generateCells(this.packagePath, this.start, this.addDays(this.end, 29)).subscribe());
+    this.subscriptionHandler.register(this.service.generateCells(this.packagePath, this.start, this.addDays(this.end, 29)).subscribe());
   }
 
   ngOnDestroy() {
