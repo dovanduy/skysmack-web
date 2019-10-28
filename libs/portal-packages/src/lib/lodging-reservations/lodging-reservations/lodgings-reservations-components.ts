@@ -16,6 +16,8 @@ import { getFieldsRoutes } from '@skysmack/portal-fields';
 import { LODGING_RESERVATIONS_AREA_KEY, LODGING_RESERVATIONS_ADDITIONAL_PATHS } from '@skysmack/packages-lodging-reservations';
 import { DeparturesDashboardComponent } from './departures-dashboard/departures-dashboard.component';
 import { InStayDashboardComponent } from './in-stay-dashboard/in-stay-dashboard.component';
+import { CheckinDialogComponent } from './checkin-dialog/checkin-dialog.component';
+import { CheckinFormComponent } from './checkin-form/checkin-form.component';
 
 const lodgingReservationChildrenRoutes = [
     { path: 'create', component: LodgingsReservationsCreateComponent, pathMatch: 'full' },
@@ -54,7 +56,9 @@ export const lodgingReservationsComponents: any[] = [
     LodgingTypeSelectFieldComponent,
     LodgingTypeSelectDialogComponent,
     LodgingSelectFieldComponent,
-    LodgingSelectDialogComponent
+    LodgingSelectDialogComponent,
+    CheckinDialogComponent,
+    CheckinFormComponent
 ];
 
 export const lodgingReservationsEntryComponents: any[] = [
@@ -64,5 +68,7 @@ export const lodgingReservationsEntryComponents: any[] = [
     LodgingTypeSelectFieldComponent,
     LodgingTypeSelectDialogComponent,
     LodgingSelectFieldComponent,
-    LodgingSelectDialogComponent
+    LodgingSelectDialogComponent,
+    CheckinDialogComponent,
+    CheckinFormComponent
 ];

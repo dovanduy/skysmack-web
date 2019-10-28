@@ -6,3 +6,4 @@ export * from './lodging-reservations.module';
 export * from './ng-lodgings-reservations-menu-provider';
 export * from './ng-lodging-reservations-fields-config';
 export * from './ng-lodging-reservations-settings-fields-config';
+export * from './checkin-fields-config';

@@ -1,0 +1,10 @@
+<h2 mat-dialog-title>{{ 'CHECKIN_DIALOG.TITLE' | translate }}</h2>
+
+<div mat-dialog-content>
+    <ss-checkin-form></ss-checkin-form>
+</div>
+<div mat-dialog-actions>
+    <button mat-raised-button (click)="cancel()">{{ 'CHECKIN_DIALOG.CANCEL' | translate }}</button>
+    <button mat-raised-button color="primary"
+        (click)="checkIn()">{{ 'CHECKIN_DIALOG.CHECKIN' | translate }}</button>
+</div>

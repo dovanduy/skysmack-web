@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
-import { LocalObject, LocalObjectStatus, DisplayColumn, EnumHelpers, PagedQuery } from '@skysmack/framework';
+import { LocalObject, LocalObjectStatus, DisplayColumn, EnumHelpers } from '@skysmack/framework';
 import { LodgingReservation, LODGING_RESERVATIONS_AREA_KEY, LODGING_RESERVATIONS_ADDITIONAL_PATHS } from '@skysmack/packages-lodging-reservations';
 import { NgLodgingTypesStore, NgLodgingsStore, NgLodgingsActions, NgLodgingTypesActions } from '@skysmack/ng-lodgings';
 import { LoadedPackage, NgFieldStore } from '@skysmack/ng-framework';

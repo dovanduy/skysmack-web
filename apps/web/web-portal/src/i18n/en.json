@@ -1121,6 +1121,11 @@
 			}
 		}
 	},
+	"CHECKIN_DIALOG": {
+		"TITLE": "New checkin",
+		"CHECKIN": "Checkin",
+		"CANCEL": "Cancel"
+	},
 	"LODGING_SELECT_FIELD": {
 		"SELECT_LODGING": "Select lodging"
 	},

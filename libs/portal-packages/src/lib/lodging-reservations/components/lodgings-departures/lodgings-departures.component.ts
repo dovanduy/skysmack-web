@@ -11,6 +11,7 @@ import { NgLodgingReservationsFieldsConfig } from '../../ng-lodging-reservations
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { NgLodgingReservationsStore, NgLodgingReservationsActions } from '@skysmack/ng-lodging-reservations';
 import { NgFieldActions } from '@skysmack/ng-framework';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'ss-lodgings-departures',
@@ -33,7 +34,8 @@ export class LodgingsDeparturesComponent extends LodgingsReservationsIndexCompon
     public fieldActions: NgFieldActions,
     public pageTitle: EntityComponentPageTitle,
     public title: EntityComponentPageTitle,
-    public menuItemActionProviders: MenuItemActionProviders
+    public menuItemActionProviders: MenuItemActionProviders,
+    public dialog: MatDialog
   ) {
     super(router,
       activatedRoute,
@@ -48,7 +50,8 @@ export class LodgingsDeparturesComponent extends LodgingsReservationsIndexCompon
       fieldActions,
       pageTitle,
       title,
-      menuItemActionProviders
+      menuItemActionProviders,
+      dialog
     );
     pageTitle.setTitle('LODGING_RESERVATIONS.DEPARTURES.TITLE');
   }

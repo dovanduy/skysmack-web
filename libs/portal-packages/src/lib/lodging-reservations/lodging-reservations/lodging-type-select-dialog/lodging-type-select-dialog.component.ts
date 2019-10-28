@@ -75,6 +75,9 @@ export class LodgingTypeSelectDialogComponent implements OnInit {
     ).pipe(
       switchMap(([lodgingPackage, lodgingTypeIds]) => {
         const checkIn = this.data.form.get('checkIn').value;
+        if (checkIn instanceof Date) {
+
+        }
         const checkOut = this.data.form.get('checkOut').value;
         const packagePath = lodgingPackage.object.path;
         if (!once2) {

@@ -38,7 +38,7 @@ export class LodgingTypeSelectFieldComponent extends FieldBaseComponent<Field> i
   }
 
   public selectLodgingType(): void {
-    this.dialog.open(LodgingTypeSelectDialogComponent, { data: { form: this.fh.form } }).afterClosed().pipe(
+    this.subscriptionHandler.register(this.dialog.open(LodgingTypeSelectDialogComponent, { data: { form: this.fh.form } }).afterClosed().pipe(
       tap((detailedLodgingType: DetailedLodgingType) => {
         const selectedLodgingType = detailedLodgingType && detailedLodgingType.lodgingType;
         if (selectedLodgingType && selectedLodgingType.object && selectedLodgingType.object.id) {
@@ -47,7 +47,7 @@ export class LodgingTypeSelectFieldComponent extends FieldBaseComponent<Field> i
         }
       }),
       take(1)
-    ).subscribe();
+    ).subscribe());
   }
 
   private setSelectedLodgingType(): void {

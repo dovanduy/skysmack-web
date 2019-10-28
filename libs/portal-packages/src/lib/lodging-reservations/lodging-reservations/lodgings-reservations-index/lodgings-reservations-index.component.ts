@@ -5,12 +5,14 @@ import { LodgingReservationsAppState, LodgingReservation, LODGING_RESERVATIONS_A
 import { MenuItem } from '@skysmack/framework';
 import { NgLodgingsStore, NgLodgingTypesStore, NgLodgingsActions, NgLodgingTypesActions } from '@skysmack/ng-lodgings';
 import { EntityComponentPageTitle, MenuItemActionProviders, MENU_ITEM_ACTIONS_EDIT, MENU_ITEM_ACTIONS_DELETE } from '@skysmack/portal-ui';
-import { LodgingsArrivalsComponent } from '../../components/lodgings-arrivals/lodgings-arrivals.component';
 import { NgLodgingReservationsFieldsConfig } from '../../ng-lodging-reservations-fields-config';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { DocumentRecordIndexComponent } from '@skysmack/portal-fields';
 import { NgLodgingReservationsStore, NgLodgingReservationsActions } from '@skysmack/ng-lodging-reservations';
 import { NgFieldActions } from '@skysmack/ng-framework';
+import { MatDialog } from '@angular/material/dialog';
+import { take } from 'rxjs/operators';
+import { CheckinFormComponent } from '../checkin-form/checkin-form.component';
 
 @Component({
   selector: 'ss-lodgings-reservations-index',
@@ -94,6 +96,7 @@ export class LodgingsReservationsIndexComponent extends DocumentRecordIndexCompo
     public pageTitle: EntityComponentPageTitle,
     public title: EntityComponentPageTitle,
     public menuItemActionProviders: MenuItemActionProviders,
+    public dialog: MatDialog
   ) {
     super(router, activatedRoute, actions, skysmackStore, store, fieldsConfig, fieldActions, menuItemActionProviders, title);
   }
@@ -102,7 +105,7 @@ export class LodgingsReservationsIndexComponent extends DocumentRecordIndexCompo
     super.ngOnInit();
   }
 
-  public confirm(_this: LodgingsArrivalsComponent, entity: LocalObject<LodgingReservation, number>) {
+  public confirm(_this: LodgingsReservationsIndexComponent, entity: LocalObject<LodgingReservation, number>) {
     // let checkIn;
     // if (entity.object.allocatedLodgingId && entity.object.allocatedLodgingId > 0) {
     //   checkIn = { reservationId: entity.object.id, lodgingId: entity.object.allocatedLodgingId };
@@ -112,49 +115,46 @@ export class LodgingsReservationsIndexComponent extends DocumentRecordIndexCompo
 
     // _this.actions.confirm(_this.packagePath, entity, [new CheckIn(checkIn)]);
   }
-  public undoConfirm(_this: LodgingsArrivalsComponent, entity: LocalObject<LodgingReservation, number>) {
+  public undoConfirm(_this: LodgingsReservationsIndexComponent, entity: LocalObject<LodgingReservation, number>) {
     // _this.actions.undoConfirm(_this.packagePath, entity, [entity.object.id]);
   }
 
-  public checkIn(_this: LodgingsArrivalsComponent, entity: LocalObject<LodgingReservation, number>) {
-    let checkIn;
-    if (entity.object.allocatedLodgingId && entity.object.allocatedLodgingId > 0) {
-      checkIn = { reservationId: entity.object.id, lodgingId: entity.object.allocatedLodgingId };
-    } else {
-      checkIn = { reservationId: entity.object.id };
-    }
+  public checkIn(_this: LodgingsReservationsIndexComponent, entity: LocalObject<LodgingReservation, number>) {
+    _this.subscriptionHandler.register(_this.dialog.open(CheckinFormComponent, { data: { packagePath: _this.packagePath, reservation: entity } }).afterClosed().pipe(
+      take(1)
+    ).subscribe());
 
-    _this.actions.checkIn(_this.packagePath, entity, [new CheckIn(checkIn)]);
+    // _this.actions.checkIn(_this.packagePath, entity, [new CheckIn(checkIn)]);
   }
-  public undoCheckin(_this: LodgingsArrivalsComponent, entity: LocalObject<LodgingReservation, number>) {
+  public undoCheckin(_this: LodgingsReservationsIndexComponent, entity: LocalObject<LodgingReservation, number>) {
     _this.actions.undoCheckIn(_this.packagePath, entity, [entity.object.id]);
   }
 
-  public checkOut(_this: LodgingsArrivalsComponent, entity: LocalObject<LodgingReservation, number>) {
+  public checkOut(_this: LodgingsReservationsIndexComponent, entity: LocalObject<LodgingReservation, number>) {
     _this.actions.checkOut(_this.packagePath, entity, [entity.object.id]);
   }
-  public undoCheckout(_this: LodgingsArrivalsComponent, entity: LocalObject<LodgingReservation, number>) {
+  public undoCheckout(_this: LodgingsReservationsIndexComponent, entity: LocalObject<LodgingReservation, number>) {
     _this.actions.undoCheckOut(_this.packagePath, entity, [entity.object.id]);
   }
 
-  public cancel(_this: LodgingsArrivalsComponent, entity: LocalObject<LodgingReservation, number>) {
+  public cancel(_this: LodgingsReservationsIndexComponent, entity: LocalObject<LodgingReservation, number>) {
     _this.actions.cancel(_this.packagePath, entity, [entity.object.id]);
   }
-  public undoCancel(_this: LodgingsArrivalsComponent, entity: LocalObject<LodgingReservation, number>) {
+  public undoCancel(_this: LodgingsReservationsIndexComponent, entity: LocalObject<LodgingReservation, number>) {
     _this.actions.undoCancel(_this.packagePath, entity, [entity.object.id]);
   }
 
-  public move(_this: LodgingsArrivalsComponent, entity: LocalObject<LodgingReservation, number>) {
+  public move(_this: LodgingsReservationsIndexComponent, entity: LocalObject<LodgingReservation, number>) {
     _this.actions.move(_this.packagePath, entity, [new CheckIn({ reservationId: entity.object.id })]);
   }
-  public undoMove(_this: LodgingsArrivalsComponent, entity: LocalObject<LodgingReservation, number>) {
+  public undoMove(_this: LodgingsReservationsIndexComponent, entity: LocalObject<LodgingReservation, number>) {
     _this.actions.undoMove(_this.packagePath, entity, [entity.object.id]);
   }
 
-  public noShow(_this: LodgingsArrivalsComponent, entity: LocalObject<LodgingReservation, number>) {
+  public noShow(_this: LodgingsReservationsIndexComponent, entity: LocalObject<LodgingReservation, number>) {
     _this.actions.noShow(_this.packagePath, entity, [entity.object.id]);
   }
-  public undoNoShow(_this: LodgingsArrivalsComponent, entity: LocalObject<LodgingReservation, number>) {
+  public undoNoShow(_this: LodgingsReservationsIndexComponent, entity: LocalObject<LodgingReservation, number>) {
     _this.actions.undoNoShow(_this.packagePath, entity, [entity.object.id]);
   }
 }
