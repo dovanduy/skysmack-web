@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
-import { LocalObject, LocalObjectStatus, DisplayColumn, EnumHelpers } from '@skysmack/framework';
+import { LocalObject, LocalObjectStatus, DisplayColumn, EnumHelpers, PagedQuery } from '@skysmack/framework';
 import { LodgingReservation, LODGING_RESERVATIONS_AREA_KEY, LODGING_RESERVATIONS_ADDITIONAL_PATHS } from '@skysmack/packages-lodging-reservations';
 import { NgLodgingTypesStore, NgLodgingsStore, NgLodgingsActions, NgLodgingTypesActions } from '@skysmack/ng-lodgings';
 import { LoadedPackage, NgFieldStore } from '@skysmack/ng-framework';
@@ -82,6 +82,8 @@ export class NgLodgingReservationsFieldsConfig extends DocumentFieldsConfig<Lodg
                 component: LodgingTypeSelectFieldComponent,
                 value: entity ? entity.object.lodgingTypeId : undefined,
                 key: 'lodgingTypeId',
+                displayKey: 'lodgingType',
+                displaySubKey: 'object.name',
                 validators: [Validators.required],
                 order: 4,
                 showColumn: true,
@@ -91,6 +93,8 @@ export class NgLodgingReservationsFieldsConfig extends DocumentFieldsConfig<Lodg
                 component: LodgingSelectFieldComponent,
                 value: entity ? entity.object.allocatedLodgingId : undefined,
                 key: 'allocatedLodgingId',
+                displayKey: 'allocatedLodging',
+                displaySubKey: 'object.name',
                 order: 4,
                 showColumn: true,
                 sortable: true
