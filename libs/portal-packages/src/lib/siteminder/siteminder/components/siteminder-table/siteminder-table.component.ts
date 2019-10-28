@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { BehaviorSubject, Observable, combineLatest } from 'rxjs';
 import { StrIndex, SubscriptionHandler, LocalObject } from '@skysmack/framework';
 import { LodgingTypeAvailability, LodgingTypeAvailabilityKey } from '@skysmack/packages-siteminder';
@@ -10,6 +10,7 @@ import { RateInfo } from '../../../models/rate-info';
 import { NgSiteMinderStore, NgSiteMinderActions } from '@skysmack/ng-siteminder';
 import { map, distinctUntilChanged } from 'rxjs/operators';
 import { UiOptions, Columns, Cells } from './table-objects';
+import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
 
 @Component({
   selector: 'ss-siteminder-table',
@@ -23,6 +24,8 @@ export class SiteMinderTableComponent implements OnInit, OnDestroy {
   private start = new Date();
   private end = new Date();
 
+  @ViewChild('entityList', { static: true }) public entityList: CdkVirtualScrollViewport;
+  
   // Colspan
   public lodgingTypeColspan$: Observable<number>;
   public ratePlanColspan$: Observable<number>;
@@ -248,6 +251,19 @@ export class SiteMinderTableComponent implements OnInit, OnDestroy {
         return colspan;
       })
     );
+  }
+  
+  public whenScrolling() {
+    if (this.entityList.measureScrollOffset('bottom') < 150) {
+      // this.requestPage.emit(true);
+    }
+  }
+
+  public trackByDate(index, item) {
+    if (!item) {
+      return null;
+    }
+    return item.toString();
   }
 
   private addDays(date: Date, days: number) {
