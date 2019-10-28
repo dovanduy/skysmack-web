@@ -11,12 +11,12 @@
     <li>Hide availability: {{ uiOptions.hideAvailability.toString() }} - <span style="cursor:pointer;"
         (click)="testUpdate('availability', !uiOptions.hideAvailability)">toggle</span></li>
     <li>Hide following channels: <span
-        *ngFor="let channelId of store.getChannelsUi(packagePath) | async"></span>{{ channelId }}
+        *ngFor="let channelId of store.getChannelsUi(packagePath) | async">{{ channelId }}</span>
     </li>
     <li>Hide following ratePlans: <span
-        *ngFor="let ratePlanId of store.getRatePlansUi(packagePath) | async"></span>{{ ratePlanId }}</li>
+        *ngFor="let ratePlanId of store.getRatePlansUi(packagePath) | async">{{ ratePlanId }}</span></li>
     <li>Hide following lodging types: <span
-        *ngFor="let lodgingTypeId of store.getLodgingTypesUi(packagePath) | async"></span>{{ lodgingTypeId }}</li>
+        *ngFor="let lodgingTypeId of store.getLodgingTypesUi(packagePath) | async">{{ lodgingTypeId }}</span></li>
   </ul>
 
 
