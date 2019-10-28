@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, combineLatest } from 'rxjs';
 import { StrIndex, SubscriptionHandler, LocalObject } from '@skysmack/framework';
 import { LodgingTypeAvailability, LodgingTypeAvailabilityKey, SiteMinderUi } from '@skysmack/packages-siteminder';
 import { Router } from '@angular/router';
@@ -23,14 +23,17 @@ export class SiteMinderTableComponent implements OnInit, OnDestroy {
   private start = new Date();
   private end = new Date();
 
+  // Colspan
+  public lodgingTypeColspan$: Observable<number>;
+
   // Filters
-  public hideRates$: BehaviorSubject<boolean>;
-  public hideAvailability$: BehaviorSubject<boolean>;
-  public hideAll$: BehaviorSubject<boolean>;
-  public hideRestrictions$: BehaviorSubject<boolean>;
-  public hideChannels$: BehaviorSubject<number[]>;
-  public hideRatePlans$: BehaviorSubject<number[]>;
-  public hideLodgingTypes$: BehaviorSubject<number[]>;
+  public hideRates$: Observable<boolean>;
+  public hideAvailability$: Observable<boolean>;
+  public hideAll$: Observable<boolean>;
+  public hideRestrictions$: Observable<boolean>;
+  public hideChannels$: Observable<number[]>;
+  public hideRatePlans$: Observable<number[]>;
+  public hideLodgingTypes$: Observable<number[]>;
 
   // Columns
   public dateColumn$: BehaviorSubject<SiteMinderColumn>;
@@ -60,13 +63,13 @@ export class SiteMinderTableComponent implements OnInit, OnDestroy {
     this.packagePath = this.router.url.split('/')[1];
 
     // Filters
-    this.hideRates$ = convertObservableToBehaviorSubject(this.store.getRatesUi(this.packagePath), false);
-    this.hideAvailability$ = convertObservableToBehaviorSubject(this.store.getAvailabilityUi(this.packagePath), false);
-    this.hideAll$ = convertObservableToBehaviorSubject(this.store.getAllUi(this.packagePath), false);
-    this.hideRestrictions$ = convertObservableToBehaviorSubject(this.store.getRestrictionsUi(this.packagePath), false);
-    this.hideChannels$ = convertObservableToBehaviorSubject(this.store.getChannelsUi(this.packagePath), []);
-    this.hideRatePlans$ = convertObservableToBehaviorSubject(this.store.getRatePlansUi(this.packagePath), []);
-    this.hideLodgingTypes$ = convertObservableToBehaviorSubject(this.store.getLodgingTypesUi(this.packagePath), []);
+    this.hideRates$ = this.store.getRatesUi(this.packagePath);
+    this.hideAvailability$ = this.store.getAvailabilityUi(this.packagePath);
+    this.hideAll$ = this.store.getAllUi(this.packagePath);
+    this.hideRestrictions$ = this.store.getRestrictionsUi(this.packagePath);
+    this.hideChannels$ = this.store.getChannelsUi(this.packagePath);
+    this.hideRatePlans$ = this.store.getRatePlansUi(this.packagePath);
+    this.hideLodgingTypes$ = this.store.getLodgingTypesUi(this.packagePath);
 
     // Columns
     this.dateColumn$ = this.service.dateColumn$;
@@ -85,6 +88,8 @@ export class SiteMinderTableComponent implements OnInit, OnDestroy {
     this.channelsCells$ = this.service.channelsCells$;
 
     // Generate
+    this.setLodgingTypeColspan();
+    this.setHideAll();
     this.subscriptionHandler.register(this.service.generateColumns(this.packagePath).subscribe());
     this.subscriptionHandler.register(this.service.generateCells(this.packagePath, this.start, this.addDays(this.end, 29)).subscribe());
   }
@@ -141,35 +146,61 @@ export class SiteMinderTableComponent implements OnInit, OnDestroy {
     }
   }
 
-  public calculateLodgingTypeColspan(ltcId: number): number {
-    const ratePlanColumns = this.ratePlanColumns$.getValue();
-    const channelsColumns = this.channelsColumns$.getValue();
-    const availabilityColumn = !this.hideAvailability$.getValue() ? 1 : 0;
+  public setLodgingTypeColspan(): void {
+    this.lodgingTypeColspan$ = combineLatest([
+      this.ratePlanColumns$,
+      this.channelsColumns$,
+      this.hideRestrictions$,
+      this.hideRates$,
+      this.hideAvailability$
+    ]).pipe(
+      map(([ratePlanColumns, channelsColumns, hideRestrictions, hideRates, hideAvailability]) => {
+        const rateColumns = !hideRates ? 1 : 0;
+        const restrictionsColumns = !hideRestrictions ? 1 : 0;
+        const availabilityColumn = !hideAvailability ? 1 : 0;
 
-    if (channelsColumns) {
-      const result = Object.keys(ratePlanColumns).map(key => {
-        return channelsColumns[key] ? (channelsColumns[key].length * 2) + 2 : 0;
-      }).reduce((a, b) => a + b, 0);
-      // Add one extra for available column
-      return result !== 0 ? result + availabilityColumn : availabilityColumn;
-    } else {
-      return availabilityColumn;
-    }
+        const channelMultiplier = rateColumns + restrictionsColumns;
+        const rateSummaryColumn = 1;
+        const restrictionSummaryColumn = 1;
+        const summaries = rateSummaryColumn + restrictionSummaryColumn;
+
+        const result = Object.keys(ratePlanColumns).map(key => {
+          return channelsColumns[key] ? (channelsColumns[key].length * channelMultiplier) + summaries : 0;
+        }).reduce((a, b) => a + b, 0);
+
+        const nextValue = result !== 0 ? result + availabilityColumn : availabilityColumn;
+        return nextValue;
+      })
+    );
   }
 
+  public setRatePlanColspan = (ratePlanColumnId: number): Observable<number> => {
+    return combineLatest([
+      this.channelsColumns$,
+      this.hideRestrictions$,
+      this.hideRates$,
+    ]).pipe(
+      map(([channelsColumns, hideRestrictions, hideRates]) => {
+        const restrictionsColumns = !hideRestrictions ? 1 : 0;
+        const restrictionSummaryColumn = !hideRestrictions ? 1 : 0;
+        const rateColumns = !hideRates ? 1 : 0;
+        const rateSummaryColumn = !hideRates ? 1 : 0;
 
-  public calculateRatePlanColspan(ratePlanColumnId: number): number {
-    const channelsColumns = this.channelsColumns$.getValue();
-    if (channelsColumns) {
-      const result = channelsColumns[ratePlanColumnId] ? (channelsColumns[ratePlanColumnId].length * 2) + 2 : 0;
-      // Add one extra for rate summary column
-      return result !== 0 ? result : 1;
-    } else {
-      return 1;
-    }
+        const channelMultiplier = rateColumns + restrictionsColumns;
+        const summaries = rateSummaryColumn + restrictionSummaryColumn;
+
+        const result = channelsColumns[ratePlanColumnId] ? (channelsColumns[ratePlanColumnId].length * channelMultiplier) + summaries : 0;
+        const nextValue = result !== 0 ? result : summaries;
+        return nextValue;
+      })
+    );
   }
 
-  private addDays(date, days) {
+  public setHideAll(): void {
+
+  }
+
+  private addDays(date: Date, days: number) {
     var result = new Date(date);
     result.setDate(result.getDate() + days);
     return result;

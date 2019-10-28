@@ -14,6 +14,11 @@ import { NgSiteMinderMenuProvider } from './ng-siteminder-menu-provider';
 import { siteminderChannelsComponents, siteminderChannelsEntryComponents } from './channels/components/siteminder-channels-components';
 import { siteminderRatePlansComponents, siteminderRatePlansEntryComponents } from './rate-plans/components/siteminder-rate-plans-components';
 import { NgLodgingsModule } from '@skysmack/ng-lodgings';
+import { CalculateColspanPipe } from './siteminder/components/siteminder-table/calculate-colspan.pipe';
+
+const pipes = [
+  CalculateColspanPipe
+];
 
 @NgModule({
   imports: [
@@ -30,7 +35,8 @@ import { NgLodgingsModule } from '@skysmack/ng-lodgings';
   declarations: [
     ...siteminderComponents,
     ...siteminderChannelsComponents,
-    ...siteminderRatePlansComponents
+    ...siteminderRatePlansComponents,
+    ...pipes
   ],
   entryComponents: [
     ...siteminderEntryComponents,

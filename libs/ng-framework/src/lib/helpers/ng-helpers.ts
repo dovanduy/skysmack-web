@@ -170,7 +170,7 @@ export const getPreviousUrl$ = (router: Router): Observable<string> => {
 /**
  * Convert an observable to a behaviorSubject
  */
-export function convertObservableToBehaviorSubject<T>(observable: Observable<T>, initValue: T): BehaviorSubject<T> {
+export const convertObservableToBehaviorSubject = <T>(observable: Observable<T>, initValue: T): BehaviorSubject<T> => {
     const subject = new BehaviorSubject(initValue);
 
     observable.subscribe({

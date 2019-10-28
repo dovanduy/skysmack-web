@@ -32,7 +32,7 @@
                 </th>
                 <ng-container *ngFor="let ltc of lodgingTypeColumns$ | async; let first = first; let last = last">
                     <!-- Lodging Type -->
-                    <th [attr.colspan]="calculateLodgingTypeColspan(ltc.id)"
+                    <th [attr.colspan]="(lodgingTypeColspan$ | async)"
                         class="table-cell mat-header-cell lodging-type-column-divider border-left border-right">
                         {{ ltc.title }}
                     </th>
@@ -53,7 +53,7 @@
                     <!-- Rateplan -->
                     <ng-container *ngIf="ratePlanColumns$ | async as rpc">
                         <ng-container *ngFor="let ratePlanColumn of rpc[ltc.id]; let first = first; let last = last">
-                            <th [attr.colspan]="calculateRatePlanColspan(ratePlanColumn.id)"
+                            <th [attr.colspan]="(setRatePlanColspan | calculateColspan:ratePlanColumn.id) | async"
                                 class="table-cell mat-header-cell border-right">
                                 {{ ratePlanColumn.title }}
                             </th>
@@ -68,11 +68,13 @@
                     <!-- Rateplan -->
                     <ng-container *ngIf="ratePlanColumns$ | async as rpc">
                         <ng-container *ngFor="let ratePlanColumn of rpc[ltc.id]">
-                            <!-- Rates Summary -->
-                            <ng-container *ngIf="rateSummaryColumns$ | async as rsc">
-                                <th colspan="2" class="table-cell mat-header-cell border-right-light">
-                                    {{ rsc[ratePlanColumn.id]?.title }}
-                                </th>
+                            <!-- All section -->
+                            <ng-container *ngIf="!(hideRates$ | async) || !(hideRestrictions$ | async)">
+                                <ng-container *ngIf="rateSummaryColumns$ | async as rsc">
+                                    <th colspan="2" class="table-cell mat-header-cell border-right-light">
+                                        {{ rsc[ratePlanColumn.id]?.title }}
+                                    </th>
+                                </ng-container>
                             </ng-container>
 
                             <!-- Channels (show if expanded) -->
@@ -96,12 +98,14 @@
                     <!-- Rateplan -->
                     <ng-container *ngIf="ratePlanColumns$ | async as rpc">
                         <ng-container *ngFor="let ratePlanColumn of rpc[ltc.id]">
-                            <!-- Rates Summary -->
+                            <!-- All section -->
                             <ng-container *ngIf="rateSummaryColumns$ | async as rsc">
                                 <!-- Rates -->
-                                <th class="table-cell mat-header-cell border-right-light">
-                                    Rates
-                                </th>
+                                <ng-container *ngIf="!(hideRates$ | async)">
+                                    <th class="table-cell mat-header-cell border-right-light">
+                                        Rates
+                                    </th>
+                                </ng-container>
                                 <!-- Restrictions -->
                                 <th class="table-cell mat-header-cell border-right-light">
                                     Restrictions
@@ -112,10 +116,12 @@
                                 <ng-container
                                     *ngFor="let channelColumn of cc[ratePlanColumn.id]; let first = first; let last = last">
                                     <!-- Rates -->
-                                    <th [ngClass]="{ 'border-right-light': true }"
-                                        class="table-cell mat-header-cell border-right">
-                                        Rate
-                                    </th>
+                                    <ng-container *ngIf="!(hideRates$ | async)">
+                                        <th [ngClass]="{ 'border-right-light': true }"
+                                            class="table-cell mat-header-cell border-right">
+                                            Rate
+                                        </th>
+                                    </ng-container>
                                     <!-- Restrictions -->
                                     <th [ngClass]="{ 'border-right-light': !last }"
                                         class="table-cell mat-header-cell border-right">
@@ -172,11 +178,13 @@
 
                                     <ng-container *ngFor="let channelColumn of cc[ratePlanColumn.id]; let last = last">
                                         <!-- Channel: Rates -->
-                                        <td class="table-cell mat-cell border-right-light">
-                                            <ss-siteminder-rate
-                                                [data]="channelCells[date][ratePlanColumn.id][ltc.id][ltc.id + ':' + ratePlanColumn.id + ':' + channelColumn.id]">
-                                            </ss-siteminder-rate>
-                                        </td>
+                                        <ng-container *ngIf="!(hideRates$ | async)">
+                                            <td class="table-cell mat-cell border-right-light">
+                                                <ss-siteminder-rate
+                                                    [data]="channelCells[date][ratePlanColumn.id][ltc.id][ltc.id + ':' + ratePlanColumn.id + ':' + channelColumn.id]">
+                                                </ss-siteminder-rate>
+                                            </td>
+                                        </ng-container>
                                         <!-- Channel: Restrictions -->
                                         <td class="table-cell mat-cell border-right"
                                             [ngClass]="{ 'border-right-light': !last }">
