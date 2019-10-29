@@ -380,6 +380,39 @@
         }
       }
     },
+    "packages-3cx": {
+      "root": "libs/packages/packages-3cx",
+      "sourceRoot": "libs/packages/packages-3cx/src",
+      "projectType": "library",
+      "prefix": "skysmack",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/packages/packages-3cx/tsconfig.lib.json",
+              "libs/packages/packages-3cx/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/packages/packages-3cx/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/packages/packages-3cx/jest.config.js",
+            "tsConfig": "libs/packages/packages-3cx/tsconfig.spec.json"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/schematics:component": {
+          "styleext": "scss"
+        }
+      }
+    },
     "packages-file-storage": {
       "root": "libs/packages/packages-file-storage",
       "sourceRoot": "libs/packages/packages-file-storage/src",
@@ -1986,6 +2019,40 @@
             "jestConfig": "libs/ng-packages/ng-phones/jest.config.js",
             "tsConfig": "libs/ng-packages/ng-phones/tsconfig.spec.json",
             "setupFile": "libs/ng-packages/ng-phones/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "ng-3cx": {
+      "projectType": "library",
+      "root": "libs/ng-packages/ng-3cx",
+      "sourceRoot": "libs/ng-packages/ng-3cx/src",
+      "prefix": "skysmack",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/ng-packages/ng-3cx/tsconfig.lib.json",
+              "libs/ng-packages/ng-3cx/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/ng-packages/ng-3cx/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/ng-packages/ng-3cx/jest.config.js",
+            "tsConfig": "libs/ng-packages/ng-3cx/tsconfig.spec.json",
+            "setupFile": "libs/ng-packages/ng-3cx/src/test-setup.ts"
           }
         }
       },

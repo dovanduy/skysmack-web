@@ -1,5 +1,5 @@
 {
-  "name": "@skysmack/ng-phones",
+  "name": "@skysmack/ng-3cx",
   "version": "0.0.1",
   "peerDependencies": {
     "@angular/common": "^8.0.0",
@@ -22,6 +22,6 @@
   ],
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1",
-    "build": "ng build ng-phones"
+    "build": "ng build ng-3cx"
   }
 }

@@ -74,6 +74,9 @@
       "@skysmack/packages-phones": [
         "libs/packages/phones/public_api.ts"
       ],
+      "@skysmack/packages-3cx": [
+        "libs/packages/3cx/public_api.ts"
+      ],
       "@skysmack/packages-file-storage": [
         "libs/packages/file-storage/public_api.ts"
       ],
@@ -175,6 +178,9 @@
       ],
       "@skysmack/ng-phones": [
         "libs/ng-packages/ng-phones/src/public_api.ts"
+      ],
+      "@skysmack/ng-3cx": [
+        "libs/ng-packages/ng-3cx/src/public_api.ts"
       ],
       "@skysmack/ng-file-storage": [
         "libs/ng-packages/ng-file-storage/src/public_api.ts"

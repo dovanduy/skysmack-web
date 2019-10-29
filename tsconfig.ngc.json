@@ -98,6 +98,9 @@
       "@skysmack/packages-phones": [
         "./dist/@skysmack/packages-phones"
       ],
+      "@skysmack/packages-3cx": [
+        "./dist/@skysmack/packages-3cx"
+      ],
       "@skysmack/packages-persons-lodging-reservations": [
         "./dist/@skysmack/packages-persons-lodging-reservations"
       ],
@@ -156,7 +159,10 @@
         "libs/ng-packages/ng-persons"
       ],
       "@skysmack/ng-phones": [
-        "libs/ng-packages/ng-persons"
+        "libs/ng-packages/ng-phones"
+      ],
+      "@skysmack/ng-3cx": [
+        "libs/ng-packages/ng-3cx"
       ],
       "@skysmack/ng-file-storage": [
         "libs/ng-packages/ng-file-storage"
