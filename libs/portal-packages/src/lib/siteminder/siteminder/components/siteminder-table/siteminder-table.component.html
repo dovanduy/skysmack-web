@@ -1,4 +1,4 @@
-<ng-container *ngIf="uiOptions$ | async as uiOptions">
+<ng-container *ngIf="uiOptions">
   <!-- Filters -->
   <ul>
     <li>Hide rates: {{ uiOptions.hideRates.toString() }} - <span style="cursor:pointer;"
@@ -131,6 +131,7 @@
               *cdkVirtualFor="let date of dateRows$ | async; let firstRow = first; trackBy: trackByDate; let i = index;"
               [ngClass]="'row-weekday-' + (date | weekday)" [attr.data-index]="i">
 
+
               <!-- Date -->
               <td class="table-cell mat-cell border-right" [matTooltip]="(date | weekday : 'readable')">
                 {{ date | date: 'dd-MM-yyyy' }}
@@ -140,60 +141,70 @@
                 <!-- Available -->
                 <td *ngIf="!uiOptions.hideAvailability" class="table-cell mat-cell border-left border-right">
 
-                  <ss-siteminder-availability [data]="cells.availabilityCells[date][ltc.id]">
-                  </ss-siteminder-availability>
+                  <!-- <ss-siteminder-availability [data]="cells.availabilityCells[date][ltc.id]">
+                  </ss-siteminder-availability> -->
 
                 </td>
 
+                <!-- EXPERIMENTAL -->
+                <ng-container *ngIf="!uiOptions.hideRestrictions">
+                  <td *ngFor="let number of [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]"
+                    class="table-cell mat-cell border-left border-right">
+                    <!-- <ss-siteminder-restrictions-summary [data]="">
+                    </ss-siteminder-restrictions-summary> -->
+                  </td>
+                </ng-container>
+
+
+
                 <!-- Rateplan -->
-                <ng-container
-                  *ngFor="let ratePlanColumn of columns.ratePlanColumns[ltc.id];  trackBy: trackByColumnId; let last = last">
-                  <!-- All section -->
-                  <ng-container *ngIf="!uiOptions.hideAll">
-                    <!-- Rates summary -->
-                    <ng-container *ngIf="!uiOptions.hideRates">
+                <!-- <ng-container
+                  *ngFor="let ratePlanColumn of columns.ratePlanColumns[ltc.id];  trackBy: trackByColumnId; let last = last"> -->
+                <!-- All section -->
+                <!-- <ng-container *ngIf="!uiOptions.hideAll"> -->
+                <!-- Rates summary -->
+                <!-- <ng-container *ngIf="!uiOptions.hideRates">
                       <td class="table-cell mat-cell border-right-light">
                         <ss-siteminder-rate-summary [data]="cells.rateSummaryCells[date][ratePlanColumn.id][ltc.id]">
                         </ss-siteminder-rate-summary>
-
+                
                       </td>
-                    </ng-container>
+                    </ng-container> -->
 
-                    <!-- Restrictions summary -->
-                    <ng-container *ngIf="!uiOptions.hideRestrictions">
+                <!-- Restrictions summary -->
+                <!-- <ng-container *ngIf="!uiOptions.hideRestrictions">
                       <td class="table-cell mat-cell border-right-light">
-                        <ss-siteminder-restrictions-summary
-                          [data]="cells.rateSummaryCells[date][ratePlanColumn.id][ltc.id]">
+                        <ss-siteminder-restrictions-summary [data]="cells.rateSummaryCells[date][ratePlanColumn.id][ltc.id]">
                         </ss-siteminder-restrictions-summary>
                       </td>
                     </ng-container>
-                  </ng-container>
+                  </ng-container> -->
 
 
-                  <!-- Channels (show if expanded) -->
+                <!-- Channels (show if expanded) -->
 
-                  <ng-container
-                    *ngFor="let channelColumn of columns.channelsColumns[ratePlanColumn.id];  trackBy: trackByColumnId; let last = last">
-                    <!-- Channel: Rates -->
-                    <ng-container *ngIf="!uiOptions.hideRates">
+                <!-- <ng-container
+                    *ngFor="let channelColumn of columns.channelsColumns[ratePlanColumn.id];  trackBy: trackByColumnId; let last = last"> -->
+                <!-- Channel: Rates -->
+                <!-- <ng-container *ngIf="!uiOptions.hideRates">
                       <td class="table-cell mat-cell border-right-light">
                         <ss-siteminder-rate
                           [data]="cells.channelsCells[date][ratePlanColumn.id][ltc.id][ltc.id + ':' + ratePlanColumn.id + ':' + channelColumn.id]">
                         </ss-siteminder-rate>
                       </td>
-                    </ng-container>
-                    <!-- Channel: Restrictions -->
-                    <ng-container *ngIf="!uiOptions.hideRestrictions">
-                      <td class="table-cell mat-cell border-right" [ngClass]="{ 'border-right-light': !last }">
-                        <!-- Restrictions -->
-                        <ss-siteminder-restrictions
+                    </ng-container> -->
+                <!-- Channel: Restrictions -->
+                <!-- <ng-container *ngIf="!uiOptions.hideRestrictions">
+                      <td class="table-cell mat-cell border-right" [ngClass]="{ 'border-right-light': !last }"> -->
+                <!-- Restrictions -->
+                <!-- <ss-siteminder-restrictions
                           [data]="cells.channelsCells[date][ratePlanColumn.id][ltc.id][ltc.id + ':' + ratePlanColumn.id + ':' + channelColumn.id]">
                         </ss-siteminder-restrictions>
                       </td>
                     </ng-container>
-                  </ng-container>
+                  </ng-container> 
+                </ng-container>-->
 
-                </ng-container>
               </ng-container>
             </tr>
           </tbody>

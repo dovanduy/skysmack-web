@@ -4,7 +4,7 @@ import { SubscriptionHandler } from '@skysmack/framework';
 import { Router } from '@angular/router';
 import { SiteMinderService } from '../../../services/siteminder.service';
 import { NgSiteMinderStore, NgSiteMinderActions } from '@skysmack/ng-siteminder';
-import { map, distinctUntilChanged, tap, share } from 'rxjs/operators';
+import { map, distinctUntilChanged, tap, share, debounceTime } from 'rxjs/operators';
 import { UiOptions, Columns, Cells } from './table-objects';
 import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
 import { SiteMinderColumn } from '../../../models/siteminder-column';
@@ -31,6 +31,7 @@ export class SiteMinderTableComponent implements OnInit, OnDestroy {
 
   // Filters
   public uiOptions$: Observable<UiOptions>;
+  public uiOptions: UiOptions;
 
   // Columns
   public columns$: Observable<Columns>;
@@ -52,33 +53,51 @@ export class SiteMinderTableComponent implements OnInit, OnDestroy {
     // General
     this.packagePath = this.router.url.split('/')[1];
 
+    this.uiOptions = new UiOptions({
+      hideChannels: [],
+      hideRatePlans: [],
+      hideLodgingTypes: []
+    });
+
     // Filters
-    this.uiOptions$ = combineLatest(
+    let count = 0;
+    this.subscriptionHandler.register(combineLatest(
       this.store.getRatesUi(this.packagePath),
       this.store.getAvailabilityUi(this.packagePath),
       this.store.getAllUi(this.packagePath),
-      this.store.getRestrictionsUi(this.packagePath),
+      // this.store.getRestrictionsUi(this.packagePath),
       this.store.getChannelsUi(this.packagePath),
       this.store.getRatePlansUi(this.packagePath),
       this.store.getLodgingTypesUi(this.packagePath)
     ).pipe(
+      // debounceTime(10),
       map(([
         hideRates,
         hideAvailability,
         hideAll,
-        hideRestrictions,
+        // hideRestrictions,
         hideChannels,
         hideRatePlans,
-        hideLodgingTypes]) => new UiOptions({
-          hideRates,
-          hideAvailability,
-          hideAll,
-          hideRestrictions,
-          hideChannels,
-          hideRatePlans,
-          hideLodgingTypes
-        }))
-    );
+        hideLodgingTypes]) => {
+        this.uiOptions.hideAll = hideAll;
+        this.uiOptions.hideAvailability = hideAvailability;
+        this.uiOptions.hideRates = hideRates;
+        // this.uiOptions.hideRestrictions = hideRestrictions;
+        this.uiOptions.hideChannels = hideChannels;
+        this.uiOptions.hideRatePlans = hideRatePlans;
+        this.uiOptions.hideLodgingTypes = hideLodgingTypes;
+      }),
+      tap(x => console.log('ui', ++count))
+    ).subscribe());
+
+    this.subscriptionHandler.register(
+      this.store.getRestrictionsUi(this.packagePath).pipe(
+        // debounceTime(10),
+        map(hideRestrictions => {
+          this.uiOptions.hideRestrictions = hideRestrictions;
+        }),
+        tap(x => console.log('hide restrictions'))
+      ).subscribe());
 
     // Columns
     this.columns$ = combineLatest(
@@ -103,7 +122,8 @@ export class SiteMinderTableComponent implements OnInit, OnDestroy {
         ratePlanColumns,
         rateSummaryColumns,
         channelsColumns
-      }))
+      })),
+      tap(x => console.log('columns'))
     );
 
     // Rows
@@ -125,7 +145,8 @@ export class SiteMinderTableComponent implements OnInit, OnDestroy {
           rateSummaryCells,
           channelsCells
         })
-      )
+      ),
+      tap(x => console.log('cells'))
     );
 
     // Colspans
@@ -235,6 +256,12 @@ export class SiteMinderTableComponent implements OnInit, OnDestroy {
     }
     return item.toString();
   }
+
+  public trackByNumber(index, number) {
+    return number;
+  }
+
+
 
   public trackByColumnId(index, column: SiteMinderColumn) {
     return column.id;
