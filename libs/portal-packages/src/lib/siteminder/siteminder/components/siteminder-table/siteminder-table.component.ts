@@ -176,7 +176,7 @@ export class SiteMinderTableComponent implements OnInit, OnDestroy {
         const rateColspan = !hideRates ? 1 : 0;
         return restrictionsColspan + rateColspan;
       }),
-      share()
+      // share()
     )
   }
 
@@ -186,7 +186,7 @@ export class SiteMinderTableComponent implements OnInit, OnDestroy {
       this.store.getAllUi(this.packagePath).pipe(distinctUntilChanged())
     ).pipe(
       map(([channelsColspan, hideAll]) => hideAll ? 0 : channelsColspan),
-      share()
+      // share()
     )
   }
 
@@ -202,7 +202,7 @@ export class SiteMinderTableComponent implements OnInit, OnDestroy {
         const colspan = (channelColumnsCount * channelsColspan) + allColspan;
         return colspan;
       }),
-      share()
+      // share()
     );
   }
 
@@ -219,7 +219,7 @@ export class SiteMinderTableComponent implements OnInit, OnDestroy {
         const colspan = (ratePlanColumnsCount * ratePlanColspan) + availabilityColspan;
         return colspan;
       }),
-      share()
+      // share()
     );
   }
 

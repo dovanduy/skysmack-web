@@ -176,8 +176,8 @@
                     <!-- Channel: Rates -->
                     <ng-container *ngIf="!uiOptions.hideRates">
                       <td class="table-cell mat-cell border-right-light">
-                        <ss-siteminder-rate *ngIf="cells.channelCells"
-                          [data]="cells.channelCells[date][ratePlanColumn.id][ltc.id][ltc.id + ':' + ratePlanColumn.id + ':' + channelColumn.id]">
+                        <ss-siteminder-rate
+                          [data]="cells.channelsCells[date][ratePlanColumn.id][ltc.id][ltc.id + ':' + ratePlanColumn.id + ':' + channelColumn.id]">
                         </ss-siteminder-rate>
                       </td>
                     </ng-container>
@@ -185,8 +185,8 @@
                     <ng-container *ngIf="!uiOptions.hideRestrictions">
                       <td class="table-cell mat-cell border-right" [ngClass]="{ 'border-right-light': !last }">
                         <!-- Restrictions -->
-                        <ss-siteminder-restrictions *ngIf="cells.channelCells"
-                          [data]="cells.channelCells[date][ratePlanColumn.id][ltc.id][ltc.id + ':' + ratePlanColumn.id + ':' + channelColumn.id]">
+                        <ss-siteminder-restrictions
+                          [data]="cells.channelsCells[date][ratePlanColumn.id][ltc.id][ltc.id + ':' + ratePlanColumn.id + ':' + channelColumn.id]">
                         </ss-siteminder-restrictions>
                       </td>
                     </ng-container>
