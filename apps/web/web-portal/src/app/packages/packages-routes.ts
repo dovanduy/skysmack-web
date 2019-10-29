@@ -18,6 +18,7 @@ import { terminalPaymentsRoute } from './terminal-payments-manifest';
 import { emailsRoute } from './emails-package-manifest';
 import { emailsSmtpRoute } from './emails-smtp-package-manifest';
 import { openApiRoute } from './open-api-package-manifest';
+import { phonesRoute } from './phones-package-manifest';
 
 export const packagesRoutes = [
     packagesRoute,
@@ -40,4 +41,5 @@ export const packagesRoutes = [
     emailsRoute,
     emailsSmtpRoute,
     openApiRoute,
+    phonesRoute
 ];

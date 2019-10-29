@@ -22,7 +22,7 @@
     "paths": {
       "moment": [
         "./node_modules/moment/min/moment.min.js"
-      ],      
+      ],
       "lodash": [
         "./node_modules/lodash-es"
       ],
@@ -95,6 +95,9 @@
       "@skysmack/packages-persons": [
         "./dist/@skysmack/packages-persons"
       ],
+      "@skysmack/packages-phones": [
+        "./dist/@skysmack/packages-phones"
+      ],
       "@skysmack/packages-persons-lodging-reservations": [
         "./dist/@skysmack/packages-persons-lodging-reservations"
       ],
@@ -150,6 +153,9 @@
         "libs/ng-packages/ng-packages"
       ],
       "@skysmack/ng-persons": [
+        "libs/ng-packages/ng-persons"
+      ],
+      "@skysmack/ng-phones": [
         "libs/ng-packages/ng-persons"
       ],
       "@skysmack/ng-file-storage": [

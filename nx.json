@@ -53,7 +53,10 @@
     "packages-persons": {
       "tags": []
     },
-        "packages-file-storage": {
+    "packages-phones": {
+      "tags": []
+    },
+    "packages-file-storage": {
       "tags": []
     },
     "packages-persons-lodging-reservations": {
@@ -165,6 +168,9 @@
       "tags": []
     },
     "ng-persons": {
+      "tags": []
+    },
+    "ng-phones": {
       "tags": []
     },
     "ng-persons-lodging-reservations": {
