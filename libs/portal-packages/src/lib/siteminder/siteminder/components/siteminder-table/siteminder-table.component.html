@@ -136,7 +136,7 @@
                 {{ date | date: 'dd-MM-yyyy' }}
               </td>
 
-              <ng-container *ngFor="let ltc of columns.lodgingTypeColumns">
+              <ng-container *ngFor="let ltc of columns.lodgingTypeColumns; trackBy: trackByColumnId">
                 <!-- Available -->
                 <td *ngIf="!uiOptions.hideAvailability" class="table-cell mat-cell border-left border-right">
 
@@ -146,7 +146,8 @@
                 </td>
 
                 <!-- Rateplan -->
-                <ng-container *ngFor="let ratePlanColumn of columns.ratePlanColumns[ltc.id]; let last = last">
+                <ng-container
+                  *ngFor="let ratePlanColumn of columns.ratePlanColumns[ltc.id];  trackBy: trackByColumnId; let last = last">
                   <!-- All section -->
                   <ng-container *ngIf="!uiOptions.hideAll">
                     <!-- Rates summary -->
@@ -172,7 +173,7 @@
                   <!-- Channels (show if expanded) -->
 
                   <ng-container
-                    *ngFor="let channelColumn of columns.channelsColumns[ratePlanColumn.id]; let last = last">
+                    *ngFor="let channelColumn of columns.channelsColumns[ratePlanColumn.id];  trackBy: trackByColumnId; let last = last">
                     <!-- Channel: Rates -->
                     <ng-container *ngIf="!uiOptions.hideRates">
                       <td class="table-cell mat-cell border-right-light">

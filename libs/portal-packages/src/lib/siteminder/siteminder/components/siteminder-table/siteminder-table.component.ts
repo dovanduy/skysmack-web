@@ -7,6 +7,7 @@ import { NgSiteMinderStore, NgSiteMinderActions } from '@skysmack/ng-siteminder'
 import { map, distinctUntilChanged, tap, share } from 'rxjs/operators';
 import { UiOptions, Columns, Cells } from './table-objects';
 import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
+import { SiteMinderColumn } from '../../../models/siteminder-column';
 
 @Component({
   selector: 'ss-siteminder-table',
@@ -233,6 +234,10 @@ export class SiteMinderTableComponent implements OnInit, OnDestroy {
       return null;
     }
     return item.toString();
+  }
+
+  public trackByColumnId(index, column: SiteMinderColumn) {
+    return column.id;
   }
 
   private addDays(date: Date, days: number) {
