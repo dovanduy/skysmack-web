@@ -33,10 +33,10 @@ export class Columns {
 }
 
 export class Cells {
-    public availabilityCells: StrIndex<StrIndex<BehaviorSubject<LocalObject<LodgingTypeAvailability, LodgingTypeAvailabilityKey>>>>;
-    public rateSummaryCells: StrIndex<StrIndex<StrIndex<BehaviorSubject<RateSummary>>>>;
-    public channelsCells: StrIndex<StrIndex<StrIndex<StrIndex<BehaviorSubject<RateInfo>>>>>;
-    
+    public availabilityCells: StrIndex<StrIndex<LocalObject<LodgingTypeAvailability, LodgingTypeAvailabilityKey>>>;
+    public rateSummaryCells: StrIndex<StrIndex<StrIndex<RateSummary>>>;
+    public channelsCells: StrIndex<StrIndex<StrIndex<StrIndex<RateInfo>>>>;
+
     public constructor(init?: Partial<Cells>) {
         Object.assign(this, init);
     }

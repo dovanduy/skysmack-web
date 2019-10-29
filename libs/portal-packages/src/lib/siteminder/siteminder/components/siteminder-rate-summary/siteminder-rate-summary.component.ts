@@ -12,7 +12,7 @@ import { tap } from 'rxjs/operators';
 })
 export class SiteMinderRateSummaryComponent implements OnInit {
 
-  @Input() public data: BehaviorSubject<RateSummary>;
+  @Input() public data: RateSummary;
   public summary: string;
 
   constructor(
@@ -20,20 +20,16 @@ export class SiteMinderRateSummaryComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.data.pipe(
-      tap(data => {
-        if (data && data.rates && data.rates.length > 0) {
-          const { min, max } = this.findMinMax(data.rates.map(x => x.object.rate));
-          if (min === max) {
-            this.summary = min.toString();
-          } else {
-            this.summary = `${min} - ${max}`;
-          }
-        } else if (this.data) {
-          this.summary = '-';
-        }
-      })
-    ).subscribe();
+    if (this.data && this.data.rates && this.data.rates.length > 0) {
+      const { min, max } = this.findMinMax(this.data.rates.map(x => x.object.rate));
+      if (min === max) {
+        this.summary = min.toString();
+      } else {
+        this.summary = `${min} - ${max}`;
+      }
+    } else if (this.data) {
+      this.summary = '-';
+    }
   }
 
   private findMinMax(arr: number[]): { min: number, max: number } {

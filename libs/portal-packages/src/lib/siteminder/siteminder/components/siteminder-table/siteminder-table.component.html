@@ -10,19 +10,12 @@
         (click)="testUpdate('all', !uiOptions.hideAll)">toggle</span></li>
     <li>Hide availability: {{ uiOptions.hideAvailability.toString() }} - <span style="cursor:pointer;"
         (click)="testUpdate('availability', !uiOptions.hideAvailability)">toggle</span></li>
-    <li>Hide following channels: <span
-        *ngFor="let channelId of store.getChannelsUi(packagePath) | async">{{ channelId }}</span>
-    </li>
-    <li>Hide following ratePlans: <span
-        *ngFor="let ratePlanId of store.getRatePlansUi(packagePath) | async">{{ ratePlanId }}</span></li>
-    <li>Hide following lodging types: <span
-        *ngFor="let lodgingTypeId of store.getLodgingTypesUi(packagePath) | async">{{ lodgingTypeId }}</span></li>
   </ul>
 
 
   <!-- Table -->
   <ng-container *ngIf="columns$ | async as columns">
-    <mat-card *ngIf="cells$ | async as cells">
+    <mat-card>
       <cdk-virtual-scroll-viewport #entityList id="entity-list" itemSize="40" (scrolledIndexChange)="whenScrolling()">
         <table cellspacing="0" cellpadding="0" class="mat-table">
           <thead class="mat-header-row">
@@ -69,7 +62,7 @@
                   <!-- All section -->
                   <ng-container *ngIf="(allColspan$ | async) !== 0">
                     <th [attr.colspan]="(allColspan$ | async)" class="table-cell mat-header-cell border-right-light">
-                      {{ columns.rateSummaryColumns[ratePlanColumn.id]?.title }}
+                      {{ columns.rateSummaryColumns[ratePlanColumn.id].title }}
                     </th>
                   </ng-container>
 
@@ -91,11 +84,10 @@
             <tr>
               <ng-container *ngFor="let ltc of columns.lodgingTypeColumns">
                 <!-- Rateplan -->
-
                 <ng-container *ngFor="let ratePlanColumn of columns.ratePlanColumns[ltc.id]">
 
                   <!-- All section -->
-                  <ng-container *ngIf="!!uiOptions.hideAll">
+                  <ng-container *ngIf="!uiOptions.hideAll">
                     <!-- Rates -->
                     <ng-container *ngIf="!uiOptions.hideRates">
                       <th class="table-cell mat-header-cell border-right-light">
@@ -134,8 +126,10 @@
             </tr>
 
           </thead>
-          <tbody>
-            <tr *cdkVirtualFor="let date of dateRows$ | async; let firstRow = first; trackBy: trackByDate; let i = index;" [ngClass]="'row-weekday-' + (date | weekday)" [attr.data-index]="i">
+          <tbody *ngIf="cells$ | async as cells">
+            <tr
+              *cdkVirtualFor="let date of dateRows$ | async; let firstRow = first; trackBy: trackByDate; let i = index;"
+              [ngClass]="'row-weekday-' + (date | weekday)" [attr.data-index]="i">
 
               <!-- Date -->
               <td class="table-cell mat-cell border-right" [matTooltip]="(date | weekday : 'readable')">

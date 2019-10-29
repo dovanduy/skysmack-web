@@ -11,7 +11,7 @@ import { BehaviorSubject } from 'rxjs';
   styleUrls: ['./siteminder-availability.component.scss']
 })
 export class SiteMinderAvailabilityComponent implements OnInit {
-  @Input() public data: BehaviorSubject<LocalObject<LodgingTypeAvailability, LodgingTypeAvailabilityKey>>;
+  @Input() public data: LocalObject<LodgingTypeAvailability, LodgingTypeAvailabilityKey>;
 
   constructor(
     private dialog: MatDialog

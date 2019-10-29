@@ -31,45 +31,41 @@ export class SiteMinderRateSummaryDialogComponent implements OnInit, OnDestroy {
     private router: Router,
     private queueService: SiteMinderQueueService,
     public dialogRef: MatDialogRef<SiteMinderRateSummaryDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: BehaviorSubject<RateSummary>
+    @Inject(MAT_DIALOG_DATA) public data: RateSummary
   ) { }
 
   ngOnInit() {
     this.packagePath = this.router.url.split('/')[1];
 
-    this.subscriptionHandler.register(this.data.pipe(
-      switchMap(data => {
-        // Prepare data
-        const { date, channels, rates, ratePlan, lodgingType } = data;
-        this.date = date;
-        this.channels = channels;
-        this.ratePlanTitle = ratePlan ? ratePlan.object.name : '';
-        this.lodgingType = lodgingType.object;
+    // Prepare data
+    const { date, channels, rates, ratePlan, lodgingType } = this.data;
+    this.date = date;
+    this.channels = channels;
+    this.ratePlanTitle = ratePlan ? ratePlan.object.name : '';
+    this.lodgingType = lodgingType.object;
 
-        // Process data
-        this.form = new FormGroup({});
-        channels.forEach(channel => {
-          // Rates
-          const rate = rates.find(rate => rate.object.channelId === channel.id);
-          this.setRate(channel, rate ? rate.object : undefined, lodgingType.object.id, ratePlan.object.id)
+    // Process data
+    this.form = new FormGroup({});
+    channels.forEach(channel => {
+      // Rates
+      const rate = rates.find(rate => rate.object.channelId === channel.id);
+      this.setRate(channel, rate ? rate.object : undefined, lodgingType.object.id, ratePlan.object.id)
 
-          // Controls
-          const formControl = new FormControl(rate ? rate.object.rate : null);
-          this.form.addControl(channel.id.toString(), formControl);
+      // Controls
+      const formControl = new FormControl(rate ? rate.object.rate : null);
+      this.form.addControl(channel.id.toString(), formControl);
+    });
+    this.formReady = true;
+
+
+    // Update rates on form change
+    this.subscriptionHandler.register(this.form.valueChanges.pipe(
+      tap((changes: { [channelId: string]: number }) => {
+        Object.keys(changes).forEach(key => {
+          const rate = changes[key];
+          const foundRate = this.changeableRates.find(rate => rate.channels.includes(Number(key)));
+          foundRate.rate = rate;
         });
-        this.formReady = true;
-
-
-        // Update rates on form change
-        return this.form.valueChanges.pipe(
-          tap((changes: { [channelId: string]: number }) => {
-            Object.keys(changes).forEach(key => {
-              const rate = changes[key];
-              const foundRate = this.changeableRates.find(rate => rate.channels.includes(Number(key)));
-              foundRate.rate = rate;
-            });
-          })
-        );
       })
     ).subscribe());
   }

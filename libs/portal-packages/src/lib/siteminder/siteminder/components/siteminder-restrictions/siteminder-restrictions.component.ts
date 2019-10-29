@@ -9,7 +9,7 @@ import { SiteMinderRestrictionsDialogComponent } from '../siteminder-restriction
   styleUrls: ['./siteminder-restrictions.component.scss']
 })
 export class SiteMinderRestrictionsComponent implements OnInit {
-  @Input() public data: BehaviorSubject<any>;
+  @Input() public data: any;
 
   constructor(
     private dialog: MatDialog

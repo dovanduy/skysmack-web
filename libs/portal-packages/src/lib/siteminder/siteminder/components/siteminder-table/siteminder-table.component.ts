@@ -1,14 +1,10 @@
 import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { BehaviorSubject, Observable, combineLatest } from 'rxjs';
-import { StrIndex, SubscriptionHandler, LocalObject } from '@skysmack/framework';
-import { LodgingTypeAvailability, LodgingTypeAvailabilityKey } from '@skysmack/packages-siteminder';
+import { SubscriptionHandler } from '@skysmack/framework';
 import { Router } from '@angular/router';
-import { SiteMinderColumn } from '../../../models/siteminder-column';
 import { SiteMinderService } from '../../../services/siteminder.service';
-import { RateSummary } from '../../../models/rate-summary';
-import { RateInfo } from '../../../models/rate-info';
 import { NgSiteMinderStore, NgSiteMinderActions } from '@skysmack/ng-siteminder';
-import { map, distinctUntilChanged } from 'rxjs/operators';
+import { map, distinctUntilChanged, tap } from 'rxjs/operators';
 import { UiOptions, Columns, Cells } from './table-objects';
 import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
 
@@ -25,7 +21,7 @@ export class SiteMinderTableComponent implements OnInit, OnDestroy {
   private end = new Date();
 
   @ViewChild('entityList', { static: true }) public entityList: CdkVirtualScrollViewport;
-  
+
   // Colspan
   public lodgingTypeColspan$: Observable<number>;
   public ratePlanColspan$: Observable<number>;
@@ -36,23 +32,12 @@ export class SiteMinderTableComponent implements OnInit, OnDestroy {
   public uiOptions$: Observable<UiOptions>;
 
   // Columns
-  // public dateColumn$: BehaviorSubject<SiteMinderColumn>;
-  // public lodgingTypeColumns$: BehaviorSubject<SiteMinderColumn[]>;
-  // public availabilityColumns$: BehaviorSubject<StrIndex<SiteMinderColumn>>;
-  // public ratePlanColumns$: BehaviorSubject<StrIndex<SiteMinderColumn[]>>;
-  // public rateSummaryColumns$: BehaviorSubject<StrIndex<SiteMinderColumn>>;
-  // public channelsColumns$: BehaviorSubject<StrIndex<SiteMinderColumn[]>>;
-
   public columns$: Observable<Columns>;
 
   // Rows
   public dateRows$: BehaviorSubject<Date[]>;
 
   // Cells
-  // public availabilityCells$: BehaviorSubject<StrIndex<StrIndex<BehaviorSubject<LocalObject<LodgingTypeAvailability, LodgingTypeAvailabilityKey>>>>>;
-  // public rateSummaryCells$: BehaviorSubject<StrIndex<StrIndex<StrIndex<BehaviorSubject<RateSummary>>>>>;
-  // public channelsCells$: BehaviorSubject<StrIndex<StrIndex<StrIndex<StrIndex<BehaviorSubject<RateInfo>>>>>>;
-
   public cells$: Observable<Cells>;
 
   constructor(
@@ -67,14 +52,6 @@ export class SiteMinderTableComponent implements OnInit, OnDestroy {
     this.packagePath = this.router.url.split('/')[1];
 
     // Filters
-    // this.hideRates$ = this.store.getRatesUi(this.packagePath);
-    // this.hideAvailability$ = this.store.getAvailabilityUi(this.packagePath);
-    // this.hideAll$ = this.store.getAllUi(this.packagePath);
-    // this.hideRestrictions$ = this.store.getRestrictionsUi(this.packagePath);
-    // this.hideChannels$ = this.store.getChannelsUi(this.packagePath);
-    // this.hideRatePlans$ = this.store.getRatePlansUi(this.packagePath);
-    // this.hideLodgingTypes$ = this.store.getLodgingTypesUi(this.packagePath);
-
     this.uiOptions$ = combineLatest(
       this.store.getRatesUi(this.packagePath),
       this.store.getAvailabilityUi(this.packagePath),
@@ -84,22 +61,22 @@ export class SiteMinderTableComponent implements OnInit, OnDestroy {
       this.store.getRatePlansUi(this.packagePath),
       this.store.getLodgingTypesUi(this.packagePath)
     ).pipe(
-      map(([ 
-        hideRates, 
+      map(([
+        hideRates,
         hideAvailability,
         hideAll,
         hideRestrictions,
         hideChannels,
         hideRatePlans,
         hideLodgingTypes]) => new UiOptions({
-        hideRates: hideRates,
-        hideAvailability: hideAvailability,
-        hideAll: hideAll,
-        hideRestrictions: hideRestrictions,
-        hideChannels: hideChannels,
-        hideRatePlans: hideRatePlans,
-        hideLodgingTypes: hideLodgingTypes
-      }))
+          hideRates,
+          hideAvailability,
+          hideAll,
+          hideRestrictions,
+          hideChannels,
+          hideRatePlans,
+          hideLodgingTypes
+        }))
     );
 
     // Columns
@@ -119,47 +96,36 @@ export class SiteMinderTableComponent implements OnInit, OnDestroy {
         rateSummaryColumns,
         channelsColumns
       ]) => new Columns({
-        dateColumn: dateColumn,
-        lodgingTypeColumns: lodgingTypeColumns,
-        availabilityColumns: availabilityColumns,
-        ratePlanColumns: ratePlanColumns,
-        rateSummaryColumns: rateSummaryColumns,
-        channelsColumns: channelsColumns
+        dateColumn,
+        lodgingTypeColumns,
+        availabilityColumns,
+        ratePlanColumns,
+        rateSummaryColumns,
+        channelsColumns
       }))
     );
-
-    // this.dateColumn$ = this.service.dateColumn$;
-    // this.lodgingTypeColumns$ = this.service.lodgingTypeColumns$;
-    // this.availabilityColumns$ = this.service.availabilityColumns$;
-    // this.ratePlanColumns$ = this.service.ratePlanColumns$;
-    // this.rateSummaryColumns$ = this.service.rateSummaryColumns$;
-    // this.channelsColumns$ = this.service.channelsColumns$;
 
     // Rows
     this.dateRows$ = this.service.dateRows$;
 
     // Cells
-    // this.availabilityCells$ = this.service.availabilityCells$;
-    // this.rateSummaryCells$ = this.service.rateSummaryCells$;
-    // this.channelsCells$ = this.service.channelsCells$;
-
-    this.cells$ = combineLatest(
-      this.service.availabilityCells$,
-      this.service.rateSummaryCells$,
-      this.service.channelsCells$
-    ).pipe(
-      map(
-        ([
-          availabilityCells,
-          rateSummaryCells,
-          channelsCells
-        ]) => new Cells({
-          availabilityCells: availabilityCells,
-          rateSummaryCells: rateSummaryCells,
-          channelsCells: channelsCells
-        })
-      )
-    );
+    // this.cells$ = combineLatest(
+    //   this.service.availabilityCells$,
+    //   this.service.rateSummaryCells$,
+    //   this.service.channelsCells$
+    // ).pipe(
+    //   map(
+    //     ([
+    //       availabilityCells,
+    //       rateSummaryCells,
+    //       channelsCells
+    //     ]) => new Cells({
+    //       availabilityCells,
+    //       rateSummaryCells,
+    //       channelsCells
+    //     })
+    //   )
+    // );
 
     // Colspans
     this.setChannelColspan();
@@ -169,7 +135,7 @@ export class SiteMinderTableComponent implements OnInit, OnDestroy {
 
     // Generate
     this.subscriptionHandler.register(this.service.generateColumns(this.packagePath).subscribe());
-    this.subscriptionHandler.register(this.service.generateCells(this.packagePath, this.start, this.addDays(this.end, 29)).subscribe());
+    // this.subscriptionHandler.register(this.service.generateCells(this.packagePath, this.start, this.addDays(this.end, 29)).subscribe());
   }
 
   ngOnDestroy() {
@@ -178,7 +144,7 @@ export class SiteMinderTableComponent implements OnInit, OnDestroy {
 
   public testUpdate(target: string, value: any) {
     switch (target) {
-      case 'rates': {        
+      case 'rates': {
         this.actions.updateRatesUi(this.packagePath, value);
         break;
       }
@@ -252,10 +218,9 @@ export class SiteMinderTableComponent implements OnInit, OnDestroy {
       })
     );
   }
-  
+
   public whenScrolling() {
-    if (this.entityList.measureScrollOffset('bottom') < 150) {
-      // this.requestPage.emit(true);
+    if (this.entityList && this.entityList.measureScrollOffset('bottom') < 150) {
     }
   }
 

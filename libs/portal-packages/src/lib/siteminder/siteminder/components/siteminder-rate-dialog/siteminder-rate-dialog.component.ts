@@ -32,33 +32,28 @@ export class SiteMinderRateDialogComponent implements OnInit, OnDestroy {
     private router: Router,
     private queueService: SiteMinderQueueService,
     public dialogRef: MatDialogRef<SiteMinderRateDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: BehaviorSubject<RateInfo>
+    @Inject(MAT_DIALOG_DATA) public data: RateInfo
   ) { }
 
   ngOnInit() {
     this.packagePath = this.router.url.split('/')[1];
+    const { date, channel, rate, ratePlan, lodgingType } = this.data;
+    const channelId = channel.object.id.toString();
+    this.date = date;
+    this.channel = channel;
+    this.ratePlanTitle = ratePlan.object.name;
+    this.lodgingType = lodgingType;
 
-    this.subscriptionHandler.register(this.data.pipe(
-      switchMap(data => {
-        const { date, channel, rate, ratePlan, lodgingType } = data;
-        const channelId = channel.object.id.toString();
-        this.date = date;
-        this.channel = channel;
-        this.ratePlanTitle = ratePlan.object.name;
-        this.lodgingType = lodgingType;
+    this.form = new FormGroup({});
+    const formControl = rate ? new FormControl(rate.object.rate) : new FormControl(0)
+    this.form.addControl(channelId, formControl);
+    this.setRate(channel.object, rate ? rate.object : undefined, lodgingType.object.id, ratePlan.object.id)
+    this.formReady = true;
 
-        this.form = new FormGroup({});
-        const formControl = rate ? new FormControl(rate.object.rate) : new FormControl(0)
-        this.form.addControl(channelId, formControl);
-        this.setRate(channel.object, rate ? rate.object : undefined, lodgingType.object.id, ratePlan.object.id)
-        this.formReady = true;
-
-        // Update rates on form change
-        return this.form.valueChanges.pipe(
-          tap((changes: { channelId: number }) => {
-            this.changeableRate.rate = changes[channelId];
-          })
-        );
+    // Update rates on form change
+    this.subscriptionHandler.register(this.form.valueChanges.pipe(
+      tap((changes: { channelId: number }) => {
+        this.changeableRate.rate = changes[channelId];
       })
     ).subscribe());
   }

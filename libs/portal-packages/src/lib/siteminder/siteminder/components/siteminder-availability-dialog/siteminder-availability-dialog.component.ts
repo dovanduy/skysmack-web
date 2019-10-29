@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject, OnDestroy } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { FormGroup, FormControl } from '@angular/forms';
-import { Observable, BehaviorSubject } from 'rxjs';
+import { Observable } from 'rxjs';
 import { map, startWith, tap } from 'rxjs/operators';
 import { LodgingTypeAvailability, LodgingTypeAvailabilityKey, Availability } from '@skysmack/packages-siteminder';
 import { LodgingType } from '@skysmack/packages-lodgings';
@@ -30,32 +30,28 @@ export class SiteMinderAvailabilityDialogComponent implements OnInit, OnDestroy 
     private router: Router,
     private queueService: SiteMinderQueueService,
     public dialogRef: MatDialogRef<SiteMinderAvailabilityDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: BehaviorSubject<LocalObject<LodgingTypeAvailability, LodgingTypeAvailabilityKey>>
+    @Inject(MAT_DIALOG_DATA) public data: LocalObject<LodgingTypeAvailability, LodgingTypeAvailabilityKey>
   ) { }
 
   ngOnInit() {
     this.packagePath = this.router.url.split('/')[1];
-    this.subscriptionHandler.register(this.data.pipe(
-      tap(data => {
-        this.available = data.object.available;
-        this.lodgingType = data.object.lodgingType.object;
-        const availableModifier = data.object.availableModifier
-        this.originalAvailableModfier = availableModifier;
-        this.date = data.object.date;
+    this.available = this.data.object.available;
+    this.lodgingType = this.data.object.lodgingType.object;
+    const availableModifier = this.data.object.availableModifier
+    this.originalAvailableModfier = availableModifier;
+    this.date = this.data.object.date;
 
-        this.form = new FormGroup({});
-        const formControl = new FormControl(availableModifier);
-        this.form.addControl('availableModifier', formControl);
+    this.form = new FormGroup({});
+    const formControl = new FormControl(availableModifier);
+    this.form.addControl('availableModifier', formControl);
 
-        this.availableAfterModification$ = this.form.valueChanges.pipe(
-          startWith({ availableModifier: availableModifier }),
-          map(changes => {
-            this.newAvailableModifier = changes.availableModifier;
-            return this.available + changes.availableModifier;
-          })
-        );
+    this.availableAfterModification$ = this.form.valueChanges.pipe(
+      startWith({ availableModifier: availableModifier }),
+      map(changes => {
+        this.newAvailableModifier = changes.availableModifier;
+        return this.available + changes.availableModifier;
       })
-    ).subscribe());
+    );
   }
 
   ngOnDestroy() {

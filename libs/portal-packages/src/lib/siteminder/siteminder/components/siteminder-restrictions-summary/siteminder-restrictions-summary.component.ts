@@ -10,27 +10,13 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class SiteMinderRestrictionsSummaryComponent implements OnInit {
 
-  @Input() public data: BehaviorSubject<any>;
+  @Input() public data: any;
 
   constructor(
     private dialog: MatDialog
   ) { }
 
   ngOnInit() {
-    // this.data.pipe(
-    //   tap(data => {
-    //     if (data && data.rates && data.rates.length > 0) {
-    //       const { min, max } = this.findMinMax(data.rates.map(x => x.object.rate));
-    //       if (min === max) {
-    //         this.summary = min.toString();
-    //       } else {
-    //         this.summary = `${min} - ${max}`;
-    //       }
-    //     } else if (this.data) {
-    //       this.summary = '-';
-    //     }
-    //   })
-    // ).subscribe();
   }
 
   public openDialog(): void {
