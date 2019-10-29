@@ -1,13 +1,17 @@
 <h2 mat-dialog-title>Select a lodging</h2>
 <div mat-dialog-content>
     <!-- Lodging type select -->
-    <input matInput [placeholder]="'LODGING_SELECT_DIALOG.CHOOSE_LODGING_TYPE' | translate" aria-label="Lodging Type"
-        [matAutocomplete]="lodgingTypesAutoControl" [formControl]="lodgingTypesAutoCompleteControl">
-    <mat-autocomplete #lodgingTypesAutoControl="matAutocomplete" [displayWith]="lodgingTypeDisplayFn">
-        <mat-option *ngFor="let lodgingType of filteredLodgingTypes$ | async" [value]="lodgingType">
-            <span>{{ lodgingType.object.name}}</span>
-        </mat-option>
-    </mat-autocomplete>
+
+    <mat-form-field class="example-full-width">
+        <input matInput [placeholder]="'LODGING_SELECT_DIALOG.CHOOSE_LODGING_TYPE' | translate"
+            aria-label="Lodging type" [matAutocomplete]="lodgingTypesAutoControl"
+            [formControl]="lodgingTypesAutoCompleteControl">
+        <mat-autocomplete #lodgingTypesAutoControl="matAutocomplete" [displayWith]="lodgingTypeDisplayFn">
+            <mat-option *ngFor="let lodgingType of filteredLodgingTypes$ | async" [value]="lodgingType">
+                <span>{{ lodgingType.object.name}}</span>
+            </mat-option>
+        </mat-autocomplete>
+    </mat-form-field>
 
     <br />
     <br />
@@ -18,8 +22,10 @@
     <mat-autocomplete #lodgingsAutoControl="matAutocomplete" (optionSelected)="selectLodging($event)"
         [displayWith]="lodgingDisplayFn" autoActiveFirstOption>
         <mat-option *ngFor="let detailedlodging of detailedLodgings$ | async" [value]="detailedlodging">
-            <mat-icon *ngIf="detailedlodging.available" style="color: green; float: right;margin-right: 0" inline="true">check_circle</mat-icon>
-            <mat-icon *ngIf="!detailedlodging.available" color="Warn" inline="true" style="float: right;margin-right: 0">error</mat-icon>
+            <mat-icon *ngIf="detailedlodging.available" style="color: green; float: right;margin-right: 0"
+                inline="true">check_circle</mat-icon>
+            <mat-icon *ngIf="!detailedlodging.available" color="Warn" inline="true"
+                style="float: right;margin-right: 0">error</mat-icon>
             <span>{{ detailedlodging.lodging.object.name}}</span>
         </mat-option>
     </mat-autocomplete>
