@@ -226,7 +226,6 @@ export class SiteMinderService {
                             });
 
                             rateSummaryCells[dateIndex][rpc.id][lodgingTypeId] = rateSummary;
-                            this.rateSummaryCells$.next(rateSummaryCells);
 
                             // Channel cells
                             channelsCells[dateIndex] ? channelsCells[dateIndex] : channelsCells[dateIndex] = {};
@@ -247,13 +246,15 @@ export class SiteMinderService {
                                 });
                                 channelRatesDictionary[key] = newChannelRate;
                             });
-                            this.channelsCells$.next(channelsCells);
                         });
+
+                        this.availabilityCells$.next(availabilityCells);
+                        this.rateSummaryCells$.next(rateSummaryCells);
+                        this.channelsCells$.next(channelsCells);
                     });
                 });
             })
         ));
-
         return combineLatest(cells$);
     }
 

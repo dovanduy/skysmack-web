@@ -4,7 +4,7 @@ import { SubscriptionHandler } from '@skysmack/framework';
 import { Router } from '@angular/router';
 import { SiteMinderService } from '../../../services/siteminder.service';
 import { NgSiteMinderStore, NgSiteMinderActions } from '@skysmack/ng-siteminder';
-import { map, distinctUntilChanged, tap } from 'rxjs/operators';
+import { map, distinctUntilChanged, tap, share } from 'rxjs/operators';
 import { UiOptions, Columns, Cells } from './table-objects';
 import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
 
@@ -109,23 +109,23 @@ export class SiteMinderTableComponent implements OnInit, OnDestroy {
     this.dateRows$ = this.service.dateRows$;
 
     // Cells
-    // this.cells$ = combineLatest(
-    //   this.service.availabilityCells$,
-    //   this.service.rateSummaryCells$,
-    //   this.service.channelsCells$
-    // ).pipe(
-    //   map(
-    //     ([
-    //       availabilityCells,
-    //       rateSummaryCells,
-    //       channelsCells
-    //     ]) => new Cells({
-    //       availabilityCells,
-    //       rateSummaryCells,
-    //       channelsCells
-    //     })
-    //   )
-    // );
+    this.cells$ = combineLatest(
+      this.service.availabilityCells$,
+      this.service.rateSummaryCells$,
+      this.service.channelsCells$
+    ).pipe(
+      map(
+        ([
+          availabilityCells,
+          rateSummaryCells,
+          channelsCells
+        ]) => new Cells({
+          availabilityCells,
+          rateSummaryCells,
+          channelsCells
+        })
+      )
+    );
 
     // Colspans
     this.setChannelColspan();
@@ -135,7 +135,7 @@ export class SiteMinderTableComponent implements OnInit, OnDestroy {
 
     // Generate
     this.subscriptionHandler.register(this.service.generateColumns(this.packagePath).subscribe());
-    // this.subscriptionHandler.register(this.service.generateCells(this.packagePath, this.start, this.addDays(this.end, 29)).subscribe());
+    this.subscriptionHandler.register(this.service.generateCells(this.packagePath, this.start, this.addDays(this.end, 29)).subscribe());
   }
 
   ngOnDestroy() {
@@ -175,7 +175,8 @@ export class SiteMinderTableComponent implements OnInit, OnDestroy {
         const restrictionsColspan = !hideRestrictions ? 1 : 0;
         const rateColspan = !hideRates ? 1 : 0;
         return restrictionsColspan + rateColspan;
-      })
+      }),
+      share()
     )
   }
 
@@ -184,7 +185,8 @@ export class SiteMinderTableComponent implements OnInit, OnDestroy {
       this.channelsColspan$.pipe(distinctUntilChanged()),
       this.store.getAllUi(this.packagePath).pipe(distinctUntilChanged())
     ).pipe(
-      map(([channelsColspan, hideAll]) => hideAll ? 0 : channelsColspan)
+      map(([channelsColspan, hideAll]) => hideAll ? 0 : channelsColspan),
+      share()
     )
   }
 
@@ -199,7 +201,8 @@ export class SiteMinderTableComponent implements OnInit, OnDestroy {
         const channelColumnsCount = keys[0] ? channelsColumns[keys[0]].length : 0;
         const colspan = (channelColumnsCount * channelsColspan) + allColspan;
         return colspan;
-      })
+      }),
+      share()
     );
   }
 
@@ -215,7 +218,8 @@ export class SiteMinderTableComponent implements OnInit, OnDestroy {
         const ratePlanColumnsCount = keys[0] ? ratePlanColumns[keys[0]].length : 0;
         const colspan = (ratePlanColumnsCount * ratePlanColspan) + availabilityColspan;
         return colspan;
-      })
+      }),
+      share()
     );
   }
 
