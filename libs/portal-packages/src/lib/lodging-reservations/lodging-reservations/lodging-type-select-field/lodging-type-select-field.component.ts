@@ -70,7 +70,7 @@ export class LodgingTypeSelectFieldComponent extends FieldBaseComponent<Field> i
       checkInControl.valueChanges.pipe(startWith(checkInControl.value)),
       checkOutControl.valueChanges.pipe(startWith(checkOutControl.value))
     ).pipe(
-      map(([checkIn, checkOut]) => checkIn && checkOut ? true : false)
+      map(([checkIn, checkOut]) => checkIn && checkOut)
     );
   }
 }

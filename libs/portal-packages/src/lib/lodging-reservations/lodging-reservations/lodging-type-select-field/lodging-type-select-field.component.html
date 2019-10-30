@@ -1,12 +1,10 @@
 <ng-container *ngIf="field" [formGroup]="fh.form">
 
 
-  <button *ngIf="!selectedLodgingType" mat-raised-button class="select-button" color="primary"
-    (click)="selectLodgingType()" [disabled]="!(datesSelected$ | async)">{{ 'LODGING_TYPE_SELECT_FIELD.SELECT_LODGING_TYPE' | translate }}</button>
-  <ng-container *ngIf=" (datesSelected$ | async)">
-    <button *ngIf="selectedLodgingType" mat-raised-button class="select-button"
-      (click)="selectLodgingType()">{{ selectedLodgingType.object.name }}</button>
-  </ng-container>
+  <button mat-raised-button class="select-button" [color]="selectedLodgingType ? 'default' : 'primary'"
+    (click)="selectLodgingType()" [disabled]="!(datesSelected$ | async)">{{ selectedLodgingType && selectedLodgingType.object ? selectedLodgingType.object.name : ('LODGING_TYPE_SELECT_FIELD.SELECT_LODGING_TYPE' | translate) }}</button>
+
+  <input type="hidden" [value]="selectedLodgingType" [name]="field.key" />
 
   <!-- Errors -->
   <mat-error *ngIf="fh.formErrors[fieldKey]">

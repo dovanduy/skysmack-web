@@ -8,6 +8,8 @@
       (click)="selectLodging()">{{ selectedLodging.object.name }}</button>
   </ng-container>
 
+  <input type="hidden" [value]="selectedLodging" [name]="field.key" />
+
   <!-- Errors -->
   <mat-error *ngIf="fh.formErrors[fieldKey]">
     <ng-container *ngIf="fh.formErrors[fieldKey]">

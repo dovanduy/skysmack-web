@@ -29,3 +29,6 @@ a {
         color: mat-color($accent, darker);
     }
 }
+.mat-input-element {
+    overflow-x:hidden;
+}

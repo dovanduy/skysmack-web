@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Field } from '@skysmack/ng-dynamic-forms';
 import { FieldBaseComponent } from '@skysmack/portal-fields';
 import { MatDialog } from '@angular/material/dialog';
-import { take, tap, map, switchMap, startWith, debounceTime } from 'rxjs/operators';
+import { take, tap, map, switchMap, startWith, debounceTime, filter } from 'rxjs/operators';
 import { LocalObject } from '@skysmack/framework';
 import { DetailedLodging, Lodging } from '@skysmack/packages-lodgings';
 import { Observable, combineLatest, of } from 'rxjs';
@@ -38,7 +38,15 @@ export class LodgingSelectFieldComponent extends FieldBaseComponent<Field> imple
   }
 
   public selectLodging(): void {
-    this.dialog.open(LodgingSelectDialogComponent, { data: { form: this.fh.form, from: this.fh.form.get('checkIn').value, to: this.fh.form.get('checkOut').value, lodgingTypeId: this.fh.form.get('lodgingTypeId').value, lodgingId: this.getFieldValue() } }).afterClosed().pipe(
+    this.subscriptionHandler.register(this.dialog.open(LodgingSelectDialogComponent, { 
+      data: 
+      { 
+        from: this.fh.form.get('checkIn').value, 
+        to: this.fh.form.get('checkOut').value, 
+        lodgingTypeId: this.fh.form.get('lodgingTypeId').value, 
+        lodgingId: this.getFieldValue() 
+      } 
+    }).afterClosed().pipe(
       tap((detailedLodging: DetailedLodging) => {
         if (detailedLodging || detailedLodging === null) {
           const selectedLodging = detailedLodging && detailedLodging.lodging;
@@ -46,23 +54,25 @@ export class LodgingSelectFieldComponent extends FieldBaseComponent<Field> imple
             this.setFieldValue(selectedLodging.object.id);
             this.selectedLodging = selectedLodging;
           } else {
-            this.setFieldValue(null);
+            this.fh.form.controls[this.field.key].setValue(null)
+            // this.setFieldValue('hulla bull');
             this.selectedLodging = null;
           }
         } 
       }),
       take(1)
-    ).subscribe();
+    ).subscribe());
   }
 
   private setlodgingTypeSelected$() {
-    const lodgingTypeControl = this.fh.form.get('lodgingTypeId');
-    this.lodgingTypeSelected$ = combineLatest([
-      lodgingTypeControl.valueChanges.pipe(startWith(null)),
-      of(lodgingTypeControl.value).pipe(startWith(null))
-    ]).pipe(
-      map(([valueChanged, startValue]) => {
-        return startValue ? !!startValue : !!valueChanged;
+    this.lodgingTypeSelected$ = this.fh.form.get('lodgingTypeId').valueChanges.pipe(
+      startWith(''),
+      map(valueChanged => {
+        const _value = this.fh.form.get('lodgingTypeId').value;
+        console.log('valueChanged', valueChanged, _value);
+        return _value && Number.isInteger(_value);
+        // console.log('valueChanged', valueChanged);
+        // return valueChanged && Number.isInteger(valueChanged);
       })
     );
   }
@@ -74,6 +84,7 @@ export class LodgingSelectFieldComponent extends FieldBaseComponent<Field> imple
       this.subscriptionHandler.register(getPackageDendencyAsStream(this.skysmackStore, packagePath, [0]).pipe(
         switchMap(_package => this.lodgingStore.getSingle(_package.object.path, selectedLodgingId))
       ).pipe(
+        filter(x => !!x),
         tap(selectedLodging => this.selectedLodging = selectedLodging),
         take(1)
       ).subscribe());

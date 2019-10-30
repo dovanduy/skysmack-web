@@ -7,8 +7,8 @@ import { Observable, combineLatest, BehaviorSubject, concat } from 'rxjs';
 import { getPackageDendencyAsStream } from '@skysmack/ng-framework';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { map, switchMap, take, filter, tap, debounceTime, distinctUntilChanged, startWith, share } from 'rxjs/operators';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { FormControl, FormGroup } from '@angular/forms';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { FormControl } from '@angular/forms';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 
 @Component({
@@ -32,8 +32,7 @@ export class LodgingSelectDialogComponent implements OnInit, OnDestroy {
     private lodgingStore: NgLodgingsStore,
     private lodgingTypesActions: NgLodgingTypesActions,
     private lodgingTypesStore: NgLodgingTypesStore,
-    private dialogRef: MatDialogRef<LodgingSelectDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) private data: { from: any, to: any, lodgingTypeId: number, lodgingId: number }
+    @Inject(MAT_DIALOG_DATA) public data: { from: any, to: any, lodgingTypeId: number, lodgingId: number }
   ) { }
 
   ngOnInit() {
@@ -119,18 +118,6 @@ export class LodgingSelectDialogComponent implements OnInit, OnDestroy {
     const allLodgingTypes$ = lodgingPackage$.pipe(
       switchMap(lodgingPackage => this.lodgingTypesStore.get(lodgingPackage.object.path)),
     );
-
-    // Filter lodging types based ON search input
-    // this.filteredLodgingTypes$ = combineLatest(
-    //   allLodgingTypes$,
-    //   lodgingTypeSearchInput$
-    // ).pipe(
-    //   debounceTime(25),
-    //   map(([allLodgingTypes, lodgingTypeSearchInput]) => {
-
-    //     return lodgingTypeSearchInput ? this.filterLodgingTypes(lodgingTypeSearchInput, allLodgingTypes) : allLodgingTypes);
-    //   })
-    // );
 
     this.filteredLodgingTypes$ = combineLatest(
       lodgingTypeSearchInput$,
