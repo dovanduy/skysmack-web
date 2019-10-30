@@ -2840,7 +2840,8 @@
 			"FEATURES": "Udvidelser",
 			"INSTALL": "Installer pakke",
 			"TITLE": "Pakker",
-			"AVAILABLE_PACKAGES": "Ledige pakker"
+			"AVAILABLE_PACKAGES": "Ledige pakker",
+			"OPEN": "Gå til"
 		},
 		"CREATE": {
 			"INSTALL": "Installer pakke",
