@@ -22,6 +22,7 @@ export class LodgingSelectDialogComponent implements OnInit, OnDestroy {
   public lodgingsAutoCompleteControl = new FormControl();
   private selectedLodging: DetailedLodging;
   public detailedLodgings$: Observable<DetailedLodging[]>;
+  public displaySelect$: Observable<boolean>;
   public subscriptionHandler = new SubscriptionHandler();
 
   constructor(
@@ -188,7 +189,25 @@ export class LodgingSelectDialogComponent implements OnInit, OnDestroy {
       lodgingsSearchInput$,
       allLodgingsOfType$
     ).pipe(
-      map(([searchInput, lodgings]) => searchInput ? this.filterLodgings(searchInput, lodgings) : lodgings),
+      map(([searchInput, lodgings]) => { 
+        console.log(searchInput);
+        if (searchInput && typeof searchInput !== 'string' && (searchInput.lodging || searchInput.object)) {
+        } else {
+
+        }
+        return searchInput ? this.filterLodgings(searchInput, lodgings) : lodgings;
+      })
+    );
+
+    this.displaySelect$ = lodgingsSearchInput$.pipe(
+      map((searchInput) => {
+        if (searchInput && typeof searchInput !== 'string' && (searchInput.lodging || searchInput.object)) {
+          return true;
+        } else {
+          return false;
+        }
+      }),
+      share()
     );
 
     // Get lodging availability ON lodgings search
@@ -202,7 +221,6 @@ export class LodgingSelectDialogComponent implements OnInit, OnDestroy {
       available$
     ).pipe(
       map(([lodgings, available]) => {
-        console.log('returning lodgings');
         return lodgings.map(lodging => {
           return new DetailedLodging({
             lodging,
@@ -217,7 +235,7 @@ export class LodgingSelectDialogComponent implements OnInit, OnDestroy {
     this.subscriptionHandler.unsubscribe();
   }
 
-  public done(): void {
+  public select(): void {
     this.dialogRef.close(this.selectedLodging);
   }
 

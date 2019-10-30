@@ -135,8 +135,8 @@
         "UNAVAILABLE": "Unavailable",
         "CANCEL": "Cancel",
         "DESELECT": "Deselect",
-        "DONE": "Done",
-        "CHOOSE_LODGING_TYPE": "Choose a lodging type",
+        "SELECT": "Select",
+        "CHOOSE_LODGING_TYPE": "Filter by lodging type",
         "CHOOSE_LODGING": "Choose a lodging"
     },
     "LODGING_TYPE_SELECT_DIALOG": {

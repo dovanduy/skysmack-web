@@ -32,6 +32,6 @@
 
 <div mat-dialog-actions>
     <button mat-raised-button (click)="cancel()">{{ 'LODGING_SELECT_DIALOG.CANCEL' | translate }}</button>
-    <button mat-raised-button color="warn" (click)="deselect()">{{ 'LODGING_SELECT_DIALOG.DESELECT' | translate }}</button>
-    <button mat-raised-button color="primary" (click)="done()">{{ 'LODGING_SELECT_DIALOG.DONE' | translate }}</button>
+    <button mat-raised-button color="warn" (click)="deselect()" *ngIf="!(displaySelect$ | async)">{{ 'LODGING_SELECT_DIALOG.DESELECT' | translate }}</button>
+    <button mat-raised-button color="primary" (click)="select()" *ngIf="displaySelect$ | async">{{ 'LODGING_SELECT_DIALOG.SELECT' | translate }}</button>
 </div>
