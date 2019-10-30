@@ -134,6 +134,7 @@
         "AVAILABLE": "Available",
         "UNAVAILABLE": "Unavailable",
         "CANCEL": "Cancel",
+        "DESELECT": "Deselect",
         "DONE": "Done",
         "CHOOSE_LODGING_TYPE": "Choose a lodging type",
         "CHOOSE_LODGING": "Choose a lodging"

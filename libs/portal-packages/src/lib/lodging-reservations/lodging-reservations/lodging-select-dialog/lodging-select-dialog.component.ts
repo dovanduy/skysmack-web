@@ -32,10 +32,17 @@ export class LodgingSelectDialogComponent implements OnInit, OnDestroy {
     private lodgingTypesActions: NgLodgingTypesActions,
     private lodgingTypesStore: NgLodgingTypesStore,
     private dialogRef: MatDialogRef<LodgingSelectDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) private data: { form: FormGroup }
+    @Inject(MAT_DIALOG_DATA) private data: { from: any, to: any, lodgingTypeId: number, lodgingId: number }
   ) { }
 
   ngOnInit() {
+    if (this.data.from instanceof Date) {
+      this.data.from = this.data.from.toISOString();
+    }
+    if (this.data.to instanceof Date) {
+      this.data.to = this.data.to.toISOString();
+    }
+
     // ########
     // Step 1: Setting defaults
     // ########
@@ -44,8 +51,7 @@ export class LodgingSelectDialogComponent implements OnInit, OnDestroy {
     const packagePath = this.router.url.split('/')[1];
     const lodgingPackage$ = getPackageDendencyAsStream(this.skysmackStore, packagePath, [0]).pipe(
       filter(x => !!x),
-      take(1),
-      share()
+      take(1)
     );
 
     // ########
@@ -56,8 +62,8 @@ export class LodgingSelectDialogComponent implements OnInit, OnDestroy {
     this.subscriptionHandler.register(lodgingPackage$.pipe(
       tap(lodgingPackage => {
         this.lodgingTypesActions.getPaged(lodgingPackage.object.path, new PagedQuery());
-        }),
-      take(1)      
+      }),
+      take(1)
     ).subscribe());
 
     // Prepare lodging type search and selection streams
@@ -77,11 +83,10 @@ export class LodgingSelectDialogComponent implements OnInit, OnDestroy {
     );
 
     // Set selected lodging type ON startup
-    const preselectedLodgingTypeId = this.data.form.get('lodgingTypeId');
-    if (preselectedLodgingTypeId && preselectedLodgingTypeId.value) {
+    if (this.data.lodgingTypeId && this.data.lodgingTypeId > 0) {
       this.subscriptionHandler.register(lodgingPackage$.pipe(
         switchMap(lodgingPackage => {
-          return this.lodgingTypesStore.getSingle(lodgingPackage.object.path, preselectedLodgingTypeId.value).pipe(
+          return this.lodgingTypesStore.getSingle(lodgingPackage.object.path, this.data.lodgingTypeId).pipe(
             filter(x => !!x),
             take(1),
             tap(lodgingType => {
@@ -130,8 +135,8 @@ export class LodgingSelectDialogComponent implements OnInit, OnDestroy {
       lodgingTypeSearchInput$,
       allLodgingTypes$
     ).pipe(
-        map(([searchInput, lodgingTypes]) => searchInput && searchInput.length > 0 ? this.filterLodgingTypes(searchInput, lodgingTypes) : lodgingTypes)
-      );
+      map(([searchInput, lodgingTypes]) => searchInput && searchInput.length > 0 ? this.filterLodgingTypes(searchInput, lodgingTypes) : lodgingTypes)
+    );
 
     // ########
     // Step 3: Preparing the lodgings auto complete
@@ -142,12 +147,14 @@ export class LodgingSelectDialogComponent implements OnInit, OnDestroy {
     );
 
     // Set selected lodging (if any) ON startup
-    const preselectedLodgingId = this.data.form.get('lodgingId');
-    if (preselectedLodgingId && preselectedLodgingId.value) {
+    if (this.data.lodgingId && this.data.lodgingId > 0) {
       this.subscriptionHandler.register(lodgingPackage$.pipe(
-        switchMap(lodgingPackage => this.lodgingStore.getSingle(lodgingPackage.object.path, preselectedLodgingId.value).pipe(
+        switchMap(lodgingPackage => this.lodgingStore.getSingle(lodgingPackage.object.path, this.data.lodgingId).pipe(
           filter(x => !!x),
-          map(lodgingType => this.lodgingsAutoCompleteControl.setValue(lodgingType)),
+          tap(lodging => {
+            this.lodgingsAutoCompleteControl.setValue(lodging);
+            console.log('init value', lodging.object.id);
+          }),
           take(1)
         ))
       ).subscribe());
@@ -169,7 +176,9 @@ export class LodgingSelectDialogComponent implements OnInit, OnDestroy {
       switchMap(selectedLodgingType => lodgingPackage$.pipe(
         switchMap(lodgingPackage => this.lodgingStore.get(lodgingPackage.object.path).pipe(
           distinctUntilChanged((prev, curr) => JSON.stringify(prev) === JSON.stringify(curr)),
+          debounceTime(50),
           map(lodgings => lodgings.filter(lodging => lodging.object.lodgingTypeId === selectedLodgingType.object.id)),
+          tap(lodgingsOfType => this.lodgingActions.getAvailableLodgings(lodgingPackage.object.path, this.data.from, this.data.to, lodgingsOfType.map(lodging => lodging.objectIdentifier)))
         ))
       ))
     );
@@ -182,28 +191,9 @@ export class LodgingSelectDialogComponent implements OnInit, OnDestroy {
       map(([searchInput, lodgings]) => searchInput ? this.filterLodgings(searchInput, lodgings) : lodgings),
     );
 
-    // Request lodging availability ON lodging type select
-    this.subscriptionHandler.register(allLodgingsOfType$.pipe(
-      switchMap(lodgingsOfType => lodgingPackage$.pipe(
-        map(lodgingPackage => {
-          const checkIn = this.data.form.get('checkIn').value;
-          const checkOut = this.data.form.get('checkOut').value;
-          const packagePath = lodgingPackage.object.path;
-          this.lodgingActions.getAvailableLodgings(packagePath, checkIn, checkOut, lodgingsOfType.map(lodging => lodging.objectIdentifier));
-        })
-      ))
-    ).subscribe());
-
     // Get lodging availability ON lodgings search
-    const available$ = lodgingsSearchInput$.pipe(
-      switchMap(() => lodgingPackage$.pipe(
-        switchMap((lodgingPackage) => {
-          const checkIn = this.data.form.get('checkIn').value;
-          const checkOut = this.data.form.get('checkOut').value;
-          const packagePath = lodgingPackage.object.path;
-          return this.lodgingStore.getAvailableLodgings(packagePath, checkIn, checkOut);
-        })
-      ))
+    const available$ = lodgingPackage$.pipe(
+      switchMap((lodgingPackage) => this.lodgingStore.getAvailableLodgings(lodgingPackage.object.path, this.data.from, this.data.to))
     );
 
     // Create detailed lodgings (used for selection and display) when lodgings OR availability is updated
@@ -212,10 +202,11 @@ export class LodgingSelectDialogComponent implements OnInit, OnDestroy {
       available$
     ).pipe(
       map(([lodgings, available]) => {
+        console.log('returning lodgings');
         return lodgings.map(lodging => {
           return new DetailedLodging({
             lodging,
-            available: available[lodging.object.id] ? available[lodging.object.id] : false
+            available: available && available[lodging.object.id] ? available[lodging.object.id] : false
           })
         }).sort((a, b) => (a.available === b.available) ? 0 : a.available ? -1 : 1)
       })
@@ -228,6 +219,10 @@ export class LodgingSelectDialogComponent implements OnInit, OnDestroy {
 
   public done(): void {
     this.dialogRef.close(this.selectedLodging);
+  }
+
+  public deselect(): void {
+    this.dialogRef.close('null');
   }
 
   public cancel(): void {

@@ -31,7 +31,9 @@ export class NgLodgingsStore extends NgRecordStore<LodgingsAppState, Lodging, nu
         return this.getSingleWithDependency(packagePath, id, this.deps);
     }
 
-    public getAvailableLodgings(packagePath: string, startDate: string, endDate: string): Observable<StrIndex<boolean>> {
+    public getAvailableLodgings(packagePath: string, startDate: any, endDate: any): Observable<StrIndex<boolean>> {
+        
+
         return this.getState<LodgingsState>().pipe(
             map(state => state.availableLodgings[packagePath]),
             defined(),

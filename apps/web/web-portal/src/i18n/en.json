@@ -1136,9 +1136,11 @@
 		"AVAILABLE": "Available",
 		"UNAVAILABLE": "Unavailable",
 		"CANCEL": "Cancel",
+		"DESELECT": "Deselect",
 		"DONE": "Done",
 		"CHOOSE_LODGING_TYPE": "Choose a lodging type",
-		"CHOOSE_LODGING": "Choose a lodging"
+		"CHOOSE_LODGING": "Choose a lodging",
+		"UNSELECT": "Unselect"
 	},
 	"LODGING_TYPE_SELECT_DIALOG": {
 		"SELECT_LODGING_TYPE": "Select a lodging type",
@@ -1559,18 +1561,6 @@
 			"ERROR": "An error occured with {{ description }}. Correct and try again."
 		}
 	},
-	"MAINTENANCE": {
-		"ASSIGNMENT_ALL": {
-			"TITLE": "All assignments",
-			"INDEX": {
-				"SINGLE_ASSIGNMENTS": "Single assignments",
-				"RECURRING_ASSIGNMENTS": "Scheduled assignments",
-				"TYPES": "Assignment types",
-				"STATES": "Maintenance states",
-				"MANAGE": "Manage"
-			}
-		}
-	},
 	"MAINTENANCE_STATES": {
 		"FORM": {
 			"LABELS": {
@@ -1621,6 +1611,18 @@
 			"UPDATING": "Updating {{ description }}",
 			"DELETING": "Deleting {{ description }}",
 			"ERROR": "An error occured with {{ description }}. Correct and try again."
+		}
+	},
+	"MAINTENANCE": {
+		"ASSIGNMENT_ALL": {
+			"TITLE": "All assignments",
+			"INDEX": {
+				"SINGLE_ASSIGNMENTS": "Single assignments",
+				"RECURRING_ASSIGNMENTS": "Scheduled assignments",
+				"TYPES": "Assignment types",
+				"STATES": "Maintenance states",
+				"MANAGE": "Manage"
+			}
 		}
 	},
 	"SINGLE_ASSIGNMENTS": {

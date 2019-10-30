@@ -38,11 +38,12 @@ export class LodgingSelectFieldComponent extends FieldBaseComponent<Field> imple
   }
 
   public selectLodging(): void {
-    this.dialog.open(LodgingSelectDialogComponent, { data: { form: this.fh.form } }).afterClosed().pipe(
+    this.dialog.open(LodgingSelectDialogComponent, { data: { form: this.fh.form, from: this.fh.form.get('checkIn').value, to: this.fh.form.get('checkOut').value, lodgingTypeId: this.fh.form.get('lodgingTypeId').value, lodgingId: this.getFieldValue() } }).afterClosed().pipe(
       tap((detailedLodging: DetailedLodging) => {
-        const selectedLodging = detailedLodging && detailedLodging.lodging;
-        if (selectedLodging) {
-          if (selectedLodging.object && selectedLodging.object.id) {
+        console.log('after closed', detailedLodging);
+        if (detailedLodging !== undefined) {
+          const selectedLodging = detailedLodging && detailedLodging.lodging;
+          if (selectedLodging && selectedLodging.object && selectedLodging.object.id) {
             this.setFieldValue(selectedLodging.object.id);
             this.selectedLodging = selectedLodging;
           } else {
