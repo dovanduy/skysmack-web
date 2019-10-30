@@ -93,7 +93,7 @@ export const callData = [
     },
     {
         value: 'to-dispname',
-        displayName: 'To displname'
+        displayName: 'To dispname'
     },
     {
         value: 'final-dispname',
