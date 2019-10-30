@@ -2,13 +2,16 @@ import { NgModule, ComponentFactoryResolver } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { HttpClientModule } from '@angular/common/http';
-import { PortalUiModule } from '@skysmack/portal-ui';
+import { PortalUiModule, NgMenuProviders } from '@skysmack/portal-ui';
 import { NgPhonesModule } from '@skysmack/ng-phones';
 
 import { DynamicFormsModule } from '@skysmack/portal-dynamic-forms';
 import { PortalFieldsModule } from '@skysmack/portal-fields';
 import { CoalescingComponentFactoryResolver } from '@skysmack/ng-framework';
 import { PhonesRoutingModule } from './phones-routing.module';
+import { phonesComponents } from './components/phones-components';
+import { SettingsModule } from '@skysmack/portal-settings';
+import { NgPhonesMenuProvider } from './ng-phones-menu-provider';
 
 @NgModule({
   imports: [
@@ -19,18 +22,24 @@ import { PhonesRoutingModule } from './phones-routing.module';
     DynamicFormsModule,
     PhonesRoutingModule,
     PortalFieldsModule,
+    SettingsModule
   ],
   exports: [],
   declarations: [
+    ...phonesComponents
   ],
   entryComponents: [],
-  providers: []
+  providers: [
+  ]
 })
 export class PhonesModule {
   constructor(
+    ngMenuProviders: NgMenuProviders,
+    ngPhonesMenuProvider: NgPhonesMenuProvider,
     coalescingResolver: CoalescingComponentFactoryResolver,
     localResolver: ComponentFactoryResolver,
   ) {
     coalescingResolver.registerResolver(localResolver);
+    ngMenuProviders.add(ngPhonesMenuProvider);
   }
 }

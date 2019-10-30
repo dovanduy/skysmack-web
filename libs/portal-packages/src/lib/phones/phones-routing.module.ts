@@ -1,11 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { DefaultComponent } from '@skysmack/portal-ui';
+import { phonesRoutes } from './components/phones-components';
 
 @NgModule({
   imports: [RouterModule.forChild([
     {
-      path: '', component: DefaultComponent, children: []
+      path: '', component: DefaultComponent, children: [
+        ...phonesRoutes
+      ]
     }
   ])],
   exports: [RouterModule]

@@ -6,7 +6,7 @@ import { Route } from '@angular/router';
 export class PBX_3CXPackageManifest extends PBX_3CXType implements PackageManifest {
     public static modulePath = './../packages/modules/3cx_wrapper.module#PBX_3CXWrapperModule';
     public icon = 'settings_phone';
-    public menuLocation = 'main';
+    public menuLocation = '';
     public modulePath = PBX_3CXPackageManifest.modulePath;
 }
 

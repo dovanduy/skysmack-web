@@ -5,6 +5,7 @@
   "peerDependencies": {
     "@skysmack/framework": "*",
     "@skysmack/redux": "*",
+    "@skysmack/packages-phones": "*",
     "tslib": "^1.9.3"
   }
 }

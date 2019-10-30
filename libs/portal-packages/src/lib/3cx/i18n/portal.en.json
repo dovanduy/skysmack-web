@@ -1,0 +1,18 @@
+{
+    "CALL_DATA_SETTINGS": {
+        "INDEX": {
+            "SETTINGS": "Settings"
+        },
+        "FORM": {
+            "LABELS": {
+                "OUTPUTFIELDS": "Output fields",
+                "CURRENCYCODE": "Currency code"
+            },
+            "PLACEHOLDERS": {
+                "OUTPUTFIELDS": "Output fields",
+                "CURRENCYCODE": "Currency code"
+            },
+            "VALIDATION": {}
+        }
+    }
+}

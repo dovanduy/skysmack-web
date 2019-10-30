@@ -9,6 +9,7 @@
     "@skysmack/framework",
     "@skysmack/redux",
     "@skysmack/packages-3cx",
-    "@skysmack/packages-skysmack-core"
+    "@skysmack/packages-skysmack-core",
+    "@skysmack/packages-phones"
   ]
 }

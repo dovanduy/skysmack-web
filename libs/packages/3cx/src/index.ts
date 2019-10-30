@@ -1,1 +1,1 @@
-export * from './temp';
+export * from './settings/index';
