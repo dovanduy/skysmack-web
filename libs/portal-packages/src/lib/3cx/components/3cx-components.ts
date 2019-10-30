@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { RouteData } from '@skysmack/framework';
 import { SettingsComponent } from '@skysmack/portal-settings';
 import { PBX_3CXIndexComponent } from './3cx-index/3cx-index.component';
+import { CallDataFieldComponent } from '../fields/call-data-field/call-data-field.component';
 
 export const pbx_3cxRoutes: Routes = [
   {
@@ -16,5 +17,10 @@ export const pbx_3cxRoutes: Routes = [
 ];
 
 export const pbx_3CXComponents: any[] = [
-  PBX_3CXIndexComponent
+  PBX_3CXIndexComponent,
+  CallDataFieldComponent
+];
+
+export const pbx_3CXEntryComponents: any[] = [
+  CallDataFieldComponent
 ];

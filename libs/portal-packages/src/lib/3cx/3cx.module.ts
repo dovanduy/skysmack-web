@@ -11,8 +11,11 @@ import { CoalescingComponentFactoryResolver } from '@skysmack/ng-framework';
 import { PBX_3CXRoutingModule } from './3cx-routing.module';
 import { NgCallDataSettingsFieldsConfig } from './ng-call-data-settings-fields-config';
 import { Ng3CXMenuProvider } from './ng-3cx-menu-provider';
-import { pbx_3CXComponents } from './components';
+import { pbx_3CXComponents, pbx_3CXEntryComponents } from './components/3cx-components';
 import { SettingsModule } from '@skysmack/portal-settings';
+import { DragDropModule } from '@angular/cdk/drag-drop';
+
+const material = [DragDropModule];
 
 @NgModule({
   imports: [
@@ -21,15 +24,19 @@ import { SettingsModule } from '@skysmack/portal-settings';
     PortalUiModule,
     Ng3CXModule,
     DynamicFormsModule,
+
     PBX_3CXRoutingModule,
     PortalFieldsModule,
     SettingsModule,
+    ...material
   ],
   exports: [],
   declarations: [
     ...pbx_3CXComponents
   ],
-  entryComponents: [],
+  entryComponents: [
+    ...pbx_3CXEntryComponents
+  ],
   providers: [
     { provide: 'NgCallDataSettingsFieldsConfig', useClass: NgCallDataSettingsFieldsConfig },
   ]
