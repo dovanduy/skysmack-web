@@ -54,10 +54,10 @@ export class TerminalsPayComponent extends RecordFormComponent<TerminalsAppState
     const invoiceId$ = of(this.data.value.object.id);
 
     // Request invoice from API
-    combineLatest(
+    combineLatest([
       invoiceId$,
       this.loadedPackage$
-    ).pipe(
+    ]).pipe(
       map(([invoiceId, loadedPackage]) => this.invoicesActions.getSingle(loadedPackage._package.dependencies[1], invoiceId)),
       take(1)
     ).subscribe();

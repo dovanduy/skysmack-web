@@ -98,9 +98,9 @@ export class NgPersonsLodgingReservationsFieldProvider extends FieldProvider {
                                 })
                             );
                         });
-                        return combineLatest([
+                        return combineLatest(
                             fieldStreams$
-                        ]);
+                        );
                     } else {
                         return of([]);
                     }

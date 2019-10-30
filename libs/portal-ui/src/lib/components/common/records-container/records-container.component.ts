@@ -2,7 +2,7 @@ import { Component, OnInit, Input, EventEmitter, Output, ViewChild, OnDestroy } 
 import { LocalObject, LoadingState, DisplayColumn, SubscriptionHandler, MenuItem } from '@skysmack/framework';
 import { Observable, BehaviorSubject, combineLatest } from 'rxjs';
 import { Field, FieldTypes } from '@skysmack/ng-dynamic-forms';
-import { map, delay, debounceTime } from 'rxjs/operators';
+import { map, delay, debounceTime, tap } from 'rxjs/operators';
 import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
 
 @Component({
@@ -68,14 +68,14 @@ export class RecordsContainerComponent implements OnInit, OnDestroy {
     this.subscriptionHandler.unsubscribe();
   }
 
-  public displayColumnFromField(field: Field) {
+  public displayColumnFromField = (field: Field) => {
     const column = new DisplayColumn({
       fieldKey: field.key,
       fieldDisplayKey: field.displayKey ? field.displayKey : field.key,
       fieldDisplaySubKey: field.displaySubKey,
       dynamicFieldName: field.dynamicField ? field.label : undefined,
       displayModifier: field.displayModifier,
-      translationString: this.area.toUpperCase() + '.FORM.LABELS.' + field.key.toUpperCase(),
+      translationString: this.area && this.area.toUpperCase() + '.FORM.LABELS.' + field.key.toUpperCase(),
       show: field.showColumn,
       sortable: field.sortable
     });

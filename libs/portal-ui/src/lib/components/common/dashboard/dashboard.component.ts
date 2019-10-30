@@ -19,9 +19,9 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
     this.dashboards$ = this.dashboardProviders.providers$.pipe(
-      switchMap(providers => combineLatest([
+      switchMap(providers => combineLatest(
         providers.map(provider => provider.getDashboards())
-      ])),
+      )),
       map(dashboards => dashboards.reduce((a, b) => a.concat(b), []))
     );
   }
