@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
-import { MenuArea, MenuProvider, SIDEBAR } from '@skysmack/framework';
+import { MenuArea, MenuProvider, SIDEBAR, SPEEDDIAL } from '@skysmack/framework';
 import { MenuItem } from '@skysmack/framework';
 import { Guid } from 'guid-typescript';
 import { Observable } from 'rxjs';
 import { getCombinedMenuEntries, getMenuEntries } from '@skysmack/ng-framework';
-import { PhonesIndexComponent } from '../phones/components/phones-index/phones-index.component';
 import { PhonesTypeId } from '@skysmack/package-types';
+import { PhonesIndexComponent } from './phones/components/phones-index/phones-index.component';
+import { PhonesPermissions } from '@skysmack/packages-phones';
 
 @Injectable({ providedIn: 'root' })
 export class NgPhonesMenuProvider implements MenuProvider {
@@ -46,6 +47,16 @@ export class NgPhonesMenuProvider implements MenuProvider {
     private getPhonesIndexMenuAreas = (): MenuArea[] => {
         return [
             new MenuArea({
+                area: 'actions',
+                translationPrefix: this.phoneTranslationPrefix,
+                order: 1
+            }),
+            new MenuArea({
+                area: 'manage',
+                translationPrefix: this.phoneTranslationPrefix,
+                order: 2
+            }),
+            new MenuArea({
                 area: 'settings',
                 translationPrefix: this.phoneTranslationPrefix,
                 order: 3
@@ -55,6 +66,17 @@ export class NgPhonesMenuProvider implements MenuProvider {
 
     private getPhonesIndexMenuItems = (): MenuItem[] => {
         return [
+            new MenuItem({
+                url: 'create',
+                displayName: this.phoneTranslationPrefix + 'CREATE',
+                area: 'actions',
+                order: 1,
+                icon: 'add',
+                permissions: [
+                    PhonesPermissions.addPhones
+                ],
+                providedIn: [SIDEBAR, SPEEDDIAL]
+            })
         ];
     }
 }

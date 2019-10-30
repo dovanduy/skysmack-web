@@ -9,9 +9,9 @@ import { DynamicFormsModule } from '@skysmack/portal-dynamic-forms';
 import { PortalFieldsModule } from '@skysmack/portal-fields';
 import { CoalescingComponentFactoryResolver } from '@skysmack/ng-framework';
 import { PhonesRoutingModule } from './phones-routing.module';
-import { phonesComponents } from './components/phones-components';
 import { SettingsModule } from '@skysmack/portal-settings';
 import { NgPhonesMenuProvider } from './ng-phones-menu-provider';
+import { phonesComponents } from './phones/components/phones-components';
 
 @NgModule({
   imports: [

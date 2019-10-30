@@ -1,0 +1,40 @@
+{
+    "PHONES": {
+        "FORM": {
+            "LABELS": {
+                "NAME": "Name"
+            },
+            "PLACEHOLDERS": {
+                "NAME": "Enter name"
+            },
+            "VALIDATION": {
+                "NAME": {
+                    "REQUIRED": "Name is required."
+                }
+            }
+        },
+        "CREATE": {
+            "CREATE_PHONE": "Create a new phone",
+            "BUTTON_CREATE": "Create"
+        },
+        "EDIT": {
+            "EDIT": "Edit phone",
+            "BUTTON_EDIT": "Update"
+        },
+        "INDEX": {
+            "ACTIONS": "Actions",
+            "CREATE": "Create",
+            "MANAGE": "Manage",
+            "PHONES": "Phones",
+            "BACK": "Back",
+            "FIELDS_TITLE": "(fields)",
+            "TITLE_EXTRAS": "(phones)"
+        },
+        "QUEUE": {
+            "ADDING": "Adding {{ name }}",
+            "UPDATING": "Updating {{ name }}",
+            "DELETING": "Deleting {{ name }}",
+            "ERROR": "An error occured with {{ name }}. Correct and try again."
+        }
+    }
+}

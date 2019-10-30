@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { DefaultComponent } from '@skysmack/portal-ui';
-import { phonesRoutes } from './components/phones-components';
+import { phonesRoutes } from './phones/components/phones-components';
 
 @NgModule({
   imports: [RouterModule.forChild([

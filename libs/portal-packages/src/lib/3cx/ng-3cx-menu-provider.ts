@@ -7,7 +7,7 @@ import { Guid } from 'guid-typescript';
 import { Observable } from 'rxjs';
 import { getCombinedMenuEntries, getMenuEntries, setConnectedParentPackage, getConnectedPackageMenuEntries } from '@skysmack/ng-framework';
 import { PBX_3CXIndexComponent } from './components/3cx-index/3cx-index.component';
-import { PhonesIndexComponent } from '../phones/components';
+import { PhonesIndexComponent } from '../phones/phones/components/phones-index/phones-index.component';
 
 @Injectable({ providedIn: 'root' })
 export class Ng3CXMenuProvider implements MenuProvider {

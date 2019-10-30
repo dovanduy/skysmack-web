@@ -8,6 +8,5 @@ import { NgPhonesNotifications } from '../ng-phones-notifications';
 export class NgPhonesEpics extends RecordEpicsBase<Phone, number> {
     constructor(protected requests: NgPhonesRequests, protected notifications: NgPhonesNotifications) {
         super(requests, PHONES_REDUX_KEY, notifications);
-        this.epics = this.epics.concat([]);
     }
 }
