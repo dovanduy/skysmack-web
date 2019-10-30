@@ -20,7 +20,7 @@ export class LodgingSelectDialogComponent implements OnInit, OnDestroy {
   public filteredLodgingTypes$: Observable<LocalObject<LodgingType, number>[]>;
 
   public lodgingsAutoCompleteControl = new FormControl();
-  private selectedLodging: DetailedLodging;
+  public selectedLodging: DetailedLodging;
   public detailedLodgings$: Observable<DetailedLodging[]>;
   public displaySelect$: Observable<boolean>;
   public subscriptionHandler = new SubscriptionHandler();
@@ -154,7 +154,6 @@ export class LodgingSelectDialogComponent implements OnInit, OnDestroy {
           filter(x => !!x),
           tap(lodging => {
             this.lodgingsAutoCompleteControl.setValue(lodging);
-            console.log('init value', lodging.object.id);
           }),
           take(1)
         ))
@@ -189,14 +188,7 @@ export class LodgingSelectDialogComponent implements OnInit, OnDestroy {
       lodgingsSearchInput$,
       allLodgingsOfType$
     ).pipe(
-      map(([searchInput, lodgings]) => { 
-        console.log(searchInput);
-        if (searchInput && typeof searchInput !== 'string' && (searchInput.lodging || searchInput.object)) {
-        } else {
-
-        }
-        return searchInput ? this.filterLodgings(searchInput, lodgings) : lodgings;
-      })
+      map(([searchInput, lodgings]) => searchInput ? this.filterLodgings(searchInput, lodgings) : lodgings)
     );
 
     this.displaySelect$ = lodgingsSearchInput$.pipe(
@@ -233,18 +225,6 @@ export class LodgingSelectDialogComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.subscriptionHandler.unsubscribe();
-  }
-
-  public select(): void {
-    this.dialogRef.close(this.selectedLodging);
-  }
-
-  public deselect(): void {
-    this.dialogRef.close('null');
-  }
-
-  public cancel(): void {
-    this.dialogRef.close();
   }
 
   public selectLodging(event: MatAutocompleteSelectedEvent): void {
