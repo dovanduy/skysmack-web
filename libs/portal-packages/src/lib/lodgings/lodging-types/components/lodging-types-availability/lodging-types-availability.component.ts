@@ -14,7 +14,8 @@ const moment = _moment;
 
 @Component({
   selector: 'ss-lodging-types-availability',
-  templateUrl: './lodging-types-availability.component.html'
+  templateUrl: './lodging-types-availability.component.html',
+  styleUrls: ['./lodging-types-availability.component.scss']
 })
 export class LodgingTypesAvailabilityComponent implements OnInit {
   public static COMPONENT_KEY = 'lodging-types-availability-index';
@@ -79,8 +80,8 @@ export class LodgingTypesAvailabilityComponent implements OnInit {
   private getLodgings() {
     this.actions.getPaged(this.packagePath, new PagedQuery());
     this.lodgingTypeOptions$ = this.store.get(this.packagePath).pipe(
-      map(lodgings => {
-        return lodgings.map(x => ({ value: x.object.id, displayName: x.object.name } as SelectFieldOption));
+      map(lodgingTypes => {
+        return lodgingTypes.map(x => ({ value: x.object.id, displayName: x.object.name } as SelectFieldOption));
       }),
       defined()
     );

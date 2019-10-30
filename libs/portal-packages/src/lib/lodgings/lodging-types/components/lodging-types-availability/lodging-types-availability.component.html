@@ -20,7 +20,8 @@
         <ng-container *ngFor="let freeLodgingTypes of day.freeLodgingTypes; trackBy: trackById">
           <p *ngIf="freeLodgingTypes.count > 0" style="color:green;">{{ freeLodgingTypes.name }}: {{
             freeLodgingTypes.count }}</p>
-          <p *ngIf="freeLodgingTypes.count === 0" style="color:black;">{{ freeLodgingTypes.name }}: {{
+          <p *ngIf="!freeLodgingTypes.count || freeLodgingTypes.count === 0" style="color:black;">
+            {{ freeLodgingTypes.name }}: {{
             freeLodgingTypes.count }}</p>
           <p *ngIf="freeLodgingTypes.count < 0" style="color:red;">{{ freeLodgingTypes.name }}: {{
               freeLodgingTypes.count }}</p>
@@ -30,17 +31,29 @@
   </ng-template>
   <ng-container *ngIf="events$ | async as events">
     <div [ngSwitch]="view">
-      <button mat-raised-button color="primary" mwlCalendarPreviousView [view]="view" [(viewDate)]="viewDate">
-        {{ 'LODGING_TYPES.AVAILABILITY.PREVIOUS' | translate }}
-      </button>
-      <button mat-raised-button color="primary" mwlCalendarToday [(viewDate)]="viewDate">
-        {{ 'LODGING_TYPES.AVAILABILITY.TODAY' | translate }}
-      </button>
-      <button mat-raised-button color="primary" mwlCalendarNextView [view]="view" [(viewDate)]="viewDate">
-        {{ 'LODGING_TYPES.AVAILABILITY.NEXT' | translate }}
-      </button>
+      <h2 style="position: relative;">
 
-      <h3>{{ viewDate | calendarDate:(view + 'ViewTitle'):'en' }}</h3>
+      <div style="float:right;margin-right:16px">
+        <button mat-icon-button mwlCalendarToday [(viewDate)]="viewDate"
+          matTooltip="{{ 'LODGING_TYPES.AVAILABILITY.TODAY' | translate }}">
+          <mat-icon>calendar_today</mat-icon>
+        </button>
+
+        <button mat-icon-button mwlCalendarPreviousView [view]="view" [(viewDate)]="viewDate"
+          matTooltip="{{ 'LODGING_TYPES.AVAILABILITY.PREVIOUS' | translate }}">
+          <mat-icon>chevron_left</mat-icon>
+        </button>
+        
+        <button mat-icon-button mwlCalendarNextView [view]="view" [(viewDate)]="viewDate"
+          matTooltip="{{ 'LODGING_TYPES.AVAILABILITY.NEXT' | translate }}">
+          <mat-icon>chevron_right</mat-icon>
+        </button>
+      </div>
+        
+        <span style="position: relative;top:8px">
+            {{ viewDate | calendarDate:(view + 'ViewTitle'):'en' }}
+          </span>
+      </h2>
 
       <mwl-calendar-month-view *ngSwitchCase="'month'" [viewDate]="viewDate" [events]="events"
         (dayClicked)="viewDate = $event.day.date;" (beforeViewRender)="beforeMonthViewRender($event)"

@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Field } from '@skysmack/ng-dynamic-forms';
 import { FieldBaseComponent } from '@skysmack/portal-fields';
 import { MatDialog } from '@angular/material/dialog';
-import { take, tap, map, switchMap, startWith, debounceTime, filter } from 'rxjs/operators';
+import { take, tap, map, switchMap, startWith, filter } from 'rxjs/operators';
 import { LocalObject } from '@skysmack/framework';
 import { DetailedLodging, Lodging } from '@skysmack/packages-lodgings';
-import { Observable, combineLatest, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { LodgingSelectDialogComponent } from '../lodging-select-dialog/lodging-select-dialog.component';
 import { NgLodgingsStore } from '@skysmack/ng-lodgings';
 import { Router } from '@angular/router';
@@ -18,7 +18,7 @@ import { getPackageDendencyAsStream } from '@skysmack/ng-framework';
   styleUrls: ['./lodging-select-field.component.scss']
 })
 export class LodgingSelectFieldComponent extends FieldBaseComponent<Field> implements OnInit {
-
+  private lodgingTypeForm = this.fh.form.get('lodgingTypeId');
   public selectedLodging: LocalObject<Lodging, number>;
   public lodgingTypeSelected$: Observable<boolean>;
 
@@ -43,7 +43,7 @@ export class LodgingSelectFieldComponent extends FieldBaseComponent<Field> imple
       { 
         from: this.fh.form.get('checkIn').value, 
         to: this.fh.form.get('checkOut').value, 
-        lodgingTypeId: this.fh.form.get('lodgingTypeId').value, 
+        lodgingTypeId: this.lodgingTypeForm.value, 
         lodgingId: this.getFieldValue() 
       } 
     }).afterClosed().pipe(
@@ -65,14 +65,11 @@ export class LodgingSelectFieldComponent extends FieldBaseComponent<Field> imple
   }
 
   private setlodgingTypeSelected$() {
-    this.lodgingTypeSelected$ = this.fh.form.get('lodgingTypeId').valueChanges.pipe(
+    this.lodgingTypeSelected$ = this.lodgingTypeForm.valueChanges.pipe(
       startWith(''),
-      map(valueChanged => {
-        const _value = this.fh.form.get('lodgingTypeId').value;
-        console.log('valueChanged', valueChanged, _value);
-        return _value && Number.isInteger(_value);
-        // console.log('valueChanged', valueChanged);
-        // return valueChanged && Number.isInteger(valueChanged);
+      map(() => {
+        const lodgingTypeId = this.lodgingTypeForm.value;
+        return lodgingTypeId && Number.isInteger(lodgingTypeId);
       })
     );
   }
