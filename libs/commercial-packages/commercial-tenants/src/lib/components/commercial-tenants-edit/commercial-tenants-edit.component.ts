@@ -41,10 +41,10 @@ export class CommercialTenantsEditComponent implements OnInit, OnDestroy {
   public onSubmit(fh: FormHelper) {
     fh.formValid(() => {
       const tenant = fh.form.getRawValue();
-      this.service.update(tenant).pipe(
+      this.subscriptionHandler.register(this.service.update(tenant).pipe(
         tap(() => this.router.navigate(['/', 'tenants'])),
         take(1)
-      ).subscribe();
+      ).subscribe());
     }, false);
   }
 }

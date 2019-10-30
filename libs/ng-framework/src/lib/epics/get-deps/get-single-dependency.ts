@@ -22,6 +22,7 @@ export function getSingleDependency(options: GetSingleDependencyOptions): void {
     options.dependencyIndexes = options.dependencyIndexes ? options.dependencyIndexes : [];
 
     if (entityId) {
+        // Note: This doesn't need to be unsubscribed.
         getPackageDendencyAsStream(options.skysmackStore, packagePath, options.dependencyIndexes).pipe(
             map(targetPackage => options.actions.getSingle<number>(targetPackage.object.path, entityId)),
             take(1)

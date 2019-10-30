@@ -28,7 +28,6 @@ export class CommercialUiPartnersWrapperComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.redirectUnauthenticated();
-
     this.menuAreaItems$ = this.ngMenuProviders.getMenuAreaItems(null, this.componentKey).pipe(
       map(menuAreaItems => {
         return menuAreaItems.filter(menuAreaItem => menuAreaItem && menuAreaItem.providedIn && menuAreaItem.providedIn.includes('top'));

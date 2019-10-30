@@ -22,7 +22,7 @@ export class LodgingSelectDialogComponent implements OnInit, OnDestroy {
   public lodgingsAutoCompleteControl = new FormControl();
   private selectedLodging: DetailedLodging;
   public detailedLodgings$: Observable<DetailedLodging[]>;
-  public subscriptionHandler = new SubscriptionHandler();
+  private subscriptionHandler = new SubscriptionHandler();
 
   constructor(
     private router: Router,
@@ -46,6 +46,8 @@ export class LodgingSelectDialogComponent implements OnInit, OnDestroy {
       filter(x => !!x),
       take(1)
     );
+
+    
 
     // ########
     // Step 2: Preparing the lodging types auto complete

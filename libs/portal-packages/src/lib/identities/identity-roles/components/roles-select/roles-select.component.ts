@@ -14,7 +14,7 @@ export class RolesSelectComponent implements OnInit, OnDestroy {
 
   public identityRoles: any[];
   public value: any;
-  public subscriptionHander = new SubscriptionHandler();
+  private subscriptionHander = new SubscriptionHandler();
 
   @Input() public currentlySelectedIds: number[] = [];
   @Input() public selectType: 'single' | 'multiple' = 'multiple';

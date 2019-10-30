@@ -20,6 +20,7 @@ export class LanguageService {
             this.configured = true;
             this.translateService.addLangs(this.languages);
             this.translateService.setDefaultLang('en');
+            // Note: This doesn't need to be unsubscribed.
             return this.translationRedux.getLanguage().pipe(
                 debounceTime(100), // Prevents excessive emission
                 map(language => {

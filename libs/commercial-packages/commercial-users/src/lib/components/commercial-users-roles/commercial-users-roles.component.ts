@@ -15,7 +15,7 @@ import { PartnerUserRole } from '../../models/partner-user-role';
 })
 export class CommercialUsersRolesComponent implements OnInit {
   public fields$: Observable<Field[]>;
-  public subscriptionHandler = new SubscriptionHandler();
+  private subscriptionHandler = new SubscriptionHandler();
 
   constructor(
     private service: CommercialUsersService,
@@ -33,13 +33,17 @@ export class CommercialUsersRolesComponent implements OnInit {
     );
   }
 
+  ngOnDestroy() {
+    this.subscriptionHandler.unsubscribe();
+  }
+
   public onSubmit(fh: FormHelper) {
     fh.formValid(() => {
       const partnerUserRole = fh.form.getRawValue();
-      this.service.addRoleToUser(partnerUserRole).pipe(
+      this.subscriptionHandler.register(this.service.addRoleToUser(partnerUserRole).pipe(
         tap(() => this.router.navigate(['/', 'users'])),
         take(1)
-      ).subscribe();
+      ).subscribe());
     }, false);
   }
 

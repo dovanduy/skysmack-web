@@ -4,6 +4,7 @@ import { Observable, of, BehaviorSubject } from 'rxjs';
 import { CommercialAccountForgotPasswordFieldsConfig } from './commercial-account-forgot-password-fields-config';
 import { CommercialAccountService } from '../../services/commercial-account.service';
 import { take, map } from 'rxjs/operators';
+import { SubscriptionHandler } from '@skysmack/framework';
 
 @Component({
   selector: 'ss-commercial-account-forgot-password',
@@ -15,6 +16,8 @@ export class CommercialAccountForgotPasswordComponent implements OnInit {
   public fields$: Observable<Field[]>;
   public message: string;
   public checkEmail$ = new BehaviorSubject(false);
+  private subscriptionHandler = new SubscriptionHandler();
+
 
   constructor(
     public fieldsConfig: CommercialAccountForgotPasswordFieldsConfig,
@@ -25,9 +28,13 @@ export class CommercialAccountForgotPasswordComponent implements OnInit {
     this.fields$ = of(this.fieldsConfig.getFields(null, null));
   }
 
+  ngOnDestroy() {
+    this.subscriptionHandler.unsubscribe();
+  }
+
   public onSubmit(fh: FormHelper) {
     fh.formValid(() => {
-      this.service.requestResetPassword(fh.form.getRawValue().email).pipe(
+      this.subscriptionHandler.register(this.service.requestResetPassword(fh.form.getRawValue().email).pipe(
         map(response => {
           if (response.status >= 200 && response.status <= 299) {
             this.checkEmail$.next(true);
@@ -36,7 +43,7 @@ export class CommercialAccountForgotPasswordComponent implements OnInit {
           }
         }),
         take(1)
-      ).subscribe();
+      ).subscribe());
     }, false);
   }
 }

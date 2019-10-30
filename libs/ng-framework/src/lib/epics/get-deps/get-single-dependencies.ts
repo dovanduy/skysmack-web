@@ -22,7 +22,7 @@ export function getSingleDependencies(options: GetSingleDependenciesOptions): vo
     const rsqlFilter = new RSQLFilterBuilder();
     rsqlFilter.column(options.relationIdSelector).equalTo(entity.id);
     const query = new PagedQuery({ rsqlFilter });
-
+    // Note: This doesn't need to be unsubscribed.  
     getPackageDendencyAsStream(options.skysmackStore, packagePath, options.dependencyIndexes).pipe(
         map(targetPackage => options.actions.getPaged(targetPackage.object.path, query)),
         take(1)

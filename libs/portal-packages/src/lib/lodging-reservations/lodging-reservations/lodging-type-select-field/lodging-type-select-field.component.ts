@@ -4,7 +4,7 @@ import { FieldBaseComponent } from '@skysmack/portal-fields';
 import { MatDialog } from '@angular/material/dialog';
 import { LodgingTypeSelectDialogComponent } from '../lodging-type-select-dialog/lodging-type-select-dialog.component';
 import { take, tap, map, startWith, switchMap } from 'rxjs/operators';
-import { LocalObject } from '@skysmack/framework';
+import { LocalObject, SubscriptionHandler } from '@skysmack/framework';
 import { LodgingType, DetailedLodgingType } from '@skysmack/packages-lodgings';
 import { Observable, combineLatest } from 'rxjs';
 import { NgLodgingTypesStore } from '@skysmack/ng-lodgings';
@@ -21,6 +21,7 @@ export class LodgingTypeSelectFieldComponent extends FieldBaseComponent<Field> i
 
   public selectedLodgingType: LocalObject<LodgingType, number>;
   public datesSelected$: Observable<boolean>;
+  protected subscriptionHandler = new SubscriptionHandler();
 
   constructor(
     private dialog: MatDialog,
@@ -37,8 +38,12 @@ export class LodgingTypeSelectFieldComponent extends FieldBaseComponent<Field> i
     this.setSelectedLodgingType();
   }
 
+  ngOnDestroy() {
+    this.subscriptionHandler.unsubscribe();
+  }
+
   public selectLodgingType(): void {
-    this.dialog.open(LodgingTypeSelectDialogComponent, { data: { form: this.fh.form } }).afterClosed().pipe(
+    this.subscriptionHandler.register(this.dialog.open(LodgingTypeSelectDialogComponent, { data: { form: this.fh.form } }).afterClosed().pipe(
       tap((detailedLodgingType: DetailedLodgingType) => {
         const selectedLodgingType = detailedLodgingType && detailedLodgingType.lodgingType;
         if (selectedLodgingType && selectedLodgingType.object && selectedLodgingType.object.id) {
@@ -47,7 +52,7 @@ export class LodgingTypeSelectFieldComponent extends FieldBaseComponent<Field> i
         }
       }),
       take(1)
-    ).subscribe();
+    ).subscribe());
   }
 
   private setSelectedLodgingType(): void {

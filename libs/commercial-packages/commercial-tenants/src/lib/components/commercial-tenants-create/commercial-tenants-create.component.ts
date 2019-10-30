@@ -29,6 +29,10 @@ export class CommercialTenantsCreateComponent implements OnInit, OnDestroy {
     this.fields$ = this.fieldsConfig.getFields(null, null);
   }
 
+  ngOnDestroy() {
+    this.subscriptionHandler.unsubscribe();
+  }
+
   public onSubmit(fh: FormHelper) {
     fh.formValid(() => {
       this.creating = true;
@@ -39,9 +43,5 @@ export class CommercialTenantsCreateComponent implements OnInit, OnDestroy {
         take(1)
       ).subscribe());
     }, false);
-  }
-
-  ngOnDestroy() {
-    this.subscriptionHandler.unsubscribe();
   }
 }
