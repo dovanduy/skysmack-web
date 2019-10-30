@@ -14,6 +14,7 @@ export class RecordsContainerComponent implements OnInit, OnDestroy {
 
   public loadedEntitiesCount$: BehaviorSubject<number> = new BehaviorSubject(0).pipe(delay(0)) as BehaviorSubject<number>;
   public loadedEntitiesCount: number;
+  protected subscriptionHandler = new SubscriptionHandler();
 
   @ViewChild('entityList', { static: true }) public entityList: CdkVirtualScrollViewport;
 
@@ -34,7 +35,6 @@ export class RecordsContainerComponent implements OnInit, OnDestroy {
   @Input() public area: string;
 
   public displayColumns$: Observable<DisplayColumn[]>;
-  public subscriptionHandler = new SubscriptionHandler();
 
   constructor() { }
 
@@ -64,7 +64,7 @@ export class RecordsContainerComponent implements OnInit, OnDestroy {
       })).subscribe());
   }
 
-  ngOnDestroy(): void {
+  ngOnDestroy() {
     this.subscriptionHandler.unsubscribe();
   }
 

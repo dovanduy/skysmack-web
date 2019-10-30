@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FieldBaseComponent } from '../field-base-component';
 import { Router } from '@angular/router';
-import { flatten, FieldValueProviderViewModel, LocalObject, StrIndex } from '@skysmack/framework';
+import { flatten, FieldValueProviderViewModel, LocalObject, StrIndex, SubscriptionHandler } from '@skysmack/framework';
 import { NgRecordStore, NgFieldStore } from '@skysmack/ng-framework';
 import { map, switchMap, filter } from 'rxjs/operators';
 import { Field } from '@skysmack/ng-dynamic-forms';
@@ -23,6 +23,7 @@ class FieldValidator {
 })
 export class ValidatorsFieldComponent extends FieldBaseComponent<Field> implements OnInit {
 
+  protected subscriptionHandler = new SubscriptionHandler();
   public store: NgRecordStore<any, any, any>;
   public packagePath: string;
   public selectedFieldType: string;
@@ -85,6 +86,10 @@ export class ValidatorsFieldComponent extends FieldBaseComponent<Field> implemen
     this.subscriptionHandler.register(formValueChanged$.pipe(switchMap(() => setAvailablValidators$)).subscribe());
     // Set available validators on component startup
     this.subscriptionHandler.register(setAvailablValidators$.subscribe());
+  }
+
+  ngOnDestroy() {
+    this.subscriptionHandler.unsubscribe();
   }
 
   public addValidator() {

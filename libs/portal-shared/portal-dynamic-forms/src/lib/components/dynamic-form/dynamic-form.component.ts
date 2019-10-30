@@ -29,7 +29,7 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
   public editorItem$: Observable<LocalObject<any, any>>;
   public production = GlobalProperties.production;
   public fh: FormHelper;
-  public subscriptionHandler = new SubscriptionHandler();
+  private subscriptionHandler = new SubscriptionHandler();
 
   constructor(
     public fb: FormBuilder,
@@ -85,12 +85,12 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
   }
 
   public onSubmit() {
-    this.fields$.pipe(
+    this.subscriptionHandler.register(this.fields$.pipe(
       take(1),
       // Remove all fields not to be included in the request.
       map(fields => fields.map(field => field.includeInRequest ? field : this.fh.form.removeControl(field.key))),
       map(() => this.submitted.emit(this.fh))
-    ).subscribe()
+    ).subscribe())
   }
 
   public onClose() {

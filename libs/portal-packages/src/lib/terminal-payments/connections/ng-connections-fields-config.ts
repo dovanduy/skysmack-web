@@ -47,6 +47,7 @@ export class NgConnectionsFieldsConfig extends FieldsConfig<Connection, Connecti
                 component: SelectFieldComponent,
                 value: entity ? entity.object.id.clientId : undefined,
                 optionsData$: identitiesPackage$.pipe(switchMap(identitiesPackage => this.clientsStore.get(identitiesPackage.object.path))),
+                // Note: This doesn't need to be unsubscribed.
                 getDependencies: () => {
                     identitiesPackage$.pipe(map(identitiesPackage => {
                         this.clientsActions.getPaged(identitiesPackage.object.path, new PagedQuery());

@@ -58,6 +58,7 @@ export class NgLodgingReservationPriceChangesFieldsConfig extends FieldsConfig<L
                 displaySubKey: 'object.name',
                 validators: [Validators.required],
                 optionsData$: lodgingPackage$.pipe(switchMap(lodgingPackage => this.lodgingsStore.get(lodgingPackage.object.path))),
+                // Note: This doesn't need to be unsubscribed.
                 getDependencies: () => {
                     lodgingPackage$.pipe(
                         map(lodgingPackage => this.lodgingsActions.getPaged(lodgingPackage.object.path, new PagedQuery())),

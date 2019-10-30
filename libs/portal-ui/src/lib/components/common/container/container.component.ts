@@ -29,7 +29,7 @@ export class ContainerComponent implements OnInit, OnDestroy {
   public authenticated$: Observable<boolean>;
 
   public path: string;
-  public subscriptionHandler = new SubscriptionHandler();
+  private subscriptionHandler = new SubscriptionHandler();
   private mediaMatcher: MediaQueryList = matchMedia(`(max-width: ${SMALL_WIDTH_BREAKPOINT}px)`);
 
   constructor(

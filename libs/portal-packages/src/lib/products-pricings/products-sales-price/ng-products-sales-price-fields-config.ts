@@ -56,6 +56,7 @@ export class NgProductsSalesPriceFieldsConfig extends FieldsConfig<ProductsSales
                 displaySubKey: 'object.name',
                 validators: [Validators.required],
                 optionsData$: this.productsStore.get(loadedPackage._package.dependencies[0]),
+                // Note: This doesn't need to be unsubscribed.
                 getDependencies: () => {
                     productPackage$.pipe(
                         map(productPackage => this.productsActions.getPaged(productPackage.object.path, new PagedQuery())),

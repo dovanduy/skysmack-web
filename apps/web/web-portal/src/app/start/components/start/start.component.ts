@@ -16,7 +16,7 @@ import { tap } from 'rxjs/operators';
 })
 export class StartComponent implements OnInit, OnDestroy {
 
-  public subscriptionHandler = new SubscriptionHandler();
+  private subscriptionHandler = new SubscriptionHandler();
   public skysmack$: Observable<Skysmack>;
   public skysmackLoaded$: Observable<SkysmackRequestStatus>;
   public loadingRouteConfig: string[] = [];

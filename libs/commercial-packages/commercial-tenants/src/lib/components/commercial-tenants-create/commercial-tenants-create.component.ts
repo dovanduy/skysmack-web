@@ -15,7 +15,7 @@ import { take, tap } from 'rxjs/operators';
 })
 export class CommercialTenantsCreateComponent implements OnInit, OnDestroy {
   public fields$: Observable<Field[]>;
-  public subscriptionHandler = new SubscriptionHandler();
+  private subscriptionHandler = new SubscriptionHandler();
   public creating = false;
 
   constructor(

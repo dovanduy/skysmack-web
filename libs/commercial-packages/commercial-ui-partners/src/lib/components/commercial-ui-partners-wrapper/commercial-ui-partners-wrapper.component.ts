@@ -16,7 +16,7 @@ export class CommercialUiPartnersWrapperComponent implements OnInit, OnDestroy {
   public static COMPONENT_KEY = 'CommercialUiPartnersWrapper';
   public componentKey = CommercialUiPartnersWrapperComponent.COMPONENT_KEY
 
-  public subscriptionHandler = new SubscriptionHandler();
+  private subscriptionHandler = new SubscriptionHandler();
   public menuAreaItems$: Observable<MenuAreaItems[]>;
 
   constructor(

@@ -69,6 +69,7 @@ export class NgTerminalPaymentReceiptsFieldsConfig extends DocumentFieldsConfig<
                 displayKey: 'invoicePayment',
                 displaySubKey: 'object.description',
                 optionsData$: invoicesPackage$.pipe(switchMap(invoicesPackage => this.invoicePaymentsStore.get(invoicesPackage.object.path))),
+                // Note: This doesn't need to be unsubscribed.
                 getDependencies: () => {
                     invoicesPackage$.pipe(
                         map(invoicesPackage => {

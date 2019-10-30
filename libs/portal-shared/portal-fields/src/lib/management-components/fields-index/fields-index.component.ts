@@ -1,6 +1,6 @@
 import { Component, OnInit, Injector } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { MenuItem } from '@skysmack/framework';
+import { MenuItem, SubscriptionHandler } from '@skysmack/framework';
 import { getFieldStateKey, LocalObject, FieldSchemaViewModel } from '@skysmack/framework';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { EntityComponentPageTitle } from '@skysmack/portal-ui';
@@ -23,7 +23,7 @@ export class FieldsIndexComponent extends RecordIndexComponent<any, any, any> im
     new MenuItem().asUrlAction('edit', MENU_ITEM_ACTIONS_EDIT, 'edit'),
     new MenuItem().asEventAction(MENU_ITEM_ACTIONS_DELETE, this.delete, 'delete', this)
   ];
-
+  protected subscriptionHandler = new SubscriptionHandler();
   private additionalPaths$: Observable<string[]>
 
   constructor(
@@ -43,13 +43,17 @@ export class FieldsIndexComponent extends RecordIndexComponent<any, any, any> im
   ngOnInit() {
     this.additionalPaths$ = this.activatedRoute.data.pipe(map(data => data.additionalPaths));
     super.ngOnInit();
-    combineLatest([
+    this.subscriptionHandler.register(combineLatest([
       this.loadedPackage$,
       this.activatedRoute.data
     ]).pipe(
       map(([loadedPackage, data]) => this.title.setTitle(loadedPackage._package.name, data.areaKey ? `${data.areaKey.toUpperCase()}.INDEX.FIELDS_TITLE` : undefined)),
       take(1)
-    ).subscribe()
+    ).subscribe());
+  }
+
+  ngOnDestroy() {
+    this.subscriptionHandler.unsubscribe();
   }
 
   protected storeGet() {
@@ -65,16 +69,16 @@ export class FieldsIndexComponent extends RecordIndexComponent<any, any, any> im
   }
 
   protected actionsGetPaged() {
-    this.additionalPaths$.pipe(
+    this.subscriptionHandler.register(this.additionalPaths$.pipe(
       tap(additionalPaths => this.actions.getPaged(this.packagePath, this.pagedQuery, additionalPaths)),
       take(1)
-    ).subscribe();
+    ).subscribe());
   }
 
   protected delete(_this: FieldsIndexComponent, value: LocalObject<FieldSchemaViewModel, string>) {
-    _this.additionalPaths$.pipe(
+    this.subscriptionHandler.register(_this.additionalPaths$.pipe(
       tap(additionalPaths => _this.actions.delete([value], _this.packagePath, additionalPaths)),
       take(1)
-    ).subscribe();
+    ).subscribe());
   }
 }

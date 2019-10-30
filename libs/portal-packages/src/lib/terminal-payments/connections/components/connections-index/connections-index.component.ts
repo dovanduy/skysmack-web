@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { EntityComponentPageTitle, MenuItemActionProviders, MENU_ITEM_ACTIONS_DELETE } from '@skysmack/portal-ui';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ConnectionsAppState, Connection, CONNECTIONS_AREA_KEY, ConnectionKey, TerminalStatus } from '@skysmack/packages-terminal-payments';
-import { MenuItem } from '@skysmack/framework';
+import { MenuItem, SubscriptionHandler } from '@skysmack/framework';
 import { NgConnectionsFieldsConfig } from '../../ng-connections-fields-config';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { NgConnectionsActions, NgConnectionsStore, NgConnectionsRequests } from '@skysmack/ng-terminal-payments';
@@ -21,6 +21,7 @@ export class ConnectionsIndexComponent extends RecordIndexComponent<ConnectionsA
   public componentKey = ConnectionsIndexComponent.COMPONENT_KEY;
   public areaKey: string = CONNECTIONS_AREA_KEY;
   public titleExtras = true;
+  protected subscriptionHandler = new SubscriptionHandler();
   public menuItemActions: MenuItem[] = [
     new MenuItem().asEventAction('Actions', this.terminalActions, 'settings', this).setShowLogic((entity: LocalObject<Connection, ConnectionKey>) => true),
     new MenuItem().asEventAction('Connect', this.connect, 'control_point', this).setShowLogic((entity: LocalObject<Connection, ConnectionKey>) => {
@@ -85,27 +86,31 @@ export class ConnectionsIndexComponent extends RecordIndexComponent<ConnectionsA
     super.ngOnInit();
   }
 
+  ngOnDestroy() {
+    this.subscriptionHandler.unsubscribe();
+  }
+
   protected terminalActions(_this: ConnectionsIndexComponent, value: LocalObject<Connection, ConnectionKey>) {
     _this.dialog.open(TerminalsActionsComponent, { data: value.object.id });
   }
 
   protected connect(_this: ConnectionsIndexComponent, value: LocalObject<Connection, ConnectionKey>) {
-    _this.requests.connect(_this.packagePath, value).pipe(take(1)).subscribe();
+    this.subscriptionHandler.register(_this.requests.connect(_this.packagePath, value).pipe(take(1)).subscribe());
   }
 
   protected open(_this: ConnectionsIndexComponent, value: LocalObject<Connection, ConnectionKey>) {
-    _this.requests.open(_this.packagePath, value).pipe(take(1)).subscribe();
+    this.subscriptionHandler.register(_this.requests.open(_this.packagePath, value).pipe(take(1)).subscribe());
   }
 
   protected close(_this: ConnectionsIndexComponent, value: LocalObject<Connection, ConnectionKey>) {
-    _this.requests.close(_this.packagePath, value).pipe(take(1)).subscribe();
+    this.subscriptionHandler.register(_this.requests.close(_this.packagePath, value).pipe(take(1)).subscribe());
   }
 
   protected abort(_this: ConnectionsIndexComponent, value: LocalObject<Connection, ConnectionKey>) {
-    _this.requests.abort(_this.packagePath, value).pipe(take(1)).subscribe();
+    this.subscriptionHandler.register(_this.requests.abort(_this.packagePath, value).pipe(take(1)).subscribe());
   }
 
   protected disconnect(_this: ConnectionsIndexComponent, value: LocalObject<Connection, ConnectionKey>) {
-    _this.requests.disconnect(_this.packagePath, value).pipe(take(1)).subscribe();
+    this.subscriptionHandler.register(_this.requests.disconnect(_this.packagePath, value).pipe(take(1)).subscribe());
   }
 }
