@@ -8,3 +8,8 @@ export const PHONE_LOGS_REDUCER_KEY = 'phoneLogss';
 export const PHONE_LOGS_AREA_KEY = 'phone_logs'; // validation, store, menu
 export const PHONE_LOGS_REDUX_KEY = 'PHONE_LOGS'; // reducer prefix, action, epics, Requests
 export const PHONE_LOGS_ADDITIONAL_PATHS = ['logs']; // actions, requests
+
+export const PHONE_NUMBERS_REDUCER_KEY = 'phoneLogss';
+export const PHONE_NUMBERS_AREA_KEY = 'phone_logs'; // validation, store, menu
+export const PHONE_NUMBERS_REDUX_KEY = 'PHONE_NUMBERS'; // reducer prefix, action, epics, Requests
+export const PHONE_NUMBERS_ADDITIONAL_PATHS = ['numbers']; // actions, requests

@@ -12,4 +12,10 @@ export class PhonesPermissions {
     public static addLogs = ADD + PhonesPermissions.logs;
     public static updateLogs = UPDATE + PhonesPermissions.logs;
     public static removeLogs = REMOVE + PhonesPermissions.logs;
+
+    private static phoneNumbers = 'PhoneNumbers';
+    public static findPhoneNumbers = FIND + PhonesPermissions.phoneNumbers;
+    public static addPhoneNumbers = ADD + PhonesPermissions.phoneNumbers;
+    public static updatePhoneNumbers = UPDATE + PhonesPermissions.phoneNumbers;
+    public static removePhoneNumbers = REMOVE + PhonesPermissions.phoneNumbers;
 }
