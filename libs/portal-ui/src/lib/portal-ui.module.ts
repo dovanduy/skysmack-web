@@ -21,6 +21,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from './date-fns-adaptor';
 
 const material = [
   MatSidenavModule,
@@ -31,7 +33,7 @@ const material = [
   MatCardModule,
   MatTooltipModule,
   MatPaginatorModule,
-  MatProgressBarModule
+  MatProgressBarModule 
 ];
 
 @NgModule({
@@ -40,6 +42,10 @@ const material = [
     RouterModule,
     NgTranslationModule.forRoot(PortalHttpLoaderFactory),
     NgUIModule,
+    CalendarModule.forRoot({
+      provide: DateAdapter,
+      useFactory: adapterFactory
+    }),
     ...material
   ],
   providers: [

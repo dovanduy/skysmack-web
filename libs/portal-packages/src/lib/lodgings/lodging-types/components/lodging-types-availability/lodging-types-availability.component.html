@@ -1,15 +1,4 @@
 <ss-container [componentKey]="'lodging-types-availability-index'" [componentKey]="componentKey">
-
-  <!-- Lodgings selection -->
-  <mat-form-field>
-    <mat-select [(value)]="selectedLodgingTypeIds" [placeholder]="'LODGING_TYPES.AVAILABILITY.PLACEHOLDER' | translate"
-      multiple>
-      <mat-option *ngFor="let opt of lodgingTypeOptions$ | async" [value]="opt.value"
-        (click)="getAvailableLodgingTypes()">
-        {{opt.displayName}}</mat-option>
-    </mat-select>
-  </mat-form-field>
-
   <!-- Calendar -->
   <ng-template #customCellTemplate let-day="day" let-locale="locale">
     <ng-container *ngIf="day.freeLodgingTypes">
@@ -30,10 +19,19 @@
     </ng-container>
   </ng-template>
   <ng-container *ngIf="events$ | async as events">
-    <div [ngSwitch]="view">
-      <h2 style="position: relative;">
 
-      <div style="float:right;margin-right:16px">
+    <mat-card [ngSwitch]="view">
+      <div style="text-align:right; padding: 0 16px">
+        <!-- Lodgings selection -->
+        <mat-form-field style="width:200px;margin-right:16px">
+          <mat-select [(value)]="selectedLodgingTypeIds"
+            [placeholder]="'LODGING_TYPES.AVAILABILITY.PLACEHOLDER' | translate" multiple>
+            <mat-option *ngFor="let opt of lodgingTypeOptions$ | async" [value]="opt.value"
+              (click)="getAvailableLodgingTypes()">
+              {{opt.displayName}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+
         <button mat-icon-button mwlCalendarToday [(viewDate)]="viewDate"
           matTooltip="{{ 'LODGING_TYPES.AVAILABILITY.TODAY' | translate }}">
           <mat-icon>calendar_today</mat-icon>
@@ -43,27 +41,21 @@
           matTooltip="{{ 'LODGING_TYPES.AVAILABILITY.PREVIOUS' | translate }}">
           <mat-icon>chevron_left</mat-icon>
         </button>
-        
+
         <button mat-icon-button mwlCalendarNextView [view]="view" [(viewDate)]="viewDate"
           matTooltip="{{ 'LODGING_TYPES.AVAILABILITY.NEXT' | translate }}">
           <mat-icon>chevron_right</mat-icon>
         </button>
+        <h2 style="float:left;margin-top: 8px">
+          {{ viewDate | calendarDate:(view + 'ViewTitle'):'en' }}
+        </h2>
       </div>
-        
-        <span style="position: relative;top:8px">
-            {{ viewDate | calendarDate:(view + 'ViewTitle'):'en' }}
-          </span>
-      </h2>
 
-      <mwl-calendar-month-view *ngSwitchCase="'month'" [viewDate]="viewDate" [events]="events"
+      <ss-monthly-calendar-view *ngSwitchCase="'month'" [viewDate]="viewDate" [events]="events"
         (dayClicked)="viewDate = $event.day.date;" (beforeViewRender)="beforeMonthViewRender($event)"
         [cellTemplate]="customCellTemplate">
-      </mwl-calendar-month-view>
-      <mwl-calendar-week-view *ngSwitchCase="'week'" [viewDate]="viewDate" [events]="events"
-        (dayHeaderClicked)="viewDate = $event.day.date; view = 'day';">
-      </mwl-calendar-week-view>
-      <mwl-calendar-day-view *ngSwitchCase="'day'" [viewDate]="viewDate" [events]="events">
-      </mwl-calendar-day-view>
-    </div>
+      </ss-monthly-calendar-view>
+
+    </mat-card>
   </ng-container>
 </ss-container>

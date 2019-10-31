@@ -15,6 +15,7 @@ import { PageHeaderComponent } from './page-header/page-header.component';
 import { SpeedDialFabComponent } from './speed-dial-fab/speed-dial-fab.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { DashboardLoaderComponent } from './dashboard-loader/dashboard-loader.component';
+import { MonthlyCalendarViewComponent } from './monthly-calendar-view/monthly-calendar-view.component';
 
 export const commonComponents = [
     PageHeaderComponent,
@@ -33,5 +34,6 @@ export const commonComponents = [
     CardBodyComponent,
     DefaultComponent,
     DashboardComponent,
-    DashboardLoaderComponent
+    DashboardLoaderComponent,
+    MonthlyCalendarViewComponent
 ];

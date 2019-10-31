@@ -29,7 +29,7 @@
         "@ngx-translate/core": "11.0.1",
         "@nrwl/angular": "8.0.0",
         "@redux-offline/redux-offline": "2.5.2",
-        "angular-calendar": "0.27.18",
+        "angular-calendar": "0.27.20",
         "calendar-utils": "0.7.0",
         "core-js": "2.6.9",
         "date-fns": "^2.0.1",
@@ -42,7 +42,7 @@
         "redux": "4.0.1",
         "redux-observable": "1.1.0",
         "rxjs": "6.5.2",
-        "swagger-ui": "3.23.6",
+        "swagger-ui": "3.24.0",
         "zone.js": "0.10.2"
     },
     "devDependencies": {

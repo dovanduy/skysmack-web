@@ -14,7 +14,8 @@
     "@skysmack/ng-skysmack": "*",
     "@skysmack/ng-ui": "*",
     "moment": "^2.24.0",
-    "calendar-utils": "^0.3.1"
+    "calendar-utils": "^0.3.1",
+    "angular-calendar": "0.27.20"
   },
   "main": "./lib/public_api.js",
   "types": "./lib/public_api.d.ts",
