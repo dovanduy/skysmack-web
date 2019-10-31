@@ -12,7 +12,7 @@ import { filter, map } from 'rxjs/operators';
 })
 export class CommercialAccountDashboardComponent implements OnInit, OnDestroy {
   public currentUser$: Observable<CurrentUser>;
-  public subscriptionHandler = new SubscriptionHandler();
+  private subscriptionHandler = new SubscriptionHandler();
 
   constructor(
     public store: NgAuthenticationStore,

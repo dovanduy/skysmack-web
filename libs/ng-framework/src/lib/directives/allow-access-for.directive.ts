@@ -1,5 +1,5 @@
 import { Directive, OnInit, TemplateRef, ViewContainerRef, OnDestroy, Input } from '@angular/core';
-import { map, tap } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { SubscriptionHandler, AllowAccessFor } from '@skysmack/framework';
 import { NgAuthenticationStore } from '../stores/ng-authentication-store';
 
@@ -7,7 +7,7 @@ import { NgAuthenticationStore } from '../stores/ng-authentication-store';
 @Directive({ selector: '[allowAccessFor]' })
 export class AllowAccessForDirective implements OnInit, OnDestroy {
 
-    public subscriptionHandler = new SubscriptionHandler();
+    private subscriptionHandler = new SubscriptionHandler();
     private displaying = false;
 
     private _allowAccessFor: AllowAccessFor;

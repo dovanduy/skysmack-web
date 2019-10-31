@@ -27,10 +27,10 @@ export class DetailsBaseComponent<TAppState, TKey> extends BaseComponent<TAppSta
         // this.editorNavService.showEditorNav();
         this.actions.getSingle(this.packagePath, this.entityId);
 
-        this.fields$ = combineLatest(
+        this.fields$ = combineLatest([
             this.loadedPackage$,
             this.store.getSingle(this.packagePath, this.entityId)
-        ).pipe(switchMap(([loadedPackage, record]) => this.fieldsConfig.getFields(loadedPackage, record)));
+        ]).pipe(switchMap(([loadedPackage, record]) => this.fieldsConfig.getFields(loadedPackage, record)));
     }
 
     ngOnDestroy() {

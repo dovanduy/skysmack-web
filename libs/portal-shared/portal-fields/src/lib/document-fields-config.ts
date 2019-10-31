@@ -25,10 +25,10 @@ export abstract class DocumentFieldsConfig<TRecord, TKey> extends FieldsConfig<T
 
     public getFields(loadedPackage: LoadedPackage, entity?: LocalObject<TRecord, TKey>): Observable<Field[]> {
         const stateKey = this.additionalPaths.length > 0 ? `${loadedPackage._package.path}-${this.additionalPaths.join('-')}` : loadedPackage._package.path;
-        return combineLatest(
+        return combineLatest([
             this.getRecordFields(loadedPackage, entity),
             this.fieldsStore.get(stateKey)
-        ).pipe(
+        ]).pipe(
             map(values => values[0].concat(this.toFields(entity, values[1]))),
             map(fields => this.addValidationErrors(fields, entity).sort((a, b) => a.order - b.order))
         );

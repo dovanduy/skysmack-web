@@ -16,7 +16,7 @@ export class CommercialUiPartnersWrapperComponent implements OnInit, OnDestroy {
   public static COMPONENT_KEY = 'CommercialUiPartnersWrapper';
   public componentKey = CommercialUiPartnersWrapperComponent.COMPONENT_KEY
 
-  public subscriptionHandler = new SubscriptionHandler();
+  private subscriptionHandler = new SubscriptionHandler();
   public menuAreaItems$: Observable<MenuAreaItems[]>;
 
   constructor(
@@ -28,7 +28,6 @@ export class CommercialUiPartnersWrapperComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.redirectUnauthenticated();
-
     this.menuAreaItems$ = this.ngMenuProviders.getMenuAreaItems(null, this.componentKey).pipe(
       map(menuAreaItems => {
         return menuAreaItems.filter(menuAreaItem => menuAreaItem && menuAreaItem.providedIn && menuAreaItem.providedIn.includes('top'));

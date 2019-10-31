@@ -6,7 +6,7 @@ import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { EditorNavService } from '@skysmack/portal-ui';
 import { NgFieldsConfig } from './../../ng-fields-config';
 import { FormHelper } from '@skysmack/ng-dynamic-forms';
-import { getFieldStateKey, LocalObjectStatus } from '@skysmack/framework';
+import { getFieldStateKey, LocalObjectStatus, SubscriptionHandler } from '@skysmack/framework';
 import { RecordFormComponent } from '../../base-components/record-components/record-form-component';
 import { tap, map, take, switchMap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
@@ -17,6 +17,7 @@ import { Observable } from 'rxjs';
 })
 export class FieldsEditComponent extends RecordFormComponent<FieldState, any, string> implements OnInit {
   private additionalPaths$: Observable<string[]>
+  protected subscriptionHandler = new SubscriptionHandler();
 
   constructor(
     public router: Router,
@@ -34,11 +35,15 @@ export class FieldsEditComponent extends RecordFormComponent<FieldState, any, st
   ngOnInit() {
     this.additionalPaths$ = this.activatedRoute.parent.data.pipe(map(data => data.additionalPaths));
     super.ngOnInit();
-    this.additionalPaths$.pipe(
+    this.subscriptionHandler.register(this.additionalPaths$.pipe(
       tap(additionalPaths => this.actions.getAvailableFields(this.packagePath, additionalPaths)),
       take(1)
-    ).subscribe();
+    ).subscribe());
     this.setEditFields();
+  }
+
+  ngOnDestroy() {
+    this.subscriptionHandler.unsubscribe();
   }
 
   protected initEditRecord() {
@@ -57,13 +62,13 @@ export class FieldsEditComponent extends RecordFormComponent<FieldState, any, st
       newValue.oldObject = oldValue.object;
       newValue.status = LocalObjectStatus.MODIFYING;
 
-      return this.additionalPaths$.pipe(
+      return this.subscriptionHandler.register(this.additionalPaths$.pipe(
         map(additionalPaths => {
           this.actions.update([newValue], this.packagePath, additionalPaths)
           this.editorNavService.hideEditorNav();
         }),
         take(1)
-      ).subscribe();
+      ).subscribe());
     });
   }
 }

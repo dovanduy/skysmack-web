@@ -59,6 +59,7 @@ export class NgProductTypePriceChangesFieldsConfig extends FieldsConfig<ProductT
                 displaySubKey: 'object.name',
                 validators: [Validators.required],
                 optionsData$: this.productTypesStore.get(loadedPackage._package.dependencies[0]),
+                // Note: This doesn't need to be unsubscribed.
                 getDependencies: () => {
                     productPackage$.pipe(
                         map(productPackage => this.productTypesActions.getPaged(productPackage.object.path, new PagedQuery())),

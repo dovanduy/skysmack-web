@@ -5,6 +5,7 @@ import { CommercialAccountResetPasswordFieldsConfig } from './commercial-account
 import { Router, ActivatedRoute } from '@angular/router';
 import { map, take } from 'rxjs/operators';
 import { CommercialAccountService } from '../../services';
+import { SubscriptionHandler } from '@skysmack/framework';
 
 @Component({
   selector: 'ss-commercial-account-reset-password',
@@ -15,6 +16,8 @@ export class CommercialAccountResetPasswordComponent implements OnInit {
 
   public fields$: Observable<Field[]>;
   public message: string;
+  private subscriptionHandler = new SubscriptionHandler();
+
 
   constructor(
     public fieldsConfig: CommercialAccountResetPasswordFieldsConfig,
@@ -31,9 +34,13 @@ export class CommercialAccountResetPasswordComponent implements OnInit {
     );
   }
 
+  ngOnDestroy() {
+    this.subscriptionHandler.unsubscribe();
+  }
+
   public onSubmit(fh: FormHelper) {
     fh.formValid(() => {
-      this.service.resetPassword(fh.form.getRawValue()).pipe(
+      this.subscriptionHandler.register(this.service.resetPassword(fh.form.getRawValue()).pipe(
         map(response => {
           if (response.status >= 200 && response.status <= 299) {
             this.router.navigate(['/', 'account', 'login']);
@@ -42,7 +49,7 @@ export class CommercialAccountResetPasswordComponent implements OnInit {
           }
         }),
         take(1)
-      ).subscribe();
+      ).subscribe());
     }, false);
   }
 }

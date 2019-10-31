@@ -15,7 +15,7 @@ export class EntityComponentPageTitle implements OnDestroy {
     public title: string;
     public show = true;
     public titleExtraTranslationString: string;
-    public subscriptionHandler = new SubscriptionHandler();
+    private subscriptionHandler = new SubscriptionHandler();
     private tenantTitle = 'Skysmack';
 
     constructor(
@@ -53,7 +53,7 @@ export class EntityComponentPageTitle implements OnDestroy {
     }
 
     private setTenantTitle() {
-        this.store.getSkysmack().pipe(
+        this.subscriptionHandler.register(this.store.getSkysmack().pipe(
             hasValue(),
             map((tenant: Skysmack) => {
                 if (tenant !== undefined) {
@@ -66,6 +66,6 @@ export class EntityComponentPageTitle implements OnDestroy {
                 }
             }),
             take(1)
-        ).subscribe();
+        ).subscribe());
     }
 }

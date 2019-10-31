@@ -4,7 +4,7 @@ import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { NgFileStorageStore, NgFileStorageActions } from '@skysmack/ng-file-storage';
 import { FileStorageAppState, FILE_STORAGE_AREA_KEY, StorageQuery, FileStorageItem } from '@skysmack/packages-file-storage';
-import { MenuItem, LocalPage, LoadingState, linq, LocalObject, defined } from '@skysmack/framework';
+import { MenuItem, LocalPage, LoadingState, linq, LocalObject, defined, SubscriptionHandler } from '@skysmack/framework';
 import { BaseComponent } from '@skysmack/portal-fields';
 import { Observable, BehaviorSubject, combineLatest } from 'rxjs';
 import { map, filter, take } from 'rxjs/operators';
@@ -17,6 +17,7 @@ import { map, filter, take } from 'rxjs/operators';
 export class FileStorageIndexComponent extends BaseComponent<FileStorageAppState, number> implements OnInit {
   public static COMPONENT_KEY = 'file-storage-index';
   public componentKey = FileStorageIndexComponent.COMPONENT_KEY;
+  protected subscriptionHandler = new SubscriptionHandler();
 
   public areaKey: string = FILE_STORAGE_AREA_KEY;
   public menuItemActions: MenuItem[] = [];
@@ -65,6 +66,10 @@ export class FileStorageIndexComponent extends BaseComponent<FileStorageAppState
     this.loadPages();
     this.getPagedEntities();
     this.initFileStreams();
+  }
+
+  ngOnDestroy() {
+    this.subscriptionHandler.unsubscribe();
   }
 
   public navigateToFolder(folderPath?: string) {
@@ -163,10 +168,10 @@ export class FileStorageIndexComponent extends BaseComponent<FileStorageAppState
   }
 
   private getPagedEntities() {
-    this.pagedEntities$ = combineLatest(
+    this.pagedEntities$ = combineLatest([
       this.loadPages(),
       this.store.get(this.packagePath)
-    ).pipe(
+    ]).pipe(
       map(values => {
         const [pages, entities] = values;
         if (pages && entities) {
@@ -202,10 +207,10 @@ export class FileStorageIndexComponent extends BaseComponent<FileStorageAppState
       map(items => items.filter(item => item.object.contentType))
     )
 
-    this.empty$ = combineLatest(
+    this.empty$ = combineLatest([
       this.folders$,
       this.items$
-    ).pipe(
+    ]).pipe(
       map(([folders, items]) => {
         if (folders.length === 0 && items.length === 0) {
           return true

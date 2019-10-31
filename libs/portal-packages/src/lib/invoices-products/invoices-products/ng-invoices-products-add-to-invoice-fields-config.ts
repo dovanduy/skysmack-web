@@ -41,6 +41,7 @@ export class NgInvoicesProductsAddToInvoiceFieldsConfig extends FieldsConfig<any
         displayKey: 'invoice',
         displaySubKey: 'object.description',
         optionsData$: invoicesPackage$.pipe(switchMap(invoicesPackage => this.invoiceStore.get(invoicesPackage.object.path))),
+        // Note: This doesn't need to be unsubscribed.
         getDependencies: () => {
           invoicesPackage$.pipe(
             map(invoicesPackage => {

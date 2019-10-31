@@ -15,7 +15,7 @@ import { PartnerTenant, PartnerTenantStatus } from '../../models';
 })
 export class CommercialTenantsUsersComponent implements OnInit {
   public fields$: Observable<Field[]>;
-  public subscriptionHandler = new SubscriptionHandler();
+  private subscriptionHandler = new SubscriptionHandler();
 
   constructor(
     private service: CommercialTenantsService,
@@ -34,17 +34,17 @@ export class CommercialTenantsUsersComponent implements OnInit {
     );
   }
 
+  ngOnDestroy() {
+    this.subscriptionHandler.unsubscribe();
+  }
+
   public onSubmit(fh: FormHelper) {
     fh.formValid(() => {
       const partnerTenant = fh.form.getRawValue();
-      this.service.relateTenantAndUser(partnerTenant).pipe(
+      this.subscriptionHandler.register(this.service.relateTenantAndUser(partnerTenant).pipe(
         tap(() => this.router.navigate(['/', 'users'])),
         take(1)
-      ).subscribe();
+      ).subscribe());
     }, false);
-  }
-
-  ngOnDestroy() {
-    this.subscriptionHandler.unsubscribe();
   }
 }

@@ -67,7 +67,8 @@ export class NgFieldsMenuProvider implements MenuProvider {
             })
         ];
     }
-
+    
+    // Note: This doesn't need to be unsubscribed.
     private setPreviousUrl(router: Router) {
         getPreviousUrl$(router).pipe(tap(x => this.previousUrl = x)).subscribe();
     }

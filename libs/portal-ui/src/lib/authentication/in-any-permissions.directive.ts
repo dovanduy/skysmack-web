@@ -41,6 +41,7 @@ export class InAnyPermissionDirective implements OnInit, OnDestroy {
             }
             const packagePath = this.router.url.split('/')[1];
 
+            // Note: This doesn't need to be unsubscribed.
             this.subscription = this.skysmackStore.getPermissions(packagePath).pipe(
                 map(permissions => {
                     this.show(this.includesAny(this._permissions, permissions));

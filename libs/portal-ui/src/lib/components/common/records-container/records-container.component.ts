@@ -2,7 +2,7 @@ import { Component, OnInit, Input, EventEmitter, Output, ViewChild, OnDestroy } 
 import { LocalObject, LoadingState, DisplayColumn, SubscriptionHandler, MenuItem } from '@skysmack/framework';
 import { Observable, BehaviorSubject, combineLatest } from 'rxjs';
 import { Field, FieldTypes } from '@skysmack/ng-dynamic-forms';
-import { map, delay, debounceTime } from 'rxjs/operators';
+import { map, delay, debounceTime, tap } from 'rxjs/operators';
 import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
 
 @Component({
@@ -14,6 +14,7 @@ export class RecordsContainerComponent implements OnInit, OnDestroy {
 
   public loadedEntitiesCount$: BehaviorSubject<number> = new BehaviorSubject(0).pipe(delay(0)) as BehaviorSubject<number>;
   public loadedEntitiesCount: number;
+  protected subscriptionHandler = new SubscriptionHandler();
 
   @ViewChild('entityList', { static: true }) public entityList: CdkVirtualScrollViewport;
 
@@ -34,7 +35,6 @@ export class RecordsContainerComponent implements OnInit, OnDestroy {
   @Input() public area: string;
 
   public displayColumns$: Observable<DisplayColumn[]>;
-  public subscriptionHandler = new SubscriptionHandler();
 
   constructor() { }
 
@@ -55,27 +55,27 @@ export class RecordsContainerComponent implements OnInit, OnDestroy {
       }));
 
     // This is done to avoid ExpressionHasChanged error
-    this.subscriptionHandler.register(combineLatest(
+    this.subscriptionHandler.register(combineLatest([
       this.loadedEntitiesCount$
-    ).pipe(
+    ]).pipe(
       delay(0),
       map(values => {
         this.loadedEntitiesCount = values[0];
       })).subscribe());
   }
 
-  ngOnDestroy(): void {
+  ngOnDestroy() {
     this.subscriptionHandler.unsubscribe();
   }
 
-  public displayColumnFromField(field: Field) {
+  public displayColumnFromField = (field: Field) => {
     const column = new DisplayColumn({
       fieldKey: field.key,
       fieldDisplayKey: field.displayKey ? field.displayKey : field.key,
       fieldDisplaySubKey: field.displaySubKey,
       dynamicFieldName: field.dynamicField ? field.label : undefined,
       displayModifier: field.displayModifier,
-      translationString: this.area.toUpperCase() + '.FORM.LABELS.' + field.key.toUpperCase(),
+      translationString: this.area && this.area.toUpperCase() + '.FORM.LABELS.' + field.key.toUpperCase(),
       show: field.showColumn,
       sortable: field.sortable
     });

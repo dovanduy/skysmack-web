@@ -3,7 +3,7 @@ import { Field } from '@skysmack/ng-dynamic-forms';
 import { FieldBaseComponent } from '@skysmack/portal-fields';
 import { MatDialog } from '@angular/material/dialog';
 import { take, tap, map, switchMap, startWith, debounceTime } from 'rxjs/operators';
-import { LocalObject } from '@skysmack/framework';
+import { LocalObject, SubscriptionHandler } from '@skysmack/framework';
 import { DetailedLodging, Lodging } from '@skysmack/packages-lodgings';
 import { Observable, combineLatest, of } from 'rxjs';
 import { LodgingSelectDialogComponent } from '../lodging-select-dialog/lodging-select-dialog.component';
@@ -21,6 +21,7 @@ export class LodgingSelectFieldComponent extends FieldBaseComponent<Field> imple
 
   public selectedLodging: LocalObject<Lodging, number>;
   public lodgingTypeSelected$: Observable<boolean>;
+  protected subscriptionHandler = new SubscriptionHandler();
 
   constructor(
     private dialog: MatDialog,
@@ -37,8 +38,12 @@ export class LodgingSelectFieldComponent extends FieldBaseComponent<Field> imple
     this.setSelectedLodging();
   }
 
+  ngOnDestroy() {
+    this.subscriptionHandler.unsubscribe();
+  }
+
   public selectLodging(): void {
-    this.dialog.open(LodgingSelectDialogComponent, { data: { form: this.fh.form } }).afterClosed().pipe(
+    this.subscriptionHandler.register(this.dialog.open(LodgingSelectDialogComponent, { data: { form: this.fh.form } }).afterClosed().pipe(
       tap((detailedLodging: DetailedLodging) => {
         const selectedLodging = detailedLodging && detailedLodging.lodging;
         if (selectedLodging && selectedLodging.object && selectedLodging.object.id) {
@@ -47,7 +52,7 @@ export class LodgingSelectFieldComponent extends FieldBaseComponent<Field> imple
         }
       }),
       take(1)
-    ).subscribe();
+    ).subscribe());
   }
 
   private setlodgingTypeSelected$() {

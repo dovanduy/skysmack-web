@@ -15,7 +15,7 @@ import { take, tap } from 'rxjs/operators';
 })
 export class CommercialTenantsCreateComponent implements OnInit, OnDestroy {
   public fields$: Observable<Field[]>;
-  public subscriptionHandler = new SubscriptionHandler();
+  private subscriptionHandler = new SubscriptionHandler();
   public creating = false;
 
   constructor(
@@ -29,6 +29,10 @@ export class CommercialTenantsCreateComponent implements OnInit, OnDestroy {
     this.fields$ = this.fieldsConfig.getFields(null, null);
   }
 
+  ngOnDestroy() {
+    this.subscriptionHandler.unsubscribe();
+  }
+
   public onSubmit(fh: FormHelper) {
     fh.formValid(() => {
       this.creating = true;
@@ -39,9 +43,5 @@ export class CommercialTenantsCreateComponent implements OnInit, OnDestroy {
         take(1)
       ).subscribe());
     }, false);
-  }
-
-  ngOnDestroy() {
-    this.subscriptionHandler.unsubscribe();
   }
 }

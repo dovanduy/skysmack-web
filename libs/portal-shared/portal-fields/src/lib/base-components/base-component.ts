@@ -10,7 +10,7 @@ import { LoadedPackage } from '@skysmack/ng-framework';
 import { EntityComponentPageTitle } from '@skysmack/portal-ui';
 
 export class BaseComponent<TAppState, TKey> implements OnInit, OnDestroy {
-    public subscriptionHandler = new SubscriptionHandler();
+    protected subscriptionHandler = new SubscriptionHandler();
     public fields$: Observable<Field[]>;
     public entityId: TKey;
     public packagePath: string;
@@ -91,7 +91,7 @@ export class BaseComponent<TAppState, TKey> implements OnInit, OnDestroy {
                 map(() => this.title.setTitle(this.titleFallback, titleExtra))
             );
 
-            merge(isInstalledPackage$, fallback$).pipe(take(1)).subscribe();
+            this.subscriptionHandler.register(merge(isInstalledPackage$, fallback$).pipe(take(1)).subscribe());
         }
     }
 }

@@ -1,10 +1,10 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { CommercialDatabasesService } from '../../services/commercial-databases.service';
 import { Database } from '../../models/database';
 import { map, take, tap } from 'rxjs/operators';
-import { HttpResponse, HttpSuccessResponse } from '@skysmack/framework';
-import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { HttpSuccessResponse, SubscriptionHandler } from '@skysmack/framework';
+import { MatDialog } from '@angular/material/dialog';
 import { RemoveDialog, RemoveDialogData } from '@skysmack/commercial-ui-partners';
 
 @Component({
@@ -14,6 +14,7 @@ import { RemoveDialog, RemoveDialogData } from '@skysmack/commercial-ui-partners
 })
 export class CommercialDatabasesIndexComponent implements OnInit {
   public loading = true;
+  private subscriptionHandler = new SubscriptionHandler();
   public databases$: Observable<Database[]>
 
   constructor(
@@ -23,6 +24,10 @@ export class CommercialDatabasesIndexComponent implements OnInit {
 
   ngOnInit() {
     this.refreshDatabases();
+  }
+
+  ngOnDestroy() {
+    this.subscriptionHandler.unsubscribe();
   }
 
   private refreshDatabases() {
@@ -41,12 +46,12 @@ export class CommercialDatabasesIndexComponent implements OnInit {
       data: new RemoveDialogData({
         name: database.databaseName, removeMethod: () => {
           this.loading = true;
-          this.service.delete(database.databaseName).pipe(
+          this.subscriptionHandler.register(this.service.delete(database.databaseName).pipe(
             tap(() => {
               this.refreshDatabases();
             }),
             take(1)
-          ).subscribe();
+          ).subscribe());
         }
       })
     });

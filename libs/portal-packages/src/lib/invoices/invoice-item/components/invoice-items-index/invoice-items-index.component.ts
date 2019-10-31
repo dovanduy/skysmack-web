@@ -4,7 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { NgInvoiceItemsActions, NgInvoiceItemsStore } from '@skysmack/ng-invoices';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { InvoiceItem, InvoiceItemsAppState, INVOICE_ITEMS_AREA_KEY } from '@skysmack/packages-invoices';
-import { MenuItem, PagedQuery } from '@skysmack/framework';
+import { MenuItem, PagedQuery, SubscriptionHandler } from '@skysmack/framework';
 import { NgFieldActions } from '@skysmack/ng-framework';
 import { NgInvoiceItemsFieldsConfig } from '../../ng-invoice-items-fields-config';
 import { RSQLFilterBuilder } from '@skysmack/framework';
@@ -19,6 +19,8 @@ import { DocumentRecordIndexComponent } from '@skysmack/portal-fields';
 export class InvoiceItemsIndexComponent extends DocumentRecordIndexComponent<InvoiceItemsAppState, InvoiceItem, number> implements OnInit {
   public static COMPONENT_KEY = 'invoice-items-index';
   public componentKey = InvoiceItemsIndexComponent.COMPONENT_KEY;
+  protected subscriptionHandler = new SubscriptionHandler();
+
 
   public areaKey: string = INVOICE_ITEMS_AREA_KEY;
   public menuItemActions: MenuItem[] = [
@@ -42,7 +44,7 @@ export class InvoiceItemsIndexComponent extends DocumentRecordIndexComponent<Inv
 
   ngOnInit() {
     // Only get items related to inventoryId
-    this.activatedRoute.params.pipe(
+    this.subscriptionHandler.register(this.activatedRoute.params.pipe(
       map(params => {
         const filter = new RSQLFilterBuilder();
         const invoiceId = params.invoiceId;
@@ -50,8 +52,12 @@ export class InvoiceItemsIndexComponent extends DocumentRecordIndexComponent<Inv
         this.pagedQuery.rsqlFilter = filter;
       }),
       take(1)
-    ).subscribe();
+    ).subscribe());
 
     super.ngOnInit();
+  }
+
+  ngOnDestroy() {
+    this.subscriptionHandler.unsubscribe();
   }
 }

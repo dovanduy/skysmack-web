@@ -41,10 +41,10 @@ export abstract class NgRecordStore<TState, TRecord extends Record<TKey>, TKey> 
 
         return options$.pipe(
             mergeMap(option => option.targetPackage$.pipe(
-                mergeMap(targetPackage => combineLatest(
+                mergeMap(targetPackage => combineLatest([
                     records$,
                     this.getDependencies(targetPackage.object.path, option.stateSelector)
-                ).pipe(
+                ]).pipe(
                     map(([records, dependencies]) => this.mapRecordsDependencies(records, dependencies, option.relationIdSelector, option.relationSelector)),
                 ))
             ))
@@ -61,10 +61,10 @@ export abstract class NgRecordStore<TState, TRecord extends Record<TKey>, TKey> 
 
         return options$.pipe(
             mergeMap(option => option.targetPackage$.pipe(
-                mergeMap(targetPackage => combineLatest(
+                mergeMap(targetPackage => combineLatest([
                     record$,
                     this.getDependencies(targetPackage.object.path, option.stateSelector)
-                ).pipe(
+                ]).pipe(
                     map(([record, dependencies]) => this.mapRecordDependency(record, dependencies, option.relationIdSelector, option.relationSelector)),
                 ))
             ))
@@ -81,10 +81,10 @@ export abstract class NgRecordStore<TState, TRecord extends Record<TKey>, TKey> 
 
         return options$.pipe(
             mergeMap(option => option.targetPackage$.pipe(
-                mergeMap(targetPackage => combineLatest(
+                mergeMap(targetPackage => combineLatest([
                     record$,
                     this.getDependencies(targetPackage.object.path, option.stateSelector)
-                ).pipe(
+                ]).pipe(
                     map(([record, dependencies]) => this.mapRecordDependencies(record, dependencies, option.relationIdSelector, option.relationSelector)),
                 ))
             ))

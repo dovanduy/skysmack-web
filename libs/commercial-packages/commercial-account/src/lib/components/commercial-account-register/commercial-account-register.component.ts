@@ -17,7 +17,7 @@ import { CommercialAccountService } from '../../services/commercial-account.serv
 })
 export class CommercialAccountRegisterComponent implements OnInit, OnDestroy {
   public fields$: Observable<Field[]>;
-  public subscriptionHandler = new SubscriptionHandler();
+  private subscriptionHandler = new SubscriptionHandler();
   public removeCloseButton = false;
   public submitted: boolean;
 

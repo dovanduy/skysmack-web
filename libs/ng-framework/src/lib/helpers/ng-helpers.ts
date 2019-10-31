@@ -24,10 +24,10 @@ export const getNParentPackageDependency = (packages: LocalObject<Package, strin
  * TODO: Note: This could be refactored into the skysmack store, instead of receiving it as an argument.
  */
 export const getPackageDendencyAsStream = (skysmackStore: SkysmackStore, packagePath: string, dependencyIndexes: number[] = []) => {
-    return combineLatest(
+    return combineLatest([
         skysmackStore.getPackages(),
         skysmackStore.getCurrentPackage(packagePath)
-    ).pipe(
+    ]).pipe(
         map(([packages, currentPackage]) => getNParentPackageDependency(packages, currentPackage._package, dependencyIndexes)),
     );
 }

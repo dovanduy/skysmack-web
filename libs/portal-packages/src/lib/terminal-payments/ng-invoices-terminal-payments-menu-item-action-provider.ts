@@ -41,7 +41,9 @@ export class NgInvoicesTerminalPaymentsMenuItemActionProvider extends MenuItemAc
                                 }, 'payment', this)
                             ]);
                         });
-                        return combineLatest(entityActionStreams$);
+                        return combineLatest([
+                            entityActionStreams$
+                        ]);
                     } else {
                         return of([]);
                     }

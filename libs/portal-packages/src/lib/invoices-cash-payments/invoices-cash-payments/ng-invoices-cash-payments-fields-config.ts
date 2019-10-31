@@ -44,6 +44,7 @@ export class NgInvoicesCashPaymentsFieldsConfig extends FieldsConfig<CashPayment
                 displaySubKey: 'object.currencyCode',
                 optionsData$: invoicePackage$.pipe(switchMap(invoicePackage => this.invoicesStore.get(invoicePackage.object.path))),
                 displayNameSelector: 'object.currencyCode',
+                // Note: This doesn't need to be unsubscribed.
                 getDependencies: () => {
                     invoicePackage$.pipe(map(invoicePackage => this.invoicesActions.getPaged(invoicePackage.object.path, new PagedQuery())),
                         take(1)

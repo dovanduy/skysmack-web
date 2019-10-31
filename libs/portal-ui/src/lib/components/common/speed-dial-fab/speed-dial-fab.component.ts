@@ -4,7 +4,7 @@ import { MenuItem, SPEEDDIAL } from '@skysmack/framework';
 import { Observable } from 'rxjs';
 import { NgMenuProviders } from '../../../navigation/ng-menu-providers';
 import { Router } from '@angular/router';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 
 // https://medium.com/@webdev_aaron/fab-speed-dial-with-angular-5-2-angular-material-be696fc14967
 @Component({
@@ -29,7 +29,8 @@ export class SpeedDialFabComponent implements OnInit {
         const packagePath = this.router.url.split('/')[1];
         this.menuItems$ = this.ngMenuProviders.getMenuAreaItems(packagePath, this.componentKey).pipe(
             map(menuAreaItems => {                
-                return menuAreaItems.filter(area => area && area.items && area.items.length > 0).map(area => area.items.filter(item => item.providedIn.includes(SPEEDDIAL))).reduce((a,b) => a.concat(b),[]);                
+                return menuAreaItems.filter(area => area && area.items && area.items.length > 0).map(area => area.items.filter(item => {
+                    return  item.providedIn.includes(SPEEDDIAL); })).reduce((a,b) => a.concat(b),[]);                
             })
         );
     }

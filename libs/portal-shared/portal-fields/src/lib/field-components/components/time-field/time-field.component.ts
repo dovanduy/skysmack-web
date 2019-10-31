@@ -3,6 +3,7 @@ import { FieldBaseComponent } from '../field-base-component';
 import { Field } from '@skysmack/ng-dynamic-forms';
 import { fromEvent } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { SubscriptionHandler } from '@skysmack/framework';
 
 @Component({
   selector: 'ss-time-field',
@@ -11,10 +12,16 @@ import { map } from 'rxjs/operators';
 export class TimeFieldComponent extends FieldBaseComponent<Field> implements AfterViewInit, OnInit {
   @ViewChild('timeInput', { static: false }) public timeInput: ElementRef;
   public time: string;
+  protected subscriptionHandler = new SubscriptionHandler();
+
   
   ngOnInit() {
     super.ngOnInit();
     this.time = this.getFieldValue();
+  }
+
+  ngOnDestroy() {
+    this.subscriptionHandler.unsubscribe();
   }
 
   ngAfterViewInit() {

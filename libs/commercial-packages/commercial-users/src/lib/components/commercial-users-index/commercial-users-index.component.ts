@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable, combineLatest } from 'rxjs';
 import { CommercialUsersService } from '../../services/commercial-users.service';
 import { map, take, tap, switchMap, share } from 'rxjs/operators';
-import { HttpSuccessResponse, StrIndex } from '@skysmack/framework';
+import { HttpSuccessResponse, StrIndex, SubscriptionHandler } from '@skysmack/framework';
 import { MatDialog } from '@angular/material/dialog';
 import { RemoveDialog, RemoveDialogData } from '@skysmack/commercial-ui-partners';
 import { PartnerUser } from '../../models/partner-user';
@@ -18,6 +18,7 @@ class UserWithRoles extends PartnerUser {
 })
 export class CommercialUsersIndexComponent implements OnInit {
   public loading = true;
+  private subscriptionHandler = new SubscriptionHandler();
   public users$: Observable<UserWithRoles[]>
 
   constructor(
@@ -28,6 +29,12 @@ export class CommercialUsersIndexComponent implements OnInit {
   ngOnInit() {
     this.refreshUsers();
   }
+
+  ngOnDestroy() {
+    this.subscriptionHandler.unsubscribe();
+  }
+
+
   private refreshUsers() {
 
     const users$ = this.service.get().pipe(
@@ -65,11 +72,11 @@ export class CommercialUsersIndexComponent implements OnInit {
       data: new RemoveDialogData({
         name: user.firstName + ' ' + user.lastName, removeMethod: () => {
           this.loading = true;
-          this.service.delete(user.id).pipe(
+          this.subscriptionHandler.register(this.service.delete(user.id).pipe(
             tap(() => {
               this.refreshUsers();
             }),
-            take(1)).subscribe();
+            take(1)).subscribe());
         }
       })
     });
