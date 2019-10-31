@@ -4,15 +4,17 @@ import { MenuArea, MenuProvider, SIDEBAR, SPEEDDIAL } from '@skysmack/framework'
 import { MenuItem } from '@skysmack/framework';
 import { Guid } from 'guid-typescript';
 import { Observable } from 'rxjs';
-import { getCombinedMenuEntries, getMenuEntries } from '@skysmack/ng-framework';
+import { getCombinedMenuEntries, getMenuEntries, setBackButton } from '@skysmack/ng-framework';
 import { PhonesTypeId } from '@skysmack/package-types';
 import { PhonesIndexComponent } from './phones/components/phones-index/phones-index.component';
 import { PhonesPermissions } from '@skysmack/packages-phones';
+import { PhoneLogsIndexComponent } from './phones-logs/components/phone-logs-index/phone-logs-index.component';
 
 @Injectable({ providedIn: 'root' })
 export class NgPhonesMenuProvider implements MenuProvider {
     public id = Guid.create().toString();
     private phoneTranslationPrefix = 'PHONES.INDEX.';
+    private phoneLogsTranslationPrefix = 'PHONE_LOGS.INDEX.';
 
     constructor(
         private store: NgSkysmackStore,
@@ -27,6 +29,14 @@ export class NgPhonesMenuProvider implements MenuProvider {
                 PhonesIndexComponent.COMPONENT_KEY,
                 this.getPhonesIndexMenuAreas,
                 this.store
+            ),
+            getMenuEntries<MenuArea>(
+                packagePath,
+                PhonesTypeId,
+                componentKey,
+                PhoneLogsIndexComponent.COMPONENT_KEY,
+                this.getPhoneLogsIndexMenuAreas,
+                this.store
             )
         );
     };
@@ -39,6 +49,14 @@ export class NgPhonesMenuProvider implements MenuProvider {
                 componentKey,
                 PhonesIndexComponent.COMPONENT_KEY,
                 this.getPhonesIndexMenuItems,
+                this.store
+            ),
+            getMenuEntries<MenuItem>(
+                packagePath,
+                PhonesTypeId,
+                componentKey,
+                PhoneLogsIndexComponent.COMPONENT_KEY,
+                this.getPhoneLogsIndexMenuItems,
                 this.store
             )
         );
@@ -76,7 +94,46 @@ export class NgPhonesMenuProvider implements MenuProvider {
                     PhonesPermissions.addPhones
                 ],
                 providedIn: [SIDEBAR, SPEEDDIAL]
+            }),
+            new MenuItem({
+                url: 'logs',
+                displayName: this.phoneTranslationPrefix + 'LOGS',
+                area: 'manage',
+                order: 2,
+                icon: 'add',
+                permissions: [
+                    PhonesPermissions.findLogs
+                ],
+                providedIn: [SIDEBAR, SPEEDDIAL]
             })
         ];
     }
+
+    private getPhoneLogsIndexMenuAreas = (): MenuArea[] => {
+        return [
+            new MenuArea({
+                area: 'actions',
+                translationPrefix: this.phoneLogsTranslationPrefix,
+                order: 1
+            })
+        ];
+    }
+
+    private getPhoneLogsIndexMenuItems = (packagePath: string): MenuItem[] => {
+        return [
+            new MenuItem({
+                url: 'create',
+                displayName: this.phoneLogsTranslationPrefix + 'CREATE',
+                area: 'actions',
+                order: 1,
+                icon: 'add',
+                permissions: [
+                    PhonesPermissions.addPhones
+                ],
+                providedIn: [SIDEBAR, SPEEDDIAL]
+            }),
+            setBackButton(packagePath)
+        ];
+    }
 }
+

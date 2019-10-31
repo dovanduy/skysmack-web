@@ -136,6 +136,16 @@
 			"ERROR": "An error occured with access policy rules {{ id }}. Correct and try again."
 		}
 	},
+	"EMAILS": {
+		"INDEX": {
+			"CREATE": "Create",
+			"EDIT": "Edit",
+			"DELETE": "Delete",
+			"TEMPLATES": "Templates",
+			"MANAGE": "Manage",
+			"ACTIONS": "Actions"
+		}
+	},
 	"EMAIL_TEMPLATES": {
 		"FORM": {
 			"LABELS": {
@@ -176,16 +186,6 @@
 			"UPDATING": "Updating {{ subject }}",
 			"DELETING": "Deleting {{ subject }}",
 			"ERROR": "An error occured with {{ subject }}. Correct and try again."
-		}
-	},
-	"EMAILS": {
-		"INDEX": {
-			"CREATE": "Create",
-			"EDIT": "Edit",
-			"DELETE": "Delete",
-			"TEMPLATES": "Templates",
-			"MANAGE": "Manage",
-			"ACTIONS": "Actions"
 		}
 	},
 	"EMAILS_SMTP": {
@@ -699,84 +699,6 @@
 			"ITEMS": "Items"
 		}
 	},
-	"INVOICE_PAYMENTS": {
-		"FORM": {
-			"LABELS": {
-				"DESCRIPTION": "Description",
-				"SOURCE": "Source",
-				"AMOUNT": "Amount",
-				"IP": "IP",
-				"INVENTORYID": "Inventory ID"
-			},
-			"PLACEHOLDERS": {
-				"DESCRIPTION": "Description",
-				"SOURCE": "Source",
-				"AMOUNT": "Amount",
-				"IP": "IP",
-				"INVENTORYID": "Inventory ID"
-			},
-			"VALIDATION": {
-				"DESCRIPTION": {
-					"REQUIRED": "Description is required"
-				},
-				"SOURCE": {
-					"REQUIRED": "Source is required"
-				},
-				"AMOUNT": {
-					"REQUIRED": "Amount is required"
-				},
-				"IP": {
-					"REQUIRED": "IP is required"
-				},
-				"INVENTORYID": {
-					"REQUIRED": "Inventory ID is required"
-				}
-			}
-		},
-		"FIELDS": {
-			"CREATE": {
-				"ADD": "Add new field"
-			},
-			"EDIT": {
-				"EDITING": "Editing"
-			},
-			"INDEX": {
-				"ACTIONS": "Actions",
-				"CREATE": "Create new field",
-				"OTHER": "Other",
-				"BACK": "Back",
-				"FIELDS": "Fields",
-				"EDIT": "Edit"
-			}
-		},
-		"CREATE": {
-			"CREATE": "Create",
-			"BUTTON_CREATE": "Create"
-		},
-		"EDIT": {
-			"EDIT": "Edit",
-			"BUTTON_EDIT": "Update"
-		},
-		"INDEX": {
-			"PACKAGES": "Packages",
-			"CREATE": "Create",
-			"EDIT": "Edit",
-			"DELETE": "Delete",
-			"FIELDS": "Fields",
-			"ITEM": "Item",
-			"MANAGE": "Manage",
-			"BACK": "Back",
-			"ACTIONS": "Actions",
-			"TITLE_EXTRAS": "(payments)",
-			"FIELDS_TITLE": "(payment fields)"
-		},
-		"QUEUE": {
-			"ADDING": "Adding {{ description }}",
-			"UPDATING": "Updating {{ description }}",
-			"DELETING": "Deleting {{ description }}",
-			"ERROR": "An error occured with {{ description }}. Correct and try again."
-		}
-	},
 	"INVOICE_ITEMS": {
 		"FORM": {
 			"LABELS": {
@@ -856,6 +778,84 @@
 			"MANAGE": "Manage",
 			"BACK": "Back",
 			"ACTIONS": "Actions"
+		},
+		"QUEUE": {
+			"ADDING": "Adding {{ description }}",
+			"UPDATING": "Updating {{ description }}",
+			"DELETING": "Deleting {{ description }}",
+			"ERROR": "An error occured with {{ description }}. Correct and try again."
+		}
+	},
+	"INVOICE_PAYMENTS": {
+		"FORM": {
+			"LABELS": {
+				"DESCRIPTION": "Description",
+				"SOURCE": "Source",
+				"AMOUNT": "Amount",
+				"IP": "IP",
+				"INVENTORYID": "Inventory ID"
+			},
+			"PLACEHOLDERS": {
+				"DESCRIPTION": "Description",
+				"SOURCE": "Source",
+				"AMOUNT": "Amount",
+				"IP": "IP",
+				"INVENTORYID": "Inventory ID"
+			},
+			"VALIDATION": {
+				"DESCRIPTION": {
+					"REQUIRED": "Description is required"
+				},
+				"SOURCE": {
+					"REQUIRED": "Source is required"
+				},
+				"AMOUNT": {
+					"REQUIRED": "Amount is required"
+				},
+				"IP": {
+					"REQUIRED": "IP is required"
+				},
+				"INVENTORYID": {
+					"REQUIRED": "Inventory ID is required"
+				}
+			}
+		},
+		"FIELDS": {
+			"CREATE": {
+				"ADD": "Add new field"
+			},
+			"EDIT": {
+				"EDITING": "Editing"
+			},
+			"INDEX": {
+				"ACTIONS": "Actions",
+				"CREATE": "Create new field",
+				"OTHER": "Other",
+				"BACK": "Back",
+				"FIELDS": "Fields",
+				"EDIT": "Edit"
+			}
+		},
+		"CREATE": {
+			"CREATE": "Create",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDIT": "Edit",
+			"BUTTON_EDIT": "Update"
+		},
+		"INDEX": {
+			"PACKAGES": "Packages",
+			"CREATE": "Create",
+			"EDIT": "Edit",
+			"DELETE": "Delete",
+			"FIELDS": "Fields",
+			"ITEM": "Item",
+			"MANAGE": "Manage",
+			"BACK": "Back",
+			"ACTIONS": "Actions",
+			"TITLE_EXTRAS": "(payments)",
+			"FIELDS_TITLE": "(payment fields)"
 		},
 		"QUEUE": {
 			"ADDING": "Adding {{ description }}",
@@ -960,45 +960,6 @@
 		"ADD_PRODUCTS": {
 			"TITLE": "Add products",
 			"SUBMIT": "Submit"
-		}
-	},
-	"GROUP_RESERVATIONS": {
-		"CREATE": {
-			"CREATE": "Create",
-			"BUTTON_CREATE": "Create"
-		},
-		"EDIT": {
-			"EDIT": "Edit",
-			"BUTTON_EDIT": "Update"
-		},
-		"INDEX": {
-			"TITLE_EXTRAS": "(groups)",
-			"ACTIONS": "Actions",
-			"CREATE": "Create",
-			"DELETE": "Delete",
-			"MANAGE": "Manage",
-			"FIELDS": "Fields",
-			"FIELDS_TITLE": "(group fields)",
-			"BACK": "Back"
-		},
-		"FORM": {
-			"LABELS": {
-				"NAME": "Name"
-			},
-			"PLACEHOLDERS": {
-				"NAME": "Enter name"
-			},
-			"VALIDATION": {
-				"NAME": {
-					"REQUIRED": "Name is required."
-				}
-			}
-		},
-		"QUEUE": {
-			"ADDING": "Adding {{ name }}",
-			"UPDATING": "Updating {{ name }}",
-			"DELETING": "Deleting {{ name }}",
-			"ERROR": "An error occured with {{ name }}. Correct and try again."
 		}
 	},
 	"LODGING_RESERVATIONS": {
@@ -1134,6 +1095,45 @@
 		"CANCEL": "Cancel",
 		"DONE": "Done",
 		"CHOOSE_LODGING_TYPE": "Choose a lodging type"
+	},
+	"GROUP_RESERVATIONS": {
+		"CREATE": {
+			"CREATE": "Create",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDIT": "Edit",
+			"BUTTON_EDIT": "Update"
+		},
+		"INDEX": {
+			"TITLE_EXTRAS": "(groups)",
+			"ACTIONS": "Actions",
+			"CREATE": "Create",
+			"DELETE": "Delete",
+			"MANAGE": "Manage",
+			"FIELDS": "Fields",
+			"FIELDS_TITLE": "(group fields)",
+			"BACK": "Back"
+		},
+		"FORM": {
+			"LABELS": {
+				"NAME": "Name"
+			},
+			"PLACEHOLDERS": {
+				"NAME": "Enter name"
+			},
+			"VALIDATION": {
+				"NAME": {
+					"REQUIRED": "Name is required."
+				}
+			}
+		},
+		"QUEUE": {
+			"ADDING": "Adding {{ name }}",
+			"UPDATING": "Updating {{ name }}",
+			"DELETING": "Deleting {{ name }}",
+			"ERROR": "An error occured with {{ name }}. Correct and try again."
+		}
 	},
 	"LODGING_SETTINGS": {
 		"FORM": {
@@ -1299,14 +1299,12 @@
 			"LABELS": {
 				"DESCRIPTION": "Description",
 				"STATEID": "State",
-				"DUEPERIOD": "Due date",
-				"EXPRESSION": "Expression"
+				"DUEPERIOD": "Due date"
 			},
 			"PLACEHOLDERS": {
 				"STATEID": "Choose state",
 				"DESCRIPTION": "Enter description",
-				"DUEPERIOD": "Choose due date",
-				"EXPRESSION": "Enter expression"
+				"DUEPERIOD": "Choose due date"
 			},
 			"VALIDATION": {
 				"STATEID": {
@@ -1317,9 +1315,6 @@
 				},
 				"DUEPERIOD": {
 					"REQUIRED": "Due date is required."
-				},
-				"EXPRESSION": {
-					"REQUIRED": "Expression is required."
 				}
 			},
 			"BUTTONS": {
@@ -1358,38 +1353,6 @@
 			},
 			"CREATE": {
 				"ADD": "Add field"
-			},
-			"FORM": {
-				"LABELS": {
-					"STATEID": "State",
-					"DESCRIPTION": "Description",
-					"EXPRESSION": "Expression",
-					"DUEPERIOD": "Due date"
-				},
-				"PLACEHOLDERS": {
-					"STATEID": "Choose state",
-					"DESCRIPTION": "Enter description",
-					"EXPRESSION": "Enter expression",
-					"DUEPERIOD": "Choose due date"
-				},
-				"VALIDATION": {
-					"STATEID": {
-						"REQUIRED": "State is required."
-					},
-					"DESCRIPTION": {
-						"REQUIRED": "Description is required."
-					},
-					"EXPRESSION": {
-						"REQUIRED": "Expression is required."
-					},
-					"DUEPERIOD": {
-						"REQUIRED": "Due date is required."
-					}
-				},
-				"BUTTONS": {
-					"CREATE": "Create",
-					"EDIT": "Edit"
-				}
 			}
 		},
 		"QUEUE": {
@@ -1437,15 +1400,14 @@
 			"BUTTON_EDIT": "Update"
 		},
 		"INDEX": {
-			"TITLE_EXTRAS": "(recurring assignments)",
+			"TITLE_EXTRAS": "(scheduled assignments)",
 			"ACTIONS": "Actions",
 			"CREATE": "Create",
 			"EDIT": "Edit",
 			"DELETE": "Delete",
 			"MANAGE": "Manage",
 			"FIELDS": "Fields",
-			"BACK": "Back",
-			"STATES": "States"
+			"BACK": "Back"
 		},
 		"QUEUE": {
 			"ADDING": "Adding {{ description }}",
@@ -1461,8 +1423,7 @@
 				"SINGLE_ASSIGNMENTS": "Single assignments",
 				"RECURRING_ASSIGNMENTS": "Scheduled assignments",
 				"TYPES": "Assignment types",
-				"STATES": "Maintenance states",
-				"MANAGE": "Manage"
+				"STATES": "Maintenance states"
 			}
 		}
 	},
@@ -1682,10 +1643,10 @@
 	"PHONES": {
 		"FORM": {
 			"LABELS": {
-				"NAME": "Email"
+				"NAME": "Name"
 			},
 			"PLACEHOLDERS": {
-				"NAME": "Enter email"
+				"NAME": "Enter name"
 			},
 			"VALIDATION": {
 				"NAME": {
@@ -1709,6 +1670,74 @@
 			"BACK": "Back",
 			"FIELDS_TITLE": "(fields)",
 			"TITLE_EXTRAS": "(phones)"
+		},
+		"QUEUE": {
+			"ADDING": "Adding {{ name }}",
+			"UPDATING": "Updating {{ name }}",
+			"DELETING": "Deleting {{ name }}",
+			"ERROR": "An error occured with {{ name }}. Correct and try again."
+		}
+	},
+	"PHONE_LOGS": {
+		"FORM": {
+			"LABELS": {
+				"SOURCENUMBER": "Source number",
+				"DESTINATIONNUMBER": "Destination number",
+				"STARTED": "Started",
+				"CONNECTED": "Connected",
+				"ENDED": "Ended",
+				"TERMINATEDBYSOURCE": "Terminated by source",
+				"SOURCEPHONEID": "Source phone",
+				"DESTINATIONPHONEID": "Destination phone"
+			},
+			"PLACEHOLDERS": {
+				"SOURCENUMBER": "Source number",
+				"DESTINATIONNUMBER": "Destination number",
+				"STARTED": "Started",
+				"CONNECTED": "Connected",
+				"ENDED": "Ended",
+				"TERMINATEDBYSOURCE": "Terminated by source",
+				"SOURCEPHONEID": "Source phone",
+				"DESTINATIONPHONEID": "Destination phone"
+			},
+			"VALIDATION": {
+				"SOURCENUMBER": {
+					"REQUIRED": "Source number is required"
+				},
+				"DESTINATIONNUMBER": {
+					"REQUIRED": "Destination number is required"
+				},
+				"STARTED": {
+					"REQUIRED": "Started is required"
+				},
+				"CONNECTED": {
+					"REQUIRED": "Connected is required"
+				},
+				"ENDED": {
+					"REQUIRED": "Ended is required"
+				},
+				"TERMINATEDBYSOURCE": {
+					"REQUIRED": "Terminated by source is required"
+				}
+			}
+		},
+		"CREATE": {
+			"CREATE_PHONE": "Create a new phone-log",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDIT": "Edit phone-log",
+			"BUTTON_EDIT": "Update"
+		},
+		"INDEX": {
+			"ACTIONS": "Actions",
+			"CREATE": "Create",
+			"MANAGE": "Manage",
+			"PHONES": "PhoneLogs",
+			"LOGS": "Logs",
+			"BACK": "Back",
+			"FIELDS_TITLE": "(fields)",
+			"TITLE_EXTRAS": "(phone-logs)"
 		},
 		"QUEUE": {
 			"ADDING": "Adding {{ name }}",
@@ -1815,7 +1844,7 @@
 			"ERROR": "An error occured with {{ name }}. Correct and try again."
 		}
 	},
-	"PRODUCT_TYPE_PRICE_CHANGES": {
+	"PRODUCT_PRICE_CHANGES": {
 		"CREATE": {
 			"CREATE": "Create",
 			"BUTTON_CREATE": "Create"
@@ -1835,9 +1864,9 @@
 		"FORM": {
 			"LABELS": {
 				"CURRENCYCODE": "Currency code",
-				"RECORDID": "Product type",
-				"CHANGE": "Change",
-				"ISPERCENT": "Change is in Percent (%)",
+				"RECORDID": "Product",
+				"CHANGE": "Price change",
+				"ISPERCENT": "Change is in percentage (%)",
 				"PERUNIT": "Per unit",
 				"VALIDFROM": "Valid from",
 				"VALIDTO": "Valid to",
@@ -1847,9 +1876,9 @@
 			},
 			"PLACEHOLDERS": {
 				"CURRENCYCODE": "Currency code",
-				"RECORDID": "Product type",
-				"CHANGE": "Change",
-				"ISPERCENT": "Change is in Percent (%)",
+				"RECORDID": "Product",
+				"CHANGE": "Price change",
+				"ISPERCENT": "Change is in percentage (%)",
 				"PERUNIT": "Per unit",
 				"VALIDFROM": "Valid from",
 				"VALIDTO": "Valid to",
@@ -1891,7 +1920,7 @@
 			"ERROR": "An error occured with the price change valid from/to: {{ dates }}. Correct and try again."
 		}
 	},
-	"PRODUCT_PRICE_CHANGES": {
+	"PRODUCT_TYPE_PRICE_CHANGES": {
 		"CREATE": {
 			"CREATE": "Create",
 			"BUTTON_CREATE": "Create"
@@ -1911,9 +1940,9 @@
 		"FORM": {
 			"LABELS": {
 				"CURRENCYCODE": "Currency code",
-				"RECORDID": "Product",
-				"CHANGE": "Price change",
-				"ISPERCENT": "Change is in percentage (%)",
+				"RECORDID": "Product type",
+				"CHANGE": "Change",
+				"ISPERCENT": "Change is in Percent (%)",
 				"PERUNIT": "Per unit",
 				"VALIDFROM": "Valid from",
 				"VALIDTO": "Valid to",
@@ -1923,9 +1952,9 @@
 			},
 			"PLACEHOLDERS": {
 				"CURRENCYCODE": "Currency code",
-				"RECORDID": "Product",
-				"CHANGE": "Price change",
-				"ISPERCENT": "Change is in percentage (%)",
+				"RECORDID": "Product type",
+				"CHANGE": "Change",
+				"ISPERCENT": "Change is in Percent (%)",
 				"PERUNIT": "Per unit",
 				"VALIDFROM": "Valid from",
 				"VALIDTO": "Valid to",
@@ -2504,90 +2533,6 @@
 			"ERROR": "An error occured with {{ printReceipt }}. Correct and try again."
 		}
 	},
-	"TERMINALS": {
-		"FORM": {
-			"LABELS": {
-				"NAME": "Name",
-				"CONNECTIONSTRING": "Connection string",
-				"CONNECTION": "Connection",
-				"DESCRIPTION": "Description",
-				"CLIENTID": "Client",
-				"TERMINALID": "Terminal",
-				"AMOUNT": "Amount",
-				"INVOICEID": "Invoice ID",
-				"CURRENCYCODE": "Currency"
-			},
-			"PLACEHOLDERS": {
-				"NAME": "Name",
-				"CONNECTIONSTRING": "Connection string",
-				"CONNECTION": "Connection",
-				"DESCRIPTION": "Description",
-				"CLIENTID": "Client",
-				"TERMINALID": "Terminal",
-				"AMOUNT": "Amount",
-				"INVOICEID": "Invoice ID",
-				"CURRENCYCODE": "Currency"
-			},
-			"VALIDATION": {
-				"NAME": {
-					"REQUIRED": "Name is required."
-				},
-				"CONNECTIONSTRING": {
-					"REQUIRED": "Connection string is required."
-				},
-				"CONNECTION": {
-					"REQUIRED": "Connection is required."
-				},
-				"CLIENTID": {
-					"REQUIRED": "Client is required."
-				},
-				"TERMINALID": {
-					"REQUIRED": "Terminal is required."
-				},
-				"AMOUNT": {
-					"REQUIRED": "Amount is required."
-				},
-				"INVOICEID": {
-					"REQUIRED": "Invoice ID is required."
-				},
-				"CURRENCYCODE": {
-					"REQUIRED": "Currency is required."
-				}
-			}
-		},
-		"CREATE": {
-			"CREATE": "Create",
-			"BUTTON_CREATE": "Create"
-		},
-		"EDIT": {
-			"EDIT": "Edit",
-			"BUTTON_EDIT": "Update"
-		},
-		"INDEX": {
-			"TITLE_EXTRAS": "(Terminals)",
-			"CREATE": "Create",
-			"EDIT": "Edit",
-			"DELETE": "Delete",
-			"MANAGE": "Manage",
-			"ACTIONS": "Actions",
-			"TYPES": "Types"
-		},
-		"PAY": {
-			"TITLE": "Card payment",
-			"BUTTON_PAY": "Pay"
-		},
-		"QUEUE": {
-			"ADDING": "Adding terminal {{ name }}",
-			"UPDATING": "Updating terminal {{ name }}",
-			"DELETING": "Deleting terminal {{ name }}",
-			"ERROR": "An error occured with terminal {{ name }}. Correct and try again."
-		},
-		"ENTITY_ACTION_PROVIDER": {
-			"ENTITY_ACTION": {
-				"TERMINAL_PAYMENT": "Card payment"
-			}
-		}
-	},
 	"TERMINAL_RECEIPTS": {
 		"FORM": {
 			"LABELS": {
@@ -2674,6 +2619,90 @@
 			"UPDATING": "Updating {{ printReceipt }}",
 			"DELETING": "Deleting {{ printReceipt }}",
 			"ERROR": "An error occured with {{ printReceipt }}. Correct and try again."
+		}
+	},
+	"TERMINALS": {
+		"FORM": {
+			"LABELS": {
+				"NAME": "Name",
+				"CONNECTIONSTRING": "Connection string",
+				"CONNECTION": "Connection",
+				"DESCRIPTION": "Description",
+				"CLIENTID": "Client",
+				"TERMINALID": "Terminal",
+				"AMOUNT": "Amount",
+				"INVOICEID": "Invoice ID",
+				"CURRENCYCODE": "Currency"
+			},
+			"PLACEHOLDERS": {
+				"NAME": "Name",
+				"CONNECTIONSTRING": "Connection string",
+				"CONNECTION": "Connection",
+				"DESCRIPTION": "Description",
+				"CLIENTID": "Client",
+				"TERMINALID": "Terminal",
+				"AMOUNT": "Amount",
+				"INVOICEID": "Invoice ID",
+				"CURRENCYCODE": "Currency"
+			},
+			"VALIDATION": {
+				"NAME": {
+					"REQUIRED": "Name is required."
+				},
+				"CONNECTIONSTRING": {
+					"REQUIRED": "Connection string is required."
+				},
+				"CONNECTION": {
+					"REQUIRED": "Connection is required."
+				},
+				"CLIENTID": {
+					"REQUIRED": "Client is required."
+				},
+				"TERMINALID": {
+					"REQUIRED": "Terminal is required."
+				},
+				"AMOUNT": {
+					"REQUIRED": "Amount is required."
+				},
+				"INVOICEID": {
+					"REQUIRED": "Invoice ID is required."
+				},
+				"CURRENCYCODE": {
+					"REQUIRED": "Currency is required."
+				}
+			}
+		},
+		"CREATE": {
+			"CREATE": "Create",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDIT": "Edit",
+			"BUTTON_EDIT": "Update"
+		},
+		"INDEX": {
+			"TITLE_EXTRAS": "(Terminals)",
+			"CREATE": "Create",
+			"EDIT": "Edit",
+			"DELETE": "Delete",
+			"MANAGE": "Manage",
+			"ACTIONS": "Actions",
+			"TYPES": "Types"
+		},
+		"PAY": {
+			"TITLE": "Card payment",
+			"BUTTON_PAY": "Pay"
+		},
+		"QUEUE": {
+			"ADDING": "Adding terminal {{ name }}",
+			"UPDATING": "Updating terminal {{ name }}",
+			"DELETING": "Deleting terminal {{ name }}",
+			"ERROR": "An error occured with terminal {{ name }}. Correct and try again."
+		},
+		"ENTITY_ACTION_PROVIDER": {
+			"ENTITY_ACTION": {
+				"TERMINAL_PAYMENT": "Card payment"
+			}
 		}
 	},
 	"UI": {
@@ -2784,10 +2813,7 @@
 	},
 	"CALL_DATA_SETTINGS": {
 		"INDEX": {
-			"SETTINGS": "Settings",
-			"CALL_DATA": {
-				"SETTINGS": "Settings"
-			}
+			"SETTINGS": "Settings"
 		},
 		"FORM": {
 			"LABELS": {
@@ -2799,9 +2825,6 @@
 				"CURRENCYCODE": "Currency code"
 			},
 			"VALIDATION": {}
-		},
-		"CALL_DATA": {
-			"SETTINGS": "Settings"
 		}
 	},
 	"OAUTH2": {
@@ -3123,126 +3146,6 @@
 			"UPDATING": "Updating settings",
 			"DELETING": "Deleting settings",
 			"ERROR": "An error occured with settings. Correct and try again."
-		}
-	},
-	"ACCOUNTS": {
-		"FORM": {
-			"LABELS": {
-				"TOKEN": "Token",
-				"EMAIL": "Email",
-				"CURRENTPASSWORD": "Current password",
-				"NEWPASSWORD": "New password",
-				"CONFIRMNEWPASSWORD": "Confirm new password"
-			},
-			"PLACEHOLDERS": {
-				"TOKEN": "Token",
-				"EMAIL": "Email",
-				"CURRENTPASSWORD": "Current password",
-				"NEWPASSWORD": "New password",
-				"CONFIRMNEWPASSWORD": "Confirm new password"
-			},
-			"VALIDATION": {
-				"TOKEN": {
-					"REQUIRED": "Token is required"
-				},
-				"EMAIL": {
-					"REQUIRED": "Email is required.",
-					"INVALIDEMAIL": "Please type a valid email"
-				},
-				"CURRENTPASSWORD": {
-					"REQUIRED": "Current password is required."
-				},
-				"NEWPASSWORD": {
-					"REQUIRED": "New password is required."
-				},
-				"CONFIRMNEWPASSWORD": {
-					"REQUIRED": "Please repeat the new password.",
-					"PASSWORDMISMATCH": "Passwords must match."
-				}
-			}
-		},
-		"CHANGE_PASSWORD": {
-			"TITLE": "Change password",
-			"BUTTON_EDIT": "Update"
-		},
-		"CONFIRM_EMAIL": {
-			"TITLE": "Confirm email",
-			"BUTTON_EDIT": "Submit"
-		},
-		"RESET_PASSWORD": {
-			"TITLE": "Reset password",
-			"BUTTON_EDIT": "Submit"
-		},
-		"FORGOT_PASSWORD": {
-			"TITLE": "Forgot password",
-			"BUTTON_EDIT": "Submit",
-			"CHECK_EMAIL_TITLE": "Check your email",
-			"CHECK_EMAIL": "You will find instructions on how to reset your password. Remember to check your spam folder."
-		},
-		"INDEX": {
-			"ACTIONS": "Actions",
-			"MANAGE": "Manage",
-			"CHANGE_PASSWORD": "Change password",
-			"FORGOT_PASSWORD": "Forgot password",
-			"RESET_PASSWORD": "Reset password",
-			"CONFIRM_EMAIL": "Confirm email"
-		},
-		"NOTIFICATIONS": {},
-		"QUEUE": {}
-	},
-	"RECURRING_ASSIGNMENTS": {
-		"FORM": {
-			"LABELS": {
-				"ASSIGNMENTTYPEID": "Assignment type",
-				"ENTITYID": "Entity",
-				"START": "Start date",
-				"END": "End date"
-			},
-			"PLACEHOLDERS": {
-				"ASSIGNMENTTYPEID": "Assignment type",
-				"ENTITYID": "Entity",
-				"START": "Start date",
-				"END": "End date"
-			},
-			"VALIDATION": {
-				"ASSIGNMENTTYPEID": {
-					"REQUIRED": "Assignment type is required."
-				},
-				"ENTITYID": {
-					"REQUIRED": "Entity is required."
-				},
-				"START": {
-					"REQUIRED": "Start date is required."
-				},
-				"END": {
-					"REQUIRED": "End date is required."
-				}
-			}
-		},
-		"CREATE": {
-			"CREATE": "Create",
-			"BUTTON_CREATE": "Create"
-		},
-		"EDIT": {
-			"EDIT": "Edit",
-			"BUTTON_EDIT": "Update"
-		},
-		"INDEX": {
-			"TITLE_EXTRAS": "(recurring assignments)",
-			"ACTIONS": "Actions",
-			"CREATE": "Create",
-			"EDIT": "Edit",
-			"DELETE": "Delete",
-			"MANAGE": "Manage",
-			"FIELDS": "Fields",
-			"STATES": "States",
-			"BACK": "Back"
-		},
-		"QUEUE": {
-			"ADDING": "Adding {{ description }}",
-			"UPDATING": "Updating {{ description }}",
-			"DELETING": "Deleting {{ description }}",
-			"ERROR": "An error occured with {{ description }}. Correct and try again."
 		}
 	},
 	"FILE_STORAGE": {
