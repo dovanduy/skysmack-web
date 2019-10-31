@@ -9,7 +9,6 @@ import { switchMap } from 'rxjs/operators';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { LocalObject, toLocalObject } from '@skysmack/framework';
 import { FormHelper } from '@skysmack/ng-dynamic-forms';
-import { NgMoveFieldsConfig } from '../../move-fields-config';
 import { NgConfirmReservationFieldsConfig } from '../../confirm-reservation-fields-config';
 
 @Component({

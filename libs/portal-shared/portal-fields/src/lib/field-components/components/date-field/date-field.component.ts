@@ -14,10 +14,10 @@ const moment = _moment;
   providers: [DateOnlyAdapter, { provide: DateAdapter, useClass: DateOnlyAdapter }]
 })
 export class DateFieldComponent extends FieldBaseComponent<Field> implements AfterViewInit, OnInit {
-  
+
   @ViewChild('dateInput', { static: false }) public dateInput: ElementRef;
   public date: string;
-  
+
   public dateTime: Date;
 
   private dateFormats = [
@@ -26,7 +26,7 @@ export class DateFieldComponent extends FieldBaseComponent<Field> implements Aft
     "l",
     "YYYY-MM-DD"
   ];
-  
+
   ngOnInit() {
     super.ngOnInit();
     this.updatePickerFields();
@@ -46,7 +46,7 @@ export class DateFieldComponent extends FieldBaseComponent<Field> implements Aft
     if (myValue instanceof Date) {
       this.dateTime = myValue;
       const momentValue = moment(myValue);
-      this.date = momentValue.format('YYYY-MM-DD');      
+      this.date = momentValue.format('YYYY-MM-DD');
       this.setFieldValue(moment(this.dateTime).format('YYYY-MM-DD'));
     }
   }
@@ -58,6 +58,7 @@ export class DateFieldComponent extends FieldBaseComponent<Field> implements Aft
   }
 
   private dateChanged() {
+    console.log('TRIGGERED!');
     const input = this.dateInput.nativeElement.value;
     let dateInput: Date;
 
@@ -70,6 +71,8 @@ export class DateFieldComponent extends FieldBaseComponent<Field> implements Aft
     if (dateInput) {
       this.dateTime.setFullYear(dateInput.getFullYear(), dateInput.getMonth(), dateInput.getDate());
       this.setFieldValue(moment(this.dateTime).format('YYYY-MM-DD'));
+
+      this.runRules();
     }
   }
 

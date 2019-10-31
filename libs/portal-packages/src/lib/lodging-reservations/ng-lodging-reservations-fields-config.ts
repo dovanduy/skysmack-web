@@ -6,7 +6,7 @@ import { NgLodgingTypesStore, NgLodgingsStore, NgLodgingsActions, NgLodgingTypes
 import { LoadedPackage, NgFieldStore } from '@skysmack/ng-framework';
 import { of } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { FormRule, Field, SelectField } from '@skysmack/ng-dynamic-forms';
+import { FormRule, Field, SelectField, AddDaysRule } from '@skysmack/ng-dynamic-forms';
 import { FieldProviders } from '@skysmack/ng-fields';
 import { SelectFieldComponent, DateFieldComponent, IntFieldComponent, HiddenFieldComponent, DocumentFieldsConfig, DateTimeFieldComponent, StringFieldComponent, CheckboxFieldComponent } from '@skysmack/portal-fields';
 import { NgLodgingReservationsValidation } from '@skysmack/ng-lodging-reservations';
@@ -17,7 +17,9 @@ import { LodgingSelectFieldComponent } from './lodging-reservations/lodging-sele
 export class NgLodgingReservationsFieldsConfig extends DocumentFieldsConfig<LodgingReservation, number> {
     public area = LODGING_RESERVATIONS_AREA_KEY;
     public validation = new NgLodgingReservationsValidation();
-    public formRules: FormRule[] = [];
+    public formRules: FormRule[] = [
+        new AddDaysRule(['checkIn'], 'checkIn', 'checkOut', 1)
+    ];
 
     constructor(
         public lodgingsStore: NgLodgingsStore,

@@ -56,7 +56,7 @@ export class DateTimeFieldComponent extends FieldBaseComponent<Field> implements
       const momentValue = moment(myValue);
       this.date = momentValue.format('YYYY-MM-DD');
       this.time = momentValue.format('HH:mm');
-      
+
       this.setFieldValue(this.dateTime);
     }
   }
@@ -92,6 +92,7 @@ export class DateTimeFieldComponent extends FieldBaseComponent<Field> implements
       }
 
       this.setFieldValue(this.dateTime);
+      this.runRules();
     }
   }
 
@@ -108,6 +109,7 @@ export class DateTimeFieldComponent extends FieldBaseComponent<Field> implements
     if (dateInput) {
       this.dateTime.setFullYear(dateInput.getFullYear(), dateInput.getMonth(), dateInput.getDate());
       this.setFieldValue(this.dateTime);
+      this.runRules();
     }
   }
 
