@@ -17,6 +17,7 @@ import { LODGING_RESERVATIONS_AREA_KEY, LODGING_RESERVATIONS_ADDITIONAL_PATHS } 
 import { DeparturesDashboardComponent } from './departures-dashboard/departures-dashboard.component';
 import { InStayDashboardComponent } from './in-stay-dashboard/in-stay-dashboard.component';
 import { CheckinFormComponent } from './checkin-form/checkin-form.component';
+import { MoveFormComponent } from './move-form/move-form.component';
 
 const lodgingReservationChildrenRoutes = [
     { path: 'create', component: LodgingsReservationsCreateComponent, pathMatch: 'full' },
@@ -56,7 +57,8 @@ export const lodgingReservationsComponents: any[] = [
     LodgingTypeSelectDialogComponent,
     LodgingSelectFieldComponent,
     LodgingSelectDialogComponent,
-    CheckinFormComponent
+    CheckinFormComponent,
+    MoveFormComponent
 ];
 
 export const lodgingReservationsEntryComponents: any[] = [
@@ -67,5 +69,6 @@ export const lodgingReservationsEntryComponents: any[] = [
     LodgingTypeSelectDialogComponent,
     LodgingSelectFieldComponent,
     LodgingSelectDialogComponent,
-    CheckinFormComponent
+    CheckinFormComponent,
+    MoveFormComponent
 ];

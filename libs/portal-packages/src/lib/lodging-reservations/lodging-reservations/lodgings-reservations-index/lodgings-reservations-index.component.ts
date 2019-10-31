@@ -13,6 +13,7 @@ import { NgFieldActions } from '@skysmack/ng-framework';
 import { MatDialog } from '@angular/material/dialog';
 import { take, tap } from 'rxjs/operators';
 import { CheckinFormComponent } from '../checkin-form/checkin-form.component';
+import { MoveFormComponent } from '../move-form/move-form.component';
 
 @Component({
   selector: 'ss-lodgings-reservations-index',
@@ -143,7 +144,9 @@ export class LodgingsReservationsIndexComponent extends DocumentRecordIndexCompo
   }
 
   public move(_this: LodgingsReservationsIndexComponent, entity: LocalObject<LodgingReservation, number>) {
-    _this.actions.move(_this.packagePath, entity, [new CheckIn({ reservationId: entity.object.id })]);
+    _this.subscriptionHandler.register(_this.dialog.open(MoveFormComponent, { data: { packagePath: _this.packagePath, reservation: entity } }).afterClosed().pipe(
+      take(1)
+    ).subscribe());
   }
   public undoMove(_this: LodgingsReservationsIndexComponent, entity: LocalObject<LodgingReservation, number>) {
     _this.actions.undoMove(_this.packagePath, entity, [entity.object.id]);

@@ -96,6 +96,11 @@
             "TITLE": "New checkin",
             "BUTTON_CHECKIN": "Checkin",
             "CANCEL": "Cancel"
+        },
+        "MOVE": {
+            "TITLE": "Move reservation",
+            "BUTTON_MOVE": "Move",
+            "CANCEL": "Cancel"
         }
     },
     "LODGING_RESERVATIONS_SETTINGS": {
@@ -107,7 +112,7 @@
                 "LATESTCHECKOUT": "Latest check out in minutes after",
                 "TIMEZONE": "Time zone"
             },
-            "PLACEHOLDERS": {                
+            "PLACEHOLDERS": {
                 "CHECKIN": "Check in time",
                 "CHECKOUT": "Check out time",
                 "EARLIESTCHECKIN": "Earliest check in",
