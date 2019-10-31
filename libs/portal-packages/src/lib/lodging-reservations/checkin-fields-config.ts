@@ -16,7 +16,7 @@ export class NgCheckinFieldsConfig extends FieldsConfig<CheckIn, number> {
 
     constructor(
         public fieldProviders: FieldProviders
-    ){ 
+    ) {
         super(fieldProviders, []);
     }
 
@@ -25,7 +25,7 @@ export class NgCheckinFieldsConfig extends FieldsConfig<CheckIn, number> {
 
         fields.push(new Field({
             component: HiddenFieldComponent,
-            value: '2019-10-28T15:30', // entity ? entity.object.lodgingId : undefined,
+            value: entity ? entity.object.reservation.checkIn : undefined,
             key: 'checkIn',
             order: 4,
             showColumn: false,
@@ -35,17 +35,17 @@ export class NgCheckinFieldsConfig extends FieldsConfig<CheckIn, number> {
 
         fields.push(new Field({
             component: HiddenFieldComponent,
-            value: '2019-10-30T15:30', // entity ? entity.object.lodgingId : undefined,
+            value: entity ? entity.object.reservation.checkOut : undefined,
             key: 'checkOut',
             order: 4,
             showColumn: false,
             includeInRequest: false,
             disabled: true
         }));
-        
-        fields.push( new Field({
+
+        fields.push(new Field({
             component: HiddenFieldComponent,
-            value: 1, // entity ? entity.object.lodgingId : undefined,
+            value: entity ? entity.object.reservation.lodgingTypeId : undefined,
             key: 'lodgingTypeId',
             order: 4,
             showColumn: false,
@@ -60,7 +60,7 @@ export class NgCheckinFieldsConfig extends FieldsConfig<CheckIn, number> {
             order: 4,
             showColumn: false,
         }));
-        
+
         return fields;
     }
 }

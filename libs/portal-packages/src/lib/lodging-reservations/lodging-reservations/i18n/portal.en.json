@@ -101,6 +101,11 @@
             "TITLE": "Move reservation",
             "BUTTON_MOVE": "Move",
             "CANCEL": "Cancel"
+        },
+        "CHECKOUT": {
+            "TITLE": "Checkout",
+            "BUTTON_MOVE": "Checkout",
+            "CANCEL": "Cancel"
         }
     },
     "LODGING_RESERVATIONS_SETTINGS": {

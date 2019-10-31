@@ -1,4 +1,4 @@
-import { CheckIn, LODGING_RESERVATIONS_CHECKIN_AREA_KEY, Move } from '@skysmack/packages-lodging-reservations';
+import { LODGING_RESERVATIONS_CHECKIN_AREA_KEY, Move } from '@skysmack/packages-lodging-reservations';
 import { Injectable } from '@angular/core';
 import { FieldsConfig, FieldProviders } from '@skysmack/ng-fields';
 import { NgLodgingReservationsValidation } from '@skysmack/ng-lodging-reservations';
@@ -25,7 +25,7 @@ export class NgMoveFieldsConfig extends FieldsConfig<Move, number> {
 
         fields.push(new Field({
             component: HiddenFieldComponent,
-            value: '2019-10-28T15:30', // entity ? entity.object.lodgingId : undefined,
+            value: entity ? entity.object.reservation.checkIn : undefined,
             key: 'checkIn',
             order: 4,
             showColumn: false,
@@ -35,7 +35,7 @@ export class NgMoveFieldsConfig extends FieldsConfig<Move, number> {
 
         fields.push(new Field({
             component: HiddenFieldComponent,
-            value: '2019-10-30T15:30', // entity ? entity.object.lodgingId : undefined,
+            value: entity ? entity.object.reservation.checkOut : undefined,
             key: 'checkOut',
             order: 4,
             showColumn: false,
@@ -45,7 +45,7 @@ export class NgMoveFieldsConfig extends FieldsConfig<Move, number> {
 
         fields.push(new Field({
             component: HiddenFieldComponent,
-            value: 1, // entity ? entity.object.lodgingId : undefined,
+            value: entity ? entity.object.reservation.lodgingTypeId : undefined,
             key: 'lodgingTypeId',
             order: 4,
             showColumn: false,

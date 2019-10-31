@@ -5,6 +5,7 @@ import { Store } from 'redux';
 import { CheckIn } from '../../models/check-in';
 import { LodgingReservation } from '../../models/lodging-reservation';
 import { LODGING_RESERVATIONS_REDUX_KEY, LODGING_RESERVATIONS_ADDITIONAL_PATHS } from '../../constants';
+import { Move } from '../../models/move';
 
 export class LodgingReservationsActions extends RecordActionsBase<LodgingReservationsAppState, Store<LodgingReservationsAppState>> {
     public static CHECK_IN = 'CHECK_IN';
@@ -227,12 +228,12 @@ export class LodgingReservationsActions extends RecordActionsBase<LodgingReserva
         })));
     }
 
-    public move(packagePath: string, entity: LocalObject<LodgingReservation, number>, moves: CheckIn[]) {
-        this.store.dispatch(Object.assign({}, new ReduxAction<any, ReduxOfflineMeta<CheckIn[], HttpResponse, CheckIn[]>>({
+    public move(packagePath: string, entity: LocalObject<LodgingReservation, number>, moves: Move[]) {
+        this.store.dispatch(Object.assign({}, new ReduxAction<any, ReduxOfflineMeta<Move[], HttpResponse, Move[]>>({
             type: this.prefix + LodgingReservationsActions.MOVE,
             meta: new ReduxOfflineMeta(
-                new OfflineMeta<CheckIn[], HttpResponse, any>(
-                    new Effect<CheckIn[]>(new EffectRequest<CheckIn[]>(
+                new OfflineMeta<Move[], HttpResponse, any>(
+                    new Effect<Move[]>(new EffectRequest<Move[]>(
                         this.addAdditionalPaths(packagePath) + '/move',
                         HttpMethod.POST,
                         moves

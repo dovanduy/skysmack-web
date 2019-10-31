@@ -14,6 +14,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { take, tap } from 'rxjs/operators';
 import { CheckinFormComponent } from '../checkin-form/checkin-form.component';
 import { MoveFormComponent } from '../move-form/move-form.component';
+import { CheckoutFormComponent } from '../checkout-form/checkout-form.component';
 
 @Component({
   selector: 'ss-lodgings-reservations-index',
@@ -130,7 +131,11 @@ export class LodgingsReservationsIndexComponent extends DocumentRecordIndexCompo
   }
 
   public checkOut(_this: LodgingsReservationsIndexComponent, entity: LocalObject<LodgingReservation, number>) {
-    _this.actions.checkOut(_this.packagePath, entity, [entity.object.id]);
+    _this.subscriptionHandler.register(_this.dialog.open(CheckoutFormComponent, { data: { packagePath: _this.packagePath, reservation: entity } }).afterClosed().pipe(
+      take(1)
+    ).subscribe());
+
+    // _this.actions.checkOut(_this.packagePath, entity, [entity.object.id]);
   }
   public undoCheckout(_this: LodgingsReservationsIndexComponent, entity: LocalObject<LodgingReservation, number>) {
     _this.actions.undoCheckOut(_this.packagePath, entity, [entity.object.id]);
