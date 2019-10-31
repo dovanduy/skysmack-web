@@ -36,7 +36,7 @@ export class MoveFormComponent extends FormBaseComponent<LodgingReservationsAppS
     this.fields$ = this.loadedPackage$.pipe(
       switchMap(_package => this.fieldsConfig.getFields(_package, toLocalObject(new Move({
         reservationId: this.data.reservation.object.id,
-        lodgingId: this.data.reservation.object.allocatedLodgingId,
+        lodgingId: this.data.reservation.object.lodgingId,
         reservation: this.data.reservation.object
       }))))
     );

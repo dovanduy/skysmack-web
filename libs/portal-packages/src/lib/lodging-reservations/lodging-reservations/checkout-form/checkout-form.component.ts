@@ -36,7 +36,7 @@ export class CheckoutFormComponent extends FormBaseComponent<LodgingReservations
     this.fields$ = this.loadedPackage$.pipe(
       switchMap(_package => this.fieldsConfig.getFields(_package, toLocalObject(new Checkout({
         reservationId: this.data.reservation.object.id,
-        lodgingId: this.data.reservation.object.allocatedLodgingId,
+        lodgingId: this.data.reservation.object.lodgingId,
         reservation: this.data.reservation.object
       }))))
     );
@@ -44,7 +44,11 @@ export class CheckoutFormComponent extends FormBaseComponent<LodgingReservations
 
   protected onSubmit(fh: FormHelper): void {
     fh.formValid(() => {
-
+      const checkout = this.extractFormValues(fh);
+      const entity = this.data.reservation;
+      checkout.object.reservationId = entity.object.id;
+      this.actions.checkOut(this.packagePath, entity, [entity.object.id]);
+      this.editorNavService.hideEditorNav();
     });
   }
 }

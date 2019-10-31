@@ -41,6 +41,43 @@
 			"ERROR": "An error occured with {{ permission }} permission. Correct and try again."
 		}
 	},
+	"ACCESS_POLICY_RULES": {
+		"CREATE": {
+			"CREATE": "Create",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDITING": "Rediger",
+			"BUTTON_EDIT": "Update"
+		},
+		"INDEX": {
+			"TITLE_EXTRAS": "(rules)",
+			"ACTIONS": "Actions",
+			"CREATE": "Create",
+			"MANAGE": "Manage",
+			"BACK": "Back",
+			"ROLES": "Roles",
+			"FIELDS_TITLE": "(fields)"
+		},
+		"FORM": {
+			"LABELS": {
+				"ACCESS": "Access",
+				"AUTHENTICATED": "Authenticated",
+				"INCLUDEROLES": "Include roles"
+			},
+			"PLACEHOLDERS": {
+				"ACCESS": "Access",
+				"AUTHENTICATED": "Authenticated",
+				"INCLUDEROLES": "Include roles"
+			}
+		},
+		"QUEUE": {
+			"ADDING": "Adding the access policy rule",
+			"UPDATING": "Updating the access policy rule",
+			"DELETING": "Deleting the access policy rule",
+			"ERROR": "An error occured with the access policy rule. Correct and try again."
+		}
+	},
 	"ACCESS_POLICY_ROLES": {
 		"CREATE": {
 			"CREATE": "Create",
@@ -79,43 +116,6 @@
 			"UPDATING": "Updating {{ roleId }}",
 			"DELETING": "Deleting {{ roleId }}",
 			"ERROR": "An error occured with {{ roleId }}. Correct and try again."
-		}
-	},
-	"ACCESS_POLICY_RULES": {
-		"CREATE": {
-			"CREATE": "Create",
-			"BUTTON_CREATE": "Create"
-		},
-		"EDIT": {
-			"EDITING": "Rediger",
-			"BUTTON_EDIT": "Update"
-		},
-		"INDEX": {
-			"TITLE_EXTRAS": "(rules)",
-			"ACTIONS": "Actions",
-			"CREATE": "Create",
-			"MANAGE": "Manage",
-			"BACK": "Back",
-			"ROLES": "Roles",
-			"FIELDS_TITLE": "(fields)"
-		},
-		"FORM": {
-			"LABELS": {
-				"ACCESS": "Access",
-				"AUTHENTICATED": "Authenticated",
-				"INCLUDEROLES": "Include roles"
-			},
-			"PLACEHOLDERS": {
-				"ACCESS": "Access",
-				"AUTHENTICATED": "Authenticated",
-				"INCLUDEROLES": "Include roles"
-			}
-		},
-		"QUEUE": {
-			"ADDING": "Adding the access policy rule",
-			"UPDATING": "Updating the access policy rule",
-			"DELETING": "Deleting the access policy rule",
-			"ERROR": "An error occured with the access policy rule. Correct and try again."
 		}
 	},
 	"ACCESS_POLICIES": {
@@ -1159,98 +1159,6 @@
 		"DONE": "Done",
 		"CHOOSE_LODGING_TYPE": "Choose a lodging type"
 	},
-	"PERSONS": {
-		"FORM": {
-			"LABELS": {
-				"FIRSTNAME": "First name",
-				"LASTNAME": "Last name",
-				"DISPLAYNAME": "Display name"
-			},
-			"PLACEHOLDERS": {
-				"FIRSTNAME": "Enter first name",
-				"LASTNAME": "Enter last name",
-				"DISPLAYNAME": "Enter display name"
-			},
-			"VALIDATION": {
-				"FIRSTNAME": {
-					"REQUIRED": "A first name is required."
-				},
-				"LASTNAME": {
-					"REQUIRED": "A last name is required."
-				},
-				"DISPLAYNAME": {
-					"REQUIRED": "A Display name is required."
-				}
-			}
-		},
-		"FIELDS": {
-			"CREATE": {
-				"ADD": "Add new field"
-			},
-			"EDIT": {
-				"EDITING": "Editing"
-			},
-			"INDEX": {
-				"ACTIONS": "Actions",
-				"CREATE": "Create new field",
-				"OTHER": "Other",
-				"BACK": "Back",
-				"FIELDS": "Fields",
-				"EDIT": "Edit"
-			}
-		},
-		"CREATE": {
-			"CREATE": "Create",
-			"BUTTON_CREATE": "Create"
-		},
-		"EDIT": {
-			"EDIT": "Edit",
-			"BUTTON_EDIT": "Update"
-		},
-		"INDEX": {
-			"PACKAGES": "Packages",
-			"CREATE": "Create",
-			"EDIT": "Edit",
-			"DELETE": "Delete",
-			"FIELDS": "Fields",
-			"FIELDS_TITLE": "(fields)",
-			"ITEM": "Item",
-			"MANAGE": "Manage",
-			"ACTIONS": "Actions"
-		},
-		"NOTIFICATIONS": {
-			"GET": {
-				"PAGED_ERROR": "Failed to get persons ({{ httpErrorCode }}).",
-				"SINGLE_FAILURE": "Failed to get {{ displayName }} ({{ httpErrorCode }}).",
-				"FIELDS_FAILURE": "Failed to get fields for persons ({{ httpErrorCode }}).",
-				"SINGLE_FIELD_FAILURE": "Failed to get {{ displayName }} field ({{ httpErrorCode }})."
-			},
-			"ADD": {
-				"SUCCESS": "Added {{ displayName }} succcessfully.",
-				"FAILURE": "Failed to add {{ displayName }} ({{ httpErrorCode }}).",
-				"FIELD_FAILURE": "Failed to add field for {{ displayName }} ({{ httpErrorCode }}).",
-				"FIELD_SUCCESS": "Added field for {{ displayName }} successfully."
-			},
-			"UPDATE": {
-				"SUCCESS": "Updated {{ displayName }} successfully.",
-				"FAILURE": "Failed to update {{ displayName }} ({{ httpErrorCode }}).",
-				"FIELD_SUCCESS": "Updated field for {{ displayName }} successfully.",
-				"FIELD_FAILURE": "Failed to update field for {{ displayName }} ({{ httpErrorCode }})"
-			},
-			"REMOVE": {
-				"SUCCESS": "Removed {{ displayName }} successfully.",
-				"FAILURE": "Failed to remove {{ displayName }} ({{ httpErrorCode }}).",
-				"FIELD_SUCCESS": "Removed field for {{ displayName }} succesfully.",
-				"FIELD_FAILURE": "Failed to remove field for {{ displayName }} ({{ httpErrorCode }})."
-			}
-		},
-		"QUEUE": {
-			"ADDING": "Adding {{ displayName }}",
-			"UPDATING": "Updating {{ displayName }}",
-			"DELETING": "Deleting {{ displayName }}",
-			"ERROR": "An error occured with {{ displayName }}. Correct and try again."
-		}
-	},
 	"LODGING_SETTINGS": {
 		"FORM": {
 			"LABELS": {
@@ -1409,6 +1317,196 @@
 	"LODGINGS_AVAILABILITY": {
 		"SELECT_LODGINGS": "Select lodgings",
 		"TITLE": "Lodgings Availability"
+	},
+	"PERSONS": {
+		"FORM": {
+			"LABELS": {
+				"FIRSTNAME": "First name",
+				"LASTNAME": "Last name",
+				"DISPLAYNAME": "Display name"
+			},
+			"PLACEHOLDERS": {
+				"FIRSTNAME": "Enter first name",
+				"LASTNAME": "Enter last name",
+				"DISPLAYNAME": "Enter display name"
+			},
+			"VALIDATION": {
+				"FIRSTNAME": {
+					"REQUIRED": "A first name is required."
+				},
+				"LASTNAME": {
+					"REQUIRED": "A last name is required."
+				},
+				"DISPLAYNAME": {
+					"REQUIRED": "A Display name is required."
+				}
+			}
+		},
+		"FIELDS": {
+			"CREATE": {
+				"ADD": "Add new field"
+			},
+			"EDIT": {
+				"EDITING": "Editing"
+			},
+			"INDEX": {
+				"ACTIONS": "Actions",
+				"CREATE": "Create new field",
+				"OTHER": "Other",
+				"BACK": "Back",
+				"FIELDS": "Fields",
+				"EDIT": "Edit"
+			}
+		},
+		"CREATE": {
+			"CREATE": "Create",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDIT": "Edit",
+			"BUTTON_EDIT": "Update"
+		},
+		"INDEX": {
+			"PACKAGES": "Packages",
+			"CREATE": "Create",
+			"EDIT": "Edit",
+			"DELETE": "Delete",
+			"FIELDS": "Fields",
+			"FIELDS_TITLE": "(fields)",
+			"ITEM": "Item",
+			"MANAGE": "Manage",
+			"ACTIONS": "Actions"
+		},
+		"NOTIFICATIONS": {
+			"GET": {
+				"PAGED_ERROR": "Failed to get persons ({{ httpErrorCode }}).",
+				"SINGLE_FAILURE": "Failed to get {{ displayName }} ({{ httpErrorCode }}).",
+				"FIELDS_FAILURE": "Failed to get fields for persons ({{ httpErrorCode }}).",
+				"SINGLE_FIELD_FAILURE": "Failed to get {{ displayName }} field ({{ httpErrorCode }})."
+			},
+			"ADD": {
+				"SUCCESS": "Added {{ displayName }} succcessfully.",
+				"FAILURE": "Failed to add {{ displayName }} ({{ httpErrorCode }}).",
+				"FIELD_FAILURE": "Failed to add field for {{ displayName }} ({{ httpErrorCode }}).",
+				"FIELD_SUCCESS": "Added field for {{ displayName }} successfully."
+			},
+			"UPDATE": {
+				"SUCCESS": "Updated {{ displayName }} successfully.",
+				"FAILURE": "Failed to update {{ displayName }} ({{ httpErrorCode }}).",
+				"FIELD_SUCCESS": "Updated field for {{ displayName }} successfully.",
+				"FIELD_FAILURE": "Failed to update field for {{ displayName }} ({{ httpErrorCode }})"
+			},
+			"REMOVE": {
+				"SUCCESS": "Removed {{ displayName }} successfully.",
+				"FAILURE": "Failed to remove {{ displayName }} ({{ httpErrorCode }}).",
+				"FIELD_SUCCESS": "Removed field for {{ displayName }} succesfully.",
+				"FIELD_FAILURE": "Failed to remove field for {{ displayName }} ({{ httpErrorCode }})."
+			}
+		},
+		"QUEUE": {
+			"ADDING": "Adding {{ displayName }}",
+			"UPDATING": "Updating {{ displayName }}",
+			"DELETING": "Deleting {{ displayName }}",
+			"ERROR": "An error occured with {{ displayName }}. Correct and try again."
+		}
+	},
+	"PRODUCT_TYPES": {
+		"CREATE": {
+			"CREATE": "Create",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDIT": "Edit",
+			"BUTTON_EDIT": "Update"
+		},
+		"INDEX": {
+			"TITLE_EXTRAS": "(types)",
+			"ACTIONS": "Actions",
+			"CREATE": "Create",
+			"DELETE": "Delete",
+			"MANAGE": "Manage",
+			"FIELDS": "Fields",
+			"FIELDS_TITLE": "(type fields)",
+			"BACK": "Back"
+		},
+		"FORM": {
+			"LABELS": {
+				"NAME": "Name"
+			},
+			"PLACEHOLDERS": {
+				"NAME": "Enter name"
+			},
+			"VALIDATION": {
+				"NAME": {
+					"REQUIRED": "Name is required."
+				}
+			}
+		},
+		"QUEUE": {
+			"ADDING": "Adding {{ name }}",
+			"UPDATING": "Updating {{ name }}",
+			"DELETING": "Deleting {{ name }}",
+			"ERROR": "An error occured with {{ name }}. Correct and try again."
+		}
+	},
+	"PRODUCTS": {
+		"FORM": {
+			"LABELS": {
+				"NAME": "Name",
+				"PRODUCTTYPEID": "Product type",
+				"PRODUCTSPRICING": "Price"
+			},
+			"PLACEHOLDERS": {
+				"NAME": "Enter name",
+				"PRODUCTTYPEID": "Choose product type"
+			},
+			"VALIDATION": {
+				"NAME": {
+					"REQUIRED": "Name is required."
+				}
+			}
+		},
+		"CREATE": {
+			"CREATE": "Create",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDIT": "Edit",
+			"BUTTON_EDIT": "Update"
+		},
+		"INDEX": {
+			"CREATE": "Create",
+			"EDIT": "Edit",
+			"DELETE": "Delete",
+			"FIELDS": "Fields",
+			"FIELDS_TITLE": "(fields)",
+			"ITEM": "Item",
+			"MANAGE": "Manage",
+			"ACTIONS": "Actions",
+			"TYPES": "Types"
+		},
+		"FIELDS": {
+			"CREATE": {
+				"ADD": "Add new field"
+			},
+			"EDIT": {
+				"EDITING": "Editing"
+			},
+			"INDEX": {
+				"ACTIONS": "Actions",
+				"CREATE": "Create",
+				"MANAGE": "Manage",
+				"TYPES": "Types",
+				"FIELDS": "Fields",
+				"BACK": "Back"
+			}
+		},
+		"QUEUE": {
+			"ADDING": "Adding {{ name }}",
+			"UPDATING": "Updating {{ name }}",
+			"DELETING": "Deleting {{ name }}",
+			"ERROR": "An error occured with {{ name }}. Correct and try again."
+		}
 	},
 	"ASSIGNMENT_TYPES": {
 		"FORM": {
@@ -1664,105 +1762,7 @@
 			"ERROR": "An error occured with {{ description }}. Correct and try again."
 		}
 	},
-	"PRODUCT_TYPES": {
-		"CREATE": {
-			"CREATE": "Create",
-			"BUTTON_CREATE": "Create"
-		},
-		"EDIT": {
-			"EDIT": "Edit",
-			"BUTTON_EDIT": "Update"
-		},
-		"INDEX": {
-			"TITLE_EXTRAS": "(types)",
-			"ACTIONS": "Actions",
-			"CREATE": "Create",
-			"DELETE": "Delete",
-			"MANAGE": "Manage",
-			"FIELDS": "Fields",
-			"FIELDS_TITLE": "(type fields)",
-			"BACK": "Back"
-		},
-		"FORM": {
-			"LABELS": {
-				"NAME": "Name"
-			},
-			"PLACEHOLDERS": {
-				"NAME": "Enter name"
-			},
-			"VALIDATION": {
-				"NAME": {
-					"REQUIRED": "Name is required."
-				}
-			}
-		},
-		"QUEUE": {
-			"ADDING": "Adding {{ name }}",
-			"UPDATING": "Updating {{ name }}",
-			"DELETING": "Deleting {{ name }}",
-			"ERROR": "An error occured with {{ name }}. Correct and try again."
-		}
-	},
-	"PRODUCTS": {
-		"FORM": {
-			"LABELS": {
-				"NAME": "Name",
-				"PRODUCTTYPEID": "Product type",
-				"PRODUCTSPRICING": "Price"
-			},
-			"PLACEHOLDERS": {
-				"NAME": "Enter name",
-				"PRODUCTTYPEID": "Choose product type"
-			},
-			"VALIDATION": {
-				"NAME": {
-					"REQUIRED": "Name is required."
-				}
-			}
-		},
-		"CREATE": {
-			"CREATE": "Create",
-			"BUTTON_CREATE": "Create"
-		},
-		"EDIT": {
-			"EDIT": "Edit",
-			"BUTTON_EDIT": "Update"
-		},
-		"INDEX": {
-			"CREATE": "Create",
-			"EDIT": "Edit",
-			"DELETE": "Delete",
-			"FIELDS": "Fields",
-			"FIELDS_TITLE": "(fields)",
-			"ITEM": "Item",
-			"MANAGE": "Manage",
-			"ACTIONS": "Actions",
-			"TYPES": "Types"
-		},
-		"FIELDS": {
-			"CREATE": {
-				"ADD": "Add new field"
-			},
-			"EDIT": {
-				"EDITING": "Editing"
-			},
-			"INDEX": {
-				"ACTIONS": "Actions",
-				"CREATE": "Create",
-				"MANAGE": "Manage",
-				"TYPES": "Types",
-				"FIELDS": "Fields",
-				"BACK": "Back"
-			}
-		},
-		"QUEUE": {
-			"ADDING": "Adding {{ name }}",
-			"UPDATING": "Updating {{ name }}",
-			"DELETING": "Deleting {{ name }}",
-			"ERROR": "An error occured with {{ name }}. Correct and try again."
-		}
-	},
-	"PRODUCT_PRICE_CHANGES": {
+	"PRODUCT_TYPE_PRICE_CHANGES": {
 		"CREATE": {
 			"CREATE": "Create",
 			"BUTTON_CREATE": "Create"
@@ -1782,9 +1782,9 @@
 		"FORM": {
 			"LABELS": {
 				"CURRENCYCODE": "Currency code",
-				"RECORDID": "Product",
-				"CHANGE": "Price change",
-				"ISPERCENT": "Change is in percentage (%)",
+				"RECORDID": "Product type",
+				"CHANGE": "Change",
+				"ISPERCENT": "Change is in Percent (%)",
 				"PERUNIT": "Per unit",
 				"VALIDFROM": "Valid from",
 				"VALIDTO": "Valid to",
@@ -1794,9 +1794,9 @@
 			},
 			"PLACEHOLDERS": {
 				"CURRENCYCODE": "Currency code",
-				"RECORDID": "Product",
-				"CHANGE": "Price change",
-				"ISPERCENT": "Change is in percentage (%)",
+				"RECORDID": "Product type",
+				"CHANGE": "Change",
+				"ISPERCENT": "Change is in Percent (%)",
 				"PERUNIT": "Per unit",
 				"VALIDFROM": "Valid from",
 				"VALIDTO": "Valid to",
@@ -1838,7 +1838,7 @@
 			"ERROR": "An error occured with the price change valid from/to: {{ dates }}. Correct and try again."
 		}
 	},
-	"PRODUCT_TYPE_PRICE_CHANGES": {
+	"PRODUCT_PRICE_CHANGES": {
 		"CREATE": {
 			"CREATE": "Create",
 			"BUTTON_CREATE": "Create"
@@ -1858,9 +1858,9 @@
 		"FORM": {
 			"LABELS": {
 				"CURRENCYCODE": "Currency code",
-				"RECORDID": "Product type",
-				"CHANGE": "Change",
-				"ISPERCENT": "Change is in Percent (%)",
+				"RECORDID": "Product",
+				"CHANGE": "Price change",
+				"ISPERCENT": "Change is in percentage (%)",
 				"PERUNIT": "Per unit",
 				"VALIDFROM": "Valid from",
 				"VALIDTO": "Valid to",
@@ -1870,9 +1870,9 @@
 			},
 			"PLACEHOLDERS": {
 				"CURRENCYCODE": "Currency code",
-				"RECORDID": "Product type",
-				"CHANGE": "Change",
-				"ISPERCENT": "Change is in Percent (%)",
+				"RECORDID": "Product",
+				"CHANGE": "Price change",
+				"ISPERCENT": "Change is in percentage (%)",
 				"PERUNIT": "Per unit",
 				"VALIDFROM": "Valid from",
 				"VALIDTO": "Valid to",
@@ -2157,53 +2157,6 @@
 			"ERROR": "An error occured with the lodging reservation price change valid from/to: {{ dates }}. Correct and try again."
 		}
 	},
-	"LODGING_TYPE_PRICES": {
-		"CREATE": {
-			"CREATE": "Create",
-			"BUTTON_CREATE": "Create"
-		},
-		"EDIT": {
-			"EDIT": "Edit",
-			"BUTTON_EDIT": "Update"
-		},
-		"INDEX": {
-			"ACTIONS": "Actions",
-			"CREATE": "Create",
-			"DELETE": "Delete",
-			"MANAGE": "Manage",
-			"FIELDS": "Fields",
-			"BACK": "Back"
-		},
-		"FORM": {
-			"LABELS": {
-				"CURRENCYCODE": "Currency code",
-				"RECORDID": "Lodging type",
-				"PRICE": "Price"
-			},
-			"PLACEHOLDERS": {
-				"CURRENCYCODE": "Currency code",
-				"RECORDID": "Lodging type",
-				"PRICE": "Price"
-			},
-			"VALIDATION": {
-				"CURRENCYCODE": {
-					"REQUIRED": "Currency code is required"
-				},
-				"RECORDID": {
-					"REQUIRED": "Lodging type is required"
-				},
-				"PRICE": {
-					"REQUIRED": "Price is required"
-				}
-			}
-		},
-		"QUEUE": {
-			"ADDING": "Adding the lodging type price with the price: {{ price }}",
-			"UPDATING": "Updating the lodging type price with the price: {{ price }}",
-			"DELETING": "Deleting the lodging type price with the price: {{ price }}",
-			"ERROR": "An error occured with the lodging type price with the price: {{ price }}. Correct and try again."
-		}
-	},
 	"LODGING_TYPE_RESERVATION_PRICE_CHANGES": {
 		"CREATE": {
 			"CREATE": "Create",
@@ -2304,6 +2257,53 @@
 			"UPDATING": "Updating the lodging type reservation price change valid from/to: {{ dates }}",
 			"DELETING": "Deleting the lodging type reservation price change valid from/to: {{ dates }}",
 			"ERROR": "An error occured with the lodging type reservation price change valid from/to: {{ dates }}. Correct and try again."
+		}
+	},
+	"LODGING_TYPE_PRICES": {
+		"CREATE": {
+			"CREATE": "Create",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDIT": "Edit",
+			"BUTTON_EDIT": "Update"
+		},
+		"INDEX": {
+			"ACTIONS": "Actions",
+			"CREATE": "Create",
+			"DELETE": "Delete",
+			"MANAGE": "Manage",
+			"FIELDS": "Fields",
+			"BACK": "Back"
+		},
+		"FORM": {
+			"LABELS": {
+				"CURRENCYCODE": "Currency code",
+				"RECORDID": "Lodging type",
+				"PRICE": "Price"
+			},
+			"PLACEHOLDERS": {
+				"CURRENCYCODE": "Currency code",
+				"RECORDID": "Lodging type",
+				"PRICE": "Price"
+			},
+			"VALIDATION": {
+				"CURRENCYCODE": {
+					"REQUIRED": "Currency code is required"
+				},
+				"RECORDID": {
+					"REQUIRED": "Lodging type is required"
+				},
+				"PRICE": {
+					"REQUIRED": "Price is required"
+				}
+			}
+		},
+		"QUEUE": {
+			"ADDING": "Adding the lodging type price with the price: {{ price }}",
+			"UPDATING": "Updating the lodging type price with the price: {{ price }}",
+			"DELETING": "Deleting the lodging type price with the price: {{ price }}",
+			"ERROR": "An error occured with the lodging type price with the price: {{ price }}. Correct and try again."
 		}
 	},
 	"CONNECTIONS": {
