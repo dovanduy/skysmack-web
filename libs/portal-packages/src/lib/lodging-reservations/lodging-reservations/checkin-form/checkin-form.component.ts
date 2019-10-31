@@ -9,6 +9,7 @@ import { NgCheckinFieldsConfig } from '../../checkin-fields-config';
 import { switchMap } from 'rxjs/operators';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { LocalObject, toLocalObject } from '@skysmack/framework';
+import { FormHelper } from '@skysmack/ng-dynamic-forms';
 
 @Component({
   selector: 'ss-checkin-form',
@@ -32,6 +33,22 @@ export class CheckinFormComponent extends FormBaseComponent<LodgingReservationsA
   }
 
   protected setCreateFields() {
-      this.fields$ = this.loadedPackage$.pipe(switchMap(_package => this.fieldsConfig.getFields(_package, toLocalObject(new CheckIn({ reservationId: this.data.reservation.object.id, lodgingId: this.data.reservation.object.allocatedLodgingId, reservation: this.data.reservation.object })))));
+    this.fields$ = this.loadedPackage$.pipe(
+      switchMap(_package => this.fieldsConfig.getFields(_package, toLocalObject(new CheckIn({
+        reservationId: this.data.reservation.object.id,
+        lodgingId: this.data.reservation.object.allocatedLodgingId,
+        reservation: this.data.reservation.object
+      }))))
+    );
+  }
+
+  protected onSubmit(fh: FormHelper): void {
+    fh.formValid(() => {
+      const checkIn = this.extractFormValues(fh);
+      const entity = this.data.reservation;
+      checkIn.object.reservationId = entity.object.id;
+      this.actions.checkIn(this.packagePath, entity, [checkIn.object]);
+      this.editorNavService.hideEditorNav();
+    });
   }
 }

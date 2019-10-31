@@ -11,7 +11,7 @@ import { DocumentRecordIndexComponent } from '@skysmack/portal-fields';
 import { NgLodgingReservationsStore, NgLodgingReservationsActions } from '@skysmack/ng-lodging-reservations';
 import { NgFieldActions } from '@skysmack/ng-framework';
 import { MatDialog } from '@angular/material/dialog';
-import { take } from 'rxjs/operators';
+import { take, tap } from 'rxjs/operators';
 import { CheckinFormComponent } from '../checkin-form/checkin-form.component';
 
 @Component({
@@ -65,7 +65,7 @@ export class LodgingsReservationsIndexComponent extends DocumentRecordIndexCompo
     new MenuItem().asEventAction(`${this.translationPrefix}UNDONOSHOW`, this.undoNoShow, 'undo', this).setShowLogic((entity: LocalObject<LodgingReservation, number>) => {
       return EnumHelpers.toIndexEnum(LodgingReservation.statusEnum)[entity.object.status] === LodgingReservation.statusEnum.NoShow;
     }),
-    
+
     // Confirm
     new MenuItem().asEventAction(`${this.translationPrefix}CONFIRM`, this.confirm, 'check', this).setShowLogic((entity: LocalObject<LodgingReservation, number>) => {
       return EnumHelpers.toIndexEnum(LodgingReservation.statusEnum)[entity.object.status] === LodgingReservation.statusEnum.Processing;
@@ -123,8 +123,6 @@ export class LodgingsReservationsIndexComponent extends DocumentRecordIndexCompo
     _this.subscriptionHandler.register(_this.dialog.open(CheckinFormComponent, { data: { packagePath: _this.packagePath, reservation: entity } }).afterClosed().pipe(
       take(1)
     ).subscribe());
-
-    // _this.actions.checkIn(_this.packagePath, entity, [new CheckIn(checkIn)]);
   }
   public undoCheckin(_this: LodgingsReservationsIndexComponent, entity: LocalObject<LodgingReservation, number>) {
     _this.actions.undoCheckIn(_this.packagePath, entity, [entity.object.id]);
