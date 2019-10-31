@@ -9,12 +9,14 @@ import { PhonesTypeId } from '@skysmack/package-types';
 import { PhonesIndexComponent } from './phones/components/phones-index/phones-index.component';
 import { PhonesPermissions } from '@skysmack/packages-phones';
 import { PhoneLogsIndexComponent } from './phones-logs/components/phone-logs-index/phone-logs-index.component';
+import { PhoneNumbersIndexComponent } from './phones-numbers/components/phone-numbers-index/phone-numbers-index.component';
 
 @Injectable({ providedIn: 'root' })
 export class NgPhonesMenuProvider implements MenuProvider {
     public id = Guid.create().toString();
     private phoneTranslationPrefix = 'PHONES.INDEX.';
     private phoneLogsTranslationPrefix = 'PHONE_LOGS.INDEX.';
+    private phoneNumbersTranslationPrefix = 'PHONE_NUMBERS.INDEX.';
 
     constructor(
         private store: NgSkysmackStore,
@@ -37,6 +39,14 @@ export class NgPhonesMenuProvider implements MenuProvider {
                 PhoneLogsIndexComponent.COMPONENT_KEY,
                 this.getPhoneLogsIndexMenuAreas,
                 this.store
+            ),
+            getMenuEntries<MenuArea>(
+                packagePath,
+                PhonesTypeId,
+                componentKey,
+                PhoneNumbersIndexComponent.COMPONENT_KEY,
+                this.getPhoneLogsIndexMenuAreas,
+                this.store
             )
         );
     };
@@ -56,7 +66,15 @@ export class NgPhonesMenuProvider implements MenuProvider {
                 PhonesTypeId,
                 componentKey,
                 PhoneLogsIndexComponent.COMPONENT_KEY,
-                this.getPhoneLogsIndexMenuItems,
+                this.getPhoneNumbersIndexMenuItems,
+                this.store
+            ),
+            getMenuEntries<MenuItem>(
+                packagePath,
+                PhonesTypeId,
+                componentKey,
+                PhoneNumbersIndexComponent.COMPONENT_KEY,
+                this.getPhoneNumbersIndexMenuItems,
                 this.store
             )
         );
@@ -105,6 +123,17 @@ export class NgPhonesMenuProvider implements MenuProvider {
                     PhonesPermissions.findLogs
                 ],
                 providedIn: [SIDEBAR, SPEEDDIAL]
+            }),
+            new MenuItem({
+                url: 'numbers',
+                displayName: this.phoneTranslationPrefix + 'NUMBERS',
+                area: 'manage',
+                order: 2,
+                icon: 'add',
+                permissions: [
+                    PhonesPermissions.findPhoneNumbers
+                ],
+                providedIn: [SIDEBAR, SPEEDDIAL]
             })
         ];
     }
@@ -115,7 +144,12 @@ export class NgPhonesMenuProvider implements MenuProvider {
                 area: 'actions',
                 translationPrefix: this.phoneLogsTranslationPrefix,
                 order: 1
-            })
+            }),
+            new MenuArea({
+                area: 'manage',
+                translationPrefix: this.phoneTranslationPrefix,
+                order: 2
+            }),
         ];
     }
 
@@ -129,6 +163,38 @@ export class NgPhonesMenuProvider implements MenuProvider {
                 icon: 'add',
                 permissions: [
                     PhonesPermissions.addPhones
+                ],
+                providedIn: [SIDEBAR, SPEEDDIAL]
+            }),
+            setBackButton(packagePath)
+        ];
+    }
+
+    private getPhoneNumbersIndexMenuAreas = (): MenuArea[] => {
+        return [
+            new MenuArea({
+                area: 'actions',
+                translationPrefix: this.phoneNumbersTranslationPrefix,
+                order: 1
+            }),
+            new MenuArea({
+                area: 'manage',
+                translationPrefix: this.phoneTranslationPrefix,
+                order: 2
+            }),
+        ];
+    }
+
+    private getPhoneNumbersIndexMenuItems = (packagePath: string): MenuItem[] => {
+        return [
+            new MenuItem({
+                url: 'create',
+                displayName: this.phoneNumbersTranslationPrefix + 'CREATE',
+                area: 'actions',
+                order: 1,
+                icon: 'add',
+                permissions: [
+                    PhonesPermissions.addPhoneNumbers
                 ],
                 providedIn: [SIDEBAR, SPEEDDIAL]
             }),

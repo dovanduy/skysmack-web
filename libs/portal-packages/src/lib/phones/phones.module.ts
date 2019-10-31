@@ -13,6 +13,7 @@ import { SettingsModule } from '@skysmack/portal-settings';
 import { NgPhonesMenuProvider } from './ng-phones-menu-provider';
 import { phonesComponents } from './phones/components/phones-components';
 import { phoneLogsComponents } from './phones-logs/components/phone-logs-components';
+import { phoneNumbersComponents } from './phones-numbers/components/phone-numbers-components';
 
 @NgModule({
   imports: [
@@ -28,7 +29,8 @@ import { phoneLogsComponents } from './phones-logs/components/phone-logs-compone
   exports: [],
   declarations: [
     ...phonesComponents,
-    ...phoneLogsComponents
+    ...phoneLogsComponents,
+    ...phoneNumbersComponents
   ],
   entryComponents: [],
   providers: [

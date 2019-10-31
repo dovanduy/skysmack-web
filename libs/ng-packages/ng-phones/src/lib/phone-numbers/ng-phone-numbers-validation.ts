@@ -4,33 +4,19 @@ import { PHONE_NUMBERS_AREA_KEY } from '@skysmack/packages-phones';
 
 export class NgPhoneNumbersValidation extends Validation {
     public formErrors = {
-        sourceNumber: '',
-        destinationNumber: '',
-        started: '',
-        connected: '',
-        ended: '',
-        terminatedBySource: '',
-        sourcePhoneId: '',
-        sourdestinationPhoneIdceNumber: '',
+        number: '',
+        internal: '',
+        phoneId: '',
     };
 
     public validationMessages: StrIndex<{}> = {
-        sourceNumber: {
+        number: {
             required: ''
         },
-        destinationNumber: {
+        internal: {
             required: ''
         },
-        started: {
-            required: ''
-        },
-        connected: {
-            required: ''
-        },
-        ended: {
-            required: ''
-        },
-        terminatedBySource: {
+        phoneId: {
             required: ''
         }
     };

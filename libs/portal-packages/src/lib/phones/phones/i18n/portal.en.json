@@ -26,9 +26,9 @@
             "CREATE": "Create",
             "MANAGE": "Manage",
             "PHONES": "Phones",
-            "BACK": "Back",
-            "FIELDS_TITLE": "(fields)",
-            "TITLE_EXTRAS": "(phones)"
+            "LOGS": "Logs",
+            "NUMBERS": "Numbers",
+            "BACK": "Back"
         },
         "QUEUE": {
             "ADDING": "Adding {{ name }}",

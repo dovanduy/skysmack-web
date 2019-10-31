@@ -3,20 +3,20 @@ import { EntityComponentPageTitle, MENU_ITEM_ACTIONS_EDIT, MENU_ITEM_ACTIONS_DEL
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { RecordIndexComponent } from '@skysmack/portal-fields';
-import { PhoneLogsAppState, PhoneLog, PHONE_LOGS_AREA_KEY } from '@skysmack/packages-phones';
+import { PhoneNumbersAppState, PhoneNumber, PHONE_NUMBERS_AREA_KEY } from '@skysmack/packages-phones';
 import { MenuItem } from '@skysmack/framework';
-import { NgPhoneLogsStore, NgPhoneLogsActions } from '@skysmack/ng-phones';
-import { NgPhoneLogsFieldsConfig } from '../../ng-phone-logs-fields-config';
+import { NgPhoneNumbersStore, NgPhoneNumbersActions } from '@skysmack/ng-phones';
+import { NgPhoneNumbersFieldsConfig } from '../../ng-phone-numbers-fields-config';
 
 @Component({
-  selector: 'ss-portal-package-phone-logs-index',
-  templateUrl: './phone-logs-index.component.html'
+  selector: 'ss-portal-package-phone-numbers-index',
+  templateUrl: './phone-numbers-index.component.html'
 })
-export class PhoneLogsIndexComponent extends RecordIndexComponent<PhoneLogsAppState, PhoneLog, number> implements OnInit {
-  public static COMPONENT_KEY = 'phone-logs-index';
-  public componentKey = PhoneLogsIndexComponent.COMPONENT_KEY;
+export class PhoneNumbersIndexComponent extends RecordIndexComponent<PhoneNumbersAppState, PhoneNumber, number> implements OnInit {
+  public static COMPONENT_KEY = 'phone-numbers-index';
+  public componentKey = PhoneNumbersIndexComponent.COMPONENT_KEY;
 
-  public areaKey: string = PHONE_LOGS_AREA_KEY;
+  public areaKey: string = PHONE_NUMBERS_AREA_KEY;
   public titleExtras = true;
   public menuItemActions: MenuItem[] = [
     new MenuItem().asUrlAction('edit', MENU_ITEM_ACTIONS_EDIT, 'edit'),
@@ -28,9 +28,9 @@ export class PhoneLogsIndexComponent extends RecordIndexComponent<PhoneLogsAppSt
     public router: Router,
     public activatedRoute: ActivatedRoute,
     public skysmackStore: NgSkysmackStore,
-    public store: NgPhoneLogsStore,
-    public actions: NgPhoneLogsActions,
-    public fieldsConfig: NgPhoneLogsFieldsConfig,
+    public store: NgPhoneNumbersStore,
+    public actions: NgPhoneNumbersActions,
+    public fieldsConfig: NgPhoneNumbersFieldsConfig,
     public title: EntityComponentPageTitle,
     public menuItemActionProviders: MenuItemActionProviders,
   ) {

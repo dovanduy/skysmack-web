@@ -54,11 +54,9 @@
             "ACTIONS": "Actions",
             "CREATE": "Create",
             "MANAGE": "Manage",
-            "PHONES": "Phones",
             "LOGS": "Logs",
             "BACK": "Back",
-            "FIELDS_TITLE": "(fields)",
-            "TITLE_EXTRAS": "(phone-logs)"
+            "TITLE_EXTRAS": "(logs)"
         },
         "QUEUE": {
             "ADDING": "Adding {{ name }}",
