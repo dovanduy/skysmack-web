@@ -55,7 +55,7 @@ export class NgMoveFieldsConfig extends FieldsConfig<Move, number> {
 
         fields.push(new Field({
             component: LodgingSelectFieldComponent,
-            value: entity ? entity.object.lodgingId : undefined,
+            value: undefined, // Must be undefined.
             key: 'lodgingId',
             order: 4,
             showColumn: false,
