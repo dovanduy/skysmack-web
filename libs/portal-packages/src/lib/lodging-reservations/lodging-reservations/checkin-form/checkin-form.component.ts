@@ -32,6 +32,6 @@ export class CheckinFormComponent extends FormBaseComponent<LodgingReservationsA
   }
 
   protected setCreateFields() {
-      this.fields$ = this.loadedPackage$.pipe(switchMap(_package => this.fieldsConfig.getFields(_package, toLocalObject(new CheckIn({ reservationId: this.data.reservation.object.id, lodgingId: this.data.reservation.object.allocatedLodgingId, reservation: this.data.reservation.object })))));
+      this.fields$ = this.loadedPackage$.pipe(switchMap(_package => this.fieldsConfig.getFields(_package, toLocalObject(new CheckIn({ reservationId: this.data.reservation.object.id, lodgingId: this.data.reservation.object.lodgingId, reservation: this.data.reservation.object })))));
   }
 }

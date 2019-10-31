@@ -10,8 +10,8 @@ import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 export class NgLodgingReservationsStore extends NgRecordStore<LodgingReservationsAppState, LodgingReservation, number> {
     private deps = [
         new DependencyOptions({
-            relationSelector: 'allocatedLodging',
-            relationIdSelector: 'allocatedLodgingId',
+            relationSelector: 'lodging',
+            relationIdSelector: 'lodgingId',
             stateSelector: 'lodgings',
             dependencyIndexes: [0]
         }),

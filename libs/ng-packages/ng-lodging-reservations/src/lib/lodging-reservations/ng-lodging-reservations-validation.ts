@@ -5,7 +5,7 @@ import { LODGING_RESERVATIONS_AREA_KEY } from '@skysmack/packages-lodging-reserv
 export class NgLodgingReservationsValidation extends Validation {
     public formErrors = {
         lodgingTypeId: '',
-        allocatedLodgingId: '',
+        lodgingId: '',
         checkIn: '',
         checkOut: '',
         stays: '',

@@ -107,8 +107,8 @@ export class LodgingsReservationsIndexComponent extends DocumentRecordIndexCompo
 
   public confirm(_this: LodgingsReservationsIndexComponent, entity: LocalObject<LodgingReservation, number>) {
     // let checkIn;
-    // if (entity.object.allocatedLodgingId && entity.object.allocatedLodgingId > 0) {
-    //   checkIn = { reservationId: entity.object.id, lodgingId: entity.object.allocatedLodgingId };
+    // if (entity.object.lodgingId && entity.object.lodgingId > 0) {
+    //   checkIn = { reservationId: entity.object.id, lodgingId: entity.object.lodgingId };
     // } else {
     //   checkIn = { reservationId: entity.object.id };
     // }
