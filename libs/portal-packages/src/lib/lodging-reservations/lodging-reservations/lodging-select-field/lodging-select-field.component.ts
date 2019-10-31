@@ -18,7 +18,6 @@ import { getPackageDendencyAsStream } from '@skysmack/ng-framework';
   styleUrls: ['./lodging-select-field.component.scss']
 })
 export class LodgingSelectFieldComponent extends FieldBaseComponent<Field> implements OnInit {
-  private lodgingTypeForm = this.fh.form.get('lodgingTypeId');
   public selectedLodging: LocalObject<Lodging, number>;
   public lodgingTypeSelected$: Observable<boolean>;
 
@@ -43,7 +42,7 @@ export class LodgingSelectFieldComponent extends FieldBaseComponent<Field> imple
       { 
         from: this.fh.form.get('checkIn').value, 
         to: this.fh.form.get('checkOut').value, 
-        lodgingTypeId: this.lodgingTypeForm.value, 
+        lodgingTypeId: this.fh.form.get('lodgingTypeId').value, 
         lodgingId: this.getFieldValue() 
       } 
     }).afterClosed().pipe(
@@ -65,10 +64,10 @@ export class LodgingSelectFieldComponent extends FieldBaseComponent<Field> imple
   }
 
   private setlodgingTypeSelected$() {
-    this.lodgingTypeSelected$ = this.lodgingTypeForm.valueChanges.pipe(
+    this.lodgingTypeSelected$ = this.fh.form.get('lodgingTypeId').valueChanges.pipe(
       startWith(''),
       map(() => {
-        const lodgingTypeId = this.lodgingTypeForm.value;
+        const lodgingTypeId = this.fh.form.get('lodgingTypeId').value;
         return lodgingTypeId && Number.isInteger(lodgingTypeId);
       })
     );
