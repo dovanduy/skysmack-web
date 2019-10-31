@@ -6,8 +6,8 @@ export class LodgingReservation extends DocumentRecord<number> {
     public lodgingTypeId: number;
     public lodgingType: LocalObject<LodgingType, number>;
 
-    public allocatedLodgingId?: number;
-    public allocatedLodging: LocalObject<Lodging, number>;
+    public lodgingId?: number;
+    public lodging: LocalObject<Lodging, number>;
 
     public checkIn: Date;
     public checkOut: Date;

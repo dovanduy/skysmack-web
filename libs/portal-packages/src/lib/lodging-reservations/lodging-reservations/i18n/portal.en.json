@@ -15,7 +15,7 @@
         "FORM": {
             "LABELS": {
                 "LODGINGTYPEID": "Lodging type",
-                "ALLOCATEDLODGINGID": "Allocated lodging",
+                "LODGINGID": "Allocated lodging",
                 "CHECKIN": "Check in",
                 "CHECKOUT": "Check out",
                 "PERSONS": "Persons",
@@ -23,7 +23,7 @@
             },
             "PLACEHOLDERS": {
                 "LODGINGTYPEID": "Choose lodging type",
-                "ALLOCATEDLODGINGID": "Choose allocated lodging",
+                "LODGINGID": "Choose allocated lodging",
                 "CHECKIN": "Choose check in date",
                 "CHECKOUT": "Choose check out date",
                 "PERSONS": "Choose number of persons",
@@ -33,7 +33,7 @@
                 "LODGINGTYPEID": {
                     "REQUIRED": "Lodging type is required."
                 },
-                "ALLOCATEDLODGINGID": {
+                "LODGINGID": {
                     "REQUIRED": "Allocated room is required."
                 },
                 "CHECKIN": {

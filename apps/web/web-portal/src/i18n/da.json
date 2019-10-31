@@ -1017,7 +1017,7 @@
 		"FORM": {
 			"LABELS": {
 				"LODGINGTYPEID": "Rum type",
-				"ALLOCATEDLODGINGID": "Tildelt rum",
+				"LODGINGID": "Tildelt rum",
 				"CHECKIN": "Tjek ind",
 				"CHECKOUT": "Tjek ud",
 				"PERSONS": "Personer",
@@ -1025,7 +1025,7 @@
 			},
 			"PLACEHOLDERS": {
 				"LODGINGTYPEID": "Indtast rum type",
-				"ALLOCATEDLODGINGID": "Indtast tildelt rum",
+				"LODGINGID": "Indtast tildelt rum",
 				"CHECKIN": "Indtast tjek ind",
 				"CHECKOUT": "Indtast tjek ud",
 				"PERSONS": "Indtast personer",
@@ -1035,7 +1035,7 @@
 				"LODGINGTYPEID": {
 					"REQUIRED": "Rum type er påkrævet."
 				},
-				"ALLOCATEDLODGINGID": {
+				"LODGINGID": {
 					"REQUIRED": "Tildelt rum er påkrævet."
 				},
 				"CHECKIN": {

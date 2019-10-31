@@ -91,9 +91,9 @@ export class NgLodgingReservationsFieldsConfig extends DocumentFieldsConfig<Lodg
             }),
             new Field({
                 component: LodgingSelectFieldComponent,
-                value: entity ? entity.object.allocatedLodgingId : undefined,
-                key: 'allocatedLodgingId',
-                displayKey: 'allocatedLodging',
+                value: entity ? entity.object.lodgingId : undefined,
+                key: 'lodgingId',
+                displayKey: 'lodging',
                 displaySubKey: 'object.name',
                 order: 4,
                 showColumn: true,
