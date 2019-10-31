@@ -1093,6 +1093,11 @@
 			"UNDOMOVE": "Undo move",
 			"NOSHOW": "No show",
 			"UNDONOSHOW": "Undo no show"
+		},
+		"CHECKIN": {
+			"TITLE": "New checkin",
+			"CHECKIN": "Checkin",
+			"CANCEL": "Cancel"
 		}
 	},
 	"LODGING_RESERVATIONS_SETTINGS": {
@@ -1120,11 +1125,6 @@
 				}
 			}
 		}
-	},
-	"CHECKIN_DIALOG": {
-		"TITLE": "New checkin",
-		"CHECKIN": "Checkin",
-		"CANCEL": "Cancel"
 	},
 	"LODGING_SELECT_FIELD": {
 		"SELECT_LODGING": "Select lodging"
@@ -1695,45 +1695,6 @@
 			"ERROR": "An error occured with {{ description }}. Correct and try again."
 		}
 	},
-	"PRODUCT_TYPES": {
-		"CREATE": {
-			"CREATE": "Create",
-			"BUTTON_CREATE": "Create"
-		},
-		"EDIT": {
-			"EDIT": "Edit",
-			"BUTTON_EDIT": "Update"
-		},
-		"INDEX": {
-			"TITLE_EXTRAS": "(types)",
-			"ACTIONS": "Actions",
-			"CREATE": "Create",
-			"DELETE": "Delete",
-			"MANAGE": "Manage",
-			"FIELDS": "Fields",
-			"FIELDS_TITLE": "(type fields)",
-			"BACK": "Back"
-		},
-		"FORM": {
-			"LABELS": {
-				"NAME": "Name"
-			},
-			"PLACEHOLDERS": {
-				"NAME": "Enter name"
-			},
-			"VALIDATION": {
-				"NAME": {
-					"REQUIRED": "Name is required."
-				}
-			}
-		},
-		"QUEUE": {
-			"ADDING": "Adding {{ name }}",
-			"UPDATING": "Updating {{ name }}",
-			"DELETING": "Deleting {{ name }}",
-			"ERROR": "An error occured with {{ name }}. Correct and try again."
-		}
-	},
 	"PRODUCTS": {
 		"FORM": {
 			"LABELS": {
@@ -1784,6 +1745,45 @@
 				"TYPES": "Types",
 				"FIELDS": "Fields",
 				"BACK": "Back"
+			}
+		},
+		"QUEUE": {
+			"ADDING": "Adding {{ name }}",
+			"UPDATING": "Updating {{ name }}",
+			"DELETING": "Deleting {{ name }}",
+			"ERROR": "An error occured with {{ name }}. Correct and try again."
+		}
+	},
+	"PRODUCT_TYPES": {
+		"CREATE": {
+			"CREATE": "Create",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDIT": "Edit",
+			"BUTTON_EDIT": "Update"
+		},
+		"INDEX": {
+			"TITLE_EXTRAS": "(types)",
+			"ACTIONS": "Actions",
+			"CREATE": "Create",
+			"DELETE": "Delete",
+			"MANAGE": "Manage",
+			"FIELDS": "Fields",
+			"FIELDS_TITLE": "(type fields)",
+			"BACK": "Back"
+		},
+		"FORM": {
+			"LABELS": {
+				"NAME": "Name"
+			},
+			"PLACEHOLDERS": {
+				"NAME": "Enter name"
+			},
+			"VALIDATION": {
+				"NAME": {
+					"REQUIRED": "Name is required."
+				}
 			}
 		},
 		"QUEUE": {
@@ -3080,6 +3080,16 @@
 			"DELETING": "Deleting settings",
 			"ERROR": "An error occured with settings. Correct and try again."
 		}
+	},
+	"CHECKIN": {
+		"TITLE": "New checkin",
+		"CHECKIN": "Checkin",
+		"CANCEL": "Cancel"
+	},
+	"CHECKIN_DIALOG": {
+		"TITLE": "New checkin",
+		"CHECKIN": "Checkin",
+		"CANCEL": "Cancel"
 	},
 	"ACCOUNTS": {
 		"FORM": {

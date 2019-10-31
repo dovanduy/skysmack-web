@@ -91,6 +91,11 @@
             "UNDOMOVE": "Undo move",
             "NOSHOW": "No show",
             "UNDONOSHOW": "Undo no show"
+        },
+        "CHECKIN": {
+            "TITLE": "New checkin",
+            "BUTTON_CHECKIN": "Checkin",
+            "CANCEL": "Cancel"
         }
     },
     "LODGING_RESERVATIONS_SETTINGS": {
@@ -118,11 +123,6 @@
                 }
             }
         }
-    },
-    "CHECKIN_DIALOG": {
-        "TITLE": "New checkin",
-        "CHECKIN": "Checkin",
-        "CANCEL": "Cancel"
     },
     "LODGING_SELECT_FIELD": {
         "SELECT_LODGING": "Select lodging"
