@@ -19,7 +19,8 @@
                 "CHECKIN": "Check in",
                 "CHECKOUT": "Check out",
                 "PERSONS": "Persons",
-                "STATUS": "Status"
+                "STATUS": "Status",
+                "ALLOWOVERBOOKING": "Allow overbooking"
             },
             "PLACEHOLDERS": {
                 "LODGINGTYPEID": "Choose lodging type",
@@ -27,7 +28,8 @@
                 "CHECKIN": "Choose check in date",
                 "CHECKOUT": "Choose check out date",
                 "PERSONS": "Choose number of persons",
-                "STATUS": "Status"
+                "STATUS": "Status",
+                "ALLOWOVERBOOKING": "Allow overbooking"
             },
             "VALIDATION": {
                 "LODGINGTYPEID": {
@@ -105,6 +107,11 @@
         "CHECKOUT": {
             "TITLE": "Checkout",
             "BUTTON_MOVE": "Checkout",
+            "CANCEL": "Cancel"
+        },
+        "CONFIRM_RESERVATION": {
+            "TITLE": "Confirm reservation",
+            "BUTTON": "Confirm reservation",
             "CANCEL": "Cancel"
         }
     },

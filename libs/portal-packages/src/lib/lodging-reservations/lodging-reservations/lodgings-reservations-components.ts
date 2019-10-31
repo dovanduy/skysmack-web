@@ -19,6 +19,7 @@ import { InStayDashboardComponent } from './in-stay-dashboard/in-stay-dashboard.
 import { CheckinFormComponent } from './checkin-form/checkin-form.component';
 import { MoveFormComponent } from './move-form/move-form.component';
 import { CheckoutFormComponent } from './checkout-form/checkout-form.component';
+import { ConfirmReservationDialogComponent } from './confirm-reservation-dialog/confirm-reservation-dialog.component';
 
 const lodgingReservationChildrenRoutes = [
     { path: 'create', component: LodgingsReservationsCreateComponent, pathMatch: 'full' },
@@ -60,7 +61,8 @@ export const lodgingReservationsComponents: any[] = [
     LodgingSelectDialogComponent,
     CheckinFormComponent,
     MoveFormComponent,
-    CheckoutFormComponent
+    CheckoutFormComponent,
+    ConfirmReservationDialogComponent
 ];
 
 export const lodgingReservationsEntryComponents: any[] = [
@@ -73,5 +75,6 @@ export const lodgingReservationsEntryComponents: any[] = [
     LodgingSelectDialogComponent,
     CheckinFormComponent,
     MoveFormComponent,
-    CheckoutFormComponent
+    CheckoutFormComponent,
+    ConfirmReservationDialogComponent
 ];

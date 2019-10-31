@@ -8,7 +8,7 @@ import { of } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { FormRule, Field, SelectField } from '@skysmack/ng-dynamic-forms';
 import { FieldProviders } from '@skysmack/ng-fields';
-import { SelectFieldComponent, DateFieldComponent, IntFieldComponent, HiddenFieldComponent, DocumentFieldsConfig, DateTimeFieldComponent, StringFieldComponent } from '@skysmack/portal-fields';
+import { SelectFieldComponent, DateFieldComponent, IntFieldComponent, HiddenFieldComponent, DocumentFieldsConfig, DateTimeFieldComponent, StringFieldComponent, CheckboxFieldComponent } from '@skysmack/portal-fields';
 import { NgLodgingReservationsValidation } from '@skysmack/ng-lodging-reservations';
 import { LodgingTypeSelectFieldComponent } from './lodging-reservations/lodging-type-select-field/lodging-type-select-field.component';
 import { LodgingSelectFieldComponent } from './lodging-reservations/lodging-select-field/lodging-select-field.component';
@@ -131,11 +131,19 @@ export class NgLodgingReservationsFieldsConfig extends DocumentFieldsConfig<Lodg
                 permissions: ['SkipProcessingStatus'],
                 sortable: true
             }));
+
+            fields.push(new Field({
+                component: CheckboxFieldComponent,
+                key: 'allowOverbooking',
+                order: 6,
+                permissions: ['overbooking'],
+                sortable: true
+            }));
         }
 
         fields.push(new Field({
             component: StringFieldComponent,
-            value: entity ? entity.object.status : 0, 
+            value: entity ? entity.object.status : 0,
             key: 'status',
             order: 5,
             sortable: true,

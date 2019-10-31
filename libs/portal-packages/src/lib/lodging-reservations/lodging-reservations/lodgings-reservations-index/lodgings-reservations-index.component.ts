@@ -15,6 +15,7 @@ import { take, tap } from 'rxjs/operators';
 import { CheckinFormComponent } from '../checkin-form/checkin-form.component';
 import { MoveFormComponent } from '../move-form/move-form.component';
 import { CheckoutFormComponent } from '../checkout-form/checkout-form.component';
+import { ConfirmReservationDialogComponent } from '../confirm-reservation-dialog/confirm-reservation-dialog.component';
 
 @Component({
   selector: 'ss-lodgings-reservations-index',
@@ -108,14 +109,9 @@ export class LodgingsReservationsIndexComponent extends DocumentRecordIndexCompo
   }
 
   public confirm(_this: LodgingsReservationsIndexComponent, entity: LocalObject<LodgingReservation, number>) {
-    // let checkIn;
-    // if (entity.object.lodgingId && entity.object.lodgingId > 0) {
-    //   checkIn = { reservationId: entity.object.id, lodgingId: entity.object.lodgingId };
-    // } else {
-    //   checkIn = { reservationId: entity.object.id };
-    // }
-
-    // _this.actions.confirm(_this.packagePath, entity, [new CheckIn(checkIn)]);
+    _this.subscriptionHandler.register(_this.dialog.open(ConfirmReservationDialogComponent, { data: { packagePath: _this.packagePath, reservation: entity } }).afterClosed().pipe(
+      take(1)
+    ).subscribe());
   }
   public undoConfirm(_this: LodgingsReservationsIndexComponent, entity: LocalObject<LodgingReservation, number>) {
     // _this.actions.undoConfirm(_this.packagePath, entity, [entity.object.id]);

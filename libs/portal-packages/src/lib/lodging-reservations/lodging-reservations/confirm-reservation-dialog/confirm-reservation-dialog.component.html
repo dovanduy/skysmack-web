@@ -1,0 +1,5 @@
+<ss-dynamic-form *ngIf="fields$" [fields$]="fields$" [validation]="fieldsConfig.validation"
+  [rules]="fieldsConfig.formRules" [buttonText]="'LODGING_RESERVATIONS.CONFIRM_RESERVATION.BUTTON' | translate"
+  (submitted)="onSubmit($event)">
+  <h2 [translate]="'LODGING_RESERVATIONS.CONFIRM_RESERVATION.TITLE'"></h2>
+</ss-dynamic-form>
