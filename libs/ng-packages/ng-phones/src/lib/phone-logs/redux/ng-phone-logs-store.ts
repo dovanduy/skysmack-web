@@ -31,6 +31,6 @@ export class NgPhoneLogsStore extends NgRecordStore<PhoneLogsAppState, PhoneLog,
     }
 
     public getSingle(packagePath: string, id: number): Observable<LocalObject<PhoneLog, number>> {
-        return this.getSingleWithDependency(packagePath, id, this.deps);
+        return this.getSingleWithDependencies(packagePath, id, this.deps);
     }
 }

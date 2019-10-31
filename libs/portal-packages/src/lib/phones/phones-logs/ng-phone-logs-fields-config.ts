@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
-import { FormRule, CustomValidators, Field, SelectField } from '@skysmack/ng-dynamic-forms';
+import { FormRule, Field, SelectField } from '@skysmack/ng-dynamic-forms';
 import { LocalObject, LocalObjectStatus, PagedQuery } from '@skysmack/framework';
 import { PhoneLog, PHONE_LOGS_AREA_KEY, PHONE_LOGS_ADDITIONAL_PATHS } from '@skysmack/packages-phones';
 import { LoadedPackage } from '@skysmack/ng-framework';
 import { FieldsConfig, FieldProviders } from '@skysmack/ng-fields';
-import { HiddenFieldComponent, StringFieldComponent, DateFieldComponent, CheckboxFieldComponent, SelectFieldComponent } from '@skysmack/portal-fields';
+import { HiddenFieldComponent, StringFieldComponent, CheckboxFieldComponent, SelectFieldComponent, DateTimeFieldComponent } from '@skysmack/portal-fields';
 import { NgPhoneLogsValidation, NgPhonesActions, NgPhonesStore } from '@skysmack/ng-phones';
 
 @Injectable({ providedIn: 'root' })
@@ -43,7 +43,7 @@ export class NgPhoneLogsFieldsConfig extends FieldsConfig<PhoneLog, number> {
                 sortable: true
             }),
             new Field({
-                component: DateFieldComponent,
+                component: DateTimeFieldComponent,
                 value: entity ? entity.object.started : undefined,
                 key: 'started',
                 validators: [Validators.required],
@@ -52,7 +52,7 @@ export class NgPhoneLogsFieldsConfig extends FieldsConfig<PhoneLog, number> {
                 sortable: true
             }),
             new Field({
-                component: DateFieldComponent,
+                component: DateTimeFieldComponent,
                 value: entity ? entity.object.connected : undefined,
                 key: 'connected',
                 validators: [Validators.required],
@@ -61,7 +61,7 @@ export class NgPhoneLogsFieldsConfig extends FieldsConfig<PhoneLog, number> {
                 sortable: true
             }),
             new Field({
-                component: DateFieldComponent,
+                component: DateTimeFieldComponent,
                 value: entity ? entity.object.ended : undefined,
                 key: 'ended',
                 validators: [Validators.required],
