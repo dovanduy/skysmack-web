@@ -1,0 +1,94 @@
+cdk-virtual-scroll-viewport {
+  height: calc(100vh - 250px);
+  width: 100%;
+}
+
+mat-card {
+  padding: 0;
+}
+
+.border-left {
+  border-left: 1px solid rgba(0, 0, 0, 0.12);
+}
+.border-left-light {
+    border-left: 1px solid rgba(0,0,0,0.03);
+  }
+
+.border-right {
+  border-right: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.border-right-light {
+    border-right: 1px solid rgba(0,0,0,0.03);
+}
+
+.row-weekday-1 .table-cell {
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.row-weekday-0 .table-cell, .row-weekday-6 .table-cell {
+  background-color: rgba(0,0,0,.02);
+}
+
+table.mat-table {
+  background-color: transparent;
+  min-width: 100%;
+
+  thead tr {
+    height: 56px;
+
+    th.table-cell {
+      display: table-cell;
+      vertical-align: bottom;
+      text-align: left;
+      white-space: nowrap;
+
+      .th-flex {
+        display: flex;
+        align-items: center;
+      }
+
+      &.action-buttons {
+        text-align: right;
+      }
+    }
+  }
+
+  tbody tr:first-child .table-cell {
+    border-top: 1px solid rgba(0,0,0, 0.12);
+  }
+
+  .table-cell {
+    padding: 8px 16px;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    white-space: nowrap;
+
+    &.sortable {
+      transition: color 50ms ease;
+
+      i {
+        transition: color 50ms ease;
+        font-size: 12px;
+        margin-left: 6px;
+
+        &.white {
+          color: #fff;
+        }
+      }
+
+      &:hover {
+        color: rgba(0, 0, 0, 1);
+        cursor: pointer;
+
+        i.white {
+          color: rgba(82, 82, 82, 0.87);
+        }
+      }
+    }
+  }
+}
+
+.entity-row {
+  height: 57px;
+}

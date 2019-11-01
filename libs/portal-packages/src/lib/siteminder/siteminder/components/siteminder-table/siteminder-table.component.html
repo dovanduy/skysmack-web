@@ -1,17 +1,45 @@
 <ng-container *ngIf="uiOptions">
-  <!-- Filters -->
-  <ul>
-    <li>Hide rates: {{ uiOptions.hideRates.toString() }} - <span style="cursor:pointer;"
-        (click)="testUpdate('rates', !uiOptions.hideRates)">toggle</span>
-    </li>
-    <li>Hide restrictions: {{ uiOptions.hideRestrictions.toString() }} - <span style="cursor:pointer;"
-        (click)="testUpdate('restrictions', !uiOptions.hideRestrictions)">toggle</span></li>
-    <li>Hide all section: {{ uiOptions.hideAll.toString() }} - <span style="cursor:pointer;"
-        (click)="testUpdate('all', !uiOptions.hideAll)">toggle</span></li>
-    <li>Hide availability: {{ uiOptions.hideAvailability.toString() }} - <span style="cursor:pointer;"
-        (click)="testUpdate('availability', !uiOptions.hideAvailability)">toggle</span></li>
-  </ul>
+  <div style="float:right;position:relative;top:-54px; height: 0; right: 16px">      
+      <button mat-icon-button matTooltip="Show/hide all overview" (click)="testUpdate('all', !uiOptions.hideAll)">
+        <mat-icon>{{ uiOptions.hideAll ? 'grid_off' : 'grid_on' }}</mat-icon>
+      </button>
+      <button mat-icon-button matTooltip="Show/hide rates" (click)="testUpdate('rates', !uiOptions.hideRates)">
+        <mat-icon>{{ uiOptions.hideRates ? 'money_off' : 'attach_money' }}</mat-icon>
+      </button>
+      <button mat-icon-button matTooltip="Show/hide restrictions" (click)="testUpdate('restrictions', !uiOptions.hideRestrictions)">
+        <mat-icon>{{ uiOptions.hideRestrictions ? 'report_off' : 'report' }}</mat-icon>
+      </button>
+      <button mat-icon-button matTooltip="Show/hide availability" (click)="testUpdate('availability', !uiOptions.hideAvailability)">
+        <mat-icon>{{ uiOptions.hideAvailability ? 'label_off' : 'label' }}</mat-icon>
+      </button>
+  </div>
 
+
+  <!-- Table -->
+  <ng-container *ngIf="lodgingColumns$ | async as lodgingColumns">
+      <mat-card>
+        <cdk-virtual-scroll-viewport #entityList id="entity-list" itemSize="40" (scrolledIndexChange)="whenScrolling()">
+          <table cellspacing="0" cellpadding="0" class="mat-table">
+            <thead class="mat-header-row">
+              <!-- 1st header row -->
+              <tr>
+                <!-- Date -->
+                <th rowspan="4" class="table-cell mat-header-cell border-right">
+                  {{ 'Date' | translate }}
+                </th>
+                <ng-container *ngFor="let lodgingColumn of lodgingColumns; let first = first; let last = last">
+                  <!-- Lodging Type -->
+                  <th [attr.colspan]="lodgingColumn.rateplans.length + (uiOptions.hideAll ? 0 : 1)"
+                    class="table-cell mat-header-cell lodging-type-column-divider border-left border-right">
+                    {{ lodgingColumn.title }}
+                  </th>
+                </ng-container>
+              </tr>
+            </thead>
+          </table>
+        </cdk-virtual-scroll-viewport>
+      </mat-card>
+  </ng-container>
 
   <!-- Table -->
   <ng-container *ngIf="columns$ | async as columns">

@@ -1,4 +1,85 @@
 <ss-container [componentKey]="componentKey" *ngIf="loadedPackage$ | async as loadedPackage">
-    <h1>SiteMinder</h1>
-    <ss-siteminder-table></ss-siteminder-table>
+    <ng-container *ngIf="uiOptions">
+        <div style="float:right;position:absolute;top: 16px; height: 0; right: 16px;z-index:1">
+            <button mat-icon-button matTooltip="Show/hide all overview" (click)="toggleAll()">
+                <mat-icon>{{ uiOptions.hideAll ? 'grid_off' : 'grid_on' }}</mat-icon>
+            </button>
+            <button mat-icon-button matTooltip="Show/hide rates" (click)="toggleRates()">
+                <mat-icon>{{ uiOptions.hideRates ? 'money_off' : 'attach_money' }}</mat-icon>
+            </button>
+            <button mat-icon-button matTooltip="Show/hide restrictions" (click)="toggleRestrictions()">
+                <mat-icon>{{ uiOptions.hideRestrictions ? 'report_off' : 'report' }}</mat-icon>
+            </button>
+            <button mat-icon-button matTooltip="Show/hide availability" (click)="toggleAvailability()">
+                <mat-icon>{{ uiOptions.hideAvailability ? 'label_off' : 'label' }}</mat-icon>
+            </button>
+        </div>
+
+        <!-- Table -->
+        <ng-container *ngIf="lodgingColumns$ | async as lodgingColumns">
+            <mat-card>
+
+                <table cellspacing="0" cellpadding="0" class="mat-table">
+                    <thead class="mat-header-row">
+                        <!-- 1st header row -->
+                        <tr>
+                            <!-- Date -->
+                            <th rowspan="3" class="table-cell mat-header-cell border-right">
+                                {{ 'Date' | translate }}
+                            </th>
+                            <!-- Lodging Type -->
+                            <th *ngFor="let lodgingColumn of lodgingColumns; let first = first; let last = last"
+                                [attr.colspan]="lodgingColumn.getRateChannelSize() + (uiOptions.hideAvailability ? 0 : 1) + (uiOptions.hideAll || (uiOptions.hideRates && uiOptions.hideRestrictions) ? 0 : lodgingColumn.rateplans.length * 1)"
+                                class="table-cell mat-header-cell lodging-type-column-divider border-left border-right">
+                                {{ lodgingColumn.title }}
+                            </th>
+                        </tr>
+
+                        <!-- 2nd header row -->
+                        <tr>
+                            <ng-container *ngFor="let lodgingColumn of lodgingColumns">
+                                <!-- Available -->
+                                <th *ngIf="!uiOptions.hideAvailability" rowspan="2"
+                                    class="table-cell mat-header-cell border-left border-right">
+                                    Availability
+                                </th>
+                                <!-- Rateplan -->
+                                <th *ngFor="let rateplanColumn of lodgingColumn.rateplans; let first = first; let last = last"
+                                    [attr.colspan]="(uiOptions.hideAll || (uiOptions.hideRates && uiOptions.hideRestrictions) ? 0 : 1) + (rateplanColumn.channels?.length ? rateplanColumn.channels.length : 0)" class="table-cell mat-header-cell border-right">
+                                    {{ rateplanColumn.title }}
+                                </th>
+                            </ng-container>
+                        </tr>
+
+                        <!-- 3rd header row -->
+                        <tr>
+                            <ng-container *ngFor="let lodgingColumn of lodgingColumns">
+                                <!-- Rateplan -->
+                                <ng-container *ngFor="let rateplanColumn of lodgingColumn.rateplans">
+                                    <!-- All section -->
+                                    <ng-container *ngIf="!(uiOptions.hideAll || (uiOptions.hideRates && uiOptions.hideRestrictions))">
+                                        <th [attr.colspan]="1"
+                                            class="table-cell mat-header-cell border-right-light">
+                                            All
+                                        </th>
+                                    </ng-container>
+
+                                    <!-- Channels (show if expanded) -->
+                                    <ng-container *ngFor="let channelColumn of rateplanColumn.channels; let first = first; let last = last">
+                                            <th [attr.colspan]="1"
+                                                [ngClass]="{ 'border-right-light': !last }"
+                                                class="table-cell mat-header-cell border-right">
+                                                {{ channelColumn.title }}
+                                            </th>
+                                        </ng-container>
+                                </ng-container>
+                            </ng-container>
+                        </tr>
+                    </thead>
+                </table>
+
+            </mat-card>
+        </ng-container>
+
+    </ng-container>
 </ss-container>

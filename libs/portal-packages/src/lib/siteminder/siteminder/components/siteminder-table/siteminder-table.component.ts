@@ -8,6 +8,7 @@ import { map, distinctUntilChanged, tap, share, debounceTime } from 'rxjs/operat
 import { UiOptions, Columns, Cells } from './table-objects';
 import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
 import { SiteMinderColumn } from '../../../models/siteminder-column';
+import { LodgingColumn } from '../../../models/lodging-column';
 
 @Component({
   selector: 'ss-siteminder-table',
@@ -22,6 +23,9 @@ export class SiteMinderTableComponent implements OnInit, OnDestroy {
   private end = new Date();
 
   @ViewChild('entityList', { static: true }) public entityList: CdkVirtualScrollViewport;
+
+  // NEW
+  public lodgingColumns$: Observable<LodgingColumn>;
 
   // Colspan
   public lodgingTypeColspan$: Observable<number>;
@@ -58,6 +62,9 @@ export class SiteMinderTableComponent implements OnInit, OnDestroy {
       hideRatePlans: [],
       hideLodgingTypes: []
     });
+
+    
+    // this.lodgingColumns$ = this.getLodgingTypesStream(packagePath);
 
     // Filters
     let count = 0;
