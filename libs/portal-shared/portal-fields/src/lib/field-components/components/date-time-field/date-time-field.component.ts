@@ -68,6 +68,9 @@ export class DateTimeFieldComponent extends FieldBaseComponent<Field> implements
     this.subscriptionHandler.register(fromEvent(this.dateInput.nativeElement, 'input').pipe(
       map(() => this.dateChanged())
     ).subscribe());
+    this.subscriptionHandler.register(this.fh.form.get(this.fieldKey).valueChanges.pipe(
+      map(() => this.updatePickerFields())
+    ).subscribe());
   }
 
   private timeChanged(input: string = '') {

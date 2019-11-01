@@ -10,7 +10,7 @@ import { RecurringExpressionFieldComponent } from './field-components/components
 import { ValidatorsFieldComponent } from './field-components/components/validators-field/validators-field.component';
 import { RecurringExpressionFieldModule } from './field-components/components/recurring-expression-field/recurring-expression-field.module';
 import { ValidatorsFieldModule } from './field-components/components/validators-field/validators-field.module';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { DynamicFormsModule } from '@skysmack/portal-dynamic-forms';
 import { AngularEditorModule } from '@kolkov/angular-editor';
 
@@ -20,7 +20,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { NgFieldsMenuProvider } from './ng-fields-menu-provider';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSelectModule } from '@angular/material/select';
-import {MatListModule} from '@angular/material/list';
+import { MatListModule } from '@angular/material/list';
 
 const material = [
   MatCheckboxModule,

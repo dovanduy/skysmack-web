@@ -18,7 +18,7 @@ export class NgLodgingReservationsFieldsConfig extends DocumentFieldsConfig<Lodg
     public area = LODGING_RESERVATIONS_AREA_KEY;
     public validation = new NgLodgingReservationsValidation();
     public formRules: FormRule[] = [
-        new AddDaysRule(['checkIn'], 'checkIn', 'checkOut', 1)
+        new AddDaysRule(['checkIn'], 'checkIn', 'checkOut', 'date', 1)
     ];
 
     constructor(
@@ -36,47 +36,51 @@ export class NgLodgingReservationsFieldsConfig extends DocumentFieldsConfig<Lodg
         const fields: Field[] = [];
 
         if (entity && entity.status !== LocalObjectStatus.CREATING) {
-            fields.push(...[new Field({
-                component: DateTimeFieldComponent,
-                value: entity.object.checkIn,
-                key: 'checkIn',
-                validators: [Validators.required],
-                order: 3,
-                showColumn: true,
-                sortable: true
-            }),
-            new Field({
-                component: DateTimeFieldComponent,
-                value: entity.object.checkOut,
-                key: 'checkOut',
-                validators: [Validators.required],
-                order: 4,
-                showColumn: true,
-                sortable: true
-            })]);
+            fields.push(...[
+                new Field({
+                    component: DateTimeFieldComponent,
+                    value: entity.object.checkIn,
+                    key: 'checkIn',
+                    validators: [Validators.required],
+                    order: 3,
+                    showColumn: true,
+                    sortable: true
+                }),
+                new Field({
+                    component: DateTimeFieldComponent,
+                    value: entity.object.checkOut,
+                    key: 'checkOut',
+                    validators: [Validators.required],
+                    order: 4,
+                    showColumn: true,
+                    sortable: true
+                })
+            ]);
         } else {
-            fields.push(...[new Field({
-                component: DateFieldComponent,
-                value: entity ? entity.object.checkIn : new Date(),
-                key: 'checkIn',
-                validators: [Validators.required],
-                order: 3,
-                showColumn: true,
-                sortable: true
-            }),
-            new Field({
-                component: DateFieldComponent,
-                value: entity ? entity.object.checkOut : (() => {
-                    const date = new Date();
-                    date.setDate(date.getDate() + 1);
-                    return date;
-                })(),
-                key: 'checkOut',
-                validators: [Validators.required],
-                order: 4,
-                showColumn: true,
-                sortable: true
-            })]);
+            fields.push(...[
+                new Field({
+                    component: DateFieldComponent,
+                    value: entity ? entity.object.checkIn : new Date(),
+                    key: 'checkIn',
+                    validators: [Validators.required],
+                    order: 3,
+                    showColumn: true,
+                    sortable: true
+                }),
+                new Field({
+                    component: DateFieldComponent,
+                    value: entity ? entity.object.checkOut : (() => {
+                        const date = new Date();
+                        date.setDate(date.getDate() + 1);
+                        return date;
+                    })(),
+                    key: 'checkOut',
+                    validators: [Validators.required],
+                    order: 4,
+                    showColumn: true,
+                    sortable: true
+                })
+            ]);
         }
 
         fields.push(...[

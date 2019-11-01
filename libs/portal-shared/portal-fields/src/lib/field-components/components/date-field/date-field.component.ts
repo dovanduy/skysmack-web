@@ -5,7 +5,7 @@ import { DateAdapter } from '@angular/material/core';
 import { DateOnlyAdapter } from './date-only-adapter';
 import { Field } from '@skysmack/ng-dynamic-forms';
 import { fromEvent } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 const moment = _moment;
 
 @Component({
@@ -39,15 +39,18 @@ export class DateFieldComponent extends FieldBaseComponent<Field> implements Aft
       if (/\/Date\((\d*)\)\//.exec(myValue)) {
         myValue = new Date(myValue);
       } else {
-        myValue = (moment(myValue).format(this.dateFormats[3])).toDate();
+        console.log('value formatting', myValue);
+        myValue = (moment(myValue)).toDate();
       }
     }
 
     if (myValue instanceof Date) {
       this.dateTime = myValue;
-      const momentValue = moment(myValue);
-      this.date = momentValue.format('YYYY-MM-DD');
-      this.setFieldValue(moment(this.dateTime).format('YYYY-MM-DD'));
+      const momentValue = moment(myValue).format('YYYY-MM-DD');
+      if (momentValue !== this.getFieldValue()) {
+        this.date = momentValue;
+        this.setFieldValue(momentValue);
+      }
     }
   }
 
@@ -55,10 +58,13 @@ export class DateFieldComponent extends FieldBaseComponent<Field> implements Aft
     this.subscriptionHandler.register(fromEvent(this.dateInput.nativeElement, 'input').pipe(
       map(() => this.dateChanged())
     ).subscribe());
+
+    this.subscriptionHandler.register(this.fh.form.get(this.fieldKey).valueChanges.pipe(
+      tap(() => this.updatePickerFields())
+    ).subscribe());
   }
 
   private dateChanged() {
-    console.log('TRIGGERED!');
     const input = this.dateInput.nativeElement.value;
     let dateInput: Date;
 
@@ -71,7 +77,6 @@ export class DateFieldComponent extends FieldBaseComponent<Field> implements Aft
     if (dateInput) {
       this.dateTime.setFullYear(dateInput.getFullYear(), dateInput.getMonth(), dateInput.getDate());
       this.setFieldValue(moment(this.dateTime).format('YYYY-MM-DD'));
-
       this.runRules();
     }
   }

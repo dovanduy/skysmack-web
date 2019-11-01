@@ -7,6 +7,7 @@ export class AddDaysRule extends FormRule {
         public keys: string[],
         public firstDateFieldKey: string,
         public secondDateFieldKey: string,
+        public dateType: 'date' | 'dateTime',
         public daysToAdd: number
     ) { super(keys); }
 
@@ -33,7 +34,9 @@ export class AddDaysRule extends FormRule {
             }
         }
 
-        console.log(firstDateValue, secondDateValue, this.daysToAdd);
-        secondDateFieldFieldControl.setValue(firstDateValue);
+        if (firstDateValue > secondDateValue) {
+            secondDateValue.setFullYear(firstDateValue.getFullYear(), firstDateValue.getMonth(), firstDateValue.getDate() + this.daysToAdd);
+            secondDateFieldFieldControl.setValue(secondDateValue);
+        }
     }
 }
