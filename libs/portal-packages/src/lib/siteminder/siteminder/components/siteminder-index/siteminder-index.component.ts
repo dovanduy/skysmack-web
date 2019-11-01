@@ -90,7 +90,6 @@ export class SiteMinderIndexComponent extends BaseComponent<SiteMinderAppState, 
         this.uiOptions.hideRatePlans = hideRatePlans;
         this.uiOptions.hideLodgingTypes = hideLodgingTypes;
       }),
-      share(),
       tap(x => console.log('ui', ++count))
     ).subscribe());
 
