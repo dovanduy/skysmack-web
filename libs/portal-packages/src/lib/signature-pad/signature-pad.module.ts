@@ -6,6 +6,11 @@ import { PortalFieldsModule } from '@skysmack/portal-fields';
 import { NgDynamicFormsModule } from '@skysmack/ng-dynamic-forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { signaturePadComponents, signaturePadEntryComponents } from './components/signature-pad-components';
+import { MatButtonModule } from '@angular/material/button';
+
+const material = [
+  MatButtonModule
+];
 
 @NgModule({
   imports: [
@@ -13,7 +18,8 @@ import { signaturePadComponents, signaturePadEntryComponents } from './component
     HttpClientModule,
     ReactiveFormsModule,
     PortalFieldsModule,
-    NgDynamicFormsModule
+    NgDynamicFormsModule,
+    ...material
   ],
   exports: [
     ...signaturePadComponents

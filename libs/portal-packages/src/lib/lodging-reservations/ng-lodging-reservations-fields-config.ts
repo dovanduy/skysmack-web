@@ -62,12 +62,6 @@ export class NgLodgingReservationsFieldsConfig extends DocumentFieldsConfig<Lodg
             // CREATE FIELDS
             fields.push(...[
                 new Field({
-                    component: SignaturePadEditorFieldComponent,
-                    key: 'test',
-                    showColumn: false,
-                    sortable: false
-                }),
-                new Field({
                     component: DateFieldComponent,
                     value: entity ? entity.object.checkIn : new Date(),
                     key: 'checkIn',
