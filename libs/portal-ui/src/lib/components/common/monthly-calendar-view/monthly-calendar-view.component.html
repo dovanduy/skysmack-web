@@ -5,8 +5,7 @@
         <div *ngFor="let rowIndex of view.rowOffsets">
             <div class="cal-cell-row">
 
-                <!-- Insert the week number here, you should probably add some styling to make it prettier -->
-                <!-- <div>Week {{ view.days[rowIndex].date | weekNo }}</div> -->
+                <div class="week-number">{{ view.days[rowIndex].date | weekNo }} </div>
 
                 <mwl-calendar-month-cell
                     *ngFor="let day of view.days | slice : rowIndex : rowIndex + (view.totalDaysVisibleInWeek)"
