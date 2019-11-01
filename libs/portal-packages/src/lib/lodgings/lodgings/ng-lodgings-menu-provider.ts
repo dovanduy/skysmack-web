@@ -20,8 +20,6 @@ export class NgLodgingsMenuProvider implements MenuProvider {
     public LodgingAvailabilityTranslationPrefix = 'LODGINGS.INDEX.';
     public LodgingTypesAvailabilityTranslationPrefix = 'LODGINGS.INDEX.';
 
-
-
     constructor(
         private store: NgSkysmackStore
     ) { }
@@ -30,8 +28,8 @@ export class NgLodgingsMenuProvider implements MenuProvider {
         return getCombinedMenuEntries<MenuArea>(
             getMenuEntries<MenuArea>(packagePath, LodgingsTypeId, componentKey, LodgingsIndexComponent.COMPONENT_KEY, this.getLodgingsMenuAreas, this.store),
             getMenuEntries<MenuArea>(packagePath, LodgingsTypeId, componentKey, LodgingTypesIndexComponent.COMPONENT_KEY, this.getLodgingTypesMenuAreas, this.store),
-            getMenuEntries<MenuArea>(packagePath, LodgingsTypeId, componentKey, LodgingsAvailabilityComponent.COMPONENT_KEY, this.getLodgingsavailabilityMenuAreas, this.store),
-            getMenuEntries<MenuArea>(packagePath, LodgingsTypeId, componentKey, LodgingTypesAvailabilityComponent.COMPONENT_KEY, this.getLodgingTypesavailabilityMenuAreas, this.store)
+            getMenuEntries<MenuArea>(packagePath, LodgingsTypeId, componentKey, LodgingsAvailabilityComponent.COMPONENT_KEY, this.getLodgingsMenuAreas, this.store),
+            getMenuEntries<MenuArea>(packagePath, LodgingsTypeId, componentKey, LodgingTypesAvailabilityComponent.COMPONENT_KEY, this.getLodgingsMenuAreas, this.store)
         );
     };
 
@@ -39,8 +37,8 @@ export class NgLodgingsMenuProvider implements MenuProvider {
         return getCombinedMenuEntries<MenuItem>(
             getMenuEntries<MenuItem>(packagePath, LodgingsTypeId, componentKey, LodgingsIndexComponent.COMPONENT_KEY, this.getLodgingsMenuItems, this.store),
             getMenuEntries<MenuItem>(packagePath, LodgingsTypeId, componentKey, LodgingTypesIndexComponent.COMPONENT_KEY, this.getLodgingTypesMenuItems, this.store),
-            getMenuEntries<MenuItem>(packagePath, LodgingsTypeId, componentKey, LodgingsAvailabilityComponent.COMPONENT_KEY, this.getLodgingsavailabilityMenuItems, this.store),
-            getMenuEntries<MenuItem>(packagePath, LodgingsTypeId, componentKey, LodgingTypesAvailabilityComponent.COMPONENT_KEY, this.getLodgingTypesavailabilityMenuItems, this.store)
+            getMenuEntries<MenuItem>(packagePath, LodgingsTypeId, componentKey, LodgingsAvailabilityComponent.COMPONENT_KEY, this.getLodgingsMenuItems, this.store),
+            getMenuEntries<MenuItem>(packagePath, LodgingsTypeId, componentKey, LodgingTypesAvailabilityComponent.COMPONENT_KEY, this.getLodgingsMenuItems, this.store)
         );
     };
 
@@ -59,7 +57,7 @@ export class NgLodgingsMenuProvider implements MenuProvider {
         ];
     };
 
-    private getLodgingTypesMenuAreas= () => {
+    private getLodgingTypesMenuAreas = () => {
         return [
             new MenuArea({
                 area: 'actions',
@@ -74,30 +72,10 @@ export class NgLodgingsMenuProvider implements MenuProvider {
         ];
     };
 
-    private getLodgingsavailabilityMenuAreas = () => {
-        return [
-            new MenuArea({
-                area: 'manage',
-                translationPrefix: this.LodgingAvailabilityTranslationPrefix,
-                order: 2
-            })
-        ];
-    };
-
-    private getLodgingTypesavailabilityMenuAreas = () => {
-        return [
-            new MenuArea({
-                area: 'manage',
-                translationPrefix: this.LodgingTypesAvailabilityTranslationPrefix,
-                order: 2
-            })
-        ];
-    };
-
     private getLodgingsMenuItems = (packagePath: string) => {
         return [
             new MenuItem({
-                url: 'create',
+                url: `/${packagePath}/create`,
                 displayName: this.LodgingTranslationPrefix + 'CREATE',
                 area: 'actions',
                 order: 1,
@@ -108,7 +86,18 @@ export class NgLodgingsMenuProvider implements MenuProvider {
                 providedIn: [SIDEBAR, SPEEDDIAL]
             }),
             new MenuItem({
-                url: 'types',
+                url: `/${packagePath}`,
+                displayName: this.LodgingTranslationPrefix + 'LODGINGS',
+                area: 'manage',
+                order: 1,
+                icon: 'description',
+                permissions: [
+                    LodgingsPermissions.findLodgings
+                ],
+                providedIn: [SIDEBAR]
+            }),
+            new MenuItem({
+                url: `/${packagePath}/types`,
                 displayName: this.LodgingTranslationPrefix + 'TYPES',
                 area: 'manage',
                 order: 1,
@@ -119,7 +108,7 @@ export class NgLodgingsMenuProvider implements MenuProvider {
                 providedIn: [SIDEBAR]
             }),
             new MenuItem({
-                url: 'fields',
+                url: `/${packagePath}/fields`,
                 displayName: this.LodgingTranslationPrefix + 'FIELDS',
                 area: 'manage',
                 order: 2,
@@ -130,7 +119,7 @@ export class NgLodgingsMenuProvider implements MenuProvider {
                 providedIn: [SIDEBAR]
             }),
             new MenuItem({
-                url: '/' + packagePath + '/availability',
+                url: `/${packagePath}/availability`,
                 displayName: this.LodgingTranslationPrefix + 'AVAILABILITY',
                 area: 'manage',
                 order: 3,
@@ -138,7 +127,17 @@ export class NgLodgingsMenuProvider implements MenuProvider {
                 permissions: [
                 ],
                 providedIn: [SIDEBAR]
-            })
+            }),
+            new MenuItem({
+                url: `/${packagePath}/types/availability`,
+                displayName: this.LodgingTranslationPrefix + 'TYPES_AVAILABILITY',
+                area: 'manage',
+                order: 3,
+                icon: 'group_add',
+                permissions: [
+                ],
+                providedIn: [SIDEBAR]
+            }),
         ];
     };
 
@@ -166,29 +165,7 @@ export class NgLodgingsMenuProvider implements MenuProvider {
                 ],
                 providedIn: [SIDEBAR]
             }),
-            new MenuItem({
-                url: '/' + packagePath + '/types/availability',
-                displayName: this.LodgingTypesTranslationPrefix + 'AVAILABILITY',
-                area: 'manage',
-                order: 3,
-                icon: 'group_add',
-                permissions: [
-                ],
-                providedIn: [SIDEBAR]
-            }),
             setBackButton(packagePath)
-        ];
-    };
-
-    private getLodgingsavailabilityMenuItems = (packagePath: string): MenuItem[] => {
-        return [
-            setBackButton(packagePath)
-        ]
-    };
-
-    private getLodgingTypesavailabilityMenuItems = (packagePath: string) => {
-        return [
-            setBackButton('/' + packagePath + '/types')
         ];
     };
 }

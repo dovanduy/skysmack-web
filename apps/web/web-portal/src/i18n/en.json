@@ -391,6 +391,46 @@
 			"ERROR": "Error occured updating settings."
 		}
 	},
+	"ROLES": {
+		"CREATE": {
+			"CREATE_ROLE": "Create new role",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDITING": "Edit {{ name }}",
+			"BUTTON_EDIT": "Update"
+		},
+		"INDEX": {
+			"ACTIONS": "Actions",
+			"CREATE": "Create",
+			"MANAGE": "Manage",
+			"SECURITY": "Security",
+			"SECURITY_AND_USERS": "Users and security",
+			"ROLES": "Roles",
+			"BACK": "Back",
+			"FIELDS_TITLE": "(fields)",
+			"TITLE_EXTRAS": "(roles)"
+		},
+		"FORM": {
+			"LABELS": {
+				"NAME": "Name"
+			},
+			"PLACEHOLDERS": {
+				"NAME": "Enter name"
+			},
+			"VALIDATION": {
+				"NAME": {
+					"REQUIRED": "A name is required."
+				}
+			}
+		},
+		"QUEUE": {
+			"ADDING": "Adding {{ name }}",
+			"UPDATING": "Updating {{ name }}",
+			"DELETING": "Deleting {{ name }}",
+			"ERROR": "An error occured with {{ name }}. Correct and try again."
+		}
+	},
 	"APPLICATIONS": {
 		"ENTITY_ACTION": {
 			"ROLES": "Roles"
@@ -485,46 +525,6 @@
 			"UPDATING": "Updating {{ displayName }}",
 			"DELETING": "Deleting {{ displayName }}",
 			"ERROR": "An error occured with {{ displayName }}. Correct and try again."
-		}
-	},
-	"ROLES": {
-		"CREATE": {
-			"CREATE_ROLE": "Create new role",
-			"BUTTON_CREATE": "Create"
-		},
-		"EDIT": {
-			"EDITING": "Edit {{ name }}",
-			"BUTTON_EDIT": "Update"
-		},
-		"INDEX": {
-			"ACTIONS": "Actions",
-			"CREATE": "Create",
-			"MANAGE": "Manage",
-			"SECURITY": "Security",
-			"SECURITY_AND_USERS": "Users and security",
-			"ROLES": "Roles",
-			"BACK": "Back",
-			"FIELDS_TITLE": "(fields)",
-			"TITLE_EXTRAS": "(roles)"
-		},
-		"FORM": {
-			"LABELS": {
-				"NAME": "Name"
-			},
-			"PLACEHOLDERS": {
-				"NAME": "Enter name"
-			},
-			"VALIDATION": {
-				"NAME": {
-					"REQUIRED": "A name is required."
-				}
-			}
-		},
-		"QUEUE": {
-			"ADDING": "Adding {{ name }}",
-			"UPDATING": "Updating {{ name }}",
-			"DELETING": "Deleting {{ name }}",
-			"ERROR": "An error occured with {{ name }}. Correct and try again."
 		}
 	},
 	"USERS": {
@@ -1399,12 +1399,15 @@
 			"ACTIONS": "Actions",
 			"CREATE": "Create",
 			"SETTINGS": "Settings",
+			"LODGINGS": "Lodgings",
 			"AVAILABILITY": "Availability",
+			"TYPES_AVAILABILITY": "Types availability",
 			"MANAGE": "Manage",
 			"FIELDS": "Fields",
 			"FIELDS_TITLE": "(fields)",
 			"TYPES": "Types",
-			"BACK": "Back"
+			"BACK": "Back",
+			"LODINGS": "Lodgings"
 		},
 		"QUEUE": {
 			"ADDING": "Adding {{ name }}",
@@ -1416,60 +1419,6 @@
 	"LODGINGS_AVAILABILITY": {
 		"SELECT_LODGINGS": "Select lodgings",
 		"TITLE": "Lodgings Availability"
-	},
-	"ASSIGNMENTS_SCHEDULES": {
-		"FORM": {
-			"LABELS": {
-				"ASSIGNMENTTYPEID": "Assignment type",
-				"START": "Start date",
-				"END": "End date",
-				"EXPRESSION": "Expression"
-			},
-			"PLACEHOLDERS": {
-				"ASSIGNMENTTYPEID": "Assignment type",
-				"START": "Start date",
-				"END": "End date",
-				"EXPRESSION": "Expression"
-			},
-			"VALIDATION": {
-				"ASSIGNMENTTYPEID": {
-					"REQUIRED": "Assignment type is required."
-				},
-				"START": {
-					"REQUIRED": "Start date is required."
-				},
-				"END": {
-					"REQUIRED": "End date is required."
-				},
-				"EXPRESSION": {
-					"REQUIRED": "Expression is required."
-				}
-			}
-		},
-		"CREATE": {
-			"CREATE": "Create",
-			"BUTTON_CREATE": "Create"
-		},
-		"EDIT": {
-			"EDIT": "Edit",
-			"BUTTON_EDIT": "Update"
-		},
-		"INDEX": {
-			"TITLE_EXTRAS": "(scheduled assignments)",
-			"ACTIONS": "Actions",
-			"CREATE": "Create",
-			"EDIT": "Edit",
-			"DELETE": "Delete",
-			"MANAGE": "Manage",
-			"FIELDS": "Fields",
-			"BACK": "Back"
-		},
-		"QUEUE": {
-			"ADDING": "Adding {{ description }}",
-			"UPDATING": "Updating {{ description }}",
-			"DELETING": "Deleting {{ description }}",
-			"ERROR": "An error occured with {{ description }}. Correct and try again."
-		}
 	},
 	"ASSIGNMENT_TYPES": {
 		"FORM": {
@@ -1531,6 +1480,60 @@
 			"CREATE": {
 				"ADD": "Add field"
 			}
+		},
+		"QUEUE": {
+			"ADDING": "Adding {{ description }}",
+			"UPDATING": "Updating {{ description }}",
+			"DELETING": "Deleting {{ description }}",
+			"ERROR": "An error occured with {{ description }}. Correct and try again."
+		}
+	},
+	"ASSIGNMENTS_SCHEDULES": {
+		"FORM": {
+			"LABELS": {
+				"ASSIGNMENTTYPEID": "Assignment type",
+				"START": "Start date",
+				"END": "End date",
+				"EXPRESSION": "Expression"
+			},
+			"PLACEHOLDERS": {
+				"ASSIGNMENTTYPEID": "Assignment type",
+				"START": "Start date",
+				"END": "End date",
+				"EXPRESSION": "Expression"
+			},
+			"VALIDATION": {
+				"ASSIGNMENTTYPEID": {
+					"REQUIRED": "Assignment type is required."
+				},
+				"START": {
+					"REQUIRED": "Start date is required."
+				},
+				"END": {
+					"REQUIRED": "End date is required."
+				},
+				"EXPRESSION": {
+					"REQUIRED": "Expression is required."
+				}
+			}
+		},
+		"CREATE": {
+			"CREATE": "Create",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDIT": "Edit",
+			"BUTTON_EDIT": "Update"
+		},
+		"INDEX": {
+			"TITLE_EXTRAS": "(scheduled assignments)",
+			"ACTIONS": "Actions",
+			"CREATE": "Create",
+			"EDIT": "Edit",
+			"DELETE": "Delete",
+			"MANAGE": "Manage",
+			"FIELDS": "Fields",
+			"BACK": "Back"
 		},
 		"QUEUE": {
 			"ADDING": "Adding {{ description }}",
@@ -1767,6 +1770,252 @@
 			"UPDATING": "Updating {{ name }}",
 			"DELETING": "Deleting {{ name }}",
 			"ERROR": "An error occured with {{ name }}. Correct and try again."
+		}
+	},
+	"PRODUCT_PRICE_CHANGES": {
+		"CREATE": {
+			"CREATE": "Create",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDIT": "Edit",
+			"BUTTON_EDIT": "Update"
+		},
+		"INDEX": {
+			"ACTIONS": "Actions",
+			"CREATE": "Create",
+			"DELETE": "Delete",
+			"MANAGE": "Manage",
+			"FIELDS": "Fields",
+			"BACK": "Back"
+		},
+		"FORM": {
+			"LABELS": {
+				"CURRENCYCODE": "Currency code",
+				"RECORDID": "Product",
+				"CHANGE": "Price change",
+				"ISPERCENT": "Change is in percentage (%)",
+				"PERUNIT": "Per unit",
+				"VALIDFROM": "Valid from",
+				"VALIDTO": "Valid to",
+				"MINUNITS": "Minimum units",
+				"MAXUNITS": "Maximum units",
+				"ONLYVALIDUNITS": "Change only counts for units within min and max"
+			},
+			"PLACEHOLDERS": {
+				"CURRENCYCODE": "Currency code",
+				"RECORDID": "Product",
+				"CHANGE": "Price change",
+				"ISPERCENT": "Change is in percentage (%)",
+				"PERUNIT": "Per unit",
+				"VALIDFROM": "Valid from",
+				"VALIDTO": "Valid to",
+				"MINUNITS": "Minimum units",
+				"MAXUNITS": "Maximum units",
+				"ONLYVALIDUNITS": "Change only counts for units within min and max"
+			},
+			"VALIDATION": {
+				"CURRENCYCODE": {
+					"REQUIRED": "Currency code is required"
+				},
+				"RECORDID": {
+					"REQUIRED": "Product is required"
+				},
+				"CHANGE": {
+					"REQUIRED": "Change is required"
+				},
+				"ISPERCENT": {
+					"REQUIRED": "Field is required"
+				},
+				"VALIDFROM": {
+					"REQUIRED": "Valid from is required"
+				},
+				"VALIDTO": {
+					"REQUIRED": "Valid to is required"
+				},
+				"MINUNITS": {
+					"REQUIRED": "Minimum units is required"
+				},
+				"MAXUNITS": {
+					"REQUIRED": "Maximum units is required"
+				}
+			}
+		},
+		"QUEUE": {
+			"ADDING": "Adding the price change valid from/to: {{ dates }}",
+			"UPDATING": "Updating the price change valid from/to: {{ dates }}",
+			"DELETING": "Deleting the price change valid from/to: {{ dates }}",
+			"ERROR": "An error occured with the price change valid from/to: {{ dates }}. Correct and try again."
+		}
+	},
+	"PRODUCT_TYPE_PRICE_CHANGES": {
+		"CREATE": {
+			"CREATE": "Create",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDIT": "Edit",
+			"BUTTON_EDIT": "Update"
+		},
+		"INDEX": {
+			"ACTIONS": "Actions",
+			"CREATE": "Create",
+			"DELETE": "Delete",
+			"MANAGE": "Manage",
+			"FIELDS": "Fields",
+			"BACK": "Back"
+		},
+		"FORM": {
+			"LABELS": {
+				"CURRENCYCODE": "Currency code",
+				"RECORDID": "Product type",
+				"CHANGE": "Change",
+				"ISPERCENT": "Change is in Percent (%)",
+				"PERUNIT": "Per unit",
+				"VALIDFROM": "Valid from",
+				"VALIDTO": "Valid to",
+				"MINUNITS": "Minimum units",
+				"MAXUNITS": "Maximum units",
+				"ONLYVALIDUNITS": "Change only counts for units within min and max"
+			},
+			"PLACEHOLDERS": {
+				"CURRENCYCODE": "Currency code",
+				"RECORDID": "Product type",
+				"CHANGE": "Change",
+				"ISPERCENT": "Change is in Percent (%)",
+				"PERUNIT": "Per unit",
+				"VALIDFROM": "Valid from",
+				"VALIDTO": "Valid to",
+				"MINUNITS": "Minimum units",
+				"MAXUNITS": "Maximum units",
+				"ONLYVALIDUNITS": "Change only counts for units within min and max"
+			},
+			"VALIDATION": {
+				"CURRENCYCODE": {
+					"REQUIRED": "Currency code is required"
+				},
+				"RECORDID": {
+					"REQUIRED": "Product is required"
+				},
+				"CHANGE": {
+					"REQUIRED": "Change is required"
+				},
+				"ISPERCENT": {
+					"REQUIRED": "Field is required"
+				},
+				"VALIDFROM": {
+					"REQUIRED": "Valid from is required"
+				},
+				"VALIDTO": {
+					"REQUIRED": "Valid to is required"
+				},
+				"MINUNITS": {
+					"REQUIRED": "Minimum units is required"
+				},
+				"MAXUNITS": {
+					"REQUIRED": "Maximum units is required"
+				}
+			}
+		},
+		"QUEUE": {
+			"ADDING": "Adding the price change valid from/to: {{ dates }}",
+			"UPDATING": "Updating the price change valid from/to: {{ dates }}",
+			"DELETING": "Deleting the price change valid from/to: {{ dates }}",
+			"ERROR": "An error occured with the price change valid from/to: {{ dates }}. Correct and try again."
+		}
+	},
+	"PRODUCT_TYPE_SALES_PRICE": {
+		"CREATE": {
+			"CREATE": "Create",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDIT": "Edit",
+			"BUTTON_EDIT": "Update"
+		},
+		"INDEX": {
+			"ACTIONS": "Actions",
+			"CREATE": "Create",
+			"DELETE": "Delete",
+			"MANAGE": "Manage",
+			"FIELDS": "Fields",
+			"BACK": "Back"
+		},
+		"FORM": {
+			"LABELS": {
+				"CURRENCYCODE": "Currency code",
+				"RECORDID": "Product type",
+				"PRICE": "Price"
+			},
+			"PLACEHOLDERS": {
+				"CURRENCYCODE": "Currency code",
+				"RECORDID": "Product type",
+				"PRICE": "Price"
+			},
+			"VALIDATION": {
+				"CURRENCYCODE": {
+					"REQUIRED": "Currency code is required"
+				},
+				"RECORDID": {
+					"REQUIRED": "Product is required"
+				},
+				"PRICE": {
+					"REQUIRED": "Price is required"
+				}
+			}
+		},
+		"QUEUE": {
+			"ADDING": "Adding the product type sale price with the price: {{ price }}",
+			"UPDATING": "Updating the product type sale price with the price: {{ price }}",
+			"DELETING": "Deleting the product type sale price with the price: {{ price }}",
+			"ERROR": "An error occured with the product type sale price with the price: {{ price }}. Correct and try again."
+		}
+	},
+	"PRODUCTS_SALES_PRICE": {
+		"CREATE": {
+			"CREATE": "Create",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDIT": "Edit",
+			"BUTTON_EDIT": "Update"
+		},
+		"INDEX": {
+			"ACTIONS": "Actions",
+			"CREATE": "Create",
+			"DELETE": "Delete",
+			"MANAGE": "Manage",
+			"FIELDS": "Fields",
+			"BACK": "Back"
+		},
+		"FORM": {
+			"LABELS": {
+				"CURRENCYCODE": "Currency code",
+				"RECORDID": "Product",
+				"PRICE": "Price"
+			},
+			"PLACEHOLDERS": {
+				"CURRENCYCODE": "Currency code",
+				"RECORDID": "Product",
+				"PRICE": "Price"
+			},
+			"VALIDATION": {
+				"CURRENCYCODE": {
+					"REQUIRED": "Currency code is required"
+				},
+				"RECORDID": {
+					"REQUIRED": "Product is required"
+				},
+				"PRICE": {
+					"REQUIRED": "Price is required"
+				}
+			}
+		},
+		"QUEUE": {
+			"ADDING": "Adding the product sale price with the price: {{ price }}",
+			"UPDATING": "Updating the product sale price with the price: {{ price }}",
+			"DELETING": "Deleting the product sale price with the price: {{ price }}",
+			"ERROR": "An error occured with the product sale price with the price: {{ price }}. Correct and try again."
 		}
 	},
 	"LODGING_PRICES": {
@@ -2065,252 +2314,6 @@
 			"UPDATING": "Updating the lodging type reservation price change valid from/to: {{ dates }}",
 			"DELETING": "Deleting the lodging type reservation price change valid from/to: {{ dates }}",
 			"ERROR": "An error occured with the lodging type reservation price change valid from/to: {{ dates }}. Correct and try again."
-		}
-	},
-	"PRODUCT_PRICE_CHANGES": {
-		"CREATE": {
-			"CREATE": "Create",
-			"BUTTON_CREATE": "Create"
-		},
-		"EDIT": {
-			"EDIT": "Edit",
-			"BUTTON_EDIT": "Update"
-		},
-		"INDEX": {
-			"ACTIONS": "Actions",
-			"CREATE": "Create",
-			"DELETE": "Delete",
-			"MANAGE": "Manage",
-			"FIELDS": "Fields",
-			"BACK": "Back"
-		},
-		"FORM": {
-			"LABELS": {
-				"CURRENCYCODE": "Currency code",
-				"RECORDID": "Product",
-				"CHANGE": "Price change",
-				"ISPERCENT": "Change is in percentage (%)",
-				"PERUNIT": "Per unit",
-				"VALIDFROM": "Valid from",
-				"VALIDTO": "Valid to",
-				"MINUNITS": "Minimum units",
-				"MAXUNITS": "Maximum units",
-				"ONLYVALIDUNITS": "Change only counts for units within min and max"
-			},
-			"PLACEHOLDERS": {
-				"CURRENCYCODE": "Currency code",
-				"RECORDID": "Product",
-				"CHANGE": "Price change",
-				"ISPERCENT": "Change is in percentage (%)",
-				"PERUNIT": "Per unit",
-				"VALIDFROM": "Valid from",
-				"VALIDTO": "Valid to",
-				"MINUNITS": "Minimum units",
-				"MAXUNITS": "Maximum units",
-				"ONLYVALIDUNITS": "Change only counts for units within min and max"
-			},
-			"VALIDATION": {
-				"CURRENCYCODE": {
-					"REQUIRED": "Currency code is required"
-				},
-				"RECORDID": {
-					"REQUIRED": "Product is required"
-				},
-				"CHANGE": {
-					"REQUIRED": "Change is required"
-				},
-				"ISPERCENT": {
-					"REQUIRED": "Field is required"
-				},
-				"VALIDFROM": {
-					"REQUIRED": "Valid from is required"
-				},
-				"VALIDTO": {
-					"REQUIRED": "Valid to is required"
-				},
-				"MINUNITS": {
-					"REQUIRED": "Minimum units is required"
-				},
-				"MAXUNITS": {
-					"REQUIRED": "Maximum units is required"
-				}
-			}
-		},
-		"QUEUE": {
-			"ADDING": "Adding the price change valid from/to: {{ dates }}",
-			"UPDATING": "Updating the price change valid from/to: {{ dates }}",
-			"DELETING": "Deleting the price change valid from/to: {{ dates }}",
-			"ERROR": "An error occured with the price change valid from/to: {{ dates }}. Correct and try again."
-		}
-	},
-	"PRODUCT_TYPE_PRICE_CHANGES": {
-		"CREATE": {
-			"CREATE": "Create",
-			"BUTTON_CREATE": "Create"
-		},
-		"EDIT": {
-			"EDIT": "Edit",
-			"BUTTON_EDIT": "Update"
-		},
-		"INDEX": {
-			"ACTIONS": "Actions",
-			"CREATE": "Create",
-			"DELETE": "Delete",
-			"MANAGE": "Manage",
-			"FIELDS": "Fields",
-			"BACK": "Back"
-		},
-		"FORM": {
-			"LABELS": {
-				"CURRENCYCODE": "Currency code",
-				"RECORDID": "Product type",
-				"CHANGE": "Change",
-				"ISPERCENT": "Change is in Percent (%)",
-				"PERUNIT": "Per unit",
-				"VALIDFROM": "Valid from",
-				"VALIDTO": "Valid to",
-				"MINUNITS": "Minimum units",
-				"MAXUNITS": "Maximum units",
-				"ONLYVALIDUNITS": "Change only counts for units within min and max"
-			},
-			"PLACEHOLDERS": {
-				"CURRENCYCODE": "Currency code",
-				"RECORDID": "Product type",
-				"CHANGE": "Change",
-				"ISPERCENT": "Change is in Percent (%)",
-				"PERUNIT": "Per unit",
-				"VALIDFROM": "Valid from",
-				"VALIDTO": "Valid to",
-				"MINUNITS": "Minimum units",
-				"MAXUNITS": "Maximum units",
-				"ONLYVALIDUNITS": "Change only counts for units within min and max"
-			},
-			"VALIDATION": {
-				"CURRENCYCODE": {
-					"REQUIRED": "Currency code is required"
-				},
-				"RECORDID": {
-					"REQUIRED": "Product is required"
-				},
-				"CHANGE": {
-					"REQUIRED": "Change is required"
-				},
-				"ISPERCENT": {
-					"REQUIRED": "Field is required"
-				},
-				"VALIDFROM": {
-					"REQUIRED": "Valid from is required"
-				},
-				"VALIDTO": {
-					"REQUIRED": "Valid to is required"
-				},
-				"MINUNITS": {
-					"REQUIRED": "Minimum units is required"
-				},
-				"MAXUNITS": {
-					"REQUIRED": "Maximum units is required"
-				}
-			}
-		},
-		"QUEUE": {
-			"ADDING": "Adding the price change valid from/to: {{ dates }}",
-			"UPDATING": "Updating the price change valid from/to: {{ dates }}",
-			"DELETING": "Deleting the price change valid from/to: {{ dates }}",
-			"ERROR": "An error occured with the price change valid from/to: {{ dates }}. Correct and try again."
-		}
-	},
-	"PRODUCT_TYPE_SALES_PRICE": {
-		"CREATE": {
-			"CREATE": "Create",
-			"BUTTON_CREATE": "Create"
-		},
-		"EDIT": {
-			"EDIT": "Edit",
-			"BUTTON_EDIT": "Update"
-		},
-		"INDEX": {
-			"ACTIONS": "Actions",
-			"CREATE": "Create",
-			"DELETE": "Delete",
-			"MANAGE": "Manage",
-			"FIELDS": "Fields",
-			"BACK": "Back"
-		},
-		"FORM": {
-			"LABELS": {
-				"CURRENCYCODE": "Currency code",
-				"RECORDID": "Product type",
-				"PRICE": "Price"
-			},
-			"PLACEHOLDERS": {
-				"CURRENCYCODE": "Currency code",
-				"RECORDID": "Product type",
-				"PRICE": "Price"
-			},
-			"VALIDATION": {
-				"CURRENCYCODE": {
-					"REQUIRED": "Currency code is required"
-				},
-				"RECORDID": {
-					"REQUIRED": "Product is required"
-				},
-				"PRICE": {
-					"REQUIRED": "Price is required"
-				}
-			}
-		},
-		"QUEUE": {
-			"ADDING": "Adding the product type sale price with the price: {{ price }}",
-			"UPDATING": "Updating the product type sale price with the price: {{ price }}",
-			"DELETING": "Deleting the product type sale price with the price: {{ price }}",
-			"ERROR": "An error occured with the product type sale price with the price: {{ price }}. Correct and try again."
-		}
-	},
-	"PRODUCTS_SALES_PRICE": {
-		"CREATE": {
-			"CREATE": "Create",
-			"BUTTON_CREATE": "Create"
-		},
-		"EDIT": {
-			"EDIT": "Edit",
-			"BUTTON_EDIT": "Update"
-		},
-		"INDEX": {
-			"ACTIONS": "Actions",
-			"CREATE": "Create",
-			"DELETE": "Delete",
-			"MANAGE": "Manage",
-			"FIELDS": "Fields",
-			"BACK": "Back"
-		},
-		"FORM": {
-			"LABELS": {
-				"CURRENCYCODE": "Currency code",
-				"RECORDID": "Product",
-				"PRICE": "Price"
-			},
-			"PLACEHOLDERS": {
-				"CURRENCYCODE": "Currency code",
-				"RECORDID": "Product",
-				"PRICE": "Price"
-			},
-			"VALIDATION": {
-				"CURRENCYCODE": {
-					"REQUIRED": "Currency code is required"
-				},
-				"RECORDID": {
-					"REQUIRED": "Product is required"
-				},
-				"PRICE": {
-					"REQUIRED": "Price is required"
-				}
-			}
-		},
-		"QUEUE": {
-			"ADDING": "Adding the product sale price with the price: {{ price }}",
-			"UPDATING": "Updating the product sale price with the price: {{ price }}",
-			"DELETING": "Deleting the product sale price with the price: {{ price }}",
-			"ERROR": "An error occured with the product sale price with the price: {{ price }}. Correct and try again."
 		}
 	},
 	"CONNECTIONS": {
@@ -2767,6 +2770,21 @@
 			"BUTTON_LOGIN": "Login"
 		}
 	},
+	"OPEN_API": {
+		"SETTINGS": "Settings",
+		"FORM": {
+			"PLACEHOLDERS": {
+				"TITLE": "Title",
+				"DESCRIPTION": "Description",
+				"TERMSOFSERVICE": "Terms of service",
+				"CONTACTNAME": "Contact name",
+				"CONTACTURL": "Contact URL",
+				"CONTACTEMAIL": "Contact email",
+				"LICENSENAME": "License name",
+				"LICENSEURL": "License URL"
+			}
+		}
+	},
 	"PACKAGES": {
 		"ADDING": "Adding {{ name }}",
 		"UPDATING": "Updating {{ name }}",
@@ -2952,19 +2970,13 @@
 			"INSTALL": "Install feature"
 		}
 	},
-	"OPEN_API": {
-		"SETTINGS": "Settings",
-		"FORM": {
-			"PLACEHOLDERS": {
-				"TITLE": "Title",
-				"DESCRIPTION": "Description",
-				"TERMSOFSERVICE": "Terms of service",
-				"CONTACTNAME": "Contact name",
-				"CONTACTURL": "Contact URL",
-				"CONTACTEMAIL": "Contact email",
-				"LICENSENAME": "License name",
-				"LICENSEURL": "License URL"
-			}
+	"PRODUCTS_PRICINGS": {
+		"INDEX": {
+			"MANAGE": "Manage",
+			"SALES_PRICES": "Products sale prices",
+			"SALES_PRICES_TYPES": "Product types sale prices",
+			"PRICE_CHANGES": "Product price changes",
+			"PRICE_TYPE_CHANGES": "Product type price changes"
 		}
 	},
 	"RESERVATIONS_PRICINGS": {
@@ -2976,15 +2988,7 @@
 			"PRICES_TYPES": "Lodging type prices"
 		}
 	},
-	"PRODUCTS_PRICINGS": {
-		"INDEX": {
-			"MANAGE": "Manage",
-			"SALES_PRICES": "Products sale prices",
-			"SALES_PRICES_TYPES": "Product types sale prices",
-			"PRICE_CHANGES": "Product price changes",
-			"PRICE_TYPE_CHANGES": "Product type price changes"
-		}
-	},
+	"WYSIWYG": {},
 	"TERMINAL_PAYMENTS": {
 		"INDEX": {
 			"TITLE": "Terminal Payments",
