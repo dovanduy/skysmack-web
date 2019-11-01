@@ -18,6 +18,7 @@ import { NgLodgingReservationsDashboardProvider } from './lodging-reservations/n
 import { NgLodgingsReservationsMenuProvider } from './ng-lodgings-reservations-menu-provider';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { groupReservationsComponents, groupReservationsEntryComponents } from './group-reservations/components/group-reservations-component';
+import { SignaturePadModule } from '../signature-pad/signature-pad.module';
 
 const material = [
   MatAutocompleteModule
@@ -34,6 +35,7 @@ const material = [
     NgIdentitiesModule,
     PortalFieldsModule,
     SettingsModule,
+    SignaturePadModule,
     ...material
   ],
   declarations: [

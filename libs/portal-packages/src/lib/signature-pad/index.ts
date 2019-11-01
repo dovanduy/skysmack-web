@@ -1,2 +1,2 @@
-export * from './wysiwyg.module';
+export * from './signature-pad.module';
 export * from './components/index';

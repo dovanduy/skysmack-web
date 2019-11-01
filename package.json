@@ -42,6 +42,7 @@
         "redux": "4.0.1",
         "redux-observable": "1.1.0",
         "rxjs": "6.5.2",
+        "signature_pad": "^3.0.0-beta.3",
         "swagger-ui": "3.24.0",
         "zone.js": "0.10.2"
     },

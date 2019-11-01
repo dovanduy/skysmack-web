@@ -12,6 +12,7 @@ import { SelectFieldComponent, DateFieldComponent, IntFieldComponent, HiddenFiel
 import { NgLodgingReservationsValidation } from '@skysmack/ng-lodging-reservations';
 import { LodgingTypeSelectFieldComponent } from './lodging-reservations/lodging-type-select-field/lodging-type-select-field.component';
 import { LodgingSelectFieldComponent } from './lodging-reservations/lodging-select-field/lodging-select-field.component';
+import { SignaturePadEditorFieldComponent } from '../signature-pad';
 
 @Injectable({ providedIn: 'root' })
 export class NgLodgingReservationsFieldsConfig extends DocumentFieldsConfig<LodgingReservation, number> {
@@ -36,6 +37,7 @@ export class NgLodgingReservationsFieldsConfig extends DocumentFieldsConfig<Lodg
         const fields: Field[] = [];
 
         if (entity && entity.status !== LocalObjectStatus.CREATING) {
+            // EDIT FIELDS
             fields.push(...[
                 new Field({
                     component: DateTimeFieldComponent,
@@ -57,7 +59,14 @@ export class NgLodgingReservationsFieldsConfig extends DocumentFieldsConfig<Lodg
                 })
             ]);
         } else {
+            // CREATE FIELDS
             fields.push(...[
+                new Field({
+                    component: SignaturePadEditorFieldComponent,
+                    key: 'test',
+                    showColumn: false,
+                    sortable: false
+                }),
                 new Field({
                     component: DateFieldComponent,
                     value: entity ? entity.object.checkIn : new Date(),
