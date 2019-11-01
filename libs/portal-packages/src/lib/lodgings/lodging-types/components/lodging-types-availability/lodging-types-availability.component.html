@@ -22,12 +22,11 @@
 
     <mat-card [ngSwitch]="view">
       <div style="text-align:right; padding: 0 16px">
-        <!-- Lodgings selection -->
+        <!-- Lodging types selection -->
         <mat-form-field style="width:200px;margin-right:16px">
-          <mat-select [(value)]="selectedLodgingTypeIds"
+          <mat-select [(value)]="selectedLodgingTypeIds" (selectionChange)="getAvailableLodgingTypes($event)"
             [placeholder]="'LODGING_TYPES.AVAILABILITY.PLACEHOLDER' | translate" multiple>
-            <mat-option *ngFor="let opt of lodgingTypeOptions$ | async" [value]="opt.value"
-              (click)="getAvailableLodgingTypes()">
+            <mat-option *ngFor="let opt of lodgingTypeOptions$ | async" [value]="opt.value">
               {{opt.displayName}}</mat-option>
           </mat-select>
         </mat-form-field>

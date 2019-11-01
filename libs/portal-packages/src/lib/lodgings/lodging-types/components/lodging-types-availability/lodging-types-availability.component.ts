@@ -10,6 +10,7 @@ import { PagedQuery, defined } from '@skysmack/framework';
 import { SelectFieldOption } from '@skysmack/ng-dynamic-forms';
 import { CalendarMonthViewDay } from 'angular-calendar';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
+import { MatSelectChange } from '@angular/material/select';
 const moment = _moment;
 
 @Component({
@@ -58,10 +59,9 @@ export class LodgingTypesAvailabilityComponent implements OnInit {
 
   public requestPeriod(date: Date) {
     this.setCurrentDate(date);
-    this.getAvailableLodgingTypes();
   }
 
-  public getAvailableLodgingTypes() {
+  public getAvailableLodgingTypes(change: MatSelectChange) {
     this.actions.getAvailableLodgingTypesDailyCount(this.packagePath, this.startOfMonth, this.endOfMonth, this.selectedLodgingTypeIds);
   }
 
@@ -101,7 +101,11 @@ export class LodgingTypesAvailabilityComponent implements OnInit {
       this.store.getAvailableLodgingTypesDailyCount(this.packagePath)
     ).pipe(
       map(values => {
-        const lodgings = values[0];
+        const lodgingTypes = values[0];
+
+        // Make all checkboxes selected as default
+        this.selectedLodgingTypeIds = lodgingTypes.map(lodgingType => lodgingType.object.id);
+
         const dictionary = values[1];
         const datesArray = Object.keys(dictionary);
         let freeLodgingTypes: {
@@ -113,7 +117,7 @@ export class LodgingTypesAvailabilityComponent implements OnInit {
         return datesArray.map(date => {
           return Object.keys(dictionary[date]).map(() => {
             freeLodgingTypes = this.selectedLodgingTypeIds.map(selectedLodgingTypeId => {
-              const lodgingTypeName = lodgings.find(lodging => lodging.object.id === selectedLodgingTypeId).object.name;
+              const lodgingTypeName = lodgingTypes.find(lodging => lodging.object.id === selectedLodgingTypeId).object.name;
               return {
                 id: date.split('T')[0] + lodgingTypeName,
                 name: lodgingTypeName,
