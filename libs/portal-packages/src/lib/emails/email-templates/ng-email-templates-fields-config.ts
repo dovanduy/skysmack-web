@@ -2,11 +2,12 @@ import { Injectable } from '@angular/core';
 import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { EmailTemplate, EMAIL_TEMPLATES_AREA_KEY, EMAIL_TEMPLATES_ADDITIONAL_PATHS } from '@skysmack/packages-emails';
 
-import { StringFieldComponent, HiddenFieldComponent, EmailTemplateFieldComponent } from '@skysmack/portal-fields';
+import { StringFieldComponent, HiddenFieldComponent } from '@skysmack/portal-fields';
 import { NgEmailTemplatesValidation } from '../../../../../ng-packages/ng-emails/src/lib';
 import { LoadedPackage } from '@skysmack/ng-framework';
 import { FormRule, Field } from '@skysmack/ng-dynamic-forms';
 import { FieldsConfig, FieldProviders } from '@skysmack/ng-fields';
+import { WYSIWYGEditorFieldComponent } from '../../wysiwyg/components/wysiwyg-editor-field/wysiwyg-editor-field.component';
 
 export interface NgEmailTemplateFormDependencies {
   [key: string]: any;
@@ -63,7 +64,7 @@ export class NgEmailTemplatesFieldsConfig extends FieldsConfig<EmailTemplate, nu
       }),
       new Field({
         value: entity ? entity.object.body : undefined,
-        component: EmailTemplateFieldComponent,
+        component: WYSIWYGEditorFieldComponent,
         key: 'body',
         sortable: true
       }),

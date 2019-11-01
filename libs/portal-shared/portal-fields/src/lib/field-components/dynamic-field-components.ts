@@ -18,7 +18,6 @@ import { MultiSelectFieldComponent } from './components/multi-select-field/multi
 import { AddRecordFieldComponent } from './components/add-record-field/add-record-field.component';
 import { FlaggedEnumFieldComponent } from './components/flagged-enum-field/flagged-enum-field.component';
 import { ResultFieldComponent } from './components/result-field/result-field.component';
-import { EmailTemplateFieldComponent } from './components/email-template-field/email-template-field.component';
 import { StringArrayFieldComponent } from './components/string-array-field/string-array-field.component';
 
 export const dynamicFieldComponents = [
@@ -42,6 +41,5 @@ export const dynamicFieldComponents = [
     MultiSelectFieldComponent,
     AddRecordFieldComponent,
     ResultFieldComponent,
-    EmailTemplateFieldComponent,
     StringArrayFieldComponent
 ];

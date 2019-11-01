@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { FieldBaseComponent } from '../field-base-component';
 import { Field } from '@skysmack/ng-dynamic-forms';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
+import { FieldBaseComponent } from '@skysmack/portal-fields';
 
 @Component({
-  selector: 'ss-email-template-field',
-  templateUrl: './email-template-field.component.html'
+  selector: 'ss-wysiwyg-editor-field',
+  templateUrl: './wysiwyg-editor-field.component.html'
 })
-export class EmailTemplateFieldComponent extends FieldBaseComponent<Field> implements OnInit {
+export class WYSIWYGEditorFieldComponent extends FieldBaseComponent<Field> implements OnInit {
 
   public editorConfig: AngularEditorConfig = {
     editable: true,

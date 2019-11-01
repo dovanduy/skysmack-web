@@ -10,6 +10,7 @@ import { emailTemplatesComponents } from './email-templates';
 import { DynamicFormsModule } from '@skysmack/portal-dynamic-forms';
 import { PortalFieldsModule } from '@skysmack/portal-fields';
 import { NgEmailsIndexMenuProvider } from './emails/ng-emails-menu-provider';
+import { WYSIWYGModule } from '../wysiwyg/wysiwyg.module';
 
 @NgModule({
   imports: [
@@ -19,7 +20,8 @@ import { NgEmailsIndexMenuProvider } from './emails/ng-emails-menu-provider';
     DynamicFormsModule,
     EmailsRoutingModule,
     NgEmailsModule,
-    PortalFieldsModule
+    PortalFieldsModule,
+    WYSIWYGModule
   ],
   declarations: [
     ...emailsComponents,
@@ -31,8 +33,8 @@ export class EmailsModule {
   constructor(
     ngMenuProviders: NgMenuProviders,
     ngEmailsIndexMenuProvider: NgEmailsIndexMenuProvider,
-  ) { 
+  ) {
     ngMenuProviders
-    .add(ngEmailsIndexMenuProvider)
-   }
+      .add(ngEmailsIndexMenuProvider)
+  }
 }

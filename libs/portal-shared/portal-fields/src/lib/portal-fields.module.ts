@@ -12,7 +12,6 @@ import { RecurringExpressionFieldModule } from './field-components/components/re
 import { ValidatorsFieldModule } from './field-components/components/validators-field/validators-field.module';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { DynamicFormsModule } from '@skysmack/portal-dynamic-forms';
-import { AngularEditorModule } from '@kolkov/angular-editor';
 
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
@@ -40,7 +39,6 @@ const material = [
     DynamicFormsModule,
     RecurringExpressionFieldModule,
     ValidatorsFieldModule,
-    AngularEditorModule,
     ...material
   ],
   declarations: [
