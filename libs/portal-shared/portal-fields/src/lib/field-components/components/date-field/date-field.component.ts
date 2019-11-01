@@ -39,7 +39,6 @@ export class DateFieldComponent extends FieldBaseComponent<Field> implements Aft
       if (/\/Date\((\d*)\)\//.exec(myValue)) {
         myValue = new Date(myValue);
       } else {
-        console.log('value formatting', myValue);
         myValue = (moment(myValue)).toDate();
       }
     }
