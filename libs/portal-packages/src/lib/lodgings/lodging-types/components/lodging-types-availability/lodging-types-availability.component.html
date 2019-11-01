@@ -1,4 +1,5 @@
 <ss-container [componentKey]="'lodging-types-availability-index'" [componentKey]="componentKey">
+
   <!-- Calendar -->
   <ng-template #customCellTemplate let-day="day" let-locale="locale">
     <ng-container *ngIf="day.freeLodgingTypes">
@@ -18,6 +19,8 @@
       </div>
     </ng-container>
   </ng-template>
+
+
   <ng-container *ngIf="events$ | async as events">
 
     <mat-card [ngSwitch]="view">

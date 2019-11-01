@@ -1,3 +1,19 @@
+<!-- Header template e.g. "Columns" -->
+<ng-template #headerTemplate let-days="days" let-locale="locale"
+    let-trackByWeekDayHeaderDate="trackByWeekDayHeaderDate">
+    <div class="cal-cell-row cal-header">
+        <div class="week-number-header-placeholder">
+            <!-- To match week  number cell-->
+        </div>
+        <div class="cal-cell" *ngFor="let day of days; trackBy: trackByWeekDayHeaderDate" [class.cal-past]="day.isPast"
+            [class.cal-today]="day.isToday" [class.cal-future]="day.isFuture" [class.cal-weekend]="day.isWeekend"
+            (click)="columnHeaderClicked.emit(day.day)" [ngClass]="day.cssClass">
+            {{ day.date | calendarDate: 'monthViewColumnHeader':locale }}
+        </div>
+    </div>
+</ng-template>
+
+
 <div class="cal-month-view">
     <mwl-calendar-month-view-header [days]="columnHeaders" [locale]="locale" [customTemplate]="headerTemplate">
     </mwl-calendar-month-view-header>

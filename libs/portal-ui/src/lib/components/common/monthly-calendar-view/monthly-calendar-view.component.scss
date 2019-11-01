@@ -2,7 +2,16 @@
     color: blue;
 }
 
+.week-number-header-placeholder {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
 .week-number {
     background: #F1F3F4;
     padding: 10px;
+}
+
+.cal-cell-top, .cal-cell, .cal-month-view, .cal-days {
+    border: none;
 }
