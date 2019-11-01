@@ -7,9 +7,11 @@ import { NgDynamicFormsModule } from '@skysmack/ng-dynamic-forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { signaturePadComponents, signaturePadEntryComponents } from './components/signature-pad-components';
 import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
 
 const material = [
-  MatButtonModule
+  MatButtonModule,
+  MatDialogModule
 ];
 
 @NgModule({

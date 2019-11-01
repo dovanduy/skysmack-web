@@ -4,7 +4,8 @@ import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'ss-signature-pad-editor-dialog',
-  templateUrl: './signature-pad-editor-dialog.component.html'
+  templateUrl: './signature-pad-editor-dialog.component.html',
+  styleUrls: ['./signature-pad-editor-dialog.component.scss']
 })
 export class SignaturePadEditorDialogComponent implements OnInit, AfterViewInit {
   private canvas: HTMLCanvasElement;
@@ -35,10 +36,6 @@ export class SignaturePadEditorDialogComponent implements OnInit, AfterViewInit 
     this.innerHeight = window.innerHeight;
   }
 
-  public closeSignaturePad(): void {
-    this.dialog.close();
-  }
-
   public clearPad(): void {
     this.signaturePad.clear();
   }
@@ -47,3 +44,5 @@ export class SignaturePadEditorDialogComponent implements OnInit, AfterViewInit 
     const result = this.signaturePad.toDataURL();
   }
 }
+
+
