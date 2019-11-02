@@ -9,6 +9,7 @@
     "@skysmack/framework",
     "@skysmack/redux",
     "@skysmack/packages-siteminder",
-    "@skysmack/packages-skysmack-core"
+    "@skysmack/packages-skysmack-core",
+    "@skysmack/ng-lodgings"
   ]
 }
