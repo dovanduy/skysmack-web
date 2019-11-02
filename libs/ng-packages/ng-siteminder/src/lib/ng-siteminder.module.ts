@@ -5,7 +5,7 @@ import { registerRedux } from '@skysmack/ng-framework';
 import { NgSiteMinderChannelsEpics } from './channels/redux/ng-siteminder-channels-epics';
 import { NgSiteMinderRatePlansEpics } from './rate-plans/redux/ng-siteminder-rate-plans-epics';
 import { NgSiteMinderChannelManagerEpics } from './channel-manager/redux/ng-siteminder-channel-manager-epics';
-import { NgSiteMinderLodgingTypeRatePlanChannelsEpics } from './siteminder-lodging-type-rate-plan-channels';
+import { NgSiteMinderLodgingTypeRatePlanChannelsEpics } from './lodging-type-rate-plan-channels/redux/ng-siteminder-lodging-type-rate-plan-channels-epics';
 
 @NgModule({
   imports: [],

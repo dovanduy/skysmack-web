@@ -31,7 +31,8 @@ export class NgSiteMinderLodgingTypeRatePlanChannelsEpics extends RecordEpicsBas
                 rsqlIdSelector: 'id',
                 skysmackStore: this.skysmackStore,
                 store: this.lodgingTypeStore,
-                actions: this.lodgingTypeActions
+                actions: this.lodgingTypeActions,
+                dependencyIndexes: [0, 1, 0]
             }),
             ...getReadDependencies({
                 prefix: SITE_MINDER_LODGING_TYPE_RATE_PLAN_CHANNELS_REDUX_KEY,

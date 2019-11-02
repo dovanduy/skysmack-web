@@ -4,4 +4,4 @@ export * from './siteminder/index';
 export * from './channels/index';
 export * from './rate-plans/index';
 export * from './channel-manager/index';
-export * from './siteminder-lodging-type-rate-plan-channels';
+export * from './lodging-type-rate-plan-channels';
