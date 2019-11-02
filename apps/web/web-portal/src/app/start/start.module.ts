@@ -11,7 +11,7 @@ import { NgSkysmackModule, NgSkysmackEpics } from '@skysmack/ng-skysmack';
 import { SKYSMACK_REDUCER_KEY, skysmackReducer } from '@skysmack/packages-skysmack-core';
 import { LanguageService } from '@skysmack/ng-translation';
 import { GlobalProperties } from '@skysmack/framework';
-import { fieldReducer, settingsReducer } from '@skysmack/redux';
+import { fieldsReducer, settingsReducer } from '@skysmack/redux';
 
 import { FrontPageComponent } from './components/front-page/front-page.component';
 import { FallBackComponent } from './components/fall-back/fall-back.component';
@@ -79,7 +79,7 @@ export class StartModule {
   ) {
     configureRedux(ngRedux, ngReduxRouter, reduxOfflineConfiguration);
     registerRedux(SKYSMACK_REDUCER_KEY, skysmackReducer, skysmackEpics);
-    registerRedux('fields', fieldReducer, fieldEpics);
+    registerRedux('fields', fieldsReducer, fieldEpics);
     registerRedux('settings', settingsReducer, settingsEpics);
     GlobalProperties.production = environment.production;
     coalescingResolver.init();

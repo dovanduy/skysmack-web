@@ -20,8 +20,8 @@ export class FieldState {
     availableFields: StrIndex<StrIndex<LocalObject<FieldValueProviderViewModel, string>>> = {};
 }
 
-export function fieldReducer(state: FieldState = new FieldState(), action: any): FieldState {
-    state = sharedReducer(state, action, new FieldState(), 'fields');
+export function fieldsReducer(state: FieldState = new FieldState(), action: any): FieldState {
+    state = sharedReducer(state, action, new FieldState(), 'fields', ['availableFields']);
     let newState = Object.assign({}, state);
 
     switch (action.type) {
