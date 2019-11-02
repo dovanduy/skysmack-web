@@ -16,9 +16,9 @@ export class SiteMinderUi {
     public hideRestrictions: boolean;
     public hideAll: boolean;
     public hideAvailability: boolean;
-    public channels: number[];
-    public ratePlans: number[];
-    public lodgingTypes: number[];
+    public showChannels: number[];
+    public showRatePlans: number[];
+    public hideLodgingTypes: number[];
 
     constructor(init?: Partial<SiteMinderUi>) {
         Object.assign(this, init);
@@ -70,7 +70,7 @@ export function siteMinderReducer(state = new SiteMinderState(), action: any): S
             const castedAction: ReduxAction<{ packagePath: string, value: number[] }> = action;
             const { packagePath, value } = castedAction.payload;
             newState.ui[packagePath] = newState.ui[packagePath] ? newState.ui[packagePath] : new SiteMinderUi({});
-            newState.ui[packagePath].channels = value;
+            newState.ui[packagePath].showChannels = value;
 
             return newState;
         }
@@ -78,7 +78,7 @@ export function siteMinderReducer(state = new SiteMinderState(), action: any): S
             const castedAction: ReduxAction<{ packagePath: string, value: number[] }> = action;
             const { packagePath, value } = castedAction.payload;
             newState.ui[packagePath] = newState.ui[packagePath] ? newState.ui[packagePath] : new SiteMinderUi({});
-            newState.ui[packagePath].ratePlans = value;
+            newState.ui[packagePath].showRatePlans = value;
 
             return newState;
         }
@@ -86,7 +86,7 @@ export function siteMinderReducer(state = new SiteMinderState(), action: any): S
             const castedAction: ReduxAction<{ packagePath: string, value: number[] }> = action;
             const { packagePath, value } = castedAction.payload;
             newState.ui[packagePath] = newState.ui[packagePath] ? newState.ui[packagePath] : new SiteMinderUi({});
-            newState.ui[packagePath].lodgingTypes = value;
+            newState.ui[packagePath].hideLodgingTypes = value;
 
             return newState;
         }

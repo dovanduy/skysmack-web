@@ -39,23 +39,23 @@ export class NgSiteMinderStore {
 
     public getChannelsUi(packagePath: string): Observable<number[]> {
         return this.getUiState(packagePath).pipe(
-            map(uiState => uiState.channels ? uiState.channels : []),
+            map(uiState => uiState.showChannels ? uiState.showChannels : []),
         );
     }
 
     public getRatePlansUi(packagePath: string): Observable<number[]> {
         return this.getUiState(packagePath).pipe(
-            map(uiState => uiState.ratePlans ? uiState.ratePlans : []),
+            map(uiState => uiState.showRatePlans ? uiState.showRatePlans : []),
         );
     }
 
     public getLodgingTypesUi(packagePath: string): Observable<number[]> {
         return this.getUiState(packagePath).pipe(
-            map(uiState => uiState.lodgingTypes ? uiState.lodgingTypes : []),
+            map(uiState => uiState.hideLodgingTypes ? uiState.hideLodgingTypes : []),
         );
     }
 
-    private getUiState(packagePath: string): Observable<SiteMinderUi> {
+    public getUiState(packagePath: string): Observable<SiteMinderUi> {
         return this.getState().pipe(
             map(state => state.ui[packagePath]),
             safeUndefinedTo('object')
