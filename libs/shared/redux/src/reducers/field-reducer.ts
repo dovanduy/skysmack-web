@@ -21,7 +21,7 @@ export class FieldState {
 }
 
 export function fieldsReducer(state: FieldState = new FieldState(), action: any): FieldState {
-    state = sharedReducer(state, action, new FieldState(), 'fields', ['availableFields']);
+    state = sharedReducer(state, action, new FieldState(), 'fields', ['localRecords', 'availableFields']);
     let newState = Object.assign({}, state);
 
     switch (action.type) {
