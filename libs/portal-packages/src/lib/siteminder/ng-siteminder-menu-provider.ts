@@ -11,6 +11,7 @@ import { SiteMinderChannelsIndexComponent } from './channels/components/sitemind
 import { SiteMinderPermissions } from '@skysmack/packages-siteminder';
 import { SiteMinderRatePlansIndexComponent } from './rate-plans/components/siteminder-rate-plans-index/siteminder-rate-plans-index.component';
 import { SiteMinderLodgingTypeRatePlanChannelsIndexComponent } from './lodging-type-rate-plan-channels';
+import { SiteMinderLodgingTypeRatePlansIndexComponent } from './lodging-type-rate-plans/components/siteminder-lodging-type-rate-plans-index/siteminder-lodging-type-rate-plans-index.component';
 
 @Injectable({ providedIn: 'root' })
 export class NgSiteMinderMenuProvider implements MenuProvider {
@@ -18,7 +19,8 @@ export class NgSiteMinderMenuProvider implements MenuProvider {
     private translationPrefix = 'SITE_MINDER.INDEX.';
     private channelsTranslationPrefix = 'SITE_MINDER_CHANNELS.INDEX.';
     private ratePlansTranslationPrefix = 'SITE_MINDER_RATE_PLANS.INDEX.';
-    private LodgingTypeRatePlanChannelPrefix = 'SITE_MINDER_LODGING_TYPE_RATE_PLAN_CHANNELS.INDEX.'
+    private lodgingTypeRatePlanPrefix = 'SITE_MINDER_LODGING_TYPE_RATE_PLANS.INDEX.';
+    private lodgingTypeRatePlanChannelPrefix = 'SITE_MINDER_LODGING_TYPE_RATE_PLAN_CHANNELS.INDEX.';
 
     constructor(
         private store: NgSkysmackStore
@@ -29,6 +31,7 @@ export class NgSiteMinderMenuProvider implements MenuProvider {
             getMenuEntries<MenuArea>(packagePath, SiteMinderTypeId, componentKey, SiteMinderIndexComponent.COMPONENT_KEY, this.getSiteMinderMenuAreas, this.store),
             getMenuEntries<MenuArea>(packagePath, SiteMinderTypeId, componentKey, SiteMinderChannelsIndexComponent.COMPONENT_KEY, this.getChannelsMenuAreas, this.store),
             getMenuEntries<MenuArea>(packagePath, SiteMinderTypeId, componentKey, SiteMinderRatePlansIndexComponent.COMPONENT_KEY, this.getRatePlansMenuAreas, this.store),
+            getMenuEntries<MenuArea>(packagePath, SiteMinderTypeId, componentKey, SiteMinderLodgingTypeRatePlansIndexComponent.COMPONENT_KEY, this.getLodgingTypeRatePlansMenuAreas, this.store),
             getMenuEntries<MenuArea>(packagePath, SiteMinderTypeId, componentKey, SiteMinderLodgingTypeRatePlanChannelsIndexComponent.COMPONENT_KEY, this.getLodgingTypeRatePlanChannelsMenuAreas, this.store)
         );
     };
@@ -38,6 +41,7 @@ export class NgSiteMinderMenuProvider implements MenuProvider {
             getMenuEntries<MenuItem>(packagePath, SiteMinderTypeId, componentKey, SiteMinderIndexComponent.COMPONENT_KEY, this.getSiteMinderMenuItems, this.store),
             getMenuEntries<MenuItem>(packagePath, SiteMinderTypeId, componentKey, SiteMinderChannelsIndexComponent.COMPONENT_KEY, this.getChannelsMenuItems, this.store),
             getMenuEntries<MenuItem>(packagePath, SiteMinderTypeId, componentKey, SiteMinderRatePlansIndexComponent.COMPONENT_KEY, this.getRatePlansMenuItems, this.store),
+            getMenuEntries<MenuItem>(packagePath, SiteMinderTypeId, componentKey, SiteMinderLodgingTypeRatePlansIndexComponent.COMPONENT_KEY, this.getLodgingTypeRatePlansMenuItems, this.store),
             getMenuEntries<MenuItem>(packagePath, SiteMinderTypeId, componentKey, SiteMinderLodgingTypeRatePlanChannelsIndexComponent.COMPONENT_KEY, this.getLodgingTypeRatePlanChannelsMenuItems, this.store)
         );
     };
@@ -115,6 +119,15 @@ export class NgSiteMinderMenuProvider implements MenuProvider {
                 permissions: [],
                 providedIn: [SIDEBAR]
             }),
+            new MenuItem({
+                url: 'lodging-type-rate-plans',
+                displayName: this.translationPrefix + 'LODGING_TYPE_RATE_PLANS',
+                area: 'manage',
+                order: 1,
+                icon: 'description',
+                permissions: [],
+                providedIn: [SIDEBAR]
+            }),
         ];
     }
 
@@ -156,12 +169,12 @@ export class NgSiteMinderMenuProvider implements MenuProvider {
         return [
             new MenuArea({
                 area: 'actions',
-                translationPrefix: this.ratePlansTranslationPrefix,
+                translationPrefix: this.lodgingTypeRatePlanChannelPrefix,
                 order: 1
             }),
             new MenuArea({
                 area: 'manage',
-                translationPrefix: this.ratePlansTranslationPrefix,
+                translationPrefix: this.lodgingTypeRatePlanChannelPrefix,
                 order: 2
             })
         ];
@@ -171,7 +184,37 @@ export class NgSiteMinderMenuProvider implements MenuProvider {
         return [
             new MenuItem({
                 url: 'create',
-                displayName: this.ratePlansTranslationPrefix + 'CREATE',
+                displayName: this.lodgingTypeRatePlanChannelPrefix + 'CREATE',
+                area: 'actions',
+                order: 1,
+                icon: 'add',
+                permissions: [],
+                providedIn: [SIDEBAR, SPEEDDIAL]
+            }),
+            setBackButton(packagePath)
+        ];
+    }
+
+    private getLodgingTypeRatePlansMenuAreas = () => {
+        return [
+            new MenuArea({
+                area: 'actions',
+                translationPrefix: this.lodgingTypeRatePlanPrefix,
+                order: 1
+            }),
+            new MenuArea({
+                area: 'manage',
+                translationPrefix: this.lodgingTypeRatePlanPrefix,
+                order: 2
+            })
+        ];
+    };
+
+    private getLodgingTypeRatePlansMenuItems = (packagePath: string): MenuItem[] => {
+        return [
+            new MenuItem({
+                url: 'create',
+                displayName: this.lodgingTypeRatePlanPrefix + 'CREATE',
                 area: 'actions',
                 order: 1,
                 icon: 'add',

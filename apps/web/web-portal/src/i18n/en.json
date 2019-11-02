@@ -188,35 +188,6 @@
 			"ACTIONS": "Actions"
 		}
 	},
-	"EMAILS_SMTP": {
-		"INDEX": {
-			"CREATE": "Create",
-			"EDIT": "Edit",
-			"DELETE": "Delete",
-			"TEMPLATES": "Templates",
-			"MANAGE": "Manage",
-			"ACTIONS": "Actions",
-			"SETTINGS": "Settings"
-		}
-	},
-	"EMAILS_SMTP_SETTINGS": {
-		"FORM": {
-			"PLACEHOLDERS": {
-				"HOST": "Host",
-				"PORT": "Port",
-				"USERNAME": "Username",
-				"PASSWORD": "Password",
-				"ENABLESSL": "Enable ssl"
-			},
-			"LABELS": {
-				"HOST": "Host",
-				"PORT": "Port",
-				"USERNAME": "Username",
-				"PASSWORD": "Password",
-				"ENABLESSL": "Enable ssl"
-			}
-		}
-	},
 	"ACCOUNT": {
 		"FORM": {
 			"LABELS": {
@@ -324,6 +295,35 @@
 			"UPDATING": "Updating client {{ name }}",
 			"DELETING": "Deleting client {{ name }}",
 			"ERROR": "An error occured with client {{ name }}. Correct and try again."
+		}
+	},
+	"EMAILS_SMTP": {
+		"INDEX": {
+			"CREATE": "Create",
+			"EDIT": "Edit",
+			"DELETE": "Delete",
+			"TEMPLATES": "Templates",
+			"MANAGE": "Manage",
+			"ACTIONS": "Actions",
+			"SETTINGS": "Settings"
+		}
+	},
+	"EMAILS_SMTP_SETTINGS": {
+		"FORM": {
+			"PLACEHOLDERS": {
+				"HOST": "Host",
+				"PORT": "Port",
+				"USERNAME": "Username",
+				"PASSWORD": "Password",
+				"ENABLESSL": "Enable ssl"
+			},
+			"LABELS": {
+				"HOST": "Host",
+				"PORT": "Port",
+				"USERNAME": "Username",
+				"PASSWORD": "Password",
+				"ENABLESSL": "Enable ssl"
+			}
 		}
 	},
 	"IDENTITIES": {
@@ -1299,14 +1299,12 @@
 			"LABELS": {
 				"DESCRIPTION": "Description",
 				"STATEID": "State",
-				"DUEPERIOD": "Due date",
-				"EXPRESSION": "Expression"
+				"DUEPERIOD": "Due date"
 			},
 			"PLACEHOLDERS": {
 				"STATEID": "Choose state",
 				"DESCRIPTION": "Enter description",
-				"DUEPERIOD": "Choose due date",
-				"EXPRESSION": "Enter expression"
+				"DUEPERIOD": "Choose due date"
 			},
 			"VALIDATION": {
 				"STATEID": {
@@ -1317,9 +1315,6 @@
 				},
 				"DUEPERIOD": {
 					"REQUIRED": "Due date is required."
-				},
-				"EXPRESSION": {
-					"REQUIRED": "Expression is required."
 				}
 			},
 			"BUTTONS": {
@@ -1358,38 +1353,6 @@
 			},
 			"CREATE": {
 				"ADD": "Add field"
-			},
-			"FORM": {
-				"LABELS": {
-					"STATEID": "State",
-					"DESCRIPTION": "Description",
-					"EXPRESSION": "Expression",
-					"DUEPERIOD": "Due date"
-				},
-				"PLACEHOLDERS": {
-					"STATEID": "Choose state",
-					"DESCRIPTION": "Enter description",
-					"EXPRESSION": "Enter expression",
-					"DUEPERIOD": "Choose due date"
-				},
-				"VALIDATION": {
-					"STATEID": {
-						"REQUIRED": "State is required."
-					},
-					"DESCRIPTION": {
-						"REQUIRED": "Description is required."
-					},
-					"EXPRESSION": {
-						"REQUIRED": "Expression is required."
-					},
-					"DUEPERIOD": {
-						"REQUIRED": "Due date is required."
-					}
-				},
-				"BUTTONS": {
-					"CREATE": "Create",
-					"EDIT": "Edit"
-				}
 			}
 		},
 		"QUEUE": {
@@ -1437,15 +1400,14 @@
 			"BUTTON_EDIT": "Update"
 		},
 		"INDEX": {
-			"TITLE_EXTRAS": "(recurring assignments)",
+			"TITLE_EXTRAS": "(scheduled assignments)",
 			"ACTIONS": "Actions",
 			"CREATE": "Create",
 			"EDIT": "Edit",
 			"DELETE": "Delete",
 			"MANAGE": "Manage",
 			"FIELDS": "Fields",
-			"BACK": "Back",
-			"STATES": "States"
+			"BACK": "Back"
 		},
 		"QUEUE": {
 			"ADDING": "Adding {{ description }}",
@@ -1461,8 +1423,7 @@
 				"SINGLE_ASSIGNMENTS": "Single assignments",
 				"RECURRING_ASSIGNMENTS": "Scheduled assignments",
 				"TYPES": "Assignment types",
-				"STATES": "Maintenance states",
-				"MANAGE": "Manage"
+				"STATES": "Maintenance states"
 			}
 		}
 	},
@@ -1677,104 +1638,6 @@
 			"UPDATING": "Updating {{ displayName }}",
 			"DELETING": "Deleting {{ displayName }}",
 			"ERROR": "An error occured with {{ displayName }}. Correct and try again."
-		}
-	},
-	"PRODUCTS": {
-		"FORM": {
-			"LABELS": {
-				"NAME": "Name",
-				"PRODUCTTYPEID": "Product type",
-				"PRODUCTSPRICING": "Price"
-			},
-			"PLACEHOLDERS": {
-				"NAME": "Enter name",
-				"PRODUCTTYPEID": "Choose product type"
-			},
-			"VALIDATION": {
-				"NAME": {
-					"REQUIRED": "Name is required."
-				}
-			}
-		},
-		"CREATE": {
-			"CREATE": "Create",
-			"BUTTON_CREATE": "Create"
-		},
-		"EDIT": {
-			"EDIT": "Edit",
-			"BUTTON_EDIT": "Update"
-		},
-		"INDEX": {
-			"CREATE": "Create",
-			"EDIT": "Edit",
-			"DELETE": "Delete",
-			"FIELDS": "Fields",
-			"FIELDS_TITLE": "(fields)",
-			"ITEM": "Item",
-			"MANAGE": "Manage",
-			"ACTIONS": "Actions",
-			"TYPES": "Types"
-		},
-		"FIELDS": {
-			"CREATE": {
-				"ADD": "Add new field"
-			},
-			"EDIT": {
-				"EDITING": "Editing"
-			},
-			"INDEX": {
-				"ACTIONS": "Actions",
-				"CREATE": "Create",
-				"MANAGE": "Manage",
-				"TYPES": "Types",
-				"FIELDS": "Fields",
-				"BACK": "Back"
-			}
-		},
-		"QUEUE": {
-			"ADDING": "Adding {{ name }}",
-			"UPDATING": "Updating {{ name }}",
-			"DELETING": "Deleting {{ name }}",
-			"ERROR": "An error occured with {{ name }}. Correct and try again."
-		}
-	},
-	"PRODUCT_TYPES": {
-		"CREATE": {
-			"CREATE": "Create",
-			"BUTTON_CREATE": "Create"
-		},
-		"EDIT": {
-			"EDIT": "Edit",
-			"BUTTON_EDIT": "Update"
-		},
-		"INDEX": {
-			"TITLE_EXTRAS": "(types)",
-			"ACTIONS": "Actions",
-			"CREATE": "Create",
-			"DELETE": "Delete",
-			"MANAGE": "Manage",
-			"FIELDS": "Fields",
-			"FIELDS_TITLE": "(type fields)",
-			"BACK": "Back"
-		},
-		"FORM": {
-			"LABELS": {
-				"NAME": "Name"
-			},
-			"PLACEHOLDERS": {
-				"NAME": "Enter name"
-			},
-			"VALIDATION": {
-				"NAME": {
-					"REQUIRED": "Name is required."
-				}
-			}
-		},
-		"QUEUE": {
-			"ADDING": "Adding {{ name }}",
-			"UPDATING": "Updating {{ name }}",
-			"DELETING": "Deleting {{ name }}",
-			"ERROR": "An error occured with {{ name }}. Correct and try again."
 		}
 	},
 	"PRODUCT_PRICE_CHANGES": {
@@ -2021,6 +1884,104 @@
 			"UPDATING": "Updating the product sale price with the price: {{ price }}",
 			"DELETING": "Deleting the product sale price with the price: {{ price }}",
 			"ERROR": "An error occured with the product sale price with the price: {{ price }}. Correct and try again."
+		}
+	},
+	"PRODUCTS": {
+		"FORM": {
+			"LABELS": {
+				"PRODUCTSPRICING": "Price",
+				"NAME": "Name",
+				"PRODUCTTYPEID": "Product type"
+			},
+			"PLACEHOLDERS": {
+				"NAME": "Enter name",
+				"PRODUCTTYPEID": "Choose product type"
+			},
+			"VALIDATION": {
+				"NAME": {
+					"REQUIRED": "Name is required."
+				}
+			}
+		},
+		"CREATE": {
+			"CREATE": "Create",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDIT": "Edit",
+			"BUTTON_EDIT": "Update"
+		},
+		"INDEX": {
+			"CREATE": "Create",
+			"EDIT": "Edit",
+			"DELETE": "Delete",
+			"FIELDS": "Fields",
+			"FIELDS_TITLE": "(fields)",
+			"ITEM": "Item",
+			"MANAGE": "Manage",
+			"ACTIONS": "Actions",
+			"TYPES": "Types"
+		},
+		"FIELDS": {
+			"CREATE": {
+				"ADD": "Add new field"
+			},
+			"EDIT": {
+				"EDITING": "Editing"
+			},
+			"INDEX": {
+				"ACTIONS": "Actions",
+				"CREATE": "Create",
+				"MANAGE": "Manage",
+				"TYPES": "Types",
+				"FIELDS": "Fields",
+				"BACK": "Back"
+			}
+		},
+		"QUEUE": {
+			"ADDING": "Adding {{ name }}",
+			"UPDATING": "Updating {{ name }}",
+			"DELETING": "Deleting {{ name }}",
+			"ERROR": "An error occured with {{ name }}. Correct and try again."
+		}
+	},
+	"PRODUCT_TYPES": {
+		"CREATE": {
+			"CREATE": "Create",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDIT": "Edit",
+			"BUTTON_EDIT": "Update"
+		},
+		"INDEX": {
+			"TITLE_EXTRAS": "(types)",
+			"ACTIONS": "Actions",
+			"CREATE": "Create",
+			"DELETE": "Delete",
+			"MANAGE": "Manage",
+			"FIELDS": "Fields",
+			"FIELDS_TITLE": "(type fields)",
+			"BACK": "Back"
+		},
+		"FORM": {
+			"LABELS": {
+				"NAME": "Name"
+			},
+			"PLACEHOLDERS": {
+				"NAME": "Enter name"
+			},
+			"VALIDATION": {
+				"NAME": {
+					"REQUIRED": "Name is required."
+				}
+			}
+		},
+		"QUEUE": {
+			"ADDING": "Adding {{ name }}",
+			"UPDATING": "Updating {{ name }}",
+			"DELETING": "Deleting {{ name }}",
+			"ERROR": "An error occured with {{ name }}. Correct and try again."
 		}
 	},
 	"LODGING_PRICES": {
@@ -2426,11 +2387,65 @@
 			"EDIT": "Edit",
 			"DELETE": "Delete",
 			"FIELDS": "Fields",
-			"FIELDS_TITLE": "(fields)",
 			"ITEM": "Item",
 			"MANAGE": "Manage",
 			"ACTIONS": "Actions",
-			"TITLE_EXTRAS": "(rate plans)"
+			"TITLE_EXTRAS": "(Lodging types, rateplans, and channel relations)"
+		}
+	},
+	"SITE_MINDER_LODGING_TYPE_RATE_PLANS": {
+		"FORM": {
+			"LABELS": {
+				"LODGINGTYPEID": "Lodging type",
+				"RATEPLANID": "Rate plan"
+			},
+			"PLACEHOLDERS": {
+				"LODGINGTYPEID": "Lodging type",
+				"RATEPLANID": "Rate plan"
+			},
+			"VALIDATION": {
+				"LODGINGTYPEID": {
+					"REQUIRED": "Lodging type is required."
+				},
+				"RATEPLANID": {
+					"REQUIRED": "Rate plan is required."
+				}
+			}
+		},
+		"FIELDS": {
+			"CREATE": {
+				"ADD": "Add new field"
+			},
+			"EDIT": {
+				"EDITING": "Editing"
+			},
+			"INDEX": {
+				"ACTIONS": "Actions",
+				"CREATE": "Create new field",
+				"OTHER": "Other",
+				"BACK": "Back",
+				"FIELDS": "Fields",
+				"EDIT": "Edit"
+			}
+		},
+		"CREATE": {
+			"CREATE": "Create",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDIT": "Edit",
+			"BUTTON_EDIT": "Update"
+		},
+		"INDEX": {
+			"PACKAGES": "Packages",
+			"CREATE": "Create",
+			"EDIT": "Edit",
+			"DELETE": "Delete",
+			"FIELDS": "Fields",
+			"ITEM": "Item",
+			"MANAGE": "Manage",
+			"ACTIONS": "Actions",
+			"TITLE_EXTRAS": "(Lodgingtype Rateplans)"
 		}
 	},
 	"SITE_MINDER_RATE_PLANS": {
@@ -2507,7 +2522,8 @@
 			"ACTIONS": "Actions",
 			"CHANNELS": "Channels",
 			"RATE_PLANS": "Rate plans",
-			"LODGING_TYPE_RATE_PLAN_CHANNELS": "Relate rates and channels to rooms"
+			"LODGING_TYPE_RATE_PLAN_CHANNELS": "Relate rooms-rate-plans with channels",
+			"LODGING_TYPE_RATE_PLANS": "Relate rateplans to rooms"
 		}
 	},
 	"CONNECTIONS": {
@@ -3252,126 +3268,6 @@
 			"UPDATING": "Updating settings",
 			"DELETING": "Deleting settings",
 			"ERROR": "An error occured with settings. Correct and try again."
-		}
-	},
-	"ACCOUNTS": {
-		"FORM": {
-			"LABELS": {
-				"TOKEN": "Token",
-				"EMAIL": "Email",
-				"CURRENTPASSWORD": "Current password",
-				"NEWPASSWORD": "New password",
-				"CONFIRMNEWPASSWORD": "Confirm new password"
-			},
-			"PLACEHOLDERS": {
-				"TOKEN": "Token",
-				"EMAIL": "Email",
-				"CURRENTPASSWORD": "Current password",
-				"NEWPASSWORD": "New password",
-				"CONFIRMNEWPASSWORD": "Confirm new password"
-			},
-			"VALIDATION": {
-				"TOKEN": {
-					"REQUIRED": "Token is required"
-				},
-				"EMAIL": {
-					"REQUIRED": "Email is required.",
-					"INVALIDEMAIL": "Please type a valid email"
-				},
-				"CURRENTPASSWORD": {
-					"REQUIRED": "Current password is required."
-				},
-				"NEWPASSWORD": {
-					"REQUIRED": "New password is required."
-				},
-				"CONFIRMNEWPASSWORD": {
-					"REQUIRED": "Please repeat the new password.",
-					"PASSWORDMISMATCH": "Passwords must match."
-				}
-			}
-		},
-		"CHANGE_PASSWORD": {
-			"TITLE": "Change password",
-			"BUTTON_EDIT": "Update"
-		},
-		"CONFIRM_EMAIL": {
-			"TITLE": "Confirm email",
-			"BUTTON_EDIT": "Submit"
-		},
-		"RESET_PASSWORD": {
-			"TITLE": "Reset password",
-			"BUTTON_EDIT": "Submit"
-		},
-		"FORGOT_PASSWORD": {
-			"TITLE": "Forgot password",
-			"BUTTON_EDIT": "Submit",
-			"CHECK_EMAIL_TITLE": "Check your email",
-			"CHECK_EMAIL": "You will find instructions on how to reset your password. Remember to check your spam folder."
-		},
-		"INDEX": {
-			"ACTIONS": "Actions",
-			"MANAGE": "Manage",
-			"CHANGE_PASSWORD": "Change password",
-			"FORGOT_PASSWORD": "Forgot password",
-			"RESET_PASSWORD": "Reset password",
-			"CONFIRM_EMAIL": "Confirm email"
-		},
-		"NOTIFICATIONS": {},
-		"QUEUE": {}
-	},
-	"RECURRING_ASSIGNMENTS": {
-		"FORM": {
-			"LABELS": {
-				"ASSIGNMENTTYPEID": "Assignment type",
-				"ENTITYID": "Entity",
-				"START": "Start date",
-				"END": "End date"
-			},
-			"PLACEHOLDERS": {
-				"ASSIGNMENTTYPEID": "Assignment type",
-				"ENTITYID": "Entity",
-				"START": "Start date",
-				"END": "End date"
-			},
-			"VALIDATION": {
-				"ASSIGNMENTTYPEID": {
-					"REQUIRED": "Assignment type is required."
-				},
-				"ENTITYID": {
-					"REQUIRED": "Entity is required."
-				},
-				"START": {
-					"REQUIRED": "Start date is required."
-				},
-				"END": {
-					"REQUIRED": "End date is required."
-				}
-			}
-		},
-		"CREATE": {
-			"CREATE": "Create",
-			"BUTTON_CREATE": "Create"
-		},
-		"EDIT": {
-			"EDIT": "Edit",
-			"BUTTON_EDIT": "Update"
-		},
-		"INDEX": {
-			"TITLE_EXTRAS": "(recurring assignments)",
-			"ACTIONS": "Actions",
-			"CREATE": "Create",
-			"EDIT": "Edit",
-			"DELETE": "Delete",
-			"MANAGE": "Manage",
-			"FIELDS": "Fields",
-			"STATES": "States",
-			"BACK": "Back"
-		},
-		"QUEUE": {
-			"ADDING": "Adding {{ description }}",
-			"UPDATING": "Updating {{ description }}",
-			"DELETING": "Deleting {{ description }}",
-			"ERROR": "An error occured with {{ description }}. Correct and try again."
 		}
 	},
 	"FILE_STORAGE": {

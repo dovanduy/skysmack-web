@@ -1,15 +1,13 @@
 {
-    "SITE_MINDER_LODGING_TYPE_RATE_PLAN_CHANNELS": {
+    "SITE_MINDER_LODGING_TYPE_RATE_PLANS": {
         "FORM": {
             "LABELS": {
                 "LODGINGTYPEID": "Lodging type",
-                "RATEPLANID": "Rate plan",
-                "CHANNELID": "Channel"
+                "RATEPLANID": "Rate plan"
             },
             "PLACEHOLDERS": {
                 "LODGINGTYPEID": "Lodging type",
-                "RATEPLANID": "Rate plan",
-                "CHANNELID": "Channel"
+                "RATEPLANID": "Rate plan"
             },
             "VALIDATION": {
                 "LODGINGTYPEID": {
@@ -17,9 +15,6 @@
                 },
                 "RATEPLANID": {
                     "REQUIRED": "Rate plan is required."
-                },
-                "CHANNELID": {
-                    "REQUIRED": "Channel is required."
                 }
             }
         },
@@ -56,7 +51,7 @@
             "ITEM": "Item",
             "MANAGE": "Manage",
             "ACTIONS": "Actions",
-            "TITLE_EXTRAS": "(Lodging types, rateplans, and channel relations)"
+            "TITLE_EXTRAS": "(Lodgingtype Rateplans)"
         }
     }
 }

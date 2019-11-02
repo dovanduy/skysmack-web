@@ -18,12 +18,12 @@ export class NgSiteMinderLodgingTypeRatePlanChannelsStore extends NgRecordStore<
         new DependencyOptions({
             relationSelector: 'ratePlan',
             relationIdSelector: 'ratePlanId',
-            stateSelector: 'ratePlans'
+            stateSelector: 'siteMinderRatePlans'
         }),
         new DependencyOptions({
             relationSelector: 'channel',
             relationIdSelector: 'channelId',
-            stateSelector: 'channels'
+            stateSelector: 'siteMinderChannels'
         }),
     ];
 

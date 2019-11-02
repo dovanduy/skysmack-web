@@ -12,7 +12,8 @@
             "ACTIONS": "Actions",
             "CHANNELS": "Channels",
             "RATE_PLANS": "Rate plans",
-            "LODGING_TYPE_RATE_PLAN_CHANNELS": "Relate rates and channels to rooms"
+            "LODGING_TYPE_RATE_PLAN_CHANNELS": "Relate rooms-rate-plans with channels",
+            "LODGING_TYPE_RATE_PLANS": "Relate rateplans to rooms"
         }
     }
 }

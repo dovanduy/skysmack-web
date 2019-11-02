@@ -18,7 +18,7 @@ export class NgSiteMinderLodgingTypeRatePlansStore extends NgRecordStore<SiteMin
         new DependencyOptions({
             relationSelector: 'ratePlan',
             relationIdSelector: 'ratePlanId',
-            stateSelector: 'ratePlans'
+            stateSelector: 'siteMinderRatePlans'
         })
     ];
 

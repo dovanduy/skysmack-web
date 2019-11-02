@@ -15,6 +15,7 @@ import { siteminderChannelsComponents, siteminderChannelsEntryComponents } from 
 import { siteminderRatePlansComponents, siteminderRatePlansEntryComponents } from './rate-plans/components/siteminder-rate-plans-components';
 import { NgLodgingsModule } from '@skysmack/ng-lodgings';
 import { siteminderLodgingTypeRatePlanChannelsComponents, siteminderLodgingTypeRatePlanChannelsEntryComponents } from './lodging-type-rate-plan-channels';
+import { siteminderLodgingTypeRatePlansComponents, siteminderLodgingTypeRatePlansEntryComponents } from './lodging-type-rate-plans/components/siteminder-lodging-type-rate-plans-components';
 
 @NgModule({
   imports: [
@@ -32,12 +33,14 @@ import { siteminderLodgingTypeRatePlanChannelsComponents, siteminderLodgingTypeR
     ...siteminderComponents,
     ...siteminderChannelsComponents,
     ...siteminderRatePlansComponents,
+    ...siteminderLodgingTypeRatePlansComponents,
     ...siteminderLodgingTypeRatePlanChannelsComponents,
   ],
   entryComponents: [
     ...siteminderEntryComponents,
     ...siteminderChannelsEntryComponents,
     ...siteminderRatePlansEntryComponents,
+    ...siteminderLodgingTypeRatePlansEntryComponents,
     ...siteminderLodgingTypeRatePlanChannelsEntryComponents
   ],
   providers: []
