@@ -43,13 +43,16 @@ export class FieldsIndexComponent extends RecordIndexComponent<any, any, any> im
   ngOnInit() {
     this.additionalPaths$ = this.activatedRoute.data.pipe(map(data => data.additionalPaths));
     super.ngOnInit();
-    combineLatest(
+    this.subscriptionHandler.register(combineLatest(
       this.loadedPackage$,
       this.activatedRoute.data
     ).pipe(
-      map(([loadedPackage, data]) => this.title.setTitle(loadedPackage._package.name, data.areaKey ? `${data.areaKey.toUpperCase()}.INDEX.FIELDS_TITLE` : undefined)),
+      map(([loadedPackage, data]) => {
+        this.fieldsConfig.setAdditionalPaths(data.additionalPaths ? data.additionalPaths : []);
+        this.title.setTitle(loadedPackage._package.name, data.areaKey ? `${data.areaKey.toUpperCase()}.INDEX.FIELDS_TITLE` : undefined);
+      }),
       take(1)
-    ).subscribe()
+    ).subscribe());
   }
 
   protected storeGet() {

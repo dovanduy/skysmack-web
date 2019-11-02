@@ -31,6 +31,10 @@ export class NgFieldsConfig extends FieldsConfig<FieldSchemaViewModel, string> {
         super(fieldProviders, []);
     }
 
+    public setAdditionalPaths(additionalPaths: string[]): void {
+        this.additionalPaths = additionalPaths;
+    }
+
     /**
      * Gets the fields for the form used to create or edit a dynamic field.
      * @param availableFields Possible dynamic fields to create. Recieved from the backend.
