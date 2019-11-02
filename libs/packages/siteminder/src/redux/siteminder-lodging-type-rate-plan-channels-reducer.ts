@@ -1,7 +1,7 @@
 import { LocalPageTypes, StrIndex, LocalObject } from '@skysmack/framework';
 import { AppState, ReduxAction, RecordState, recordReducersBase } from '@skysmack/redux';
 import { sharedReducer } from '@skysmack/redux';
-import { SITE_MINDER_RATE_PLANS_REDUCER_KEY, SITE_MINDER_LODGING_TYPE_RATE_PLAN_CHANNES_REDUX_KEY } from '../constants/constants';
+import { SITE_MINDER_RATE_PLANS_REDUCER_KEY, SITE_MINDER_LODGING_TYPE_RATE_PLAN_CHANNELS_REDUX_KEY } from '../constants/constants';
 import { LodgingTypeRatePlanChannel, LodgingTypeRatePlanChannelKey } from '../models/lodging-type-rate-plan-channel';
 
 /**
@@ -16,7 +16,7 @@ export class SiteMinderLodgingTypeRatePlanChannelsState implements RecordState<L
     public localRecords: StrIndex<StrIndex<LocalObject<LodgingTypeRatePlanChannel, LodgingTypeRatePlanChannelKey>>> = {};
 }
 
-export function siteMinderLodgingTypeRatePlanChannelsReducer(state = new SiteMinderLodgingTypeRatePlanChannelsState(), action: ReduxAction, prefix: string = SITE_MINDER_LODGING_TYPE_RATE_PLAN_CHANNES_REDUX_KEY): SiteMinderLodgingTypeRatePlanChannelsState {
+export function siteMinderLodgingTypeRatePlanChannelsReducer(state = new SiteMinderLodgingTypeRatePlanChannelsState(), action: ReduxAction, prefix: string = SITE_MINDER_LODGING_TYPE_RATE_PLAN_CHANNELS_REDUX_KEY): SiteMinderLodgingTypeRatePlanChannelsState {
     state = sharedReducer(state, action, new SiteMinderLodgingTypeRatePlanChannelsState(), SITE_MINDER_RATE_PLANS_REDUCER_KEY);
 
     switch (action.type) {

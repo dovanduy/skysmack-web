@@ -21,5 +21,5 @@ export const SITE_MINDER_RATE_PLANS_ADDITIONAL_PATHS = ['rate-plans']; // action
 
 export const SITE_MINDER_LODGING_TYPE_RATE_PLAN_CHANNELS_REDUCER_KEY = 'siteMinderLodgingTypeRatePlanChannels';
 export const SITE_MINDER_LODGING_TYPE_RATE_PLAN_CHANNELS_AREA_KEY = 'site_minder_lodging_type_rate_plan_channels'; // validation, store, menu
-export const SITE_MINDER_LODGING_TYPE_RATE_PLAN_CHANNELS_REDUX_KEY = 'SITE_MINDER_LODGING_TYPE_RATE_PLAN_CHANNES_'; // reducer prefix, action, epics, Requests
+export const SITE_MINDER_LODGING_TYPE_RATE_PLAN_CHANNELS_REDUX_KEY = 'SITE_MINDER_LODGING_TYPE_RATE_PLAN_CHANNELS_'; // reducer prefix, action, epics, Requests
 export const SITE_MINDER_LODGING_TYPE_RATE_PLAN_CHANNELS_ADDITIONAL_PATHS = ['lodgingtype-rateplan-channels']; // actions, requests
