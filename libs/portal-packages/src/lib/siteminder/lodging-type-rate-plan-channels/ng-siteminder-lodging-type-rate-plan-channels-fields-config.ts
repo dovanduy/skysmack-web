@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
-import { LocalObject, LocalObjectStatus, PagedQuery } from '@skysmack/framework';
+import { LocalObject, LocalObjectStatus, PagedQuery, DisplayColumn } from '@skysmack/framework';
 import { LodgingTypeRatePlanChannel, SITE_MINDER_LODGING_TYPE_RATE_PLAN_CHANNELS_AREA_KEY, SITE_MINDER_LODGING_TYPE_RATE_PLAN_CHANNELS_ADDITIONAL_PATHS, LodgingTypeRatePlanChannelKey } from '@skysmack/packages-siteminder';
 
-import { NgSiteMinderLodgingTypeRatePlanChannelsValidation, NgSiteMinderRatePlansActions, NgSiteMinderRatePlansStore, NgSiteMinderChannelsActions, NgSiteMinderChannelsStore } from '@skysmack/ng-siteminder';
-import { LoadedPackage, getPackageDendencyAsStream } from '@skysmack/ng-framework';
-import { FormRule, Field, SelectField } from '@skysmack/ng-dynamic-forms';
+import { NgSiteMinderLodgingTypeRatePlanChannelsValidation, NgSiteMinderRatePlansActions, NgSiteMinderRatePlansStore, NgSiteMinderChannelsActions, NgSiteMinderChannelsStore, NgSiteMinderLodgingTypeRatePlansActions, NgSiteMinderLodgingTypeRatePlansStore } from '@skysmack/ng-siteminder';
+import { LoadedPackage, getPackageDendencyAsStream, convertObservableToBehaviorSubject } from '@skysmack/ng-framework';
+import { FormRule, Field, SelectField, SelectFieldOption } from '@skysmack/ng-dynamic-forms';
 import { HiddenFieldComponent, SelectFieldComponent } from '@skysmack/portal-fields';
 import { FieldProviders, FieldsConfig } from '@skysmack/ng-fields';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
@@ -23,26 +23,55 @@ export class NgSiteMinderLodgingTypeRatePlanChannelsFieldsConfig extends FieldsC
         private skysmackStore: NgSkysmackStore,
         protected lodgingTypeActions: NgLodgingTypesActions,
         protected lodgingTypeStore: NgLodgingTypesStore,
-        protected ratePlanActions: NgSiteMinderRatePlansActions,
-        protected ratePlanStore: NgSiteMinderRatePlansStore,
         protected channelActions: NgSiteMinderChannelsActions,
         protected channelStore: NgSiteMinderChannelsStore,
+        protected ratePlanActions: NgSiteMinderRatePlansActions,
+        protected ratePlanStore: NgSiteMinderRatePlansStore,
+        protected lodgingTypeRatePlanActions: NgSiteMinderLodgingTypeRatePlansActions,
+        protected lodgingTypeRatePlanStore: NgSiteMinderLodgingTypeRatePlansStore
     ) {
         super(fieldProviders, SITE_MINDER_LODGING_TYPE_RATE_PLAN_CHANNELS_ADDITIONAL_PATHS);
     }
 
     protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<LodgingTypeRatePlanChannel, LodgingTypeRatePlanChannelKey>): Field[] {
+        const ratePlans$ = convertObservableToBehaviorSubject(this.ratePlanStore.get(loadedPackage._package.path), []);
         const lodgingPackage$ = getPackageDendencyAsStream(this.skysmackStore, loadedPackage._package.path, [0, 1, 0]);
+        const lodgingTypes$ = convertObservableToBehaviorSubject(lodgingPackage$.pipe(switchMap(lodgingsPackage => this.lodgingTypeStore.get(lodgingsPackage.object.path))), [])
 
         const fields: Field[] = [
             new SelectField({
                 component: SelectFieldComponent,
                 value: entity ? entity.object.lodgingTypeId : undefined,
-                key: 'lodgingTypeId',
-                displayKey: 'lodgingType',
-                displaySubKey: 'object.name',
-                optionsData$: lodgingPackage$.pipe(switchMap(lodgingsPackage => this.lodgingTypeStore.get(lodgingsPackage.object.path))),
+                key: 'lodgingTypeRatePlanId',
+                displayKey: 'lodgingTypeRatePlan',
+                displaySubKey: 'object.lodgingTypeId',
+                optionsData$: this.lodgingTypeRatePlanStore.get(loadedPackage._package.path),
+                modifyDisplayName: (options: SelectFieldOption[], optionsData: any[]) => {
+                    const ratePlans = ratePlans$.getValue();
+                    const lodgingTypes = lodgingTypes$.getValue();
+                    return options.map((option: { displayName: string, value: { ratePlanId: number, lodgingTypeId: number } }) => {
+                        const relatedLodgingType = lodgingTypes.find(lt => lt.object.id === option.value.lodgingTypeId);
+                        const relatedRatePlan = ratePlans.find(rp => rp.object.id === option.value.ratePlanId);
+                        const ltName = relatedLodgingType ? relatedLodgingType.object.name : '';
+                        const rpName = relatedRatePlan ? relatedRatePlan.object.name : '';
+                        return {
+                            displayName: `${ltName} - ${rpName}`,
+                            value: option.value
+                        };
+                    })
+                },
+                displayModifier: (column: DisplayColumn, providedEntity: LocalObject<LodgingTypeRatePlanChannel, LodgingTypeRatePlanChannelKey>) => {
+                    const ratePlans = ratePlans$.getValue();
+                    const lodgingTypes = lodgingTypes$.getValue();
+                    const relatedLodgingType = lodgingTypes.find(lt => lt.object.id === providedEntity.object.lodgingTypeId);
+                    const relatedRatePlan = ratePlans.find(rp => rp.object.id === providedEntity.object.ratePlanId);
+                    const ltName = relatedLodgingType ? relatedLodgingType.object.name : '';
+                    const rpName = relatedRatePlan ? relatedRatePlan.object.name : '';
+                    return `${ltName} - ${rpName}`;
+                },
                 getDependencies: () => {
+                    this.lodgingTypeRatePlanActions.getPaged(loadedPackage._package.path, new PagedQuery());
+                    this.ratePlanActions.getPaged(loadedPackage._package.path, new PagedQuery());
                     lodgingPackage$.pipe(
                         map(lodgingsPackage => {
                             this.lodgingTypeActions.getPaged(lodgingsPackage.object.path, new PagedQuery());
@@ -50,19 +79,6 @@ export class NgSiteMinderLodgingTypeRatePlanChannelsFieldsConfig extends FieldsC
                         take(1)
                     ).subscribe();
                 },
-                validators: [Validators.required],
-                order: 1,
-                showColumn: true
-            }),
-
-            new SelectField({
-                component: SelectFieldComponent,
-                value: entity ? entity.object.ratePlanId : undefined,
-                key: 'ratePlanId',
-                displayKey: 'ratePlan',
-                displaySubKey: 'object.name',
-                optionsData$: this.ratePlanStore.get(loadedPackage._package.path),
-                getDependencies: () => { this.ratePlanActions.getPaged(loadedPackage._package.path, new PagedQuery()); },
                 validators: [Validators.required],
                 order: 1,
                 showColumn: true

@@ -2,21 +2,16 @@
     "SITE_MINDER_LODGING_TYPE_RATE_PLAN_CHANNELS": {
         "FORM": {
             "LABELS": {
-                "LODGINGTYPEID": "Lodging type",
-                "RATEPLANID": "Rate plan",
+                "LODGINGTYPERATEPLANID": "LodgingType Room relation",
                 "CHANNELID": "Channel"
             },
             "PLACEHOLDERS": {
-                "LODGINGTYPEID": "Lodging type",
-                "RATEPLANID": "Rate plan",
+                "LODGINGTYPERATEPLANID": "LodgingType Room relation",
                 "CHANNELID": "Channel"
             },
             "VALIDATION": {
-                "LODGINGTYPEID": {
-                    "REQUIRED": "Lodging type is required."
-                },
-                "RATEPLANID": {
-                    "REQUIRED": "Rate plan is required."
+                "LODGINGTYPERATEPLANID": {
+                    "REQUIRED": "LodgingType Room relation is required."
                 },
                 "CHANNELID": {
                     "REQUIRED": "Channel is required."
