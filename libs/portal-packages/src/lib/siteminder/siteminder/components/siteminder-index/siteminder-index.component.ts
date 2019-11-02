@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, TemplateRef } from '@angular/core';
+import { Component, OnInit, ViewChild, TemplateRef, ChangeDetectionStrategy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { NgSiteMinderStore, NgSiteMinderActions, NgSiteMinderChannelsStore, NgSiteMinderRatePlansStore, NgSiteMinderRatePlansActions, NgSiteMinderChannelsActions } from '@skysmack/ng-siteminder';
@@ -20,7 +20,8 @@ import { SiteminderCell } from '../../../models/siteminder-cell';
 @Component({
   selector: 'ss-siteminder-index',
   templateUrl: './siteminder-index.component.html',
-  styleUrls: ['./siteminder-index.component.scss']
+  styleUrls: ['./siteminder-index.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SiteMinderIndexComponent extends BaseComponent<SiteMinderAppState, unknown> implements OnInit {
   public static COMPONENT_KEY = 'siteminder-index';
@@ -174,6 +175,10 @@ export class SiteMinderIndexComponent extends BaseComponent<SiteMinderAppState, 
   public whenScrolling() {
     if (this.entityList && this.entityList.measureScrollOffset('bottom') < 150) {
     }
+  }
+
+  public trackByRow(index: any, row: SiteminderRow) {
+    return row ? row.date : undefined;
   }
 
   private getDateRows(start: Date, end: Date): Date[] {
