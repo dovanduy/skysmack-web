@@ -11,3 +11,4 @@ export * from './reservation-status';
 export * from './restriction';
 export * from './room-stay-type';
 export * from './lodging-type-rate-plan-channel';
+export * from './lodging-type-rate-plan';
