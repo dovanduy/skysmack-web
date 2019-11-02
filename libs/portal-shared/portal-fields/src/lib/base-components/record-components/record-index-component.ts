@@ -1,15 +1,17 @@
 import { BaseComponent } from '../base-component';
 import { Router, ActivatedRoute } from '@angular/router';
-import { EntityActions, EntityStore } from '@skysmack/redux';
+import { EntityActions, EntityStore, FieldActions, FieldsAppState } from '@skysmack/redux';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { LocalObject, LocalPage, PagedQuery, LoadingState, linq, DisplayColumn, defined, MenuItem } from '@skysmack/framework';
 import { Observable, BehaviorSubject, combineLatest, of } from 'rxjs';
 import { OnInit } from '@angular/core';
 import { Record } from '@skysmack/framework';
-import { map, switchMap, distinctUntilChanged, delay } from 'rxjs/operators';
+import { map, switchMap, distinctUntilChanged, delay, tap } from 'rxjs/operators';
 import { EntityFieldsConfig } from '@skysmack/ng-fields';
 import { EntityComponentPageTitle } from '@skysmack/portal-ui';
 import { MenuItemActionProviders } from '@skysmack/portal-ui';
+import { NgRedux } from '@angular-redux/store';
+import { NgFieldActions } from '@skysmack/ng-framework';
 
 export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey> extends BaseComponent<TAppState, TKey> implements OnInit {
     public pages$: BehaviorSubject<LocalPage<TKey>[]> = new BehaviorSubject<LocalPage<TKey>[]>([]);
@@ -200,7 +202,15 @@ export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey>
     public refresh(): void {
         for (let index = 1; index <= this.currentPageNumber; index++) {
             this.pagedQuery.pageNumber = index;
-            this.actions.getPaged(this.router.url.split('/')[1], this.pagedQuery);
+            this.subscriptionHandler.register(this.activatedRoute.data.pipe(
+                tap((data: { areaKey: string, additionalPaths: string[] }) => {
+                    if (this.actions instanceof NgFieldActions) {
+                        this.actions.getPaged(this.packagePath, this.pagedQuery, data.additionalPaths);
+                    } else {
+                        this.actions.getPaged(this.packagePath, this.pagedQuery);
+                    }
+                })
+            ).subscribe());
         }
     }
 }
