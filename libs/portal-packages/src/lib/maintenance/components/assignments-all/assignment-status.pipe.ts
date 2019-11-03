@@ -26,7 +26,6 @@ export class AssignmentStatusPipe implements PipeTransform {
             default: {
                 return '';
             }
-
         }
     }
 }

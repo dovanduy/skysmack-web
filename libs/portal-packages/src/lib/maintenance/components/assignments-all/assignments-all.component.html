@@ -111,12 +111,28 @@
                             <button mat-icon-button [matMenuTriggerFor]="menu">
                                 <mat-icon>more_vert</mat-icon>
                             </button>
+
+                            <!-- Menu -->
                             <mat-menu #menu="matMenu">
-                                <button mat-menu-item (click)="test()">
-                                    <mat-icon>add</mat-icon>
-                                    <span>Test</span>
-                                </button>
-                                <!-- URL EVENT -->
+                                <ng-container *ngFor="let menuItemAction of menuItemActions">
+                                    <ng-template [inAnyPermission]="menuItemAction.permissions"
+                                        (permissionsChecked)="menuItemAction.display = $event">
+                                        <!-- ACTION EVENT  -->
+                                        <button
+                                            *ngIf="menuItemAction.isActionEvent && (menuItemAction | showMenuItemAction:entity) && menuItemAction.display"
+                                            mat-menu-item
+                                            (click)="updateStatus({ action: menuItemAction.action, value: entity, _this: menuItemAction._this })">
+                                            <mat-icon>{{ menuItemAction.icon }}</mat-icon>
+                                            <span>{{ menuItemAction.displayName | translate }}</span>
+                                        </button>
+                                        <!-- URL EVENT -->
+                                        <button *ngIf="!menuItemAction.isActionEvent && menuItemAction.display"
+                                            mat-menu-item [routerLink]="[menuItemAction.url, entity.objectIdentifier]">
+                                            <mat-icon>{{ menuItemAction.icon }}</mat-icon>
+                                            <span>{{ menuItemAction.displayName | translate }}</span>
+                                        </button>
+                                    </ng-template>
+                                </ng-container>
                             </mat-menu>
                         </td>
                     </tr>

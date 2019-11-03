@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { MenuItem, safeUndefinedTo, LocalObject } from '@skysmack/framework';
+import { MenuItem, safeUndefinedTo, LocalObject, EnumHelpers } from '@skysmack/framework';
 import { EntityComponentPageTitle, MENU_ITEM_ACTIONS_EDIT } from '@skysmack/portal-ui';
 import { NgAssignmentsStore, NgAssignmentsActions } from '@skysmack/ng-maintenance';
 import { Observable } from 'rxjs';
 import { DateOnlyAdapter2 } from './date-only-adapter2';
 import { DateAdapter } from '@angular/material/core';
 import { map } from 'rxjs/operators';
-import { Assignment } from '@skysmack/packages-maintenance';
+import { Assignment, AssignmentStatus } from '@skysmack/packages-maintenance';
+import { __values } from 'tslib';
 
 @Component({
   selector: 'ss-assignments-all',
@@ -22,9 +23,27 @@ export class AssignmentsAllIndexComponent implements OnInit {
   public from: Date;
   public due: Date;
   private packagePath: string;
+  private translationPrefix = 'MAINTENANCE.ASSIGNMENT_ALL.MENU_ITEM_ACTIONS.';
 
   public menuItemActions: MenuItem[] = [
-    new MenuItem().asUrlAction('edit', MENU_ITEM_ACTIONS_EDIT, 'edit'),
+    new MenuItem().asEventAction(`${this.translationPrefix}CREATED`, () => AssignmentStatus.Created, '', this).setShowLogic((entity: LocalObject<Assignment, unknown>) => {
+      return entity.object.status !== AssignmentStatus.Created;
+    }),
+    new MenuItem().asEventAction(`${this.translationPrefix}PENDING`, () => AssignmentStatus.Pending, '', this).setShowLogic((entity: LocalObject<Assignment, unknown>) => {
+      return entity.object.status !== AssignmentStatus.Pending;
+    }),
+    new MenuItem().asEventAction(`${this.translationPrefix}ONGOING`, () => AssignmentStatus.Ongoing, '', this).setShowLogic((entity: LocalObject<Assignment, unknown>) => {
+      return entity.object.status !== AssignmentStatus.Ongoing;
+    }),
+    new MenuItem().asEventAction(`${this.translationPrefix}DONE`, () => AssignmentStatus.Done, '', this).setShowLogic((entity: LocalObject<Assignment, unknown>) => {
+      return entity.object.status !== AssignmentStatus.Done;
+    }),
+    new MenuItem().asEventAction(`${this.translationPrefix}CANCELED`, () => AssignmentStatus.Canceled, '', this).setShowLogic((entity: LocalObject<Assignment, unknown>) => {
+      return entity.object.status !== AssignmentStatus.Canceled;
+    }),
+    new MenuItem().asEventAction(`${this.translationPrefix}FAULTED`, () => AssignmentStatus.Faulted, '', this).setShowLogic((entity: LocalObject<Assignment, unknown>) => {
+      return entity.object.status !== AssignmentStatus.Faulted;
+    })
   ];
 
   constructor(
@@ -59,6 +78,13 @@ export class AssignmentsAllIndexComponent implements OnInit {
 
   public trackByLocalId(index: any, item: LocalObject<any, any>) {
     return item ? item.localId : undefined;
+  }
+
+  private updateStatus(event: { action: () => AssignmentStatus, _this: AssignmentsAllIndexComponent, value?: LocalObject<Assignment, unknown> }): void {
+    const assignment: Assignment = event.value && event.value.object;
+    const status: AssignmentStatus = event.action();
+    if (assignment) {
+    }
   }
 
   private initDates(): void {

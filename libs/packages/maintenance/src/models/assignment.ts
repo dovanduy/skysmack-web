@@ -3,6 +3,7 @@ import { LocalObject } from '@skysmack/framework';
 import { AssignmentType } from './assignment-type';
 
 export class Assignment {
+    public originalTime?: Date;
     public description: string;
     public status: AssignmentStatus;
     public from: Date;
