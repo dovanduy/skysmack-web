@@ -1,11 +1,11 @@
 import { Component, OnInit, ViewChild, TemplateRef, ChangeDetectionStrategy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
-import { NgSiteMinderStore, NgSiteMinderActions, NgSiteMinderChannelsStore, NgSiteMinderRatePlansStore, NgSiteMinderRatePlansActions, NgSiteMinderChannelsActions, NgSiteMinderChannelManagerStore } from '@skysmack/ng-siteminder';
+import { NgSiteMinderStore, NgSiteMinderActions, NgSiteMinderChannelsStore, NgSiteMinderRatePlansStore, NgSiteMinderRatePlansActions, NgSiteMinderChannelsActions, NgSiteMinderChannelManagerStore, NgSiteMinderChannelManagerActions } from '@skysmack/ng-siteminder';
 import { SiteMinderAppState, SITE_MINDER_AREA_KEY, SiteMinderUi } from '@skysmack/packages-siteminder';
 import { BaseComponent } from '@skysmack/portal-fields';
 import { EntityComponentPageTitle } from '@skysmack/portal-ui';
-import { Observable, combineLatest, BehaviorSubject } from 'rxjs';
+import { Observable, combineLatest, BehaviorSubject, of } from 'rxjs';
 import { LodgingColumn } from '../../../models/lodging-column';
 import { map, tap, debounceTime, distinctUntilChanged, switchMap, filter, take } from 'rxjs/operators';
 import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
@@ -15,7 +15,6 @@ import { getPackageDendencyAsStream } from '@skysmack/ng-framework';
 import { RateplanColumn } from '../../../models/rateplan-column';
 import { ChannelColumn } from '../../../models/channel-column';
 import { SiteminderRow } from '../../../models/siteminder-rows';
-import { SiteminderCell } from '../../../models/siteminder-cell';
 import { LodgingCell } from '../../../models/lodging-cell';
 import { RateplanCell } from '../../../models/rateplan-cell';
 import { ChannelCell } from '../../../models/channel-cell';
@@ -55,7 +54,8 @@ export class SiteMinderIndexComponent extends BaseComponent<SiteMinderAppState, 
     private ratePlansActions: NgSiteMinderRatePlansActions,
     private channelsStore: NgSiteMinderChannelsStore,
     private channelsActions: NgSiteMinderChannelsActions,
-    private channelManagerStore: NgSiteMinderChannelManagerStore
+    private channelManagerStore: NgSiteMinderChannelManagerStore,
+    private channelManagerActions: NgSiteMinderChannelManagerActions
   ) {
     super(router, activatedRoute, skysmackStore, title);
   }
@@ -63,7 +63,7 @@ export class SiteMinderIndexComponent extends BaseComponent<SiteMinderAppState, 
   ngOnInit() {
     super.ngOnInit();
     this.title.setTitle('Rate & Restrictions Manager');
-    
+
     let end = new Date();
     end.setDate(end.getDate() + 30);
     this.to$ = new BehaviorSubject<Date>(end);
@@ -77,7 +77,7 @@ export class SiteMinderIndexComponent extends BaseComponent<SiteMinderAppState, 
     );
 
     this.uiOptions$ = this.store.getUiState(this.packagePath).pipe(debounceTime(10));
-    
+
     this.ratePlansActions.getPaged(this.packagePath, new PagedQuery());
     this.channelsActions.getPaged(this.packagePath, new PagedQuery());
 
@@ -113,25 +113,24 @@ export class SiteMinderIndexComponent extends BaseComponent<SiteMinderAppState, 
 
     this.subscriptionHandler.register(combineLatest(
       this.from$,
-      this.to$).pipe(
-        map(([from, to]) => {
-          // Perform actions to get availability, rates etc. from/to
-          
-        })
-      ).subscribe()
-    );
+      this.to$
+    ).pipe(
+      debounceTime(50),
+      map(([from, to]) => {
+        console.log('CALLED')
+        // Perform actions to get availability, rates etc. from/to
+        this.channelManagerActions.getAvailability(this.packagePath, from, to);
+      })
+    ).subscribe());
 
-    this.siteminderRows$ = combineLatest(
+    this.siteminderRows$ = combineLatest([
       this.from$,
       this.to$,
       this.lodgingColumns$
-    ).pipe(
+    ]).pipe(
       debounceTime(50),
-      map(([from, to, lodgingColumns]) => {
-        // this.channelManagerStore.getAvailability(this.packagePath, start, end)
-        // Get the rest of the data from the store... 
-
-        return this.getDateRows(from, to).map(date => {
+      switchMap(([from, to, lodgingColumns]) => {
+        const rows = this.getDateRows(from, to).map(date => {
           return new SiteminderRow({
             date: date,
             lodgings: lodgingColumns.map(lodgingColumn => {
@@ -149,6 +148,15 @@ export class SiteMinderIndexComponent extends BaseComponent<SiteMinderAppState, 
             })
           })
         });
+
+        return combineLatest([
+          of(rows),
+          this.channelManagerStore.getAvailability(this.packagePath, from, to)
+        ])
+      }),
+      map(([rows, availability]) => {
+        console.log({ availability });
+        return rows;
       }),
       tap(() => console.log('rows generated')));
   }

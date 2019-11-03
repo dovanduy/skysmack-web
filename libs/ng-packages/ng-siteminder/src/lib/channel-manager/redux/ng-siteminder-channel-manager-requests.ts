@@ -1,6 +1,6 @@
 import { Injectable, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { ApiDomain, API_DOMAIN_INJECTOR_TOKEN, HttpErrorResponse } from '@skysmack/framework';
+import { ApiDomain, API_DOMAIN_INJECTOR_TOKEN, HttpErrorResponse, getLocalDate } from '@skysmack/framework';
 import { GetAvailabilityPayload, LodgingTypeAvailability, SITE_MINDER_CHANNEL_MANAGER_REDUX_KEY, GetAvailabilitySuccessPayload, GetRatesPayload, GetRatesSuccessPayload, LodgingTypeRate } from '@skysmack/packages-siteminder';
 import { ReduxAction } from '@skysmack/redux';
 import { Observable, of } from 'rxjs';
@@ -17,7 +17,7 @@ export class NgSiteMinderChannelManagerRequests {
     ) { }
 
     public getAvailability(action: ReduxAction<GetAvailabilityPayload>): Observable<ReduxAction<GetAvailabilitySuccessPayload> | ReduxAction<HttpErrorResponse>> {
-        let url = `${this.apiDomain.domain}/${action.payload.packagePath}/availability`;
+        let url = `${this.apiDomain.domain}/${action.payload.packagePath}/availability?start=${getLocalDate(action.payload.start)}&end=${getLocalDate(action.payload.end)}`;
 
         return this.http.get<LodgingTypeAvailability[]>(url, { observe: 'response' })
             .pipe(
