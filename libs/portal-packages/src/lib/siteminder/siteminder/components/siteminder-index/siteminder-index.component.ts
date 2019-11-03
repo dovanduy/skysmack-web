@@ -20,6 +20,8 @@ import { RateplanCell } from '../../../models/rateplan-cell';
 import { ChannelCell } from '../../../models/channel-cell';
 import { RateSummary } from '../../../models/rate-summary';
 import { RateInfo } from '../../../models/rate-info';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { SiteMinderAvailabilityDialogComponent } from '../siteminder-availability-dialog/siteminder-availability-dialog.component';
 
 @Component({
   selector: 'ss-siteminder-index',
@@ -57,7 +59,8 @@ export class SiteMinderIndexComponent extends BaseComponent<SiteMinderAppState, 
     private channelsStore: NgSiteMinderChannelsStore,
     private channelsActions: NgSiteMinderChannelsActions,
     private channelManagerStore: NgSiteMinderChannelManagerStore,
-    private channelManagerActions: NgSiteMinderChannelManagerActions
+    private channelManagerActions: NgSiteMinderChannelManagerActions,    
+    private dialog: MatDialog
   ) {
     super(router, activatedRoute, skysmackStore, title);
   }
@@ -108,7 +111,7 @@ export class SiteMinderIndexComponent extends BaseComponent<SiteMinderAppState, 
           map(([lodgings, rateplans, channels]) =>
             lodgings.map(lodging => {
               return new LodgingColumn({
-                id: lodging.object.id, title: lodging.object.name, rateplans: rateplans.map(rateplan =>
+                id: lodging.object.id, title: lodging.object.name, lodgingType: lodging, rateplans: rateplans.map(rateplan =>
                   new RateplanColumn({
                     id: rateplan.object.id, title: rateplan.object.name, channels: channels.map(channel =>
                       new ChannelColumn({ id: channel.object.id, title: channel.object.name }))
@@ -148,7 +151,7 @@ export class SiteMinderIndexComponent extends BaseComponent<SiteMinderAppState, 
               date: date,
               lodgingCells: lodgingColumns.map(lodgingColumn => {
                 return new LodgingCell({
-                  lodgingId: lodgingColumn.id,
+                  lodgingType: lodgingColumn.lodgingType,
                   availability: availability.find(avail => {
                     return avail.object.lodgingTypeId === lodgingColumn.id && avail.object.date as unknown as string === getLocalDate(date);
                   }),
@@ -181,6 +184,12 @@ export class SiteMinderIndexComponent extends BaseComponent<SiteMinderAppState, 
   }
   public toggleRestrictions(hideRestrictions: boolean) {
     this.actions.updateRestrictionsUi(this.packagePath, hideRestrictions);
+  }
+
+  public editAvailability(lodgingCell: LodgingCell) {
+    this.dialog.open(SiteMinderAvailabilityDialogComponent, {
+      data: lodgingCell
+    } as MatDialogConfig);
   }
 
   public whenScrolling() {

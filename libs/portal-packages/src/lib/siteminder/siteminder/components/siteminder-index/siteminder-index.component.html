@@ -138,19 +138,15 @@
                                     {{ siteminderRow.date | date: 'dd-MM-yyyy' }}
                                 </td>
 
-                                <!-- <ng-container *ngFor="let cell of siteminderRow.cells">
-                                <td>
-                                    <ng-template [ngTemplateOutlet]="cell.template" [ngTemplateOutletContext]="{ data: cell.data }">
-                                    </ng-template>
-                                </td>
-                            </ng-container> -->
-
                                 <ng-container *ngFor="let lodgingCell of siteminderRow.lodgingCells">
                                     <!-- Available -->
                                     <td *ngIf="!uiOptions.hideAvailability"
-                                        class="table-cell mat-cell border-left border-right">
-                                        <ss-siteminder-availability [data]="lodgingCell?.availability">
-                                        </ss-siteminder-availability>
+                                        class="table-cell mat-cell border-left border-right clickable"
+                                        (click)="editAvailability(lodgingCell)">
+                                        <ng-container *ngIf="lodgingCell.availability?.object">
+                                           <span class="label-text">{{ lodgingCell.availability.object.available + lodgingCell.availability.object.availableModifier }}</span>
+                                            {{ lodgingCell.availability.object.availableModifier }}
+                                        </ng-container>
                                     </td>
 
                                     <!-- Rateplan -->
@@ -162,8 +158,7 @@
                                             <!-- Rates -->
                                             <td *ngIf="!uiOptions.hideRates"
                                                 class="table-cell mat-cell border-right-light">
-                                                <ss-siteminder-rate-summary [data]="rateplanCell.rateSummaryCell">
-                                                </ss-siteminder-rate-summary>
+                                                
                                             </td>
                                             <!-- Restrictions -->
                                             <td *ngIf="!uiOptions.hideRestrictions"
@@ -179,16 +174,20 @@
                                             <ng-container *ngIf="!uiOptions.hideRates">
                                                 <td [ngClass]="{ 'border-right-light': true }"
                                                     class="table-cell mat-cell border-right">
-                                                    <ss-siteminder-rate [data]="channelCell.rateInfo">
-                                                    </ss-siteminder-rate>
+                                                    <ng-container *ngIf="channelCell.rateInfo?.object">
+                                                        {{ channelCell.rateInfo?.object?.rate }} 
+                                                    </ng-container>
                                                 </td>
                                             </ng-container>
                                             <!-- Restrictions -->
                                             <ng-container *ngIf="!uiOptions.hideRestrictions">
                                                 <td [ngClass]="{ 'border-right-light': !last }"
                                                     class="table-cell mat-cell border-right">
-                                                    <!-- TODO: Restrinction info -->
-                                                    Restrictions for channel {{ channelCell.channelId }}
+                                                    <ng-container *ngIf="channelCell.rateInfo?.object">
+                                                        {{ channelCell.rateInfo?.object?.restriction }} | 
+                                                        {{ channelCell.rateInfo?.object?.minimumLengthOfStay }} |
+                                                        {{ channelCell.rateInfo?.object?.maximumLengthOfStay }} 
+                                                    </ng-container>
                                                 </td>
                                             </ng-container>
                                         </ng-container>

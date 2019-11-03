@@ -86,9 +86,30 @@ table.mat-table {
         }
       }
     }
+
+    &.clickable {
+      cursor: pointer;
+      transition: color 50ms ease, background-color 100ms ease;
+
+      &:hover {
+        color: #000;
+        background-color: rgba(0, 0, 0, .03);  
+      }
+    }
   }
 }
 
 .entity-row {
   height: 57px;
+}
+
+.label-text {
+  display: inline;
+  padding: 7px 12px;
+  border-radius: 16px;
+  align-items: center;
+  min-height: 32px;
+  margin: 4px;
+  background-color: #e0e0e0;
+  color: rgba(0,0,0,.87);
 }

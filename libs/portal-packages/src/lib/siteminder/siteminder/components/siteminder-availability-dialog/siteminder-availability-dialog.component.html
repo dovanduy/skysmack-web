@@ -9,9 +9,13 @@
             <input matInput type="number" step="1" name="Available modifier" formControlName="availableModifier"
                 placeholder="Modifier">
         </mat-form-field>
+
+    <mat-dialog-actions>
+        <button mat-raised-button mat-dialog-close>Cancel</button>
         <button type="submit" mat-raised-button color="primary">
-            Ok
+            Save
         </button>
+    </mat-dialog-actions>
+
     </form>
-    <button mat-raised-button (click)="cancel()">Cancel</button>
 </ng-container>
