@@ -20,7 +20,8 @@
         <!-- Table -->
         <ng-container *ngIf="lodgingColumns$ | async as lodgingColumns">
             <mat-card>
-                <cdk-virtual-scroll-viewport #entityList id="entity-list" itemSize="60" itemSize="40" (scrolledIndexChange)="whenScrolling()">
+                <cdk-virtual-scroll-viewport #entityList id="entity-list" itemSize="60" itemSize="40"
+                    (scrolledIndexChange)="whenScrolling()">
 
                     <table cellspacing="0" cellpadding="0" class="mat-table"
                         *ngIf="!uiOptions.hideRates || !uiOptions.hideRestrictions || !uiOptions.hideAvailability">
@@ -144,10 +145,12 @@
                                 </td>
                             </ng-container> -->
 
-                                <ng-container *ngFor="let lodgingCell of siteminderRow.lodgings">
+                                <ng-container *ngFor="let lodgingCell of siteminderRow.lodgingCells">
                                     <!-- Available -->
-                                    <td *ngIf="!uiOptions.hideAvailability" class="table-cell mat-cell border-left border-right">
-                                        Availability
+                                    <td *ngIf="!uiOptions.hideAvailability"
+                                        class="table-cell mat-cell border-left border-right">
+                                        {{ lodgingCell?.availability?.object?.available - lodgingCell?.availability?.object?.availableModifier }}
+                                        ({{ lodgingCell?.availability?.object?.available }}/{{ lodgingCell?.availability?.object?.availableModifier }})
                                     </td>
 
                                     <!-- Rateplan -->
@@ -157,7 +160,8 @@
                                         <ng-container
                                             *ngIf="!(uiOptions.hideAll || (uiOptions.hideRates && uiOptions.hideRestrictions))">
                                             <!-- Rates -->
-                                            <td *ngIf="!uiOptions.hideRates" class="table-cell mat-cell border-right-light">
+                                            <td *ngIf="!uiOptions.hideRates"
+                                                class="table-cell mat-cell border-right-light">
                                                 Rates all
                                             </td>
                                             <!-- Restrictions -->

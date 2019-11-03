@@ -10,7 +10,7 @@ import { LodgingColumn } from '../../../models/lodging-column';
 import { map, tap, debounceTime, distinctUntilChanged, switchMap, filter, take } from 'rxjs/operators';
 import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
 import { NgLodgingTypesStore, NgLodgingTypesActions } from '@skysmack/ng-lodgings';
-import { PagedQuery } from '@skysmack/framework';
+import { PagedQuery, getLocalDate } from '@skysmack/framework';
 import { getPackageDendencyAsStream } from '@skysmack/ng-framework';
 import { RateplanColumn } from '../../../models/rateplan-column';
 import { ChannelColumn } from '../../../models/channel-column';
@@ -117,7 +117,6 @@ export class SiteMinderIndexComponent extends BaseComponent<SiteMinderAppState, 
     ).pipe(
       debounceTime(50),
       map(([from, to]) => {
-        console.log('CALLED')
         // Perform actions to get availability, rates etc. from/to
         this.channelManagerActions.getAvailability(this.packagePath, from, to);
       })
@@ -133,7 +132,7 @@ export class SiteMinderIndexComponent extends BaseComponent<SiteMinderAppState, 
         const rows = this.getDateRows(from, to).map(date => {
           return new SiteminderRow({
             date: date,
-            lodgings: lodgingColumns.map(lodgingColumn => {
+            lodgingCells: lodgingColumns.map(lodgingColumn => {
               return new LodgingCell({
                 lodgingId: lodgingColumn.id,
                 rateplans: lodgingColumn.rateplans.map(rateplanColumn => {
@@ -155,10 +154,19 @@ export class SiteMinderIndexComponent extends BaseComponent<SiteMinderAppState, 
         ])
       }),
       map(([rows, availability]) => {
-        console.log({ availability });
-        return rows;
+        return rows.map(row => {
+          row.lodgingCells = row.lodgingCells.map(lc => {
+            const localeDate = getLocalDate(row.date);
+            // Match availability
+            lc.availability = availability.find(avail => {
+              return avail.object.lodgingTypeId === lc.lodgingId && avail.object.date as unknown as string === localeDate;
+            });
+            return lc;
+          });
+          return row;
+        });
       }),
-      tap(() => console.log('rows generated')));
+      tap((x) => console.log('rows generated: ', x)));
   }
 
   public toggleAll(hideAll: boolean) {
