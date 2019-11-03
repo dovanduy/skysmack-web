@@ -18,6 +18,7 @@ import { SiteminderRow } from '../../../models/siteminder-rows';
 import { LodgingCell } from '../../../models/lodging-cell';
 import { RateplanCell } from '../../../models/rateplan-cell';
 import { ChannelCell } from '../../../models/channel-cell';
+import { RateSummary } from '../../../models/rate-summary';
 
 @Component({
   selector: 'ss-siteminder-index',
@@ -119,6 +120,9 @@ export class SiteMinderIndexComponent extends BaseComponent<SiteMinderAppState, 
       map(([from, to]) => {
         // Perform actions to get availability, rates etc. from/to
         this.channelManagerActions.getAvailability(this.packagePath, from, to);
+        this.ratePlansActions.getPaged(this.packagePath, new PagedQuery());
+        this.channelsActions.getPaged(this.packagePath, new PagedQuery());
+        this.channelManagerActions.getRates(this.packagePath, from, to);
       })
     ).subscribe());
 
@@ -135,10 +139,10 @@ export class SiteMinderIndexComponent extends BaseComponent<SiteMinderAppState, 
             lodgingCells: lodgingColumns.map(lodgingColumn => {
               return new LodgingCell({
                 lodgingId: lodgingColumn.id,
-                rateplans: lodgingColumn.rateplans.map(rateplanColumn => {
+                rateplanCells: lodgingColumn.rateplans.map(rateplanColumn => {
                   return new RateplanCell({
                     rateplanId: rateplanColumn.id,
-                    channels: rateplanColumn.channels.map(channelColumn => {
+                    channelCells: rateplanColumn.channels.map(channelColumn => {
                       return new ChannelCell({ channelId: channelColumn.id });
                     })
                   })
@@ -148,20 +152,48 @@ export class SiteMinderIndexComponent extends BaseComponent<SiteMinderAppState, 
           })
         });
 
+        const lodgingTypes$ = lodgingPackagePath$.pipe(switchMap(lodgingPackagePath => this.lodgingTypesStore.get(lodgingPackagePath)));
         return combineLatest([
           of(rows),
-          this.channelManagerStore.getAvailability(this.packagePath, from, to)
+          this.channelManagerStore.getAvailability(this.packagePath, from, to),
+          this.ratePlansStore.get(this.packagePath),
+          this.channelsStore.get(this.packagePath),
+          this.channelManagerStore.getRates(this.packagePath, from, to),
+          lodgingTypes$
         ])
       }),
-      map(([rows, availability]) => {
+      debounceTime(10),
+      map(([rows, availability, ratePlans, channels, rates, lodgingTypes]) => {
         return rows.map(row => {
-          row.lodgingCells = row.lodgingCells.map(lc => {
-            const localeDate = getLocalDate(row.date);
-            // Match availability
-            lc.availability = availability.find(avail => {
-              return avail.object.lodgingTypeId === lc.lodgingId && avail.object.date as unknown as string === localeDate;
+          row.lodgingCells = row.lodgingCells.map(lodgingCell => {
+            const date = row.date;
+            const localDate = getLocalDate(row.date);
+            const lodgingTypeId = lodgingCell.lodgingId;
+            const currentDateRates = rates.filter(rate => rate.object.date === localDate as any);
+
+            // LodgingCells
+            lodgingCell.availability = availability.find(avail => {
+              return avail.object.lodgingTypeId === lodgingTypeId && avail.object.date as unknown as string === localDate;
             });
-            return lc;
+
+            // RatePlanCells
+            const lodgingTypeRates = currentDateRates.filter(rate => Number(rate.object.lodgingTypeId) === Number(lodgingTypeId));
+            lodgingCell.rateplanCells = lodgingCell.rateplanCells.map(ratePlanCell => {
+              const ratePlan = ratePlans.find(ratePlan => ratePlan.object.id === ratePlanCell.rateplanId);
+              const ratePlanRates = lodgingTypeRates.filter(rate => Number(rate.object.ratePlanId) === Number(ratePlanCell.rateplanId));
+
+              ratePlanCell.rateSummaryCell = new RateSummary({
+                date: date,
+                ratePlan: ratePlan,
+                rates: ratePlanRates,
+                channels: channels.map(x => x.object),
+                lodgingType: lodgingTypes.find(lodginType => lodginType.object.id === lodgingTypeId)
+              });
+              return ratePlanCell;
+            });
+
+
+            return lodgingCell;
           });
           return row;
         });

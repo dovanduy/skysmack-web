@@ -154,7 +154,7 @@
                                     </td>
 
                                     <!-- Rateplan -->
-                                    <ng-container *ngFor="let rateplanCell of lodgingCell.rateplans">
+                                    <ng-container *ngFor="let rateplanCell of lodgingCell.rateplanCells">
 
                                         <!-- All section -->
                                         <ng-container
@@ -173,7 +173,7 @@
 
                                         <!-- Channels (show if expanded) -->
                                         <ng-container
-                                            *ngFor="let channelCell of rateplanCell.channels; let first = first; let last = last">
+                                            *ngFor="let channelCell of rateplanCell.channelCells; let first = first; let last = last">
                                             <!-- Rates -->
                                             <ng-container *ngIf="!uiOptions.hideRates">
                                                 <td [ngClass]="{ 'border-right-light': true }"

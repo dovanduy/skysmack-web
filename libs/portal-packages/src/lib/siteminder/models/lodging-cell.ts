@@ -6,7 +6,7 @@ export class LodgingCell {
     public lodgingId: number;
     public availability: LocalObject<LodgingTypeAvailability, LodgingTypeAvailabilityKey>;
 
-    public rateplans: RateplanCell[];
+    public rateplanCells: RateplanCell[];
 
     constructor(init?: Partial<LodgingCell>) {
         Object.assign(this, init);

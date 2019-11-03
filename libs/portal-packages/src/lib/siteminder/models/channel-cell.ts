@@ -1,13 +1,9 @@
-import { AvailabilityRestriction } from '@skysmack/packages-siteminder';
+import { RateInfo } from './rate-info';
 
 export class ChannelCell {
     public channelId: number;
-    
-    public rate: number;
-    
-    public restriction: AvailabilityRestriction;
-    public minimumLengthOfStay: number;
-    public maximumLengthOfStay: number;
+    public rateInfo: RateInfo;
+
 
     constructor(init?: Partial<ChannelCell>) {
         Object.assign(this, init);

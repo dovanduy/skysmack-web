@@ -2,8 +2,6 @@ import { Component, OnInit, Input } from '@angular/core';
 import { RateSummary } from '../../../models/rate-summary';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { SiteMinderRateSummaryDialogComponent } from '../siteminder-rate-summary-dialog/siteminder-rate-summary-dialog.component';
-import { BehaviorSubject } from 'rxjs';
-import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'ss-siteminder-rate-summary',
