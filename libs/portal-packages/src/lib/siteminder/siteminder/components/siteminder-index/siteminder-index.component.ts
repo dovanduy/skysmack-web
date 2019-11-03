@@ -19,6 +19,7 @@ import { LodgingCell } from '../../../models/lodging-cell';
 import { RateplanCell } from '../../../models/rateplan-cell';
 import { ChannelCell } from '../../../models/channel-cell';
 import { RateSummary } from '../../../models/rate-summary';
+import { RateInfo } from '../../../models/rate-info';
 
 @Component({
   selector: 'ss-siteminder-index',
@@ -178,6 +179,7 @@ export class SiteMinderIndexComponent extends BaseComponent<SiteMinderAppState, 
 
             // RatePlanCells
             const lodgingTypeRates = currentDateRates.filter(rate => Number(rate.object.lodgingTypeId) === Number(lodgingTypeId));
+            const lodgingType = lodgingTypes.find(lodginType => lodginType.object.id === lodgingTypeId);
             lodgingCell.rateplanCells = lodgingCell.rateplanCells.map(ratePlanCell => {
               const ratePlan = ratePlans.find(ratePlan => ratePlan.object.id === ratePlanCell.rateplanId);
               const ratePlanRates = lodgingTypeRates.filter(rate => Number(rate.object.ratePlanId) === Number(ratePlanCell.rateplanId));
@@ -187,11 +189,28 @@ export class SiteMinderIndexComponent extends BaseComponent<SiteMinderAppState, 
                 ratePlan: ratePlan,
                 rates: ratePlanRates,
                 channels: channels.map(x => x.object),
-                lodgingType: lodgingTypes.find(lodginType => lodginType.object.id === lodgingTypeId)
+                lodgingType: lodgingType ? lodgingType : null
               });
+
+              // TODO: Restrictions summary
+
+              // ChannelCells
+              ratePlanCell.channelCells = ratePlanCell.channelCells.map(channelCell => {
+                const channel = channels.find(channel => channel.object.id === channelCell.channelId);
+                const channelRate = ratePlanRates.find(rate => Number(rate.object.channelId) === Number(channelCell.channelId));
+                channelCell.rateInfo = new RateInfo({
+                  date: date,
+                  rate: channelRate,
+                  ratePlan: ratePlan,
+                  channel: channel ? channel : null,
+                  lodgingType: lodgingType ? lodgingType : null
+                });
+
+                return channelCell;
+              });
+
               return ratePlanCell;
             });
-
 
             return lodgingCell;
           });
