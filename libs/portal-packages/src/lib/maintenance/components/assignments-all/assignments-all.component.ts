@@ -1,14 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
-import { MenuItem, safeUndefinedTo, LocalObject, EnumHelpers } from '@skysmack/framework';
-import { EntityComponentPageTitle, MENU_ITEM_ACTIONS_EDIT } from '@skysmack/portal-ui';
-import { NgAssignmentsStore, NgAssignmentsActions } from '@skysmack/ng-maintenance';
+import { MenuItem, safeUndefinedTo, LocalObject, SubscriptionHandler, toLocalObject } from '@skysmack/framework';
+import { EntityComponentPageTitle } from '@skysmack/portal-ui';
+import { NgAssignmentsStore, NgAssignmentsActions, NgSingleAssignmentsActions, NgAssignmentsSchedulesActions, NgAssignmentsSchedulesStore } from '@skysmack/ng-maintenance';
 import { Observable } from 'rxjs';
 import { DateOnlyAdapter2 } from './date-only-adapter2';
 import { DateAdapter } from '@angular/material/core';
-import { map } from 'rxjs/operators';
-import { Assignment, AssignmentStatus } from '@skysmack/packages-maintenance';
-import { __values } from 'tslib';
+import { map, take } from 'rxjs/operators';
+import { Assignment, AssignmentStatus, ScheduledAssignment, ScheduledAssignmentKey } from '@skysmack/packages-maintenance';
 
 @Component({
   selector: 'ss-assignments-all',
@@ -16,7 +15,7 @@ import { __values } from 'tslib';
   styleUrls: ['./assignments-all.component.scss'],
   providers: [DateOnlyAdapter2, { provide: DateAdapter, useClass: DateOnlyAdapter2 }]
 })
-export class AssignmentsAllIndexComponent implements OnInit {
+export class AssignmentsAllIndexComponent implements OnInit, OnDestroy {
   public static COMPONENT_KEY = 'assignments-all-index';
   public componentKey = AssignmentsAllIndexComponent.COMPONENT_KEY;
   public entities$: Observable<LocalObject<Assignment, unknown>[]>;
@@ -24,6 +23,7 @@ export class AssignmentsAllIndexComponent implements OnInit {
   public due: Date;
   private packagePath: string;
   private translationPrefix = 'MAINTENANCE.ASSIGNMENT_ALL.MENU_ITEM_ACTIONS.';
+  private subscriptionHandler = new SubscriptionHandler();
 
   public menuItemActions: MenuItem[] = [
     new MenuItem().asEventAction(`${this.translationPrefix}CREATED`, () => AssignmentStatus.Created, '', this).setShowLogic((entity: LocalObject<Assignment, unknown>) => {
@@ -50,6 +50,9 @@ export class AssignmentsAllIndexComponent implements OnInit {
     private router: Router,
     private assignmentsStore: NgAssignmentsStore,
     private assignmentsActions: NgAssignmentsActions,
+    private singleAssignmentActions: NgSingleAssignmentsActions,
+    private assignmentsScheduledActions: NgAssignmentsSchedulesActions,
+    private assignmentsScheduledStore: NgAssignmentsSchedulesStore,
     private title: EntityComponentPageTitle,
   ) { }
 
@@ -62,6 +65,10 @@ export class AssignmentsAllIndexComponent implements OnInit {
       map(x => x[`${this.from}:${this.due}`]),
       safeUndefinedTo('array'),
     );
+  }
+
+  ngOnDestroy() {
+    this.subscriptionHandler.unsubscribe();
   }
 
   public setFromDate(currentValue: string): void {
@@ -80,10 +87,28 @@ export class AssignmentsAllIndexComponent implements OnInit {
     return item ? item.localId : undefined;
   }
 
-  private updateStatus(event: { action: () => AssignmentStatus, _this: AssignmentsAllIndexComponent, value?: LocalObject<Assignment, unknown> }): void {
+  public updateStatus(event: { action: () => AssignmentStatus, _this: AssignmentsAllIndexComponent, value?: LocalObject<Assignment, unknown> }): void {
     const assignment: Assignment = event.value && event.value.object;
     const status: AssignmentStatus = event.action();
-    if (assignment) {
+    const _this = event._this;
+    if (assignment && assignment.originalTime) {
+      // Updated scheduled assignment
+      const change = toLocalObject<ScheduledAssignment, ScheduledAssignmentKey>(new ScheduledAssignment({
+        id: {
+          scheduleId: assignment.id,
+          originalTime: assignment.originalTime
+        },
+        originalTime: assignment.originalTime,
+        description: assignment.description,
+        status,
+        due: assignment.due,
+        from: assignment.from
+      }));
+      _this.assignmentsScheduledActions.changes(_this.packagePath, [change]);
+    } else if (assignment) {
+      // Updated single assignment
+    } else {
+      // Something went wrong...
     }
   }
 
