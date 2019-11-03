@@ -1,6 +1,5 @@
 <ss-container [componentKey]="componentKey" *ngIf="loadedPackage$ | async as loadedPackage">
-    <ng-container>
-        <!-- *ngIf="uiOptions$ | async as uiOptions" -->
+    <ng-container *ngIf="uiOptions$ | async as uiOptions">
         <div style="float:right;position:absolute;top: 16px; height: 0; right: 16px;z-index:1">
             <button mat-icon-button matTooltip="Show/hide all overview" (click)="toggleAll(!uiOptions.hideAll)">
                 <mat-icon>{{ uiOptions.hideAll ? 'grid_off' : 'grid_on' }}</mat-icon>
@@ -145,14 +144,14 @@
                                 </td>
                             </ng-container> -->
 
-                                <ng-container *ngFor="let lodgingColumn of lodgingColumns">
+                                <ng-container *ngFor="let lodgingCell of siteminderRow.lodgings">
                                     <!-- Available -->
                                     <td *ngIf="!uiOptions.hideAvailability" class="table-cell mat-cell border-left border-right">
                                         Availability
                                     </td>
 
                                     <!-- Rateplan -->
-                                    <ng-container *ngFor="let rateplanColumn of lodgingColumn.rateplans">
+                                    <ng-container *ngFor="let rateplanCell of lodgingCell.rateplans">
 
                                         <!-- All section -->
                                         <ng-container
@@ -170,19 +169,19 @@
 
                                         <!-- Channels (show if expanded) -->
                                         <ng-container
-                                            *ngFor="let channelColumn of rateplanColumn.channels; let first = first; let last = last">
+                                            *ngFor="let channelCell of rateplanCell.channels; let first = first; let last = last">
                                             <!-- Rates -->
                                             <ng-container *ngIf="!uiOptions.hideRates">
                                                 <td [ngClass]="{ 'border-right-light': true }"
                                                     class="table-cell mat-cell border-right">
-                                                    Rate for channel {{ channelColumn.title }}
+                                                    Rate for channel {{ channelCell.channelId }}
                                                 </td>
                                             </ng-container>
                                             <!-- Restrictions -->
                                             <ng-container *ngIf="!uiOptions.hideRestrictions">
                                                 <td [ngClass]="{ 'border-right-light': !last }"
                                                     class="table-cell mat-cell border-right">
-                                                    Restrictions for channel {{ channelColumn.title }}
+                                                    Restrictions for channel {{ channelCell.channelId }}
                                                 </td>
                                             </ng-container>
                                         </ng-container>

@@ -1,11 +1,11 @@
 import { Component, OnInit, ViewChild, TemplateRef, ChangeDetectionStrategy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
-import { NgSiteMinderStore, NgSiteMinderActions, NgSiteMinderChannelsStore, NgSiteMinderRatePlansStore, NgSiteMinderRatePlansActions, NgSiteMinderChannelsActions } from '@skysmack/ng-siteminder';
+import { NgSiteMinderStore, NgSiteMinderActions, NgSiteMinderChannelsStore, NgSiteMinderRatePlansStore, NgSiteMinderRatePlansActions, NgSiteMinderChannelsActions, NgSiteMinderChannelManagerStore } from '@skysmack/ng-siteminder';
 import { SiteMinderAppState, SITE_MINDER_AREA_KEY, SiteMinderUi } from '@skysmack/packages-siteminder';
 import { BaseComponent } from '@skysmack/portal-fields';
 import { EntityComponentPageTitle } from '@skysmack/portal-ui';
-import { Observable, combineLatest } from 'rxjs';
+import { Observable, combineLatest, BehaviorSubject } from 'rxjs';
 import { LodgingColumn } from '../../../models/lodging-column';
 import { map, tap, debounceTime, distinctUntilChanged, switchMap, filter, take } from 'rxjs/operators';
 import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
@@ -16,6 +16,9 @@ import { RateplanColumn } from '../../../models/rateplan-column';
 import { ChannelColumn } from '../../../models/channel-column';
 import { SiteminderRow } from '../../../models/siteminder-rows';
 import { SiteminderCell } from '../../../models/siteminder-cell';
+import { LodgingCell } from '../../../models/lodging-cell';
+import { RateplanCell } from '../../../models/rateplan-cell';
+import { ChannelCell } from '../../../models/channel-cell';
 
 @Component({
   selector: 'ss-siteminder-index',
@@ -35,7 +38,9 @@ export class SiteMinderIndexComponent extends BaseComponent<SiteMinderAppState, 
   public lodgingColumns$: Observable<LodgingColumn[]>;
   public siteminderRows$: Observable<SiteminderRow[]>;
   public uiOptions$: Observable<SiteMinderUi>;
-  public uiOptions: SiteMinderUi;
+
+  public from$ = new BehaviorSubject<Date>(new Date());
+  public to$: BehaviorSubject<Date>;
 
   constructor(
     public router: Router,
@@ -50,6 +55,7 @@ export class SiteMinderIndexComponent extends BaseComponent<SiteMinderAppState, 
     private ratePlansActions: NgSiteMinderRatePlansActions,
     private channelsStore: NgSiteMinderChannelsStore,
     private channelsActions: NgSiteMinderChannelsActions,
+    private channelManagerStore: NgSiteMinderChannelManagerStore
   ) {
     super(router, activatedRoute, skysmackStore, title);
   }
@@ -57,8 +63,11 @@ export class SiteMinderIndexComponent extends BaseComponent<SiteMinderAppState, 
   ngOnInit() {
     super.ngOnInit();
     this.title.setTitle('Rate & Restrictions Manager');
+    
+    let end = new Date();
+    end.setDate(end.getDate() + 30);
+    this.to$ = new BehaviorSubject<Date>(end);
 
-    this.uiOptions = new SiteMinderUi();
     const lodgingPackagePath$ = getPackageDendencyAsStream(this.skysmackStore, this.packagePath, [0, 1, 0]).pipe(
       filter(x => !!x),
       debounceTime(10),
@@ -68,34 +77,7 @@ export class SiteMinderIndexComponent extends BaseComponent<SiteMinderAppState, 
     );
 
     this.uiOptions$ = this.store.getUiState(this.packagePath).pipe(debounceTime(10));
-    this.subscriptionHandler.register(
-      this.uiOptions$.pipe(
-        map(newUiOptions => {
-          if (this.uiOptions.hideAll !== newUiOptions.hideAll) {
-            this.uiOptions.hideAll = newUiOptions.hideAll;
-          }
-          if (this.uiOptions.hideAvailability !== newUiOptions.hideAvailability) {
-            this.uiOptions.hideAvailability = newUiOptions.hideAvailability;
-          }
-          if (this.uiOptions.hideLodgingTypes !== newUiOptions.hideLodgingTypes) {
-            this.uiOptions.hideLodgingTypes = newUiOptions.hideLodgingTypes;
-          }
-          if (this.uiOptions.hideRates !== newUiOptions.hideRates) {
-            this.uiOptions.hideRates = newUiOptions.hideRates;
-          }
-          if (this.uiOptions.hideRestrictions !== newUiOptions.hideRestrictions) {
-            this.uiOptions.hideRestrictions = newUiOptions.hideRestrictions;
-          }
-          if (this.uiOptions.showChannels !== newUiOptions.showChannels) {
-            this.uiOptions.showChannels = newUiOptions.showChannels;
-          }
-          if (this.uiOptions.showRatePlans !== newUiOptions.showRatePlans) {
-            this.uiOptions.showRatePlans = newUiOptions.showRatePlans;
-          }
-        })
-      ).subscribe()
-    );
-
+    
     this.ratePlansActions.getPaged(this.packagePath, new PagedQuery());
     this.channelsActions.getPaged(this.packagePath, new PagedQuery());
 
@@ -103,14 +85,14 @@ export class SiteMinderIndexComponent extends BaseComponent<SiteMinderAppState, 
       lodgingPackagePath$.pipe(
         tap(lodgingPackagePath => this.lodgingTypesActions.getPaged(lodgingPackagePath, new PagedQuery())),
         take(1)
-    ).subscribe());
+      ).subscribe());
 
     this.lodgingColumns$ = lodgingPackagePath$.pipe(
       switchMap(lodgingPackagePath =>
         combineLatest(
-          this.lodgingTypesStore.get(lodgingPackagePath).pipe(take(1),tap(() => console.log('lodgingTypesStore'))),
-          this.ratePlansStore.get(this.packagePath).pipe(take(1),tap(() => console.log('ratePlansStore'))),
-          this.channelsStore.get(this.packagePath).pipe(take(1),tap(() => console.log('channelsStore')))
+          this.lodgingTypesStore.get(lodgingPackagePath).pipe(take(1), tap(() => console.log('lodgingTypesStore'))),
+          this.ratePlansStore.get(this.packagePath).pipe(take(1), tap(() => console.log('ratePlansStore'))),
+          this.channelsStore.get(this.packagePath).pipe(take(1), tap(() => console.log('channelsStore')))
         ).pipe(
           debounceTime(50),
           map(([lodgings, rateplans, channels]) =>
@@ -129,34 +111,46 @@ export class SiteMinderIndexComponent extends BaseComponent<SiteMinderAppState, 
         ))
     );
 
+    this.subscriptionHandler.register(combineLatest(
+      this.from$,
+      this.to$).pipe(
+        map(([from, to]) => {
+          // Perform actions to get availability, rates etc. from/to
+          
+        })
+      ).subscribe()
+    );
+
     this.siteminderRows$ = combineLatest(
+      this.from$,
+      this.to$,
       this.lodgingColumns$
     ).pipe(
       debounceTime(50),
-      map(([lodgingColumns]) => {
-        var end = new Date();
-        end.setDate(end.getDate() + 30);
-        const dates = this.getDateRows(new Date(), end);
-        return dates.map(date => {
-          const rowCells = [];
-          lodgingColumns.map(lodgingColumn => {
-            rowCells.push(new SiteminderCell<any>({ template: this.template, data: 'available' }));
-            lodgingColumn.rateplans.map(rateplanColumn => {
-              rowCells.push(new SiteminderCell<any>({ template: this.template, data: 'all rate' }));
-              rowCells.push(new SiteminderCell<any>({ template: this.template, data: 'all restriction' }));
+      map(([from, to, lodgingColumns]) => {
+        // this.channelManagerStore.getAvailability(this.packagePath, start, end)
+        // Get the rest of the data from the store... 
 
-              rateplanColumn.channels.map(channelColumn => {
-                rowCells.push(new SiteminderCell<any>({ template: this.template, data: 'rate ' + channelColumn.title }));
-                rowCells.push(new SiteminderCell<any>({ template: this.template, data: 'restriction ' + channelColumn.title }));
+        return this.getDateRows(from, to).map(date => {
+          return new SiteminderRow({
+            date: date,
+            lodgings: lodgingColumns.map(lodgingColumn => {
+              return new LodgingCell({
+                lodgingId: lodgingColumn.id,
+                rateplans: lodgingColumn.rateplans.map(rateplanColumn => {
+                  return new RateplanCell({
+                    rateplanId: rateplanColumn.id,
+                    channels: rateplanColumn.channels.map(channelColumn => {
+                      return new ChannelCell({ channelId: channelColumn.id });
+                    })
+                  })
+                })
               })
-            });
-
-          });
-
-          return new SiteminderRow({ date: date, cells: rowCells });
+            })
+          })
         });
       }),
-      tap(() => console.log('rows generated'))); 
+      tap(() => console.log('rows generated')));
   }
 
   public toggleAll(hideAll: boolean) {
