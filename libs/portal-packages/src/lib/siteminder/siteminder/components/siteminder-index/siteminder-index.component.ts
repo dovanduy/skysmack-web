@@ -137,7 +137,7 @@ export class SiteMinderIndexComponent extends BaseComponent<SiteMinderAppState, 
       this.to$,
       this.lodgingColumns$
     ]).pipe(
-      flatMap(([from, to, lodgingColumns]) => {
+      switchMap(([from, to, lodgingColumns]) => {
         return combineLatest([
           this.channelManagerStore.getAvailability(this.packagePath, from, to),
           this.channelManagerStore.getRates(this.packagePath, from, to)
