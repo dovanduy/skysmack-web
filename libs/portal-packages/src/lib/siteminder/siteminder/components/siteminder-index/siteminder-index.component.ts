@@ -74,8 +74,7 @@ export class SiteMinderIndexComponent extends BaseComponent<SiteMinderAppState, 
       filter(x => !!x),
       debounceTime(10),
       map(_package => _package.object.path),
-      distinctUntilChanged(),
-      tap(() => console.log('lodgingPackagePath'))
+      distinctUntilChanged()
     );
 
     this.uiOptions$ = this.store.getUiState(this.packagePath).pipe(debounceTime(10));
@@ -92,9 +91,18 @@ export class SiteMinderIndexComponent extends BaseComponent<SiteMinderAppState, 
     this.lodgingColumns$ = lodgingPackagePath$.pipe(
       switchMap(lodgingPackagePath =>
         combineLatest(
-          this.lodgingTypesStore.get(lodgingPackagePath).pipe(take(1), tap(() => console.log('lodgingTypesStore'))),
-          this.ratePlansStore.get(this.packagePath).pipe(take(1), tap(() => console.log('ratePlansStore'))),
-          this.channelsStore.get(this.packagePath).pipe(take(1), tap(() => console.log('channelsStore')))
+          this.lodgingTypesStore.get(lodgingPackagePath).pipe(
+            take(1),
+            // tap(() => console.log('lodgingTypesStore'))
+          ),
+          this.ratePlansStore.get(this.packagePath).pipe(
+            take(1),
+            // tap(() => console.log('ratePlansStore'))
+          ),
+          this.channelsStore.get(this.packagePath).pipe(
+            take(1),
+            // tap(() => console.log('channelsStore'))
+          )
         ).pipe(
           debounceTime(50),
           map(([lodgings, rateplans, channels]) =>
@@ -109,7 +117,7 @@ export class SiteMinderIndexComponent extends BaseComponent<SiteMinderAppState, 
             }
             )
           ),
-          tap(() => console.log('lodgingColumns'))
+          // tap(() => console.log('lodgingColumns'))
         ))
     );
 
@@ -171,15 +179,20 @@ export class SiteMinderIndexComponent extends BaseComponent<SiteMinderAppState, 
             const localDate = getLocalDate(row.date);
             const lodgingTypeId = lodgingCell.lodgingId;
             const currentDateRates = rates.filter(rate => rate.object.date === localDate as any);
+            const lodgingType = lodgingTypes.find(lodginType => lodginType.object.id === lodgingTypeId);
 
             // LodgingCells
             lodgingCell.availability = availability.find(avail => {
               return avail.object.lodgingTypeId === lodgingTypeId && avail.object.date as unknown as string === localDate;
             });
+            if (lodgingCell.availability) {
+              lodgingCell.availability.object.lodgingType = lodgingType;
+            }
+
 
             // RatePlanCells
             const lodgingTypeRates = currentDateRates.filter(rate => Number(rate.object.lodgingTypeId) === Number(lodgingTypeId));
-            const lodgingType = lodgingTypes.find(lodginType => lodginType.object.id === lodgingTypeId);
+
             lodgingCell.rateplanCells = lodgingCell.rateplanCells.map(ratePlanCell => {
               const ratePlan = ratePlans.find(ratePlan => ratePlan.object.id === ratePlanCell.rateplanId);
               const ratePlanRates = lodgingTypeRates.filter(rate => Number(rate.object.ratePlanId) === Number(ratePlanCell.rateplanId));
@@ -217,7 +230,8 @@ export class SiteMinderIndexComponent extends BaseComponent<SiteMinderAppState, 
           return row;
         });
       }),
-      tap((x) => console.log('rows generated: ', x)));
+      tap((x) => console.log('rows generated: ', x))
+    )
   }
 
   public toggleAll(hideAll: boolean) {

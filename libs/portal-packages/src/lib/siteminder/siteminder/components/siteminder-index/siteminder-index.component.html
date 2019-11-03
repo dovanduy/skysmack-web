@@ -149,8 +149,8 @@
                                     <!-- Available -->
                                     <td *ngIf="!uiOptions.hideAvailability"
                                         class="table-cell mat-cell border-left border-right">
-                                        {{ lodgingCell?.availability?.object?.available - lodgingCell?.availability?.object?.availableModifier }}
-                                        ({{ lodgingCell?.availability?.object?.available }}/{{ lodgingCell?.availability?.object?.availableModifier }})
+                                        <ss-siteminder-availability [data]="lodgingCell?.availability">
+                                        </ss-siteminder-availability>
                                     </td>
 
                                     <!-- Rateplan -->
@@ -162,7 +162,8 @@
                                             <!-- Rates -->
                                             <td *ngIf="!uiOptions.hideRates"
                                                 class="table-cell mat-cell border-right-light">
-                                                Rates all
+                                                <ss-siteminder-rate-summary [data]="rateplanCell.rateSummaryCell">
+                                                </ss-siteminder-rate-summary>
                                             </td>
                                             <!-- Restrictions -->
                                             <td *ngIf="!uiOptions.hideRestrictions"
@@ -178,13 +179,15 @@
                                             <ng-container *ngIf="!uiOptions.hideRates">
                                                 <td [ngClass]="{ 'border-right-light': true }"
                                                     class="table-cell mat-cell border-right">
-                                                    Rate for channel {{ channelCell.channelId }}
+                                                    <ss-siteminder-rate [data]="channelCell.rateInfo">
+                                                    </ss-siteminder-rate>
                                                 </td>
                                             </ng-container>
                                             <!-- Restrictions -->
                                             <ng-container *ngIf="!uiOptions.hideRestrictions">
                                                 <td [ngClass]="{ 'border-right-light': !last }"
                                                     class="table-cell mat-cell border-right">
+                                                    <!-- TODO: Restrinction info -->
                                                     Restrictions for channel {{ channelCell.channelId }}
                                                 </td>
                                             </ng-container>

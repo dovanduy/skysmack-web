@@ -8,9 +8,9 @@
             <input matInput type="number" step="1" name="Rate" [formControlName]="channel?.object?.id"
                 [placeholder]="channel?.object?.name">
         </mat-form-field>
-        <button mat-raised-button (click)="cancel()">Cancel</button>
         <button type="submit" mat-raised-button color="primary">
             Ok
         </button>
     </form>
+    <button mat-raised-button (click)="cancel()">Cancel</button>
 </ng-container>

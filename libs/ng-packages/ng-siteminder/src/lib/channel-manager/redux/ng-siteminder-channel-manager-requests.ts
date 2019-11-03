@@ -40,7 +40,7 @@ export class NgSiteMinderChannelManagerRequests {
     }
 
     public getRates(action: ReduxAction<GetRatesPayload>): Observable<ReduxAction<GetRatesSuccessPayload> | ReduxAction<HttpErrorResponse>> {
-        let url = `${this.apiDomain.domain}/${action.payload.packagePath}/rates`;
+        let url = `${this.apiDomain.domain}/${action.payload.packagePath}/rates?start=${getLocalDate(action.payload.start)}&end=${getLocalDate(action.payload.end)}`;
 
         return this.http.get<LodgingTypeRate[]>(url, { observe: 'response' })
             .pipe(

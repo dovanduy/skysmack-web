@@ -2,8 +2,7 @@ import { Component, OnInit, Inject, OnDestroy } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { FormGroup } from '@angular/forms';
 import { Channel, LodgingTypeRate } from '@skysmack/packages-siteminder';
-import { SubscriptionHandler, getLocalDate } from '@skysmack/framework';
-import { BehaviorSubject } from 'rxjs';
+import { getLocalDate } from '@skysmack/framework';
 import { SiteMinderQueueService } from '../../../services/siteminder-queue.service';
 import { Router } from '@angular/router';
 
