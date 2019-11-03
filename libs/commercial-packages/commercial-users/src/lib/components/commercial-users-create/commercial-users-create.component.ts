@@ -15,7 +15,7 @@ import { take, tap } from 'rxjs/operators';
 })
 export class CommercialUsersCreateComponent implements OnInit, OnDestroy {
   public fields$: Observable<Field[]>;
-  public subscriptionHandler = new SubscriptionHandler();
+  private subscriptionHandler = new SubscriptionHandler();
 
   constructor(
     public router: Router,
@@ -36,10 +36,10 @@ export class CommercialUsersCreateComponent implements OnInit, OnDestroy {
   public onSubmit(fh: FormHelper) {
     fh.formValid(() => {
       const user = fh.form.getRawValue();
-      this.service.add(user).pipe(
+      this.subscriptionHandler.register(this.service.add(user).pipe(
         tap(() => this.router.navigate(['/', 'users'])),
         take(1)
-      ).subscribe();
+      ).subscribe());
     }, false);
   }
 }

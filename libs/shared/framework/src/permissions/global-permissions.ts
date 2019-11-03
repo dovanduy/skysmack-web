@@ -6,4 +6,6 @@ export const UPDATE = 'Update';
 export const UPDATE_OWN = 'UpdateOwn';
 export const REMOVE = 'Remove';
 export const REMOVE_OWN = 'RemoveOwn';
+export const RENAME = 'Rename';
+export const PREPARE = 'Prepare';
 export const FIELDS = 'Fields';

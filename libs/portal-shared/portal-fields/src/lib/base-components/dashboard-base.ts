@@ -8,7 +8,7 @@ export abstract class DashboardBase implements OnInit {
     @Input() packagePath: string;
     @Input() dashboard: Dashboard;
     public package$: Observable<Package>;
-    public subscriptionHandler = new SubscriptionHandler();
+    protected subscriptionHandler = new SubscriptionHandler();
 
     /**
      * Whether to show or hide the individual dashboard.

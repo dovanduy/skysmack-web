@@ -39,7 +39,7 @@ export class CommercialAccountLoginComponent implements OnInit, OnDestroy {
   public error = false;
   public success = false;
   public fields$: Observable<Field[]>;
-  public subscriptionHandler = new SubscriptionHandler();
+  private subscriptionHandler = new SubscriptionHandler();
   public removeCloseButton = false;
 
   constructor(

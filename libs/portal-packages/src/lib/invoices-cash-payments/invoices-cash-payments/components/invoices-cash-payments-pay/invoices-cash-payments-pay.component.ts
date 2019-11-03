@@ -7,7 +7,7 @@ import { EditorNavService } from '@skysmack/portal-ui';
 import { NgInvoicesCashPaymentsFieldsConfig } from '../../ng-invoices-cash-payments-fields-config';
 import { map, take, switchMap } from 'rxjs/operators';
 import { combineLatest, of } from 'rxjs';
-import { toLocalObject, API_DOMAIN_INJECTOR_TOKEN, ApiDomain, LocalObject } from '@skysmack/framework';
+import { toLocalObject, API_DOMAIN_INJECTOR_TOKEN, ApiDomain, LocalObject, SubscriptionHandler } from '@skysmack/framework';
 import { Invoice } from '@skysmack/packages-invoices';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { FormHelper } from '@skysmack/ng-dynamic-forms';
@@ -19,6 +19,8 @@ import { NgInvoicesActions, NgInvoicesStore } from '@skysmack/ng-invoices';
   templateUrl: './invoices-cash-payments-pay.component.html'
 })
 export class InvoicesCashPaymentsPayComponent extends RecordFormComponent<InvoicesCashPaymentsAppState, CashPayment, number> implements OnInit {
+
+  protected subscriptionHandler = new SubscriptionHandler();
 
   constructor(
     public router: Router,
@@ -42,24 +44,28 @@ export class InvoicesCashPaymentsPayComponent extends RecordFormComponent<Invoic
     this.setFields();
   }
 
+  ngOnDestroy() {
+    this.subscriptionHandler.unsubscribe();
+  }
+
   protected setPackagePath() {
     this.packagePath = this.data.packagePath;
   }
 
   protected setFields() {
     const invoiceId$ = of(this.data.value.object.id);
-    combineLatest(
+    this.subscriptionHandler.register(combineLatest([
       invoiceId$,
       this.loadedPackage$
-    ).pipe(
+    ]).pipe(
       map(([invoiceId, loadedPackage]) => this.invoicesActions.getSingle(loadedPackage._package.dependencies[0], invoiceId)),
       take(1)
-    ).subscribe();
+    ).subscribe());
 
-    this.fields$ = combineLatest(
+    this.fields$ = combineLatest([
       invoiceId$,
       this.loadedPackage$
-    ).pipe(
+    ]).pipe(
       switchMap(([invoiceId, loadedPackage]) => this.invoicesStore.getSingle(loadedPackage._package.dependencies[0], invoiceId).pipe(
         switchMap(invoice => {
           const entity = new CashPayment({

@@ -18,7 +18,7 @@ import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 })
 export class StartComponent implements OnInit, OnDestroy {
 
-  public subscriptionHandler = new SubscriptionHandler();
+  private subscriptionHandler = new SubscriptionHandler();
   public skysmack$: Observable<Skysmack>;
   public skysmackLoaded$: Observable<SkysmackRequestStatus>;
   public loadingRouteConfig: string[] = [];

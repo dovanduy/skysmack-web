@@ -1,5 +1,5 @@
 import { HubConnection } from '@aspnet/signalr';
-import { ApiDomain } from '@skysmack/framework';
+import { ApiDomain, SubscriptionHandler } from '@skysmack/framework';
 import * as signalR from "@aspnet/signalr";
 import { BehaviorSubject } from 'rxjs';
 import { map, filter, take } from 'rxjs/operators';
@@ -9,6 +9,7 @@ import { SignalRProvider } from './models/signal-r-provider';
 export class SignalR {
     public static API_DOMAIN: ApiDomain;
     public apiDomain: ApiDomain;
+    private subscriptionHandler = new SubscriptionHandler();
 
     private hubConnection: HubConnection;
     private providerRegister = {};
@@ -25,6 +26,10 @@ export class SignalR {
     private constructor() {
         this.init();
     }
+
+    ngOnDestroy() {
+        this.subscriptionHandler.unsubscribe();
+      }
 
     private init() {
         this.apiDomain = SignalR.API_DOMAIN;
@@ -72,15 +77,15 @@ export class SignalR {
     }
 
     public action(packagePath: string, data: any) {
-        this.connected.pipe(
+        this.subscriptionHandler.register(this.connected.pipe(
             filter(x => x),
             map(() => this.hubConnection.invoke('action', packagePath, data)),
             take(1)
-        ).subscribe();
+        ).subscribe());
     }
 
     public join(packagePath: string, force = false) {
-        this.connected.pipe(
+        this.subscriptionHandler.register(this.connected.pipe(
             filter(x => x),
             map(() => {
                 if (!this.joinedPackages[packagePath]) {
@@ -94,17 +99,17 @@ export class SignalR {
                 }
             }),
             take(1)
-        ).subscribe();
+        ).subscribe());
     }
 
     public leave(packagePath: string) {
-        this.connected.pipe(
+        this.subscriptionHandler.register(this.connected.pipe(
             filter(x => x),
             map(() => {
                 this.hubConnection.invoke('Leave', packagePath);
                 delete this.joinedPackages[packagePath];
             }),
             take(1)
-        ).subscribe();
+        ).subscribe());
     }
 }

@@ -5,6 +5,7 @@ import { Field, FormHelper } from '@skysmack/ng-dynamic-forms';
 import { CommercialAccountService } from '../../services/commercial-account.service';
 import { Router } from '@angular/router';
 import { map, take } from 'rxjs/operators';
+import { SubscriptionHandler } from '@skysmack/framework';
 
 @Component({
   selector: 'ss-commercial-account-change-password',
@@ -15,6 +16,7 @@ export class CommercialAccountChangePasswordComponent implements OnInit {
 
   public fields$: Observable<Field[]>;
   public message: string;
+  private subscriptionHandler = new SubscriptionHandler();
 
   constructor(
     public fieldsConfig: CommercialAccountChangePasswordFieldsConfig,
@@ -26,10 +28,14 @@ export class CommercialAccountChangePasswordComponent implements OnInit {
     this.fields$ = this.fieldsConfig.getFields(null);
   }
 
+  ngOnDestroy() {
+    this.subscriptionHandler.unsubscribe();
+  }
+
   public onSubmit(fh: FormHelper) {
     fh.formValid(() => {
       this.message = null;
-      this.service.changePassword(fh.form.value).pipe(
+      this.subscriptionHandler.register(this.service.changePassword(fh.form.value).pipe(
         map(response => {
           if (response.status >= 200 && response.status <= 299) {
             this.router.navigate(['/', 'account', 'dashboard'])
@@ -38,7 +44,7 @@ export class CommercialAccountChangePasswordComponent implements OnInit {
           }
         }),
         take(1)
-      ).subscribe();
+      ).subscribe());
     });
   }
 }

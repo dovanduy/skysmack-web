@@ -9,6 +9,7 @@ import { switchMap, take } from 'rxjs/operators';
 import { BaseComponent } from '@skysmack/portal-fields';
 import { NgConfirmEmailFieldsConfig } from './ng-confirm-email-fields-config';
 import { NgAccountRequests } from '@skysmack/ng-identities';
+import { SubscriptionHandler } from '@skysmack/framework';
 
 @Component({
   selector: 'skysmack-confirm-email',
@@ -18,6 +19,8 @@ import { NgAccountRequests } from '@skysmack/ng-identities';
 export class ConfirmEmailComponent extends BaseComponent<AccountAppState, unknown> implements OnInit, OnDestroy {
 
   public fields$: Observable<Field[]>;
+  protected subscriptionHandler = new SubscriptionHandler();
+
 
   constructor(
     public router: Router,
@@ -39,11 +42,12 @@ export class ConfirmEmailComponent extends BaseComponent<AccountAppState, unknow
   ngOnDestroy() {
     super.ngOnDestroy();
     this.editorNavService.hideEditorNav();
+    this.subscriptionHandler.unsubscribe();
   }
 
   public onSubmit(fh: FormHelper) {
     fh.formValid(() => {
-      this.accountRequest.confirmEmail(this.packagePath, fh.form.value).pipe(take(1)).subscribe();
+      this.subscriptionHandler.register(this.accountRequest.confirmEmail(this.packagePath, fh.form.value).pipe(take(1)).subscribe());
       this.router.navigate([this.packagePath]);
     });
   }

@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Field, FormHelper } from '@skysmack/ng-dynamic-forms';
 import { SubscriptionHandler, HttpSuccessResponse, toLocalObject } from '@skysmack/framework';
 import { NgRedux } from '@angular-redux/store';
@@ -16,7 +16,7 @@ import { Tenant } from '../../models/tenant';
 })
 export class CommercialTenantsEditComponent implements OnInit, OnDestroy {
   public fields$: Observable<Field[]>;
-  public subscriptionHandler = new SubscriptionHandler();
+  private subscriptionHandler = new SubscriptionHandler();
 
   constructor(
     public router: Router,
@@ -41,10 +41,10 @@ export class CommercialTenantsEditComponent implements OnInit, OnDestroy {
   public onSubmit(fh: FormHelper) {
     fh.formValid(() => {
       const tenant = fh.form.getRawValue();
-      this.service.update(tenant).pipe(
+      this.subscriptionHandler.register(this.service.update(tenant).pipe(
         tap(() => this.router.navigate(['/', 'tenants'])),
         take(1)
-      ).subscribe();
+      ).subscribe());
     }, false);
   }
 }

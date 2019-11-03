@@ -5,6 +5,7 @@ import { FieldBaseComponent } from '../field-base-component';
 import { DateTimeAdapter } from './date-time-adapter';
 import { map } from 'rxjs/operators';
 import { Field } from '@skysmack/ng-dynamic-forms';
+import { SubscriptionHandler } from '@skysmack/framework';
 
 @Component({
   selector: 'ss-date-time-field',
@@ -12,6 +13,9 @@ import { Field } from '@skysmack/ng-dynamic-forms';
   providers: [DateTimeAdapter, { provide: DateAdapter, useClass: DateTimeAdapter }]
 })
 export class DateTimeFieldComponent extends FieldBaseComponent<Field> implements AfterViewInit, OnInit {
+
+  protected subscriptionHandler = new SubscriptionHandler();
+
 
   @ViewChild('timeInput', { static: false }) public timeInput: ElementRef;
   public time: string;
@@ -23,6 +27,10 @@ export class DateTimeFieldComponent extends FieldBaseComponent<Field> implements
     super.ngOnInit();
     this.setDate(this.getFieldValue());
     this.setTime(this.getFieldValue());
+  }
+
+  ngOnDestroy() {
+    this.subscriptionHandler.unsubscribe();
   }
 
   ngAfterViewInit() {

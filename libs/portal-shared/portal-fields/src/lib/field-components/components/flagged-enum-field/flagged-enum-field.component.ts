@@ -3,6 +3,7 @@ import { FieldBaseComponent } from '../field-base-component';
 import { Field, DisableUntilValueRule, SelectField, SelectFieldOption } from '@skysmack/ng-dynamic-forms';
 import { map, tap, take } from 'rxjs/operators';
 import { MatSelect } from '@angular/material/select';
+import { SubscriptionHandler } from '@skysmack/framework';
 
 @Component({
   selector: 'ss-flagged-enum-field',
@@ -15,6 +16,7 @@ export class FlaggedEnumFieldComponent extends FieldBaseComponent<SelectField> i
    * Selected flag values (e.g. 7) as a numbers array (e.g. [1,2,4])
    */
   public selectedValues: number[] = [];
+  protected subscriptionHandler = new SubscriptionHandler();
 
   ngOnInit() {
     super.ngOnInit();
@@ -26,11 +28,15 @@ export class FlaggedEnumFieldComponent extends FieldBaseComponent<SelectField> i
     }
   }
 
+  ngOnDestroy() {
+    this.subscriptionHandler.unsubscribe();
+  }
+
   ngAfterViewInit() {
     this.setSelectedValues();
-    this.selectInput.valueChange.pipe(map((values: number[]) => {
+    this.subscriptionHandler.register(this.selectInput.valueChange.pipe(map((values: number[]) => {
       this.setFieldValue(values.reduce((a, b) => a + b, 0));
-    })).subscribe();
+    })).subscribe());
   }
 
 
@@ -44,7 +50,7 @@ export class FlaggedEnumFieldComponent extends FieldBaseComponent<SelectField> i
   }
 
   private setSelectedValues() {
-    this.field.optionsData$.pipe(tap((x: SelectFieldOption[]) => {
+    this.subscriptionHandler.register(this.field.optionsData$.pipe(tap((x: SelectFieldOption[]) => {
       const selectableValues: number[] = x.map(y => y.value).sort((a, b) => b - a);
       let currentValues: number = this.field.value;
       for (let index = 0; index < selectableValues.length; index++) {
@@ -54,7 +60,7 @@ export class FlaggedEnumFieldComponent extends FieldBaseComponent<SelectField> i
           currentValues -= selectableValue;
         }
       }
-    }), take(1)).subscribe();
+    }), take(1)).subscribe());
   }
 
 }

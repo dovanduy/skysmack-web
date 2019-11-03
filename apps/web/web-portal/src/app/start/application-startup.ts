@@ -26,6 +26,8 @@ import { loadOpenApiPackage } from '../packages/open-api-package-manifest';
 import { RefreshTokenInterceptor } from '@skysmack/ng-oauth2';
 import { LanguageService, configureLanguage } from '@skysmack/ng-translation';
 import { loadFileStoragePackage } from '../packages/file-storage-package-manifest';
+import { loadPhonePackage } from '../packages/phones-package-manifest';
+import { load3CXPackage } from '../packages/3cx-package-manifest';
 
 
 export function configureSkysmack(actions: NgSkysmackActions) {
@@ -49,6 +51,8 @@ export const packageLoaders = [
     { provide: APP_INITIALIZER, useFactory: loadInvoicesProductsPackage, deps: [PackageLoader], multi: true },
     { provide: APP_INITIALIZER, useFactory: loadInvoicesCashPaymentsPackage, deps: [PackageLoader], multi: true },
     { provide: APP_INITIALIZER, useFactory: loadPersonPackage, deps: [PackageLoader], multi: true },
+    { provide: APP_INITIALIZER, useFactory: loadPhonePackage, deps: [PackageLoader], multi: true },
+    { provide: APP_INITIALIZER, useFactory: load3CXPackage, deps: [PackageLoader], multi: true },
     { provide: APP_INITIALIZER, useFactory: loadFileStoragePackage, deps: [PackageLoader], multi: true },
     { provide: APP_INITIALIZER, useFactory: loadProductPackage, deps: [PackageLoader], multi: true },
     { provide: APP_INITIALIZER, useFactory: loadProductsPricingsPackage, deps: [PackageLoader], multi: true },

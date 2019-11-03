@@ -9,6 +9,7 @@ import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { switchMap, take, tap, map } from 'rxjs/operators';
 import { NgAccountRequests } from '@skysmack/ng-identities';
 import { BaseComponent } from '@skysmack/portal-fields';
+import { SubscriptionHandler } from '@skysmack/framework';
 
 @Component({
   selector: 'skysmack-change-password',
@@ -17,6 +18,8 @@ import { BaseComponent } from '@skysmack/portal-fields';
 export class ChangePasswordComponent extends BaseComponent<AccountAppState, unknown> implements OnInit, OnDestroy {
 
   public fields$: Observable<Field[]>;
+  protected subscriptionHandler = new SubscriptionHandler();
+
 
   constructor(
     public router: Router,
@@ -38,14 +41,15 @@ export class ChangePasswordComponent extends BaseComponent<AccountAppState, unkn
   ngOnDestroy() {
     super.ngOnDestroy();
     this.editorNavService.hideEditorNav();
+    this.subscriptionHandler.unsubscribe();
   }
 
   public onSubmit(fh: FormHelper) {
     fh.formValid(() => {
-      this.accountRequest.changePassword(this.packagePath, fh.form.value).pipe(
+      this.subscriptionHandler.register(this.accountRequest.changePassword(this.packagePath, fh.form.value).pipe(
         map(() => this.router.navigate([this.packagePath])),
         take(1)
-      ).subscribe();
+      ).subscribe());
     });
   }
 }

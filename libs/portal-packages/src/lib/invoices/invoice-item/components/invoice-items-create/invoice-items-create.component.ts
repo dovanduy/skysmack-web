@@ -8,12 +8,15 @@ import { DocumentRecordFormComponent } from '@skysmack/portal-fields';
 import { NgFieldActions } from '@skysmack/ng-framework';
 import { NgInvoiceItemsFieldsConfig } from '../../ng-invoice-items-fields-config';
 import { map, take } from 'rxjs/operators';
+import { SubscriptionHandler } from '@skysmack/framework';
 
 @Component({
   selector: 'ss-invoice-items-create',
   templateUrl: './invoice-items-create.component.html'
 })
 export class InvoiceItemsCreateComponent extends DocumentRecordFormComponent<InvoiceItemsAppState, InvoiceItem, number> implements OnInit {
+
+  protected subscriptionHandler = new SubscriptionHandler();
 
   constructor(
     public router: Router,
@@ -29,15 +32,19 @@ export class InvoiceItemsCreateComponent extends DocumentRecordFormComponent<Inv
   }
 
   ngOnInit() {
-    this.activatedRoute.parent.params.pipe(
+    this.subscriptionHandler.register(this.activatedRoute.parent.params.pipe(
       map(params => {
         this.fieldsConfig.inventoryId = params.invoiceId;
       }),
       take(1)
-    ).subscribe();
+    ).subscribe());
 
     super.ngOnInit();
     this.setCreateFields();
+  }
+
+  ngOnDestroy() {
+    this.subscriptionHandler.unsubscribe();
   }
 
 }

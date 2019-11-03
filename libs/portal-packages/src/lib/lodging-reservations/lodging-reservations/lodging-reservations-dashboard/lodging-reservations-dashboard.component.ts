@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgLodgingReservationsActions, NgLodgingReservationsStore } from '@skysmack/ng-lodging-reservations';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { Observable } from 'rxjs';
-import { PagedQuery, RSQLFilterBuilder } from '@skysmack/framework';
+import { PagedQuery, RSQLFilterBuilder, SubscriptionHandler } from '@skysmack/framework';
 import { map } from 'rxjs/operators';
 import { LodgingReservation } from '@skysmack/packages-lodging-reservations';
 import * as _moment from 'moment';
@@ -16,6 +16,7 @@ const moment = _moment;
 })
 export class LodgingReservationsDashboardComponent extends DashboardBase implements OnInit {
   public arrivalsCount$: Observable<number>;
+  protected subscriptionHandler = new SubscriptionHandler();
 
   constructor(
     public actions: NgLodgingReservationsActions,
@@ -28,6 +29,10 @@ export class LodgingReservationsDashboardComponent extends DashboardBase impleme
     this.getArrivalsCount();
     this.show();
     this.render();
+  }
+
+  ngOnDestroy() {
+    this.subscriptionHandler.unsubscribe();
   }
 
   private getArrivalsCount() {

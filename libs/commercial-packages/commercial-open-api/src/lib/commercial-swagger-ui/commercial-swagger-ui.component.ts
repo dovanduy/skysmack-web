@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, ElementRef, ViewEncapsulation, Inject } from '@angular/core';
 
 import SwaggerUI from 'swagger-ui';
-import { API_DOMAIN_INJECTOR_TOKEN, ApiDomain } from '@skysmack/framework';
+import { API_DOMAIN_INJECTOR_TOKEN, ApiDomain, SubscriptionHandler } from '@skysmack/framework';
 import { NgAuthenticationStore } from '@skysmack/ng-framework';
 import { map, take } from 'rxjs/operators';
 
@@ -13,14 +13,21 @@ import { map, take } from 'rxjs/operators';
 })
 export class CommercialSwaggerUiComponent implements AfterViewInit {
 
+  private subscriptionHandler = new SubscriptionHandler();
+
+
   constructor(
     private el: ElementRef,
     private authenticationStore: NgAuthenticationStore,
     @Inject(API_DOMAIN_INJECTOR_TOKEN) private apiDomain: ApiDomain
   ) { }
 
+  ngOnDestroy() {
+    this.subscriptionHandler.unsubscribe();
+  }
+
   ngAfterViewInit() {
-    this.authenticationStore.getCurrentUser().pipe(
+     this.subscriptionHandler.register(this.authenticationStore.getCurrentUser().pipe(
       map(currentUser => {
         const ui = SwaggerUI({
           url: this.apiDomain.domain + '/openapi/v1',
@@ -39,6 +46,6 @@ export class CommercialSwaggerUiComponent implements AfterViewInit {
         });
       }),
       take(1)
-    ).subscribe();
+    ).subscribe());
   }
 }

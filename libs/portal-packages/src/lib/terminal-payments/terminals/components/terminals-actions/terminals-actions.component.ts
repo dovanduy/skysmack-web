@@ -8,7 +8,7 @@ import { SelectFieldOption } from '@skysmack/ng-dynamic-forms';
 import { BaseComponent } from '@skysmack/portal-fields';
 import { tap, map, switchMap, take, debounceTime, delay } from 'rxjs/operators';
 import { Observable, combineLatest, of } from 'rxjs';
-import { GlobalProperties, LocalObject } from '@skysmack/framework';
+import { GlobalProperties, LocalObject, SubscriptionHandler } from '@skysmack/framework';
 import { NgClientsStore } from '@skysmack/ng-identities';
 import { getPackageDendencyAsStream } from '@skysmack/ng-framework';
 import { Client } from '@skysmack/packages-identities';
@@ -23,6 +23,7 @@ export class TerminalsActionsComponent extends BaseComponent<TerminalsAppState, 
   private admin$: Observable<Admin>;
   private client$: Observable<LocalObject<Client, string>>;
   private connection$: Observable<LocalObject<Connection, ConnectionKey>>;
+  protected subscriptionHandler = new SubscriptionHandler();
 
   public ready: boolean;
   public selectedOption: any;
@@ -135,6 +136,10 @@ export class TerminalsActionsComponent extends BaseComponent<TerminalsAppState, 
     this.setOnlineAndConnected$();
   }
 
+  ngOnDestroy() {
+    this.subscriptionHandler.unsubscribe();
+  }
+
   ngAfterViewInit() {
     setTimeout(() => {
       this.ready = true;
@@ -142,16 +147,16 @@ export class TerminalsActionsComponent extends BaseComponent<TerminalsAppState, 
   }
 
   public connect(): void {
-    this.connection$.pipe(
+    this.subscriptionHandler.register(this.connection$.pipe(
       take(1),
       switchMap(connection => this.connectionsRequests.connect(this.packagePath, connection)),
-    ).subscribe();
+    ).subscribe());
   }
 
   public submit(): boolean {
     this.message = '';
     if (this.selectedOption) {
-      this.admin$.pipe(
+      this.subscriptionHandler.register(this.admin$.pipe(
         switchMap(admin => {
           admin.adminFunction = this.selectedOption;
           return this.requests.admin(this.packagePath, admin);
@@ -168,7 +173,7 @@ export class TerminalsActionsComponent extends BaseComponent<TerminalsAppState, 
           }
         }),
         take(1)
-      ).subscribe();
+      ).subscribe());
     } else {
       this.message = 'Please choose an action'
     }
@@ -182,10 +187,10 @@ export class TerminalsActionsComponent extends BaseComponent<TerminalsAppState, 
   }
 
   private setClient$(connectionKey$: Observable<ConnectionKey>): void {
-    this.client$ = combineLatest(
+    this.client$ = combineLatest([
       getPackageDendencyAsStream(this.skysmackStore, this.packagePath, [0]),
       connectionKey$
-    ).pipe(
+    ]).pipe(
       delay(0),
       switchMap(([identitiesPackage, params]) => this.clientStore.getSingle(identitiesPackage.object.path, params.clientId))
     );
@@ -202,7 +207,10 @@ export class TerminalsActionsComponent extends BaseComponent<TerminalsAppState, 
   }
 
   private setOnlineAndConnected$(): void {
-    this.onlineAndConnected$ = combineLatest(this.clientOnline$, this.connection$).pipe(
+    this.onlineAndConnected$ = combineLatest([
+      this.clientOnline$, 
+      this.connection$
+    ]).pipe(
       delay(0),
       map(([clientOnline, connection]) => (clientOnline && (connection.object.status === TerminalStatus.Connected)))
     );

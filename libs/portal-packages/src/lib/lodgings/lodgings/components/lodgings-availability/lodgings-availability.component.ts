@@ -96,10 +96,10 @@ export class LodgingsAvailabilityComponent implements OnInit {
   private setAvailableLodgings() {
     this.requestPeriod(this.currentSelectedDate);
 
-    this.events$ = combineLatest(
+    this.events$ = combineLatest([
       this.store.get(this.packagePath),
       this.store.getAvailableLodgingsDaily(this.packagePath)
-    ).pipe(
+    ]).pipe(
       map(values => {
         const lodgings = values[0];
         const dates = values[1];

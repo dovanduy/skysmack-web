@@ -16,7 +16,7 @@ import { PartnerUser } from '../../models/partner-user';
 })
 export class CommercialUsersEditComponent implements OnInit, OnDestroy {
   public fields$: Observable<Field[]>;
-  public subscriptionHandler = new SubscriptionHandler();
+  private subscriptionHandler = new SubscriptionHandler();
 
   constructor(
     public router: Router,
@@ -42,10 +42,10 @@ export class CommercialUsersEditComponent implements OnInit, OnDestroy {
   public onSubmit(fh: FormHelper) {
     fh.formValid(() => {
       const user = fh.form.getRawValue();
-      this.service.update(user).pipe(
+      this.subscriptionHandler.register(this.service.update(user).pipe(
         tap(() => this.router.navigate(['/', 'users'])),
         take(1)
-      ).subscribe();
+      ).subscribe());
     }, false);
   }
 }
