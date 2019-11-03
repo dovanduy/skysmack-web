@@ -12,6 +12,11 @@ import { PortalFieldsModule } from '@skysmack/portal-fields';
 import { NgAssignmentAllMenuProvider } from './ng-assignments-all-menu-provider';
 import { singleAssignmentsComponents } from './single-assignments/components/single-assignments-components';
 import { assignmentsSchedulesComponents } from './assignments-schedules';
+import { AssignmentStatusPipe } from './components/assignments-all/assignment-status.pipe';
+
+const pipes = [
+  AssignmentStatusPipe
+];
 
 @NgModule({
   imports: [
@@ -29,6 +34,7 @@ import { assignmentsSchedulesComponents } from './assignments-schedules';
     ...assignmentsSchedulesComponents,
     ...assignmentTypesComponents,
     ...maintenanceStatesComponents,
+    ...pipes
   ],
   providers: []
 })
