@@ -20,30 +20,29 @@ export function sharedReducer(state: any, action: any, initialState: any, reduxA
         case REHYDRATE: { // Reinstantiate localRecords so their functions get defined again.
             const newState = { ...action.payload[reduxArea] };
 
+            if (newState) {
+                const localObjectsToReinstantiate = Object.keys(newState).map(key => {
+                    return stateKeysContainingLocalObjects.includes(key) ? key : undefined
+                }).filter(x => x);
 
-            const stateKeysToReinstantiate = Object.keys(newState).map(key => {
-                return stateKeysContainingLocalObjects.includes(key) ? key : undefined
-            }).filter(x => x);
-
-            if (newState && stateKeysToReinstantiate.length > 0) {
-                stateKeysToReinstantiate.map(stateKey => {
-                    if (stateKey === 'localRecords') {
-                        loopPackageDictionary(newState, 'localRecords');
-                    } else if (stateKey === 'availablePackages') {
-                        loopPackageDictionary(newState, 'availablePackages');
-                    } else if (stateKey === 'availableFields') {
-                        loopPackageDictionary(newState, 'availableFields');
-                    } else {
-                        Object.keys(newState[stateKey]).forEach(localRecordKey => {
-                            newState[stateKey][localRecordKey] = reinstantiateLocalRecord(newState[stateKey][localRecordKey])
-                        });
-                    }
-                });
-
+                if (newState && localObjectsToReinstantiate.length > 0) {
+                    localObjectsToReinstantiate.map(propName => {
+                        if (propName === 'localRecords') {
+                            loopPackageDictionary(newState, 'localRecords');
+                        } else if (propName === 'availablePackages') {
+                            loopPackageDictionary(newState, 'availablePackages');
+                        } else if (propName === 'availableFields') {
+                            loopPackageDictionary(newState, 'availableFields');
+                        } {
+                            Object.keys(newState[propName]).forEach(localRecordKey => {
+                                newState[propName][localRecordKey] = reinstantiateLocalRecord(newState[propName][localRecordKey])
+                            });
+                        }
+                    });
+                }
                 return { ...state, ...newState };
-            } else {
-                return state;
             }
+            return state;
         }
         case AuthenticationActions.LOG_OUT: {
             return initialState;

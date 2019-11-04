@@ -1,0 +1,15 @@
+{
+  "$schema": "../../../node_modules/ng-packagr/ng-package.schema.json",
+  "dest": "../../dist/ng-siteminder",
+  "lib": {
+    "entryFile": "src/public_api.ts"
+  },
+  "whitelistedNonPeerDependencies": [
+    "tslib",
+    "@skysmack/framework",
+    "@skysmack/redux",
+    "@skysmack/packages-siteminder",
+    "@skysmack/packages-skysmack-core",
+    "@skysmack/ng-lodgings"
+  ]
+}

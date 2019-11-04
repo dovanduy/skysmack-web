@@ -24,3 +24,4 @@ export * from './open-api-type';
 export * from './file-storage-type';
 export * from './phones-type';
 export * from './3cx-type';
+export * from './siteminder-type';

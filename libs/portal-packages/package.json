@@ -9,6 +9,7 @@
     "@skysmack/packages-lodgings": "*",
     "@skysmack/packages-lodgings-reservations": "*",
     "@skysmack/packages-persons": "*",
+    "@skysmack/packages-siteminder": "*",
     "@skysmack/packages-persons-lodging-reservations": "*",
     "@skysmack/packages-products": "*",
     "@skysmack/packages-products-pricings": "*",

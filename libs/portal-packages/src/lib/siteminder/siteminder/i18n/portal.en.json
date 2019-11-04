@@ -1,0 +1,19 @@
+{
+    "SITE_MINDER": {
+        "INDEX": {
+            "PACKAGES": "Packages",
+            "CREATE": "Create",
+            "EDIT": "Edit",
+            "DELETE": "Delete",
+            "FIELDS": "Fields",
+            "FIELDS_TITLE": "(fields)",
+            "ITEM": "Item",
+            "MANAGE": "Manage",
+            "ACTIONS": "Actions",
+            "CHANNELS": "Channels",
+            "RATE_PLANS": "Rate plans",
+            "LODGING_TYPE_RATE_PLAN_CHANNELS": "Relate rooms-rate-plans with channels",
+            "LODGING_TYPE_RATE_PLANS": "Relate rateplans to rooms"
+        }
+    }
+}

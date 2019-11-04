@@ -1545,10 +1545,22 @@
 		"ASSIGNMENT_ALL": {
 			"TITLE": "All assignments",
 			"INDEX": {
+				"MANAGE": "Manage",
 				"SINGLE_ASSIGNMENTS": "Single assignments",
 				"RECURRING_ASSIGNMENTS": "Scheduled assignments",
 				"TYPES": "Assignment types",
 				"STATES": "Maintenance states"
+<<<<<<< HEAD
+=======
+			},
+			"MENU_ITEM_ACTIONS": {
+				"CREATED": "Created",
+				"PENDING": "Pending",
+				"ONGOING": "Ongoing",
+				"DONE": "Done",
+				"CANCELED": "Canceled",
+				"FAULTED": "Faulted"
+>>>>>>> master
 			}
 		}
 	},
@@ -2465,6 +2477,245 @@
 			"UPDATING": "Updating the lodging type reservation price change valid from/to: {{ dates }}",
 			"DELETING": "Deleting the lodging type reservation price change valid from/to: {{ dates }}",
 			"ERROR": "An error occured with the lodging type reservation price change valid from/to: {{ dates }}. Correct and try again."
+		}
+	},
+	"SITE_MINDER_CHANNELS": {
+		"FORM": {
+			"LABELS": {
+				"NAME": "Name"
+			},
+			"PLACEHOLDERS": {
+				"NAME": "Enter name"
+			},
+			"VALIDATION": {
+				"NAME": {
+					"REQUIRED": "A name is required."
+				}
+			}
+		},
+		"FIELDS": {
+			"CREATE": {
+				"ADD": "Add new field"
+			},
+			"EDIT": {
+				"EDITING": "Editing"
+			},
+			"INDEX": {
+				"ACTIONS": "Actions",
+				"CREATE": "Create new field",
+				"OTHER": "Other",
+				"BACK": "Back",
+				"FIELDS": "Fields",
+				"EDIT": "Edit"
+			}
+		},
+		"CREATE": {
+			"CREATE": "Create",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDIT": "Edit",
+			"BUTTON_EDIT": "Update"
+		},
+		"INDEX": {
+			"TITLE_EXTRAS": "(channels)",
+			"PACKAGES": "Packages",
+			"CREATE": "Create",
+			"EDIT": "Edit",
+			"DELETE": "Delete",
+			"FIELDS": "Fields",
+			"FIELDS_TITLE": "(fields)",
+			"ITEM": "Item",
+			"MANAGE": "Manage",
+			"ACTIONS": "Actions"
+		}
+	},
+	"SITE_MINDER_LODGING_TYPE_RATE_PLAN_CHANNELS": {
+		"FORM": {
+			"LABELS": {
+				"LODGINGTYPERATEPLANID": "LodgingType Room relation",
+				"CHANNELID": "Channel"
+			},
+			"PLACEHOLDERS": {
+				"LODGINGTYPERATEPLANID": "LodgingType Room relation",
+				"CHANNELID": "Channel"
+			},
+			"VALIDATION": {
+				"LODGINGTYPERATEPLANID": {
+					"REQUIRED": "LodgingType Room relation is required."
+				},
+				"CHANNELID": {
+					"REQUIRED": "Channel is required."
+				}
+			}
+		},
+		"FIELDS": {
+			"CREATE": {
+				"ADD": "Add new field"
+			},
+			"EDIT": {
+				"EDITING": "Editing"
+			},
+			"INDEX": {
+				"ACTIONS": "Actions",
+				"CREATE": "Create new field",
+				"OTHER": "Other",
+				"BACK": "Back",
+				"FIELDS": "Fields",
+				"EDIT": "Edit"
+			}
+		},
+		"CREATE": {
+			"CREATE": "Create",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDIT": "Edit",
+			"BUTTON_EDIT": "Update"
+		},
+		"INDEX": {
+			"PACKAGES": "Packages",
+			"CREATE": "Create",
+			"EDIT": "Edit",
+			"DELETE": "Delete",
+			"FIELDS": "Fields",
+			"ITEM": "Item",
+			"MANAGE": "Manage",
+			"ACTIONS": "Actions",
+			"TITLE_EXTRAS": "(Lodging types, rateplans, and channel relations)"
+		}
+	},
+	"SITE_MINDER_LODGING_TYPE_RATE_PLANS": {
+		"FORM": {
+			"LABELS": {
+				"LODGINGTYPEID": "Lodging type",
+				"RATEPLANID": "Rate plan"
+			},
+			"PLACEHOLDERS": {
+				"LODGINGTYPEID": "Lodging type",
+				"RATEPLANID": "Rate plan"
+			},
+			"VALIDATION": {
+				"LODGINGTYPEID": {
+					"REQUIRED": "Lodging type is required."
+				},
+				"RATEPLANID": {
+					"REQUIRED": "Rate plan is required."
+				}
+			}
+		},
+		"FIELDS": {
+			"CREATE": {
+				"ADD": "Add new field"
+			},
+			"EDIT": {
+				"EDITING": "Editing"
+			},
+			"INDEX": {
+				"ACTIONS": "Actions",
+				"CREATE": "Create new field",
+				"OTHER": "Other",
+				"BACK": "Back",
+				"FIELDS": "Fields",
+				"EDIT": "Edit"
+			}
+		},
+		"CREATE": {
+			"CREATE": "Create",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDIT": "Edit",
+			"BUTTON_EDIT": "Update"
+		},
+		"INDEX": {
+			"PACKAGES": "Packages",
+			"CREATE": "Create",
+			"EDIT": "Edit",
+			"DELETE": "Delete",
+			"FIELDS": "Fields",
+			"ITEM": "Item",
+			"MANAGE": "Manage",
+			"ACTIONS": "Actions",
+			"TITLE_EXTRAS": "(Lodgingtype Rateplans)"
+		}
+	},
+	"SITE_MINDER_RATE_PLANS": {
+		"FORM": {
+			"LABELS": {
+				"NAME": "Name",
+				"CURRENCYCODE": "Currency code",
+				"BEFORETAX": "Before tax"
+			},
+			"PLACEHOLDERS": {
+				"NAME": "Enter name",
+				"CURRENCYCODE": "Currency code",
+				"BEFORETAX": "Before tax"
+			},
+			"VALIDATION": {
+				"NAME": {
+					"REQUIRED": "A name is required."
+				},
+				"CURRENCYCODE": {
+					"REQUIRED": "Currency code is required."
+				},
+				"BEFORETAX": {
+					"REQUIRED": "Before tax is required."
+				}
+			}
+		},
+		"FIELDS": {
+			"CREATE": {
+				"ADD": "Add new field"
+			},
+			"EDIT": {
+				"EDITING": "Editing"
+			},
+			"INDEX": {
+				"ACTIONS": "Actions",
+				"CREATE": "Create new field",
+				"OTHER": "Other",
+				"BACK": "Back",
+				"FIELDS": "Fields",
+				"EDIT": "Edit"
+			}
+		},
+		"CREATE": {
+			"CREATE": "Create",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDIT": "Edit",
+			"BUTTON_EDIT": "Update"
+		},
+		"INDEX": {
+			"PACKAGES": "Packages",
+			"CREATE": "Create",
+			"EDIT": "Edit",
+			"DELETE": "Delete",
+			"FIELDS": "Fields",
+			"FIELDS_TITLE": "(fields)",
+			"ITEM": "Item",
+			"MANAGE": "Manage",
+			"ACTIONS": "Actions",
+			"TITLE_EXTRAS": "(rate plans)"
+		}
+	},
+	"SITE_MINDER": {
+		"INDEX": {
+			"PACKAGES": "Packages",
+			"CREATE": "Create",
+			"EDIT": "Edit",
+			"DELETE": "Delete",
+			"FIELDS": "Fields",
+			"FIELDS_TITLE": "(fields)",
+			"ITEM": "Item",
+			"MANAGE": "Manage",
+			"ACTIONS": "Actions",
+			"CHANNELS": "Channels",
+			"RATE_PLANS": "Rate plans",
+			"LODGING_TYPE_RATE_PLAN_CHANNELS": "Relate rooms-rate-plans with channels",
+			"LODGING_TYPE_RATE_PLANS": "Relate rateplans to rooms"
 		}
 	},
 	"CONNECTIONS": {

@@ -1,0 +1,32 @@
+<ng-container *ngIf="formReady">
+    <h3>Update {{ channelCell.channel?.object?.name }} restriction for {{ lodgingTypeCell.lodgingType?.object?.name }}
+        the
+        {{ date }}
+    </h3>
+    <p style="font-size: 12px;">{{ rateplanCell.rateplan?.object?.name }}</p>
+
+    <form [formGroup]="form" (ngSubmit)="ok()">
+        <mat-form-field>
+            <input matInput type="number" step="1" name="Restriction" [formControlName]="restriction"
+                [placeholder]="channelCell.channelobject?.name">
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput type="number" step="1" min="1" max="999" name="MinimumLengthOfStay"
+                [formControlName]="minimumLengthOfStay" placeholder="Minimum length of stay">
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput type="number" step="1" min="1" max="999" name="MaximumLengthOfStay"
+                [formControlName]="maximumLengthOfStay" placeholder="Maximum length of stay">
+        </mat-form-field>
+
+
+        <mat-dialog-actions>
+            <button mat-raised-button mat-dialog-close>Cancel</button>
+            <button type="submit" mat-raised-button color="primary">
+                Save
+            </button>
+        </mat-dialog-actions>
+    </form>
+</ng-container>

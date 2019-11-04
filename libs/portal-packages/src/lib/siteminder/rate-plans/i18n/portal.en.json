@@ -1,0 +1,63 @@
+{
+    "SITE_MINDER_RATE_PLANS": {
+        "FORM": {
+            "LABELS": {
+                "NAME": "Name",
+                "CURRENCYCODE": "Currency code",
+                "BEFORETAX": "Before tax"
+            },
+            "PLACEHOLDERS": {
+                "NAME": "Enter name",
+                "CURRENCYCODE": "Currency code",
+                "BEFORETAX": "Before tax"
+            },
+            "VALIDATION": {
+                "NAME": {
+                    "REQUIRED": "A name is required."
+                },
+                "CURRENCYCODE": {
+                    "REQUIRED": "Currency code is required."
+                },
+                "BEFORETAX": {
+                    "REQUIRED": "Before tax is required."
+                }
+            }
+        },
+        "FIELDS": {
+            "CREATE": {
+                "ADD": "Add new field"
+            },
+            "EDIT": {
+                "EDITING": "Editing"
+            },
+            "INDEX": {
+                "ACTIONS": "Actions",
+                "CREATE": "Create new field",
+                "OTHER": "Other",
+                "BACK": "Back",
+                "FIELDS": "Fields",
+                "EDIT": "Edit"
+            }
+        },
+        "CREATE": {
+            "CREATE": "Create",
+            "BUTTON_CREATE": "Create"
+        },
+        "EDIT": {
+            "EDIT": "Edit",
+            "BUTTON_EDIT": "Update"
+        },
+        "INDEX": {
+            "PACKAGES": "Packages",
+            "CREATE": "Create",
+            "EDIT": "Edit",
+            "DELETE": "Delete",
+            "FIELDS": "Fields",
+            "FIELDS_TITLE": "(fields)",
+            "ITEM": "Item",
+            "MANAGE": "Manage",
+            "ACTIONS": "Actions",
+            "TITLE_EXTRAS": "(rate plans)"
+        }
+    }
+}

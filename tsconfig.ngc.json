@@ -101,6 +101,9 @@
       "@skysmack/packages-3cx": [
         "./dist/@skysmack/packages-3cx"
       ],
+      "@skysmack/packages-siteminder": [
+        "./dist/@skysmack/packages-siteminder"
+      ],
       "@skysmack/packages-persons-lodging-reservations": [
         "./dist/@skysmack/packages-persons-lodging-reservations"
       ],
@@ -163,6 +166,9 @@
       ],
       "@skysmack/ng-3cx": [
         "libs/ng-packages/ng-3cx"
+      ],
+      "@skysmack/ng-siteminder": [
+        "libs/ng-packages/ng-siteminder"
       ],
       "@skysmack/ng-file-storage": [
         "libs/ng-packages/ng-file-storage"

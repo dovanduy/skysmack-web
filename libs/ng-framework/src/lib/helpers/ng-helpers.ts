@@ -1,7 +1,7 @@
 import { Router, RoutesRecognized } from '@angular/router';
 import { Package, LocalObject, toLocalObject, MenuItem, SIDEBAR } from '@skysmack/framework';
-import { map, switchMap, filter, take, pairwise, tap } from 'rxjs/operators';
-import { combineLatest, of, Observable, merge } from 'rxjs';
+import { map, switchMap, filter, take, pairwise } from 'rxjs/operators';
+import { combineLatest, of, Observable, merge, BehaviorSubject } from 'rxjs';
 import { SkysmackStore } from '../stores/skysmack-store';
 import { Skysmack } from '@skysmack/packages-skysmack-core';
 
@@ -165,4 +165,19 @@ export const getPreviousUrl$ = (router: Router): Observable<string> => {
     );
 
     return merge(null$, redirects$);
+}
+
+/**
+ * Convert an observable to a behaviorSubject
+ */
+export const convertObservableToBehaviorSubject = <T>(observable: Observable<T>, initValue: T): BehaviorSubject<T> => {
+    const subject = new BehaviorSubject(initValue);
+
+    observable.subscribe({
+        complete: () => subject.complete(),
+        error: x => subject.error(x),
+        next: x => subject.next(x)
+    });
+
+    return subject;
 }

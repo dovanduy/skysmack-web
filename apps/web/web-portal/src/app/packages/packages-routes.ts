@@ -20,12 +20,14 @@ import { emailsSmtpRoute } from './emails-smtp-package-manifest';
 import { openApiRoute } from './open-api-package-manifest';
 import { phonesRoute } from './phones-package-manifest';
 import { PBX_3CXRoute } from './3cx-package-manifest';
+import { siteminderRoute } from './siteminder-package-manifest';
 
 export const packagesRoutes = [
     packagesRoute,
     accessPoliciesRoute,
     identitiesRoute,
     personsRoute,
+    siteminderRoute,
     fileStorageRoute,
     invoicesRoute,
     invoicesProductsRoute,

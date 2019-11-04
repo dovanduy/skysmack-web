@@ -64,7 +64,8 @@ const material = [
     ...material,
     ...directives,
     ...commonComponents,
-    ...displayComponents
+    ...displayComponents,
+    ...portailUiPipes
   ],
   entryComponents: [
     ...displayComponents

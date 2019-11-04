@@ -1,6 +1,7 @@
 import { ValidatorFn } from '@angular/forms';
 import { FieldTypes } from './field-types';
 import { Type } from '@angular/core';
+import { DisplayColumn, LocalObject } from '@skysmack/framework';
 
 export class Field {
     /**
@@ -24,7 +25,7 @@ export class Field {
     /**
      * Modifies how the field value will be displayed in the column.
      */
-    public displayModifier: Function;
+    public displayModifier: (column: DisplayColumn, providedEntity: LocalObject<any, any>) => string;
 
     /**
      * Form label e.g. "First Name"

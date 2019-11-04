@@ -29,6 +29,7 @@ import { loadFileStoragePackage } from '../packages/file-storage-package-manifes
 import { loadLodgingReservationsSignaturesPackage } from '../packages/lodging-reservations-signatures-package-manifest';
 import { loadPhonePackage } from '../packages/phones-package-manifest';
 import { load3CXPackage } from '../packages/3cx-package-manifest';
+import { loadSiteMinderPackage } from '../packages/siteminder-package-manifest';
 
 
 export function configureSkysmack(actions: NgSkysmackActions) {
@@ -54,6 +55,7 @@ export const packageLoaders = [
     { provide: APP_INITIALIZER, useFactory: loadPersonPackage, deps: [PackageLoader], multi: true },
     { provide: APP_INITIALIZER, useFactory: loadPhonePackage, deps: [PackageLoader], multi: true },
     { provide: APP_INITIALIZER, useFactory: load3CXPackage, deps: [PackageLoader], multi: true },
+    { provide: APP_INITIALIZER, useFactory: loadSiteMinderPackage, deps: [PackageLoader], multi: true },
     { provide: APP_INITIALIZER, useFactory: loadFileStoragePackage, deps: [PackageLoader], multi: true },
     { provide: APP_INITIALIZER, useFactory: loadProductPackage, deps: [PackageLoader], multi: true },
     { provide: APP_INITIALIZER, useFactory: loadProductsPricingsPackage, deps: [PackageLoader], multi: true },

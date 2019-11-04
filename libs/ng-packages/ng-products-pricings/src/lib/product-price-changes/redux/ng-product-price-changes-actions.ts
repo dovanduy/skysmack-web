@@ -2,7 +2,6 @@ import { NgRedux } from '@angular-redux/store';
 import { Injectable } from '@angular/core';
 import { ProductPriceChangesAppState, ProductPriceChangesActions, ProductPriceChange } from '@skysmack/packages-products-pricings';
 import { LocalObject, StrIndex } from '@skysmack/framework';
-import { Product } from 'libs/packages/products/src';
 
 @Injectable({ providedIn: 'root' })
 export class NgProductPriceChangesActions extends ProductPriceChangesActions {
