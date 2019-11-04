@@ -124,7 +124,7 @@ export class AssignmentsAllIndexComponent implements OnInit, OnDestroy {
     }
   }
 
-  private trackById(index: number, item: LocalObject<Assignment, number>) {
+  public trackById(index: number, item: LocalObject<Assignment, number>) {
     return item.object.id;
   }
 
