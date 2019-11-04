@@ -7,7 +7,7 @@ export class NgSignalR {
     public instance: SignalR;
 
     constructor(@Inject(API_DOMAIN_INJECTOR_TOKEN) protected apiDomain: ApiDomain) {
-        SignalR.API_DOMAIN = apiDomain;
+        // SignalR.API_DOMAIN = apiDomain;
         // this.instance = SignalR.Instance;
     }
 }
