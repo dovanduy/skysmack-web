@@ -5,11 +5,11 @@ import { Observable } from 'rxjs';
 import { HttpErrorResponse } from '@skysmack/framework';
 import { mergeMap, map } from 'rxjs/operators';
 import { NgAssignmentsRequests } from './ng-assignments-requests';
-import { AssignmentsActions } from 'libs/packages/maintenance/src';
 import { getReadDependencies, getDependencies, GetDependenciesOptions } from '@skysmack/ng-framework';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { NgAssignmentTypesActions } from '../../assignment-types/redux/ng-assignment-types-actions';
 import { NgAssignmentTypesStore } from '../../assignment-types/redux/ng-assignment-types-store';
+import { AssignmentsActions } from '@skysmack/packages-maintenance';
 
 @Injectable({ providedIn: 'root' })
 export class NgAssignmentsEpics {

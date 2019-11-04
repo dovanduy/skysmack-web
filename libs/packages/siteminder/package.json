@@ -1,0 +1,11 @@
+{
+  "$schema": "../../../node_modules/ng-packagr/package.schema.json",
+  "name": "@skysmack/packages-siteminder",
+  "version": "1.0.0",
+  "peerDependencies": {
+    "@skysmack/framework": "*",
+    "@skysmack/redux": "*",
+    "@skysmack/packages-lodgings": "*",
+    "tslib": "^1.9.3"
+  }
+}

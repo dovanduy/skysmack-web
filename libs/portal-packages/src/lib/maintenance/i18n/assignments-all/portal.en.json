@@ -3,10 +3,19 @@
         "ASSIGNMENT_ALL": {
             "TITLE": "All assignments",
             "INDEX": {
+                "MANAGE": "Manage",
                 "SINGLE_ASSIGNMENTS": "Single assignments",
                 "RECURRING_ASSIGNMENTS": "Scheduled assignments",
                 "TYPES": "Assignment types",
                 "STATES": "Maintenance states"
+            },
+            "MENU_ITEM_ACTIONS": {
+                "CREATED": "Created",
+                "PENDING": "Pending",
+                "ONGOING": "Ongoing",
+                "DONE": "Done",
+                "CANCELED": "Canceled",
+                "FAULTED": "Faulted"
             }
         }
     }

@@ -1,0 +1,21 @@
+<ng-container *ngIf="lodgingTypeCell">
+    <h3>Modify availability for {{ lodgingTypeCell.lodgingType.object.name }}</h3>
+
+    <h4>Available: {{ lodgingTypeCell.availability?.object.available }}</h4>
+    <h4>Result: {{ (availableAfterModification$ | async) }}</h4>
+
+    <form [formGroup]="form" (ngSubmit)="saveChanges()">
+        <mat-form-field>
+            <input matInput type="number" step="1" name="Available modifier" formControlName="availableModifier"
+                placeholder="Modifier">
+        </mat-form-field>
+
+    <mat-dialog-actions>
+        <button mat-raised-button mat-dialog-close>Cancel</button>
+        <button type="submit" mat-raised-button color="primary">
+            Save
+        </button>
+    </mat-dialog-actions>
+
+    </form>
+</ng-container>

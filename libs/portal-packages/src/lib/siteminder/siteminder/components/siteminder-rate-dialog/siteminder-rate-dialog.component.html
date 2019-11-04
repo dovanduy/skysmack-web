@@ -1,0 +1,20 @@
+<ng-container *ngIf="formReady">
+    <h3>Update {{ channelCell.channel?.object?.name }} rate for {{ lodgingTypeCell.lodgingType?.object?.name }} the
+        {{ date }}
+    </h3>
+    <p style="font-size: 12px;">{{ rateplanCell.rateplan?.object?.name }}</p>
+
+    <form [formGroup]="form" (ngSubmit)="ok()">
+        <mat-form-field>
+            <input matInput type="number" step="1" name="Rate" [formControlName]="channelCell.channelId"
+                [placeholder]="channelCell.channel?.object?.name">
+        </mat-form-field>
+
+        <mat-dialog-actions>
+            <button mat-raised-button mat-dialog-close>Cancel</button>
+            <button type="submit" mat-raised-button color="primary">
+                Save
+            </button>
+        </mat-dialog-actions>
+    </form>
+</ng-container>

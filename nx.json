@@ -53,7 +53,7 @@
     "packages-persons": {
       "tags": []
     },
-        "packages-file-storage": {
+    "packages-file-storage": {
       "tags": []
     },
     "packages-persons-lodging-reservations": {
@@ -165,6 +165,9 @@
       "tags": []
     },
     "ng-persons": {
+      "tags": []
+    },
+    "ng-siteminder": {
       "tags": []
     },
     "ng-persons-lodging-reservations": {

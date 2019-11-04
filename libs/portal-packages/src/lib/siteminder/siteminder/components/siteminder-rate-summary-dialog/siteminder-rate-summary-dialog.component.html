@@ -1,0 +1,15 @@
+<ng-container *ngIf="formReady">
+    <h3>Update {{ lodgingType.name }} rates for {{ date | date: 'dd-MM-yyyy' }}</h3>
+    <p style="font-size: 12px;">{{ ratePlanTitle }}</p>
+
+    <form [formGroup]="form" (ngSubmit)="ok()">
+        <mat-form-field *ngFor="let channel of channels">
+            <input matInput type="number" step="1" [formControlName]="channel.id" [placeholder]="channel.name">
+        </mat-form-field>
+
+        <button type="submit" mat-raised-button color="primary">
+            Ok
+        </button>
+    </form>
+    <button mat-raised-button (click)="cancel()">Cancel</button>
+</ng-container>

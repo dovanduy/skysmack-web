@@ -22,7 +22,7 @@
     "paths": {
       "moment": [
         "./node_modules/moment/min/moment.min.js"
-      ],      
+      ],
       "lodash": [
         "./node_modules/lodash-es"
       ],
@@ -70,6 +70,9 @@
       ],
       "@skysmack/packages-persons": [
         "libs/packages/persons/public_api.ts"
+      ],
+      "@skysmack/packages-siteminder": [
+        "libs/packages/siteminder/public_api.ts"
       ],
       "@skysmack/packages-file-storage": [
         "libs/packages/file-storage/public_api.ts"
@@ -169,6 +172,9 @@
       ],
       "@skysmack/ng-persons": [
         "libs/ng-packages/ng-persons/src/public_api.ts"
+      ],
+      "@skysmack/ng-siteminder": [
+        "libs/ng-packages/ng-siteminder/src/public_api.ts"
       ],
       "@skysmack/ng-file-storage": [
         "libs/ng-packages/ng-file-storage/src/public_api.ts"

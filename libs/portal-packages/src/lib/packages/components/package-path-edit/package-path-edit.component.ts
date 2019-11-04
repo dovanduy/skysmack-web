@@ -3,12 +3,11 @@ import { NgPackagesActions, NgPackagesStore } from '@skysmack/ng-packages';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EditorNavService } from '@skysmack/portal-ui';
-import { PackagesAppState } from '@skysmack/packages-skysmack-core';
+import { PackagesAppState, ChangePackagePath } from '@skysmack/packages-skysmack-core';
 import { Package } from '@skysmack/framework';
 import { NgPackagePathEditFieldsConfig } from '../../ng-package-path-edit-fields-config';
 import { FormHelper } from '@skysmack/ng-dynamic-forms';
 import { RecordFormComponent } from '@skysmack/portal-fields';
-import { ChangePackagePath } from 'libs/packages/skysmack-core/src/packages/models/change-package-path';
 
 @Component({
   selector: 'ss-package-path-edit',
