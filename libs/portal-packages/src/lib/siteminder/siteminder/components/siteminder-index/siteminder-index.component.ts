@@ -1,8 +1,8 @@
-import { Component, OnInit, ViewChild, TemplateRef, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ViewChild, TemplateRef, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { NgSiteMinderStore, NgSiteMinderActions, NgSiteMinderChannelsStore, NgSiteMinderRatePlansStore, NgSiteMinderRatePlansActions, NgSiteMinderChannelsActions, NgSiteMinderChannelManagerStore, NgSiteMinderChannelManagerActions } from '@skysmack/ng-siteminder';
-import { SiteMinderAppState, SITE_MINDER_AREA_KEY, SiteMinderUi } from '@skysmack/packages-siteminder';
+import { SiteMinderAppState, SITE_MINDER_AREA_KEY, SiteMinderUi, LodgingTypeAvailability } from '@skysmack/packages-siteminder';
 import { BaseComponent } from '@skysmack/portal-fields';
 import { EntityComponentPageTitle } from '@skysmack/portal-ui';
 import { Observable, combineLatest, BehaviorSubject, of } from 'rxjs';
@@ -10,7 +10,7 @@ import { LodgingColumn } from '../../../models/lodging-column';
 import { map, tap, debounceTime, distinctUntilChanged, switchMap, filter, take, flatMap } from 'rxjs/operators';
 import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
 import { NgLodgingTypesStore, NgLodgingTypesActions } from '@skysmack/ng-lodgings';
-import { PagedQuery, getLocalDate } from '@skysmack/framework';
+import { PagedQuery, getLocalDate, toLocalObject } from '@skysmack/framework';
 import { getPackageDendencyAsStream } from '@skysmack/ng-framework';
 import { RateplanColumn } from '../../../models/rateplan-column';
 import { ChannelColumn } from '../../../models/channel-column';
@@ -22,6 +22,7 @@ import { RateSummary } from '../../../models/rate-summary';
 import { RateInfo } from '../../../models/rate-info';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { SiteMinderAvailabilityDialogComponent } from '../siteminder-availability-dialog/siteminder-availability-dialog.component';
+import { SiteMinderRateDialogComponent } from '../siteminder-rate-dialog/siteminder-rate-dialog.component';
 
 @Component({
   selector: 'ss-siteminder-index',
@@ -60,6 +61,7 @@ export class SiteMinderIndexComponent extends BaseComponent<SiteMinderAppState, 
     private channelsActions: NgSiteMinderChannelsActions,
     private channelManagerStore: NgSiteMinderChannelManagerStore,
     private channelManagerActions: NgSiteMinderChannelManagerActions,    
+    private changeDetectorRef: ChangeDetectorRef,
     private dialog: MatDialog
   ) {
     super(router, activatedRoute, skysmackStore, title);
@@ -147,6 +149,7 @@ export class SiteMinderIndexComponent extends BaseComponent<SiteMinderAppState, 
         ]).pipe(          
           debounceTime(50),
           map(([availability, rates]) => this.getDateRows(from, to).map(date => {
+            console.log('rates', rates);
             return new SiteminderRow({
               date: date,
               lodgingCells: lodgingColumns.map(lodgingColumn => {
@@ -161,7 +164,7 @@ export class SiteMinderIndexComponent extends BaseComponent<SiteMinderAppState, 
                       channelCells: rateplanColumn.channels.map(channelColumn => {
                         return new ChannelCell({ 
                           channelId: channelColumn.id,
-                          rateInfo: rates.find(rate => rate.object.lodgingTypeId === lodgingColumn.id && rate.object.channelId === channelColumn.id && rate.object.date === date as any)
+                          rateInfo: rates.find(rate => rate.object.lodgingTypeId === lodgingColumn.id && rate.object.ratePlanId === rateplanColumn.id && rate.object.channelId === channelColumn.id && rate.object.date as unknown as string === getLocalDate(date))
                         });
                       })
                     })
@@ -186,10 +189,35 @@ export class SiteMinderIndexComponent extends BaseComponent<SiteMinderAppState, 
     this.actions.updateRestrictionsUi(this.packagePath, hideRestrictions);
   }
 
-  public editAvailability(lodgingCell: LodgingCell) {
-    this.dialog.open(SiteMinderAvailabilityDialogComponent, {
-      data: lodgingCell
-    } as MatDialogConfig);
+  public editAvailability(date: Date, lodgingCell: LodgingCell) {
+    this.subscriptionHandler.register(this.dialog.open(SiteMinderAvailabilityDialogComponent, {
+      data: { date: date, lodgingTypeCell: lodgingCell }
+    } as MatDialogConfig).afterClosed().pipe(
+      map(available => {
+        if (available) {
+          if (lodgingCell.availability && available.availableModifier !== undefined) {
+            lodgingCell.availability.object.availableModifier = available.availableModifier;
+          } else {
+            lodgingCell.availability = toLocalObject(new LodgingTypeAvailability({ available: 0, availableModifier: available.availableModifier }));
+          }
+          this.changeDetectorRef.detectChanges();
+        }
+      }),
+      take(1)
+    ).subscribe());
+  }
+
+  public editRate(date: Date, lodgingTypeCell: LodgingCell, rateplanCell: RateplanCell, channelCell: ChannelCell) {
+    this.subscriptionHandler.register(this.dialog.open(SiteMinderRateDialogComponent, {
+      data: { date: date, lodgingTypeCell: lodgingTypeCell, rateplanCell: rateplanCell, channelCell: channelCell }
+    } as MatDialogConfig).afterClosed().pipe(
+      map(rate => {
+        if (rate) {
+          
+        }
+      }),
+      take(1)
+    ).subscribe());
   }
 
   public whenScrolling() {
