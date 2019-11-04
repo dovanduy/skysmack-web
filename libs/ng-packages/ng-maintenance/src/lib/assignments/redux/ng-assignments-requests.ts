@@ -15,7 +15,7 @@ export class NgAssignmentsRequests {
 
 
     public get(action: ReduxAction<{ packagePath: string, from: Date, due: Date }>): Observable<ReduxAction<any> | ReduxAction<HttpErrorResponse>> {
-        let url = `${this.apiDomain.domain}/${action.payload.packagePath}?from=${action.payload.from.toISOString()}&to=${action.payload.due.toISOString()}`;
+        let url = `${this.apiDomain.domain}/${action.payload.packagePath}?from=${encodeURIComponent(action.payload.from.toISOString()).split('Z')[0]}&to=${encodeURIComponent(action.payload.due.toISOString()).split('Z')[0]}`;
         return this.http.get<Assignment[]>(url, { observe: 'response' })
             .pipe(
                 map(httpResponse => {

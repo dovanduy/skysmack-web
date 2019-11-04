@@ -6,6 +6,8 @@ import { NgSingleAssignmentsActions, NgSingleAssignmentsStore, NgAssignmentTypes
 import { NgSingleAssignmentsFieldsConfig } from '../../ng-single-assignments-fields-config';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { RecordFormComponent } from '@skysmack/portal-fields';
+import { FormHelper } from '@skysmack/ng-dynamic-forms';
+import { LocalObjectStatus } from '@skysmack/framework';
 
 @Component({
   selector: 'ss-single-assignments-edit',
@@ -29,5 +31,23 @@ export class SingleAssignmentsEditComponent extends RecordFormComponent<SingleAs
   ngOnInit() {
     super.ngOnInit();
     this.setEditFields();
+  }
+
+  protected update(fh: FormHelper) {
+    fh.formValid(() => {
+      const oldValue = { ...this.selectedEntity };
+      const newValue = this.extractFormValues(fh, this.selectedEntity);
+      newValue.oldObject = oldValue.object;
+      newValue.status = LocalObjectStatus.MODIFYING;
+      if (newValue.object.from.toISOString) {
+        newValue.object.from = (newValue.object.from.toISOString() as any).split('Z')[0] as any;
+      }
+      if (newValue.object.due.toISOString) {
+        newValue.object.due = (newValue.object.due.toISOString() as any).split('Z')[0] as any;
+      }
+
+      this.actions.update([newValue], this.packagePath);
+      this.editorNavService.hideEditorNav();
+    });
   }
 }

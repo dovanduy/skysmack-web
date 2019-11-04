@@ -2,11 +2,11 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { MenuItem, safeUndefinedTo, LocalObject, SubscriptionHandler, toLocalObject } from '@skysmack/framework';
 import { EntityComponentPageTitle } from '@skysmack/portal-ui';
-import { NgAssignmentsStore, NgAssignmentsActions, NgSingleAssignmentsActions, NgAssignmentsSchedulesActions, NgAssignmentsSchedulesStore } from '@skysmack/ng-maintenance';
+import { NgAssignmentsStore, NgAssignmentsActions, NgSingleAssignmentsActions, NgAssignmentsSchedulesActions, NgAssignmentsSchedulesStore, NgSingleAssignmentsStore } from '@skysmack/ng-maintenance';
 import { Observable } from 'rxjs';
 import { DateOnlyAdapter2 } from './date-only-adapter2';
 import { DateAdapter } from '@angular/material/core';
-import { map, take } from 'rxjs/operators';
+import { map, take, tap } from 'rxjs/operators';
 import { Assignment, AssignmentStatus, ScheduledAssignment, ScheduledAssignmentKey } from '@skysmack/packages-maintenance';
 
 @Component({
@@ -50,7 +50,8 @@ export class AssignmentsAllIndexComponent implements OnInit, OnDestroy {
     private router: Router,
     private assignmentsStore: NgAssignmentsStore,
     private assignmentsActions: NgAssignmentsActions,
-    private singleAssignmentActions: NgSingleAssignmentsActions,
+    private singleAssignmentsActions: NgSingleAssignmentsActions,
+    private singleAssignmentsStore: NgSingleAssignmentsStore,
     private assignmentsScheduledActions: NgAssignmentsSchedulesActions,
     private assignmentsScheduledStore: NgAssignmentsSchedulesStore,
     private title: EntityComponentPageTitle,
@@ -107,9 +108,20 @@ export class AssignmentsAllIndexComponent implements OnInit, OnDestroy {
       _this.assignmentsScheduledActions.changes(_this.packagePath, [change]);
     } else if (assignment) {
       // Updated single assignment
+      this.subscriptionHandler.register(_this.singleAssignmentsStore.getSingle(_this.packagePath, assignment.id).pipe(
+        take(1),
+        tap((singleAssignment) => {
+          singleAssignment.object.status = status;
+          _this.singleAssignmentsActions.update([singleAssignment], _this.packagePath);
+        })
+      ).subscribe());
     } else {
       // Something went wrong...
     }
+  }
+
+  private trackById(index: number, item: LocalObject<Assignment, number>) {
+    return item.object.id;
   }
 
   private initDates(): void {
