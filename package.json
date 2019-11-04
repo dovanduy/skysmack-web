@@ -42,7 +42,7 @@
         "redux": "4.0.1",
         "redux-observable": "1.1.0",
         "rxjs": "6.5.2",
-        "swagger-ui": "3.23.6",
+        "swagger-ui": "3.23.11",
         "zone.js": "0.10.2"
     },
     "devDependencies": {

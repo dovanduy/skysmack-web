@@ -39,7 +39,9 @@ export function assignmentsReducer(state = new AssignmentsState(), action: any, 
             const assignmentsToBeUpdated = recordsToBeUpdated.map(singleAssignment => {
                 const dict = newState.localRecords[stateKey];
                 const assignment = Object.keys(dict).map(key => dict[key]).find(assignment => JSON.stringify(assignment.object.id) === JSON.stringify({ id: singleAssignment.object.id }));
-                assignment.object.status = singleAssignment.object.status;
+                if (assignment) {
+                    assignment.object.status = singleAssignment.object.status;
+                }
                 return assignment;
             }).filter(x => x);
 
