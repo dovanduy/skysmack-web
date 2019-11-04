@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { NgRedux } from '@angular-redux/store';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
-import { AssignmentsAppState, AssignmentsState, Assignment } from '@skysmack/packages-maintenance';
+import { AssignmentsAppState, AssignmentsState, Assignment, AssignmentKey } from '@skysmack/packages-maintenance';
 import { Observable } from 'rxjs';
 import { LocalObject, safeUndefinedTo, dictionaryToArray, StrIndex } from '@skysmack/framework';
 import { map, filter } from 'rxjs/operators';
@@ -13,10 +13,11 @@ export class NgAssignmentsStore {
         protected skysmackStore: NgSkysmackStore
     ) { }
 
-    public get(packagePath: string): Observable<StrIndex<LocalObject<Assignment, unknown>[]>> {
+    public get(packagePath: string): Observable<LocalObject<Assignment, AssignmentKey>[]> {
         return this.getState().pipe(
             map(state => state.localRecords[packagePath]),
             safeUndefinedTo('object'),
+            dictionaryToArray<LocalObject<Assignment, AssignmentKey>>()
         );
     }
 

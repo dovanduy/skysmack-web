@@ -7,7 +7,9 @@ import { Observable } from 'rxjs';
 import { DateOnlyAdapter2 } from './date-only-adapter2';
 import { DateAdapter } from '@angular/material/core';
 import { map, take, tap } from 'rxjs/operators';
-import { Assignment, AssignmentStatus, ScheduledAssignment, ScheduledAssignmentKey } from '@skysmack/packages-maintenance';
+import { Assignment, AssignmentStatus, ScheduledAssignment, ScheduledAssignmentKey, AssignmentKey } from '@skysmack/packages-maintenance';
+import * as _moment from 'moment';
+const moment = _moment;
 
 @Component({
   selector: 'ss-assignments-all',
@@ -18,7 +20,7 @@ import { Assignment, AssignmentStatus, ScheduledAssignment, ScheduledAssignmentK
 export class AssignmentsAllIndexComponent implements OnInit, OnDestroy {
   public static COMPONENT_KEY = 'assignments-all-index';
   public componentKey = AssignmentsAllIndexComponent.COMPONENT_KEY;
-  public entities$: Observable<LocalObject<Assignment, unknown>[]>;
+  public entities$: Observable<LocalObject<Assignment, AssignmentKey>[]>;
   public from: Date;
   public due: Date;
   private packagePath: string;
@@ -26,22 +28,22 @@ export class AssignmentsAllIndexComponent implements OnInit, OnDestroy {
   private subscriptionHandler = new SubscriptionHandler();
 
   public menuItemActions: MenuItem[] = [
-    new MenuItem().asEventAction(`${this.translationPrefix}CREATED`, () => AssignmentStatus.Created, '', this).setShowLogic((entity: LocalObject<Assignment, unknown>) => {
+    new MenuItem().asEventAction(`${this.translationPrefix}CREATED`, () => AssignmentStatus.Created, '', this).setShowLogic((entity: LocalObject<Assignment, AssignmentKey>) => {
       return entity.object.status !== AssignmentStatus.Created;
     }),
-    new MenuItem().asEventAction(`${this.translationPrefix}PENDING`, () => AssignmentStatus.Pending, '', this).setShowLogic((entity: LocalObject<Assignment, unknown>) => {
+    new MenuItem().asEventAction(`${this.translationPrefix}PENDING`, () => AssignmentStatus.Pending, '', this).setShowLogic((entity: LocalObject<Assignment, AssignmentKey>) => {
       return entity.object.status !== AssignmentStatus.Pending;
     }),
-    new MenuItem().asEventAction(`${this.translationPrefix}ONGOING`, () => AssignmentStatus.Ongoing, '', this).setShowLogic((entity: LocalObject<Assignment, unknown>) => {
+    new MenuItem().asEventAction(`${this.translationPrefix}ONGOING`, () => AssignmentStatus.Ongoing, '', this).setShowLogic((entity: LocalObject<Assignment, AssignmentKey>) => {
       return entity.object.status !== AssignmentStatus.Ongoing;
     }),
-    new MenuItem().asEventAction(`${this.translationPrefix}DONE`, () => AssignmentStatus.Done, '', this).setShowLogic((entity: LocalObject<Assignment, unknown>) => {
+    new MenuItem().asEventAction(`${this.translationPrefix}DONE`, () => AssignmentStatus.Done, '', this).setShowLogic((entity: LocalObject<Assignment, AssignmentKey>) => {
       return entity.object.status !== AssignmentStatus.Done;
     }),
-    new MenuItem().asEventAction(`${this.translationPrefix}CANCELED`, () => AssignmentStatus.Canceled, '', this).setShowLogic((entity: LocalObject<Assignment, unknown>) => {
+    new MenuItem().asEventAction(`${this.translationPrefix}CANCELED`, () => AssignmentStatus.Canceled, '', this).setShowLogic((entity: LocalObject<Assignment, AssignmentKey>) => {
       return entity.object.status !== AssignmentStatus.Canceled;
     }),
-    new MenuItem().asEventAction(`${this.translationPrefix}FAULTED`, () => AssignmentStatus.Faulted, '', this).setShowLogic((entity: LocalObject<Assignment, unknown>) => {
+    new MenuItem().asEventAction(`${this.translationPrefix}FAULTED`, () => AssignmentStatus.Faulted, '', this).setShowLogic((entity: LocalObject<Assignment, AssignmentKey>) => {
       return entity.object.status !== AssignmentStatus.Faulted;
     })
   ];
@@ -63,8 +65,9 @@ export class AssignmentsAllIndexComponent implements OnInit, OnDestroy {
     this.initDates();
     this.getAssignments();
     this.entities$ = this.assignmentsStore.get(this.packagePath).pipe(
-      map(x => x[`${this.from}:${this.due}`]),
-      safeUndefinedTo('array'),
+      map(entities => entities.filter(entity => {
+        return moment(entity.object.from).isAfter(this.from, 'day') && moment(entity.object.due).isSameOrBefore(this.due, 'day');
+      }))
     );
   }
 
@@ -88,18 +91,18 @@ export class AssignmentsAllIndexComponent implements OnInit, OnDestroy {
     return item ? item.localId : undefined;
   }
 
-  public updateStatus(event: { action: () => AssignmentStatus, _this: AssignmentsAllIndexComponent, value?: LocalObject<Assignment, unknown> }): void {
+  public updateStatus(event: { action: () => AssignmentStatus, _this: AssignmentsAllIndexComponent, value?: LocalObject<Assignment, AssignmentKey> }): void {
     const assignment: Assignment = event.value && event.value.object;
     const status: AssignmentStatus = event.action();
     const _this = event._this;
-    if (assignment && assignment.originalTime) {
+    if (assignment && assignment.id.originalTime) {
       // Updated scheduled assignment
       const change = toLocalObject<ScheduledAssignment, ScheduledAssignmentKey>(new ScheduledAssignment({
         id: {
-          scheduleId: assignment.id,
-          originalTime: assignment.originalTime
+          scheduleId: assignment.id.id,
+          originalTime: assignment.id.originalTime
         },
-        originalTime: assignment.originalTime,
+        originalTime: assignment.id.originalTime,
         description: assignment.description,
         status,
         due: assignment.due,
@@ -108,7 +111,7 @@ export class AssignmentsAllIndexComponent implements OnInit, OnDestroy {
       _this.assignmentsScheduledActions.changes(_this.packagePath, [change]);
     } else if (assignment) {
       // Updated single assignment
-      this.subscriptionHandler.register(_this.singleAssignmentsStore.getSingle(_this.packagePath, assignment.id).pipe(
+      this.subscriptionHandler.register(_this.singleAssignmentsStore.getSingle(_this.packagePath, assignment.id.id).pipe(
         take(1),
         tap((singleAssignment) => {
           singleAssignment.object.status = status;
