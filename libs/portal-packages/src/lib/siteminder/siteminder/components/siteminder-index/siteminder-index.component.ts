@@ -23,6 +23,7 @@ import { RateInfo } from '../../../models/rate-info';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { SiteMinderAvailabilityDialogComponent } from '../siteminder-availability-dialog/siteminder-availability-dialog.component';
 import { SiteMinderRateDialogComponent } from '../siteminder-rate-dialog/siteminder-rate-dialog.component';
+import { SiteMinderRateSummaryDialogComponent } from '../siteminder-rate-summary-dialog/siteminder-rate-summary-dialog.component';
 
 @Component({
   selector: 'ss-siteminder-index',
@@ -115,8 +116,8 @@ export class SiteMinderIndexComponent extends BaseComponent<SiteMinderAppState, 
               return new LodgingColumn({
                 id: lodging.object.id, title: lodging.object.name, lodgingType: lodging, rateplans: rateplans.map(rateplan =>
                   new RateplanColumn({
-                    id: rateplan.object.id, title: rateplan.object.name, channels: channels.map(channel =>
-                      new ChannelColumn({ id: channel.object.id, title: channel.object.name }))
+                    id: rateplan.object.id, rateplan: rateplan, title: rateplan.object.name, channels: channels.map(channel =>
+                      new ChannelColumn({ id: channel.object.id, title: channel.object.name, channel: channel }))
                   }))
               });
             }
@@ -149,7 +150,6 @@ export class SiteMinderIndexComponent extends BaseComponent<SiteMinderAppState, 
         ]).pipe(          
           debounceTime(50),
           map(([availability, rates]) => this.getDateRows(from, to).map(date => {
-            console.log('rates', rates);
             return new SiteminderRow({
               date: date,
               lodgingCells: lodgingColumns.map(lodgingColumn => {
@@ -161,9 +161,11 @@ export class SiteMinderIndexComponent extends BaseComponent<SiteMinderAppState, 
                   rateplanCells: lodgingColumn.rateplans.map(rateplanColumn => {
                     return new RateplanCell({
                       rateplanId: rateplanColumn.id,
+                      rateplan: rateplanColumn.rateplan,
                       channelCells: rateplanColumn.channels.map(channelColumn => {
                         return new ChannelCell({ 
                           channelId: channelColumn.id,
+                          channel: channelColumn.channel,
                           rateInfo: rates.find(rate => rate.object.lodgingTypeId === lodgingColumn.id && rate.object.ratePlanId === rateplanColumn.id && rate.object.channelId === channelColumn.id && rate.object.date as unknown as string === getLocalDate(date))
                         });
                       })
@@ -200,6 +202,21 @@ export class SiteMinderIndexComponent extends BaseComponent<SiteMinderAppState, 
           } else {
             lodgingCell.availability = toLocalObject(new LodgingTypeAvailability({ available: 0, availableModifier: available.availableModifier }));
           }
+          this.changeDetectorRef.detectChanges();
+        }
+      }),
+      take(1)
+    ).subscribe());
+  }
+
+
+  public editChannelRates(date: Date, lodgingTypeCell: LodgingCell, rateplanCell: RateplanCell) {
+    this.subscriptionHandler.register(this.dialog.open(SiteMinderRateSummaryDialogComponent, {
+      data: { date: date, lodgingTypeCell: lodgingTypeCell, rateplanCell: rateplanCell}
+    } as MatDialogConfig).afterClosed().pipe(
+      map(rate => {
+        if (rate) {
+          
           this.changeDetectorRef.detectChanges();
         }
       }),

@@ -9,6 +9,10 @@ import { deepFreeze, SubscriptionHandler, getLocalDate } from '@skysmack/framewo
 import { tap, switchMap } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
+import { LodgingCell } from '../../../models/lodging-cell';
+import { RateplanCell } from '../../../models/rateplan-cell';
+import * as _moment from 'moment';
+const moment = _moment;
 
 @Component({
   selector: 'ss-siteminder-rate-summary-dialog',
@@ -16,44 +20,42 @@ import { BehaviorSubject } from 'rxjs';
   styleUrls: ['./siteminder-rate-summary-dialog.component.scss']
 })
 export class SiteMinderRateSummaryDialogComponent implements OnInit, OnDestroy {
-  public date: Date;
-  public ratePlanTitle: string;
   public form: FormGroup;
   public formReady: boolean;
-  public channels: Channel[];
-  public lodgingType: LodgingType;
+  
+  public date: string;
+  public lodgingTypeCell: LodgingCell;
+  public rateplanCell: RateplanCell
+
   private packagePath: string;
   private comparisonRates: Rate[] = [];
   private changeableRates: Rate[] = [];
+
   private subscriptionHandler = new SubscriptionHandler();
 
   constructor(
     private router: Router,
     private queueService: SiteMinderQueueService,
     public dialogRef: MatDialogRef<SiteMinderRateSummaryDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: RateSummary
+    @Inject(MAT_DIALOG_DATA) public data: { date: Date, lodgingTypeCell: LodgingCell, rateplanCell: RateplanCell }
   ) { }
 
   ngOnInit() {
     this.packagePath = this.router.url.split('/')[1];
 
-    // Prepare data
-    const { date, channels, rates, ratePlan, lodgingType } = this.data;
-    this.date = date;
-    this.channels = channels;
-    this.ratePlanTitle = ratePlan ? ratePlan.object.name : '';
-    this.lodgingType = lodgingType.object;
+    this.date = moment(this.data.date).format('YYYY-MM-DD');
+    this.lodgingTypeCell = this.data.lodgingTypeCell;
+    this.rateplanCell = this.data.rateplanCell;
 
     // Process data
     this.form = new FormGroup({});
-    channels.forEach(channel => {
+    this.rateplanCell.channelCells.forEach(channel => {
       // Rates
-      const rate = rates.find(rate => rate.object.channelId === channel.id);
-      this.setRate(channel, rate ? rate.object : undefined, lodgingType.object.id, ratePlan.object.id)
+      this.setRate(channel.channelId, channel.rateInfo ? channel.rateInfo.object : undefined, this.lodgingTypeCell.lodgingType.object.id, this.rateplanCell.rateplanId)
 
       // Controls
-      const formControl = new FormControl(rate ? rate.object.rate : null);
-      this.form.addControl(channel.id.toString(), formControl);
+      const formControl = new FormControl(channel.rateInfo ? channel.rateInfo.object.rate : null);
+      this.form.addControl(channel.channelId.toString(), formControl);
     });
     this.formReady = true;
 
@@ -89,14 +91,14 @@ export class SiteMinderRateSummaryDialogComponent implements OnInit, OnDestroy {
     this.dialogRef.close();
   }
 
-  private setRate(channel: Channel, rate: LodgingTypeRate, lodgingTypeId: number, ratePlanId: number): void {
-    const dateOnlyString = getLocalDate(this.date);
+  private setRate(channelId: number, rate: LodgingTypeRate, lodgingTypeId: number, ratePlanId: number): void {
+    const dateOnlyString = this.date;
 
     this.comparisonRates.push(deepFreeze(new Rate({
       start: dateOnlyString as any,
       end: dateOnlyString as any,
       lodgingTypeId,
-      channels: [channel.id],
+      channels: [channelId],
       rate: rate ? rate.rate : null
     })));
 
@@ -105,7 +107,7 @@ export class SiteMinderRateSummaryDialogComponent implements OnInit, OnDestroy {
       end: dateOnlyString as any,
       lodgingTypeId,
       ratePlanId,
-      channels: [channel.id],
+      channels: [channelId],
       rate: rate ? rate.rate : null
     }));
   }
