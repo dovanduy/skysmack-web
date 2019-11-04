@@ -57,7 +57,7 @@ export class SiteMinderChannelManagerActions {
 
     public updateAvailability = (packagePath: string, record: LocalObject<Availability, unknown>) => {
         record.error = false;
-        record.status = LocalObjectStatus.MODIFYING
+        record.status = LocalObjectStatus.MODIFYING;
 
         this.store.dispatch(Object.assign({}, new ReduxAction<any, any>({
             type: SITE_MINDER_CHANNEL_MANAGER_REDUX_KEY + SiteMinderChannelManagerActions.UPDATE_AVAILABILITY,

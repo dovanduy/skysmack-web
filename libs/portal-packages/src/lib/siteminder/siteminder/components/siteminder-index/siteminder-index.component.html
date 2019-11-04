@@ -133,7 +133,7 @@
                             </tr>
                         </thead>
                         <tbody *ngIf="siteminderRows$ | async as siteminderRows">
-                            <tr *cdkVirtualFor="let siteminderRow of siteminderRows; trackBy: trackByRow">
+                            <tr *cdkVirtualFor="let siteminderRow of siteminderRows; trackBy: trackByRow; let i = index" [ngClass]="'row-weekday-' + (siteminderRow.date | weekday)" [attr.data-index]="i">
                                 <td class="table-cell mat-cell border-right">
                                     {{ siteminderRow.date | date: 'dd-MM-yyyy' }}
                                 </td>
@@ -142,10 +142,10 @@
                                     <!-- Available -->
                                     <td *ngIf="!uiOptions.hideAvailability"
                                         class="table-cell mat-cell border-left border-right clickable"
-                                        (click)="editAvailability(lodgingCell)">
+                                        (click)="editAvailability(siteminderRow.date, lodgingCell)">
                                         <ng-container *ngIf="lodgingCell.availability?.object">
                                            <span class="label-text">{{ lodgingCell.availability.object.available + lodgingCell.availability.object.availableModifier }}</span>
-                                            {{ lodgingCell.availability.object.availableModifier }}
+                                           <span class="label-text-muted">{{ lodgingCell.availability.object.availableModifier }}</span>
                                         </ng-container>
                                     </td>
 
@@ -158,12 +158,12 @@
                                             <!-- Rates -->
                                             <td *ngIf="!uiOptions.hideRates"
                                                 class="table-cell mat-cell border-right-light">
-                                                
+                                                {{ rateplanCell.displayRateSummary() }}
                                             </td>
                                             <!-- Restrictions -->
                                             <td *ngIf="!uiOptions.hideRestrictions"
                                                 class="table-cell mat-cell border-right-light">
-                                                Restrictions all
+                                                
                                             </td>
                                         </ng-container>
 
@@ -173,7 +173,8 @@
                                             <!-- Rates -->
                                             <ng-container *ngIf="!uiOptions.hideRates">
                                                 <td [ngClass]="{ 'border-right-light': true }"
-                                                    class="table-cell mat-cell border-right">
+                                                    class="table-cell mat-cell border-right clickable"
+                                                    (click)="editRate(siteminderRow.date, lodgingCell, rateplanCell, channelCell)">
                                                     <ng-container *ngIf="channelCell.rateInfo?.object">
                                                         {{ channelCell.rateInfo?.object?.rate }} 
                                                     </ng-container>

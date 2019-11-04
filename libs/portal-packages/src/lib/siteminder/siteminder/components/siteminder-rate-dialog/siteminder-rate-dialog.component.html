@@ -1,16 +1,20 @@
 <ng-container *ngIf="formReady">
-    <h3>Update {{ channel?.object?.name }} rate for {{ lodgingType?.object?.name }} the {{ date | date: 'yyyy-MM-dd' }}
+    <h3>Update {{ channelCell.channel?.object?.name }} rate for {{ lodgingTypeCell.lodgingType?.object?.name }} the
+        {{ date }}
     </h3>
-    <p style="font-size: 12px;">{{ ratePlanTitle }}</p>
+    <p style="font-size: 12px;">{{ rateplanCell.rateplan?.object?.name }}</p>
 
     <form [formGroup]="form" (ngSubmit)="ok()">
         <mat-form-field>
-            <input matInput type="number" step="1" name="Rate" [formControlName]="channel?.object?.id"
-                [placeholder]="channel?.object?.name">
+            <input matInput type="number" step="1" name="Rate" [formControlName]="channelCell.channelId"
+                [placeholder]="channelCell.channel?.object?.name">
         </mat-form-field>
-        <button type="submit" mat-raised-button color="primary">
-            Ok
-        </button>
+
+        <mat-dialog-actions>
+            <button mat-raised-button mat-dialog-close>Cancel</button>
+            <button type="submit" mat-raised-button color="primary">
+                Save
+            </button>
+        </mat-dialog-actions>
     </form>
-    <button mat-raised-button (click)="cancel()">Cancel</button>
 </ng-container>
