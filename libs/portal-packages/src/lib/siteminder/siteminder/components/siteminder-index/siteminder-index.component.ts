@@ -24,6 +24,7 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { SiteMinderAvailabilityDialogComponent } from '../siteminder-availability-dialog/siteminder-availability-dialog.component';
 import { SiteMinderRateDialogComponent } from '../siteminder-rate-dialog/siteminder-rate-dialog.component';
 import { SiteMinderRateSummaryDialogComponent } from '../siteminder-rate-summary-dialog/siteminder-rate-summary-dialog.component';
+import { SiteMinderRestrictionsDialogComponent } from '../siteminder-restrictions-dialog/siteminder-restrictions-dialog.component';
 
 @Component({
   selector: 'ss-siteminder-index',
@@ -61,7 +62,7 @@ export class SiteMinderIndexComponent extends BaseComponent<SiteMinderAppState, 
     private channelsStore: NgSiteMinderChannelsStore,
     private channelsActions: NgSiteMinderChannelsActions,
     private channelManagerStore: NgSiteMinderChannelManagerStore,
-    private channelManagerActions: NgSiteMinderChannelManagerActions,    
+    private channelManagerActions: NgSiteMinderChannelManagerActions,
     private changeDetectorRef: ChangeDetectorRef,
     private dialog: MatDialog
   ) {
@@ -147,7 +148,7 @@ export class SiteMinderIndexComponent extends BaseComponent<SiteMinderAppState, 
         return combineLatest([
           this.channelManagerStore.getAvailability(this.packagePath, from, to),
           this.channelManagerStore.getRates(this.packagePath, from, to)
-        ]).pipe(          
+        ]).pipe(
           debounceTime(50),
           map(([availability, rates]) => this.getDateRows(from, to).map(date => {
             return new SiteminderRow({
@@ -163,7 +164,7 @@ export class SiteMinderIndexComponent extends BaseComponent<SiteMinderAppState, 
                       rateplanId: rateplanColumn.id,
                       rateplan: rateplanColumn.rateplan,
                       channelCells: rateplanColumn.channels.map(channelColumn => {
-                        return new ChannelCell({ 
+                        return new ChannelCell({
                           channelId: channelColumn.id,
                           channel: channelColumn.channel,
                           rateInfo: rates.find(rate => rate.object.lodgingTypeId === lodgingColumn.id && rate.object.ratePlanId === rateplanColumn.id && rate.object.channelId === channelColumn.id && rate.object.date as unknown as string === getLocalDate(date))
@@ -175,7 +176,8 @@ export class SiteMinderIndexComponent extends BaseComponent<SiteMinderAppState, 
               })
             })
           }))
-        )}));
+        )
+      }));
   }
 
   public toggleAll(hideAll: boolean) {
@@ -212,11 +214,11 @@ export class SiteMinderIndexComponent extends BaseComponent<SiteMinderAppState, 
 
   public editChannelRates(date: Date, lodgingTypeCell: LodgingCell, rateplanCell: RateplanCell) {
     this.subscriptionHandler.register(this.dialog.open(SiteMinderRateSummaryDialogComponent, {
-      data: { date: date, lodgingTypeCell: lodgingTypeCell, rateplanCell: rateplanCell}
+      data: { date: date, lodgingTypeCell: lodgingTypeCell, rateplanCell: rateplanCell }
     } as MatDialogConfig).afterClosed().pipe(
       map(rate => {
         if (rate) {
-          
+
           this.changeDetectorRef.detectChanges();
         }
       }),
@@ -232,6 +234,25 @@ export class SiteMinderIndexComponent extends BaseComponent<SiteMinderAppState, 
         if (rate) {
           if (channelCell.rateInfo) {
             channelCell.rateInfo.object.rate = rate;
+          } else {
+
+          }
+          this.changeDetectorRef.detectChanges();
+        }
+      }),
+      take(1)
+    ).subscribe());
+  }
+
+
+  public editRestriction(date: Date, lodgingTypeCell: LodgingCell, rateplanCell: RateplanCell, channelCell: ChannelCell) {
+    this.subscriptionHandler.register(this.dialog.open(SiteMinderRestrictionsDialogComponent, {
+      data: { date: date, lodgingTypeCell: lodgingTypeCell, rateplanCell: rateplanCell, channelCell: channelCell }
+    } as MatDialogConfig).afterClosed().pipe(
+      map(restriction => {
+        if (restriction) {
+          if (channelCell.rateInfo) {
+            channelCell.rateInfo.object.restriction = restriction;
           } else {
 
           }
