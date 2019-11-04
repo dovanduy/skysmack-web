@@ -213,7 +213,12 @@ export class SiteMinderIndexComponent extends BaseComponent<SiteMinderAppState, 
     } as MatDialogConfig).afterClosed().pipe(
       map(rate => {
         if (rate) {
-          
+          if (channelCell.rateInfo) {
+            channelCell.rateInfo.object.rate = rate;
+          } else {
+
+          }
+          this.changeDetectorRef.detectChanges();
         }
       }),
       take(1)
