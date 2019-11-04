@@ -3,8 +3,7 @@ import { LocalObject } from '@skysmack/framework';
 import { AssignmentType } from './assignment-type';
 
 export class Assignment {
-    public id: number;
-    public originalTime?: Date;
+    public id: AssignmentKey;
     public description: string;
     public status: AssignmentStatus;
     public from: Date;
@@ -16,4 +15,9 @@ export class Assignment {
     public constructor(init?: Partial<Assignment>) {
         Object.assign(this, init);
     }
+}
+
+export class AssignmentKey {
+    public id: number;
+    public originalTime?: Date;
 }
