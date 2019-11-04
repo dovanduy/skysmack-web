@@ -1,10 +1,11 @@
 import { StrIndex, LocalObject, toLocalObject, HttpErrorResponse, GlobalProperties, Record, LocalObjectStatus, LocalObjectExtensions, HttpResponse } from '@skysmack/framework';
 import { AppState, ReduxAction, AuthenticationActions, RollbackMeta, ReduxOfflineMeta, sharedReducer } from '@skysmack/redux';
-import { ASSIGNMENT_TYPES_REDUX_KEY, SINGLE_ASSIGNMENTS_REDUX_KEY } from '../../constants';
+import { ASSIGNMENT_TYPES_REDUX_KEY, SINGLE_ASSIGNMENTS_REDUX_KEY, ASSIGNMENTS_SCHEDULES_REDUX_KEY } from '../../constants';
 import { Assignment, AssignmentKey } from '../../models/assignment';
 import { AssignmentsActions } from './assignments-actions';
 import { SingleAssignmentsActions } from '../single-assignments';
-import { SingleAssignment } from '../../models';
+import { SingleAssignment, ScheduledAssignment, ScheduledAssignmentKey } from '../../models';
+import { AssignmentsSchedulesActions } from '../assignments-schedules/assignments-schedules-actions';
 
 
 /**
@@ -56,6 +57,31 @@ export function assignmentsReducer(state = new AssignmentsState(), action: any, 
         }
 
         case SINGLE_ASSIGNMENTS_REDUX_KEY + SingleAssignmentsActions.UPDATE_FAILURE: {
+            return newState;
+        }
+
+        // Scheduled assignment change
+        case ASSIGNMENTS_SCHEDULES_REDUX_KEY + AssignmentsSchedulesActions.CHANGES_PUT: {
+            const castedAction: ReduxAction<null, ReduxOfflineMeta<[], HttpResponse, LocalObject<ScheduledAssignment, ScheduledAssignmentKey>[]>> = action;
+
+            const stateKey = castedAction.meta.offline.commit.meta.stateKey;
+            const recordsToBeUpdated = castedAction.meta.offline.commit.meta.value;
+
+            const assignmentsToBeUpdated = recordsToBeUpdated.map(scheduledAssignment => {
+                const dict = newState.localRecords[stateKey];
+                const assignment = Object.keys(dict).map(key => dict[key]).find(assignment => JSON.stringify(assignment.object.id) === JSON.stringify({
+                    id: scheduledAssignment.object.id.scheduleId,
+                    originalTime: scheduledAssignment.object.id.originalTime
+                }));
+
+                if (assignment) {
+                    assignment.object.status = scheduledAssignment.object.status;
+                }
+                return assignment;
+            }).filter(x => x);
+
+            newState.localRecords[stateKey] = LocalObjectExtensions.mergeOrAddLocal(newState.localRecords[stateKey], assignmentsToBeUpdated, LocalObjectStatus.OK);
+
             return newState;
         }
 
