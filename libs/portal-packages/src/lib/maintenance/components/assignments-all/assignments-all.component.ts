@@ -111,6 +111,7 @@ export class AssignmentsAllIndexComponent implements OnInit, OnDestroy {
       _this.assignmentsScheduledActions.changes(_this.packagePath, [change]);
     } else if (assignment) {
       // Updated single assignment
+      _this.singleAssignmentsActions.getSingle(_this.packagePath, assignment.id.id);
       this.subscriptionHandler.register(_this.singleAssignmentsStore.getSingle(_this.packagePath, assignment.id.id).pipe(
         take(1),
         tap((singleAssignment) => {

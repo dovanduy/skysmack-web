@@ -1,4 +1,4 @@
-import { StrIndex, LocalObject, toLocalObject, HttpErrorResponse, GlobalProperties, Record, LocalObjectStatus, LocalObjectExtensions } from '@skysmack/framework';
+import { StrIndex, LocalObject, toLocalObject, HttpErrorResponse, GlobalProperties, Record, LocalObjectStatus, LocalObjectExtensions, HttpResponse } from '@skysmack/framework';
 import { AppState, ReduxAction, AuthenticationActions, RollbackMeta, ReduxOfflineMeta, sharedReducer } from '@skysmack/redux';
 import { ASSIGNMENT_TYPES_REDUX_KEY, SINGLE_ASSIGNMENTS_REDUX_KEY } from '../../constants';
 import { Assignment, AssignmentKey } from '../../models/assignment';
@@ -32,20 +32,19 @@ export function assignmentsReducer(state = new AssignmentsState(), action: any, 
 
         // Single Assignment updates
         case SINGLE_ASSIGNMENTS_REDUX_KEY + SingleAssignmentsActions.UPDATE: {
-            // const castedAction: ReduxAction<null, ReduxOfflineMeta<SingleAssignment[], HttpResponse, LocalObject<SingleAssignment, number>[]>> = action;
-            // const stateKey = castedAction.meta.offline.commit.meta.stateKey;
-            // const recordsToBeUpdated = castedAction.meta.offline.commit.meta.value;
+            const castedAction: ReduxAction<null, ReduxOfflineMeta<SingleAssignment[], HttpResponse, LocalObject<SingleAssignment, number>[]>> = action;
+            const stateKey = castedAction.meta.offline.commit.meta.stateKey;
+            const recordsToBeUpdated = castedAction.meta.offline.commit.meta.value;
 
-            // recordsToBeUpdated.map(record => {
-            //     const key = `${record.object.from}:${record.object.due}`;
-            //     newState.localRecords[stateKey][key] = newState.localRecords[stateKey][key].map(oldRecord => {
-            //         if (oldRecord.object.id === record.object.id) {
-            //             oldRecord.object.status = record.object.status;
-            //             oldRecord.status = LocalObjectStatus.MODIFYING;
-            //         }
-            //         return oldRecord;
-            //     });
-            // });
+            const assignmentsToBeUpdated = recordsToBeUpdated.map(singleAssignment => {
+                const dict = newState.localRecords[stateKey];
+                const assignment = Object.keys(dict).map(key => dict[key]).find(assignment => JSON.stringify(assignment.object.id) === JSON.stringify({ id: singleAssignment.object.id }));
+                assignment.object.status = singleAssignment.object.status;
+                return assignment;
+            }).filter(x => x);
+
+
+            newState.localRecords[stateKey] = LocalObjectExtensions.mergeOrAddLocal(newState.localRecords[stateKey], assignmentsToBeUpdated, LocalObjectStatus.OK);
 
             return newState;
         }
