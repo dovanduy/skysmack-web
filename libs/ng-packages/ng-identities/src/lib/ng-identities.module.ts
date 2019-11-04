@@ -19,7 +19,7 @@ export class NgIdentitiesModule {
     usersEpics: NgUsersEpics,
     accountEpics: NgAccountEpics,
     applicationsEpics: NgApplicationsEpics,
-    signalR: NgSignalR,
+    // signalR: NgSignalR,
     clientsEpics: ClientsEpics,
     clientsSRProvider: SignalRClientsProvider,
   ) {
@@ -28,7 +28,7 @@ export class NgIdentitiesModule {
     registerRedux(ACCOUNT_REDUCER_KEY, accountReducer, accountEpics);
     registerRedux(CLIENTS_REDUCER_KEY, clientsReducer, clientsEpics);
     registerRedux(APPLICATIONS_REDUCER_KEY, applicationsReducer, applicationsEpics);
-
-    signalR.instance.registerProvider(clientsSRProvider);
+    // TODO: REVIEW  SIGNAL-R
+    // signalR.instance.registerProvider(clientsSRProvider);
   }
 }

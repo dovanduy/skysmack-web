@@ -18,7 +18,7 @@ export class NgTerminalPaymentsModule {
     terminalPaymentReceiptsEpics: NgTerminalPaymentReceiptsEpics,
     terminalReceiptsEpics: NgTerminalReceiptsEpics,
     connectionsEpics: ConnectionsEpics,
-    signalR: NgSignalR,
+    // signalR: NgSignalR,
     connectionsSRProvider: SignalRConnectionsProvider
   ) {
     // Redux
@@ -27,7 +27,9 @@ export class NgTerminalPaymentsModule {
     registerRedux(TERMINAL_RECEIPTS_REDUCER_KEY, terminalReceiptsReducer, terminalReceiptsEpics);
     registerRedux(CONNECTIONS_REDUCER_KEY, connectionsReducer, connectionsEpics);
 
+    // TODO: REVIEW  SIGNAL-R
+
     // Signal R
-    signalR.instance.registerProvider(connectionsSRProvider);
+    // signalR.instance.registerProvider(connectionsSRProvider);
   }
 }
