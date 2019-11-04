@@ -391,46 +391,6 @@
 			"ERROR": "Error occured updating settings."
 		}
 	},
-	"ROLES": {
-		"CREATE": {
-			"CREATE_ROLE": "Create new role",
-			"BUTTON_CREATE": "Create"
-		},
-		"EDIT": {
-			"EDITING": "Edit {{ name }}",
-			"BUTTON_EDIT": "Update"
-		},
-		"INDEX": {
-			"ACTIONS": "Actions",
-			"CREATE": "Create",
-			"MANAGE": "Manage",
-			"SECURITY": "Security",
-			"SECURITY_AND_USERS": "Users and security",
-			"ROLES": "Roles",
-			"BACK": "Back",
-			"FIELDS_TITLE": "(fields)",
-			"TITLE_EXTRAS": "(roles)"
-		},
-		"FORM": {
-			"LABELS": {
-				"NAME": "Name"
-			},
-			"PLACEHOLDERS": {
-				"NAME": "Enter name"
-			},
-			"VALIDATION": {
-				"NAME": {
-					"REQUIRED": "A name is required."
-				}
-			}
-		},
-		"QUEUE": {
-			"ADDING": "Adding {{ name }}",
-			"UPDATING": "Updating {{ name }}",
-			"DELETING": "Deleting {{ name }}",
-			"ERROR": "An error occured with {{ name }}. Correct and try again."
-		}
-	},
 	"APPLICATIONS": {
 		"ENTITY_ACTION": {
 			"ROLES": "Roles"
@@ -525,6 +485,46 @@
 			"UPDATING": "Updating {{ displayName }}",
 			"DELETING": "Deleting {{ displayName }}",
 			"ERROR": "An error occured with {{ displayName }}. Correct and try again."
+		}
+	},
+	"ROLES": {
+		"CREATE": {
+			"CREATE_ROLE": "Create new role",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDITING": "Edit {{ name }}",
+			"BUTTON_EDIT": "Update"
+		},
+		"INDEX": {
+			"ACTIONS": "Actions",
+			"CREATE": "Create",
+			"MANAGE": "Manage",
+			"SECURITY": "Security",
+			"SECURITY_AND_USERS": "Users and security",
+			"ROLES": "Roles",
+			"BACK": "Back",
+			"FIELDS_TITLE": "(fields)",
+			"TITLE_EXTRAS": "(roles)"
+		},
+		"FORM": {
+			"LABELS": {
+				"NAME": "Name"
+			},
+			"PLACEHOLDERS": {
+				"NAME": "Enter name"
+			},
+			"VALIDATION": {
+				"NAME": {
+					"REQUIRED": "A name is required."
+				}
+			}
+		},
+		"QUEUE": {
+			"ADDING": "Adding {{ name }}",
+			"UPDATING": "Updating {{ name }}",
+			"DELETING": "Deleting {{ name }}",
+			"ERROR": "An error occured with {{ name }}. Correct and try again."
 		}
 	},
 	"USERS": {
@@ -1406,8 +1406,7 @@
 			"FIELDS": "Fields",
 			"FIELDS_TITLE": "(fields)",
 			"TYPES": "Types",
-			"BACK": "Back",
-			"LODINGS": "Lodgings"
+			"BACK": "Back"
 		},
 		"QUEUE": {
 			"ADDING": "Adding {{ name }}",
@@ -1674,101 +1673,6 @@
 			"ERROR": "An error occured with {{ description }}. Correct and try again."
 		}
 	},
-<<<<<<< HEAD
-	"PRODUCT_TYPES": {
-=======
-	"PERSONS": {
-		"FORM": {
-			"LABELS": {
-				"FIRSTNAME": "First name",
-				"LASTNAME": "Last name",
-				"DISPLAYNAME": "Display name"
-			},
-			"PLACEHOLDERS": {
-				"FIRSTNAME": "Enter first name",
-				"LASTNAME": "Enter last name",
-				"DISPLAYNAME": "Enter display name"
-			},
-			"VALIDATION": {
-				"FIRSTNAME": {
-					"REQUIRED": "A first name is required."
-				},
-				"LASTNAME": {
-					"REQUIRED": "A last name is required."
-				},
-				"DISPLAYNAME": {
-					"REQUIRED": "A Display name is required."
-				}
-			}
-		},
-		"FIELDS": {
-			"CREATE": {
-				"ADD": "Add new field"
-			},
-			"EDIT": {
-				"EDITING": "Editing"
-			},
-			"INDEX": {
-				"ACTIONS": "Actions",
-				"CREATE": "Create new field",
-				"OTHER": "Other",
-				"BACK": "Back",
-				"FIELDS": "Fields",
-				"EDIT": "Edit"
-			}
-		},
-		"CREATE": {
-			"CREATE": "Create",
-			"BUTTON_CREATE": "Create"
-		},
-		"EDIT": {
-			"EDIT": "Edit",
-			"BUTTON_EDIT": "Update"
-		},
-		"INDEX": {
-			"PACKAGES": "Packages",
-			"CREATE": "Create",
-			"EDIT": "Edit",
-			"DELETE": "Delete",
-			"FIELDS": "Fields",
-			"FIELDS_TITLE": "(fields)",
-			"ITEM": "Item",
-			"MANAGE": "Manage",
-			"ACTIONS": "Actions"
-		},
-		"NOTIFICATIONS": {
-			"GET": {
-				"PAGED_ERROR": "Failed to get persons ({{ httpErrorCode }}).",
-				"SINGLE_FAILURE": "Failed to get {{ displayName }} ({{ httpErrorCode }}).",
-				"FIELDS_FAILURE": "Failed to get fields for persons ({{ httpErrorCode }}).",
-				"SINGLE_FIELD_FAILURE": "Failed to get {{ displayName }} field ({{ httpErrorCode }})."
-			},
-			"ADD": {
-				"SUCCESS": "Added {{ displayName }} succcessfully.",
-				"FAILURE": "Failed to add {{ displayName }} ({{ httpErrorCode }}).",
-				"FIELD_FAILURE": "Failed to add field for {{ displayName }} ({{ httpErrorCode }}).",
-				"FIELD_SUCCESS": "Added field for {{ displayName }} successfully."
-			},
-			"UPDATE": {
-				"SUCCESS": "Updated {{ displayName }} successfully.",
-				"FAILURE": "Failed to update {{ displayName }} ({{ httpErrorCode }}).",
-				"FIELD_SUCCESS": "Updated field for {{ displayName }} successfully.",
-				"FIELD_FAILURE": "Failed to update field for {{ displayName }} ({{ httpErrorCode }})"
-			},
-			"REMOVE": {
-				"SUCCESS": "Removed {{ displayName }} successfully.",
-				"FAILURE": "Failed to remove {{ displayName }} ({{ httpErrorCode }}).",
-				"FIELD_SUCCESS": "Removed field for {{ displayName }} succesfully.",
-				"FIELD_FAILURE": "Failed to remove field for {{ displayName }} ({{ httpErrorCode }})."
-			}
-		},
-		"QUEUE": {
-			"ADDING": "Adding {{ displayName }}",
-			"UPDATING": "Updating {{ displayName }}",
-			"DELETING": "Deleting {{ displayName }}",
-			"ERROR": "An error occured with {{ displayName }}. Correct and try again."
-		}
-	},
 	"PHONES": {
 		"FORM": {
 			"LABELS": {
@@ -1783,7 +1687,6 @@
 				}
 			}
 		},
->>>>>>> dev
 		"CREATE": {
 			"CREATE_PHONE": "Create a new phone",
 			"BUTTON_CREATE": "Create"
@@ -1922,6 +1825,45 @@
 			"ERROR": "An error occured with {{ number }}. Correct and try again."
 		}
 	},
+	"PRODUCT_TYPES": {
+		"CREATE": {
+			"CREATE": "Create",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDIT": "Edit",
+			"BUTTON_EDIT": "Update"
+		},
+		"INDEX": {
+			"TITLE_EXTRAS": "(types)",
+			"ACTIONS": "Actions",
+			"CREATE": "Create",
+			"DELETE": "Delete",
+			"MANAGE": "Manage",
+			"FIELDS": "Fields",
+			"FIELDS_TITLE": "(type fields)",
+			"BACK": "Back"
+		},
+		"FORM": {
+			"LABELS": {
+				"NAME": "Name"
+			},
+			"PLACEHOLDERS": {
+				"NAME": "Enter name"
+			},
+			"VALIDATION": {
+				"NAME": {
+					"REQUIRED": "Name is required."
+				}
+			}
+		},
+		"QUEUE": {
+			"ADDING": "Adding {{ name }}",
+			"UPDATING": "Updating {{ name }}",
+			"DELETING": "Deleting {{ name }}",
+			"ERROR": "An error occured with {{ name }}. Correct and try again."
+		}
+	},
 	"PRODUCTS": {
 		"FORM": {
 			"LABELS": {
@@ -1972,45 +1914,6 @@
 				"TYPES": "Types",
 				"FIELDS": "Fields",
 				"BACK": "Back"
-			}
-		},
-		"QUEUE": {
-			"ADDING": "Adding {{ name }}",
-			"UPDATING": "Updating {{ name }}",
-			"DELETING": "Deleting {{ name }}",
-			"ERROR": "An error occured with {{ name }}. Correct and try again."
-		}
-	},
-	"PRODUCT_TYPES": {
-		"CREATE": {
-			"CREATE": "Create",
-			"BUTTON_CREATE": "Create"
-		},
-		"EDIT": {
-			"EDIT": "Edit",
-			"BUTTON_EDIT": "Update"
-		},
-		"INDEX": {
-			"TITLE_EXTRAS": "(types)",
-			"ACTIONS": "Actions",
-			"CREATE": "Create",
-			"DELETE": "Delete",
-			"MANAGE": "Manage",
-			"FIELDS": "Fields",
-			"FIELDS_TITLE": "(type fields)",
-			"BACK": "Back"
-		},
-		"FORM": {
-			"LABELS": {
-				"NAME": "Name"
-			},
-			"PLACEHOLDERS": {
-				"NAME": "Enter name"
-			},
-			"VALIDATION": {
-				"NAME": {
-					"REQUIRED": "Name is required."
-				}
 			}
 		},
 		"QUEUE": {
