@@ -1,7 +1,7 @@
 import { Record, LocalObject } from '@skysmack/framework';
-import { LodgingType } from 'libs/packages/lodgings/src';
 import { RatePlan } from './rate-plan';
 import { Channel } from './channel';
+import { LodgingType } from '@skysmack/packages-lodgings';
 
 export class LodgingTypeRatePlanChannelKey {
     public lodgingTypeId: number;

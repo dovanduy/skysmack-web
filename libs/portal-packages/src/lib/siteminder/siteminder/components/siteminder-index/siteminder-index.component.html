@@ -157,7 +157,8 @@
                                             *ngIf="!(uiOptions.hideAll || (uiOptions.hideRates && uiOptions.hideRestrictions))">
                                             <!-- Rates -->
                                             <td *ngIf="!uiOptions.hideRates"
-                                                class="table-cell mat-cell border-right-light">
+                                                class="table-cell mat-cell border-right-light clickable"
+                                                (click)="editChannelRates(siteminderRow.date, lodgingCell, rateplanCell)">
                                                 {{ rateplanCell.displayRateSummary() }}
                                             </td>
                                             <!-- Restrictions -->
