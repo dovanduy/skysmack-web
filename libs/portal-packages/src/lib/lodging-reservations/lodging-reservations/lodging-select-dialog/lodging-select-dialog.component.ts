@@ -54,6 +54,8 @@ export class LodgingSelectDialogComponent implements OnInit, OnDestroy {
       take(1)
     );
 
+
+
     // ########
     // Step 2: Preparing the lodging types auto complete
     // ########
@@ -171,11 +173,11 @@ export class LodgingSelectDialogComponent implements OnInit, OnDestroy {
     );
 
     // Filter lodgings based ON lodging type select OR lodgings search input
-    const filteredLodgings$ = combineLatest(
+    const filteredLodgings$ = combineLatest([
       lodgingsSearchInput$,
       allLodgingsOfType$
-    ).pipe(
-      map(([searchInput, lodgings]) => searchInput ? this.filterLodgings(searchInput, lodgings) : lodgings)
+    ]).pipe(
+      map(([searchInput, lodgings]) => searchInput ? this.filterLodgings(searchInput, lodgings) : lodgings),
     );
 
     this.displaySelect$ = lodgingsSearchInput$.pipe(
@@ -195,10 +197,10 @@ export class LodgingSelectDialogComponent implements OnInit, OnDestroy {
     );
 
     // Create detailed lodgings (used for selection and display) when lodgings OR availability is updated
-    this.detailedLodgings$ = combineLatest(
+    this.detailedLodgings$ = combineLatest([
       filteredLodgings$,
       available$
-    ).pipe(
+    ]).pipe(
       map(([lodgings, available]) => {
         return lodgings.map(lodging => {
           return new DetailedLodging({

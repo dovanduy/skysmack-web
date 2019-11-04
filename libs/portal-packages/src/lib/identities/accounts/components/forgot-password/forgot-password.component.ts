@@ -9,6 +9,7 @@ import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { NgAccountRequests } from '@skysmack/ng-identities';
 import { map, take } from 'rxjs/operators';
 import { BaseComponent } from '@skysmack/portal-fields';
+import { SubscriptionHandler } from '@skysmack/framework';
 
 @Component({
   selector: 'ss-forgot-password',
@@ -20,6 +21,7 @@ export class ForgotPasswordComponent extends BaseComponent<AccountAppState, unkn
   public fields$: Observable<Field[]>;
   public message: string;
   public checkEmail$ = new BehaviorSubject(false);
+  protected subscriptionHandler = new SubscriptionHandler();
 
   constructor(
     public router: Router,
@@ -37,9 +39,13 @@ export class ForgotPasswordComponent extends BaseComponent<AccountAppState, unkn
     this.fields$ = this.fieldsConfig.getFields(undefined);
   }
 
+  ngOnDestroy() {
+    this.subscriptionHandler.unsubscribe();
+  }
+
   public onSubmit(fh: FormHelper) {
     fh.formValid(() => {
-      this.accountRequests.forgotPassword(this.packagePath, fh.form.value).pipe(
+      this.subscriptionHandler.register(this.accountRequests.forgotPassword(this.packagePath, fh.form.value).pipe(
         map(response => {
           if (response.status >= 200 && response.status <= 299) {
             this.checkEmail$.next(true);
@@ -48,7 +54,7 @@ export class ForgotPasswordComponent extends BaseComponent<AccountAppState, unkn
           }
         }),
         take(1)
-      ).subscribe();
+      ).subscribe());
     });
   }
 }

@@ -8,7 +8,7 @@ import { NgAccountRequests } from '@skysmack/ng-identities';
 import { BaseComponent } from '@skysmack/portal-fields';
 import { NgResetPasswordFieldsConfig } from './ng-reset-password-fields-config';
 import { map, catchError, take } from 'rxjs/operators';
-import { API_DOMAIN_INJECTOR_TOKEN, ApiDomain } from '@skysmack/framework';
+import { API_DOMAIN_INJECTOR_TOKEN, ApiDomain, SubscriptionHandler } from '@skysmack/framework';
 import { HttpClient } from '@angular/common/http';
 import { of } from 'rxjs';
 
@@ -20,6 +20,8 @@ import { of } from 'rxjs';
 export class ResetPasswordComponent extends BaseComponent<AccountAppState, unknown> implements OnInit, OnDestroy {
 
   public fields$;
+  protected subscriptionHandler = new SubscriptionHandler();
+
 
   constructor(
     public router: Router,
@@ -42,9 +44,13 @@ export class ResetPasswordComponent extends BaseComponent<AccountAppState, unkno
     );
   }
 
+  ngOnDestroy() {
+    this.subscriptionHandler.unsubscribe();
+  }
+
   public onSubmit(fh: FormHelper) {
     fh.formValid(() => {
-      this.accountRequest.resetPassword(this.packagePath, fh.form.getRawValue()).pipe(
+      this.subscriptionHandler.register(this.accountRequest.resetPassword(this.packagePath, fh.form.getRawValue()).pipe(
         map(response => {
           if (response.status >= 200 && response.status <= 299) {
             this.router.navigate(['/', 'account', 'login']);
@@ -54,7 +60,7 @@ export class ResetPasswordComponent extends BaseComponent<AccountAppState, unkno
           }
         }),
         take(1),
-      ).subscribe();
+      ).subscribe());
     });
   }
 }

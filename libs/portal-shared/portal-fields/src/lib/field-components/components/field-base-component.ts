@@ -17,7 +17,7 @@ export abstract class FieldBaseComponent<TField extends Field> implements Dynami
     @Input() public fields: Field[];
     @Input() public rules: FormRule[];
 
-    public subscriptionHandler = new SubscriptionHandler();
+    protected subscriptionHandler = new SubscriptionHandler();
     private oldFieldValue: string;
     private addedEvents: AddedEvent[] = [];
     public initted: boolean;

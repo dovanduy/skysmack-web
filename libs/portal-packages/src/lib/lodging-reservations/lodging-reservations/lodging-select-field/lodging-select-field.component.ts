@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Field } from '@skysmack/ng-dynamic-forms';
 import { FieldBaseComponent } from '@skysmack/portal-fields';
 import { MatDialog } from '@angular/material/dialog';
-import { take, tap, map, switchMap, startWith, filter } from 'rxjs/operators';
-import { LocalObject } from '@skysmack/framework';
+import { take, tap, map, switchMap, startWith, debounceTime, filter } from 'rxjs/operators';
+import { LocalObject, SubscriptionHandler } from '@skysmack/framework';
 import { DetailedLodging, Lodging } from '@skysmack/packages-lodgings';
 import { Observable } from 'rxjs';
 import { LodgingSelectDialogComponent } from '../lodging-select-dialog/lodging-select-dialog.component';
@@ -20,6 +20,7 @@ import { getPackageDendencyAsStream } from '@skysmack/ng-framework';
 export class LodgingSelectFieldComponent extends FieldBaseComponent<Field> implements OnInit {
   public selectedLodging: LocalObject<Lodging, number>;
   public lodgingTypeSelected$: Observable<boolean>;
+  protected subscriptionHandler = new SubscriptionHandler();
 
   constructor(
     private dialog: MatDialog,
@@ -34,6 +35,10 @@ export class LodgingSelectFieldComponent extends FieldBaseComponent<Field> imple
     super.ngOnInit();
     this.setlodgingTypeSelected$();
     this.setSelectedLodging();
+  }
+
+  ngOnDestroy() {
+    this.subscriptionHandler.unsubscribe();
   }
 
   public selectLodging(): void {

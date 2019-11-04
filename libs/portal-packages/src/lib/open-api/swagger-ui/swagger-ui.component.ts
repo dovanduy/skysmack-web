@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, ElementRef, ViewEncapsulation, Inject } from '@angular/core';
 
 import SwaggerUI from 'swagger-ui';
-import { API_DOMAIN_INJECTOR_TOKEN, ApiDomain } from '@skysmack/framework';
+import { API_DOMAIN_INJECTOR_TOKEN, ApiDomain, SubscriptionHandler } from '@skysmack/framework';
 import { Router } from '@angular/router';
 import { NgAuthenticationStore } from '@skysmack/ng-framework';
 import { map, take } from 'rxjs/operators';
@@ -16,6 +16,7 @@ import { SettingsComponent } from '@skysmack/portal-settings';
   encapsulation: ViewEncapsulation.None
 })
 export class SwaggerUiComponent implements AfterViewInit {
+  private subscriptionHandler = new SubscriptionHandler();
 
   constructor(private el: ElementRef,
     private router: Router,
@@ -24,8 +25,12 @@ export class SwaggerUiComponent implements AfterViewInit {
     @Inject(API_DOMAIN_INJECTOR_TOKEN) private apiDomain: ApiDomain) {
   }
 
+  ngOnDestroy() {
+    this.subscriptionHandler.unsubscribe();
+  }
+
   ngAfterViewInit() {
-    this.authenticationStore.getCurrentUser().pipe(
+    this.subscriptionHandler.register(this.authenticationStore.getCurrentUser().pipe(
       map(currentUser => {
         const ui = SwaggerUI({
           url: this.apiDomain.domain + '/' + this.router.url.split('/')[1],
@@ -44,7 +49,7 @@ export class SwaggerUiComponent implements AfterViewInit {
         });
       }),
       take(1)
-    ).subscribe();
+    ).subscribe());
   }
 
   settings() {

@@ -15,6 +15,7 @@ export class IdentitiesPermissions {
     public static addUsers = ADD + IdentitiesPermissions.users;
     public static updateUsers = UPDATE + IdentitiesPermissions.users;
     public static removeUsers = REMOVE + IdentitiesPermissions.users;
+    public static setPassword = 'SetPassword';
 
     // Roles
     public static findRoles = FIND + IdentitiesPermissions.roles;
@@ -49,6 +50,4 @@ export class IdentitiesPermissions {
     public static getUserSettings = IdentitiesPermissions.get + 'UserSettings';
     public static setUserSettings = IdentitiesPermissions.set + 'UserSettings';
 
-    // Misc
-    public static setPassword = 'SetPassword';
 }

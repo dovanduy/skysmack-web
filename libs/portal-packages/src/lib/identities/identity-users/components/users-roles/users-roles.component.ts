@@ -61,7 +61,10 @@ export class UsersRolesComponent extends BaseComponent<User, number> implements 
 
   private getRoles() {
     this.rolesActions.getPaged(this.packagePath, new PagedQuery());
-    this.roles$ = combineLatest(this.userRoles$, this.rolesStore.get(this.packagePath)).pipe(map(values => {
+    this.roles$ = combineLatest([
+      this.userRoles$, 
+      this.rolesStore.get(this.packagePath)
+    ]).pipe(map(values => {
       // Only show roles the user isn't in.
       const userRoles = values[0];
       return values[1].filter(role => {

@@ -2,7 +2,7 @@ import { BaseComponent } from '../base-component';
 import { Router, ActivatedRoute } from '@angular/router';
 import { EntityActions, EntityStore, FieldActions, FieldsAppState } from '@skysmack/redux';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
-import { LocalObject, LocalPage, PagedQuery, LoadingState, linq, DisplayColumn, defined, MenuItem } from '@skysmack/framework';
+import { LocalObject, LocalPage, PagedQuery, LoadingState, linq, DisplayColumn, defined, MenuItem, SubscriptionHandler } from '@skysmack/framework';
 import { Observable, BehaviorSubject, combineLatest, of } from 'rxjs';
 import { OnInit } from '@angular/core';
 import { Record } from '@skysmack/framework';
@@ -19,6 +19,7 @@ export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey>
     public pagedQuery = new PagedQuery();
     public menuItemActions$ = new BehaviorSubject<MenuItem[]>([]);
     public menuItemActions: MenuItem[];
+    protected subscriptionHandler = new SubscriptionHandler();
 
     public nextPageNumber = 1;
     public nextPageSize = this.pagedQuery.pageSize;
@@ -50,6 +51,10 @@ export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey>
         this.getPagedEntities();
         this.setFields();
         this.setEntityActions();
+    }
+
+    ngOnDestroy() {
+        this.subscriptionHandler.unsubscribe();
     }
 
     protected actionsGetPaged() {

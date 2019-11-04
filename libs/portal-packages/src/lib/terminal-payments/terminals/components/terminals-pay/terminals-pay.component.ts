@@ -5,7 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { EditorNavService } from '@skysmack/portal-ui';
 import { map, take, switchMap, tap, catchError } from 'rxjs/operators';
 import { combineLatest, of } from 'rxjs';
-import { toLocalObject, LocalObject, API_DOMAIN_INJECTOR_TOKEN, ApiDomain } from '@skysmack/framework';
+import { toLocalObject, LocalObject, API_DOMAIN_INJECTOR_TOKEN, ApiDomain, SubscriptionHandler } from '@skysmack/framework';
 import { NgTransactionRequestFieldsConfig } from '../../ng-transaction-request-fields-config';
 import { TransactionRequest, TerminalsAppState } from '@skysmack/packages-terminal-payments';
 import { FormHelper } from '@skysmack/ng-dynamic-forms';
@@ -21,6 +21,7 @@ import { NgTerminalsActions, NgTerminalsStore, NgTerminalsRequests } from '@skys
 export class TerminalsPayComponent extends RecordFormComponent<TerminalsAppState, any, unknown> implements OnInit {
 
   public disableButton = false;
+  protected subscriptionHandler = new SubscriptionHandler();
 
   constructor(
     public router: Router,
@@ -46,6 +47,10 @@ export class TerminalsPayComponent extends RecordFormComponent<TerminalsAppState
     this.setFields();
   }
 
+  ngOnDestroy() {
+    this.subscriptionHandler.unsubscribe();
+  }
+
   protected setPackagePath() {
     this.packagePath = this.data.packagePath;
   }
@@ -54,19 +59,19 @@ export class TerminalsPayComponent extends RecordFormComponent<TerminalsAppState
     const invoiceId$ = of(this.data.value.object.id);
 
     // Request invoice from API
-    combineLatest(
+    this.subscriptionHandler.register(combineLatest([
       invoiceId$,
       this.loadedPackage$
-    ).pipe(
+    ]).pipe(
       map(([invoiceId, loadedPackage]) => this.invoicesActions.getSingle(loadedPackage._package.dependencies[1], invoiceId)),
       take(1)
-    ).subscribe();
+    ).subscribe());
 
     // Get invoice from state + make fields
-    this.fields$ = combineLatest(
+    this.fields$ = combineLatest([
       invoiceId$,
       this.loadedPackage$
-    ).pipe(
+    ]).pipe(
       switchMap(([invoiceId, loadedPackage]) => this.invoicesStore.getSingle(loadedPackage._package.dependencies[1], invoiceId).pipe(
         switchMap(invoice => {
           return this.fieldsConfig.getFields(loadedPackage, toLocalObject({
@@ -97,7 +102,7 @@ export class TerminalsPayComponent extends RecordFormComponent<TerminalsAppState
       this.disableButton = true;
 
       // Request
-      this.requests.pay(this.packagePath, transactionRequest).pipe(
+      this.subscriptionHandler.register(this.requests.pay(this.packagePath, transactionRequest).pipe(
         tap(() => {
           this.disableButton = false;
           this.editorNavService.hideEditorNav();
@@ -111,7 +116,7 @@ export class TerminalsPayComponent extends RecordFormComponent<TerminalsAppState
           return of(error);
         }),
         take(1)
-      ).subscribe();
+      ).subscribe());
     });
   }
 }

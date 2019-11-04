@@ -4,7 +4,7 @@ import { FieldBaseComponent } from '@skysmack/portal-fields';
 import { MatDialog } from '@angular/material/dialog';
 import { LodgingTypeSelectDialogComponent } from '../lodging-type-select-dialog/lodging-type-select-dialog.component';
 import { take, tap, map, startWith, switchMap } from 'rxjs/operators';
-import { LocalObject } from '@skysmack/framework';
+import { LocalObject, SubscriptionHandler } from '@skysmack/framework';
 import { LodgingType, DetailedLodgingType } from '@skysmack/packages-lodgings';
 import { Observable, combineLatest } from 'rxjs';
 import { NgLodgingTypesStore } from '@skysmack/ng-lodgings';
@@ -21,6 +21,7 @@ export class LodgingTypeSelectFieldComponent extends FieldBaseComponent<Field> i
 
   public selectedLodgingType: LocalObject<LodgingType, number>;
   public datesSelected$: Observable<boolean>;
+  protected subscriptionHandler = new SubscriptionHandler();
 
   constructor(
     private dialog: MatDialog,
@@ -35,6 +36,10 @@ export class LodgingTypeSelectFieldComponent extends FieldBaseComponent<Field> i
     super.ngOnInit();
     this.setDatesSelected$();
     this.setSelectedLodgingType();
+  }
+
+  ngOnDestroy() {
+    this.subscriptionHandler.unsubscribe();
   }
 
   public selectLodgingType(): void {
@@ -66,11 +71,11 @@ export class LodgingTypeSelectFieldComponent extends FieldBaseComponent<Field> i
   private setDatesSelected$() {
     const checkInControl = this.fh.form.get('checkIn');
     const checkOutControl = this.fh.form.get('checkOut');
-    this.datesSelected$ = combineLatest(
+    this.datesSelected$ = combineLatest([
       checkInControl.valueChanges.pipe(startWith(checkInControl.value)),
       checkOutControl.valueChanges.pipe(startWith(checkOutControl.value))
-    ).pipe(
-      map(([checkIn, checkOut]) => checkIn && checkOut)
+    ]).pipe(
+      map(([checkIn, checkOut]) => checkIn && checkOut ? true : false)
     );
   }
 }

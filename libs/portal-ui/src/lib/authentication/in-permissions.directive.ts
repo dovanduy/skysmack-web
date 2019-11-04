@@ -38,8 +38,9 @@ export class InPermissionDirective implements OnInit, OnDestroy {
             if (!this._showDefault) {
                 this.show(false);
             }
-
             const packagePath = this.router.url.split('/')[1];
+
+            // Note: This doesn't need to be unsubscribed.
             this.subscription = this.store.getPermissions(packagePath).pipe(
                 map(permissions => {
                     this.show(this.includesAll(this._permissions, permissions));

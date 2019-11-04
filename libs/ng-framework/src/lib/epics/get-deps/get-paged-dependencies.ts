@@ -26,6 +26,7 @@ export function getDependencies(options: GetDependenciesOptions): void {
 
         const packagePath = options.action.payload.packagePath;
         options.dependencyIndexes = options.dependencyIndexes ? options.dependencyIndexes : [];
+        // Note: This doesn't need to be unsubscribed.
         getPackageDendencyAsStream(options.skysmackStore, packagePath, options.dependencyIndexes).pipe(
             map(targetPackage => options.actions.getPaged(targetPackage.object.path, query)),
             take(1)

@@ -5,6 +5,7 @@ import { CommercialAccountConfirmEmailFieldsConfig } from './commercial-account-
 import { Router, ActivatedRoute } from '@angular/router';
 import { map, take } from 'rxjs/operators';
 import { CommercialAccountService } from '../../services/commercial-account.service';
+import { SubscriptionHandler } from '@skysmack/framework';
 
 @Component({
   selector: 'ss-commercial-account-confirm-email',
@@ -15,6 +16,8 @@ export class CommercialAccountConfirmEmailComponent implements OnInit {
 
   public fields$: Observable<Field[]>;
   public message: string;
+  private subscriptionHandler = new SubscriptionHandler();
+
 
   constructor(
     public fieldsConfig: CommercialAccountConfirmEmailFieldsConfig,
@@ -31,9 +34,13 @@ export class CommercialAccountConfirmEmailComponent implements OnInit {
     );
   }
 
+  ngOnDestroy() {
+    this.subscriptionHandler.unsubscribe();
+  }
+
   public onSubmit(fh: FormHelper) {
     fh.formValid(() => {
-      this.service.confirmEmail(fh.form.getRawValue()).pipe(
+      this.subscriptionHandler.register(this.service.confirmEmail(fh.form.getRawValue()).pipe(
         map(response => {
           if (response.status >= 200 && response.status <= 299) {
             this.message = 'Email confirmed. Redirecting to login...';
@@ -45,7 +52,7 @@ export class CommercialAccountConfirmEmailComponent implements OnInit {
           }
         }),
         take(1)
-      ).subscribe();
+      ).subscribe());
     }, false);
   }
 }

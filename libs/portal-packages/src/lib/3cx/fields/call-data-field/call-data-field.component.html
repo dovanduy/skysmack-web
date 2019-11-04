@@ -1,0 +1,24 @@
+<ng-container *ngIf="field" [formGroup]="fh.form">
+  <h2>Output fields</h2>
+  <div class="example-container">
+
+    <h3>Include</h3>
+
+    <div cdkDropList #todoList="cdkDropList" [cdkDropListData]="include" [cdkDropListConnectedTo]="[doneList]"
+      class="example-list" (cdkDropListDropped)="drop($event)">
+      <div class="example-box" *ngFor="let item of include" cdkDrag>{{ item.displayName }}</div>
+    </div>
+  </div>
+
+  <div class="example-container">
+    <h3>Exclude</h3>
+
+    <div cdkDropList #doneList="cdkDropList" [cdkDropListData]="exclude" [cdkDropListConnectedTo]="[todoList]"
+      class="example-list" (cdkDropListDropped)="drop($event)">
+      <div class="example-box" *ngFor="let item of exclude" cdkDrag>{{ item.displayName }}</div>
+    </div>
+  </div>
+
+  <ss-backend-errors [field]="field"></ss-backend-errors>
+
+</ng-container>

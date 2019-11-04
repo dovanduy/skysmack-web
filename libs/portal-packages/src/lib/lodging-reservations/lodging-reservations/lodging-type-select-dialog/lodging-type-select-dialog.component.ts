@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { NgLodgingTypesActions, NgLodgingTypesStore } from '@skysmack/ng-lodgings';
 import { Router } from '@angular/router';
-import { PagedQuery, LocalObject } from '@skysmack/framework';
+import { PagedQuery, LocalObject, SubscriptionHandler } from '@skysmack/framework';
 import { LodgingType, DetailedLodgingType } from '@skysmack/packages-lodgings';
 import { Observable, combineLatest, of } from 'rxjs';
 import { getPackageDendencyAsStream } from '@skysmack/ng-framework';
@@ -19,6 +19,7 @@ export class LodgingTypeSelectDialogComponent implements OnInit {
   public autoCompleteControl = new FormControl();
   public detailedLodgingTypes$: Observable<DetailedLodgingType[]>;
   private selectedLodgingType: DetailedLodgingType;
+  private subscriptionHandler = new SubscriptionHandler();
 
   constructor(
     private router: Router,
@@ -47,18 +48,18 @@ export class LodgingTypeSelectDialogComponent implements OnInit {
     );
 
     // Set autocomplete default value
-    allLodgingTypes$.pipe(
+    this.subscriptionHandler.register(allLodgingTypes$.pipe(
       map(lodgingTypes => lodgingTypes.find(lodgingType => lodgingType.object.id === this.data.form.get('lodgingTypeId').value)),
       map(lodgingType => lodgingType ? lodgingType.object.name : ''),
       tap(name => this.autoCompleteControl.setValue(name)),
       take(1)
-    ).subscribe();
+    ).subscribe());
 
     // Filter lodging types based on search input
-    const filteredLodgingTypes$ = combineLatest(
+    const filteredLodgingTypes$ = combineLatest([
       this.autoCompleteControl.valueChanges.pipe(startWith('')),
       allLodgingTypes$
-    ).pipe(
+    ]).pipe(
       map(([searchInput, lodgingTypes]) => searchInput ? this.filterLodgingTypes(searchInput, lodgingTypes) : lodgingTypes.slice())
     );
 
@@ -69,10 +70,10 @@ export class LodgingTypeSelectDialogComponent implements OnInit {
 
     // Get availability for all filtered lodging types
     let once2 = false; // Prevent multiple requests
-    const availableCount$ = combineLatest(
+    const availableCount$ = combineLatest([
       lodgingPackage$,
       lodgingTypeIds$
-    ).pipe(
+    ]).pipe(
       switchMap(([lodgingPackage, lodgingTypeIds]) => {
         const checkIn = this.data.form.get('checkIn').value;
         if (checkIn instanceof Date) {
@@ -90,10 +91,10 @@ export class LodgingTypeSelectDialogComponent implements OnInit {
     //#endregion
 
     // Create the detailed lodging types used for selection and display
-    this.detailedLodgingTypes$ = combineLatest(
+    this.detailedLodgingTypes$ = combineLatest([
       filteredLodgingTypes$,
       availableCount$
-    ).pipe(
+    ]).pipe(
       map(([lodgingTypes, availableCount]) => {
         return lodgingTypes.map(lodgingType => {
           return new DetailedLodgingType({
@@ -103,6 +104,10 @@ export class LodgingTypeSelectDialogComponent implements OnInit {
         }).sort((a, b) => b.availableCount - a.availableCount)
       })
     );
+  }
+
+  ngOnDestroy() {
+    this.subscriptionHandler.unsubscribe();
   }
 
   public selectLodgingType(event: MatAutocompleteSelectedEvent): void {

@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 import { CommercialTenantsService } from '../../services/commercial-tenants.service';
 import { Tenant } from '../../models/tenant';
 import { map, take, tap } from 'rxjs/operators';
-import { HttpSuccessResponse } from '@skysmack/framework';
+import { HttpSuccessResponse, SubscriptionHandler } from '@skysmack/framework';
 import { MatDialog } from '@angular/material/dialog';
 import { RemoveDialog, RemoveDialogData } from '@skysmack/commercial-ui-partners';
 import { TenantStates } from '../../models/tenant-states';
@@ -15,6 +15,7 @@ import { TenantStates } from '../../models/tenant-states';
 })
 export class CommercialTenantsIndexComponent implements OnInit {
   public loading = true;
+  private subscriptionHandler = new SubscriptionHandler();
   public tenants$: Observable<Tenant[]>
 
   constructor(
@@ -24,6 +25,10 @@ export class CommercialTenantsIndexComponent implements OnInit {
 
   ngOnInit() {
     this.refreshTenants();
+  }
+
+  ngOnDestroy() {
+    this.subscriptionHandler.unsubscribe();
   }
 
   private refreshTenants() {
@@ -42,12 +47,12 @@ export class CommercialTenantsIndexComponent implements OnInit {
       data: new RemoveDialogData({
         name: tenant.name, removeMethod: () => {
           this.loading = true;
-          this.service.delete(tenant.id).pipe(
+          this.subscriptionHandler.register(this.service.delete(tenant.id).pipe(
             tap(() => {
               this.refreshTenants();
             }),
             take(1)
-          ).subscribe();
+          ).subscribe());
         }
       })
     });

@@ -1,6 +1,6 @@
 import { Component, OnInit, Injector } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { LocalObject, RouteData, toLocalObject } from '@skysmack/framework';
+import { LocalObject, RouteData, toLocalObject, SubscriptionHandler } from '@skysmack/framework';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { FormHelper } from '@skysmack/ng-dynamic-forms';
 import { combineLatest, of } from 'rxjs';
@@ -21,6 +21,7 @@ export class SettingsComponent extends BaseComponent<SettingsAppState<any>, unkn
   public selectedSettings: LocalObject<any, unknown>;
   public fieldsConfig: FieldsConfig<any, any>;
   public settingsKey: string;
+  protected subscriptionHandler = new SubscriptionHandler();
 
   constructor(
     public router: Router,
@@ -42,6 +43,10 @@ export class SettingsComponent extends BaseComponent<SettingsAppState<any>, unkn
     this.setFields();
   }
 
+  ngOnDestroy() {
+    this.subscriptionHandler.unsubscribe();
+  }
+
   public onSettingsSubmit(fh: FormHelper) {
     const values = fh.form.getRawValue();
     this.actions.update(toLocalObject(values, 'none'), this.packagePath, this.settingsKey);
@@ -55,10 +60,10 @@ export class SettingsComponent extends BaseComponent<SettingsAppState<any>, unkn
       })
     ).subscribe());
 
-    this.fields$ = combineLatest(
+    this.fields$ = combineLatest([
       this.store.get(this.packagePath, this.settingsKey),
       this.skysmackStore.getEditorItem(),
-    ).pipe(
+    ]).pipe(
       switchMap(values => {
         const settings = values[0];
         this.editorItem = values[1] as LocalObject<any, unknown>;

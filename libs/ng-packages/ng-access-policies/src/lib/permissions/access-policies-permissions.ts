@@ -1,10 +1,8 @@
-import { FIND, ADD, UPDATE, REMOVE, FIELDS } from '@skysmack/framework';
+import { FIND, ADD, UPDATE, REMOVE } from '@skysmack/framework';
 
 export class AccessPoliciesPermissions {
     private static permissions = 'Permissions';
-
     private static roles = 'Roles';
-
     private static rules = 'Rules';
 
     public static findPermissions = FIND + AccessPoliciesPermissions.permissions;

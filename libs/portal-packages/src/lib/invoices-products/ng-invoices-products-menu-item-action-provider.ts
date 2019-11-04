@@ -43,7 +43,9 @@ export class NgInvoicesProductsMenuItemActionProvider extends MenuItemActionProv
                                 }, 'monetization_on', this)
                             ]);
                         });
-                        return combineLatest(entityActionStreams$);
+                        return combineLatest([
+                            entityActionStreams$
+                        ]);
                     } else {
                         return of([]);
                     }

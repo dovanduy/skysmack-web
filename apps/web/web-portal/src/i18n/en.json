@@ -1674,7 +1674,49 @@
 			"ERROR": "An error occured with {{ description }}. Correct and try again."
 		}
 	},
+<<<<<<< HEAD
 	"PRODUCT_TYPES": {
+=======
+	"PERSONS": {
+		"FORM": {
+			"LABELS": {
+				"FIRSTNAME": "First name",
+				"LASTNAME": "Last name",
+				"DISPLAYNAME": "Display name"
+			},
+			"PLACEHOLDERS": {
+				"FIRSTNAME": "Enter first name",
+				"LASTNAME": "Enter last name",
+				"DISPLAYNAME": "Enter display name"
+			},
+			"VALIDATION": {
+				"FIRSTNAME": {
+					"REQUIRED": "A first name is required."
+				},
+				"LASTNAME": {
+					"REQUIRED": "A last name is required."
+				},
+				"DISPLAYNAME": {
+					"REQUIRED": "A Display name is required."
+				}
+			}
+		},
+		"FIELDS": {
+			"CREATE": {
+				"ADD": "Add new field"
+			},
+			"EDIT": {
+				"EDITING": "Editing"
+			},
+			"INDEX": {
+				"ACTIONS": "Actions",
+				"CREATE": "Create new field",
+				"OTHER": "Other",
+				"BACK": "Back",
+				"FIELDS": "Fields",
+				"EDIT": "Edit"
+			}
+		},
 		"CREATE": {
 			"CREATE": "Create",
 			"BUTTON_CREATE": "Create"
@@ -1684,15 +1726,50 @@
 			"BUTTON_EDIT": "Update"
 		},
 		"INDEX": {
-			"TITLE_EXTRAS": "(types)",
-			"ACTIONS": "Actions",
+			"PACKAGES": "Packages",
 			"CREATE": "Create",
+			"EDIT": "Edit",
 			"DELETE": "Delete",
-			"MANAGE": "Manage",
 			"FIELDS": "Fields",
-			"FIELDS_TITLE": "(type fields)",
-			"BACK": "Back"
+			"FIELDS_TITLE": "(fields)",
+			"ITEM": "Item",
+			"MANAGE": "Manage",
+			"ACTIONS": "Actions"
 		},
+		"NOTIFICATIONS": {
+			"GET": {
+				"PAGED_ERROR": "Failed to get persons ({{ httpErrorCode }}).",
+				"SINGLE_FAILURE": "Failed to get {{ displayName }} ({{ httpErrorCode }}).",
+				"FIELDS_FAILURE": "Failed to get fields for persons ({{ httpErrorCode }}).",
+				"SINGLE_FIELD_FAILURE": "Failed to get {{ displayName }} field ({{ httpErrorCode }})."
+			},
+			"ADD": {
+				"SUCCESS": "Added {{ displayName }} succcessfully.",
+				"FAILURE": "Failed to add {{ displayName }} ({{ httpErrorCode }}).",
+				"FIELD_FAILURE": "Failed to add field for {{ displayName }} ({{ httpErrorCode }}).",
+				"FIELD_SUCCESS": "Added field for {{ displayName }} successfully."
+			},
+			"UPDATE": {
+				"SUCCESS": "Updated {{ displayName }} successfully.",
+				"FAILURE": "Failed to update {{ displayName }} ({{ httpErrorCode }}).",
+				"FIELD_SUCCESS": "Updated field for {{ displayName }} successfully.",
+				"FIELD_FAILURE": "Failed to update field for {{ displayName }} ({{ httpErrorCode }})"
+			},
+			"REMOVE": {
+				"SUCCESS": "Removed {{ displayName }} successfully.",
+				"FAILURE": "Failed to remove {{ displayName }} ({{ httpErrorCode }}).",
+				"FIELD_SUCCESS": "Removed field for {{ displayName }} succesfully.",
+				"FIELD_FAILURE": "Failed to remove field for {{ displayName }} ({{ httpErrorCode }})."
+			}
+		},
+		"QUEUE": {
+			"ADDING": "Adding {{ displayName }}",
+			"UPDATING": "Updating {{ displayName }}",
+			"DELETING": "Deleting {{ displayName }}",
+			"ERROR": "An error occured with {{ displayName }}. Correct and try again."
+		}
+	},
+	"PHONES": {
 		"FORM": {
 			"LABELS": {
 				"NAME": "Name"
@@ -1706,11 +1783,143 @@
 				}
 			}
 		},
+>>>>>>> dev
+		"CREATE": {
+			"CREATE_PHONE": "Create a new phone",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDIT": "Edit phone",
+			"BUTTON_EDIT": "Update"
+		},
+		"INDEX": {
+			"ACTIONS": "Actions",
+			"CREATE": "Create",
+			"MANAGE": "Manage",
+			"PHONES": "Phones",
+			"LOGS": "Logs",
+			"NUMBERS": "Numbers",
+			"BACK": "Back"
+		},
 		"QUEUE": {
 			"ADDING": "Adding {{ name }}",
 			"UPDATING": "Updating {{ name }}",
 			"DELETING": "Deleting {{ name }}",
 			"ERROR": "An error occured with {{ name }}. Correct and try again."
+		}
+	},
+	"PHONE_LOGS": {
+		"FORM": {
+			"LABELS": {
+				"SOURCENUMBER": "Source number",
+				"DESTINATIONNUMBER": "Destination number",
+				"STARTED": "Started",
+				"CONNECTED": "Connected",
+				"ENDED": "Ended",
+				"TERMINATEDBYSOURCE": "Terminated by source",
+				"SOURCEPHONEID": "Source phone",
+				"DESTINATIONPHONEID": "Destination phone"
+			},
+			"PLACEHOLDERS": {
+				"SOURCENUMBER": "Source number",
+				"DESTINATIONNUMBER": "Destination number",
+				"STARTED": "Started",
+				"CONNECTED": "Connected",
+				"ENDED": "Ended",
+				"TERMINATEDBYSOURCE": "Terminated by source",
+				"SOURCEPHONEID": "Source phone",
+				"DESTINATIONPHONEID": "Destination phone"
+			},
+			"VALIDATION": {
+				"SOURCENUMBER": {
+					"REQUIRED": "Source number is required"
+				},
+				"DESTINATIONNUMBER": {
+					"REQUIRED": "Destination number is required"
+				},
+				"STARTED": {
+					"REQUIRED": "Started is required"
+				},
+				"CONNECTED": {
+					"REQUIRED": "Connected is required"
+				},
+				"ENDED": {
+					"REQUIRED": "Ended is required"
+				},
+				"TERMINATEDBYSOURCE": {
+					"REQUIRED": "Terminated by source is required"
+				}
+			}
+		},
+		"CREATE": {
+			"CREATE_PHONE": "Create a new phone-log",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDIT": "Edit phone-log",
+			"BUTTON_EDIT": "Update"
+		},
+		"INDEX": {
+			"ACTIONS": "Actions",
+			"CREATE": "Create",
+			"MANAGE": "Manage",
+			"LOGS": "Logs",
+			"BACK": "Back",
+			"TITLE_EXTRAS": "(logs)"
+		},
+		"QUEUE": {
+			"ADDING": "Adding {{ name }}",
+			"UPDATING": "Updating {{ name }}",
+			"DELETING": "Deleting {{ name }}",
+			"ERROR": "An error occured with {{ name }}. Correct and try again."
+		}
+	},
+	"PHONE_NUMBERS": {
+		"FORM": {
+			"LABELS": {
+				"NUMBER": "Number",
+				"INTERNAL": "Internal",
+				"PHONEID": "Phone"
+			},
+			"PLACEHOLDERS": {
+				"NUMBER": "Number",
+				"INTERNAL": "Internal",
+				"PHONEID": "Phone"
+			},
+			"VALIDATION": {
+				"NUMBER": {
+					"REQUIRED": "Number is required"
+				},
+				"INTERNAL": {
+					"REQUIRED": "Internal is required"
+				},
+				"PHONEID": {
+					"REQUIRED": "Phone is required"
+				}
+			}
+		},
+		"CREATE": {
+			"CREATE_PHONE": "Create a new phone-number",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDIT": "Edit phone-number",
+			"BUTTON_EDIT": "Update"
+		},
+		"INDEX": {
+			"ACTIONS": "Actions",
+			"CREATE": "Create",
+			"MANAGE": "Manage",
+			"PHONES": "Phones",
+			"LOGS": "Logs",
+			"BACK": "Back",
+			"TITLE_EXTRAS": "(numbers)"
+		},
+		"QUEUE": {
+			"ADDING": "Adding {{ number }}",
+			"UPDATING": "Updating {{ number }}",
+			"DELETING": "Deleting {{ number }}",
+			"ERROR": "An error occured with {{ number }}. Correct and try again."
 		}
 	},
 	"PRODUCTS": {
@@ -1763,6 +1972,45 @@
 				"TYPES": "Types",
 				"FIELDS": "Fields",
 				"BACK": "Back"
+			}
+		},
+		"QUEUE": {
+			"ADDING": "Adding {{ name }}",
+			"UPDATING": "Updating {{ name }}",
+			"DELETING": "Deleting {{ name }}",
+			"ERROR": "An error occured with {{ name }}. Correct and try again."
+		}
+	},
+	"PRODUCT_TYPES": {
+		"CREATE": {
+			"CREATE": "Create",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDIT": "Edit",
+			"BUTTON_EDIT": "Update"
+		},
+		"INDEX": {
+			"TITLE_EXTRAS": "(types)",
+			"ACTIONS": "Actions",
+			"CREATE": "Create",
+			"DELETE": "Delete",
+			"MANAGE": "Manage",
+			"FIELDS": "Fields",
+			"FIELDS_TITLE": "(type fields)",
+			"BACK": "Back"
+		},
+		"FORM": {
+			"LABELS": {
+				"NAME": "Name"
+			},
+			"PLACEHOLDERS": {
+				"NAME": "Enter name"
+			},
+			"VALIDATION": {
+				"NAME": {
+					"REQUIRED": "Name is required."
+				}
 			}
 		},
 		"QUEUE": {
@@ -2737,6 +2985,22 @@
 				"NAME": "Name",
 				"DEFAULTTAX": "Default tax"
 			}
+		}
+	},
+	"CALL_DATA_SETTINGS": {
+		"INDEX": {
+			"SETTINGS": "Settings"
+		},
+		"FORM": {
+			"LABELS": {
+				"OUTPUTFIELDS": "Output fields",
+				"CURRENCYCODE": "Currency code"
+			},
+			"PLACEHOLDERS": {
+				"OUTPUTFIELDS": "Output fields",
+				"CURRENCYCODE": "Currency code"
+			},
+			"VALIDATION": {}
 		}
 	},
 	"OAUTH2": {

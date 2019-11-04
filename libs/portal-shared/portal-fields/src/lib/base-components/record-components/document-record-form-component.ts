@@ -31,10 +31,10 @@ export class DocumentRecordFormComponent<TAppState, TRecord extends Record<TKey>
     }
 
     protected setCreateFields() {
-        this.fields$ = combineLatest(
+        this.fields$ = combineLatest([
             this.skysmackStore.getEditorItem(),
             this.loadedPackage$
-        ).pipe(
+        ]).pipe(
             switchMap(values => {
                 this.editorItem = values[0] as LocalObject<TRecord, TKey>;
                 const loadedPackage = values[1];
@@ -44,10 +44,10 @@ export class DocumentRecordFormComponent<TAppState, TRecord extends Record<TKey>
     }
 
     protected setEditFields() {
-        this.fields$ = combineLatest(
+        this.fields$ = combineLatest([
             this.initEditDocRecord(),
             this.skysmackStore.getEditorItem()
-        ).pipe(
+        ]).pipe(
             switchMap(values => {
                 const entity = values[0][0];
                 const loadedPackage = values[0][1];
@@ -61,12 +61,12 @@ export class DocumentRecordFormComponent<TAppState, TRecord extends Record<TKey>
     protected initEditDocRecord(): Observable<[LocalObject<TRecord, TKey>, LoadedPackage]> {
         this.actions.getSingle(this.packagePath, this.entityId);
 
-        return combineLatest(
+        return combineLatest([
             this.store.getSingle(this.packagePath, this.entityId).pipe(
                 distinctUntilChanged((prev, curr) => JSON.stringify(prev) === JSON.stringify(curr))
             ),
             this.loadedPackage$
-        ).pipe(map(values => {
+        ]).pipe(map(values => {
             this.selectedEntity = values[0];
             return values;
         }));

@@ -1,0 +1,68 @@
+{
+    "PHONE_LOGS": {
+        "FORM": {
+            "LABELS": {
+                "SOURCENUMBER": "Source number",
+                "DESTINATIONNUMBER": "Destination number",
+                "STARTED": "Started",
+                "CONNECTED": "Connected",
+                "ENDED": "Ended",
+                "TERMINATEDBYSOURCE": "Terminated by source",
+                "SOURCEPHONEID": "Source phone",
+                "DESTINATIONPHONEID": "Destination phone"
+            },
+            "PLACEHOLDERS": {
+                "SOURCENUMBER": "Source number",
+                "DESTINATIONNUMBER": "Destination number",
+                "STARTED": "Started",
+                "CONNECTED": "Connected",
+                "ENDED": "Ended",
+                "TERMINATEDBYSOURCE": "Terminated by source",
+                "SOURCEPHONEID": "Source phone",
+                "DESTINATIONPHONEID": "Destination phone"
+            },
+            "VALIDATION": {
+                "SOURCENUMBER": {
+                    "REQUIRED": "Source number is required"
+                },
+                "DESTINATIONNUMBER": {
+                    "REQUIRED": "Destination number is required"
+                },
+                "STARTED": {
+                    "REQUIRED": "Started is required"
+                },
+                "CONNECTED": {
+                    "REQUIRED": "Connected is required"
+                },
+                "ENDED": {
+                    "REQUIRED": "Ended is required"
+                },
+                "TERMINATEDBYSOURCE": {
+                    "REQUIRED": "Terminated by source is required"
+                }
+            }
+        },
+        "CREATE": {
+            "CREATE_PHONE": "Create a new phone-log",
+            "BUTTON_CREATE": "Create"
+        },
+        "EDIT": {
+            "EDIT": "Edit phone-log",
+            "BUTTON_EDIT": "Update"
+        },
+        "INDEX": {
+            "ACTIONS": "Actions",
+            "CREATE": "Create",
+            "MANAGE": "Manage",
+            "LOGS": "Logs",
+            "BACK": "Back",
+            "TITLE_EXTRAS": "(logs)"
+        },
+        "QUEUE": {
+            "ADDING": "Adding {{ name }}",
+            "UPDATING": "Updating {{ name }}",
+            "DELETING": "Deleting {{ name }}",
+            "ERROR": "An error occured with {{ name }}. Correct and try again."
+        }
+    }
+}

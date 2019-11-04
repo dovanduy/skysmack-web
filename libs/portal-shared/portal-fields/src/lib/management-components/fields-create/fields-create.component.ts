@@ -9,6 +9,7 @@ import { FormHelper } from '@skysmack/ng-dynamic-forms';
 import { RecordFormComponent } from '../../base-components/record-components/record-form-component';
 import { Observable } from 'rxjs';
 import { map, tap, take } from 'rxjs/operators';
+import { SubscriptionHandler } from '@skysmack/framework';
 
 @Component({
   selector: 'ss-fields-create',
@@ -17,6 +18,8 @@ import { map, tap, take } from 'rxjs/operators';
 export class FieldsCreateComponent extends RecordFormComponent<FieldState, any, string> implements OnInit {
   public objectIdentifier = 'key';
   private additionalPaths$: Observable<string[]>
+  protected subscriptionHandler = new SubscriptionHandler();
+
 
   constructor(
     public router: Router,
@@ -34,12 +37,16 @@ export class FieldsCreateComponent extends RecordFormComponent<FieldState, any, 
   ngOnInit() {
     this.additionalPaths$ = this.activatedRoute.parent.data.pipe(map(data => data.additionalPaths));
     super.ngOnInit();
-    this.additionalPaths$.pipe(
+    this.subscriptionHandler.register(this.additionalPaths$.pipe(
       tap(additionalPaths => this.actions.getAvailableFields(this.packagePath, additionalPaths)),
       take(1)
-    ).subscribe();
+    ).subscribe());
 
     this.setCreateFields();
+  }
+
+  ngOnDestroy() {
+    this.subscriptionHandler.unsubscribe();
   }
 
   protected create(fh: FormHelper) {
@@ -47,13 +54,13 @@ export class FieldsCreateComponent extends RecordFormComponent<FieldState, any, 
       const localObject = this.extractFormValues(fh);
       this.editorItem ? localObject.localId = this.editorItem.localId : localObject.localId = localObject.localId;
 
-      return this.additionalPaths$.pipe(
+      return this.subscriptionHandler.register(this.additionalPaths$.pipe(
         map(additionalPaths => {
           this.actions.add([localObject], this.packagePath, additionalPaths);
           this.editorNavService.hideEditorNav();
         }),
         take(1)
-      ).subscribe();
+      ).subscribe());
     });
   }
 }
