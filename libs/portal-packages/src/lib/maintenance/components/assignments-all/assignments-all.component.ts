@@ -66,7 +66,7 @@ export class AssignmentsAllIndexComponent implements OnInit, OnDestroy {
     this.getAssignments();
     this.entities$ = this.assignmentsStore.get(this.packagePath).pipe(
       map(entities => entities.filter(entity => {
-        return moment(entity.object.from).isAfter(this.from, 'day') && moment(entity.object.due).isSameOrBefore(this.due, 'day');
+        return moment(entity.object.from).isSameOrAfter(this.from, 'day') && moment(entity.object.due).isSameOrBefore(this.due, 'day');
       }))
     );
   }
