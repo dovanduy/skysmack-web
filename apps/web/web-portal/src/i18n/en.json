@@ -1,4 +1,44 @@
 {
+	"ACCESS_POLICY_ROLES": {
+		"CREATE": {
+			"CREATE": "Create",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDITING": "Edit",
+			"BUTTON_EDIT": "Update"
+		},
+		"INDEX": {
+			"TITLE_EXTRAS": "(roles)",
+			"ACTIONS": "Actions",
+			"CREATE": "Create",
+			"MANAGE": "Manage",
+			"BACK": "Back",
+			"ROLES": "Roles",
+			"FIELDS_TITLE": "(fields)"
+		},
+		"FORM": {
+			"LABELS": {
+				"RULEID": "Rule",
+				"ROLEID": "Role"
+			},
+			"PLACEHOLDERS": {
+				"RULEID": "Rule",
+				"ROLEID": "Role"
+			},
+			"VALIDATION": {
+				"NAME": {
+					"REQUIRED": "A name is required."
+				}
+			}
+		},
+		"QUEUE": {
+			"ADDING": "Adding {{ roleId }}",
+			"UPDATING": "Updating {{ roleId }}",
+			"DELETING": "Deleting {{ roleId }}",
+			"ERROR": "An error occured with {{ roleId }}. Correct and try again."
+		}
+	},
 	"ACCESS_POLICY_PERMISSIONS": {
 		"CREATE": {
 			"CREATE": "Create",
@@ -39,46 +79,6 @@
 			"UPDATING": "Updating {{ permission }} permission",
 			"DELETING": "Deleting {{ permission }} permission",
 			"ERROR": "An error occured with {{ permission }} permission. Correct and try again."
-		}
-	},
-	"ACCESS_POLICY_ROLES": {
-		"CREATE": {
-			"CREATE": "Create",
-			"BUTTON_CREATE": "Create"
-		},
-		"EDIT": {
-			"EDITING": "Edit",
-			"BUTTON_EDIT": "Update"
-		},
-		"INDEX": {
-			"TITLE_EXTRAS": "(roles)",
-			"ACTIONS": "Actions",
-			"CREATE": "Create",
-			"MANAGE": "Manage",
-			"BACK": "Back",
-			"ROLES": "Roles",
-			"FIELDS_TITLE": "(fields)"
-		},
-		"FORM": {
-			"LABELS": {
-				"RULEID": "Rule",
-				"ROLEID": "Role"
-			},
-			"PLACEHOLDERS": {
-				"RULEID": "Rule",
-				"ROLEID": "Role"
-			},
-			"VALIDATION": {
-				"NAME": {
-					"REQUIRED": "A name is required."
-				}
-			}
-		},
-		"QUEUE": {
-			"ADDING": "Adding {{ roleId }}",
-			"UPDATING": "Updating {{ roleId }}",
-			"DELETING": "Deleting {{ roleId }}",
-			"ERROR": "An error occured with {{ roleId }}. Correct and try again."
 		}
 	},
 	"ACCESS_POLICY_RULES": {
@@ -136,6 +136,16 @@
 			"ERROR": "An error occured with access policy rules {{ id }}. Correct and try again."
 		}
 	},
+	"EMAILS": {
+		"INDEX": {
+			"CREATE": "Create",
+			"EDIT": "Edit",
+			"DELETE": "Delete",
+			"TEMPLATES": "Templates",
+			"MANAGE": "Manage",
+			"ACTIONS": "Actions"
+		}
+	},
 	"EMAIL_TEMPLATES": {
 		"FORM": {
 			"LABELS": {
@@ -176,16 +186,6 @@
 			"UPDATING": "Updating {{ subject }}",
 			"DELETING": "Deleting {{ subject }}",
 			"ERROR": "An error occured with {{ subject }}. Correct and try again."
-		}
-	},
-	"EMAILS": {
-		"INDEX": {
-			"CREATE": "Create",
-			"EDIT": "Edit",
-			"DELETE": "Delete",
-			"TEMPLATES": "Templates",
-			"MANAGE": "Manage",
-			"ACTIONS": "Actions"
 		}
 	},
 	"EMAILS_SMTP": {
