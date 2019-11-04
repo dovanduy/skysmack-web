@@ -10,6 +10,6 @@ export const portailUiPipes = [
     DisplayModifierPipe,
     SortPipe,
     ShowMenuItemActionPipe,
-    WeekNoPipe
+    WeekNoPipe,
     WeekdayPipe
 ];
