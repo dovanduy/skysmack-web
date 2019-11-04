@@ -8,6 +8,7 @@ import { LodgingType } from '@skysmack/packages-lodgings';
 import { LocalObject, SubscriptionHandler } from '@skysmack/framework';
 import { Router } from '@angular/router';
 import { SiteMinderQueueService } from '../../../services/siteminder-queue.service';
+import { LodgingCell } from '../../../models/lodging-cell';
 
 @Component({
   selector: 'ss-siteminder-availability-dialog',
@@ -30,16 +31,16 @@ export class SiteMinderAvailabilityDialogComponent implements OnInit, OnDestroy 
     private router: Router,
     private queueService: SiteMinderQueueService,
     public dialogRef: MatDialogRef<SiteMinderAvailabilityDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: LocalObject<LodgingTypeAvailability, LodgingTypeAvailabilityKey>
+    @Inject(MAT_DIALOG_DATA) public data: LodgingCell
   ) { }
 
   ngOnInit() {
     this.packagePath = this.router.url.split('/')[1];
-    this.available = this.data.object.available;
-    this.lodgingType = this.data.object.lodgingType.object;
-    const availableModifier = this.data.object.availableModifier
+    this.available = this.data.availability.object.available;
+    this.lodgingType = this.data.lodgingType.object;
+    const availableModifier = this.data.availability.object.availableModifier
     this.originalAvailableModfier = availableModifier;
-    this.date = this.data.object.date;
+    this.date = this.data.availability.object.date;
 
     this.form = new FormGroup({});
     const formControl = new FormControl(availableModifier);
@@ -68,10 +69,6 @@ export class SiteMinderAvailabilityDialogComponent implements OnInit, OnDestroy 
       }));
     }
 
-    this.dialogRef.close();
-  }
-
-  public cancel() {
     this.dialogRef.close();
   }
 }
