@@ -24,7 +24,7 @@ export class SignalR {
         return this._instance || (this._instance = new this());
     }
     private constructor() {
-        this.init();
+        // this.init();
     }
 
     ngOnDestroy() {
