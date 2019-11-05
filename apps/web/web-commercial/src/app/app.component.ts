@@ -48,6 +48,7 @@ export class AppComponent implements OnInit, OnDestroy {
             window.location.reload();
           }));
       }));
+      this.swUpdate.checkForUpdate();
     } 
   }
 
