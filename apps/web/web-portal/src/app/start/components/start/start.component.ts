@@ -58,7 +58,7 @@ export class StartComponent implements OnInit, OnDestroy {
             window.location.reload();
           }));
       }));
-      setInterval( () => {
+      setTimeout( () => {
         this.swUpdate.checkForUpdate();
       }, 1000);
     } 
