@@ -5,7 +5,9 @@ import { PackageRouteConfiguration } from '@skysmack/portal-ui';
 import { SubscriptionHandler } from '@skysmack/framework';
 import { Skysmack, SkysmackRequestStatus } from '@skysmack/packages-skysmack-core';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
-import { tap } from 'rxjs/operators';
+import { tap, take } from 'rxjs/operators';
+import { SwUpdate } from '@angular/service-worker';
+import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -24,7 +26,9 @@ export class StartComponent implements OnInit, OnDestroy {
   constructor(
     public router: Router,
     public store: NgSkysmackStore,
-    public packageRouteConfiguration: PackageRouteConfiguration
+    public packageRouteConfiguration: PackageRouteConfiguration,
+    private snackBar: MatSnackBar,
+    private swUpdate: SwUpdate
   ) {
   }
 
@@ -44,6 +48,20 @@ export class StartComponent implements OnInit, OnDestroy {
         this.loadingRouteConfig.pop();
       }
     }));
+
+    if (this.swUpdate.isEnabled) {
+      this.subscriptionHandler.register(this.swUpdate.available.subscribe(() => {
+        const snackBarRef = this.snackBar.open("New version available! Please refresh to update.", 
+          "Refresh now", 
+          { politeness: 'assertive', duration: 10000, horizontalPosition: 'center', verticalPosition: 'top' } as MatSnackBarConfig);
+          this.subscriptionHandler.register(snackBarRef.onAction().pipe(take(1)).subscribe(() => {
+            window.location.reload();
+          }));
+      }));
+      setInterval( () => {
+        this.swUpdate.checkForUpdate();
+      }, 1000);
+    } 
   }
 
   ngOnDestroy() {
