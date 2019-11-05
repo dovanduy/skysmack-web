@@ -33,10 +33,6 @@ export class CommercialUsersRolesComponent implements OnInit {
     );
   }
 
-  ngOnDestroy() {
-    this.subscriptionHandler.unsubscribe();
-  }
-
   public onSubmit(fh: FormHelper) {
     fh.formValid(() => {
       const partnerUserRole = fh.form.getRawValue();
