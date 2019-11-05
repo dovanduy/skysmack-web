@@ -44,8 +44,8 @@ export class AppComponent implements OnInit, OnDestroy {
         const snackBarRef = this.snackBar.open("New version available! Please refresh to update.", 
           "Refresh now", 
           { politeness: 'assertive', duration: 10000, horizontalPosition: 'center', verticalPosition: 'top' } as MatSnackBarConfig);
-          this.subscriptionHandler.register(snackBarRef.onAction().pipe(take(1)).subscribe(() => {
-            window.location.reload();
+          this.subscriptionHandler.register(snackBarRef.onAction().pipe(take(1)).subscribe(() => {            
+            this.swUpdate.activateUpdate().then(() => document.location.reload());
           }));
       }));
       setTimeout( () => {

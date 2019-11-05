@@ -55,7 +55,7 @@ export class StartComponent implements OnInit, OnDestroy {
           "Refresh now", 
           { politeness: 'assertive', duration: 10000, horizontalPosition: 'center', verticalPosition: 'top' } as MatSnackBarConfig);
           this.subscriptionHandler.register(snackBarRef.onAction().pipe(take(1)).subscribe(() => {
-            window.location.reload();
+            this.swUpdate.activateUpdate().then(() => document.location.reload());
           }));
       }));
       setTimeout( () => {
