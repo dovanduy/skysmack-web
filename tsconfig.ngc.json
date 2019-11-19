@@ -95,6 +95,9 @@
       "@skysmack/packages-persons": [
         "./dist/@skysmack/packages-persons"
       ],
+      "@skysmack/packages-webhooks": [
+        "./dist/@skysmack/packages-webhooks"
+      ],
       "@skysmack/packages-phones": [
         "./dist/@skysmack/packages-phones"
       ],
@@ -160,6 +163,9 @@
       ],
       "@skysmack/ng-persons": [
         "libs/ng-packages/ng-persons"
+      ],
+      "@skysmack/ng-webhooks": [
+        "libs/ng-packages/ng-webhooks"
       ],
       "@skysmack/ng-phones": [
         "libs/ng-packages/ng-phones"
