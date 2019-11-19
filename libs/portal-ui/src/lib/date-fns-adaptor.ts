@@ -34,7 +34,7 @@ import {
     setYear,
     getDate,
     getYear
-} from 'date-fns'; 
+} from 'date-fns';
 import { DateAdapter } from 'angular-calendar';
 
 export function adapterFactory(): DateAdapter {
@@ -54,7 +54,7 @@ export function adapterFactory(): DateAdapter {
         isSameDay,
         isSameMonth,
         isSameSecond,
-        max(...dates: Date[]) {
+        max(dates: (number | Date)[]) {
             return max(dates);
         },
         setHours,
