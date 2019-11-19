@@ -4,33 +4,21 @@ import { WEBHOOKS_AREA_KEY } from '@skysmack/packages-webhooks';
 
 export class NgTransactionRequestValidation extends Validation {
     public formErrors = {
-        clientId: '',
-        connection: '',
-        webhookId: '',
-        amount: '',
-        reference: '',
-        currency: ''
+        url: '',
+        httpMethod: '',
+        customHeaders: '',
+        packagePath: '',
+        source: '',
+        eventType: ''
     };
 
     public validationMessages: StrIndex<{}> = {
-        clientId: {
-            required: '',
-        },
-        webhookId: {
-            required: '',
-        },
-        connection: {
-            required: '',
-        },
-        amount: {
-            required: '',
-        },
-        reference: {
-            required: '',
-        },
-        currency: {
-            required: '',
-        }
+        url: {},
+        httpMethod: {},
+        customHeaders: {},
+        packagePath: {},
+        source: {},
+        eventType: {}
     };
 
     public area = WEBHOOKS_AREA_KEY;
