@@ -1,0 +1,4 @@
+<ss-dynamic-form *ngIf="fields$" [fields$]="fields$" [validation]="fieldsConfig.validation"
+  [rules]="fieldsConfig.formRules" [buttonText]="'WEBHOOK_RECEIPTS.CREATE.BUTTON_CREATE' | translate" (submitted)="onCreateSubmit($event)">
+  <h2 [translate]="'WEBHOOKS.CREATE.CREATE'"></h2>
+</ss-dynamic-form>

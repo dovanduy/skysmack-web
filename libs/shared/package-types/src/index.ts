@@ -25,3 +25,4 @@ export * from './file-storage-type';
 export * from './phones-type';
 export * from './3cx-type';
 export * from './siteminder-type';
+export * from './webhooks-type';

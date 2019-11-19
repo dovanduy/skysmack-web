@@ -1,1 +1,1 @@
-export * from './persons-permissions';
+export * from './webhooks-permissions';

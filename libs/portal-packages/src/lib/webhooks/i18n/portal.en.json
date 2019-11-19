@@ -1,0 +1,30 @@
+{
+    "WEBHOOKS": {
+        "INDEX": {
+            "CREATE": "Create",
+            "EDIT": "Edit",
+            "DELETE": "Delete",
+            "MANAGE": "Manage",
+            "ACTIONS": "Actions"
+        },
+        "FORM": {
+            "LABELS": {
+                "URL": "Url",
+                "HTTPMETHOD": "HTTP method",
+                "CUSTOMHEADERS": "Custom headers",
+                "PACKAGEPATH": "Package path",
+                "SOURCE": "Source",
+                "EVENTTYPE": "Event type"
+            },
+            "PLACEHOLDERS": {
+                "URL": "Url",
+                "HTTPMETHOD": "HTTP method",
+                "CUSTOMHEADERS": "Custom headers",
+                "PACKAGEPATH": "Package path",
+                "SOURCE": "Source",
+                "EVENTTYPE": "Event type"
+            },
+            "VALIDATION": {}
+        }
+    }
+}

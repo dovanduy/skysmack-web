@@ -22,3 +22,4 @@ export * from './file-storage/file-storage.module';
 export * from './wysiwyg/index';
 export * from './phones/phones.module';
 export * from './3cx/3cx.module';
+export * from './webhooks/webhooks.module';
