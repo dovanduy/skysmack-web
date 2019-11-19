@@ -7,6 +7,12 @@
             "MANAGE": "Manage",
             "ACTIONS": "Actions"
         },
+        "CREATE": {
+            "BUTTON_CREATE": "Create"
+        },
+        "EDIT": {
+            "BUTTON_EDIT": "Edit"
+        },
         "FORM": {
             "LABELS": {
                 "URL": "Url",

@@ -17,7 +17,6 @@ export class WebhooksIndexComponent extends RecordIndexComponent<WebhooksAppStat
   public componentKey = WebhooksIndexComponent.COMPONENT_KEY;
 
   public areaKey: string = WEBHOOKS_AREA_KEY;
-  public titleExtras = true;
   public menuItemActions: MenuItem[] = [
     new MenuItem().asUrlAction('edit', MENU_ITEM_ACTIONS_EDIT, 'edit'),
     new MenuItem().asEventAction(MENU_ITEM_ACTIONS_DELETE, this.delete, 'delete', this)

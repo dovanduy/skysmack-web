@@ -30,6 +30,7 @@ import { loadLodgingReservationsSignaturesPackage } from '../packages/lodging-re
 import { loadPhonePackage } from '../packages/phones-package-manifest';
 import { load3CXPackage } from '../packages/3cx-package-manifest';
 import { loadSiteMinderPackage } from '../packages/siteminder-package-manifest';
+import { loadWebhooksPackage } from '../packages/webhooks-package-manifest';
 
 
 export function configureSkysmack(actions: NgSkysmackActions) {
@@ -53,6 +54,7 @@ export const packageLoaders = [
     { provide: APP_INITIALIZER, useFactory: loadInvoicesProductsPackage, deps: [PackageLoader], multi: true },
     { provide: APP_INITIALIZER, useFactory: loadInvoicesCashPaymentsPackage, deps: [PackageLoader], multi: true },
     { provide: APP_INITIALIZER, useFactory: loadPersonPackage, deps: [PackageLoader], multi: true },
+    { provide: APP_INITIALIZER, useFactory: loadWebhooksPackage, deps: [PackageLoader], multi: true },
     { provide: APP_INITIALIZER, useFactory: loadPhonePackage, deps: [PackageLoader], multi: true },
     { provide: APP_INITIALIZER, useFactory: load3CXPackage, deps: [PackageLoader], multi: true },
     { provide: APP_INITIALIZER, useFactory: loadSiteMinderPackage, deps: [PackageLoader], multi: true },

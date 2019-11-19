@@ -21,6 +21,7 @@ import { openApiRoute } from './open-api-package-manifest';
 import { phonesRoute } from './phones-package-manifest';
 import { PBX_3CXRoute } from './3cx-package-manifest';
 import { siteminderRoute } from './siteminder-package-manifest';
+import { webhooksRoute } from './webhooks-package-manifest';
 
 export const packagesRoutes = [
     packagesRoute,
@@ -45,5 +46,6 @@ export const packagesRoutes = [
     emailsSmtpRoute,
     openApiRoute,
     phonesRoute,
-    PBX_3CXRoute
+    PBX_3CXRoute,
+    webhooksRoute
 ];
