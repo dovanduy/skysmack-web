@@ -54,7 +54,7 @@ export function adapterFactory(): DateAdapter {
         isSameDay,
         isSameMonth,
         isSameSecond,
-        max(dates: (number | Date)[]) {
+        max(dates: any) {
             return max(dates);
         },
         setHours,
