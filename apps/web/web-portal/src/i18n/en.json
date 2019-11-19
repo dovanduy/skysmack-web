@@ -41,6 +41,43 @@
 			"ERROR": "An error occured with {{ permission }} permission. Correct and try again."
 		}
 	},
+	"ACCESS_POLICY_RULES": {
+		"CREATE": {
+			"CREATE": "Create",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDITING": "Rediger",
+			"BUTTON_EDIT": "Update"
+		},
+		"INDEX": {
+			"TITLE_EXTRAS": "(rules)",
+			"ACTIONS": "Actions",
+			"CREATE": "Create",
+			"MANAGE": "Manage",
+			"BACK": "Back",
+			"ROLES": "Roles",
+			"FIELDS_TITLE": "(fields)"
+		},
+		"FORM": {
+			"LABELS": {
+				"ACCESS": "Access",
+				"AUTHENTICATED": "Authenticated",
+				"INCLUDEROLES": "Include roles"
+			},
+			"PLACEHOLDERS": {
+				"ACCESS": "Access",
+				"AUTHENTICATED": "Authenticated",
+				"INCLUDEROLES": "Include roles"
+			}
+		},
+		"QUEUE": {
+			"ADDING": "Adding the access policy rule",
+			"UPDATING": "Updating the access policy rule",
+			"DELETING": "Deleting the access policy rule",
+			"ERROR": "An error occured with the access policy rule. Correct and try again."
+		}
+	},
 	"ACCESS_POLICY_ROLES": {
 		"CREATE": {
 			"CREATE": "Create",
@@ -79,43 +116,6 @@
 			"UPDATING": "Updating {{ roleId }}",
 			"DELETING": "Deleting {{ roleId }}",
 			"ERROR": "An error occured with {{ roleId }}. Correct and try again."
-		}
-	},
-	"ACCESS_POLICY_RULES": {
-		"CREATE": {
-			"CREATE": "Create",
-			"BUTTON_CREATE": "Create"
-		},
-		"EDIT": {
-			"EDITING": "Rediger",
-			"BUTTON_EDIT": "Update"
-		},
-		"INDEX": {
-			"TITLE_EXTRAS": "(rules)",
-			"ACTIONS": "Actions",
-			"CREATE": "Create",
-			"MANAGE": "Manage",
-			"BACK": "Back",
-			"ROLES": "Roles",
-			"FIELDS_TITLE": "(fields)"
-		},
-		"FORM": {
-			"LABELS": {
-				"ACCESS": "Access",
-				"AUTHENTICATED": "Authenticated",
-				"INCLUDEROLES": "Include roles"
-			},
-			"PLACEHOLDERS": {
-				"ACCESS": "Access",
-				"AUTHENTICATED": "Authenticated",
-				"INCLUDEROLES": "Include roles"
-			}
-		},
-		"QUEUE": {
-			"ADDING": "Adding the access policy rule",
-			"UPDATING": "Updating the access policy rule",
-			"DELETING": "Deleting the access policy rule",
-			"ERROR": "An error occured with the access policy rule. Correct and try again."
 		}
 	},
 	"ACCESS_POLICIES": {
@@ -1258,6 +1258,200 @@
 			"ERROR": "An error occured with {{ displayName }}. Correct and try again."
 		}
 	},
+	"ASSIGNMENT_TYPES": {
+		"FORM": {
+			"LABELS": {
+				"DESCRIPTION": "Description",
+				"STATEID": "State",
+				"DUEPERIOD": "Due date"
+			},
+			"PLACEHOLDERS": {
+				"STATEID": "Choose state",
+				"DESCRIPTION": "Enter description",
+				"DUEPERIOD": "Choose due date"
+			},
+			"VALIDATION": {
+				"STATEID": {
+					"REQUIRED": "State is required."
+				},
+				"DESCRIPTION": {
+					"REQUIRED": "Description is required."
+				},
+				"DUEPERIOD": {
+					"REQUIRED": "Due date is required."
+				}
+			},
+			"BUTTONS": {
+				"CREATE": "Create",
+				"EDIT": "Edit"
+			}
+		},
+		"CREATE": {
+			"CREATE": "Create",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDIT": "Edit",
+			"BUTTON_EDIT": "Update"
+		},
+		"INDEX": {
+			"TITLE_EXTRAS": "(assignment types)",
+			"ACTIONS": "Actions",
+			"CREATE": "Create",
+			"EDIT": "Edit",
+			"DELETE": "Delete",
+			"MANAGE": "Manage",
+			"BACK": "Back",
+			"FIELDS": "Fields",
+			"FIELDS_TITLE": "(fields)",
+			"ENTITIES": "Entities"
+		},
+		"FIELDS": {
+			"INDEX": {
+				"ACTIONS": "Actions",
+				"CREATE": "Create",
+				"ASSIGNMENT_TYPES": "AssignmentTypes",
+				"FIELDS": "AssignmentType fields",
+				"OTHER": "Other",
+				"BACK": "Back"
+			},
+			"CREATE": {
+				"ADD": "Add field"
+			}
+		},
+		"QUEUE": {
+			"ADDING": "Adding {{ description }}",
+			"UPDATING": "Updating {{ description }}",
+			"DELETING": "Deleting {{ description }}",
+			"ERROR": "An error occured with {{ description }}. Correct and try again."
+		}
+	},
+	"ASSIGNMENTS_SCHEDULES": {
+		"FORM": {
+			"LABELS": {
+				"ASSIGNMENTTYPEID": "Assignment type",
+				"START": "Start date",
+				"END": "End date",
+				"EXPRESSION": "Expression"
+			},
+			"PLACEHOLDERS": {
+				"ASSIGNMENTTYPEID": "Assignment type",
+				"START": "Start date",
+				"END": "End date",
+				"EXPRESSION": "Expression"
+			},
+			"VALIDATION": {
+				"ASSIGNMENTTYPEID": {
+					"REQUIRED": "Assignment type is required."
+				},
+				"START": {
+					"REQUIRED": "Start date is required."
+				},
+				"END": {
+					"REQUIRED": "End date is required."
+				},
+				"EXPRESSION": {
+					"REQUIRED": "Expression is required."
+				}
+			}
+		},
+		"CREATE": {
+			"CREATE": "Create",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDIT": "Edit",
+			"BUTTON_EDIT": "Update"
+		},
+		"INDEX": {
+			"TITLE_EXTRAS": "(scheduled assignments)",
+			"ACTIONS": "Actions",
+			"CREATE": "Create",
+			"EDIT": "Edit",
+			"DELETE": "Delete",
+			"MANAGE": "Manage",
+			"FIELDS": "Fields",
+			"BACK": "Back"
+		},
+		"QUEUE": {
+			"ADDING": "Adding {{ description }}",
+			"UPDATING": "Updating {{ description }}",
+			"DELETING": "Deleting {{ description }}",
+			"ERROR": "An error occured with {{ description }}. Correct and try again."
+		}
+	},
+	"MAINTENANCE_STATES": {
+		"FORM": {
+			"LABELS": {
+				"DESCRIPTION": "Description",
+				"STATUS": "Status",
+				"ID": "Id"
+			},
+			"PLACEHOLDERS": {
+				"DESCRIPTION": "Enter description",
+				"STATUS": "Choose status",
+				"ID": "Choose Id"
+			},
+			"VALIDATION": {
+				"DESCRIPTION": {
+					"REQUIRED": "Description is required"
+				},
+				"STATUS": {
+					"REQUIRED": "Status is required"
+				},
+				"ID": {
+					"REQUIRED": "Id is required"
+				}
+			}
+		},
+		"CREATE": {
+			"CREATE": "Create",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDIT": "Edit",
+			"BUTTON_EDIT": "Update"
+		},
+		"INDEX": {
+			"TITLE_EXTRAS": "(states)",
+			"ACTIONS": "Actions",
+			"CREATE": "Create",
+			"EDIT": "Edit",
+			"DELETE": "Delete",
+			"MANAGE": "Manage",
+			"FIELDS": "Fields",
+			"BACK": "Back"
+		},
+		"MANAGE": {
+			"BACK": "Back"
+		},
+		"QUEUE": {
+			"ADDING": "Adding {{ description }}",
+			"UPDATING": "Updating {{ description }}",
+			"DELETING": "Deleting {{ description }}",
+			"ERROR": "An error occured with {{ description }}. Correct and try again."
+		}
+	},
+	"MAINTENANCE": {
+		"ASSIGNMENT_ALL": {
+			"TITLE": "All assignments",
+			"INDEX": {
+				"MANAGE": "Manage",
+				"SINGLE_ASSIGNMENTS": "Single assignments",
+				"RECURRING_ASSIGNMENTS": "Scheduled assignments",
+				"TYPES": "Assignment types",
+				"STATES": "Maintenance states"
+			},
+			"MENU_ITEM_ACTIONS": {
+				"CREATED": "Created",
+				"PENDING": "Pending",
+				"ONGOING": "Ongoing",
+				"DONE": "Done",
+				"CANCELED": "Canceled",
+				"FAULTED": "Faulted"
+			}
+		}
+	},
 	"LODGING_SETTINGS": {
 		"FORM": {
 			"LABELS": {
@@ -1282,6 +1476,75 @@
 			"UPDATING": "Updating {{ name }}",
 			"DELETING": "Deleting {{ name }}",
 			"ERROR": "An error occured with {{ name }}. Correct and try again."
+		}
+	},
+	"SINGLE_ASSIGNMENTS": {
+		"FORM": {
+			"LABELS": {
+				"ASSIGNMENTTYPEID": "Assignment type",
+				"DESCRIPTION": "Description",
+				"OCCUPATIONSTATE": "Occupation state",
+				"STATUS": "Status",
+				"DUE": "Due date",
+				"FROM": "Can be started from"
+			},
+			"PLACEHOLDERS": {
+				"ASSIGNMENTTYPEID": "Assignment type",
+				"DESCRIPTION": "Enter description",
+				"OCCUPATIONSTATE": "Choose occupation state",
+				"STATUS": "Choose status",
+				"DUE": "Choose due date",
+				"FROM": "Choose can be started from date"
+			},
+			"VALIDATION": {
+				"ASSIGNMENTTYPEID": {
+					"REQUIRED": "Assignment type is required."
+				},
+				"DESCRIPTION": {
+					"REQUIRED": "Description is required."
+				},
+				"STATUS": {
+					"REQUIRED": "Status is required."
+				},
+				"DUE": {
+					"REQUIRED": "Due date is required.",
+					"NOTBEFORE": "The due date may not be earlier than the start date."
+				},
+				"FROM": {
+					"REQUIRED": "A date from when the assignment can begin is required."
+				}
+			},
+			"BUTTONS": {
+				"CREATE": "Create",
+				"EDIT": "Edit"
+			}
+		},
+		"CREATE": {
+			"CREATE": "Create",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDIT": "Edit",
+			"BUTTON_EDIT": "Update"
+		},
+		"INDEX": {
+			"TITLE_EXTRAS": "(single assignments)",
+			"ACTIONS": "Actions",
+			"CREATE": "Create",
+			"EDIT": "Edit",
+			"DELETE": "Delete",
+			"MANAGE": "Manage",
+			"FIELDS": "Fields",
+			"FIELDS_TITLE": "(fields)",
+			"STATES": "States",
+			"TYPES": "Types",
+			"BACK": "Back"
+		},
+		"QUEUE": {
+			"ADDING": "Adding {{ description }}",
+			"UPDATING": "Updating {{ description }}",
+			"DELETING": "Deleting {{ description }}",
+			"ERROR": "An error occured with {{ description }}. Correct and try again."
 		}
 	},
 	"LODGING_TYPES": {
@@ -1419,269 +1682,6 @@
 		"SELECT_LODGINGS": "Select lodgings",
 		"TITLE": "Lodgings Availability"
 	},
-	"ASSIGNMENT_TYPES": {
-		"FORM": {
-			"LABELS": {
-				"DESCRIPTION": "Description",
-				"STATEID": "State",
-				"DUEPERIOD": "Due date"
-			},
-			"PLACEHOLDERS": {
-				"STATEID": "Choose state",
-				"DESCRIPTION": "Enter description",
-				"DUEPERIOD": "Choose due date"
-			},
-			"VALIDATION": {
-				"STATEID": {
-					"REQUIRED": "State is required."
-				},
-				"DESCRIPTION": {
-					"REQUIRED": "Description is required."
-				},
-				"DUEPERIOD": {
-					"REQUIRED": "Due date is required."
-				}
-			},
-			"BUTTONS": {
-				"CREATE": "Create",
-				"EDIT": "Edit"
-			}
-		},
-		"CREATE": {
-			"CREATE": "Create",
-			"BUTTON_CREATE": "Create"
-		},
-		"EDIT": {
-			"EDIT": "Edit",
-			"BUTTON_EDIT": "Update"
-		},
-		"INDEX": {
-			"TITLE_EXTRAS": "(assignment types)",
-			"ACTIONS": "Actions",
-			"CREATE": "Create",
-			"EDIT": "Edit",
-			"DELETE": "Delete",
-			"MANAGE": "Manage",
-			"BACK": "Back",
-			"FIELDS": "Fields",
-			"FIELDS_TITLE": "(fields)",
-			"ENTITIES": "Entities"
-		},
-		"FIELDS": {
-			"INDEX": {
-				"ACTIONS": "Actions",
-				"CREATE": "Create",
-				"ASSIGNMENT_TYPES": "AssignmentTypes",
-				"FIELDS": "AssignmentType fields",
-				"OTHER": "Other",
-				"BACK": "Back"
-			},
-			"CREATE": {
-				"ADD": "Add field"
-			}
-		},
-		"QUEUE": {
-			"ADDING": "Adding {{ description }}",
-			"UPDATING": "Updating {{ description }}",
-			"DELETING": "Deleting {{ description }}",
-			"ERROR": "An error occured with {{ description }}. Correct and try again."
-		}
-	},
-	"ASSIGNMENTS_SCHEDULES": {
-		"FORM": {
-			"LABELS": {
-				"ASSIGNMENTTYPEID": "Assignment type",
-				"START": "Start date",
-				"END": "End date",
-				"EXPRESSION": "Expression"
-			},
-			"PLACEHOLDERS": {
-				"ASSIGNMENTTYPEID": "Assignment type",
-				"START": "Start date",
-				"END": "End date",
-				"EXPRESSION": "Expression"
-			},
-			"VALIDATION": {
-				"ASSIGNMENTTYPEID": {
-					"REQUIRED": "Assignment type is required."
-				},
-				"START": {
-					"REQUIRED": "Start date is required."
-				},
-				"END": {
-					"REQUIRED": "End date is required."
-				},
-				"EXPRESSION": {
-					"REQUIRED": "Expression is required."
-				}
-			}
-		},
-		"CREATE": {
-			"CREATE": "Create",
-			"BUTTON_CREATE": "Create"
-		},
-		"EDIT": {
-			"EDIT": "Edit",
-			"BUTTON_EDIT": "Update"
-		},
-		"INDEX": {
-			"TITLE_EXTRAS": "(scheduled assignments)",
-			"ACTIONS": "Actions",
-			"CREATE": "Create",
-			"EDIT": "Edit",
-			"DELETE": "Delete",
-			"MANAGE": "Manage",
-			"FIELDS": "Fields",
-			"BACK": "Back"
-		},
-		"QUEUE": {
-			"ADDING": "Adding {{ description }}",
-			"UPDATING": "Updating {{ description }}",
-			"DELETING": "Deleting {{ description }}",
-			"ERROR": "An error occured with {{ description }}. Correct and try again."
-		}
-	},
-	"MAINTENANCE": {
-		"ASSIGNMENT_ALL": {
-			"TITLE": "All assignments",
-			"INDEX": {
-				"MANAGE": "Manage",
-				"SINGLE_ASSIGNMENTS": "Single assignments",
-				"RECURRING_ASSIGNMENTS": "Scheduled assignments",
-				"TYPES": "Assignment types",
-				"STATES": "Maintenance states"
-			},
-			"MENU_ITEM_ACTIONS": {
-				"CREATED": "Created",
-				"PENDING": "Pending",
-				"ONGOING": "Ongoing",
-				"DONE": "Done",
-				"CANCELED": "Canceled",
-				"FAULTED": "Faulted"
-			}
-		}
-	},
-	"MAINTENANCE_STATES": {
-		"FORM": {
-			"LABELS": {
-				"DESCRIPTION": "Description",
-				"STATUS": "Status",
-				"ID": "Id"
-			},
-			"PLACEHOLDERS": {
-				"DESCRIPTION": "Enter description",
-				"STATUS": "Choose status",
-				"ID": "Choose Id"
-			},
-			"VALIDATION": {
-				"DESCRIPTION": {
-					"REQUIRED": "Description is required"
-				},
-				"STATUS": {
-					"REQUIRED": "Status is required"
-				},
-				"ID": {
-					"REQUIRED": "Id is required"
-				}
-			}
-		},
-		"CREATE": {
-			"CREATE": "Create",
-			"BUTTON_CREATE": "Create"
-		},
-		"EDIT": {
-			"EDIT": "Edit",
-			"BUTTON_EDIT": "Update"
-		},
-		"INDEX": {
-			"TITLE_EXTRAS": "(states)",
-			"ACTIONS": "Actions",
-			"CREATE": "Create",
-			"EDIT": "Edit",
-			"DELETE": "Delete",
-			"MANAGE": "Manage",
-			"FIELDS": "Fields",
-			"BACK": "Back"
-		},
-		"MANAGE": {
-			"BACK": "Back"
-		},
-		"QUEUE": {
-			"ADDING": "Adding {{ description }}",
-			"UPDATING": "Updating {{ description }}",
-			"DELETING": "Deleting {{ description }}",
-			"ERROR": "An error occured with {{ description }}. Correct and try again."
-		}
-	},
-	"SINGLE_ASSIGNMENTS": {
-		"FORM": {
-			"LABELS": {
-				"ASSIGNMENTTYPEID": "Assignment type",
-				"DESCRIPTION": "Description",
-				"OCCUPATIONSTATE": "Occupation state",
-				"STATUS": "Status",
-				"DUE": "Due date",
-				"FROM": "Can be started from"
-			},
-			"PLACEHOLDERS": {
-				"ASSIGNMENTTYPEID": "Assignment type",
-				"DESCRIPTION": "Enter description",
-				"OCCUPATIONSTATE": "Choose occupation state",
-				"STATUS": "Choose status",
-				"DUE": "Choose due date",
-				"FROM": "Choose can be started from date"
-			},
-			"VALIDATION": {
-				"ASSIGNMENTTYPEID": {
-					"REQUIRED": "Assignment type is required."
-				},
-				"DESCRIPTION": {
-					"REQUIRED": "Description is required."
-				},
-				"STATUS": {
-					"REQUIRED": "Status is required."
-				},
-				"DUE": {
-					"REQUIRED": "Due date is required.",
-					"NOTBEFORE": "The due date may not be earlier than the start date."
-				},
-				"FROM": {
-					"REQUIRED": "A date from when the assignment can begin is required."
-				}
-			},
-			"BUTTONS": {
-				"CREATE": "Create",
-				"EDIT": "Edit"
-			}
-		},
-		"CREATE": {
-			"CREATE": "Create",
-			"BUTTON_CREATE": "Create"
-		},
-		"EDIT": {
-			"EDIT": "Edit",
-			"BUTTON_EDIT": "Update"
-		},
-		"INDEX": {
-			"TITLE_EXTRAS": "(single assignments)",
-			"ACTIONS": "Actions",
-			"CREATE": "Create",
-			"EDIT": "Edit",
-			"DELETE": "Delete",
-			"MANAGE": "Manage",
-			"FIELDS": "Fields",
-			"FIELDS_TITLE": "(fields)",
-			"STATES": "States",
-			"TYPES": "Types",
-			"BACK": "Back"
-		},
-		"QUEUE": {
-			"ADDING": "Adding {{ description }}",
-			"UPDATING": "Updating {{ description }}",
-			"DELETING": "Deleting {{ description }}",
-			"ERROR": "An error occured with {{ description }}. Correct and try again."
-		}
-	},
 	"PHONES": {
 		"FORM": {
 			"LABELS": {
@@ -1718,6 +1718,54 @@
 			"UPDATING": "Updating {{ name }}",
 			"DELETING": "Deleting {{ name }}",
 			"ERROR": "An error occured with {{ name }}. Correct and try again."
+		}
+	},
+	"PHONE_NUMBERS": {
+		"FORM": {
+			"LABELS": {
+				"NUMBER": "Number",
+				"INTERNAL": "Internal",
+				"PHONEID": "Phone"
+			},
+			"PLACEHOLDERS": {
+				"NUMBER": "Number",
+				"INTERNAL": "Internal",
+				"PHONEID": "Phone"
+			},
+			"VALIDATION": {
+				"NUMBER": {
+					"REQUIRED": "Number is required"
+				},
+				"INTERNAL": {
+					"REQUIRED": "Internal is required"
+				},
+				"PHONEID": {
+					"REQUIRED": "Phone is required"
+				}
+			}
+		},
+		"CREATE": {
+			"CREATE_PHONE": "Create a new phone-number",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDIT": "Edit phone-number",
+			"BUTTON_EDIT": "Update"
+		},
+		"INDEX": {
+			"ACTIONS": "Actions",
+			"CREATE": "Create",
+			"MANAGE": "Manage",
+			"PHONES": "Phones",
+			"LOGS": "Logs",
+			"BACK": "Back",
+			"TITLE_EXTRAS": "(numbers)"
+		},
+		"QUEUE": {
+			"ADDING": "Adding {{ number }}",
+			"UPDATING": "Updating {{ number }}",
+			"DELETING": "Deleting {{ number }}",
+			"ERROR": "An error occured with {{ number }}. Correct and try again."
 		}
 	},
 	"PHONE_LOGS": {
@@ -1784,54 +1832,6 @@
 			"UPDATING": "Updating {{ name }}",
 			"DELETING": "Deleting {{ name }}",
 			"ERROR": "An error occured with {{ name }}. Correct and try again."
-		}
-	},
-	"PHONE_NUMBERS": {
-		"FORM": {
-			"LABELS": {
-				"NUMBER": "Number",
-				"INTERNAL": "Internal",
-				"PHONEID": "Phone"
-			},
-			"PLACEHOLDERS": {
-				"NUMBER": "Number",
-				"INTERNAL": "Internal",
-				"PHONEID": "Phone"
-			},
-			"VALIDATION": {
-				"NUMBER": {
-					"REQUIRED": "Number is required"
-				},
-				"INTERNAL": {
-					"REQUIRED": "Internal is required"
-				},
-				"PHONEID": {
-					"REQUIRED": "Phone is required"
-				}
-			}
-		},
-		"CREATE": {
-			"CREATE_PHONE": "Create a new phone-number",
-			"BUTTON_CREATE": "Create"
-		},
-		"EDIT": {
-			"EDIT": "Edit phone-number",
-			"BUTTON_EDIT": "Update"
-		},
-		"INDEX": {
-			"ACTIONS": "Actions",
-			"CREATE": "Create",
-			"MANAGE": "Manage",
-			"PHONES": "Phones",
-			"LOGS": "Logs",
-			"BACK": "Back",
-			"TITLE_EXTRAS": "(numbers)"
-		},
-		"QUEUE": {
-			"ADDING": "Adding {{ number }}",
-			"UPDATING": "Updating {{ number }}",
-			"DELETING": "Deleting {{ number }}",
-			"ERROR": "An error occured with {{ number }}. Correct and try again."
 		}
 	},
 	"PRODUCT_TYPES": {
@@ -1932,7 +1932,7 @@
 			"ERROR": "An error occured with {{ name }}. Correct and try again."
 		}
 	},
-	"PRODUCT_TYPE_PRICE_CHANGES": {
+	"PRODUCT_PRICE_CHANGES": {
 		"CREATE": {
 			"CREATE": "Create",
 			"BUTTON_CREATE": "Create"
@@ -1952,9 +1952,9 @@
 		"FORM": {
 			"LABELS": {
 				"CURRENCYCODE": "Currency code",
-				"RECORDID": "Product type",
-				"CHANGE": "Change",
-				"ISPERCENT": "Change is in Percent (%)",
+				"RECORDID": "Product",
+				"CHANGE": "Price change",
+				"ISPERCENT": "Change is in percentage (%)",
 				"PERUNIT": "Per unit",
 				"VALIDFROM": "Valid from",
 				"VALIDTO": "Valid to",
@@ -1964,9 +1964,9 @@
 			},
 			"PLACEHOLDERS": {
 				"CURRENCYCODE": "Currency code",
-				"RECORDID": "Product type",
-				"CHANGE": "Change",
-				"ISPERCENT": "Change is in Percent (%)",
+				"RECORDID": "Product",
+				"CHANGE": "Price change",
+				"ISPERCENT": "Change is in percentage (%)",
 				"PERUNIT": "Per unit",
 				"VALIDFROM": "Valid from",
 				"VALIDTO": "Valid to",
@@ -2008,7 +2008,7 @@
 			"ERROR": "An error occured with the price change valid from/to: {{ dates }}. Correct and try again."
 		}
 	},
-	"PRODUCT_PRICE_CHANGES": {
+	"PRODUCT_TYPE_PRICE_CHANGES": {
 		"CREATE": {
 			"CREATE": "Create",
 			"BUTTON_CREATE": "Create"
@@ -2028,9 +2028,9 @@
 		"FORM": {
 			"LABELS": {
 				"CURRENCYCODE": "Currency code",
-				"RECORDID": "Product",
-				"CHANGE": "Price change",
-				"ISPERCENT": "Change is in percentage (%)",
+				"RECORDID": "Product type",
+				"CHANGE": "Change",
+				"ISPERCENT": "Change is in Percent (%)",
 				"PERUNIT": "Per unit",
 				"VALIDFROM": "Valid from",
 				"VALIDTO": "Valid to",
@@ -2040,9 +2040,9 @@
 			},
 			"PLACEHOLDERS": {
 				"CURRENCYCODE": "Currency code",
-				"RECORDID": "Product",
-				"CHANGE": "Price change",
-				"ISPERCENT": "Change is in percentage (%)",
+				"RECORDID": "Product type",
+				"CHANGE": "Change",
+				"ISPERCENT": "Change is in Percent (%)",
 				"PERUNIT": "Per unit",
 				"VALIDFROM": "Valid from",
 				"VALIDTO": "Valid to",
@@ -2476,245 +2476,6 @@
 			"ERROR": "An error occured with the lodging type reservation price change valid from/to: {{ dates }}. Correct and try again."
 		}
 	},
-	"SITE_MINDER_CHANNELS": {
-		"FORM": {
-			"LABELS": {
-				"NAME": "Name"
-			},
-			"PLACEHOLDERS": {
-				"NAME": "Enter name"
-			},
-			"VALIDATION": {
-				"NAME": {
-					"REQUIRED": "A name is required."
-				}
-			}
-		},
-		"FIELDS": {
-			"CREATE": {
-				"ADD": "Add new field"
-			},
-			"EDIT": {
-				"EDITING": "Editing"
-			},
-			"INDEX": {
-				"ACTIONS": "Actions",
-				"CREATE": "Create new field",
-				"OTHER": "Other",
-				"BACK": "Back",
-				"FIELDS": "Fields",
-				"EDIT": "Edit"
-			}
-		},
-		"CREATE": {
-			"CREATE": "Create",
-			"BUTTON_CREATE": "Create"
-		},
-		"EDIT": {
-			"EDIT": "Edit",
-			"BUTTON_EDIT": "Update"
-		},
-		"INDEX": {
-			"TITLE_EXTRAS": "(channels)",
-			"PACKAGES": "Packages",
-			"CREATE": "Create",
-			"EDIT": "Edit",
-			"DELETE": "Delete",
-			"FIELDS": "Fields",
-			"FIELDS_TITLE": "(fields)",
-			"ITEM": "Item",
-			"MANAGE": "Manage",
-			"ACTIONS": "Actions"
-		}
-	},
-	"SITE_MINDER_LODGING_TYPE_RATE_PLAN_CHANNELS": {
-		"FORM": {
-			"LABELS": {
-				"LODGINGTYPERATEPLANID": "LodgingType Room relation",
-				"CHANNELID": "Channel"
-			},
-			"PLACEHOLDERS": {
-				"LODGINGTYPERATEPLANID": "LodgingType Room relation",
-				"CHANNELID": "Channel"
-			},
-			"VALIDATION": {
-				"LODGINGTYPERATEPLANID": {
-					"REQUIRED": "LodgingType Room relation is required."
-				},
-				"CHANNELID": {
-					"REQUIRED": "Channel is required."
-				}
-			}
-		},
-		"FIELDS": {
-			"CREATE": {
-				"ADD": "Add new field"
-			},
-			"EDIT": {
-				"EDITING": "Editing"
-			},
-			"INDEX": {
-				"ACTIONS": "Actions",
-				"CREATE": "Create new field",
-				"OTHER": "Other",
-				"BACK": "Back",
-				"FIELDS": "Fields",
-				"EDIT": "Edit"
-			}
-		},
-		"CREATE": {
-			"CREATE": "Create",
-			"BUTTON_CREATE": "Create"
-		},
-		"EDIT": {
-			"EDIT": "Edit",
-			"BUTTON_EDIT": "Update"
-		},
-		"INDEX": {
-			"PACKAGES": "Packages",
-			"CREATE": "Create",
-			"EDIT": "Edit",
-			"DELETE": "Delete",
-			"FIELDS": "Fields",
-			"ITEM": "Item",
-			"MANAGE": "Manage",
-			"ACTIONS": "Actions",
-			"TITLE_EXTRAS": "(Lodging types, rateplans, and channel relations)"
-		}
-	},
-	"SITE_MINDER_LODGING_TYPE_RATE_PLANS": {
-		"FORM": {
-			"LABELS": {
-				"LODGINGTYPEID": "Lodging type",
-				"RATEPLANID": "Rate plan"
-			},
-			"PLACEHOLDERS": {
-				"LODGINGTYPEID": "Lodging type",
-				"RATEPLANID": "Rate plan"
-			},
-			"VALIDATION": {
-				"LODGINGTYPEID": {
-					"REQUIRED": "Lodging type is required."
-				},
-				"RATEPLANID": {
-					"REQUIRED": "Rate plan is required."
-				}
-			}
-		},
-		"FIELDS": {
-			"CREATE": {
-				"ADD": "Add new field"
-			},
-			"EDIT": {
-				"EDITING": "Editing"
-			},
-			"INDEX": {
-				"ACTIONS": "Actions",
-				"CREATE": "Create new field",
-				"OTHER": "Other",
-				"BACK": "Back",
-				"FIELDS": "Fields",
-				"EDIT": "Edit"
-			}
-		},
-		"CREATE": {
-			"CREATE": "Create",
-			"BUTTON_CREATE": "Create"
-		},
-		"EDIT": {
-			"EDIT": "Edit",
-			"BUTTON_EDIT": "Update"
-		},
-		"INDEX": {
-			"PACKAGES": "Packages",
-			"CREATE": "Create",
-			"EDIT": "Edit",
-			"DELETE": "Delete",
-			"FIELDS": "Fields",
-			"ITEM": "Item",
-			"MANAGE": "Manage",
-			"ACTIONS": "Actions",
-			"TITLE_EXTRAS": "(Lodgingtype Rateplans)"
-		}
-	},
-	"SITE_MINDER_RATE_PLANS": {
-		"FORM": {
-			"LABELS": {
-				"NAME": "Name",
-				"CURRENCYCODE": "Currency code",
-				"BEFORETAX": "Before tax"
-			},
-			"PLACEHOLDERS": {
-				"NAME": "Enter name",
-				"CURRENCYCODE": "Currency code",
-				"BEFORETAX": "Before tax"
-			},
-			"VALIDATION": {
-				"NAME": {
-					"REQUIRED": "A name is required."
-				},
-				"CURRENCYCODE": {
-					"REQUIRED": "Currency code is required."
-				},
-				"BEFORETAX": {
-					"REQUIRED": "Before tax is required."
-				}
-			}
-		},
-		"FIELDS": {
-			"CREATE": {
-				"ADD": "Add new field"
-			},
-			"EDIT": {
-				"EDITING": "Editing"
-			},
-			"INDEX": {
-				"ACTIONS": "Actions",
-				"CREATE": "Create new field",
-				"OTHER": "Other",
-				"BACK": "Back",
-				"FIELDS": "Fields",
-				"EDIT": "Edit"
-			}
-		},
-		"CREATE": {
-			"CREATE": "Create",
-			"BUTTON_CREATE": "Create"
-		},
-		"EDIT": {
-			"EDIT": "Edit",
-			"BUTTON_EDIT": "Update"
-		},
-		"INDEX": {
-			"PACKAGES": "Packages",
-			"CREATE": "Create",
-			"EDIT": "Edit",
-			"DELETE": "Delete",
-			"FIELDS": "Fields",
-			"FIELDS_TITLE": "(fields)",
-			"ITEM": "Item",
-			"MANAGE": "Manage",
-			"ACTIONS": "Actions",
-			"TITLE_EXTRAS": "(rate plans)"
-		}
-	},
-	"SITE_MINDER": {
-		"INDEX": {
-			"PACKAGES": "Packages",
-			"CREATE": "Create",
-			"EDIT": "Edit",
-			"DELETE": "Delete",
-			"FIELDS": "Fields",
-			"FIELDS_TITLE": "(fields)",
-			"ITEM": "Item",
-			"MANAGE": "Manage",
-			"ACTIONS": "Actions",
-			"CHANNELS": "Channels",
-			"RATE_PLANS": "Rate plans",
-			"LODGING_TYPE_RATE_PLAN_CHANNELS": "Relate rooms-rate-plans with channels",
-			"LODGING_TYPE_RATE_PLANS": "Relate rateplans to rooms"
-		}
-	},
 	"CONNECTIONS": {
 		"CREATE": {
 			"CREATE": "Create",
@@ -3030,6 +2791,245 @@
 			"ENTITY_ACTION": {
 				"TERMINAL_PAYMENT": "Card payment"
 			}
+		}
+	},
+	"SITE_MINDER_CHANNELS": {
+		"FORM": {
+			"LABELS": {
+				"NAME": "Name"
+			},
+			"PLACEHOLDERS": {
+				"NAME": "Enter name"
+			},
+			"VALIDATION": {
+				"NAME": {
+					"REQUIRED": "A name is required."
+				}
+			}
+		},
+		"FIELDS": {
+			"CREATE": {
+				"ADD": "Add new field"
+			},
+			"EDIT": {
+				"EDITING": "Editing"
+			},
+			"INDEX": {
+				"ACTIONS": "Actions",
+				"CREATE": "Create new field",
+				"OTHER": "Other",
+				"BACK": "Back",
+				"FIELDS": "Fields",
+				"EDIT": "Edit"
+			}
+		},
+		"CREATE": {
+			"CREATE": "Create",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDIT": "Edit",
+			"BUTTON_EDIT": "Update"
+		},
+		"INDEX": {
+			"TITLE_EXTRAS": "(channels)",
+			"PACKAGES": "Packages",
+			"CREATE": "Create",
+			"EDIT": "Edit",
+			"DELETE": "Delete",
+			"FIELDS": "Fields",
+			"FIELDS_TITLE": "(fields)",
+			"ITEM": "Item",
+			"MANAGE": "Manage",
+			"ACTIONS": "Actions"
+		}
+	},
+	"SITE_MINDER_LODGING_TYPE_RATE_PLAN_CHANNELS": {
+		"FORM": {
+			"LABELS": {
+				"LODGINGTYPERATEPLANID": "LodgingType Room relation",
+				"CHANNELID": "Channel"
+			},
+			"PLACEHOLDERS": {
+				"LODGINGTYPERATEPLANID": "LodgingType Room relation",
+				"CHANNELID": "Channel"
+			},
+			"VALIDATION": {
+				"LODGINGTYPERATEPLANID": {
+					"REQUIRED": "LodgingType Room relation is required."
+				},
+				"CHANNELID": {
+					"REQUIRED": "Channel is required."
+				}
+			}
+		},
+		"FIELDS": {
+			"CREATE": {
+				"ADD": "Add new field"
+			},
+			"EDIT": {
+				"EDITING": "Editing"
+			},
+			"INDEX": {
+				"ACTIONS": "Actions",
+				"CREATE": "Create new field",
+				"OTHER": "Other",
+				"BACK": "Back",
+				"FIELDS": "Fields",
+				"EDIT": "Edit"
+			}
+		},
+		"CREATE": {
+			"CREATE": "Create",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDIT": "Edit",
+			"BUTTON_EDIT": "Update"
+		},
+		"INDEX": {
+			"PACKAGES": "Packages",
+			"CREATE": "Create",
+			"EDIT": "Edit",
+			"DELETE": "Delete",
+			"FIELDS": "Fields",
+			"ITEM": "Item",
+			"MANAGE": "Manage",
+			"ACTIONS": "Actions",
+			"TITLE_EXTRAS": "(Lodging types, rateplans, and channel relations)"
+		}
+	},
+	"SITE_MINDER_LODGING_TYPE_RATE_PLANS": {
+		"FORM": {
+			"LABELS": {
+				"LODGINGTYPEID": "Lodging type",
+				"RATEPLANID": "Rate plan"
+			},
+			"PLACEHOLDERS": {
+				"LODGINGTYPEID": "Lodging type",
+				"RATEPLANID": "Rate plan"
+			},
+			"VALIDATION": {
+				"LODGINGTYPEID": {
+					"REQUIRED": "Lodging type is required."
+				},
+				"RATEPLANID": {
+					"REQUIRED": "Rate plan is required."
+				}
+			}
+		},
+		"FIELDS": {
+			"CREATE": {
+				"ADD": "Add new field"
+			},
+			"EDIT": {
+				"EDITING": "Editing"
+			},
+			"INDEX": {
+				"ACTIONS": "Actions",
+				"CREATE": "Create new field",
+				"OTHER": "Other",
+				"BACK": "Back",
+				"FIELDS": "Fields",
+				"EDIT": "Edit"
+			}
+		},
+		"CREATE": {
+			"CREATE": "Create",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDIT": "Edit",
+			"BUTTON_EDIT": "Update"
+		},
+		"INDEX": {
+			"PACKAGES": "Packages",
+			"CREATE": "Create",
+			"EDIT": "Edit",
+			"DELETE": "Delete",
+			"FIELDS": "Fields",
+			"ITEM": "Item",
+			"MANAGE": "Manage",
+			"ACTIONS": "Actions",
+			"TITLE_EXTRAS": "(Lodgingtype Rateplans)"
+		}
+	},
+	"SITE_MINDER_RATE_PLANS": {
+		"FORM": {
+			"LABELS": {
+				"NAME": "Name",
+				"CURRENCYCODE": "Currency code",
+				"BEFORETAX": "Before tax"
+			},
+			"PLACEHOLDERS": {
+				"NAME": "Enter name",
+				"CURRENCYCODE": "Currency code",
+				"BEFORETAX": "Before tax"
+			},
+			"VALIDATION": {
+				"NAME": {
+					"REQUIRED": "A name is required."
+				},
+				"CURRENCYCODE": {
+					"REQUIRED": "Currency code is required."
+				},
+				"BEFORETAX": {
+					"REQUIRED": "Before tax is required."
+				}
+			}
+		},
+		"FIELDS": {
+			"CREATE": {
+				"ADD": "Add new field"
+			},
+			"EDIT": {
+				"EDITING": "Editing"
+			},
+			"INDEX": {
+				"ACTIONS": "Actions",
+				"CREATE": "Create new field",
+				"OTHER": "Other",
+				"BACK": "Back",
+				"FIELDS": "Fields",
+				"EDIT": "Edit"
+			}
+		},
+		"CREATE": {
+			"CREATE": "Create",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDIT": "Edit",
+			"BUTTON_EDIT": "Update"
+		},
+		"INDEX": {
+			"PACKAGES": "Packages",
+			"CREATE": "Create",
+			"EDIT": "Edit",
+			"DELETE": "Delete",
+			"FIELDS": "Fields",
+			"FIELDS_TITLE": "(fields)",
+			"ITEM": "Item",
+			"MANAGE": "Manage",
+			"ACTIONS": "Actions",
+			"TITLE_EXTRAS": "(rate plans)"
+		}
+	},
+	"SITE_MINDER": {
+		"INDEX": {
+			"PACKAGES": "Packages",
+			"CREATE": "Create",
+			"EDIT": "Edit",
+			"DELETE": "Delete",
+			"FIELDS": "Fields",
+			"FIELDS_TITLE": "(fields)",
+			"ITEM": "Item",
+			"MANAGE": "Manage",
+			"ACTIONS": "Actions",
+			"CHANNELS": "Channels",
+			"RATE_PLANS": "Rate plans",
+			"LODGING_TYPE_RATE_PLAN_CHANNELS": "Relate rooms-rate-plans with channels",
+			"LODGING_TYPE_RATE_PLANS": "Relate rateplans to rooms"
 		}
 	},
 	"UI": {
@@ -3415,6 +3415,16 @@
 			"TERMINAL_RECEIPTS": "Receipts"
 		}
 	},
+	"SETTINGS": {
+		"SETTINGS": "Settings",
+		"BUTTON_SUBMIT": "Submit",
+		"QUEUE": {
+			"ADDING": "Adding settings",
+			"UPDATING": "Updating settings",
+			"DELETING": "Deleting settings",
+			"ERROR": "An error occured with settings. Correct and try again."
+		}
+	},
 	"FIELDS": {
 		"INDEX": {
 			"CREATE": "Create",
@@ -3464,16 +3474,6 @@
 			"UPDATING": "Updating {{ displayName }}",
 			"DELETING": "Deleting {{ displayName }}",
 			"ERROR": "An error occured with {{ displayName }}. Correct and try again."
-		}
-	},
-	"SETTINGS": {
-		"SETTINGS": "Settings",
-		"BUTTON_SUBMIT": "Submit",
-		"QUEUE": {
-			"ADDING": "Adding settings",
-			"UPDATING": "Updating settings",
-			"DELETING": "Deleting settings",
-			"ERROR": "An error occured with settings. Correct and try again."
 		}
 	},
 	"FILE_STORAGE": {
