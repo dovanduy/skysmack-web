@@ -6,7 +6,7 @@ import { LoadedPackage } from '@skysmack/ng-framework';
 import { Validators } from '@angular/forms';
 import { FormRule, Field, SelectField } from '@skysmack/ng-dynamic-forms';
 import { FieldsConfig, FieldProviders } from '@skysmack/ng-fields';
-import { StringFieldComponent, HiddenFieldComponent, SelectFieldComponent } from '@skysmack/portal-fields';
+import { StringFieldComponent, HiddenFieldComponent, SelectFieldComponent, KeyValueArrayFieldComponent } from '@skysmack/portal-fields';
 import { of } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
@@ -43,7 +43,7 @@ export class NgWebhooksFieldsConfig extends FieldsConfig<Webhook, number> {
                 sortable: true
             }),
             new Field({
-                component: StringFieldComponent,
+                component: KeyValueArrayFieldComponent,
                 value: entity ? entity.object.customHeaders : undefined,
                 key: 'customHeaders',
                 order: 3,

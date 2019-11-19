@@ -1,0 +1,23 @@
+<ng-container *ngIf="field" [formGroup]="fh.form">
+  <h3>Key-Value pairs</h3>
+  <mat-form-field>
+    <input matInput type="text" placeholder="Key" #keyInput />
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput type="text" placeholder="Value" #valueInput />
+  </mat-form-field>
+
+  <button mat-raised-button (click)="add()">Add</button>
+
+  <p *ngFor="let input of inputs">Key: {{ input.key }}, Value: {{ input.value }} <mat-icon style="cursor:pointer"
+      (click)="remove(input.id)">
+      delete</mat-icon>
+  </p>
+
+  <ss-backend-errors [field]="field"></ss-backend-errors>
+
+  <br />
+  <br />
+
+</ng-container>
