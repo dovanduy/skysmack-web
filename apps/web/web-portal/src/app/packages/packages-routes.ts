@@ -22,6 +22,7 @@ import { phonesRoute } from './phones-package-manifest';
 import { PBX_3CXRoute } from './3cx-package-manifest';
 import { siteminderRoute } from './siteminder-package-manifest';
 import { webhooksRoute } from './webhooks-package-manifest';
+import { templatesRoute } from './templates-package-manifest';
 
 export const packagesRoutes = [
     packagesRoute,
@@ -47,5 +48,6 @@ export const packagesRoutes = [
     openApiRoute,
     phonesRoute,
     PBX_3CXRoute,
-    webhooksRoute
+    webhooksRoute,
+    templatesRoute
 ];

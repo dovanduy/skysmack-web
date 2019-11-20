@@ -24,6 +24,10 @@ export class NgTemplatesFieldsConfig extends FieldsConfig<Template, number> {
     }
 
     protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<Template, number>): Field[] {
+        let dataRouteArray = [];
+        if (entity) {
+            dataRouteArray = Object.keys(entity.object.dataRoutes).map(key => ({ key, value: entity.object.dataRoutes[key] }));
+        }
 
         const fields = [
             new Field({
@@ -42,7 +46,7 @@ export class NgTemplatesFieldsConfig extends FieldsConfig<Template, number> {
             }),
             new Field({
                 component: KeyValueArrayFieldComponent,
-                value: entity ? entity.object.dataRoutes : undefined,
+                value: entity ? dataRouteArray : undefined,
                 key: 'dataRoutes',
                 order: 3,
             }),

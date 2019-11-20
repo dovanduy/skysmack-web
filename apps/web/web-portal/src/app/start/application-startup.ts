@@ -31,6 +31,7 @@ import { loadPhonePackage } from '../packages/phones-package-manifest';
 import { load3CXPackage } from '../packages/3cx-package-manifest';
 import { loadSiteMinderPackage } from '../packages/siteminder-package-manifest';
 import { loadWebhooksPackage } from '../packages/webhooks-package-manifest';
+import { loadTemplatePackage } from '../packages/templates-package-manifest';
 
 
 export function configureSkysmack(actions: NgSkysmackActions) {
@@ -71,7 +72,8 @@ export const packageLoaders = [
     { provide: APP_INITIALIZER, useFactory: loadTerminalPaymentsPackage, deps: [PackageLoader], multi: true },
     { provide: APP_INITIALIZER, useFactory: loadEmailsPackage, deps: [PackageLoader], multi: true },
     { provide: APP_INITIALIZER, useFactory: loadEmailsSmtpPackage, deps: [PackageLoader], multi: true },
-    { provide: APP_INITIALIZER, useFactory: loadOpenApiPackage, deps: [PackageLoader], multi: true }
+    { provide: APP_INITIALIZER, useFactory: loadOpenApiPackage, deps: [PackageLoader], multi: true },
+    { provide: APP_INITIALIZER, useFactory: loadTemplatePackage, deps: [PackageLoader], multi: true }
 ];
 
 export const injectionTokens = [
