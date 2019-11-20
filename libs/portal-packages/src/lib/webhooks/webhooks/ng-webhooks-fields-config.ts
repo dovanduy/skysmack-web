@@ -23,6 +23,7 @@ export class NgWebhooksFieldsConfig extends FieldsConfig<Webhook, number> {
     }
 
     protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<Webhook, number>): Field[] {
+
         const fields = [
             new Field({
                 component: StringFieldComponent,
@@ -36,8 +37,12 @@ export class NgWebhooksFieldsConfig extends FieldsConfig<Webhook, number> {
                 component: SelectFieldComponent,
                 value: entity ? entity.object.httpMethod : undefined,
                 key: 'httpMethod',
-                optionsData$: of(HttpMethod),
-                optionsDataType: 'ts-enum',
+                optionsData$: of([
+                    { key: 'POST', value: HttpMethod.POST },
+                    { key: 'PUT', value: HttpMethod.PUT }
+                ]),
+                displayNameSelector: 'key',
+                valueSelector: 'value',
                 order: 2,
                 showColumn: true,
                 sortable: true
