@@ -53,6 +53,12 @@
     "packages-persons": {
       "tags": []
     },
+    "packages-webhooks": {
+      "tags": []
+    },
+    "packages-templates": {
+      "tags": []
+    },
     "packages-phones": {
       "tags": []
     },
@@ -171,6 +177,12 @@
       "tags": []
     },
     "ng-persons": {
+      "tags": []
+    },
+    "ng-webhooks": {
+      "tags": []
+    },
+    "ng-templates": {
       "tags": []
     },
     "ng-phones": {

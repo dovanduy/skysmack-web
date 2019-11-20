@@ -98,6 +98,9 @@
       "@skysmack/packages-webhooks": [
         "./dist/@skysmack/packages-webhooks"
       ],
+      "@skysmack/packages-templates": [
+        "./dist/@skysmack/packages-templates"
+      ],
       "@skysmack/packages-phones": [
         "./dist/@skysmack/packages-phones"
       ],
@@ -166,6 +169,9 @@
       ],
       "@skysmack/ng-webhooks": [
         "libs/ng-packages/ng-webhooks"
+      ],
+      "@skysmack/ng-templates": [
+        "libs/ng-packages/ng-templates"
       ],
       "@skysmack/ng-phones": [
         "libs/ng-packages/ng-phones"

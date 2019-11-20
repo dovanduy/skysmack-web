@@ -380,6 +380,39 @@
         }
       }
     },
+    "packages-templates": {
+      "root": "libs/packages/packages-templates",
+      "sourceRoot": "libs/packages/packages-templates/src",
+      "projectType": "library",
+      "prefix": "skysmack",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/packages/packages-templates/tsconfig.lib.json",
+              "libs/packages/packages-templates/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/packages/packages-templates/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/packages/packages-templates/jest.config.js",
+            "tsConfig": "libs/packages/packages-templates/tsconfig.spec.json"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/schematics:component": {
+          "styleext": "scss"
+        }
+      }
+    },
     "packages-phones": {
       "root": "libs/packages/packages-phones",
       "sourceRoot": "libs/packages/packages-phones/src",
@@ -2085,6 +2118,40 @@
             "jestConfig": "libs/ng-packages/ng-webhooks/jest.config.js",
             "tsConfig": "libs/ng-packages/ng-webhooks/tsconfig.spec.json",
             "setupFile": "libs/ng-packages/ng-webhooks/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "ng-templates": {
+      "projectType": "library",
+      "root": "libs/ng-packages/ng-templates",
+      "sourceRoot": "libs/ng-packages/ng-templates/src",
+      "prefix": "skysmack",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/ng-packages/ng-templates/tsconfig.lib.json",
+              "libs/ng-packages/ng-templates/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/ng-packages/ng-templates/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/ng-packages/ng-templates/jest.config.js",
+            "tsConfig": "libs/ng-packages/ng-templates/tsconfig.spec.json",
+            "setupFile": "libs/ng-packages/ng-templates/src/test-setup.ts"
           }
         }
       },
