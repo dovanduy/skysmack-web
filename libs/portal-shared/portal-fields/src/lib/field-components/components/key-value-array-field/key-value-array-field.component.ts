@@ -28,8 +28,8 @@ export class KeyValueArrayFieldComponent extends FieldBaseComponent<Field> imple
       value
     });
 
-    this.keyInput.nativeElement.value;
-    this.valueInput.nativeElement.value;
+    this.keyInput.nativeElement.value = '';
+    this.valueInput.nativeElement.value = '';
 
     this.setFieldValue(this.inputs.map(x => ({ key: x.key, value: x.value })));
   }

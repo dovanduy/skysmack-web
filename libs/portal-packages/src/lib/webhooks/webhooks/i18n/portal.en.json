@@ -10,7 +10,8 @@
                 "WEBHOOKID": "Webhook",
                 "AMOUNT": "Amount",
                 "INVOICEID": "Invoice ID",
-                "CURRENCYCODE": "Currency"
+                "CURRENCYCODE": "Currency",
+                "ENABLED": "Enabled"
             },
             "PLACEHOLDERS": {
                 "NAME": "Name",
@@ -21,7 +22,8 @@
                 "WEBHOOKID": "Webhook",
                 "AMOUNT": "Amount",
                 "INVOICEID": "Invoice ID",
-                "CURRENCYCODE": "Currency"
+                "CURRENCYCODE": "Currency",
+                "ENABLED": "Enabled"
             },
             "VALIDATION": {
                 "NAME": {
@@ -65,12 +67,10 @@
             "DELETE": "Delete",
             "MANAGE": "Manage",
             "ACTIONS": "Actions",
+            "SETTINGS": "Settings",
             "TYPES": "Types"
         },
-        "PAY": {
-            "TITLE": "Card payment",
-            "BUTTON_PAY": "Pay"
-        },
+        "SETTINGS": {},
         "QUEUE": {
             "ADDING": "Adding webhook {{ name }}",
             "UPDATING": "Updating webhook {{ name }}",

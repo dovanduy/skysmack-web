@@ -72,6 +72,15 @@ export class NgWebhooksIndexMenuProvider implements MenuProvider {
                     WebhooksPermissions.addWebhooks
                 ],
                 providedIn: [SIDEBAR, SPEEDDIAL]
+            }),
+            new MenuItem({
+                url: 'settings',
+                displayName: this.webhooksTranslationPrefix + 'SETTINGS',
+                area: 'manage',
+                order: 1,
+                icon: 'add',
+                permissions: [],
+                providedIn: [SIDEBAR]
             })
         ];
     };

@@ -10,6 +10,8 @@ import { CoalescingComponentFactoryResolver } from '@skysmack/ng-framework';
 import { DynamicFormsModule } from '@skysmack/portal-dynamic-forms';
 import { PortalFieldsModule } from '@skysmack/portal-fields';
 import { NgWebhooksIndexMenuProvider } from './ng-webhooks-index-menu-provider';
+import { NgWebhookSettingsFieldsConfig } from './webhooks/ng-webhooks-settings-fields-config';
+import { SettingsModule } from '@skysmack/portal-settings';
 
 @NgModule({
   imports: [
@@ -18,6 +20,7 @@ import { NgWebhooksIndexMenuProvider } from './ng-webhooks-index-menu-provider';
     WebhooksRoutingModule,
     NgWebhooksModule,
     PortalUiModule,
+    SettingsModule,
     DynamicFormsModule,
     PortalFieldsModule
   ],
@@ -28,7 +31,9 @@ import { NgWebhooksIndexMenuProvider } from './ng-webhooks-index-menu-provider';
   entryComponents: [
     ...webhooksEntryComponents
   ],
-  providers: []
+  providers: [
+    { provide: 'NgWebhookSettingsFieldsConfig', useClass: NgWebhookSettingsFieldsConfig },
+  ]
 })
 export class WebhooksModule {
   constructor(

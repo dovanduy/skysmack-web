@@ -1834,6 +1834,45 @@
 			"ERROR": "An error occured with {{ number }}. Correct and try again."
 		}
 	},
+	"PRODUCT_TYPES": {
+		"CREATE": {
+			"CREATE": "Create",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDIT": "Edit",
+			"BUTTON_EDIT": "Update"
+		},
+		"INDEX": {
+			"TITLE_EXTRAS": "(types)",
+			"ACTIONS": "Actions",
+			"CREATE": "Create",
+			"DELETE": "Delete",
+			"MANAGE": "Manage",
+			"FIELDS": "Fields",
+			"FIELDS_TITLE": "(type fields)",
+			"BACK": "Back"
+		},
+		"FORM": {
+			"LABELS": {
+				"NAME": "Name"
+			},
+			"PLACEHOLDERS": {
+				"NAME": "Enter name"
+			},
+			"VALIDATION": {
+				"NAME": {
+					"REQUIRED": "Name is required."
+				}
+			}
+		},
+		"QUEUE": {
+			"ADDING": "Adding {{ name }}",
+			"UPDATING": "Updating {{ name }}",
+			"DELETING": "Deleting {{ name }}",
+			"ERROR": "An error occured with {{ name }}. Correct and try again."
+		}
+	},
 	"PRODUCTS": {
 		"FORM": {
 			"LABELS": {
@@ -1884,45 +1923,6 @@
 				"TYPES": "Types",
 				"FIELDS": "Fields",
 				"BACK": "Back"
-			}
-		},
-		"QUEUE": {
-			"ADDING": "Adding {{ name }}",
-			"UPDATING": "Updating {{ name }}",
-			"DELETING": "Deleting {{ name }}",
-			"ERROR": "An error occured with {{ name }}. Correct and try again."
-		}
-	},
-	"PRODUCT_TYPES": {
-		"CREATE": {
-			"CREATE": "Create",
-			"BUTTON_CREATE": "Create"
-		},
-		"EDIT": {
-			"EDIT": "Edit",
-			"BUTTON_EDIT": "Update"
-		},
-		"INDEX": {
-			"TITLE_EXTRAS": "(types)",
-			"ACTIONS": "Actions",
-			"CREATE": "Create",
-			"DELETE": "Delete",
-			"MANAGE": "Manage",
-			"FIELDS": "Fields",
-			"FIELDS_TITLE": "(type fields)",
-			"BACK": "Back"
-		},
-		"FORM": {
-			"LABELS": {
-				"NAME": "Name"
-			},
-			"PLACEHOLDERS": {
-				"NAME": "Enter name"
-			},
-			"VALIDATION": {
-				"NAME": {
-					"REQUIRED": "Name is required."
-				}
 			}
 		},
 		"QUEUE": {
@@ -3044,6 +3044,7 @@
 				"AMOUNT": "Amount",
 				"INVOICEID": "Invoice ID",
 				"CURRENCYCODE": "Currency",
+				"ENABLED": "Enabled",
 				"URL": "Url",
 				"HTTPMETHOD": "HTTP method",
 				"CUSTOMHEADERS": "Custom headers",
@@ -3061,6 +3062,7 @@
 				"AMOUNT": "Amount",
 				"INVOICEID": "Invoice ID",
 				"CURRENCYCODE": "Currency",
+				"ENABLED": "Enabled",
 				"URL": "Url",
 				"HTTPMETHOD": "HTTP method",
 				"CUSTOMHEADERS": "Custom headers",
@@ -3110,12 +3112,10 @@
 			"DELETE": "Delete",
 			"MANAGE": "Manage",
 			"ACTIONS": "Actions",
+			"SETTINGS": "Settings",
 			"TYPES": "Types"
 		},
-		"PAY": {
-			"TITLE": "Card payment",
-			"BUTTON_PAY": "Pay"
-		},
+		"SETTINGS": {},
 		"QUEUE": {
 			"ADDING": "Adding webhook {{ name }}",
 			"UPDATING": "Updating webhook {{ name }}",
@@ -3126,6 +3126,10 @@
 			"ENTITY_ACTION": {
 				"WEBHOOK": "Card payment"
 			}
+		},
+		"PAY": {
+			"TITLE": "Card payment",
+			"BUTTON_PAY": "Pay"
 		}
 	},
 	"UI": {
