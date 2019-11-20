@@ -4,13 +4,21 @@ import { WEBHOOKS_AREA_KEY } from '@skysmack/packages-webhooks';
 
 export class NgWebhooksValidation extends Validation {
     public formErrors = {
-        name: '',
+        url: '',
+        httpMethod: '',
+        customHeaders: '',
+        packagePath: '',
+        source: '',
+        eventType: ''
     };
 
     public validationMessages: StrIndex<{}> = {
-        name: {
-            required: '',
-        }
+        url: {},
+        httpMethod: {},
+        customHeaders: {},
+        packagePath: {},
+        source: {},
+        eventType: {}
     };
 
     public area = WEBHOOKS_AREA_KEY;
