@@ -1,0 +1,30 @@
+{
+    "TEMPLATES": {
+        "INDEX": {
+            "CREATE": "Create",
+            "EDIT": "Edit",
+            "DELETE": "Delete",
+            "MANAGE": "Manage",
+            "ACTIONS": "Actions"
+        },
+        "CREATE": {
+            "BUTTON_CREATE": "Create"
+        },
+        "EDIT": {
+            "BUTTON_EDIT": "Edit"
+        },
+        "FORM": {
+            "LABELS": {
+                "TITLE": "Title",
+                "BODY": "Body",
+                "DATAROUTES": "Data routes"
+            },
+            "PLACEHOLDERS": {
+                "TITLE": "Title",
+                "BODY": "Body",
+                "DATAROUTES": "Data routes"
+            },
+            "VALIDATION": {}
+        }
+    }
+}

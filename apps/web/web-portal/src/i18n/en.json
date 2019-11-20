@@ -2008,6 +2008,53 @@
 			"ERROR": "An error occured with the price change valid from/to: {{ dates }}. Correct and try again."
 		}
 	},
+	"PRODUCT_TYPE_SALES_PRICE": {
+		"CREATE": {
+			"CREATE": "Create",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDIT": "Edit",
+			"BUTTON_EDIT": "Update"
+		},
+		"INDEX": {
+			"ACTIONS": "Actions",
+			"CREATE": "Create",
+			"DELETE": "Delete",
+			"MANAGE": "Manage",
+			"FIELDS": "Fields",
+			"BACK": "Back"
+		},
+		"FORM": {
+			"LABELS": {
+				"CURRENCYCODE": "Currency code",
+				"RECORDID": "Product type",
+				"PRICE": "Price"
+			},
+			"PLACEHOLDERS": {
+				"CURRENCYCODE": "Currency code",
+				"RECORDID": "Product type",
+				"PRICE": "Price"
+			},
+			"VALIDATION": {
+				"CURRENCYCODE": {
+					"REQUIRED": "Currency code is required"
+				},
+				"RECORDID": {
+					"REQUIRED": "Product is required"
+				},
+				"PRICE": {
+					"REQUIRED": "Price is required"
+				}
+			}
+		},
+		"QUEUE": {
+			"ADDING": "Adding the product type sale price with the price: {{ price }}",
+			"UPDATING": "Updating the product type sale price with the price: {{ price }}",
+			"DELETING": "Deleting the product type sale price with the price: {{ price }}",
+			"ERROR": "An error occured with the product type sale price with the price: {{ price }}. Correct and try again."
+		}
+	},
 	"PRODUCT_TYPE_PRICE_CHANGES": {
 		"CREATE": {
 			"CREATE": "Create",
@@ -2082,53 +2129,6 @@
 			"UPDATING": "Updating the price change valid from/to: {{ dates }}",
 			"DELETING": "Deleting the price change valid from/to: {{ dates }}",
 			"ERROR": "An error occured with the price change valid from/to: {{ dates }}. Correct and try again."
-		}
-	},
-	"PRODUCT_TYPE_SALES_PRICE": {
-		"CREATE": {
-			"CREATE": "Create",
-			"BUTTON_CREATE": "Create"
-		},
-		"EDIT": {
-			"EDIT": "Edit",
-			"BUTTON_EDIT": "Update"
-		},
-		"INDEX": {
-			"ACTIONS": "Actions",
-			"CREATE": "Create",
-			"DELETE": "Delete",
-			"MANAGE": "Manage",
-			"FIELDS": "Fields",
-			"BACK": "Back"
-		},
-		"FORM": {
-			"LABELS": {
-				"CURRENCYCODE": "Currency code",
-				"RECORDID": "Product type",
-				"PRICE": "Price"
-			},
-			"PLACEHOLDERS": {
-				"CURRENCYCODE": "Currency code",
-				"RECORDID": "Product type",
-				"PRICE": "Price"
-			},
-			"VALIDATION": {
-				"CURRENCYCODE": {
-					"REQUIRED": "Currency code is required"
-				},
-				"RECORDID": {
-					"REQUIRED": "Product is required"
-				},
-				"PRICE": {
-					"REQUIRED": "Price is required"
-				}
-			}
-		},
-		"QUEUE": {
-			"ADDING": "Adding the product type sale price with the price: {{ price }}",
-			"UPDATING": "Updating the product type sale price with the price: {{ price }}",
-			"DELETING": "Deleting the product type sale price with the price: {{ price }}",
-			"ERROR": "An error occured with the product type sale price with the price: {{ price }}. Correct and try again."
 		}
 	},
 	"PRODUCTS_SALES_PRICE": {
@@ -2713,6 +2713,96 @@
 			"RATE_PLANS": "Rate plans",
 			"LODGING_TYPE_RATE_PLAN_CHANNELS": "Relate rooms-rate-plans with channels",
 			"LODGING_TYPE_RATE_PLANS": "Relate rateplans to rooms"
+		}
+	},
+	"TEMPLATES": {
+		"FORM": {
+			"LABELS": {
+				"NAME": "Name",
+				"CONNECTIONSTRING": "Connection string",
+				"CONNECTION": "Connection",
+				"DESCRIPTION": "Description",
+				"CLIENTID": "Client",
+				"TEMPLATEID": "Template",
+				"AMOUNT": "Amount",
+				"INVOICEID": "Invoice ID",
+				"CURRENCYCODE": "Currency",
+				"ENABLED": "Enabled",
+				"TITLE": "Title",
+				"BODY": "Body",
+				"DATAROUTES": "Data routes"
+			},
+			"PLACEHOLDERS": {
+				"NAME": "Name",
+				"CONNECTIONSTRING": "Connection string",
+				"CONNECTION": "Connection",
+				"DESCRIPTION": "Description",
+				"CLIENTID": "Client",
+				"TEMPLATEID": "Template",
+				"AMOUNT": "Amount",
+				"INVOICEID": "Invoice ID",
+				"CURRENCYCODE": "Currency",
+				"ENABLED": "Enabled",
+				"TITLE": "Title",
+				"BODY": "Body",
+				"DATAROUTES": "Data routes"
+			},
+			"VALIDATION": {
+				"NAME": {
+					"REQUIRED": "Name is required."
+				},
+				"CONNECTIONSTRING": {
+					"REQUIRED": "Connection string is required."
+				},
+				"CONNECTION": {
+					"REQUIRED": "Connection is required."
+				},
+				"CLIENTID": {
+					"REQUIRED": "Client is required."
+				},
+				"TEMPLATEID": {
+					"REQUIRED": "Template is required."
+				},
+				"AMOUNT": {
+					"REQUIRED": "Amount is required."
+				},
+				"INVOICEID": {
+					"REQUIRED": "Invoice ID is required."
+				},
+				"CURRENCYCODE": {
+					"REQUIRED": "Currency is required."
+				}
+			}
+		},
+		"CREATE": {
+			"CREATE": "Create",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDIT": "Edit",
+			"BUTTON_EDIT": "Edit"
+		},
+		"INDEX": {
+			"TITLE_EXTRAS": "(Templates)",
+			"CREATE": "Create",
+			"EDIT": "Edit",
+			"DELETE": "Delete",
+			"MANAGE": "Manage",
+			"ACTIONS": "Actions",
+			"SETTINGS": "Settings",
+			"TYPES": "Types"
+		},
+		"SETTINGS": {},
+		"QUEUE": {
+			"ADDING": "Adding template {{ name }}",
+			"UPDATING": "Updating template {{ name }}",
+			"DELETING": "Deleting template {{ name }}",
+			"ERROR": "An error occured with template {{ name }}. Correct and try again."
+		},
+		"ENTITY_ACTION_PROVIDER": {
+			"ENTITY_ACTION": {
+				"TEMPLATE": "Card payment"
+			}
 		}
 	},
 	"CONNECTIONS": {

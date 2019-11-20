@@ -1,0 +1,86 @@
+{
+    "TEMPLATES": {
+        "FORM": {
+            "LABELS": {
+                "NAME": "Name",
+                "CONNECTIONSTRING": "Connection string",
+                "CONNECTION": "Connection",
+                "DESCRIPTION": "Description",
+                "CLIENTID": "Client",
+                "TEMPLATEID": "Template",
+                "AMOUNT": "Amount",
+                "INVOICEID": "Invoice ID",
+                "CURRENCYCODE": "Currency",
+                "ENABLED": "Enabled"
+            },
+            "PLACEHOLDERS": {
+                "NAME": "Name",
+                "CONNECTIONSTRING": "Connection string",
+                "CONNECTION": "Connection",
+                "DESCRIPTION": "Description",
+                "CLIENTID": "Client",
+                "TEMPLATEID": "Template",
+                "AMOUNT": "Amount",
+                "INVOICEID": "Invoice ID",
+                "CURRENCYCODE": "Currency",
+                "ENABLED": "Enabled"
+            },
+            "VALIDATION": {
+                "NAME": {
+                    "REQUIRED": "Name is required."
+                },
+                "CONNECTIONSTRING": {
+                    "REQUIRED": "Connection string is required."
+                },
+                "CONNECTION": {
+                    "REQUIRED": "Connection is required."
+                },
+                "CLIENTID": {
+                    "REQUIRED": "Client is required."
+                },
+                "TEMPLATEID": {
+                    "REQUIRED": "Template is required."
+                },
+                "AMOUNT": {
+                    "REQUIRED": "Amount is required."
+                },
+                "INVOICEID": {
+                    "REQUIRED": "Invoice ID is required."
+                },
+                "CURRENCYCODE": {
+                    "REQUIRED": "Currency is required."
+                }
+            }
+        },
+        "CREATE": {
+            "CREATE": "Create",
+            "BUTTON_CREATE": "Create"
+        },
+        "EDIT": {
+            "EDIT": "Edit",
+            "BUTTON_EDIT": "Update"
+        },
+        "INDEX": {
+            "TITLE_EXTRAS": "(Templates)",
+            "CREATE": "Create",
+            "EDIT": "Edit",
+            "DELETE": "Delete",
+            "MANAGE": "Manage",
+            "ACTIONS": "Actions",
+            "SETTINGS": "Settings",
+            "TYPES": "Types"
+        },
+        "SETTINGS": {},
+        "QUEUE": {
+            "ADDING": "Adding template {{ name }}",
+            "UPDATING": "Updating template {{ name }}",
+            "DELETING": "Deleting template {{ name }}",
+            "ERROR": "An error occured with template {{ name }}. Correct and try again."
+        },
+        "ENTITY_ACTION_PROVIDER": {
+            "ENTITY_ACTION": {
+                "TEMPLATE": "Card payment"
+            }
+        }
+    }
+}

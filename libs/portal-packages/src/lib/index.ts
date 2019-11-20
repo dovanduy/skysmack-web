@@ -23,3 +23,4 @@ export * from './wysiwyg/index';
 export * from './phones/phones.module';
 export * from './3cx/3cx.module';
 export * from './webhooks/webhooks.module';
+export * from './templates/templates.module';
