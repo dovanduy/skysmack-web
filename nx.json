@@ -53,6 +53,9 @@
     "packages-persons": {
       "tags": []
     },
+    "packages-pass-codes": {
+      "tags": []
+    },
     "packages-cors": {
       "tags": []
     },
@@ -180,6 +183,9 @@
       "tags": []
     },
     "ng-persons": {
+      "tags": []
+    },
+    "ng-pass-codes": {
       "tags": []
     },
     "ng-cors": {

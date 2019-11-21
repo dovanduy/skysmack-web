@@ -71,6 +71,9 @@
       "@skysmack/packages-persons": [
         "libs/packages/persons/public_api.ts"
       ],
+      "@skysmack/packages-pass-codes": [
+        "libs/packages/pass-codes/public_api.ts"
+      ],
       "@skysmack/packages-cors": [
         "libs/packages/cors/public_api.ts"
       ],
@@ -187,6 +190,9 @@
       ],
       "@skysmack/ng-persons": [
         "libs/ng-packages/ng-persons/src/public_api.ts"
+      ],
+      "@skysmack/ng-packages-pass-codes": [
+        "libs/ng-packages/ng-pass-codes/public_api.ts"
       ],
       "@skysmack/ng-cors": [
         "libs/ng-packages/ng-cors/src/public_api.ts"

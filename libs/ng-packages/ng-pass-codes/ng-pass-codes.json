@@ -1,0 +1,14 @@
+{
+  "$schema": "../../../node_modules/ng-packagr/ng-package.schema.json",
+  "dest": "../../dist/ng-pass-codes",
+  "lib": {
+    "entryFile": "src/public_api.ts"
+  },
+  "whitelistedNonPeerDependencies": [
+    "tslib",
+    "@skysmack/framework",
+    "@skysmack/redux",
+    "@skysmack/packages-pass-codes",
+    "@skysmack/packages-skysmack-core"
+  ]
+}

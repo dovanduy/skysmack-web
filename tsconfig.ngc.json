@@ -95,6 +95,9 @@
       "@skysmack/packages-persons": [
         "./dist/@skysmack/packages-persons"
       ],
+      "@skysmack/packages-pass-codes": [
+        "./dist/@skysmack/packages-pass-codes"
+      ],
       "@skysmack/packages-cors": [
         "./dist/@skysmack/packages-cors"
       ],
@@ -169,6 +172,9 @@
       ],
       "@skysmack/ng-persons": [
         "libs/ng-packages/ng-persons"
+      ],
+      "@skysmack/ng-pass-codes": [
+        "libs/ng-packages/ng-pass-codes"
       ],
       "@skysmack/ng-cors": [
         "libs/ng-packages/ng-cors"
