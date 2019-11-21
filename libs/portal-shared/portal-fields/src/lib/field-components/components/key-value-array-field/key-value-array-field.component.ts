@@ -16,6 +16,7 @@ export class KeyValueArrayFieldComponent extends FieldBaseComponent<Field> imple
   ngOnInit() {
     super.ngOnInit();
     this.inputs = this.field.value ? this.field.value : [];
+    this.inputs.map(input => input.id = Guid.create().toString());
   }
 
   public add() {

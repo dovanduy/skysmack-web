@@ -7,7 +7,7 @@ import { EditorNavService } from '@skysmack/portal-ui';
 import { NgTemplatesFieldsConfig } from '../../ng-templates-fields-config';
 import { RecordFormComponent } from '@skysmack/portal-fields';
 import { FormHelper } from '@skysmack/ng-dynamic-forms';
-import { LocalObjectStatus } from '@skysmack/framework';
+import { LocalObjectStatus, reinstantiateLocalRecord } from '@skysmack/framework';
 
 @Component({
   selector: 'ss-templates-edit',
@@ -49,19 +49,20 @@ export class TemplatesEditComponent extends RecordFormComponent<TemplatesAppStat
       const newValue = this.extractFormValues(fh, this.selectedEntity);
 
       // Convert dataRoutes back to a dictionary. Was turned into an array in fields config so it can be used with KeyValueFieldComponent.
-      newValue.object.dataRoutes = (newValue.object.dataRoutes as unknown as { key: string, value: string }[]).reduce((a, b) => {
+      const dataRoutes: { key: string, value: string }[] = newValue.object.dataRoutes as any;
+      newValue.object.dataRoutes = dataRoutes && dataRoutes.reduce((a, b) => {
         a[b.key] = b.value;
         return a;
       }, {});
 
-
-      console.log(JSON.stringify(oldValue, undefined, 2), JSON.stringify(newValue, undefined, 2));
-
       newValue.oldObject = oldValue.object;
       newValue.status = LocalObjectStatus.MODIFYING;
 
+      // newValue reference somehow overrides above changes done to dataRoutes. To ensure they aren't overwritten, a clone is made.
+      const clonedValue = reinstantiateLocalRecord(JSON.parse(JSON.stringify(newValue, undefined, 2)));
 
-      this.actions.update([newValue], this.packagePath);
+
+      this.actions.update([clonedValue], this.packagePath);
       this.editorNavService.hideEditorNav();
     });
   }

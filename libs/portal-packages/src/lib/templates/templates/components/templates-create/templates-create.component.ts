@@ -36,7 +36,8 @@ export class TemplatesCreateComponent extends RecordFormComponent<TemplatesAppSt
       const localObject = this.extractFormValues(fh);
 
       // Convert dataRoutes back to a dictionary. Was turned into an array in fields config so it can be used with KeyValueFieldComponent.
-      localObject.object.dataRoutes = (localObject.object.dataRoutes as unknown as { key: string, value: string }[]).reduce((a, b) => {
+      const dataRoutes: { key: string, value: string }[] = localObject.object.dataRoutes as any;
+      localObject.object.dataRoutes = dataRoutes && dataRoutes.reduce((a, b) => {
         a[b.key] = b.value;
         return a;
       }, {});
