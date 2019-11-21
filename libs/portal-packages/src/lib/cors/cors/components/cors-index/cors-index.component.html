@@ -1,3 +1,19 @@
 <ss-container [componentKey]="componentKey" *ngIf="loadedPackage$ | async as loadedPackage">
+    <mat-form-field>
+        <input matInput type="text" [placeholder]="'Domain' | translate" #stringInput />
+    </mat-form-field>
+
+    <button mat-raised-button (click)="add()">Add</button>
+
+    <ng-container *ngIf="domains$ | async as domains">
+        <p *ngFor="let domain of domains" style="cursor:pointer;">{{ domain }} <mat-icon (click)="remove(domain)">
+                delete
+            </mat-icon>
+        </p>
+    </ng-container>
+
+    <ng-container *ngIf="!(domains$ | async)">
+        <p>No domains added</p>
+    </ng-container>
 
 </ss-container>
