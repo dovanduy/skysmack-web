@@ -347,6 +347,39 @@
         }
       }
     },
+    "packages-cors": {
+      "root": "libs/packages/packages-cors",
+      "sourceRoot": "libs/packages/packages-cors/src",
+      "projectType": "library",
+      "prefix": "skysmack",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/packages/packages-cors/tsconfig.lib.json",
+              "libs/packages/packages-cors/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/packages/packages-cors/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/packages/packages-cors/jest.config.js",
+            "tsConfig": "libs/packages/packages-cors/tsconfig.spec.json"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/schematics:component": {
+          "styleext": "scss"
+        }
+      }
+    },
     "packages-webhooks": {
       "root": "libs/packages/packages-webhooks",
       "sourceRoot": "libs/packages/packages-webhooks/src",
@@ -2084,6 +2117,40 @@
             "jestConfig": "libs/ng-packages/ng-persons/jest.config.js",
             "tsConfig": "libs/ng-packages/ng-persons/tsconfig.spec.json",
             "setupFile": "libs/ng-packages/ng-persons/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "ng-cors": {
+      "projectType": "library",
+      "root": "libs/ng-packages/ng-cors",
+      "sourceRoot": "libs/ng-packages/ng-cors/src",
+      "prefix": "skysmack",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/ng-packages/ng-cors/tsconfig.lib.json",
+              "libs/ng-packages/ng-cors/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/ng-packages/ng-cors/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/ng-packages/ng-cors/jest.config.js",
+            "tsConfig": "libs/ng-packages/ng-cors/tsconfig.spec.json",
+            "setupFile": "libs/ng-packages/ng-cors/src/test-setup.ts"
           }
         }
       },

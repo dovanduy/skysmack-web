@@ -53,6 +53,9 @@
     "packages-persons": {
       "tags": []
     },
+    "packages-cors": {
+      "tags": []
+    },
     "packages-webhooks": {
       "tags": []
     },
@@ -177,6 +180,9 @@
       "tags": []
     },
     "ng-persons": {
+      "tags": []
+    },
+    "ng-cors": {
       "tags": []
     },
     "ng-webhooks": {

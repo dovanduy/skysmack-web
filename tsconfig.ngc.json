@@ -95,6 +95,9 @@
       "@skysmack/packages-persons": [
         "./dist/@skysmack/packages-persons"
       ],
+      "@skysmack/packages-cors": [
+        "./dist/@skysmack/packages-cors"
+      ],
       "@skysmack/packages-webhooks": [
         "./dist/@skysmack/packages-webhooks"
       ],
@@ -166,6 +169,9 @@
       ],
       "@skysmack/ng-persons": [
         "libs/ng-packages/ng-persons"
+      ],
+      "@skysmack/ng-cors": [
+        "libs/ng-packages/ng-cors"
       ],
       "@skysmack/ng-webhooks": [
         "libs/ng-packages/ng-webhooks"
