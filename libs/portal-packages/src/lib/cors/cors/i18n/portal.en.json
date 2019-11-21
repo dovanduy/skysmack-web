@@ -1,0 +1,29 @@
+{
+    "CORS": {
+        "FORM": {
+            "LABELS": {
+                "ALLOWALLORIGINS": "Allow all origins"
+            },
+            "PLACEHOLDERS": {
+                "ALLOWALLORIGINS": "Allow all origins"
+            },
+            "VALIDATION": {}
+        },
+        "CREATE": {
+            "CREATE": "Create",
+            "BUTTON_CREATE": "Create"
+        },
+        "EDIT": {
+            "EDIT": "Edit",
+            "BUTTON_EDIT": "Update"
+        },
+        "INDEX": {
+            "CREATE": "Create",
+            "EDIT": "Edit",
+            "DELETE": "Delete",
+            "MANAGE": "Manage",
+            "ACTIONS": "Actions",
+            "SETTINGS": "Settings"
+        }
+    }
+}

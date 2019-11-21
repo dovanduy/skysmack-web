@@ -5,9 +5,9 @@ import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 
 @Injectable({ providedIn: 'root' })
 export class NgCorsStore {
+    protected stateKey: string = CORS_REDUCER_KEY;
     constructor(
         protected ngRedux: NgRedux<CorsAppState>,
         protected skysmackStore: NgSkysmackStore,
-        protected stateKey: string = CORS_REDUCER_KEY
     ) { }
 }

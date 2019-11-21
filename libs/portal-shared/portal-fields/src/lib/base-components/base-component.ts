@@ -3,7 +3,7 @@ import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { Observable, merge } from 'rxjs';
 import { Router, ActivatedRoute } from '@angular/router';
 import { OnInit, OnDestroy } from '@angular/core';
-import { take, map, filter } from 'rxjs/operators';
+import { take, map, filter, tap } from 'rxjs/operators';
 import { Field } from '@skysmack/ng-dynamic-forms';
 import { getPackageDendencyAsStream } from '@skysmack/ng-framework';
 import { LoadedPackage } from '@skysmack/ng-framework';

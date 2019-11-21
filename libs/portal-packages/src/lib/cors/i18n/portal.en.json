@@ -1,0 +1,36 @@
+{
+    "CORS": {
+        "INDEX": {
+            "CREATE": "Create",
+            "EDIT": "Edit",
+            "DELETE": "Delete",
+            "MANAGE": "Manage",
+            "ACTIONS": "Actions"
+        },
+        "CREATE": {
+            "BUTTON_CREATE": "Create"
+        },
+        "EDIT": {
+            "BUTTON_EDIT": "Edit"
+        },
+        "FORM": {
+            "LABELS": {
+                "URL": "Url",
+                "HTTPMETHOD": "HTTP method",
+                "CUSTOMHEADERS": "Custom headers",
+                "PACKAGEPATH": "Package path",
+                "SOURCE": "Source",
+                "EVENTTYPE": "Event type"
+            },
+            "PLACEHOLDERS": {
+                "URL": "Url",
+                "HTTPMETHOD": "HTTP method",
+                "CUSTOMHEADERS": "Custom headers",
+                "PACKAGEPATH": "Package path",
+                "SOURCE": "Source",
+                "EVENTTYPE": "Event type"
+            },
+            "VALIDATION": {}
+        }
+    }
+}

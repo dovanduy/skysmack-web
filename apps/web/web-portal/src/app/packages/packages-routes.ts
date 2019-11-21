@@ -23,6 +23,7 @@ import { PBX_3CXRoute } from './3cx-package-manifest';
 import { siteminderRoute } from './siteminder-package-manifest';
 import { webhooksRoute } from './webhooks-package-manifest';
 import { templatesRoute } from './templates-package-manifest';
+import { corsRoute } from './cors-package-manifest';
 
 export const packagesRoutes = [
     packagesRoute,
@@ -49,5 +50,6 @@ export const packagesRoutes = [
     phonesRoute,
     PBX_3CXRoute,
     webhooksRoute,
-    templatesRoute
+    templatesRoute,
+    corsRoute
 ];
