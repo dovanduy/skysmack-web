@@ -2,22 +2,18 @@ import { StrIndex } from '@skysmack/framework';
 import { Validation } from '@skysmack/ng-dynamic-forms';
 import { PASS_CODES_AREA_KEY } from '@skysmack/packages-pass-codes';
 
-export class NgPersonsValidation extends Validation {
+export class NgPassCodesValidation extends Validation {
     public formErrors = {
-        firstName: '',
-        lastName: '',
-        displayName: ''
+        code: '',
+        description: ''
     };
 
     public validationMessages: StrIndex<{}> = {
         firstName: {
-            required: '',
+            required: ''
         },
-        lastName: {
-            required: '',
-        },
-        displayName: {
-            required: '',
+        description: {
+            required: ''
         }
     };
 

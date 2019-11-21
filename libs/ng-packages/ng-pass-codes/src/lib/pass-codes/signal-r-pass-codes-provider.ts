@@ -1,14 +1,14 @@
 import { SignalRProvider } from '@skysmack/signal-r';
 import { Inject, Injectable } from '@angular/core';
-import { NgPersonsActions } from './redux';
+import { NgPassCodesActions } from './redux';
 import { PASS_CODES_AREA_KEY } from '@skysmack/packages-pass-codes';
 
 @Injectable({ providedIn: 'root' })
-export class SignalRPersonProvider implements SignalRProvider {
+export class SignalRPassCodeProvider implements SignalRProvider {
     public name = PASS_CODES_AREA_KEY;
 
     constructor(
-        private actions: NgPersonsActions
+        private actions: NgPassCodesActions
     ) { }
 
     public messageProvided(packagePath: string, message: any): void {
