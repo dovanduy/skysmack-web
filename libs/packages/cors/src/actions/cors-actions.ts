@@ -65,9 +65,8 @@ export class CorsActions {
             meta: {
                 offline: {
                     effect: new Effect<string[]>(new EffectRequest<string[]>(
-                        packagePath,
-                        HttpMethod.DELETE,
-                        [domain]
+                        `${packagePath}?domains=${domain}`,
+                        HttpMethod.DELETE
                     )),
                     commit: new ReduxAction<any, { stateKey: string; value: string[] }>({
                         type: CORS_REDUX_KEY + CorsActions.DELETE_DOMAINS_SUCCESS,
