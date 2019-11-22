@@ -7,10 +7,11 @@ import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
 import { FieldsConfig, FieldProviders } from '@skysmack/ng-fields';
 import { LoadedPackage } from '@skysmack/ng-framework';
 import { SubDomainFieldComponent } from './components/sub-domain-field/sub-domain-field.component';
-import { Tenant } from './models/tenant';
+import { MultipleUsersFieldComponent } from './components/multiple-users-field/multiple-users-field.component';
+import { InstallTenant } from './models/install-tenant';
 
 @Injectable({ providedIn: 'root' })
-export class CommercialTenantsFieldsConfig extends FieldsConfig<Tenant, string>{
+export class CommercialTenantsFieldsConfig extends FieldsConfig<InstallTenant, string>{
     public validation = new CommercialTenantsValidation();
     public area = '';
     public formRules: FormRule[] = [
@@ -20,7 +21,7 @@ export class CommercialTenantsFieldsConfig extends FieldsConfig<Tenant, string>{
     constructor(public fieldProviders: FieldProviders) {
         super(fieldProviders, []);
     }
-    protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<Tenant, string>): Field[] {
+    protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<InstallTenant, string>): Field[] {
         const fields = [
             new Field({
                 component: StringFieldComponent,
@@ -47,6 +48,24 @@ export class CommercialTenantsFieldsConfig extends FieldsConfig<Tenant, string>{
                 order: 1,
                 sortable: true,
                 includeInForm: false
+            }),
+
+            new Field({
+                component: MultipleUsersFieldComponent,
+                value: entity ? entity.object.owners : undefined,
+                key: 'owners',
+                order: 1,
+                sortable: true,
+                includeInForm: true
+            }),
+
+            new Field({
+                component: StringFieldComponent,
+                value: entity ? entity.object.packages : undefined,
+                key: 'packages',
+                order: 1,
+                sortable: true,
+                includeInForm: true
             })
         ];
 
@@ -68,7 +87,7 @@ export class CommercialTenantsFieldsConfig extends FieldsConfig<Tenant, string>{
                     component: SelectFieldComponent,
                     value: entity ? entity.object.state : undefined,
                     key: 'state',
-                    extraOptions: [ { displayName: 'Running', value: 1 }, { displayName: 'Stopped', value: 2 } , { displayName: 'Deleted', value: 3 }  ],
+                    extraOptions: [{ displayName: 'Running', value: 1 }, { displayName: 'Stopped', value: 2 }, { displayName: 'Deleted', value: 3 }],
                     validators: [Validators.required],
                     order: 3,
                     sortable: true

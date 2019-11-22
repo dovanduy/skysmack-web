@@ -7,7 +7,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { CommercialTenantsService } from '../../services/commercial-tenants.service';
 import { CommercialTenantsFieldsConfig } from '../../commercial-tenants-fields-config';
 import { take, tap, map, switchMap } from 'rxjs/operators';
-import { Tenant } from '../../models/tenant';
+import { InstallTenant } from '../../models/install-tenant';
 
 @Component({
   selector: 'ss-commercial-tenants-edit',
@@ -30,7 +30,7 @@ export class CommercialTenantsEditComponent implements OnInit, OnDestroy {
     this.fields$ = this.activatedRoute.params.pipe(
       map(params => params.id),
       switchMap(id => this.service.getById(id)),
-      switchMap((response: HttpSuccessResponse<Tenant>) => this.fieldsConfig.getFields(null, toLocalObject(response.body)))
+      switchMap((response: HttpSuccessResponse<InstallTenant>) => this.fieldsConfig.getFields(null, toLocalObject(response.body)))
     );
   }
 

@@ -4,6 +4,8 @@ import { CommercialTenantsCreateComponent } from './commercial-tenants-create/co
 import { CommercialTenantsEditComponent } from './commercial-tenants-edit/commercial-tenants-edit.component';
 import { CommercialTenantsDetailsComponent } from './commercial-tenants-details/commercial-tenants-details.component';
 import { CommercialTenantsUsersComponent } from './commercial-tenants-users/commercial-tenants-users.component';
+import { SubDomainFieldComponent } from './sub-domain-field/sub-domain-field.component';
+import { MultipleUsersFieldComponent } from './multiple-users-field/multiple-users-field.component';
 
 export const commercialTenantsRoutes: Routes = [
   {
@@ -29,4 +31,9 @@ export const commercialTenantsComponents: any[] = [
   CommercialTenantsEditComponent,
   CommercialTenantsDetailsComponent,
   CommercialTenantsUsersComponent
+];
+
+export const commercialTenantsEntryComponents: any[] = [
+  SubDomainFieldComponent,
+  MultipleUsersFieldComponent
 ];

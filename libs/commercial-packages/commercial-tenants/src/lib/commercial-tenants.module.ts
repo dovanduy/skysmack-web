@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { CommercialTenantsRoutingModule } from './commercial-tenants-routing.module';
 import { HttpClientModule } from '@angular/common/http';
-import { commercialTenantsComponents } from './components/commercial-tenants-components';
+import { commercialTenantsComponents, commercialTenantsEntryComponents } from './components/commercial-tenants-components';
 import { DynamicFormsModule } from '@skysmack/portal-dynamic-forms';
 import { PortalFieldsModule } from '@skysmack/portal-fields';
 import { NgDynamicFormsModule } from '@skysmack/ng-dynamic-forms';
@@ -15,7 +15,6 @@ import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatCardModule } from '@angular/material/card';
-import { SubDomainFieldComponent } from './components/sub-domain-field/sub-domain-field.component';
 
 const material = [
   MatCardModule,
@@ -40,14 +39,14 @@ const material = [
   ],
   declarations: [
     ...commercialTenantsComponents,
-    SubDomainFieldComponent
+    ...commercialTenantsEntryComponents
   ],
-  exports: [    
-    SubDomainFieldComponent
+  exports: [
+    ...commercialTenantsEntryComponents
   ],
   providers: [],
   entryComponents: [
-    SubDomainFieldComponent
+    ...commercialTenantsEntryComponents
   ]
 })
 export class CommercialTenantsModule {

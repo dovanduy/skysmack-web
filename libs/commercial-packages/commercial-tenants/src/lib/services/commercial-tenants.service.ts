@@ -16,19 +16,19 @@ export class CommercialTenantsService {
 
 
     public get(): Observable<HttpSuccessResponse | HttpErrorResponse> {
-        return this.http.get<Tenant[]>(`${this.apiDomain.domain}/tenants`, { observe: 'response' }).pipe(
+        return this.http.get(`${this.apiDomain.domain}/tenants`, { observe: 'response' }).pipe(
             catchError((error) => of(error))
         );
     }
 
     public getById(id: string): Observable<HttpSuccessResponse | HttpErrorResponse> {
-        return this.http.get<Tenant[]>(`${this.apiDomain.domain}/tenants/${id}`, { observe: 'response' }).pipe(
+        return this.http.get(`${this.apiDomain.domain}/tenants/${id}`, { observe: 'response' }).pipe(
             catchError((error) => of(error))
         );
     }
 
     public add(record: Tenant): Observable<HttpSuccessResponse | HttpErrorResponse> {
-        return this.http.post<Tenant[]>(`${this.apiDomain.domain}/tenants`, [record], { observe: 'response' }).pipe(
+        return this.http.post(`${this.apiDomain.domain}/tenants`, [record], { observe: 'response' }).pipe(
             catchError((error) => of(error))
         );
     }
@@ -41,7 +41,7 @@ export class CommercialTenantsService {
 
 
     public update(record: Tenant): Observable<HttpSuccessResponse | HttpErrorResponse> {
-        return this.http.put<Tenant[]>(`${this.apiDomain.domain}/tenants`, [record], { observe: 'response' }).pipe(
+        return this.http.put(`${this.apiDomain.domain}/tenants`, [record], { observe: 'response' }).pipe(
             catchError((error) => of(error))
         );
     }

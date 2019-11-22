@@ -1,0 +1,17 @@
+<div *ngIf="field" [formGroup]="fh.form" class="install-tenant-container">
+  <!-- Email -->
+  <mat-form-field>
+    <input matInput type="email" [placeholder]="'Email' | translate" #emailInput />
+  </mat-form-field>
+
+  <!-- Password -->
+  <mat-form-field>
+    <input matInput type="password" [placeholder]="'Password' | translate" #passwordInput />
+  </mat-form-field>
+
+  <button mat-raised-button (click)="add()">Add</button>
+
+  <p *ngFor="let owner of owners">{{ owner.email }} <mat-icon (click)="remove(owner)">delete</mat-icon>
+  </p>
+
+</div>
