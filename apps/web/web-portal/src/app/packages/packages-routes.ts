@@ -24,6 +24,7 @@ import { siteminderRoute } from './siteminder-package-manifest';
 import { webhooksRoute } from './webhooks-package-manifest';
 import { templatesRoute } from './templates-package-manifest';
 import { corsRoute } from './cors-package-manifest';
+import { passCodesRoute } from './pass-codes-package-manifest';
 
 export const packagesRoutes = [
     packagesRoute,
@@ -51,5 +52,6 @@ export const packagesRoutes = [
     PBX_3CXRoute,
     webhooksRoute,
     templatesRoute,
-    corsRoute
+    corsRoute,
+    passCodesRoute
 ];

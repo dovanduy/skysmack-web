@@ -11,7 +11,7 @@ export class NgPassCodesActions extends RecordActionsBase<PassCodesAppState, NgR
 
     public getMessageParams(record: LocalObject<PassCode, number>): StrIndex<string> {
         return {
-            displayName: record.object.displayName
+            description: record.object.description
         };
     }
 }

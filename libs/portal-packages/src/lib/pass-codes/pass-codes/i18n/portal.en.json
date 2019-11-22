@@ -1,0 +1,109 @@
+{
+    "PASS_CODES": {
+        "FORM": {
+            "LABELS": {
+                "CODE": "Code",
+                "DESCRIPTION": "Description",
+                "VALIDFROM": "Valid from",
+                "VALIDTO": "Valid to",
+                "EXPRESSION": "Expression",
+                "DISABLED": "Disabled"
+            },
+            "PLACEHOLDERS": {
+                "CODE": "Code",
+                "DESCRIPTION": "Description",
+                "VALIDFROM": "Valid from",
+                "VALIDTO": "Valid to",
+                "EXPRESSION": "Expression",
+                "DISABLED": "Disabled"
+            },
+            "VALIDATION": {
+                "CODE": {
+                    "REQUIRED": "A code is required."
+                },
+                "DESCRIPTION": {
+                    "REQUIRED": "A Description is required."
+                },
+                "VALIDFROM": {
+                    "REQUIRED": "Valid from is required."
+                },
+                "VALIDTO": {
+                    "REQUIRED": "Valid to is required."
+                },
+                "EXPRESSION": {
+                    "REQUIRED": "Expression is required."
+                },
+                "DISABLED": {
+                    "REQUIRED": "Disabled is required."
+                }
+            }
+        },
+        "FIELDS": {
+            "CREATE": {
+                "ADD": "Add new field"
+            },
+            "EDIT": {
+                "EDITING": "Editing"
+            },
+            "INDEX": {
+                "ACTIONS": "Actions",
+                "CREATE": "Create new field",
+                "OTHER": "Other",
+                "BACK": "Back",
+                "FIELDS": "Fields",
+                "EDIT": "Edit"
+            }
+        },
+        "CREATE": {
+            "CREATE": "Create",
+            "BUTTON_CREATE": "Create"
+        },
+        "EDIT": {
+            "EDIT": "Edit",
+            "BUTTON_EDIT": "Update"
+        },
+        "INDEX": {
+            "PACKAGES": "Packages",
+            "CREATE": "Create",
+            "EDIT": "Edit",
+            "DELETE": "Delete",
+            "FIELDS": "Fields",
+            "FIELDS_TITLE": "(fields)",
+            "ITEM": "Item",
+            "MANAGE": "Manage",
+            "ACTIONS": "Actions"
+        },
+        "NOTIFICATIONS": {
+            "GET": {
+                "PAGED_ERROR": "Failed to get pass-codes ({{ httpErrorCode }}).",
+                "SINGLE_FAILURE": "Failed to get {{ displayName }} ({{ httpErrorCode }}).",
+                "FIELDS_FAILURE": "Failed to get fields for pass-codes ({{ httpErrorCode }}).",
+                "SINGLE_FIELD_FAILURE": "Failed to get {{ displayName }} field ({{ httpErrorCode }})."
+            },
+            "ADD": {
+                "SUCCESS": "Added {{ description }} succcessfully.",
+                "FAILURE": "Failed to add {{ description }} ({{ httpErrorCode }}).",
+                "FIELD_FAILURE": "Failed to add field for {{ description }} ({{ httpErrorCode }}).",
+                "FIELD_SUCCESS": "Added field for {{ description }} successfully."
+            },
+            "UPDATE": {
+                "SUCCESS": "Updated {{ description }} successfully.",
+                "FAILURE": "Failed to update {{ description }} ({{ httpErrorCode }}).",
+                "FIELD_SUCCESS": "Updated field for {{ description }} successfully.",
+                "FIELD_FAILURE": "Failed to update field for {{ description }} ({{ httpErrorCode }})"
+            },
+            "REMOVE": {
+                "SUCCESS": "Removed {{ description }} successfully.",
+                "FAILURE": "Failed to remove {{ description }} ({{ httpErrorCode }}).",
+                "FIELD_SUCCESS": "Removed field for {{ description }} succesfully.",
+                "FIELD_FAILURE": "Failed to remove field for {{ description }} ({{ httpErrorCode }})."
+            }
+        },
+        "QUEUE": {
+            "ADDING": "Adding {{ description }}",
+            "UPDATING": "Updating {{ description }}",
+            "DELETING": "Deleting {{ description }}",
+            "ERROR": "An error occured with {{ description }}. Correct and try again."
+        }
+    }
+}
