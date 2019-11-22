@@ -6,6 +6,8 @@ import { PassCodesDetailsComponent } from './pass-codes-details/pass-codes-detai
 import { PASS_CODES_AREA_KEY, PASS_CODES_ADDITIONAL_PATHS } from '@skysmack/packages-pass-codes';
 import { PassCodesDashboardComponent } from './pass-codes-dashboard/pass-codes-dashboard.component';
 import { getFieldsRoutes } from '@skysmack/portal-fields';
+import { SettingsComponent } from '@skysmack/portal-settings';
+import { RouteData } from '@skysmack/framework';
 
 export const passCodesRoutes: Routes = [
   {
@@ -15,6 +17,11 @@ export const passCodesRoutes: Routes = [
           { path: 'create', component: PassCodesCreateComponent, pathMatch: 'full' },
           { path: 'edit/:id', component: PassCodesEditComponent, pathMatch: 'full' },
           { path: 'details/:id', component: PassCodesDetailsComponent, pathMatch: 'full' },
+          {
+            path: 'settings', component: SettingsComponent, pathMatch: 'full', data: {
+              fieldsConfigToken: 'NgPassCodeLimitSettingsFieldsConfig'
+            } as RouteData
+          }
         ]
       },
       getFieldsRoutes(PASS_CODES_AREA_KEY, PASS_CODES_ADDITIONAL_PATHS)

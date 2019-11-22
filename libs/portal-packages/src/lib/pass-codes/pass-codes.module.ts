@@ -12,6 +12,8 @@ import { PortalFieldsModule } from '@skysmack/portal-fields';
 import { CoalescingComponentFactoryResolver, NgDashboardProviders } from '@skysmack/ng-framework';
 import { NgPassCodesDashboardProvider } from './ng-pass-codes-dashboard-provider';
 import { NgPassCodesMenuProvider } from './ng-pass-codes-menu-provider';
+import { NgPassCodeLimitSettingsFieldsConfig } from './pass-codes/ng-pass-code-limit-settings-fields-config';
+import { SettingsModule } from '@skysmack/portal-settings';
 
 @NgModule({
   imports: [
@@ -22,6 +24,7 @@ import { NgPassCodesMenuProvider } from './ng-pass-codes-menu-provider';
     DynamicFormsModule,
     PassCodesRoutingModule,
     PortalFieldsModule,
+    SettingsModule
   ],
   exports: [],
   declarations: [
@@ -30,7 +33,9 @@ import { NgPassCodesMenuProvider } from './ng-pass-codes-menu-provider';
   entryComponents: [
     ...passCodesEntryComponents
   ],
-  providers: []
+  providers: [
+    { provide: 'NgPassCodeLimitSettingsFieldsConfig', useClass: NgPassCodeLimitSettingsFieldsConfig },
+  ]
 })
 export class PassCodesModule {
   constructor(

@@ -71,7 +71,8 @@
             "FIELDS_TITLE": "(fields)",
             "ITEM": "Item",
             "MANAGE": "Manage",
-            "ACTIONS": "Actions"
+            "ACTIONS": "Actions",
+            "SETTINGS": "Settings"
         },
         "NOTIFICATIONS": {
             "GET": {
