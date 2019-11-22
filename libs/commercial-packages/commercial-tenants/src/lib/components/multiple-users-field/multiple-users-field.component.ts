@@ -21,7 +21,7 @@ export class MultipleUsersFieldComponent extends FieldBaseComponent<Field> imple
 
   public add() {
     const email = this.emailInput.nativeElement.value;
-    const password = this.emailInput.nativeElement.value;
+    const password = this.passwordInput.nativeElement.value;
 
     this.owners.push(new Owner({ email, password }));
 

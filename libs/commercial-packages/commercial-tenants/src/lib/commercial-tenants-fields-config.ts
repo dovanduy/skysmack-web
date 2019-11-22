@@ -9,6 +9,7 @@ import { LoadedPackage } from '@skysmack/ng-framework';
 import { SubDomainFieldComponent } from './components/sub-domain-field/sub-domain-field.component';
 import { MultipleUsersFieldComponent } from './components/multiple-users-field/multiple-users-field.component';
 import { InstallTenant } from './models/install-tenant';
+import { JSONFieldComponent } from './components/json-field/json-field.component';
 
 @Injectable({ providedIn: 'root' })
 export class CommercialTenantsFieldsConfig extends FieldsConfig<InstallTenant, string>{
@@ -60,7 +61,7 @@ export class CommercialTenantsFieldsConfig extends FieldsConfig<InstallTenant, s
             }),
 
             new Field({
-                component: StringFieldComponent,
+                component: JSONFieldComponent,
                 value: entity ? entity.object.packages : undefined,
                 key: 'packages',
                 order: 1,

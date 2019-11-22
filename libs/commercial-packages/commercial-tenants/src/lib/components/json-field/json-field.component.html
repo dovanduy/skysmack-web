@@ -1,0 +1,7 @@
+<ng-container *ngIf="field" [formGroup]="fh.form">
+  <p style="font-size:20px;margin:0;">Define packages</p>
+  <mat-form-field>
+    <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="5"
+      (input)="setValue($event)"></textarea>
+  </mat-form-field>
+</ng-container>
