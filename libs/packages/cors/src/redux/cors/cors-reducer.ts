@@ -23,7 +23,8 @@ export function corsReducer(state = new CorsState(), action: any, prefix: string
         case prefix + CorsActions.GET_DOMAINS_SUCCESS: {
             const castedAction: ReduxAction<{ packagePath: string, domains: string[] }> = action;
             const { domains, packagePath } = castedAction.payload;
-            newState[packagePath] = newState[packagePath] && newState[packagePath].concat(domains ? domains : []).filter((value, index, self) => self.indexOf(value) === index);
+            newState.domains[packagePath] = newState.domains[packagePath] ? newState.domains[packagePath] : [];
+            newState.domains[packagePath] = newState.domains[packagePath].concat(domains ? domains : []).filter((value, index, self) => self.indexOf(value) === index);
             return newState;
         }
         case prefix + CorsActions.GET_DOMAINS_FAILURE: {
@@ -36,7 +37,7 @@ export function corsReducer(state = new CorsState(), action: any, prefix: string
         case prefix + CorsActions.PUT_DOMAINS_SUCCESS: {
             const castedAction: ReduxAction<{ packagePath: string, domains: string[] }> = action;
             const { domains, packagePath } = castedAction.payload;
-            newState[packagePath] = newState[packagePath] && newState[packagePath].concat(domains ? domains : []).filter((value, index, self) => self.indexOf(value) === index);
+            newState.domains[packagePath] = newState.domains[packagePath] && newState.domains[packagePath].concat(domains ? domains : []).filter((value, index, self) => self.indexOf(value) === index);
             return newState;
         }
         case prefix + CorsActions.PUT_DOMAINS_FAILURE: {
@@ -49,7 +50,7 @@ export function corsReducer(state = new CorsState(), action: any, prefix: string
         case prefix + CorsActions.DELETE_DOMAINS_SUCCESS: {
             const castedAction: ReduxAction<{ packagePath: string, domains: string[] }> = action;
             const { domains, packagePath } = castedAction.payload;
-            newState[packagePath] = newState[packagePath] && newState[packagePath].filter(currentDomain => !domains.includes(currentDomain));
+            newState.domains[packagePath] = newState.domains[packagePath] && newState.domains[packagePath].filter(currentDomain => !domains.includes(currentDomain));
             return newState;
         }
         case prefix + CorsActions.DELETE_DOMAINS_FAILURE: {
