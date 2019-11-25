@@ -1,5 +1,6 @@
 <ng-container *ngIf="field" [formGroup]="fh.form">
   <p style="font-size:20px;margin:0;">Define packages</p>
+  <p *ngIf="error" style="color:red;">{{ error }}</p>
   <mat-form-field>
     <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="5"
       (input)="setValue($event)"></textarea>

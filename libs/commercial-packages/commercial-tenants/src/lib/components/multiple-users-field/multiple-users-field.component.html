@@ -1,4 +1,8 @@
 <div *ngIf="field" [formGroup]="fh.form" class="install-tenant-container">
+  <!-- Errors -->
+  <p *ngIf="errors && emailErrorMessage" style="color:red;">{{ emailErrorMessage }}</p>
+  <p *ngIf="errors && passwordErrorMessage" style="color:red;">{{ passwordErrorMessage }}</p>
+
   <!-- Email -->
   <mat-form-field>
     <input matInput type="email" [placeholder]="'Email' | translate" #emailInput />

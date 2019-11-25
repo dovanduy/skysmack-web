@@ -2,6 +2,9 @@ import { AbstractControl, ValidatorFn, ValidationErrors, FormGroup } from '@angu
 import * as _moment from 'moment';
 const moment = _moment;
 
+
+export const isEmailRegex = '.+@.+';
+
 /**
  * Contains static methods with custom validation rules.
  */
@@ -27,7 +30,7 @@ export class CustomValidators {
                     return error;
                 }
             }
-            
+
             if (confirmPasswordControl) {
                 confirmPasswordControl.setErrors(null);
             }
@@ -82,7 +85,7 @@ export class CustomValidators {
 
     public static validEmail(): ValidatorFn {
         return (emailControl: AbstractControl): ValidationErrors | null => {
-            const emailCriteria = new RegExp('.+@.+');
+            const emailCriteria = new RegExp(isEmailRegex);
             if (!emailCriteria.test(emailControl.value)) {
                 return { invalidEmail: true };
             } else {
