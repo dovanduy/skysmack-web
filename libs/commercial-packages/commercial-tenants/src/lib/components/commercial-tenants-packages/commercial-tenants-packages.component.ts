@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SubscriptionHandler, AvailablePackage } from '@skysmack/framework';
-import { tap, map } from 'rxjs/operators';
-import { of, Observable, BehaviorSubject } from 'rxjs';
+import { of, BehaviorSubject } from 'rxjs';
+import { convertObservableToBehaviorSubject } from '@skysmack/ng-framework';
 
 @Component({
   selector: 'ss-commercial-tenants-packages',
@@ -10,34 +10,40 @@ import { of, Observable, BehaviorSubject } from 'rxjs';
 })
 export class CommercialTenantsPackagesComponent implements OnInit {
   private subscriptionHandler = new SubscriptionHandler();
-  public noDepsPackages$: Observable<AvailablePackage[]>;
-  private availablePackages$: Observable<AvailablePackage[]>; 
-  public selectedPackages$ = new BehaviorSubject<AvailablePackage[]>([]);
+  private availablePackages$: BehaviorSubject<AvailablePackage[]>;
+  public selectedPackages: AvailablePackage[] = [null];
 
   constructor(
   ) { }
 
   ngOnInit() {
-    this.availablePackages$ = of(this.getMockData());
-
-    this.noDepsPackages$ = this.availablePackages$.pipe(
-      map(packages => packages.filter(_package => !_package.dependencyTypes || _package.dependencyTypes && _package.dependencyTypes.length === 0))
-    );
+    this.availablePackages$ = convertObservableToBehaviorSubject(of(this.getMockData()), []);
   }
 
   ngOnDestroy() {
     this.subscriptionHandler.unsubscribe();
   }
 
-  public selectPackage(availablePackage: AvailablePackage): void {
-    const selectedPackages = this.selectedPackages$.getValue();
-    this.selectedPackages$.next(selectedPackages.concat([availablePackage]));
+  public getDependentPackages(packageType: string): AvailablePackage[] {
+    if (!packageType || packageType.length === 0) {
+      return this.availablePackages$.getValue().filter(_package => !_package.dependencyTypes || _package.dependencyTypes && _package.dependencyTypes.length === 0);
+    } else {
+      return this.availablePackages$.getValue().filter(_package => _package.dependencyTypes && _package.dependencyTypes.includes(packageType));
+    }
   }
 
-  public getAvailableUpgrades(availablePackage: AvailablePackage): Observable<AvailablePackage[]> {
-    return this.availablePackages$.pipe(
-      map(packages => packages.filter(_package => _package.dependencyTypes && _package.dependencyTypes.includes(availablePackage.type)))
-    );
+  public clearPackageLists(index: number = 1): void {
+    if (index >= 1) {
+      this.selectedPackages = this.selectedPackages.slice(0, index);
+    }
+  }
+
+  public selectPackage(packageType: string, index: number) {
+    this.clearPackageLists(index + 1);
+    const availablePackages = this.availablePackages$.getValue();
+    // Do magic
+    const match = availablePackages.find(_package => _package.type === packageType);
+    this.selectedPackages = this.selectedPackages.concat([match]);
   }
 
   private getMockData(): AvailablePackage[] {
