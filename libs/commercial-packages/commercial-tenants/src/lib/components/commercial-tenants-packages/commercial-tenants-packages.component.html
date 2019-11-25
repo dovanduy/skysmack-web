@@ -1,10 +1,38 @@
 <div class="wrapper">
+  <!-- No deps packages -->
   <mat-card>
     <mat-list>
       <h3 mat-subheader>Packages</h3>
-      <mat-list-item>
-        <h4 mat-line>Package name</h4>
+      <mat-list-item *ngFor="let _package of noDepsPackages$ | async">
+        <h4 mat-line (click)="selectPackage(_package)">{{ _package.name }}</h4>
       </mat-list-item>
     </mat-list>
+  </mat-card>
+
+  <!-- Selected packages -->
+  <mat-card *ngFor="let _package of selectedPackages$ | async">
+    <!-- Details -->
+    <mat-card-header>
+      <mat-card-title>{{ _package.name }}</mat-card-title>
+      <mat-card-subtitle>{{ _package.description }}</mat-card-subtitle>
+    </mat-card-header>
+
+
+    <!-- Upgrades -->
+    <ng-container *ngIf="getAvailableUpgrades(_package) | async as upgrades">
+      <!-- Available upgrades -->
+      <mat-list *ngIf="upgrades && upgrades.length > 0">
+        <h3 mat-subheader>Upgrades</h3>
+        <mat-list-item *ngFor="let packageUpgrade of upgrades">
+          <h4 mat-line>{{ packageUpgrade.name }}</h4>
+        </mat-list-item>
+      </mat-list>
+
+      <!-- No upgrades -->
+      <mat-list *ngIf="!upgrades || upgrades.length === 0">
+        <h3 mat-subheader>No upgrades available</h3>
+      </mat-list>
+    </ng-container>
+
   </mat-card>
 </div>
