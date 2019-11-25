@@ -19,7 +19,7 @@ export class JSONFieldComponent extends FieldBaseComponent<Field> implements OnI
     if (textAreaString && textAreaString.length > 0) {
       try {
         this.error = null;
-        const processed = textAreaString.replace(/\n/g, '').replace(/"\\"/g, '');
+        const processed = textAreaString.replace(/\n/g, '');
         this.setFieldValue(JSON.parse(processed));
       } catch {
         this.error = 'Formatting not correct. Please use valid JSON format.';
