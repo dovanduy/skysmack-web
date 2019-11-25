@@ -7,6 +7,7 @@ import { CommercialTenantsUsersComponent } from './commercial-tenants-users/comm
 import { SubDomainFieldComponent } from './sub-domain-field/sub-domain-field.component';
 import { MultipleUsersFieldComponent } from './multiple-users-field/multiple-users-field.component';
 import { JSONFieldComponent } from './json-field/json-field.component';
+import { CommercialTenantsPackagesComponent } from './commercial-tenants-packages/commercial-tenants-packages.component';
 
 export const commercialTenantsRoutes: Routes = [
   {
@@ -22,7 +23,10 @@ export const commercialTenantsRoutes: Routes = [
     path: 'details/:id', component: CommercialTenantsDetailsComponent
   },
   {
-    path: 'tenant-users/:userId', component: CommercialTenantsUsersComponent
+    path: 'tenant-users/:userId', component: CommercialTenantsUsersComponent,
+  },
+  {
+    path: 'packages', component: CommercialTenantsPackagesComponent
   }
 ];
 
@@ -31,7 +35,8 @@ export const commercialTenantsComponents: any[] = [
   CommercialTenantsCreateComponent,
   CommercialTenantsEditComponent,
   CommercialTenantsDetailsComponent,
-  CommercialTenantsUsersComponent
+  CommercialTenantsUsersComponent,
+  CommercialTenantsPackagesComponent
 ];
 
 export const commercialTenantsEntryComponents: any[] = [

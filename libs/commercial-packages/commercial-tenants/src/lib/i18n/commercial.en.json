@@ -8,6 +8,7 @@
         "TITLE": "Tenants",
         "CREATE": "Create",
         "CREATETENANT": "Create tenant",
+        "PACKAGES": "Packages",
         "EDIT": "Edit",
         "EDITTENANT": "Edit tenant",
         "DETAILS": "Details",
