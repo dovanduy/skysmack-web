@@ -95,6 +95,9 @@
       "@skysmack/packages-persons": [
         "./dist/@skysmack/packages-persons"
       ],
+      "@skysmack/packages-invoices-products": [
+        "./dist/@skysmack/packages-invoices-products"
+      ],
       "@skysmack/packages-emails-smtp": [
         "./dist/@skysmack/packages-emails-smtp"
       ],

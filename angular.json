@@ -347,6 +347,39 @@
         }
       }
     },
+    "packages-invoices-products": {
+      "root": "libs/packages/packages-invoices-products",
+      "sourceRoot": "libs/packages/packages-invoices-products/src",
+      "projectType": "library",
+      "prefix": "skysmack",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/packages/packages-invoices-products/tsconfig.lib.json",
+              "libs/packages/packages-invoices-products/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/packages/packages-invoices-products/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/packages/packages-invoices-products/jest.config.js",
+            "tsConfig": "libs/packages/packages-invoices-products/tsconfig.spec.json"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/schematics:component": {
+          "styleext": "scss"
+        }
+      }
+    },
     "packages-emails-smtp": {
       "root": "libs/packages/packages-emails-smtp",
       "sourceRoot": "libs/packages/packages-emails-smtp/src",
@@ -1033,40 +1066,6 @@
           "options": {
             "jestConfig": "libs/shared/signal-r/jest.config.js",
             "tsConfig": "libs/shared/signal-r/tsconfig.spec.json"
-          }
-        }
-      },
-      "schematics": {
-        "@nrwl/angular:component": {
-          "styleext": "scss"
-        }
-      }
-    },
-    "packages-invoices-products": {
-      "projectType": "library",
-      "root": "libs/packages/invoices-products",
-      "sourceRoot": "libs/packages/invoices-products/src",
-      "prefix": "skysmack",
-      "architect": {
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/packages/invoices-products/tsconfig.lib.json",
-              "libs/packages/invoices-products/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/packages/invoices-products/**"
-            ]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/packages/invoices-products/jest.config.js",
-            "tsConfig": "libs/packages/invoices-products/tsconfig.spec.json",
-            "setupFile": "libs/packages/invoices-products/src/test-setup.ts"
           }
         }
       },
