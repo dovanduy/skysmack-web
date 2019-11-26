@@ -1,24 +1,13 @@
 <div class="wrapper">
-  <!-- No package type selected packages -->
-  <ng-container *ngIf="!selectedPackage">
-    <mat-card>
+  <!-- Loading -->
+  <ng-container *ngIf="!selectedPackage && !couldNotFindPackage">
+    <h3>Loading...</h3>
+  </ng-container>
 
-      <mat-card-header>
-        <mat-card-title>Packages</mat-card-title>
-      </mat-card-header>
-
-      <mat-card-content>
-        <mat-list>
-          <ng-container *ngIf="getDependentPackages() as packages">
-            <mat-list-item *ngFor="let _package of packages">
-              <h4 mat-line style="cursor:pointer;" (click)="selectPackage(_package)">
-                {{ _package.name }}</h4>
-            </mat-list-item>
-          </ng-container>
-        </mat-list>
-      </mat-card-content>
-
-    </mat-card>
+  <!-- Package not found -->
+  <ng-container *ngIf="!selectedPackage && couldNotFindPackage">
+    <h3>Package not found</h3>
+    <a [routerLink]="['/', 'tenants', 'packages']">Go back to packages overview</a>
   </ng-container>
 
   <!-- Package type selected -->
@@ -40,7 +29,8 @@
             <h3 mat-subheader *ngIf="packages && packages.length > 0">Upgrades</h3>
             <h3 mat-subheader *ngIf="!packages || packages.length === 0">Cannot be upgraded.</h3>
             <mat-list-item *ngFor="let _package of packages">
-              <h4 mat-line style="cursor:pointer;" (click)="selectPackage(_package)">
+              <h4 mat-line style="cursor:pointer;"
+                [routerLink]="['/', 'tenants', 'packages', _package.category, _package.name]">
                 {{ _package.name }}</h4>
             </mat-list-item>
           </ng-container>
@@ -48,6 +38,5 @@
       </mat-card-content>
 
     </mat-card>
-
   </ng-container>
 </div>

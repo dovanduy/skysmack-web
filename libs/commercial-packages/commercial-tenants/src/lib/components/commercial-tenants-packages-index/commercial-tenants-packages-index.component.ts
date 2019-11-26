@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { CommercialPackagesService } from '../../services';
 import { map } from 'rxjs/operators';
 import { CommercialAvailablePackage } from '../../models/commercial-available-package';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'ss-commercial-tenants-packages-index',
@@ -14,7 +15,8 @@ export class CommercialTenantsPackagesIndexComponent implements OnInit {
   public availablePackages$: Observable<CommercialAvailablePackage[]>;
 
   constructor(
-    private packagesService: CommercialPackagesService
+    private packagesService: CommercialPackagesService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -25,6 +27,6 @@ export class CommercialTenantsPackagesIndexComponent implements OnInit {
   }
 
   public selectPackage(_package: CommercialAvailablePackage) {
-    // Navigate here
+    this.router.navigate(['/', 'tenants', 'packages', _package.category, _package.name])
   }
 }

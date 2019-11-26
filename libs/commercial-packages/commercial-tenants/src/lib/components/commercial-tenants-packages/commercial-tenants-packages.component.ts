@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { SubscriptionHandler, HttpSuccessResponse } from '@skysmack/framework';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, combineLatest } from 'rxjs';
 import { convertObservableToBehaviorSubject } from '@skysmack/ng-framework';
 import { CommercialPackagesService } from '../../services';
-import { map } from 'rxjs/operators';
+import { map, tap, switchMap, filter } from 'rxjs/operators';
 import { CommercialAvailablePackage } from '../../models/commercial-available-package';
 import { DevelopmentState } from '../../models/development-state';
+import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'ss-commercial-tenants-packages',
@@ -16,13 +17,35 @@ export class CommercialTenantsPackagesComponent implements OnInit {
   private subscriptionHandler = new SubscriptionHandler();
   private availablePackages$: BehaviorSubject<CommercialAvailablePackage[]>;
   public selectedPackage: CommercialAvailablePackage;
+  public couldNotFindPackage: boolean;
 
   constructor(
-    private packagesService: CommercialPackagesService
+    private packagesService: CommercialPackagesService,
+    private router: Router,
+    private activatedRoute: ActivatedRoute
   ) { }
 
   ngOnInit() {
     this.availablePackages$ = convertObservableToBehaviorSubject(this.packagesService.getAvailablePackages().pipe(map((x: HttpSuccessResponse<CommercialAvailablePackage>) => x.body as CommercialAvailablePackage[])), []);
+
+    const updatePackage$ = combineLatest([
+      this.activatedRoute.params,
+      this.availablePackages$
+    ]).pipe(
+      tap(([params, availablePackages]) => {
+        this.selectedPackage = availablePackages.find(_package => _package.name === params.name && _package.category === params.category);
+        this.selectedPackage ? this.couldNotFindPackage = false : this.couldNotFindPackage = true;
+      })
+    );
+
+    // Initial navigation
+    this.subscriptionHandler.register(updatePackage$.subscribe());
+
+    // Subsequent navigation
+    this.subscriptionHandler.register(this.router.events.pipe(
+      filter(x => x instanceof NavigationEnd),
+      switchMap(() => updatePackage$),
+    ).subscribe());
   }
 
   ngOnDestroy() {
@@ -30,15 +53,7 @@ export class CommercialTenantsPackagesComponent implements OnInit {
   }
 
   public getDependentPackages(packageType: string): CommercialAvailablePackage[] {
-    if (!packageType || packageType.length === 0) {
-      return this.availablePackages$.getValue().filter(_package => !_package.dependencyTypes || _package.dependencyTypes && _package.dependencyTypes.length === 0);
-    } else {
-      return this.availablePackages$.getValue().filter(_package => _package.dependencyTypes && _package.dependencyTypes.includes(packageType));
-    }
-  }
-
-  public selectPackage(_package: CommercialAvailablePackage) {
-    this.selectedPackage = _package;
+    return this.availablePackages$.getValue().filter(_package => _package.dependencyTypes && _package.dependencyTypes.includes(packageType));
   }
 
   public getDevelopmentState(state: number): string {
