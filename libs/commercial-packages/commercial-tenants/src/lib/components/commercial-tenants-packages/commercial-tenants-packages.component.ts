@@ -5,7 +5,7 @@ import { convertObservableToBehaviorSubject } from '@skysmack/ng-framework';
 import { CommercialPackagesService } from '../../services';
 import { map } from 'rxjs/operators';
 import { CommercialAvailablePackage } from '../../models/commercial-available-package';
-import { DevelopmentState } from '../../models';
+import { DevelopmentState } from '../../models/development-state';
 
 @Component({
   selector: 'ss-commercial-tenants-packages',
@@ -15,7 +15,7 @@ import { DevelopmentState } from '../../models';
 export class CommercialTenantsPackagesComponent implements OnInit {
   private subscriptionHandler = new SubscriptionHandler();
   private availablePackages$: BehaviorSubject<CommercialAvailablePackage[]>;
-  public selectedPackages: CommercialAvailablePackage[] = [null];
+  public selectedPackage: CommercialAvailablePackage;
 
   constructor(
     private packagesService: CommercialPackagesService
@@ -37,18 +37,8 @@ export class CommercialTenantsPackagesComponent implements OnInit {
     }
   }
 
-  public clearPackageLists(index: number = 1): void {
-    if (index >= 1) {
-      this.selectedPackages = this.selectedPackages.slice(0, index);
-    }
-  }
-
-  public selectPackage(packageType: string, index: number) {
-    this.clearPackageLists(index + 1);
-    const availablePackages = this.availablePackages$.getValue();
-    // Do magic
-    const match = availablePackages.find(_package => _package.type === packageType);
-    this.selectedPackages = this.selectedPackages.concat([match]);
+  public selectPackage(_package: CommercialAvailablePackage) {
+    this.selectedPackage = _package;
   }
 
   public getDevelopmentState(state: number): string {
