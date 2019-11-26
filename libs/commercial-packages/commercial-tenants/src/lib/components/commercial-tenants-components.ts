@@ -8,6 +8,7 @@ import { SubDomainFieldComponent } from './sub-domain-field/sub-domain-field.com
 import { MultipleUsersFieldComponent } from './multiple-users-field/multiple-users-field.component';
 import { JSONFieldComponent } from './json-field/json-field.component';
 import { CommercialTenantsPackagesComponent } from './commercial-tenants-packages/commercial-tenants-packages.component';
+import { CommercialTenantsPackagesIndexComponent } from './commercial-tenants-packages-index/commercial-tenants-packages-index.component';
 
 export const commercialTenantsRoutes: Routes = [
   {
@@ -26,7 +27,10 @@ export const commercialTenantsRoutes: Routes = [
     path: 'tenant-users/:userId', component: CommercialTenantsUsersComponent,
   },
   {
-    path: 'packages', component: CommercialTenantsPackagesComponent
+    path: 'packages', component: CommercialTenantsPackagesIndexComponent
+  },
+  {
+    path: 'packages/:category/:name', component: CommercialTenantsPackagesComponent
   }
 ];
 
@@ -36,6 +40,7 @@ export const commercialTenantsComponents: any[] = [
   CommercialTenantsEditComponent,
   CommercialTenantsDetailsComponent,
   CommercialTenantsUsersComponent,
+  CommercialTenantsPackagesIndexComponent,
   CommercialTenantsPackagesComponent
 ];
 

@@ -7,14 +7,16 @@
         <mat-card-title>Packages</mat-card-title>
       </mat-card-header>
 
-      <mat-list>
-        <ng-container *ngIf="getDependentPackages() as packages">
-          <mat-list-item *ngFor="let _package of packages">
-            <h4 mat-line style="cursor:pointer;" (click)="selectPackage(_package)">
-              {{ _package.name }}</h4>
-          </mat-list-item>
-        </ng-container>
-      </mat-list>
+      <mat-card-content>
+        <mat-list>
+          <ng-container *ngIf="getDependentPackages() as packages">
+            <mat-list-item *ngFor="let _package of packages">
+              <h4 mat-line style="cursor:pointer;" (click)="selectPackage(_package)">
+                {{ _package.name }}</h4>
+            </mat-list-item>
+          </ng-container>
+        </mat-list>
+      </mat-card-content>
 
     </mat-card>
   </ng-container>
@@ -46,49 +48,6 @@
       </mat-card-content>
 
     </mat-card>
+
   </ng-container>
-
-
-
-
-
-
-  <!-- <mat-card *ngFor="let selectedPackage of selectedPackages; let selectedPackageIndex = index">
-    <mat-card-header *ngIf="selectedPackage">
-      <mat-card-title>{{ selectedPackage.name }}
-        <button mat-icon-button (click)="clearPackageLists(selectedPackageIndex)">
-          <mat-icon>close</mat-icon>
-        </button>
-      </mat-card-title>
-      <mat-card-subtitle>{{ selectedPackage.description }}</mat-card-subtitle>
-    </mat-card-header>
-
-    <mat-card-content *ngIf="selectedPackage">
-      <p>Category: {{ selectedPackage.category }}</p>
-      <p>State: {{ getDevelopmentState(selectedPackage.state) }}</p>
-      <p>Required: {{ selectedPackage.required ? 'Yes' : 'No'}}</p>
-      <p>Multiple installs: {{ selectedPackage.multipleInstalls ? 'Yes' : 'No' }}</p>
-    </mat-card-content>
-
-    <mat-list>
-      <h3 mat-subheader *ngIf="!selectedPackage">Packages</h3>
-
-      <ng-container *ngIf="getDependentPackages(selectedPackage && selectedPackage.type) as packages">
-        <h3 mat-subheader *ngIf="packages.length > 0">Upgrades</h3>
-
-        <ng-container *ngIf="packages && packages.length > 0">
-          <mat-list-item *ngFor="let _package of packages">
-            <h4 mat-line style="cursor:pointer;" (click)="selectPackage(_package.type, selectedPackageIndex)">
-              {{ _package.name }}</h4>
-          </mat-list-item>
-        </ng-container>
-
-        <ng-container *ngIf="packages && packages.length === 0">
-          <mat-list-item>
-            <h4 mat-line>No upgrades available</h4>
-          </mat-list-item>
-        </ng-container>
-      </ng-container>
-    </mat-list>
-  </mat-card> -->
 </div>
