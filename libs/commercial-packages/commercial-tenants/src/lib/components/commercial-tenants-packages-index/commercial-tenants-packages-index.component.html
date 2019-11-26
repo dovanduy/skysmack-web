@@ -10,7 +10,8 @@
       <input matInput [placeholder]="'Search for a package' | translate" aria-label="Package"
         [matAutocomplete]="availablePackagesAutoControl" [formControl]="availablePackagesAutoCompleteControl">
       <mat-autocomplete #availablePackagesAutoControl="matAutocomplete" [displayWith]="availablePackageDisplayFn">
-        <mat-option *ngFor="let availablePackage of filteredAvailablePackages$ | async" [value]="availablePackage">
+        <mat-option *ngFor="let availablePackage of filteredAvailablePackages$ | async" [value]="availablePackage"
+          [routerLink]="['/', 'tenants', 'packages', availablePackage.category, availablePackage.name]">
           <span>{{ availablePackage.name}}</span>
         </mat-option>
       </mat-autocomplete>
@@ -18,7 +19,7 @@
 
     <mat-card-content>
       <mat-list>
-        <mat-list-item *ngFor="let _package of availablePackages$ | async">
+        <mat-list-item *ngFor="let _package of noDepsAvailablePackages$ | async">
           <h4 mat-line style="cursor:pointer;" (click)="selectPackage(_package)">
             {{ _package.name }}</h4>
         </mat-list-item>
