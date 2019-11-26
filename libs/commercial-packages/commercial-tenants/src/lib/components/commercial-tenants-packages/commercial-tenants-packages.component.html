@@ -10,6 +10,13 @@
       <mat-card-subtitle>{{ selectedPackage.description }}</mat-card-subtitle>
     </mat-card-header>
 
+    <mat-card-content *ngIf="selectedPackage">
+      <p>Category: {{ selectedPackage.category }}</p>
+      <p>State: {{ getDevelopmentState(selectedPackage.state) }}</p>
+      <p>Required: {{ selectedPackage.required ? 'Yes' : 'No'}}</p>
+      <p>Multiple installs: {{ selectedPackage.multipleInstalls ? 'Yes' : 'No' }}</p>
+    </mat-card-content>
+
     <mat-list>
       <h3 mat-subheader *ngIf="!selectedPackage">Packages</h3>
 

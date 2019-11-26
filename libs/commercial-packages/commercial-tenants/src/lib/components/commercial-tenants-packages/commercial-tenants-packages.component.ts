@@ -5,6 +5,7 @@ import { convertObservableToBehaviorSubject } from '@skysmack/ng-framework';
 import { CommercialPackagesService } from '../../services';
 import { map } from 'rxjs/operators';
 import { CommercialAvailablePackage } from '../../models/commercial-available-package';
+import { DevelopmentState } from '../../models';
 
 @Component({
   selector: 'ss-commercial-tenants-packages',
@@ -48,5 +49,20 @@ export class CommercialTenantsPackagesComponent implements OnInit {
     // Do magic
     const match = availablePackages.find(_package => _package.type === packageType);
     this.selectedPackages = this.selectedPackages.concat([match]);
+  }
+
+  public getDevelopmentState(state: number): string {
+    switch (state) {
+      case DevelopmentState.Alpha:
+        return 'Alpha';
+      case DevelopmentState.Beta:
+        return 'Beta';
+      case DevelopmentState.Obsolete:
+        return 'Obsolete';
+      case DevelopmentState.Stable:
+        return 'Stable';
+      default:
+        return '';
+    }
   }
 }
