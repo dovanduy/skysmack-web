@@ -95,6 +95,12 @@
       "@skysmack/packages-persons": [
         "./dist/@skysmack/packages-persons"
       ],
+      "@skysmack/packages-invoices-products": [
+        "./dist/@skysmack/packages-invoices-products"
+      ],
+      "@skysmack/packages-emails-smtp": [
+        "./dist/@skysmack/packages-emails-smtp"
+      ],
       "@skysmack/packages-pass-codes": [
         "./dist/@skysmack/packages-pass-codes"
       ],
@@ -140,7 +146,7 @@
       "@skysmack/ng-emails": [
         "libs/ng-packages/ng-emails"
       ],
-      "@skysmackng-email-smtp": [
+      "@skysmack/ng-email-smtp": [
         "libs/ng-packages/ng-email-smtp"
       ],
       "@skysmack/ng-identities": [
