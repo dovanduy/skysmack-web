@@ -18,6 +18,7 @@ export class CommercialTenantsPackagesComponent implements OnInit {
   private availablePackages$: BehaviorSubject<CommercialAvailablePackage[]>;
   public selectedPackage: CommercialAvailablePackage;
   public couldNotFindPackage: boolean;
+  public dependencies: CommercialAvailablePackage[];
 
   constructor(
     private packagesService: CommercialPackagesService,
@@ -35,6 +36,15 @@ export class CommercialTenantsPackagesComponent implements OnInit {
       tap(([params, availablePackages]) => {
         this.selectedPackage = availablePackages.find(_package => _package.name === params.name && _package.category === params.category);
         this.selectedPackage ? this.couldNotFindPackage = false : this.couldNotFindPackage = true;
+
+        // Clickable deps
+        if (this.selectedPackage && this.selectedPackage.dependencyTypes && this.selectedPackage.dependencyTypes.length > 0) {
+          this.dependencies = this.selectedPackage.dependencyTypes.map(depType => {
+            return availablePackages.find(_package => _package.type == depType);
+          }).filter(x => x);
+        } else {
+          this.dependencies = undefined;
+        }
       })
     );
 

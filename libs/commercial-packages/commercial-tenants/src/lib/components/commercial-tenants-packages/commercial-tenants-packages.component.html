@@ -23,6 +23,8 @@
         <p>State: {{ getDevelopmentState(selectedPackage.state) }}</p>
         <p>Required: {{ selectedPackage.required ? 'Yes' : 'No'}}</p>
         <p>Multiple installs: {{ selectedPackage.multipleInstalls ? 'Yes' : 'No' }}</p>
+        <p *ngIf="dependencies">Dependencies: <a *ngFor="let dep of dependencies"
+            [routerLink]="['/', 'tenants', 'packages', dep.category, dep.name]">{{ dep.name }}</a></p>
 
         <mat-list>
           <ng-container *ngIf="getDependentPackages(selectedPackage.type) as packages">
