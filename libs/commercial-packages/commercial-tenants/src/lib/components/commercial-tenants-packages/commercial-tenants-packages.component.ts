@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { SubscriptionHandler, AvailablePackage, HttpSuccessResponse } from '@skysmack/framework';
-import { of, BehaviorSubject } from 'rxjs';
+import { SubscriptionHandler, HttpSuccessResponse } from '@skysmack/framework';
+import { BehaviorSubject } from 'rxjs';
 import { convertObservableToBehaviorSubject } from '@skysmack/ng-framework';
 import { CommercialPackagesService } from '../../services';
-import { tap, map } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
+import { CommercialAvailablePackage } from '../../models/commercial-available-package';
 
 @Component({
   selector: 'ss-commercial-tenants-packages',
@@ -12,22 +13,22 @@ import { tap, map } from 'rxjs/operators';
 })
 export class CommercialTenantsPackagesComponent implements OnInit {
   private subscriptionHandler = new SubscriptionHandler();
-  private availablePackages$: BehaviorSubject<AvailablePackage[]>;
-  public selectedPackages: AvailablePackage[] = [null];
+  private availablePackages$: BehaviorSubject<CommercialAvailablePackage[]>;
+  public selectedPackages: CommercialAvailablePackage[] = [null];
 
   constructor(
     private packagesService: CommercialPackagesService
   ) { }
 
   ngOnInit() {
-    this.availablePackages$ = convertObservableToBehaviorSubject(this.packagesService.getAvailablePackages().pipe(map((x: HttpSuccessResponse) => x.body as AvailablePackage[])), []);
+    this.availablePackages$ = convertObservableToBehaviorSubject(this.packagesService.getAvailablePackages().pipe(map((x: HttpSuccessResponse<CommercialAvailablePackage>) => x.body as CommercialAvailablePackage[])), []);
   }
 
   ngOnDestroy() {
     this.subscriptionHandler.unsubscribe();
   }
 
-  public getDependentPackages(packageType: string): AvailablePackage[] {
+  public getDependentPackages(packageType: string): CommercialAvailablePackage[] {
     if (!packageType || packageType.length === 0) {
       return this.availablePackages$.getValue().filter(_package => !_package.dependencyTypes || _package.dependencyTypes && _package.dependencyTypes.length === 0);
     } else {

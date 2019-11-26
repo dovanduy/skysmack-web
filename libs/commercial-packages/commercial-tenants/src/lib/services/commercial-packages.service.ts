@@ -3,6 +3,7 @@ import { ApiDomain, API_DOMAIN_INJECTOR_TOKEN, HttpErrorResponse, HttpSuccessRes
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { CommercialAvailablePackage } from '../models/commercial-available-package';
 
 @Injectable({ providedIn: 'root' })
 export class CommercialPackagesService {
@@ -13,7 +14,7 @@ export class CommercialPackagesService {
     ) { }
 
 
-    public getAvailablePackages(): Observable<HttpSuccessResponse | HttpErrorResponse> {
+    public getAvailablePackages(): Observable<HttpSuccessResponse<CommercialAvailablePackage> | HttpErrorResponse> {
         return this.http.get(`${this.apiDomain.domain}/packages`, { observe: 'response' }).pipe(
             catchError((error) => of(error))
         );
