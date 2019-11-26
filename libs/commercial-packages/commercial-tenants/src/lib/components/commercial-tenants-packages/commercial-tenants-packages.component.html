@@ -12,6 +12,9 @@
 
   <!-- Package type selected -->
   <ng-container *ngIf="selectedPackage">
+    <a [routerLink]="['/', 'tenants', 'packages']">Packages overview</a>
+    <br />
+    <br />
     <mat-card>
 
       <mat-card-header>

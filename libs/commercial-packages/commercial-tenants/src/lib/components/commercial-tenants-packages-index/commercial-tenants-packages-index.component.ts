@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpSuccessResponse } from '@skysmack/framework';
-import { Observable } from 'rxjs';
+import { Observable, combineLatest } from 'rxjs';
 import { CommercialPackagesService } from '../../services';
-import { map } from 'rxjs/operators';
+import { map, startWith } from 'rxjs/operators';
 import { CommercialAvailablePackage } from '../../models/commercial-available-package';
 import { Router } from '@angular/router';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'ss-commercial-tenants-packages-index',
@@ -13,6 +14,8 @@ import { Router } from '@angular/router';
 })
 export class CommercialTenantsPackagesIndexComponent implements OnInit {
   public availablePackages$: Observable<CommercialAvailablePackage[]>;
+  public filteredAvailablePackages$: Observable<CommercialAvailablePackage[]>;
+  public availablePackagesAutoCompleteControl = new FormControl();
 
   constructor(
     private packagesService: CommercialPackagesService,
@@ -24,9 +27,27 @@ export class CommercialTenantsPackagesIndexComponent implements OnInit {
       map((x: HttpSuccessResponse<CommercialAvailablePackage>) => x.body as CommercialAvailablePackage[]),
       map(packages => packages.filter(_package => !_package.dependencyTypes || _package.dependencyTypes && _package.dependencyTypes.length === 0))
     );
+
+    this.filteredAvailablePackages$ = combineLatest(
+      this.availablePackagesAutoCompleteControl.valueChanges.pipe(startWith('')),
+      this.availablePackages$
+    ).pipe(
+      map(([searchInput, lodgingTypes]) => searchInput && searchInput.length > 0 ? this.filterLodgings(searchInput, lodgingTypes) : lodgingTypes)
+    );
   }
 
   public selectPackage(_package: CommercialAvailablePackage) {
     this.router.navigate(['/', 'tenants', 'packages', _package.category, _package.name])
+  }
+
+  public availablePackageDisplayFn(availablePackage: CommercialAvailablePackage): string {
+    return availablePackage ? availablePackage && availablePackage.name : '';
+  }
+
+  private filterLodgings(searchInput: string, availablePackage: CommercialAvailablePackage[]): CommercialAvailablePackage[] {
+    if (typeof (searchInput) === 'string') {
+      return availablePackage.map(availablePackage => ({ availablePackage, hit: availablePackage.name.toLowerCase().indexOf(searchInput.toLowerCase()) })).filter(availablePackageHit => availablePackageHit.hit >= 0).sort((a, b) => a.hit - b.hit).map(availablePackageHit => availablePackageHit.availablePackage);
+    }
+    return availablePackage;
   }
 }

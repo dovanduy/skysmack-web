@@ -5,6 +5,17 @@
       <mat-card-title>Packages</mat-card-title>
     </mat-card-header>
 
+    <!-- Search -->
+    <mat-form-field>
+      <input matInput [placeholder]="'Search for a package' | translate" aria-label="Package"
+        [matAutocomplete]="availablePackagesAutoControl" [formControl]="availablePackagesAutoCompleteControl">
+      <mat-autocomplete #availablePackagesAutoControl="matAutocomplete" [displayWith]="availablePackageDisplayFn">
+        <mat-option *ngFor="let availablePackage of filteredAvailablePackages$ | async" [value]="availablePackage">
+          <span>{{ availablePackage.name}}</span>
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+
     <mat-card-content>
       <mat-list>
         <mat-list-item *ngFor="let _package of availablePackages$ | async">
