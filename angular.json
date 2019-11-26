@@ -347,6 +347,39 @@
         }
       }
     },
+    "packages-emails-smtp": {
+      "root": "libs/packages/packages-emails-smtp",
+      "sourceRoot": "libs/packages/packages-emails-smtp/src",
+      "projectType": "library",
+      "prefix": "skysmack",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/packages/packages-emails-smtp/tsconfig.lib.json",
+              "libs/packages/packages-emails-smtp/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/packages/packages-emails-smtp/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/packages/packages-emails-smtp/jest.config.js",
+            "tsConfig": "libs/packages/packages-emails-smtp/tsconfig.spec.json"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/schematics:component": {
+          "styleext": "scss"
+        }
+      }
+    },
     "packages-pass-codes": {
       "root": "libs/packages/packages-pass-codes",
       "sourceRoot": "libs/packages/packages-pass-codes/src",
@@ -967,40 +1000,6 @@
           "options": {
             "jestConfig": "libs/packages/emails/jest.config.js",
             "tsConfig": "libs/packages/emails/tsconfig.spec.json"
-          }
-        }
-      },
-      "schematics": {
-        "@nrwl/angular:component": {
-          "styleext": "scss"
-        }
-      }
-    },
-    "packages-emails-smtp": {
-      "projectType": "library",
-      "root": "libs/packages/emails-smtp",
-      "sourceRoot": "libs/packages/emails-smtp/src",
-      "prefix": "skysmack",
-      "architect": {
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/packages/emails-smtp/tsconfig.lib.json",
-              "libs/packages/emails-smtp/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/packages/emails-smtp/**"
-            ]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/packages/emails-smtp/jest.config.js",
-            "tsConfig": "libs/packages/emails-smtp/tsconfig.spec.json",
-            "setupFile": "libs/packages/emails-smtp/src/test-setup.ts"
           }
         }
       },
