@@ -30,6 +30,9 @@ export const commercialTenantsRoutes: Routes = [
     path: 'packages', component: CommercialTenantsPackagesIndexComponent
   },
   {
+    path: 'packages/:category', component: CommercialTenantsPackagesIndexComponent
+  },
+  {
     path: 'packages/:category/:name', component: CommercialTenantsPackagesComponent
   }
 ];

@@ -16,7 +16,7 @@ import { TenantStates } from '../../models/tenant-states';
 export class CommercialTenantsIndexComponent implements OnInit {
   public loading = true;
   private subscriptionHandler = new SubscriptionHandler();
-  public tenants$: Observable<Tenant[]>
+  public tenants$: Observable<Tenant[]>;
 
   constructor(
     public service: CommercialTenantsService,

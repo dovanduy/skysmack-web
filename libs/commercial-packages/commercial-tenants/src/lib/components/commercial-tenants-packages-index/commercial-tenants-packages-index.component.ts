@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { HttpSuccessResponse, linq } from '@skysmack/framework';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { HttpSuccessResponse, linq, SubscriptionHandler } from '@skysmack/framework';
 import { Observable, combineLatest, BehaviorSubject } from 'rxjs';
 import { CommercialPackagesService } from '../../services';
-import { map, startWith } from 'rxjs/operators';
+import { map, startWith, tap } from 'rxjs/operators';
 import { CommercialAvailablePackage } from '../../models/commercial-available-package';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { FormControl } from '@angular/forms';
 import { MatSelectChange } from '@angular/material/select';
 
@@ -13,7 +13,8 @@ import { MatSelectChange } from '@angular/material/select';
   templateUrl: './commercial-tenants-packages-index.component.html',
   styleUrls: ['./commercial-tenants-packages-index.component.scss']
 })
-export class CommercialTenantsPackagesIndexComponent implements OnInit {
+export class CommercialTenantsPackagesIndexComponent implements OnInit, OnDestroy {
+  public subscriptionHandler = new SubscriptionHandler();
   public availablePackages$: Observable<CommercialAvailablePackage[]>;
   public filteredAvailablePackages$: Observable<CommercialAvailablePackage[]>;
   public availablePackagesAutoCompleteControl = new FormControl();
@@ -22,13 +23,24 @@ export class CommercialTenantsPackagesIndexComponent implements OnInit {
 
   constructor(
     private packagesService: CommercialPackagesService,
-    private router: Router
+    private activatedRoute: ActivatedRoute
   ) { }
 
   ngOnInit() {
+    this.setCategoryFromRoute();
     this.setPackages();
     this.setCategories();
     this.setFilteredPackages();
+  }
+
+  ngOnDestroy() {
+    this.subscriptionHandler.unsubscribe();
+  }
+
+  public setCategoryFromRoute(): void {
+    this.subscriptionHandler.register(this.activatedRoute.params.pipe(
+      tap(params => this.setCategory(params.category ? params.category : ''))
+    ).subscribe());
   }
 
   public setPackages(): void {
@@ -69,12 +81,23 @@ export class CommercialTenantsPackagesIndexComponent implements OnInit {
     );
   }
 
-  public setCategoryFilter(event: MatSelectChange) {
-    this.selectedCategory$.next(event.value);
+  public selectedCategoryChanged(event: MatSelectChange) {
+    this.setCategory(event.value);
   }
 
   public availablePackageDisplayFn(availablePackage: CommercialAvailablePackage): string {
     return availablePackage ? availablePackage && availablePackage.name : '';
+  }
+
+  private setCategory(category: string): void {
+    if (category && category.length > 0) {
+      const lowerCaseCategory = category.toLowerCase();
+      const properFormatCategory = lowerCaseCategory[0].toUpperCase() +
+        lowerCaseCategory.slice(1);
+      this.selectedCategory$.next(properFormatCategory);
+    } else {
+      this.selectedCategory$.next('');
+    }
   }
 
   private filterAvailablePackages(searchInput: string, availablePackage: CommercialAvailablePackage[]): CommercialAvailablePackage[] {

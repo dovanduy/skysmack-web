@@ -4,7 +4,7 @@
   <!-- Category filter -->
   <mat-form-field>
     <mat-label>Category</mat-label>
-    <mat-select (selectionChange)="setCategoryFilter($event)" [value]="''">
+    <mat-select (selectionChange)="selectedCategoryChanged($event)" [value]="(selectedCategory$ | async)">
       <mat-option [value]="''">
         All
       </mat-option>
