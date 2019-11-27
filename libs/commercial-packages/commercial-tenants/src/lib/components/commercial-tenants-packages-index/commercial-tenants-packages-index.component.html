@@ -1,19 +1,22 @@
 <div class="wrapper">
-  <h1>Packages</h1>
 
-  <!-- Category filter -->
-  <mat-form-field>
-    <mat-label>Category</mat-label>
-    <mat-select (selectionChange)="selectedCategoryChanged($event)" [value]="(selectedCategory$ | async)">
-      <mat-option [value]="''">
-        All
-      </mat-option>
-      <mat-option *ngFor="let category of categories$ | async" [value]="category">
-        {{ category }}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
+  <!-- Title section -->
+  <div class="flex-container">
+    <h1>Packages</h1>
 
+    <!-- Category filter -->
+    <mat-form-field>
+      <mat-label>Category</mat-label>
+      <mat-select (selectionChange)="selectedCategoryChanged($event)" [value]="(selectedCategory$ | async)">
+        <mat-option [value]="''">
+          All
+        </mat-option>
+        <mat-option *ngFor="let category of categories$ | async" [value]="category">
+          {{ category }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
 
   <!-- Package search -->
   <mat-form-field>
@@ -22,15 +25,18 @@
   </mat-form-field>
 
   <!-- Packages -->
-  <div class="grid">
-    <ng-container *ngFor="let _package of filteredAvailablePackages$ | async">
-      <div class="grid-item">
-        <mat-card [routerLink]="['/', 'tenants', 'packages', _package.category, _package.name]">
-          <mat-card-header>
-            <mat-card-title>{{ _package.name }}</mat-card-title>
-          </mat-card-header>
-        </mat-card>
-      </div>
-    </ng-container>
-  </div>
+  <ng-container *ngIf="filteredAvailablePackages$ | async as packages">
+    <h3>Packages: {{ packages && packages.length }}</h3>
+    <div class="grid">
+      <ng-container *ngFor="let _package of packages">
+        <div class="grid-item">
+          <mat-card [routerLink]="['/', 'tenants', 'packages', _package.category, _package.name]">
+            <mat-card-header>
+              <mat-card-title>{{ _package.name }}</mat-card-title>
+            </mat-card-header>
+          </mat-card>
+        </div>
+      </ng-container>
+    </div>
+  </ng-container>
 </div>

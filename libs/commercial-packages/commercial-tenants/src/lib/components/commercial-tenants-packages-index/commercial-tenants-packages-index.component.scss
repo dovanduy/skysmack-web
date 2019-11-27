@@ -33,3 +33,14 @@ mat-card {
         margin: .5rem;
     }
 }
+
+.flex-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  mat-form-field {
+      max-width: 200px;
+      margin-top: 15px;
+      margin-left: auto;
+  }
+}

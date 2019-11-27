@@ -116,11 +116,14 @@ export class CommercialTenantsPackagesIndexComponent implements OnInit, OnDestro
   }
 
   private getHit(searchInput: string, availablePackage: CommercialAvailablePackage): number {
-    let nameHit = availablePackage.name.toLowerCase().indexOf(searchInput.toLowerCase());
-    let descriptionHit = availablePackage.description.toLowerCase().indexOf(searchInput.toLowerCase());
-    if (!(nameHit >= 0)) {
-      descriptionHit >= 0 ? descriptionHit = descriptionHit * 100 : descriptionHit = descriptionHit;
+    const nameHit = availablePackage.name.toLowerCase().indexOf(searchInput.toLowerCase());
+    if (nameHit >= 0) {
+      return nameHit;
     }
-    return nameHit + descriptionHit;
+    const descriptionHit = availablePackage.description.toLowerCase().indexOf(searchInput.toLowerCase());
+    if (descriptionHit >= 0) {
+      return descriptionHit * 100;
+    }
+    return -1;
   }
 }
