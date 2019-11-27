@@ -1,30 +1,27 @@
 <div class="wrapper">
-  <mat-card>
+  <h1>Packages</h1>
 
-    <mat-card-header>
-      <mat-card-title>Packages</mat-card-title>
-    </mat-card-header>
+  <!-- Search -->
+  <mat-form-field>
+    <input matInput [placeholder]="'Search for a package' | translate" aria-label="Package"
+      [matAutocomplete]="availablePackagesAutoControl" [formControl]="availablePackagesAutoCompleteControl">
+    <mat-autocomplete #availablePackagesAutoControl="matAutocomplete" [displayWith]="availablePackageDisplayFn">
+      <mat-option *ngFor="let availablePackage of filteredAvailablePackages$ | async" [value]="availablePackage"
+        [routerLink]="['/', 'tenants', 'packages', availablePackage.category, availablePackage.name]">
+        <span>{{ availablePackage.name}}</span>
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
 
-    <!-- Search -->
-    <mat-form-field>
-      <input matInput [placeholder]="'Search for a package' | translate" aria-label="Package"
-        [matAutocomplete]="availablePackagesAutoControl" [formControl]="availablePackagesAutoCompleteControl">
-      <mat-autocomplete #availablePackagesAutoControl="matAutocomplete" [displayWith]="availablePackageDisplayFn">
-        <mat-option *ngFor="let availablePackage of filteredAvailablePackages$ | async" [value]="availablePackage"
-          [routerLink]="['/', 'tenants', 'packages', availablePackage.category, availablePackage.name]">
-          <span>{{ availablePackage.name}}</span>
-        </mat-option>
-      </mat-autocomplete>
-    </mat-form-field>
-
-    <mat-card-content>
-      <mat-list>
-        <mat-list-item *ngFor="let _package of noDepsAvailablePackages$ | async">
-          <h4 mat-line style="cursor:pointer;" (click)="selectPackage(_package)">
-            {{ _package.name }}</h4>
-        </mat-list-item>
-      </mat-list>
-    </mat-card-content>
-
-  </mat-card>
+  <div class="grid">
+    <ng-container *ngFor="let _package of availablePackages$ | async">
+      <div class="grid-item">
+        <mat-card>
+          <mat-card-header>
+            <mat-card-title>{{ _package.name }}</mat-card-title>
+          </mat-card-header>
+        </mat-card>
+      </div>
+    </ng-container>
+  </div>
 </div>

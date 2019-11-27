@@ -14,7 +14,6 @@ import { FormControl } from '@angular/forms';
 })
 export class CommercialTenantsPackagesIndexComponent implements OnInit {
   public availablePackages$: Observable<CommercialAvailablePackage[]>;
-  public noDepsAvailablePackages$: Observable<CommercialAvailablePackage[]>;
   public filteredAvailablePackages$: Observable<CommercialAvailablePackage[]>;
   public availablePackagesAutoCompleteControl = new FormControl();
 
@@ -26,10 +25,6 @@ export class CommercialTenantsPackagesIndexComponent implements OnInit {
   ngOnInit() {
     this.availablePackages$ = this.packagesService.getAvailablePackages().pipe(
       map((x: HttpSuccessResponse<CommercialAvailablePackage>) => x.body as CommercialAvailablePackage[]),
-    );
-
-    this.noDepsAvailablePackages$ = this.availablePackages$.pipe(
-      map(packages => packages.filter(_package => !_package.dependencyTypes || _package.dependencyTypes && _package.dependencyTypes.length === 0))
     );
 
     this.filteredAvailablePackages$ = combineLatest(
