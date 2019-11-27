@@ -23,8 +23,20 @@ export class CommercialTenantsPackagesIndexComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    const leastDepsFirst = (a, b) => {
+      const aCount = a.dependencyTypes ? a.dependencyTypes.length : 0;
+      const bCount = b.dependencyTypes ? b.dependencyTypes.length : 0;
+      if (aCount === bCount) {
+        return 0;
+      } else {
+        return aCount > bCount ? 1 : -1;
+      };
+    };
+
     this.availablePackages$ = this.packagesService.getAvailablePackages().pipe(
       map((x: HttpSuccessResponse<CommercialAvailablePackage>) => x.body as CommercialAvailablePackage[]),
+      map(packages => packages.map(x => x).sort(leastDepsFirst)
+      )
     );
 
     this.filteredAvailablePackages$ = combineLatest(

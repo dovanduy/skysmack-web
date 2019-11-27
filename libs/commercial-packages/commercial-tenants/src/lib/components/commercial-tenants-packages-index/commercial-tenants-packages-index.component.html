@@ -20,6 +20,11 @@
           <mat-card-header>
             <mat-card-title>{{ _package.name }}</mat-card-title>
           </mat-card-header>
+
+          <mat-card-content>
+            <p *ngIf="_package.dependencyTypes">Dep count: {{ _package.dependencyTypes.length }}</p>
+            <p *ngIf="!_package.dependencyTypes">Dep count: 0</p>
+          </mat-card-content>
         </mat-card>
       </div>
     </ng-container>
