@@ -16,6 +16,7 @@ export class CommercialTenantsPackagesIndexComponent implements OnInit {
   public availablePackages$: Observable<CommercialAvailablePackage[]>;
   public filteredAvailablePackages$: Observable<CommercialAvailablePackage[]>;
   public availablePackagesAutoCompleteControl = new FormControl();
+  public categories: string[];
 
   constructor(
     private packagesService: CommercialPackagesService,
@@ -23,6 +24,11 @@ export class CommercialTenantsPackagesIndexComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.setPackages();
+    this.setFilteredPackages();
+  }
+
+  public setPackages(): void {
     const leastDepsFirst = (a, b) => {
       const aCount = a.dependencyTypes ? a.dependencyTypes.length : 0;
       const bCount = b.dependencyTypes ? b.dependencyTypes.length : 0;
@@ -33,22 +39,21 @@ export class CommercialTenantsPackagesIndexComponent implements OnInit {
       };
     };
 
+
     this.availablePackages$ = this.packagesService.getAvailablePackages().pipe(
       map((x: HttpSuccessResponse<CommercialAvailablePackage>) => x.body as CommercialAvailablePackage[]),
       map(packages => packages.map(x => x).sort(leastDepsFirst)
       )
     );
+  }
 
+  public setFilteredPackages(): void {
     this.filteredAvailablePackages$ = combineLatest(
       this.availablePackagesAutoCompleteControl.valueChanges.pipe(startWith('')),
       this.availablePackages$
     ).pipe(
       map(([searchInput, lodgingTypes]) => searchInput && searchInput.length > 0 ? this.filterLodgings(searchInput, lodgingTypes) : lodgingTypes)
     );
-  }
-
-  public selectPackage(_package: CommercialAvailablePackage) {
-    this.router.navigate(['/', 'tenants', 'packages', _package.category, _package.name])
   }
 
   public availablePackageDisplayFn(availablePackage: CommercialAvailablePackage): string {

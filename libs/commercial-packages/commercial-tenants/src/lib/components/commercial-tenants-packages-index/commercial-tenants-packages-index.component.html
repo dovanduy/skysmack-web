@@ -1,7 +1,7 @@
 <div class="wrapper">
   <h1>Packages</h1>
 
-  <!-- Search -->
+  <!-- Category filter -->
   <mat-form-field>
     <input matInput [placeholder]="'Search for a package' | translate" aria-label="Package"
       [formControl]="availablePackagesAutoCompleteControl">
@@ -14,10 +14,17 @@
     </mat-autocomplete> -->
   </mat-form-field>
 
+
+  <!-- Package search -->
+  <mat-form-field>
+    <input matInput [placeholder]="'Search for a package' | translate" aria-label="Package"
+      [formControl]="availablePackagesAutoCompleteControl">
+  </mat-form-field>
+
   <div class="grid">
     <ng-container *ngFor="let _package of filteredAvailablePackages$ | async">
       <div class="grid-item">
-        <mat-card>
+        <mat-card [routerLink]="['/', 'tenants', 'packages', _package.category, _package.name]">
           <mat-card-header>
             <mat-card-title>{{ _package.name }}</mat-card-title>
           </mat-card-header>
