@@ -102,8 +102,24 @@ export class CommercialTenantsPackagesIndexComponent implements OnInit, OnDestro
 
   private filterAvailablePackages(searchInput: string, availablePackage: CommercialAvailablePackage[]): CommercialAvailablePackage[] {
     if (typeof (searchInput) === 'string') {
-      return availablePackage.map(availablePackage => ({ availablePackage, hit: availablePackage.name.toLowerCase().indexOf(searchInput.toLowerCase()) })).filter(availablePackageHit => availablePackageHit.hit >= 0).sort((a, b) => a.hit - b.hit).map(availablePackageHit => availablePackageHit.availablePackage);
+      return availablePackage.map(availablePackage =>
+        ({
+          availablePackage,
+          hit: this.getHit(searchInput, availablePackage)
+        }))
+        .filter(availablePackageHit => availablePackageHit.hit >= 0)
+        .sort((a, b) => a.hit - b.hit)
+        .map(availablePackageHit => availablePackageHit.availablePackage);
     }
     return availablePackage;
+  }
+
+  private getHit(searchInput: string, availablePackage: CommercialAvailablePackage): number {
+    let nameHit = availablePackage.name.toLowerCase().indexOf(searchInput.toLowerCase());
+    let descriptionHit = availablePackage.description.toLowerCase().indexOf(searchInput.toLowerCase());
+    if (!(nameHit >= 0)) {
+      descriptionHit >= 0 ? descriptionHit = descriptionHit * 100 : descriptionHit = descriptionHit;
+    }
+    return nameHit + descriptionHit;
   }
 }
