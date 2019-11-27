@@ -12,18 +12,18 @@
 
   <!-- Package type selected -->
   <ng-container *ngIf="selectedPackage">
-    <a [routerLink]="['/', 'tenants', 'packages']">Packages overview</a>
-    <br />
-    <br />
+    <div class="flex-container">
+      <h1>{{ selectedPackage.name }}</h1>
+      <mat-chip-list class="state-chip">
+        <mat-chip color="default">{{ getDevelopmentState(selectedPackage.state) }}</mat-chip>
+      </mat-chip-list>
+      <a [routerLink]="['/', 'tenants', 'packages']">Packages overview</a>
+    </div>
+
     <mat-card>
-
-      <mat-card-header>
-        <mat-card-title>{{ selectedPackage.name }}</mat-card-title>
-      </mat-card-header>
-
       <mat-card-content *ngIf="selectedPackage">
+        <p>Description: {{ selectedPackage.description }}</p>
         <p>Category: {{ selectedPackage.category }}</p>
-        <p>State: {{ getDevelopmentState(selectedPackage.state) }}</p>
         <p>Required: {{ selectedPackage.required ? 'Yes' : 'No'}}</p>
         <p>Multiple installs: {{ selectedPackage.multipleInstalls ? 'Yes' : 'No' }}</p>
 
