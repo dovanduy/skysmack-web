@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { HttpSuccessResponse, linq, SubscriptionHandler } from '@skysmack/framework';
+import { HttpSuccessResponse, linq, SubscriptionHandler, Url } from '@skysmack/framework';
 import { Observable, combineLatest, BehaviorSubject } from 'rxjs';
 import { CommercialPackagesService } from '../../services';
 import { map, startWith, tap } from 'rxjs/operators';
@@ -57,8 +57,7 @@ export class CommercialTenantsPackagesIndexComponent implements OnInit, OnDestro
 
     this.availablePackages$ = this.packagesService.getAvailablePackages().pipe(
       map((x: HttpSuccessResponse<CommercialAvailablePackage>) => x.body as CommercialAvailablePackage[]),
-      map(packages => packages.map(x => x).sort(leastDepsFirst)
-      )
+      map(packages => packages.map(x => x).sort(leastDepsFirst))
     );
   }
 
@@ -95,8 +94,10 @@ export class CommercialTenantsPackagesIndexComponent implements OnInit, OnDestro
       const properFormatCategory = lowerCaseCategory[0].toUpperCase() +
         lowerCaseCategory.slice(1);
       this.selectedCategory$.next(properFormatCategory);
+      window.history.replaceState(undefined, undefined, `tenants/packages/${lowerCaseCategory}`);
     } else {
       this.selectedCategory$.next('');
+      window.history.replaceState(undefined, undefined, `tenants/packages`);
     }
   }
 
