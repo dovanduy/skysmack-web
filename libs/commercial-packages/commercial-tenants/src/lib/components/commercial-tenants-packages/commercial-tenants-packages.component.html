@@ -26,22 +26,32 @@
         <p>State: {{ getDevelopmentState(selectedPackage.state) }}</p>
         <p>Required: {{ selectedPackage.required ? 'Yes' : 'No'}}</p>
         <p>Multiple installs: {{ selectedPackage.multipleInstalls ? 'Yes' : 'No' }}</p>
-        <p *ngIf="dependencies">Dependencies: <a *ngFor="let dep of dependencies"
-            [routerLink]="['/', 'tenants', 'packages', dep.category, dep.name]">{{ dep.name }}</a></p>
 
-        <mat-list>
-          <ng-container *ngIf="getDependentPackages(selectedPackage.type) as packages">
-            <h3 mat-subheader *ngIf="packages && packages.length > 0">Upgrades</h3>
-            <h3 mat-subheader *ngIf="!packages || packages.length === 0">Cannot be upgraded.</h3>
-            <mat-list-item *ngFor="let _package of packages">
-              <h4 mat-line style="cursor:pointer;"
-                [routerLink]="['/', 'tenants', 'packages', _package.category, _package.name]">
-                {{ _package.name }}</h4>
-            </mat-list-item>
+        <p *ngIf="dependencies">Dependencies:
+          <ng-container *ngFor="let dep of dependencies; let last = last">
+            <a [routerLink]="['/', 'tenants', 'packages', dep.category, dep.name]">{{ dep.name }}<span *ngIf="!last">,
+              </span></a>
           </ng-container>
-        </mat-list>
+        </p>
       </mat-card-content>
-
     </mat-card>
+
+    <!-- Upgrades -->
+    <ng-container *ngIf="getDependentPackages(selectedPackage.type) as packages">
+      <h3 *ngIf="packages && packages.length > 0">Upgrades</h3>
+      <h3 *ngIf="!packages || packages.length === 0">Cannot be upgraded.</h3>
+
+      <div class="grid">
+        <ng-container *ngFor="let _package of packages">
+          <div class="grid-item">
+            <mat-card class="upgrade" [routerLink]="['/', 'tenants', 'packages', _package.category, _package.name]">
+              <mat-card-header>
+                <mat-card-title>{{ _package.name }}</mat-card-title>
+              </mat-card-header>
+            </mat-card>
+          </div>
+        </ng-container>
+      </div>
+    </ng-container>
   </ng-container>
 </div>

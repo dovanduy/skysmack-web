@@ -21,6 +21,7 @@
       [formControl]="availablePackagesAutoCompleteControl">
   </mat-form-field>
 
+  <!-- Packages -->
   <div class="grid">
     <ng-container *ngFor="let _package of filteredAvailablePackages$ | async">
       <div class="grid-item">
