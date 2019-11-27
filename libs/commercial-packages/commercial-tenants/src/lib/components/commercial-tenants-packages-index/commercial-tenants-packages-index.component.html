@@ -3,15 +3,15 @@
 
   <!-- Category filter -->
   <mat-form-field>
-    <input matInput [placeholder]="'Search for a package' | translate" aria-label="Package"
-      [formControl]="availablePackagesAutoCompleteControl">
-    <!-- [matAutocomplete]="availablePackagesAutoControl" -->
-    <!-- <mat-autocomplete #availablePackagesAutoControl="matAutocomplete" [displayWith]="availablePackageDisplayFn">
-      <mat-option *ngFor="let availablePackage of filteredAvailablePackages$ | async" [value]="availablePackage"
-        [routerLink]="['/', 'tenants', 'packages', availablePackage.category, availablePackage.name]">
-        <span>{{ availablePackage.name}}</span>
+    <mat-label>Category</mat-label>
+    <mat-select (selectionChange)="setCategoryFilter($event)" [value]="''">
+      <mat-option [value]="''">
+        All
       </mat-option>
-    </mat-autocomplete> -->
+      <mat-option *ngFor="let category of categories$ | async" [value]="category">
+        {{ category }}
+      </mat-option>
+    </mat-select>
   </mat-form-field>
 
 

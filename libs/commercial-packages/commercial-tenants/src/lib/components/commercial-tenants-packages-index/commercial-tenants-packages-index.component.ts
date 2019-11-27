@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpSuccessResponse } from '@skysmack/framework';
-import { Observable, combineLatest } from 'rxjs';
+import { HttpSuccessResponse, linq } from '@skysmack/framework';
+import { Observable, combineLatest, BehaviorSubject } from 'rxjs';
 import { CommercialPackagesService } from '../../services';
 import { map, startWith } from 'rxjs/operators';
 import { CommercialAvailablePackage } from '../../models/commercial-available-package';
 import { Router } from '@angular/router';
 import { FormControl } from '@angular/forms';
+import { MatSelectChange } from '@angular/material/select';
 
 @Component({
   selector: 'ss-commercial-tenants-packages-index',
@@ -16,7 +17,8 @@ export class CommercialTenantsPackagesIndexComponent implements OnInit {
   public availablePackages$: Observable<CommercialAvailablePackage[]>;
   public filteredAvailablePackages$: Observable<CommercialAvailablePackage[]>;
   public availablePackagesAutoCompleteControl = new FormControl();
-  public categories: string[];
+  public categories$: Observable<string[]>;
+  public selectedCategory$ = new BehaviorSubject<string>('');
 
   constructor(
     private packagesService: CommercialPackagesService,
@@ -25,6 +27,7 @@ export class CommercialTenantsPackagesIndexComponent implements OnInit {
 
   ngOnInit() {
     this.setPackages();
+    this.setCategories();
     this.setFilteredPackages();
   }
 
@@ -47,20 +50,34 @@ export class CommercialTenantsPackagesIndexComponent implements OnInit {
     );
   }
 
+  public setCategories(): void {
+    this.categories$ = this.availablePackages$.pipe(
+      map(packages => linq(packages.map(_package => _package.category)).distinct().ok().sort())
+    );
+  }
+
   public setFilteredPackages(): void {
     this.filteredAvailablePackages$ = combineLatest(
       this.availablePackagesAutoCompleteControl.valueChanges.pipe(startWith('')),
-      this.availablePackages$
+      this.availablePackages$,
+      this.selectedCategory$
     ).pipe(
-      map(([searchInput, lodgingTypes]) => searchInput && searchInput.length > 0 ? this.filterLodgings(searchInput, lodgingTypes) : lodgingTypes)
+      map(([searchInput, availablePackages, selectedCategory]) => {
+        const categoryFiltedPackages = selectedCategory.length > 0 ? availablePackages.filter(_package => _package.category === selectedCategory) : availablePackages;
+        return searchInput && searchInput.length > 0 ? this.filterAvailablePackages(searchInput, categoryFiltedPackages) : categoryFiltedPackages;
+      })
     );
+  }
+
+  public setCategoryFilter(event: MatSelectChange) {
+    this.selectedCategory$.next(event.value);
   }
 
   public availablePackageDisplayFn(availablePackage: CommercialAvailablePackage): string {
     return availablePackage ? availablePackage && availablePackage.name : '';
   }
 
-  private filterLodgings(searchInput: string, availablePackage: CommercialAvailablePackage[]): CommercialAvailablePackage[] {
+  private filterAvailablePackages(searchInput: string, availablePackage: CommercialAvailablePackage[]): CommercialAvailablePackage[] {
     if (typeof (searchInput) === 'string') {
       return availablePackage.map(availablePackage => ({ availablePackage, hit: availablePackage.name.toLowerCase().indexOf(searchInput.toLowerCase()) })).filter(availablePackageHit => availablePackageHit.hit >= 0).sort((a, b) => a.hit - b.hit).map(availablePackageHit => availablePackageHit.availablePackage);
     }
