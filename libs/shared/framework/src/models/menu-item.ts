@@ -19,7 +19,6 @@ export class MenuItem {
     public display = true;
     public allowAccessFor: AllowAccessFor;
     public hotkey: string;
-    public hotkeyAction: () => void;
 
     public constructor(init?: Partial<MenuItem>) {
         Object.assign(this, init);

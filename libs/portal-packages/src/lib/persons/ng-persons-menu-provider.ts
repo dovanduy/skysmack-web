@@ -16,8 +16,7 @@ export class NgPersonsMenuProvider implements MenuProvider {
     private translationPrefix = 'PERSONS.INDEX.';
 
     constructor(
-        private store: NgSkysmackStore,
-        private router: Router
+        private store: NgSkysmackStore
     ) { }
 
     public getMenuAreas(packagePath: string, componentKey: string): Observable<MenuArea[]> {
@@ -46,11 +45,10 @@ export class NgPersonsMenuProvider implements MenuProvider {
     private getPersonsMenuItems = (packagePath: string) => {
         return [
             new MenuItem({
-                url: 'create',
+                url: `/${packagePath}/create`,
                 displayName: this.translationPrefix + 'CREATE',
                 area: 'actions',
                 hotkey: 'shift.c',
-                hotkeyAction: () => this.router.navigate([packagePath, 'create']),
                 order: 1,
                 icon: 'add',
                 permissions: [

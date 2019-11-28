@@ -81,7 +81,6 @@ export class NgLodgingsMenuProvider implements MenuProvider {
                 displayName: this.LodgingTranslationPrefix + 'CREATE',
 
                 hotkey: 'shift.c',
-                hotkeyAction: () => this.router.navigate([packagePath, 'create']),
                 area: 'actions',
                 order: 1,
                 icon: 'add',

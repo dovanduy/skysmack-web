@@ -22,7 +22,8 @@
             <!-- URL EVENT -->
             <a *ngIf="!menuItem.isActionEvent && menuItem.display" [routerLink]="menuItem.url"
               [matTooltip]="menuItem.displayName | translate" matTooltipPosition="before" mat-mini-fab
-              class="fab-secondary" color="secondary">
+              class="fab-secondary" color="secondary"
+              [hotkeyUrl]="{ url: menuItem.url, keys: menuItem.hotkey, log: 'speed dial' }">
               <mat-icon>{{menuItem.icon}}</mat-icon>
             </a>
           </ng-container>
@@ -43,7 +44,7 @@
       <!-- URL EVENT -->
       <a *ngIf="!menuItems[0].isActionEvent && menuItems[0].display" [routerLink]="menuItems[0].url"
         [matTooltip]="menuItems[0].displayName | translate" matTooltipPosition="before" mat-fab class="fab-secondary"
-        color="secondary">
+        color="secondary" [hotkeyUrl]="{ url: menuItems[0].url, keys: menuItems[0].hotkey, log: 'speed dial' }">
         <mat-icon>{{menuItems[0].icon}}</mat-icon>
       </a>
     </div>

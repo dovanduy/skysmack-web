@@ -4,6 +4,7 @@ import { ngUiComponents } from './components/ng-ui-components';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDialogModule } from '@angular/material/dialog';
+import { ngUIDirectives } from './directives/ng-ui-directives';
 
 const material = [
     MatSnackBarModule,
@@ -17,10 +18,12 @@ const material = [
         ...material
     ],
     declarations: [
-        ...ngUiComponents
+        ...ngUiComponents,
+        ...ngUIDirectives
     ],
     exports: [
         ...ngUiComponents,
+        ...ngUIDirectives,
         ...material
     ],
     providers: []

@@ -17,7 +17,8 @@
 
               <!-- URL EVENT -->
               <li *ngIf="!menuItem.isActionEvent">
-                <a [routerLink]="[menuItem.url]">
+                <a [routerLink]="[menuItem.url]"
+                  [hotkeyUrl]="{ url: menuItem.url, keys: menuItem.hotkey, log: 'sidebar menu' }">
                   {{ menuItem.displayName | translate }}
                 </a>
               </li>
