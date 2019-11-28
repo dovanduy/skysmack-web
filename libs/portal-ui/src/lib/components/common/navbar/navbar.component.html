@@ -87,7 +87,8 @@
             <ng-container *ngIf="menuItem.isActionEvent && menuItem">
               <button mat-menu-item
                 (click)="uiStore.setPackageDrawerStatus(false); actionEvent({ action: menuItem.action, _this: menuItem._this })"
-                [title]="menuItem.displayName | translate">
+                [title]="menuItem.displayName | translate"
+                [hotkey]="{ action: menuItem.action, keys: menuItem.hotkey }">
                 {{ menuItem.displayName | translate }}
               </button>
             </ng-container>

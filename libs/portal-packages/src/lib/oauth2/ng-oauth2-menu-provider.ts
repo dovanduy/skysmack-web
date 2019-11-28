@@ -36,31 +36,39 @@ export class NgOAuth2MenuProvider implements MenuProvider {
         ]);
     };
 
-    public getMenuItems(packagePath: string, componentKey: string): Observable<MenuItem[]> {
+    public getMenuItems = (packagePath: string, componentKey: string): Observable<MenuItem[]> => {
         return this.store.getSkysmack().pipe(
             safeHasValue(),
             map((currentTenant: Skysmack) => currentTenant.packages
                 .filter((_package: Package) => _package.type === OAuth2TypeId)
-                .map(_package => [
-                    new MenuItem({
+                .map(_package => {
+                    const aMenuItem = new MenuItem({
                         area: 'identities',
+                        hotkey: 'shift.q',
                         allowAccessFor: AllowAccessFor.anonymous,
                         providedIn: [TOPBAR]
-                    }).asEventAction(_package.name, (_this: NgOAuth2MenuProvider) => {
-                        _this.dialog.open(LoginComponent, {
+                    });
+
+                    aMenuItem.asEventAction(_package.name, (_this: NgOAuth2MenuProvider) => {
+                        aMenuItem._this.dialog.open(LoginComponent, {
                             width: '500px',
                             data: { packagePath: _package.path }
                         });
-                    }, 'account_circle', this),
-                    new MenuItem({
-                        area: 'identities',
-                        allowAccessFor: AllowAccessFor.authenticated,
-                        providedIn: [TOPBAR]
-                    }).asEventAction('Logout', (_this: NgOAuth2MenuProvider) => {
-                        _this.logout();
-                    },
-                        'account_circle', this)
-                ]).reduce((a, b) => a.concat(b), [])
+                    }, 'account_circle', this);
+
+                    return [
+                        aMenuItem,
+                        new MenuItem({
+                            area: 'identities',
+                            allowAccessFor: AllowAccessFor.authenticated,
+                            providedIn: [TOPBAR]
+                        }).asEventAction('Logout', (_this: NgOAuth2MenuProvider) => {
+                            _this.logout();
+                        },
+                            'account_circle', this)
+                    ];
+
+                }).reduce((a, b) => a.concat(b), [])
             )
         );
     };
