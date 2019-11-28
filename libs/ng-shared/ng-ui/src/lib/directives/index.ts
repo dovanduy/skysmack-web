@@ -1,2 +1,2 @@
-export * from './hotkey-url.directive';
+export * from './hotkey.directive';
 export * from './ng-ui-directives';

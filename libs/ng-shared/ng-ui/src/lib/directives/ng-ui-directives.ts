@@ -1,5 +1,5 @@
-import { HotkeyUrlDirective } from './hotkey-url.directive';
+import { HotkeyDirective } from './hotkey.directive';
 
 export const ngUIDirectives = [
-    HotkeyUrlDirective
+    HotkeyDirective
 ];

@@ -57,9 +57,10 @@ export class NgPersonsMenuProvider implements MenuProvider {
                 providedIn: [SIDEBAR, SPEEDDIAL]
             }),
             new MenuItem({
-                url: 'fields',
+                url: `/${packagePath}/fields`,
                 displayName: this.translationPrefix + 'FIELDS',
                 area: 'manage',
+                hotkey: 'shift.f',
                 order: 2,
                 icon: 'short_text',
                 permissions: [
