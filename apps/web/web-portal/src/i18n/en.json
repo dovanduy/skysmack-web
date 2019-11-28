@@ -256,6 +256,50 @@
 			}
 		}
 	},
+	"CLIENTS": {
+		"CREATE": {
+			"CREATE": "Create",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDIT": "Edit",
+			"BUTTON_EDIT": "Update"
+		},
+		"INDEX": {
+			"TITLE_EXTRAS": "(Clients)",
+			"ACTIONS": "Actions",
+			"CREATE": "Create",
+			"DELETE": "Delete",
+			"MANAGE": "Manage",
+			"BACK": "Back"
+		},
+		"FORM": {
+			"LABELS": {
+				"NAME": "Name",
+				"DESCRIPTION": "Description",
+				"ONLINE": "Online"
+			},
+			"PLACEHOLDERS": {
+				"NAME": "Name",
+				"DESCRIPTION": "Description",
+				"ONLINE": "Online"
+			},
+			"VALIDATION": {
+				"NAME": {
+					"REQUIRED": "Name is required."
+				},
+				"DESCRIPTION": {
+					"REQUIRED": "Description is required."
+				}
+			}
+		},
+		"QUEUE": {
+			"ADDING": "Adding client {{ name }}",
+			"UPDATING": "Updating client {{ name }}",
+			"DELETING": "Deleting client {{ name }}",
+			"ERROR": "An error occured with client {{ name }}. Correct and try again."
+		}
+	},
 	"ACCOUNT": {
 		"FORM": {
 			"LABELS": {
@@ -320,50 +364,6 @@
 		},
 		"NOTIFICATIONS": {},
 		"QUEUE": {}
-	},
-	"CLIENTS": {
-		"CREATE": {
-			"CREATE": "Create",
-			"BUTTON_CREATE": "Create"
-		},
-		"EDIT": {
-			"EDIT": "Edit",
-			"BUTTON_EDIT": "Update"
-		},
-		"INDEX": {
-			"TITLE_EXTRAS": "(Clients)",
-			"ACTIONS": "Actions",
-			"CREATE": "Create",
-			"DELETE": "Delete",
-			"MANAGE": "Manage",
-			"BACK": "Back"
-		},
-		"FORM": {
-			"LABELS": {
-				"NAME": "Name",
-				"DESCRIPTION": "Description",
-				"ONLINE": "Online"
-			},
-			"PLACEHOLDERS": {
-				"NAME": "Name",
-				"DESCRIPTION": "Description",
-				"ONLINE": "Online"
-			},
-			"VALIDATION": {
-				"NAME": {
-					"REQUIRED": "Name is required."
-				},
-				"DESCRIPTION": {
-					"REQUIRED": "Description is required."
-				}
-			}
-		},
-		"QUEUE": {
-			"ADDING": "Adding client {{ name }}",
-			"UPDATING": "Updating client {{ name }}",
-			"DELETING": "Deleting client {{ name }}",
-			"ERROR": "An error occured with client {{ name }}. Correct and try again."
-		}
 	},
 	"IDENTITIES": {
 		"INDEX": {
@@ -649,7 +649,7 @@
 			"OBJECT_PRIOORITY": "{{ role.object.name }} - priority",
 			"ADD": "Add",
 			"ROLES_APPLIED": "All roles have been applied, or no roles exists.",
-			"NO_ROLES_APPLIED": "This user has no roles."
+			"NO_ROLES_APPLIED": "User has no roles"
 		},
 		"SET_PASSWORD": {
 			"PASSWORD_FOR": "Set password for {{ object.email }}"
@@ -1385,74 +1385,6 @@
 			"TITLE": "Lodging types availability"
 		}
 	},
-	"ASSIGNMENT_TYPES": {
-		"FORM": {
-			"LABELS": {
-				"DESCRIPTION": "Description",
-				"STATEID": "State",
-				"DUEPERIOD": "Due date"
-			},
-			"PLACEHOLDERS": {
-				"STATEID": "Choose state",
-				"DESCRIPTION": "Enter description",
-				"DUEPERIOD": "Choose due date"
-			},
-			"VALIDATION": {
-				"STATEID": {
-					"REQUIRED": "State is required."
-				},
-				"DESCRIPTION": {
-					"REQUIRED": "Description is required."
-				},
-				"DUEPERIOD": {
-					"REQUIRED": "Due date is required."
-				}
-			},
-			"BUTTONS": {
-				"CREATE": "Create",
-				"EDIT": "Edit"
-			}
-		},
-		"CREATE": {
-			"CREATE": "Create",
-			"BUTTON_CREATE": "Create"
-		},
-		"EDIT": {
-			"EDIT": "Edit",
-			"BUTTON_EDIT": "Update"
-		},
-		"INDEX": {
-			"TITLE_EXTRAS": "(assignment types)",
-			"ACTIONS": "Actions",
-			"CREATE": "Create",
-			"EDIT": "Edit",
-			"DELETE": "Delete",
-			"MANAGE": "Manage",
-			"BACK": "Back",
-			"FIELDS": "Fields",
-			"FIELDS_TITLE": "(fields)",
-			"ENTITIES": "Entities"
-		},
-		"FIELDS": {
-			"INDEX": {
-				"ACTIONS": "Actions",
-				"CREATE": "Create",
-				"ASSIGNMENT_TYPES": "AssignmentTypes",
-				"FIELDS": "AssignmentType fields",
-				"OTHER": "Other",
-				"BACK": "Back"
-			},
-			"CREATE": {
-				"ADD": "Add field"
-			}
-		},
-		"QUEUE": {
-			"ADDING": "Adding {{ description }}",
-			"UPDATING": "Updating {{ description }}",
-			"DELETING": "Deleting {{ description }}",
-			"ERROR": "An error occured with {{ description }}. Correct and try again."
-		}
-	},
 	"LODGINGS": {
 		"FORM": {
 			"LABELS": {
@@ -1526,6 +1458,74 @@
 		"SELECT_LODGINGS": "Select lodgings",
 		"TITLE": "Lodgings Availability"
 	},
+	"ASSIGNMENT_TYPES": {
+		"FORM": {
+			"LABELS": {
+				"DESCRIPTION": "Description",
+				"STATEID": "State",
+				"DUEPERIOD": "Due date"
+			},
+			"PLACEHOLDERS": {
+				"STATEID": "Choose state",
+				"DESCRIPTION": "Enter description",
+				"DUEPERIOD": "Choose due date"
+			},
+			"VALIDATION": {
+				"STATEID": {
+					"REQUIRED": "State is required."
+				},
+				"DESCRIPTION": {
+					"REQUIRED": "Description is required."
+				},
+				"DUEPERIOD": {
+					"REQUIRED": "Due date is required."
+				}
+			},
+			"BUTTONS": {
+				"CREATE": "Create",
+				"EDIT": "Edit"
+			}
+		},
+		"CREATE": {
+			"CREATE": "Create",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDIT": "Edit",
+			"BUTTON_EDIT": "Update"
+		},
+		"INDEX": {
+			"TITLE_EXTRAS": "(assignment types)",
+			"ACTIONS": "Actions",
+			"CREATE": "Create",
+			"EDIT": "Edit",
+			"DELETE": "Delete",
+			"MANAGE": "Manage",
+			"BACK": "Back",
+			"FIELDS": "Fields",
+			"FIELDS_TITLE": "(fields)",
+			"ENTITIES": "Entities"
+		},
+		"FIELDS": {
+			"INDEX": {
+				"ACTIONS": "Actions",
+				"CREATE": "Create",
+				"ASSIGNMENT_TYPES": "AssignmentTypes",
+				"FIELDS": "AssignmentType fields",
+				"OTHER": "Other",
+				"BACK": "Back"
+			},
+			"CREATE": {
+				"ADD": "Add field"
+			}
+		},
+		"QUEUE": {
+			"ADDING": "Adding {{ description }}",
+			"UPDATING": "Updating {{ description }}",
+			"DELETING": "Deleting {{ description }}",
+			"ERROR": "An error occured with {{ description }}. Correct and try again."
+		}
+	},
 	"ASSIGNMENTS_SCHEDULES": {
 		"FORM": {
 			"LABELS": {
@@ -1580,6 +1580,26 @@
 			"ERROR": "An error occured with {{ description }}. Correct and try again."
 		}
 	},
+	"MAINTENANCE": {
+		"ASSIGNMENT_ALL": {
+			"TITLE": "All assignments",
+			"INDEX": {
+				"MANAGE": "Manage",
+				"SINGLE_ASSIGNMENTS": "Single assignments",
+				"RECURRING_ASSIGNMENTS": "Scheduled assignments",
+				"TYPES": "Assignment types",
+				"STATES": "Maintenance states"
+			},
+			"MENU_ITEM_ACTIONS": {
+				"CREATED": "Created",
+				"PENDING": "Pending",
+				"ONGOING": "Ongoing",
+				"DONE": "Done",
+				"CANCELED": "Canceled",
+				"FAULTED": "Faulted"
+			}
+		}
+	},
 	"MAINTENANCE_STATES": {
 		"FORM": {
 			"LABELS": {
@@ -1630,26 +1650,6 @@
 			"UPDATING": "Updating {{ description }}",
 			"DELETING": "Deleting {{ description }}",
 			"ERROR": "An error occured with {{ description }}. Correct and try again."
-		}
-	},
-	"MAINTENANCE": {
-		"ASSIGNMENT_ALL": {
-			"TITLE": "All assignments",
-			"INDEX": {
-				"MANAGE": "Manage",
-				"SINGLE_ASSIGNMENTS": "Single assignments",
-				"RECURRING_ASSIGNMENTS": "Scheduled assignments",
-				"TYPES": "Assignment types",
-				"STATES": "Maintenance states"
-			},
-			"MENU_ITEM_ACTIONS": {
-				"CREATED": "Created",
-				"PENDING": "Pending",
-				"ONGOING": "Ongoing",
-				"DONE": "Done",
-				"CANCELED": "Canceled",
-				"FAULTED": "Faulted"
-			}
 		}
 	},
 	"SINGLE_ASSIGNMENTS": {
