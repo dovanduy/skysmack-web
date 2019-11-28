@@ -6,6 +6,7 @@ import { MenuAreaItems, SIDEBAR } from '@skysmack/framework';
 import { NgMenuProviders } from '../../../navigation/ng-menu-providers';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { HotkeysService } from '@skysmack/ng-framework';
 
 @Component({
   selector: 'ss-sidebar-menu',
@@ -29,7 +30,8 @@ export class SidebarMenuComponent implements OnInit {
     public router: Router,
     public activatedRoute: ActivatedRoute,
     public translate: TranslateService,
-    public ngMenuProviders: NgMenuProviders
+    public ngMenuProviders: NgMenuProviders,
+    public hotkeysService: HotkeysService
   ) {
   }
 
@@ -39,6 +41,14 @@ export class SidebarMenuComponent implements OnInit {
       map(menuAreaItems => {
         const items = menuAreaItems.filter(menuAreaItem => menuAreaItem && menuAreaItem.providedIn && menuAreaItem.providedIn.includes(SIDEBAR));
         this.anyMenuItems.emit(items.length > 0);
+        // Activate hotkeys if any.
+        items.forEach(item => {
+          item.items.forEach(menuItem => {
+            if (menuItem.hotkey && menuItem.hotkeyAction) {
+              this.hotkeysService.add({ keys: menuItem.hotkey }, menuItem.hotkeyAction);
+            }
+          });
+        });
         return items;
       })
     );

@@ -11,6 +11,7 @@ import { LodgingsIndexComponent } from './components/lodgings-index/lodgings-ind
 import { LodgingTypesIndexComponent } from '../lodging-types/components/lodging-types-index/lodging-types-index.component';
 import { LodgingsAvailabilityComponent } from './components/lodgings-availability/lodgings-availability.component';
 import { LodgingTypesAvailabilityComponent } from '../lodging-types/components/lodging-types-availability/lodging-types-availability.component';
+import { Router } from '@angular/router';
 
 @Injectable({ providedIn: 'root' })
 export class NgLodgingsMenuProvider implements MenuProvider {
@@ -21,7 +22,8 @@ export class NgLodgingsMenuProvider implements MenuProvider {
     public LodgingTypesAvailabilityTranslationPrefix = 'LODGINGS.INDEX.';
 
     constructor(
-        private store: NgSkysmackStore
+        private store: NgSkysmackStore,
+        private router: Router
     ) { }
 
     public getMenuAreas(packagePath: string, componentKey: string): Observable<MenuArea[]> {
@@ -77,6 +79,9 @@ export class NgLodgingsMenuProvider implements MenuProvider {
             new MenuItem({
                 url: `/${packagePath}/create`,
                 displayName: this.LodgingTranslationPrefix + 'CREATE',
+
+                hotkey: 'shift.c',
+                hotkeyAction: () => this.router.navigate([packagePath, 'create']),
                 area: 'actions',
                 order: 1,
                 icon: 'add',

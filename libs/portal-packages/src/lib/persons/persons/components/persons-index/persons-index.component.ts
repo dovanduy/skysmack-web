@@ -5,16 +5,15 @@ import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { NgPersonsStore, NgPersonsActions } from '@skysmack/ng-persons';
 import { Person, PersonsAppState, PERSONS_AREA_KEY, PersonsPermissions } from '@skysmack/packages-persons';
 import { MenuItem } from '@skysmack/framework';
-import { NgFieldActions, HotkeysService } from '@skysmack/ng-framework';
+import { NgFieldActions } from '@skysmack/ng-framework';
 import { NgPersonsFieldsConfig } from '../../../ng-persons-fields-config';
 import { DocumentRecordIndexComponent } from '@skysmack/portal-fields';
-import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'ss-persons-index',
   templateUrl: './persons-index.component.html'
 })
-export class PersonsIndexComponent extends DocumentRecordIndexComponent<PersonsAppState, Person, number> implements OnInit, AfterViewInit {
+export class PersonsIndexComponent extends DocumentRecordIndexComponent<PersonsAppState, Person, number> implements OnInit {
   public static COMPONENT_KEY = 'persons-index';
   public componentKey = PersonsIndexComponent.COMPONENT_KEY;
 
@@ -25,7 +24,7 @@ export class PersonsIndexComponent extends DocumentRecordIndexComponent<PersonsA
       PersonsPermissions.updatePersons,
     ]),
     new MenuItem().asEventAction(MENU_ITEM_ACTIONS_DELETE, this.delete, 'delete', this).setPermissions([
-      PersonsPermissions.removePersons,
+      PersonsPermissions.removePersons
     ])
   ];
 
@@ -38,23 +37,12 @@ export class PersonsIndexComponent extends DocumentRecordIndexComponent<PersonsA
     public fieldsConfig: NgPersonsFieldsConfig,
     public fieldActions: NgFieldActions,
     public title: EntityComponentPageTitle,
-    public menuItemActionProviders: MenuItemActionProviders,
-    private hotKeysService: HotkeysService
+    public menuItemActionProviders: MenuItemActionProviders
   ) {
     super(router, activatedRoute, actions, skysmackStore, store, fieldsConfig, fieldActions, menuItemActionProviders, title);
   }
 
   ngOnInit() {
     super.ngOnInit();
-  }
-
-  ngAfterViewInit() {
-    this.hotKeysService.addShortcut({ keys: 'shift.c' }).pipe(
-      tap(x => this.test())
-    ).subscribe();
-  }
-
-  public test() {
-    console.log('testing!');
   }
 }
