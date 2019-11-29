@@ -4,6 +4,7 @@ import { SortPipe } from './sort.pipe';
 import { WeekNoPipe } from './week-no.pipe';
 import { ShowMenuItemActionPipe } from './show-menu-item-action.pipe';
 import { WeekdayPipe } from './weekday.pipe';
+import { GetHotkeyOptionsPipe } from '../components/common/package-drawer/get-hotkey-options.pipe';
 
 export const portailUiPipes = [
     DisplayValuePipe,
@@ -11,5 +12,6 @@ export const portailUiPipes = [
     SortPipe,
     ShowMenuItemActionPipe,
     WeekNoPipe,
-    WeekdayPipe
+    WeekdayPipe,
+    GetHotkeyOptionsPipe
 ];

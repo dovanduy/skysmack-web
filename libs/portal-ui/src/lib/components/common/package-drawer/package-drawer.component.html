@@ -1,32 +1,26 @@
 <div class="app-drawer" *ngIf="menu$|async as menu" [ngClass]="{ open: menu.drawer }"
     (click)="uiRedux.setPackageDrawerStatus(false)" [hotkey]="{ action: closePackageDrawer, keyCode: 27 }">
 
-    <ng-container *ngIf="loadedPackages$ | async as loadedPackages">
-        <nav class="main">
-            <ng-container *ngFor="let loadedPackage of loadedPackages">
-                <ng-container *ngIf="loadedPackage.packageManifest">
-                    <div *ngIf="loadedPackage.packageManifest.menuLocation === 'main'" class="app-link-wrapper">
-                        <a mat-button class="app-link" [routerLink]="[loadedPackage._package.path]">
-                            <i class="material-icons md-light app-icon">{{ loadedPackage.packageManifest.icon }}</i>
-                            <span
-                                class="app-name">{{ (loadedPackage._package.name.length > 16)? (loadedPackage._package.name | slice:0:13) + '...' : (loadedPackage._package.name) }}</span>
-                        </a></div>
-                </ng-container>
-            </ng-container>
-        </nav>
+    <nav class="main">
+        <ng-container *ngFor="let _package of mainSectionPackages$ | async; let index = index">
+            <div *ngIf="_package.packageManifest.menuLocation === 'main'" class="app-link-wrapper">
+                <a mat-button class="app-link" [routerLink]="[_package._package.path]">
+                    <i class="material-icons md-light app-icon">{{ _package.packageManifest.icon }}</i>
+                    <span *ngIf="menu.drawer" [hotkey]="_package | getHotkeyOptions:index"
+                        class="app-name">{{ (_package._package.name.length > 16)? (_package._package.name | slice:0:13) + '...' : (_package._package.name) }}</span>
+                </a></div>
+        </ng-container>
+    </nav>
 
-        <nav class="docker">
-            <ng-container *ngFor="let loadedPackage of loadedPackages">
-                <ng-container *ngIf="loadedPackage.packageManifest">
-                    <div *ngIf="loadedPackage.packageManifest.menuLocation === 'docker'" class="app-link-wrapper">
-                        <a mat-button class="app-link" [routerLink]="[loadedPackage._package.path]">
-                            <i class="material-icons md-light app-icon">{{ loadedPackage.packageManifest.icon }}</i>
-                            <span
-                                class="app-name">{{ (loadedPackage._package.name.length > 16)? (loadedPackage._package.name | slice:0:13) + '...' : (loadedPackage._package.name) }}</span>
-                        </a>
-                    </div>
-                </ng-container>
-            </ng-container>
-        </nav>
-    </ng-container>
+    <nav class="docker">
+        <ng-container *ngFor="let _package of dockerSectionPackages$ | async">
+            <div *ngIf="_package.packageManifest.menuLocation === 'docker'" class="app-link-wrapper">
+                <a mat-button class="app-link" [routerLink]="[_package._package.path]">
+                    <i class="material-icons md-light app-icon">{{ _package.packageManifest.icon }}</i>
+                    <span
+                        class="app-name">{{ (_package._package.name.length > 16)? (_package._package.name | slice:0:13) + '...' : (_package._package.name) }}</span>
+                </a>
+            </div>
+        </ng-container>
+    </nav>
 </div>
