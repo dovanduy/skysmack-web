@@ -6,7 +6,7 @@
             <div *ngIf="_package.packageManifest.menuLocation === 'main'" class="app-link-wrapper">
                 <a mat-button class="app-link" [routerLink]="[_package._package.path]">
                     <i class="material-icons md-light app-icon">{{ _package.packageManifest.icon }}</i>
-                    <span *ngIf="menu.drawer" [hotkey]="_package | getHotkeyOptions:index"
+                    <span *ngIf="menu.drawer" [hotkey]="_package | getHotkeyOptions:(index+1)"
                         class="app-name">{{ (_package._package.name.length > 16)? (_package._package.name | slice:0:13) + '...' : (_package._package.name) }}</span>
                 </a></div>
         </ng-container>
@@ -17,7 +17,7 @@
             <div *ngIf="_package.packageManifest.menuLocation === 'docker'" class="app-link-wrapper">
                 <a mat-button class="app-link" [routerLink]="[_package._package.path]">
                     <i class="material-icons md-light app-icon">{{ _package.packageManifest.icon }}</i>
-                    <span
+                    <span *ngIf="menu.drawer" [hotkey]="_package | getHotkeyOptions:_package._package.name"
                         class="app-name">{{ (_package._package.name.length > 16)? (_package._package.name | slice:0:13) + '...' : (_package._package.name) }}</span>
                 </a>
             </div>
