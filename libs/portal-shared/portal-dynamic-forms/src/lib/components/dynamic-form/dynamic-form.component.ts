@@ -3,7 +3,7 @@ import { FormBuilder, Validators, FormGroup, FormControl } from '@angular/forms'
 import { Observable } from 'rxjs';
 import { GlobalProperties, SubscriptionHandler, LocalObject, StrIndex } from '@skysmack/framework';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
-import { map, take } from 'rxjs/operators';
+import { map, take, tap, debounceTime } from 'rxjs/operators';
 import { Field, FormRule, Validation, FormHelper } from '@skysmack/ng-dynamic-forms';
 import { EditorNavService } from '@skysmack/portal-ui';
 
@@ -30,6 +30,7 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
   public production = GlobalProperties.production;
   public fh: FormHelper;
   private subscriptionHandler = new SubscriptionHandler();
+  private formChanged = false;
 
   constructor(
     public fb: FormBuilder,
@@ -51,6 +52,8 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
         return fields.filter(field => field.includeInForm);
       })
     );
+
+    this.closeWarning();
   }
 
   ngOnDestroy() {
@@ -157,5 +160,32 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
    */
   private validateOnChange(formHelper: FormHelper) {
     this.subscriptionHandler.register(formHelper.form.valueChanges.subscribe(() => formHelper.validateForm(formHelper.form)));
+  }
+
+  private closeWarning() {
+    let original = null;
+
+    const askBeforeLeaving = () => {
+      window.addEventListener("beforeunload", function (e) {
+        var confirmationMessage = "\o/";
+
+        (e || window.event).returnValue = confirmationMessage; //Gecko + IE
+        return confirmationMessage;                            //Webkit, Safari, Chrome
+      });
+    };
+
+    this.subscriptionHandler.register(this.fh.form.valueChanges.pipe(
+      debounceTime(100),
+      tap(values => {
+        const strValues = JSON.stringify(values, undefined, 2);
+        if (!original) {
+          original = strValues;
+        }
+        if (original !== strValues) {
+          askBeforeLeaving();
+          this.formChanged = true;
+        }
+      })
+    ).subscribe());
   }
 }
