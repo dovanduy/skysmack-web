@@ -67,7 +67,7 @@ export class NgPersonsMenuProvider implements MenuProvider {
                 hotkeyOptions: {
                     keyCode: 70,
                     shiftKey: true,
-                    action: `/${packagePath}/create`
+                    action: `/${packagePath}/fields`
                 },
                 order: 2,
                 icon: 'short_text',
