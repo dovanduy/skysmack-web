@@ -1,11 +1,11 @@
 <nav *ngIf="skysmack$ | async as skysmack" class="docs-navbar-header">
   <!-- APP DRAWER -->
-  <a class="link" mat-icon-button (click)="uiStore.toggleMenuFor('drawer')"
-    title="{{ 'UI.TOP_BAR.PACKAGES'| translate}}">
+  <a class="link" mat-icon-button (click)="togglePackageDrawer()" title="{{ 'UI.TOP_BAR.PACKAGES'| translate}}"
+    [hotkey]="{ action: togglePackageDrawer, keyCode: 49, shiftKey: true }">
     <mat-icon aria-label="Open packages">apps</mat-icon>
   </a>
 
-  <a mat-button class="link" routerLink="/" (click)="uiStore.setPackageDrawerStatus(false)" aria-label="Skysmack">
+  <a mat-button class="link" routerLink="/" (click)="closePackageDrawer()" aria-label="Skysmack">
     <span>{{ skysmack.name }}</span>
   </a>
 
@@ -87,8 +87,7 @@
             <ng-container *ngIf="menuItem.isActionEvent && menuItem">
               <button mat-menu-item
                 (click)="uiStore.setPackageDrawerStatus(false); actionEvent({ action: menuItem.action, _this: menuItem._this })"
-                [title]="menuItem.displayName | translate"
-                [hotkey]="{ action: menuItem.action, keys: menuItem.hotkey }">
+                [title]="menuItem.displayName | translate" [hotkey]="menuItem.hotkeyOptions">
                 {{ menuItem.displayName | translate }}
               </button>
             </ng-container>
@@ -96,7 +95,7 @@
             <!-- URL EVENT -->
             <ng-container *ngIf="!menuItem.isActionEvent && menuItem.display">
               <button mat-menu-item [routerLink]="[menuItem.url]" (click)="uiStore.setPackageDrawerStatus(false)"
-                [title]="menuItem.displayName | translate">
+                [title]="menuItem.displayName | translate" [hotkey]="menuItem.hotkeyOptions">
                 {{ menuItem.displayName | translate }}
               </button>
             </ng-container>

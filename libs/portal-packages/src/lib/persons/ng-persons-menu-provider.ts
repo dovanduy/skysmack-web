@@ -48,7 +48,11 @@ export class NgPersonsMenuProvider implements MenuProvider {
                 url: `/${packagePath}/create`,
                 displayName: this.translationPrefix + 'CREATE',
                 area: 'actions',
-                hotkey: 'shift.c',
+                hotkeyOptions: {
+                    keyCode: 67,
+                    shiftKey: true,
+                    action: `/${packagePath}/create`
+                },
                 order: 1,
                 icon: 'add',
                 permissions: [
@@ -60,7 +64,11 @@ export class NgPersonsMenuProvider implements MenuProvider {
                 url: `/${packagePath}/fields`,
                 displayName: this.translationPrefix + 'FIELDS',
                 area: 'manage',
-                hotkey: 'shift.f',
+                hotkeyOptions: {
+                    keyCode: 70,
+                    shiftKey: true,
+                    action: `/${packagePath}/create`
+                },
                 order: 2,
                 icon: 'short_text',
                 permissions: [

@@ -33,3 +33,4 @@ export * from './menu';
 export * from './settings';
 export * from './dashboard';
 export * from './menu-provider';
+export * from './hotkey-options';

@@ -1,4 +1,5 @@
 import { AllowAccessFor } from '../permissions/allow-access-for';
+import { HotKeyOptions } from './hotkey-options';
 
 export class MenuItem {
     public showLogic: Function;
@@ -18,7 +19,7 @@ export class MenuItem {
     public permissions: string[];
     public display = true;
     public allowAccessFor: AllowAccessFor;
-    public hotkey: string;
+    public hotkeyOptions: Partial<HotKeyOptions>;
 
     public constructor(init?: Partial<MenuItem>) {
         Object.assign(this, init);

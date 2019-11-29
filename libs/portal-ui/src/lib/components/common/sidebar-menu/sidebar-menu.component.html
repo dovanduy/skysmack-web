@@ -11,14 +11,14 @@
             <ng-container *ngFor="let menuItem of menuAreaItem.items">
               <!-- ACTION EVENT -->
               <li *ngIf="menuItem.isActionEvent && (menuItem | showMenuItemAction:undefined)"
-                (click)="menuItemActionEvent.emit({ action: menuItem.action, _this: menuItem._this });">
+                (click)="menuItemActionEvent.emit({ action: menuItem.action, _this: menuItem._this });"
+                [hotkey]="menuItem.hotkeyOptions">
                 <span class="link">{{ menuItem.displayName | translate }}</span>
               </li>
 
               <!-- URL EVENT -->
               <li *ngIf="!menuItem.isActionEvent">
-                <a [routerLink]="[menuItem.url]"
-                  [hotkey]="{ action: menuItem.url, keys: menuItem.hotkey, log: 'sidebar menu' }">
+                <a [routerLink]="[menuItem.url]" [hotkey]="menuItem.hotkeyOptions">
                   {{ menuItem.displayName | translate }}
                 </a>
               </li>

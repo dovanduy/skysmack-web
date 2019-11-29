@@ -1,5 +1,5 @@
 <div class="app-drawer" *ngIf="menu$|async as menu" [ngClass]="{ open: menu.drawer }"
-    (click)="uiRedux.setPackageDrawerStatus(false)">
+    (click)="uiRedux.setPackageDrawerStatus(false)" [hotkey]="{ action: closePackageDrawer, keyCode: 27 }">
 
     <ng-container *ngIf="loadedPackages$ | async as loadedPackages">
         <nav class="main">

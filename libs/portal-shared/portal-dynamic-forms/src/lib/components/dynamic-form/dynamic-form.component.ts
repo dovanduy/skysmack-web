@@ -84,7 +84,7 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
     });
   }
 
-  public onSubmit() {
+  public onSubmit = () => {
     this.subscriptionHandler.register(this.fields$.pipe(
       take(1),
       // Remove all fields not to be included in the request.

@@ -15,15 +15,14 @@
             <a *ngIf="menuItem.isActionEvent && (menuItem | showMenuItemAction:undefined) && menuItem.display"
               (click)="menuItemActionEvent.emit({ action: menuItem.action, _this: menuItem._this, value: undefined });"
               [matTooltip]="menuItem.displayName | translate" matTooltipPosition="before" mat-mini-fab
-              class="fab-secondary" color="secondary">
+              class="fab-secondary" color="secondary" [hotkey]="menuItem.hotkeyOptions">
               <mat-icon>{{menuItem.icon}}</mat-icon>
             </a>
 
             <!-- URL EVENT -->
             <a *ngIf="!menuItem.isActionEvent && menuItem.display" [routerLink]="menuItem.url"
               [matTooltip]="menuItem.displayName | translate" matTooltipPosition="before" mat-mini-fab
-              class="fab-secondary" color="secondary"
-              [hotkey]="{ action: menuItem.url, keys: menuItem.hotkey, log: 'speed dial' }">
+              class="fab-secondary" color="secondary" [hotkey]="menuItem.hotkeyOptions">
               <mat-icon>{{menuItem.icon}}</mat-icon>
             </a>
           </ng-container>
@@ -37,14 +36,14 @@
       <a *ngIf="menuItems[0].isActionEvent && (menuItems[0] | showMenuItemAction:undefined) && menuItems[0].display"
         (click)="menuItemActionEvent.emit({ action: menuItems[0].action, _this: menuItems[0]._this, value: undefined });"
         [matTooltip]="menuItems[0].displayName | translate" matTooltipPosition="before" mat-fab class="fab-secondary"
-        color="secondary">
+        color="secondary" [hotkey]="menuItems[0].hotkeyOptions">
         <mat-icon>{{menuItems[0].icon}}</mat-icon>
       </a>
 
       <!-- URL EVENT -->
       <a *ngIf="!menuItems[0].isActionEvent && menuItems[0].display" [routerLink]="menuItems[0].url"
         [matTooltip]="menuItems[0].displayName | translate" matTooltipPosition="before" mat-fab class="fab-secondary"
-        color="secondary" [hotkey]="{ action: menuItems[0].url, keys: menuItems[0].hotkey, log: 'speed dial' }">
+        color="secondary" [hotkey]="menuItems[0].hotkeyOptions">
         <mat-icon>{{menuItems[0].icon}}</mat-icon>
       </a>
     </div>

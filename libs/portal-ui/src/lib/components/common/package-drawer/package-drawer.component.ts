@@ -24,4 +24,8 @@ export class PackageDrawerComponent implements OnInit {
     this.loadedPackages$ = this.skysmackStore.getLoadedPackages().pipe(map(loadedPackages => loadedPackages.filter(loadedPackage => loadedPackage._package.access)));
     this.menu$ = this.uiRedux.getMenu();
   }
+
+  public closePackageDrawer = (): void => {
+    this.uiRedux.setPackageDrawerStatus(false);
+  }
 }

@@ -26,6 +26,7 @@ export class NavBarComponent implements OnInit {
 
   public menuAreaItems$: Observable<MenuAreaItems[]>;
 
+
   constructor(
     public uiStore: UIRedux,
     public authenticationActions: NgAuthenticationActions,
@@ -61,5 +62,13 @@ export class NavBarComponent implements OnInit {
 
   public actionEvent(event: { action: Function, _this: any, value?: any }) {
     event.action(event._this, event.value);
+  }
+
+  public togglePackageDrawer = (): void => {
+    this.uiStore.toggleMenuFor('drawer');
+  }
+
+  public closePackageDrawer = (): void => {
+    this.uiStore.setPackageDrawerStatus(false);
   }
 }

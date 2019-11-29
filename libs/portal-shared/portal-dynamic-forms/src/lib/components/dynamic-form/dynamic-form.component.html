@@ -45,6 +45,6 @@
 
   <div class="actions">
     <button *ngIf="!removeSubmitButton" mat-flat-button color="primary" type="submit" (click)="onSubmit()"
-      [disabled]="disableButton">{{ buttonText }}</button>
+      [disabled]="disableButton" [hotkey]="{ action: onSubmit, keyCode: 83, shiftKey: true }">{{ buttonText }}</button>
   </div>
 </form>

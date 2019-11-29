@@ -79,8 +79,6 @@ export class NgLodgingsMenuProvider implements MenuProvider {
             new MenuItem({
                 url: `/${packagePath}/create`,
                 displayName: this.LodgingTranslationPrefix + 'CREATE',
-
-                hotkey: 'shift.c',
                 area: 'actions',
                 order: 1,
                 icon: 'add',

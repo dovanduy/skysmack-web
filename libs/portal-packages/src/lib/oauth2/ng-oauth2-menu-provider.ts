@@ -44,17 +44,21 @@ export class NgOAuth2MenuProvider implements MenuProvider {
                 .map(_package => {
                     const aMenuItem = new MenuItem({
                         area: 'identities',
-                        hotkey: 'shift.q',
                         allowAccessFor: AllowAccessFor.anonymous,
                         providedIn: [TOPBAR]
-                    });
-
-                    aMenuItem.asEventAction(_package.name, (_this: NgOAuth2MenuProvider) => {
+                    }).asEventAction(_package.name, (_this: NgOAuth2MenuProvider) => {
                         aMenuItem._this.dialog.open(LoginComponent, {
                             width: '500px',
                             data: { packagePath: _package.path }
                         });
                     }, 'account_circle', this);
+
+                    aMenuItem.hotkeyOptions = {
+                        keyCode: 81,
+                        shiftKey: true,
+                        action: aMenuItem.action
+                    };
+
 
                     return [
                         aMenuItem,
