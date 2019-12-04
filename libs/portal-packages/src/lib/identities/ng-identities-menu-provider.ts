@@ -286,6 +286,11 @@ export class NgIdentitiesMenuProvider implements MenuProvider {
                 url: 'create',
                 displayName: this.usersTranslationPrefix + 'CREATE',
                 area: 'actions',
+                hotkeyOptions: {
+                    keyCode: 67,
+                    shiftKey: true,
+                    action: `/${packagePath}/users/create`
+                },
                 order: 1,
                 icon: 'add',
                 permissions: [
@@ -320,6 +325,11 @@ export class NgIdentitiesMenuProvider implements MenuProvider {
                 url: 'create',
                 displayName: this.rolesTranslationPrefix + 'CREATE',
                 area: 'actions',
+                hotkeyOptions: {
+                    keyCode: 67,
+                    shiftKey: true,
+                    action: `/${packagePath}/roles/create`
+                },
                 order: 1,
                 icon: 'add',
                 permissions: [
@@ -354,6 +364,11 @@ export class NgIdentitiesMenuProvider implements MenuProvider {
                 url: 'create',
                 displayName: this.applicationTranslationPrefix + 'CREATE',
                 area: 'actions',
+                hotkeyOptions: {
+                    keyCode: 67,
+                    shiftKey: true,
+                    action: `/${packagePath}/applications/create`
+                },
                 order: 1,
                 icon: 'add',
                 permissions: [
@@ -388,6 +403,11 @@ export class NgIdentitiesMenuProvider implements MenuProvider {
                 url: 'create',
                 displayName: this.clientsTranslationPrefix + 'CREATE',
                 area: 'actions',
+                hotkeyOptions: {
+                    keyCode: 67,
+                    shiftKey: true,
+                    action: `/${packagePath}/clients/create`
+                },
                 order: 1,
                 icon: 'add',
                 permissions: [
