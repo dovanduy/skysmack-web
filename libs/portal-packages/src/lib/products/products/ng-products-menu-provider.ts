@@ -50,6 +50,61 @@ export class NgProductsMenuProvider implements MenuProvider {
         ];
     };
 
+    private getProductsMenuItems = (packagePath: string) => {
+        return [
+            new MenuItem({
+                url: 'create',
+                displayName: this.productsTranslationPrefix + 'CREATE',
+                area: 'actions',
+                hotkeyOptions: {
+                    keyCode: 67,
+                    shiftKey: true,
+                    action: `/${packagePath}/create`
+                },
+                order: 1,
+                icon: 'add',
+                permissions: [
+                    ProductsPermissions.addProducts
+                ],
+                providedIn: [SIDEBAR, SPEEDDIAL]
+            }),
+            new MenuItem({
+                url: 'types',
+                displayName: this.productsTranslationPrefix + 'TYPES',
+                area: 'manage',
+                hotkeyOptions: {
+                    keyCode: 84,
+                    shiftKey: true,
+                    action: `/${packagePath}/types`
+                },
+                order: 1,
+                icon: 'description',
+                permissions: [
+                    ProductsPermissions.findProductTypes
+                ],
+                providedIn: [SIDEBAR]
+            }),
+            new MenuItem({
+                url: 'fields',
+                displayName: this.productsTranslationPrefix + 'FIELDS',
+                area: 'manage',
+                hotkeyOptions: {
+                    keyCode: 70,
+                    shiftKey: true,
+                    action: `/${packagePath}/fields`
+                },
+                order: 2,
+                icon: 'short_text',
+                permissions: [
+                    ProductsPermissions.findProductsFields
+                ],
+                providedIn: [SIDEBAR]
+            })
+        ];
+    };
+
+
+
     private getProductTypesMenuAreas = () => {
         return [
             new MenuArea({
@@ -65,50 +120,17 @@ export class NgProductsMenuProvider implements MenuProvider {
         ];
     };
 
-    private getProductsMenuItems = (packagePath: string) => {
-        return [
-            new MenuItem({
-                url: 'create',
-                displayName: this.productsTranslationPrefix + 'CREATE',
-                area: 'actions',
-                order: 1,
-                icon: 'add',
-                permissions: [
-                    ProductsPermissions.addProducts
-                ],
-                providedIn: [SIDEBAR, SPEEDDIAL]
-            }),
-            new MenuItem({
-                url: 'types',
-                displayName: this.productsTranslationPrefix + 'TYPES',
-                area: 'manage',
-                order: 1,
-                icon: 'description',
-                permissions: [
-                    ProductsPermissions.findProductTypes
-                ],
-                providedIn: [SIDEBAR]
-            }),
-            new MenuItem({
-                url: 'fields',
-                displayName: this.productsTranslationPrefix + 'FIELDS',
-                area: 'manage',
-                order: 2,
-                icon: 'short_text',
-                permissions: [
-                    ProductsPermissions.findProductsFields
-                ],
-                providedIn: [SIDEBAR]
-            })
-        ];
-    };
-
     private getProductTypesMenuItems = (packagePath: string): MenuItem[] => {
         return [
             new MenuItem({
                 url: 'create',
                 displayName: this.productTypeTranslationPrefix + 'CREATE',
                 area: 'actions',
+                hotkeyOptions: {
+                    keyCode: 67,
+                    shiftKey: true,
+                    action: `/${packagePath}/types/create`
+                },
                 order: 1,
                 icon: 'add',
                 permissions: [
@@ -120,6 +142,11 @@ export class NgProductsMenuProvider implements MenuProvider {
                 url: 'fields',
                 displayName: this.productTypeTranslationPrefix + 'FIELDS',
                 area: 'manage',
+                hotkeyOptions: {
+                    keyCode: 70,
+                    shiftKey: true,
+                    action: `/${packagePath}/types/fields`
+                },
                 order: 1,
                 icon: 'short_text',
                 permissions: [
