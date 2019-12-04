@@ -56,37 +56,7 @@ export class NgSiteMinderMenuProvider implements MenuProvider {
         ];
     }
 
-    private getChannelsMenuAreas = () => {
-        return [
-            new MenuArea({
-                area: 'actions',
-                translationPrefix: this.channelsTranslationPrefix,
-                order: 1
-            }),
-            new MenuArea({
-                area: 'manage',
-                translationPrefix: this.channelsTranslationPrefix,
-                order: 2
-            })
-        ];
-    };
-
-    private getRatePlansMenuAreas = () => {
-        return [
-            new MenuArea({
-                area: 'actions',
-                translationPrefix: this.ratePlansTranslationPrefix,
-                order: 1
-            }),
-            new MenuArea({
-                area: 'manage',
-                translationPrefix: this.ratePlansTranslationPrefix,
-                order: 2
-            })
-        ];
-    };
-
-    private getSiteMinderMenuItems = () => {
+        private getSiteMinderMenuItems = () => {
         return [
             new MenuItem({
                 url: 'channels',
@@ -131,12 +101,34 @@ export class NgSiteMinderMenuProvider implements MenuProvider {
         ];
     }
 
+
+
+    private getChannelsMenuAreas = () => {
+        return [
+            new MenuArea({
+                area: 'actions',
+                translationPrefix: this.channelsTranslationPrefix,
+                order: 1
+            }),
+            new MenuArea({
+                area: 'manage',
+                translationPrefix: this.channelsTranslationPrefix,
+                order: 2
+            })
+        ];
+    };
+
     private getChannelsMenuItems = (packagePath: string): MenuItem[] => {
         return [
             new MenuItem({
                 url: 'create',
                 displayName: this.channelsTranslationPrefix + 'CREATE',
                 area: 'actions',
+                hotkeyOptions: {
+                    keyCode: 67,
+                    shiftKey: true,
+                    action: `/${packagePath}/channels/create`
+                },
                 order: 1,
                 icon: 'add',
                 permissions: [
@@ -148,12 +140,34 @@ export class NgSiteMinderMenuProvider implements MenuProvider {
         ];
     }
 
+
+
+    private getRatePlansMenuAreas = () => {
+        return [
+            new MenuArea({
+                area: 'actions',
+                translationPrefix: this.ratePlansTranslationPrefix,
+                order: 1
+            }),
+            new MenuArea({
+                area: 'manage',
+                translationPrefix: this.ratePlansTranslationPrefix,
+                order: 2
+            })
+        ];
+    };
+
     private getRatePlansMenuItems = (packagePath: string): MenuItem[] => {
         return [
             new MenuItem({
                 url: 'create',
                 displayName: this.ratePlansTranslationPrefix + 'CREATE',
                 area: 'actions',
+                hotkeyOptions: {
+                    keyCode: 67,
+                    shiftKey: true,
+                    action: `/${packagePath}/rate-plans/create`
+                },
                 order: 1,
                 icon: 'add',
                 permissions: [
@@ -164,6 +178,8 @@ export class NgSiteMinderMenuProvider implements MenuProvider {
             setBackButton(packagePath)
         ];
     }
+
+
 
     private getLodgingTypeRatePlanChannelsMenuAreas = () => {
         return [
@@ -186,6 +202,11 @@ export class NgSiteMinderMenuProvider implements MenuProvider {
                 url: 'create',
                 displayName: this.lodgingTypeRatePlanChannelPrefix + 'CREATE',
                 area: 'actions',
+                hotkeyOptions: {
+                    keyCode: 67,
+                    shiftKey: true,
+                    action: `/${packagePath}/lodging-type-rate-plan-channels/create`
+                },
                 order: 1,
                 icon: 'add',
                 permissions: [],
@@ -194,6 +215,8 @@ export class NgSiteMinderMenuProvider implements MenuProvider {
             setBackButton(packagePath)
         ];
     }
+
+    
 
     private getLodgingTypeRatePlansMenuAreas = () => {
         return [
@@ -216,6 +239,11 @@ export class NgSiteMinderMenuProvider implements MenuProvider {
                 url: 'create',
                 displayName: this.lodgingTypeRatePlanPrefix + 'CREATE',
                 area: 'actions',
+                hotkeyOptions: {
+                    keyCode: 67,
+                    shiftKey: true,
+                    action: `/${packagePath}/lodging-type-rate-plans/create`
+                },
                 order: 1,
                 icon: 'add',
                 permissions: [],
