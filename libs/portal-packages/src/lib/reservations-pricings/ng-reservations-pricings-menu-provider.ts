@@ -58,66 +58,6 @@ export class NgReservationsPricingsMenuProvider implements MenuProvider {
         ];
     };
 
-    private getLodgingPricesMenuAreas = () => {
-        return [
-            new MenuArea({
-                area: 'actions',
-                translationPrefix: this.LodgingsPricesTranslationPrefix,
-                order: 1
-            }),
-            new MenuArea({
-                area: 'manage',
-                translationPrefix: this.LodgingsPricesTranslationPrefix,
-                order: 2
-            })
-        ];
-    };
-
-    private getLodgingReservationPriceChangesMenuAreas = () => {
-        return [
-            new MenuArea({
-                area: 'actions',
-                translationPrefix: this.LodgingReservationPriceChangesTranslationPrefix,
-                order: 1
-            }),
-            new MenuArea({
-                area: 'manage',
-                translationPrefix: this.LodgingReservationPriceChangesTranslationPrefix,
-                order: 2
-            })
-        ];
-    };
-
-    private getLodgingTypePricesMenuAreas  = () => {
-        return [
-            new MenuArea({
-                area: 'actions',
-                translationPrefix: this.LodgingTypePricesTranslationPrefix,
-                order: 1
-            }),
-            new MenuArea({
-                area: 'manage',
-                translationPrefix: this.LodgingTypePricesTranslationPrefix,
-                order: 2
-            })
-        ];
-    };
-
-    private getLodgingTypeReservationPriceChangesMenuAreas = () => {
-        return [
-            new MenuArea({
-                area: 'actions',
-                translationPrefix: this.LodgingTypeReservationPriceChangesranslationPrefix,
-                order: 1
-            }),
-            new MenuArea({
-                area: 'manage',
-                translationPrefix: this.LodgingTypeReservationPriceChangesranslationPrefix,
-                order: 2
-            })
-        ];
-    };
-
     private getReservationsPricingsMenuItems = (packagePath: string): MenuItem[] => {
         return [
             new MenuItem({
@@ -168,12 +108,34 @@ export class NgReservationsPricingsMenuProvider implements MenuProvider {
         ];
     };
 
+
+
+    private getLodgingPricesMenuAreas = () => {
+        return [
+            new MenuArea({
+                area: 'actions',
+                translationPrefix: this.LodgingsPricesTranslationPrefix,
+                order: 1
+            }),
+            new MenuArea({
+                area: 'manage',
+                translationPrefix: this.LodgingsPricesTranslationPrefix,
+                order: 2
+            })
+        ];
+    };
+
     private getLodgingPricesMenuItems = (packagePath: string): MenuItem[] => {
         return [
             new MenuItem({
                 url: 'create',
                 displayName: this.LodgingsPricesTranslationPrefix + 'CREATE',
                 area: 'actions',
+                hotkeyOptions: {
+                    keyCode: 67,
+                    shiftKey: true,
+                    action: `/${packagePath}/prices/create`
+                },
                 order: 1,
                 icon: 'add',
                 permissions: [
@@ -184,12 +146,34 @@ export class NgReservationsPricingsMenuProvider implements MenuProvider {
         ];
     };
 
+
+
+    private getLodgingReservationPriceChangesMenuAreas = () => {
+        return [
+            new MenuArea({
+                area: 'actions',
+                translationPrefix: this.LodgingReservationPriceChangesTranslationPrefix,
+                order: 1
+            }),
+            new MenuArea({
+                area: 'manage',
+                translationPrefix: this.LodgingReservationPriceChangesTranslationPrefix,
+                order: 2
+            })
+        ];
+    };
+
     private getLodgingReservationPriceChangesMenuItems = (packagePath: string): MenuItem[] => {
         return [
             new MenuItem({
                 url: 'create',
                 displayName: this.LodgingReservationPriceChangesTranslationPrefix + 'CREATE',
                 area: 'actions',
+                hotkeyOptions: {
+                    keyCode: 67,
+                    shiftKey: true,
+                    action: `/${packagePath}/reservation-price-changes/create`
+                },
                 order: 1,
                 icon: 'add',
                 permissions: [
@@ -201,12 +185,34 @@ export class NgReservationsPricingsMenuProvider implements MenuProvider {
         ];
     };
 
+
+
+    private getLodgingTypePricesMenuAreas  = () => {
+        return [
+            new MenuArea({
+                area: 'actions',
+                translationPrefix: this.LodgingTypePricesTranslationPrefix,
+                order: 1
+            }),
+            new MenuArea({
+                area: 'manage',
+                translationPrefix: this.LodgingTypePricesTranslationPrefix,
+                order: 2
+            })
+        ];
+    };
+
     private getLodgingTypePricesMenuItems  = (packagePath: string): MenuItem[] => {
         return [
             new MenuItem({
                 url: 'create',
                 displayName: this.LodgingTypePricesTranslationPrefix + 'CREATE',
                 area: 'actions',
+                hotkeyOptions: {
+                    keyCode: 67,
+                    shiftKey: true,
+                    action: `/${packagePath}/types/prices/create`
+                },
                 order: 1,
                 icon: 'add',
                 permissions: [
@@ -217,12 +223,34 @@ export class NgReservationsPricingsMenuProvider implements MenuProvider {
         ];
     };
 
+
+
+    private getLodgingTypeReservationPriceChangesMenuAreas = () => {
+        return [
+            new MenuArea({
+                area: 'actions',
+                translationPrefix: this.LodgingTypeReservationPriceChangesranslationPrefix,
+                order: 1
+            }),
+            new MenuArea({
+                area: 'manage',
+                translationPrefix: this.LodgingTypeReservationPriceChangesranslationPrefix,
+                order: 2
+            })
+        ];
+    };
+
     private getLodgingTypeReservationPriceChangesMenuItems = (packagePath: string): MenuItem[] => {
         return [
             new MenuItem({
                 url: 'create',
                 displayName: this.LodgingTypeReservationPriceChangesranslationPrefix + 'CREATE',
                 area: 'actions',
+                hotkeyOptions: {
+                    keyCode: 67,
+                    shiftKey: true,
+                    action: `/${packagePath}/types/reservation-price-changes/create`
+                },
                 order: 1,
                 icon: 'add',
                 permissions: [
