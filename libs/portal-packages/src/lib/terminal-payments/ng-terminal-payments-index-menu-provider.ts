@@ -205,6 +205,11 @@ export class NgTerminalPaymentsIndexMenuProvider implements MenuProvider {
                 url: 'create',
                 displayName: this.terminalsTranslationPrefix + 'CREATE',
                 area: 'actions',
+                hotkeyOptions: {
+                    keyCode: 67,
+                    shiftKey: true,
+                    action: `/${packagePath}/terminals/create`
+                },
                 order: 1,
                 icon: 'add',
                 permissions: [
@@ -238,6 +243,11 @@ export class NgTerminalPaymentsIndexMenuProvider implements MenuProvider {
                 url: 'create',
                 displayName: this.terminalReceiptsTranslationPrefix + 'CREATE',
                 area: 'actions',
+                hotkeyOptions: {
+                    keyCode: 67,
+                    shiftKey: true,
+                    action: `/${packagePath}/receipts/create`
+                },
                 order: 1,
                 icon: 'add',
                 permissions: [
@@ -249,6 +259,11 @@ export class NgTerminalPaymentsIndexMenuProvider implements MenuProvider {
                 url: 'fields',
                 displayName: this.terminalReceiptsTranslationPrefix + 'FIELDS',
                 area: 'manage',
+                hotkeyOptions: {
+                    keyCode: 70,
+                    shiftKey: true,
+                    action: `/${packagePath}/receipts/fields`
+                },
                 order: 2,
                 icon: 'short_text',
                 permissions: [
@@ -283,6 +298,11 @@ export class NgTerminalPaymentsIndexMenuProvider implements MenuProvider {
                 url: 'create',
                 displayName: this.terminalPaymentReceiptsTranslationPrefix + 'CREATE',
                 area: 'actions',
+                hotkeyOptions: {
+                    keyCode: 67,
+                    shiftKey: true,
+                    action: `/${packagePath}/payment-receipts/create`
+                },
                 order: 1,
                 icon: 'add',
                 permissions: [
@@ -294,6 +314,11 @@ export class NgTerminalPaymentsIndexMenuProvider implements MenuProvider {
                 url: 'fields',
                 displayName: this.terminalPaymentReceiptsTranslationPrefix + 'FIELDS',
                 area: 'manage',
+                hotkeyOptions: {
+                    keyCode: 70,
+                    shiftKey: true,
+                    action: `/${packagePath}/payment-receipts/fields`
+                },
                 order: 2,
                 icon: 'short_text',
                 permissions: [
@@ -328,6 +353,11 @@ export class NgTerminalPaymentsIndexMenuProvider implements MenuProvider {
                 url: 'create',
                 displayName: this.connectionsTranslationPrefix + 'CREATE',
                 area: 'actions',
+                hotkeyOptions: {
+                    keyCode: 67,
+                    shiftKey: true,
+                    action: `/${packagePath}/connections/create`
+                },
                 order: 1,
                 icon: 'add',
                 permissions: [
