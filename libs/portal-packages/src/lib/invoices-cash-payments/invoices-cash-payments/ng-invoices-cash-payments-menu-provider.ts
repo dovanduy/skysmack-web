@@ -69,6 +69,11 @@ export class NgInvoicesCashPaymentsMenuProvider implements MenuProvider {
                 url: 'create',
                 displayName: this.translationPrefix + 'CREATE',
                 area: 'actions',
+                hotkeyOptions: {
+                    keyCode: 67,
+                    shiftKey: true,
+                    action: `/${packagePath}/create`
+                },
                 order: 1,
                 icon: 'add',
                 permissions: [

@@ -30,7 +30,7 @@ export class NgFieldsMenuProvider implements MenuProvider {
 
     public getMenuItems = (packagePath: string, componentKey: string): Observable<MenuItem[]> => {
         if (componentKey === FieldsIndexComponent.COMPONENT_KEY) {
-            return of(this.getFieldsMenuItems()).pipe(
+            return of(this.getFieldsMenuItems(packagePath)).pipe(
                 map(menuItems => this.setConditionalBackButton(packagePath, menuItems, this.previousUrl))
             );
         } else {
@@ -53,12 +53,17 @@ export class NgFieldsMenuProvider implements MenuProvider {
         ];
     }
 
-    private getFieldsMenuItems = () => {
+    private getFieldsMenuItems = (packagePath: string) => {
         return [
             new MenuItem({
                 url: 'create',
                 displayName: this.translationPrefix + 'CREATE',
                 area: 'actions',
+                hotkeyOptions: {
+                    keyCode: 67,
+                    shiftKey: true,
+                    action: `/${packagePath}/fields/create`
+                },
                 order: 1,
                 icon: 'add',
                 permissions: [
@@ -75,7 +80,7 @@ export class NgFieldsMenuProvider implements MenuProvider {
 
     private setConditionalBackButton = (packagePath: string, menuItems: MenuItem[], previousUrl: string): MenuItem[] => {
         if (previousUrl) {
-            return menuItems.concat(setBackButton(previousUrl))
+            return menuItems.concat(setBackButton(previousUrl));
         }
         return menuItems.concat(setBackButton(packagePath));
     }
