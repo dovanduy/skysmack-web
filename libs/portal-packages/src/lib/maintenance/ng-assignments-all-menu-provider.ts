@@ -57,65 +57,6 @@ export class NgAssignmentAllMenuProvider implements MenuProvider {
         ];
     };
 
-    private getAssignmentsMenuAreas = () => {
-        return [
-            new MenuArea({
-                area: 'actions',
-                translationPrefix: this.SingleAssignmentsTranslationPrefix,
-                order: 1,
-            }),
-            new MenuArea({
-                area: 'manage',
-                translationPrefix: this.SingleAssignmentsTranslationPrefix,
-                order: 2
-            })
-        ];
-    };
-    private getAssignmentTypesMenuAreas = () => {
-        return [
-            new MenuArea({
-                area: 'actions',
-                translationPrefix: this.AssignmentTypesTranslationPrefix,
-                order: 1,
-            }),
-            new MenuArea({
-                area: 'manage',
-                translationPrefix: this.AssignmentTypesTranslationPrefix,
-                order: 2
-            })
-        ];
-    };
-
-    private getMaintenanceStatesMenuAreas = () => {
-        return [
-            new MenuArea({
-                area: 'actions',
-                translationPrefix: this.MaintenanceStatesTranslationPrefix,
-                order: 1
-            }),
-            new MenuArea({
-                area: 'manage',
-                translationPrefix: this.MaintenanceStatesTranslationPrefix,
-                order: 2
-            })
-        ];
-    };
-
-    private getAssignmentsSchedulesMenuAreas = () => {
-        return [
-            new MenuArea({
-                area: 'actions',
-                translationPrefix: this.AssignmentsSchedulesTranslationPrefix,
-                order: 1
-            }),
-            new MenuArea({
-                area: 'manage',
-                translationPrefix: this.AssignmentsSchedulesTranslationPrefix,
-                order: 2
-            })
-        ];
-    };
-
     private getAssignmentsAllMenuItems = () => {
         return [
             new MenuItem({
@@ -162,12 +103,34 @@ export class NgAssignmentAllMenuProvider implements MenuProvider {
         ];
     };
 
+
+
+    private getAssignmentsMenuAreas = () => {
+        return [
+            new MenuArea({
+                area: 'actions',
+                translationPrefix: this.SingleAssignmentsTranslationPrefix,
+                order: 1,
+            }),
+            new MenuArea({
+                area: 'manage',
+                translationPrefix: this.SingleAssignmentsTranslationPrefix,
+                order: 2
+            })
+        ];
+    };
+
     private getAssignmentsMenuItems = (packagePath: string): MenuItem[] => {
         return [
             new MenuItem({
                 url: 'create',
                 displayName: this.SingleAssignmentsTranslationPrefix + 'CREATE',
                 area: 'actions',
+                hotkeyOptions: {
+                    keyCode: 67,
+                    shiftKey: true,
+                    action: `/${packagePath}/assignments/create`
+                },
                 order: 1,
                 icon: 'add',
                 permissions: [
@@ -179,35 +142,20 @@ export class NgAssignmentAllMenuProvider implements MenuProvider {
         ];
     };
 
-    private getAssignmentTypesMenuItems = (packagePath: string) => {
-        return [
-            new MenuItem({
-                url: 'create',
-                displayName: this.AssignmentTypesTranslationPrefix + 'CREATE',
-                area: 'actions',
-                order: 1,
-                icon: 'add',
-                permissions: [
-                ],
-                providedIn: [SIDEBAR, SPEEDDIAL]
-            }),
-            setBackButton(`${packagePath}`)
-        ];
-    };
 
-    private getMaintenanceStatesMenuItems = (packagePath: string) => {
+
+    private getAssignmentsSchedulesMenuAreas = () => {
         return [
-            new MenuItem({
-                url: 'create',
-                displayName: this.MaintenanceStatesTranslationPrefix + 'CREATE',
+            new MenuArea({
                 area: 'actions',
-                order: 1,
-                icon: 'add',
-                permissions: [
-                ],
-                providedIn: [SIDEBAR, SPEEDDIAL]
+                translationPrefix: this.AssignmentsSchedulesTranslationPrefix,
+                order: 1
             }),
-            setBackButton(`${packagePath}`)
+            new MenuArea({
+                area: 'manage',
+                translationPrefix: this.AssignmentsSchedulesTranslationPrefix,
+                order: 2
+            })
         ];
     };
 
@@ -217,6 +165,11 @@ export class NgAssignmentAllMenuProvider implements MenuProvider {
                 url: 'create',
                 displayName: this.AssignmentsSchedulesTranslationPrefix + 'CREATE',
                 area: 'actions',
+                hotkeyOptions: {
+                    keyCode: 67,
+                    shiftKey: true,
+                    action: `/${packagePath}/assignments/schedules/create`
+                },
                 order: 1,
                 icon: 'add',
                 permissions: [
@@ -224,6 +177,82 @@ export class NgAssignmentAllMenuProvider implements MenuProvider {
                 providedIn: [SIDEBAR, SPEEDDIAL]
             }),
             setBackButton(packagePath)
+        ];
+    };
+
+
+
+    private getAssignmentTypesMenuAreas = () => {
+        return [
+            new MenuArea({
+                area: 'actions',
+                translationPrefix: this.AssignmentTypesTranslationPrefix,
+                order: 1,
+            }),
+            new MenuArea({
+                area: 'manage',
+                translationPrefix: this.AssignmentTypesTranslationPrefix,
+                order: 2
+            })
+        ];
+    };
+
+    private getAssignmentTypesMenuItems = (packagePath: string) => {
+        return [
+            new MenuItem({
+                url: 'create',
+                displayName: this.AssignmentTypesTranslationPrefix + 'CREATE',
+                area: 'actions',
+                hotkeyOptions: {
+                    keyCode: 67,
+                    shiftKey: true,
+                    action: `/${packagePath}/assignments/types/create`
+                },
+                order: 1,
+                icon: 'add',
+                permissions: [
+                ],
+                providedIn: [SIDEBAR, SPEEDDIAL]
+            }),
+            setBackButton(`${packagePath}`)
+        ];
+    };
+
+    
+
+    private getMaintenanceStatesMenuAreas = () => {
+        return [
+            new MenuArea({
+                area: 'actions',
+                translationPrefix: this.MaintenanceStatesTranslationPrefix,
+                order: 1
+            }),
+            new MenuArea({
+                area: 'manage',
+                translationPrefix: this.MaintenanceStatesTranslationPrefix,
+                order: 2
+            })
+        ];
+    };
+
+    private getMaintenanceStatesMenuItems = (packagePath: string) => {
+        return [
+            new MenuItem({
+                url: 'create',
+                displayName: this.MaintenanceStatesTranslationPrefix + 'CREATE',
+                area: 'actions',
+                hotkeyOptions: {
+                    keyCode: 67,
+                    shiftKey: true,
+                    action: `/${packagePath}/states/create`
+                },
+                order: 1,
+                icon: 'add',
+                permissions: [
+                ],
+                providedIn: [SIDEBAR, SPEEDDIAL]
+            }),
+            setBackButton(`${packagePath}`)
         ];
     };
 }
