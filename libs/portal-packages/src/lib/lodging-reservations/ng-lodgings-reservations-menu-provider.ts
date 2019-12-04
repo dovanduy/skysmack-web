@@ -101,6 +101,11 @@ export class NgLodgingsReservationsMenuProvider implements MenuProvider {
                 url: '/' + packagePath + '/create',
                 displayName: this.lodgingReservationsTranslationPrefix + 'CREATE',
                 area: 'actions',
+                hotkeyOptions: {
+                    keyCode: 67,
+                    shiftKey: true,
+                    action: `/${packagePath}/create`
+                },
                 order: 1,
                 icon: 'add',
                 permissions: [
@@ -112,6 +117,11 @@ export class NgLodgingsReservationsMenuProvider implements MenuProvider {
                 url: 'fields',
                 displayName: this.lodgingReservationsTranslationPrefix + 'FIELDS',
                 area: 'manage',
+                hotkeyOptions: {
+                    keyCode: 70,
+                    shiftKey: true,
+                    action: `/${packagePath}/fields`
+                },
                 order: 2,
                 icon: 'short_text',
                 permissions: [
@@ -195,6 +205,11 @@ export class NgLodgingsReservationsMenuProvider implements MenuProvider {
                 url: 'create',
                 displayName: this.groupReservationTranslationPrefix + 'CREATE',
                 area: 'actions',
+                hotkeyOptions: {
+                    keyCode: 67,
+                    shiftKey: true,
+                    action: `/${packagePath}/create`
+                },
                 order: 1,
                 icon: 'add',
                 permissions: [
@@ -206,6 +221,11 @@ export class NgLodgingsReservationsMenuProvider implements MenuProvider {
                 url: 'fields',
                 displayName: this.groupReservationTranslationPrefix + 'FIELDS',
                 area: 'manage',
+                hotkeyOptions: {
+                    keyCode: 70,
+                    shiftKey: true,
+                    action: `/${packagePath}/fields`
+                },
                 order: 1,
                 icon: 'short_text',
                 permissions: [
