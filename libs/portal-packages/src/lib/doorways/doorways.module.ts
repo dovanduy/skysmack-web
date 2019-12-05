@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { DoorwaysRoutingModule } from './doorways-routing.module';
 import { HttpClientModule } from '@angular/common/http';
-import { NgDoorwaysModule } from '@skysmack/ng-doorways';
+import { NgDoorwaysModule, NgDoorwaysRelationSettingsFieldsConfig } from '@skysmack/ng-doorways';
 import { PortalUiModule, NgMenuProviders } from '@skysmack/portal-ui';
 import { doorwaysComponents, doorwaysEntryComponents } from './doorways/components/doorways-components';
 
@@ -12,6 +12,7 @@ import { PortalFieldsModule } from '@skysmack/portal-fields';
 import { CoalescingComponentFactoryResolver, NgDashboardProviders } from '@skysmack/ng-framework';
 import { NgDoorwaysDashboardProvider } from './ng-doorways-dashboard-provider';
 import { NgDoorwaysMenuProvider } from './ng-doorways-menu-provider';
+import { SettingsModule } from '@skysmack/portal-settings';
 
 @NgModule({
   imports: [
@@ -21,6 +22,7 @@ import { NgDoorwaysMenuProvider } from './ng-doorways-menu-provider';
     NgDoorwaysModule,
     DynamicFormsModule,
     DoorwaysRoutingModule,
+    SettingsModule,
     PortalFieldsModule,
   ],
   exports: [],
@@ -30,7 +32,9 @@ import { NgDoorwaysMenuProvider } from './ng-doorways-menu-provider';
   entryComponents: [
     ...doorwaysEntryComponents
   ],
-  providers: []
+  providers: [
+    { provide: 'NgDoorwaysRelationSettingsFieldsConfig', useClass: NgDoorwaysRelationSettingsFieldsConfig },
+  ]
 })
 export class DoorwaysModule {
   constructor(

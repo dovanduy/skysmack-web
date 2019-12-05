@@ -74,7 +74,16 @@ export class NgDoorwaysMenuProvider implements MenuProvider {
                     DoorwaysPermissions.findDoorwaysFields
                 ],
                 providedIn: [SIDEBAR]
-            })
+            }),
+            new MenuItem({
+                url: 'settings/relations',
+                displayName: this.translationPrefix + 'SETTINGS',
+                area: 'manage',
+                order: 2,
+                icon: 'group_add',
+                permissions: [],
+                providedIn: [SIDEBAR]
+            }),
         ];
     }
 }

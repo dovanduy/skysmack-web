@@ -3,7 +3,8 @@
         "FORM": {
             "LABELS": {
                 "NAME": "Name",
-                "DESCRIPTION": "Description"
+                "DESCRIPTION": "Description",
+                "ALLOWCIRCULARRELATIONS": "Allow circular relations"
             },
             "PLACEHOLDERS": {
                 "NAME": "Name",
@@ -51,7 +52,8 @@
             "FIELDS_TITLE": "(fields)",
             "ITEM": "Item",
             "MANAGE": "Manage",
-            "ACTIONS": "Actions"
+            "ACTIONS": "Actions",
+            "SETTINGS": "Settings"
         },
         "NOTIFICATIONS": {
             "GET": {
