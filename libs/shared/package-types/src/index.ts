@@ -29,3 +29,4 @@ export * from './webhooks-type';
 export * from './templates-type';
 export * from './cors-type';
 export * from './pass-codes-type';
+export * from './doorways-type';

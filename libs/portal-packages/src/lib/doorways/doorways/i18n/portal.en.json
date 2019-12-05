@@ -1,0 +1,89 @@
+{
+    "DOORWAYS": {
+        "FORM": {
+            "LABELS": {
+                "NAME": "Name",
+                "DESCRIPTION": "Description"
+            },
+            "PLACEHOLDERS": {
+                "NAME": "Name",
+                "DESCRIPTION": "Description"
+            },
+            "VALIDATION": {
+                "NAME": {
+                    "REQUIRED": "A name is required."
+                },
+                "DESCRIPTION": {
+                    "REQUIRED": "A description is required."
+                }
+            }
+        },
+        "FIELDS": {
+            "CREATE": {
+                "ADD": "Add new field"
+            },
+            "EDIT": {
+                "EDITING": "Editing"
+            },
+            "INDEX": {
+                "ACTIONS": "Actions",
+                "CREATE": "Create new field",
+                "OTHER": "Other",
+                "BACK": "Back",
+                "FIELDS": "Fields",
+                "EDIT": "Edit"
+            }
+        },
+        "CREATE": {
+            "CREATE": "Create",
+            "BUTTON_CREATE": "Create"
+        },
+        "EDIT": {
+            "EDIT": "Edit",
+            "BUTTON_EDIT": "Update"
+        },
+        "INDEX": {
+            "PACKAGES": "Packages",
+            "CREATE": "Create",
+            "EDIT": "Edit",
+            "DELETE": "Delete",
+            "FIELDS": "Fields",
+            "FIELDS_TITLE": "(fields)",
+            "ITEM": "Item",
+            "MANAGE": "Manage",
+            "ACTIONS": "Actions"
+        },
+        "NOTIFICATIONS": {
+            "GET": {
+                "PAGED_ERROR": "Failed to get doorways ({{ httpErrorCode }}).",
+                "SINGLE_FAILURE": "Failed to get {{ name }} ({{ httpErrorCode }}).",
+                "FIELDS_FAILURE": "Failed to get fields for doorways ({{ httpErrorCode }}).",
+                "SINGLE_FIELD_FAILURE": "Failed to get {{ name }} field ({{ httpErrorCode }})."
+            },
+            "ADD": {
+                "SUCCESS": "Added {{ name }} succcessfully.",
+                "FAILURE": "Failed to add {{ name }} ({{ httpErrorCode }}).",
+                "FIELD_FAILURE": "Failed to add field for {{ name }} ({{ httpErrorCode }}).",
+                "FIELD_SUCCESS": "Added field for {{ name }} successfully."
+            },
+            "UPDATE": {
+                "SUCCESS": "Updated {{ name }} successfully.",
+                "FAILURE": "Failed to update {{ name }} ({{ httpErrorCode }}).",
+                "FIELD_SUCCESS": "Updated field for {{ name }} successfully.",
+                "FIELD_FAILURE": "Failed to update field for {{ name }} ({{ httpErrorCode }})"
+            },
+            "REMOVE": {
+                "SUCCESS": "Removed {{ name }} successfully.",
+                "FAILURE": "Failed to remove {{ name }} ({{ httpErrorCode }}).",
+                "FIELD_SUCCESS": "Removed field for {{ name }} succesfully.",
+                "FIELD_FAILURE": "Failed to remove field for {{ name }} ({{ httpErrorCode }})."
+            }
+        },
+        "QUEUE": {
+            "ADDING": "Adding {{ name }}",
+            "UPDATING": "Updating {{ name }}",
+            "DELETING": "Deleting {{ name }}",
+            "ERROR": "An error occured with {{ name }}. Correct and try again."
+        }
+    }
+}

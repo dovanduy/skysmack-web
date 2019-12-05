@@ -2157,6 +2157,40 @@
         }
       }
     },
+    "ng-doorways": {
+      "projectType": "library",
+      "root": "libs/ng-packages/ng-doorways",
+      "sourceRoot": "libs/ng-packages/ng-doorways/src",
+      "prefix": "skysmack",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/ng-packages/ng-doorways/tsconfig.lib.json",
+              "libs/ng-packages/ng-doorways/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/ng-packages/ng-doorways/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/ng-packages/ng-doorways/jest.config.js",
+            "tsConfig": "libs/ng-packages/ng-doorways/tsconfig.spec.json",
+            "setupFile": "libs/ng-packages/ng-doorways/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
     "ng-pass-codes": {
       "projectType": "library",
       "root": "libs/ng-packages/ng-pass-codes",

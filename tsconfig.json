@@ -191,6 +191,9 @@
       "@skysmack/ng-persons": [
         "libs/ng-packages/ng-persons/src/public_api.ts"
       ],
+      "@skysmack/ng-doorways": [
+        "libs/ng-packages/ng-doorways/src/public_api.ts"
+      ],
       "@skysmack/ng-pass-codes": [
         "libs/ng-packages/ng-pass-codes/src/public_api.ts"
       ],

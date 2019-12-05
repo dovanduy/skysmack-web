@@ -25,3 +25,4 @@ export * from './3cx/3cx.module';
 export * from './webhooks/webhooks.module';
 export * from './templates/templates.module';
 export * from './cors/cors.module';
+export * from './doorways/doorways.module';

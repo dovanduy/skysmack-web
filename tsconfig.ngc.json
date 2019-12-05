@@ -179,6 +179,9 @@
       "@skysmack/ng-persons": [
         "libs/ng-packages/ng-persons"
       ],
+      "@skysmack/ng-doorways": [
+        "libs/ng-packages/ng-doorways"
+      ],
       "@skysmack/ng-pass-codes": [
         "libs/ng-packages/ng-pass-codes"
       ],

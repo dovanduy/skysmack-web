@@ -25,6 +25,7 @@ import { webhooksRoute } from './webhooks-package-manifest';
 import { templatesRoute } from './templates-package-manifest';
 import { corsRoute } from './cors-package-manifest';
 import { passCodesRoute } from './pass-codes-package-manifest';
+import { doorwaysRoute } from './doorways-package-manifest';
 
 export const packagesRoutes = [
     packagesRoute,
@@ -53,5 +54,6 @@ export const packagesRoutes = [
     webhooksRoute,
     templatesRoute,
     corsRoute,
-    passCodesRoute
+    passCodesRoute,
+    doorwaysRoute
 ];
