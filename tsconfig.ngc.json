@@ -182,6 +182,9 @@
       "@skysmack/ng-doorways": [
         "libs/ng-packages/ng-doorways"
       ],
+      "@skysmack/ng-doorways-pass-codes": [
+        "libs/ng-packages/ng-doorways-pass-codes"
+      ],
       "@skysmack/ng-pass-codes": [
         "libs/ng-packages/ng-pass-codes"
       ],
