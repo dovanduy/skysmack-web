@@ -35,6 +35,7 @@ import { loadTemplatePackage } from '../packages/templates-package-manifest';
 import { loadCorsPackage } from '../packages/cors-package-manifest';
 import { loadPassCodePackage } from '../packages/pass-codes-package-manifest';
 import { loadDoorwayPackage } from '../packages/doorways-package-manifest';
+import { loadDoorwaysPassCodesPackage } from '../packages/doorways-pass-codes-package-manifest';
 
 export function configureSkysmack(actions: NgSkysmackActions) {
     return () => actions.getSkysmack();
@@ -78,7 +79,8 @@ export const packageLoaders = [
     { provide: APP_INITIALIZER, useFactory: loadTemplatePackage, deps: [PackageLoader], multi: true },
     { provide: APP_INITIALIZER, useFactory: loadCorsPackage, deps: [PackageLoader], multi: true },
     { provide: APP_INITIALIZER, useFactory: loadPassCodePackage, deps: [PackageLoader], multi: true },
-    { provide: APP_INITIALIZER, useFactory: loadDoorwayPackage, deps: [PackageLoader], multi: true }
+    { provide: APP_INITIALIZER, useFactory: loadDoorwayPackage, deps: [PackageLoader], multi: true },
+    { provide: APP_INITIALIZER, useFactory: loadDoorwaysPassCodesPackage, deps: [PackageLoader], multi: true }
 ];
 
 export const injectionTokens = [

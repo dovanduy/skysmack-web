@@ -4,16 +4,19 @@ import { DOORWAYS_PASS_CODES_AREA_KEY } from './constants/constants';
 
 export class NgDoorwaysPassCodesValidation extends Validation {
     public formErrors = {
-        name: '',
-        description: ''
+        doorwayId: '',
+        passCodeId: '',
+        validFrom: '',
+        validTo: '',
+        disabled: ''
     };
 
     public validationMessages: StrIndex<{}> = {
-        name: {
-            required: '',
+        doorwayId: {
+            required: ''
         },
-        description: {
-            required: '',
+        passCodeId: {
+            required: ''
         }
     };
 

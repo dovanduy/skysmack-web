@@ -6,3 +6,4 @@ export class DoorwaysType implements PackageType {
   id = DoorwaysTypeId;
   dependencies = [];
 }
+

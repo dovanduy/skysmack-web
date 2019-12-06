@@ -11,7 +11,7 @@ import { doorwaysPassCodesReducer } from './doorways-pass-codes/redux/doorways-p
 })
 export class NgDoorwaysPassCodesModule {
   constructor(
-    epics: NgDoorwaysPassCodesEpics,
+    epics: NgDoorwaysPassCodesEpics
   ) {
     registerRedux(DOORWAYS_PASS_CODES_REDUCER_KEY, doorwaysPassCodesReducer, epics);
   }

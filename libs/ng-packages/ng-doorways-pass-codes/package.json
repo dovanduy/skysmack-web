@@ -8,8 +8,8 @@
     "@skysmack/ng-dynamic-forms": "*",
     "@skysmack/framework": "*",
     "@skysmack/redux": "*",
-    "@skysmack/signal-r": "*",
-    "@skysmack/packages-invoices-cash-payments": "*",
+    "@skysmack/ng-doorways": "*",
+    "@skysmack/ng-pass-codes": "*",
     "@skysmack/packages-skysmack-core": "*"
   },
   "main": "./lib/public_api.js",
