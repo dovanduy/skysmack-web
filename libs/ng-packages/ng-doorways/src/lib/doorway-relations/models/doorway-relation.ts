@@ -1,5 +1,5 @@
 import { Record, LocalObject } from "@skysmack/framework";
-import { Doorway } from './doorway';
+import { Doorway } from '../../doorways/models/doorway';
 
 export class DoorwayRelationKey {
     public outerDoorwayId: number;

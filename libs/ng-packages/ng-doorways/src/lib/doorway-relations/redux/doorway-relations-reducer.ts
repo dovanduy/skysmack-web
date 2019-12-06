@@ -1,8 +1,8 @@
 import { LocalPageTypes, StrIndex, LocalObject } from '@skysmack/framework';
 import { AppState, ReduxAction, RecordState, recordReducersBase } from '@skysmack/redux';
 import { sharedReducer } from '@skysmack/redux';
-import { DoorwayRelation, DoorwayRelationKey } from '../../models/doorway-relation';
-import { DOORWAY_RELATIONS_REDUCER_KEY, DOORWAY_RELATIONS_REDUX_KEY } from '../../constants/constants';
+import { DoorwayRelation, DoorwayRelationKey } from './../models/doorway-relation';
+import { DOORWAY_RELATIONS_REDUCER_KEY, DOORWAY_RELATIONS_REDUX_KEY } from './../constants/constants';
 
 /**
  * This is to be used when you want to access doorway-relations via the GLOBAL state. E.g. state.doorway-relations (where doorway-relations is the reducer name.)

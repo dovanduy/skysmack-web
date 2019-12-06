@@ -3,8 +3,8 @@ import { NgRedux } from '@angular-redux/store';
 import { NgRecordStore } from '@skysmack/ng-framework';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { DoorwayRelationsAppState } from './doorway-relations-reducer';
-import { DoorwayRelation, DoorwayRelationKey } from '../../models/doorway-relation';
-import { DOORWAY_RELATIONS_REDUCER_KEY } from '../../constants/constants';
+import { DoorwayRelation, DoorwayRelationKey } from './../models/doorway-relation';
+import { DOORWAY_RELATIONS_REDUCER_KEY } from './../constants/constants';
 import { DependencyOptions, LocalObject } from '@skysmack/framework';
 import { Observable } from 'rxjs';
 

@@ -1,7 +1,7 @@
 import { SignalRProvider } from '@skysmack/signal-r';
 import { Inject, Injectable } from '@angular/core';
 import { NgDoorwaysActions } from './redux';
-import { DOORWAYS_AREA_KEY } from '../constants/constants';
+import { DOORWAYS_AREA_KEY } from './constants/constants';
 
 @Injectable({ providedIn: 'root' })
 export class SignalRDoorwayProvider implements SignalRProvider {

@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
-import { NgDoorwaysEpics } from './doorways/doorways/redux/ng-doorways-epics';
-import { SignalRDoorwayProvider } from './doorways/doorways/signal-r-doorways-provider';
 import { registerRedux } from '@skysmack/ng-framework';
-import { DOORWAYS_REDUCER_KEY, DOORWAY_RELATIONS_REDUCER_KEY } from './doorways/constants/constants';
-import { doorwaysReducer } from './doorways/doorways/redux/doorways-reducer';
-import { doorwayRelationsReducer } from './doorways/doorway-relations/redux/doorway-relations-reducer';
-import { NgDoorwayRelationsEpics } from './doorways/doorway-relations/redux/ng-doorway-relations-epics';
+import { DOORWAYS_REDUCER_KEY } from './doorways/constants/constants';
+import { NgDoorwaysEpics } from './doorways/redux/ng-doorways-epics';
+import { NgDoorwayRelationsEpics } from './doorway-relations/redux/ng-doorway-relations-epics';
+import { SignalRDoorwayProvider } from './doorways/signal-r-doorways-provider';
+import { doorwaysReducer } from './doorways/redux/doorways-reducer';
+import { DOORWAY_RELATIONS_REDUCER_KEY } from './doorway-relations/constants/constants';
+import { doorwayRelationsReducer } from './doorway-relations/redux/doorway-relations-reducer';
 
 @NgModule({
   imports: [],

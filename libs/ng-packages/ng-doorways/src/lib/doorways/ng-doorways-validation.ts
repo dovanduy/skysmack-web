@@ -1,6 +1,6 @@
 import { StrIndex } from '@skysmack/framework';
 import { Validation } from '@skysmack/ng-dynamic-forms';
-import { DOORWAYS_AREA_KEY } from '../constants/constants';
+import { DOORWAYS_AREA_KEY } from './constants/constants';
 
 export class NgDoorwaysValidation extends Validation {
     public formErrors = {

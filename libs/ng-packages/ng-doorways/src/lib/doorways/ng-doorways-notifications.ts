@@ -1,6 +1,6 @@
 import { Injectable, Inject } from '@angular/core';
 import { RecordNotifications, Notifications, NOTIFICATIONS_INJECTOR_TOKEN } from '@skysmack/ng-framework';
-import { Doorway } from './../models/doorway';
+import { Doorway } from './models/doorway';
 
 @Injectable({ providedIn: 'root' })
 export class NgDoorwaysNotifications extends RecordNotifications<Doorway, number> {

@@ -1,8 +1,8 @@
 import { LocalPageTypes, StrIndex, LocalObject } from '@skysmack/framework';
 import { AppState, ReduxAction, RecordState, recordReducersBase } from '@skysmack/redux';
 import { sharedReducer } from '@skysmack/redux';
-import { Doorway } from '../../models/doorway';
-import { DOORWAYS_REDUCER_KEY, DOORWAYS_REDUX_KEY } from '../../constants/constants';
+import { Doorway } from '../models/doorway';
+import { DOORWAYS_REDUX_KEY, DOORWAYS_REDUCER_KEY } from '../constants/constants';
 
 /**
  * This is to be used when you want to access doorways via the GLOBAL state. E.g. state.doorways (where doorways is the reducer name.)

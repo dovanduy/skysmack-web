@@ -1,8 +1,8 @@
 import { NgDoorwayRelationsRequests } from './ng-doorway-relations-requests';
 import { Injectable } from '@angular/core';
 import { RecordEpicsBase, getReadDependencies } from '@skysmack/ng-framework';
-import { DoorwayRelation, DoorwayRelationKey } from '../../models/doorway-relation';
-import { DOORWAY_RELATIONS_REDUX_KEY } from '../../constants/constants';
+import { DoorwayRelation, DoorwayRelationKey } from './../models/doorway-relation';
+import { DOORWAY_RELATIONS_REDUX_KEY } from './../constants/constants';
 import { NgDoorwayRelationsNotifications } from '../ng-doorway-relations-notifications';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { NgDoorwaysStore, NgDoorwaysActions } from '../../doorways';

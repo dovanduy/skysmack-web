@@ -3,8 +3,8 @@ import { NgRedux } from '@angular-redux/store';
 import { NgRecordStore } from '@skysmack/ng-framework';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { DoorwaysAppState } from './doorways-reducer';
-import { Doorway } from '../../models/doorway';
-import { DOORWAYS_REDUCER_KEY } from '../../constants/constants';
+import { Doorway } from './../models/doorway';
+import { DOORWAYS_REDUCER_KEY } from './../constants/constants';
 
 @Injectable({ providedIn: 'root' })
 export class NgDoorwaysStore extends NgRecordStore<DoorwaysAppState, Doorway, number> {
