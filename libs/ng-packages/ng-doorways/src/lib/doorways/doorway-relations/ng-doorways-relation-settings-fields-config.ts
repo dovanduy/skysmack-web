@@ -4,9 +4,9 @@ import { LocalObject } from '@skysmack/framework';
 import { LoadedPackage } from '@skysmack/ng-framework';
 import { FieldsConfig, FieldProviders } from '@skysmack/ng-fields';
 import { CheckboxFieldComponent } from '@skysmack/portal-fields';
-import { DoorwaysRelationSettings } from './models/doorways-relation-settings';
-import { DOORWAYS_AREA_KEY, DOORWAYS_ADDITIONAL_PATHS } from './constants/constants';
 import { NgDoorwaysRelationSettingsValidation } from './ng-doorways-relation-settings-validation';
+import { DoorwaysRelationSettings } from '../models/doorways-relation-settings';
+import { DOORWAYS_AREA_KEY, DOORWAYS_ADDITIONAL_PATHS } from '../constants/constants';
 
 @Injectable({ providedIn: 'root' })
 export class NgDoorwaysRelationSettingsFieldsConfig extends FieldsConfig<DoorwaysRelationSettings, unknown> {
