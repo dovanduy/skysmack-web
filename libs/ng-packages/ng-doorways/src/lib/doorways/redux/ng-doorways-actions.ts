@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 import { LocalObject, StrIndex } from '@skysmack/framework';
 import { DoorwaysAppState } from '.';
 import { DOORWAYS_REDUX_KEY, DOORWAYS_ADDITIONAL_PATHS } from '../constants/constants';
-import { Doorway } from './../models/doorway';
+import { Doorway } from '../models/doorway';
 
 @Injectable({ providedIn: 'root' })
 export class NgDoorwaysActions extends RecordActionsBase<DoorwaysAppState, NgRedux<DoorwaysAppState>> {
