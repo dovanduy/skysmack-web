@@ -21,7 +21,7 @@ export const doorwaysRoutes: Routes = [
             path: 'settings/relations', component: SettingsComponent, pathMatch: 'full', data: {
               fieldsConfigToken: 'NgDoorwaysRelationSettingsFieldsConfig'
             } as RouteData
-          },
+          }
         ]
       },
       getFieldsRoutes(DOORWAYS_AREA_KEY, DOORWAYS_ADDITIONAL_PATHS)

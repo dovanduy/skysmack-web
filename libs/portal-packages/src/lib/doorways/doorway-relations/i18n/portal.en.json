@@ -1,0 +1,41 @@
+{
+    "DOORWAY_RELATIONS": {
+        "FORM": {
+            "LABELS": {
+                "OUTERDOORWAYID": "Outer doorway",
+                "INNERDOORWAYID": "Inner doorway",
+                "ALLOWCIRCULARRELATIONS": "Allow circular relations"
+            },
+            "PLACEHOLDERS": {
+                "OUTERDOORWAYID": "Outer doorway",
+                "INNERDOORWAYID": "Inner doorway"
+            },
+            "VALIDATION": {
+                "OUTERDOORWAYID": {
+                    "REQUIRED": "Outer doorway is required."
+                },
+                "INNERDOORWAYID": {
+                    "REQUIRED": "Inner doorway is required."
+                }
+            }
+        },
+        "CREATE": {
+            "CREATE": "Create",
+            "BUTTON_CREATE": "Create"
+        },
+        "EDIT": {
+            "EDIT": "Edit",
+            "BUTTON_EDIT": "Update"
+        },
+        "INDEX": {
+            "TITLE_EXTRAS": "(Relations)",
+            "CREATE": "Create",
+            "EDIT": "Edit",
+            "DELETE": "Delete",
+            "MANAGE": "Manage",
+            "ACTIONS": "Actions",
+            "SETTINGS": "Settings"
+        },
+        "SETTINGS": {}
+    }
+}

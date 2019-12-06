@@ -1,43 +1,4 @@
 {
-	"CORS": {
-		"FORM": {
-			"LABELS": {
-				"ALLOWALLORIGINS": "Allow all origins",
-				"URL": "Url",
-				"HTTPMETHOD": "HTTP method",
-				"CUSTOMHEADERS": "Custom headers",
-				"PACKAGEPATH": "Package path",
-				"SOURCE": "Source",
-				"EVENTTYPE": "Event type"
-			},
-			"PLACEHOLDERS": {
-				"ALLOWALLORIGINS": "Allow all origins",
-				"URL": "Url",
-				"HTTPMETHOD": "HTTP method",
-				"CUSTOMHEADERS": "Custom headers",
-				"PACKAGEPATH": "Package path",
-				"SOURCE": "Source",
-				"EVENTTYPE": "Event type"
-			},
-			"VALIDATION": {}
-		},
-		"CREATE": {
-			"CREATE": "Create",
-			"BUTTON_CREATE": "Create"
-		},
-		"EDIT": {
-			"EDIT": "Edit",
-			"BUTTON_EDIT": "Edit"
-		},
-		"INDEX": {
-			"CREATE": "Create",
-			"EDIT": "Edit",
-			"DELETE": "Delete",
-			"MANAGE": "Manage",
-			"ACTIONS": "Actions",
-			"SETTINGS": "Settings"
-		}
-	},
 	"ACCESS_POLICY_PERMISSIONS": {
 		"CREATE": {
 			"CREATE": "Create",
@@ -175,12 +136,50 @@
 			"ERROR": "An error occured with access policy rules {{ id }}. Correct and try again."
 		}
 	},
+	"DOORWAY_RELATIONS": {
+		"FORM": {
+			"LABELS": {
+				"OUTERDOORWAYID": "Outer doorway",
+				"INNERDOORWAYID": "Inner doorway",
+				"ALLOWCIRCULARRELATIONS": "Allow circular relations"
+			},
+			"PLACEHOLDERS": {
+				"OUTERDOORWAYID": "Outer doorway",
+				"INNERDOORWAYID": "Inner doorway"
+			},
+			"VALIDATION": {
+				"OUTERDOORWAYID": {
+					"REQUIRED": "Outer doorway is required."
+				},
+				"INNERDOORWAYID": {
+					"REQUIRED": "Inner doorway is required."
+				}
+			}
+		},
+		"CREATE": {
+			"CREATE": "Create",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDIT": "Edit",
+			"BUTTON_EDIT": "Update"
+		},
+		"INDEX": {
+			"TITLE_EXTRAS": "(Relations)",
+			"CREATE": "Create",
+			"EDIT": "Edit",
+			"DELETE": "Delete",
+			"MANAGE": "Manage",
+			"ACTIONS": "Actions",
+			"SETTINGS": "Settings"
+		},
+		"SETTINGS": {}
+	},
 	"DOORWAYS": {
 		"FORM": {
 			"LABELS": {
 				"NAME": "Name",
-				"DESCRIPTION": "Description",
-				"ALLOWCIRCULARRELATIONS": "Allow circular relations"
+				"DESCRIPTION": "Description"
 			},
 			"PLACEHOLDERS": {
 				"NAME": "Name",
@@ -229,39 +228,79 @@
 			"ITEM": "Item",
 			"MANAGE": "Manage",
 			"ACTIONS": "Actions",
-			"SETTINGS": "Settings"
+			"DOORWAY_RELATION_SETTINGS": "Relation settings",
+			"RELATIONS": "Doorway relations"
 		},
 		"NOTIFICATIONS": {
 			"GET": {
 				"PAGED_ERROR": "Failed to get doorways ({{ httpErrorCode }}).",
-				"SINGLE_FAILURE": "Failed to get {{ displayName }} ({{ httpErrorCode }}).",
+				"SINGLE_FAILURE": "Failed to get {{ name }} ({{ httpErrorCode }}).",
 				"FIELDS_FAILURE": "Failed to get fields for doorways ({{ httpErrorCode }}).",
-				"SINGLE_FIELD_FAILURE": "Failed to get {{ displayName }} field ({{ httpErrorCode }})."
+				"SINGLE_FIELD_FAILURE": "Failed to get {{ name }} field ({{ httpErrorCode }})."
 			},
 			"ADD": {
-				"SUCCESS": "Added {{ displayName }} succcessfully.",
-				"FAILURE": "Failed to add {{ displayName }} ({{ httpErrorCode }}).",
-				"FIELD_FAILURE": "Failed to add field for {{ displayName }} ({{ httpErrorCode }}).",
-				"FIELD_SUCCESS": "Added field for {{ displayName }} successfully."
+				"SUCCESS": "Added {{ name }} succcessfully.",
+				"FAILURE": "Failed to add {{ name }} ({{ httpErrorCode }}).",
+				"FIELD_FAILURE": "Failed to add field for {{ name }} ({{ httpErrorCode }}).",
+				"FIELD_SUCCESS": "Added field for {{ name }} successfully."
 			},
 			"UPDATE": {
-				"SUCCESS": "Updated {{ displayName }} successfully.",
-				"FAILURE": "Failed to update {{ displayName }} ({{ httpErrorCode }}).",
-				"FIELD_SUCCESS": "Updated field for {{ displayName }} successfully.",
-				"FIELD_FAILURE": "Failed to update field for {{ displayName }} ({{ httpErrorCode }})"
+				"SUCCESS": "Updated {{ name }} successfully.",
+				"FAILURE": "Failed to update {{ name }} ({{ httpErrorCode }}).",
+				"FIELD_SUCCESS": "Updated field for {{ name }} successfully.",
+				"FIELD_FAILURE": "Failed to update field for {{ name }} ({{ httpErrorCode }})"
 			},
 			"REMOVE": {
-				"SUCCESS": "Removed {{ displayName }} successfully.",
-				"FAILURE": "Failed to remove {{ displayName }} ({{ httpErrorCode }}).",
-				"FIELD_SUCCESS": "Removed field for {{ displayName }} succesfully.",
-				"FIELD_FAILURE": "Failed to remove field for {{ displayName }} ({{ httpErrorCode }})."
+				"SUCCESS": "Removed {{ name }} successfully.",
+				"FAILURE": "Failed to remove {{ name }} ({{ httpErrorCode }}).",
+				"FIELD_SUCCESS": "Removed field for {{ name }} succesfully.",
+				"FIELD_FAILURE": "Failed to remove field for {{ name }} ({{ httpErrorCode }})."
 			}
 		},
 		"QUEUE": {
-			"ADDING": "Adding {{ displayName }}",
-			"UPDATING": "Updating {{ displayName }}",
-			"DELETING": "Deleting {{ displayName }}",
-			"ERROR": "An error occured with {{ displayName }}. Correct and try again."
+			"ADDING": "Adding {{ name }}",
+			"UPDATING": "Updating {{ name }}",
+			"DELETING": "Deleting {{ name }}",
+			"ERROR": "An error occured with {{ name }}. Correct and try again."
+		}
+	},
+	"CORS": {
+		"FORM": {
+			"LABELS": {
+				"ALLOWALLORIGINS": "Allow all origins",
+				"URL": "Url",
+				"HTTPMETHOD": "HTTP method",
+				"CUSTOMHEADERS": "Custom headers",
+				"PACKAGEPATH": "Package path",
+				"SOURCE": "Source",
+				"EVENTTYPE": "Event type"
+			},
+			"PLACEHOLDERS": {
+				"ALLOWALLORIGINS": "Allow all origins",
+				"URL": "Url",
+				"HTTPMETHOD": "HTTP method",
+				"CUSTOMHEADERS": "Custom headers",
+				"PACKAGEPATH": "Package path",
+				"SOURCE": "Source",
+				"EVENTTYPE": "Event type"
+			},
+			"VALIDATION": {}
+		},
+		"CREATE": {
+			"CREATE": "Create",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDIT": "Edit",
+			"BUTTON_EDIT": "Edit"
+		},
+		"INDEX": {
+			"CREATE": "Create",
+			"EDIT": "Edit",
+			"DELETE": "Delete",
+			"MANAGE": "Manage",
+			"ACTIONS": "Actions",
+			"SETTINGS": "Settings"
 		}
 	},
 	"EMAIL_TEMPLATES": {
@@ -410,50 +449,6 @@
 		"NOTIFICATIONS": {},
 		"QUEUE": {}
 	},
-	"CLIENTS": {
-		"CREATE": {
-			"CREATE": "Create",
-			"BUTTON_CREATE": "Create"
-		},
-		"EDIT": {
-			"EDIT": "Edit",
-			"BUTTON_EDIT": "Update"
-		},
-		"INDEX": {
-			"TITLE_EXTRAS": "(Clients)",
-			"ACTIONS": "Actions",
-			"CREATE": "Create",
-			"DELETE": "Delete",
-			"MANAGE": "Manage",
-			"BACK": "Back"
-		},
-		"FORM": {
-			"LABELS": {
-				"NAME": "Name",
-				"DESCRIPTION": "Description",
-				"ONLINE": "Online"
-			},
-			"PLACEHOLDERS": {
-				"NAME": "Name",
-				"DESCRIPTION": "Description",
-				"ONLINE": "Online"
-			},
-			"VALIDATION": {
-				"NAME": {
-					"REQUIRED": "Name is required."
-				},
-				"DESCRIPTION": {
-					"REQUIRED": "Description is required."
-				}
-			}
-		},
-		"QUEUE": {
-			"ADDING": "Adding client {{ name }}",
-			"UPDATING": "Updating client {{ name }}",
-			"DELETING": "Deleting client {{ name }}",
-			"ERROR": "An error occured with client {{ name }}. Correct and try again."
-		}
-	},
 	"IDENTITIES": {
 		"INDEX": {
 			"ROLES": "Roles",
@@ -517,6 +512,50 @@
 		"QUEUE": {
 			"UPDATING": "Updating",
 			"ERROR": "Error occured updating settings."
+		}
+	},
+	"CLIENTS": {
+		"CREATE": {
+			"CREATE": "Create",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDIT": "Edit",
+			"BUTTON_EDIT": "Update"
+		},
+		"INDEX": {
+			"TITLE_EXTRAS": "(Clients)",
+			"ACTIONS": "Actions",
+			"CREATE": "Create",
+			"DELETE": "Delete",
+			"MANAGE": "Manage",
+			"BACK": "Back"
+		},
+		"FORM": {
+			"LABELS": {
+				"NAME": "Name",
+				"DESCRIPTION": "Description",
+				"ONLINE": "Online"
+			},
+			"PLACEHOLDERS": {
+				"NAME": "Name",
+				"DESCRIPTION": "Description",
+				"ONLINE": "Online"
+			},
+			"VALIDATION": {
+				"NAME": {
+					"REQUIRED": "Name is required."
+				},
+				"DESCRIPTION": {
+					"REQUIRED": "Description is required."
+				}
+			}
+		},
+		"QUEUE": {
+			"ADDING": "Adding client {{ name }}",
+			"UPDATING": "Updating client {{ name }}",
+			"DELETING": "Deleting client {{ name }}",
+			"ERROR": "An error occured with client {{ name }}. Correct and try again."
 		}
 	},
 	"APPLICATIONS": {
@@ -1956,6 +1995,54 @@
 			"ERROR": "An error occured with {{ name }}. Correct and try again."
 		}
 	},
+	"PHONE_NUMBERS": {
+		"FORM": {
+			"LABELS": {
+				"NUMBER": "Number",
+				"INTERNAL": "Internal",
+				"PHONEID": "Phone"
+			},
+			"PLACEHOLDERS": {
+				"NUMBER": "Number",
+				"INTERNAL": "Internal",
+				"PHONEID": "Phone"
+			},
+			"VALIDATION": {
+				"NUMBER": {
+					"REQUIRED": "Number is required"
+				},
+				"INTERNAL": {
+					"REQUIRED": "Internal is required"
+				},
+				"PHONEID": {
+					"REQUIRED": "Phone is required"
+				}
+			}
+		},
+		"CREATE": {
+			"CREATE_PHONE": "Create a new phone-number",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDIT": "Edit phone-number",
+			"BUTTON_EDIT": "Update"
+		},
+		"INDEX": {
+			"ACTIONS": "Actions",
+			"CREATE": "Create",
+			"MANAGE": "Manage",
+			"PHONES": "Phones",
+			"LOGS": "Logs",
+			"BACK": "Back",
+			"TITLE_EXTRAS": "(numbers)"
+		},
+		"QUEUE": {
+			"ADDING": "Adding {{ number }}",
+			"UPDATING": "Updating {{ number }}",
+			"DELETING": "Deleting {{ number }}",
+			"ERROR": "An error occured with {{ number }}. Correct and try again."
+		}
+	},
 	"PHONE_LOGS": {
 		"FORM": {
 			"LABELS": {
@@ -2020,54 +2107,6 @@
 			"UPDATING": "Updating {{ name }}",
 			"DELETING": "Deleting {{ name }}",
 			"ERROR": "An error occured with {{ name }}. Correct and try again."
-		}
-	},
-	"PHONE_NUMBERS": {
-		"FORM": {
-			"LABELS": {
-				"NUMBER": "Number",
-				"INTERNAL": "Internal",
-				"PHONEID": "Phone"
-			},
-			"PLACEHOLDERS": {
-				"NUMBER": "Number",
-				"INTERNAL": "Internal",
-				"PHONEID": "Phone"
-			},
-			"VALIDATION": {
-				"NUMBER": {
-					"REQUIRED": "Number is required"
-				},
-				"INTERNAL": {
-					"REQUIRED": "Internal is required"
-				},
-				"PHONEID": {
-					"REQUIRED": "Phone is required"
-				}
-			}
-		},
-		"CREATE": {
-			"CREATE_PHONE": "Create a new phone-number",
-			"BUTTON_CREATE": "Create"
-		},
-		"EDIT": {
-			"EDIT": "Edit phone-number",
-			"BUTTON_EDIT": "Update"
-		},
-		"INDEX": {
-			"ACTIONS": "Actions",
-			"CREATE": "Create",
-			"MANAGE": "Manage",
-			"PHONES": "Phones",
-			"LOGS": "Logs",
-			"BACK": "Back",
-			"TITLE_EXTRAS": "(numbers)"
-		},
-		"QUEUE": {
-			"ADDING": "Adding {{ number }}",
-			"UPDATING": "Updating {{ number }}",
-			"DELETING": "Deleting {{ number }}",
-			"ERROR": "An error occured with {{ number }}. Correct and try again."
 		}
 	},
 	"PRODUCT_TYPES": {
@@ -3576,6 +3615,21 @@
 			"VALIDATION": {}
 		}
 	},
+	"OPEN_API": {
+		"SETTINGS": "Settings",
+		"FORM": {
+			"PLACEHOLDERS": {
+				"TITLE": "Title",
+				"DESCRIPTION": "Description",
+				"TERMSOFSERVICE": "Terms of service",
+				"CONTACTNAME": "Contact name",
+				"CONTACTURL": "Contact URL",
+				"CONTACTEMAIL": "Contact email",
+				"LICENSENAME": "License name",
+				"LICENSEURL": "License URL"
+			}
+		}
+	},
 	"OAUTH2": {
 		"FORM": {
 			"LABELS": {
@@ -3790,21 +3844,6 @@
 		},
 		"CREATE": {
 			"INSTALL": "Install feature"
-		}
-	},
-	"OPEN_API": {
-		"SETTINGS": "Settings",
-		"FORM": {
-			"PLACEHOLDERS": {
-				"TITLE": "Title",
-				"DESCRIPTION": "Description",
-				"TERMSOFSERVICE": "Terms of service",
-				"CONTACTNAME": "Contact name",
-				"CONTACTURL": "Contact URL",
-				"CONTACTEMAIL": "Contact email",
-				"LICENSENAME": "License name",
-				"LICENSEURL": "License URL"
-			}
 		}
 	},
 	"PRODUCTS_PRICINGS": {

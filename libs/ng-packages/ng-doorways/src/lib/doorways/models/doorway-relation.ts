@@ -1,4 +1,5 @@
-import { Record } from "@skysmack/framework";
+import { Record, LocalObject } from "@skysmack/framework";
+import { Doorway } from './doorway';
 
 export class DoorwayRelationKey {
     public outerDoorwayId: number;
@@ -6,8 +7,11 @@ export class DoorwayRelationKey {
 }
 
 export class DoorwayRelation extends Record<DoorwayRelationKey> {
-    public outerDoorwayId: string;
-    public innerDoorwayId: string;
+    public outerDoorwayId: number;
+    public outerDoorway: LocalObject<Doorway, number>;
+
+    public innerDoorwayId: number;
+    public innerDoorway: LocalObject<Doorway, number>;
 
     public constructor(init?: Partial<DoorwayRelation>) {
         super();

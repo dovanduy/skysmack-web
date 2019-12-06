@@ -13,6 +13,7 @@ import { CoalescingComponentFactoryResolver, NgDashboardProviders } from '@skysm
 import { NgDoorwaysDashboardProvider } from './ng-doorways-dashboard-provider';
 import { NgDoorwaysMenuProvider } from './ng-doorways-menu-provider';
 import { SettingsModule } from '@skysmack/portal-settings';
+import { doorwayRelationsComponents, doorwayRelationsEntryComponents } from './doorway-relations/components/doorway-relations-components';
 
 @NgModule({
   imports: [
@@ -27,10 +28,12 @@ import { SettingsModule } from '@skysmack/portal-settings';
   ],
   exports: [],
   declarations: [
-    ...doorwaysComponents
+    ...doorwaysComponents,
+    ...doorwayRelationsComponents
   ],
   entryComponents: [
-    ...doorwaysEntryComponents
+    ...doorwaysEntryComponents,
+    ...doorwayRelationsEntryComponents
   ],
   providers: [
     { provide: 'NgDoorwaysRelationSettingsFieldsConfig', useClass: NgDoorwaysRelationSettingsFieldsConfig },
@@ -51,3 +54,4 @@ export class DoorwaysModule {
       .add(ngDoorwaysMenuProvider);
   }
 }
+
