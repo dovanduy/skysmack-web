@@ -27,6 +27,7 @@ import { corsRoute } from './cors-package-manifest';
 import { passCodesRoute } from './pass-codes-package-manifest';
 import { doorwaysRoute } from './doorways-package-manifest';
 import { doorwaysPassCodesRoute } from './doorways-pass-codes-package-manifest';
+import { lodgingsDoorwaysRoute } from './lodgings-doorways-package-manifest';
 
 export const packagesRoutes = [
     packagesRoute,
@@ -57,5 +58,6 @@ export const packagesRoutes = [
     corsRoute,
     passCodesRoute,
     doorwaysRoute,
-    doorwaysPassCodesRoute
+    doorwaysPassCodesRoute,
+    lodgingsDoorwaysRoute
 ];

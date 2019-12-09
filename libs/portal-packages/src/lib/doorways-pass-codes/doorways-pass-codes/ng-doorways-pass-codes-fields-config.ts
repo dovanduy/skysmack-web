@@ -57,7 +57,7 @@ export class NgDoorwaysPassCodesFieldsConfig extends FieldsConfig<DoorwayPassCod
                 displayKey: 'passCode',
                 displaySubKey: 'object.code',
                 displayNameSelector: 'object.code',
-                optionsData$: this.passCodesStore.get(loadedPackage._package.dependencies[1]).pipe(tap(x => console.log(x))),
+                optionsData$: this.passCodesStore.get(loadedPackage._package.dependencies[1]),
                 getDependencies: () => {
                     passCodesPackage$.pipe(
                         map(passCodesPackage => this.passCodesActions.getPaged(passCodesPackage.object.path, new PagedQuery())),

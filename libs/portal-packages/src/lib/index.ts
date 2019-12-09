@@ -26,3 +26,5 @@ export * from './webhooks/webhooks.module';
 export * from './templates/templates.module';
 export * from './cors/cors.module';
 export * from './doorways/doorways.module';
+export * from './doorways-pass-codes/doorways-pass-codes.module';
+export * from './lodgings-doorways/lodgings-doorways.module';
