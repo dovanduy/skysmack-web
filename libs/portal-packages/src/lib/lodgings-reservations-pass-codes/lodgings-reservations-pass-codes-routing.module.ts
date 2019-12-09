@@ -1,17 +1,17 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { DefaultComponent } from '@skysmack/portal-ui';
-import { lodgingsDoorwaysRoutes } from './lodgings-doorways/components';
+import { lodgingsReservationsPassCodesRoutes } from './lodgings-reservations-pass-codes/components/lodgings-reservations-pass-codes-components';
 
 @NgModule({
   imports: [RouterModule.forChild([
     {
       path: '', component: DefaultComponent, children: [
-        ...lodgingsDoorwaysRoutes
+        ...lodgingsReservationsPassCodesRoutes
       ]
     }
   ]
   )],
   exports: [RouterModule]
 })
-export class LodgingsDoorwaysRoutingModule { }
+export class LodgingsReservationsPassCodesRoutingModule { }

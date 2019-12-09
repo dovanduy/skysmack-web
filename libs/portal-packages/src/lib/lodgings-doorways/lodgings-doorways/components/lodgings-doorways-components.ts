@@ -1,23 +1,20 @@
 import { Routes } from '@angular/router';
 import { LodgingsDoorwaysIndexComponent } from './lodgings-doorways-index/lodgings-doorways-index.component';
 import { LodgingsDoorwaysCreateComponent } from './lodgings-doorways-create/lodgings-doorways-create.component';
-import { LodgingsDoorwaysEditComponent } from './lodgings-doorways-edit/lodgings-doorways-edit.component';
 
-export const doorwaysPassCodesRoutes: Routes = [
+export const lodgingsDoorwaysRoutes: Routes = [
   {
     path: '', component: LodgingsDoorwaysIndexComponent,
     children: [
-      { path: 'create', component: LodgingsDoorwaysCreateComponent, pathMatch: 'full' },
-      { path: 'edit/:id', component: LodgingsDoorwaysEditComponent, pathMatch: 'full' }
+      { path: 'create', component: LodgingsDoorwaysCreateComponent, pathMatch: 'full' }
     ]
   }
 ];
 
-export const doorwaysPassCodesComponents: any[] = [
+export const lodgingsDoorwaysComponents: any[] = [
   LodgingsDoorwaysIndexComponent,
-  LodgingsDoorwaysCreateComponent,
-  LodgingsDoorwaysEditComponent,
+  LodgingsDoorwaysCreateComponent
 ];
 
-export const doorwaysPassCodesEntryComponents = [
+export const lodgingsDoorwaysEntryComponents = [
 ];

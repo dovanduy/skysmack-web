@@ -2225,6 +2225,40 @@
         }
       }
     },
+    "ng-lodgings-reservations-pass-codes": {
+      "projectType": "library",
+      "root": "libs/ng-packages/ng-lodgings-reservations-pass-codes",
+      "sourceRoot": "libs/ng-packages/ng-lodgings-reservations-pass-codes/src",
+      "prefix": "skysmack",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/ng-packages/ng-lodgings-reservations-pass-codes/tsconfig.lib.json",
+              "libs/ng-packages/ng-lodgings-reservations-pass-codes/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/ng-packages/ng-lodgings-reservations-pass-codes/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/ng-packages/ng-lodgings-reservations-pass-codes/jest.config.js",
+            "tsConfig": "libs/ng-packages/ng-lodgings-reservations-pass-codes/tsconfig.spec.json",
+            "setupFile": "libs/ng-packages/ng-lodgings-reservations-pass-codes/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
     "ng-lodgings-doorways": {
       "projectType": "library",
       "root": "libs/ng-packages/ng-lodgings-doorways",

@@ -1,0 +1,5 @@
+<ss-dynamic-form *ngIf="fields$" [fields$]="fields$" [validation]="fieldsConfig.validation"
+  [rules]="fieldsConfig.formRules" [buttonText]="'LODGINGS_RESERVATIONS_PASS_CODES.CREATE.BUTTON_CREATE' | translate"
+  (submitted)="onCreateSubmit($event)">
+  <h2 [translate]="'LODGINGS_RESERVATIONS_PASS_CODES.CREATE.CREATE'"></h2>
+</ss-dynamic-form>

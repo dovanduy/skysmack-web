@@ -31,4 +31,5 @@ export * from './cors-type';
 export * from './pass-codes-type';
 export * from './doorways-type';
 export * from './doorways-pass-codes-type';
-export * from './lodgings-doorways';
+export * from './lodgings-doorways-type';
+export * from './lodgings-reservations-pass-codes-type';

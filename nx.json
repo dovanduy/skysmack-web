@@ -194,6 +194,9 @@
     "ng-lodgings-doorways": {
       "tags": []
     },
+    "ng-lodgings-reservations-pass-codes": {
+      "tags": []
+    },
     "ng-cors": {
       "tags": []
     },

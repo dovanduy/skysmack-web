@@ -188,6 +188,9 @@
       "@skysmack/ng-lodgings-doorways": [
         "libs/ng-packages/ng-lodgings-doorways"
       ],
+      "@skysmack/ng-lodgings-reservations-pass-codes": [
+        "libs/ng-packages/ng-lodgings-reservations-pass-codes"
+      ],
       "@skysmack/ng-pass-codes": [
         "libs/ng-packages/ng-pass-codes"
       ],

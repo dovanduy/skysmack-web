@@ -28,3 +28,4 @@ export * from './cors/cors.module';
 export * from './doorways/doorways.module';
 export * from './doorways-pass-codes/doorways-pass-codes.module';
 export * from './lodgings-doorways/lodgings-doorways.module';
+export * from './lodgings-reservations-pass-codes/lodgings-reservations-pass-codes.module';

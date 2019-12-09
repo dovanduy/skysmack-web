@@ -1,18 +1,18 @@
 import { NgModule, ComponentFactoryResolver } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { LodgingsDoorwaysRoutingModule } from './lodgings-doorways-routing.module';
+import { LodgingsReservationsPassCodesRoutingModule } from './lodgings-reservations-pass-codes-routing.module';
 import { HttpClientModule } from '@angular/common/http';
-import { NgLodgingsDoorwaysModule } from '@skysmack/ng-lodgings-doorways';
+import { NgLodgingsReservationsPassCodesModule } from '@skysmack/ng-lodgings-reservations-pass-codes';
 import { PortalUiModule, NgMenuProviders } from '@skysmack/portal-ui';
 import { CoalescingComponentFactoryResolver } from '@skysmack/ng-framework';
 import { DynamicFormsModule } from '@skysmack/portal-dynamic-forms';
 import { PortalFieldsModule } from '@skysmack/portal-fields';
 import { SettingsModule } from '@skysmack/portal-settings';
 import { NgDoorwaysModule } from '@skysmack/ng-doorways';
+import { lodgingsReservationsPassCodesComponents, lodgingsReservationsPassCodesEntryComponents } from './lodgings-reservations-pass-codes/components/lodgings-reservations-pass-codes-components';
 import { NgLodgingsModule } from '@skysmack/ng-lodgings';
-import { NgLodgingsDoorwaysIndexMenuProvider } from './ng-lodgings-doorways-index-menu-provider';
-import { lodgingsDoorwaysComponents, lodgingsDoorwaysEntryComponents } from './lodgings-doorways/components';
+import { NgLodgingsReservationsPassCodesIndexMenuProvider } from './ng-lodgings-reservations-pass-codes-index-menu-provider';
 
 @NgModule({
   imports: [
@@ -20,8 +20,8 @@ import { lodgingsDoorwaysComponents, lodgingsDoorwaysEntryComponents } from './l
     HttpClientModule,
     NgDoorwaysModule,
     NgLodgingsModule,
-    LodgingsDoorwaysRoutingModule,
-    NgLodgingsDoorwaysModule,
+    LodgingsReservationsPassCodesRoutingModule,
+    NgLodgingsReservationsPassCodesModule,
     PortalUiModule,
     SettingsModule,
     DynamicFormsModule,
@@ -29,24 +29,24 @@ import { lodgingsDoorwaysComponents, lodgingsDoorwaysEntryComponents } from './l
   ],
   exports: [],
   declarations: [
-    ...lodgingsDoorwaysComponents
+    ...lodgingsReservationsPassCodesComponents
   ],
   entryComponents: [
-    ...lodgingsDoorwaysEntryComponents
+    ...lodgingsReservationsPassCodesEntryComponents
   ],
   providers: []
 })
-export class LodgingsDoorwaysModule {
+export class LodgingsReservationsPassCodesModule {
   constructor(
     // Make entry components available
     coalescingResolver: CoalescingComponentFactoryResolver,
     localResolver: ComponentFactoryResolver,
     ngMenuProviders: NgMenuProviders,
-    ngLodgingsDoorwaysIndexMenuProvider: NgLodgingsDoorwaysIndexMenuProvider
+    ngLodgingsReservationsPassCodesIndexMenuProvider: NgLodgingsReservationsPassCodesIndexMenuProvider
   ) {
 
     // Make entry components available
     coalescingResolver.registerResolver(localResolver);
-    ngMenuProviders.add(ngLodgingsDoorwaysIndexMenuProvider);
+    ngMenuProviders.add(ngLodgingsReservationsPassCodesIndexMenuProvider);
   }
 }
