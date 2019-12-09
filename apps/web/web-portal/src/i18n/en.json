@@ -310,34 +310,14 @@
 				"PASSCODEID": "Pass code",
 				"VALIDFROM": "Valid from",
 				"VALIDTO": "Valid to",
-				"DISABLED": "Disabled",
-				"NAME": "Name",
-				"CONNECTIONSTRING": "Connection string",
-				"CONNECTION": "Connection",
-				"DESCRIPTION": "Description",
-				"CLIENTID": "Client",
-				"DOORWAYPASSCODEID": "DoorwayPassCode",
-				"AMOUNT": "Amount",
-				"INVOICEID": "Invoice ID",
-				"CURRENCYCODE": "Currency",
-				"ENABLED": "Enabled"
+				"DISABLED": "Disabled"
 			},
 			"PLACEHOLDERS": {
 				"DOORWAYID": "Doorway",
 				"PASSCODEID": "Pass code",
 				"VALIDFROM": "Valid from",
 				"VALIDTO": "Valid to",
-				"DISABLED": "Disabled",
-				"NAME": "Name",
-				"CONNECTIONSTRING": "Connection string",
-				"CONNECTION": "Connection",
-				"DESCRIPTION": "Description",
-				"CLIENTID": "Client",
-				"DOORWAYPASSCODEID": "DoorwayPassCode",
-				"AMOUNT": "Amount",
-				"INVOICEID": "Invoice ID",
-				"CURRENCYCODE": "Currency",
-				"ENABLED": "Enabled"
+				"DISABLED": "Disabled"
 			},
 			"VALIDATION": {
 				"DOORWAYID": {
@@ -345,30 +325,6 @@
 				},
 				"PASSCODEID": {
 					"REQUIRED": "Pass code is required."
-				},
-				"NAME": {
-					"REQUIRED": "Name is required."
-				},
-				"CONNECTIONSTRING": {
-					"REQUIRED": "Connection string is required."
-				},
-				"CONNECTION": {
-					"REQUIRED": "Connection is required."
-				},
-				"CLIENTID": {
-					"REQUIRED": "Client is required."
-				},
-				"DOORWAYPASSCODEID": {
-					"REQUIRED": "DoorwayPassCode is required."
-				},
-				"AMOUNT": {
-					"REQUIRED": "Amount is required."
-				},
-				"INVOICEID": {
-					"REQUIRED": "Invoice ID is required."
-				},
-				"CURRENCYCODE": {
-					"REQUIRED": "Currency is required."
 				}
 			}
 		},
@@ -378,7 +334,7 @@
 		},
 		"EDIT": {
 			"EDIT": "Edit",
-			"BUTTON_EDIT": "Edit"
+			"BUTTON_EDIT": "Update"
 		},
 		"INDEX": {
 			"TITLE_EXTRAS": "(DoorwaysPassCodes)",
@@ -389,18 +345,6 @@
 			"ACTIONS": "Actions",
 			"SETTINGS": "Settings",
 			"TYPES": "Types"
-		},
-		"SETTINGS": {},
-		"QUEUE": {
-			"ADDING": "Adding doorway-pass-code {{ name }}",
-			"UPDATING": "Updating doorway-pass-code {{ name }}",
-			"DELETING": "Deleting doorway-pass-code {{ name }}",
-			"ERROR": "An error occured with doorway-pass-code {{ name }}. Correct and try again."
-		},
-		"ENTITY_ACTION_PROVIDER": {
-			"ENTITY_ACTION": {
-				"DOORWAYPASSCODE": "Card payment"
-			}
 		}
 	},
 	"EMAIL_TEMPLATES": {
@@ -1131,39 +1075,6 @@
 			"ERROR": "An error occured with {{ description }}. Correct and try again."
 		}
 	},
-	"INVOICES_PRODUCTS": {
-		"FORM": {
-			"LABELS": {
-				"INVOICEID": "Invoice",
-				"PRODUCTID": "Product",
-				"AMOUNT": "Amount"
-			},
-			"PLACEHOLDERS": {
-				"INVOICEID": "Invoice",
-				"PRODUCTID": "Product",
-				"AMOUNT": "Amount"
-			},
-			"VALIDATION": {
-				"INVOICEID": {
-					"REQUIRED": "Invoice is required."
-				},
-				"PRODUCTID": {
-					"REQUIRED": "Product is required."
-				},
-				"AMOUNT": {
-					"REQUIRED": "Amount is required."
-				}
-			}
-		},
-		"ADD_TO_INVOICE": {
-			"TITLE": "Add to invoice",
-			"SUBMIT": "Submit"
-		},
-		"ADD_PRODUCTS": {
-			"TITLE": "Add products",
-			"SUBMIT": "Submit"
-		}
-	},
 	"INVOICES_CASH_PAYMENTS": {
 		"FORM": {
 			"LABELS": {
@@ -1227,6 +1138,39 @@
 			"ENTITY_ACTION": {
 				"CASH_PAYMENT": "Cash payment"
 			}
+		}
+	},
+	"INVOICES_PRODUCTS": {
+		"FORM": {
+			"LABELS": {
+				"INVOICEID": "Invoice",
+				"PRODUCTID": "Product",
+				"AMOUNT": "Amount"
+			},
+			"PLACEHOLDERS": {
+				"INVOICEID": "Invoice",
+				"PRODUCTID": "Product",
+				"AMOUNT": "Amount"
+			},
+			"VALIDATION": {
+				"INVOICEID": {
+					"REQUIRED": "Invoice is required."
+				},
+				"PRODUCTID": {
+					"REQUIRED": "Product is required."
+				},
+				"AMOUNT": {
+					"REQUIRED": "Amount is required."
+				}
+			}
+		},
+		"ADD_TO_INVOICE": {
+			"TITLE": "Add to invoice",
+			"SUBMIT": "Submit"
+		},
+		"ADD_PRODUCTS": {
+			"TITLE": "Add products",
+			"SUBMIT": "Submit"
 		}
 	},
 	"GROUP_RESERVATIONS": {

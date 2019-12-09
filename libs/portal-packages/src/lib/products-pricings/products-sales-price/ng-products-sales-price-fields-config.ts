@@ -18,10 +18,10 @@ export class NgProductsSalesPriceFieldsConfig extends FieldsConfig<ProductsSales
     public formRules: FormRule[] = [];
 
     constructor(
-        public productsStore: NgProductsStore,
         public fieldProviders: FieldProviders,
-        public productsActions: NgProductsActions,
-        public skysmackStore: NgSkysmackStore
+        private productsStore: NgProductsStore,
+        private productsActions: NgProductsActions,
+        private skysmackStore: NgSkysmackStore
     ) { super(fieldProviders, PRODUCTS_SALES_PRICE_ADDITIONAL_PATHS); }
 
     protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<ProductsSalesPrice, number>): Field[] {

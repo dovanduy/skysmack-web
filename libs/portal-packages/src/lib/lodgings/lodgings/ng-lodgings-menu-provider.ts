@@ -23,7 +23,6 @@ export class NgLodgingsMenuProvider implements MenuProvider {
 
     constructor(
         private store: NgSkysmackStore,
-        private router: Router
     ) { }
 
     public getMenuAreas(packagePath: string, componentKey: string): Observable<MenuArea[]> {

@@ -11,11 +11,15 @@ import { DynamicFormsModule } from '@skysmack/portal-dynamic-forms';
 import { PortalFieldsModule } from '@skysmack/portal-fields';
 import { NgDoorwaysPassCodesIndexMenuProvider } from './ng-doorways-pass-codes-index-menu-provider';
 import { SettingsModule } from '@skysmack/portal-settings';
+import { NgDoorwaysModule } from '@skysmack/ng-doorways';
+import { NgPassCodesModule } from '@skysmack/ng-pass-codes';
 
 @NgModule({
   imports: [
     CommonModule,
     HttpClientModule,
+    NgDoorwaysModule,
+    NgPassCodesModule,
     DoorwaysPassCodesRoutingModule,
     NgDoorwaysPassCodesModule,
     PortalUiModule,
