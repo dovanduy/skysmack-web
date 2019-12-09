@@ -40,7 +40,8 @@
             "MANAGE": "Manage",
             "ACTIONS": "Actions",
             "SETTINGS": "Settings",
-            "TYPES": "Types"
+            "TYPES": "Types",
+            "OPTIONS": "Doorway options"
         }
     }
 }

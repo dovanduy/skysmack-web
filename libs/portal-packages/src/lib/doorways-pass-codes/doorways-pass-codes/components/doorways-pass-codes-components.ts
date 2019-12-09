@@ -5,7 +5,7 @@ import { DoorwaysPassCodesEditComponent } from './doorways-pass-codes-edit/doorw
 import { SettingsComponent } from '@skysmack/portal-settings';
 import { RouteData } from '@skysmack/framework';
 
-export const doorwayPassCodesRoutes: Routes = [
+export const doorwaysPassCodesRoutes: Routes = [
   {
     path: '', component: DoorwaysPassCodesIndexComponent,
     children: [
@@ -20,11 +20,11 @@ export const doorwayPassCodesRoutes: Routes = [
   }
 ];
 
-export const doorwayPassCodesComponents: any[] = [
+export const doorwaysPassCodesComponents: any[] = [
   DoorwaysPassCodesIndexComponent,
   DoorwaysPassCodesCreateComponent,
   DoorwaysPassCodesEditComponent,
 ];
 
-export const doorwayPassCodesEntryComponents = [
+export const doorwaysPassCodesEntryComponents = [
 ];

@@ -9,7 +9,6 @@ import { ProductsPermissions } from '@skysmack/packages-products';
 import { ProductsTypeId } from '@skysmack/package-types';
 import { ProductsIndexComponent } from './components/products-index/products-index.component';
 import { ProductTypesIndexComponent } from '../product-types/components/product-types-index/product-types-index.component';
-import { Router } from '@angular/router';
 
 @Injectable({ providedIn: 'root' })
 export class NgProductsMenuProvider implements MenuProvider {
