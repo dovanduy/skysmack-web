@@ -2225,6 +2225,40 @@
         }
       }
     },
+    "ng-lodgings-doorways": {
+      "projectType": "library",
+      "root": "libs/ng-packages/ng-lodgings-doorways",
+      "sourceRoot": "libs/ng-packages/ng-lodgings-doorways/src",
+      "prefix": "skysmack",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/ng-packages/ng-lodgings-doorways/tsconfig.lib.json",
+              "libs/ng-packages/ng-lodgings-doorways/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/ng-packages/ng-lodgings-doorways/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/ng-packages/ng-lodgings-doorways/jest.config.js",
+            "tsConfig": "libs/ng-packages/ng-lodgings-doorways/tsconfig.spec.json",
+            "setupFile": "libs/ng-packages/ng-lodgings-doorways/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
     "ng-pass-codes": {
       "projectType": "library",
       "root": "libs/ng-packages/ng-pass-codes",

@@ -1,6 +1,6 @@
 import { Record, LocalObject } from "@skysmack/framework";
 import { Doorway } from '@skysmack/ng-doorways';
-import { PassCode } from 'libs/packages/pass-codes/src';
+import { PassCode } from '@skysmack/packages-pass-codes';
 
 export class DoorwayPassCodeKey {
     public doorwayId: number;
