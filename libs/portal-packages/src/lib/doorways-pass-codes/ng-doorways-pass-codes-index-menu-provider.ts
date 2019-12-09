@@ -4,10 +4,11 @@ import { MenuArea, MenuProvider, SIDEBAR, SPEEDDIAL } from '@skysmack/framework'
 import { MenuItem } from '@skysmack/framework';
 import { Guid } from 'guid-typescript';
 import { Observable } from 'rxjs';
-import { getMenuEntries, getCombinedMenuEntries, setConnectedParentPackage } from '@skysmack/ng-framework';
-import { DoorwaysPassCodesTypeId } from '@skysmack/package-types';
+import { getMenuEntries, getCombinedMenuEntries, setConnectedParentPackage, getConnectedPackageMenuEntries } from '@skysmack/ng-framework';
+import { DoorwaysPassCodesTypeId, DoorwaysTypeId } from '@skysmack/package-types';
 import { DoorwaysPassCodesIndexComponent } from './doorways-pass-codes/components/doorways-pass-codes-index/doorways-pass-codes-index.component';
 import { DoorwaysPassCodesPermissions } from '@skysmack/ng-doorways-pass-codes';
+import { DoorwaysIndexComponent } from '../doorways/doorways/components/doorways-index/doorways-index.component';
 
 @Injectable({ providedIn: 'root' })
 export class NgDoorwaysPassCodesIndexMenuProvider implements MenuProvider {
@@ -40,6 +41,14 @@ export class NgDoorwaysPassCodesIndexMenuProvider implements MenuProvider {
                 DoorwaysPassCodesIndexComponent.COMPONENT_KEY,
                 this.getDoorwaysPassCodesMenuItems,
                 this.store
+            ),
+            getConnectedPackageMenuEntries(
+                packagePath,
+                DoorwaysPassCodesTypeId,
+                DoorwaysTypeId,
+                componentKey,
+                DoorwaysIndexComponent.COMPONENT_KEY,
+                this.store
             )
         );
     };
@@ -56,7 +65,7 @@ export class NgDoorwaysPassCodesIndexMenuProvider implements MenuProvider {
                 area: 'manage',
                 translationPrefix: this.doorwayPassCodesTranslationPrefix,
                 order: 2
-            })
+            }),
         ];
     };
 
