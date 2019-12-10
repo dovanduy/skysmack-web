@@ -95,7 +95,7 @@ export class NgDoorwaysPassCodesIndexMenuProvider implements MenuProvider {
                 area: 'actions',
                 hotkeyOptions: {
                     keyCode: 67,
-                    shiftKey: true,
+                    altKey: true,
                     action: `/${packagePath}/create`
                 },
                 order: 1,
@@ -143,7 +143,7 @@ export class NgDoorwaysPassCodesIndexMenuProvider implements MenuProvider {
                 area: 'actions',
                 hotkeyOptions: {
                     keyCode: 67,
-                    shiftKey: true,
+                    altKey: true,
                     action: `/${packagePath}/create`
                 },
                 order: 1,

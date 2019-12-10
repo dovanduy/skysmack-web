@@ -34,13 +34,13 @@ export class NgProductsPricingsMenuProvider implements MenuProvider {
             getMenuEntries<MenuArea>(packagePath, ProductsPricingsTypeId, componentKey, ProductTypePriceChangesIndexComponent.COMPONENT_KEY, this.getProductTypePriceChangesMenuAreas, this.store),
             getMenuEntries<MenuArea>(packagePath, ProductsPricingsTypeId, componentKey, ProductsSalesPriceIndexComponent.COMPONENT_KEY, this.getProductsSalesPriceMenuAreas, this.store),
             getMenuEntries<MenuArea>(packagePath, ProductsPricingsTypeId, componentKey, ProductTypeSalesPriceIndexComponent.COMPONENT_KEY, this.getProductTypeSalesPriceMenuAreas, this.store)
-            
+
         );
     };
 
     public getMenuItems(packagePath: string, componentKey: string): Observable<MenuItem[]> {
         return getCombinedMenuEntries(
-            getMenuEntries<MenuItem>(packagePath,ProductsPricingsTypeId,componentKey, ProductsPricingsIndexComponent.COMPONENT_KEY, this.getProductsPricingsMenuItems, this.store),
+            getMenuEntries<MenuItem>(packagePath, ProductsPricingsTypeId, componentKey, ProductsPricingsIndexComponent.COMPONENT_KEY, this.getProductsPricingsMenuItems, this.store),
             getConnectedPackageMenuEntries(packagePath, ProductsPricingsTypeId, ProductsTypeId, componentKey, ProductsIndexComponent.COMPONENT_KEY, this.store),
             getMenuEntries<MenuItem>(packagePath, ProductsPricingsTypeId, componentKey, ProductPriceChangesIndexComponent.COMPONENT_KEY, this.getProductPriceChangesMenuItems, this.store),
             getMenuEntries<MenuItem>(packagePath, ProductsPricingsTypeId, componentKey, ProductTypePriceChangesIndexComponent.COMPONENT_KEY, this.getProductTypePriceChangesMenuItems, this.store),
@@ -109,8 +109,8 @@ export class NgProductsPricingsMenuProvider implements MenuProvider {
         ];
     };
 
-    
-    
+
+
     public getProductPriceChangesMenuAreas = () => {
         return [
             new MenuArea({
@@ -134,7 +134,7 @@ export class NgProductsPricingsMenuProvider implements MenuProvider {
                 area: 'actions',
                 hotkeyOptions: {
                     keyCode: 67,
-                    shiftKey: true,
+                    altKey: true,
                     action: `/${packagePath}/price-changes/create`
                 },
                 order: 1,
@@ -150,7 +150,7 @@ export class NgProductsPricingsMenuProvider implements MenuProvider {
 
 
 
-      public getProductTypePriceChangesMenuAreas = () => {
+    public getProductTypePriceChangesMenuAreas = () => {
         return [
             new MenuArea({
                 area: 'actions',
@@ -173,7 +173,7 @@ export class NgProductsPricingsMenuProvider implements MenuProvider {
                 area: 'actions',
                 hotkeyOptions: {
                     keyCode: 67,
-                    shiftKey: true,
+                    altKey: true,
                     action: `/${packagePath}/types/price-changes/create`
                 },
                 order: 1,
@@ -212,7 +212,7 @@ export class NgProductsPricingsMenuProvider implements MenuProvider {
                 area: 'actions',
                 hotkeyOptions: {
                     keyCode: 67,
-                    shiftKey: true,
+                    altKey: true,
                     action: `/${packagePath}/sales-prices/create`
                 },
                 order: 1,
@@ -251,7 +251,7 @@ export class NgProductsPricingsMenuProvider implements MenuProvider {
                 area: 'actions',
                 hotkeyOptions: {
                     keyCode: 67,
-                    shiftKey: true,
+                    altKey: true,
                     action: `/${packagePath}/types/sales-prices/create`
                 },
                 order: 1,

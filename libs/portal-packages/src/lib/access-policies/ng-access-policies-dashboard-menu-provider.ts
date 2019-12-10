@@ -145,7 +145,7 @@ export class NgAccessPoliciesDashboardMenuProvider implements MenuProvider {
                 area: 'actions',
                 hotkeyOptions: {
                     keyCode: 67,
-                    shiftKey: true,
+                    altKey: true,
                     action: `/${packagePath}/permissions/create`
                 },
                 order: 1,
@@ -167,7 +167,7 @@ export class NgAccessPoliciesDashboardMenuProvider implements MenuProvider {
                 area: 'actions',
                 hotkeyOptions: {
                     keyCode: 67,
-                    shiftKey: true,
+                    altKey: true,
                     action: `/${packagePath}/roles/create`
                 },
                 order: 1,
@@ -189,7 +189,7 @@ export class NgAccessPoliciesDashboardMenuProvider implements MenuProvider {
                 area: 'actions',
                 hotkeyOptions: {
                     keyCode: 67,
-                    shiftKey: true,
+                    altKey: true,
                     action: `/${packagePath}/rules/create`
                 },
                 order: 1,

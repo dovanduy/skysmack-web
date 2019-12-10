@@ -81,7 +81,7 @@ export class NgLodgingsMenuProvider implements MenuProvider {
                 area: 'actions',
                 hotkeyOptions: {
                     keyCode: 67,
-                    shiftKey: true,
+                    altKey: true,
                     action: `/${packagePath}/create`
                 },
                 order: 1,
@@ -108,7 +108,7 @@ export class NgLodgingsMenuProvider implements MenuProvider {
                 area: 'manage',
                 hotkeyOptions: {
                     keyCode: 84,
-                    shiftKey: true,
+                    altKey: true,
                     action: `/${packagePath}/types`
                 },
                 order: 1,
@@ -124,7 +124,7 @@ export class NgLodgingsMenuProvider implements MenuProvider {
                 area: 'manage',
                 hotkeyOptions: {
                     keyCode: 70,
-                    shiftKey: true,
+                    altKey: true,
                     action: `/${packagePath}/fields`
                 },
                 order: 2,
@@ -165,7 +165,7 @@ export class NgLodgingsMenuProvider implements MenuProvider {
                 area: 'actions',
                 hotkeyOptions: {
                     keyCode: 67,
-                    shiftKey: true,
+                    altKey: true,
                     action: `/${packagePath}/types/create`
                 },
                 order: 1,
@@ -181,7 +181,7 @@ export class NgLodgingsMenuProvider implements MenuProvider {
                 area: 'manage',
                 hotkeyOptions: {
                     keyCode: 70,
-                    shiftKey: true,
+                    altKey: true,
                     action: `/${packagePath}/types/fields`
                 },
                 order: 2,

@@ -14,7 +14,7 @@ export class GetHotkeyOptionsPipe implements PipeTransform {
 
     transform(loadedPackage: LoadedPackage, index: number | string): Partial<HotKeyOptions> {
         const hotKeyOptions: Partial<HotKeyOptions> = {
-            shiftKey: true,
+            altKey: true,
             action: () => {
                 this.uiStore.setPackageDrawerStatus(false);
                 this.router.navigate([`/${loadedPackage._package.path}`])

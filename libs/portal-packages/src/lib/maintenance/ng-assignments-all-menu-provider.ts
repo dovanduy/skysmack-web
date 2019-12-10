@@ -128,7 +128,7 @@ export class NgAssignmentAllMenuProvider implements MenuProvider {
                 area: 'actions',
                 hotkeyOptions: {
                     keyCode: 67,
-                    shiftKey: true,
+                    altKey: true,
                     action: `/${packagePath}/assignments/create`
                 },
                 order: 1,
@@ -167,7 +167,7 @@ export class NgAssignmentAllMenuProvider implements MenuProvider {
                 area: 'actions',
                 hotkeyOptions: {
                     keyCode: 67,
-                    shiftKey: true,
+                    altKey: true,
                     action: `/${packagePath}/assignments/schedules/create`
                 },
                 order: 1,
@@ -205,7 +205,7 @@ export class NgAssignmentAllMenuProvider implements MenuProvider {
                 area: 'actions',
                 hotkeyOptions: {
                     keyCode: 67,
-                    shiftKey: true,
+                    altKey: true,
                     action: `/${packagePath}/assignments/types/create`
                 },
                 order: 1,
@@ -218,7 +218,7 @@ export class NgAssignmentAllMenuProvider implements MenuProvider {
         ];
     };
 
-    
+
 
     private getMaintenanceStatesMenuAreas = () => {
         return [
@@ -243,7 +243,7 @@ export class NgAssignmentAllMenuProvider implements MenuProvider {
                 area: 'actions',
                 hotkeyOptions: {
                     keyCode: 67,
-                    shiftKey: true,
+                    altKey: true,
                     action: `/${packagePath}/states/create`
                 },
                 order: 1,

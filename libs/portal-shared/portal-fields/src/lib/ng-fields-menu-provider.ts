@@ -61,7 +61,7 @@ export class NgFieldsMenuProvider implements MenuProvider {
                 area: 'actions',
                 hotkeyOptions: {
                     keyCode: 67,
-                    shiftKey: true,
+                    altKey: true,
                     action: `/${packagePath}/fields/create`
                 },
                 order: 1,
@@ -72,7 +72,7 @@ export class NgFieldsMenuProvider implements MenuProvider {
             })
         ];
     }
-    
+
     // Note: This doesn't need to be unsubscribed.
     private setPreviousUrl(router: Router) {
         getPreviousUrl$(router).pipe(tap(x => this.previousUrl = x)).subscribe();

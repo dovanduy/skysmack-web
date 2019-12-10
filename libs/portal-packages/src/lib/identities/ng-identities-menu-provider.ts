@@ -288,7 +288,7 @@ export class NgIdentitiesMenuProvider implements MenuProvider {
                 area: 'actions',
                 hotkeyOptions: {
                     keyCode: 67,
-                    shiftKey: true,
+                    altKey: true,
                     action: `/${packagePath}/users/create`
                 },
                 order: 1,
@@ -327,7 +327,7 @@ export class NgIdentitiesMenuProvider implements MenuProvider {
                 area: 'actions',
                 hotkeyOptions: {
                     keyCode: 67,
-                    shiftKey: true,
+                    altKey: true,
                     action: `/${packagePath}/roles/create`
                 },
                 order: 1,
@@ -366,7 +366,7 @@ export class NgIdentitiesMenuProvider implements MenuProvider {
                 area: 'actions',
                 hotkeyOptions: {
                     keyCode: 67,
-                    shiftKey: true,
+                    altKey: true,
                     action: `/${packagePath}/applications/create`
                 },
                 order: 1,
@@ -405,7 +405,7 @@ export class NgIdentitiesMenuProvider implements MenuProvider {
                 area: 'actions',
                 hotkeyOptions: {
                     keyCode: 67,
-                    shiftKey: true,
+                    altKey: true,
                     action: `/${packagePath}/clients/create`
                 },
                 order: 1,

@@ -58,10 +58,10 @@ export const setBackButton = (path: string): MenuItem => {
     return new MenuItem({
         url: '/' + path,
         displayName: 'UI.MISC.BACK',
-        area: 'manage', 
+        area: 'manage',
         hotkeyOptions: {
             keyCode: 66,
-            shiftKey: true,
+            altKey: true,
             action: '/' + path
         },
         order: 2,

@@ -56,7 +56,7 @@ export class NgSiteMinderMenuProvider implements MenuProvider {
         ];
     }
 
-        private getSiteMinderMenuItems = () => {
+    private getSiteMinderMenuItems = () => {
         return [
             new MenuItem({
                 url: 'channels',
@@ -126,7 +126,7 @@ export class NgSiteMinderMenuProvider implements MenuProvider {
                 area: 'actions',
                 hotkeyOptions: {
                     keyCode: 67,
-                    shiftKey: true,
+                    altKey: true,
                     action: `/${packagePath}/channels/create`
                 },
                 order: 1,
@@ -165,7 +165,7 @@ export class NgSiteMinderMenuProvider implements MenuProvider {
                 area: 'actions',
                 hotkeyOptions: {
                     keyCode: 67,
-                    shiftKey: true,
+                    altKey: true,
                     action: `/${packagePath}/rate-plans/create`
                 },
                 order: 1,
@@ -204,7 +204,7 @@ export class NgSiteMinderMenuProvider implements MenuProvider {
                 area: 'actions',
                 hotkeyOptions: {
                     keyCode: 67,
-                    shiftKey: true,
+                    altKey: true,
                     action: `/${packagePath}/lodging-type-rate-plan-channels/create`
                 },
                 order: 1,
@@ -216,7 +216,7 @@ export class NgSiteMinderMenuProvider implements MenuProvider {
         ];
     }
 
-    
+
 
     private getLodgingTypeRatePlansMenuAreas = () => {
         return [
@@ -241,7 +241,7 @@ export class NgSiteMinderMenuProvider implements MenuProvider {
                 area: 'actions',
                 hotkeyOptions: {
                     keyCode: 67,
-                    shiftKey: true,
+                    altKey: true,
                     action: `/${packagePath}/lodging-type-rate-plans/create`
                 },
                 order: 1,

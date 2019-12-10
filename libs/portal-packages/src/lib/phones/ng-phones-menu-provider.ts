@@ -108,7 +108,7 @@ export class NgPhonesMenuProvider implements MenuProvider {
                 area: 'actions',
                 hotkeyOptions: {
                     keyCode: 67,
-                    shiftKey: true,
+                    altKey: true,
                     action: `/${packagePath}/create`
                 },
                 order: 1,
@@ -143,7 +143,7 @@ export class NgPhonesMenuProvider implements MenuProvider {
         ];
     }
 
-    
+
 
     private getPhoneLogsIndexMenuAreas = (): MenuArea[] => {
         return [
@@ -168,7 +168,7 @@ export class NgPhonesMenuProvider implements MenuProvider {
                 area: 'actions',
                 hotkeyOptions: {
                     keyCode: 67,
-                    shiftKey: true,
+                    altKey: true,
                     action: `/${packagePath}/logs/create`
                 },
                 order: 1,
@@ -207,7 +207,7 @@ export class NgPhonesMenuProvider implements MenuProvider {
                 area: 'actions',
                 hotkeyOptions: {
                     keyCode: 67,
-                    shiftKey: true,
+                    altKey: true,
                     action: `/${packagePath}/numbers/create`
                 },
                 order: 1,

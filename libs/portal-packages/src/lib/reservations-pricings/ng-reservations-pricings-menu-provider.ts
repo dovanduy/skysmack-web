@@ -133,7 +133,7 @@ export class NgReservationsPricingsMenuProvider implements MenuProvider {
                 area: 'actions',
                 hotkeyOptions: {
                     keyCode: 67,
-                    shiftKey: true,
+                    altKey: true,
                     action: `/${packagePath}/prices/create`
                 },
                 order: 1,
@@ -171,7 +171,7 @@ export class NgReservationsPricingsMenuProvider implements MenuProvider {
                 area: 'actions',
                 hotkeyOptions: {
                     keyCode: 67,
-                    shiftKey: true,
+                    altKey: true,
                     action: `/${packagePath}/reservation-price-changes/create`
                 },
                 order: 1,
@@ -187,7 +187,7 @@ export class NgReservationsPricingsMenuProvider implements MenuProvider {
 
 
 
-    private getLodgingTypePricesMenuAreas  = () => {
+    private getLodgingTypePricesMenuAreas = () => {
         return [
             new MenuArea({
                 area: 'actions',
@@ -202,7 +202,7 @@ export class NgReservationsPricingsMenuProvider implements MenuProvider {
         ];
     };
 
-    private getLodgingTypePricesMenuItems  = (packagePath: string): MenuItem[] => {
+    private getLodgingTypePricesMenuItems = (packagePath: string): MenuItem[] => {
         return [
             new MenuItem({
                 url: 'create',
@@ -210,7 +210,7 @@ export class NgReservationsPricingsMenuProvider implements MenuProvider {
                 area: 'actions',
                 hotkeyOptions: {
                     keyCode: 67,
-                    shiftKey: true,
+                    altKey: true,
                     action: `/${packagePath}/types/prices/create`
                 },
                 order: 1,
@@ -248,7 +248,7 @@ export class NgReservationsPricingsMenuProvider implements MenuProvider {
                 area: 'actions',
                 hotkeyOptions: {
                     keyCode: 67,
-                    shiftKey: true,
+                    altKey: true,
                     action: `/${packagePath}/types/reservation-price-changes/create`
                 },
                 order: 1,

@@ -81,7 +81,7 @@ export class NgInvoicesMenuProvider implements MenuProvider {
                 area: 'actions',
                 hotkeyOptions: {
                     keyCode: 67,
-                    shiftKey: true,
+                    altKey: true,
                     action: `/${packagePath}/create`
                 },
                 order: 1,
@@ -97,7 +97,7 @@ export class NgInvoicesMenuProvider implements MenuProvider {
                 area: 'manage',
                 hotkeyOptions: {
                     keyCode: 70,
-                    shiftKey: true,
+                    altKey: true,
                     action: `/${packagePath}/fields`
                 },
                 order: 2,
@@ -144,7 +144,7 @@ export class NgInvoicesMenuProvider implements MenuProvider {
                 area: 'actions',
                 hotkeyOptions: {
                     keyCode: 67,
-                    shiftKey: true,
+                    altKey: true,
                     action: `/${packagePath}/create`
                 },
                 order: 1,
@@ -160,7 +160,7 @@ export class NgInvoicesMenuProvider implements MenuProvider {
                 area: 'manage',
                 hotkeyOptions: {
                     keyCode: 70,
-                    shiftKey: true,
+                    altKey: true,
                     action: `/${packagePath}/fields`
                 },
                 order: 2,
@@ -197,7 +197,7 @@ export class NgInvoicesMenuProvider implements MenuProvider {
                 area: 'actions',
                 hotkeyOptions: {
                     keyCode: 67,
-                    shiftKey: true,
+                    altKey: true,
                     action: `/${packagePath}/payments/create`
                 },
                 order: 1,
@@ -213,7 +213,7 @@ export class NgInvoicesMenuProvider implements MenuProvider {
                 area: 'manage',
                 hotkeyOptions: {
                     keyCode: 70,
-                    shiftKey: true,
+                    altKey: true,
                     action: `/${packagePath}/payments/fields`
                 },
                 order: 2,

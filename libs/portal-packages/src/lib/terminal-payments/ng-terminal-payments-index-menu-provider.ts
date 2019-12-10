@@ -207,7 +207,7 @@ export class NgTerminalPaymentsIndexMenuProvider implements MenuProvider {
                 area: 'actions',
                 hotkeyOptions: {
                     keyCode: 67,
-                    shiftKey: true,
+                    altKey: true,
                     action: `/${packagePath}/terminals/create`
                 },
                 order: 1,
@@ -245,7 +245,7 @@ export class NgTerminalPaymentsIndexMenuProvider implements MenuProvider {
                 area: 'actions',
                 hotkeyOptions: {
                     keyCode: 67,
-                    shiftKey: true,
+                    altKey: true,
                     action: `/${packagePath}/receipts/create`
                 },
                 order: 1,
@@ -261,7 +261,7 @@ export class NgTerminalPaymentsIndexMenuProvider implements MenuProvider {
                 area: 'manage',
                 hotkeyOptions: {
                     keyCode: 70,
-                    shiftKey: true,
+                    altKey: true,
                     action: `/${packagePath}/receipts/fields`
                 },
                 order: 2,
@@ -300,7 +300,7 @@ export class NgTerminalPaymentsIndexMenuProvider implements MenuProvider {
                 area: 'actions',
                 hotkeyOptions: {
                     keyCode: 67,
-                    shiftKey: true,
+                    altKey: true,
                     action: `/${packagePath}/payment-receipts/create`
                 },
                 order: 1,
@@ -316,7 +316,7 @@ export class NgTerminalPaymentsIndexMenuProvider implements MenuProvider {
                 area: 'manage',
                 hotkeyOptions: {
                     keyCode: 70,
-                    shiftKey: true,
+                    altKey: true,
                     action: `/${packagePath}/payment-receipts/fields`
                 },
                 order: 2,
@@ -355,7 +355,7 @@ export class NgTerminalPaymentsIndexMenuProvider implements MenuProvider {
                 area: 'actions',
                 hotkeyOptions: {
                     keyCode: 67,
-                    shiftKey: true,
+                    altKey: true,
                     action: `/${packagePath}/connections/create`
                 },
                 order: 1,
