@@ -194,6 +194,9 @@
       "@skysmack/ng-doorways": [
         "libs/ng-packages/ng-doorways/src/public_api.ts"
       ],
+      "@skysmack/ng-lodgings-doorways": [
+        "libs/ng-packages/ng-lodgings-doorways/src/public_api.ts"
+      ],
       "@skysmack/ng-doorways-pass-codes": [
         "libs/ng-packages/ng-doorways-pass-codes/src/public_api.ts"
       ],

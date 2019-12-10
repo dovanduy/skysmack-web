@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 
 import { LodgingsDoorwaysRoutingModule } from './lodgings-doorways-routing.module';
 import { HttpClientModule } from '@angular/common/http';
-import { NgLodgingsDoorwaysModule } from '@skysmack/ng-lodgings-doorways';
 import { PortalUiModule, NgMenuProviders } from '@skysmack/portal-ui';
 import { CoalescingComponentFactoryResolver } from '@skysmack/ng-framework';
 import { DynamicFormsModule } from '@skysmack/portal-dynamic-forms';
@@ -13,6 +12,7 @@ import { NgDoorwaysModule } from '@skysmack/ng-doorways';
 import { NgLodgingsModule } from '@skysmack/ng-lodgings';
 import { NgLodgingsDoorwaysIndexMenuProvider } from './ng-lodgings-doorways-index-menu-provider';
 import { lodgingsDoorwaysComponents, lodgingsDoorwaysEntryComponents } from './lodgings-doorways/components';
+import { NgLodgingsDoorwaysModule } from '@skysmack/ng-lodgings-doorways';
 
 @NgModule({
   imports: [

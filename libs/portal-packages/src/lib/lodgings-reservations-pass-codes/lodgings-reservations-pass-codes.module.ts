@@ -9,17 +9,15 @@ import { CoalescingComponentFactoryResolver } from '@skysmack/ng-framework';
 import { DynamicFormsModule } from '@skysmack/portal-dynamic-forms';
 import { PortalFieldsModule } from '@skysmack/portal-fields';
 import { SettingsModule } from '@skysmack/portal-settings';
-import { NgDoorwaysModule } from '@skysmack/ng-doorways';
 import { lodgingsReservationsPassCodesComponents, lodgingsReservationsPassCodesEntryComponents } from './lodgings-reservations-pass-codes/components/lodgings-reservations-pass-codes-components';
-import { NgLodgingsModule } from '@skysmack/ng-lodgings';
 import { NgLodgingsReservationsPassCodesIndexMenuProvider } from './ng-lodgings-reservations-pass-codes-index-menu-provider';
+import { NgLodgingReservationsModule } from '@skysmack/ng-lodging-reservations';
 
 @NgModule({
   imports: [
     CommonModule,
     HttpClientModule,
-    NgDoorwaysModule,
-    NgLodgingsModule,
+    NgLodgingReservationsModule,
     LodgingsReservationsPassCodesRoutingModule,
     NgLodgingsReservationsPassCodesModule,
     PortalUiModule,
