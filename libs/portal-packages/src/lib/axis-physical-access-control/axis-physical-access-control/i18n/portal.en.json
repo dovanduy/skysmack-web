@@ -1,0 +1,10 @@
+{
+    "AXIS_PHYSICAL_ACCESS_CONTROL": {
+        "INDEX": {
+            "MANAGE": "Manage",
+            "ACTIONS": "Actions",
+            "SETTINGS": "Settings",
+            "ACCESS_POINTS": "Access points"
+        }
+    }
+}

@@ -12,6 +12,7 @@ import { NgDoorwaysModule } from '@skysmack/ng-doorways';
 import { NgAxisPhysicalAccessControlIndexMenuProvider } from './ng-axis-physical-access-control-index-menu-provider';
 import { accessPointsComponents, accessPointsEntryComponents } from './access-points/components';
 import { NgAxisPhysicalAccessControlModule } from '@skysmack/ng-axis-physical-access-control';
+import { axisPhysicalAccessControlComponents, axisPhysicalAccessControlEntryComponents } from './axis-physical-access-control/components';
 
 @NgModule({
   imports: [
@@ -27,10 +28,12 @@ import { NgAxisPhysicalAccessControlModule } from '@skysmack/ng-axis-physical-ac
   ],
   exports: [],
   declarations: [
-    ...accessPointsComponents
+    ...accessPointsComponents,
+    ...axisPhysicalAccessControlComponents
   ],
   entryComponents: [
-    ...accessPointsEntryComponents
+    ...accessPointsEntryComponents,
+    ...axisPhysicalAccessControlEntryComponents
   ],
   providers: []
 })

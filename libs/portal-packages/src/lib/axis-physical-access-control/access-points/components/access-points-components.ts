@@ -4,7 +4,7 @@ import { AccessPointsCreateComponent } from './access-points-create/access-point
 
 export const accessPointsRoutes: Routes = [
   {
-    path: '', component: AccessPointsIndexComponent,
+    path: 'access-points', component: AccessPointsIndexComponent,
     children: [
       { path: 'create', component: AccessPointsCreateComponent, pathMatch: 'full' }
     ]

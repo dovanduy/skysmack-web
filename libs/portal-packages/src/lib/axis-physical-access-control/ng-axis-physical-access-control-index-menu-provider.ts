@@ -4,15 +4,17 @@ import { MenuArea, MenuProvider, SIDEBAR, SPEEDDIAL } from '@skysmack/framework'
 import { MenuItem } from '@skysmack/framework';
 import { Guid } from 'guid-typescript';
 import { Observable } from 'rxjs';
-import { getMenuEntries, getCombinedMenuEntries, setConnectedParentPackage, getConnectedPackageMenuEntries } from '@skysmack/ng-framework';
+import { getMenuEntries, getCombinedMenuEntries, setConnectedParentPackage, getConnectedPackageMenuEntries, setBackButton } from '@skysmack/ng-framework';
 import { DoorwaysTypeId, AxisPhysicalAccessControlTypeId } from '@skysmack/package-types';
 import { AccessPointsIndexComponent } from './access-points/components/access-points-index/access-points-index.component';
 import { DoorwaysIndexComponent } from '../doorways/doorways/components/doorways-index/doorways-index.component';
 import { AccessPointsPermissions } from '@skysmack/ng-axis-physical-access-control';
+import { AxisPhysicalAccessControlIndexComponent } from './axis-physical-access-control/components/axis-physical-access-control-index/axis-physical-access-control-index.component';
 
 @Injectable({ providedIn: 'root' })
 export class NgAxisPhysicalAccessControlIndexMenuProvider implements MenuProvider {
     public id = Guid.create().toString();
+    private axisPhysicalAccessControlTranslationPrefix = 'AXIS_PHYSICAL_ACCESS_CONTROL.INDEX.';
     private accessPointsTranslationPrefix = 'ACCESS_POINTS.INDEX.';
 
     constructor(
@@ -25,8 +27,16 @@ export class NgAxisPhysicalAccessControlIndexMenuProvider implements MenuProvide
                 packagePath,
                 AxisPhysicalAccessControlTypeId,
                 componentKey,
-                AccessPointsIndexComponent.COMPONENT_KEY,
+                AxisPhysicalAccessControlIndexComponent.COMPONENT_KEY,
                 this.getAxisPhysicalAccessControlMenuAreas,
+                this.store
+            ),
+            getMenuEntries<MenuArea>(
+                packagePath,
+                AxisPhysicalAccessControlTypeId,
+                componentKey,
+                AccessPointsIndexComponent.COMPONENT_KEY,
+                this.getAccessPointsMenuAreas,
                 this.store
             )
         );
@@ -38,8 +48,16 @@ export class NgAxisPhysicalAccessControlIndexMenuProvider implements MenuProvide
                 packagePath,
                 AxisPhysicalAccessControlTypeId,
                 componentKey,
-                AccessPointsIndexComponent.COMPONENT_KEY,
+                AxisPhysicalAccessControlIndexComponent.COMPONENT_KEY,
                 this.getAxisPhysicalAccessControlMenuItems,
+                this.store
+            ),
+            getMenuEntries<MenuItem>(
+                packagePath,
+                AxisPhysicalAccessControlTypeId,
+                componentKey,
+                AccessPointsIndexComponent.COMPONENT_KEY,
+                this.getAccessPointsMenuItems,
                 this.store
             ),
             getConnectedPackageMenuEntries(
@@ -53,8 +71,34 @@ export class NgAxisPhysicalAccessControlIndexMenuProvider implements MenuProvide
         );
     };
 
-    //#region AxisPhysicalAccessControl
     private getAxisPhysicalAccessControlMenuAreas = () => {
+        return [
+            new MenuArea({
+                area: 'manage',
+                translationPrefix: this.axisPhysicalAccessControlTranslationPrefix,
+                order: 2
+            }),
+        ];
+    };
+
+    private getAxisPhysicalAccessControlMenuItems = (packagePath: string): MenuItem[] => {
+        return [
+            new MenuItem({
+                url: 'access-points',
+                displayName: this.axisPhysicalAccessControlTranslationPrefix + 'ACCESS_POINTS',
+                area: 'manage',
+                order: 1,
+                permissions: [
+                    AccessPointsPermissions.findAccessPoints
+                ],
+                providedIn: [SIDEBAR]
+            }),
+            setConnectedParentPackage(this.store, packagePath)
+        ];
+    };
+
+    //#region AccessPoints
+    private getAccessPointsMenuAreas = () => {
         return [
             new MenuArea({
                 area: 'actions',
@@ -69,7 +113,7 @@ export class NgAxisPhysicalAccessControlIndexMenuProvider implements MenuProvide
         ];
     };
 
-    private getAxisPhysicalAccessControlMenuItems = (packagePath: string): MenuItem[] => {
+    private getAccessPointsMenuItems = (packagePath: string): MenuItem[] => {
         return [
             new MenuItem({
                 url: 'create',
@@ -87,7 +131,7 @@ export class NgAxisPhysicalAccessControlIndexMenuProvider implements MenuProvide
                 ],
                 providedIn: [SIDEBAR, SPEEDDIAL]
             }),
-            setConnectedParentPackage(this.store, packagePath)
+            setBackButton(packagePath)
         ];
     };
     //#endregion
