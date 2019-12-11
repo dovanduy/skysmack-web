@@ -197,6 +197,9 @@
       "@skysmack/ng-lodgings-doorways": [
         "libs/ng-packages/ng-lodgings-doorways/src/public_api.ts"
       ],
+      "@skysmack/ng-axis-physical-access-control": [
+        "libs/ng-packages/ng-axis-physical-access-control/src/public_api.ts"
+      ],
       "@skysmack/ng-doorways-pass-codes": [
         "libs/ng-packages/ng-doorways-pass-codes/src/public_api.ts"
       ],

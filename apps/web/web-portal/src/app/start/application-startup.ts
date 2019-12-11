@@ -38,6 +38,7 @@ import { loadDoorwayPackage } from '../packages/doorways-package-manifest';
 import { loadDoorwaysPassCodesPackage } from '../packages/doorways-pass-codes-package-manifest';
 import { loadLodgingsDoorwaysPackage } from '../packages/lodgings-doorways-package-manifest';
 import { loadLodgingsReservationsPassCodePackage } from '../packages/lodgings-reservations-pass-codes-package-manifest';
+import { loadAxisPhysicalAccessControlPackage } from '../packages/axis-physical-access-control-package-manifest';
 
 export function configureSkysmack(actions: NgSkysmackActions) {
     return () => actions.getSkysmack();
@@ -53,39 +54,40 @@ export const httpInterceptors = [
 ];
 
 export const packageLoaders = [
-    { provide: APP_INITIALIZER, useFactory: loadPackagesPackage, deps: [PackageLoader], multi: true },
-    { provide: APP_INITIALIZER, useFactory: loadAccessPoliciesPackage, deps: [PackageLoader], multi: true },
-    { provide: APP_INITIALIZER, useFactory: loadIdentitiesPackage, deps: [PackageLoader], multi: true },
-    { provide: APP_INITIALIZER, useFactory: loadInvoicePackage, deps: [PackageLoader], multi: true },
-    { provide: APP_INITIALIZER, useFactory: loadInvoicesProductsPackage, deps: [PackageLoader], multi: true },
-    { provide: APP_INITIALIZER, useFactory: loadInvoicesCashPaymentsPackage, deps: [PackageLoader], multi: true },
-    { provide: APP_INITIALIZER, useFactory: loadPersonPackage, deps: [PackageLoader], multi: true },
-    { provide: APP_INITIALIZER, useFactory: loadWebhooksPackage, deps: [PackageLoader], multi: true },
-    { provide: APP_INITIALIZER, useFactory: loadPhonePackage, deps: [PackageLoader], multi: true },
-    { provide: APP_INITIALIZER, useFactory: load3CXPackage, deps: [PackageLoader], multi: true },
-    { provide: APP_INITIALIZER, useFactory: loadSiteMinderPackage, deps: [PackageLoader], multi: true },
-    { provide: APP_INITIALIZER, useFactory: loadFileStoragePackage, deps: [PackageLoader], multi: true },
-    { provide: APP_INITIALIZER, useFactory: loadProductPackage, deps: [PackageLoader], multi: true },
-    { provide: APP_INITIALIZER, useFactory: loadProductsPricingsPackage, deps: [PackageLoader], multi: true },
-    { provide: APP_INITIALIZER, useFactory: loadLodgingPackage, deps: [PackageLoader], multi: true },
-    { provide: APP_INITIALIZER, useFactory: loadLodgingReservationPackage, deps: [PackageLoader], multi: true },
-    { provide: APP_INITIALIZER, useFactory: loadLodgingReservationsSignaturesPackage, deps: [PackageLoader], multi: true },
-    { provide: APP_INITIALIZER, useFactory: loadReservationsPricingsPackage, deps: [PackageLoader], multi: true },
-    { provide: APP_INITIALIZER, useFactory: loadPersonsLodgingReservationsPackage, deps: [PackageLoader], multi: true },
-    { provide: APP_INITIALIZER, useFactory: loadOAuth2Package, deps: [PackageLoader], multi: true },
-    { provide: APP_INITIALIZER, useFactory: loadMaintenancePackage, deps: [PackageLoader], multi: true },
-    { provide: APP_INITIALIZER, useFactory: loadTerminalPaymentsPackage, deps: [PackageLoader], multi: true },
-    { provide: APP_INITIALIZER, useFactory: loadEmailsPackage, deps: [PackageLoader], multi: true },
-    { provide: APP_INITIALIZER, useFactory: loadEmailsSmtpPackage, deps: [PackageLoader], multi: true },
-    { provide: APP_INITIALIZER, useFactory: loadOpenApiPackage, deps: [PackageLoader], multi: true },
-    { provide: APP_INITIALIZER, useFactory: loadTemplatePackage, deps: [PackageLoader], multi: true },
-    { provide: APP_INITIALIZER, useFactory: loadCorsPackage, deps: [PackageLoader], multi: true },
-    { provide: APP_INITIALIZER, useFactory: loadPassCodePackage, deps: [PackageLoader], multi: true },
-    { provide: APP_INITIALIZER, useFactory: loadDoorwayPackage, deps: [PackageLoader], multi: true },
-    { provide: APP_INITIALIZER, useFactory: loadDoorwaysPassCodesPackage, deps: [PackageLoader], multi: true },
-    { provide: APP_INITIALIZER, useFactory: loadLodgingsDoorwaysPackage, deps: [PackageLoader], multi: true },
-    { provide: APP_INITIALIZER, useFactory: loadLodgingsReservationsPassCodePackage, deps: [PackageLoader], multi: true }
-];
+    loadPackagesPackage,
+    loadAccessPoliciesPackage,
+    loadIdentitiesPackage,
+    loadInvoicePackage,
+    loadInvoicesProductsPackage,
+    loadInvoicesCashPaymentsPackage,
+    loadPersonPackage,
+    loadWebhooksPackage,
+    loadPhonePackage,
+    load3CXPackage,
+    loadSiteMinderPackage,
+    loadFileStoragePackage,
+    loadProductPackage,
+    loadProductsPricingsPackage,
+    loadLodgingPackage,
+    loadLodgingReservationPackage,
+    loadLodgingReservationsSignaturesPackage,
+    loadReservationsPricingsPackage,
+    loadPersonsLodgingReservationsPackage,
+    loadOAuth2Package,
+    loadMaintenancePackage,
+    loadTerminalPaymentsPackage,
+    loadEmailsPackage,
+    loadEmailsSmtpPackage,
+    loadOpenApiPackage,
+    loadTemplatePackage,
+    loadCorsPackage,
+    loadPassCodePackage,
+    loadDoorwayPackage,
+    loadDoorwaysPassCodesPackage,
+    loadLodgingsDoorwaysPackage,
+    loadLodgingsReservationsPassCodePackage,
+    loadAxisPhysicalAccessControlPackage
+].map(loader => ({ provide: APP_INITIALIZER, useFactory: loader, deps: [PackageLoader], multi: true }));
 
 export const injectionTokens = [
     { provide: API_DOMAIN_INJECTOR_TOKEN, useClass: SkysmackApiDomain }
