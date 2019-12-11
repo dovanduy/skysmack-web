@@ -2,12 +2,17 @@
     "ACCESS_POINTS": {
         "FORM": {
             "LABELS": {
+                "ID": "ID",
                 "DOORWAYID": "Doorway"
             },
             "PLACEHOLDERS": {
+                "ID": "ID",
                 "DOORWAYID": "Doorway"
             },
             "VALIDATION": {
+                "ID": {
+                    "REQUIRED": "ID is required."
+                },
                 "DOORWAYID": {
                     "REQUIRED": "Doorway is required."
                 }

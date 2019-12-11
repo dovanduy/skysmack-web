@@ -4,7 +4,7 @@ import { AccessPoint, ACCESS_POINTS_AREA_KEY, ACCESS_POINTS_ADDITIONAL_PATHS, Ng
 import { LoadedPackage, getPackageDendencyAsStream } from '@skysmack/ng-framework';
 import { FormRule, Field, SelectField } from '@skysmack/ng-dynamic-forms';
 import { FieldsConfig, FieldProviders } from '@skysmack/ng-fields';
-import { HiddenFieldComponent, SelectFieldComponent } from '@skysmack/portal-fields';
+import { HiddenFieldComponent, SelectFieldComponent, StringFieldComponent } from '@skysmack/portal-fields';
 import { Validators } from '@angular/forms';
 import { NgDoorwaysStore, NgDoorwaysActions } from '@skysmack/ng-doorways';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
@@ -29,6 +29,13 @@ export class NgAccessPointsFieldsConfig extends FieldsConfig<AccessPoint, string
         const doorwaysPackage$ = getPackageDendencyAsStream(this.skysmackStore, loadedPackage._package.path, [0]);
 
         const fields: Field[] = [
+            new Field({
+                component: StringFieldComponent,
+                value: entity ? entity.object.id : undefined,
+                validators: [Validators.required],
+                key: 'id',
+                order: 0,
+            }),
             new SelectField({
                 component: SelectFieldComponent,
                 value: entity ? entity.object.doorwayId : undefined,
@@ -47,17 +54,6 @@ export class NgAccessPointsFieldsConfig extends FieldsConfig<AccessPoint, string
                 showColumn: true
             })
         ];
-
-        // Id field must only be added for edit forms.
-        // If added to a create form, it won't be able to bind in the backend.
-        if (entity && entity.object.id && entity.status !== LocalObjectStatus.CREATING) {
-            fields.push(new Field({
-                component: HiddenFieldComponent,
-                value: entity ? entity.object.id : undefined,
-                key: 'id',
-                order: 0,
-            }));
-        }
 
         return fields;
     }

@@ -4,10 +4,14 @@ import { ACCESS_POINTS_AREA_KEY } from './constants/constants';
 
 export class NgAccessPointsValidation extends Validation {
     public formErrors = {
+        id: '',
         doorwayId: ''
     };
 
     public validationMessages: StrIndex<{}> = {
+        id: {
+            required: ''
+        },
         doorwayId: {
             required: ''
         }
