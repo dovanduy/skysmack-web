@@ -4,7 +4,21 @@
             "MANAGE": "Manage",
             "ACTIONS": "Actions",
             "SETTINGS": "Settings",
-            "ACCESS_POINTS": "Access points"
+            "ACCESS_POINTS": "Access points",
+            "VAPIX_CONNECTION_SETTINGS": "Connection settings"
+        },
+        "FORM": {
+            "LABELS": {
+                "ROUTE": "Route",
+                "USERNAME": "User name",
+                "PASSWORD": "Password"
+            },
+            "PLACEHOLDERS": {
+                "ROUTE": "Route",
+                "USERNAME": "User name",
+                "PASSWORD": "Password"
+            },
+            "VALIDATION": {}
         }
     }
 }

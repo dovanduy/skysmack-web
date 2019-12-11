@@ -93,6 +93,13 @@ export class NgAxisPhysicalAccessControlIndexMenuProvider implements MenuProvide
                 ],
                 providedIn: [SIDEBAR]
             }),
+            new MenuItem({
+                url: 'settings/connection',
+                displayName: this.axisPhysicalAccessControlTranslationPrefix + 'VAPIX_CONNECTION_SETTINGS',
+                area: 'manage',
+                order: 1,
+                providedIn: [SIDEBAR]
+            }),
             setConnectedParentPackage(this.store, packagePath)
         ];
     };
