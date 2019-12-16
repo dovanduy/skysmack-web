@@ -20,6 +20,7 @@ import { FlaggedEnumFieldComponent } from './components/flagged-enum-field/flagg
 import { ResultFieldComponent } from './components/result-field/result-field.component';
 import { StringArrayFieldComponent } from './components/string-array-field/string-array-field.component';
 import { KeyValueArrayFieldComponent } from './components/key-value-array-field/key-value-array-field.component';
+import { BooleanFieldComponent } from './components/boolean-field/boolean-field.component';
 
 export const dynamicFieldComponents = [
     CheckboxFieldComponent,
@@ -43,5 +44,6 @@ export const dynamicFieldComponents = [
     AddRecordFieldComponent,
     ResultFieldComponent,
     StringArrayFieldComponent,
-    KeyValueArrayFieldComponent
+    KeyValueArrayFieldComponent,
+    BooleanFieldComponent
 ];

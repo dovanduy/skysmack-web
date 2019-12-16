@@ -13,7 +13,7 @@ import { Observable, combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { NgFieldStore, LoadedPackage } from '@skysmack/ng-framework';
 import { FieldProviders } from '@skysmack/ng-fields';
-import { CheckboxFieldComponent } from './field-components';
+import { CheckboxFieldComponent, BooleanFieldComponent } from './field-components';
 
 export abstract class DocumentFieldsConfig<TRecord, TKey> extends FieldsConfig<TRecord, TKey> {
     constructor(
@@ -52,7 +52,7 @@ export abstract class DocumentFieldsConfig<TRecord, TKey> extends FieldsConfig<T
 
     protected getComponentFromDynamicFieldType(type: string): Type<any> {
         switch (type) {
-            case 'Boolean': return CheckboxFieldComponent; // MAKE INTO BOOLEANFIELDCOMPONENT
+            case 'Boolean': return BooleanFieldComponent;
             case 'DateTime': return DateTimeFieldComponent;
             case 'DateTimeOffset': return DateTimeFieldComponent; // MAKE INTO DATETIMEOFFSETFIELDCOMPONENT
             case 'Decimal': return DecimalFieldComponent;
